@@ -1,9 +1,6 @@
 <?php
 
-function format_days_left ($interval, $offset) {
-
-    include_once __DIR__.'/days_left_from_today.php';
-    $days_left = days_left_from_today($interval, $offset);
+function format_days_left ($days_left) {
 
     if ($days_left == 0) return 'Today';
 
