@@ -11,8 +11,8 @@ unset(
     $_SESSION['schedules/messages']
 );
 
-include_once '../fns/format_next.php';
-$next = format_next($schedule->day_interval, $schedule->day_offset);
+include_once '../fns/format_days_left.php';
+$next = format_days_left($schedule->day_interval, $schedule->day_offset);
 
 include_once '../../fns/create_panel.php';
 include_once '../../fns/Form/label.php';

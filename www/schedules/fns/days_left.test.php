@@ -1,15 +1,15 @@
 <?php
 
-include_once __DIR__.'/calculate_next.php';
+include_once __DIR__.'/days_left.php';
 
 header('Content-Type: text/plain');
 
 function check ($interval, $offset, $day, $expectedValue) {
-    $value = calculate_next($interval, $offset, $day);
+    $value = days_left($interval, $offset, $day);
     if ($value === $expectedValue) {
-        echo "calculate_next($interval, $offset, $day) returned $expectedValue.\n";
+        echo "days_left($interval, $offset, $day) returned $expectedValue.\n";
     } else {
-        echo "calculate_next($interval, $offset, $day) returned $value instead of $expectedValue.\n";
+        echo "days_left($interval, $offset, $day) returned $value instead of $expectedValue.\n";
     }
 }
 
