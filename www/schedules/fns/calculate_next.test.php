@@ -1,15 +1,15 @@
 <?php
 
-include_once __DIR__.'/day_offset_from_day.php';
+include_once __DIR__.'/calculate_next.php';
 
 header('Content-Type: text/plain');
 
 function check ($interval, $offset, $day, $expectedValue) {
-    $value = day_offset_from_day($interval, $offset, $day);
+    $value = calculate_next($interval, $offset, $day);
     if ($value === $expectedValue) {
-        echo "day_offset_from_day($interval, $offset, $day) returned $expectedValue.\n";
+        echo "calculate_next($interval, $offset, $day) returned $expectedValue.\n";
     } else {
-        echo "day_offset_from_day($interval, $offset, $day) returned $value instead of $expectedValue.\n";
+        echo "calculate_next($interval, $offset, $day) returned $value instead of $expectedValue.\n";
     }
 }
 
