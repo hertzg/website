@@ -1,6 +1,6 @@
 <?php
 
-function day_offset_from_today ($interval, $offset) {
+function calculate_next_from_today ($interval, $offset) {
 
     include_once __DIR__.'/../../fns/time_today.php';
     $day = floor(time_today() / (60 * 60 * 24));
