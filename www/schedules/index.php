@@ -16,14 +16,15 @@ include_once '../fns/Schedules/indexOnUser.php';
 include_once '../lib/mysqli.php';
 $schedules = Schedules\indexOnUser($mysqli, $user->id_users);
 
-include_once '../fns/Page/imageArrowLink.php';
-
 $items = [];
 if ($schedules) {
+    include_once 'fns/format_days_left.php';
+    include_once '../fns/Page/imageArrowLinkWithDescription.php';
     foreach ($schedules as $schedule) {
         $title = htmlspecialchars($schedule->text);
+        $description = format_days_left($schedule->day_interval, $schedule->day_offset);
         $href = "view/?id=$schedule->id";
-        $items[] = Page\imageArrowLink($title, $href, 'TODO');
+        $items[] = Page\imageArrowLinkWithDescription($title, $description, $href, 'TODO');
     }
 } else {
     include_once '../fns/Page/info.php';
@@ -31,6 +32,7 @@ if ($schedules) {
 }
 
 include_once '../fns/create_panel.php';
+include_once '../fns/Page/imageArrowLink.php';
 include_once '../fns/Page/sessionErrors.php';
 include_once '../fns/Page/sessionMessages.php';
 include_once '../fns/Page/tabs.php';
