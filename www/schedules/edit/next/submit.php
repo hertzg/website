@@ -4,7 +4,7 @@ include_once '../../../fns/require_same_domain_referer.php';
 require_same_domain_referer('../..');
 
 include_once 'fns/require_first_stage.php';
-list($user, $id, $first_stage) = require_first_stage();
+list($user, $id, $schedule, $first_stage) = require_first_stage();
 
 include_once '../../../fns/Schedules/requestSecondStage.php';
 list($day_offset) = Schedules\requestSecondStage($first_stage['day_interval']);

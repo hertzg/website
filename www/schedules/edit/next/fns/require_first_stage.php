@@ -12,7 +12,8 @@ function require_first_stage () {
     }
 
     $first_stage = $_SESSION[$key];
+    $schedule = $first_stage['schedule'];
 
-    return [$user, $first_stage['id'], $first_stage];
+    return [$user, $schedule->id, $schedule, $first_stage];
 
 }
