@@ -29,7 +29,7 @@ if ($errors) {
 unset($_SESSION['schedules/edit/errors']);
 
 include_once '../../fns/time_today.php';
-$dayNow = time_today() / (60 * 60 * 25);
+$dayNow = time_today() / (60 * 60 * 24);
 $remainder = ($dayNow - $schedule->day_offset) % $day_interval;
 if ($remainder) $day_offset = $day_interval - $remainder;
 else $day_offset = 0;

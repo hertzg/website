@@ -20,7 +20,7 @@ if ($day_offset_from_today == 0) {
     $next = 'Tomorrow';
 } else {
     include_once '../../fns/time_today.php';
-    $time = time_today() + $day_offset_from_today * 60 * 60 * 25;
+    $time = time_today() + $day_offset_from_today * 60 * 60 * 24;
     if ($day_offset_from_today < 7) {
         $next = date('l', $time);
     } else {
