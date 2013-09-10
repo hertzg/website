@@ -1,0 +1,47 @@
+.calendar-weeks {
+    background: #eee;
+    color: #444;
+}
+
+.calendar-days {
+    white-space: nowrap;
+}
+
+.calendar-days > * {
+    height: 48px;
+    text-align: center;
+    line-height: 48px;
+    font-weight: bold;
+    display: inline-block;
+    vertical-align: top;
+}
+.calendar-days > :first-child,
+.calendar-days > :nth-child(1),
+.calendar-days > :nth-child(3),
+.calendar-days > :nth-child(4),
+.calendar-days > :nth-child(5),
+.calendar-days > :last-child {
+    width: 14%;
+}
+.calendar-days > :nth-child(2),
+.calendar-days > :nth-child(6) {
+    width: 15%;
+}
+
+.calendar-offmonth {
+    color: #aaa;
+}
+
+.calendar-today {
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.navigation-arrow {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 48px;
+    padding: 8px;
+    background: inherit;
+}

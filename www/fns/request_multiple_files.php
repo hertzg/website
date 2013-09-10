@@ -1,0 +1,21 @@
+<?php
+
+function request_multiple_files () {
+    static $default = array(
+        'name' => '',
+        'type' => '',
+        'tmp_name' => '',
+        'error' => UPLOAD_ERR_NO_FILE,
+        'size' => 0,
+    );
+    $keys = func_get_args();
+    $values = array();
+    foreach ($keys as $key) {
+        if (array_key_exists($key, $_FILES) && is_array($_FILES[$key]['name'])) {
+            $values[] = $_FILES[$key];
+        } else {
+            $values[] = $default;
+        }
+    }
+    return $values;
+}

@@ -1,0 +1,18 @@
+.a {
+    color: #37c;
+}
+.tab-active {
+    background: #39e;
+    box-shadow: 0 -16px 16px #37c inset, 0 0 6px rgba(0, 0, 0, 0.4);
+}
+.tab-spacer {
+    background: #37c;
+    border-bottom: 1px solid #36a;
+}
+.clickable:active, .clickable:focus {
+    background-color: #39e;
+}
+
+.calendar-today {
+    background-color: #39e;
+}
