@@ -43,7 +43,7 @@ if ($notifications) {
         $itemHtml = '';
         if (!$channel) {
             $itemHtml =
-                "<a class=\"a\" href=\"notifications.php?idchannels=$notification->idchannels\">"
+                "<a class=\"a\" href=\"notifications.php?id=$notification->idchannels\">"
                     .$notification->channelname
                 .'</a>: ';
         }

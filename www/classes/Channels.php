@@ -54,7 +54,10 @@ class Channels {
 
     static function count ($idusers) {
         global $mysqli;
-        return mysqli_single_object($mysqli, "select count(*) count from channels where idusers = $idusers")->count;
+        return mysqli_single_object(
+            $mysqli,
+            "select count(*) count from channels where idusers = $idusers"
+        )->count;
     }
 
     static function delete ($idusers, $id) {
@@ -133,10 +136,6 @@ class Channels {
         );
 
         usort($channels, function ($a, $b) {
-            if (($a->numnotifications && !$b->numnotifications)
-                || (!$a->numnotifications && $b->numnotifications)) {
-                return $a->numnotifications ? -1 : 1;
-            }
             return strcasecmp($a->channelname, $b->channelname);
         });
 
