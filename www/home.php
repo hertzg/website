@@ -52,15 +52,28 @@ if ($numTasks) {
     $tasksLink = Page::imageLink('Tasks', 'tasks/index.php', 'tasks');
 }
 
-$notifications = '';
-if ($numNewNotifications) {
-    $notifications = Page::warnings(array("$user->numnotifications new notifications."));
-}
-
-if ($numNewNotifications) {
-    $notificationsLink = Page::imageLink("Notifications ($numNotifications, $numNewNotifications new)", 'notifications.php', 'notification');
+if ($numNotifications) {
+    $description = '';
+    if ($numNewNotifications) {
+        $notifications = Page::warnings(array("$numNewNotifications new notifications."));
+        $notificationsLink = Page::imageLinkWithDescription(
+            'Notifications',
+            "$numNewNotifications new. $numNotifications total.",
+            'notifications.php',
+            'notification'
+        );
+    } else {
+        $notifications = '';
+        $notificationsLink = Page::imageLinkWithDescription(
+            'Notifications',
+            "$numNotifications total.",
+            'notifications.php',
+            'old-notification'
+        );
+    }
 } else {
-    $notificationsLink = Page::imageLink('Notifications'.($numNotifications ? " ($numNotifications)" : ''), 'notifications.php', 'old-notification');
+    $notifications = '';
+    $notificationsLink = Page::imageLink('Notifications', 'notifications.php', 'old-notification');
 }
 
 $timeNow = time();
@@ -79,7 +92,7 @@ if ($numEventsToday) {
         $calendarLink = Page::imageLinkWithDescription('Calendar', "$numEventsToday events today.", 'calendar/index.php', 'calendar');
     }
 } elseif ($numEventsTomorrow) {
-    $calendarLink = Page::imageLinkWithDesciption('Calendar', "$numEventsTomorrow events tomorrow.", 'calendar/index.php', 'calendar');
+    $calendarLink = Page::imageLinkWithDescription('Calendar', "$numEventsTomorrow events tomorrow.", 'calendar/index.php', 'calendar');
 } else {
     $calendarLink = Page::imageLink('Calendar', 'calendar/index.php', 'calendar');
 }
