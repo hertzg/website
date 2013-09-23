@@ -1,5 +1,10 @@
 <?php
 
+function n_events ($n) {
+    if ($n == 1) return '1 event';
+    return "$n events";
+}
+
 include_once 'lib/require-user.php';
 include_once 'fns/bytestr.php';
 include_once 'fns/ifset.php';
@@ -87,12 +92,12 @@ $numEventsToday = Events::countOnTime($idusers, $timeToday);
 $numEventsTomorrow = Events::countOnTime($idusers, $timeTomorrow);
 if ($numEventsToday) {
     if ($numEventsTomorrow) {
-        $calendarLink = Page::imageLinkWithDescription('Calendar', "$numEventsToday events today. $numEventsTomorrow tomorrow.", 'calendar/index.php', 'calendar');
+        $calendarLink = Page::imageLinkWithDescription('Calendar', n_events($numEventsToday).' today. '.n_events($numEventsTomorrow).' tomorrow.', 'calendar/index.php', 'calendar');
     } else {
-        $calendarLink = Page::imageLinkWithDescription('Calendar', "$numEventsToday events today.", 'calendar/index.php', 'calendar');
+        $calendarLink = Page::imageLinkWithDescription('Calendar', n_events($numEventsToday).' today.', 'calendar/index.php', 'calendar');
     }
 } elseif ($numEventsTomorrow) {
-    $calendarLink = Page::imageLinkWithDescription('Calendar', "$numEventsTomorrow events tomorrow.", 'calendar/index.php', 'calendar');
+    $calendarLink = Page::imageLinkWithDescription('Calendar', n_events($numEventsTomorrow).' tomorrow.', 'calendar/index.php', 'calendar');
 } else {
     $calendarLink = Page::imageLink('Calendar', 'calendar/index.php', 'calendar');
 }
