@@ -17,7 +17,7 @@ unset(
     $_SESSION['email-reset-password_errors'],
     $_SESSION['email-reset-password_lastpost']
 );
-$username = ifset($lastpost['username'], ifset($_COOKIE['username']));
+$username = ifset($lastpost['username'], ifset($_COOKIE['username'], ''));
 
 $page->hideSignOutLink = true;
 $page->title = 'Sign In';
