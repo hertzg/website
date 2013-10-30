@@ -36,10 +36,14 @@ $page->finish(
             'value' => ifset($lastpost['email'])
         ))
         .Page::HR
-        .Form::password('password1', 'Password', ifset($lastpost['password1']))
+        .Form::password('password1', 'Password', array(
+            'value' => ifset($lastpost['password1']),
+        ))
         .Form::notes(array('Minimum 6 characters.'))
         .Page::HR
-        .Form::password('password2', 'Repeat password', ifset($lastpost['password2']))
+        .Form::password('password2', 'Repeat password', array(
+            'value' => ifset($lastpost['password2']),
+        ))
         .Page::HR
         .Form::captcha()
         .Form::button('Sign Up')

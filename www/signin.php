@@ -1,7 +1,6 @@
 <?php
 
 include_once 'fns/ifset.php';
-include_once 'fns/include_js.php';
 include_once 'fns/redirect.php';
 include_once 'classes/Form.php';
 include_once 'classes/Page.php';
@@ -34,11 +33,14 @@ $page->finish(
         'submit-signin.php',
         Form::textfield('username', 'Username', array(
             'value' => $username,
+            'autofocus' => $username === '',
         ))
         .Page::HR
-        .Form::password('password', 'Password', ifset($lastpost['password']))
+        .Form::password('password', 'Password', array(
+            'value' => ifset($lastpost['password']),
+            'autofocus' => $username !== '',
+        ))
         .Page::HR
         .Form::button('Sign In')
     )
-    .include_js(array('signin.js'))
 );

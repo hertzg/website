@@ -39,9 +39,13 @@ $page->finish(
         'submit-reset-password.php',
         Form::label('Username', $user->username)
         .Page::HR
-        .Form::password('password1', 'New password', ifset($lastpost['password1']))
+        .Form::password('password1', 'New password', array(
+            'value' => ifset($lastpost['password1']),
+        ))
         .Page::HR
-        .Form::password('password2', 'Repeat new password', ifset($lastpost['password2']))
+        .Form::password('password2', 'Repeat new password', array(
+            'value' => ifset($lastpost['password2']),
+        ))
         .Page::HR
         .Form::button('Reset Password')
         .Form::hidden('idusers', $idusers)

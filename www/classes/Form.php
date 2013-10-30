@@ -99,17 +99,18 @@ class Form {
         return self::association(
             '<input class="form-textfield"'
             .(isset($config['maxlength']) ? " maxlength=\"$config[maxlength]\"" : '')
-            .(isset($config['autofocus']) ? ' autofocus="autofocus"' : '')
+            .(isset($config['autofocus']) && $config['autofocus'] ? ' autofocus="autofocus"' : '')
             .($value ? ' value="'.htmlspecialchars($value).'"' : '')
             ." id=\"$name\" name=\"$name\" type=\"$type\" />",
             "<label for=\"$name\">$text:</label>"
         );
     }
 
-    static function password ($name, $text, $value = null) {
+    static function password ($name, $text, array $config = null) {
         return self::textfield($name, $text, array(
-            'value' => $value,
+            'value' => ifset($config['value']),
             'type' => 'password',
+            'autofocus' => ifset($config['autofocus']),
         ));
     }
 
