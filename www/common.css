@@ -91,7 +91,8 @@ img {
 }
 .tab,
 #bbar {
-    background: #444 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAZCAYAAADwkER/AAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAAN1wAADdcBQiibeAAAABxJREFUCNdjMDY2/s/EwMDAwMTIyIhMoInRggsA2YgB+e5imGMAAAAASUVORK5CYII=) repeat-x 50% 0%;
+    background: #444 repeat-x 50% 0%;
+    background-image: linear-gradient(#333, #444 25px);
 }
 .tab-bar {
     display: inline-block;
