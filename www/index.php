@@ -1,5 +1,6 @@
 <?php
 
+include_once 'lib/session-start.php';
 include_once 'lib/user.php';
 
 if ($user) {
@@ -8,6 +9,14 @@ if ($user) {
 }
 
 header('Content-Type: text/html; charset=UTF-8');
+
+unset(
+    $_SESSION['signin_errors'],
+    $_SESSION['signin_lastpost'],
+    $_SESSION['signin_messages'],
+    $_SESSION['signup_errors'],
+    $_SESSION['signup_lastpost']
+);
 
 echo
     '<!DOCTYPE html>'
