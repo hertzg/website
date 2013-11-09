@@ -54,7 +54,7 @@ class Page {
         $this->echoHtml(
             '<div id="tbar">'
                 .'<div style="position: relative">'
-                    ."<a class=\"topLink\" href=\"{$base}home.php\">"
+                    ."<a class=\"topLink\" href=\"{$base}index.php\">"
                         ."<img src=\"{$base}images/zvini.png\" alt=\"Zvini\" width=\"51\" height=\"24\" />"
                     .'</a>'
                     .($this->hideSignOutLink ? '' : 
