@@ -15,6 +15,7 @@ echo
         .'<head>'
             .'<title>Zvini</title>'
             .'<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />'
+            .'<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />'
             .'<link rel="stylesheet" type="text/css" href="common.css" />'
             .'<link rel="stylesheet" type="text/css" href="index.css" />'
             .'<link rel="icon" type="image/png" href="images/favicon.png" />'
