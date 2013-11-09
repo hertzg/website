@@ -34,11 +34,13 @@ $page->finish(
     .Form::create(
         'submit-edit-profile.php',
         Form::textfield('email', 'Email', array(
-            'value' => ifset($lastpost['email'], $user->email)
+            'value' => ifset($lastpost['email'], $user->email),
+            'autofocus' => true,
+            'required' => true,
         ))
         .Page::HR
         .Form::textfield('fullname', 'Full name', array(
-            'value' => ifset($lastpost['fullname'], $user->fullname)
+            'value' => ifset($lastpost['fullname'], $user->fullname),
         ))
         .Page::HR
         .Form::button('Save Changes')

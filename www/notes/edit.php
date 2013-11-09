@@ -23,6 +23,7 @@ $page->finish(
         Form::textarea('notetext', 'Text', array(
             'value' => ifset($lastpost['notetext'], $note->notetext),
             'autofocus' => true,
+            'required' => true,
         ))
         .Page::HR
         .Form::button('Save Changes')

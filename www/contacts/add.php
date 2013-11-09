@@ -24,6 +24,8 @@ $page->finish(
         Form::textfield('fullname', 'Full name', array(
             'value' => ifset($lastpost['fullname']),
             'maxlength' => 32,
+            'autofocus' => true,
+            'required' => true,
         ))
         .Page::HR
         .Form::textfield('address', 'Address', array(

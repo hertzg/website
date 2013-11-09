@@ -36,6 +36,7 @@ $page->finish(
         Form::textfield('foldername', 'Folder name', array(
             'value' => ifset($lastpost['foldername']),
             'autofocus' => true,
+            'required' => true,
         ))
         .Page::HR
         .Form::button('Create')

@@ -26,6 +26,7 @@ $page->finish(
             'value' => ifset($lastpost['channelname']),
             'maxlength' => 32,
             'autofocus' => true,
+            'required' => true,
         ))
         .Form::notes(array(
             'Characters a-z, A-Z, 0-9, dash, dot and underscore only.',

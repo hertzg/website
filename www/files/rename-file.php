@@ -25,6 +25,7 @@ $page->finish(
         Form::textfield('filename', 'File name', array(
             'value' => $file->filename,
             'autofocus' => true,
+            'required' => true,
         ))
         .Page::HR
         .Form::button('Rename')

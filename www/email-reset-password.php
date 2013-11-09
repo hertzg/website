@@ -29,6 +29,8 @@ $page->finish(
         'submit-email-reset-password.php',
         Form::textfield('email', 'Email', array(
             'value' => ifset($lastpost['email']),
+            'autofocus' => true,
+            'required' => true,
         ))
         .Page::HR
         .Form::captcha()

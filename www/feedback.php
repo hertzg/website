@@ -22,6 +22,7 @@ $page->finish(
         Form::textarea('feedbacktext', 'Feedback text', array(
             'value' => ifset($lastpost['feedbacktext']),
             'autofocus' => true,
+            'required' => true,
         ))
         .Form::notes(array('Minimum 6 words.'))
         .Page::HR

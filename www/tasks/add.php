@@ -24,6 +24,7 @@ $page->finish(
         Form::textarea('tasktext', 'Text', array(
             'value' => ifset($lastpost['tasktext']),
             'autofocus' => true,
+            'required' => true,
         ))
         .Page::HR
         .Form::textfield('tags', 'Tags', array(

@@ -28,21 +28,26 @@ $page->finish(
     .Form::create(
         'submit-signup.php',
         Form::textfield('username', 'Username', array(
-            'value' => ifset($lastpost['username'])
+            'value' => ifset($lastpost['username']),
+            'autofocus' => true,
+            'required' => true,
         ))
         .Form::notes(array('Minimum 6 characters.'))
         .Page::HR
         .Form::textfield('email', 'Email', array(
-            'value' => ifset($lastpost['email'])
+            'value' => ifset($lastpost['email']),
+            'required' => true,
         ))
         .Page::HR
         .Form::password('password1', 'Password', array(
             'value' => ifset($lastpost['password1']),
+            'required' => true,
         ))
         .Form::notes(array('Minimum 6 characters.'))
         .Page::HR
         .Form::password('password2', 'Repeat password', array(
             'value' => ifset($lastpost['password2']),
+            'required' => true,
         ))
         .Page::HR
         .Form::captcha()

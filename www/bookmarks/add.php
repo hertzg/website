@@ -24,6 +24,7 @@ $page->finish(
         Form::textfield('url', 'URL', array(
             'value' => ifset($lastpost['url']),
             'autofocus' => true,
+            'required' => true,
         ))
         .Page::HR
         .Form::textfield('title', 'Title', array(

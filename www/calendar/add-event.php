@@ -32,6 +32,8 @@ $page->finish(
         .Page::HR
         .Form::textfield('eventtext', 'Text', array(
             'value' => ifset($lastpost['eventtext']),
+            'autofocus' => true,
+            'required' => true,
         ))
         .Page::HR
         .Form::button('Add Event')

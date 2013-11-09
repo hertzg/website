@@ -22,15 +22,19 @@ $page->finish(
         'submit-change-password.php',
         Form::password('currentpassword', 'Current password', array(
             'value' => ifset($lastpost['currentpassword']),
+            'autofocus' => true,
+            'required' => true,
         ))
         .Page::HR
         .Form::password('password1', 'New password', array(
             'value' => ifset($lastpost['password1']),
+            'required' => true,
         ))
         .Form::notes(array('Minimum 6 characters.'))
         .Page::HR
         .Form::password('password2', 'Repeat new password', array(
             'value' => ifset($lastpost['password2']),
+            'required' => true,
         ))
         .Page::HR
         .Form::button('Change')

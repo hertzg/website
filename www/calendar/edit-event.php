@@ -21,6 +21,8 @@ $page->finish(
         .Page::HR
         .Form::textfield('eventtext', 'Text', array(
             'value' => $event->eventtext,
+            'autofocus' => true,
+            'required' => true,
         ))
         .Page::HR
         .Form::button('Save Changes')

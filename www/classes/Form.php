@@ -20,7 +20,9 @@ class Form {
     static function captcha () {
         if (Captcha::required()) {
             return
-                self::textfield('captcha', 'Verification')
+                self::textfield('captcha', 'Verification', array(
+                    'required' => true,
+                ))
                 .'<div class="form-captcha">'
                     .'<img src="captcha.php" alt="CAPTCHA" width="102" height="40" />'
                 .'</div>'
@@ -85,7 +87,8 @@ class Form {
         $value = ifset($config['value']);
         return self::association(
             '<textarea class="form-textarea"'
-            .(isset($config['autofocus']) ? ' autofocus="autofocus"' : '')
+            .(isset($config['autofocus']) && $config['autofocus'] ? ' autofocus="autofocus"' : '')
+            .(isset($config['required']) && $config['required'] ? ' required="required"' : '')
             ." id=\"$name\" name=\"$name\">"
                 .htmlspecialchars($value)
             .'</textarea>',
@@ -100,6 +103,7 @@ class Form {
             '<input class="form-textfield"'
             .(isset($config['maxlength']) ? " maxlength=\"$config[maxlength]\"" : '')
             .(isset($config['autofocus']) && $config['autofocus'] ? ' autofocus="autofocus"' : '')
+            .(isset($config['required']) && $config['required'] ? ' required="required"' : '')
             .($value ? ' value="'.htmlspecialchars($value).'"' : '')
             ." id=\"$name\" name=\"$name\" type=\"$type\" />",
             "<label for=\"$name\">$text:</label>"
@@ -111,6 +115,7 @@ class Form {
             'value' => ifset($config['value']),
             'type' => 'password',
             'autofocus' => ifset($config['autofocus']),
+            'required' => ifset($config['required']),
         ));
     }
 

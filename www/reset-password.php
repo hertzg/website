@@ -41,10 +41,13 @@ $page->finish(
         .Page::HR
         .Form::password('password1', 'New password', array(
             'value' => ifset($lastpost['password1']),
+            'autofocus' => true,
+            'required' => true,
         ))
         .Page::HR
         .Form::password('password2', 'Repeat new password', array(
             'value' => ifset($lastpost['password2']),
+            'required' => true,
         ))
         .Page::HR
         .Form::button('Reset Password')

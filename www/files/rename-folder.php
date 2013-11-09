@@ -22,6 +22,7 @@ $page->finish(
         Form::textfield('foldername', 'Folder name', array(
             'value' => $folder->foldername,
             'autofocus' => true,
+            'required' => true,
         ))
         .Page::HR
         .Form::button('Rename')

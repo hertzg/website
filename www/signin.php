@@ -34,11 +34,13 @@ $page->finish(
         Form::textfield('username', 'Username', array(
             'value' => $username,
             'autofocus' => $username === '',
+            'required' => true,
         ))
         .Page::HR
         .Form::password('password', 'Password', array(
             'value' => ifset($lastpost['password']),
             'autofocus' => $username !== '',
+            'required' => true,
         ))
         .Page::HR
         .Form::button('Sign In')

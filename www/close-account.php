@@ -23,7 +23,10 @@ $page->finish(
     ))
     .Form::create(
         'submit-close-account.php',
-        Form::password('password', 'Password')
+        Form::password('password', 'Password', array(
+            'autofocus' => true,
+            'required' => true,
+        ))
         .Page::HR
         .Form::button('Close Account')
     )
