@@ -111,6 +111,41 @@ class Tasks {
         );
     }
 
+    static function search ($idusers, $keyword) {
+        global $mysqli;
+        $keyword = str_replace(array('\\', '%', '_'), array('\\\\', '\\%', '\\_'), $keyword);
+        return mysqli_query_object(
+            $mysqli,
+            mysqli_sprintf(
+                $mysqli,
+                'select * from tasks'
+                ." where idusers = #u and tasktext like '%#s%'"
+                .' order by done, updatetime desc',
+                array($idusers, $keyword)
+            )
+        );
+    }
+
+    static function searchOnTag ($idusers, $keyword, $tag) {
+        global $mysqli;
+        $keyword = str_replace(array('\\', '%', '_'), array('\\\\', '\\%', '\\_'), $keyword);
+        return mysqli_query_object(
+            $mysqli,
+            mysqli_sprintf(
+                $mysqli,
+                'select * from tasks t'
+                ." where idusers = #u and tasktext like '%#s%'"
+                .' and exists ('
+                .'  select idtasks from tasktags tt'
+                .'  where tt.idtasks = t.idtasks'
+                ."  and tt.tagname = '#s'"
+                .' )'
+                .' order by done, updatetime desc',
+                array($idusers, $keyword, $tag)
+            )
+        );
+    }
+
     static function setDone ($idusers, $id, $done) {
         global $mysqli;
         mysqli_query(
