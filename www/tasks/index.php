@@ -49,7 +49,7 @@ include_once '../classes/Tab.php';
 
 list($tag, $keyword) = request_strings('tag', 'keyword');
 
-$items = [];
+$items = array();
 
 if ($keyword === '') {
     if ($tag === '') {
