@@ -1,39 +1,10 @@
 <?php
 
-function createFilterMessage ($tag) {
-    return Page::warnings(array(
-        'Showing tasks with <b>'.htmlspecialchars($tag).'</b> tag.<br />'
-        .'<a class="a" href="index.php">Show all</a>',
-    ));
-}
-
 function createSearchForm ($content) {
     return
         '<form action="index.php" style="background: #fff; height: 48px; position: relative">'
             .$content
         .'</form>';
-}
-
-function createSearchFormContent ($keyword) {
-    return
-        '<div style="position: absolute; top: 0; right: 96px; bottom: 0; left: 0">'
-            .'<input type="text" name="keyword" value="'.htmlspecialchars($keyword).'"'
-            .' placeholder="Search notes..." style="padding: 0 12px; width: 100%; height: 100%; cursor: text" />'
-        .'</div>'
-        .'<button class="clickable" style="position: absolute; top: 0; right: 48px; bottom: 0; width: 48px; text-align: center">'
-            .'<span class="icon search"></span>'
-        .'</button>';
-}
-
-function createSearchFormEmptyContent () {
-    return
-        '<div style="position: absolute; top: 0; right: 48px; bottom: 0; left: 0">'
-            .'<input type="text" name="keyword" placeholder="Search tasks..."'
-            .' style="padding: 0 12px; width: 100%; height: 100%; cursor: text" />'
-        .'</div>'
-        .'<button class="clickable" style="position: absolute; top: 0; right: 0; bottom: 0; width: 48px; text-align: center">'
-            .'<span class="icon search"></span>'
-        .'</button>';
 }
 
 function createTagInput ($tag) {
@@ -52,40 +23,48 @@ list($tag, $keyword) = request_strings('tag', 'keyword');
 $items = array();
 
 if ($keyword === '') {
+    include_once 'fns/create_search_form_empty_content.php';
     if ($tag === '') {
-        $items[] = createSearchForm(createSearchFormEmptyContent());
-        $filterMessage = '';
         $tasks = Tasks::index($idusers);
+        if (count($tasks) > 1) {
+            $items[] = createSearchForm(create_search_form_empty_content());
+        }
+        $filterMessage = '';
     } else {
-        $items[] = createSearchForm(
-            createTagInput($tag)
-            .createSearchFormEmptyContent($keyword)
-        );
-        $filterMessage = createFilterMessage($tag);
         $tasks = Tasks::indexOnTag($idusers, $tag);
+        if (count($tasks) > 1) {
+            $items[] = createSearchForm(
+                createTagInput($tag)
+                .create_search_form_empty_content($keyword)
+            );
+        }
+        include_once 'fns/create_filter_message.php';
+        $filterMessage = create_filter_message($tag);
     }
 } else {
+    include_once 'fns/create_search_form_content.php';
     if ($tag === '') {
+        $tasks = Tasks::search($idusers, $keyword);
         $items[] = createSearchForm(
-            createSearchFormContent($keyword)
+            create_search_form_content($keyword)
             .'<a href="index.php" class="clickable"'
             .' style="position: absolute; top: 0; right: 0; bottom: 0; width: 48px; text-align: center; line-height: 48px">'
                 .'<div class="icon no" style="vertical-align: middle"></div>'
             .'</a>'
         );
         $filterMessage = '';
-        $tasks = Tasks::search($idusers, $keyword);
     } else {
+        $tasks = Tasks::searchOnTag($idusers, $keyword, $tag);
         $items[] = createSearchForm(
             createTagInput($tag)
-            .createSearchFormContent($keyword)
+            .create_search_form_content($keyword)
             .'<a href="index.php?tag='.rawurlencode($tag).'" class="clickable"'
             .' style="position: absolute; top: 0; right: 0; bottom: 0; width: 48px; text-align: center; line-height: 48px">'
                 .'<div class="icon no" style="vertical-align: middle"></div>'
             .'</a>'
         );
-        $filterMessage = createFilterMessage($tag);
-        $tasks = Tasks::searchOnTag($idusers, $keyword, $tag);
+        include_once 'fns/create_filter_message.php';
+        $filterMessage = create_filter_message($tag);
     }
 }
 

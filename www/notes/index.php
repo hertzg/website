@@ -12,18 +12,21 @@ list($keyword) = request_strings('keyword');
 $items = array();
 
 if ($keyword === '') {
-    $items[] =
-        '<form action="index.php" style="background: #fff; height: 48px; position: relative">'
-            .'<div style="position: absolute; top: 0; right: 48px; bottom: 0; left: 0">'
-                .'<input type="text" name="keyword" value="'.htmlspecialchars($keyword).'"'
-                .' placeholder="Search notes..." style="padding: 0 12px; width: 100%; height: 100%; cursor: text" />'
-            .'</div>'
-            .'<button class="clickable" style="position: absolute; top: 0; right: 0; bottom: 0; width: 48px; text-align: center">'
-                .'<span class="icon search"></span>'
-            .'</button>'
-        .'</form>';
     $notes = Notes::index($idusers);
+    if (count($notes) > 1) {
+        $items[] =
+            '<form action="index.php" style="background: #fff; height: 48px; position: relative">'
+                .'<div style="position: absolute; top: 0; right: 48px; bottom: 0; left: 0">'
+                    .'<input type="text" name="keyword" value="'.htmlspecialchars($keyword).'"'
+                    .' placeholder="Search notes..." style="padding: 0 12px; width: 100%; height: 100%; cursor: text" />'
+                .'</div>'
+                .'<button class="clickable" style="position: absolute; top: 0; right: 0; bottom: 0; width: 48px; text-align: center">'
+                    .'<span class="icon search"></span>'
+                .'</button>'
+            .'</form>';
+    }
 } else {
+    $notes = Notes::search($idusers, $keyword);
     $items[] =
         '<form action="index.php" style="background: #fff; height: 48px; position: relative">'
             .'<div style="position: absolute; top: 0; right: 96px; bottom: 0; left: 0">'
@@ -37,7 +40,6 @@ if ($keyword === '') {
                 .'<div class="icon no" style="vertical-align: middle"></div>'
             .'</a>'
         .'</form>';
-    $notes = Notes::search($idusers, $keyword);
 }
 
 if ($notes) {
