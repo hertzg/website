@@ -1,6 +1,7 @@
 <?php
 
 include_once 'lib/require-task.php';
+include_once '../fns/create_panel.php';
 include_once '../fns/date_ago.php';
 include_once '../fns/ifset.php';
 include_once '../fns/render_external_links.php';
@@ -59,12 +60,12 @@ $page->finish(
         '<div>Task created '.date_ago($inserttime).'.</div>'
         .($modified ? '<div>Last modified '.date_ago($updatetime).'.</div>' : '')
     )
-    .Tab::create(
-        Tab::activeItem('Options')
+    .create_panel(
+        'Options',
+        $setDoneLink
+        .Page::HR
+        .Page::imageLink('Edit Task', "edit.php?id=$id", 'edit-task')
+        .Page::HR
+        .Page::imageLink('Delete Task', "delete.php?id=$id", 'trash-bin')
     )
-    .$setDoneLink
-    .Page::HR
-    .Page::imageLink('Edit Task', "edit.php?id=$id", 'edit-task')
-    .Page::HR
-    .Page::imageLink('Delete Task', "delete.php?id=$id", 'trash-bin')
 );

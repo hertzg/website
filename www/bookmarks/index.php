@@ -1,6 +1,7 @@
 <?php
 
 include_once 'lib/require-user.php';
+include_once '../fns/create_panel.php';
 include_once '../fns/ifset.php';
 include_once '../classes/Bookmarks.php';
 include_once '../classes/Page.php';
@@ -37,8 +38,8 @@ $page->finish(
     )
     .Page::messages(ifset($_SESSION['bookmarks/index_messages']))
     .$bookmarks
-    .Tab::create(
-        Tab::activeItem('Options')
+    .create_panel(
+        'Options',
+        Page::imageLink('New Bookmark', 'add.php', 'create-bookmark')
     )
-    .Page::imageLink('New Bookmark', 'add.php', 'create-bookmark')
 );

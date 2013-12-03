@@ -1,6 +1,7 @@
 <?php
 
 include_once 'lib/require-event.php';
+include_once '../fns/create_panel.php';
 include_once '../fns/ifset.php';
 include_once '../fns/request_strings.php';
 include_once '../classes/Page.php';
@@ -19,10 +20,10 @@ $page->finish(
     .Page::text(htmlspecialchars($event->eventtext))
     .Page::HR
     .Page::text(date('F d, Y', $event->eventtime))
-    .Tab::create(
-        Tab::activeItem('Options')
+    .create_panel(
+        'Options',
+        Page::imageLink('Edit Event', "edit-event.php?idevents=$idevents", 'edit-event')
+        .Page::HR
+        .Page::imageLink('Delete Event', "delete-event.php?idevents=$idevents", 'trash-bin')
     )
-    .Page::imageLink('Edit Event', "edit-event.php?idevents=$idevents", 'edit-event')
-    .Page::HR
-    .Page::imageLink('Delete Event', "delete-event.php?idevents=$idevents", 'trash-bin')
 );

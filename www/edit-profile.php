@@ -1,6 +1,7 @@
 <?php
 
 include_once 'lib/require-user.php';
+include_once 'fns/create_panel.php';
 include_once 'fns/ifset.php';
 include_once 'classes/Form.php';
 include_once 'classes/Page.php';
@@ -45,8 +46,5 @@ $page->finish(
         .Page::HR
         .Form::button('Save Changes')
     )
-    .Tab::create(
-        Tab::activeItem('Theme')
-    )
-    .$themes_html
+    .create_panel('Theme', $themes_html)
 );

@@ -2,6 +2,7 @@
 
 include_once 'lib/require-user.php';
 include_once 'fns/create_folder_link.php';
+include_once '../fns/create_panel.php';
 include_once '../fns/ifset.php';
 include_once '../fns/redirect.php';
 include_once '../fns/request_strings.php';
@@ -84,11 +85,11 @@ $page->finish(
     )
     .Page::messages(ifset($_SESSION['files/index_messages']))
     .join(Page::HR, $items)
-    .Tab::create(
-        Tab::activeItem('Options')
+    .create_panel(
+        'Options',
+        Page::imageLink('New Folder', "add-folder.php?parentidfolders=$idfolders", 'create-folder')
+        .Page::HR
+        .Page::imageLink('Upload Files', "upload-files.php?idfolders=$idfolders", 'upload')
+        .$folder_options
     )
-    .Page::imageLink('New Folder', "add-folder.php?parentidfolders=$idfolders", 'create-folder')
-    .Page::HR
-    .Page::imageLink('Upload Files', "upload-files.php?idfolders=$idfolders", 'upload')
-    .$folder_options
 );

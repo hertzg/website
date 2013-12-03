@@ -1,6 +1,7 @@
 <?php
 
 include_once 'lib/require-note.php';
+include_once '../fns/create_panel.php';
 include_once '../fns/date_ago.php';
 include_once '../fns/ifset.php';
 include_once '../fns/render_external_links.php';
@@ -39,10 +40,10 @@ $page->finish(
         '<div>Note created '.date_ago($inserttime).'.</div>'
         .($modified ? '<div>Last modified '.date_ago($updatetime).'.</div>' : '')
     )
-    .Tab::create(
-        Tab::activeItem('Options')
+    .create_panel(
+        'Options',
+        Page::imageLink('Edit Note', "edit.php?id=$id", 'edit-note')
+        .Page::HR
+        .Page::imageLink('Delete Note', "delete.php?id=$id", 'trash-bin')
     )
-    .Page::imageLink('Edit Note', "edit.php?id=$id", 'edit-note')
-    .Page::HR
-    .Page::imageLink('Delete Note', "delete.php?id=$id", 'trash-bin')
 );

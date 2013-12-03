@@ -1,6 +1,7 @@
 <?php
 
 include_once 'lib/require-user.php';
+include_once '../fns/create_panel.php';
 include_once '../fns/ifset.php';
 include_once '../classes/Channels.php';
 include_once '../classes/Page.php';
@@ -37,10 +38,10 @@ $page->finish(
     )
     .Page::messages(ifset($_SESSION['channels/index_messages']))
     .$channels
-    .Tab::create(
-        Tab::activeItem('Options')
+    .create_panel(
+        'Options',
+        Page::imageLink('New Channel', 'add.php', 'create-channel')
+        .Page::HR
+        .Page::imageLink('Download API', 'download-zvini-api.php', 'download')
     )
-    .Page::imageLink('New Channel', 'add.php', 'create-channel')
-    .Page::HR
-    .Page::imageLink('Download API', 'download-zvini-api.php', 'download')
 );

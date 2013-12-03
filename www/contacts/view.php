@@ -1,6 +1,7 @@
 <?php
 
 include_once 'lib/require-contact.php';
+include_once '../fns/create_panel.php';
 include_once '../fns/ifset.php';
 include_once '../classes/Form.php';
 include_once '../classes/Page.php';
@@ -30,10 +31,10 @@ $page->finish(
     .($email ? Page::HR.Form::label('Email', htmlspecialchars($email)) : '')
     .($phone1 ? Page::HR.Form::label('Phone 1', htmlspecialchars($phone1)) : '')
     .($phone2 ? Page::HR.Form::label('Phone 2', htmlspecialchars($phone2)) : '')
-    .Tab::create(
-        Tab::activeItem('Options')
+    .create_panel(
+        'Options',
+        Page::imageLink('Edit Contact', "edit.php?id=$id", 'edit-contact')
+        .Page::HR
+        .Page::imageLink('Delete Contact', "delete.php?id=$id", 'trash-bin')
     )
-    .Page::imageLink('Edit Contact', "edit.php?id=$id", 'edit-contact')
-    .Page::HR
-    .Page::imageLink('Delete Contact', "delete.php?id=$id", 'trash-bin')
 );

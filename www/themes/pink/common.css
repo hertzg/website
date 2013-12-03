@@ -2,12 +2,12 @@
     color: #e59;
 }
 .tab-active {
-    background: #f6a;
+    background-color: #f6a;
     box-shadow: 0 -16px 16px #e59 inset, 0 0 6px rgba(0, 0, 0, 0.4);
 }
 .tab-spacer {
-    background: #e59;
-    border-bottom: 1px solid #d48;
+    background-color: #e59;
+    border-bottom-color: #d48;
 }
 .clickable:active, .clickable:focus {
     background-color: #f6a;
@@ -15,4 +15,10 @@
 
 .calendar-today {
     background-color: #f6a;
+}
+
+.panel > .title {
+    background-color: #f6a;
+    background-image: linear-gradient(#f6a, #e59);
+    border-bottom-color: #d48;
 }

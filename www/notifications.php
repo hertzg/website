@@ -1,6 +1,7 @@
 <?php
 
 include_once 'lib/require-user.php';
+include_once 'fns/create_panel.php';
 include_once 'fns/ifset.php';
 include_once 'fns/request_strings.php';
 include_once 'classes/Notifications.php';
@@ -72,9 +73,9 @@ $page->finish(
     .Page::messages(ifset($_SESSION['notifications_messages']))
     .$filterMessage
     .$notificationsHtml
-    .Tab::create(
-        Tab::activeItem('Options')
+    .create_panel(
+        'Options',
+        ($numChannels ? Page::imageLinkWithDescription('Channels', "$numChannels total.", 'channels/index.php', 'channels') : Page::imageLink('Channels', 'channels/index.php', 'channels'))
+        .$deleteAllLink
     )
-    .($numChannels ? Page::imageLinkWithDescription('Channels', "$numChannels total.", 'channels/index.php', 'channels') : Page::imageLink('Channels', 'channels/index.php', 'channels'))
-    .$deleteAllLink
 );

@@ -12,6 +12,7 @@ function createTagInput ($tag) {
 }
 
 include_once 'lib/require-user.php';
+include_once '../fns/create_panel.php';
 include_once '../fns/ifset.php';
 include_once '../fns/request_strings.php';
 include_once '../classes/Tasks.php';
@@ -101,8 +102,8 @@ $page->finish(
     .Page::messages(ifset($_SESSION['tasks/index_messages']))
     .$filterMessage
     .join(Page::HR, $items)
-    .Tab::create(
-        Tab::activeItem('Options')
+    .create_panel(
+        'Options',
+        Page::imageLink('New Task', 'add.php', 'create-task')
     )
-    .Page::imageLink('New Task', 'add.php', 'create-task')
 );

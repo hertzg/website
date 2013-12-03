@@ -7,6 +7,7 @@ function n_events ($n) {
 
 include_once 'lib/require-user.php';
 include_once 'fns/bytestr.php';
+include_once 'fns/create_panel.php';
 include_once 'fns/ifset.php';
 include_once 'classes/Bookmarks.php';
 include_once 'classes/Contacts.php';
@@ -122,12 +123,12 @@ $page->finish(
     .$notificationsLink
     .Page::HR
     .$tasksLink
-    .Tab::create(
-        Tab::activeItem('Options')
+    .create_panel(
+        'Options',
+        Page::imageLink('Account', 'account.php', 'account')
+        .Page::HR
+        .Page::imageLink('Leave Feedback', 'feedback.php', 'feedback')
+        .Page::HR
+        .Page::imageLink('Sign Out', 'submit-signout.php', 'signout')
     )
-    .Page::imageLink('Account', 'account.php', 'account')
-    .Page::HR
-    .Page::imageLink('Leave Feedback', 'feedback.php', 'feedback')
-    .Page::HR
-    .Page::imageLink('Sign Out', 'submit-signout.php', 'signout')
 );

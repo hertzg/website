@@ -64,6 +64,7 @@ function create_calendar ($timeSelected) {
 }
 
 include_once 'lib/require-user.php';
+include_once '../fns/create_panel.php';
 include_once '../fns/ifset.php';
 include_once '../fns/request_strings.php';
 include_once '../classes/Events.php';
@@ -116,16 +117,16 @@ $page->finish(
     )
     .Page::messages(ifset($_SESSION['calendar/index_messages']))
     .create_calendar($timeSelected)
-    .Tab::create(
-        Tab::activeItem('Events')
+    .create_panel(
+        'Events',
+        join(Page::HR, $eventItems)
     )
-    .join(Page::HR, $eventItems)
-    .Tab::create(
-        Tab::activeItem('Options')
+    .create_panel(
+        'Options',
+        Page::imageLink('New Event', "add-event.php?year=$yearSelected&month=$monthSelected&day=$daySelected", 'create-event')
+        .Page::HR
+        .Page::imageLink('Jump To', "jump-to.php?year=$yearNow&month=$monthNow", 'calendar')
+        .Page::HR
+        .Page::imageLink('Go to Today', 'index.php', 'calendar')
     )
-    .Page::imageLink('New Event', "add-event.php?year=$yearSelected&month=$monthSelected&day=$daySelected", 'create-event')
-    .Page::HR
-    .Page::imageLink('Jump To', "jump-to.php?year=$yearNow&month=$monthNow", 'calendar')
-    .Page::HR
-    .Page::imageLink('Go to Today', 'index.php', 'calendar')
 );

@@ -1,6 +1,7 @@
 <?php
 
 include_once 'lib/require-channel.php';
+include_once '../fns/create_panel.php';
 include_once '../fns/ifset.php';
 include_once '../classes/Channels.php';
 include_once '../classes/Form.php';
@@ -25,10 +26,10 @@ $page->finish(
     .Form::label('Channel name', htmlspecialchars($channel->channelname))
     .Page::HR
     .Form::label('Channel key', bin2hex($channel->channelkey))
-    .Tab::create(
-        Tab::activeItem('Options')
+    .create_panel(
+        'Options',
+        Page::imageLink('Randomize Channel Key', "randomize-key.php?id=$id", 'randomize')
+        .Page::HR
+        .Page::imageLink('Delete Channel', "delete.php?id=$id", 'trash-bin')
     )
-    .Page::imageLink('Randomize Channel Key', "randomize-key.php?id=$id", 'randomize')
-    .Page::HR
-    .Page::imageLink('Delete Channel', "delete.php?id=$id", 'trash-bin')
 );

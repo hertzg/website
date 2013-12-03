@@ -1,6 +1,7 @@
 <?php
 
 include_once 'lib/require-user.php';
+include_once 'fns/create_panel.php';
 include_once 'fns/bytestr.php';
 include_once 'fns/date_ago.php';
 include_once 'fns/ifset.php';
@@ -35,12 +36,12 @@ $page->finish(
     .Form::label('Account created', date_ago($user->inserttime))
     .Page::HR
     .Form::label('Using storage', bytestr($user->storageused))
-    .Tab::create(
-        Tab::activeItem('Options')
+    .create_panel(
+        'Options',
+        Page::imageLink('Edit Profile', 'edit-profile.php', 'edit-profile')
+        .Page::HR
+        .Page::imageLink('Change Password', 'change-password.php', 'password')
+        .Page::HR
+        .Page::imageLink('Close Account', 'close-account.php', 'trash-bin')
     )
-    .Page::imageLink('Edit Profile', 'edit-profile.php', 'edit-profile')
-    .Page::HR
-    .Page::imageLink('Change Password', 'change-password.php', 'password')
-    .Page::HR
-    .Page::imageLink('Close Account', 'close-account.php', 'trash-bin')
 );

@@ -1,6 +1,7 @@
 <?php
 
 include_once 'lib/require-user.php';
+include_once '../fns/create_panel.php';
 include_once '../fns/ifset.php';
 include_once '../fns/request_strings.php';
 include_once '../classes/Notes.php';
@@ -66,8 +67,8 @@ $page->finish(
     )
     .Page::messages(ifset($_SESSION['notes/index_messages']))
     .join(Page::HR, $items)
-    .Tab::create(
-        Tab::activeItem('Options')
+    .create_panel(
+        'Options',
+        Page::imageLink('New Note', 'add.php', 'create-note')
     )
-    .Page::imageLink('New Note', 'add.php', 'create-note')
 );

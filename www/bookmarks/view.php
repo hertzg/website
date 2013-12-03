@@ -2,6 +2,7 @@
 
 include_once 'lib/require-bookmark.php';
 include_once '../fns/create_external_url.php';
+include_once '../fns/create_panel.php';
 include_once '../fns/date_ago.php';
 include_once '../fns/ifset.php';
 include_once '../classes/Page.php';
@@ -34,10 +35,10 @@ $page->finish(
         '<div>Bookmark created '.date_ago($bookmark->inserttime).'.</div>'
         .($bookmark->inserttime != $bookmark->updatetime ? '<div>Last modified '.date_ago($bookmark->updatetime).'.</div>' : '')
     )
-    .Tab::create(
-        Tab::activeItem('Options')
+    .create_panel(
+        'Options',
+        Page::imageLink('Edit Bookmark', "edit.php?id=$id", 'edit-bookmark')
+        .Page::HR
+        .Page::imageLink('Delete Bookmark', "delete.php?id=$id", 'trash-bin')
     )
-    .Page::imageLink('Edit Bookmark', "edit.php?id=$id", 'edit-bookmark')
-    .Page::HR
-    .Page::imageLink('Delete Bookmark', "delete.php?id=$id", 'trash-bin')
 );
