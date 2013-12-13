@@ -3,6 +3,7 @@
     padding: 0;
     border: 0;
     outline: 0;
+    border-radius: 0;
     color: inherit;
     cursor: inherit;
     font: inherit;
@@ -259,6 +260,7 @@ img {
 .form-textarea:focus {
     padding: 10px;
     border: 2px solid transparent;
+    border-radius: 2px;
 }
 
 .errors {
