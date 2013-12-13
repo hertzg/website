@@ -50,6 +50,19 @@ class TaskTags {
         mysqli_query($mysqli, "delete from tasktags where idusers = $idusers");
     }
 
+    static function indexOnUser ($idusers) {
+        global $mysqli;
+        return mysqli_query_object(
+            $mysqli,
+            mysqli_sprintf(
+                $mysqli,
+                'select * from tasktags where idusers = #u'
+                .' order by tagname',
+                array($idusers)
+            )
+        );
+    }
+
     static function index ($id) {
         global $mysqli;
         return mysqli_query_object(
