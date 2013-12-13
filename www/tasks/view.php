@@ -16,9 +16,9 @@ unset(
 );
 
 if ($task->done) {
-    $setDoneLink = Page::imageLink('Mark as Not Done', "submit-set-done.php?id=$id", '');
+    $setDoneLink = Page::imageLink('Mark as Not Done', "submit-set-done.php?id=$id", 'task');
 } else {
-    $setDoneLink = Page::imageLink('Mark as Done', "submit-set-done.php?id=$id&done=1", '');
+    $setDoneLink = Page::imageLink('Mark as Done', "submit-set-done.php?id=$id&done=1", 'task-done');
 }
 
 $inserttime = $task->inserttime;
