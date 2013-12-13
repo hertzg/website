@@ -4,7 +4,6 @@ include_once __DIR__.'/../fns/mysqli_query_object.php';
 include_once __DIR__.'/../fns/mysqli_single_object.php';
 include_once __DIR__.'/../fns/mysqli_sprintf.php';
 include_once __DIR__.'/../lib/mysqli.php';
-include_once 'TaskTags.php';
 
 class Tasks {
 
@@ -20,8 +19,7 @@ class Tasks {
                 array($idusers, $tasktext, $tags, time(), time())
             )
         );
-        $id = mysqli_insert_id($mysqli);
-        TaskTags::add($idusers, $id, $tags);
+        return mysqli_insert_id($mysqli);
     }
 
     static function count ($idusers) {
@@ -40,7 +38,6 @@ class Tasks {
                 array($idusers, $id)
             )
         );
-        TaskTags::delete($id);
     }
 
     static function deleteUser ($idusers) {
@@ -62,8 +59,6 @@ class Tasks {
                 array($tasktext, $tags, time(), $idusers, $id)
             )
         );
-        TaskTags::delete($id);
-        TaskTags::add($idusers, $id, $tags);
     }
 
     static function get ($idusers, $id) {

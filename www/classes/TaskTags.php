@@ -7,11 +7,10 @@ include_once __DIR__.'/../lib/mysqli.php';
 
 class TaskTags {
 
-    static function add ($idusers, $id, $tagnames) {
+    const MAX_NUM_TAGS = 5;
+
+    static function add ($idusers, $id, array $tagnames) {
         global $mysqli;
-        $tagnames = str_collapse_spaces($tagnames);
-        $tagnames = explode(' ', $tagnames);
-        $tagnames = array_unique($tagnames);
         foreach ($tagnames as $tagname) {
             mysqli_query(
                 $mysqli,
@@ -23,6 +22,14 @@ class TaskTags {
                 )
             );
         }
+    }
+
+    static function parse ($tagnames) {
+        $tagnames = str_collapse_spaces($tagnames);
+        if ($tagnames === '') return array();
+        $tagnames = explode(' ', $tagnames);
+        $tagnames = array_unique($tagnames);
+        return $tagnames;
     }
 
     static function delete ($id) {
