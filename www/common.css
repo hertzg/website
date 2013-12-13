@@ -335,7 +335,6 @@ img {
     text-overflow: ellipsis;
     font-size: 12px;
     font-weight: normal;
-    transition: 0.2s color;
 }
 
 .clickable:active .linkDescription,
