@@ -34,7 +34,7 @@ if ($keyword === '') {
         if (count($tasks) > 1) {
             $taskTags = TaskTags::indexOnUser($idusers);
             if ($taskTags) {
-                $links = [];
+                $links = array();
                 foreach ($taskTags as $taskTag) {
                     $tagname = $taskTag->tagname;
                     $href = '?'.htmlspecialchars(
@@ -81,7 +81,7 @@ if ($keyword === '') {
         if (count($tasks) > 1) {
             $taskTags = TaskTags::indexOnUser($idusers);
             if ($taskTags) {
-                $links = [];
+                $links = array();
                 foreach ($taskTags as $taskTag) {
                     $tagname = $taskTag->tagname;
                     $href = '?'.htmlspecialchars(

@@ -56,7 +56,7 @@ class TaskTags {
             $mysqli,
             mysqli_sprintf(
                 $mysqli,
-                'select * from tasktags where idusers = #u'
+                'select distinct tagname from tasktags where idusers = #u'
                 .' order by tagname',
                 array($idusers)
             )
