@@ -47,6 +47,10 @@ img {
     vertical-align: middle;
 }
 
+:invalid {
+    box-shadow: none;
+}
+
 #tbar {
     font-weight: bold;
     padding: 12px 12px 0px;
@@ -127,7 +131,6 @@ img {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    transition: 0.2s background-color, 0.2s color;
 }
 .clickable:active,
 .clickable:focus {
@@ -243,6 +246,19 @@ img {
     line-height: 14px;
     margin-left: 26px;
     color: #555;
+}
+.form-textfield:-moz-ui-invalid,
+.form-textarea:-moz-ui-invalid {
+    padding: 10px;
+    border: 2px solid #f44;
+    box-shadow: none;
+    background-color: #fff4f4;
+}
+.form-select:focus,
+.form-textfield:focus,
+.form-textarea:focus {
+    padding: 10px;
+    border: 2px solid transparent;
 }
 
 .errors {

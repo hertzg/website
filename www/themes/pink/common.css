@@ -22,3 +22,10 @@
     background-image: linear-gradient(#f6a, #e59);
     border-bottom-color: #d48;
 }
+
+.form-select:focus,
+.form-textfield:focus,
+.form-textarea:focus {
+    border-color: #f6a;
+    background-color: #fff4f7;
+}
