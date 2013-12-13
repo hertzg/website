@@ -56,8 +56,7 @@ $page->base = '../';
 $page->title = htmlspecialchars($file->filename);
 $page->finish(
     Tab::create(
-        Tab::item('Home', '../home.php')
-        .Tab::item('Files', create_folder_link($file->idfolders))
+        Tab::item('Files', create_folder_link($file->idfolders))
         .Tab::item('View', "view.php?id=$file->idfiles")
         .Tab::activeItem('Move')
     )

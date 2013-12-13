@@ -55,8 +55,7 @@ $page->base = '../';
 $page->title = htmlspecialchars($folder->foldername);
 $page->finish(
     Tab::create(
-        Tab::item('Home', '../home.php')
-        .Tab::item('Files', create_folder_link($idfolders))
+        Tab::item('Files', create_folder_link($idfolders))
         .Tab::activeItem('Move')
     )
     .Page::errors(ifset($_SESSION['files/move-folder_errors']))

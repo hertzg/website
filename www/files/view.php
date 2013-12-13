@@ -19,8 +19,7 @@ $page->base = '../';
 $page->title = htmlspecialchars($file->filename);
 $page->finish(
     Tab::create(
-        Tab::item('Home', '../home.php')
-        .Tab::item('Files', create_folder_link($file->idfolders))
+        Tab::item('Files', create_folder_link($file->idfolders))
         .Tab::activeItem('View')
     )
     .Page::messages(ifset($_SESSION['files/view_messages']))

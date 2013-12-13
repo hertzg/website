@@ -21,8 +21,7 @@ unset(
 $page->title = 'Account';
 $page->finish(
     Tab::create(
-        Tab::item('Home', 'home.php')
-        .Tab::activeItem('Account')
+        Tab::activeItem('Account')
     )
     .Page::messages(ifset($_SESSION['account_messages']))
     .Form::label('Username', $user->username)

@@ -14,8 +14,7 @@ $page->base = '../';
 $page->title = 'New Task';
 $page->finish(
     Tab::create(
-        Tab::item('Home', '../home.php')
-        .Tab::item('Tasks', 'index.php')
+        Tab::item('Tasks', 'index.php')
         .Tab::activeItem('New')
     )
     .Page::errors(ifset($_SESSION['tasks/add_errors']))

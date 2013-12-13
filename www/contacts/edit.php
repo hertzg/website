@@ -14,8 +14,7 @@ $page->base = '../';
 $page->title = 'Edit Contact';
 $page->finish(
     Tab::create(
-        Tab::item('Home', '../home.php')
-        .Tab::item('Contacts', 'index.php')
+        Tab::item('Contacts', 'index.php')
         .Tab::item('View', "view.php?id=$id")
         .Tab::activeItem('Edit')
     )

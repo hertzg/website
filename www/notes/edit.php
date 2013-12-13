@@ -12,8 +12,7 @@ $page->base = '../';
 $page->title = 'Edit Note';
 $page->finish(
     Tab::create(
-        Tab::item('Home', '../home.php')
-        .Tab::item('Notes', 'index.php')
+        Tab::item('Notes', 'index.php')
         .Tab::item('View', "view.php?id=$id")
         .Tab::activeItem('Edit')
     )

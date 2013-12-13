@@ -14,8 +14,7 @@ $page->base = '../';
 $page->title = 'Edit Bookmark';
 $page->finish(
     Tab::create(
-        Tab::item('Home', '../home.php')
-        .Tab::item('Bookmarks', 'index.php')
+        Tab::item('Bookmarks', 'index.php')
         .Tab::item('View', "view.php?id=$id")
         .Tab::activeItem('Edit')
     )

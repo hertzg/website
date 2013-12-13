@@ -9,8 +9,7 @@ unset($_SESSION['notifications_messages']);
 $page->title = 'Clear Notifications';
 $page->finish(
     Tab::create(
-        Tab::item('Home', 'home.php')
-        .Tab::activeItem('Notifications')
+        Tab::activeItem('Notifications')
     )
     .Page::text('Are you sure you want to delete all notifications?')
     .Page::HR

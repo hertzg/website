@@ -33,8 +33,7 @@ $page->base = '../';
 $page->title = 'Bookmarks';
 $page->finish(
     Tab::create(
-        Tab::item('Home', '../home.php')
-        .Tab::activeItem('Bookmarks')
+        Tab::activeItem('Bookmarks')
     )
     .Page::messages(ifset($_SESSION['bookmarks/index_messages']))
     .$bookmarks

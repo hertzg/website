@@ -17,8 +17,7 @@ $page->base = '../';
 $page->title = htmlspecialchars($channel->channelname);
 $page->finish(
     Tab::create(
-        Tab::item('Home', '../home.php')
-        .Tab::item('Notifications', '../notifications.php')
+        Tab::item('Notifications', '../notifications.php')
         .Tab::item('Channels', 'index.php')
         .Tab::activeItem('View')
     )

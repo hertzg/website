@@ -44,8 +44,7 @@ $page->base = $base;
 $page->title = htmlspecialchars(mb_substr($tasktext, 0, 20, 'UTF-8'));
 $page->finish(
     Tab::create(
-        Tab::item('Home', '../home.php')
-        .Tab::item('Tasks', 'index.php')
+        Tab::item('Tasks', 'index.php')
         .Tab::activeItem('View')
     )
     .Page::messages(ifset($_SESSION['tasks/view_messages']))

@@ -14,8 +14,7 @@ $page->base = '../';
 $page->title = 'New Note';
 $page->finish(
     Tab::create(
-        Tab::item('Home', '../home.php')
-        .Tab::item('Notes', 'index.php')
+        Tab::item('Notes', 'index.php')
         .Tab::activeItem('New')
     )
     .Page::errors(ifset($_SESSION['notes/add_errors']))

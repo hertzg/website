@@ -13,8 +13,7 @@ unset($_SESSION['account_messages']);
 $page->title = 'Change password';
 $page->finish(
     Tab::create(
-        Tab::item('Home', 'home.php')
-        .Tab::item('Account', 'account.php')
+        Tab::item('Account', 'account.php')
         .Tab::activeItem('Change Password')
     )
     .Page::errors(ifset($_SESSION['change-password_errors']))

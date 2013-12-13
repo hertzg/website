@@ -12,8 +12,7 @@ unset($_SESSION['notifications_messages']);
 $page->title = 'Close Account';
 $page->finish(
     Tab::create(
-        Tab::item('Home', 'home.php')
-        .Tab::item('Account', 'account.php')
+        Tab::item('Account', 'account.php')
         .Tab::activeItem('Close')
     )
     .Page::errors(ifset($_SESSION['close-account_errors']))

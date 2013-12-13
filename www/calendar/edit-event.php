@@ -10,8 +10,7 @@ unset($_SESSION['calendar/view-event_errors']);
 $page->base = '../';
 $page->finish(
     Tab::create(
-        Tab::item('Home', '../home.php')
-        .Tab::item('Calendar', 'index.php')
+        Tab::item('Calendar', 'index.php')
         .Tab::item('Event', "view-event.php?idevents=$idevents")
         .Tab::activeItem('Edit')
     )

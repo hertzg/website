@@ -21,8 +21,7 @@ $page->base = '../';
 $page->title = htmlspecialchars($contact->fullname);
 $page->finish(
     Tab::create(
-        Tab::item('Home', '../home.php')
-        .Tab::item('Contacts', 'index.php')
+        Tab::item('Contacts', 'index.php')
         .Tab::activeItem('View')
     )
     .Page::messages(ifset($_SESSION['contacts/view_messages']))

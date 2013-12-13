@@ -112,8 +112,7 @@ $page->title = 'Calendar';
 $page->head = '<link rel="stylesheet" type="text/css" href="index.css" />';
 $page->finish(
     Tab::create(
-        Tab::item('Home', '../home.php')
-        .Tab::activeItem('Calendar')
+        Tab::activeItem('Calendar')
     )
     .Page::messages(ifset($_SESSION['calendar/index_messages']))
     .create_calendar($timeSelected)

@@ -10,8 +10,7 @@ $page->base = '../';
 $page->title = 'Delete File: '.htmlspecialchars($file->filename);
 $page->finish(
     Tab::create(
-        Tab::item('Home', '../home.php')
-        .Tab::item('Files', create_folder_link($file->idfolders))
+        Tab::item('Files', create_folder_link($file->idfolders))
         .Tab::activeItem('View')
     )
     .Page::text('Are you sure you want to delete the file "<b>'.htmlspecialchars($file->filename).'</b>"?')

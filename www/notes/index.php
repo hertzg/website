@@ -62,8 +62,7 @@ $page->base = '../';
 $page->title = 'Notes';
 $page->finish(
     Tab::create(
-        Tab::item('Home', '../home.php')
-        .Tab::activeItem('Notes')
+        Tab::activeItem('Notes')
     )
     .Page::messages(ifset($_SESSION['notes/index_messages']))
     .join(Page::HR, $items)

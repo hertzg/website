@@ -26,8 +26,7 @@ $page->base = '../';
 $page->title = 'Upload Files';
 $page->finish(
     Tab::create(
-        Tab::item('Home', '../home.php')
-        .Tab::item('Files', create_folder_link($idfolders))
+        Tab::item('Files', create_folder_link($idfolders))
         .Tab::activeItem('Upload Files')
     )
     .Page::errors(ifset($_SESSION['files/upload-files_errors']))

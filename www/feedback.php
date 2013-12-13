@@ -13,8 +13,7 @@ unset($_SESSION['home_messages']);
 $page->title = 'Leave Feedback';
 $page->finish(
     Tab::create(
-        Tab::item('Home', 'home.php')
-        .Tab::activeItem('Feedback')
+        Tab::activeItem('Feedback')
     )
     .Page::errors(ifset($_SESSION['feedback_errors']))
     .Form::create(

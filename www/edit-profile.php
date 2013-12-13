@@ -27,8 +27,7 @@ foreach ($themes as $id => $theme) {
 $page->title = 'Edit Profile';
 $page->finish(
     Tab::create(
-        Tab::item('Home', 'home.php')
-        .Tab::item('Account', 'account.php')
+        Tab::item('Account', 'account.php')
         .Tab::activeItem('Profile')
     )
     .Page::errors(ifset($_SESSION['edit-profile_errors']))

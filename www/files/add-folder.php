@@ -26,8 +26,7 @@ $page->base = '../';
 $page->title = 'New Folder';
 $page->finish(
     Tab::create(
-        Tab::item('Home', '../home.php')
-        .Tab::item('Files', create_folder_link($parentIdFolders))
+        Tab::item('Files', create_folder_link($parentIdFolders))
         .Tab::activeItem('New Folder')
     )
     .Page::errors(ifset($_SESSION['files/add-folder_errors']))

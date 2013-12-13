@@ -80,8 +80,7 @@ $page->base = '../';
 $page->title = 'Files';
 $page->finish(
     Tab::create(
-        Tab::item('Home', '../home.php')
-        .Tab::activeItem('Files')
+        Tab::activeItem('Files')
     )
     .Page::messages(ifset($_SESSION['files/index_messages']))
     .join(Page::HR, $items)

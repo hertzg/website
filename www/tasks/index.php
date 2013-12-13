@@ -96,8 +96,7 @@ $page->base = '../';
 $page->title = 'Tasks';
 $page->finish(
     Tab::create(
-        Tab::item('Home', '../home.php')
-        .Tab::activeItem('Tasks')
+        Tab::activeItem('Tasks')
     )
     .Page::messages(ifset($_SESSION['tasks/index_messages']))
     .$filterMessage

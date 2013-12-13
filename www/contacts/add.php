@@ -14,8 +14,7 @@ $page->base = '../';
 $page->title = 'New Contact';
 $page->finish(
     Tab::create(
-        Tab::item('Home', '../home.php')
-        .Tab::item('Contacts', 'index.php')
+        Tab::item('Contacts', 'index.php')
         .Tab::activeItem('New')
     )
     .Page::errors(ifset($_SESSION['contacts/add_errors']))

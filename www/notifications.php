@@ -67,8 +67,7 @@ $numChannels = Channels::count($idusers);
 $page->title = 'Notifications';
 $page->finish(
     Tab::create(
-        Tab::item('Home', 'home.php')
-        .Tab::activeItem('Notifications')
+        Tab::activeItem('Notifications')
     )
     .Page::messages(ifset($_SESSION['notifications_messages']))
     .$filterMessage

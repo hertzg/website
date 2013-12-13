@@ -32,8 +32,7 @@ $page->base = '../';
 $page->title = 'Channels';
 $page->finish(
     Tab::create(
-        Tab::item('Home', '../home.php')
-        .Tab::item('Notifications', '../notifications.php')
+        Tab::item('Notifications', '../notifications.php')
         .Tab::activeItem('Channels')
     )
     .Page::messages(ifset($_SESSION['channels/index_messages']))

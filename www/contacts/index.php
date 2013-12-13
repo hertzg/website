@@ -69,8 +69,7 @@ $page->base = '../';
 $page->title = 'Contacts';
 $page->finish(
     Tab::create(
-        Tab::item('Home', '../home.php')
-        .Tab::activeItem('Contacts')
+        Tab::activeItem('Contacts')
     )
     .Page::messages(ifset($_SESSION['contacts/index_messages']))
     .join(Page::HR, $items)

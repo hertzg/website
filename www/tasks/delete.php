@@ -8,8 +8,7 @@ $page->base = '../';
 $page->title = 'Delete Task: '.htmlspecialchars(mb_substr($task->tasktext, 0, 20, 'UTF-8'));
 $page->finish(
     Tab::create(
-        Tab::item('Home', '../home.php')
-        .Tab::item('Tasks', 'index.php')
+        Tab::item('Tasks', 'index.php')
         .Tab::activeItem('View')
     )
     .Page::text('Are you sure you want to delete the task?')
