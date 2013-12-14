@@ -3,7 +3,6 @@
 include_once 'lib/require-note.php';
 include_once '../fns/redirect.php';
 include_once '../fns/request_strings.php';
-include_once '../classes/Notes.php';
 
 list($notetext) = request_strings('notetext');
 
@@ -20,6 +19,7 @@ if ($errors) {
     redirect("edit.php?id=$id");
 }
 
+include_once '../classes/Notes.php';
 Notes::edit($idusers, $id, $notetext);
 
 $_SESSION['notes/view_messages'] = array('Changes have been saved.');

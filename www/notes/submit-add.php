@@ -3,7 +3,6 @@
 include_once 'lib/require-user.php';
 include_once '../fns/redirect.php';
 include_once '../fns/request_strings.php';
-include_once '../classes/Notes.php';
 
 list($notetext) = request_strings('notetext');
 
@@ -20,6 +19,7 @@ if ($errors) {
     redirect('add.php');
 }
 
+include_once '../classes/Notes.php';
 Notes::add($idusers, $notetext);
 
 $_SESSION['notes/index_messages'] = array('Note has been added.');

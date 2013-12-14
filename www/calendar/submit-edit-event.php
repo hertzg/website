@@ -21,6 +21,10 @@ if ($errors) {
 }
 
 unset($_SESSION['calendar/edit-event_errors']);
+
+include_once '../classes/Events.php';
 Events::edit($idusers, $idevents, $eventtext);
+
 $_SESSION['calendar/view-event_errors'] = array('Changes have been saved.');
+
 redirect("view-event.php?idevents=$idevents");

@@ -3,7 +3,6 @@
 include_once 'lib/require-bookmark.php';
 include_once '../fns/redirect.php';
 include_once '../fns/request_strings.php';
-include_once '../classes/Bookmarks.php';
 include_once '../classes/Tags.php';
 
 list($title, $url, $tags) = request_strings('title', 'url', 'tags');
@@ -32,6 +31,7 @@ unset(
     $_SESSION['bookmarks/edit_lastpost']
 );
 
+include_once '../classes/Bookmarks.php';
 Bookmarks::edit($idusers, $id, $title, $url, $tags);
 
 $_SESSION['bookmarks/view_messages'] = array('Changes have been saved.');

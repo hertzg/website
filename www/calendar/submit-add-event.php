@@ -4,7 +4,6 @@ include_once 'lib/require-user.php';
 include_once '../fns/redirect.php';
 include_once '../fns/request_strings.php';
 include_once '../fns/str_collapse_spaces.php';
-include_once '../classes/Events.php';
 
 list($year, $month, $day, $eventtext) = request_strings(
     'year', 'month', 'day', 'eventtext');
@@ -38,7 +37,9 @@ unset(
 
 $_SESSION['calendar/index_messages'] = array('Event has been added.');
 
+include_once '../classes/Events.php';
 Events::add($idusers, $eventtext, $eventtime);
+
 redirect('index.php?'.http_build_query(array(
     'year' => $year,
     'month' => $month,
