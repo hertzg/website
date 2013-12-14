@@ -30,6 +30,10 @@ $page->finish(
                 'value' => ifset($lastpost['title'], $bookmark->title),
             ))
             .Page::HR
+            .Form::textfield('tags', 'Tags', array(
+                'value' => ifset($lastpost['tags'], $bookmark->tags),
+            ))
+            .Page::HR
             .Form::button('Save Changes')
             .Form::hidden('id', $id)
         )

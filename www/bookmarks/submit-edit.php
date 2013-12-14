@@ -5,7 +5,7 @@ include_once '../fns/redirect.php';
 include_once '../fns/request_strings.php';
 include_once '../classes/Bookmarks.php';
 
-list($title, $url) = request_strings('title', 'url');
+list($title, $url, $tags) = request_strings('title', 'url', 'tags');
 
 $errors = array();
 
@@ -26,7 +26,7 @@ unset(
     $_SESSION['bookmarks/edit_lastpost']
 );
 
-Bookmarks::edit($idusers, $id, $title, $url);
+Bookmarks::edit($idusers, $id, $title, $url, $tags);
 
 $_SESSION['bookmarks/view_messages'] = array('Changes have been saved.');
 redirect("view.php?id=$id");

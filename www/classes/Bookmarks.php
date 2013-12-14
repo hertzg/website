@@ -7,16 +7,16 @@ include_once __DIR__.'/../lib/mysqli.php';
 
 class Bookmarks {
 
-    static function add ($idusers, $title, $url) {
+    static function add ($idusers, $title, $url, $tags) {
         global $mysqli;
         mysqli_query(
             $mysqli,
             mysqli_sprintf(
             $mysqli,
                 'insert into bookmarks'
-                .' (idusers, title, url, inserttime, updatetime)'
-                ." values (#u, '#s', '#s', #u, #u)",
-                array($idusers, $title, $url, time(), time())
+                .' (idusers, title, url, tags, inserttime, updatetime)'
+                ." values (#u, '#s', '#s', '#s', #u, #u)",
+                array($idusers, $title, $url, $tags, time(), time())
             )
         );
     }
@@ -44,7 +44,7 @@ class Bookmarks {
         mysqli_query($mysqli, "delete from bookmarks where idusers = $idusers");
     }
 
-    static function edit ($idusers, $id, $title, $url) {
+    static function edit ($idusers, $id, $title, $url, $tags) {
         global $mysqli;
         mysqli_query(
             $mysqli,
@@ -53,9 +53,10 @@ class Bookmarks {
                 'update bookmarks set'
                 ." title = '#s',"
                 ." url = '#s',"
+                ." tags = '#s',"
                 .' updatetime = #u'
                 .' where idusers = #u and idbookmarks = #u',
-                array($title, $url, time(), $idusers, $id)
+                array($title, $url, $tags, time(), $idusers, $id)
             )
         );
     }

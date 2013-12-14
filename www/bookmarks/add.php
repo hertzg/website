@@ -29,6 +29,10 @@ $page->finish(
                 'value' => ifset($lastpost['title']),
             ))
             .Page::HR
+            .Form::textfield('tags', 'Tags', array(
+                'value' => ifset($lastpost['tags']),
+            ))
+            .Page::HR
             .Form::button('Save')
         )
     )
