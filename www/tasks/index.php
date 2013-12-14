@@ -18,7 +18,6 @@ include_once '../fns/request_strings.php';
 include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
 include_once '../classes/Tasks.php';
-include_once '../classes/TaskTags.php';
 
 list($tag, $keyword) = request_strings('tag', 'keyword');
 
@@ -32,6 +31,7 @@ if ($keyword === '') {
             $items[] = createSearchForm(create_search_form_empty_content());
         }
         if (count($tasks) > 1) {
+            include_once '../classes/TaskTags.php';
             $taskTags = TaskTags::indexOnUser($idusers);
             if ($taskTags) {
                 $links = array();
@@ -81,6 +81,7 @@ if ($keyword === '') {
             .'</a>'
         );
         if (count($tasks) > 1) {
+            include_once '../classes/TaskTags.php';
             $taskTags = TaskTags::indexOnUser($idusers);
             if ($taskTags) {
                 $links = array();

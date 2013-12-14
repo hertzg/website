@@ -25,7 +25,7 @@ $inserttime = $task->inserttime;
 $updatetime = $task->updatetime;
 $tasktext = $task->tasktext;
 
-$taskTags = TaskTags::index($id);
+$taskTags = TaskTags::indexOnTask($id);
 $tags = array();
 foreach ($taskTags as $taskTag) {
     $escapedTag = htmlspecialchars($taskTag->tagname);

@@ -36,7 +36,7 @@ Files::deleteUser($idusers);
 Folders::deleteUser($idusers);
 Notes::deleteUser($idusers);
 Notifications::deleteUser($idusers);
-TaskTags::deleteUser($idusers);
+TaskTags::deleteOnUser($idusers);
 Tasks::deleteUser($idusers);
 Users::delete($idusers);
 
