@@ -63,7 +63,7 @@ if ($keyword === '') {
             );
         }
         $filterMessage = Page::warnings(array(
-            'Showing tasks with <b class="tag">'.htmlspecialchars($tag).'</b> tag.'
+            'Showing tasks with <b>'.htmlspecialchars($tag).'</b> tag.'
             .' <a class="a" href="./">Show all</a>',
         ));
     }

@@ -394,7 +394,12 @@ img {
     padding: 13px;
     border: 2px solid #bbb;
     border-radius: 2px;
-    text-decoration: underline;
     background: #fff;
-    font-weight: normal;
+    font-weight: bold;
+    background: #fff;
+    box-shadow: 0 -16px 16px #eee inset;
+}
+.tag:active {
+    background: #ddd;
+    box-shadow: none;
 }

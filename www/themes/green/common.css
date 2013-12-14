@@ -28,3 +28,7 @@
     background-image: linear-gradient(#2a1, #281);
     border-bottom-color: #261;
 }
+
+.tag:focus {
+    border-color: #2a1;
+}

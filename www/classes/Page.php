@@ -30,9 +30,9 @@ class Page {
                     ."<link rel=\"icon\" type=\"image/png\" href=\"{$base}images/favicon.png\" />"
                     .'<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />'
                     .'<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />'
-                    ."<link rel=\"stylesheet\" type=\"text/css\" href=\"{$base}common.css?22\" />"
+                    ."<link rel=\"stylesheet\" type=\"text/css\" href=\"{$base}common.css?23\" />"
                     ."<link rel=\"stylesheet\" type=\"text/css\" href=\"{$base}icons.css?3\" />"
-                    ."<link rel=\"stylesheet\" type=\"text/css\" href=\"{$base}themes/$theme/common.css?6\" />"
+                    ."<link rel=\"stylesheet\" type=\"text/css\" href=\"{$base}themes/$theme/common.css?7\" />"
                     .$this->head
                 .'</head>'
                 ."<body>$body</body>"
@@ -59,7 +59,7 @@ class Page {
         $this->echoHtml(
             '<div id="tbar">'
                 .'<div style="position: relative">'
-                    ."<a class=\"topLink\" href=\"$base\">"
+                    .'<a class="topLink" href="'.($base ? $base : './').'">'
                         ."<img src=\"{$base}images/zvini.png\" alt=\"Zvini\" width=\"51\" height=\"24\" />"
                     .'</a>'
                     .($this->hideSignOutLink ? '' : 

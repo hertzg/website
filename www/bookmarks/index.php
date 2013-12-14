@@ -41,7 +41,7 @@ if ($tag === '') {
 } else {
     $bookmarks = Bookmarks::indexOnTag($idusers, $tag);
     $filterMessage = Page::warnings(array(
-        'Showing bookmarks with <b class="tag">'.htmlspecialchars($tag).'</b> tag.'
+        'Showing bookmarks with <b>'.htmlspecialchars($tag).'</b> tag.'
         .' <a class="a" href="./">Show all</a>',
     ));
 }
