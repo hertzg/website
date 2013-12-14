@@ -30,7 +30,7 @@ $tags = array();
 foreach ($taskTags as $taskTag) {
     $escapedTag = htmlspecialchars($taskTag->tagname);
     $tags[] =
-        "<a class=\"a\" href=\"index.php?tag=$escapedTag\">"
+        "<a class=\"tag\" href=\"index.php?tag=$escapedTag\">"
             .$escapedTag
         .'</a>';
 }
