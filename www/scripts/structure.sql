@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 173.201.214.106
--- Generation Time: Dec 12, 2013 at 01:48 AM
+-- Generation Time: Dec 14, 2013 at 11:57 AM
 -- Server version: 5.0.96
 -- PHP Version: 5.1.6
 
@@ -19,12 +19,12 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Table structure for table `bookmarks`
 --
 
-DROP TABLE IF EXISTS `bookmarks`;
 CREATE TABLE `bookmarks` (
   `idbookmarks` bigint(20) unsigned NOT NULL auto_increment,
   `idusers` bigint(20) unsigned NOT NULL,
   `title` varchar(128) character set utf8 collate utf8_unicode_ci NOT NULL,
   `url` varchar(2048) character set utf8 collate utf8_unicode_ci NOT NULL,
+  `tags` varchar(256) character set utf8 collate utf8_unicode_ci NOT NULL,
   `inserttime` bigint(20) unsigned NOT NULL,
   `updatetime` bigint(20) unsigned NOT NULL,
   PRIMARY KEY  (`idbookmarks`),
@@ -34,10 +34,24 @@ CREATE TABLE `bookmarks` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `bookmarktags`
+--
+
+CREATE TABLE `bookmarktags` (
+  `idbookmarktags` bigint(20) unsigned NOT NULL auto_increment,
+  `idbookmarks` bigint(20) unsigned NOT NULL,
+  `idusers` bigint(20) unsigned NOT NULL,
+  `tagname` varchar(32) character set utf8 collate utf8_unicode_ci NOT NULL,
+  PRIMARY KEY  (`idbookmarktags`),
+  KEY `idbookmarks` (`idbookmarks`,`idusers`,`tagname`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `channels`
 --
 
-DROP TABLE IF EXISTS `channels`;
 CREATE TABLE `channels` (
   `idchannels` bigint(20) unsigned NOT NULL auto_increment,
   `idusers` bigint(20) unsigned NOT NULL,
@@ -54,7 +68,6 @@ CREATE TABLE `channels` (
 -- Table structure for table `contacts`
 --
 
-DROP TABLE IF EXISTS `contacts`;
 CREATE TABLE `contacts` (
   `idcontacts` bigint(20) unsigned NOT NULL auto_increment,
   `idusers` bigint(20) unsigned NOT NULL,
@@ -73,7 +86,6 @@ CREATE TABLE `contacts` (
 -- Table structure for table `events`
 --
 
-DROP TABLE IF EXISTS `events`;
 CREATE TABLE `events` (
   `idevents` bigint(20) unsigned NOT NULL auto_increment,
   `idusers` bigint(20) unsigned NOT NULL,
@@ -83,7 +95,7 @@ CREATE TABLE `events` (
   `edittime` bigint(20) unsigned default NULL,
   PRIMARY KEY  (`idevents`),
   KEY `idusers` (`idusers`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
 
 -- --------------------------------------------------------
 
@@ -91,7 +103,6 @@ CREATE TABLE `events` (
 -- Table structure for table `feedbacks`
 --
 
-DROP TABLE IF EXISTS `feedbacks`;
 CREATE TABLE `feedbacks` (
   `idfeedbacks` bigint(20) unsigned NOT NULL auto_increment,
   `idusers` bigint(20) unsigned NOT NULL,
@@ -106,7 +117,6 @@ CREATE TABLE `feedbacks` (
 -- Table structure for table `files`
 --
 
-DROP TABLE IF EXISTS `files`;
 CREATE TABLE `files` (
   `idfiles` bigint(20) unsigned NOT NULL auto_increment,
   `idfolders` bigint(20) unsigned NOT NULL,
@@ -127,7 +137,6 @@ CREATE TABLE `files` (
 -- Table structure for table `folders`
 --
 
-DROP TABLE IF EXISTS `folders`;
 CREATE TABLE `folders` (
   `idfolders` bigint(20) unsigned NOT NULL auto_increment,
   `parentidfolders` bigint(20) unsigned NOT NULL,
@@ -146,7 +155,6 @@ CREATE TABLE `folders` (
 -- Table structure for table `notes`
 --
 
-DROP TABLE IF EXISTS `notes`;
 CREATE TABLE `notes` (
   `idnotes` bigint(20) unsigned NOT NULL auto_increment,
   `idusers` bigint(20) unsigned NOT NULL,
@@ -163,7 +171,6 @@ CREATE TABLE `notes` (
 -- Table structure for table `notifications`
 --
 
-DROP TABLE IF EXISTS `notifications`;
 CREATE TABLE `notifications` (
   `idnotifications` bigint(20) unsigned NOT NULL auto_increment,
   `idusers` bigint(20) unsigned NOT NULL,
@@ -181,7 +188,6 @@ CREATE TABLE `notifications` (
 -- Table structure for table `tasks`
 --
 
-DROP TABLE IF EXISTS `tasks`;
 CREATE TABLE `tasks` (
   `idtasks` bigint(20) unsigned NOT NULL auto_increment,
   `idusers` bigint(20) unsigned NOT NULL,
@@ -192,7 +198,7 @@ CREATE TABLE `tasks` (
   `done` tinyint(3) unsigned NOT NULL default '0',
   PRIMARY KEY  (`idtasks`),
   KEY `idusers` (`idusers`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=112 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=113 ;
 
 -- --------------------------------------------------------
 
@@ -200,7 +206,6 @@ CREATE TABLE `tasks` (
 -- Table structure for table `tasktags`
 --
 
-DROP TABLE IF EXISTS `tasktags`;
 CREATE TABLE `tasktags` (
   `idtasktags` bigint(20) unsigned NOT NULL auto_increment,
   `idtasks` bigint(20) unsigned NOT NULL,
@@ -208,7 +213,7 @@ CREATE TABLE `tasktags` (
   `tagname` varchar(32) character set utf8 collate utf8_unicode_ci NOT NULL,
   PRIMARY KEY  (`idtasktags`),
   KEY `idtasks` (`idtasks`,`idusers`,`tagname`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=109 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=111 ;
 
 -- --------------------------------------------------------
 
@@ -216,7 +221,6 @@ CREATE TABLE `tasktags` (
 -- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `idusers` bigint(20) unsigned NOT NULL auto_increment,
   `username` varchar(32) character set ascii collate ascii_bin NOT NULL,
