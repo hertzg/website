@@ -22,18 +22,18 @@ $page->finish(
     Tab::create(
         Tab::item('Sign In', 'signin.php')
         .Tab::item('Sign Up', 'signup.php')
-        .Tab::activeItem('Reset Password')
-    )
-    .Page::errors(ifset($_SESSION['email-reset-password_errors']))
-    .Form::create(
-        'submit-email-reset-password.php',
-        Form::textfield('email', 'Email', array(
-            'value' => ifset($lastpost['email']),
-            'autofocus' => true,
-            'required' => true,
-        ))
-        .Page::HR
-        .Form::captcha()
-        .Form::button('Send Recovery Email')
+        .Tab::activeItem('Reset Password'),
+        Page::errors(ifset($_SESSION['email-reset-password_errors']))
+        .Form::create(
+            'submit-email-reset-password.php',
+            Form::textfield('email', 'Email', array(
+                'value' => ifset($lastpost['email']),
+                'autofocus' => true,
+                'required' => true,
+            ))
+            .Page::HR
+            .Form::captcha()
+            .Form::button('Send Recovery Email')
+        )
     )
 );

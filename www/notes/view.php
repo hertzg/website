@@ -26,18 +26,18 @@ $page->title = htmlspecialchars(mb_substr($notetext, 0, 20, 'UTF-8'));
 $page->finish(
     Tab::create(
         Tab::item('Notes', 'index.php')
-        .Tab::activeItem('View')
-    )
-    .Page::messages(ifset($_SESSION['notes/view_messages']))
-    .Page::text(
-        nl2br(
-            render_external_links(htmlspecialchars($notetext), $base)
+        .Tab::activeItem('View'),
+        Page::messages(ifset($_SESSION['notes/view_messages']))
+        .Page::text(
+            nl2br(
+                render_external_links(htmlspecialchars($notetext), $base)
+            )
         )
-    )
-    .Page::HR
-    .Page::text(
-        '<div>Note created '.date_ago($inserttime).'.</div>'
-        .($modified ? '<div>Last modified '.date_ago($updatetime).'.</div>' : '')
+        .Page::HR
+        .Page::text(
+            '<div>Note created '.date_ago($inserttime).'.</div>'
+            .($modified ? '<div>Last modified '.date_ago($updatetime).'.</div>' : '')
+        )
     )
     .create_panel(
         'Options',

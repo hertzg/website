@@ -22,22 +22,22 @@ $page->base = '../';
 $page->finish(
     Tab::create(
         Tab::item('Calendar', 'index.php')
-        .Tab::activeItem('New Event')
-    )
-    .Page::errors(ifset($_SESSION['calendar/add-event_errors']))
-    .Form::create(
-        'submit-add-event.php',
-        Form::label('When', date('F d, Y', $time))
-        .Page::HR
-        .Form::textfield('eventtext', 'Text', array(
-            'value' => ifset($lastpost['eventtext']),
-            'autofocus' => true,
-            'required' => true,
-        ))
-        .Page::HR
-        .Form::button('Add Event')
-        .Form::hidden('year', $year)
-        .Form::hidden('month', $month)
-        .Form::hidden('day', $day)
+        .Tab::activeItem('New Event'),
+        Page::errors(ifset($_SESSION['calendar/add-event_errors']))
+        .Form::create(
+            'submit-add-event.php',
+            Form::label('When', date('F d, Y', $time))
+            .Page::HR
+            .Form::textfield('eventtext', 'Text', array(
+                'value' => ifset($lastpost['eventtext']),
+                'autofocus' => true,
+                'required' => true,
+            ))
+            .Page::HR
+            .Form::button('Add Event')
+            .Form::hidden('year', $year)
+            .Form::hidden('month', $month)
+            .Form::hidden('day', $day)
+        )
     )
 );

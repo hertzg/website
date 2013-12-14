@@ -13,18 +13,18 @@ $page->title = 'Rename Folder: '.htmlspecialchars($folder->foldername);
 $page->finish(
     Tab::create(
         Tab::item('Files', create_folder_link($idfolders))
-        .Tab::activeItem('Rename Folder')
-    )
-    .Page::errors(ifset($_SESSION['files/rename-folder_errors']))
-    .Form::create(
-        'submit-rename-folder.php',
-        Form::textfield('foldername', 'Folder name', array(
-            'value' => $folder->foldername,
-            'autofocus' => true,
-            'required' => true,
-        ))
-        .Page::HR
-        .Form::button('Rename')
-        .Form::hidden('idfolders', $idfolders)
+        .Tab::activeItem('Rename Folder'),
+        Page::errors(ifset($_SESSION['files/rename-folder_errors']))
+        .Form::create(
+            'submit-rename-folder.php',
+            Form::textfield('foldername', 'Folder name', array(
+                'value' => $folder->foldername,
+                'autofocus' => true,
+                'required' => true,
+            ))
+            .Page::HR
+            .Form::button('Rename')
+            .Form::hidden('idfolders', $idfolders)
+        )
     )
 );

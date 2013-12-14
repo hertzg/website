@@ -32,26 +32,26 @@ $page->finish(
     Tab::create(
         Tab::item('Sign In', 'signin.php')
         .Tab::item('Sign Up', 'signup.php')
-        .Tab::activeItem('Reset Password')
-    )
-    .Page::errors(ifset($_SESSION['reset-password_errors']))
-    .Form::create(
-        'submit-reset-password.php',
-        Form::label('Username', $user->username)
-        .Page::HR
-        .Form::password('password1', 'New password', array(
-            'value' => ifset($lastpost['password1']),
-            'autofocus' => true,
-            'required' => true,
-        ))
-        .Page::HR
-        .Form::password('password2', 'Repeat new password', array(
-            'value' => ifset($lastpost['password2']),
-            'required' => true,
-        ))
-        .Page::HR
-        .Form::button('Reset Password')
-        .Form::hidden('idusers', $idusers)
-        .Form::hidden('resetpasswordkey', $resetpasswordkey)
+        .Tab::activeItem('Reset Password'),
+        Page::errors(ifset($_SESSION['reset-password_errors']))
+        .Form::create(
+            'submit-reset-password.php',
+            Form::label('Username', $user->username)
+            .Page::HR
+            .Form::password('password1', 'New password', array(
+                'value' => ifset($lastpost['password1']),
+                'autofocus' => true,
+                'required' => true,
+            ))
+            .Page::HR
+            .Form::password('password2', 'Repeat new password', array(
+                'value' => ifset($lastpost['password2']),
+                'required' => true,
+            ))
+            .Page::HR
+            .Form::button('Reset Password')
+            .Form::hidden('idusers', $idusers)
+            .Form::hidden('resetpasswordkey', $resetpasswordkey)
+        )
     )
 );

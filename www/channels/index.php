@@ -33,10 +33,10 @@ $page->title = 'Channels';
 $page->finish(
     Tab::create(
         Tab::item('Notifications', '../notifications.php')
-        .Tab::activeItem('Channels')
+        .Tab::activeItem('Channels'),
+        Page::messages(ifset($_SESSION['channels/index_messages']))
+        .$channels
     )
-    .Page::messages(ifset($_SESSION['channels/index_messages']))
-    .$channels
     .create_panel(
         'Options',
         Page::imageLink('New Channel', 'add.php', 'create-channel')

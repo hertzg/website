@@ -67,14 +67,14 @@ $numChannels = Channels::count($idusers);
 $page->title = 'Notifications';
 $page->finish(
     Tab::create(
-        Tab::activeItem('Notifications')
-    )
-    .Page::messages(ifset($_SESSION['notifications_messages']))
-    .$filterMessage
-    .$notificationsHtml
-    .create_panel(
-        'Options',
-        ($numChannels ? Page::imageLinkWithDescription('Channels', "$numChannels total.", 'channels/index.php', 'channels') : Page::imageLink('Channels', 'channels/index.php', 'channels'))
-        .$deleteAllLink
+        Tab::activeItem('Notifications'),
+        Page::messages(ifset($_SESSION['notifications_messages']))
+        .$filterMessage
+        .$notificationsHtml
+        .create_panel(
+            'Options',
+            ($numChannels ? Page::imageLinkWithDescription('Channels', "$numChannels total.", 'channels/index.php', 'channels') : Page::imageLink('Channels', 'channels/index.php', 'channels'))
+            .$deleteAllLink
+        )
     )
 );

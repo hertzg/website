@@ -1,0 +1,8 @@
+.calendar-days > :focus {
+    border-color: #f80;
+    background-color: #fff7f0;
+}
+.calendar-days > :active,
+.calendar-days > .calendar-today {
+    background-color: #f80;
+}

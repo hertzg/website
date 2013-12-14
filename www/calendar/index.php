@@ -109,13 +109,15 @@ if ($events) {
 
 $page->base = '../';
 $page->title = 'Calendar';
-$page->head = '<link rel="stylesheet" type="text/css" href="index.css" />';
+$page->head =
+    '<link rel="stylesheet" type="text/css" href="index.css" />'
+    ."<link rel=\"stylesheet\" type=\"text/css\" href=\"themes/$page->theme/index.css\" />";
 $page->finish(
     Tab::create(
-        Tab::activeItem('Calendar')
+        Tab::activeItem('Calendar'),
+        Page::messages(ifset($_SESSION['calendar/index_messages']))
+        .create_calendar($timeSelected)
     )
-    .Page::messages(ifset($_SESSION['calendar/index_messages']))
-    .create_calendar($timeSelected)
     .create_panel(
         'Events',
         join(Page::HR, $eventItems)

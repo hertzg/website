@@ -106,23 +106,23 @@ if ($numEventsToday) {
 $page->title = 'Home';
 $page->finish(
     Tab::create(
-        Tab::activeItem('Home')
+        Tab::activeItem('Home'),
+        Page::messages(ifset($_SESSION['home_messages']))
+        .$notifications
+        .$bookmarksLink
+        .Page::HR
+        .$calendarLink
+        .Page::HR
+        .($numContacts ? Page::imageLinkWithDescription('Contacts', "$numContacts total.", 'contacts/index.php', 'contacts') : Page::imageLink('Contacts', 'contacts/index.php', 'contacts'))
+        .Page::HR
+        .($user->storageused ? Page::imageLinkWithDescription('Files', bytestr($user->storageused).' used.', 'files/index.php', 'files') : Page::imageLink('Files', 'files/index.php', 'files'))
+        .Page::HR
+        .$notesLink
+        .Page::HR
+        .$notificationsLink
+        .Page::HR
+        .$tasksLink
     )
-    .Page::messages(ifset($_SESSION['home_messages']))
-    .$notifications
-    .$bookmarksLink
-    .Page::HR
-    .$calendarLink
-    .Page::HR
-    .($numContacts ? Page::imageLinkWithDescription('Contacts', "$numContacts total.", 'contacts/index.php', 'contacts') : Page::imageLink('Contacts', 'contacts/index.php', 'contacts'))
-    .Page::HR
-    .($user->storageused ? Page::imageLinkWithDescription('Files', bytestr($user->storageused).' used.', 'files/index.php', 'files') : Page::imageLink('Files', 'files/index.php', 'files'))
-    .Page::HR
-    .$notesLink
-    .Page::HR
-    .$notificationsLink
-    .Page::HR
-    .$tasksLink
     .create_panel(
         'Options',
         Page::imageLink('Account', 'account.php', 'account')

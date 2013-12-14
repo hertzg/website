@@ -33,10 +33,10 @@ $page->base = '../';
 $page->title = 'Bookmarks';
 $page->finish(
     Tab::create(
-        Tab::activeItem('Bookmarks')
+        Tab::activeItem('Bookmarks'),
+        Page::messages(ifset($_SESSION['bookmarks/index_messages']))
+        .$bookmarks
     )
-    .Page::messages(ifset($_SESSION['bookmarks/index_messages']))
-    .$bookmarks
     .create_panel(
         'Options',
         Page::imageLink('New Bookmark', 'add.php', 'create-bookmark')

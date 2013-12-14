@@ -9,11 +9,11 @@ $page->title = 'Delete Event: '.htmlspecialchars(mb_substr($event->eventtext, 0,
 $page->finish(
     Tab::create(
         Tab::item('Calendar', 'index.php')
-        .Tab::activeItem('Event')
+        .Tab::activeItem('Event'),
+        Page::text('Are you sure you want to delete the event?')
+        .Page::HR
+        .Page::imageLink('Yes, delete event', "submit-delete-event.php?idevents=$idevents", 'yes')
+        .Page::HR
+        .Page::imageLink('No, return back', "view-event.php?idevents=$idevents", 'no')
     )
-    .Page::text('Are you sure you want to delete the event?')
-    .Page::HR
-    .Page::imageLink('Yes, delete event', "submit-delete-event.php?idevents=$idevents", 'yes')
-    .Page::HR
-    .Page::imageLink('No, return back', "view-event.php?idevents=$idevents", 'no')
 );

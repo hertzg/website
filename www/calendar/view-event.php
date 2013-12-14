@@ -13,12 +13,12 @@ $page->base = '../';
 $page->finish(
     Tab::create(
         Tab::item('Calendar', 'index.php')
-        .Tab::activeItem('Event')
+        .Tab::activeItem('Event'),
+        Page::messages(ifset($_SESSION['calendar/view-event_errors']))
+        .Page::text(htmlspecialchars($event->eventtext))
+        .Page::HR
+        .Page::text(date('F d, Y', $event->eventtime))
     )
-    .Page::messages(ifset($_SESSION['calendar/view-event_errors']))
-    .Page::text(htmlspecialchars($event->eventtext))
-    .Page::HR
-    .Page::text(date('F d, Y', $event->eventtime))
     .create_panel(
         'Options',
         Page::imageLink('Edit Event', "edit-event.php?idevents=$idevents", 'edit-event')

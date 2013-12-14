@@ -58,12 +58,12 @@ $page->finish(
     Tab::create(
         Tab::item('Files', create_folder_link($file->idfolders))
         .Tab::item('View', "view.php?id=$file->idfiles")
-        .Tab::activeItem('Move')
+        .Tab::activeItem('Move'),
+        Page::errors(ifset($_SESSION['files/move-file_errors']))
+        .Page::warnings(array(
+            'Moving the file "<b>'.htmlspecialchars($file->filename).'</b>".',
+            'Select a folder to move the file into.',
+        ))
+        .join(Page::HR, $items)
     )
-    .Page::errors(ifset($_SESSION['files/move-file_errors']))
-    .Page::warnings(array(
-        'Moving the file "<b>'.htmlspecialchars($file->filename).'</b>".',
-        'Select a folder to move the file into.',
-    ))
-    .join(Page::HR, $items)
 );

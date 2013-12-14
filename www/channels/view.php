@@ -19,12 +19,12 @@ $page->finish(
     Tab::create(
         Tab::item('Notifications', '../notifications.php')
         .Tab::item('Channels', 'index.php')
-        .Tab::activeItem('View')
+        .Tab::activeItem('View'),
+        Page::messages(ifset($_SESSION['channels/view_messages']))
+        .Form::label('Channel name', htmlspecialchars($channel->channelname))
+        .Page::HR
+        .Form::label('Channel key', bin2hex($channel->channelkey))
     )
-    .Page::messages(ifset($_SESSION['channels/view_messages']))
-    .Form::label('Channel name', htmlspecialchars($channel->channelname))
-    .Page::HR
-    .Form::label('Channel key', bin2hex($channel->channelkey))
     .create_panel(
         'Options',
         Page::imageLink('Randomize Channel Key', "randomize-key.php?id=$id", 'randomize')

@@ -62,10 +62,10 @@ $page->base = '../';
 $page->title = 'Notes';
 $page->finish(
     Tab::create(
-        Tab::activeItem('Notes')
+        Tab::activeItem('Notes'),
+        Page::messages(ifset($_SESSION['notes/index_messages']))
+        .join(Page::HR, $items)
     )
-    .Page::messages(ifset($_SESSION['notes/index_messages']))
-    .join(Page::HR, $items)
     .create_panel(
         'Options',
         Page::imageLink('New Note', 'add.php', 'create-note')

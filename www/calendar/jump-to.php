@@ -43,14 +43,14 @@ $page->head = '<link rel="stylesheet" type="text/css" href="index.css" />';
 $page->finish(
     Tab::create(
         Tab::item('Calendar', "index.php?year=$year&month=$month")
-        .Tab::activeItem('Jump To')
-    )
-    .Form::create(
-        'submit-jump-to.php',
-        Form::select('month', 'Month:', $monthOptions, $month)
-        .Page::HR
-        .Form::select('year', 'Year:', $yearOptions, $year)
-        .Page::HR
-        .Form::button('Jump To')
+        .Tab::activeItem('Jump To'),
+        Form::create(
+            'submit-jump-to.php',
+            Form::select('month', 'Month:', $monthOptions, $month)
+            .Page::HR
+            .Form::select('year', 'Year:', $yearOptions, $year)
+            .Page::HR
+            .Form::button('Jump To')
+        )
     )
 );

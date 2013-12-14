@@ -15,17 +15,17 @@ $page->title = 'New Note';
 $page->finish(
     Tab::create(
         Tab::item('Notes', 'index.php')
-        .Tab::activeItem('New')
-    )
-    .Page::errors(ifset($_SESSION['notes/add_errors']))
-    .Form::create(
-        'submit-add.php',
-        Form::textarea('notetext', 'Text', array(
-            'value' => ifset($lastpost['notetext']),
-            'autofocus' => true,
-            'required' => true,
-        ))
-        .Page::HR
-        .Form::button('Save')
+        .Tab::activeItem('New'),
+        Page::errors(ifset($_SESSION['notes/add_errors']))
+        .Form::create(
+            'submit-add.php',
+            Form::textarea('notetext', 'Text', array(
+                'value' => ifset($lastpost['notetext']),
+                'autofocus' => true,
+                'required' => true,
+            ))
+            .Page::HR
+            .Form::button('Save')
+        )
     )
 );

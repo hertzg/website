@@ -1,3 +1,11 @@
+.clickable:focus,
+.form-select:focus,
+.form-textfield:focus,
+.form-textarea:focus {
+    border-color: #39e;
+    background-color: #f5f8ff;
+}
+
 .a {
     color: #37c;
 }
@@ -9,11 +17,7 @@
     background-color: #37c;
     border-bottom-color: #36a;
 }
-.clickable:active, .clickable:focus {
-    background-color: #39e;
-}
-
-.calendar-today {
+.clickable:active {
     background-color: #39e;
 }
 
@@ -21,11 +25,4 @@
     background-color: #39e;
     background-image: linear-gradient(#39e, #37c);
     border-bottom-color: #36a;
-}
-
-.form-select:focus,
-.form-textfield:focus,
-.form-textarea:focus {
-    border-color: #39e;
-    background-color: #f5f8ff;
 }

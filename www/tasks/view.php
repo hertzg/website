@@ -45,19 +45,19 @@ $page->title = htmlspecialchars(mb_substr($tasktext, 0, 20, 'UTF-8'));
 $page->finish(
     Tab::create(
         Tab::item('Tasks', 'index.php')
-        .Tab::activeItem('View')
-    )
-    .Page::messages(ifset($_SESSION['tasks/view_messages']))
-    .Page::text(
-        nl2br(
-            render_external_links(htmlspecialchars($tasktext), $base)
+        .Tab::activeItem('View'),
+        Page::messages(ifset($_SESSION['tasks/view_messages']))
+        .Page::text(
+            nl2br(
+                render_external_links(htmlspecialchars($tasktext), $base)
+            )
         )
-    )
-    .Page::HR
-    .($tags ? Page::text("Tags: $tags").Page::HR : '')
-    .Page::text(
-        '<div>Task created '.date_ago($inserttime).'.</div>'
-        .($modified ? '<div>Last modified '.date_ago($updatetime).'.</div>' : '')
+        .Page::HR
+        .($tags ? Page::text("Tags: $tags").Page::HR : '')
+        .Page::text(
+            '<div>Task created '.date_ago($inserttime).'.</div>'
+            .($modified ? '<div>Last modified '.date_ago($updatetime).'.</div>' : '')
+        )
     )
     .create_panel(
         'Options',

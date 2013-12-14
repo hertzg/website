@@ -15,21 +15,21 @@ $page->title = 'New Task';
 $page->finish(
     Tab::create(
         Tab::item('Tasks', 'index.php')
-        .Tab::activeItem('New')
-    )
-    .Page::errors(ifset($_SESSION['tasks/add_errors']))
-    .Form::create(
-        'submit-add.php',
-        Form::textarea('tasktext', 'Text', array(
-            'value' => ifset($lastpost['tasktext']),
-            'autofocus' => true,
-            'required' => true,
-        ))
-        .Page::HR
-        .Form::textfield('tags', 'Tags', array(
-            'value' => ifset($lastpost['tags']),
-        ))
-        .Page::HR
-        .Form::button('Save')
+        .Tab::activeItem('New'),
+        Page::errors(ifset($_SESSION['tasks/add_errors']))
+        .Form::create(
+            'submit-add.php',
+            Form::textarea('tasktext', 'Text', array(
+                'value' => ifset($lastpost['tasktext']),
+                'autofocus' => true,
+                'required' => true,
+            ))
+            .Page::HR
+            .Form::textfield('tags', 'Tags', array(
+                'value' => ifset($lastpost['tags']),
+            ))
+            .Page::HR
+            .Form::button('Save')
+        )
     )
 );

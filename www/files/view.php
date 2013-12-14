@@ -20,14 +20,14 @@ $page->title = htmlspecialchars($file->filename);
 $page->finish(
     Tab::create(
         Tab::item('Files', create_folder_link($file->idfolders))
-        .Tab::activeItem('View')
+        .Tab::activeItem('View'),
+        Page::messages(ifset($_SESSION['files/view_messages']))
+        .Form::label('File name', $file->filename)
+        .Page::HR
+        .Form::label('Size', bytestr($file->filesize))
+        .Page::HR
+        .Form::label('Uploaded', date_ago($file->inserttime))
     )
-    .Page::messages(ifset($_SESSION['files/view_messages']))
-    .Form::label('File name', $file->filename)
-    .Page::HR
-    .Form::label('Size', bytestr($file->filesize))
-    .Page::HR
-    .Form::label('Uploaded', date_ago($file->inserttime))
     .create_panel(
         'Options',
         Page::imageLink('Download File', "download-file.php?id=$id", 'download')

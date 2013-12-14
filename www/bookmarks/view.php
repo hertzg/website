@@ -24,15 +24,15 @@ $page->title = htmlspecialchars(mb_substr($title ? $title : $url, 0, 20, 'UTF-8'
 $page->finish(
     Tab::create(
         Tab::item('Bookmarks', 'index.php')
-        .Tab::activeItem('View')
-    )
-    .Page::messages(ifset($_SESSION['bookmarks/view_messages']))
-    .($title ? Page::text(htmlspecialchars($title)).Page::HR : '')
-    .Page::text('<a class="a" href="'.htmlspecialchars(create_external_url($url, $base)).'">'.htmlspecialchars($url).'</a>')
-    .Page::HR
-    .Page::text(
-        '<div>Bookmark created '.date_ago($bookmark->inserttime).'.</div>'
-        .($bookmark->inserttime != $bookmark->updatetime ? '<div>Last modified '.date_ago($bookmark->updatetime).'.</div>' : '')
+        .Tab::activeItem('View'),
+        Page::messages(ifset($_SESSION['bookmarks/view_messages']))
+        .($title ? Page::text(htmlspecialchars($title)).Page::HR : '')
+        .Page::text('<a class="a" href="'.htmlspecialchars(create_external_url($url, $base)).'">'.htmlspecialchars($url).'</a>')
+        .Page::HR
+        .Page::text(
+            '<div>Bookmark created '.date_ago($bookmark->inserttime).'.</div>'
+            .($bookmark->inserttime != $bookmark->updatetime ? '<div>Last modified '.date_ago($bookmark->updatetime).'.</div>' : '')
+        )
     )
     .create_panel(
         'Options',

@@ -13,20 +13,20 @@ $page->title = 'Close Account';
 $page->finish(
     Tab::create(
         Tab::item('Account', 'account.php')
-        .Tab::activeItem('Close')
-    )
-    .Page::errors(ifset($_SESSION['close-account_errors']))
-    .Page::warnings(array(
-        'Are you sure you want to close your account?',
-        ' You will lose all your data.',
-    ))
-    .Form::create(
-        'submit-close-account.php',
-        Form::password('password', 'Password', array(
-            'autofocus' => true,
-            'required' => true,
+        .Tab::activeItem('Close'),
+        Page::errors(ifset($_SESSION['close-account_errors']))
+        .Page::warnings(array(
+            'Are you sure you want to close your account?',
+            ' You will lose all your data.',
         ))
-        .Page::HR
-        .Form::button('Close Account')
+        .Form::create(
+            'submit-close-account.php',
+            Form::password('password', 'Password', array(
+                'autofocus' => true,
+                'required' => true,
+            ))
+            .Page::HR
+            .Form::button('Close Account')
+        )
     )
 );

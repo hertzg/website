@@ -17,11 +17,11 @@ unset($_SESSION['notifications_messages']);
 $page->title = 'Clear Notifications';
 $page->finish(
     Tab::create(
-        Tab::activeItem('Notifications')
+        Tab::activeItem('Notifications'),
+        Page::text('Are you sure you want to delete notifications in this channel?')
+        .Page::HR
+        .Page::imageLink('Yes, delete notifications', "submit-delete-notifications.php?id=$id", 'yes')
+        .Page::HR
+        .Page::imageLink('No, return back', "notifications.php?id=$id", 'no')
     )
-    .Page::text('Are you sure you want to delete notifications in this channel?')
-    .Page::HR
-    .Page::imageLink('Yes, delete notifications', "submit-delete-notifications.php?id=$id", 'yes')
-    .Page::HR
-    .Page::imageLink('No, return back', "notifications.php?id=$id", 'no')
 );

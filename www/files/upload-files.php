@@ -27,23 +27,23 @@ $page->title = 'Upload Files';
 $page->finish(
     Tab::create(
         Tab::item('Files', create_folder_link($idfolders))
-        .Tab::activeItem('Upload Files')
-    )
-    .Page::errors(ifset($_SESSION['files/upload-files_errors']))
-    .Page::warnings(array(
-        'Maximum '.bytestr(ini_get_bytes('upload_max_filesize')).' each file.',
-        'Maximum '.bytestr(ini_get_bytes('post_max_size')).' at once.',
-    ))
-    .Form::create(
-        'submit-upload-files.php',
-        Form::filefield('file1[]', 'File 1:')
-        .Page::HR
-        .Form::filefield('file2[]', 'File 2:')
-        .Page::HR
-        .Form::filefield('file3[]', 'File 3:')
-        .Page::HR
-        .Form::button('Upload')
-        .Form::hidden('posttest', '1')
-        .Form::hidden('idfolders', $idfolders)
+        .Tab::activeItem('Upload Files'),
+        Page::errors(ifset($_SESSION['files/upload-files_errors']))
+        .Page::warnings(array(
+            'Maximum '.bytestr(ini_get_bytes('upload_max_filesize')).' each file.',
+            'Maximum '.bytestr(ini_get_bytes('post_max_size')).' at once.',
+        ))
+        .Form::create(
+            'submit-upload-files.php',
+            Form::filefield('file1[]', 'File 1:')
+            .Page::HR
+            .Form::filefield('file2[]', 'File 2:')
+            .Page::HR
+            .Form::filefield('file3[]', 'File 3:')
+            .Page::HR
+            .Form::button('Upload')
+            .Form::hidden('posttest', '1')
+            .Form::hidden('idfolders', $idfolders)
+        )
     )
 );

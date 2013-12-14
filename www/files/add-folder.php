@@ -27,18 +27,18 @@ $page->title = 'New Folder';
 $page->finish(
     Tab::create(
         Tab::item('Files', create_folder_link($parentIdFolders))
-        .Tab::activeItem('New Folder')
-    )
-    .Page::errors(ifset($_SESSION['files/add-folder_errors']))
-    .Form::create(
-        'submit-add-folder.php',
-        Form::textfield('foldername', 'Folder name', array(
-            'value' => ifset($lastpost['foldername']),
-            'autofocus' => true,
-            'required' => true,
-        ))
-        .Page::HR
-        .Form::button('Create')
-        .Form::hidden('parentidfolders', $parentIdFolders)
+        .Tab::activeItem('New Folder'),
+        Page::errors(ifset($_SESSION['files/add-folder_errors']))
+        .Form::create(
+            'submit-add-folder.php',
+            Form::textfield('foldername', 'Folder name', array(
+                'value' => ifset($lastpost['foldername']),
+                'autofocus' => true,
+                'required' => true,
+            ))
+            .Page::HR
+            .Form::button('Create')
+            .Form::hidden('parentidfolders', $parentIdFolders)
+        )
     )
 );

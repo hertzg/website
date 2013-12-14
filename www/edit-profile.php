@@ -28,22 +28,22 @@ $page->title = 'Edit Profile';
 $page->finish(
     Tab::create(
         Tab::item('Account', 'account.php')
-        .Tab::activeItem('Profile')
-    )
-    .Page::errors(ifset($_SESSION['edit-profile_errors']))
-    .Form::create(
-        'submit-edit-profile.php',
-        Form::textfield('email', 'Email', array(
-            'value' => ifset($lastpost['email'], $user->email),
-            'autofocus' => true,
-            'required' => true,
-        ))
-        .Page::HR
-        .Form::textfield('fullname', 'Full name', array(
-            'value' => ifset($lastpost['fullname'], $user->fullname),
-        ))
-        .Page::HR
-        .Form::button('Save Changes')
+        .Tab::activeItem('Profile'),
+        Page::errors(ifset($_SESSION['edit-profile_errors']))
+        .Form::create(
+            'submit-edit-profile.php',
+            Form::textfield('email', 'Email', array(
+                'value' => ifset($lastpost['email'], $user->email),
+                'autofocus' => true,
+                'required' => true,
+            ))
+            .Page::HR
+            .Form::textfield('fullname', 'Full name', array(
+                'value' => ifset($lastpost['fullname'], $user->fullname),
+            ))
+            .Page::HR
+            .Form::button('Save Changes')
+        )
     )
     .create_panel('Theme', $themes_html)
 );

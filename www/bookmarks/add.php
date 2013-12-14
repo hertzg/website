@@ -15,21 +15,21 @@ $page->title = 'New Bookmark';
 $page->finish(
     Tab::create(
         Tab::item('Bookmarks', 'index.php')
-        .Tab::activeItem('New')
-    )
-    .Page::errors(ifset($_SESSION['bookmarks/add_errors']))
-    .Form::create(
-        'submit-add.php',
-        Form::textfield('url', 'URL', array(
-            'value' => ifset($lastpost['url']),
-            'autofocus' => true,
-            'required' => true,
-        ))
-        .Page::HR
-        .Form::textfield('title', 'Title', array(
-            'value' => ifset($lastpost['title']),
-        ))
-        .Page::HR
-        .Form::button('Save')
+        .Tab::activeItem('New'),
+        Page::errors(ifset($_SESSION['bookmarks/add_errors']))
+        .Form::create(
+            'submit-add.php',
+            Form::textfield('url', 'URL', array(
+                'value' => ifset($lastpost['url']),
+                'autofocus' => true,
+                'required' => true,
+            ))
+            .Page::HR
+            .Form::textfield('title', 'Title', array(
+                'value' => ifset($lastpost['title']),
+            ))
+            .Page::HR
+            .Form::button('Save')
+        )
     )
 );

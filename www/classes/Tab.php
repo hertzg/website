@@ -6,12 +6,13 @@ class Tab {
         return "<span class=\"tab-active\">$title</span>";
     }
 
-    static function create ($items) {
+    static function create ($items, $content) {
         return
             "<div class=\"tab\">"
                 ."<div class=\"tab-bar\">$items</div>"
             ."</div>"
-            .'<div class="tab-spacer"></div>';
+            .'<div class="tab-spacer"></div>'
+            ."<div class=\"tab-content\">$content</div>";
     }
 
     static function item ($title, $href) {

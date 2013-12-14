@@ -16,18 +16,18 @@ $page->finish(
     Tab::create(
         Tab::item('Files', create_folder_link($file->idfolders))
         .Tab::item('View', "view.php?id=$id")
-        .Tab::activeItem('Rename File')
-    )
-    .Page::errors(ifset($_SESSION['files/rename-file_errors']))
-    .Form::create(
-        'submit-rename-file.php',
-        Form::textfield('filename', 'File name', array(
-            'value' => $file->filename,
-            'autofocus' => true,
-            'required' => true,
-        ))
-        .Page::HR
-        .Form::button('Rename')
-        .Form::hidden('id', $id)
+        .Tab::activeItem('Rename File'),
+        Page::errors(ifset($_SESSION['files/rename-file_errors']))
+        .Form::create(
+            'submit-rename-file.php',
+            Form::textfield('filename', 'File name', array(
+                'value' => $file->filename,
+                'autofocus' => true,
+                'required' => true,
+            ))
+            .Page::HR
+            .Form::button('Rename')
+            .Form::hidden('id', $id)
+        )
     )
 );

@@ -14,18 +14,18 @@ $page->finish(
     Tab::create(
         Tab::item('Notes', 'index.php')
         .Tab::item('View', "view.php?id=$id")
-        .Tab::activeItem('Edit')
-    )
-    .Page::errors(ifset($_SESSION['notes/edit_errors']))
-    .Form::create(
-        'submit-edit.php',
-        Form::textarea('notetext', 'Text', array(
-            'value' => ifset($lastpost['notetext'], $note->notetext),
-            'autofocus' => true,
-            'required' => true,
-        ))
-        .Page::HR
-        .Form::button('Save Changes')
-        .Form::hidden('id', $id)
+        .Tab::activeItem('Edit'),
+        Page::errors(ifset($_SESSION['notes/edit_errors']))
+        .Form::create(
+            'submit-edit.php',
+            Form::textarea('notetext', 'Text', array(
+                'value' => ifset($lastpost['notetext'], $note->notetext),
+                'autofocus' => true,
+                'required' => true,
+            ))
+            .Page::HR
+            .Form::button('Save Changes')
+            .Form::hidden('id', $id)
+        )
     )
 );

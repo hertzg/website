@@ -13,11 +13,11 @@ $page->finish(
     Tab::create(
         Tab::item('Notifications', '../notifications.php')
         .Tab::item('Channels', 'index.php')
-        .Tab::activeItem('View')
+        .Tab::activeItem('View'),
+        Page::text('Are you sure you want to delete the channel "<b>'.htmlspecialchars($channel->channelname).'</b>"?')
+        .Page::HR
+        .Page::imageLink('Yes, delete channel', "submit-delete.php?id=$id", 'yes')
+        .Page::HR
+        .Page::imageLink('No, return back', "view.php?id=$id", 'no')
     )
-    .Page::text('Are you sure you want to delete the channel "<b>'.htmlspecialchars($channel->channelname).'</b>"?')
-    .Page::HR
-    .Page::imageLink('Yes, delete channel', "submit-delete.php?id=$id", 'yes')
-    .Page::HR
-    .Page::imageLink('No, return back', "view.php?id=$id", 'no')
 );

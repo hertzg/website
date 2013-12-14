@@ -56,12 +56,12 @@ $page->title = htmlspecialchars($folder->foldername);
 $page->finish(
     Tab::create(
         Tab::item('Files', create_folder_link($idfolders))
-        .Tab::activeItem('Move')
+        .Tab::activeItem('Move'),
+        Page::errors(ifset($_SESSION['files/move-folder_errors']))
+        .Page::warnings(array(
+            'Moving the folder "<b>'.htmlspecialchars($folder->foldername).'</b>".',
+            'Select a folder to move the folder into.'
+        ))
+        .join(Page::HR, $items)
     )
-    .Page::errors(ifset($_SESSION['files/move-folder_errors']))
-    .Page::warnings(array(
-        'Moving the folder "<b>'.htmlspecialchars($folder->foldername).'</b>".',
-        'Select a folder to move the folder into.'
-    ))
-    .join(Page::HR, $items)
 );

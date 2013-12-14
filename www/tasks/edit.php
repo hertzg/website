@@ -16,22 +16,22 @@ $page->finish(
     Tab::create(
         Tab::item('Tasks', 'index.php')
         .Tab::item('View', "view.php?id=$id")
-        .Tab::activeItem('Edit')
-    )
-    .Page::errors(ifset($_SESSION['tasks/edit_errors']))
-    .Form::create(
-        'submit-edit.php',
-        Form::textarea('tasktext', 'Text', array(
-            'value' => ifset($lastpost['tasktext'], $task->tasktext),
-            'autofocus' => true,
-            'required' => true,
-        ))
-        .Page::HR
-        .Form::textfield('tags', 'Tags', array(
-            'value' => ifset($lastpost['tags'], $task->tags),
-        ))
-        .Page::HR
-        .Form::button('Save Changes')
-        .Form::hidden('id', $id)
+        .Tab::activeItem('Edit'),
+        Page::errors(ifset($_SESSION['tasks/edit_errors']))
+        .Form::create(
+            'submit-edit.php',
+            Form::textarea('tasktext', 'Text', array(
+                'value' => ifset($lastpost['tasktext'], $task->tasktext),
+                'autofocus' => true,
+                'required' => true,
+            ))
+            .Page::HR
+            .Form::textfield('tags', 'Tags', array(
+                'value' => ifset($lastpost['tags'], $task->tags),
+            ))
+            .Page::HR
+            .Form::button('Save Changes')
+            .Form::hidden('id', $id)
+        )
     )
 );

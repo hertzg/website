@@ -80,10 +80,10 @@ $page->base = '../';
 $page->title = 'Files';
 $page->finish(
     Tab::create(
-        Tab::activeItem('Files')
+        Tab::activeItem('Files'),
+        Page::messages(ifset($_SESSION['files/index_messages']))
+        .join(Page::HR, $items)
     )
-    .Page::messages(ifset($_SESSION['files/index_messages']))
-    .join(Page::HR, $items)
     .create_panel(
         'Options',
         Page::imageLink('New Folder', "add-folder.php?parentidfolders=$idfolders", 'create-folder')

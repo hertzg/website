@@ -16,22 +16,22 @@ $page->finish(
     Tab::create(
         Tab::item('Notifications', '../notifications.php')
         .Tab::item('Channels', 'index.php')
-        .Tab::activeItem('New')
-    )
-    .Page::errors(ifset($_SESSION['channels/add_errors']))
-    .Form::create(
-        'submit-add.php',
-        Form::textfield('channelname', 'Channel name', array(
-            'value' => ifset($lastpost['channelname']),
-            'maxlength' => 32,
-            'autofocus' => true,
-            'required' => true,
-        ))
-        .Form::notes(array(
-            'Characters a-z, A-Z, 0-9, dash, dot and underscore only.',
-            'Minimum 6 maximum 32 characters.',
-        ))
-        .Page::HR
-        .Form::button('Create')
+        .Tab::activeItem('New'),
+        Page::errors(ifset($_SESSION['channels/add_errors']))
+        .Form::create(
+            'submit-add.php',
+            Form::textfield('channelname', 'Channel name', array(
+                'value' => ifset($lastpost['channelname']),
+                'maxlength' => 32,
+                'autofocus' => true,
+                'required' => true,
+            ))
+            .Form::notes(array(
+                'Characters a-z, A-Z, 0-9, dash, dot and underscore only.',
+                'Minimum 6 maximum 32 characters.',
+            ))
+            .Page::HR
+            .Form::button('Create')
+        )
     )
 );

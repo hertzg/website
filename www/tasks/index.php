@@ -151,11 +151,11 @@ $page->base = '../';
 $page->title = 'Tasks';
 $page->finish(
     Tab::create(
-        Tab::activeItem('Tasks')
+        Tab::activeItem('Tasks'),
+        Page::messages(ifset($_SESSION['tasks/index_messages']))
+        .$filterMessage
+        .join(Page::HR, $items)
     )
-    .Page::messages(ifset($_SESSION['tasks/index_messages']))
-    .$filterMessage
-    .join(Page::HR, $items)
     .create_panel(
         'Options',
         Page::imageLink('New Task', 'add.php', 'create-task')

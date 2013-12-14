@@ -21,20 +21,20 @@ unset(
 $page->title = 'Account';
 $page->finish(
     Tab::create(
-        Tab::activeItem('Account')
+        Tab::activeItem('Account'),
+        Page::messages(ifset($_SESSION['account_messages']))
+        .Form::label('Username', $user->username)
+        .Page::HR
+        .Form::label('Email', $user->email)
+        .Page::HR
+        .Form::label('Full name', $user->fullname)
+        .Page::HR
+        .Form::label('Theme', $themes[$user->theme])
+        .Page::HR
+        .Form::label('Account created', date_ago($user->inserttime))
+        .Page::HR
+        .Form::label('Using storage', bytestr($user->storageused))
     )
-    .Page::messages(ifset($_SESSION['account_messages']))
-    .Form::label('Username', $user->username)
-    .Page::HR
-    .Form::label('Email', $user->email)
-    .Page::HR
-    .Form::label('Full name', $user->fullname)
-    .Page::HR
-    .Form::label('Theme', $themes[$user->theme])
-    .Page::HR
-    .Form::label('Account created', date_ago($user->inserttime))
-    .Page::HR
-    .Form::label('Using storage', bytestr($user->storageused))
     .create_panel(
         'Options',
         Page::imageLink('Edit Profile', 'edit-profile.php', 'edit-profile')

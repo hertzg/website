@@ -9,11 +9,11 @@ $page->title = 'Delete Task: '.htmlspecialchars(mb_substr($task->tasktext, 0, 20
 $page->finish(
     Tab::create(
         Tab::item('Tasks', 'index.php')
-        .Tab::activeItem('View')
+        .Tab::activeItem('View'),
+        Page::text('Are you sure you want to delete the task?')
+        .Page::HR
+        .Page::imageLink('Yes, delete task', "submit-delete.php?id=$id", 'yes')
+        .Page::HR
+        .Page::imageLink('No, return back', "view.php?id=$id", 'no')
     )
-    .Page::text('Are you sure you want to delete the task?')
-    .Page::HR
-    .Page::imageLink('Yes, delete task', "submit-delete.php?id=$id", 'yes')
-    .Page::HR
-    .Page::imageLink('No, return back', "view.php?id=$id", 'no')
 );

@@ -69,10 +69,10 @@ $page->base = '../';
 $page->title = 'Contacts';
 $page->finish(
     Tab::create(
-        Tab::activeItem('Contacts')
+        Tab::activeItem('Contacts'),
+        Page::messages(ifset($_SESSION['contacts/index_messages']))
+        .join(Page::HR, $items)
     )
-    .Page::messages(ifset($_SESSION['contacts/index_messages']))
-    .join(Page::HR, $items)
     .create_panel(
         'Options',
         Page::imageLink('New Contact', 'add.php', 'create-contact')
