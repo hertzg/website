@@ -44,7 +44,7 @@ if ($numBookmarks) {
     $bookmarksLink = Page::imageLink('Bookmarks', 'bookmarks/index.php', 'bookmarks');
 }
 
-$numNotes = Notes::count($idusers);
+$numNotes = Notes::countOnUser($idusers);
 if ($numNotes) {
     $notesLink = Page::imageLinkWithDescription('Notes', "$numNotes total.", 'notes/index.php', 'notes');
 } else {

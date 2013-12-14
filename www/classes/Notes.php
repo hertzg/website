@@ -21,7 +21,7 @@ class Notes {
         );
     }
 
-    static function count ($idusers) {
+    static function countOnUser ($idusers) {
         global $mysqli;
         return mysqli_single_object($mysqli, "select count(*) count from notes where idusers = $idusers")->count;
     }
@@ -39,7 +39,7 @@ class Notes {
         );
     }
 
-    static function deleteUser ($idusers) {
+    static function deleteOnUser ($idusers) {
         global $mysqli;
         mysqli_query($mysqli, "delete from notes where idusers = $idusers");
     }

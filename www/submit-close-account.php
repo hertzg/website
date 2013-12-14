@@ -34,7 +34,7 @@ Contacts::deleteUser($idusers);
 Feedbacks::deleteUser($idusers);
 Files::deleteUser($idusers);
 Folders::deleteUser($idusers);
-Notes::deleteUser($idusers);
+Notes::deleteOnUser($idusers);
 Notifications::deleteUser($idusers);
 TaskTags::deleteOnUser($idusers);
 Tasks::deleteUser($idusers);
