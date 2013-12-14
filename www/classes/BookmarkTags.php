@@ -4,18 +4,18 @@ include_once __DIR__.'/../fns/mysqli_query_object.php';
 include_once __DIR__.'/../fns/mysqli_sprintf.php';
 include_once __DIR__.'/../lib/mysqli.php';
 
-class TaskTags {
+class BookmarkTags {
 
-    static function add ($idusers, $idtasks, array $tagnames) {
+    static function add ($idusers, $idbookmarks, array $tagnames) {
         global $mysqli;
         foreach ($tagnames as $tagname) {
             mysqli_query(
                 $mysqli,
                 mysqli_sprintf(
                     $mysqli,
-                    'insert into tasktags (idusers, idtasks, tagname)'
+                    'insert into bookmarktags (idusers, idbookmarks, tagname)'
                     ." values (#u, #u, '#s')",
-                    array($idusers, $idtasks, $tagname)
+                    array($idusers, $idbookmarks, $tagname)
                 )
             );
         }
@@ -23,31 +23,31 @@ class TaskTags {
 
     static function deleteOnUser ($idusers) {
         global $mysqli;
-        mysqli_query($mysqli, "delete from tasktags where idusers = $idusers");
+        mysqli_query($mysqli, "delete from bookmarktags where idusers = $idusers");
     }
 
-    static function deleteOnTask ($idtasks) {
+    static function deleteOnBookmark ($idbookmarks) {
         global $mysqli;
         mysqli_query(
             $mysqli,
             mysqli_sprintf(
                 $mysqli,
-                'delete from tasktags'
-                .' where idtasks = #u',
-                array($idtasks)
+                'delete from bookmarktags'
+                .' where idbookmarks = #u',
+                array($idbookmarks)
             )
         );
     }
 
-    static function indexOnTask ($idtasks) {
+    static function indexOnBookmark ($idbookmarks) {
         global $mysqli;
         return mysqli_query_object(
             $mysqli,
             mysqli_sprintf(
                 $mysqli,
-                'select * from tasktags where idtasks = #u'
+                'select * from bookmarktags where idbookmarks = #u'
                 .' order by tagname',
-                array($idtasks)
+                array($idbookmarks)
             )
         );
     }
@@ -58,7 +58,7 @@ class TaskTags {
             $mysqli,
             mysqli_sprintf(
                 $mysqli,
-                'select distinct tagname from tasktags where idusers = #u'
+                'select distinct tagname from bookmarktags where idusers = #u'
                 .' order by tagname',
                 array($idusers)
             )
