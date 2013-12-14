@@ -43,12 +43,14 @@ if ($keyword === '') {
                         ))
                     );
                     $links[] =
-                        "<a class=\"a\" href=\"$href\">"
-                            .htmlspecialchars($tagname)
-                        .'</a>';
+                        '<li style="display: inline-block">'
+                            ."<a class=\"tag\" href=\"$href\">"
+                                .htmlspecialchars($tagname)
+                            .'</a>'
+                        .'</li>';
                 }
                 $filterMessage = Page::warnings(array(
-                    'Filter by tags: '.join(' &middot; ', $links)
+                    'Filter by tags: <ul style="display: inline">'.join(' ', $links).'</ul>'
                 ));
             }
         } else {
@@ -63,7 +65,7 @@ if ($keyword === '') {
             );
         }
         $filterMessage = Page::warnings(array(
-            'Showing tasks with <b>'.htmlspecialchars($tag).'</b> tag.'
+            'Showing tasks with <b class="tag">'.htmlspecialchars($tag).'</b> tag.'
             .' <a class="a" href="./">Show all</a>',
         ));
     }

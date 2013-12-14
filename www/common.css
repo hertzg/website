@@ -387,3 +387,14 @@ img {
 .panel > .content {
     background: #fff;
 }
+
+.tag {
+    display: inline-block;
+    vertical-align: baseline;
+    padding: 13px;
+    border: 2px solid #bbb;
+    border-radius: 2px;
+    text-decoration: underline;
+    background: #fff;
+    font-weight: normal;
+}

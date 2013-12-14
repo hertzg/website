@@ -6,9 +6,11 @@
     background-color: #f5f8ff;
 }
 
-.a {
+.a,
+.tag {
     color: #37c;
 }
+
 .tab-active {
     background-color: #39e;
     box-shadow: 0 -16px 16px #37c inset, 0 0 6px rgba(0, 0, 0, 0.4);
