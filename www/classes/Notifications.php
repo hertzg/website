@@ -26,7 +26,7 @@ class Notifications {
         Users::addNumNotifications($idusers, 1);
     }
 
-    static function count ($idusers) {
+    static function countOnUser ($idusers) {
         global $mysqli;
         return mysqli_single_object($mysqli, "select count(*) count from notifications where idusers = $idusers")->count;
     }

@@ -22,7 +22,7 @@ class Tasks {
         return mysqli_insert_id($mysqli);
     }
 
-    static function count ($idusers) {
+    static function countOnUser ($idusers) {
         global $mysqli;
         return mysqli_single_object($mysqli, "select count(*) count from tasks where idusers = $idusers")->count;
     }

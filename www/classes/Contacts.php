@@ -25,7 +25,7 @@ class Contacts {
 
     }
 
-    static function count ($idusers) {
+    static function countOnUser ($idusers) {
         global $mysqli;
         return mysqli_single_object($mysqli, "select count(*) count from contacts where idusers = $idusers")->count;
     }

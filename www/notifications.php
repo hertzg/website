@@ -62,7 +62,7 @@ unset(
     $_SESSION['home_messages']
 );
 
-$numChannels = Channels::count($idusers);
+$numChannels = Channels::countOnUser($idusers);
 
 $page->title = 'Notifications';
 $page->finish(

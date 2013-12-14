@@ -33,11 +33,11 @@ unset(
     $_SESSION['tasks/index_messages']
 );
 
-$numContacts = Contacts::count($idusers);
-$numNotifications = Notifications::count($idusers);
+$numContacts = Contacts::countOnUser($idusers);
+$numNotifications = Notifications::countOnUser($idusers);
 $numNewNotifications = $user->numnotifications;
 
-$numBookmarks = Bookmarks::count($idusers);
+$numBookmarks = Bookmarks::countOnUser($idusers);
 if ($numBookmarks) {
     $bookmarksLink = Page::imageLinkWithDescription('Bookmarks', "$numBookmarks total.", 'bookmarks/index.php', 'bookmarks');
 } else {
@@ -51,7 +51,7 @@ if ($numNotes) {
     $notesLink = Page::imageLink('Notes', 'notes/index.php', 'notes');
 }
 
-$numTasks = Tasks::count($idusers);
+$numTasks = Tasks::countOnUser($idusers);
 if ($numTasks) {
     $tasksLink = Page::imageLinkWithDescription('Tasks', "$numTasks total.", 'tasks/index.php', 'tasks');
 } else {
