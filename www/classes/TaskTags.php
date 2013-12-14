@@ -2,7 +2,6 @@
 
 include_once __DIR__.'/../fns/mysqli_query_object.php';
 include_once __DIR__.'/../fns/mysqli_sprintf.php';
-include_once __DIR__.'/../fns/str_collapse_spaces.php';
 include_once __DIR__.'/../lib/mysqli.php';
 
 class TaskTags {
@@ -22,14 +21,6 @@ class TaskTags {
                 )
             );
         }
-    }
-
-    static function parse ($tagnames) {
-        $tagnames = str_collapse_spaces($tagnames);
-        if ($tagnames === '') return array();
-        $tagnames = explode(' ', $tagnames);
-        $tagnames = array_unique($tagnames);
-        return $tagnames;
     }
 
     static function delete ($id) {
