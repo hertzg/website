@@ -21,9 +21,9 @@ if ($task->done) {
     $setDoneLink = Page::imageLink('Mark as Done', "submit-set-done.php?id=$id&done=1", 'task-done');
 }
 
+$tasktext = $task->tasktext;
 $inserttime = $task->inserttime;
 $updatetime = $task->updatetime;
-$tasktext = $task->tasktext;
 
 $taskTags = TaskTags::indexOnTask($id);
 $tags = array();
@@ -35,8 +35,6 @@ foreach ($taskTags as $taskTag) {
         .'</a>';
 }
 $tags = join(' ', $tags);
-
-$modified = $inserttime != $updatetime;
 
 $base = '../';
 
@@ -56,7 +54,7 @@ $page->finish(
         .($tags ? Page::text("Tags: $tags").Page::HR : '')
         .Page::text(
             '<div>Task created '.date_ago($inserttime).'.</div>'
-            .($modified ? '<div>Last modified '.date_ago($updatetime).'.</div>' : '')
+            .($inserttime != $updatetime ? '<div>Last modified '.date_ago($updatetime).'.</div>' : '')
         )
     )
     .create_panel(

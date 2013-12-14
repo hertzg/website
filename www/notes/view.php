@@ -17,8 +17,6 @@ $inserttime = $note->inserttime;
 $updatetime = $note->updatetime;
 $notetext = $note->notetext;
 
-$modified = $inserttime != $updatetime;
-
 $base = '../';
 
 $page->base = $base;
@@ -36,7 +34,7 @@ $page->finish(
         .Page::HR
         .Page::text(
             '<div>Note created '.date_ago($inserttime).'.</div>'
-            .($modified ? '<div>Last modified '.date_ago($updatetime).'.</div>' : '')
+            .($inserttime != $updatetime ? '<div>Last modified '.date_ago($updatetime).'.</div>' : '')
         )
     )
     .create_panel(

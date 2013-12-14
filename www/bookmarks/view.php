@@ -5,6 +5,7 @@ include_once '../fns/create_external_url.php';
 include_once '../fns/create_panel.php';
 include_once '../fns/date_ago.php';
 include_once '../fns/ifset.php';
+include_once '../classes/BookmarkTags.php';
 include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
 
@@ -16,6 +17,19 @@ unset(
 
 $title = $bookmark->title;
 $url = $bookmark->url;
+$inserttime = $bookmark->inserttime;
+$updatetime = $bookmark->updatetime;
+
+$taskTags = BookmarkTags::indexOnBookmark($id);
+$tags = array();
+foreach ($taskTags as $taskTag) {
+    $escapedTag = htmlspecialchars($taskTag->tagname);
+    $tags[] =
+        "<a class=\"tag\" href=\"index.php?tag=$escapedTag\">"
+            .$escapedTag
+        .'</a>';
+}
+$tags = join(' ', $tags);
 
 $base = '../';
 
@@ -29,9 +43,10 @@ $page->finish(
         .($title ? Page::text(htmlspecialchars($title)).Page::HR : '')
         .Page::text('<a class="a" href="'.htmlspecialchars(create_external_url($url, $base)).'">'.htmlspecialchars($url).'</a>')
         .Page::HR
+        .($tags ? Page::text("Tags: $tags").Page::HR : '')
         .Page::text(
-            '<div>Bookmark created '.date_ago($bookmark->inserttime).'.</div>'
-            .($bookmark->inserttime != $bookmark->updatetime ? '<div>Last modified '.date_ago($bookmark->updatetime).'.</div>' : '')
+            '<div>Bookmark created '.date_ago($inserttime).'.</div>'
+            .($inserttime != $updatetime ? '<div>Last modified '.date_ago($updatetime).'.</div>' : '')
         )
     )
     .create_panel(

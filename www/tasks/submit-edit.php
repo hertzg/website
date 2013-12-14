@@ -37,11 +37,9 @@ unset(
 include_once '../classes/Tasks.php';
 Tasks::edit($idusers, $id, $tasktext, $tags);
 
-Tags::delete($id);
-
 include_once '../classes/TaskTags.php';
+TaskTags::deleteOnTask($id);
 TaskTags::add($idusers, $id, $tagnames);
-
 
 $_SESSION['tasks/view_messages'] = array('Changes have been saved.');
 redirect("view.php?id=$id");

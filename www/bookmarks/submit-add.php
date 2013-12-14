@@ -22,11 +22,14 @@ unset($_SESSION['bookmarks/add_errors']);
 
 if ($errors) {
     $_SESSION['bookmarks/add_errors'] = $errors;
-    redirect('bookmarks/add.php');
+    redirect('add.php');
 }
 
 include_once '../classes/Bookmarks.php';
-Bookmarks::add($idusers, $title, $url, $tags);
+$id = Bookmarks::add($idusers, $title, $url, $tags);
+
+include_once '../classes/BookmarkTags.php';
+BookmarkTags::add($idusers, $id, $tagnames);
 
 $_SESSION['bookmarks/index_messages'] = array('Bookmark has been added.');
 redirect('index.php');

@@ -19,6 +19,7 @@ class Bookmarks {
                 array($idusers, $title, $url, $tags, time(), time())
             )
         );
+        return mysqli_insert_id($mysqli);
     }
 
     static function countOnUser ($idusers) {
@@ -75,24 +76,35 @@ class Bookmarks {
     }
 
     static function index ($idusers) {
-
         global $mysqli;
-
-        $bookmarks = mysqli_query_object(
+        return mysqli_query_object(
             $mysqli,
             mysqli_sprintf(
                 $mysqli,
-                'select * from bookmarks where idusers = #u',
+                'select * from bookmarks where idusers = #u'
+                .' order by updatetime desc',
                 array($idusers)
             )
         );
+    }
 
-        usort($bookmarks, function ($a, $b) {
-            return $a->updatetime > $b->updatetime ? -1 : 1;
-        });
-
-        return $bookmarks;
-
+    static function indexOnTag ($idusers, $tag) {
+        global $mysqli;
+        return mysqli_query_object(
+            $mysqli,
+            mysqli_sprintf(
+                $mysqli,
+                'select * from bookmarks t'
+                .' where idusers = #u'
+                .' and exists ('
+                .'  select idbookmarks from bookmarktags bt'
+                .'  where bt.idbookmarks = t.idbookmarks'
+                ."  and bt.tagname = '#s'"
+                .' )'
+                .' order by updatetime desc',
+                array($idusers, $tag)
+            )
+        );
     }
 
 }

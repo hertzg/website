@@ -29,8 +29,6 @@ if ($keyword === '') {
         $tasks = Tasks::index($idusers);
         if (count($tasks) > 1) {
             $items[] = createSearchForm(create_search_form_empty_content());
-        }
-        if (count($tasks) > 1) {
             include_once '../classes/TaskTags.php';
             $taskTags = TaskTags::indexOnUser($idusers);
             if ($taskTags) {

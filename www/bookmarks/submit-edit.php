@@ -34,5 +34,9 @@ unset(
 include_once '../classes/Bookmarks.php';
 Bookmarks::edit($idusers, $id, $title, $url, $tags);
 
+include_once '../classes/BookmarkTags.php';
+BookmarkTags::deleteOnBookmark($id);
+BookmarkTags::add($idusers, $id, $tagnames);
+
 $_SESSION['bookmarks/view_messages'] = array('Changes have been saved.');
 redirect("view.php?id=$id");
