@@ -70,7 +70,7 @@ class Files {
         }
     }
 
-    static function deleteUser ($idusers) {
+    static function deleteOnUser ($idusers) {
         global $mysqli;
         $files = mysqli_query_object($mysqli, "select * from files where idusers = $idusers");
         foreach ($files as $file) {

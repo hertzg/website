@@ -40,7 +40,7 @@ class Tasks {
         );
     }
 
-    static function deleteUser ($idusers) {
+    static function deleteOnUser ($idusers) {
         global $mysqli;
         mysqli_query($mysqli, "delete from tasks where idusers = $idusers");
     }

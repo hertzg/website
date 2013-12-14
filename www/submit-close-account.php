@@ -28,16 +28,16 @@ if ($errors) {
     redirect('close-account.php');
 }
 
-Bookmarks::deleteUser($idusers);
-Channels::deleteUser($idusers);
-Contacts::deleteUser($idusers);
-Feedbacks::deleteUser($idusers);
-Files::deleteUser($idusers);
-Folders::deleteUser($idusers);
+Bookmarks::deleteOnUser($idusers);
+Channels::deleteOnUser($idusers);
+Contacts::deleteOnUser($idusers);
+Feedbacks::deleteOnUser($idusers);
+Files::deleteOnUser($idusers);
+Folders::deleteOnUser($idusers);
 Notes::deleteOnUser($idusers);
-Notifications::deleteUser($idusers);
+Notifications::deleteOnUser($idusers);
 TaskTags::deleteOnUser($idusers);
-Tasks::deleteUser($idusers);
+Tasks::deleteOnUser($idusers);
 Users::delete($idusers);
 
 $_SESSION['signin_messages'] = array(

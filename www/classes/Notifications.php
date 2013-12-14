@@ -58,7 +58,7 @@ class Notifications {
         );
     }
 
-    static function deleteUser ($idusers) {
+    static function deleteOnUser ($idusers) {
         global $mysqli;
         mysqli_query($mysqli, "delete from notifications where idusers = $idusers");
     }

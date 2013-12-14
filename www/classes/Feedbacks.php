@@ -19,7 +19,7 @@ class Feedbacks {
         );
     }
 
-    static function deleteUser ($idusers) {
+    static function deleteOnUser ($idusers) {
         global $mysqli;
         mysqli_query($mysqli, "delete from feedbacks where idusers = $idusers");
     }

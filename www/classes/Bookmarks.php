@@ -39,7 +39,7 @@ class Bookmarks {
         );
     }
 
-    static function deleteUser ($idusers) {
+    static function deleteOnUser ($idusers) {
         global $mysqli;
         mysqli_query($mysqli, "delete from bookmarks where idusers = $idusers");
     }
