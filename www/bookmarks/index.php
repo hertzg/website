@@ -46,7 +46,7 @@ if ($tag === '') {
     ));
 }
 
-$items = [];
+$items = array();
 if ($bookmarks) {
     foreach ($bookmarks as $bookmark) {
         $href = "view.php?id=$bookmark->idbookmarks";
