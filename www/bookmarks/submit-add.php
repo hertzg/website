@@ -32,4 +32,4 @@ include_once '../classes/BookmarkTags.php';
 BookmarkTags::add($idusers, $id, $tagnames);
 
 $_SESSION['bookmarks/index_messages'] = array('Bookmark has been added.');
-redirect('index.php');
+redirect();

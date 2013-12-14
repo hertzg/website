@@ -10,8 +10,8 @@ function create_calendar ($timeSelected) {
     $nextMonthStartTime = mktime(0, 0, 0, $monthSelected + 1, 1, $yearSelected);
     $prevMonthStartTime = mktime(0, 0, 0, $monthSelected - 1, 1, $yearSelected);
 
-    $prevMonthHref = 'index.php?year='.date('Y', $prevMonthStartTime).'&amp;month='.date('n', $prevMonthStartTime);
-    $nextMonthHref = 'index.php?year='.date('Y', $nextMonthStartTime).'&amp;month='.date('n', $nextMonthStartTime);
+    $prevMonthHref = '?year='.date('Y', $prevMonthStartTime).'&amp;month='.date('n', $prevMonthStartTime);
+    $nextMonthHref = '?year='.date('Y', $nextMonthStartTime).'&amp;month='.date('n', $nextMonthStartTime);
 
     $html =
         '<div style="background: #eee; font-weight: bold; text-align: center; line-height: 48px; color: #444; position: relative">'
@@ -45,7 +45,7 @@ function create_calendar ($timeSelected) {
             $year = date('Y', $time);
             $month = date('n', $time);
             $day = date('j', $time);
-            $html .= "<a href=\"index.php?year=$year&amp;month=$month&amp;day=$day\"";
+            $html .= "<a href=\"?year=$year&amp;month=$month&amp;day=$day\"";
             if ($time == $timeSelected) {
                 $html .= ' class="calendar-today">';
             } elseif ($time < $monthStartTime || $time >= $nextMonthStartTime) {
@@ -128,6 +128,6 @@ $page->finish(
         .Page::HR
         .Page::imageLink('Jump To', "jump-to.php?year=$yearNow&month=$monthNow", 'calendar')
         .Page::HR
-        .Page::imageLink('Go to Today', 'index.php', 'calendar')
+        .Page::imageLink('Go to Today', './', 'calendar')
     )
 );

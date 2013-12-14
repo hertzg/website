@@ -18,7 +18,7 @@ $page->title = htmlspecialchars($channel->channelname);
 $page->finish(
     Tab::create(
         Tab::item('Notifications', '../notifications.php')
-        .Tab::item('Channels', 'index.php')
+        .Tab::item('Channels', './')
         .Tab::activeItem('View'),
         Page::messages(ifset($_SESSION['channels/view_messages']))
         .Form::label('Channel name', htmlspecialchars($channel->channelname))

@@ -30,7 +30,7 @@ $tags = array();
 foreach ($taskTags as $taskTag) {
     $escapedTag = htmlspecialchars($taskTag->tagname);
     $tags[] =
-        "<a class=\"tag\" href=\"index.php?tag=$escapedTag\">"
+        "<a class=\"tag\" href=\"./?tag=$escapedTag\">"
             .$escapedTag
         .'</a>';
 }
@@ -42,7 +42,7 @@ $page->base = $base;
 $page->title = htmlspecialchars(mb_substr($tasktext, 0, 20, 'UTF-8'));
 $page->finish(
     Tab::create(
-        Tab::item('Tasks', 'index.php')
+        Tab::item('Tasks', './')
         .Tab::activeItem('View'),
         Page::messages(ifset($_SESSION['tasks/view_messages']))
         .Page::text(

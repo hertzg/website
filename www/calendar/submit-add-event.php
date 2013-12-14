@@ -40,7 +40,7 @@ $_SESSION['calendar/index_messages'] = array('Event has been added.');
 include_once '../classes/Events.php';
 Events::add($idusers, $eventtext, $eventtime);
 
-redirect('index.php?'.http_build_query(array(
+redirect('./?'.http_build_query(array(
     'year' => $year,
     'month' => $month,
     'day' => $day,

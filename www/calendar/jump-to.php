@@ -42,7 +42,7 @@ $page->title = 'Calendar';
 $page->head = '<link rel="stylesheet" type="text/css" href="index.css" />';
 $page->finish(
     Tab::create(
-        Tab::item('Calendar', "index.php?year=$year&month=$month")
+        Tab::item('Calendar', "./?year=$year&month=$month")
         .Tab::activeItem('Jump To'),
         Form::create(
             'submit-jump-to.php',

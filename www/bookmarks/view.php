@@ -25,7 +25,7 @@ $tags = array();
 foreach ($taskTags as $taskTag) {
     $escapedTag = htmlspecialchars($taskTag->tagname);
     $tags[] =
-        "<a class=\"tag\" href=\"index.php?tag=$escapedTag\">"
+        "<a class=\"tag\" href=\"./?tag=$escapedTag\">"
             .$escapedTag
         .'</a>';
 }
@@ -37,7 +37,7 @@ $page->base = $base;
 $page->title = htmlspecialchars(mb_substr($title ? $title : $url, 0, 20, 'UTF-8'));
 $page->finish(
     Tab::create(
-        Tab::item('Bookmarks', 'index.php')
+        Tab::item('Bookmarks', './')
         .Tab::activeItem('View'),
         Page::messages(ifset($_SESSION['bookmarks/view_messages']))
         .($title ? Page::text(htmlspecialchars($title)).Page::HR : '')

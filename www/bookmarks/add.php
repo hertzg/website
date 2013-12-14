@@ -14,7 +14,7 @@ $page->base = '../';
 $page->title = 'New Bookmark';
 $page->finish(
     Tab::create(
-        Tab::item('Bookmarks', 'index.php')
+        Tab::item('Bookmarks', './')
         .Tab::activeItem('New'),
         Page::errors(ifset($_SESSION['bookmarks/add_errors']))
         .Form::create(

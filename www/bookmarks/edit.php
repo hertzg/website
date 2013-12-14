@@ -14,7 +14,7 @@ $page->base = '../';
 $page->title = 'Edit Bookmark';
 $page->finish(
     Tab::create(
-        Tab::item('Bookmarks', 'index.php')
+        Tab::item('Bookmarks', './')
         .Tab::item('View', "view.php?id=$id")
         .Tab::activeItem('Edit'),
         Page::errors(ifset($_SESSION['bookmarks/edit_errors']))

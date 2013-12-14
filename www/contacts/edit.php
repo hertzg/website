@@ -14,7 +14,7 @@ $page->base = '../';
 $page->title = 'Edit Contact';
 $page->finish(
     Tab::create(
-        Tab::item('Contacts', 'index.php')
+        Tab::item('Contacts', './')
         .Tab::item('View', "view.php?id=$id")
         .Tab::activeItem('Edit'),
         Page::errors(ifset($_SESSION['contacts/edit_errors']))

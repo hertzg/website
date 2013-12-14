@@ -73,7 +73,7 @@ $page->finish(
         .$notificationsHtml
         .create_panel(
             'Options',
-            ($numChannels ? Page::imageLinkWithDescription('Channels', "$numChannels total.", 'channels/index.php', 'channels') : Page::imageLink('Channels', 'channels/index.php', 'channels'))
+            ($numChannels ? Page::imageLinkWithDescription('Channels', "$numChannels total.", 'channels/', 'channels') : Page::imageLink('Channels', 'channels/', 'channels'))
             .$deleteAllLink
         )
     )

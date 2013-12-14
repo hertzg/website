@@ -39,23 +39,23 @@ $numNewNotifications = $user->numnotifications;
 
 $numBookmarks = Bookmarks::countOnUser($idusers);
 if ($numBookmarks) {
-    $bookmarksLink = Page::imageLinkWithDescription('Bookmarks', "$numBookmarks total.", 'bookmarks/index.php', 'bookmarks');
+    $bookmarksLink = Page::imageLinkWithDescription('Bookmarks', "$numBookmarks total.", 'bookmarks/', 'bookmarks');
 } else {
-    $bookmarksLink = Page::imageLink('Bookmarks', 'bookmarks/index.php', 'bookmarks');
+    $bookmarksLink = Page::imageLink('Bookmarks', 'bookmarks/', 'bookmarks');
 }
 
 $numNotes = Notes::countOnUser($idusers);
 if ($numNotes) {
-    $notesLink = Page::imageLinkWithDescription('Notes', "$numNotes total.", 'notes/index.php', 'notes');
+    $notesLink = Page::imageLinkWithDescription('Notes', "$numNotes total.", 'notes/', 'notes');
 } else {
-    $notesLink = Page::imageLink('Notes', 'notes/index.php', 'notes');
+    $notesLink = Page::imageLink('Notes', 'notes/', 'notes');
 }
 
 $numTasks = Tasks::countOnUser($idusers);
 if ($numTasks) {
-    $tasksLink = Page::imageLinkWithDescription('Tasks', "$numTasks total.", 'tasks/index.php', 'tasks');
+    $tasksLink = Page::imageLinkWithDescription('Tasks', "$numTasks total.", 'tasks/', 'tasks');
 } else {
-    $tasksLink = Page::imageLink('Tasks', 'tasks/index.php', 'tasks');
+    $tasksLink = Page::imageLink('Tasks', 'tasks/', 'tasks');
 }
 
 if ($numNotifications) {
@@ -93,14 +93,14 @@ $numEventsToday = Events::countOnTime($idusers, $timeToday);
 $numEventsTomorrow = Events::countOnTime($idusers, $timeTomorrow);
 if ($numEventsToday) {
     if ($numEventsTomorrow) {
-        $calendarLink = Page::imageLinkWithDescription('Calendar', n_events($numEventsToday).' today. '.n_events($numEventsTomorrow).' tomorrow.', 'calendar/index.php', 'calendar');
+        $calendarLink = Page::imageLinkWithDescription('Calendar', n_events($numEventsToday).' today. '.n_events($numEventsTomorrow).' tomorrow.', 'calendar/', 'calendar');
     } else {
-        $calendarLink = Page::imageLinkWithDescription('Calendar', n_events($numEventsToday).' today.', 'calendar/index.php', 'calendar');
+        $calendarLink = Page::imageLinkWithDescription('Calendar', n_events($numEventsToday).' today.', 'calendar/', 'calendar');
     }
 } elseif ($numEventsTomorrow) {
-    $calendarLink = Page::imageLinkWithDescription('Calendar', n_events($numEventsTomorrow).' tomorrow.', 'calendar/index.php', 'calendar');
+    $calendarLink = Page::imageLinkWithDescription('Calendar', n_events($numEventsTomorrow).' tomorrow.', 'calendar/', 'calendar');
 } else {
-    $calendarLink = Page::imageLink('Calendar', 'calendar/index.php', 'calendar');
+    $calendarLink = Page::imageLink('Calendar', 'calendar/', 'calendar');
 }
 
 $page->title = 'Home';
@@ -113,9 +113,9 @@ $page->finish(
         .Page::HR
         .$calendarLink
         .Page::HR
-        .($numContacts ? Page::imageLinkWithDescription('Contacts', "$numContacts total.", 'contacts/index.php', 'contacts') : Page::imageLink('Contacts', 'contacts/index.php', 'contacts'))
+        .($numContacts ? Page::imageLinkWithDescription('Contacts', "$numContacts total.", 'contacts/', 'contacts') : Page::imageLink('Contacts', 'contacts/', 'contacts'))
         .Page::HR
-        .($user->storageused ? Page::imageLinkWithDescription('Files', bytestr($user->storageused).' used.', 'files/index.php', 'files') : Page::imageLink('Files', 'files/index.php', 'files'))
+        .($user->storageused ? Page::imageLinkWithDescription('Files', bytestr($user->storageused).' used.', 'files/', 'files') : Page::imageLink('Files', 'files/', 'files'))
         .Page::HR
         .$notesLink
         .Page::HR

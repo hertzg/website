@@ -19,7 +19,7 @@ $page->title = 'Randomize Channel Key';
 $page->finish(
     Tab::create(
         Tab::item('Notifications', '../notifications.php')
-        .Tab::item('Channels', 'index.php')
+        .Tab::item('Channels', './')
         .Tab::activeItem('View'),
         Page::text('Are you sure you want to randomize channel key of "<b>'.htmlspecialchars($channel->channelname).'</b>"?')
         .Page::HR

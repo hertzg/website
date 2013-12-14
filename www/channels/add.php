@@ -15,7 +15,7 @@ $page->title = 'New Channel';
 $page->finish(
     Tab::create(
         Tab::item('Notifications', '../notifications.php')
-        .Tab::item('Channels', 'index.php')
+        .Tab::item('Channels', './')
         .Tab::activeItem('New'),
         Page::errors(ifset($_SESSION['channels/add_errors']))
         .Form::create(

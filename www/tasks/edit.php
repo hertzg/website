@@ -14,7 +14,7 @@ $page->base = '../';
 $page->title = 'Edit Task';
 $page->finish(
     Tab::create(
-        Tab::item('Tasks', 'index.php')
+        Tab::item('Tasks', './')
         .Tab::item('View', "view.php?id=$id")
         .Tab::activeItem('Edit'),
         Page::errors(ifset($_SESSION['tasks/edit_errors']))

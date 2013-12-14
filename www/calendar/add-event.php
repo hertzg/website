@@ -21,7 +21,7 @@ unset($_SESSION['calendar/index_messages']);
 $page->base = '../';
 $page->finish(
     Tab::create(
-        Tab::item('Calendar', 'index.php')
+        Tab::item('Calendar', './')
         .Tab::activeItem('New Event'),
         Page::errors(ifset($_SESSION['calendar/add-event_errors']))
         .Form::create(

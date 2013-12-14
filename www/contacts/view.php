@@ -21,7 +21,7 @@ $page->base = '../';
 $page->title = htmlspecialchars($contact->fullname);
 $page->finish(
     Tab::create(
-        Tab::item('Contacts', 'index.php')
+        Tab::item('Contacts', './')
         .Tab::activeItem('View'),
         Page::messages(ifset($_SESSION['contacts/view_messages']))
         .Form::label('Full name', htmlspecialchars($contact->fullname))

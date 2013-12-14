@@ -23,7 +23,7 @@ $page->base = $base;
 $page->title = htmlspecialchars(mb_substr($notetext, 0, 20, 'UTF-8'));
 $page->finish(
     Tab::create(
-        Tab::item('Notes', 'index.php')
+        Tab::item('Notes', './')
         .Tab::activeItem('View'),
         Page::messages(ifset($_SESSION['notes/view_messages']))
         .Page::text(

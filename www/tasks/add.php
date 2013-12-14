@@ -14,7 +14,7 @@ $page->base = '../';
 $page->title = 'New Task';
 $page->finish(
     Tab::create(
-        Tab::item('Tasks', 'index.php')
+        Tab::item('Tasks', './')
         .Tab::activeItem('New'),
         Page::errors(ifset($_SESSION['tasks/add_errors']))
         .Form::create(

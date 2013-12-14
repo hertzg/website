@@ -17,7 +17,7 @@ if ($keyword === '') {
     $contacts = Contacts::index($idusers);
     if (count($contacts) > 1) {
         $items = array(
-            '<form action="index.php" style="background: #fff; height: 48px; position: relative">'
+            '<form action="./" style="background: #fff; height: 48px; position: relative">'
                 .'<div style="position: absolute; top: 0; right: 48px; bottom: 0; left: 0">'
                     .'<input type="text" name="keyword" value="'.htmlspecialchars($keyword).'"'
                     .' placeholder="Search contacts..." style="padding: 0 12px; width: 100%; height: 100%; cursor: text" />'
@@ -31,7 +31,7 @@ if ($keyword === '') {
 } else {
     $contacts = Contacts::search($idusers, $keyword);
     $items = array(
-        '<form action="index.php" style="background: #fff; height: 48px; position: relative">'
+        '<form action="./" style="background: #fff; height: 48px; position: relative">'
             .'<div style="position: absolute; top: 0; right: 96px; bottom: 0; left: 0">'
                 .'<input type="text" name="keyword" value="'.htmlspecialchars($keyword).'"'
                 .' placeholder="Search contacts..." style="padding: 0 12px; width: 100%; height: 100%; cursor: text" />'
@@ -39,7 +39,7 @@ if ($keyword === '') {
             .'<button class="clickable" style="position: absolute; top: 0; right: 48px; bottom: 0; width: 48px; text-align: center">'
                 .'<span class="icon search"></span>'
             .'</button>'
-            .'<a href="index.php" class="clickable" style="position: absolute; top: 0; right: 0; bottom: 0; width: 48px; text-align: center; line-height: 48px">'
+            .'<a href="./" class="clickable" style="position: absolute; top: 0; right: 0; bottom: 0; width: 48px; text-align: center; line-height: 48px">'
                 .'<div class="icon no" style="vertical-align: middle"></div>'
             .'</a>'
         .'</form>',

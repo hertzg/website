@@ -16,7 +16,7 @@ if ($keyword === '') {
     $notes = Notes::index($idusers);
     if (count($notes) > 1) {
         $items[] =
-            '<form action="index.php" style="background: #fff; height: 48px; position: relative">'
+            '<form action="./" style="background: #fff; height: 48px; position: relative">'
                 .'<div style="position: absolute; top: 0; right: 48px; bottom: 0; left: 0">'
                     .'<input type="text" name="keyword" value="'.htmlspecialchars($keyword).'"'
                     .' placeholder="Search notes..." style="padding: 0 12px; width: 100%; height: 100%; cursor: text" />'

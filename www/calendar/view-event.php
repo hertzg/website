@@ -12,7 +12,7 @@ unset($_SESSION['calendar/index_messages']);
 $page->base = '../';
 $page->finish(
     Tab::create(
-        Tab::item('Calendar', 'index.php')
+        Tab::item('Calendar', './')
         .Tab::activeItem('Event'),
         Page::messages(ifset($_SESSION['calendar/view-event_errors']))
         .Page::text(htmlspecialchars($event->eventtext))

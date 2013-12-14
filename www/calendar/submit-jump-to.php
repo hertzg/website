@@ -12,4 +12,4 @@ $maxYear = date('Y', $timeNow) + 100;
 $year = max(1900, min($maxYear, (int)$year));
 $month = max(1, min(12, (int)$month));
 
-redirect("index.php?year=$year&month=$month");
+redirect("./?year=$year&month=$month");
