@@ -391,15 +391,20 @@ img {
 .tag {
     display: inline-block;
     vertical-align: baseline;
-    padding: 13px;
+    padding: 5px 7px;
     border: 2px solid #bbb;
     border-radius: 2px;
     background: #fff;
     font-weight: bold;
     background: #fff;
+    min-width: 48px;
+    text-align: center;
+    margin: 4px 2px;
     box-shadow: 0 -16px 16px #eee inset;
 }
 .tag:active {
-    background: #ddd;
     box-shadow: none;
+    color: #fff;
+    border: 0;
+    padding: 7px 9px;
 }

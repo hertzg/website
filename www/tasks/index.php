@@ -74,8 +74,8 @@ if ($keyword === '') {
         $items[] = createSearchForm(
             create_search_form_content($keyword)
             .'<a href="./" class="clickable"'
-            .' style="position: absolute; top: 0; right: 0; bottom: 0; width: 48px; text-align: center; line-height: 48px">'
-                .'<div class="icon no" style="vertical-align: middle"></div>'
+            .' style="position: absolute; top: 0; right: 0; bottom: 0; width: 48px; position: absolute">'
+                .'<div class="icon no" style="position: absolute; top: 0; right: 0; left: 0; bottom: 0; margin: auto"></div>'
             .'</a>'
         );
         if (count($tasks) > 1) {
@@ -110,7 +110,7 @@ if ($keyword === '') {
             .create_search_form_content($keyword)
             .'<a href="?tag='.rawurlencode($tag).'" class="clickable"'
             .' style="position: absolute; top: 0; right: 0; bottom: 0; width: 48px; text-align: center; line-height: 48px">'
-                .'<div class="icon no" style="vertical-align: middle"></div>'
+                .'<div class="icon no" style="position: absolute; top: 0; right: 0; left: 0; bottom: 0; margin: auto"></div>'
             .'</a>'
         );
         $href = '?'.htmlspecialchars(
