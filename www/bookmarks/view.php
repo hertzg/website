@@ -43,7 +43,7 @@ $page->finish(
         .($title ? Page::text(htmlspecialchars($title)).Page::HR : '')
         .Page::text('<a class="a" href="'.htmlspecialchars(create_external_url($url, $base)).'">'.htmlspecialchars($url).'</a>')
         .Page::HR
-        .($tags ? Page::text("Tags: $tags").Page::HR : '')
+        .($tags ? "<div class=\"page-text tags\"><span class=\"tags-label\">Tags:</span>$tags</div>".Page::HR : '')
         .Page::text(
             '<div>Bookmark created '.date_ago($inserttime).'.</div>'
             .($inserttime != $updatetime ? '<div>Last modified '.date_ago($updatetime).'.</div>' : '')

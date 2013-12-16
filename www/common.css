@@ -78,6 +78,7 @@ img {
 .page-text {
     padding: 16px;
     background: #fff;
+    word-wrap: break-word;
 }
 .page-info {
     background: #fff;
@@ -388,23 +389,38 @@ img {
     background: #fff;
 }
 
+.tags {
+    padding: 16px 16px 12px 16px;
+    line-height: 40px;
+}
+.tags-label {
+    display: inline-block;
+    vertical-align: top;
+    line-height: 36px;
+    margin-right: 4px;
+}
+
 .tag {
     display: inline-block;
-    vertical-align: baseline;
-    padding: 5px 7px;
-    border: 2px solid #bbb;
-    border-radius: 2px;
-    background: #fff;
+    vertical-align: top;
+    min-width: 48px;
+    box-shadow: 0 -16px 16px #eee inset;
+    text-align: center;
     font-weight: bold;
     background: #fff;
-    min-width: 48px;
-    text-align: center;
-    margin: 4px 2px;
-    box-shadow: 0 -16px 16px #eee inset;
+    padding: 0 7px;
+    border: 2px solid #bbb;
+    border-radius: 2px;
+    white-space: nowrap;
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 32px;
+    margin-right: 4px;
 }
 .tag:active {
     box-shadow: none;
     color: #fff;
     border: 0;
-    padding: 7px 9px;
+    padding: 2px 9px;
 }

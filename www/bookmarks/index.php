@@ -31,9 +31,12 @@ if ($tag === '') {
                         .'</a>'
                     .'</li>';
             }
-            $filterMessage = Page::warnings(array(
-                'Filter by tags: <ul style="display: inline">'.join(' ', $links).'</ul>'
-            ));
+            $filterMessage =
+                '<div class="tags" style="background: #eee; color: #444">'
+                    .'<span class="tags-label">Filter by tags:</span>'
+                    .join('', $links)
+                .'</div>'
+                .'<div class="warnings-hr"></div>';
         }
     } else {
         $filterMessage = '';

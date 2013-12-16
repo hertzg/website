@@ -34,7 +34,7 @@ foreach ($taskTags as $taskTag) {
             .$escapedTag
         .'</a>';
 }
-$tags = join(' ', $tags);
+$tags = join('', $tags);
 
 $base = '../';
 
@@ -51,7 +51,7 @@ $page->finish(
             )
         )
         .Page::HR
-        .($tags ? Page::text("Tags: $tags").Page::HR : '')
+        .($tags ? "<div class=\"page-text tags\"><span class=\"tags-label\">Tags:</span>$tags</div>".Page::HR : '')
         .Page::text(
             '<div>Task created '.date_ago($inserttime).'.</div>'
             .($inserttime != $updatetime ? '<div>Last modified '.date_ago($updatetime).'.</div>' : '')
