@@ -19,6 +19,7 @@
     background-color: #281;
     border-bottom-color: #261;
 }
+.tag:active,
 .clickable:active {
     background-color: #2a1;
 }

@@ -92,12 +92,14 @@ if ($keyword === '') {
                         ))
                     );
                     $links[] =
-                        "<a class=\"a\" href=\"$href\">"
-                            .htmlspecialchars($tagname)
-                        .'</a>';
+                        '<li style="display: inline-block">'
+                            ."<a class=\"tag\" href=\"$href\">"
+                                .htmlspecialchars($tagname)
+                            .'</a>'
+                        .'</li>';
                 }
                 $filterMessage = Page::warnings(array(
-                    'Filter by tags: '.join(' &middot; ', $links)
+                    'Filter by tags: <ul style="display: inline">'.join(' ', $links).'</ul>'
                 ));
             }
         } else {
