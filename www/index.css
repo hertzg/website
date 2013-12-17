@@ -11,7 +11,6 @@ html, body {
     background: #fff;
     text-align: center;
     font-weight: bold;
-    transition: 0.2s background-color, 0.2s color;
 }
 .button:active {
     color: #fff;

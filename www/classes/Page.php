@@ -17,6 +17,8 @@ class Page {
 
     function echoHtml ($body) {
 
+        global $revisions;
+
         $theme = $this->theme;
         $base = $this->base;
 
@@ -30,7 +32,7 @@ class Page {
                     ."<link rel=\"icon\" type=\"image/png\" href=\"{$base}images/favicon.png\" />"
                     .'<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />'
                     .'<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />'
-                    ."<link rel=\"stylesheet\" type=\"text/css\" href=\"{$base}common.css?26\" />"
+                    ."<link rel=\"stylesheet\" type=\"text/css\" href=\"{$base}common.css?".$revisions['common.css'].'" />'
                     ."<link rel=\"stylesheet\" type=\"text/css\" href=\"{$base}icons.css?3\" />"
                     ."<link rel=\"stylesheet\" type=\"text/css\" href=\"{$base}themes/$theme/common.css?8\" />"
                     .$this->head
@@ -174,4 +176,5 @@ class Page {
 
 }
 
+include_once __DIR__.'/../lib/revisions.php';
 $page = new Page;
