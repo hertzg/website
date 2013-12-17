@@ -110,7 +110,7 @@ if ($events) {
 $page->base = '../';
 $page->title = 'Calendar';
 $page->head =
-    '<link rel="stylesheet" type="text/css" href="index.css" />'
+    '<link rel="stylesheet" type="text/css" href="index.css?1" />'
     ."<link rel=\"stylesheet\" type=\"text/css\" href=\"themes/$page->theme/index.css\" />";
 $page->finish(
     Tab::create(

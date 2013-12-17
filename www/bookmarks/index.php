@@ -43,10 +43,15 @@ if ($tag === '') {
     }
 } else {
     $bookmarks = Bookmarks::indexOnTag($idusers, $tag);
-    $filterMessage = Page::warnings(array(
-        'Showing bookmarks with <b>'.htmlspecialchars($tag).'</b> tag.'
-        .' <a class="a" href="./">Show all</a>',
-    ));
+    $filterMessage =
+        '<div style="position: relative; height: 48px; background: #eee; padding: 16px">'
+            .'Showing tasks with <b>'.htmlspecialchars($tag).'</b> tag.'
+            .'<a class="clickable" title="Clear Filter" href="./"'
+            .' style="position: absolute; top: 0; right: 0; bottom: 0; width: 48px">'
+                .'<span class="icon no" style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; margin: auto"></span>'
+            .'</a>'
+        .'</div>'
+        .'<div class="warnings-hr"></div>';
 }
 
 $items = array();

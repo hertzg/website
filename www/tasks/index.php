@@ -63,10 +63,8 @@ if ($keyword === '') {
                 .create_search_form_empty_content($keyword)
             );
         }
-        $filterMessage = Page::warnings(array(
-            'Showing tasks with <b>'.htmlspecialchars($tag).'</b> tag.'
-            .' <a class="a" href="./">Show all</a>',
-        ));
+        include_once 'fns/create_clear_filter_bar.php';
+        $filterMessage = create_clear_filter_bar($tag, './');
     }
 } else {
     include_once 'fns/create_search_form_content.php';
@@ -119,15 +117,11 @@ if ($keyword === '') {
                 .'</div>'
             .'</a>'
         );
-        $href = '?'.htmlspecialchars(
-            http_build_query(array(
-                'keyword' => $keyword,
-            ))
+        $clearHref = '?'.htmlspecialchars(
+            http_build_query(array('keyword' => $keyword))
         );
-        $filterMessage = Page::warnings(array(
-            'Showing tasks with <b>'.htmlspecialchars($tag).'</b> tag.'
-            ." <a class=\"a\" href=\"$href\">Show all</a>",
-        ));
+        include_once 'fns/create_clear_filter_bar.php';
+        $filterMessage = create_clear_filter_bar($tag, $clearHref);
     }
 }
 

@@ -128,7 +128,7 @@ img {
 
 .clickable {
     display: block;
-    background: #fff;
+    background: transparent;
     width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -412,7 +412,7 @@ img {
     border: 2px solid #bbb;
     border-radius: 2px;
     white-space: nowrap;
-    max-width: 100px;
+    max-width: 240px;
     overflow: hidden;
     text-overflow: ellipsis;
     line-height: 32px;
