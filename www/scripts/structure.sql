@@ -1,13 +1,20 @@
+
 -- phpMyAdmin SQL Dump
 -- version 2.11.11.3
 -- http://www.phpmyadmin.net
 --
 -- Host: 173.201.214.106
--- Generation Time: Dec 14, 2013 at 11:57 AM
+-- Generation Time: Dec 17, 2013 at 07:39 AM
 -- Server version: 5.0.96
 -- PHP Version: 5.1.6
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `zviniwww`
@@ -41,10 +48,10 @@ CREATE TABLE `bookmarktags` (
   `idbookmarktags` bigint(20) unsigned NOT NULL auto_increment,
   `idbookmarks` bigint(20) unsigned NOT NULL,
   `idusers` bigint(20) unsigned NOT NULL,
-  `tagname` varchar(32) character set utf8 collate utf8_unicode_ci NOT NULL,
+  `tagname` varchar(64) character set utf8 collate utf8_unicode_ci NOT NULL,
   PRIMARY KEY  (`idbookmarktags`),
   KEY `idbookmarks` (`idbookmarks`,`idusers`,`tagname`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 -- --------------------------------------------------------
 
@@ -76,9 +83,24 @@ CREATE TABLE `contacts` (
   `email` varchar(32) default NULL,
   `phone1` varchar(32) default NULL,
   `phone2` varchar(32) default NULL,
+  `tags` varchar(256) character set utf8 collate utf8_unicode_ci NOT NULL,
   PRIMARY KEY  (`idcontacts`),
   KEY `idusers` (`idusers`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=40 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contacttags`
+--
+
+CREATE TABLE `contacttags` (
+  `idcontacttags` bigint(20) unsigned NOT NULL auto_increment,
+  `idcontacts` bigint(20) unsigned NOT NULL,
+  `idusers` bigint(20) unsigned NOT NULL,
+  `tagname` varchar(64) character set utf8 collate utf8_unicode_ci NOT NULL,
+  PRIMARY KEY  (`idcontacttags`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -159,11 +181,27 @@ CREATE TABLE `notes` (
   `idnotes` bigint(20) unsigned NOT NULL auto_increment,
   `idusers` bigint(20) unsigned NOT NULL,
   `notetext` varchar(1024) character set utf8 collate utf8_unicode_ci NOT NULL,
+  `tags` varchar(256) character set utf8 collate utf8_unicode_ci NOT NULL,
   `inserttime` bigint(20) unsigned NOT NULL,
   `updatetime` bigint(20) unsigned NOT NULL,
   PRIMARY KEY  (`idnotes`),
   KEY `idusers` (`idusers`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=56 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notetags`
+--
+
+CREATE TABLE `notetags` (
+  `idnotetags` bigint(20) unsigned NOT NULL auto_increment,
+  `idnotes` bigint(20) unsigned NOT NULL,
+  `idusers` bigint(20) unsigned NOT NULL,
+  `tagname` varchar(64) character set utf8 collate utf8_unicode_ci NOT NULL,
+  PRIMARY KEY  (`idnotetags`),
+  KEY `idnotes` (`idnotes`,`idusers`,`tagname`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -180,7 +218,7 @@ CREATE TABLE `notifications` (
   `inserttime` bigint(20) unsigned NOT NULL,
   PRIMARY KEY  (`idnotifications`),
   KEY `idusers` (`idusers`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 -- --------------------------------------------------------
 
@@ -210,7 +248,7 @@ CREATE TABLE `tasktags` (
   `idtasktags` bigint(20) unsigned NOT NULL auto_increment,
   `idtasks` bigint(20) unsigned NOT NULL,
   `idusers` bigint(20) unsigned NOT NULL,
-  `tagname` varchar(32) character set utf8 collate utf8_unicode_ci NOT NULL,
+  `tagname` varchar(64) character set utf8 collate utf8_unicode_ci NOT NULL,
   PRIMARY KEY  (`idtasktags`),
   KEY `idtasks` (`idtasks`,`idusers`,`tagname`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=111 ;
@@ -238,4 +276,3 @@ CREATE TABLE `users` (
   KEY `password` (`password`),
   KEY `email` (`email`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=54 ;
-

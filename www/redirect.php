@@ -1,8 +1,8 @@
 <?php
 
 include_once 'fns/request_strings.php';
-include_once 'classes/Page.php';
 include_once 'lib/user.php';
+include_once 'classes/Page.php';
 
 list($url) = request_strings('url');
 
