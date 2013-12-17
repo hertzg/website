@@ -20,6 +20,15 @@
     border: 0;
 }
 
+::-webkit-input-placeholder {
+    color: #000;
+    opacity: 0.5;
+}
+::-moz-placeholder {
+    color: #000;
+    opacity: 0.5;
+}
+
 html,
 body {
     font: normal 16px/18px sans-serif;
@@ -209,14 +218,22 @@ img {
     cursor: text;
     height: 48px;
     line-height: 48px;
-    padding: 0 12px;
+    padding: 0 16px;
+}
+.form-textfield:focus,
+.form-textfield:-moz-ui-invalid {
+    padding: 0 14px;
 }
 .form-textarea {
     width: 100%;
     font-weight: bold;
     cursor: text;
-    padding: 12px;
+    padding: 12px 16px;
     height: 100px;
+}
+.form-textarea:focus,
+.form-textarea:-moz-ui-invalid {
+    padding: 12px 14px;
 }
 .form-button {
     text-align: center;
@@ -233,8 +250,11 @@ img {
 .form-select {
     width: 100%;
     height: 48px;
-    padding: 12px;
+    padding: 12px 16px;
     font-weight: bold;
+}
+.form-select:focus {
+    padding: 10px 14px;
 }
 .form-captcha {
     background: #fff;
@@ -242,7 +262,7 @@ img {
 }
 .form-label {
     font-weight: bold;
-    padding: 0 12px;
+    padding: 0 16px;
     line-height: 48px;
     white-space: nowrap;
     overflow: hidden;
@@ -256,7 +276,6 @@ img {
 }
 .form-textfield:-moz-ui-invalid,
 .form-textarea:-moz-ui-invalid {
-    padding: 10px;
     border: 2px solid #f44;
     border-radius: 2px;
     background-color: #fff4f4;
@@ -264,7 +283,6 @@ img {
 .form-select:focus,
 .form-textfield:focus,
 .form-textarea:focus {
-    padding: 10px;
     border: 2px solid transparent;
     border-radius: 2px;
 }
@@ -390,14 +408,14 @@ img {
 }
 
 .tags {
-    padding: 16px 16px 12px 16px;
-    line-height: 40px;
+    padding: 6px 16px 0px;
+    line-height: 42px;
 }
 .tags-label {
     display: inline-block;
     vertical-align: top;
     line-height: 36px;
-    margin-right: 4px;
+    margin-right: 8px;
 }
 
 .tag {
@@ -416,7 +434,7 @@ img {
     overflow: hidden;
     text-overflow: ellipsis;
     line-height: 32px;
-    margin-right: 4px;
+    margin-right: 6px;
 }
 .tag:active {
     box-shadow: none;

@@ -63,7 +63,7 @@ if ($keyword === '') {
                 .create_search_form_empty_content($keyword)
             );
         }
-        include_once 'fns/create_clear_filter_bar.php';
+        include_once '../fns/create_clear_filter_bar.php';
         $filterMessage = create_clear_filter_bar($tag, './');
     }
 } else {
@@ -120,7 +120,7 @@ if ($keyword === '') {
         $clearHref = '?'.htmlspecialchars(
             http_build_query(array('keyword' => $keyword))
         );
-        include_once 'fns/create_clear_filter_bar.php';
+        include_once '../fns/create_clear_filter_bar.php';
         $filterMessage = create_clear_filter_bar($tag, $clearHref);
     }
 }
