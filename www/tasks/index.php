@@ -1,8 +1,8 @@
 <?php
 
-function createSearchForm ($content) {
+function create_search_form ($content) {
     return
-        '<form action="./" style="background: #fff; height: 48px; position: relative">'
+        '<form action="./" style="height: 48px; position: relative">'
             .$content
         .'</form>';
 }
@@ -28,11 +28,11 @@ if ($keyword === '') {
     if ($tag === '') {
         $tasks = Tasks::index($idusers);
         if (count($tasks) > 1) {
-            $items[] = createSearchForm(create_search_form_empty_content());
+            $items[] = create_search_form(create_search_form_empty_content());
             include_once '../classes/TaskTags.php';
             $taskTags = TaskTags::indexOnUser($idusers);
             if ($taskTags) {
-                $links = array();
+                $links = '';
                 foreach ($taskTags as $taskTag) {
                     $tagname = $taskTag->tagname;
                     $href = '?'.htmlspecialchars(
@@ -40,7 +40,7 @@ if ($keyword === '') {
                             'tag' => $tagname,
                         ))
                     );
-                    $links[] =
+                    $links .=
                         "<a class=\"tag\" href=\"$href\">"
                             .htmlspecialchars($tagname)
                         .'</a>';
@@ -48,7 +48,7 @@ if ($keyword === '') {
                 $filterMessage =
                     '<div class="tags" style="background: #eee; color: #444">'
                         .'<span class="tags-label">Filter by tags:</span>'
-                        .join('', $links)
+                        .$links
                     .'</div>'
                     .'<div class="warnings-hr"></div>';
             }
@@ -58,7 +58,7 @@ if ($keyword === '') {
     } else {
         $tasks = Tasks::indexOnTag($idusers, $tag);
         if (count($tasks) > 1) {
-            $items[] = createSearchForm(
+            $items[] = create_search_form(
                 createTagInput($tag)
                 .create_search_form_empty_content($keyword)
             );
@@ -72,18 +72,19 @@ if ($keyword === '') {
     include_once 'fns/create_search_form_content.php';
     if ($tag === '') {
         $tasks = Tasks::search($idusers, $keyword);
-        $items[] = createSearchForm(
+        $items[] = create_search_form(
             create_search_form_content($keyword)
-            .'<a href="./" class="clickable"'
+            .'<a href="./" class="clickable" title="Clear Search Keyword"'
             .' style="position: absolute; top: 0; right: 0; bottom: 0; width: 48px; position: absolute">'
-                .'<div class="icon no" style="position: absolute; top: 0; right: 0; left: 0; bottom: 0; margin: auto"></div>'
+                .'<div class="icon no" style="position: absolute; top: 0; right: 0; left: 0; bottom: 0; margin: auto">'
+                .'</div>'
             .'</a>'
         );
         if (count($tasks) > 1) {
             include_once '../classes/TaskTags.php';
             $taskTags = TaskTags::indexOnUser($idusers);
             if ($taskTags) {
-                $links = array();
+                $links = '';
                 foreach ($taskTags as $taskTag) {
                     $tagname = $taskTag->tagname;
                     $href = '?'.htmlspecialchars(
@@ -92,30 +93,30 @@ if ($keyword === '') {
                             'keyword' => $keyword,
                         ))
                     );
-                    $links[] =
-                        '<li style="display: inline-block">'
-                            ."<a class=\"tag\" href=\"$href\">"
-                                .htmlspecialchars($tagname)
-                            .'</a>'
-                        .'</li>';
+                    $links .=
+                        "<a class=\"tag\" href=\"$href\">"
+                            .htmlspecialchars($tagname)
+                        .'</a>';
                 }
-                $filterMessage = Page::warnings(array(
-                    '<div style="line-height: 40px">'
-                        .'Filter by tags: <ul style="display: inline">'.join(' ', $links).'</ul>'
+                $filterMessage =
+                    '<div class="tags" style="background: #eee; color: #444">'
+                        .'<span class="tags-label">Filter by tags:</span>'
+                        .$links
                     .'</div>'
-                ));
+                    .'<div class="warnings-hr"></div>';
             }
         } else {
             $filterMessage = '';
         }
     } else {
         $tasks = Tasks::searchOnTag($idusers, $keyword, $tag);
-        $items[] = createSearchForm(
+        $items[] = create_search_form(
             createTagInput($tag)
             .create_search_form_content($keyword)
-            .'<a href="?tag='.rawurlencode($tag).'" class="clickable"'
+            .'<a href="?tag='.rawurlencode($tag).'" class="clickable" title="Clear Search Keyword"'
             .' style="position: absolute; top: 0; right: 0; bottom: 0; width: 48px; text-align: center; line-height: 48px">'
-                .'<div class="icon no" style="position: absolute; top: 0; right: 0; left: 0; bottom: 0; margin: auto"></div>'
+                .'<div class="icon no" style="position: absolute; top: 0; right: 0; left: 0; bottom: 0; margin: auto">'
+                .'</div>'
             .'</a>'
         );
         $href = '?'.htmlspecialchars(
