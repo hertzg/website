@@ -24,6 +24,12 @@
     color: #000;
     opacity: 0.5;
 }
+/* firefox 4 to 18 */
+*:-moz-placeholder {
+    color: #000;
+    opacity: 0.5;
+}
+/* firefox 19 to ~ */
 ::-moz-placeholder {
     color: #000;
     opacity: 0.5;
