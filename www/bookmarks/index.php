@@ -45,7 +45,7 @@ if ($tag === '') {
     $bookmarks = Bookmarks::indexOnTag($idusers, $tag);
     $filterMessage =
         '<div style="position: relative; height: 48px; background: #eee; padding: 16px">'
-            .'Showing tasks with <b>'.htmlspecialchars($tag).'</b> tag.'
+            .'Showing bookmarks with <b>'.htmlspecialchars($tag).'</b> tag.'
             .'<a class="clickable" title="Clear Filter" href="./"'
             .' style="position: absolute; top: 0; right: 0; bottom: 0; width: 48px">'
                 .'<span class="icon no" style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; margin: auto"></span>'
