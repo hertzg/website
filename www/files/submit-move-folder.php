@@ -8,9 +8,11 @@ function is_child_folder ($idusers, $folder, $idfolders) {
     }
 }
 
+include_once '../lib/sameDomainReferer.php';
+include_once '../fns/redirect.php';
+if (!$sameDomainReferer) redirect('..');
 include_once 'lib/require-folder.php';
 include_once 'fns/create_folder_link.php';
-include_once '../fns/redirect.php';
 include_once '../fns/request_strings.php';
 include_once '../classes/Folders.php';
 

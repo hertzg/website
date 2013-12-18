@@ -1,5 +1,8 @@
 <?php
 
+include_once '../lib/sameDomainReferer.php';
+include_once '../fns/redirect.php';
+if (!$sameDomainReferer) redirect('..');
 include_once 'lib/require-task.php';
 
 include_once '../classes/Tasks.php';
@@ -10,5 +13,4 @@ TaskTags::deleteOnTask($id);
 
 $_SESSION['tasks/index_messages'] = array('Task has been deleted.');
 
-include_once '../fns/redirect.php';
 redirect();

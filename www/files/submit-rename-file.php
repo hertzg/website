@@ -1,7 +1,9 @@
 <?php
 
-include_once 'lib/require-file.php';
+include_once '../lib/sameDomainReferer.php';
 include_once '../fns/redirect.php';
+if (!$sameDomainReferer) redirect('..');
+include_once 'lib/require-file.php';
 include_once '../fns/request_strings.php';
 include_once '../classes/Files.php';
 

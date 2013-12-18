@@ -1,7 +1,9 @@
 <?php
 
-include_once 'fns/is_md5.php';
+include_once 'lib/sameDomainReferer.php';
 include_once 'fns/redirect.php';
+if (!$sameDomainReferer) redirect();
+include_once 'fns/is_md5.php';
 include_once 'fns/request_strings.php';
 include_once 'classes/Users.php';
 include_once 'lib/session-start.php';
