@@ -34,12 +34,7 @@ class Tasks {
         global $mysqli;
         mysqli_query(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'delete from tasks'
-                .' where idusers = #u and idtasks = #u',
-                array($idusers, $id)
-            )
+            "delete from tasks where idusers = $idusers and idtasks = $id"
         );
     }
 
@@ -156,12 +151,8 @@ class Tasks {
         global $mysqli;
         mysqli_query(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'update tasks set done = #b'
-                .' where idusers = #u and idtasks = #u',
-                array($done, $idusers, $id)
-            )
+            'update tasks set done = '.($done ? '1' : '0')
+            ." where idusers = $idusers and idtasks = $id"
         );
     }
 

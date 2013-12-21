@@ -13,6 +13,7 @@ list($idusers, $resetpasswordkey, $password1, $password2) = request_strings(
 
 if (!is_md5($resetpasswordkey)) redirect();
 
+$idusers = abs((int)$idusers);
 $user = Users::getByResetPasswordKey($idusers, $resetpasswordkey);
 if (!$user) redirect();
 

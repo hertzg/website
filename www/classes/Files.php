@@ -44,11 +44,7 @@ class Files {
 
         mysqli_query(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'delete from files where idfiles = #u',
-                array($id)
-            )
+            "delete from files where idusers = $idusers and idfiles = $id"
         );
 
         $filename = self::filename($idusers, $id);
@@ -59,12 +55,8 @@ class Files {
 
             mysqli_query(
                 $mysqli,
-                mysqli_sprintf(
-                    $mysqli,
-                    'update users set storageused = storageused - #u'
-                    .' where idusers = #u',
-                    array($filesize, $idusers)
-                )
+                "update users set storageused = storageused - $filesize"
+                ." where idusers = $idusers"
             );
 
         }

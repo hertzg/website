@@ -37,12 +37,7 @@ class Contacts {
         global $mysqli;
         mysqli_query(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'delete from contacts'
-                .' where idusers = #u and idcontacts = #u',
-                array($idusers, $id)
-            )
+            "delete from contacts where idusers = $idusers and idcontacts = $id"
         );
     }
 

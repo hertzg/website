@@ -33,12 +33,7 @@ class Notes {
         global $mysqli;
         mysqli_query(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'delete from notes'
-                .' where idusers = #u and idnotes = #u',
-                array($idusers, $id)
-            )
+            "delete from notes where idusers = $idusers and idnotes = $id"
         );
     }
 

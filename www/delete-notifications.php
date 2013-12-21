@@ -9,6 +9,8 @@ include_once 'classes/Tab.php';
 
 list($id) = request_strings('id');
 
+$id = abs((int)$id);
+
 $channel = Channels::get($idusers, $id);
 if (!$channel) redirect('notifications.php');
 

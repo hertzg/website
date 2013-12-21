@@ -3,7 +3,6 @@
 include_once 'lib/require-event.php';
 include_once '../fns/create_panel.php';
 include_once '../fns/ifset.php';
-include_once '../fns/request_strings.php';
 include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
 

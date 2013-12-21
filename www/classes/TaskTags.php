@@ -28,15 +28,7 @@ class TaskTags {
 
     static function deleteOnTask ($idtasks) {
         global $mysqli;
-        mysqli_query(
-            $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'delete from tasktags'
-                .' where idtasks = #u',
-                array($idtasks)
-            )
-        );
+        mysqli_query($mysqli, "delete from tasktags where idtasks = $idtasks");
     }
 
     static function indexOnTask ($idtasks) {

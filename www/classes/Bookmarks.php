@@ -34,12 +34,7 @@ class Bookmarks {
         global $mysqli;
         mysqli_query(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'delete from bookmarks'
-                .' where idusers = #u and idbookmarks = #u',
-                array($idusers, $id)
-            )
+            "delete from bookmarks where idusers = $idusers and idbookmarks = $id"
         );
     }
 

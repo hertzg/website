@@ -30,12 +30,7 @@ class BookmarkTags {
         global $mysqli;
         mysqli_query(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'delete from bookmarktags'
-                .' where idbookmarks = #u',
-                array($idbookmarks)
-            )
+            "delete from bookmarktags where idbookmarks = $idbookmarks"
         );
     }
 

@@ -10,6 +10,7 @@ include_once 'classes/Tab.php';
 
 list($id) = request_strings('id');
 
+$id = abs((int)$id);
 Users::clearNumNotifications($idusers);
 
 $filterMessage = '';

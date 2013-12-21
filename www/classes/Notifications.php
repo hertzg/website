@@ -36,14 +36,7 @@ class Notifications {
 
     static function deleteAll ($idusers) {
         global $mysqli;
-        mysqli_query(
-            $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'delete from notifications where idusers = #u',
-                array($idusers)
-            )
-        );
+        mysqli_query($mysqli, "delete from notifications where idusers = $idusers");
         Channels::clearNumNotifications($idusers);
     }
 

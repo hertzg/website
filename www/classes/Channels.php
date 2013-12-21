@@ -61,21 +61,12 @@ class Channels {
     }
 
     static function delete ($idusers, $id) {
-
         global $mysqli;
-
         mysqli_query(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'delete from channels'
-                .' where idusers = #u and idchannels = #u',
-                array($idusers, $id)
-            )
+            "delete from channels where idusers = $idusers and idchannels = $id"
         );
-
         Notifications::deleteOnChannel($idusers, $id);
-
     }
 
     static function deleteOnUser ($idusers) {

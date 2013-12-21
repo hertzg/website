@@ -38,12 +38,7 @@ class Events {
         global $mysqli;
         mysqli_query(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'delete from events'
-                .' where idusers = #u and idevents = #u',
-                array($idusers, $id)
-            )
+            "delete from events where idusers = $idusers and idevents = $id"
         );
     }
 
