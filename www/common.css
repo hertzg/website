@@ -131,6 +131,8 @@ label {
     border: 2px solid transparent;
     border-bottom: 0;
     padding: 14px 8px 16px 8px;
+    z-index: 1;
+    position: relative;
 }
 .tab-normal:active {
     background: #555;
