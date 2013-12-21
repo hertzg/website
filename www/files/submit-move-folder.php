@@ -32,7 +32,9 @@ if ($parentidfolders) {
 $existingFolder = Folders::getByName($idusers, $parentidfolders, $folder->foldername);
 if ($existingFolder) {
     $_SESSION['files/move-folder_parentidfolders'] = $parentidfolders;
-    $_SESSION['files/move-folder_errors'] = array('A folder with the same name already exists in this folder.');
+    $_SESSION['files/move-folder_errors'] = array(
+        'A folder with the same name already exists in this folder.',
+    );
     redirect("move-folder.php?idfolders=$idfolders&parentidfolders=$parentidfolders");
 }
 

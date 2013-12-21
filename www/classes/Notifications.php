@@ -28,7 +28,10 @@ class Notifications {
 
     static function countOnUser ($idusers) {
         global $mysqli;
-        return mysqli_single_object($mysqli, "select count(*) count from notifications where idusers = $idusers")->count;
+        return mysqli_single_object(
+            $mysqli,
+            "select count(*) count from notifications where idusers = $idusers"
+        )->count;
     }
 
     static function deleteAll ($idusers) {

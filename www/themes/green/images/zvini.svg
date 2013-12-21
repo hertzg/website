@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   width="51"
+   height="24"
+   id="svg2"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="zvini.svg">
+  <metadata
+     id="metadata26">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs24" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1366"
+     inkscape:window-height="717"
+     id="namedview22"
+     showgrid="false"
+     inkscape:zoom="6.2156863"
+     inkscape:cx="-3.8611987"
+     inkscape:cy="12"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <path
+     fill="#f80"
+     d="m0 2 v 20 a2 2 0 0 0 2 2 h20 a2 2 0 0 0 2 -2 v-20 a2 2 0 0 0 -2 -2 h-20 a2 2 0 0 0 -2 2"
+     id="path4"
+     style="fill:#22aa11;fill-opacity:1" />
+  <g
+     fill="#fff"
+     id="g6">
+    <path
+       transform="translate(6.5, 9)"
+       d="m0 0 h11 v3 l-7 6 h7 v3 h-11 v-3 l7 -6 h-7 z m5.5 -1 c6 -9 -6 -9 0 0 m-1 0 c-4 -9 -10 0 0 0 m2 0 c4 -9 10 0 0 0"
+       id="path8" />
+    <path
+       transform="translate(18.5, 14)"
+       d="m0 0 l4 7 h1.5 v-3.5 l-2 -3.5 z"
+       id="path10" />
+  </g>
+  <g
+     fill="#fff"
+     id="g12">
+    <path
+       transform="translate(29.5, 14)"
+       d="m0 0 l-4 7 h-1.5 v-3.5 l2 -3.5 z"
+       id="path14" />
+    <path
+       transform="translate(31, 14)"
+       d="m0 0 v8 h3 v-8 z m1.5 -2 c5 -7 -5 -7 0 0 z"
+       id="path16" />
+    <path
+       transform="translate(36, 14)"
+       d="m0 0 v8 h3 v-8 z m3 5 a2 2 0 0 1 4 0 v3 h3 v-4 a4 4 0 0 0 -8 0"
+       id="path18" />
+    <path
+       transform="translate(48, 14)"
+       d="m0 0 v8 h3 v-8 z m1.5 -2 c5 -7 -5 -7 0 0 z"
+       id="path20" />
+  </g>
+</svg>

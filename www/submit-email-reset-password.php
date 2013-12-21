@@ -54,7 +54,10 @@ mail(
             .'<title>Reset Password for Zvini Account</title>'
         .'</head>'
         .'<body>'
-            .'<div>Password reset has been requested for your Zvini account. To reset password visit the following link:</div>'
+            .'<div>'
+                .'Password reset has been requested for your Zvini account.'
+                .' To reset password visit the following link:'
+            .'</div>'
             .'<br />'
             ."<a href=\"$href\">$href</a>"
         .'</body>'

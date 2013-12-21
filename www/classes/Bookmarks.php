@@ -24,7 +24,10 @@ class Bookmarks {
 
     static function countOnUser ($idusers) {
         global $mysqli;
-        return mysqli_single_object($mysqli, "select count(*) count from bookmarks where idusers = $idusers")->count;
+        return mysqli_single_object(
+            $mysqli,
+            "select count(*) count from bookmarks where idusers = $idusers"
+        )->count;
     }
 
     static function delete ($idusers, $id) {

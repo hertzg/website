@@ -22,7 +22,9 @@ if ($idfolders) {
 $existingFile = Files::getByName($idusers, $idfolders, $file->filename);
 if ($existingFile) {
     $_SESSION['files/move-file_idfolders'] = $idfolders;
-    $_SESSION['files/move-file_errors'] = array('A file with the same name already exists in this folder.');
+    $_SESSION['files/move-file_errors'] = array(
+        'A file with the same name already exists in this folder.',
+    );
     redirect("move-file.php?id=$id&idfolders=$idfolders");
 }
 

@@ -62,7 +62,8 @@ class Page {
             '<div id="tbar">'
                 .'<div style="position: relative">'
                     .'<a class="topLink" href="'.($base ? $base : './').'">'
-                        ."<img src=\"{$base}images/zvini.png\" alt=\"Zvini\" width=\"51\" height=\"24\" />"
+                        ."<img src=\"{$base}themes/$this->theme/images/zvini.png\" alt=\"Zvini\""
+                        .' width="51" height="24" style="vertical-align: top" />'
                     .'</a>'
                     .($this->hideSignOutLink ? '' : 
                     '<div style="position: absolute; top: 0; right: 0">'

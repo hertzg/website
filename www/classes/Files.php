@@ -72,7 +72,10 @@ class Files {
 
     static function deleteOnUser ($idusers) {
         global $mysqli;
-        $files = mysqli_query_object($mysqli, "select * from files where idusers = $idusers");
+        $files = mysqli_query_object(
+            $mysqli,
+            "select * from files where idusers = $idusers"
+        );
         foreach ($files as $file) {
             unlink(self::filename($idusers, $file->idfiles));
         }

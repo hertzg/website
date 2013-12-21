@@ -19,6 +19,7 @@
     background-color: #37c;
     border-bottom-color: #36a;
 }
+
 .tag:active,
 .clickable:active {
     background-color: #39e;
@@ -30,6 +31,16 @@
     border-bottom-color: #36a;
 }
 
+.tab-normal:focus,
+.topLink:focus,
 .tag:focus {
     border-color: #39e;
+}
+
+.tab-normal:focus,
+.topLink:focus {
+    background: rgba(51, 158, 224, 0.2);
+}
+.topLink:active {
+    background: rgba(51, 158, 224);
 }

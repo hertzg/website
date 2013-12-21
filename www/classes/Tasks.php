@@ -24,7 +24,10 @@ class Tasks {
 
     static function countOnUser ($idusers) {
         global $mysqli;
-        return mysqli_single_object($mysqli, "select count(*) count from tasks where idusers = $idusers")->count;
+        return mysqli_single_object(
+            $mysqli,
+            "select count(*) count from tasks where idusers = $idusers"
+        )->count;
     }
 
     static function delete ($idusers, $id) {
@@ -108,7 +111,11 @@ class Tasks {
 
     static function search ($idusers, $keyword) {
         global $mysqli;
-        $keyword = str_replace(array('\\', '%', '_'), array('\\\\', '\\%', '\\_'), $keyword);
+        $keyword = str_replace(
+            array('\\', '%', '_'),
+            array('\\\\', '\\%', '\\_'),
+            $keyword
+        );
         return mysqli_query_object(
             $mysqli,
             mysqli_sprintf(
@@ -123,7 +130,11 @@ class Tasks {
 
     static function searchOnTag ($idusers, $keyword, $tag) {
         global $mysqli;
-        $keyword = str_replace(array('\\', '%', '_'), array('\\\\', '\\%', '\\_'), $keyword);
+        $keyword = str_replace(
+            array('\\', '%', '_'),
+            array('\\\\', '\\%', '\\_'),
+            $keyword
+        );
         return mysqli_query_object(
             $mysqli,
             mysqli_sprintf(

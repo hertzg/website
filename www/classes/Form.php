@@ -14,7 +14,8 @@ class Form {
     }
 
     static function button ($text) {
-        return "<input class=\"clickable form-button\" type=\"submit\" value=\"$text\" />";
+        return '<input class="clickable form-button"'
+            ." type=\"submit\" value=\"$text\" />";
     }
 
     static function captcha () {
@@ -24,7 +25,8 @@ class Form {
                     'required' => true,
                 ))
                 .'<div class="form-captcha">'
-                    .'<img src="captcha.php" alt="CAPTCHA" width="102" height="40" />'
+                    .'<img src="captcha.php" style="vertical-align: top"'
+                    .' alt="CAPTCHA" width="102" height="40" />'
                 .'</div>'
                 .Page::HR;
         }
@@ -71,7 +73,10 @@ class Form {
         $selectHtml = "<select class=\"form-select\" name=\"$name\" id=\"$name\">";
         foreach ($options as $itemValue => $itemText) {
             if ($itemValue == $value) {
-                $selectHtml .= "<option selected=\"selected\" value=\"$itemValue\">$itemText</option>";
+                $selectHtml .=
+                    "<option selected=\"selected\" value=\"$itemValue\">"
+                        .$itemText
+                    .'</option>';
             } else {
                 $selectHtml .= "<option value=\"$itemValue\">$itemText</option>";
             }

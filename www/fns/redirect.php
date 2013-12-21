@@ -11,7 +11,9 @@ function redirect ($url = './') {
             .'</head>'
             .'<body>'
                 .'<h1>Document Moved</h1>'
-                .'<p>The document has moved <a href="'.htmlspecialchars($url).'">here</a>.</p>'
+                .'<p>'
+                    .'The document has moved <a href="'.htmlspecialchars($url).'">here</a>.'
+                .'</p>'
             .'</body>'
         .'</html>';
     exit;

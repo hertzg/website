@@ -60,9 +60,6 @@ b {
 label {
     cursor: pointer;
 }
-img {
-    vertical-align: middle;
-}
 
 #tbar {
     font-weight: bold;
@@ -80,8 +77,12 @@ img {
     line-height: 24px;
     border-radius: 4px;
 }
+.topLink:focus {
+    border: 2px solid transparent;
+    padding: 3px;
+}
 .topLink:active {
-    background: #000;
+    color: #fff;
 }
 
 #bbar {
@@ -126,8 +127,10 @@ img {
     vertical-align: top;
     border-radius: 4px 4px 0 0;
 }
-.tab-normal {
-    transition: 0.2s background-color, 0.2s color;
+.tab-normal:focus {
+    border: 2px solid transparent;
+    border-bottom: 0;
+    padding: 14px 8px 16px 8px;
 }
 .tab-normal:active {
     background: #555;

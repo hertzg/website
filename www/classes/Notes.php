@@ -23,7 +23,10 @@ class Notes {
 
     static function countOnUser ($idusers) {
         global $mysqli;
-        return mysqli_single_object($mysqli, "select count(*) count from notes where idusers = $idusers")->count;
+        return mysqli_single_object(
+            $mysqli,
+            "select count(*) count from notes where idusers = $idusers"
+        )->count;
     }
 
     static function delete ($idusers, $id) {
@@ -87,7 +90,11 @@ class Notes {
 
     static function search ($idusers, $keyword) {
         global $mysqli;
-        $keyword = str_replace(array('\\', '%', '_'), array('\\\\', '\\%', '\\_'), $keyword);
+        $keyword = str_replace(
+            array('\\', '%', '_'),
+            array('\\\\', '\\%', '\\_'),
+            $keyword
+        );
         return mysqli_query_object(
             $mysqli,
             mysqli_sprintf(
