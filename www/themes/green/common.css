@@ -31,13 +31,16 @@
     border-bottom-color: #261;
 }
 
-.tab-normal:focus,
+.tab-normal:focus {
+    border-color: #281;
+    background-color: #3c5839;
+}
+
 .topLink:focus,
 .tag:focus {
     border-color: #2a1;
 }
 
-.tab-normal:focus,
 .topLink:focus {
     background: rgba(34, 170, 17, 0.2);
 }
