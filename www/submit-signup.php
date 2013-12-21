@@ -4,6 +4,7 @@ include_once 'lib/sameDomainReferer.php';
 include_once 'fns/redirect.php';
 if (!$sameDomainReferer) redirect();
 include_once 'fns/request_strings.php';
+include_once 'fns/str_collapse_spaces.php';
 include_once 'classes/Captcha.php';
 include_once 'classes/Users.php';
 include_once 'lib/session-start.php';
@@ -11,11 +12,13 @@ include_once 'lib/session-start.php';
 list($username, $email, $password1, $password2, $captcha) = request_strings(
     'username', 'email', 'password1', 'password2', 'captcha');
 
+$username = str_collapse_spaces($username);
+$email = str_collapse_spaces($email);
 $email = mb_strtolower($email, 'UTF-8');
 
 $errors = array();
 
-if (!$username) {
+if ($username === '') {
     $errors[] = 'Enter username.';
 } elseif (mb_strlen($username, 'UTF-8') < 6) {
     $errors[] = 'Username too short. At least 6 characters required.';
@@ -23,15 +26,18 @@ if (!$username) {
     $errors[] = 'The username is unavailable. Try another.';
 }
 
-if (!$email) {
+if ($email === '') {
     $errors[] = 'Enter email.';
-} elseif (!preg_match("/^[a-z0-9][a-z0-9._-]*@[a-z0-9][a-z0-9.-]*[a-z0-9]\.[a-z.]+$/u", $email)) {
-    $errors[] = 'Enter a valid email address.';
-} else if (Users::getByEmail($email)) {
-    $error[] = 'A username with this email is already registered. Try another.';
+} else {
+    include_once 'fns/is_email_valid.php';
+    if (!is_email_valid($email)) {
+        $errors[] = 'Enter a valid email address.';
+    } else if (Users::getByEmail($email)) {
+        $error[] = 'A username with this email is already registered. Try another.';
+    }
 }
 
-if (!$password1) {
+if ($password1 === '') {
     $errors[] = 'Enter password.';
 } elseif (mb_strlen($password1, 'UTF-8') < 6) {
     $errors[] = 'Password too short. At least 6 characters required.';

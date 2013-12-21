@@ -5,15 +5,18 @@ include_once '../fns/redirect.php';
 if (!$sameDomainReferer) redirect('..');
 include_once 'lib/require-bookmark.php';
 include_once '../fns/request_strings.php';
+include_once '../fns/str_collapse_spaces.php';
 include_once '../classes/Tags.php';
 
 list($title, $url, $tags) = request_strings('title', 'url', 'tags');
 
+$title = str_collapse_spaces($title);
+$url = str_collapse_spaces($url);
+$tags = str_collapse_spaces($tags);
+
 $errors = array();
 
-if (!$url) {
-    $errors[] = 'Enter URL.';
-}
+if ($url === '') $errors[] = 'Enter URL.';
 
 $tagnames = Tags::parse($tags);
 if (count($tagnames) > Tags::MAX_NUM_TAGS) {

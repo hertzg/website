@@ -11,13 +11,9 @@ list($username, $password) = request_strings('username', 'password');
 
 $errors = array();
 
-if (!$username) {
-    $errors[] = 'Enter username.';
-}
+if ($username === '') $errors[] = 'Enter username.';
 
-if (!$password) {
-    $errors[] = 'Enter password.';
-}
+if ($password === '') $errors[] = 'Enter password.';
 
 if (!$errors) {
     $user = Users::getByUsernamePassword($username, $password);

@@ -14,7 +14,7 @@ list($foldername) = request_strings('foldername');
 $errors = array();
 
 $foldername = str_collapse_spaces($foldername);
-if (!$foldername) {
+if ($foldername === '') {
     $errors[] = 'Enter folder name.';
 } elseif (Folders::get($idusers, $foldername, $idfolders)) {
     $errors[] = 'Folder with this name already exists.';

@@ -13,9 +13,7 @@ $eventtext = str_collapse_spaces($eventtext);
 
 $errors = array();
 
-if ($eventtext == '') {
-    $errors[] = 'Enter text.';
-}
+if ($eventtext === '') $errors[] = 'Enter text.';
 
 if ($errors) {
     $_SESSION['calendar/edit-event_errors'] = $errors;

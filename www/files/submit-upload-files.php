@@ -7,6 +7,7 @@ include_once 'lib/require-user.php';
 include_once 'fns/create_folder_link.php';
 include_once '../fns/request_multiple_files.php';
 include_once '../fns/request_strings.php';
+include_once '../fns/str_collapse_spaces.php';
 include_once '../classes/Files.php';
 include_once '../classes/Folders.php';
 
@@ -24,6 +25,9 @@ $numfiles = 0;
 foreach (array($file1, $file2, $file3) as $file) {
     foreach ($file['name'] as $i => $filename) {
         if ($file['error'][$i] == UPLOAD_ERR_OK) {
+
+            $filename = str_collapse_spaces($filename);
+   
             while (Files::getByName($idusers, $idfolders, $filename)) {
                 $extension = '';
                 if (preg_match('/\..*?$/', $filename, $match)) {
@@ -39,8 +43,11 @@ foreach (array($file1, $file2, $file3) as $file) {
                     $filename = "$filename$extension";
                 }
             }
+
             Files::add($idusers, $idfolders, $filename, $file['tmp_name'][$i]);
+
             $numfiles++;
+
         }
     }
 }

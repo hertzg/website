@@ -20,7 +20,7 @@ if ($parentidfolders) {
 $errors = array();
 
 $foldername = str_collapse_spaces($foldername);
-if (!$foldername) {
+if ($foldername === '') {
     $errors[] = 'Enter folder name.';
 } elseif ($folder = Folders::getByName($idusers, $parentidfolders, $foldername)) {
     $errors[] = 'Folder with this name already exists.';

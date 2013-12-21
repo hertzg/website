@@ -9,16 +9,21 @@ include_once 'classes/Users.php';
 
 list($email, $fullname) = request_strings('email', 'fullname');
 
-$email = mb_strtolower($email, 'UTF-8');
+$fullname = str_collapse_spaces($fullname);
 
 $errors = array();
 
-if (!$email) {
+$email = str_collapse_spaces($email);
+$email = mb_strtolower($email, 'UTF-8');
+if ($email === '') {
     $errors[] = 'Enter email.';
-} elseif (!preg_match("/^[a-z0-9][a-z0-9._-]*@[a-z0-9][a-z0-9.-]*[a-z0-9]\.[a-z.]+$/", $email)) {
-    $errors[] = 'Enter a valid email address.';
-} else if (Users::getByEmail($email, $idusers)) {
-    $errors[] = 'A username with this email is already registered. Try another.';
+} else {
+    include_once 'fns/is_email_valid.php';
+    if (!is_email_valid($email)) {
+        $errors[] = 'Enter a valid email address.';
+    } else if (Users::getByEmail($email, $idusers)) {
+        $errors[] = 'A username with this email is already registered. Try another.';
+    }
 }
 
 unset(

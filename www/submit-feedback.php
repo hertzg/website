@@ -15,7 +15,7 @@ $errors = array();
 
 $feedbacktext = str_collapse_spaces($feedbacktext);
 
-if (!$feedbacktext) {
+if ($feedbacktext === '') {
     $errors[] = 'Enter feedback text.';
 } elseif (count(explode(' ', $feedbacktext)) < 6) {
     $errors[] = 'Feedback text too short. At least 6 words required.';

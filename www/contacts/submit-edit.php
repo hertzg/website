@@ -5,14 +5,21 @@ include_once '../fns/redirect.php';
 if (!$sameDomainReferer) redirect('..');
 include_once 'lib/require-contact.php';
 include_once '../fns/request_strings.php';
+include_once '../fns/str_collapse_spaces.php';
 include_once '../classes/Contacts.php';
 
 list($fullname, $address, $email, $phone1, $phone2) = request_strings(
     'fullname', 'address', 'email', 'phone1', 'phone2');
 
+$fullname = str_collapse_spaces($fullname);
+$address = str_collapse_spaces($address);
+$email = str_collapse_spaces($email);
+$phone1 = str_collapse_spaces($phone1);
+$phone2 = str_collapse_spaces($phone2);
+
 $errors = array();
 
-if (!$fullname) {
+if ($fullname === '') {
     $errors[] = 'Enter full name.';
 } elseif (mb_strlen($fullname, 'UTF-8') > 32) {
     $errors[] = 'Full name too long. At most 32 characters required.';

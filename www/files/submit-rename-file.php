@@ -5,13 +5,16 @@ include_once '../fns/redirect.php';
 if (!$sameDomainReferer) redirect('..');
 include_once 'lib/require-file.php';
 include_once '../fns/request_strings.php';
+include_once '../fns/str_collapse_spaces.php';
 include_once '../classes/Files.php';
 
 list($filename) = request_strings('filename');
 
+$filename = str_collapse_spaces($filename);
+
 $errors = array();
 
-if (!$filename) {
+if ($filename === '') {
     $errors[] = 'Enter file name.';
 } elseif (Files::getByName($idusers, $id, $filename, $id)) {
     $errors[] = 'File with the same name already exists.';

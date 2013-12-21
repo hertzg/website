@@ -20,7 +20,7 @@ unset($_SESSION['user']);
 
 $errors = array();
 
-if (!$password1) {
+if ($password1 === '') {
     $errors[] = 'Enter new password.';
 } elseif (mb_strlen($password1, 'UTF-8') < 6) {
     $errors[] = 'New password should be at least 6 characters long.';

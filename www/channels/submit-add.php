@@ -11,7 +11,7 @@ list($channelname) = request_strings('channelname');
 
 $errors = array();
 
-if (!$channelname) {
+if ($channelname === '') {
     $errors[] = 'Enter channel name.';
 } elseif (preg_match('/[^a-z0-9._-]/ui', $channelname)) {
     $errors[] = 'Channel name contains illegal characters.';

@@ -4,6 +4,7 @@ include_once 'lib/sameDomainReferer.php';
 include_once 'fns/redirect.php';
 if (!$sameDomainReferer) redirect();
 include_once 'fns/request_strings.php';
+include_once 'fns/str_collapse_spaces.php';
 include_once 'fns/uniqmd5.php';
 include_once 'classes/Captcha.php';
 include_once 'classes/Users.php';
@@ -11,11 +12,11 @@ include_once 'lib/session-start.php';
 
 list($email) = request_strings('email');
 
+$email = str_collapse_spaces($email);
+
 $errors = array();
 
-if (!$email) {
-    $errors[] = 'Enter email.';
-}
+if ($email === '') $errors[] = 'Enter email.';
 
 if (!$errors) {
     $user = Users::getByEmail($email);
