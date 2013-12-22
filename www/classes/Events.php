@@ -43,7 +43,7 @@ class Events {
             'update events set'
             ." eventtext = '$eventtext',"
             ." edittime = $edittime"
-            ." where idusers = $idusers and idevents = $idevents"
+            ." where idusers = $idusers and idevents = $id"
         );
     }
 

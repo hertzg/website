@@ -41,6 +41,6 @@ $page->finish(
         'Options',
         Page::imageLink('New Channel', 'add.php', 'create-channel')
         .Page::HR
-        .Page::imageLink('Download API', 'download-zvini-api.php', 'download')
+        .Page::imageLink('Download API', '../download-zvini-api.php', 'download')
     )
 );

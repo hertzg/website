@@ -47,8 +47,8 @@ class Notes {
             $mysqli,
             'update notes set'
             ." notetext = '$notetext',"
-            .' updatetime = $updatetime'
-            ." where idusers = $idusers and idnotes = $idnotes"
+            ." updatetime = $updatetime"
+            ." where idusers = $idusers and idnotes = $id"
         );
     }
 
@@ -57,7 +57,7 @@ class Notes {
         return mysqli_single_object(
             $mysqli,
             'select * from notes'
-            ." where idusers = $idusers and idnotes = $idnotes"
+            ." where idusers = $idusers and idnotes = $id"
         );
     }
 

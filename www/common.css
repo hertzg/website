@@ -194,6 +194,7 @@ label {
 }
 .imageText-text {
     padding: 16px 16px 16px 54px;
+    min-height: 48px;
 }
 
 .hr {

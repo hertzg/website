@@ -82,8 +82,8 @@ class Channels {
 
     static function getByNameKey ($channelname, $channelkey) {
         global $mysqli;
-        $channelname = mysqli_single_object($mysqli, $channelname);
-        $channelkey = mysqli_single_object($mysqli, $channelkey);
+        $channelname = mysqli_real_escape_string($mysqli, $channelname);
+        $channelkey = mysqli_real_escape_string($mysqli, $channelkey);
         return mysqli_single_object(
             $mysqli,
             'select * from channels'

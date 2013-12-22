@@ -51,7 +51,7 @@ class Tasks {
             'update tasks set'
             ." tasktext = '$tasktext',"
             ." tags = '$tags',"
-            .' updatetime = $updatetime'
+            ." updatetime = $updatetime"
             ." where idusers = $idusers and idtasks = $id"
         );
     }
@@ -80,7 +80,7 @@ class Tasks {
         return mysqli_query_object(
             $mysqli,
             'select * from tasks t'
-            .' where idusers = $idusers'
+            ." where idusers = $idusers"
             .' and exists ('
             .'  select idtasks from tasktags tt'
             .'  where tt.idtasks = t.idtasks'
@@ -97,7 +97,7 @@ class Tasks {
             array('\\\\', '\\%', '\\_'),
             $keyword
         );
-        $keyword = mysqli_real_escape_string($mysqli, $idusers);
+        $keyword = mysqli_real_escape_string($mysqli, $keyword);
         return mysqli_query_object(
             $mysqli,
             'select * from tasks'
@@ -113,7 +113,7 @@ class Tasks {
             array('\\\\', '\\%', '\\_'),
             $keyword
         );
-        $keyword = mysqli_real_escape_string($mysqli, $idusers);
+        $keyword = mysqli_real_escape_string($mysqli, $keyword);
         $tag = mysqli_real_escape_string($mysqli, $tag);
         return mysqli_query_object(
             $mysqli,

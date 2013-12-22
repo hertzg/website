@@ -10,14 +10,14 @@ class Files {
 
         global $mysqli;
 
-        $foldername = mysqli_real_escape_string($mysqli, $foldername);
+        $filename = mysqli_real_escape_string($mysqli, $filename);
         $filesize = filesize($filepath);
         $inserttime = time();
         mysqli_query(
             $mysqli,
             'insert into files'
             .' (idusers, idfolders, filename, filesize, inserttime)'
-            ." value ($idusers, $idfolders, $foldername', $filesize, $inserttime)"
+            ." value ($idusers, $idfolders, '$filename', $filesize, $inserttime)"
         );
 
         $id = mysqli_insert_id($mysqli);

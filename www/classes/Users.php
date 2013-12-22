@@ -11,10 +11,11 @@ class Users {
         $username = mysqli_real_escape_string($mysqli, $username);
         $email = mysqli_real_escape_string($mysqli, $email);
         $password = mysqli_real_escape_string($mysqli, md5($password, true));
+        $inserttime = time();
         mysqli_query(
             $mysqli,
-            'insert into users (username, email, password)'
-            ." values ('$username', '$email', '$password')"
+            'insert into users (username, email, password, inserttime)'
+            ." values ('$username', '$email', '$password', $inserttime)"
         );
         $idusers = mysqli_insert_id($mysqli);
         mkdir("users/$idusers");

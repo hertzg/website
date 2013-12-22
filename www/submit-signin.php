@@ -34,5 +34,7 @@ if ($errors) {
     redirect('signin.php');
 }
 
+Users::updateLastLoginTime($user->idusers);
+
 $_SESSION['user'] = $user;
 redirect('home.php');

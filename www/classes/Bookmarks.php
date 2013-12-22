@@ -54,8 +54,8 @@ class Bookmarks {
             ." title = '$title',"
             ." url = '$url',"
             ." tags = '$tags',"
-            .' updatetime = $updatetime'
-            .' where idusers = $idusers and idbookmarks = $idbookmarks'
+            ." updatetime = $updatetime"
+            ." where idusers = $idusers and idbookmarks = $id"
         );
     }
 
@@ -64,7 +64,7 @@ class Bookmarks {
         return mysqli_single_object(
             $mysqli,
             'select * from bookmarks'
-            ." where idusers = $idusers and idbookmarks = $id",
+            ." where idusers = $idusers and idbookmarks = $id"
         );
     }
 
