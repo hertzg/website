@@ -11,8 +11,13 @@ if ($user) redirect('home.php');
 
 $lastpost = ifset($_SESSION['signin_lastpost']);
 
-if ($lastpost) $remember = $lastpost['remember'];
-else $remember = true;
+if ($lastpost) {
+    $remember = $lastpost['remember'];
+} elseif (array_key_exists('remember', $_COOKIE)) {
+    $remember = $_COOKIE['remember'] === '1';
+} else {
+    $remember = true;
+}
 
 unset(
     $_SESSION['signup_errors'],
