@@ -40,5 +40,5 @@ if ($errors) {
 
 $id = Contacts::add($idusers, $fullname, $address, $email, $phone1, $phone2);
 
-$_SESSION['contacts/index_messages'] = array('Contact has been saved.');
-redirect();
+$_SESSION['contacts/view_messages'] = array('Contact has been saved.');
+redirect("view.php?id=$id");

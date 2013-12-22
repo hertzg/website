@@ -39,6 +39,6 @@ if ($errors) {
 
 $idfolders = Folders::add($idusers, $parentidfolders, $foldername);
 
-$_SESSION['files/index_idfolders'] = $parentidfolders;
+$_SESSION['files/index_idfolders'] = $idfolders;
 $_SESSION['files/index_messages'] = array('Folder has been created.');
-redirect(create_folder_link($parentidfolders));
+redirect(create_folder_link($idfolders));

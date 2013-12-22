@@ -15,6 +15,7 @@ class Events {
             .' (idusers, eventtext, eventtime, inserttime)'
             ." values ($idusers, '$eventtext', $eventtime, $inserttime)"
         );
+        return mysqli_insert_id($mysqli);
     }
 
     static function countOnTime ($idusers, $eventtime) {

@@ -34,7 +34,7 @@ $page->finish(
                 'required' => true,
             ))
             .Page::HR
-            .Form::button('Add Event')
+            .Form::button('Save')
             .Form::hidden('year', $year)
             .Form::hidden('month', $month)
             .Form::hidden('day', $day)

@@ -36,5 +36,5 @@ $id = Bookmarks::add($idusers, $title, $url, $tags);
 include_once '../classes/BookmarkTags.php';
 BookmarkTags::add($idusers, $id, $tagnames);
 
-$_SESSION['bookmarks/index_messages'] = array('Bookmark has been added.');
-redirect();
+$_SESSION['bookmarks/view_messages'] = array('Bookmark has been saved.');
+redirect("view.php?id=$id");

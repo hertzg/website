@@ -16,6 +16,7 @@ class Notes {
             .' (idusers, notetext, inserttime, updatetime)'
             ." values ($idusers, '$notetext', $inserttime, $updatetime)"
         );
+        return mysqli_insert_id($mysqli);
     }
 
     static function countOnUser ($idusers) {

@@ -13,7 +13,7 @@ $page->finish(
     Tab::create(
         Tab::item('Calendar', './')
         .Tab::activeItem('Event'),
-        Page::messages(ifset($_SESSION['calendar/view-event_errors']))
+        Page::messages(ifset($_SESSION['calendar/view-event_messages']))
         .Page::text(htmlspecialchars($event->eventtext))
         .Page::HR
         .Page::text(date('F d, Y', $event->eventtime))

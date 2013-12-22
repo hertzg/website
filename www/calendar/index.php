@@ -74,7 +74,8 @@ include_once '../classes/Tab.php';
 unset(
     $_SESSION['home_messages'],
     $_SESSION['calendar/add-event_errors'],
-    $_SESSION['calendar/add-event_lastpost']
+    $_SESSION['calendar/add-event_lastpost'],
+    $_SESSION['calendar/view-event_messages']
 );
 
 list($year, $month, $day) = request_strings('year', 'month', 'day');

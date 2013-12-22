@@ -22,7 +22,7 @@ if ($errors) {
 }
 
 include_once '../classes/Notes.php';
-Notes::add($idusers, $notetext);
+$id = Notes::add($idusers, $notetext);
 
-$_SESSION['notes/index_messages'] = array('Note has been added.');
-redirect();
+$_SESSION['notes/view_messages'] = array('Note has been saved.');
+redirect("view.php?id=$id");

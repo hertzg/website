@@ -5,7 +5,7 @@ include_once '../classes/Form.php';
 include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
 
-unset($_SESSION['calendar/view-event_errors']);
+unset($_SESSION['calendar/view-event_messages']);
 
 $page->base = '../';
 $page->finish(

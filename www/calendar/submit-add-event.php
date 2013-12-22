@@ -37,13 +37,9 @@ unset(
     $_SESSION['calendar/add-event_lastpost']
 );
 
-$_SESSION['calendar/index_messages'] = array('Event has been added.');
-
 include_once '../classes/Events.php';
-Events::add($idusers, $eventtext, $eventtime);
+$id = Events::add($idusers, $eventtext, $eventtime);
 
-redirect('./?'.http_build_query(array(
-    'year' => $year,
-    'month' => $month,
-    'day' => $day,
-)));
+$_SESSION['calendar/view-event_messages'] = array('Event has been saved.');
+
+redirect("view-event.php?idevents=$id");
