@@ -2,22 +2,21 @@
 
 include_once __DIR__.'/../fns/mysqli_query_object.php';
 include_once __DIR__.'/../fns/mysqli_single_object.php';
-include_once __DIR__.'/../fns/mysqli_sprintf.php';
 include_once __DIR__.'/../lib/mysqli.php';
 
 class Bookmarks {
 
     static function add ($idusers, $title, $url, $tags) {
         global $mysqli;
+        $title = mysqli_real_escape_string($mysqli, $title);
+        $url = mysqli_real_escape_string($mysqli, $url);
+        $tags = mysqli_real_escape_string($mysqli, $tags);
+        $inserttime = $updatetime = time();
         mysqli_query(
             $mysqli,
-            mysqli_sprintf(
-            $mysqli,
-                'insert into bookmarks'
-                .' (idusers, title, url, tags, inserttime, updatetime)'
-                ." values (#u, '#s', '#s', '#s', #u, #u)",
-                array($idusers, $title, $url, $tags, time(), time())
-            )
+            'insert into bookmarks'
+            .' (idusers, title, url, tags, inserttime, updatetime)'
+            ." values ($idusers, '$title', '$url', '$tags', $inserttime, $updatetime)"
         );
         return mysqli_insert_id($mysqli);
     }
@@ -45,18 +44,18 @@ class Bookmarks {
 
     static function edit ($idusers, $id, $title, $url, $tags) {
         global $mysqli;
+        $title = mysqli_real_escape_string($mysqli, $title);
+        $url = mysqli_real_escape_string($mysqli, $url);
+        $tags = mysqli_real_escape_string($mysqli, $tags);
+        $updatetime = time();
         mysqli_query(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'update bookmarks set'
-                ." title = '#s',"
-                ." url = '#s',"
-                ." tags = '#s',"
-                .' updatetime = #u'
-                .' where idusers = #u and idbookmarks = #u',
-                array($title, $url, $tags, time(), $idusers, $id)
-            )
+            'update bookmarks set'
+            ." title = '$title',"
+            ." url = '$url',"
+            ." tags = '$tags',"
+            .' updatetime = $updatetime'
+            .' where idusers = $idusers and idbookmarks = $idbookmarks'
         );
     }
 
@@ -64,12 +63,8 @@ class Bookmarks {
         global $mysqli;
         return mysqli_single_object(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'select * from bookmarks'
-                .' where idusers = #u and idbookmarks = #u',
-                array($idusers, $id)
-            )
+            'select * from bookmarks'
+            ." where idusers = $idusers and idbookmarks = $id",
         );
     }
 
@@ -77,31 +72,24 @@ class Bookmarks {
         global $mysqli;
         return mysqli_query_object(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'select * from bookmarks where idusers = #u'
-                .' order by updatetime desc',
-                array($idusers)
-            )
+            "select * from bookmarks where idusers = $idusers"
+            .' order by updatetime desc'
         );
     }
 
     static function indexOnTag ($idusers, $tag) {
         global $mysqli;
+        $tag = mysqli_real_escape_string($mysqli, $tag);
         return mysqli_query_object(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'select * from bookmarks t'
-                .' where idusers = #u'
-                .' and exists ('
-                .'  select idbookmarks from bookmarktags bt'
-                .'  where bt.idbookmarks = t.idbookmarks'
-                ."  and bt.tagname = '#s'"
-                .' )'
-                .' order by updatetime desc',
-                array($idusers, $tag)
-            )
+            'select * from bookmarks t'
+            ." where idusers = $idusers"
+            .' and exists ('
+            .'  select idbookmarks from bookmarktags bt'
+            .'  where bt.idbookmarks = t.idbookmarks'
+            ."  and bt.tagname = '$tag'"
+            .' )'
+            .' order by updatetime desc'
         );
     }
 

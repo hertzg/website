@@ -2,7 +2,6 @@
 
 include_once __DIR__.'/../fns/mysqli_query_object.php';
 include_once __DIR__.'/../fns/mysqli_single_object.php';
-include_once __DIR__.'/../fns/mysqli_sprintf.php';
 include_once __DIR__.'/../lib/mysqli.php';
 include_once 'Channels.php';
 include_once 'Notifications.php';
@@ -12,15 +11,14 @@ class Notifications {
 
     static function add ($idusers, $idchannels, $channelname, $notificationtext) {
         global $mysqli;
+        $channelname = mysqli_real_escape_string($mysqli, $channelname);
+        $notificationtext = mysqli_real_escape_string($mysqli, $notificationtext);
+        $inserttime = time();
         mysqli_query(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'insert into notifications'
-                .' (idusers, idchannels, channelname, notificationtext, inserttime)'
-                ." values (#u, #u, '#s', '#s', #u)",
-                array($idusers, $idchannels, $channelname, $notificationtext, time())
-            )
+            'insert into notifications'
+            .' (idusers, idchannels, channelname, notificationtext, inserttime)'
+            ." values ($idusers, $idchannels, '$channelname', '$notificationtext', $inserttime)"
         );
         Channels::addNumNotifications($idusers, $idchannels, 1);
         Users::addNumNotifications($idusers, 1);
@@ -46,11 +44,7 @@ class Notifications {
         Channels::addNumNotifications($idusers, $idchannels, -count($notifications));
         mysqli_query(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'delete from notifications where idchannels = #u',
-                array($idchannels)
-            )
+            "delete from notifications where idchannels = $idchannels"
         );
     }
 
@@ -60,46 +54,23 @@ class Notifications {
     }
 
     static function index ($idusers) {
-
         global $mysqli;
-
-        $notifications = mysqli_query_object(
+        return mysqli_query_object(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'select * from notifications where idusers = #u',
-                array($idusers)
-            )
+            'select * from notifications'
+            ." where idusers = $idusers"
+            .' order by inserttime'
         );
-
-        usort($notifications, function ($a, $b) {
-            return $a->inserttime > $b->inserttime ? -1 : 1;
-        });
-
-        return $notifications;
-
     }
 
     static function indexOnChannel ($idusers, $idchannels) {
-
         global $mysqli;
-
-        $notifications = mysqli_query_object(
+        return mysqli_query_object(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'select * from notifications'
-                .' where idusers = #u and idchannels = #u',
-                array($idusers, $idchannels)
-            )
+            'select * from notifications'
+            ." where idusers = $idusers and idchannels = $idchannels"
+            .' order by inserttime'
         );
-
-        usort($notifications, function ($a, $b) {
-            return $a->inserttime > $b->inserttime ? -1 : 1;
-        });
-
-        return $notifications;
-
     }
 
     static function textToHtml ($notificationtext) {

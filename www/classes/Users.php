@@ -2,40 +2,31 @@
 
 include_once __DIR__.'/../fns/hex2bin.php';
 include_once __DIR__.'/../fns/mysqli_single_object.php';
-include_once __DIR__.'/../fns/mysqli_sprintf.php';
 include_once __DIR__.'/../lib/mysqli.php';
 
 class Users {
 
     static function add ($username, $email, $password) {
-
         global $mysqli;
-
+        $username = mysqli_real_escape_string($mysqli, $username);
+        $email = mysqli_real_escape_string($mysqli, $email);
+        $password = mysqli_real_escape_string($mysqli, md5($password, true));
         mysqli_query(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'insert into users (username, email, password)'
-                ." values ('#s', '#s', '#s')",
-                array($username, $email, md5($password, true))
-            )
+            'insert into users (username, email, password)'
+            ." values ('$username', '$email', '$password')"
         );
-
         $idusers = mysqli_insert_id($mysqli);
         mkdir("users/$idusers");
-
     }
 
     static function addNumNotifications ($idusers, $numnotifications) {
         global $mysqli;
         mysqli_query(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'update users set numnotifications = numnotifications + #u'
-                .' where idusers = #u',
-                array($numnotifications, $idusers)
-            )
+            'update users set'
+            ." numnotifications = numnotifications + $numnotifications"
+            ." where idusers = $idusers"
         );
     }
 
@@ -43,12 +34,8 @@ class Users {
         global $mysqli;
         mysqli_query(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'update users set numnotifications = 0'
-                .' where idusers = #u',
-                array($idusers)
-            )
+            'update users set numnotifications = 0'
+            ." where idusers = $idusers"
         );
     }
 
@@ -60,56 +47,45 @@ class Users {
 
     static function editPassword ($idusers, $password) {
         global $mysqli;
+        $password = mysqli_real_escape_string($mysqli, md5($password, true));
         mysqli_query(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'update users set'
-                ." password = '#s',"
-                .' resetpasswordkey = null'
-                .' where idusers = #u',
-                array(md5($password, true), $idusers)
-            )
+            'update users set'
+            ." password = '$password',"
+            .' resetpasswordkey = null'
+            .' where idusers = $idusers'
         );
     }
 
     static function editProfile ($idusers, $email, $fullname) {
         global $mysqli;
+        $email = mysqli_real_escape_string($mysqli, $email);
+        $fullname = mysqli_real_escape_string($mysqli, $fullname);
         mysqli_query(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'update users set'
-                ." email = '#s',"
-                ." fullname = '#s'"
-                ." where idusers = #u",
-                array($email, $fullname, $idusers)
-            )
+            'update users set'
+            ." email = '$email',"
+            ." fullname = '$fullname'"
+            ." where idusers = $idusers"
         );
     }
 
     static function editResetPasswordKey ($idusers, $resetpasswordkey) {
         global $mysqli;
+        $resetpasswordkey = mysqli_real_escape_string($mysqli, $resetpasswordkey);
         mysqli_query(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                "update users set resetpasswordkey = '#s'"
-                .' where idusers = #u',
-                array($resetpasswordkey, $idusers)
-            )
+            "update users set resetpasswordkey = '$resetpasswordkey'"
+            ." where idusers = $idusers"
         );
     }
 
     static function editTheme ($idusers, $theme) {
         global $mysqli;
+        $theme = mysqli_real_escape_string($mysqli, $theme);
         mysqli_query(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                "update users set theme = '#s' where idusers = #u",
-                array($theme, $idusers)
-            )
+            "update users set theme = '$theme' where idusers = $idusers"
         );
     }
 
@@ -117,75 +93,58 @@ class Users {
         global $mysqli;
         return mysqli_single_object(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'select * from users where idusers = #u',
-                array($idusers)
-            )
+            "select * from users where idusers = $idusers"
         );
     }
 
     static function getByEmail ($email, $excludeidusers = 0) {
         global $mysqli;
+        $email = mysqli_real_escape_string($mysqli, $email);
         return mysqli_single_object(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'select * from users'
-                ." where email = '#s' and idusers != #u",
-                array($email, $excludeidusers)
-            )
+            'select * from users'
+            ." where email = '$email' and idusers != $excludeidusers"
         );
     }
 
     static function getByResetPasswordKey ($idusers, $resetpasswordkey) {
         global $mysqli;
+        $resetpasswordkey = mysqli_real_escape_string($mysqli, hex2bin($resetpasswordkey));
         return mysqli_single_object(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'select * from users'
-                ." where idusers = #u and resetpasswordkey = '#s'",
-                array($idusers, hex2bin($resetpasswordkey))
-            )
+            'select * from users'
+            ." where idusers = $idusers"
+            ." and resetpasswordkey = '$resetpasswordkey'"
         );
     }
 
     static function getByUsername ($username) {
         global $mysqli;
+        $username = mysqli_real_escape_string($mysqli, $username);
         return mysqli_single_object(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                "select * from users where username = '#s'",
-                array($username)
-            )
+            "select * from users where username = '$username'"
         );
     }
 
     static function getByUsernamePassword ($username, $password) {
         global $mysqli;
+        $username = mysqli_real_escape_string($mysqli, $username);
+        $password = mysqli_real_escape_string($mysqli, md5($password, true));
         return mysqli_single_object(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'select * from users'
-                ." where username = '#s' and password = '#s'",
-                array($username, md5($password, true))
-            )
+            'select * from users'
+            ." where username = '$username' and password = '$password'"
         );
     }
 
     static function updateLastLoginTime ($idusers) {
         global $mysqli;
+        $lastlogintime = time();
         mysqli_query(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'update users set lastlogintime = #u'
-                .' where idusers = #u',
-                array(time(), $idusers)
-            )
+            "update users set lastlogintime = $lastlogintime"
+            ." where idusers = $idusers"
         );
     }
 

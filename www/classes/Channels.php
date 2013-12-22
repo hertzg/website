@@ -2,40 +2,30 @@
 
 include_once __DIR__.'/../fns/mysqli_query_object.php';
 include_once __DIR__.'/../fns/mysqli_single_object.php';
-include_once __DIR__.'/../fns/uniqmd5.php';
 include_once __DIR__.'/../lib/mysqli.php';
-include_once __DIR__.'/../classes/Notifications.php';
 
 class Channels {
 
     static function add ($idusers, $channelname) {
-
         global $mysqli;
-
+        include_once __DIR__.'/../fns/uniqmd5.php';
+        $channelname = mysqli_real_escape_string($mysqli, $channelname);
+        $channelkey = mysqli_real_escape_string($mysqli, uniqmd5(true));
         mysqli_query(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'insert into channels (idusers, channelname, channelkey)'
-                ." values (#u, '#s', '#s')",
-                array($idusers, $channelname, uniqmd5(true))
-            )
+            'insert into channels (idusers, channelname, channelkey)'
+            ." values ($idusers, '$channelname', '$channelkey')"
         );
-
         return mysqli_insert_id($mysqli);
-
     }
 
     static function addNumNotifications ($idusers, $id, $numnotifications) {
         global $mysqli;
         mysqli_query(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'update channels set numnotifications = numnotifications + #u'
-                .' where idchannels = #u',
-                array($numnotifications, $id)
-            )
+            'update channels set'
+            ." numnotifications = numnotifications + $numnotifications"
+            ." where idchannels = $id"
         );
     }
 
@@ -43,12 +33,8 @@ class Channels {
         global $mysqli;
         mysqli_query(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'update channels set numnotifications = 0'
-                .' where idusers = #u',
-                array($idusers)
-            )
+            'update channels set numnotifications = 0'
+            ." where idusers = $idusers"
         );
     }
 
@@ -66,6 +52,7 @@ class Channels {
             $mysqli,
             "delete from channels where idusers = $idusers and idchannels = $id"
         );
+        include_once __DIR__.'/Notifications.php';
         Notifications::deleteOnChannel($idusers, $id);
     }
 
@@ -78,38 +65,29 @@ class Channels {
         global $mysqli;
         return mysqli_single_object(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'select * from channels'
-                .' where idusers = #u and idchannels = #u',
-                array($idusers, $id)
-            )
+            'select * from channels'
+            ." where idusers = $idusers and idchannels = $id"
         );
     }
 
     static function getByName ($idusers, $channelname) {
         global $mysqli;
+        $channelname = mysqli_real_escape_string($mysqli, $channelname);
         return mysqli_single_object(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'select * from channels'
-                ." where idusers = #u and channelname = '#s'",
-                array($idusers, $channelname)
-            )
+            'select * from channels'
+            ." where idusers = $idusers and channelname = '$channelname'"
         );
     }
 
     static function getByNameKey ($channelname, $channelkey) {
         global $mysqli;
+        $channelname = mysqli_single_object($mysqli, $channelname);
+        $channelkey = mysqli_single_object($mysqli, $channelkey);
         return mysqli_single_object(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'select * from channels'
-                ." where channelname = '#s' and channelkey = '#s'",
-                array($channelname, $channelkey)
-            )
+            'select * from channels'
+            ." where channelname = '$channelname' and channelkey = '$channelkey'"
         );
     }
 
@@ -119,11 +97,7 @@ class Channels {
 
         $channels = mysqli_query_object(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'select * from channels where idusers = #u',
-                array($idusers)
-            )
+            "select * from channels where idusers = $idusers"
         );
 
         usort($channels, function ($a, $b) {
@@ -136,14 +110,12 @@ class Channels {
 
     static function randomizeKey ($idusers, $id) {
         global $mysqli;
+        include_once __DIR__.'/../fns/uniqmd5.php';
+        $channelkey = mysqli_real_escape_string($mysqli, uniqmd5(true));
         mysqli_query(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                "update channels set channelkey = '#s'"
-                .' where idusers = #u and idchannels = #u',
-                array(uniqmd5(true), $idusers, $id)
-            )
+            "update channels set channelkey = '$channelkey'"
+            ." where idusers = $idusers and idchannels = $id"
         );
     }
 

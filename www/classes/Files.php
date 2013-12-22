@@ -2,7 +2,6 @@
 
 include_once __DIR__.'/../fns/mysqli_query_object.php';
 include_once __DIR__.'/../fns/mysqli_single_object.php';
-include_once __DIR__.'/../fns/mysqli_sprintf.php';
 include_once __DIR__.'/../lib/mysqli.php';
 
 class Files {
@@ -11,16 +10,14 @@ class Files {
 
         global $mysqli;
 
+        $foldername = mysqli_real_escape_string($mysqli, $foldername);
         $filesize = filesize($filepath);
+        $inserttime = time();
         mysqli_query(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'insert into files'
-                .' (idusers, idfolders, filename, filesize, inserttime)'
-                ." value (#u, #u, '#s', #u, #u)",
-                array($idusers, $idfolders, $filename, $filesize, time())
-            )
+            'insert into files'
+            .' (idusers, idfolders, filename, filesize, inserttime)'
+            ." value ($idusers, $idfolders, $foldername', $filesize, $inserttime)"
         );
 
         $id = mysqli_insert_id($mysqli);
@@ -28,12 +25,8 @@ class Files {
 
         mysqli_query(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'update users set storageused = storageused + #u'
-                .' where idusers = #u',
-                array($filesize, $idusers)
-            )
+            "update users set storageused = storageused + $filesize"
+            ." where idusers = $idusers"
         );
 
     }
@@ -82,61 +75,39 @@ class Files {
         global $mysqli;
         return mysqli_single_object(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'select * from files'
-                .' where idusers = #u and idfiles = #u',
-                array($idusers, $id)
-            )
+            'select * from files'
+            ." where idusers = $idusers and idfiles = $id"
         );
    }
 
     static function getByName ($idusers, $idfolders, $filename, $excludeid = 0) {
         global $mysqli;
+        $filename = mysqli_real_escape_string($mysqli, $filename);
         return mysqli_single_object(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'select * from files'
-                .' where idusers = #u and idfolders = #u'
-                ." and filename = '#s' and idfiles != #u",
-                array($idusers, $idfolders, $filename, $excludeid)
-            )
+            'select * from files'
+            ." where idusers = $idusers and idfolders = $idfolders"
+            ." and filename = '$filename' and idfiles != $excludeid"
         );
     }
 
     static function index ($idusers, $idfolders, $offset = 0) {
-
         global $mysqli;
-
-        $files = mysqli_query_object(
+        return mysqli_query_object(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'select * from files'
-                .' where idusers = #u and idfolders = #u',
-                array($idusers, $idfolders)
-            )
+            'select * from files'
+            ." where idusers = $idusers and idfolders = $idfolders"
+            .' order by filename'
         );
-
-        usort($files, function ($a, $b) {
-            return $a->filename > $b->filename ? 1 : -1;
-        });
-
-        return $files;
-
     }
 
     static function rename ($idusers, $id, $filename) {
         global $mysqli;
+        $filename = mysqli_real_escape_string($mysqli, $filename);
         mysqli_query(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                "update files set filename = '#s'"
-                .' where idusers = #u and idfiles = #u',
-                array($filename, $idusers, $id)
-            )
+            "update files set filename = '$filename'"
+            ." where idusers = $idusers and idfiles = $id"
         );
     }
 
@@ -144,40 +115,9 @@ class Files {
         global $mysqli;
         mysqli_query(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'update files set idfolders = #u'
-                .' where idusers = #u and idfiles = #u',
-                array($idfolders, $idusers, $id)
-            )
+            "update files set idfolders = $idfolders"
+            ." where idusers = $idusers and idfiles = $id"
         );
-    }
-
-    static function replaceWithString ($idusers, $id, $contents) {
-        global $mysqli;
-        $filesize = strlen($contents);
-        $file = self::get($idusers, $id);
-        if ($file) {
-            mysqli_query(
-                $mysqli,
-                mysqli_sprintf(
-                    $mysqli,
-                    'update users set storageused = storageused + #u'
-                    .' where idusers - #u',
-                    array($filesize - $file->filesize, $idusers)
-                )
-            );
-            mysqli_query(
-                $mysqli,
-                mysqli_sprintf(
-                    $mysqli,
-                    'update files set filesize = #u'
-                    .' where idusers = #u and idfiles = #u',
-                    array($filesize, $idusers, $id)
-                )
-            );
-            file_put_contents(self::filename($idusers, $id), $contents);
-        }
     }
 
 }

@@ -2,22 +2,19 @@
 
 include_once __DIR__.'/../fns/mysqli_query_object.php';
 include_once __DIR__.'/../fns/mysqli_single_object.php';
-include_once __DIR__.'/../fns/mysqli_sprintf.php';
 include_once __DIR__.'/../lib/mysqli.php';
 
 class Notes {
 
     static function add ($idusers, $notetext) {
         global $mysqli;
+        $notetext = mysqli_real_escape_string($mysqli, $notetext);
+        $inserttime = $updatetime = time();
         mysqli_query(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'insert into notes'
-                .' (idusers, notetext, inserttime, updatetime)'
-                ." values (#u, '#s', #u, #u)",
-                array($idusers, $notetext, time(), time())
-            )
+            'insert into notes'
+            .' (idusers, notetext, inserttime, updatetime)'
+            ." values ($idusers, '$notetext', $inserttime, $updatetime)"
         );
     }
 
@@ -44,16 +41,14 @@ class Notes {
 
     static function edit ($idusers, $id, $notetext) {
         global $mysqli;
+        $notetext = mysqli_real_escape_string($mysqli, $notetext);
+        $updatetime = time();
         mysqli_query(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'update notes set'
-                ." notetext = '#s',"
-                .' updatetime = #u'
-                .' where idusers = #u and idnotes = #u',
-                array($notetext, time(), $idusers, $id)
-            )
+            'update notes set'
+            ." notetext = '$notetext',"
+            .' updatetime = $updatetime'
+            ." where idusers = $idusers and idnotes = $idnotes"
         );
     }
 
@@ -61,12 +56,8 @@ class Notes {
         global $mysqli;
         return mysqli_single_object(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'select * from notes'
-                .' where idusers = #u and idnotes = #u',
-                array($idusers, $id)
-            )
+            'select * from notes'
+            ." where idusers = $idusers and idnotes = $idnotes"
         );
     }
 
@@ -74,12 +65,8 @@ class Notes {
         global $mysqli;
         return mysqli_query_object(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'select * from notes where idusers = #u'
-                .' order by updatetime desc',
-                array($idusers)
-            )
+            "select * from notes where idusers = $idusers"
+            .' order by updatetime desc'
         );
     }
 
@@ -90,15 +77,12 @@ class Notes {
             array('\\\\', '\\%', '\\_'),
             $keyword
         );
+        $keyword = mysqli_real_escape_string($mysqli, $keyword);
         return mysqli_query_object(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'select * from notes'
-                ." where idusers = #u and notetext like '%#s%'"
-                .' order by updatetime desc',
-                array($idusers, $keyword)
-            )
+            'select * from notes'
+            ." where idusers = $idusers and notetext like '%$keyword%'"
+            .' order by updatetime desc'
         );
     }
 

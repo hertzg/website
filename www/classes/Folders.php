@@ -2,29 +2,22 @@
 
 include_once __DIR__.'/../fns/mysqli_query_object.php';
 include_once __DIR__.'/../fns/mysqli_single_object.php';
-include_once __DIR__.'/../fns/mysqli_sprintf.php';
 include_once __DIR__.'/../classes/Files.php';
 include_once __DIR__.'/../lib/mysqli.php';
 
 class Folders {
 
     static function add ($idusers, $parentidfolders, $foldername) {
-
         global $mysqli;
-
+        $foldername = mysqli_real_escape_string($mysqli, $foldername);
+        $inserttime = time();
         mysqli_query(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'insert into folders'
-                .' (idusers, parentidfolders, foldername, inserttime)'
-                ." values (#u, #u, '#s', #u)",
-                array($idusers, $parentidfolders, $foldername, time())
-            )
+            'insert into folders'
+            .' (idusers, parentidfolders, foldername, inserttime)'
+            ." values ($idusers, $parentidfolders, '$foldername', $inserttime)"
         );
-
         return mysqli_insert_id($mysqli);
-
     }
 
     static function delete ($idusers, $idfolders) {
@@ -34,11 +27,7 @@ class Folders {
             $idfolders = array_shift($idfolderss);
             mysqli_query(
                 $mysqli,
-                mysqli_sprintf(
-                    $mysqli,
-                    'delete from folders where idfolders = #u',
-                    array($idfolders)
-                )
+                "delete from folders where idfolders = $idfolders"
             );
             foreach (Folders::index($idusers, $idfolders) as $folder) {
                 $idfolderss[] = $folder->idfolders;
@@ -61,74 +50,48 @@ class Folders {
         global $mysqli;
         return mysqli_single_object(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'select * from folders'
-                .' where idusers = #u and idfolders = #u',
-                array($idusers, $idfolders)
-            )
+            'select * from folders'
+            ." where idusers = $idusers and idfolders = $idfolders"
         );
     }
 
     static function getByName ($idusers, $parentidfolders, $foldername, $excludeidfolders = 0) {
         global $mysqli;
+        $foldername = mysqli_real_escape_string($mysqli, $foldername);
         return mysqli_single_object(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'select * from folders'
-                .' where idusers = #u and parentidfolders = #u'
-                ." and foldername = '#s' and idfolders != #u",
-                array($idusers, $parentidfolders, $foldername, $excludeidfolders)
-            )
+            'select * from folders'
+            ." where idusers = $idusers and parentidfolders = $parentidfolders"
+            ." and foldername = '$foldername' and idfolders != $excludeidfolders"
         );
     }
 
     static function index ($idusers, $parentidfolders) {
-
         global $mysqli;
-
-        $folders = mysqli_query_object(
+        return mysqli_query_object(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'select * from folders'
-                .' where idusers = #u and parentidfolders = #u',
-                array($idusers, $parentidfolders)
-            )
+            'select * from folders'
+            ." where idusers = $idusers and parentidfolders = $parentidfolders"
+            .' order by foldername'
         );
-
-        usort($folders, function ($a, $b) {
-            return $a->foldername > $b->foldername ? 1 : -1;
-        });
-
-        return $folders;
-
     }
 
     static function move ($idusers, $idfolders, $parentidfolders) {
         global $mysqli;
         mysqli_query(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'update folders set parentidfolders = #u'
-                .' where idusers = #u and idfolders = #u',
-                array($parentidfolders, $idusers, $idfolders)
-            )
+            "update folders set parentidfolders = $parentidfolders"
+            ." where idusers = $idusers and idfolders = $idfolders"
         );
     }
 
     static function rename ($idusers, $idfolders, $foldername) {
         global $mysqli;
+        $foldername = mysqli_real_escape_string($mysqli, $foldername);
         mysqli_query(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                "update folders set foldername = '#s'"
-                .' where idusers = #u and idfolders = #u',
-                array($foldername, $idusers, $idfolders)
-            )
+            "update folders set foldername = '$foldername'"
+            ." where idusers = $idusers and idfolders = $idfolders"
         );
     }
 

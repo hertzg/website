@@ -2,22 +2,20 @@
 
 include_once __DIR__.'/../fns/mysqli_query_object.php';
 include_once __DIR__.'/../fns/mysqli_single_object.php';
-include_once __DIR__.'/../fns/mysqli_sprintf.php';
 include_once __DIR__.'/../lib/mysqli.php';
 
 class Tasks {
 
     static function add ($idusers, $tasktext, $tags) {
         global $mysqli;
+        $tasktext = mysqli_real_escape_string($mysqli, $tasktext);
+        $tags = mysqli_real_escape_string($mysqli, $tags);
+        $inserttime = $updatetime = time();
         mysqli_query(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'insert into tasks'
-                .' (idusers, tasktext, tags, inserttime, updatetime)'
-                ." values (#u, '#s', '#s', #u, #u)",
-                array($idusers, $tasktext, $tags, time(), time())
-            )
+            'insert into tasks'
+            .' (idusers, tasktext, tags, inserttime, updatetime)'
+            ." values ($idusers, '$tasktext', '$tags', $inserttime, $updatetime)"
         );
         return mysqli_insert_id($mysqli);
     }
@@ -45,17 +43,16 @@ class Tasks {
 
     static function edit ($idusers, $id, $tasktext, $tags) {
         global $mysqli;
+        $tasktext = mysqli_real_escape_string($mysqli, $tasktext);
+        $tags = mysqli_real_escape_string($mysqli, $tags);
+        $updatetime = time();
         mysqli_query(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'update tasks set'
-                ." tasktext = '#s',"
-                ." tags = '#s',"
-                .' updatetime = #u'
-                .' where idusers = #u and idtasks = #u',
-                array($tasktext, $tags, time(), $idusers, $id)
-            )
+            'update tasks set'
+            ." tasktext = '$tasktext',"
+            ." tags = '$tags',"
+            .' updatetime = $updatetime'
+            ." where idusers = $idusers and idtasks = $id"
         );
     }
 
@@ -63,12 +60,8 @@ class Tasks {
         global $mysqli;
         return mysqli_single_object(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'select * from tasks'
-                .' where idusers = #u and idtasks = #u',
-                array($idusers, $id)
-            )
+            'select * from tasks'
+            ." where idusers = $idusers and idtasks = $id"
         );
     }
 
@@ -76,31 +69,24 @@ class Tasks {
         global $mysqli;
         return mysqli_query_object(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'select * from tasks where idusers = #u'
-                .' order by done, updatetime desc',
-                array($idusers)
-            )
+            "select * from tasks where idusers = $idusers"
+            .' order by done, updatetime desc'
         );
     }
 
     static function indexOnTag ($idusers, $tag) {
         global $mysqli;
+        $tag = mysqli_real_escape_string($mysqli, $tag);
         return mysqli_query_object(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'select * from tasks t'
-                .' where idusers = #u'
-                .' and exists ('
-                .'  select idtasks from tasktags tt'
-                .'  where tt.idtasks = t.idtasks'
-                ."  and tt.tagname = '#s'"
-                .' )'
-                .' order by done, updatetime desc',
-                array($idusers, $tag)
-            )
+            'select * from tasks t'
+            .' where idusers = $idusers'
+            .' and exists ('
+            .'  select idtasks from tasktags tt'
+            .'  where tt.idtasks = t.idtasks'
+            ."  and tt.tagname = '$tag'"
+            .' )'
+            .' order by done, updatetime desc'
         );
     }
 
@@ -111,15 +97,12 @@ class Tasks {
             array('\\\\', '\\%', '\\_'),
             $keyword
         );
+        $keyword = mysqli_real_escape_string($mysqli, $idusers);
         return mysqli_query_object(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'select * from tasks'
-                ." where idusers = #u and tasktext like '%#s%'"
-                .' order by done, updatetime desc',
-                array($idusers, $keyword)
-            )
+            'select * from tasks'
+            ." where idusers = $idusers and tasktext like '%$keyword%'"
+            .' order by done, updatetime desc'
         );
     }
 
@@ -130,20 +113,18 @@ class Tasks {
             array('\\\\', '\\%', '\\_'),
             $keyword
         );
+        $keyword = mysqli_real_escape_string($mysqli, $idusers);
+        $tag = mysqli_real_escape_string($mysqli, $tag);
         return mysqli_query_object(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'select * from tasks t'
-                ." where idusers = #u and tasktext like '%#s%'"
-                .' and exists ('
-                .'  select idtasks from tasktags tt'
-                .'  where tt.idtasks = t.idtasks'
-                ."  and tt.tagname = '#s'"
-                .' )'
-                .' order by done, updatetime desc',
-                array($idusers, $keyword, $tag)
-            )
+            'select * from tasks t'
+            ." where idusers = $idusers and tasktext like '%$keyword%'"
+            .' and exists ('
+            .'  select idtasks from tasktags tt'
+            .'  where tt.idtasks = t.idtasks'
+            ."  and tt.tagname = '$tag'"
+            .' )'
+            .' order by done, updatetime desc'
         );
     }
 

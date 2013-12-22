@@ -1,23 +1,19 @@
 <?php
 
 include_once __DIR__.'/../fns/mysqli_query_object.php';
-include_once __DIR__.'/../fns/mysqli_sprintf.php';
 include_once __DIR__.'/../lib/mysqli.php';
 
 class Events {
 
     static function add ($idusers, $eventtext, $eventtime) {
         global $mysqli;
-        $time = time();
+        $eventtext = mysqli_real_escape_string($mysqli, $eventtext);
+        $inserttime = time();
         mysqli_query(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'insert into events'
-                .' (idusers, eventtext, eventtime, inserttime)'
-                ." values (#u, '#s', #u, #u)",
-                array($idusers, $eventtext, $eventtime, $time)
-            )
+            'insert into events'
+            .' (idusers, eventtext, eventtime, inserttime)'
+            ." values ($idusers, '$eventtext', $eventtime, $inserttime)"
         );
     }
 
@@ -25,12 +21,8 @@ class Events {
         global $mysqli;
         return mysqli_single_object(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'select count(*) count from events'
-                .' where idusers = #u and eventtime = #u',
-                array($idusers, $eventtime)
-            )
+            'select count(*) count from events'
+            ." where idusers = $idusers and eventtime = $eventtime"
         )->count;
     }
 
@@ -44,16 +36,14 @@ class Events {
 
     static function edit ($idusers, $id, $eventtext) {
         global $mysqli;
+        $eventtext = mysqli_real_escape_string($mysqli, $eventtext);
+        $edittime = time();
         return mysqli_query(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'update events set'
-                ." eventtext = '#s',"
-                .' edittime = #u'
-                .' where idusers = #u and idevents = #u',
-                array($eventtext, time(), $idusers, $id)
-            )
+            'update events set'
+            ." eventtext = '$eventtext',"
+            ." edittime = $edittime"
+            ." where idusers = $idusers and idevents = $idevents"
         );
     }
 
@@ -61,11 +51,8 @@ class Events {
         global $mysqli;
         return mysqli_single_object(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'select * from events where idusers = #u and idevents = #u',
-                array($idusers, $id)
-            )
+            'select * from events'
+            ." where idusers = $idusers and idevents = $id"
         );
     }
 
@@ -73,12 +60,8 @@ class Events {
         global $mysqli;
         return mysqli_query_object(
             $mysqli,
-            mysqli_sprintf(
-                $mysqli,
-                'select * from events'
-                .' where idusers = #u and eventtime = #u',
-                array($idusers, $eventtime)
-            )
+            'select * from events'
+            ." where idusers = $idusers and eventtime = $eventtime"
         );
     }
 
