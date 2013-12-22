@@ -11,6 +11,9 @@ if ($user) redirect('home.php');
 
 $lastpost = ifset($_SESSION['signin_lastpost']);
 
+if ($lastpost) $remember = $lastpost['remember'];
+else $remember = true;
+
 unset(
     $_SESSION['signup_errors'],
     $_SESSION['signup_lastpost'],
@@ -41,6 +44,8 @@ $page->finish(
                 'autofocus' => $username !== '',
                 'required' => true,
             ))
+            .Page::HR
+            .Form::checkbox('remember', 'Stay signed in', $remember)
             .Page::HR
             .Form::button('Sign In')
         )

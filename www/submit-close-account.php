@@ -61,5 +61,5 @@ $_SESSION['signin_messages'] = array(
     'Your account has been closed.',
 );
 
-setcookie('username', '', time() - 7 * 25 * 60 * 60);
+setcookie('username', '', time() - 60 * 60 * 24, '/');
 redirect('signin.php');

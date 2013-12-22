@@ -59,7 +59,7 @@ if ($errors) {
 
 Users::add($username, $email, $password1);
 Captcha::reset();
-setcookie('username', $username, time() + 7 * 25 * 60 * 60);
+setcookie('username', $username, time() + 60 * 60 * 24 * 30, '/');
 
 $_SESSION['signin_messages'] = array(
     'Thank you for signing up.',

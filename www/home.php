@@ -18,8 +18,6 @@ include_once 'classes/Page.php';
 include_once 'classes/Tab.php';
 include_once 'classes/Tasks.php';
 
-setcookie('username', $user->username, time() + 7 * 25 * 60 * 60);
-
 unset(
     $_SESSION['account_messages'],
     $_SESSION['bookmarks/index_messages'],
