@@ -34,7 +34,13 @@ unset(
 
 if ($errors) {
     $_SESSION['contacts/add_errors'] = $errors;
-    $_SESSION['contacts/add_lastpost'] = $_POST;
+    $_SESSION['contacts/add_lastpost'] = [
+        'fullname' => $fullname,
+        'address' => $address,
+        'email' => $email,
+        'phone1' => $phone1,
+        'phone2' => $phone2,
+    ];
     redirect('add.php');
 }
 

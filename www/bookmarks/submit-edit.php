@@ -27,7 +27,11 @@ unset($_SESSION['bookmarks/edit_errors']);
 
 if ($errors) {
     $_SESSION['bookmarks/edit_errors'] = $errors;
-    $_SESSION['bookmarks/edit_lastpost'] = $_POST;
+    $_SESSION['bookmarks/edit_lastpost'] = [
+        'title' => $title,
+        'url' => $url,
+        'tags' => $tags,
+    ];
     redirect("edit.php?id=$id");
 }
 

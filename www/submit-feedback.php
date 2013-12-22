@@ -25,7 +25,7 @@ unset($_SESSION['feedback_errors']);
 
 if ($errors) {
     $_SESSION['feedback_errors'] = $errors;
-    $_SESSION['feedback_lastpost'] = $_POST;
+    $_SESSION['feedback_lastpost'] = ['feedbacktext' => $feedbacktext];
     redirect('feedback.php');
 }
 

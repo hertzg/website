@@ -31,7 +31,7 @@ unset($_SESSION['email-reset-password_errors']);
 
 if ($errors) {
     $_SESSION['email-reset-password_errors'] = $errors;
-    $_SESSION['email-reset-password_lastpost'] = $_POST;
+    $_SESSION['email-reset-password_lastpost'] = ['email' => $email];
     redirect('email-reset-password.php');
 }
 

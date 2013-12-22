@@ -30,7 +30,11 @@ if ($password1 === '') {
 
 if ($errors) {
     $_SESSION['change-password_errors'] = $errors;
-    $_SESSION['change-password_lastpost'] = $_POST;
+    $_SESSION['change-password_lastpost'] = [
+        'currentpassword' => $currentpassword,
+        'password1' => $password1,
+        'password2' => $password2,
+    ];
     redirect('change-password.php');
 }
 

@@ -53,7 +53,12 @@ Captcha::check($errors, 3);
 
 if ($errors) {
     $_SESSION['signup_errors'] = $errors;
-    $_SESSION['signup_lastpost'] = $_POST;
+    $_SESSION['signup_lastpost'] = [
+        'username' => $username,
+        'email' => $email,
+        'password1' => $password1,
+        'password2' => $password2,
+    ];
     redirect('signup.php');
 }
 
