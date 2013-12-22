@@ -21,10 +21,17 @@ $numNotifications = $user->numnotifications;
 
 $channel = Channels::get($idusers, $id);
 if ($channel) {
-    $filterMessage = Page::warnings(array(
-        "Showing notifications only from <b>$channel->channelname</b>.<br />"
-        .'<a class="a" href="notifications.php">Show all</a>',
-    ));
+    $filterMessage =
+        '<div style="position: relative; height: 48px; background: #eee; color: #444; padding: 16px">'
+            .'Channel: <b>'.htmlspecialchars($channel->channelname).'</b>'
+            .'<a class="clickable" title="Clear Filter" href="notifications.php"'
+            .' style="position: absolute; top: 0; right: 0; bottom: 0; width: 48px">'
+                .'<span class="icon no"'
+                .' style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; margin: auto">'
+                .'</span>'
+            .'</a>'
+        .'</div>'
+        .'<div class="warnings-hr"></div>';
     $notifications = Notifications::indexOnChannel($idusers, $id);
 } else {
     $notifications = Notifications::index($idusers);

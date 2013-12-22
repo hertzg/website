@@ -59,7 +59,7 @@ class Notifications {
             $mysqli,
             'select * from notifications'
             ." where idusers = $idusers"
-            .' order by inserttime'
+            .' order by inserttime desc'
         );
     }
 
