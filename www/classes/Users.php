@@ -110,6 +110,7 @@ class Users {
 
     static function getByResetPasswordKey ($idusers, $resetpasswordkey) {
         global $mysqli;
+        include_once __DIR__.'/../fns/hex2bin.php';
         $resetpasswordkey = mysqli_real_escape_string($mysqli, hex2bin($resetpasswordkey));
         return mysqli_single_object(
             $mysqli,

@@ -1,7 +1,6 @@
 <?php
 
 include_once 'fns/is_md5.php';
-include_once 'fns/hex2bin.php';
 include_once 'fns/redirect.php';
 include_once 'fns/request_strings.php';
 include_once 'classes/Form.php';
