@@ -8,7 +8,11 @@ include_once 'classes/Page.php';
 include_once 'classes/Tab.php';
 include_once 'lib/themes.php';
 
-$lastpost = ifset($_SESSION['edit-profile_lastpost']);
+if (array_key_exists('edit-profile_lastpost', $_SESSION)) {
+    $values = (object)$_SESSION['edit-profile_lastpost'];
+} else {
+    $values = $user;
+}
 
 unset($_SESSION['account_messages']);
 
@@ -33,13 +37,13 @@ $page->finish(
         .Form::create(
             'submit-edit-profile.php',
             Form::textfield('email', 'Email', array(
-                'value' => ifset($lastpost['email'], $user->email),
+                'value' => $values->email,
                 'autofocus' => true,
                 'required' => true,
             ))
             .Page::HR
             .Form::textfield('fullname', 'Full name', array(
-                'value' => ifset($lastpost['fullname'], $user->fullname),
+                'value' => $values->fullname,
             ))
             .Page::HR
             .Form::button('Save Changes')

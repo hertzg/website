@@ -6,7 +6,11 @@ include_once '../classes/Form.php';
 include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
 
-$lastpost = ifset($_SESSION['bookmarks/edit_lastpost']);
+if (array_key_exists('bookmarks/edit_lastpost', $_SESSION)) {
+    $values = (object)$_SESSION['bookmarks/edit_lastpost'];
+} else {
+    $values = $bookmark;
+}
 
 unset($_SESSION['bookmarks/index_messages']);
 
@@ -21,17 +25,17 @@ $page->finish(
         .Form::create(
             'submit-edit.php',
             Form::textfield('url', 'URL', array(
-                'value' => ifset($lastpost['url'], $bookmark->url),
+                'value' => $values->url,
                 'autofocus' => true,
                 'required' => true,
             ))
             .Page::HR
             .Form::textfield('title', 'Title', array(
-                'value' => ifset($lastpost['title'], $bookmark->title),
+                'value' => $values->title,
             ))
             .Page::HR
             .Form::textfield('tags', 'Tags', array(
-                'value' => ifset($lastpost['tags'], $bookmark->tags),
+                'value' => $values->tags,
             ))
             .Page::HR
             .Form::button('Save Changes')

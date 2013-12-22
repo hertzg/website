@@ -6,6 +6,12 @@ include_once '../classes/Form.php';
 include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
 
+if (array_key_exists('notes/edit_lastpost', $_SESSION)) {
+    $values = (object)$_SESSION['notes/edit_lastpost'];
+} else {
+    $values = $note;
+}
+
 unset($_SESSION['notes/index_messages']);
 
 $page->base = '../';
@@ -19,7 +25,7 @@ $page->finish(
         .Form::create(
             'submit-edit.php',
             Form::textarea('notetext', 'Text', array(
-                'value' => ifset($lastpost['notetext'], $note->notetext),
+                'value' => $values->notetext,
                 'autofocus' => true,
                 'required' => true,
             ))
