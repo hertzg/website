@@ -54,7 +54,7 @@ class Users {
             'update users set'
             ." password = '$password',"
             .' resetpasswordkey = null'
-            .' where idusers = $idusers'
+            ." where idusers = $idusers"
         );
     }
 
