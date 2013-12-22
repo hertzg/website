@@ -27,10 +27,10 @@ unset($_SESSION['tasks/edit_errors']);
 
 if ($errors) {
     $_SESSION['tasks/edit_errors'] = $errors;
-    $_SESSION['tasks/edit_lastpost'] = [
+    $_SESSION['tasks/edit_lastpost'] = array(
         'tasktext' => $tasktext,
         'tags' => $tags,
-    ];
+    );
     redirect("edit.php?id=$id");
 }
 

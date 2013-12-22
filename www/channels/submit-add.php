@@ -30,7 +30,7 @@ unset(
 
 if ($errors) {
     $_SESSION['channels/add_errors'] = $errors;
-    $_SESSION['channels/add_lastpost'] = ['channelname' => $channelname];
+    $_SESSION['channels/add_lastpost'] = array('channelname' => $channelname);
     redirect('add.php');
 }
 

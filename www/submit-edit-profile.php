@@ -34,10 +34,10 @@ unset(
 
 if ($errors) {
     $_SESSION['edit-profile_errors'] = $errors;
-    $_SESSION['edit-profile_lastpost'] = [
+    $_SESSION['edit-profile_lastpost'] = array(
         'email' => $email,
         'fullname' => $fullname,
-    ];
+    );
     redirect('edit-profile.php');
 }
 

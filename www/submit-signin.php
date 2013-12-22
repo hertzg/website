@@ -32,11 +32,11 @@ unset(
 
 if ($errors) {
     $_SESSION['signin_errors'] = $errors;
-    $_SESSION['signin_lastpost'] = [
+    $_SESSION['signin_lastpost'] = array(
         'username' => $username,
         'password' => $password,
         'remember' => $remember,
-    ];
+    );
     redirect('signin.php');
 }
 

@@ -33,7 +33,7 @@ unset(
 
 if ($errors) {
     $_SESSION['files/add-folder_errors'] = $errors;
-    $_SESSION['files/add-folder_lastpost'] = ['foldername' => $foldername];
+    $_SESSION['files/add-folder_lastpost'] = array('foldername' => $foldername);
     redirect("add-folder.php?parentidfolders=$parentidfolders");
 }
 

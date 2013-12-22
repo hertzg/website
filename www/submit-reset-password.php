@@ -36,10 +36,10 @@ unset(
 
 if ($errors) {
     $_SESSION['reset-password_errors'] = $errors;
-    $_SESSION['reset-password_lastpost'] = [
+    $_SESSION['reset-password_lastpost'] = array(
         'password1' => $password1,
         'password2' => $password2,
-    ];
+    );
     redirect(
         "reset-password.php?idusers=$idusers&resetpasswordkey=$resetpasswordkey"
     );

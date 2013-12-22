@@ -31,13 +31,13 @@ unset($_SESSION['contacts/edit_errors']);
 
 if ($errors) {
     $_SESSION['contacts/edit_errors'] = $errors;
-    $_SESSION['contacts/edit_lastpost'] = [
+    $_SESSION['contacts/edit_lastpost'] = array(
         'fullname' => $fullname,
         'address' => $address,
         'email' => $email,
         'phone1' => $phone1,
         'phone2' => $phone2,
-    ];
+    );
     redirect("edit.php?id=$id");
 }
 
