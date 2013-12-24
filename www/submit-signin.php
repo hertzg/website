@@ -13,7 +13,11 @@ list($username, $password, $remember) = request_strings(
 $remember = (bool)$remember;
 $errors = array();
 
-setcookie('remember', $remember ? '1' : '0', time() + 60 * 60 * 24 * 30, '/');
+if ($remember) {
+    setcookie('remember', '1', time() + 60 * 60 * 24 * 30, '/');
+} else {
+    setcookie('remember', '', time() - 60 * 60 * 24, '/');
+}
 
 if ($username === '') $errors[] = 'Enter username.';
 
