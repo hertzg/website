@@ -2,7 +2,6 @@
 
 include_once __DIR__.'/../fns/mysqli_query_object.php';
 include_once __DIR__.'/../fns/mysqli_single_object.php';
-include_once __DIR__.'/../classes/Files.php';
 include_once __DIR__.'/../lib/mysqli.php';
 
 class Folders {
@@ -21,6 +20,7 @@ class Folders {
     }
 
     static function delete ($idusers, $idfolders) {
+        include_once 'Files.php';
         global $mysqli;
         $idfolderss = array($idfolders);
         while ($idfolderss) {
