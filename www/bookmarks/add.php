@@ -5,7 +5,15 @@ include_once '../classes/Form.php';
 include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
 
-$lastpost = ifset($_SESSION['bookmarks/add_lastpost']);
+if (array_key_exists('bookmarks/add_lastpost', $_SESSION)) {
+    $values = $_SESSION['bookmarks/add_lastpost'];
+} else {
+    $values = array(
+        'url' => '',
+        'title' => '',
+        'tags' => '',
+    );
+}
 
 unset($_SESSION['bookmarks/index_messages']);
 
@@ -19,17 +27,17 @@ $page->finish(
         .Form::create(
             'submit-add.php',
             Form::textfield('url', 'URL', array(
-                'value' => ifset($lastpost['url']),
+                'value' => $values['url'],
                 'autofocus' => true,
                 'required' => true,
             ))
             .Page::HR
             .Form::textfield('title', 'Title', array(
-                'value' => ifset($lastpost['title']),
+                'value' => $values['title'],
             ))
             .Page::HR
             .Form::textfield('tags', 'Tags', array(
-                'value' => ifset($lastpost['tags']),
+                'value' => $values['tags'],
             ))
             .Page::HR
             .Form::button('Save')

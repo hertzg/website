@@ -23,12 +23,20 @@ if (count($tagnames) > Tags::MAX_NUM_TAGS) {
     $errors[] = 'Please, enter maximum '.Tags::MAX_NUM_TAGS.' tags.';
 }
 
-unset($_SESSION['bookmarks/add_errors']);
-
 if ($errors) {
     $_SESSION['bookmarks/add_errors'] = $errors;
+    $_SESSION['bookmarks/add_lastpost'] = [
+        'title' => $title,
+        'url' => $url,
+        'tags' => $tags,
+    ];
     redirect('add.php');
 }
+
+unset(
+    $_SESSION['bookmarks/add_errors'],
+    $_SESSION['bookmarks/add_lastpost']
+);
 
 include_once '../classes/Bookmarks.php';
 $id = Bookmarks::add($idusers, $title, $url, $tags);

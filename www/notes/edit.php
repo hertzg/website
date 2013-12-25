@@ -7,9 +7,9 @@ include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
 
 if (array_key_exists('notes/edit_lastpost', $_SESSION)) {
-    $values = (object)$_SESSION['notes/edit_lastpost'];
+    $values = $_SESSION['notes/edit_lastpost'];
 } else {
-    $values = $note;
+    $values = (array)$note;
 }
 
 unset($_SESSION['notes/index_messages']);
@@ -25,9 +25,13 @@ $page->finish(
         .Form::create(
             'submit-edit.php',
             Form::textarea('notetext', 'Text', array(
-                'value' => $values->notetext,
+                'value' => $values['notetext'],
                 'autofocus' => true,
                 'required' => true,
+            ))
+            .Page::HR
+            .Form::textfield('tags', 'Tags', array(
+                'value' => $values['tags'],
             ))
             .Page::HR
             .Form::button('Save Changes')

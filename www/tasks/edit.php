@@ -7,9 +7,9 @@ include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
 
 if (array_key_exists('tasks/edit_lastpost', $_SESSION)) {
-    $values = (object)$_SESSION['tasks/edit_lastpost'];
+    $values = $_SESSION['tasks/edit_lastpost'];
 } else {
-    $values = $task;
+    $values = (array)$task;
 }
 
 unset($_SESSION['tasks/index_messages']);
@@ -25,13 +25,13 @@ $page->finish(
         .Form::create(
             'submit-edit.php',
             Form::textarea('tasktext', 'Text', array(
-                'value' => $values->tasktext,
+                'value' => $values['tasktext'],
                 'autofocus' => true,
                 'required' => true,
             ))
             .Page::HR
             .Form::textfield('tags', 'Tags', array(
-                'value' => $values->tags,
+                'value' => $values['tags'],
             ))
             .Page::HR
             .Form::button('Save Changes')

@@ -7,9 +7,9 @@ include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
 
 if (array_key_exists('contacts/edit_lastpost', $_SESSION)) {
-    $values = (object)$_SESSION['contacts/edit_lastpost'];
+    $values = $_SESSION['contacts/edit_lastpost'];
 } else {
-    $values = $contact;
+    $values = (array)$contact;
 }
 
 unset($_SESSION['contacts/index_messages']);
@@ -25,25 +25,29 @@ $page->finish(
         .Form::create(
             'submit-edit.php',
             Form::textfield('fullname', 'Full name', array(
-                'value' => $values->fullname,
+                'value' => $values['fullname'],
                 'autofocus' => true,
                 'required' => true,
             ))
             .Page::HR
             .Form::textfield('address', 'Address', array(
-                'value' => $values->address,
+                'value' => $values['address'],
             ))
             .Page::HR
             .Form::textfield('email', 'Email', array(
-                'value' => $values->email,
+                'value' => $values['email'],
             ))
             .Page::HR
             .Form::textfield('phone1', 'Phone 1', array(
-                'value' => $values->phone1,
+                'value' => $values['phone1'],
             ))
             .Page::HR
             .Form::textfield('phone2', 'Phone 2', array(
-                'value' => $values->phone2,
+                'value' => $values['phone2'],
+            ))
+            .Page::HR
+            .Form::textfield('tags', 'Tags', array(
+                'value' => $values['tags'],
             ))
             .Page::HR
             .Form::button('Save Changes')

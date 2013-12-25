@@ -6,7 +6,11 @@ include_once '../classes/Form.php';
 include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
 
-$lastpost = ifset($_SESSION['channels/add_lastpost']);
+if (array_key_exists('channels/add_lastpost', $_SESSION)) {
+    $values = $_SESSION['channels/add_lastpost'];
+} else {
+    $values = array('channelname' => '');
+}
 
 unset($_SESSION['channels/index_messages']);
 
@@ -21,7 +25,7 @@ $page->finish(
         .Form::create(
             'submit-add.php',
             Form::textfield('channelname', 'Channel name', array(
-                'value' => ifset($lastpost['channelname']),
+                'value' => $values['channelname'],
                 'maxlength' => 32,
                 'autofocus' => true,
                 'required' => true,

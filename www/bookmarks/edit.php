@@ -7,9 +7,9 @@ include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
 
 if (array_key_exists('bookmarks/edit_lastpost', $_SESSION)) {
-    $values = (object)$_SESSION['bookmarks/edit_lastpost'];
+    $values = $_SESSION['bookmarks/edit_lastpost'];
 } else {
-    $values = $bookmark;
+    $values = (array)$bookmark;
 }
 
 unset($_SESSION['bookmarks/index_messages']);
@@ -25,17 +25,17 @@ $page->finish(
         .Form::create(
             'submit-edit.php',
             Form::textfield('url', 'URL', array(
-                'value' => $values->url,
+                'value' => $values['url'],
                 'autofocus' => true,
                 'required' => true,
             ))
             .Page::HR
             .Form::textfield('title', 'Title', array(
-                'value' => $values->title,
+                'value' => $values['title'],
             ))
             .Page::HR
             .Form::textfield('tags', 'Tags', array(
-                'value' => $values->tags,
+                'value' => $values['tags'],
             ))
             .Page::HR
             .Form::button('Save Changes')

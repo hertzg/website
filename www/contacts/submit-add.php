@@ -7,15 +7,17 @@ include_once 'lib/require-user.php';
 include_once '../fns/request_strings.php';
 include_once '../fns/str_collapse_spaces.php';
 include_once '../classes/Contacts.php';
+include_once '../classes/Tags.php';
 
-list($fullname, $address, $email, $phone1, $phone2) = request_strings(
-    'fullname', 'address', 'email', 'phone1', 'phone2');
+list($fullname, $address, $email, $phone1, $phone2, $tags) = request_strings(
+    'fullname', 'address', 'email', 'phone1', 'phone2', 'tags');
 
 $fullname = str_collapse_spaces($fullname);
 $address = str_collapse_spaces($address);
 $email = str_collapse_spaces($email);
 $phone1 = str_collapse_spaces($phone1);
 $phone2 = str_collapse_spaces($phone2);
+$tags = str_collapse_spaces($tags);
 
 $errors = array();
 
@@ -27,10 +29,10 @@ if ($fullname === '') {
     $errors[] = 'A contact with this name already exists.';
 }
 
-unset(
-    $_SESSION['contacts/add_errors'],
-    $_SESSION['contacts/add_lastpost']
-);
+$tagnames = Tags::parse($tags);
+if (count($tagnames) > Tags::MAX_NUM_TAGS) {
+    $errors[] = 'Please, enter maximum '.Tags::MAX_NUM_TAGS.' tags.';
+}
 
 if ($errors) {
     $_SESSION['contacts/add_errors'] = $errors;
@@ -40,11 +42,20 @@ if ($errors) {
         'email' => $email,
         'phone1' => $phone1,
         'phone2' => $phone2,
+        'tags' => $tags,
     );
     redirect('add.php');
 }
 
-$id = Contacts::add($idusers, $fullname, $address, $email, $phone1, $phone2);
+unset(
+    $_SESSION['contacts/add_errors'],
+    $_SESSION['contacts/add_lastpost']
+);
+
+$id = Contacts::add($idusers, $fullname, $address, $email, $phone1, $phone2, $tags);
+
+include_once '../classes/ContactTags.php';
+ContactTags::add($idusers, $id, $tagnames);
 
 $_SESSION['contacts/view_messages'] = array('Contact has been saved.');
 redirect("view.php?id=$id");

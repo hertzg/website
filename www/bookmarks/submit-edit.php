@@ -23,8 +23,6 @@ if (count($tagnames) > Tags::MAX_NUM_TAGS) {
     $errors[] = 'Please, enter maximum '.Tags::MAX_NUM_TAGS.' tags.';
 }
 
-unset($_SESSION['bookmarks/edit_errors']);
-
 if ($errors) {
     $_SESSION['bookmarks/edit_errors'] = $errors;
     $_SESSION['bookmarks/edit_lastpost'] = array(

@@ -23,12 +23,19 @@ if (count($tagnames) > Tags::MAX_NUM_TAGS) {
     $errors[] = 'Please, enter maximum '.Tags::MAX_NUM_TAGS.' tags.';
 }
 
-unset($_SESSION['tasks/add_errors']);
-
 if ($errors) {
     $_SESSION['tasks/add_errors'] = $errors;
+    $_SESSION['tasks/add_lastpost'] = [
+        'tasktext' => $tasktext,
+        'tags' => $tags,
+    ];
     redirect('add.php');
 }
+
+unset(
+    $_SESSION['tasks/add_errors'],
+    $_SESSION['tasks/add_lastpost']
+);
 
 include_once '../classes/Tasks.php';
 $id = Tasks::add($idusers, $tasktext, $tags);

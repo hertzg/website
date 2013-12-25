@@ -23,16 +23,16 @@ if ($channelname === '') {
     $errors[] = 'A channel with this name already exists.';
 }
 
-unset(
-    $_SESSION['channels/add_errors'],
-    $_SESSION['channels/add_lastpost']
-);
-
 if ($errors) {
     $_SESSION['channels/add_errors'] = $errors;
     $_SESSION['channels/add_lastpost'] = array('channelname' => $channelname);
     redirect('add.php');
 }
+
+unset(
+    $_SESSION['channels/add_errors'],
+    $_SESSION['channels/add_lastpost']
+);
 
 $id = Channels::add($idusers, $channelname);
 

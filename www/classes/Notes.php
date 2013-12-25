@@ -6,15 +6,16 @@ include_once __DIR__.'/../lib/mysqli.php';
 
 class Notes {
 
-    static function add ($idusers, $notetext) {
+    static function add ($idusers, $notetext, $tags) {
         global $mysqli;
         $notetext = mysqli_real_escape_string($mysqli, $notetext);
+        $tags = mysqli_real_escape_string($mysqli, $tags);
         $inserttime = $updatetime = time();
         mysqli_query(
             $mysqli,
             'insert into notes'
-            .' (idusers, notetext, inserttime, updatetime)'
-            ." values ($idusers, '$notetext', $inserttime, $updatetime)"
+            .' (idusers, notetext, tags, inserttime, updatetime)'
+            ." values ($idusers, '$notetext', '$tags', $inserttime, $updatetime)"
         );
         return mysqli_insert_id($mysqli);
     }
@@ -40,14 +41,16 @@ class Notes {
         mysqli_query($mysqli, "delete from notes where idusers = $idusers");
     }
 
-    static function edit ($idusers, $id, $notetext) {
+    static function edit ($idusers, $id, $notetext, $tags) {
         global $mysqli;
         $notetext = mysqli_real_escape_string($mysqli, $notetext);
+        $tags = mysqli_real_escape_string($mysqli, $tags);
         $updatetime = time();
         mysqli_query(
             $mysqli,
             'update notes set'
             ." notetext = '$notetext',"
+            ." tags = '$tags',"
             ." updatetime = $updatetime"
             ." where idusers = $idusers and idnotes = $id"
         );

@@ -1,11 +1,19 @@
 <?php
 
 include_once 'lib/require-user.php';
+include_once '../fns/ifset.php';
 include_once '../classes/Form.php';
 include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
 
-$lastpost = ifset($_SESSION['notes/add_lastpost']);
+if (array_key_exists('notes/add_lastpost', $_SESSION)) {
+    $values = $_SESSION['notes/add_lastpost'];
+} else {
+    $values = array(
+        'notetext' => '',
+        'tags' => '',
+    );
+}
 
 unset($_SESSION['notes/index_messages']);
 
@@ -19,9 +27,13 @@ $page->finish(
         .Form::create(
             'submit-add.php',
             Form::textarea('notetext', 'Text', array(
-                'value' => ifset($lastpost['notetext']),
+                'value' => $values['notetext'],
                 'autofocus' => true,
                 'required' => true,
+            ))
+            .Page::HR
+            .Form::textfield('tags', 'Tags', array(
+                'value' => $values['tags'],
             ))
             .Page::HR
             .Form::button('Save')
