@@ -2,9 +2,11 @@
 
 include_once 'lib/require-note.php';
 include_once '../fns/create_panel.php';
+include_once '../fns/create_tags.php';
 include_once '../fns/date_ago.php';
 include_once '../fns/ifset.php';
 include_once '../fns/render_external_links.php';
+include_once '../classes/NoteTags.php';
 include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
 
@@ -31,6 +33,7 @@ $page->finish(
                 render_external_links(htmlspecialchars($notetext), $base)
             )
         )
+        .create_tags(NoteTags::indexOnNote($id))
         .Page::HR
         .Page::text(
             '<div>Note created '.date_ago($inserttime).'.</div>'
