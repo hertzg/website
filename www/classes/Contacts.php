@@ -110,14 +110,14 @@ class Contacts {
         $tag = mysqli_real_escape_string($mysqli, $tag);
         return mysqli_query_object(
             $mysqli,
-            'select * from contacts t'
+            'select * from contacts'
             ." where idusers = $idusers"
             .' and exists ('
-            .'  select idcontacts from contacttags tt'
-            .'  where tt.idcontacts = t.idcontacts'
-            ."  and tt.tagname = '$tag'"
+            .'  select idcontacts from contacttags'
+            .'  where contacttags.idcontacts = contacts.idcontacts'
+            ."  and contacttags.tagname = '$tag'"
             .' )'
-            .' order by updatetime desc'
+            .' order by fullname'
         );
     }
 
@@ -142,14 +142,14 @@ class Contacts {
         $tag = mysqli_real_escape_string($mysqli, $tag);
         return mysqli_query_object(
             $mysqli,
-            'select * from contacts t'
+            'select * from contacts'
             ." where idusers = $idusers and fullname like '%$keyword%'"
             .' and exists ('
-            .'  select idcontacts from contacttags tt'
-            .'  where tt.idcontacts = t.idcontacts'
-            ."  and tt.tagname = '$tag'"
+            .'  select idcontacts from contacttags'
+            .'  where contacttags.idcontacts = contacts.idcontacts'
+            ."  and contacttags.tagname = '$tag'"
             .' )'
-            .' order by done, updatetime desc'
+            .' order by fullname'
         );
     }
 

@@ -50,7 +50,7 @@ if ($keyword === '') {
         if (count($tasks) > 1) {
             include_once '../fns/create_search_form_empty_content.php';
             $items[] = create_search_form(
-                create_search_form_empty_content($keyword, 'Search tasks...')
+                create_search_form_empty_content('Search tasks...')
                 .createTagInput($tag)
             );
         }
