@@ -15,8 +15,10 @@ class Bookmarks {
         mysqli_query(
             $mysqli,
             'insert into bookmarks'
-            .' (idusers, title, url, tags, inserttime, updatetime)'
-            ." values ($idusers, '$title', '$url', '$tags', $inserttime, $updatetime)"
+            .' (idusers, title, url, tags,'
+            .' inserttime, updatetime)'
+            ." values ($idusers, '$title', '$url', '$tags',"
+            ." $inserttime, $updatetime)"
         );
         return mysqli_insert_id($mysqli);
     }
@@ -33,7 +35,8 @@ class Bookmarks {
         global $mysqli;
         mysqli_query(
             $mysqli,
-            "delete from bookmarks where idusers = $idusers and idbookmarks = $id"
+            'delete from bookmarks'
+            ." where idusers = $idusers and idbookmarks = $id"
         );
     }
 

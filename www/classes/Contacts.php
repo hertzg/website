@@ -40,7 +40,8 @@ class Contacts {
         global $mysqli;
         mysqli_query(
             $mysqli,
-            "delete from contacts where idusers = $idusers and idcontacts = $id"
+            'delete from contacts'
+            ." where idusers = $idusers and idcontacts = $id"
         );
     }
 
@@ -106,11 +107,8 @@ class Contacts {
 
     static function search ($idusers, $keyword) {
         global $mysqli;
-        $keyword = str_replace(
-            array('\\', '%', '_'),
-            array('\\\\', '\\%', '\\_'),
-            $keyword
-        );
+        include_once __DIR__.'/../fns/escape_like.php';
+        $keyword = escape_like($keyword);
         $keyword = mysqli_real_escape_string($mysqli, $keyword);
         return mysqli_query_object(
             $mysqli,

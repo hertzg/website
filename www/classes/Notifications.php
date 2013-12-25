@@ -17,8 +17,10 @@ class Notifications {
         mysqli_query(
             $mysqli,
             'insert into notifications'
-            .' (idusers, idchannels, channelname, notificationtext, inserttime)'
-            ." values ($idusers, $idchannels, '$channelname', '$notificationtext', $inserttime)"
+            .' (idusers, idchannels, channelname,'
+            .' notificationtext, inserttime)'
+            ." values ($idusers, $idchannels, '$channelname',"
+            ." '$notificationtext', $inserttime)"
         );
         Channels::addNumNotifications($idusers, $idchannels, 1);
         Users::addNumNotifications($idusers, 1);
@@ -34,7 +36,10 @@ class Notifications {
 
     static function deleteAll ($idusers) {
         global $mysqli;
-        mysqli_query($mysqli, "delete from notifications where idusers = $idusers");
+        mysqli_query(
+            $mysqli,
+            "delete from notifications where idusers = $idusers"
+        );
         Channels::clearNumNotifications($idusers);
     }
 
@@ -50,7 +55,10 @@ class Notifications {
 
     static function deleteOnUser ($idusers) {
         global $mysqli;
-        mysqli_query($mysqli, "delete from notifications where idusers = $idusers");
+        mysqli_query(
+            $mysqli,
+            "delete from notifications where idusers = $idusers"
+        );
     }
 
     static function index ($idusers) {

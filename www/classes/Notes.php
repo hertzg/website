@@ -14,8 +14,10 @@ class Notes {
         mysqli_query(
             $mysqli,
             'insert into notes'
-            .' (idusers, notetext, tags, inserttime, updatetime)'
-            ." values ($idusers, '$notetext', '$tags', $inserttime, $updatetime)"
+            .' (idusers, notetext, tags,'
+            .' inserttime, updatetime)'
+            ." values ($idusers, '$notetext', '$tags',"
+            ." $inserttime, $updatetime)"
         );
         return mysqli_insert_id($mysqli);
     }
@@ -76,11 +78,8 @@ class Notes {
 
     static function search ($idusers, $keyword) {
         global $mysqli;
-        $keyword = str_replace(
-            array('\\', '%', '_'),
-            array('\\\\', '\\%', '\\_'),
-            $keyword
-        );
+        include_once __DIR__.'/../fns/escape_like.php';
+        $keyword = escape_like($keyword);
         $keyword = mysqli_real_escape_string($mysqli, $keyword);
         return mysqli_query_object(
             $mysqli,

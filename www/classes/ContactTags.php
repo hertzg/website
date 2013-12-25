@@ -19,7 +19,10 @@ class ContactTags {
 
     static function deleteOnUser ($idusers) {
         global $mysqli;
-        mysqli_query($mysqli, "delete from contacttags where idusers = $idusers");
+        mysqli_query(
+            $mysqli,
+            "delete from contacttags where idusers = $idusers"
+        );
     }
 
     static function deleteOnContact ($idcontacts) {

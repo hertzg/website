@@ -19,7 +19,10 @@ class BookmarkTags {
 
     static function deleteOnUser ($idusers) {
         global $mysqli;
-        mysqli_query($mysqli, "delete from bookmarktags where idusers = $idusers");
+        mysqli_query(
+            $mysqli,
+            "delete from bookmarktags where idusers = $idusers"
+        );
     }
 
     static function deleteOnBookmark ($idbookmarks) {

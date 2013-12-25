@@ -92,11 +92,8 @@ class Tasks {
 
     static function search ($idusers, $keyword) {
         global $mysqli;
-        $keyword = str_replace(
-            array('\\', '%', '_'),
-            array('\\\\', '\\%', '\\_'),
-            $keyword
-        );
+        include_once __DIR__.'/../fns/escape_like.php';
+        $keyword = escape_like($keyword);
         $keyword = mysqli_real_escape_string($mysqli, $keyword);
         return mysqli_query_object(
             $mysqli,
@@ -108,11 +105,8 @@ class Tasks {
 
     static function searchOnTag ($idusers, $keyword, $tag) {
         global $mysqli;
-        $keyword = str_replace(
-            array('\\', '%', '_'),
-            array('\\\\', '\\%', '\\_'),
-            $keyword
-        );
+        include_once __DIR__.'/../fns/escape_like.php';
+        $keyword = escape_like($keyword);
         $keyword = mysqli_real_escape_string($mysqli, $keyword);
         $tag = mysqli_real_escape_string($mysqli, $tag);
         return mysqli_query_object(

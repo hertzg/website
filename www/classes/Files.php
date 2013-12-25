@@ -16,8 +16,10 @@ class Files {
         mysqli_query(
             $mysqli,
             'insert into files'
-            .' (idusers, idfolders, filename, filesize, inserttime)'
-            ." value ($idusers, $idfolders, '$filename', $filesize, $inserttime)"
+            .' (idusers, idfolders, filename,'
+            .' filesize, inserttime)'
+            ." value ($idusers, $idfolders, '$filename',"
+            ." $filesize, $inserttime)"
         );
 
         $id = mysqli_insert_id($mysqli);

@@ -61,8 +61,10 @@ class Folders {
         return mysqli_single_object(
             $mysqli,
             'select * from folders'
-            ." where idusers = $idusers and parentidfolders = $parentidfolders"
-            ." and foldername = '$foldername' and idfolders != $excludeidfolders"
+            ." where idusers = $idusers"
+            ." and parentidfolders = $parentidfolders"
+            ." and foldername = '$foldername'"
+            ." and idfolders != $excludeidfolders"
         );
     }
 

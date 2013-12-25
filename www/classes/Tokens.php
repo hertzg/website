@@ -12,15 +12,20 @@ class Tokens {
         $inserttime = $accesstime = time();
         mysqli_query(
             $mysqli,
-            'insert into tokens (idusers, username, tokentext, inserttime, accesstime)'
-            ." values ($idusers, '$username', '$tokentext', $inserttime, $accesstime)"
+            'insert into tokens (idusers, username, tokentext,'
+            .' inserttime, accesstime)'
+            ." values ($idusers, '$username', '$tokentext',"
+            ." $inserttime, $accesstime)"
         );
         return mysqli_insert_id($mysqli);
     }
 
     static function get ($id) {
         global $mysqli;
-        return mysqli_single_object($mysqli, "select * from tokens where idtokens = $id");
+        return mysqli_single_object(
+            $mysqli,
+            "select * from tokens where idtokens = $id"
+        );
     }
 
     static function getByUsernameTokenText ($username, $tokentext) {

@@ -50,7 +50,8 @@ class Channels {
         global $mysqli;
         mysqli_query(
             $mysqli,
-            "delete from channels where idusers = $idusers and idchannels = $id"
+            'delete from channels'
+            ." where idusers = $idusers and idchannels = $id"
         );
         include_once __DIR__.'/Notifications.php';
         Notifications::deleteOnChannel($idusers, $id);
@@ -87,7 +88,8 @@ class Channels {
         return mysqli_single_object(
             $mysqli,
             'select * from channels'
-            ." where channelname = '$channelname' and channelkey = '$channelkey'"
+            ." where channelname = '$channelname'"
+            ." and channelkey = '$channelkey'"
         );
     }
 
