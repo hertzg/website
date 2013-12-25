@@ -21,17 +21,23 @@ if ($errors) {
     redirect('close-account.php');
 }
 
-include_once 'classes/BookmarkTags.php';
-BookmarkTags::deleteOnUser($idusers);
-
 include_once 'classes/Bookmarks.php';
 Bookmarks::deleteOnUser($idusers);
+
+include_once 'classes/BookmarkTags.php';
+BookmarkTags::deleteOnUser($idusers);
 
 include_once 'classes/Channels.php';
 Channels::deleteOnUser($idusers);
 
 include_once 'classes/Contacts.php';
 Contacts::deleteOnUser($idusers);
+
+include_once 'classes/ContactTags.php';
+ContactTags::deleteOnUser($idusers);
+
+include_once 'classes/Events.php';
+Events::deleteOnUser($idusers);
 
 include_once 'classes/Feedbacks.php';
 Feedbacks::deleteOnUser($idusers);
@@ -45,14 +51,17 @@ Folders::deleteOnUser($idusers);
 include_once 'classes/Notes.php';
 Notes::deleteOnUser($idusers);
 
+include_once 'classes/NoteTags.php';
+NoteTags::deleteOnUser($idusers);
+
 include_once 'classes/Notifications.php';
 Notifications::deleteOnUser($idusers);
 
-include_once 'classes/TaskTags.php';
-TaskTags::deleteOnUser($idusers);
-
 include_once 'classes/Tasks.php';
 Tasks::deleteOnUser($idusers);
+
+include_once 'classes/TaskTags.php';
+TaskTags::deleteOnUser($idusers);
 
 include_once 'classes/Users.php';
 Users::delete($idusers);

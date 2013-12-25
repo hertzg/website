@@ -25,10 +25,10 @@ if (count($tagnames) > Tags::MAX_NUM_TAGS) {
 
 if ($errors) {
     $_SESSION['tasks/add_errors'] = $errors;
-    $_SESSION['tasks/add_lastpost'] = [
+    $_SESSION['tasks/add_lastpost'] = array(
         'tasktext' => $tasktext,
         'tags' => $tags,
-    ];
+    );
     redirect('add.php');
 }
 

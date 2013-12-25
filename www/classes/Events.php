@@ -35,6 +35,11 @@ class Events {
         );
     }
 
+    static function deleteOnUser ($idusers) {
+        global $mysqli;
+        mysqli_query($mysqli, "delete from events where idusers = $idusers");
+    }
+
     static function edit ($idusers, $id, $eventtext) {
         global $mysqli;
         $eventtext = mysqli_real_escape_string($mysqli, $eventtext);

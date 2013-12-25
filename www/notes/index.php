@@ -31,7 +31,7 @@ if ($keyword === '') {
 
         if (count($notes) > 1) {
 
-            include_once 'fns/create_search_form_empty_content.php';
+            include_once '../fns/create_search_form_empty_content.php';
             $items[] = create_search_form(create_search_form_empty_content('Search notes...'));
 
             include_once '../classes/NoteTags.php';
@@ -48,7 +48,7 @@ if ($keyword === '') {
         $notes = Notes::indexOnTag($idusers, $tag);
 
         if (count($notes) > 1) {
-            include_once 'fns/create_search_form_empty_content.php';
+            include_once '../fns/create_search_form_empty_content.php';
             $items[] = create_search_form(
                 create_search_form_empty_content('Search notes...')
                 .createTagInput($tag)

@@ -25,10 +25,10 @@ if (count($tagnames) > Tags::MAX_NUM_TAGS) {
 
 if ($errors) {
     $_SESSION['notes/add_errors'] = $errors;
-    $_SESSION['notes/add_lastpost'] = [
+    $_SESSION['notes/add_lastpost'] = array(
         'notetext' => $notetext,
         'tags' => $tags,
-    ];
+    );
     redirect('add.php');
 }
 

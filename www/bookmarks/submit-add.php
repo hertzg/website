@@ -25,11 +25,11 @@ if (count($tagnames) > Tags::MAX_NUM_TAGS) {
 
 if ($errors) {
     $_SESSION['bookmarks/add_errors'] = $errors;
-    $_SESSION['bookmarks/add_lastpost'] = [
+    $_SESSION['bookmarks/add_lastpost'] = array(
         'title' => $title,
         'url' => $url,
         'tags' => $tags,
-    ];
+    );
     redirect('add.php');
 }
 
