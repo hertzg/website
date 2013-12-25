@@ -17,9 +17,17 @@ unset(
 );
 
 if ($task->done) {
-    $setDoneLink = Page::imageLink('Mark as Not Done', "submit-set-done.php?id=$id", 'task');
+    $setDoneLink = Page::imageLink(
+        'Mark as Not Done',
+        "submit-set-done.php?id=$id",
+        'task'
+    );
 } else {
-    $setDoneLink = Page::imageLink('Mark as Done', "submit-set-done.php?id=$id&done=1", 'task-done');
+    $setDoneLink = Page::imageLink(
+        'Mark as Done',
+        "submit-set-done.php?id=$id&done=1",
+        'task-done'
+    );
 }
 
 $tasktext = $task->tasktext;

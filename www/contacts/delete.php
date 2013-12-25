@@ -13,7 +13,11 @@ $page->finish(
         .Tab::activeItem('View'),
         Page::text('Are you sure you want to delete the contact "<b>'.htmlspecialchars($contact->fullname).'</b>"?')
         .Page::HR
-        .Page::imageLink('Yes, delete contact', "submit-delete.php?id=$id", 'yes')
+        .Page::imageLink(
+            'Yes, delete contact',
+            "submit-delete.php?id=$id",
+            'yes'
+        )
         .Page::HR
         .Page::imageLink('No, return back', "view.php?id=$id", 'no')
     )

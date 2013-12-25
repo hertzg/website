@@ -45,7 +45,11 @@ foreach ($folders as $folder) {
 }
 
 if ($idfolders != $file->idfolders) {
-    $items[] = Page::imageLink('Move Here', "submit-move-file.php?id=$id&idfolders=$idfolders", 'move-file');
+    $items[] = Page::imageLink(
+        'Move Here',
+        "submit-move-file.php?id=$id&idfolders=$idfolders",
+        'move-file'
+    );
 }
 
 if ($idfolders != ifset($_SESSION['files/move-file_idfolders'])) {

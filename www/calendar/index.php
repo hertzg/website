@@ -102,7 +102,11 @@ $eventItems = array();
 $events = Events::index($idusers, $timeSelected);
 if ($events) {
     foreach ($events as $event) {
-        $eventItems[] = Page::imageLink(htmlspecialchars($event->eventtext), "view-event.php?idevents=$event->idevents", 'event');
+        $eventItems[] = Page::imageLink(
+            htmlspecialchars($event->eventtext),
+            "view-event.php?idevents=$event->idevents",
+            'event'
+        );
     }
 } else {
     $eventItems[] = Page::info('No events.');
@@ -125,9 +129,17 @@ $page->finish(
     )
     .create_panel(
         'Options',
-        Page::imageLink('New Event', "add-event.php?year=$yearSelected&month=$monthSelected&day=$daySelected", 'create-event')
+        Page::imageLink(
+            'New Event',
+            "add-event.php?year=$yearSelected&month=$monthSelected&day=$daySelected",
+            'create-event'
+        )
         .Page::HR
-        .Page::imageLink('Jump To', "jump-to.php?year=$yearNow&month=$monthNow", 'calendar')
+        .Page::imageLink(
+            'Jump To',
+            "jump-to.php?year=$yearNow&month=$monthNow",
+            'calendar'
+        )
         .Page::HR
         .Page::imageLink('Go to Today', './', 'calendar')
     )

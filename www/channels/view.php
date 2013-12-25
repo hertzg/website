@@ -27,7 +27,11 @@ $page->finish(
     )
     .create_panel(
         'Options',
-        Page::imageLink('Randomize Channel Key', "randomize-key.php?id=$id", 'randomize')
+        Page::imageLink(
+            'Randomize Channel Key',
+            "randomize-key.php?id=$id",
+            'randomize'
+        )
         .Page::HR
         .Page::imageLink('Delete Channel', "delete.php?id=$id", 'trash-bin')
     )

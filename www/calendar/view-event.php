@@ -20,8 +20,16 @@ $page->finish(
     )
     .create_panel(
         'Options',
-        Page::imageLink('Edit Event', "edit-event.php?idevents=$idevents", 'edit-event')
+        Page::imageLink(
+            'Edit Event',
+            "edit-event.php?idevents=$idevents",
+            'edit-event'
+        )
         .Page::HR
-        .Page::imageLink('Delete Event', "delete-event.php?idevents=$idevents", 'trash-bin')
+        .Page::imageLink(
+            'Delete Event',
+            "delete-event.php?idevents=$idevents",
+            'trash-bin'
+        )
     )
 );

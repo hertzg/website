@@ -16,8 +16,16 @@ $page->finish(
         Tab::activeItem('Files'),
         Page::text("Are you sure you want to delete the folder \"<b>$escapedName</b>\"?")
         .Page::HR
-        .Page::imageLink('Yes, delete folder', "submit-delete-folder.php?idfolders=$idfolders", 'yes')
+        .Page::imageLink(
+            'Yes, delete folder',
+            "submit-delete-folder.php?idfolders=$idfolders",
+            'yes'
+        )
         .Page::HR
-        .Page::imageLink('No, return back', create_folder_link($idfolders), 'no')
+        .Page::imageLink(
+            'No, return back',
+            create_folder_link($idfolders),
+            'no'
+        )
     )
 );

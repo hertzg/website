@@ -69,11 +69,23 @@ $folder_options = '';
 if ($idfolders) {
     $folder_options =
         Page::HR
-        .Page::imageLink('Rename This Folder', "rename-folder.php?idfolders=$idfolders", 'rename')
+        .Page::imageLink(
+            'Rename This Folder',
+            "rename-folder.php?idfolders=$idfolders",
+            'rename'
+        )
         .Page::HR
-        .Page::imageLink('Move This Folder', "move-folder.php?idfolders=$idfolders", 'move-folder')
+        .Page::imageLink(
+            'Move This Folder',
+            "move-folder.php?idfolders=$idfolders",
+            'move-folder'
+        )
         .Page::HR
-        .Page::imageLink('Delete This Folder', "delete-folder.php?idfolders=$idfolders", 'trash-bin');
+        .Page::imageLink(
+            'Delete This Folder',
+            "delete-folder.php?idfolders=$idfolders",
+            'trash-bin'
+        );
 }
 
 $page->base = '../';
@@ -86,9 +98,17 @@ $page->finish(
     )
     .create_panel(
         'Options',
-        Page::imageLink('New Folder', "add-folder.php?parentidfolders=$idfolders", 'create-folder')
+        Page::imageLink(
+            'New Folder',
+            "add-folder.php?parentidfolders=$idfolders",
+            'create-folder'
+        )
         .Page::HR
-        .Page::imageLink('Upload Files', "upload-files.php?idfolders=$idfolders", 'upload')
+        .Page::imageLink(
+            'Upload Files',
+            "upload-files.php?idfolders=$idfolders",
+            'upload'
+        )
         .$folder_options
     )
 );

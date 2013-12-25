@@ -34,7 +34,11 @@ $page->finish(
         .Page::HR
         .Page::imageLink('Rename File', "rename-file.php?id=$id", 'rename')
         .Page::HR
-        .Page::imageLink('Move File', "move-file.php?id=$id&idfolders=$file->idfolders", 'move-file')
+        .Page::imageLink(
+            'Move File',
+            "move-file.php?id=$id&idfolders=$file->idfolders",
+            'move-file'
+        )
         .Page::HR
         .Page::imageLink('Delete File', "delete-file.php?id=$id", 'trash-bin')
     )

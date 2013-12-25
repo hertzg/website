@@ -12,7 +12,11 @@ $page->finish(
         Tab::activeItem('Notifications'),
         Page::text('Are you sure you want to delete all notifications?')
         .Page::HR
-        .Page::imageLink('Yes, delete all notifications', 'submit-delete-all-notifications.php', 'yes')
+        .Page::imageLink(
+            'Yes, delete all notifications',
+            'submit-delete-all-notifications.php',
+            'yes'
+        )
         .Page::HR
         .Page::imageLink('No, return back', 'notifications.php', 'no')
     )

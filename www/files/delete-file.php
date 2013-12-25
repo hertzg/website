@@ -16,7 +16,11 @@ $page->finish(
         .Tab::activeItem('View'),
         Page::text("Are you sure you want to delete the file \"<b>$escapedName</b>\"?")
         .Page::HR
-        .Page::imageLink('Yes, delete file', "submit-delete-file.php?id=$id", 'yes')
+        .Page::imageLink(
+            'Yes, delete file',
+            "submit-delete-file.php?id=$id",
+            'yes'
+        )
         .Page::HR
         .Page::imageLink('No, return back', "view.php?id=$id", 'no')
     )

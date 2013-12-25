@@ -7,6 +7,10 @@ function create_search_form ($content) {
         .'</form>';
 }
 
+function createTagInput ($tag) {
+    return '<input type="hidden" name="tag" value="'.htmlspecialchars($tag).'" />';
+}
+
 include_once 'lib/require-user.php';
 include_once '../fns/create_panel.php';
 include_once '../fns/ifset.php';
@@ -14,11 +18,11 @@ include_once '../fns/request_strings.php';
 include_once '../classes/Contacts.php';
 include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
-include_once '../classes/Users.php';
 
-list($keyword) = request_strings('keyword');
+list($keyword, $tag) = request_strings('keyword', 'tag');
 
 $items = array();
+$filterMessage = '';
 
 if ($keyword === '') {
     $contacts = Contacts::index($idusers);
@@ -85,6 +89,7 @@ $page->finish(
     Tab::create(
         Tab::activeItem('Contacts'),
         Page::messages(ifset($_SESSION['contacts/index_messages']))
+        .$filterMessage
         .join(Page::HR, $items)
     )
     .create_panel(

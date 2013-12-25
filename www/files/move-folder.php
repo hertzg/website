@@ -39,12 +39,20 @@ foreach ($folders as $itemFolder) {
     if ($itemFolder->idfolders == $idfolders) {
         $items[] = Page::disabledImageLink($escapedName, 'folder');
     } else {
-        $items[] = Page::imageLink($escapedName, create_link($idfolders, $itemFolder->idfolders), 'folder');
+        $items[] = Page::imageLink(
+            $escapedName,
+            create_link($idfolders, $itemFolder->idfolders),
+            'folder'
+        );
     }
 }
 
 if ($parentidfolders != $folder->parentidfolders) {
-    $items[] = Page::imageLink('Move Here', "submit-move-folder.php?idfolders=$idfolders&parentidfolders=$parentidfolders", 'move-folder');
+    $items[] = Page::imageLink(
+        'Move Here',
+        "submit-move-folder.php?idfolders=$idfolders&parentidfolders=$parentidfolders",
+        'move-folder'
+    );
 }
 
 if ($parentidfolders != ifset($_SESSION['files/move-folder_parentidfolders'])) {

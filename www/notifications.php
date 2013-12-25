@@ -41,9 +41,17 @@ if ($notifications) {
 
     $deleteAllLink = Page::HR;
     if ($channel) {
-        $deleteAllLink .= Page::imageLink('Delete Notifications', "delete-notifications.php?id=$id", 'trash-bin');
+        $deleteAllLink .= Page::imageLink(
+            'Delete Notifications',
+            "delete-notifications.php?id=$id",
+            'trash-bin'
+        );
     } else {
-        $deleteAllLink .= Page::imageLink('Delete All Notifications', 'delete-all-notifications.php', 'trash-bin');
+        $deleteAllLink .= Page::imageLink(
+            'Delete All Notifications',
+            'delete-all-notifications.php',
+            'trash-bin'
+        );
     }
 
     foreach ($notifications as $i => $notification) {

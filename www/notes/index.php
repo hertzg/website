@@ -109,7 +109,11 @@ if ($keyword === '') {
 
 if ($notes) {
     foreach ($notes as $note) {
-        $items[] = Page::imageLink(htmlspecialchars($note->notetext), "view.php?id=$note->idnotes", 'note');
+        $items[] = Page::imageLink(
+            htmlspecialchars($note->notetext),
+            "view.php?id=$note->idnotes",
+            'note'
+        );
     }
 } else {
     $items[] = Page::info('No notes.');

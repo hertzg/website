@@ -19,7 +19,7 @@ include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
 include_once '../classes/Tasks.php';
 
-list($tag, $keyword) = request_strings('tag', 'keyword');
+list($keyword, $tag) = request_strings('keyword', 'tag');
 
 $items = array();
 $filterMessage = '';
