@@ -5,7 +5,6 @@ include_once 'fns/redirect.php';
 if (!$sameDomainReferer) redirect();
 include_once 'fns/request_strings.php';
 include_once 'fns/str_collapse_spaces.php';
-include_once 'fns/uniqmd5.php';
 include_once 'classes/Captcha.php';
 include_once 'classes/Users.php';
 include_once 'lib/session-start.php';
@@ -35,14 +34,14 @@ if ($errors) {
     redirect('email-reset-password.php');
 }
 
-$uniqmd5 = uniqmd5(true);
-Users::editResetPasswordKey($user->idusers, $uniqmd5);
+$resetpasswordkey = md5(uniqid(), true);
+Users::editResetPasswordKey($user->idusers, $resetpasswordkey);
 Captcha::reset();
 
 $href = htmlspecialchars(
     'http://zvini.com/reset-password.php?'.http_build_query(array(
         'idusers' => $user->idusers,
-        'resetpasswordkey' => bin2hex($uniqmd5)
+        'resetpasswordkey' => bin2hex($resetpasswordkey)
     ))
 );
 

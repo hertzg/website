@@ -8,9 +8,8 @@ class Channels {
 
     static function add ($idusers, $channelname) {
         global $mysqli;
-        include_once __DIR__.'/../fns/uniqmd5.php';
         $channelname = mysqli_real_escape_string($mysqli, $channelname);
-        $channelkey = mysqli_real_escape_string($mysqli, uniqmd5(true));
+        $channelkey = mysqli_real_escape_string($mysqli, md5(uniqid(), true));
         mysqli_query(
             $mysqli,
             'insert into channels (idusers, channelname, channelkey)'
@@ -112,8 +111,7 @@ class Channels {
 
     static function randomizeKey ($idusers, $id) {
         global $mysqli;
-        include_once __DIR__.'/../fns/uniqmd5.php';
-        $channelkey = mysqli_real_escape_string($mysqli, uniqmd5(true));
+        $channelkey = mysqli_real_escape_string($mysqli, md5(uniqid(), true));
         mysqli_query(
             $mysqli,
             "update channels set channelkey = '$channelkey'"
