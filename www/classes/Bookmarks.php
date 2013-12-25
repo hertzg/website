@@ -85,12 +85,12 @@ class Bookmarks {
         $tag = mysqli_real_escape_string($mysqli, $tag);
         return mysqli_query_object(
             $mysqli,
-            'select * from bookmarks t'
+            'select * from bookmarks'
             ." where idusers = $idusers"
             .' and exists ('
-            .'  select idbookmarks from bookmarktags bt'
-            .'  where bt.idbookmarks = t.idbookmarks'
-            ."  and bt.tagname = '$tag'"
+            .'  select idbookmarks from bookmarktags'
+            .'  where bookmarktags.idbookmarks = bookmarks.idbookmarks'
+            ."  and bookmarktags.tagname = '$tag'"
             .' )'
             .' order by updatetime desc'
         );

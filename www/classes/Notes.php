@@ -76,6 +76,22 @@ class Notes {
         );
     }
 
+    static function indexOnTag ($idusers, $tag) {
+        global $mysqli;
+        $tag = mysqli_real_escape_string($mysqli, $tag);
+        return mysqli_query_object(
+            $mysqli,
+            'select * from notes'
+            ." where idusers = $idusers"
+            .' and exists ('
+            .'  select idnotes from notetags'
+            .'  where notetags.idnotes = notes.idnotes'
+            ."  and notetags.tagname = '$tag'"
+            .' )'
+            .' order by updatetime desc'
+        );
+    }
+
     static function search ($idusers, $keyword) {
         global $mysqli;
         include_once __DIR__.'/../fns/escape_like.php';
@@ -85,6 +101,25 @@ class Notes {
             $mysqli,
             'select * from notes'
             ." where idusers = $idusers and notetext like '%$keyword%'"
+            .' order by updatetime desc'
+        );
+    }
+
+    static function searchOnTag ($idusers, $keyword, $tag) {
+        global $mysqli;
+        include_once __DIR__.'/../fns/escape_like.php';
+        $keyword = escape_like($keyword);
+        $keyword = mysqli_real_escape_string($mysqli, $keyword);
+        $tag = mysqli_real_escape_string($mysqli, $tag);
+        return mysqli_query_object(
+            $mysqli,
+            'select * from notes'
+            ." where idusers = $idusers and notetext like '%$keyword%'"
+            .' and exists ('
+            .'  select idnotes from notetags'
+            .'  where notetags.idnotes = notes.idnotes'
+            ."  and notetags.tagname = '$tag'"
+            .' )'
             .' order by updatetime desc'
         );
     }

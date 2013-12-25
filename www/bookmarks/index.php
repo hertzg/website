@@ -16,27 +16,8 @@ if ($tag === '') {
         include_once '../classes/BookmarkTags.php';
         $bookmarkTags = BookmarkTags::indexOnUser($idusers);
         if ($bookmarkTags) {
-            $links = array();
-            foreach ($bookmarkTags as $bookmarkTag) {
-                $tagname = $bookmarkTag->tagname;
-                $href = '?'.htmlspecialchars(
-                    http_build_query(array(
-                        'tag' => $tagname,
-                    ))
-                );
-                $links[] =
-                    '<li style="display: inline-block">'
-                        ."<a class=\"tag\" href=\"$href\">"
-                            .htmlspecialchars($tagname)
-                        .'</a>'
-                    .'</li>';
-            }
-            $filterMessage =
-                '<div class="tags" style="background: #eee; color: #444">'
-                    .'<span class="tags-label">Filter by tags:</span>'
-                    .join('', $links)
-                .'</div>'
-                .'<div class="warnings-hr"></div>';
+            include_once '../fns/create_tag_filter_bar.php';
+            $filterMessage = create_tag_filter_bar($bookmarkTags, array());
         }
     } else {
         $filterMessage = '';

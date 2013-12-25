@@ -79,12 +79,12 @@ class Tasks {
         $tag = mysqli_real_escape_string($mysqli, $tag);
         return mysqli_query_object(
             $mysqli,
-            'select * from tasks t'
+            'select * from tasks'
             ." where idusers = $idusers"
             .' and exists ('
-            .'  select idtasks from tasktags tt'
-            .'  where tt.idtasks = t.idtasks'
-            ."  and tt.tagname = '$tag'"
+            .'  select idtasks from tasktags'
+            .'  where tasktags.idtasks = tasks.idtasks'
+            ."  and tasktags.tagname = '$tag'"
             .' )'
             .' order by done, updatetime desc'
         );
@@ -111,12 +111,12 @@ class Tasks {
         $tag = mysqli_real_escape_string($mysqli, $tag);
         return mysqli_query_object(
             $mysqli,
-            'select * from tasks t'
+            'select * from tasks'
             ." where idusers = $idusers and tasktext like '%$keyword%'"
             .' and exists ('
-            .'  select idtasks from tasktags tt'
-            .'  where tt.idtasks = t.idtasks'
-            ."  and tt.tagname = '$tag'"
+            .'  select idtasks from tasktags'
+            .'  where tasktags.idtasks = tasks.idtasks'
+            ."  and tasktags.tagname = '$tag'"
             .' )'
             .' order by done, updatetime desc'
         );

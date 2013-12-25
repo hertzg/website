@@ -105,6 +105,22 @@ class Contacts {
         );
     }
 
+    static function indexOnTag ($idusers, $tag) {
+        global $mysqli;
+        $tag = mysqli_real_escape_string($mysqli, $tag);
+        return mysqli_query_object(
+            $mysqli,
+            'select * from contacts t'
+            ." where idusers = $idusers"
+            .' and exists ('
+            .'  select idcontacts from contacttags tt'
+            .'  where tt.idcontacts = t.idcontacts'
+            ."  and tt.tagname = '$tag'"
+            .' )'
+            .' order by updatetime desc'
+        );
+    }
+
     static function search ($idusers, $keyword) {
         global $mysqli;
         include_once __DIR__.'/../fns/escape_like.php';
@@ -115,6 +131,25 @@ class Contacts {
             'select * from contacts'
             ." where idusers = $idusers and fullname like '%$keyword%'"
             .' order by fullname'
+        );
+    }
+
+    static function searchOnTag ($idusers, $keyword, $tag) {
+        global $mysqli;
+        include_once __DIR__.'/../fns/escape_like.php';
+        $keyword = escape_like($keyword);
+        $keyword = mysqli_real_escape_string($mysqli, $keyword);
+        $tag = mysqli_real_escape_string($mysqli, $tag);
+        return mysqli_query_object(
+            $mysqli,
+            'select * from contacts t'
+            ." where idusers = $idusers and fullname like '%$keyword%'"
+            .' and exists ('
+            .'  select idcontacts from contacttags tt'
+            .'  where tt.idcontacts = t.idcontacts'
+            ."  and tt.tagname = '$tag'"
+            .' )'
+            .' order by done, updatetime desc'
         );
     }
 
