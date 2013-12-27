@@ -1,11 +1,16 @@
 <?php
 
 include_once 'fns/request_strings.php';
-include_once 'lib/user.php';
-include_once 'classes/Page.php';
 
 list($url) = request_strings('url');
 
+if (!array_key_exists('HTTP_REFERER', $_SERVER)) {
+    include_once 'fns/redirect.php';
+    redirect($url);
+}
+
+include_once 'lib/user.php';
+include_once 'classes/Page.php';
 $theme = $user ? $user->theme : 'orange';
 
 header('Content-Type: text/html; charset=UTF-8');
