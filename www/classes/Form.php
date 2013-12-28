@@ -33,6 +33,16 @@ class Form {
     }
 
     static function checkbox ($name, $text, $checked) {
+        return
+            '<div class="form-checkbox">'
+                .'<label>'
+                    .'<span>'
+                        ."<input type=\"checkbox\" id=\"$name\" name=\"$name\""
+                        .($checked ? ' checked="checked"' : '').' />'
+                    .'</span>'
+                    .$text
+                .'</label>'
+            .'</div>';
         return self::association(
             '<div style="line-height: 48px">'
                 .'<input type="checkbox" class="form-checkbox"'

@@ -299,13 +299,18 @@ label {
     border-radius: 2px;
 }
 .form-checkbox {
-    height: 20px;
-    width: 20px;
-    text-align: center;
+    padding-left: 50%;
+    padding-right: 16px;
+}
+.form-checkbox label {
     display: inline-block;
-    vertical-align: middle;
-    margin-left: 6px;
-    cursor: pointer;
+    vertical-align: top;
+    line-height: 48px;
+}
+.form-checkbox span {
+    display: inline-block;
+    vertical-align: top;
+    width: 24px;
 }
 
 .errors {
@@ -471,6 +476,7 @@ label {
         width: auto;
         text-align: left;
         padding: 0 16px;
+        height: 32px;
     }
     .form-property > label {
         display: block;
@@ -478,5 +484,8 @@ label {
     .form-value {
         display: block;
         width: auto;
+    }
+    .form-checkbox {
+        padding-left: 16px;
     }
 }
