@@ -79,7 +79,7 @@ $page->finish(
         )
         .create_panel(
             'Options',
-            Page::imageLink('Reset Password', 'email-reset-password.php', 'password')
+            Page::imageLink('Reset Password', 'email-reset-password.php', 'reset-password')
         )
     )
 );

@@ -28,7 +28,7 @@ class Page {
                     .'<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />'
                     .'<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />'
                     ."<link rel=\"stylesheet\" type=\"text/css\" href=\"{$base}common.css?".$revisions['common.css'].'" />'
-                    ."<link rel=\"stylesheet\" type=\"text/css\" href=\"{$base}icons.css?3\" />"
+                    ."<link rel=\"stylesheet\" type=\"text/css\" href=\"{$base}icons.css?4\" />"
                     ."<link rel=\"stylesheet\" type=\"text/css\" href=\"{$base}themes/$theme/common.css?11\" />"
                     .$this->head
                 .'</head>'
