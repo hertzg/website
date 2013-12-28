@@ -16,16 +16,22 @@ $errors = array();
 $foldername = str_collapse_spaces($foldername);
 if ($foldername === '') {
     $errors[] = 'Enter folder name.';
-} elseif (Folders::get($idusers, $foldername, $idfolders)) {
+} elseif (Folders::getByName($idusers, $folder->parentidfolders, $foldername, $idfolders)) {
     $errors[] = 'Folder with this name already exists.';
 }
 
-unset($_SESSION['files/rename-folder_errors']);
-
 if ($errors) {
     $_SESSION['files/rename-folder_errors'] = $errors;
+    $_SESSION['files/rename-folder_lastpost'] = array(
+        'foldername' => $foldername,
+    );
     redirect("rename-folder.php?idfolders=$idfolders");
 }
+
+unset(
+    $_SESSION['files/rename-folder_errors'],
+    $_SESSION['files/rename-folder_lastpost']
+);
 
 Folders::rename($idusers, $idfolders, $foldername);
 

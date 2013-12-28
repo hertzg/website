@@ -55,6 +55,7 @@ unset(
     $_SESSION['files/add-folder_errors'],
     $_SESSION['files/add-folder_lastpost'],
     $_SESSION['files/rename-folder_errors'],
+    $_SESSION['files/rename-folder_lastpost'],
     $_SESSION['files/upload-files_errors'],
     $_SESSION['files/view_messages'],
     $_SESSION['home_messages']

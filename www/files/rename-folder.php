@@ -12,6 +12,12 @@ if (array_key_exists('files/rename-folder_errors', $_SESSION)) {
     $pageErrors = '';
 }
 
+if (array_key_exists('files/rename-folder_lastpost', $_SESSION)) {
+    $values = $_SESSION['files/rename-folder_lastpost'];
+} else {
+    $values = (array)$folder;
+}
+
 unset($_SESSION['files/index_messages']);
 
 $page->base = '../';
@@ -24,7 +30,7 @@ $page->finish(
         .Form::create(
             'submit-rename-folder.php',
             Form::textfield('foldername', 'Folder name', array(
-                'value' => $folder->foldername,
+                'value' => $values['foldername'],
                 'autofocus' => true,
                 'required' => true,
             ))

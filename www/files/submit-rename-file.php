@@ -10,22 +10,25 @@ include_once '../classes/Files.php';
 
 list($filename) = request_strings('filename');
 
-$filename = str_collapse_spaces($filename);
-
 $errors = array();
 
+$filename = str_collapse_spaces($filename);
 if ($filename === '') {
     $errors[] = 'Enter file name.';
 } elseif (Files::getByName($idusers, $file->idfolders, $filename, $id)) {
     $errors[] = 'A file with the same name already exists.';
 }
 
-unset($_SESSION['files/rename-file_errors']);
-
 if ($errors) {
     $_SESSION['files/rename-file_errors'] = $errors;
+    $_SESSION['files/rename-file_lastpost'] = array('filename' => $filename);
     redirect("rename-file.php?id=$id");
 }
+
+unset(
+    $_SESSION['files/rename-file_errors'],
+    $_SESSION['files/rename-file_lastpost']
+);
 
 Files::rename($idusers, $id, $filename);
 

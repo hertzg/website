@@ -13,6 +13,12 @@ if (array_key_exists('files/rename-file_errors', $_SESSION)) {
     $pageErrors = '';
 }
 
+if (array_key_exists('files/rename-file_lastpost', $_SESSION)) {
+    $values = $_SESSION['files/rename-file_lastpost'];
+} else {
+    $values = (array)$file;
+}
+
 unset($_SESSION['files/view_messages']);
 
 $page->base = '../';
@@ -26,7 +32,7 @@ $page->finish(
         .Form::create(
             'submit-rename-file.php',
             Form::textfield('filename', 'File name', array(
-                'value' => $file->filename,
+                'value' => $values['filename'],
                 'autofocus' => true,
                 'required' => true,
             ))
