@@ -28,7 +28,10 @@ $page->finish(
         $pageMessages
         .Form::label('Channel name', htmlspecialchars($channel->channelname))
         .Page::HR
-        .Form::label('Channel key', bin2hex($channel->channelkey))
+        .Form::textfield('channelkey', 'Channel key', array(
+            'readonly' => true,
+            'value' => bin2hex($channel->channelkey),
+        ))
     )
     .create_panel(
         'Options',

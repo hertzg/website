@@ -157,6 +157,7 @@ class Form {
             .$maxlengthAttribute
             .$valueAttribute
             .self::getBoolAttribute('autofocus', $config)
+            .self::getBoolAttribute('readonly', $config)
             .self::getBoolAttribute('required', $config)
             ." id=\"$name\" name=\"$name\" type=\"$type\" />",
             "<label for=\"$name\">$text:</label>"
