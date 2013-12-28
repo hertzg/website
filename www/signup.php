@@ -35,8 +35,7 @@ $page->title = 'Sign Up';
 $page->finish(
     Tab::create(
         Tab::item('Sign In', 'signin.php')
-        .Tab::activeItem('Sign Up')
-        .Tab::item('Reset Password', 'email-reset-password.php'),
+        .Tab::activeItem('Sign Up'),
         $pageErrors
         .Form::create(
             'submit-signup.php',

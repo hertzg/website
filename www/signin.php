@@ -1,12 +1,15 @@
 <?php
 
-include_once 'fns/redirect.php';
+include_once 'lib/user.php';
+if ($user) {
+        include_once 'fns/redirect.php';
+    redirect('home.php');
+}
+
+include_once 'fns/create_panel.php';
 include_once 'classes/Form.php';
 include_once 'classes/Tab.php';
 include_once 'lib/page.php';
-include_once 'lib/user.php';
-
-if ($user) redirect('home.php');
 
 if (array_key_exists('signin_lastpost', $_SESSION)) {
     $values = $_SESSION['signin_lastpost'];
@@ -53,8 +56,7 @@ $page->title = 'Sign In';
 $page->finish(
     Tab::create(
         Tab::activeItem('Sign In')
-        .Tab::item('Sign Up', 'signup.php')
-        .Tab::item('Reset Password', 'email-reset-password.php'),
+        .Tab::item('Sign Up', 'signup.php'),
         $pageMessages
         .$pageErrors
         .Form::create(
@@ -74,6 +76,10 @@ $page->finish(
             .Form::checkbox('remember', 'Stay signed in', $values['remember'])
             .Page::HR
             .Form::button('Sign In')
+        )
+        .create_panel(
+            'Options',
+            Page::imageLink('Reset Password', 'email-reset-password.php', 'password')
         )
     )
 );
