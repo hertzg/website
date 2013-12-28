@@ -15,6 +15,12 @@ if (array_key_exists('bookmarks/add_lastpost', $_SESSION)) {
     );
 }
 
+if (array_key_exists('bookmarks/add_errors', $_SESSION)) {
+    $pageErrors = Page::errors($_SESSION['bookmarks/add_errors']);
+} else {
+    $pageErrors = '';
+}
+
 unset($_SESSION['bookmarks/index_messages']);
 
 $page->base = '../';
@@ -23,7 +29,7 @@ $page->finish(
     Tab::create(
         Tab::item('Bookmarks', './')
         .Tab::activeItem('New'),
-        Page::errors(ifset($_SESSION['bookmarks/add_errors']))
+        $pageErrors
         .Form::create(
             'submit-add.php',
             Form::textfield('url', 'URL', array(

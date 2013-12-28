@@ -2,7 +2,6 @@
 
 include_once 'lib/require-user.php';
 include_once '../fns/create_panel.php';
-include_once '../fns/ifset.php';
 include_once '../fns/request_strings.php';
 include_once '../classes/Bookmarks.php';
 include_once '../classes/Page.php';
@@ -43,6 +42,12 @@ if ($bookmarks) {
     $items[] = Page::info('No bookmarks.');
 }
 
+if (array_key_exists('bookmarks/index_messages', $_SESSION)) {
+    $pageMessages = Page::messages($_SESSION['bookmarks/index_messages']);
+} else {
+    $pageMessages = '';
+}
+
 unset(
     $_SESSION['bookmarks/add_errors'],
     $_SESSION['bookmarks/edit_errors'],
@@ -55,7 +60,7 @@ $page->title = 'Bookmarks';
 $page->finish(
     Tab::create(
         Tab::activeItem('Bookmarks'),
-        Page::messages(ifset($_SESSION['bookmarks/index_messages']))
+        $pageMessages
         .$filterMessage
         .join(Page::HR, $items)
     )

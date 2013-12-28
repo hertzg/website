@@ -1,7 +1,6 @@
 <?php
 
 include_once 'lib/require-task.php';
-include_once '../fns/ifset.php';
 include_once '../classes/Form.php';
 include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
@@ -10,6 +9,12 @@ if (array_key_exists('tasks/edit_lastpost', $_SESSION)) {
     $values = $_SESSION['tasks/edit_lastpost'];
 } else {
     $values = (array)$task;
+}
+
+if (array_key_exists('tasks/edit_errors', $_SESSION)) {
+    $pageErrors = Page::errors($_SESSION['tasks/edit_errors']);
+} else {
+    $pageErrors = '';
 }
 
 unset($_SESSION['tasks/index_messages']);
@@ -21,7 +26,7 @@ $page->finish(
         Tab::item('Tasks', './')
         .Tab::item('View', "view.php?id=$id")
         .Tab::activeItem('Edit'),
-        Page::errors(ifset($_SESSION['tasks/edit_errors']))
+        $pageErrors
         .Form::create(
             'submit-edit.php',
             Form::textarea('tasktext', 'Text', array(

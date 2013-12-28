@@ -2,7 +2,6 @@
 
 include_once 'lib/require-channel.php';
 include_once '../fns/create_panel.php';
-include_once '../fns/ifset.php';
 include_once '../classes/Channels.php';
 include_once '../classes/Form.php';
 include_once '../classes/Notifications.php';
@@ -10,6 +9,12 @@ include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
 
 Channels::addNumNotifications($idusers, $id, -$channel->numnotifications);
+
+if (array_key_exists('channels/view_messages', $_SESSION)) {
+    $pageMessages = Page::messages($_SESSION['channels/view_messages']);
+} else {
+    $pageMessages = '';
+}
 
 unset($_SESSION['channels/index_messages']);
 
@@ -20,7 +25,7 @@ $page->finish(
         Tab::item('Notifications', '../notifications.php')
         .Tab::item('Channels', './')
         .Tab::activeItem('View'),
-        Page::messages(ifset($_SESSION['channels/view_messages']))
+        $pageMessages
         .Form::label('Channel name', htmlspecialchars($channel->channelname))
         .Page::HR
         .Form::label('Channel key', bin2hex($channel->channelkey))

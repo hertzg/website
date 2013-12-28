@@ -109,40 +109,65 @@ class Form {
         );
     }
 
-    static function textarea ($name, $text, $config = null) {
-        $value = ifset($config['value']);
-        return self::association(
-            '<textarea class="form-textarea"'
-            .(isset($config['autofocus']) && $config['autofocus'] ? ' autofocus="autofocus"' : '')
-            .(isset($config['required']) && $config['required'] ? ' required="required"' : '')
-            ." id=\"$name\" name=\"$name\">"
-                .htmlspecialchars($value)
-            .'</textarea>',
-            "<label for=\"$name\">$text:</label>"
-        );
+    private static function getBoolAttribute ($name, array $config) {
+        if (array_key_exists($name, $config) && $config[$name]) {
+            return " $name=\"$name\"";
+        }
     }
 
-    static function textfield ($name, $text, array $config = null) {
-        $type = ifset($config['type'], 'text');
-        $value = ifset($config['value']);
+    static function textarea ($name, $text, $config = array()) {
+
+        if (array_key_exists('value', $config)) {
+            $content = "\n".htmlspecialchars($config['value']);
+        } else{
+            $content = '';
+        }
+
+        return self::association(
+            '<textarea class="form-textarea"'
+            .self::getBoolAttribute('autofocus', $config)
+            .self::getBoolAttribute('required', $config)
+            ." id=\"$name\" name=\"$name\">$content</textarea>",
+            "<label for=\"$name\">$text:</label>"
+        );
+
+    }
+
+    static function textfield ($name, $text, array $config = array()) {
+
+        if (array_key_exists('type', $config)) {
+            $type = $config['type'];
+        } else {
+            $type = 'text';
+        }
+
+        if (array_key_exists('value', $config)) {
+            $valueAttribute = ' value="'.htmlspecialchars($config['value']).'"';
+        } else {
+            $valueAttribute = '';
+        }
+
+        if (array_key_exists('maxlength', $config)) {
+            $maxlengthAttribute = " maxlength=\"$config[maxlength]\"";
+        } else {
+            $maxlengthAttribute = '';
+        }
+
         return self::association(
             '<input class="form-textfield"'
-            .(isset($config['maxlength']) ? " maxlength=\"$config[maxlength]\"" : '')
-            .(isset($config['autofocus']) && $config['autofocus'] ? ' autofocus="autofocus"' : '')
-            .(isset($config['required']) && $config['required'] ? ' required="required"' : '')
-            .($value ? ' value="'.htmlspecialchars($value).'"' : '')
+            .$maxlengthAttribute
+            .$valueAttribute
+            .self::getBoolAttribute('autofocus', $config)
+            .self::getBoolAttribute('required', $config)
             ." id=\"$name\" name=\"$name\" type=\"$type\" />",
             "<label for=\"$name\">$text:</label>"
         );
+
     }
 
-    static function password ($name, $text, array $config = null) {
-        return self::textfield($name, $text, array(
-            'value' => ifset($config['value']),
-            'type' => 'password',
-            'autofocus' => ifset($config['autofocus']),
-            'required' => ifset($config['required']),
-        ));
+    static function password ($name, $text, array $config = array()) {
+        $config['type'] = 'password';
+        return self::textfield($name, $text, $config);
     }
 
 }

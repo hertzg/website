@@ -2,7 +2,6 @@
 
 include_once 'lib/require-user.php';
 include_once 'fns/create_panel.php';
-include_once 'fns/ifset.php';
 include_once 'fns/request_strings.php';
 include_once 'classes/Notifications.php';
 include_once 'classes/Page.php';
@@ -80,11 +79,17 @@ unset(
 
 $numChannels = Channels::countOnUser($idusers);
 
+if (array_key_exists('notifications_messages', $_SESSION)) {
+    $pageMessages = Page::messages($_SESSION['notifications_messages']);
+} else {
+    $pageMessages = '';
+}
+
 $page->title = 'Notifications';
 $page->finish(
     Tab::create(
         Tab::activeItem('Notifications'),
-        Page::messages(ifset($_SESSION['notifications_messages']))
+        $pageMessages
         .$filterMessage
         .$notificationsHtml
         .create_panel(

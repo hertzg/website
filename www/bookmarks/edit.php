@@ -1,7 +1,6 @@
 <?php
 
 include_once 'lib/require-bookmark.php';
-include_once '../fns/ifset.php';
 include_once '../classes/Form.php';
 include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
@@ -10,6 +9,12 @@ if (array_key_exists('bookmarks/edit_lastpost', $_SESSION)) {
     $values = $_SESSION['bookmarks/edit_lastpost'];
 } else {
     $values = (array)$bookmark;
+}
+
+if (array_key_exists('bookmarks/edit_errors', $_SESSION)) {
+    $pageErrors = Page::errors($_SESSION['bookmarks/edit_errors']);
+} else {
+    $pageErrors = '';
 }
 
 unset($_SESSION['bookmarks/index_messages']);
@@ -21,7 +26,7 @@ $page->finish(
         Tab::item('Bookmarks', './')
         .Tab::item('View', "view.php?id=$id")
         .Tab::activeItem('Edit'),
-        Page::errors(ifset($_SESSION['bookmarks/edit_errors']))
+        $pageErrors
         .Form::create(
             'submit-edit.php',
             Form::textfield('url', 'URL', array(

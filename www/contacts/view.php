@@ -2,7 +2,6 @@
 
 include_once 'lib/require-contact.php';
 include_once '../fns/create_panel.php';
-include_once '../fns/ifset.php';
 include_once '../classes/Form.php';
 include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
@@ -11,6 +10,12 @@ $address = $contact->address;
 $email = $contact->email;
 $phone1 = $contact->phone1;
 $phone2 = $contact->phone2;
+
+if (array_key_exists('contacts/view_messages', $_SESSION)) {
+    $pageMessages = Page::messages($_SESSION['contacts/view_messages']);
+} else {
+    $pageMessages = '';
+}
 
 unset(
     $_SESSION['contacts/edit_errors'],
@@ -23,7 +28,7 @@ $page->finish(
     Tab::create(
         Tab::item('Contacts', './')
         .Tab::activeItem('View'),
-        Page::messages(ifset($_SESSION['contacts/view_messages']))
+        $pageMessages
         .Form::label('Full name', htmlspecialchars($contact->fullname))
         .($address ? Page::HR.Form::label('Address', htmlspecialchars($address)) : '')
         .($email ? Page::HR.Form::label('Email', htmlspecialchars($email)) : '')

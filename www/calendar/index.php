@@ -65,11 +65,16 @@ function create_calendar ($timeSelected) {
 
 include_once 'lib/require-user.php';
 include_once '../fns/create_panel.php';
-include_once '../fns/ifset.php';
 include_once '../fns/request_strings.php';
 include_once '../classes/Events.php';
 include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
+
+if (array_key_exists('calendar/index_messages', $_SESSION)) {
+    $pageMessages = Page::messages($_SESSION['calendar/index_messages']);
+} else {
+    $pageMessages = '';
+}
 
 unset(
     $_SESSION['home_messages'],
@@ -120,7 +125,7 @@ $page->head =
 $page->finish(
     Tab::create(
         Tab::activeItem('Calendar'),
-        Page::messages(ifset($_SESSION['calendar/index_messages']))
+        $pageMessages
         .create_calendar($timeSelected)
     )
     .create_panel(

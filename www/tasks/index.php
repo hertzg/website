@@ -13,7 +13,6 @@ function createTagInput ($tag) {
 
 include_once 'lib/require-user.php';
 include_once '../fns/create_panel.php';
-include_once '../fns/ifset.php';
 include_once '../fns/request_strings.php';
 include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
@@ -123,6 +122,12 @@ if ($tasks) {
     $items[] = Page::info('No tasks.');
 }
 
+if (array_key_exists('tasks/index_messages', $_SESSION)) {
+    $pageMessages = Page::messages($_SESSION['tasks/index_messages']);
+} else {
+    $pageMessages = '';
+}
+
 unset(
     $_SESSION['tasks/add_errors'],
     $_SESSION['tasks/edit_errors'],
@@ -135,7 +140,7 @@ $page->title = 'Tasks';
 $page->finish(
     Tab::create(
         Tab::activeItem('Tasks'),
-        Page::messages(ifset($_SESSION['tasks/index_messages']))
+        $pageMessages
         .$filterMessage
         .join(Page::HR, $items)
     )

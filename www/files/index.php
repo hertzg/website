@@ -3,7 +3,6 @@
 include_once 'lib/require-user.php';
 include_once 'fns/create_folder_link.php';
 include_once '../fns/create_panel.php';
-include_once '../fns/ifset.php';
 include_once '../fns/redirect.php';
 include_once '../fns/request_strings.php';
 include_once '../classes/Files.php';
@@ -61,7 +60,8 @@ unset(
     $_SESSION['home_messages']
 );
 
-if ($idfolders != ifset($_SESSION['files/index_idfolders'])) {
+if (array_key_exists('files/index_idfolders', $_SESSION) &&
+    $idfolders != $_SESSION['files/index_idfolders']) {
     unset($_SESSION['files/index_messages']);
 }
 
@@ -88,12 +88,18 @@ if ($idfolders) {
         );
 }
 
+if (array_key_exists('files/index_messages', $_SESSION)) {
+    $pageMessages = Page::messages($_SESSION['files/index_messages']);
+} else {
+    $pageMessages = '';
+}
+
 $page->base = '../';
 $page->title = 'Files';
 $page->finish(
     Tab::create(
         Tab::activeItem('Files'),
-        Page::messages(ifset($_SESSION['files/index_messages']))
+        $pageMessages
         .join(Page::HR, $items)
     )
     .create_panel(

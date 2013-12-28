@@ -2,7 +2,6 @@
 
 include_once 'lib/require-user.php';
 include_once 'fns/create_panel.php';
-include_once 'fns/ifset.php';
 include_once 'classes/Form.php';
 include_once 'classes/Page.php';
 include_once 'classes/Tab.php';
@@ -12,6 +11,12 @@ if (array_key_exists('edit-profile_lastpost', $_SESSION)) {
     $values = (object)$_SESSION['edit-profile_lastpost'];
 } else {
     $values = $user;
+}
+
+if (array_key_exists('edit-profile_errors', $_SESSION)) {
+    $pageErrors = Page::errors($_SESSION['edit-profile_errors']);
+} else {
+    $pageErrors = '';
 }
 
 unset($_SESSION['account_messages']);
@@ -33,7 +38,7 @@ $page->finish(
     Tab::create(
         Tab::item('Account', 'account.php')
         .Tab::activeItem('Profile'),
-        Page::errors(ifset($_SESSION['edit-profile_errors']))
+        $pageErrors
         .Form::create(
             'submit-edit-profile.php',
             Form::textfield('email', 'Email', array(

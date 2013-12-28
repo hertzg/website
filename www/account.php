@@ -4,7 +4,6 @@ include_once 'lib/require-user.php';
 include_once 'fns/create_panel.php';
 include_once 'fns/bytestr.php';
 include_once 'fns/date_ago.php';
-include_once 'fns/ifset.php';
 include_once 'classes/Form.php';
 include_once 'classes/Page.php';
 include_once 'classes/Tab.php';
@@ -18,11 +17,17 @@ unset(
     $_SESSION['home_messages']
 );
 
+if (array_key_exists('account_messages', $_SESSION)) {
+    $pageMessages = Page::messages($_SESSION['account_messages']);
+} else {
+    $pageMessages = '';
+}
+
 $page->title = 'Account';
 $page->finish(
     Tab::create(
         Tab::activeItem('Account'),
-        Page::messages(ifset($_SESSION['account_messages']))
+        $pageMessages
         .Form::label('Username', $user->username)
         .Page::HR
         .Form::label('Email', $user->email)

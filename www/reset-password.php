@@ -16,7 +16,20 @@ if (!is_md5($resetpasswordkey)) redirect();
 $user = Users::getByResetPasswordKey($idusers, $resetpasswordkey);
 if (!$user) redirect();
 
-$lastpost = ifset($_SESSION['reset-password_lastpost']);
+if (array_key_exists('reset-password_lastpost', $_SESSION)) {
+    $values = $_SESSION['reset-password_lastpost'];
+} else {
+    $values = array(
+        'password1' => '',
+        'password2' => '',
+    );
+}
+
+if (array_key_exists('reset-password_errors', $_SESSION)) {
+    $pageErrors = Page::errors($_SESSION['reset-password_errors']);
+} else {
+    $pageErrors = '';
+}
 
 unset(
     $_SESSION['signin_errors'],
@@ -32,19 +45,19 @@ $page->finish(
         Tab::item('Sign In', 'signin.php')
         .Tab::item('Sign Up', 'signup.php')
         .Tab::activeItem('Reset Password'),
-        Page::errors(ifset($_SESSION['reset-password_errors']))
+        $pageErrors
         .Form::create(
             'submit-reset-password.php',
             Form::label('Username', $user->username)
             .Page::HR
             .Form::password('password1', 'New password', array(
-                'value' => ifset($lastpost['password1']),
+                'value' => $values['password1'],
                 'autofocus' => true,
                 'required' => true,
             ))
             .Page::HR
             .Form::password('password2', 'Repeat new password', array(
-                'value' => ifset($lastpost['password2']),
+                'value' => $values['password2'],
                 'required' => true,
             ))
             .Page::HR

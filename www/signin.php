@@ -1,6 +1,5 @@
 <?php
 
-include_once 'fns/ifset.php';
 include_once 'fns/redirect.php';
 include_once 'classes/Form.php';
 include_once 'classes/Page.php';
@@ -9,12 +8,35 @@ include_once 'lib/user.php';
 
 if ($user) redirect('home.php');
 
-$lastpost = ifset($_SESSION['signin_lastpost']);
-
-if ($lastpost) {
-    $remember = $lastpost['remember'];
+if (array_key_exists('signin_lastpost', $_SESSION)) {
+    $values = $_SESSION['signin_lastpost'];
 } else {
-    $remember = array_key_exists('remember', $_COOKIE);
+
+    if (array_key_exists('username', $_COOKIE)) {
+        $username = $_COOKIE['username'];
+        if (!is_string($username)) $username = '';
+    } else {
+        $username = '';
+    }
+
+    $values = array(
+        'username' => $username,
+        'password' => '',
+        'remember' => array_key_exists('remember', $_COOKIE),
+    );
+
+}
+
+if (array_key_exists('signin_errors', $_SESSION)) {
+    $pageErrors = Page::errors($_SESSION['signin_errors']);
+} else {
+    $pageErrors = '';
+}
+
+if (array_key_exists('signin_messages', $_SESSION)) {
+    $pageMessages = Page::messages($_SESSION['signin_messages']);
+} else {
+    $pageMessages = '';
 }
 
 unset(
@@ -23,7 +45,8 @@ unset(
     $_SESSION['email-reset-password_errors'],
     $_SESSION['email-reset-password_lastpost']
 );
-$username = ifset($lastpost['username'], ifset($_COOKIE['username'], ''));
+
+$username = $values['username'];
 
 $page->hideSignOutLink = true;
 $page->title = 'Sign In';
@@ -32,8 +55,8 @@ $page->finish(
         Tab::activeItem('Sign In')
         .Tab::item('Sign Up', 'signup.php')
         .Tab::item('Reset Password', 'email-reset-password.php'),
-        Page::messages(ifset($_SESSION['signin_messages']))
-        .Page::errors(ifset($_SESSION['signin_errors']))
+        $pageMessages
+        .$pageErrors
         .Form::create(
             'submit-signin.php',
             Form::textfield('username', 'Username', array(
@@ -43,12 +66,12 @@ $page->finish(
             ))
             .Page::HR
             .Form::password('password', 'Password', array(
-                'value' => ifset($lastpost['password']),
+                'value' => $values['password'],
                 'autofocus' => $username !== '',
                 'required' => true,
             ))
             .Page::HR
-            .Form::checkbox('remember', 'Stay signed in', $remember)
+            .Form::checkbox('remember', 'Stay signed in', $values['remember'])
             .Page::HR
             .Form::button('Sign In')
         )

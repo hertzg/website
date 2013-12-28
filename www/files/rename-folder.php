@@ -6,6 +6,12 @@ include_once '../classes/Form.php';
 include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
 
+if (array_key_exists('files/rename-folder_errors', $_SESSION)) {
+    $pageErrors = Page::errors($_SESSION['files/rename-folder_errors']);
+} else {
+    $pageErrors = '';
+}
+
 unset($_SESSION['files/index_messages']);
 
 $page->base = '../';
@@ -14,7 +20,7 @@ $page->finish(
     Tab::create(
         Tab::item('Files', create_folder_link($idfolders))
         .Tab::activeItem('Rename Folder'),
-        Page::errors(ifset($_SESSION['files/rename-folder_errors']))
+        $pageErrors
         .Form::create(
             'submit-rename-folder.php',
             Form::textfield('foldername', 'Folder name', array(

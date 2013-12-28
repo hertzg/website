@@ -4,11 +4,16 @@ include_once 'lib/require-note.php';
 include_once '../fns/create_panel.php';
 include_once '../fns/create_tags.php';
 include_once '../fns/date_ago.php';
-include_once '../fns/ifset.php';
 include_once '../fns/render_external_links.php';
 include_once '../classes/NoteTags.php';
 include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
+
+if (array_key_exists('notes/view_messages', $_SESSION)) {
+    $pageMessages = Page::messages($_SESSION['notes/view_messages']);
+} else {
+    $pageMessages = '';
+}
 
 unset(
     $_SESSION['notes/edit_errors'],
@@ -27,7 +32,7 @@ $page->finish(
     Tab::create(
         Tab::item('Notes', './')
         .Tab::activeItem('View'),
-        Page::messages(ifset($_SESSION['notes/view_messages']))
+        $pageMessages
         .Page::text(
             nl2br(
                 render_external_links(htmlspecialchars($notetext), $base)

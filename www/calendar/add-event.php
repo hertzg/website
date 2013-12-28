@@ -1,7 +1,6 @@
 <?php
 
 include_once 'lib/require-user.php';
-include_once '../fns/ifset.php';
 include_once '../fns/request_strings.php';
 include_once '../classes/Form.php';
 include_once '../classes/Page.php';
@@ -9,7 +8,17 @@ include_once '../classes/Tab.php';
 
 list($year, $month, $day) = request_strings('year', 'month', 'day');
 
-$lastpost = ifset($_SESSION['calendar/add-event_lastpost']);
+if (array_key_exists('calendar/add-event_lastpost', $_SESSION)) {
+    $values = $_SESSION['calendar/add-event_lastpost'];
+} else {
+    $values = array('eventtext' => '');
+}
+
+if (array_key_exists('calendar/add-event_errors', $_SESSION)) {
+    $pageErrors = Page::errors($_SESSION['calendar/add-event_errors']);
+} else {
+    $pageErrors = '';
+}
 
 $year = (int)$year;
 $month = (int)$month;
@@ -23,13 +32,13 @@ $page->finish(
     Tab::create(
         Tab::item('Calendar', './')
         .Tab::activeItem('New Event'),
-        Page::errors(ifset($_SESSION['calendar/add-event_errors']))
+        $pageErrors
         .Form::create(
             'submit-add-event.php',
             Form::label('When', date('F d, Y', $time))
             .Page::HR
             .Form::textfield('eventtext', 'Text', array(
-                'value' => ifset($lastpost['eventtext']),
+                'value' => $values['eventtext'],
                 'autofocus' => true,
                 'required' => true,
             ))

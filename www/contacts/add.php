@@ -1,7 +1,6 @@
 <?php
 
 include_once 'lib/require-user.php';
-include_once '../fns/ifset.php';
 include_once '../classes/Form.php';
 include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
@@ -19,6 +18,12 @@ if (array_key_exists('contacts/add_lastpost', $_SESSION)) {
     );
 }
 
+if (array_key_exists('contacts/add_errors', $_SESSION)) {
+    $pageErrors = Page::errors($_SESSION['contacts/add_errors']);
+} else {
+    $pageErrors = '';
+}
+
 unset($_SESSION['contacts/index_messages']);
 
 $page->base = '../';
@@ -27,7 +32,7 @@ $page->finish(
     Tab::create(
         Tab::item('Contacts', './')
         .Tab::activeItem('New'),
-        Page::errors(ifset($_SESSION['contacts/add_errors']))
+        $pageErrors
         .Form::create(
             'submit-add.php',
             Form::textfield('fullname', 'Full name', array(

@@ -8,7 +8,6 @@ function n_events ($n) {
 include_once 'lib/require-user.php';
 include_once 'fns/bytestr.php';
 include_once 'fns/create_panel.php';
-include_once 'fns/ifset.php';
 include_once 'classes/Bookmarks.php';
 include_once 'classes/Contacts.php';
 include_once 'classes/Events.php';
@@ -135,11 +134,17 @@ if ($numEventsToday) {
     $calendarLink = Page::imageLink('Calendar', 'calendar/', 'calendar');
 }
 
+if (array_key_exists('home_messages', $_SESSION)) {
+    $pageMessages = Page::messages($_SESSION['home_messages']);
+} else {
+    $pageMessages = '';
+}
+
 $page->title = 'Home';
 $page->finish(
     Tab::create(
         Tab::activeItem('Home'),
-        Page::messages(ifset($_SESSION['home_messages']))
+        $pageMessages
         .$notifications
         .$bookmarksLink
         .Page::HR

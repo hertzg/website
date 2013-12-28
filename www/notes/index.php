@@ -13,7 +13,6 @@ function createTagInput ($tag) {
 
 include_once 'lib/require-user.php';
 include_once '../fns/create_panel.php';
-include_once '../fns/ifset.php';
 include_once '../fns/request_strings.php';
 include_once '../classes/Notes.php';
 include_once '../classes/Page.php';
@@ -119,6 +118,12 @@ if ($notes) {
     $items[] = Page::info('No notes.');
 }
 
+if (array_key_exists('notes/index_messages', $_SESSION)) {
+    $pageMessages = Page::messages($_SESSION['notes/index_messages']);
+} else {
+    $pageMessages = '';
+}
+
 unset(
     $_SESSION['home_messages'],
     $_SESSION['notes/add_errors'],
@@ -131,7 +136,7 @@ $page->title = 'Notes';
 $page->finish(
     Tab::create(
         Tab::activeItem('Notes'),
-        Page::messages(ifset($_SESSION['notes/index_messages']))
+        $pageMessages
         .$filterMessage
         .join(Page::HR, $items)
     )

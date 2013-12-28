@@ -13,7 +13,6 @@ function createTagInput ($tag) {
 
 include_once 'lib/require-user.php';
 include_once '../fns/create_panel.php';
-include_once '../fns/ifset.php';
 include_once '../fns/request_strings.php';
 include_once '../classes/Contacts.php';
 include_once '../classes/Page.php';
@@ -119,6 +118,12 @@ if ($contacts) {
     $items[] = Page::info('No contacts.');
 }
 
+if (array_key_exists('contacts/index_messages', $_SESSION)) {
+    $pageMessages = Page::messages($_SESSION['contacts/index_messages']);
+} else {
+    $pageMessages = '';
+}
+
 unset(
     $_SESSION['contacts/add_errors'],
     $_SESSION['contacts/add_lastpost'],
@@ -131,7 +136,7 @@ $page->title = 'Contacts';
 $page->finish(
     Tab::create(
         Tab::activeItem('Contacts'),
-        Page::messages(ifset($_SESSION['contacts/index_messages']))
+        $pageMessages
         .$filterMessage
         .join(Page::HR, $items)
     )

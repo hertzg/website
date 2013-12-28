@@ -5,10 +5,15 @@ include_once '../fns/create_external_url.php';
 include_once '../fns/create_panel.php';
 include_once '../fns/create_tags.php';
 include_once '../fns/date_ago.php';
-include_once '../fns/ifset.php';
 include_once '../classes/BookmarkTags.php';
 include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
+
+if (array_key_exists('bookmarks/view_messages', $_SESSION)) {
+    $pageMessages = Page::messages($_SESSION['bookmarks/view_messages']);
+} else {
+    $pageMessages = '';
+}
 
 unset(
     $_SESSION['bookmarks/edit_errors'],
@@ -29,7 +34,7 @@ $page->finish(
     Tab::create(
         Tab::item('Bookmarks', './')
         .Tab::activeItem('View'),
-        Page::messages(ifset($_SESSION['bookmarks/view_messages']))
+        $pageMessages
         .($title ? Page::text(htmlspecialchars($title)).Page::HR : '')
         .Page::text('<a class="a" href="'.htmlspecialchars(create_external_url($url, $base)).'">'.htmlspecialchars($url).'</a>')
         .create_tags(BookmarkTags::indexOnBookmark($id))

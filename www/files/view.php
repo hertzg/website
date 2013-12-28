@@ -5,10 +5,15 @@ include_once 'fns/create_folder_link.php';
 include_once '../fns/bytestr.php';
 include_once '../fns/create_panel.php';
 include_once '../fns/date_ago.php';
-include_once '../fns/ifset.php';
 include_once '../classes/Form.php';
 include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
+
+if (array_key_exists('files/view_messages', $_SESSION)) {
+    $pageMessages = Page::messages($_SESSION['files/view_messages']);
+} else {
+    $pageMessages = '';
+}
 
 unset(
     $_SESSION['files/index_messages'],
@@ -21,7 +26,7 @@ $page->finish(
     Tab::create(
         Tab::item('Files', create_folder_link($file->idfolders))
         .Tab::activeItem('View'),
-        Page::messages(ifset($_SESSION['files/view_messages']))
+        $pageMessages
         .Form::label('File name', $file->filename)
         .Page::HR
         .Form::label('Size', bytestr($file->filesize))

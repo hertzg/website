@@ -9,7 +9,6 @@ function create_link ($idfolders, $parentidfolders) {
 
 include_once 'lib/require-folder.php';
 include_once 'fns/create_folder_link.php';
-include_once '../fns/ifset.php';
 include_once '../fns/request_strings.php';
 include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
@@ -55,8 +54,15 @@ if ($parentidfolders != $folder->parentidfolders) {
     );
 }
 
-if ($parentidfolders != ifset($_SESSION['files/move-folder_parentidfolders'])) {
+if (array_key_exists('files/move-folder_parentidfolders', $_SESSION) &&
+    $parentidfolders != $_SESSION['files/move-folder_parentidfolders']) {
     unset($_SESSION['files/move-folder_errors']);
+}
+
+if (array_key_exists('files/move-folder_errors', $_SESSION)) {
+    $pageErrors = Page::errors($_SESSION['files/move-folder_errors']);
+} else {
+    $pageErrors = '';
 }
 
 $page->base = '../';
@@ -65,7 +71,7 @@ $page->finish(
     Tab::create(
         Tab::item('Files', create_folder_link($idfolders))
         .Tab::activeItem('Move'),
-        Page::errors(ifset($_SESSION['files/move-folder_errors']))
+        $pageErrors
         .Page::warnings(array(
             'Moving the folder "<b>'.htmlspecialchars($folder->foldername).'</b>".',
             'Select a folder to move the folder into.'

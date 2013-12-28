@@ -9,7 +9,6 @@ function create_link ($id, $idfolders) {
 
 include_once 'lib/require-file.php';
 include_once 'fns/create_folder_link.php';
-include_once '../fns/ifset.php';
 include_once '../fns/request_strings.php';
 include_once '../classes/Folders.php';
 include_once '../classes/Page.php';
@@ -52,8 +51,15 @@ if ($idfolders != $file->idfolders) {
     );
 }
 
-if ($idfolders != ifset($_SESSION['files/move-file_idfolders'])) {
+if (array_key_exists('files/move-file_idfolders', $_SESSION) &&
+    $idfolders != $_SESSION['files/move-file_idfolders']) {
     unset($_SESSION['files/move-file_errors']);
+}
+
+if (array_key_exists('files/move-file_errors', $_SESSION)) {
+    $pageErrors = Page::errors($_SESSION['files/move-file_errors']);
+} else {
+    $pageErrors = '';
 }
 
 $page->base = '../';
@@ -63,7 +69,7 @@ $page->finish(
         Tab::item('Files', create_folder_link($file->idfolders))
         .Tab::item('View', "view.php?id=$file->idfiles")
         .Tab::activeItem('Move'),
-        Page::errors(ifset($_SESSION['files/move-file_errors']))
+        $pageErrors
         .Page::warnings(array(
             'Moving the file "<b>'.htmlspecialchars($file->filename).'</b>".',
             'Select a folder to move the file into.',

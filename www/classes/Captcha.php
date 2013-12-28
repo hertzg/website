@@ -1,7 +1,5 @@
 <?php
 
-include_once __DIR__.'/../fns/ifset.php';
-
 class Captcha {
 
     static function reset () {
@@ -16,7 +14,8 @@ class Captcha {
         if (self::required()) {
             if (!$captcha) {
                 $errors[] = 'Enter verification.';
-            } elseif ($captcha == ifset($_SESSION['captcha'])) {
+            } elseif (array_key_exists('captcha', $_SESSION) &&
+                $captcha == $_SESSION['captcha']) {
                 $_SESSION['captcha_left'] = $valid;
             } else {
                 $errors[] = 'Invalid verification. Try again.';

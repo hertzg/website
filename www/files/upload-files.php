@@ -3,7 +3,6 @@
 include_once 'lib/require-user.php';
 include_once 'fns/create_folder_link.php';
 include_once '../fns/bytestr.php';
-include_once '../fns/ifset.php';
 include_once '../fns/ini_get_bytes.php';
 include_once '../fns/redirect.php';
 include_once '../fns/request_strings.php';
@@ -20,6 +19,12 @@ if ($idfolders) {
     if (!$folder) redirect();
 }
 
+if (array_key_exists('files/upload-files_errors', $_SESSION)) {
+    $pageErrors = Page::errors($_SESSION['files/upload-files_errors']);
+} else {
+    $pageErrors = '';
+}
+
 unset($_SESSION['files/index_messages']);
 
 $page->base = '../';
@@ -28,7 +33,7 @@ $page->finish(
     Tab::create(
         Tab::item('Files', create_folder_link($idfolders))
         .Tab::activeItem('Upload Files'),
-        Page::errors(ifset($_SESSION['files/upload-files_errors']))
+        $pageErrors
         .Page::warnings(array(
             'Maximum '.bytestr(ini_get_bytes('upload_max_filesize')).' each file.',
             'Maximum '.bytestr(ini_get_bytes('post_max_size')).' at once.',

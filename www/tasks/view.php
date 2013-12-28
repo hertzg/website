@@ -4,7 +4,6 @@ include_once 'lib/require-task.php';
 include_once '../fns/create_panel.php';
 include_once '../fns/create_tags.php';
 include_once '../fns/date_ago.php';
-include_once '../fns/ifset.php';
 include_once '../fns/render_external_links.php';
 include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
@@ -36,13 +35,19 @@ $updatetime = $task->updatetime;
 
 $base = '../';
 
+if (array_key_exists('tasks/view_messages', $_SESSION)) {
+    $pageMessages = Page::messages($_SESSION['tasks/view_messages']);
+} else {
+    $pageMessages = '';
+}
+
 $page->base = $base;
 $page->title = htmlspecialchars(mb_substr($tasktext, 0, 20, 'UTF-8'));
 $page->finish(
     Tab::create(
         Tab::item('Tasks', './')
         .Tab::activeItem('View'),
-        Page::messages(ifset($_SESSION['tasks/view_messages']))
+        $pageMessages
         .Page::text(
             nl2br(
                 render_external_links(htmlspecialchars($tasktext), $base)

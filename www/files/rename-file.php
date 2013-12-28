@@ -2,11 +2,16 @@
 
 include_once 'lib/require-file.php';
 include_once 'fns/create_folder_link.php';
-include_once '../fns/ifset.php';
 include_once '../classes/Files.php';
 include_once '../classes/Form.php';
 include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
+
+if (array_key_exists('files/rename-file_errors', $_SESSION)) {
+    $pageErrors = Page::errors($_SESSION['files/rename-file_errors']);
+} else {
+    $pageErrors = '';
+}
 
 unset($_SESSION['files/view_messages']);
 
@@ -17,7 +22,7 @@ $page->finish(
         Tab::item('Files', create_folder_link($file->idfolders))
         .Tab::item('View', "view.php?id=$id")
         .Tab::activeItem('Rename File'),
-        Page::errors(ifset($_SESSION['files/rename-file_errors']))
+        $pageErrors
         .Form::create(
             'submit-rename-file.php',
             Form::textfield('filename', 'File name', array(

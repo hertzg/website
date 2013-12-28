@@ -1,7 +1,6 @@
 <?php
 
 include_once 'lib/require-user.php';
-include_once '../fns/ifset.php';
 include_once '../classes/Form.php';
 include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
@@ -15,6 +14,12 @@ if (array_key_exists('tasks/add_lastpost', $_SESSION)) {
     );
 }
 
+if (array_key_exists('tasks/add_errors', $_SESSION)) {
+    $pageErrors = Page::errors($_SESSION['tasks/add_errors']);
+} else {
+    $pageErrors = '';
+}
+
 unset($_SESSION['tasks/index_messages']);
 
 $page->base = '../';
@@ -23,7 +28,7 @@ $page->finish(
     Tab::create(
         Tab::item('Tasks', './')
         .Tab::activeItem('New'),
-        Page::errors(ifset($_SESSION['tasks/add_errors']))
+        $pageErrors
         .Form::create(
             'submit-add.php',
             Form::textarea('tasktext', 'Text', array(

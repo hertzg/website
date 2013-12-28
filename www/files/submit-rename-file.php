@@ -16,8 +16,8 @@ $errors = array();
 
 if ($filename === '') {
     $errors[] = 'Enter file name.';
-} elseif (Files::getByName($idusers, $id, $filename, $id)) {
-    $errors[] = 'File with the same name already exists.';
+} elseif (Files::getByName($idusers, $file->idfolders, $filename, $id)) {
+    $errors[] = 'A file with the same name already exists.';
 }
 
 unset($_SESSION['files/rename-file_errors']);
