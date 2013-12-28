@@ -154,7 +154,8 @@ label {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-.clickable:focus {
+.clickable:focus,
+.clickable.focus {
     border: 2px solid transparent;
     border-radius: 2px;
 }
@@ -174,7 +175,7 @@ label {
     font-weight: bold;
 }
 .icon {
-    background: url(images/icons.png?6);
+    background: url(images/icons.png?7);
     display: inline-block;
     vertical-align: top;
     width: 32px;
@@ -301,16 +302,18 @@ label {
 .form-checkbox {
     padding-left: 50%;
     padding-right: 16px;
+    line-height: 48px;
 }
 .form-checkbox label {
     display: inline-block;
     vertical-align: top;
-    line-height: 48px;
 }
-.form-checkbox span {
+.form-checkbox .clickable {
     display: inline-block;
     vertical-align: top;
-    width: 24px;
+    text-align: center;
+    width: 48px;
+    height: 48px;
 }
 
 .errors {
@@ -486,6 +489,6 @@ label {
         width: auto;
     }
     .form-checkbox {
-        padding-left: 16px;
+        padding-left: 0;
     }
 }

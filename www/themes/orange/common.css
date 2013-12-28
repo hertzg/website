@@ -1,5 +1,6 @@
 .tag:focus,
 .clickable:focus,
+.clickable.focus,
 .form-select:focus,
 .form-textfield:focus,
 .form-textarea:focus {

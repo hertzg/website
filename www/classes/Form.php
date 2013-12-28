@@ -33,23 +33,18 @@ class Form {
 
     static function checkbox ($name, $text, $checked) {
         return
-            '<div class="form-checkbox">'
+            '<div class="form-checkbox transformable">'
                 .'<label>'
-                    .'<span>'
-                        ."<input type=\"checkbox\" id=\"$name\" name=\"$name\""
-                        .($checked ? ' checked="checked"' : '').' />'
-                    .'</span>'
+                    .'<div class="clickable">'
+                        .'<div class="hidden">'
+                            ."<input type=\"checkbox\" id=\"$name\" name=\"$name\""
+                            .($checked ? ' checked="checked"' : '').' />'
+                        .'</div>'
+                    .'</div>'
                     .$text
                 .'</label>'
-            .'</div>';
-        return self::association(
-            '<div style="line-height: 48px">'
-                .'<input type="checkbox" class="form-checkbox"'
-                .($checked ? ' checked="checked"' : '')
-                ." id=\"$name\" name=\"$name\" />"
-            .'</div>',
-            "<label for=\"$name\">$text:</label>"
-        );
+            .'</div>'
+            .'<script type="text/javascript" src="js/transform-form-checkboxes.js"></script>';
     }
 
     static function create ($action, $content) {
