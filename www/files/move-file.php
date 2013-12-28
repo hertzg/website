@@ -11,8 +11,8 @@ include_once 'lib/require-file.php';
 include_once 'fns/create_folder_link.php';
 include_once '../fns/request_strings.php';
 include_once '../classes/Folders.php';
-include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
+include_once '../lib/page.php';
 
 list($idfolders) = request_strings('idfolders');
 

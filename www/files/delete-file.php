@@ -3,8 +3,8 @@
 include_once 'lib/require-file.php';
 include_once 'fns/create_folder_link.php';
 include_once '../classes/Files.php';
-include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
+include_once '../lib/page.php';
 
 $escapedName = htmlspecialchars($file->filename);
 

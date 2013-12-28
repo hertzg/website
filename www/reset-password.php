@@ -4,9 +4,9 @@ include_once 'fns/is_md5.php';
 include_once 'fns/redirect.php';
 include_once 'fns/request_strings.php';
 include_once 'classes/Form.php';
-include_once 'classes/Page.php';
 include_once 'classes/Tab.php';
 include_once 'classes/Users.php';
+include_once 'lib/page.php';
 include_once 'lib/session-start.php';
 
 list($idusers, $resetpasswordkey) = request_strings('idusers', 'resetpasswordkey');

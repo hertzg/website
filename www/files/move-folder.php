@@ -10,8 +10,8 @@ function create_link ($idfolders, $parentidfolders) {
 include_once 'lib/require-folder.php';
 include_once 'fns/create_folder_link.php';
 include_once '../fns/request_strings.php';
-include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
+include_once '../lib/page.php';
 
 list($parentidfolders) = request_strings('parentidfolders');
 

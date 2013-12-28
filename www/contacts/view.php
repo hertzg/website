@@ -3,8 +3,8 @@
 include_once 'lib/require-contact.php';
 include_once '../fns/create_panel.php';
 include_once '../classes/Form.php';
-include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
+include_once '../lib/page.php';
 
 $address = $contact->address;
 $email = $contact->email;

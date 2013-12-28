@@ -5,8 +5,8 @@ include_once 'fns/create_panel.php';
 include_once 'fns/bytestr.php';
 include_once 'fns/date_ago.php';
 include_once 'classes/Form.php';
-include_once 'classes/Page.php';
 include_once 'classes/Tab.php';
+include_once 'lib/page.php';
 include_once 'lib/themes.php';
 
 unset(

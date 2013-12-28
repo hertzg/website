@@ -2,8 +2,8 @@
 
 include_once 'lib/require-task.php';
 include_once '../classes/Form.php';
-include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
+include_once '../lib/page.php';
 
 if (array_key_exists('tasks/edit_lastpost', $_SESSION)) {
     $values = $_SESSION['tasks/edit_lastpost'];

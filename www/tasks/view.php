@@ -5,9 +5,9 @@ include_once '../fns/create_panel.php';
 include_once '../fns/create_tags.php';
 include_once '../fns/date_ago.php';
 include_once '../fns/render_external_links.php';
-include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
 include_once '../classes/TaskTags.php';
+include_once '../lib/page.php';
 
 unset(
     $_SESSION['tasks/edit_errors'],

@@ -6,8 +6,8 @@ include_once '../fns/create_panel.php';
 include_once '../fns/create_tags.php';
 include_once '../fns/date_ago.php';
 include_once '../classes/BookmarkTags.php';
-include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
+include_once '../lib/page.php';
 
 if (array_key_exists('bookmarks/view_messages', $_SESSION)) {
     $pageMessages = Page::messages($_SESSION['bookmarks/view_messages']);

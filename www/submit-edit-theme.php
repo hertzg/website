@@ -10,7 +10,7 @@ include_once 'lib/themes.php';
 
 list($theme) = request_strings('theme');
 
-if (!isset($themes[$theme])) redirect();
+if (!array_key_exists($theme, $themes)) redirect();
 
 Users::editTheme($idusers, $theme);
 

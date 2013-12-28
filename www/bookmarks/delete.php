@@ -1,8 +1,8 @@
 <?php
 
 include_once 'lib/require-bookmark.php';
-include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
+include_once '../lib/page.php';
 
 $page->base = '../';
 $page->title = 'Delete Bookmark: '.htmlspecialchars(mb_substr($bookmark->title, 0, 20, 'UTF-8'));

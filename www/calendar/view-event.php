@@ -2,8 +2,8 @@
 
 include_once 'lib/require-event.php';
 include_once '../fns/create_panel.php';
-include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
+include_once '../lib/page.php';
 
 if (array_key_exists('calendar/view-event_messages', $_SESSION)) {
     $pageMessages = Page::messages($_SESSION['calendar/view-event_messages']);

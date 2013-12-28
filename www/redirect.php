@@ -9,11 +9,7 @@ if (!array_key_exists('HTTP_REFERER', $_SERVER)) {
     redirect($url);
 }
 
-include_once 'lib/user.php';
-include_once 'classes/Page.php';
-$theme = $user ? $user->theme : 'orange';
-
-header('Content-Type: text/html; charset=UTF-8');
+include_once 'lib/page.php';
 
 $page->echoHtml(
     '<div class="page-text">'

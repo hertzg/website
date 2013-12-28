@@ -3,9 +3,9 @@
 include_once 'lib/require-user.php';
 include_once '../fns/create_panel.php';
 include_once '../classes/Channels.php';
-include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
 include_once '../classes/Users.php';
+include_once '../lib/page.php';
 
 $channels = '';
 foreach (Channels::index($idusers) as $i => $channel) {

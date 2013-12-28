@@ -5,8 +5,8 @@ include_once '../fns/create_panel.php';
 include_once '../classes/Channels.php';
 include_once '../classes/Form.php';
 include_once '../classes/Notifications.php';
-include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
+include_once '../lib/page.php';
 
 Channels::addNumNotifications($idusers, $id, -$channel->numnotifications);
 

@@ -10,11 +10,6 @@ class Page {
     public $hideSignOutLink = false;
     public $theme;
 
-    function __construct () {
-        global $user;
-        $this->theme = $user ? $user->theme : 'orange';
-    }
-
     function echoHtml ($body) {
 
         global $revisions;
@@ -178,4 +173,3 @@ class Page {
 }
 
 include_once __DIR__.'/../lib/revisions.php';
-$page = new Page;

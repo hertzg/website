@@ -13,9 +13,9 @@ include_once 'classes/Contacts.php';
 include_once 'classes/Events.php';
 include_once 'classes/Notes.php';
 include_once 'classes/Notifications.php';
-include_once 'classes/Page.php';
 include_once 'classes/Tab.php';
 include_once 'classes/Tasks.php';
+include_once 'lib/page.php';
 
 unset(
     $_SESSION['account_messages'],

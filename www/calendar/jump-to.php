@@ -3,8 +3,8 @@
 include_once 'lib/require-user.php';
 include_once '../fns/request_strings.php';
 include_once '../classes/Form.php';
-include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
+include_once '../lib/page.php';
 
 list($month, $year) = request_strings('month', 'year');
 

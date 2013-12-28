@@ -7,8 +7,8 @@ include_once '../fns/redirect.php';
 include_once '../fns/request_strings.php';
 include_once '../classes/Files.php';
 include_once '../classes/Folders.php';
-include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
+include_once '../lib/page.php';
 
 list($idfolders) = request_strings('idfolders');
 

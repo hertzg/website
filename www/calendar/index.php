@@ -67,8 +67,8 @@ include_once 'lib/require-user.php';
 include_once '../fns/create_panel.php';
 include_once '../fns/request_strings.php';
 include_once '../classes/Events.php';
-include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
+include_once '../lib/page.php';
 
 if (array_key_exists('calendar/index_messages', $_SESSION)) {
     $pageMessages = Page::messages($_SESSION['calendar/index_messages']);

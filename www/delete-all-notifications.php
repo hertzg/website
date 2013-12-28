@@ -1,8 +1,8 @@
 <?php
 
 include_once 'lib/require-user.php';
-include_once 'classes/Page.php';
 include_once 'classes/Tab.php';
+include_once 'lib/page.php';
 
 unset($_SESSION['notifications_messages']);
 

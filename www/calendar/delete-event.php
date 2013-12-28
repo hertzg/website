@@ -1,8 +1,8 @@
 <?php
 
 include_once 'lib/require-event.php';
-include_once '../classes/Page.php';
 include_once '../classes/Tab.php';
+include_once '../lib/page.php';
 
 $page->base = '../';
 $page->title = 'Delete Event: '.htmlspecialchars(mb_substr($event->eventtext, 0, 20, 'UTF-8'));
