@@ -24,6 +24,9 @@
 .tag:focus {
     box-shadow: 0 -16px 16px #ffe5ec inset;
 }
+.tag:active {
+    box-shadow: none;
+}
 
 .tag:active,
 .clickable:active {
@@ -41,8 +44,7 @@
     background-color: #694a58;
 }
 
-.topLink:focus,
-.tag:focus {
+.topLink:focus {
     border-color: #f6a;
 }
 

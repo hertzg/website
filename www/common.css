@@ -462,4 +462,21 @@ label {
     color: #fff;
     border: 0;
     padding: 2px 9px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 440px) {
+    .form-property {
+        display: block;
+        width: auto;
+        text-align: left;
+        padding: 0 16px;
+    }
+    .form-property > label {
+        display: block;
+    }
+    .form-value {
+        display: block;
+        width: auto;
+    }
 }
