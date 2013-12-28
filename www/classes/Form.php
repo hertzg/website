@@ -1,8 +1,5 @@
 <?php
 
-include_once 'Captcha.php';
-include_once 'Page.php';
-
 class Form {
 
     static function association ($value, $property) {
@@ -19,7 +16,9 @@ class Form {
     }
 
     static function captcha () {
+        include_once 'Captcha.php';
         if (Captcha::required()) {
+            include_once 'Page.php';
             return
                 self::textfield('captcha', 'Verification', array(
                     'required' => true,
