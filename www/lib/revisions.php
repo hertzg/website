@@ -1,5 +1,5 @@
 <?php
 
 $revisions = array(
-    'common.css' => 35,
+    'common.css' => 36,
 );

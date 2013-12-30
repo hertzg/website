@@ -271,6 +271,8 @@ label {
 }
 .form-captcha {
     background: #fff;
+    padding-top: 4px;
+    padding-bottom: 4px;
     padding-left: 50%;
 }
 .form-label {
@@ -479,7 +481,7 @@ label {
         width: auto;
         text-align: left;
         padding: 0 16px;
-        height: 32px;
+        max-height: 32px;
     }
     .form-property > label {
         display: block;
@@ -490,5 +492,8 @@ label {
     }
     .form-checkbox {
         padding-left: 0;
+    }
+    .form-captcha {
+        padding-left: 16px;
     }
 }

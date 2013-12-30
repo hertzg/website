@@ -20,13 +20,13 @@ class Form {
         if (Captcha::required()) {
             include_once 'Page.php';
             return
-                self::textfield('captcha', 'Verification', array(
-                    'required' => true,
-                ))
-                .'<div class="form-captcha">'
+                '<div class="form-captcha">'
                     .'<img src="captcha.php" style="vertical-align: top"'
                     .' alt="CAPTCHA" width="102" height="40" />'
                 .'</div>'
+                .self::textfield('captcha', 'Verification', array(
+                    'required' => true,
+                ))
                 .Page::HR;
         }
     }

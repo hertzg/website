@@ -15,7 +15,7 @@ session_commit();
 $width = 102;
 $height = 40;
 $image = imagecreatetruecolor($width, $height);
-imagefilledrectangle($image, 0, 0, $width, $height, 0xffffff);
+imagefilledrectangle($image, 0, 0, $width, $height, 0xeeeeee);
 foreach (str_split($captcha) as $i => $char) {
     $size = rand(13, 16);
     $angle = rand(-30, 30);
