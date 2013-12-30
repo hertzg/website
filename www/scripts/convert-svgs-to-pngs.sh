@@ -15,7 +15,7 @@ cd ../images
 convert_and_compress
 cd ..
 
-convert images/favicon.png favicon.ico
+convert images/icon16.png favicon.ico
 
 cd themes
 for i in *
