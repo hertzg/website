@@ -24,8 +24,7 @@ unset(
     $_SESSION['contacts/index_messages'],
     $_SESSION['notes/index_messages'],
     $_SESSION['notifications_messages'],
-    $_SESSION['feedback_errors'],
-    $_SESSION['feedback_lastpost'],
+    $_SESSION['help/index_messages'],
     $_SESSION['files/index_messages'],
     $_SESSION['tasks/index_messages']
 );
@@ -164,7 +163,7 @@ $page->finish(
         'Options',
         Page::imageLink('Account', 'account.php', 'account')
         .Page::HR
-        .Page::imageLink('Leave Feedback', 'feedback.php', 'feedback')
+        .Page::imageLink('Help', 'help/', 'help')
         .Page::HR
         .Page::imageLink('Sign Out', 'submit-signout.php', 'signout')
     )

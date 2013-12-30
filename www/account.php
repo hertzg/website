@@ -23,6 +23,15 @@ if (array_key_exists('account_messages', $_SESSION)) {
     $pageMessages = '';
 }
 
+$fullname = $user->fullname;
+if ($fullname !== '') {
+    $fullnameField =
+        Form::label('Full name', $fullname)
+        .Page::HR;
+} else {
+    $fullnameField = '';
+}
+
 $page->title = 'Account';
 $page->finish(
     Tab::create(
@@ -32,8 +41,7 @@ $page->finish(
         .Page::HR
         .Form::label('Email', $user->email)
         .Page::HR
-        .Form::label('Full name', $user->fullname)
-        .Page::HR
+        .$fullnameField
         .Form::label('Theme', $themes[$user->theme])
         .Page::HR
         .Form::label('Account created', date_ago($user->inserttime))
