@@ -16,11 +16,11 @@ unset(
 );
 
 $page->base = '../';
-$page->title = 'Leave Feedback';
+$page->title = 'Help';
 $page->finish(
     Tab::create(
         Tab::activeItem('Help'),
         $pageMessages
-        .Page::imageLink('Feedback', 'feedback.php', 'feedback')
+        .Page::imageLink('Leave Feedback', 'feedback.php', 'feedback')
     )
 );
