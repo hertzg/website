@@ -12,9 +12,9 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   width="16"
-   height="16"
-   sodipodi:docname="icon16.svg">
+   width="120"
+   height="120"
+   sodipodi:docname="icon120.svg">
   <metadata
      id="metadata8">
     <rdf:RDF>
@@ -44,9 +44,9 @@
      showgrid="true"
      inkscape:snap-bbox="true"
      inkscape:snap-global="true"
-     inkscape:zoom="45.254832"
-     inkscape:cx="9.6950515"
-     inkscape:cy="7.2075342"
+     inkscape:zoom="3.9999998"
+     inkscape:cx="100.51407"
+     inkscape:cy="55.114127"
      inkscape:window-x="1920"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -64,15 +64,9 @@
        enabled="true"
        snapvisiblegridlinesonly="true" />
   </sodipodi:namedview>
-  <path
-     style="fill:#ffffff"
-     id="path3098"
-     d="m 40,12 c -26.666667,2.666667 -13.333333,1.333333 0,0 z"
-     inkscape:connector-curvature="0"
-     sodipodi:nodetypes="cc" />
   <g
      id="g3302"
-     transform="matrix(0.25000001,0,0,0.25,3.9999999,4.0000003)">
+     transform="matrix(1.8750001,0,0,1.8750001,30,29.999997)">
     <path
        sodipodi:nodetypes="csssssssc"
        id="path3092"
@@ -88,7 +82,7 @@
        sodipodi:nodetypes="cc"
        inkscape:connector-curvature="0"
        d="m 40,28 c -26.666667,2.666667 -13.333333,1.333333 0,0 z"
-       id="path3098-9"
+       id="path3098"
        style="fill:#ffffff" />
   </g>
 </svg>
