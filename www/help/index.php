@@ -21,6 +21,8 @@ $page->finish(
     Tab::create(
         Tab::activeItem('Help'),
         $pageMessages
+        .Page::imageLink('Install Zvini', 'install.php', 'download')
+        .Page::HR
         .Page::imageLink('Leave Feedback', 'feedback.php', 'feedback')
     )
 );
