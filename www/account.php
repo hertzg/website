@@ -14,7 +14,8 @@ unset(
     $_SESSION['change-password_lastpost'],
     $_SESSION['edit-profile_errors'],
     $_SESSION['edit-profile_lastpost'],
-    $_SESSION['home_messages']
+    $_SESSION['home_messages'],
+    $_SESSION['tokens/index_messages']
 );
 
 if (array_key_exists('account_messages', $_SESSION)) {

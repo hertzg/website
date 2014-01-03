@@ -6,6 +6,12 @@ include_once '../classes/Tab.php';
 include_once '../classes/Tokens.php';
 include_once '../lib/page.php';
 
+if (array_key_exists('tokens/index_messages', $_SESSION)) {
+    $pageMessages = Page::messages($_SESSION['tokens/index_messages']);
+} else {
+    $pageMessages = '';
+}
+
 $tokens = Tokens::indexOnUser($idusers);
 $items = array();
 if ($tokens) {
@@ -27,7 +33,8 @@ $page->finish(
     Tab::create(
         Tab::item('Account', '../account.php')
         .Tab::activeItem('Remembered Sessions'),
-        join(Page::HR, $items)
+        $pageMessages
+        .join(Page::HR, $items)
     )
     .$optionsPanel
 );
