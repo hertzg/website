@@ -5,7 +5,7 @@ include_once '../classes/Tab.php';
 include_once '../lib/page.php';
 
 $page->base = '../';
-$page->title = 'Delete Task: '.htmlspecialchars(mb_substr($task->tasktext, 0, 20, 'UTF-8'));
+$page->title = 'Delete Task?';
 $page->finish(
     Tab::create(
         Tab::item('Tasks', './')

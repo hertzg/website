@@ -6,7 +6,7 @@ if (!$sameDomainReferer) redirect('..');
 include_once 'lib/require-contact.php';
 
 include_once '../classes/Contacts.php';
-Contacts::delete($idusers, $id);
+Contacts::delete($id);
 
 include_once '../classes/ContactTags.php';
 ContactTags::deleteOnContact($id);

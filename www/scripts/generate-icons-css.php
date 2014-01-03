@@ -13,7 +13,7 @@ $names = array('blue-theme', 'green-theme', 'orange-theme', 'pink-theme',
     'old-notification', 'password', 'reset-password', 'randomize', 'rename', 'signout',
     'trash-bin', 'calendar', 'arrow-right', 'arrow-left', 'copy-file', 'move-file',
     'copy-folder', 'move-folder', 'search', 'event', 'create-event', 'edit-event',
-    'checkbox', 'checked-checkbox', 'help');
+    'checkbox', 'checked-checkbox', 'help', 'token', 'create-token', 'tokens');
 
 $content = "/* auto-generated */\n";
 $x = 0;

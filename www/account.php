@@ -54,6 +54,8 @@ $page->finish(
         .Page::HR
         .Page::imageLink('Change Password', 'change-password.php', 'password')
         .Page::HR
+        .Page::imageLink('Remembered Sessions', 'tokens/', 'tokens')
+        .Page::HR
         .Page::imageLink('Close Account', 'close-account.php', 'trash-bin')
     )
 );

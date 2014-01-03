@@ -28,12 +28,9 @@ class Tasks {
         )->count;
     }
 
-    static function delete ($idusers, $id) {
+    static function delete ($id) {
         global $mysqli;
-        mysqli_query(
-            $mysqli,
-            "delete from tasks where idusers = $idusers and idtasks = $id"
-        );
+        mysqli_query($mysqli, "delete from tasks where idtasks = $id");
     }
 
     static function deleteOnUser ($idusers) {

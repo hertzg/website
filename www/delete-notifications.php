@@ -16,11 +16,13 @@ if (!$channel) redirect('notifications.php');
 
 unset($_SESSION['notifications_messages']);
 
-$page->title = 'Clear Notifications';
+$page->title = 'Delete Notifications?';
 $page->finish(
     Tab::create(
         Tab::activeItem('Notifications'),
-        Page::text('Are you sure you want to delete notifications in this channel?')
+        Page::text(
+            'Are you sure you want to delete notifications in this channel?'
+        )
         .Page::HR
         .Page::imageLink(
             'Yes, delete notifications',

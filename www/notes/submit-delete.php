@@ -6,7 +6,7 @@ if (!$sameDomainReferer) redirect('..');
 include_once 'lib/require-note.php';
 
 include_once '../classes/Notes.php';
-Notes::delete($idusers, $id);
+Notes::delete($id);
 
 include_once '../classes/NoteTags.php';
 NoteTags::deleteOnNote($id);

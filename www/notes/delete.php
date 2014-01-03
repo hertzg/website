@@ -5,7 +5,7 @@ include_once '../classes/Tab.php';
 include_once '../lib/page.php';
 
 $page->base = '../';
-$page->title = 'Delete Note: '.htmlspecialchars(mb_substr($note->notetext, 0, 20, 'UTF-8'));
+$page->title = 'Delete Note?';
 $page->finish(
     Tab::create(
         Tab::item('Notes', './')

@@ -20,6 +20,16 @@ class Tokens {
         return mysqli_insert_id($mysqli);
     }
 
+    static function delete ($id) {
+        global $mysqli;
+        mysqli_query($mysqli, "delete from tokens where idtokens = $id");
+    }
+
+    static function deleteOnUser ($idusers) {
+        global $mysqli;
+        mysqli_query($mysqli, "delete from tokens where idusers = $idusers");
+    }
+
     static function get ($id) {
         global $mysqli;
         return mysqli_single_object(
@@ -36,6 +46,22 @@ class Tokens {
             $mysqli,
             'select * from tokens'
             ." where username = '$username' and tokentext = '$tokentext'"
+        );
+    }
+
+    static function getOnUser ($idusers, $id) {
+        $token = self::get($id);
+        if ($token && $token->idusers == $idusers) return $token;
+    }
+
+    static function indexOnUser ($idusers) {
+        global $mysqli;
+        include_once __DIR__.'/../fns/mysqli_query_object.php';
+        return mysqli_query_object(
+            $mysqli,
+            'select * from tokens'
+            ." where idusers = $idusers"
+            .' order by tokentext'
         );
     }
 

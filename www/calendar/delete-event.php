@@ -5,7 +5,7 @@ include_once '../classes/Tab.php';
 include_once '../lib/page.php';
 
 $page->base = '../';
-$page->title = 'Delete Event: '.htmlspecialchars(mb_substr($event->eventtext, 0, 20, 'UTF-8'));
+$page->title = 'Delete Event?';
 $page->finish(
     Tab::create(
         Tab::item('Calendar', './')

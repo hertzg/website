@@ -8,13 +8,16 @@ include_once '../lib/page.php';
 unset($_SESSION['channels/view_messages']);
 
 $page->base = '../';
-$page->title = 'Delete Channel';
+$page->title = 'Delete Channel?';
 $page->finish(
     Tab::create(
         Tab::item('Notifications', '../notifications.php')
         .Tab::item('Channels', './')
         .Tab::activeItem('View'),
-        Page::text('Are you sure you want to delete the channel "<b>'.htmlspecialchars($channel->channelname).'</b>"?')
+        Page::text(
+            'Are you sure you want to delete the channel'
+            .' "<b>'.htmlspecialchars($channel->channelname).'</b>"?'
+        )
         .Page::HR
         .Page::imageLink(
             'Yes, delete channel',

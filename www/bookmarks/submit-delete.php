@@ -6,7 +6,7 @@ if (!$sameDomainReferer) redirect('..');
 include_once 'lib/require-bookmark.php';
 
 include_once '../classes/Bookmarks.php';
-Bookmarks::delete($idusers, $id);
+Bookmarks::delete($id);
 
 include_once '../classes/BookmarkTags.php';
 BookmarkTags::deleteOnBookmark($id);

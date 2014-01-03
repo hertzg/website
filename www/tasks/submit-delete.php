@@ -6,7 +6,7 @@ if (!$sameDomainReferer) redirect('..');
 include_once 'lib/require-task.php';
 
 include_once '../classes/Tasks.php';
-Tasks::delete($idusers, $id);
+Tasks::delete($id);
 
 include_once '../classes/TaskTags.php';
 TaskTags::deleteOnTask($id);

@@ -27,12 +27,9 @@ class Events {
         )->count;
     }
 
-    static function delete ($idusers, $id) {
+    static function delete ($id) {
         global $mysqli;
-        mysqli_query(
-            $mysqli,
-            "delete from events where idusers = $idusers and idevents = $id"
-        );
+        mysqli_query($mysqli, "delete from events where idevents = $id");
     }
 
     static function deleteOnUser ($idusers) {

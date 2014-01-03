@@ -5,7 +5,7 @@ include_once '../classes/Tab.php';
 include_once '../lib/page.php';
 
 $page->base = '../';
-$page->title = 'Delete Bookmark: '.htmlspecialchars(mb_substr($bookmark->title, 0, 20, 'UTF-8'));
+$page->title = 'Delete Bookmark?';
 $page->finish(
     Tab::create(
         Tab::item('Bookmarks', './')

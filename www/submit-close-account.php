@@ -63,6 +63,9 @@ Tasks::deleteOnUser($idusers);
 include_once 'classes/TaskTags.php';
 TaskTags::deleteOnUser($idusers);
 
+include_once 'classes/Tokens.php';
+Tokens::deleteOnUser($idusers);
+
 include_once 'classes/Users.php';
 Users::delete($idusers);
 

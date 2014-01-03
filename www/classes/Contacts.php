@@ -36,13 +36,9 @@ class Contacts {
         )->count;
     }
 
-    static function delete ($idusers, $id) {
+    static function delete ($id) {
         global $mysqli;
-        mysqli_query(
-            $mysqli,
-            'delete from contacts'
-            ." where idusers = $idusers and idcontacts = $id"
-        );
+        mysqli_query($mysqli, "delete from contacts where idcontacts = $id");
     }
 
     static function deleteOnUser ($idusers) {
