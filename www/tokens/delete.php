@@ -11,7 +11,7 @@ $page->title = 'Delete Remembered Session?';
 $page->finish(
     Tab::create(
         Tab::item('Account', '../account.php')
-        .Tab::item('Remembered Sessions', './')
+        .Tab::item('Sessions', './')
         .Tab::activeItem('View'),
         Page::text(
             'Are you sure you want to delete the remembered session'

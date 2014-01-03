@@ -12,7 +12,7 @@ $page->base = '../';
 $page->finish(
     Tab::create(
         Tab::item('Account', '../account.php')
-        .Tab::item('Remembered Sessions', './')
+        .Tab::item('Sessions', './')
         .Tab::activeItem('View'),
         Form::textfield('tokentext', 'Identifier', array(
             'value' => bin2hex($token->tokentext),

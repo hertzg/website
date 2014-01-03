@@ -55,7 +55,7 @@ $page->title = 'Remembered Sessions';
 $page->finish(
     Tab::create(
         Tab::item('Account', '../account.php')
-        .Tab::activeItem('Remembered Sessions'),
+        .Tab::activeItem('Sessions'),
         $pageMessages
         .join(Page::HR, $items)
     )
