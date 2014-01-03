@@ -7,14 +7,15 @@ include_once '../lib/page.php';
 
 unset($_SESSION['files/index_messages']);
 
-$escapedName = htmlspecialchars($folder->foldername);
-
 $page->base = '../';
-$page->title = "Delete Folder: $escapedName";
+$page->title = 'Delete Folder?';
 $page->finish(
     Tab::create(
         Tab::activeItem('Files'),
-        Page::text("Are you sure you want to delete the folder \"<b>$escapedName</b>\"?")
+        Page::text(
+            'Are you sure you want to delete the folder'
+            .' "<b>'.htmlspecialchars($folder->foldername).'</b>"?'
+        )
         .Page::HR
         .Page::imageLink(
             'Yes, delete folder',
