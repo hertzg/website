@@ -32,9 +32,29 @@ unset(
     $_SESSION['help/feedback_lastpost']
 );
 
-Feedbacks::add($idusers, $feedbacktext);
+$id = Feedbacks::add($idusers, $feedbacktext);
 
 ZviniAPI::notify('zvini-feedbacks', '58ff602ff1c79d81ca43d51f59ca03bd', $feedbacktext);
+
+$title = "Zvini Feedback #$id";
+
+mail(
+    'info@zvini.com',
+    $title,
+    '<!DOCTYPE html>'
+    .'<html>'
+        .'<head>'
+            ."<title>$title</title>"
+            .'<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />'
+        .'</head>'
+        .'<body>'
+            .htmlspecialchars($feedbacktext)
+        .'</body>'
+    .'</html>',
+    "From: no-reply@zvini.com\r\n"
+    ."Reply-To: $user->email\r\n"
+    .'Content-Type: text/html; charset=UTF-8'
+);
 
 $_SESSION['help/index_messages'] = array('Thank you for the feedback.');
 redirect();

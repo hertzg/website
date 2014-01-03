@@ -14,6 +14,7 @@ class Feedbacks {
             .' (idusers, feedbacktext, inserttime)'
             ." values ($idusers, '$feedbacktext', $inserttime)"
         );
+        return mysqli_insert_id($mysqli);
     }
 
     static function deleteOnUser ($idusers) {

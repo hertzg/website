@@ -52,6 +52,7 @@ mail(
     .'<html>'
         .'<head>'
             .'<title>Reset Password for Zvini Account</title>'
+            .'<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />'
         .'</head>'
         .'<body>'
             .'<div>'
@@ -62,8 +63,8 @@ mail(
             ."<a href=\"$href\">$href</a>"
         .'</body>'
     .'</html>',
-    "From: no-replay@zvini.com\r\n"
-    .'Content-Type: text/html; charset=utf-8'
+    "From: no-reply@zvini.com\r\n"
+    .'Content-Type: text/html; charset=UTF-8'
 );
 
 $_SESSION['signin_messages'] = array(

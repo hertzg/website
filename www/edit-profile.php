@@ -28,7 +28,7 @@ foreach ($themes as $id => $theme) {
     else $themes_html .= Page::HR;
     $href = "submit-edit-theme.php?theme=$id";
     if ($id == $user->theme) {
-        $theme .= ' (Active)';
+        $theme .= ' (Current)';
     }
     $themes_html .= Page::imageLink($theme, $href, "$id-theme");
 }
