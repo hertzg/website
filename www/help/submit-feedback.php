@@ -6,8 +6,6 @@ if (!$sameDomainReferer) redirect('..');
 include_once '../lib/require-user.php';
 include_once '../fns/request_strings.php';
 include_once '../fns/str_collapse_spaces.php';
-include_once '../classes/Feedbacks.php';
-include_once '../classes/ZviniAPI.php';
 
 list($feedbacktext) = request_strings('feedbacktext');
 
@@ -23,7 +21,9 @@ if ($feedbacktext === '') {
 
 if ($errors) {
     $_SESSION['help/feedback_errors'] = $errors;
-    $_SESSION['help/feedback_lastpost'] = array('feedbacktext' => $feedbacktext);
+    $_SESSION['help/feedback_lastpost'] = array(
+        'feedbacktext' => $feedbacktext,
+    );
     redirect('feedback.php');
 }
 
@@ -32,8 +32,10 @@ unset(
     $_SESSION['help/feedback_lastpost']
 );
 
+include_once '../classes/Feedbacks.php';
 $id = Feedbacks::add($idusers, $feedbacktext);
 
+include_once '../classes/ZviniAPI.php';
 ZviniAPI::notify('zvini-feedbacks', '58ff602ff1c79d81ca43d51f59ca03bd', $feedbacktext);
 
 $title = "Zvini Feedback #$id";

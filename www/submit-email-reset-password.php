@@ -45,13 +45,15 @@ $href = htmlspecialchars(
     ))
 );
 
+$title = 'Reset Password for Zvini Account';
+
 mail(
     $email,
-    'Reset Password for Zvini Account',
+    $title,
     '<!DOCTYPE html>'
     .'<html>'
         .'<head>'
-            .'<title>Reset Password for Zvini Account</title>'
+            ."<title>$title</title>"
             .'<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />'
         .'</head>'
         .'<body>'
