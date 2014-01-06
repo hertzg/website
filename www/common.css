@@ -45,9 +45,6 @@ body {
     text-align: left;
     min-width: 320px;
 }
-body {
-    overflow-y: scroll;
-}
 a, button {
     cursor: pointer;
 }
@@ -233,8 +230,10 @@ label {
     line-height: 48px;
     padding: 0 16px;
 }
-.form-textfield:focus,
 .form-textfield:-moz-ui-invalid {
+    padding: 0 14px;
+}
+.form-textfield:focus {
     padding: 0 14px;
 }
 .form-textarea {
@@ -244,8 +243,10 @@ label {
     padding: 14px 16px;
     height: 100px;
 }
-.form-textarea:focus,
 .form-textarea:-moz-ui-invalid {
+    padding: 12px 14px;
+}
+.form-textarea:focus {
     padding: 12px 14px;
 }
 .form-button {
@@ -397,17 +398,24 @@ label {
     line-height: 48px;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin-right: 8px;
 }
 .imageLink-title.disabled {
     color: #999;
 }
 
+.linkTitle {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 8px;
+}
 .linkDescription {
     color: #555;
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 12px;
     font-weight: normal;
+    margin-right: 8px;
 }
 .clickable:active .linkDescription {
     color: #fff;

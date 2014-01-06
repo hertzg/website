@@ -104,7 +104,7 @@ class Page {
     static function imageLinkWithDescription ($title, $description, $href, $iconName) {
         $title =
             '<div style="line-height: 18px; padding: 6px 0;">'
-                ."<div>$title</div>"
+                ."<div class=\"linkTitle\">$title</div>"
                 ."<div class=\"linkDescription\">$description</div>"
             .'</div>';
         return Page::imageItem($title, $href, $iconName);
