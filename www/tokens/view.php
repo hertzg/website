@@ -18,6 +18,10 @@ $page->finish(
             'value' => bin2hex($token->tokentext),
             'readonly' => true,
         ))
+        .Form::textarea('useragent', 'User agent', array(
+            'value' => $token->useragent,
+            'readonly' => true,
+        ))
     )
     .create_panel(
         'Options',

@@ -5,16 +5,21 @@ include_once __DIR__.'/../lib/mysqli.php';
 
 class Tokens {
 
-    static function add ($idusers, $username, $tokentext) {
+    static function add ($idusers, $username, $tokentext, $useragent) {
         global $mysqli;
         $username = mysqli_real_escape_string($mysqli, $username);
         $tokentext = mysqli_real_escape_string($mysqli, $tokentext);
         $inserttime = $accesstime = time();
+        if ($useragent === null) {
+            $useragent = 'null';
+        } else {
+            $useragent = "'".mysqli_real_escape_string($mysqli, $useragent)."'";
+        }
         mysqli_query(
             $mysqli,
-            'insert into tokens (idusers, username, tokentext,'
+            'insert into tokens (idusers, username, tokentext, useragent,'
             .' inserttime, accesstime)'
-            ." values ($idusers, '$username', '$tokentext',"
+            ." values ($idusers, '$username', '$tokentext', $useragent,"
             ." $inserttime, $accesstime)"
         );
         return mysqli_insert_id($mysqli);

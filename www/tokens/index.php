@@ -33,11 +33,21 @@ if ($tokens) {
             $text .= ' (Current)';
         }
 
-        $items[] = Page::imageLink(
-            $text,
-            "view.php?id=$itemToken->idtokens",
-            'token'
-        );
+        $useragent = $itemToken->useragent;
+        if ($useragent === null) {
+            $items[] = Page::imageLink(
+                $text,
+                "view.php?id=$itemToken->idtokens",
+                'token'
+            );
+        } else {
+            $items[] = Page::imageLinkWithDescription(
+                $text,
+                htmlspecialchars($useragent),
+                "view.php?id=$itemToken->idtokens",
+                'token'
+            );
+        }
 
     }
 } else {
