@@ -135,6 +135,15 @@ unset(
     $_SESSION['home_messages']
 );
 
+$options = array(Page::imageLink('New Task', 'add.php', 'create-task'));
+if ($tasks) {
+    $options[] = Page::imageLink(
+        'Delete All Tasks',
+        'delete-all.php',
+        'trash-bin'
+    );
+}
+
 $page->base = '../';
 $page->title = 'Tasks';
 $page->finish(
@@ -144,8 +153,5 @@ $page->finish(
         .$filterMessage
         .join(Page::HR, $items)
     )
-    .create_panel(
-        'Options',
-        Page::imageLink('New Task', 'add.php', 'create-task')
-    )
+    .create_panel('Options', join(Page::HR, $options))
 );

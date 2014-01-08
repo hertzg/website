@@ -17,14 +17,14 @@ class TaskTags {
         }
     }
 
-    static function deleteOnUser ($idusers) {
-        global $mysqli;
-        mysqli_query($mysqli, "delete from tasktags where idusers = $idusers");
-    }
-
     static function deleteOnTask ($idtasks) {
         global $mysqli;
         mysqli_query($mysqli, "delete from tasktags where idtasks = $idtasks");
+    }
+
+    static function deleteOnUser ($idusers) {
+        global $mysqli;
+        mysqli_query($mysqli, "delete from tasktags where idusers = $idusers");
     }
 
     static function indexOnTask ($idtasks) {

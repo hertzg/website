@@ -131,6 +131,15 @@ unset(
     $_SESSION['notes/view_messages']
 );
 
+$options = array(Page::imageLink('New Note', 'add.php', 'create-note'));
+if ($notes) {
+    $options[] = Page::imageLink(
+        'Delete All Notes',
+        'delete-all.php',
+        'trash-bin'
+    );
+}
+
 $page->base = '../';
 $page->title = 'Notes';
 $page->finish(
@@ -140,8 +149,5 @@ $page->finish(
         .$filterMessage
         .join(Page::HR, $items)
     )
-    .create_panel(
-        'Options',
-        Page::imageLink('New Note', 'add.php', 'create-note')
-    )
+    .create_panel('Options', join(Page::HR, $options))
 );

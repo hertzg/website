@@ -131,6 +131,15 @@ unset(
     $_SESSION['notifications_messages']
 );
 
+$options = array(Page::imageLink('New Contact', 'add.php', 'create-contact'));
+if ($contacts) {
+    $options[] = Page::imageLink(
+        'Delete All Contacts',
+        'delete-all.php',
+        'trash-bin'
+    );
+}
+
 $page->base = '../';
 $page->title = 'Contacts';
 $page->finish(
@@ -140,8 +149,5 @@ $page->finish(
         .$filterMessage
         .join(Page::HR, $items)
     )
-    .create_panel(
-        'Options',
-        Page::imageLink('New Contact', 'add.php', 'create-contact')
-    )
+    .create_panel('Options', join(Page::HR, $options))
 );

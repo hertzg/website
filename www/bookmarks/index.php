@@ -55,6 +55,15 @@ unset(
     $_SESSION['home_messages']
 );
 
+$options = array(Page::imageLink('New Bookmark', 'add.php', 'create-bookmark'));
+if ($bookmarks) {
+    $options[] = Page::imageLink(
+        'Delete All Bookmarks',
+        'delete-all.php',
+        'trash-bin'
+    );
+}
+
 $page->base = '../';
 $page->title = 'Bookmarks';
 $page->finish(
@@ -64,8 +73,5 @@ $page->finish(
         .$filterMessage
         .join(Page::HR, $items)
     )
-    .create_panel(
-        'Options',
-        Page::imageLink('New Bookmark', 'add.php', 'create-bookmark')
-    )
+    .create_panel('Options', join(Page::HR, $options))
 );

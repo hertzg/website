@@ -17,17 +17,17 @@ class NoteTags {
         }
     }
 
-    static function deleteOnUser ($idusers) {
-        global $mysqli;
-        mysqli_query($mysqli, "delete from notetags where idusers = $idusers");
-    }
-
     static function deleteOnNote ($idnotes) {
         global $mysqli;
         mysqli_query(
             $mysqli,
             "delete from notetags where idnotes = $idnotes"
         );
+    }
+
+    static function deleteOnUser ($idusers) {
+        global $mysqli;
+        mysqli_query($mysqli, "delete from notetags where idusers = $idusers");
     }
 
     static function indexOnNote ($idnotes) {

@@ -1,0 +1,22 @@
+<?php
+
+include_once 'lib/require-user.php';
+include_once '../classes/Tab.php';
+include_once '../lib/page.php';
+
+$page->base = '../';
+$page->title = 'Delete All Tasks?';
+$page->finish(
+    Tab::create(
+        Tab::activeItem('Tasks'),
+        Page::text('Are you sure you want to delete all the tasks?')
+        .Page::HR
+        .Page::imageLink(
+            'Yes, delete all task',
+            'submit-delete-all.php',
+            'yes'
+        )
+        .Page::HR
+        .Page::imageLink('No, return back', './', 'no')
+    )
+);
