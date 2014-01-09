@@ -37,6 +37,7 @@ $options = array(
     Page::imageLink('Edit Profile', 'edit-profile.php', 'edit-profile'),
     Page::imageLink('Change Password', 'change-password.php', 'password'),
 );
+include_once 'classes/Tokens.php';
 $numTokens = Tokens::countOnUser($idusers);
 if ($numTokens) {
     $options[] = Page::imageLinkWithDescription('Remembered Sessions', "$numTokens total.", 'tokens/', 'tokens');
