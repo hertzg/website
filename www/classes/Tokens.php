@@ -25,6 +25,14 @@ class Tokens {
         return mysqli_insert_id($mysqli);
     }
 
+    static function countOnUser ($idusers) {
+        global $mysqli;
+        return mysqli_single_object(
+            $mysqli,
+            "select count(*) count from tokens where idusers = $idusers"
+        )->count;
+    }
+
     static function delete ($id) {
         global $mysqli;
         mysqli_query($mysqli, "delete from tokens where idtokens = $id");

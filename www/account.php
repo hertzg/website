@@ -33,6 +33,18 @@ if ($fullname !== '') {
     $fullnameField = '';
 }
 
+$options = array(
+    Page::imageLink('Edit Profile', 'edit-profile.php', 'edit-profile'),
+    Page::imageLink('Change Password', 'change-password.php', 'password'),
+);
+$numTokens = Tokens::countOnUser($idusers);
+if ($numTokens) {
+    $options[] = Page::imageLinkWithDescription('Remembered Sessions', "$numTokens total.", 'tokens/', 'tokens');
+} else {
+    $options[] = Page::imageLink('Remembered Sessions', 'tokens/', 'tokens');
+}
+$options[] = Page::imageLink('Close Account', 'close-account.php', 'trash-bin');
+
 $page->title = 'Account';
 $page->finish(
     Tab::create(
@@ -49,14 +61,5 @@ $page->finish(
         .Page::HR
         .Form::label('Using storage', bytestr($user->storageused))
     )
-    .create_panel(
-        'Options',
-        Page::imageLink('Edit Profile', 'edit-profile.php', 'edit-profile')
-        .Page::HR
-        .Page::imageLink('Change Password', 'change-password.php', 'password')
-        .Page::HR
-        .Page::imageLink('Remembered Sessions', 'tokens/', 'tokens')
-        .Page::HR
-        .Page::imageLink('Close Account', 'close-account.php', 'trash-bin')
-    )
+    .create_panel('Options', join(Page::HR, $options))
 );
