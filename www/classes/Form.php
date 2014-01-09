@@ -120,6 +120,7 @@ class Form {
         return self::association(
             '<textarea class="form-textarea"'
             .self::getBoolAttribute('autofocus', $config)
+            .self::getBoolAttribute('readonly', $config)
             .self::getBoolAttribute('required', $config)
             ." id=\"$name\" name=\"$name\">$content</textarea>",
             "<label for=\"$name\">$text:</label>"
