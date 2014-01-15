@@ -36,7 +36,7 @@ foreach ($themes as $id => $theme) {
 $page->title = 'Edit Profile';
 $page->finish(
     Tab::create(
-        Tab::item('Account', 'account.php')
+        Tab::item('Account', 'account/')
         .Tab::activeItem('Profile'),
         $pageErrors
         .Form::create(

@@ -26,7 +26,7 @@ unset($_SESSION['account_messages']);
 $page->title = 'Change password';
 $page->finish(
     Tab::create(
-        Tab::item('Account', 'account.php')
+        Tab::item('Account', 'account/')
         .Tab::activeItem('Change Password'),
         $pageErrors
         .Form::create(

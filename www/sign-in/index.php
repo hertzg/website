@@ -2,7 +2,7 @@
 
 include_once '../lib/user.php';
 if ($user) {
-    include_once 'fns/redirect.php';
+    include_once '../fns/redirect.php';
     redirect('../home.php');
 }
 

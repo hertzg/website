@@ -41,4 +41,4 @@ if ($errors) {
 Users::editPassword($idusers, $password1);
 
 $_SESSION['account_messages'] = array('Password has been changed.');
-redirect('account.php');
+redirect('account/');

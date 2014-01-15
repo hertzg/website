@@ -1,13 +1,17 @@
 <?php
 
-include_once 'lib/require-user.php';
-include_once 'fns/create_panel.php';
-include_once 'fns/bytestr.php';
-include_once 'fns/date_ago.php';
-include_once 'classes/Form.php';
-include_once 'classes/Tab.php';
-include_once 'lib/page.php';
-include_once 'lib/themes.php';
+include_once '../lib/user.php';
+if (!$user) {
+    include_once '../fns/redirect.php';
+    redirect('../sign-in/');
+}
+include_once '../fns/create_panel.php';
+include_once '../fns/bytestr.php';
+include_once '../fns/date_ago.php';
+include_once '../classes/Form.php';
+include_once '../classes/Tab.php';
+include_once '../lib/page.php';
+include_once '../lib/themes.php';
 
 unset(
     $_SESSION['change-password_errors'],
@@ -34,18 +38,19 @@ if ($fullname !== '') {
 }
 
 $options = array(
-    Page::imageLink('Edit Profile', 'edit-profile.php', 'edit-profile'),
-    Page::imageLink('Change Password', 'change-password.php', 'password'),
+    Page::imageLink('Edit Profile', '../edit-profile.php', 'edit-profile'),
+    Page::imageLink('Change Password', '../change-password.php', 'password'),
 );
-include_once 'classes/Tokens.php';
+include_once '../classes/Tokens.php';
 $numTokens = Tokens::countOnUser($idusers);
 if ($numTokens) {
-    $options[] = Page::imageLinkWithDescription('Remembered Sessions', "$numTokens total.", 'tokens/', 'tokens');
+    $options[] = Page::imageLinkWithDescription('Remembered Sessions', "$numTokens total.", '../tokens/', 'tokens');
 } else {
-    $options[] = Page::imageLink('Remembered Sessions', 'tokens/', 'tokens');
+    $options[] = Page::imageLink('Remembered Sessions', '../tokens/', 'tokens');
 }
-$options[] = Page::imageLink('Close Account', 'close-account/', 'trash-bin');
+$options[] = Page::imageLink('Close Account', '../close-account/', 'trash-bin');
 
+$page->base = '../';
 $page->title = 'Account';
 $page->finish(
     Tab::create(

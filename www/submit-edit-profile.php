@@ -44,4 +44,4 @@ if ($errors) {
 Users::editProfile($idusers, $email, $fullname);
 
 $_SESSION['account_messages'] = array('Changes have been saved.');
-redirect('account.php');
+redirect('account/');

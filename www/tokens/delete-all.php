@@ -10,7 +10,7 @@ $page->base = '../';
 $page->title = 'Delete All Remembered Sessions?';
 $page->finish(
     Tab::create(
-        Tab::item('Account', '../account.php')
+        Tab::item('Account', '../account/')
         .Tab::activeItem('Sessions'),
         Page::text(
             'Are you sure you want to delete all the remembered sessions?'

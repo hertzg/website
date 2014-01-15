@@ -11,7 +11,7 @@ unset($_SESSION['tokens/index_messages']);
 $page->base = '../';
 $page->finish(
     Tab::create(
-        Tab::item('Account', '../account.php')
+        Tab::item('Account', '../account/')
         .Tab::item('Sessions', './')
         .Tab::activeItem('View'),
         Form::textfield('tokentext', 'Identifier', array(

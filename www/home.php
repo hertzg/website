@@ -161,7 +161,7 @@ $page->finish(
     )
     .create_panel(
         'Options',
-        Page::imageLink('Account', 'account.php', 'account')
+        Page::imageLink('Account', 'account/', 'account')
         .Page::HR
         .Page::imageLink('Help', 'help/', 'help')
         .Page::HR

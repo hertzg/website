@@ -15,4 +15,4 @@ if (!array_key_exists($theme, $themes)) redirect();
 Users::editTheme($idusers, $theme);
 
 $_SESSION['account_messages'] = array('Theme has changed.');
-redirect('account.php');
+redirect('account/');

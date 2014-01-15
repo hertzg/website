@@ -18,7 +18,7 @@ $page->base = '../';
 $page->title = 'Close Account';
 $page->finish(
     Tab::create(
-        Tab::item('Account', '../account.php')
+        Tab::item('Account', '../account/')
         .Tab::activeItem('Close'),
         $pageErrors
         .Page::warnings(array(
