@@ -48,7 +48,7 @@ $page->finish(
         .Page::HR
         .Page::imageLink(
             'Download API',
-            '../download-zvini-api.php',
+            'download-zvini-api.php',
             'download'
         )
     )
