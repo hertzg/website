@@ -1,13 +1,13 @@
 <?php
 
-include_once 'lib/sameDomainReferer.php';
-include_once 'fns/redirect.php';
+include_once '../lib/sameDomainReferer.php';
+include_once '../fns/redirect.php';
 if (!$sameDomainReferer) redirect();
-include_once 'fns/request_strings.php';
-include_once 'fns/str_collapse_spaces.php';
-include_once 'classes/Captcha.php';
-include_once 'classes/Users.php';
-include_once 'lib/session-start.php';
+include_once '../fns/request_strings.php';
+include_once '../fns/str_collapse_spaces.php';
+include_once '../classes/Captcha.php';
+include_once '../classes/Users.php';
+include_once '../lib/session-start.php';
 
 list($username, $email, $password1, $password2, $captcha) = request_strings(
     'username', 'email', 'password1', 'password2', 'captcha');
@@ -29,7 +29,7 @@ if ($username === '') {
 if ($email === '') {
     $errors[] = 'Enter email.';
 } else {
-    include_once 'fns/is_email_valid.php';
+    include_once '../fns/is_email_valid.php';
     if (!is_email_valid($email)) {
         $errors[] = 'Enter a valid email address.';
     } else if (Users::getByEmail($email)) {
@@ -59,7 +59,7 @@ if ($errors) {
         'password1' => $password1,
         'password2' => $password2,
     );
-    redirect('signup.php');
+    redirect('./');
 }
 
 Users::add($username, $email, $password1);
@@ -68,7 +68,7 @@ setcookie('username', $username, time() + 60 * 60 * 24 * 30, '/');
 
 $escapedUsername = htmlspecialchars($username);
 $notificationText = "$escapedUsername has signed up with the email ".htmlspecialchars($email);
-include_once 'classes/ZviniAPI.php';
+include_once '../classes/ZviniAPI.php';
 ZviniAPI::notify('zvini-signups', '03feb769e474c9c9c257597d462c41eb', $notificationText);
 
 $title = "$escapedUsername Signed Up";
@@ -92,4 +92,4 @@ $_SESSION['signin_messages'] = array(
     'Thank you for signing up.',
     'Sign in to proceed.'
 );
-redirect('signin.php');
+redirect('../sign-in/');

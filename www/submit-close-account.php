@@ -74,4 +74,4 @@ $_SESSION['signin_messages'] = array(
 );
 
 setcookie('username', '', time() - 60 * 60 * 24, '/');
-redirect('signin.php');
+redirect('sign-in/');

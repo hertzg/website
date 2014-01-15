@@ -73,4 +73,4 @@ $_SESSION['signin_messages'] = array(
     'An email has been sent to you to reset password.',
     'Follow the instructions in it.'
 );
-redirect('signin.php');
+redirect('sign-in/');

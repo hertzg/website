@@ -18,4 +18,4 @@ $_SESSION['signin_messages'] = array(
     'You have been signed out.',
 );
 
-redirect('signin.php');
+redirect('sign-in/');

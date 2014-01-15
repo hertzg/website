@@ -15,13 +15,14 @@ class Form {
             ." type=\"submit\" value=\"$text\" />";
     }
 
-    static function captcha () {
+    static function captcha ($base) {
         include_once 'Captcha.php';
         if (Captcha::required()) {
             include_once 'Page.php';
             return
                 '<div class="form-captcha">'
-                    .'<img src="captcha.php" style="vertical-align: top"'
+                    ."<img src=\"{$base}captcha.php\""
+                    .' style="vertical-align: top"'
                     .' alt="CAPTCHA" width="102" height="40" />'
                 .'</div>'
                 .self::textfield('captcha', 'Verification', array(
@@ -31,7 +32,7 @@ class Form {
         }
     }
 
-    static function checkbox ($name, $text, $checked) {
+    static function checkbox ($base, $name, $text, $checked) {
         return
             '<div class="form-checkbox transformable">'
                 .'<label>'
@@ -44,7 +45,7 @@ class Form {
                     .$text
                 .'</label>'
             .'</div>'
-            .'<script type="text/javascript" src="js/transform-form-checkboxes.js"></script>';
+            ."<script type=\"text/javascript\" src=\"{$base}js/transform-form-checkboxes.js\"></script>";
     }
 
     static function create ($action, $content) {

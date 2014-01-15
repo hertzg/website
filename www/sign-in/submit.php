@@ -1,11 +1,11 @@
 <?php
 
-include_once 'lib/sameDomainReferer.php';
-include_once 'fns/redirect.php';
+include_once '../lib/sameDomainReferer.php';
+include_once '../fns/redirect.php';
 if (!$sameDomainReferer) redirect();
-include_once 'fns/request_strings.php';
-include_once 'classes/Users.php';
-include_once 'lib/session-start.php';
+include_once '../fns/request_strings.php';
+include_once '../classes/Users.php';
+include_once '../lib/session-start.php';
 
 list($username, $password, $remember) = request_strings(
     'username', 'password', 'remember');
@@ -43,13 +43,13 @@ if ($errors) {
         'password' => $password,
         'remember' => $remember,
     );
-    redirect('signin.php');
+    redirect('./');
 }
 
 Users::updateLastLoginTime($user->idusers);
 
 if ($remember) {
-    include_once 'classes/Tokens.php';
+    include_once '../classes/Tokens.php';
     $tokentext = md5(uniqid(), true);
     if (array_key_exists('HTTP_USER_AGENT', $_SERVER)) {
         $useragent = $_SERVER['HTTP_USER_AGENT'];
@@ -67,4 +67,4 @@ if ($remember) {
 setcookie('username', $user->username, time() + 60 * 60 * 24 * 30, '/');
 
 $_SESSION['user'] = $user;
-redirect('home.php');
+redirect('../home.php');

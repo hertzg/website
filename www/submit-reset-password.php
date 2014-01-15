@@ -52,4 +52,4 @@ $_SESSION['signin_messages'] = array(
     'Password has been reset.',
     'You can sign in with your new password.'
 );
-redirect('signin.php');
+redirect('sign-in/');

@@ -18,7 +18,7 @@ class Users {
             ." values ('$username', '$email', '$password', $inserttime)"
         );
         $idusers = mysqli_insert_id($mysqli);
-        mkdir("users/$idusers");
+        mkdir(__DIR__."/../users/$idusers");
     }
 
     static function addNumNotifications ($idusers, $numnotifications) {
@@ -43,7 +43,7 @@ class Users {
     static function delete ($idusers) {
         global $mysqli;
         mysqli_query($mysqli, "delete from users where idusers = $idusers");
-        rmdir("users/$idusers");
+        rmdir(__DIR__."/../users/$idusers");
     }
 
     static function editPassword ($idusers, $password) {
