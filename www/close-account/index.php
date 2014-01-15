@@ -1,10 +1,10 @@
 <?php
 
 include_once 'lib/require-user.php';
-include_once 'fns/redirect.php';
-include_once 'classes/Form.php';
-include_once 'classes/Tab.php';
-include_once 'lib/page.php';
+include_once '../fns/redirect.php';
+include_once '../classes/Form.php';
+include_once '../classes/Tab.php';
+include_once '../lib/page.php';
 
 if (array_key_exists('close-account_errors', $_SESSION)) {
     $pageErrors = Page::errors($_SESSION['close-account_errors']);
@@ -14,10 +14,11 @@ if (array_key_exists('close-account_errors', $_SESSION)) {
 
 unset($_SESSION['notifications_messages']);
 
+$page->base = '../';
 $page->title = 'Close Account';
 $page->finish(
     Tab::create(
-        Tab::item('Account', 'account.php')
+        Tab::item('Account', '../account.php')
         .Tab::activeItem('Close'),
         $pageErrors
         .Page::warnings(array(
@@ -25,7 +26,7 @@ $page->finish(
             ' You will lose all your data.',
         ))
         .Form::create(
-            'submit-close-account.php',
+            'submit.php',
             Form::password('password', 'Password', array(
                 'autofocus' => true,
                 'required' => true,

@@ -44,7 +44,7 @@ if ($numTokens) {
 } else {
     $options[] = Page::imageLink('Remembered Sessions', 'tokens/', 'tokens');
 }
-$options[] = Page::imageLink('Close Account', 'close-account.php', 'trash-bin');
+$options[] = Page::imageLink('Close Account', 'close-account/', 'trash-bin');
 
 $page->title = 'Account';
 $page->finish(
