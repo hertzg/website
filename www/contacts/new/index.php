@@ -1,9 +1,9 @@
 <?php
 
 include_once 'lib/require-user.php';
-include_once '../classes/Form.php';
-include_once '../classes/Tab.php';
-include_once '../lib/page.php';
+include_once '../../classes/Form.php';
+include_once '../../classes/Tab.php';
+include_once '../../lib/page.php';
 
 if (array_key_exists('contacts/add_lastpost', $_SESSION)) {
     $values = $_SESSION['contacts/add_lastpost'];
@@ -26,15 +26,15 @@ if (array_key_exists('contacts/add_errors', $_SESSION)) {
 
 unset($_SESSION['contacts/index_messages']);
 
-$page->base = '../';
+$page->base = '../../';
 $page->title = 'New Contact';
 $page->finish(
     Tab::create(
-        Tab::item('Contacts', './')
+        Tab::item('Contacts', '../')
         .Tab::activeItem('New'),
         $pageErrors
         .Form::create(
-            'submit-add.php',
+            'submit.php',
             Form::textfield('fullname', 'Full name', array(
                 'value' => $values['fullname'],
                 'maxlength' => 32,

@@ -131,7 +131,7 @@ unset(
     $_SESSION['notifications_messages']
 );
 
-$options = array(Page::imageLink('New Contact', 'add.php', 'create-contact'));
+$options = array(Page::imageLink('New Contact', 'new/', 'create-contact'));
 if ($contacts) {
     $options[] = Page::imageLink(
         'Delete All Contacts',
