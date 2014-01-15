@@ -128,7 +128,7 @@ unset(
     $_SESSION['contacts/new/index_errors'],
     $_SESSION['contacts/new/index_lastpost'],
     $_SESSION['contacts/view_messages'],
-    $_SESSION['home_messages']
+    $_SESSION['home/index_messages']
 );
 
 $options = array(Page::imageLink('New Contact', 'new/', 'create-contact'));

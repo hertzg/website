@@ -77,7 +77,7 @@ if (array_key_exists('calendar/index_messages', $_SESSION)) {
 }
 
 unset(
-    $_SESSION['home_messages'],
+    $_SESSION['home/index_messages'],
     $_SESSION['calendar/add-event_errors'],
     $_SESSION['calendar/add-event_lastpost'],
     $_SESSION['calendar/view-event_messages']

@@ -58,7 +58,7 @@ unset(
     $_SESSION['files/rename-folder_lastpost'],
     $_SESSION['files/upload-files_errors'],
     $_SESSION['files/view_messages'],
-    $_SESSION['home_messages']
+    $_SESSION['home/index_messages']
 );
 
 if (array_key_exists('files/index_idfolders', $_SESSION) &&

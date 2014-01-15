@@ -19,7 +19,7 @@ unset(
     $_SESSION['close-account/index_errors'],
     $_SESSION['edit-profile/index_errors'],
     $_SESSION['edit-profile/index_lastpost'],
-    $_SESSION['home_messages'],
+    $_SESSION['home/index_messages'],
     $_SESSION['tokens/index_messages']
 );
 

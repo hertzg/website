@@ -68,4 +68,4 @@ if ($remember) {
 setcookie('username', $user->username, time() + 60 * 60 * 24 * 30, '/');
 
 $_SESSION['user'] = $user;
-redirect('../home.php');
+redirect('../home/');

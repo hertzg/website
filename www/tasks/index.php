@@ -129,10 +129,10 @@ if (array_key_exists('tasks/index_messages', $_SESSION)) {
 }
 
 unset(
+    $_SESSION['home/index_messages'],
     $_SESSION['tasks/new/index_errors'],
     $_SESSION['tasks/new/index_lastpost'],
-    $_SESSION['tasks/view_messages'],
-    $_SESSION['home_messages']
+    $_SESSION['tasks/view_messages']
 );
 
 $options = array(Page::imageLink('New Task', 'new/', 'create-task'));

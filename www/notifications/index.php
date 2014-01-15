@@ -81,7 +81,7 @@ if ($notifications) {
 
 unset(
     $_SESSION['channels_messages'],
-    $_SESSION['home_messages']
+    $_SESSION['home/index_messages']
 );
 
 if (array_key_exists('notifications/index_messages', $_SESSION)) {
