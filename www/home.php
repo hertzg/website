@@ -76,7 +76,7 @@ if ($numNotifications) {
         $notificationsLink = Page::imageLinkWithDescription(
             'Notifications',
             "$numNewNotifications new. $numNotifications total.",
-            'notifications.php',
+            'notifications/',
             'notification'
         );
     } else {
@@ -84,7 +84,7 @@ if ($numNotifications) {
         $notificationsLink = Page::imageLinkWithDescription(
             'Notifications',
             "$numNotifications total.",
-            'notifications.php',
+            'notifications/',
             'old-notification'
         );
     }
@@ -92,7 +92,7 @@ if ($numNotifications) {
     $notifications = '';
     $notificationsLink = Page::imageLink(
         'Notifications',
-        'notifications.php',
+        'notifications/',
         'old-notification'
     );
 }

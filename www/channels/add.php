@@ -23,7 +23,7 @@ $page->base = '../';
 $page->title = 'New Channel';
 $page->finish(
     Tab::create(
-        Tab::item('Notifications', '../notifications.php')
+        Tab::item('Notifications', '../notifications/')
         .Tab::item('Channels', './')
         .Tab::activeItem('New'),
         $pageErrors

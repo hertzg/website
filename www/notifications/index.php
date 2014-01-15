@@ -1,20 +1,28 @@
 <?php
 
 include_once 'lib/require-user.php';
-include_once 'fns/create_panel.php';
-include_once 'fns/request_strings.php';
-include_once 'classes/Notifications.php';
-include_once 'classes/Tab.php';
-include_once 'lib/page.php';
+include_once '../fns/create_panel.php';
+include_once '../fns/request_strings.php';
+include_once '../classes/Notifications.php';
+include_once '../classes/Tab.php';
+include_once '../lib/page.php';
 
 list($id) = request_strings('id');
 
 $id = abs((int)$id);
 Users::clearNumNotifications($idusers);
 
+$options = array();
+
+$numChannels = Channels::countOnUser($idusers);
+if ($numChannels) {
+    $options[] = Page::imageLinkWithDescription('Channels', "$numChannels total.", '../channels/', 'channels');
+} else {
+    $options[] = Page::imageLink('Channels', '../channels/', 'channels');
+}
+
 $filterMessage = '';
 $notificationsHtml = '';
-$deleteAllLink = '';
 
 $numNotifications = $user->numnotifications;
 
@@ -23,7 +31,7 @@ if ($channel) {
     $filterMessage =
         '<div style="position: relative; height: 48px; background: #eee; color: #444; padding: 16px">'
             .'Channel: <b>'.htmlspecialchars($channel->channelname).'</b>'
-            .'<a class="clickable" title="Clear Filter" href="notifications.php"'
+            .'<a class="clickable" title="Clear Filter" href="./"'
             .' style="position: absolute; top: 0; right: 0; bottom: 0; width: 48px">'
                 .'<span class="icon no"'
                 .' style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; margin: auto">'
@@ -38,17 +46,16 @@ if ($channel) {
 
 if ($notifications) {
 
-    $deleteAllLink = Page::HR;
     if ($channel) {
-        $deleteAllLink .= Page::imageLink(
+        $options[] = Page::imageLink(
             'Delete Notifications',
-            "delete-notifications.php?id=$id",
+            "delete.php?id=$id",
             'trash-bin'
         );
     } else {
-        $deleteAllLink .= Page::imageLink(
+        $options[] = Page::imageLink(
             'Delete All Notifications',
-            'delete-all-notifications.php',
+            'delete-all.php',
             'trash-bin'
         );
     }
@@ -59,7 +66,7 @@ if ($notifications) {
         $itemHtml = '';
         if (!$channel) {
             $itemHtml =
-                "<a class=\"a\" href=\"notifications.php?id=$notification->idchannels\">"
+                "<a class=\"a\" href=\"./?id=$notification->idchannels\">"
                     .$notification->channelname
                 .'</a>: ';
         }
@@ -77,14 +84,13 @@ unset(
     $_SESSION['home_messages']
 );
 
-$numChannels = Channels::countOnUser($idusers);
-
 if (array_key_exists('notifications_messages', $_SESSION)) {
     $pageMessages = Page::messages($_SESSION['notifications_messages']);
 } else {
     $pageMessages = '';
 }
 
+$page->base = '../';
 $page->title = 'Notifications';
 $page->finish(
     Tab::create(
@@ -92,10 +98,6 @@ $page->finish(
         $pageMessages
         .$filterMessage
         .$notificationsHtml
-        .create_panel(
-            'Options',
-            ($numChannels ? Page::imageLinkWithDescription('Channels', "$numChannels total.", 'channels/', 'channels') : Page::imageLink('Channels', 'channels/', 'channels'))
-            .$deleteAllLink
-        )
+        .create_panel('Options', join(Page::HR, $options))
     )
 );
