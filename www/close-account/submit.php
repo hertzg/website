@@ -17,11 +17,11 @@ if ($password === '') {
 }
 
 if ($errors) {
-    $_SESSION['close-account_errors'] = $errors;
+    $_SESSION['close-account/index_errors'] = $errors;
     redirect();
 }
 
-unset($_SESSION['close-account_errors']);
+unset($_SESSION['close-account/index_errors']);
 
 include_once '../classes/Bookmarks.php';
 Bookmarks::deleteOnUser($idusers);
@@ -71,7 +71,7 @@ Tokens::deleteOnUser($idusers);
 include_once '../classes/Users.php';
 Users::delete($idusers);
 
-$_SESSION['sign-in_messages'] = array(
+$_SESSION['sign-in/index_messages'] = array(
     'Your account has been closed.',
 );
 

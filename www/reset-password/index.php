@@ -16,8 +16,8 @@ if (!is_md5($resetpasswordkey)) redirect();
 $user = Users::getByResetPasswordKey($idusers, $resetpasswordkey);
 if (!$user) redirect();
 
-if (array_key_exists('reset-password_lastpost', $_SESSION)) {
-    $values = $_SESSION['reset-password_lastpost'];
+if (array_key_exists('reset-password/index_lastpost', $_SESSION)) {
+    $values = $_SESSION['reset-password/index_lastpost'];
 } else {
     $values = array(
         'password1' => '',
@@ -25,16 +25,16 @@ if (array_key_exists('reset-password_lastpost', $_SESSION)) {
     );
 }
 
-if (array_key_exists('reset-password_errors', $_SESSION)) {
-    $pageErrors = Page::errors($_SESSION['reset-password_errors']);
+if (array_key_exists('reset-password/index_errors', $_SESSION)) {
+    $pageErrors = Page::errors($_SESSION['reset-password/index_errors']);
 } else {
     $pageErrors = '';
 }
 
 unset(
-    $_SESSION['sign-in_errors'],
-    $_SESSION['sign-in_lastpost'],
-    $_SESSION['sign-in_messages']
+    $_SESSION['sign-in/index_errors'],
+    $_SESSION['sign-in/index_lastpost'],
+    $_SESSION['sign-in/index_messages']
 );
 
 $page->base = '../';

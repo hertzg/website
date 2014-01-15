@@ -18,14 +18,14 @@ include_once 'classes/Tasks.php';
 include_once 'lib/page.php';
 
 unset(
-    $_SESSION['account_messages'],
+    $_SESSION['account/index_messages'],
     $_SESSION['bookmarks/index_messages'],
     $_SESSION['calendar/index_messages'],
     $_SESSION['contacts/index_messages'],
     $_SESSION['files/index_messages'],
     $_SESSION['help/index_messages'],
     $_SESSION['notes/index_messages'],
-    $_SESSION['notifications_messages'],
+    $_SESSION['notifications/index_messages'],
     $_SESSION['tasks/index_messages']
 );
 

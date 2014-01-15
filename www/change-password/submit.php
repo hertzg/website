@@ -27,8 +27,8 @@ if ($password1 === '') {
 }
 
 if ($errors) {
-    $_SESSION['change-password_errors'] = $errors;
-    $_SESSION['change-password_lastpost'] = array(
+    $_SESSION['change-password/index_errors'] = $errors;
+    $_SESSION['change-password/index_lastpost'] = array(
         'currentpassword' => $currentpassword,
         'password1' => $password1,
         'password2' => $password2,
@@ -37,11 +37,11 @@ if ($errors) {
 }
 
 unset(
-    $_SESSION['change-password_errors'],
-    $_SESSION['change-password_lastpost']
+    $_SESSION['change-password/index_errors'],
+    $_SESSION['change-password/index_lastpost']
 );
 
 Users::editPassword($idusers, $password1);
 
-$_SESSION['account_messages'] = array('Password has been changed.');
+$_SESSION['account/index_messages'] = array('Password has been changed.');
 redirect('../account/');

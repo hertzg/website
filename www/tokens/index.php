@@ -64,7 +64,7 @@ if ($options) {
     $optionsPanel = '';
 }
 
-unset($_SESSION['account_messages']);
+unset($_SESSION['account/index_messages']);
 
 $page->base = '../';
 $page->title = 'Remembered Sessions';

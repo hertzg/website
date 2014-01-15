@@ -24,8 +24,8 @@ if (count($tagnames) > Tags::MAX_NUM_TAGS) {
 }
 
 if ($errors) {
-    $_SESSION['tasks/add_errors'] = $errors;
-    $_SESSION['tasks/add_lastpost'] = array(
+    $_SESSION['tasks/new/index_errors'] = $errors;
+    $_SESSION['tasks/new/index_lastpost'] = array(
         'tasktext' => $tasktext,
         'tags' => $tags,
     );
@@ -33,8 +33,8 @@ if ($errors) {
 }
 
 unset(
-    $_SESSION['tasks/add_errors'],
-    $_SESSION['tasks/add_lastpost']
+    $_SESSION['tasks/new/index_errors'],
+    $_SESSION['tasks/new/index_lastpost']
 );
 
 include_once '../../classes/Tasks.php';

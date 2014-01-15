@@ -24,8 +24,8 @@ if (count($tagnames) > Tags::MAX_NUM_TAGS) {
 }
 
 if ($errors) {
-    $_SESSION['bookmarks/add_errors'] = $errors;
-    $_SESSION['bookmarks/add_lastpost'] = array(
+    $_SESSION['bookmarks/new/index_errors'] = $errors;
+    $_SESSION['bookmarks/new/index_lastpost'] = array(
         'title' => $title,
         'url' => $url,
         'tags' => $tags,
@@ -34,8 +34,8 @@ if ($errors) {
 }
 
 unset(
-    $_SESSION['bookmarks/add_errors'],
-    $_SESSION['bookmarks/add_lastpost']
+    $_SESSION['bookmarks/new/index_errors'],
+    $_SESSION['bookmarks/new/index_lastpost']
 );
 
 include_once '../../classes/Bookmarks.php';

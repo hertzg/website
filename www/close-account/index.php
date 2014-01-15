@@ -6,13 +6,13 @@ include_once '../classes/Form.php';
 include_once '../classes/Tab.php';
 include_once '../lib/page.php';
 
-if (array_key_exists('close-account_errors', $_SESSION)) {
-    $pageErrors = Page::errors($_SESSION['close-account_errors']);
+if (array_key_exists('close-account/index_errors', $_SESSION)) {
+    $pageErrors = Page::errors($_SESSION['close-account/index_errors']);
 } else {
     $pageErrors = '';
 }
 
-unset($_SESSION['account_messages']);
+unset($_SESSION['account/index_messages']);
 
 $page->base = '../';
 $page->title = 'Close Account';

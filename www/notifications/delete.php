@@ -16,7 +16,7 @@ if (!$channel) {
     redirect();
 }
 
-unset($_SESSION['notifications_messages']);
+unset($_SESSION['notifications/index_messages']);
 
 $page->base = '../';
 $page->title = 'Delete Notifications?';

@@ -30,8 +30,8 @@ if ($password1 === '') {
 }
 
 if ($errors) {
-    $_SESSION['reset-password_errors'] = $errors;
-    $_SESSION['reset-password_lastpost'] = array(
+    $_SESSION['reset-password/index_errors'] = $errors;
+    $_SESSION['reset-password/index_lastpost'] = array(
         'password1' => $password1,
         'password2' => $password2,
     );
@@ -39,14 +39,14 @@ if ($errors) {
 }
 
 unset(
-    $_SESSION['reset-password_errors'],
-    $_SESSION['reset-password_lastpost']
+    $_SESSION['reset-password/index_errors'],
+    $_SESSION['reset-password/index_lastpost']
 );
 
 Users::editPassword($idusers, $password1);
 setcookie('username', $user->username, time() + 60 * 60 * 24 * 30, '/');
 
-$_SESSION['sign-in_messages'] = array(
+$_SESSION['sign-in/index_messages'] = array(
     'Password has been reset.',
     'You can sign in with your new password.'
 );

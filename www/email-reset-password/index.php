@@ -5,22 +5,22 @@ include_once '../classes/Tab.php';
 include_once '../lib/page.php';
 include_once '../lib/session-start.php';
 
-if (array_key_exists('email-reset-password_lastpost', $_SESSION)) {
-    $values = $_SESSION['email-reset-password_lastpost'];
+if (array_key_exists('email-reset-password/index_lastpost', $_SESSION)) {
+    $values = $_SESSION['email-reset-password/index_lastpost'];
 } else {
     $values = array('email' => '');
 }
 
-if (array_key_exists('email-reset-password_errors', $_SESSION)) {
-    $pageErrors = Page::errors($_SESSION['email-reset-password_errors']);
+if (array_key_exists('email-reset-password/index_errors', $_SESSION)) {
+    $pageErrors = Page::errors($_SESSION['email-reset-password/index_errors']);
 } else {
     $pageErrors = '';
 }
 
 unset(
-    $_SESSION['sign-in_errors'],
-    $_SESSION['sign-in_lastpost'],
-    $_SESSION['sign-in_messages']
+    $_SESSION['sign-in/index_errors'],
+    $_SESSION['sign-in/index_lastpost'],
+    $_SESSION['sign-in/index_messages']
 );
 
 $base = '../';

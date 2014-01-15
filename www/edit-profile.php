@@ -7,19 +7,19 @@ include_once 'classes/Tab.php';
 include_once 'lib/page.php';
 include_once 'lib/themes.php';
 
-if (array_key_exists('edit-profile_lastpost', $_SESSION)) {
-    $values = (object)$_SESSION['edit-profile_lastpost'];
+if (array_key_exists('edit-profile/index_lastpost', $_SESSION)) {
+    $values = (object)$_SESSION['edit-profile/index_lastpost'];
 } else {
     $values = $user;
 }
 
-if (array_key_exists('edit-profile_errors', $_SESSION)) {
-    $pageErrors = Page::errors($_SESSION['edit-profile_errors']);
+if (array_key_exists('edit-profile/index_errors', $_SESSION)) {
+    $pageErrors = Page::errors($_SESSION['edit-profile/index_errors']);
 } else {
     $pageErrors = '';
 }
 
-unset($_SESSION['account_messages']);
+unset($_SESSION['account/index_messages']);
 
 $themes_html = '';
 $first = true;

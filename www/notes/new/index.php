@@ -5,8 +5,8 @@ include_once '../../classes/Form.php';
 include_once '../../classes/Tab.php';
 include_once '../../lib/page.php';
 
-if (array_key_exists('notes/add_lastpost', $_SESSION)) {
-    $values = $_SESSION['notes/add_lastpost'];
+if (array_key_exists('notes/new/index_lastpost', $_SESSION)) {
+    $values = $_SESSION['notes/new/index_lastpost'];
 } else {
     $values = array(
         'notetext' => '',
@@ -14,8 +14,8 @@ if (array_key_exists('notes/add_lastpost', $_SESSION)) {
     );
 }
 
-if (array_key_exists('notes/add_errors', $_SESSION)) {
-    $pageErrors = Page::errors($_SESSION['notes/add_errors']);
+if (array_key_exists('notes/new/index_errors', $_SESSION)) {
+    $pageErrors = Page::errors($_SESSION['notes/new/index_errors']);
 } else {
     $pageErrors = '';
 }

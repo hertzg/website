@@ -5,8 +5,8 @@ include_once '../../classes/Form.php';
 include_once '../../classes/Tab.php';
 include_once '../../lib/page.php';
 
-if (array_key_exists('tasks/add_lastpost', $_SESSION)) {
-    $values = $_SESSION['tasks/add_lastpost'];
+if (array_key_exists('tasks/new/index_lastpost', $_SESSION)) {
+    $values = $_SESSION['tasks/new/index_lastpost'];
 } else {
     $values = array(
         'tasktext' => '',
@@ -14,8 +14,8 @@ if (array_key_exists('tasks/add_lastpost', $_SESSION)) {
     );
 }
 
-if (array_key_exists('tasks/add_errors', $_SESSION)) {
-    $pageErrors = Page::errors($_SESSION['tasks/add_errors']);
+if (array_key_exists('tasks/new/index_errors', $_SESSION)) {
+    $pageErrors = Page::errors($_SESSION['tasks/new/index_errors']);
 } else {
     $pageErrors = '';
 }

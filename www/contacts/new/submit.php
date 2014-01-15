@@ -35,8 +35,8 @@ if (count($tagnames) > Tags::MAX_NUM_TAGS) {
 }
 
 if ($errors) {
-    $_SESSION['contacts/add_errors'] = $errors;
-    $_SESSION['contacts/add_lastpost'] = array(
+    $_SESSION['contacts/new/index_errors'] = $errors;
+    $_SESSION['contacts/new/index_lastpost'] = array(
         'fullname' => $fullname,
         'address' => $address,
         'email' => $email,
@@ -48,8 +48,8 @@ if ($errors) {
 }
 
 unset(
-    $_SESSION['contacts/add_errors'],
-    $_SESSION['contacts/add_lastpost']
+    $_SESSION['contacts/new/index_errors'],
+    $_SESSION['contacts/new/index_lastpost']
 );
 
 $id = Contacts::add($idusers, $fullname, $address, $email, $phone1, $phone2, $tags);

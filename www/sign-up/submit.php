@@ -48,8 +48,8 @@ if ($password1 === '') {
 Captcha::check($errors, 3);
 
 if ($errors) {
-    $_SESSION['sign-up_errors'] = $errors;
-    $_SESSION['sign-up_lastpost'] = array(
+    $_SESSION['sign-up/index_errors'] = $errors;
+    $_SESSION['sign-up/index_lastpost'] = array(
         'username' => $username,
         'email' => $email,
         'password1' => $password1,
@@ -59,8 +59,8 @@ if ($errors) {
 }
 
 unset(
-    $_SESSION['sign-up_errors'],
-    $_SESSION['sign-up_lastpost']
+    $_SESSION['sign-up/index_errors'],
+    $_SESSION['sign-up/index_lastpost']
 );
 
 Users::add($username, $email, $password1);
@@ -89,7 +89,7 @@ mail(
     .'Content-Type: text/html; charset=UTF-8'
 );
 
-$_SESSION['sign-in_messages'] = array(
+$_SESSION['sign-in/index_messages'] = array(
     'Thank you for signing up.',
     'Sign in to proceed.'
 );

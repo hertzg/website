@@ -4,7 +4,7 @@ include_once 'lib/require-user.php';
 include_once '../classes/Tab.php';
 include_once '../lib/page.php';
 
-unset($_SESSION['notifications_messages']);
+unset($_SESSION['notifications/index_messages']);
 
 $page->base = '../';
 $page->title = 'Delete All Notifications?';

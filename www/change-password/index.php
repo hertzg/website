@@ -5,8 +5,8 @@ include_once '../classes/Form.php';
 include_once '../classes/Tab.php';
 include_once '../lib/page.php';
 
-if (array_key_exists('change-password_lastpost', $_SESSION)) {
-    $values = $_SESSION['change-password_lastpost'];
+if (array_key_exists('change-password/index_lastpost', $_SESSION)) {
+    $values = $_SESSION['change-password/index_lastpost'];
 } else {
     $values = array(
         'currentpassword' => '',
@@ -15,13 +15,13 @@ if (array_key_exists('change-password_lastpost', $_SESSION)) {
     );
 }
 
-if (array_key_exists('change-password_errors', $_SESSION)) {
-    $pageErrors = Page::errors($_SESSION['change-password_errors']);
+if (array_key_exists('change-password/index_errors', $_SESSION)) {
+    $pageErrors = Page::errors($_SESSION['change-password/index_errors']);
 } else {
     $pageErrors = '';
 }
 
-unset($_SESSION['account_messages']);
+unset($_SESSION['account/index_messages']);
 
 $page->base = '../';
 $page->title = 'Change password';

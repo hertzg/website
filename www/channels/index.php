@@ -24,7 +24,7 @@ unset(
     $_SESSION['channels/add_errors'],
     $_SESSION['channels/add_lastpost'],
     $_SESSION['channels/view_messages'],
-    $_SESSION['notifications_messages']
+    $_SESSION['notifications/index_messages']
 );
 
 if (array_key_exists('channels/index_messages', $_SESSION)) {

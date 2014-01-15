@@ -5,8 +5,8 @@ include_once '../../classes/Form.php';
 include_once '../../classes/Tab.php';
 include_once '../../lib/page.php';
 
-if (array_key_exists('contacts/add_lastpost', $_SESSION)) {
-    $values = $_SESSION['contacts/add_lastpost'];
+if (array_key_exists('contacts/new/index_lastpost', $_SESSION)) {
+    $values = $_SESSION['contacts/new/index_lastpost'];
 } else {
     $values = array(
         'fullname' => '',
@@ -18,8 +18,8 @@ if (array_key_exists('contacts/add_lastpost', $_SESSION)) {
     );
 }
 
-if (array_key_exists('contacts/add_errors', $_SESSION)) {
-    $pageErrors = Page::errors($_SESSION['contacts/add_errors']);
+if (array_key_exists('contacts/new/index_errors', $_SESSION)) {
+    $pageErrors = Page::errors($_SESSION['contacts/new/index_errors']);
 } else {
     $pageErrors = '';
 }

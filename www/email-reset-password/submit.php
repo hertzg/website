@@ -27,14 +27,14 @@ if (!$errors) {
 Captcha::check($errors, 3);
 
 if ($errors) {
-    $_SESSION['email-reset-password_errors'] = $errors;
-    $_SESSION['email-reset-password_lastpost'] = array('email' => $email);
+    $_SESSION['email-reset-password/index_errors'] = $errors;
+    $_SESSION['email-reset-password/index_lastpost'] = array('email' => $email);
     redirect();
 }
 
 unset(
-    $_SESSION['email-reset-password_errors'],
-    $_SESSION['email-reset-password_lastpost']
+    $_SESSION['email-reset-password/index_errors'],
+    $_SESSION['email-reset-password/index_lastpost']
 );
 
 $resetpasswordkey = md5(uniqid(), true);
@@ -72,7 +72,7 @@ mail(
     .'Content-Type: text/html; charset=UTF-8'
 );
 
-$_SESSION['sign-in_messages'] = array(
+$_SESSION['sign-in/index_messages'] = array(
     'An email has been sent to you to reset password.',
     'Follow the instructions in it.'
 );

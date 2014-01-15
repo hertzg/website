@@ -126,8 +126,8 @@ if (array_key_exists('notes/index_messages', $_SESSION)) {
 
 unset(
     $_SESSION['home_messages'],
-    $_SESSION['notes/add_errors'],
-    $_SESSION['notes/add_lastpost'],
+    $_SESSION['notes/new/index_errors'],
+    $_SESSION['notes/new/index_lastpost'],
     $_SESSION['notes/view_messages']
 );
 

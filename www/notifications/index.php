@@ -84,8 +84,8 @@ unset(
     $_SESSION['home_messages']
 );
 
-if (array_key_exists('notifications_messages', $_SESSION)) {
-    $pageMessages = Page::messages($_SESSION['notifications_messages']);
+if (array_key_exists('notifications/index_messages', $_SESSION)) {
+    $pageMessages = Page::messages($_SESSION['notifications/index_messages']);
 } else {
     $pageMessages = '';
 }

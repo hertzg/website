@@ -5,8 +5,8 @@ include_once '../../classes/Form.php';
 include_once '../../classes/Tab.php';
 include_once '../../lib/page.php';
 
-if (array_key_exists('bookmarks/add_lastpost', $_SESSION)) {
-    $values = $_SESSION['bookmarks/add_lastpost'];
+if (array_key_exists('bookmarks/new/index_lastpost', $_SESSION)) {
+    $values = $_SESSION['bookmarks/new/index_lastpost'];
 } else {
     $values = array(
         'url' => '',
@@ -15,8 +15,8 @@ if (array_key_exists('bookmarks/add_lastpost', $_SESSION)) {
     );
 }
 
-if (array_key_exists('bookmarks/add_errors', $_SESSION)) {
-    $pageErrors = Page::errors($_SESSION['bookmarks/add_errors']);
+if (array_key_exists('bookmarks/new/index_errors', $_SESSION)) {
+    $pageErrors = Page::errors($_SESSION['bookmarks/new/index_errors']);
 } else {
     $pageErrors = '';
 }

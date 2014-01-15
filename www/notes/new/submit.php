@@ -24,8 +24,8 @@ if (count($tagnames) > Tags::MAX_NUM_TAGS) {
 }
 
 if ($errors) {
-    $_SESSION['notes/add_errors'] = $errors;
-    $_SESSION['notes/add_lastpost'] = array(
+    $_SESSION['notes/new/index_errors'] = $errors;
+    $_SESSION['notes/new/index_lastpost'] = array(
         'notetext' => $notetext,
         'tags' => $tags,
     );
@@ -33,8 +33,8 @@ if ($errors) {
 }
 
 unset(
-    $_SESSION['notes/add_errors'],
-    $_SESSION['notes/add_lastpost']
+    $_SESSION['notes/new/index_errors'],
+    $_SESSION['notes/new/index_lastpost']
 );
 
 include_once '../../classes/Notes.php';

@@ -28,8 +28,8 @@ if ($email === '') {
 }
 
 if ($errors) {
-    $_SESSION['edit-profile_errors'] = $errors;
-    $_SESSION['edit-profile_lastpost'] = array(
+    $_SESSION['edit-profile/index_errors'] = $errors;
+    $_SESSION['edit-profile/index_lastpost'] = array(
         'email' => $email,
         'fullname' => $fullname,
     );
@@ -37,12 +37,12 @@ if ($errors) {
 }
 
 unset(
-    $_SESSION['edit-profile_errors'],
-    $_SESSION['edit-profile_lastpost']
+    $_SESSION['edit-profile/index_errors'],
+    $_SESSION['edit-profile/index_lastpost']
 );
 
 Users::editProfile($idusers, $email, $fullname);
 
-$_SESSION['account_messages'] = array('Changes have been saved.');
+$_SESSION['account/index_messages'] = array('Changes have been saved.');
 
 redirect('account/');

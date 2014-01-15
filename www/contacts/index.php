@@ -125,8 +125,8 @@ if (array_key_exists('contacts/index_messages', $_SESSION)) {
 }
 
 unset(
-    $_SESSION['contacts/add_errors'],
-    $_SESSION['contacts/add_lastpost'],
+    $_SESSION['contacts/new/index_errors'],
+    $_SESSION['contacts/new/index_lastpost'],
     $_SESSION['contacts/view_messages'],
     $_SESSION['home_messages']
 );

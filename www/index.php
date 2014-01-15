@@ -13,11 +13,11 @@ include_once 'lib/revisions.php';
 header('Content-Type: text/html; charset=UTF-8');
 
 unset(
-    $_SESSION['sign-in_errors'],
-    $_SESSION['sign-in_lastpost'],
-    $_SESSION['sign-in_messages'],
-    $_SESSION['sign-up_errors'],
-    $_SESSION['sign-up_lastpost']
+    $_SESSION['sign-in/index_errors'],
+    $_SESSION['sign-in/index_lastpost'],
+    $_SESSION['sign-in/index_messages'],
+    $_SESSION['sign-up/index_errors'],
+    $_SESSION['sign-up/index_lastpost']
 );
 
 echo

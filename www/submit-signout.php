@@ -14,7 +14,7 @@ if (array_key_exists('token', $_SESSION)) {
     setcookie('token', '', time() - 60 * 60 * 24, '/');
 }
 
-$_SESSION['sign-in_messages'] = array(
+$_SESSION['sign-in/index_messages'] = array(
     'You have been signed out.',
 );
 

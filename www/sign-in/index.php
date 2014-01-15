@@ -11,8 +11,8 @@ include_once '../classes/Form.php';
 include_once '../classes/Tab.php';
 include_once '../lib/page.php';
 
-if (array_key_exists('sign-in_lastpost', $_SESSION)) {
-    $values = $_SESSION['sign-in_lastpost'];
+if (array_key_exists('sign-in/index_lastpost', $_SESSION)) {
+    $values = $_SESSION['sign-in/index_lastpost'];
 } else {
 
     if (array_key_exists('username', $_COOKIE)) {
@@ -30,23 +30,23 @@ if (array_key_exists('sign-in_lastpost', $_SESSION)) {
 
 }
 
-if (array_key_exists('sign-in_errors', $_SESSION)) {
-    $pageErrors = Page::errors($_SESSION['sign-in_errors']);
+if (array_key_exists('sign-in/index_errors', $_SESSION)) {
+    $pageErrors = Page::errors($_SESSION['sign-in/index_errors']);
 } else {
     $pageErrors = '';
 }
 
-if (array_key_exists('sign-in_messages', $_SESSION)) {
-    $pageMessages = Page::messages($_SESSION['sign-in_messages']);
+if (array_key_exists('sign-in/index_messages', $_SESSION)) {
+    $pageMessages = Page::messages($_SESSION['sign-in/index_messages']);
 } else {
     $pageMessages = '';
 }
 
 unset(
-    $_SESSION['sign-up_errors'],
-    $_SESSION['sign-up_lastpost'],
-    $_SESSION['email-reset-password_errors'],
-    $_SESSION['email-reset-password_lastpost']
+    $_SESSION['sign-up/index_errors'],
+    $_SESSION['sign-up/index_lastpost'],
+    $_SESSION['email-reset-password/index_errors'],
+    $_SESSION['email-reset-password/index_lastpost']
 );
 
 $username = $values['username'];

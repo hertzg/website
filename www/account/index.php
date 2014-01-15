@@ -14,17 +14,17 @@ include_once '../lib/page.php';
 include_once '../lib/themes.php';
 
 unset(
-    $_SESSION['change-password_errors'],
-    $_SESSION['change-password_lastpost'],
-    $_SESSION['close-account_errors'],
-    $_SESSION['edit-profile_errors'],
-    $_SESSION['edit-profile_lastpost'],
+    $_SESSION['change-password/index_errors'],
+    $_SESSION['change-password/index_lastpost'],
+    $_SESSION['close-account/index_errors'],
+    $_SESSION['edit-profile/index_errors'],
+    $_SESSION['edit-profile/index_lastpost'],
     $_SESSION['home_messages'],
     $_SESSION['tokens/index_messages']
 );
 
-if (array_key_exists('account_messages', $_SESSION)) {
-    $pageMessages = Page::messages($_SESSION['account_messages']);
+if (array_key_exists('account/index_messages', $_SESSION)) {
+    $pageMessages = Page::messages($_SESSION['account/index_messages']);
 } else {
     $pageMessages = '';
 }
