@@ -44,7 +44,7 @@ $page->finish(
     )
     .create_panel(
         'Options',
-        Page::imageLink('New Channel', 'add.php', 'create-channel')
+        Page::imageLink('New Channel', 'new/', 'create-channel')
         .Page::HR
         .Page::imageLink(
             'Download API',
