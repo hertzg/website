@@ -34,18 +34,20 @@ unset(
 
 $items = array();
 
+$title = 'Bookmarks';
+$href = '../bookmarks/';
+$icon = 'bookmarks';
 $numBookmarks = Bookmarks::countOnUser($idusers);
 if ($numBookmarks) {
-    $items[] = Page::imageLinkWithDescription(
-        'Bookmarks',
-        "$numBookmarks total.",
-        'bookmarks/',
-        'bookmarks'
-    );
+    $description = "$numBookmarks total.";
+    $items[] = Page::imageLinkWithDescription($title, $description, $href, $icon);
 } else {
-    $items = Page::imageLink('Bookmarks', 'bookmarks/', 'bookmarks');
+    $items[] = Page::imageLink($title, $href, $icon);
 }
 
+$title = 'Calendar';
+$href = '../calendar/';
+$icon = 'calendar';
 $timeNow = time();
 $dayToday = date('j', $timeNow);
 $monthToday = date('n', $timeNow);
@@ -56,56 +58,54 @@ $numEventsToday = Events::countOnTime($idusers, $timeToday);
 $numEventsTomorrow = Events::countOnTime($idusers, $timeTomorrow);
 if ($numEventsToday) {
     if ($numEventsTomorrow) {
-        $items[] = Page::imageLinkWithDescription(
-            'Calendar',
-            n_events($numEventsToday).' today. '.n_events($numEventsTomorrow).' tomorrow.',
-            'calendar/',
-            'calendar'
-        );
+        $description =
+            n_events($numEventsToday).' today. '
+            .n_events($numEventsTomorrow).' tomorrow.';
     } else {
-        $items[] = Page::imageLinkWithDescription(
-            'Calendar',
-            n_events($numEventsToday).' today.',
-            'calendar/',
-            'calendar'
-        );
+        $description = n_events($numEventsToday).' today.';
     }
+    $items[] = Page::imageLinkWithDescription($title, $description, $href, $icon);
 } elseif ($numEventsTomorrow) {
-    $items[] = Page::imageLinkWithDescription(
-        'Calendar',
-        n_events($numEventsTomorrow).' tomorrow.',
-        'calendar/',
-        'calendar'
-    );
+    $description = n_events($numEventsTomorrow).' tomorrow.';
+    $items[] = Page::imageLinkWithDescription($title, $description, $href, $icon);
 } else {
-    $items[] = Page::imageLink('Calendar', 'calendar/', 'calendar');
+    $items[] = Page::imageLink($title, $href, $icon);
 }
 
+$title = 'Contacts';
+$href = '../contacts/';
+$icon = 'contacts';
 $numContacts = Contacts::countOnUser($idusers);
 if ($numContacts) {
-    $items[] = Page::imageLinkWithDescription('Contacts', "$numContacts total.", 'contacts/', 'contacts');
+    $description = "$numContacts total.";
+    $items[] = Page::imageLinkWithDescription($title, $description, $href, $icon);
 } else {
-    $items[] = Page::imageLink('Contacts', 'contacts/', 'contacts');
+    $items[] = Page::imageLink($title, $href, $icon);
 }
 
+$title = 'Files';
+$href = '../files/';
+$icon = 'files';
 if ($user->storageused) {
-    $items[] = Page::imageLinkWithDescription('Files', bytestr($user->storageused).' used.', 'files/', 'files');
+    $description = bytestr($user->storageused).' used.';
+    $items[] = Page::imageLinkWithDescription($title, $description, $href, $icon);
 } else {
-    $items[] = Page::imageLink('Files', 'files/', 'files');
+    $items[] = Page::imageLink($title, $href, $icon);
 }
 
+$title = 'Notes';
+$href = '../notes/';
+$icon = 'notes';
 $numNotes = Notes::countOnUser($idusers);
 if ($numNotes) {
-    $items[] = Page::imageLinkWithDescription(
-        'Notes',
-        "$numNotes total.",
-        'notes/',
-        'notes'
-    );
+    $description = "$numNotes total.";
+    $items[] = Page::imageLinkWithDescription($title, $description, $href, $icon);
 } else {
-    $items[] = Page::imageLink('Notes', 'notes/', 'notes');
+    $items[] = Page::imageLink($title, $href, $icon);
 }
 
+$title = 'Notifications';
+$href = '../notifications/';
 $numNotifications = Notifications::countOnUser($idusers);
 if ($numNotifications) {
     $description = '';
@@ -113,39 +113,34 @@ if ($numNotifications) {
     if ($numNewNotifications) {
         $notifications = Page::warnings(array("$numNewNotifications new notifications."));
         $items[] = Page::imageLinkWithDescription(
-            'Notifications',
+            $title,
             "$numNewNotifications new. $numNotifications total.",
-            'notifications/',
+            $href,
             'notification'
         );
     } else {
         $notifications = '';
         $items[] = Page::imageLinkWithDescription(
-            'Notifications',
+            $title,
             "$numNotifications total.",
-            'notifications/',
+            $href,
             'old-notification'
         );
     }
 } else {
     $notifications = '';
-    $items[] = Page::imageLink(
-        'Notifications',
-        'notifications/',
-        'old-notification'
-    );
+    $items[] = Page::imageLink($title, $href, 'old-notification');
 }
 
+$title = 'Tasks';
+$href = '../tasks/';
+$icon = 'tasks';
 $numTasks = Tasks::countOnUser($idusers);
 if ($numTasks) {
-    $items[] = Page::imageLinkWithDescription(
-        'Tasks',
-        "$numTasks total.",
-        'tasks/',
-        'tasks'
-    );
+    $description = "$numTasks total.";
+    $items[] = Page::imageLinkWithDescription($title, $description, $href, $icon);
 } else {
-    $items[] = Page::imageLink('Tasks', 'tasks/', 'tasks');
+    $items[] = Page::imageLink($title, $href, $icon);
 }
 
 if (array_key_exists('home/index_messages', $_SESSION)) {
@@ -165,10 +160,10 @@ $page->finish(
     )
     .create_panel(
         'Options',
-        Page::imageLink('Account', 'account/', 'account')
+        Page::imageLink('Account', '../account/', 'account')
         .Page::HR
-        .Page::imageLink('Help', 'help/', 'help')
+        .Page::imageLink('Help', '../help/', 'help')
         .Page::HR
-        .Page::imageLink('Sign Out', 'submit-signout.php', 'signout')
+        .Page::imageLink('Sign Out', '../submit-signout.php', 'signout')
     )
 );
