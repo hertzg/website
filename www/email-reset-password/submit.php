@@ -1,13 +1,13 @@
 <?php
 
-include_once 'lib/sameDomainReferer.php';
-include_once 'fns/redirect.php';
+include_once '../lib/sameDomainReferer.php';
+include_once '../fns/redirect.php';
 if (!$sameDomainReferer) redirect();
-include_once 'fns/request_strings.php';
-include_once 'fns/str_collapse_spaces.php';
-include_once 'classes/Captcha.php';
-include_once 'classes/Users.php';
-include_once 'lib/session-start.php';
+include_once '../fns/request_strings.php';
+include_once '../fns/str_collapse_spaces.php';
+include_once '../classes/Captcha.php';
+include_once '../classes/Users.php';
+include_once '../lib/session-start.php';
 
 list($email) = request_strings('email');
 
@@ -31,7 +31,7 @@ unset($_SESSION['email-reset-password_errors']);
 if ($errors) {
     $_SESSION['email-reset-password_errors'] = $errors;
     $_SESSION['email-reset-password_lastpost'] = array('email' => $email);
-    redirect('email-reset-password.php');
+    redirect();
 }
 
 $resetpasswordkey = md5(uniqid(), true);
@@ -69,8 +69,8 @@ mail(
     .'Content-Type: text/html; charset=UTF-8'
 );
 
-$_SESSION['signin_messages'] = array(
+$_SESSION['sign-in_messages'] = array(
     'An email has been sent to you to reset password.',
     'Follow the instructions in it.'
 );
-redirect('sign-in/');
+redirect('../sign-in/');

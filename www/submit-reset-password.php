@@ -48,7 +48,7 @@ if ($errors) {
 Users::editPassword($idusers, $password1);
 setcookie('username', $user->username, time() + 60 * 60 * 24 * 30, '/');
 
-$_SESSION['signin_messages'] = array(
+$_SESSION['sign-in_messages'] = array(
     'Password has been reset.',
     'You can sign in with your new password.'
 );

@@ -31,19 +31,19 @@ if (!$errors) {
 }
 
 unset(
-    $_SESSION['signin_errors'],
-    $_SESSION['signin_lastpost'],
-    $_SESSION['signin_messages']
+    $_SESSION['sign-in_errors'],
+    $_SESSION['sign-in_lastpost'],
+    $_SESSION['sign-in_messages']
 );
 
 if ($errors) {
-    $_SESSION['signin_errors'] = $errors;
-    $_SESSION['signin_lastpost'] = array(
+    $_SESSION['sign-in_errors'] = $errors;
+    $_SESSION['sign-in_lastpost'] = array(
         'username' => $username,
         'password' => $password,
         'remember' => $remember,
     );
-    redirect('./');
+    redirect();
 }
 
 Users::updateLastLoginTime($user->idusers);

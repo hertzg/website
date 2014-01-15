@@ -5,8 +5,8 @@ include_once '../classes/Tab.php';
 include_once '../lib/page.php';
 include_once '../lib/session-start.php';
 
-if (array_key_exists('signup_lastpost', $_SESSION)) {
-    $values = $_SESSION['signup_lastpost'];
+if (array_key_exists('sign-up_lastpost', $_SESSION)) {
+    $values = $_SESSION['sign-up_lastpost'];
 } else {
     $values = array(
         'username' => '',
@@ -16,16 +16,16 @@ if (array_key_exists('signup_lastpost', $_SESSION)) {
     );
 }
 
-if (array_key_exists('signup_errors', $_SESSION)) {
-    $pageErrors = Page::errors($_SESSION['signup_errors']);
+if (array_key_exists('sign-up_errors', $_SESSION)) {
+    $pageErrors = Page::errors($_SESSION['sign-up_errors']);
 } else {
     $pageErrors = '';
 }
 
 unset(
-    $_SESSION['signin_errors'],
-    $_SESSION['signin_lastpost'],
-    $_SESSION['signin_messages'],
+    $_SESSION['sign-in_errors'],
+    $_SESSION['sign-in_lastpost'],
+    $_SESSION['sign-in_messages'],
     $_SESSION['email-reset-password_errors'],
     $_SESSION['email-reset-password_lastpost']
 );

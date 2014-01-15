@@ -32,11 +32,11 @@ if (array_key_exists('reset-password_errors', $_SESSION)) {
 }
 
 unset(
-    $_SESSION['signin_errors'],
-    $_SESSION['signin_lastpost'],
-    $_SESSION['signin_messages'],
-    $_SESSION['signup_errors'],
-    $_SESSION['signup_lastpost']
+    $_SESSION['sign-in_errors'],
+    $_SESSION['sign-in_lastpost'],
+    $_SESSION['sign-in_messages'],
+    $_SESSION['sign-up_errors'],
+    $_SESSION['sign-up_lastpost']
 );
 
 $page->title = 'Reset Password';

@@ -69,7 +69,7 @@ Tokens::deleteOnUser($idusers);
 include_once 'classes/Users.php';
 Users::delete($idusers);
 
-$_SESSION['signin_messages'] = array(
+$_SESSION['sign-in_messages'] = array(
     'Your account has been closed.',
 );
 
