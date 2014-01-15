@@ -55,7 +55,7 @@ unset(
     $_SESSION['home_messages']
 );
 
-$options = array(Page::imageLink('New Bookmark', 'add.php', 'create-bookmark'));
+$options = array(Page::imageLink('New Bookmark', 'new/', 'create-bookmark'));
 if ($bookmarks) {
     $options[] = Page::imageLink(
         'Delete All Bookmarks',
