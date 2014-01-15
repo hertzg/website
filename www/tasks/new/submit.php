@@ -1,13 +1,13 @@
 <?php
 
-include_once '../lib/sameDomainReferer.php';
-include_once '../fns/redirect.php';
+include_once '../../lib/sameDomainReferer.php';
+include_once '../../fns/redirect.php';
 if (!$sameDomainReferer) redirect('..');
 include_once 'lib/require-user.php';
-include_once '../fns/request_strings.php';
-include_once '../fns/str_collapse_spaces.php';
-include_once '../fns/str_collapse_spaces_multiline.php';
-include_once '../classes/Tags.php';
+include_once '../../fns/request_strings.php';
+include_once '../../fns/str_collapse_spaces.php';
+include_once '../../fns/str_collapse_spaces_multiline.php';
+include_once '../../classes/Tags.php';
 
 list($tasktext, $tags) = request_strings('tasktext', 'tags');
 
@@ -29,7 +29,7 @@ if ($errors) {
         'tasktext' => $tasktext,
         'tags' => $tags,
     );
-    redirect('add.php');
+    redirect();
 }
 
 unset(
@@ -37,11 +37,11 @@ unset(
     $_SESSION['tasks/add_lastpost']
 );
 
-include_once '../classes/Tasks.php';
+include_once '../../classes/Tasks.php';
 $id = Tasks::add($idusers, $tasktext, $tags);
 
-include_once '../classes/TaskTags.php';
+include_once '../../classes/TaskTags.php';
 TaskTags::add($idusers, $id, $tagnames);
 
 $_SESSION['tasks/view_messages'] = array('Task has been saved.');
-redirect("view.php?id=$id");
+redirect("../view.php?id=$id");

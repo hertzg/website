@@ -135,7 +135,7 @@ unset(
     $_SESSION['home_messages']
 );
 
-$options = array(Page::imageLink('New Task', 'add.php', 'create-task'));
+$options = array(Page::imageLink('New Task', 'new/', 'create-task'));
 if ($tasks) {
     $options[] = Page::imageLink(
         'Delete All Tasks',
