@@ -131,7 +131,7 @@ unset(
     $_SESSION['notes/view_messages']
 );
 
-$options = array(Page::imageLink('New Note', 'add.php', 'create-note'));
+$options = array(Page::imageLink('New Note', 'new/', 'create-note'));
 if ($notes) {
     $options[] = Page::imageLink(
         'Delete All Notes',
