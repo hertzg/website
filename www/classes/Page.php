@@ -43,7 +43,7 @@ class Page {
         if ($errors) {
             $html = '<ul class="errors">';
             foreach ($errors as $error) {
-                $html .= "<li>$error</li>";
+                $html .= "<li><span class=\"bullet\"></span>$error</li>";
             }
             $html .=
                 '</ul>'
@@ -135,7 +135,7 @@ class Page {
         if ($errors) {
             $html = '<ul class="messages">';
             foreach ($errors as $error) {
-                $html .= "<li>$error</li>";
+                $html .= "<li><span class=\"bullet\"></span>$error</li>";
             }
             $html .=
                 '</ul>'
@@ -162,7 +162,7 @@ class Page {
         if ($errors) {
             $html = '<ul class="warnings">';
             foreach ($errors as $error) {
-                $html .= "<li>$error</li>";
+                $html .= "<li><span class=\"bullet\"></span>$error</li>";
             }
             $html .=
                 '</ul>'

@@ -319,42 +319,65 @@ label {
     height: 48px;
 }
 
+.errors,
+.messages,
+.warnings {
+    padding: 12px 14px;
+}
+.errors > *,
+.messages > *,
+.warnings > * {
+    padding: 2px;
+    display: block;
+}
+.errors > * > .bullet,
+.messages > * > .bullet,
+.warnings > * > .bullet {
+    display: inline-block;
+    vertical-align: middle;
+    width: 5px;
+    height: 5px;
+    margin-right: 8px;
+    transform: rotate(-21deg);
+    -moz-transform: rotate(-21deg);
+    -webkit-transform: rotate(-21deg);
+}
+.errors-hr,
+.messages-hr,
+.warnings-hr {
+    height: 1px;
+}
+
 .errors {
     background: #fbb;
-    padding: 12px 12px 12px 36px;
     color: #911;
 }
-.errors > * {
-    padding: 2px;
+.errors > * > .bullet {
+    background: #911;
 }
 .errors-hr {
-    height: 1px;
     background: #e99;
 }
 
 .messages {
     background: #9e9;
-    padding: 12px 12px 12px 36px;
     color: #191;
 }
-.messages > * {
-    padding: 2px;
+.messages > * > .bullet {
+    background: #191;
 }
 .messages-hr {
-    height: 1px;
     background: #8d8;
 }
 
 .warnings {
     background: #eee;
-    padding: 12px 12px 12px 36px;
     color: #444;
 }
-.warnings > * {
-    padding: 2px;
+.warnings > * > .bullet {
+    background: #444;
 }
 .warnings-hr {
-    height: 1px;
     background: #ddd;
 }
 
