@@ -1,11 +1,11 @@
 <?php
 
-include_once 'lib/sameDomainReferer.php';
-include_once 'fns/redirect.php';
+include_once '../lib/sameDomainReferer.php';
+include_once '../fns/redirect.php';
 if (!$sameDomainReferer) redirect();
 include_once 'lib/require-user.php';
-include_once 'fns/request_strings.php';
-include_once 'classes/Users.php';
+include_once '../fns/request_strings.php';
+include_once '../classes/Users.php';
 
 list($currentpassword, $password1, $password2) = request_strings(
     'currentpassword', 'password1', 'password2');
@@ -35,10 +35,10 @@ if ($errors) {
         'password1' => $password1,
         'password2' => $password2,
     );
-    redirect('change-password.php');
+    redirect();
 }
 
 Users::editPassword($idusers, $password1);
 
 $_SESSION['account_messages'] = array('Password has been changed.');
-redirect('account/');
+redirect('../account/');

@@ -1,9 +1,9 @@
 <?php
 
 include_once 'lib/require-user.php';
-include_once 'classes/Form.php';
-include_once 'classes/Tab.php';
-include_once 'lib/page.php';
+include_once '../classes/Form.php';
+include_once '../classes/Tab.php';
+include_once '../lib/page.php';
 
 if (array_key_exists('change-password_lastpost', $_SESSION)) {
     $values = $_SESSION['change-password_lastpost'];
@@ -23,14 +23,15 @@ if (array_key_exists('change-password_errors', $_SESSION)) {
 
 unset($_SESSION['account_messages']);
 
+$page->base = '../';
 $page->title = 'Change password';
 $page->finish(
     Tab::create(
-        Tab::item('Account', 'account/')
+        Tab::item('Account', '../account/')
         .Tab::activeItem('Change Password'),
         $pageErrors
         .Form::create(
-            'submit-change-password.php',
+            'submit.php',
             Form::password('currentpassword', 'Current password', array(
                 'value' => $values['currentpassword'],
                 'autofocus' => true,
