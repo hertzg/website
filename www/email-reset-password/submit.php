@@ -39,7 +39,7 @@ Users::editResetPasswordKey($user->idusers, $resetpasswordkey);
 Captcha::reset();
 
 $href = htmlspecialchars(
-    'http://zvini.com/reset-password.php?'.http_build_query(array(
+    'http://zvini.com/reset-password/?'.http_build_query(array(
         'idusers' => $user->idusers,
         'resetpasswordkey' => bin2hex($resetpasswordkey)
     ))

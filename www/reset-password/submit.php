@@ -1,12 +1,12 @@
 <?php
 
-include_once 'lib/sameDomainReferer.php';
-include_once 'fns/redirect.php';
+include_once '../lib/sameDomainReferer.php';
+include_once '../fns/redirect.php';
 if (!$sameDomainReferer) redirect();
-include_once 'fns/is_md5.php';
-include_once 'fns/request_strings.php';
-include_once 'classes/Users.php';
-include_once 'lib/session-start.php';
+include_once '../fns/is_md5.php';
+include_once '../fns/request_strings.php';
+include_once '../classes/Users.php';
+include_once '../lib/session-start.php';
 
 list($idusers, $resetpasswordkey, $password1, $password2) = request_strings(
     'idusers', 'resetpasswordkey', 'password1', 'password2');
@@ -40,9 +40,7 @@ if ($errors) {
         'password1' => $password1,
         'password2' => $password2,
     );
-    redirect(
-        "reset-password.php?idusers=$idusers&resetpasswordkey=$resetpasswordkey"
-    );
+    redirect("./?idusers=$idusers&resetpasswordkey=$resetpasswordkey");
 }
 
 Users::editPassword($idusers, $password1);
@@ -52,4 +50,4 @@ $_SESSION['sign-in_messages'] = array(
     'Password has been reset.',
     'You can sign in with your new password.'
 );
-redirect('sign-in/');
+redirect('../sign-in/');
