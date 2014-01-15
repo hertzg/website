@@ -62,6 +62,8 @@ if (array_key_exists('files/move-file_errors', $_SESSION)) {
     $pageErrors = '';
 }
 
+unset($_SESSION['files/view_messages']);
+
 $page->base = '../';
 $page->title = htmlspecialchars($file->filename);
 $page->finish(

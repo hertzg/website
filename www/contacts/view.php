@@ -19,7 +19,8 @@ if (array_key_exists('contacts/view_messages', $_SESSION)) {
 
 unset(
     $_SESSION['contacts/edit_errors'],
-    $_SESSION['contacts/edit_lastpost']
+    $_SESSION['contacts/edit_lastpost'],
+    $_SESSION['contacts/index_messages']
 );
 
 $page->base = '../';

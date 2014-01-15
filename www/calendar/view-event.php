@@ -11,7 +11,10 @@ if (array_key_exists('calendar/view-event_messages', $_SESSION)) {
     $pageMessages = '';
 }
 
-unset($_SESSION['calendar/index_messages']);
+unset(
+    $_SESSION['calendar/edit-event_errors'],
+    $_SESSION['calendar/index_messages']
+);
 
 $page->base = '../';
 $page->finish(

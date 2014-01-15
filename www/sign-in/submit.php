@@ -7,6 +7,8 @@ include_once '../fns/request_strings.php';
 include_once '../classes/Users.php';
 include_once '../lib/session-start.php';
 
+unset($_SESSION['sign-in_messages']);
+
 list($username, $password, $remember) = request_strings(
     'username', 'password', 'remember');
 
@@ -30,12 +32,6 @@ if (!$errors) {
     }
 }
 
-unset(
-    $_SESSION['sign-in_errors'],
-    $_SESSION['sign-in_lastpost'],
-    $_SESSION['sign-in_messages']
-);
-
 if ($errors) {
     $_SESSION['sign-in_errors'] = $errors;
     $_SESSION['sign-in_lastpost'] = array(
@@ -45,6 +41,11 @@ if ($errors) {
     );
     redirect();
 }
+
+unset(
+    $_SESSION['sign-in_errors'],
+    $_SESSION['sign-in_lastpost']
+);
 
 Users::updateLastLoginTime($user->idusers);
 

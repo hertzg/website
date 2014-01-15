@@ -130,7 +130,7 @@ if (array_key_exists('tasks/index_messages', $_SESSION)) {
 
 unset(
     $_SESSION['tasks/add_errors'],
-    $_SESSION['tasks/edit_errors'],
+    $_SESSION['tasks/add_lastpost'],
     $_SESSION['tasks/view_messages'],
     $_SESSION['home_messages']
 );

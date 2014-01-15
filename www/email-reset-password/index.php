@@ -20,9 +20,7 @@ if (array_key_exists('email-reset-password_errors', $_SESSION)) {
 unset(
     $_SESSION['sign-in_errors'],
     $_SESSION['sign-in_lastpost'],
-    $_SESSION['sign-in_messages'],
-    $_SESSION['sign-up_errors'],
-    $_SESSION['sign-up_lastpost']
+    $_SESSION['sign-in_messages']
 );
 
 $base = '../';

@@ -45,10 +45,6 @@ if ($password1 === '') {
     $errors[] = 'Passwords does not match.';
 }
 
-unset(
-    $_SESSION['sign-up_errors'],
-    $_SESSION['sign-up_lastpost']
-);
 Captcha::check($errors, 3);
 
 if ($errors) {
@@ -61,6 +57,11 @@ if ($errors) {
     );
     redirect();
 }
+
+unset(
+    $_SESSION['sign-up_errors'],
+    $_SESSION['sign-up_lastpost']
+);
 
 Users::add($username, $email, $password1);
 Captcha::reset();

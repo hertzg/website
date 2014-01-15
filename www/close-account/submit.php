@@ -21,6 +21,8 @@ if ($errors) {
     redirect();
 }
 
+unset($_SESSION['close-account_errors']);
+
 include_once '../classes/Bookmarks.php';
 Bookmarks::deleteOnUser($idusers);
 

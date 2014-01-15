@@ -14,5 +14,11 @@ if (!array_key_exists($theme, $themes)) redirect();
 
 Users::editTheme($idusers, $theme);
 
+unset(
+    $_SESSION['edit-profile_errors'],
+    $_SESSION['edit-profile_lastpost']
+);
+
 $_SESSION['account_messages'] = array('Theme has changed.');
+
 redirect('account/');

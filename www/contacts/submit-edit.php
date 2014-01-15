@@ -52,7 +52,8 @@ unset(
     $_SESSION['contacts/edit_lastpost']
 );
 
-Contacts::edit($idusers, $id, $fullname, $address, $email, $phone1, $phone2, $tags);
+Contacts::edit($idusers, $id, $fullname, $address,
+    $email, $phone1, $phone2, $tags);
 
 include_once '../classes/ContactTags.php';
 ContactTags::deleteOnContact($id);

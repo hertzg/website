@@ -5,7 +5,10 @@ include_once 'fns/create_folder_link.php';
 include_once '../classes/Tab.php';
 include_once '../lib/page.php';
 
-unset($_SESSION['files/index_messages']);
+unset(
+    $_SESSION['files/index_idfolders'],
+    $_SESSION['files/index_messages']
+);
 
 $page->base = '../';
 $page->title = 'Delete Folder?';

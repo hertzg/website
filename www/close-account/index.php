@@ -12,7 +12,7 @@ if (array_key_exists('close-account_errors', $_SESSION)) {
     $pageErrors = '';
 }
 
-unset($_SESSION['notifications_messages']);
+unset($_SESSION['account_messages']);
 
 $page->base = '../';
 $page->title = 'Close Account';

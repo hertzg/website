@@ -24,7 +24,9 @@ if ($eventtext === '') {
 
 if ($errors) {
     $_SESSION['calendar/add-event_errors'] = $errors;
-    $_SESSION['calendar/add-event_lastpost'] = array('eventtext' => $eventtext);
+    $_SESSION['calendar/add-event_lastpost'] = array(
+        'eventtext' => $eventtext,
+    );
     redirect('add-event.php?'.http_build_query(array(
         'year' => $year,
         'month' => $month,

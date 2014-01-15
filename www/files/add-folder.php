@@ -29,7 +29,10 @@ if (array_key_exists('files/add-folder_errors', $_SESSION)) {
     $pageErrors = '';
 }
 
-unset($_SESSION['files/index_messages']);
+unset(
+    $_SESSION['files/index_idfolders'],
+    $_SESSION['files/index_messages']
+);
 
 $page->base = '../';
 $page->title = 'New Folder';

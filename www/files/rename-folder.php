@@ -18,7 +18,10 @@ if (array_key_exists('files/rename-folder_lastpost', $_SESSION)) {
     $values = (array)$folder;
 }
 
-unset($_SESSION['files/index_messages']);
+unset(
+    $_SESSION['files/index_idfolders'],
+    $_SESSION['files/index_messages']
+);
 
 $page->base = '../';
 $page->title = 'Rename Folder: '.htmlspecialchars($folder->foldername);

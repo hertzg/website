@@ -26,16 +26,16 @@ if ($foldername === '') {
     $errors[] = 'Folder with this name already exists.';
 }
 
-unset(
-    $_SESSION['files/add-folder_errors'],
-    $_SESSION['files/add-folder_lastpost']
-);
-
 if ($errors) {
     $_SESSION['files/add-folder_errors'] = $errors;
     $_SESSION['files/add-folder_lastpost'] = array('foldername' => $foldername);
     redirect("add-folder.php?parentidfolders=$parentidfolders");
 }
+
+unset(
+    $_SESSION['files/add-folder_errors'],
+    $_SESSION['files/add-folder_lastpost']
+);
 
 $idfolders = Folders::add($idusers, $parentidfolders, $foldername);
 

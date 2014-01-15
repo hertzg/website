@@ -17,6 +17,7 @@ if (array_key_exists('notes/view_messages', $_SESSION)) {
 
 unset(
     $_SESSION['notes/edit_errors'],
+    $_SESSION['notes/edit_lastpost'],
     $_SESSION['notes/index_messages']
 );
 

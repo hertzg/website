@@ -12,8 +12,6 @@ list($currentpassword, $password1, $password2) = request_strings(
 
 $errors = array();
 
-unset($_SESSION['change-password_errors']);
-
 if ($currentpassword === '') {
     $errors[] = 'Enter current password.';
 } elseif (md5($currentpassword, true) != $user->password) {
@@ -37,6 +35,11 @@ if ($errors) {
     );
     redirect();
 }
+
+unset(
+    $_SESSION['change-password_errors'],
+    $_SESSION['change-password_lastpost']
+);
 
 Users::editPassword($idusers, $password1);
 

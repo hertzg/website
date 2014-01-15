@@ -29,11 +29,6 @@ if ($password1 === '') {
     $errors[] = 'New passwords does not match.';
 }
 
-unset(
-    $_SESSION['reset-password_errors'],
-    $_SESSION['reset-password_lastpost']
-);
-
 if ($errors) {
     $_SESSION['reset-password_errors'] = $errors;
     $_SESSION['reset-password_lastpost'] = array(
@@ -42,6 +37,11 @@ if ($errors) {
     );
     redirect("./?idusers=$idusers&resetpasswordkey=$resetpasswordkey");
 }
+
+unset(
+    $_SESSION['reset-password_errors'],
+    $_SESSION['reset-password_lastpost']
+);
 
 Users::editPassword($idusers, $password1);
 setcookie('username', $user->username, time() + 60 * 60 * 24 * 30, '/');

@@ -16,6 +16,7 @@ include_once '../lib/themes.php';
 unset(
     $_SESSION['change-password_errors'],
     $_SESSION['change-password_lastpost'],
+    $_SESSION['close-account_errors'],
     $_SESSION['edit-profile_errors'],
     $_SESSION['edit-profile_lastpost'],
     $_SESSION['home_messages'],

@@ -16,6 +16,7 @@ if (array_key_exists('files/view_messages', $_SESSION)) {
 }
 
 unset(
+    $_SESSION['files/index_idfolders'],
     $_SESSION['files/index_messages'],
     $_SESSION['files/rename-file_errors'],
     $_SESSION['files/rename-file_lastpost']

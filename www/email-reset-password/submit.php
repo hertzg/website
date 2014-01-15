@@ -26,13 +26,16 @@ if (!$errors) {
 
 Captcha::check($errors, 3);
 
-unset($_SESSION['email-reset-password_errors']);
-
 if ($errors) {
     $_SESSION['email-reset-password_errors'] = $errors;
     $_SESSION['email-reset-password_lastpost'] = array('email' => $email);
     redirect();
 }
+
+unset(
+    $_SESSION['email-reset-password_errors'],
+    $_SESSION['email-reset-password_lastpost']
+);
 
 $resetpasswordkey = md5(uniqid(), true);
 Users::editResetPasswordKey($user->idusers, $resetpasswordkey);

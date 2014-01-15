@@ -25,7 +25,11 @@ if (!$token) {
 $tokens = Tokens::indexOnUser($idusers);
 $items = array();
 if ($tokens) {
-    $options[] = Page::imageLink('Delete All Sessions', 'delete-all.php', 'trash-bin');
+    $options[] = Page::imageLink(
+        'Delete All Sessions',
+        'delete-all.php',
+        'trash-bin'
+    );
     foreach ($tokens as $itemToken) {
 
         $text = bin2hex($itemToken->tokentext);
@@ -59,6 +63,8 @@ if ($options) {
 } else {
     $optionsPanel = '';
 }
+
+unset($_SESSION['account_messages']);
 
 $page->base = '../';
 $page->title = 'Remembered Sessions';

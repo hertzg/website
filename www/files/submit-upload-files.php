@@ -52,8 +52,6 @@ foreach (array($file1, $file2, $file3) as $file) {
     }
 }
 
-unset($_SESSION['files/upload-files_errors']);
-
 $errors = array();
 
 if (!$posttest) {
@@ -66,6 +64,8 @@ if ($errors) {
     $_SESSION['files/upload-files_errors'] = $errors;
     redirect("upload-files.php?idfolders=$idfolders");
 }
+
+unset($_SESSION['files/upload-files_errors']);
 
 if ($numfiles == 1) {
     $message = '1 file has been uploaded.';

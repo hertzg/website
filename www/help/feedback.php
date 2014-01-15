@@ -17,7 +17,7 @@ if (array_key_exists('help/feedback_errors', $_SESSION)) {
     $pageErrors = '';
 }
 
-unset($_SESSION['home_messages']);
+unset($_SESSION['help/index_messages']);
 
 $page->base = '../';
 $page->title = 'Leave Feedback';
