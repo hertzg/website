@@ -46,4 +46,4 @@ BookmarkTags::deleteOnBookmark($id);
 BookmarkTags::add($idusers, $id, $tagnames);
 
 $_SESSION['bookmarks/view_messages'] = array('Changes have been saved.');
-redirect("view.php?id=$id");
+redirect("view/?id=$id");

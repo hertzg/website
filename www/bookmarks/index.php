@@ -30,7 +30,7 @@ if ($tag === '') {
 $items = array();
 if ($bookmarks) {
     foreach ($bookmarks as $bookmark) {
-        $href = "view.php?id=$bookmark->idbookmarks";
+        $href = "view/?id=$bookmark->idbookmarks";
         $escapedUrl = htmlspecialchars($bookmark->url);
         if ($bookmark->title) {
             $items[] = Page::imageLinkWithDescription($bookmark->title, $escapedUrl, $href, 'bookmark');

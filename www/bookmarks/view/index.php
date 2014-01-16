@@ -1,13 +1,25 @@
 <?php
 
-include_once 'lib/require-bookmark.php';
-include_once '../fns/create_external_url.php';
-include_once '../fns/create_panel.php';
-include_once '../fns/create_tags.php';
-include_once '../fns/date_ago.php';
-include_once '../classes/BookmarkTags.php';
-include_once '../classes/Tab.php';
-include_once '../lib/page.php';
+include_once '../../fns/require_user.php';
+require_user('../../');
+
+include_once '../../fns/request_strings.php';
+include_once '../../classes/Bookmarks.php';
+list($id) = request_strings('id');
+$id = abs((int)$id);
+$bookmark = Bookmarks::get($idusers, $id);
+if (!$bookmark) {
+    include_once '../../fns/redirect.php';
+    redirect('..');
+}
+
+include_once '../../fns/create_external_url.php';
+include_once '../../fns/create_panel.php';
+include_once '../../fns/create_tags.php';
+include_once '../../fns/date_ago.php';
+include_once '../../classes/BookmarkTags.php';
+include_once '../../classes/Tab.php';
+include_once '../../lib/page.php';
 
 if (array_key_exists('bookmarks/view_messages', $_SESSION)) {
     $pageMessages = Page::messages($_SESSION['bookmarks/view_messages']);
@@ -26,13 +38,13 @@ $url = $bookmark->url;
 $inserttime = $bookmark->inserttime;
 $updatetime = $bookmark->updatetime;
 
-$base = '../';
+$base = '../../';
 
 $page->base = $base;
 $page->title = htmlspecialchars(mb_substr($title ? $title : $url, 0, 20, 'UTF-8'));
 $page->finish(
     Tab::create(
-        Tab::item('Bookmarks', './')
+        Tab::item('Bookmarks', '../')
         .Tab::activeItem('View'),
         $pageMessages
         .($title ? Page::text(htmlspecialchars($title)).Page::HR : '')
@@ -46,8 +58,8 @@ $page->finish(
     )
     .create_panel(
         'Options',
-        Page::imageLink('Edit Bookmark', "edit.php?id=$id", 'edit-bookmark')
+        Page::imageLink('Edit Bookmark', "../edit.php?id=$id", 'edit-bookmark')
         .Page::HR
-        .Page::imageLink('Delete Bookmark', "delete.php?id=$id", 'trash-bin')
+        .Page::imageLink('Delete Bookmark', "../delete.php?id=$id", 'trash-bin')
     )
 );

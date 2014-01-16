@@ -24,7 +24,7 @@ $page->title = 'Edit Bookmark';
 $page->finish(
     Tab::create(
         Tab::item('Bookmarks', './')
-        .Tab::item('View', "view.php?id=$id")
+        .Tab::item('View', "view/?id=$id")
         .Tab::activeItem('Edit'),
         $pageErrors
         .Form::create(

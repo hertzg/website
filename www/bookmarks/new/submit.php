@@ -45,4 +45,4 @@ include_once '../../classes/BookmarkTags.php';
 BookmarkTags::add($idusers, $id, $tagnames);
 
 $_SESSION['bookmarks/view_messages'] = array('Bookmark has been saved.');
-redirect("../view.php?id=$id");
+redirect("../view/?id=$id");
