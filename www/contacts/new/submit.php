@@ -58,4 +58,4 @@ include_once '../../classes/ContactTags.php';
 ContactTags::add($idusers, $id, $tagnames);
 
 $_SESSION['contacts/view_messages'] = array('Contact has been saved.');
-redirect("../view.php?id=$id");
+redirect("../view/?id=$id");

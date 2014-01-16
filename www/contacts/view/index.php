@@ -1,10 +1,22 @@
 <?php
 
-include_once 'lib/require-contact.php';
-include_once '../fns/create_panel.php';
-include_once '../classes/Form.php';
-include_once '../classes/Tab.php';
-include_once '../lib/page.php';
+include_once '../../fns/require_user.php';
+require_user('../../');
+
+include_once '../../fns/request_strings.php';
+include_once '../../classes/Contacts.php';
+list($id) = request_strings('id');
+$id = abs((int)$id);
+$contact = Contacts::get($idusers, $id);
+if (!$contact) {
+    include_once '../../fns/redirect.php';
+    redirect('..');
+}
+
+include_once '../../fns/create_panel.php';
+include_once '../../classes/Form.php';
+include_once '../../classes/Tab.php';
+include_once '../../lib/page.php';
 
 $address = $contact->address;
 $email = $contact->email;
@@ -23,11 +35,11 @@ unset(
     $_SESSION['contacts/index_messages']
 );
 
-$page->base = '../';
+$page->base = '../../';
 $page->title = htmlspecialchars($contact->fullname);
 $page->finish(
     Tab::create(
-        Tab::item('Contacts', './')
+        Tab::item('Contacts', '../')
         .Tab::activeItem('View'),
         $pageMessages
         .Form::label('Full name', htmlspecialchars($contact->fullname))
@@ -38,8 +50,8 @@ $page->finish(
     )
     .create_panel(
         'Options',
-        Page::imageLink('Edit Contact', "edit.php?id=$id", 'edit-contact')
+        Page::imageLink('Edit Contact', "../edit.php?id=$id", 'edit-contact')
         .Page::HR
-        .Page::imageLink('Delete Contact', "delete.php?id=$id", 'trash-bin')
+        .Page::imageLink('Delete Contact', "../delete.php?id=$id", 'trash-bin')
     )
 );

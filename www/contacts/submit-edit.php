@@ -60,4 +60,4 @@ ContactTags::deleteOnContact($id);
 ContactTags::add($idusers, $id, $tagnames);
 
 $_SESSION['contacts/view_messages'] = array('Changes have been saved.');
-redirect("view.php?id=$id");
+redirect("view/?id=$id");

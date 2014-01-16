@@ -110,7 +110,7 @@ if ($contacts) {
     foreach ($contacts as $contact) {
         $items[] = Page::imageLink(
             htmlspecialchars($contact->fullname),
-            "view.php?id=$contact->idcontacts",
+            "view/?id=$contact->idcontacts",
             'contact'
         );
     }
