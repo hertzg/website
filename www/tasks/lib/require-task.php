@@ -10,4 +10,3 @@ if (!$task) {
     include_once __DIR__.'/../../fns/redirect.php';
     redirect();
 }
-

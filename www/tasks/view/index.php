@@ -1,13 +1,25 @@
 <?php
 
-include_once 'lib/require-task.php';
-include_once '../fns/create_panel.php';
-include_once '../fns/create_tags.php';
-include_once '../fns/date_ago.php';
-include_once '../fns/render_external_links.php';
-include_once '../classes/Tab.php';
-include_once '../classes/TaskTags.php';
-include_once '../lib/page.php';
+include_once '../../fns/require_user.php';
+require_user('../../');
+
+include_once '../../fns/request_strings.php';
+include_once __DIR__.'/../../classes/Tasks.php';
+list($id) = request_strings('id');
+$id = abs((int)$id);
+$task = Tasks::get($idusers, $id);
+if (!$task) {
+    include_once __DIR__.'/../../fns/redirect.php';
+    redirect('..');
+}
+
+include_once '../../fns/create_panel.php';
+include_once '../../fns/create_tags.php';
+include_once '../../fns/date_ago.php';
+include_once '../../fns/render_external_links.php';
+include_once '../../classes/Tab.php';
+include_once '../../classes/TaskTags.php';
+include_once '../../lib/page.php';
 
 unset(
     $_SESSION['tasks/edit_errors'],
@@ -15,25 +27,28 @@ unset(
     $_SESSION['tasks/index_messages']
 );
 
+$options = array();
 if ($task->done) {
-    $setDoneLink = Page::imageLink(
+    $options[] = Page::imageLink(
         'Mark as Not Done',
-        "submit-set-done.php?id=$id",
+        "../submit-set-done.php?id=$id",
         'task'
     );
 } else {
-    $setDoneLink = Page::imageLink(
+    $options[] = Page::imageLink(
         'Mark as Done',
-        "submit-set-done.php?id=$id&done=1",
+        "../submit-set-done.php?id=$id&done=1",
         'task-done'
     );
 }
+$options[] = Page::imageLink('Edit Task', "../edit.php?id=$id", 'edit-task');
+$options[] = Page::imageLink('Delete Task', "../delete.php?id=$id", 'trash-bin');
 
 $tasktext = $task->tasktext;
 $inserttime = $task->inserttime;
 $updatetime = $task->updatetime;
 
-$base = '../';
+$base = '../../';
 
 if (array_key_exists('tasks/view_messages', $_SESSION)) {
     $pageMessages = Page::messages($_SESSION['tasks/view_messages']);
@@ -60,12 +75,5 @@ $page->finish(
             .($inserttime != $updatetime ? '<div>Last modified '.date_ago($updatetime).'.</div>' : '')
         )
     )
-    .create_panel(
-        'Options',
-        $setDoneLink
-        .Page::HR
-        .Page::imageLink('Edit Task', "edit.php?id=$id", 'edit-task')
-        .Page::HR
-        .Page::imageLink('Delete Task', "delete.php?id=$id", 'trash-bin')
-    )
+    .create_panel('Options', join(Page::HR, $options))
 );

@@ -24,7 +24,7 @@ $page->title = 'Edit Task';
 $page->finish(
     Tab::create(
         Tab::item('Tasks', './')
-        .Tab::item('View', "view.php?id=$id")
+        .Tab::item('View', "view/?id=$id")
         .Tab::activeItem('Edit'),
         $pageErrors
         .Form::create(

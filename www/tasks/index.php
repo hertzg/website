@@ -110,7 +110,7 @@ if ($tasks) {
     foreach ($tasks as $task) {
         $icon = $task->done ? 'task-done' : 'task';
         $title = htmlspecialchars($task->tasktext);
-        $href = "view.php?id=$task->idtasks";
+        $href = "view/?id=$task->idtasks";
         $tags = $task->tags;
         if ($tags) {
             $items[] = Page::imageLinkWithDescription($title, 'Tags: '.htmlspecialchars($tags), $href, $icon);

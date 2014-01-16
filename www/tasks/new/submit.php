@@ -44,4 +44,4 @@ include_once '../../classes/TaskTags.php';
 TaskTags::add($idusers, $id, $tagnames);
 
 $_SESSION['tasks/view_messages'] = array('Task has been saved.');
-redirect("../view.php?id=$id");
+redirect("../view/?id=$id");

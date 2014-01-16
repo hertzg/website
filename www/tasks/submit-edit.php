@@ -45,4 +45,4 @@ TaskTags::deleteOnTask($id);
 TaskTags::add($idusers, $id, $tagnames);
 
 $_SESSION['tasks/view_messages'] = array('Changes have been saved.');
-redirect("view.php?id=$id");
+redirect("view/?id=$id");

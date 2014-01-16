@@ -9,4 +9,4 @@ include_once '../classes/Tasks.php';
 list($done) = request_strings('done');
 $done = (bool)$done;
 Tasks::setDone($idusers, $id, $done);
-redirect("view.php?id=$id");
+redirect("view/?id=$id");

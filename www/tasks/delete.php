@@ -14,6 +14,6 @@ $page->finish(
         .Page::HR
         .Page::imageLink('Yes, delete task', "submit-delete.php?id=$id", 'yes')
         .Page::HR
-        .Page::imageLink('No, return back', "view.php?id=$id", 'no')
+        .Page::imageLink('No, return back', "view/?id=$id", 'no')
     )
 );
