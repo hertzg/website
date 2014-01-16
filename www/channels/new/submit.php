@@ -37,4 +37,4 @@ unset(
 $id = Channels::add($idusers, $channelname);
 
 $_SESSION['channels/view_messages'] = array('Channel has been added.');
-redirect("../view.php?id=$id");
+redirect("../view/?id=$id");

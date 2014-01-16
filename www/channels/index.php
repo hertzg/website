@@ -12,7 +12,7 @@ foreach (Channels::index($idusers) as $i => $channel) {
     if ($i) $channels .= Page::HR;
     $channels .= Page::imageLink(
         htmlspecialchars($channel->channelname),
-        "view.php?id=$channel->idchannels",
+        "view/?id=$channel->idchannels",
         'channel'
     );
 }
