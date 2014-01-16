@@ -44,4 +44,4 @@ include_once '../../classes/NoteTags.php';
 NoteTags::add($idusers, $id, $tagnames);
 
 $_SESSION['notes/view_messages'] = array('Note has been saved.');
-redirect("../view.php?id=$id");
+redirect("../view/?id=$id");

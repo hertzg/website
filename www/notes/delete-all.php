@@ -17,6 +17,6 @@ $page->finish(
             'yes'
         )
         .Page::HR
-        .Page::imageLink('No, return back', 'view.php', 'no')
+        .Page::imageLink('No, return back', 'view/', 'no')
     )
 );

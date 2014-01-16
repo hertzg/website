@@ -45,4 +45,4 @@ NoteTags::deleteOnNote($id);
 NoteTags::add($idusers, $id, $tagnames);
 
 $_SESSION['notes/view_messages'] = array('Changes have been saved.');
-redirect("view.php?id=$id");
+redirect("view/?id=$id");
