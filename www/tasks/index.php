@@ -65,12 +65,7 @@ if ($keyword === '') {
         $tasks = Tasks::search($idusers, $keyword);
 
         $items[] = create_search_form(
-            create_search_form_content($keyword, 'Search tasks...')
-            .'<a href="./" class="clickable" title="Clear Search Keyword"'
-            .' style="position: absolute; top: 0; right: 0; bottom: 0; width: 48px; position: absolute">'
-                .'<div class="icon no" style="position: absolute; top: 0; right: 0; left: 0; bottom: 0; margin: auto">'
-                .'</div>'
-            .'</a>'
+            create_search_form_content($keyword, 'Search tasks...', './')
         );
         if (count($tasks) > 1) {
             include_once '../classes/TaskTags.php';
@@ -88,13 +83,8 @@ if ($keyword === '') {
         $tasks = Tasks::searchOnTag($idusers, $keyword, $tag);
 
         $items[] = create_search_form(
-            create_search_form_content($keyword, 'Search tasks...')
+            create_search_form_content($keyword, 'Search tasks...', '?tag='.rawurlencode($tag))
             .createTagInput($tag)
-            .'<a href="?tag='.rawurlencode($tag).'" class="clickable" title="Clear Search Keyword"'
-            .' style="position: absolute; top: 0; right: 0; bottom: 0; width: 48px; text-align: center; line-height: 48px">'
-                .'<div class="icon no" style="position: absolute; top: 0; right: 0; left: 0; bottom: 0; margin: auto">'
-                .'</div>'
-            .'</a>'
         );
 
         $clearHref = '?'.htmlspecialchars(

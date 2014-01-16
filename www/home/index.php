@@ -11,6 +11,7 @@ include_once '../fns/require_user.php';
 require_user($base);
 include_once '../fns/bytestr.php';
 include_once '../fns/create_panel.php';
+include_once '../fns/create_search_form_empty_content.php';
 include_once '../classes/Bookmarks.php';
 include_once '../classes/Contacts.php';
 include_once '../classes/Events.php';
@@ -33,6 +34,11 @@ unset(
 );
 
 $items = array();
+
+$items[] =
+    '<form action="../search/" style="height: 48px; position: relative">'
+        .create_search_form_empty_content('Search...')
+    .'</form>';
 
 $title = 'Bookmarks';
 $href = '../bookmarks/';
