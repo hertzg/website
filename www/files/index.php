@@ -42,7 +42,7 @@ foreach ($folders as $i => $folder) {
 foreach ($files as $i => $file) {
     $items[] = Page::imageLink(
         htmlspecialchars($file->filename),
-        "view.php?id=$file->idfiles",
+        "view/?id=$file->idfiles",
         'file'
     );
 }

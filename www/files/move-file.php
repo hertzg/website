@@ -69,7 +69,7 @@ $page->title = htmlspecialchars($file->filename);
 $page->finish(
     Tab::create(
         Tab::item('Files', create_folder_link($file->idfolders))
-        .Tab::item('View', "view.php?id=$file->idfiles")
+        .Tab::item('View', "view/?id=$file->idfiles")
         .Tab::activeItem('Move'),
         $pageErrors
         .Page::warnings(array(
