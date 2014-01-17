@@ -1,18 +1,18 @@
 <?php
 
 include_once 'lib/require-channel.php';
-include_once '../classes/Channels.php';
-include_once '../classes/Tab.php';
-include_once '../lib/page.php';
+include_once '../../classes/Channels.php';
+include_once '../../classes/Tab.php';
+include_once '../../lib/page.php';
 
 unset($_SESSION['channels/view/index_messages']);
 
-$page->base = '../';
+$page->base = '../../';
 $page->title = 'Delete Channel?';
 $page->finish(
     Tab::create(
-        Tab::item('Notifications', '../notifications/')
-        .Tab::item('Channels', './')
+        Tab::item('Notifications', '../../notifications/')
+        .Tab::item('Channels', '../')
         .Tab::activeItem('View'),
         Page::text(
             'Are you sure you want to delete the channel'
@@ -21,10 +21,10 @@ $page->finish(
         .Page::HR
         .Page::imageLink(
             'Yes, delete channel',
-            "submit-delete.php?id=$id",
+            "submit.php?id=$id",
             'yes'
         )
         .Page::HR
-        .Page::imageLink('No, return back', "view/?id=$id", 'no')
+        .Page::imageLink('No, return back', "../view/?id=$id", 'no')
     )
 );

@@ -53,6 +53,6 @@ $page->finish(
             'randomize'
         )
         .Page::HR
-        .Page::imageLink('Delete Channel', "../delete.php?id=$id", 'trash-bin')
+        .Page::imageLink('Delete Channel', "../delete/?id=$id", 'trash-bin')
     )
 );
