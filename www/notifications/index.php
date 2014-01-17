@@ -49,13 +49,13 @@ if ($notifications) {
     if ($channel) {
         $options[] = Page::imageLink(
             'Delete Notifications',
-            "delete.php?id=$id",
+            "delete/?id=$id",
             'trash-bin'
         );
     } else {
         $options[] = Page::imageLink(
             'Delete All Notifications',
-            'delete-all.php',
+            'delete-all/',
             'trash-bin'
         );
     }

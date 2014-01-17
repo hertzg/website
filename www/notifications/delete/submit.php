@@ -1,11 +1,11 @@
 <?php
 
-include_once '../lib/sameDomainReferer.php';
-include_once '../fns/redirect.php';
+include_once '../../lib/sameDomainReferer.php';
+include_once '../../fns/redirect.php';
 if (!$sameDomainReferer) redirect();
 include_once 'lib/require-user.php';
-include_once '../fns/request_strings.php';
-include_once '../classes/Notifications.php';
+include_once '../../fns/request_strings.php';
+include_once '../../classes/Notifications.php';
 
 list($id) = request_strings('id');
 $id = abs((int)$id);
@@ -15,4 +15,4 @@ $_SESSION['notifications/index_messages'] = array(
     'Notifications have been deleted.',
 );
 
-redirect();
+redirect('..');

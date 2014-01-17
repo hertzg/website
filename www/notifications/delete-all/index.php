@@ -1,12 +1,12 @@
 <?php
 
 include_once 'lib/require-user.php';
-include_once '../classes/Tab.php';
-include_once '../lib/page.php';
+include_once '../../classes/Tab.php';
+include_once '../../lib/page.php';
 
 unset($_SESSION['notifications/index_messages']);
 
-$page->base = '../';
+$page->base = '../../';
 $page->title = 'Delete All Notifications?';
 $page->finish(
     Tab::create(
@@ -15,10 +15,10 @@ $page->finish(
         .Page::HR
         .Page::imageLink(
             'Yes, delete all notifications',
-            'submit-delete-all.php',
+            'submit.php',
             'yes'
         )
         .Page::HR
-        .Page::imageLink('No, return back', './', 'no')
+        .Page::imageLink('No, return back', '../', 'no')
     )
 );

@@ -1,14 +1,14 @@
 <?php
 
-include_once '../lib/sameDomainReferer.php';
-include_once '../fns/redirect.php';
+include_once '../../lib/sameDomainReferer.php';
+include_once '../../fns/redirect.php';
 if (!$sameDomainReferer) redirect();
 include_once 'lib/require-user.php';
-include_once '../classes/Notifications.php';
+include_once '../../classes/Notifications.php';
 Notifications::deleteAll($idusers);
 
 $_SESSION['notifications/index_messages'] = array(
     'All notifications have been deleted.',
 );
 
-redirect();
+redirect('..');
