@@ -2,7 +2,7 @@
 
 include_once '../../lib/sameDomainReferer.php';
 include_once '../../fns/redirect.php';
-if (!$sameDomainReferer) redirect('..');
+if (!$sameDomainReferer) redirect('../..');
 include_once 'lib/require-contact.php';
 
 include_once '../../classes/Contacts.php';

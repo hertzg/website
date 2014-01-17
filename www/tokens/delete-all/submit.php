@@ -2,9 +2,9 @@
 
 include_once '../../lib/sameDomainReferer.php';
 include_once '../../fns/redirect.php';
-if (!$sameDomainReferer) redirect('..');
-
+if (!$sameDomainReferer) redirect('../..');
 include_once 'lib/require-user.php';
+
 include_once '../../classes/Tokens.php';
 Tokens::deleteOnUser($idusers);
 

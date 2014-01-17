@@ -11,6 +11,8 @@ list($id) = request_strings('id');
 $id = abs((int)$id);
 Notifications::deleteOnChannel($idusers, $id);
 
-$_SESSION['notifications/index_messages'] = array('Notifications have been deleted.');
+$_SESSION['notifications/index_messages'] = array(
+    'Notifications have been deleted.',
+);
 
 redirect();

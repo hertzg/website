@@ -7,6 +7,8 @@ include_once 'lib/require-user.php';
 include_once '../classes/Notifications.php';
 Notifications::deleteAll($idusers);
 
-$_SESSION['notifications/index_messages'] = array('All notifications have been deleted.');
+$_SESSION['notifications/index_messages'] = array(
+    'All notifications have been deleted.',
+);
 
 redirect();

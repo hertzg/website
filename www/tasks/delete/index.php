@@ -1,10 +1,12 @@
 <?php
 
 include_once 'lib/require-task.php';
-include_once '../classes/Tab.php';
-include_once '../lib/page.php';
+include_once '../../classes/Tab.php';
+include_once '../../lib/page.php';
 
-$page->base = '../';
+unset($_SESSION['tasks/view/index_messages']);
+
+$page->base = '../../';
 $page->title = 'Delete Task?';
 $page->finish(
     Tab::create(
@@ -12,8 +14,8 @@ $page->finish(
         .Tab::activeItem('View'),
         Page::text('Are you sure you want to delete the task?')
         .Page::HR
-        .Page::imageLink('Yes, delete task', "submit-delete.php?id=$id", 'yes')
+        .Page::imageLink('Yes, delete task', "submit.php?id=$id", 'yes')
         .Page::HR
-        .Page::imageLink('No, return back', "view/?id=$id", 'no')
+        .Page::imageLink('No, return back', "../view/?id=$id", 'no')
     )
 );

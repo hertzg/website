@@ -4,6 +4,8 @@ include_once 'lib/require-bookmark.php';
 include_once '../../classes/Tab.php';
 include_once '../../lib/page.php';
 
+unset($_SESSION['bookmarks/view/index_messages']);
+
 $page->base = '../../';
 $page->title = 'Delete Bookmark?';
 $page->finish(
