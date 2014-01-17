@@ -52,6 +52,6 @@ $page->finish(
         'Options',
         Page::imageLink('Edit Contact', "../edit.php?id=$id", 'edit-contact')
         .Page::HR
-        .Page::imageLink('Delete Contact', "../delete.php?id=$id", 'trash-bin')
+        .Page::imageLink('Delete Contact', "../delete/?id=$id", 'trash-bin')
     )
 );

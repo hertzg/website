@@ -132,7 +132,7 @@ $options = array(Page::imageLink('New Contact', 'new/', 'create-contact'));
 if ($contacts) {
     $options[] = Page::imageLink(
         'Delete All Contacts',
-        'delete-all.php',
+        'delete-all/',
         'trash-bin'
     );
 }
