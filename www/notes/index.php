@@ -127,7 +127,7 @@ $options = array(Page::imageLink('New Note', 'new/', 'create-note'));
 if ($notes) {
     $options[] = Page::imageLink(
         'Delete All Notes',
-        'delete-all.php',
+        'delete-all/',
         'trash-bin'
     );
 }

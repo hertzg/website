@@ -62,6 +62,6 @@ $page->finish(
         'Options',
         Page::imageLink('Edit Note', "../edit.php?id=$id", 'edit-note')
         .Page::HR
-        .Page::imageLink('Delete Note', "../delete.php?id=$id", 'trash-bin')
+        .Page::imageLink('Delete Note', "../delete/?id=$id", 'trash-bin')
     )
 );
