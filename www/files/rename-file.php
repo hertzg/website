@@ -19,7 +19,7 @@ if (array_key_exists('files/rename-file_lastpost', $_SESSION)) {
     $values = (array)$file;
 }
 
-unset($_SESSION['files/view_messages']);
+unset($_SESSION['files/view/index_messages']);
 
 $page->base = '../';
 $page->title = 'Rename File: '.htmlspecialchars($file->filename);

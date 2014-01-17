@@ -50,8 +50,8 @@ $updatetime = $task->updatetime;
 
 $base = '../../';
 
-if (array_key_exists('tasks/view_messages', $_SESSION)) {
-    $pageMessages = Page::messages($_SESSION['tasks/view_messages']);
+if (array_key_exists('tasks/view/index_messages', $_SESSION)) {
+    $pageMessages = Page::messages($_SESSION['tasks/view/index_messages']);
 } else {
     $pageMessages = '';
 }

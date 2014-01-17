@@ -44,5 +44,5 @@ include_once '../classes/TaskTags.php';
 TaskTags::deleteOnTask($id);
 TaskTags::add($idusers, $id, $tagnames, $tasktext, $tags);
 
-$_SESSION['tasks/view_messages'] = array('Changes have been saved.');
+$_SESSION['tasks/view/index_messages'] = array('Changes have been saved.');
 redirect("view/?id=$id");

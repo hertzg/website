@@ -21,8 +21,8 @@ include_once '../../classes/BookmarkTags.php';
 include_once '../../classes/Tab.php';
 include_once '../../lib/page.php';
 
-if (array_key_exists('bookmarks/view_messages', $_SESSION)) {
-    $pageMessages = Page::messages($_SESSION['bookmarks/view_messages']);
+if (array_key_exists('bookmarks/view/index_messages', $_SESSION)) {
+    $pageMessages = Page::messages($_SESSION['bookmarks/view/index_messages']);
 } else {
     $pageMessages = '';
 }

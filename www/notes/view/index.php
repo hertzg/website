@@ -21,8 +21,8 @@ include_once '../../classes/NoteTags.php';
 include_once '../../classes/Tab.php';
 include_once '../../lib/page.php';
 
-if (array_key_exists('notes/view_messages', $_SESSION)) {
-    $pageMessages = Page::messages($_SESSION['notes/view_messages']);
+if (array_key_exists('notes/view/index_messages', $_SESSION)) {
+    $pageMessages = Page::messages($_SESSION['notes/view/index_messages']);
 } else {
     $pageMessages = '';
 }

@@ -23,7 +23,7 @@ if (!$channels) {
 unset(
     $_SESSION['channels/add_errors'],
     $_SESSION['channels/add_lastpost'],
-    $_SESSION['channels/view_messages'],
+    $_SESSION['channels/view/index_messages'],
     $_SESSION['notifications/index_messages']
 );
 

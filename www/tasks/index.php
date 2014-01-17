@@ -124,7 +124,7 @@ unset(
     $_SESSION['home/index_messages'],
     $_SESSION['tasks/new/index_errors'],
     $_SESSION['tasks/new/index_lastpost'],
-    $_SESSION['tasks/view_messages']
+    $_SESSION['tasks/view/index_messages']
 );
 
 $options = array(Page::imageLink('New Task', 'new/', 'create-task'));

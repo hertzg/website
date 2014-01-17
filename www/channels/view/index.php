@@ -22,8 +22,8 @@ include_once '../../lib/page.php';
 
 Channels::addNumNotifications($idusers, $id, -$channel->numnotifications);
 
-if (array_key_exists('channels/view_messages', $_SESSION)) {
-    $pageMessages = Page::messages($_SESSION['channels/view_messages']);
+if (array_key_exists('channels/view/index_messages', $_SESSION)) {
+    $pageMessages = Page::messages($_SESSION['channels/view/index_messages']);
 } else {
     $pageMessages = '';
 }

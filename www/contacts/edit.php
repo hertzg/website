@@ -17,7 +17,7 @@ if (array_key_exists('contacts/edit_errors', $_SESSION)) {
     $pageErrors = '';
 }
 
-unset($_SESSION['contacts/view_messages']);
+unset($_SESSION['contacts/view/index_messages']);
 
 $page->base = '../';
 $page->title = 'Edit Contact';

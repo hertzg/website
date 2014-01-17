@@ -59,7 +59,7 @@ if (array_key_exists('bookmarks/index_messages', $_SESSION)) {
 unset(
     $_SESSION['bookmarks/new/index_errors'],
     $_SESSION['bookmarks/new/index_lastpost'],
-    $_SESSION['bookmarks/view_messages'],
+    $_SESSION['bookmarks/view/index_messages'],
     $_SESSION['home/index_messages']
 );
 

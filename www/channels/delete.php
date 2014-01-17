@@ -5,7 +5,7 @@ include_once '../classes/Channels.php';
 include_once '../classes/Tab.php';
 include_once '../lib/page.php';
 
-unset($_SESSION['channels/view_messages']);
+unset($_SESSION['channels/view/index_messages']);
 
 $page->base = '../';
 $page->title = 'Delete Channel?';

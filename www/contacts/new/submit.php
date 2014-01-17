@@ -57,5 +57,5 @@ $id = Contacts::add($idusers, $fullname, $address, $email, $phone1, $phone2, $ta
 include_once '../../classes/ContactTags.php';
 ContactTags::add($idusers, $id, $tagnames, $fullname);
 
-$_SESSION['contacts/view_messages'] = array('Contact has been saved.');
+$_SESSION['contacts/view/index_messages'] = array('Contact has been saved.');
 redirect("../view/?id=$id");

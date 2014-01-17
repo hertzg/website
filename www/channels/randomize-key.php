@@ -13,7 +13,7 @@ $id = abs((int)$id);
 $channel = Channels::get($idusers, $id);
 if (!$channel) redirect();
 
-unset($_SESSION['channels/view_messages']);
+unset($_SESSION['channels/view/index_messages']);
 
 $page->base = '../';
 $page->title = 'Randomize Channel Key';

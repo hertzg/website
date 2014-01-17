@@ -59,5 +59,5 @@ include_once '../classes/ContactTags.php';
 ContactTags::deleteOnContact($id);
 ContactTags::add($idusers, $id, $tagnames, $fullname);
 
-$_SESSION['contacts/view_messages'] = array('Changes have been saved.');
+$_SESSION['contacts/view/index_messages'] = array('Changes have been saved.');
 redirect("view/?id=$id");

@@ -32,5 +32,5 @@ unset(
 
 Files::rename($idusers, $id, $filename);
 
-$_SESSION['files/view_messages'] = array('Renamed.');
+$_SESSION['files/view/index_messages'] = array('Renamed.');
 redirect("view/?id=$id");

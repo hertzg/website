@@ -44,5 +44,5 @@ include_once '../classes/NoteTags.php';
 NoteTags::deleteOnNote($id);
 NoteTags::add($idusers, $id, $tagnames, $notetext);
 
-$_SESSION['notes/view_messages'] = array('Changes have been saved.');
+$_SESSION['notes/view/index_messages'] = array('Changes have been saved.');
 redirect("view/?id=$id");

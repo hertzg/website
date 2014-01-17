@@ -4,7 +4,7 @@ include_once 'lib/require-contact.php';
 include_once '../classes/Tab.php';
 include_once '../lib/page.php';
 
-unset($_SESSION['contacts/view_messages']);
+unset($_SESSION['contacts/view/index_messages']);
 
 $page->base = '../';
 $page->title = 'Delete Contact?';

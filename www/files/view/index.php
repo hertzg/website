@@ -21,8 +21,8 @@ include_once '../../classes/Form.php';
 include_once '../../classes/Tab.php';
 include_once '../../lib/page.php';
 
-if (array_key_exists('files/view_messages', $_SESSION)) {
-    $pageMessages = Page::messages($_SESSION['files/view_messages']);
+if (array_key_exists('files/view/index_messages', $_SESSION)) {
+    $pageMessages = Page::messages($_SESSION['files/view/index_messages']);
 } else {
     $pageMessages = '';
 }

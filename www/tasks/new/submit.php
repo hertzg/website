@@ -43,5 +43,5 @@ $id = Tasks::add($idusers, $tasktext, $tags);
 include_once '../../classes/TaskTags.php';
 TaskTags::add($idusers, $id, $tagnames, $tasktext, $tags);
 
-$_SESSION['tasks/view_messages'] = array('Task has been saved.');
+$_SESSION['tasks/view/index_messages'] = array('Task has been saved.');
 redirect("../view/?id=$id");
