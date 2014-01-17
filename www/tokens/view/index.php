@@ -39,6 +39,6 @@ $page->finish(
     )
     .create_panel(
         'Options',
-        Page::imageLink('Delete Session', "../delete.php?id=$id", 'trash-bin')
+        Page::imageLink('Delete Session', "../delete/?id=$id", 'trash-bin')
     )
 );

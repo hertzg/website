@@ -1,17 +1,17 @@
 <?php
 
 include_once 'lib/require-token.php';
-include_once '../classes/Tab.php';
-include_once '../lib/page.php';
+include_once '../../classes/Tab.php';
+include_once '../../lib/page.php';
 
 unset($_SESSION['tokens/index_messages']);
 
-$page->base = '../';
+$page->base = '../../';
 $page->title = 'Delete Remembered Session?';
 $page->finish(
     Tab::create(
-        Tab::item('Account', '../account/')
-        .Tab::item('Sessions', './')
+        Tab::item('Account', '../../account/')
+        .Tab::item('Sessions', '../')
         .Tab::activeItem('View'),
         Page::text(
             'Are you sure you want to delete the remembered session'
@@ -20,10 +20,10 @@ $page->finish(
         .Page::HR
         .Page::imageLink(
             'Yes, delete remembered session',
-            "submit-delete.php?id=$id",
+            "submit.php?id=$id",
             'yes'
         )
         .Page::HR
-        .Page::imageLink('No, return back', "view/?id=$id", 'no')
+        .Page::imageLink('No, return back', "../view/?id=$id", 'no')
     )
 );
