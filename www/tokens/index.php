@@ -27,7 +27,7 @@ $items = array();
 if ($tokens) {
     $options[] = Page::imageLink(
         'Delete All Sessions',
-        'delete-all.php',
+        'delete-all/',
         'trash-bin'
     );
     foreach ($tokens as $itemToken) {
