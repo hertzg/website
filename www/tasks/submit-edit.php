@@ -42,7 +42,7 @@ Tasks::edit($idusers, $id, $tasktext, $tags);
 
 include_once '../classes/TaskTags.php';
 TaskTags::deleteOnTask($id);
-TaskTags::add($idusers, $id, $tagnames);
+TaskTags::add($idusers, $id, $tagnames, $tasktext, $tags);
 
 $_SESSION['tasks/view_messages'] = array('Changes have been saved.');
 redirect("view/?id=$id");

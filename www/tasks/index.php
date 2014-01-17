@@ -44,7 +44,8 @@ if ($keyword === '') {
 
     } else {
 
-        $tasks = Tasks::indexOnTag($idusers, $tag);
+        include_once '../classes/TaskTags.php';
+        $tasks = TaskTags::indexOnTagName($idusers, $tag);
 
         if (count($tasks) > 1) {
             include_once '../fns/create_search_form_empty_content.php';
@@ -80,7 +81,8 @@ if ($keyword === '') {
 
     } else {
 
-        $tasks = Tasks::searchOnTag($idusers, $keyword, $tag);
+        include_once '../classes/TaskTags.php';
+        $tasks = TaskTags::searchOnTagName($idusers, $keyword, $tag);
 
         $items[] = create_search_form(
             create_search_form_content($keyword, 'Search tasks...', '?tag='.rawurlencode($tag))

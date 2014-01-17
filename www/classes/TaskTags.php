@@ -5,14 +5,19 @@ include_once __DIR__.'/../lib/mysqli.php';
 
 class TaskTags {
 
-    static function add ($idusers, $idtasks, array $tagnames) {
+    static function add ($idusers, $idtasks, array $tagnames, $tasktext, $tags) {
         global $mysqli;
+        $tasktext = mysqli_real_escape_string($mysqli, $tasktext);
+        $tags = mysqli_real_escape_string($mysqli, $tags);
+        $inserttime = $updatetime = time();
         foreach ($tagnames as $tagname) {
             $tagname = mysqli_real_escape_string($mysqli, $tagname);
             mysqli_query(
                 $mysqli,
-                'insert into tasktags (idusers, idtasks, tagname)'
-                ." values ($idusers, $idtasks, '$tagname')"
+                'insert into tasktags (idusers, idtasks, tagname,'
+                .' tasktext, tags, inserttime, updatetime)'
+                ." values ($idusers, $idtasks, '$tagname',"
+                ." '$tasktext', '$tags', $inserttime, $updatetime)"
             );
         }
     }
@@ -25,6 +30,18 @@ class TaskTags {
     static function deleteOnUser ($idusers) {
         global $mysqli;
         mysqli_query($mysqli, "delete from tasktags where idusers = $idusers");
+    }
+
+    static function indexOnTagName ($idusers, $tagname) {
+        global $mysqli;
+        $tagname = mysqli_real_escape_string($mysqli, $tagname);
+        return mysqli_query_object(
+            $mysqli,
+            'select * from tasktags'
+            ." where idusers = $idusers"
+            ." and tagname = '$tagname'"
+            .' order by done, updatetime desc'
+        );
     }
 
     static function indexOnTask ($idtasks) {
@@ -42,6 +59,31 @@ class TaskTags {
             $mysqli,
             'select distinct tagname from tasktags'
             ." where idusers = $idusers order by tagname"
+        );
+    }
+
+    static function searchOnTagName ($idusers, $keyword, $tagname) {
+        global $mysqli;
+        include_once __DIR__.'/../fns/escape_like.php';
+        $keyword = escape_like($keyword);
+        $keyword = mysqli_real_escape_string($mysqli, $keyword);
+        $tagname = mysqli_real_escape_string($mysqli, $tagname);
+        return mysqli_query_object(
+            $mysqli,
+            'select * from tasktags'
+            ." where idusers = $idusers"
+            ." and tasktext like '%$keyword%'"
+            ." and tagname = '$tagname'"
+            .' order by done, updatetime desc'
+        );
+    }
+
+    static function setTaskDone ($idtasks, $done) {
+        global $mysqli;
+        $done = $done ? '1' : '0';
+        mysqli_query(
+            $mysqli,
+           "update tasktags set done = $done where idtasks = $idtasks"
         );
     }
 

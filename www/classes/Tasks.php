@@ -71,22 +71,6 @@ class Tasks {
         );
     }
 
-    static function indexOnTag ($idusers, $tag) {
-        global $mysqli;
-        $tag = mysqli_real_escape_string($mysqli, $tag);
-        return mysqli_query_object(
-            $mysqli,
-            'select * from tasks'
-            ." where idusers = $idusers"
-            .' and exists ('
-            .'  select idtasks from tasktags'
-            .'  where tasktags.idtasks = tasks.idtasks'
-            ."  and tasktags.tagname = '$tag'"
-            .' )'
-            .' order by done, updatetime desc'
-        );
-    }
-
     static function search ($idusers, $keyword) {
         global $mysqli;
         include_once __DIR__.'/../fns/escape_like.php';
@@ -96,25 +80,6 @@ class Tasks {
             $mysqli,
             'select * from tasks'
             ." where idusers = $idusers and tasktext like '%$keyword%'"
-            .' order by done, updatetime desc'
-        );
-    }
-
-    static function searchOnTag ($idusers, $keyword, $tag) {
-        global $mysqli;
-        include_once __DIR__.'/../fns/escape_like.php';
-        $keyword = escape_like($keyword);
-        $keyword = mysqli_real_escape_string($mysqli, $keyword);
-        $tag = mysqli_real_escape_string($mysqli, $tag);
-        return mysqli_query_object(
-            $mysqli,
-            'select * from tasks'
-            ." where idusers = $idusers and tasktext like '%$keyword%'"
-            .' and exists ('
-            .'  select idtasks from tasktags'
-            .'  where tasktags.idtasks = tasks.idtasks'
-            ."  and tasktags.tagname = '$tag'"
-            .' )'
             .' order by done, updatetime desc'
         );
     }
