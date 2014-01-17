@@ -60,6 +60,6 @@ $page->finish(
         'Options',
         Page::imageLink('Edit Bookmark', "../edit.php?id=$id", 'edit-bookmark')
         .Page::HR
-        .Page::imageLink('Delete Bookmark', "../delete.php?id=$id", 'trash-bin')
+        .Page::imageLink('Delete Bookmark', "../delete/?id=$id", 'trash-bin')
     )
 );

@@ -67,7 +67,7 @@ $options = array(Page::imageLink('New Bookmark', 'new/', 'create-bookmark'));
 if ($bookmarks) {
     $options[] = Page::imageLink(
         'Delete All Bookmarks',
-        'delete-all.php',
+        'delete-all/',
         'trash-bin'
     );
 }

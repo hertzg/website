@@ -42,7 +42,7 @@ if ($task->done) {
     );
 }
 $options[] = Page::imageLink('Edit Task', "../edit.php?id=$id", 'edit-task');
-$options[] = Page::imageLink('Delete Task', "../delete.php?id=$id", 'trash-bin');
+$options[] = Page::imageLink('Delete Task', "../delete/?id=$id", 'trash-bin');
 
 $tasktext = $task->tasktext;
 $inserttime = $task->inserttime;
