@@ -1,10 +1,10 @@
 <?php
 
 include_once 'lib/require-user.php';
-include_once '../classes/Tab.php';
-include_once '../lib/page.php';
+include_once '../../classes/Tab.php';
+include_once '../../lib/page.php';
 
-$page->base = '../';
+$page->base = '../../';
 $page->title = 'Delete All Tasks?';
 $page->finish(
     Tab::create(
@@ -13,10 +13,10 @@ $page->finish(
         .Page::HR
         .Page::imageLink(
             'Yes, delete all task',
-            'submit-delete-all.php',
+            'submit.php',
             'yes'
         )
         .Page::HR
-        .Page::imageLink('No, return back', './', 'no')
+        .Page::imageLink('No, return back', '../', 'no')
     )
 );

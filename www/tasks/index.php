@@ -131,7 +131,7 @@ $options = array(Page::imageLink('New Task', 'new/', 'create-task'));
 if ($tasks) {
     $options[] = Page::imageLink(
         'Delete All Tasks',
-        'delete-all.php',
+        'delete-all/',
         'trash-bin'
     );
 }
