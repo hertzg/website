@@ -41,7 +41,7 @@ include_once '../../classes/Notes.php';
 $id = Notes::add($idusers, $notetext, $tags);
 
 include_once '../../classes/NoteTags.php';
-NoteTags::add($idusers, $id, $tagnames);
+NoteTags::add($idusers, $id, $tagnames, $notetext);
 
 $_SESSION['notes/view_messages'] = array('Note has been saved.');
 redirect("../view/?id=$id");

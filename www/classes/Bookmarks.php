@@ -76,20 +76,4 @@ class Bookmarks {
         );
     }
 
-    static function indexOnTag ($idusers, $tag) {
-        global $mysqli;
-        $tag = mysqli_real_escape_string($mysqli, $tag);
-        return mysqli_query_object(
-            $mysqli,
-            'select * from bookmarks'
-            ." where idusers = $idusers"
-            .' and exists ('
-            .'  select idbookmarks from bookmarktags'
-            .'  where bookmarktags.idbookmarks = bookmarks.idbookmarks'
-            ."  and bookmarktags.tagname = '$tag'"
-            .' )'
-            .' order by updatetime desc'
-        );
-    }
-
 }

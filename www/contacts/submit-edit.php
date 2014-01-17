@@ -57,7 +57,7 @@ Contacts::edit($idusers, $id, $fullname, $address,
 
 include_once '../classes/ContactTags.php';
 ContactTags::deleteOnContact($id);
-ContactTags::add($idusers, $id, $tagnames);
+ContactTags::add($idusers, $id, $tagnames, $fullname);
 
 $_SESSION['contacts/view_messages'] = array('Changes have been saved.');
 redirect("view/?id=$id");

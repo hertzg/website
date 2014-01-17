@@ -8,7 +8,8 @@ function create_search_form ($content) {
 }
 
 function createTagInput ($tag) {
-    return '<input type="hidden" name="tag" value="'.htmlspecialchars($tag).'" />';
+    return '<input type="hidden" name="tag"'
+        .' value="'.htmlspecialchars($tag).'" />';
 }
 
 include_once 'lib/require-user.php';
@@ -31,7 +32,9 @@ if ($keyword === '') {
         if (count($contacts) > 1) {
 
             include_once '../fns/create_search_form_empty_content.php';
-            $items[] = create_search_form(create_search_form_empty_content('Search contacts...'));
+            $items[] = create_search_form(
+                create_search_form_empty_content('Search contacts...')
+            );
 
             include_once '../classes/ContactTags.php';
             $tags = ContactTags::indexOnUser($idusers);
@@ -83,7 +86,11 @@ if ($keyword === '') {
         $contacts = Contacts::searchOnTag($idusers, $keyword, $tag);
 
         $items[] = create_search_form(
-            create_search_form_content($keyword, 'Search contacts...', '?tag='.rawurlencode($tag))
+            create_search_form_content(
+                $keyword,
+                'Search contacts...',
+                '?tag='.rawurlencode($tag)
+            )
             .createTagInput($tag)
         );
 

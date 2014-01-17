@@ -17,12 +17,15 @@ if ($tag === '') {
         if ($bookmarkTags) {
             include_once '../fns/create_tag_filter_bar.php';
             $filterMessage = create_tag_filter_bar($bookmarkTags, array());
+        } else {
+            $filterMessage = '';
         }
     } else {
         $filterMessage = '';
     }
 } else {
-    $bookmarks = Bookmarks::indexOnTag($idusers, $tag);
+    include_once '../classes/BookmarkTags.php';
+    $bookmarks = BookmarkTags::indexOnTagName($idusers, $tag);
     include_once '../fns/create_clear_filter_bar.php';
     $filterMessage = create_clear_filter_bar($tag, './');
 }
@@ -33,7 +36,12 @@ if ($bookmarks) {
         $href = "view/?id=$bookmark->idbookmarks";
         $escapedUrl = htmlspecialchars($bookmark->url);
         if ($bookmark->title) {
-            $items[] = Page::imageLinkWithDescription($bookmark->title, $escapedUrl, $href, 'bookmark');
+            $items[] = Page::imageLinkWithDescription(
+                $bookmark->title,
+                $escapedUrl,
+                $href,
+                'bookmark'
+            );
         } else {
             $items[] = Page::imageLink($bookmark->url, $href, 'bookmark');
         }

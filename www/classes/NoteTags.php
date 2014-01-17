@@ -5,14 +5,18 @@ include_once __DIR__.'/../lib/mysqli.php';
 
 class NoteTags {
 
-    static function add ($idusers, $idnotes, array $tagnames) {
+    static function add ($idusers, $idnotes, array $tagnames, $notetext) {
         global $mysqli;
+        $notetext = mysqli_real_escape_string($mysqli, $notetext);
+        $inserttime = $updatetime = time();
         foreach ($tagnames as $tagname) {
             $tagname = mysqli_real_escape_string($mysqli, $tagname);
             mysqli_query(
                 $mysqli,
-                'insert into notetags (idusers, idnotes, tagname)'
-                ." values ($idusers, $idnotes, '$tagname')"
+                'insert into notetags (idusers, idnotes, tagname,'
+                .' notetext, inserttime, updatetime)'
+                ." values ($idusers, $idnotes, '$tagname',"
+                ." '$notetext', $inserttime, $updatetime)"
             );
         }
     }
@@ -39,12 +43,40 @@ class NoteTags {
         );
     }
 
+    static function indexOnTagName ($idusers, $tagname) {
+        global $mysqli;
+        $tagname = mysqli_real_escape_string($mysqli, $tagname);
+        return mysqli_query_object(
+            $mysqli,
+            'select * from notetags'
+            ." where idusers = $idusers"
+            ." and tagname = '$tagname'"
+            .' order by updatetime desc'
+        );
+    }
+
     static function indexOnUser ($idusers) {
         global $mysqli;
         return mysqli_query_object(
             $mysqli,
             'select distinct tagname from notetags'
             ." where idusers = $idusers order by tagname"
+        );
+    }
+
+    static function searchOnTagName ($idusers, $keyword, $tagname) {
+        global $mysqli;
+        include_once __DIR__.'/../fns/escape_like.php';
+        $keyword = escape_like($keyword);
+        $keyword = mysqli_real_escape_string($mysqli, $keyword);
+        $tagname = mysqli_real_escape_string($mysqli, $tagname);
+        return mysqli_query_object(
+            $mysqli,
+            'select * from notetags'
+            ." where idusers = $idusers"
+            ." and notetext like '%$keyword%'"
+            ." and tagname = '$tagname'"
+            .' order by updatetime desc'
         );
     }
 

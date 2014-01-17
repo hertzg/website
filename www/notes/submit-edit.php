@@ -42,7 +42,7 @@ Notes::edit($idusers, $id, $notetext, $tags);
 
 include_once '../classes/NoteTags.php';
 NoteTags::deleteOnNote($id);
-NoteTags::add($idusers, $id, $tagnames);
+NoteTags::add($idusers, $id, $tagnames, $notetext);
 
 $_SESSION['notes/view_messages'] = array('Changes have been saved.');
 redirect("view/?id=$id");

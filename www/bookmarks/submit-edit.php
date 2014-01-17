@@ -43,7 +43,7 @@ Bookmarks::edit($idusers, $id, $title, $url, $tags);
 
 include_once '../classes/BookmarkTags.php';
 BookmarkTags::deleteOnBookmark($id);
-BookmarkTags::add($idusers, $id, $tagnames);
+BookmarkTags::add($idusers, $id, $tagnames, $title, $url);
 
 $_SESSION['bookmarks/view_messages'] = array('Changes have been saved.');
 redirect("view/?id=$id");

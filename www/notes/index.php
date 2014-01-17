@@ -44,7 +44,8 @@ if ($keyword === '') {
 
     } else {
 
-        $notes = Notes::indexOnTag($idusers, $tag);
+        include_once '../classes/NoteTags.php';
+        $notes = NoteTags::indexOnTagName($idusers, $tag);
 
         if (count($notes) > 1) {
             include_once '../fns/create_search_form_empty_content.php';
@@ -80,7 +81,8 @@ if ($keyword === '') {
 
     } else {
 
-        $notes = Notes::searchOnTag($idusers, $keyword, $tag);
+        include_once '../classes/NoteTags.php';
+        $notes = NoteTags::searchOnTagName($idusers, $keyword, $tag);
 
         $items[] = create_search_form(
             create_search_form_content($keyword, 'Search notes...', '?tag='.rawurlencode($tag))
