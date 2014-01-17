@@ -28,6 +28,7 @@ $time = mktime(0, 0, 0, $month, $day, $year);
 unset($_SESSION['calendar/index_messages']);
 
 $page->base = '../';
+$page->title = 'New Event';
 $page->finish(
     Tab::create(
         Tab::item('Calendar', './')

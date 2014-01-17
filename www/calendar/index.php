@@ -142,7 +142,7 @@ $page->finish(
         .Page::HR
         .Page::imageLink(
             'Jump To',
-            "jump-to.php?year=$yearNow&month=$monthNow",
+            "jump-to/?year=$yearNow&month=$monthNow",
             'calendar'
         )
         .Page::HR
