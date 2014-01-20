@@ -1,6 +1,6 @@
 <?php
 
-function create_tags ($tags) {
+function create_tags ($base, $tags) {
     if ($tags) {
         $html =
             Page::HR
@@ -9,7 +9,7 @@ function create_tags ($tags) {
         foreach ($tags as $tag) {
             $escapedTag = htmlspecialchars($tag->tagname);
             $html .=
-                "<a class=\"tag\" href=\"./?tag=$escapedTag\">"
+                "<a class=\"tag\" href=\"$base?tag=$escapedTag\">"
                     .$escapedTag
                 .'</a>';
         }

@@ -49,7 +49,7 @@ $page->finish(
         $pageMessages
         .($title ? Page::text(htmlspecialchars($title)).Page::HR : '')
         .Page::text('<a class="a" href="'.htmlspecialchars(create_external_url($url, $base)).'">'.htmlspecialchars($url).'</a>')
-        .create_tags(BookmarkTags::indexOnBookmark($id))
+        .create_tags('../', BookmarkTags::indexOnBookmark($id))
         .Page::HR
         .Page::text(
             '<div>Bookmark created '.date_ago($inserttime).'.</div>'

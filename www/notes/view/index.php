@@ -51,7 +51,7 @@ $page->finish(
                 render_external_links(htmlspecialchars($notetext), $base)
             )
         )
-        .create_tags(NoteTags::indexOnNote($id))
+        .create_tags('../', NoteTags::indexOnNote($id))
         .Page::HR
         .Page::text(
             '<div>Note created '.date_ago($inserttime).'.</div>'

@@ -68,7 +68,7 @@ $page->finish(
                 render_external_links(htmlspecialchars($tasktext), $base)
             )
         )
-        .create_tags(TaskTags::indexOnTask($id))
+        .create_tags('../', TaskTags::indexOnTask($id))
         .Page::HR
         .Page::text(
             '<div>Task created '.date_ago($inserttime).'.</div>'
