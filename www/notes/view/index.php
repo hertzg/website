@@ -44,7 +44,7 @@ $page->title = htmlspecialchars(mb_substr($notetext, 0, 20, 'UTF-8'));
 $page->finish(
     Tab::create(
         Tab::item('Notes', '../')
-        .Tab::activeItem('View'),
+        .Tab::activeItem("Note #$id"),
         $pageMessages
         .Page::text(
             nl2br(

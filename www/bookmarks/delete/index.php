@@ -11,7 +11,7 @@ $page->title = 'Delete Bookmark?';
 $page->finish(
     Tab::create(
         Tab::item('Bookmarks', '../')
-        .Tab::activeItem('View'),
+        .Tab::activeItem("Bookmark #$id"),
         Page::text('Are you sure you want to delete the bookmark?')
         .Page::HR
         .Page::imageLink(

@@ -11,7 +11,7 @@ $page->title = 'Delete Note?';
 $page->finish(
     Tab::create(
         Tab::item('Notes', '../')
-        .Tab::activeItem('View'),
+        .Tab::activeItem("Note #$id"),
         Page::text('Are you sure you want to delete the note?')
         .Page::HR
         .Page::imageLink('Yes, delete note', "submit.php?id=$id", 'yes')

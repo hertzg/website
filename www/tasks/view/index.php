@@ -61,7 +61,7 @@ $page->title = htmlspecialchars(mb_substr($tasktext, 0, 20, 'UTF-8'));
 $page->finish(
     Tab::create(
         Tab::item('Tasks', './')
-        .Tab::activeItem('View'),
+        .Tab::activeItem("Task #$id"),
         $pageMessages
         .Page::text(
             nl2br(

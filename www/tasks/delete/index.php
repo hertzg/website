@@ -11,7 +11,7 @@ $page->title = 'Delete Task?';
 $page->finish(
     Tab::create(
         Tab::item('Tasks', './')
-        .Tab::activeItem('View'),
+        .Tab::activeItem("Task #$id"),
         Page::text('Are you sure you want to delete the task?')
         .Page::HR
         .Page::imageLink('Yes, delete task', "submit.php?id=$id", 'yes')

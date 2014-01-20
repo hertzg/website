@@ -26,7 +26,7 @@ $page->finish(
     Tab::create(
         Tab::item('Account', '../../account/')
         .Tab::item('Sessions', '../')
-        .Tab::activeItem('View'),
+        .Tab::activeItem("Session #$id"),
         Form::textfield('tokentext', 'Identifier', array(
             'value' => bin2hex($token->tokentext),
             'readonly' => true,

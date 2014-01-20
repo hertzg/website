@@ -26,7 +26,7 @@ $page->title = 'Rename File: '.htmlspecialchars($file->filename);
 $page->finish(
     Tab::create(
         Tab::item('Files', create_folder_link($file->idfolders))
-        .Tab::item('View', "view/?id=$id")
+        .Tab::item("File #$id", "view/?id=$id")
         .Tab::activeItem('Rename File'),
         $pageErrors
         .Form::create(

@@ -45,7 +45,7 @@ $page->title = htmlspecialchars(mb_substr($title ? $title : $url, 0, 20, 'UTF-8'
 $page->finish(
     Tab::create(
         Tab::item('Bookmarks', '../')
-        .Tab::activeItem('View'),
+        .Tab::activeItem("Bookmark #$id"),
         $pageMessages
         .($title ? Page::text(htmlspecialchars($title)).Page::HR : '')
         .Page::text('<a class="a" href="'.htmlspecialchars(create_external_url($url, $base)).'">'.htmlspecialchars($url).'</a>')

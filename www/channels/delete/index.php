@@ -13,7 +13,7 @@ $page->finish(
     Tab::create(
         Tab::item('Notifications', '../../notifications/')
         .Tab::item('Channels', '../')
-        .Tab::activeItem('View'),
+        .Tab::activeItem("Channel #$id"),
         Page::text(
             'Are you sure you want to delete the channel'
             .' "<b>'.htmlspecialchars($channel->channelname).'</b>"?'

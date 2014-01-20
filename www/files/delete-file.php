@@ -12,7 +12,7 @@ $page->title = 'Delete File?';
 $page->finish(
     Tab::create(
         Tab::item('Files', create_folder_link($file->idfolders))
-        .Tab::activeItem('View'),
+        .Tab::activeItem("File #$id"),
         Page::text(
             'Are you sure you want to delete the file'
             .' "<b>'.htmlspecialchars($file->filename).'</b>"?'

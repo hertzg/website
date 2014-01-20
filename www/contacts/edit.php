@@ -24,7 +24,7 @@ $page->title = 'Edit Contact';
 $page->finish(
     Tab::create(
         Tab::item('Contacts', './')
-        .Tab::item('View', "view/?id=$id")
+        .Tab::item("Contact #$id", "view/?id=$id")
         .Tab::activeItem('Edit'),
         $pageErrors
         .Form::create(

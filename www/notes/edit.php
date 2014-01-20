@@ -24,7 +24,7 @@ $page->title = 'Edit Note';
 $page->finish(
     Tab::create(
         Tab::item('Notes', './')
-        .Tab::item('View', "view/?id=$id")
+        .Tab::item("Note #$id", "view/?id=$id")
         .Tab::activeItem('Edit'),
         $pageErrors
         .Form::create(

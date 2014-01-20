@@ -39,7 +39,7 @@ $page->title = htmlspecialchars($file->filename);
 $page->finish(
     Tab::create(
         Tab::item('Files', create_folder_link($file->idfolders, '../'))
-        .Tab::activeItem('View'),
+        .Tab::activeItem("File #$id"),
         $pageMessages
         .Form::label('File name', $file->filename)
         .Page::HR

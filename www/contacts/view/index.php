@@ -40,7 +40,7 @@ $page->title = htmlspecialchars($contact->fullname);
 $page->finish(
     Tab::create(
         Tab::item('Contacts', '../')
-        .Tab::activeItem('View'),
+        .Tab::activeItem("Contact #$id"),
         $pageMessages
         .Form::label('Full name', htmlspecialchars($contact->fullname))
         .($address ? Page::HR.Form::label('Address', htmlspecialchars($address)) : '')

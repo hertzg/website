@@ -11,7 +11,7 @@ $page->title = 'Delete Contact?';
 $page->finish(
     Tab::create(
         Tab::item('Contacts', '../')
-        .Tab::activeItem('View'),
+        .Tab::activeItem("Contact #$id"),
         Page::text(
             'Are you sure you want to delete the contact'
             .' "<b>'.htmlspecialchars($contact->fullname).'</b>"?'

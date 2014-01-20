@@ -36,7 +36,7 @@ $page->finish(
     Tab::create(
         Tab::item('Notifications', '../../notifications/')
         .Tab::item('Channels', '../')
-        .Tab::activeItem('View'),
+        .Tab::activeItem("Channel #$id"),
         $pageMessages
         .Form::label('Channel name', htmlspecialchars($channel->channelname))
         .Page::HR
