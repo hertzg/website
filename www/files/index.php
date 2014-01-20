@@ -1,27 +1,65 @@
 <?php
 
-include_once 'lib/require-user.php';
-include_once 'fns/create_folder_link.php';
-include_once '../fns/create_panel.php';
-include_once '../fns/redirect.php';
-include_once '../fns/request_strings.php';
-include_once '../classes/Files.php';
-include_once '../classes/Folders.php';
-include_once '../classes/Tab.php';
-include_once '../lib/page.php';
+function create_form ($content) {
+    return "<form action=\"./\" style=\"position: relative; height: 48px\">$content</form>";
+}
 
-list($idfolders) = request_strings('idfolders');
+include_once 'lib/require-user.php';
+include_once '../fns/request_strings.php';
+include_once '../classes/Folders.php';
+
+list($idfolders, $keyword) = request_strings('idfolders', 'keyword');
 
 $idfolders = abs((int)$idfolders);
 if ($idfolders) {
     $folder = Folders::get($idusers, $idfolders);
-    if (!$folder) redirect();
+    if (!$folder) {
+        include_once '../fns/redirect.php';
+        redirect();
+    }
 }
 
-$folders = Folders::index($idusers, $idfolders);
-$files = Files::index($idusers, $idfolders);
+include_once 'fns/create_folder_link.php';
+include_once '../fns/create_panel.php';
+include_once '../fns/str_collapse_spaces.php';
+include_once '../classes/Files.php';
+include_once '../classes/Tab.php';
+include_once '../lib/page.php';
 
 $items = array();
+
+$placeholder = 'Search folders and files...';
+$keyword = str_collapse_spaces($keyword);
+if ($keyword === '') {
+
+    $folders = Folders::index($idusers, $idfolders);
+    $files = Files::index($idusers, $idfolders);
+
+    include_once '../fns/create_search_form_empty_content.php';
+    $content = create_search_form_empty_content($placeholder);
+    if ($idfolders) {
+        $content =
+            "<input type=\"hidden\" name=\"idfolders\" value=\"$idfolders\" />"
+            .$content;
+    }
+    $items[] = create_form($content);
+
+} else {
+
+    $folders = Folders::search($idusers, $idfolders, $keyword);
+    $files = Files::search($idusers, $idfolders, $keyword);
+
+    $clearHref = create_folder_link($idfolders);
+    include_once '../fns/create_search_form_content.php';
+    $content = create_search_form_content($keyword, $placeholder, $clearHref);
+    if ($idfolders) {
+        $content =
+            "<input type=\"hidden\" name=\"idfolders\" value=\"$idfolders\" />"
+            .$content;
+    }
+    $items[] = create_form($content);
+
+}
 
 if ($idfolders) {
     $items[] = Page::imageLink(
@@ -31,24 +69,28 @@ if ($idfolders) {
     );
 }
 
-foreach ($folders as $i => $folder) {
-    $items[] = Page::imageLink(
-        htmlspecialchars($folder->foldername),
-        create_folder_link($folder->idfolders),
-        'folder'
-    );
-}
+if ($folders || $files) {
 
-foreach ($files as $i => $file) {
-    $items[] = Page::imageLink(
-        htmlspecialchars($file->filename),
-        "view/?id=$file->idfiles",
-        'file'
-    );
-}
+    foreach ($folders as $i => $folder) {
+        $items[] = Page::imageLink(
+            htmlspecialchars($folder->foldername),
+            create_folder_link($folder->idfolders),
+            'folder'
+        );
+    }
 
-if (!$folders && !$files) {
-    $items[] = Page::info('Folder is empty.');
+    foreach ($files as $i => $file) {
+        $items[] = Page::imageLink(
+            htmlspecialchars($file->filename),
+            "view/?id=$file->idfiles",
+            'file'
+        );
+    }
+
+} else {
+    if ($keyword === '') $text = 'Folder is empty.';
+    else $text = 'Nothing found.';
+    $items[] = Page::info($text);
 }
 
 unset(

@@ -103,6 +103,15 @@ class Files {
         );
     }
 
+    static function move ($idusers, $id, $idfolders) {
+        global $mysqli;
+        mysqli_query(
+            $mysqli,
+            "update files set idfolders = $idfolders"
+            ." where idusers = $idusers and idfiles = $id"
+        );
+    }
+
     static function rename ($idusers, $id, $filename) {
         global $mysqli;
         $filename = mysqli_real_escape_string($mysqli, $filename);
@@ -113,12 +122,18 @@ class Files {
         );
     }
 
-    static function move ($idusers, $id, $idfolders) {
+    static function search ($idusers, $idfolders, $keyword) {
         global $mysqli;
-        mysqli_query(
+        include_once __DIR__.'/../fns/escape_like.php';
+        $keyword = escape_like($keyword);
+        $keyword = mysqli_real_escape_string($mysqli, $keyword);
+        return mysqli_query_object(
             $mysqli,
-            "update files set idfolders = $idfolders"
-            ." where idusers = $idusers and idfiles = $id"
+            'select * from files'
+            ." where idusers = $idusers"
+            ." and idfolders = $idfolders"
+            ." and filename like '%$keyword%'"
+            .' order by filename'
         );
     }
 

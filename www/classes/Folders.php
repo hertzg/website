@@ -97,4 +97,19 @@ class Folders {
         );
     }
 
+    static function search ($idusers, $parentidfolders, $keyword) {
+        global $mysqli;
+        include_once __DIR__.'/../fns/escape_like.php';
+        $keyword = escape_like($keyword);
+        $keyword = mysqli_real_escape_string($mysqli, $keyword);
+        return mysqli_query_object(
+            $mysqli,
+            'select * from folders'
+            ." where idusers = $idusers"
+            ." and parentidfolders = $parentidfolders"
+            ." and foldername like '%$keyword%'"
+            .' order by foldername'
+        );
+    }
+
 }
