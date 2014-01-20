@@ -47,7 +47,8 @@ if ($keyword === '') {
 
     } else {
 
-        $contacts = Contacts::indexOnTag($idusers, $tag);
+        include_once '../classes/ContactTags.php';
+        $contacts = ContactTags::indexOnTagName($idusers, $tag);
 
         if (count($contacts) > 1) {
             include_once '../fns/create_search_form_empty_content.php';
@@ -83,7 +84,8 @@ if ($keyword === '') {
 
     } else {
 
-        $contacts = Contacts::searchOnTag($idusers, $keyword, $tag);
+        include_once '../classes/ContactTags.php';
+        $contacts = ContactTags::searchOnTagName($idusers, $keyword, $tag);
 
         $items[] = create_search_form(
             create_search_form_content(
