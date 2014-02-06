@@ -21,7 +21,7 @@ class Form {
             include_once 'Page.php';
             return
                 '<div class="form-captcha">'
-                    ."<img src=\"{$base}captcha.php\""
+                    ."<img src=\"{$base}captcha/\""
                     .' style="vertical-align: top"'
                     .' alt="CAPTCHA" width="102" height="40" />'
                 .'</div>'
