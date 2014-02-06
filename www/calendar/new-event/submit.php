@@ -1,11 +1,11 @@
 <?php
 
-include_once '../lib/sameDomainReferer.php';
-include_once '../fns/redirect.php';
-if (!$sameDomainReferer) redirect('..');
+include_once '../../lib/sameDomainReferer.php';
+include_once '../../fns/redirect.php';
+if (!$sameDomainReferer) redirect('../..');
 include_once 'lib/require-user.php';
-include_once '../fns/request_strings.php';
-include_once '../fns/str_collapse_spaces.php';
+include_once '../../fns/request_strings.php';
+include_once '../../fns/str_collapse_spaces.php';
 
 list($year, $month, $day, $eventtext) = request_strings(
     'year', 'month', 'day', 'eventtext');
@@ -27,7 +27,7 @@ if ($errors) {
     $_SESSION['calendar/add-event_lastpost'] = array(
         'eventtext' => $eventtext,
     );
-    redirect('add-event.php?'.http_build_query(array(
+    redirect('./?'.http_build_query(array(
         'year' => $year,
         'month' => $month,
         'day' => $day,
@@ -39,9 +39,9 @@ unset(
     $_SESSION['calendar/add-event_lastpost']
 );
 
-include_once '../classes/Events.php';
+include_once '../../classes/Events.php';
 $id = Events::add($idusers, $eventtext, $eventtime);
 
 $_SESSION['calendar/view-event_messages'] = array('Event has been saved.');
 
-redirect("view-event.php?idevents=$id");
+redirect("../view-event/?idevents=$id");

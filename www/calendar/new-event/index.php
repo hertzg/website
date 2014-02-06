@@ -1,11 +1,11 @@
 <?php
 
 include_once 'lib/require-user.php';
-include_once '../fns/request_strings.php';
-include_once '../classes/Form.php';
-include_once '../classes/Tab.php';
-include_once '../lib/page.php';
+include_once '../../classes/Form.php';
+include_once '../../classes/Tab.php';
+include_once '../../lib/page.php';
 
+include_once '../../fns/request_strings.php';
 list($year, $month, $day) = request_strings('year', 'month', 'day');
 
 if (array_key_exists('calendar/add-event_lastpost', $_SESSION)) {
@@ -27,15 +27,15 @@ $time = mktime(0, 0, 0, $month, $day, $year);
 
 unset($_SESSION['calendar/index_messages']);
 
-$page->base = '../';
+$page->base = '../../';
 $page->title = 'New Event';
 $page->finish(
     Tab::create(
-        Tab::item('Calendar', './')
+        Tab::item('Calendar', '../')
         .Tab::activeItem('New Event'),
         $pageErrors
         .Form::create(
-            'submit-add-event.php',
+            'submit.php',
             Form::label('When', date('F d, Y', $time))
             .Page::HR
             .Form::textfield('eventtext', 'Text', array(

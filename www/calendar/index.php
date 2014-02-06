@@ -63,7 +63,9 @@ function create_calendar ($timeSelected) {
 
 }
 
-include_once 'lib/require-user.php';
+include_once __DIR__.'/../fns/require_user.php';
+require_user('../');
+
 include_once '../fns/create_panel.php';
 include_once '../fns/request_strings.php';
 include_once '../classes/Events.php';
@@ -109,7 +111,7 @@ if ($events) {
     foreach ($events as $event) {
         $eventItems[] = Page::imageLink(
             htmlspecialchars($event->eventtext),
-            "view-event.php?idevents=$event->idevents",
+            "view-event/?idevents=$event->idevents",
             'event'
         );
     }
@@ -136,7 +138,7 @@ $page->finish(
         'Options',
         Page::imageLink(
             'New Event',
-            "add-event.php?year=$yearSelected&month=$monthSelected&day=$daySelected",
+            "new-event/?year=$yearSelected&month=$monthSelected&day=$daySelected",
             'create-event'
         )
         .Page::HR
