@@ -1,9 +1,9 @@
 <?php
 
 include_once 'lib/require-note.php';
-include_once '../classes/Form.php';
-include_once '../classes/Tab.php';
-include_once '../lib/page.php';
+include_once '../../classes/Form.php';
+include_once '../../classes/Tab.php';
+include_once '../../lib/page.php';
 
 if (array_key_exists('notes/edit_lastpost', $_SESSION)) {
     $values = $_SESSION['notes/edit_lastpost'];
@@ -19,16 +19,16 @@ if (array_key_exists('notes/edit_errors', $_SESSION)) {
 
 unset($_SESSION['notes/index_messages']);
 
-$page->base = '../';
+$page->base = '../../';
 $page->title = "Edit Note #$id";
 $page->finish(
     Tab::create(
-        Tab::item('Notes', './')
-        .Tab::item("Note #$id", "view/?id=$id")
+        Tab::item('Notes', '../')
+        .Tab::item("Note #$id", "../view/?id=$id")
         .Tab::activeItem('Edit'),
         $pageErrors
         .Form::create(
-            'submit-edit.php',
+            'submit.php',
             Form::textarea('notetext', 'Text', array(
                 'value' => $values['notetext'],
                 'autofocus' => true,

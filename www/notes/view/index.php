@@ -60,7 +60,7 @@ $page->finish(
     )
     .create_panel(
         'Options',
-        Page::imageLink('Edit Note', "../edit.php?id=$id", 'edit-note')
+        Page::imageLink('Edit Note', "../edit/?id=$id", 'edit-note')
         .Page::HR
         .Page::imageLink('Delete Note', "../delete/?id=$id", 'trash-bin')
     )

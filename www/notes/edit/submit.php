@@ -1,13 +1,13 @@
 <?php
 
-include_once '../lib/sameDomainReferer.php';
-include_once '../fns/redirect.php';
-if (!$sameDomainReferer) redirect('..');
+include_once '../../lib/sameDomainReferer.php';
+include_once '../../fns/redirect.php';
+if (!$sameDomainReferer) redirect('../..');
 include_once 'lib/require-note.php';
-include_once '../fns/request_strings.php';
-include_once '../fns/str_collapse_spaces.php';
-include_once '../fns/str_collapse_spaces_multiline.php';
-include_once '../classes/Tags.php';
+include_once '../../fns/request_strings.php';
+include_once '../../fns/str_collapse_spaces.php';
+include_once '../../fns/str_collapse_spaces_multiline.php';
+include_once '../../classes/Tags.php';
 
 list($notetext, $tags) = request_strings('notetext', 'tags');
 
@@ -29,7 +29,7 @@ if ($errors) {
         'notetext' => $notetext,
         'tags' => $tags,
     );
-    redirect("edit.php?id=$id");
+    redirect("./?id=$id");
 }
 
 unset(
@@ -37,12 +37,12 @@ unset(
     $_SESSION['notes/edit_lastpost']
 );
 
-include_once '../classes/Notes.php';
+include_once '../../classes/Notes.php';
 Notes::edit($idusers, $id, $notetext, $tags);
 
-include_once '../classes/NoteTags.php';
+include_once '../../classes/NoteTags.php';
 NoteTags::deleteOnNote($id);
 NoteTags::add($idusers, $id, $tagnames, $notetext);
 
 $_SESSION['notes/view/index_messages'] = array('Changes have been saved.');
-redirect("view/?id=$id");
+redirect("../view/?id=$id");
