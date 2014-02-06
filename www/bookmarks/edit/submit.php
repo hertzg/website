@@ -1,15 +1,15 @@
 <?php
 
-include_once '../lib/sameDomainReferer.php';
-include_once '../fns/redirect.php';
-if (!$sameDomainReferer) redirect('..');
+include_once '../../lib/sameDomainReferer.php';
+include_once '../../fns/redirect.php';
+if (!$sameDomainReferer) redirect('../..');
 include_once 'lib/require-bookmark.php';
-include_once '../fns/request_strings.php';
-include_once '../fns/str_collapse_spaces.php';
-include_once '../classes/Tags.php';
+include_once '../../classes/Tags.php';
 
+include_once '../../fns/request_strings.php';
 list($title, $url, $tags) = request_strings('title', 'url', 'tags');
 
+include_once '../../fns/str_collapse_spaces.php';
 $title = str_collapse_spaces($title);
 $url = str_collapse_spaces($url);
 $tags = str_collapse_spaces($tags);
@@ -30,7 +30,7 @@ if ($errors) {
         'url' => $url,
         'tags' => $tags,
     );
-    redirect("edit.php?id=$id");
+    redirect("./?id=$id");
 }
 
 unset(
@@ -38,12 +38,12 @@ unset(
     $_SESSION['bookmarks/edit_lastpost']
 );
 
-include_once '../classes/Bookmarks.php';
+include_once '../../classes/Bookmarks.php';
 Bookmarks::edit($idusers, $id, $title, $url, $tags);
 
-include_once '../classes/BookmarkTags.php';
+include_once '../../classes/BookmarkTags.php';
 BookmarkTags::deleteOnBookmark($id);
 BookmarkTags::add($idusers, $id, $tagnames, $title, $url);
 
 $_SESSION['bookmarks/view/index_messages'] = array('Changes have been saved.');
-redirect("view/?id=$id");
+redirect("../view/?id=$id");

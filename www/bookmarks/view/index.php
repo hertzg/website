@@ -58,7 +58,7 @@ $page->finish(
     )
     .create_panel(
         'Options',
-        Page::imageLink('Edit Bookmark', "../edit.php?id=$id", 'edit-bookmark')
+        Page::imageLink('Edit Bookmark', "../edit/?id=$id", 'edit-bookmark')
         .Page::HR
         .Page::imageLink('Delete Bookmark', "../delete/?id=$id", 'trash-bin')
     )

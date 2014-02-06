@@ -1,9 +1,9 @@
 <?php
 
 include_once 'lib/require-bookmark.php';
-include_once '../classes/Form.php';
-include_once '../classes/Tab.php';
-include_once '../lib/page.php';
+include_once '../../classes/Form.php';
+include_once '../../classes/Tab.php';
+include_once '../../lib/page.php';
 
 if (array_key_exists('bookmarks/edit_lastpost', $_SESSION)) {
     $values = $_SESSION['bookmarks/edit_lastpost'];
@@ -19,16 +19,16 @@ if (array_key_exists('bookmarks/edit_errors', $_SESSION)) {
 
 unset($_SESSION['bookmarks/index_messages']);
 
-$page->base = '../';
+$page->base = '../../';
 $page->title = "Edit Bookmark #$id";
 $page->finish(
     Tab::create(
-        Tab::item('Bookmarks', './')
-        .Tab::item("Bookmark #$id", "view/?id=$id")
+        Tab::item('Bookmarks', '../')
+        .Tab::item("Bookmark #$id", "../view/?id=$id")
         .Tab::activeItem('Edit'),
         $pageErrors
         .Form::create(
-            'submit-edit.php',
+            'submit.php',
             Form::textfield('url', 'URL', array(
                 'value' => $values['url'],
                 'autofocus' => true,
