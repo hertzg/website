@@ -1,11 +1,9 @@
 <?php
 
 include_once 'lib/require-user.php';
-include_once '../fns/create_panel.php';
 include_once '../classes/Form.php';
 include_once '../classes/Tab.php';
 include_once '../lib/page.php';
-include_once '../lib/themes.php';
 
 if (array_key_exists('edit-profile/index_lastpost', $_SESSION)) {
     $values = (object)$_SESSION['edit-profile/index_lastpost'];
@@ -21,21 +19,12 @@ if (array_key_exists('edit-profile/index_errors', $_SESSION)) {
 
 unset($_SESSION['account/index_messages']);
 
-$themeItems = array();
-foreach ($themes as $id => $theme) {
-    $href = "../submit-edit-theme.php?theme=$id";
-    if ($id == $user->theme) {
-        $theme .= ' (Current)';
-    }
-    $themeItems[] = Page::imageLink($theme, $href, "$id-theme");
-}
-
 $page->base = '../';
 $page->title = 'Edit Profile';
 $page->finish(
     Tab::create(
         Tab::item('Account', '../account/')
-        .Tab::activeItem('Profile'),
+        .Tab::activeItem('Edit Profile'),
         $pageErrors
         .Form::create(
             'submit.php',
@@ -52,5 +41,4 @@ $page->finish(
             .Form::button('Save Changes')
         )
     )
-    .create_panel('Theme', join(Page::HR, $themeItems))
 );
