@@ -7,7 +7,7 @@ include_once '../../lib/page.php';
 unset($_SESSION['notes/view/index_messages']);
 
 $page->base = '../../';
-$page->title = 'Delete Note?';
+$page->title = "Delete Note #$id?";
 $page->finish(
     Tab::create(
         Tab::item('Notes', '../')

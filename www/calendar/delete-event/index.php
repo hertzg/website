@@ -7,7 +7,7 @@ include_once '../../lib/page.php';
 unset($_SESSION['calendar/view-event_messages']);
 
 $page->base = '../../';
-$page->title = 'Delete Event?';
+$page->title = "Delete Event #$idevents?";
 $page->finish(
     Tab::create(
         Tab::item('Calendar', '../')

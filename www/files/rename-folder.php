@@ -24,7 +24,7 @@ unset(
 );
 
 $page->base = '../';
-$page->title = 'Rename Folder: '.htmlspecialchars($folder->foldername);
+$page->title = "Rename Folder #$idfolders";
 $page->finish(
     Tab::create(
         Tab::item('Files', create_folder_link($idfolders))

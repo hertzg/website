@@ -5,7 +5,7 @@ include_once '../../classes/Tab.php';
 include_once '../../lib/page.php';
 
 $page->base = '../../';
-$page->title = 'Delete Remembered Session?';
+$page->title = "Delete Remembered Session #$id?";
 $page->finish(
     Tab::create(
         Tab::item('Account', '../../account/')

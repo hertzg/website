@@ -1,7 +1,6 @@
 <?php
 
 include_once 'fns/request_strings.php';
-
 list($url) = request_strings('url');
 
 if (!array_key_exists('HTTP_REFERER', $_SERVER)) {

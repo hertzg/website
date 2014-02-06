@@ -71,7 +71,7 @@ unset(
 );
 
 $page->base = '../';
-$page->title = htmlspecialchars($folder->foldername);
+$page->title = "Move Folder #$idfolders";
 $page->finish(
     Tab::create(
         Tab::item('Files', create_folder_link($idfolders))

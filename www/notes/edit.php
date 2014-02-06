@@ -20,7 +20,7 @@ if (array_key_exists('notes/edit_errors', $_SESSION)) {
 unset($_SESSION['notes/index_messages']);
 
 $page->base = '../';
-$page->title = 'Edit Note';
+$page->title = "Edit Note #$id";
 $page->finish(
     Tab::create(
         Tab::item('Notes', './')

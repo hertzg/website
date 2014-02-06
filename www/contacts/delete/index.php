@@ -7,7 +7,7 @@ include_once '../../lib/page.php';
 unset($_SESSION['contacts/view/index_messages']);
 
 $page->base = '../../';
-$page->title = 'Delete Contact?';
+$page->title = "Delete Contact #$id?";
 $page->finish(
     Tab::create(
         Tab::item('Contacts', '../')

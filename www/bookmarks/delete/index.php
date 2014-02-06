@@ -7,7 +7,7 @@ include_once '../../lib/page.php';
 unset($_SESSION['bookmarks/view/index_messages']);
 
 $page->base = '../../';
-$page->title = 'Delete Bookmark?';
+$page->title = "Delete Bookmark #$id?";
 $page->finish(
     Tab::create(
         Tab::item('Bookmarks', '../')

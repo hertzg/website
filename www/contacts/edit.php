@@ -20,7 +20,7 @@ if (array_key_exists('contacts/edit_errors', $_SESSION)) {
 unset($_SESSION['contacts/view/index_messages']);
 
 $page->base = '../';
-$page->title = 'Edit Contact';
+$page->title = "Edit Contact #$id";
 $page->finish(
     Tab::create(
         Tab::item('Contacts', './')

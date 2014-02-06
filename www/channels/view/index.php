@@ -31,7 +31,7 @@ if (array_key_exists('channels/view/index_messages', $_SESSION)) {
 unset($_SESSION['channels/index_messages']);
 
 $page->base = '../../';
-$page->title = htmlspecialchars($channel->channelname);
+$page->title = "Channel #$id";
 $page->finish(
     Tab::create(
         Tab::item('Notifications', '../../notifications/')

@@ -20,7 +20,7 @@ if (array_key_exists('tasks/edit_errors', $_SESSION)) {
 unset($_SESSION['tasks/index_messages']);
 
 $page->base = '../../';
-$page->title = 'Edit Task';
+$page->title = "Edit Task #$id";
 $page->finish(
     Tab::create(
         Tab::item('Tasks', '../')

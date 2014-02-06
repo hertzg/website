@@ -36,7 +36,7 @@ unset(
 );
 
 $page->base = '../../';
-$page->title = htmlspecialchars($contact->fullname);
+$page->title = "Contact #$id";
 $page->finish(
     Tab::create(
         Tab::item('Contacts', '../')

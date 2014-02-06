@@ -8,7 +8,7 @@ include_once '../lib/page.php';
 unset($_SESSION['files/view/index_messages']);
 
 $page->base = '../';
-$page->title = 'Delete File?';
+$page->title = "Delete File #$id?";
 $page->finish(
     Tab::create(
         Tab::item('Files', create_folder_link($file->idfolders))

@@ -65,7 +65,7 @@ if (array_key_exists('files/move-file_errors', $_SESSION)) {
 unset($_SESSION['files/view/index_messages']);
 
 $page->base = '../';
-$page->title = htmlspecialchars($file->filename);
+$page->title = "Move File #$id";
 $page->finish(
     Tab::create(
         Tab::item('Files', create_folder_link($file->idfolders))

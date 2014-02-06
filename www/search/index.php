@@ -63,7 +63,7 @@ if (!$contacts && !$notes && !$tasks) {
 }
 
 $page->base = '../';
-$page->title = 'Home';
+$page->title = 'Search: '.htmlspecialchars($keyword);
 $page->finish(
     Tab::create(
         Tab::activeItem('Home'),

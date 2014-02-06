@@ -11,7 +11,7 @@ unset(
 );
 
 $page->base = '../';
-$page->title = 'Delete Folder?';
+$page->title = "Delete Folder #$idfolders?";
 $page->finish(
     Tab::create(
         Tab::activeItem('Files'),

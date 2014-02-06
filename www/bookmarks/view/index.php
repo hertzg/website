@@ -41,7 +41,7 @@ $updatetime = $bookmark->updatetime;
 $base = '../../';
 
 $page->base = $base;
-$page->title = htmlspecialchars(mb_substr($title ? $title : $url, 0, 20, 'UTF-8'));
+$page->title = "Bookmark #$id";
 $page->finish(
     Tab::create(
         Tab::item('Bookmarks', '../')

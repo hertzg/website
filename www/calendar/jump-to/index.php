@@ -38,7 +38,7 @@ for ($i = $minYear; $i <= $maxYear; $i++) {
 unset($_SESSION['calendar/index_messages']);
 
 $page->base = '../../';
-$page->title = 'Calendar';
+$page->title = 'Jumo To';
 $page->finish(
     Tab::create(
         Tab::item('Calendar', "../?year=$year&month=$month")

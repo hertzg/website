@@ -20,7 +20,7 @@ if (array_key_exists('bookmarks/edit_errors', $_SESSION)) {
 unset($_SESSION['bookmarks/index_messages']);
 
 $page->base = '../';
-$page->title = 'Edit Bookmark';
+$page->title = "Edit Bookmark #$id";
 $page->finish(
     Tab::create(
         Tab::item('Bookmarks', './')

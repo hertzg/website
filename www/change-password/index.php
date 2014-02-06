@@ -24,7 +24,7 @@ if (array_key_exists('change-password/index_errors', $_SESSION)) {
 unset($_SESSION['account/index_messages']);
 
 $page->base = '../';
-$page->title = 'Change password';
+$page->title = 'Change Password';
 $page->finish(
     Tab::create(
         Tab::item('Account', '../account/')

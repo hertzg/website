@@ -57,7 +57,7 @@ if (array_key_exists('tasks/view/index_messages', $_SESSION)) {
 }
 
 $page->base = $base;
-$page->title = htmlspecialchars(mb_substr($tasktext, 0, 20, 'UTF-8'));
+$page->title = "Task #$id";
 $page->finish(
     Tab::create(
         Tab::item('Tasks', './')

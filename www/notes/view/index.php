@@ -40,7 +40,7 @@ $notetext = $note->notetext;
 $base = '../../';
 
 $page->base = $base;
-$page->title = htmlspecialchars(mb_substr($notetext, 0, 20, 'UTF-8'));
+$page->title = "Note #$id";
 $page->finish(
     Tab::create(
         Tab::item('Notes', '../')

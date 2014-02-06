@@ -22,7 +22,7 @@ if (array_key_exists('files/rename-file_lastpost', $_SESSION)) {
 unset($_SESSION['files/view/index_messages']);
 
 $page->base = '../';
-$page->title = 'Rename File: '.htmlspecialchars($file->filename);
+$page->title = "Rename File #$id";
 $page->finish(
     Tab::create(
         Tab::item('Files', create_folder_link($file->idfolders))

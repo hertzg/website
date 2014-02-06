@@ -8,7 +8,7 @@ include_once '../../lib/page.php';
 unset($_SESSION['channels/view/index_messages']);
 
 $page->base = '../../';
-$page->title = 'Delete Channel?';
+$page->title = "Delete Channel #$id?";
 $page->finish(
     Tab::create(
         Tab::item('Notifications', '../../notifications/')

@@ -22,6 +22,7 @@ include_once '../../lib/page.php';
 unset($_SESSION['tokens/index_messages']);
 
 $page->base = '../../';
+$page->title = "Session #$id";
 $page->finish(
     Tab::create(
         Tab::item('Account', '../../account/')

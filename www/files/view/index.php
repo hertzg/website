@@ -35,7 +35,7 @@ unset(
 );
 
 $page->base = '../../';
-$page->title = htmlspecialchars($file->filename);
+$page->title = "File #$id";
 $page->finish(
     Tab::create(
         Tab::item('Files', create_folder_link($file->idfolders, '../'))

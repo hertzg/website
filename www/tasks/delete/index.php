@@ -7,7 +7,7 @@ include_once '../../lib/page.php';
 unset($_SESSION['tasks/view/index_messages']);
 
 $page->base = '../../';
-$page->title = 'Delete Task?';
+$page->title = "Delete Task #$id?";
 $page->finish(
     Tab::create(
         Tab::item('Tasks', './')
