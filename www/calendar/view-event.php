@@ -20,7 +20,7 @@ $page->base = '../';
 $page->finish(
     Tab::create(
         Tab::item('Calendar', './')
-        .Tab::activeItem('Event'),
+        .Tab::activeItem("Event #$event->idevents"),
         $pageMessages
         .Page::text(htmlspecialchars($event->eventtext))
         .Page::HR
