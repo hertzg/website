@@ -1,9 +1,9 @@
 <?php
 
 include_once 'lib/require-task.php';
-include_once '../classes/Form.php';
-include_once '../classes/Tab.php';
-include_once '../lib/page.php';
+include_once '../../classes/Form.php';
+include_once '../../classes/Tab.php';
+include_once '../../lib/page.php';
 
 if (array_key_exists('tasks/edit_lastpost', $_SESSION)) {
     $values = $_SESSION['tasks/edit_lastpost'];
@@ -19,16 +19,16 @@ if (array_key_exists('tasks/edit_errors', $_SESSION)) {
 
 unset($_SESSION['tasks/index_messages']);
 
-$page->base = '../';
+$page->base = '../../';
 $page->title = 'Edit Task';
 $page->finish(
     Tab::create(
-        Tab::item('Tasks', './')
-        .Tab::item("Task #$id", "view/?id=$id")
+        Tab::item('Tasks', '../')
+        .Tab::item("Task #$id", "../view/?id=$id")
         .Tab::activeItem('Edit'),
         $pageErrors
         .Form::create(
-            'submit-edit.php',
+            'submit.php',
             Form::textarea('tasktext', 'Text', array(
                 'value' => $values['tasktext'],
                 'autofocus' => true,

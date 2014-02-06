@@ -41,7 +41,7 @@ if ($task->done) {
         'task-done'
     );
 }
-$options[] = Page::imageLink('Edit Task', "../edit.php?id=$id", 'edit-task');
+$options[] = Page::imageLink('Edit Task', "../edit/?id=$id", 'edit-task');
 $options[] = Page::imageLink('Delete Task', "../delete/?id=$id", 'trash-bin');
 
 $tasktext = $task->tasktext;
