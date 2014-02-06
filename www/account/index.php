@@ -39,7 +39,7 @@ if ($fullname !== '') {
 }
 
 $options = array(
-    Page::imageLink('Edit Profile', '../edit-profile.php', 'edit-profile'),
+    Page::imageLink('Edit Profile', '../edit-profile/', 'edit-profile'),
     Page::imageLink('Change Password', '../change-password/', 'password'),
 );
 include_once '../classes/Tokens.php';

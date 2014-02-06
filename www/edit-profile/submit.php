@@ -1,12 +1,12 @@
 <?php
 
-include_once 'lib/sameDomainReferer.php';
-include_once 'fns/redirect.php';
+include_once '../lib/sameDomainReferer.php';
+include_once '../fns/redirect.php';
 if (!$sameDomainReferer) redirect();
-include_once 'lib/require-user.php';
-include_once 'fns/request_strings.php';
-include_once 'fns/str_collapse_spaces.php';
-include_once 'classes/Users.php';
+include_once '../lib/require-user.php';
+include_once '../fns/request_strings.php';
+include_once '../fns/str_collapse_spaces.php';
+include_once '../classes/Users.php';
 
 list($email, $fullname) = request_strings('email', 'fullname');
 
@@ -19,7 +19,7 @@ $email = mb_strtolower($email, 'UTF-8');
 if ($email === '') {
     $errors[] = 'Enter email.';
 } else {
-    include_once 'fns/is_email_valid.php';
+    include_once '../fns/is_email_valid.php';
     if (!is_email_valid($email)) {
         $errors[] = 'Enter a valid email address.';
     } else if (Users::getByEmail($email, $idusers)) {
@@ -33,7 +33,7 @@ if ($errors) {
         'email' => $email,
         'fullname' => $fullname,
     );
-    redirect('edit-profile.php');
+    redirect();
 }
 
 unset(
@@ -45,4 +45,4 @@ Users::editProfile($idusers, $email, $fullname);
 
 $_SESSION['account/index_messages'] = array('Changes have been saved.');
 
-redirect('account/');
+redirect('../account/');
