@@ -1,9 +1,9 @@
 <?php
 
 include_once 'lib/require-contact.php';
-include_once '../classes/Form.php';
-include_once '../classes/Tab.php';
-include_once '../lib/page.php';
+include_once '../../classes/Form.php';
+include_once '../../classes/Tab.php';
+include_once '../../lib/page.php';
 
 if (array_key_exists('contacts/edit_lastpost', $_SESSION)) {
     $values = $_SESSION['contacts/edit_lastpost'];
@@ -19,16 +19,16 @@ if (array_key_exists('contacts/edit_errors', $_SESSION)) {
 
 unset($_SESSION['contacts/view/index_messages']);
 
-$page->base = '../';
+$page->base = '../../';
 $page->title = "Edit Contact #$id";
 $page->finish(
     Tab::create(
-        Tab::item('Contacts', './')
-        .Tab::item("Contact #$id", "view/?id=$id")
+        Tab::item('Contacts', '../')
+        .Tab::item("Contact #$id", "../view/?id=$id")
         .Tab::activeItem('Edit'),
         $pageErrors
         .Form::create(
-            'submit-edit.php',
+            'submit.php',
             Form::textfield('fullname', 'Full name', array(
                 'value' => $values['fullname'],
                 'autofocus' => true,
