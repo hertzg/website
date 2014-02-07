@@ -140,7 +140,8 @@ $page->base = '../';
 $page->title = 'Tasks';
 $page->finish(
     Tab::create(
-        Tab::activeItem('Tasks'),
+        Tab::item('Home', '..')
+        .Tab::activeItem('Tasks'),
         $pageMessages
         .$filterMessage
         .join(Page::HR, $items)

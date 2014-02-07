@@ -10,7 +10,8 @@ $page->base = '../../';
 $page->title = "Delete Note #$id?";
 $page->finish(
     Tab::create(
-        Tab::item('Notes', '../')
+        Tab::item('&middot;&middot;&middot;', '../..')
+        .Tab::item('Notes', '..')
         .Tab::activeItem("Note #$id"),
         Page::text('Are you sure you want to delete the note?')
         .Page::HR

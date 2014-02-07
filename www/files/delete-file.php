@@ -11,7 +11,8 @@ $page->base = '../';
 $page->title = "Delete File #$id?";
 $page->finish(
     Tab::create(
-        Tab::item('Files', create_folder_link($file->idfolders))
+        Tab::item('&middot;&middot;&middot;', '..')
+        .Tab::item('Files', create_folder_link($file->idfolders))
         .Tab::activeItem("File #$id"),
         Page::text(
             'Are you sure you want to delete the file'

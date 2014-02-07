@@ -13,7 +13,7 @@ $page->base = '../../';
 $page->title = "Edit Event #$idevents";
 $page->finish(
     Tab::create(
-        Tab::item('Calendar', '../')
+        Tab::item('&middot;&middot;&middot;', '..')
         .Tab::item("Event #$idevents", "../view-event/?idevents=$idevents")
         .Tab::activeItem('Edit'),
         Form::create(

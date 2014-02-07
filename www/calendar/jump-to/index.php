@@ -41,7 +41,8 @@ $page->base = '../../';
 $page->title = 'Jumo To';
 $page->finish(
     Tab::create(
-        Tab::item('Calendar', "../?year=$year&month=$month")
+        Tab::item('&middot;&middot;&middot;', "../..")
+        .Tab::item('Calendar', "../?year=$year&month=$month")
         .Tab::activeItem('Jump To'),
         Form::create(
             'submit.php',

@@ -76,7 +76,8 @@ $page->base = '../';
 $page->title = 'Bookmarks';
 $page->finish(
     Tab::create(
-        Tab::activeItem('Bookmarks'),
+        Tab::item('Home', '..')
+        .Tab::activeItem('Bookmarks'),
         $pageMessages
         .$filterMessage
         .join(Page::HR, $items)

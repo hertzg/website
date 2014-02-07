@@ -94,7 +94,8 @@ $page->base = '../';
 $page->title = 'Notifications';
 $page->finish(
     Tab::create(
-        Tab::activeItem('Notifications'),
+        Tab::item('Home', '..')
+        .Tab::activeItem('Notifications'),
         $pageMessages
         .$filterMessage
         .$notificationsHtml

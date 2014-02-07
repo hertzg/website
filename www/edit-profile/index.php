@@ -23,7 +23,8 @@ $page->base = '../';
 $page->title = 'Edit Profile';
 $page->finish(
     Tab::create(
-        Tab::item('Account', '../account/')
+        Tab::item('&middot;&middot;&middot;', '..')
+        .Tab::item('Account', '../account/')
         .Tab::activeItem('Edit Profile'),
         $pageErrors
         .Form::create(

@@ -43,7 +43,8 @@ $page->base = $base;
 $page->title = "Note #$id";
 $page->finish(
     Tab::create(
-        Tab::item('Notes', '../')
+        Tab::item('&middot;&middot;&middot;', '../..')
+        .Tab::item('Notes', '..')
         .Tab::activeItem("Note #$id"),
         $pageMessages
         .Page::text(

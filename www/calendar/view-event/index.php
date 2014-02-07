@@ -35,7 +35,8 @@ $page->base = '../../';
 $page->title = "Event #$idevents";
 $page->finish(
     Tab::create(
-        Tab::item('Calendar', '../')
+        Tab::item('&middot;&middot;&middot;', '../..')
+        .Tab::item('Calendar', '..')
         .Tab::activeItem("Event #$idevents"),
         $pageMessages
         .Page::text(htmlspecialchars($event->eventtext))

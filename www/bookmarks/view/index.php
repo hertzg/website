@@ -44,7 +44,8 @@ $page->base = $base;
 $page->title = "Bookmark #$id";
 $page->finish(
     Tab::create(
-        Tab::item('Bookmarks', '../')
+        Tab::item('&middot;&middot;&middot;', '../..')
+        .Tab::item('Bookmarks', '..')
         .Tab::activeItem("Bookmark #$id"),
         $pageMessages
         .($title ? Page::text(htmlspecialchars($title)).Page::HR : '')

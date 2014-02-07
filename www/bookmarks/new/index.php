@@ -27,7 +27,8 @@ $page->base = '../../';
 $page->title = 'New Bookmark';
 $page->finish(
     Tab::create(
-        Tab::item('Bookmarks', '../')
+        Tab::item('&middot;&middot;&middot;', '../..')
+        .Tab::item('Bookmarks', '..')
         .Tab::activeItem('New'),
         $pageErrors
         .Form::create(

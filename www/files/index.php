@@ -141,7 +141,8 @@ $page->base = '../';
 $page->title = 'Files';
 $page->finish(
     Tab::create(
-        Tab::activeItem('Files'),
+        Tab::item('Home', '..')
+        .Tab::activeItem('Files'),
         $pageMessages
         .join(Page::HR, $items)
     )

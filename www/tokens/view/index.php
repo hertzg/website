@@ -25,8 +25,8 @@ $page->base = '../../';
 $page->title = "Session #$id";
 $page->finish(
     Tab::create(
-        Tab::item('Account', '../../account/')
-        .Tab::item('Sessions', '../')
+        Tab::item('&middot;&middot;&middot;', '../../account/')
+        .Tab::item('Sessions', '..')
         .Tab::activeItem("Session #$id"),
         Form::textfield('tokentext', 'Identifier', array(
             'value' => bin2hex($token->tokentext),

@@ -39,7 +39,8 @@ $page->base = '../../';
 $page->title = "Contact #$id";
 $page->finish(
     Tab::create(
-        Tab::item('Contacts', '../')
+        Tab::item('&middot;&middot;&middot;', '../..')
+        .Tab::item('Contacts', '..')
         .Tab::activeItem("Contact #$id"),
         $pageMessages
         .Form::label('Full name', htmlspecialchars($contact->fullname))

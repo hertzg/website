@@ -10,7 +10,8 @@ $page->base = '../../';
 $page->title = "Delete Event #$idevents?";
 $page->finish(
     Tab::create(
-        Tab::item('Calendar', '../')
+        Tab::item('&middot;&middot;&middot;', '../..')
+        .Tab::item('Calendar', '..')
         .Tab::activeItem("Event #$idevents"),
         Page::text('Are you sure you want to delete the event?')
         .Page::HR

@@ -11,8 +11,8 @@ $page->base = '../../';
 $page->title = "Delete Channel #$id?";
 $page->finish(
     Tab::create(
-        Tab::item('Notifications', '../../notifications/')
-        .Tab::item('Channels', '../')
+        Tab::item('&middot;&middot;&middot;', '../../notifications/')
+        .Tab::item('Channels', '..')
         .Tab::activeItem("Channel #$id"),
         Page::text(
             'Are you sure you want to delete the channel'

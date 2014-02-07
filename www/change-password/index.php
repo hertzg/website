@@ -27,7 +27,8 @@ $page->base = '../';
 $page->title = 'Change Password';
 $page->finish(
     Tab::create(
-        Tab::item('Account', '../account/')
+        Tab::item('&middot;&middot;&middot;', '..')
+        .Tab::item('Account', '../account/')
         .Tab::activeItem('Change Password'),
         $pageErrors
         .Form::create(

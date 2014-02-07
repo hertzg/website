@@ -23,7 +23,7 @@ $page->base = '../../';
 $page->title = "Edit Contact #$id";
 $page->finish(
     Tab::create(
-        Tab::item('Contacts', '../')
+        Tab::item('&middot;&middot;&middot;', '..')
         .Tab::item("Contact #$id", "../view/?id=$id")
         .Tab::activeItem('Edit'),
         $pageErrors

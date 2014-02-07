@@ -60,7 +60,8 @@ $page->base = $base;
 $page->title = "Task #$id";
 $page->finish(
     Tab::create(
-        Tab::item('Tasks', './')
+        Tab::item('&middot;&middot;&middot;', '../..')
+        .Tab::item('Tasks', '..')
         .Tab::activeItem("Task #$id"),
         $pageMessages
         .Page::text(

@@ -30,7 +30,8 @@ $page->base = '../../';
 $page->title = 'New Contact';
 $page->finish(
     Tab::create(
-        Tab::item('Contacts', '../')
+        Tab::item('&middot;&middot;&middot;', '../..')
+        .Tab::item('Contacts', '..')
         .Tab::activeItem('New'),
         $pageErrors
         .Form::create(

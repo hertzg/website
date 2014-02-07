@@ -34,7 +34,8 @@ $page->base = '../';
 $page->title = 'Upload Files';
 $page->finish(
     Tab::create(
-        Tab::item('Files', create_folder_link($idfolders))
+        Tab::item('&middot;&middot;&middot;', '..')
+        .Tab::item('Files', create_folder_link($idfolders))
         .Tab::activeItem('Upload Files'),
         $pageErrors
         .Page::warnings(array(

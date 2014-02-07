@@ -68,7 +68,7 @@ $page->base = '../';
 $page->title = "Move File #$id";
 $page->finish(
     Tab::create(
-        Tab::item('Files', create_folder_link($file->idfolders))
+        Tab::item('&middot;&middot;&middot;', create_folder_link($file->idfolders))
         .Tab::item("File #$id", "view/?id=$file->idfiles")
         .Tab::activeItem('Move'),
         $pageErrors

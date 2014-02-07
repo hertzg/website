@@ -10,7 +10,8 @@ $page->base = '../../';
 $page->title = "Delete Bookmark #$id?";
 $page->finish(
     Tab::create(
-        Tab::item('Bookmarks', '../')
+        Tab::item('&middot;&middot;&middot;', '../..')
+        .Tab::item('Bookmarks', '..')
         .Tab::activeItem("Bookmark #$id"),
         Page::text('Are you sure you want to delete the bookmark?')
         .Page::HR

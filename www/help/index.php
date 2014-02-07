@@ -19,7 +19,8 @@ $page->base = '../';
 $page->title = 'Help';
 $page->finish(
     Tab::create(
-        Tab::activeItem('Help'),
+        Tab::item('Home', '..')
+        .Tab::activeItem('Help'),
         $pageMessages
         .Page::imageLink('Install Zvini App', 'install.php', 'download')
         .Page::HR

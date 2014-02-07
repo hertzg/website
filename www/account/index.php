@@ -56,7 +56,8 @@ $page->base = '../';
 $page->title = 'Account';
 $page->finish(
     Tab::create(
-        Tab::activeItem('Account'),
+        Tab::item('Home', '..')
+        .Tab::activeItem('Account'),
         $pageMessages
         .Form::label('Username', $user->username)
         .Page::HR

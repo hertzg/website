@@ -23,7 +23,8 @@ $page->base = '../';
 $page->title = 'Leave Feedback';
 $page->finish(
     Tab::create(
-        Tab::item('Help', './')
+        Tab::item('&middot;&middot;&middot;', '..')
+        .Tab::item('Help', './')
         .Tab::activeItem('Feedback'),
         $pageErrors
         .Form::create(

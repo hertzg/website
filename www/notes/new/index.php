@@ -26,7 +26,8 @@ $page->base = '../../';
 $page->title = 'New Note';
 $page->finish(
     Tab::create(
-        Tab::item('Notes', '../')
+        Tab::item('&middot;&middot;&middot;', '../..')
+        .Tab::item('Notes', '..')
         .Tab::activeItem('New'),
         $pageErrors
         .Form::create(

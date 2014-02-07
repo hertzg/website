@@ -10,7 +10,8 @@ $page->base = '../../';
 $page->title = "Delete Task #$id?";
 $page->finish(
     Tab::create(
-        Tab::item('Tasks', './')
+        Tab::item('&middot;&middot;&middot;', '../..')
+        .Tab::item('Tasks', '..')
         .Tab::activeItem("Task #$id"),
         Page::text('Are you sure you want to delete the task?')
         .Page::HR

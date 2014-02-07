@@ -10,7 +10,8 @@ $page->base = '../../';
 $page->title = "Delete Contact #$id?";
 $page->finish(
     Tab::create(
-        Tab::item('Contacts', '../')
+        Tab::item('&middot;&middot;&middot;', '../..')
+        .Tab::item('Contacts', '..')
         .Tab::activeItem("Contact #$id"),
         Page::text(
             'Are you sure you want to delete the contact'

@@ -31,7 +31,8 @@ $page->base = '../../';
 $page->title = 'New Event';
 $page->finish(
     Tab::create(
-        Tab::item('Calendar', '../')
+        Tab::item('&middot;&middot;&middot;', '../..')
+        .Tab::item('Calendar', '..')
         .Tab::activeItem('New Event'),
         $pageErrors
         .Form::create(

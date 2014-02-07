@@ -19,7 +19,7 @@ $page->base = '../';
 $page->title = 'Randomize Channel Key';
 $page->finish(
     Tab::create(
-        Tab::item('Notifications', '../notifications/')
+        Tab::item('&middot;&middot;&middot;', '../notifications/')
         .Tab::item('Channels', './')
         .Tab::activeItem("Channel #$id"),
         Page::text('Are you sure you want to randomize channel key of "<b>'.htmlspecialchars($channel->channelname).'</b>"?')

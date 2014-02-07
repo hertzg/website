@@ -10,7 +10,8 @@ $page->base = '../../';
 $page->title = 'Delete All Notifications?';
 $page->finish(
     Tab::create(
-        Tab::activeItem('Notifications'),
+        Tab::item('Home', '../..')
+        .Tab::activeItem('Notifications'),
         Page::text('Are you sure you want to delete all the notifications?')
         .Page::HR
         .Page::imageLink(
@@ -19,6 +20,6 @@ $page->finish(
             'yes'
         )
         .Page::HR
-        .Page::imageLink('No, return back', '../', 'no')
+        .Page::imageLink('No, return back', '..', 'no')
     )
 );

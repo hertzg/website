@@ -14,7 +14,8 @@ $page->base = '../';
 $page->title = "Delete Folder #$idfolders?";
 $page->finish(
     Tab::create(
-        Tab::activeItem('Files'),
+        Tab::item('Home', '..')
+        .Tab::activeItem('Files'),
         Page::text(
             'Are you sure you want to delete the folder'
             .' "<b>'.htmlspecialchars($folder->foldername).'</b>"?'

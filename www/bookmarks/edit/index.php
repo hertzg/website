@@ -23,7 +23,7 @@ $page->base = '../../';
 $page->title = "Edit Bookmark #$id";
 $page->finish(
     Tab::create(
-        Tab::item('Bookmarks', '../')
+        Tab::item('&middot;&middot;&middot;', '..')
         .Tab::item("Bookmark #$id", "../view/?id=$id")
         .Tab::activeItem('Edit'),
         $pageErrors

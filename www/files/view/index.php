@@ -38,7 +38,8 @@ $page->base = '../../';
 $page->title = "File #$id";
 $page->finish(
     Tab::create(
-        Tab::item('Files', create_folder_link($file->idfolders, '../'))
+        Tab::item('&middot;&middot;&middot;', '../..')
+        .Tab::item('Files', create_folder_link($file->idfolders, '../'))
         .Tab::activeItem("File #$id"),
         $pageMessages
         .Form::label('File name', $file->filename)

@@ -22,7 +22,8 @@ $page->base = '../../';
 $page->title = 'Delete Notifications?';
 $page->finish(
     Tab::create(
-        Tab::activeItem('Notifications'),
+        Tab::item('Home', '../..')
+        .Tab::activeItem('Notifications'),
         Page::text(
             'Are you sure you want to delete notifications in this channel?'
         )

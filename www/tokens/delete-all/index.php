@@ -10,7 +10,8 @@ $page->base = '../../';
 $page->title = 'Delete All Remembered Sessions?';
 $page->finish(
     Tab::create(
-        Tab::item('Account', '../../account/')
+        Tab::item('&middot;&middot;&middot;', '../..')
+        .Tab::item('Account', '../../account/')
         .Tab::activeItem('Sessions'),
         Page::text(
             'Are you sure you want to delete all the remembered sessions?'
@@ -18,6 +19,6 @@ $page->finish(
         .Page::HR
         .Page::imageLink('Yes, delete all sessions', 'submit.php', 'yes')
         .Page::HR
-        .Page::imageLink('No, return back', '../', 'no')
+        .Page::imageLink('No, return back', '..', 'no')
     )
 );

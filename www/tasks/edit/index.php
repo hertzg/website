@@ -23,7 +23,7 @@ $page->base = '../../';
 $page->title = "Edit Task #$id";
 $page->finish(
     Tab::create(
-        Tab::item('Tasks', '../')
+        Tab::item('&middot;&middot;&middot;', '..')
         .Tab::item("Task #$id", "../view/?id=$id")
         .Tab::activeItem('Edit'),
         $pageErrors

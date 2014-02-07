@@ -38,7 +38,8 @@ $page->base = '../';
 $page->title = 'New Folder';
 $page->finish(
     Tab::create(
-        Tab::item('Files', create_folder_link($parentIdFolders))
+        Tab::item('&middot;&middot;&middot;', '..')
+        .Tab::item('Files', create_folder_link($parentIdFolders))
         .Tab::activeItem('New Folder'),
         $pageErrors
         .Form::create(

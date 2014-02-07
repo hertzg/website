@@ -37,7 +37,8 @@ $page->base = '../';
 $page->title = 'Channels';
 $page->finish(
     Tab::create(
-        Tab::item('Notifications', '../notifications/')
+        Tab::item('&middot;&middot;&middot;', '..')
+        .Tab::item('Notifications', '../notifications/')
         .Tab::activeItem('Channels'),
         $pageMessages
         .$channels

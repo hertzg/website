@@ -10,7 +10,8 @@ $page->base = '../../';
 $page->title = 'Delete All Notes?';
 $page->finish(
     Tab::create(
-        Tab::activeItem('Notes'),
+        Tab::item('Home', '../..')
+        .Tab::activeItem('Notes'),
         Page::text('Are you sure you want to delete all the notes?')
         .Page::HR
         .Page::imageLink(
@@ -19,6 +20,6 @@ $page->finish(
             'yes'
         )
         .Page::HR
-        .Page::imageLink('No, return back', '../', 'no')
+        .Page::imageLink('No, return back', '..', 'no')
     )
 );

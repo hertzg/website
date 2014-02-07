@@ -8,8 +8,8 @@ $page->base = '../../';
 $page->title = "Delete Remembered Session #$id?";
 $page->finish(
     Tab::create(
-        Tab::item('Account', '../../account/')
-        .Tab::item('Sessions', '../')
+        Tab::item('&middot;&middot;&middot;', '../../account/')
+        .Tab::item('Sessions', '..')
         .Tab::activeItem("Session #$id"),
         Page::text(
             'Are you sure you want to delete the remembered session'
