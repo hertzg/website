@@ -12,11 +12,12 @@ $names = array(
     'file', 'files', 'create-file', 'folder', 'create-folder', 'parent-folder',
     'note', 'notes', 'create-note', 'edit-note', 'task', 'task-done', 'tasks',
     'create-task', 'edit-task', 'download', 'upload', 'feedback', 'yes', 'no',
-    'notification', 'old-notification', 'edit-password', 'reset-password',
-    'randomize', 'rename', 'sign-out', 'trash-bin', 'calendar', 'arrow-right',
-    'arrow-left', 'copy-file', 'move-file', 'copy-folder', 'move-folder',
-    'search', 'event', 'create-event', 'edit-event', 'checkbox',
-    'checked-checkbox', 'help', 'token', 'create-token', 'tokens');
+    'notification', 'old-notification', 'edit-password', 'new-password',
+    'reset-password', 'randomize', 'rename', 'sign-out', 'sign-in', 'trash-bin',
+    'calendar', 'arrow-right', 'arrow-left', 'copy-file', 'move-file',
+    'copy-folder', 'move-folder', 'search', 'event', 'create-event',
+    'edit-event', 'checkbox', 'checked-checkbox', 'help', 'token',
+    'create-token', 'tokens');
 
 $content = "/* auto-generated */\n";
 $x = 0;

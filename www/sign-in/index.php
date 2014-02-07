@@ -92,7 +92,7 @@ $page->finish(
                 'Don\'t have an account?',
                 'Sign up here.',
                 '../sign-up/',
-                'sign-up'
+                'new-password'
             )
         )
     )
