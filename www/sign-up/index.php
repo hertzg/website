@@ -1,5 +1,6 @@
 <?php
 
+include_once '../fns/create_panel.php';
 include_once '../classes/Form.php';
 include_once '../classes/Tab.php';
 include_once '../lib/page.php';
@@ -35,8 +36,7 @@ $page->hideSignOutLink = true;
 $page->title = 'Sign Up';
 $page->finish(
     Tab::create(
-        Tab::item('Sign In', '../sign-in/')
-        .Tab::activeItem('Sign Up'),
+        Tab::activeItem('Sign Up'),
         $pageErrors
         .Form::create(
             'submit.php',
@@ -65,6 +65,15 @@ $page->finish(
             .Page::HR
             .Form::captcha($base)
             .Form::button('Sign Up')
+        )
+        .create_panel(
+            'Options',
+            Page::imageLinkWithDescription(
+                'Already have an account?',
+                'Sign in here.',
+                '../sign-in/',
+                'sign-in'
+            )
         )
     )
 );

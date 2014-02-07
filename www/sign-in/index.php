@@ -58,8 +58,7 @@ $page->hideSignOutLink = true;
 $page->title = 'Sign In';
 $page->finish(
     Tab::create(
-        Tab::activeItem('Sign In')
-        .Tab::item('Sign Up', '../sign-up/'),
+        Tab::activeItem('Sign In'),
         $pageMessages
         .$pageErrors
         .Form::create(
@@ -82,7 +81,19 @@ $page->finish(
         )
         .create_panel(
             'Options',
-            Page::imageLink('Reset Password', '../email-reset-password/', 'reset-password')
+            Page::imageLinkWithDescription(
+                'Forgot password?',
+                'Reset your account password here.',
+                '../email-reset-password/',
+                'reset-password'
+            )
+            .Page::HR
+            .Page::imageLinkWithDescription(
+                'Don\'t have an account?',
+                'Sign up here.',
+                '../sign-up/',
+                'sign-up'
+            )
         )
     )
 );

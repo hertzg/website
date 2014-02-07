@@ -119,7 +119,7 @@ label {
     font-weight: bold;
     vertical-align: top;
     background-color: #555;
-    box-shadow: 0 -16px 16px #444 inset, 0 0 6px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 -16px 16px #444 inset, 0 0 6px #333;
 }
 .tab-normal:focus {
     border: 2px solid transparent;
