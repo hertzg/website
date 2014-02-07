@@ -12,7 +12,7 @@ $names = array(
     'file', 'files', 'create-file', 'folder', 'create-folder', 'parent-folder',
     'note', 'notes', 'create-note', 'edit-note', 'task', 'task-done', 'tasks',
     'create-task', 'edit-task', 'download', 'upload', 'feedback', 'yes', 'no',
-    'notification', 'old-notification', 'password', 'reset-password',
+    'notification', 'old-notification', 'edit-password', 'reset-password',
     'randomize', 'rename', 'sign-out', 'trash-bin', 'calendar', 'arrow-right',
     'arrow-left', 'copy-file', 'move-file', 'copy-folder', 'move-folder',
     'search', 'event', 'create-event', 'edit-event', 'checkbox',
