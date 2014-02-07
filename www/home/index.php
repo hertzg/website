@@ -170,6 +170,6 @@ $page->finish(
         .Page::HR
         .Page::imageLink('Help', '../help/', 'help')
         .Page::HR
-        .Page::imageLink('Sign Out', '../submit-signout.php', 'signout')
+        .Page::imageLink('Sign Out', '../submit-signout.php', 'sign-out')
     )
 );

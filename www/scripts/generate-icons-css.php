@@ -13,7 +13,7 @@ $names = array(
     'note', 'notes', 'create-note', 'edit-note', 'task', 'task-done', 'tasks',
     'create-task', 'edit-task', 'download', 'upload', 'feedback', 'yes', 'no',
     'notification', 'old-notification', 'password', 'reset-password',
-    'randomize', 'rename', 'signout', 'trash-bin', 'calendar', 'arrow-right',
+    'randomize', 'rename', 'sign-out', 'trash-bin', 'calendar', 'arrow-right',
     'arrow-left', 'copy-file', 'move-file', 'copy-folder', 'move-folder',
     'search', 'event', 'create-event', 'edit-event', 'checkbox',
     'checked-checkbox', 'help', 'token', 'create-token', 'tokens');
