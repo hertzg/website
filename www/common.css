@@ -68,13 +68,13 @@ label {
     display: inline-block;
     vertical-align: top;
     color: #ccc;
-    padding: 17px;
+    padding: 12px;
     line-height: 24px;
     border-radius: 2px;
 }
 .topLink:focus {
     border: 2px solid transparent;
-    padding: 15px;
+    padding: 10px;
 }
 .topLink:active {
     color: #fff;
