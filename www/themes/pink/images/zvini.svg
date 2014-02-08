@@ -8,8 +8,8 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    version="1.1"
-   width="51"
-   height="24"
+   width="68"
+   height="32"
    id="svg3029"
    inkscape:version="0.48.4 r9939"
    sodipodi:docname="zvini.svg">
@@ -40,47 +40,59 @@
      id="namedview3049"
      showgrid="false"
      inkscape:zoom="6.2156863"
-     inkscape:cx="-3.8611987"
-     inkscape:cy="12"
+     inkscape:cx="54.056782"
+     inkscape:cy="18.435331"
      inkscape:window-x="0"
      inkscape:window-y="25"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg3029" />
-  <path
-     fill="#f80"
-     d="m0 2 v 20 a2 2 0 0 0 2 2 h20 a2 2 0 0 0 2 -2 v-20 a2 2 0 0 0 -2 -2 h-20 a2 2 0 0 0 -2 2"
-     id="path3031"
-     style="fill:#ff66aa;fill-opacity:1" />
   <g
-     fill="#fff"
-     id="g3033">
+     id="g3031"
+     transform="matrix(1.3333333,0,0,1.3333333,0,-10.666667)">
     <path
-       transform="translate(6.5, 9)"
-       d="m0 0 h11 v3 l-7 6 h7 v3 h-11 v-3 l7 -6 h-7 z m5.5 -1 c6 -9 -6 -9 0 0 m-1 0 c-4 -9 -10 0 0 0 m2 0 c4 -9 10 0 0 0"
-       id="path3035" />
-    <path
-       transform="translate(18.5, 14)"
-       d="m0 0 l4 7 h1.5 v-3.5 l-2 -3.5 z"
-       id="path3037" />
-  </g>
-  <g
-     fill="#fff"
-     id="g3039">
-    <path
-       transform="translate(29.5, 14)"
-       d="m0 0 l-4 7 h-1.5 v-3.5 l2 -3.5 z"
-       id="path3041" />
-    <path
-       transform="translate(31, 14)"
-       d="m0 0 v8 h3 v-8 z m1.5 -2 c5 -7 -5 -7 0 0 z"
-       id="path3043" />
-    <path
-       transform="translate(36, 14)"
-       d="m0 0 v8 h3 v-8 z m3 5 a2 2 0 0 1 4 0 v3 h3 v-4 a4 4 0 0 0 -8 0"
-       id="path3045" />
-    <path
-       transform="translate(48, 14)"
-       d="m0 0 v8 h3 v-8 z m1.5 -2 c5 -7 -5 -7 0 0 z"
-       id="path3047" />
+       inkscape:connector-curvature="0"
+       style="fill:#ff66aa;fill-opacity:1"
+       id="path3031"
+       d="m 0,10 v 20 a 2,2 0 0 0 2,2 h 20 a 2,2 0 0 0 2,-2 V 10 A 2,2 0 0 0 22,8 H 2 a 2,2 0 0 0 -2,2" />
+    <g
+       transform="translate(0,8)"
+       style="fill:#ffffff"
+       id="g3033">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3035"
+         d="M 0,0 H 11 V 3 L 4,9 h 7 v 3 H 0 V 9 L 7,3 H 0 z m 5.5,-1 c 6,-9 -6,-9 0,0 m -1,0 c -4,-9 -10,0 0,0 m 2,0 c 4,-9 10,0 0,0"
+         transform="translate(6.5,9)" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path3037"
+         d="M 0,0 4,7 H 5.5 V 3.5 L 3.5,0 z"
+         transform="translate(18.5,14)" />
+    </g>
+    <g
+       transform="translate(0,8)"
+       style="fill:#ffffff"
+       id="g3039">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3041"
+         d="M 0,0 -4,7 H -5.5 V 3.5 l 2,-3.5 z"
+         transform="translate(29.5,14)" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path3043"
+         d="M 0,0 V 8 H 3 V 0 z m 1.5,-2 c 5,-7 -5,-7 0,0 z"
+         transform="translate(31,14)" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path3045"
+         d="M 0,0 V 8 H 3 V 0 z m 3,5 a 2,2 0 0 1 4,0 v 3 h 3 V 4 A 4,4 0 0 0 2,4"
+         transform="translate(36,14)" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path3047"
+         d="M 0,0 V 8 H 3 V 0 z m 1.5,-2 c 5,-7 -5,-7 0,0 z"
+         transform="translate(48,14)" />
+    </g>
   </g>
 </svg>

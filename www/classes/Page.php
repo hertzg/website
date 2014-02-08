@@ -29,7 +29,7 @@ class Page {
                     .'<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />'
                     .'<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />'
                     ."<link rel=\"stylesheet\" type=\"text/css\" href=\"{$base}common.css?".$revisions['common.css'].'" />'
-                    ."<link rel=\"stylesheet\" type=\"text/css\" href=\"{$base}icons.css?10\" />"
+                    ."<link rel=\"stylesheet\" type=\"text/css\" href=\"{$base}icons.css?11\" />"
                     ."<link rel=\"stylesheet\" type=\"text/css\" href=\"{$base}themes/$theme/common.css?12\" />"
                     .$this->head
                 .'</head>'
@@ -58,8 +58,8 @@ class Page {
             '<div id="tbar">'
                 .'<div style="position: relative">'
                     .'<a class="topLink" href="'.($base ? $base : './').'">'
-                        ."<img src=\"{$base}themes/$this->theme/images/zvini.png?1\" alt=\"Zvini\""
-                        .' width="51" height="24" style="vertical-align: top" />'
+                        ."<img src=\"{$base}themes/$this->theme/images/zvini.png?2\" alt=\"Zvini\""
+                        .' width="68" height="32" style="vertical-align: top; margin: -4px" />'
                     .'</a>'
                     .($this->hideSignOutLink ? '' : 
                     '<div style="position: absolute; top: 0; right: 0">'
