@@ -8,7 +8,7 @@ include_once 'lib/require-user.php';
 include_once '../fns/request_strings.php';
 include_once '../classes/Folders.php';
 
-list($idfolders, $keyword) = request_strings('idfolders', 'keyword');
+list($idfolders, $keyword, $deep) = request_strings('idfolders', 'keyword', 'deep');
 
 $idfolders = abs((int)$idfolders);
 if ($idfolders) {
@@ -18,6 +18,8 @@ if ($idfolders) {
         redirect();
     }
 }
+
+$deep = (bool)$deep;
 
 include_once 'fns/create_folder_link.php';
 include_once '../fns/create_panel.php';
@@ -46,8 +48,13 @@ if ($keyword === '') {
 
 } else {
 
-    $folders = Folders::search($idusers, $idfolders, $keyword);
-    $files = Files::search($idusers, $idfolders, $keyword);
+    if ($deep) {
+        include_once 'fns/search_recursively.php';
+        list($folders, $files) = search_recursively($idusers, $idfolders, $keyword);
+    } else {
+        $folders = Folders::search($idusers, $idfolders, $keyword);
+        $files = Files::search($idusers, $idfolders, $keyword);
+    }
 
     $clearHref = create_folder_link($idfolders);
     include_once '../fns/create_search_form_content.php';
@@ -57,11 +64,14 @@ if ($keyword === '') {
             "<input type=\"hidden\" name=\"idfolders\" value=\"$idfolders\" />"
             .$content;
     }
+    if ($deep) {
+        $content .= '<input type="hidden" name="deep" value="1" />';
+    }
     $items[] = create_form($content);
 
 }
 
-if ($idfolders) {
+if ($idfolders && $keyword === '') {
     $items[] = Page::imageLink(
         '.. Parent folder',
         create_folder_link($folder->parentidfolders),
@@ -91,6 +101,15 @@ if ($folders || $files) {
     if ($keyword === '') $text = 'Folder is empty.';
     else $text = 'Nothing found.';
     $items[] = Page::info($text);
+}
+
+if ($keyword !== '' && !$deep) {
+    $params = array();
+    if ($idfolders) $params['idfolders'] = $idfolders;
+    $params['keyword'] = $keyword;
+    $params['deep'] = '1';
+    $href = htmlspecialchars('./?'.http_build_query($params));
+    $items[] = Page::imageLink('Search in Subfolders', $href, 'search');
 }
 
 unset(
