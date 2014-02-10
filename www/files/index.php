@@ -53,9 +53,13 @@ if ($keyword === '') {
         include_once 'fns/search_recursively.php';
         list($folders, $files) = search_recursively($mysqli, $idusers, $idfolders, $keyword);
     } else {
-        $folders = Folders::search($idusers, $idfolders, $keyword);
+
+        include_once '../fns/Folders/search.php';
+        $folders = Folders\search($mysqli, $idusers, $idfolders, $keyword);
+
         include_once '../fns/Files/search.php';
         $files = Files\search($mysqli, $idusers, $idfolders, $keyword);
+
     }
 
     $clearHref = create_folder_link($idfolders);
