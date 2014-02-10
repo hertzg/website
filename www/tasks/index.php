@@ -16,6 +16,7 @@ include_once '../fns/create_panel.php';
 include_once '../fns/request_strings.php';
 include_once '../classes/Tab.php';
 include_once '../classes/Tasks.php';
+include_once '../lib/mysqli.php';
 include_once '../lib/page.php';
 
 list($keyword, $tag) = request_strings('keyword', 'tag');
@@ -63,7 +64,8 @@ if ($keyword === '') {
     include_once '../fns/create_search_form_content.php';
     if ($tag === '') {
 
-        $tasks = Tasks::search($idusers, $keyword);
+        include_once '../fns/Tasks/search.php';
+        $tasks = Tasks\search($mysqli, $idusers, $keyword);
 
         $items[] = create_search_form(
             create_search_form_content($keyword, 'Search tasks...', './')

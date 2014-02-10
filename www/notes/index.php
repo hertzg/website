@@ -16,6 +16,7 @@ include_once '../fns/create_panel.php';
 include_once '../fns/request_strings.php';
 include_once '../classes/Notes.php';
 include_once '../classes/Tab.php';
+include_once '../lib/mysqli.php';
 include_once '../lib/page.php';
 
 list($keyword, $tag) = request_strings('keyword', 'tag');
@@ -63,7 +64,8 @@ if ($keyword === '') {
     include_once '../fns/create_search_form_content.php';
     if ($tag === '') {
 
-        $notes = Notes::search($idusers, $keyword);
+        include_once '../fns/Notes/search.php';
+        $notes = Notes\search($mysqli, $idusers, $keyword);
 
         $items[] = create_search_form(
             create_search_form_content($keyword, 'Search notes...', './')

@@ -101,17 +101,4 @@ class Contacts {
         );
     }
 
-    static function search ($idusers, $keyword) {
-        global $mysqli;
-        include_once __DIR__.'/../fns/escape_like.php';
-        $keyword = escape_like($keyword);
-        $keyword = mysqli_real_escape_string($mysqli, $keyword);
-        return mysqli_query_object(
-            $mysqli,
-            'select * from contacts'
-            ." where idusers = $idusers and fullname like '%$keyword%'"
-            .' order by fullname'
-        );
-    }
-
 }

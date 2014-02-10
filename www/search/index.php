@@ -10,6 +10,7 @@ include_once '../classes/Contacts.php';
 include_once '../classes/Notes.php';
 include_once '../classes/Tab.php';
 include_once '../classes/Tasks.php';
+include_once '../lib/mysqli.php';
 include_once '../lib/page.php';
 
 list($keyword) = request_strings('keyword');
@@ -27,7 +28,9 @@ $items = array(
     .'</form>'
 );
 
-$contacts = Contacts::search($idusers, $keyword);
+include_once '../fns/Contacts/search.php';
+$contacts = Contacts\search($mysqli, $idusers, $keyword);
+
 foreach ($contacts as $contact) {
     $items[] = Page::imageLink(
         htmlspecialchars($contact->fullname),
@@ -36,7 +39,9 @@ foreach ($contacts as $contact) {
     );
 }
 
-$notes = Notes::search($idusers, $keyword);
+include_once '../fns/Notes/search.php';
+$notes = Notes\search($mysqli, $idusers, $keyword);
+
 foreach ($notes as $note) {
     $items[] = Page::imageLink(
         htmlspecialchars($note->notetext),
@@ -45,7 +50,9 @@ foreach ($notes as $note) {
     );
 }
 
-$tasks = Tasks::search($idusers, $keyword);
+include_once '../fns/Tasks/search.php';
+$tasks = Tasks\search($mysqli, $idusers, $keyword);
+
 foreach ($tasks as $task) {
     $icon = $task->done ? 'task-done' : 'task';
     $title = htmlspecialchars($task->tasktext);

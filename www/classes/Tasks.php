@@ -71,19 +71,6 @@ class Tasks {
         );
     }
 
-    static function search ($idusers, $keyword) {
-        global $mysqli;
-        include_once __DIR__.'/../fns/escape_like.php';
-        $keyword = escape_like($keyword);
-        $keyword = mysqli_real_escape_string($mysqli, $keyword);
-        return mysqli_query_object(
-            $mysqli,
-            'select * from tasks'
-            ." where idusers = $idusers and tasktext like '%$keyword%'"
-            .' order by done, updatetime desc'
-        );
-    }
-
     static function setDone ($idusers, $id, $done) {
         global $mysqli;
         $done = $done ? '1' : '0';

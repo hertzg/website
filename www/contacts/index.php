@@ -66,7 +66,8 @@ if ($keyword === '') {
     include_once '../fns/create_search_form_content.php';
     if ($tag === '') {
 
-        $contacts = Contacts::search($idusers, $keyword);
+        include_once '../fns/Contacts/search.php';
+        $contacts = Contacts\search($mysqli, $idusers, $keyword);
 
         $items[] = create_search_form(
             create_search_form_content($keyword, 'Search contacts...', './')

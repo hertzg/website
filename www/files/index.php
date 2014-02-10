@@ -26,8 +26,8 @@ include_once '../fns/create_panel.php';
 include_once '../fns/str_collapse_spaces.php';
 include_once '../classes/Files.php';
 include_once '../classes/Tab.php';
-include_once '../lib/page.php';
 include_once '../lib/mysqli.php';
+include_once '../lib/page.php';
 
 $items = array();
 
