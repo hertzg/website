@@ -62,22 +62,6 @@ class TaskTags {
         );
     }
 
-    static function searchOnTagName ($idusers, $keyword, $tagname) {
-        global $mysqli;
-        include_once __DIR__.'/../fns/escape_like.php';
-        $keyword = escape_like($keyword);
-        $keyword = mysqli_real_escape_string($mysqli, $keyword);
-        $tagname = mysqli_real_escape_string($mysqli, $tagname);
-        return mysqli_query_object(
-            $mysqli,
-            'select * from tasktags'
-            ." where idusers = $idusers"
-            ." and tasktext like '%$keyword%'"
-            ." and tagname = '$tagname'"
-            .' order by done, updatetime desc'
-        );
-    }
-
     static function setTaskDone ($idtasks, $done) {
         global $mysqli;
         $done = $done ? '1' : '0';

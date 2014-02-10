@@ -83,8 +83,8 @@ if ($keyword === '') {
 
     } else {
 
-        include_once '../classes/NoteTags.php';
-        $notes = NoteTags::searchOnTagName($idusers, $keyword, $tag);
+        include_once '../fns/NoteTags/searchOnTagName.php';
+        $notes = NoteTags\searchOnTagName($mysqli, $idusers, $keyword, $tag);
 
         $items[] = create_search_form(
             create_search_form_content($keyword, 'Search notes...', '?tag='.rawurlencode($tag))

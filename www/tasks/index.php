@@ -83,8 +83,8 @@ if ($keyword === '') {
 
     } else {
 
-        include_once '../classes/TaskTags.php';
-        $tasks = TaskTags::searchOnTagName($idusers, $keyword, $tag);
+        include_once '../fns/TaskTags/searchOnTagName.php';
+        $tasks = TaskTags\searchOnTagName($mysqli, $idusers, $keyword, $tag);
 
         $items[] = create_search_form(
             create_search_form_content($keyword, 'Search tasks...', '?tag='.rawurlencode($tag))

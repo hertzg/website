@@ -64,20 +64,4 @@ class NoteTags {
         );
     }
 
-    static function searchOnTagName ($idusers, $keyword, $tagname) {
-        global $mysqli;
-        include_once __DIR__.'/../fns/escape_like.php';
-        $keyword = escape_like($keyword);
-        $keyword = mysqli_real_escape_string($mysqli, $keyword);
-        $tagname = mysqli_real_escape_string($mysqli, $tagname);
-        return mysqli_query_object(
-            $mysqli,
-            'select * from notetags'
-            ." where idusers = $idusers"
-            ." and notetext like '%$keyword%'"
-            ." and tagname = '$tagname'"
-            .' order by updatetime desc'
-        );
-    }
-
 }

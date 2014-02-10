@@ -85,8 +85,8 @@ if ($keyword === '') {
 
     } else {
 
-        include_once '../classes/ContactTags.php';
-        $contacts = ContactTags::searchOnTagName($idusers, $keyword, $tag);
+        include_once '../fns/ContactTags/searchOnTagName.php';
+        $contacts = ContactTags\searchOnTagName($mysqli, $idusers, $keyword, $tag);
 
         $items[] = create_search_form(
             create_search_form_content(
