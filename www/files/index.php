@@ -27,6 +27,7 @@ include_once '../fns/str_collapse_spaces.php';
 include_once '../classes/Files.php';
 include_once '../classes/Tab.php';
 include_once '../lib/page.php';
+include_once '../lib/mysqli.php';
 
 $items = array();
 
@@ -50,10 +51,11 @@ if ($keyword === '') {
 
     if ($deep) {
         include_once 'fns/search_recursively.php';
-        list($folders, $files) = search_recursively($idusers, $idfolders, $keyword);
+        list($folders, $files) = search_recursively($mysqli, $idusers, $idfolders, $keyword);
     } else {
         $folders = Folders::search($idusers, $idfolders, $keyword);
-        $files = Files::search($idusers, $idfolders, $keyword);
+        include_once '../fns/Files/search.php';
+        $files = Files\search($mysqli, $idusers, $idfolders, $keyword);
     }
 
     $clearHref = create_folder_link($idfolders);

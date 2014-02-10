@@ -122,19 +122,4 @@ class Files {
         );
     }
 
-    static function search ($idusers, $idfolders, $keyword) {
-        global $mysqli;
-        include_once __DIR__.'/../fns/escape_like.php';
-        $keyword = escape_like($keyword);
-        $keyword = mysqli_real_escape_string($mysqli, $keyword);
-        return mysqli_query_object(
-            $mysqli,
-            'select * from files'
-            ." where idusers = $idusers"
-            ." and idfolders = $idfolders"
-            ." and filename like '%$keyword%'"
-            .' order by filename'
-        );
-    }
-
 }
