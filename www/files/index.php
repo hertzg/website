@@ -109,7 +109,7 @@ if ($keyword !== '' && !$deep) {
     $params['keyword'] = $keyword;
     $params['deep'] = '1';
     $href = htmlspecialchars('./?'.http_build_query($params));
-    $items[] = Page::imageLink('Search in Subfolders', $href, 'search');
+    $items[] = Page::imageLink('Search in Subfolders', $href, 'search-folder');
 }
 
 unset(

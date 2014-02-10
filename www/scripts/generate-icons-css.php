@@ -15,9 +15,9 @@ $names = array(
     'notification', 'old-notification', 'edit-password', 'new-password',
     'reset-password', 'randomize', 'rename', 'sign-out', 'sign-in', 'trash-bin',
     'calendar', 'arrow-right', 'arrow-left', 'copy-file', 'move-file',
-    'copy-folder', 'move-folder', 'search', 'event', 'create-event',
-    'edit-event', 'checkbox', 'checked-checkbox', 'help', 'token',
-    'create-token', 'tokens');
+    'copy-folder', 'move-folder', 'search', 'search-folder', 'event',
+    'create-event', 'edit-event', 'checkbox', 'checked-checkbox', 'help',
+    'token', 'create-token', 'tokens');
 
 $content = "/* auto-generated */\n";
 $x = 0;
