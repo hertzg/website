@@ -67,17 +67,6 @@ class Tokens {
         if ($token && $token->idusers == $idusers) return $token;
     }
 
-    static function indexOnUser ($idusers) {
-        global $mysqli;
-        include_once __DIR__.'/../fns/mysqli_query_object.php';
-        return mysqli_query_object(
-            $mysqli,
-            'select * from tokens'
-            ." where idusers = $idusers"
-            .' order by tokentext'
-        );
-    }
-
     static function remove ($id) {
         global $mysqli;
         mysqli_query($mysqli, "delete from tokens where idtokens = $id");

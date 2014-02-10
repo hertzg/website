@@ -4,6 +4,7 @@ include_once 'lib/require-user.php';
 include_once '../fns/create_panel.php';
 include_once '../classes/Tab.php';
 include_once '../classes/Tokens.php';
+include_once '../lib/mysqli.php';
 include_once '../lib/page.php';
 include_once '../lib/token.php';
 
@@ -22,7 +23,9 @@ if (!$token) {
     );
 }
 
-$tokens = Tokens::indexOnUser($idusers);
+include_once __DIR__.'/../fns/Tokens/indexOnUser.php';
+$tokens = Tokens\indexOnUser($mysqli, $idusers);
+
 $items = array();
 if ($tokens) {
     $options[] = Page::imageLink(
