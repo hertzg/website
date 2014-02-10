@@ -17,6 +17,7 @@ include_once '../fns/create_panel.php';
 include_once '../fns/request_strings.php';
 include_once '../classes/Contacts.php';
 include_once '../classes/Tab.php';
+include_once '../lib/mysqli.php';
 include_once '../lib/page.php';
 
 list($keyword, $tag) = request_strings('keyword', 'tag');
@@ -47,8 +48,8 @@ if ($keyword === '') {
 
     } else {
 
-        include_once '../classes/ContactTags.php';
-        $contacts = ContactTags::indexOnTagName($idusers, $tag);
+        include_once '../fns/ContactTags/indexOnTagName.php';
+        $contacts = ContactTags\indexOnTagName($mysqli, $idusers, $tag);
 
         if (count($contacts) > 1) {
             include_once '../fns/create_search_form_empty_content.php';

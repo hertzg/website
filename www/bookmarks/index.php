@@ -24,10 +24,13 @@ if ($tag === '') {
         $filterMessage = '';
     }
 } else {
-    include_once '../classes/BookmarkTags.php';
-    $bookmarks = BookmarkTags::indexOnTagName($idusers, $tag);
+
+    include_once '../fns/BookmarkTags/indexOnTagName.php';
+    $bookmarks = BookmarkTags\indexOnTagName($mysqli, $idusers, $tag);
+
     include_once '../fns/create_clear_filter_bar.php';
     $filterMessage = create_clear_filter_bar($tag, './');
+
 }
 
 $items = array();

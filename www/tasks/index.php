@@ -45,8 +45,8 @@ if ($keyword === '') {
 
     } else {
 
-        include_once '../classes/TaskTags.php';
-        $tasks = TaskTags::indexOnTagName($idusers, $tag);
+        include_once '../fns/TaskTags/indexOnTagName.php';
+        $tasks = TaskTags\indexOnTagName($mysqli, $idusers, $tag);
 
         if (count($tasks) > 1) {
             include_once '../fns/create_search_form_empty_content.php';

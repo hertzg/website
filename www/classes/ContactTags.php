@@ -43,18 +43,6 @@ class ContactTags {
         );
     }
 
-    static function indexOnTagName ($idusers, $tagname) {
-        global $mysqli;
-        $tagname = mysqli_real_escape_string($mysqli, $tagname);
-        return mysqli_query_object(
-            $mysqli,
-            'select * from contacttags'
-            ." where idusers = $idusers"
-            ." and tagname = '$tagname'"
-            .' order by fullname'
-        );
-    }
-
     static function indexOnUser ($idusers) {
         global $mysqli;
         return mysqli_query_object(

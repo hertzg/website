@@ -32,18 +32,6 @@ class TaskTags {
         mysqli_query($mysqli, "delete from tasktags where idusers = $idusers");
     }
 
-    static function indexOnTagName ($idusers, $tagname) {
-        global $mysqli;
-        $tagname = mysqli_real_escape_string($mysqli, $tagname);
-        return mysqli_query_object(
-            $mysqli,
-            'select * from tasktags'
-            ." where idusers = $idusers"
-            ." and tagname = '$tagname'"
-            .' order by done, updatetime desc'
-        );
-    }
-
     static function indexOnTask ($idtasks) {
         global $mysqli;
         return mysqli_query_object(

@@ -45,8 +45,8 @@ if ($keyword === '') {
 
     } else {
 
-        include_once '../classes/NoteTags.php';
-        $notes = NoteTags::indexOnTagName($idusers, $tag);
+        include_once '../fns/NoteTags/indexOnTagName.php';
+        $notes = NoteTags\indexOnTagName($mysqli, $idusers, $tag);
 
         if (count($notes) > 1) {
             include_once '../fns/create_search_form_empty_content.php';

@@ -43,18 +43,6 @@ class NoteTags {
         );
     }
 
-    static function indexOnTagName ($idusers, $tagname) {
-        global $mysqli;
-        $tagname = mysqli_real_escape_string($mysqli, $tagname);
-        return mysqli_query_object(
-            $mysqli,
-            'select * from notetags'
-            ." where idusers = $idusers"
-            ." and tagname = '$tagname'"
-            .' order by updatetime desc'
-        );
-    }
-
     static function indexOnUser ($idusers) {
         global $mysqli;
         return mysqli_query_object(
