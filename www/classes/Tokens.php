@@ -33,11 +33,6 @@ class Tokens {
         )->count;
     }
 
-    static function delete ($id) {
-        global $mysqli;
-        mysqli_query($mysqli, "delete from tokens where idtokens = $id");
-    }
-
     static function deleteOnUser ($idusers) {
         global $mysqli;
         mysqli_query($mysqli, "delete from tokens where idusers = $idusers");
