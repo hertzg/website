@@ -64,13 +64,4 @@ class Notes {
         );
     }
 
-    static function index ($idusers) {
-        global $mysqli;
-        return mysqli_query_object(
-            $mysqli,
-            "select * from notes where idusers = $idusers"
-            .' order by updatetime desc'
-        );
-    }
-
 }

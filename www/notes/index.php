@@ -27,7 +27,8 @@ $filterMessage = '';
 if ($keyword === '') {
     if ($tag === '') {
 
-        $notes = Notes::index($idusers);
+        include_once '../fns/Notes/index.php';
+        $notes = Notes\index($mysqli, $idusers);
 
         if (count($notes) > 1) {
 
