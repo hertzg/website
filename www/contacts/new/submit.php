@@ -4,14 +4,15 @@ include_once '../../lib/sameDomainReferer.php';
 include_once '../../fns/redirect.php';
 if (!$sameDomainReferer) redirect('..');
 include_once 'lib/require-user.php';
-include_once '../../fns/request_strings.php';
-include_once '../../fns/str_collapse_spaces.php';
 include_once '../../classes/Contacts.php';
 include_once '../../classes/Tags.php';
+include_once '../../lib/mysqli.php';
 
+include_once '../../fns/request_strings.php';
 list($fullname, $address, $email, $phone1, $phone2, $tags) = request_strings(
     'fullname', 'address', 'email', 'phone1', 'phone2', 'tags');
 
+include_once '../../fns/str_collapse_spaces.php';
 $fullname = str_collapse_spaces($fullname);
 $address = str_collapse_spaces($address);
 $email = str_collapse_spaces($email);
@@ -52,7 +53,9 @@ unset(
     $_SESSION['contacts/new/index_lastpost']
 );
 
-$id = Contacts::add($idusers, $fullname, $address, $email, $phone1, $phone2, $tags);
+include_once '../../fns/Contacts/add.php';
+$id = Contacts\add($mysqli, $idusers, $fullname, $address,
+    $email, $phone1, $phone2, $tags);
 
 include_once '../../classes/ContactTags.php';
 ContactTags::add($idusers, $id, $tagnames, $fullname);

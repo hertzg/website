@@ -4,12 +4,12 @@ include_once '../../lib/sameDomainReferer.php';
 include_once '../../fns/redirect.php';
 if (!$sameDomainReferer) redirect('..');
 include_once 'lib/require-user.php';
-include_once '../../fns/request_strings.php';
-include_once '../../fns/str_collapse_spaces.php';
 include_once '../../classes/Tags.php';
 
+include_once '../../fns/request_strings.php';
 list($title, $url, $tags) = request_strings('title', 'url', 'tags');
 
+include_once '../../fns/str_collapse_spaces.php';
 $title = str_collapse_spaces($title);
 $url = str_collapse_spaces($url);
 $tags = str_collapse_spaces($tags);
@@ -38,8 +38,9 @@ unset(
     $_SESSION['bookmarks/new/index_lastpost']
 );
 
-include_once '../../classes/Bookmarks.php';
-$id = Bookmarks::add($idusers, $title, $url, $tags);
+include_once '../../fns/Bookmarks/add.php';
+include_once '../../lib/mysqli.php';
+$id = Bookmarks\add($mysqli, $idusers, $title, $url, $tags);
 
 include_once '../../classes/BookmarkTags.php';
 BookmarkTags::add($idusers, $id, $tagnames, $title, $url);

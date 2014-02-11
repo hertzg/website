@@ -6,22 +6,6 @@ include_once __DIR__.'/../lib/mysqli.php';
 
 class Notes {
 
-    static function add ($idusers, $notetext, $tags) {
-        global $mysqli;
-        $notetext = mysqli_real_escape_string($mysqli, $notetext);
-        $tags = mysqli_real_escape_string($mysqli, $tags);
-        $inserttime = $updatetime = time();
-        mysqli_query(
-            $mysqli,
-            'insert into notes'
-            .' (idusers, notetext, tags,'
-            .' inserttime, updatetime)'
-            ." values ($idusers, '$notetext', '$tags',"
-            ." $inserttime, $updatetime)"
-        );
-        return mysqli_insert_id($mysqli);
-    }
-
     static function countOnUser ($idusers) {
         global $mysqli;
         return mysqli_single_object(

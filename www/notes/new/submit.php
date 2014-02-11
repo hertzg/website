@@ -37,8 +37,9 @@ unset(
     $_SESSION['notes/new/index_lastpost']
 );
 
-include_once '../../classes/Notes.php';
-$id = Notes::add($idusers, $notetext, $tags);
+include_once '../../fns/Notes/add.php';
+include_once '../../lib/mysqli.php';
+$id = Notes\add($mysqli, $idusers, $notetext, $tags);
 
 include_once '../../classes/NoteTags.php';
 NoteTags::add($idusers, $id, $tagnames, $notetext);

@@ -6,6 +6,7 @@ if (!$sameDomainReferer) redirect('..');
 include_once 'lib/require-user.php';
 include_once '../../fns/request_strings.php';
 include_once '../../classes/Channels.php';
+include_once '../../lib/mysqli.php';
 
 list($channelname) = request_strings('channelname');
 
@@ -34,7 +35,8 @@ unset(
     $_SESSION['channels/add_lastpost']
 );
 
-$id = Channels::add($idusers, $channelname);
+include_once '../../fns/Channels/add.php';
+$id = Channels\add($mysqli, $idusers, $channelname);
 
 $_SESSION['channels/view/index_messages'] = array('Channel has been added.');
 redirect("../view/?id=$id");

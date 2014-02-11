@@ -6,18 +6,6 @@ include_once __DIR__.'/../lib/mysqli.php';
 
 class Channels {
 
-    static function add ($idusers, $channelname) {
-        global $mysqli;
-        $channelname = mysqli_real_escape_string($mysqli, $channelname);
-        $channelkey = mysqli_real_escape_string($mysqli, md5(uniqid(), true));
-        mysqli_query(
-            $mysqli,
-            'insert into channels (idusers, channelname, channelkey)'
-            ." values ($idusers, '$channelname', '$channelkey')"
-        );
-        return mysqli_insert_id($mysqli);
-    }
-
     static function addNumNotifications ($idusers, $id, $numnotifications) {
         global $mysqli;
         mysqli_query(

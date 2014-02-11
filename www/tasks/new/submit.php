@@ -4,14 +4,15 @@ include_once '../../lib/sameDomainReferer.php';
 include_once '../../fns/redirect.php';
 if (!$sameDomainReferer) redirect('..');
 include_once 'lib/require-user.php';
-include_once '../../fns/request_strings.php';
-include_once '../../fns/str_collapse_spaces.php';
-include_once '../../fns/str_collapse_spaces_multiline.php';
 include_once '../../classes/Tags.php';
 
+include_once '../../fns/request_strings.php';
 list($tasktext, $tags) = request_strings('tasktext', 'tags');
 
+include_once '../../fns/str_collapse_spaces_multiline.php';
 $tasktext = str_collapse_spaces_multiline($tasktext);
+
+include_once '../../fns/str_collapse_spaces.php';
 $tags = str_collapse_spaces($tags);
 
 $errors = array();
@@ -37,8 +38,9 @@ unset(
     $_SESSION['tasks/new/index_lastpost']
 );
 
-include_once '../../classes/Tasks.php';
-$id = Tasks::add($idusers, $tasktext, $tags);
+include_once '../../fns/Tasks/add.php';
+include_once '../../lib/mysqli.php';
+$id = Tasks\add($mysqli, $idusers, $tasktext, $tags);
 
 include_once '../../classes/TaskTags.php';
 TaskTags::add($idusers, $id, $tagnames, $tasktext, $tags);

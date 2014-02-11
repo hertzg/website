@@ -6,23 +6,6 @@ include_once __DIR__.'/../lib/mysqli.php';
 
 class Bookmarks {
 
-    static function add ($idusers, $title, $url, $tags) {
-        global $mysqli;
-        $title = mysqli_real_escape_string($mysqli, $title);
-        $url = mysqli_real_escape_string($mysqli, $url);
-        $tags = mysqli_real_escape_string($mysqli, $tags);
-        $inserttime = $updatetime = time();
-        mysqli_query(
-            $mysqli,
-            'insert into bookmarks'
-            .' (idusers, title, url, tags,'
-            .' inserttime, updatetime)'
-            ." values ($idusers, '$title', '$url', '$tags',"
-            ." $inserttime, $updatetime)"
-        );
-        return mysqli_insert_id($mysqli);
-    }
-
     static function countOnUser ($idusers) {
         global $mysqli;
         return mysqli_single_object(
