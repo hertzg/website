@@ -50,13 +50,4 @@ class TaskTags {
         );
     }
 
-    static function setTaskDone ($idtasks, $done) {
-        global $mysqli;
-        $done = $done ? '1' : '0';
-        mysqli_query(
-            $mysqli,
-           "update tasktags set done = $done where idtasks = $idtasks"
-        );
-    }
-
 }

@@ -14,7 +14,7 @@ include_once '../../fns/Tasks/setDone.php';
 include_once '../../lib/mysqli.php';
 Tasks\setDone($mysqli, $idusers, $id, $done);
 
-include_once '../../classes/TaskTags.php';
-TaskTags::setTaskDone($id, $done);
+include_once '../../fns/TaskTags/setTaskDone.php';
+TaskTags\setTaskDone($mysqli, $id, $done);
 
 redirect("./?id=$id");
