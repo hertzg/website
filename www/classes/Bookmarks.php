@@ -67,13 +67,4 @@ class Bookmarks {
         );
     }
 
-    static function index ($idusers) {
-        global $mysqli;
-        return mysqli_query_object(
-            $mysqli,
-            "select * from bookmarks where idusers = $idusers"
-            .' order by updatetime desc'
-        );
-    }
-
 }
