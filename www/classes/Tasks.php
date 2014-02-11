@@ -62,13 +62,4 @@ class Tasks {
         );
     }
 
-    static function index ($idusers) {
-        global $mysqli;
-        return mysqli_query_object(
-            $mysqli,
-            "select * from tasks where idusers = $idusers"
-            .' order by done, updatetime desc'
-        );
-    }
-
 }
