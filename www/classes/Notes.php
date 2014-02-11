@@ -30,11 +30,6 @@ class Notes {
         )->count;
     }
 
-    static function delete ($id) {
-        global $mysqli;
-        mysqli_query($mysqli, "delete from notes where idnotes = $id");
-    }
-
     static function deleteOnUser ($idusers) {
         global $mysqli;
         mysqli_query($mysqli, "delete from notes where idusers = $idusers");
