@@ -71,17 +71,4 @@ class Tasks {
         );
     }
 
-    static function setDone ($idusers, $id, $done) {
-        global $mysqli;
-        $done = $done ? '1' : '0';
-        $updatetime = time();
-        mysqli_query(
-            $mysqli,
-            'update tasks set'
-            ." done = $done,"
-            ." updatetime = $updatetime"
-            ." where idusers = $idusers and idtasks = $id"
-        );
-    }
-
 }

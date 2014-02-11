@@ -1,18 +1,6 @@
 <?php
 
-include_once '../../fns/require_user.php';
-require_user('../../');
-
-include_once '../../fns/request_strings.php';
-include_once __DIR__.'/../../classes/Tasks.php';
-list($id) = request_strings('id');
-$id = abs((int)$id);
-$task = Tasks::get($idusers, $id);
-if (!$task) {
-    include_once __DIR__.'/../../fns/redirect.php';
-    redirect('..');
-}
-
+include_once 'lib/require-task.php';
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tags.php';
 include_once '../../fns/date_ago.php';
@@ -31,13 +19,13 @@ $options = array();
 if ($task->done) {
     $options[] = Page::imageLink(
         'Mark as Not Done',
-        "../submit-set-done.php?id=$id",
+        "submit-set-done.php?id=$id",
         'task'
     );
 } else {
     $options[] = Page::imageLink(
         'Mark as Done',
-        "../submit-set-done.php?id=$id&done=1",
+        "submit-set-done.php?id=$id&done=1",
         'task-done'
     );
 }
