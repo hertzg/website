@@ -28,7 +28,8 @@ $filterMessage = '';
 if ($keyword === '') {
     if ($tag === '') {
 
-        $contacts = Contacts::index($idusers);
+        include_once '../fns/Contacts/index.php';
+        $contacts = Contacts\index($mysqli, $idusers);
 
         if (count($contacts) > 1) {
 

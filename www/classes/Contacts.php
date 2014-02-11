@@ -91,14 +91,4 @@ class Contacts {
         );
     }
 
-    static function index ($idusers) {
-        global $mysqli;
-        return mysqli_query_object(
-            $mysqli,
-            'select * from contacts'
-            ." where idusers = $idusers"
-            .' order by fullname'
-        );
-    }
-
 }
