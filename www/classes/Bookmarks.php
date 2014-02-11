@@ -31,11 +31,6 @@ class Bookmarks {
         )->count;
     }
 
-    static function delete ($id) {
-        global $mysqli;
-        mysqli_query($mysqli, "delete from bookmarks where idbookmarks = $id");
-    }
-
     static function deleteOnUser ($idusers) {
         global $mysqli;
         mysqli_query($mysqli, "delete from bookmarks where idusers = $idusers");

@@ -5,8 +5,9 @@ include_once '../../fns/redirect.php';
 if (!$sameDomainReferer) redirect('../..');
 include_once 'lib/require-bookmark.php';
 
-include_once '../../classes/Bookmarks.php';
-Bookmarks::delete($id);
+include_once '../../fns/Bookmarks/delete.php';
+include_once '../../lib/mysqli.php';
+Bookmarks\delete($mysqli, $id);
 
 include_once '../../classes/BookmarkTags.php';
 BookmarkTags::deleteOnBookmark($id);
