@@ -6,19 +6,6 @@ include_once __DIR__.'/../lib/mysqli.php';
 
 class Folders {
 
-    static function add ($idusers, $parentidfolders, $foldername) {
-        global $mysqli;
-        $foldername = mysqli_real_escape_string($mysqli, $foldername);
-        $inserttime = time();
-        mysqli_query(
-            $mysqli,
-            'insert into folders'
-            .' (idusers, parentidfolders, foldername, inserttime)'
-            ." values ($idusers, $parentidfolders, '$foldername', $inserttime)"
-        );
-        return mysqli_insert_id($mysqli);
-    }
-
     static function delete ($idusers, $idfolders) {
         include_once 'Files.php';
         global $mysqli;
@@ -52,19 +39,6 @@ class Folders {
             $mysqli,
             'select * from folders'
             ." where idusers = $idusers and idfolders = $idfolders"
-        );
-    }
-
-    static function getByName ($idusers, $parentidfolders, $foldername, $excludeidfolders = 0) {
-        global $mysqli;
-        $foldername = mysqli_real_escape_string($mysqli, $foldername);
-        return mysqli_single_object(
-            $mysqli,
-            'select * from folders'
-            ." where idusers = $idusers"
-            ." and parentidfolders = $parentidfolders"
-            ." and foldername = '$foldername'"
-            ." and idfolders != $excludeidfolders"
         );
     }
 

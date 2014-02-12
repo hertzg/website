@@ -68,7 +68,6 @@ require_user('../');
 
 include_once '../fns/create_panel.php';
 include_once '../fns/request_strings.php';
-include_once '../classes/Events.php';
 include_once '../classes/Tab.php';
 include_once '../lib/page.php';
 
@@ -105,8 +104,11 @@ $yearSelected = date('Y', $timeSelected);
 $monthSelected = date('n', $timeSelected);
 $daySelected = date('d', $timeSelected);
 
+include_once '../fns/Events/index.php';
+include_once '../lib/mysqli.php';
+$events = Events\index($mysqli, $idusers, $timeSelected);
+
 $eventItems = array();
-$events = Events::index($idusers, $timeSelected);
 if ($events) {
     foreach ($events as $event) {
         $eventItems[] = Page::imageLink(

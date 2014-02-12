@@ -5,19 +5,24 @@ include_once '../fns/redirect.php';
 if (!$sameDomainReferer) redirect('..');
 include_once 'lib/require-folder.php';
 include_once 'fns/create_folder_link.php';
-include_once '../fns/request_strings.php';
-include_once '../fns/str_collapse_spaces.php';
 include_once '../classes/Folders.php';
+include_once '../lib/mysqli.php';
 
+include_once '../fns/request_strings.php';
 list($foldername) = request_strings('foldername');
 
 $errors = array();
 
+include_once '../fns/str_collapse_spaces.php';
 $foldername = str_collapse_spaces($foldername);
+
 if ($foldername === '') {
     $errors[] = 'Enter folder name.';
-} elseif (Folders::getByName($idusers, $folder->parentidfolders, $foldername, $idfolders)) {
-    $errors[] = 'Folder with this name already exists.';
+} else {
+    include_once '../fns/Folders/getByName.php';
+    if (Folders\getByName($mysqli, $idusers, $folder->parentidfolders, $foldername, $idfolders)) {
+        $errors[] = 'Folder with this name already exists.';
+    }
 }
 
 if ($errors) {

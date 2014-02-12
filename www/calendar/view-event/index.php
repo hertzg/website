@@ -8,8 +8,9 @@ list($idevents) = request_strings('idevents');
 
 $idevents = abs((int)$idevents);
 
-include_once __DIR__.'/../../classes/Events.php';
-$event = Events::get($idusers, $idevents);
+include_once __DIR__.'/../../fns/Events/get.php';
+include_once __DIR__.'/../../lib/mysqli.php';
+$event = Events\get($mysqli, $idusers, $idevents);
 
 if (!$event) {
     include_once __DIR__.'/../../fns/redirect.php';

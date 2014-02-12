@@ -15,6 +15,7 @@ include_once 'lib/require-folder.php';
 include_once 'fns/create_folder_link.php';
 include_once '../fns/request_strings.php';
 include_once '../classes/Folders.php';
+include_once '../lib/mysqli.php';
 
 list($parentidfolders) = request_strings('parentidfolders');
 
@@ -29,7 +30,9 @@ if ($parentidfolders) {
     }
 }
 
-$existingFolder = Folders::getByName($idusers, $parentidfolders, $folder->foldername);
+include_once '../fns/Folders/getByName.php';
+$existingFolder = Folders\getByName($mysqli, $idusers, $parentidfolders, $folder->foldername);
+
 if ($existingFolder) {
     $_SESSION['files/move-folder_parentidfolders'] = $parentidfolders;
     $_SESSION['files/move-folder_errors'] = array(

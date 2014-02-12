@@ -12,7 +12,6 @@ require_user($base);
 include_once '../fns/bytestr.php';
 include_once '../fns/create_panel.php';
 include_once '../fns/create_search_form_empty_content.php';
-include_once '../classes/Events.php';
 include_once '../classes/Notifications.php';
 include_once '../classes/Tab.php';
 include_once '../lib/mysqli.php';
@@ -50,17 +49,20 @@ if ($numBookmarks) {
     $items[] = Page::imageLink($title, $href, $icon);
 }
 
-$title = 'Calendar';
-$href = '../calendar/';
-$icon = 'calendar';
 $timeNow = time();
 $dayToday = date('j', $timeNow);
 $monthToday = date('n', $timeNow);
 $yearToday = date('Y', $timeNow);
 $timeToday = mktime(0, 0, 0, $monthToday, $dayToday, $yearToday);
 $timeTomorrow = mktime(0, 0, 0, $monthToday, $dayToday + 1, $yearToday);
-$numEventsToday = Events::countOnTime($idusers, $timeToday);
-$numEventsTomorrow = Events::countOnTime($idusers, $timeTomorrow);
+
+include_once '../fns/Events/countOnTime.php';
+$numEventsToday = Events\countOnTime($mysqli, $idusers, $timeToday);
+$numEventsTomorrow = Events\countOnTime($mysqli, $idusers, $timeTomorrow);
+
+$title = 'Calendar';
+$href = '../calendar/';
+$icon = 'calendar';
 if ($numEventsToday) {
     if ($numEventsTomorrow) {
         $description =
