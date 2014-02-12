@@ -4,21 +4,23 @@ include_once '../../lib/sameDomainReferer.php';
 include_once '../../fns/redirect.php';
 if (!$sameDomainReferer) redirect('../..');
 include_once 'lib/require-task.php';
-include_once '../../fns/request_strings.php';
-include_once '../../fns/str_collapse_spaces.php';
-include_once '../../fns/str_collapse_spaces_multiline.php';
-include_once '../../classes/Tags.php';
 
+include_once '../../fns/request_strings.php';
 list($tasktext, $tags) = request_strings('tasktext', 'tags');
 
+include_once '../../fns/str_collapse_spaces_multiline.php';
 $tasktext = str_collapse_spaces_multiline($tasktext);
+
+include_once '../../fns/str_collapse_spaces.php';
 $tags = str_collapse_spaces($tags);
 
 $errors = array();
 
 if ($tasktext === '') $errors[] = 'Enter text.';
 
+include_once '../../classes/Tags.php';
 $tagnames = Tags::parse($tags);
+
 if (count($tagnames) > Tags::MAX_NUM_TAGS) {
     $errors[] = 'Please, enter maximum '.Tags::MAX_NUM_TAGS.' tags.';
 }
@@ -37,8 +39,9 @@ unset(
     $_SESSION['tasks/edit_lastpost']
 );
 
-include_once '../../classes/Tasks.php';
-Tasks::edit($idusers, $id, $tasktext, $tags);
+include_once '../../fns/Tasks/edit.php';
+include_once '../../lib/mysqli.php';
+Tasks\edit($mysqli, $idusers, $id, $tasktext, $tags);
 
 include_once '../../classes/TaskTags.php';
 TaskTags::deleteOnTask($id);

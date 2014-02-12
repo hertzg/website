@@ -4,7 +4,6 @@ include_once '../../lib/sameDomainReferer.php';
 include_once '../../fns/redirect.php';
 if (!$sameDomainReferer) redirect('../..');
 include_once 'lib/require-contact.php';
-include_once '../../classes/Contacts.php';
 include_once '../../classes/Tags.php';
 
 include_once '../../fns/request_strings.php';
@@ -25,8 +24,11 @@ if ($fullname === '') {
     $errors[] = 'Enter full name.';
 } elseif (mb_strlen($fullname, 'UTF-8') > 32) {
     $errors[] = 'Full name too long. At most 32 characters required.';
-} elseif (Contacts::getByFullName($idusers, $fullname, $id)) {
-    $errors[] = 'A contact with this name already exists.';
+} else {
+    include_once '../../fns/Contacts/getByFullName.php';
+    if (Contacts\getByFullName($mysqli, $idusers, $fullname, $id)) {
+        $errors[] = 'A contact with this name already exists.';
+    }
 }
 
 $tagnames = Tags::parse($tags);
@@ -52,7 +54,9 @@ unset(
     $_SESSION['contacts/edit_lastpost']
 );
 
-Contacts::edit($idusers, $id, $fullname, $address,
+include_once '../../fns/Contacts/edit.php';
+include_once '../../lib/mysqli.php';
+Contacts\edit($mysqli, $idusers, $id, $fullname, $address,
     $email, $phone1, $phone2, $tags);
 
 include_once '../../classes/ContactTags.php';

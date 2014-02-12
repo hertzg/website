@@ -5,8 +5,9 @@ include_once '../../fns/redirect.php';
 if (!$sameDomainReferer) redirect('..');
 include_once 'lib/require-event.php';
 
-include_once '../../classes/Events.php';
-Events::delete($idevents);
+include_once '../../fns/Events/delete.php';
+include_once '../../lib/mysqli.php';
+Events\delete($mysqli, $idevents);
 
 $_SESSION['calendar/index_messages'] = array('Event has been deleted.');
 

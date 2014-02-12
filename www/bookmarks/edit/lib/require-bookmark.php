@@ -8,10 +8,11 @@ list($id) = request_strings('id');
 
 $id = abs((int)$id);
 
-include_once __DIR__.'/../../../classes/Bookmarks.php';
-$bookmark = Bookmarks::get($idusers, $id);
+include_once __DIR__.'/../../../fns/Bookmarks/get.php';
+include_once __DIR__.'/../../../lib/mysqli.php';
+$bookmark = Bookmarks\get($mysqli, $idusers, $id);
 
 if (!$bookmark) {
     include_once __DIR__.'/../../../fns/redirect.php';
-    redirect();
+    redirect('..');
 }

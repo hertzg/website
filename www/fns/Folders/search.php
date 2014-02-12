@@ -10,7 +10,6 @@ function search ($mysqli, $idusers, $parentidfolders, $keyword) {
     $keyword = mysqli_real_escape_string($mysqli, $keyword);
 
     include_once __DIR__.'/../mysqli_query_object.php';
-
     return mysqli_query_object(
         $mysqli,
         'select * from folders'

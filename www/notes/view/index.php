@@ -4,10 +4,14 @@ include_once '../../fns/require_user.php';
 require_user('../../');
 
 include_once '../../fns/request_strings.php';
-include_once '../../classes/Notes.php';
 list($id) = request_strings('id');
+
 $id = abs((int)$id);
-$note = Notes::get($idusers, $id);
+
+include_once '../../fns/Notes/get.php';
+include_once '../../lib/mysqli.php';
+$note = Notes\get($mysqli, $idusers, $id);
+
 if (!$note) {
     include_once '../../fns/redirect.php';
     redirect('..');

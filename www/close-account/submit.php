@@ -4,8 +4,8 @@ include_once '../lib/sameDomainReferer.php';
 include_once '../fns/redirect.php';
 if (!$sameDomainReferer) redirect();
 include_once 'lib/require-user.php';
-include_once '../fns/request_strings.php';
 
+include_once '../fns/request_strings.php';
 list($password) = request_strings('password');
 
 $errors = array();
@@ -23,8 +23,9 @@ if ($errors) {
 
 unset($_SESSION['close-account/index_errors']);
 
-include_once '../classes/Bookmarks.php';
-Bookmarks::deleteOnUser($idusers);
+include_once '../fns/Bookmarks/deleteOnUser.php';
+include_once '../lib/mysqli.php';
+Bookmarks\deleteOnUser($mysqli, $idusers);
 
 include_once '../classes/BookmarkTags.php';
 BookmarkTags::deleteOnUser($idusers);
@@ -32,14 +33,14 @@ BookmarkTags::deleteOnUser($idusers);
 include_once '../classes/Channels.php';
 Channels::deleteOnUser($idusers);
 
-include_once '../classes/Contacts.php';
-Contacts::deleteOnUser($idusers);
+include_once '../fns/Contacts/deleteOnUser.php';
+Contacts\deleteOnUser($mysqli, $idusers);
 
 include_once '../classes/ContactTags.php';
 ContactTags::deleteOnUser($idusers);
 
-include_once '../classes/Events.php';
-Events::deleteOnUser($idusers);
+include_once '../fns/Events/deleteOnUser.php';
+Events\deleteOnUser($mysqli, $idusers);
 
 include_once '../classes/Feedbacks.php';
 Feedbacks::deleteOnUser($idusers);
@@ -50,8 +51,8 @@ Files::deleteOnUser($idusers);
 include_once '../classes/Folders.php';
 Folders::deleteOnUser($idusers);
 
-include_once '../classes/Notes.php';
-Notes::deleteOnUser($idusers);
+include_once '../fns/Notes/deleteOnUser.php';
+Notes\deleteOnUser($mysqli, $idusers);
 
 include_once '../classes/NoteTags.php';
 NoteTags::deleteOnUser($idusers);
@@ -59,8 +60,8 @@ NoteTags::deleteOnUser($idusers);
 include_once '../classes/Notifications.php';
 Notifications::deleteOnUser($idusers);
 
-include_once '../classes/Tasks.php';
-Tasks::deleteOnUser($idusers);
+include_once '../fns/Tasks/deleteOnUser.php';
+Tasks\deleteOnUser($mysqli, $idusers);
 
 include_once '../classes/TaskTags.php';
 TaskTags::deleteOnUser($idusers);

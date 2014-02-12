@@ -6,10 +6,7 @@ require_user('../');
 include_once '../fns/create_search_form_content.php';
 include_once '../fns/request_strings.php';
 include_once '../fns/str_collapse_spaces.php';
-include_once '../classes/Contacts.php';
-include_once '../classes/Notes.php';
 include_once '../classes/Tab.php';
-include_once '../classes/Tasks.php';
 include_once '../lib/mysqli.php';
 include_once '../lib/page.php';
 

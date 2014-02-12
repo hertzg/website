@@ -25,14 +25,6 @@ class Channels {
         );
     }
 
-    static function countOnUser ($idusers) {
-        global $mysqli;
-        return mysqli_single_object(
-            $mysqli,
-            "select count(*) count from channels where idusers = $idusers"
-        )->count;
-    }
-
     static function delete ($idusers, $id) {
         global $mysqli;
         mysqli_query(
@@ -95,16 +87,6 @@ class Channels {
 
         return $channels;
 
-    }
-
-    static function randomizeKey ($idusers, $id) {
-        global $mysqli;
-        $channelkey = mysqli_real_escape_string($mysqli, md5(uniqid(), true));
-        mysqli_query(
-            $mysqli,
-            "update channels set channelkey = '$channelkey'"
-            ." where idusers = $idusers and idchannels = $id"
-        );
     }
 
 }

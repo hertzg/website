@@ -5,6 +5,7 @@ include_once '../fns/create_panel.php';
 include_once '../fns/request_strings.php';
 include_once '../classes/Notifications.php';
 include_once '../classes/Tab.php';
+include_once '../lib/mysqli.php';
 include_once '../lib/page.php';
 
 list($id) = request_strings('id');
@@ -14,7 +15,9 @@ Users::clearNumNotifications($idusers);
 
 $options = array();
 
-$numChannels = Channels::countOnUser($idusers);
+include_once '../fns/Channels/countOnUser.php';
+$numChannels = Channels\countOnUser($mysqli, $idusers);
+
 if ($numChannels) {
     $options[] = Page::imageLinkWithDescription('Channels', "$numChannels total.", '../channels/', 'channels');
 } else {

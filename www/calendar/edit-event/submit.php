@@ -22,8 +22,9 @@ if ($errors) {
 
 unset($_SESSION['calendar/edit-event_errors']);
 
-include_once '../../classes/Events.php';
-Events::edit($idusers, $idevents, $eventtext);
+include_once '../../fns/Events/edit.php';
+include_once '../../lib/mysqli.php';
+Events\edit($mysqli, $idusers, $idevents, $eventtext);
 
 $_SESSION['calendar/view-event_messages'] = array('Changes have been saved.');
 

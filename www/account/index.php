@@ -10,6 +10,7 @@ include_once '../fns/bytestr.php';
 include_once '../fns/date_ago.php';
 include_once '../classes/Form.php';
 include_once '../classes/Tab.php';
+include_once '../lib/mysqli.php';
 include_once '../lib/page.php';
 include_once '../lib/themes.php';
 
@@ -43,8 +44,10 @@ $options = array(
     Page::imageLink('Edit Theme', '../edit-theme/', "edit-$user->theme-theme"),
     Page::imageLink('Change Password', '../change-password/', 'edit-password'),
 );
-include_once '../classes/Tokens.php';
-$numTokens = Tokens::countOnUser($idusers);
+
+include_once '../fns/Tokens/countOnUser.php';
+$numTokens = Tokens\countOnUser($mysqli, $idusers);
+
 if ($numTokens) {
     $options[] = Page::imageLinkWithDescription('Remembered Sessions', "$numTokens total.", '../tokens/', 'tokens');
 } else {

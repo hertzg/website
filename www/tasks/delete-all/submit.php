@@ -5,8 +5,9 @@ include_once '../../fns/redirect.php';
 if (!$sameDomainReferer) redirect('../..');
 include_once 'lib/require-user.php';
 
-include_once '../../classes/Tasks.php';
-Tasks::deleteOnUser($idusers);
+include_once '../../fns/Tasks/deleteOnUser.php';
+include_once '../../lib/mysqli.php';
+Tasks\deleteOnUser($mysqli, $idusers);
 
 include_once '../../classes/TaskTags.php';
 TaskTags::deleteOnUser($idusers);

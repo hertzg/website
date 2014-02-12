@@ -37,8 +37,9 @@ unset(
     $_SESSION['notes/edit_lastpost']
 );
 
-include_once '../../classes/Notes.php';
-Notes::edit($idusers, $id, $notetext, $tags);
+include_once '../../fns/Notes/edit.php';
+include_once '../../lib/mysqli.php';
+Notes\edit($mysqli, $idusers, $id, $notetext, $tags);
 
 include_once '../../classes/NoteTags.php';
 NoteTags::deleteOnNote($id);

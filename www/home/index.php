@@ -12,13 +12,10 @@ require_user($base);
 include_once '../fns/bytestr.php';
 include_once '../fns/create_panel.php';
 include_once '../fns/create_search_form_empty_content.php';
-include_once '../classes/Bookmarks.php';
-include_once '../classes/Contacts.php';
 include_once '../classes/Events.php';
-include_once '../classes/Notes.php';
 include_once '../classes/Notifications.php';
 include_once '../classes/Tab.php';
-include_once '../classes/Tasks.php';
+include_once '../lib/mysqli.php';
 include_once '../lib/page.php';
 
 unset(
@@ -40,10 +37,12 @@ $items[] =
         .create_search_form_empty_content('Search...')
     .'</form>';
 
+include_once '../fns/Bookmarks/countOnUser.php';
+$numBookmarks = Bookmarks\countOnUser($mysqli, $idusers);
+
 $title = 'Bookmarks';
 $href = '../bookmarks/';
 $icon = 'bookmarks';
-$numBookmarks = Bookmarks::countOnUser($idusers);
 if ($numBookmarks) {
     $description = "$numBookmarks total.";
     $items[] = Page::imageLinkWithDescription($title, $description, $href, $icon);
@@ -78,10 +77,12 @@ if ($numEventsToday) {
     $items[] = Page::imageLink($title, $href, $icon);
 }
 
+include_once '../fns/Contacts/countOnUser.php';
+$numContacts = Contacts\countOnUser($mysqli, $idusers);
+
 $title = 'Contacts';
 $href = '../contacts/';
 $icon = 'contacts';
-$numContacts = Contacts::countOnUser($idusers);
 if ($numContacts) {
     $description = "$numContacts total.";
     $items[] = Page::imageLinkWithDescription($title, $description, $href, $icon);
@@ -99,10 +100,12 @@ if ($user->storageused) {
     $items[] = Page::imageLink($title, $href, $icon);
 }
 
+include_once '../fns/Notes/countOnUser.php';
+$numNotes = Notes\countOnUser($mysqli, $idusers);
+
 $title = 'Notes';
 $href = '../notes/';
 $icon = 'notes';
-$numNotes = Notes::countOnUser($idusers);
 if ($numNotes) {
     $description = "$numNotes total.";
     $items[] = Page::imageLinkWithDescription($title, $description, $href, $icon);
@@ -138,10 +141,12 @@ if ($numNotifications) {
     $items[] = Page::imageLink($title, $href, 'old-notification');
 }
 
+include_once '../fns/Tasks/countOnUser.php';
+$numTasks = Tasks\countOnUser($mysqli, $idusers);
+
 $title = 'Tasks';
 $href = '../tasks/';
 $icon = 'tasks';
-$numTasks = Tasks::countOnUser($idusers);
 if ($numTasks) {
     $description = "$numTasks total.";
     $items[] = Page::imageLinkWithDescription($title, $description, $href, $icon);

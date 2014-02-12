@@ -4,7 +4,6 @@ include_once '../../lib/sameDomainReferer.php';
 include_once '../../fns/redirect.php';
 if (!$sameDomainReferer) redirect('../..');
 include_once 'lib/require-bookmark.php';
-include_once '../../classes/Tags.php';
 
 include_once '../../fns/request_strings.php';
 list($title, $url, $tags) = request_strings('title', 'url', 'tags');
@@ -18,7 +17,9 @@ $errors = array();
 
 if ($url === '') $errors[] = 'Enter URL.';
 
+include_once '../../classes/Tags.php';
 $tagnames = Tags::parse($tags);
+
 if (count($tagnames) > Tags::MAX_NUM_TAGS) {
     $errors[] = 'Please, enter maximum '.Tags::MAX_NUM_TAGS.' tags.';
 }
@@ -38,8 +39,9 @@ unset(
     $_SESSION['bookmarks/edit_lastpost']
 );
 
-include_once '../../classes/Bookmarks.php';
-Bookmarks::edit($idusers, $id, $title, $url, $tags);
+include_once '../../fns/Bookmarks/edit.php';
+include_once '../../lib/mysqli.php';
+Bookmarks\edit($mysqli, $idusers, $id, $title, $url, $tags);
 
 include_once '../../classes/BookmarkTags.php';
 BookmarkTags::deleteOnBookmark($id);
