@@ -36,11 +36,6 @@ class Channels {
         Notifications::deleteOnChannel($idusers, $id);
     }
 
-    static function deleteOnUser ($idusers) {
-        global $mysqli;
-        mysqli_query($mysqli, "delete from channels where idusers = $idusers");
-    }
-
     static function getByNameKey ($channelname, $channelkey) {
         global $mysqli;
         $channelname = mysqli_real_escape_string($mysqli, $channelname);

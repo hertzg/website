@@ -30,8 +30,8 @@ Bookmarks\deleteOnUser($mysqli, $idusers);
 include_once '../fns/BookmarkTags/deleteOnUser.php';
 BookmarkTags\deleteOnUser($mysqli, $idusers);
 
-include_once '../classes/Channels.php';
-Channels::deleteOnUser($idusers);
+include_once '../fns/Channels/deleteOnUser.php';
+Channels\deleteOnUser($mysqli, $idusers);
 
 include_once '../fns/Contacts/deleteOnUser.php';
 Contacts\deleteOnUser($mysqli, $idusers);
