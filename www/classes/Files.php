@@ -73,15 +73,6 @@ class Files {
         return __DIR__."/../users/$idusers/$id";
     }
 
-    static function get ($idusers, $id) {
-        global $mysqli;
-        return mysqli_single_object(
-            $mysqli,
-            'select * from files'
-            ." where idusers = $idusers and idfiles = $id"
-        );
-   }
-
     static function getByName ($idusers, $idfolders, $filename, $excludeid = 0) {
         global $mysqli;
         $filename = mysqli_real_escape_string($mysqli, $filename);

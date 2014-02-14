@@ -15,14 +15,17 @@ if ($tag === '') {
     $bookmarks = Bookmarks\index($mysqli, $idusers);
 
     if (count($bookmarks) > 1) {
-        include_once '../classes/BookmarkTags.php';
-        $bookmarkTags = BookmarkTags::indexOnUser($idusers);
+
+        include_once '../fns/BookmarkTags/indexOnUser.php';
+        $bookmarkTags = BookmarkTags\indexOnUser($mysqli, $idusers);
+
         if ($bookmarkTags) {
             include_once '../fns/create_tag_filter_bar.php';
             $filterMessage = create_tag_filter_bar($bookmarkTags, array());
         } else {
             $filterMessage = '';
         }
+
     } else {
         $filterMessage = '';
     }
@@ -42,15 +45,12 @@ if ($bookmarks) {
     foreach ($bookmarks as $bookmark) {
         $href = "view/?id=$bookmark->idbookmarks";
         $escapedUrl = htmlspecialchars($bookmark->url);
-        if ($bookmark->title) {
-            $items[] = Page::imageLinkWithDescription(
-                $bookmark->title,
-                $escapedUrl,
-                $href,
-                'bookmark'
-            );
-        } else {
+        $title = $bookmark->title;
+        if ($title === '') {
             $items[] = Page::imageLink($bookmark->url, $href, 'bookmark');
+        } else {
+            $items[] = Page::imageLinkWithDescription($title,
+                $escapedUrl, $href, 'bookmark');
         }
     }
 } else {

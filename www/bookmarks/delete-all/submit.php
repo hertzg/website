@@ -9,8 +9,8 @@ include_once '../../fns/Bookmarks/deleteOnUser.php';
 include_once '../../lib/mysqli.php';
 Bookmarks\deleteOnUser($mysqli, $idusers);
 
-include_once '../../classes/BookmarkTags.php';
-BookmarkTags::deleteOnUser($idusers);
+include_once '../../fns/BookmarkTags/deleteOnUser.php';
+BookmarkTags\deleteOnUser($mysqli, $idusers);
 
 $_SESSION['bookmarks/index_messages'] = array(
     'All bookmarks have been deleted.',

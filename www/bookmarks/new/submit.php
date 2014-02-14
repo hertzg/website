@@ -42,8 +42,8 @@ include_once '../../fns/Bookmarks/add.php';
 include_once '../../lib/mysqli.php';
 $id = Bookmarks\add($mysqli, $idusers, $title, $url, $tags);
 
-include_once '../../classes/BookmarkTags.php';
-BookmarkTags::add($idusers, $id, $tagnames, $title, $url);
+include_once '../../fns/BookmarkTags/add.php';
+BookmarkTags\add($mysqli, $idusers, $id, $tagnames, $title, $url);
 
 $_SESSION['bookmarks/view/index_messages'] = array('Bookmark has been saved.');
 redirect("../view/?id=$id");

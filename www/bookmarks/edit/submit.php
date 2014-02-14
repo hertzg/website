@@ -43,9 +43,11 @@ include_once '../../fns/Bookmarks/edit.php';
 include_once '../../lib/mysqli.php';
 Bookmarks\edit($mysqli, $idusers, $id, $title, $url, $tags);
 
-include_once '../../classes/BookmarkTags.php';
-BookmarkTags::deleteOnBookmark($id);
-BookmarkTags::add($idusers, $id, $tagnames, $title, $url);
+include_once '../../fns/BookmarkTags/deleteOnBookmark.php';
+BookmarkTags\deleteOnBookmark($mysqli, $id);
+
+include_once '../../fns/BookmarkTags/add.php';
+BookmarkTags\add($mysqli, $idusers, $id, $tagnames, $title, $url);
 
 $_SESSION['bookmarks/view/index_messages'] = array('Changes have been saved.');
 redirect("../view/?id=$id");

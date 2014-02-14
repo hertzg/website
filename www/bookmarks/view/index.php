@@ -21,7 +21,6 @@ include_once '../../fns/create_external_url.php';
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tags.php';
 include_once '../../fns/date_ago.php';
-include_once '../../classes/BookmarkTags.php';
 include_once '../../classes/Tab.php';
 include_once '../../lib/page.php';
 
@@ -42,6 +41,9 @@ $url = $bookmark->url;
 $inserttime = $bookmark->inserttime;
 $updatetime = $bookmark->updatetime;
 
+include_once '../../fns/BookmarkTags/indexOnBookmark.php';
+$tags = BookmarkTags\indexOnBookmark($mysqli, $id);
+
 $base = '../../';
 
 $page->base = $base;
@@ -52,9 +54,9 @@ $page->finish(
         .Tab::item('Bookmarks', '..')
         .Tab::activeItem("Bookmark #$id"),
         $pageMessages
-        .($title ? Page::text(htmlspecialchars($title)).Page::HR : '')
+        .($title === '' ? '' : Page::text(htmlspecialchars($title)).Page::HR)
         .Page::text('<a class="a" href="'.htmlspecialchars(create_external_url($url, $base)).'">'.htmlspecialchars($url).'</a>')
-        .create_tags('../', BookmarkTags::indexOnBookmark($id))
+        .create_tags('../', $tags)
         .Page::HR
         .Page::text(
             '<div>Bookmark created '.date_ago($inserttime).'.</div>'

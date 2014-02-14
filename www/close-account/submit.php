@@ -27,8 +27,8 @@ include_once '../fns/Bookmarks/deleteOnUser.php';
 include_once '../lib/mysqli.php';
 Bookmarks\deleteOnUser($mysqli, $idusers);
 
-include_once '../classes/BookmarkTags.php';
-BookmarkTags::deleteOnUser($idusers);
+include_once '../fns/BookmarkTags/deleteOnUser.php';
+BookmarkTags\deleteOnUser($mysqli, $idusers);
 
 include_once '../classes/Channels.php';
 Channels::deleteOnUser($idusers);

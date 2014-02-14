@@ -4,10 +4,14 @@ include_once '../../fns/require_user.php';
 require_user('../../');
 
 include_once '../../fns/request_strings.php';
-include_once '../../classes/Files.php';
 list($id) = request_strings('id');
+
 $id = abs((int)$id);
-$file = Files::get($idusers, $id);
+
+include_once '../../fns/Files/get.php';
+include_once '../../lib/mysqli.php';
+$file = Files\get($mysqli, $idusers, $id);
+
 if (!$file) {
     include_once '../../fns/redirect.php';
     redirect('..');
