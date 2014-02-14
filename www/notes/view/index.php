@@ -21,7 +21,6 @@ include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tags.php';
 include_once '../../fns/date_ago.php';
 include_once '../../fns/render_external_links.php';
-include_once '../../classes/NoteTags.php';
 include_once '../../classes/Tab.php';
 include_once '../../lib/page.php';
 
@@ -41,6 +40,9 @@ $inserttime = $note->inserttime;
 $updatetime = $note->updatetime;
 $notetext = $note->notetext;
 
+include_once '../../fns/NoteTags/indexOnNote.php';
+$tags = NoteTags\indexOnNote($mysqli, $id);
+
 $base = '../../';
 
 $page->base = $base;
@@ -56,7 +58,7 @@ $page->finish(
                 render_external_links(htmlspecialchars($notetext), $base)
             )
         )
-        .create_tags('../', NoteTags::indexOnNote($id))
+        .create_tags('../', $tags)
         .Page::HR
         .Page::text(
             '<div>Note created '.date_ago($inserttime).'.</div>'

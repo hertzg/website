@@ -34,8 +34,8 @@ if ($keyword === '') {
             include_once '../fns/create_search_form_empty_content.php';
             $items[] = create_search_form(create_search_form_empty_content('Search notes...'));
 
-            include_once '../classes/NoteTags.php';
-            $tags = NoteTags::indexOnUser($idusers);
+            include_once '../fns/NoteTags/indexOnUser.php';
+            $tags = NoteTags\indexOnUser($mysqli, $idusers);
             if ($tags) {
                 include_once '../fns/create_tag_filter_bar.php';
                 $filterMessage = create_tag_filter_bar($tags, array());
@@ -71,14 +71,17 @@ if ($keyword === '') {
             create_search_form_content($keyword, 'Search notes...', './')
         );
         if (count($notes) > 1) {
-            include_once '../classes/NoteTags.php';
-            $tags = NoteTags::indexOnUser($idusers);
+
+            include_once '../fns/NoteTags/indexOnUser.php';
+            $tags = NoteTags\indexOnUser($mysqli, $idusers);
+
             if ($tags) {
                 include_once '../fns/create_tag_filter_bar.php';
                 $filterMessage = create_tag_filter_bar($tags, array(
                     'keyword' => $keyword,
                 ));
             }
+
         }
 
     } else {

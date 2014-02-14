@@ -9,8 +9,8 @@ include_once '../../fns/Notes/deleteOnUser.php';
 include_once '../../lib/mysqli.php';
 Notes\deleteOnUser($mysqli, $idusers);
 
-include_once '../../classes/NoteTags.php';
-NoteTags::deleteOnUser($idusers);
+include_once '../../fns/NoteTags/deleteOnUser.php';
+NoteTags\deleteOnUser($mysqli, $idusers);
 
 $_SESSION['notes/index_messages'] = array('All notes have been deleted.');
 

@@ -41,9 +41,11 @@ include_once '../../fns/Notes/edit.php';
 include_once '../../lib/mysqli.php';
 Notes\edit($mysqli, $idusers, $id, $notetext, $tags);
 
-include_once '../../classes/NoteTags.php';
-NoteTags::deleteOnNote($id);
-NoteTags::add($idusers, $id, $tagnames, $notetext);
+include_once '../../fns/NoteTags/deleteOnNote.php';
+NoteTags\deleteOnNote($mysqli, $id);
+
+include_once '../../fns/NoteTags/add.php';
+NoteTags\add($mysqli, $idusers, $id, $tagnames, $notetext);
 
 $_SESSION['notes/view/index_messages'] = array('Changes have been saved.');
 redirect("../view/?id=$id");

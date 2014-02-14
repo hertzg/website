@@ -54,8 +54,8 @@ Folders::deleteOnUser($idusers);
 include_once '../fns/Notes/deleteOnUser.php';
 Notes\deleteOnUser($mysqli, $idusers);
 
-include_once '../classes/NoteTags.php';
-NoteTags::deleteOnUser($idusers);
+include_once '../fns/NoteTags/deleteOnUser.php';
+NoteTags\deleteOnUser($mysqli, $idusers);
 
 include_once '../classes/Notifications.php';
 Notifications::deleteOnUser($idusers);
