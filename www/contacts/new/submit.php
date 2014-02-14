@@ -59,8 +59,8 @@ include_once '../../fns/Contacts/add.php';
 $id = Contacts\add($mysqli, $idusers, $fullname, $address,
     $email, $phone1, $phone2, $tags);
 
-include_once '../../classes/ContactTags.php';
-ContactTags::add($idusers, $id, $tagnames, $fullname);
+include_once '../../fns/ContactTags/add.php';
+ContactTags\add($mysqli, $idusers, $id, $tagnames, $fullname);
 
 $_SESSION['contacts/view/index_messages'] = array('Contact has been saved.');
 redirect("../view/?id=$id");

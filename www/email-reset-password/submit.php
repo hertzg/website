@@ -43,7 +43,10 @@ unset(
 );
 
 $resetpasswordkey = md5(uniqid(), true);
-Users::editResetPasswordKey($user->idusers, $resetpasswordkey);
+
+include_once '../fns/Users/editResetPasswordKey.php';
+Users\editResetPasswordKey($mysqli, $user->idusers, $resetpasswordkey);
+
 Captcha::reset();
 
 $href = htmlspecialchars(

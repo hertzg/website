@@ -59,9 +59,11 @@ include_once '../../lib/mysqli.php';
 Contacts\edit($mysqli, $idusers, $id, $fullname, $address,
     $email, $phone1, $phone2, $tags);
 
-include_once '../../classes/ContactTags.php';
-ContactTags::deleteOnContact($id);
-ContactTags::add($idusers, $id, $tagnames, $fullname);
+include_once '../../fns/ContactTags/deleteOnContact.php';
+ContactTags\deleteOnContact($mysqli, $id);
+
+include_once '../../fns/ContactTags/add.php';
+ContactTags\add($mysqli, $idusers, $id, $tagnames, $fullname);
 
 $_SESSION['contacts/view/index_messages'] = array('Changes have been saved.');
 redirect("../view/?id=$id");

@@ -9,8 +9,8 @@ include_once '../../fns/Contacts/delete.php';
 include_once '../../lib/mysqli.php';
 Contacts\delete($mysqli, $id);
 
-include_once '../../classes/ContactTags.php';
-ContactTags::deleteOnContact($id);
+include_once '../../fns/ContactTags/deleteOnContact.php';
+ContactTags\deleteOnContact($mysqli, $id);
 
 $_SESSION['contacts/index_messages'] = array('Contact has been deleted.');
 

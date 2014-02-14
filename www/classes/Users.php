@@ -16,23 +16,4 @@ class Users {
         );
     }
 
-    static function clearNumNotifications ($idusers) {
-        global $mysqli;
-        mysqli_query(
-            $mysqli,
-            'update users set numnotifications = 0'
-            ." where idusers = $idusers"
-        );
-    }
-
-    static function editResetPasswordKey ($idusers, $resetpasswordkey) {
-        global $mysqli;
-        $resetpasswordkey = mysqli_real_escape_string($mysqli, $resetpasswordkey);
-        mysqli_query(
-            $mysqli,
-            "update users set resetpasswordkey = '$resetpasswordkey'"
-            ." where idusers = $idusers"
-        );
-    }
-
 }

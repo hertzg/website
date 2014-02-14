@@ -36,8 +36,8 @@ Channels::deleteOnUser($idusers);
 include_once '../fns/Contacts/deleteOnUser.php';
 Contacts\deleteOnUser($mysqli, $idusers);
 
-include_once '../classes/ContactTags.php';
-ContactTags::deleteOnUser($idusers);
+include_once '../fns/ContactTags/deleteOnUser.php';
+ContactTags\deleteOnUser($mysqli, $idusers);
 
 include_once '../fns/Events/deleteOnUser.php';
 Events\deleteOnUser($mysqli, $idusers);

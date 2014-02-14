@@ -10,6 +10,7 @@ unset($_SESSION['user']);
 if (array_key_exists('token', $_SESSION)) {
 
     include_once 'fns/Tokens/remove.php';
+    include_once 'lib/mysqli.php';
     Tokens\remove($mysqli, $_SESSION['token']->idtokens);
 
     unset($_SESSION['token']);

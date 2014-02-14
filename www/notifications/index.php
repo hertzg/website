@@ -2,16 +2,18 @@
 
 include_once 'lib/require-user.php';
 include_once '../fns/create_panel.php';
-include_once '../fns/request_strings.php';
 include_once '../classes/Notifications.php';
 include_once '../classes/Tab.php';
-include_once '../lib/mysqli.php';
 include_once '../lib/page.php';
 
+include_once '../fns/request_strings.php';
 list($id) = request_strings('id');
 
 $id = abs((int)$id);
-Users::clearNumNotifications($idusers);
+
+include_once '../fns/Users/clearNumNotifications.php';
+include_once '../lib/mysqli.php';
+Users\clearNumNotifications($mysqli, $idusers);
 
 $options = array();
 

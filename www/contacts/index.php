@@ -37,8 +37,9 @@ if ($keyword === '') {
                 create_search_form_empty_content('Search contacts...')
             );
 
-            include_once '../classes/ContactTags.php';
-            $tags = ContactTags::indexOnUser($idusers);
+            include_once '../fns/ContactTags/indexOnUser.php';
+            $tags = ContactTags\indexOnUser($mysqli, $idusers);
+
             if ($tags) {
                 include_once '../fns/create_tag_filter_bar.php';
                 $filterMessage = create_tag_filter_bar($tags, array());
@@ -74,14 +75,17 @@ if ($keyword === '') {
             create_search_form_content($keyword, 'Search contacts...', './')
         );
         if (count($contacts) > 1) {
-            include_once '../classes/ContactTags.php';
-            $tags = ContactTags::indexOnUser($idusers);
+
+            include_once '../fns/ContactTags/indexOnUser.php';
+            $tags = ContactTags\indexOnUser($mysqli, $idusers);
+
             if ($tags) {
                 include_once '../fns/create_tag_filter_bar.php';
                 $filterMessage = create_tag_filter_bar($tags, array(
                     'keyword' => $keyword,
                 ));
             }
+
         }
 
     } else {
