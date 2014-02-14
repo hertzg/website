@@ -1,10 +1,10 @@
 <?php
 
-function is_child_folder ($idusers, $folder, $idfolders) {
+function is_child_folder ($mysqli, $idusers, $folder, $idfolders) {
     while (true) {
         if ($folder->idfolders == $idfolders) return true;
         if (!$folder->parentidfolders) return false;
-        $folder = Folders::get($idusers, $folder->parentidfolders);
+        $folder = Folders\get($mysqli, $idusers, $folder->parentidfolders);
     }
 }
 
@@ -21,13 +21,18 @@ list($parentidfolders) = request_strings('parentidfolders');
 
 $parentidfolders = abs((int)$parentidfolders);
 if ($parentidfolders) {
-    $parentFolder = Folders::get($idusers, $parentidfolders);
+
+    include_once '../fns/Folders/get.php';
+    $parentFolder = Folders\get($mysqli, $idusers, $parentidfolders);
+
     if (!$parentFolder) {
         redirect("move-folder.php?idfolders=$idfolders");
     }
-    if (is_child_folder($idusers, $parentFolder, $folder->idfolders)) {
+
+    if (is_child_folder($mysqli, $idusers, $parentFolder, $folder->idfolders)) {
         redirect("move-folder.php?idfolders=$idfolders");
     }
+
 }
 
 include_once '../fns/Folders/getByName.php';

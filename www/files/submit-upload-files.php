@@ -17,8 +17,9 @@ list($file1, $file2, $file3) = request_multiple_files('file1', 'file2', 'file3')
 
 $idfolders = abs((int)$idfolders);
 if ($idfolders) {
-    $folder = Folders::get($idusers, $idfolders);
-    if (!$folder) redirect();
+    include_once '../fns/Folders/get.php';
+    $parentFolder = Folders\get($mysqli, $idusers, $idfolders);
+    if (!$parentFolder) redirect();
 }
 
 include_once '../fns/Files/getByName.php';

@@ -1,14 +1,9 @@
 <?php
 
 include_once 'lib/require-user.php';
-include_once 'fns/create_folder_link.php';
-include_once '../fns/redirect.php';
-include_once '../fns/request_strings.php';
-include_once '../classes/Folders.php';
-include_once '../classes/Form.php';
-include_once '../classes/Tab.php';
 include_once '../lib/page.php';
 
+include_once '../fns/request_strings.php';
 list($parentIdFolders) = request_strings('parentidfolders');
 
 if (array_key_exists('files/add-folder_lastpost', $_SESSION)) {
@@ -19,8 +14,16 @@ if (array_key_exists('files/add-folder_lastpost', $_SESSION)) {
 
 $parentIdFolders = abs((int)$parentIdFolders);
 if ($parentIdFolders) {
-    $folder = Folders::get($idusers, $parentIdFolders);
-    if (!$folder) redirect();
+
+    include_once '../fns/Folders/get.php';
+    include_once '../lib/mysqli.php';
+    $parentFolder = Folders\get($mysqli, $idusers, $parentIdFolders);
+
+    if (!$parentFolder) {
+        include_once '../fns/redirect.php';
+        redirect();
+    }
+
 }
 
 if (array_key_exists('files/add-folder_errors', $_SESSION)) {
@@ -33,6 +36,10 @@ unset(
     $_SESSION['files/index_idfolders'],
     $_SESSION['files/index_messages']
 );
+
+include_once '../classes/Form.php';
+include_once '../classes/Tab.php';
+include_once 'fns/create_folder_link.php';
 
 $page->base = '../';
 $page->title = 'New Folder';

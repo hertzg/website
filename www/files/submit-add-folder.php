@@ -13,8 +13,9 @@ list($parentidfolders, $foldername) = request_strings(
 
 $parentidfolders = abs((int)$parentidfolders);
 if ($parentidfolders) {
-    $folder = Folders::get($idusers, $parentidfolders);
-    if (!$folder) redirect();
+    include_once '../fns/Folders/get.php';
+    $parentFolder = Folders\get($mysqli, $idusers, $parentidfolders);
+    if (!$parentFolder) redirect();
 }
 
 $errors = array();

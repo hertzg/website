@@ -5,14 +5,16 @@ function create_form ($content) {
 }
 
 include_once 'lib/require-user.php';
-include_once '../fns/request_strings.php';
 include_once '../classes/Folders.php';
+include_once '../lib/mysqli.php';
 
+include_once '../fns/request_strings.php';
 list($idfolders, $keyword, $deep) = request_strings('idfolders', 'keyword', 'deep');
 
 $idfolders = abs((int)$idfolders);
 if ($idfolders) {
-    $folder = Folders::get($idusers, $idfolders);
+    include_once '../fns/Folders/get.php';
+    $folder = Folders\get($mysqli, $idusers, $idfolders);
     if (!$folder) {
         include_once '../fns/redirect.php';
         redirect();
@@ -26,7 +28,6 @@ include_once '../fns/create_panel.php';
 include_once '../fns/str_collapse_spaces.php';
 include_once '../classes/Files.php';
 include_once '../classes/Tab.php';
-include_once '../lib/mysqli.php';
 include_once '../lib/page.php';
 
 $items = array();

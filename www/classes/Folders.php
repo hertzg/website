@@ -33,15 +33,6 @@ class Folders {
         mysqli_query($mysqli, "delete from folders where idusers = $idusers");
     }
 
-    static function get ($idusers, $idfolders) {
-        global $mysqli;
-        return mysqli_single_object(
-            $mysqli,
-            'select * from folders'
-            ." where idusers = $idusers and idfolders = $idfolders"
-        );
-    }
-
     static function index ($idusers, $parentidfolders) {
         global $mysqli;
         return mysqli_query_object(

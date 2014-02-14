@@ -5,22 +5,25 @@ include_once '../fns/redirect.php';
 if (!$sameDomainReferer) redirect('..');
 include_once 'lib/require-file.php';
 include_once 'fns/create_folder_link.php';
-include_once '../fns/request_strings.php';
 include_once '../classes/Files.php';
-include_once '../classes/Folders.php';
+include_once '../lib/mysqli.php';
 
+include_once '../fns/request_strings.php';
 list($idfolders) = request_strings('idfolders');
 
 $idfolders = abs((int)$idfolders);
 if ($idfolders) {
-    $folder = Folders::get($idusers, $idfolders);
-    if (!$folder) {
+
+    include_once '../fns/Folders/get.php';
+    $parentFolder = Folders\get($mysqli, $idusers, $idfolders);
+
+    if (!$parentFolder) {
         redirect("move-file.php?id=$id");
     }
+
 }
 
 include_once '../fns/Files/getByName.php';
-include_once '../lib/mysqli.php';
 $existingFile = Files\getByName($mysqli, $idusers, $idfolders, $file->filename);
 
 if ($existingFile) {

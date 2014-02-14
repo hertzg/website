@@ -1,23 +1,25 @@
 <?php
 
 include_once 'lib/require-user.php';
-include_once 'fns/create_folder_link.php';
-include_once '../fns/bytestr.php';
-include_once '../fns/ini_get_bytes.php';
-include_once '../fns/redirect.php';
-include_once '../fns/request_strings.php';
-include_once '../classes/Folders.php';
-include_once '../classes/Form.php';
-include_once '../classes/Tab.php';
-include_once '../lib/page.php';
 
+include_once '../fns/request_strings.php';
 list($idfolders) = request_strings('idfolders');
 
 $idfolders = abs((int)$idfolders);
 if ($idfolders) {
-    $folder = Folders::get($idusers, $idfolders);
-    if (!$folder) redirect();
+
+    include_once '../fns/Folders/get.php';
+    include_once '../lib/mysqli.php';
+    $parentFolder = Folders\get($mysqli, $idusers, $idfolders);
+
+    if (!$parentFolder) {
+        include_once '../fns/redirect.php';
+        redirect();
+    }
+
 }
+
+include_once '../lib/page.php';
 
 if (array_key_exists('files/upload-files_errors', $_SESSION)) {
     $pageErrors = Page::errors($_SESSION['files/upload-files_errors']);
@@ -29,6 +31,12 @@ unset(
     $_SESSION['files/index_idfolders'],
     $_SESSION['files/index_messages']
 );
+
+include_once 'fns/create_folder_link.php';
+include_once '../classes/Form.php';
+include_once '../classes/Tab.php';
+include_once '../fns/bytestr.php';
+include_once '../fns/ini_get_bytes.php';
 
 $page->base = '../';
 $page->title = 'Upload Files';

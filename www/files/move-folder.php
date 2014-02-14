@@ -9,20 +9,27 @@ function create_link ($idfolders, $parentidfolders) {
 
 include_once 'lib/require-folder.php';
 include_once 'fns/create_folder_link.php';
-include_once '../fns/request_strings.php';
 include_once '../classes/Tab.php';
 include_once '../lib/page.php';
 
+include_once '../fns/request_strings.php';
 list($parentidfolders) = request_strings('parentidfolders');
 
 $parentidfolders = abs((int)$parentidfolders);
 if ($parentidfolders) {
-    $parentFolder = Folders::get($idusers, $parentidfolders);
+
+    include_once '../fns/Folders/get.php';
+    include_once '../lib/mysqli.php';
+    $parentFolder = Folders\get($mysqli, $idusers, $parentidfolders);
+
     if (!$parentFolder) {
+        include_once '../fns/redirect.php';
         redirect("move-folder.php?idfolders=$idfolders");
     }
+
 }
 
+include_once '../classes/Folders.php';
 $folders = Folders::index($idusers, $parentidfolders);
 
 $items = array();
