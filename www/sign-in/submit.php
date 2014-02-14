@@ -26,10 +26,15 @@ if ($username === '') $errors[] = 'Enter username.';
 if ($password === '') $errors[] = 'Enter password.';
 
 if (!$errors) {
-    $user = Users::getByUsernamePassword($username, $password);
+
+    include_once '../fns/Users/getByUsernamePassword.php';
+    include_once '../lib/mysqli.php';
+    $user = Users\getByUsernamePassword($mysqli, $username, $password);
+
     if (!$user) {
         $errors[] = 'Invalid username or password.';
     }
+
 }
 
 if ($errors) {
@@ -47,7 +52,8 @@ unset(
     $_SESSION['sign-in/index_lastpost']
 );
 
-Users::updateLastLoginTime($user->idusers);
+include_once '../fns/Users/updateLastLoginTime.php';
+Users\updateLastLoginTime($mysqli, $user->idusers);
 
 if ($remember) {
     include_once '../classes/Tokens.php';

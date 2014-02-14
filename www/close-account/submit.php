@@ -69,8 +69,8 @@ TaskTags\deleteOnUser($mysqli, $idusers);
 include_once '../classes/Tokens.php';
 Tokens::deleteOnUser($idusers);
 
-include_once '../classes/Users.php';
-Users::delete($idusers);
+include_once '../fns/Users/delete.php';
+Users\delete($mysqli, $idusers);
 
 $_SESSION['sign-in/index_messages'] = array(
     'Your account has been closed.',

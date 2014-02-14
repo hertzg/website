@@ -22,8 +22,9 @@ if ($email === '') {
     if (!is_email_valid($email)) {
         $errors[] = 'Enter a valid email address.';
     } else {
-        include_once '../classes/Users.php';
-        if (Users::getByEmail($email, $idusers)) {
+        include_once '../fns/Users/getByEmail.php';
+        include_once '../lib/mysqli.php';
+        if (Users\getByEmail($mysqli, $email, $idusers)) {
             $errors[] = 'A username with this email is already registered. Try another.';
         }
     }
@@ -43,7 +44,8 @@ unset(
     $_SESSION['edit-profile/index_lastpost']
 );
 
-Users::editProfile($idusers, $email, $fullname);
+include_once '../fns/Users/editProfile.php';
+Users\editProfile($mysqli, $idusers, $email, $fullname);
 
 $_SESSION['account/index_messages'] = array('Changes have been saved.');
 

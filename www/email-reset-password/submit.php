@@ -18,10 +18,15 @@ $errors = array();
 if ($email === '') $errors[] = 'Enter email.';
 
 if (!$errors) {
-    $user = Users::getByEmail($email);
+
+    include_once '../fns/Users/getByEmail.php';
+    include_once '../lib/mysqli.php';
+    $user = Users\getByEmail($mysqli, $email);
+
     if (!$user) {
         $errors[] = 'User with this email was not found.';
     }
+
 }
 
 Captcha::check($errors, 3);

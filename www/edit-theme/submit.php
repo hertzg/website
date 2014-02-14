@@ -11,8 +11,9 @@ list($theme) = request_strings('theme');
 include_once '../lib/themes.php';
 if (!array_key_exists($theme, $themes)) redirect();
 
-include_once '../classes/Users.php';
-Users::editTheme($idusers, $theme);
+include_once '../fns/Users/editTheme.php';
+include_once '../lib/mysqli.php';
+Users\editTheme($mysqli, $idusers, $theme);
 
 $_SESSION['account/index_messages'] = array('Theme has changed.');
 

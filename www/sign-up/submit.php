@@ -3,15 +3,15 @@
 include_once '../lib/sameDomainReferer.php';
 include_once '../fns/redirect.php';
 if (!$sameDomainReferer) redirect();
-include_once '../fns/request_strings.php';
-include_once '../fns/str_collapse_spaces.php';
 include_once '../classes/Captcha.php';
 include_once '../classes/Users.php';
 include_once '../lib/session-start.php';
 
+include_once '../fns/request_strings.php';
 list($username, $email, $password1, $password2, $captcha) = request_strings(
     'username', 'email', 'password1', 'password2', 'captcha');
 
+include_once '../fns/str_collapse_spaces.php';
 $username = str_collapse_spaces($username);
 $email = str_collapse_spaces($email);
 $email = mb_strtolower($email, 'UTF-8');
@@ -22,8 +22,12 @@ if ($username === '') {
     $errors[] = 'Enter username.';
 } elseif (mb_strlen($username, 'UTF-8') < 6) {
     $errors[] = 'Username too short. At least 6 characters required.';
-} elseif (Users::getByUsername($username)) {
-    $errors[] = 'The username is unavailable. Try another.';
+} else {
+    include_once '../fns/Users/getByUsername.php';
+    include_once '../lib/mysqli.php';
+    if (Users\getByUsername($mysqli, $username)) {
+        $errors[] = 'The username is unavailable. Try another.';
+    }
 }
 
 if ($email === '') {
@@ -32,8 +36,12 @@ if ($email === '') {
     include_once '../fns/is_email_valid.php';
     if (!is_email_valid($email)) {
         $errors[] = 'Enter a valid email address.';
-    } else if (Users::getByEmail($email)) {
-        $error[] = 'A username with this email is already registered. Try another.';
+    } else {
+        include_once '../fns/Users/getByEmail.php';
+        include_once '../lib/mysqli.php';
+        if (Users\getByEmail($mysqli, $email)) {
+            $error[] = 'A username with this email is already registered. Try another.';
+        }
     }
 }
 
@@ -63,7 +71,9 @@ unset(
     $_SESSION['sign-up/index_lastpost']
 );
 
-Users::add($username, $email, $password1);
+include_once '../fns/Users/add.php';
+Users\add($mysqli, $username, $email, $password1);
+
 Captcha::reset();
 setcookie('username', $username, time() + 60 * 60 * 24 * 30, '/');
 
