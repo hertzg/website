@@ -27,10 +27,13 @@ if (array_key_exists('user', $_SESSION)) {
         setcookie('username', $user->username, time() + 60 * 60 * 24 * 30, '/');
         $idusers = $user->idusers;
         if (array_key_exists('token', $_SESSION)) {
+
             $token = $_SESSION['token'];
-            include_once __DIR__.'/../classes/Tokens.php';
-            Tokens::updateAccessTime($token->tokentext);
             setcookie('token', bin2hex($token->tokentext), time() + 60 * 60 * 24 * 30, '/');
+
+            include_once __DIR__.'/../fns/Tokens/updateAccessTime.php';
+            Tokens\updateAccessTime($mysqli, $token->tokentext);
+
         }
     }
 

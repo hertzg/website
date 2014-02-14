@@ -66,8 +66,8 @@ Tasks\deleteOnUser($mysqli, $idusers);
 include_once '../fns/TaskTags/deleteOnUser.php';
 TaskTags\deleteOnUser($mysqli, $idusers);
 
-include_once '../classes/Tokens.php';
-Tokens::deleteOnUser($idusers);
+include_once '../fns/Tokens/deleteOnUser.php';
+Tokens\deleteOnUser($mysqli, $idusers);
 
 include_once '../fns/Users/delete.php';
 Users\delete($mysqli, $idusers);

@@ -8,10 +8,13 @@ include_once 'lib/session-start.php';
 unset($_SESSION['user']);
 
 if (array_key_exists('token', $_SESSION)) {
-    include_once 'classes/Tokens.php';
-    Tokens::remove($_SESSION['token']->idtokens);
+
+    include_once 'fns/Tokens/remove.php';
+    Tokens\remove($mysqli, $_SESSION['token']->idtokens);
+
     unset($_SESSION['token']);
     setcookie('token', '', time() - 60 * 60 * 24, '/');
+
 }
 
 $_SESSION['sign-in/index_messages'] = array(

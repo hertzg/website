@@ -3,12 +3,16 @@
 include_once '../../fns/require_user.php';
 require_user('../../');
 
-include_once '../../fns/request_strings.php';
-include_once '../../classes/Tokens.php';
 
+include_once '../../fns/request_strings.php';
 list($id) = request_strings('id');
+
 $id = abs((int)$id);
-$token = Tokens::getOnUser($idusers, $id);
+
+include_once '../../fns/Tokens/getOnUser.php';
+include_once '../../lib/mysqli.php';
+$token = Tokens\getOnUser($mysqli, $idusers, $id);
+
 if (!$token) {
     include_once '../../fns/redirect.php';
     redirect('..');

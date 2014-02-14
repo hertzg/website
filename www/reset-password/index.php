@@ -1,20 +1,29 @@
 <?php
 
-include_once '../fns/is_md5.php';
-include_once '../fns/redirect.php';
-include_once '../fns/request_strings.php';
 include_once '../classes/Form.php';
 include_once '../classes/Tab.php';
 include_once '../classes/Users.php';
 include_once '../lib/page.php';
 include_once '../lib/session-start.php';
 
-list($idusers, $resetpasswordkey) = request_strings('idusers', 'resetpasswordkey');
+include_once '../fns/request_strings.php';
+list($idusers, $resetpasswordkey) = request_strings(
+    'idusers', 'resetpasswordkey');
 
-if (!is_md5($resetpasswordkey)) redirect();
+include_once '../fns/is_md5.php';
+if (!is_md5($resetpasswordkey)) {
+    include_once '../fns/redirect.php';
+    redirect('..');
+}
 
-$user = Users::getByResetPasswordKey($idusers, $resetpasswordkey);
-if (!$user) redirect();
+include_once '../fns/Users/getByResetPasswordKey.php';
+include_once '../lib/mysqli.php';
+$user = Users\getByResetPasswordKey($mysqli, $idusers, $resetpasswordkey);
+
+if (!$user) {
+    include_once '../fns/redirect.php';
+    redirect('..');
+}
 
 if (array_key_exists('reset-password/index_lastpost', $_SESSION)) {
     $values = $_SESSION['reset-password/index_lastpost'];

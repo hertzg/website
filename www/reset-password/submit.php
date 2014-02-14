@@ -3,18 +3,21 @@
 include_once '../lib/sameDomainReferer.php';
 include_once '../fns/redirect.php';
 if (!$sameDomainReferer) redirect();
-include_once '../fns/is_md5.php';
-include_once '../fns/request_strings.php';
-include_once '../classes/Users.php';
 include_once '../lib/session-start.php';
 
+include_once '../fns/request_strings.php';
 list($idusers, $resetpasswordkey, $password1, $password2) = request_strings(
     'idusers', 'resetpasswordkey', 'password1', 'password2');
 
+include_once '../fns/is_md5.php';
 if (!is_md5($resetpasswordkey)) redirect();
 
 $idusers = abs((int)$idusers);
-$user = Users::getByResetPasswordKey($idusers, $resetpasswordkey);
+
+include_once '../fns/Users/getByResetPasswordKey.php';
+include_once '../lib/mysqli.php';
+$user = Users\getByResetPasswordKey($mysqli, $idusers, $resetpasswordkey);
+
 if (!$user) redirect();
 
 unset($_SESSION['user']);
@@ -43,7 +46,10 @@ unset(
     $_SESSION['reset-password/index_lastpost']
 );
 
-Users::editPassword($idusers, $password1);
+include_once '../fns/Users/editPassword.php';
+include_once '../lib/mysqli.php';
+Users\editPassword($mysqli, $idusers, $password1);
+
 setcookie('username', $user->username, time() + 60 * 60 * 24 * 30, '/');
 
 $_SESSION['sign-in/index_messages'] = array(

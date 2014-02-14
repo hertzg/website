@@ -4,9 +4,9 @@ include_once '../lib/sameDomainReferer.php';
 include_once '../fns/redirect.php';
 if (!$sameDomainReferer) redirect();
 include_once 'lib/require-user.php';
-include_once '../fns/request_strings.php';
 include_once '../classes/Users.php';
 
+include_once '../fns/request_strings.php';
 list($currentpassword, $password1, $password2) = request_strings(
     'currentpassword', 'password1', 'password2');
 
@@ -41,7 +41,9 @@ unset(
     $_SESSION['change-password/index_lastpost']
 );
 
-Users::editPassword($idusers, $password1);
+include_once '../fns/Users/editPassword.php';
+include_once '../lib/mysqli.php';
+Users\editPassword($mysqli, $idusers, $password1);
 
 $_SESSION['account/index_messages'] = array('Password has been changed.');
 redirect('../account/');
