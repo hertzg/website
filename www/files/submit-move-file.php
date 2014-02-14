@@ -19,7 +19,10 @@ if ($idfolders) {
     }
 }
 
-$existingFile = Files::getByName($idusers, $idfolders, $file->filename);
+include_once '../fns/Files/getByName.php';
+include_once '../lib/mysqli.php';
+$existingFile = Files\getByName($mysqli, $idusers, $idfolders, $file->filename);
+
 if ($existingFile) {
     $_SESSION['files/move-file_idfolders'] = $idfolders;
     $_SESSION['files/move-file_errors'] = array(

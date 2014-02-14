@@ -21,6 +21,9 @@ if ($idfolders) {
     if (!$folder) redirect();
 }
 
+include_once '../fns/Files/getByName.php';
+include_once '../lib/mysqli.php';
+
 $numfiles = 0;
 foreach (array($file1, $file2, $file3) as $file) {
     foreach ($file['name'] as $i => $filename) {
@@ -28,7 +31,7 @@ foreach (array($file1, $file2, $file3) as $file) {
 
             $filename = str_collapse_spaces($filename);
    
-            while (Files::getByName($idusers, $idfolders, $filename)) {
+            while (Files\getByName($mysqli, $idusers, $idfolders, $filename)) {
                 $extension = '';
                 if (preg_match('/\..*?$/', $filename, $match)) {
                     $filename = preg_replace('/\..*?$/', '', $filename);

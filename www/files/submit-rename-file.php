@@ -15,8 +15,16 @@ $errors = array();
 $filename = str_collapse_spaces($filename);
 if ($filename === '') {
     $errors[] = 'Enter file name.';
-} elseif (Files::getByName($idusers, $file->idfolders, $filename, $id)) {
-    $errors[] = 'A file with the same name already exists.';
+} else {
+
+    include_once '../fns/Files/getByName.php';
+    include_once '../lib/mysqli.php';
+    $existingFile = Files\getByName($mysqli, $idusers, $file->idfolders, $filename, $id);
+
+    if ($existingFile) {
+        $errors[] = 'A file with the same name already exists.';
+    }
+
 }
 
 if ($errors) {
