@@ -2,22 +2,25 @@
 
 include_once 'lib/require-user.php';
 include_once '../fns/create_panel.php';
-include_once '../classes/Channels.php';
 include_once '../classes/Tab.php';
-include_once '../classes/Users.php';
 include_once '../lib/page.php';
 
-$channels = '';
-foreach (Channels::index($idusers) as $i => $channel) {
-    if ($i) $channels .= Page::HR;
-    $channels .= Page::imageLink(
-        htmlspecialchars($channel->channelname),
-        "view/?id=$channel->idchannels",
-        'channel'
-    );
-}
-if (!$channels) {
-    $channels .= Page::info('No channels.');
+include_once '../fns/Channels/index.php';
+include_once '../lib/mysqli.php';
+$channels = Channels\index($mysqli, $idusers);
+
+$channelsHtml = '';
+if ($channels) {
+    foreach ($channels as $i => $channel) {
+        if ($i) $channelsHtml .= Page::HR;
+        $channelsHtml .= Page::imageLink(
+            htmlspecialchars($channel->channelname),
+            "view/?id=$channel->idchannels",
+            'channel'
+        );
+    }
+} else {
+    $channelsHtml .= Page::info('No channels.');
 }
 
 unset(
@@ -41,7 +44,7 @@ $page->finish(
         .Tab::item('Notifications', '../notifications/')
         .Tab::activeItem('Channels'),
         $pageMessages
-        .$channels
+        .$channelsHtml
     )
     .create_panel(
         'Options',

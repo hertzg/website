@@ -6,7 +6,6 @@ if (!$sameDomainReferer) redirect('..');
 include_once 'lib/require-user.php';
 include_once '../../fns/request_strings.php';
 include_once '../../classes/Channels.php';
-include_once '../../lib/mysqli.php';
 
 list($channelname) = request_strings('channelname');
 
@@ -20,8 +19,12 @@ if ($channelname === '') {
     $errors[] = 'Channel name too short. At least 6 characters required.';
 } elseif (strlen($channelname) > 32) {
     $errors[] = 'Channel name too long. At most 32 characters required.';
-} elseif (Channels::getByName($idusers, $channelname)) {
-    $errors[] = 'A channel with this name already exists.';
+} else {
+    include_once '../../fns/Channels/getByName.php';
+    include_once '../../lib/mysqli.php';
+    if (Channels\getByName($mysqli, $idusers, $channelname)) {
+        $errors[] = 'A channel with this name already exists.';
+    }
 }
 
 if ($errors) {

@@ -4,10 +4,13 @@ include_once '../../fns/require_user.php';
 require_user('../../');
 
 include_once '../../fns/request_strings.php';
-include_once '../../classes/Channels.php';
 list($id) = request_strings('id');
+
 $id = abs((int)$id);
-$channel = Channels::get($idusers, $id);
+
+include_once '../../fns/Channels/get.php';
+$channel = Channels\get($mysqli, $idusers, $id);
+
 if (!$channel) {
     include_once '../../fns/redirect.php';
     redirect('..');

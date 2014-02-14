@@ -31,7 +31,9 @@ $notificationsHtml = '';
 
 $numNotifications = $user->numnotifications;
 
-$channel = Channels::get($idusers, $id);
+include_once '../fns/Channels/get.php';
+$channel = Channels\get($mysqli, $idusers, $id);
+
 if ($channel) {
     $filterMessage =
         '<div style="position: relative; height: 48px; background: #eee; color: #444; padding: 16px">'

@@ -41,25 +41,6 @@ class Channels {
         mysqli_query($mysqli, "delete from channels where idusers = $idusers");
     }
 
-    static function get ($idusers, $id) {
-        global $mysqli;
-        return mysqli_single_object(
-            $mysqli,
-            'select * from channels'
-            ." where idusers = $idusers and idchannels = $id"
-        );
-    }
-
-    static function getByName ($idusers, $channelname) {
-        global $mysqli;
-        $channelname = mysqli_real_escape_string($mysqli, $channelname);
-        return mysqli_single_object(
-            $mysqli,
-            'select * from channels'
-            ." where idusers = $idusers and channelname = '$channelname'"
-        );
-    }
-
     static function getByNameKey ($channelname, $channelkey) {
         global $mysqli;
         $channelname = mysqli_real_escape_string($mysqli, $channelname);
@@ -70,23 +51,6 @@ class Channels {
             ." where channelname = '$channelname'"
             ." and channelkey = '$channelkey'"
         );
-    }
-
-    static function index ($idusers) {
-
-        global $mysqli;
-
-        $channels = mysqli_query_object(
-            $mysqli,
-            "select * from channels where idusers = $idusers"
-        );
-
-        usort($channels, function ($a, $b) {
-            return strcasecmp($a->channelname, $b->channelname);
-        });
-
-        return $channels;
-
     }
 
 }
