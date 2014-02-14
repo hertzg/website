@@ -36,16 +36,4 @@ class Channels {
         Notifications::deleteOnChannel($idusers, $id);
     }
 
-    static function getByNameKey ($channelname, $channelkey) {
-        global $mysqli;
-        $channelname = mysqli_real_escape_string($mysqli, $channelname);
-        $channelkey = mysqli_real_escape_string($mysqli, $channelkey);
-        return mysqli_single_object(
-            $mysqli,
-            'select * from channels'
-            ." where channelname = '$channelname'"
-            ." and channelkey = '$channelkey'"
-        );
-    }
-
 }
