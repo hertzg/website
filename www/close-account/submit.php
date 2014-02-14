@@ -42,8 +42,8 @@ ContactTags::deleteOnUser($idusers);
 include_once '../fns/Events/deleteOnUser.php';
 Events\deleteOnUser($mysqli, $idusers);
 
-include_once '../classes/Feedbacks.php';
-Feedbacks::deleteOnUser($idusers);
+include_once '../fns/Feedbacks/deleteOnUser.php';
+Feedbacks\deleteOnUser($mysqli, $idusers);
 
 include_once '../classes/Files.php';
 Files::deleteOnUser($idusers);
