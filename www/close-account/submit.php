@@ -63,8 +63,8 @@ Notifications::deleteOnUser($idusers);
 include_once '../fns/Tasks/deleteOnUser.php';
 Tasks\deleteOnUser($mysqli, $idusers);
 
-include_once '../classes/TaskTags.php';
-TaskTags::deleteOnUser($idusers);
+include_once '../fns/TaskTags/deleteOnUser.php';
+TaskTags\deleteOnUser($mysqli, $idusers);
 
 include_once '../classes/Tokens.php';
 Tokens::deleteOnUser($idusers);

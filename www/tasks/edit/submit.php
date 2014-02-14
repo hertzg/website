@@ -43,9 +43,11 @@ include_once '../../fns/Tasks/edit.php';
 include_once '../../lib/mysqli.php';
 Tasks\edit($mysqli, $idusers, $id, $tasktext, $tags);
 
-include_once '../../classes/TaskTags.php';
-TaskTags::deleteOnTask($id);
-TaskTags::add($idusers, $id, $tagnames, $tasktext, $tags);
+include_once '../../fns/TaskTags/deleteOnTask.php';
+TaskTags\deleteOnTask($mysqli, $id);
+
+include_once '../../fns/TaskTags/add.php';
+TaskTags\add($mysqli, $idusers, $id, $tagnames, $tasktext, $tags);
 
 $_SESSION['tasks/view/index_messages'] = array('Changes have been saved.');
 redirect("../view/?id=$id");

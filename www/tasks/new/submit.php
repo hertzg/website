@@ -42,8 +42,8 @@ include_once '../../fns/Tasks/add.php';
 include_once '../../lib/mysqli.php';
 $id = Tasks\add($mysqli, $idusers, $tasktext, $tags);
 
-include_once '../../classes/TaskTags.php';
-TaskTags::add($idusers, $id, $tagnames, $tasktext, $tags);
+include_once '../../fns/TaskTags/add.php';
+TaskTags\add($mysqli, $idusers, $id, $tagnames, $tasktext, $tags);
 
 $_SESSION['tasks/view/index_messages'] = array('Task has been saved.');
 redirect("../view/?id=$id");

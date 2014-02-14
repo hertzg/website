@@ -6,7 +6,6 @@ include_once '../../fns/create_tags.php';
 include_once '../../fns/date_ago.php';
 include_once '../../fns/render_external_links.php';
 include_once '../../classes/Tab.php';
-include_once '../../classes/TaskTags.php';
 include_once '../../lib/page.php';
 
 unset(
@@ -36,6 +35,9 @@ $tasktext = $task->tasktext;
 $inserttime = $task->inserttime;
 $updatetime = $task->updatetime;
 
+include_once __DIR__.'/../../fns/TaskTags/indexOnTask.php';
+$tags = TaskTags\indexOnTask($mysqli, $id);
+
 $base = '../../';
 
 if (array_key_exists('tasks/view/index_messages', $_SESSION)) {
@@ -57,7 +59,7 @@ $page->finish(
                 render_external_links(htmlspecialchars($tasktext), $base)
             )
         )
-        .create_tags('../', TaskTags::indexOnTask($id))
+        .create_tags('../', $tags)
         .Page::HR
         .Page::text(
             '<div>Task created '.date_ago($inserttime).'.</div>'
