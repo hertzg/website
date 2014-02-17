@@ -3,7 +3,11 @@
 include_once '../../lib/sameDomainReferer.php';
 include_once '../../fns/redirect.php';
 if (!$sameDomainReferer) redirect('../..');
-include_once 'lib/require-contact.php';
+
+include_once '../fns/require_contact.php';
+include_once '../../lib/mysqli.php';
+list($contact, $id) = require_contact($mysqli);
+
 include_once '../../classes/Tags.php';
 
 include_once '../../fns/request_strings.php';
@@ -55,7 +59,6 @@ unset(
 );
 
 include_once '../../fns/Contacts/edit.php';
-include_once '../../lib/mysqli.php';
 Contacts\edit($mysqli, $idusers, $id, $fullname, $address,
     $email, $phone1, $phone2, $tags);
 

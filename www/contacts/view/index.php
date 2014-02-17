@@ -1,21 +1,8 @@
 <?php
 
-include_once '../../fns/require_user.php';
-require_user('../../');
-
-include_once '../../fns/request_strings.php';
-list($id) = request_strings('id');
-
-$id = abs((int)$id);
-
-include_once '../../fns/Contacts/get.php';
+include_once '../fns/require_contact.php';
 include_once '../../lib/mysqli.php';
-$contact = Contacts\get($mysqli, $idusers, $id);
-
-if (!$contact) {
-    include_once '../../fns/redirect.php';
-    redirect('..');
-}
+list($contact, $id) = require_contact($mysqli);
 
 include_once '../../classes/Form.php';
 include_once '../../lib/page.php';
