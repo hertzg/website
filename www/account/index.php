@@ -1,10 +1,8 @@
 <?php
 
-include_once '../lib/user.php';
-if (!$user) {
-    include_once '../fns/redirect.php';
-    redirect('../sign-in/');
-}
+include_once '../fns/require_user.php';
+require_user('../');
+
 include_once '../fns/create_panel.php';
 include_once '../fns/bytestr.php';
 include_once '../fns/date_ago.php';
