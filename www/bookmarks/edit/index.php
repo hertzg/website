@@ -2,7 +2,6 @@
 
 include_once 'lib/require-bookmark.php';
 include_once '../../classes/Form.php';
-include_once '../../classes/Tab.php';
 include_once '../../lib/page.php';
 
 if (array_key_exists('bookmarks/edit_lastpost', $_SESSION)) {
@@ -19,13 +18,23 @@ if (array_key_exists('bookmarks/edit_errors', $_SESSION)) {
 
 unset($_SESSION['bookmarks/index_messages']);
 
+include_once '../../fns/create_tabs.php';
+
 $page->base = '../../';
 $page->title = "Edit Bookmark #$id";
 $page->finish(
-    Tab::create(
-        Tab::item('&middot;&middot;&middot;', '..')
-        .Tab::item("Bookmark #$id", "../view/?id=$id")
-        .Tab::activeItem('Edit'),
+    create_tabs(
+        [
+            [
+                'title' => '&middot;&middot;&middot;',
+                'href' => '..',
+            ],
+            [
+                'title' => "Bookmark #$id",
+                'href' => "../view/?id=$id",
+            ],
+        ],
+        'Edit',
         $pageErrors
         .Form::create(
             'submit.php',

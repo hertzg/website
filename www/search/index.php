@@ -3,15 +3,13 @@
 include_once '../fns/require_user.php';
 require_user('../');
 
-include_once '../fns/create_search_form_content.php';
-include_once '../fns/request_strings.php';
-include_once '../fns/str_collapse_spaces.php';
-include_once '../classes/Tab.php';
 include_once '../lib/mysqli.php';
 include_once '../lib/page.php';
 
+include_once '../fns/request_strings.php';
 list($keyword) = request_strings('keyword');
 
+include_once '../fns/str_collapse_spaces.php';
 $keyword = str_collapse_spaces($keyword);
 
 if ($keyword === '') {
@@ -19,6 +17,7 @@ if ($keyword === '') {
     redirect('..');
 }
 
+include_once '../fns/create_search_form_content.php';
 $items = array(
     '<form action="./" style="height: 48px; position: relative">'
         .create_search_form_content($keyword, 'Search...', '..')
@@ -66,11 +65,10 @@ if (!$contacts && !$notes && !$tasks) {
     $items[] = Page::info('Nothing found.');
 }
 
+include_once '../fns/create_tabs.php';
+
 $page->base = '../';
 $page->title = 'Search: '.htmlspecialchars($keyword);
 $page->finish(
-    Tab::create(
-        Tab::activeItem('Home'),
-        join(Page::HR, $items)
-    )
+    create_tabs([], 'Home', join(Page::HR, $items))
 );

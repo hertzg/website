@@ -21,7 +21,6 @@ include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tags.php';
 include_once '../../fns/date_ago.php';
 include_once '../../fns/render_external_links.php';
-include_once '../../classes/Tab.php';
 include_once '../../lib/page.php';
 
 if (array_key_exists('notes/view/index_messages', $_SESSION)) {
@@ -45,13 +44,23 @@ $tags = NoteTags\indexOnNote($mysqli, $id);
 
 $base = '../../';
 
+include_once '../../fns/create_tabs.php';
+
 $page->base = $base;
 $page->title = "Note #$id";
 $page->finish(
-    Tab::create(
-        Tab::item('&middot;&middot;&middot;', '../..')
-        .Tab::item('Notes', '..')
-        .Tab::activeItem("Note #$id"),
+    create_tabs(
+        [
+            [
+                'title' => '&middot;&middot;&middot;',
+                'href' => '../..',
+            ],
+            [
+                'title' => 'Notes',
+                'href' => '..',
+            ],
+        ],
+        "Note #$id",
         $pageMessages
         .Page::text(
             nl2br(

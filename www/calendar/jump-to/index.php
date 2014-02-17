@@ -1,11 +1,10 @@
 <?php
 
 include_once 'lib/require-user.php';
-include_once '../../fns/request_strings.php';
 include_once '../../classes/Form.php';
-include_once '../../classes/Tab.php';
 include_once '../../lib/page.php';
 
+include_once '../../fns/request_strings.php';
 list($month, $year) = request_strings('month', 'year');
 
 $timeNow = time();
@@ -37,13 +36,23 @@ for ($i = $minYear; $i <= $maxYear; $i++) {
 
 unset($_SESSION['calendar/index_messages']);
 
+include_once '../../fns/create_tabs.php';
+
 $page->base = '../../';
 $page->title = 'Jumo To';
 $page->finish(
-    Tab::create(
-        Tab::item('&middot;&middot;&middot;', "../..")
-        .Tab::item('Calendar', "../?year=$year&month=$month")
-        .Tab::activeItem('Jump To'),
+    create_tabs(
+        [
+            [
+                'title' => '&middot;&middot;&middot;',
+                'href' => '../..',
+            ],
+            [
+                'title' => 'Calendar',
+                'href' => "../?year=$year&month=$month",
+            ],
+        ],
+        'Jump To',
         Form::create(
             'submit.php',
             Form::select('month', 'Month:', $monthOptions, $month)

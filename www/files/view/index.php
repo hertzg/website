@@ -20,9 +20,9 @@ if (!$file) {
 include_once '../fns/create_folder_link.php';
 include_once '../../fns/bytestr.php';
 include_once '../../fns/create_panel.php';
+include_once '../../fns/create_tabs.php';
 include_once '../../fns/date_ago.php';
 include_once '../../classes/Form.php';
-include_once '../../classes/Tab.php';
 include_once '../../lib/page.php';
 
 if (array_key_exists('files/view/index_messages', $_SESSION)) {
@@ -41,10 +41,18 @@ unset(
 $page->base = '../../';
 $page->title = "File #$id";
 $page->finish(
-    Tab::create(
-        Tab::item('&middot;&middot;&middot;', '../..')
-        .Tab::item('Files', create_folder_link($file->idfolders, '../'))
-        .Tab::activeItem("File #$id"),
+    create_tabs(
+        [
+            [
+                'title' => '&middot;&middot;&middot;',
+                'href' => '../..',
+            ],
+            [
+                'title' => 'Files',
+                'href' => create_folder_link($file->idfolders, '../'),
+            ],
+        ],
+        "File #$id",
         $pageMessages
         .Form::label('File name', $file->filename)
         .Page::HR

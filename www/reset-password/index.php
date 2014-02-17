@@ -1,7 +1,5 @@
 <?php
 
-include_once '../classes/Form.php';
-include_once '../classes/Tab.php';
 include_once '../lib/page.php';
 include_once '../lib/session-start.php';
 
@@ -45,12 +43,20 @@ unset(
     $_SESSION['sign-in/index_messages']
 );
 
+include_once '../fns/create_tabs.php';
+include_once '../classes/Form.php';
+
 $page->base = '../';
 $page->title = 'Reset Password';
 $page->finish(
-    Tab::create(
-        Tab::item('Sign In', '../sign-in/')
-        .Tab::activeItem('Reset Password'),
+    create_tabs(
+        [
+            [
+                'title' => 'Sign In',
+                'href' => '../sign-in/',
+            ],
+        ],
+        'Reset Password',
         $pageErrors
         .Form::create(
             'submit.php',

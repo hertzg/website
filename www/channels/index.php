@@ -1,8 +1,6 @@
 <?php
 
 include_once 'lib/require-user.php';
-include_once '../fns/create_panel.php';
-include_once '../classes/Tab.php';
 include_once '../lib/page.php';
 
 include_once '../fns/Channels/index.php';
@@ -36,15 +34,25 @@ if (array_key_exists('channels/index_messages', $_SESSION)) {
     $pageMessages = '';
 }
 
+include_once '../fns/create_panel.php';
+include_once '../fns/create_tabs.php';
+
 $page->base = '../';
 $page->title = 'Channels';
 $page->finish(
-    Tab::create(
-        Tab::item('&middot;&middot;&middot;', '..')
-        .Tab::item('Notifications', '../notifications/')
-        .Tab::activeItem('Channels'),
-        $pageMessages
-        .$channelsHtml
+    create_tabs(
+        [
+            [
+                'title' => '&middot;&middot;&middot;',
+                'href' => '..',
+            ],
+            [
+                'title' => 'Notifications',
+                'href' => '../notifications/',
+            ],
+        ],
+        'Channels',
+        $pageMessages.$channelsHtml
     )
     .create_panel(
         'Options',

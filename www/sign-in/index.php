@@ -8,7 +8,6 @@ if ($user) {
 
 include_once '../fns/create_panel.php';
 include_once '../classes/Form.php';
-include_once '../classes/Tab.php';
 include_once '../lib/page.php';
 
 if (array_key_exists('sign-in/index_lastpost', $_SESSION)) {
@@ -53,12 +52,15 @@ $username = $values['username'];
 
 $base = '../';
 
+include_once '../fns/create_tabs.php';
+
 $page->base = $base;
 $page->hideSignOutLink = true;
 $page->title = 'Sign In';
 $page->finish(
-    Tab::create(
-        Tab::activeItem('Sign In'),
+    create_tabs(
+        [],
+        'Sign In', 
         $pageMessages
         .$pageErrors
         .Form::create(

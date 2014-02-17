@@ -1,7 +1,6 @@
 <?php
 
 include_once 'lib/require-user.php';
-include_once '../../classes/Tab.php';
 include_once '../../lib/page.php';
 
 include_once '../../fns/request_strings.php';
@@ -23,9 +22,14 @@ unset($_SESSION['notifications/index_messages']);
 $page->base = '../../';
 $page->title = 'Delete Notifications?';
 $page->finish(
-    Tab::create(
-        Tab::item('Home', '../..')
-        .Tab::activeItem('Notifications'),
+    create_tabs(
+        [
+            [
+                'title' => 'Home',
+                'href' => '../..',
+            ],
+        ],
+        'Notifications',
         Page::text(
             'Are you sure you want to delete notifications in this channel?'
         )

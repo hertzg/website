@@ -66,9 +66,6 @@ function create_calendar ($timeSelected) {
 include_once __DIR__.'/../fns/require_user.php';
 require_user('../');
 
-include_once '../fns/create_panel.php';
-include_once '../fns/request_strings.php';
-include_once '../classes/Tab.php';
 include_once '../lib/page.php';
 
 if (array_key_exists('calendar/index_messages', $_SESSION)) {
@@ -84,6 +81,7 @@ unset(
     $_SESSION['calendar/view-event_messages']
 );
 
+include_once '../fns/request_strings.php';
 list($year, $month, $day) = request_strings('year', 'month', 'day');
 
 $timeNow = time();
@@ -121,17 +119,24 @@ if ($events) {
     $eventItems[] = Page::info('No events.');
 }
 
+include_once '../fns/create_panel.php';
+include_once '../fns/create_tabs.php';
+
 $page->base = '../';
 $page->title = 'Calendar';
 $page->head =
     '<link rel="stylesheet" type="text/css" href="index.css?1" />'
     ."<link rel=\"stylesheet\" type=\"text/css\" href=\"themes/$page->theme/index.css\" />";
 $page->finish(
-    Tab::create(
-        Tab::item('Home', '..')
-        .Tab::activeItem('Calendar'),
-        $pageMessages
-        .create_calendar($timeSelected)
+    create_tabs(
+        [
+            [
+                'title' => 'Home',
+                'href' => '..',
+            ],
+        ],
+        'Calendar',
+        $pageMessages.create_calendar($timeSelected)
     )
     .create_panel(
         'Events',

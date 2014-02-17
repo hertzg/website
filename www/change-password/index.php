@@ -2,7 +2,6 @@
 
 include_once 'lib/require-user.php';
 include_once '../classes/Form.php';
-include_once '../classes/Tab.php';
 include_once '../lib/page.php';
 
 if (array_key_exists('change-password/index_lastpost', $_SESSION)) {
@@ -23,13 +22,23 @@ if (array_key_exists('change-password/index_errors', $_SESSION)) {
 
 unset($_SESSION['account/index_messages']);
 
+include_once '../fns/create_tabs.php';
+
 $page->base = '../';
 $page->title = 'Change Password';
 $page->finish(
-    Tab::create(
-        Tab::item('&middot;&middot;&middot;', '..')
-        .Tab::item('Account', '../account/')
-        .Tab::activeItem('Change Password'),
+    create_tabs(
+        [
+            [
+                'title' => '&middot;&middot;&middot;',
+                'href' => '..',
+            ],
+            [
+                'title' => 'Account',
+                'href' => '../account/',
+            ],
+        ],
+        'Change Password',
         $pageErrors
         .Form::create(
             'submit.php',

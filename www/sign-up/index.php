@@ -2,7 +2,6 @@
 
 include_once '../fns/create_panel.php';
 include_once '../classes/Form.php';
-include_once '../classes/Tab.php';
 include_once '../lib/page.php';
 include_once '../lib/session-start.php';
 
@@ -31,12 +30,15 @@ unset(
 
 $base = '../';
 
+include_once '../fns/create_tabs.php';
+
 $page->base = $base;
 $page->hideSignOutLink = true;
 $page->title = 'Sign Up';
 $page->finish(
-    Tab::create(
-        Tab::activeItem('Sign Up'),
+    create_tabs(
+        [],
+        'Sign Up',
         $pageErrors
         .Form::create(
             'submit.php',

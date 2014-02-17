@@ -1,7 +1,7 @@
 <?php
 
 include_once 'lib/require-event.php';
-include_once '../../classes/Tab.php';
+include_once '../../fns/create_tabs.php';
 include_once '../../lib/page.php';
 
 unset($_SESSION['calendar/view-event_messages']);
@@ -9,10 +9,18 @@ unset($_SESSION['calendar/view-event_messages']);
 $page->base = '../../';
 $page->title = "Delete Event #$idevents?";
 $page->finish(
-    Tab::create(
-        Tab::item('&middot;&middot;&middot;', '../..')
-        .Tab::item('Calendar', '..')
-        .Tab::activeItem("Event #$idevents"),
+    create_tabs(
+        [
+            [
+                'title' => '&middot;&middot;&middot;',
+                'href' => '../..',
+            ],
+            [
+                'title' => 'Calendar',
+                'href' => '..',
+            ],
+        ],
+        "Event #$idevents",
         Page::text('Are you sure you want to delete the event?')
         .Page::HR
         .Page::imageLink(

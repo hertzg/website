@@ -2,7 +2,7 @@
 
 include_once 'lib/require-user.php';
 include_once '../fns/create_panel.php';
-include_once '../classes/Tab.php';
+include_once '../fns/create_tabs.php';
 include_once '../lib/page.php';
 include_once '../lib/token.php';
 
@@ -70,12 +70,19 @@ unset($_SESSION['account/index_messages']);
 $page->base = '../';
 $page->title = 'Remembered Sessions';
 $page->finish(
-    Tab::create(
-        Tab::item('&middot;&middot;&middot;', '..')
-        .Tab::item('Account', '../account/')
-        .Tab::activeItem('Sessions'),
-        $pageMessages
-        .join(Page::HR, $items)
+    create_tabs(
+        [
+            [
+                'title' => '&middot;&middot;&middot;',
+                'href' => '..',
+            ],
+            [
+                'title' => 'Account',
+                'href' => '../account/',
+            ],
+        ],
+        'Sessions',
+        $pageMessages.join(Page::HR, $items)
     )
     .$optionsPanel
 );

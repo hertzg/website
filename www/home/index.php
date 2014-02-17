@@ -12,7 +12,6 @@ require_user($base);
 include_once '../fns/bytestr.php';
 include_once '../fns/create_panel.php';
 include_once '../fns/create_search_form_empty_content.php';
-include_once '../classes/Tab.php';
 include_once '../lib/mysqli.php';
 include_once '../lib/page.php';
 
@@ -163,15 +162,12 @@ if (array_key_exists('home/index_messages', $_SESSION)) {
     $pageMessages = '';
 }
 
+include_once '../fns/create_tabs.php';
+
 $page->base = $base;
 $page->title = 'Home';
 $page->finish(
-    Tab::create(
-        Tab::activeItem('Home'),
-        $pageMessages
-        .$notifications
-        .join(Page::HR, $items)
-    )
+    create_tabs([], 'Home', $pageMessages.$notifications.join(Page::HR, $items))
     .create_panel(
         'Options',
         Page::imageLink('Account', '../account/', 'account')

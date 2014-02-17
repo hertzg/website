@@ -12,12 +12,10 @@ function createTagInput ($tag) {
 }
 
 include_once 'lib/require-user.php';
-include_once '../fns/create_panel.php';
-include_once '../fns/request_strings.php';
-include_once '../classes/Tab.php';
 include_once '../lib/mysqli.php';
 include_once '../lib/page.php';
 
+include_once '../fns/request_strings.php';
 list($keyword, $tag) = request_strings('keyword', 'tag');
 
 $items = array();
@@ -137,15 +135,21 @@ if ($notes) {
     );
 }
 
+include_once '../fns/create_panel.php';
+include_once '../fns/create_tabs.php';
+
 $page->base = '../';
 $page->title = 'Notes';
 $page->finish(
-    Tab::create(
-        Tab::item('Home', '..')
-        .Tab::activeItem('Notes'),
-        $pageMessages
-        .$filterMessage
-        .join(Page::HR, $items)
+    create_tabs(
+        [
+            [
+                'title' => 'Home',
+                'href' => '..',
+            ],
+        ],
+        'Notes',
+        $pageMessages.$filterMessage.join(Page::HR, $items)
     )
     .create_panel('Options', join(Page::HR, $options))
 );

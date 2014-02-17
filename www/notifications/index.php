@@ -1,8 +1,6 @@
 <?php
 
 include_once 'lib/require-user.php';
-include_once '../fns/create_panel.php';
-include_once '../classes/Tab.php';
 include_once '../lib/page.php';
 
 include_once '../fns/request_strings.php';
@@ -105,12 +103,20 @@ if (array_key_exists('notifications/index_messages', $_SESSION)) {
     $pageMessages = '';
 }
 
+include_once '../fns/create_panel.php';
+include_once '../fns/create_tabs.php';
+
 $page->base = '../';
 $page->title = 'Notifications';
 $page->finish(
-    Tab::create(
-        Tab::item('Home', '..')
-        .Tab::activeItem('Notifications'),
+    create_tabs(
+        [
+            [
+                'title' => 'Home',
+                'href' => '..',
+            ],
+        ],
+        'Notifications',
         $pageMessages
         .$filterMessage
         .$notificationsHtml

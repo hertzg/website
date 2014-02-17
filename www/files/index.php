@@ -27,7 +27,6 @@ include_once 'fns/create_folder_link.php';
 include_once '../fns/create_panel.php';
 include_once '../fns/str_collapse_spaces.php';
 include_once '../classes/Files.php';
-include_once '../classes/Tab.php';
 include_once '../lib/page.php';
 
 $items = array();
@@ -166,14 +165,20 @@ if (array_key_exists('files/index_messages', $_SESSION)) {
     $pageMessages = '';
 }
 
+include_once '../fns/create_tabs.php';
+
 $page->base = '../';
 $page->title = 'Files';
 $page->finish(
-    Tab::create(
-        Tab::item('Home', '..')
-        .Tab::activeItem('Files'),
-        $pageMessages
-        .join(Page::HR, $items)
+    create_tabs(
+        [
+            [
+                'title' => 'Home',
+                'href' => '..',
+            ],
+        ],
+        'Files',
+        $pageMessages.join(Page::HR, $items)
     )
     .create_panel(
         'Options',

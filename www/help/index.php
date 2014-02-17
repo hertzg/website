@@ -1,7 +1,6 @@
 <?php
 
 include_once 'lib/require-user.php';
-include_once '../classes/Tab.php';
 include_once '../lib/page.php';
 
 if (array_key_exists('help/index_messages', $_SESSION)) {
@@ -15,12 +14,19 @@ unset(
     $_SESSION['help/feedback_lastpost']
 );
 
+include_once '../fns/create_tabs.php';
+
 $page->base = '../';
 $page->title = 'Help';
 $page->finish(
-    Tab::create(
-        Tab::item('Home', '..')
-        .Tab::activeItem('Help'),
+    create_tabs(
+        [
+            [
+                'title' => 'Home',
+                'href' => '..',
+            ],
+        ],
+        'Help',
         $pageMessages
         .Page::imageLink('Install Zvini App', 'install.php', 'download')
         .Page::HR

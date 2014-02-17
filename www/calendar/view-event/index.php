@@ -17,8 +17,6 @@ if (!$event) {
     redirect('..');
 }
 
-include_once '../../fns/create_panel.php';
-include_once '../../classes/Tab.php';
 include_once '../../lib/page.php';
 
 if (array_key_exists('calendar/view-event_messages', $_SESSION)) {
@@ -32,13 +30,24 @@ unset(
     $_SESSION['calendar/index_messages']
 );
 
+include_once '../../fns/create_panel.php';
+include_once '../../fns/create_tabs.php';
+
 $page->base = '../../';
 $page->title = "Event #$idevents";
 $page->finish(
-    Tab::create(
-        Tab::item('&middot;&middot;&middot;', '../..')
-        .Tab::item('Calendar', '..')
-        .Tab::activeItem("Event #$idevents"),
+    create_tabs(
+        [
+            [
+                'title' => '&middot;&middot;&middot;',
+                'href' => '../..',
+            ],
+            [
+                'title' => 'Calendar',
+                'href' => '..',
+            ],
+        ],
+        "Event #$idevents",
         $pageMessages
         .Page::text(htmlspecialchars($event->eventtext))
         .Page::HR

@@ -34,17 +34,25 @@ unset(
 
 include_once 'fns/create_folder_link.php';
 include_once '../classes/Form.php';
-include_once '../classes/Tab.php';
 include_once '../fns/bytestr.php';
+include_once '../fns/create_tabs.php';
 include_once '../fns/ini_get_bytes.php';
 
 $page->base = '../';
 $page->title = 'Upload Files';
 $page->finish(
-    Tab::create(
-        Tab::item('&middot;&middot;&middot;', '..')
-        .Tab::item('Files', create_folder_link($idfolders))
-        .Tab::activeItem('Upload Files'),
+    create_tabs(
+        [
+            [
+                'title' => '&middot;&middot;&middot;',
+                'href' => '..',
+            ],
+            [
+                'title' => 'Files',
+                'href' => create_folder_link($idfolders),
+            ],
+        ],
+        'Upload Files',
         $pageErrors
         .Page::warnings(array(
             'Maximum '.bytestr(ini_get_bytes('upload_max_filesize')).' each file.',

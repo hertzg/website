@@ -1,7 +1,6 @@
 <?php
 
 include_once 'lib/require-user.php';
-include_once '../classes/Tab.php';
 include_once '../lib/page.php';
 include_once '../lib/themes.php';
 
@@ -16,13 +15,23 @@ foreach ($themes as $id => $theme) {
     $themeItems[] = Page::imageLink($theme, $href, "$id-theme");
 }
 
+include_once '../fns/create_tabs.php';
+
 $page->base = '../';
 $page->title = 'Edit Profile';
 $page->finish(
-    Tab::create(
-        Tab::item('&middot;&middot;&middot;', '..')
-        .Tab::item('Account', '../account/')
-        .Tab::activeItem('Profile'),
+    create_tabs(
+        [
+            [
+                'title' => '&middot;&middot;&middot;',
+                'href' => '..',
+            ],
+            [
+                'title' => 'Account',
+                'href' => '../account/',
+            ],
+        ],
+        'Profile',
         Page::warnings(array('Select theme color:'))
         .join(Page::HR, $themeItems)
     )

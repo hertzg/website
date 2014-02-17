@@ -1,9 +1,7 @@
 <?php
 
 include_once 'lib/require-user.php';
-include_once '../fns/redirect.php';
 include_once '../classes/Form.php';
-include_once '../classes/Tab.php';
 include_once '../lib/page.php';
 
 if (array_key_exists('close-account/index_errors', $_SESSION)) {
@@ -14,13 +12,23 @@ if (array_key_exists('close-account/index_errors', $_SESSION)) {
 
 unset($_SESSION['account/index_messages']);
 
+include_once '../fns/create_tabs.php';
+
 $page->base = '../';
 $page->title = 'Close Account';
 $page->finish(
-    Tab::create(
-        Tab::item('&middot;&middot;&middot;', '..')
-        .Tab::item('Account', '../account/')
-        .Tab::activeItem('Close'),
+    create_tabs(
+        [
+            [
+                'title' => '&middot;&middot;&middot;',
+                'href' => '..',
+            ],
+            [
+                'title' => 'Account',
+                'href' => '../account/',
+            ],
+        ],
+        'Close',
         $pageErrors
         .Page::warnings(array(
             'Are you sure you want to close your account?',

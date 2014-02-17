@@ -1,16 +1,24 @@
 <?php
 
 include_once 'lib/require-token.php';
-include_once '../../classes/Tab.php';
+include_once '../../fns/create_tabs.php';
 include_once '../../lib/page.php';
 
 $page->base = '../../';
 $page->title = "Delete Remembered Session #$id?";
 $page->finish(
-    Tab::create(
-        Tab::item('&middot;&middot;&middot;', '../../account/')
-        .Tab::item('Sessions', '..')
-        .Tab::activeItem("Session #$id"),
+    create_tabs(
+        [
+            [
+                'title' => '&middot;&middot;&middot;',
+                'href' => '../../account/',
+            ],
+            [
+                'title' => 'Sessions',
+                'href' => '..',
+            ],
+        ],
+        "Session #$id",
         Page::text(
             'Are you sure you want to delete the remembered session'
             .' "<b>'.bin2hex($token->tokentext).'</b>"?'

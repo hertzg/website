@@ -9,7 +9,6 @@ function create_link ($idfolders, $parentidfolders) {
 
 include_once 'lib/require-folder.php';
 include_once 'fns/create_folder_link.php';
-include_once '../classes/Tab.php';
 include_once '../lib/mysqli.php';
 include_once '../lib/page.php';
 
@@ -77,13 +76,23 @@ unset(
     $_SESSION['files/index_messages']
 );
 
+include_once '../fns/create_tabs.php';
+
 $page->base = '../';
 $page->title = "Move Folder #$idfolders";
 $page->finish(
-    Tab::create(
-        Tab::item('&middot;&middot;&middot;', '..')
-        .Tab::item('Files', create_folder_link($idfolders))
-        .Tab::activeItem('Move'),
+    create_tabs(
+        [
+            [
+                'title' => '&middot;&middot;&middot;',
+                'href' => '..',
+            ],
+            [
+                'title' => 'Files',
+                'href' => create_folder_link($idfolders),
+            ]
+        ],
+        'Move',
         $pageErrors
         .Page::warnings(array(
             'Moving the folder "<b>'.htmlspecialchars($folder->foldername).'</b>".',

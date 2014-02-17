@@ -2,7 +2,6 @@
 
 include_once 'lib/require-user.php';
 include_once '../classes/Form.php';
-include_once '../classes/Tab.php';
 include_once '../lib/page.php';
 
 if (array_key_exists('help/feedback_lastpost', $_SESSION)) {
@@ -19,13 +18,23 @@ if (array_key_exists('help/feedback_errors', $_SESSION)) {
 
 unset($_SESSION['help/index_messages']);
 
+include_once '../fns/create_tabs.php';
+
 $page->base = '../';
 $page->title = 'Leave Feedback';
 $page->finish(
-    Tab::create(
-        Tab::item('&middot;&middot;&middot;', '..')
-        .Tab::item('Help', './')
-        .Tab::activeItem('Feedback'),
+    create_tabs(
+        [
+            [
+                'title' => '&middot;&middot;&middot;',
+                'href' => '..',
+            ],
+            [
+                'title' => 'Help',
+                'href' => './',
+            ],
+        ],
+        'Feedback',
         $pageErrors
         .Form::create(
             'submit-feedback.php',

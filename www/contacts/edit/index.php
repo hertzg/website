@@ -2,7 +2,6 @@
 
 include_once 'lib/require-contact.php';
 include_once '../../classes/Form.php';
-include_once '../../classes/Tab.php';
 include_once '../../lib/page.php';
 
 if (array_key_exists('contacts/edit_lastpost', $_SESSION)) {
@@ -19,13 +18,23 @@ if (array_key_exists('contacts/edit_errors', $_SESSION)) {
 
 unset($_SESSION['contacts/view/index_messages']);
 
+include_once '../../fns/create_tabs.php';
+
 $page->base = '../../';
 $page->title = "Edit Contact #$id";
 $page->finish(
-    Tab::create(
-        Tab::item('&middot;&middot;&middot;', '..')
-        .Tab::item("Contact #$id", "../view/?id=$id")
-        .Tab::activeItem('Edit'),
+    create_tabs(
+        [
+            [
+                'title' => '&middot;&middot;&middot;',
+                'href' => '..',
+            ],
+            [
+                'title' => "Contact #$id",
+                'href' => "../view/?id=$id",
+            ],
+        ],
+        'Edit',
         $pageErrors
         .Form::create(
             'submit.php',

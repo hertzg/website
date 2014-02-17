@@ -19,7 +19,6 @@ if (!$channel) {
 
 include_once '../../fns/create_panel.php';
 include_once '../../classes/Form.php';
-include_once '../../classes/Tab.php';
 include_once '../../lib/page.php';
 
 if (array_key_exists('channels/view/index_messages', $_SESSION)) {
@@ -30,13 +29,23 @@ if (array_key_exists('channels/view/index_messages', $_SESSION)) {
 
 unset($_SESSION['channels/index_messages']);
 
+include_once '../../fns/create_tabs.php';
+
 $page->base = '../../';
 $page->title = "Channel #$id";
 $page->finish(
-    Tab::create(
-        Tab::item('&middot;&middot;&middot;', '../../notifications/')
-        .Tab::item('Channels', '..')
-        .Tab::activeItem("Channel #$id"),
+    create_tabs(
+        [
+            [
+                'title' => '&middot;&middot;&middot;',
+                'href' => '../../notifications/',
+            ],
+            [
+                'title' => 'Channels',
+                'href' => '..',
+            ],
+        ],
+        "Channel #$id",
         $pageMessages
         .Form::label('Channel name', htmlspecialchars($channel->channelname))
         .Page::HR

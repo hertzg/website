@@ -17,9 +17,7 @@ if (!$contact) {
     redirect('..');
 }
 
-include_once '../../fns/create_panel.php';
 include_once '../../classes/Form.php';
-include_once '../../classes/Tab.php';
 include_once '../../lib/page.php';
 
 $address = $contact->address;
@@ -39,13 +37,24 @@ unset(
     $_SESSION['contacts/index_messages']
 );
 
+include_once '../../fns/create_panel.php';
+include_once '../../fns/create_tabs.php';
+
 $page->base = '../../';
 $page->title = "Contact #$id";
 $page->finish(
-    Tab::create(
-        Tab::item('&middot;&middot;&middot;', '../..')
-        .Tab::item('Contacts', '..')
-        .Tab::activeItem("Contact #$id"),
+    create_tabs(
+        [
+            [
+                'title' => '&middot;&middot;&middot;',
+                'href' => '../..',
+            ],
+            [
+                'title' => 'Contacts',
+                'href' => '..',
+            ],
+        ],
+        "Contact #$id",
         $pageMessages
         .Form::label('Full name', htmlspecialchars($contact->fullname))
         .($address ? Page::HR.Form::label('Address', htmlspecialchars($address)) : '')

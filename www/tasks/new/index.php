@@ -2,7 +2,6 @@
 
 include_once 'lib/require-user.php';
 include_once '../../classes/Form.php';
-include_once '../../classes/Tab.php';
 include_once '../../lib/page.php';
 
 if (array_key_exists('tasks/new/index_lastpost', $_SESSION)) {
@@ -22,13 +21,23 @@ if (array_key_exists('tasks/new/index_errors', $_SESSION)) {
 
 unset($_SESSION['tasks/index_messages']);
 
+include_once '../../fns/create_tabs.php';
+
 $page->base = '../../';
 $page->title = 'New Task';
 $page->finish(
-    Tab::create(
-        Tab::item('&middot;&middot;&middot;', '../..')
-        .Tab::item('Tasks', '..')
-        .Tab::activeItem('New'),
+    create_tabs(
+        [
+            [
+                'title' => '&middot;&middot;&middot;',
+                'href' => '../..',
+            ],
+            [
+                'title' => 'Tasks',
+                'href' => '..',
+            ],
+        ],
+        'New',
         $pageErrors
         .Form::create(
             'submit.php',

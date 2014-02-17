@@ -38,16 +38,24 @@ unset(
 );
 
 include_once '../classes/Form.php';
-include_once '../classes/Tab.php';
+include_once '../fns/create_tabs.php';
 include_once 'fns/create_folder_link.php';
 
 $page->base = '../';
 $page->title = 'New Folder';
 $page->finish(
-    Tab::create(
-        Tab::item('&middot;&middot;&middot;', '..')
-        .Tab::item('Files', create_folder_link($parentIdFolders))
-        .Tab::activeItem('New Folder'),
+    create_tabs(
+        [
+            [
+                'title' => '&middot;&middot;&middot;',
+                'href' => '..',
+            ],
+            [
+                'title' => 'Files',
+                'href' => create_folder_link($parentIdFolders),
+            ],
+        ],
+        'New Folder',
         $pageErrors
         .Form::create(
             'submit-add-folder.php',

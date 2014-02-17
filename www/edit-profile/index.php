@@ -2,7 +2,6 @@
 
 include_once 'lib/require-user.php';
 include_once '../classes/Form.php';
-include_once '../classes/Tab.php';
 include_once '../lib/page.php';
 
 if (array_key_exists('edit-profile/index_lastpost', $_SESSION)) {
@@ -19,13 +18,23 @@ if (array_key_exists('edit-profile/index_errors', $_SESSION)) {
 
 unset($_SESSION['account/index_messages']);
 
+include_once '../fns/create_tabs.php';
+
 $page->base = '../';
 $page->title = 'Edit Profile';
 $page->finish(
-    Tab::create(
-        Tab::item('&middot;&middot;&middot;', '..')
-        .Tab::item('Account', '../account/')
-        .Tab::activeItem('Edit Profile'),
+    create_tabs(
+        [
+            [
+                'title' => '&middot;&middot;&middot;',
+                'href' => '..',
+            ],
+            [
+                'title' => 'Account',
+                'href' => '../account/',
+            ],
+        ],
+        'Edit Profile',
         $pageErrors
         .Form::create(
             'submit.php',

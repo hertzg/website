@@ -9,7 +9,6 @@ include_once '../fns/create_panel.php';
 include_once '../fns/bytestr.php';
 include_once '../fns/date_ago.php';
 include_once '../classes/Form.php';
-include_once '../classes/Tab.php';
 include_once '../lib/mysqli.php';
 include_once '../lib/page.php';
 include_once '../lib/themes.php';
@@ -55,12 +54,19 @@ if ($numTokens) {
 }
 $options[] = Page::imageLink('Close Account', '../close-account/', 'trash-bin');
 
+include_once '../fns/create_tabs.php';
+
 $page->base = '../';
 $page->title = 'Account';
 $page->finish(
-    Tab::create(
-        Tab::item('Home', '..')
-        .Tab::activeItem('Account'),
+    create_tabs(
+        [
+            [
+                'title' => 'Home',
+                'href' => '..',
+            ],
+        ],
+        'Account',
         $pageMessages
         .Form::label('Username', $user->username)
         .Page::HR

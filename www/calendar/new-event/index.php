@@ -2,7 +2,6 @@
 
 include_once 'lib/require-user.php';
 include_once '../../classes/Form.php';
-include_once '../../classes/Tab.php';
 include_once '../../lib/page.php';
 
 include_once '../../fns/request_strings.php';
@@ -27,13 +26,23 @@ $time = mktime(0, 0, 0, $month, $day, $year);
 
 unset($_SESSION['calendar/index_messages']);
 
+include_once '../../fns/create_tabs.php';
+
 $page->base = '../../';
 $page->title = 'New Event';
 $page->finish(
-    Tab::create(
-        Tab::item('&middot;&middot;&middot;', '../..')
-        .Tab::item('Calendar', '..')
-        .Tab::activeItem('New Event'),
+    create_tabs(
+        [
+            [
+                'title' => '&middot;&middot;&middot;',
+                'href' => '../..',
+            ],
+            [
+                'title' => 'Calendar',
+                'href' => '..',
+            ],
+        ],
+        'New Event',
         $pageErrors
         .Form::create(
             'submit.php',

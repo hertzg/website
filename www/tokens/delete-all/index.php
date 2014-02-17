@@ -1,18 +1,26 @@
 <?php
 
 include_once 'lib/require-user.php';
-include_once '../../classes/Tab.php';
 include_once '../../lib/page.php';
 
 unset($_SESSION['tokens/index_messages']);
 
+include_once '../../fns/create_tabs.php';
+
 $page->base = '../../';
 $page->title = 'Delete All Remembered Sessions?';
 $page->finish(
-    Tab::create(
-        Tab::item('&middot;&middot;&middot;', '../..')
-        .Tab::item('Account', '../../account/')
-        .Tab::activeItem('Sessions'),
+    create_tabs(
+        [
+            [
+                'title' => '&middot;&middot;&middot;',
+                'href' => '../..',
+            ], [
+                'title' => 'Account',
+                'href' => '../../account/',
+            ],
+        ],
+        'Sessions',
         Page::text(
             'Are you sure you want to delete all the remembered sessions?'
         )
