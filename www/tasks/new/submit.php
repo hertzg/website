@@ -3,8 +3,9 @@
 include_once '../../lib/sameDomainReferer.php';
 include_once '../../fns/redirect.php';
 if (!$sameDomainReferer) redirect('..');
-include_once 'lib/require-user.php';
-include_once '../../classes/Tags.php';
+
+include_once '../../fns/require_user.php';
+require_user('../../');
 
 include_once '../../fns/request_strings.php';
 list($tasktext, $tags) = request_strings('tasktext', 'tags');
@@ -19,6 +20,7 @@ $errors = array();
 
 if ($tasktext === '') $errors[] = 'Enter text.';
 
+include_once '../../classes/Tags.php';
 $tagnames = Tags::parse($tags);
 if (count($tagnames) > Tags::MAX_NUM_TAGS) {
     $errors[] = 'Please, enter maximum '.Tags::MAX_NUM_TAGS.' tags.';

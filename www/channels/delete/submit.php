@@ -3,10 +3,12 @@
 include_once '../../lib/sameDomainReferer.php';
 include_once '../../fns/redirect.php';
 if (!$sameDomainReferer) redirect('../..');
-include_once 'lib/require-channel.php';
+
+include_once '../fns/require_channel.php';
+include_once '../../lib/mysqli.php';
+list($channel, $id) = require_channel($mysqli);
 
 include_once '../../fns/Notifications/deleteOnChannel.php';
-include_once '../../lib/mysqli.php';
 Notifications\deleteOnChannel($mysqli, $id);
 
 include_once '../../fns/Users/addNumNotifications.php';

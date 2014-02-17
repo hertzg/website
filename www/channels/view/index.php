@@ -1,21 +1,8 @@
 <?php
 
-include_once '../../fns/require_user.php';
-require_user('../../');
-
-include_once '../../fns/request_strings.php';
-list($id) = request_strings('id');
-
-$id = abs((int)$id);
-
-include_once '../../fns/Channels/get.php';
+include_once '../fns/require_channel.php';
 include_once '../../lib/mysqli.php';
-$channel = Channels\get($mysqli, $idusers, $id);
-
-if (!$channel) {
-    include_once '../../fns/redirect.php';
-    redirect('..');
-}
+list($channel, $id) = require_channel($mysqli);
 
 include_once '../../fns/create_panel.php';
 include_once '../../classes/Form.php';
