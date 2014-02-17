@@ -1,16 +1,16 @@
 <?php
 
-include_once '../lib/sameDomainReferer.php';
-include_once '../fns/redirect.php';
+include_once '../../lib/sameDomainReferer.php';
+include_once '../../fns/redirect.php';
 if (!$sameDomainReferer) redirect('..');
-include_once '../lib/require-user.php';
+include_once '../../lib/require-user.php';
 
-include_once '../fns/request_strings.php';
+include_once '../../fns/request_strings.php';
 list($feedbacktext) = request_strings('feedbacktext');
 
 $errors = array();
 
-include_once '../fns/str_collapse_spaces.php';
+include_once '../../fns/str_collapse_spaces.php';
 $feedbacktext = str_collapse_spaces($feedbacktext);
 
 if ($feedbacktext === '') {
@@ -24,7 +24,7 @@ if ($errors) {
     $_SESSION['help/feedback_lastpost'] = array(
         'feedbacktext' => $feedbacktext,
     );
-    redirect('feedback.php');
+    redirect();
 }
 
 unset(
@@ -32,11 +32,11 @@ unset(
     $_SESSION['help/feedback_lastpost']
 );
 
-include_once '../fns/Feedbacks/add.php';
-include_once '../lib/mysqli.php';
+include_once '../../fns/Feedbacks/add.php';
+include_once '../../lib/mysqli.php';
 $id = Feedbacks\add($mysqli, $idusers, $feedbacktext);
 
-include_once '../classes/ZviniAPI.php';
+include_once '../../classes/ZviniAPI.php';
 ZviniAPI::notify('zvini-feedbacks', '58ff602ff1c79d81ca43d51f59ca03bd', $feedbacktext);
 
 $title = "Zvini Feedback #$id";
@@ -60,4 +60,4 @@ mail(
 );
 
 $_SESSION['help/index_messages'] = array('Thank you for the feedback.');
-redirect();
+redirect('..');

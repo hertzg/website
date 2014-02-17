@@ -1,8 +1,8 @@
 <?php
 
 include_once 'lib/require-user.php';
-include_once '../classes/Form.php';
-include_once '../lib/page.php';
+include_once '../../classes/Form.php';
+include_once '../../lib/page.php';
 
 if (array_key_exists('help/feedback_lastpost', $_SESSION)) {
     $values = $_SESSION['help/feedback_lastpost'];
@@ -18,26 +18,26 @@ if (array_key_exists('help/feedback_errors', $_SESSION)) {
 
 unset($_SESSION['help/index_messages']);
 
-include_once '../fns/create_tabs.php';
+include_once '../../fns/create_tabs.php';
 
-$page->base = '../';
+$page->base = '../../';
 $page->title = 'Leave Feedback';
 $page->finish(
     create_tabs(
         [
             [
                 'title' => '&middot;&middot;&middot;',
-                'href' => '..',
+                'href' => '../..',
             ],
             [
                 'title' => 'Help',
-                'href' => './',
+                'href' => '..',
             ],
         ],
         'Feedback',
         $pageErrors
         .Form::create(
-            'submit-feedback.php',
+            'submit.php',
             Form::textarea('feedbacktext', 'Feedback text', array(
                 'value' => $values['feedbacktext'],
                 'autofocus' => true,
