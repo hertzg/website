@@ -17,11 +17,8 @@ function delete ($mysqli, $idusers, $id) {
         $filesize = filesize($filename);
         unlink($filename);
 
-        mysqli_query(
-            $mysqli,
-            "update users set storageused = storageused - $filesize"
-            ." where idusers = $idusers"
-        );
+        include_once __DIR__.'/../Users/addStorageUsed.php';
+        \Users\addStorageUsed($mysqli, $idusers, -$filesize);
 
     }
 }

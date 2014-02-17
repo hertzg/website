@@ -23,10 +23,7 @@ function add ($mysqli, $idusers, $idfolders, $filename, $filepath) {
 
     rename($filepath, $filename);
 
-    mysqli_query(
-        $mysqli,
-        "update users set storageused = storageused + $filesize"
-        ." where idusers = $idusers"
-    );
+    include_once __DIR__.'/../Users/addStorageUsed.php';
+    \Users\addStorageUsed($mysqli, $idusers, $filesize);
 
 }
