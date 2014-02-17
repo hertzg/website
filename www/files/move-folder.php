@@ -10,6 +10,7 @@ function create_link ($idfolders, $parentidfolders) {
 include_once 'lib/require-folder.php';
 include_once 'fns/create_folder_link.php';
 include_once '../classes/Tab.php';
+include_once '../lib/mysqli.php';
 include_once '../lib/page.php';
 
 include_once '../fns/request_strings.php';
@@ -19,7 +20,6 @@ $parentidfolders = abs((int)$parentidfolders);
 if ($parentidfolders) {
 
     include_once '../fns/Folders/get.php';
-    include_once '../lib/mysqli.php';
     $parentFolder = Folders\get($mysqli, $idusers, $parentidfolders);
 
     if (!$parentFolder) {
@@ -29,8 +29,8 @@ if ($parentidfolders) {
 
 }
 
-include_once '../classes/Folders.php';
-$folders = Folders::index($idusers, $parentidfolders);
+include_once '../fns/Folders/index.php';
+$folders = Folders\index($mysqli, $idusers, $parentidfolders);
 
 $items = array();
 if ($parentidfolders) {

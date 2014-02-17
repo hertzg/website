@@ -73,33 +73,4 @@ class Files {
         return __DIR__."/../users/$idusers/$id";
     }
 
-    static function index ($idusers, $idfolders, $offset = 0) {
-        global $mysqli;
-        return mysqli_query_object(
-            $mysqli,
-            'select * from files'
-            ." where idusers = $idusers and idfolders = $idfolders"
-            .' order by filename'
-        );
-    }
-
-    static function move ($idusers, $id, $idfolders) {
-        global $mysqli;
-        mysqli_query(
-            $mysqli,
-            "update files set idfolders = $idfolders"
-            ." where idusers = $idusers and idfiles = $id"
-        );
-    }
-
-    static function rename ($idusers, $id, $filename) {
-        global $mysqli;
-        $filename = mysqli_real_escape_string($mysqli, $filename);
-        mysqli_query(
-            $mysqli,
-            "update files set filename = '$filename'"
-            ." where idusers = $idusers and idfiles = $id"
-        );
-    }
-
 }

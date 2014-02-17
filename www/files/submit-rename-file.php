@@ -4,15 +4,15 @@ include_once '../lib/sameDomainReferer.php';
 include_once '../fns/redirect.php';
 if (!$sameDomainReferer) redirect('..');
 include_once 'lib/require-file.php';
-include_once '../fns/request_strings.php';
-include_once '../fns/str_collapse_spaces.php';
-include_once '../classes/Files.php';
 
+include_once '../fns/request_strings.php';
 list($filename) = request_strings('filename');
 
 $errors = array();
 
+include_once '../fns/str_collapse_spaces.php';
 $filename = str_collapse_spaces($filename);
+
 if ($filename === '') {
     $errors[] = 'Enter file name.';
 } else {
@@ -38,7 +38,8 @@ unset(
     $_SESSION['files/rename-file_lastpost']
 );
 
-Files::rename($idusers, $id, $filename);
+include_once '../fns/Files/rename.php';
+Files\rename($mysqli, $idusers, $id, $filename);
 
 $_SESSION['files/view/index_messages'] = array('Renamed.');
 redirect("view/?id=$id");

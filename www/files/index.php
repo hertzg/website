@@ -36,8 +36,11 @@ $placeholder = 'Search folders and files...';
 $keyword = str_collapse_spaces($keyword);
 if ($keyword === '') {
 
-    $folders = Folders::index($idusers, $idfolders);
-    $files = Files::index($idusers, $idfolders);
+    include_once '../fns/Folders/index.php';
+    $folders = Folders\index($mysqli, $idusers, $idfolders);
+
+    include_once '../fns/Files/index.php';
+    $files = Files\index($mysqli, $idusers, $idfolders);
 
     include_once '../fns/create_search_form_empty_content.php';
     $content = create_search_form_empty_content($placeholder);

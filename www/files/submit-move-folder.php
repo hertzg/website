@@ -13,10 +13,9 @@ include_once '../fns/redirect.php';
 if (!$sameDomainReferer) redirect('..');
 include_once 'lib/require-folder.php';
 include_once 'fns/create_folder_link.php';
-include_once '../fns/request_strings.php';
-include_once '../classes/Folders.php';
 include_once '../lib/mysqli.php';
 
+include_once '../fns/request_strings.php';
 list($parentidfolders) = request_strings('parentidfolders');
 
 $parentidfolders = abs((int)$parentidfolders);
@@ -51,7 +50,8 @@ unset(
     $_SESSION['files/move-folder_errors']
 );
 
-Folders::move($idusers, $idfolders, $parentidfolders);
+include_once '../fns/Folders/move.php';
+Folders\move($mysqli, $idusers, $idfolders, $parentidfolders);
 
 $_SESSION['files/index_idfolders'] = $parentidfolders;
 $_SESSION['files/index_messages'] = array('File has been moved.');

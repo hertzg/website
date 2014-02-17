@@ -11,6 +11,7 @@ include_once 'lib/require-file.php';
 include_once 'fns/create_folder_link.php';
 include_once '../classes/Folders.php';
 include_once '../classes/Tab.php';
+include_once '../lib/mysqli.php';
 include_once '../lib/page.php';
 
 include_once '../fns/request_strings.php';
@@ -20,7 +21,6 @@ $idfolders = abs((int)$idfolders);
 if ($idfolders) {
 
     include_once '../fns/Folders/get.php';
-    include_once '../lib/mysqli.php';
     $parentFolder = Folders\get($mysqli, $idusers, $idfolders);
 
     if (!$parentFolder) {
@@ -30,7 +30,8 @@ if ($idfolders) {
 
 }
 
-$folders = Folders::index($idusers, $idfolders);
+include_once '../fns/Folders/index.php';
+$folders = Folders\index($mysqli, $idusers, $idfolders);
 
 $items = array();
 if ($idfolders) {
