@@ -1,6 +1,8 @@
 <?php
 
-include_once 'session-start.php';
+include_once __DIR__.'/../fns/session_start_custom.php';
+session_start_custom();
+
 $user = $idusers = null;
 if (!array_key_exists('user', $_SESSION)) {
     include_once 'token.php';

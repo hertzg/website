@@ -8,7 +8,9 @@ for ($i = 0; $i < 4; $i++) {
 $chars = str_shuffle($chars);
 $captcha = substr($chars, -5);
 
-include_once '../lib/session-start.php';
+include_once '../fns/session_start_custom.php';
+session_start_custom();
+
 $_SESSION['captcha'] = $captcha;
 session_commit();
 

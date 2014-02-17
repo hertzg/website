@@ -3,7 +3,9 @@
 include_once 'lib/sameDomainReferer.php';
 include_once 'fns/redirect.php';
 if (!$sameDomainReferer) redirect();
-include_once 'lib/session-start.php';
+
+include_once 'fns/session_start_custom.php';
+session_start_custom();
 
 unset($_SESSION['user']);
 

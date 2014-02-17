@@ -1,7 +1,6 @@
 <?php
 
 include_once '../lib/page.php';
-include_once '../lib/session-start.php';
 
 include_once '../fns/request_strings.php';
 list($idusers, $resetpasswordkey) = request_strings(

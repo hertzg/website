@@ -2,7 +2,6 @@
 
 include_once '../classes/Form.php';
 include_once '../lib/page.php';
-include_once '../lib/session-start.php';
 
 if (array_key_exists('email-reset-password/index_lastpost', $_SESSION)) {
     $values = $_SESSION['email-reset-password/index_lastpost'];

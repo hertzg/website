@@ -1,6 +1,5 @@
 <?php
 
-include_once 'lib/session-start.php';
 include_once 'lib/user.php';
 
 if ($user) {

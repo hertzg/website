@@ -4,7 +4,9 @@ include_once '../lib/sameDomainReferer.php';
 include_once '../fns/redirect.php';
 if (!$sameDomainReferer) redirect();
 include_once '../classes/Captcha.php';
-include_once '../lib/session-start.php';
+
+include_once '../fns/session_start_custom.php';
+session_start_custom();
 
 include_once '../fns/request_strings.php';
 list($username, $email, $password1, $password2, $captcha) = request_strings(
