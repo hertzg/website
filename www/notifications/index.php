@@ -2,7 +2,6 @@
 
 include_once 'lib/require-user.php';
 include_once '../fns/create_panel.php';
-include_once '../classes/Notifications.php';
 include_once '../classes/Tab.php';
 include_once '../lib/page.php';
 
@@ -46,9 +45,11 @@ if ($channel) {
             .'</a>'
         .'</div>'
         .'<div class="warnings-hr"></div>';
-    $notifications = Notifications::indexOnChannel($idusers, $id);
+    include_once '../fns/Notifications/indexOnUserChannel.php';
+    $notifications = Notifications\indexOnUserChannel($mysqli, $idusers, $id);
 } else {
-    $notifications = Notifications::index($idusers);
+    include_once '../fns/Notifications/indexOnUser.php';
+    $notifications = Notifications\indexOnUser($mysqli, $idusers);
 }
 
 if ($notifications) {
@@ -78,7 +79,14 @@ if ($notifications) {
                 .'</a>: ';
         }
         $notificationsHtml .= Page::imageText(
-            $itemHtml.Notifications::textToHtml($notification->notificationtext),
+            $itemHtml
+            .nl2br(
+                preg_replace(
+                    '#(http://.*?)(\s|$)#',
+                    '<a class="a" rel="noreferrer" href="$1">$1</a>$2',
+                    htmlspecialchars($notification->notificationtext)
+                )
+            ),
             $iconName
         );
     }
@@ -87,7 +95,7 @@ if ($notifications) {
 }
 
 unset(
-    $_SESSION['channels_messages'],
+    $_SESSION['channels/index_messages'],
     $_SESSION['home/index_messages']
 );
 

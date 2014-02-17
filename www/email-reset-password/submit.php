@@ -6,7 +6,6 @@ if (!$sameDomainReferer) redirect();
 include_once '../fns/request_strings.php';
 include_once '../fns/str_collapse_spaces.php';
 include_once '../classes/Captcha.php';
-include_once '../classes/Users.php';
 include_once '../lib/session-start.php';
 
 list($email) = request_strings('email');

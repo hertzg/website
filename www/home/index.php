@@ -12,7 +12,6 @@ require_user($base);
 include_once '../fns/bytestr.php';
 include_once '../fns/create_panel.php';
 include_once '../fns/create_search_form_empty_content.php';
-include_once '../classes/Notifications.php';
 include_once '../classes/Tab.php';
 include_once '../lib/mysqli.php';
 include_once '../lib/page.php';
@@ -115,9 +114,11 @@ if ($numNotes) {
     $items[] = Page::imageLink($title, $href, $icon);
 }
 
+include_once '../fns/Notifications/countOnUser.php';
+$numNotifications = Notifications\countOnUser($mysqli, $idusers);
+
 $title = 'Notifications';
 $href = '../notifications/';
-$numNotifications = Notifications::countOnUser($idusers);
 if ($numNotifications) {
     $description = '';
     $numNewNotifications = $user->numnotifications;

@@ -4,7 +4,6 @@ include_once '../lib/sameDomainReferer.php';
 include_once '../fns/redirect.php';
 if (!$sameDomainReferer) redirect();
 include_once '../classes/Captcha.php';
-include_once '../classes/Users.php';
 include_once '../lib/session-start.php';
 
 include_once '../fns/request_strings.php';

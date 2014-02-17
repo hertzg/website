@@ -57,8 +57,8 @@ Notes\deleteOnUser($mysqli, $idusers);
 include_once '../fns/NoteTags/deleteOnUser.php';
 NoteTags\deleteOnUser($mysqli, $idusers);
 
-include_once '../classes/Notifications.php';
-Notifications::deleteOnUser($idusers);
+include_once '../fns/Notifications/deleteOnUser.php';
+Notifications\deleteOnUser($mysqli, $idusers);
 
 include_once '../fns/Tasks/deleteOnUser.php';
 Tasks\deleteOnUser($mysqli, $idusers);

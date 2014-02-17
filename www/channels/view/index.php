@@ -9,6 +9,7 @@ list($id) = request_strings('id');
 $id = abs((int)$id);
 
 include_once '../../fns/Channels/get.php';
+include_once '../../lib/mysqli.php';
 $channel = Channels\get($mysqli, $idusers, $id);
 
 if (!$channel) {
@@ -17,13 +18,9 @@ if (!$channel) {
 }
 
 include_once '../../fns/create_panel.php';
-include_once '../../classes/Channels.php';
 include_once '../../classes/Form.php';
-include_once '../../classes/Notifications.php';
 include_once '../../classes/Tab.php';
 include_once '../../lib/page.php';
-
-Channels::addNumNotifications($idusers, $id, -$channel->numnotifications);
 
 if (array_key_exists('channels/view/index_messages', $_SESSION)) {
     $pageMessages = Page::messages($_SESSION['channels/view/index_messages']);

@@ -1,7 +1,5 @@
 <?php
 
-include_once 'classes/Notifications.php';
-
 include_once 'fns/request_strings.php';
 list($channelname, $channelkey, $notificationtext) = request_strings(
     'channelname', 'channelkey', 'notificationtext');
@@ -30,7 +28,19 @@ if ($notificationtext === '') {
     )));
 }
 
-Notifications::add($channel->idusers, $channel->idchannels, $channel->channelname, $notificationtext);
+$idusers = $channel->idusers;
+$idchannels = $channel->idchannels;
+
+include_once 'fns/Notifications/add.php';
+Notifications\add($mysqli, $idusers, $idchannels,
+    $channel->channelname, $notificationtext);
+
+include_once 'fns/Channels/addNumNotifications.php';
+Channels\addNumNotifications($mysqli, $idchannels, 1);
+
+include_once 'fns/Users/addNumNotifications.php';
+Users\addNumNotifications($mysqli, $idusers, 1);
+
 echo json_encode(array(
     'ok' => true,
     'msg' => 'Done.',
