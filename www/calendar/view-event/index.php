@@ -1,21 +1,8 @@
 <?php
 
-include_once __DIR__.'/../../fns/require_user.php';
-require_user('../../');
-
-include_once __DIR__.'/../../fns/request_strings.php';
-list($idevents) = request_strings('idevents');
-
-$idevents = abs((int)$idevents);
-
-include_once __DIR__.'/../../fns/Events/get.php';
-include_once __DIR__.'/../../lib/mysqli.php';
-$event = Events\get($mysqli, $idusers, $idevents);
-
-if (!$event) {
-    include_once __DIR__.'/../../fns/redirect.php';
-    redirect('..');
-}
+include_once '../fns/require_event.php';
+include_once '../../lib/mysqli.php';
+list($event, $idevents) = require_event($mysqli);
 
 include_once '../../lib/page.php';
 

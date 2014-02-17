@@ -1,6 +1,9 @@
 <?php
 
-include_once 'lib/require-event.php';
+include_once '../fns/require_event.php';
+include_once '../../lib/mysqli.php';
+list($event, $idevents) = require_event($mysqli);
+
 include_once '../../fns/create_tabs.php';
 include_once '../../lib/page.php';
 
