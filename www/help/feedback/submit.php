@@ -20,16 +20,16 @@ if ($feedbacktext === '') {
 }
 
 if ($errors) {
-    $_SESSION['help/feedback_errors'] = $errors;
-    $_SESSION['help/feedback_lastpost'] = array(
+    $_SESSION['help/feedback/index_errors'] = $errors;
+    $_SESSION['help/feedback/index_lastpost'] = array(
         'feedbacktext' => $feedbacktext,
     );
     redirect();
 }
 
 unset(
-    $_SESSION['help/feedback_errors'],
-    $_SESSION['help/feedback_lastpost']
+    $_SESSION['help/feedback/index_errors'],
+    $_SESSION['help/feedback/index_lastpost']
 );
 
 include_once '../../fns/Feedbacks/add.php';

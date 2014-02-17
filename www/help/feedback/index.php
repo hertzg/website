@@ -4,14 +4,14 @@ include_once 'lib/require-user.php';
 include_once '../../classes/Form.php';
 include_once '../../lib/page.php';
 
-if (array_key_exists('help/feedback_lastpost', $_SESSION)) {
-    $values = $_SESSION['help/feedback_lastpost'];
+if (array_key_exists('help/feedback/index_lastpost', $_SESSION)) {
+    $values = $_SESSION['help/feedback/index_lastpost'];
 } else {
     $values = array('feedbacktext' => '');
 }
 
-if (array_key_exists('help/feedback_errors', $_SESSION)) {
-    $pageErrors = Page::errors($_SESSION['help/feedback_errors']);
+if (array_key_exists('help/feedback/index_errors', $_SESSION)) {
+    $pageErrors = Page::errors($_SESSION['help/feedback/index_errors']);
 } else {
     $pageErrors = '';
 }

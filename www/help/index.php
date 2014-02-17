@@ -10,8 +10,8 @@ if (array_key_exists('help/index_messages', $_SESSION)) {
 }
 
 unset(
-    $_SESSION['help/feedback_errors'],
-    $_SESSION['help/feedback_lastpost']
+    $_SESSION['help/feedback/index_errors'],
+    $_SESSION['help/feedback/index_lastpost']
 );
 
 include_once '../fns/create_tabs.php';
