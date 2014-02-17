@@ -1,21 +1,8 @@
 <?php
 
-include_once '../../fns/require_user.php';
-require_user('../../');
-
-include_once '../../fns/request_strings.php';
-list($id) = request_strings('id');
-
-$id = abs((int)$id);
-
-include_once '../../fns/Notes/get.php';
+include_once '../fns/require_note.php';
 include_once '../../lib/mysqli.php';
-$note = Notes\get($mysqli, $idusers, $id);
-
-if (!$note) {
-    include_once '../../fns/redirect.php';
-    redirect('..');
-}
+list($note, $id) = require_note($mysqli);
 
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tags.php';

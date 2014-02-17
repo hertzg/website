@@ -1,6 +1,9 @@
 <?php
 
-include_once 'lib/require-note.php';
+include_once '../fns/require_note.php';
+include_once '../../lib/mysqli.php';
+list($note, $id) = require_note($mysqli);
+
 include_once '../../classes/Form.php';
 include_once '../../lib/page.php';
 
