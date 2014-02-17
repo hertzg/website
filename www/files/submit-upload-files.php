@@ -5,15 +5,14 @@ include_once '../fns/redirect.php';
 if (!$sameDomainReferer) redirect('..');
 include_once 'lib/require-user.php';
 include_once 'fns/create_folder_link.php';
-include_once '../fns/request_multiple_files.php';
-include_once '../fns/request_strings.php';
-include_once '../fns/str_collapse_spaces.php';
-include_once '../classes/Files.php';
-include_once '../classes/Folders.php';
 
+include_once '../fns/request_strings.php';
 list($idfolders, $posttest) = request_strings('idfolders', 'posttest');
 
+include_once '../fns/request_multiple_files.php';
 list($file1, $file2, $file3) = request_multiple_files('file1', 'file2', 'file3');
+
+include_once '../lib/mysqli.php';
 
 $idfolders = abs((int)$idfolders);
 if ($idfolders) {
@@ -22,8 +21,9 @@ if ($idfolders) {
     if (!$parentFolder) redirect();
 }
 
+include_once '../fns/str_collapse_spaces.php';
+include_once '../fns/Files/add.php';
 include_once '../fns/Files/getByName.php';
-include_once '../lib/mysqli.php';
 
 $numfiles = 0;
 foreach (array($file1, $file2, $file3) as $file) {
@@ -48,7 +48,7 @@ foreach (array($file1, $file2, $file3) as $file) {
                 }
             }
 
-            Files::add($idusers, $idfolders, $filename, $file['tmp_name'][$i]);
+            Files\add($mysqli, $idusers, $idfolders, $filename, $file['tmp_name'][$i]);
 
             $numfiles++;
 

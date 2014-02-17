@@ -9,7 +9,6 @@ function create_link ($id, $idfolders) {
 
 include_once 'lib/require-file.php';
 include_once 'fns/create_folder_link.php';
-include_once '../classes/Folders.php';
 include_once '../lib/mysqli.php';
 include_once '../lib/page.php';
 

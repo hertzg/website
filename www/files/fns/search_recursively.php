@@ -17,5 +17,3 @@ function search_recursively ($mysqli, $idusers, $parentidfolders, $keyword) {
     return array($folders, $files);
 
 }
-
-include_once __DIR__.'/../../classes/Folders.php';

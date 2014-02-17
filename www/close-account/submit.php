@@ -45,11 +45,11 @@ Events\deleteOnUser($mysqli, $idusers);
 include_once '../fns/Feedbacks/deleteOnUser.php';
 Feedbacks\deleteOnUser($mysqli, $idusers);
 
-include_once '../classes/Files.php';
-Files::deleteOnUser($idusers);
+include_once '../fns/Files/deleteOnUser.php';
+Files\deleteOnUser($mysqli, $idusers);
 
-include_once '../classes/Folders.php';
-Folders::deleteOnUser($idusers);
+include_once '../fns/Folders/deleteOnUser.php';
+Folders\deleteOnUser($mysqli, $idusers);
 
 include_once '../fns/Notes/deleteOnUser.php';
 Notes\deleteOnUser($mysqli, $idusers);
