@@ -4,14 +4,15 @@ include_once '../../lib/sameDomainReferer.php';
 include_once '../../fns/redirect.php';
 if (!$sameDomainReferer) redirect('../..');
 include_once 'lib/require-note.php';
-include_once '../../fns/request_strings.php';
-include_once '../../fns/str_collapse_spaces.php';
-include_once '../../fns/str_collapse_spaces_multiline.php';
 include_once '../../classes/Tags.php';
 
+include_once '../../fns/request_strings.php';
 list($notetext, $tags) = request_strings('notetext', 'tags');
 
+include_once '../../fns/str_collapse_spaces_multiline.php';
 $notetext = str_collapse_spaces_multiline($notetext);
+
+include_once '../../fns/str_collapse_spaces.php';
 $tags = str_collapse_spaces($tags);
 
 $errors = array();
