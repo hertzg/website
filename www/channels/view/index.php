@@ -58,7 +58,7 @@ $page->finish(
         'Options',
         Page::imageLink(
             'Randomize Channel Key',
-            "../randomize-key.php?id=$id",
+            "../randomize-key/?id=$id",
             'randomize'
         )
         .Page::HR
