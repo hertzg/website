@@ -9,6 +9,7 @@ $base = '../';
 
 include_once '../fns/require_user.php';
 require_user($base);
+
 include_once '../fns/bytestr.php';
 include_once '../fns/create_panel.php';
 include_once '../fns/create_search_form_empty_content.php';
