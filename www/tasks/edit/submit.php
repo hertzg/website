@@ -3,7 +3,10 @@
 include_once '../../lib/sameDomainReferer.php';
 include_once '../../fns/redirect.php';
 if (!$sameDomainReferer) redirect('../..');
-include_once 'lib/require-task.php';
+
+include_once '../fns/require_task.php';
+include_once '../../lib/mysqli.php';
+list($task, $id) = require_task($mysqli);
 
 include_once '../../fns/request_strings.php';
 list($tasktext, $tags) = request_strings('tasktext', 'tags');
@@ -40,7 +43,6 @@ unset(
 );
 
 include_once '../../fns/Tasks/edit.php';
-include_once '../../lib/mysqli.php';
 Tasks\edit($mysqli, $idusers, $id, $tasktext, $tags);
 
 include_once '../../fns/TaskTags/deleteOnTask.php';

@@ -1,6 +1,9 @@
 <?php
 
-include_once 'lib/require-task.php';
+include_once '../fns/require_task.php';
+include_once '../../lib/mysqli.php';
+list($task, $id) = require_task($mysqli);
+
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tags.php';
 include_once '../../fns/date_ago.php';
