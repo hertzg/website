@@ -3,7 +3,10 @@
 include_once '../../lib/sameDomainReferer.php';
 include_once '../../fns/redirect.php';
 if (!$sameDomainReferer) redirect('../..');
-include_once 'lib/require-bookmark.php';
+
+include_once '../fns/require_bookmark.php';
+include_once '../../lib/mysqli.php';
+list($bookmark, $id) = require_bookmark($mysqli);
 
 include_once '../../fns/request_strings.php';
 list($title, $url, $tags) = request_strings('title', 'url', 'tags');
@@ -40,7 +43,6 @@ unset(
 );
 
 include_once '../../fns/Bookmarks/edit.php';
-include_once '../../lib/mysqli.php';
 Bookmarks\edit($mysqli, $idusers, $id, $title, $url, $tags);
 
 include_once '../../fns/BookmarkTags/deleteOnBookmark.php';

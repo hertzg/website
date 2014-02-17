@@ -1,6 +1,9 @@
 <?php
 
-include_once 'lib/require-bookmark.php';
+include_once '../fns/require_bookmark.php';
+include_once '../../lib/mysqli.php';
+list($bookmark, $id) = require_bookmark($mysqli);
+
 include_once '../../fns/create_tabs.php';
 include_once '../../lib/page.php';
 

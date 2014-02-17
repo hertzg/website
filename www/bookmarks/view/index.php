@@ -1,21 +1,8 @@
 <?php
 
-include_once '../../fns/require_user.php';
-require_user('../../');
-
-include_once '../../fns/request_strings.php';
-list($id) = request_strings('id');
-
-$id = abs((int)$id);
-
-include_once '../../fns/Bookmarks/get.php';
+include_once '../fns/require_bookmark.php';
 include_once '../../lib/mysqli.php';
-$bookmark = Bookmarks\get($mysqli, $idusers, $id);
-
-if (!$bookmark) {
-    include_once '../../fns/redirect.php';
-    redirect('..');
-}
+list($bookmark, $id) = require_bookmark($mysqli);
 
 include_once '../../fns/create_external_url.php';
 include_once '../../fns/create_panel.php';
