@@ -239,6 +239,7 @@ label {
     cursor: text;
     padding: 14px 16px;
     height: 100px;
+    vertical-align: top;
 }
 .form-textarea:-moz-ui-invalid {
     padding: 12px 14px;
