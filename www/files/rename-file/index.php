@@ -38,7 +38,7 @@ $page->finish(
                 'href' => "../view-file/?id=$id",
             ),
         ),
-        'Rename File',
+        'Rename',
         $pageErrors
         .Form::create(
             'submit.php',
