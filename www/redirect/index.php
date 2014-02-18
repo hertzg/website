@@ -10,6 +10,7 @@ if (!array_key_exists('HTTP_REFERER', $_SERVER)) {
 
 include_once '../lib/page.php';
 
+$page->base = '../';
 $page->echoHtml(
     '<div class="page-text">'
         .'<div>Redirecting to:</div>'
