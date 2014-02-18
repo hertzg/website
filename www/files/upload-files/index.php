@@ -1,25 +1,26 @@
 <?php
 
-include_once 'lib/require-user.php';
+include_once '../../fns/require_user.php';
+require_user('../../');
 
-include_once '../fns/request_strings.php';
+include_once '../../fns/request_strings.php';
 list($idfolders) = request_strings('idfolders');
 
 $idfolders = abs((int)$idfolders);
 if ($idfolders) {
 
-    include_once '../fns/Folders/get.php';
-    include_once '../lib/mysqli.php';
+    include_once '../../fns/Folders/get.php';
+    include_once '../../lib/mysqli.php';
     $parentFolder = Folders\get($mysqli, $idusers, $idfolders);
 
     if (!$parentFolder) {
-        include_once '../fns/redirect.php';
-        redirect();
+        include_once '../../fns/redirect.php';
+        redirect('..');
     }
 
 }
 
-include_once '../lib/page.php';
+include_once '../../lib/page.php';
 
 if (array_key_exists('files/upload-files_errors', $_SESSION)) {
     $pageErrors = Page::errors($_SESSION['files/upload-files_errors']);
@@ -32,13 +33,13 @@ unset(
     $_SESSION['files/index_messages']
 );
 
-include_once 'fns/create_folder_link.php';
-include_once '../classes/Form.php';
-include_once '../fns/bytestr.php';
-include_once '../fns/create_tabs.php';
-include_once '../fns/ini_get_bytes.php';
+include_once '../fns/create_folder_link.php';
+include_once '../../classes/Form.php';
+include_once '../../fns/bytestr.php';
+include_once '../../fns/create_tabs.php';
+include_once '../../fns/ini_get_bytes.php';
 
-$page->base = '../';
+$page->base = '../../';
 $page->title = 'Upload Files';
 $page->finish(
     create_tabs(
@@ -49,7 +50,7 @@ $page->finish(
             ),
             array(
                 'title' => 'Files',
-                'href' => create_folder_link($idfolders),
+                'href' => create_folder_link($idfolders, '../'),
             ),
         ),
         'Upload Files',
@@ -59,7 +60,7 @@ $page->finish(
             'Maximum '.bytestr(ini_get_bytes('post_max_size')).' at once.',
         ))
         .Form::create(
-            'submit-upload-files.php',
+            'submit.php',
             Form::filefield('file1[]', 'File 1:')
             .Page::HR
             .Form::filefield('file2[]', 'File 2:')

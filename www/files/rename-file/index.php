@@ -1,9 +1,12 @@
 <?php
 
-include_once 'lib/require-file.php';
-include_once 'fns/create_folder_link.php';
-include_once '../classes/Form.php';
-include_once '../lib/page.php';
+include_once '../fns/require_file.php';
+include_once '../../lib/mysqli.php';
+list($file, $id) = require_file($mysqli);
+
+include_once '../fns/create_folder_link.php';
+include_once '../../classes/Form.php';
+include_once '../../lib/page.php';
 
 if (array_key_exists('files/rename-file_errors', $_SESSION)) {
     $pageErrors = Page::errors($_SESSION['files/rename-file_errors']);
@@ -19,26 +22,26 @@ if (array_key_exists('files/rename-file_lastpost', $_SESSION)) {
 
 unset($_SESSION['files/view/index_messages']);
 
-include_once '../fns/create_tabs.php';
+include_once '../../fns/create_tabs.php';
 
-$page->base = '../';
+$page->base = '../../';
 $page->title = "Rename File #$id";
 $page->finish(
     create_tabs(
         array(
             array(
                 'title' => '&middot;&middot;&middot;',
-                'href' => create_folder_link($file->idfolders),
+                'href' => create_folder_link($file->idfolders, '../'),
             ),
             array(
                 'title' => "File #$id",
-                'href' => "view/?id=$id",
+                'href' => "../view/?id=$id",
             ),
         ),
         'Rename File',
         $pageErrors
         .Form::create(
-            'submit-rename-file.php',
+            'submit.php',
             Form::textfield('filename', 'File name', array(
                 'value' => $values['filename'],
                 'autofocus' => true,

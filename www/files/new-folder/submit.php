@@ -1,31 +1,34 @@
 <?php
 
-include_once '../lib/sameDomainReferer.php';
-include_once '../fns/redirect.php';
-if (!$sameDomainReferer) redirect('..');
-include_once 'lib/require-user.php';
-include_once '../lib/mysqli.php';
+include_once '../../lib/sameDomainReferer.php';
+include_once '../../fns/redirect.php';
+if (!$sameDomainReferer) redirect('../..');
 
-include_once '../fns/request_strings.php';
+include_once '../../fns/require_user.php';
+require_user('../../');
+
+include_once '../../lib/mysqli.php';
+
+include_once '../../fns/request_strings.php';
 list($parentidfolders, $foldername) = request_strings(
     'parentidfolders', 'foldername');
 
 $parentidfolders = abs((int)$parentidfolders);
 if ($parentidfolders) {
-    include_once '../fns/Folders/get.php';
+    include_once '../../fns/Folders/get.php';
     $parentFolder = Folders\get($mysqli, $idusers, $parentidfolders);
-    if (!$parentFolder) redirect();
+    if (!$parentFolder) redirect('..');
 }
 
 $errors = array();
 
-include_once '../fns/str_collapse_spaces.php';
+include_once '../../fns/str_collapse_spaces.php';
 $foldername = str_collapse_spaces($foldername);
 
 if ($foldername === '') {
     $errors[] = 'Enter folder name.';
 } else {
-    include_once '../fns/Folders/getByName.php';
+    include_once '../../fns/Folders/getByName.php';
     if ($folder = Folders\getByName($mysqli, $idusers, $parentidfolders, $foldername)) {
         $errors[] = 'Folder with this name already exists.';
     }
@@ -34,7 +37,7 @@ if ($foldername === '') {
 if ($errors) {
     $_SESSION['files/add-folder_errors'] = $errors;
     $_SESSION['files/add-folder_lastpost'] = array('foldername' => $foldername);
-    redirect("add-folder.php?parentidfolders=$parentidfolders");
+    redirect("./?parentidfolders=$parentidfolders");
 }
 
 unset(
@@ -42,10 +45,10 @@ unset(
     $_SESSION['files/add-folder_lastpost']
 );
 
-include_once '../fns/Folders/add.php';
+include_once '../../fns/Folders/add.php';
 $idfolders = Folders\add($mysqli, $idusers, $parentidfolders, $foldername);
 
 $_SESSION['files/index_idfolders'] = $idfolders;
 $_SESSION['files/index_messages'] = array('Folder has been created.');
-include_once 'fns/create_folder_link.php';
-redirect(create_folder_link($idfolders));
+include_once '../fns/create_folder_link.php';
+redirect(create_folder_link($idfolders, '../'));

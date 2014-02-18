@@ -1,29 +1,30 @@
 <?php
 
-include_once '../lib/sameDomainReferer.php';
-include_once '../fns/redirect.php';
-if (!$sameDomainReferer) redirect('..');
-include_once 'lib/require-user.php';
-include_once 'fns/create_folder_link.php';
+include_once '../../lib/sameDomainReferer.php';
+include_once '../../fns/redirect.php';
+if (!$sameDomainReferer) redirect('../..');
 
-include_once '../fns/request_strings.php';
+include_once '../../fns/require_user.php';
+require_user('../../');
+
+include_once '../../fns/request_strings.php';
 list($idfolders, $posttest) = request_strings('idfolders', 'posttest');
 
-include_once '../fns/request_multiple_files.php';
+include_once '../../fns/request_multiple_files.php';
 list($file1, $file2, $file3) = request_multiple_files('file1', 'file2', 'file3');
 
-include_once '../lib/mysqli.php';
+include_once '../../lib/mysqli.php';
 
 $idfolders = abs((int)$idfolders);
 if ($idfolders) {
-    include_once '../fns/Folders/get.php';
+    include_once '../../fns/Folders/get.php';
     $parentFolder = Folders\get($mysqli, $idusers, $idfolders);
-    if (!$parentFolder) redirect();
+    if (!$parentFolder) redirect('..');
 }
 
-include_once '../fns/str_collapse_spaces.php';
-include_once '../fns/Files/add.php';
-include_once '../fns/Files/getByName.php';
+include_once '../../fns/str_collapse_spaces.php';
+include_once '../../fns/Files/add.php';
+include_once '../../fns/Files/getByName.php';
 
 $numfiles = 0;
 foreach (array($file1, $file2, $file3) as $file) {
@@ -79,4 +80,6 @@ if ($numfiles == 1) {
 
 $_SESSION['files/index_idfolders'] = $idfolders;
 $_SESSION['files/index_messages'] = array($message);
-redirect(create_folder_link($idfolders));
+
+include_once '../fns/create_folder_link.php';
+redirect(create_folder_link($idfolders, '../'));

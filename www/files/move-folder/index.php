@@ -2,33 +2,35 @@
 
 function create_link ($idfolders, $parentidfolders) {
     if ($parentidfolders) {
-        return "move-folder.php?idfolders=$idfolders&parentidfolders=$parentidfolders";
+        return "./?idfolders=$idfolders&parentidfolders=$parentidfolders";
     }
-    return "move-folder.php?idfolders=$idfolders";
+    return "./?idfolders=$idfolders";
 }
 
-include_once 'lib/require-folder.php';
-include_once 'fns/create_folder_link.php';
-include_once '../lib/mysqli.php';
-include_once '../lib/page.php';
+include_once '../fns/require_folder.php';
+include_once '../../lib/mysqli.php';
+list($folder, $idfolders) = require_folder($mysqli);
 
-include_once '../fns/request_strings.php';
+include_once '../fns/create_folder_link.php';
+include_once '../../lib/page.php';
+
+include_once '../../fns/request_strings.php';
 list($parentidfolders) = request_strings('parentidfolders');
 
 $parentidfolders = abs((int)$parentidfolders);
 if ($parentidfolders) {
 
-    include_once '../fns/Folders/get.php';
+    include_once '../../fns/Folders/get.php';
     $parentFolder = Folders\get($mysqli, $idusers, $parentidfolders);
 
     if (!$parentFolder) {
-        include_once '../fns/redirect.php';
-        redirect("move-folder.php?idfolders=$idfolders");
+        include_once '../../fns/redirect.php';
+        redirect("./?idfolders=$idfolders");
     }
 
 }
 
-include_once '../fns/Folders/index.php';
+include_once '../../fns/Folders/index.php';
 $folders = Folders\index($mysqli, $idusers, $parentidfolders);
 
 $items = array();
@@ -55,7 +57,7 @@ foreach ($folders as $itemFolder) {
 if ($parentidfolders != $folder->parentidfolders) {
     $items[] = Page::imageLink(
         'Move Here',
-        "submit-move-folder.php?idfolders=$idfolders&parentidfolders=$parentidfolders",
+        "submit.php?idfolders=$idfolders&parentidfolders=$parentidfolders",
         'move-folder'
     );
 }
@@ -76,20 +78,20 @@ unset(
     $_SESSION['files/index_messages']
 );
 
-include_once '../fns/create_tabs.php';
+include_once '../../fns/create_tabs.php';
 
-$page->base = '../';
+$page->base = '../../';
 $page->title = "Move Folder #$idfolders";
 $page->finish(
     create_tabs(
         array(
             array(
                 'title' => '&middot;&middot;&middot;',
-                'href' => '..',
+                'href' => '../..',
             ),
             array(
                 'title' => 'Files',
-                'href' => create_folder_link($idfolders),
+                'href' => create_folder_link($idfolders, '../'),
             )
         ),
         'Move',

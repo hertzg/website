@@ -1,34 +1,34 @@
 <?php
 
 function create_link ($id, $idfolders) {
-    if ($idfolders) {
-        return "move-file.php?id=$id&idfolders=$idfolders";
-    }
-    return "move-file.php?id=$id";
+    if ($idfolders) return "./?id=$id&idfolders=$idfolders";
+    return "./?id=$id";
 }
 
-include_once 'lib/require-file.php';
-include_once 'fns/create_folder_link.php';
-include_once '../lib/mysqli.php';
-include_once '../lib/page.php';
+include_once '../fns/require_file.php';
+include_once '../../lib/mysqli.php';
+list($file, $id) = require_file($mysqli);
 
-include_once '../fns/request_strings.php';
+include_once '../fns/create_folder_link.php';
+include_once '../../lib/page.php';
+
+include_once '../../fns/request_strings.php';
 list($idfolders) = request_strings('idfolders');
 
 $idfolders = abs((int)$idfolders);
 if ($idfolders) {
 
-    include_once '../fns/Folders/get.php';
+    include_once '../../fns/Folders/get.php';
     $parentFolder = Folders\get($mysqli, $idusers, $idfolders);
 
     if (!$parentFolder) {
-        include_once '../fns/redirect.php';
+        include_once '../../fns/redirect.php';
         redirect("move-file.php?id=$id");
     }
 
 }
 
-include_once '../fns/Folders/index.php';
+include_once '../../fns/Folders/index.php';
 $folders = Folders\index($mysqli, $idusers, $idfolders);
 
 $items = array();
@@ -50,7 +50,7 @@ foreach ($folders as $folder) {
 if ($idfolders != $file->idfolders) {
     $items[] = Page::imageLink(
         'Move Here',
-        "submit-move-file.php?id=$id&idfolders=$idfolders",
+        "submit.php?id=$id&idfolders=$idfolders",
         'move-file'
     );
 }
@@ -68,20 +68,20 @@ if (array_key_exists('files/move-file_errors', $_SESSION)) {
 
 unset($_SESSION['files/view/index_messages']);
 
-include_once '../fns/create_tabs.php';
+include_once '../../fns/create_tabs.php';
 
-$page->base = '../';
+$page->base = '../../';
 $page->title = "Move File #$id";
 $page->finish(
     create_tabs(
         array(
             array(
                 'title' => '&middot;&middot;&middot;',
-                'href' => create_folder_link($file->idfolders),
+                'href' => create_folder_link($file->idfolders, '../'),
             ),
             array(
                 'title' => "File #$id",
-                'href' => "view/?id=$file->idfiles",
+                'href' => "../view/?id=$file->idfiles",
             ),
         ),
         'Move',

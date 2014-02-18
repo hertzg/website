@@ -1,6 +1,8 @@
 <?php
 
-include_once 'lib/require-file.php';
+include_once '../fns/require_file.php';
+include_once '../../lib/mysqli.php';
+list($file, $id) = require_file($mysqli);
 
 session_commit();
 

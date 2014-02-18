@@ -8,33 +8,32 @@ function is_child_folder ($mysqli, $idusers, $folder, $idfolders) {
     }
 }
 
-include_once '../lib/sameDomainReferer.php';
-include_once '../fns/redirect.php';
-if (!$sameDomainReferer) redirect('..');
-include_once 'lib/require-folder.php';
-include_once 'fns/create_folder_link.php';
-include_once '../lib/mysqli.php';
+include_once '../../lib/sameDomainReferer.php';
+include_once '../../fns/redirect.php';
+if (!$sameDomainReferer) redirect('../..');
 
-include_once '../fns/request_strings.php';
+include_once '../fns/require_folder.php';
+include_once '../../lib/mysqli.php';
+list($folder, $idfolders) = require_folder($mysqli);
+
+include_once '../../fns/request_strings.php';
 list($parentidfolders) = request_strings('parentidfolders');
 
 $parentidfolders = abs((int)$parentidfolders);
 if ($parentidfolders) {
 
-    include_once '../fns/Folders/get.php';
+    include_once '../../fns/Folders/get.php';
     $parentFolder = Folders\get($mysqli, $idusers, $parentidfolders);
 
-    if (!$parentFolder) {
-        redirect("move-folder.php?idfolders=$idfolders");
-    }
+    if (!$parentFolder) redirect("./?idfolders=$idfolders");
 
     if (is_child_folder($mysqli, $idusers, $parentFolder, $folder->idfolders)) {
-        redirect("move-folder.php?idfolders=$idfolders");
+        redirect("./?idfolders=$idfolders");
     }
 
 }
 
-include_once '../fns/Folders/getByName.php';
+include_once '../../fns/Folders/getByName.php';
 $existingFolder = Folders\getByName($mysqli, $idusers, $parentidfolders, $folder->foldername);
 
 if ($existingFolder) {
@@ -42,7 +41,7 @@ if ($existingFolder) {
     $_SESSION['files/move-folder_errors'] = array(
         'A folder with the same name already exists in this folder.',
     );
-    redirect("move-folder.php?idfolders=$idfolders&parentidfolders=$parentidfolders");
+    redirect("./?idfolders=$idfolders&parentidfolders=$parentidfolders");
 }
 
 unset(
@@ -50,9 +49,11 @@ unset(
     $_SESSION['files/move-folder_errors']
 );
 
-include_once '../fns/Folders/move.php';
+include_once '../../fns/Folders/move.php';
 Folders\move($mysqli, $idusers, $idfolders, $parentidfolders);
 
 $_SESSION['files/index_idfolders'] = $parentidfolders;
 $_SESSION['files/index_messages'] = array('File has been moved.');
-redirect(create_folder_link($parentidfolders));
+
+include_once '../fns/create_folder_link.php';
+redirect(create_folder_link($parentidfolders, '../'));

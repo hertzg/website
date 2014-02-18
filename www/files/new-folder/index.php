@@ -1,9 +1,11 @@
 <?php
 
-include_once 'lib/require-user.php';
-include_once '../lib/page.php';
+include_once '../../fns/require_user.php';
+require_user('../../');
 
-include_once '../fns/request_strings.php';
+include_once '../../lib/page.php';
+
+include_once '../../fns/request_strings.php';
 list($parentIdFolders) = request_strings('parentidfolders');
 
 if (array_key_exists('files/add-folder_lastpost', $_SESSION)) {
@@ -15,13 +17,13 @@ if (array_key_exists('files/add-folder_lastpost', $_SESSION)) {
 $parentIdFolders = abs((int)$parentIdFolders);
 if ($parentIdFolders) {
 
-    include_once '../fns/Folders/get.php';
-    include_once '../lib/mysqli.php';
+    include_once '../../fns/Folders/get.php';
+    include_once '../../lib/mysqli.php';
     $parentFolder = Folders\get($mysqli, $idusers, $parentIdFolders);
 
     if (!$parentFolder) {
-        include_once '../fns/redirect.php';
-        redirect();
+        include_once '../../fns/redirect.php';
+        redirect('..');
     }
 
 }
@@ -37,28 +39,28 @@ unset(
     $_SESSION['files/index_messages']
 );
 
-include_once '../classes/Form.php';
-include_once '../fns/create_tabs.php';
-include_once 'fns/create_folder_link.php';
+include_once '../../classes/Form.php';
+include_once '../../fns/create_tabs.php';
+include_once '../fns/create_folder_link.php';
 
-$page->base = '../';
+$page->base = '../../';
 $page->title = 'New Folder';
 $page->finish(
     create_tabs(
         array(
             array(
                 'title' => '&middot;&middot;&middot;',
-                'href' => '..',
+                'href' => '../..',
             ),
             array(
                 'title' => 'Files',
-                'href' => create_folder_link($parentIdFolders),
+                'href' => create_folder_link($parentIdFolders, '../'),
             ),
         ),
         'New Folder',
         $pageErrors
         .Form::create(
-            'submit-add-folder.php',
+            'submit.php',
             Form::textfield('foldername', 'Folder name', array(
                 'value' => $values['foldername'],
                 'autofocus' => true,

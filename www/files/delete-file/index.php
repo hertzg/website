@@ -1,24 +1,27 @@
 <?php
 
-include_once 'lib/require-file.php';
-include_once 'fns/create_folder_link.php';
-include_once '../fns/create_tabs.php';
-include_once '../lib/page.php';
+include_once '../fns/require_file.php';
+include_once '../../lib/mysqli.php';
+list($file, $id) = require_file($mysqli);
 
 unset($_SESSION['files/view/index_messages']);
 
-$page->base = '../';
+include_once '../fns/create_folder_link.php';
+include_once '../../fns/create_tabs.php';
+include_once '../../lib/page.php';
+
+$page->base = '../../';
 $page->title = "Delete File #$id?";
 $page->finish(
     create_tabs(
         array(
             array(
                 'title' => '&middot;&middot;&middot;',
-                'href' => '..',
+                'href' => '../..',
             ),
             array(
                 'title' => 'Files',
-                'href' => create_folder_link($file->idfolders),
+                'href' => create_folder_link($file->idfolders, '../'),
             ),
         ),
         "File #$id",
@@ -29,10 +32,10 @@ $page->finish(
         .Page::HR
         .Page::imageLink(
             'Yes, delete file',
-            "submit-delete-file.php?id=$id",
+            "submit.php?id=$id",
             'yes'
         )
         .Page::HR
-        .Page::imageLink('No, return back', "view/?id=$id", 'no')
+        .Page::imageLink('No, return back', "../view/?id=$id", 'no')
     )
 );

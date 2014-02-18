@@ -4,7 +4,9 @@ function create_form ($content) {
     return "<form action=\"./\" style=\"position: relative; height: 48px\">$content</form>";
 }
 
-include_once 'lib/require-user.php';
+include_once '../fns/require_user.php';
+require_user('../');
+
 include_once '../lib/mysqli.php';
 
 include_once '../fns/request_strings.php';
@@ -140,19 +142,19 @@ if ($idfolders) {
         Page::HR
         .Page::imageLink(
             'Rename This Folder',
-            "rename-folder.php?idfolders=$idfolders",
+            "rename-folder/?idfolders=$idfolders",
             'rename'
         )
         .Page::HR
         .Page::imageLink(
             'Move This Folder',
-            "move-folder.php?idfolders=$idfolders",
+            "move-folder/?idfolders=$idfolders",
             'move-folder'
         )
         .Page::HR
         .Page::imageLink(
             'Delete This Folder',
-            "delete-folder.php?idfolders=$idfolders",
+            "delete-folder/?idfolders=$idfolders",
             'trash-bin'
         );
 }
@@ -182,13 +184,13 @@ $page->finish(
         'Options',
         Page::imageLink(
             'New Folder',
-            "add-folder.php?parentidfolders=$idfolders",
+            "new-folder/?parentidfolders=$idfolders",
             'create-folder'
         )
         .Page::HR
         .Page::imageLink(
             'Upload Files',
-            "upload-files.php?idfolders=$idfolders",
+            "upload-files/?idfolders=$idfolders",
             'upload'
         )
         .$folder_options
