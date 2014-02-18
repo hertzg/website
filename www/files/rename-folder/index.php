@@ -41,7 +41,7 @@ $page->finish(
                 'href' => create_folder_link($idfolders, '../'),
             ),
         ),
-        'Rename',
+        "Rename Folder #$idfolders",
         $pageErrors
         .Form::create(
             'submit.php',
