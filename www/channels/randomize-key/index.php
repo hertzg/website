@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/require_channel.php';
-include_once '../../lib/hmysqli.php';
+include_once '../../lib/mysqli.php';
 list($channel, $id) = require_channel($mysqli);
 
 include_once '../../fns/create_tabs.php';
