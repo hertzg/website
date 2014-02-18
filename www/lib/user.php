@@ -5,11 +5,14 @@ session_start_custom();
 
 $user = $idusers = null;
 if (!array_key_exists('user', $_SESSION)) {
-    include_once 'token.php';
+
+    include_once __DIR__.'/../fns/require_valid_token.php';
+    include_once __DIR__.'/mysqli.php';
+    $token = require_valid_token($mysqli);
+
     if ($token) {
 
         include_once __DIR__.'/../fns/Users/get.php';
-        include_once __DIR__.'/../lib/mysqli.php';
         $user = Users\get($mysqli, $token->idusers);
 
         if ($user) {
@@ -18,6 +21,7 @@ if (!array_key_exists('user', $_SESSION)) {
         }
 
     }
+
 }
 if (array_key_exists('user', $_SESSION)) {
 

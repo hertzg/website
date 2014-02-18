@@ -3,10 +3,13 @@
 include_once '../fns/require_user.php';
 require_user('../');
 
+include_once '../fns/require_valid_token.php';
+include_once '../lib/mysqli.php';
+$token = require_valid_token($mysqli);
+
 include_once '../fns/create_panel.php';
 include_once '../fns/create_tabs.php';
 include_once '../lib/page.php';
-include_once '../lib/token.php';
 
 if (array_key_exists('tokens/index_messages', $_SESSION)) {
     $pageMessages = Page::messages($_SESSION['tokens/index_messages']);

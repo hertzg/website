@@ -3,8 +3,9 @@
 include_once '../fns/require_user.php';
 require_user('../');
 
-include_once '../fns/redirect.php';
-include_once '../lib/token.php';
+include_once '../fns/require_valid_token.php';
+include_once '../lib/mysqli.php';
+$token = require_valid_token($mysqli);
 
 if (!$token) {
 
@@ -16,7 +17,6 @@ if (!$token) {
     }
 
     include_once '../fns/Tokens/add.php';
-    include_once '../lib/mysqli.php';
     $idtokens = Tokens\add($mysqli, $user->idusers, $user->username, $tokentext, $useragent);
 
     include_once '../fns/Tokens/get.php';
@@ -31,4 +31,5 @@ if (!$token) {
 
 $_SESSION['tokens/index_messages'] = array('Current session has been remembered.');
 
+include_once '../fns/redirect.php';
 redirect();
