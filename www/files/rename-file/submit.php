@@ -44,5 +44,5 @@ unset(
 include_once '../../fns/Files/rename.php';
 Files\rename($mysqli, $idusers, $id, $filename);
 
-$_SESSION['files/view/index_messages'] = array('Renamed.');
-redirect("../view/?id=$id");
+$_SESSION['files/view-file/index_messages'] = array('Renamed.');
+redirect("../view-file/?id=$id");

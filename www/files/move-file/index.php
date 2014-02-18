@@ -66,7 +66,7 @@ if (array_key_exists('files/move-file_errors', $_SESSION)) {
     $pageErrors = '';
 }
 
-unset($_SESSION['files/view/index_messages']);
+unset($_SESSION['files/view-file/index_messages']);
 
 include_once '../../fns/create_tabs.php';
 
@@ -81,7 +81,7 @@ $page->finish(
             ),
             array(
                 'title' => "File #$id",
-                'href' => "../view/?id=$file->idfiles",
+                'href' => "../view-file/?id=$file->idfiles",
             ),
         ),
         'Move',

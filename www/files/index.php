@@ -101,7 +101,7 @@ if ($folders || $files) {
     foreach ($files as $i => $file) {
         $items[] = Page::imageLink(
             htmlspecialchars($file->filename),
-            "view/?id=$file->idfiles",
+            "view-file/?id=$file->idfiles",
             'file'
         );
     }
@@ -127,7 +127,7 @@ unset(
     $_SESSION['files/rename-folder_errors'],
     $_SESSION['files/rename-folder_lastpost'],
     $_SESSION['files/upload-files_errors'],
-    $_SESSION['files/view/index_messages'],
+    $_SESSION['files/view-file/index_messages'],
     $_SESSION['home/index_messages']
 );
 

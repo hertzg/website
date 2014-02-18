@@ -4,7 +4,7 @@ include_once '../fns/require_file.php';
 include_once '../../lib/mysqli.php';
 list($file, $id) = require_file($mysqli);
 
-unset($_SESSION['files/view/index_messages']);
+unset($_SESSION['files/view-file/index_messages']);
 
 include_once '../fns/create_folder_link.php';
 include_once '../../fns/create_tabs.php';
@@ -36,6 +36,6 @@ $page->finish(
             'yes'
         )
         .Page::HR
-        .Page::imageLink('No, return back', "../view/?id=$id", 'no')
+        .Page::imageLink('No, return back', "../view-file/?id=$id", 'no')
     )
 );
