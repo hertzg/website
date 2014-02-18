@@ -27,16 +27,16 @@ $page->base = '../../';
 $page->title = "Edit Bookmark #$id";
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => '&middot;&middot;&middot;',
                 'href' => '..',
-            ],
-            [
+            ),
+            array(
                 'title' => "Bookmark #$id",
                 'href' => "../view/?id=$id",
-            ],
-        ],
+            ),
+        ),
         'Edit',
         $pageErrors
         .Form::create(

@@ -112,12 +112,12 @@ $page->base = '../';
 $page->title = 'Notifications';
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => 'Home',
                 'href' => '..',
-            ],
-        ],
+            ),
+        ),
         'Notifications',
         $pageMessages
         .$filterMessage

@@ -13,16 +13,16 @@ $page->base = '../../';
 $page->title = "Delete Note #$id?";
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../..',
-            ],
-            [
+            ),
+            array(
                 'title' => 'Notes',
                 'href' => '..',
-            ],
-        ],
+            ),
+        ),
         "Note #$id",
         Page::text('Are you sure you want to delete the note?')
         .Page::HR

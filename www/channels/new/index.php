@@ -26,16 +26,16 @@ $page->base = '../../';
 $page->title = 'New Channel';
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../../notifications/',
-            ],
-            [
+            ),
+            array(
                 'title' => 'Channels',
                 'href' => '..',
-            ],
-        ],
+            ),
+        ),
         'New',
         $pageErrors
         .Form::create(

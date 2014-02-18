@@ -25,16 +25,16 @@ $page->base = '../';
 $page->title = "Rename File #$id";
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => '&middot;&middot;&middot;',
                 'href' => create_folder_link($file->idfolders),
-            ],
-            [
+            ),
+            array(
                 'title' => "File #$id",
                 'href' => "view/?id=$id",
-            ],
-        ],
+            ),
+        ),
         'Rename File',
         $pageErrors
         .Form::create(

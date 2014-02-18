@@ -74,16 +74,16 @@ $page->base = '../';
 $page->title = "Move File #$id";
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => '&middot;&middot;&middot;',
                 'href' => create_folder_link($file->idfolders),
-            ],
-            [
+            ),
+            array(
                 'title' => "File #$id",
                 'href' => "view/?id=$file->idfiles",
-            ],
-        ],
+            ),
+        ),
         'Move',
         $pageErrors
         .Page::warnings(array(

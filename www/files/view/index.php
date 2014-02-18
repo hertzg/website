@@ -42,16 +42,16 @@ $page->base = '../../';
 $page->title = "File #$id";
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../..',
-            ],
-            [
+            ),
+            array(
                 'title' => 'Files',
                 'href' => create_folder_link($file->idfolders, '../'),
-            ],
-        ],
+            ),
+        ),
         "File #$id",
         $pageMessages
         .Form::label('File name', $file->filename)

@@ -71,16 +71,16 @@ $page->base = '../';
 $page->title = 'Remembered Sessions';
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => '&middot;&middot;&middot;',
                 'href' => '..',
-            ],
-            [
+            ),
+            array(
                 'title' => 'Account',
                 'href' => '../account/',
-            ],
-        ],
+            ),
+        ),
         'Sessions',
         $pageMessages.join(Page::HR, $items)
     )

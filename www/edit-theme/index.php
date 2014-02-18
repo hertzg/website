@@ -23,16 +23,16 @@ $page->base = '../';
 $page->title = 'Edit Profile';
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => '&middot;&middot;&middot;',
                 'href' => '..',
-            ],
-            [
+            ),
+            array(
                 'title' => 'Account',
                 'href' => '../account/',
-            ],
-        ],
+            ),
+        ),
         'Profile',
         Page::warnings(array('Select theme color:'))
         .join(Page::HR, $themeItems)

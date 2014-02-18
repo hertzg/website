@@ -22,12 +22,12 @@ $page->base = '../';
 $page->title = 'Help';
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => 'Home',
                 'href' => '..',
-            ],
-        ],
+            ),
+        ),
         'Help',
         $pageMessages
         .Page::imageLink('Install Zvini App', 'install.php', 'download')

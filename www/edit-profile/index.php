@@ -26,16 +26,16 @@ $page->base = '../';
 $page->title = 'Edit Profile';
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => '&middot;&middot;&middot;',
                 'href' => '..',
-            ],
-            [
+            ),
+            array(
                 'title' => 'Account',
                 'href' => '../account/',
-            ],
-        ],
+            ),
+        ),
         'Edit Profile',
         $pageErrors
         .Form::create(

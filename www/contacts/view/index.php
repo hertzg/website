@@ -31,16 +31,16 @@ $page->base = '../../';
 $page->title = "Contact #$id";
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../..',
-            ],
-            [
+            ),
+            array(
                 'title' => 'Contacts',
                 'href' => '..',
-            ],
-        ],
+            ),
+        ),
         "Contact #$id",
         $pageMessages
         .Form::label('Full name', htmlspecialchars($contact->fullname))

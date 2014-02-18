@@ -22,16 +22,16 @@ $page->base = '../../';
 $page->title = "Channel #$id";
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../../notifications/',
-            ],
-            [
+            ),
+            array(
                 'title' => 'Channels',
                 'href' => '..',
-            ],
-        ],
+            ),
+        ),
         "Channel #$id",
         $pageMessages
         .Form::label('Channel name', htmlspecialchars($channel->channelname))

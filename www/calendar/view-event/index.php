@@ -24,16 +24,16 @@ $page->base = '../../';
 $page->title = "Event #$idevents";
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../..',
-            ],
-            [
+            ),
+            array(
                 'title' => 'Calendar',
                 'href' => '..',
-            ],
-        ],
+            ),
+        ),
         "Event #$idevents",
         $pageMessages
         .Page::text(htmlspecialchars($event->eventtext))

@@ -30,12 +30,12 @@ $page->hideSignOutLink = true;
 $page->title = 'Reset Password';
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => 'Sign In',
                 'href' => '../sign-in/',
-            ],
-        ],
+            ),
+        ),
         'Reset Password',
         $pageErrors
         .Form::create(

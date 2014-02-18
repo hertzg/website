@@ -15,12 +15,12 @@ $page->base = '../';
 $page->title = "Delete Folder #$idfolders?";
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => 'Home',
                 'href' => '..',
-            ],
-        ],
+            ),
+        ),
         'Files',
         Page::text(
             'Are you sure you want to delete the folder'

@@ -169,12 +169,12 @@ $page->base = '../';
 $page->title = 'Files';
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => 'Home',
                 'href' => '..',
-            ],
-        ],
+            ),
+        ),
         'Files',
         $pageMessages.join(Page::HR, $items)
     )

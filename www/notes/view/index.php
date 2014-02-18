@@ -37,16 +37,16 @@ $page->base = $base;
 $page->title = "Note #$id";
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../..',
-            ],
-            [
+            ),
+            array(
                 'title' => 'Notes',
                 'href' => '..',
-            ],
-        ],
+            ),
+        ),
         "Note #$id",
         $pageMessages
         .Page::text(

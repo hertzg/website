@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/require_note.php';
-include_once '../../lib/mysqli.php';
+include_once '../../lib/hmysqli.php';
 list($note, $id) = require_note($mysqli);
 
 include_once '../../classes/Form.php';
@@ -27,16 +27,16 @@ $page->base = '../../';
 $page->title = "Edit Note #$id";
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => '&middot;&middot;&middot;',
                 'href' => '..',
-            ],
-            [
+            ),
+            array(
                 'title' => "Note #$id",
                 'href' => "../view/?id=$id",
-            ],
-        ],
+            ),
+        ),
         'Edit',
         $pageErrors
         .Form::create(

@@ -36,7 +36,7 @@ $page->hideSignOutLink = true;
 $page->title = 'Sign Up';
 $page->finish(
     create_tabs(
-        [],
+        array(),
         'Sign Up',
         $pageErrors
         .Form::create(

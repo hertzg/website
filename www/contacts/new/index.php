@@ -33,16 +33,16 @@ $page->base = '../../';
 $page->title = 'New Contact';
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../..',
-            ],
-            [
+            ),
+            array(
                 'title' => 'Contacts',
                 'href' => '..',
-            ],
-        ],
+            ),
+        ),
         'New',
         $pageErrors
         .Form::create(

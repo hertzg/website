@@ -30,16 +30,16 @@ $page->base = '../../';
 $page->title = 'New Bookmark';
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../..',
-            ],
-            [
+            ),
+            array(
                 'title' => 'Bookmarks',
                 'href' => '..',
-            ],
-        ],
+            ),
+        ),
         'New',
         $pageErrors
         .Form::create(

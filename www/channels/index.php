@@ -26,7 +26,7 @@ if ($channels) {
 unset(
     $_SESSION['channels/add_errors'],
     $_SESSION['channels/add_lastpost'],
-    $_SESSION['channels/view/index_messages'],
+    $_SESSION['channels/hview/index_messages'],
     $_SESSION['notifications/index_messages']
 );
 
@@ -43,16 +43,16 @@ $page->base = '../';
 $page->title = 'Channels';
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => '&middot;&middot;&middot;',
                 'href' => '..',
-            ],
-            [
+            ),
+            array(
                 'title' => 'Notifications',
                 'href' => '../notifications/',
-            ],
-        ],
+            ),
+        ),
         'Channels',
         $pageMessages.$channelsHtml
     )

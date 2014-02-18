@@ -129,12 +129,12 @@ $page->head =
     ."<link rel=\"stylesheet\" type=\"text/css\" href=\"themes/$page->theme/index.css\" />";
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => 'Home',
                 'href' => '..',
-            ],
-        ],
+            ),
+        ),
         'Calendar',
         $pageMessages.create_calendar($timeSelected)
     )

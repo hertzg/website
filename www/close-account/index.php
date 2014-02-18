@@ -20,16 +20,16 @@ $page->base = '../';
 $page->title = 'Close Account';
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => '&middot;&middot;&middot;',
                 'href' => '..',
-            ],
-            [
+            ),
+            array(
                 'title' => 'Account',
                 'href' => '../account/',
-            ],
-        ],
+            ),
+        ),
         'Close',
         $pageErrors
         .Page::warnings(array(

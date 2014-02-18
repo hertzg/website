@@ -59,7 +59,7 @@ $page->hideSignOutLink = true;
 $page->title = 'Sign In';
 $page->finish(
     create_tabs(
-        [],
+        array(),
         'Sign In', 
         $pageMessages
         .$pageErrors

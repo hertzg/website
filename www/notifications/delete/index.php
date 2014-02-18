@@ -13,12 +13,12 @@ $page->base = '../../';
 $page->title = 'Delete Notifications?';
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => 'Home',
                 'href' => '../..',
-            ],
-        ],
+            ),
+        ),
         'Notifications',
         Page::text(
             'Are you sure you want to delete notifications in this channel?'

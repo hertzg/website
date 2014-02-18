@@ -26,16 +26,16 @@ $page->base = '../../';
 $page->title = 'Leave Feedback';
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../..',
-            ],
-            [
+            ),
+            array(
                 'title' => 'Help',
                 'href' => '..',
-            ],
-        ],
+            ),
+        ),
         'Feedback',
         $pageErrors
         .Form::create(

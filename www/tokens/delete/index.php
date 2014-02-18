@@ -8,16 +8,16 @@ $page->base = '../../';
 $page->title = "Delete Remembered Session #$id?";
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../../account/',
-            ],
-            [
+            ),
+            array(
                 'title' => 'Sessions',
                 'href' => '..',
-            ],
-        ],
+            ),
+        ),
         "Session #$id",
         Page::text(
             'Are you sure you want to delete the remembered session'

@@ -45,16 +45,16 @@ $page->base = '../';
 $page->title = 'New Folder';
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => '&middot;&middot;&middot;',
                 'href' => '..',
-            ],
-            [
+            ),
+            array(
                 'title' => 'Files',
                 'href' => create_folder_link($parentIdFolders),
-            ],
-        ],
+            ),
+        ),
         'New Folder',
         $pageErrors
         .Form::create(

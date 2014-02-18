@@ -13,16 +13,16 @@ $page->base = '../../';
 $page->title = "Delete Bookmark #$id?";
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../..',
-            ],
-            [
+            ),
+            array(
                 'title' => 'Bookmarks',
                 'href' => '..',
-            ],
-        ],
+            ),
+        ),
         "Bookmark #$id",
         Page::text('Are you sure you want to delete the bookmark?')
         .Page::HR

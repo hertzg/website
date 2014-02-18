@@ -29,16 +29,16 @@ $page->base = '../../';
 $page->title = 'New Task';
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../..',
-            ],
-            [
+            ),
+            array(
                 'title' => 'Tasks',
                 'href' => '..',
-            ],
-        ],
+            ),
+        ),
         'New',
         $pageErrors
         .Form::create(

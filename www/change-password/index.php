@@ -30,16 +30,16 @@ $page->base = '../';
 $page->title = 'Change Password';
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => '&middot;&middot;&middot;',
                 'href' => '..',
-            ],
-            [
+            ),
+            array(
                 'title' => 'Account',
                 'href' => '../account/',
-            ],
-        ],
+            ),
+        ),
         'Change Password',
         $pageErrors
         .Form::create(

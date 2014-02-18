@@ -58,12 +58,12 @@ $page->base = '../';
 $page->title = 'Account';
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => 'Home',
                 'href' => '..',
-            ],
-        ],
+            ),
+        ),
         'Account',
         $pageMessages
         .Form::label('Username', $user->username)

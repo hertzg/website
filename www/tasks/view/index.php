@@ -54,16 +54,16 @@ $page->base = $base;
 $page->title = "Task #$id";
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../..',
-            ],
-            [
+            ),
+            array(
                 'title' => 'Tasks',
                 'href' => '..',
-            ],
-        ],
+            ),
+        ),
         "Task #$id",
         $pageMessages
         .Page::text(

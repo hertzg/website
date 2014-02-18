@@ -34,16 +34,16 @@ $page->base = '../../';
 $page->title = 'New Event';
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../..',
-            ],
-            [
+            ),
+            array(
                 'title' => 'Calendar',
                 'href' => '..',
-            ],
-        ],
+            ),
+        ),
         'New Event',
         $pageErrors
         .Form::create(

@@ -17,16 +17,16 @@ $page->base = '../../';
 $page->title = "Edit Event #$idevents";
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => '&middot;&middot;&middot;',
                 'href' => '..',
-            ],
-            [
+            ),
+            array(
                 'title' => "Event #$idevents",
                 'href' => "../view-event/?idevents=$idevents",
-            ],
-        ],
+            ),
+        ),
         'Edit',
         Form::create(
             'submit.php',

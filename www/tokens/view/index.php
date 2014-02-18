@@ -29,16 +29,16 @@ $page->base = '../../';
 $page->title = "Session #$id";
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../../account/',
-            ],
-            [
+            ),
+            array(
                 'title' => 'Sessions',
                 'href' => '..',
-            ],
-        ],
+            ),
+        ),
         "Session #$id",
         Form::textfield('tokentext', 'Identifier', array(
             'value' => bin2hex($token->tokentext),

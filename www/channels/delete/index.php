@@ -13,16 +13,16 @@ $page->base = '../../';
 $page->title = "Delete Channel #$id?";
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../../notifications/',
-            ],
-            [
+            ),
+            array(
                 'title' => 'Channels',
                 'href' => '..',
-            ],
-        ],
+            ),
+        ),
         "Channel #$id",
         Page::text(
             'Are you sure you want to delete the channel'

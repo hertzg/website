@@ -38,16 +38,16 @@ $page->base = $base;
 $page->title = "Bookmark #$id";
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../..',
-            ],
-            [
+            ),
+            array(
                 'title' => 'Bookmarks',
                 'href' => '..',
-            ],
-        ],
+            ),
+        ),
         "Bookmark #$id",
         $pageMessages
         .($title === '' ? '' : Page::text(htmlspecialchars($title)).Page::HR)

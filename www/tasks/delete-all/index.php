@@ -12,12 +12,12 @@ $page->base = '../../';
 $page->title = 'Delete All Tasks?';
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => 'Home',
                 'href' => '../..',
-            ],
-        ],
+            ),
+        ),
         'Tasks',
         Page::text('Are you sure you want to delete all the tasks?')
         .Page::HR

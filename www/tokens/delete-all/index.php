@@ -11,15 +11,16 @@ $page->base = '../../';
 $page->title = 'Delete All Remembered Sessions?';
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../..',
-            ], [
+            ),
+            array(
                 'title' => 'Account',
                 'href' => '../../account/',
-            ],
-        ],
+            ),
+        ),
         'Sessions',
         Page::text(
             'Are you sure you want to delete all the remembered sessions?'

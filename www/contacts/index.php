@@ -152,12 +152,12 @@ $page->base = '../';
 $page->title = 'Contacts';
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => 'Home',
                 'href' => '..',
-            ],
-        ],
+            ),
+        ),
         'Contacts',
         $pageMessages.$filterMessage.join(Page::HR, $items)
     )

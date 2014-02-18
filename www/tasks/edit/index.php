@@ -27,16 +27,16 @@ $page->base = '../../';
 $page->title = "Edit Task #$id";
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => '&middot;&middot;&middot;',
                 'href' => '..',
-            ],
-            [
+            ),
+            array(
                 'title' => "Task #$id",
                 'href' => "../view/?id=$id",
-            ],
-        ],
+            ),
+        ),
         'Edit',
         $pageErrors
         .Form::create(

@@ -44,16 +44,16 @@ $page->base = '../../';
 $page->title = 'Jumo To';
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../..',
-            ],
-            [
+            ),
+            array(
                 'title' => 'Calendar',
                 'href' => "../?year=$year&month=$month",
-            ],
-        ],
+            ),
+        ),
         'Jump To',
         Form::create(
             'submit.php',

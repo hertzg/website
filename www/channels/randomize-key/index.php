@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/require_channel.php';
-include_once '../../lib/mysqli.php';
+include_once '../../lib/hmysqli.php';
 list($channel, $id) = require_channel($mysqli);
 
 include_once '../../fns/create_tabs.php';
@@ -13,16 +13,16 @@ $page->base = '../../';
 $page->title = 'Randomize Channel Key';
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../../notifications/',
-            ],
-            [
+            ),
+            array(
                 'title' => 'Channels',
                 'href' => '..',
-            ],
-        ],
+            ),
+        ),
         "Channel #$id",
         Page::text('Are you sure you want to randomize channel key of "<b>'.htmlspecialchars($channel->channelname).'</b>"?')
         .Page::HR

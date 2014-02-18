@@ -29,16 +29,16 @@ $page->base = '../../';
 $page->title = 'New Note';
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../..',
-            ],
-            [
+            ),
+            array(
                 'title' => 'Notes',
                 'href' => '..',
-            ],
-        ],
+            ),
+        ),
         'New',
         $pageErrors
         .Form::create(

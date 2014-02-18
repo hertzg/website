@@ -27,16 +27,16 @@ $page->base = '../../';
 $page->title = "Edit Contact #$id";
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => '&middot;&middot;&middot;',
                 'href' => '..',
-            ],
-            [
+            ),
+            array(
                 'title' => "Contact #$id",
                 'href' => "../view/?id=$id",
-            ],
-        ],
+            ),
+        ),
         'Edit',
         $pageErrors
         .Form::create(

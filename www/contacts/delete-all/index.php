@@ -12,12 +12,12 @@ $page->base = '../../';
 $page->title = 'Delete All Contacts?';
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => 'Home',
                 'href' => '../..',
-            ],
-        ],
+            ),
+        ),
         'Contacts',
         Page::text('Are you sure you want to delete all the contacts?')
         .Page::HR

@@ -42,16 +42,16 @@ $page->base = '../';
 $page->title = 'Upload Files';
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => '&middot;&middot;&middot;',
                 'href' => '..',
-            ],
-            [
+            ),
+            array(
                 'title' => 'Files',
                 'href' => create_folder_link($idfolders),
-            ],
-        ],
+            ),
+        ),
         'Upload Files',
         $pageErrors
         .Page::warnings(array(

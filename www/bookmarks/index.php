@@ -86,12 +86,12 @@ $page->base = '../';
 $page->title = 'Bookmarks';
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => 'Home',
                 'href' => '..',
-            ],
-        ],
+            ),
+        ),
         'Bookmarks',
         $pageMessages.$filterMessage.join(Page::HR, $items)
     )

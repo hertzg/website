@@ -12,12 +12,12 @@ $page->base = '../../';
 $page->title = 'Delete All Notes?';
 $page->finish(
     create_tabs(
-        [
-            [
+        array(
+            array(
                 'title' => 'Home',
                 'href' => '../..',
-            ],
-        ],
+            ),
+        ),
         'Notes',
         Page::text('Are you sure you want to delete all the notes?')
         .Page::HR
