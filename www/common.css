@@ -254,6 +254,9 @@ label {
     line-height: 48px;
     height: 48px;
 }
+.form-button:focus {
+    line-height: 44px;
+}
 .form-filefield {
     height: 48px;
     cursor: pointer;
