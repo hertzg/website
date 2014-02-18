@@ -70,5 +70,5 @@ include_once '../fns/create_tabs.php';
 $page->base = '../';
 $page->title = 'Search: '.htmlspecialchars($keyword);
 $page->finish(
-    create_tabs([], 'Home', join(Page::HR, $items))
+    create_tabs(array(), 'Home', join(Page::HR, $items))
 );

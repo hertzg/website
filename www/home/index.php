@@ -168,7 +168,7 @@ include_once '../fns/create_tabs.php';
 $page->base = $base;
 $page->title = 'Home';
 $page->finish(
-    create_tabs([], 'Home', $pageMessages.$notifications.join(Page::HR, $items))
+    create_tabs(array(), 'Home', $pageMessages.$notifications.join(Page::HR, $items))
     .create_panel(
         'Options',
         Page::imageLink('Account', '../account/', 'account')
