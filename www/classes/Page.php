@@ -29,7 +29,7 @@ class Page {
                     .'<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />'
                     .'<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />'
                     ."<link rel=\"stylesheet\" type=\"text/css\" href=\"{$base}common.css?".$revisions['common.css'].'" />'
-                    ."<link rel=\"stylesheet\" type=\"text/css\" href=\"{$base}icons.css?12\" />"
+                    ."<link rel=\"stylesheet\" type=\"text/css\" href=\"{$base}icons.css?13\" />"
                     ."<link rel=\"stylesheet\" type=\"text/css\" href=\"{$base}themes/$theme/common.css?12\" />"
                     .$this->head
                 .'</head>'
@@ -78,17 +78,18 @@ class Page {
         return "<div class=\"icon $name\"></div>";
     }
 
-    static function imageItem ($content, $href, $iconName) {
+    static function imageItem ($content, $href, $iconName, $target = null) {
         return
-            "<a class=\"clickable link imageLink\" href=\"$href\">"
+            "<a class=\"clickable link imageLink\" href=\"$href\""
+            .($target === null ? '' : " target=\"$target\"").'>'
                 .'<div class="imageLink-icon">'.self::icon($iconName).'</div>'
                 ."<div class=\"imageLink-content\">$content</div>"
             .'</a>';
     }
 
-    static function imageLink ($title, $href, $iconName) {
+    static function imageLink ($title, $href, $iconName, $target = null) {
         $content = "<div class=\"imageLink-title\">$title</div>";
-        return self::imageItem($content, $href, $iconName);
+        return self::imageItem($content, $href, $iconName, $target);
     }
 
     static function disabledImageLink ($title, $iconName) {

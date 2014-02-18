@@ -29,6 +29,8 @@ $tags = BookmarkTags\indexOnBookmark($mysqli, $id);
 $base = '../../';
 
 include_once '../../fns/create_external_url.php';
+$externalUrl = create_external_url($url, $base);
+
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/create_tags.php';
@@ -51,7 +53,7 @@ $page->finish(
         "Bookmark #$id",
         $pageMessages
         .($title === '' ? '' : Page::text(htmlspecialchars($title)).Page::HR)
-        .Page::text('<a class="a" href="'.htmlspecialchars(create_external_url($url, $base)).'">'.htmlspecialchars($url).'</a>')
+        .Page::text(htmlspecialchars($url))
         .create_tags('../', $tags)
         .Page::HR
         .Page::text(
@@ -61,7 +63,11 @@ $page->finish(
     )
     .create_panel(
         'Options',
-        Page::imageLink('Edit Bookmark', "../edit/?id=$id", 'edit-bookmark')
+        Page::imageLink('Open', $externalUrl, 'run')
+        .Page::HR
+        .Page::imageLink('Open in New Tab', $externalUrl, 'run', '_blank')
+        .Page::HR
+        .Page::imageLink('Edit Bookmark', "../edit/?id=$id", 'edit-bookmark')
         .Page::HR
         .Page::imageLink('Delete Bookmark', "../delete/?id=$id", 'trash-bin')
     )
