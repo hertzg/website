@@ -1,14 +1,14 @@
 <?php
 
-include_once 'fns/request_strings.php';
+include_once '../fns/request_strings.php';
 list($url) = request_strings('url');
 
 if (!array_key_exists('HTTP_REFERER', $_SERVER)) {
-    include_once 'fns/redirect.php';
+    include_once '../fns/redirect.php';
     redirect($url);
 }
 
-include_once 'lib/page.php';
+include_once '../lib/page.php';
 
 $page->echoHtml(
     '<div class="page-text">'

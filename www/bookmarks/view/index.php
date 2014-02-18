@@ -4,10 +4,6 @@ include_once '../fns/require_bookmark.php';
 include_once '../../lib/mysqli.php';
 list($bookmark, $id) = require_bookmark($mysqli);
 
-include_once '../../fns/create_external_url.php';
-include_once '../../fns/create_panel.php';
-include_once '../../fns/create_tags.php';
-include_once '../../fns/date_ago.php';
 include_once '../../lib/page.php';
 
 if (array_key_exists('bookmarks/view/index_messages', $_SESSION)) {
@@ -32,7 +28,11 @@ $tags = BookmarkTags\indexOnBookmark($mysqli, $id);
 
 $base = '../../';
 
+include_once '../../fns/create_external_url.php';
+include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
+include_once '../../fns/create_tags.php';
+include_once '../../fns/date_ago.php';
 
 $page->base = $base;
 $page->title = "Bookmark #$id";
