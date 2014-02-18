@@ -1,11 +1,12 @@
 <?php
 
-include_once 'lib/require-user.php';
-include_once '../../lib/page.php';
+include_once '../../fns/require_user.php';
+require_user('../../');
 
 unset($_SESSION['tokens/index_messages']);
 
 include_once '../../fns/create_tabs.php';
+include_once '../../lib/page.php';
 
 $page->base = '../../';
 $page->title = 'Delete All Remembered Sessions?';

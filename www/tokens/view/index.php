@@ -1,22 +1,8 @@
 <?php
 
-include_once '../../fns/require_user.php';
-require_user('../../');
-
-
-include_once '../../fns/request_strings.php';
-list($id) = request_strings('id');
-
-$id = abs((int)$id);
-
-include_once '../../fns/Tokens/getOnUser.php';
+include_once '../fns/require_token.php';
 include_once '../../lib/mysqli.php';
-$token = Tokens\getOnUser($mysqli, $idusers, $id);
-
-if (!$token) {
-    include_once '../../fns/redirect.php';
-    redirect('..');
-}
+list($token, $id) = require_token($mysqli);
 
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';

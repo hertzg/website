@@ -1,6 +1,9 @@
 <?php
 
-include_once 'lib/require-token.php';
+include_once '../fns/require_token.php';
+include_once '../../lib/mysqli.php';
+list($token, $id) = require_token($mysqli);
+
 include_once '../../fns/create_tabs.php';
 include_once '../../lib/page.php';
 
