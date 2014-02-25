@@ -24,8 +24,8 @@ class Page {
             .'<html>'
                 .'<head>'
                     ."<title>$this->title</title>"
-                    ."<link rel=\"icon\" type=\"image/png\" href=\"{$base}images/icon16.png?2\" />"
-                    ."<link rel=\"icon\" type=\"image/png\" href=\"{$base}images/icon32.png?2\" sizes=\"32x32\" />"
+                    ."<link rel=\"icon\" type=\"image/png\" href=\"{$base}icons/16.png\" />"
+                    ."<link rel=\"icon\" type=\"image/png\" href=\"{$base}icons/32.png\" sizes=\"32x32\" />"
                     .'<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />'
                     .'<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />'
                     ."<link rel=\"stylesheet\" type=\"text/css\" href=\"{$base}common.css?".$revisions['common.css'].'" />'
