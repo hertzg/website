@@ -11,13 +11,13 @@ function convert_and_compress () {
 
 cd `dirname $BASH_SOURCE`
 
-cd ../icons
+cd ../zvini-icons
 convert_and_compress
 cd ../images
 convert_and_compress
 cd ..
 
-convert icons/16.png favicon.ico
+convert zvini-icons/16.png favicon.ico
 
 cd themes
 for i in *
