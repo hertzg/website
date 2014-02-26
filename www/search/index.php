@@ -42,7 +42,7 @@ if ($searchFiles) {
     $files = Files\search($mysqli, $idusers, $keyword);
 
 } else {
-    $folders = $files = [];
+    $folders = $files = array();
 }
 
 if ($contacts || $notes || $tasks) {
@@ -98,10 +98,10 @@ if ($contacts || $notes || $tasks) {
 }
 
 if (!$searchFiles) {
-    $href = htmlspecialchars('./?'.http_build_query([
+    $href = htmlspecialchars('./?'.http_build_query(array(
         'keyword' => $keyword,
         'files' => '1',
-    ]));
+    )));
     $items[] = Page::imageLink('Search in files', $href, 'search-folder');
 }
 
