@@ -57,11 +57,11 @@ if ($keyword === '') {
         list($folders, $files) = search_recursively($mysqli, $idusers, $idfolders, $keyword);
     } else {
 
-        include_once '../fns/Folders/search.php';
-        $folders = Folders\search($mysqli, $idusers, $idfolders, $keyword);
+        include_once '../fns/Folders/searchInFolder.php';
+        $folders = Folders\searchInFolder($mysqli, $idusers, $idfolders, $keyword);
 
-        include_once '../fns/Files/search.php';
-        $files = Files\search($mysqli, $idusers, $idfolders, $keyword);
+        include_once '../fns/Files/searchInFolder.php';
+        $files = Files\searchInFolder($mysqli, $idusers, $idfolders, $keyword);
 
     }
 
