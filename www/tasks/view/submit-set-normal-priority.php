@@ -9,9 +9,9 @@ include_once '../../lib/mysqli.php';
 list($task, $id) = require_task($mysqli);
 
 include_once '../../fns/Tasks/setTopPriority.php';
-Tasks\setTopPriority($mysqli, $idusers, $id, true);
+Tasks\setTopPriority($mysqli, $idusers, $id, false);
 
 include_once '../../fns/TaskTags/setTaskTopPriority.php';
-TaskTags\setTaskTopPriority($mysqli, $id, true);
+TaskTags\setTaskTopPriority($mysqli, $id, false);
 
 redirect("./?id=$id");

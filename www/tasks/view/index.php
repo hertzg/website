@@ -20,13 +20,13 @@ $options = array();
 if ($task->top_priority) {
     $options[] = Page::imageLink(
         'Mark as Normal Priority',
-        "submit-set-top-priority.php?id=$id",
+        "submit-set-normal-priority.php?id=$id",
         'task'
     );
 } else {
     $options[] = Page::imageLink(
         'Mark as Top Priority',
-        "submit-set-top-priority.php?id=$id&top_priority=1",
+        "submit-set-top-priority.php?id=$id",
         'task-top-priority'
     );
 }
