@@ -10,7 +10,7 @@ $names = array(
     'edit-bookmark', 'channel', 'create-channel', 'channels', 'account',
     'edit-profile', 'contact', 'contacts', 'create-contact', 'edit-contact',
     'file', 'files', 'create-file', 'folder', 'create-folder', 'parent-folder',
-    'note', 'notes', 'create-note', 'edit-note', 'task', 'task-done', 'tasks',
+    'note', 'notes', 'create-note', 'edit-note', 'task', 'task-top-priority', 'tasks',
     'create-task', 'edit-task', 'download', 'upload', 'feedback', 'yes', 'no',
     'notification', 'old-notification', 'edit-password', 'new-password',
     'reset-password', 'randomize', 'rename', 'sign-out', 'sign-in', 'trash-bin',

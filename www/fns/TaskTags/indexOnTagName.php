@@ -12,7 +12,7 @@ function indexOnTagName ($mysqli, $idusers, $tagname) {
         'select * from tasktags'
         ." where idusers = $idusers"
         ." and tagname = '$tagname'"
-        .' order by done, updatetime desc'
+        .' order by top_priority desc, updatetime desc'
     );
 
 }

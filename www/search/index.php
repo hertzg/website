@@ -50,7 +50,7 @@ include_once '../fns/Tasks/search.php';
 $tasks = Tasks\search($mysqli, $idusers, $keyword);
 
 foreach ($tasks as $task) {
-    $icon = $task->done ? 'task-done' : 'task';
+    $icon = $task->top_priority ? 'task-top-priority' : 'task';
     $title = htmlspecialchars($task->tasktext);
     $href = "../tasks/view/?id=$task->idtasks";
     $tags = $task->tags;

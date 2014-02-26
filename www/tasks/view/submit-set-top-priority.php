@@ -9,14 +9,14 @@ include_once '../../lib/mysqli.php';
 list($task, $id) = require_task($mysqli);
 
 include_once '../../fns/request_strings.php';
-list($done) = request_strings('done');
+list($top_priority) = request_strings('top_priority');
 
-$done = (bool)$done;
+$top_priority = (bool)$top_priority;
 
-include_once '../../fns/Tasks/setDone.php';
-Tasks\setDone($mysqli, $idusers, $id, $done);
+include_once '../../fns/Tasks/setTopPriority.php';
+Tasks\setTopPriority($mysqli, $idusers, $id, $top_priority);
 
-include_once '../../fns/TaskTags/setTaskDone.php';
-TaskTags\setTaskDone($mysqli, $id, $done);
+include_once '../../fns/TaskTags/setTaskTopPriority.php';
+TaskTags\setTaskTopPriority($mysqli, $id, $top_priority);
 
 redirect("./?id=$id");

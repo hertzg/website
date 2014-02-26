@@ -17,17 +17,17 @@ unset(
 );
 
 $options = array();
-if ($task->done) {
+if ($task->top_priority) {
     $options[] = Page::imageLink(
-        'Mark as Not Done',
-        "submit-set-done.php?id=$id",
+        'Mark as Normal Priority',
+        "submit-set-top-priority.php?id=$id",
         'task'
     );
 } else {
     $options[] = Page::imageLink(
-        'Mark as Done',
-        "submit-set-done.php?id=$id&done=1",
-        'task-done'
+        'Mark as Top Priority',
+        "submit-set-top-priority.php?id=$id&top_priority=1",
+        'task-top-priority'
     );
 }
 $options[] = Page::imageLink('Edit Task', "../edit/?id=$id", 'edit-task');

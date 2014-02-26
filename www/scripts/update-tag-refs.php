@@ -65,7 +65,7 @@ foreach ($ids as $id) {
             $mysqli,
             'update tasktags set'
             ." tasktext = '$tasktext',"
-            ." done = $task->done,"
+            ." top_priority = $task->top_priority,"
             ." inserttime = $task->inserttime,"
             ." updatetime = $task->updatetime"
             ." where idtasks = $task->idtasks"

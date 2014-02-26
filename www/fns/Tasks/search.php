@@ -14,7 +14,7 @@ function search ($mysqli, $idusers, $keyword) {
         $mysqli,
         'select * from tasks'
         ." where idusers = $idusers and tasktext like '%$keyword%'"
-        .' order by done, updatetime desc'
+        .' order by top_priority desc, updatetime desc'
     );
 
 }

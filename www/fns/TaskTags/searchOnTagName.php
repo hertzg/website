@@ -17,7 +17,7 @@ function searchOnTagName ($mysqli, $idusers, $keyword, $tagname) {
         ." where idusers = $idusers"
         ." and tasktext like '%$keyword%'"
         ." and tagname = '$tagname'"
-        .' order by done, updatetime desc'
+        .' order by top_priority desc, updatetime desc'
     );
 
 }
