@@ -116,7 +116,24 @@ if ($events) {
         );
     }
 } else {
-    $eventItems[] = Page::info('No events.');
+    $eventItems[] = Page::info('No events on this day.');
+}
+
+include_once '../fns/Events/countOnUser.php';
+$numEvents = Events\countOnUser($mysqli, $idusers);
+if ($numEvents) {
+    $eventItems[] = Page::imageLinkWithDescription(
+        'View All',
+        "$numEvents total.",
+        "all-events/",
+        'event'
+    );
+} else {
+    $eventItems[] = Page::imageLink(
+        'View All',
+        "all-events/",
+        'event'
+    );
 }
 
 include_once '../fns/create_panel.php';
@@ -139,7 +156,7 @@ $page->finish(
         $pageMessages.create_calendar($timeSelected)
     )
     .create_panel(
-        'Events',
+        'Events on '.date('F d, Y', $timeSelected),
         join(Page::HR, $eventItems)
     )
     .create_panel(
