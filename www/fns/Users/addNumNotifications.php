@@ -3,10 +3,8 @@
 namespace Users;
 
 function addNumNotifications ($mysqli, $idusers, $numnotifications) {
-    mysqli_query(
-        $mysqli,
-        'update users set'
+    $sql = 'update users set'
         ." numnotifications = numnotifications + $numnotifications"
-        ." where idusers = $idusers"
-    );
+        ." where idusers = $idusers";
+    $mysqli->query($sql);
 }

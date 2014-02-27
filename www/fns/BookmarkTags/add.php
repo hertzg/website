@@ -3,17 +3,15 @@
 namespace BookmarkTags;
 
 function add ($mysqli, $idusers, $idbookmarks, array $tagnames, $title, $url) {
-    $title = mysqli_real_escape_string($mysqli, $title);
-    $url = mysqli_real_escape_string($mysqli, $url);
+    $title = $mysqli->real_escape_string($title);
+    $url = $mysqli->real_escape_string($url);
     $inserttime = $updatetime = time();
     foreach ($tagnames as $tagname) {
-        $tagname = mysqli_real_escape_string($mysqli, $tagname);
-        mysqli_query(
-            $mysqli,
-            'insert into bookmarktags (idusers, idbookmarks, tagname,'
+        $tagname = $mysqli->real_escape_string($tagname);
+        $sql = 'insert into bookmarktags (idusers, idbookmarks, tagname,'
             .' title, url, inserttime, updatetime)'
             ." values ($idusers, $idbookmarks, '$tagname',"
-            ." '$title', '$url', $inserttime, $updatetime)"
-        );
+            ." '$title', '$url', $inserttime, $updatetime)";
+        $mysqli->query($sql);
     }
 }

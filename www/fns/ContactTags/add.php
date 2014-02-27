@@ -3,13 +3,12 @@
 namespace ContactTags;
 
 function add ($mysqli, $idusers, $idcontacts, array $tagnames, $fullname) {
-    $fullname = mysqli_real_escape_string($mysqli, $fullname);
+    $fullname = $mysqli->real_escape_string($fullname);
     foreach ($tagnames as $tagname) {
-        $tagname = mysqli_real_escape_string($mysqli, $tagname);
-        mysqli_query(
-            $mysqli,
-            'insert into contacttags (idusers, idcontacts, tagname, fullname)'
-            ." values ($idusers, $idcontacts, '$tagname', '$fullname')"
-        );
+        $tagname = $mysqli->real_escape_string($tagname);
+        $sql = 'insert into contacttags'
+            .' (idusers, idcontacts, tagname, fullname)'
+            ." values ($idusers, $idcontacts, '$tagname', '$fullname')";
+        $mysqli->query($sql);
     }
 }

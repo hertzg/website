@@ -3,8 +3,8 @@
 namespace Channels;
 
 function getByNameKey ($mysqli, $channelname, $channelkey) {
-    $channelname = mysqli_real_escape_string($mysqli, $channelname);
-    $channelkey = mysqli_real_escape_string($mysqli, $channelkey);
+    $channelname = $mysqli->real_escape_string($channelname);
+    $channelkey = $mysqli->real_escape_string($channelkey);
     $sql = 'select * from channels'
         ." where channelname = '$channelname'"
         ." and channelkey = '$channelkey'";

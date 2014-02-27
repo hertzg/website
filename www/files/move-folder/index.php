@@ -30,8 +30,8 @@ if ($parentidfolders) {
 
 }
 
-include_once '../../fns/Folders/index.php';
-$folders = Folders\index($mysqli, $idusers, $parentidfolders);
+include_once '../../fns/Folders/indexInUserFolder.php';
+$folders = Folders\indexInUserFolder($mysqli, $idusers, $parentidfolders);
 
 $items = array();
 if ($parentidfolders) {

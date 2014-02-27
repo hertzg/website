@@ -4,7 +4,7 @@ namespace Contacts;
 
 function getByFullName ($mysqli, $idusers, $fullname, $excludeid = 0) {
 
-    $fullname = mysqli_real_escape_string($mysqli, $fullname);
+    $fullname = $mysqli->real_escape_string($fullname);
 
     include_once __DIR__.'/../mysqli_single_object.php';
     return mysqli_single_object(

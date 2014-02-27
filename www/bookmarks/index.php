@@ -12,8 +12,8 @@ list($tag) = request_strings('tag');
 
 if ($tag === '') {
 
-    include_once '../fns/Bookmarks/index.php';
-    $bookmarks = Bookmarks\index($mysqli, $idusers);
+    include_once '../fns/Bookmarks/indexOnUser.php';
+    $bookmarks = Bookmarks\indexOnUser($mysqli, $idusers);
 
     if (count($bookmarks) > 1) {
 

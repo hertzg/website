@@ -17,6 +17,6 @@ function deleteOnUser ($mysqli, $idusers) {
         }
     }
 
-    mysqli_query($mysqli, "delete from files where idusers = $idusers");
+    $mysqli->query("delete from files where idusers = $idusers");
 
 }

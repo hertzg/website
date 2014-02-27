@@ -3,8 +3,5 @@
 namespace ContactTags;
 
 function deleteOnUser ($mysqli, $idusers) {
-    mysqli_query(
-        $mysqli,
-        "delete from contacttags where idusers = $idusers"
-    );
+    $mysqli->query("delete from contacttags where idusers = $idusers");
 }

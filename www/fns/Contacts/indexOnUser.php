@@ -2,7 +2,7 @@
 
 namespace Contacts;
 
-function index ($mysqli, $idusers) {
+function indexOnUser ($mysqli, $idusers) {
     $sql = 'select * from contacts'
         ." where idusers = $idusers"
         .' order by fullname';

@@ -3,10 +3,8 @@
 namespace Folders;
 
 function rename ($mysqli, $idusers, $idfolders, $foldername) {
-    $foldername = mysqli_real_escape_string($mysqli, $foldername);
-    mysqli_query(
-        $mysqli,
-        "update folders set foldername = '$foldername'"
-        ." where idusers = $idusers and idfolders = $idfolders"
-    );
+    $foldername = $mysqli->real_escape_string($foldername);
+    $sql = "update folders set foldername = '$foldername'"
+        ." where idusers = $idusers and idfolders = $idfolders";
+    $mysqli->query($sql);
 }

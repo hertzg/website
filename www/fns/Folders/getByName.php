@@ -3,7 +3,7 @@
 namespace Folders;
 
 function getByName ($mysqli, $idusers, $parentidfolders, $foldername, $excludeidfolders = 0) {
-    $foldername = mysqli_real_escape_string($mysqli, $foldername);
+    $foldername = $mysqli->real_escape_string($foldername);
     $sql = 'select * from folders'
         ." where idusers = $idusers"
         ." and parentidfolders = $parentidfolders"

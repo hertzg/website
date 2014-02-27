@@ -3,10 +3,8 @@
 namespace Channels;
 
 function addNumNotifications ($mysqli, $id, $numnotifications) {
-    mysqli_query(
-        $mysqli,
-        'update channels set'
+    $sql = 'update channels set'
         ." numnotifications = numnotifications + $numnotifications"
-        ." where idchannels = $id"
-    );
+        ." where idchannels = $id";
+    $mysqli->query($sql);
 }

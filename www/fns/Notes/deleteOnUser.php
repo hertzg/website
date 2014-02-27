@@ -3,5 +3,5 @@
 namespace Notes;
 
 function deleteOnUser ($mysqli, $idusers) {
-    mysqli_query($mysqli, "delete from notes where idusers = $idusers");
+    $mysqli->query("delete from notes where idusers = $idusers");
 }

@@ -3,17 +3,15 @@
 namespace Bookmarks;
 
 function edit ($mysqli, $idusers, $id, $title, $url, $tags) {
-    $title = mysqli_real_escape_string($mysqli, $title);
-    $url = mysqli_real_escape_string($mysqli, $url);
-    $tags = mysqli_real_escape_string($mysqli, $tags);
+    $title = $mysqli->real_escape_string($title);
+    $url = $mysqli->real_escape_string($url);
+    $tags = $mysqli->real_escape_string($tags);
     $updatetime = time();
-    mysqli_query(
-        $mysqli,
-        'update bookmarks set'
+    $sql = 'update bookmarks set'
         ." title = '$title',"
         ." url = '$url',"
         ." tags = '$tags',"
         ." updatetime = $updatetime"
-        ." where idusers = $idusers and idbookmarks = $id"
-    );
+        ." where idusers = $idusers and idbookmarks = $id";
+    $mysqli->query($sql);
 }

@@ -3,7 +3,7 @@
 namespace Files;
 
 function getByName ($mysqli, $idusers, $idfolders, $filename, $excludeid = 0) {
-    $filename = mysqli_real_escape_string($mysqli, $filename);
+    $filename = $mysqli->real_escape_string($filename);
     $sql = 'select * from files'
         ." where idusers = $idusers and idfolders = $idfolders"
         ." and filename = '$filename' and idfiles != $excludeid";

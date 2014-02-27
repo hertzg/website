@@ -3,5 +3,5 @@
 namespace Events;
 
 function delete ($mysqli, $id) {
-    mysqli_query($mysqli, "delete from events where idevents = $id");
+    $mysqli->query("delete from events where idevents = $id");
 }

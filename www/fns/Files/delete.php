@@ -4,10 +4,8 @@ namespace Files;
 
 function delete ($mysqli, $idusers, $id) {
 
-    mysqli_query(
-        $mysqli,
-        "delete from files where idusers = $idusers and idfiles = $id"
-    );
+    $sql = "delete from files where idusers = $idusers and idfiles = $id";
+    $mysqli->query($sql);
 
     include_once __DIR__.'/filename.php';
     $filename = filename($idusers, $id);

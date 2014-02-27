@@ -3,5 +3,5 @@
 namespace NoteTags;
 
 function deleteOnNote ($mysqli, $idnotes) {
-    mysqli_query($mysqli, "delete from notetags where idnotes = $idnotes");
+    $mysqli->query("delete from notetags where idnotes = $idnotes");
 }

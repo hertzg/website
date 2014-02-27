@@ -3,5 +3,5 @@
 namespace Notifications;
 
 function deleteOnUser ($mysqli, $idusers) {
-    mysqli_query($mysqli, "delete from notifications where idusers = $idusers");
+    $mysqli->query("delete from notifications where idusers = $idusers");
 }

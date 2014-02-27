@@ -2,7 +2,7 @@
 
 namespace Folders;
 
-function index ($mysqli, $idusers, $parentidfolders) {
+function indexInUserFolder ($mysqli, $idusers, $parentidfolders) {
     $sql = 'select * from folders'
         ." where idusers = $idusers and parentidfolders = $parentidfolders"
         .' order by foldername';

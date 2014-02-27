@@ -3,13 +3,11 @@
 namespace Users;
 
 function editProfile ($mysqli, $idusers, $email, $fullname) {
-    $email = mysqli_real_escape_string($mysqli, $email);
-    $fullname = mysqli_real_escape_string($mysqli, $fullname);
-    mysqli_query(
-        $mysqli,
-        'update users set'
+    $email = $mysqli->real_escape_string($email);
+    $fullname = $mysqli->real_escape_string($fullname);
+    $sql = 'update users set'
         ." email = '$email',"
         ." fullname = '$fullname'"
-        ." where idusers = $idusers"
-    );
+        ." where idusers = $idusers";
+    $mysqli->query($sql);
 }

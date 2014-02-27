@@ -27,8 +27,8 @@ $filterMessage = '';
 if ($keyword === '') {
     if ($tag === '') {
 
-        include_once '../fns/Tasks/index.php';
-        $tasks = Tasks\index($mysqli, $idusers);
+        include_once '../fns/Tasks/indexOnUser.php';
+        $tasks = Tasks\indexOnUser($mysqli, $idusers);
 
         if (count($tasks) > 1) {
 

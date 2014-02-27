@@ -4,10 +4,8 @@ namespace Tokens;
 
 function updateAccessTime ($mysqli, $id) {
     $accesstime = time();
-    mysqli_query(
-        $mysqli,
-        'update tokens set'
+    $sql = 'update tokens set'
         ." accesstime = $accesstime"
-        ." where idtokens = $id"
-    );
+        ." where idtokens = $id";
+    $mysqli->query($sql);
 }

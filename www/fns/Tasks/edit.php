@@ -3,15 +3,13 @@
 namespace Tasks;
 
 function edit ($mysqli, $idusers, $id, $tasktext, $tags) {
-    $tasktext = mysqli_real_escape_string($mysqli, $tasktext);
-    $tags = mysqli_real_escape_string($mysqli, $tags);
+    $tasktext = $mysqli->real_escape_string($tasktext);
+    $tags = $mysqli->real_escape_string($tags);
     $updatetime = time();
-    mysqli_query(
-        $mysqli,
-        'update tasks set'
+    $sql = 'update tasks set'
         ." tasktext = '$tasktext',"
         ." tags = '$tags',"
         ." updatetime = $updatetime"
-        ." where idusers = $idusers and idtasks = $id"
-    );
+        ." where idusers = $idusers and idtasks = $id";
+    $mysqli->query($sql);
 }

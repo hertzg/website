@@ -26,8 +26,8 @@ $filterMessage = '';
 if ($keyword === '') {
     if ($tag === '') {
 
-        include_once '../fns/Notes/index.php';
-        $notes = Notes\index($mysqli, $idusers);
+        include_once '../fns/Notes/indexOnUser.php';
+        $notes = Notes\indexOnUser($mysqli, $idusers);
 
         if (count($notes) > 1) {
 

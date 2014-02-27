@@ -6,5 +6,5 @@ function updateLastLoginTime ($mysqli, $idusers) {
     $lastlogintime = time();
     $sql = "update users set lastlogintime = $lastlogintime"
         ." where idusers = $idusers";
-    mysqli_query($mysqli, $sql);
+    $mysqli->query($sql);
 }

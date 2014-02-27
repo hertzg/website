@@ -7,7 +7,7 @@ function searchInFolder ($mysqli, $idusers, $idfolders, $keyword) {
     include_once __DIR__.'/../escape_like.php';
     $keyword = escape_like($keyword);
 
-    $keyword = mysqli_real_escape_string($mysqli, $keyword);
+    $keyword = $mysqli->real_escape_string($keyword);
 
     $sql = 'select * from files'
         ." where idusers = $idusers"

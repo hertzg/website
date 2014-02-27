@@ -2,7 +2,7 @@
 
 namespace Files;
 
-function index ($mysqli, $idusers, $idfolders, $offset = 0) {
+function indexInUserFolder ($mysqli, $idusers, $idfolders, $offset = 0) {
     $sql = 'select * from files'
         ." where idusers = $idusers and idfolders = $idfolders"
         .' order by filename';

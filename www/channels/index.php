@@ -5,9 +5,9 @@ require_user('../');
 
 include_once '../lib/page.php';
 
-include_once '../fns/Channels/index.php';
+include_once '../fns/Channels/indexOnUser.php';
 include_once '../lib/mysqli.php';
-$channels = Channels\index($mysqli, $idusers);
+$channels = Channels\indexOnUser($mysqli, $idusers);
 
 $channelsHtml = '';
 if ($channels) {
