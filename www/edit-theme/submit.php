@@ -9,7 +9,9 @@ require_user('../');
 include_once '../fns/request_strings.php';
 list($theme) = request_strings('theme');
 
-include_once '../lib/themes.php';
+include_once '../fns/get_themes.php';
+$themes = get_themes();
+
 if (!array_key_exists($theme, $themes)) redirect();
 
 include_once '../fns/Users/editTheme.php';

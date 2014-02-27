@@ -4,9 +4,11 @@ include_once '../fns/require_user.php';
 require_user('../');
 
 include_once '../lib/page.php';
-include_once '../lib/themes.php';
 
 unset($_SESSION['account/index_messages']);
+
+include_once '../fns/get_themes.php';
+$themes = get_themes();
 
 $themeItems = array();
 foreach ($themes as $id => $theme) {

@@ -9,7 +9,6 @@ include_once '../fns/date_ago.php';
 include_once '../classes/Form.php';
 include_once '../lib/mysqli.php';
 include_once '../lib/page.php';
-include_once '../lib/themes.php';
 
 unset(
     $_SESSION['change-password/index_errors'],
@@ -51,6 +50,9 @@ if ($numTokens) {
     $options[] = Page::imageLink('Remembered Sessions', '../tokens/', 'tokens');
 }
 $options[] = Page::imageLink('Close Account', '../close-account/', 'trash-bin');
+
+include_once '../fns/get_themes.php';
+$themes = get_themes();
 
 include_once '../fns/create_tabs.php';
 
