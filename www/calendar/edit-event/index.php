@@ -7,7 +7,17 @@ list($event, $idevents) = require_event($mysqli);
 include_once '../../classes/Form.php';
 include_once '../../lib/page.php';
 
-// TODO use $_SESSION['calendar/edit-event_errors']
+if (array_key_exists('calendar/edit-event_lastpost', $_SESSION)) {
+    $values = $_SESSION['calendar/edit-event_lastpost'];
+} else {
+    $values = array('eventtext' => $event->eventtext);
+}
+
+if (array_key_exists('calendar/edit-event_errors', $_SESSION)) {
+    $pageErrors = Page::errors($_SESSION['calendar/edit-event_errors']);
+} else {
+    $pageErrors = '';
+}
 
 unset($_SESSION['calendar/view-event_messages']);
 
@@ -28,12 +38,13 @@ $page->finish(
             ),
         ),
         'Edit',
-        Form::create(
+        $pageErrors
+        .Form::create(
             'submit.php',
             Form::label('When', date('F d, Y', $event->eventtime))
             .Page::HR
             .Form::textfield('eventtext', 'Text', array(
-                'value' => $event->eventtext,
+                'value' => $values['eventtext'],
                 'autofocus' => true,
                 'required' => true,
             ))

@@ -14,6 +14,7 @@ if (array_key_exists('calendar/view-event_messages', $_SESSION)) {
 
 unset(
     $_SESSION['calendar/edit-event_errors'],
+    $_SESSION['calendar/edit-event_lastpost'],
     $_SESSION['calendar/index_messages']
 );
 
