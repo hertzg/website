@@ -16,6 +16,9 @@ Users\addNumNotifications($mysqli, $idusers, -$channel->numnotifications);
 include_once '../../fns/Channels/delete.php';
 Channels\delete($mysqli, $id);
 
+include_once '../../fns/Users/addNumChannels.php';
+Users\addNumChannels($mysqli, $idusers, -1);
+
 $_SESSION['channels/index_messages'] = array('Channel has been deleted.');
 
 include_once '../../fns/redirect.php';

@@ -10,9 +10,14 @@ unset($_SESSION['user']);
 
 if (array_key_exists('token', $_SESSION)) {
 
+    $token = $_SESSION['token'];
+
     include_once 'fns/Tokens/remove.php';
     include_once 'lib/mysqli.php';
-    Tokens\remove($mysqli, $_SESSION['token']->idtokens);
+    Tokens\remove($mysqli, $token->idtokens);
+
+    include_once 'fns/Users/addNumTokens.php';
+    Users\addNumTokens($mysqli, $token->idusers, -1);
 
     unset($_SESSION['token']);
     setcookie('token', '', time() - 60 * 60 * 24, '/');

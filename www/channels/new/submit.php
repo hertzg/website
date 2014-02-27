@@ -43,5 +43,8 @@ unset(
 include_once '../../fns/Channels/add.php';
 $id = Channels\add($mysqli, $idusers, $channelname);
 
+include_once '../../fns/Users/addNumChannels.php';
+Users\addNumChannels($mysqli, $idusers, 1);
+
 $_SESSION['channels/view/index_messages'] = array('Channel has been added.');
 redirect("../view/?id=$id");

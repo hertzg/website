@@ -16,11 +16,10 @@ Users\clearNumNotifications($mysqli, $idusers);
 
 $options = array();
 
-include_once '../fns/Channels/countOnUser.php';
-$numChannels = Channels\countOnUser($mysqli, $idusers);
+$num_channels = $user->num_channels;
 
-if ($numChannels) {
-    $options[] = Page::imageLinkWithDescription('Channels', "$numChannels total.", '../channels/', 'channels');
+if ($num_channels) {
+    $options[] = Page::imageLinkWithDescription('Channels', "$num_channels total.", '../channels/', 'channels');
 } else {
     $options[] = Page::imageLink('Channels', '../channels/', 'channels');
 }

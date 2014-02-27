@@ -66,5 +66,8 @@ $id = Contacts\add($mysqli, $idusers, $fullname, $address,
 include_once '../../fns/ContactTags/add.php';
 ContactTags\add($mysqli, $idusers, $id, $tagnames, $fullname);
 
+include_once '../../fns/Users/addNumContacts.php';
+Users\addNumContacts($mysqli, $idusers, 1);
+
 $_SESSION['contacts/view/index_messages'] = array('Contact has been saved.');
 redirect("../view/?id=$id");

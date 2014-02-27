@@ -10,6 +10,9 @@ list($token, $id) = require_token($mysqli);
 include_once '../../fns/Tokens/delete.php';
 Tokens\delete($mysqli, $id);
 
+include_once '../../fns/Users/addNumTokens.php';
+Users\addNumTokens($mysqli, $idusers, -1);
+
 $_SESSION['tokens/index_messages'] = array(
     'Remembered session has been deleted.'
 );

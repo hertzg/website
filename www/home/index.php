@@ -35,14 +35,12 @@ $items[] =
         .create_search_form_empty_content('Search...')
     .'</form>';
 
-include_once '../fns/Bookmarks/countOnUser.php';
-$numBookmarks = Bookmarks\countOnUser($mysqli, $idusers);
-
+$num_bookmarks = $user->num_bookmarks;
 $title = 'Bookmarks';
 $href = '../bookmarks/';
 $icon = 'bookmarks';
-if ($numBookmarks) {
-    $description = "$numBookmarks total.";
+if ($num_bookmarks) {
+    $description = "$num_bookmarks total.";
     $items[] = Page::imageLinkWithDescription($title, $description, $href, $icon);
 } else {
     $items[] = Page::imageLink($title, $href, $icon);
@@ -78,14 +76,12 @@ if ($numEventsToday) {
     $items[] = Page::imageLink($title, $href, $icon);
 }
 
-include_once '../fns/Contacts/countOnUser.php';
-$numContacts = Contacts\countOnUser($mysqli, $idusers);
-
+$num_contacts = $user->num_contacts;
 $title = 'Contacts';
 $href = '../contacts/';
 $icon = 'contacts';
-if ($numContacts) {
-    $description = "$numContacts total.";
+if ($num_contacts) {
+    $description = "$num_contacts total.";
     $items[] = Page::imageLinkWithDescription($title, $description, $href, $icon);
 } else {
     $items[] = Page::imageLink($title, $href, $icon);
@@ -101,14 +97,12 @@ if ($user->storageused) {
     $items[] = Page::imageLink($title, $href, $icon);
 }
 
-include_once '../fns/Notes/countOnUser.php';
-$numNotes = Notes\countOnUser($mysqli, $idusers);
-
+$num_notes = $user->num_notes;
 $title = 'Notes';
 $href = '../notes/';
 $icon = 'notes';
-if ($numNotes) {
-    $description = "$numNotes total.";
+if ($num_notes) {
+    $description = "$num_notes total.";
     $items[] = Page::imageLinkWithDescription($title, $description, $href, $icon);
 } else {
     $items[] = Page::imageLink($title, $href, $icon);
@@ -144,14 +138,12 @@ if ($numNotifications) {
     $items[] = Page::imageLink($title, $href, 'old-notification');
 }
 
-include_once '../fns/Tasks/countOnUser.php';
-$numTasks = Tasks\countOnUser($mysqli, $idusers);
-
+$num_tasks = $user->num_tasks;
 $title = 'Tasks';
 $href = '../tasks/';
 $icon = 'tasks';
-if ($numTasks) {
-    $description = "$numTasks total.";
+if ($num_tasks) {
+    $description = "$num_tasks total.";
     $items[] = Page::imageLinkWithDescription($title, $description, $href, $icon);
 } else {
     $items[] = Page::imageLink($title, $href, $icon);

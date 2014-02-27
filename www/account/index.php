@@ -41,11 +41,10 @@ $options = array(
     Page::imageLink('Change Password', '../change-password/', 'edit-password'),
 );
 
-include_once '../fns/Tokens/countOnUser.php';
-$numTokens = Tokens\countOnUser($mysqli, $idusers);
-
-if ($numTokens) {
-    $options[] = Page::imageLinkWithDescription('Remembered Sessions', "$numTokens total.", '../tokens/', 'tokens');
+$num_tokens = $user->num_tokens;
+if ($num_tokens) {
+    $options[] = Page::imageLinkWithDescription('Remembered Sessions',
+        "$num_tokens total.", '../tokens/', 'tokens');
 } else {
     $options[] = Page::imageLink('Remembered Sessions', '../tokens/', 'tokens');
 }

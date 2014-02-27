@@ -48,5 +48,8 @@ $id = Tasks\add($mysqli, $idusers, $tasktext, $tags);
 include_once '../../fns/TaskTags/add.php';
 TaskTags\add($mysqli, $idusers, $id, $tagnames, $tasktext, $tags);
 
+include_once '../../fns/Users/addNumTasks.php';
+Users\addNumTasks($mysqli, $idusers, 1);
+
 $_SESSION['tasks/view/index_messages'] = array('Task has been saved.');
 redirect("../view/?id=$id");

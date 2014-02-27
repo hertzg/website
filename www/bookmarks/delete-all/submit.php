@@ -13,6 +13,9 @@ Bookmarks\deleteOnUser($mysqli, $idusers);
 include_once '../../fns/BookmarkTags/deleteOnUser.php';
 BookmarkTags\deleteOnUser($mysqli, $idusers);
 
+include_once '../../fns/Users/clearNumBookmarks.php';
+Users\clearNumBookmarks($mysqli, $idusers);
+
 $_SESSION['bookmarks/index_messages'] = array(
     'All bookmarks have been deleted.',
 );

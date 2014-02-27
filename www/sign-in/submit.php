@@ -54,8 +54,10 @@ unset(
     $_SESSION['sign-in/index_lastpost']
 );
 
+$idusers = $user->idusers;
+
 include_once '../fns/Users/updateLastLoginTime.php';
-Users\updateLastLoginTime($mysqli, $user->idusers);
+Users\updateLastLoginTime($mysqli, $idusers);
 
 if ($remember) {
 
@@ -67,7 +69,10 @@ if ($remember) {
     }
 
     include_once '../fns/Tokens/add.php';
-    $idtokens = Tokens\add($mysqli, $user->idusers, $username, $tokentext, $useragent);
+    $idtokens = Tokens\add($mysqli, $idusers, $username, $tokentext, $useragent);
+
+    include_once '../fns/Users/addNumTokens.php';
+    Users\addNumTokens($mysqli, $idusers, 1);
 
     include_once '../fns/Tokens/get.php';
     $token = Tokens\get($mysqli, $idtokens);

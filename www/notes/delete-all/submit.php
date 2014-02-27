@@ -13,6 +13,9 @@ Notes\deleteOnUser($mysqli, $idusers);
 include_once '../../fns/NoteTags/deleteOnUser.php';
 NoteTags\deleteOnUser($mysqli, $idusers);
 
+include_once '../../fns/Users/clearNumNotes.php';
+Users\clearNumNotes($mysqli, $idusers);
+
 $_SESSION['notes/index_messages'] = array('All notes have been deleted.');
 
 include_once '../../fns/redirect.php';

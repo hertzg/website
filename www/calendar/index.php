@@ -119,12 +119,11 @@ if ($events) {
     $eventItems[] = Page::info('No events on this day.');
 }
 
-include_once '../fns/Events/countOnUser.php';
-$numEvents = Events\countOnUser($mysqli, $idusers);
-if ($numEvents) {
+$num_events = $user->num_events;
+if ($num_events) {
     $eventItems[] = Page::imageLinkWithDescription(
         'View All',
-        "$numEvents total.",
+        "$num_events total.",
         "all-events/",
         'event'
     );

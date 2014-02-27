@@ -45,6 +45,9 @@ include_once '../../fns/Events/add.php';
 include_once '../../lib/mysqli.php';
 $id = Events\add($mysqli, $idusers, $eventtext, $eventtime);
 
+include_once '../../fns/Users/addNumEvents.php';
+Users\addNumEvents($mysqli, $idusers, 1);
+
 $_SESSION['calendar/view-event_messages'] = array('Event has been saved.');
 
 redirect("../view-event/?idevents=$id");

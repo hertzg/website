@@ -8,8 +8,10 @@ include_once '../../lib/mysqli.php';
 list($event, $idevents) = require_event($mysqli);
 
 include_once '../../fns/Events/delete.php';
-include_once '../../lib/mysqli.php';
 Events\delete($mysqli, $idevents);
+
+include_once '../../fns/Users/addNumEvents.php';
+Users\addNumEvents($mysqli, $idusers, -1);
 
 $_SESSION['calendar/index_messages'] = array('Event has been deleted.');
 
