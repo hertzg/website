@@ -20,7 +20,7 @@ foreach ($themes as $id => $theme) {
 include_once '../fns/create_tabs.php';
 
 $page->base = '../';
-$page->title = 'Edit Profile';
+$page->title = 'Edit Theme';
 $page->finish(
     create_tabs(
         array(
@@ -33,7 +33,7 @@ $page->finish(
                 'href' => '../account/',
             ),
         ),
-        'Profile',
+        'Edit Theme',
         Page::warnings(array('Select theme color:'))
         .join(Page::HR, $themeItems)
     )

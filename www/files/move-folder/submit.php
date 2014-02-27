@@ -8,9 +8,8 @@ function is_child_folder ($mysqli, $idusers, $folder, $idfolders) {
     }
 }
 
-include_once '../../lib/sameDomainReferer.php';
-include_once '../../fns/redirect.php';
-if (!$sameDomainReferer) redirect('../..');
+include_once '../../fns/require_same_domain_referer.php';
+require_same_domain_referer('..');
 
 include_once '../fns/require_folder.php';
 include_once '../../lib/mysqli.php';
@@ -18,6 +17,8 @@ list($folder, $idfolders) = require_folder($mysqli);
 
 include_once '../../fns/request_strings.php';
 list($parentidfolders) = request_strings('parentidfolders');
+
+include_once '../../fns/redirect.php';
 
 $parentidfolders = abs((int)$parentidfolders);
 if ($parentidfolders) {

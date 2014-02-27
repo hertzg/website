@@ -1,8 +1,7 @@
 <?php
 
-include_once '../../lib/sameDomainReferer.php';
-include_once '../../fns/redirect.php';
-if (!$sameDomainReferer) redirect('..');
+include_once '../../fns/require_same_domain_referer.php';
+require_same_domain_referer('..');
 
 include_once '../fns/require_event.php';
 include_once '../../lib/mysqli.php';
@@ -14,6 +13,7 @@ Events\delete($mysqli, $idevents);
 
 $_SESSION['calendar/index_messages'] = array('Event has been deleted.');
 
+include_once '../../fns/redirect.php';
 redirect('../?'.http_build_query(array(
     'year' => date('Y', $event->eventtime),
     'month' => date('n', $event->eventtime),

@@ -1,8 +1,7 @@
 <?php
 
-include_once '../../lib/sameDomainReferer.php';
-include_once '../../fns/redirect.php';
-if (!$sameDomainReferer) redirect('../..');
+include_once '../../fns/require_same_domain_referer.php';
+require_same_domain_referer('..');
 
 include_once '../../fns/require_user.php';
 require_user('../../');
@@ -14,6 +13,8 @@ include_once '../../fns/request_multiple_files.php';
 list($file1, $file2, $file3) = request_multiple_files('file1', 'file2', 'file3');
 
 include_once '../../lib/mysqli.php';
+
+include_once '../../fns/redirect.php';
 
 $idfolders = abs((int)$idfolders);
 if ($idfolders) {

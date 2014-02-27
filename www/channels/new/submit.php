@@ -1,8 +1,7 @@
 <?php
 
-include_once '../../lib/sameDomainReferer.php';
-include_once '../../fns/redirect.php';
-if (!$sameDomainReferer) redirect('..');
+include_once '../../fns/require_same_domain_referer.php';
+require_same_domain_referer('./');
 
 include_once '../../fns/require_user.php';
 require_user('../../');
@@ -27,6 +26,8 @@ if ($channelname === '') {
         $errors[] = 'A channel with this name already exists.';
     }
 }
+
+include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['channels/add_errors'] = $errors;

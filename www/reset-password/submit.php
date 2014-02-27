@@ -1,8 +1,7 @@
 <?php
 
-include_once '../lib/sameDomainReferer.php';
-include_once '../fns/redirect.php';
-if (!$sameDomainReferer) redirect();
+include_once '../fns/require_same_domain_referer.php';
+require_same_domain_referer('..');
 
 include_once '../fns/session_start_custom.php';
 session_start_custom();
@@ -19,6 +18,8 @@ $idusers = abs((int)$idusers);
 include_once '../fns/Users/getByResetPasswordKey.php';
 include_once '../lib/mysqli.php';
 $user = Users\getByResetPasswordKey($mysqli, $idusers, $resetpasswordkey);
+
+include_once '../fns/redirect.php';
 
 if (!$user) redirect();
 

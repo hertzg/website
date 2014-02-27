@@ -1,8 +1,7 @@
 <?php
 
-include_once '../../lib/sameDomainReferer.php';
-include_once '../../fns/redirect.php';
-if (!$sameDomainReferer) redirect('../..');
+include_once '../../fns/require_same_domain_referer.php';
+require_same_domain_referer('..');
 
 include_once '../fns/require_contact.php';
 include_once '../../lib/mysqli.php';
@@ -16,4 +15,5 @@ ContactTags\deleteOnContact($mysqli, $id);
 
 $_SESSION['contacts/index_messages'] = array('Contact has been deleted.');
 
+include_once '../../fns/redirect.php';
 redirect('..');

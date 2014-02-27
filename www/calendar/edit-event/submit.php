@@ -1,8 +1,7 @@
 <?php
 
-include_once '../../lib/sameDomainReferer.php';
-include_once '../../fns/redirect.php';
-if (!$sameDomainReferer) redirect('../..');
+include_once '../../fns/require_same_domain_referer.php';
+require_same_domain_referer('..');
 
 include_once '../fns/require_event.php';
 include_once '../../lib/mysqli.php';
@@ -17,6 +16,8 @@ $eventtext = str_collapse_spaces($eventtext);
 $errors = array();
 
 if ($eventtext === '') $errors[] = 'Enter text.';
+
+include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['calendar/edit-event_errors'] = $errors;

@@ -1,8 +1,7 @@
 <?php
 
-include_once '../lib/sameDomainReferer.php';
-include_once '../fns/redirect.php';
-if (!$sameDomainReferer) redirect('..');
+include_once '../fns/require_same_domain_referer.php';
+require_same_domain_referer('./');
 
 include_once '../fns/require_user.php';
 require_user('../');
@@ -31,6 +30,8 @@ if ($email === '') {
         }
     }
 }
+
+include_once '../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['edit-profile/index_errors'] = $errors;

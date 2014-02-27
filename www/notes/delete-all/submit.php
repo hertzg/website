@@ -1,8 +1,7 @@
 <?php
 
-include_once '../../lib/sameDomainReferer.php';
-include_once '../../fns/redirect.php';
-if (!$sameDomainReferer) redirect('../..');
+include_once '../../fns/require_same_domain_referer.php';
+require_same_domain_referer('./');
 
 include_once '../../fns/require_user.php';
 require_user('../../');
@@ -16,4 +15,5 @@ NoteTags\deleteOnUser($mysqli, $idusers);
 
 $_SESSION['notes/index_messages'] = array('All notes have been deleted.');
 
+include_once '../../fns/redirect.php';
 redirect('..');

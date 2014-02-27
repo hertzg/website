@@ -1,8 +1,7 @@
 <?php
 
-include_once '../../lib/sameDomainReferer.php';
-include_once '../../fns/redirect.php';
-if (!$sameDomainReferer) redirect('../..');
+include_once '../../fns/require_same_domain_referer.php';
+require_same_domain_referer('..');
 
 include_once '../fns/require_file.php';
 include_once '../../lib/mysqli.php';
@@ -12,6 +11,8 @@ include_once '../fns/create_folder_link.php';
 
 include_once '../../fns/request_strings.php';
 list($idfolders) = request_strings('idfolders');
+
+include_once '../../fns/redirect.php';
 
 $idfolders = abs((int)$idfolders);
 if ($idfolders) {

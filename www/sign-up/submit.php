@@ -1,8 +1,8 @@
 <?php
 
-include_once '../lib/sameDomainReferer.php';
-include_once '../fns/redirect.php';
-if (!$sameDomainReferer) redirect();
+include_once '../fns/require_same_domain_referer.php';
+require_same_domain_referer('./');
+
 include_once '../classes/Captcha.php';
 
 include_once '../fns/session_start_custom.php';
@@ -55,6 +55,8 @@ if ($password1 === '') {
 }
 
 Captcha::check($errors, 3);
+
+include_once '../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['sign-up/index_errors'] = $errors;

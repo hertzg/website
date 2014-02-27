@@ -1,8 +1,7 @@
 <?php
 
-include_once '../lib/sameDomainReferer.php';
-include_once '../fns/redirect.php';
-if (!$sameDomainReferer) redirect();
+include_once '../fns/require_same_domain_referer.php';
+require_same_domain_referer('./');
 
 include_once '../fns/require_user.php';
 require_user('../');
@@ -17,6 +16,8 @@ if ($password === '') {
 } elseif ($user->password != md5($password, true)) {
     $errors[] = 'Invalid password.';
 }
+
+include_once '../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['close-account/index_errors'] = $errors;

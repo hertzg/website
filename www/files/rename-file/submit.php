@@ -1,8 +1,7 @@
 <?php
 
-include_once '../../lib/sameDomainReferer.php';
-include_once '../../fns/redirect.php';
-if (!$sameDomainReferer) redirect('../..');
+include_once '../../fns/require_same_domain_referer.php';
+require_same_domain_referer('..');
 
 include_once '../fns/require_file.php';
 include_once '../../lib/mysqli.php';
@@ -29,6 +28,8 @@ if ($filename === '') {
     }
 
 }
+
+include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['files/rename-file_errors'] = $errors;

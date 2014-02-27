@@ -1,8 +1,7 @@
 <?php
 
-include_once '../../lib/sameDomainReferer.php';
-include_once '../../fns/redirect.php';
-if (!$sameDomainReferer) redirect('..');
+include_once '../../fns/require_same_domain_referer.php';
+require_same_domain_referer('./');
 
 include_once '../../fns/require_user.php';
 require_user('../../');
@@ -25,6 +24,8 @@ $tagnames = Tags::parse($tags);
 if (count($tagnames) > Tags::MAX_NUM_TAGS) {
     $errors[] = 'Please, enter maximum '.Tags::MAX_NUM_TAGS.' tags.';
 }
+
+include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['notes/new/index_errors'] = $errors;

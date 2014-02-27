@@ -1,8 +1,7 @@
 <?php
 
-include_once '../../lib/sameDomainReferer.php';
-include_once '../../fns/redirect.php';
-if (!$sameDomainReferer) redirect('..');
+include_once '../../fns/require_same_domain_referer.php';
+require_same_domain_referer('./');
 
 include_once '../../fns/require_user.php';
 require_user('../../');
@@ -20,6 +19,8 @@ if ($feedbacktext === '') {
 } elseif (count(explode(' ', $feedbacktext)) < 6) {
     $errors[] = 'Feedback text too short. At least 6 words required.';
 }
+
+include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['help/feedback/index_errors'] = $errors;
