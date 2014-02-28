@@ -2,7 +2,7 @@
 
 namespace Events;
 
-function index ($mysqli, $idusers, $eventtime) {
+function indexOnUserAndTime ($mysqli, $idusers, $eventtime) {
     $sql = 'select * from events'
         ." where idusers = $idusers and eventtime = $eventtime";
     include_once __DIR__.'/../mysqli_query_object.php';

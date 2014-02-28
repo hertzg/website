@@ -102,9 +102,9 @@ $yearSelected = date('Y', $timeSelected);
 $monthSelected = date('n', $timeSelected);
 $daySelected = date('d', $timeSelected);
 
-include_once '../fns/Events/index.php';
+include_once '../fns/Events/indexOnUserAndTime.php';
 include_once '../lib/mysqli.php';
-$events = Events\index($mysqli, $idusers, $timeSelected);
+$events = Events\indexOnUserAndTime($mysqli, $idusers, $timeSelected);
 
 $eventItems = array();
 if ($events) {
