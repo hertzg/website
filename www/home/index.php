@@ -109,18 +109,18 @@ if ($num_notes) {
 }
 
 include_once '../fns/Notifications/countOnUser.php';
-$numNotifications = Notifications\countOnUser($mysqli, $idusers);
+$num_notifications = Notifications\countOnUser($mysqli, $idusers);
 
 $title = 'Notifications';
 $href = '../notifications/';
-if ($numNotifications) {
+if ($num_notifications) {
     $description = '';
-    $numNewNotifications = $user->numnotifications;
-    if ($numNewNotifications) {
-        $notifications = Page::warnings(array("$numNewNotifications new notifications."));
+    $num_new_notifications = $user->num_new_notifications;
+    if ($num_new_notifications) {
+        $notifications = Page::warnings(array("$num_new_notifications new notifications."));
         $items[] = Page::imageLinkWithDescription(
             $title,
-            "$numNewNotifications new. $numNotifications total.",
+            "$num_new_notifications new. $num_notifications total.",
             $href,
             'notification'
         );
@@ -128,7 +128,7 @@ if ($numNotifications) {
         $notifications = '';
         $items[] = Page::imageLinkWithDescription(
             $title,
-            "$numNotifications total.",
+            "$num_notifications total.",
             $href,
             'old-notification'
         );

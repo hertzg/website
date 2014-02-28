@@ -38,8 +38,8 @@ Notifications\add($mysqli, $idusers, $idchannels,
 include_once 'fns/Channels/addNumNotifications.php';
 Channels\addNumNotifications($mysqli, $idchannels, 1);
 
-include_once 'fns/Users/addNumNotifications.php';
-Users\addNumNotifications($mysqli, $idusers, 1);
+include_once 'fns/Users/addNumNewNotifications.php';
+Users\addNumNewNotifications($mysqli, $idusers, 1);
 
 echo json_encode(array(
     'ok' => true,

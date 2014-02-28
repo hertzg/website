@@ -2,9 +2,9 @@
 
 namespace Channels;
 
-function addNumNotifications ($mysqli, $id, $numnotifications) {
+function addNumNotifications ($mysqli, $id, $num_notifications) {
     $sql = 'update channels set'
-        ." numnotifications = numnotifications + $numnotifications"
+        ." num_notifications = num_notifications + $num_notifications"
         ." where idchannels = $id";
     $mysqli->query($sql);
 }

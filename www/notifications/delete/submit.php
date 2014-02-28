@@ -11,7 +11,7 @@ include_once '../../fns/Notifications/deleteOnChannel.php';
 Notifications\deleteOnChannel($mysqli, $id);
 
 include_once '../../fns/Channels/addNumNotifications.php';
-Channels\addNumNotifications($mysqli, $id, -$channel->numnotifications);
+Channels\addNumNotifications($mysqli, $id, -$channel->num_notifications);
 
 $_SESSION['notifications/index_messages'] = array(
     'Notifications have been deleted.',

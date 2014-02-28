@@ -10,9 +10,9 @@ list($id) = request_strings('id');
 
 $id = abs((int)$id);
 
-include_once '../fns/Users/clearNumNotifications.php';
+include_once '../fns/Users/clearNumNewNotifications.php';
 include_once '../lib/mysqli.php';
-Users\clearNumNotifications($mysqli, $idusers);
+Users\clearNumNewNotifications($mysqli, $idusers);
 
 $options = array();
 
@@ -27,7 +27,7 @@ if ($num_channels) {
 $filterMessage = '';
 $notificationsHtml = '';
 
-$numNotifications = $user->numnotifications;
+$num_new_notifications = $user->num_new_notifications;
 
 include_once '../fns/Channels/get.php';
 $channel = Channels\get($mysqli, $idusers, $id);
@@ -69,7 +69,7 @@ if ($notifications) {
 
     foreach ($notifications as $i => $notification) {
         if ($i) $notificationsHtml .= Page::HR;
-        $iconName = $i < $numNotifications ? 'notification' : 'old-notification';
+        $iconName = $i < $num_new_notifications ? 'notification' : 'old-notification';
         $itemHtml = '';
         if (!$channel) {
             $itemHtml =

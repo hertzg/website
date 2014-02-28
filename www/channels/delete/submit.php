@@ -10,9 +10,6 @@ list($channel, $id) = require_channel($mysqli);
 include_once '../../fns/Notifications/deleteOnChannel.php';
 Notifications\deleteOnChannel($mysqli, $id);
 
-include_once '../../fns/Users/addNumNotifications.php';
-Users\addNumNotifications($mysqli, $idusers, -$channel->numnotifications);
-
 include_once '../../fns/Channels/delete.php';
 Channels\delete($mysqli, $id);
 
