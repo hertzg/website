@@ -24,6 +24,9 @@ $items = array(
     .'</form>'
 );
 
+include_once '../fns/Bookmarks/search.php';
+$bookmarks = Bookmarks\search($mysqli, $idusers, $keyword);
+
 include_once '../fns/Contacts/search.php';
 $contacts = Contacts\search($mysqli, $idusers, $keyword);
 
@@ -45,7 +48,16 @@ if ($searchFiles) {
     $folders = $files = array();
 }
 
-if ($contacts || $notes || $tasks) {
+if ($bookmarks || $contacts || $notes || $tasks) {
+
+    foreach ($bookmarks as $bookmark) {
+        $items[] = Page::imageLinkWithDescription(
+            htmlspecialchars($bookmark->title),
+            htmlspecialchars($bookmark->url),
+            "../bookmarks/view/?id=$bookmark->idbookmarks",
+            'bookmark'
+        );
+    }
 
     foreach ($contacts as $contact) {
         $items[] = Page::imageLink(
@@ -69,7 +81,8 @@ if ($contacts || $notes || $tasks) {
         $href = "../tasks/view/?id=$task->idtasks";
         $tags = $task->tags;
         if ($tags) {
-            $items[] = Page::imageLinkWithDescription($title, 'Tags: '.htmlspecialchars($tags), $href, $icon);
+            $items[] = Page::imageLinkWithDescription($title,
+                'Tags: '.htmlspecialchars($tags), $href, $icon);
         } else {
             $items[] = Page::imageLink($title, $href, $icon);
         }

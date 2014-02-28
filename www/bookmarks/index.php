@@ -1,5 +1,16 @@
 <?php
 
+function create_search_form ($content) {
+    return
+        '<form action="./" style="height: 48px; position: relative">'
+            .$content
+        .'</form>';
+}
+
+function createTagInput ($tag) {
+    return '<input type="hidden" name="tag" value="'.htmlspecialchars($tag).'" />';
+}
+
 include_once '../fns/require_user.php';
 require_user('../');
 
@@ -8,40 +19,117 @@ include_once '../lib/mysqli.php';
 include_once '../lib/page.php';
 
 include_once '../fns/request_strings.php';
-list($tag) = request_strings('tag');
+list($keyword, $tag) = request_strings('keyword', 'tag');
 
-if ($tag === '') {
+$items = array();
+$filterMessage = '';
 
-    include_once '../fns/Bookmarks/indexOnUser.php';
-    $bookmarks = Bookmarks\indexOnUser($mysqli, $idusers);
+if ($keyword === '') {
+    if ($tag === '') {
 
-    if (count($bookmarks) > 1) {
+        include_once '../fns/Bookmarks/indexOnUser.php';
+        $bookmarks = Bookmarks\indexOnUser($mysqli, $idusers);
 
-        include_once '../fns/BookmarkTags/indexOnUser.php';
-        $bookmarkTags = BookmarkTags\indexOnUser($mysqli, $idusers);
+        if (count($bookmarks) > 1) {
 
-        if ($bookmarkTags) {
-            include_once '../fns/create_tag_filter_bar.php';
-            $filterMessage = create_tag_filter_bar($bookmarkTags, array());
-        } else {
-            $filterMessage = '';
+            include_once '../fns/create_search_form_empty_content.php';
+            $items[] = create_search_form(create_search_form_empty_content('Search bookmarks...'));
+
+            include_once '../fns/BookmarkTags/indexOnUser.php';
+            $tags = BookmarkTags\indexOnUser($mysqli, $idusers);
+            if ($tags) {
+                include_once '../fns/create_tag_filter_bar.php';
+                $filterMessage = create_tag_filter_bar($tags, array());
+            }
+
         }
 
     } else {
-        $filterMessage = '';
+
+        include_once '../fns/BookmarkTags/indexOnTagName.php';
+        $bookmarks = BookmarkTags\indexOnTagName($mysqli, $idusers, $tag);
+
+        if (count($bookmarks) > 1) {
+            include_once '../fns/create_search_form_empty_content.php';
+            $items[] = create_search_form(
+                create_search_form_empty_content('Search bookmarks...')
+                .createTagInput($tag)
+            );
+        }
+
+        include_once '../fns/create_clear_filter_bar.php';
+        $filterMessage = create_clear_filter_bar($tag, './');
+
     }
+    if ($tag === '') {
 
+        include_once '../fns/Bookmarks/indexOnUser.php';
+        $bookmarks = Bookmarks\indexOnUser($mysqli, $idusers);
+
+        if (count($bookmarks) > 1) {
+
+            include_once '../fns/BookmarkTags/indexOnUser.php';
+            $bookmarkTags = BookmarkTags\indexOnUser($mysqli, $idusers);
+
+            if ($bookmarkTags) {
+                include_once '../fns/create_tag_filter_bar.php';
+                $filterMessage = create_tag_filter_bar($bookmarkTags, array());
+            }
+
+        }
+
+    } else {
+
+        include_once '../fns/BookmarkTags/indexOnTagName.php';
+        $bookmarks = BookmarkTags\indexOnTagName($mysqli, $idusers, $tag);
+
+        include_once '../fns/create_clear_filter_bar.php';
+        $filterMessage = create_clear_filter_bar($tag, './');
+
+    }
 } else {
+    include_once '../fns/create_search_form_content.php';
+    if ($tag === '') {
 
-    include_once '../fns/BookmarkTags/indexOnTagName.php';
-    $bookmarks = BookmarkTags\indexOnTagName($mysqli, $idusers, $tag);
+        include_once '../fns/Bookmarks/search.php';
+        $bookmarks = Bookmarks\search($mysqli, $idusers, $keyword);
 
-    include_once '../fns/create_clear_filter_bar.php';
-    $filterMessage = create_clear_filter_bar($tag, './');
+        $items[] = create_search_form(
+            create_search_form_content($keyword, 'Search bookmarks...', './')
+        );
+        if (count($bookmarks) > 1) {
 
+            include_once '../fns/BookmarkTags/indexOnUser.php';
+            $tags = BookmarkTags\indexOnUser($mysqli, $idusers);
+
+            if ($tags) {
+                include_once '../fns/create_tag_filter_bar.php';
+                $filterMessage = create_tag_filter_bar($tags, array(
+                    'keyword' => $keyword,
+                ));
+            }
+
+        }
+
+    } else {
+
+        include_once '../fns/BookmarkTags/searchOnTagName.php';
+        $bookmarks = BookmarkTags\searchOnTagName($mysqli, $idusers, $keyword, $tag);
+
+        $items[] = create_search_form(
+            create_search_form_content($keyword, 'Search bookmarks...', '?tag='.rawurlencode($tag))
+            .createTagInput($tag)
+        );
+
+        $clearHref = '?'.htmlspecialchars(
+            http_build_query(array('keyword' => $keyword))
+        );
+        include_once '../fns/create_clear_filter_bar.php';
+        $filterMessage = create_clear_filter_bar($tag, $clearHref);
+
+    }
 }
 
-$items = array();
 if ($bookmarks) {
     foreach ($bookmarks as $bookmark) {
         $href = "view/?id=$bookmark->idbookmarks";
