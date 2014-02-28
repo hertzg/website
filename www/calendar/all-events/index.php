@@ -11,6 +11,7 @@ include_once '../../fns/Events/indexOnUser.php';
 include_once '../../fns/Events/indexOnUser.php';
 $events = Events\indexOnUser($mysqli, $idusers);
 if ($events) {
+
     foreach ($events as $event) {
         $description = date('F d, Y', $event->eventtime);
         $items[] = Page::imageLinkWithDescription(
@@ -20,10 +21,21 @@ if ($events) {
             'event'
         );
     }
+
+    include_once '../../fns/create_panel.php';
+    $optionsPanel = create_panel(
+        'Options',
+        Page::imageLink('Delete All Events', 'delete-all/', 'trash-bin')
+    );
+
 } else {
     $items[] = Page::info('No events.');
+    $optionsPanel = '';
 }
 
+unset($_SESSION['calendar/index_messages']);
+
+include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
 
 $page->title = 'All Events';
@@ -43,4 +55,5 @@ $page->finish(
         'All Events',
         join(Page::HR, $items)
     )
+    .$optionsPanel
 );

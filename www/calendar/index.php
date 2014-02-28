@@ -109,11 +109,8 @@ $events = Events\index($mysqli, $idusers, $timeSelected);
 $eventItems = array();
 if ($events) {
     foreach ($events as $event) {
-        $eventItems[] = Page::imageLink(
-            htmlspecialchars($event->eventtext),
-            "view-event/?idevents=$event->idevents",
-            'event'
-        );
+        $eventItems[] = Page::imageLink(htmlspecialchars($event->eventtext),
+            "view-event/?idevents=$event->idevents", 'event');
     }
 } else {
     $eventItems[] = Page::info('No events on this day.');
@@ -121,18 +118,10 @@ if ($events) {
 
 $num_events = $user->num_events;
 if ($num_events) {
-    $eventItems[] = Page::imageLinkWithDescription(
-        'View All',
-        "$num_events total.",
-        "all-events/",
-        'event'
-    );
+    $eventItems[] = Page::imageLinkWithDescription('All Events',
+        "$num_events total.", "all-events/", 'event');
 } else {
-    $eventItems[] = Page::imageLink(
-        'View All',
-        "all-events/",
-        'event'
-    );
+    $eventItems[] = Page::imageLink('All Events', "all-events/", 'event');
 }
 
 include_once '../fns/create_panel.php';
