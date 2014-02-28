@@ -108,9 +108,7 @@ if ($num_notes) {
     $items[] = Page::imageLink($title, $href, $icon);
 }
 
-include_once '../fns/Notifications/countOnUser.php';
-$num_notifications = Notifications\countOnUser($mysqli, $idusers);
-
+$num_notifications = $user->num_notifications;
 $title = 'Notifications';
 $href = '../notifications/';
 if ($num_notifications) {

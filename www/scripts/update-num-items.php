@@ -21,6 +21,9 @@ foreach ($users as $user) {
     $sql = "select count(*) value from events where idusers = $idusers";
     $num_events = mysqli_single_object($mysqli, $sql)->value;
 
+    $sql = "select count(*) value from notifications where idusers = $idusers";
+    $num_notifications = mysqli_single_object($mysqli, $sql)->value;
+
     $sql = "select count(*) value from notes where idusers = $idusers";
     $num_notes = mysqli_single_object($mysqli, $sql)->value;
 
@@ -39,7 +42,21 @@ foreach ($users as $user) {
         ." num_tasks = $num_tasks,"
         ." num_tokens = $num_tokens"
         ." where idusers = $idusers";
-    $mysqli->query($sql);
+    $mysqli->query($sql) || die($mysqli->error);
+
+}
+
+$channels = mysqli_query_object($mysqli, 'select * from channels');
+foreach ($channels as $channel) {
+
+    $idchannels = $channel->idchannels;
+
+    $sql = "select count(*) value from notifications where idchannels = $idchannels";
+    $num_notifications = mysqli_single_object($mysqli, $sql)->value;
+
+    $sql = "update channels set num_notifications = $num_notifications"
+        ." where idchannels = $idchannels";
+    $mysqli->query($sql) || die($mysqli->error);
 
 }
 
