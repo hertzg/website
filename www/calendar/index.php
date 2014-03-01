@@ -16,13 +16,13 @@ function create_calendar ($timeSelected) {
     $html =
         '<div style="background: #eee; font-weight: bold; text-align: center; line-height: 48px; color: #444; position: relative">'
             ."<a href=\"$prevMonthHref\" class=\"clickable navigation-arrow\" style=\"left: 0\">"
-                .Page::icon('arrow-left')
+                .'<span class="icon arrow-left"></span>'
             .'</a>'
             .'<div style="margin: 0 48px">'
                 .date('F d, Y', $timeSelected)
             .'</div>'
             ."<a href=\"$nextMonthHref\" class=\"clickable navigation-arrow\" style=\"right: 0\">"
-                .Page::icon('arrow-right')
+                .'<span class="icon arrow-right"></span>'
             .'</a>'
         .'</div>'
         .'<div class="calendar-days calendar-weeks">'

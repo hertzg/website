@@ -74,28 +74,18 @@ class Page {
         );
     }
 
-    static function icon ($name) {
-        return "<div class=\"icon $name\"></div>";
-    }
-
-    static function imageItem ($content, $href, $iconName, $target = null) {
-        return
-            "<a class=\"clickable link imageLink\" href=\"$href\""
-            .($target === null ? '' : " target=\"$target\"").'>'
-                .'<div class="imageLink-icon">'.self::icon($iconName).'</div>'
-                ."<div class=\"imageLink-content\">$content</div>"
-            .'</a>';
-    }
-
     static function imageLink ($title, $href, $iconName, $target = null) {
         $content = "<div class=\"imageLink-title\">$title</div>";
-        return self::imageItem($content, $href, $iconName, $target);
+        include_once __DIR__.'/../fns/create_image_link.php';
+        return create_image_link($content, $href, $iconName, $target);
     }
 
     static function disabledImageLink ($title, $iconName) {
         return
             "<div class=\"clickable link imageLink\">"
-                .'<div class="imageLink-icon">'.self::icon($iconName).'</div>'
+                .'<div class="imageLink-icon">'
+                    ."<div class=\"icon $iconName\"></div>"
+                .'</div>'
                 .'<div class="imageLink-content">'
                     ."<div class=\"imageLink-title disabled\">$title</div>"
                 .'</div>'
@@ -104,28 +94,13 @@ class Page {
 
     static function imageLinkWithDescription ($title, $description, $href, $iconName) {
         include_once __DIR__.'/../fns/create_title_and_description.php';
-        $title = create_title_and_description($title, $description);
-        return Page::imageItem($title, $href, $iconName);
-    }
-
-    static function imageText ($content, $iconName) {
-        return
-            '<div class="imageText">'
-                .'<div class="imageText-icon">'
-                    .self::icon($iconName)
-                .'</div>'
-                .'<div class="imageText-text">'
-                    .$content
-                .'</div>'
-            .'</div>';
+        $content = create_title_and_description($title, $description);
+        include_once __DIR__.'/../fns/create_image_link.php';
+        return create_image_link($content, $href, $iconName);
     }
 
     static function info ($text) {
         return "<div class=\"page-info\">$text</div>";
-    }
-
-    static function link ($title, $href) {
-        return "<a class=\"clickable link\" href=\"$href\">$title</a>";
     }
 
     static function messages ($errors) {

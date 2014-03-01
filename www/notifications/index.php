@@ -67,6 +67,8 @@ if ($notifications) {
         );
     }
 
+    include_once '../fns/create_image_text.php';
+
     foreach ($notifications as $i => $notification) {
         if ($i) $notificationsHtml .= Page::HR;
         $iconName = $i < $num_new_notifications ? 'notification' : 'old-notification';
@@ -77,7 +79,7 @@ if ($notifications) {
                     .$notification->channelname
                 .'</a>: ';
         }
-        $notificationsHtml .= Page::imageText(
+        $content =
             $itemHtml
             .nl2br(
                 preg_replace(
@@ -85,9 +87,8 @@ if ($notifications) {
                     '<a class="a" rel="noreferrer" href="$1">$1</a>$2',
                     htmlspecialchars($notification->notificationtext)
                 )
-            ),
-            $iconName
-        );
+            );
+        $notificationsHtml .= create_image_text($content, $iconName);
     }
 } else {
     $notificationsHtml = Page::info('No notifications.');
