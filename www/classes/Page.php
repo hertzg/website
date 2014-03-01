@@ -103,11 +103,8 @@ class Page {
     }
 
     static function imageLinkWithDescription ($title, $description, $href, $iconName) {
-        $title =
-            '<div style="line-height: 18px; padding: 6px 0;">'
-                ."<div class=\"linkTitle\">$title</div>"
-                ."<div class=\"linkDescription\">$description</div>"
-            .'</div>';
+        include_once __DIR__.'/../fns/create_title_and_description.php';
+        $title = create_title_and_description($title, $description);
         return Page::imageItem($title, $href, $iconName);
     }
 

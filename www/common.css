@@ -428,12 +428,16 @@ label {
     color: #999;
 }
 
-.linkTitle {
+.title_and_description {
+    line-height: 18px;
+    padding: 6px 0;
+}
+.title_and_description > :first-child {
     overflow: hidden;
     text-overflow: ellipsis;
     margin-right: 8px;
 }
-.linkDescription {
+.title_and_description > :last-child {
     color: #555;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -441,7 +445,8 @@ label {
     font-weight: normal;
     margin-right: 8px;
 }
-.clickable:active .linkDescription {
+
+.clickable:active .title_and_description > :last-child {
     color: #fff;
 }
 
