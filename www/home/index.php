@@ -41,7 +41,9 @@ $href = '../bookmarks/';
 $icon = 'bookmarks';
 if ($num_bookmarks) {
     $description = "$num_bookmarks total.";
-    $items[] = Page::imageLinkWithDescription($title, $description, $href, $icon);
+    $items[] = Page::imageLinkWithDescription($title, $description, $href, $icon, array(
+        'class' => 'withArrow',
+    ));
 } else {
     $items[] = Page::imageLink($title, $href, $icon);
 }

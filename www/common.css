@@ -382,50 +382,58 @@ label {
     background: #ddd;
 }
 
-.imageLink {
+.image_link {
     position: relative;
     height: 48px;
 }
-.imageLink-icon {
+.image_link-icon {
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     width: 48px;
 }
-.clickable:focus .imageLink-icon {
+.clickable:focus .image_link-icon {
     width: 44px;
 }
-.clickable:active .imageLink-icon {
+.clickable:active .image_link-icon {
     width: 48px;
 }
-.imageLink-content {
+.image_link-content {
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 48px;
 }
-.clickable:focus .imageLink-content {
+.clickable:focus .image_link-content {
     left: 46px;
     top: -2px;
     right: -2px;
     bottom: -2px;
 }
-.clickable:active .imageLink-content {
+.clickable:active .image_link-content {
     top: 0;
     right: 0;
     bottom: 0;
     left: 48px;
 }
-.imageLink-title {
+.image_link-title {
     line-height: 48px;
     overflow: hidden;
     text-overflow: ellipsis;
     margin-right: 8px;
 }
-.imageLink-title.disabled {
+.image_link-title.disabled {
     color: #999;
+}
+.image_link.withArrow {
+    background-image: url(images/arrow.png);
+    background-repeat: no-repeat;
+    background-position: 100% 50%;
+}
+.image_link.withArrow .image_link-content {
+    right: 24px;
 }
 
 .title_and_description {
@@ -451,7 +459,7 @@ label {
 }
 
 .imageText-icon .icon,
-.imageLink-icon .icon {
+.image_link-icon .icon {
     position: absolute;
     top: 0;
     right: 0;

@@ -1,12 +1,26 @@
 <?php
 
-function create_image_link ($content, $href, $iconName, $target = null) {
+function create_image_link ($content, $href, $iconName, array $options = array()) {
+
+    if (array_key_exists('target', $options)) {
+        $targetAttribute = " target=\"$options[target]\"";
+    } else {
+        $targetAttribute = '';
+    }
+
+    if (array_key_exists('class', $options)) {
+        $additionalClass = " $options[class]";
+    } else {
+        $additionalClass = '';
+    }
+
     return
-        "<a class=\"clickable link imageLink\" href=\"$href\""
-        .($target === null ? '' : " target=\"$target\"").'>'
-            .'<div class="imageLink-icon">'
+        "<a class=\"clickable link image_link$additionalClass\""
+        ." href=\"$href\"$targetAttribute>"
+            .'<div class="image_link-icon">'
                 ."<div class=\"icon $iconName\"></div>"
             .'</div>'
-            ."<div class=\"imageLink-content\">$content</div>"
+            ."<div class=\"image_link-content\">$content</div>"
         .'</a>';
+
 }

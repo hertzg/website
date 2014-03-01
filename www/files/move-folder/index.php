@@ -44,13 +44,11 @@ if ($parentidfolders) {
 foreach ($folders as $itemFolder) {
     $escapedName = htmlspecialchars($itemFolder->foldername);
     if ($itemFolder->idfolders == $idfolders) {
-        $items[] = Page::disabledImageLink($escapedName, 'folder');
+        include_once '../../fns/create_disabled_image_link.php';
+        $items[] = create_disabled_image_link($escapedName, 'folder');
     } else {
-        $items[] = Page::imageLink(
-            $escapedName,
-            create_link($idfolders, $itemFolder->idfolders),
-            'folder'
-        );
+        $items[] = Page::imageLink($escapedName,
+            create_link($idfolders, $itemFolder->idfolders), 'folder');
     }
 }
 

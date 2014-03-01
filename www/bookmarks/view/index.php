@@ -65,7 +65,9 @@ $page->finish(
         'Options',
         Page::imageLink('Open', $externalUrl, 'run')
         .Page::HR
-        .Page::imageLink('Open in New Tab', $externalUrl, 'run', '_blank')
+        .Page::imageLink('Open in New Tab', $externalUrl, 'run', array(
+            'target' => '_blank',
+        ))
         .Page::HR
         .Page::imageLink('Edit Bookmark', "../edit/?id=$id", 'edit-bookmark')
         .Page::HR
