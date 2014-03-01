@@ -21,11 +21,7 @@ $page->finish(
         'Contacts',
         Page::text('Are you sure you want to delete all the contacts?')
         .Page::HR
-        .Page::imageLink(
-            'Yes, delete all contacts',
-            'submit.php',
-            'yes'
-        )
+        .Page::imageLink('Yes, delete all contacts', 'submit.php', 'yes')
         .Page::HR
         .Page::imageLink('No, return back', '..', 'no')
     )

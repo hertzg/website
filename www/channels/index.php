@@ -13,11 +13,9 @@ $channelsHtml = '';
 if ($channels) {
     foreach ($channels as $i => $channel) {
         if ($i) $channelsHtml .= Page::HR;
-        $channelsHtml .= Page::imageLink(
+        $channelsHtml .= Page::imageArrowLink(
             htmlspecialchars($channel->channelname),
-            "view/?id=$channel->idchannels",
-            'channel'
-        );
+            "view/?id=$channel->idchannels", 'channel');
     }
 } else {
     $channelsHtml .= Page::info('No channels.');
@@ -58,12 +56,9 @@ $page->finish(
     )
     .create_panel(
         'Options',
-        Page::imageLink('New Channel', 'new/', 'create-channel')
+        Page::imageArrowLink('New Channel', 'new/', 'create-channel')
         .Page::HR
-        .Page::imageLink(
-            'Download API',
-            'download-zvini-api.php',
-            'download'
-        )
+        .Page::imageLink('Download API',
+            'download-zvini-api.php', 'download')
     )
 );

@@ -21,11 +21,7 @@ $page->finish(
         'Notes',
         Page::text('Are you sure you want to delete all the notes?')
         .Page::HR
-        .Page::imageLink(
-            'Yes, delete all notes',
-            'submit.php',
-            'yes'
-        )
+        .Page::imageLink('Yes, delete all notes', 'submit.php', 'yes')
         .Page::HR
         .Page::imageLink('No, return back', '..', 'no')
     )

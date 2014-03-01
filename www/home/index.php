@@ -41,11 +41,9 @@ $href = '../bookmarks/';
 $icon = 'bookmarks';
 if ($num_bookmarks) {
     $description = "$num_bookmarks total.";
-    $items[] = Page::imageLinkWithDescription($title, $description, $href, $icon, array(
-        'class' => 'withArrow',
-    ));
+    $items[] = Page::imageArrowLinkWithDescription($title, $description, $href, $icon);
 } else {
-    $items[] = Page::imageLink($title, $href, $icon);
+    $items[] = Page::imageArrowLink($title, $href, $icon);
 }
 
 $timeNow = time();
@@ -70,12 +68,12 @@ if ($numEventsToday) {
     } else {
         $description = n_events($numEventsToday).' today.';
     }
-    $items[] = Page::imageLinkWithDescription($title, $description, $href, $icon);
+    $items[] = Page::imageArrowLinkWithDescription($title, $description, $href, $icon);
 } elseif ($numEventsTomorrow) {
     $description = n_events($numEventsTomorrow).' tomorrow.';
-    $items[] = Page::imageLinkWithDescription($title, $description, $href, $icon);
+    $items[] = Page::imageArrowLinkWithDescription($title, $description, $href, $icon);
 } else {
-    $items[] = Page::imageLink($title, $href, $icon);
+    $items[] = Page::imageArrowLink($title, $href, $icon);
 }
 
 $num_contacts = $user->num_contacts;
@@ -84,9 +82,9 @@ $href = '../contacts/';
 $icon = 'contacts';
 if ($num_contacts) {
     $description = "$num_contacts total.";
-    $items[] = Page::imageLinkWithDescription($title, $description, $href, $icon);
+    $items[] = Page::imageArrowLinkWithDescription($title, $description, $href, $icon);
 } else {
-    $items[] = Page::imageLink($title, $href, $icon);
+    $items[] = Page::imageArrowLink($title, $href, $icon);
 }
 
 $title = 'Files';
@@ -94,9 +92,9 @@ $href = '../files/';
 $icon = 'files';
 if ($user->storageused) {
     $description = bytestr($user->storageused).' used.';
-    $items[] = Page::imageLinkWithDescription($title, $description, $href, $icon);
+    $items[] = Page::imageArrowLinkWithDescription($title, $description, $href, $icon);
 } else {
-    $items[] = Page::imageLink($title, $href, $icon);
+    $items[] = Page::imageArrowLink($title, $href, $icon);
 }
 
 $num_notes = $user->num_notes;
@@ -105,9 +103,9 @@ $href = '../notes/';
 $icon = 'notes';
 if ($num_notes) {
     $description = "$num_notes total.";
-    $items[] = Page::imageLinkWithDescription($title, $description, $href, $icon);
+    $items[] = Page::imageArrowLinkWithDescription($title, $description, $href, $icon);
 } else {
-    $items[] = Page::imageLink($title, $href, $icon);
+    $items[] = Page::imageArrowLink($title, $href, $icon);
 }
 
 $num_notifications = $user->num_notifications;
@@ -118,7 +116,7 @@ if ($num_notifications) {
     $num_new_notifications = $user->num_new_notifications;
     if ($num_new_notifications) {
         $notifications = Page::warnings(array("$num_new_notifications new notifications."));
-        $items[] = Page::imageLinkWithDescription(
+        $items[] = Page::imageArrowLinkWithDescription(
             $title,
             "$num_new_notifications new. $num_notifications total.",
             $href,
@@ -126,7 +124,7 @@ if ($num_notifications) {
         );
     } else {
         $notifications = '';
-        $items[] = Page::imageLinkWithDescription(
+        $items[] = Page::imageArrowLinkWithDescription(
             $title,
             "$num_notifications total.",
             $href,
@@ -135,7 +133,7 @@ if ($num_notifications) {
     }
 } else {
     $notifications = '';
-    $items[] = Page::imageLink($title, $href, 'old-notification');
+    $items[] = Page::imageArrowLink($title, $href, 'old-notification');
 }
 
 $num_tasks = $user->num_tasks;
@@ -144,9 +142,9 @@ $href = '../tasks/';
 $icon = 'tasks';
 if ($num_tasks) {
     $description = "$num_tasks total.";
-    $items[] = Page::imageLinkWithDescription($title, $description, $href, $icon);
+    $items[] = Page::imageArrowLinkWithDescription($title, $description, $href, $icon);
 } else {
-    $items[] = Page::imageLink($title, $href, $icon);
+    $items[] = Page::imageArrowLink($title, $href, $icon);
 }
 
 if (array_key_exists('home/index_messages', $_SESSION)) {
@@ -163,9 +161,9 @@ $page->finish(
     create_tabs(array(), 'Home', $pageMessages.$notifications.join(Page::HR, $items))
     .create_panel(
         'Options',
-        Page::imageLink('Account', '../account/', 'account')
+        Page::imageArrowLink('Account', '../account/', 'account')
         .Page::HR
-        .Page::imageLink('Help', '../help/', 'help')
+        .Page::imageArrowLink('Help', '../help/', 'help')
         .Page::HR
         .Page::imageLink('Sign Out', '../submit-signout.php', 'sign-out')
     )

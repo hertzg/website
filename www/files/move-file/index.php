@@ -33,26 +33,17 @@ $folders = Folders\indexInUserFolder($mysqli, $idusers, $idfolders);
 
 $items = array();
 if ($idfolders) {
-    $items[] = Page::imageLink(
-        '.. Parent folder',
-        create_link($id, $parentFolder->parentidfolders),
-        'parent-folder'
-    );
+    $items[] = Page::imageLink('.. Parent folder',
+        create_link($id, $parentFolder->parentidfolders), 'parent-folder');
 }
 foreach ($folders as $folder) {
-    $items[] = Page::imageLink(
-        htmlspecialchars($folder->foldername),
-        create_link($id, $folder->idfolders),
-        'folder'
-    );
+    $items[] = Page::imageArrowLink(htmlspecialchars($folder->foldername),
+        create_link($id, $folder->idfolders), 'folder');
 }
 
 if ($idfolders != $file->idfolders) {
-    $items[] = Page::imageLink(
-        'Move Here',
-        "submit.php?id=$id&idfolders=$idfolders",
-        'move-file'
-    );
+    $items[] = Page::imageLink('Move Here',
+        "submit.php?id=$id&idfolders=$idfolders", 'move-file');
 }
 
 if (array_key_exists('files/move-file_idfolders', $_SESSION) &&

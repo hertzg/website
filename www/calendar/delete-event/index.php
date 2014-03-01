@@ -26,16 +26,10 @@ $page->finish(
         "Event #$idevents",
         Page::text('Are you sure you want to delete the event?')
         .Page::HR
-        .Page::imageLink(
-            'Yes, delete event',
-            "submit.php?idevents=$idevents",
-            'yes'
-        )
+        .Page::imageLink('Yes, delete event',
+            "submit.php?idevents=$idevents", 'yes')
         .Page::HR
-        .Page::imageLink(
-            'No, return back',
-            "../view-event/?idevents=$idevents",
-            'no'
-        )
+        .Page::imageLink('No, return back',
+            "../view-event/?idevents=$idevents", 'no')
     )
 );

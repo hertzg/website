@@ -19,11 +19,8 @@ if (array_key_exists('tokens/index_messages', $_SESSION)) {
 
 $options = array();
 if (!$token) {
-    $options[] = Page::imageLink(
-        'Remember Current Session',
-        'submit-remember.php',
-        'create-token'
-    );
+    $options[] = Page::imageLink('Remember Current Session',
+        'submit-remember.php', 'create-token');
 }
 
 include_once __DIR__.'/../fns/Tokens/indexOnUser.php';
@@ -31,11 +28,8 @@ $tokens = Tokens\indexOnUser($mysqli, $idusers);
 
 $items = array();
 if ($tokens) {
-    $options[] = Page::imageLink(
-        'Delete All Sessions',
-        'delete-all/',
-        'trash-bin'
-    );
+    $options[] = Page::imageArrowLink('Delete All Sessions',
+        'delete-all/', 'trash-bin');
     foreach ($tokens as $itemToken) {
 
         $text = bin2hex($itemToken->tokentext);
@@ -45,18 +39,12 @@ if ($tokens) {
 
         $useragent = $itemToken->useragent;
         if ($useragent === null) {
-            $items[] = Page::imageLink(
-                $text,
-                "view/?id=$itemToken->idtokens",
-                'token'
-            );
+            $items[] = Page::imageArrowLink($text,
+                "view/?id=$itemToken->idtokens", 'token');
         } else {
-            $items[] = Page::imageLinkWithDescription(
-                $text,
+            $items[] = Page::imageArrowLinkWithDescription($text,
                 htmlspecialchars($useragent),
-                "view/?id=$itemToken->idtokens",
-                'token'
-            );
+                "view/?id=$itemToken->idtokens", 'token');
         }
 
     }

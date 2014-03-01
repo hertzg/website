@@ -21,11 +21,7 @@ $page->finish(
         'Tasks',
         Page::text('Are you sure you want to delete all the tasks?')
         .Page::HR
-        .Page::imageLink(
-            'Yes, delete all task',
-            'submit.php',
-            'yes'
-        )
+        .Page::imageLink('Yes, delete all task', 'submit.php', 'yes')
         .Page::HR
         .Page::imageLink('No, return back', '..', 'no')
     )

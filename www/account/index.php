@@ -36,19 +36,19 @@ if ($fullname !== '') {
 }
 
 $options = array(
-    Page::imageLink('Edit Profile', '../edit-profile/', 'edit-profile'),
-    Page::imageLink('Edit Theme', '../edit-theme/', "edit-$user->theme-theme"),
-    Page::imageLink('Change Password', '../change-password/', 'edit-password'),
+    Page::imageArrowLink('Edit Profile', '../edit-profile/', 'edit-profile'),
+    Page::imageArrowLink('Edit Theme', '../edit-theme/', "edit-$user->theme-theme"),
+    Page::imageArrowLink('Change Password', '../change-password/', 'edit-password'),
 );
 
 $num_tokens = $user->num_tokens;
 if ($num_tokens) {
-    $options[] = Page::imageLinkWithDescription('Remembered Sessions',
+    $options[] = Page::imageArrowLinkWithDescription('Remembered Sessions',
         "$num_tokens total.", '../tokens/', 'tokens');
 } else {
-    $options[] = Page::imageLink('Remembered Sessions', '../tokens/', 'tokens');
+    $options[] = Page::imageArrowLink('Remembered Sessions', '../tokens/', 'tokens');
 }
-$options[] = Page::imageLink('Close Account', '../close-account/', 'trash-bin');
+$options[] = Page::imageArrowLink('Close Account', '../close-account/', 'trash-bin');
 
 include_once '../fns/get_themes.php';
 $themes = get_themes();

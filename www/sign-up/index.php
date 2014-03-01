@@ -69,12 +69,8 @@ $page->finish(
         )
         .create_panel(
             'Options',
-            Page::imageLinkWithDescription(
-                'Already have an account?',
-                'Sign in here.',
-                '../sign-in/',
-                'sign-in'
-            )
+            Page::imageArrowLinkWithDescription('Already have an account?',
+                'Sign in here.', '../sign-in/', 'sign-in')
         )
     )
 );

@@ -14,18 +14,15 @@ if ($events) {
 
     foreach ($events as $event) {
         $description = date('F d, Y', $event->eventtime);
-        $items[] = Page::imageLinkWithDescription(
+        $items[] = Page::imageArrowLinkWithDescription(
             htmlspecialchars($event->eventtext),
-            $description,
-            "../view-event/?idevents=$event->idevents",
-            'event'
-        );
+            $description, "../view-event/?idevents=$event->idevents", 'event');
     }
 
     include_once '../../fns/create_panel.php';
     $optionsPanel = create_panel(
         'Options',
-        Page::imageLink('Delete All Events', 'delete-all/', 'trash-bin')
+        Page::imageArrowLink('Delete All Events', 'delete-all/', 'trash-bin')
     );
 
 } else {

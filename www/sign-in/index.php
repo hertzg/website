@@ -83,19 +83,12 @@ $page->finish(
         )
         .create_panel(
             'Options',
-            Page::imageLinkWithDescription(
-                'Forgot password?',
-                'Reset your account password here.',
-                '../email-reset-password/',
-                'reset-password'
-            )
+            Page::imageArrowLinkWithDescription('Forgot password?',
+                'Reset your account password here.', '../email-reset-password/',
+                'reset-password')
             .Page::HR
-            .Page::imageLinkWithDescription(
-                'Don\'t have an account?',
-                'Sign up here.',
-                '../sign-up/',
-                'new-password'
-            )
+            .Page::imageArrowLinkWithDescription('Don\'t have an account?',
+                'Sign up here.', '../sign-up/', 'new-password')
         )
     )
 );

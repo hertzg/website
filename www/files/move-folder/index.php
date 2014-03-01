@@ -35,11 +35,9 @@ $folders = Folders\indexInUserFolder($mysqli, $idusers, $parentidfolders);
 
 $items = array();
 if ($parentidfolders) {
-    $items[] = Page::imageLink(
-        '.. Parent folder',
+    $items[] = Page::imageLink('.. Parent folder',
         create_link($idfolders, $parentFolder->parentidfolders),
-        'parent-folder'
-    );
+        'parent-folder');
 }
 foreach ($folders as $itemFolder) {
     $escapedName = htmlspecialchars($itemFolder->foldername);
@@ -47,17 +45,15 @@ foreach ($folders as $itemFolder) {
         include_once '../../fns/create_disabled_image_link.php';
         $items[] = create_disabled_image_link($escapedName, 'folder');
     } else {
-        $items[] = Page::imageLink($escapedName,
+        $items[] = Page::imageArrowLink($escapedName,
             create_link($idfolders, $itemFolder->idfolders), 'folder');
     }
 }
 
 if ($parentidfolders != $folder->parentidfolders) {
-    $items[] = Page::imageLink(
-        'Move Here',
+    $items[] = Page::imageLink('Move Here',
         "submit.php?idfolders=$idfolders&parentidfolders=$parentidfolders",
-        'move-folder'
-    );
+        'move-folder');
 }
 
 if (array_key_exists('files/move-folder_parentidfolders', $_SESSION) &&

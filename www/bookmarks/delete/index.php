@@ -26,11 +26,7 @@ $page->finish(
         "Bookmark #$id",
         Page::text('Are you sure you want to delete the bookmark?')
         .Page::HR
-        .Page::imageLink(
-            'Yes, delete bookmark',
-            "submit.php?id=$id",
-            'yes'
-        )
+        .Page::imageLink('Yes, delete bookmark', "submit.php?id=$id", 'yes')
         .Page::HR
         .Page::imageLink('No, return back', "../view/?id=$id", 'no')
     )

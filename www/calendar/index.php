@@ -109,7 +109,8 @@ $events = Events\indexOnUserAndTime($mysqli, $idusers, $timeSelected);
 $eventItems = array();
 if ($events) {
     foreach ($events as $event) {
-        $eventItems[] = Page::imageLink(htmlspecialchars($event->eventtext),
+        $eventItems[] = Page::imageArrowLink(
+            htmlspecialchars($event->eventtext),
             "view-event/?idevents=$event->idevents", 'event');
     }
 } else {
@@ -118,10 +119,10 @@ if ($events) {
 
 $num_events = $user->num_events;
 if ($num_events) {
-    $eventItems[] = Page::imageLinkWithDescription('All Events',
+    $eventItems[] = Page::imageArrowLinkWithDescription('All Events',
         "$num_events total.", "all-events/", 'event');
 } else {
-    $eventItems[] = Page::imageLink('All Events', "all-events/", 'event');
+    $eventItems[] = Page::imageArrowLink('All Events', "all-events/", 'event');
 }
 
 include_once '../fns/create_panel.php';
@@ -149,18 +150,13 @@ $page->finish(
     )
     .create_panel(
         'Options',
-        Page::imageLink(
-            'New Event',
+        Page::imageArrowLink('New Event',
             "new-event/?year=$yearSelected&month=$monthSelected&day=$daySelected",
-            'create-event'
-        )
+            'create-event')
         .Page::HR
-        .Page::imageLink(
-            'Jump To',
-            "jump-to/?year=$yearNow&month=$monthNow",
-            'calendar'
-        )
+        .Page::imageArrowLink('Jump To',
+            "jump-to/?year=$yearNow&month=$monthNow", 'calendar')
         .Page::HR
-        .Page::imageLink('Go to Today', './', 'calendar')
+        .Page::imageArrowLink('Go to Today', './', 'calendar')
     )
 );

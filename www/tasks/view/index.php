@@ -18,20 +18,14 @@ unset(
 
 $options = array();
 if ($task->top_priority) {
-    $options[] = Page::imageLink(
-        'Mark as Normal Priority',
-        "submit-set-normal-priority.php?id=$id",
-        'task'
-    );
+    $options[] = Page::imageLink('Mark as Normal Priority',
+        "submit-set-normal-priority.php?id=$id", 'task');
 } else {
-    $options[] = Page::imageLink(
-        'Mark as Top Priority',
-        "submit-set-top-priority.php?id=$id",
-        'task-top-priority'
-    );
+    $options[] = Page::imageLink('Mark as Top Priority',
+        "submit-set-top-priority.php?id=$id", 'task-top-priority');
 }
-$options[] = Page::imageLink('Edit Task', "../edit/?id=$id", 'edit-task');
-$options[] = Page::imageLink('Delete Task', "../delete/?id=$id", 'trash-bin');
+$options[] = Page::imageArrowLink('Edit Task', "../edit/?id=$id", 'edit-task');
+$options[] = Page::imageArrowLink('Delete Task', "../delete/?id=$id", 'trash-bin');
 
 $tasktext = $task->tasktext;
 $inserttime = $task->inserttime;

@@ -136,9 +136,9 @@ if ($bookmarks) {
         $escapedUrl = htmlspecialchars($bookmark->url);
         $title = $bookmark->title;
         if ($title === '') {
-            $items[] = Page::imageLink($bookmark->url, $href, 'bookmark');
+            $items[] = Page::imageArrowLink($bookmark->url, $href, 'bookmark');
         } else {
-            $items[] = Page::imageLinkWithDescription($title,
+            $items[] = Page::imageArrowLinkWithDescription($title,
                 $escapedUrl, $href, 'bookmark');
         }
     }
@@ -159,13 +159,12 @@ unset(
     $_SESSION['home/index_messages']
 );
 
-$options = array(Page::imageLink('New Bookmark', 'new/', 'create-bookmark'));
+$options = array(
+    Page::imageArrowLink('New Bookmark', 'new/', 'create-bookmark'),
+);
 if ($bookmarks) {
-    $options[] = Page::imageLink(
-        'Delete All Bookmarks',
-        'delete-all/',
-        'trash-bin'
-    );
+    $options[] = Page::imageArrowLink('Delete All Bookmarks',
+        'delete-all/', 'trash-bin');
 }
 
 include_once '../fns/create_tabs.php';

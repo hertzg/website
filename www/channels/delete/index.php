@@ -29,11 +29,7 @@ $page->finish(
             .' "<b>'.htmlspecialchars($channel->channelname).'</b>"?'
         )
         .Page::HR
-        .Page::imageLink(
-            'Yes, delete channel',
-            "submit.php?id=$id",
-            'yes'
-        )
+        .Page::imageLink('Yes, delete channel', "submit.php?id=$id", 'yes')
         .Page::HR
         .Page::imageLink('No, return back', "../view/?id=$id", 'no')
     )

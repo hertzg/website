@@ -32,6 +32,6 @@ $page->finish(
         $pageMessages
         .Page::imageLink('Install Zvini App', 'install.php', 'download')
         .Page::HR
-        .Page::imageLink('Leave Feedback', 'feedback/', 'feedback')
+        .Page::imageArrowLink('Leave Feedback', 'feedback/', 'feedback')
     )
 );

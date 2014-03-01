@@ -30,11 +30,7 @@ $page->finish(
             .' "<b>'.htmlspecialchars($file->filename).'</b>"?'
         )
         .Page::HR
-        .Page::imageLink(
-            'Yes, delete file',
-            "submit.php?id=$id",
-            'yes'
-        )
+        .Page::imageLink('Yes, delete file', "submit.php?id=$id", 'yes')
         .Page::HR
         .Page::imageLink('No, return back', "../view-file/?id=$id", 'no')
     )

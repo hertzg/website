@@ -23,11 +23,7 @@ $page->finish(
         'All Events',
         Page::text('Are you sure you want to delete all the events?')
         .Page::HR
-        .Page::imageLink(
-            'Yes, delete all events',
-            'submit.php',
-            'yes'
-        )
+        .Page::imageLink('Yes, delete all events', 'submit.php', 'yes')
         .Page::HR
         .Page::imageLink('No, return back', '..', 'no')
     )

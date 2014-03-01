@@ -38,6 +38,6 @@ $page->finish(
     )
     .create_panel(
         'Options',
-        Page::imageLink('Delete Session', "../delete/?id=$id", 'trash-bin')
+        Page::imageArrowLink('Delete Session', "../delete/?id=$id", 'trash-bin')
     )
 );

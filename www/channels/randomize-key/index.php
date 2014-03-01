@@ -26,11 +26,8 @@ $page->finish(
         "Channel #$id",
         Page::text('Are you sure you want to randomize channel key of "<b>'.htmlspecialchars($channel->channelname).'</b>"?')
         .Page::HR
-        .Page::imageLink(
-            'Yes, randomize channel key',
-            "submit.php?id=$id",
-            'yes'
-        )
+        .Page::imageLink('Yes, randomize channel key',
+            "submit.php?id=$id", 'yes')
         .Page::HR
         .Page::imageLink('No, return back', "../view/?id=$id", 'no')
     )

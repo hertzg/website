@@ -105,11 +105,8 @@ if ($keyword === '') {
 
 if ($notes) {
     foreach ($notes as $note) {
-        $items[] = Page::imageLink(
-            htmlspecialchars($note->notetext),
-            "view/?id=$note->idnotes",
-            'note'
-        );
+        $items[] = Page::imageArrowLink(htmlspecialchars($note->notetext),
+            "view/?id=$note->idnotes", 'note');
     }
 } else {
     $items[] = Page::info('No notes.');
@@ -128,13 +125,10 @@ unset(
     $_SESSION['notes/view/index_messages']
 );
 
-$options = array(Page::imageLink('New Note', 'new/', 'create-note'));
+$options = array(Page::imageArrowLink('New Note', 'new/', 'create-note'));
 if ($notes) {
-    $options[] = Page::imageLink(
-        'Delete All Notes',
-        'delete-all/',
-        'trash-bin'
-    );
+    $options[] = Page::imageArrowLink('Delete All Notes',
+        'delete-all/', 'trash-bin');
 }
 
 include_once '../fns/create_panel.php';

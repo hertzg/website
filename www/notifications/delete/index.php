@@ -24,11 +24,8 @@ $page->finish(
             'Are you sure you want to delete notifications in this channel?'
         )
         .Page::HR
-        .Page::imageLink(
-            'Yes, delete notifications',
-            "submit.php?id=$id",
-            'yes'
-        )
+        .Page::imageLink('Yes, delete notifications',
+            "submit.php?id=$id", 'yes')
         .Page::HR
         .Page::imageLink('No, return back', "../?id=$id", 'no')
     )

@@ -21,11 +21,7 @@ $page->finish(
         'Notifications',
         Page::text('Are you sure you want to delete all the notifications?')
         .Page::HR
-        .Page::imageLink(
-            'Yes, delete all notifications',
-            'submit.php',
-            'yes'
-        )
+        .Page::imageLink('Yes, delete all notifications', 'submit.php', 'yes')
         .Page::HR
         .Page::imageLink('No, return back', '..', 'no')
     )

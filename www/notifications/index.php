@@ -19,9 +19,10 @@ $options = array();
 $num_channels = $user->num_channels;
 
 if ($num_channels) {
-    $options[] = Page::imageLinkWithDescription('Channels', "$num_channels total.", '../channels/', 'channels');
+    $options[] = Page::imageArrowLinkWithDescription('Channels',
+        "$num_channels total.", '../channels/', 'channels');
 } else {
-    $options[] = Page::imageLink('Channels', '../channels/', 'channels');
+    $options[] = Page::imageArrowLink('Channels', '../channels/', 'channels');
 }
 
 $filterMessage = '';
@@ -54,17 +55,11 @@ if ($channel) {
 if ($notifications) {
 
     if ($channel) {
-        $options[] = Page::imageLink(
-            'Delete Notifications',
-            "delete/?id=$id",
-            'trash-bin'
-        );
+        $options[] = Page::imageArrowLink('Delete Notifications',
+            "delete/?id=$id", 'trash-bin');
     } else {
-        $options[] = Page::imageLink(
-            'Delete All Notifications',
-            'delete-all/',
-            'trash-bin'
-        );
+        $options[] = Page::imageArrowLink('Delete All Notifications',
+            'delete-all/', 'trash-bin');
     }
 
     include_once '../fns/create_image_text.php';

@@ -113,11 +113,8 @@ if ($keyword === '') {
 
 if ($contacts) {
     foreach ($contacts as $contact) {
-        $items[] = Page::imageLink(
-            htmlspecialchars($contact->fullname),
-            "view/?id=$contact->idcontacts",
-            'contact'
-        );
+        $items[] = Page::imageArrowLink(htmlspecialchars($contact->fullname),
+            "view/?id=$contact->idcontacts", 'contact');
     }
 } else {
     $items[] = Page::info('No contacts.');
@@ -136,13 +133,10 @@ unset(
     $_SESSION['home/index_messages']
 );
 
-$options = array(Page::imageLink('New Contact', 'new/', 'create-contact'));
+$options = array(Page::imageArrowLink('New Contact', 'new/', 'create-contact'));
 if ($contacts) {
-    $options[] = Page::imageLink(
-        'Delete All Contacts',
-        'delete-all/',
-        'trash-bin'
-    );
+    $options[] = Page::imageArrowLink( 'Delete All Contacts',
+        'delete-all/', 'trash-bin');
 }
 
 include_once '../fns/create_panel.php';

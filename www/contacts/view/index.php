@@ -51,8 +51,9 @@ $page->finish(
     )
     .create_panel(
         'Options',
-        Page::imageLink('Edit Contact', "../edit/?id=$id", 'edit-contact')
+        Page::imageArrowLink('Edit Contact', "../edit/?id=$id", 'edit-contact')
         .Page::HR
-        .Page::imageLink('Delete Contact', "../delete/?id=$id", 'trash-bin')
+        .Page::imageArrowLink('Delete Contact',
+            "../delete/?id=$id", 'trash-bin')
     )
 );

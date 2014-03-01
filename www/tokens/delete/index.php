@@ -27,11 +27,8 @@ $page->finish(
             .' "<b>'.bin2hex($token->tokentext).'</b>"?'
         )
         .Page::HR
-        .Page::imageLink(
-            'Yes, delete remembered session',
-            "submit.php?id=$id",
-            'yes'
-        )
+        .Page::imageLink('Yes, delete remembered session',
+            "submit.php?id=$id", 'yes')
         .Page::HR
         .Page::imageLink('No, return back', "../view/?id=$id", 'no')
     )

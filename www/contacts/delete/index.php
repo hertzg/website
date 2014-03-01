@@ -29,11 +29,7 @@ $page->finish(
             .' "<b>'.htmlspecialchars($contact->fullname).'</b>"?'
         )
         .Page::HR
-        .Page::imageLink(
-            'Yes, delete contact',
-            "submit.php?id=$id",
-            'yes'
-        )
+        .Page::imageLink('Yes, delete contact', "submit.php?id=$id", 'yes')
         .Page::HR
         .Page::imageLink('No, return back', "../view/?id=$id", 'no')
     )

@@ -81,29 +81,20 @@ if ($keyword === '') {
 }
 
 if ($idfolders && $keyword === '') {
-    $items[] = Page::imageLink(
-        '.. Parent folder',
-        create_folder_link($folder->parentidfolders),
-        'parent-folder'
-    );
+    $items[] = Page::imageLink('.. Parent folder',
+        create_folder_link($folder->parentidfolders), 'parent-folder');
 }
 
 if ($folders || $files) {
 
     foreach ($folders as $i => $folder) {
-        $items[] = Page::imageLink(
-            htmlspecialchars($folder->foldername),
-            create_folder_link($folder->idfolders),
-            'folder'
-        );
+        $items[] = Page::imageArrowLink(htmlspecialchars($folder->foldername),
+            create_folder_link($folder->idfolders), 'folder');
     }
 
     foreach ($files as $i => $file) {
-        $items[] = Page::imageLink(
-            htmlspecialchars($file->filename),
-            "view-file/?id=$file->idfiles",
-            'file'
-        );
+        $items[] = Page::imageArrowLink(htmlspecialchars($file->filename),
+            "view-file/?id=$file->idfiles", 'file');
     }
 
 } else {
@@ -140,23 +131,14 @@ $folder_options = '';
 if ($idfolders) {
     $folder_options =
         Page::HR
-        .Page::imageLink(
-            'Rename This Folder',
-            "rename-folder/?idfolders=$idfolders",
-            'rename'
-        )
+        .Page::imageArrowLink('Rename This Folder',
+            "rename-folder/?idfolders=$idfolders", 'rename')
         .Page::HR
-        .Page::imageLink(
-            'Move This Folder',
-            "move-folder/?idfolders=$idfolders",
-            'move-folder'
-        )
+        .Page::imageArrowLink('Move This Folder',
+            "move-folder/?idfolders=$idfolders", 'move-folder')
         .Page::HR
-        .Page::imageLink(
-            'Delete This Folder',
-            "delete-folder/?idfolders=$idfolders",
-            'trash-bin'
-        );
+        .Page::imageArrowLink('Delete This Folder',
+            "delete-folder/?idfolders=$idfolders", 'trash-bin');
 }
 
 if (array_key_exists('files/index_messages', $_SESSION)) {
@@ -182,17 +164,11 @@ $page->finish(
     )
     .create_panel(
         'Options',
-        Page::imageLink(
-            'New Folder',
-            "new-folder/?parentidfolders=$idfolders",
-            'create-folder'
-        )
+        Page::imageArrowLink('New Folder',
+            "new-folder/?parentidfolders=$idfolders", 'create-folder')
         .Page::HR
-        .Page::imageLink(
-            'Upload Files',
-            "upload-files/?idfolders=$idfolders",
-            'upload'
-        )
+        .Page::imageArrowLink('Upload Files',
+            "upload-files/?idfolders=$idfolders", 'upload')
         .$folder_options
     )
 );

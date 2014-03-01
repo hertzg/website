@@ -69,8 +69,8 @@ $page->finish(
             'target' => '_blank',
         ))
         .Page::HR
-        .Page::imageLink('Edit Bookmark', "../edit/?id=$id", 'edit-bookmark')
+        .Page::imageArrowLink('Edit Bookmark', "../edit/?id=$id", 'edit-bookmark')
         .Page::HR
-        .Page::imageLink('Delete Bookmark', "../delete/?id=$id", 'trash-bin')
+        .Page::imageArrowLink('Delete Bookmark', "../delete/?id=$id", 'trash-bin')
     )
 );

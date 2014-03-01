@@ -29,16 +29,10 @@ $page->finish(
             .' "<b>'.htmlspecialchars($folder->foldername).'</b>"?'
         )
         .Page::HR
-        .Page::imageLink(
-            'Yes, delete folder',
-            "submit.php?idfolders=$idfolders",
-            'yes'
-        )
+        .Page::imageLink('Yes, delete folder',
+            "submit.php?idfolders=$idfolders", 'yes')
         .Page::HR
-        .Page::imageLink(
-            'No, return back',
-            create_folder_link($idfolders, '../'),
-            'no'
-        )
+        .Page::imageLink('No, return back',
+            create_folder_link($idfolders, '../'), 'no')
     )
 );

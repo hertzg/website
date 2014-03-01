@@ -48,31 +48,23 @@ if ($searchFiles) {
     $folders = $files = array();
 }
 
-if ($bookmarks || $contacts || $notes || $tasks) {
+if ($bookmarks || $contacts || $notes || $tasks || $folders || $files) {
 
     foreach ($bookmarks as $bookmark) {
-        $items[] = Page::imageLinkWithDescription(
+        $items[] = Page::imageArrowLinkWithDescription(
             htmlspecialchars($bookmark->title),
             htmlspecialchars($bookmark->url),
-            "../bookmarks/view/?id=$bookmark->idbookmarks",
-            'bookmark'
-        );
+            "../bookmarks/view/?id=$bookmark->idbookmarks", 'bookmark');
     }
 
     foreach ($contacts as $contact) {
-        $items[] = Page::imageLink(
-            htmlspecialchars($contact->fullname),
-            "../contacts/view/?id=$contact->idcontacts",
-            'contact'
-        );
+        $items[] = Page::imageArrowLink(htmlspecialchars($contact->fullname),
+            "../contacts/view/?id=$contact->idcontacts", 'contact');
     }
 
     foreach ($notes as $note) {
-        $items[] = Page::imageLink(
-            htmlspecialchars($note->notetext),
-            "../notes/view/?id=$note->idnotes",
-            'note'
-        );
+        $items[] = Page::imageArrowLink(htmlspecialchars($note->notetext),
+            "../notes/view/?id=$note->idnotes", 'note');
     }
 
     foreach ($tasks as $task) {
@@ -81,29 +73,22 @@ if ($bookmarks || $contacts || $notes || $tasks) {
         $href = "../tasks/view/?id=$task->idtasks";
         $tags = $task->tags;
         if ($tags) {
-            $items[] = Page::imageLinkWithDescription($title,
+            $items[] = Page::imageArrowLinkWithDescription($title,
                 'Tags: '.htmlspecialchars($tags), $href, $icon);
         } else {
-            $items[] = Page::imageLink($title, $href, $icon);
+            $items[] = Page::imageArrowLink($title, $href, $icon);
         }
     }
 
     include_once '../files/fns/create_folder_link.php';
-
-    foreach ($folders as $i => $folder) {
-        $items[] = Page::imageLink(
-            htmlspecialchars($folder->foldername),
-            create_folder_link($folder->idfolders, '../files/'),
-            'folder'
-        );
+    foreach ($folders as $folder) {
+        $items[] = Page::imageArrowLink(htmlspecialchars($folder->foldername),
+            create_folder_link($folder->idfolders, '../files/'), 'folder');
     }
 
-    foreach ($files as $i => $file) {
-        $items[] = Page::imageLink(
-            htmlspecialchars($file->filename),
-            "../files/view-file/?id=$file->idfiles",
-            'file'
-        );
+    foreach ($files as $file) {
+        $items[] = Page::imageArrowLink(htmlspecialchars($file->filename),
+            "../files/view-file/?id=$file->idfiles", 'file');
     }
 
 } else {
