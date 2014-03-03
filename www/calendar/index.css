@@ -69,3 +69,9 @@
     left: 0;
     margin: auto;
 }
+.navigation-arrow.left {
+    left: 0;
+}
+.navigation-arrow.right {
+    right: 0;
+}

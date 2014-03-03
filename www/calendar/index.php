@@ -6,22 +6,28 @@ function create_calendar ($timeSelected) {
     $yearSelected = date('Y', $timeSelected);
 
     $monthStartTime = mktime(0, 0, 0, $monthSelected, 1, $yearSelected);
-    $calendarStartTime = mktime(0, 0, 0, $monthSelected, 1 - date('w', $monthStartTime), $yearSelected);
+    $calendarStartTime = mktime(0, 0, 0, $monthSelected,
+        1 - date('w', $monthStartTime), $yearSelected);
     $nextMonthStartTime = mktime(0, 0, 0, $monthSelected + 1, 1, $yearSelected);
     $prevMonthStartTime = mktime(0, 0, 0, $monthSelected - 1, 1, $yearSelected);
 
-    $prevMonthHref = '?year='.date('Y', $prevMonthStartTime).'&amp;month='.date('n', $prevMonthStartTime);
-    $nextMonthHref = '?year='.date('Y', $nextMonthStartTime).'&amp;month='.date('n', $nextMonthStartTime);
+    $prevMonthYear = date('Y', $prevMonthStartTime);
+    $prevMonth = date('n', $prevMonthStartTime);
+    $prevMonthHref = "?year=$prevMonthYear&amp;month=$prevMonth";
+
+    $nextMonthYear = date('Y', $nextMonthStartTime);
+    $nextMonth = date('n', $nextMonthStartTime);
+    $nextMonthHref = "?year=$nextMonthYear&amp;month=$nextMonth";
 
     $html =
         '<div class="calendarMonths">'
-            ."<a href=\"$prevMonthHref\" class=\"clickable navigation-arrow\" style=\"left: 0\">"
+            ."<a href=\"$prevMonthHref\" class=\"clickable navigation-arrow left\">"
                 .'<span class="icon arrow-left"></span>'
             .'</a>'
             .'<div style="margin: 0 48px">'
                 .date('F d, Y', $timeSelected)
             .'</div>'
-            ."<a href=\"$nextMonthHref\" class=\"clickable navigation-arrow\" style=\"right: 0\">"
+            ."<a href=\"$nextMonthHref\" class=\"clickable navigation-arrow right\">"
                 .'<span class="icon arrow-right"></span>'
             .'</a>'
         .'</div>'
@@ -138,7 +144,7 @@ include_once '../fns/create_tabs.php';
 $page->base = '../';
 $page->title = 'Calendar';
 $page->head =
-    '<link rel="stylesheet" type="text/css" href="index.css?2" />'
+    '<link rel="stylesheet" type="text/css" href="index.css?3" />'
     .'<link rel="stylesheet" type="text/css"'
     ." href=\"themes/$page->theme/index.css\" />";
 $page->finish(
