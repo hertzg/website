@@ -48,8 +48,7 @@ $headers =
 mail($user->email, $title, $html, $headers);
 
 $_SESSION['account/index_messages'] = array(
-    'An email has been sent to you to verify the email address.',
-    'Follow the instructions in it.'
+    'Instructions to verify email have been sent to your email address.',
 );
 
 redirect();

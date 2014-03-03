@@ -84,8 +84,7 @@ $headers =
 mail($email, $title, $html, $headers);
 
 $_SESSION['sign-in/index_messages'] = array(
-    'An email has been sent to you to reset password.',
-    'Follow the instructions in it.'
+    'Instructions to reset password have been sent to your email address.',
 );
 
 redirect('../sign-in/');
