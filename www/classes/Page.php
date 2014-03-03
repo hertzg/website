@@ -24,13 +24,19 @@ class Page {
             .'<html>'
                 .'<head>'
                     ."<title>$this->title</title>"
-                    ."<link rel=\"icon\" type=\"image/png\" href=\"{$base}zvini-icons/16.png\" />"
-                    ."<link rel=\"icon\" type=\"image/png\" href=\"{$base}zvini-icons/32.png\" sizes=\"32x32\" />"
-                    .'<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />'
-                    .'<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />'
-                    ."<link rel=\"stylesheet\" type=\"text/css\" href=\"{$base}common.css?".$revisions['common.css'].'" />'
-                    ."<link rel=\"stylesheet\" type=\"text/css\" href=\"{$base}icons.css?14\" />"
-                    ."<link rel=\"stylesheet\" type=\"text/css\" href=\"{$base}themes/$theme/common.css?12\" />"
+                    .'<link rel="icon" type="image/png"'
+                    ." href=\"{$base}zvini-icons/16.png\" />"
+                    .'<link rel="icon" type="image/png" sizes="32x32"'
+                    ." href=\"{$base}zvini-icons/32.png\" />"
+                    .'<meta http-equiv="Content-Type"'
+                    .' content="text/html; charset=UTF-8" />'
+                    .'<meta name="viewport" content="width=device-width" />'
+                    .'<link rel="stylesheet" type="text/css"'
+                    ." href=\"{$base}common.css?".$revisions['common.css'].'" />'
+                    .'<link rel="stylesheet" type="text/css"'
+                    ." href=\"{$base}icons.css?14\" />"
+                    .'<link rel="stylesheet" type="text/css"'
+                    ." href=\"{$base}themes/$theme/common.css?12\" />"
                     .$this->head
                 .'</head>'
                 ."<body>$body</body>"
@@ -58,12 +64,16 @@ class Page {
             '<div id="tbar">'
                 .'<div style="position: relative">'
                     .'<a class="topLink" href="'.($base ? $base : './').'">'
-                        ."<img src=\"{$base}themes/$this->theme/images/zvini.png?2\" alt=\"Zvini\""
-                        .' width="68" height="32" style="vertical-align: top; margin: -4px" />'
+                        ."<img src=\"{$base}themes/$this->theme/images/zvini.png?2\""
+                        .' alt="Zvini" width="68" height="32"'
+                        .' style="vertical-align: top; margin: -4px" />'
                     .'</a>'
                     .($this->hideSignOutLink ? '' : 
                     '<div style="position: absolute; top: 0; right: 0">'
-                        ."<a class=\"topLink\" href=\"{$base}submit-signout.php\">Sign Out</a>"
+                        .'<a class="topLink"'
+                        ." href=\"{$base}submit-signout.php\">"
+                            .'Sign Out'
+                        .'</a>'
                     .'</div>')
                 .'</div>'
             .'</div>'
@@ -74,14 +84,17 @@ class Page {
         );
     }
 
-    static function imageArrowLink ($title, $href, $iconName, array $options = array()) {
+    static function imageArrowLink ($title, $href, $iconName,
+        array $options = array()) {
         $options['class'] = 'withArrow';
         return self::imageLink($title, $href, $iconName, $options);
     }
 
-    static function imageArrowLinkWithDescription ($title, $description, $href, $iconName, array $options = array()) {
+    static function imageArrowLinkWithDescription ($title, $description, $href,
+        $iconName, array $options = array()) {
         $options['class'] = 'withArrow';
-        return self::imageLinkWithDescription($title, $description, $href, $iconName, $options);
+        return self::imageLinkWithDescription($title, $description, $href,
+            $iconName, $options);
     }
 
     static function imageLink ($title, $href, $iconName, array $options = array()) {
@@ -90,7 +103,8 @@ class Page {
         return create_image_link($content, $href, $iconName, $options);
     }
 
-    static function imageLinkWithDescription ($title, $description, $href, $iconName, array $options = array()) {
+    static function imageLinkWithDescription ($title, $description, $href,
+        $iconName, array $options = array()) {
         include_once __DIR__.'/../fns/create_title_and_description.php';
         $content = create_title_and_description($title, $description);
         include_once __DIR__.'/../fns/create_image_link.php';

@@ -117,13 +117,20 @@ if ($events) {
     $eventItems[] = Page::info('No events on this day.');
 }
 
+$title = 'All Events';
+$href = 'all-events/';
+$icon = 'event';
 $num_events = $user->num_events;
 if ($num_events) {
-    $eventItems[] = Page::imageArrowLinkWithDescription('All Events',
-        "$num_events total.", "all-events/", 'event');
+    $description = "$num_events total.";
+    $eventItems[] = Page::imageArrowLinkWithDescription($title, $description,
+        $href, $icon);
 } else {
-    $eventItems[] = Page::imageArrowLink('All Events', "all-events/", 'event');
+    $eventItems[] = Page::imageArrowLink($title, $href, $icon);
 }
+
+$newEventHref = "new-event/?year=$yearSelected&amp;month=$monthSelected&amp;day=$daySelected";
+$jumpToHref = "jump-to/?year=$yearNow&amp;month=$monthNow";
 
 include_once '../fns/create_panel.php';
 include_once '../fns/create_tabs.php';
@@ -132,7 +139,8 @@ $page->base = '../';
 $page->title = 'Calendar';
 $page->head =
     '<link rel="stylesheet" type="text/css" href="index.css?1" />'
-    ."<link rel=\"stylesheet\" type=\"text/css\" href=\"themes/$page->theme/index.css\" />";
+    .'<link rel="stylesheet" type="text/css"'
+    ." href=\"themes/$page->theme/index.css\" />";
 $page->finish(
     create_tabs(
         array(
@@ -150,12 +158,9 @@ $page->finish(
     )
     .create_panel(
         'Options',
-        Page::imageArrowLink('New Event',
-            "new-event/?year=$yearSelected&month=$monthSelected&day=$daySelected",
-            'create-event')
+        Page::imageArrowLink('New Event', $newEventHref, 'create-event')
         .Page::HR
-        .Page::imageArrowLink('Jump To',
-            "jump-to/?year=$yearNow&month=$monthNow", 'calendar')
+        .Page::imageArrowLink('Jump To', $jumpToHref, 'calendar')
         .Page::HR
         .Page::imageArrowLink('Go to Today', './', 'calendar')
     )
