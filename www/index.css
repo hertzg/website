@@ -1,12 +1,7 @@
 html, body {
+    position: relative;
     height: 100%;
-}
-
-.buttonWrapper {
-    background: #fff;
-    position: absolute;
-    top: 0;
-    bottom: 0;
+    min-height: 306px;
 }
 
 .button {
@@ -31,4 +26,97 @@ html, body {
 
 h1 {
     font-size: 22px;
+}
+
+.backgroundGradient {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 50%;
+    left: 0;
+    background-color: #333;
+}
+.backgroundGradient > div {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 48px;
+    background-image: linear-gradient(#333, #444);
+}
+
+.centerWrapper {
+    width: 272px;
+    height: 186px;
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    bottom: 96px;
+    left: 24px;
+    margin: auto;
+}
+.centerWrapper > img {
+    vertical-align: top;
+}
+
+.siteInfo {
+    color: #fff;
+    margin-top: 24px;
+}
+.siteInfo > .description {
+    margin-top: 12px;
+    font-size: 11px;
+}
+
+.buttonsWrapper {
+    position: absolute;
+    right: 24px;
+    bottom: 24px;
+    left: 24px;
+    height: 48px;
+}
+.buttonsWrapper > :first-child {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 50%;
+}
+.buttonsWrapper > :first-child > * {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-width: 200px;
+}
+.buttonsWrapper > :last-child {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 50%;
+}
+.buttonsWrapper > :last-child > * {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 200px;
+}
+
+.buttonWrapper {
+    background: #fff;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+}
+.buttonWrapper.left {
+    right: 12px;
+    left: 0;
+}
+.buttonWrapper.right {
+    right: 0;
+    left: 12px;
 }
