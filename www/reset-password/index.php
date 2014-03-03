@@ -69,6 +69,7 @@ $page->finish(
                 'autofocus' => true,
                 'required' => true,
             ))
+            .Form::notes(array('Minimum 6 characters.'))
             .Page::HR
             .Form::password('password2', 'Repeat new password', array(
                 'value' => $values['password2'],
