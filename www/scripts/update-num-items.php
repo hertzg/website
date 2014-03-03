@@ -1,8 +1,12 @@
+#!/usr/bin/php
 <?php
 
+include_once 'lib/require-cli.php';
 include_once '../fns/mysqli_query_object.php';
 include_once '../fns/mysqli_single_object.php';
 include_once '../lib/mysqli.php';
+
+$microtime = microtime(true);
 
 $users = mysqli_query_object($mysqli, 'select * from users');
 foreach ($users as $user) {
@@ -60,4 +64,5 @@ foreach ($channels as $channel) {
 
 }
 
-echo "Done\n";
+$elapsedSeconds = number_format(microtime(true) - $microtime, 3);
+echo "Done in $elapsedSeconds seconds.\n";

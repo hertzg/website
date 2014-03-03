@@ -1,6 +1,7 @@
 #!/usr/bin/php
 <?php
 
+include_once 'lib/require-cli.php';
 include_once '../fns/mysqli_query_object.php';
 include_once '../fns/mysqli_single_object.php';
 include_once '../lib/mysqli.php';
