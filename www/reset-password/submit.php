@@ -7,19 +7,19 @@ include_once '../fns/require_guest_user.php';
 require_guest_user('../');
 
 include_once '../fns/request_strings.php';
-list($idusers, $reset_password_key, $password1, $password2) = request_strings(
-    'idusers', 'reset_password_key', 'password1', 'password2');
+list($idusers, $key, $password1, $password2) = request_strings(
+    'idusers', 'key', 'password1', 'password2');
 
 include_once '../fns/redirect.php';
 
 include_once '../fns/is_md5.php';
-if (!is_md5($reset_password_key)) redirect();
+if (!is_md5($key)) redirect();
 
 $idusers = abs((int)$idusers);
 
 include_once '../fns/Users/getByResetPasswordKey.php';
 include_once '../lib/mysqli.php';
-$user = Users\getByResetPasswordKey($mysqli, $idusers, $reset_password_key);
+$user = Users\getByResetPasswordKey($mysqli, $idusers, $key);
 
 if (!$user) {
     // TODO show that the key is no longer valid
@@ -44,7 +44,7 @@ if ($errors) {
         'password1' => $password1,
         'password2' => $password2,
     );
-    redirect("./?idusers=$idusers&reset_password_key=$reset_password_key");
+    redirect("./?idusers=$idusers&key=$key");
 }
 
 unset(

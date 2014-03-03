@@ -44,17 +44,17 @@ unset(
     $_SESSION['email-reset-password/index_lastpost']
 );
 
-$reset_password_key = md5(uniqid(), true);
+$key = md5(uniqid(), true);
 
 include_once '../fns/Users/editResetPasswordKey.php';
-Users\editResetPasswordKey($mysqli, $user->idusers, $reset_password_key);
+Users\editResetPasswordKey($mysqli, $user->idusers, $key);
 
 Captcha::reset();
 
 $href = htmlspecialchars(
     'http://zvini.com/reset-password/?'.http_build_query(array(
         'idusers' => $user->idusers,
-        'reset_password_key' => bin2hex($reset_password_key)
+        'key' => bin2hex($key)
     ))
 );
 
