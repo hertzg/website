@@ -10,6 +10,8 @@ include_once '../fns/request_strings.php';
 list($idusers, $resetpasswordkey, $password1, $password2) = request_strings(
     'idusers', 'resetpasswordkey', 'password1', 'password2');
 
+include_once '../fns/redirect.php';
+
 include_once '../fns/is_md5.php';
 if (!is_md5($resetpasswordkey)) redirect();
 
@@ -18,8 +20,6 @@ $idusers = abs((int)$idusers);
 include_once '../fns/Users/getByResetPasswordKey.php';
 include_once '../lib/mysqli.php';
 $user = Users\getByResetPasswordKey($mysqli, $idusers, $resetpasswordkey);
-
-include_once '../fns/redirect.php';
 
 if (!$user) redirect();
 
@@ -50,7 +50,6 @@ unset(
 );
 
 include_once '../fns/Users/editPassword.php';
-include_once '../lib/mysqli.php';
 Users\editPassword($mysqli, $idusers, $password1);
 
 setcookie('username', $user->username, time() + 60 * 60 * 24 * 30, '/');
