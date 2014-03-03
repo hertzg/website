@@ -7,16 +7,16 @@ include_once '../fns/redirect.php';
 
 if ($user->email_verified) redirect();
 
-$verify_email_key = md5(uniqid(), true);
+$key = md5(uniqid(), true);
 
 include_once '../fns/Users/editVerifyEmailKey.php';
 include_once '../lib/mysqli.php';
-Users\editVerifyEmailKey($mysqli, $user->idusers, $verify_email_key);
+Users\editVerifyEmailKey($mysqli, $user->idusers, $key);
 
 $href = htmlspecialchars(
     'http://zvini.com/verify-email/?'.http_build_query(array(
         'idusers' => $user->idusers,
-        'verify_email_key' => bin2hex($verify_email_key),
+        'key' => bin2hex($key),
     ))
 );
 

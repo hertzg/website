@@ -1,19 +1,18 @@
 <?php
 
 include_once '../fns/request_strings.php';
-list($idusers, $verify_email_key) = request_strings(
-    'idusers', 'verify_email_key');
+list($idusers, $key) = request_strings('idusers', 'key');
 
 $idusers = abs((int)$idusers);
 
 include_once '../fns/redirect.php';
 
 include_once '../fns/is_md5.php';
-if (!is_md5($verify_email_key)) redirect('..');
+if (!is_md5($key)) redirect('..');
 
 include_once '../fns/Users/getByVerifyEmailKey.php';
 include_once '../lib/mysqli.php';
-$user = Users\getByVerifyEmailKey($mysqli, $idusers, $verify_email_key);
+$user = Users\getByVerifyEmailKey($mysqli, $idusers, $key);
 
 if (!$user) {
     // TODO show that the key is no longer valid
