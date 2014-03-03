@@ -46,7 +46,7 @@ mail(
     .'Content-Type: text/html; charset=UTF-8'
 );
 
-$_SESSION[] = array(
+$_SESSION['account/index_messages'] = array(
     'An email has been sent to you to verify the email address.',
     'Follow the instructions in it.'
 );
