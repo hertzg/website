@@ -1,26 +1,30 @@
-;(function () {
+(function () {
+
+    function alertAndRedirect (text) {
+        alert(text)
+        location = './'
+    }
+
     var mozApps = navigator.mozApps
     if (mozApps) {
-        var manifest = location.protocol + '//' + location.host + location.pathname.replace(/help\/install\.php$/, '') + 'manifest.php'
+        var pathname = location.pathname.replace(/help\/install\.php$/, '')
+        var manifest = location.protocol + '//' + location.host + pathname + 'manifest.php'
         var checkRequest = mozApps.checkInstalled(manifest)
         checkRequest.onsuccess = function () {
             if (checkRequest.result) {
-                alert('Zvini is already installed on your platform.');
-                location = './'
+                alertAndRedirect('Zvini is already installed on your platform.')
             } else {
                 var installRequest = mozApps.install(manifest)
                 installRequest.onsuccess = function () {
-                    alert('Zvini has been installed on your platform.');
-                    location = './'
+                    alertAndRedirect('Zvini has been installed on your platform.')
                 }
                 installRequest.onerror = function () {
-                    alert('Failed to install Zvini on your platform.');
-                    location = './'
+                    alertAndRedirect('Failed to install Zvini on your platform.')
                 }
             }
         }
     } else {
-        alert('We\'re sorry, Zvini cannot be installed on your platform.');
-        location = './'
+        alertAndRedirect('We\'re sorry, Zvini cannot be installed on your platform.')
     }
+
 })()
