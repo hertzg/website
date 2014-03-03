@@ -6,18 +6,18 @@ require_guest_user('../');
 include_once '../lib/page.php';
 
 include_once '../fns/request_strings.php';
-list($idusers, $resetpasswordkey) = request_strings(
-    'idusers', 'resetpasswordkey');
+list($idusers, $reset_password_key) = request_strings(
+    'idusers', 'reset_password_key');
 
 include_once '../fns/is_md5.php';
-if (!is_md5($resetpasswordkey)) {
+if (!is_md5($reset_password_key)) {
     include_once '../fns/redirect.php';
     redirect('..');
 }
 
 include_once '../fns/Users/getByResetPasswordKey.php';
 include_once '../lib/mysqli.php';
-$user = Users\getByResetPasswordKey($mysqli, $idusers, $resetpasswordkey);
+$user = Users\getByResetPasswordKey($mysqli, $idusers, $reset_password_key);
 
 if (!$user) {
     include_once '../fns/redirect.php';
@@ -78,7 +78,7 @@ $page->finish(
             .Page::HR
             .Form::button('Reset Password')
             .Form::hidden('idusers', $idusers)
-            .Form::hidden('resetpasswordkey', $resetpasswordkey)
+            .Form::hidden('reset_password_key', $reset_password_key)
         )
     )
 );
