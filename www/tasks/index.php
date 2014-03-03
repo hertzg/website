@@ -111,9 +111,9 @@ if ($tasks) {
         $href = "view/?id=$task->idtasks";
         $tags = $task->tags;
         if ($tags) {
-            $items[] = Page::imageLinkWithDescription($title, 'Tags: '.htmlspecialchars($tags), $href, $icon);
+            $items[] = Page::imageArrowLinkWithDescription($title, 'Tags: '.htmlspecialchars($tags), $href, $icon);
         } else {
-            $items[] = Page::imageLink($title, $href, $icon);
+            $items[] = Page::imageArrowLink($title, $href, $icon);
         }
     }
 } else {
@@ -133,13 +133,10 @@ unset(
     $_SESSION['tasks/view/index_messages']
 );
 
-$options = array(Page::imageLink('New Task', 'new/', 'create-task'));
+$options = array(Page::imageArrowLink('New Task', 'new/', 'create-task'));
 if ($tasks) {
-    $options[] = Page::imageLink(
-        'Delete All Tasks',
-        'delete-all/',
-        'trash-bin'
-    );
+    $options[] = Page::imageArrowLink('Delete All Tasks',
+        'delete-all/', 'trash-bin');
 }
 
 include_once '../fns/create_tabs.php';
