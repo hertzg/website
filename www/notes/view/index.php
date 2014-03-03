@@ -4,10 +4,6 @@ include_once '../fns/require_note.php';
 include_once '../../lib/mysqli.php';
 list($note, $id) = require_note($mysqli);
 
-include_once '../../fns/create_panel.php';
-include_once '../../fns/create_tags.php';
-include_once '../../fns/date_ago.php';
-include_once '../../fns/render_external_links.php';
 include_once '../../lib/page.php';
 
 if (array_key_exists('notes/view/index_messages', $_SESSION)) {
@@ -31,7 +27,16 @@ $tags = NoteTags\indexOnNote($mysqli, $id);
 
 $base = '../../';
 
+include_once '../../fns/date_ago.php';
+$infoText = '<div>Note created '.date_ago($inserttime).'.</div>';
+if ($inserttime != $updatetime) {
+    $infoText .= '<div>Last modified '.date_ago($updatetime).'.</div>';
+}
+        
+include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
+include_once '../../fns/create_tags.php';
+include_once '../../fns/render_external_links.php';
 
 $page->base = $base;
 $page->title = "Note #$id";
@@ -56,10 +61,7 @@ $page->finish(
         )
         .create_tags('../', $tags)
         .Page::HR
-        .Page::text(
-            '<div>Note created '.date_ago($inserttime).'.</div>'
-            .($inserttime != $updatetime ? '<div>Last modified '.date_ago($updatetime).'.</div>' : '')
-        )
+        .Page::text($infoText)
     )
     .create_panel(
         'Options',

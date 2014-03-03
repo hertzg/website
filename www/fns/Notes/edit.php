@@ -10,6 +10,6 @@ function edit ($mysqli, $idusers, $id, $notetext, $tags) {
         ." notetext = '$notetext',"
         ." tags = '$tags',"
         ." updatetime = $updatetime"
-        ." where idusers = $idusers and idnotes = $id"
+        ." where idusers = $idusers and idnotes = $id";
     $mysqli->query($sql);
 }
