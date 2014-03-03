@@ -1,10 +1,14 @@
 <?php
 
+$description =
+    'Save your data in Zvini. Save your files, contacts, notes and more.'
+    .' It\'s free and easy.';
+
 header('Content-Type: application/x-web-app-manifest+json');
 
 echo json_encode(array(
     'name' => 'Zvini',
-    'description' => 'Save your data in Zvini. Save your files, contacts, notes and more. It\'s free and easy.',
+    'description' => $description,
     'developer' => array(
         'name' => 'Zvini Developers',
         'url' => 'http://zvini.com/',
