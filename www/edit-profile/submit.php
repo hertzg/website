@@ -50,6 +50,11 @@ unset(
 include_once '../fns/Users/editProfile.php';
 Users\editProfile($mysqli, $idusers, $email, $fullname);
 
+if ($email !== $user->email) {
+    include_once '../fns/Users/invalidateEmail.php';
+    Users\invalidateEmail($mysqli, $idusers);
+}
+
 $_SESSION['account/index_messages'] = array('Changes have been saved.');
 
 redirect('../account/');

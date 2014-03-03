@@ -32,20 +32,32 @@ if ($fullname !== '') {
     $fullnameField = '';
 }
 
-$options = array(
-    Page::imageArrowLink('Edit Profile', '../edit-profile/', 'edit-profile'),
-    Page::imageArrowLink('Edit Theme', '../edit-theme/', "edit-$user->theme-theme"),
-    Page::imageArrowLink('Change Password', '../change-password/', 'edit-password'),
-);
+$email_verified = $user->email_verified;
+
+$options = array();
+if (!$email_verified) {
+    $options[] = Page::imageArrowLink('Verify Email',
+        'submit-verify-email.php', 'yes');
+}
+
+$options[] = Page::imageArrowLink('Edit Profile',
+    '../edit-profile/', 'edit-profile');
+$options[] = Page::imageArrowLink('Edit Theme',
+    '../edit-theme/', "edit-$user->theme-theme");
+$options[] = Page::imageArrowLink('Change Password',
+    '../change-password/', 'edit-password');
 
 $num_tokens = $user->num_tokens;
 if ($num_tokens) {
     $options[] = Page::imageArrowLinkWithDescription('Remembered Sessions',
         "$num_tokens total.", '../tokens/', 'tokens');
 } else {
-    $options[] = Page::imageArrowLink('Remembered Sessions', '../tokens/', 'tokens');
+    $options[] = Page::imageArrowLink('Remembered Sessions',
+        '../tokens/', 'tokens');
 }
-$options[] = Page::imageArrowLink('Close Account', '../close-account/', 'trash-bin');
+
+$options[] = Page::imageArrowLink('Close Account',
+    '../close-account/', 'trash-bin');
 
 include_once '../fns/get_themes.php';
 $themes = get_themes();
@@ -71,6 +83,8 @@ $page->finish(
         .Form::label('Username', $user->username)
         .Page::HR
         .Form::label('Email', $user->email)
+        .Page::HR
+        .Form::label('Email verified', $email_verified ? 'Yes' : 'No')
         .Page::HR
         .$fullnameField
         .Form::label('Theme', $themes[$user->theme])

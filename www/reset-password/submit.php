@@ -21,7 +21,10 @@ include_once '../fns/Users/getByResetPasswordKey.php';
 include_once '../lib/mysqli.php';
 $user = Users\getByResetPasswordKey($mysqli, $idusers, $resetpasswordkey);
 
-if (!$user) redirect();
+if (!$user) {
+    // TODO show that the key is no longer valid
+    redirect('..');
+}
 
 unset($_SESSION['user']);
 
