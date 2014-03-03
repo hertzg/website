@@ -14,7 +14,7 @@ function create_calendar ($timeSelected) {
     $nextMonthHref = '?year='.date('Y', $nextMonthStartTime).'&amp;month='.date('n', $nextMonthStartTime);
 
     $html =
-        '<div style="background: #eee; font-weight: bold; text-align: center; line-height: 48px; color: #444; position: relative">'
+        '<div class="calendarMonths">'
             ."<a href=\"$prevMonthHref\" class=\"clickable navigation-arrow\" style=\"left: 0\">"
                 .'<span class="icon arrow-left"></span>'
             .'</a>'
@@ -138,7 +138,7 @@ include_once '../fns/create_tabs.php';
 $page->base = '../';
 $page->title = 'Calendar';
 $page->head =
-    '<link rel="stylesheet" type="text/css" href="index.css?1" />'
+    '<link rel="stylesheet" type="text/css" href="index.css?2" />'
     .'<link rel="stylesheet" type="text/css"'
     ." href=\"themes/$page->theme/index.css\" />";
 $page->finish(
