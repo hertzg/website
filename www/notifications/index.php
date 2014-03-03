@@ -35,13 +35,10 @@ $channel = Channels\get($mysqli, $idusers, $id);
 
 if ($channel) {
     $filterMessage =
-        '<div style="position: relative; height: 48px; background: #eee; color: #444; padding: 16px">'
+        '<div class="filterBar">'
             .'Channel: <b>'.htmlspecialchars($channel->channelname).'</b>'
-            .'<a class="clickable" title="Clear Filter" href="./"'
-            .' style="position: absolute; top: 0; right: 0; bottom: 0; width: 48px">'
-                .'<span class="icon no"'
-                .' style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; margin: auto">'
-                .'</span>'
+            .'<a class="clickable" title="Clear Filter" href="./">'
+                .'<span class="icon no"></span>'
             .'</a>'
         .'</div>'
         .'<div class="warnings-hr"></div>';
