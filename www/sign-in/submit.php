@@ -3,6 +3,9 @@
 include_once '../fns/require_same_domain_referer.php';
 require_same_domain_referer('./');
 
+include_once '../fns/require_guest_user.php';
+require_guest_user('../');
+
 include_once '../fns/session_start_custom.php';
 session_start_custom();
 
