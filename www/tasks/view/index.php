@@ -44,6 +44,11 @@ if (array_key_exists('tasks/view/index_messages', $_SESSION)) {
 
 include_once '../../fns/create_tabs.php';
 
+$infoText = '<div>Task created '.date_ago($inserttime).'.</div>';
+if ($inserttime != $updatetime) {
+    $infoText .= '<div>Last modified '.date_ago($updatetime).'.</div>';
+}
+
 $page->base = $base;
 $page->title = "Task #$id";
 $page->finish(
@@ -67,10 +72,7 @@ $page->finish(
         )
         .create_tags('../', $tags)
         .Page::HR
-        .Page::text(
-            '<div>Task created '.date_ago($inserttime).'.</div>'
-            .($inserttime != $updatetime ? '<div>Last modified '.date_ago($updatetime).'.</div>' : '')
-        )
+        .Page::text($infoText)
     )
     .create_panel('Options', join(Page::HR, $options))
 );
