@@ -60,9 +60,7 @@ $href = htmlspecialchars(
 
 $title = 'Reset Password for Zvini Account';
 
-mail(
-    $email,
-    $title,
+$html =
     '<!DOCTYPE html>'
     .'<html>'
         .'<head>'
@@ -77,13 +75,17 @@ mail(
             .'<br />'
             ."<a href=\"$href\">$href</a>"
         .'</body>'
-    .'</html>',
+    .'</html>';
+
+$headers =
     "From: no-reply@zvini.com\r\n"
-    .'Content-Type: text/html; charset=UTF-8'
-);
+    .'Content-Type: text/html; charset=UTF-8';
+
+mail($email, $title, $html, $headers);
 
 $_SESSION['sign-in/index_messages'] = array(
     'An email has been sent to you to reset password.',
     'Follow the instructions in it.'
 );
+
 redirect('../sign-in/');

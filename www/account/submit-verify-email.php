@@ -22,9 +22,7 @@ $href = htmlspecialchars(
 
 $title = 'Verify Zvini Account Email Address';
 
-mail(
-    $user->email,
-    $title,
+$html =
     '<!DOCTYPE html>'
     .'<html>'
         .'<head>'
@@ -41,10 +39,13 @@ mail(
             .'<br />'
             ."<a href=\"$href\">$href</a>"
         .'</body>'
-    .'</html>',
+    .'</html>';
+
+$headers =
     "From: no-reply@zvini.com\r\n"
-    .'Content-Type: text/html; charset=UTF-8'
-);
+    .'Content-Type: text/html; charset=UTF-8';
+
+mail($user->email, $title, $html, $headers);
 
 $_SESSION['account/index_messages'] = array(
     'An email has been sent to you to verify the email address.',
