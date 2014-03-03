@@ -6,9 +6,6 @@ require_same_domain_referer('..');
 include_once '../fns/require_guest_user.php';
 require_guest_user('../');
 
-include_once '../fns/session_start_custom.php';
-session_start_custom();
-
 include_once '../fns/request_strings.php';
 list($idusers, $resetpasswordkey, $password1, $password2) = request_strings(
     'idusers', 'resetpasswordkey', 'password1', 'password2');

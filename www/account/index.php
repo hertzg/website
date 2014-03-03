@@ -3,9 +3,6 @@
 include_once '../fns/require_user.php';
 require_user('../');
 
-include_once '../fns/create_panel.php';
-include_once '../fns/bytestr.php';
-include_once '../fns/date_ago.php';
 include_once '../classes/Form.php';
 include_once '../lib/mysqli.php';
 include_once '../lib/page.php';
@@ -53,7 +50,11 @@ $options[] = Page::imageArrowLink('Close Account', '../close-account/', 'trash-b
 include_once '../fns/get_themes.php';
 $themes = get_themes();
 
+include_once '../fns/bytestr.php';
+include_once '../fns/create_panel.php';
 include_once '../fns/create_tabs.php';
+include_once '../fns/date_ago.php';
+include_once '../fns/n_times.php';
 
 $page->base = '../';
 $page->title = 'Account';
@@ -72,6 +73,8 @@ $page->finish(
         .Form::label('Email', $user->email)
         .Page::HR
         .$fullnameField
+        .Form::label('Signed in', n_times($user->num_logins))
+        .Page::HR
         .Form::label('Theme', $themes[$user->theme])
         .Page::HR
         .Form::label('Account created', date_ago($user->inserttime))

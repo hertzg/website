@@ -6,9 +6,6 @@ require_same_domain_referer('./');
 include_once '../fns/require_guest_user.php';
 require_guest_user('../');
 
-include_once '../fns/session_start_custom.php';
-session_start_custom();
-
 unset($_SESSION['sign-in/index_messages']);
 
 include_once '../fns/request_strings.php';
@@ -93,6 +90,8 @@ include_once '../fns/nth_order.php';
 
 $_SESSION['user'] = $user;
 $_SESSION['home/index_messages'] = array(
-    'Welcome to Zvini! This is your '.nth_order($user->num_logins).' login.',
+    'Welcome to Zvini!',
+    'This is your '.nth_order($user->num_logins + 1).' login.',
 );
+
 redirect('../home/');

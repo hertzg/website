@@ -6,11 +6,6 @@ require_same_domain_referer('./');
 include_once '../fns/require_guest_user.php';
 require_guest_user('../');
 
-include_once '../classes/Captcha.php';
-
-include_once '../fns/session_start_custom.php';
-session_start_custom();
-
 include_once '../fns/request_strings.php';
 list($username, $email, $password1, $password2, $captcha) = request_strings(
     'username', 'email', 'password1', 'password2', 'captcha');
@@ -57,6 +52,7 @@ if ($password1 === '') {
     $errors[] = 'Passwords does not match.';
 }
 
+include_once '../classes/Captcha.php';
 Captcha::check($errors, 3);
 
 include_once '../fns/redirect.php';

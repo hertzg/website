@@ -6,11 +6,6 @@ require_same_domain_referer('./');
 include_once '../fns/require_guest_user.php';
 require_guest_user('../');
 
-include_once '../classes/Captcha.php';
-
-include_once '../fns/session_start_custom.php';
-session_start_custom();
-
 include_once '../fns/request_strings.php';
 list($email) = request_strings('email');
 
@@ -33,6 +28,7 @@ if (!$errors) {
 
 }
 
+include_once '../classes/Captcha.php';
 Captcha::check($errors, 3);
 
 include_once '../fns/redirect.php';
