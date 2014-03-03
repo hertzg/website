@@ -73,13 +73,13 @@ $page->finish(
         .Form::label('Email', $user->email)
         .Page::HR
         .$fullnameField
-        .Form::label('Signed in', n_times($user->num_logins))
-        .Page::HR
         .Form::label('Theme', $themes[$user->theme])
         .Page::HR
         .Form::label('Account created', date_ago($user->inserttime))
         .Page::HR
         .Form::label('Using storage', bytestr($user->storageused))
+        .Page::HR
+        .Form::label('Signed in', n_times($user->num_logins))
     )
     .create_panel('Options', join(Page::HR, $options))
 );
