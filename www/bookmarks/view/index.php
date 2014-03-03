@@ -31,10 +31,15 @@ $base = '../../';
 include_once '../../fns/create_external_url.php';
 $externalUrl = create_external_url($url, $base);
 
+include_once '../../fns/date_ago.php';
+$infoText = '<div>Bookmark created '.date_ago($inserttime).'.</div>';
+if ($inserttime != $updatetime) {
+    $infoText .= '<div>Last modified '.date_ago($updatetime).'.</div>';
+}
+
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/create_tags.php';
-include_once '../../fns/date_ago.php';
 
 $page->base = $base;
 $page->title = "Bookmark #$id";
@@ -56,10 +61,7 @@ $page->finish(
         .Page::text(htmlspecialchars($url))
         .create_tags('../', $tags)
         .Page::HR
-        .Page::text(
-            '<div>Bookmark created '.date_ago($inserttime).'.</div>'
-            .($inserttime != $updatetime ? '<div>Last modified '.date_ago($updatetime).'.</div>' : '')
-        )
+        .Page::text($infoText)
     )
     .create_panel(
         'Options',

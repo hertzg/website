@@ -45,7 +45,9 @@ class Form {
                     .$text
                 .'</label>'
             .'</div>'
-            ."<script type=\"text/javascript\" src=\"{$base}js/transform-form-checkboxes.js\"></script>";
+            .'<script type="text/javascript"'
+            ." src=\"{$base}js/transform-form-checkboxes.js\">"
+            .'</script>';
     }
 
     static function create ($action, $content) {

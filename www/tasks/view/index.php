@@ -4,10 +4,6 @@ include_once '../fns/require_task.php';
 include_once '../../lib/mysqli.php';
 list($task, $id) = require_task($mysqli);
 
-include_once '../../fns/create_panel.php';
-include_once '../../fns/create_tags.php';
-include_once '../../fns/date_ago.php';
-include_once '../../fns/render_external_links.php';
 include_once '../../lib/page.php';
 
 unset(
@@ -42,12 +38,16 @@ if (array_key_exists('tasks/view/index_messages', $_SESSION)) {
     $pageMessages = '';
 }
 
-include_once '../../fns/create_tabs.php';
-
+include_once '../../fns/date_ago.php';
 $infoText = '<div>Task created '.date_ago($inserttime).'.</div>';
 if ($inserttime != $updatetime) {
     $infoText .= '<div>Last modified '.date_ago($updatetime).'.</div>';
 }
+
+include_once '../../fns/create_panel.php';
+include_once '../../fns/create_tabs.php';
+include_once '../../fns/create_tags.php';
+include_once '../../fns/render_external_links.php';
 
 $page->base = $base;
 $page->title = "Task #$id";

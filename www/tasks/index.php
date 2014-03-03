@@ -91,7 +91,8 @@ if ($keyword === '') {
         $tasks = TaskTags\searchOnTagName($mysqli, $idusers, $keyword, $tag);
 
         $items[] = create_search_form(
-            create_search_form_content($keyword, 'Search tasks...', '?tag='.rawurlencode($tag))
+            create_search_form_content($keyword, 'Search tasks...',
+                '?tag='.rawurlencode($tag))
             .createTagInput($tag)
         );
 
@@ -111,7 +112,8 @@ if ($tasks) {
         $href = "view/?id=$task->idtasks";
         $tags = $task->tags;
         if ($tags) {
-            $items[] = Page::imageArrowLinkWithDescription($title, 'Tags: '.htmlspecialchars($tags), $href, $icon);
+            $items[] = Page::imageArrowLinkWithDescription($title,
+                'Tags: '.htmlspecialchars($tags), $href, $icon);
         } else {
             $items[] = Page::imageArrowLink($title, $href, $icon);
         }
