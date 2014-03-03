@@ -56,8 +56,8 @@ unset(
 
 $idusers = $user->idusers;
 
-include_once '../fns/Users/updateLastLoginTime.php';
-Users\updateLastLoginTime($mysqli, $idusers);
+include_once '../fns/Users/login.php';
+Users\login($mysqli, $idusers);
 
 if ($remember) {
 
@@ -86,5 +86,10 @@ if ($remember) {
 
 setcookie('username', $user->username, time() + 60 * 60 * 24 * 30, '/');
 
+include_once '../fns/nth_order.php';
+
 $_SESSION['user'] = $user;
+$_SESSION['home/index_messages'] = array(
+    'Welcome to Zvini! This is your '.nth_order($user->num_logins).' login.',
+);
 redirect('../home/');
