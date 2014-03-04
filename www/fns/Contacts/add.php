@@ -17,9 +17,10 @@ function add ($mysqli, $idusers, $fullname, $address,
         .' (idusers, fullname, address, email, '
         .'phone1, phone2, tags, insert_time, update_time)'
         ." values ($idusers, '$fullname', '$address', '$email',"
-        ." '$phone1', '$phone2', '$tags', $insert_time)";
+        ." '$phone1', '$phone2', '$tags', $insert_time, $update_time)";
 
-    $mysqli->query($sql);
+    $ok = $mysqli->query($sql);
+    if (!$ok) trigger_error($mysqli->error);
 
     return $mysqli->insert_id;
 
