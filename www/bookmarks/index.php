@@ -130,21 +130,8 @@ if ($keyword === '') {
     }
 }
 
-if ($bookmarks) {
-    foreach ($bookmarks as $bookmark) {
-        $href = "view/?id=$bookmark->idbookmarks";
-        $escapedUrl = htmlspecialchars($bookmark->url);
-        $title = $bookmark->title;
-        if ($title === '') {
-            $items[] = Page::imageArrowLink($bookmark->url, $href, 'bookmark');
-        } else {
-            $items[] = Page::imageArrowLinkWithDescription($title,
-                $escapedUrl, $href, 'bookmark');
-        }
-    }
-} else {
-    $items[] = Page::info('No bookmarks.');
-}
+include_once 'fns/render_bookmarks.php';
+render_bookmarks($bookmarks, $items);
 
 if (array_key_exists('bookmarks/index_messages', $_SESSION)) {
     $pageMessages = Page::messages($_SESSION['bookmarks/index_messages']);
