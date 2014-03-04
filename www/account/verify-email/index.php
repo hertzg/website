@@ -3,12 +3,6 @@
 include_once '../../fns/require_user.php';
 require_user('../../');
 
-include_once '../../classes/Captcha.php';
-if (!Captcha::required()) {
-    include_once '../../fns/redirect.php';
-    redirect('submit.php');
-}
-
 include_once '../../lib/page.php';
 
 if (array_key_exists('account/verify-email/index_errors', $_SESSION)) {

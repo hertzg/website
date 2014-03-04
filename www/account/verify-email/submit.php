@@ -19,6 +19,8 @@ if ($errors) {
     redirect();
 }
 
+Captcha::reset();
+
 $key = md5(uniqid(), true);
 
 include_once '../../fns/Users/editVerifyEmailKey.php';
