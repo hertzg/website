@@ -50,46 +50,23 @@ if ($searchFiles) {
 
 if ($bookmarks || $contacts || $notes || $tasks || $folders || $files) {
 
-    foreach ($bookmarks as $bookmark) {
-        $items[] = Page::imageArrowLinkWithDescription(
-            htmlspecialchars($bookmark->title),
-            htmlspecialchars($bookmark->url),
-            "../bookmarks/view/?id=$bookmark->idbookmarks", 'bookmark');
-    }
+    include_once 'fns/render_bookmarks.php';
+    render_bookmarks($bookmarks, $items);
 
-    foreach ($contacts as $contact) {
-        $items[] = Page::imageArrowLink(htmlspecialchars($contact->fullname),
-            "../contacts/view/?id=$contact->idcontacts", 'contact');
-    }
+    include_once 'fns/render_contacts.php';
+    render_contacts($contacts, $items);
 
-    foreach ($notes as $note) {
-        $items[] = Page::imageArrowLink(htmlspecialchars($note->notetext),
-            "../notes/view/?id=$note->idnotes", 'note');
-    }
+    include_once 'fns/render_notes.php';
+    render_notes($notes, $items);
 
-    foreach ($tasks as $task) {
-        $icon = $task->top_priority ? 'task-top-priority' : 'task';
-        $title = htmlspecialchars($task->tasktext);
-        $href = "../tasks/view/?id=$task->idtasks";
-        $tags = $task->tags;
-        if ($tags) {
-            $items[] = Page::imageArrowLinkWithDescription($title,
-                'Tags: '.htmlspecialchars($tags), $href, $icon);
-        } else {
-            $items[] = Page::imageArrowLink($title, $href, $icon);
-        }
-    }
+    include_once 'fns/render_tasks.php';
+    render_tasks($tasks, $items);
 
-    include_once '../files/fns/create_folder_link.php';
-    foreach ($folders as $folder) {
-        $items[] = Page::imageArrowLink(htmlspecialchars($folder->foldername),
-            create_folder_link($folder->idfolders, '../files/'), 'folder');
-    }
+    include_once 'fns/render_folders.php';
+    render_folders($folders, $items);
 
-    foreach ($files as $file) {
-        $items[] = Page::imageArrowLink(htmlspecialchars($file->filename),
-            "../files/view-file/?id=$file->idfiles", 'file');
-    }
+    include_once 'fns/render_files.php';
+    render_files($files, $items);
 
 } else {
     $items[] = Page::info('Nothing found.');
