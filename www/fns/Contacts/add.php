@@ -11,12 +11,13 @@ function add ($mysqli, $idusers, $fullname, $address,
     $phone1 = $mysqli->real_escape_string($phone1);
     $phone2 = $mysqli->real_escape_string($phone2);
     $tags = $mysqli->real_escape_string($tags);
+    $insert_time = $update_time = time();
 
     $sql = 'insert into contacts'
-        .' (idusers, fullname, address,'
-        .' email, phone1, phone2, tags)'
-        ." values ($idusers, '$fullname', '$address',"
-        ." '$email', '$phone1', '$phone2', '$tags')";
+        .' (idusers, fullname, address, email, '
+        .'phone1, phone2, tags, insert_time, update_time)'
+        ." values ($idusers, '$fullname', '$address', '$email',"
+        ." '$phone1', '$phone2', '$tags', $insert_time)";
 
     $mysqli->query($sql);
 

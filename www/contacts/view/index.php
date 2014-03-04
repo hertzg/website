@@ -27,6 +27,37 @@ unset(
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
 
+$items = array(
+    Form::label('Full name', htmlspecialchars($contact->fullname)),
+);
+
+if ($address !== '') {
+    $items[] = Form::label('Address', htmlspecialchars($address));
+}
+
+if ($email !== '') {
+    $items[] = Form::label('Email', htmlspecialchars($email));
+}
+
+if ($phone1 !== '') {
+    $items[] = Form::label('Phone 1', htmlspecialchars($phone1));
+}
+
+if ($phone2 !== '') {
+    $items[] = Form::label('Phone 2', htmlspecialchars($phone2));
+}
+
+$insert_time = $contact->insert_time;
+$update_time = $contact->update_time;
+
+include_once '../../fns/date_ago.php';
+$infoText = '<div>Contact created '.date_ago($insert_time).'.</div>';
+if ($insert_time != $update_time) {
+    $infoText .= '<div>Last modified '.date_ago($update_time).'.</div>';
+}
+
+$items[] = Page::text($infoText);
+
 $page->base = '../../';
 $page->title = "Contact #$id";
 $page->finish(
@@ -42,12 +73,7 @@ $page->finish(
             ),
         ),
         "Contact #$id",
-        $pageMessages
-        .Form::label('Full name', htmlspecialchars($contact->fullname))
-        .($address ? Page::HR.Form::label('Address', htmlspecialchars($address)) : '')
-        .($email ? Page::HR.Form::label('Email', htmlspecialchars($email)) : '')
-        .($phone1 ? Page::HR.Form::label('Phone 1', htmlspecialchars($phone1)) : '')
-        .($phone2 ? Page::HR.Form::label('Phone 2', htmlspecialchars($phone2)) : '')
+        $pageMessages.join(Page::HR, $items)
     )
     .create_panel(
         'Options',
