@@ -79,30 +79,16 @@ Users\add($mysqli, $username, $email, $password1);
 Captcha::reset();
 setcookie('username', $username, time() + 60 * 60 * 24 * 30, '/');
 
-$escapedUsername = htmlspecialchars($username);
-$notificationText = "$escapedUsername has signed up with the email ".htmlspecialchars($email);
+$text = "$username has signed up with the email $email";
 include_once '../classes/ZviniAPI.php';
-ZviniAPI::notify('zvini-signups', '03feb769e474c9c9c257597d462c41eb', $notificationText);
+ZviniAPI::notify('zvini-signups', '03feb769e474c9c9c257597d462c41eb', $text);
 
-$title = "$escapedUsername Signed Up";
-
-mail(
-    'info@zvini.com',
-    $title,
-    '<!DOCTYPE html>'
-    .'<html>'
-        .'<head>'
-            ."<title>$title</title>"
-            .'<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />'
-        .'</head>'
-        ."<body>$notificationText</body>"
-    .'</html>',
-    "From: no-reply@zvini.com\r\n"
-    .'Content-Type: text/html; charset=UTF-8'
-);
+include_once 'fns/send_email.php';
+send_email($username, $email);
 
 $_SESSION['sign-in/index_messages'] = array(
     'Thank you for signing up.',
     'Sign in to proceed.'
 );
+
 redirect('../sign-in/');
