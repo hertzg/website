@@ -1,11 +1,5 @@
 #!/usr/bin/env node
 
-function pad (n) {
-    n = String(n)
-    while (n.length < 5) n = '0' + n
-    return n
-}
-
 function scan (dir) {
     var files = fs.readdirSync(dir)
     files.forEach(function (file) {
@@ -16,7 +10,7 @@ function scan (dir) {
             var numLines = content.split(/\n/).length
             if (numLines > 100) {
                 foundFiles.push({
-                    file: file,
+                    file: file.substr(2),
                     numLines: numLines,
                 })
             }
@@ -41,5 +35,5 @@ foundFiles.sort(function (a, b) {
     return b.numLines - a.numLines
 })
 foundFiles.forEach(function (foundFile) {
-    console.log(pad(foundFile.numLines) + ' ' + foundFile.file)
+    console.log(foundFile.file + ':' + foundFile.numLines)
 })

@@ -103,14 +103,8 @@ if ($keyword === '') {
     }
 }
 
-if ($notes) {
-    foreach ($notes as $note) {
-        $items[] = Page::imageArrowLink(htmlspecialchars($note->notetext),
-            "view/?id=$note->idnotes", 'note');
-    }
-} else {
-    $items[] = Page::info('No notes.');
-}
+include_once 'fns/render_notes.php';
+render_notes($notes, $items);
 
 if (array_key_exists('notes/index_messages', $_SESSION)) {
     $pageMessages = Page::messages($_SESSION['notes/index_messages']);

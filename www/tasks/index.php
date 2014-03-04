@@ -105,22 +105,8 @@ if ($keyword === '') {
     }
 }
 
-if ($tasks) {
-    foreach ($tasks as $task) {
-        $icon = $task->top_priority ? 'task-top-priority' : 'task';
-        $title = htmlspecialchars($task->tasktext);
-        $href = "view/?id=$task->idtasks";
-        $tags = $task->tags;
-        if ($tags) {
-            $items[] = Page::imageArrowLinkWithDescription($title,
-                'Tags: '.htmlspecialchars($tags), $href, $icon);
-        } else {
-            $items[] = Page::imageArrowLink($title, $href, $icon);
-        }
-    }
-} else {
-    $items[] = Page::info('No tasks.');
-}
+include_once 'fns/render_tasks.php';
+render_tasks($tasks, $items);
 
 if (array_key_exists('tasks/index_messages', $_SESSION)) {
     $pageMessages = Page::messages($_SESSION['tasks/index_messages']);
