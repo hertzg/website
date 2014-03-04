@@ -111,14 +111,8 @@ if ($keyword === '') {
     }
 }
 
-if ($contacts) {
-    foreach ($contacts as $contact) {
-        $items[] = Page::imageArrowLink(htmlspecialchars($contact->fullname),
-            "view/?id=$contact->idcontacts", 'contact');
-    }
-} else {
-    $items[] = Page::info('No contacts.');
-}
+include_once 'fns/render_contacts.php';
+render_contacts($contacts, $items);
 
 if (array_key_exists('contacts/index_messages', $_SESSION)) {
     $pageMessages = Page::messages($_SESSION['contacts/index_messages']);
