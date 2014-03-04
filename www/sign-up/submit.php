@@ -53,7 +53,7 @@ if ($password1 === '') {
 }
 
 include_once '../classes/Captcha.php';
-Captcha::check($errors, 3);
+Captcha::check($errors);
 
 include_once '../fns/redirect.php';
 

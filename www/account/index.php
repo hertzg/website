@@ -8,6 +8,7 @@ include_once '../lib/mysqli.php';
 include_once '../lib/page.php';
 
 unset(
+    $_SESSION['account/verify-email/index_errors'],
     $_SESSION['change-password/index_errors'],
     $_SESSION['change-password/index_lastpost'],
     $_SESSION['close-account/index_errors'],
@@ -36,8 +37,7 @@ $email_verified = $user->email_verified;
 
 $options = array();
 if (!$email_verified) {
-    $options[] = Page::imageArrowLink('Verify Email',
-        'submit-verify-email.php', 'yes');
+    $options[] = Page::imageArrowLink('Verify Email', 'verify-email/', 'yes');
 }
 
 $options[] = Page::imageArrowLink('Edit Profile',

@@ -1,16 +1,28 @@
 <?php
 
-include_once '../fns/require_user.php';
-require_user('../');
+include_once '../../fns/require_user.php';
+require_user('../../');
 
-include_once '../fns/redirect.php';
+include_once '../../fns/redirect.php';
+if ($user->email_verified) redirect('..');
 
-if ($user->email_verified) redirect();
+include_once '../../fns/request_strings.php';
+list($captcha) = request_strings('captcha');
+
+$errors = array();
+
+include_once '../../classes/Captcha.php';
+Captcha::check($errors);
+
+if ($errors) {
+    $_SESSION['account/verify-email/index_errors'] = $errors;
+    redirect();
+}
 
 $key = md5(uniqid(), true);
 
-include_once '../fns/Users/editVerifyEmailKey.php';
-include_once '../lib/mysqli.php';
+include_once '../../fns/Users/editVerifyEmailKey.php';
+include_once '../../lib/mysqli.php';
 Users\editVerifyEmailKey($mysqli, $user->idusers, $key);
 
 $href = htmlspecialchars(
@@ -51,4 +63,4 @@ $_SESSION['account/index_messages'] = array(
     'Instructions to verify email have been sent to your email address.',
 );
 
-redirect();
+redirect('..');

@@ -15,7 +15,7 @@ class Form {
             ." type=\"submit\" value=\"$text\" />";
     }
 
-    static function captcha ($base) {
+    static function captcha ($base, $autofocus = false) {
         include_once 'Captcha.php';
         if (Captcha::required()) {
             include_once 'Page.php';
@@ -27,6 +27,7 @@ class Form {
                 .'</div>'
                 .self::textfield('captcha', 'Verification', array(
                     'required' => true,
+                    'autofocus' => $autofocus,
                 ))
                 .Page::HR;
         }
