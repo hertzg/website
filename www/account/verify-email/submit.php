@@ -55,11 +55,13 @@ $html =
         .'</body>'
     .'</html>';
 
+$subject = mb_encode_mimeheader($title, 'UTF-8');
+
 $headers =
     "From: no-reply@zvini.com\r\n"
     .'Content-Type: text/html; charset=UTF-8';
 
-mail($user->email, $title, $html, $headers);
+mail($user->email, $subject, $html, $headers);
 
 $_SESSION['account/index_messages'] = array(
     'Instructions to verify email have been sent to your email address.',

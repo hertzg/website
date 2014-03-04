@@ -77,11 +77,13 @@ $html =
         .'</body>'
     .'</html>';
 
+$subject = mb_encode_mimeheader($title, 'UTF-8');
+
 $headers =
     "From: no-reply@zvini.com\r\n"
     .'Content-Type: text/html; charset=UTF-8';
 
-mail($email, $title, $html, $headers);
+mail($email, $subject, $html, $headers);
 
 $_SESSION['sign-in/index_messages'] = array(
     'Instructions to reset password have been sent to your email address.',

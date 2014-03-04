@@ -44,9 +44,7 @@ ZviniAPI::notify('zvini-feedbacks', '58ff602ff1c79d81ca43d51f59ca03bd', $feedbac
 
 $title = "Zvini Feedback #$id";
 
-mail(
-    'info@zvini.com',
-    $title,
+$html =
     '<!DOCTYPE html>'
     .'<html>'
         .'<head>'
@@ -56,11 +54,16 @@ mail(
         .'<body>'
             .htmlspecialchars($feedbacktext)
         .'</body>'
-    .'</html>',
+    .'</html>';
+
+$subject = mb_encode_mimeheader($title, 'UTF-8');
+
+$headers =
     "From: no-reply@zvini.com\r\n"
     ."Reply-To: $user->email\r\n"
-    .'Content-Type: text/html; charset=UTF-8'
-);
+    .'Content-Type: text/html; charset=UTF-8';
+
+mail('info@zvini.com', $title, $html, $headers);
 
 $_SESSION['help/index_messages'] = array('Thank you for the feedback.');
 redirect('..');
