@@ -13,7 +13,8 @@ if (array_key_exists('help/feedback/index_lastpost', $_SESSION)) {
 }
 
 if (array_key_exists('help/feedback/index_errors', $_SESSION)) {
-    $pageErrors = Page::errors($_SESSION['help/feedback/index_errors']);
+    include_once '../../fns/Page/errors.php';
+    $pageErrors = Page\errors($_SESSION['help/feedback/index_errors']);
 } else {
     $pageErrors = '';
 }

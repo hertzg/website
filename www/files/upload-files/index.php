@@ -23,7 +23,8 @@ if ($idfolders) {
 include_once '../../lib/page.php';
 
 if (array_key_exists('files/upload-files_errors', $_SESSION)) {
-    $pageErrors = Page::errors($_SESSION['files/upload-files_errors']);
+    include_once '../../fns/Page/errors.php';
+    $pageErrors = Page\errors($_SESSION['files/upload-files_errors']);
 } else {
     $pageErrors = '';
 }

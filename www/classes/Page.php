@@ -44,20 +44,6 @@ class Page {
 
     }
 
-    static function errors ($errors) {
-        $html = '';
-        if ($errors) {
-            $html = '<ul class="errors">';
-            foreach ($errors as $error) {
-                $html .= "<li><span class=\"bullet\"></span>$error</li>";
-            }
-            $html .=
-                '</ul>'
-                .'<div class="errors-hr"></div>';
-        }
-        return $html;
-    }
-
     function finish ($content) {
         $base = $this->base;
         $this->echoHtml(

@@ -14,7 +14,8 @@ if (array_key_exists('calendar/edit-event_lastpost', $_SESSION)) {
 }
 
 if (array_key_exists('calendar/edit-event_errors', $_SESSION)) {
-    $pageErrors = Page::errors($_SESSION['calendar/edit-event_errors']);
+    include_once '../../fns/Page/errors.php';
+    $pageErrors = Page\errors($_SESSION['calendar/edit-event_errors']);
 } else {
     $pageErrors = '';
 }

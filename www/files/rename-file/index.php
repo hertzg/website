@@ -9,7 +9,8 @@ include_once '../../classes/Form.php';
 include_once '../../lib/page.php';
 
 if (array_key_exists('files/rename-file_errors', $_SESSION)) {
-    $pageErrors = Page::errors($_SESSION['files/rename-file_errors']);
+    include_once '../../fns/Page/errors.php';
+    $pageErrors = Page\errors($_SESSION['files/rename-file_errors']);
 } else {
     $pageErrors = '';
 }

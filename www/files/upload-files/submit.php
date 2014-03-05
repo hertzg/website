@@ -68,7 +68,7 @@ if (!$posttest) {
 
 if ($errors) {
     $_SESSION['files/upload-files_errors'] = $errors;
-    redirect("upload-files.php?idfolders=$idfolders");
+    redirect("./?idfolders=$idfolders");
 }
 
 unset($_SESSION['files/upload-files_errors']);

@@ -13,7 +13,8 @@ if (array_key_exists('channels/add_lastpost', $_SESSION)) {
 }
 
 if (array_key_exists('channels/add_errors', $_SESSION)) {
-    $pageErrors = Page::errors($_SESSION['channels/add_errors']);
+    include_once '../../fns/Page/errors.php';
+    $pageErrors = Page\errors($_SESSION['channels/add_errors']);
 } else {
     $pageErrors = '';
 }

@@ -6,7 +6,8 @@ require_user('../../');
 include_once '../../lib/page.php';
 
 if (array_key_exists('account/verify-email/index_errors', $_SESSION)) {
-    $pageErrors = Page::errors($_SESSION['account/verify-email/index_errors']);
+    include_once '../../fns/Page/errors.php';
+    $pageErrors = Page\errors($_SESSION['account/verify-email/index_errors']);
 } else {
     $pageErrors = '';
 }

@@ -62,7 +62,8 @@ if (array_key_exists('files/move-folder_parentidfolders', $_SESSION) &&
 }
 
 if (array_key_exists('files/move-folder_errors', $_SESSION)) {
-    $pageErrors = Page::errors($_SESSION['files/move-folder_errors']);
+    include_once '../../fns/Page/errors.php';
+    $pageErrors = Page\errors($_SESSION['files/move-folder_errors']);
 } else {
     $pageErrors = '';
 }

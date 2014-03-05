@@ -20,7 +20,8 @@ if (array_key_exists('contacts/new/index_lastpost', $_SESSION)) {
 }
 
 if (array_key_exists('contacts/new/index_errors', $_SESSION)) {
-    $pageErrors = Page::errors($_SESSION['contacts/new/index_errors']);
+    include_once '../../fns/Page/errors.php';
+    $pageErrors = Page\errors($_SESSION['contacts/new/index_errors']);
 } else {
     $pageErrors = '';
 }

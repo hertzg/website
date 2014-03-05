@@ -17,7 +17,8 @@ if (array_key_exists('change-password/index_lastpost', $_SESSION)) {
 }
 
 if (array_key_exists('change-password/index_errors', $_SESSION)) {
-    $pageErrors = Page::errors($_SESSION['change-password/index_errors']);
+    include_once '../fns/Page/errors.php';
+    $pageErrors = Page\errors($_SESSION['change-password/index_errors']);
 } else {
     $pageErrors = '';
 }

@@ -7,7 +7,8 @@ include_once '../classes/Form.php';
 include_once '../lib/page.php';
 
 if (array_key_exists('close-account/index_errors', $_SESSION)) {
-    $pageErrors = Page::errors($_SESSION['close-account/index_errors']);
+    include_once '../fns/Page/errors.php';
+    $pageErrors = Page\errors($_SESSION['close-account/index_errors']);
 } else {
     $pageErrors = '';
 }

@@ -16,7 +16,8 @@ if (array_key_exists('calendar/add-event_lastpost', $_SESSION)) {
 }
 
 if (array_key_exists('calendar/add-event_errors', $_SESSION)) {
-    $pageErrors = Page::errors($_SESSION['calendar/add-event_errors']);
+    include_once '../../fns/Page/errors.php';
+    $pageErrors = Page\errors($_SESSION['calendar/add-event_errors']);
 } else {
     $pageErrors = '';
 }

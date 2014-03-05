@@ -29,7 +29,8 @@ if ($parentIdFolders) {
 }
 
 if (array_key_exists('files/add-folder_errors', $_SESSION)) {
-    $pageErrors = Page::errors($_SESSION['files/add-folder_errors']);
+    include_once '../../fns/Page/errors.php';
+    $pageErrors = Page\errors($_SESSION['files/add-folder_errors']);
 } else {
     $pageErrors = '';
 }

@@ -14,7 +14,8 @@ if (array_key_exists('notes/edit_lastpost', $_SESSION)) {
 }
 
 if (array_key_exists('notes/edit_errors', $_SESSION)) {
-    $pageErrors = Page::errors($_SESSION['notes/edit_errors']);
+    include_once '../../fns/Page/errors.php';
+    $pageErrors = Page\errors($_SESSION['notes/edit_errors']);
 } else {
     $pageErrors = '';
 }

@@ -14,7 +14,8 @@ if (array_key_exists('bookmarks/edit_lastpost', $_SESSION)) {
 }
 
 if (array_key_exists('bookmarks/edit_errors', $_SESSION)) {
-    $pageErrors = Page::errors($_SESSION['bookmarks/edit_errors']);
+    include_once '../../fns/Page/errors.php';
+    $pageErrors = Page\errors($_SESSION['bookmarks/edit_errors']);
 } else {
     $pageErrors = '';
 }
