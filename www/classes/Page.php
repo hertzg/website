@@ -78,21 +78,19 @@ class Page {
 
     static function imageArrowLinkWithDescription ($title, $description, $href,
         $iconName, array $options = array()) {
+
         $options['class'] = 'withArrow';
-        return self::imageLinkWithDescription($title, $description, $href,
-            $iconName, $options);
+
+        include_once __DIR__.'/../fns/create_title_and_description.php';
+        $content = create_title_and_description($title, $description);
+
+        include_once __DIR__.'/../fns/create_image_link.php';
+        return create_image_link($content, $href, $iconName, $options);
+
     }
 
     static function imageLink ($title, $href, $iconName, array $options = array()) {
         $content = "<div class=\"image_link-title\">$title</div>";
-        include_once __DIR__.'/../fns/create_image_link.php';
-        return create_image_link($content, $href, $iconName, $options);
-    }
-
-    static function imageLinkWithDescription ($title, $description, $href,
-        $iconName, array $options = array()) {
-        include_once __DIR__.'/../fns/create_title_and_description.php';
-        $content = create_title_and_description($title, $description);
         include_once __DIR__.'/../fns/create_image_link.php';
         return create_image_link($content, $href, $iconName, $options);
     }
