@@ -15,6 +15,12 @@ if (array_key_exists('close-account/index_errors', $_SESSION)) {
 
 unset($_SESSION['account/index_messages']);
 
+include_once '../fns/Page/warnings.php';
+$pageWarnings = Page\warnings(array(
+    'Are you sure you want to close your account?',
+    ' You will lose all your data.',
+));
+
 include_once '../fns/create_tabs.php';
 
 $page->base = '../';
@@ -33,10 +39,7 @@ $page->finish(
         ),
         'Close',
         $pageErrors
-        .Page::warnings(array(
-            'Are you sure you want to close your account?',
-            ' You will lose all your data.',
-        ))
+        .$pageWarnings
         .Form::create(
             'submit.php',
             Form::password('password', 'Password', array(

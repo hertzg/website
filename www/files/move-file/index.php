@@ -60,6 +60,12 @@ if (array_key_exists('files/move-file_errors', $_SESSION)) {
 
 unset($_SESSION['files/view-file/index_messages']);
 
+include_once '../../fns/Page/warnings.php';
+$pageWarnings = Page\warnings(array(
+    'Moving the file "<b>'.htmlspecialchars($file->filename).'</b>".',
+    'Select a folder to move the file into.',
+));
+
 include_once '../../fns/create_tabs.php';
 
 $page->base = '../../';
@@ -77,11 +83,6 @@ $page->finish(
             ),
         ),
         'Move',
-        $pageErrors
-        .Page::warnings(array(
-            'Moving the file "<b>'.htmlspecialchars($file->filename).'</b>".',
-            'Select a folder to move the file into.',
-        ))
-        .join(Page::HR, $items)
+        $pageErrors.$pageWarnings.join(Page::HR, $items)
     )
 );

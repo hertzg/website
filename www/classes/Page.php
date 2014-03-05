@@ -114,20 +114,6 @@ class Page {
         return "<div class=\"page-text-info\">$content</div>";
     }
 
-    static function warnings ($errors) {
-        $html = '';
-        if ($errors) {
-            $html = '<ul class="warnings">';
-            foreach ($errors as $error) {
-                $html .= "<li><span class=\"bullet\"></span>$error</li>";
-            }
-            $html .=
-                '</ul>'
-                .'<div class="warnings-hr"></div>';
-        }
-        return $html;
-    }
-
 }
 
 include_once __DIR__.'/../lib/revisions.php';

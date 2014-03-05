@@ -19,6 +19,9 @@ foreach ($themes as $id => $theme) {
     $themeItems[] = Page::imageLink($theme, $href, "$id-theme");
 }
 
+include_once '../fns/Page/warnings.php';
+$pageWarnings = Page\warnings(array('Select theme color:'));
+
 include_once '../fns/create_tabs.php';
 
 $page->base = '../';
@@ -36,7 +39,6 @@ $page->finish(
             ),
         ),
         'Edit Theme',
-        Page::warnings(array('Select theme color:'))
-        .join(Page::HR, $themeItems)
+        $pageWarnings.join(Page::HR, $themeItems)
     )
 );

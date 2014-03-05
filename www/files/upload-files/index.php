@@ -34,11 +34,17 @@ unset(
     $_SESSION['files/index_messages']
 );
 
+include_once '../../fns/bytestr.php';
+include_once '../../fns/ini_get_bytes.php';
+include_once '../../fns/Page/warnings.php';
+$pageWarnings = Page\warnings(array(
+    'Maximum '.bytestr(ini_get_bytes('upload_max_filesize')).' each file.',
+    'Maximum '.bytestr(ini_get_bytes('post_max_size')).' at once.',
+));
+
 include_once '../fns/create_folder_link.php';
 include_once '../../classes/Form.php';
-include_once '../../fns/bytestr.php';
 include_once '../../fns/create_tabs.php';
-include_once '../../fns/ini_get_bytes.php';
 
 $page->base = '../../';
 $page->title = 'Upload Files';
@@ -56,10 +62,7 @@ $page->finish(
         ),
         'Upload Files',
         $pageErrors
-        .Page::warnings(array(
-            'Maximum '.bytestr(ini_get_bytes('upload_max_filesize')).' each file.',
-            'Maximum '.bytestr(ini_get_bytes('post_max_size')).' at once.',
-        ))
+        .$pageWarnings
         .Form::create(
             'submit.php',
             Form::filefield('file1[]', 'File 1:')

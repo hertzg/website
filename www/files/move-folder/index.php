@@ -73,6 +73,12 @@ unset(
     $_SESSION['files/index_messages']
 );
 
+include_once '../../fns/Page/warnings.php';
+$pageWarnings = Page\warnings(array(
+    'Moving the folder "<b>'.htmlspecialchars($folder->foldername).'</b>".',
+    'Select a folder to move the folder into.'
+));
+
 include_once '../../fns/create_tabs.php';
 
 $page->base = '../../';
@@ -90,11 +96,6 @@ $page->finish(
             )
         ),
         'Move',
-        $pageErrors
-        .Page::warnings(array(
-            'Moving the folder "<b>'.htmlspecialchars($folder->foldername).'</b>".',
-            'Select a folder to move the folder into.'
-        ))
-        .join(Page::HR, $items)
+        $pageErrors.$pageWarnings.join(Page::HR, $items)
     )
 );
