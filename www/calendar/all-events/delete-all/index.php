@@ -3,6 +3,9 @@
 include_once '../../../fns/require_user.php';
 require_user('../../../');
 
+include_once '../../../fns/Page/text.php';
+$question = Page\text('Are you sure you want to delete all the events?');
+
 include_once '../../../fns/create_tabs.php';
 include_once '../../../lib/page.php';
 
@@ -21,8 +24,7 @@ $page->finish(
             ),
         ),
         'All Events',
-        Page::text('Are you sure you want to delete all the events?')
-        .Page::HR
+        $question.Page::HR
         .Page::imageLink('Yes, delete all events', 'submit.php', 'yes')
         .Page::HR
         .Page::imageLink('No, return back', '..', 'no')

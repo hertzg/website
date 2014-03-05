@@ -18,7 +18,8 @@ if ($channels) {
             "view/?id=$channel->idchannels", 'channel');
     }
 } else {
-    $channelsHtml .= Page::info('No channels.');
+    include_once '../fns/Page/info.php';
+    $channelsHtml .= Page\info('No channels.');
 }
 
 unset(

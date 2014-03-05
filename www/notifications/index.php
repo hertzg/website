@@ -83,7 +83,8 @@ if ($notifications) {
         $notificationsHtml .= create_image_text($content, $iconName);
     }
 } else {
-    $notificationsHtml = Page::info('No notifications.');
+    include_once '../fns/Page/info.php';
+    $notificationsHtml = Page\info('No notifications.');
 }
 
 unset(

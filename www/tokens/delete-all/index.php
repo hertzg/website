@@ -5,6 +5,11 @@ require_user('../../');
 
 unset($_SESSION['tokens/index_messages']);
 
+include_once '../../fns/Page/text.php';
+$question = Page\text(
+    'Are you sure you want to delete all the remembered sessions?'
+);
+
 include_once '../../fns/create_tabs.php';
 include_once '../../lib/page.php';
 
@@ -23,10 +28,7 @@ $page->finish(
             ),
         ),
         'Sessions',
-        Page::text(
-            'Are you sure you want to delete all the remembered sessions?'
-        )
-        .Page::HR
+        $question.Page::HR
         .Page::imageLink('Yes, delete all sessions', 'submit.php', 'yes')
         .Page::HR
         .Page::imageLink('No, return back', '..', 'no')

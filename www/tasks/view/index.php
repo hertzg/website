@@ -40,15 +40,23 @@ if (array_key_exists('tasks/view/index_messages', $_SESSION)) {
 }
 
 include_once '../../fns/date_ago.php';
-$infoText = '<div>Task created '.date_ago($inserttime).'.</div>';
+include_once '../../fns/Page/text.php';
+$datesText = '<div>Task created '.date_ago($inserttime).'.</div>';
 if ($inserttime != $updatetime) {
-    $infoText .= '<div>Last modified '.date_ago($updatetime).'.</div>';
+    $datesText .= '<div>Last modified '.date_ago($updatetime).'.</div>';
 }
+$datesText = Page\text($datesText);
+
+include_once '../../fns/render_external_links.php';
+$text = Page\text(
+    nl2br(
+        render_external_links(htmlspecialchars($tasktext), $base)
+    )
+);
 
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/create_tags.php';
-include_once '../../fns/render_external_links.php';
 
 $page->base = $base;
 $page->title = "Task #$id";
@@ -65,15 +73,7 @@ $page->finish(
             ),
         ),
         "Task #$id",
-        $pageMessages
-        .Page::text(
-            nl2br(
-                render_external_links(htmlspecialchars($tasktext), $base)
-            )
-        )
-        .create_tags('../', $tags)
-        .Page::HR
-        .Page::text($infoText)
+        $pageMessages.$text.create_tags('../', $tags).Page::HR.$datesText
     )
     .create_panel('Options', join(Page::HR, $options))
 );

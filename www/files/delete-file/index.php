@@ -6,6 +6,12 @@ list($file, $id) = require_file($mysqli);
 
 unset($_SESSION['files/view-file/index_messages']);
 
+include_once '../../fns/Page/text.php';
+$question = Page\text(
+    'Are you sure you want to delete the file'
+    .' "<b>'.htmlspecialchars($file->filename).'</b>"?'
+);
+
 include_once '../fns/create_folder_link.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../lib/page.php';
@@ -25,11 +31,7 @@ $page->finish(
             ),
         ),
         "File #$id",
-        Page::text(
-            'Are you sure you want to delete the file'
-            .' "<b>'.htmlspecialchars($file->filename).'</b>"?'
-        )
-        .Page::HR
+        $question.Page::HR
         .Page::imageLink('Yes, delete file', "submit.php?id=$id", 'yes')
         .Page::HR
         .Page::imageLink('No, return back', "../view-file/?id=$id", 'no')

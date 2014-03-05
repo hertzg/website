@@ -26,7 +26,8 @@ if ($events) {
     );
 
 } else {
-    $items[] = Page::info('No events.');
+    include_once '../../fns/Page/info.php';
+    $items[] = Page\info('No events.');
     $optionsPanel = '';
 }
 

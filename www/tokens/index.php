@@ -50,7 +50,8 @@ if ($tokens) {
 
     }
 } else {
-    $items[] = Page::info('No sessions remembered.');
+    include_once '../fns/Page/info.php';
+    $items[] = Page\info('No sessions remembered');
 }
 
 if ($options) {

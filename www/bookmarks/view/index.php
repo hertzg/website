@@ -32,11 +32,22 @@ $base = '../../';
 include_once '../../fns/create_external_url.php';
 $externalUrl = create_external_url($url, $base);
 
-include_once '../../fns/date_ago.php';
-$infoText = '<div>Bookmark created '.date_ago($inserttime).'.</div>';
-if ($inserttime != $updatetime) {
-    $infoText .= '<div>Last modified '.date_ago($updatetime).'.</div>';
+include_once '../../fns/Page/text.php';
+
+if ($title === '') {
+    $titleItem = '';
+} else {
+    $titleItem = Page\text(htmlspecialchars($title)).Page::HR;
 }
+
+$urlItem = Page\text(htmlspecialchars($url));
+
+include_once '../../fns/date_ago.php';
+$datesText = '<div>Bookmark created '.date_ago($inserttime).'.</div>';
+if ($inserttime != $updatetime) {
+    $datesText .= '<div>Last modified '.date_ago($updatetime).'.</div>';
+}
+$datesText = Page\text($datesText);
 
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
@@ -57,12 +68,8 @@ $page->finish(
             ),
         ),
         "Bookmark #$id",
-        $pageMessages
-        .($title === '' ? '' : Page::text(htmlspecialchars($title)).Page::HR)
-        .Page::text(htmlspecialchars($url))
-        .create_tags('../', $tags)
-        .Page::HR
-        .Page::text($infoText)
+        $pageMessages.$titleItem.$urlItem
+        .create_tags('../', $tags).Page::HR.$datesText
     )
     .create_panel(
         'Options',

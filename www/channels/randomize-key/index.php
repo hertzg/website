@@ -4,10 +4,16 @@ include_once '../fns/require_channel.php';
 include_once '../../lib/mysqli.php';
 list($channel, $id) = require_channel($mysqli);
 
+unset($_SESSION['channels/view/index_messages']);
+
+include_once '../../fns/Page/text.php';
+$question = Page\text(
+    'Are you sure you want to randomize the channel key of '
+    .'"<b>'.htmlspecialchars($channel->channelname).'</b>"?'
+);
+
 include_once '../../fns/create_tabs.php';
 include_once '../../lib/page.php';
-
-unset($_SESSION['channels/view/index_messages']);
 
 $page->base = '../../';
 $page->title = 'Randomize Channel Key';
@@ -24,11 +30,7 @@ $page->finish(
             ),
         ),
         "Channel #$id",
-        Page::text(
-            'Are you sure you want to randomize the channel key of '
-            .'"<b>'.htmlspecialchars($channel->channelname).'</b>"?'
-        )
-        .Page::HR
+        $question.Page::HR
         .Page::imageLink('Yes, randomize channel key',
             "submit.php?id=$id", 'yes')
         .Page::HR

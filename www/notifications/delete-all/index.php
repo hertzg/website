@@ -3,10 +3,13 @@
 include_once '../../fns/require_user.php';
 require_user('../../');
 
+unset($_SESSION['notifications/index_messages']);
+
+include_once '../../fns/Page/text.php';
+$question = Page\text('Are you sure you want to delete all the notifications?');
+
 include_once '../../fns/create_tabs.php';
 include_once '../../lib/page.php';
-
-unset($_SESSION['notifications/index_messages']);
 
 $page->base = '../../';
 $page->title = 'Delete All Notifications?';
@@ -19,8 +22,7 @@ $page->finish(
             ),
         ),
         'Notifications',
-        Page::text('Are you sure you want to delete all the notifications?')
-        .Page::HR
+        $question.Page::HR
         .Page::imageLink('Yes, delete all notifications', 'submit.php', 'yes')
         .Page::HR
         .Page::imageLink('No, return back', '..', 'no')

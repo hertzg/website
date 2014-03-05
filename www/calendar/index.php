@@ -121,7 +121,8 @@ if ($events) {
             "view-event/?idevents=$event->idevents", 'event');
     }
 } else {
-    $eventItems[] = Page::info('No events on this day.');
+    include_once '../fns/Page/info.php';
+    $eventItems[] = Page\info('No events on this day.');
 }
 
 $title = 'All Events';

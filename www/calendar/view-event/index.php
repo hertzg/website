@@ -19,6 +19,11 @@ unset(
     $_SESSION['calendar/index_messages']
 );
 
+include_once '../../fns/Page/text.php';
+$text = Page\text(htmlspecialchars($event->eventtext));
+
+$dateText = Page\text(date('F d, Y', $event->eventtime));
+
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
 
@@ -37,10 +42,7 @@ $page->finish(
             ),
         ),
         "Event #$idevents",
-        $pageMessages
-        .Page::text(htmlspecialchars($event->eventtext))
-        .Page::HR
-        .Page::text(date('F d, Y', $event->eventtime))
+        $pageMessages.$text.Page::HR.$dateText
     )
     .create_panel(
         'Options',

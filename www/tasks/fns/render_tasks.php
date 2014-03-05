@@ -16,6 +16,7 @@ function render_tasks ($tasks, &$items) {
             }
         }
     } else {
-        $items[] = Page::info('No tasks.');
+        include_once __DIR__.'/../../fns/Page/info.php';
+        $items[] = Page\info('No tasks.');
     }
 }

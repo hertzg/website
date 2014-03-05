@@ -8,6 +8,7 @@ function render_contacts (array $contacts, array &$items) {
             $items[] = Page::imageArrowLink($title, $href, 'contact');
         }
     } else {
-        $items[] = Page::info('No contacts.');
+        include_once __DIR__.'/../../fns/Page/info.php';
+        $items[] = Page\info('No contacts.');
     }
 }

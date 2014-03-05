@@ -6,6 +6,11 @@ list($channel, $id) = require_channel($mysqli);
 
 unset($_SESSION['notifications/index_messages']);
 
+include_once '../../fns/Page/text.php';
+$question = Page\text(
+    'Are you sure you want to delete notifications in this channel?'
+);
+
 include_once '../../fns/create_tabs.php';
 include_once '../../lib/page.php';
 
@@ -20,10 +25,7 @@ $page->finish(
             ),
         ),
         'Notifications',
-        Page::text(
-            'Are you sure you want to delete notifications in this channel?'
-        )
-        .Page::HR
+        $question.Page::HR
         .Page::imageLink('Yes, delete notifications',
             "submit.php?id=$id", 'yes')
         .Page::HR

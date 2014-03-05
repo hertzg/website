@@ -69,7 +69,8 @@ if ($bookmarks || $contacts || $notes || $tasks || $folders || $files) {
     render_files($files, $items);
 
 } else {
-    $items[] = Page::info('Nothing found.');
+    include_once '../fns/Page/info.php';
+    $items[] = Page\info('Nothing found.');
 }
 
 if (!$searchFiles) {

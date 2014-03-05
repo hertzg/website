@@ -52,12 +52,12 @@ $insert_time = $contact->insert_time;
 $update_time = $contact->update_time;
 
 include_once '../../fns/date_ago.php';
-$infoText = '<div>Contact created '.date_ago($insert_time).'.</div>';
+$datesText = '<div>Contact created '.date_ago($insert_time).'.</div>';
 if ($insert_time != $update_time) {
-    $infoText .= '<div>Last modified '.date_ago($update_time).'.</div>';
+    $datesText .= '<div>Last modified '.date_ago($update_time).'.</div>';
 }
-
-$items[] = Page::text($infoText);
+include_once '../../fns/Page/text.php';
+$items[] = Page\text($datesText);
 
 $page->base = '../../';
 $page->title = "Contact #$id";

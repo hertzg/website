@@ -16,6 +16,7 @@ function render_bookmarks (array $bookmarks, array &$items) {
             }
         }
     } else {
-        $items[] = Page::info('No bookmarks.');
+        include_once __DIR__.'/../../fns/Page/info.php';
+        $items[] = Page\info('No bookmarks.');
     }
 }

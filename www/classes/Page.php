@@ -97,23 +97,6 @@ class Page {
         return create_image_link($content, $href, $iconName, $options);
     }
 
-    static function info ($text) {
-        return "<div class=\"page-info\">$text</div>";
-    }
-
-    static function optionlink ($title, $href, $selected) {
-        $title .= $selected ? ' (Active)' : '';
-        return "<a class=\"clickable link\" href=\"$href\">$title</a>";
-    }
-
-    static function text ($content) {
-        return "<div class=\"page-text\">$content</div>";
-    }
-
-    static function textInfo ($content) {
-        return "<div class=\"page-text-info\">$content</div>";
-    }
-
 }
 
 include_once __DIR__.'/../lib/revisions.php';

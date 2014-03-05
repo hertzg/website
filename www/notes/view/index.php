@@ -28,16 +28,24 @@ $tags = NoteTags\indexOnNote($mysqli, $id);
 
 $base = '../../';
 
+include_once '../../fns/render_external_links.php';
+include_once '../../fns/Page/text.php';
+$text = Page\text(
+    nl2br(
+        render_external_links(htmlspecialchars($notetext), $base)
+    )
+);
+
 include_once '../../fns/date_ago.php';
-$infoText = '<div>Note created '.date_ago($inserttime).'.</div>';
+$datesText = '<div>Note created '.date_ago($inserttime).'.</div>';
 if ($inserttime != $updatetime) {
-    $infoText .= '<div>Last modified '.date_ago($updatetime).'.</div>';
+    $datesText .= '<div>Last modified '.date_ago($updatetime).'.</div>';
 }
+$datesText = Page\text($datesText);
         
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/create_tags.php';
-include_once '../../fns/render_external_links.php';
 
 $page->base = $base;
 $page->title = "Note #$id";
@@ -54,15 +62,7 @@ $page->finish(
             ),
         ),
         "Note #$id",
-        $pageMessages
-        .Page::text(
-            nl2br(
-                render_external_links(htmlspecialchars($notetext), $base)
-            )
-        )
-        .create_tags('../', $tags)
-        .Page::HR
-        .Page::text($infoText)
+        $pageMessages.$text.create_tags('../', $tags).Page::HR.$datesText
     )
     .create_panel(
         'Options',

@@ -100,7 +100,8 @@ if ($folders || $files) {
 } else {
     if ($keyword === '') $text = 'Folder is empty.';
     else $text = 'Nothing found.';
-    $items[] = Page::info($text);
+    include_once '../fns/Page/info.php';
+    $items[] = Page\info($text);
 }
 
 if ($keyword !== '' && !$deep) {

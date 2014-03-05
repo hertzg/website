@@ -8,6 +8,7 @@ function render_notes (array $notes, array &$items) {
             $items[] = Page::imageArrowLink($title, $description, 'note');
         }
     } else {
-        $items[] = Page::info('No notes.');
+        include_once __DIR__.'/../../fns/Page/info.php';
+        $items[] = Page\info('No notes.');
     }
 }
