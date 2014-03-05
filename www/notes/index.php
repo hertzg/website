@@ -32,7 +32,9 @@ if ($keyword === '') {
         if (count($notes) > 1) {
 
             include_once '../fns/create_search_form_empty_content.php';
-            $items[] = create_search_form(create_search_form_empty_content('Search notes...'));
+            $items[] = create_search_form(
+                create_search_form_empty_content('Search notes...')
+            );
 
             include_once '../fns/NoteTags/indexOnUser.php';
             $tags = NoteTags\indexOnUser($mysqli, $idusers);
@@ -107,7 +109,8 @@ include_once 'fns/render_notes.php';
 render_notes($notes, $items);
 
 if (array_key_exists('notes/index_messages', $_SESSION)) {
-    $pageMessages = Page::messages($_SESSION['notes/index_messages']);
+    include_once '../fns/Page/messages.php';
+    $pageMessages = Page\messages($_SESSION['notes/index_messages']);
 } else {
     $pageMessages = '';
 }

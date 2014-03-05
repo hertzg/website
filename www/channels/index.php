@@ -29,7 +29,8 @@ unset(
 );
 
 if (array_key_exists('channels/index_messages', $_SESSION)) {
-    $pageMessages = Page::messages($_SESSION['channels/index_messages']);
+    include_once '../fns/Page/messages.php';
+    $pageMessages = Page\messages($_SESSION['channels/index_messages']);
 } else {
     $pageMessages = '';
 }

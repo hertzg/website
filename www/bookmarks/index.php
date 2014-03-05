@@ -134,7 +134,8 @@ include_once 'fns/render_bookmarks.php';
 render_bookmarks($bookmarks, $items);
 
 if (array_key_exists('bookmarks/index_messages', $_SESSION)) {
-    $pageMessages = Page::messages($_SESSION['bookmarks/index_messages']);
+    include_once '../fns/Page/messages.php';
+    $pageMessages = Page\messages($_SESSION['bookmarks/index_messages']);
 } else {
     $pageMessages = '';
 }

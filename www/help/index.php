@@ -6,7 +6,8 @@ require_user('../');
 include_once '../lib/page.php';
 
 if (array_key_exists('help/index_messages', $_SESSION)) {
-    $pageMessages = Page::messages($_SESSION['help/index_messages']);
+    include_once '../fns/Page/messages.php';
+    $pageMessages = Page\messages($_SESSION['help/index_messages']);
 } else {
     $pageMessages = '';
 }

@@ -7,7 +7,8 @@ list($event, $idevents) = require_event($mysqli);
 include_once '../../lib/page.php';
 
 if (array_key_exists('calendar/view-event_messages', $_SESSION)) {
-    $pageMessages = Page::messages($_SESSION['calendar/view-event_messages']);
+    include_once '../../fns/Page/messages.php';
+    $pageMessages = Page\messages($_SESSION['calendar/view-event_messages']);
 } else {
     $pageMessages = '';
 }

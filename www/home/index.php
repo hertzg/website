@@ -51,7 +51,8 @@ include_once 'fns/render_tasks.php';
 render_tasks($user, $items);
 
 if (array_key_exists('home/index_messages', $_SESSION)) {
-    $pageMessages = Page::messages($_SESSION['home/index_messages']);
+    include_once '../fns/Page/messages.php';
+    $pageMessages = Page\messages($_SESSION['home/index_messages']);
 } else {
     $pageMessages = '';
 }

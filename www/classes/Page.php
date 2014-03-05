@@ -101,20 +101,6 @@ class Page {
         return "<div class=\"page-info\">$text</div>";
     }
 
-    static function messages ($errors) {
-        $html = '';
-        if ($errors) {
-            $html = '<ul class="messages">';
-            foreach ($errors as $error) {
-                $html .= "<li><span class=\"bullet\"></span>$error</li>";
-            }
-            $html .=
-                '</ul>'
-                .'<div class="messages-hr"></div>';
-        }
-        return $html;
-    }
-
     static function optionlink ($title, $href, $selected) {
         $title .= $selected ? ' (Active)' : '';
         return "<a class=\"clickable link\" href=\"$href\">$title</a>";

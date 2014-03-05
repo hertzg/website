@@ -34,7 +34,8 @@ if (array_key_exists('sign-in/index_errors', $_SESSION)) {
 }
 
 if (array_key_exists('sign-in/index_messages', $_SESSION)) {
-    $pageMessages = Page::messages($_SESSION['sign-in/index_messages']);
+    include_once '../fns/Page/messages.php';
+    $pageMessages = Page\messages($_SESSION['sign-in/index_messages']);
 } else {
     $pageMessages = '';
 }

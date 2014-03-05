@@ -7,7 +7,8 @@ list($note, $id) = require_note($mysqli);
 include_once '../../lib/page.php';
 
 if (array_key_exists('notes/view/index_messages', $_SESSION)) {
-    $pageMessages = Page::messages($_SESSION['notes/view/index_messages']);
+    include_once '../../fns/Page/messages.php';
+    $pageMessages = Page\messages($_SESSION['notes/view/index_messages']);
 } else {
     $pageMessages = '';
 }

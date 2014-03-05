@@ -75,7 +75,8 @@ require_user('../');
 include_once '../lib/page.php';
 
 if (array_key_exists('calendar/index_messages', $_SESSION)) {
-    $pageMessages = Page::messages($_SESSION['calendar/index_messages']);
+    include_once '../fns/Page/messages.php';
+    $pageMessages = Page\messages($_SESSION['calendar/index_messages']);
 } else {
     $pageMessages = '';
 }

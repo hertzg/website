@@ -115,7 +115,8 @@ include_once 'fns/render_contacts.php';
 render_contacts($contacts, $items);
 
 if (array_key_exists('contacts/index_messages', $_SESSION)) {
-    $pageMessages = Page::messages($_SESSION['contacts/index_messages']);
+    include_once '../fns/Page/messages.php';
+    $pageMessages = Page\messages($_SESSION['contacts/index_messages']);
 } else {
     $pageMessages = '';
 }

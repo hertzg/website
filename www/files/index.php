@@ -142,7 +142,8 @@ if ($idfolders) {
 }
 
 if (array_key_exists('files/index_messages', $_SESSION)) {
-    $pageMessages = Page::messages($_SESSION['files/index_messages']);
+    include_once '../fns/Page/messages.php';
+    $pageMessages = Page\messages($_SESSION['files/index_messages']);
 } else {
     $pageMessages = '';
 }

@@ -13,7 +13,8 @@ $phone1 = $contact->phone1;
 $phone2 = $contact->phone2;
 
 if (array_key_exists('contacts/view/index_messages', $_SESSION)) {
-    $pageMessages = Page::messages($_SESSION['contacts/view/index_messages']);
+    include_once '../../fns/Page/messages.php';
+    $pageMessages = Page\messages($_SESSION['contacts/view/index_messages']);
 } else {
     $pageMessages = '';
 }

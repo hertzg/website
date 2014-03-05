@@ -9,7 +9,8 @@ include_once '../../classes/Form.php';
 include_once '../../lib/page.php';
 
 if (array_key_exists('channels/view/index_messages', $_SESSION)) {
-    $pageMessages = Page::messages($_SESSION['channels/view/index_messages']);
+    include_once '../../fns/Page/messages.php';
+    $pageMessages = Page\messages($_SESSION['channels/view/index_messages']);
 } else {
     $pageMessages = '';
 }

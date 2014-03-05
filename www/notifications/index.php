@@ -92,7 +92,8 @@ unset(
 );
 
 if (array_key_exists('notifications/index_messages', $_SESSION)) {
-    $pageMessages = Page::messages($_SESSION['notifications/index_messages']);
+    include_once '../fns/Page/messages.php';
+    $pageMessages = Page\messages($_SESSION['notifications/index_messages']);
 } else {
     $pageMessages = '';
 }

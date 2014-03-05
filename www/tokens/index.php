@@ -12,7 +12,8 @@ include_once '../fns/create_tabs.php';
 include_once '../lib/page.php';
 
 if (array_key_exists('tokens/index_messages', $_SESSION)) {
-    $pageMessages = Page::messages($_SESSION['tokens/index_messages']);
+    include_once '../fns/Page/messages.php';
+    $pageMessages = Page\messages($_SESSION['tokens/index_messages']);
 } else {
     $pageMessages = '';
 }

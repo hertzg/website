@@ -7,7 +7,8 @@ list($bookmark, $id) = require_bookmark($mysqli);
 include_once '../../lib/page.php';
 
 if (array_key_exists('bookmarks/view/index_messages', $_SESSION)) {
-    $pageMessages = Page::messages($_SESSION['bookmarks/view/index_messages']);
+    include_once '../../fns/Page/messages.php';
+    $pageMessages = Page\messages($_SESSION['bookmarks/view/index_messages']);
 } else {
     $pageMessages = '';
 }

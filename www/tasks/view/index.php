@@ -33,7 +33,8 @@ $tags = TaskTags\indexOnTask($mysqli, $id);
 $base = '../../';
 
 if (array_key_exists('tasks/view/index_messages', $_SESSION)) {
-    $pageMessages = Page::messages($_SESSION['tasks/view/index_messages']);
+    include_once '../../fns/Page/messages.php';
+    $pageMessages = Page\messages($_SESSION['tasks/view/index_messages']);
 } else {
     $pageMessages = '';
 }
