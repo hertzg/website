@@ -1,11 +1,11 @@
 <?php
 
-function render_tasks ($tasks, &$items) {
+function render_tasks ($tasks, &$items, $base = '') {
     if ($tasks) {
         foreach ($tasks as $task) {
             $icon = $task->top_priority ? 'task-top-priority' : 'task';
             $title = htmlspecialchars($task->tasktext);
-            $href = "view/?id=$task->idtasks";
+            $href = "{$base}view/?id=$task->idtasks";
             $tags = $task->tags;
             if ($tags) {
                 $description = 'Tags: '.htmlspecialchars($tags);
