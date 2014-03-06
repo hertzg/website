@@ -2,7 +2,7 @@
 
 function create_search_form ($content) {
     return
-        '<form action="./" style="height: 48px; position: relative">'
+        '<form action="search/" style="height: 48px; position: relative">'
             .$content
         .'</form>';
 }
@@ -18,91 +18,48 @@ include_once '../lib/mysqli.php';
 include_once '../lib/page.php';
 
 include_once '../fns/request_strings.php';
-list($keyword, $tag) = request_strings('keyword', 'tag');
+list($tag) = request_strings('tag');
 
 $items = array();
 $filterMessage = '';
 
-if ($keyword === '') {
-    if ($tag === '') {
+if ($tag === '') {
 
-        include_once '../fns/Notes/indexOnUser.php';
-        $notes = Notes\indexOnUser($mysqli, $idusers);
+    include_once '../fns/Notes/indexOnUser.php';
+    $notes = Notes\indexOnUser($mysqli, $idusers);
 
-        if (count($notes) > 1) {
+    if (count($notes) > 1) {
 
-            include_once '../fns/create_search_form_empty_content.php';
-            $items[] = create_search_form(
-                create_search_form_empty_content('Search notes...')
-            );
+        include_once '../fns/create_search_form_empty_content.php';
+        $items[] = create_search_form(
+            create_search_form_empty_content('Search notes...')
+        );
 
-            include_once '../fns/NoteTags/indexOnUser.php';
-            $tags = NoteTags\indexOnUser($mysqli, $idusers);
-            if ($tags) {
-                include_once '../fns/create_tag_filter_bar.php';
-                $filterMessage = create_tag_filter_bar($tags, array());
-            }
-
+        include_once '../fns/NoteTags/indexOnUser.php';
+        $tags = NoteTags\indexOnUser($mysqli, $idusers);
+        if ($tags) {
+            include_once '../fns/create_tag_filter_bar.php';
+            $filterMessage = create_tag_filter_bar($tags, array());
         }
-
-    } else {
-
-        include_once '../fns/NoteTags/indexOnTagName.php';
-        $notes = NoteTags\indexOnTagName($mysqli, $idusers, $tag);
-
-        if (count($notes) > 1) {
-            include_once '../fns/create_search_form_empty_content.php';
-            $items[] = create_search_form(
-                create_search_form_empty_content('Search notes...')
-                .createTagInput($tag)
-            );
-        }
-
-        include_once '../fns/create_clear_filter_bar.php';
-        $filterMessage = create_clear_filter_bar($tag, './');
 
     }
+
 } else {
-    include_once '../fns/create_search_form_content.php';
-    if ($tag === '') {
 
-        include_once '../fns/Notes/search.php';
-        $notes = Notes\search($mysqli, $idusers, $keyword);
+    include_once '../fns/NoteTags/indexOnTagName.php';
+    $notes = NoteTags\indexOnTagName($mysqli, $idusers, $tag);
 
+    if (count($notes) > 1) {
+        include_once '../fns/create_search_form_empty_content.php';
         $items[] = create_search_form(
-            create_search_form_content($keyword, 'Search notes...', './')
-        );
-        if (count($notes) > 1) {
-
-            include_once '../fns/NoteTags/indexOnUser.php';
-            $tags = NoteTags\indexOnUser($mysqli, $idusers);
-
-            if ($tags) {
-                include_once '../fns/create_tag_filter_bar.php';
-                $filterMessage = create_tag_filter_bar($tags, array(
-                    'keyword' => $keyword,
-                ));
-            }
-
-        }
-
-    } else {
-
-        include_once '../fns/NoteTags/searchOnTagName.php';
-        $notes = NoteTags\searchOnTagName($mysqli, $idusers, $keyword, $tag);
-
-        $items[] = create_search_form(
-            create_search_form_content($keyword, 'Search notes...', '?tag='.rawurlencode($tag))
+            create_search_form_empty_content('Search notes...')
             .createTagInput($tag)
         );
-
-        $clearHref = '?'.htmlspecialchars(
-            http_build_query(array('keyword' => $keyword))
-        );
-        include_once '../fns/create_clear_filter_bar.php';
-        $filterMessage = create_clear_filter_bar($tag, $clearHref);
-
     }
+
+    include_once '../fns/create_clear_filter_bar.php';
+    $filterMessage = create_clear_filter_bar($tag, './');
+
 }
 
 include_once 'fns/render_notes.php';
@@ -120,8 +77,8 @@ unset(
 
 $options = array(Page::imageArrowLink('New Note', 'new/', 'create-note'));
 if ($notes) {
-    $options[] = Page::imageArrowLink('Delete All Notes',
-        'delete-all/', 'trash-bin');
+    $href = 'delete-all/';
+    $options[] = Page::imageArrowLink('Delete All Notes', $href, 'trash-bin');
 }
 
 include_once '../fns/create_panel.php';
