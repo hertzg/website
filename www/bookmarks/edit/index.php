@@ -7,18 +7,14 @@ list($bookmark, $id) = require_bookmark($mysqli);
 include_once '../../classes/Form.php';
 include_once '../../lib/page.php';
 
-if (array_key_exists('bookmarks/edit_lastpost', $_SESSION)) {
-    $values = $_SESSION['bookmarks/edit_lastpost'];
+if (array_key_exists('bookmarks/edit/index_lastpost', $_SESSION)) {
+    $values = $_SESSION['bookmarks/edit/index_lastpost'];
 } else {
     $values = (array)$bookmark;
 }
 
-if (array_key_exists('bookmarks/edit_errors', $_SESSION)) {
-    include_once '../../fns/Page/errors.php';
-    $pageErrors = Page\errors($_SESSION['bookmarks/edit_errors']);
-} else {
-    $pageErrors = '';
-}
+include_once '../../fns/Page/sessionErrors.php';
+$pageErrors = Page\sessionErrors('bookmarks/edit/index_errors');
 
 unset($_SESSION['bookmarks/index_messages']);
 

@@ -19,12 +19,8 @@ if (array_key_exists('contacts/new/index_lastpost', $_SESSION)) {
     );
 }
 
-if (array_key_exists('contacts/new/index_errors', $_SESSION)) {
-    include_once '../../fns/Page/errors.php';
-    $pageErrors = Page\errors($_SESSION['contacts/new/index_errors']);
-} else {
-    $pageErrors = '';
-}
+include_once '../../fns/Page/sessionErrors.php';
+$pageErrors = Page\sessionErrors('contacts/new/index_errors');
 
 unset($_SESSION['contacts/index_messages']);
 

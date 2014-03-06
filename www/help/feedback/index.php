@@ -12,12 +12,8 @@ if (array_key_exists('help/feedback/index_lastpost', $_SESSION)) {
     $values = array('feedbacktext' => '');
 }
 
-if (array_key_exists('help/feedback/index_errors', $_SESSION)) {
-    include_once '../../fns/Page/errors.php';
-    $pageErrors = Page\errors($_SESSION['help/feedback/index_errors']);
-} else {
-    $pageErrors = '';
-}
+include_once '../../fns/Page/sessionErrors.php';
+$pageErrors = Page\sessionErrors('help/feedback/index_errors');
 
 unset($_SESSION['help/index_messages']);
 

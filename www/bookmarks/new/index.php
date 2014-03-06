@@ -16,12 +16,8 @@ if (array_key_exists('bookmarks/new/index_lastpost', $_SESSION)) {
     );
 }
 
-if (array_key_exists('bookmarks/new/index_errors', $_SESSION)) {
-    include_once '../../fns/Page/errors.php';
-    $pageErrors= Page\errors($_SESSION['bookmarks/new/index_errors']);
-} else {
-    $pageErrors = '';
-}
+include_once '../../fns/Page/sessionErrors.php';
+$pageErrors = Page\sessionErrors('bookmarks/new/index_errors');
 
 unset($_SESSION['bookmarks/index_messages']);
 

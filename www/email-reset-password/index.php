@@ -12,12 +12,8 @@ if (array_key_exists('email-reset-password/index_lastpost', $_SESSION)) {
     $values = array('email' => '');
 }
 
-if (array_key_exists('email-reset-password/index_errors', $_SESSION)) {
-    include_once '../fns/Page/errors.php';
-    $pageErrors = Page\errors($_SESSION['email-reset-password/index_errors']);
-} else {
-    $pageErrors = '';
-}
+include_once '../fns/Page/sessionErrors.php';
+$pageErrors = Page\sessionErrors('email-reset-password/index_errors');
 
 unset(
     $_SESSION['sign-in/index_errors'],

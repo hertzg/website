@@ -8,12 +8,8 @@ include_once '../fns/create_folder_link.php';
 include_once '../../classes/Form.php';
 include_once '../../lib/page.php';
 
-if (array_key_exists('files/rename-file_errors', $_SESSION)) {
-    include_once '../../fns/Page/errors.php';
-    $pageErrors = Page\errors($_SESSION['files/rename-file_errors']);
-} else {
-    $pageErrors = '';
-}
+include_once '../../fns/Page/sessionErrors.php';
+$pageErrors = Page\sessionErrors('files/rename-file_errors');
 
 if (array_key_exists('files/rename-file_lastpost', $_SESSION)) {
     $values = $_SESSION['files/rename-file_lastpost'];

@@ -29,8 +29,8 @@ if (count($tagnames) > Tags::MAX_NUM_TAGS) {
 include_once '../../fns/redirect.php';
 
 if ($errors) {
-    $_SESSION['bookmarks/edit_errors'] = $errors;
-    $_SESSION['bookmarks/edit_lastpost'] = array(
+    $_SESSION['bookmarks/edit/index_errors'] = $errors;
+    $_SESSION['bookmarks/edit/index_lastpost'] = array(
         'title' => $title,
         'url' => $url,
         'tags' => $tags,
@@ -39,8 +39,8 @@ if ($errors) {
 }
 
 unset(
-    $_SESSION['bookmarks/edit_errors'],
-    $_SESSION['bookmarks/edit_lastpost']
+    $_SESSION['bookmarks/edit/index_errors'],
+    $_SESSION['bookmarks/edit/index_lastpost']
 );
 
 include_once '../../fns/Bookmarks/edit.php';

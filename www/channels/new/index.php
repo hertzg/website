@@ -12,12 +12,8 @@ if (array_key_exists('channels/add_lastpost', $_SESSION)) {
     $values = array('channelname' => '');
 }
 
-if (array_key_exists('channels/add_errors', $_SESSION)) {
-    include_once '../../fns/Page/errors.php';
-    $pageErrors = Page\errors($_SESSION['channels/add_errors']);
-} else {
-    $pageErrors = '';
-}
+include_once '../../fns/Page/sessionErrors.php';
+$pageErrors = Page\sessionErrors('channels/add_errors');
 
 unset($_SESSION['channels/index_messages']);
 

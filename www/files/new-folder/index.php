@@ -28,12 +28,8 @@ if ($parentIdFolders) {
 
 }
 
-if (array_key_exists('files/add-folder_errors', $_SESSION)) {
-    include_once '../../fns/Page/errors.php';
-    $pageErrors = Page\errors($_SESSION['files/add-folder_errors']);
-} else {
-    $pageErrors = '';
-}
+include_once '../../fns/Page/sessionErrors.php';
+$pageErrors = Page\sessionErrors('files/add-folder_errors');
 
 unset(
     $_SESSION['files/index_idfolders'],

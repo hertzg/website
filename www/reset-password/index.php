@@ -32,12 +32,8 @@ if (array_key_exists('reset-password/index_lastpost', $_SESSION)) {
     );
 }
 
-if (array_key_exists('reset-password/index_errors', $_SESSION)) {
-    include_once '../fns/Page/errors.php';
-    $pageErrors = Page\errors($_SESSION['reset-password/index_errors']);
-} else {
-    $pageErrors = '';
-}
+include_once '../fns/Page/sessionErrors.php';
+$pageErrors = Page\sessionErrors('reset-password/index_errors');
 
 unset(
     $_SESSION['sign-in/index_errors'],

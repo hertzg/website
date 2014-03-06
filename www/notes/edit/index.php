@@ -13,12 +13,8 @@ if (array_key_exists('notes/edit_lastpost', $_SESSION)) {
     $values = (array)$note;
 }
 
-if (array_key_exists('notes/edit_errors', $_SESSION)) {
-    include_once '../../fns/Page/errors.php';
-    $pageErrors = Page\errors($_SESSION['notes/edit_errors']);
-} else {
-    $pageErrors = '';
-}
+include_once '../../fns/Page/sessionErrors.php';
+$pageErrors = Page\sessionErrors('notes/edit_errors');
 
 unset($_SESSION['notes/index_messages']);
 

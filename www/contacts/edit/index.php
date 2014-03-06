@@ -13,12 +13,8 @@ if (array_key_exists('contacts/edit_lastpost', $_SESSION)) {
     $values = (array)$contact;
 }
 
-if (array_key_exists('contacts/edit_errors', $_SESSION)) {
-    include_once '../../fns/Page/errors.php';
-    $pageErrors = Page\errors($_SESSION['contacts/edit_errors']);
-} else {
-    $pageErrors = '';
-}
+include_once '../../fns/Page/sessionErrors.php';
+$pageErrors = Page\sessionErrors('contacts/edit_errors');
 
 unset($_SESSION['contacts/view/index_messages']);
 

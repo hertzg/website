@@ -10,8 +10,8 @@ include_once '../../fns/Page/sessionMessages.php';
 $pageMessages = Page\sessionMessages('calendar/view-event_messages');
 
 unset(
-    $_SESSION['calendar/edit-event_errors'],
-    $_SESSION['calendar/edit-event_lastpost'],
+    $_SESSION['calendar/edit-event/index_errors'],
+    $_SESSION['calendar/edit-event/index_lastpost'],
     $_SESSION['calendar/index_messages']
 );
 

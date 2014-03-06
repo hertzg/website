@@ -22,12 +22,8 @@ if ($idfolders) {
 
 include_once '../../lib/page.php';
 
-if (array_key_exists('files/upload-files_errors', $_SESSION)) {
-    include_once '../../fns/Page/errors.php';
-    $pageErrors = Page\errors($_SESSION['files/upload-files_errors']);
-} else {
-    $pageErrors = '';
-}
+include_once '../../fns/Page/sessionErrors.php';
+$pageErrors = Page\sessionErrors('files/upload-files_errors');
 
 unset(
     $_SESSION['files/index_idfolders'],

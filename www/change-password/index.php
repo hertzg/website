@@ -16,12 +16,8 @@ if (array_key_exists('change-password/index_lastpost', $_SESSION)) {
     );
 }
 
-if (array_key_exists('change-password/index_errors', $_SESSION)) {
-    include_once '../fns/Page/errors.php';
-    $pageErrors = Page\errors($_SESSION['change-password/index_errors']);
-} else {
-    $pageErrors = '';
-}
+include_once '../fns/Page/sessionErrors.php';
+$pageErrors = Page\sessionErrors('change-password/index_errors');
 
 unset($_SESSION['account/index_messages']);
 

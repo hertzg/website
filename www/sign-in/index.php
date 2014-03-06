@@ -26,12 +26,8 @@ if (array_key_exists('sign-in/index_lastpost', $_SESSION)) {
 
 }
 
-if (array_key_exists('sign-in/index_errors', $_SESSION)) {
-    include_once '../fns/Page/errors.php';
-    $pageErrors = Page\errors($_SESSION['sign-in/index_errors']);
-} else {
-    $pageErrors = '';
-}
+include_once '../fns/Page/sessionErrors.php';
+$pageErrors = Page\sessionErrors('sign-in/index_errors');
 
 include_once '../fns/Page/sessionMessages.php';
 $pageMessages = Page\sessionMessages('sign-in/index_messages');

@@ -13,12 +13,8 @@ if (array_key_exists('tasks/edit_lastpost', $_SESSION)) {
     $values = (array)$task;
 }
 
-if (array_key_exists('tasks/edit_errors', $_SESSION)) {
-    include_once '../../fns/Page/errors.php';
-    $pageErrors = Page\errors($_SESSION['tasks/edit_errors']);
-} else {
-    $pageErrors = '';
-}
+include_once '../../fns/Page/sessionErrors.php';
+$pageErrors = Page\sessionErrors('tasks/edit_errors');
 
 unset($_SESSION['tasks/index_messages']);
 

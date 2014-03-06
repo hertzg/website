@@ -12,12 +12,8 @@ if (array_key_exists('edit-profile/index_lastpost', $_SESSION)) {
     $values = $user;
 }
 
-if (array_key_exists('edit-profile/index_errors', $_SESSION)) {
-    include_once '../fns/Page/errors.php';
-    $pageErrors = Page\errors($_SESSION['edit-profile/index_errors']);
-} else {
-    $pageErrors = '';
-}
+include_once '../fns/Page/sessionErrors.php';
+$pageErrors = Page\sessionErrors('edit-profile/index_errors');
 
 unset($_SESSION['account/index_messages']);
 

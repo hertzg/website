@@ -15,12 +15,8 @@ if (array_key_exists('calendar/add-event_lastpost', $_SESSION)) {
     $values = array('eventtext' => '');
 }
 
-if (array_key_exists('calendar/add-event_errors', $_SESSION)) {
-    include_once '../../fns/Page/errors.php';
-    $pageErrors = Page\errors($_SESSION['calendar/add-event_errors']);
-} else {
-    $pageErrors = '';
-}
+include_once '../../fns/Page/sessionErrors.php';
+$pageErrors = Page\sessionErrors('calendar/add-event_errors');
 
 $year = (int)$year;
 $month = (int)$month;

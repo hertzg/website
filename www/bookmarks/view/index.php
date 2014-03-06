@@ -10,8 +10,8 @@ include_once '../../fns/Page/sessionMessages.php';
 $pageMessages = Page\sessionMessages('bookmarks/view/index_messages');
 
 unset(
-    $_SESSION['bookmarks/edit_errors'],
-    $_SESSION['bookmarks/edit_lastpost'],
+    $_SESSION['bookmarks/edit/index_errors'],
+    $_SESSION['bookmarks/edit/index_lastpost'],
     $_SESSION['bookmarks/index_messages']
 );
 

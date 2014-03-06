@@ -7,18 +7,14 @@ list($event, $idevents) = require_event($mysqli);
 include_once '../../classes/Form.php';
 include_once '../../lib/page.php';
 
-if (array_key_exists('calendar/edit-event_lastpost', $_SESSION)) {
-    $values = $_SESSION['calendar/edit-event_lastpost'];
+if (array_key_exists('calendar/edit-event/index_lastpost', $_SESSION)) {
+    $values = $_SESSION['calendar/edit-event/index_lastpost'];
 } else {
     $values = array('eventtext' => $event->eventtext);
 }
 
-if (array_key_exists('calendar/edit-event_errors', $_SESSION)) {
-    include_once '../../fns/Page/errors.php';
-    $pageErrors = Page\errors($_SESSION['calendar/edit-event_errors']);
-} else {
-    $pageErrors = '';
-}
+include_once '../../fns/Page/sessionErrors.php';
+$pageErrors = Page\sessionErrors('calendar/edit-event/index_errors');
 
 unset($_SESSION['calendar/view-event_messages']);
 

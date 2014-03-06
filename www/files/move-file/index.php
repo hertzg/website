@@ -51,12 +51,8 @@ if (array_key_exists('files/move-file_idfolders', $_SESSION) &&
     unset($_SESSION['files/move-file_errors']);
 }
 
-if (array_key_exists('files/move-file_errors', $_SESSION)) {
-    include_once '../../fns/Page/errors.php';
-    $pageErrors = Page\errors($_SESSION['files/move-file_errors']);
-} else {
-    $pageErrors = '';
-}
+include_once '../../fns/Page/sessionErrors.php';
+$pageErrors = Page\sessionErrors('files/move-file_errors');
 
 unset($_SESSION['files/view-file/index_messages']);
 

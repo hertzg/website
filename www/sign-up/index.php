@@ -18,12 +18,8 @@ if (array_key_exists('sign-up/index_lastpost', $_SESSION)) {
     );
 }
 
-if (array_key_exists('sign-up/index_errors', $_SESSION)) {
-    include_once '../fns/Page/errors.php';
-    $pageErrors = Page\errors($_SESSION['sign-up/index_errors']);
-} else {
-    $pageErrors = '';
-}
+include_once '../fns/Page/sessionErrors.php';
+$pageErrors = Page\sessionErrors('sign-up/index_errors');
 
 unset(
     $_SESSION['sign-in/index_errors'],
