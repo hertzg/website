@@ -16,7 +16,6 @@ list($tag) = request_strings('tag');
 $items = array();
 $filterMessage = '';
 
-include_once '../fns/create_panel.php';
 include_once '../lib/mysqli.php';
 include_once '../lib/page.php';
 
@@ -72,10 +71,11 @@ unset(
 
 $options = array(Page::imageArrowLink('New Task', 'new/', 'create-task'));
 if ($user->num_tasks) {
-    $href = 'delete-all/';
-    $options[] = Page::imageArrowLink('Delete All Tasks', $href, 'trash-bin');
+    $title = 'Delete All Tasks';
+    $options[] = Page::imageArrowLink($title, 'delete-all/', 'trash-bin');
 }
 
+include_once '../fns/create_panel.php';
 include_once '../fns/create_tabs.php';
 
 $page->base = '../';

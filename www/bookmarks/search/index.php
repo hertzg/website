@@ -16,7 +16,7 @@ list($keyword, $tag) = request_strings('keyword', 'tag');
 if ($keyword === '') {
     $url = '../';
     if ($tag !== '') $url .= '?tag='.rawurlencode($tag);
-    include_once '../../fns/redirect.php';
+    include_once '../../../fns/redirect.php';
     redirect($url);
 }
 
@@ -29,16 +29,16 @@ include_once '../../lib/page.php';
 
 if ($tag === '') {
 
-    include_once '../../fns/Notes/search.php';
-    $notes = Notes\search($mysqli, $idusers, $keyword);
+    include_once '../../fns/Bookmarks/search.php';
+    $bookmarks = Bookmarks\search($mysqli, $idusers, $keyword);
 
     $items[] = create_search_form(
-        create_search_form_content($keyword, 'Search notes...', '..')
+        create_search_form_content($keyword, 'Search bookmarks...', '..')
     );
-    if (count($notes) > 1) {
+    if (count($bookmarks) > 1) {
 
-        include_once '../../fns/NoteTags/indexOnUser.php';
-        $tags = NoteTags\indexOnUser($mysqli, $idusers);
+        include_once '../../fns/BookmarkTags/indexOnUser.php';
+        $tags = BookmarkTags\indexOnUser($mysqli, $idusers);
 
         if ($tags) {
             include_once '../../fns/create_tag_filter_bar.php';
@@ -51,12 +51,12 @@ if ($tag === '') {
 
 } else {
 
-    include_once '../../fns/NoteTags/searchOnTagName.php';
-    $notes = NoteTags\searchOnTagName($mysqli, $idusers, $keyword, $tag);
+    include_once '../../fns/BookmarkTags/searchOnTagName.php';
+    $bookmarks = BookmarkTags\searchOnTagName($mysqli, $idusers, $keyword, $tag);
 
     $clearHref = '../?tag='.rawurlencode($tag);
     $items[] = create_search_form(
-        create_search_form_content($keyword, 'Search notes...', $clearHref)
+        create_search_form_content($keyword, 'Search bookmarks...', $clearHref)
         .'<input type="hidden" name="tag" value="'.htmlspecialchars($tag).'" />'
     );
 
@@ -68,22 +68,24 @@ if ($tag === '') {
 
 }
 
-include_once '../fns/render_notes.php';
-render_notes($notes, $items, '../');
+include_once '../fns/render_bookmarks.php';
+render_bookmarks($bookmarks, $items, '../');
 
 include_once '../../fns/Page/sessionMessages.php';
-$pageMessages = Page\sessionMessages('notes/index_messages');
+$pageMessages = Page\sessionMessages('bookmarks/index_messages');
 
 unset(
-    $_SESSION['home/index_messages'],
-    $_SESSION['notes/new/index_errors'],
-    $_SESSION['notes/new/index_lastpost'],
-    $_SESSION['notes/view/index_messages']
+    $_SESSION['bookmarks/new/index_errors'],
+    $_SESSION['bookmarks/new/index_lastpost'],
+    $_SESSION['bookmarks/view/index_messages'],
+    $_SESSION['home/index_messages']
 );
 
-$options = array(Page::imageArrowLink('New Note', '../new/', 'create-note'));
-if ($user->num_notes) {
-    $title = 'Delete All Notes';
+$options = array(
+    Page::imageArrowLink('New Bookmark', '../new/', 'create-bookmark'),
+);
+if ($user->num_bookmarks) {
+    $title = 'Delete All Bookmarks';
     $options[] = Page::imageArrowLink($title, '../delete-all/', 'trash-bin');
 }
 
@@ -91,7 +93,7 @@ include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
 
 $page->base = '../../';
-$page->title = 'Notes';
+$page->title = 'Bookmarks';
 $page->finish(
     create_tabs(
         array(
@@ -100,7 +102,7 @@ $page->finish(
                 'href' => '..',
             ),
         ),
-        'Notes',
+        'Bookmarks',
         $pageMessages.$filterMessage.join(Page::HR, $items)
     )
     .create_panel('Options', join(Page::HR, $options))

@@ -7,21 +7,17 @@ function create_search_form ($content) {
         .'</form>';
 }
 
-function createTagInput ($tag) {
-    return '<input type="hidden" name="tag" value="'.htmlspecialchars($tag).'" />';
-}
-
 include_once '../fns/require_user.php';
 require_user('../');
-
-include_once '../lib/mysqli.php';
-include_once '../lib/page.php';
 
 include_once '../fns/request_strings.php';
 list($tag) = request_strings('tag');
 
 $items = array();
 $filterMessage = '';
+
+include_once '../lib/mysqli.php';
+include_once '../lib/page.php';
 
 if ($tag === '') {
 
@@ -53,7 +49,7 @@ if ($tag === '') {
         include_once '../fns/create_search_form_empty_content.php';
         $items[] = create_search_form(
             create_search_form_empty_content('Search notes...')
-            .createTagInput($tag)
+            .'<input type="hidden" name="tag" value="'.htmlspecialchars($tag).'" />'
         );
     }
 
@@ -76,9 +72,9 @@ unset(
 );
 
 $options = array(Page::imageArrowLink('New Note', 'new/', 'create-note'));
-if ($notes) {
-    $href = 'delete-all/';
-    $options[] = Page::imageArrowLink('Delete All Notes', $href, 'trash-bin');
+if ($user->num_notes) {
+    $title = 'Delete All Notes';
+    $options[] = Page::imageArrowLink($title, 'delete-all/', 'trash-bin');
 }
 
 include_once '../fns/create_panel.php';

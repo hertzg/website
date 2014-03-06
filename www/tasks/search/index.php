@@ -25,7 +25,6 @@ $filterMessage = '';
 
 include_once '../../fns/create_search_form_content.php';
 include_once '../../lib/mysqli.php';
-include_once '../../fns/create_panel.php';
 include_once '../../lib/page.php';
 
 if ($tag === '') {
@@ -56,7 +55,6 @@ if ($tag === '') {
     $tasks = TaskTags\searchOnTagName($mysqli, $idusers, $keyword, $tag);
 
     $clearHref = '../?tag='.rawurlencode($tag);
-
     $items[] = create_search_form(
         create_search_form_content($keyword, 'Search tasks...', $clearHref)
         .'<input type="hidden" name="tag" value="'.htmlspecialchars($tag).'" />'
@@ -85,10 +83,11 @@ unset(
 
 $options = array(Page::imageArrowLink('New Task', '../new/', 'create-task'));
 if ($user->num_tasks) {
-    $href = '../delete-all/';
-    $options[] = Page::imageArrowLink('Delete All Tasks', $href, 'trash-bin');
+    $title = 'Delete All Tasks';
+    $options[] = Page::imageArrowLink($title, '../delete-all/', 'trash-bin');
 }
 
+include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
 
 $page->base = '../../';

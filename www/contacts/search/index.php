@@ -7,16 +7,8 @@ function create_search_form ($content) {
         .'</form>';
 }
 
-function createTagInput ($tag) {
-    return '<input type="hidden" name="tag"'
-        .' value="'.htmlspecialchars($tag).'" />';
-}
-
 include_once '../../fns/require_user.php';
 require_user('../');
-
-include_once '../../lib/mysqli.php';
-include_once '../../lib/page.php';
 
 include_once '../../fns/request_strings.php';
 list($keyword, $tag) = request_strings('keyword', 'tag');
@@ -32,6 +24,9 @@ $items = array();
 $filterMessage = '';
 
 include_once '../../fns/create_search_form_content.php';
+include_once '../../lib/mysqli.php';
+include_once '../../lib/page.php';
+
 if ($tag === '') {
 
     include_once '../../fns/Contacts/search.php';
@@ -60,10 +55,9 @@ if ($tag === '') {
     $contacts = ContactTags\searchOnTagName($mysqli, $idusers, $keyword, $tag);
 
     $clearHref = '../?tag='.rawurlencode($tag);
-
     $items[] = create_search_form(
         create_search_form_content($keyword, 'Search contacts...', $clearHref)
-        .createTagInput($tag)
+        .'<input type="hidden" name="tag" value="'.htmlspecialchars($tag).'" />'
     );
 
     $clearHref = '?'.htmlspecialchars(
@@ -87,10 +81,10 @@ unset(
     $_SESSION['home/index_messages']
 );
 
-$options = array(Page::imageArrowLink('New Contact', 'new/', 'create-contact'));
+$options = array(Page::imageArrowLink('New Contact', '../new/', 'create-contact'));
 if ($user->num_contacts) {
-    $options[] = Page::imageArrowLink( 'Delete All Contacts',
-        'delete-all/', 'trash-bin');
+    $title = 'Delete All Contacts';
+    $options[] = Page::imageArrowLink($title, '../delete-all/', 'trash-bin');
 }
 
 include_once '../../fns/create_panel.php';
