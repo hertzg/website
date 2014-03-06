@@ -1,27 +1,27 @@
 <?php
 
 include_once 'fns/require_channel.php';
-include_once '../../lib/mysqli.php';
+include_once '../../../lib/mysqli.php';
 list($channel, $id) = require_channel($mysqli);
 
-unset($_SESSION['notifications/index_messages']);
+unset($_SESSION['notifications/in-channel/index_messages']);
 
-include_once '../../fns/Page/text.php';
+include_once '../../../fns/Page/text.php';
 $question = Page\text(
     'Are you sure you want to delete notifications in this channel?'
 );
 
-include_once '../../fns/create_tabs.php';
-include_once '../../lib/page.php';
+include_once '../../../fns/create_tabs.php';
+include_once '../../../lib/page.php';
 
-$page->base = '../../';
+$page->base = '../../../';
 $page->title = 'Delete Notifications?';
 $page->finish(
     create_tabs(
         array(
             array(
                 'title' => 'Home',
-                'href' => '../..',
+                'href' => '../../..',
             ),
         ),
         'Notifications',

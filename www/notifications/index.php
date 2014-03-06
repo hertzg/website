@@ -5,74 +5,33 @@ require_user('../');
 
 include_once '../lib/page.php';
 
-include_once '../fns/request_strings.php';
-list($id) = request_strings('id');
-
-$id = abs((int)$id);
-
 include_once '../fns/Users/clearNumNewNotifications.php';
 include_once '../lib/mysqli.php';
 Users\clearNumNewNotifications($mysqli, $idusers);
 
-$options = array();
+include_once 'fns/create_channels_link.php';
+$options = array(create_channels_link($user, '../channels/'));
 
-$num_channels = $user->num_channels;
-
-if ($num_channels) {
-    $options[] = Page::imageArrowLinkWithDescription('Channels',
-        "$num_channels total.", '../channels/', 'channels');
-} else {
-    $options[] = Page::imageArrowLink('Channels', '../channels/', 'channels');
-}
-
-$filterMessage = '';
-$notificationsHtml = '';
+$items = array();
 
 $num_new_notifications = $user->num_new_notifications;
 
-include_once '../fns/Channels/get.php';
-$channel = Channels\get($mysqli, $idusers, $id);
-
-if ($channel) {
-    $filterMessage =
-        '<div class="filterBar">'
-            .'Channel: <b>'.htmlspecialchars($channel->channelname).'</b>'
-            .'<a class="clickable" title="Clear Filter" href="./">'
-                .'<span class="icon no"></span>'
-            .'</a>'
-        .'</div>'
-        .'<div class="warnings-hr"></div>';
-    include_once '../fns/Notifications/indexOnUserChannel.php';
-    $notifications = Notifications\indexOnUserChannel($mysqli, $idusers, $id);
-} else {
-    include_once '../fns/Notifications/indexOnUser.php';
-    $notifications = Notifications\indexOnUser($mysqli, $idusers);
-}
+include_once '../fns/Notifications/indexOnUser.php';
+$notifications = Notifications\indexOnUser($mysqli, $idusers);
 
 if ($notifications) {
 
-    if ($channel) {
-        $options[] = Page::imageArrowLink('Delete Notifications',
-            "delete/?id=$id", 'trash-bin');
-    } else {
-        $options[] = Page::imageArrowLink('Delete All Notifications',
-            'delete-all/', 'trash-bin');
-    }
+    $options[] = Page::imageArrowLink('Delete All Notifications',
+        'delete-all/', 'trash-bin');
 
     include_once '../fns/create_image_text.php';
 
     foreach ($notifications as $i => $notification) {
-        if ($i) $notificationsHtml .= Page::HR;
-        $iconName = $i < $num_new_notifications ? 'notification' : 'old-notification';
-        $itemHtml = '';
-        if (!$channel) {
-            $itemHtml =
-                "<a class=\"a\" href=\"./?id=$notification->idchannels\">"
-                    .$notification->channelname
-                .'</a>: ';
-        }
+        $icon = $i < $num_new_notifications ? 'notification' : 'old-notification';
         $content =
-            $itemHtml
+            "<a class=\"a\" href=\"./in-channel/?id=$notification->idchannels\">"
+                .$notification->channelname
+            .'</a>: '
             .nl2br(
                 preg_replace(
                     '#(http://.*?)(\s|$)#',
@@ -80,21 +39,23 @@ if ($notifications) {
                     htmlspecialchars($notification->notificationtext)
                 )
             );
-        $notificationsHtml .= create_image_text($content, $iconName);
+        $items[] = create_image_text($content, $icon);
     }
 } else {
     include_once '../fns/Page/info.php';
-    $notificationsHtml = Page\info('No notifications.');
+    $items[] = Page\info('No notifications.');
 }
 
 unset(
     $_SESSION['channels/index_messages'],
-    $_SESSION['home/index_messages']
+    $_SESSION['home/index_messages'],
+    $_SESSION['notifications/in-channel/index_messages']
 );
 
-if (array_key_exists('notifications/index_messages', $_SESSION)) {
+$key = 'notifications/index_messages';
+if (array_key_exists($key, $_SESSION)) {
     include_once '../fns/Page/messages.php';
-    $pageMessages = Page\messages($_SESSION['notifications/index_messages']);
+    $pageMessages = Page\messages($_SESSION[$key]);
 } else {
     $pageMessages = '';
 }
@@ -113,9 +74,7 @@ $page->finish(
             ),
         ),
         'Notifications',
-        $pageMessages
-        .$filterMessage
-        .$notificationsHtml
+        $pageMessages.join(Page::HR, $items)
         .create_panel('Options', join(Page::HR, $options))
     )
 );
