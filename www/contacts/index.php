@@ -2,7 +2,7 @@
 
 function create_search_form ($content) {
     return
-        '<form action="./" style="height: 48px; position: relative">'
+        '<form action="search/" style="height: 48px; position: relative">'
             .$content
         .'</form>';
 }
@@ -24,91 +24,44 @@ list($keyword, $tag) = request_strings('keyword', 'tag');
 $items = array();
 $filterMessage = '';
 
-if ($keyword === '') {
-    if ($tag === '') {
+if ($tag === '') {
 
-        include_once '../fns/Contacts/indexOnUser.php';
-        $contacts = Contacts\indexOnUser($mysqli, $idusers);
+    include_once '../fns/Contacts/indexOnUser.php';
+    $contacts = Contacts\indexOnUser($mysqli, $idusers);
 
-        if (count($contacts) > 1) {
+    if (count($contacts) > 1) {
 
-            include_once '../fns/create_search_form_empty_content.php';
-            $items[] = create_search_form(
-                create_search_form_empty_content('Search contacts...')
-            );
+        include_once '../fns/create_search_form_empty_content.php';
+        $items[] = create_search_form(
+            create_search_form_empty_content('Search contacts...')
+        );
 
-            include_once '../fns/ContactTags/indexOnUser.php';
-            $tags = ContactTags\indexOnUser($mysqli, $idusers);
+        include_once '../fns/ContactTags/indexOnUser.php';
+        $tags = ContactTags\indexOnUser($mysqli, $idusers);
 
-            if ($tags) {
-                include_once '../fns/create_tag_filter_bar.php';
-                $filterMessage = create_tag_filter_bar($tags, array());
-            }
-
+        if ($tags) {
+            include_once '../fns/create_tag_filter_bar.php';
+            $filterMessage = create_tag_filter_bar($tags, array());
         }
-
-    } else {
-
-        include_once '../fns/ContactTags/indexOnTagName.php';
-        $contacts = ContactTags\indexOnTagName($mysqli, $idusers, $tag);
-
-        if (count($contacts) > 1) {
-            include_once '../fns/create_search_form_empty_content.php';
-            $items[] = create_search_form(
-                create_search_form_empty_content('Search contacts...')
-                .createTagInput($tag)
-            );
-        }
-
-        include_once '../fns/create_clear_filter_bar.php';
-        $filterMessage = create_clear_filter_bar($tag, './');
 
     }
+
 } else {
-    include_once '../fns/create_search_form_content.php';
-    if ($tag === '') {
 
-        include_once '../fns/Contacts/search.php';
-        $contacts = Contacts\search($mysqli, $idusers, $keyword);
+    include_once '../fns/ContactTags/indexOnTagName.php';
+    $contacts = ContactTags\indexOnTagName($mysqli, $idusers, $tag);
 
+    if (count($contacts) > 1) {
+        include_once '../fns/create_search_form_empty_content.php';
         $items[] = create_search_form(
-            create_search_form_content($keyword, 'Search contacts...', './')
-        );
-        if (count($contacts) > 1) {
-
-            include_once '../fns/ContactTags/indexOnUser.php';
-            $tags = ContactTags\indexOnUser($mysqli, $idusers);
-
-            if ($tags) {
-                include_once '../fns/create_tag_filter_bar.php';
-                $filterMessage = create_tag_filter_bar($tags, array(
-                    'keyword' => $keyword,
-                ));
-            }
-
-        }
-
-    } else {
-
-        include_once '../fns/ContactTags/searchOnTagName.php';
-        $contacts = ContactTags\searchOnTagName($mysqli, $idusers, $keyword, $tag);
-
-        $items[] = create_search_form(
-            create_search_form_content(
-                $keyword,
-                'Search contacts...',
-                '?tag='.rawurlencode($tag)
-            )
+            create_search_form_empty_content('Search contacts...')
             .createTagInput($tag)
         );
-
-        $clearHref = '?'.htmlspecialchars(
-            http_build_query(array('keyword' => $keyword))
-        );
-        include_once '../fns/create_clear_filter_bar.php';
-        $filterMessage = create_clear_filter_bar($tag, $clearHref);
-
     }
+
+    include_once '../fns/create_clear_filter_bar.php';
+    $filterMessage = create_clear_filter_bar($tag, './');
+
 }
 
 include_once 'fns/render_contacts.php';
@@ -125,7 +78,7 @@ unset(
 );
 
 $options = array(Page::imageArrowLink('New Contact', 'new/', 'create-contact'));
-if ($contacts) {
+if ($user->num_contacts) {
     $options[] = Page::imageArrowLink( 'Delete All Contacts',
         'delete-all/', 'trash-bin');
 }
