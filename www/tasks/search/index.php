@@ -97,7 +97,7 @@ $page->finish(
         array(
             array(
                 'title' => 'Home',
-                'href' => '..',
+                'href' => '../..',
             ),
         ),
         'Tasks',
