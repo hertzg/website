@@ -58,8 +58,10 @@ if ($tag === '') {
     include_once '../../fns/NoteTags/searchOnTagName.php';
     $notes = NoteTags\searchOnTagName($mysqli, $idusers, $keyword, $tag);
 
+    $clearHref = '../?tag='.rawurlencode($tag);
+
     $items[] = create_search_form(
-        create_search_form_content($keyword, 'Search notes...', '../?tag='.rawurlencode($tag))
+        create_search_form_content($keyword, 'Search notes...', $clearHref)
         .createTagInput($tag)
     );
 

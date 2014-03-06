@@ -55,10 +55,10 @@ if ($tag === '') {
     include_once '../../fns/TaskTags/searchOnTagName.php';
     $tasks = TaskTags\searchOnTagName($mysqli, $idusers, $keyword, $tag);
 
-    $href = '../?tag='.rawurlencode($tag);
-    $searchFormContent = create_search_form_content($keyword, 'Search tasks...', $href);
+    $clearHref = '../?tag='.rawurlencode($tag);
+
     $items[] = create_search_form(
-        $searchFormContent
+        create_search_form_content($keyword, 'Search tasks...', $clearHref)
         .'<input type="hidden" name="tag" value="'.htmlspecialchars($tag).'" />'
     );
 
