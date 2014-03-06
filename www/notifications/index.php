@@ -14,8 +14,6 @@ $options = array(create_channels_link($user, '../channels/'));
 
 $items = array();
 
-$num_new_notifications = $user->num_new_notifications;
-
 include_once '../fns/Notifications/indexOnUser.php';
 $notifications = Notifications\indexOnUser($mysqli, $idusers);
 
@@ -27,7 +25,13 @@ if ($notifications) {
     include_once '../fns/create_image_text.php';
 
     foreach ($notifications as $i => $notification) {
-        $icon = $i < $num_new_notifications ? 'notification' : 'old-notification';
+
+        if ($i < $user->num_new_notifications) {
+            $icon = 'notification';
+        } else {
+            $icon = 'old-notification';
+        }
+
         $content =
             "<a class=\"a\" href=\"./in-channel/?id=$notification->idchannels\">"
                 .$notification->channelname
@@ -39,7 +43,9 @@ if ($notifications) {
                     htmlspecialchars($notification->notificationtext)
                 )
             );
+
         $items[] = create_image_text($content, $icon);
+
     }
 } else {
     include_once '../fns/Page/info.php';
@@ -52,13 +58,8 @@ unset(
     $_SESSION['notifications/in-channel/index_messages']
 );
 
-$key = 'notifications/index_messages';
-if (array_key_exists($key, $_SESSION)) {
-    include_once '../fns/Page/messages.php';
-    $pageMessages = Page\messages($_SESSION[$key]);
-} else {
-    $pageMessages = '';
-}
+include_once '../fns/Page/sessionMessages.php';
+$pageMessages = Page\sessionMessages('notifications/index_messages');
 
 include_once '../fns/create_panel.php';
 include_once '../fns/create_tabs.php';

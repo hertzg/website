@@ -12,12 +12,8 @@ $email = $contact->email;
 $phone1 = $contact->phone1;
 $phone2 = $contact->phone2;
 
-if (array_key_exists('contacts/view/index_messages', $_SESSION)) {
-    include_once '../../fns/Page/messages.php';
-    $pageMessages = Page\messages($_SESSION['contacts/view/index_messages']);
-} else {
-    $pageMessages = '';
-}
+include_once '../../fns/Page/sessionMessages.php';
+$pageMessages = Page\sessionMessages('contacts/view/index_messages');
 
 unset(
     $_SESSION['contacts/edit_errors'],

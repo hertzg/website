@@ -18,12 +18,8 @@ unset(
     $_SESSION['tokens/index_messages']
 );
 
-if (array_key_exists('account/index_messages', $_SESSION)) {
-    include_once '../fns/Page/messages.php';
-    $pageMessages = Page\messages($_SESSION['account/index_messages']);
-} else {
-    $pageMessages = '';
-}
+include_once '../fns/Page/sessionMessages.php';
+$pageMessages = Page\sessionMessages('account/index_messages');
 
 $fullname = $user->fullname;
 if ($fullname !== '') {

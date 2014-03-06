@@ -29,12 +29,8 @@ unset(
     $_SESSION['notifications/index_messages']
 );
 
-if (array_key_exists('channels/index_messages', $_SESSION)) {
-    include_once '../fns/Page/messages.php';
-    $pageMessages = Page\messages($_SESSION['channels/index_messages']);
-} else {
-    $pageMessages = '';
-}
+include_once '../fns/Page/sessionMessages.php';
+$pageMessages = Page\sessionMessages('channels/index_messages');
 
 include_once '../fns/create_panel.php';
 include_once '../fns/create_tabs.php';

@@ -5,12 +5,8 @@ require_user('../');
 
 include_once '../lib/page.php';
 
-if (array_key_exists('help/index_messages', $_SESSION)) {
-    include_once '../fns/Page/messages.php';
-    $pageMessages = Page\messages($_SESSION['help/index_messages']);
-} else {
-    $pageMessages = '';
-}
+include_once '../fns/Page/sessionMessages.php';
+$pageMessages = Page\sessionMessages('help/index_messages');
 
 unset(
     $_SESSION['help/feedback/index_errors'],

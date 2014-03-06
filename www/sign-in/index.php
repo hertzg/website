@@ -33,12 +33,8 @@ if (array_key_exists('sign-in/index_errors', $_SESSION)) {
     $pageErrors = '';
 }
 
-if (array_key_exists('sign-in/index_messages', $_SESSION)) {
-    include_once '../fns/Page/messages.php';
-    $pageMessages = Page\messages($_SESSION['sign-in/index_messages']);
-} else {
-    $pageMessages = '';
-}
+include_once '../fns/Page/sessionMessages.php';
+$pageMessages = Page\sessionMessages('sign-in/index_messages');
 
 unset(
     $_SESSION['sign-up/index_errors'],

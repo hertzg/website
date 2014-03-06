@@ -50,12 +50,8 @@ render_notifications($user, $items, $notifications);
 include_once 'fns/render_tasks.php';
 render_tasks($user, $items);
 
-if (array_key_exists('home/index_messages', $_SESSION)) {
-    include_once '../fns/Page/messages.php';
-    $pageMessages = Page\messages($_SESSION['home/index_messages']);
-} else {
-    $pageMessages = '';
-}
+include_once '../fns/Page/sessionMessages.php';
+$pageMessages = Page\sessionMessages('home/index_messages');
 
 include_once '../fns/create_tabs.php';
 

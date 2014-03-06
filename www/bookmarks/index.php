@@ -133,12 +133,8 @@ if ($keyword === '') {
 include_once 'fns/render_bookmarks.php';
 render_bookmarks($bookmarks, $items);
 
-if (array_key_exists('bookmarks/index_messages', $_SESSION)) {
-    include_once '../fns/Page/messages.php';
-    $pageMessages = Page\messages($_SESSION['bookmarks/index_messages']);
-} else {
-    $pageMessages = '';
-}
+include_once '../fns/Page/sessionMessages.php';
+$pageMessages = Page\sessionMessages('bookmarks/index_messages');
 
 unset(
     $_SESSION['bookmarks/new/index_errors'],

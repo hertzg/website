@@ -6,12 +6,8 @@ list($note, $id) = require_note($mysqli);
 
 include_once '../../lib/page.php';
 
-if (array_key_exists('notes/view/index_messages', $_SESSION)) {
-    include_once '../../fns/Page/messages.php';
-    $pageMessages = Page\messages($_SESSION['notes/view/index_messages']);
-} else {
-    $pageMessages = '';
-}
+include_once '../../fns/Page/sessionMessages.php';
+$pageMessages = Page\sessionMessages('notes/view/index_messages');
 
 unset(
     $_SESSION['notes/edit_errors'],

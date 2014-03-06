@@ -114,12 +114,8 @@ if ($keyword === '') {
 include_once 'fns/render_contacts.php';
 render_contacts($contacts, $items);
 
-if (array_key_exists('contacts/index_messages', $_SESSION)) {
-    include_once '../fns/Page/messages.php';
-    $pageMessages = Page\messages($_SESSION['contacts/index_messages']);
-} else {
-    $pageMessages = '';
-}
+include_once '../fns/Page/sessionMessages.php';
+$pageMessages = Page\sessionMessages('contacts/index_messages');
 
 unset(
     $_SESSION['contacts/new/index_errors'],

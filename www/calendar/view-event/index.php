@@ -6,12 +6,8 @@ list($event, $idevents) = require_event($mysqli);
 
 include_once '../../lib/page.php';
 
-if (array_key_exists('calendar/view-event_messages', $_SESSION)) {
-    include_once '../../fns/Page/messages.php';
-    $pageMessages = Page\messages($_SESSION['calendar/view-event_messages']);
-} else {
-    $pageMessages = '';
-}
+include_once '../../fns/Page/sessionMessages.php';
+$pageMessages = Page\sessionMessages('calendar/view-event_messages');
 
 unset(
     $_SESSION['calendar/edit-event_errors'],

@@ -108,12 +108,8 @@ if ($keyword === '') {
 include_once 'fns/render_notes.php';
 render_notes($notes, $items);
 
-if (array_key_exists('notes/index_messages', $_SESSION)) {
-    include_once '../fns/Page/messages.php';
-    $pageMessages = Page\messages($_SESSION['notes/index_messages']);
-} else {
-    $pageMessages = '';
-}
+include_once '../fns/Page/sessionMessages.php';
+$pageMessages = Page\sessionMessages('notes/index_messages');
 
 unset(
     $_SESSION['home/index_messages'],

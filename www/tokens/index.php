@@ -11,12 +11,8 @@ include_once '../fns/create_panel.php';
 include_once '../fns/create_tabs.php';
 include_once '../lib/page.php';
 
-if (array_key_exists('tokens/index_messages', $_SESSION)) {
-    include_once '../fns/Page/messages.php';
-    $pageMessages = Page\messages($_SESSION['tokens/index_messages']);
-} else {
-    $pageMessages = '';
-}
+include_once '../fns/Page/sessionMessages.php';
+$pageMessages = Page\sessionMessages('tokens/index_messages');
 
 $options = array();
 if (!$token) {
