@@ -87,7 +87,7 @@ if ($user->num_notes) {
     $options[] = Page::imageArrowLink($title, '../delete-all/', 'trash-bin');
 }
 
-include_once '../../fns/create_panel.php';
+include_once '../fns/create_options_panel.php';
 include_once '../../fns/create_tabs.php';
 
 $page->base = '../../';
@@ -103,5 +103,5 @@ $page->finish(
         'Notes',
         $pageMessages.$filterMessage.join(Page::HR, $items)
     )
-    .create_panel('Options', join(Page::HR, $options))
+    .create_options_panel($user, '../')
 );
