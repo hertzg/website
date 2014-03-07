@@ -69,15 +69,7 @@ unset(
     $_SESSION['home/index_messages']
 );
 
-$options = array(
-    Page::imageArrowLink('New Bookmark', 'new/', 'create-bookmark'),
-);
-if ($user->num_bookmarks) {
-    $title = 'Delete All Bookmarks';
-    $options[] = Page::imageArrowLink($title, 'delete-all/', 'trash-bin');
-}
-
-include_once '../fns/create_panel.php';
+include_once 'fns/create_options_panel.php';
 include_once '../fns/create_tabs.php';
 
 $page->base = '../';
@@ -93,5 +85,5 @@ $page->finish(
         'Bookmarks',
         $pageMessages.$filterMessage.join(Page::HR, $items)
     )
-    .create_panel('Options', join(Page::HR, $options))
+    .create_options_panel($user)
 );
