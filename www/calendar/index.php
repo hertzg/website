@@ -72,6 +72,8 @@ function create_calendar ($timeSelected) {
 include_once __DIR__.'/../fns/require_user.php';
 require_user('../');
 
+include_once '../fns/Page/imageArrowLink.php';
+include_once '../fns/Page/imageArrowLinkWithDescription.php';
 include_once '../lib/page.php';
 
 include_once '../fns/Page/sessionMessages.php';
@@ -112,7 +114,7 @@ $events = Events\indexOnUserAndTime($mysqli, $idusers, $timeSelected);
 $eventItems = array();
 if ($events) {
     foreach ($events as $event) {
-        $eventItems[] = Page::imageArrowLink(
+        $eventItems[] = Page\imageArrowLink(
             htmlspecialchars($event->eventtext),
             "view-event/?idevents=$event->idevents", 'event');
     }
@@ -127,10 +129,10 @@ $icon = 'event';
 $num_events = $user->num_events;
 if ($num_events) {
     $description = "$num_events total.";
-    $eventItems[] = Page::imageArrowLinkWithDescription($title, $description,
+    $eventItems[] = Page\imageArrowLinkWithDescription($title, $description,
         $href, $icon);
 } else {
-    $eventItems[] = Page::imageArrowLink($title, $href, $icon);
+    $eventItems[] = Page\imageArrowLink($title, $href, $icon);
 }
 
 $newEventHref = "new-event/?year=$yearSelected&amp;month=$monthSelected&amp;day=$daySelected";
@@ -162,10 +164,10 @@ $page->finish(
     )
     .create_panel(
         'Options',
-        Page::imageArrowLink('New Event', $newEventHref, 'create-event')
+        Page\imageArrowLink('New Event', $newEventHref, 'create-event')
         .'<div class="hr"></div>'
-        .Page::imageArrowLink('Jump To', $jumpToHref, 'calendar')
+        .Page\imageArrowLink('Jump To', $jumpToHref, 'calendar')
         .'<div class="hr"></div>'
-        .Page::imageArrowLink('Go to Today', './', 'calendar')
+        .Page\imageArrowLink('Go to Today', './', 'calendar')
     )
 );

@@ -3,6 +3,8 @@
 include_once '../fns/require_user.php';
 require_user('../');
 
+include_once '../fns/Page/imageArrowLink.php';
+include_once '../fns/Page/imageLink.php';
 include_once '../lib/page.php';
 
 include_once '../fns/Channels/indexOnUser.php';
@@ -12,7 +14,7 @@ $channels = Channels\indexOnUser($mysqli, $idusers);
 $items = array();
 if ($channels) {
     foreach ($channels as $channel) {
-        $items[] = Page::imageArrowLink(
+        $items[] = Page\imageArrowLink(
             htmlspecialchars($channel->channelname),
             "view/?id=$channel->idchannels", 'channel');
     }
@@ -53,9 +55,9 @@ $page->finish(
     )
     .create_panel(
         'Options',
-        Page::imageArrowLink('New Channel', 'new/', 'create-channel')
+        Page\imageArrowLink('New Channel', 'new/', 'create-channel')
         .'<div class="hr"></div>'
-        .Page::imageLink('Download API',
+        .Page\imageLink('Download API',
             'download-zvini-api.php', 'download')
     )
 );

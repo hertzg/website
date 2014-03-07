@@ -13,17 +13,21 @@ function render_notifications ($user, array &$items, &$notifications) {
             $notifications = Page\warnings(array("$num_new_notifications new notifications."));
 
             $description = "$num_new_notifications new. $num_notifications total.";
-            $items[] = Page::imageArrowLinkWithDescription($title,
+
+            include_once __DIR__.'/../../fns/Page/imageArrowLinkWithDescription.php';
+            $items[] = Page\imageArrowLinkWithDescription($title,
                 $description, $href, 'notification');
 
         } else {
             $notifications = '';
             $description = "$num_notifications total.";
-            $items[] = Page::imageArrowLinkWithDescription($title,
+            include_once __DIR__.'/../../fns/Page/imageArrowLinkWithDescription.php';
+            $items[] = Page\imageArrowLinkWithDescription($title,
                 $description, $href, 'old-notification');
         }
     } else {
         $notifications = '';
-        $items[] = Page::imageArrowLink($title, $href, 'old-notification');
+        include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
+        $items[] = Page\imageArrowLink($title, $href, 'old-notification');
     }
 }

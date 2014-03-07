@@ -31,18 +31,21 @@ if ($idfolders) {
 include_once '../../fns/Folders/indexInUserFolder.php';
 $folders = Folders\indexInUserFolder($mysqli, $idusers, $idfolders);
 
+include_once '../../fns/Page/imageArrowLink.php';
+include_once '../../fns/Page/imageLink.php';
+
 $items = array();
 if ($idfolders) {
-    $items[] = Page::imageLink('.. Parent folder',
+    $items[] = Page\imageLink('.. Parent folder',
         create_link($id, $parentFolder->parentidfolders), 'parent-folder');
 }
 foreach ($folders as $folder) {
-    $items[] = Page::imageArrowLink(htmlspecialchars($folder->foldername),
+    $items[] = Page\imageArrowLink(htmlspecialchars($folder->foldername),
         create_link($id, $folder->idfolders), 'folder');
 }
 
 if ($idfolders != $file->idfolders) {
-    $items[] = Page::imageLink('Move Here',
+    $items[] = Page\imageLink('Move Here',
         "submit.php?id=$id&idfolders=$idfolders", 'move-file');
 }
 

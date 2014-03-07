@@ -31,14 +31,17 @@ function render_calendar ($user, $mysqli, array &$items) {
         } else {
             $description = $n_events($numEventsToday).' today.';
         }
-        $items[] = Page::imageArrowLinkWithDescription($title,
+        include_once __DIR__.'/../../fns/Page/imageArrowLinkWithDescription.php';
+        $items[] = Page\imageArrowLinkWithDescription($title,
             $description, $href, $icon);
     } elseif ($numEventsTomorrow) {
         $description = $n_events($numEventsTomorrow).' tomorrow.';
-        $items[] = Page::imageArrowLinkWithDescription($title,
+        include_once __DIR__.'/../../fns/Page/imageArrowLinkWithDescription.php';
+        $items[] = Page\imageArrowLinkWithDescription($title,
             $description, $href, $icon);
     } else {
-        $items[] = Page::imageArrowLink($title, $href, $icon);
+        include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
+        $items[] = Page\imageArrowLink($title, $href, $icon);
     }
 
 }

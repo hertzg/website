@@ -27,6 +27,8 @@ $deep = (bool)$deep;
 include_once 'fns/create_folder_link.php';
 include_once '../fns/create_panel.php';
 include_once '../fns/str_collapse_spaces.php';
+include_once '../fns/Page/imageArrowLink.php';
+include_once '../fns/Page/imageLink.php';
 include_once '../lib/page.php';
 
 $items = array();
@@ -81,19 +83,19 @@ if ($keyword === '') {
 }
 
 if ($idfolders && $keyword === '') {
-    $items[] = Page::imageLink('.. Parent folder',
+    $items[] = Page\imageLink('.. Parent folder',
         create_folder_link($folder->parentidfolders), 'parent-folder');
 }
 
 if ($folders || $files) {
 
     foreach ($folders as $i => $folder) {
-        $items[] = Page::imageArrowLink(htmlspecialchars($folder->foldername),
+        $items[] = Page\imageArrowLink(htmlspecialchars($folder->foldername),
             create_folder_link($folder->idfolders), 'folder');
     }
 
     foreach ($files as $i => $file) {
-        $items[] = Page::imageArrowLink(htmlspecialchars($file->filename),
+        $items[] = Page\imageArrowLink(htmlspecialchars($file->filename),
             "view-file/?id=$file->idfiles", 'file');
     }
 
@@ -110,7 +112,7 @@ if ($keyword !== '' && !$deep) {
     $params['keyword'] = $keyword;
     $params['deep'] = '1';
     $href = htmlspecialchars('./?'.http_build_query($params));
-    $items[] = Page::imageLink('Search in Subfolders', $href, 'search-folder');
+    $items[] = Page\imageLink('Search in Subfolders', $href, 'search-folder');
 }
 
 unset(
@@ -132,13 +134,13 @@ $folder_options = '';
 if ($idfolders) {
     $folder_options =
         '<div class="hr"></div>'
-        .Page::imageArrowLink('Rename This Folder',
+        .Page\imageArrowLink('Rename This Folder',
             "rename-folder/?idfolders=$idfolders", 'rename')
         .'<div class="hr"></div>'
-        .Page::imageArrowLink('Move This Folder',
+        .Page\imageArrowLink('Move This Folder',
             "move-folder/?idfolders=$idfolders", 'move-folder')
         .'<div class="hr"></div>'
-        .Page::imageArrowLink('Delete This Folder',
+        .Page\imageArrowLink('Delete This Folder',
             "delete-folder/?idfolders=$idfolders", 'trash-bin');
 }
 
@@ -162,10 +164,10 @@ $page->finish(
     )
     .create_panel(
         'Options',
-        Page::imageArrowLink('New Folder',
+        Page\imageArrowLink('New Folder',
             "new-folder/?parentidfolders=$idfolders", 'create-folder')
         .'<div class="hr"></div>'
-        .Page::imageArrowLink('Upload Files',
+        .Page\imageArrowLink('Upload Files',
             "upload-files/?idfolders=$idfolders", 'upload')
         .$folder_options
     )

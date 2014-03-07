@@ -54,6 +54,7 @@ include_once '../fns/Page/sessionMessages.php';
 $pageMessages = Page\sessionMessages('home/index_messages');
 
 include_once '../fns/create_tabs.php';
+include_once '../fns/Page/imageArrowLink.php';
 
 $page->base = $base;
 $page->title = 'Home';
@@ -61,10 +62,10 @@ $page->finish(
     create_tabs(array(), 'Home', $pageMessages.$notifications.join('<div class="hr"></div>', $items))
     .create_panel(
         'Options',
-        Page::imageArrowLink('Account', '../account/', 'account')
+        Page\imageArrowLink('Account', '../account/', 'account')
         .'<div class="hr"></div>'
-        .Page::imageArrowLink('Help', '../help/', 'help')
+        .Page\imageArrowLink('Help', '../help/', 'help')
         .'<div class="hr"></div>'
-        .Page::imageLink('Sign Out', '../submit-signout.php', 'sign-out')
+        .Page\imageLink('Sign Out', '../submit-signout.php', 'sign-out')
     )
 );

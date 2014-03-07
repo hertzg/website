@@ -16,7 +16,8 @@ $pageMessages = Page\sessionMessages('tokens/index_messages');
 
 $options = array();
 if (!$token) {
-    $options[] = Page::imageLink('Remember Current Session',
+    include_once '../fns/Page/imageLink.php';
+    $options[] = Page\imageLink('Remember Current Session',
         'submit-remember.php', 'create-token');
 }
 
@@ -25,7 +26,11 @@ $tokens = Tokens\indexOnUser($mysqli, $idusers);
 
 $items = array();
 if ($tokens) {
-    $options[] = Page::imageArrowLink('Delete All Sessions',
+
+    include_once '../fns/Page/imageArrowLink.php';
+    include_once '../fns/Page/imageArrowLinkWithDescription.php';
+
+    $options[] = Page\imageArrowLink('Delete All Sessions',
         'delete-all/', 'trash-bin');
     foreach ($tokens as $itemToken) {
 
@@ -36,15 +41,16 @@ if ($tokens) {
 
         $useragent = $itemToken->useragent;
         if ($useragent === null) {
-            $items[] = Page::imageArrowLink($text,
+            $items[] = Page\imageArrowLink($text,
                 "view/?id=$itemToken->idtokens", 'token');
         } else {
-            $items[] = Page::imageArrowLinkWithDescription($text,
+            $items[] = Page\imageArrowLinkWithDescription($text,
                 htmlspecialchars($useragent),
                 "view/?id=$itemToken->idtokens", 'token');
         }
 
     }
+
 } else {
     include_once '../fns/Page/info.php';
     $items[] = Page\info('No sessions remembered');

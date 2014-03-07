@@ -11,6 +11,7 @@ $question = Page\text(
 );
 
 include_once '../../fns/create_tabs.php';
+include_once '../../fns/Page/imageLink.php';
 include_once '../../lib/page.php';
 
 $page->base = '../../';
@@ -29,8 +30,8 @@ $page->finish(
         ),
         'Sessions',
         $question.'<div class="hr"></div>'
-        .Page::imageLink('Yes, delete all sessions', 'submit.php', 'yes')
+        .Page\imageLink('Yes, delete all sessions', 'submit.php', 'yes')
         .'<div class="hr"></div>'
-        .Page::imageLink('No, return back', '..', 'no')
+        .Page\imageLink('No, return back', '..', 'no')
     )
 );

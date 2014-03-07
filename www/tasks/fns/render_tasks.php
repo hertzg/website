@@ -2,6 +2,10 @@
 
 function render_tasks ($tasks, &$items, $base = '') {
     if ($tasks) {
+
+        include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
+        include_once __DIR__.'/../../fns/Page/imageArrowLinkWithDescription.php';
+
         foreach ($tasks as $task) {
             $icon = $task->top_priority ? 'task-top-priority' : 'task';
             $title = htmlspecialchars($task->tasktext);
@@ -9,12 +13,13 @@ function render_tasks ($tasks, &$items, $base = '') {
             $tags = $task->tags;
             if ($tags) {
                 $description = 'Tags: '.htmlspecialchars($tags);
-                $items[] = Page::imageArrowLinkWithDescription($title,
+                $items[] = Page\imageArrowLinkWithDescription($title,
                     $description, $href, $icon);
             } else {
-                $items[] = Page::imageArrowLink($title, $href, $icon);
+                $items[] = Page\imageArrowLink($title, $href, $icon);
             }
         }
+
     } else {
         include_once __DIR__.'/../../fns/Page/info.php';
         $items[] = Page\info('No tasks.');

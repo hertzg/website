@@ -6,6 +6,9 @@ list($token, $id) = require_token($mysqli);
 
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
+include_once '../../fns/Form/textarea.php';
+include_once '../../fns/Form/textfield.php';
+include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../lib/page.php';
 
 unset($_SESSION['tokens/index_messages']);
@@ -25,18 +28,18 @@ $page->finish(
             ),
         ),
         "Session #$id",
-        Form::textfield('tokentext', 'Identifier', array(
+        Form\textfield('tokentext', 'Identifier', array(
             'value' => bin2hex($token->tokentext),
             'readonly' => true,
         ))
         .'<div class="hr"></div>'
-        .Form::textarea('useragent', 'User agent', array(
+        .Form\textarea('useragent', 'User agent', array(
             'value' => $token->useragent,
             'readonly' => true,
         ))
     )
     .create_panel(
         'Options',
-        Page::imageArrowLink('Delete Session', "../delete/?id=$id", 'trash-bin')
+        Page\imageArrowLink('Delete Session', "../delete/?id=$id", 'trash-bin')
     )
 );

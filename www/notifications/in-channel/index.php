@@ -32,9 +32,10 @@ $notifications = Notifications\indexOnUserChannel($mysqli, $idusers, $id);
 
 if ($notifications) {
 
+    include_once '../../fns/Page/imageArrowLink.php';
     $title = 'Delete Notifications';
     $href = "delete/?id=$id";
-    $options[] = Page::imageArrowLink($title, $href, 'trash-bin');
+    $options[] = Page\imageArrowLink($title, $href, 'trash-bin');
 
     include_once '../../fns/create_image_text.php';
 

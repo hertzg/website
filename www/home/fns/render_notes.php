@@ -7,9 +7,11 @@ function render_notes ($user, array &$items) {
     $icon = 'notes';
     if ($num_notes) {
         $description = "$num_notes total.";
-        $items[] = Page::imageArrowLinkWithDescription($title,
+        include_once __DIR__.'/../../fns/Page/imageArrowLinkWithDescription.php';
+        $items[] = Page\imageArrowLinkWithDescription($title,
             $description, $href, $icon);
     } else {
-        $items[] = Page::imageArrowLink($title, $href, $icon);
+        include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
+        $items[] = Page\imageArrowLink($title, $href, $icon);
     }
 }

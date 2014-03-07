@@ -10,13 +10,14 @@ unset($_SESSION['account/index_messages']);
 include_once '../fns/get_themes.php';
 $themes = get_themes();
 
+include_once '../fns/Page/imageLink.php';
 $themeItems = array();
 foreach ($themes as $id => $theme) {
     $href = "submit.php?theme=$id";
     if ($id == $user->theme) {
         $theme .= ' (Current)';
     }
-    $themeItems[] = Page::imageLink($theme, $href, "$id-theme");
+    $themeItems[] = Page\imageLink($theme, $href, "$id-theme");
 }
 
 include_once '../fns/Page/warnings.php';

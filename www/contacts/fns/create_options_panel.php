@@ -2,14 +2,16 @@
 
 function create_options_panel ($user, $base = '') {
 
+    include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
+
     $title = 'New Contact';
     $href = "{$base}new/";
-    $options = array(Page::imageArrowLink($title, $href, 'create-contact'));
+    $options = array(Page\imageArrowLink($title, $href, 'create-contact'));
 
     if ($user->num_contacts) {
         $title = 'Delete All Contacts';
         $href = "{$base}delete-all/";
-        $options[] = Page::imageArrowLink($title, $href, 'trash-bin');
+        $options[] = Page\imageArrowLink($title, $href, 'trash-bin');
     }
 
     include_once __DIR__.'/../../fns/create_panel.php';

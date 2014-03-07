@@ -10,6 +10,7 @@ include_once '../../fns/Page/text.php';
 $question = Page\text('Are you sure you want to delete the event?');
 
 include_once '../../fns/create_tabs.php';
+include_once '../../fns/Page/imageLink.php';
 include_once '../../lib/page.php';
 
 $page->base = '../../';
@@ -28,10 +29,10 @@ $page->finish(
         ),
         "Event #$idevents",
         $question.'<div class="hr"></div>'
-        .Page::imageLink('Yes, delete event',
+        .Page\imageLink('Yes, delete event',
             "submit.php?idevents=$idevents", 'yes')
         .'<div class="hr"></div>'
-        .Page::imageLink('No, return back',
+        .Page\imageLink('No, return back',
             "../view-event/?idevents=$idevents", 'no')
     )
 );

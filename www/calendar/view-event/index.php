@@ -22,6 +22,7 @@ $dateText = Page\text(date('F d, Y', $event->eventtime));
 
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
+include_once '../../fns/Page/imageArrowLink.php';
 
 $page->base = '../../';
 $page->title = "Event #$idevents";
@@ -42,10 +43,10 @@ $page->finish(
     )
     .create_panel(
         'Options',
-        Page::imageArrowLink('Edit Event',
+        Page\imageArrowLink('Edit Event',
             "../edit-event/?idevents=$idevents", 'edit-event')
         .'<div class="hr"></div>'
-        .Page::imageArrowLink('Delete Event',
+        .Page\imageArrowLink('Delete Event',
             "../delete-event/?idevents=$idevents", 'trash-bin')
     )
 );

@@ -23,6 +23,8 @@ include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/date_ago.php';
 include_once '../../fns/Form/label.php';
+include_once '../../fns/Page/imageArrowLink.php';
+include_once '../../fns/Page/imageLink.php';
 include_once '../../lib/page.php';
 
 include_once '../../fns/Page/sessionMessages.php';
@@ -59,15 +61,15 @@ $page->finish(
     )
     .create_panel(
         'Options',
-        Page::imageLink('Download File',
+        Page\imageLink('Download File',
             "../download-file/?id=$id", 'download')
         .'<div class="hr"></div>'
-        .Page::imageArrowLink('Rename File', "../rename-file/?id=$id", 'rename')
+        .Page\imageArrowLink('Rename File', "../rename-file/?id=$id", 'rename')
         .'<div class="hr"></div>'
-        .Page::imageArrowLink('Move File',
+        .Page\imageArrowLink('Move File',
             "../move-file/?id=$id&idfolders=$file->idfolders", 'move-file')
         .'<div class="hr"></div>'
-        .Page::imageArrowLink('Delete File',
+        .Page\imageArrowLink('Delete File',
             "../delete-file/?id=$id", 'trash-bin')
     )
 );

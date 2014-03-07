@@ -47,6 +47,7 @@ include_once '../fns/Form/button.php';
 include_once '../fns/Form/checkbox.php';
 include_once '../fns/Form/password.php';
 include_once '../fns/Form/textfield.php';
+include_once '../fns/Page/imageArrowLinkWithDescription.php';
 
 $page->base = $base;
 $page->hideSignOutLink = true;
@@ -76,11 +77,11 @@ $page->finish(
         .'</form>'
         .create_panel(
             'Options',
-            Page::imageArrowLinkWithDescription('Forgot password?',
+            Page\imageArrowLinkWithDescription('Forgot password?',
                 'Reset your account password here.', '../email-reset-password/',
                 'reset-password')
             .'<div class="hr"></div>'
-            .Page::imageArrowLinkWithDescription('Don\'t have an account?',
+            .Page\imageArrowLinkWithDescription('Don\'t have an account?',
                 'Sign up here.', '../sign-up/', 'new-password')
         )
     )

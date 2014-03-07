@@ -21,4 +21,4 @@ $_SESSION['notifications/index_messages'] = array(
 );
 
 include_once '../../../fns/redirect.php';
-redirect("../in-channel/?id=$id");
+redirect("../?id=$id");

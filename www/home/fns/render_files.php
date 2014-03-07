@@ -5,11 +5,16 @@ function render_files ($user, array &$items) {
     $href = '../files/';
     $icon = 'files';
     if ($user->storageused) {
+
         include_once '../fns/bytestr.php';
         $description = bytestr($user->storageused).' used.';
-        $items[] = Page::imageArrowLinkWithDescription($title,
+
+        include_once __DIR__.'/../../fns/Page/imageArrowLinkWithDescription.php';
+        $items[] = Page\imageArrowLinkWithDescription($title,
             $description, $href, $icon);
+
     } else {
-        $items[] = Page::imageArrowLink($title, $href, $icon);
+        include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
+        $items[] = Page\imageArrowLink($title, $href, $icon);
     }
 }

@@ -14,6 +14,8 @@ unset(
 );
 
 include_once '../fns/create_tabs.php';
+include_once '../fns/Page/imageArrowLink.php';
+include_once '../fns/Page/imageLink.php';
 
 $page->base = '../';
 $page->title = 'Help';
@@ -27,8 +29,8 @@ $page->finish(
         ),
         'Help',
         $pageMessages
-        .Page::imageLink('Install Zvini App', 'install.php', 'download')
+        .Page\imageLink('Install Zvini App', 'install.php', 'download')
         .'<div class="hr"></div>'
-        .Page::imageArrowLink('Leave Feedback', 'feedback/', 'feedback')
+        .Page\imageArrowLink('Leave Feedback', 'feedback/', 'feedback')
     )
 );

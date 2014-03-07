@@ -7,9 +7,11 @@ function render_contacts ($user, array &$items) {
     $icon = 'contacts';
     if ($num_contacts) {
         $description = "$num_contacts total.";
-        $items[] = Page::imageArrowLinkWithDescription($title,
+        include_once __DIR__.'/../../fns/Page/imageArrowLinkWithDescription.php';
+        $items[] = Page\imageArrowLinkWithDescription($title,
             $description, $href, $icon);
     } else {
-        $items[] = Page::imageArrowLink($title, $href, $icon);
+        include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
+        $items[] = Page\imageArrowLink($title, $href, $icon);
     }
 }

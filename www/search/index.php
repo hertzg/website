@@ -78,7 +78,8 @@ if (!$searchFiles) {
         'keyword' => $keyword,
         'files' => '1',
     )));
-    $items[] = Page::imageLink('Search in files', $href, 'search-folder');
+    include_once '../fns/Page/imageLink.php';
+    $items[] = Page\imageLink('Search in files', $href, 'search-folder');
 }
 
 include_once '../fns/create_tabs.php';

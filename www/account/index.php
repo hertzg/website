@@ -4,6 +4,8 @@ include_once '../fns/require_user.php';
 require_user('../');
 
 include_once '../fns/Form/label.php';
+include_once '../fns/Page/imageArrowLink.php';
+include_once '../fns/Page/imageArrowLinkWithDescription.php';
 include_once '../lib/mysqli.php';
 include_once '../lib/page.php';
 
@@ -34,26 +36,26 @@ $email_verified = $user->email_verified;
 
 $options = array();
 if (!$email_verified) {
-    $options[] = Page::imageArrowLink('Verify Email', 'verify-email/', 'yes');
+    $options[] = Page\imageArrowLink('Verify Email', 'verify-email/', 'yes');
 }
 
-$options[] = Page::imageArrowLink('Edit Profile',
+$options[] = Page\imageArrowLink('Edit Profile',
     '../edit-profile/', 'edit-profile');
-$options[] = Page::imageArrowLink('Edit Theme',
+$options[] = Page\imageArrowLink('Edit Theme',
     '../edit-theme/', "edit-$user->theme-theme");
-$options[] = Page::imageArrowLink('Change Password',
+$options[] = Page\imageArrowLink('Change Password',
     '../change-password/', 'edit-password');
 
 $num_tokens = $user->num_tokens;
 if ($num_tokens) {
-    $options[] = Page::imageArrowLinkWithDescription('Remembered Sessions',
+    $options[] = Page\imageArrowLinkWithDescription('Remembered Sessions',
         "$num_tokens total.", '../tokens/', 'tokens');
 } else {
-    $options[] = Page::imageArrowLink('Remembered Sessions',
+    $options[] = Page\imageArrowLink('Remembered Sessions',
         '../tokens/', 'tokens');
 }
 
-$options[] = Page::imageArrowLink('Close Account',
+$options[] = Page\imageArrowLink('Close Account',
     '../close-account/', 'trash-bin');
 
 include_once '../fns/get_themes.php';

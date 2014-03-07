@@ -4,6 +4,8 @@ include_once '../fns/require_task.php';
 include_once '../../lib/mysqli.php';
 list($task, $id) = require_task($mysqli);
 
+include_once '../../fns/Page/imageArrowLink.php';
+include_once '../../fns/Page/imageLink.php';
 include_once '../../lib/page.php';
 
 unset(
@@ -14,14 +16,14 @@ unset(
 
 $options = array();
 if ($task->top_priority) {
-    $options[] = Page::imageLink('Mark as Normal Priority',
+    $options[] = Page\imageLink('Mark as Normal Priority',
         "submit-set-normal-priority.php?id=$id", 'task');
 } else {
-    $options[] = Page::imageLink('Mark as Top Priority',
+    $options[] = Page\imageLink('Mark as Top Priority',
         "submit-set-top-priority.php?id=$id", 'task-top-priority');
 }
-$options[] = Page::imageArrowLink('Edit Task', "../edit/?id=$id", 'edit-task');
-$options[] = Page::imageArrowLink('Delete Task', "../delete/?id=$id", 'trash-bin');
+$options[] = Page\imageArrowLink('Edit Task', "../edit/?id=$id", 'edit-task');
+$options[] = Page\imageArrowLink('Delete Task', "../delete/?id=$id", 'trash-bin');
 
 $tasktext = $task->tasktext;
 $inserttime = $task->inserttime;

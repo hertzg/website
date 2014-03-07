@@ -12,17 +12,19 @@ include_once '../../fns/Events/indexOnUser.php';
 $events = Events\indexOnUser($mysqli, $idusers);
 if ($events) {
 
+    include_once '../../fns/Page/imageArrowLinkWithDescription.php';
     foreach ($events as $event) {
         $description = date('F d, Y', $event->eventtime);
-        $items[] = Page::imageArrowLinkWithDescription(
+        $items[] = Page\imageArrowLinkWithDescription(
             htmlspecialchars($event->eventtext),
             $description, "../view-event/?idevents=$event->idevents", 'event');
     }
 
     include_once '../../fns/create_panel.php';
+    include_once '../../fns/Page/imageArrowLink.php';
     $optionsPanel = create_panel(
         'Options',
-        Page::imageArrowLink('Delete All Events', 'delete-all/', 'trash-bin')
+        Page\imageArrowLink('Delete All Events', 'delete-all/', 'trash-bin')
     );
 
 } else {

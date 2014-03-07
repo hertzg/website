@@ -42,6 +42,7 @@ $datesText = Page\text($datesText);
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/create_tags.php';
+include_once '../../fns/Page/imageArrowLink.php';
 
 $page->base = $base;
 $page->title = "Note #$id";
@@ -62,8 +63,8 @@ $page->finish(
     )
     .create_panel(
         'Options',
-        Page::imageArrowLink('Edit Note', "../edit/?id=$id", 'edit-note')
+        Page\imageArrowLink('Edit Note', "../edit/?id=$id", 'edit-note')
         .'<div class="hr"></div>'
-        .Page::imageArrowLink('Delete Note', "../delete/?id=$id", 'trash-bin')
+        .Page\imageArrowLink('Delete Note', "../delete/?id=$id", 'trash-bin')
     )
 );

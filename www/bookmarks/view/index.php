@@ -48,6 +48,8 @@ $datesText = Page\text($datesText);
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/create_tags.php';
+include_once '../../fns/Page/imageArrowLink.php';
+include_once '../../fns/Page/imageLink.php';
 
 $page->base = $base;
 $page->title = "Bookmark #$id";
@@ -69,14 +71,14 @@ $page->finish(
     )
     .create_panel(
         'Options',
-        Page::imageLink('Open', $externalUrl, 'run')
+        Page\imageLink('Open', $externalUrl, 'run')
         .'<div class="hr"></div>'
-        .Page::imageLink('Open in New Tab', $externalUrl, 'run', array(
+        .Page\imageLink('Open in New Tab', $externalUrl, 'run', array(
             'target' => '_blank',
         ))
         .'<div class="hr"></div>'
-        .Page::imageArrowLink('Edit Bookmark', "../edit/?id=$id", 'edit-bookmark')
+        .Page\imageArrowLink('Edit Bookmark', "../edit/?id=$id", 'edit-bookmark')
         .'<div class="hr"></div>'
-        .Page::imageArrowLink('Delete Bookmark', "../delete/?id=$id", 'trash-bin')
+        .Page\imageArrowLink('Delete Bookmark', "../delete/?id=$id", 'trash-bin')
     )
 );

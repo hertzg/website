@@ -13,6 +13,7 @@ include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/label.php';
 include_once '../../fns/Form/textfield.php';
+include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../lib/page.php';
 
 $page->base = '../../';
@@ -40,9 +41,9 @@ $page->finish(
     )
     .create_panel(
         'Options',
-        Page::imageArrowLink('Randomize Channel Key',
+        Page\imageArrowLink('Randomize Channel Key',
             "../randomize-key/?id=$id", 'randomize')
         .'<div class="hr"></div>'
-        .Page::imageArrowLink('Delete Channel', "../delete/?id=$id", 'trash-bin')
+        .Page\imageArrowLink('Delete Channel', "../delete/?id=$id", 'trash-bin')
     )
 );

@@ -13,6 +13,7 @@ $question = Page\text(
 );
 
 include_once '../../fns/create_tabs.php';
+include_once '../../fns/Page/imageLink.php';
 include_once '../../lib/page.php';
 
 $page->base = '../../';
@@ -31,9 +32,9 @@ $page->finish(
         ),
         "Channel #$id",
         $question.'<div class="hr"></div>'
-        .Page::imageLink('Yes, randomize channel key',
+        .Page\imageLink('Yes, randomize channel key',
             "submit.php?id=$id", 'yes')
         .'<div class="hr"></div>'
-        .Page::imageLink('No, return back', "../view/?id=$id", 'no')
+        .Page\imageLink('No, return back', "../view/?id=$id", 'no')
     )
 );

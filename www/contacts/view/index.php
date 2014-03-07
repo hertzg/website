@@ -55,6 +55,8 @@ if ($insert_time != $update_time) {
 include_once '../../fns/Page/text.php';
 $items[] = Page\text($datesText);
 
+include_once '../../fns/Page/imageArrowLink.php';
+
 $page->base = '../../';
 $page->title = "Contact #$id";
 $page->finish(
@@ -74,9 +76,9 @@ $page->finish(
     )
     .create_panel(
         'Options',
-        Page::imageArrowLink('Edit Contact', "../edit/?id=$id", 'edit-contact')
+        Page\imageArrowLink('Edit Contact', "../edit/?id=$id", 'edit-contact')
         .'<div class="hr"></div>'
-        .Page::imageArrowLink('Delete Contact',
+        .Page\imageArrowLink('Delete Contact',
             "../delete/?id=$id", 'trash-bin')
     )
 );

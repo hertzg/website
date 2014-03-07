@@ -17,6 +17,7 @@ $question = Page\text(
 
 include_once '../fns/create_folder_link.php';
 include_once '../../fns/create_tabs.php';
+include_once '../../fns/Page/imageLink.php';
 include_once '../../lib/page.php';
 
 $page->base = '../../';
@@ -31,10 +32,10 @@ $page->finish(
         ),
         'Files',
         $question.'<div class="hr"></div>'
-        .Page::imageLink('Yes, delete folder',
+        .Page\imageLink('Yes, delete folder',
             "submit.php?idfolders=$idfolders", 'yes')
         .'<div class="hr"></div>'
-        .Page::imageLink('No, return back',
+        .Page\imageLink('No, return back',
             create_folder_link($idfolders, '../'), 'no')
     )
 );

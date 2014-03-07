@@ -9,6 +9,7 @@ $question = Page\text('Are you sure you want to delete all the tasks?');
 unset($_SESSION['tasks/index_messages']);
 
 include_once '../../fns/create_tabs.php';
+include_once '../../fns/Page/imageLink.php';
 include_once '../../lib/page.php';
 
 $page->base = '../../';
@@ -23,8 +24,8 @@ $page->finish(
         ),
         'Tasks',
         $question.'<div class="hr"></div>'
-        .Page::imageLink('Yes, delete all task', 'submit.php', 'yes')
+        .Page\imageLink('Yes, delete all task', 'submit.php', 'yes')
         .'<div class="hr"></div>'
-        .Page::imageLink('No, return back', '..', 'no')
+        .Page\imageLink('No, return back', '..', 'no')
     )
 );

@@ -19,7 +19,8 @@ $notifications = Notifications\indexOnUser($mysqli, $idusers);
 
 if ($notifications) {
 
-    $options[] = Page::imageArrowLink('Delete All Notifications',
+    include_once '../fns/Page/imageArrowLink.php';
+    $options[] = Page\imageArrowLink('Delete All Notifications',
         'delete-all/', 'trash-bin');
 
     include_once '../fns/create_image_text.php';

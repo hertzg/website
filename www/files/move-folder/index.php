@@ -33,9 +33,12 @@ if ($parentidfolders) {
 include_once '../../fns/Folders/indexInUserFolder.php';
 $folders = Folders\indexInUserFolder($mysqli, $idusers, $parentidfolders);
 
+include_once '../../fns/Page/imageArrowLink.php';
+include_once '../../fns/Page/imageLink.php';
+
 $items = array();
 if ($parentidfolders) {
-    $items[] = Page::imageLink('.. Parent folder',
+    $items[] = Page\imageLink('.. Parent folder',
         create_link($idfolders, $parentFolder->parentidfolders),
         'parent-folder');
 }
@@ -45,13 +48,13 @@ foreach ($folders as $itemFolder) {
         include_once '../../fns/create_disabled_image_link.php';
         $items[] = create_disabled_image_link($escapedName, 'folder');
     } else {
-        $items[] = Page::imageArrowLink($escapedName,
+        $items[] = Page\imageArrowLink($escapedName,
             create_link($idfolders, $itemFolder->idfolders), 'folder');
     }
 }
 
 if ($parentidfolders != $folder->parentidfolders) {
-    $items[] = Page::imageLink('Move Here',
+    $items[] = Page\imageLink('Move Here',
         "submit.php?idfolders=$idfolders&parentidfolders=$parentidfolders",
         'move-folder');
 }
