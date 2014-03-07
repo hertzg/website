@@ -10,14 +10,6 @@ class Form {
             .'</div>';
     }
 
-    static function filefield ($name, $text) {
-        return self::association(
-            '<input class="form-filefield" type="file" multiple="multiple"'
-            ." id=\"$name\" name=\"$name\" />",
-            "<label for=\"$name\">$text</label>"
-        );
-    }
-
     static function hidden ($name, $value) {
         $value = htmlspecialchars($value);
         return "<input type=\"hidden\" name=\"$name\" value=\"$value\" />";

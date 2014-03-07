@@ -42,6 +42,7 @@ include_once '../fns/create_folder_link.php';
 include_once '../../classes/Form.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
+include_once '../../fns/Form/filefield.php';
 
 $page->base = '../../';
 $page->title = 'Upload Files';
@@ -62,11 +63,11 @@ $page->finish(
         .$pageWarnings
         .'<form action="submit.php" method="post"'
         .' enctype="multipart/form-data">'
-            .Form::filefield('file1[]', 'File 1:')
+            .Form\filefield('file1[]', 'File 1:')
             .'<div class="hr"></div>'
-            .Form::filefield('file2[]', 'File 2:')
+            .Form\filefield('file2[]', 'File 2:')
             .'<div class="hr"></div>'
-            .Form::filefield('file3[]', 'File 3:')
+            .Form\filefield('file3[]', 'File 3:')
             .'<div class="hr"></div>'
             .Form\button('Upload')
             .Form::hidden('posttest', '1')
