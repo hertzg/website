@@ -8,10 +8,10 @@ if (!array_key_exists('HTTP_REFERER', $_SERVER)) {
     redirect($url);
 }
 
-include_once '../lib/page.php';
+include_once '../lib/user.php';
+$theme = $user ? $user->theme : 'orange';
 
-$page->base = '../';
-$page->echoHtml(
+$body =
     '<div class="page-text">'
         .'<div>Redirecting to:</div>'
         .'<div>'
@@ -22,5 +22,8 @@ $page->echoHtml(
     .'</div>'
     .'<script type="text/javascript">'
     .'location = '.json_encode($url)
-    .'</script>'
-);
+    .'</script>';
+
+include_once '../fns/echo_html.php';
+include_once '../lib/revisions.php';
+echo_html('Redirecting', '', $body, $revisions, $theme, '../');
