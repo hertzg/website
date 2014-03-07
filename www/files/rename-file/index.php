@@ -37,9 +37,8 @@ $page->finish(
         ),
         'Rename',
         $pageErrors
-        .Form::create(
-            'submit.php',
-            Form::textfield('filename', 'File name', array(
+        .'<form action="submit.php" method="post">'
+            .Form::textfield('filename', 'File name', array(
                 'value' => $values['filename'],
                 'autofocus' => true,
                 'required' => true,
@@ -47,6 +46,6 @@ $page->finish(
             .Page::HR
             .Form::button('Rename')
             .Form::hidden('id', $id)
-        )
+        .'</form>'
     )
 );

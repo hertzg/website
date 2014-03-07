@@ -39,9 +39,8 @@ $page->finish(
         array(),
         'Sign Up',
         $pageErrors
-        .Form::create(
-            'submit.php',
-            Form::textfield('username', 'Username', array(
+        .'<form action="submit.php" method="post">'
+            .Form::textfield('username', 'Username', array(
                 'value' => $values['username'],
                 'autofocus' => true,
                 'required' => true,
@@ -66,7 +65,7 @@ $page->finish(
             .Page::HR
             .Form::captcha($base)
             .Form::button('Sign Up')
-        )
+        .'</form>'
         .create_panel(
             'Options',
             Page::imageArrowLinkWithDescription('Already have an account?',

@@ -36,9 +36,8 @@ $page->finish(
         ),
         'Edit',
         $pageErrors
-        .Form::create(
-            'submit.php',
-            Form::textfield('fullname', 'Full name', array(
+        .'<form action="submit.php" method="post">'
+            .Form::textfield('fullname', 'Full name', array(
                 'value' => $values['fullname'],
                 'autofocus' => true,
                 'required' => true,
@@ -66,6 +65,6 @@ $page->finish(
             .Page::HR
             .Form::button('Save Changes')
             .Form::hidden('id', $id)
-        )
+        .'</form>'
     )
 );

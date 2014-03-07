@@ -35,9 +35,8 @@ $page->finish(
         ),
         'Edit Profile',
         $pageErrors
-        .Form::create(
-            'submit.php',
-            Form::textfield('email', 'Email', array(
+        .'<form action="submit.php" method="post">'
+            .Form::textfield('email', 'Email', array(
                 'value' => $values->email,
                 'autofocus' => true,
                 'required' => true,
@@ -48,6 +47,6 @@ $page->finish(
             ))
             .Page::HR
             .Form::button('Save Changes')
-        )
+        .'</form>'
     )
 );

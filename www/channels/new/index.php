@@ -35,9 +35,8 @@ $page->finish(
         ),
         'New',
         $pageErrors
-        .Form::create(
-            'submit.php',
-            Form::textfield('channelname', 'Channel name', array(
+        .'<form action="submit.php" method="post">'
+            .Form::textfield('channelname', 'Channel name', array(
                 'value' => $values['channelname'],
                 'maxlength' => 32,
                 'autofocus' => true,
@@ -49,6 +48,6 @@ $page->finish(
             ))
             .Page::HR
             .Form::button('Create')
-        )
+        .'</form>'
     )
 );

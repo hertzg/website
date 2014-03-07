@@ -36,9 +36,8 @@ $page->finish(
         ),
         'Edit',
         $pageErrors
-        .Form::create(
-            'submit.php',
-            Form::label('When', date('F d, Y', $event->eventtime))
+        .'<form action="submit.php" method="post">'
+            .Form::label('When', date('F d, Y', $event->eventtime))
             .Page::HR
             .Form::textfield('eventtext', 'Text', array(
                 'value' => $values['eventtext'],
@@ -48,6 +47,6 @@ $page->finish(
             .Page::HR
             .Form::button('Save Changes')
             .Form::hidden('idevents', $idevents)
-        )
+        .'</form>'
     )
 );

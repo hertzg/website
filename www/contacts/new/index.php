@@ -42,9 +42,8 @@ $page->finish(
         ),
         'New',
         $pageErrors
-        .Form::create(
-            'submit.php',
-            Form::textfield('fullname', 'Full name', array(
+        .'<form action="submit.php" method="post">'
+            .Form::textfield('fullname', 'Full name', array(
                 'value' => $values['fullname'],
                 'maxlength' => 32,
                 'autofocus' => true,
@@ -76,6 +75,7 @@ $page->finish(
             ))
             .Page::HR
             .Form::button('Save')
-        )
+        .'</form>'
     )
 );
+

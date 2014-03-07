@@ -38,9 +38,8 @@ $page->finish(
         ),
         'New',
         $pageErrors
-        .Form::create(
-            'submit.php',
-            Form::textarea('notetext', 'Text', array(
+        .'<form action="submit.php" method="post">'
+            .Form::textarea('notetext', 'Text', array(
                 'value' => $values['notetext'],
                 'autofocus' => true,
                 'required' => true,
@@ -51,6 +50,6 @@ $page->finish(
             ))
             .Page::HR
             .Form::button('Save')
-        )
+        .'</form>'
     )
 );

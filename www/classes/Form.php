@@ -51,14 +51,6 @@ class Form {
             .'</script>';
     }
 
-    static function create ($action, $content) {
-        return
-            '<form class="form-form" method="post"'
-            ." enctype=\"multipart/form-data\" action=\"$action\">"
-                ."<div class=\"form-div\">$content</div>"
-            .'</form>';
-    }
-
     static function filefield ($name, $text) {
         return self::association(
             '<input class="form-filefield" type="file" multiple="multiple"'

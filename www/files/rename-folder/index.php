@@ -40,9 +40,8 @@ $page->finish(
         ),
         "Rename Folder #$idfolders",
         $pageErrors
-        .Form::create(
-            'submit.php',
-            Form::textfield('foldername', 'Folder name', array(
+        .'<form action="submit.php" method="post">'
+            .Form::textfield('foldername', 'Folder name', array(
                 'value' => $values['foldername'],
                 'autofocus' => true,
                 'required' => true,
@@ -50,6 +49,6 @@ $page->finish(
             .Page::HR
             .Form::button('Rename')
             .Form::hidden('idfolders', $idfolders)
-        )
+        .'</form>'
     )
 );

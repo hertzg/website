@@ -54,9 +54,8 @@ $page->finish(
         'Sign In', 
         $pageMessages
         .$pageErrors
-        .Form::create(
-            'submit.php',
-            Form::textfield('username', 'Username', array(
+        .'<form action="submit.php" method="post">'
+            .Form::textfield('username', 'Username', array(
                 'value' => $username,
                 'autofocus' => $username === '',
                 'required' => true,
@@ -71,7 +70,7 @@ $page->finish(
             .Form::checkbox($base, 'remember', 'Stay signed in', $values['remember'])
             .Page::HR
             .Form::button('Sign In')
-        )
+        .'</form>'
         .create_panel(
             'Options',
             Page::imageArrowLinkWithDescription('Forgot password?',

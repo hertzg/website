@@ -39,9 +39,8 @@ $page->finish(
         ),
         'New',
         $pageErrors
-        .Form::create(
-            'submit.php',
-            Form::textfield('url', 'URL', array(
+        .'<form action="submit.php" method="post">'
+            .Form::textfield('url', 'URL', array(
                 'value' => $values['url'],
                 'autofocus' => true,
                 'required' => true,
@@ -56,6 +55,6 @@ $page->finish(
             ))
             .Page::HR
             .Form::button('Save')
-        )
+        .'</form>'
     )
 );

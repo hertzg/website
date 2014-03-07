@@ -43,9 +43,8 @@ $page->finish(
         ),
         'New Event',
         $pageErrors
-        .Form::create(
-            'submit.php',
-            Form::label('When', date('F d, Y', $time))
+        .'<form action="submit.php" method="post">'
+            .Form::label('When', date('F d, Y', $time))
             .Page::HR
             .Form::textfield('eventtext', 'Text', array(
                 'value' => $values['eventtext'],
@@ -57,6 +56,6 @@ $page->finish(
             .Form::hidden('year', $year)
             .Form::hidden('month', $month)
             .Form::hidden('day', $day)
-        )
+        .'</form>'
     )
 );

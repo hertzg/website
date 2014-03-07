@@ -56,9 +56,8 @@ $page->finish(
         ),
         'Reset Password',
         $pageErrors
-        .Form::create(
-            'submit.php',
-            Form::label('Username', $user->username)
+        .'<form action="submit.php" method="post">'
+            .Form::label('Username', $user->username)
             .Page::HR
             .Form::password('password1', 'New password', array(
                 'value' => $values['password1'],
@@ -75,6 +74,6 @@ $page->finish(
             .Form::button('Reset Password')
             .Form::hidden('idusers', $idusers)
             .Form::hidden('key', $key)
-        )
+        .'</form>'
     )
 );

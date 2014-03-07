@@ -39,9 +39,8 @@ $page->finish(
         ),
         'Change Password',
         $pageErrors
-        .Form::create(
-            'submit.php',
-            Form::password('currentpassword', 'Current password', array(
+        .'<form action="submit.php" method="post">'
+            .Form::password('currentpassword', 'Current password', array(
                 'value' => $values['currentpassword'],
                 'autofocus' => true,
                 'required' => true,
@@ -59,6 +58,7 @@ $page->finish(
             ))
             .Page::HR
             .Form::button('Change')
-        )
+        .'</form>'
     )
 );
+

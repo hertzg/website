@@ -55,13 +55,12 @@ $page->finish(
             ),
         ),
         'Jump To',
-        Form::create(
-            'submit.php',
-            Form::select('month', 'Month:', $monthOptions, $month)
+        '<form action="submit.php" method="post">'
+            .Form::select('month', 'Month:', $monthOptions, $month)
             .Page::HR
             .Form::select('year', 'Year:', $yearOptions, $year)
             .Page::HR
             .Form::button('Jump To')
-        )
+        .'</form>'
     )
 );

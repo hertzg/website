@@ -43,14 +43,13 @@ $page->finish(
         'Close',
         $pageErrors
         .$pageWarnings
-        .Form::create(
-            'submit.php',
-            Form::password('password', 'Password', array(
+        .'<form action="submit.php" method="post">'
+            .Form::password('password', 'Password', array(
                 'autofocus' => true,
                 'required' => true,
             ))
             .Page::HR
             .Form::button('Close Account')
-        )
+        .'</form>'
     )
 );

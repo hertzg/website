@@ -56,9 +56,8 @@ $page->finish(
         ),
         'New Folder',
         $pageErrors
-        .Form::create(
-            'submit.php',
-            Form::textfield('foldername', 'Folder name', array(
+        .'<form action="submit.php" method="post">'
+            .Form::textfield('foldername', 'Folder name', array(
                 'value' => $values['foldername'],
                 'autofocus' => true,
                 'required' => true,
@@ -66,6 +65,6 @@ $page->finish(
             .Page::HR
             .Form::button('Create')
             .Form::hidden('parentidfolders', $parentIdFolders)
-        )
+        .'</form>'
     )
 );

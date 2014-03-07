@@ -35,9 +35,8 @@ $page->finish(
         ),
         'Feedback',
         $pageErrors
-        .Form::create(
-            'submit.php',
-            Form::textarea('feedbacktext', 'Feedback text', array(
+        .'<form action="submit.php" method="post">'
+            .Form::textarea('feedbacktext', 'Feedback text', array(
                 'value' => $values['feedbacktext'],
                 'autofocus' => true,
                 'required' => true,
@@ -45,6 +44,6 @@ $page->finish(
             .Form::notes(array('Minimum 6 words.'))
             .Page::HR
             .Form::button('Submit Feedback')
-        )
+        .'</form>'
     )
 );

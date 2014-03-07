@@ -29,10 +29,9 @@ $page->finish(
         ),
         'Verify Email',
         $pageErrors
-        .Form::create(
-            'submit.php',
-            Form::captcha('../../', true)
+        .'<form action="submit.php" method="post">'
+            .Form::captcha('../../', true)
             .Form::button('Send Verification Email')
-        )
+        .'</form>'
     )
 );

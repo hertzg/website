@@ -59,9 +59,9 @@ $page->finish(
         'Upload Files',
         $pageErrors
         .$pageWarnings
-        .Form::create(
-            'submit.php',
-            Form::filefield('file1[]', 'File 1:')
+        .'<form action="submit.php" method="post"'
+        .' enctype="multipart/form-data">'
+            .Form::filefield('file1[]', 'File 1:')
             .Page::HR
             .Form::filefield('file2[]', 'File 2:')
             .Page::HR
@@ -70,6 +70,6 @@ $page->finish(
             .Form::button('Upload')
             .Form::hidden('posttest', '1')
             .Form::hidden('idfolders', $idfolders)
-        )
+        .'</form>'
     )
 );
