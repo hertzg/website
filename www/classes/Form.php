@@ -10,11 +10,6 @@ class Form {
             .'</div>';
     }
 
-    static function hidden ($name, $value) {
-        $value = htmlspecialchars($value);
-        return "<input type=\"hidden\" name=\"$name\" value=\"$value\" />";
-    }
-
     static function select ($name, $text, array $options, $value) {
         $selectHtml = "<select class=\"form-select\" name=\"$name\" id=\"$name\">";
         foreach ($options as $itemValue => $itemText) {

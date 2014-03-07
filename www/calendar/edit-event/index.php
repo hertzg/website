@@ -20,6 +20,7 @@ unset($_SESSION['calendar/view-event_messages']);
 
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
+include_once '../../fns/Form/hidden.php';
 include_once '../../fns/Form/label.php';
 
 $page->base = '../../';
@@ -48,7 +49,7 @@ $page->finish(
             ))
             .'<div class="hr"></div>'
             .Form\button('Save Changes')
-            .Form::hidden('idevents', $idevents)
+            .Form\hidden('idevents', $idevents)
         .'</form>'
     )
 );

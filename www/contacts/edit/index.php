@@ -20,6 +20,7 @@ unset($_SESSION['contacts/view/index_messages']);
 
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
+include_once '../../fns/Form/hidden.php';
 
 $page->base = '../../';
 $page->title = "Edit Contact #$id";
@@ -65,7 +66,7 @@ $page->finish(
             ))
             .'<div class="hr"></div>'
             .Form\button('Save Changes')
-            .Form::hidden('id', $id)
+            .Form\hidden('id', $id)
         .'</form>'
     )
 );

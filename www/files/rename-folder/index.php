@@ -24,6 +24,7 @@ unset(
 
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
+include_once '../../fns/Form/hidden.php';
 
 $page->base = '../../';
 $page->title = "Rename Folder #$idfolders";
@@ -49,7 +50,7 @@ $page->finish(
             ))
             .'<div class="hr"></div>'
             .Form\button('Rename')
-            .Form::hidden('idfolders', $idfolders)
+            .Form\hidden('idfolders', $idfolders)
         .'</form>'
     )
 );

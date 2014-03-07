@@ -43,6 +43,7 @@ unset(
 
 include_once '../fns/create_tabs.php';
 include_once '../fns/Form/button.php';
+include_once '../fns/Form/hidden.php';
 include_once '../fns/Form/label.php';
 include_once '../fns/Form/notes.php';
 include_once '../fns/Form/password.php';
@@ -76,8 +77,8 @@ $page->finish(
             ))
             .'<div class="hr"></div>'
             .Form\button('Reset Password')
-            .Form::hidden('idusers', $idusers)
-            .Form::hidden('key', $key)
+            .Form\hidden('idusers', $idusers)
+            .Form\hidden('key', $key)
         .'</form>'
     )
 );
