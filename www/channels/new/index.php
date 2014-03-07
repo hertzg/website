@@ -18,6 +18,7 @@ $pageErrors = Page\sessionErrors('channels/add_errors');
 unset($_SESSION['channels/index_messages']);
 
 include_once '../../fns/create_tabs.php';
+include_once '../../fns/Form/button.php';
 
 $page->base = '../../';
 $page->title = 'New Channel';
@@ -47,7 +48,7 @@ $page->finish(
                 'Minimum 6 maximum 32 characters.',
             ))
             .'<div class="hr"></div>'
-            .Form::button('Create')
+            .Form\button('Create')
         .'</form>'
     )
 );

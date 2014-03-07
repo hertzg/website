@@ -41,6 +41,7 @@ $pageWarnings = Page\warnings(array(
 include_once '../fns/create_folder_link.php';
 include_once '../../classes/Form.php';
 include_once '../../fns/create_tabs.php';
+include_once '../../fns/Form/button.php';
 
 $page->base = '../../';
 $page->title = 'Upload Files';
@@ -67,7 +68,7 @@ $page->finish(
             .'<div class="hr"></div>'
             .Form::filefield('file3[]', 'File 3:')
             .'<div class="hr"></div>'
-            .Form::button('Upload')
+            .Form\button('Upload')
             .Form::hidden('posttest', '1')
             .Form::hidden('idfolders', $idfolders)
         .'</form>'

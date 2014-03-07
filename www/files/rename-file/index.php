@@ -20,6 +20,7 @@ if (array_key_exists('files/rename-file_lastpost', $_SESSION)) {
 unset($_SESSION['files/view-file/index_messages']);
 
 include_once '../../fns/create_tabs.php';
+include_once '../../fns/Form/button.php';
 
 $page->base = '../../';
 $page->title = "Rename File #$id";
@@ -44,7 +45,7 @@ $page->finish(
                 'required' => true,
             ))
             .'<div class="hr"></div>'
-            .Form::button('Rename')
+            .Form\button('Rename')
             .Form::hidden('id', $id)
         .'</form>'
     )

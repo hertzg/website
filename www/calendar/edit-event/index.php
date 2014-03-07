@@ -19,6 +19,7 @@ $pageErrors = Page\sessionErrors('calendar/edit-event/index_errors');
 unset($_SESSION['calendar/view-event_messages']);
 
 include_once '../../fns/create_tabs.php';
+include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/label.php';
 
 $page->base = '../../';
@@ -46,7 +47,7 @@ $page->finish(
                 'required' => true,
             ))
             .'<div class="hr"></div>'
-            .Form::button('Save Changes')
+            .Form\button('Save Changes')
             .Form::hidden('idevents', $idevents)
         .'</form>'
     )

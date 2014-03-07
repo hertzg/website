@@ -11,8 +11,8 @@ $pageErrors = Page\sessionErrors('account/verify-email/index_errors');
 unset($_SESSION['account/index_messages']);
 
 include_once '../../fns/create_tabs.php';
+include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/captcha.php';
-include_once '../../classes/Form.php';
 
 $page->base = '../../';
 $page->title = 'Verify Email';
@@ -32,7 +32,7 @@ $page->finish(
         $pageErrors
         .'<form action="submit.php" method="post">'
             .Form\captcha('../../', true)
-            .Form::button('Send Verification Email')
+            .Form\button('Send Verification Email')
         .'</form>'
     )
 );

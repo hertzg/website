@@ -39,6 +39,7 @@ for ($i = $minYear; $i <= $maxYear; $i++) {
 unset($_SESSION['calendar/index_messages']);
 
 include_once '../../fns/create_tabs.php';
+include_once '../../fns/Form/button.php';
 
 $page->base = '../../';
 $page->title = 'Jumo To';
@@ -60,7 +61,7 @@ $page->finish(
             .'<div class="hr"></div>'
             .Form::select('year', 'Year:', $yearOptions, $year)
             .'<div class="hr"></div>'
-            .Form::button('Jump To')
+            .Form\button('Jump To')
         .'</form>'
     )
 );

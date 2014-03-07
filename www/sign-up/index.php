@@ -30,6 +30,7 @@ unset(
 $base = '../';
 
 include_once '../fns/create_tabs.php';
+include_once '../fns/Form/button.php';
 include_once '../fns/Form/captcha.php';
 include_once '../fns/Form/password.php';
 
@@ -66,7 +67,7 @@ $page->finish(
             ))
             .'<div class="hr"></div>'
             .Form\captcha($base)
-            .Form::button('Sign Up')
+            .Form\button('Sign Up')
         .'</form>'
         .create_panel(
             'Options',

@@ -18,6 +18,7 @@ $pageErrors = Page\sessionErrors('help/feedback/index_errors');
 unset($_SESSION['help/index_messages']);
 
 include_once '../../fns/create_tabs.php';
+include_once '../../fns/Form/button.php';
 
 $page->base = '../../';
 $page->title = 'Leave Feedback';
@@ -43,7 +44,7 @@ $page->finish(
             ))
             .Form::notes(array('Minimum 6 words.'))
             .'<div class="hr"></div>'
-            .Form::button('Submit Feedback')
+            .Form\button('Submit Feedback')
         .'</form>'
     )
 );

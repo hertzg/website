@@ -19,6 +19,7 @@ $pageErrors = Page\sessionErrors('notes/edit_errors');
 unset($_SESSION['notes/index_messages']);
 
 include_once '../../fns/create_tabs.php';
+include_once '../../fns/Form/button.php';
 
 $page->base = '../../';
 $page->title = "Edit Note #$id";
@@ -47,7 +48,7 @@ $page->finish(
                 'value' => $values['tags'],
             ))
             .'<div class="hr"></div>'
-            .Form::button('Save Changes')
+            .Form\button('Save Changes')
             .Form::hidden('id', $id)
         .'</form>'
     )

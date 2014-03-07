@@ -44,6 +44,7 @@ $username = $values['username'];
 $base = '../';
 
 include_once '../fns/create_tabs.php';
+include_once '../fns/Form/button.php';
 include_once '../fns/Form/checkbox.php';
 include_once '../fns/Form/password.php';
 
@@ -71,7 +72,7 @@ $page->finish(
             .'<div class="hr"></div>'
             .Form\checkbox($base, 'remember', 'Stay signed in', $values['remember'])
             .'<div class="hr"></div>'
-            .Form::button('Sign In')
+            .Form\button('Sign In')
         .'</form>'
         .create_panel(
             'Options',

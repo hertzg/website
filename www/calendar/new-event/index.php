@@ -26,6 +26,7 @@ $time = mktime(0, 0, 0, $month, $day, $year);
 unset($_SESSION['calendar/index_messages']);
 
 include_once '../../fns/create_tabs.php';
+include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/label.php';
 
 $page->base = '../../';
@@ -53,7 +54,7 @@ $page->finish(
                 'required' => true,
             ))
             .'<div class="hr"></div>'
-            .Form::button('Save')
+            .Form\button('Save')
             .Form::hidden('year', $year)
             .Form::hidden('month', $month)
             .Form::hidden('day', $day)

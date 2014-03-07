@@ -25,6 +25,7 @@ $pageErrors = Page\sessionErrors('contacts/new/index_errors');
 unset($_SESSION['contacts/index_messages']);
 
 include_once '../../fns/create_tabs.php';
+include_once '../../fns/Form/button.php';
 
 $page->base = '../../';
 $page->title = 'New Contact';
@@ -74,7 +75,7 @@ $page->finish(
                 'value' => $values['tags'],
             ))
             .'<div class="hr"></div>'
-            .Form::button('Save')
+            .Form\button('Save')
         .'</form>'
     )
 );

@@ -24,6 +24,7 @@ unset(
 $base = '../';
 
 include_once '../fns/create_tabs.php';
+include_once '../fns/Form/button.php';
 include_once '../fns/Form/captcha.php';
 
 $page->base = $base;
@@ -47,7 +48,7 @@ $page->finish(
             ))
             .'<div class="hr"></div>'
             .Form\captcha($base)
-            .Form::button('Send Recovery Email')
+            .Form\button('Send Recovery Email')
         .'</form>'
     )
 );

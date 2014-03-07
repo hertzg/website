@@ -23,6 +23,7 @@ unset(
 );
 
 include_once '../../fns/create_tabs.php';
+include_once '../../fns/Form/button.php';
 
 $page->base = '../../';
 $page->title = "Rename Folder #$idfolders";
@@ -47,7 +48,7 @@ $page->finish(
                 'required' => true,
             ))
             .'<div class="hr"></div>'
-            .Form::button('Rename')
+            .Form\button('Rename')
             .Form::hidden('idfolders', $idfolders)
         .'</form>'
     )

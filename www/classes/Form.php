@@ -10,11 +10,6 @@ class Form {
             .'</div>';
     }
 
-    static function button ($text) {
-        return '<input class="clickable form-button"'
-            ." type=\"submit\" value=\"$text\" />";
-    }
-
     static function filefield ($name, $text) {
         return self::association(
             '<input class="form-filefield" type="file" multiple="multiple"'

@@ -22,6 +22,7 @@ $pageErrors = Page\sessionErrors('change-password/index_errors');
 unset($_SESSION['account/index_messages']);
 
 include_once '../fns/create_tabs.php';
+include_once '../fns/Form/button.php';
 include_once '../fns/Form/password.php';
 
 $page->base = '../';
@@ -58,7 +59,7 @@ $page->finish(
                 'required' => true,
             ))
             .'<div class="hr"></div>'
-            .Form::button('Change')
+            .Form\button('Change')
         .'</form>'
     )
 );
