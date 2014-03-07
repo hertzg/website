@@ -19,12 +19,8 @@ $errors = array();
 
 if ($url === '') $errors[] = 'Enter URL.';
 
-include_once '../../classes/Tags.php';
-$tagnames = Tags::parse($tags);
-
-if (count($tagnames) > Tags::MAX_NUM_TAGS) {
-    $errors[] = 'Please, enter maximum '.Tags::MAX_NUM_TAGS.' tags.';
-}
+include_once '../../fns/parse_tags.php';
+parse_tags($tags, $tagnames, $errors);
 
 include_once '../../fns/redirect.php';
 

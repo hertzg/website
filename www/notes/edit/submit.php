@@ -7,8 +7,6 @@ include_once '../fns/require_note.php';
 include_once '../../lib/mysqli.php';
 list($note, $id) = require_note($mysqli);
 
-include_once '../../classes/Tags.php';
-
 include_once '../../fns/request_strings.php';
 list($notetext, $tags) = request_strings('notetext', 'tags');
 
@@ -22,10 +20,8 @@ $errors = array();
 
 if ($notetext === '') $errors[] = 'Enter text.';
 
-$tagnames = Tags::parse($tags);
-if (count($tagnames) > Tags::MAX_NUM_TAGS) {
-    $errors[] = 'Please, enter maximum '.Tags::MAX_NUM_TAGS.' tags.';
-}
+include_once '../../fns/parse_tags.php';
+parse_tags($tags, $tagnames, $errors);
 
 include_once '../../fns/redirect.php';
 

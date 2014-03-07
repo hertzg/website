@@ -7,8 +7,6 @@ include_once '../fns/require_contact.php';
 include_once '../../lib/mysqli.php';
 list($contact, $id) = require_contact($mysqli);
 
-include_once '../../classes/Tags.php';
-
 include_once '../../fns/request_strings.php';
 list($fullname, $address, $email, $phone1, $phone2, $tags) = request_strings(
     'fullname', 'address', 'email', 'phone1', 'phone2', 'tags');
@@ -34,10 +32,8 @@ if ($fullname === '') {
     }
 }
 
-$tagnames = Tags::parse($tags);
-if (count($tagnames) > Tags::MAX_NUM_TAGS) {
-    $errors[] = 'Please, enter maximum '.Tags::MAX_NUM_TAGS.' tags.';
-}
+include_once '../../fns/parse_tags.php';
+parse_tags($tags, $tagnames, $errors);
 
 include_once '../../fns/redirect.php';
 
