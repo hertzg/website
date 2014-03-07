@@ -44,6 +44,7 @@ $username = $values['username'];
 $base = '../';
 
 include_once '../fns/create_tabs.php';
+include_once '../fns/Form/checkbox.php';
 
 $page->base = $base;
 $page->hideSignOutLink = true;
@@ -67,7 +68,7 @@ $page->finish(
                 'required' => true,
             ))
             .'<div class="hr"></div>'
-            .Form::checkbox($base, 'remember', 'Stay signed in', $values['remember'])
+            .Form\checkbox($base, 'remember', 'Stay signed in', $values['remember'])
             .'<div class="hr"></div>'
             .Form::button('Sign In')
         .'</form>'
