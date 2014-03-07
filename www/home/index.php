@@ -58,13 +58,13 @@ include_once '../fns/create_tabs.php';
 $page->base = $base;
 $page->title = 'Home';
 $page->finish(
-    create_tabs(array(), 'Home', $pageMessages.$notifications.join(Page::HR, $items))
+    create_tabs(array(), 'Home', $pageMessages.$notifications.join('<div class="hr"></div>', $items))
     .create_panel(
         'Options',
         Page::imageArrowLink('Account', '../account/', 'account')
-        .Page::HR
+        .'<div class="hr"></div>'
         .Page::imageArrowLink('Help', '../help/', 'help')
-        .Page::HR
+        .'<div class="hr"></div>'
         .Page::imageLink('Sign Out', '../submit-signout.php', 'sign-out')
     )
 );

@@ -41,11 +41,11 @@ $page->finish(
                 'autofocus' => true,
                 'required' => true,
             ))
-            .Page::HR
+            .'<div class="hr"></div>'
             .Form::textfield('fullname', 'Full name', array(
                 'value' => $values->fullname,
             ))
-            .Page::HR
+            .'<div class="hr"></div>'
             .Form::button('Save Changes')
         .'</form>'
     )

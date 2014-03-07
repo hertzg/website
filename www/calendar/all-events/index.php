@@ -51,7 +51,7 @@ $page->finish(
             ),
         ),
         'All Events',
-        join(Page::HR, $items)
+        join('<div class="hr"></div>', $items)
     )
     .$optionsPanel
 );

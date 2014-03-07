@@ -94,7 +94,7 @@ $page->finish(
             .'</a>'
         .'</div>'
         .'<div class="warnings-hr"></div>'
-        .join(Page::HR, $items)
-        .create_panel('Options', join(Page::HR, $options))
+        .join('<div class="hr"></div>', $items)
+        .create_panel('Options', join('<div class="hr"></div>', $options))
     )
 );

@@ -60,15 +60,15 @@ $page->finish(
                 'autofocus' => $username === '',
                 'required' => true,
             ))
-            .Page::HR
+            .'<div class="hr"></div>'
             .Form::password('password', 'Password', array(
                 'value' => $values['password'],
                 'autofocus' => $username !== '',
                 'required' => true,
             ))
-            .Page::HR
+            .'<div class="hr"></div>'
             .Form::checkbox($base, 'remember', 'Stay signed in', $values['remember'])
-            .Page::HR
+            .'<div class="hr"></div>'
             .Form::button('Sign In')
         .'</form>'
         .create_panel(
@@ -76,7 +76,7 @@ $page->finish(
             Page::imageArrowLinkWithDescription('Forgot password?',
                 'Reset your account password here.', '../email-reset-password/',
                 'reset-password')
-            .Page::HR
+            .'<div class="hr"></div>'
             .Page::imageArrowLinkWithDescription('Don\'t have an account?',
                 'Sign up here.', '../sign-up/', 'new-password')
         )

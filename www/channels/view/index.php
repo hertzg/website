@@ -32,7 +32,7 @@ $page->finish(
         "Channel #$id",
         $pageMessages
         .Form::label('Channel name', htmlspecialchars($channel->channelname))
-        .Page::HR
+        .'<div class="hr"></div>'
         .Form::textfield('channelkey', 'Channel key', array(
             'readonly' => true,
             'value' => bin2hex($channel->channelkey),
@@ -42,7 +42,7 @@ $page->finish(
         'Options',
         Page::imageArrowLink('Randomize Channel Key',
             "../randomize-key/?id=$id", 'randomize')
-        .Page::HR
+        .'<div class="hr"></div>'
         .Page::imageArrowLink('Delete Channel', "../delete/?id=$id", 'trash-bin')
     )
 );

@@ -58,12 +58,12 @@ $page->finish(
             ),
         ),
         "Note #$id",
-        $pageMessages.$text.create_tags('../', $tags).Page::HR.$datesText
+        $pageMessages.$text.create_tags('../', $tags).'<div class="hr"></div>'.$datesText
     )
     .create_panel(
         'Options',
         Page::imageArrowLink('Edit Note', "../edit/?id=$id", 'edit-note')
-        .Page::HR
+        .'<div class="hr"></div>'
         .Page::imageArrowLink('Delete Note', "../delete/?id=$id", 'trash-bin')
     )
 );

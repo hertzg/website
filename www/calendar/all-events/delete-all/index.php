@@ -24,9 +24,9 @@ $page->finish(
             ),
         ),
         'All Events',
-        $question.Page::HR
+        $question.'<div class="hr"></div>'
         .Page::imageLink('Yes, delete all events', 'submit.php', 'yes')
-        .Page::HR
+        .'<div class="hr"></div>'
         .Page::imageLink('No, return back', '..', 'no')
     )
 );

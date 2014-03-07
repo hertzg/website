@@ -27,10 +27,10 @@ $page->finish(
             ),
         ),
         "Event #$idevents",
-        $question.Page::HR
+        $question.'<div class="hr"></div>'
         .Page::imageLink('Yes, delete event',
             "submit.php?idevents=$idevents", 'yes')
-        .Page::HR
+        .'<div class="hr"></div>'
         .Page::imageLink('No, return back',
             "../view-event/?idevents=$idevents", 'no')
     )

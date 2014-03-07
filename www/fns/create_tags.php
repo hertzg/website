@@ -3,7 +3,7 @@
 function create_tags ($base, $tags) {
     if ($tags) {
         $html =
-            Page::HR
+            '<div class="hr"></div>'
             .'<div class="page-text tags">'
                 .'<span class="tags-label">Tags:</span>';
         foreach ($tags as $tag) {

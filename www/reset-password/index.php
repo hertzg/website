@@ -58,19 +58,19 @@ $page->finish(
         $pageErrors
         .'<form action="submit.php" method="post">'
             .Form::label('Username', $user->username)
-            .Page::HR
+            .'<div class="hr"></div>'
             .Form::password('password1', 'New password', array(
                 'value' => $values['password1'],
                 'autofocus' => true,
                 'required' => true,
             ))
             .Form::notes(array('Minimum 6 characters.'))
-            .Page::HR
+            .'<div class="hr"></div>'
             .Form::password('password2', 'Repeat new password', array(
                 'value' => $values['password2'],
                 'required' => true,
             ))
-            .Page::HR
+            .'<div class="hr"></div>'
             .Form::button('Reset Password')
             .Form::hidden('idusers', $idusers)
             .Form::hidden('key', $key)

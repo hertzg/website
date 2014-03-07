@@ -31,9 +31,9 @@ $page->finish(
             ),
         ),
         "File #$id",
-        $question.Page::HR
+        $question.'<div class="hr"></div>'
         .Page::imageLink('Yes, delete file', "submit.php?id=$id", 'yes')
-        .Page::HR
+        .'<div class="hr"></div>'
         .Page::imageLink('No, return back', "../view-file/?id=$id", 'no')
     )
 );

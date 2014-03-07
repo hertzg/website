@@ -62,11 +62,11 @@ $page->finish(
         .'<form action="submit.php" method="post"'
         .' enctype="multipart/form-data">'
             .Form::filefield('file1[]', 'File 1:')
-            .Page::HR
+            .'<div class="hr"></div>'
             .Form::filefield('file2[]', 'File 2:')
-            .Page::HR
+            .'<div class="hr"></div>'
             .Form::filefield('file3[]', 'File 3:')
-            .Page::HR
+            .'<div class="hr"></div>'
             .Form::button('Upload')
             .Form::hidden('posttest', '1')
             .Form::hidden('idfolders', $idfolders)

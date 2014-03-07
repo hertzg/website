@@ -46,23 +46,23 @@ $page->finish(
                 'required' => true,
             ))
             .Form::notes(array('Minimum 6 characters.'))
-            .Page::HR
+            .'<div class="hr"></div>'
             .Form::textfield('email', 'Email', array(
                 'value' => $values['email'],
                 'required' => true,
             ))
-            .Page::HR
+            .'<div class="hr"></div>'
             .Form::password('password1', 'Password', array(
                 'value' => $values['password1'],
                 'required' => true,
             ))
             .Form::notes(array('Minimum 6 characters.'))
-            .Page::HR
+            .'<div class="hr"></div>'
             .Form::password('password2', 'Repeat password', array(
                 'value' => $values['password2'],
                 'required' => true,
             ))
-            .Page::HR
+            .'<div class="hr"></div>'
             .Form::captcha($base)
             .Form::button('Sign Up')
         .'</form>'

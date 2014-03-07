@@ -75,7 +75,7 @@ $page->finish(
             ),
         ),
         'Notifications',
-        $pageMessages.join(Page::HR, $items)
-        .create_panel('Options', join(Page::HR, $options))
+        $pageMessages.join('<div class="hr"></div>', $items)
+        .create_panel('Options', join('<div class="hr"></div>', $options))
     )
 );

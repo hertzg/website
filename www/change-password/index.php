@@ -45,18 +45,18 @@ $page->finish(
                 'autofocus' => true,
                 'required' => true,
             ))
-            .Page::HR
+            .'<div class="hr"></div>'
             .Form::password('password1', 'New password', array(
                 'value' => $values['password1'],
                 'required' => true,
             ))
             .Form::notes(array('Minimum 6 characters.'))
-            .Page::HR
+            .'<div class="hr"></div>'
             .Form::password('password2', 'Repeat new password', array(
                 'value' => $values['password2'],
                 'required' => true,
             ))
-            .Page::HR
+            .'<div class="hr"></div>'
             .Form::button('Change')
         .'</form>'
     )

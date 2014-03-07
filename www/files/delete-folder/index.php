@@ -30,10 +30,10 @@ $page->finish(
             ),
         ),
         'Files',
-        $question.Page::HR
+        $question.'<div class="hr"></div>'
         .Page::imageLink('Yes, delete folder',
             "submit.php?idfolders=$idfolders", 'yes')
-        .Page::HR
+        .'<div class="hr"></div>'
         .Page::imageLink('No, return back',
             create_folder_link($idfolders, '../'), 'no')
     )

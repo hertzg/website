@@ -48,7 +48,7 @@ $page->finish(
                 'autofocus' => true,
                 'required' => true,
             ))
-            .Page::HR
+            .'<div class="hr"></div>'
             .Form::button('Close Account')
         .'</form>'
     )

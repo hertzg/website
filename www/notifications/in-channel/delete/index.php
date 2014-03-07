@@ -25,10 +25,10 @@ $page->finish(
             ),
         ),
         'Notifications',
-        $question.Page::HR
+        $question.'<div class="hr"></div>'
         .Page::imageLink('Yes, delete notifications',
             "submit.php?id=$id", 'yes')
-        .Page::HR
+        .'<div class="hr"></div>'
         .Page::imageLink('No, return back', "../?id=$id", 'no')
     )
 );

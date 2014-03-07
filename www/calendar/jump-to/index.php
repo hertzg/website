@@ -57,9 +57,9 @@ $page->finish(
         'Jump To',
         '<form action="submit.php" method="post">'
             .Form::select('month', 'Month:', $monthOptions, $month)
-            .Page::HR
+            .'<div class="hr"></div>'
             .Form::select('year', 'Year:', $yearOptions, $year)
-            .Page::HR
+            .'<div class="hr"></div>'
             .Form::button('Jump To')
         .'</form>'
     )

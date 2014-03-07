@@ -30,7 +30,7 @@ $page->finish(
             'value' => bin2hex($token->tokentext),
             'readonly' => true,
         ))
-        .Page::HR
+        .'<div class="hr"></div>'
         .Form::textarea('useragent', 'User agent', array(
             'value' => $token->useragent,
             'readonly' => true,

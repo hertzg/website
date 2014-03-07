@@ -45,7 +45,7 @@ function create_calendar ($timeSelected) {
     $time = $calendarStartTime;
     for ($i = 0; $i < 6; $i++) {
         $html .=
-            Page::HR
+            '<div class="hr"></div>'
             .'<div class="calendar-days">';
         for ($j = 0; $j < 7; $j++) {
             $year = date('Y', $time);
@@ -158,14 +158,14 @@ $page->finish(
     )
     .create_panel(
         'Events on '.date('F d, Y', $timeSelected),
-        join(Page::HR, $eventItems)
+        join('<div class="hr"></div>', $eventItems)
     )
     .create_panel(
         'Options',
         Page::imageArrowLink('New Event', $newEventHref, 'create-event')
-        .Page::HR
+        .'<div class="hr"></div>'
         .Page::imageArrowLink('Jump To', $jumpToHref, 'calendar')
-        .Page::HR
+        .'<div class="hr"></div>'
         .Page::imageArrowLink('Go to Today', './', 'calendar')
     )
 );

@@ -42,11 +42,11 @@ $page->finish(
                 'autofocus' => true,
                 'required' => true,
             ))
-            .Page::HR
+            .'<div class="hr"></div>'
             .Form::textfield('tags', 'Tags', array(
                 'value' => $values['tags'],
             ))
-            .Page::HR
+            .'<div class="hr"></div>'
             .Form::button('Save Changes')
             .Form::hidden('id', $id)
         .'</form>'

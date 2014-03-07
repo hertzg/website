@@ -46,7 +46,7 @@ $page->finish(
                 'Characters a-z, A-Z, 0-9, dash, dot and underscore only.',
                 'Minimum 6 maximum 32 characters.',
             ))
-            .Page::HR
+            .'<div class="hr"></div>'
             .Form::button('Create')
         .'</form>'
     )

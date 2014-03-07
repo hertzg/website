@@ -131,13 +131,13 @@ if (array_key_exists('files/index_idfolders', $_SESSION) &&
 $folder_options = '';
 if ($idfolders) {
     $folder_options =
-        Page::HR
+        '<div class="hr"></div>'
         .Page::imageArrowLink('Rename This Folder',
             "rename-folder/?idfolders=$idfolders", 'rename')
-        .Page::HR
+        .'<div class="hr"></div>'
         .Page::imageArrowLink('Move This Folder',
             "move-folder/?idfolders=$idfolders", 'move-folder')
-        .Page::HR
+        .'<div class="hr"></div>'
         .Page::imageArrowLink('Delete This Folder',
             "delete-folder/?idfolders=$idfolders", 'trash-bin');
 }
@@ -158,13 +158,13 @@ $page->finish(
             ),
         ),
         'Files',
-        $pageMessages.join(Page::HR, $items)
+        $pageMessages.join('<div class="hr"></div>', $items)
     )
     .create_panel(
         'Options',
         Page::imageArrowLink('New Folder',
             "new-folder/?parentidfolders=$idfolders", 'create-folder')
-        .Page::HR
+        .'<div class="hr"></div>'
         .Page::imageArrowLink('Upload Files',
             "upload-files/?idfolders=$idfolders", 'upload')
         .$folder_options

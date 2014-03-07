@@ -51,7 +51,7 @@ if ($tokens) {
 }
 
 if ($options) {
-    $optionsPanel = create_panel('Options', join(Page::HR, $options));
+    $optionsPanel = create_panel('Options', join('<div class="hr"></div>', $options));
 } else {
     $optionsPanel = '';
 }
@@ -73,7 +73,7 @@ $page->finish(
             ),
         ),
         'Sessions',
-        $pageMessages.join(Page::HR, $items)
+        $pageMessages.join('<div class="hr"></div>', $items)
     )
     .$optionsPanel
 );

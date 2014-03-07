@@ -2,8 +2,6 @@
 
 class Page {
 
-    const HR = '<div class="hr"></div>';
-
     public $base = '';
     public $head = '';
     public $title = 'Zvini';

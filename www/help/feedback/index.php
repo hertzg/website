@@ -42,7 +42,7 @@ $page->finish(
                 'required' => true,
             ))
             .Form::notes(array('Minimum 6 words.'))
-            .Page::HR
+            .'<div class="hr"></div>'
             .Form::button('Submit Feedback')
         .'</form>'
     )

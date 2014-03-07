@@ -33,7 +33,7 @@ include_once '../../fns/Page/text.php';
 if ($title === '') {
     $titleItem = '';
 } else {
-    $titleItem = Page\text(htmlspecialchars($title)).Page::HR;
+    $titleItem = Page\text(htmlspecialchars($title)).'<div class="hr"></div>';
 }
 
 $urlItem = Page\text(htmlspecialchars($url));
@@ -65,18 +65,18 @@ $page->finish(
         ),
         "Bookmark #$id",
         $pageMessages.$titleItem.$urlItem
-        .create_tags('../', $tags).Page::HR.$datesText
+        .create_tags('../', $tags).'<div class="hr"></div>'.$datesText
     )
     .create_panel(
         'Options',
         Page::imageLink('Open', $externalUrl, 'run')
-        .Page::HR
+        .'<div class="hr"></div>'
         .Page::imageLink('Open in New Tab', $externalUrl, 'run', array(
             'target' => '_blank',
         ))
-        .Page::HR
+        .'<div class="hr"></div>'
         .Page::imageArrowLink('Edit Bookmark', "../edit/?id=$id", 'edit-bookmark')
-        .Page::HR
+        .'<div class="hr"></div>'
         .Page::imageArrowLink('Delete Bookmark', "../delete/?id=$id", 'trash-bin')
     )
 );

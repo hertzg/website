@@ -22,9 +22,9 @@ $page->finish(
             ),
         ),
         'Contacts',
-        $question.Page::HR
+        $question.'<div class="hr"></div>'
         .Page::imageLink('Yes, delete all contacts', 'submit.php', 'yes')
-        .Page::HR
+        .'<div class="hr"></div>'
         .Page::imageLink('No, return back', '..', 'no')
     )
 );

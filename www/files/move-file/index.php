@@ -79,6 +79,6 @@ $page->finish(
             ),
         ),
         'Move',
-        $pageErrors.$pageWarnings.join(Page::HR, $items)
+        $pageErrors.$pageWarnings.join('<div class="hr"></div>', $items)
     )
 );

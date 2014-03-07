@@ -25,7 +25,7 @@ $fullname = $user->fullname;
 if ($fullname !== '') {
     $fullnameField =
         Form::label('Full name', $fullname)
-        .Page::HR;
+        .'<div class="hr"></div>';
 } else {
     $fullnameField = '';
 }
@@ -78,19 +78,19 @@ $page->finish(
         'Account',
         $pageMessages
         .Form::label('Username', $user->username)
-        .Page::HR
+        .'<div class="hr"></div>'
         .Form::label('Email', $user->email)
-        .Page::HR
+        .'<div class="hr"></div>'
         .Form::label('Email verified', $email_verified ? 'Yes' : 'No')
-        .Page::HR
+        .'<div class="hr"></div>'
         .$fullnameField
         .Form::label('Theme', $themes[$user->theme])
-        .Page::HR
+        .'<div class="hr"></div>'
         .Form::label('Account created', date_ago($user->inserttime))
-        .Page::HR
+        .'<div class="hr"></div>'
         .Form::label('Using storage', bytestr($user->storageused))
-        .Page::HR
+        .'<div class="hr"></div>'
         .Form::label('Signed in', n_times($user->num_logins))
     )
-    .create_panel('Options', join(Page::HR, $options))
+    .create_panel('Options', join('<div class="hr"></div>', $options))
 );

@@ -42,27 +42,27 @@ $page->finish(
                 'autofocus' => true,
                 'required' => true,
             ))
-            .Page::HR
+            .'<div class="hr"></div>'
             .Form::textfield('address', 'Address', array(
                 'value' => $values['address'],
             ))
-            .Page::HR
+            .'<div class="hr"></div>'
             .Form::textfield('email', 'Email', array(
                 'value' => $values['email'],
             ))
-            .Page::HR
+            .'<div class="hr"></div>'
             .Form::textfield('phone1', 'Phone 1', array(
                 'value' => $values['phone1'],
             ))
-            .Page::HR
+            .'<div class="hr"></div>'
             .Form::textfield('phone2', 'Phone 2', array(
                 'value' => $values['phone2'],
             ))
-            .Page::HR
+            .'<div class="hr"></div>'
             .Form::textfield('tags', 'Tags', array(
                 'value' => $values['tags'],
             ))
-            .Page::HR
+            .'<div class="hr"></div>'
             .Form::button('Save Changes')
             .Form::hidden('id', $id)
         .'</form>'

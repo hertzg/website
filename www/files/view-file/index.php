@@ -52,21 +52,21 @@ $page->finish(
         "File #$id",
         $pageMessages
         .Form::label('File name', $file->filename)
-        .Page::HR
+        .'<div class="hr"></div>'
         .Form::label('Size', bytestr($file->filesize))
-        .Page::HR
+        .'<div class="hr"></div>'
         .Form::label('Uploaded', date_ago($file->inserttime))
     )
     .create_panel(
         'Options',
         Page::imageLink('Download File',
             "../download-file/?id=$id", 'download')
-        .Page::HR
+        .'<div class="hr"></div>'
         .Page::imageArrowLink('Rename File', "../rename-file/?id=$id", 'rename')
-        .Page::HR
+        .'<div class="hr"></div>'
         .Page::imageArrowLink('Move File',
             "../move-file/?id=$id&idfolders=$file->idfolders", 'move-file')
-        .Page::HR
+        .'<div class="hr"></div>'
         .Page::imageArrowLink('Delete File',
             "../delete-file/?id=$id", 'trash-bin')
     )

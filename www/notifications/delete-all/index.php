@@ -22,9 +22,9 @@ $page->finish(
             ),
         ),
         'Notifications',
-        $question.Page::HR
+        $question.'<div class="hr"></div>'
         .Page::imageLink('Yes, delete all notifications', 'submit.php', 'yes')
-        .Page::HR
+        .'<div class="hr"></div>'
         .Page::imageLink('No, return back', '..', 'no')
     )
 );

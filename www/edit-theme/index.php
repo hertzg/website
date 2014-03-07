@@ -39,6 +39,6 @@ $page->finish(
             ),
         ),
         'Edit Theme',
-        $pageWarnings.join(Page::HR, $themeItems)
+        $pageWarnings.join('<div class="hr"></div>', $themeItems)
     )
 );

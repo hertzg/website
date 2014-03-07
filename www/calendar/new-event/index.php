@@ -45,13 +45,13 @@ $page->finish(
         $pageErrors
         .'<form action="submit.php" method="post">'
             .Form::label('When', date('F d, Y', $time))
-            .Page::HR
+            .'<div class="hr"></div>'
             .Form::textfield('eventtext', 'Text', array(
                 'value' => $values['eventtext'],
                 'autofocus' => true,
                 'required' => true,
             ))
-            .Page::HR
+            .'<div class="hr"></div>'
             .Form::button('Save')
             .Form::hidden('year', $year)
             .Form::hidden('month', $month)

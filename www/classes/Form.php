@@ -29,7 +29,7 @@ class Form {
                     'required' => true,
                     'autofocus' => $autofocus,
                 ))
-                .Page::HR;
+                .'<div class="hr"></div>';
         }
     }
 

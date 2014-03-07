@@ -38,13 +38,13 @@ $page->finish(
             ),
         ),
         "Event #$idevents",
-        $pageMessages.$text.Page::HR.$dateText
+        $pageMessages.$text.'<div class="hr"></div>'.$dateText
     )
     .create_panel(
         'Options',
         Page::imageArrowLink('Edit Event',
             "../edit-event/?idevents=$idevents", 'edit-event')
-        .Page::HR
+        .'<div class="hr"></div>'
         .Page::imageArrowLink('Delete Event',
             "../delete-event/?idevents=$idevents", 'trash-bin')
     )

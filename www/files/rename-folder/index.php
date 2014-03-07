@@ -46,7 +46,7 @@ $page->finish(
                 'autofocus' => true,
                 'required' => true,
             ))
-            .Page::HR
+            .'<div class="hr"></div>'
             .Form::button('Rename')
             .Form::hidden('idfolders', $idfolders)
         .'</form>'

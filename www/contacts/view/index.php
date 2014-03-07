@@ -70,12 +70,12 @@ $page->finish(
             ),
         ),
         "Contact #$id",
-        $pageMessages.join(Page::HR, $items)
+        $pageMessages.join('<div class="hr"></div>', $items)
     )
     .create_panel(
         'Options',
         Page::imageArrowLink('Edit Contact', "../edit/?id=$id", 'edit-contact')
-        .Page::HR
+        .'<div class="hr"></div>'
         .Page::imageArrowLink('Delete Contact',
             "../delete/?id=$id", 'trash-bin')
     )

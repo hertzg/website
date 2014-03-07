@@ -28,9 +28,9 @@ $page->finish(
             ),
         ),
         'Sessions',
-        $question.Page::HR
+        $question.'<div class="hr"></div>'
         .Page::imageLink('Yes, delete all sessions', 'submit.php', 'yes')
-        .Page::HR
+        .'<div class="hr"></div>'
         .Page::imageLink('No, return back', '..', 'no')
     )
 );

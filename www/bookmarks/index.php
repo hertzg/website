@@ -83,7 +83,7 @@ $page->finish(
             ),
         ),
         'Bookmarks',
-        $pageMessages.$filterMessage.join(Page::HR, $items)
+        $pageMessages.$filterMessage.join('<div class="hr"></div>', $items)
     )
     .create_options_panel($user)
 );

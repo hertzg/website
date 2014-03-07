@@ -30,9 +30,9 @@ $page->finish(
             ),
         ),
         "Channel #$id",
-        $question.Page::HR
+        $question.'<div class="hr"></div>'
         .Page::imageLink('Yes, delete channel', "submit.php?id=$id", 'yes')
-        .Page::HR
+        .'<div class="hr"></div>'
         .Page::imageLink('No, return back', "../view/?id=$id", 'no')
     )
 );

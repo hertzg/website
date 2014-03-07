@@ -9,17 +9,16 @@ include_once '../fns/Channels/indexOnUser.php';
 include_once '../lib/mysqli.php';
 $channels = Channels\indexOnUser($mysqli, $idusers);
 
-$channelsHtml = '';
+$items = array();
 if ($channels) {
-    foreach ($channels as $i => $channel) {
-        if ($i) $channelsHtml .= Page::HR;
-        $channelsHtml .= Page::imageArrowLink(
+    foreach ($channels as $channel) {
+        $items[] = Page::imageArrowLink(
             htmlspecialchars($channel->channelname),
             "view/?id=$channel->idchannels", 'channel');
     }
 } else {
     include_once '../fns/Page/info.php';
-    $channelsHtml .= Page\info('No channels.');
+    $items[] = Page\info('No channels.');
 }
 
 unset(
@@ -50,12 +49,12 @@ $page->finish(
             ),
         ),
         'Channels',
-        $pageMessages.$channelsHtml
+        $pageMessages.join('<div class="hr"></div>', $items)
     )
     .create_panel(
         'Options',
         Page::imageArrowLink('New Channel', 'new/', 'create-channel')
-        .Page::HR
+        .'<div class="hr"></div>'
         .Page::imageLink('Download API',
             'download-zvini-api.php', 'download')
     )

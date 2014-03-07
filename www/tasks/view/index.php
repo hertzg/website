@@ -69,7 +69,7 @@ $page->finish(
             ),
         ),
         "Task #$id",
-        $pageMessages.$text.create_tags('../', $tags).Page::HR.$datesText
+        $pageMessages.$text.create_tags('../', $tags).'<div class="hr"></div>'.$datesText
     )
-    .create_panel('Options', join(Page::HR, $options))
+    .create_panel('Options', join('<div class="hr"></div>', $options))
 );

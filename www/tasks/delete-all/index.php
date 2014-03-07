@@ -22,9 +22,9 @@ $page->finish(
             ),
         ),
         'Tasks',
-        $question.Page::HR
+        $question.'<div class="hr"></div>'
         .Page::imageLink('Yes, delete all task', 'submit.php', 'yes')
-        .Page::HR
+        .'<div class="hr"></div>'
         .Page::imageLink('No, return back', '..', 'no')
     )
 );

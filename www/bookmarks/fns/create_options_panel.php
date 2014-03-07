@@ -13,6 +13,6 @@ function create_options_panel ($user, $base = '') {
     }
 
     include_once __DIR__.'/../../fns/create_panel.php';
-    return create_panel('Options', join(Page::HR, $options));
+    return create_panel('Options', join('<div class="hr"></div>', $options));
 
 }
