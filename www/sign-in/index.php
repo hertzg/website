@@ -45,6 +45,7 @@ $base = '../';
 
 include_once '../fns/create_tabs.php';
 include_once '../fns/Form/checkbox.php';
+include_once '../fns/Form/password.php';
 
 $page->base = $base;
 $page->hideSignOutLink = true;
@@ -62,7 +63,7 @@ $page->finish(
                 'required' => true,
             ))
             .'<div class="hr"></div>'
-            .Form::password('password', 'Password', array(
+            .Form\password('password', 'Password', array(
                 'value' => $values['password'],
                 'autofocus' => $username !== '',
                 'required' => true,

@@ -31,6 +31,7 @@ $base = '../';
 
 include_once '../fns/create_tabs.php';
 include_once '../fns/Form/captcha.php';
+include_once '../fns/Form/password.php';
 
 $page->base = $base;
 $page->hideSignOutLink = true;
@@ -53,13 +54,13 @@ $page->finish(
                 'required' => true,
             ))
             .'<div class="hr"></div>'
-            .Form::password('password1', 'Password', array(
+            .Form\password('password1', 'Password', array(
                 'value' => $values['password1'],
                 'required' => true,
             ))
             .Form::notes(array('Minimum 6 characters.'))
             .'<div class="hr"></div>'
-            .Form::password('password2', 'Repeat password', array(
+            .Form\password('password2', 'Repeat password', array(
                 'value' => $values['password2'],
                 'required' => true,
             ))

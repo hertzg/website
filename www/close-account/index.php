@@ -25,6 +25,7 @@ $pageWarnings = Page\warnings(array(
 ));
 
 include_once '../fns/create_tabs.php';
+include_once '../fns/Form/password.php';
 
 $page->base = '../';
 $page->title = 'Close Account';
@@ -44,7 +45,7 @@ $page->finish(
         $pageErrors
         .$pageWarnings
         .'<form action="submit.php" method="post">'
-            .Form::password('password', 'Password', array(
+            .Form\password('password', 'Password', array(
                 'autofocus' => true,
                 'required' => true,
             ))

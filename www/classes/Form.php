@@ -114,9 +114,4 @@ class Form {
 
     }
 
-    static function password ($name, $text, array $config = array()) {
-        $config['type'] = 'password';
-        return self::textfield($name, $text, $config);
-    }
-
 }

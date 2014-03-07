@@ -22,6 +22,7 @@ $pageErrors = Page\sessionErrors('change-password/index_errors');
 unset($_SESSION['account/index_messages']);
 
 include_once '../fns/create_tabs.php';
+include_once '../fns/Form/password.php';
 
 $page->base = '../';
 $page->title = 'Change Password';
@@ -40,19 +41,19 @@ $page->finish(
         'Change Password',
         $pageErrors
         .'<form action="submit.php" method="post">'
-            .Form::password('currentpassword', 'Current password', array(
+            .Form\password('currentpassword', 'Current password', array(
                 'value' => $values['currentpassword'],
                 'autofocus' => true,
                 'required' => true,
             ))
             .'<div class="hr"></div>'
-            .Form::password('password1', 'New password', array(
+            .Form\password('password1', 'New password', array(
                 'value' => $values['password1'],
                 'required' => true,
             ))
             .Form::notes(array('Minimum 6 characters.'))
             .'<div class="hr"></div>'
-            .Form::password('password2', 'Repeat new password', array(
+            .Form\password('password2', 'Repeat new password', array(
                 'value' => $values['password2'],
                 'required' => true,
             ))

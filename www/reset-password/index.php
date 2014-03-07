@@ -43,6 +43,7 @@ unset(
 
 include_once '../fns/create_tabs.php';
 include_once '../fns/Form/label.php';
+include_once '../fns/Form/password.php';
 include_once '../classes/Form.php';
 
 $page->base = '../';
@@ -60,14 +61,14 @@ $page->finish(
         .'<form action="submit.php" method="post">'
             .Form\label('Username', $user->username)
             .'<div class="hr"></div>'
-            .Form::password('password1', 'New password', array(
+            .Form\password('password1', 'New password', array(
                 'value' => $values['password1'],
                 'autofocus' => true,
                 'required' => true,
             ))
             .Form::notes(array('Minimum 6 characters.'))
             .'<div class="hr"></div>'
-            .Form::password('password2', 'Repeat new password', array(
+            .Form\password('password2', 'Repeat new password', array(
                 'value' => $values['password2'],
                 'required' => true,
             ))
