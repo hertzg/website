@@ -30,6 +30,7 @@ unset(
 $base = '../';
 
 include_once '../fns/create_tabs.php';
+include_once '../fns/Form/captcha.php';
 
 $page->base = $base;
 $page->hideSignOutLink = true;
@@ -63,7 +64,7 @@ $page->finish(
                 'required' => true,
             ))
             .'<div class="hr"></div>'
-            .Form::captcha($base)
+            .Form\captcha($base)
             .Form::button('Sign Up')
         .'</form>'
         .create_panel(

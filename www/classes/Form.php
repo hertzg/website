@@ -15,24 +15,6 @@ class Form {
             ." type=\"submit\" value=\"$text\" />";
     }
 
-    static function captcha ($base, $autofocus = false) {
-        include_once 'Captcha.php';
-        if (Captcha::required()) {
-            include_once 'Page.php';
-            return
-                '<div class="form-captcha">'
-                    ."<img src=\"{$base}captcha/\""
-                    .' style="vertical-align: top"'
-                    .' alt="CAPTCHA" width="102" height="40" />'
-                .'</div>'
-                .self::textfield('captcha', 'Verification', array(
-                    'required' => true,
-                    'autofocus' => $autofocus,
-                ))
-                .'<div class="hr"></div>';
-        }
-    }
-
     static function checkbox ($base, $name, $text, $checked) {
         return
             '<div class="form-checkbox transformable">'
