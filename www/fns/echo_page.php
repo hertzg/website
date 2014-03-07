@@ -2,8 +2,6 @@
 
 function echo_page ($title, $content, $theme, array $options) {
 
-    global $revisions;
-
     if (array_key_exists('base', $options)) {
         $base = $options['base'];
     } else {
@@ -45,8 +43,6 @@ function echo_page ($title, $content, $theme, array $options) {
         .'</div>';
 
     include_once __DIR__.'/../fns/echo_html.php';
-    echo_html($title, $head, $body, $revisions, $this->base);
+    echo_html($title, $head, $body, $this->base);
 
 }
-
-include_once __DIR__.'/../lib/revisions.php';

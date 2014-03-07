@@ -1,6 +1,8 @@
 <?php
 
-function echo_html ($title, $head, $body, $revisions, $theme, $base) {
+function echo_html ($title, $head, $body, $theme, $base) {
+
+    include_once __DIR__.'/get_revision.php';
 
     header('Content-Type: text/html; charset=UTF-8');
 
@@ -17,7 +19,7 @@ function echo_html ($title, $head, $body, $revisions, $theme, $base) {
                 .' content="text/html; charset=UTF-8" />'
                 .'<meta name="viewport" content="width=device-width" />'
                 .'<link rel="stylesheet" type="text/css"'
-                ." href=\"{$base}common.css?".$revisions['common.css'].'" />'
+                ." href=\"{$base}common.css?".get_revision('common.css').'" />'
                 .'<link rel="stylesheet" type="text/css"'
                 ." href=\"{$base}icons.css?14\" />"
                 .'<link rel="stylesheet" type="text/css"'

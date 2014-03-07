@@ -10,12 +10,12 @@ class Page {
 
     function echoHtml ($body) {
 
-        global $revisions;
-
         $theme = $this->theme;
         $base = $this->base;
 
         header('Content-Type: text/html; charset=UTF-8');
+
+        include_once __DIR__.'/../fns/get_revision.php';
 
         echo
             '<!DOCTYPE html>'
@@ -30,7 +30,7 @@ class Page {
                     .' content="text/html; charset=UTF-8" />'
                     .'<meta name="viewport" content="width=device-width" />'
                     .'<link rel="stylesheet" type="text/css"'
-                    ." href=\"{$base}common.css?".$revisions['common.css'].'" />'
+                    ." href=\"{$base}common.css?".get_revision('common.css').'" />'
                     .'<link rel="stylesheet" type="text/css"'
                     ." href=\"{$base}icons.css?14\" />"
                     .'<link rel="stylesheet" type="text/css"'
@@ -69,5 +69,3 @@ class Page {
     }
 
 }
-
-include_once __DIR__.'/../lib/revisions.php';

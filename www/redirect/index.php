@@ -25,5 +25,4 @@ $body =
     .'</script>';
 
 include_once '../fns/echo_html.php';
-include_once '../lib/revisions.php';
-echo_html('Redirecting', '', $body, $revisions, $theme, '../');
+echo_html('Redirecting', '', $body, $theme, '../');
