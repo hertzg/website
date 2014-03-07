@@ -26,6 +26,7 @@ $time = mktime(0, 0, 0, $month, $day, $year);
 unset($_SESSION['calendar/index_messages']);
 
 include_once '../../fns/create_tabs.php';
+include_once '../../fns/Form/label.php';
 
 $page->base = '../../';
 $page->title = 'New Event';
@@ -44,7 +45,7 @@ $page->finish(
         'New Event',
         $pageErrors
         .'<form action="submit.php" method="post">'
-            .Form::label('When', date('F d, Y', $time))
+            .Form\label('When', date('F d, Y', $time))
             .'<div class="hr"></div>'
             .Form::textfield('eventtext', 'Text', array(
                 'value' => $values['eventtext'],

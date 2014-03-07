@@ -28,13 +28,6 @@ class Form {
         return "<input type=\"hidden\" name=\"$name\" value=\"$value\" />";
     }
 
-    static function label ($text, $value) {
-        return self::association(
-            "<div class=\"form-label\">$value</div>",
-            "<label>$text:</label>"
-        );
-    }
-
     static function notes (array $notes) {
         $ul = '<ul class="form-notes">';
         foreach ($notes as $note) {

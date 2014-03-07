@@ -19,6 +19,7 @@ $pageErrors = Page\sessionErrors('calendar/edit-event/index_errors');
 unset($_SESSION['calendar/view-event_messages']);
 
 include_once '../../fns/create_tabs.php';
+include_once '../../fns/Form/label.php';
 
 $page->base = '../../';
 $page->title = "Edit Event #$idevents";
@@ -37,7 +38,7 @@ $page->finish(
         'Edit',
         $pageErrors
         .'<form action="submit.php" method="post">'
-            .Form::label('When', date('F d, Y', $event->eventtime))
+            .Form\label('When', date('F d, Y', $event->eventtime))
             .'<div class="hr"></div>'
             .Form::textfield('eventtext', 'Text', array(
                 'value' => $values['eventtext'],

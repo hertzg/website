@@ -22,6 +22,7 @@ include_once '../../fns/bytestr.php';
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/date_ago.php';
+include_once '../../fns/Form/label.php';
 include_once '../../classes/Form.php';
 include_once '../../lib/page.php';
 
@@ -51,11 +52,11 @@ $page->finish(
         ),
         "File #$id",
         $pageMessages
-        .Form::label('File name', $file->filename)
+        .Form\label('File name', $file->filename)
         .'<div class="hr"></div>'
-        .Form::label('Size', bytestr($file->filesize))
+        .Form\label('Size', bytestr($file->filesize))
         .'<div class="hr"></div>'
-        .Form::label('Uploaded', date_ago($file->inserttime))
+        .Form\label('Uploaded', date_ago($file->inserttime))
     )
     .create_panel(
         'Options',

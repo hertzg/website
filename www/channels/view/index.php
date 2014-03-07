@@ -4,16 +4,16 @@ include_once '../fns/require_channel.php';
 include_once '../../lib/mysqli.php';
 list($channel, $id) = require_channel($mysqli);
 
-include_once '../../fns/create_panel.php';
-include_once '../../classes/Form.php';
-include_once '../../lib/page.php';
-
 include_once '../../fns/Page/sessionMessages.php';
 $pageMessages = Page\sessionMessages('channels/view/index_messages');
 
 unset($_SESSION['channels/index_messages']);
 
+include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
+include_once '../../fns/Form/label.php';
+include_once '../../classes/Form.php';
+include_once '../../lib/page.php';
 
 $page->base = '../../';
 $page->title = "Channel #$id";
@@ -31,7 +31,7 @@ $page->finish(
         ),
         "Channel #$id",
         $pageMessages
-        .Form::label('Channel name', htmlspecialchars($channel->channelname))
+        .Form\label('Channel name', htmlspecialchars($channel->channelname))
         .'<div class="hr"></div>'
         .Form::textfield('channelkey', 'Channel key', array(
             'readonly' => true,

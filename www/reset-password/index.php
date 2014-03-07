@@ -42,6 +42,7 @@ unset(
 );
 
 include_once '../fns/create_tabs.php';
+include_once '../fns/Form/label.php';
 include_once '../classes/Form.php';
 
 $page->base = '../';
@@ -57,7 +58,7 @@ $page->finish(
         'Reset Password',
         $pageErrors
         .'<form action="submit.php" method="post">'
-            .Form::label('Username', $user->username)
+            .Form\label('Username', $user->username)
             .'<div class="hr"></div>'
             .Form::password('password1', 'New password', array(
                 'value' => $values['password1'],

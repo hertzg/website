@@ -23,25 +23,26 @@ unset(
 
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
+include_once '../../fns/Form/label.php';
 
 $items = array(
-    Form::label('Full name', htmlspecialchars($contact->fullname)),
+    Form\label('Full name', htmlspecialchars($contact->fullname)),
 );
 
 if ($address !== '') {
-    $items[] = Form::label('Address', htmlspecialchars($address));
+    $items[] = Form\label('Address', htmlspecialchars($address));
 }
 
 if ($email !== '') {
-    $items[] = Form::label('Email', htmlspecialchars($email));
+    $items[] = Form\label('Email', htmlspecialchars($email));
 }
 
 if ($phone1 !== '') {
-    $items[] = Form::label('Phone 1', htmlspecialchars($phone1));
+    $items[] = Form\label('Phone 1', htmlspecialchars($phone1));
 }
 
 if ($phone2 !== '') {
-    $items[] = Form::label('Phone 2', htmlspecialchars($phone2));
+    $items[] = Form\label('Phone 2', htmlspecialchars($phone2));
 }
 
 $insert_time = $contact->insert_time;

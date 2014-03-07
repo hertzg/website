@@ -3,7 +3,7 @@
 include_once '../fns/require_user.php';
 require_user('../');
 
-include_once '../classes/Form.php';
+include_once '../fns/Form/label.php';
 include_once '../lib/mysqli.php';
 include_once '../lib/page.php';
 
@@ -24,7 +24,7 @@ $pageMessages = Page\sessionMessages('account/index_messages');
 $fullname = $user->fullname;
 if ($fullname !== '') {
     $fullnameField =
-        Form::label('Full name', $fullname)
+        Form\label('Full name', $fullname)
         .'<div class="hr"></div>';
 } else {
     $fullnameField = '';
@@ -77,20 +77,20 @@ $page->finish(
         ),
         'Account',
         $pageMessages
-        .Form::label('Username', $user->username)
+        .Form\label('Username', $user->username)
         .'<div class="hr"></div>'
-        .Form::label('Email', $user->email)
+        .Form\label('Email', $user->email)
         .'<div class="hr"></div>'
-        .Form::label('Email verified', $email_verified ? 'Yes' : 'No')
+        .Form\label('Email verified', $email_verified ? 'Yes' : 'No')
         .'<div class="hr"></div>'
         .$fullnameField
-        .Form::label('Theme', $themes[$user->theme])
+        .Form\label('Theme', $themes[$user->theme])
         .'<div class="hr"></div>'
-        .Form::label('Account created', date_ago($user->inserttime))
+        .Form\label('Account created', date_ago($user->inserttime))
         .'<div class="hr"></div>'
-        .Form::label('Using storage', bytestr($user->storageused))
+        .Form\label('Using storage', bytestr($user->storageused))
         .'<div class="hr"></div>'
-        .Form::label('Signed in', n_times($user->num_logins))
+        .Form\label('Signed in', n_times($user->num_logins))
     )
     .create_panel('Options', join('<div class="hr"></div>', $options))
 );
