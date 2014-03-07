@@ -72,13 +72,7 @@ unset(
     $_SESSION['home/index_messages']
 );
 
-$options = array(Page::imageArrowLink('New Contact', 'new/', 'create-contact'));
-if ($user->num_contacts) {
-    $title = 'Delete All Contacts';
-    $options[] = Page::imageArrowLink($title, 'delete-all/', 'trash-bin');
-}
-
-include_once '../fns/create_panel.php';
+include_once 'fns/create_options_panel.php';
 include_once '../fns/create_tabs.php';
 
 $page->base = '../';
@@ -94,5 +88,5 @@ $page->finish(
         'Contacts',
         $pageMessages.$filterMessage.join(Page::HR, $items)
     )
-    .create_panel('Options', join(Page::HR, $options))
+    .create_options_panel($user)
 );
