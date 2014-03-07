@@ -3,8 +3,8 @@
 namespace Form;
 
 function captcha ($base, $autofocus = false) {
-    include_once __DIR__.'/../../classes/Captcha.php';
-    if (\Captcha::required()) {
+    include_once __DIR__.'/../../fns/Captcha/required.php';
+    if (\Captcha\required()) {
         include_once __DIR__.'/../../classes/Form.php';
         return
             '<div class="form-captcha">'

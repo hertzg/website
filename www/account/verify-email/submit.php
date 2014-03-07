@@ -11,15 +11,16 @@ list($captcha) = request_strings('captcha');
 
 $errors = array();
 
-include_once '../../classes/Captcha.php';
-Captcha::check($errors);
+include_once '../../fns/Captcha/check.php';
+Captcha\check($errors);
 
 if ($errors) {
     $_SESSION['account/verify-email/index_errors'] = $errors;
     redirect();
 }
 
-Captcha::reset();
+include_once '../../fns/Captcha/reset.php';
+Captcha\reset();
 
 $key = md5(uniqid(), true);
 

@@ -28,8 +28,8 @@ if (!$errors) {
 
 }
 
-include_once '../classes/Captcha.php';
-Captcha::check($errors);
+include_once '../fns/Captcha/check.php';
+Captcha\check($errors);
 
 include_once '../fns/redirect.php';
 
@@ -49,7 +49,8 @@ $key = md5(uniqid(), true);
 include_once '../fns/Users/editResetPasswordKey.php';
 Users\editResetPasswordKey($mysqli, $user->idusers, $key);
 
-Captcha::reset();
+include_once '../fns/Captcha/reset.php';
+Captcha\reset();
 
 $href = htmlspecialchars(
     'http://zvini.com/reset-password/?'.http_build_query(array(

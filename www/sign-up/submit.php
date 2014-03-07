@@ -52,8 +52,8 @@ if ($password1 === '') {
     $errors[] = 'Passwords does not match.';
 }
 
-include_once '../classes/Captcha.php';
-Captcha::check($errors);
+include_once '../fns/Captcha/check.php';
+Captcha\check($errors);
 
 include_once '../fns/redirect.php';
 
@@ -76,7 +76,9 @@ unset(
 include_once '../fns/Users/add.php';
 Users\add($mysqli, $username, $email, $password1);
 
-Captcha::reset();
+include_once '../fns/Captcha/reset.php';
+Captcha\reset();
+
 setcookie('username', $username, time() + 60 * 60 * 24 * 30, '/');
 
 $text = "$username has signed up with the email $email";
