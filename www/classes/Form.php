@@ -23,15 +23,6 @@ class Form {
         return "<input type=\"hidden\" name=\"$name\" value=\"$value\" />";
     }
 
-    static function notes (array $notes) {
-        $ul = '<ul class="form-notes">';
-        foreach ($notes as $note) {
-            $ul .= "<li>$note</li>";
-        }
-        $ul .= '</ul>';
-        return self::association($ul, '');
-    }
-
     static function select ($name, $text, array $options, $value) {
         $selectHtml = "<select class=\"form-select\" name=\"$name\" id=\"$name\">";
         foreach ($options as $itemValue => $itemText) {

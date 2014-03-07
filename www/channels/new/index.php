@@ -19,6 +19,7 @@ unset($_SESSION['channels/index_messages']);
 
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
+include_once '../../fns/Form/notes.php';
 
 $page->base = '../../';
 $page->title = 'New Channel';
@@ -43,7 +44,7 @@ $page->finish(
                 'autofocus' => true,
                 'required' => true,
             ))
-            .Form::notes(array(
+            .Form\notes(array(
                 'Characters a-z, A-Z, 0-9, dash, dot and underscore only.',
                 'Minimum 6 maximum 32 characters.',
             ))

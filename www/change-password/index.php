@@ -23,6 +23,7 @@ unset($_SESSION['account/index_messages']);
 
 include_once '../fns/create_tabs.php';
 include_once '../fns/Form/button.php';
+include_once '../fns/Form/notes.php';
 include_once '../fns/Form/password.php';
 
 $page->base = '../';
@@ -52,7 +53,7 @@ $page->finish(
                 'value' => $values['password1'],
                 'required' => true,
             ))
-            .Form::notes(array('Minimum 6 characters.'))
+            .Form\notes(array('Minimum 6 characters.'))
             .'<div class="hr"></div>'
             .Form\password('password2', 'Repeat new password', array(
                 'value' => $values['password2'],

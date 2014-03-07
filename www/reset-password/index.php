@@ -44,6 +44,7 @@ unset(
 include_once '../fns/create_tabs.php';
 include_once '../fns/Form/button.php';
 include_once '../fns/Form/label.php';
+include_once '../fns/Form/notes.php';
 include_once '../fns/Form/password.php';
 include_once '../classes/Form.php';
 
@@ -67,7 +68,7 @@ $page->finish(
                 'autofocus' => true,
                 'required' => true,
             ))
-            .Form::notes(array('Minimum 6 characters.'))
+            .Form\notes(array('Minimum 6 characters.'))
             .'<div class="hr"></div>'
             .Form\password('password2', 'Repeat new password', array(
                 'value' => $values['password2'],

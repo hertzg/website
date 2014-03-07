@@ -19,6 +19,7 @@ unset($_SESSION['help/index_messages']);
 
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
+include_once '../../fns/Form/notes.php';
 
 $page->base = '../../';
 $page->title = 'Leave Feedback';
@@ -42,7 +43,7 @@ $page->finish(
                 'autofocus' => true,
                 'required' => true,
             ))
-            .Form::notes(array('Minimum 6 words.'))
+            .Form\notes(array('Minimum 6 words.'))
             .'<div class="hr"></div>'
             .Form\button('Submit Feedback')
         .'</form>'
