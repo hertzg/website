@@ -3,7 +3,6 @@
 include_once '../../fns/require_user.php';
 require_user('../../');
 
-include_once '../../classes/Form.php';
 include_once '../../lib/page.php';
 
 if (array_key_exists('contacts/new/index_lastpost', $_SESSION)) {
@@ -26,6 +25,7 @@ unset($_SESSION['contacts/index_messages']);
 
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
+include_once '../../fns/Form/textfield.php';
 
 $page->base = '../../';
 $page->title = 'New Contact';
@@ -44,34 +44,34 @@ $page->finish(
         'New',
         $pageErrors
         .'<form action="submit.php" method="post">'
-            .Form::textfield('fullname', 'Full name', array(
+            .Form\textfield('fullname', 'Full name', array(
                 'value' => $values['fullname'],
                 'maxlength' => 32,
                 'autofocus' => true,
                 'required' => true,
             ))
             .'<div class="hr"></div>'
-            .Form::textfield('address', 'Address', array(
+            .Form\textfield('address', 'Address', array(
                 'value' => $values['address'],
                 'maxlength' => 128,
             ))
             .'<div class="hr"></div>'
-            .Form::textfield('email', 'Email', array(
+            .Form\textfield('email', 'Email', array(
                 'value' => $values['email'],
                 'maxlength' => 32,
             ))
             .'<div class="hr"></div>'
-            .Form::textfield('phone1', 'Phone 1', array(
+            .Form\textfield('phone1', 'Phone 1', array(
                 'value' => $values['phone1'],
                 'maxlength' => 32,
             ))
             .'<div class="hr"></div>'
-            .Form::textfield('phone2', 'Phone 2', array(
+            .Form\textfield('phone2', 'Phone 2', array(
                 'value' => $values['phone2'],
                 'maxlength' => 32,
             ))
             .'<div class="hr"></div>'
-            .Form::textfield('tags', 'Tags', array(
+            .Form\textfield('tags', 'Tags', array(
                 'value' => $values['tags'],
             ))
             .'<div class="hr"></div>'

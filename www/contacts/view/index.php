@@ -4,7 +4,6 @@ include_once '../fns/require_contact.php';
 include_once '../../lib/mysqli.php';
 list($contact, $id) = require_contact($mysqli);
 
-include_once '../../classes/Form.php';
 include_once '../../lib/page.php';
 
 $address = $contact->address;

@@ -8,6 +8,6 @@ function notes (array $notes) {
         $ul .= "<li>$note</li>";
     }
     $ul .= '</ul>';
-    include_once __DIR__.'/../../classes/Form.php';
-    return \Form::association($ul, '');
+    include_once __DIR__.'/association.php';
+    return association($ul, '');
 }

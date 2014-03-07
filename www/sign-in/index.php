@@ -4,7 +4,6 @@ include_once '../fns/require_guest_user.php';
 require_guest_user('../');
 
 include_once '../fns/create_panel.php';
-include_once '../classes/Form.php';
 include_once '../lib/page.php';
 
 if (array_key_exists('sign-in/index_lastpost', $_SESSION)) {
@@ -47,6 +46,7 @@ include_once '../fns/create_tabs.php';
 include_once '../fns/Form/button.php';
 include_once '../fns/Form/checkbox.php';
 include_once '../fns/Form/password.php';
+include_once '../fns/Form/textfield.php';
 
 $page->base = $base;
 $page->hideSignOutLink = true;
@@ -58,7 +58,7 @@ $page->finish(
         $pageMessages
         .$pageErrors
         .'<form action="submit.php" method="post">'
-            .Form::textfield('username', 'Username', array(
+            .Form\textfield('username', 'Username', array(
                 'value' => $username,
                 'autofocus' => $username === '',
                 'required' => true,

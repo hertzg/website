@@ -15,9 +15,6 @@ function select ($name, $text, array $options, $value) {
         }
     }
     $selectHtml .= '</select>';
-    include_once __DIR__.'/../../classes/Form.php';
-    return \Form::association(
-        $selectHtml,
-        "<label for=\"$name\">$text</label>"
-    );
+    include_once __DIR__.'/association.php';
+    return association($selectHtml, "<label for=\"$name\">$text</label>");
 }

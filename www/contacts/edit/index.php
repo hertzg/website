@@ -4,7 +4,6 @@ include_once '../fns/require_contact.php';
 include_once '../../lib/mysqli.php';
 list($contact, $id) = require_contact($mysqli);
 
-include_once '../../classes/Form.php';
 include_once '../../lib/page.php';
 
 if (array_key_exists('contacts/edit_lastpost', $_SESSION)) {
@@ -21,6 +20,7 @@ unset($_SESSION['contacts/view/index_messages']);
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/hidden.php';
+include_once '../../fns/Form/textfield.php';
 
 $page->base = '../../';
 $page->title = "Edit Contact #$id";
@@ -39,29 +39,29 @@ $page->finish(
         'Edit',
         $pageErrors
         .'<form action="submit.php" method="post">'
-            .Form::textfield('fullname', 'Full name', array(
+            .Form\textfield('fullname', 'Full name', array(
                 'value' => $values['fullname'],
                 'autofocus' => true,
                 'required' => true,
             ))
             .'<div class="hr"></div>'
-            .Form::textfield('address', 'Address', array(
+            .Form\textfield('address', 'Address', array(
                 'value' => $values['address'],
             ))
             .'<div class="hr"></div>'
-            .Form::textfield('email', 'Email', array(
+            .Form\textfield('email', 'Email', array(
                 'value' => $values['email'],
             ))
             .'<div class="hr"></div>'
-            .Form::textfield('phone1', 'Phone 1', array(
+            .Form\textfield('phone1', 'Phone 1', array(
                 'value' => $values['phone1'],
             ))
             .'<div class="hr"></div>'
-            .Form::textfield('phone2', 'Phone 2', array(
+            .Form\textfield('phone2', 'Phone 2', array(
                 'value' => $values['phone2'],
             ))
             .'<div class="hr"></div>'
-            .Form::textfield('tags', 'Tags', array(
+            .Form\textfield('tags', 'Tags', array(
                 'value' => $values['tags'],
             ))
             .'<div class="hr"></div>'

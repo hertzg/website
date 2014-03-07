@@ -47,7 +47,6 @@ include_once '../fns/Form/hidden.php';
 include_once '../fns/Form/label.php';
 include_once '../fns/Form/notes.php';
 include_once '../fns/Form/password.php';
-include_once '../classes/Form.php';
 
 $page->base = '../';
 $page->title = 'Reset Password';

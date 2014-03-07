@@ -12,7 +12,7 @@ unset($_SESSION['channels/index_messages']);
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/label.php';
-include_once '../../classes/Form.php';
+include_once '../../fns/Form/textfield.php';
 include_once '../../lib/page.php';
 
 $page->base = '../../';
@@ -33,7 +33,7 @@ $page->finish(
         $pageMessages
         .Form\label('Channel name', htmlspecialchars($channel->channelname))
         .'<div class="hr"></div>'
-        .Form::textfield('channelkey', 'Channel key', array(
+        .Form\textfield('channelkey', 'Channel key', array(
             'readonly' => true,
             'value' => bin2hex($channel->channelkey),
         ))

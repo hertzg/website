@@ -5,7 +5,6 @@ include_once '../../lib/mysqli.php';
 list($folder, $idfolders) = require_folder($mysqli);
 
 include_once '../fns/create_folder_link.php';
-include_once '../../classes/Form.php';
 include_once '../../lib/page.php';
 
 include_once '../../fns/Page/sessionErrors.php';
@@ -25,6 +24,7 @@ unset(
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/hidden.php';
+include_once '../../fns/Form/textfield.php';
 
 $page->base = '../../';
 $page->title = "Rename Folder #$idfolders";
@@ -43,7 +43,7 @@ $page->finish(
         "Rename Folder #$idfolders",
         $pageErrors
         .'<form action="submit.php" method="post">'
-            .Form::textfield('foldername', 'Folder name', array(
+            .Form\textfield('foldername', 'Folder name', array(
                 'value' => $values['foldername'],
                 'autofocus' => true,
                 'required' => true,

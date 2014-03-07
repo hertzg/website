@@ -3,7 +3,6 @@
 include_once '../fns/require_guest_user.php';
 require_guest_user('../');
 
-include_once '../classes/Form.php';
 include_once '../lib/page.php';
 
 if (array_key_exists('email-reset-password/index_lastpost', $_SESSION)) {
@@ -26,6 +25,7 @@ $base = '../';
 include_once '../fns/create_tabs.php';
 include_once '../fns/Form/button.php';
 include_once '../fns/Form/captcha.php';
+include_once '../fns/Form/textfield.php';
 
 $page->base = $base;
 $page->hideSignOutLink = true;
@@ -41,7 +41,7 @@ $page->finish(
         'Reset Password',
         $pageErrors
         .'<form action="submit.php" method="post">'
-            .Form::textfield('email', 'Email', array(
+            .Form\textfield('email', 'Email', array(
                 'value' => $values['email'],
                 'autofocus' => true,
                 'required' => true,

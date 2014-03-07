@@ -6,7 +6,6 @@ list($token, $id) = require_token($mysqli);
 
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
-include_once '../../classes/Form.php';
 include_once '../../lib/page.php';
 
 unset($_SESSION['tokens/index_messages']);

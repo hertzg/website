@@ -3,7 +3,6 @@
 include_once '../../fns/require_user.php';
 require_user('../../');
 
-include_once '../../classes/Form.php';
 include_once '../../lib/page.php';
 
 include_once '../../fns/request_strings.php';
@@ -29,6 +28,7 @@ include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/hidden.php';
 include_once '../../fns/Form/label.php';
+include_once '../../fns/Form/textfield.php';
 
 $page->base = '../../';
 $page->title = 'New Event';
@@ -49,7 +49,7 @@ $page->finish(
         .'<form action="submit.php" method="post">'
             .Form\label('When', date('F d, Y', $time))
             .'<div class="hr"></div>'
-            .Form::textfield('eventtext', 'Text', array(
+            .Form\textfield('eventtext', 'Text', array(
                 'value' => $values['eventtext'],
                 'autofocus' => true,
                 'required' => true,

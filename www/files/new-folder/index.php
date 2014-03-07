@@ -36,11 +36,11 @@ unset(
     $_SESSION['files/index_messages']
 );
 
-include_once '../../classes/Form.php';
+include_once '../fns/create_folder_link.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/hidden.php';
-include_once '../fns/create_folder_link.php';
+include_once '../../fns/Form/textfield.php';
 
 $page->base = '../../';
 $page->title = 'New Folder';
@@ -59,7 +59,7 @@ $page->finish(
         'New Folder',
         $pageErrors
         .'<form action="submit.php" method="post">'
-            .Form::textfield('foldername', 'Folder name', array(
+            .Form\textfield('foldername', 'Folder name', array(
                 'value' => $values['foldername'],
                 'autofocus' => true,
                 'required' => true,

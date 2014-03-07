@@ -3,7 +3,6 @@
 include_once '../../fns/require_user.php';
 require_user('../../');
 
-include_once '../../classes/Form.php';
 include_once '../../lib/page.php';
 
 if (array_key_exists('channels/add_lastpost', $_SESSION)) {
@@ -20,6 +19,7 @@ unset($_SESSION['channels/index_messages']);
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/notes.php';
+include_once '../../fns/Form/textfield.php';
 
 $page->base = '../../';
 $page->title = 'New Channel';
@@ -38,7 +38,7 @@ $page->finish(
         'New',
         $pageErrors
         .'<form action="submit.php" method="post">'
-            .Form::textfield('channelname', 'Channel name', array(
+            .Form\textfield('channelname', 'Channel name', array(
                 'value' => $values['channelname'],
                 'maxlength' => 32,
                 'autofocus' => true,

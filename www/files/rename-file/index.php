@@ -5,7 +5,6 @@ include_once '../../lib/mysqli.php';
 list($file, $id) = require_file($mysqli);
 
 include_once '../fns/create_folder_link.php';
-include_once '../../classes/Form.php';
 include_once '../../lib/page.php';
 
 include_once '../../fns/Page/sessionErrors.php';
@@ -22,6 +21,7 @@ unset($_SESSION['files/view-file/index_messages']);
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/hidden.php';
+include_once '../../fns/Form/textfield.php';
 
 $page->base = '../../';
 $page->title = "Rename File #$id";
@@ -40,7 +40,7 @@ $page->finish(
         'Rename',
         $pageErrors
         .'<form action="submit.php" method="post">'
-            .Form::textfield('filename', 'File name', array(
+            .Form\textfield('filename', 'File name', array(
                 'value' => $values['filename'],
                 'autofocus' => true,
                 'required' => true,

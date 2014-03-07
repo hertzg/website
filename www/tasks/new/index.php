@@ -3,7 +3,6 @@
 include_once '../../fns/require_user.php';
 require_user('../../');
 
-include_once '../../classes/Form.php';
 include_once '../../lib/page.php';
 
 if (array_key_exists('tasks/new/index_lastpost', $_SESSION)) {
@@ -22,6 +21,8 @@ unset($_SESSION['tasks/index_messages']);
 
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
+include_once '../../fns/Form/textarea.php';
+include_once '../../fns/Form/textfield.php';
 
 $page->base = '../../';
 $page->title = 'New Task';
@@ -40,13 +41,13 @@ $page->finish(
         'New',
         $pageErrors
         .'<form action="submit.php" method="post">'
-            .Form::textarea('tasktext', 'Text', array(
+            .Form\textarea('tasktext', 'Text', array(
                 'value' => $values['tasktext'],
                 'autofocus' => true,
                 'required' => true,
             ))
             .'<div class="hr"></div>'
-            .Form::textfield('tags', 'Tags', array(
+            .Form\textfield('tags', 'Tags', array(
                 'value' => $values['tags'],
             ))
             .'<div class="hr"></div>'

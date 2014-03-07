@@ -4,7 +4,6 @@ include_once '../fns/require_bookmark.php';
 include_once '../../lib/mysqli.php';
 list($bookmark, $id) = require_bookmark($mysqli);
 
-include_once '../../classes/Form.php';
 include_once '../../lib/page.php';
 
 if (array_key_exists('bookmarks/edit/index_lastpost', $_SESSION)) {
@@ -21,6 +20,7 @@ unset($_SESSION['bookmarks/index_messages']);
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/hidden.php';
+include_once '../../fns/Form/textfield.php';
 
 $page->base = '../../';
 $page->title = "Edit Bookmark #$id";
@@ -39,17 +39,17 @@ $page->finish(
         'Edit',
         $pageErrors
         .'<form action="submit.php" method="post">'
-            .Form::textfield('url', 'URL', array(
+            .Form\textfield('url', 'URL', array(
                 'value' => $values['url'],
                 'autofocus' => true,
                 'required' => true,
             ))
             .'<div class="hr"></div>'
-            .Form::textfield('title', 'Title', array(
+            .Form\textfield('title', 'Title', array(
                 'value' => $values['title'],
             ))
             .'<div class="hr"></div>'
-            .Form::textfield('tags', 'Tags', array(
+            .Form\textfield('tags', 'Tags', array(
                 'value' => $values['tags'],
             ))
             .'<div class="hr"></div>'
