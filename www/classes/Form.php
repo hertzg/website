@@ -10,25 +10,6 @@ class Form {
             .'</div>';
     }
 
-    static function select ($name, $text, array $options, $value) {
-        $selectHtml = "<select class=\"form-select\" name=\"$name\" id=\"$name\">";
-        foreach ($options as $itemValue => $itemText) {
-            if ($itemValue == $value) {
-                $selectHtml .=
-                    "<option selected=\"selected\" value=\"$itemValue\">"
-                        .$itemText
-                    .'</option>';
-            } else {
-                $selectHtml .= "<option value=\"$itemValue\">$itemText</option>";
-            }
-        }
-        $selectHtml .= '</select>';
-        return self::association(
-            $selectHtml,
-            "<label for=\"$name\">$text</label>"
-        );
-    }
-
     private static function getBoolAttribute ($name, array $config) {
         if (array_key_exists($name, $config) && $config[$name]) {
             return " $name=\"$name\"";

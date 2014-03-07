@@ -40,6 +40,7 @@ unset($_SESSION['calendar/index_messages']);
 
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
+include_once '../../fns/Form/select.php';
 
 $page->base = '../../';
 $page->title = 'Jumo To';
@@ -57,9 +58,9 @@ $page->finish(
         ),
         'Jump To',
         '<form action="submit.php" method="post">'
-            .Form::select('month', 'Month:', $monthOptions, $month)
+            .Form\select('month', 'Month:', $monthOptions, $month)
             .'<div class="hr"></div>'
-            .Form::select('year', 'Year:', $yearOptions, $year)
+            .Form\select('year', 'Year:', $yearOptions, $year)
             .'<div class="hr"></div>'
             .Form\button('Jump To')
         .'</form>'
