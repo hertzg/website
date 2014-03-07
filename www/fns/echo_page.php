@@ -1,12 +1,8 @@
 <?php
 
-function echo_page ($title, $content, $theme, array $options) {
+function echo_page ($user, $title, $content, $base, array $options) {
 
-    if (array_key_exists('base', $options)) {
-        $base = $options['base'];
-    } else {
-        $base = '';
-    }
+    $theme = $user ? $user->theme : 'orange';
 
     if (array_key_exists('head', $options)) {
         $head = $options['head'];
@@ -43,6 +39,6 @@ function echo_page ($title, $content, $theme, array $options) {
         .'</div>';
 
     include_once __DIR__.'/../fns/echo_html.php';
-    echo_html($title, $head, $body, $this->base);
+    echo_html($title, $head, $body, $theme, $base);
 
 }
