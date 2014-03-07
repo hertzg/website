@@ -69,13 +69,7 @@ unset(
     $_SESSION['tasks/view/index_messages']
 );
 
-$options = array(Page::imageArrowLink('New Task', 'new/', 'create-task'));
-if ($user->num_tasks) {
-    $title = 'Delete All Tasks';
-    $options[] = Page::imageArrowLink($title, 'delete-all/', 'trash-bin');
-}
-
-include_once '../fns/create_panel.php';
+include_once 'fns/create_options_panel.php';
 include_once '../fns/create_tabs.php';
 
 $page->base = '../';
@@ -91,5 +85,5 @@ $page->finish(
         'Tasks',
         $pageMessages.$filterMessage.join(Page::HR, $items)
     )
-    .create_panel('Options', join(Page::HR, $options))
+    .create_options_panel($user)
 );
