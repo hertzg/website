@@ -24,10 +24,7 @@ include_once '../fns/Page/warnings.php';
 $pageWarnings = Page\warnings(array('Select theme color:'));
 
 include_once '../fns/create_tabs.php';
-
-$page->base = '../';
-$page->title = 'Edit Theme';
-$page->finish(
+$content =
     create_tabs(
         array(
             array(
@@ -41,5 +38,7 @@ $page->finish(
         ),
         'Edit Theme',
         $pageWarnings.join('<div class="hr"></div>', $themeItems)
-    )
-);
+    );
+
+include_once '../fns/echo_page.php';
+echo_page($user, 'Edit Theme', $content, '../');

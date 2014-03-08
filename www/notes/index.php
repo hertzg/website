@@ -73,10 +73,7 @@ unset(
 
 include_once 'fns/create_options_panel.php';
 include_once '../fns/create_tabs.php';
-
-$page->base = '../';
-$page->title = 'Notes';
-$page->finish(
+$content =
     create_tabs(
         array(
             array(
@@ -87,5 +84,7 @@ $page->finish(
         'Notes',
         $pageMessages.$filterMessage.join('<div class="hr"></div>', $items)
     )
-    .create_options_panel($user)
-);
+    .create_options_panel($user);
+
+include_once '../fns/echo_page.php';
+echo_page($user, 'Notes', $content, '../');

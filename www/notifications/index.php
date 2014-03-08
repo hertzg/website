@@ -64,10 +64,7 @@ $pageMessages = Page\sessionMessages('notifications/index_messages');
 
 include_once '../fns/create_panel.php';
 include_once '../fns/create_tabs.php';
-
-$page->base = '../';
-$page->title = 'Notifications';
-$page->finish(
+$content =
     create_tabs(
         array(
             array(
@@ -78,5 +75,7 @@ $page->finish(
         'Notifications',
         $pageMessages.join('<div class="hr"></div>', $items)
         .create_panel('Options', join('<div class="hr"></div>', $options))
-    )
-);
+    );
+
+include_once '../fns/echo_page.php';
+echo_page($user, 'Notifications', $content, '../');

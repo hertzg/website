@@ -21,10 +21,7 @@ include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/hidden.php';
 include_once '../../fns/Form/textfield.php';
-
-$page->base = '../../';
-$page->title = "Edit Bookmark #$id";
-$page->finish(
+$content =
     create_tabs(
         array(
             array(
@@ -56,5 +53,7 @@ $page->finish(
             .Form\button('Save Changes')
             .Form\hidden('id', $id)
         .'</form>'
-    )
-);
+    );
+
+include_once '../../fns/echo_page.php';
+echo_page($user, "Edit Bookmark #$id", $content, '../../');
