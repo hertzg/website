@@ -19,10 +19,7 @@ unset($_SESSION['account/index_messages']);
 include_once '../fns/create_tabs.php';
 include_once '../fns/Form/button.php';
 include_once '../fns/Form/textfield.php';
-
-$page->base = '../';
-$page->title = 'Edit Profile';
-$page->finish(
+$content =
     create_tabs(
         array(
             array(
@@ -49,5 +46,7 @@ $page->finish(
             .'<div class="hr"></div>'
             .Form\button('Save Changes')
         .'</form>'
-    )
-);
+    );
+
+include_once '../fns/echo_page.php';
+echo_page($user, 'Edit Profile', $content, '../');

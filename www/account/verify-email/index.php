@@ -13,10 +13,7 @@ unset($_SESSION['account/index_messages']);
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/captcha.php';
-
-$page->base = '../../';
-$page->title = 'Verify Email';
-$page->finish(
+$content =
     create_tabs(
         array(
             array(
@@ -34,5 +31,7 @@ $page->finish(
             .Form\captcha('../../', true)
             .Form\button('Send Verification Email')
         .'</form>'
-    )
-);
+    );
+
+include_once '../../fns/echo_page.php';
+echo_page($user, 'Verify Email', $content, '../../');

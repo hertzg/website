@@ -66,10 +66,7 @@ include_once '../fns/create_panel.php';
 include_once '../fns/create_tabs.php';
 include_once '../fns/date_ago.php';
 include_once '../fns/n_times.php';
-
-$page->base = '../';
-$page->title = 'Account';
-$page->finish(
+$content =
     create_tabs(
         array(
             array(
@@ -94,5 +91,7 @@ $page->finish(
         .'<div class="hr"></div>'
         .Form\label('Signed in', n_times($user->num_logins))
     )
-    .create_panel('Options', join('<div class="hr"></div>', $options))
-);
+    .create_panel('Options', join('<div class="hr"></div>', $options));
+
+include_once '../fns/echo_page.php';
+echo_page($user, 'Account', $content, '../');

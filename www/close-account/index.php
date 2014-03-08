@@ -26,11 +26,7 @@ $pageWarnings = Page\warnings(array(
 include_once '../fns/create_tabs.php';
 include_once '../fns/Form/button.php';
 include_once '../fns/Form/password.php';
-
-$page->base = '../';
-$page->title = 'Close Account';
-$page->finish(
-    create_tabs(
+$content = create_tabs(
         array(
             array(
                 'title' => '&middot;&middot;&middot;',
@@ -52,5 +48,7 @@ $page->finish(
             .'<div class="hr"></div>'
             .Form\button('Close Account')
         .'</form>'
-    )
-);
+    );
+
+include_once '../fns/echo_page.php';
+echo_page($user, 'Close Account', $content, '../');

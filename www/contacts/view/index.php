@@ -56,10 +56,7 @@ include_once '../../fns/Page/text.php';
 $items[] = Page\text($datesText);
 
 include_once '../../fns/Page/imageArrowLink.php';
-
-$page->base = '../../';
-$page->title = "Contact #$id";
-$page->finish(
+$content =
     create_tabs(
         array(
             array(
@@ -80,5 +77,7 @@ $page->finish(
         .'<div class="hr"></div>'
         .Page\imageArrowLink('Delete Contact',
             "../delete/?id=$id", 'trash-bin')
-    )
-);
+    );
+
+include_once '../../fns/echo_page.php';
+echo_page($user, "Contact #$id", $content, '../../');
