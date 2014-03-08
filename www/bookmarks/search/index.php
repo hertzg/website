@@ -83,10 +83,7 @@ unset(
 
 include_once '../fns/create_options_panel.php';
 include_once '../../fns/create_tabs.php';
-
-$page->base = '../../';
-$page->title = 'Bookmarks';
-$page->finish(
+$content =
     create_tabs(
         array(
             array(
@@ -97,5 +94,7 @@ $page->finish(
         'Bookmarks',
         $pageMessages.$filterMessage.join('<div class="hr"></div>', $items)
     )
-    .create_options_panel($user, '../')
-);
+    .create_options_panel($user, '../');
+
+include_once '../../fns/echo_page.php';
+echo_page($user, 'Bookmarks', $content, '../../');

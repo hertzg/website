@@ -50,10 +50,7 @@ include_once '../../fns/create_tabs.php';
 include_once '../../fns/create_tags.php';
 include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../fns/Page/imageLink.php';
-
-$page->base = $base;
-$page->title = "Bookmark #$id";
-$page->finish(
+$content =
     create_tabs(
         array(
             array(
@@ -80,5 +77,7 @@ $page->finish(
         .Page\imageArrowLink('Edit Bookmark', "../edit/?id=$id", 'edit-bookmark')
         .'<div class="hr"></div>'
         .Page\imageArrowLink('Delete Bookmark', "../delete/?id=$id", 'trash-bin')
-    )
-);
+    );
+
+include_once '../../fns/echo_page.php';
+echo_page($user, "Bookmark #$id", $content, $base);
