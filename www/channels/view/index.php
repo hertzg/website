@@ -15,10 +15,7 @@ include_once '../../fns/Form/label.php';
 include_once '../../fns/Form/textfield.php';
 include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../lib/page.php';
-
-$page->base = '../../';
-$page->title = "Channel #$id";
-$page->finish(
+$content =
     create_tabs(
         array(
             array(
@@ -45,5 +42,7 @@ $page->finish(
             "../randomize-key/?id=$id", 'randomize')
         .'<div class="hr"></div>'
         .Page\imageArrowLink('Delete Channel', "../delete/?id=$id", 'trash-bin')
-    )
-);
+    );
+
+include_once '../../fns/echo_page.php';
+echo_page($user, "Channel #$id", $content, '../../');

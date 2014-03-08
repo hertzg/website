@@ -43,10 +43,7 @@ include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/create_tags.php';
 include_once '../../fns/Page/imageArrowLink.php';
-
-$page->base = $base;
-$page->title = "Note #$id";
-$page->finish(
+$content =
     create_tabs(
         array(
             array(
@@ -66,5 +63,7 @@ $page->finish(
         Page\imageArrowLink('Edit Note', "../edit/?id=$id", 'edit-note')
         .'<div class="hr"></div>'
         .Page\imageArrowLink('Delete Note', "../delete/?id=$id", 'trash-bin')
-    )
-);
+    );
+
+include_once '../../fns/echo_page.php';
+echo_page($user, "Note #$id", $content, $base);

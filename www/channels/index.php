@@ -35,10 +35,7 @@ $pageMessages = Page\sessionMessages('channels/index_messages');
 
 include_once '../fns/create_panel.php';
 include_once '../fns/create_tabs.php';
-
-$page->base = '../';
-$page->title = 'Channels';
-$page->finish(
+$content =
     create_tabs(
         array(
             array(
@@ -59,5 +56,7 @@ $page->finish(
         .'<div class="hr"></div>'
         .Page\imageLink('Download API',
             'download-zvini-api.php', 'download')
-    )
-);
+    );
+
+include_once '../fns/echo_page.php';
+echo_page($user, 'Channels', $content, '../');
