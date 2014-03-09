@@ -83,9 +83,7 @@ if (!$searchFiles) {
 }
 
 include_once '../fns/create_tabs.php';
+$content = create_tabs(array(), 'Home', join('<div class="hr"></div>', $items));
 
-$page->base = '../';
-$page->title = 'Search: '.htmlspecialchars($keyword);
-$page->finish(
-    create_tabs(array(), 'Home', join('<div class="hr"></div>', $items))
-);
+include_once '../fns/echo_page.php';
+echo_page($user, 'Search: '.htmlspecialchars($keyword), $content, '../');

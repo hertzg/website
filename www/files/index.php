@@ -148,10 +148,7 @@ include_once '../fns/Page/sessionMessages.php';
 $pageMessages = Page\sessionMessages('files/index_messages');
 
 include_once '../fns/create_tabs.php';
-
-$page->base = '../';
-$page->title = 'Files';
-$page->finish(
+$content =
     create_tabs(
         array(
             array(
@@ -170,5 +167,7 @@ $page->finish(
         .Page\imageArrowLink('Upload Files',
             "upload-files/?idfolders=$idfolders", 'upload')
         .$folder_options
-    )
-);
+    );
+
+include_once '../fns/echo_page.php';
+echo_page($user, 'Files', $content, '../');

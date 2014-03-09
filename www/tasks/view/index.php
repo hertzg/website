@@ -55,10 +55,7 @@ $text = Page\text(
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/create_tags.php';
-
-$page->base = $base;
-$page->title = "Task #$id";
-$page->finish(
+$content =
     create_tabs(
         array(
             array(
@@ -73,5 +70,7 @@ $page->finish(
         "Task #$id",
         $pageMessages.$text.create_tags('../', $tags).'<div class="hr"></div>'.$datesText
     )
-    .create_panel('Options', join('<div class="hr"></div>', $options))
-);
+    .create_panel('Options', join('<div class="hr"></div>', $options));
+
+include_once '../../fns/echo_page.php';
+echo_page($user, "Task #$id", $content, $base);

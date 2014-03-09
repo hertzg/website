@@ -37,9 +37,7 @@ unset(
     $_SESSION['files/rename-file_lastpost']
 );
 
-$page->base = '../../';
-$page->title = "File #$id";
-$page->finish(
+$content =
     create_tabs(
         array(
             array(
@@ -71,5 +69,7 @@ $page->finish(
         .'<div class="hr"></div>'
         .Page\imageArrowLink('Delete File',
             "../delete-file/?id=$id", 'trash-bin')
-    )
-);
+    );
+
+include_once '../../fns/echo_page.php';
+echo_page($user, "File #$id", $content, '../../');

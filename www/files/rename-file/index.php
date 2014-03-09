@@ -22,10 +22,7 @@ include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/hidden.php';
 include_once '../../fns/Form/textfield.php';
-
-$page->base = '../../';
-$page->title = "Rename File #$id";
-$page->finish(
+$content =
     create_tabs(
         array(
             array(
@@ -49,5 +46,7 @@ $page->finish(
             .Form\button('Rename')
             .Form\hidden('id', $id)
         .'</form>'
-    )
-);
+    );
+
+include_once '../../fns/echo_page.php';
+echo_page($user, "Rename File #$id", $content, '../../');

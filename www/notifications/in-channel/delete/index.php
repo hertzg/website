@@ -28,7 +28,7 @@ $content =
             "submit.php?id=$id", 'yes')
         .'<div class="hr"></div>'
         .Page\imageLink('No, return back', "../?id=$id", 'no')
-    )
+    );
 
 include_once '../../../fns/echo_page.php';
 echo_page($user, 'Delete Notifications?', $content, '../../../');

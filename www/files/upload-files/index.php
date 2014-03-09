@@ -43,10 +43,7 @@ include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/filefield.php';
 include_once '../../fns/Form/hidden.php';
-
-$page->base = '../../';
-$page->title = 'Upload Files';
-$page->finish(
+$content =
     create_tabs(
         array(
             array(
@@ -73,5 +70,7 @@ $page->finish(
             .Form\hidden('posttest', '1')
             .Form\hidden('idfolders', $idfolders)
         .'</form>'
-    )
-);
+    );
+
+include_once '../../fns/echo_page.php';
+echo_page($user, 'Upload Files', $content, '../../');

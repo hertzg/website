@@ -23,10 +23,7 @@ include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/textarea.php';
 include_once '../../fns/Form/textfield.php';
-
-$page->base = '../../';
-$page->title = 'New Task';
-$page->finish(
+$content =
     create_tabs(
         array(
             array(
@@ -53,5 +50,7 @@ $page->finish(
             .'<div class="hr"></div>'
             .Form\button('Save')
         .'</form>'
-    )
-);
+    );
+
+include_once '../../fns/echo_page.php';
+echo_page($user, 'New Task', $content, '../../');

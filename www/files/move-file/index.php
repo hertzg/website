@@ -66,10 +66,7 @@ $pageWarnings = Page\warnings(array(
 ));
 
 include_once '../../fns/create_tabs.php';
-
-$page->base = '../../';
-$page->title = "Move File #$id";
-$page->finish(
+$content =
     create_tabs(
         array(
             array(
@@ -83,5 +80,7 @@ $page->finish(
         ),
         'Move',
         $pageErrors.$pageWarnings.join('<div class="hr"></div>', $items)
-    )
-);
+    );
+
+include_once '../../fns/echo_page.php';
+echo_page($user, "Move File #$id", $content, '../../');
