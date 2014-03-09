@@ -1,6 +1,6 @@
 <?php
 
-function signed_user (mysqli $mysqli) {
+function signed_user () {
 
     include_once __DIR__.'/session_start_custom.php';
     session_start_custom();
@@ -8,6 +8,9 @@ function signed_user (mysqli $mysqli) {
     $user = $idusers = null;
 
     if (!array_key_exists('user', $_SESSION)) {
+
+        include_once __DIR__.'/get_mysqli.php';
+        $mysqli = get_mysqli();
 
         include_once __DIR__.'/require_valid_token.php';
         $token = require_valid_token($mysqli);
@@ -27,6 +30,9 @@ function signed_user (mysqli $mysqli) {
     }
 
     if (array_key_exists('user', $_SESSION)) {
+
+        include_once __DIR__.'/get_mysqli.php';
+        $mysqli = get_mysqli();
 
         include_once __DIR__.'/Users/get.php';
         $user = Users\get($mysqli, $_SESSION['user']->idusers);
