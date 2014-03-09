@@ -47,10 +47,7 @@ include_once '../fns/Form/hidden.php';
 include_once '../fns/Form/label.php';
 include_once '../fns/Form/notes.php';
 include_once '../fns/Form/password.php';
-
-$page->base = '../';
-$page->title = 'Reset Password';
-$page->finish(
+$content =
     create_tabs(
         array(
             array(
@@ -79,5 +76,7 @@ $page->finish(
             .Form\hidden('idusers', $idusers)
             .Form\hidden('key', $key)
         .'</form>'
-    )
-);
+    );
+
+include_once '../fns/echo_page.php';
+echo_page($user, 'Reset Password', $content, '../');

@@ -64,9 +64,7 @@ if ($options) {
 
 unset($_SESSION['account/index_messages']);
 
-$page->base = '../';
-$page->title = 'Remembered Sessions';
-$page->finish(
+$content =
     create_tabs(
         array(
             array(
@@ -81,5 +79,7 @@ $page->finish(
         'Sessions',
         $pageMessages.join('<div class="hr"></div>', $items)
     )
-    .$optionsPanel
-);
+    .$optionsPanel;
+
+include_once '../fns/echo_page.php';
+echo_page($user, 'Remembered Sessions', $content, '../');

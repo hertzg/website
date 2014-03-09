@@ -20,10 +20,7 @@ include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/notes.php';
 include_once '../../fns/Form/textarea.php';
-
-$page->base = '../../';
-$page->title = 'Leave Feedback';
-$page->finish(
+$content =
     create_tabs(
         array(
             array(
@@ -47,5 +44,7 @@ $page->finish(
             .'<div class="hr"></div>'
             .Form\button('Submit Feedback')
         .'</form>'
-    )
-);
+    );
+
+include_once '../../fns/echo_page.php';
+echo_page($user, 'Leave Feedback', $content, '../../');

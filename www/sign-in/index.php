@@ -48,11 +48,7 @@ include_once '../fns/Form/checkbox.php';
 include_once '../fns/Form/password.php';
 include_once '../fns/Form/textfield.php';
 include_once '../fns/Page/imageArrowLinkWithDescription.php';
-
-$page->base = $base;
-$page->hideSignOutLink = true;
-$page->title = 'Sign In';
-$page->finish(
+$content =
     create_tabs(
         array(),
         'Sign In', 
@@ -84,5 +80,9 @@ $page->finish(
             .Page\imageArrowLinkWithDescription('Don\'t have an account?',
                 'Sign up here.', '../sign-up/', 'new-password')
         )
-    )
-);
+    );
+
+include_once '../fns/echo_page.php';
+echo_page($user, 'Sign In', $content, $base, array(
+    'hideSignOutLink' => true,
+));

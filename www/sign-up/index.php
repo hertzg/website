@@ -35,11 +35,7 @@ include_once '../fns/Form/notes.php';
 include_once '../fns/Form/password.php';
 include_once '../fns/Form/textfield.php';
 include_once '../fns/Page/imageArrowLinkWithDescription.php';
-
-$page->base = $base;
-$page->hideSignOutLink = true;
-$page->title = 'Sign Up';
-$page->finish(
+$content =
     create_tabs(
         array(),
         'Sign Up',
@@ -76,5 +72,9 @@ $page->finish(
             Page\imageArrowLinkWithDescription('Already have an account?',
                 'Sign in here.', '../sign-in/', 'sign-in')
         )
-    )
-);
+    );
+
+include_once '../fns/echo_page.php';
+echo_page($user, 'Sign Up', $content, $base, array(
+    'hideSignOutLink' => true,
+));

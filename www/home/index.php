@@ -55,10 +55,7 @@ $pageMessages = Page\sessionMessages('home/index_messages');
 
 include_once '../fns/create_tabs.php';
 include_once '../fns/Page/imageArrowLink.php';
-
-$page->base = $base;
-$page->title = 'Home';
-$page->finish(
+$content =
     create_tabs(array(), 'Home', $pageMessages.$notifications.join('<div class="hr"></div>', $items))
     .create_panel(
         'Options',
@@ -67,5 +64,7 @@ $page->finish(
         .Page\imageArrowLink('Help', '../help/', 'help')
         .'<div class="hr"></div>'
         .Page\imageLink('Sign Out', '../submit-signout.php', 'sign-out')
-    )
-);
+    );
+
+include_once '../fns/echo_page.php';
+echo_page($user, 'Home', $content, $base);
