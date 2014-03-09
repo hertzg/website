@@ -40,10 +40,7 @@ unset($_SESSION['calendar/index_messages']);
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/select.php';
-
-$page->base = '../../';
-$page->title = 'Jumo To';
-$page->finish(
+$content =
     create_tabs(
         array(
             array(
@@ -63,5 +60,7 @@ $page->finish(
             .'<div class="hr"></div>'
             .Form\button('Jump To')
         .'</form>'
-    )
-);
+    );
+
+include_once '../../fns/echo_page.php';
+echo_page($user, 'Jumo To', $content, '../../');

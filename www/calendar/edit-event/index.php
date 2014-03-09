@@ -22,10 +22,7 @@ include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/hidden.php';
 include_once '../../fns/Form/label.php';
 include_once '../../fns/Form/textfield.php';
-
-$page->base = '../../';
-$page->title = "Edit Event #$idevents";
-$page->finish(
+$content =
     create_tabs(
         array(
             array(
@@ -51,5 +48,7 @@ $page->finish(
             .Form\button('Save Changes')
             .Form\hidden('idevents', $idevents)
         .'</form>'
-    )
-);
+    );
+
+include_once '../../fns/echo_page.php';
+echo_page($user, "Edit Event #$idevents", $content, '../../');

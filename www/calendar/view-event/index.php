@@ -23,10 +23,7 @@ $dateText = Page\text(date('F d, Y', $event->eventtime));
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/imageArrowLink.php';
-
-$page->base = '../../';
-$page->title = "Event #$idevents";
-$page->finish(
+$content =
     create_tabs(
         array(
             array(
@@ -48,5 +45,7 @@ $page->finish(
         .'<div class="hr"></div>'
         .Page\imageArrowLink('Delete Event',
             "../delete-event/?idevents=$idevents", 'trash-bin')
-    )
-);
+    );
+
+include_once '../../fns/echo_page.php';
+echo_page($user, "Event #$idevents", $content, '../../');

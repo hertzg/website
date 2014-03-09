@@ -140,14 +140,7 @@ $jumpToHref = "jump-to/?year=$yearNow&amp;month=$monthNow";
 
 include_once '../fns/create_panel.php';
 include_once '../fns/create_tabs.php';
-
-$page->base = '../';
-$page->title = 'Calendar';
-$page->head =
-    '<link rel="stylesheet" type="text/css" href="index.css?3" />'
-    .'<link rel="stylesheet" type="text/css"'
-    ." href=\"themes/$page->theme/index.css\" />";
-$page->finish(
+$content =
     create_tabs(
         array(
             array(
@@ -169,5 +162,12 @@ $page->finish(
         .Page\imageArrowLink('Jump To', $jumpToHref, 'calendar')
         .'<div class="hr"></div>'
         .Page\imageArrowLink('Go to Today', './', 'calendar')
-    )
-);
+    );
+
+include_once '../fns/echo_page.php';
+echo_page($user, 'Calendar', $content, '../', array(
+    'head' =>
+        '<link rel="stylesheet" type="text/css" href="index.css?3" />'
+        .'<link rel="stylesheet" type="text/css"'
+        ." href=\"themes/$page->theme/index.css\" />"
+));

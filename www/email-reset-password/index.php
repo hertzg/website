@@ -26,11 +26,7 @@ include_once '../fns/create_tabs.php';
 include_once '../fns/Form/button.php';
 include_once '../fns/Form/captcha.php';
 include_once '../fns/Form/textfield.php';
-
-$page->base = $base;
-$page->hideSignOutLink = true;
-$page->title = 'Reset Password';
-$page->finish(
+$content =
     create_tabs(
         array(
             array(
@@ -50,5 +46,9 @@ $page->finish(
             .Form\captcha($base)
             .Form\button('Send Recovery Email')
         .'</form>'
-    )
-);
+    );
+
+include_once '../fns/echo_page.php';
+echo_page($user, 'Reset Password', $content, $base, array(
+    'hideSignOutLink' => true,
+));

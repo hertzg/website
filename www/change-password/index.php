@@ -24,10 +24,7 @@ include_once '../fns/create_tabs.php';
 include_once '../fns/Form/button.php';
 include_once '../fns/Form/notes.php';
 include_once '../fns/Form/password.php';
-
-$page->base = '../';
-$page->title = 'Change Password';
-$page->finish(
+$content =
     create_tabs(
         array(
             array(
@@ -61,6 +58,7 @@ $page->finish(
             .'<div class="hr"></div>'
             .Form\button('Change')
         .'</form>'
-    )
-);
+    );
 
+include_once '../fns/echo_page.php';
+echo_page($user, 'Change Password', $content, '../');

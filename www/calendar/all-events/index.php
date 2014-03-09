@@ -37,10 +37,7 @@ unset($_SESSION['calendar/index_messages']);
 
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
-
-$page->title = 'All Events';
-$page->base = '../../';
-$page->finish(
+$content =
     create_tabs(
         array(
             array(
@@ -55,5 +52,7 @@ $page->finish(
         'All Events',
         join('<div class="hr"></div>', $items)
     )
-    .$optionsPanel
-);
+    .$optionsPanel;
+
+include_once '../../fns/echo_page.php';
+echo_page($user, 'All Events', $content, '../../');
