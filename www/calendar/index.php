@@ -168,5 +168,5 @@ echo_page($user, 'Calendar', $content, '../', array(
     'head' =>
         '<link rel="stylesheet" type="text/css" href="index.css?3" />'
         .'<link rel="stylesheet" type="text/css"'
-        ." href=\"themes/$page->theme/index.css\" />"
+        ." href=\"themes/$user->theme/index.css\" />"
 ));
