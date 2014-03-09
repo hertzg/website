@@ -25,7 +25,6 @@ $filterMessage = '';
 
 include_once '../../fns/create_search_form_content.php';
 include_once '../../lib/mysqli.php';
-include_once '../../lib/page.php';
 
 if ($tag === '') {
 

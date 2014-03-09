@@ -17,8 +17,6 @@ if (!$channel) {
     redirect('..');
 }
 
-include_once '../../lib/page.php';
-
 include_once '../../fns/Users/clearNumNewNotifications.php';
 Users\clearNumNewNotifications($mysqli, $idusers);
 

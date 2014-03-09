@@ -4,8 +4,6 @@ include_once '../fns/require_bookmark.php';
 include_once '../../lib/mysqli.php';
 list($bookmark, $id) = require_bookmark($mysqli);
 
-include_once '../../lib/page.php';
-
 if (array_key_exists('bookmarks/edit/index_lastpost', $_SESSION)) {
     $values = $_SESSION['bookmarks/edit/index_lastpost'];
 } else {

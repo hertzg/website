@@ -14,7 +14,6 @@ include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/label.php';
 include_once '../../fns/Form/textfield.php';
 include_once '../../fns/Page/imageArrowLink.php';
-include_once '../../lib/page.php';
 $content =
     create_tabs(
         array(

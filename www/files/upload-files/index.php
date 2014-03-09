@@ -20,8 +20,6 @@ if ($idfolders) {
 
 }
 
-include_once '../../lib/page.php';
-
 include_once '../../fns/Page/sessionErrors.php';
 $pageErrors = Page\sessionErrors('files/upload-files_errors');
 

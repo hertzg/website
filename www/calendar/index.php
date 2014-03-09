@@ -74,7 +74,6 @@ require_user('../');
 
 include_once '../fns/Page/imageArrowLink.php';
 include_once '../fns/Page/imageArrowLinkWithDescription.php';
-include_once '../lib/page.php';
 
 include_once '../fns/Page/sessionMessages.php';
 $pageMessages = Page\sessionMessages('calendar/index_messages');

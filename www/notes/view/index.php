@@ -4,8 +4,6 @@ include_once '../fns/require_note.php';
 include_once '../../lib/mysqli.php';
 list($note, $id) = require_note($mysqli);
 
-include_once '../../lib/page.php';
-
 include_once '../../fns/Page/sessionMessages.php';
 $pageMessages = Page\sessionMessages('notes/view/index_messages');
 

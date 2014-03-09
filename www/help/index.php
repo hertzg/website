@@ -3,8 +3,6 @@
 include_once '../fns/require_user.php';
 require_user('../');
 
-include_once '../lib/page.php';
-
 include_once '../fns/Page/sessionMessages.php';
 $pageMessages = Page\sessionMessages('help/index_messages');
 

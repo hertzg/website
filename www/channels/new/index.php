@@ -3,8 +3,6 @@
 include_once '../../fns/require_user.php';
 require_user('../../');
 
-include_once '../../lib/page.php';
-
 if (array_key_exists('channels/add_lastpost', $_SESSION)) {
     $values = $_SESSION['channels/add_lastpost'];
 } else {

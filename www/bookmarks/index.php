@@ -17,7 +17,6 @@ $items = array();
 $filterMessage = '';
 
 include_once '../lib/mysqli.php';
-include_once '../lib/page.php';
 
 if ($tag === '') {
 

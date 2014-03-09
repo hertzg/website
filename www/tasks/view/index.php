@@ -6,7 +6,6 @@ list($task, $id) = require_task($mysqli);
 
 include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../fns/Page/imageLink.php';
-include_once '../../lib/page.php';
 
 unset(
     $_SESSION['tasks/edit_errors'],

@@ -7,7 +7,6 @@ include_once '../fns/Form/label.php';
 include_once '../fns/Page/imageArrowLink.php';
 include_once '../fns/Page/imageArrowLinkWithDescription.php';
 include_once '../lib/mysqli.php';
-include_once '../lib/page.php';
 
 unset(
     $_SESSION['account/verify-email/index_errors'],

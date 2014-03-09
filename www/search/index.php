@@ -4,7 +4,6 @@ include_once '../fns/require_user.php';
 require_user('../');
 
 include_once '../lib/mysqli.php';
-include_once '../lib/page.php';
 
 include_once '../fns/request_strings.php';
 list($keyword, $searchFiles) = request_strings('keyword', 'files');

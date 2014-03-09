@@ -15,7 +15,6 @@ $question = Page\text(
 include_once '../fns/create_folder_link.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/imageLink.php';
-include_once '../../lib/page.php';
 $content =
     create_tabs(
         array(

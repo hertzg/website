@@ -10,7 +10,6 @@ unset($_SESSION['tasks/index_messages']);
 
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/imageLink.php';
-include_once '../../lib/page.php';
 $content =
     create_tabs(
         array(

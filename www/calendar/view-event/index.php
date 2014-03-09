@@ -4,8 +4,6 @@ include_once '../fns/require_event.php';
 include_once '../../lib/mysqli.php';
 list($event, $idevents) = require_event($mysqli);
 
-include_once '../../lib/page.php';
-
 include_once '../../fns/Page/sessionMessages.php';
 $pageMessages = Page\sessionMessages('calendar/view-event_messages');
 

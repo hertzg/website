@@ -8,7 +8,6 @@ require_user($base);
 include_once '../fns/create_panel.php';
 include_once '../fns/create_search_form_empty_content.php';
 include_once '../lib/mysqli.php';
-include_once '../lib/page.php';
 
 unset(
     $_SESSION['account/index_messages'],

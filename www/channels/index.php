@@ -5,7 +5,6 @@ require_user('../');
 
 include_once '../fns/Page/imageArrowLink.php';
 include_once '../fns/Page/imageLink.php';
-include_once '../lib/page.php';
 
 include_once '../fns/Channels/indexOnUser.php';
 include_once '../lib/mysqli.php';

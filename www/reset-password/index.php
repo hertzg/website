@@ -3,8 +3,6 @@
 include_once '../fns/require_guest_user.php';
 require_guest_user('../');
 
-include_once '../lib/page.php';
-
 include_once '../fns/request_strings.php';
 list($idusers, $key) = request_strings('idusers', 'key');
 

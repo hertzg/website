@@ -9,7 +9,6 @@ $token = require_valid_token($mysqli);
 
 include_once '../fns/create_panel.php';
 include_once '../fns/create_tabs.php';
-include_once '../lib/page.php';
 
 include_once '../fns/Page/sessionMessages.php';
 $pageMessages = Page\sessionMessages('tokens/index_messages');

@@ -29,7 +29,6 @@ include_once '../fns/create_panel.php';
 include_once '../fns/str_collapse_spaces.php';
 include_once '../fns/Page/imageArrowLink.php';
 include_once '../fns/Page/imageLink.php';
-include_once '../lib/page.php';
 
 $items = array();
 

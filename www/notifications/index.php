@@ -3,8 +3,6 @@
 include_once '../fns/require_user.php';
 require_user('../');
 
-include_once '../lib/page.php';
-
 include_once '../fns/Users/clearNumNewNotifications.php';
 include_once '../lib/mysqli.php';
 Users\clearNumNewNotifications($mysqli, $idusers);

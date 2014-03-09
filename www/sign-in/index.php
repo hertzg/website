@@ -4,7 +4,6 @@ include_once '../fns/require_guest_user.php';
 require_guest_user('../');
 
 include_once '../fns/create_panel.php';
-include_once '../lib/page.php';
 
 if (array_key_exists('sign-in/index_lastpost', $_SESSION)) {
     $values = $_SESSION['sign-in/index_lastpost'];

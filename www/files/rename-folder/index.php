@@ -5,7 +5,6 @@ include_once '../../lib/mysqli.php';
 list($folder, $idfolders) = require_folder($mysqli);
 
 include_once '../fns/create_folder_link.php';
-include_once '../../lib/page.php';
 
 include_once '../../fns/Page/sessionErrors.php';
 $pageErrors = Page\sessionErrors('files/rename-folder_errors');

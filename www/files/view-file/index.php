@@ -25,7 +25,6 @@ include_once '../../fns/date_ago.php';
 include_once '../../fns/Form/label.php';
 include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../fns/Page/imageLink.php';
-include_once '../../lib/page.php';
 
 include_once '../../fns/Page/sessionMessages.php';
 $pageMessages = Page\sessionMessages('files/view-file/index_messages');

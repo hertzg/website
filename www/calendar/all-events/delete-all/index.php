@@ -8,7 +8,6 @@ $question = Page\text('Are you sure you want to delete all the events?');
 
 include_once '../../../fns/create_tabs.php';
 include_once '../../../fns/Page/imageLink.php';
-include_once '../../../lib/page.php';
 $content =
     create_tabs(
         array(

@@ -3,8 +3,6 @@
 include_once '../fns/require_user.php';
 require_user('../');
 
-include_once '../lib/page.php';
-
 unset($_SESSION['account/index_messages']);
 
 include_once '../fns/get_themes.php';

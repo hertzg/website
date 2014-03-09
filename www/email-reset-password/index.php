@@ -3,8 +3,6 @@
 include_once '../fns/require_guest_user.php';
 require_guest_user('../');
 
-include_once '../lib/page.php';
-
 if (array_key_exists('email-reset-password/index_lastpost', $_SESSION)) {
     $values = $_SESSION['email-reset-password/index_lastpost'];
 } else {

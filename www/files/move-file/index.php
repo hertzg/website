@@ -10,7 +10,6 @@ include_once '../../lib/mysqli.php';
 list($file, $id) = require_file($mysqli);
 
 include_once '../fns/create_folder_link.php';
-include_once '../../lib/page.php';
 
 include_once '../../fns/request_strings.php';
 list($idfolders) = request_strings('idfolders');

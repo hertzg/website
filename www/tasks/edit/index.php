@@ -4,8 +4,6 @@ include_once '../fns/require_task.php';
 include_once '../../lib/mysqli.php';
 list($task, $id) = require_task($mysqli);
 
-include_once '../../lib/page.php';
-
 if (array_key_exists('tasks/edit_lastpost', $_SESSION)) {
     $values = $_SESSION['tasks/edit_lastpost'];
 } else {

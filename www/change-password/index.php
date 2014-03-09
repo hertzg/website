@@ -3,8 +3,6 @@
 include_once '../fns/require_user.php';
 require_user('../');
 
-include_once '../lib/page.php';
-
 if (array_key_exists('change-password/index_lastpost', $_SESSION)) {
     $values = $_SESSION['change-password/index_lastpost'];
 } else {
