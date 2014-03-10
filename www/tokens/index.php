@@ -1,18 +1,13 @@
 <?php
 
+$base = '../';
+
 include_once '../fns/require_user.php';
-$user = require_user('../');
-$idusers = $user->idusers;
+$user = require_user($base);
 
 include_once '../fns/require_valid_token.php';
 include_once '../lib/mysqli.php';
 $token = require_valid_token($mysqli);
-
-include_once '../fns/create_panel.php';
-include_once '../fns/create_tabs.php';
-
-include_once '../fns/Page/sessionMessages.php';
-$pageMessages = Page\sessionMessages('tokens/index_messages');
 
 $options = array();
 if (!$token) {
@@ -22,7 +17,7 @@ if (!$token) {
 }
 
 include_once __DIR__.'/../fns/Tokens/indexOnUser.php';
-$tokens = Tokens\indexOnUser($mysqli, $idusers);
+$tokens = Tokens\indexOnUser($mysqli, $user->idusers);
 
 $items = array();
 if ($tokens) {
@@ -57,6 +52,7 @@ if ($tokens) {
 }
 
 if ($options) {
+    include_once '../fns/create_panel.php';
     $optionsPanel = create_panel('Options', join('<div class="hr"></div>', $options));
 } else {
     $optionsPanel = '';
@@ -64,6 +60,8 @@ if ($options) {
 
 unset($_SESSION['account/index_messages']);
 
+include_once '../fns/create_tabs.php';
+include_once '../fns/Page/sessionMessages.php';
 $content =
     create_tabs(
         array(
@@ -77,7 +75,8 @@ $content =
             ),
         ),
         'Sessions',
-        $pageMessages.join('<div class="hr"></div>', $items)
+        Page\sessionMessages('tokens/index_messages')
+        .join('<div class="hr"></div>', $items)
     )
     .$optionsPanel;
 

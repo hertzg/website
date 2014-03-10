@@ -1,8 +1,9 @@
 <?php
 
+$base = '../../';
+
 include_once '../../fns/require_user.php';
-$user = require_user('../../');
-$idusers = $user->idusers;
+$user = require_user($base);
 
 if (array_key_exists('tasks/new/index_lastpost', $_SESSION)) {
     $values = $_SESSION['tasks/new/index_lastpost'];
@@ -13,15 +14,13 @@ if (array_key_exists('tasks/new/index_lastpost', $_SESSION)) {
     );
 }
 
-include_once '../../fns/Page/sessionErrors.php';
-$pageErrors = Page\sessionErrors('tasks/new/index_errors');
-
 unset($_SESSION['tasks/index_messages']);
 
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/textarea.php';
 include_once '../../fns/Form/textfield.php';
+include_once '../../fns/Page/sessionErrors.php';
 $content =
     create_tabs(
         array(
@@ -35,7 +34,7 @@ $content =
             ),
         ),
         'New',
-        $pageErrors
+        Page\sessionErrors('tasks/new/index_errors')
         .'<form action="submit.php" method="post">'
             .Form\textarea('tasktext', 'Text', array(
                 'value' => $values['tasktext'],
@@ -52,4 +51,4 @@ $content =
     );
 
 include_once '../../fns/echo_page.php';
-echo_page($user, 'New Task', $content, '../../');
+echo_page($user, 'New Task', $content, $base);

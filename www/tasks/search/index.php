@@ -1,14 +1,9 @@
 <?php
 
-function create_search_form ($content) {
-    return
-        '<form action="./" style="height: 48px; position: relative">'
-            .$content
-        .'</form>';
-}
+$base = '../../';
 
 include_once '../../fns/require_user.php';
-$user = require_user('../');
+$user = require_user($base);
 $idusers = $user->idusers;
 
 include_once '../../fns/request_strings.php';
@@ -24,6 +19,7 @@ if ($keyword === '') {
 $items = array();
 $filterMessage = '';
 
+include_once 'fns/create_search_form.php';
 include_once '../../fns/create_search_form_content.php';
 include_once '../../lib/mysqli.php';
 
@@ -71,9 +67,6 @@ if ($tag === '') {
 include_once '../fns/render_tasks.php';
 render_tasks($tasks, $items, '../');
 
-include_once '../../fns/Page/sessionMessages.php';
-$pageMessages = Page\sessionMessages('tasks/index_messages');
-
 unset(
     $_SESSION['home/index_messages'],
     $_SESSION['tasks/new/index_errors'],
@@ -83,6 +76,7 @@ unset(
 
 include_once '../fns/create_options_panel.php';
 include_once '../../fns/create_tabs.php';
+include_once '../../fns/Page/sessionMessages.php';
 $content =
     create_tabs(
         array(
@@ -92,9 +86,10 @@ $content =
             ),
         ),
         'Tasks',
-        $pageMessages.$filterMessage.join('<div class="hr"></div>', $items)
+        Page\sessionMessages('tasks/index_messages')
+        .$filterMessage.join('<div class="hr"></div>', $items)
     )
     .create_options_panel($user, '../');
 
 include_once '../../fns/echo_page.php';
-echo_page($user, 'Tasks', $content, '../../');
+echo_page($user, 'Tasks', $content, $base);

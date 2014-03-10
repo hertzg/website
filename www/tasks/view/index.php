@@ -4,14 +4,14 @@ include_once '../fns/require_task.php';
 include_once '../../lib/mysqli.php';
 list($task, $id, $user) = require_task($mysqli);
 
-include_once '../../fns/Page/imageArrowLink.php';
-include_once '../../fns/Page/imageLink.php';
-
 unset(
     $_SESSION['tasks/edit_errors'],
     $_SESSION['tasks/edit_lastpost'],
     $_SESSION['tasks/index_messages']
 );
+
+include_once '../../fns/Page/imageArrowLink.php';
+include_once '../../fns/Page/imageLink.php';
 
 $options = array();
 if ($task->top_priority) {
@@ -33,9 +33,6 @@ $tags = TaskTags\indexOnTask($mysqli, $id);
 
 $base = '../../';
 
-include_once '../../fns/Page/sessionMessages.php';
-$pageMessages = Page\sessionMessages('tasks/view/index_messages');
-
 include_once '../../fns/date_ago.php';
 include_once '../../fns/Page/text.php';
 $datesText = '<div>Task created '.date_ago($inserttime).'.</div>';
@@ -44,16 +41,11 @@ if ($inserttime != $updatetime) {
 }
 $datesText = Page\text($datesText);
 
-include_once '../../fns/render_external_links.php';
-$text = Page\text(
-    nl2br(
-        render_external_links(htmlspecialchars($tasktext), $base)
-    )
-);
-
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/create_tags.php';
+include_once '../../fns/render_external_links.php';
+include_once '../../fns/Page/sessionMessages.php';
 $content =
     create_tabs(
         array(
@@ -67,7 +59,13 @@ $content =
             ),
         ),
         "Task #$id",
-        $pageMessages.$text.create_tags('../', $tags).'<div class="hr"></div>'.$datesText
+        Page\sessionMessages('tasks/view/index_messages')
+        .Page\text(
+            nl2br(
+                render_external_links(htmlspecialchars($tasktext), $base)
+            )
+        )
+        .create_tags('../', $tags).'<div class="hr"></div>'.$datesText
     )
     .create_panel('Options', join('<div class="hr"></div>', $options));
 
