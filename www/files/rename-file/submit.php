@@ -5,7 +5,8 @@ require_same_domain_referer('..');
 
 include_once '../fns/require_file.php';
 include_once '../../lib/mysqli.php';
-list($file, $id) = require_file($mysqli);
+list($file, $id, $user) = require_file($mysqli);
+$idusers = $user->idusers;
 
 include_once '../../fns/request_strings.php';
 list($filename) = request_strings('filename');

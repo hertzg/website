@@ -2,7 +2,7 @@
 
 include_once '../fns/require_contact.php';
 include_once '../../lib/mysqli.php';
-list($contact, $id) = require_contact($mysqli);
+list($contact, $id, $user) = require_contact($mysqli);
 
 if (array_key_exists('contacts/edit_lastpost', $_SESSION)) {
     $values = $_SESSION['contacts/edit_lastpost'];

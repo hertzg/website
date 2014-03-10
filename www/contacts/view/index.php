@@ -2,7 +2,7 @@
 
 include_once '../fns/require_contact.php';
 include_once '../../lib/mysqli.php';
-list($contact, $id) = require_contact($mysqli);
+list($contact, $id, $user) = require_contact($mysqli);
 
 $address = $contact->address;
 $email = $contact->email;

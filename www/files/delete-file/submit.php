@@ -5,10 +5,10 @@ require_same_domain_referer('..');
 
 include_once '../fns/require_file.php';
 include_once '../../lib/mysqli.php';
-list($file, $id) = require_file($mysqli);
+list($file, $id, $user) = require_file($mysqli);
 
 include_once '../../fns/Files/delete.php';
-Files\delete($mysqli, $idusers, $id);
+Files\delete($mysqli, $user->idusers, $id);
 
 $_SESSION['files/index_idfolders'] = $file->idfolders;
 $_SESSION['files/index_messages'] = array('File has been deleted.');

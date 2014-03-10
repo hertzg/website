@@ -2,7 +2,7 @@
 
 include_once '../fns/require_file.php';
 include_once '../../lib/mysqli.php';
-list($file, $id) = require_file($mysqli);
+list($file, $id, $user) = require_file($mysqli);
 
 unset($_SESSION['files/view-file/index_messages']);
 

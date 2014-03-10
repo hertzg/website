@@ -2,7 +2,7 @@
 
 include_once '../fns/require_bookmark.php';
 include_once '../../lib/mysqli.php';
-list($bookmark, $id) = require_bookmark($mysqli);
+list($bookmark, $id, $user) = require_bookmark($mysqli);
 
 include_once '../../fns/Page/sessionMessages.php';
 $pageMessages = Page\sessionMessages('bookmarks/view/index_messages');

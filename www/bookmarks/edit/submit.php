@@ -5,7 +5,8 @@ require_same_domain_referer('..');
 
 include_once '../fns/require_bookmark.php';
 include_once '../../lib/mysqli.php';
-list($bookmark, $id) = require_bookmark($mysqli);
+list($bookmark, $id, $user) = require_bookmark($mysqli);
+$idusers = $user->idusers;
 
 include_once '../../fns/request_strings.php';
 list($title, $url, $tags) = request_strings('title', 'url', 'tags');

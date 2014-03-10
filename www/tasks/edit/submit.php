@@ -5,7 +5,8 @@ require_same_domain_referer('..');
 
 include_once '../fns/require_task.php';
 include_once '../../lib/mysqli.php';
-list($task, $id) = require_task($mysqli);
+list($task, $id, $user) = require_task($mysqli);
+$idusers = $user->idusers;
 
 include_once '../../fns/request_strings.php';
 list($tasktext, $tags) = request_strings('tasktext', 'tags');

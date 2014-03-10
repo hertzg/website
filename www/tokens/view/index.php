@@ -2,7 +2,7 @@
 
 include_once '../fns/require_token.php';
 include_once '../../lib/mysqli.php';
-list($token, $id) = require_token($mysqli);
+list($token, $id, $user) = require_token($mysqli);
 
 unset($_SESSION['tokens/index_messages']);
 

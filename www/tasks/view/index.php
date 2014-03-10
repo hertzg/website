@@ -2,7 +2,7 @@
 
 include_once '../fns/require_task.php';
 include_once '../../lib/mysqli.php';
-list($task, $id) = require_task($mysqli);
+list($task, $id, $user) = require_task($mysqli);
 
 include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../fns/Page/imageLink.php';

@@ -13,7 +13,8 @@ require_same_domain_referer('..');
 
 include_once '../fns/require_folder.php';
 include_once '../../lib/mysqli.php';
-list($folder, $idfolders) = require_folder($mysqli);
+list($folder, $idfolders, $user) = require_folder($mysqli);
+$idusers = $user->idusers;
 
 include_once '../../fns/request_strings.php';
 list($parentidfolders) = request_strings('parentidfolders');

@@ -2,7 +2,7 @@
 
 include_once '../fns/require_task.php';
 include_once '../../lib/mysqli.php';
-list($task, $id) = require_task($mysqli);
+list($task, $id, $user) = require_task($mysqli);
 
 unset($_SESSION['tasks/view/index_messages']);
 

@@ -2,7 +2,7 @@
 
 include_once '../fns/require_note.php';
 include_once '../../lib/mysqli.php';
-list($note, $id) = require_note($mysqli);
+list($note, $id, $user) = require_note($mysqli);
 
 if (array_key_exists('notes/edit_lastpost', $_SESSION)) {
     $values = $_SESSION['notes/edit_lastpost'];

@@ -7,7 +7,8 @@ function create_link ($id, $idfolders) {
 
 include_once '../fns/require_file.php';
 include_once '../../lib/mysqli.php';
-list($file, $id) = require_file($mysqli);
+list($file, $id, $user) = require_file($mysqli);
+$idusers = $user->idusers;
 
 include_once '../fns/create_folder_link.php';
 

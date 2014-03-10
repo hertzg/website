@@ -2,7 +2,7 @@
 
 include_once '../fns/require_channel.php';
 include_once '../../lib/mysqli.php';
-list($channel, $id) = require_channel($mysqli);
+list($channel, $id, $user) = require_channel($mysqli);
 
 unset($_SESSION['channels/view/index_messages']);
 

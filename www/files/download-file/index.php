@@ -2,7 +2,7 @@
 
 include_once '../fns/require_file.php';
 include_once '../../lib/mysqli.php';
-list($file, $id) = require_file($mysqli);
+list($file, $id, $user) = require_file($mysqli);
 
 session_commit();
 
@@ -11,6 +11,6 @@ header('Content-Type: application/x-octet-stream');
 header('Content-Length: '.$file->filesize);
 
 include_once '../../fns/Files/filename.php';
-$filename = Files\filename($idusers, $id);
+$filename = Files\filename($user->idusers, $id);
 
 readfile($filename);

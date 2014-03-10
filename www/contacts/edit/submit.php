@@ -5,7 +5,8 @@ require_same_domain_referer('..');
 
 include_once '../fns/require_contact.php';
 include_once '../../lib/mysqli.php';
-list($contact, $id) = require_contact($mysqli);
+list($contact, $id, $user) = require_contact($mysqli);
+$idusers = $user->idusers;
 
 include_once '../../fns/request_strings.php';
 list($fullname, $address, $email, $phone1, $phone2, $tags) = request_strings(

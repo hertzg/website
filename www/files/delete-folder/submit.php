@@ -5,10 +5,10 @@ require_same_domain_referer('..');
 
 include_once '../fns/require_folder.php';
 include_once '../../lib/mysqli.php';
-list($folder, $idfolders) = require_folder($mysqli);
+list($folder, $idfolders, $user) = require_folder($mysqli);
 
 include_once '../../fns/Folders/delete.php';
-Folders\delete($mysqli, $idusers, $idfolders);
+Folders\delete($mysqli, $user->idusers, $idfolders);
 
 $_SESSION['files/index_idfolders'] = $folder->parentidfolders;
 $_SESSION['files/index_messages'] = array('Folder has been deleted.');
