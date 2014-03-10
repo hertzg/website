@@ -8,6 +8,7 @@ $items = array();
 
 include_once '../../fns/Events/indexOnUser.php';
 include_once '../../fns/Events/indexOnUser.php';
+include_once '../../lib/mysqli.php';
 $events = Events\indexOnUser($mysqli, $idusers);
 if ($events) {
 
