@@ -1,9 +1,9 @@
 <?php
 
-include_once '../fns/require_guest_user.php';
-require_guest_user('../');
+$base = '../';
 
-include_once '../fns/create_panel.php';
+include_once '../fns/require_guest_user.php';
+require_guest_user($base);
 
 if (array_key_exists('sign-in/index_lastpost', $_SESSION)) {
     $values = $_SESSION['sign-in/index_lastpost'];
@@ -24,12 +24,6 @@ if (array_key_exists('sign-in/index_lastpost', $_SESSION)) {
 
 }
 
-include_once '../fns/Page/sessionErrors.php';
-$pageErrors = Page\sessionErrors('sign-in/index_errors');
-
-include_once '../fns/Page/sessionMessages.php';
-$pageMessages = Page\sessionMessages('sign-in/index_messages');
-
 unset(
     $_SESSION['sign-up/index_errors'],
     $_SESSION['sign-up/index_lastpost'],
@@ -39,20 +33,21 @@ unset(
 
 $username = $values['username'];
 
-$base = '../';
-
+include_once '../fns/create_panel.php';
 include_once '../fns/create_tabs.php';
 include_once '../fns/Form/button.php';
 include_once '../fns/Form/checkbox.php';
 include_once '../fns/Form/password.php';
 include_once '../fns/Form/textfield.php';
 include_once '../fns/Page/imageArrowLinkWithDescription.php';
+include_once '../fns/Page/sessionErrors.php';
+include_once '../fns/Page/sessionMessages.php';
 $content =
     create_tabs(
         array(),
         'Sign In', 
-        $pageMessages
-        .$pageErrors
+        Page\sessionMessages('sign-in/index_messages')
+        .Page\sessionErrors('sign-in/index_errors')
         .'<form action="submit.php" method="post">'
             .Form\textfield('username', 'Username', array(
                 'value' => $username,
@@ -81,7 +76,5 @@ $content =
         )
     );
 
-include_once '../fns/echo_page.php';
-echo_page($user, 'Sign In', $content, $base, array(
-    'hideSignOutLink' => true,
-));
+include_once '../fns/echo_guest_page.php';
+echo_guest_page('Sign In', $content, $base);
