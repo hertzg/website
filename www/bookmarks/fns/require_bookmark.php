@@ -21,5 +21,3 @@ function require_bookmark ($mysqli) {
     return array($bookmark, $id);
 
 }
-
-include_once __DIR__.'/../../lib/user.php';

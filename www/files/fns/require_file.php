@@ -21,5 +21,3 @@ function require_file ($mysqli) {
     return array($file, $id);
 
 }
-
-include_once __DIR__.'/../../lib/user.php';

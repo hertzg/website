@@ -21,5 +21,3 @@ function require_note ($mysqli) {
     return array($note, $id);
 
 }
-
-include_once __DIR__.'/../../lib/user.php';

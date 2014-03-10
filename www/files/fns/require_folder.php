@@ -21,5 +21,3 @@ function require_folder ($mysqli) {
     return array($folder, $idfolders);
 
 }
-
-include_once __DIR__.'/../../lib/user.php';

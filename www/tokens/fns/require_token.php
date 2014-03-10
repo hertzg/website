@@ -21,5 +21,3 @@ function require_token ($mysqli) {
     return array($token, $id);
 
 }
-
-include_once __DIR__.'/../../lib/user.php';

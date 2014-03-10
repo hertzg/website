@@ -21,5 +21,3 @@ function require_channel ($mysqli) {
     return array($channel, $id);
 
 }
-
-include_once __DIR__.'/../../../../lib/user.php';

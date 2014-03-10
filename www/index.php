@@ -1,11 +1,7 @@
 <?php
 
-include_once 'lib/user.php';
-
-if ($user) {
-    include_once 'fns/redirect.php';
-    redirect('home/');
-}
+include_once 'fns/require_guest_user.php';
+require_guest_user('');
 
 include_once 'fns/get_revision.php';
 

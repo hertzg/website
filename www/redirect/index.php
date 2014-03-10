@@ -1,5 +1,8 @@
 <?php
 
+include_once '../fns/require_user.php';
+$user = require_user('../');
+
 include_once '../fns/request_strings.php';
 list($url) = request_strings('url');
 
@@ -7,9 +10,6 @@ if (!array_key_exists('HTTP_REFERER', $_SERVER)) {
     include_once '../fns/redirect.php';
     redirect($url);
 }
-
-include_once '../lib/user.php';
-$theme = $user ? $user->theme : 'orange';
 
 $body =
     '<div class="page-text">'
@@ -25,4 +25,4 @@ $body =
     .'</script>';
 
 include_once '../fns/echo_html.php';
-echo_html('Redirecting', '', $body, $theme, '../');
+echo_html('Redirecting', '', $body, $user->theme, '../');

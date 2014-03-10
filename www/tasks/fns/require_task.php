@@ -19,5 +19,3 @@ function require_task ($mysqli) {
     return array($task, $task->idtasks);
 
 }
-
-include_once __DIR__.'/../../lib/user.php';

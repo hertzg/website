@@ -21,5 +21,3 @@ function require_contact ($mysqli) {
     return array($contact, $id);
 
 }
-
-include_once __DIR__.'/../../lib/user.php';

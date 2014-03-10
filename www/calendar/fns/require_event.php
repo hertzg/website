@@ -21,5 +21,3 @@ function require_event ($mysqli) {
     return array($event, $idevents);
 
 }
-
-include_once __DIR__.'/../../lib/user.php';
