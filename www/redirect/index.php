@@ -2,6 +2,7 @@
 
 include_once '../fns/require_user.php';
 $user = require_user('../');
+$idusers = $user->idusers;
 
 include_once '../fns/request_strings.php';
 list($url) = request_strings('url');

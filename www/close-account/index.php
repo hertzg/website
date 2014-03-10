@@ -1,7 +1,8 @@
 <?php
 
 include_once '../fns/require_user.php';
-require_user('../');
+$user = require_user('../');
+$idusers = $user->idusers;
 
 include_once '../fns/Page/sessionErrors.php';
 $pageErrors = Page\sessionErrors('close-account/index_errors');

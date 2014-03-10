@@ -4,7 +4,8 @@ include_once '../../fns/require_same_domain_referer.php';
 require_same_domain_referer('./');
 
 include_once '../../fns/require_user.php';
-require_user('../../');
+$user = require_user('../../');
+$idusers = $user->idusers;
 
 include_once '../../fns/Contacts/deleteOnUser.php';
 include_once '../../lib/mysqli.php';

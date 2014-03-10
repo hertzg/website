@@ -1,7 +1,8 @@
 <?php
 
 include_once '../../fns/require_user.php';
-require_user('../../');
+$user = require_user('../../');
+$idusers = $user->idusers;
 
 include_once '../../fns/Page/text.php';
 $question = Page\text('Are you sure you want to delete all the tasks?');

@@ -1,7 +1,8 @@
 <?php
 
 include_once '../../fns/require_user.php';
-require_user('../../');
+$user = require_user('../../');
+$idusers = $user->idusers;
 
 if (array_key_exists('notes/new/index_lastpost', $_SESSION)) {
     $values = $_SESSION['notes/new/index_lastpost'];

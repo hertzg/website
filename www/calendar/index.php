@@ -70,7 +70,8 @@ function create_calendar ($timeSelected) {
 }
 
 include_once __DIR__.'/../fns/require_user.php';
-require_user('../');
+$user = require_user('../');
+$idusers = $user->idusers;
 
 include_once '../fns/Page/imageArrowLink.php';
 include_once '../fns/Page/imageArrowLinkWithDescription.php';

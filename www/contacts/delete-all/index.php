@@ -1,7 +1,8 @@
 <?php
 
 include_once '../../fns/require_user.php';
-require_user('../../');
+$user = require_user('../../');
+$idusers = $user->idusers;
 
 unset($_SESSION['contacts/index_messages']);
 

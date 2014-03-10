@@ -5,7 +5,8 @@ function create_form ($content) {
 }
 
 include_once '../fns/require_user.php';
-require_user('../');
+$user = require_user('../');
+$idusers = $user->idusers;
 
 include_once '../lib/mysqli.php';
 

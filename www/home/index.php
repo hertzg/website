@@ -3,7 +3,8 @@
 $base = '../';
 
 include_once '../fns/require_user.php';
-require_user($base);
+$user = require_user($base);
+$idusers = $user->idusers;
 
 include_once '../fns/create_panel.php';
 include_once '../fns/create_search_form_empty_content.php';

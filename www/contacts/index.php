@@ -8,7 +8,8 @@ function create_search_form ($content) {
 }
 
 include_once '../fns/require_user.php';
-require_user('../');
+$user = require_user('../');
+$idusers = $user->idusers;
 
 include_once '../fns/request_strings.php';
 list($keyword, $tag) = request_strings('keyword', 'tag');
