@@ -18,6 +18,6 @@ function require_file ($mysqli) {
         redirect('..');
     }
 
-    return array($file, $id);
+    return array($file, $id, $user);
 
 }

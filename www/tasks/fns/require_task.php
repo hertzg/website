@@ -16,6 +16,6 @@ function require_task ($mysqli) {
         redirect('..');
     }
 
-    return array($task, $task->idtasks);
+    return array($task, $task->idtasks, $user);
 
 }

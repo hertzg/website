@@ -18,6 +18,6 @@ function require_channel ($mysqli) {
         redirect('../..');
     }
 
-    return array($channel, $id);
+    return array($channel, $id, $user);
 
 }

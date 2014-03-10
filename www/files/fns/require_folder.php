@@ -18,6 +18,6 @@ function require_folder ($mysqli) {
         redirect('..');
     }
 
-    return array($folder, $idfolders);
+    return array($folder, $idfolders, $user);
 
 }

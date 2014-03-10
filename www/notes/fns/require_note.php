@@ -18,6 +18,6 @@ function require_note ($mysqli) {
         redirect();
     }
 
-    return array($note, $id);
+    return array($note, $id, $user);
 
 }

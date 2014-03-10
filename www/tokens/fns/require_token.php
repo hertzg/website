@@ -18,6 +18,6 @@ function require_token ($mysqli) {
         redirect('..');
     }
 
-    return array($token, $id);
+    return array($token, $id, $user);
 
 }

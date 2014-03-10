@@ -18,6 +18,6 @@ function require_bookmark ($mysqli) {
         redirect('..');
     }
 
-    return array($bookmark, $id);
+    return array($bookmark, $id, $user);
 
 }

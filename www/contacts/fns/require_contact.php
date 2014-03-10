@@ -18,6 +18,6 @@ function require_contact ($mysqli) {
         redirect('..');
     }
 
-    return array($contact, $id);
+    return array($contact, $id, $user);
 
 }

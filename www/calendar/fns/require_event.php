@@ -18,6 +18,6 @@ function require_event ($mysqli) {
         redirect('..');
     }
 
-    return array($event, $idevents);
+    return array($event, $idevents, $user);
 
 }
