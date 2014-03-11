@@ -4,8 +4,8 @@ include_once '../fns/require_contact.php';
 include_once '../../lib/mysqli.php';
 list($contact, $id, $user) = require_contact($mysqli);
 
-if (array_key_exists('contacts/edit_lastpost', $_SESSION)) {
-    $values = $_SESSION['contacts/edit_lastpost'];
+if (array_key_exists('contacts/edit/index_lastpost', $_SESSION)) {
+    $values = $_SESSION['contacts/edit/index_lastpost'];
 } else {
     $values = (array)$contact;
 }
@@ -30,7 +30,7 @@ $content =
             ),
         ),
         'Edit',
-        Page\sessionErrors('contacts/edit_errors')
+        Page\sessionErrors('contacts/edit/index_errors')
         .'<form action="submit.php" method="post">'
             .Form\textfield('fullname', 'Full name', array(
                 'value' => $values['fullname'],

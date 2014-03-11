@@ -29,16 +29,16 @@ include_once '../../fns/Files/getByName.php';
 $existingFile = Files\getByName($mysqli, $idusers, $idfolders, $file->filename);
 
 if ($existingFile) {
-    $_SESSION['files/move-file_idfolders'] = $idfolders;
-    $_SESSION['files/move-file_errors'] = array(
+    $_SESSION['files/move-file/index_idfolders'] = $idfolders;
+    $_SESSION['files/move-file/index_errors'] = array(
         'A file with the same name already exists in this folder.',
     );
     redirect("./?id=$id&idfolders=$idfolders");
 }
 
 unset(
-    $_SESSION['files/move-file_idfolders'],
-    $_SESSION['files/move-file_errors']
+    $_SESSION['files/move-file/index_idfolders'],
+    $_SESSION['files/move-file/index_errors']
 );
 
 include_once '../../fns/Files/move.php';

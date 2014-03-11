@@ -27,8 +27,8 @@ parse_tags($tags, $tagnames, $errors);
 include_once '../../fns/redirect.php';
 
 if ($errors) {
-    $_SESSION['notes/edit_errors'] = $errors;
-    $_SESSION['notes/edit_lastpost'] = array(
+    $_SESSION['notes/edit/index_errors'] = $errors;
+    $_SESSION['notes/edit/index_lastpost'] = array(
         'notetext' => $notetext,
         'tags' => $tags,
     );
@@ -36,8 +36,8 @@ if ($errors) {
 }
 
 unset(
-    $_SESSION['notes/edit_errors'],
-    $_SESSION['notes/edit_lastpost']
+    $_SESSION['notes/edit/index_errors'],
+    $_SESSION['notes/edit/index_lastpost']
 );
 
 include_once '../../fns/Notes/edit.php';

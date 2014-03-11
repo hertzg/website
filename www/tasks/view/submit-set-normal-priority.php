@@ -13,5 +13,7 @@ Tasks\setTopPriority($mysqli, $user->idusers, $id, false);
 include_once '../../fns/TaskTags/setTaskTopPriority.php';
 TaskTags\setTaskTopPriority($mysqli, $id, false);
 
+$_SESSION['tasks/view/index_messages'] = array('Marked as notmal priority.');
+
 include_once '../../fns/redirect.php';
 redirect("./?id=$id");

@@ -4,13 +4,16 @@ include_once '../fns/require_note.php';
 include_once '../../lib/mysqli.php';
 list($note, $id, $user) = require_note($mysqli);
 
-if (array_key_exists('notes/edit_lastpost', $_SESSION)) {
-    $values = $_SESSION['notes/edit_lastpost'];
+if (array_key_exists('notes/edit/index_lastpost', $_SESSION)) {
+    $values = $_SESSION['notes/edit/index_lastpost'];
 } else {
     $values = (array)$note;
 }
 
-unset($_SESSION['notes/index_messages']);
+unset(
+    $_SESSION['notes/index_errors'],
+    $_SESSION['notes/index_messages']
+);
 
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
@@ -31,7 +34,7 @@ $content =
             ),
         ),
         'Edit',
-        Page\sessionErrors('notes/edit_errors')
+        Page\sessionErrors('notes/edit/index_errors')
         .'<form action="submit.php" method="post">'
             .Form\textarea('notetext', 'Text', array(
                 'value' => $values['notetext'],

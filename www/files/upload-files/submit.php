@@ -68,11 +68,11 @@ if (!$posttest) {
 }
 
 if ($errors) {
-    $_SESSION['files/upload-files_errors'] = $errors;
+    $_SESSION['files/upload-files/index_errors'] = $errors;
     redirect("./?idfolders=$idfolders");
 }
 
-unset($_SESSION['files/upload-files_errors']);
+unset($_SESSION['files/upload-files/index_errors']);
 
 if ($numfiles == 1) {
     $message = '1 file has been uploaded.';

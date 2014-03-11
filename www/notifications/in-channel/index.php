@@ -16,6 +16,10 @@ include_once '../../lib/mysqli.php';
 $channel = Channels\get($mysqli, $idusers, $id);
 
 if (!$channel) {
+    unset($_SESSION['notifications/index_messages']);
+    $_SESSION['notifications/index_errors'] = array(
+        'The channel no longer exists.',
+    );
     include_once '../../fns/redirect.php';
     redirect('..');
 }

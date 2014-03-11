@@ -68,6 +68,7 @@ unset(
 
 include_once 'fns/create_options_panel.php';
 include_once '../fns/create_tabs.php';
+include_once '../fns/Page/sessionErrors.php';
 include_once '../fns/Page/sessionMessages.php';
 $content =
     create_tabs(
@@ -78,7 +79,8 @@ $content =
             ),
         ),
         'Contacts',
-        Page\sessionMessages('contacts/index_messages')
+        Page\sessionErrors('contacts/index_errors')
+        .Page\sessionMessages('contacts/index_messages')
         .$filterMessage.join('<div class="hr"></div>', $items)
     )
     .create_options_panel($user);

@@ -7,6 +7,7 @@ list($event, $idevents, $user) = require_event($mysqli);
 unset(
     $_SESSION['calendar/edit-event/index_errors'],
     $_SESSION['calendar/edit-event/index_lastpost'],
+    $_SESSION['calendar/index_errors'],
     $_SESSION['calendar/index_messages']
 );
 
@@ -28,7 +29,7 @@ $content =
             ),
         ),
         "Event #$idevents",
-        Page\sessionMessages('calendar/view-event_messages')
+        Page\sessionMessages('calendar/view-event/index_messages')
         .Page\text(htmlspecialchars($event->eventtext))
         .'<div class="hr"></div>'
         .Page\text(date('F d, Y', $event->eventtime))

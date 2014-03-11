@@ -22,8 +22,8 @@ if (!$file) {
 unset(
     $_SESSION['files/index_idfolders'],
     $_SESSION['files/index_messages'],
-    $_SESSION['files/rename-file_errors'],
-    $_SESSION['files/rename-file_lastpost']
+    $_SESSION['files/rename-file/index_errors'],
+    $_SESSION['files/rename-file/index_lastpost']
 );
 
 include_once '../fns/create_folder_link.php';

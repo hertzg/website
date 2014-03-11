@@ -10,7 +10,7 @@ if (array_key_exists('calendar/edit-event/index_lastpost', $_SESSION)) {
     $values = array('eventtext' => $event->eventtext);
 }
 
-unset($_SESSION['calendar/view-event_messages']);
+unset($_SESSION['calendar/view-event/index_messages']);
 
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';

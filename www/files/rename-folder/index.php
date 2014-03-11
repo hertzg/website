@@ -4,8 +4,8 @@ include_once '../fns/require_folder.php';
 include_once '../../lib/mysqli.php';
 list($folder, $idfolders, $user) = require_folder($mysqli);
 
-if (array_key_exists('files/rename-folder_lastpost', $_SESSION)) {
-    $values = $_SESSION['files/rename-folder_lastpost'];
+if (array_key_exists('files/rename-folder/index_lastpost', $_SESSION)) {
+    $values = $_SESSION['files/rename-folder/index_lastpost'];
 } else {
     $values = (array)$folder;
 }
@@ -34,7 +34,7 @@ $content =
             ),
         ),
         "Rename Folder #$idfolders",
-        Page\sessionErrors('files/rename-folder_errors')
+        Page\sessionErrors('files/rename-folder/index_errors')
         .'<form action="submit.php" method="post">'
             .Form\textfield('foldername', 'Folder name', array(
                 'value' => $values['foldername'],

@@ -57,9 +57,9 @@ if ($parentidfolders != $folder->parentidfolders) {
         'move-folder');
 }
 
-if (array_key_exists('files/move-folder_parentidfolders', $_SESSION) &&
-    $parentidfolders != $_SESSION['files/move-folder_parentidfolders']) {
-    unset($_SESSION['files/move-folder_errors']);
+if (array_key_exists('files/move-folder/index_parentidfolders', $_SESSION) &&
+    $parentidfolders != $_SESSION['files/move-folder/index_parentidfolders']) {
+    unset($_SESSION['files/move-folder/index_errors']);
 }
 
 unset(
@@ -84,7 +84,7 @@ $content =
             )
         ),
         'Move',
-        Page\sessionErrors('files/move-folder_errors')
+        Page\sessionErrors('files/move-folder/index_errors')
         .Page\warnings(array(
             'Moving the folder "<b>'.htmlspecialchars($folder->foldername).'</b>".',
             'Select a folder to move the folder into.'

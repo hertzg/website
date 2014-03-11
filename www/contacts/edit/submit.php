@@ -39,8 +39,8 @@ parse_tags($tags, $tagnames, $errors);
 include_once '../../fns/redirect.php';
 
 if ($errors) {
-    $_SESSION['contacts/edit_errors'] = $errors;
-    $_SESSION['contacts/edit_lastpost'] = array(
+    $_SESSION['contacts/edit/index_errors'] = $errors;
+    $_SESSION['contacts/edit/index_lastpost'] = array(
         'fullname' => $fullname,
         'address' => $address,
         'email' => $email,
@@ -52,8 +52,8 @@ if ($errors) {
 }
 
 unset(
-    $_SESSION['contacts/edit_errors'],
-    $_SESSION['contacts/edit_lastpost']
+    $_SESSION['contacts/edit/index_errors'],
+    $_SESSION['contacts/edit/index_lastpost']
 );
 
 include_once '../../fns/Contacts/edit.php';

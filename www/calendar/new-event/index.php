@@ -8,8 +8,8 @@ $user = require_user($base);
 include_once '../../fns/request_strings.php';
 list($year, $month, $day) = request_strings('year', 'month', 'day');
 
-if (array_key_exists('calendar/add-event_lastpost', $_SESSION)) {
-    $values = $_SESSION['calendar/add-event_lastpost'];
+if (array_key_exists('calendar/add-event/index_lastpost', $_SESSION)) {
+    $values = $_SESSION['calendar/add-event/index_lastpost'];
 } else {
     $values = array('eventtext' => '');
 }
@@ -19,7 +19,10 @@ $month = (int)$month;
 $day = (int)$day;
 $time = mktime(0, 0, 0, $month, $day, $year);
 
-unset($_SESSION['calendar/index_messages']);
+unset(
+    $_SESSION['calendar/index_errors'],
+    $_SESSION['calendar/index_messages']
+);
 
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
@@ -40,7 +43,7 @@ $content =
             ),
         ),
         'New Event',
-        Page\sessionErrors('calendar/add-event_errors')
+        Page\sessionErrors('calendar/add-event/index_errors')
         .'<form action="submit.php" method="post">'
             .Form\label('When', date('F d, Y', $time))
             .'<div class="hr"></div>'

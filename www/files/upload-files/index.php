@@ -49,7 +49,7 @@ $content =
             ),
         ),
         'Upload Files',
-        Page\sessionErrors('files/upload-files_errors')
+        Page\sessionErrors('files/upload-files/index_errors')
         .Page\warnings(array(
             'Maximum '.bytestr(ini_get_bytes('upload_max_filesize')).' each file.',
             'Maximum '.bytestr(ini_get_bytes('post_max_size')).' at once.',

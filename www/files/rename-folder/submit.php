@@ -28,16 +28,16 @@ if ($foldername === '') {
 include_once '../../fns/redirect.php';
 
 if ($errors) {
-    $_SESSION['files/rename-folder_errors'] = $errors;
-    $_SESSION['files/rename-folder_lastpost'] = array(
+    $_SESSION['files/rename-folder/index_errors'] = $errors;
+    $_SESSION['files/rename-folder/index_lastpost'] = array(
         'foldername' => $foldername,
     );
     redirect("./?idfolders=$idfolders");
 }
 
 unset(
-    $_SESSION['files/rename-folder_errors'],
-    $_SESSION['files/rename-folder_lastpost']
+    $_SESSION['files/rename-folder/index_errors'],
+    $_SESSION['files/rename-folder/index_lastpost']
 );
 
 include_once '../../fns/Folders/rename.php';

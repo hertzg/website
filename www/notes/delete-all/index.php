@@ -5,7 +5,10 @@ $base = '../../';
 include_once '../../fns/require_user.php';
 $user = require_user($base);
 
-unset($_SESSION['notes/index_messages']);
+unset(
+    $_SESSION['notes/index_errors'],
+    $_SESSION['notes/index_messages']
+);
 
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/imageLink.php';

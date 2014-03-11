@@ -34,7 +34,10 @@ if ($events) {
     $optionsPanel = '';
 }
 
-unset($_SESSION['calendar/index_messages']);
+unset(
+    $_SESSION['calendar/index_errors'],
+    $_SESSION['calendar/index_messages']
+);
 
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';

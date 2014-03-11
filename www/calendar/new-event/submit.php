@@ -26,8 +26,8 @@ if ($eventtext === '') $errors[] = 'Enter text.';
 include_once '../../fns/redirect.php';
 
 if ($errors) {
-    $_SESSION['calendar/add-event_errors'] = $errors;
-    $_SESSION['calendar/add-event_lastpost'] = array(
+    $_SESSION['calendar/add-event/index_errors'] = $errors;
+    $_SESSION['calendar/add-event/index_lastpost'] = array(
         'eventtext' => $eventtext,
     );
     redirect('./?'.http_build_query(array(
@@ -38,8 +38,8 @@ if ($errors) {
 }
 
 unset(
-    $_SESSION['calendar/add-event_errors'],
-    $_SESSION['calendar/add-event_lastpost']
+    $_SESSION['calendar/add-event/index_errors'],
+    $_SESSION['calendar/add-event/index_lastpost']
 );
 
 include_once '../../fns/Events/add.php';
@@ -49,6 +49,6 @@ $id = Events\add($mysqli, $idusers, $eventtext, $eventtime);
 include_once '../../fns/Users/addNumEvents.php';
 Users\addNumEvents($mysqli, $idusers, 1);
 
-$_SESSION['calendar/view-event_messages'] = array('Event has been saved.');
+$_SESSION['calendar/view-event/index_messages'] = array('Event has been saved.');
 
 redirect("../view-event/?idevents=$id");

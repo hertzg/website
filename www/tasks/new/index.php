@@ -14,7 +14,10 @@ if (array_key_exists('tasks/new/index_lastpost', $_SESSION)) {
     );
 }
 
-unset($_SESSION['tasks/index_messages']);
+unset(
+    $_SESSION['tasks/index_errors'],
+    $_SESSION['tasks/index_messages']
+);
 
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';

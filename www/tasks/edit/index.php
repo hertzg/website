@@ -4,13 +4,16 @@ include_once '../fns/require_task.php';
 include_once '../../lib/mysqli.php';
 list($task, $id, $user) = require_task($mysqli);
 
-if (array_key_exists('tasks/edit_lastpost', $_SESSION)) {
-    $values = $_SESSION['tasks/edit_lastpost'];
+if (array_key_exists('tasks/edit/index_lastpost', $_SESSION)) {
+    $values = $_SESSION['tasks/edit/index_lastpost'];
 } else {
     $values = (array)$task;
 }
 
-unset($_SESSION['tasks/index_messages']);
+unset(
+    $_SESSION['tasks/index_errors'],
+    $_SESSION['tasks/index_messages']
+);
 
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
@@ -31,7 +34,7 @@ $content =
             ),
         ),
         'Edit',
-        Page\sessionErrors('tasks/edit_errors')
+        Page\sessionErrors('tasks/edit/index_errors')
         .'<form action="submit.php" method="post">'
             .Form\textarea('tasktext', 'Text', array(
                 'value' => $values['tasktext'],

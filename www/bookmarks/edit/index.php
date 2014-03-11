@@ -10,7 +10,10 @@ if (array_key_exists('bookmarks/edit/index_lastpost', $_SESSION)) {
     $values = (array)$bookmark;
 }
 
-unset($_SESSION['bookmarks/index_messages']);
+unset(
+    $_SESSION['bookmarks/index_errors'],
+    $_SESSION['bookmarks/index_messages']
+);
 
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';

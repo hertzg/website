@@ -47,9 +47,9 @@ if ($idfolders != $file->idfolders) {
         "submit.php?id=$id&idfolders=$idfolders", 'move-file');
 }
 
-if (array_key_exists('files/move-file_idfolders', $_SESSION) &&
-    $idfolders != $_SESSION['files/move-file_idfolders']) {
-    unset($_SESSION['files/move-file_errors']);
+if (array_key_exists('files/move-file/index_idfolders', $_SESSION) &&
+    $idfolders != $_SESSION['files/move-file/index_idfolders']) {
+    unset($_SESSION['files/move-file/index_errors']);
 }
 
 unset($_SESSION['files/view-file/index_messages']);
@@ -71,7 +71,7 @@ $content =
             ),
         ),
         'Move',
-        Page\sessionErrors('files/move-file_errors')
+        Page\sessionErrors('files/move-file/index_errors')
         .Page\warnings(array(
             'Moving the file "<b>'.htmlspecialchars($file->filename).'</b>".',
             'Select a folder to move the file into.',

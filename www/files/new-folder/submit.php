@@ -37,14 +37,14 @@ if ($foldername === '') {
 }
 
 if ($errors) {
-    $_SESSION['files/add-folder_errors'] = $errors;
-    $_SESSION['files/add-folder_lastpost'] = array('foldername' => $foldername);
+    $_SESSION['files/add-folder/index_errors'] = $errors;
+    $_SESSION['files/add-folder/index_lastpost'] = array('foldername' => $foldername);
     redirect("./?parentidfolders=$parentidfolders");
 }
 
 unset(
-    $_SESSION['files/add-folder_errors'],
-    $_SESSION['files/add-folder_lastpost']
+    $_SESSION['files/add-folder/index_errors'],
+    $_SESSION['files/add-folder/index_lastpost']
 );
 
 include_once '../../fns/Folders/add.php';

@@ -10,8 +10,9 @@ $phone1 = $contact->phone1;
 $phone2 = $contact->phone2;
 
 unset(
-    $_SESSION['contacts/edit_errors'],
-    $_SESSION['contacts/edit_lastpost'],
+    $_SESSION['contacts/edit/index_errors'],
+    $_SESSION['contacts/edit/index_lastpost'],
+    $_SESSION['contacts/index_errors'],
     $_SESSION['contacts/index_messages']
 );
 

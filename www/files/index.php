@@ -118,11 +118,11 @@ if ($keyword !== '' && !$deep) {
 }
 
 unset(
-    $_SESSION['files/add-folder_errors'],
-    $_SESSION['files/add-folder_lastpost'],
-    $_SESSION['files/rename-folder_errors'],
-    $_SESSION['files/rename-folder_lastpost'],
-    $_SESSION['files/upload-files_errors'],
+    $_SESSION['files/add-folder/index_errors'],
+    $_SESSION['files/add-folder/index_lastpost'],
+    $_SESSION['files/rename-folder/index_errors'],
+    $_SESSION['files/rename-folder/index_lastpost'],
+    $_SESSION['files/upload-files/index_errors'],
     $_SESSION['files/view-file/index_messages'],
     $_SESSION['home/index_messages']
 );

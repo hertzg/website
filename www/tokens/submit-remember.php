@@ -36,7 +36,9 @@ if (!$token) {
 
 }
 
-$_SESSION['tokens/index_messages'] = array('Current session has been remembered.');
+$_SESSION['tokens/index_messages'] = array(
+    'Current session has been remembered.',
+);
 
 include_once '../fns/redirect.php';
 redirect();

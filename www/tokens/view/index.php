@@ -4,7 +4,10 @@ include_once '../fns/require_token.php';
 include_once '../../lib/mysqli.php';
 list($token, $id, $user) = require_token($mysqli);
 
-unset($_SESSION['tokens/index_messages']);
+unset(
+    $_SESSION['tokens/index_errors'],
+    $_SESSION['tokens/index_messages']
+);
 
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';

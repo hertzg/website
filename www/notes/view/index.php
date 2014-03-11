@@ -5,8 +5,9 @@ include_once '../../lib/mysqli.php';
 list($note, $id, $user) = require_note($mysqli);
 
 unset(
-    $_SESSION['notes/edit_errors'],
-    $_SESSION['notes/edit_lastpost'],
+    $_SESSION['notes/edit/index_errors'],
+    $_SESSION['notes/edit/index_lastpost'],
+    $_SESSION['notes/index_errors'],
     $_SESSION['notes/index_messages']
 );
 

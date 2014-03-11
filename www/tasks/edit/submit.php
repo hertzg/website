@@ -27,8 +27,8 @@ parse_tags($tags, $tagnames, $errors);
 include_once '../../fns/redirect.php';
 
 if ($errors) {
-    $_SESSION['tasks/edit_errors'] = $errors;
-    $_SESSION['tasks/edit_lastpost'] = array(
+    $_SESSION['tasks/edit/index_errors'] = $errors;
+    $_SESSION['tasks/edit/index_lastpost'] = array(
         'tasktext' => $tasktext,
         'tags' => $tags,
     );
@@ -36,8 +36,8 @@ if ($errors) {
 }
 
 unset(
-    $_SESSION['tasks/edit_errors'],
-    $_SESSION['tasks/edit_lastpost']
+    $_SESSION['tasks/edit/index_errors'],
+    $_SESSION['tasks/edit/index_lastpost']
 );
 
 include_once '../../fns/Tasks/edit.php';

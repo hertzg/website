@@ -39,16 +39,16 @@ include_once '../../fns/Folders/getByName.php';
 $existingFolder = Folders\getByName($mysqli, $idusers, $parentidfolders, $folder->foldername);
 
 if ($existingFolder) {
-    $_SESSION['files/move-folder_parentidfolders'] = $parentidfolders;
-    $_SESSION['files/move-folder_errors'] = array(
+    $_SESSION['files/move-folder/index_parentidfolders'] = $parentidfolders;
+    $_SESSION['files/move-folder/index_errors'] = array(
         'A folder with the same name already exists in this folder.',
     );
     redirect("./?idfolders=$idfolders&parentidfolders=$parentidfolders");
 }
 
 unset(
-    $_SESSION['files/move-folder_parentidfolders'],
-    $_SESSION['files/move-folder_errors']
+    $_SESSION['files/move-folder/index_parentidfolders'],
+    $_SESSION['files/move-folder/index_errors']
 );
 
 include_once '../../fns/Folders/move.php';

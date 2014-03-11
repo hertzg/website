@@ -55,6 +55,7 @@ if ($notifications) {
 }
 
 unset(
+    $_SESSION['channels/index_errors'],
     $_SESSION['channels/index_messages'],
     $_SESSION['home/index_messages'],
     $_SESSION['notifications/in-channel/index_messages']
@@ -62,6 +63,7 @@ unset(
 
 include_once '../fns/create_panel.php';
 include_once '../fns/create_tabs.php';
+include_once '../fns/Page/sessionErrors.php';
 include_once '../fns/Page/sessionMessages.php';
 $content =
     create_tabs(
@@ -72,7 +74,8 @@ $content =
             ),
         ),
         'Notifications',
-        Page\sessionMessages('notifications/index_messages')
+        Page\sessionErrors('notifications/index_errors')
+        .Page\sessionMessages('notifications/index_messages')
         .join('<div class="hr"></div>', $items)
         .create_panel('Options', join('<div class="hr"></div>', $options))
     );

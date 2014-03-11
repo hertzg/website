@@ -14,8 +14,12 @@ function require_note ($mysqli) {
     $note = Notes\get($mysqli, $user->idusers, $id);
 
     if (!$note) {
-        include_once __DIR__.'/../fns/redirect.php';
-        redirect();
+        unset($_SESSION['notes/index_messages']);
+        $_SESSION['notes/index_errors'] = array(
+            'The note no longer exists.',
+        );
+        include_once __DIR__.'/../../fns/redirect.php';
+        redirect('..');
     }
 
     return array($note, $id, $user);

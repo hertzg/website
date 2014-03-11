@@ -77,9 +77,9 @@ include_once '../fns/Page/imageArrowLinkWithDescription.php';
 
 unset(
     $_SESSION['home/index_messages'],
-    $_SESSION['calendar/add-event_errors'],
-    $_SESSION['calendar/add-event_lastpost'],
-    $_SESSION['calendar/view-event_messages']
+    $_SESSION['calendar/add-event/index_errors'],
+    $_SESSION['calendar/add-event/index_lastpost'],
+    $_SESSION['calendar/view-event/index_messages']
 );
 
 include_once '../fns/request_strings.php';
@@ -136,6 +136,7 @@ $jumpToHref = "jump-to/?year=$yearNow&amp;month=$monthNow";
 
 include_once '../fns/create_panel.php';
 include_once '../fns/create_tabs.php';
+include_once '../fns/Page/sessionErrors.php';
 include_once '../fns/Page/sessionMessages.php';
 $content =
     create_tabs(
@@ -146,7 +147,8 @@ $content =
             ),
         ),
         'Calendar',
-        Page\sessionMessages('calendar/index_messages')
+        Page\sessionErrors('calendar/index_errors')
+        .Page\sessionMessages('calendar/index_messages')
         .create_calendar($timeSelected)
     )
     .create_panel(

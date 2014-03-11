@@ -18,7 +18,10 @@ if (array_key_exists('contacts/new/index_lastpost', $_SESSION)) {
     );
 }
 
-unset($_SESSION['contacts/index_messages']);
+unset(
+    $_SESSION['contacts/index_errors'],
+    $_SESSION['contacts/index_messages']
+);
 
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';

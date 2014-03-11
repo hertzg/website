@@ -14,6 +14,10 @@ function require_bookmark ($mysqli) {
     $bookmark = Bookmarks\get($mysqli, $user->idusers, $id);
 
     if (!$bookmark) {
+        unset($_SESSION['bookmarks/index_messages']);
+        $_SESSION['bookmarks/index_errors'] = array(
+            'The bookmark no longer exists.',
+        );
         include_once __DIR__.'/../../fns/redirect.php';
         redirect('..');
     }

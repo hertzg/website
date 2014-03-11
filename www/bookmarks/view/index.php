@@ -7,6 +7,7 @@ list($bookmark, $id, $user) = require_bookmark($mysqli);
 unset(
     $_SESSION['bookmarks/edit/index_errors'],
     $_SESSION['bookmarks/edit/index_lastpost'],
+    $_SESSION['bookmarks/index_errors'],
     $_SESSION['bookmarks/index_messages']
 );
 

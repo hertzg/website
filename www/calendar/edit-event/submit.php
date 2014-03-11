@@ -32,6 +32,6 @@ unset($_SESSION['calendar/edit-event/index_errors']);
 include_once '../../fns/Events/edit.php';
 Events\edit($mysqli, $user->idusers, $idevents, $eventtext);
 
-$_SESSION['calendar/view-event_messages'] = array('Changes have been saved.');
+$_SESSION['calendar/view-event/index_messages'] = array('Changes have been saved.');
 
 redirect("../view-event/?idevents=$idevents");

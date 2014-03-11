@@ -33,14 +33,14 @@ if ($filename === '') {
 include_once '../../fns/redirect.php';
 
 if ($errors) {
-    $_SESSION['files/rename-file_errors'] = $errors;
-    $_SESSION['files/rename-file_lastpost'] = array('filename' => $filename);
+    $_SESSION['files/rename-file/index_errors'] = $errors;
+    $_SESSION['files/rename-file/index_lastpost'] = array('filename' => $filename);
     redirect("./?id=$id");
 }
 
 unset(
-    $_SESSION['files/rename-file_errors'],
-    $_SESSION['files/rename-file_lastpost']
+    $_SESSION['files/rename-file/index_errors'],
+    $_SESSION['files/rename-file/index_lastpost']
 );
 
 include_once '../../fns/Files/rename.php';
