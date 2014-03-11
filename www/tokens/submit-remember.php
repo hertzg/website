@@ -36,6 +36,7 @@ if (!$token) {
 
 }
 
+unset($_SESSION['tokens/index_errors']);
 $_SESSION['tokens/index_messages'] = array(
     'Current session has been remembered.',
 );

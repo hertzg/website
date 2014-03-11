@@ -14,6 +14,7 @@ Events\deleteOnUser($mysqli, $idusers);
 include_once '../../../fns/Users/clearNumEvents.php';
 Users\clearNumEvents($mysqli, $idusers);
 
+unset($_SESSION['calendar/index_errors']);
 $_SESSION['calendar/index_messages'] = array('All events have been deleted.');
 
 include_once '../../../fns/redirect.php';

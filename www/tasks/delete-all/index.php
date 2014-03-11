@@ -6,7 +6,7 @@ include_once '../../fns/require_user.php';
 $user = require_user($base);
 
 unset(
-    $_SESSION['tasks/index_errors']
+    $_SESSION['tasks/index_errors'],
     $_SESSION['tasks/index_messages']
 );
 

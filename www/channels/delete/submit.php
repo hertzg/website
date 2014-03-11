@@ -20,6 +20,7 @@ Users\addNumChannels($mysqli, $idusers, -1);
 include_once '../../fns/Users/clearNumNotifications.php';
 Users\clearNumNotifications($mysqli, $idusers);
 
+unset($_SESSION['channels/index_errors']);
 $_SESSION['channels/index_messages'] = array('Channel has been deleted.');
 
 include_once '../../fns/redirect.php';

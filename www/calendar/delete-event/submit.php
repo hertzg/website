@@ -13,6 +13,7 @@ Events\delete($mysqli, $idevents);
 include_once '../../fns/Users/addNumEvents.php';
 Users\addNumEvents($mysqli, $user->idusers, -1);
 
+unset($_SESSION['calendar/index_errors']);
 $_SESSION['calendar/index_messages'] = array('Event has been deleted.');
 
 include_once '../../fns/redirect.php';

@@ -14,6 +14,7 @@ Tokens\deleteOnUser($mysqli, $idusers);
 include_once '../../fns/Users/clearNumTokens.php';
 Users\clearNumTokens($mysqli, $idusers);
 
+unset($_SESSION['tokens/index_errors']);
 $_SESSION['tokens/index_messages'] = array(
     'All remembered sessions have been deleted.'
 );

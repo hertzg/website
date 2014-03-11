@@ -13,6 +13,7 @@ Tokens\delete($mysqli, $id);
 include_once '../../fns/Users/addNumTokens.php';
 Users\addNumTokens($mysqli, $user->idusers, -1);
 
+unset($_SESSION['tokens/index_errors']);
 $_SESSION['tokens/index_messages'] = array(
     'Remembered session has been deleted.'
 );
