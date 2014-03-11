@@ -14,7 +14,8 @@ $filterMessage = '';
 
 include_once '../lib/mysqli.php';
 
-$placeholder = 'Search contacts...';
+$searchAction = 'search/';
+$searchPlaceholder = 'Search contacts...';
 
 if ($tag === '') {
 
@@ -24,10 +25,10 @@ if ($tag === '') {
     if (count($contacts) > 1) {
 
         include_once '../fns/create_search_form_empty_content.php';
-        $formContent = create_search_form_empty_content($placeholder);
+        $formContent = create_search_form_empty_content($searchPlaceholder);
 
         include_once '../fns/create_search_form.php';
-        $items[] = create_search_form('search/', $formContent);
+        $items[] = create_search_form($searchAction, $formContent);
 
         include_once '../fns/ContactTags/indexOnUser.php';
         $tags = ContactTags\indexOnUser($mysqli, $idusers);
@@ -47,11 +48,11 @@ if ($tag === '') {
     if (count($contacts) > 1) {
 
         include_once '../fns/create_search_form_empty_content.php';
-        $formContent = create_search_form_empty_content($placeholder)
+        $formContent = create_search_form_empty_content($searchPlaceholder)
             .'<input type="hidden" name="tag" value="'.htmlspecialchars($tag).'" />';
 
         include_once '../fns/create_search_form.php';
-        $items[] = create_search_form('search/', $formContent);
+        $items[] = create_search_form($searchAction, $formContent);
 
     }
 

@@ -2,7 +2,7 @@
 
 function get_revision ($key) {
     static $revisions = array(
-        'common.css' => 58,
+        'common.css' => 59,
     );
     return $key;
 }
