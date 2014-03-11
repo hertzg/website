@@ -34,7 +34,7 @@ foreach (array($file1, $file2, $file3) as $file) {
         if ($file['error'][$i] == UPLOAD_ERR_OK) {
 
             $filename = str_collapse_spaces($filename);
-   
+
             while (Files\getByName($mysqli, $idusers, $idfolders, $filename)) {
                 $extension = '';
                 if (preg_match('/\..*?$/', $filename, $match)) {

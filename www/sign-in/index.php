@@ -45,7 +45,7 @@ include_once '../fns/Page/sessionMessages.php';
 $content =
     create_tabs(
         array(),
-        'Sign In', 
+        'Sign In',
         Page\sessionMessages('sign-in/index_messages')
         .Page\sessionErrors('sign-in/index_errors')
         .'<form action="submit.php" method="post">'

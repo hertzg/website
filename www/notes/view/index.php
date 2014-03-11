@@ -25,7 +25,7 @@ $datesText = '<div>Note created '.date_ago($inserttime).'.</div>';
 if ($inserttime != $updatetime) {
     $datesText .= '<div>Last modified '.date_ago($updatetime).'.</div>';
 }
-        
+
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/create_tags.php';

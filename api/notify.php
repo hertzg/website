@@ -21,7 +21,7 @@ if (!$channel) {
 include_once 'fns/str_collapse_spaces_multiline.php';
 $notificationtext = str_collapse_spaces_multiline($notificationtext);
 
-if ($notificationtext === '') { 
+if ($notificationtext === '') {
     die(json_encode(array(
         'ok' => false,
         'msg' => 'Nofitication text cannot be left blank.',
