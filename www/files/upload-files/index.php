@@ -27,7 +27,7 @@ unset(
     $_SESSION['files/index_messages']
 );
 
-include_once '../fns/create_folder_link.php';
+include_once '../../fns/create_folder_link.php';
 include_once '../../fns/bytestr.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/ini_get_bytes.php';

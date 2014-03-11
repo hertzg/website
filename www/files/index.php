@@ -23,7 +23,7 @@ if ($idfolders) {
 
 $deep = (bool)$deep;
 
-include_once 'fns/create_folder_link.php';
+include_once '../fns/create_folder_link.php';
 include_once '../fns/Page/imageArrowLink.php';
 include_once '../fns/Page/imageLink.php';
 

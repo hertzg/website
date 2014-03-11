@@ -8,8 +8,6 @@ include_once '../../lib/mysqli.php';
 list($file, $id, $user) = require_file($mysqli);
 $idusers = $user->idusers;
 
-include_once '../fns/create_folder_link.php';
-
 include_once '../../fns/request_strings.php';
 list($idfolders) = request_strings('idfolders');
 
@@ -46,4 +44,5 @@ Files\move($mysqli, $idusers, $id, $idfolders);
 
 $_SESSION['files/index_idfolders'] = $idfolders;
 $_SESSION['files/index_messages'] = array('File has been moved.');
+include_once '../../fns/create_folder_link.php';
 redirect(create_folder_link($idfolders, '../'));

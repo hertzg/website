@@ -26,8 +26,8 @@ unset(
     $_SESSION['files/rename-file/index_lastpost']
 );
 
-include_once '../fns/create_folder_link.php';
 include_once '../../fns/bytestr.php';
+include_once '../../fns/create_folder_link.php';
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/date_ago.php';

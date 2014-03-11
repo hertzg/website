@@ -52,5 +52,5 @@ $idfolders = Folders\add($mysqli, $idusers, $parentidfolders, $foldername);
 
 $_SESSION['files/index_idfolders'] = $idfolders;
 $_SESSION['files/index_messages'] = array('Folder has been created.');
-include_once '../fns/create_folder_link.php';
-redirect(create_folder_link($idfolders, '../'));
+include_once '../../fns/create_folder_link.php';
+redirect("../?idfolders=$idfolders");

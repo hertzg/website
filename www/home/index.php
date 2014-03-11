@@ -23,7 +23,7 @@ include_once '../fns/SearchForm/emptyContent.php';
 $formContent = SearchForm\emptyContent('Search...');
 
 include_once '../fns/SearchForm/create.php';
-$items[] = SearchForm\create('search/', $formContent);
+$items[] = SearchForm\create('../search/', $formContent);
 
 include_once 'fns/render_bookmarks.php';
 render_bookmarks($user, $items);

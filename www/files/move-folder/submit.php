@@ -57,5 +57,5 @@ Folders\move($mysqli, $idusers, $idfolders, $parentidfolders);
 $_SESSION['files/index_idfolders'] = $parentidfolders;
 $_SESSION['files/index_messages'] = array('File has been moved.');
 
-include_once '../fns/create_folder_link.php';
+include_once '../../fns/create_folder_link.php';
 redirect(create_folder_link($parentidfolders, '../'));

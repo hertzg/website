@@ -12,7 +12,7 @@ if (array_key_exists('files/rename-file/index_lastpost', $_SESSION)) {
 
 unset($_SESSION['files/view-file/index_messages']);
 
-include_once '../fns/create_folder_link.php';
+include_once '../../fns/create_folder_link.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/hidden.php';
