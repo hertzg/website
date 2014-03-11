@@ -78,9 +78,7 @@ label {
 }
 
 #bbar {
-    padding: 16px;
-    text-align: right;
-    color: #fff;
+    height: 48px;
 }
 
 .page-text {

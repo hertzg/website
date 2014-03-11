@@ -34,9 +34,7 @@ function echo_page ($user, $title, $content, $base, array $options = array()) {
             .'</div>'
         .'</div>'
         .$content
-        .'<div id="bbar">'
-            .'&copy; 2009-'.date('Y').' Zvini'
-        .'</div>';
+        .'<div id="bbar"></div>';
 
     include_once __DIR__.'/../fns/echo_html.php';
     echo_html($title, $head, $body, $theme, $base);
