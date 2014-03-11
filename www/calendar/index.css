@@ -12,11 +12,7 @@
     color: #444;
 }
 
-.calendar-days {
-    white-space: nowrap;
-}
-
-.calendar-days > * {
+.calendar-columns > * {
     height: 48px;
     text-align: center;
     line-height: 48px;
@@ -24,18 +20,23 @@
     display: inline-block;
     vertical-align: top;
 }
-.calendar-days > :first-child,
-.calendar-days > :nth-child(1),
-.calendar-days > :nth-child(3),
-.calendar-days > :nth-child(4),
-.calendar-days > :nth-child(5),
-.calendar-days > :last-child {
+.calendar-columns > :first-child,
+.calendar-columns > :nth-child(1),
+.calendar-columns > :nth-child(3),
+.calendar-columns > :nth-child(4),
+.calendar-columns > :nth-child(5),
+.calendar-columns > :last-child {
     width: 14%;
 }
-.calendar-days > :nth-child(2),
-.calendar-days > :nth-child(6) {
+.calendar-columns > :nth-child(2),
+.calendar-columns > :nth-child(6) {
     width: 15%;
 }
+
+.calendar-days {
+    white-space: nowrap;
+}
+
 .calendar-days > :focus {
     border-width: 2px;
     border-style: solid;

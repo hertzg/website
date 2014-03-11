@@ -1,0 +1,12 @@
+.topLink {
+    display: inline-block;
+    vertical-align: top;
+    color: #ccc;
+    padding: 10px;
+    line-height: 24px;
+    border: 2px solid transparent;
+    border-radius: 2px;
+}
+.topLink:active {
+    color: #fff;
+}

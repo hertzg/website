@@ -19,7 +19,7 @@ function echo_html ($title, $head, $body, $theme, $base) {
                 .' content="text/html; charset=UTF-8" />'
                 .'<meta name="viewport" content="width=device-width" />'
                 .'<link rel="stylesheet" type="text/css"'
-                ." href=\"{$base}common.css?".get_revision('common.css').'" />'
+                ." href=\"{$base}compressed.css?".get_revision('compressed.css').'" />'
                 .'<link rel="stylesheet" type="text/css"'
                 ." href=\"{$base}icons.css?14\" />"
                 .'<link rel="stylesheet" type="text/css"'

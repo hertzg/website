@@ -1,0 +1,21 @@
+.title_and_description {
+    line-height: 18px;
+    padding: 6px 0;
+}
+.title_and_description > :first-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 8px;
+}
+.title_and_description > :last-child {
+    color: #555;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 12px;
+    font-weight: normal;
+    margin-right: 8px;
+}
+
+.clickable:active .title_and_description > :last-child {
+    color: #fff;
+}

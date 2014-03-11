@@ -31,7 +31,7 @@ function create_calendar ($timeSelected) {
                 .'<span class="icon arrow-right"></span>'
             .'</a>'
         .'</div>'
-        .'<div class="calendar-days calendar-weeks">'
+        .'<div class="calendar-columns calendar-weeks">'
             .'<div>Sun</div>'
             .'<div>Mon</div>'
             .'<div>Tue</div>'
@@ -40,13 +40,13 @@ function create_calendar ($timeSelected) {
             .'<div>Fri</div>'
             .'<div>Sat</div>'
         .'</div>'
-        .'<div style="background: #fff">';
+        .'<div>';
 
     $time = $calendarStartTime;
     for ($i = 0; $i < 6; $i++) {
         $html .=
             '<div class="hr"></div>'
-            .'<div class="calendar-days">';
+            .'<div class="calendar-columns calendar-days">';
         for ($j = 0; $j < 7; $j++) {
             $year = date('Y', $time);
             $month = date('n', $time);

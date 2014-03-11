@@ -9,7 +9,7 @@ function scan (dir) {
             var content = fs.readFileSync(file, 'utf8')
             var lines = content.split(/\r\n|\r|\n/)
             lines.forEach(function (line, index) {
-                if (line.length > 100) {
+                if (line.length > 90) {
                     foundLines.push({
                         file: file.substr(2),
                         line: line,
