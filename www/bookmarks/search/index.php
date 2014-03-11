@@ -12,7 +12,7 @@ list($keyword, $tag) = request_strings('keyword', 'tag');
 if ($keyword === '') {
     $url = '../';
     if ($tag !== '') $url .= '?tag='.rawurlencode($tag);
-    include_once '../../../fns/redirect.php';
+    include_once '../../fns/redirect.php';
     redirect($url);
 }
 
