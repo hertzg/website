@@ -307,7 +307,7 @@ label {
 .errors,
 .messages,
 .warnings {
-    padding: 12px 14px;
+    padding: 13px 14px;
 }
 .errors > *,
 .messages > *,
@@ -491,7 +491,7 @@ label {
     height: 48px;
     background: #eee;
     color: #444;
-    padding: 16px;
+    padding: 15px 16px;
 }
 .filterBar > a {
     position: absolute;
