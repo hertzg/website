@@ -35,7 +35,7 @@ $keyword = str_collapse_spaces($keyword);
 $searchAction = './';
 $searchPlaceholder = 'Search folders and files...';
 
-include_once '../fns/create_search_form.php';
+include_once '../fns/SearchForm/create.php';
 
 if ($keyword === '') {
 
@@ -45,15 +45,15 @@ if ($keyword === '') {
     include_once '../fns/Files/indexInUserFolder.php';
     $files = Files\indexInUserFolder($mysqli, $idusers, $idfolders);
 
-    include_once '../fns/create_search_form_empty_content.php';
-    $content = create_search_form_empty_content($searchPlaceholder);
+    include_once '../fns/SearchForm/emptyContent.php';
+    $content = SearchForm\emptyContent($searchPlaceholder);
     if ($idfolders) {
         $content =
             "<input type=\"hidden\" name=\"idfolders\" value=\"$idfolders\" />"
             .$content;
     }
 
-    $items[] = create_search_form($searchAction, $content);
+    $items[] = SearchForm\create($searchAction, $content);
 
 } else {
 
@@ -71,8 +71,8 @@ if ($keyword === '') {
     }
 
     $clearHref = create_folder_link($idfolders);
-    include_once '../fns/create_search_form_content.php';
-    $content = create_search_form_content($keyword, $searchPlaceholder, $clearHref);
+    include_once '../fns/SearchForm/content.php';
+    $content = SearchForm\content($keyword, $searchPlaceholder, $clearHref);
     if ($idfolders) {
         $content =
             "<input type=\"hidden\" name=\"idfolders\" value=\"$idfolders\" />"
@@ -82,7 +82,7 @@ if ($keyword === '') {
         $content .= '<input type="hidden" name="deep" value="1" />';
     }
 
-    $items[] = create_search_form($searchAction, $content);
+    $items[] = SearchForm\create($searchAction, $content);
 
 }
 

@@ -25,11 +25,11 @@ if ($tag === '') {
 
     if (count($bookmarks) > 1) {
 
-        include_once '../fns/create_search_form_empty_content.php';
-        $formContent = create_search_form_empty_content($searchPlaceholder);
+        include_once '../fns/SearchForm/emptyContent.php';
+        $formContent = SearchForm\emptyContent($searchPlaceholder);
 
-        include_once '../fns/create_search_form.php';
-        $items[] = create_search_form($searchAction, $formContent);
+        include_once '../fns/SearchForm/create.php';
+        $items[] = SearchForm\create($searchAction, $formContent);
 
         include_once '../fns/BookmarkTags/indexOnUser.php';
         $tags = BookmarkTags\indexOnUser($mysqli, $idusers);
@@ -47,12 +47,12 @@ if ($tag === '') {
 
     if (count($bookmarks) > 1) {
 
-        include_once '../fns/create_search_form_empty_content.php';
-        $formContent = create_search_form_empty_content($searchPlaceholder)
+        include_once '../fns/SearchForm/emptyContent.php';
+        $formContent = SearchForm\emptyContent($searchPlaceholder)
             .'<input type="hidden" name="tag" value="'.htmlspecialchars($tag).'" />';
 
-        include_once '../fns/create_search_form.php';
-        $items[] = create_search_form($searchAction, $formContent);
+        include_once '../fns/SearchForm/create.php';
+        $items[] = SearchForm\create($searchAction, $formContent);
     }
 
     include_once '../fns/create_clear_filter_bar.php';

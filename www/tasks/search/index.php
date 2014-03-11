@@ -21,8 +21,8 @@ $items = array();
 $searchAction = './';
 $searchPlaceholder = 'Search tasks...';
 
-include_once '../../fns/create_search_form.php';
-include_once '../../fns/create_search_form_content.php';
+include_once '../../fns/SearchForm/content.php';
+include_once '../../fns/SearchForm/create.php';
 include_once '../../lib/mysqli.php';
 
 if ($tag === '') {
@@ -32,8 +32,8 @@ if ($tag === '') {
     include_once '../../fns/Tasks/search.php';
     $tasks = Tasks\search($mysqli, $idusers, $keyword);
 
-    $formContent = create_search_form_content($keyword, $searchPlaceholder, '..');
-    $items[] = create_search_form($searchAction, $formContent);
+    $formContent = SearchForm\content($keyword, $searchPlaceholder, '..');
+    $items[] = SearchForm\create($searchAction, $formContent);
 
     if (count($tasks) > 1) {
 
@@ -56,10 +56,10 @@ if ($tag === '') {
 
     $clearHref = '../?tag='.rawurlencode($tag);
     $formContent =
-        create_search_form_content($keyword, $searchPlaceholder, $clearHref)
+        SearchForm\content($keyword, $searchPlaceholder, $clearHref)
         .'<input type="hidden" name="tag" value="'.htmlspecialchars($tag).'" />';
 
-    $items[] = create_search_form($searchAction, $formContent);
+    $items[] = SearchForm\create($searchAction, $formContent);
 
     $clearHref = '?'.htmlspecialchars(
         http_build_query(array('keyword' => $keyword))

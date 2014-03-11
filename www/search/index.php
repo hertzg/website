@@ -19,11 +19,11 @@ if ($keyword === '') {
     redirect('..');
 }
 
-include_once '../fns/create_search_form_content.php';
-$formContent = create_search_form_content($keyword, 'Search...', '..');
+include_once '../fns/SearchForm/content.php';
+$formContent = SearchForm\content($keyword, 'Search...', '..');
 
-include_once '../fns/create_search_form.php';
-$items = array(create_search_form('./', $formContent));
+include_once '../fns/SearchForm/create.php';
+$items = array(SearchForm\create('./', $formContent));
 
 include_once '../fns/Bookmarks/search.php';
 $bookmarks = Bookmarks\search($mysqli, $idusers, $keyword);

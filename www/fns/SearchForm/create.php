@@ -1,5 +1,7 @@
 <?php
 
-function create_search_form ($action, $content) {
+namespace SearchForm;
+
+function create ($action, $content) {
     return "<form action=\"$action\" class=\"search_form\">$content</form>";
 }

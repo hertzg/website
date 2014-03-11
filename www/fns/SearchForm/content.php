@@ -1,6 +1,8 @@
 <?php
 
-function create_search_form_content ($keyword, $placeholder, $clearHref) {
+namespace SearchForm;
+
+function content ($keyword, $placeholder, $clearHref) {
     return
         '<div style="position: absolute; top: 0; right: 96px; bottom: 0; left: 0">'
             .'<input class="form-textfield searchIKeywordInput" type="text" name="keyword"'
