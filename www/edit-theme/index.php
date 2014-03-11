@@ -1,8 +1,9 @@
 <?php
 
+$base = '../';
+
 include_once '../fns/require_user.php';
-$user = require_user('../');
-$idusers = $user->idusers;
+$user = require_user($base);
 
 unset($_SESSION['account/index_messages']);
 
@@ -19,10 +20,8 @@ foreach ($themes as $id => $theme) {
     $themeItems[] = Page\imageLink($theme, $href, "$id-theme");
 }
 
-include_once '../fns/Page/warnings.php';
-$pageWarnings = Page\warnings(array('Select theme color:'));
-
 include_once '../fns/create_tabs.php';
+include_once '../fns/Page/warnings.php';
 $content =
     create_tabs(
         array(
@@ -36,8 +35,9 @@ $content =
             ),
         ),
         'Edit Theme',
-        $pageWarnings.join('<div class="hr"></div>', $themeItems)
+        Page\warnings(array('Select theme color:'))
+        .join('<div class="hr"></div>', $themeItems)
     );
 
 include_once '../fns/echo_page.php';
-echo_page($user, 'Edit Theme', $content, '../');
+echo_page($user, 'Edit Theme', $content, $base);

@@ -1,14 +1,9 @@
 <?php
 
-function create_search_form ($content) {
-    return
-        '<form action="search/" style="height: 48px; position: relative">'
-            .$content
-        .'</form>';
-}
+$base = '../';
 
 include_once '../fns/require_user.php';
-$user = require_user('../');
+$user = require_user($base);
 $idusers = $user->idusers;
 
 include_once '../fns/request_strings.php';
@@ -26,6 +21,7 @@ if ($tag === '') {
 
     if (count($contacts) > 1) {
 
+        include_once 'fns/create_search_form.php';
         include_once '../fns/create_search_form_empty_content.php';
         $items[] = create_search_form(
             create_search_form_empty_content('Search contacts...')
@@ -47,6 +43,7 @@ if ($tag === '') {
     $contacts = ContactTags\indexOnTagName($mysqli, $idusers, $tag);
 
     if (count($contacts) > 1) {
+        include_once 'fns/create_search_form.php';
         include_once '../fns/create_search_form_empty_content.php';
         $items[] = create_search_form(
             create_search_form_empty_content('Search contacts...')
@@ -62,9 +59,6 @@ if ($tag === '') {
 include_once 'fns/render_contacts.php';
 render_contacts($contacts, $items);
 
-include_once '../fns/Page/sessionMessages.php';
-$pageMessages = Page\sessionMessages('contacts/index_messages');
-
 unset(
     $_SESSION['contacts/new/index_errors'],
     $_SESSION['contacts/new/index_lastpost'],
@@ -74,6 +68,7 @@ unset(
 
 include_once 'fns/create_options_panel.php';
 include_once '../fns/create_tabs.php';
+include_once '../fns/Page/sessionMessages.php';
 $content =
     create_tabs(
         array(
@@ -83,9 +78,10 @@ $content =
             ),
         ),
         'Contacts',
-        $pageMessages.$filterMessage.join('<div class="hr"></div>', $items)
+        Page\sessionMessages('contacts/index_messages')
+        .$filterMessage.join('<div class="hr"></div>', $items)
     )
     .create_options_panel($user);
 
 include_once '../fns/echo_page.php';
-echo_page($user, 'Contacts', $content, '../');
+echo_page($user, 'Contacts', $content, $base);

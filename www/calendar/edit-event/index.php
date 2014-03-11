@@ -10,9 +10,6 @@ if (array_key_exists('calendar/edit-event/index_lastpost', $_SESSION)) {
     $values = array('eventtext' => $event->eventtext);
 }
 
-include_once '../../fns/Page/sessionErrors.php';
-$pageErrors = Page\sessionErrors('calendar/edit-event/index_errors');
-
 unset($_SESSION['calendar/view-event_messages']);
 
 include_once '../../fns/create_tabs.php';
@@ -20,6 +17,7 @@ include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/hidden.php';
 include_once '../../fns/Form/label.php';
 include_once '../../fns/Form/textfield.php';
+include_once '../../fns/Page/sessionErrors.php';
 $content =
     create_tabs(
         array(
@@ -33,7 +31,7 @@ $content =
             ),
         ),
         'Edit',
-        $pageErrors
+        Page\sessionErrors('calendar/edit-event/index_errors')
         .'<form action="submit.php" method="post">'
             .Form\label('When', date('F d, Y', $event->eventtime))
             .'<div class="hr"></div>'

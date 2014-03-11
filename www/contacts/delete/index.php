@@ -6,14 +6,9 @@ list($contact, $id, $user) = require_contact($mysqli);
 
 unset($_SESSION['contacts/view/index_messages']);
 
-include_once '../../fns/Page/text.php';
-$question = Page\text(
-    'Are you sure you want to delete the contact'
-    .' "<b>'.htmlspecialchars($contact->fullname).'</b>"?'
-);
-
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/imageLink.php';
+include_once '../../fns/Page/text.php';
 $content =
     create_tabs(
         array(
@@ -27,7 +22,11 @@ $content =
             ),
         ),
         "Contact #$id",
-        $question.'<div class="hr"></div>'
+        Page\text(
+            'Are you sure you want to delete the contact'
+            .' "<b>'.htmlspecialchars($contact->fullname).'</b>"?'
+        )
+        .'<div class="hr"></div>'
         .Page\imageLink('Yes, delete contact', "submit.php?id=$id", 'yes')
         .'<div class="hr"></div>'
         .Page\imageLink('No, return back', "../view/?id=$id", 'no')

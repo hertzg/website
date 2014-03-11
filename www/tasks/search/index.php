@@ -17,7 +17,6 @@ if ($keyword === '') {
 }
 
 $items = array();
-$filterMessage = '';
 
 include_once 'fns/create_search_form.php';
 include_once '../../fns/create_search_form_content.php';
@@ -25,12 +24,15 @@ include_once '../../lib/mysqli.php';
 
 if ($tag === '') {
 
+    $filterMessage = '';
+
     include_once '../../fns/Tasks/search.php';
     $tasks = Tasks\search($mysqli, $idusers, $keyword);
 
     $items[] = create_search_form(
         create_search_form_content($keyword, 'Search tasks...', '..')
     );
+
     if (count($tasks) > 1) {
 
         include_once '../../fns/TaskTags/indexOnUser.php';

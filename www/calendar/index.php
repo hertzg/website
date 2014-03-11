@@ -71,13 +71,9 @@ function create_calendar ($timeSelected) {
 
 include_once __DIR__.'/../fns/require_user.php';
 $user = require_user('../');
-$idusers = $user->idusers;
 
 include_once '../fns/Page/imageArrowLink.php';
 include_once '../fns/Page/imageArrowLinkWithDescription.php';
-
-include_once '../fns/Page/sessionMessages.php';
-$pageMessages = Page\sessionMessages('calendar/index_messages');
 
 unset(
     $_SESSION['home/index_messages'],
@@ -109,7 +105,7 @@ $daySelected = date('d', $timeSelected);
 
 include_once '../fns/Events/indexOnUserAndTime.php';
 include_once '../lib/mysqli.php';
-$events = Events\indexOnUserAndTime($mysqli, $idusers, $timeSelected);
+$events = Events\indexOnUserAndTime($mysqli, $user->idusers, $timeSelected);
 
 $eventItems = array();
 if ($events) {
@@ -140,6 +136,7 @@ $jumpToHref = "jump-to/?year=$yearNow&amp;month=$monthNow";
 
 include_once '../fns/create_panel.php';
 include_once '../fns/create_tabs.php';
+include_once '../fns/Page/sessionMessages.php';
 $content =
     create_tabs(
         array(
@@ -149,7 +146,8 @@ $content =
             ),
         ),
         'Calendar',
-        $pageMessages.create_calendar($timeSelected)
+        Page\sessionMessages('calendar/index_messages')
+        .create_calendar($timeSelected)
     )
     .create_panel(
         'Events on '.date('F d, Y', $timeSelected),

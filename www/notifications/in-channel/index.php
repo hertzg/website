@@ -1,7 +1,9 @@
 <?php
 
+$base = '../../';
+
 include_once '../../fns/require_user.php';
-$user = require_user('../../');
+$user = require_user($base);
 $idusers = $user->idusers;
 
 include_once '../../fns/request_strings.php';
@@ -11,7 +13,7 @@ $id = abs((int)$id);
 
 include_once '../../fns/Channels/get.php';
 include_once '../../lib/mysqli.php';
-$channel = Channels\get($mysqli, $user->idusers, $id);
+$channel = Channels\get($mysqli, $idusers, $id);
 
 if (!$channel) {
     include_once '../../fns/redirect.php';
@@ -69,11 +71,9 @@ unset(
     $_SESSION['notifications/index_messages']
 );
 
-include_once '../../fns/Page/sessionMessages.php';
-$pageMessages = Page\sessionMessages('notifications/in-channel/index_messages');
-
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
+include_once '../../fns/Page/sessionMessages.php';
 $content =
     create_tabs(
         array(
@@ -83,7 +83,7 @@ $content =
             ),
         ),
         'Notifications',
-        $pageMessages
+        Page\sessionMessages('notifications/in-channel/index_messages')
         .'<div class="filterBar">'
             .'Channel: <b>'.htmlspecialchars($channel->channelname).'</b>'
             .'<a class="clickable" title="Clear Filter" href="..">'
@@ -96,4 +96,4 @@ $content =
     );
 
 include_once '../../fns/echo_page.php';
-echo_page($user, 'Notifications', $content, '../../');
+echo_page($user, 'Notifications', $content, $base);

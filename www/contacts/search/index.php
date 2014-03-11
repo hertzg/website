@@ -1,14 +1,9 @@
 <?php
 
-function create_search_form ($content) {
-    return
-        '<form action="./" style="height: 48px; position: relative">'
-            .$content
-        .'</form>';
-}
+$base = '../../';
 
 include_once '../../fns/require_user.php';
-$user = require_user('../');
+$user = require_user($base);
 $idusers = $user->idusers;
 
 include_once '../../fns/request_strings.php';
@@ -22,12 +17,14 @@ if ($keyword === '') {
 }
 
 $items = array();
-$filterMessage = '';
 
+include_once 'fns/create_search_form.php';
 include_once '../../fns/create_search_form_content.php';
 include_once '../../lib/mysqli.php';
 
 if ($tag === '') {
+
+    $filterMessage = '';
 
     include_once '../../fns/Contacts/search.php';
     $contacts = Contacts\search($mysqli, $idusers, $keyword);
@@ -35,6 +32,7 @@ if ($tag === '') {
     $items[] = create_search_form(
         create_search_form_content($keyword, 'Search contacts...', '..')
     );
+
     if (count($contacts) > 1) {
 
         include_once '../../fns/ContactTags/indexOnUser.php';
@@ -71,9 +69,6 @@ if ($tag === '') {
 include_once '../fns/render_contacts.php';
 render_contacts($contacts, $items, '../');
 
-include_once '../../fns/Page/sessionMessages.php';
-$pageMessages = Page\sessionMessages('contacts/index_messages');
-
 unset(
     $_SESSION['contacts/new/index_errors'],
     $_SESSION['contacts/new/index_lastpost'],
@@ -83,6 +78,7 @@ unset(
 
 include_once '../fns/create_options_panel.php';
 include_once '../../fns/create_tabs.php';
+include_once '../../fns/Page/sessionMessages.php';
 $content =
     create_tabs(
         array(
@@ -92,9 +88,10 @@ $content =
             ),
         ),
         'Contacts',
-        $pageMessages.$filterMessage.join('<div class="hr"></div>', $items)
+        Page\sessionMessages('contacts/index_messages')
+        .$filterMessage.join('<div class="hr"></div>', $items)
     )
     .create_options_panel($user, '../');
 
 include_once '../../fns/echo_page.php';
-echo_page($user, 'Contacts', $content, '../../');
+echo_page($user, 'Contacts', $content, $base);

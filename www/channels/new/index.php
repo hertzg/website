@@ -1,8 +1,9 @@
 <?php
 
+$base = '../../';
+
 include_once '../../fns/require_user.php';
-$user = require_user('../../');
-$idusers = $user->idusers;
+$user = require_user($base);
 
 if (array_key_exists('channels/add_lastpost', $_SESSION)) {
     $values = $_SESSION['channels/add_lastpost'];
@@ -10,15 +11,13 @@ if (array_key_exists('channels/add_lastpost', $_SESSION)) {
     $values = array('channelname' => '');
 }
 
-include_once '../../fns/Page/sessionErrors.php';
-$pageErrors = Page\sessionErrors('channels/add_errors');
-
 unset($_SESSION['channels/index_messages']);
 
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/notes.php';
 include_once '../../fns/Form/textfield.php';
+include_once '../../fns/Page/sessionErrors.php';
 $content =
     create_tabs(
         array(
@@ -32,7 +31,7 @@ $content =
             ),
         ),
         'New',
-        $pageErrors
+        Page\sessionErrors('channels/add_errors')
         .'<form action="submit.php" method="post">'
             .Form\textfield('channelname', 'Channel name', array(
                 'value' => $values['channelname'],
@@ -50,4 +49,4 @@ $content =
     );
 
 include_once '../../fns/echo_page.php';
-echo_page($user, 'New Channel', $content, '../../');
+echo_page($user, 'New Channel', $content, $base);

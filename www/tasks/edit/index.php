@@ -10,9 +10,6 @@ if (array_key_exists('tasks/edit_lastpost', $_SESSION)) {
     $values = (array)$task;
 }
 
-include_once '../../fns/Page/sessionErrors.php';
-$pageErrors = Page\sessionErrors('tasks/edit_errors');
-
 unset($_SESSION['tasks/index_messages']);
 
 include_once '../../fns/create_tabs.php';
@@ -20,6 +17,7 @@ include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/hidden.php';
 include_once '../../fns/Form/textarea.php';
 include_once '../../fns/Form/textfield.php';
+include_once '../../fns/Page/sessionErrors.php';
 $content =
     create_tabs(
         array(
@@ -33,7 +31,7 @@ $content =
             ),
         ),
         'Edit',
-        $pageErrors
+        Page\sessionErrors('tasks/edit_errors')
         .'<form action="submit.php" method="post">'
             .Form\textarea('tasktext', 'Text', array(
                 'value' => $values['tasktext'],

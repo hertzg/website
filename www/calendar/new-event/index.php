@@ -1,8 +1,9 @@
 <?php
 
+$base = '../../';
+
 include_once '../../fns/require_user.php';
-$user = require_user('../../');
-$idusers = $user->idusers;
+$user = require_user($base);
 
 include_once '../../fns/request_strings.php';
 list($year, $month, $day) = request_strings('year', 'month', 'day');
@@ -12,9 +13,6 @@ if (array_key_exists('calendar/add-event_lastpost', $_SESSION)) {
 } else {
     $values = array('eventtext' => '');
 }
-
-include_once '../../fns/Page/sessionErrors.php';
-$pageErrors = Page\sessionErrors('calendar/add-event_errors');
 
 $year = (int)$year;
 $month = (int)$month;
@@ -28,6 +26,7 @@ include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/hidden.php';
 include_once '../../fns/Form/label.php';
 include_once '../../fns/Form/textfield.php';
+include_once '../../fns/Page/sessionErrors.php';
 $content =
     create_tabs(
         array(
@@ -41,7 +40,7 @@ $content =
             ),
         ),
         'New Event',
-        $pageErrors
+        Page\sessionErrors('calendar/add-event_errors')
         .'<form action="submit.php" method="post">'
             .Form\label('When', date('F d, Y', $time))
             .'<div class="hr"></div>'
@@ -59,4 +58,4 @@ $content =
     );
 
 include_once '../../fns/echo_page.php';
-echo_page($user, 'New Event', $content, '../../');
+echo_page($user, 'New Event', $content, $base);

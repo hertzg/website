@@ -1,8 +1,9 @@
 <?php
 
+$base = '../';
+
 include_once '../fns/require_user.php';
-$user = require_user('../');
-$idusers = $user->idusers;
+$user = require_user($base);
 
 if (array_key_exists('edit-profile/index_lastpost', $_SESSION)) {
     $values = (object)$_SESSION['edit-profile/index_lastpost'];
@@ -10,14 +11,12 @@ if (array_key_exists('edit-profile/index_lastpost', $_SESSION)) {
     $values = $user;
 }
 
-include_once '../fns/Page/sessionErrors.php';
-$pageErrors = Page\sessionErrors('edit-profile/index_errors');
-
 unset($_SESSION['account/index_messages']);
 
 include_once '../fns/create_tabs.php';
 include_once '../fns/Form/button.php';
 include_once '../fns/Form/textfield.php';
+include_once '../fns/Page/sessionErrors.php';
 $content =
     create_tabs(
         array(
@@ -31,7 +30,7 @@ $content =
             ),
         ),
         'Edit Profile',
-        $pageErrors
+        Page\sessionErrors('edit-profile/index_errors')
         .'<form action="submit.php" method="post">'
             .Form\textfield('email', 'Email', array(
                 'value' => $values->email,
@@ -48,4 +47,4 @@ $content =
     );
 
 include_once '../fns/echo_page.php';
-echo_page($user, 'Edit Profile', $content, '../');
+echo_page($user, 'Edit Profile', $content, $base);

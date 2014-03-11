@@ -1,11 +1,9 @@
 <?php
 
-function create_form ($content) {
-    return "<form action=\"./\" style=\"position: relative; height: 48px\">$content</form>";
-}
+$base = '../';
 
 include_once '../fns/require_user.php';
-$user = require_user('../');
+$user = require_user($base);
 $idusers = $user->idusers;
 
 include_once '../lib/mysqli.php';
@@ -26,15 +24,15 @@ if ($idfolders) {
 $deep = (bool)$deep;
 
 include_once 'fns/create_folder_link.php';
-include_once '../fns/create_panel.php';
-include_once '../fns/str_collapse_spaces.php';
 include_once '../fns/Page/imageArrowLink.php';
 include_once '../fns/Page/imageLink.php';
 
 $items = array();
 
-$placeholder = 'Search folders and files...';
+include_once '../fns/str_collapse_spaces.php';
 $keyword = str_collapse_spaces($keyword);
+
+$placeholder = 'Search folders and files...';
 if ($keyword === '') {
 
     include_once '../fns/Folders/indexInUserFolder.php';
@@ -50,7 +48,9 @@ if ($keyword === '') {
             "<input type=\"hidden\" name=\"idfolders\" value=\"$idfolders\" />"
             .$content;
     }
-    $items[] = create_form($content);
+
+    include_once 'fns/create_search_form.php';
+    $items[] = create_search_form($content);
 
 } else {
 
@@ -78,7 +78,9 @@ if ($keyword === '') {
     if ($deep) {
         $content .= '<input type="hidden" name="deep" value="1" />';
     }
-    $items[] = create_form($content);
+
+    include_once 'fns/create_search_form.php';
+    $items[] = create_search_form($content);
 
 }
 
@@ -130,24 +132,25 @@ if (array_key_exists('files/index_idfolders', $_SESSION) &&
     unset($_SESSION['files/index_messages']);
 }
 
-$folder_options = '';
+$options = array(
+    Page\imageArrowLink('New Folder',
+        "new-folder/?parentidfolders=$idfolders", 'create-folder'),
+    Page\imageArrowLink('Upload Files',
+        "upload-files/?idfolders=$idfolders", 'upload'),
+);
+
 if ($idfolders) {
-    $folder_options =
-        '<div class="hr"></div>'
-        .Page\imageArrowLink('Rename This Folder',
-            "rename-folder/?idfolders=$idfolders", 'rename')
-        .'<div class="hr"></div>'
-        .Page\imageArrowLink('Move This Folder',
-            "move-folder/?idfolders=$idfolders", 'move-folder')
-        .'<div class="hr"></div>'
-        .Page\imageArrowLink('Delete This Folder',
-            "delete-folder/?idfolders=$idfolders", 'trash-bin');
+    $options[] = Page\imageArrowLink('Rename This Folder',
+        "rename-folder/?idfolders=$idfolders", 'rename');
+    $options[] = Page\imageArrowLink('Move This Folder',
+        "move-folder/?idfolders=$idfolders", 'move-folder');
+    $options[] = Page\imageArrowLink('Delete This Folder',
+        "delete-folder/?idfolders=$idfolders", 'trash-bin');
 }
 
-include_once '../fns/Page/sessionMessages.php';
-$pageMessages = Page\sessionMessages('files/index_messages');
-
+include_once '../fns/create_panel.php';
 include_once '../fns/create_tabs.php';
+include_once '../fns/Page/sessionMessages.php';
 $content =
     create_tabs(
         array(
@@ -157,17 +160,10 @@ $content =
             ),
         ),
         'Files',
-        $pageMessages.join('<div class="hr"></div>', $items)
+        Page\sessionMessages('files/index_messages')
+        .join('<div class="hr"></div>', $items)
     )
-    .create_panel(
-        'Options',
-        Page\imageArrowLink('New Folder',
-            "new-folder/?parentidfolders=$idfolders", 'create-folder')
-        .'<div class="hr"></div>'
-        .Page\imageArrowLink('Upload Files',
-            "upload-files/?idfolders=$idfolders", 'upload')
-        .$folder_options
-    );
+    .create_panel('Options', join('<div class="hr"></div>', $options));
 
 include_once '../fns/echo_page.php';
-echo_page($user, 'Files', $content, '../');
+echo_page($user, 'Files', $content, $base);

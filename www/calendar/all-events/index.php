@@ -1,15 +1,16 @@
 <?php
 
+$base = '../../';
+
 include_once '../../fns/require_user.php';
-$user = require_user('../../');
-$idusers = $user->idusers;
+$user = require_user($base);
 
 $items = array();
 
 include_once '../../fns/Events/indexOnUser.php';
-include_once '../../fns/Events/indexOnUser.php';
 include_once '../../lib/mysqli.php';
-$events = Events\indexOnUser($mysqli, $idusers);
+$events = Events\indexOnUser($mysqli, $user->idusers);
+
 if ($events) {
 
     include_once '../../fns/Page/imageArrowLinkWithDescription.php';
@@ -55,4 +56,4 @@ $content =
     .$optionsPanel;
 
 include_once '../../fns/echo_page.php';
-echo_page($user, 'All Events', $content, '../../');
+echo_page($user, 'All Events', $content, $base);

@@ -9,15 +9,10 @@ unset(
     $_SESSION['files/index_messages']
 );
 
-include_once '../../fns/Page/text.php';
-$question = Page\text(
-    'Are you sure you want to delete the folder'
-    .' "<b>'.htmlspecialchars($folder->foldername).'</b>"?'
-);
-
 include_once '../fns/create_folder_link.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/imageLink.php';
+include_once '../../fns/Page/text.php';
 $content =
     create_tabs(
         array(
@@ -27,7 +22,11 @@ $content =
             ),
         ),
         'Files',
-        $question.'<div class="hr"></div>'
+        Page\text(
+            'Are you sure you want to delete the folder'
+            .' "<b>'.htmlspecialchars($folder->foldername).'</b>"?'
+        )
+        .'<div class="hr"></div>'
         .Page\imageLink('Yes, delete folder',
             "submit.php?idfolders=$idfolders", 'yes')
         .'<div class="hr"></div>'

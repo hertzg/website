@@ -1,8 +1,9 @@
 <?php
 
+$base = '../../';
+
 include_once '../../fns/require_user.php';
-$user = require_user('../../');
-$idusers = $user->idusers;
+$user = require_user($base);
 
 include_once '../../fns/request_strings.php';
 list($id) = request_strings('id');
@@ -11,12 +12,19 @@ $id = abs((int)$id);
 
 include_once '../../fns/Files/get.php';
 include_once '../../lib/mysqli.php';
-$file = Files\get($mysqli, $idusers, $id);
+$file = Files\get($mysqli, $user->idusers, $id);
 
 if (!$file) {
     include_once '../../fns/redirect.php';
     redirect('..');
 }
+
+unset(
+    $_SESSION['files/index_idfolders'],
+    $_SESSION['files/index_messages'],
+    $_SESSION['files/rename-file_errors'],
+    $_SESSION['files/rename-file_lastpost']
+);
 
 include_once '../fns/create_folder_link.php';
 include_once '../../fns/bytestr.php';
@@ -26,17 +34,7 @@ include_once '../../fns/date_ago.php';
 include_once '../../fns/Form/label.php';
 include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../fns/Page/imageLink.php';
-
 include_once '../../fns/Page/sessionMessages.php';
-$pageMessages = Page\sessionMessages('files/view-file/index_messages');
-
-unset(
-    $_SESSION['files/index_idfolders'],
-    $_SESSION['files/index_messages'],
-    $_SESSION['files/rename-file_errors'],
-    $_SESSION['files/rename-file_lastpost']
-);
-
 $content =
     create_tabs(
         array(
@@ -50,7 +48,7 @@ $content =
             ),
         ),
         "File #$id",
-        $pageMessages
+        Page\sessionMessages('files/view-file/index_messages')
         .Form\label('File name', $file->filename)
         .'<div class="hr"></div>'
         .Form\label('Size', bytestr($file->filesize))
@@ -72,4 +70,4 @@ $content =
     );
 
 include_once '../../fns/echo_page.php';
-echo_page($user, "File #$id", $content, '../../');
+echo_page($user, "File #$id", $content, $base);

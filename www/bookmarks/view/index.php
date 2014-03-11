@@ -4,9 +4,6 @@ include_once '../fns/require_bookmark.php';
 include_once '../../lib/mysqli.php';
 list($bookmark, $id, $user) = require_bookmark($mysqli);
 
-include_once '../../fns/Page/sessionMessages.php';
-$pageMessages = Page\sessionMessages('bookmarks/view/index_messages');
-
 unset(
     $_SESSION['bookmarks/edit/index_errors'],
     $_SESSION['bookmarks/edit/index_lastpost'],
@@ -27,7 +24,6 @@ include_once '../../fns/create_external_url.php';
 $externalUrl = create_external_url($url, $base);
 
 include_once '../../fns/Page/text.php';
-
 if ($title === '') {
     $titleItem = '';
 } else {
@@ -41,13 +37,13 @@ $datesText = '<div>Bookmark created '.date_ago($inserttime).'.</div>';
 if ($inserttime != $updatetime) {
     $datesText .= '<div>Last modified '.date_ago($updatetime).'.</div>';
 }
-$datesText = Page\text($datesText);
 
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/create_tags.php';
 include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../fns/Page/imageLink.php';
+include_once '../../fns/Page/sessionMessages.php';
 $content =
     create_tabs(
         array(
@@ -61,8 +57,10 @@ $content =
             ),
         ),
         "Bookmark #$id",
-        $pageMessages.$titleItem.$urlItem
-        .create_tags('../', $tags).'<div class="hr"></div>'.$datesText
+        Page\sessionMessages('bookmarks/view/index_messages')
+        .$titleItem.$urlItem
+        .create_tags('../', $tags).'<div class="hr"></div>'
+        .Page\text($datesText)
     )
     .create_panel(
         'Options',

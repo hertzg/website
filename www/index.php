@@ -5,8 +5,6 @@ require_guest_user('');
 
 include_once 'fns/get_revision.php';
 
-header('Content-Type: text/html; charset=UTF-8');
-
 unset(
     $_SESSION['sign-in/index_errors'],
     $_SESSION['sign-in/index_lastpost'],
@@ -14,6 +12,8 @@ unset(
     $_SESSION['sign-up/index_errors'],
     $_SESSION['sign-up/index_lastpost']
 );
+
+header('Content-Type: text/html; charset=UTF-8');
 
 echo
     '<!DOCTYPE html>'

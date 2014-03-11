@@ -6,15 +6,10 @@ list($file, $id, $user) = require_file($mysqli);
 
 unset($_SESSION['files/view-file/index_messages']);
 
-include_once '../../fns/Page/text.php';
-$question = Page\text(
-    'Are you sure you want to delete the file'
-    .' "<b>'.htmlspecialchars($file->filename).'</b>"?'
-);
-
 include_once '../fns/create_folder_link.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/imageLink.php';
+include_once '../../fns/Page/text.php';
 $content =
     create_tabs(
         array(
@@ -28,7 +23,11 @@ $content =
             ),
         ),
         "File #$id",
-        $question.'<div class="hr"></div>'
+        Page\text(
+            'Are you sure you want to delete the file'
+            .' "<b>'.htmlspecialchars($file->filename).'</b>"?'
+        )
+        .'<div class="hr"></div>'
         .Page\imageLink('Yes, delete file', "submit.php?id=$id", 'yes')
         .'<div class="hr"></div>'
         .Page\imageLink('No, return back', "../view-file/?id=$id", 'no')

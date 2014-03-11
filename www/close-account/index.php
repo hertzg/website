@@ -1,30 +1,17 @@
 <?php
 
+$base = '../';
+
 include_once '../fns/require_user.php';
-$user = require_user('../');
-$idusers = $user->idusers;
-
-include_once '../fns/Page/sessionErrors.php';
-$pageErrors = Page\sessionErrors('close-account/index_errors');
-
-if (array_key_exists('close-account/index_errors', $_SESSION)) {
-    include_once '../fns/Page/errors.php';
-    $pageErrors = Page\errors($_SESSION['close-account/index_errors']);
-} else {
-    $pageErrors = '';
-}
+$user = require_user($base);
 
 unset($_SESSION['account/index_messages']);
-
-include_once '../fns/Page/warnings.php';
-$pageWarnings = Page\warnings(array(
-    'Are you sure you want to close your account?',
-    ' You will lose all your data.',
-));
 
 include_once '../fns/create_tabs.php';
 include_once '../fns/Form/button.php';
 include_once '../fns/Form/password.php';
+include_once '../fns/Page/sessionErrors.php';
+include_once '../fns/Page/warnings.php';
 $content = create_tabs(
         array(
             array(
@@ -37,8 +24,11 @@ $content = create_tabs(
             ),
         ),
         'Close',
-        $pageErrors
-        .$pageWarnings
+        Page\sessionErrors('close-account/index_errors')
+        .Page\warnings(array(
+            'Are you sure you want to close your account?',
+            ' You will lose all your data.',
+        ))
         .'<form action="submit.php" method="post">'
             .Form\password('password', 'Password', array(
                 'autofocus' => true,
@@ -50,4 +40,4 @@ $content = create_tabs(
     );
 
 include_once '../fns/echo_page.php';
-echo_page($user, 'Close Account', $content, '../');
+echo_page($user, 'Close Account', $content, $base);

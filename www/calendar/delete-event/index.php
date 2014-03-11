@@ -6,11 +6,9 @@ list($event, $idevents, $user) = require_event($mysqli);
 
 unset($_SESSION['calendar/view-event_messages']);
 
-include_once '../../fns/Page/text.php';
-$question = Page\text('Are you sure you want to delete the event?');
-
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/imageLink.php';
+include_once '../../fns/Page/text.php';
 $content =
     create_tabs(
         array(
@@ -24,7 +22,8 @@ $content =
             ),
         ),
         "Event #$idevents",
-        $question.'<div class="hr"></div>'
+        Page\text('Are you sure you want to delete the event?')
+        .'<div class="hr"></div>'
         .Page\imageLink('Yes, delete event',
             "submit.php?idevents=$idevents", 'yes')
         .'<div class="hr"></div>'

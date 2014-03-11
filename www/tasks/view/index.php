@@ -28,24 +28,23 @@ $tasktext = $task->tasktext;
 $inserttime = $task->inserttime;
 $updatetime = $task->updatetime;
 
-include_once __DIR__.'/../../fns/TaskTags/indexOnTask.php';
-$tags = TaskTags\indexOnTask($mysqli, $id);
-
-$base = '../../';
-
 include_once '../../fns/date_ago.php';
-include_once '../../fns/Page/text.php';
 $datesText = '<div>Task created '.date_ago($inserttime).'.</div>';
 if ($inserttime != $updatetime) {
     $datesText .= '<div>Last modified '.date_ago($updatetime).'.</div>';
 }
-$datesText = Page\text($datesText);
+
+include_once __DIR__.'/../../fns/TaskTags/indexOnTask.php';
+$tags = TaskTags\indexOnTask($mysqli, $id);
+
+$base = '../../';
 
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/create_tags.php';
 include_once '../../fns/render_external_links.php';
 include_once '../../fns/Page/sessionMessages.php';
+include_once '../../fns/Page/text.php';
 $content =
     create_tabs(
         array(
@@ -65,7 +64,9 @@ $content =
                 render_external_links(htmlspecialchars($tasktext), $base)
             )
         )
-        .create_tags('../', $tags).'<div class="hr"></div>'.$datesText
+        .create_tags('../', $tags)
+        .'<div class="hr"></div>'
+        .Page\text($datesText)
     )
     .create_panel('Options', join('<div class="hr"></div>', $options));
 

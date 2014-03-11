@@ -1,17 +1,18 @@
 <?php
 
-include_once '../fns/require_user.php';
-$user = require_user('../');
-$idusers = $user->idusers;
+$base = '../';
 
-include_once '../fns/Page/imageArrowLink.php';
-include_once '../fns/Page/imageLink.php';
+include_once '../fns/require_user.php';
+$user = require_user($base);
 
 include_once '../fns/Channels/indexOnUser.php';
 include_once '../lib/mysqli.php';
-$channels = Channels\indexOnUser($mysqli, $idusers);
+$channels = Channels\indexOnUser($mysqli, $user->idusers);
 
 $items = array();
+
+include_once '../fns/Page/imageArrowLink.php';
+
 if ($channels) {
     foreach ($channels as $channel) {
         $items[] = Page\imageArrowLink(
@@ -30,11 +31,10 @@ unset(
     $_SESSION['notifications/index_messages']
 );
 
-include_once '../fns/Page/sessionMessages.php';
-$pageMessages = Page\sessionMessages('channels/index_messages');
-
 include_once '../fns/create_panel.php';
 include_once '../fns/create_tabs.php';
+include_once '../fns/Page/imageLink.php';
+include_once '../fns/Page/sessionMessages.php';
 $content =
     create_tabs(
         array(
@@ -48,7 +48,8 @@ $content =
             ),
         ),
         'Channels',
-        $pageMessages.join('<div class="hr"></div>', $items)
+        Page\sessionMessages('channels/index_messages')
+        .join('<div class="hr"></div>', $items)
     )
     .create_panel(
         'Options',

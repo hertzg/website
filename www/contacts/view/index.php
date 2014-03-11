@@ -9,19 +9,13 @@ $email = $contact->email;
 $phone1 = $contact->phone1;
 $phone2 = $contact->phone2;
 
-include_once '../../fns/Page/sessionMessages.php';
-$pageMessages = Page\sessionMessages('contacts/view/index_messages');
-
 unset(
     $_SESSION['contacts/edit_errors'],
     $_SESSION['contacts/edit_lastpost'],
     $_SESSION['contacts/index_messages']
 );
 
-include_once '../../fns/create_panel.php';
-include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/label.php';
-
 $items = array(
     Form\label('Full name', htmlspecialchars($contact->fullname)),
 );
@@ -53,7 +47,10 @@ if ($insert_time != $update_time) {
 include_once '../../fns/Page/text.php';
 $items[] = Page\text($datesText);
 
+include_once '../../fns/create_panel.php';
+include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/imageArrowLink.php';
+include_once '../../fns/Page/sessionMessages.php';
 $content =
     create_tabs(
         array(
@@ -67,7 +64,8 @@ $content =
             ),
         ),
         "Contact #$id",
-        $pageMessages.join('<div class="hr"></div>', $items)
+        Page\sessionMessages('contacts/view/index_messages')
+        .join('<div class="hr"></div>', $items)
     )
     .create_panel(
         'Options',

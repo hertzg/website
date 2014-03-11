@@ -1,7 +1,9 @@
 <?php
 
+$base = '../';
+
 include_once '../fns/require_user.php';
-$user = require_user('../');
+$user = require_user($base);
 $idusers = $user->idusers;
 
 include_once '../fns/Users/clearNumNewNotifications.php';
@@ -58,11 +60,9 @@ unset(
     $_SESSION['notifications/in-channel/index_messages']
 );
 
-include_once '../fns/Page/sessionMessages.php';
-$pageMessages = Page\sessionMessages('notifications/index_messages');
-
 include_once '../fns/create_panel.php';
 include_once '../fns/create_tabs.php';
+include_once '../fns/Page/sessionMessages.php';
 $content =
     create_tabs(
         array(
@@ -72,9 +72,10 @@ $content =
             ),
         ),
         'Notifications',
-        $pageMessages.join('<div class="hr"></div>', $items)
+        Page\sessionMessages('notifications/index_messages')
+        .join('<div class="hr"></div>', $items)
         .create_panel('Options', join('<div class="hr"></div>', $options))
     );
 
 include_once '../fns/echo_page.php';
-echo_page($user, 'Notifications', $content, '../');
+echo_page($user, 'Notifications', $content, $base);

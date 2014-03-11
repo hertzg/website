@@ -1,8 +1,9 @@
 <?php
 
+$base = '../../';
+
 include_once '../../fns/require_user.php';
-$user = require_user('../../');
-$idusers = $user->idusers;
+$user = require_user($base);
 
 include_once '../../fns/request_strings.php';
 list($month, $year) = request_strings('month', 'year');
@@ -62,4 +63,4 @@ $content =
     );
 
 include_once '../../fns/echo_page.php';
-echo_page($user, 'Jumo To', $content, '../../');
+echo_page($user, 'Jumo To', $content, $base);

@@ -10,15 +10,13 @@ if (array_key_exists('contacts/edit_lastpost', $_SESSION)) {
     $values = (array)$contact;
 }
 
-include_once '../../fns/Page/sessionErrors.php';
-$pageErrors = Page\sessionErrors('contacts/edit_errors');
-
 unset($_SESSION['contacts/view/index_messages']);
 
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/hidden.php';
 include_once '../../fns/Form/textfield.php';
+include_once '../../fns/Page/sessionErrors.php';
 $content =
     create_tabs(
         array(
@@ -32,7 +30,7 @@ $content =
             ),
         ),
         'Edit',
-        $pageErrors
+        Page\sessionErrors('contacts/edit_errors')
         .'<form action="submit.php" method="post">'
             .Form\textfield('fullname', 'Full name', array(
                 'value' => $values['fullname'],

@@ -6,11 +6,9 @@ list($bookmark, $id, $user) = require_bookmark($mysqli);
 
 unset($_SESSION['bookmarks/view/index_messages']);
 
-include_once '../../fns/Page/text.php';
-$question = Page\text('Are you sure you want to delete the bookmark?');
-
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/imageLink.php';
+include_once '../../fns/Page/text.php';
 $content =
     create_tabs(
         array(
@@ -24,7 +22,8 @@ $content =
             ),
         ),
         "Bookmark #$id",
-        $question.'<div class="hr"></div>'
+        Page\text('Are you sure you want to delete the bookmark?')
+        .'<div class="hr"></div>'
         .Page\imageLink('Yes, delete bookmark', "submit.php?id=$id", 'yes')
         .'<div class="hr"></div>'
         .Page\imageLink('No, return back', "../view/?id=$id", 'no')

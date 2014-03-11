@@ -4,23 +4,17 @@ include_once '../fns/require_event.php';
 include_once '../../lib/mysqli.php';
 list($event, $idevents, $user) = require_event($mysqli);
 
-include_once '../../fns/Page/sessionMessages.php';
-$pageMessages = Page\sessionMessages('calendar/view-event_messages');
-
 unset(
     $_SESSION['calendar/edit-event/index_errors'],
     $_SESSION['calendar/edit-event/index_lastpost'],
     $_SESSION['calendar/index_messages']
 );
 
-include_once '../../fns/Page/text.php';
-$text = Page\text(htmlspecialchars($event->eventtext));
-
-$dateText = Page\text(date('F d, Y', $event->eventtime));
-
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/imageArrowLink.php';
+include_once '../../fns/Page/sessionMessages.php';
+include_once '../../fns/Page/text.php';
 $content =
     create_tabs(
         array(
@@ -34,7 +28,10 @@ $content =
             ),
         ),
         "Event #$idevents",
-        $pageMessages.$text.'<div class="hr"></div>'.$dateText
+        Page\sessionMessages('calendar/view-event_messages')
+        .Page\text(htmlspecialchars($event->eventtext))
+        .'<div class="hr"></div>'
+        .Page\text(date('F d, Y', $event->eventtime))
     )
     .create_panel(
         'Options',

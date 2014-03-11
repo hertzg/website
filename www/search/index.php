@@ -1,7 +1,9 @@
 <?php
 
+$base = '../';
+
 include_once '../fns/require_user.php';
-$user = require_user('../');
+$user = require_user($base);
 $idusers = $user->idusers;
 
 include_once '../lib/mysqli.php';
@@ -86,4 +88,4 @@ include_once '../fns/create_tabs.php';
 $content = create_tabs(array(), 'Home', join('<div class="hr"></div>', $items));
 
 include_once '../fns/echo_page.php';
-echo_page($user, 'Search: '.htmlspecialchars($keyword), $content, '../');
+echo_page($user, 'Search: '.htmlspecialchars($keyword), $content, $base);

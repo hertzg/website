@@ -1,13 +1,9 @@
 <?php
 
-include_once '../fns/require_user.php';
-$user = require_user('../');
-$idusers = $user->idusers;
+$base = '../';
 
-include_once '../fns/Form/label.php';
-include_once '../fns/Page/imageArrowLink.php';
-include_once '../fns/Page/imageArrowLinkWithDescription.php';
-include_once '../lib/mysqli.php';
+include_once '../fns/require_user.php';
+$user = require_user($base);
 
 unset(
     $_SESSION['account/verify-email/index_errors'],
@@ -20,8 +16,9 @@ unset(
     $_SESSION['tokens/index_messages']
 );
 
-include_once '../fns/Page/sessionMessages.php';
-$pageMessages = Page\sessionMessages('account/index_messages');
+include_once '../fns/Form/label.php';
+include_once '../fns/Page/imageArrowLink.php';
+include_once '../fns/Page/imageArrowLinkWithDescription.php';
 
 $fullname = $user->fullname;
 if ($fullname !== '') {
@@ -66,6 +63,7 @@ include_once '../fns/create_panel.php';
 include_once '../fns/create_tabs.php';
 include_once '../fns/date_ago.php';
 include_once '../fns/n_times.php';
+include_once '../fns/Page/sessionMessages.php';
 $content =
     create_tabs(
         array(
@@ -75,7 +73,7 @@ $content =
             ),
         ),
         'Account',
-        $pageMessages
+        Page\sessionMessages('account/index_messages')
         .Form\label('Username', $user->username)
         .'<div class="hr"></div>'
         .Form\label('Email', $user->email)
@@ -94,4 +92,4 @@ $content =
     .create_panel('Options', join('<div class="hr"></div>', $options));
 
 include_once '../fns/echo_page.php';
-echo_page($user, 'Account', $content, '../');
+echo_page($user, 'Account', $content, $base);

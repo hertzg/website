@@ -1,8 +1,9 @@
 <?php
 
+$base = '../../';
+
 include_once '../../fns/require_user.php';
-$user = require_user('../../');
-$idusers = $user->idusers;
+$user = require_user($base);
 
 if (array_key_exists('contacts/new/index_lastpost', $_SESSION)) {
     $values = $_SESSION['contacts/new/index_lastpost'];
@@ -17,14 +18,12 @@ if (array_key_exists('contacts/new/index_lastpost', $_SESSION)) {
     );
 }
 
-include_once '../../fns/Page/sessionErrors.php';
-$pageErrors = Page\sessionErrors('contacts/new/index_errors');
-
 unset($_SESSION['contacts/index_messages']);
 
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/textfield.php';
+include_once '../../fns/Page/sessionErrors.php';
 $content =
     create_tabs(
         array(
@@ -38,7 +37,7 @@ $content =
             ),
         ),
         'New',
-        $pageErrors
+        Page\sessionErrors('contacts/new/index_errors')
         .'<form action="submit.php" method="post">'
             .Form\textfield('fullname', 'Full name', array(
                 'value' => $values['fullname'],
@@ -76,4 +75,4 @@ $content =
     );
 
 include_once '../../fns/echo_page.php';
-echo_page($user, 'New Contact', $content, '../../');
+echo_page($user, 'New Contact', $content, $base);

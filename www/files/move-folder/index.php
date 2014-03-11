@@ -12,8 +12,6 @@ include_once '../../lib/mysqli.php';
 list($folder, $idfolders, $user) = require_folder($mysqli);
 $idusers = $user->idusers;
 
-include_once '../fns/create_folder_link.php';
-
 include_once '../../fns/request_strings.php';
 list($parentidfolders) = request_strings('parentidfolders');
 
@@ -64,21 +62,15 @@ if (array_key_exists('files/move-folder_parentidfolders', $_SESSION) &&
     unset($_SESSION['files/move-folder_errors']);
 }
 
-include_once '../../fns/Page/sessionErrors.php';
-$pageErrors = Page\sessionErrors('files/move-folder_errors');
-
 unset(
     $_SESSION['files/index_idfolders'],
     $_SESSION['files/index_messages']
 );
 
-include_once '../../fns/Page/warnings.php';
-$pageWarnings = Page\warnings(array(
-    'Moving the folder "<b>'.htmlspecialchars($folder->foldername).'</b>".',
-    'Select a folder to move the folder into.'
-));
-
+include_once '../fns/create_folder_link.php';
 include_once '../../fns/create_tabs.php';
+include_once '../../fns/Page/sessionErrors.php';
+include_once '../../fns/Page/warnings.php';
 $content =
     create_tabs(
         array(
@@ -92,7 +84,12 @@ $content =
             )
         ),
         'Move',
-        $pageErrors.$pageWarnings.join('<div class="hr"></div>', $items)
+        Page\sessionErrors('files/move-folder_errors')
+        .Page\warnings(array(
+            'Moving the folder "<b>'.htmlspecialchars($folder->foldername).'</b>".',
+            'Select a folder to move the folder into.'
+        ))
+        .join('<div class="hr"></div>', $items)
     );
 
 include_once '../../fns/echo_page.php';

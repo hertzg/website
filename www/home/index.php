@@ -4,11 +4,6 @@ $base = '../';
 
 include_once '../fns/require_user.php';
 $user = require_user($base);
-$idusers = $user->idusers;
-
-include_once '../fns/create_panel.php';
-include_once '../fns/create_search_form_empty_content.php';
-include_once '../lib/mysqli.php';
 
 unset(
     $_SESSION['account/index_messages'],
@@ -24,6 +19,7 @@ unset(
 
 $items = array();
 
+include_once '../fns/create_search_form_empty_content.php';
 $items[] =
     '<form action="../search/" style="height: 48px; position: relative">'
         .create_search_form_empty_content('Search...')
@@ -33,6 +29,7 @@ include_once 'fns/render_bookmarks.php';
 render_bookmarks($user, $items);
 
 include_once 'fns/render_calendar.php';
+include_once '../lib/mysqli.php';
 render_calendar($user, $mysqli, $items);
 
 include_once 'fns/render_contacts.php';
@@ -50,13 +47,17 @@ render_notifications($user, $items, $notifications);
 include_once 'fns/render_tasks.php';
 render_tasks($user, $items);
 
-include_once '../fns/Page/sessionMessages.php';
-$pageMessages = Page\sessionMessages('home/index_messages');
-
+include_once '../fns/create_panel.php';
 include_once '../fns/create_tabs.php';
 include_once '../fns/Page/imageArrowLink.php';
+include_once '../fns/Page/sessionMessages.php';
 $content =
-    create_tabs(array(), 'Home', $pageMessages.$notifications.join('<div class="hr"></div>', $items))
+    create_tabs(
+        array(),
+        'Home',
+        Page\sessionMessages('home/index_messages')
+        .$notifications.join('<div class="hr"></div>', $items)
+    )
     .create_panel(
         'Options',
         Page\imageArrowLink('Account', '../account/', 'account')

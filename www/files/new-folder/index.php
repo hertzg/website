@@ -1,11 +1,12 @@
 <?php
 
+$base = '../../';
+
 include_once '../../fns/require_user.php';
-$user = require_user('../../');
-$idusers = $user->idusers;
+$user = require_user($base);
 
 include_once '../../fns/request_strings.php';
-list($parentIdFolders) = request_strings('parentidfolders');
+list($parentidfolders) = request_strings('parentidfolders');
 
 if (array_key_exists('files/add-folder_lastpost', $_SESSION)) {
     $values = $_SESSION['files/add-folder_lastpost'];
@@ -13,12 +14,12 @@ if (array_key_exists('files/add-folder_lastpost', $_SESSION)) {
     $values = array('foldername' => '');
 }
 
-$parentIdFolders = abs((int)$parentIdFolders);
-if ($parentIdFolders) {
+$parentidfolders = abs((int)$parentidfolders);
+if ($parentidfolders) {
 
     include_once '../../fns/Folders/get.php';
     include_once '../../lib/mysqli.php';
-    $parentFolder = Folders\get($mysqli, $idusers, $parentIdFolders);
+    $parentFolder = Folders\get($mysqli, $user->idusers, $parentidfolders);
 
     if (!$parentFolder) {
         include_once '../../fns/redirect.php';
@@ -26,9 +27,6 @@ if ($parentIdFolders) {
     }
 
 }
-
-include_once '../../fns/Page/sessionErrors.php';
-$pageErrors = Page\sessionErrors('files/add-folder_errors');
 
 unset(
     $_SESSION['files/index_idfolders'],
@@ -40,6 +38,7 @@ include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/hidden.php';
 include_once '../../fns/Form/textfield.php';
+include_once '../../fns/Page/sessionErrors.php';
 $content =
     create_tabs(
         array(
@@ -49,11 +48,11 @@ $content =
             ),
             array(
                 'title' => 'Files',
-                'href' => create_folder_link($parentIdFolders, '../'),
+                'href' => create_folder_link($parentidfolders, '../'),
             ),
         ),
         'New Folder',
-        $pageErrors
+        Page\sessionErrors('files/add-folder_errors')
         .'<form action="submit.php" method="post">'
             .Form\textfield('foldername', 'Folder name', array(
                 'value' => $values['foldername'],
@@ -62,9 +61,9 @@ $content =
             ))
             .'<div class="hr"></div>'
             .Form\button('Create')
-            .Form\hidden('parentidfolders', $parentIdFolders)
+            .Form\hidden('parentidfolders', $parentidfolders)
         .'</form>'
     );
 
 include_once '../../fns/echo_page.php';
-echo_page($user, 'New Folder', $content, '../../');
+echo_page($user, 'New Folder', $content, $base);

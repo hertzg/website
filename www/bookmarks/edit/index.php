@@ -10,15 +10,13 @@ if (array_key_exists('bookmarks/edit/index_lastpost', $_SESSION)) {
     $values = (array)$bookmark;
 }
 
-include_once '../../fns/Page/sessionErrors.php';
-$pageErrors = Page\sessionErrors('bookmarks/edit/index_errors');
-
 unset($_SESSION['bookmarks/index_messages']);
 
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/hidden.php';
 include_once '../../fns/Form/textfield.php';
+include_once '../../fns/Page/sessionErrors.php';
 $content =
     create_tabs(
         array(
@@ -32,7 +30,7 @@ $content =
             ),
         ),
         'Edit',
-        $pageErrors
+        Page\sessionErrors('bookmarks/edit/index_errors')
         .'<form action="submit.php" method="post">'
             .Form\textfield('url', 'URL', array(
                 'value' => $values['url'],

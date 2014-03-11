@@ -1,8 +1,9 @@
 <?php
 
+$base = '../';
+
 include_once '../fns/require_user.php';
-$user = require_user('../');
-$idusers = $user->idusers;
+$user = require_user($base);
 
 include_once '../fns/request_strings.php';
 list($url) = request_strings('url');
@@ -12,13 +13,13 @@ if (!array_key_exists('HTTP_REFERER', $_SERVER)) {
     redirect($url);
 }
 
+$escapedUrl = htmlspecialchars($url);
+
 $body =
     '<div class="page-text">'
         .'<div>Redirecting to:</div>'
         .'<div>'
-            .'<a class="a" href="'.htmlspecialchars($url).'">'
-                .htmlspecialchars($url)
-            .'</a>'
+            ."<a class=\"a\" href=\"$escapedUrl\">$escapedUrl</a>"
         .'</div>'
     .'</div>'
     .'<script type="text/javascript">'
@@ -26,4 +27,4 @@ $body =
     .'</script>';
 
 include_once '../fns/echo_html.php';
-echo_html('Redirecting', '', $body, $user->theme, '../');
+echo_html('Redirecting', '', $body, $user->theme, $base);

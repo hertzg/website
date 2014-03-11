@@ -1,14 +1,9 @@
 <?php
 
-function create_search_form ($content) {
-    return
-        '<form action="./" style="height: 48px; position: relative">'
-            .$content
-        .'</form>';
-}
+$base = '../../';
 
 include_once '../../fns/require_user.php';
-$user = require_user('../');
+$user = require_user($base);
 $idusers = $user->idusers;
 
 include_once '../../fns/request_strings.php';
@@ -22,12 +17,14 @@ if ($keyword === '') {
 }
 
 $items = array();
-$filterMessage = '';
 
+include_once 'fns/create_search_form.php';
 include_once '../../fns/create_search_form_content.php';
 include_once '../../lib/mysqli.php';
 
 if ($tag === '') {
+
+    $filterMessage = '';
 
     include_once '../../fns/Bookmarks/search.php';
     $bookmarks = Bookmarks\search($mysqli, $idusers, $keyword);
@@ -35,6 +32,7 @@ if ($tag === '') {
     $items[] = create_search_form(
         create_search_form_content($keyword, 'Search bookmarks...', '..')
     );
+
     if (count($bookmarks) > 1) {
 
         include_once '../../fns/BookmarkTags/indexOnUser.php';
@@ -71,9 +69,6 @@ if ($tag === '') {
 include_once '../fns/render_bookmarks.php';
 render_bookmarks($bookmarks, $items, '../');
 
-include_once '../../fns/Page/sessionMessages.php';
-$pageMessages = Page\sessionMessages('bookmarks/index_messages');
-
 unset(
     $_SESSION['bookmarks/new/index_errors'],
     $_SESSION['bookmarks/new/index_lastpost'],
@@ -83,6 +78,7 @@ unset(
 
 include_once '../fns/create_options_panel.php';
 include_once '../../fns/create_tabs.php';
+include_once '../../fns/Page/sessionMessages.php';
 $content =
     create_tabs(
         array(
@@ -92,9 +88,10 @@ $content =
             ),
         ),
         'Bookmarks',
-        $pageMessages.$filterMessage.join('<div class="hr"></div>', $items)
+        Page\sessionMessages('bookmarks/index_messages')
+        .$filterMessage.join('<div class="hr"></div>', $items)
     )
     .create_options_panel($user, '../');
 
 include_once '../../fns/echo_page.php';
-echo_page($user, 'Bookmarks', $content, '../../');
+echo_page($user, 'Bookmarks', $content, $base);

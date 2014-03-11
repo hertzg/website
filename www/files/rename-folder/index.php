@@ -4,11 +4,6 @@ include_once '../fns/require_folder.php';
 include_once '../../lib/mysqli.php';
 list($folder, $idfolders, $user) = require_folder($mysqli);
 
-include_once '../fns/create_folder_link.php';
-
-include_once '../../fns/Page/sessionErrors.php';
-$pageErrors = Page\sessionErrors('files/rename-folder_errors');
-
 if (array_key_exists('files/rename-folder_lastpost', $_SESSION)) {
     $values = $_SESSION['files/rename-folder_lastpost'];
 } else {
@@ -20,10 +15,12 @@ unset(
     $_SESSION['files/index_messages']
 );
 
+include_once '../fns/create_folder_link.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/hidden.php';
 include_once '../../fns/Form/textfield.php';
+include_once '../../fns/Page/sessionErrors.php';
 $content =
     create_tabs(
         array(
@@ -37,7 +34,7 @@ $content =
             ),
         ),
         "Rename Folder #$idfolders",
-        $pageErrors
+        Page\sessionErrors('files/rename-folder_errors')
         .'<form action="submit.php" method="post">'
             .Form\textfield('foldername', 'Folder name', array(
                 'value' => $values['foldername'],

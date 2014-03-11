@@ -1,7 +1,9 @@
 <?php
 
+$base = '../';
+
 include_once '../fns/require_guest_user.php';
-require_guest_user('../');
+require_guest_user($base);
 
 include_once '../fns/request_strings.php';
 list($idusers, $key) = request_strings('idusers', 'key');
@@ -30,9 +32,6 @@ if (array_key_exists('reset-password/index_lastpost', $_SESSION)) {
     );
 }
 
-include_once '../fns/Page/sessionErrors.php';
-$pageErrors = Page\sessionErrors('reset-password/index_errors');
-
 unset(
     $_SESSION['sign-in/index_errors'],
     $_SESSION['sign-in/index_lastpost'],
@@ -45,6 +44,7 @@ include_once '../fns/Form/hidden.php';
 include_once '../fns/Form/label.php';
 include_once '../fns/Form/notes.php';
 include_once '../fns/Form/password.php';
+include_once '../fns/Page/sessionErrors.php';
 $content =
     create_tabs(
         array(
@@ -54,7 +54,7 @@ $content =
             ),
         ),
         'Reset Password',
-        $pageErrors
+        Page\sessionErrors('reset-password/index_errors')
         .'<form action="submit.php" method="post">'
             .Form\label('Username', $user->username)
             .'<div class="hr"></div>'
@@ -77,4 +77,4 @@ $content =
     );
 
 include_once '../fns/echo_page.php';
-echo_page($user, 'Reset Password', $content, '../');
+echo_page($user, 'Reset Password', $content, $base);
