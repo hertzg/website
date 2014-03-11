@@ -2,27 +2,10 @@
 
 $base = '../../';
 
-include_once '../../fns/require_user.php';
-$user = require_user($base);
-$idusers = $user->idusers;
-
-include_once '../../fns/request_strings.php';
-list($id) = request_strings('id');
-
-$id = abs((int)$id);
-
-include_once '../../fns/Channels/get.php';
+include_once 'fns/require_channel.php';
 include_once '../../lib/mysqli.php';
-$channel = Channels\get($mysqli, $idusers, $id);
-
-if (!$channel) {
-    unset($_SESSION['notifications/index_messages']);
-    $_SESSION['notifications/index_errors'] = array(
-        'The channel no longer exists.',
-    );
-    include_once '../../fns/redirect.php';
-    redirect('..');
-}
+list($channel, $id, $user) = require_channel($mysqli, '../../', '..');
+$idusers = $user->idusers;
 
 include_once '../../fns/Users/clearNumNewNotifications.php';
 Users\clearNumNewNotifications($mysqli, $idusers);
