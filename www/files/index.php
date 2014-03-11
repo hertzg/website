@@ -33,6 +33,9 @@ include_once '../fns/str_collapse_spaces.php';
 $keyword = str_collapse_spaces($keyword);
 
 $placeholder = 'Search folders and files...';
+
+include_once '../fns/create_search_form.php';
+
 if ($keyword === '') {
 
     include_once '../fns/Folders/indexInUserFolder.php';
@@ -49,8 +52,7 @@ if ($keyword === '') {
             .$content;
     }
 
-    include_once 'fns/create_search_form.php';
-    $items[] = create_search_form($content);
+    $items[] = create_search_form('./', $content);
 
 } else {
 
@@ -79,8 +81,7 @@ if ($keyword === '') {
         $content .= '<input type="hidden" name="deep" value="1" />';
     }
 
-    include_once 'fns/create_search_form.php';
-    $items[] = create_search_form($content);
+    $items[] = create_search_form('./', $content);
 
 }
 

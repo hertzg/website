@@ -546,6 +546,11 @@ label {
     cursor: text;
 }
 
+.search_form {
+    height: 48px;
+    position: relative;
+}
+
 @media (max-width: 440px) {
     .form-property {
         display: block;

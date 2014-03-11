@@ -20,11 +20,10 @@ if ($keyword === '') {
 }
 
 include_once '../fns/create_search_form_content.php';
-$items = array(
-    '<form action="./" style="height: 48px; position: relative">'
-        .create_search_form_content($keyword, 'Search...', '..')
-    .'</form>'
-);
+$formContent = create_search_form_content($keyword, 'Search...', '..');
+
+include_once '../fns/create_search_form.php';
+$items = array(create_search_form('./', $formContent));
 
 include_once '../fns/Bookmarks/search.php';
 $bookmarks = Bookmarks\search($mysqli, $idusers, $keyword);

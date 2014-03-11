@@ -14,6 +14,8 @@ $filterMessage = '';
 
 include_once '../lib/mysqli.php';
 
+$placeholder = 'Search tasks...';
+
 if ($tag === '') {
 
     include_once '../fns/Tasks/indexOnUser.php';
@@ -21,9 +23,11 @@ if ($tag === '') {
 
     if (count($tasks) > 1) {
 
-        include_once 'fns/create_search_form.php';
         include_once '../fns/create_search_form_empty_content.php';
-        $items[] = create_search_form(create_search_form_empty_content('Search tasks...'));
+        $formContent = create_search_form_empty_content($placeholder);
+
+        include_once '../fns/create_search_form.php';
+        $items[] = create_search_form('search/', $formContent);
 
         include_once '../fns/TaskTags/indexOnUser.php';
         $tags = TaskTags\indexOnUser($mysqli, $idusers);
@@ -40,12 +44,13 @@ if ($tag === '') {
     $tasks = TaskTags\indexOnTagName($mysqli, $idusers, $tag);
 
     if (count($tasks) > 1) {
-        include_once 'fns/create_search_form.php';
+
         include_once '../fns/create_search_form_empty_content.php';
-        $items[] = create_search_form(
-            create_search_form_empty_content('Search tasks...')
-            .'<input type="hidden" name="tag" value="'.htmlspecialchars($tag).'" />'
-        );
+        $formContent = create_search_form_empty_content($placeholder)
+            .'<input type="hidden" name="tag" value="'.htmlspecialchars($tag).'" />';
+
+        include_once '../fns/create_search_form.php';
+        $items[] = create_search_form('search/', $formContent);
     }
 
     include_once '../fns/create_clear_filter_bar.php';

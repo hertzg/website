@@ -18,9 +18,11 @@ if ($keyword === '') {
 
 $items = array();
 
-include_once 'fns/create_search_form.php';
+include_once '../../fns/create_search_form.php';
 include_once '../../fns/create_search_form_content.php';
 include_once '../../lib/mysqli.php';
+
+$placeholder = 'Search bookmarks...';
 
 if ($tag === '') {
 
@@ -29,9 +31,8 @@ if ($tag === '') {
     include_once '../../fns/Bookmarks/search.php';
     $bookmarks = Bookmarks\search($mysqli, $idusers, $keyword);
 
-    $items[] = create_search_form(
-        create_search_form_content($keyword, 'Search bookmarks...', '..')
-    );
+    $formContent = create_search_form_content($keyword, $placeholder, '..');
+    $items[] = create_search_form('./', $formContent);
 
     if (count($bookmarks) > 1) {
 
@@ -53,10 +54,9 @@ if ($tag === '') {
     $bookmarks = BookmarkTags\searchOnTagName($mysqli, $idusers, $keyword, $tag);
 
     $clearHref = '../?tag='.rawurlencode($tag);
-    $items[] = create_search_form(
-        create_search_form_content($keyword, 'Search bookmarks...', $clearHref)
-        .'<input type="hidden" name="tag" value="'.htmlspecialchars($tag).'" />'
-    );
+    $formContent = create_search_form_content($keyword, $placeholder, $clearHref)
+        .'<input type="hidden" name="tag" value="'.htmlspecialchars($tag).'" />';
+    $items[] = create_search_form('./', $formContent);
 
     $clearHref = '?'.htmlspecialchars(
         http_build_query(array('keyword' => $keyword))

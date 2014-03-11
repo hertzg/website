@@ -18,9 +18,11 @@ if ($keyword === '') {
 
 $items = array();
 
-include_once 'fns/create_search_form.php';
+include_once '../../fns/create_search_form.php';
 include_once '../../fns/create_search_form_content.php';
 include_once '../../lib/mysqli.php';
+
+$placeholder = 'Search contacts...';
 
 if ($tag === '') {
 
@@ -29,9 +31,8 @@ if ($tag === '') {
     include_once '../../fns/Contacts/search.php';
     $contacts = Contacts\search($mysqli, $idusers, $keyword);
 
-    $items[] = create_search_form(
-        create_search_form_content($keyword, 'Search contacts...', '..')
-    );
+    $formContent = create_search_form_content($keyword, $placeholder, '..');
+    $items[] = create_search_form('./', $formContent);
 
     if (count($contacts) > 1) {
 
@@ -53,10 +54,9 @@ if ($tag === '') {
     $contacts = ContactTags\searchOnTagName($mysqli, $idusers, $keyword, $tag);
 
     $clearHref = '../?tag='.rawurlencode($tag);
-    $items[] = create_search_form(
-        create_search_form_content($keyword, 'Search contacts...', $clearHref)
-        .'<input type="hidden" name="tag" value="'.htmlspecialchars($tag).'" />'
-    );
+    $formContent = create_search_form_content($keyword, $placeholder, $clearHref)
+        .'<input type="hidden" name="tag" value="'.htmlspecialchars($tag).'" />';
+    $items[] = create_search_form('./', $formContent);
 
     $clearHref = '?'.htmlspecialchars(
         http_build_query(array('keyword' => $keyword))

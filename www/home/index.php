@@ -20,10 +20,10 @@ unset(
 $items = array();
 
 include_once '../fns/create_search_form_empty_content.php';
-$items[] =
-    '<form action="../search/" style="height: 48px; position: relative">'
-        .create_search_form_empty_content('Search...')
-    .'</form>';
+$formContent = create_search_form_empty_content('Search...');
+
+include_once '../fns/create_search_form.php';
+$items[] = create_search_form('search/', $formContent);
 
 include_once 'fns/render_bookmarks.php';
 render_bookmarks($user, $items);
