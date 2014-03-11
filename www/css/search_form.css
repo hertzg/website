@@ -1,0 +1,9 @@
+.search_form {
+    height: 48px;
+    position: relative;
+}
+.search_form input[name="keyword"] {
+    width: 100%;
+    height: 100%;
+    cursor: text;
+}

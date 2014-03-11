@@ -22,6 +22,7 @@ var files = [
     'css/panel.css',
     'css/title_and_description.css',
     'css/clearSearchKeywordButton.css',
+    'css/search_form.css',
     'css/searchButton.css',
 ]
 
