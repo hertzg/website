@@ -1,6 +1,8 @@
 <?php
 
-function create_disabled_image_link ($title, $iconName) {
+namespace Page;
+
+function disabledImageLink ($title, $iconName) {
     return
         "<div class=\"clickable link image_link\">"
             .'<div class="image_link-icon">'

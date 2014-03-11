@@ -43,8 +43,8 @@ if ($parentidfolders) {
 foreach ($folders as $itemFolder) {
     $escapedName = htmlspecialchars($itemFolder->foldername);
     if ($itemFolder->idfolders == $idfolders) {
-        include_once '../../fns/create_disabled_image_link.php';
-        $items[] = create_disabled_image_link($escapedName, 'folder');
+        include_once '../../fns/Page/disabledImageLink.php';
+        $items[] = Page\disabledImageLink($escapedName, 'folder');
     } else {
         $items[] = Page\imageArrowLink($escapedName,
             create_link($idfolders, $itemFolder->idfolders), 'folder');
