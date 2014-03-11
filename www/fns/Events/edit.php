@@ -4,10 +4,10 @@ namespace Events;
 
 function edit ($mysqli, $idusers, $id, $eventtext) {
     $eventtext = $mysqli->real_escape_string($eventtext);
-    $edittime = time();
+    $update_time = time();
     $sql = 'update events set'
         ." eventtext = '$eventtext',"
-        ." edittime = $edittime"
+        ." update_time = $update_time"
         ." where idusers = $idusers and idevents = $id";
     $mysqli->query($sql);
 }
