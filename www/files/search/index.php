@@ -35,9 +35,6 @@ if ($keyword === '') {
     redirect(create_folder_link($idfolders, '../'));
 }
 
-$searchAction = './';
-$searchPlaceholder = 'Search folders and files...';
-
 if ($deep) {
     include_once '../fns/search_recursively.php';
     list($folders, $files) = search_recursively($mysqli, $idusers, $idfolders, $keyword);
@@ -51,22 +48,8 @@ if ($deep) {
 
 }
 
-include_once '../../fns/create_folder_link.php';
-$clearHref = create_folder_link($idfolders, '../');
-
-include_once '../../fns/SearchForm/content.php';
-$formContent = SearchForm\content($keyword, $searchPlaceholder, $clearHref);
-if ($idfolders) {
-    $formContent =
-        "<input type=\"hidden\" name=\"idfolders\" value=\"$idfolders\" />"
-        .$formContent;
-}
-if ($deep) {
-    $formContent .= '<input type="hidden" name="deep" value="1" />';
-}
-
-include_once '../../fns/SearchForm/create.php';
-$items[] = SearchForm\create($searchAction, $formContent);
+include_once 'fns/create_search_form.php';
+$items[] = create_search_form($idfolders, $keyword, $deep);
 
 include_once '../fns/render_folders_and_files.php';
 render_folders_and_files($folders, $files, $items, 'No files found.', '../');

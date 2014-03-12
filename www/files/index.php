@@ -23,9 +23,6 @@ if ($idfolders) {
 
 $items = array();
 
-$searchAction = 'search/';
-$searchPlaceholder = 'Search folders and files...';
-
 include_once '../fns/Folders/indexInUserFolder.php';
 $folders = Folders\indexInUserFolder($mysqli, $idusers, $idfolders);
 
@@ -35,7 +32,7 @@ $files = Files\indexInUserFolder($mysqli, $idusers, $idfolders);
 if (count($files) + count($folders) > 1) {
 
     include_once '../fns/SearchForm/emptyContent.php';
-    $formContent = SearchForm\emptyContent($searchPlaceholder);
+    $formContent = SearchForm\emptyContent('Search folders and files...');
     if ($idfolders) {
         $formContent =
             "<input type=\"hidden\" name=\"idfolders\" value=\"$idfolders\" />"
@@ -43,7 +40,7 @@ if (count($files) + count($folders) > 1) {
     }
 
     include_once '../fns/SearchForm/create.php';
-    $items[] = SearchForm\create($searchAction, $formContent);
+    $items[] = SearchForm\create('search/', $formContent);
 
 }
 
