@@ -23,7 +23,7 @@ echo
             .'<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />'
             .'<meta name="viewport" content="width=device-width" />'
             .'<link rel="stylesheet" type="text/css"'
-            .' href="compressed.css?'.get_revision('compressed.css').'" />'
+            .' href="common.compressed.css?'.get_revision('common.compressed.css').'" />'
             .'<link rel="stylesheet" type="text/css" href="index.css?3" />'
             .'<link rel="icon" type="image/png" href="zvini-icons/16.png" />'
             .'<link rel="icon" type="image/png" href="zvini-icons/32.png" sizes="32x32" />'

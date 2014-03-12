@@ -38,4 +38,4 @@ files.forEach(function (file) {
 })
 
 var compressCss = uglifyCss.processString(source)
-fs.writeFileSync('compressed.css', compressCss)
+fs.writeFileSync('common.compressed.css', compressCss)
