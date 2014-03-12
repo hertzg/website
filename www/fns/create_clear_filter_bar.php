@@ -8,5 +8,5 @@ function create_clear_filter_bar ($tag, $clearHref) {
                 .'<span class="icon no"></span>'
             .'</a>'
         .'</div>'
-        .'<div class="warnings-hr"></div>';
+        .'<div class="hr"></div>';
 }

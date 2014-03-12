@@ -15,6 +15,6 @@ function create_tag_filter_bar ($tags, array $params) {
     }
     $html .=
         '</div>'
-        .'<div class="warnings-hr"></div>';
+        .'<div class="hr"></div>';
     return $html;
 }
