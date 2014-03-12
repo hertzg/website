@@ -9,7 +9,8 @@ $idusers = $user->idusers;
 include_once '../lib/mysqli.php';
 
 include_once '../fns/request_strings.php';
-list($idfolders, $keyword, $deep) = request_strings('idfolders', 'keyword', 'deep');
+list($idfolders, $keyword, $deep) = request_strings(
+    'idfolders', 'keyword', 'deep');
 
 $idfolders = abs((int)$idfolders);
 if ($idfolders) {
