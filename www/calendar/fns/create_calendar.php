@@ -20,14 +20,14 @@ function create_calendar ($timeSelected) {
     $nextMonthHref = "?year=$nextMonthYear&amp;month=$nextMonth";
 
     $html =
-        '<div class="calendarMonths">'
-            ."<a href=\"$prevMonthHref\" class=\"clickable navigation-arrow left\">"
+        '<div class="navigation">'
+            ."<a href=\"$prevMonthHref\" class=\"clickable arrow left\">"
                 .'<span class="icon arrow-left"></span>'
             .'</a>'
-            .'<div style="margin: 0 48px">'
+            .'<div class="month">'
                 .date('F d, Y', $timeSelected)
             .'</div>'
-            ."<a href=\"$nextMonthHref\" class=\"clickable navigation-arrow right\">"
+            ."<a href=\"$nextMonthHref\" class=\"clickable arrow right\">"
                 .'<span class="icon arrow-right"></span>'
             .'</a>'
         .'</div>'

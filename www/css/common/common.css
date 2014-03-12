@@ -54,3 +54,8 @@
     line-height: 36px;
     margin-right: 8px;
 }
+
+.tagFilterBar {
+    background: #eee;
+    color: #444;
+}

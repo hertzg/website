@@ -67,7 +67,7 @@ $themes = get_themes();
 $emailVerifiedText = $email_verified ? 'Verified' : 'Not verified';
 $emailValue =
     "<span>$user->email</span>"
-    ."<span style=\"font-weight: normal\"> ($emailVerifiedText)</span>";
+    ."<span class=\"emailStatus\"> ($emailVerifiedText)</span>";
 
 include_once '../fns/bytestr.php';
 include_once '../fns/create_panel.php';
@@ -101,4 +101,6 @@ $content =
     .create_panel('Options', join('<div class="hr"></div>', $options));
 
 include_once '../fns/echo_page.php';
-echo_page($user, 'Account', $content, $base);
+echo_page($user, 'Account', $content, $base, array(
+    'head' => '<link rel="stylesheet" type="text/css" href="index.css" />',
+));

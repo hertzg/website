@@ -5,6 +5,9 @@
     padding-left: 164px;
     margin-left: 16px;
 }
+.form-captcha > img {
+    vertical-align: top;
+}
 @media (max-width: 440px) {
     .form-captcha {
         padding-left: 0;

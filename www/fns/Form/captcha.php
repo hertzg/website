@@ -9,7 +9,6 @@ function captcha ($base, $autofocus = false) {
         return
             '<div class="form-captcha">'
                 ."<img src=\"{$base}captcha/\""
-                .' style="vertical-align: top"'
                 .' alt="CAPTCHA" width="102" height="40" />'
             .'</div>'
             .textfield('captcha', 'Verification', array(

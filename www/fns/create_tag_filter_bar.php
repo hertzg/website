@@ -2,7 +2,7 @@
 
 function create_tag_filter_bar ($tags, array $params) {
     $html =
-        '<div class="tags" style="background: #eee; color: #444">'
+        '<div class="tags tagFilterBar">'
             .'<span class="tags-label">Filter by tags:</span>';
     foreach ($tags as $tag) {
         $tagname = $tag->tagname;
