@@ -7,8 +7,9 @@
 
     var mozApps = navigator.mozApps
     if (mozApps) {
+        var protocol = location.protocol
         var pathname = location.pathname.replace(/help\/install\.php$/, '')
-        var manifest = location.protocol + '//' + location.host + pathname + 'manifest.php'
+        var manifest = protocol + '//' + location.host + pathname + 'manifest.php'
         var checkRequest = mozApps.checkInstalled(manifest)
         checkRequest.onsuccess = function () {
             if (checkRequest.result) {

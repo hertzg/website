@@ -5,8 +5,9 @@ function create_search_form ($idfolders, $keyword, $deep) {
     include_once __DIR__.'/../../../fns/create_folder_link.php';
     $clearHref = create_folder_link($idfolders, '../');
 
+    $placeholder = 'Search folders and files...';
     include_once __DIR__.'/../../../fns/SearchForm/content.php';
-    $formContent = SearchForm\content($keyword, 'Search folders and files...', $clearHref);
+    $formContent = SearchForm\content($keyword, $placeholder, $clearHref);
     if ($idfolders) {
         $formContent =
             "<input type=\"hidden\" name=\"idfolders\" value=\"$idfolders\" />"

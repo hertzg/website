@@ -21,7 +21,8 @@ if (!$token) {
     }
 
     include_once '../fns/Tokens/add.php';
-    $idtokens = Tokens\add($mysqli, $user->idusers, $user->username, $tokentext, $useragent);
+    $idtokens = Tokens\add($mysqli, $idusers, $user->username,
+        $tokentext, $useragent);
 
     include_once '../fns/Users/addNumTokens.php';
     Users\addNumTokens($mysqli, $idusers, 1);

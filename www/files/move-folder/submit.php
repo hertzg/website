@@ -36,7 +36,8 @@ if ($parentidfolders) {
 }
 
 include_once '../../fns/Folders/getByName.php';
-$existingFolder = Folders\getByName($mysqli, $idusers, $parentidfolders, $folder->foldername);
+$existingFolder = Folders\getByName($mysqli, $idusers, $parentidfolders,
+    $folder->foldername);
 
 if ($existingFolder) {
     $_SESSION['files/move-folder/index_parentidfolders'] = $parentidfolders;

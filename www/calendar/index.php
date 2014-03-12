@@ -51,7 +51,8 @@ if ($events) {
 include_once 'fns/create_all_events_link.php';
 $eventItems[] = create_all_events_link($user);
 
-$newEventHref = "new-event/?year=$yearSelected&amp;month=$monthSelected&amp;day=$daySelected";
+$newEventHref =
+    "new-event/?year=$yearSelected&amp;month=$monthSelected&amp;day=$daySelected";
 $jumpToHref = "jump-to/?year=$yearNow&amp;month=$monthNow";
 
 include_once 'fns/create_calendar.php';

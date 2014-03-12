@@ -5,7 +5,8 @@ function get_mysqli () {
     if ($mysqli === null) {
         include_once __DIR__.'/../lib/config.php';
         $config = $mysqli;
-        $mysqli = new mysqli($config['host'], $config['user'], $config['pass'], $config['db']);
+        $mysqli = new mysqli($config['host'], $config['user'],
+            $config['pass'], $config['db']);
         if ($mysqli->connect_errno) {
             include_once __DIR__.'/ErrorPage/internalServerError.php';
             ErrorPage\internalServerError();

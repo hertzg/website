@@ -19,10 +19,15 @@ $foldername = str_collapse_spaces($foldername);
 if ($foldername === '') {
     $errors[] = 'Enter folder name.';
 } else {
+
     include_once '../../fns/Folders/getByName.php';
-    if (Folders\getByName($mysqli, $idusers, $folder->parentidfolders, $foldername, $idfolders)) {
+    $existingFolder = Folders\getByName($mysqli, $idusers,
+        $folder->parentidfolders, $foldername, $idfolders);
+
+    if ($existingFolder) {
         $errors[] = 'Folder with this name already exists.';
     }
+
 }
 
 include_once '../../fns/redirect.php';

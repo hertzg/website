@@ -38,11 +38,12 @@ function signed_user () {
         $user = Users\get($mysqli, $_SESSION['user']->idusers);
 
         if ($user) {
-            setcookie('username', $user->username, time() + 60 * 60 * 24 * 30, '/');
+            $expires = time() + 60 * 60 * 24 * 30;
+            setcookie('username', $user->username, $expires, '/');
             if (array_key_exists('token', $_SESSION)) {
 
                 $token = $_SESSION['token'];
-                setcookie('token', bin2hex($token->tokentext), time() + 60 * 60 * 24 * 30, '/');
+                setcookie('token', bin2hex($token->tokentext), $expires, '/');
 
                 include_once __DIR__.'/Tokens/updateAccessTime.php';
                 Tokens\updateAccessTime($mysqli, $token->tokentext);

@@ -3,6 +3,7 @@
 function echo_html ($title, $head, $body, $theme, $base) {
 
     include_once __DIR__.'/get_revision.php';
+    $commonCssRevision = get_revision('common.compressed.css');
 
     header('Content-Type: text/html; charset=UTF-8');
 
@@ -19,7 +20,7 @@ function echo_html ($title, $head, $body, $theme, $base) {
                 .' content="text/html; charset=UTF-8" />'
                 .'<meta name="viewport" content="width=device-width" />'
                 .'<link rel="stylesheet" type="text/css"'
-                ." href=\"{$base}common.compressed.css?".get_revision('common.compressed.css').'" />'
+                ." href=\"{$base}common.compressed.css?$commonCssRevision\" />"
                 .'<link rel="stylesheet" type="text/css"'
                 ." href=\"{$base}icons.css?14\" />"
                 .'<link rel="stylesheet" type="text/css"'

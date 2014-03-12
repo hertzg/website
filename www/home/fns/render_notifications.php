@@ -10,7 +10,9 @@ function render_notifications ($user, array &$items, &$notifications) {
         if ($num_new_notifications) {
 
             include_once __DIR__.'/../../fns/Page/warnings.php';
-            $notifications = Page\warnings(array("$num_new_notifications new notifications."));
+            $notifications = Page\warnings(array(
+                "$num_new_notifications new notifications.",
+            ));
 
             $description = "$num_new_notifications new. $num_notifications total.";
 
