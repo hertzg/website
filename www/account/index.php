@@ -36,27 +36,38 @@ if (!$email_verified) {
     $options[] = Page\imageArrowLink('Verify Email', 'verify-email/', 'yes');
 }
 
-$options[] = Page\imageArrowLink('Edit Profile',
-    '../edit-profile/', 'edit-profile');
-$options[] = Page\imageArrowLink('Edit Theme',
-    '../edit-theme/', "edit-$user->theme-theme");
-$options[] = Page\imageArrowLink('Change Password',
-    '../change-password/', 'edit-password');
+$href = '../edit-profile/';
+$options[] = Page\imageArrowLink('Edit Profile', $href, 'edit-profile');
 
+$href = '../edit-theme/';
+$icon = "edit-$user->theme-theme";
+$options[] = Page\imageArrowLink('Edit Theme', $href, $icon);
+
+$href = '../change-password/';
+$options[] = Page\imageArrowLink('Change Password', $href, 'edit-password');
+
+$title = 'Remembered Sessions';
+$href = '../tokens/';
+$icon = 'tokens';
 $num_tokens = $user->num_tokens;
 if ($num_tokens) {
-    $options[] = Page\imageArrowLinkWithDescription('Remembered Sessions',
-        "$num_tokens total.", '../tokens/', 'tokens');
+    $description = "$num_tokens total.";
+    $options[] = Page\imageArrowLinkWithDescription($title, $description,
+        $href, $icon);
 } else {
-    $options[] = Page\imageArrowLink('Remembered Sessions',
-        '../tokens/', 'tokens');
+    $options[] = Page\imageArrowLink($title, $href, $icon);
 }
 
-$options[] = Page\imageArrowLink('Close Account',
-    '../close-account/', 'trash-bin');
+$href = '../close-account/';
+$options[] = Page\imageArrowLink('Close Account', $href, 'trash-bin');
 
 include_once '../fns/get_themes.php';
 $themes = get_themes();
+
+$emailVerifiedText = $email_verified ? 'Verified' : 'Not verified';
+$emailValue =
+    "<span>$user->email</span>"
+    ."<span style=\"font-weight: normal\"> ($emailVerifiedText)</span>";
 
 include_once '../fns/bytestr.php';
 include_once '../fns/create_panel.php';
@@ -76,9 +87,7 @@ $content =
         Page\sessionMessages('account/index_messages')
         .Form\label('Username', $user->username)
         .'<div class="hr"></div>'
-        .Form\label('Email', $user->email)
-        .'<div class="hr"></div>'
-        .Form\label('Email verified', $email_verified ? 'Yes' : 'No')
+        .Form\label('Email', $emailValue)
         .'<div class="hr"></div>'
         .$fullnameField
         .Form\label('Theme', $themes[$user->theme])
