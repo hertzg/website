@@ -46,17 +46,8 @@ $options[] = Page\imageArrowLink('Edit Theme', $href, $icon);
 $href = '../change-password/';
 $options[] = Page\imageArrowLink('Change Password', $href, 'edit-password');
 
-$title = 'Remembered Sessions';
-$href = '../tokens/';
-$icon = 'tokens';
-$num_tokens = $user->num_tokens;
-if ($num_tokens) {
-    $description = "$num_tokens total.";
-    $options[] = Page\imageArrowLinkWithDescription($title, $description,
-        $href, $icon);
-} else {
-    $options[] = Page\imageArrowLink($title, $href, $icon);
-}
+include_once 'fns/create_tokens_link.php';
+$options[] = create_tokens_link($user);
 
 $href = '../close-account/';
 $options[] = Page\imageArrowLink('Close Account', $href, 'trash-bin');
