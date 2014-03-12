@@ -4,11 +4,6 @@ include_once '../fns/require_contact.php';
 include_once '../../lib/mysqli.php';
 list($contact, $id, $user) = require_contact($mysqli);
 
-$address = $contact->address;
-$email = $contact->email;
-$phone1 = $contact->phone1;
-$phone2 = $contact->phone2;
-
 unset(
     $_SESSION['contacts/edit/index_errors'],
     $_SESSION['contacts/edit/index_lastpost'],
@@ -21,18 +16,27 @@ $items = array(
     Form\label('Full name', htmlspecialchars($contact->fullname)),
 );
 
+$alias = $contact->alias;
+if ($alias !== '') {
+    $items[] = Form\label('Alias', htmlspecialchars($alias));
+}
+
+$address = $contact->address;
 if ($address !== '') {
     $items[] = Form\label('Address', htmlspecialchars($address));
 }
 
+$email = $contact->email;
 if ($email !== '') {
     $items[] = Form\label('Email', htmlspecialchars($email));
 }
 
+$phone1 = $contact->phone1;
 if ($phone1 !== '') {
     $items[] = Form\label('Phone 1', htmlspecialchars($phone1));
 }
 
+$phone2 = $contact->phone2;
 if ($phone2 !== '') {
     $items[] = Form\label('Phone 2', htmlspecialchars($phone2));
 }

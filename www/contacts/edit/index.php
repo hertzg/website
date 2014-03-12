@@ -38,6 +38,10 @@ $content =
                 'required' => true,
             ))
             .'<div class="hr"></div>'
+            .Form\textfield('alias', 'Alias', array(
+                'value' => $values['alias'],
+            ))
+            .'<div class="hr"></div>'
             .Form\textfield('address', 'Address', array(
                 'value' => $values['address'],
             ))

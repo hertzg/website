@@ -10,6 +10,7 @@ if (array_key_exists('contacts/new/index_lastpost', $_SESSION)) {
 } else {
     $values = array(
         'fullname' => '',
+        'alias' => '',
         'address' => '',
         'email' => '',
         'phone1' => '',
@@ -47,6 +48,11 @@ $content =
                 'maxlength' => 32,
                 'autofocus' => true,
                 'required' => true,
+            ))
+            .'<div class="hr"></div>'
+            .Form\textfield('alias', 'Alias', array(
+                'value' => $values['alias'],
+                'maxlength' => 32,
             ))
             .'<div class="hr"></div>'
             .Form\textfield('address', 'Address', array(

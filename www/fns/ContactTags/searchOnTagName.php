@@ -10,14 +10,11 @@ function searchOnTagName ($mysqli, $idusers, $keyword, $tagname) {
     $keyword = $mysqli->real_escape_string($keyword);
     $tagname = $mysqli->real_escape_string($tagname);
 
+    $sql = "select * from contacttags where idusers = $idusers"
+        ." and (fullname like '%$keyword%' or alias like '%$keyword%')"
+        ." and tagname = '$tagname' order by fullname";
+
     include_once __DIR__.'/../mysqli_query_object.php';
-    return mysqli_query_object(
-        $mysqli,
-        'select * from contacttags'
-        ." where idusers = $idusers"
-        ." and fullname like '%$keyword%'"
-        ." and tagname = '$tagname'"
-        .' order by fullname'
-    );
+    return mysqli_query_object($mysqli, $sql);
 
 }

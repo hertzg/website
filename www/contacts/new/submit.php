@@ -10,11 +10,14 @@ $idusers = $user->idusers;
 include_once '../../lib/mysqli.php';
 
 include_once '../../fns/request_strings.php';
-list($fullname, $address, $email, $phone1, $phone2, $tags) = request_strings(
-    'fullname', 'address', 'email', 'phone1', 'phone2', 'tags');
+list($fullname, $alias, $address, $email,
+    $phone1, $phone2, $tags) = request_strings(
+    'fullname', 'alias', 'address', 'email',
+    'phone1', 'phone2', 'tags');
 
 include_once '../../fns/str_collapse_spaces.php';
 $fullname = str_collapse_spaces($fullname);
+$alias = str_collapse_spaces($alias);
 $address = str_collapse_spaces($address);
 $email = str_collapse_spaces($email);
 $phone1 = str_collapse_spaces($phone1);
@@ -43,6 +46,7 @@ if ($errors) {
     $_SESSION['contacts/new/index_errors'] = $errors;
     $_SESSION['contacts/new/index_lastpost'] = array(
         'fullname' => $fullname,
+        'alias' => $alias,
         'address' => $address,
         'email' => $email,
         'phone1' => $phone1,
@@ -58,11 +62,11 @@ unset(
 );
 
 include_once '../../fns/Contacts/add.php';
-$id = Contacts\add($mysqli, $idusers, $fullname, $address,
-    $email, $phone1, $phone2, $tags);
+$id = Contacts\add($mysqli, $idusers, $fullname, $alias,
+    $address, $email, $phone1, $phone2, $tags);
 
 include_once '../../fns/ContactTags/add.php';
-ContactTags\add($mysqli, $idusers, $id, $tagnames, $fullname);
+ContactTags\add($mysqli, $idusers, $id, $tagnames, $fullname, $alias);
 
 include_once '../../fns/Users/addNumContacts.php';
 Users\addNumContacts($mysqli, $idusers, 1);
