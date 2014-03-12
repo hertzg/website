@@ -9,8 +9,7 @@ $idusers = $user->idusers;
 include_once '../lib/mysqli.php';
 
 include_once '../fns/request_strings.php';
-list($idfolders, $keyword, $deep) = request_strings(
-    'idfolders', 'keyword', 'deep');
+list($idfolders) = request_strings('idfolders');
 
 $idfolders = abs((int)$idfolders);
 if ($idfolders) {
@@ -22,66 +21,25 @@ if ($idfolders) {
     }
 }
 
-$deep = (bool)$deep;
-
 $items = array();
 
-include_once '../fns/str_collapse_spaces.php';
-$keyword = str_collapse_spaces($keyword);
-
-$searchAction = './';
+$searchAction = 'search/';
 $searchPlaceholder = 'Search folders and files...';
 
-if ($keyword === '') {
+include_once '../fns/Folders/indexInUserFolder.php';
+$folders = Folders\indexInUserFolder($mysqli, $idusers, $idfolders);
 
-    include_once '../fns/Folders/indexInUserFolder.php';
-    $folders = Folders\indexInUserFolder($mysqli, $idusers, $idfolders);
+include_once '../fns/Files/indexInUserFolder.php';
+$files = Files\indexInUserFolder($mysqli, $idusers, $idfolders);
 
-    include_once '../fns/Files/indexInUserFolder.php';
-    $files = Files\indexInUserFolder($mysqli, $idusers, $idfolders);
+if (count($files) + count($folders) > 1) {
 
-    if (count($files) + count($folders) > 1) {
-
-        include_once '../fns/SearchForm/emptyContent.php';
-        $formContent = SearchForm\emptyContent($searchPlaceholder);
-        if ($idfolders) {
-            $formContent =
-                "<input type=\"hidden\" name=\"idfolders\" value=\"$idfolders\" />"
-                .$formContent;
-        }
-
-        include_once '../fns/SearchForm/create.php';
-        $items[] = SearchForm\create($searchAction, $formContent);
-
-    }
-
-} else {
-
-    if ($deep) {
-        include_once 'fns/search_recursively.php';
-        list($folders, $files) = search_recursively($mysqli, $idusers, $idfolders, $keyword);
-    } else {
-
-        include_once '../fns/Folders/searchInFolder.php';
-        $folders = Folders\searchInFolder($mysqli, $idusers, $idfolders, $keyword);
-
-        include_once '../fns/Files/searchInFolder.php';
-        $files = Files\searchInFolder($mysqli, $idusers, $idfolders, $keyword);
-
-    }
-
-    include_once '../fns/create_folder_link.php';
-    $clearHref = create_folder_link($idfolders);
-
-    include_once '../fns/SearchForm/content.php';
-    $formContent = SearchForm\content($keyword, $searchPlaceholder, $clearHref);
+    include_once '../fns/SearchForm/emptyContent.php';
+    $formContent = SearchForm\emptyContent($searchPlaceholder);
     if ($idfolders) {
         $formContent =
             "<input type=\"hidden\" name=\"idfolders\" value=\"$idfolders\" />"
             .$formContent;
-    }
-    if ($deep) {
-        $formContent .= '<input type="hidden" name="deep" value="1" />';
     }
 
     include_once '../fns/SearchForm/create.php';
@@ -89,7 +47,7 @@ if ($keyword === '') {
 
 }
 
-if ($idfolders && $keyword === '') {
+if ($idfolders) {
 
     include_once '../fns/create_folder_link.php';
     $href = create_folder_link($folder->parentidfolders);
@@ -99,40 +57,8 @@ if ($idfolders && $keyword === '') {
 
 }
 
-if ($folders || $files) {
-
-    include_once '../fns/Page/imageArrowLink.php';
-
-    foreach ($folders as $i => $folder) {
-        $title = htmlspecialchars($folder->foldername);
-        $href = "?idfolders=$folder->idfolders";
-        $items[] = Page\imageArrowLink($title, $href, 'folder');
-    }
-
-    foreach ($files as $i => $file) {
-        $items[] = Page\imageArrowLink(htmlspecialchars($file->filename),
-            "view-file/?id=$file->idfiles", 'file');
-    }
-
-} else {
-    if ($keyword === '') $text = 'Folder is empty.';
-    else $text = 'Nothing found.';
-    include_once '../fns/Page/info.php';
-    $items[] = Page\info($text);
-}
-
-if ($keyword !== '' && !$deep) {
-
-    $params = array();
-    if ($idfolders) $params['idfolders'] = $idfolders;
-    $params['keyword'] = $keyword;
-    $params['deep'] = '1';
-    $href = htmlspecialchars('./?'.http_build_query($params));
-
-    include_once '../fns/Page/imageLink.php';
-    $items[] = Page\imageLink('Search in Subfolders', $href, 'search-folder');
-
-}
+include_once 'fns/render_folders_and_files.php';
+render_folders_and_files($folders, $files, $items, 'Folder is empty.');
 
 unset(
     $_SESSION['files/add-folder/index_errors'],
