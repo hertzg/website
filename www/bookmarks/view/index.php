@@ -11,37 +11,42 @@ unset(
     $_SESSION['bookmarks/index_messages']
 );
 
-$title = $bookmark->title;
 $url = $bookmark->url;
-$inserttime = $bookmark->inserttime;
-$updatetime = $bookmark->updatetime;
-
-include_once '../../fns/BookmarkTags/indexOnBookmark.php';
-$tags = BookmarkTags\indexOnBookmark($mysqli, $id);
 
 $base = '../../';
 
 include_once '../../fns/create_external_url.php';
 $externalUrl = create_external_url($url, $base);
 
+$items = array();
+
 include_once '../../fns/Page/text.php';
-if ($title === '') {
-    $titleItem = '';
-} else {
-    $titleItem = Page\text(htmlspecialchars($title)).'<div class="hr"></div>';
+
+$title = $bookmark->title;
+if ($title !== '') {
+    $items[] = Page\text(htmlspecialchars($title));
 }
 
-$urlItem = Page\text(htmlspecialchars($url));
+$items[] = Page\text(htmlspecialchars($url));
 
+include_once '../../fns/BookmarkTags/indexOnBookmark.php';
+$tags = BookmarkTags\indexOnBookmark($mysqli, $id);
+if ($tags) {
+    include_once '../../fns/create_tags.php';
+    $items[] = create_tags('../', $tags);
+}
+
+$inserttime = $bookmark->inserttime;
+$updatetime = $bookmark->updatetime;
 include_once '../../fns/date_ago.php';
-$datesText = '<div>Bookmark created '.date_ago($inserttime).'.</div>';
+$text = '<div>Bookmark created '.date_ago($inserttime).'.</div>';
 if ($inserttime != $updatetime) {
-    $datesText .= '<div>Last modified '.date_ago($updatetime).'.</div>';
+    $text .= '<div>Last modified '.date_ago($updatetime).'.</div>';
 }
+$items[] = Page\text($text);
 
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
-include_once '../../fns/create_tags.php';
 include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../fns/Page/imageLink.php';
 include_once '../../fns/Page/sessionMessages.php';
@@ -59,9 +64,7 @@ $content =
         ),
         "Bookmark #$id",
         Page\sessionMessages('bookmarks/view/index_messages')
-        .$titleItem.$urlItem
-        .create_tags('../', $tags).'<div class="hr"></div>'
-        .Page\text($datesText)
+        .join('<div class="hr"></div>', $items)
     )
     .create_panel(
         'Options',

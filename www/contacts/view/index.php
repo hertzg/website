@@ -44,6 +44,13 @@ if ($phone2 !== '') {
 $insert_time = $contact->insert_time;
 $update_time = $contact->update_time;
 
+include_once '../../fns/ContactTags/indexOnContact.php';
+$tags = ContactTags\indexOnContact($mysqli, $id);
+if ($tags) {
+    include_once '../../fns/create_tags.php';
+    $items[] = create_tags('../', $tags);
+}
+
 include_once '../../fns/date_ago.php';
 $datesText = '<div>Contact created '.date_ago($insert_time).'.</div>';
 if ($insert_time != $update_time) {

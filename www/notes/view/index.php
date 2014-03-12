@@ -11,28 +11,38 @@ unset(
     $_SESSION['notes/index_messages']
 );
 
-$inserttime = $note->inserttime;
-$updatetime = $note->updatetime;
-$notetext = $note->notetext;
+$base = '../../';
+
+$items = array();
+
+include_once '../../fns/render_external_links.php';
+include_once '../../fns/Page/text.php';
+$items[] = Page\text(
+    nl2br(
+        render_external_links(htmlspecialchars($note->notetext), $base)
+    )
+);
 
 include_once '../../fns/NoteTags/indexOnNote.php';
 $tags = NoteTags\indexOnNote($mysqli, $id);
-
-$base = '../../';
-
-include_once '../../fns/date_ago.php';
-$datesText = '<div>Note created '.date_ago($inserttime).'.</div>';
-if ($inserttime != $updatetime) {
-    $datesText .= '<div>Last modified '.date_ago($updatetime).'.</div>';
+if ($tags) {
+    include_once '../../fns/create_tags.php';
+    $items[] = create_tags('../', $tags);
 }
+
+$inserttime = $note->inserttime;
+$updatetime = $note->updatetime;
+include_once '../../fns/date_ago.php';
+$text = '<div>Note created '.date_ago($inserttime).'.</div>';
+if ($inserttime != $updatetime) {
+    $text .= '<div>Last modified '.date_ago($updatetime).'.</div>';
+}
+$items[] = Page\text($text);
 
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
-include_once '../../fns/create_tags.php';
-include_once '../../fns/render_external_links.php';
 include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../fns/Page/sessionMessages.php';
-include_once '../../fns/Page/text.php';
 $content =
     create_tabs(
         array(
@@ -47,14 +57,7 @@ $content =
         ),
         "Note #$id",
         Page\sessionMessages('notes/view/index_messages')
-        .Page\text(
-            nl2br(
-                render_external_links(htmlspecialchars($notetext), $base)
-            )
-        )
-        .create_tags('../', $tags)
-        .'<div class="hr"></div>'
-        .Page\text($datesText)
+        .join('<div class="hr"></div>', $items)
     )
     .create_panel(
         'Options',

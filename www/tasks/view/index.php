@@ -16,36 +16,49 @@ include_once '../../fns/Page/imageLink.php';
 
 $options = array();
 if ($task->top_priority) {
-    $options[] = Page\imageLink('Mark as Normal Priority',
-        "submit-set-normal-priority.php?id=$id", 'task');
+    $href = "submit-set-normal-priority.php?id=$id";
+    $options[] = Page\imageLink('Mark as Normal Priority', $href, 'task');
 } else {
-    $options[] = Page\imageLink('Mark as Top Priority',
-        "submit-set-top-priority.php?id=$id", 'task-top-priority');
+    $title = 'Mark as Top Priority';
+    $href = "submit-set-top-priority.php?id=$id";
+    $options[] = Page\imageLink($title, $href, 'task-top-priority');
 }
 $options[] = Page\imageArrowLink('Edit Task', "../edit/?id=$id", 'edit-task');
-$options[] = Page\imageArrowLink('Delete Task', "../delete/?id=$id", 'trash-bin');
 
-$tasktext = $task->tasktext;
-$inserttime = $task->inserttime;
-$updatetime = $task->updatetime;
-
-include_once '../../fns/date_ago.php';
-$datesText = '<div>Task created '.date_ago($inserttime).'.</div>';
-if ($inserttime != $updatetime) {
-    $datesText .= '<div>Last modified '.date_ago($updatetime).'.</div>';
-}
-
-include_once __DIR__.'/../../fns/TaskTags/indexOnTask.php';
-$tags = TaskTags\indexOnTask($mysqli, $id);
+$href = "../delete/?id=$id";
+$options[] = Page\imageArrowLink('Delete Task', $href, 'trash-bin');
 
 $base = '../../';
 
+$items = array();
+
+include_once '../../fns/Page/text.php';
+include_once '../../fns/render_external_links.php';
+$items[] = Page\text(
+    nl2br(
+        render_external_links(htmlspecialchars($task->tasktext), $base)
+    )
+);
+
+include_once __DIR__.'/../../fns/TaskTags/indexOnTask.php';
+$tags = TaskTags\indexOnTask($mysqli, $id);
+if ($tags) {
+    include_once '../../fns/create_tags.php';
+    $items[] = create_tags('../', $tags);
+}
+
+$inserttime = $task->inserttime;
+$updatetime = $task->updatetime;
+include_once '../../fns/date_ago.php';
+$text = '<div>Task created '.date_ago($inserttime).'.</div>';
+if ($inserttime != $updatetime) {
+    $text .= '<div>Last modified '.date_ago($updatetime).'.</div>';
+}
+$items[] = Page\text($text);
+
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
-include_once '../../fns/create_tags.php';
-include_once '../../fns/render_external_links.php';
 include_once '../../fns/Page/sessionMessages.php';
-include_once '../../fns/Page/text.php';
 $content =
     create_tabs(
         array(
@@ -60,14 +73,7 @@ $content =
         ),
         "Task #$id",
         Page\sessionMessages('tasks/view/index_messages')
-        .Page\text(
-            nl2br(
-                render_external_links(htmlspecialchars($tasktext), $base)
-            )
-        )
-        .create_tags('../', $tags)
-        .'<div class="hr"></div>'
-        .Page\text($datesText)
+        .join('<div class="hr"></div>', $items)
     )
     .create_panel('Options', join('<div class="hr"></div>', $options));
 
