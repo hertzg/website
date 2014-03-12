@@ -49,7 +49,7 @@ $content =
                 'value' => $values['tags'],
             ))
             .'<div class="hr"></div>'
-            .Form\button('Save')
+            .Form\button('Save Task')
         .'</form>'
     );
 

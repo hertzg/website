@@ -53,7 +53,7 @@ $content =
                 'required' => true,
             ))
             .'<div class="hr"></div>'
-            .Form\button('Save')
+            .Form\button('Save Event')
             .Form\hidden('year', $year)
             .Form\hidden('month', $month)
             .Form\hidden('day', $day)
