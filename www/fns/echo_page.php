@@ -14,7 +14,7 @@ function echo_page ($user, $title, $content, $base, array $options = array()) {
         $signOutLink = '';
     } else {
         $signOutLink =
-            '<div style="position: absolute; top: 0; right: 0">'
+            '<div class="pageTopRightLinks">'
                 .'<a class="topLink"'
                 ." href=\"{$base}submit-signout.php\">"
                     .'Sign Out'
@@ -24,14 +24,11 @@ function echo_page ($user, $title, $content, $base, array $options = array()) {
 
     $body =
         '<div id="tbar">'
-            .'<div style="position: relative">'
-                .'<a class="topLink" href="'.($base === '' ? './' : $base).'">'
-                    ."<img src=\"{$base}themes/$theme/images/zvini.png?2\""
-                    .' alt="Zvini" width="68" height="32"'
-                    .' style="vertical-align: top; margin: -4px" />'
-                .'</a>'
-                .$signOutLink
-            .'</div>'
+            .'<a class="topLink logoLink" href="'.($base === '' ? './' : $base).'">'
+                ."<img src=\"{$base}themes/$theme/images/zvini.png?2\""
+                .' alt="Zvini" width="68" height="32" class="logoImg" />'
+            .'</a>'
+            .$signOutLink
         .'</div>'
         .$content
         .'<div id="bbar"></div>';
