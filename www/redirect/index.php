@@ -2,8 +2,8 @@
 
 $base = '../';
 
-include_once '../fns/require_user.php';
-$user = require_user($base);
+include_once '../fns/signed_user.php';
+$user = signed_user($base);
 
 include_once '../fns/request_strings.php';
 list($url) = request_strings('url');
@@ -26,5 +26,7 @@ $body =
     .'location = '.json_encode($url)
     .'</script>';
 
+$theme = $user ? $user->theme : 'orange';
+
 include_once '../fns/echo_html.php';
-echo_html('Redirecting', '', $body, $user->theme, $base);
+echo_html('Redirecting', '', $body, $theme, $base);
