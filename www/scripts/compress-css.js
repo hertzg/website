@@ -17,6 +17,7 @@ var files = [
     'css/common.css',
     'css/textList.css',
     'css/form.css',
+    'css/form-checkbox.css',
     'css/clickable.css',
     'css/tab.css',
     'css/topLink.css',

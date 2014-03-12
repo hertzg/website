@@ -1,0 +1,16 @@
+.form-checkbox {
+    padding-left: 50%;
+    padding-right: 16px;
+    line-height: 48px;
+}
+.form-checkbox label {
+    display: inline-block;
+    vertical-align: top;
+}
+.form-checkbox .clickable {
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    width: 48px;
+    height: 48px;
+}
