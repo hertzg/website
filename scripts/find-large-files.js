@@ -3,9 +3,14 @@
 function scan (dir) {
     var files = fs.readdirSync(dir)
     files.forEach(function (file) {
+
         if (/^\./.test(file)) return
+
         file = dir + '/' + file
-        if (/\.(css|js|php|sh)$/.test(file) && !(/\.(combined|compressed)\.(css|js)$/.test(file))) {
+
+        if (/\.(css|js|php|sh)$/.test(file) &&
+            !(/\.(combined|compressed)\.(css|js)$/.test(file))) {
+
             var content = fs.readFileSync(file, 'utf8')
             var numLines = content.split(/\n/).length
             if (numLines > 100) {
@@ -14,12 +19,14 @@ function scan (dir) {
                     numLines: numLines,
                 })
             }
+
         } else {
             var stat = fs.statSync(file)
             if (stat.isDirectory()) {
                 scan(file)
             }
         }
+
     })
 }
 
