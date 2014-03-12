@@ -1,79 +1,7 @@
 <?php
 
-function create_calendar ($timeSelected) {
-
-    $monthSelected = date('n', $timeSelected);
-    $yearSelected = date('Y', $timeSelected);
-
-    $monthStartTime = mktime(0, 0, 0, $monthSelected, 1, $yearSelected);
-    $calendarStartTime = mktime(0, 0, 0, $monthSelected,
-        1 - date('w', $monthStartTime), $yearSelected);
-    $nextMonthStartTime = mktime(0, 0, 0, $monthSelected + 1, 1, $yearSelected);
-    $prevMonthStartTime = mktime(0, 0, 0, $monthSelected - 1, 1, $yearSelected);
-
-    $prevMonthYear = date('Y', $prevMonthStartTime);
-    $prevMonth = date('n', $prevMonthStartTime);
-    $prevMonthHref = "?year=$prevMonthYear&amp;month=$prevMonth";
-
-    $nextMonthYear = date('Y', $nextMonthStartTime);
-    $nextMonth = date('n', $nextMonthStartTime);
-    $nextMonthHref = "?year=$nextMonthYear&amp;month=$nextMonth";
-
-    $html =
-        '<div class="calendarMonths">'
-            ."<a href=\"$prevMonthHref\" class=\"clickable navigation-arrow left\">"
-                .'<span class="icon arrow-left"></span>'
-            .'</a>'
-            .'<div style="margin: 0 48px">'
-                .date('F d, Y', $timeSelected)
-            .'</div>'
-            ."<a href=\"$nextMonthHref\" class=\"clickable navigation-arrow right\">"
-                .'<span class="icon arrow-right"></span>'
-            .'</a>'
-        .'</div>'
-        .'<div class="calendar-columns calendar-weeks">'
-            .'<div>Sun</div>'
-            .'<div>Mon</div>'
-            .'<div>Tue</div>'
-            .'<div>Wed</div>'
-            .'<div>Thu</div>'
-            .'<div>Fri</div>'
-            .'<div>Sat</div>'
-        .'</div>'
-        .'<div>';
-
-    $time = $calendarStartTime;
-    for ($i = 0; $i < 6; $i++) {
-        $html .=
-            '<div class="hr"></div>'
-            .'<div class="calendar-columns calendar-days">';
-        for ($j = 0; $j < 7; $j++) {
-            $year = date('Y', $time);
-            $month = date('n', $time);
-            $day = date('j', $time);
-            $html .= "<a href=\"?year=$year&amp;month=$month&amp;day=$day\"";
-            if ($time == $timeSelected) {
-                $html .= ' class="calendar-today">';
-            } elseif ($time < $monthStartTime || $time >= $nextMonthStartTime) {
-                $html .= ' class="calendar-offmonth">';
-            } else {
-                $html .= '>';
-            }
-            $html .= "$day</a>";
-            $time += 60 * 60 * 24;
-        }
-        $html .= '</div>';
-    }
-    $html .= '</div>';
-    return $html;
-
-}
-
 include_once __DIR__.'/../fns/require_user.php';
 $user = require_user('../');
-
-include_once '../fns/Page/imageArrowLink.php';
-include_once '../fns/Page/imageArrowLinkWithDescription.php';
 
 unset(
     $_SESSION['home/index_messages'],
@@ -109,33 +37,27 @@ $events = Events\indexOnUserAndTime($mysqli, $user->idusers, $timeSelected);
 
 $eventItems = array();
 if ($events) {
+    include_once '../fns/Page/imageArrowLink.php';
     foreach ($events as $event) {
-        $eventItems[] = Page\imageArrowLink(
-            htmlspecialchars($event->eventtext),
-            "view-event/?idevents=$event->idevents", 'event');
+        $title = htmlspecialchars($event->eventtext);
+        $href = "view-event/?idevents=$event->idevents";
+        $eventItems[] = Page\imageArrowLink($title, $href, 'event');
     }
 } else {
     include_once '../fns/Page/info.php';
     $eventItems[] = Page\info('No events on this day.');
 }
 
-$title = 'All Events';
-$href = 'all-events/';
-$icon = 'event';
-$num_events = $user->num_events;
-if ($num_events) {
-    $description = "$num_events total.";
-    $eventItems[] = Page\imageArrowLinkWithDescription($title, $description,
-        $href, $icon);
-} else {
-    $eventItems[] = Page\imageArrowLink($title, $href, $icon);
-}
+include_once 'fns/create_all_events_link.php';
+$eventItems[] = create_all_events_link($user);
 
 $newEventHref = "new-event/?year=$yearSelected&amp;month=$monthSelected&amp;day=$daySelected";
 $jumpToHref = "jump-to/?year=$yearNow&amp;month=$monthNow";
 
+include_once 'fns/create_calendar.php';
 include_once '../fns/create_panel.php';
 include_once '../fns/create_tabs.php';
+include_once '../fns/Page/imageArrowLink.php';
 include_once '../fns/Page/sessionErrors.php';
 include_once '../fns/Page/sessionMessages.php';
 $content =
