@@ -56,6 +56,8 @@
     line-height: 14px;
     margin-left: 26px;
     color: #555;
+    padding-top: 2px;
+    padding-bottom: 2px;
 }
 
 .form-select,
