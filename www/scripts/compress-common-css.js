@@ -7,28 +7,28 @@ var fs = require('fs'),
     uglifyCss = require('uglifycss')
 
 var files = [
-    'css/defaults.css',
-    'css/common.css',
-    'css/textList.css',
-    'css/form.css',
-    'css/form-checkbox.css',
-    'css/clickable.css',
-    'css/tab.css',
-    'css/topLink.css',
-    'css/filterBar.css',
-    'css/imageText.css',
-    'css/image_link.css',
-    'css/panel.css',
-    'css/title_and_description.css',
-    'css/clearSearchKeywordButton.css',
-    'css/search_form.css',
-    'css/searchButton.css',
-    'css/tag.css',
+    'defaults.css',
+    'common.css',
+    'textList.css',
+    'form.css',
+    'form-checkbox.css',
+    'clickable.css',
+    'tab.css',
+    'topLink.css',
+    'filterBar.css',
+    'imageText.css',
+    'image_link.css',
+    'panel.css',
+    'title_and_description.css',
+    'clearSearchKeywordButton.css',
+    'search_form.css',
+    'searchButton.css',
+    'tag.css',
 ]
 
 var source = ''
 files.forEach(function (file) {
-    source += fs.readFileSync(file, 'utf-8') + '\n'
+    source += fs.readFileSync('css/common/' + file, 'utf-8') + '\n'
 })
 
 var compressCss = uglifyCss.processString(source)
