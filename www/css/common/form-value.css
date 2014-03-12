@@ -1,0 +1,8 @@
+.form-value {
+    margin-left: 160px;
+}
+@media (max-width: 440px) {
+    .form-value {
+        margin-left: 0;
+    }
+}

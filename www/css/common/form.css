@@ -1,24 +1,6 @@
 .form-item {
     white-space: nowrap;
-}
-
-.form-property {
-    display: inline-block;
-    vertical-align: top;
-    width: 50%;
-    text-align: right;
-    padding: 0 2px;
-}
-.form-property > label {
-    line-height: 48px;
-    display: inline-block;
-    vertical-align: top;
-}
-
-.form-value {
-    display: inline-block;
-    vertical-align: top;
-    width: 50%;
+    position: relative;
 }
 
 .form-textfield {
@@ -58,13 +40,6 @@
     font-weight: bold;
     line-height: 44px;
     height: 48px;
-}
-
-.form-captcha {
-    background: #fff;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    padding-left: 50%;
 }
 
 .form-label {

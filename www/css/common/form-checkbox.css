@@ -1,5 +1,5 @@
 .form-checkbox {
-    padding-left: 50%;
+    padding-left: 160px;
     padding-right: 16px;
     line-height: 48px;
 }
@@ -13,4 +13,9 @@
     text-align: center;
     width: 48px;
     height: 48px;
+}
+@media (max-width: 440px) {
+    .form-checkbox {
+        padding-left: 0;
+    }
 }

@@ -54,26 +54,3 @@
     line-height: 36px;
     margin-right: 8px;
 }
-
-@media (max-width: 440px) {
-    .form-property {
-        display: block;
-        width: auto;
-        text-align: left;
-        padding: 0 16px;
-        max-height: 32px;
-    }
-    .form-property > label {
-        display: block;
-    }
-    .form-value {
-        display: block;
-        width: auto;
-    }
-    .form-checkbox {
-        padding-left: 0;
-    }
-    .form-captcha {
-        padding-left: 16px;
-    }
-}
