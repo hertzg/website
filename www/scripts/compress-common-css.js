@@ -3,14 +3,8 @@
 process.chdir(__dirname)
 process.chdir('..')
 
-var fs = require('fs')
-
-try {
-    var uglifyCss = require('uglifycss')
-} catch (e) {
-    console.log('ERROR: module uglifycss not found. run "npm install uglifycss" to install.')
-    process.exit(1)
-}
+var fs = require('fs'),
+    uglifyCss = require('uglifycss')
 
 var files = [
     'css/defaults.css',

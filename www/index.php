@@ -24,7 +24,7 @@ echo
             .'<meta name="viewport" content="width=device-width" />'
             .'<link rel="stylesheet" type="text/css"'
             .' href="common.compressed.css?'.get_revision('common.compressed.css').'" />'
-            .'<link rel="stylesheet" type="text/css" href="index.css?3" />'
+            .'<link rel="stylesheet" type="text/css" href="index.compressed.css" />'
             .'<link rel="icon" type="image/png" href="zvini-icons/16.png" />'
             .'<link rel="icon" type="image/png" href="zvini-icons/32.png" sizes="32x32" />'
         .'</head>'

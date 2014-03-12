@@ -1,0 +1,14 @@
+.buttonWrapper {
+    background: #fff;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+}
+.buttonWrapper.left {
+    right: 12px;
+    left: 0;
+}
+.buttonWrapper.right {
+    right: 0;
+    left: 12px;
+}
