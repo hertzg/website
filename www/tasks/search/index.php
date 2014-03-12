@@ -6,15 +6,8 @@ include_once '../../fns/require_user.php';
 $user = require_user($base);
 $idusers = $user->idusers;
 
-include_once '../../fns/request_strings.php';
-list($keyword, $tag) = request_strings('keyword', 'tag');
-
-if ($keyword === '') {
-    $url = '../';
-    if ($tag !== '') $url .= '?tag='.rawurlencode($tag);
-    include_once '../../fns/redirect.php';
-    redirect($url);
-}
+include_once 'fns/require_keyword_and_tag.php';
+list($keyword, $tag) = require_keyword_and_tag();
 
 $items = array();
 
