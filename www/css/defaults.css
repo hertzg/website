@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    color: inherit;
+    cursor: inherit;
+    font: inherit;
+    text-decoration: inherit;
+    background: transparent;
+    text-align: inherit;
+    resize: none;
+    border-radius: 0;
+    box-shadow: none;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+*::-moz-focus-inner {
+    border: 0;
+}
+
+::-webkit-input-placeholder {
+    color: #000;
+    opacity: 0.5;
+}
+/* firefox 4 to 18 */
+*:-moz-placeholder {
+    color: #000;
+    opacity: 0.5;
+}
+/* firefox 19 to ~ */
+::-moz-placeholder {
+    color: #000;
+    opacity: 0.5;
+}
+
+html,
+body {
+    font: normal 16px/18px Arial, sans-serif;
+    text-decoration: none;
+    color: #000;
+    cursor: default;
+    background: #444;
+    text-align: left;
+    min-width: 320px;
+}
+a, button {
+    cursor: pointer;
+}
+b {
+    font-weight: bold;
+}
+label {
+    cursor: pointer;
+}

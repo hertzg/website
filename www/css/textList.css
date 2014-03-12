@@ -1,0 +1,54 @@
+.textList ul {
+    display: block;
+    padding: 13px 14px;
+}
+.textList li {
+    padding: 2px;
+    display: block;
+}
+.textList .bullet {
+    display: inline-block;
+    vertical-align: middle;
+    width: 5px;
+    height: 5px;
+    margin-right: 8px;
+    transform: rotate(-21deg);
+    -moz-transform: rotate(-21deg);
+    -webkit-transform: rotate(-21deg);
+}
+.textList .hr {
+    height: 1px;
+}
+
+.textList.errors {
+    background: #fbb;
+    color: #911;
+}
+.textList.errors .bullet {
+    background: #911;
+}
+.textList.errors .hr {
+    background: #e99;
+}
+
+.textList.messages {
+    background: #9e9;
+    color: #191;
+}
+.textList.messages .bullet {
+    background: #191;
+}
+.textList.messages .hr {
+    background: #8d8;
+}
+
+.textList.warnings {
+    background: #eee;
+    color: #444;
+}
+.textList.warnings .bullet {
+    background: #444;
+}
+.textList.warnings .hr {
+    background: #ddd;
+}

@@ -2,13 +2,7 @@
 
 namespace Page;
 
-function warnings ($errors) {
-    $html = '<ul class="warnings">';
-    foreach ($errors as $error) {
-        $html .= "<li><span class=\"bullet\"></span>$error</li>";
-    }
-    $html .=
-        '</ul>'
-        .'<div class="warnings-hr"></div>';
-    return $html;
+function warnings (array $texts) {
+    include_once __DIR__.'/textList.php';
+    return textList($texts, 'warnings');
 }

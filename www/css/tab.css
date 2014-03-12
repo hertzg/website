@@ -1,0 +1,39 @@
+.tab {
+    background: #444 repeat-x 50% 0%;
+    background-image: linear-gradient(#333, #444 25px);
+}
+.tab-bar {
+    display: inline-block;
+    white-space: nowrap;
+    background-color: #555;
+    border-radius: 2px 2px 0 0;
+}
+.tab-normal,
+.tab-active {
+    padding: 16px 10px;
+    display: inline-block;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    font-weight: bold;
+    vertical-align: top;
+    background-color: #555;
+    box-shadow: 0 -16px 16px #444 inset, 0 0 6px rgba(34, 34, 34, 0.6);
+    border-radius: 2px 2px 0 0;
+}
+.tab-normal:focus {
+    border: 2px solid transparent;
+    border-bottom: 0;
+    padding: 14px 8px 16px 8px;
+    box-shadow: 0 0 6px rgba(34, 34, 34, 0.6);
+}
+.tab-normal:active {
+    background: #555;
+}
+.tab-spacer {
+    height: 6px;
+    position: relative;
+    border-bottom: 1px solid transparent;
+}
+.tab-content {
+    background: #fff;
+}

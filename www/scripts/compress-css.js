@@ -13,8 +13,12 @@ try {
 }
 
 var files = [
+    'css/defaults.css',
     'css/common.css',
+    'css/textList.css',
+    'css/form.css',
     'css/clickable.css',
+    'css/tab.css',
     'css/topLink.css',
     'css/filterBar.css',
     'css/imageText.css',
@@ -24,6 +28,7 @@ var files = [
     'css/clearSearchKeywordButton.css',
     'css/search_form.css',
     'css/searchButton.css',
+    'css/tag.css',
 ]
 
 var source = ''
