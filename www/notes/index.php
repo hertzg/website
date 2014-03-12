@@ -62,7 +62,7 @@ if ($tag === '') {
 }
 
 include_once 'fns/render_notes.php';
-render_notes($notes, $items);
+render_notes($notes, $items, 'No notes.');
 
 unset(
     $_SESSION['home/index_messages'],

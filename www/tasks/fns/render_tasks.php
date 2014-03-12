@@ -1,6 +1,6 @@
 <?php
 
-function render_tasks ($tasks, &$items, $base = '') {
+function render_tasks (array $tasks, array &$items, $emptyMessage, $base = '') {
     if ($tasks) {
 
         include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
@@ -22,6 +22,6 @@ function render_tasks ($tasks, &$items, $base = '') {
 
     } else {
         include_once __DIR__.'/../../fns/Page/info.php';
-        $items[] = Page\info('No tasks.');
+        $items[] = Page\info($emptyMessage);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-function render_notes (array $notes, array &$items, $base = '') {
+function render_notes (array $notes, array &$items, $emptyMessage, $base = '') {
     if ($notes) {
         include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
         foreach ($notes as $note) {
@@ -10,6 +10,6 @@ function render_notes (array $notes, array &$items, $base = '') {
         }
     } else {
         include_once __DIR__.'/../../fns/Page/info.php';
-        $items[] = Page\info('No notes.');
+        $items[] = Page\info($emptyMessage);
     }
 }

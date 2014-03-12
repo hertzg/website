@@ -63,7 +63,7 @@ if ($tag === '') {
 }
 
 include_once '../fns/render_tasks.php';
-render_tasks($tasks, $items, '../');
+render_tasks($tasks, $items, 'No tasks found.', '../');
 
 unset(
     $_SESSION['home/index_messages'],

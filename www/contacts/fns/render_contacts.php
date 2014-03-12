@@ -1,6 +1,8 @@
 <?php
 
-function render_contacts (array $contacts, array &$items, $base = '') {
+function render_contacts (array $contacts, array &$items, $emptyMessage,
+    $base = '') {
+
     if ($contacts) {
         include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
         foreach ($contacts as $contact) {
@@ -10,6 +12,7 @@ function render_contacts (array $contacts, array &$items, $base = '') {
         }
     } else {
         include_once __DIR__.'/../../fns/Page/info.php';
-        $items[] = Page\info('No contacts.');
+        $items[] = Page\info($emptyMessage);
     }
+
 }

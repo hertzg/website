@@ -62,7 +62,7 @@ if ($tag === '') {
 }
 
 include_once 'fns/render_contacts.php';
-render_contacts($contacts, $items);
+render_contacts($contacts, $items, 'No contacts.');
 
 unset(
     $_SESSION['contacts/new/index_errors'],

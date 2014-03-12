@@ -1,6 +1,8 @@
 <?php
 
-function render_bookmarks (array $bookmarks, array &$items, $base = '') {
+function render_bookmarks (array $bookmarks, array &$items, $emptyMessage,
+    $base = '') {
+
     if ($bookmarks) {
 
         include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
@@ -22,6 +24,7 @@ function render_bookmarks (array $bookmarks, array &$items, $base = '') {
 
     } else {
         include_once __DIR__.'/../../fns/Page/info.php';
-        $items[] = Page\info('No bookmarks.');
+        $items[] = Page\info($emptyMessage);
     }
+
 }

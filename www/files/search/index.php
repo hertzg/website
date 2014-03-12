@@ -69,7 +69,7 @@ include_once '../../fns/SearchForm/create.php';
 $items[] = SearchForm\create($searchAction, $formContent);
 
 include_once '../fns/render_folders_and_files.php';
-render_folders_and_files($folders, $files, $items, 'Nothing found.', '../');
+render_folders_and_files($folders, $files, $items, 'No files found.', '../');
 
 if (!$deep) {
 

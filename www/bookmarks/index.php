@@ -61,7 +61,7 @@ if ($tag === '') {
 }
 
 include_once 'fns/render_bookmarks.php';
-render_bookmarks($bookmarks, $items);
+render_bookmarks($bookmarks, $items, 'No bookmarks.');
 
 unset(
     $_SESSION['bookmarks/new/index_errors'],
