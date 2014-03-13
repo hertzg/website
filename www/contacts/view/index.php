@@ -29,8 +29,9 @@ if ($address !== '') {
 $email = $contact->email;
 if ($email !== '') {
     $escapedEmail = htmlspecialchars($email);
+    $href = "mailto:$escapedEmail";
     include_once '../../fns/Form/link.php';
-    $items[] = Form\link('Email', $escapedEmail, "mailto:$escapedEmail");
+    $items[] = Form\link('Email', $escapedEmail, $href, 'mail');
 }
 
 include_once 'fns/render_phone_number.php';

@@ -53,7 +53,14 @@
 
 .form-link {
     line-height: 44px;
-    padding: 0 16px;
+    padding-right: 16px;
+    padding-left: 48px;
+    position: relative;
+}
+.form-link > .icon {
+    position: absolute;
+    top: 6px;
+    left: 6px;
 }
 
 .form-notes {
