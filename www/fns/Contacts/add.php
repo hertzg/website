@@ -20,7 +20,7 @@ function add ($mysqli, $idusers, $fullname, $alias, $address,
         ." values ($idusers, '$fullname', '$alias', '$address', '$email',"
         ." '$phone1', '$phone2', '$tags', $insert_time, $update_time)";
 
-    $mysqli->query($sql) || trigger_error($mysql1i->error);
+    $mysqli->query($sql) || trigger_error($mysqli->error);
 
     return $mysqli->insert_id;
 

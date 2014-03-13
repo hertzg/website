@@ -28,18 +28,14 @@ if ($address !== '') {
 
 $email = $contact->email;
 if ($email !== '') {
-    $items[] = Form\label('Email', htmlspecialchars($email));
+    $escapedEmail = htmlspecialchars($email);
+    include_once '../../fns/Form/link.php';
+    $items[] = Form\link('Email', $escapedEmail, "mailto:$escapedEmail");
 }
 
-$phone1 = $contact->phone1;
-if ($phone1 !== '') {
-    $items[] = Form\label('Phone 1', htmlspecialchars($phone1));
-}
-
-$phone2 = $contact->phone2;
-if ($phone2 !== '') {
-    $items[] = Form\label('Phone 2', htmlspecialchars($phone2));
-}
+include_once 'fns/render_phone_number.php';
+render_phone_number('Phone 1', $contact->phone1, $items);
+render_phone_number('Phone 2', $contact->phone2, $items);
 
 $insert_time = $contact->insert_time;
 $update_time = $contact->update_time;

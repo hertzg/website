@@ -51,6 +51,11 @@
     text-overflow: ellipsis;
 }
 
+.form-link {
+    line-height: 44px;
+    padding: 0 16px;
+}
+
 .form-notes {
     font-size: 12px;
     line-height: 14px;
