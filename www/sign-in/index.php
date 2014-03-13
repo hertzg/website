@@ -39,7 +39,7 @@ include_once '../fns/Form/button.php';
 include_once '../fns/Form/checkbox.php';
 include_once '../fns/Form/password.php';
 include_once '../fns/Form/textfield.php';
-include_once '../fns/Page/imageArrowLinkWithDescription.php';
+include_once '../fns/Page/imageLinkWithDescription.php';
 include_once '../fns/Page/sessionErrors.php';
 include_once '../fns/Page/sessionMessages.php';
 $content =
@@ -67,11 +67,11 @@ $content =
         .'</form>'
         .create_panel(
             'Options',
-            Page\imageArrowLinkWithDescription('Forgot password?',
+            Page\imageLinkWithDescription('Forgot password?',
                 'Reset your account password here.', '../email-reset-password/',
                 'reset-password')
             .'<div class="hr"></div>'
-            .Page\imageArrowLinkWithDescription('Don\'t have an account?',
+            .Page\imageLinkWithDescription('Don\'t have an account?',
                 'Sign up here.', '../sign-up/', 'new-password')
         )
     );

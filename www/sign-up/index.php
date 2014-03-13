@@ -29,7 +29,7 @@ include_once '../fns/Form/captcha.php';
 include_once '../fns/Form/notes.php';
 include_once '../fns/Form/password.php';
 include_once '../fns/Form/textfield.php';
-include_once '../fns/Page/imageArrowLinkWithDescription.php';
+include_once '../fns/Page/imageLinkWithDescription.php';
 include_once '../fns/Page/sessionErrors.php';
 $content =
     create_tabs(
@@ -65,7 +65,7 @@ $content =
         .'</form>'
         .create_panel(
             'Options',
-            Page\imageArrowLinkWithDescription('Already have an account?',
+            Page\imageLinkWithDescription('Already have an account?',
                 'Sign in here.', '../sign-in/', 'sign-in')
         )
     );
