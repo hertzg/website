@@ -83,5 +83,5 @@ if ($numfiles == 1) {
 $_SESSION['files/index_idfolders'] = $idfolders;
 $_SESSION['files/index_messages'] = array($message);
 
-include_once '../fns/create_folder_link.php';
+include_once '../../fns/create_folder_link.php';
 redirect(create_folder_link($idfolders, '../'));
