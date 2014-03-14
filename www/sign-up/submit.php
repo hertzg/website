@@ -39,7 +39,7 @@ if ($email === '') {
         include_once '../fns/Users/getByEmail.php';
         include_once '../lib/mysqli.php';
         if (Users\getByEmail($mysqli, $email)) {
-            $error[] = 'A username with this email is already registered. Try another.';
+            $errors[] = 'A username with this email is already registered. Try another.';
         }
     }
 }
