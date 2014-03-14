@@ -1,74 +1,31 @@
 <?php
 
+function create_checkbox ($user, $title, $property) {
+    $userProperty = "show_$property";
+    if ($user->$userProperty) {
+        $href = "submit-hide-$property.php";
+        $icon = 'checked-checkbox';
+    } else {
+        $href = "submit-show-$property.php";
+        $icon = 'checkbox';
+    }
+    return Page\imageLink($title, $href, $icon);
+}
+
 include_once '../fns/require_user.php';
 $user = require_user('../');
 
 include_once '../fns/Page/imageLink.php';
 
-$options = array();
-
-if ($user->show_bookmarks) {
-    $href = 'submit-hide-bookmarks.php';
-    $icon = 'checked-checkbox';
-} else {
-    $href = 'submit-show-bookmarks.php';
-    $icon = 'checkbox';
-}
-$options[] = Page\imageLink('Bookmarks', $href, $icon);
-
-if ($user->show_calendar) {
-    $href = 'submit-hide-calendar.php';
-    $icon = 'checked-checkbox';
-} else {
-    $href = 'submit-show-calendar.php';
-    $icon = 'checkbox';
-}
-$options[] = Page\imageLink('Calendar', $href, $icon);
-
-if ($user->show_contacts) {
-    $href = 'submit-hide-contacts.php';
-    $icon = 'checked-checkbox';
-} else {
-    $href = 'submit-show-contacts.php';
-    $icon = 'checkbox';
-}
-$options[] = Page\imageLink('Contacts', $href, $icon);
-
-if ($user->show_files) {
-    $href = 'submit-hide-files.php';
-    $icon = 'checked-checkbox';
-} else {
-    $href = 'submit-show-files.php';
-    $icon = 'checkbox';
-}
-$options[] = Page\imageLink('Files', $href, $icon);
-
-if ($user->show_notes) {
-    $href = 'submit-hide-notes.php';
-    $icon = 'checked-checkbox';
-} else {
-    $href = 'submit-show-notes.php';
-    $icon = 'checkbox';
-}
-$options[] = Page\imageLink('Notes', $href, $icon);
-
-if ($user->show_notifications) {
-    $href = 'submit-hide-notifications.php';
-    $icon = 'checked-checkbox';
-} else {
-    $href = 'submit-show-notifications.php';
-    $icon = 'checkbox';
-}
-$options[] = Page\imageLink('Notifications', $href, $icon);
-
-if ($user->show_tasks) {
-    $href = 'submit-hide-tasks.php';
-    $icon = 'checked-checkbox';
-} else {
-    $href = 'submit-show-tasks.php';
-    $icon = 'checkbox';
-}
-$options[] = Page\imageLink('Tasks', $href, $icon);
+$options = array(
+    create_checkbox($user, 'Bookmarks', 'bookmarks'),
+    create_checkbox($user, 'Calendar', 'calendar'),
+    create_checkbox($user, 'Contacts', 'contacts'),
+    create_checkbox($user, 'Files', 'files'),
+    create_checkbox($user, 'Notes', 'notes'),
+    create_checkbox($user, 'Notifications', 'notifications'),
+    create_checkbox($user, 'Tasks', 'tasks'),
+);
 
 include_once '../fns/create_tabs.php';
 include_once '../fns/Page/imageLink.php';
