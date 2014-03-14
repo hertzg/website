@@ -62,6 +62,9 @@ $content =
         'Options',
         Page\imageArrowLink('Account', '../account/', 'account')
         .'<div class="hr"></div>'
+        .Page\imageArrowLink('Customize Home',
+            '../customize-home/', 'edit-home')
+        .'<div class="hr"></div>'
         .Page\imageArrowLink('Help', '../help/', 'help')
         .'<div class="hr"></div>'
         .Page\imageLink('Sign Out', '../submit-signout.php', 'sign-out')

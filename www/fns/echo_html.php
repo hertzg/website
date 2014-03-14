@@ -22,7 +22,7 @@ function echo_html ($title, $head, $body, $theme, $base) {
                 .'<link rel="stylesheet" type="text/css"'
                 ." href=\"{$base}common.compressed.css?$commonCssRevision\" />"
                 .'<link rel="stylesheet" type="text/css"'
-                ." href=\"{$base}icons.css?15\" />"
+                ." href=\"{$base}icons.css?16\" />"
                 .'<link rel="stylesheet" type="text/css"'
                 ." href=\"{$base}themes/$theme/common.css?12\" />"
                 .$head
