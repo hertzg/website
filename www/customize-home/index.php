@@ -32,7 +32,7 @@ if ($user->show_contacts) {
     $href = 'submit-show-contacts.php';
     $icon = 'checkbox';
 }
-$options[] = Page\imageLink('Calendar', $href, $icon);
+$options[] = Page\imageLink('Contacts', $href, $icon);
 
 if ($user->show_files) {
     $href = 'submit-hide-files.php';
