@@ -36,6 +36,9 @@ if (!$email_verified) {
     $options[] = Page\imageArrowLink('Verify Email', 'verify-email/', 'yes');
 }
 
+$href = '../change-password/';
+$options[] = Page\imageArrowLink('Change Password', $href, 'edit-password');
+
 $href = '../edit-profile/';
 $options[] = Page\imageArrowLink('Edit Profile', $href, 'edit-profile');
 
@@ -43,8 +46,8 @@ $href = '../edit-theme/';
 $icon = "edit-$user->theme-theme";
 $options[] = Page\imageArrowLink('Edit Theme', $href, $icon);
 
-$href = '../change-password/';
-$options[] = Page\imageArrowLink('Change Password', $href, 'edit-password');
+$href = '../customize-home/';
+$options[] = Page\imageArrowLink('Customize Home', $href, 'edit-home');
 
 include_once 'fns/create_tokens_link.php';
 $options[] = create_tokens_link($user);

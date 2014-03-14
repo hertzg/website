@@ -1,6 +1,9 @@
 <?php
 
 function render_contacts ($user, array &$items) {
+
+    if (!$user->show_contacts) return;
+
     $num_contacts = $user->num_contacts;
     $title = 'Contacts';
     $href = '../contacts/';
@@ -14,4 +17,5 @@ function render_contacts ($user, array &$items) {
         include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
         $items[] = Page\imageArrowLink($title, $href, $icon);
     }
+
 }

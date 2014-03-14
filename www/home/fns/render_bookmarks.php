@@ -1,6 +1,9 @@
 <?php
 
 function render_bookmarks ($user, array &$items) {
+
+    if (!$user->show_bookmarks) return;
+
     $num_bookmarks = $user->num_bookmarks;
     $title = 'Bookmarks';
     $href = '../bookmarks/';
@@ -14,4 +17,5 @@ function render_bookmarks ($user, array &$items) {
         include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
         $items[] = Page\imageArrowLink($title, $href, $icon);
     }
+
 }

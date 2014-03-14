@@ -1,6 +1,9 @@
 <?php
 
 function render_tasks ($user, &$items) {
+
+    if (!$user->show_tasks) return;
+
     $num_tasks = $user->num_tasks;
     $title = 'Tasks';
     $href = '../tasks/';
@@ -14,4 +17,5 @@ function render_tasks ($user, &$items) {
         include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
         $items[] = Page\imageArrowLink($title, $href, $icon);
     }
+
 }

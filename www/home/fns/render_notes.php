@@ -1,6 +1,9 @@
 <?php
 
 function render_notes ($user, array &$items) {
+
+    if (!$user->show_notes) return;
+
     $num_notes = $user->num_notes;
     $title = 'Notes';
     $href = '../notes/';
@@ -14,4 +17,5 @@ function render_notes ($user, array &$items) {
         include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
         $items[] = Page\imageArrowLink($title, $href, $icon);
     }
+
 }

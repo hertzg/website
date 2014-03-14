@@ -2,6 +2,8 @@
 
 function render_calendar ($user, $mysqli, array &$items) {
 
+    if (!$user->show_calendar) return;
+
     $n_events = function ($n) {
         if ($n == 1) return '1 event';
         return "$n events";

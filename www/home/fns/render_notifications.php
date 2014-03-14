@@ -1,6 +1,9 @@
 <?php
 
 function render_notifications ($user, array &$items, &$notifications) {
+
+    if (!$user->show_notifications) return;
+
     $num_notifications = $user->num_notifications;
     $title = 'Notifications';
     $href = '../notifications/';
@@ -32,4 +35,5 @@ function render_notifications ($user, array &$items, &$notifications) {
         include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
         $items[] = Page\imageArrowLink($title, $href, 'old-notification');
     }
+
 }

@@ -1,6 +1,9 @@
 <?php
 
 function render_files ($user, array &$items) {
+
+    if (!$user->show_files) return;
+
     $title = 'Files';
     $href = '../files/';
     $icon = 'files';
@@ -17,4 +20,5 @@ function render_files ($user, array &$items) {
         include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
         $items[] = Page\imageArrowLink($title, $href, $icon);
     }
+
 }
