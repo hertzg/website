@@ -37,15 +37,11 @@ include_once '../fns/Page/warnings.php';
 $content = create_tabs(
     array(
         array(
-            'title' => '&middot;&middot;&middot;',
+            'title' => 'Home',
             'href' => '../',
         ),
-        array(
-            'title' => 'Account',
-            'href' => '../account/',
-        ),
     ),
-    'Customize Home',
+    'Customize',
     Page\warnings(array(
         'Select the items that you would like to see on your Home page.',
     ))
