@@ -9,8 +9,8 @@ require_guest_user('../');
 unset($_SESSION['sign-in/index_messages']);
 
 include_once '../fns/request_strings.php';
-list($username, $password, $remember) = request_strings(
-    'username', 'password', 'remember');
+list($username, $password, $remember, $return) = request_strings(
+    'username', 'password', 'remember', 'return');
 
 $remember = (bool)$remember;
 $errors = array();
@@ -86,12 +86,17 @@ if ($remember) {
 
 setcookie('username', $user->username, time() + 60 * 60 * 24 * 30, '/');
 
-include_once '../fns/nth_order.php';
-
 $_SESSION['user'] = $user;
-$_SESSION['home/index_messages'] = array(
-    'Welcome to Zvini!',
-    'This is your '.nth_order($user->num_logins + 1).' login.',
-);
 
-redirect('../home/');
+if (parse_url($return, PHP_URL_HOST) !== null) $return = '';
+
+if ($return == '') {
+    include_once '../fns/nth_order.php';
+    $_SESSION['home/index_messages'] = array(
+        'Welcome to Zvini!',
+        'This is your '.nth_order($user->num_logins + 1).' login.',
+    );
+    $return = '../home/';
+}
+
+redirect($return);

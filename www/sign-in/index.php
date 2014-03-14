@@ -5,6 +5,9 @@ $base = '../';
 include_once '../fns/require_guest_user.php';
 require_guest_user($base);
 
+include_once '../fns/request_strings.php';
+list($return) = request_strings('return');
+
 if (array_key_exists('sign-in/index_lastpost', $_SESSION)) {
     $values = $_SESSION['sign-in/index_lastpost'];
 } else {
@@ -37,6 +40,7 @@ include_once '../fns/create_panel.php';
 include_once '../fns/create_tabs.php';
 include_once '../fns/Form/button.php';
 include_once '../fns/Form/checkbox.php';
+include_once '../fns/Form/hidden.php';
 include_once '../fns/Form/password.php';
 include_once '../fns/Form/textfield.php';
 include_once '../fns/Page/imageLinkWithDescription.php';
@@ -64,6 +68,7 @@ $content =
             .Form\checkbox($base, 'remember', 'Stay signed in', $values['remember'])
             .'<div class="hr"></div>'
             .Form\button('Sign In')
+            .Form\hidden('return', $return)
         .'</form>'
         .create_panel(
             'Options',
