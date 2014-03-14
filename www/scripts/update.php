@@ -10,4 +10,9 @@ $mysqli->query('alter table users add show_notes tinyint unsigned default 1 not 
 $mysqli->query('alter table users add show_notifications tinyint unsigned default 1 not null');
 $mysqli->query('alter table users add show_tasks tinyint unsigned default 1 not null');
 
+$mysqli->query('alter table users add show_new_bookmark tinyint unsigned not null');
+$mysqli->query('alter table users add show_new_contact tinyint unsigned not null');
+$mysqli->query('alter table users add show_new_note tinyint unsigned not null');
+$mysqli->query('alter table users add show_new_task tinyint unsigned not null');
+
 echo 'Done';

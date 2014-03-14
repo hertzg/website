@@ -1,12 +1,12 @@
 <?php
 
-function create_checkbox ($user, $title, $property) {
-    $userProperty = "show_$property";
+function create_checkbox ($user, $title, $urlPart, $propertyPart) {
+    $userProperty = "show_$propertyPart";
     if ($user->$userProperty) {
-        $href = "submit-hide-$property.php";
+        $href = "submit-hide-$urlPart.php";
         $icon = 'checked-checkbox';
     } else {
-        $href = "submit-show-$property.php";
+        $href = "submit-show-$urlPart.php";
         $icon = 'checkbox';
     }
     return Page\imageLink($title, $href, $icon);
@@ -18,13 +18,17 @@ $user = require_user('../');
 include_once '../fns/Page/imageLink.php';
 
 $options = array(
-    create_checkbox($user, 'Bookmarks', 'bookmarks'),
-    create_checkbox($user, 'Calendar', 'calendar'),
-    create_checkbox($user, 'Contacts', 'contacts'),
-    create_checkbox($user, 'Files', 'files'),
-    create_checkbox($user, 'Notes', 'notes'),
-    create_checkbox($user, 'Notifications', 'notifications'),
-    create_checkbox($user, 'Tasks', 'tasks'),
+    create_checkbox($user, 'Bookmarks', 'bookmarks', 'bookmarks'),
+    create_checkbox($user, 'New Bookmark', 'new-bookmark', 'new_bookmark'),
+    create_checkbox($user, 'Calendar', 'calendar', 'calendar'),
+    create_checkbox($user, 'Contacts', 'contacts', 'contacts'),
+    create_checkbox($user, 'New Contact', 'new-contact', 'new_contact'),
+    create_checkbox($user, 'Files', 'files', 'files'),
+    create_checkbox($user, 'Notes', 'notes', 'notes'),
+    create_checkbox($user, 'New Note', 'new-note', 'new_note'),
+    create_checkbox($user, 'Notifications', 'notifications', 'notifications'),
+    create_checkbox($user, 'Tasks', 'tasks', 'tasks'),
+    create_checkbox($user, 'New Task', 'new-task', 'new_task'),
 );
 
 include_once '../fns/create_tabs.php';
