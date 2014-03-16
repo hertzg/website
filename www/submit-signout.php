@@ -6,8 +6,6 @@ require_same_domain_referer('./');
 include_once 'fns/session_start_custom.php';
 session_start_custom();
 
-unset($_SESSION['user']);
-
 if (array_key_exists('token', $_SESSION)) {
 
     $token = $_SESSION['token'];
@@ -19,10 +17,11 @@ if (array_key_exists('token', $_SESSION)) {
     include_once 'fns/Users/addNumTokens.php';
     Users\addNumTokens($mysqli, $token->idusers, -1);
 
-    unset($_SESSION['token']);
     setcookie('token', '', time() - 60 * 60 * 24, '/');
 
 }
+
+session_destroy();
 
 $_SESSION['sign-in/index_messages'] = array(
     'You have been signed out.',
