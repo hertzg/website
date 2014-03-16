@@ -1,6 +1,6 @@
 .title_and_description {
-    line-height: 18px;
-    padding: 6px 0;
+    line-height: 20px;
+    padding: 4px 0;
 }
 .title_and_description > :first-child {
     overflow: hidden;
