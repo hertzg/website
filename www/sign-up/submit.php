@@ -46,10 +46,16 @@ if ($email === '') {
 
 if ($password1 === '') {
     $errors[] = 'Enter password.';
-} elseif (mb_strlen($password1, 'UTF-8') < 6) {
-    $errors[] = 'Password too short. At least 6 characters required.';
-} elseif ($password1 != $password2) {
-    $errors[] = 'Passwords does not match.';
+} else {
+    include_once '../fns/Password/isShort.php';
+    if (Password\isShort($password1)) {
+        include_once '../fns/Password/minLength.php';
+        $errors[] =
+            'Password too short.'
+            .' At least '.Password\minLength().' characters required.';
+    } elseif ($password1 != $password2) {
+        $errors[] = 'Passwords does not match.';
+    }
 }
 
 include_once '../fns/Captcha/check.php';

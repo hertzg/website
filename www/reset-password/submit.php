@@ -18,10 +18,13 @@ $errors = array();
 
 if ($password1 === '') {
     $errors[] = 'Enter new password.';
-} elseif (mb_strlen($password1, 'UTF-8') < 6) {
-    $errors[] = 'New password should be at least 6 characters long.';
-} elseif ($password1 != $password2) {
-    $errors[] = 'New passwords does not match.';
+} else {
+    include_once '../fns/Password/isShort.php';
+    if (Password\isShort($password1)) {
+        $errors[] = 'New password should be at least '.Password\minLength().' characters long.';
+    } elseif ($password1 != $password2) {
+        $errors[] = 'New passwords does not match.';
+    }
 }
 
 include_once '../fns/redirect.php';
