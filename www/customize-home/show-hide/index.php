@@ -1,12 +1,12 @@
 <?php
 
-function create_checkbox ($user, $title, $urlPart, $propertyPart) {
+function create_checkbox ($user, $title, $key, $propertyPart) {
     $userProperty = "show_$propertyPart";
     if ($user->$userProperty) {
-        $href = "submit-hide-$urlPart.php";
+        $href = "submit-hide-$key.php";
         $icon = 'checked-checkbox';
     } else {
-        $href = "submit-show-$urlPart.php";
+        $href = "submit-show-$key.php";
         $icon = 'checkbox';
     }
     return Page\imageLink($title, $href, $icon);
@@ -20,11 +20,14 @@ $user = require_user($base);
 include_once 'fns/get_home_items.php';
 $homeItems = get_home_items();
 
+include_once '../fns/get_user_home_items.php';
+$userHomeItems = get_user_home_items($homeItems, $user);
+
 include_once '../../fns/Page/imageLink.php';
 $items = array();
-foreach ($homeItems as $item) {
-    list($title, $urlPart, $propertyPart) = $item;
-    $items[] = create_checkbox($user, $title, $urlPart, $propertyPart);
+foreach ($userHomeItems as $key => $item) {
+    list($title, $propertyPart) = $item;
+    $items[] = create_checkbox($user, $title, $key, $propertyPart);
 }
 
 include_once '../../fns/create_panel.php';

@@ -8,9 +8,12 @@ $user = require_user($base);
 include_once 'fns/get_home_items.php';
 $homeItems = get_home_items();
 
+include_once '../fns/get_user_home_items.php';
+$userHomeItems = get_user_home_items($homeItems, $user);
+
 include_once '../../fns/Page/imageArrowLink.php';
 $items = array();
-foreach ($homeItems as $key => $item) {
+foreach ($userHomeItems as $key => $item) {
     list($title, $icon) = $item;
     $items[] = Page\imageArrowLink($title, "move/?key=$key", $icon);
 }
