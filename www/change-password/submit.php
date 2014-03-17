@@ -15,8 +15,11 @@ $errors = array();
 
 if ($currentpassword === '') {
     $errors[] = 'Enter current password.';
-} elseif (md5($currentpassword, true) != $user->password) {
-    $errors[] = 'Invalid current password.';
+} else {
+    include_once '../fns/Password/match.php';
+    if (!Password\match($user->password, $currentpassword)) {
+        $errors[] = 'Invalid current password.';
+    }
 }
 
 if ($password1 === '') {

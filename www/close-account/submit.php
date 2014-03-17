@@ -14,8 +14,11 @@ $errors = array();
 
 if ($password === '') {
     $errors[] = 'Enter password.';
-} elseif ($user->password != md5($password, true)) {
-    $errors[] = 'Invalid password.';
+} else {
+    include_once '../fns/Password/match.php';
+    if (!Password\match($user->password, $password)) {
+        $errors[] = 'Invalid password.';
+    }
 }
 
 include_once '../fns/redirect.php';
