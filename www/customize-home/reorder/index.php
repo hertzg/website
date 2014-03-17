@@ -21,6 +21,7 @@ foreach ($userHomeItems as $key => $item) {
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/imageLinkWithDescription.php';
+include_once '../../fns/Page/sessionMessages.php';
 include_once '../../fns/Page/warnings.php';
 $content = create_tabs(
     array(
@@ -34,7 +35,8 @@ $content = create_tabs(
         ),
     ),
     'Reorder Items',
-    Page\warnings(array('Select an item to move up or down.'))
+    Page\sessionMessages('customize-home/reorder/index_messages')
+    .Page\warnings(array('Select an item to move up or down.'))
     .join('<div class="hr"></div>', $items)
     .create_panel(
         'Options',

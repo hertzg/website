@@ -17,5 +17,9 @@ include_once '../../../fns/Users/editOrderHomeItems.php';
 include_once '../../../lib/mysqli.php';
 Users\editOrderHomeItems($mysqli, $user->idusers, $order_home_items);
 
+$_SESSION['customize-home/reorder/index_messages'] = array(
+    "\"$item[title]\" has been moved up.",
+);
+
 include_once '../../../fns/redirect.php';
 redirect('..');

@@ -1,17 +1,5 @@
 <?php
 
-function create_checkbox ($user, $title, $key, $propertyPart) {
-    $userProperty = "show_$propertyPart";
-    if ($user->$userProperty) {
-        $href = "submit-hide-$key.php";
-        $icon = 'checked-checkbox';
-    } else {
-        $href = "submit-show-$key.php";
-        $icon = 'checkbox';
-    }
-    return Page\imageLink($title, $href, $icon);
-}
-
 $base = '../../';
 
 include_once '../../fns/require_user.php';
@@ -27,8 +15,18 @@ include_once '../../fns/Page/imageLink.php';
 $items = array();
 foreach ($userHomeItems as $key => $item) {
     list($title, $propertyPart) = $item;
-    $items[] = create_checkbox($user, $title, $key, $propertyPart);
+    $userProperty = "show_$propertyPart";
+    if ($user->$userProperty) {
+        $href = "submit-hide-$key.php";
+        $icon = 'checked-checkbox';
+    } else {
+        $href = "submit-show-$key.php";
+        $icon = 'checkbox';
+    }
+    $items[] = Page\imageLink($title, $href, $icon);
 }
+
+unset($_SESSION['customize-home/reorder/index_messages']);
 
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
