@@ -5,6 +5,11 @@ $base = '../../';
 include_once '../../fns/require_user.php';
 $user = require_user($base);
 
+if (!$user->num_events) {
+    include_once '../../fns/redirect.php';
+    redirect('..');
+}
+
 $items = array();
 
 include_once '../../fns/Events/indexOnUser.php';

@@ -36,20 +36,14 @@ include_once '../lib/mysqli.php';
 $events = Events\indexOnUserAndTime($mysqli, $user->idusers, $timeSelected);
 
 $eventItems = array();
-if ($events) {
-    include_once '../fns/Page/imageArrowLink.php';
-    foreach ($events as $event) {
-        $title = htmlspecialchars($event->eventtext);
-        $href = "view-event/?idevents=$event->idevents";
-        $eventItems[] = Page\imageArrowLink($title, $href, 'event');
-    }
-} else {
-    include_once '../fns/Page/info.php';
-    $eventItems[] = Page\info('No events on this day.');
-}
+include_once 'fns/render_events.php';
+render_events($events, $eventItems);
 
-include_once 'fns/create_all_events_link.php';
-$eventItems[] = create_all_events_link($user);
+if ($user->num_events) {
+    include_once '../fns/Page/imageArrowLinkWithDescription.php';
+    $eventItems[] = Page\imageArrowLinkWithDescription('All Events',
+        "$user->num_events total.", 'all-events/', 'event');
+}
 
 $newEventHref =
     "new-event/?year=$yearSelected&amp;month=$monthSelected&amp;day=$daySelected";
