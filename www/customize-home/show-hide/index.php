@@ -17,22 +17,10 @@ $base = '../../';
 include_once '../../fns/require_user.php';
 $user = require_user($base);
 
+include_once 'fns/get_home_items.php';
+$homeItems = get_home_items();
+
 include_once '../../fns/Page/imageLink.php';
-
-$homeItems = array(
-    array('Bookmarks', 'bookmarks', 'bookmarks'),
-    array('New Bookmark', 'new-bookmark', 'new_bookmark'),
-    array('Calendar', 'calendar', 'calendar'),
-    array('Contacts', 'contacts', 'contacts'),
-    array('New Contact', 'new-contact', 'new_contact'),
-    array('Files', 'files', 'files'),
-    array('Notes', 'notes', 'notes'),
-    array('New Note', 'new-note', 'new_note'),
-    array('Notifications', 'notifications', 'notifications'),
-    array('Tasks', 'tasks', 'tasks'),
-    array('New Task', 'new-task', 'new_task'),
-);
-
 $items = array();
 foreach ($homeItems as $item) {
     list($title, $urlPart, $propertyPart) = $item;
@@ -57,7 +45,7 @@ $content = create_tabs(
     ),
     'Show / Hide Items',
     Page\warnings(array(
-        'Select the items that you would like to see on your home page.',
+        'Select items to see them on your home page.',
     ))
     .join('<div class="hr"></div>', $items)
     .create_panel(
