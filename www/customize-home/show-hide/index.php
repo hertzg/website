@@ -19,19 +19,25 @@ $user = require_user($base);
 
 include_once '../../fns/Page/imageLink.php';
 
-$options = array(
-    create_checkbox($user, 'Bookmarks', 'bookmarks', 'bookmarks'),
-    create_checkbox($user, 'New Bookmark', 'new-bookmark', 'new_bookmark'),
-    create_checkbox($user, 'Calendar', 'calendar', 'calendar'),
-    create_checkbox($user, 'Contacts', 'contacts', 'contacts'),
-    create_checkbox($user, 'New Contact', 'new-contact', 'new_contact'),
-    create_checkbox($user, 'Files', 'files', 'files'),
-    create_checkbox($user, 'Notes', 'notes', 'notes'),
-    create_checkbox($user, 'New Note', 'new-note', 'new_note'),
-    create_checkbox($user, 'Notifications', 'notifications', 'notifications'),
-    create_checkbox($user, 'Tasks', 'tasks', 'tasks'),
-    create_checkbox($user, 'New Task', 'new-task', 'new_task'),
+$homeItems = array(
+    array('Bookmarks', 'bookmarks', 'bookmarks'),
+    array('New Bookmark', 'new-bookmark', 'new_bookmark'),
+    array('Calendar', 'calendar', 'calendar'),
+    array('Contacts', 'contacts', 'contacts'),
+    array('New Contact', 'new-contact', 'new_contact'),
+    array('Files', 'files', 'files'),
+    array('Notes', 'notes', 'notes'),
+    array('New Note', 'new-note', 'new_note'),
+    array('Notifications', 'notifications', 'notifications'),
+    array('Tasks', 'tasks', 'tasks'),
+    array('New Task', 'new-task', 'new_task'),
 );
+
+$items = array();
+foreach ($homeItems as $item) {
+    list($title, $urlPart, $propertyPart) = $item;
+    $items[] = create_checkbox($user, $title, $urlPart, $propertyPart);
+}
 
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
@@ -53,7 +59,7 @@ $content = create_tabs(
     Page\warnings(array(
         'Select the items that you would like to see on your home page.',
     ))
-    .join('<div class="hr"></div>', $options)
+    .join('<div class="hr"></div>', $items)
     .create_panel(
         'Options',
         Page\imageLinkWithDescription('Reorder Items',
