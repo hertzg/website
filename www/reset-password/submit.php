@@ -6,27 +6,13 @@ require_same_domain_referer('..');
 include_once '../fns/require_guest_user.php';
 require_guest_user('../');
 
-include_once '../fns/request_strings.php';
-list($idusers, $key, $password1, $password2) = request_strings(
-    'idusers', 'key', 'password1', 'password2');
-
-include_once '../fns/redirect.php';
-
-include_once '../fns/is_md5.php';
-if (!is_md5($key)) redirect();
-
-$idusers = abs((int)$idusers);
-
-include_once '../fns/Users/getByResetPasswordKey.php';
+include_once 'fns/require_valid_key.php';
 include_once '../lib/mysqli.php';
-$user = Users\getByResetPasswordKey($mysqli, $idusers, $key);
+list($user, $key) = require_valid_key($mysqli);
+$idusers = $user->idusers;
 
-if (!$user) {
-    // TODO show that the key is no longer valid
-    redirect('..');
-}
-
-unset($_SESSION['user']);
+include_once '../fns/request_strings.php';
+list($password1, $password2) = request_strings('password1', 'password2');
 
 $errors = array();
 
@@ -37,6 +23,8 @@ if ($password1 === '') {
 } elseif ($password1 != $password2) {
     $errors[] = 'New passwords does not match.';
 }
+
+include_once '../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['reset-password/index_errors'] = $errors;

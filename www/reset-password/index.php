@@ -5,23 +5,9 @@ $base = '../';
 include_once '../fns/require_guest_user.php';
 require_guest_user($base);
 
-include_once '../fns/request_strings.php';
-list($idusers, $key) = request_strings('idusers', 'key');
-
-include_once '../fns/is_md5.php';
-if (!is_md5($key)) {
-    include_once '../fns/redirect.php';
-    redirect('..');
-}
-
-include_once '../fns/Users/getByResetPasswordKey.php';
+include_once 'fns/require_valid_key.php';
 include_once '../lib/mysqli.php';
-$user = Users\getByResetPasswordKey($mysqli, $idusers, $key);
-
-if (!$user) {
-    include_once '../fns/redirect.php';
-    redirect('..');
-}
+list($user, $key) = require_valid_key($mysqli);
 
 if (array_key_exists('reset-password/index_lastpost', $_SESSION)) {
     $values = $_SESSION['reset-password/index_lastpost'];
@@ -71,7 +57,7 @@ $content =
             ))
             .'<div class="hr"></div>'
             .Form\button('Reset Password')
-            .Form\hidden('idusers', $idusers)
+            .Form\hidden('idusers', $user->idusers)
             .Form\hidden('key', $key)
         .'</form>'
     );
