@@ -5,6 +5,16 @@ $base = '../../';
 include_once '../../fns/require_user.php';
 $user = require_user($base);
 
+include_once 'fns/get_home_items.php';
+$homeItems = get_home_items();
+
+include_once '../../fns/Page/imageArrowLink.php';
+$items = array();
+foreach ($homeItems as $key => $item) {
+    list($title, $icon) = $item;
+    $items[] = Page\imageArrowLink($title, "take/?key=$key", $icon);
+}
+
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/imageLinkWithDescription.php';
@@ -20,7 +30,7 @@ $content = create_tabs(
         ),
     ),
     'Reorder Items',
-    'This section is under construction...'
+    join('<div class="hr"></div>', $items)
     .create_panel(
         'Options',
         Page\imageLinkWithDescription('Show / Hide Items',
