@@ -27,6 +27,7 @@ unset(
 );
 
 include_once 'fns/create_options_panel.php';
+include_once 'fns/create_preview.php';
 include_once '../../fns/bytestr.php';
 include_once '../../fns/create_folder_link.php';
 include_once '../../fns/create_tabs.php';
@@ -54,8 +55,12 @@ $content =
         .Form\label('Size', bytestr($file->filesize))
         .'<div class="hr"></div>'
         .Form\label('Uploaded', date_ago($file->inserttime))
+        .'<div class="hr"></div>'
+        .Form\label('Preview', create_preview($file))
     )
     .create_options_panel($file);
 
 include_once '../../fns/echo_page.php';
-echo_page($user, "File #$id", $content, $base);
+echo_page($user, "File #$id", $content, $base, array(
+    'head' => '<link rel="stylesheet" type="text/css" href="index.css" />',
+));
