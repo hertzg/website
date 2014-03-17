@@ -17,46 +17,16 @@ $email = mb_strtolower($email, 'UTF-8');
 
 $errors = array();
 
-if ($username === '') {
-    $errors[] = 'Enter username.';
-} elseif (mb_strlen($username, 'UTF-8') < 6) {
-    $errors[] = 'Username too short. At least 6 characters required.';
-} else {
-    include_once '../fns/Users/getByUsername.php';
-    include_once '../lib/mysqli.php';
-    if (Users\getByUsername($mysqli, $username)) {
-        $errors[] = 'The username is unavailable. Try another.';
-    }
-}
+include_once '../lib/mysqli.php';
 
-if ($email === '') {
-    $errors[] = 'Enter email.';
-} else {
-    include_once '../fns/is_email_valid.php';
-    if (!is_email_valid($email)) {
-        $errors[] = 'Enter a valid email address.';
-    } else {
-        include_once '../fns/Users/getByEmail.php';
-        include_once '../lib/mysqli.php';
-        if (Users\getByEmail($mysqli, $email)) {
-            $errors[] = 'A username with this email is already registered. Try another.';
-        }
-    }
-}
+include_once 'fns/check_username.php';
+check_username($mysqli, $username, $errors);
 
-if ($password1 === '') {
-    $errors[] = 'Enter password.';
-} else {
-    include_once '../fns/Password/isShort.php';
-    if (Password\isShort($password1)) {
-        include_once '../fns/Password/minLength.php';
-        $errors[] =
-            'Password too short.'
-            .' At least '.Password\minLength().' characters required.';
-    } elseif ($password1 != $password2) {
-        $errors[] = 'Passwords does not match.';
-    }
-}
+include_once 'fns/check_email.php';
+check_email($mysqli, $email, $errors);
+
+include_once 'fns/check_passwords.php';
+check_passwords($password1, $password2, $errors);
 
 include_once '../fns/Captcha/check.php';
 Captcha\check($errors);

@@ -21,7 +21,12 @@ if ($password1 === '') {
 } else {
     include_once '../fns/Password/isShort.php';
     if (Password\isShort($password1)) {
-        $errors[] = 'New password should be at least '.Password\minLength().' characters long.';
+
+        include_once '../fns/Password/minLength.php';
+        $minLength = Password\minLength();
+
+        $errors[] = "New password should be at least $minLength characters long.";
+
     } elseif ($password1 != $password2) {
         $errors[] = 'New passwords does not match.';
     }
