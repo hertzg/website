@@ -92,5 +92,5 @@ echo_page($user, 'Calendar', $content, '../', array(
     'head' =>
         '<link rel="stylesheet" type="text/css" href="index.css?5" />'
         .'<link rel="stylesheet" type="text/css"'
-        ." href=\"themes/$user->theme/index.css?1\" />"
+        ." href=\"themes/$user->theme/index.css?2\" />"
 ));

@@ -3,6 +3,9 @@
     color: #444;
 }
 
+.calendar-columns {
+    white-space: nowrap;
+}
 .calendar-columns > * {
     height: 48px;
     text-align: center;
@@ -22,10 +25,6 @@
 .calendar-columns > :nth-child(2),
 .calendar-columns > :nth-child(6) {
     width: 15%;
-}
-
-.calendar-days {
-    white-space: nowrap;
 }
 
 .calendar-days > :focus {
