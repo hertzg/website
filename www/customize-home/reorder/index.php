@@ -12,7 +12,7 @@ include_once '../../fns/Page/imageArrowLink.php';
 $items = array();
 foreach ($homeItems as $key => $item) {
     list($title, $icon) = $item;
-    $items[] = Page\imageArrowLink($title, "take/?key=$key", $icon);
+    $items[] = Page\imageArrowLink($title, "move/?key=$key", $icon);
 }
 
 include_once '../../fns/create_panel.php';
