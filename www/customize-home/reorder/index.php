@@ -18,6 +18,7 @@ foreach ($homeItems as $key => $item) {
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/imageLinkWithDescription.php';
+include_once '../../fns/Page/warnings.php';
 $content = create_tabs(
     array(
         array(
@@ -30,7 +31,8 @@ $content = create_tabs(
         ),
     ),
     'Reorder Items',
-    join('<div class="hr"></div>', $items)
+    Page\warnings(array('Select an item to move up or down.'))
+    .join('<div class="hr"></div>', $items)
     .create_panel(
         'Options',
         Page\imageLinkWithDescription('Show / Hide Items',
