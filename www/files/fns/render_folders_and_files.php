@@ -1,7 +1,7 @@
 <?php
 
 function render_folders_and_files (array $folders, array $files, &$items,
-    $emptyMessage, $base = '../') {
+    $emptyMessage, $base = '') {
 
     if ($folders || $files) {
 
@@ -9,13 +9,13 @@ function render_folders_and_files (array $folders, array $files, &$items,
 
         foreach ($folders as $i => $folder) {
             $title = htmlspecialchars($folder->foldername);
-            $href = "?idfolders=$folder->idfolders";
+            $href = "$base?idfolders=$folder->idfolders";
             $items[] = Page\imageArrowLink($title, $href, 'folder');
         }
 
         foreach ($files as $i => $file) {
             $title = htmlspecialchars($file->filename);
-            $href = "view-file/?id=$file->idfiles";
+            $href = "{$base}view-file/?id=$file->idfiles";
             $items[] = Page\imageArrowLink($title, $href, 'file');
         }
 
