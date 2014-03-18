@@ -7,5 +7,9 @@ include_once '../../fns/Users/showNotes.php';
 include_once '../../lib/mysqli.php';
 Users\showNotes($mysqli, $user->idusers, true);
 
+$_SESSION['customize-home/show-hide/index_messages'] = array(
+    '"Show Notes" is now visible.',
+);
+
 include_once '../../fns/redirect.php';
 redirect();

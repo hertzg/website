@@ -7,5 +7,9 @@ include_once '../../fns/Users/showCalendar.php';
 include_once '../../lib/mysqli.php';
 Users\showCalendar($mysqli, $user->idusers, true);
 
+$_SESSION['customize-home/show-hide/index_messages'] = array(
+    '"Calendar" is now visible.',
+);
+
 include_once '../../fns/redirect.php';
 redirect();
