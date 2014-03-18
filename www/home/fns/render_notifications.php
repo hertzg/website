@@ -4,6 +4,7 @@ function render_notifications ($user, array &$items, &$notifications) {
 
     if (!$user->show_notifications) return;
 
+    $key = 'notifications';
     $num_notifications = $user->num_notifications;
     $title = 'Notifications';
     $href = '../notifications/';
@@ -20,20 +21,20 @@ function render_notifications ($user, array &$items, &$notifications) {
             $description = "$num_new_notifications new. $num_notifications total.";
 
             include_once __DIR__.'/../../fns/Page/imageArrowLinkWithDescription.php';
-            $items[] = Page\imageArrowLinkWithDescription($title,
+            $items[$key] = Page\imageArrowLinkWithDescription($title,
                 $description, $href, 'notification');
 
         } else {
             $notifications = '';
             $description = "$num_notifications total.";
             include_once __DIR__.'/../../fns/Page/imageArrowLinkWithDescription.php';
-            $items[] = Page\imageArrowLinkWithDescription($title,
+            $items[$key] = Page\imageArrowLinkWithDescription($title,
                 $description, $href, 'old-notification');
         }
     } else {
         $notifications = '';
         include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
-        $items[] = Page\imageArrowLink($title, $href, 'old-notification');
+        $items[$key] = Page\imageArrowLink($title, $href, 'old-notification');
     }
 
 }

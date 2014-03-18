@@ -25,27 +25,10 @@ $formContent = SearchForm\emptyContent('Search...');
 include_once '../fns/SearchForm/create.php';
 $items[] = SearchForm\create('../search/', $formContent);
 
-include_once 'fns/render_bookmarks.php';
-render_bookmarks($user, $items);
+include_once 'fns/get_home_items.php';
+$homeItems = get_home_items($user, $notifications);
 
-include_once 'fns/render_calendar.php';
-include_once '../lib/mysqli.php';
-render_calendar($user, $mysqli, $items);
-
-include_once 'fns/render_contacts.php';
-render_contacts($user, $items);
-
-include_once 'fns/render_files.php';
-render_files($user, $items);
-
-include_once 'fns/render_notes.php';
-render_notes($user, $items);
-
-include_once 'fns/render_notifications.php';
-render_notifications($user, $items, $notifications);
-
-include_once 'fns/render_tasks.php';
-render_tasks($user, $items);
+$items = array_merge($items, $homeItems);
 
 include_once '../fns/create_panel.php';
 include_once '../fns/create_tabs.php';

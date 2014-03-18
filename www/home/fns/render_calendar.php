@@ -22,6 +22,7 @@ function render_calendar ($user, $mysqli, array &$items) {
     $numEventsToday = Events\countOnTime($mysqli, $idusers, $timeToday);
     $numEventsTomorrow = Events\countOnTime($mysqli, $idusers, $timeTomorrow);
 
+    $key = 'calendar';
     $title = 'Calendar';
     $href = '../calendar/';
     $icon = 'calendar';
@@ -34,16 +35,16 @@ function render_calendar ($user, $mysqli, array &$items) {
             $description = $n_events($numEventsToday).' today.';
         }
         include_once __DIR__.'/../../fns/Page/imageArrowLinkWithDescription.php';
-        $items[] = Page\imageArrowLinkWithDescription($title,
+        $items[$key] = Page\imageArrowLinkWithDescription($title,
             $description, $href, $icon);
     } elseif ($numEventsTomorrow) {
         $description = $n_events($numEventsTomorrow).' tomorrow.';
         include_once __DIR__.'/../../fns/Page/imageArrowLinkWithDescription.php';
-        $items[] = Page\imageArrowLinkWithDescription($title,
+        $items[$key] = Page\imageArrowLinkWithDescription($title,
             $description, $href, $icon);
     } else {
         include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
-        $items[] = Page\imageArrowLink($title, $href, $icon);
+        $items[$key] = Page\imageArrowLink($title, $href, $icon);
     }
 
 }
