@@ -53,7 +53,8 @@ $content = create_tabs(
     .join('<div class="hr"></div>', $items)
     .create_panel(
         'Options',
-        Page\imageArrowLink('Restore Defaults', 'restore-defaults/', 'todo')
+        Page\imageArrowLink('Restore Defaults', 'restore-defaults/',
+            'restore-defaults')
         .'<div class="hr"></div>'
         .Page\imageLinkWithDescription('Reorder Items',
             'Change the order in which the items appear.', '../reorder/', 'reorder')
