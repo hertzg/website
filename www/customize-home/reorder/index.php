@@ -41,7 +41,7 @@ $content = create_tabs(
     .create_panel(
         'Options',
         Page\imageLinkWithDescription('Show / Hide Items',
-            'Change the visibility of the items.', '../show-hide/', 'edit-home')
+            'Change the visibility of the items.', '../show-hide/', 'show-hide')
     )
 );
 

@@ -17,7 +17,8 @@ $names = array(
     'calendar', 'arrow-right', 'arrow-left', 'copy-file', 'move-file',
     'copy-folder', 'move-folder', 'search', 'search-folder', 'event',
     'create-event', 'edit-event', 'checkbox', 'checked-checkbox', 'help',
-    'token', 'create-token', 'tokens', 'run', 'mail', 'phone', 'edit-home');
+    'token', 'create-token', 'tokens', 'run', 'mail', 'phone', 'edit-home',
+    'move-up', 'move-to-top', 'move-down', 'move-to-bottom', 'reorder', 'show-hide');
 
 $content = "/* auto-generated */\n";
 $x = 0;

@@ -2,8 +2,8 @@
 
 function get_revision ($key) {
     static $revisions = array(
-        'common.compressed.css' => 12,
-        'icons.css' => 17,
+        'common.compressed.css' => 13,
+        'icons.css' => 18,
     );
     return $revisions[$key];
 }

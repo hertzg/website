@@ -52,7 +52,7 @@ $content = create_tabs(
     .create_panel(
         'Options',
         Page\imageLinkWithDescription('Reorder Items',
-            'Change the order in which the items appear.', '../reorder/', 'edit-home')
+            'Change the order in which the items appear.', '../reorder/', 'reorder')
     )
 );
 
