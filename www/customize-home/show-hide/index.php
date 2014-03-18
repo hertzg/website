@@ -30,8 +30,9 @@ unset($_SESSION['customize-home/reorder/index_messages']);
 
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
-include_once '../../fns/Page/imageLink.php';
+include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../fns/Page/imageLinkWithDescription.php';
+include_once '../../fns/Page/sessionMessages.php';
 include_once '../../fns/Page/warnings.php';
 $content = create_tabs(
     array(
@@ -45,13 +46,16 @@ $content = create_tabs(
         ),
     ),
     'Show / Hide Items',
-    Page\warnings(array(
+    Page\sessionMessages('customize-home/show-hide/index_messages')
+    .Page\warnings(array(
         'Select items to see them on your home page.',
     ))
     .join('<div class="hr"></div>', $items)
     .create_panel(
         'Options',
-        Page\imageLinkWithDescription('Reorder Items',
+        Page\imageArrowLink('Restore Defaults', 'restore-defaults/', 'todo')
+        .'<div class="hr"></div>'
+        .Page\imageLinkWithDescription('Reorder Items',
             'Change the order in which the items appear.', '../reorder/', 'reorder')
     )
 );

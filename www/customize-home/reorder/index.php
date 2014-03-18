@@ -20,6 +20,7 @@ foreach ($userHomeItems as $key => $item) {
 
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
+include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../fns/Page/imageLinkWithDescription.php';
 include_once '../../fns/Page/sessionMessages.php';
 include_once '../../fns/Page/warnings.php';
@@ -40,7 +41,9 @@ $content = create_tabs(
     .join('<div class="hr"></div>', $items)
     .create_panel(
         'Options',
-        Page\imageLinkWithDescription('Show / Hide Items',
+        Page\imageArrowLink('Restore Defaults', 'restore-defaults/', 'todo')
+        .'<div class="hr"></div>'
+        .Page\imageLinkWithDescription('Show / Hide Items',
             'Change the visibility of the items.', '../show-hide/', 'show-hide')
     )
 );
