@@ -1,7 +1,13 @@
 <?php
 
-include_once 'fns/require_guest_user.php';
-require_guest_user('');
+include_once 'fns/signed_user.php';
+$user = signed_user();
+
+if ($user) {
+    unset($_SESSION['home/index_messages']);
+    include_once 'fns/redirect.php';
+    redirect('home/');
+}
 
 include_once 'fns/get_revision.php';
 
