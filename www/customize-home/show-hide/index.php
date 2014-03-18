@@ -26,7 +26,10 @@ foreach ($userHomeItems as $key => $item) {
     $items[] = Page\imageLink($title, $href, $icon);
 }
 
-unset($_SESSION['customize-home/reorder/index_messages']);
+unset(
+    $_SESSION['customize-home/index_messages'],
+    $_SESSION['customize-home/reorder/index_messages']
+);
 
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
@@ -53,11 +56,11 @@ $content = create_tabs(
     .join('<div class="hr"></div>', $items)
     .create_panel(
         'Options',
-        Page\imageArrowLink('Restore Defaults', 'restore-defaults/',
-            'restore-defaults')
-        .'<div class="hr"></div>'
-        .Page\imageLinkWithDescription('Reorder Items',
+        Page\imageLinkWithDescription('Reorder Items',
             'Change the order in which the items appear.', '../reorder/', 'reorder')
+        .'<div class="hr"></div>'
+        .Page\imageArrowLink('Restore Defaults', 'restore-defaults/',
+            'restore-defaults')
     )
 );
 

@@ -18,6 +18,8 @@ foreach ($userHomeItems as $key => $item) {
     $items[] = Page\imageArrowLink($title, "move/?key=$key", $icon);
 }
 
+unset($_SESSION['customize-home/index_messages']);
+
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/imageArrowLink.php';
@@ -41,11 +43,11 @@ $content = create_tabs(
     .join('<div class="hr"></div>', $items)
     .create_panel(
         'Options',
-        Page\imageArrowLink('Restore Defaults', 'restore-defaults/',
-            'restore-defaults')
-        .'<div class="hr"></div>'
-        .Page\imageLinkWithDescription('Show / Hide Items',
+        Page\imageLinkWithDescription('Show / Hide Items',
             'Change the visibility of the items.', '../show-hide/', 'show-hide')
+        .'<div class="hr"></div>'
+        .Page\imageArrowLink('Restore Defaults', 'restore-defaults/',
+            'restore-defaults')
     )
 );
 

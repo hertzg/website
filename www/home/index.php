@@ -10,6 +10,7 @@ unset(
     $_SESSION['bookmarks/index_messages'],
     $_SESSION['calendar/index_messages'],
     $_SESSION['contacts/index_messages'],
+    $_SESSION['customize-home/index_messages'],
     $_SESSION['files/index_messages'],
     $_SESSION['help/index_messages'],
     $_SESSION['notes/index_messages'],
