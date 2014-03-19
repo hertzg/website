@@ -27,5 +27,6 @@ function add ($mysqli, $username, $email, $password) {
     $idusers = $mysqli->insert_id;
 
     mkdir(__DIR__."/../../users/$idusers");
+    mkdir(__DIR__."/../../users/$idusers/files");
 
 }
