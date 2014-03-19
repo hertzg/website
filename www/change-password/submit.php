@@ -17,7 +17,9 @@ if ($currentpassword === '') {
     $errors[] = 'Enter current password.';
 } else {
     include_once '../fns/Password/match.php';
-    if (!Password\match($user->password_hash, $currentpassword)) {
+    $hash = $user->password_hash;
+    $salt = $user->password_salt;
+    if (!Password\match($hash, $salt, $currentpassword)) {
         $errors[] = 'Invalid current password.';
     }
 }

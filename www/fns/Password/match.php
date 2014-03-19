@@ -2,6 +2,6 @@
 
 namespace Password;
 
-function match ($hash, $password) {
-    return $hash === md5($password, true);
+function match ($hash, $salt, $password) {
+    return $hash === md5($password.$salt, true);
 }

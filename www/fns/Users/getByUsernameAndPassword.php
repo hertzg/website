@@ -8,7 +8,9 @@ function getByUsernameAndPassword ($mysqli, $username, $password) {
     $user = getByUsername($mysqli, $username);
     if ($user) {
         include_once __DIR__.'/../Password/match.php';
-        if (\Password\match($user->password_hash, $password)) {
+        $hash = $user->password_hash;
+        $salt = $user->password_salt;
+        if (\Password\match($hash, $salt, $password)) {
             return $user;
         }
     }
