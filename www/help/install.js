@@ -7,9 +7,12 @@
 
     var mozApps = navigator.mozApps
     if (mozApps) {
-        var protocol = location.protocol
-        var pathname = location.pathname.replace(/help\/install\.php$/, '')
-        var manifest = protocol + '//' + location.host + pathname + 'manifest.php'
+
+        var protocol = location.protocol,
+            host = location.host,
+            pathname = location.pathname.replace(/help\/install\.php$/, ''),
+            manifest = protocol + '//' + host + pathname + 'webapp-manifest/'
+
         var checkRequest = mozApps.checkInstalled(manifest)
         checkRequest.onsuccess = function () {
             if (checkRequest.result) {
@@ -24,6 +27,7 @@
                 }
             }
         }
+
     } else {
         alertAndRedirect('We\'re sorry, Zvini cannot be installed on your platform.')
     }
