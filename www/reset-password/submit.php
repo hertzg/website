@@ -27,7 +27,7 @@ if ($password1 === '') {
 
         $errors[] = "New password should be at least $minLength characters long.";
 
-    } elseif ($password1 != $password2) {
+    } elseif ($password1 !== $password2) {
         $errors[] = 'New passwords does not match.';
     }
 }
