@@ -54,8 +54,15 @@ unset(
     $_SESSION['sign-in/index_lastpost']
 );
 
+$idusers = $user->idusers;
+
 include_once '../fns/Users/login.php';
-Users\login($mysqli, $user->idusers);
+Users\login($mysqli, $idusers);
+
+if ($user->password_salt === '') {
+    include_once '../fns/Users/editPassword.php';
+    Users\editPassword($mysqli, $idusers, $password);
+}
 
 if ($remember) {
     include_once 'fns/remember_session.php';
