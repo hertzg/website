@@ -2,7 +2,7 @@
 
 namespace Users;
 
-function getByUsernamePassword ($mysqli, $username, $password) {
+function getByUsernameAndPassword ($mysqli, $username, $password) {
 
     include_once __DIR__.'/../Password/hash.php';
     $password_hash = \Password\hash($password);

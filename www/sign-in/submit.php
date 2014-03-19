@@ -27,9 +27,9 @@ if ($password === '') $errors[] = 'Enter password.';
 
 if (!$errors) {
 
-    include_once '../fns/Users/getByUsernamePassword.php';
+    include_once '../fns/Users/getByUsernameAndPassword.php';
     include_once '../lib/mysqli.php';
-    $user = Users\getByUsernamePassword($mysqli, $username, $password);
+    $user = Users\getByUsernameAndPassword($mysqli, $username, $password);
 
     if (!$user) {
         $errors[] = 'Invalid username or password.';
