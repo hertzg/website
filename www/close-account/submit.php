@@ -16,7 +16,7 @@ if ($password === '') {
     $errors[] = 'Enter password.';
 } else {
     include_once '../fns/Password/match.php';
-    if (!Password\match($user->password, $password)) {
+    if (!Password\match($user->password_hash, $password)) {
         $errors[] = 'Invalid password.';
     }
 }
