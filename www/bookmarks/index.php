@@ -29,7 +29,7 @@ if ($tag === '') {
     $bookmarks = Bookmarks\indexOnUser($mysqli, $idusers,
         $offset, $limit, $total);
 
-    if (count($bookmarks) > 1) {
+    if ($total > 1) {
 
         include_once '../fns/SearchForm/emptyContent.php';
         $formContent = SearchForm\emptyContent($searchPlaceholder);
@@ -52,7 +52,7 @@ if ($tag === '') {
     $bookmarks = BookmarkTags\indexOnTagName($mysqli, $idusers, $tag,
         $offset, $limit, $total);
 
-    if (count($bookmarks) > 1) {
+    if ($total > 1) {
 
         include_once '../fns/SearchForm/emptyContent.php';
         $formContent = SearchForm\emptyContent($searchPlaceholder)

@@ -7,7 +7,7 @@ $user = require_user($base);
 $idusers = $user->idusers;
 
 include_once '../fns/request_strings.php';
-list($keyword, $tag) = request_strings('keyword', 'tag');
+list($tag, $offset) = request_strings('tag', 'offset');
 
 $items = array();
 $filterMessage = '';
@@ -17,12 +17,18 @@ include_once '../lib/mysqli.php';
 $searchAction = 'search/';
 $searchPlaceholder = 'Search contacts...';
 
+$offset = abs((int)$offset);
+
+include_once '../fns/Paging/limit.php';
+$limit = Paging\limit();
+
 if ($tag === '') {
 
     include_once '../fns/Contacts/indexOnUser.php';
-    $contacts = Contacts\indexOnUser($mysqli, $idusers);
+    $contacts = Contacts\indexOnUser($mysqli, $idusers,
+        $offset, $limit, $total);
 
-    if (count($contacts) > 1) {
+    if ($total > 1) {
 
         include_once '../fns/SearchForm/emptyContent.php';
         $formContent = SearchForm\emptyContent($searchPlaceholder);
@@ -43,13 +49,16 @@ if ($tag === '') {
 } else {
 
     include_once '../fns/ContactTags/indexOnTagName.php';
-    $contacts = ContactTags\indexOnTagName($mysqli, $idusers, $tag);
+    $contacts = ContactTags\indexOnTagName($mysqli, $idusers, $tag,
+        $offset, $limit, $total);
 
-    if (count($contacts) > 1) {
+    if ($total > 1) {
 
+        include_once '../fns/Form/hidden.php';
         include_once '../fns/SearchForm/emptyContent.php';
-        $formContent = SearchForm\emptyContent($searchPlaceholder)
-            .'<input type="hidden" name="tag" value="'.htmlspecialchars($tag).'" />';
+        $formContent =
+            SearchForm\emptyContent($searchPlaceholder)
+            .Form\hidden('tag', $tag);
 
         include_once '../fns/SearchForm/create.php';
         $items[] = SearchForm\create($searchAction, $formContent);
@@ -61,8 +70,14 @@ if ($tag === '') {
 
 }
 
+include_once 'fns/render_prev_button.php';
+render_prev_button($offset, $limit, $items, $tag);
+
 include_once 'fns/render_contacts.php';
 render_contacts($contacts, $items, 'No contacts.');
+
+include_once 'fns/render_next_button.php';
+render_next_button($offset, $limit, $total, $items, $tag);
 
 unset(
     $_SESSION['contacts/new/index_errors'],

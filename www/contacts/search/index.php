@@ -7,7 +7,8 @@ $user = require_user($base);
 $idusers = $user->idusers;
 
 include_once '../../fns/request_strings.php';
-list($keyword, $tag) = request_strings('keyword', 'tag');
+list($keyword, $tag, $offset) = request_strings(
+    'keyword', 'tag', 'offset');
 
 if ($keyword === '') {
     $url = '../';
@@ -25,17 +26,23 @@ include_once '../../lib/mysqli.php';
 $searchAction = './';
 $searchPlaceholder = 'Search contacts...';
 
+$offset = abs((int)$offset);
+
+include_once '../../fns/Paging/limit.php';
+$limit = Paging\limit();
+
 if ($tag === '') {
 
     $filterMessage = '';
 
     include_once '../../fns/Contacts/search.php';
-    $contacts = Contacts\search($mysqli, $idusers, $keyword);
+    $contacts = Contacts\search($mysqli, $idusers, $keyword,
+        $offset, $limit, $total);
 
     $formContent = SearchForm\content($keyword, $searchPlaceholder, '..');
     $items[] = SearchForm\create($searchAction, $formContent);
 
-    if (count($contacts) > 1) {
+    if ($total > 1) {
 
         include_once '../../fns/ContactTags/indexOnUser.php';
         $tags = ContactTags\indexOnUser($mysqli, $idusers);
@@ -52,7 +59,8 @@ if ($tag === '') {
 } else {
 
     include_once '../../fns/ContactTags/searchOnTagName.php';
-    $contacts = ContactTags\searchOnTagName($mysqli, $idusers, $keyword, $tag);
+    $contacts = ContactTags\searchOnTagName($mysqli, $idusers, $keyword, $tag,
+        $offset, $limit, $total);
 
     $clearHref = '../?tag='.rawurlencode($tag);
     $formContent = SearchForm\content($keyword, $searchPlaceholder, $clearHref)
@@ -67,8 +75,14 @@ if ($tag === '') {
 
 }
 
+include_once 'fns/render_prev_button.php';
+render_prev_button($offset, $limit, $items, $keyword, $tag);
+
 include_once '../fns/render_contacts.php';
 render_contacts($contacts, $items, 'No contacts found.', '../');
+
+include_once 'fns/render_next_button.php';
+render_next_button($offset, $limit, $total, $items, $keyword, $tag);
 
 unset(
     $_SESSION['contacts/new/index_errors'],

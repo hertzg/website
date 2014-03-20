@@ -32,7 +32,7 @@ if ($tag === '') {
     $formContent = SearchForm\content($keyword, $searchPlaceholder, '..');
     $items[] = SearchForm\create($searchAction, $formContent);
 
-    if (count($tasks) > 1) {
+    if ($total > 1) {
 
         include_once '../../fns/TaskTags/indexOnUser.php';
         $tags = TaskTags\indexOnUser($mysqli, $idusers);

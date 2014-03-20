@@ -42,7 +42,7 @@ if ($tag === '') {
     $formContent = SearchForm\content($keyword, $searchPlaceholder, '..');
     $items[] = SearchForm\create($searchAction, $formContent);
 
-    if (count($bookmarks) > 1) {
+    if ($total > 1) {
 
         include_once '../../fns/BookmarkTags/indexOnUser.php';
         $tags = BookmarkTags\indexOnUser($mysqli, $idusers);
