@@ -19,7 +19,8 @@ function echo_html ($title, $head, $body, $theme, $base) {
                 ." href=\"{$base}zvini-icons/32.png\" />"
                 .'<meta http-equiv="Content-Type"'
                 .' content="text/html; charset=UTF-8" />'
-                .'<meta name="viewport" content="width=device-width" />'
+                .'<meta name="viewport"'
+                .' content="width=device-width, user-scalable=no" />'
                 .'<link rel="stylesheet" type="text/css"'
                 ." href=\"{$base}common.compressed.css?$commonCssRevision\" />"
                 .'<link rel="stylesheet" type="text/css"'
