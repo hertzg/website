@@ -7,7 +7,7 @@ $user = require_user($base);
 $idusers = $user->idusers;
 
 include_once '../fns/request_strings.php';
-list($tag) = request_strings('tag');
+list($tag, $offset) = request_strings('tag', 'offset');
 
 $items = array();
 
@@ -16,12 +16,16 @@ include_once '../lib/mysqli.php';
 $searchAction = 'search/';
 $searchPlaceholder = 'Search bookmarks...';
 
+$offset = abs((int)$offset);
+$limit = 5;
+
 if ($tag === '') {
 
     $filterMessage = '';
 
     include_once '../fns/Bookmarks/indexOnUser.php';
-    $bookmarks = Bookmarks\indexOnUser($mysqli, $idusers);
+    $bookmarks = Bookmarks\indexOnUser($mysqli, $idusers,
+        $offset, $limit, $total);
 
     if (count($bookmarks) > 1) {
 
@@ -43,7 +47,8 @@ if ($tag === '') {
 } else {
 
     include_once '../fns/BookmarkTags/indexOnTagName.php';
-    $bookmarks = BookmarkTags\indexOnTagName($mysqli, $idusers, $tag);
+    $bookmarks = BookmarkTags\indexOnTagName($mysqli, $idusers, $tag,
+        $offset, $limit, $total);
 
     if (count($bookmarks) > 1) {
 
@@ -60,8 +65,14 @@ if ($tag === '') {
 
 }
 
+include_once 'fns/render_prev_button.php';
+render_prev_button($offset, $limit, $items, $tag);
+
 include_once 'fns/render_bookmarks.php';
 render_bookmarks($bookmarks, $items, 'No bookmarks.');
+
+include_once 'fns/render_next_button.php';
+render_next_button($offset, $limit, $total, $items, $tag);
 
 unset(
     $_SESSION['bookmarks/new/index_errors'],

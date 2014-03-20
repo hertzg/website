@@ -7,7 +7,8 @@ $user = require_user($base);
 $idusers = $user->idusers;
 
 include_once '../../fns/request_strings.php';
-list($keyword, $tag) = request_strings('keyword', 'tag');
+list($keyword, $tag, $offset) = request_strings(
+    'keyword', 'tag', 'offset');
 
 if ($keyword === '') {
     $url = '../';
@@ -17,6 +18,9 @@ if ($keyword === '') {
 }
 
 $items = array();
+
+$offset = abs((int)$offset);
+$limit = 5;
 
 include_once '../../fns/SearchForm/content.php';
 include_once '../../fns/SearchForm/create.php';
@@ -30,7 +34,8 @@ if ($tag === '') {
     $filterMessage = '';
 
     include_once '../../fns/Bookmarks/search.php';
-    $bookmarks = Bookmarks\search($mysqli, $idusers, $keyword);
+    $bookmarks = Bookmarks\search($mysqli, $idusers, $keyword,
+        $offset, $limit, $total);
 
     $formContent = SearchForm\content($keyword, $searchPlaceholder, '..');
     $items[] = SearchForm\create($searchAction, $formContent);
@@ -52,7 +57,8 @@ if ($tag === '') {
 } else {
 
     include_once '../../fns/BookmarkTags/searchOnTagName.php';
-    $bookmarks = BookmarkTags\searchOnTagName($mysqli, $idusers, $keyword, $tag);
+    $bookmarks = BookmarkTags\searchOnTagName($mysqli, $idusers, $keyword, $tag,
+        $offset, $limit, $total);
 
     $clearHref = '../?tag='.rawurlencode($tag);
     $formContent = SearchForm\content($keyword, $searchPlaceholder, $clearHref)
@@ -67,8 +73,14 @@ if ($tag === '') {
 
 }
 
+include_once 'fns/render_prev_button.php';
+render_prev_button($offset, $limit, $items, $keyword, $tag);
+
 include_once '../fns/render_bookmarks.php';
 render_bookmarks($bookmarks, $items, 'No bookmarks found.', '../');
+
+include_once 'fns/render_next_button.php';
+render_next_button($offset, $limit, $total, $items, $keyword, $tag);
 
 unset(
     $_SESSION['bookmarks/new/index_errors'],
