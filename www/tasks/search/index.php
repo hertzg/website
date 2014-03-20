@@ -14,6 +14,8 @@ $items = array();
 $searchAction = './';
 $searchPlaceholder = 'Search tasks...';
 
+$offset = abs((int)$offset);
+
 include_once '../../fns/Paging/limit.php';
 $limit = Paging\limit();
 
