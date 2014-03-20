@@ -79,12 +79,8 @@ render_tasks($tasks, $items, 'No tasks found.', '../');
 include_once 'fns/render_next_button.php';
 render_next_button($offset, $limit, $total, $items, $keyword, $tag);
 
-unset(
-    $_SESSION['home/index_messages'],
-    $_SESSION['tasks/new/index_errors'],
-    $_SESSION['tasks/new/index_lastpost'],
-    $_SESSION['tasks/view/index_messages']
-);
+include_once '../fns/unset_session_vars.php';
+unset_session_vars();
 
 include_once '../fns/create_options_panel.php';
 include_once '../../fns/create_tabs.php';

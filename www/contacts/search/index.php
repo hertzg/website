@@ -84,12 +84,8 @@ render_contacts($contacts, $items, 'No contacts found.', '../');
 include_once 'fns/render_next_button.php';
 render_next_button($offset, $limit, $total, $items, $keyword, $tag);
 
-unset(
-    $_SESSION['contacts/new/index_errors'],
-    $_SESSION['contacts/new/index_lastpost'],
-    $_SESSION['contacts/view/index_messages'],
-    $_SESSION['home/index_messages']
-);
+include_once '../fns/unset_session_vars.php';
+unset_session_vars();
 
 include_once '../fns/create_options_panel.php';
 include_once '../../fns/create_tabs.php';
