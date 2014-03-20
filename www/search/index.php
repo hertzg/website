@@ -9,7 +9,8 @@ $idusers = $user->idusers;
 include_once '../lib/mysqli.php';
 
 include_once '../fns/request_strings.php';
-list($keyword, $searchFiles) = request_strings('keyword', 'files');
+list($keyword, $searchFiles, $offset) = request_strings(
+    'keyword', 'files', 'offset');
 
 include_once '../fns/str_collapse_spaces.php';
 $keyword = str_collapse_spaces($keyword);
@@ -51,23 +52,40 @@ if ($searchFiles) {
 
 if ($bookmarks || $contacts || $notes || $tasks || $folders || $files) {
 
+    $resultItems = [];
+
     include_once 'fns/render_bookmarks.php';
-    render_bookmarks($bookmarks, $items);
+    render_bookmarks($bookmarks, $resultItems);
 
     include_once 'fns/render_contacts.php';
-    render_contacts($contacts, $items);
+    render_contacts($contacts, $resultItems);
 
     include_once 'fns/render_notes.php';
-    render_notes($notes, $items);
+    render_notes($notes, $resultItems);
 
     include_once 'fns/render_tasks.php';
-    render_tasks($tasks, $items);
+    render_tasks($tasks, $resultItems);
 
     include_once 'fns/render_folders.php';
-    render_folders($folders, $items);
+    render_folders($folders, $resultItems);
 
     include_once 'fns/render_files.php';
-    render_files($files, $items);
+    render_files($files, $resultItems);
+
+    $offset = abs((int)$offset);
+    $total = count($resultItems);
+
+    include_once '../fns/Paging/limit.php';
+    $limit = Paging\limit();
+
+    include_once 'fns/render_prev_button.php';
+    render_prev_button($offset, $limit, $items, $keyword, $searchFiles);
+
+    $resultItems = array_slice($resultItems, $offset, $limit);
+    $items = array_merge($items, $resultItems);
+
+    include_once 'fns/render_next_button.php';
+    render_next_button($offset, $limit, $total, $items, $keyword, $searchFiles);
 
 } else {
     include_once '../fns/Page/info.php';
