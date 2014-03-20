@@ -38,39 +38,15 @@ $notes = Notes\search($mysqli, $idusers, $keyword);
 include_once '../fns/Tasks/search.php';
 $tasks = Tasks\search($mysqli, $idusers, $keyword);
 
-if ($searchFiles) {
-
-    include_once '../fns/Folders/search.php';
-    $folders = Folders\search($mysqli, $idusers, $keyword);
-
-    include_once '../fns/Files/search.php';
-    $files = Files\search($mysqli, $idusers, $keyword);
-
-} else {
-    $folders = $files = array();
-}
+include_once 'fns/search_folders_and_files.php';
+list($folders, $files) = search_folders_and_files($mysqli,
+    $searchFiles, $idusers, $keyword);
 
 if ($bookmarks || $contacts || $notes || $tasks || $folders || $files) {
 
-    $resultItems = [];
-
-    include_once 'fns/render_bookmarks.php';
-    render_bookmarks($bookmarks, $resultItems);
-
-    include_once 'fns/render_contacts.php';
-    render_contacts($contacts, $resultItems);
-
-    include_once 'fns/render_notes.php';
-    render_notes($notes, $resultItems);
-
-    include_once 'fns/render_tasks.php';
-    render_tasks($tasks, $resultItems);
-
-    include_once 'fns/render_folders.php';
-    render_folders($folders, $resultItems);
-
-    include_once 'fns/render_files.php';
-    render_files($files, $resultItems);
+    include_once 'fns/create_items.php';
+    $resultItems = create_items($bookmarks, $contacts,
+        $notes, $tasks, $folders, $files);
 
     include_once 'fns/render_search_files_link.php';
     render_search_files_link($searchFiles, $keyword, $offset, $resultItems);
