@@ -14,7 +14,7 @@ $items = array();
 $searchAction = './';
 $searchPlaceholder = 'Search tasks...';
 
-$limit = 10;
+$limit = 20;
 
 include_once '../../fns/SearchForm/content.php';
 include_once '../../fns/SearchForm/create.php';

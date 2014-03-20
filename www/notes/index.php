@@ -17,7 +17,7 @@ $searchAction = 'search/';
 $searchPlaceholder = 'Search notes...';
 
 $offset = abs((int)$offset);
-$limit = 10;
+$limit = 20;
 
 if ($tag === '') {
 

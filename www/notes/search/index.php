@@ -20,7 +20,7 @@ if ($keyword === '') {
 $items = array();
 
 $offset = abs((int)$offset);
-$limit = 10;
+$limit = 20;
 
 include_once '../../fns/SearchForm/content.php';
 include_once '../../fns/SearchForm/create.php';

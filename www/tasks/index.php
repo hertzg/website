@@ -18,7 +18,7 @@ $searchAction = 'search/';
 $searchPlaceholder = 'Search tasks...';
 
 $offset = abs((int)$offset);
-$limit = 5;
+$limit = 20;
 
 if ($tag === '') {
 
