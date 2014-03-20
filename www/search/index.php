@@ -72,6 +72,9 @@ if ($bookmarks || $contacts || $notes || $tasks || $folders || $files) {
     include_once 'fns/render_files.php';
     render_files($files, $resultItems);
 
+    include_once 'fns/render_search_files_link.php';
+    render_search_files_link($searchFiles, $keyword, $offset, $resultItems);
+
     $offset = abs((int)$offset);
     $total = count($resultItems);
 
@@ -88,17 +91,13 @@ if ($bookmarks || $contacts || $notes || $tasks || $folders || $files) {
     render_next_button($offset, $limit, $total, $items, $keyword, $searchFiles);
 
 } else {
+
     include_once '../fns/Page/info.php';
     $items[] = Page\info('Nothing found.');
-}
 
-if (!$searchFiles) {
-    $href = htmlspecialchars('./?'.http_build_query(array(
-        'keyword' => $keyword,
-        'files' => '1',
-    )));
-    include_once '../fns/Page/imageLink.php';
-    $items[] = Page\imageLink('Search in files', $href, 'search-folder');
+    include_once 'fns/render_search_files_link.php';
+    render_search_files_link($searchFiles, $keyword, 0, $items);
+
 }
 
 include_once '../fns/create_tabs.php';
