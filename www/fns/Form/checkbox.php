@@ -15,7 +15,7 @@ function checkbox ($base, $name, $text, $checked) {
                 .$text
             .'</label>'
         .'</div>'
-        .'<script type="text/javascript"'
+        .'<script type="text/javascript" async="async"'
         ." src=\"{$base}js/transform-form-checkboxes.js\">"
         .'</script>';
 }
