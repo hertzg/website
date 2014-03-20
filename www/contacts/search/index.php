@@ -85,7 +85,7 @@ $content =
         array(
             array(
                 'title' => 'Home',
-                'href' => '../..',
+                'href' => '../../home/',
             ),
         ),
         'Contacts',

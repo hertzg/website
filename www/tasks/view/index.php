@@ -64,7 +64,7 @@ $content =
         array(
             array(
                 'title' => '&middot;&middot;&middot;',
-                'href' => '../..',
+                'href' => '../../home/',
             ),
             array(
                 'title' => 'Tasks',
