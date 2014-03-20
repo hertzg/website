@@ -82,24 +82,8 @@ render_next_button($offset, $limit, $total, $items, $tag);
 include_once 'fns/unset_session_vars.php';
 unset_session_vars();
 
-include_once 'fns/create_options_panel.php';
-include_once '../fns/create_tabs.php';
-include_once '../fns/Page/sessionErrors.php';
-include_once '../fns/Page/sessionMessages.php';
-$content =
-    create_tabs(
-        array(
-            array(
-                'title' => 'Home',
-                'href' => '../home/',
-            ),
-        ),
-        'Notes',
-        Page\sessionErrors('notes/index_errors')
-        .Page\sessionMessages('notes/index_messages')
-        .$filterMessage.join('<div class="hr"></div>', $items)
-    )
-    .create_options_panel($user);
+include_once 'fns/create_content.php';
+$content = create_content($user, $filterMessage, $items);
 
 include_once '../fns/echo_page.php';
 echo_page($user, 'Notes', $content, $base);
