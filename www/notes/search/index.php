@@ -40,7 +40,7 @@ if ($tag === '') {
     $formContent = SearchForm\content($keyword, $searchPlaceholder, '..');
     $items[] = SearchForm\create($searchAction, $formContent);
 
-    if (count($notes) > 1) {
+    if ($total > 1) {
 
         include_once '../../fns/NoteTags/indexOnUser.php';
         $tags = NoteTags\indexOnUser($mysqli, $idusers);
@@ -61,8 +61,10 @@ if ($tag === '') {
         $offset, $limit, $total);
 
     $clearHref = '../?tag='.rawurlencode($tag);
-    $formContent = SearchForm\content($keyword, $searchPlaceholder, $clearHref)
-        .'<input type="hidden" name="tag" value="'.htmlspecialchars($tag).'" />';
+    include_once '../../fns/Form/hidden.php';
+    $formContent =
+        SearchForm\content($keyword, $searchPlaceholder, $clearHref)
+        .Form\hidden('tag', $tag);
     $items[] = SearchForm\create($searchAction, $formContent);
 
     $clearHref = '?'.htmlspecialchars(
