@@ -7,7 +7,7 @@ $user = require_user($base);
 $idusers = $user->idusers;
 
 include_once '../fns/request_strings.php';
-list($tag) = request_strings('tag');
+list($tag, $offset) = request_strings('tag', 'offset');
 
 $items = array();
 $filterMessage = '';
@@ -17,12 +17,16 @@ include_once '../lib/mysqli.php';
 $searchAction = 'search/';
 $searchPlaceholder = 'Search tasks...';
 
+$offset = abs((int)$offset);
+$limit = 5;
+
 if ($tag === '') {
 
     include_once '../fns/Tasks/indexOnUser.php';
-    $tasks = Tasks\indexOnUser($mysqli, $idusers);
+    $tasks = Tasks\indexOnUser($mysqli, $idusers,
+        $offset, $limit, $total);
 
-    if (count($tasks) > 1) {
+    if ($total > 1) {
 
         include_once '../fns/SearchForm/emptyContent.php';
         $formContent = SearchForm\emptyContent($searchPlaceholder);
@@ -42,16 +46,20 @@ if ($tag === '') {
 } else {
 
     include_once '../fns/TaskTags/indexOnTagName.php';
-    $tasks = TaskTags\indexOnTagName($mysqli, $idusers, $tag);
+    $tasks = TaskTags\indexOnTagName($mysqli, $idusers, $tag,
+        $offset, $limit, $total);
 
-    if (count($tasks) > 1) {
+    if ($total > 1) {
 
         include_once '../fns/SearchForm/emptyContent.php';
-        $formContent = SearchForm\emptyContent($searchPlaceholder)
-            .'<input type="hidden" name="tag" value="'.htmlspecialchars($tag).'" />';
+        include_once '../fns/Form/hidden.php';
+        $formContent =
+            SearchForm\emptyContent($searchPlaceholder)
+            .Form\hidden('tag', $tag);
 
         include_once '../fns/SearchForm/create.php';
         $items[] = SearchForm\create($searchAction, $formContent);
+
     }
 
     include_once '../fns/create_clear_filter_bar.php';
@@ -59,8 +67,14 @@ if ($tag === '') {
 
 }
 
+include_once 'fns/render_prev_button.php';
+render_prev_button($offset, $limit, $items, $tag);
+
 include_once 'fns/render_tasks.php';
 render_tasks($tasks, $items, 'No tasks.');
+
+include_once 'fns/render_next_button.php';
+render_next_button($offset, $limit, $total, $items, $tag);
 
 unset(
     $_SESSION['home/index_messages'],

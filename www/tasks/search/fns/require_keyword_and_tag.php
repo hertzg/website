@@ -3,7 +3,7 @@
 function require_keyword_and_tag () {
 
     include_once __DIR__.'/../../../fns/request_strings.php';
-    list($keyword, $tag) = request_strings('keyword', 'tag');
+    list($keyword, $tag, $offset) = request_strings('keyword', 'tag', 'offset');
 
     if ($keyword === '') {
         $url = '../';
@@ -12,6 +12,8 @@ function require_keyword_and_tag () {
         redirect($url);
     }
 
-    return array($keyword, $tag);
+    $offset = abs((int)$offset);
+
+    return array($keyword, $tag, $offset);
 
 }
