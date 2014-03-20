@@ -35,8 +35,8 @@ if ($tag === '') {
 
     $filterMessage = '';
 
-    include_once '../../fns/Notes/search.php';
-    $notes = Notes\search($mysqli, $idusers, $keyword,
+    include_once '../../fns/Notes/searchPage.php';
+    $notes = Notes\searchPage($mysqli, $idusers, $keyword,
         $offset, $limit, $total);
 
     $formContent = SearchForm\content($keyword, $searchPlaceholder, '..');

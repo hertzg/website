@@ -27,8 +27,8 @@ if ($tag === '') {
 
     $filterMessage = '';
 
-    include_once '../../fns/Tasks/search.php';
-    $tasks = Tasks\search($mysqli, $idusers, $keyword,
+    include_once '../../fns/Tasks/searchPage.php';
+    $tasks = Tasks\searchPage($mysqli, $idusers, $keyword,
         $offset, $limit, $total);
 
     $formContent = SearchForm\content($keyword, $searchPlaceholder, '..');

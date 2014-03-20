@@ -35,8 +35,8 @@ if ($tag === '') {
 
     $filterMessage = '';
 
-    include_once '../../fns/Bookmarks/search.php';
-    $bookmarks = Bookmarks\search($mysqli, $idusers, $keyword,
+    include_once '../../fns/Bookmarks/searchPage.php';
+    $bookmarks = Bookmarks\searchPage($mysqli, $idusers, $keyword,
         $offset, $limit, $total);
 
     $formContent = SearchForm\content($keyword, $searchPlaceholder, '..');

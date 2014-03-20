@@ -35,8 +35,8 @@ if ($tag === '') {
 
     $filterMessage = '';
 
-    include_once '../../fns/Contacts/search.php';
-    $contacts = Contacts\search($mysqli, $idusers, $keyword,
+    include_once '../../fns/Contacts/searchPage.php';
+    $contacts = Contacts\searchPage($mysqli, $idusers, $keyword,
         $offset, $limit, $total);
 
     $formContent = SearchForm\content($keyword, $searchPlaceholder, '..');
