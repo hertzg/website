@@ -7,7 +7,7 @@ $user = require_user($base);
 $idusers = $user->idusers;
 
 include_once '../fns/request_strings.php';
-list($offset, $tag) = request_strings('offset', 'tag');
+list($tag, $offset) = request_strings('tag', 'offset');
 
 $items = array();
 

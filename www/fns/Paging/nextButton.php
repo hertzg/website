@@ -5,17 +5,18 @@ namespace Paging;
 function nextButton ($offset, $limit, $label, array $args = array()) {
 
     include_once __DIR__.'/../Form/button.php';
-    include_once __DIR__.'/../Form/hidden.php';
     $html =
         '<form action="./">'
-            .\Form\button("Show Next $limit $label")
-            .\Form\hidden('offset', $offset + $limit);
+            .\Form\button("Show Next $limit $label");
 
+    include_once __DIR__.'/../Form/hidden.php';
     foreach ($args as $key => $value) {
-        $html .= Form\hidden('offset', $offset + $limit);
+        $html .= \Form\hidden($key, $value);
     }
 
-    $html .= '</form>';
+    $html .=
+            \Form\hidden('offset', $offset + $limit)
+        .'</form>';
 
     return $html;
 

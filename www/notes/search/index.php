@@ -7,7 +7,8 @@ $user = require_user($base);
 $idusers = $user->idusers;
 
 include_once '../../fns/request_strings.php';
-list($keyword, $tag) = request_strings('keyword', 'tag');
+list($keyword, $tag, $offset) = request_strings(
+    'keyword', 'tag', 'offset');
 
 if ($keyword === '') {
     $url = '../';
@@ -17,6 +18,9 @@ if ($keyword === '') {
 }
 
 $items = array();
+
+$offset = abs((int)$offset);
+$limit = 10;
 
 include_once '../../fns/SearchForm/content.php';
 include_once '../../fns/SearchForm/create.php';
@@ -30,7 +34,8 @@ if ($tag === '') {
     $filterMessage = '';
 
     include_once '../../fns/Notes/search.php';
-    $notes = Notes\search($mysqli, $idusers, $keyword);
+    $notes = Notes\search($mysqli, $idusers, $keyword,
+        $offset, $limit, $total);
 
     $formContent = SearchForm\content($keyword, $searchPlaceholder, '..');
     $items[] = SearchForm\create($searchAction, $formContent);
@@ -52,7 +57,8 @@ if ($tag === '') {
 } else {
 
     include_once '../../fns/NoteTags/searchOnTagName.php';
-    $notes = NoteTags\searchOnTagName($mysqli, $idusers, $keyword, $tag);
+    $notes = NoteTags\searchOnTagName($mysqli, $idusers, $keyword, $tag,
+        $offset, $limit, $total);
 
     $clearHref = '../?tag='.rawurlencode($tag);
     $formContent = SearchForm\content($keyword, $searchPlaceholder, $clearHref)
@@ -67,8 +73,14 @@ if ($tag === '') {
 
 }
 
+include_once 'fns/render_prev_button.php';
+render_prev_button($offset, $limit, $items, $keyword, $tag);
+
 include_once '../fns/render_notes.php';
 render_notes($notes, $items, 'No notes found.', '../');
+
+include_once 'fns/render_next_button.php';
+render_next_button($offset, $limit, $total, $items, $keyword, $tag);
 
 unset(
     $_SESSION['home/index_messages'],
