@@ -7,7 +7,7 @@ $user = require_user($base);
 $idusers = $user->idusers;
 
 include_once '../fns/request_strings.php';
-list($tag) = request_strings('tag');
+list($offset, $tag) = request_strings('offset', 'tag');
 
 $items = array();
 
@@ -16,14 +16,17 @@ include_once '../lib/mysqli.php';
 $searchAction = 'search/';
 $searchPlaceholder = 'Search notes...';
 
+$offset = abs((int)$offset);
+$limit = 10;
+
 if ($tag === '') {
 
     $filterMessage = '';
 
     include_once '../fns/Notes/indexOnUser.php';
-    $notes = Notes\indexOnUser($mysqli, $idusers);
+    $notes = Notes\indexOnUser($mysqli, $idusers, $offset, $limit, $total);
 
-    if (count($notes) > 1) {
+    if ($total > 1) {
 
         include_once '../fns/SearchForm/emptyContent.php';
         $formContent = SearchForm\emptyContent($searchPlaceholder);
@@ -43,13 +46,16 @@ if ($tag === '') {
 } else {
 
     include_once '../fns/NoteTags/indexOnTagName.php';
-    $notes = NoteTags\indexOnTagName($mysqli, $idusers, $tag);
+    $notes = NoteTags\indexOnTagName($mysqli, $idusers, $tag,
+        $offset, $limit, $total);
 
-    if (count($notes) > 1) {
+    if ($total > 1) {
 
         include_once '../fns/SearchForm/emptyContent.php';
-        $formContent = SearchForm\emptyContent($searchPlaceholder)
-            .'<input type="hidden" name="tag" value="'.htmlspecialchars($tag).'" />';
+        include_once '../fns/Form/hidden.php';
+        $formContent =
+            SearchForm\emptyContent($searchPlaceholder)
+            .Form\hidden('tag', $tag);
 
         include_once '../fns/SearchForm/create.php';
         $items[] = SearchForm\create($searchAction, $formContent);
@@ -61,8 +67,14 @@ if ($tag === '') {
 
 }
 
+include_once 'fns/render_prev_button.php';
+render_prev_button($offset, $limit, $items, $tag);
+
 include_once 'fns/render_notes.php';
 render_notes($notes, $items, 'No notes.');
+
+include_once 'fns/render_next_button.php';
+render_next_button($offset, $limit, $total, $items, $tag);
 
 unset(
     $_SESSION['home/index_messages'],
