@@ -17,7 +17,9 @@ $searchAction = 'search/';
 $searchPlaceholder = 'Search notes...';
 
 $offset = abs((int)$offset);
-$limit = 20;
+
+include_once '../fns/Paging/limit.php';
+$limit = Paging\limit();
 
 if ($tag === '') {
 

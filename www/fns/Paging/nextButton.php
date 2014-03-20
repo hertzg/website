@@ -7,7 +7,7 @@ function nextButton ($offset, $limit, $label, array $args = array()) {
     include_once __DIR__.'/../Form/button.php';
     $html =
         '<form action="./">'
-            .\Form\button("Show Next $limit $label");
+            .\Form\button("Show More $label");
 
     include_once __DIR__.'/../Form/hidden.php';
     foreach ($args as $key => $value) {

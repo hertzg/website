@@ -20,7 +20,9 @@ if ($keyword === '') {
 $items = array();
 
 $offset = abs((int)$offset);
-$limit = 20;
+
+include_once '../../fns/Paging/limit.php';
+$limit = Paging\limit();
 
 include_once '../../fns/SearchForm/content.php';
 include_once '../../fns/SearchForm/create.php';

@@ -17,7 +17,9 @@ $searchAction = 'search/';
 $searchPlaceholder = 'Search bookmarks...';
 
 $offset = abs((int)$offset);
-$limit = 5;
+
+include_once '../fns/Paging/limit.php';
+$limit = Paging\limit();
 
 if ($tag === '') {
 
