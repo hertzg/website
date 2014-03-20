@@ -24,7 +24,8 @@ if ($tag === '') {
     $filterMessage = '';
 
     include_once '../fns/Notes/indexOnUser.php';
-    $notes = Notes\indexOnUser($mysqli, $idusers, $offset, $limit, $total);
+    $notes = Notes\indexOnUser($mysqli, $idusers,
+        $offset, $limit, $total);
 
     if ($total > 1) {
 
