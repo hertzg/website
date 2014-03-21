@@ -23,11 +23,28 @@ $items = array();
 include_once '../fns/SearchForm/emptyContent.php';
 $formContent = SearchForm\emptyContent('Search...');
 
+include_once '../lib/mysqli.php';
+
+$num_new_notifications_for_home = $user->num_new_notifications_for_home;
+if ($num_new_notifications_for_home) {
+
+    include_once '../fns/Page/warnings.php';
+    $notifications = Page\warnings(array(
+        "$num_new_notifications_for_home new notifications.",
+    ));
+
+    include_once '../fns/Users/clearNumNewNotificationsForHome.php';
+    Users\clearNumNewNotificationsForHome($mysqli, $user->idusers);
+
+} else {
+    $notifications = '';
+}
+
 include_once '../fns/SearchForm/create.php';
 $items[] = SearchForm\create('../search/', $formContent);
 
 include_once 'fns/get_home_items.php';
-$homeItems = get_home_items($user, $notifications);
+$homeItems = get_home_items($mysqli, $user, $notifications);
 
 $items = array_merge($items, $homeItems);
 

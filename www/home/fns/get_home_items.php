@@ -1,6 +1,6 @@
 <?php
 
-function get_home_items ($user, &$notifications) {
+function get_home_items ($mysqli, $user) {
 
     $items = array();
 
@@ -16,7 +16,6 @@ function get_home_items ($user, &$notifications) {
     }
 
     include_once __DIR__.'/render_calendar.php';
-    include_once '../lib/mysqli.php';
     render_calendar($user, $mysqli, $items);
 
     include_once __DIR__.'/render_contacts.php';
@@ -45,7 +44,7 @@ function get_home_items ($user, &$notifications) {
     }
 
     include_once __DIR__.'/render_notifications.php';
-    render_notifications($user, $items, $notifications);
+    render_notifications($user, $items);
 
     include_once __DIR__.'/render_tasks.php';
     render_tasks($user, $items);
