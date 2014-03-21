@@ -71,3 +71,12 @@
     top: 0;
     right: 0;
 }
+
+.Paging-status {
+    background: #eee;
+    text-align: right;
+    font-size: 12px;
+    line-height: 14px;
+    color: #555;
+    padding: 2px;
+}
