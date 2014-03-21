@@ -18,7 +18,7 @@ function searchOnTagName ($mysqli, $idusers, $keyword, $tagname,
 
     $sql = "select * from bookmarktags where idusers = $idusers"
         ." and title like '%$keyword%' and tagname = '$tagname'"
-        ." order by updatetime desc limit $limit offset $offset";
+        ." order by update_time desc limit $limit offset $offset";
     include_once __DIR__.'/../mysqli_query_object.php';
     return mysqli_query_object($mysqli, $sql);
 

@@ -9,7 +9,7 @@ function search ($mysqli, $idusers, $keyword) {
     $keyword = $mysqli->real_escape_string($keyword);
 
     $sql = "select * from notes where idusers = $idusers"
-        ." and notetext like '%$keyword%' order by updatetime desc";
+        ." and notetext like '%$keyword%' order by update_time desc";
     include_once __DIR__.'/../mysqli_query_object.php';
     return mysqli_query_object($mysqli, $sql);
 

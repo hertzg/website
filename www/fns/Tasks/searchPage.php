@@ -15,7 +15,7 @@ function searchPage ($mysqli, $idusers, $keyword, $offset, $limit, &$total) {
 
     $sql = 'select * from tasks'
         ." where idusers = $idusers and tasktext like '%$keyword%'"
-        .' order by top_priority desc, updatetime desc'
+        .' order by top_priority desc, update_time desc'
         ." limit $limit offset $offset";
     include_once __DIR__.'/../mysqli_query_object.php';
     return mysqli_query_object($mysqli, $sql);

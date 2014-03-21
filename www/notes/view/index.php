@@ -30,12 +30,12 @@ if ($tags) {
     $items[] = create_tags('../', $tags);
 }
 
-$inserttime = $note->inserttime;
-$updatetime = $note->updatetime;
+$insert_time = $note->insert_time;
+$update_time = $note->update_time;
 include_once '../../fns/date_ago.php';
-$text = '<div>Note created '.date_ago($inserttime).'.</div>';
-if ($inserttime != $updatetime) {
-    $text .= '<div>Last modified '.date_ago($updatetime).'.</div>';
+$text = '<div>Note created '.date_ago($insert_time).'.</div>';
+if ($insert_time != $update_time) {
+    $text .= '<div>Last modified '.date_ago($update_time).'.</div>';
 }
 $items[] = Page\text($text);
 

@@ -15,7 +15,7 @@ function searchPage ($mysqli, $idusers, $keyword, $offset, $limit, &$total) {
 
     $sql = 'select * from notes'
         ." where idusers = $idusers and notetext like '%$keyword%'"
-        ." order by updatetime desc limit $limit offset $offset";
+        ." order by update_time desc limit $limit offset $offset";
     include_once __DIR__.'/../mysqli_query_object.php';
     return mysqli_query_object($mysqli, $sql);
 

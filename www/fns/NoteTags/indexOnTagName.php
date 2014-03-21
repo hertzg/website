@@ -14,7 +14,7 @@ function indexOnTagName ($mysqli, $idusers, $tagname,
 
     $sql = 'select * from notetags'
         ." where idusers = $idusers and tagname = '$tagname'"
-        ." order by updatetime desc limit $limit offset $offset";
+        ." order by update_time desc limit $limit offset $offset";
     include_once __DIR__.'/../mysqli_query_object.php';
     return mysqli_query_object($mysqli, $sql);
 

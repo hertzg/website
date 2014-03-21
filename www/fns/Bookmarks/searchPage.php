@@ -14,7 +14,7 @@ function searchPage ($mysqli, $idusers, $keyword, $offset, $limit, &$total) {
     $total = mysqli_single_object($mysqli, $sql)->total;
 
     $sql = "select * from bookmarks where idusers = $idusers"
-        ." and title like '%$keyword%' order by updatetime desc"
+        ." and title like '%$keyword%' order by update_time desc"
         ." limit $limit offset $offset";
     include_once __DIR__.'/../mysqli_query_object.php';
     return mysqli_query_object($mysqli, $sql);

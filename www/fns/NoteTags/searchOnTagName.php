@@ -19,7 +19,7 @@ function searchOnTagName ($mysqli, $idusers, $keyword, $tagname,
 
     $sql = 'select * from notetags'
         ." where idusers = $idusers and notetext like '%$keyword%'"
-        ." and tagname = '$tagname' order by updatetime desc"
+        ." and tagname = '$tagname' order by update_time desc"
         ." limit $limit offset $offset";
     include_once __DIR__.'/../mysqli_query_object.php';
     return mysqli_query_object($mysqli, $sql);

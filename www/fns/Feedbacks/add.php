@@ -4,10 +4,10 @@ namespace Feedbacks;
 
 function add ($mysqli, $idusers, $feedbacktext) {
     $feedbacktext = $mysqli->real_escape_string($feedbacktext);
-    $inserttime = time();
+    $insert_time = time();
     $sql = 'insert into feedbacks'
-        .' (idusers, feedbacktext, inserttime)'
-        ." values ($idusers, '$feedbacktext', $inserttime)";
+        .' (idusers, feedbacktext, insert_time)'
+        ." values ($idusers, '$feedbacktext', $insert_time)";
     $mysqli->query($sql);
     return $mysqli->insert_id;
 }

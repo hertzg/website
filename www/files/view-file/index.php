@@ -54,7 +54,7 @@ $content =
         .'<div class="hr"></div>'
         .Form\label('Size', bytestr($file->filesize))
         .'<div class="hr"></div>'
-        .Form\label('Uploaded', date_ago($file->inserttime))
+        .Form\label('Uploaded', date_ago($file->insert_time))
         .'<div class="hr"></div>'
         .Form\label('Preview', create_preview($file))
     )

@@ -6,12 +6,12 @@ function edit ($mysqli, $idusers, $id, $title, $url, $tags) {
     $title = $mysqli->real_escape_string($title);
     $url = $mysqli->real_escape_string($url);
     $tags = $mysqli->real_escape_string($tags);
-    $updatetime = time();
+    $update_time = time();
     $sql = 'update bookmarks set'
         ." title = '$title',"
         ." url = '$url',"
         ." tags = '$tags',"
-        ." updatetime = $updatetime"
+        ." update_time = $update_time"
         ." where idusers = $idusers and idbookmarks = $id";
     $mysqli->query($sql);
 }

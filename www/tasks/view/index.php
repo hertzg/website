@@ -47,12 +47,12 @@ if ($tags) {
     $items[] = create_tags('../', $tags);
 }
 
-$inserttime = $task->inserttime;
-$updatetime = $task->updatetime;
+$insert_time = $task->insert_time;
+$update_time = $task->update_time;
 include_once '../../fns/date_ago.php';
-$text = '<div>Task created '.date_ago($inserttime).'.</div>';
-if ($inserttime != $updatetime) {
-    $text .= '<div>Last modified '.date_ago($updatetime).'.</div>';
+$text = '<div>Task created '.date_ago($insert_time).'.</div>';
+if ($insert_time != $update_time) {
+    $text .= '<div>Last modified '.date_ago($update_time).'.</div>';
 }
 $items[] = Page\text($text);
 

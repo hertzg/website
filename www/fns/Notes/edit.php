@@ -5,11 +5,11 @@ namespace Notes;
 function edit ($mysqli, $idusers, $id, $notetext, $tags) {
     $notetext = $mysqli->real_escape_string($notetext);
     $tags = $mysqli->real_escape_string($tags);
-    $updatetime = time();
+    $update_time = time();
     $sql = 'update notes set'
         ." notetext = '$notetext',"
         ." tags = '$tags',"
-        ." updatetime = $updatetime"
+        ." update_time = $update_time"
         ." where idusers = $idusers and idnotes = $id";
     $mysqli->query($sql);
 }

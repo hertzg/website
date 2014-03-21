@@ -19,8 +19,8 @@ foreach ($ids as $id) {
         $sql = 'update bookmarktags set'
             ." title = '$title',"
             ." url = '$url',"
-            ." inserttime = $bookmark->inserttime,"
-            ." updatetime = $bookmark->updatetime"
+            ." insert_time = $bookmark->insert_time,"
+            ." update_time = $bookmark->update_time"
             ." where idbookmarks = $bookmark->idbookmarks";
         $mysqli->query($sql);
     }
@@ -35,8 +35,8 @@ foreach ($ids as $id) {
         $notetext = $mysqli->real_escape_string($note->notetext);
         $sql = 'update notetags set'
             ." notetext = '$notetext',"
-            ." inserttime = $note->inserttime,"
-            ." updatetime = $note->updatetime"
+            ." insert_time = $note->insert_time,"
+            ." update_time = $note->update_time"
             ." where idnotes = $note->idnotes";
         $mysqli->query($sql);
     }
@@ -52,8 +52,8 @@ foreach ($ids as $id) {
         $sql = 'update tasktags set'
             ." tasktext = '$tasktext',"
             ." top_priority = $task->top_priority,"
-            ." inserttime = $task->inserttime,"
-            ." updatetime = $task->updatetime"
+            ." insert_time = $task->insert_time,"
+            ." update_time = $task->update_time"
             ." where idtasks = $task->idtasks";
         $mysqli->query($sql);
     }

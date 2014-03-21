@@ -6,12 +6,12 @@ function add ($mysqli, $idusers, $title, $url, $tags) {
     $title = $mysqli->real_escape_string($title);
     $url = $mysqli->real_escape_string($url);
     $tags = $mysqli->real_escape_string($tags);
-    $inserttime = $updatetime = time();
+    $insert_time = $update_time = time();
     $sql = 'insert into bookmarks'
         .' (idusers, title, url, tags,'
-        .' inserttime, updatetime)'
+        .' insert_time, update_time)'
         ." values ($idusers, '$title', '$url', '$tags',"
-        ." $inserttime, $updatetime)";
+        ." $insert_time, $update_time)";
     $mysqli->query($sql);
     return $mysqli->insert_id;
 }

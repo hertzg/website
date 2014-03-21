@@ -6,13 +6,13 @@ function add ($mysqli, $idusers, $idfolders, $filename, $filepath) {
 
     $filename = $mysqli->real_escape_string($filename);
     $filesize = filesize($filepath);
-    $inserttime = time();
+    $insert_time = time();
 
     $sql = 'insert into files'
         .' (idusers, idfolders, filename,'
-        .' filesize, inserttime)'
+        .' filesize, insert_time)'
         ." value ($idusers, $idfolders, '$filename',"
-        ." $filesize, $inserttime)";
+        ." $filesize, $insert_time)";
 
     $mysqli->query($sql);
 
