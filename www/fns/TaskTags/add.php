@@ -8,7 +8,7 @@ function add ($mysqli, $idusers, $idtasks, array $tagnames, $tasktext, $tags) {
     $insert_time = $update_time = time();
     foreach ($tagnames as $tagname) {
         $tagname = $mysqli->real_escape_string($tagname);
-        $sql = 'insert into tasktags (idusers, idtasks, tagname,'
+        $sql = 'insert into task_tags (idusers, idtasks, tagname,'
             .' tasktext, tags, insert_time, update_time)'
             ." values ($idusers, $idtasks, '$tagname',"
             ." '$tasktext', '$tags', $insert_time, $update_time)";

@@ -10,13 +10,13 @@ function searchOnTagName ($mysqli, $idusers, $keyword, $tagname,
     $keyword = $mysqli->real_escape_string($keyword);
     $tagname = $mysqli->real_escape_string($tagname);
 
-    $sql = 'select count(*) total from bookmarktags'
+    $sql = 'select count(*) total from bookmark_tags'
         ." where idusers = $idusers and title like '%$keyword%'"
         ." and tagname = '$tagname'";
     include_once __DIR__.'/../mysqli_single_object.php';
     $total = mysqli_single_object($mysqli, $sql)->total;
 
-    $sql = "select * from bookmarktags where idusers = $idusers"
+    $sql = "select * from bookmark_tags where idusers = $idusers"
         ." and title like '%$keyword%' and tagname = '$tagname'"
         ." order by update_time desc limit $limit offset $offset";
     include_once __DIR__.'/../mysqli_query_object.php';

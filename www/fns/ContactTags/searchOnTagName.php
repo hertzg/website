@@ -10,13 +10,13 @@ function searchOnTagName ($mysqli, $idusers, $keyword, $tagname,
     $keyword = $mysqli->real_escape_string($keyword);
     $tagname = $mysqli->real_escape_string($tagname);
 
-    $sql = "select count(*) total from contacttags where idusers = $idusers"
+    $sql = "select count(*) total from contact_tags where idusers = $idusers"
         ." and (full_name like '%$keyword%' or alias like '%$keyword%')"
         ." and tagname = '$tagname'";
     include_once __DIR__.'/../mysqli_single_object.php';
     $total = mysqli_single_object($mysqli, $sql)->total;
 
-    $sql = "select * from contacttags where idusers = $idusers"
+    $sql = "select * from contact_tags where idusers = $idusers"
         ." and (full_name like '%$keyword%' or alias like '%$keyword%')"
         ." and tagname = '$tagname' order by full_name"
         ." limit $limit offset $offset";

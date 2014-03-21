@@ -7,12 +7,12 @@ function indexOnTagName ($mysqli, $idusers, $tagname,
 
     $tagname = $mysqli->real_escape_string($tagname);
 
-    $sql = 'select count(*) total from notetags'
+    $sql = 'select count(*) total from note_tags'
         ." where idusers = $idusers and tagname = '$tagname'";
     include_once __DIR__.'/../mysqli_single_object.php';
     $total = mysqli_single_object($mysqli, $sql)->total;
 
-    $sql = 'select * from notetags'
+    $sql = 'select * from note_tags'
         ." where idusers = $idusers and tagname = '$tagname'"
         ." order by update_time desc limit $limit offset $offset";
     include_once __DIR__.'/../mysqli_query_object.php';

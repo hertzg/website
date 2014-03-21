@@ -3,5 +3,5 @@
 namespace BookmarkTags;
 
 function deleteOnUser ($mysqli, $idusers) {
-    $mysqli->query("delete from bookmarktags where idusers = $idusers");
+    $mysqli->query("delete from bookmark_tags where idusers = $idusers");
 }

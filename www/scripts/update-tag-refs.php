@@ -8,7 +8,7 @@ include_once '../lib/mysqli.php';
 
 $microtime = microtime(true);
 
-$sql = 'select distinct idbookmarks value from bookmarktags';
+$sql = 'select distinct idbookmarks value from bookmark_tags';
 $ids = mysqli_query_object($mysqli, $sql);
 foreach ($ids as $id) {
     $sql = "select * from bookmarks where idbookmarks = $id->value";
@@ -16,7 +16,7 @@ foreach ($ids as $id) {
     if ($bookmark) {
         $title = $mysqli->real_escape_string($bookmark->title);
         $url = $mysqli->real_escape_string($bookmark->url);
-        $sql = 'update bookmarktags set'
+        $sql = 'update bookmark_tags set'
             ." title = '$title',"
             ." url = '$url',"
             ." insert_time = $bookmark->insert_time,"
@@ -26,14 +26,14 @@ foreach ($ids as $id) {
     }
 }
 
-$sql = 'select distinct idnotes value from notetags';
+$sql = 'select distinct idnotes value from note_tags';
 $ids = mysqli_query_object($mysqli, $sql);
 foreach ($ids as $id) {
     $sql = "select * from notes where idnotes = $id->value";
     $note = mysqli_single_object($mysqli, $sql);
     if ($note) {
         $notetext = $mysqli->real_escape_string($note->notetext);
-        $sql = 'update notetags set'
+        $sql = 'update note_tags set'
             ." notetext = '$notetext',"
             ." insert_time = $note->insert_time,"
             ." update_time = $note->update_time"
@@ -42,14 +42,14 @@ foreach ($ids as $id) {
     }
 }
 
-$sql = 'select distinct idtasks value from tasktags';
+$sql = 'select distinct idtasks value from task_tags';
 $ids = mysqli_query_object($mysqli, $sql);
 foreach ($ids as $id) {
     $sql = "select * from tasks where idtasks = $id->value";
     $task = mysqli_single_object($mysqli, $sql);
     if ($task) {
         $tasktext = $mysqli->real_escape_string($task->tasktext);
-        $sql = 'update tasktags set'
+        $sql = 'update task_tags set'
             ." tasktext = '$tasktext',"
             ." top_priority = $task->top_priority,"
             ." insert_time = $task->insert_time,"

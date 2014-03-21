@@ -7,7 +7,7 @@ function add ($mysqli, $idusers, $idnotes, array $tagnames, $notetext) {
     $insert_time = $update_time = time();
     foreach ($tagnames as $tagname) {
         $tagname = $mysqli->real_escape_string($tagname);
-        $sql = 'insert into notetags (idusers, idnotes, tagname,'
+        $sql = 'insert into note_tags (idusers, idnotes, tagname,'
             .' notetext, insert_time, update_time)'
             ." values ($idusers, $idnotes, '$tagname',"
             ." '$notetext', $insert_time, $update_time)";

@@ -6,6 +6,8 @@ function query ($sql) {
     global $mysqli;
     $mysqli->query($sql) || trigger_error($mysqli->error);
 }
-query('alter table contacts change fullname full_name varchar(32) character set utf8 collate utf8_unicode_ci');
-query('alter table contacttags change fullname full_name varchar(32) character set utf8 collate utf8_unicode_ci');
+query('rename table bookmarktags to bookmark_tags');
+query('rename table contacttags to contact_tags');
+query('rename table notetags to note_tags');
+query('rename table tasktags to task_tags');
 echo 'Done';

@@ -3,5 +3,5 @@
 namespace ContactTags;
 
 function deleteOnContact ($mysqli, $idcontacts) {
-    $mysqli->query("delete from contacttags where idcontacts = $idcontacts");
+    $mysqli->query("delete from contact_tags where idcontacts = $idcontacts");
 }

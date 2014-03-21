@@ -10,7 +10,7 @@ function add ($mysqli, $idusers, $idcontacts, array $tagnames,
 
     foreach ($tagnames as $tagname) {
         $tagname = $mysqli->real_escape_string($tagname);
-        $sql = 'insert into contacttags'
+        $sql = 'insert into contact_tags'
             .' (idusers, idcontacts,'
             .' tagname, full_name, alias)'
             ." values ($idusers, $idcontacts,"
