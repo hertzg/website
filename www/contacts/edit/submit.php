@@ -9,13 +9,13 @@ list($contact, $id, $user) = require_contact($mysqli);
 $idusers = $user->idusers;
 
 include_once '../../fns/request_strings.php';
-list($fullname, $alias, $address, $email,
+list($full_name, $alias, $address, $email,
     $phone1, $phone2, $tags) = request_strings(
-    'fullname', 'alias', 'address', 'email',
+    'full_name', 'alias', 'address', 'email',
     'phone1', 'phone2', 'tags');
 
 include_once '../../fns/str_collapse_spaces.php';
-$fullname = str_collapse_spaces($fullname);
+$full_name = str_collapse_spaces($full_name);
 $alias = str_collapse_spaces($alias);
 $address = str_collapse_spaces($address);
 $email = str_collapse_spaces($email);
@@ -25,13 +25,13 @@ $tags = str_collapse_spaces($tags);
 
 $errors = array();
 
-if ($fullname === '') {
+if ($full_name === '') {
     $errors[] = 'Enter full name.';
-} elseif (mb_strlen($fullname, 'UTF-8') > 32) {
+} elseif (mb_strlen($full_name, 'UTF-8') > 32) {
     $errors[] = 'Full name too long. At most 32 characters required.';
 } else {
     include_once '../../fns/Contacts/getByFullName.php';
-    if (Contacts\getByFullName($mysqli, $idusers, $fullname, $id)) {
+    if (Contacts\getByFullName($mysqli, $idusers, $full_name, $id)) {
         $errors[] = 'A contact with this name already exists.';
     }
 }
@@ -44,7 +44,7 @@ include_once '../../fns/redirect.php';
 if ($errors) {
     $_SESSION['contacts/edit/index_errors'] = $errors;
     $_SESSION['contacts/edit/index_lastpost'] = array(
-        'fullname' => $fullname,
+        'full_name' => $full_name,
         'alias' => $alias,
         'address' => $address,
         'email' => $email,
@@ -61,14 +61,14 @@ unset(
 );
 
 include_once '../../fns/Contacts/edit.php';
-Contacts\edit($mysqli, $idusers, $id, $fullname, $alias,
+Contacts\edit($mysqli, $idusers, $id, $full_name, $alias,
     $address, $email, $phone1, $phone2, $tags);
 
 include_once '../../fns/ContactTags/deleteOnContact.php';
 ContactTags\deleteOnContact($mysqli, $id);
 
 include_once '../../fns/ContactTags/add.php';
-ContactTags\add($mysqli, $idusers, $id, $tagnames, $fullname, $alias);
+ContactTags\add($mysqli, $idusers, $id, $tagnames, $full_name, $alias);
 
 $_SESSION['contacts/view/index_messages'] = array('Changes have been saved.');
 redirect("../view/?id=$id");

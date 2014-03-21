@@ -24,7 +24,7 @@ $content =
         "Contact #$id",
         Page\text(
             'Are you sure you want to delete the contact'
-            .' "<b>'.htmlspecialchars($contact->fullname).'</b>"?'
+            .' "<b>'.htmlspecialchars($contact->full_name).'</b>"?'
         )
         .'<div class="hr"></div>'
         .Page\imageLink('Yes, delete contact', "submit.php?id=$id", 'yes')

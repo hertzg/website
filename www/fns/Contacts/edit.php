@@ -2,10 +2,10 @@
 
 namespace Contacts;
 
-function edit ($mysqli, $idusers, $id, $fullname, $alias, $address,
+function edit ($mysqli, $idusers, $id, $full_name, $alias, $address,
     $email, $phone1, $phone2, $tags) {
 
-    $fullname = $mysqli->real_escape_string($fullname);
+    $full_name = $mysqli->real_escape_string($full_name);
     $alias = $mysqli->real_escape_string($alias);
     $address = $mysqli->real_escape_string($address);
     $email = $mysqli->real_escape_string($email);
@@ -15,7 +15,7 @@ function edit ($mysqli, $idusers, $id, $fullname, $alias, $address,
     $update_time = time();
 
     $sql = 'update contacts set'
-        ." fullname = '$fullname', alias = '$alias',"
+        ." full_name = '$full_name', alias = '$alias',"
         ." address = '$address', email = '$email',"
         ." phone1 = '$phone1', phone2 = '$phone2',"
         ." tags = '$tags', update_time = $update_time"

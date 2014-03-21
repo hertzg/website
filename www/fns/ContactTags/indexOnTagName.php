@@ -13,7 +13,7 @@ function indexOnTagName ($mysqli, $idusers, $tagname,
     $total = mysqli_single_object($mysqli, $sql)->total;
 
     $sql = "select * from contacttags where idusers = $idusers"
-        ." and tagname = '$tagname' order by fullname"
+        ." and tagname = '$tagname' order by full_name"
         ." limit $limit offset $offset";
     include_once __DIR__.'/../mysqli_query_object.php';
     return mysqli_query_object($mysqli, $sql);

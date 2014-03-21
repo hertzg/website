@@ -13,7 +13,7 @@ unset(
 
 include_once '../../fns/Form/label.php';
 $items = array(
-    Form\label('Full name', htmlspecialchars($contact->fullname)),
+    Form\label('Full name', htmlspecialchars($contact->full_name)),
 );
 
 $alias = $contact->alias;

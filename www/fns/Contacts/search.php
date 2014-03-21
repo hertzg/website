@@ -9,7 +9,7 @@ function search ($mysqli, $idusers, $keyword) {
     $keyword = $mysqli->real_escape_string($keyword);
 
     $sql = "select * from contacts where idusers = $idusers"
-        ." and (fullname like '%$keyword%' or alias like '%$keyword%')";
+        ." and (full_name like '%$keyword%' or alias like '%$keyword%')";
     include_once __DIR__.'/../mysqli_query_object.php';
     return mysqli_query_object($mysqli, $sql);
 

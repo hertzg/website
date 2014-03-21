@@ -32,8 +32,8 @@ $content =
         'Edit',
         Page\sessionErrors('contacts/edit/index_errors')
         .'<form action="submit.php" method="post">'
-            .Form\textfield('fullname', 'Full name', array(
-                'value' => $values['fullname'],
+            .Form\textfield('full_name', 'Full name', array(
+                'value' => $values['full_name'],
                 'autofocus' => true,
                 'required' => true,
             ))

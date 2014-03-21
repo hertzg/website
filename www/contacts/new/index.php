@@ -9,7 +9,7 @@ if (array_key_exists('contacts/new/index_lastpost', $_SESSION)) {
     $values = $_SESSION['contacts/new/index_lastpost'];
 } else {
     $values = array(
-        'fullname' => '',
+        'full_name' => '',
         'alias' => '',
         'address' => '',
         'email' => '',
@@ -43,8 +43,8 @@ $content =
         'New',
         Page\sessionErrors('contacts/new/index_errors')
         .'<form action="submit.php" method="post">'
-            .Form\textfield('fullname', 'Full name', array(
-                'value' => $values['fullname'],
+            .Form\textfield('full_name', 'Full name', array(
+                'value' => $values['full_name'],
                 'maxlength' => 32,
                 'autofocus' => true,
                 'required' => true,
