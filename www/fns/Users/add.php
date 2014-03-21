@@ -16,12 +16,12 @@ function add ($mysqli, $username, $email, $password) {
     $email = $mysqli->real_escape_string($email);
     $password_hash = $mysqli->real_escape_string($password_hash);
     $password_salt = $mysqli->real_escape_string($password_salt);
-    $inserttime = time();
+    $insert_time = time();
 
     $sql = 'insert into users (username, email, password_hash,'
-        .' password_salt, order_home_items, inserttime)'
+        .' password_salt, order_home_items, insert_time)'
         ." values ('$username', '$email', '$password_hash',"
-        ." '$password_salt', '$order_home_items', $inserttime)";
+        ." '$password_salt', '$order_home_items', $insert_time)";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
     $idusers = $mysqli->insert_id;

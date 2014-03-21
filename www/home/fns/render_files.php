@@ -8,10 +8,11 @@ function render_files ($user, array &$items) {
     $title = 'Files';
     $href = '../files/';
     $icon = 'files';
-    if ($user->storageused) {
+    $storage_used = $user->storage_used;
+    if ($storage_used) {
 
         include_once '../fns/bytestr.php';
-        $description = bytestr($user->storageused).' used.';
+        $description = bytestr($storage_used).' used.';
 
         include_once __DIR__.'/../../fns/Page/imageArrowLinkWithDescription.php';
         $items[$key] = Page\imageArrowLinkWithDescription($title,

@@ -20,13 +20,13 @@ include_once '../fns/Form/label.php';
 include_once '../fns/Page/imageArrowLink.php';
 include_once '../fns/Page/imageArrowLinkWithDescription.php';
 
-$fullname = $user->fullname;
-if ($fullname !== '') {
-    $fullnameField =
-        Form\label('Full name', $fullname)
+$full_name = $user->full_name;
+if ($full_name !== '') {
+    $full_name_field =
+        Form\label('Full name', $full_name)
         .'<div class="hr"></div>';
 } else {
-    $fullnameField = '';
+    $full_name_field = '';
 }
 
 $email_verified = $user->email_verified;
@@ -80,12 +80,12 @@ $content =
         .'<div class="hr"></div>'
         .Form\label('Email', $emailValue)
         .'<div class="hr"></div>'
-        .$fullnameField
+        .$full_name_field
         .Form\label('Theme', $themes[$user->theme])
         .'<div class="hr"></div>'
-        .Form\label('Account created', date_ago($user->inserttime))
+        .Form\label('Account created', date_ago($user->insert_time))
         .'<div class="hr"></div>'
-        .Form\label('Using storage', bytestr($user->storageused))
+        .Form\label('Using storage', bytestr($user->storage_used))
         .'<div class="hr"></div>'
         .Form\label('Signed in', n_times($user->num_logins))
     )

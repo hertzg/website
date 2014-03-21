@@ -38,8 +38,8 @@ $content =
                 'required' => true,
             ))
             .'<div class="hr"></div>'
-            .Form\textfield('fullname', 'Full name', array(
-                'value' => $values->fullname,
+            .Form\textfield('full_name', 'Full name', array(
+                'value' => $values->full_name,
             ))
             .'<div class="hr"></div>'
             .Form\button('Save Changes')

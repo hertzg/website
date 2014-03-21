@@ -8,10 +8,10 @@ $user = require_user('../');
 $idusers = $user->idusers;
 
 include_once '../fns/request_strings.php';
-list($email, $fullname) = request_strings('email', 'fullname');
+list($email, $full_name) = request_strings('email', 'full_name');
 
 include_once '../fns/str_collapse_spaces.php';
-$fullname = str_collapse_spaces($fullname);
+$full_name = str_collapse_spaces($full_name);
 
 $errors = array();
 
@@ -38,7 +38,7 @@ if ($errors) {
     $_SESSION['edit-profile/index_errors'] = $errors;
     $_SESSION['edit-profile/index_lastpost'] = array(
         'email' => $email,
-        'fullname' => $fullname,
+        'full_name' => $full_name,
     );
     redirect();
 }
@@ -49,7 +49,7 @@ unset(
 );
 
 include_once '../fns/Users/editProfile.php';
-Users\editProfile($mysqli, $idusers, $email, $fullname);
+Users\editProfile($mysqli, $idusers, $email, $full_name);
 
 if ($email !== $user->email) {
     include_once '../fns/Users/invalidateEmail.php';
