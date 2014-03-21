@@ -58,7 +58,7 @@ if ($bookmarks || $contacts || $notes || $tasks || $folders || $files) {
     $limit = Paging\limit();
 
     include_once 'fns/render_prev_button.php';
-    render_prev_button($offset, $limit, $items, $keyword, $searchFiles);
+    render_prev_button($offset, $limit, $total, $items, $keyword, $searchFiles);
 
     $resultItems = array_slice($resultItems, $offset, $limit);
     $items = array_merge($items, $resultItems);

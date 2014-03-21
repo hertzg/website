@@ -1,6 +1,6 @@
 <?php
 
-function render_prev_button ($offset, $limit,
+function render_prev_button ($offset, $limit, $total,
     array &$items, $keyword, $tag) {
 
     if ($offset) {
@@ -10,7 +10,7 @@ function render_prev_button ($offset, $limit,
         if ($tag !== '') $args['tag'] = $tag;
 
         include_once __DIR__.'/../../../fns/Paging/prevButton.php';
-        $items[] = Paging\prevButton($offset, $limit, 'Notes', $args);
+        $items[] = Paging\prevButton($offset, $limit, $total, 'Notes', $args);
 
     }
 

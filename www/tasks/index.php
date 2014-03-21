@@ -70,7 +70,7 @@ if ($tag === '') {
 }
 
 include_once 'fns/render_prev_button.php';
-render_prev_button($offset, $limit, $items, $tag);
+render_prev_button($offset, $limit, $total, $items, $tag);
 
 include_once 'fns/render_tasks.php';
 render_tasks($tasks, $items, 'No tasks.');

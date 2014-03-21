@@ -68,7 +68,7 @@ if ($tag === '') {
 }
 
 include_once 'fns/render_prev_button.php';
-render_prev_button($offset, $limit, $items, $tag);
+render_prev_button($offset, $limit, $total, $items, $tag);
 
 include_once 'fns/render_bookmarks.php';
 render_bookmarks($bookmarks, $items, 'No bookmarks.');

@@ -2,12 +2,17 @@
 
 namespace Paging;
 
-function prevButton ($offset, $limit, $label, array $args = array()) {
+function prevButton ($offset, $limit, $total, $label, array $args = array()) {
+
+    $html = '<form action="./">';
+
+    if ($offset) {
+        include_once __DIR__.'/status.php';
+        $html .= status($offset, $limit, $total, strtolower($label));
+    }
 
     include_once __DIR__.'/../Form/button.php';
-    $html =
-        '<form action="./">'
-        .\Form\button("Show Previous $limit $label");
+    $html .= \Form\button("Show Previous $limit $label");
 
     if ($args) {
         include_once __DIR__.'/../Form/hidden.php';

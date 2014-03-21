@@ -78,7 +78,7 @@ if ($tag === '') {
 }
 
 include_once 'fns/render_prev_button.php';
-render_prev_button($offset, $limit, $items, $keyword, $tag);
+render_prev_button($offset, $limit, $total, $items, $keyword, $tag);
 
 include_once '../fns/render_notes.php';
 render_notes($notes, $items, 'No notes found.', '../');
