@@ -2,7 +2,7 @@
 
 namespace Tokens;
 
-function updateaccess_time ($mysqli, $id) {
+function updateAccessTime ($mysqli, $id) {
     $access_time = time();
     $sql = 'update tokens set'
         ." access_time = $access_time"
