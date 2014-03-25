@@ -13,3 +13,8 @@ $mysqli->query(
     .' can_send_channel tinyint not null)'
 );
 echo $mysqli->error;
+
+$mysqli->query(
+    'alter table users add anonymous_can_send_channel tinyint'
+);
+echo $mysqli->error;
