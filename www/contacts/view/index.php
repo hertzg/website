@@ -4,12 +4,8 @@ include_once '../fns/require_contact.php';
 include_once '../../lib/mysqli.php';
 list($contact, $id, $user) = require_contact($mysqli);
 
-unset(
-    $_SESSION['contacts/edit/errors'],
-    $_SESSION['contacts/edit/values'],
-    $_SESSION['contacts/errors'],
-    $_SESSION['contacts/messages']
-);
+include_once 'fns/unset_session_vars.php';
+unset_session_vars();
 
 include_once '../../fns/Form/label.php';
 $items = array(
