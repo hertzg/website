@@ -4,7 +4,7 @@ include_once '../fns/require_file.php';
 include_once '../../lib/mysqli.php';
 list($file, $id, $user) = require_file($mysqli);
 
-unset($_SESSION['files/view-file/index_messages']);
+unset($_SESSION['files/view-file/messages']);
 
 include_once '../../fns/create_folder_link.php';
 include_once '../../fns/create_tabs.php';

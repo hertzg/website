@@ -43,8 +43,8 @@ parse_tags($tags, $tagnames, $errors);
 include_once '../../fns/redirect.php';
 
 if ($errors) {
-    $_SESSION['contacts/new/index_errors'] = $errors;
-    $_SESSION['contacts/new/index_values'] = array(
+    $_SESSION['contacts/new/errors'] = $errors;
+    $_SESSION['contacts/new/values'] = array(
         'full_name' => $full_name,
         'alias' => $alias,
         'address' => $address,
@@ -57,8 +57,8 @@ if ($errors) {
 }
 
 unset(
-    $_SESSION['contacts/new/index_errors'],
-    $_SESSION['contacts/new/index_values']
+    $_SESSION['contacts/new/errors'],
+    $_SESSION['contacts/new/values']
 );
 
 include_once '../../fns/Contacts/add.php';
@@ -71,5 +71,5 @@ ContactTags\add($mysqli, $idusers, $id, $tagnames, $full_name, $alias);
 include_once '../../fns/Users/addNumContacts.php';
 Users\addNumContacts($mysqli, $idusers, 1);
 
-$_SESSION['contacts/view/index_messages'] = array('Contact has been saved.');
+$_SESSION['contacts/view/messages'] = array('Contact has been saved.');
 redirect("../view/?id=$id");

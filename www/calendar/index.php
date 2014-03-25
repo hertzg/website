@@ -4,10 +4,10 @@ include_once __DIR__.'/../fns/require_user.php';
 $user = require_user('../');
 
 unset(
-    $_SESSION['home/index_messages'],
-    $_SESSION['calendar/add-event/index_errors'],
-    $_SESSION['calendar/add-event/index_values'],
-    $_SESSION['calendar/view-event/index_messages']
+    $_SESSION['home/messages'],
+    $_SESSION['calendar/add-event/errors'],
+    $_SESSION['calendar/add-event/values'],
+    $_SESSION['calendar/view-event/messages']
 );
 
 include_once '../fns/request_strings.php';
@@ -64,8 +64,8 @@ $content =
             ),
         ),
         'Calendar',
-        Page\sessionErrors('calendar/index_errors')
-        .Page\sessionMessages('calendar/index_messages')
+        Page\sessionErrors('calendar/errors')
+        .Page\sessionMessages('calendar/messages')
         .create_calendar($timeSelected)
     )
     .create_panel(

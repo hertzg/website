@@ -18,7 +18,7 @@ foreach ($userHomeItems as $key => $item) {
     $items[] = Page\imageArrowLink($title, "move/?key=$key", $icon);
 }
 
-unset($_SESSION['customize-home/index_messages']);
+unset($_SESSION['customize-home/messages']);
 
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
@@ -38,7 +38,7 @@ $content = create_tabs(
         ),
     ),
     'Reorder Items',
-    Page\sessionMessages('customize-home/reorder/index_messages')
+    Page\sessionMessages('customize-home/reorder/messages')
     .Page\warnings(array('Select an item to move up or down.'))
     .join('<div class="hr"></div>', $items)
     .create_panel(

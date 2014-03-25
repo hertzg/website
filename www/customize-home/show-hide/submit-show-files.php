@@ -7,7 +7,7 @@ include_once '../../fns/Users/showFiles.php';
 include_once '../../lib/mysqli.php';
 Users\showFiles($mysqli, $user->idusers, true);
 
-$_SESSION['customize-home/show-hide/index_messages'] = array(
+$_SESSION['customize-home/show-hide/messages'] = array(
     '"Files" is now visible.',
 );
 

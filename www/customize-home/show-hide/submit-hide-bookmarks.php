@@ -7,7 +7,7 @@ include_once '../../fns/Users/showBookmarks.php';
 include_once '../../lib/mysqli.php';
 Users\showBookmarks($mysqli, $user->idusers, false);
 
-$_SESSION['customize-home/show-hide/index_messages'] = array(
+$_SESSION['customize-home/show-hide/messages'] = array(
     '"Bookmarks" is now hidden.',
 );
 

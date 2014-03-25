@@ -5,10 +5,10 @@ include_once '../../lib/mysqli.php';
 list($contact, $id, $user) = require_contact($mysqli);
 
 unset(
-    $_SESSION['contacts/edit/index_errors'],
-    $_SESSION['contacts/edit/index_values'],
-    $_SESSION['contacts/index_errors'],
-    $_SESSION['contacts/index_messages']
+    $_SESSION['contacts/edit/errors'],
+    $_SESSION['contacts/edit/values'],
+    $_SESSION['contacts/errors'],
+    $_SESSION['contacts/messages']
 );
 
 include_once '../../fns/Form/label.php';
@@ -73,7 +73,7 @@ $content =
             ),
         ),
         "Contact #$id",
-        Page\sessionMessages('contacts/view/index_messages')
+        Page\sessionMessages('contacts/view/messages')
         .join('<div class="hr"></div>', $items)
     )
     .create_panel(

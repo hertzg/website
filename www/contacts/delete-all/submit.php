@@ -17,8 +17,8 @@ ContactTags\deleteOnUser($mysqli, $idusers);
 include_once '../../fns/Users/clearNumContacts.php';
 Users\clearNumContacts($mysqli, $idusers);
 
-unset($_SESSION['contacts/index_errors']);
-$_SESSION['contacts/index_messages'] = array(
+unset($_SESSION['contacts/errors']);
+$_SESSION['contacts/messages'] = array(
     'All contacts have been deleted.',
 );
 

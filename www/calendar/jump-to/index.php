@@ -36,8 +36,8 @@ for ($i = $minYear; $i <= $maxYear; $i++) {
 }
 
 unset(
-    $_SESSION['calendar/index_errors'],
-    $_SESSION['calendar/index_messages']
+    $_SESSION['calendar/errors'],
+    $_SESSION['calendar/messages']
 );
 
 include_once '../../fns/create_tabs.php';

@@ -38,8 +38,8 @@ if ($username === '') {
 }
 
 if ($errors) {
-    $_SESSION['account/connections/new/index_errors'] = $errors;
-    $_SESSION['account/connections/new/index_values'] = array(
+    $_SESSION['account/connections/new/errors'] = $errors;
+    $_SESSION['account/connections/new/values'] = array(
         'username' => $username,
         'can_send_channel' => $can_send_channel,
     );
@@ -51,11 +51,11 @@ Connections\add($mysqli, $idusers, $connected_id_users,
     $username, $can_send_channel);
 
 unset(
-    $_SESSION['account/connections/new/index_errors'],
-    $_SESSION['account/connections/new/index_values']
+    $_SESSION['account/connections/new/errors'],
+    $_SESSION['account/connections/new/values']
 );
 
-$_SESSION['account/connections/index_messages'] = array(
+$_SESSION['account/connections/messages'] = array(
     'Connection has been added.',
 );
 

@@ -34,8 +34,8 @@ Captcha\check($errors);
 include_once '../fns/redirect.php';
 
 if ($errors) {
-    $_SESSION['sign-up/index_errors'] = $errors;
-    $_SESSION['sign-up/index_values'] = array(
+    $_SESSION['sign-up/errors'] = $errors;
+    $_SESSION['sign-up/values'] = array(
         'username' => $username,
         'email' => $email,
         'password1' => $password1,
@@ -45,8 +45,8 @@ if ($errors) {
 }
 
 unset(
-    $_SESSION['sign-up/index_errors'],
-    $_SESSION['sign-up/index_values']
+    $_SESSION['sign-up/errors'],
+    $_SESSION['sign-up/values']
 );
 
 include_once '../fns/Users/add.php';
@@ -64,7 +64,7 @@ ZviniAPI::notify('zvini-signups', '03feb769e474c9c9c257597d462c41eb', $text);
 include_once 'fns/send_email.php';
 send_email($username, $email);
 
-$_SESSION['sign-in/index_messages'] = array(
+$_SESSION['sign-in/messages'] = array(
     'Thank you for signing up.',
     'Sign in to proceed.'
 );

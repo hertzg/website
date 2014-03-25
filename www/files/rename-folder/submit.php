@@ -33,23 +33,23 @@ if ($foldername === '') {
 include_once '../../fns/redirect.php';
 
 if ($errors) {
-    $_SESSION['files/rename-folder/index_errors'] = $errors;
-    $_SESSION['files/rename-folder/index_values'] = array(
+    $_SESSION['files/rename-folder/errors'] = $errors;
+    $_SESSION['files/rename-folder/values'] = array(
         'foldername' => $foldername,
     );
     redirect("./?idfolders=$idfolders");
 }
 
 unset(
-    $_SESSION['files/rename-folder/index_errors'],
-    $_SESSION['files/rename-folder/index_values']
+    $_SESSION['files/rename-folder/errors'],
+    $_SESSION['files/rename-folder/values']
 );
 
 include_once '../../fns/Folders/rename.php';
 Folders\rename($mysqli, $idusers, $idfolders, $foldername);
 
-$_SESSION['files/index_idfolders'] = $idfolders;
-$_SESSION['files/index_messages'] = array('Renamed.');
+$_SESSION['files/idfolders'] = $idfolders;
+$_SESSION['files/messages'] = array('Renamed.');
 
 include_once '../../fns/create_folder_link.php';
 redirect(create_folder_link($idfolders, '../'));

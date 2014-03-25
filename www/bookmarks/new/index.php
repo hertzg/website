@@ -5,8 +5,8 @@ $base = '../../';
 include_once '../../fns/require_user.php';
 $user = require_user($base);
 
-if (array_key_exists('bookmarks/new/index_values', $_SESSION)) {
-    $values = $_SESSION['bookmarks/new/index_values'];
+if (array_key_exists('bookmarks/new/values', $_SESSION)) {
+    $values = $_SESSION['bookmarks/new/values'];
 } else {
     $values = array(
         'url' => '',
@@ -16,8 +16,8 @@ if (array_key_exists('bookmarks/new/index_values', $_SESSION)) {
 }
 
 unset(
-    $_SESSION['bookmarks/index_errors'],
-    $_SESSION['bookmarks/index_messages']
+    $_SESSION['bookmarks/errors'],
+    $_SESSION['bookmarks/messages']
 );
 
 include_once '../../fns/create_tabs.php';
@@ -37,7 +37,7 @@ $content =
             ),
         ),
         'New',
-        Page\sessionErrors('bookmarks/new/index_errors')
+        Page\sessionErrors('bookmarks/new/errors')
         .'<form action="submit.php" method="post">'
             .Form\textfield('url', 'URL', array(
                 'value' => $values['url'],

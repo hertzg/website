@@ -68,13 +68,13 @@ if (!$deep) {
 }
 
 unset(
-    $_SESSION['files/add-folder/index_errors'],
-    $_SESSION['files/add-folder/index_values'],
-    $_SESSION['files/rename-folder/index_errors'],
-    $_SESSION['files/rename-folder/index_values'],
-    $_SESSION['files/upload-files/index_errors'],
-    $_SESSION['files/view-file/index_messages'],
-    $_SESSION['home/index_messages']
+    $_SESSION['files/add-folder/errors'],
+    $_SESSION['files/add-folder/values'],
+    $_SESSION['files/rename-folder/errors'],
+    $_SESSION['files/rename-folder/values'],
+    $_SESSION['files/upload-files/errors'],
+    $_SESSION['files/view-file/messages'],
+    $_SESSION['home/messages']
 );
 
 include_once '../fns/create_options_panel.php';

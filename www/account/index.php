@@ -44,7 +44,7 @@ $content =
             ),
         ),
         'Account',
-        Page\sessionMessages('account/index_messages')
+        Page\sessionMessages('account/messages')
         .Form\label('Username', $user->username)
         .'<div class="hr"></div>'
         .Form\label('Email', $emailValue)

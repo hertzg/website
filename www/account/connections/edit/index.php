@@ -6,14 +6,14 @@ list($connection, $id, $user) = require_connection($mysqli);
 
 $base = '../../../';
 
-$key = 'account/connections/edit/index_values';
+$key = 'account/connections/edit/values';
 if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];
 } else {
     $values = (array)$connection;
 }
 
-unset($_SESSION['account/connections/view/index_messages']);
+unset($_SESSION['account/connections/view/messages']);
 
 include_once '../../../fns/create_tabs.php';
 include_once '../../../fns/Form/button.php';
@@ -33,7 +33,7 @@ $content = create_tabs(
         ],
     ],
     'Edit',
-    Page\sessionErrors('account/connections/edit/index_errors')
+    Page\sessionErrors('account/connections/edit/errors')
     .'<form action="submit.php" method="post">'
         .Form\textfield('username', 'Username', [
             'value' => $values['username'],

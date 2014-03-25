@@ -47,12 +47,12 @@ if ($idfolders != $file->idfolders) {
         "submit.php?id=$id&idfolders=$idfolders", 'move-file');
 }
 
-if (array_key_exists('files/move-file/index_idfolders', $_SESSION) &&
-    $idfolders != $_SESSION['files/move-file/index_idfolders']) {
-    unset($_SESSION['files/move-file/index_errors']);
+if (array_key_exists('files/move-file/idfolders', $_SESSION) &&
+    $idfolders != $_SESSION['files/move-file/idfolders']) {
+    unset($_SESSION['files/move-file/errors']);
 }
 
-unset($_SESSION['files/view-file/index_messages']);
+unset($_SESSION['files/view-file/messages']);
 
 include_once '../../fns/create_folder_link.php';
 include_once '../../fns/create_tabs.php';
@@ -71,7 +71,7 @@ $content =
             ),
         ),
         'Move',
-        Page\sessionErrors('files/move-file/index_errors')
+        Page\sessionErrors('files/move-file/errors')
         .Page\warnings(array(
             'Moving the file "<b>'.htmlspecialchars($file->filename).'</b>".',
             'Select a folder to move the file into.',

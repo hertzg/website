@@ -6,8 +6,8 @@ include_once '../../../fns/require_user.php';
 $user = require_user($base);
 
 unset(
-    $_SESSION['account/connections/index_errors'],
-    $_SESSION['account/connections/index_messages']
+    $_SESSION['account/connections/errors'],
+    $_SESSION['account/connections/messages']
 );
 
 include_once '../../../fns/Page/imageArrowLink.php';
@@ -36,7 +36,7 @@ $content = create_tabs(
         ],
     ],
     "Default Connection",
-    Page\sessionMessages('account/connections/default/index_messages')
+    Page\sessionMessages('account/connections/default/messages')
     .Form\label('Other users', $permissions)
     .create_panel(
         'Options',

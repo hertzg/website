@@ -20,18 +20,18 @@ if ($eventtext === '') $errors[] = 'Enter text.';
 include_once '../../fns/redirect.php';
 
 if ($errors) {
-    $_SESSION['calendar/edit-event/index_errors'] = $errors;
-    $_SESSION['calendar/edit-event/index_values'] = array(
+    $_SESSION['calendar/edit-event/errors'] = $errors;
+    $_SESSION['calendar/edit-event/values'] = array(
         'eventtext' => $eventtext,
     );
     redirect("./?idevents=$idevents");
 }
 
-unset($_SESSION['calendar/edit-event/index_errors']);
+unset($_SESSION['calendar/edit-event/errors']);
 
 include_once '../../fns/Events/edit.php';
 Events\edit($mysqli, $user->idusers, $idevents, $eventtext);
 
-$_SESSION['calendar/view-event/index_messages'] = array('Changes have been saved.');
+$_SESSION['calendar/view-event/messages'] = array('Changes have been saved.');
 
 redirect("../view-event/?idevents=$idevents");

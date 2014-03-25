@@ -68,11 +68,11 @@ if (!$posttest) {
 }
 
 if ($errors) {
-    $_SESSION['files/upload-files/index_errors'] = $errors;
+    $_SESSION['files/upload-files/errors'] = $errors;
     redirect("./?idfolders=$idfolders");
 }
 
-unset($_SESSION['files/upload-files/index_errors']);
+unset($_SESSION['files/upload-files/errors']);
 
 if ($numfiles == 1) {
     $message = '1 file has been uploaded.';
@@ -80,8 +80,8 @@ if ($numfiles == 1) {
     $message = "$numfiles files have been uploaded.";
 }
 
-$_SESSION['files/index_idfolders'] = $idfolders;
-$_SESSION['files/index_messages'] = array($message);
+$_SESSION['files/idfolders'] = $idfolders;
+$_SESSION['files/messages'] = array($message);
 
 include_once '../../fns/create_folder_link.php';
 redirect(create_folder_link($idfolders, '../'));

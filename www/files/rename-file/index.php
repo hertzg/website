@@ -4,13 +4,13 @@ include_once '../fns/require_file.php';
 include_once '../../lib/mysqli.php';
 list($file, $id, $user) = require_file($mysqli);
 
-if (array_key_exists('files/rename-file/index_values', $_SESSION)) {
-    $values = $_SESSION['files/rename-file/index_values'];
+if (array_key_exists('files/rename-file/values', $_SESSION)) {
+    $values = $_SESSION['files/rename-file/values'];
 } else {
     $values = (array)$file;
 }
 
-unset($_SESSION['files/view-file/index_messages']);
+unset($_SESSION['files/view-file/messages']);
 
 include_once '../../fns/create_folder_link.php';
 include_once '../../fns/create_tabs.php';
@@ -31,7 +31,7 @@ $content =
             ),
         ),
         'Rename',
-        Page\sessionErrors('files/rename-file/index_errors')
+        Page\sessionErrors('files/rename-file/errors')
         .'<form action="submit.php" method="post">'
             .Form\textfield('filename', 'File name', array(
                 'value' => $values['filename'],

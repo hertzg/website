@@ -5,8 +5,8 @@ $base = '../../';
 include_once '../../fns/require_user.php';
 $user = require_user($base);
 
-if (array_key_exists('contacts/new/index_values', $_SESSION)) {
-    $values = $_SESSION['contacts/new/index_values'];
+if (array_key_exists('contacts/new/values', $_SESSION)) {
+    $values = $_SESSION['contacts/new/values'];
 } else {
     $values = array(
         'full_name' => '',
@@ -20,8 +20,8 @@ if (array_key_exists('contacts/new/index_values', $_SESSION)) {
 }
 
 unset(
-    $_SESSION['contacts/index_errors'],
-    $_SESSION['contacts/index_messages']
+    $_SESSION['contacts/errors'],
+    $_SESSION['contacts/messages']
 );
 
 include_once '../../fns/create_tabs.php';
@@ -41,7 +41,7 @@ $content =
             ),
         ),
         'New',
-        Page\sessionErrors('contacts/new/index_errors')
+        Page\sessionErrors('contacts/new/errors')
         .'<form action="submit.php" method="post">'
             .Form\textfield('full_name', 'Full name', array(
                 'value' => $values['full_name'],

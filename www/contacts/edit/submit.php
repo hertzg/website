@@ -42,8 +42,8 @@ parse_tags($tags, $tagnames, $errors);
 include_once '../../fns/redirect.php';
 
 if ($errors) {
-    $_SESSION['contacts/edit/index_errors'] = $errors;
-    $_SESSION['contacts/edit/index_values'] = array(
+    $_SESSION['contacts/edit/errors'] = $errors;
+    $_SESSION['contacts/edit/values'] = array(
         'full_name' => $full_name,
         'alias' => $alias,
         'address' => $address,
@@ -56,8 +56,8 @@ if ($errors) {
 }
 
 unset(
-    $_SESSION['contacts/edit/index_errors'],
-    $_SESSION['contacts/edit/index_values']
+    $_SESSION['contacts/edit/errors'],
+    $_SESSION['contacts/edit/values']
 );
 
 include_once '../../fns/Contacts/edit.php';
@@ -70,5 +70,5 @@ ContactTags\deleteOnContact($mysqli, $id);
 include_once '../../fns/ContactTags/add.php';
 ContactTags\add($mysqli, $idusers, $id, $tagnames, $full_name, $alias);
 
-$_SESSION['contacts/view/index_messages'] = array('Changes have been saved.');
+$_SESSION['contacts/view/messages'] = array('Changes have been saved.');
 redirect("../view/?id=$id");

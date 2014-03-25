@@ -26,8 +26,8 @@ parse_tags($tags, $tagnames, $errors);
 include_once '../../fns/redirect.php';
 
 if ($errors) {
-    $_SESSION['bookmarks/edit/index_errors'] = $errors;
-    $_SESSION['bookmarks/edit/index_values'] = array(
+    $_SESSION['bookmarks/edit/errors'] = $errors;
+    $_SESSION['bookmarks/edit/values'] = array(
         'title' => $title,
         'url' => $url,
         'tags' => $tags,
@@ -36,8 +36,8 @@ if ($errors) {
 }
 
 unset(
-    $_SESSION['bookmarks/edit/index_errors'],
-    $_SESSION['bookmarks/edit/index_values']
+    $_SESSION['bookmarks/edit/errors'],
+    $_SESSION['bookmarks/edit/values']
 );
 
 include_once '../../fns/Bookmarks/edit.php';
@@ -49,5 +49,5 @@ BookmarkTags\deleteOnBookmark($mysqli, $id);
 include_once '../../fns/BookmarkTags/add.php';
 BookmarkTags\add($mysqli, $idusers, $id, $tagnames, $title, $url);
 
-$_SESSION['bookmarks/view/index_messages'] = array('Changes have been saved.');
+$_SESSION['bookmarks/view/messages'] = array('Changes have been saved.');
 redirect("../view/?id=$id");

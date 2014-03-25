@@ -4,7 +4,7 @@ include_once 'fns/signed_user.php';
 $user = signed_user();
 
 if ($user) {
-    unset($_SESSION['home/index_messages']);
+    unset($_SESSION['home/messages']);
     include_once 'fns/redirect.php';
     redirect('home/');
 }
@@ -12,11 +12,11 @@ if ($user) {
 include_once 'fns/get_revision.php';
 
 unset(
-    $_SESSION['sign-in/index_errors'],
-    $_SESSION['sign-in/index_values'],
-    $_SESSION['sign-in/index_messages'],
-    $_SESSION['sign-up/index_errors'],
-    $_SESSION['sign-up/index_values']
+    $_SESSION['sign-in/errors'],
+    $_SESSION['sign-in/values'],
+    $_SESSION['sign-in/messages'],
+    $_SESSION['sign-up/errors'],
+    $_SESSION['sign-up/values']
 );
 
 header('Content-Type: text/html; charset=UTF-8');

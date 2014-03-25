@@ -5,8 +5,8 @@ $base = '../../';
 include_once '../../fns/require_user.php';
 $user = require_user($base);
 
-if (array_key_exists('notes/new/index_values', $_SESSION)) {
-    $values = $_SESSION['notes/new/index_values'];
+if (array_key_exists('notes/new/values', $_SESSION)) {
+    $values = $_SESSION['notes/new/values'];
 } else {
     $values = array(
         'notetext' => '',
@@ -15,8 +15,8 @@ if (array_key_exists('notes/new/index_values', $_SESSION)) {
 }
 
 unset(
-    $_SESSION['notes/index_errors'],
-    $_SESSION['notes/index_messages']
+    $_SESSION['notes/errors'],
+    $_SESSION['notes/messages']
 );
 
 include_once '../../fns/create_tabs.php';
@@ -37,7 +37,7 @@ $content =
             ),
         ),
         'New',
-        Page\sessionErrors('notes/new/index_errors')
+        Page\sessionErrors('notes/new/errors')
         .'<form action="submit.php" method="post">'
             .Form\textarea('notetext', 'Text', array(
                 'value' => $values['notetext'],

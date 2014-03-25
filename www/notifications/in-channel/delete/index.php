@@ -4,7 +4,7 @@ include_once '../fns/require_channel.php';
 include_once '../../../lib/mysqli.php';
 list($channel, $id, $user) = require_channel($mysqli, '../../../', '../..');
 
-unset($_SESSION['notifications/in-channel/index_messages']);
+unset($_SESSION['notifications/in-channel/messages']);
 
 include_once '../../../fns/create_tabs.php';
 include_once '../../../fns/Page/imageLink.php';

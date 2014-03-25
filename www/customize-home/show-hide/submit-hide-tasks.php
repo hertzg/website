@@ -7,7 +7,7 @@ include_once '../../fns/Users/showTasks.php';
 include_once '../../lib/mysqli.php';
 Users\showTasks($mysqli, $user->idusers, false);
 
-$_SESSION['customize-home/show-hide/index_messages'] = array(
+$_SESSION['customize-home/show-hide/messages'] = array(
     '"Tasks" is now hidden.',
 );
 

@@ -5,8 +5,8 @@ include_once '../../lib/mysqli.php';
 list($token, $id, $user) = require_token($mysqli);
 
 unset(
-    $_SESSION['tokens/index_errors'],
-    $_SESSION['tokens/index_messages']
+    $_SESSION['tokens/errors'],
+    $_SESSION['tokens/messages']
 );
 
 include_once '../../fns/create_panel.php';

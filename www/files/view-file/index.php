@@ -20,10 +20,10 @@ if (!$file) {
 }
 
 unset(
-    $_SESSION['files/index_idfolders'],
-    $_SESSION['files/index_messages'],
-    $_SESSION['files/rename-file/index_errors'],
-    $_SESSION['files/rename-file/index_values']
+    $_SESSION['files/idfolders'],
+    $_SESSION['files/messages'],
+    $_SESSION['files/rename-file/errors'],
+    $_SESSION['files/rename-file/values']
 );
 
 include_once 'fns/create_options_panel.php';
@@ -49,7 +49,7 @@ $content =
             ),
         ),
         "File #$id",
-        Page\sessionMessages('files/view-file/index_messages')
+        Page\sessionMessages('files/view-file/messages')
         .Form\label('File name', $file->filename)
         .'<div class="hr"></div>'
         .Form\label('Size', bytestr($file->filesize))

@@ -25,10 +25,10 @@ if ($channels) {
 }
 
 unset(
-    $_SESSION['channels/add/index_errors'],
-    $_SESSION['channels/add/index_values'],
-    $_SESSION['channels/hview/index_messages'],
-    $_SESSION['notifications/index_messages']
+    $_SESSION['channels/add/errors'],
+    $_SESSION['channels/add/values'],
+    $_SESSION['channels/hview/messages'],
+    $_SESSION['notifications/messages']
 );
 
 include_once '../fns/create_panel.php';
@@ -49,8 +49,8 @@ $content =
             ),
         ),
         'Channels',
-        Page\sessionErrors('channels/index_errors')
-        .Page\sessionMessages('channels/index_messages')
+        Page\sessionErrors('channels/errors')
+        .Page\sessionMessages('channels/messages')
         .join('<div class="hr"></div>', $items)
     )
     .create_panel(

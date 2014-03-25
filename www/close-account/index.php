@@ -5,7 +5,7 @@ $base = '../';
 include_once '../fns/require_user.php';
 $user = require_user($base);
 
-unset($_SESSION['account/index_messages']);
+unset($_SESSION['account/messages']);
 
 include_once '../fns/create_tabs.php';
 include_once '../fns/Form/button.php';
@@ -24,7 +24,7 @@ $content = create_tabs(
             ),
         ),
         'Close',
-        Page\sessionErrors('close-account/index_errors')
+        Page\sessionErrors('close-account/errors')
         .Page\warnings(array(
             'Are you sure you want to close your account?',
             ' You will lose all your data.',

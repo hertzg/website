@@ -5,16 +5,16 @@ $base = '../';
 include_once '../fns/require_guest_user.php';
 require_guest_user($base);
 
-if (array_key_exists('email-reset-password/index_values', $_SESSION)) {
-    $values = $_SESSION['email-reset-password/index_values'];
+if (array_key_exists('email-reset-password/values', $_SESSION)) {
+    $values = $_SESSION['email-reset-password/values'];
 } else {
     $values = array('email' => '');
 }
 
 unset(
-    $_SESSION['sign-in/index_errors'],
-    $_SESSION['sign-in/index_values'],
-    $_SESSION['sign-in/index_messages']
+    $_SESSION['sign-in/errors'],
+    $_SESSION['sign-in/values'],
+    $_SESSION['sign-in/messages']
 );
 
 include_once '../fns/create_tabs.php';
@@ -31,7 +31,7 @@ $content =
             ),
         ),
         'Reset Password',
-        Page\sessionErrors('email-reset-password/index_errors')
+        Page\sessionErrors('email-reset-password/errors')
         .'<form action="submit.php" method="post">'
             .Form\textfield('email', 'Email', array(
                 'value' => $values['email'],

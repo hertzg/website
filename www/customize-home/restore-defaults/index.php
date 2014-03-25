@@ -6,8 +6,8 @@ include_once '../../fns/require_user.php';
 $user = require_user($base);
 
 unset(
-    $_SESSION['customize-home/index_messages'],
-    $_SESSION['customize-home/reorder/index_messages']
+    $_SESSION['customize-home/messages'],
+    $_SESSION['customize-home/reorder/messages']
 );
 
 include_once '../../fns/create_tabs.php';

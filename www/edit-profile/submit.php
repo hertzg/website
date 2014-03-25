@@ -35,8 +35,8 @@ if ($email === '') {
 include_once '../fns/redirect.php';
 
 if ($errors) {
-    $_SESSION['edit-profile/index_errors'] = $errors;
-    $_SESSION['edit-profile/index_values'] = array(
+    $_SESSION['edit-profile/errors'] = $errors;
+    $_SESSION['edit-profile/values'] = array(
         'email' => $email,
         'full_name' => $full_name,
     );
@@ -44,8 +44,8 @@ if ($errors) {
 }
 
 unset(
-    $_SESSION['edit-profile/index_errors'],
-    $_SESSION['edit-profile/index_values']
+    $_SESSION['edit-profile/errors'],
+    $_SESSION['edit-profile/values']
 );
 
 include_once '../fns/Users/editProfile.php';
@@ -56,6 +56,6 @@ if ($email !== $user->email) {
     Users\invalidateEmail($mysqli, $idusers);
 }
 
-$_SESSION['account/index_messages'] = array('Changes have been saved.');
+$_SESSION['account/messages'] = array('Changes have been saved.');
 
 redirect('../account/');

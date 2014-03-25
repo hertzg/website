@@ -5,10 +5,10 @@ include_once '../../lib/mysqli.php';
 list($event, $idevents, $user) = require_event($mysqli);
 
 unset(
-    $_SESSION['calendar/edit-event/index_errors'],
-    $_SESSION['calendar/edit-event/index_values'],
-    $_SESSION['calendar/index_errors'],
-    $_SESSION['calendar/index_messages']
+    $_SESSION['calendar/edit-event/errors'],
+    $_SESSION['calendar/edit-event/values'],
+    $_SESSION['calendar/errors'],
+    $_SESSION['calendar/messages']
 );
 
 $insert_time = $event->insert_time;
@@ -38,7 +38,7 @@ $content =
             ),
         ),
         "Event #$idevents",
-        Page\sessionMessages('calendar/view-event/index_messages')
+        Page\sessionMessages('calendar/view-event/messages')
         .Page\text(htmlspecialchars($event->eventtext))
         .'<div class="hr"></div>'
         .Page\text(date('F d, Y', $event->eventtime))

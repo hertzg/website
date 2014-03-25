@@ -40,23 +40,23 @@ $existingFolder = Folders\getByName($mysqli, $idusers, $parentidfolders,
     $folder->foldername);
 
 if ($existingFolder) {
-    $_SESSION['files/move-folder/index_parentidfolders'] = $parentidfolders;
-    $_SESSION['files/move-folder/index_errors'] = array(
+    $_SESSION['files/move-folder/parentidfolders'] = $parentidfolders;
+    $_SESSION['files/move-folder/errors'] = array(
         'A folder with the same name already exists in this folder.',
     );
     redirect("./?idfolders=$idfolders&parentidfolders=$parentidfolders");
 }
 
 unset(
-    $_SESSION['files/move-folder/index_parentidfolders'],
-    $_SESSION['files/move-folder/index_errors']
+    $_SESSION['files/move-folder/parentidfolders'],
+    $_SESSION['files/move-folder/errors']
 );
 
 include_once '../../fns/Folders/move.php';
 Folders\move($mysqli, $idusers, $idfolders, $parentidfolders);
 
-$_SESSION['files/index_idfolders'] = $parentidfolders;
-$_SESSION['files/index_messages'] = array('File has been moved.');
+$_SESSION['files/idfolders'] = $parentidfolders;
+$_SESSION['files/messages'] = array('File has been moved.');
 
 include_once '../../fns/create_folder_link.php';
 redirect(create_folder_link($parentidfolders, '../'));

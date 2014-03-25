@@ -5,8 +5,8 @@ $base = '../';
 include_once '../fns/require_guest_user.php';
 require_guest_user($base);
 
-if (array_key_exists('sign-up/index_values', $_SESSION)) {
-    $values = $_SESSION['sign-up/index_values'];
+if (array_key_exists('sign-up/values', $_SESSION)) {
+    $values = $_SESSION['sign-up/values'];
 } else {
     $values = array(
         'username' => '',
@@ -17,9 +17,9 @@ if (array_key_exists('sign-up/index_values', $_SESSION)) {
 }
 
 unset(
-    $_SESSION['sign-in/index_errors'],
-    $_SESSION['sign-in/index_values'],
-    $_SESSION['sign-in/index_messages']
+    $_SESSION['sign-in/errors'],
+    $_SESSION['sign-in/values'],
+    $_SESSION['sign-in/messages']
 );
 
 include_once '../fns/create_panel.php';
@@ -35,7 +35,7 @@ $content =
     create_tabs(
         array(),
         'Sign Up',
-        Page\sessionErrors('sign-up/index_errors')
+        Page\sessionErrors('sign-up/errors')
         .'<form action="submit.php" method="post">'
             .Form\textfield('username', 'Username', array(
                 'value' => $values['username'],

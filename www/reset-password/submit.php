@@ -35,8 +35,8 @@ if ($password1 === '') {
 include_once '../fns/redirect.php';
 
 if ($errors) {
-    $_SESSION['reset-password/index_errors'] = $errors;
-    $_SESSION['reset-password/index_values'] = array(
+    $_SESSION['reset-password/errors'] = $errors;
+    $_SESSION['reset-password/values'] = array(
         'password1' => $password1,
         'password2' => $password2,
     );
@@ -44,8 +44,8 @@ if ($errors) {
 }
 
 unset(
-    $_SESSION['reset-password/index_errors'],
-    $_SESSION['reset-password/index_values']
+    $_SESSION['reset-password/errors'],
+    $_SESSION['reset-password/values']
 );
 
 include_once '../fns/Users/editPassword.php';
@@ -53,7 +53,7 @@ Users\editPassword($mysqli, $idusers, $password1);
 
 setcookie('username', $user->username, time() + 60 * 60 * 24 * 30, '/');
 
-$_SESSION['sign-in/index_messages'] = array(
+$_SESSION['sign-in/messages'] = array(
     'Password has been reset.',
     'You can sign in with your new password.'
 );

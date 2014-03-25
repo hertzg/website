@@ -37,20 +37,20 @@ if ($foldername === '') {
 }
 
 if ($errors) {
-    $_SESSION['files/add-folder/index_errors'] = $errors;
-    $_SESSION['files/add-folder/index_values'] = array('foldername' => $foldername);
+    $_SESSION['files/add-folder/errors'] = $errors;
+    $_SESSION['files/add-folder/values'] = array('foldername' => $foldername);
     redirect("./?parentidfolders=$parentidfolders");
 }
 
 unset(
-    $_SESSION['files/add-folder/index_errors'],
-    $_SESSION['files/add-folder/index_values']
+    $_SESSION['files/add-folder/errors'],
+    $_SESSION['files/add-folder/values']
 );
 
 include_once '../../fns/Folders/add.php';
 $idfolders = Folders\add($mysqli, $idusers, $parentidfolders, $foldername);
 
-$_SESSION['files/index_idfolders'] = $idfolders;
-$_SESSION['files/index_messages'] = array('Folder has been created.');
+$_SESSION['files/idfolders'] = $idfolders;
+$_SESSION['files/messages'] = array('Folder has been created.');
 include_once '../../fns/create_folder_link.php';
 redirect("../?idfolders=$idfolders");

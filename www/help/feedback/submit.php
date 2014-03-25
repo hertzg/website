@@ -24,16 +24,16 @@ if ($feedbacktext === '') {
 include_once '../../fns/redirect.php';
 
 if ($errors) {
-    $_SESSION['help/feedback/index_errors'] = $errors;
-    $_SESSION['help/feedback/index_values'] = array(
+    $_SESSION['help/feedback/errors'] = $errors;
+    $_SESSION['help/feedback/values'] = array(
         'feedbacktext' => $feedbacktext,
     );
     redirect();
 }
 
 unset(
-    $_SESSION['help/feedback/index_errors'],
-    $_SESSION['help/feedback/index_values']
+    $_SESSION['help/feedback/errors'],
+    $_SESSION['help/feedback/values']
 );
 
 include_once '../../fns/Feedbacks/add.php';
@@ -66,5 +66,5 @@ $headers =
 
 mail('info@zvini.com', $title, $html, $headers);
 
-$_SESSION['help/index_messages'] = array('Thank you for the feedback.');
+$_SESSION['help/messages'] = array('Thank you for the feedback.');
 redirect('..');

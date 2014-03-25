@@ -7,7 +7,7 @@ include_once '../../fns/Users/showNotifications.php';
 include_once '../../lib/mysqli.php';
 Users\showNotifications($mysqli, $user->idusers, false);
 
-$_SESSION['customize-home/show-hide/index_messages'] = array(
+$_SESSION['customize-home/show-hide/messages'] = array(
     '"Notifications" is now hidden.',
 );
 

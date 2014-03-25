@@ -5,8 +5,8 @@ include_once '../../lib/mysqli.php';
 list($folder, $idfolders, $user) = require_folder($mysqli);
 
 unset(
-    $_SESSION['files/index_idfolders'],
-    $_SESSION['files/index_messages']
+    $_SESSION['files/idfolders'],
+    $_SESSION['files/messages']
 );
 
 include_once '../../fns/create_folder_link.php';

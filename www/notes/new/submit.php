@@ -26,8 +26,8 @@ parse_tags($tags, $tagnames, $errors);
 include_once '../../fns/redirect.php';
 
 if ($errors) {
-    $_SESSION['notes/new/index_errors'] = $errors;
-    $_SESSION['notes/new/index_values'] = array(
+    $_SESSION['notes/new/errors'] = $errors;
+    $_SESSION['notes/new/values'] = array(
         'notetext' => $notetext,
         'tags' => $tags,
     );
@@ -35,8 +35,8 @@ if ($errors) {
 }
 
 unset(
-    $_SESSION['notes/new/index_errors'],
-    $_SESSION['notes/new/index_values']
+    $_SESSION['notes/new/errors'],
+    $_SESSION['notes/new/values']
 );
 
 include_once '../../fns/Notes/add.php';
@@ -49,5 +49,5 @@ NoteTags\add($mysqli, $idusers, $id, $tagnames, $notetext);
 include_once '../../fns/Users/addNumNotes.php';
 Users\addNumNotes($mysqli, $idusers, 1);
 
-$_SESSION['notes/view/index_messages'] = array('Note has been saved.');
+$_SESSION['notes/view/messages'] = array('Note has been saved.');
 redirect("../view/?id=$id");

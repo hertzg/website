@@ -6,8 +6,8 @@ include_once '../../fns/require_user.php';
 $user = require_user($base);
 
 unset(
-    $_SESSION['tasks/index_errors'],
-    $_SESSION['tasks/index_messages']
+    $_SESSION['tasks/errors'],
+    $_SESSION['tasks/messages']
 );
 
 include_once '../../fns/create_tabs.php';

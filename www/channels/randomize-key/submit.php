@@ -10,7 +10,7 @@ list($channel, $id, $user) = require_channel($mysqli);
 include_once '../../fns/Channels/randomizeKey.php';
 Channels\randomizeKey($mysqli, $user->idusers, $id);
 
-$_SESSION['channels/view/index_messages'] = array('Channel key has been randomized.');
+$_SESSION['channels/view/messages'] = array('Channel key has been randomized.');
 
 include_once '../../fns/redirect.php';
 redirect("../view/?id=$id");

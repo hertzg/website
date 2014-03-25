@@ -14,8 +14,8 @@ function require_channel ($mysqli) {
     $channel = Channels\get($mysqli, $user->idusers, $id);
 
     if (!$channel) {
-        unset($_SESSION['channels/index_messages']);
-        $_SESSION['channels/index_errors'] = array(
+        unset($_SESSION['channels/messages']);
+        $_SESSION['channels/errors'] = array(
             'The channel no longer exists.',
         );
         include_once __DIR__.'/../../fns/redirect.php';

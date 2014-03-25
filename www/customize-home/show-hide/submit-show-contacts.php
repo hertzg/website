@@ -7,7 +7,7 @@ include_once '../../fns/Users/showContacts.php';
 include_once '../../lib/mysqli.php';
 Users\showContacts($mysqli, $user->idusers, true);
 
-$_SESSION['customize-home/show-hide/index_messages'] = array(
+$_SESSION['customize-home/show-hide/messages'] = array(
     '"Contacts" is now visible.',
 );
 

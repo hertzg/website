@@ -16,8 +16,8 @@ ContactTags\deleteOnContact($mysqli, $id);
 include_once '../../fns/Users/addNumContacts.php';
 Users\addNumContacts($mysqli, $user->idusers, -1);
 
-unset($_SESSION['contacts/index_errors']);
-$_SESSION['contacts/index_messages'] = array('Contact has been deleted.');
+unset($_SESSION['contacts/errors']);
+$_SESSION['contacts/messages'] = array('Contact has been deleted.');
 
 include_once '../../fns/redirect.php';
 redirect('..');

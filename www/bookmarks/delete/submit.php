@@ -16,8 +16,8 @@ BookmarkTags\deleteOnBookmark($mysqli, $id);
 include_once '../../fns/Users/addNumBookmarks.php';
 Users\addNumBookmarks($mysqli, $user->idusers, -1);
 
-unset($_SESSION['bookmarks/index_errors']);
-$_SESSION['bookmarks/index_messages'] = array('Bookmark has been deleted.');
+unset($_SESSION['bookmarks/errors']);
+$_SESSION['bookmarks/messages'] = array('Bookmark has been deleted.');
 
 include_once '../../fns/redirect.php';
 redirect('..');

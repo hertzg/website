@@ -58,7 +58,7 @@ if ($options) {
     $optionsPanel = '';
 }
 
-unset($_SESSION['account/index_messages']);
+unset($_SESSION['account/messages']);
 
 include_once '../fns/create_tabs.php';
 include_once '../fns/Page/sessionErrors.php';
@@ -76,8 +76,8 @@ $content =
             ),
         ),
         'Sessions',
-        Page\sessionErrors('tokens/index_errors')
-        .Page\sessionMessages('tokens/index_messages')
+        Page\sessionErrors('tokens/errors')
+        .Page\sessionMessages('tokens/messages')
         .join('<div class="hr"></div>', $items)
     )
     .$optionsPanel;

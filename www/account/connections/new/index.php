@@ -6,11 +6,11 @@ include_once '../../../fns/require_user.php';
 $user = require_user($base);
 
 unset(
-    $_SESSION['account/connections/index_errors'],
-    $_SESSION['account/connections/index_messages']
+    $_SESSION['account/connections/errors'],
+    $_SESSION['account/connections/messages']
 );
 
-$key = 'account/connections/new/index_values';
+$key = 'account/connections/new/values';
 if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];
 } else {
@@ -52,7 +52,7 @@ $content = create_tabs(
         ),
     ),
     'New',
-    Page\sessionErrors('account/connections/new/index_errors')
+    Page\sessionErrors('account/connections/new/errors')
     .'<form action="submit.php" method="post">'
         .join('<div class="hr"></div>', $items)
     .'</form>'

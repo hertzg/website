@@ -5,10 +5,10 @@ include_once '../../lib/mysqli.php';
 list($note, $id, $user) = require_note($mysqli);
 
 unset(
-    $_SESSION['notes/edit/index_errors'],
-    $_SESSION['notes/edit/index_values'],
-    $_SESSION['notes/index_errors'],
-    $_SESSION['notes/index_messages']
+    $_SESSION['notes/edit/errors'],
+    $_SESSION['notes/edit/values'],
+    $_SESSION['notes/errors'],
+    $_SESSION['notes/messages']
 );
 
 $base = '../../';
@@ -56,7 +56,7 @@ $content =
             ),
         ),
         "Note #$id",
-        Page\sessionMessages('notes/view/index_messages')
+        Page\sessionMessages('notes/view/messages')
         .join('<div class="hr"></div>', $items)
     )
     .create_panel(

@@ -5,10 +5,10 @@ include_once '../../lib/mysqli.php';
 list($task, $id, $user) = require_task($mysqli);
 
 unset(
-    $_SESSION['tasks/edit/index_errors'],
-    $_SESSION['tasks/edit/index_values'],
-    $_SESSION['tasks/index_errors'],
-    $_SESSION['tasks/index_messages']
+    $_SESSION['tasks/edit/errors'],
+    $_SESSION['tasks/edit/values'],
+    $_SESSION['tasks/errors'],
+    $_SESSION['tasks/messages']
 );
 
 include_once '../../fns/Page/imageArrowLink.php';
@@ -72,7 +72,7 @@ $content =
             ),
         ),
         "Task #$id",
-        Page\sessionMessages('tasks/view/index_messages')
+        Page\sessionMessages('tasks/view/messages')
         .join('<div class="hr"></div>', $items)
     )
     .create_panel('Options', join('<div class="hr"></div>', $options));

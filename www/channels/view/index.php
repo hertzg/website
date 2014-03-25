@@ -5,8 +5,8 @@ include_once '../../lib/mysqli.php';
 list($channel, $id, $user) = require_channel($mysqli);
 
 unset(
-    $_SESSION['contacts/index_errors'],
-    $_SESSION['contacts/index_messages']
+    $_SESSION['contacts/errors'],
+    $_SESSION['contacts/messages']
 );
 
 include_once '../../fns/create_panel.php';
@@ -28,7 +28,7 @@ $content =
             ),
         ),
         "Channel #$id",
-        Page\sessionMessages('channels/view/index_messages')
+        Page\sessionMessages('channels/view/messages')
         .Form\label('Channel name', htmlspecialchars($channel->channelname))
         .'<div class="hr"></div>'
         .Form\textfield('channelkey', 'Channel key', array(

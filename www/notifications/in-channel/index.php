@@ -53,9 +53,9 @@ if ($notifications) {
 }
 
 unset(
-    $_SESSION['channels/index_messages'],
-    $_SESSION['home/index_messages'],
-    $_SESSION['notifications/index_messages']
+    $_SESSION['channels/messages'],
+    $_SESSION['home/messages'],
+    $_SESSION['notifications/messages']
 );
 
 include_once '../../fns/create_panel.php';
@@ -70,7 +70,7 @@ $content =
             ),
         ),
         'Notifications',
-        Page\sessionMessages('notifications/in-channel/index_messages')
+        Page\sessionMessages('notifications/in-channel/messages')
         .'<div class="filterBar">'
             .'Channel: <b>'.htmlspecialchars($channel->channelname).'</b>'
             .'<a class="clickable" title="Clear Filter" href="..">'

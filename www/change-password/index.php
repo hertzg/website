@@ -5,8 +5,8 @@ $base = '../';
 include_once '../fns/require_user.php';
 $user = require_user($base);
 
-if (array_key_exists('change-password/index_values', $_SESSION)) {
-    $values = $_SESSION['change-password/index_values'];
+if (array_key_exists('change-password/values', $_SESSION)) {
+    $values = $_SESSION['change-password/values'];
 } else {
     $values = array(
         'currentpassword' => '',
@@ -15,7 +15,7 @@ if (array_key_exists('change-password/index_values', $_SESSION)) {
     );
 }
 
-unset($_SESSION['account/index_messages']);
+unset($_SESSION['account/messages']);
 
 include_once '../fns/create_tabs.php';
 include_once '../fns/Form/button.php';
@@ -35,7 +35,7 @@ $content =
             ),
         ),
         'Change Password',
-        Page\sessionErrors('change-password/index_errors')
+        Page\sessionErrors('change-password/errors')
         .'<form action="submit.php" method="post">'
             .Form\password('currentpassword', 'Current password', array(
                 'value' => $values['currentpassword'],

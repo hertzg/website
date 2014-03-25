@@ -16,7 +16,7 @@ include_once '../../fns/Captcha/check.php';
 Captcha\check($errors);
 
 if ($errors) {
-    $_SESSION['account/verify-email/index_errors'] = $errors;
+    $_SESSION['account/verify-email/errors'] = $errors;
     redirect();
 }
 
@@ -65,7 +65,7 @@ $headers =
 
 mail($user->email, $subject, $html, $headers);
 
-$_SESSION['account/index_messages'] = array(
+$_SESSION['account/messages'] = array(
     'Instructions to verify email have been sent to your email address.',
 );
 

@@ -6,16 +6,16 @@ include_once '../fns/require_user.php';
 $user = require_user($base);
 
 unset(
-    $_SESSION['account/index_messages'],
-    $_SESSION['bookmarks/index_messages'],
-    $_SESSION['calendar/index_messages'],
-    $_SESSION['contacts/index_messages'],
-    $_SESSION['customize-home/index_messages'],
-    $_SESSION['files/index_messages'],
-    $_SESSION['help/index_messages'],
-    $_SESSION['notes/index_messages'],
-    $_SESSION['notifications/index_messages'],
-    $_SESSION['tasks/index_messages']
+    $_SESSION['account/messages'],
+    $_SESSION['bookmarks/messages'],
+    $_SESSION['calendar/messages'],
+    $_SESSION['contacts/messages'],
+    $_SESSION['customize-home/messages'],
+    $_SESSION['files/messages'],
+    $_SESSION['help/messages'],
+    $_SESSION['notes/messages'],
+    $_SESSION['notifications/messages'],
+    $_SESSION['tasks/messages']
 );
 
 $items = array();
@@ -42,7 +42,7 @@ $content =
     create_tabs(
         array(),
         'Home',
-        Page\sessionMessages('home/index_messages')
+        Page\sessionMessages('home/messages')
         .create_new_notifications($mysqli, $user)
         .join('<div class="hr"></div>', $items)
     )

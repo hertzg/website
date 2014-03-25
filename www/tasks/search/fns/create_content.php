@@ -13,7 +13,7 @@ function create_content ($user, $filterMessage, array $items) {
                 ),
             ),
             'Tasks',
-            Page\sessionMessages('tasks/index_messages')
+            Page\sessionMessages('tasks/messages')
             .$filterMessage.join('<div class="hr"></div>', $items)
         )
         .create_options_panel($user, '../');

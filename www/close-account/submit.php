@@ -26,11 +26,11 @@ if ($password === '') {
 include_once '../fns/redirect.php';
 
 if ($errors) {
-    $_SESSION['close-account/index_errors'] = $errors;
+    $_SESSION['close-account/errors'] = $errors;
     redirect();
 }
 
-unset($_SESSION['close-account/index_errors']);
+unset($_SESSION['close-account/errors']);
 
 include_once '../fns/Bookmarks/deleteOnUser.php';
 include_once '../lib/mysqli.php';
@@ -81,7 +81,7 @@ Tokens\deleteOnUser($mysqli, $idusers);
 include_once '../fns/Users/delete.php';
 Users\delete($mysqli, $idusers);
 
-$_SESSION['sign-in/index_messages'] = array(
+$_SESSION['sign-in/messages'] = array(
     'Your account has been closed.',
 );
 

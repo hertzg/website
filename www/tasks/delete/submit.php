@@ -16,8 +16,8 @@ TaskTags\deleteOnTask($mysqli, $id);
 include_once '../../fns/Users/addNumTasks.php';
 Users\addNumTasks($mysqli, $user->idusers, -1);
 
-unset($_SESSION['tasks/index_errors']);
-$_SESSION['tasks/index_messages'] = array('Task has been deleted.');
+unset($_SESSION['tasks/errors']);
+$_SESSION['tasks/messages'] = array('Task has been deleted.');
 
 include_once '../../fns/redirect.php';
 redirect('..');

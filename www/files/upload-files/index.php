@@ -23,8 +23,8 @@ if ($idfolders) {
 }
 
 unset(
-    $_SESSION['files/index_idfolders'],
-    $_SESSION['files/index_messages']
+    $_SESSION['files/idfolders'],
+    $_SESSION['files/messages']
 );
 
 include_once '../../fns/create_folder_link.php';
@@ -49,7 +49,7 @@ $content =
             ),
         ),
         'Upload Files',
-        Page\sessionErrors('files/upload-files/index_errors')
+        Page\sessionErrors('files/upload-files/errors')
         .Page\warnings(array(
             'Maximum '.bytestr(ini_get_bytes('upload_max_filesize')).' each file.',
             'Maximum '.bytestr(ini_get_bytes('post_max_size')).' at once.',

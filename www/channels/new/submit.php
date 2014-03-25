@@ -31,14 +31,14 @@ if ($channelname === '') {
 include_once '../../fns/redirect.php';
 
 if ($errors) {
-    $_SESSION['channels/add/index_errors'] = $errors;
-    $_SESSION['channels/add/index_values'] = array('channelname' => $channelname);
+    $_SESSION['channels/add/errors'] = $errors;
+    $_SESSION['channels/add/values'] = array('channelname' => $channelname);
     redirect();
 }
 
 unset(
-    $_SESSION['channels/add/index_errors'],
-    $_SESSION['channels/add/index_values']
+    $_SESSION['channels/add/errors'],
+    $_SESSION['channels/add/values']
 );
 
 include_once '../../fns/Channels/add.php';
@@ -47,5 +47,5 @@ $id = Channels\add($mysqli, $idusers, $channelname);
 include_once '../../fns/Users/addNumChannels.php';
 Users\addNumChannels($mysqli, $idusers, 1);
 
-$_SESSION['channels/view/index_messages'] = array('Channel has been added.');
+$_SESSION['channels/view/messages'] = array('Channel has been added.');
 redirect("../view/?id=$id");

@@ -14,8 +14,8 @@ function create_content ($user, $filterMessage, array $items) {
                 ),
             ),
             'Contacts',
-            Page\sessionErrors('contacts/index_errors')
-            .Page\sessionMessages('contacts/index_messages')
+            Page\sessionErrors('contacts/errors')
+            .Page\sessionMessages('contacts/messages')
             .$filterMessage.join('<div class="hr"></div>', $items)
         )
         .create_options_panel($user);

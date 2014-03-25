@@ -27,22 +27,22 @@ include_once '../../fns/Files/getByName.php';
 $existingFile = Files\getByName($mysqli, $idusers, $idfolders, $file->filename);
 
 if ($existingFile) {
-    $_SESSION['files/move-file/index_idfolders'] = $idfolders;
-    $_SESSION['files/move-file/index_errors'] = array(
+    $_SESSION['files/move-file/idfolders'] = $idfolders;
+    $_SESSION['files/move-file/errors'] = array(
         'A file with the same name already exists in this folder.',
     );
     redirect("./?id=$id&idfolders=$idfolders");
 }
 
 unset(
-    $_SESSION['files/move-file/index_idfolders'],
-    $_SESSION['files/move-file/index_errors']
+    $_SESSION['files/move-file/idfolders'],
+    $_SESSION['files/move-file/errors']
 );
 
 include_once '../../fns/Files/move.php';
 Files\move($mysqli, $idusers, $id, $idfolders);
 
-$_SESSION['files/index_idfolders'] = $idfolders;
-$_SESSION['files/index_messages'] = array('File has been moved.');
+$_SESSION['files/idfolders'] = $idfolders;
+$_SESSION['files/messages'] = array('File has been moved.');
 include_once '../../fns/create_folder_link.php';
 redirect(create_folder_link($idfolders, '../'));

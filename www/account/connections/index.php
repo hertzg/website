@@ -31,10 +31,10 @@ if ($items) {
 }
 
 unset(
-    $_SESSION['account/connections/default/index_messages'],
-    $_SESSION['account/connections/new/index_errors'],
-    $_SESSION['account/connections/new/index_values'],
-    $_SESSION['account/connections/view/index_messages']
+    $_SESSION['account/connections/default/messages'],
+    $_SESSION['account/connections/new/errors'],
+    $_SESSION['account/connections/new/values'],
+    $_SESSION['account/connections/view/messages']
 );
 
 include_once '../../fns/create_panel.php';
@@ -53,8 +53,8 @@ $content = create_tabs(
         ],
     ],
     'Connections',
-    Page\sessionMessages('account/connections/index_messages')
-    .Page\sessionErrors('account/connections/index_errors')
+    Page\sessionMessages('account/connections/messages')
+    .Page\sessionErrors('account/connections/errors')
     .join('<div class="hr"></div>', $items)
     .create_panel('Options', join('<div class="hr"></div>', $options))
 );

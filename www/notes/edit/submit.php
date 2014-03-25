@@ -27,8 +27,8 @@ parse_tags($tags, $tagnames, $errors);
 include_once '../../fns/redirect.php';
 
 if ($errors) {
-    $_SESSION['notes/edit/index_errors'] = $errors;
-    $_SESSION['notes/edit/index_values'] = array(
+    $_SESSION['notes/edit/errors'] = $errors;
+    $_SESSION['notes/edit/values'] = array(
         'notetext' => $notetext,
         'tags' => $tags,
     );
@@ -36,8 +36,8 @@ if ($errors) {
 }
 
 unset(
-    $_SESSION['notes/edit/index_errors'],
-    $_SESSION['notes/edit/index_values']
+    $_SESSION['notes/edit/errors'],
+    $_SESSION['notes/edit/values']
 );
 
 include_once '../../fns/Notes/edit.php';
@@ -49,5 +49,5 @@ NoteTags\deleteOnNote($mysqli, $id);
 include_once '../../fns/NoteTags/add.php';
 NoteTags\add($mysqli, $idusers, $id, $tagnames, $notetext);
 
-$_SESSION['notes/view/index_messages'] = array('Changes have been saved.');
+$_SESSION['notes/view/messages'] = array('Changes have been saved.');
 redirect("../view/?id=$id");

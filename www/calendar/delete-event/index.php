@@ -4,7 +4,7 @@ include_once '../fns/require_event.php';
 include_once '../../lib/mysqli.php';
 list($event, $idevents, $user) = require_event($mysqli);
 
-unset($_SESSION['calendar/view-event/index_messages']);
+unset($_SESSION['calendar/view-event/messages']);
 
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/imageLink.php';

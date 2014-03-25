@@ -5,7 +5,7 @@ list($item, $key, $user) = require_item();
 
 $title = $item['title'];
 
-unset($_SESSION['customize-home/reorder/index_messages']);
+unset($_SESSION['customize-home/reorder/messages']);
 
 include_once '../../../fns/create_tabs.php';
 include_once '../../../fns/Page/imageLink.php';

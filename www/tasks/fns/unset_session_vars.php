@@ -2,9 +2,9 @@
 
 function unset_session_vars () {
     unset(
-        $_SESSION['home/index_messages'],
-        $_SESSION['tasks/new/index_errors'],
-        $_SESSION['tasks/new/index_values'],
-        $_SESSION['tasks/view/index_messages']
+        $_SESSION['home/messages'],
+        $_SESSION['tasks/new/errors'],
+        $_SESSION['tasks/new/values'],
+        $_SESSION['tasks/view/messages']
     );
 }

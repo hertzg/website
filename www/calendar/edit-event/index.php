@@ -4,13 +4,13 @@ include_once '../fns/require_event.php';
 include_once '../../lib/mysqli.php';
 list($event, $idevents, $user) = require_event($mysqli);
 
-if (array_key_exists('calendar/edit-event/index_values', $_SESSION)) {
-    $values = $_SESSION['calendar/edit-event/index_values'];
+if (array_key_exists('calendar/edit-event/values', $_SESSION)) {
+    $values = $_SESSION['calendar/edit-event/values'];
 } else {
     $values = array('eventtext' => $event->eventtext);
 }
 
-unset($_SESSION['calendar/view-event/index_messages']);
+unset($_SESSION['calendar/view-event/messages']);
 
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
@@ -31,7 +31,7 @@ $content =
             ),
         ),
         'Edit',
-        Page\sessionErrors('calendar/edit-event/index_errors')
+        Page\sessionErrors('calendar/edit-event/errors')
         .'<form action="submit.php" method="post">'
             .Form\label('When', date('F d, Y', $event->eventtime))
             .'<div class="hr"></div>'

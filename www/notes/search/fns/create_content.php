@@ -13,7 +13,7 @@ function create_content ($user, $filterMessage, array $items) {
                 ),
             ),
             'Notes',
-            Page\sessionMessages('notes/index_messages')
+            Page\sessionMessages('notes/messages')
             .$filterMessage.join('<div class="hr"></div>', $items)
         )
         .create_options_panel($user, '../');

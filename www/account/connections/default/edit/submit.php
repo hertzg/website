@@ -12,7 +12,7 @@ include_once '../../../../fns/Users/editAnonymousConnection.php';
 include_once '../../../../lib/mysqli.php';
 Users\editAnonymousConnection($mysqli, $user->idusers, $can_send_channel);
 
-$_SESSION['account/connections/default/index_messages'] = [
+$_SESSION['account/connections/default/messages'] = [
     'Changes have been saved.',
 ];
 

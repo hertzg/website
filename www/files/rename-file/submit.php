@@ -33,18 +33,18 @@ if ($filename === '') {
 include_once '../../fns/redirect.php';
 
 if ($errors) {
-    $_SESSION['files/rename-file/index_errors'] = $errors;
-    $_SESSION['files/rename-file/index_values'] = array('filename' => $filename);
+    $_SESSION['files/rename-file/errors'] = $errors;
+    $_SESSION['files/rename-file/values'] = array('filename' => $filename);
     redirect("./?id=$id");
 }
 
 unset(
-    $_SESSION['files/rename-file/index_errors'],
-    $_SESSION['files/rename-file/index_values']
+    $_SESSION['files/rename-file/errors'],
+    $_SESSION['files/rename-file/values']
 );
 
 include_once '../../fns/Files/rename.php';
 Files\rename($mysqli, $idusers, $id, $filename);
 
-$_SESSION['files/view-file/index_messages'] = array('Renamed.');
+$_SESSION['files/view-file/messages'] = array('Renamed.');
 redirect("../view-file/?id=$id");

@@ -25,8 +25,8 @@ parse_tags($tags, $tagnames, $errors);
 include_once '../../fns/redirect.php';
 
 if ($errors) {
-    $_SESSION['bookmarks/new/index_errors'] = $errors;
-    $_SESSION['bookmarks/new/index_values'] = array(
+    $_SESSION['bookmarks/new/errors'] = $errors;
+    $_SESSION['bookmarks/new/values'] = array(
         'title' => $title,
         'url' => $url,
         'tags' => $tags,
@@ -35,8 +35,8 @@ if ($errors) {
 }
 
 unset(
-    $_SESSION['bookmarks/new/index_errors'],
-    $_SESSION['bookmarks/new/index_values']
+    $_SESSION['bookmarks/new/errors'],
+    $_SESSION['bookmarks/new/values']
 );
 
 include_once '../../fns/Bookmarks/add.php';
@@ -49,5 +49,5 @@ BookmarkTags\add($mysqli, $idusers, $id, $tagnames, $title, $url);
 include_once '../../fns/Users/addNumBookmarks.php';
 Users\addNumBookmarks($mysqli, $idusers, 1);
 
-$_SESSION['bookmarks/view/index_messages'] = array('Bookmark has been saved.');
+$_SESSION['bookmarks/view/messages'] = array('Bookmark has been saved.');
 redirect("../view/?id=$id");

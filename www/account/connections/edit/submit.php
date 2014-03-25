@@ -38,8 +38,8 @@ if ($username === '') {
 include_once '../../../fns/redirect.php';
 
 if ($errors) {
-    $_SESSION['account/connections/edit/index_errors'] = $errors;
-    $_SESSION['account/connections/edit/index_values'] = [
+    $_SESSION['account/connections/edit/errors'] = $errors;
+    $_SESSION['account/connections/edit/values'] = [
         'username' => $username,
         'can_send_channel' => $can_send_channel,
     ];
@@ -50,7 +50,7 @@ include_once '../../../fns/Connections/edit.php';
 Connections\edit($mysqli, $id, $connected_id_users,
     $username, $can_send_channel);
 
-$_SESSION['account/connections/view/index_messages'] = [
+$_SESSION['account/connections/view/messages'] = [
     'Changes have been saved.',
 ];
 redirect("../view/?id=$id");

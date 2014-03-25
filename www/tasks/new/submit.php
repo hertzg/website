@@ -26,8 +26,8 @@ parse_tags($tags, $tagnames, $errors);
 include_once '../../fns/redirect.php';
 
 if ($errors) {
-    $_SESSION['tasks/new/index_errors'] = $errors;
-    $_SESSION['tasks/new/index_values'] = array(
+    $_SESSION['tasks/new/errors'] = $errors;
+    $_SESSION['tasks/new/values'] = array(
         'tasktext' => $tasktext,
         'tags' => $tags,
     );
@@ -35,8 +35,8 @@ if ($errors) {
 }
 
 unset(
-    $_SESSION['tasks/new/index_errors'],
-    $_SESSION['tasks/new/index_values']
+    $_SESSION['tasks/new/errors'],
+    $_SESSION['tasks/new/values']
 );
 
 include_once '../../fns/Tasks/add.php';
@@ -49,5 +49,5 @@ TaskTags\add($mysqli, $idusers, $id, $tagnames, $tasktext, $tags);
 include_once '../../fns/Users/addNumTasks.php';
 Users\addNumTasks($mysqli, $idusers, 1);
 
-$_SESSION['tasks/view/index_messages'] = array('Task has been saved.');
+$_SESSION['tasks/view/messages'] = array('Task has been saved.');
 redirect("../view/?id=$id");

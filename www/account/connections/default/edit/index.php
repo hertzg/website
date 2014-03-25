@@ -5,7 +5,7 @@ $base = '../../../../';
 include_once '../../../../fns/require_user.php';
 $user = require_user($base);
 
-$key = 'account/connections/default/edit/index_values';
+$key = 'account/connections/default/edit/values';
 if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];
 } else {
@@ -14,7 +14,7 @@ if (array_key_exists($key, $_SESSION)) {
     ];
 }
 
-unset($_SESSION['account/connections/default/index_messages']);
+unset($_SESSION['account/connections/default/messages']);
 
 include_once '../../../../fns/create_tabs.php';
 include_once '../../../../fns/Form/button.php';
@@ -33,7 +33,7 @@ $content = create_tabs(
         ],
     ],
     'Edit',
-    Page\sessionErrors('account/connections/edit/index_errors')
+    Page\sessionErrors('account/connections/edit/errors')
     .'<form action="submit.php" method="post">'
         .Form\label('Username', 'Any other username')
         .'<div class="hr"></div>'

@@ -58,18 +58,18 @@ include_once 'fns/render_folders_and_files.php';
 render_folders_and_files($folders, $files, $items, 'Folder is empty.');
 
 unset(
-    $_SESSION['files/add-folder/index_errors'],
-    $_SESSION['files/add-folder/index_values'],
-    $_SESSION['files/rename-folder/index_errors'],
-    $_SESSION['files/rename-folder/index_values'],
-    $_SESSION['files/upload-files/index_errors'],
-    $_SESSION['files/view-file/index_messages'],
-    $_SESSION['home/index_messages']
+    $_SESSION['files/add-folder/errors'],
+    $_SESSION['files/add-folder/values'],
+    $_SESSION['files/rename-folder/errors'],
+    $_SESSION['files/rename-folder/values'],
+    $_SESSION['files/upload-files/errors'],
+    $_SESSION['files/view-file/messages'],
+    $_SESSION['home/messages']
 );
 
-if (array_key_exists('files/index_idfolders', $_SESSION) &&
-    $idfolders != $_SESSION['files/index_idfolders']) {
-    unset($_SESSION['files/index_messages']);
+if (array_key_exists('files/idfolders', $_SESSION) &&
+    $idfolders != $_SESSION['files/idfolders']) {
+    unset($_SESSION['files/messages']);
 }
 
 include_once 'fns/create_options_panel.php';
@@ -84,7 +84,7 @@ $content =
             ),
         ),
         'Files',
-        Page\sessionMessages('files/index_messages')
+        Page\sessionMessages('files/messages')
         .join('<div class="hr"></div>', $items)
     )
     .create_options_panel($idfolders);

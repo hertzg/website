@@ -40,8 +40,8 @@ if ($events) {
 }
 
 unset(
-    $_SESSION['calendar/index_errors'],
-    $_SESSION['calendar/index_messages']
+    $_SESSION['calendar/errors'],
+    $_SESSION['calendar/messages']
 );
 
 include_once '../../fns/create_panel.php';

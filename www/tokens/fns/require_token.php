@@ -14,8 +14,8 @@ function require_token ($mysqli) {
     $token = Tokens\getOnUser($mysqli, $user->idusers, $id);
 
     if (!$token) {
-        unset($_SESSION['tokens/index_messages']);
-        $_SESSION['tokens/index_errors'] = array(
+        unset($_SESSION['tokens/messages']);
+        $_SESSION['tokens/errors'] = array(
             'The remembered session no longer exists.',
         );
         include_once __DIR__.'/../../fns/redirect.php';

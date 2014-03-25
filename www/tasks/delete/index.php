@@ -4,7 +4,7 @@ include_once '../fns/require_task.php';
 include_once '../../lib/mysqli.php';
 list($task, $id, $user) = require_task($mysqli);
 
-unset($_SESSION['tasks/view/index_messages']);
+unset($_SESSION['tasks/view/messages']);
 
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/imageLink.php';

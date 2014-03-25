@@ -4,15 +4,15 @@ include_once '../fns/require_folder.php';
 include_once '../../lib/mysqli.php';
 list($folder, $idfolders, $user) = require_folder($mysqli);
 
-if (array_key_exists('files/rename-folder/index_values', $_SESSION)) {
-    $values = $_SESSION['files/rename-folder/index_values'];
+if (array_key_exists('files/rename-folder/values', $_SESSION)) {
+    $values = $_SESSION['files/rename-folder/values'];
 } else {
     $values = (array)$folder;
 }
 
 unset(
-    $_SESSION['files/index_idfolders'],
-    $_SESSION['files/index_messages']
+    $_SESSION['files/idfolders'],
+    $_SESSION['files/messages']
 );
 
 include_once '../../fns/create_folder_link.php';
@@ -34,7 +34,7 @@ $content =
             ),
         ),
         "Rename Folder #$idfolders",
-        Page\sessionErrors('files/rename-folder/index_errors')
+        Page\sessionErrors('files/rename-folder/errors')
         .'<form action="submit.php" method="post">'
             .Form\textfield('foldername', 'Folder name', array(
                 'value' => $values['foldername'],

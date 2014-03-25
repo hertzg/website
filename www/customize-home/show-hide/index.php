@@ -27,8 +27,8 @@ foreach ($userHomeItems as $key => $item) {
 }
 
 unset(
-    $_SESSION['customize-home/index_messages'],
-    $_SESSION['customize-home/reorder/index_messages']
+    $_SESSION['customize-home/messages'],
+    $_SESSION['customize-home/reorder/messages']
 );
 
 include_once '../../fns/create_panel.php';
@@ -49,7 +49,7 @@ $content = create_tabs(
         ),
     ),
     'Show / Hide Items',
-    Page\sessionMessages('customize-home/show-hide/index_messages')
+    Page\sessionMessages('customize-home/show-hide/messages')
     .Page\warnings(array(
         'Select items to see them on your home page.',
     ))

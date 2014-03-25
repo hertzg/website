@@ -4,13 +4,13 @@ include_once '../fns/require_contact.php';
 include_once '../../lib/mysqli.php';
 list($contact, $id, $user) = require_contact($mysqli);
 
-if (array_key_exists('contacts/edit/index_values', $_SESSION)) {
-    $values = $_SESSION['contacts/edit/index_values'];
+if (array_key_exists('contacts/edit/values', $_SESSION)) {
+    $values = $_SESSION['contacts/edit/values'];
 } else {
     $values = (array)$contact;
 }
 
-unset($_SESSION['contacts/view/index_messages']);
+unset($_SESSION['contacts/view/messages']);
 
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
@@ -30,7 +30,7 @@ $content =
             ),
         ),
         'Edit',
-        Page\sessionErrors('contacts/edit/index_errors')
+        Page\sessionErrors('contacts/edit/errors')
         .'<form action="submit.php" method="post">'
             .Form\textfield('full_name', 'Full name', array(
                 'value' => $values['full_name'],

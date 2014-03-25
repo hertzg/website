@@ -17,8 +17,8 @@ TaskTags\deleteOnUser($mysqli, $idusers);
 include_once '../../fns/Users/clearNumTasks.php';
 Users\clearNumTasks($mysqli, $idusers);
 
-unset($_SESSION['tasks/index_errors']);
-$_SESSION['tasks/index_messages'] = array('All tasks have been deleted.');
+unset($_SESSION['tasks/errors']);
+$_SESSION['tasks/messages'] = array('All tasks have been deleted.');
 
 include_once '../../fns/redirect.php';
 redirect('..');

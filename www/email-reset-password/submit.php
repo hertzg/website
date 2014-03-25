@@ -34,14 +34,14 @@ Captcha\check($errors);
 include_once '../fns/redirect.php';
 
 if ($errors) {
-    $_SESSION['email-reset-password/index_errors'] = $errors;
-    $_SESSION['email-reset-password/index_values'] = array('email' => $email);
+    $_SESSION['email-reset-password/errors'] = $errors;
+    $_SESSION['email-reset-password/values'] = array('email' => $email);
     redirect();
 }
 
 unset(
-    $_SESSION['email-reset-password/index_errors'],
-    $_SESSION['email-reset-password/index_values']
+    $_SESSION['email-reset-password/errors'],
+    $_SESSION['email-reset-password/values']
 );
 
 $key = md5(uniqid(), true);
@@ -86,7 +86,7 @@ $headers =
 
 mail($email, $subject, $html, $headers);
 
-$_SESSION['sign-in/index_messages'] = array(
+$_SESSION['sign-in/messages'] = array(
     'Instructions to reset password have been sent to your email address.',
 );
 

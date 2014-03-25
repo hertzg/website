@@ -8,8 +8,8 @@ $user = require_user($base);
 include_once '../../fns/request_strings.php';
 list($parentidfolders) = request_strings('parentidfolders');
 
-if (array_key_exists('files/add-folder/index_values', $_SESSION)) {
-    $values = $_SESSION['files/add-folder/index_values'];
+if (array_key_exists('files/add-folder/values', $_SESSION)) {
+    $values = $_SESSION['files/add-folder/values'];
 } else {
     $values = array('foldername' => '');
 }
@@ -29,8 +29,8 @@ if ($parentidfolders) {
 }
 
 unset(
-    $_SESSION['files/index_idfolders'],
-    $_SESSION['files/index_messages']
+    $_SESSION['files/idfolders'],
+    $_SESSION['files/messages']
 );
 
 include_once '../../fns/create_folder_link.php';
@@ -52,7 +52,7 @@ $content =
             ),
         ),
         'New Folder',
-        Page\sessionErrors('files/add-folder/index_errors')
+        Page\sessionErrors('files/add-folder/errors')
         .'<form action="submit.php" method="post">'
             .Form\textfield('foldername', 'Folder name', array(
                 'value' => $values['foldername'],

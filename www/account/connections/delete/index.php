@@ -4,7 +4,7 @@ include_once '../fns/require_connection.php';
 include_once '../../../lib/mysqli.php';
 list($connection, $id, $user) = require_connection($mysqli);
 
-unset($_SESSION['account/connections/view/index_messages']);
+unset($_SESSION['account/connections/view/messages']);
 
 include_once '../../../fns/create_tabs.php';
 include_once '../../../fns/Page/imageLink.php';

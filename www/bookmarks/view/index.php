@@ -5,10 +5,10 @@ include_once '../../lib/mysqli.php';
 list($bookmark, $id, $user) = require_bookmark($mysqli);
 
 unset(
-    $_SESSION['bookmarks/edit/index_errors'],
-    $_SESSION['bookmarks/edit/index_values'],
-    $_SESSION['bookmarks/index_errors'],
-    $_SESSION['bookmarks/index_messages']
+    $_SESSION['bookmarks/edit/errors'],
+    $_SESSION['bookmarks/edit/values'],
+    $_SESSION['bookmarks/errors'],
+    $_SESSION['bookmarks/messages']
 );
 
 $url = $bookmark->url;
@@ -63,7 +63,7 @@ $content =
             ),
         ),
         "Bookmark #$id",
-        Page\sessionMessages('bookmarks/view/index_messages')
+        Page\sessionMessages('bookmarks/view/messages')
         .join('<div class="hr"></div>', $items)
     )
     .create_panel(

@@ -5,8 +5,8 @@ $base = '../../';
 include_once '../../fns/require_user.php';
 $user = require_user($base);
 
-if (array_key_exists('tasks/new/index_values', $_SESSION)) {
-    $values = $_SESSION['tasks/new/index_values'];
+if (array_key_exists('tasks/new/values', $_SESSION)) {
+    $values = $_SESSION['tasks/new/values'];
 } else {
     $values = array(
         'tasktext' => '',
@@ -15,8 +15,8 @@ if (array_key_exists('tasks/new/index_values', $_SESSION)) {
 }
 
 unset(
-    $_SESSION['tasks/index_errors'],
-    $_SESSION['tasks/index_messages']
+    $_SESSION['tasks/errors'],
+    $_SESSION['tasks/messages']
 );
 
 include_once '../../fns/create_tabs.php';
@@ -37,7 +37,7 @@ $content =
             ),
         ),
         'New',
-        Page\sessionErrors('tasks/new/index_errors')
+        Page\sessionErrors('tasks/new/errors')
         .'<form action="submit.php" method="post">'
             .Form\textarea('tasktext', 'Text', array(
                 'value' => $values['tasktext'],

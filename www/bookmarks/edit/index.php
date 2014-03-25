@@ -4,15 +4,15 @@ include_once '../fns/require_bookmark.php';
 include_once '../../lib/mysqli.php';
 list($bookmark, $id, $user) = require_bookmark($mysqli);
 
-if (array_key_exists('bookmarks/edit/index_values', $_SESSION)) {
-    $values = $_SESSION['bookmarks/edit/index_values'];
+if (array_key_exists('bookmarks/edit/values', $_SESSION)) {
+    $values = $_SESSION['bookmarks/edit/values'];
 } else {
     $values = (array)$bookmark;
 }
 
 unset(
-    $_SESSION['bookmarks/index_errors'],
-    $_SESSION['bookmarks/index_messages']
+    $_SESSION['bookmarks/errors'],
+    $_SESSION['bookmarks/messages']
 );
 
 include_once '../../fns/create_tabs.php';
@@ -33,7 +33,7 @@ $content =
             ),
         ),
         'Edit',
-        Page\sessionErrors('bookmarks/edit/index_errors')
+        Page\sessionErrors('bookmarks/edit/errors')
         .'<form action="submit.php" method="post">'
             .Form\textfield('url', 'URL', array(
                 'value' => $values['url'],

@@ -9,8 +9,8 @@ include_once 'fns/require_valid_key.php';
 include_once '../lib/mysqli.php';
 list($user, $key) = require_valid_key($mysqli);
 
-if (array_key_exists('reset-password/index_values', $_SESSION)) {
-    $values = $_SESSION['reset-password/index_values'];
+if (array_key_exists('reset-password/values', $_SESSION)) {
+    $values = $_SESSION['reset-password/values'];
 } else {
     $values = array(
         'password1' => '',
@@ -19,9 +19,9 @@ if (array_key_exists('reset-password/index_values', $_SESSION)) {
 }
 
 unset(
-    $_SESSION['sign-in/index_errors'],
-    $_SESSION['sign-in/index_values'],
-    $_SESSION['sign-in/index_messages']
+    $_SESSION['sign-in/errors'],
+    $_SESSION['sign-in/values'],
+    $_SESSION['sign-in/messages']
 );
 
 include_once '../fns/create_tabs.php';
@@ -40,7 +40,7 @@ $content =
             ),
         ),
         'Reset Password',
-        Page\sessionErrors('reset-password/index_errors')
+        Page\sessionErrors('reset-password/errors')
         .'<form action="submit.php" method="post">'
             .Form\label('Username', $user->username)
             .'<div class="hr"></div>'

@@ -5,13 +5,13 @@ $base = '../../';
 include_once '../../fns/require_user.php';
 $user = require_user($base);
 
-if (array_key_exists('help/feedback/index_values', $_SESSION)) {
-    $values = $_SESSION['help/feedback/index_values'];
+if (array_key_exists('help/feedback/values', $_SESSION)) {
+    $values = $_SESSION['help/feedback/values'];
 } else {
     $values = array('feedbacktext' => '');
 }
 
-unset($_SESSION['help/index_messages']);
+unset($_SESSION['help/messages']);
 
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
@@ -31,7 +31,7 @@ $content =
             ),
         ),
         'Feedback',
-        Page\sessionErrors('help/feedback/index_errors')
+        Page\sessionErrors('help/feedback/errors')
         .'<form action="submit.php" method="post">'
             .Form\textarea('feedbacktext', 'Feedback text', array(
                 'value' => $values['feedbacktext'],

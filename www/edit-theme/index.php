@@ -5,7 +5,7 @@ $base = '../';
 include_once '../fns/require_user.php';
 $user = require_user($base);
 
-unset($_SESSION['account/index_messages']);
+unset($_SESSION['account/messages']);
 
 include_once '../fns/get_themes.php';
 $themes = get_themes();

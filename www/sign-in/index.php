@@ -8,8 +8,8 @@ require_guest_user($base);
 include_once '../fns/request_strings.php';
 list($return) = request_strings('return');
 
-if (array_key_exists('sign-in/index_values', $_SESSION)) {
-    $values = $_SESSION['sign-in/index_values'];
+if (array_key_exists('sign-in/values', $_SESSION)) {
+    $values = $_SESSION['sign-in/values'];
 } else {
 
     if (array_key_exists('username', $_COOKIE)) {
@@ -28,10 +28,10 @@ if (array_key_exists('sign-in/index_values', $_SESSION)) {
 }
 
 unset(
-    $_SESSION['sign-up/index_errors'],
-    $_SESSION['sign-up/index_values'],
-    $_SESSION['email-reset-password/index_errors'],
-    $_SESSION['email-reset-password/index_values']
+    $_SESSION['sign-up/errors'],
+    $_SESSION['sign-up/values'],
+    $_SESSION['email-reset-password/errors'],
+    $_SESSION['email-reset-password/values']
 );
 
 $username = $values['username'];
@@ -50,8 +50,8 @@ $content =
     create_tabs(
         array(),
         'Sign In',
-        Page\sessionMessages('sign-in/index_messages')
-        .Page\sessionErrors('sign-in/index_errors')
+        Page\sessionMessages('sign-in/messages')
+        .Page\sessionErrors('sign-in/errors')
         .'<form action="submit.php" method="post">'
             .Form\textfield('username', 'Username', array(
                 'value' => $username,

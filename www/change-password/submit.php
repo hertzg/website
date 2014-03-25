@@ -41,8 +41,8 @@ if ($password1 === '') {
 include_once '../fns/redirect.php';
 
 if ($errors) {
-    $_SESSION['change-password/index_errors'] = $errors;
-    $_SESSION['change-password/index_values'] = array(
+    $_SESSION['change-password/errors'] = $errors;
+    $_SESSION['change-password/values'] = array(
         'currentpassword' => $currentpassword,
         'password1' => $password1,
         'password2' => $password2,
@@ -51,13 +51,13 @@ if ($errors) {
 }
 
 unset(
-    $_SESSION['change-password/index_errors'],
-    $_SESSION['change-password/index_values']
+    $_SESSION['change-password/errors'],
+    $_SESSION['change-password/values']
 );
 
 include_once '../fns/Users/editPassword.php';
 include_once '../lib/mysqli.php';
 Users\editPassword($mysqli, $idusers, $password1);
 
-$_SESSION['account/index_messages'] = array('Password has been changed.');
+$_SESSION['account/messages'] = array('Password has been changed.');
 redirect('../account/');

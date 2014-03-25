@@ -6,8 +6,8 @@ include_once '../fns/require_user.php';
 $user = require_user($base);
 
 unset(
-    $_SESSION['customize-home/reorder/index_messages'],
-    $_SESSION['customize-home/show-hide/index_messages']
+    $_SESSION['customize-home/reorder/messages'],
+    $_SESSION['customize-home/show-hide/messages']
 );
 
 include_once '../fns/create_tabs.php';
@@ -22,7 +22,7 @@ $content = create_tabs(
         ),
     ),
     'Customize',
-    Page\sessionMessages('customize-home/index_messages')
+    Page\sessionMessages('customize-home/messages')
     .Page\imageArrowLinkWithDescription('Show / Hide Items',
         'Change the visibility of the items.', 'show-hide/', 'show-hide')
     .'<div class="hr"></div>'

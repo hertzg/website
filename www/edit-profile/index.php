@@ -5,13 +5,13 @@ $base = '../';
 include_once '../fns/require_user.php';
 $user = require_user($base);
 
-if (array_key_exists('edit-profile/index_values', $_SESSION)) {
-    $values = (object)$_SESSION['edit-profile/index_values'];
+if (array_key_exists('edit-profile/values', $_SESSION)) {
+    $values = (object)$_SESSION['edit-profile/values'];
 } else {
     $values = $user;
 }
 
-unset($_SESSION['account/index_messages']);
+unset($_SESSION['account/messages']);
 
 include_once '../fns/create_tabs.php';
 include_once '../fns/Form/button.php';
@@ -30,7 +30,7 @@ $content =
             ),
         ),
         'Edit Profile',
-        Page\sessionErrors('edit-profile/index_errors')
+        Page\sessionErrors('edit-profile/errors')
         .'<form action="submit.php" method="post">'
             .Form\textfield('email', 'Email', array(
                 'value' => $values->email,

@@ -5,7 +5,7 @@ $base = '../../';
 include_once '../../fns/require_user.php';
 $user = require_user($base);
 
-unset($_SESSION['account/index_messages']);
+unset($_SESSION['account/messages']);
 
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
@@ -24,7 +24,7 @@ $content =
             ),
         ),
         'Verify Email',
-        Page\sessionErrors('account/verify-email/index_errors')
+        Page\sessionErrors('account/verify-email/errors')
         .'<form action="submit.php" method="post">'
             .Form\captcha($base, true)
             .Form\button('Send Verification Email')

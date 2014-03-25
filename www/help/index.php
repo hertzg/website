@@ -6,8 +6,8 @@ include_once '../fns/require_user.php';
 $user = require_user($base);
 
 unset(
-    $_SESSION['help/feedback/index_errors'],
-    $_SESSION['help/feedback/index_values']
+    $_SESSION['help/feedback/errors'],
+    $_SESSION['help/feedback/values']
 );
 
 include_once '../fns/create_tabs.php';
@@ -23,7 +23,7 @@ $content =
             ),
         ),
         'Help',
-        Page\sessionMessages('help/index_messages')
+        Page\sessionMessages('help/messages')
         .Page\imageLink('Install Zvini App', 'install.php', 'download')
         .'<div class="hr"></div>'
         .Page\imageArrowLink('Leave Feedback', 'feedback/', 'feedback')

@@ -7,7 +7,7 @@ include_once '../../fns/Users/showNewNote.php';
 include_once '../../lib/mysqli.php';
 Users\showNewNote($mysqli, $user->idusers, true);
 
-$_SESSION['customize-home/show-hide/index_messages'] = array(
+$_SESSION['customize-home/show-hide/messages'] = array(
     '"New Note" is now visible.',
 );
 

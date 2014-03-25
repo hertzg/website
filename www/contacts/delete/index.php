@@ -4,7 +4,7 @@ include_once '../fns/require_contact.php';
 include_once '../../lib/mysqli.php';
 list($contact, $id, $user) = require_contact($mysqli);
 
-unset($_SESSION['contacts/view/index_messages']);
+unset($_SESSION['contacts/view/messages']);
 
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/imageLink.php';

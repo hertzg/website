@@ -57,14 +57,14 @@ if ($parentidfolders != $folder->parentidfolders) {
         'move-folder');
 }
 
-if (array_key_exists('files/move-folder/index_parentidfolders', $_SESSION) &&
-    $parentidfolders != $_SESSION['files/move-folder/index_parentidfolders']) {
-    unset($_SESSION['files/move-folder/index_errors']);
+if (array_key_exists('files/move-folder/parentidfolders', $_SESSION) &&
+    $parentidfolders != $_SESSION['files/move-folder/parentidfolders']) {
+    unset($_SESSION['files/move-folder/errors']);
 }
 
 unset(
-    $_SESSION['files/index_idfolders'],
-    $_SESSION['files/index_messages']
+    $_SESSION['files/idfolders'],
+    $_SESSION['files/messages']
 );
 
 include_once '../../fns/create_folder_link.php';
@@ -84,7 +84,7 @@ $content =
             )
         ),
         'Move',
-        Page\sessionErrors('files/move-folder/index_errors')
+        Page\sessionErrors('files/move-folder/errors')
         .Page\warnings(array(
             'Moving the folder "<b>'.htmlspecialchars($folder->foldername).'</b>".',
             'Select a folder to move the folder into.'

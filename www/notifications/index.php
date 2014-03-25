@@ -55,10 +55,10 @@ if ($notifications) {
 }
 
 unset(
-    $_SESSION['channels/index_errors'],
-    $_SESSION['channels/index_messages'],
-    $_SESSION['home/index_messages'],
-    $_SESSION['notifications/in-channel/index_messages']
+    $_SESSION['channels/errors'],
+    $_SESSION['channels/messages'],
+    $_SESSION['home/messages'],
+    $_SESSION['notifications/in-channel/messages']
 );
 
 include_once '../fns/create_panel.php';
@@ -74,8 +74,8 @@ $content =
             ),
         ),
         'Notifications',
-        Page\sessionErrors('notifications/index_errors')
-        .Page\sessionMessages('notifications/index_messages')
+        Page\sessionErrors('notifications/errors')
+        .Page\sessionMessages('notifications/messages')
         .join('<div class="hr"></div>', $items)
         .create_panel('Options', join('<div class="hr"></div>', $options))
     );

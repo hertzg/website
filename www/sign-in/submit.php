@@ -6,7 +6,7 @@ require_same_domain_referer('./');
 include_once '../fns/require_guest_user.php';
 require_guest_user('../');
 
-unset($_SESSION['sign-in/index_messages']);
+unset($_SESSION['sign-in/messages']);
 
 include_once '../fns/request_strings.php';
 list($username, $password, $remember, $return) = request_strings(
@@ -40,8 +40,8 @@ if (!$errors) {
 include_once '../fns/redirect.php';
 
 if ($errors) {
-    $_SESSION['sign-in/index_errors'] = $errors;
-    $_SESSION['sign-in/index_values'] = array(
+    $_SESSION['sign-in/errors'] = $errors;
+    $_SESSION['sign-in/values'] = array(
         'username' => $username,
         'password' => $password,
         'remember' => $remember,
@@ -50,8 +50,8 @@ if ($errors) {
 }
 
 unset(
-    $_SESSION['sign-in/index_errors'],
-    $_SESSION['sign-in/index_values']
+    $_SESSION['sign-in/errors'],
+    $_SESSION['sign-in/values']
 );
 
 $idusers = $user->idusers;
@@ -77,7 +77,7 @@ if (parse_url($return, PHP_URL_HOST) !== null) $return = '';
 
 if ($return == '') {
     include_once '../fns/nth_order.php';
-    $_SESSION['home/index_messages'] = array(
+    $_SESSION['home/messages'] = array(
         'Welcome to Zvini!',
         'This is your '.nth_order($user->num_logins + 1).' login.',
     );

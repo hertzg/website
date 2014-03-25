@@ -17,8 +17,8 @@ Channels\clearNumNotificationsOnUser($mysqli, $idusers);
 include_once '../../fns/Users/clearNumNotifications.php';
 Users\clearNumNotifications($mysqli, $idusers);
 
-unset($_SESSION['notifications/index_errors']);
-$_SESSION['notifications/index_messages'] = array(
+unset($_SESSION['notifications/errors']);
+$_SESSION['notifications/messages'] = array(
     'All notifications have been deleted.',
 );
 

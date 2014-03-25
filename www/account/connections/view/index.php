@@ -10,10 +10,10 @@ include_once '../../../fns/Connections/get.php';
 $connection = Connections\get($mysqli, $user->idusers, $id);
 
 unset(
-    $_SESSION['account/connections/edit/index_errors'],
-    $_SESSION['account/connections/edit/index_values'],
-    $_SESSION['account/connections/index_errors'],
-    $_SESSION['account/connections/index_messages']
+    $_SESSION['account/connections/edit/errors'],
+    $_SESSION['account/connections/edit/values'],
+    $_SESSION['account/connections/errors'],
+    $_SESSION['account/connections/messages']
 );
 
 include_once '../../../fns/Page/imageArrowLink.php';
@@ -52,7 +52,7 @@ $content = create_tabs(
         ],
     ],
     "Connection #$id",
-    Page\sessionMessages('account/connections/view/index_messages')
+    Page\sessionMessages('account/connections/view/messages')
     .Form\label('Username', htmlspecialchars($connection->username))
     .'<div class="hr"></div>'
     .Form\label('This user', $permissions)
