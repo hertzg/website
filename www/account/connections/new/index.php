@@ -5,7 +5,10 @@ $base = '../../../';
 include_once '../../../fns/require_user.php';
 $user = require_user($base);
 
-unset($_SESSION['account/connections/index_messages']);
+unset(
+    $_SESSION['account/connections/index_errors'],
+    $_SESSION['account/connections/index_messages']
+);
 
 if (array_key_exists('account/connections/new/index_values', $_SESSION)) {
     $values = $_SESSION['account/connections/new/index_values'];
@@ -41,7 +44,7 @@ $content = create_tabs(
             'href' => '../..',
         ),
         array(
-            'title' => 'Manage Connections',
+            'title' => 'Connections',
             'href' => '..',
         ),
     ),
