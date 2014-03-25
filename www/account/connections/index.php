@@ -19,12 +19,11 @@ $connections = Connections\indexOnUser($mysqli, $user->idusers);
 
 $items = [];
 
-if ($items) {
+if ($connections) {
     foreach ($connections as $connection) {
         $title = htmlspecialchars($connection->username);
         $items[] = Page\imageArrowLink($title, "view/?id=$connection->id", 'connection');
     }
-    $items[] = Page\imageArrowLink('Other users', 'other/', 'connection');
 } else {
     include_once '../../fns/Page/info.php';
     $items[] = Page\info('No connections');
