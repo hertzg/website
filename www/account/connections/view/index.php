@@ -28,6 +28,14 @@ $title = 'Delete Connection';
 $href = "../delete/?id=$id";
 $options[] = Page\imageArrowLink($title, $href, 'trash-bin');
 
+$permissions = '<div>';
+if ($connection->can_subscribe_to_my_channel) {
+    $permissions .= 'Can subscribe to my channel.';
+} else {
+    $permissions .= 'Cannot subscribe to my channel';
+}
+$permissions .= '</div>';
+
 include_once '../../../fns/create_panel.php';
 include_once '../../../fns/create_tabs.php';
 include_once '../../../fns/Form/label.php';
@@ -46,6 +54,8 @@ $content = create_tabs(
     "Connection #$id",
     Page\sessionMessages('account/connections/view/index_messages')
     .Form\label('Username', htmlspecialchars($connection->username))
+    .'<div class="hr"></div>'
+    .Form\label('This user', $permissions)
     .create_panel('Options', join('<div class="hr"></div>', $options))
 );
 
