@@ -24,12 +24,8 @@ if ($channels) {
     $items[] = Page\info('No channels.');
 }
 
-unset(
-    $_SESSION['channels/add/errors'],
-    $_SESSION['channels/add/values'],
-    $_SESSION['channels/hview/messages'],
-    $_SESSION['notifications/messages']
-);
+include_once 'fns/unset_session_vars.php';
+unset_session_vars();
 
 include_once '../fns/create_panel.php';
 include_once '../fns/create_tabs.php';
