@@ -57,15 +57,8 @@ if ($idfolders) {
 include_once 'fns/render_folders_and_files.php';
 render_folders_and_files($folders, $files, $items, 'Folder is empty.');
 
-unset(
-    $_SESSION['files/add-folder/errors'],
-    $_SESSION['files/add-folder/values'],
-    $_SESSION['files/rename-folder/errors'],
-    $_SESSION['files/rename-folder/values'],
-    $_SESSION['files/upload-files/errors'],
-    $_SESSION['files/view-file/messages'],
-    $_SESSION['home/messages']
-);
+include_once 'fns/unset_session_vars.php';
+unset_session_vars();
 
 if (array_key_exists('files/idfolders', $_SESSION) &&
     $idfolders != $_SESSION['files/idfolders']) {
