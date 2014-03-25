@@ -29,10 +29,10 @@ $href = "../delete/?id=$id";
 $options[] = Page\imageArrowLink($title, $href, 'trash-bin');
 
 $permissions = '<div>';
-if ($connection->can_subscribe_to_my_channel) {
-    $permissions .= 'Can subscribe to my channel.';
+if ($connection->can_send_channel) {
+    $permissions .= 'Can send channels.';
 } else {
-    $permissions .= 'Cannot subscribe to my channel';
+    $permissions .= 'Cannot send channels.';
 }
 $permissions .= '</div>';
 

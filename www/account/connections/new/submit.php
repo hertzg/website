@@ -4,10 +4,10 @@ include_once '../../../fns/require_user.php';
 $user = require_user('../../../');
 
 include_once '../../../fns/request_strings.php';
-list($username, $can_subscribe_to_my_channel) = request_strings(
-    'username', 'can_subscribe_to_my_channel');
+list($username, $can_send_channel) = request_strings(
+    'username', 'can_send_channel');
 
-$can_subscribe_to_my_channel = (bool)$can_subscribe_to_my_channel;
+$can_send_channel = (bool)$can_send_channel;
 
 include_once '../../../fns/redirect.php';
 
@@ -30,14 +30,14 @@ if ($errors) {
     $_SESSION['account/connections/new/index_errors'] = $errors;
     $_SESSION['account/connections/new/index_values'] = array(
         'username' => $username,
-        'can_subscribe_to_my_channel' => $can_subscribe_to_my_channel,
+        'can_send_channel' => $can_send_channel,
     );
     redirect();
 }
 
 include_once '../../../fns/Connections/add.php';
 Connections\add($mysqli, $user->idusers, $connectedUser->idusers,
-    $username, $can_subscribe_to_my_channel);
+    $username, $can_send_channel);
 
 unset(
     $_SESSION['account/connections/new/index_errors'],

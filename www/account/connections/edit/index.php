@@ -38,11 +38,12 @@ $content = create_tabs(
         .Form\textfield('username', 'Username', [
             'value' => $values['username'],
             'required' => true,
+            'autofocus' => true,
         ])
         .'<div class="hr"></div>'
-        .Form\checkbox($base, 'can_subscribe_to_my_channel',
-            'Can subscribe to my channel',
-            $values['can_subscribe_to_my_channel'])
+        .Form\checkbox($base, 'can_send_channel',
+            'Can send channels.',
+            $values['can_send_channel'])
         .'<div class="hr"></div>'
         .Form\button('Save Changes')
         .Form\hidden('id', $id)

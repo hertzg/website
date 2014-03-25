@@ -20,7 +20,8 @@ if ($connections) {
         $items[] = Page\imageArrowLink($title, "view/?id=$connection->id", 'connection');
     }
 } else {
-    $items[] = 'No connections';
+    include_once '../../fns/Page/info.php';
+    $items[] = Page\info('No connections');
 }
 
 unset(

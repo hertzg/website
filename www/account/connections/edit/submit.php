@@ -5,10 +5,10 @@ include_once '../../../lib/mysqli.php';
 list($connection, $id, $user) = require_connection($mysqli);
 
 include_once '../../../fns/request_strings.php';
-list($username, $can_subscribe_to_my_channel) = request_strings(
-    'username', 'can_subscribe_to_my_channel');
+list($username, $can_send_channel) = request_strings(
+    'username', 'can_send_channel');
 
-$can_subscribe_to_my_channel = (bool)$can_subscribe_to_my_channel;
+$can_send_channel = (bool)$can_send_channel;
 
 $errors = [];
 
@@ -30,14 +30,14 @@ if ($errors) {
     $_SESSION['account/connections/edit/index_errors'] = $errors;
     $_SESSION['account/connections/edit/index_values'] = [
         'username' => $username,
-        'can_subscribe_to_my_channel' => $can_subscribe_to_my_channel,
+        'can_send_channel' => $can_send_channel,
     ];
     redirect("./?id=$id");
 }
 
 include_once '../../../fns/Connections/edit.php';
 Connections\edit($mysqli, $id, $connectedUser->idusers,
-    $connectedUser->username, $can_subscribe_to_my_channel);
+    $connectedUser->username, $can_send_channel);
 
 $_SESSION['account/connections/view/index_messages'] = [
     'Changes have been saved.',

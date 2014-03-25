@@ -15,7 +15,7 @@ if (array_key_exists('account/connections/new/index_values', $_SESSION)) {
 } else {
     $values = array(
         'username' => '',
-        'can_subscribe_to_my_channel' => false,
+        'can_send_channel' => false,
     );
 }
 
@@ -24,13 +24,14 @@ $items = array(
     Form\textfield('username', 'Username', array(
         'value' => $values['username'],
         'required' => true,
+        'autofocus' => true,
     )),
 );
 
 include_once '../../../fns/Form/checkbox.php';
-$name = 'can_subscribe_to_my_channel';
-$title = 'Can subscribe to my channel';
-$checked = $values['can_subscribe_to_my_channel'];
+$name = 'can_send_channel';
+$title = 'Can send channels';
+$checked = $values['can_send_channel'];
 $items[] = Form\checkbox($base, $name, $title, $checked);
 
 include_once '../../../fns/Form/button.php';
