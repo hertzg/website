@@ -79,3 +79,7 @@
 .icon.reorder { background-position: -2464px 0; }
 .icon.show-hide { background-position: -2496px 0; }
 .icon.restore-defaults { background-position: -2528px 0; }
+.icon.connection { background-position: -2560px 0; }
+.icon.create-connection { background-position: -2592px 0; }
+.icon.edit-connection { background-position: -2624px 0; }
+.icon.connections { background-position: -2656px 0; }

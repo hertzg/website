@@ -6,7 +6,7 @@ include_once '../../fns/require_user.php';
 $user = require_user($base);
 
 include_once '../../fns/Page/imageArrowLink.php';
-$options = [Page\imageArrowLink('New Connection', 'new/', 'TODO')];
+$options = [Page\imageArrowLink('New Connection', 'new/', 'create-connection')];
 
 include_once '../../fns/Connections/indexOnUser.php';
 include_once '../../lib/mysqli.php';
@@ -17,7 +17,7 @@ $items = [];
 if ($connections) {
     foreach ($connections as $connection) {
         $title = htmlspecialchars($connection->username);
-        $items[] = Page\imageArrowLink($title, "view/?id=$connection->id", 'TODO');
+        $items[] = Page\imageArrowLink($title, "view/?id=$connection->id", 'connection');
     }
 } else {
     $items[] = 'No connections';

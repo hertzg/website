@@ -22,7 +22,7 @@ $options = [];
 
 $title = 'Edit Connection';
 $href = "../edit/?id=$id";
-$options[] = Page\imageArrowLink($title, $href, 'TODO');
+$options[] = Page\imageArrowLink($title, $href, 'edit-connection');
 
 $title = 'Delete Connection';
 $href = "../delete/?id=$id";

@@ -19,7 +19,8 @@ $names = array(
     'create-event', 'edit-event', 'checkbox', 'checked-checkbox', 'help',
     'token', 'create-token', 'tokens', 'run', 'mail', 'phone', 'edit-home',
     'move-up', 'move-to-top', 'move-down', 'move-to-bottom', 'reorder', 'show-hide',
-    'restore-defaults');
+    'restore-defaults', 'connection', 'create-connection', 'edit-connection',
+    'connections');
 
 $content = "/* auto-generated */\n";
 $x = 0;
