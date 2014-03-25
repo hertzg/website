@@ -1,5 +1,7 @@
 RewriteEngine On
 
+RewriteRule ^manifest.webapp$ webapp-manifest/ [L]
+
 RewriteCond %{HTTP_HOST} ^www\.zvini\.com$
 RewriteRule (.*) https://zvini.com/$1 [R=301,L]
 
