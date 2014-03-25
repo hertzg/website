@@ -3,12 +3,8 @@
 include_once __DIR__.'/../fns/require_user.php';
 $user = require_user('../');
 
-unset(
-    $_SESSION['home/messages'],
-    $_SESSION['calendar/add-event/errors'],
-    $_SESSION['calendar/add-event/values'],
-    $_SESSION['calendar/view-event/messages']
-);
+include_once 'fns/unset_session_vars.php';
+unset_session_vars();
 
 include_once '../fns/request_strings.php';
 list($year, $month, $day) = request_strings('year', 'month', 'day');

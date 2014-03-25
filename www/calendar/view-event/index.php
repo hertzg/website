@@ -4,12 +4,8 @@ include_once '../fns/require_event.php';
 include_once '../../lib/mysqli.php';
 list($event, $idevents, $user) = require_event($mysqli);
 
-unset(
-    $_SESSION['calendar/edit-event/errors'],
-    $_SESSION['calendar/edit-event/values'],
-    $_SESSION['calendar/errors'],
-    $_SESSION['calendar/messages']
-);
+include_once 'fns/unset_session_vars.php';
+unset_session_vars();
 
 $insert_time = $event->insert_time;
 $update_time = $event->update_time;
