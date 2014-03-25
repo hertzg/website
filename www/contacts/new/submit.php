@@ -44,7 +44,7 @@ include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['contacts/new/index_errors'] = $errors;
-    $_SESSION['contacts/new/index_lastpost'] = array(
+    $_SESSION['contacts/new/index_values'] = array(
         'full_name' => $full_name,
         'alias' => $alias,
         'address' => $address,
@@ -58,7 +58,7 @@ if ($errors) {
 
 unset(
     $_SESSION['contacts/new/index_errors'],
-    $_SESSION['contacts/new/index_lastpost']
+    $_SESSION['contacts/new/index_values']
 );
 
 include_once '../../fns/Contacts/add.php';

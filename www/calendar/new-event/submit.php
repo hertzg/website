@@ -27,7 +27,7 @@ include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['calendar/add-event/index_errors'] = $errors;
-    $_SESSION['calendar/add-event/index_lastpost'] = array(
+    $_SESSION['calendar/add-event/index_values'] = array(
         'eventtext' => $eventtext,
     );
     redirect('./?'.http_build_query(array(
@@ -39,7 +39,7 @@ if ($errors) {
 
 unset(
     $_SESSION['calendar/add-event/index_errors'],
-    $_SESSION['calendar/add-event/index_lastpost']
+    $_SESSION['calendar/add-event/index_values']
 );
 
 include_once '../../fns/Events/add.php';

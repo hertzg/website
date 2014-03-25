@@ -25,7 +25,7 @@ include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['help/feedback/index_errors'] = $errors;
-    $_SESSION['help/feedback/index_lastpost'] = array(
+    $_SESSION['help/feedback/index_values'] = array(
         'feedbacktext' => $feedbacktext,
     );
     redirect();
@@ -33,7 +33,7 @@ if ($errors) {
 
 unset(
     $_SESSION['help/feedback/index_errors'],
-    $_SESSION['help/feedback/index_lastpost']
+    $_SESSION['help/feedback/index_values']
 );
 
 include_once '../../fns/Feedbacks/add.php';

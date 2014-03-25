@@ -35,7 +35,7 @@ include_once '../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['sign-up/index_errors'] = $errors;
-    $_SESSION['sign-up/index_lastpost'] = array(
+    $_SESSION['sign-up/index_values'] = array(
         'username' => $username,
         'email' => $email,
         'password1' => $password1,
@@ -46,7 +46,7 @@ if ($errors) {
 
 unset(
     $_SESSION['sign-up/index_errors'],
-    $_SESSION['sign-up/index_lastpost']
+    $_SESSION['sign-up/index_values']
 );
 
 include_once '../fns/Users/add.php';

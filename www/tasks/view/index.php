@@ -6,7 +6,7 @@ list($task, $id, $user) = require_task($mysqli);
 
 unset(
     $_SESSION['tasks/edit/index_errors'],
-    $_SESSION['tasks/edit/index_lastpost'],
+    $_SESSION['tasks/edit/index_values'],
     $_SESSION['tasks/index_errors'],
     $_SESSION['tasks/index_messages']
 );

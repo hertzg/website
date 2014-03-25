@@ -13,10 +13,10 @@ include_once 'fns/get_revision.php';
 
 unset(
     $_SESSION['sign-in/index_errors'],
-    $_SESSION['sign-in/index_lastpost'],
+    $_SESSION['sign-in/index_values'],
     $_SESSION['sign-in/index_messages'],
     $_SESSION['sign-up/index_errors'],
-    $_SESSION['sign-up/index_lastpost']
+    $_SESSION['sign-up/index_values']
 );
 
 header('Content-Type: text/html; charset=UTF-8');

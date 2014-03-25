@@ -6,7 +6,7 @@ list($contact, $id, $user) = require_contact($mysqli);
 
 unset(
     $_SESSION['contacts/edit/index_errors'],
-    $_SESSION['contacts/edit/index_lastpost'],
+    $_SESSION['contacts/edit/index_values'],
     $_SESSION['contacts/index_errors'],
     $_SESSION['contacts/index_messages']
 );

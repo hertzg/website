@@ -8,8 +8,8 @@ $user = require_user($base);
 include_once '../../fns/request_strings.php';
 list($year, $month, $day) = request_strings('year', 'month', 'day');
 
-if (array_key_exists('calendar/add-event/index_lastpost', $_SESSION)) {
-    $values = $_SESSION['calendar/add-event/index_lastpost'];
+if (array_key_exists('calendar/add-event/index_values', $_SESSION)) {
+    $values = $_SESSION['calendar/add-event/index_values'];
 } else {
     $values = array('eventtext' => '');
 }

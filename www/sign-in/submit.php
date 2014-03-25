@@ -41,7 +41,7 @@ include_once '../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['sign-in/index_errors'] = $errors;
-    $_SESSION['sign-in/index_lastpost'] = array(
+    $_SESSION['sign-in/index_values'] = array(
         'username' => $username,
         'password' => $password,
         'remember' => $remember,
@@ -51,7 +51,7 @@ if ($errors) {
 
 unset(
     $_SESSION['sign-in/index_errors'],
-    $_SESSION['sign-in/index_lastpost']
+    $_SESSION['sign-in/index_values']
 );
 
 $idusers = $user->idusers;

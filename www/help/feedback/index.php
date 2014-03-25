@@ -5,8 +5,8 @@ $base = '../../';
 include_once '../../fns/require_user.php';
 $user = require_user($base);
 
-if (array_key_exists('help/feedback/index_lastpost', $_SESSION)) {
-    $values = $_SESSION['help/feedback/index_lastpost'];
+if (array_key_exists('help/feedback/index_values', $_SESSION)) {
+    $values = $_SESSION['help/feedback/index_values'];
 } else {
     $values = array('feedbacktext' => '');
 }

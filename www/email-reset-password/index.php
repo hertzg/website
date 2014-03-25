@@ -5,15 +5,15 @@ $base = '../';
 include_once '../fns/require_guest_user.php';
 require_guest_user($base);
 
-if (array_key_exists('email-reset-password/index_lastpost', $_SESSION)) {
-    $values = $_SESSION['email-reset-password/index_lastpost'];
+if (array_key_exists('email-reset-password/index_values', $_SESSION)) {
+    $values = $_SESSION['email-reset-password/index_values'];
 } else {
     $values = array('email' => '');
 }
 
 unset(
     $_SESSION['sign-in/index_errors'],
-    $_SESSION['sign-in/index_lastpost'],
+    $_SESSION['sign-in/index_values'],
     $_SESSION['sign-in/index_messages']
 );
 

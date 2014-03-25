@@ -32,13 +32,13 @@ include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['channels/add/index_errors'] = $errors;
-    $_SESSION['channels/add/index_lastpost'] = array('channelname' => $channelname);
+    $_SESSION['channels/add/index_values'] = array('channelname' => $channelname);
     redirect();
 }
 
 unset(
     $_SESSION['channels/add/index_errors'],
-    $_SESSION['channels/add/index_lastpost']
+    $_SESSION['channels/add/index_values']
 );
 
 include_once '../../fns/Channels/add.php';

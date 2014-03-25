@@ -36,7 +36,7 @@ include_once '../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['reset-password/index_errors'] = $errors;
-    $_SESSION['reset-password/index_lastpost'] = array(
+    $_SESSION['reset-password/index_values'] = array(
         'password1' => $password1,
         'password2' => $password2,
     );
@@ -45,7 +45,7 @@ if ($errors) {
 
 unset(
     $_SESSION['reset-password/index_errors'],
-    $_SESSION['reset-password/index_lastpost']
+    $_SESSION['reset-password/index_values']
 );
 
 include_once '../fns/Users/editPassword.php';

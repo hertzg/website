@@ -6,7 +6,7 @@ list($event, $idevents, $user) = require_event($mysqli);
 
 unset(
     $_SESSION['calendar/edit-event/index_errors'],
-    $_SESSION['calendar/edit-event/index_lastpost'],
+    $_SESSION['calendar/edit-event/index_values'],
     $_SESSION['calendar/index_errors'],
     $_SESSION['calendar/index_messages']
 );

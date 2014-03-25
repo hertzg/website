@@ -8,8 +8,8 @@ require_guest_user($base);
 include_once '../fns/request_strings.php';
 list($return) = request_strings('return');
 
-if (array_key_exists('sign-in/index_lastpost', $_SESSION)) {
-    $values = $_SESSION['sign-in/index_lastpost'];
+if (array_key_exists('sign-in/index_values', $_SESSION)) {
+    $values = $_SESSION['sign-in/index_values'];
 } else {
 
     if (array_key_exists('username', $_COOKIE)) {
@@ -29,9 +29,9 @@ if (array_key_exists('sign-in/index_lastpost', $_SESSION)) {
 
 unset(
     $_SESSION['sign-up/index_errors'],
-    $_SESSION['sign-up/index_lastpost'],
+    $_SESSION['sign-up/index_values'],
     $_SESSION['email-reset-password/index_errors'],
-    $_SESSION['email-reset-password/index_lastpost']
+    $_SESSION['email-reset-password/index_values']
 );
 
 $username = $values['username'];

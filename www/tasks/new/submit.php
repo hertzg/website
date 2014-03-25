@@ -27,7 +27,7 @@ include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['tasks/new/index_errors'] = $errors;
-    $_SESSION['tasks/new/index_lastpost'] = array(
+    $_SESSION['tasks/new/index_values'] = array(
         'tasktext' => $tasktext,
         'tags' => $tags,
     );
@@ -36,7 +36,7 @@ if ($errors) {
 
 unset(
     $_SESSION['tasks/new/index_errors'],
-    $_SESSION['tasks/new/index_lastpost']
+    $_SESSION['tasks/new/index_values']
 );
 
 include_once '../../fns/Tasks/add.php';

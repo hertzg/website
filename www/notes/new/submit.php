@@ -27,7 +27,7 @@ include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['notes/new/index_errors'] = $errors;
-    $_SESSION['notes/new/index_lastpost'] = array(
+    $_SESSION['notes/new/index_values'] = array(
         'notetext' => $notetext,
         'tags' => $tags,
     );
@@ -36,7 +36,7 @@ if ($errors) {
 
 unset(
     $_SESSION['notes/new/index_errors'],
-    $_SESSION['notes/new/index_lastpost']
+    $_SESSION['notes/new/index_values']
 );
 
 include_once '../../fns/Notes/add.php';

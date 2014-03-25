@@ -34,7 +34,7 @@ include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['files/rename-folder/index_errors'] = $errors;
-    $_SESSION['files/rename-folder/index_lastpost'] = array(
+    $_SESSION['files/rename-folder/index_values'] = array(
         'foldername' => $foldername,
     );
     redirect("./?idfolders=$idfolders");
@@ -42,7 +42,7 @@ if ($errors) {
 
 unset(
     $_SESSION['files/rename-folder/index_errors'],
-    $_SESSION['files/rename-folder/index_lastpost']
+    $_SESSION['files/rename-folder/index_values']
 );
 
 include_once '../../fns/Folders/rename.php';

@@ -26,7 +26,7 @@ if ($channels) {
 
 unset(
     $_SESSION['channels/add/index_errors'],
-    $_SESSION['channels/add/index_lastpost'],
+    $_SESSION['channels/add/index_values'],
     $_SESSION['channels/hview/index_messages'],
     $_SESSION['notifications/index_messages']
 );

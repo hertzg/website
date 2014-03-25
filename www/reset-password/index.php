@@ -9,8 +9,8 @@ include_once 'fns/require_valid_key.php';
 include_once '../lib/mysqli.php';
 list($user, $key) = require_valid_key($mysqli);
 
-if (array_key_exists('reset-password/index_lastpost', $_SESSION)) {
-    $values = $_SESSION['reset-password/index_lastpost'];
+if (array_key_exists('reset-password/index_values', $_SESSION)) {
+    $values = $_SESSION['reset-password/index_values'];
 } else {
     $values = array(
         'password1' => '',
@@ -20,7 +20,7 @@ if (array_key_exists('reset-password/index_lastpost', $_SESSION)) {
 
 unset(
     $_SESSION['sign-in/index_errors'],
-    $_SESSION['sign-in/index_lastpost'],
+    $_SESSION['sign-in/index_values'],
     $_SESSION['sign-in/index_messages']
 );
 

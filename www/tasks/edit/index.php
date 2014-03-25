@@ -4,8 +4,8 @@ include_once '../fns/require_task.php';
 include_once '../../lib/mysqli.php';
 list($task, $id, $user) = require_task($mysqli);
 
-if (array_key_exists('tasks/edit/index_lastpost', $_SESSION)) {
-    $values = $_SESSION['tasks/edit/index_lastpost'];
+if (array_key_exists('tasks/edit/index_values', $_SESSION)) {
+    $values = $_SESSION['tasks/edit/index_values'];
 } else {
     $values = (array)$task;
 }

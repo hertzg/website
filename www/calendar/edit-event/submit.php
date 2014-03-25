@@ -21,7 +21,7 @@ include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['calendar/edit-event/index_errors'] = $errors;
-    $_SESSION['calendar/edit-event/index_lastpost'] = array(
+    $_SESSION['calendar/edit-event/index_values'] = array(
         'eventtext' => $eventtext,
     );
     redirect("./?idevents=$idevents");

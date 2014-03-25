@@ -5,8 +5,8 @@ $base = '../';
 include_once '../fns/require_guest_user.php';
 require_guest_user($base);
 
-if (array_key_exists('sign-up/index_lastpost', $_SESSION)) {
-    $values = $_SESSION['sign-up/index_lastpost'];
+if (array_key_exists('sign-up/index_values', $_SESSION)) {
+    $values = $_SESSION['sign-up/index_values'];
 } else {
     $values = array(
         'username' => '',
@@ -18,7 +18,7 @@ if (array_key_exists('sign-up/index_lastpost', $_SESSION)) {
 
 unset(
     $_SESSION['sign-in/index_errors'],
-    $_SESSION['sign-in/index_lastpost'],
+    $_SESSION['sign-in/index_values'],
     $_SESSION['sign-in/index_messages']
 );
 

@@ -35,13 +35,13 @@ include_once '../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['email-reset-password/index_errors'] = $errors;
-    $_SESSION['email-reset-password/index_lastpost'] = array('email' => $email);
+    $_SESSION['email-reset-password/index_values'] = array('email' => $email);
     redirect();
 }
 
 unset(
     $_SESSION['email-reset-password/index_errors'],
-    $_SESSION['email-reset-password/index_lastpost']
+    $_SESSION['email-reset-password/index_values']
 );
 
 $key = md5(uniqid(), true);

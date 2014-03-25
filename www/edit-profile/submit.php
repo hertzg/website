@@ -36,7 +36,7 @@ include_once '../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['edit-profile/index_errors'] = $errors;
-    $_SESSION['edit-profile/index_lastpost'] = array(
+    $_SESSION['edit-profile/index_values'] = array(
         'email' => $email,
         'full_name' => $full_name,
     );
@@ -45,7 +45,7 @@ if ($errors) {
 
 unset(
     $_SESSION['edit-profile/index_errors'],
-    $_SESSION['edit-profile/index_lastpost']
+    $_SESSION['edit-profile/index_values']
 );
 
 include_once '../fns/Users/editProfile.php';

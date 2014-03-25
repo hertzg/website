@@ -69,9 +69,9 @@ if (!$deep) {
 
 unset(
     $_SESSION['files/add-folder/index_errors'],
-    $_SESSION['files/add-folder/index_lastpost'],
+    $_SESSION['files/add-folder/index_values'],
     $_SESSION['files/rename-folder/index_errors'],
-    $_SESSION['files/rename-folder/index_lastpost'],
+    $_SESSION['files/rename-folder/index_values'],
     $_SESSION['files/upload-files/index_errors'],
     $_SESSION['files/view-file/index_messages'],
     $_SESSION['home/index_messages']

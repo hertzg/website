@@ -7,7 +7,7 @@ $user = require_user($base);
 
 unset(
     $_SESSION['help/feedback/index_errors'],
-    $_SESSION['help/feedback/index_lastpost']
+    $_SESSION['help/feedback/index_values']
 );
 
 include_once '../fns/create_tabs.php';

@@ -27,7 +27,7 @@ include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['bookmarks/edit/index_errors'] = $errors;
-    $_SESSION['bookmarks/edit/index_lastpost'] = array(
+    $_SESSION['bookmarks/edit/index_values'] = array(
         'title' => $title,
         'url' => $url,
         'tags' => $tags,
@@ -37,7 +37,7 @@ if ($errors) {
 
 unset(
     $_SESSION['bookmarks/edit/index_errors'],
-    $_SESSION['bookmarks/edit/index_lastpost']
+    $_SESSION['bookmarks/edit/index_values']
 );
 
 include_once '../../fns/Bookmarks/edit.php';

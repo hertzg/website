@@ -4,8 +4,8 @@ include_once '../fns/require_note.php';
 include_once '../../lib/mysqli.php';
 list($note, $id, $user) = require_note($mysqli);
 
-if (array_key_exists('notes/edit/index_lastpost', $_SESSION)) {
-    $values = $_SESSION['notes/edit/index_lastpost'];
+if (array_key_exists('notes/edit/index_values', $_SESSION)) {
+    $values = $_SESSION['notes/edit/index_values'];
 } else {
     $values = (array)$note;
 }

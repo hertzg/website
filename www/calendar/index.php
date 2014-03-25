@@ -6,7 +6,7 @@ $user = require_user('../');
 unset(
     $_SESSION['home/index_messages'],
     $_SESSION['calendar/add-event/index_errors'],
-    $_SESSION['calendar/add-event/index_lastpost'],
+    $_SESSION['calendar/add-event/index_values'],
     $_SESSION['calendar/view-event/index_messages']
 );
 
