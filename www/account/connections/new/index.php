@@ -23,6 +23,7 @@ include_once '../../../fns/Form/textfield.php';
 $items = array(
     Form\textfield('username', 'Username', array(
         'value' => $values['username'],
+        'required' => true,
     )),
 );
 

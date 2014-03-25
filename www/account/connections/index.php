@@ -14,14 +14,19 @@ $connections = Connections\indexOnUser($mysqli, $user->idusers);
 
 $items = [];
 
-foreach ($connections as $connection) {
-    $title = htmlspecialchars($connection->username);
-    $items[] = Page\imageArrowLink($title, "view/?id=$connection->id", 'TODO');
+if ($connections) {
+    foreach ($connections as $connection) {
+        $title = htmlspecialchars($connection->username);
+        $items[] = Page\imageArrowLink($title, "view/?id=$connection->id", 'TODO');
+    }
+} else {
+    $items[] = 'No connections';
 }
 
 unset(
     $_SESSION['account/connections/new/index_errors'],
-    $_SESSION['account/connections/new/index_values']
+    $_SESSION['account/connections/new/index_values'],
+    $_SESSION['account/connections/view/index_messages']
 );
 
 include_once '../../fns/create_panel.php';

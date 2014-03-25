@@ -10,6 +10,8 @@ include_once '../../../fns/Connections/get.php';
 $connection = Connections\get($mysqli, $user->idusers, $id);
 
 unset(
+    $_SESSION['account/connections/edit/index_errors'],
+    $_SESSION['account/connections/edit/index_values'],
     $_SESSION['account/connections/index_errors'],
     $_SESSION['account/connections/index_messages']
 );
@@ -29,6 +31,7 @@ $options[] = Page\imageArrowLink($title, $href, 'trash-bin');
 include_once '../../../fns/create_panel.php';
 include_once '../../../fns/create_tabs.php';
 include_once '../../../fns/Form/label.php';
+include_once '../../../fns/Page/sessionMessages.php';
 $content = create_tabs(
     [
         [
@@ -41,7 +44,8 @@ $content = create_tabs(
         ],
     ],
     "Connection #$id",
-    Form\label('Username', htmlspecialchars($connection->username))
+    Page\sessionMessages('account/connections/view/index_messages')
+    .Form\label('Username', htmlspecialchars($connection->username))
     .create_panel('Options', join('<div class="hr"></div>', $options))
 );
 

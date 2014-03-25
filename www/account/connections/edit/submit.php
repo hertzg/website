@@ -1,7 +1,8 @@
 <?php
 
-include_once '../../../fns/require_user.php';
-$user = require_user('../../../');
+include_once '../fns/require_connection.php';
+include_once '../../../lib/mysqli.php';
+list($connection, $id, $user) = require_connection($mysqli);
 
 include_once '../../../fns/request_strings.php';
 list($username, $can_subscribe_to_my_channel) = request_strings(
@@ -9,15 +10,12 @@ list($username, $can_subscribe_to_my_channel) = request_strings(
 
 $can_subscribe_to_my_channel = (bool)$can_subscribe_to_my_channel;
 
-include_once '../../../fns/redirect.php';
-
 $errors = [];
 
 if ($username === '') {
     $errors[] = 'Enter username.';
 } else {
     include_once '../../../fns/Users/getByUsername.php';
-    include_once '../../../lib/mysqli.php';
     $connectedUser = Users\getByUsername($mysqli, $username);
     if (!$connectedUser) {
         $errors[] = "A user with the username doesn't exist.";
@@ -26,26 +24,22 @@ if ($username === '') {
     }
 }
 
+include_once '../../../fns/redirect.php';
+
 if ($errors) {
-    $_SESSION['account/connections/new/index_errors'] = $errors;
-    $_SESSION['account/connections/new/index_values'] = array(
+    $_SESSION['account/connections/edit/index_errors'] = $errors;
+    $_SESSION['account/connections/edit/index_values'] = [
         'username' => $username,
         'can_subscribe_to_my_channel' => $can_subscribe_to_my_channel,
-    );
-    redirect();
+    ];
+    redirect("./?id=$id");
 }
 
-include_once '../../../fns/Connections/add.php';
-Connections\add($mysqli, $user->idusers, $connectedUser->idusers,
-    $username, $can_subscribe_to_my_channel);
+include_once '../../../fns/Connections/edit.php';
+Connections\edit($mysqli, $id, $connectedUser->idusers,
+    $connectedUser->username, $can_subscribe_to_my_channel);
 
-unset(
-    $_SESSION['account/connections/new/index_errors'],
-    $_SESSION['account/connections/new/index_values']
-);
-
-$_SESSION['account/connections/index_messages'] = array(
-    'Connection has been added.',
-);
-
-redirect('..');
+$_SESSION['account/connections/view/index_messages'] = [
+    'Changes have been saved.',
+];
+redirect("../view/?id=$id");
