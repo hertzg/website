@@ -29,39 +29,16 @@ if ($full_name !== '') {
     $full_name_field = '';
 }
 
-$email_verified = $user->email_verified;
-
-$options = array();
-if (!$email_verified) {
-    $options[] = Page\imageArrowLink('Verify Email', 'verify-email/', 'yes');
-}
-
-$href = '../change-password/';
-$options[] = Page\imageArrowLink('Change Password', $href, 'edit-password');
-
-$href = '../edit-profile/';
-$options[] = Page\imageArrowLink('Edit Profile', $href, 'edit-profile');
-
-$href = '../edit-theme/';
-$icon = "edit-$user->theme-theme";
-$options[] = Page\imageArrowLink('Edit Theme', $href, $icon);
-
-include_once 'fns/create_tokens_link.php';
-$options[] = create_tokens_link($user);
-
-$href = '../close-account/';
-$options[] = Page\imageArrowLink('Close Account', $href, 'trash-bin');
-
 include_once '../fns/get_themes.php';
 $themes = get_themes();
 
-$emailVerifiedText = $email_verified ? 'Verified' : 'Not verified';
+$emailVerifiedText = $user->email_verified ? 'Verified' : 'Not verified';
 $emailValue =
     "<span>$user->email</span>"
     ."<span class=\"emailStatus\"> ($emailVerifiedText)</span>";
 
+include_once 'fns/create_options_panel.php';
 include_once '../fns/bytestr.php';
-include_once '../fns/create_panel.php';
 include_once '../fns/create_tabs.php';
 include_once '../fns/date_ago.php';
 include_once '../fns/n_times.php';
@@ -89,7 +66,7 @@ $content =
         .'<div class="hr"></div>'
         .Form\label('Signed in', n_times($user->num_logins))
     )
-    .create_panel('Options', join('<div class="hr"></div>', $options));
+    .create_options_panel($user);
 
 include_once '../fns/echo_page.php';
 echo_page($user, 'Account', $content, $base, array(
