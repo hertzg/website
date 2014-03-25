@@ -6,6 +6,7 @@ include_once '../fns/require_user.php';
 $user = require_user($base);
 
 unset(
+    $_SESSION['account/connections/index_messages'],
     $_SESSION['account/verify-email/index_errors'],
     $_SESSION['change-password/index_errors'],
     $_SESSION['change-password/index_lastpost'],
