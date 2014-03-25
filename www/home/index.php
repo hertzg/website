@@ -5,18 +5,8 @@ $base = '../';
 include_once '../fns/require_user.php';
 $user = require_user($base);
 
-unset(
-    $_SESSION['account/messages'],
-    $_SESSION['bookmarks/messages'],
-    $_SESSION['calendar/messages'],
-    $_SESSION['contacts/messages'],
-    $_SESSION['customize-home/messages'],
-    $_SESSION['files/messages'],
-    $_SESSION['help/messages'],
-    $_SESSION['notes/messages'],
-    $_SESSION['notifications/messages'],
-    $_SESSION['tasks/messages']
-);
+include_once 'fns/unset_session_vars.php';
+unset_session_vars();
 
 $items = array();
 
