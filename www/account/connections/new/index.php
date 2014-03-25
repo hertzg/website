@@ -10,8 +10,9 @@ unset(
     $_SESSION['account/connections/index_messages']
 );
 
-if (array_key_exists('account/connections/new/index_values', $_SESSION)) {
-    $values = $_SESSION['account/connections/new/index_values'];
+$key = 'account/connections/new/index_values';
+if (array_key_exists($key, $_SESSION)) {
+    $values = $_SESSION[$key];
 } else {
     $values = array(
         'username' => '',

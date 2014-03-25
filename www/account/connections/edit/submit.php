@@ -3,6 +3,7 @@
 include_once '../fns/require_connection.php';
 include_once '../../../lib/mysqli.php';
 list($connection, $id, $user) = require_connection($mysqli);
+$idusers = $user->idusers;
 
 include_once '../../../fns/request_strings.php';
 list($username, $can_send_channel) = request_strings(
@@ -16,11 +17,21 @@ if ($username === '') {
     $errors[] = 'Enter username.';
 } else {
     include_once '../../../fns/Users/getByUsername.php';
-    $connectedUser = Users\getByUsername($mysqli, $username);
-    if (!$connectedUser) {
+    $userToConnect = Users\getByUsername($mysqli, $username);
+    if (!$userToConnect) {
         $errors[] = "A user with the username doesn't exist.";
-    } elseif ($connectedUser->idusers == $user->idusers) {
-        $errors[] = 'You cannot connect to yourself.';
+    } else {
+        $connected_id_users = $userToConnect->idusers;
+        if ($connected_id_users == $idusers) {
+            $errors[] = 'You cannot connect to yourself.';
+        } else {
+            include_once '../../../fns/Connections/getByConnectedUser.php';
+            $connectedUser = Connections\getByConnectedUser($mysqli,
+                $idusers, $connected_id_users, $connection->connected_id_users);
+            if ($connectedUser) {
+                $errors[] = 'A connection to this user already exists.';
+            }
+        }
     }
 }
 
@@ -36,8 +47,8 @@ if ($errors) {
 }
 
 include_once '../../../fns/Connections/edit.php';
-Connections\edit($mysqli, $id, $connectedUser->idusers,
-    $connectedUser->username, $can_send_channel);
+Connections\edit($mysqli, $id, $connected_id_users,
+    $username, $can_send_channel);
 
 $_SESSION['account/connections/view/index_messages'] = [
     'Changes have been saved.',

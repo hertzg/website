@@ -10,10 +10,10 @@ function add ($mysqli, $id_users, $connected_id_users, $username,
     $insert_time = $update_time = time();
 
     $sql = 'insert into connections'
-        .' (id_users, username, can_send_channel,'
-        .' insert_time, update_time)'
-        ." value ($id_users, '$username', $can_send_channel,"
-        ." $insert_time, $update_time)";
+        .' (id_users, connected_id_users, username,'
+        .' can_send_channel, insert_time, update_time)'
+        ." value ($id_users, $connected_id_users, '$username',"
+        ." $can_send_channel, $insert_time, $update_time)";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
