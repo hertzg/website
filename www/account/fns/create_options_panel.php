@@ -5,8 +5,9 @@ function create_options_panel ($user) {
     include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
     $options = array();
     if (!$user->email_verified) {
+        $title = 'Verify Email';
         $href = 'verify-email/';
-        $options[] = Page\imageArrowLink('Verify Email', $href, 'yes');
+        $options[] = Page\imageArrowLink($title, $href, 'yes');
     }
 
     $title = 'Change Password';
@@ -23,6 +24,9 @@ function create_options_panel ($user) {
 
     include_once __DIR__.'/create_tokens_link.php';
     $options[] = create_tokens_link($user);
+
+    $href = 'connections/';
+    $options[] = Page\imageArrowLink('Connections', $href, '');
 
     $title = 'Close Account';
     $href = '../close-account/';
