@@ -31,6 +31,7 @@ if ($items) {
 }
 
 unset(
+    $_SESSION['account/connections/default/index_messages'],
     $_SESSION['account/connections/new/index_errors'],
     $_SESSION['account/connections/new/index_values'],
     $_SESSION['account/connections/view/index_messages']

@@ -36,8 +36,7 @@ $content = create_tabs(
         ],
     ],
     "Default Connection",
-    Page\sessionMessages('account/connections/view/index_messages')
-    .'<div class="hr"></div>'
+    Page\sessionMessages('account/connections/default/index_messages')
     .Form\label('Other users', $permissions)
     .create_panel(
         'Options',
