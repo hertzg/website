@@ -5,18 +5,8 @@ $base = '../';
 include_once '../fns/require_user.php';
 $user = require_user($base);
 
-unset(
-    $_SESSION['account/connections/index_errors'],
-    $_SESSION['account/connections/index_messages'],
-    $_SESSION['account/verify-email/index_errors'],
-    $_SESSION['change-password/index_errors'],
-    $_SESSION['change-password/index_lastpost'],
-    $_SESSION['close-account/index_errors'],
-    $_SESSION['edit-profile/index_errors'],
-    $_SESSION['edit-profile/index_lastpost'],
-    $_SESSION['home/index_messages'],
-    $_SESSION['tokens/index_messages']
-);
+include_once 'fns/unset_session_vars.php';
+unset_session_vars();
 
 include_once '../fns/Form/label.php';
 include_once '../fns/Page/imageArrowLink.php';
