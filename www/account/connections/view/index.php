@@ -14,9 +14,14 @@ unset(
     $_SESSION['account/connections/index_messages']
 );
 
+include_once '../../../fns/Page/imageArrowLink.php';
+
 $options = [];
 
-include_once '../../../fns/Page/imageArrowLink.php';
+$title = 'Edit Connection';
+$href = "../edit/?id=$id";
+$options[] = Page\imageArrowLink($title, $href, 'TODO');
+
 $title = 'Delete Connection';
 $href = "../delete/?id=$id";
 $options[] = Page\imageArrowLink($title, $href, 'trash-bin');
