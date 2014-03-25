@@ -17,3 +17,8 @@ $mysqli->query(
     'alter table connections add can_subscribe_to_my_channel tinyint not null'
 );
 echo $mysqli->error;
+
+$mysqli->query(
+    'alter table connections change id_connections id bigint unsigned unsigned auto_increment not null'
+);
+echo $mysqli->error;

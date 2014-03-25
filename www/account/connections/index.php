@@ -6,33 +6,41 @@ include_once '../../fns/require_user.php';
 $user = require_user($base);
 
 include_once '../../fns/Page/imageArrowLink.php';
-$options = array(
-    Page\imageArrowLink('New Connection', 'new/', 'TODO')
-);
+$options = [Page\imageArrowLink('New Connection', 'new/', 'TODO')];
+
+include_once '../../fns/Connections/indexOnUser.php';
+include_once '../../lib/mysqli.php';
+$connections = Connections\indexOnUser($mysqli, $user->idusers);
+
+$items = [];
+
+foreach ($connections as $connection) {
+    $title = htmlspecialchars($connection->username);
+    $items[] = Page\imageArrowLink($title, "view/?id=$connection->id", 'TODO');
+}
 
 unset(
-    $_SESSION['account/connections/index_errors'],
-    $_SESSION['account/connections/index_lastpost']
+    $_SESSION['account/connections/new/index_errors'],
+    $_SESSION['account/connections/new/index_values']
 );
 
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
-include_once '../../fns/Page/info.php';
 include_once '../../fns/Page/sessionMessages.php';
 $content = create_tabs(
-    array(
-        array(
+    [
+        [
             'title' => '&middot;&middot;&middot;',
             'href' => '../../home/',
-        ),
-        array(
+        ],
+        [
             'title' => 'Account',
             'href' => '..',
-        ),
-    ),
+        ],
+    ],
     'Manage Connections',
     Page\sessionMessages('account/connections/index_messages')
-    .Page\info('No connections.')
+    .join('<div class="hr"></div>', $items)
     .create_panel('Options', join('<div class="hr"></div>', $options))
 );
 
