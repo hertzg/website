@@ -9,15 +9,10 @@ if ($user) {
     redirect('home/');
 }
 
-include_once 'fns/get_revision.php';
+include_once 'fns/unset_session_vars.php';
+unset_session_vars();
 
-unset(
-    $_SESSION['sign-in/errors'],
-    $_SESSION['sign-in/values'],
-    $_SESSION['sign-in/messages'],
-    $_SESSION['sign-up/errors'],
-    $_SESSION['sign-up/values']
-);
+include_once 'fns/get_revision.php';
 
 header('Content-Type: text/html; charset=UTF-8');
 
