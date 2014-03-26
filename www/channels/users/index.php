@@ -34,6 +34,7 @@ $options[] = Page\imageArrowLink('Add User', "add/?id=$id", 'TODO');
 
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
+include_once '../../fns/Page/sessionMessages.php';
 $content = create_tabs(
     [
         [
@@ -46,7 +47,8 @@ $content = create_tabs(
         ],
     ],
     'Users',
-    join('<div class="hr"></div>', $items)
+    Page\sessionMessages('channels/users/messages')
+    .join('<div class="hr"></div>', $items)
     .create_panel('Options', join('<div class="hr"></div>', $options))
 );
 
