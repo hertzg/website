@@ -5,8 +5,8 @@ include_once '../../lib/mysqli.php';
 list($channel, $id, $user) = require_channel($mysqli);
 
 unset(
-    $_SESSION['contacts/errors'],
-    $_SESSION['contacts/messages']
+    $_SESSION['channels/errors'],
+    $_SESSION['channels/messages']
 );
 
 include_once 'fns/create_options_panel.php';
