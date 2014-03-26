@@ -9,11 +9,10 @@ unset(
     $_SESSION['contacts/messages']
 );
 
-include_once '../../fns/create_panel.php';
+include_once 'fns/create_options_panel.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/label.php';
 include_once '../../fns/Form/textfield.php';
-include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../fns/Page/sessionMessages.php';
 $content =
     create_tabs(
@@ -36,13 +35,7 @@ $content =
             'value' => bin2hex($channel->channelkey),
         ))
     )
-    .create_panel(
-        'Options',
-        Page\imageArrowLink('Randomize Channel Key',
-            "../randomize-key/?id=$id", 'randomize')
-        .'<div class="hr"></div>'
-        .Page\imageArrowLink('Delete Channel', "../delete/?id=$id", 'trash-bin')
-    );
+    .create_options_panel($id);
 
 include_once '../../fns/echo_page.php';
 echo_page($user, "Channel #$id", $content, '../../');
