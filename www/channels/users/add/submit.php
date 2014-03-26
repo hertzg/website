@@ -33,6 +33,7 @@ if ($errors) {
 }
 
 include_once '../../../fns/ChannelUsers/add.php';
-$id = ChannelUsers\add($mysqli, $id, $channelUser->idusers, $channelUser->username);
+$id = ChannelUsers\add($mysqli, $id, $user->idusers,
+    $channelUser->idusers, $channelUser->username);
 
 redirect("../view/?id=$id");

@@ -10,8 +10,8 @@ function require_channel_user ($mysqli) {
 
     $id = abs((int)$id);
 
-    include_once __DIR__.'/../../../fns/ChannelUsers/get.php';
-    $channelUser = ChannelUsers\get($mysqli, $id);
+    include_once __DIR__.'/../../../fns/ChannelUsers/getOnUser.php';
+    $channelUser = ChannelUsers\getOnUser($mysqli, $user->idusers, $id);
 
     if (!$channelUser) {
         include_once __DIR__.'/../../../fns/redirect.php';
