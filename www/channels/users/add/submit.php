@@ -32,6 +32,10 @@ if ($errors) {
     redirect("./?id=$id");
 }
 
+$_SESSION['channels/users/view/messages'] = [
+    'The user has been added.',
+];
+
 include_once '../../../fns/ChannelUsers/add.php';
 $id = ChannelUsers\add($mysqli, $id, $user->idusers,
     $channelUser->idusers, $channelUser->username);

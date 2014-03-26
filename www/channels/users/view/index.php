@@ -8,6 +8,7 @@ $id_channels = $channel_user->id_channels;
 
 include_once '../../../fns/create_tabs.php';
 include_once '../../../fns/Form/label.php';
+include_once '../../../fns/Page/sessionMessages.php';
 $content = create_tabs(
     [
         [
@@ -19,8 +20,9 @@ $content = create_tabs(
             'href' => "../?id=$id_channels",
         ],
     ],
-    "Channel User #$id",
-    Form\label('Username', htmlspecialchars($channel_user->username))
+    "User #$id",
+    Page\sessionMessages('channels/users/view/messages')
+    .Form\label('Username', htmlspecialchars($channel_user->username))
 );
 
 include_once '../../../fns/echo_page.php';

@@ -7,6 +7,7 @@ list($channel, $id, $user) = require_channel($mysqli);
 unset(
     $_SESSION['channels/users/add/errors'],
     $_SESSION['channels/users/add/values'],
+    $_SESSION['channels/users/view/messages'],
     $_SESSION['channels/view/messages']
 );
 
@@ -28,9 +29,7 @@ if ($channelUsers) {
     $items[] = Page\info('No users');
 }
 
-$options = [];
-
-$options[] = Page\imageArrowLink('Add User', "add/?id=$id", 'TODO');
+$options = [Page\imageArrowLink('Add User', "add/?id=$id", 'TODO')];
 
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
