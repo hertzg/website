@@ -42,11 +42,17 @@ BookmarkTags\deleteOnUser($mysqli, $idusers);
 include_once '../fns/Channels/deleteOnUser.php';
 Channels\deleteOnUser($mysqli, $idusers);
 
+include_once '../fns/ChannelUsers/deleteContainingUser.php';
+ChannelUsers\deleteContainingUser($mysqli, $idusers);
+
 include_once '../fns/Contacts/deleteOnUser.php';
 Contacts\deleteOnUser($mysqli, $idusers);
 
 include_once '../fns/ContactTags/deleteOnUser.php';
 ContactTags\deleteOnUser($mysqli, $idusers);
+
+include_once '../fns/Connections/deleteContainingUser.php';
+Connections\deleteContainingUser($mysqli, $idusers);
 
 include_once '../fns/Events/deleteOnUser.php';
 Events\deleteOnUser($mysqli, $idusers);
