@@ -6,6 +6,7 @@ require_same_domain_referer('../..');
 include_once '../../fns/require_channel.php';
 include_once '../../../lib/mysqli.php';
 list($channel, $id, $user) = require_channel($mysqli);
+$idusers = $user->idusers;
 
 include_once '../../../fns/request_strings.php';
 list($username) = request_strings('username');
@@ -16,12 +17,22 @@ if ($username === '') {
     $errors[] = 'Enter username.';
 } else {
     include_once '../../../fns/Users/getByUsername.php';
-    $channelUser = Users\getByUsername($mysqli, $username);
-    if (!$channelUser) {
+    $userToSubscribe = Users\getByUsername($mysqli, $username);
+    if (!$userToSubscribe) {
         $errors[] = "A user with the username doesn't exist.";
-    } elseif ($channelUser->idusers == $user->idusers) {
-        $errors[] = "You don't have to add yourself in the list.";
-        $errors[] = 'You will always receive notifications on your channels.';
+    } else {
+        $subscribed_id_users = $userToSubscribe->idusers;
+        if ($subscribed_id_users == $idusers) {
+            $errors[] = "You don't have to add yourself in the list.";
+            $errors[] = 'You will always receive notifications on your channels.';
+        } else {
+            include_once '../../../fns/ChannelUsers/getOnUserBySubscribedUser.php';
+            $channelUser = ChannelUsers\getOnUserBySubscribedUser(
+                $mysqli, $idusers, $subscribed_id_users);
+            if ($channelUser) {
+                $errors[] = 'The user is already added.';
+            }
+        }
     }
 }
 
@@ -40,7 +51,7 @@ $_SESSION['channels/users/view/messages'] = [
 ];
 
 include_once '../../../fns/ChannelUsers/add.php';
-$id = ChannelUsers\add($mysqli, $id, $user->idusers,
-    $channelUser->idusers, $channelUser->username);
+$id = ChannelUsers\add($mysqli, $id, $idusers,
+    $subscribed_id_users , $username);
 
 redirect("../view/?id=$id");
