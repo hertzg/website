@@ -4,6 +4,12 @@ include_once '../fns/require_channel.php';
 include_once '../../lib/mysqli.php';
 list($channel, $id, $user) = require_channel($mysqli);
 
+unset(
+    $_SESSION['channels/users/add/errors'],
+    $_SESSION['channels/users/add/values'],
+    $_SESSION['channels/view/messages']
+);
+
 $items = [];
 
 include_once '../../fns/Page/imageArrowLink.php';
