@@ -10,6 +10,10 @@ function create_options_panel ($id) {
     $href = "../randomize-key/?id=$id";
     $options[] = Page\imageArrowLink($title, $href, 'randomize');
 
+    $title = 'Channel Users';
+    $href = "../users/?id=$id";
+    $options[] = Page\imageArrowLink($title, $href, 'TODO');
+
     $title = 'Delete Channel';
     $href = "../delete/?id=$id";
     $options[] = Page\imageArrowLink($title, $href, 'trash-bin');
