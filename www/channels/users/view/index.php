@@ -6,6 +6,12 @@ list($channel_user, $id, $user) = require_channel_user($mysqli, '../..');
 
 $id_channels = $channel_user->id_channels;
 
+include_once '../../../fns/Page/imageArrowLink.php';
+$title = 'Remove User';
+$href = "../delete/?id=$id";
+$deleteLink = Page\imageArrowLink($title, $href, 'trash-bin');
+
+include_once '../../../fns/create_panel.php';
 include_once '../../../fns/create_tabs.php';
 include_once '../../../fns/Form/label.php';
 include_once '../../../fns/Page/sessionMessages.php';
@@ -23,6 +29,7 @@ $content = create_tabs(
     "User #$id",
     Page\sessionMessages('channels/users/view/messages')
     .Form\label('Username', htmlspecialchars($channel_user->username))
+    .create_panel('Options', $deleteLink)
 );
 
 include_once '../../../fns/echo_page.php';
