@@ -23,7 +23,7 @@ if ($channelUsers) {
 
 $options = [];
 
-$options[] = Page\imageArrowLink('Add User', 'add/', 'TODO');
+$options[] = Page\imageArrowLink('Add User', "add/?id=$id", 'TODO');
 
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';

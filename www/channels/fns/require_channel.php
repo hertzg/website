@@ -1,6 +1,6 @@
 <?php
 
-function require_channel ($mysqli) {
+function require_channel ($mysqli, $redirect = '..') {
 
     include_once __DIR__.'/../../fns/require_user.php';
     $user = require_user('../../');
@@ -19,7 +19,7 @@ function require_channel ($mysqli) {
             'The channel no longer exists.',
         );
         include_once __DIR__.'/../../fns/redirect.php';
-        redirect('..');
+        redirect($redirect);
     }
 
     return array($channel, $id, $user);
