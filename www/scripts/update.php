@@ -12,9 +12,19 @@ $mysqli->query(
     .' update_time bigint unsigned not null,'
     .' can_send_channel tinyint not null)'
 );
-echo $mysqli->error;
+var_dump($mysqli->error);
 
 $mysqli->query(
     'alter table users add anonymous_can_send_channel tinyint'
 );
-echo $mysqli->error;
+var_dump($mysqli->error);
+
+$mysqli->query(
+    'create table channel_users'
+    .' (id bigint unsigned primary key auto_increment not null,'
+    .' id_channels bigint unsigned not null,'
+    .' id_users bigint unsigned not null,'
+    .' insert_time bigint unsigned not null)'
+);
+var_dump($mysqli->error);
+
