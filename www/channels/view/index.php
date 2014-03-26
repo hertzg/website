@@ -6,7 +6,8 @@ list($channel, $id, $user) = require_channel($mysqli);
 
 unset(
     $_SESSION['channels/errors'],
-    $_SESSION['channels/messages']
+    $_SESSION['channels/messages'],
+    $_SESSION['channels/users/messages']
 );
 
 include_once 'fns/create_options_panel.php';
