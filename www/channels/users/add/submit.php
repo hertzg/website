@@ -57,7 +57,7 @@ $_SESSION['channels/users/view/messages'] = [
 ];
 
 include_once '../../../fns/ChannelUsers/add.php';
-$id = ChannelUsers\add($mysqli, $id, $idusers,
-    $subscribed_id_users , $username);
+$id = ChannelUsers\add($mysqli, $id, $channel->channelname,
+    $idusers, $subscribed_id_users , $username);
 
 redirect("../view/?id=$id");

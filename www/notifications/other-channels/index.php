@@ -15,7 +15,9 @@ include_once '../../fns/Page/imageArrowLink.php';
 
 if ($channelUsers) {
     foreach ($channelUsers as $channelUser) {
-        $items[] = Page\imageArrowLink('a', "view/?id=$channelUser->id", 'TODO');
+        $title = htmlspecialchars($channelUser->channel_name);
+        $href = "view/?id=$channelUser->id";
+        $items[] = Page\imageArrowLink($title, $href, 'TODO');
     }
 } else {
     include_once '../../fns/Page/info.php';
