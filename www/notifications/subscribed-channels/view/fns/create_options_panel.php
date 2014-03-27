@@ -8,11 +8,11 @@ function create_options_panel ($subscribed_channel) {
     if ($subscribed_channel->receive_notifications) {
         $title = 'Forbid Notifications';
         $href = "submit-forbid.php?id=$id";
-        $link = Page\imageLink($title, $href, 'TODO');
+        $link = Page\imageLink($title, $href, 'forbid-notifications');
     } else {
         $title = 'Receive Notifications';
         $href = "submit-receive.php?id=$id";
-        $link = Page\imageLink($title, $href, 'TODO');
+        $link = Page\imageLink($title, $href, 'receive-notifications');
     }
 
     include_once __DIR__.'/../../../../fns/create_panel.php';

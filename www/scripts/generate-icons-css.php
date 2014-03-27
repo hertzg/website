@@ -21,7 +21,7 @@ $names = array(
     'token', 'create-token', 'tokens', 'run', 'mail', 'phone', 'edit-home',
     'move-up', 'move-to-top', 'move-down', 'move-to-bottom', 'reorder', 'show-hide',
     'restore-defaults', 'connection', 'create-connection', 'edit-connection',
-    'connections');
+    'connections', 'forbid-notifications', 'receive-notifications');
 
 $content = "/* auto-generated */\n";
 $x = 0;
