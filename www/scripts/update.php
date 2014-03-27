@@ -16,7 +16,7 @@ $mysqli->query(
 var_dump($mysqli->error);
 
 $mysqli->query(
-    'alter table users add anonymous_can_send_channel tinyint'
+    'alter table users add anonymous_can_send_channel tinyint not null'
 );
 var_dump($mysqli->error);
 

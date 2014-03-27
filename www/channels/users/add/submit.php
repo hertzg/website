@@ -31,6 +31,12 @@ if ($username === '') {
                 $mysqli, $idusers, $subscribed_id_users);
             if ($channelUser) {
                 $errors[] = 'The user is already added.';
+            } else {
+                include_once '../../../fns/get_users_connection.php';
+                $connection = get_users_connection($mysqli, $userToSubscribe, $idusers);
+                if (!$connection['can_send_channel']) {
+                    $errors[] = "The user isn't receiving channels from you.";
+                }
             }
         }
     }
