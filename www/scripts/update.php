@@ -16,7 +16,9 @@ $mysqli->query(
 var_dump($mysqli->error);
 
 $mysqli->query(
-    'alter table users add anonymous_can_send_channel tinyint not null'
+    'alter table users'
+    .' add num_other_channels tinyint not null after num_channels,'
+    .' add anonymous_can_send_channel tinyint not null'
 );
 var_dump($mysqli->error);
 
@@ -29,7 +31,8 @@ $mysqli->query(
     .' username varchar(32) character set ascii collate ascii_bin not null,'
     .' subscribed_id_users bigint unsigned not null,'
     .' subscribed_username varchar(32) character set ascii collate ascii_bin not null,'
-    .' insert_time bigint unsigned not null)'
+    .' insert_time bigint unsigned not null,'
+    .' receive_notifications tinyint not null)'
 );
 var_dump($mysqli->error);
 

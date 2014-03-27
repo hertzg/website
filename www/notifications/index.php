@@ -13,8 +13,19 @@ Users\clearNumNewNotifications($mysqli, $idusers);
 include_once 'fns/create_channels_link.php';
 $options = array(create_channels_link($user, '../channels/'));
 
-include_once '../fns/Page/imageArrowLink.php';
-$options[] = Page\imageArrowLink('Other Channels', 'other-channels/', 'TODO');
+$title = 'Other Channels';
+$href = 'other-channels/';
+$icon = 'TODO';
+$num_other_channels = $user->num_other_channels;
+if ($num_other_channels) {
+    $description = "$num_other_channels total.";
+    include_once '../fns/Page/imageArrowLinkWithDescription.php';
+    $options[] = Page\imageArrowLinkWithDescription($title,
+        $description, $href, $icon);
+} else {
+    include_once '../fns/Page/imageArrowLink.php';
+    $options[] = Page\imageArrowLink($title, $href, $icon);
+}
 
 $items = array();
 
@@ -23,6 +34,7 @@ $notifications = Notifications\indexOnUser($mysqli, $idusers);
 
 if ($notifications) {
 
+    include_once '../fns/Page/imageArrowLink.php';
     $options[] = Page\imageArrowLink('Delete All Notifications',
         'delete-all/', 'trash-bin');
 
