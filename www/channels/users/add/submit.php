@@ -60,7 +60,7 @@ include_once '../../../fns/SubscribedChannels/add.php';
 $id = SubscribedChannels\add($mysqli, $id, $channel->channelname, $idusers,
     $user->username, $subscribed_id_users , $subscribed_username);
 
-include_once '../../../fns/Users/addNumOtherChannels.php';
-Users\addNumOtherChannels($mysqli, $subscribed_id_users, 1);
+include_once '../../../fns/Users/addNumSubscribedChannels.php';
+Users\addNumSubscribedChannels($mysqli, $subscribed_id_users, 1);
 
 redirect("../view/?id=$id");

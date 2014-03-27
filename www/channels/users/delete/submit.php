@@ -10,8 +10,8 @@ list($subscribed_channel, $id, $user) = require_subscribed_channel($mysqli);
 include_once '../../../fns/SubscribedChannels/delete.php';
 SubscribedChannels\delete($mysqli, $id);
 
-include_once '../../../fns/Users/addNumOtherChannels.php';
-Users\addNumOtherChannels($mysqli, $subscribed_channel->subscribed_id_users, -1);
+include_once '../../../fns/Users/addNumSubscribedChannels.php';
+Users\addNumSubscribedChannels($mysqli, $subscribed_channel->subscribed_id_users, -1);
 
 $_SESSION['channels/users/messages'] = ['The user has been removed.'];
 
