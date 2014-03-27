@@ -5,20 +5,21 @@ $base = '../../';
 include_once '../../fns/require_user.php';
 $user = require_user($base);
 
-unset($_SESSION['notifications/other-channels/view/messages']);
+unset($_SESSION['notifications/subscribed-channels/view/messages']);
 
 $items = [];
 
-include_once '../../fns/ChannelUsers/indexOnSubscribedUser.php';
+include_once '../../fns/SubscribedChannels/indexOnSubscribedUser.php';
 include_once '../../lib/mysqli.php';
-$channelUsers = ChannelUsers\indexOnSubscribedUser($mysqli, $user->idusers);
+$subscribedChannels = SubscribedChannels\indexOnSubscribedUser(
+    $mysqli, $user->idusers);
 
 include_once '../../fns/Page/imageArrowLink.php';
 
-if ($channelUsers) {
-    foreach ($channelUsers as $channelUser) {
-        $title = htmlspecialchars($channelUser->channel_name);
-        $href = "view/?id=$channelUser->id";
+if ($subscribedChannels) {
+    foreach ($subscribedChannels as $subscribedChannel) {
+        $title = htmlspecialchars($subscribedChannel->channel_name);
+        $href = "view/?id=$subscribedChannel->id";
         $items[] = Page\imageArrowLink($title, $href, 'TODO');
     }
 } else {

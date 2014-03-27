@@ -14,11 +14,11 @@ include_once 'fns/create_channels_link.php';
 $options = array(create_channels_link($user, '../channels/'));
 
 $title = 'Other Channels';
-$href = 'other-channels/';
+$href = 'subscribed-channels/';
 $icon = 'TODO';
-$num_other_channels = $user->num_other_channels;
-if ($num_other_channels) {
-    $description = "$num_other_channels total.";
+$num_subscribed_channels = $user->num_subscribed_channels;
+if ($num_subscribed_channels) {
+    $description = "$num_subscribed_channels total.";
     include_once '../fns/Page/imageArrowLinkWithDescription.php';
     $options[] = Page\imageArrowLinkWithDescription($title,
         $description, $href, $icon);

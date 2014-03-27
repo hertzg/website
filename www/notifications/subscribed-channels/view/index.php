@@ -1,8 +1,8 @@
 <?php
 
-include_once 'fns/require_other_channel.php';
+include_once 'fns/require_subscribed_channel.php';
 include_once '../../../lib/mysqli.php';
-list($channel_user, $id, $user) = require_other_channel($mysqli);
+list($subscribed_channel, $id, $user) = require_subscribed_channel($mysqli);
 
 include_once 'fns/create_options_panel.php';
 include_once '../../../fns/create_tabs.php';
@@ -21,12 +21,12 @@ $content =
             ],
         ],
         "Other Channel #$id",
-        Page\sessionMessages('notifications/other-channels/view/messages')
-        .Form\label('Channel name', htmlspecialchars($channel_user->channel_name))
+        Page\sessionMessages('notifications/subscribed-channels/view/messages')
+        .Form\label('Channel name', htmlspecialchars($subscribed_channel->channel_name))
         .'<div class="hr"></div>'
-        .Form\label('Channel owner', htmlspecialchars($channel_user->username))
+        .Form\label('Channel owner', htmlspecialchars($subscribed_channel->username))
     )
-    .create_options_panel($channel_user);
+    .create_options_panel($subscribed_channel);
 
 include_once '../../../fns/echo_page.php';
 echo_page($user, "Other Channel #$id", $content, '../../../');

@@ -1,12 +1,12 @@
 <?php
 
-include_once '../fns/require_channel_user.php';
+include_once '../fns/require_subscribed_channel.php';
 include_once '../../../lib/mysqli.php';
-list($channel_user, $id, $user) = require_channel_user($mysqli, '../..');
+list($subscribed_channel, $id, $user) = require_subscribed_channel($mysqli, '../..');
 
 unset($_SESSION['channels/users/messages']);
 
-$id_channels = $channel_user->id_channels;
+$id_channels = $subscribed_channel->id_channels;
 
 include_once '../../../fns/Page/imageArrowLink.php';
 $title = 'Remove User';
@@ -30,7 +30,7 @@ $content = create_tabs(
     ],
     "User #$id",
     Page\sessionMessages('channels/users/view/messages')
-    .Form\label('Username', htmlspecialchars($channel_user->subscribed_username))
+    .Form\label('Username', htmlspecialchars($subscribed_channel->subscribed_username))
     .create_panel('Options', $deleteLink)
 );
 

@@ -42,8 +42,8 @@ BookmarkTags\deleteOnUser($mysqli, $idusers);
 include_once '../fns/Channels/deleteOnUser.php';
 Channels\deleteOnUser($mysqli, $idusers);
 
-include_once '../fns/ChannelUsers/deleteContainingUser.php';
-ChannelUsers\deleteContainingUser($mysqli, $idusers);
+include_once '../fns/SubscribedChannels/deleteContainingUser.php';
+SubscribedChannels\deleteContainingUser($mysqli, $idusers);
 
 include_once '../fns/Contacts/deleteOnUser.php';
 Contacts\deleteOnUser($mysqli, $idusers);

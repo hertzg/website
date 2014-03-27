@@ -1,6 +1,6 @@
 <?php
 
-function require_channel_user ($mysqli) {
+function require_subscribed_channel ($mysqli) {
 
     include_once __DIR__.'/../../../fns/require_user.php';
     $user = require_user('../../../');
@@ -10,14 +10,14 @@ function require_channel_user ($mysqli) {
 
     $id = abs((int)$id);
 
-    include_once __DIR__.'/../../../fns/ChannelUsers/getOnUser.php';
-    $channelUser = ChannelUsers\getOnUser($mysqli, $user->idusers, $id);
+    include_once __DIR__.'/../../../fns/SubscribedChannels/getOnUser.php';
+    $subscribedChannel = SubscribedChannels\getOnUser($mysqli, $user->idusers, $id);
 
-    if (!$channelUser) {
+    if (!$subscribedChannel) {
         include_once __DIR__.'/../../../fns/redirect.php';
         redirect('..');
     }
 
-    return [$channelUser, $id, $user];
+    return [$subscribedChannel, $id, $user];
 
 }

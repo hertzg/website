@@ -17,13 +17,13 @@ var_dump($mysqli->error);
 
 $mysqli->query(
     'alter table users'
-    .' add num_other_channels tinyint not null after num_channels,'
+    .' add num_subscribed_channels tinyint not null after num_channels,'
     .' add anonymous_can_send_channel tinyint not null'
 );
 var_dump($mysqli->error);
 
 $mysqli->query(
-    'create table channel_users'
+    'create table subscribed_channels'
     .' (id bigint unsigned primary key auto_increment not null,'
     .' id_channels bigint unsigned not null,'
     .' channel_name varchar(32) character set ascii not null,'

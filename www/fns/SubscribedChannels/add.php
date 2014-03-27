@@ -1,6 +1,6 @@
 <?php
 
-namespace ChannelUsers;
+namespace SubscribedChannels;
 
 function add ($mysqli, $id_channels, $channel_name, $id_users,
     $username, $subscribed_id_users, $subscribed_username) {
@@ -10,7 +10,7 @@ function add ($mysqli, $id_channels, $channel_name, $id_users,
     $subscribed_username = $mysqli->real_escape_string($subscribed_username);
     $insert_time = time();
 
-    $sql = 'insert into channel_users'
+    $sql = 'insert into subscribed_channels'
         .' (id_channels, channel_name, id_users, username,'
         .' subscribed_id_users, subscribed_username, insert_time)'
         ." values ($id_channels, '$channel_name', $id_users, '$username',"

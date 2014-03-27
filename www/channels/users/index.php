@@ -15,13 +15,13 @@ $items = [];
 
 include_once '../../fns/Page/imageArrowLink.php';
 
-include_once '../../fns/ChannelUsers/indexOnChannel.php';
-$channelUsers = ChannelUsers\indexOnChannel($mysqli, $id);
+include_once '../../fns/SubscribedChannels/indexOnChannel.php';
+$subscribedChannels = SubscribedChannels\indexOnChannel($mysqli, $id);
 
-if ($channelUsers) {
-    foreach ($channelUsers as $channelUser) {
-        $title = htmlspecialchars($channelUser->subscribed_username);
-        $href = "view/?id=$channelUser->id";
+if ($subscribedChannels) {
+    foreach ($subscribedChannels as $subscribedChannel) {
+        $title = htmlspecialchars($subscribedChannel->subscribed_username);
+        $href = "view/?id=$subscribedChannel->id";
         $items[] = Page\imageArrowLink($title, $href, 'TODO');
     }
 } else {

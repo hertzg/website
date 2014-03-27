@@ -1,11 +1,11 @@
 <?php
 
-function create_options_panel ($channel_user) {
+function create_options_panel ($subscribed_channel) {
 
-    $id = $channel_user->id;
+    $id = $subscribed_channel->id;
 
     include_once __DIR__.'/../../../../fns/Page/imageLink.php';
-    if ($channel_user->receive_notifications) {
+    if ($subscribed_channel->receive_notifications) {
         $title = 'Forbid Notifications';
         $href = "submit-forbid.php?id=$id";
         $link = Page\imageLink($title, $href, 'TODO');

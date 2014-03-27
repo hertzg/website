@@ -26,10 +26,10 @@ if ($subscribed_username === '') {
             $errors[] = "You don't have to add yourself in the list.";
             $errors[] = 'You will always receive notifications on your channels.';
         } else {
-            include_once '../../../fns/ChannelUsers/getOnChannelAndSubscribedUser.php';
-            $channelUser = ChannelUsers\getOnChannelAndSubscribedUser(
+            include_once '../../../fns/SubscribedChannels/getOnChannelAndSubscribedUser.php';
+            $subscribedChannel = SubscribedChannels\getOnChannelAndSubscribedUser(
                 $mysqli, $id, $subscribed_id_users);
-            if ($channelUser) {
+            if ($subscribedChannel) {
                 $errors[] = 'The user is already added.';
             } else {
                 include_once '../../../fns/get_users_connection.php';
@@ -56,8 +56,8 @@ $_SESSION['channels/users/view/messages'] = [
     'The user has been added.',
 ];
 
-include_once '../../../fns/ChannelUsers/add.php';
-$id = ChannelUsers\add($mysqli, $id, $channel->channelname, $idusers,
+include_once '../../../fns/SubscribedChannels/add.php';
+$id = SubscribedChannels\add($mysqli, $id, $channel->channelname, $idusers,
     $user->username, $subscribed_id_users , $subscribed_username);
 
 include_once '../../../fns/Users/addNumOtherChannels.php';
