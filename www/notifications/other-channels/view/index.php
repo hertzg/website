@@ -21,6 +21,8 @@ $content =
         ],
         "Other Channel #$id",
         Form\label('Channel name', htmlspecialchars($channel_user->channel_name))
+        .'<div class="hr"></div>'
+        .Form\label('Channel owner', htmlspecialchars($channel_user->username))
     )
     .create_options_panel($channel_user);
 
