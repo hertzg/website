@@ -48,8 +48,14 @@ if ($notifications) {
             $icon = 'old-notification';
         }
 
+        $href = "./in-channel/?id=$notification->idchannels";
+        $id_subscribed_channels = $notification->id_subscribed_channels;
+        if ($id_subscribed_channels) {
+            $href .= "&amp;id_subscribed_channels=$id_subscribed_channels";
+        }
+
         $content =
-            "<a class=\"a\" href=\"./in-channel/?id=$notification->idchannels\">"
+            "<a class=\"a\" href=\"$href\">"
                 .$notification->channelname
             .'</a>: '
             .nl2br(
@@ -79,20 +85,19 @@ include_once '../fns/create_panel.php';
 include_once '../fns/create_tabs.php';
 include_once '../fns/Page/sessionErrors.php';
 include_once '../fns/Page/sessionMessages.php';
-$content =
-    create_tabs(
+$content = create_tabs(
+    array(
         array(
-            array(
-                'title' => 'Home',
-                'href' => '../home/',
-            ),
+            'title' => 'Home',
+            'href' => '../home/',
         ),
-        'Notifications',
-        Page\sessionErrors('notifications/errors')
-        .Page\sessionMessages('notifications/messages')
-        .join('<div class="hr"></div>', $items)
-        .create_panel('Options', join('<div class="hr"></div>', $options))
-    );
+    ),
+    'Notifications',
+    Page\sessionErrors('notifications/errors')
+    .Page\sessionMessages('notifications/messages')
+    .join('<div class="hr"></div>', $items)
+    .create_panel('Options', join('<div class="hr"></div>', $options))
+);
 
 include_once '../fns/echo_page.php';
 echo_page($user, 'Notifications', $content, $base);

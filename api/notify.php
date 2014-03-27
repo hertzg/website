@@ -30,16 +30,33 @@ if ($notificationtext === '') {
 
 $idusers = $channel->idusers;
 $idchannels = $channel->idchannels;
+$channelname = $channel->channelname;
 
 include_once 'fns/Notifications/add.php';
 Notifications\add($mysqli, $idusers, $idchannels,
-    $channel->channelname, $notificationtext);
+    $channelname, $notificationtext);
 
 include_once 'fns/Channels/addNumNotifications.php';
 Channels\addNumNotifications($mysqli, $idchannels, 1);
 
 include_once 'fns/Users/addNumNewNotifications.php';
 Users\addNumNewNotifications($mysqli, $idusers, 1);
+
+include_once 'fns/SubscribedChannels/indexOnChannel.php';
+$subscribedChannels = SubscribedChannels\indexOnChannel($mysqli, $idchannels);
+
+if ($subscribedChannels) {
+    include_once 'fns/Notifications/addExternal.php';
+    foreach ($subscribedChannels as $subscribedChannel) {
+        if ($subscribedChannel->receive_notifications) {
+            $idusers = $subscribedChannel->subscribed_id_users;
+            Notifications\addExternal($mysqli, $idusers,
+                $idchannels, $channelname, $notificationtext,
+                $subscribedChannel->id);
+            Users\addNumNewNotifications($mysqli, $idusers, 1);
+        }
+    }
+}
 
 echo json_encode(array(
     'ok' => true,

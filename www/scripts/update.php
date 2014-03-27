@@ -23,6 +23,12 @@ $mysqli->query(
 var_dump($mysqli->error);
 
 $mysqli->query(
+    'alter table notifications'
+    .' add id_subscribed_channels bigint not null'
+);
+var_dump($mysqli->error);
+
+$mysqli->query(
     'create table subscribed_channels'
     .' (id bigint unsigned primary key auto_increment not null,'
     .' id_channels bigint unsigned not null,'
