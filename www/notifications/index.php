@@ -13,6 +13,8 @@ Users\clearNumNewNotifications($mysqli, $idusers);
 include_once 'fns/create_channels_link.php';
 $options = array(create_channels_link($user, '../channels/'));
 
+$options[] = Page\imageArrowLink('Other Channels', 'other-channels/', 'TODO');
+
 $items = array();
 
 include_once '../fns/Notifications/indexOnUser.php';
