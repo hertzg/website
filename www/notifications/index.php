@@ -15,7 +15,7 @@ $options = array(create_channels_link($user, '../channels/'));
 
 $title = 'Other Channels';
 $href = 'subscribed-channels/';
-$icon = 'TODO';
+$icon = 'subscribed-channels';
 $num_subscribed_channels = $user->num_subscribed_channels;
 if ($num_subscribed_channels) {
     $description = "$num_subscribed_channels total.";

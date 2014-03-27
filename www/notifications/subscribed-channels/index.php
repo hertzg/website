@@ -20,7 +20,7 @@ if ($subscribedChannels) {
     foreach ($subscribedChannels as $subscribedChannel) {
         $title = htmlspecialchars($subscribedChannel->channel_name);
         $href = "view/?id=$subscribedChannel->id";
-        $items[] = Page\imageArrowLink($title, $href, 'TODO');
+        $items[] = Page\imageArrowLink($title, $href, 'subscribed-channel');
     }
 } else {
     include_once '../../fns/Page/info.php';
