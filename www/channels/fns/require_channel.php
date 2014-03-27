@@ -10,8 +10,8 @@ function require_channel ($mysqli, $channelsBase = '..') {
 
     $id = abs((int)$id);
 
-    include_once __DIR__.'/../../fns/Channels/get.php';
-    $channel = Channels\get($mysqli, $user->idusers, $id);
+    include_once __DIR__.'/../../fns/Channels/getOnUser.php';
+    $channel = Channels\getOnUser($mysqli, $user->idusers, $id);
 
     if (!$channel) {
         unset($_SESSION['channels/messages']);

@@ -6,12 +6,14 @@ function require_channel ($mysqli, $requireUserBase, $base) {
     $user = require_user($requireUserBase);
 
     include_once __DIR__.'/../../../fns/request_strings.php';
-    list($id) = request_strings('id');
+    list($id, $id_subscribed_channels) = request_strings(
+        'id', 'id_subscribed_channels');
 
     $id = abs((int)$id);
+    $id_subscribed_channels = abs((int)$id_subscribed_channels);
 
-    include_once __DIR__.'/../../../fns/Channels/get.php';
-    $channel = Channels\get($mysqli, $user->idusers, $id);
+    include_once __DIR__.'/../../../fns/Channels/getOnUser.php';
+    $channel = Channels\getOnUser($mysqli, $user->idusers, $id);
 
     if (!$channel) {
         unset($_SESSION['notifications/messages']);
