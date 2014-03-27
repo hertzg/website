@@ -7,6 +7,7 @@ list($channel_user, $id, $user) = require_other_channel($mysqli);
 include_once 'fns/create_options_panel.php';
 include_once '../../../fns/create_tabs.php';
 include_once '../../../fns/Form/label.php';
+include_once '../../../fns/Page/sessionMessages.php';
 $content =
     create_tabs(
         [
@@ -20,7 +21,8 @@ $content =
             ],
         ],
         "Other Channel #$id",
-        Form\label('Channel name', htmlspecialchars($channel_user->channel_name))
+        Page\sessionMessages('notifications/other-channels/view/messages')
+        .Form\label('Channel name', htmlspecialchars($channel_user->channel_name))
         .'<div class="hr"></div>'
         .Form\label('Channel owner', htmlspecialchars($channel_user->username))
     )

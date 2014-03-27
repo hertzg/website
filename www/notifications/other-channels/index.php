@@ -5,6 +5,8 @@ $base = '../../';
 include_once '../../fns/require_user.php';
 $user = require_user($base);
 
+unset($_SESSION['notifications/other-channels/view/messages']);
+
 $items = [];
 
 include_once '../../fns/ChannelUsers/indexOnSubscribedUser.php';
