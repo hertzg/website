@@ -2,10 +2,10 @@
 
 namespace ChannelUsers;
 
-function getOnUser ($mysqli, $id_users, $id) {
+function getOnSubscribedUser ($mysqli, $subscribed_id_users, $id) {
     include_once __DIR__.'/get.php';
     $channelUser = get($mysqli, $id);
-    if ($channelUser->id_users == $id_users) {
+    if ($channelUser->subscribed_id_users == $subscribed_id_users) {
         return $channelUser;
     }
 }
