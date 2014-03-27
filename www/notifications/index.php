@@ -48,10 +48,11 @@ if ($notifications) {
             $icon = 'old-notification';
         }
 
-        $href = "./in-channel/?id=$notification->idchannels";
         $id_subscribed_channels = $notification->id_subscribed_channels;
         if ($id_subscribed_channels) {
-            $href .= "&amp;id_subscribed_channels=$id_subscribed_channels";
+            $href = "in-channel/?id_subscribed_channels=$id_subscribed_channels";
+        } else {
+            $href = "in-channel/?id=$notification->idchannels";
         }
 
         $content =

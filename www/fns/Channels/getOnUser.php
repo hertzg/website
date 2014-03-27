@@ -3,8 +3,9 @@
 namespace Channels;
 
 function getOnUser ($mysqli, $idusers, $id) {
-    $sql = 'select * from channels'
-        ." where idusers = $idusers and idchannels = $id";
-    include_once __DIR__.'/../mysqli_single_object.php';
-    return mysqli_single_object($mysqli, $sql);
+    include_once __DIR__.'/get.php';
+    $channel = get($mysqli, $id);
+    if ($channel && $channel->idusers == $idusers) {
+        return $channel;
+    }
 }
