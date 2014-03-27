@@ -23,8 +23,10 @@ $content = create_tabs(
     "User #$id",
     Page\text(
         'Are you sure you want to remove the user "<b>'
-        .htmlspecialchars($channel_user->username)
-        .'</b>" from this channel?'
+        .htmlspecialchars($channel_user->subscribed_username)
+        .'</b>" from the channel "<b>'
+        .htmlspecialchars($channel_user->channel_name)
+        .'</b>"?'
     )
     .'<div class="hr"></div>'
     .Page\imageLink('Yes, remove user', "submit.php?id=$id", 'yes')

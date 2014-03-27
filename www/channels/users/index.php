@@ -20,9 +20,9 @@ $channelUsers = ChannelUsers\indexOnChannel($mysqli, $id);
 
 if ($channelUsers) {
     foreach ($channelUsers as $channelUser) {
-        $username = htmlspecialchars($channelUser->username);
+        $title = htmlspecialchars($channelUser->subscribed_username);
         $href = "view/?id=$channelUser->id";
-        $items[] = Page\imageArrowLink($username, $href, 'TODO');
+        $items[] = Page\imageArrowLink($title, $href, 'TODO');
     }
 } else {
     include_once '../../fns/Page/info.php';

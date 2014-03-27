@@ -30,7 +30,7 @@ $content = create_tabs(
     ],
     "User #$id",
     Page\sessionMessages('channels/users/view/messages')
-    .Form\label('Username', htmlspecialchars($channel_user->username))
+    .Form\label('Username', htmlspecialchars($channel_user->subscribed_username))
     .create_panel('Options', $deleteLink)
 );
 

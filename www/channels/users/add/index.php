@@ -8,7 +8,7 @@ $key = 'channels/users/add/values';
 if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];
 } else {
-    $values = ['username' => ''];
+    $values = ['subscribed_username' => ''];
 }
 
 unset(
@@ -35,8 +35,8 @@ $content = create_tabs(
     'Add',
     Page\sessionErrors('channels/users/add/errors')
     .'<form action="submit.php" method="post">'
-        .Form\textfield('username', 'Username', [
-            'value' => $values['username'],
+        .Form\textfield('subscribed_username', 'Username', [
+            'value' => $values['subscribed_username'],
             'required' => true,
             'autofocus' => true,
         ])
