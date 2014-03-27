@@ -1,6 +1,7 @@
 #!/usr/bin/php
 <?php
 
+chdir(__DIR__);
 include_once 'lib/require-cli.php';
 include_once '../fns/mysqli_query_object.php';
 include_once '../fns/mysqli_single_object.php';
@@ -37,14 +38,10 @@ foreach ($users as $user) {
     $sql = "select count(*) value from tokens where idusers = $idusers";
     $num_tokens = mysqli_single_object($mysqli, $sql)->value;
 
-    $sql = 'update users set'
-        ." num_bookmarks = $num_bookmarks,"
-        ." num_channels = $num_channels,"
-        ." num_contacts = $num_contacts,"
-        ." num_events = $num_events,"
-        ." num_notes = $num_notes,"
-        ." num_tasks = $num_tasks,"
-        ." num_tokens = $num_tokens"
+    $sql = "update users set num_bookmarks = $num_bookmarks,"
+        ." num_channels = $num_channels, num_contacts = $num_contacts,"
+        ." num_events = $num_events, num_notes = $num_notes,"
+        ." num_tasks = $num_tasks, num_tokens = $num_tokens"
         ." where idusers = $idusers";
     $mysqli->query($sql) || die($mysqli->error);
 
