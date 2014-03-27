@@ -11,7 +11,7 @@ $id_channels = $subscribed_channel->id_channels;
 include_once '../../../fns/Page/imageArrowLink.php';
 $title = 'Remove User';
 $href = "../delete/?id=$id";
-$deleteLink = Page\imageArrowLink($title, $href, 'trash-bin');
+$deleteLink = Page\imageArrowLink($title, $href, 'remove-user');
 
 include_once '../../../fns/create_panel.php';
 include_once '../../../fns/create_tabs.php';

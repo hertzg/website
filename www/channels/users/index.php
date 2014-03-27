@@ -22,14 +22,14 @@ if ($subscribedChannels) {
     foreach ($subscribedChannels as $subscribedChannel) {
         $title = htmlspecialchars($subscribedChannel->subscribed_username);
         $href = "view/?id=$subscribedChannel->id";
-        $items[] = Page\imageArrowLink($title, $href, 'TODO');
+        $items[] = Page\imageArrowLink($title, $href, 'user');
     }
 } else {
     include_once '../../fns/Page/info.php';
     $items[] = Page\info('No users');
 }
 
-$options = [Page\imageArrowLink('Add User', "add/?id=$id", 'TODO')];
+$options = [Page\imageArrowLink('Add User', "add/?id=$id", 'add-user')];
 
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';

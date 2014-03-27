@@ -12,7 +12,7 @@ function create_options_panel ($id) {
 
     $title = 'Channel Users';
     $href = "../users/?id=$id";
-    $options[] = Page\imageArrowLink($title, $href, 'TODO');
+    $options[] = Page\imageArrowLink($title, $href, 'users');
 
     $title = 'Delete Channel';
     $href = "../delete/?id=$id";
