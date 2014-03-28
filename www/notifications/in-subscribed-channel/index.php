@@ -77,7 +77,7 @@ $content =
             ),
         ),
         'Notifications',
-        Page\sessionMessages('notifications/in-channel/messages')
+        Page\sessionMessages('notifications/in-subscribed-channel/messages')
         .'<div class="filterBar">'
             .'Channel: <b>'.htmlspecialchars($subscribedChannel->channel_name).'</b>'
             .'<a class="clickable" title="Clear Filter" href="..">'

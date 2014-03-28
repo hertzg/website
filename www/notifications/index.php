@@ -66,12 +66,8 @@ if ($notifications) {
     $items[] = Page\info('No notifications.');
 }
 
-unset(
-    $_SESSION['channels/errors'],
-    $_SESSION['channels/messages'],
-    $_SESSION['home/messages'],
-    $_SESSION['notifications/in-channel/messages']
-);
+include_once 'fns/unset_session_vars.php';
+unset_session_vars();
 
 include_once '../fns/create_panel.php';
 include_once '../fns/create_tabs.php';
