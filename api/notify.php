@@ -36,9 +36,6 @@ include_once 'fns/Notifications/add.php';
 Notifications\add($mysqli, $idusers, $idchannels,
     $channelname, $notificationtext);
 
-include_once 'fns/Channels/addNumNotifications.php';
-Channels\addNumNotifications($mysqli, $idchannels, 1);
-
 include_once 'fns/Users/addNumNewNotifications.php';
 Users\addNumNewNotifications($mysqli, $idusers, 1);
 

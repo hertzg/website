@@ -2,8 +2,8 @@
 
 namespace Notifications;
 
-function deleteOnSubscribedChannel ($mysqli, $subscribed_id_channels) {
+function deleteOnSubscribedChannel ($mysqli, $id_subscribed_channels) {
     $sql = 'delete from notifications'
-        ." where subscribed_id_channels = $subscribed_id_channels";
+        ." where id_subscribed_channels = $id_subscribed_channels";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 }
