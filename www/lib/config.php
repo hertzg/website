@@ -1,8 +1,8 @@
 <?php
 
-$mysqli = array(
+$mysqli = [
     'host' => 'localhost',
     'user' => 'root',
     'pass' => 'root',
     'db' => 'zviniwww',
-);
+];
