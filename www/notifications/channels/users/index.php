@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/require_channel.php';
-include_once '../../lib/mysqli.php';
+include_once '../../../lib/mysqli.php';
 list($channel, $id, $user) = require_channel($mysqli);
 
 unset(
@@ -13,9 +13,9 @@ unset(
 
 $items = [];
 
-include_once '../../fns/Page/imageArrowLink.php';
+include_once '../../../fns/Page/imageArrowLink.php';
 
-include_once '../../fns/SubscribedChannels/indexOnChannel.php';
+include_once '../../../fns/SubscribedChannels/indexOnChannel.php';
 $subscribedChannels = SubscribedChannels\indexOnChannel($mysqli, $id);
 
 if ($subscribedChannels) {
@@ -25,15 +25,15 @@ if ($subscribedChannels) {
         $items[] = Page\imageArrowLink($title, $href, 'user');
     }
 } else {
-    include_once '../../fns/Page/info.php';
+    include_once '../../../fns/Page/info.php';
     $items[] = Page\info('No users');
 }
 
 $options = [Page\imageArrowLink('Add User', "add/?id=$id", 'add-user')];
 
-include_once '../../fns/create_panel.php';
-include_once '../../fns/create_tabs.php';
-include_once '../../fns/Page/sessionMessages.php';
+include_once '../../../fns/create_panel.php';
+include_once '../../../fns/create_tabs.php';
+include_once '../../../fns/Page/sessionMessages.php';
 $content = create_tabs(
     [
         [
@@ -51,5 +51,5 @@ $content = create_tabs(
     .create_panel('Options', join('<div class="hr"></div>', $options))
 );
 
-include_once '../../fns/echo_page.php';
-echo_page($user, "Channel #$id Users", $content, '../../');
+include_once '../../../fns/echo_page.php';
+echo_page($user, "Channel #$id Users", $content, '../../../');

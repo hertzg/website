@@ -1,22 +1,22 @@
 <?php
 
 include_once '../fns/require_subscribed_channel.php';
-include_once '../../../lib/mysqli.php';
-list($subscribed_channel, $id, $user) = require_subscribed_channel($mysqli, '../..');
+include_once '../../../../lib/mysqli.php';
+list($subscribed_channel, $id, $user) = require_subscribed_channel($mysqli, '../../..');
 
 unset($_SESSION['channels/users/messages']);
 
 $id_channels = $subscribed_channel->id_channels;
 
-include_once '../../../fns/Page/imageArrowLink.php';
+include_once '../../../../fns/Page/imageArrowLink.php';
 $title = 'Remove User';
 $href = "../delete/?id=$id";
 $deleteLink = Page\imageArrowLink($title, $href, 'remove-user');
 
-include_once '../../../fns/create_panel.php';
-include_once '../../../fns/create_tabs.php';
-include_once '../../../fns/Form/label.php';
-include_once '../../../fns/Page/sessionMessages.php';
+include_once '../../../../fns/create_panel.php';
+include_once '../../../../fns/create_tabs.php';
+include_once '../../../../fns/Form/label.php';
+include_once '../../../../fns/Page/sessionMessages.php';
 $content = create_tabs(
     [
         [
@@ -34,5 +34,5 @@ $content = create_tabs(
     .create_panel('Options', $deleteLink)
 );
 
-include_once '../../../fns/echo_page.php';
-echo_page($user, "Channel User #$id", $content, '../../../');
+include_once '../../../../fns/echo_page.php';
+echo_page($user, "Channel User #$id", $content, '../../../../');

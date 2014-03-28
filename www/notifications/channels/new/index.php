@@ -1,8 +1,8 @@
 <?php
 
-$base = '../../';
+$base = '../../../';
 
-include_once '../../fns/require_user.php';
+include_once '../../../fns/require_user.php';
 $user = require_user($base);
 
 if (array_key_exists('channels/add/values', $_SESSION)) {
@@ -16,17 +16,17 @@ unset(
     $_SESSION['channels/messages']
 );
 
-include_once '../../fns/create_tabs.php';
-include_once '../../fns/Form/button.php';
-include_once '../../fns/Form/notes.php';
-include_once '../../fns/Form/textfield.php';
-include_once '../../fns/Page/sessionErrors.php';
+include_once '../../../fns/create_tabs.php';
+include_once '../../../fns/Form/button.php';
+include_once '../../../fns/Form/notes.php';
+include_once '../../../fns/Form/textfield.php';
+include_once '../../../fns/Page/sessionErrors.php';
 $content =
     create_tabs(
         [
             [
                 'title' => '&middot;&middot;&middot;',
-                'href' => '../../notifications/',
+                'href' => '../..',
             ],
             [
                 'title' => 'Channels',
@@ -51,5 +51,5 @@ $content =
         .'</form>'
     );
 
-include_once '../../fns/echo_page.php';
+include_once '../../../fns/echo_page.php';
 echo_page($user, 'New Channel', $content, $base);

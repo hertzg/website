@@ -1,14 +1,14 @@
 <?php
 
 include_once '../fns/require_subscribed_channel.php';
-include_once '../../../lib/mysqli.php';
+include_once '../../../../lib/mysqli.php';
 list($subscribed_channel, $id, $user) = require_subscribed_channel($mysqli);
 
 $id_channels = $subscribed_channel->id_channels;
 
-include_once '../../../fns/create_tabs.php';
-include_once '../../../fns/Page/imageLink.php';
-include_once '../../../fns/Page/text.php';
+include_once '../../../../fns/create_tabs.php';
+include_once '../../../../fns/Page/imageLink.php';
+include_once '../../../../fns/Page/text.php';
 $content = create_tabs(
     [
         [
@@ -34,5 +34,5 @@ $content = create_tabs(
     .Page\imageLink('No, return back', "../view/?id=$id", 'no')
 );
 
-include_once '../../../fns/echo_page.php';
-echo_page($user, "Remove Channel User #$id", $content, '../../../');
+include_once '../../../../fns/echo_page.php';
+echo_page($user, "Remove Channel User #$id", $content, '../../../../');

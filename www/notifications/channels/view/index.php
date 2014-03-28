@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/require_channel.php';
-include_once '../../lib/mysqli.php';
+include_once '../../../lib/mysqli.php';
 list($channel, $id, $user) = require_channel($mysqli);
 
 unset(
@@ -11,16 +11,16 @@ unset(
 );
 
 include_once 'fns/create_options_panel.php';
-include_once '../../fns/create_tabs.php';
-include_once '../../fns/Form/label.php';
-include_once '../../fns/Form/textfield.php';
-include_once '../../fns/Page/sessionMessages.php';
+include_once '../../../fns/create_tabs.php';
+include_once '../../../fns/Form/label.php';
+include_once '../../../fns/Form/textfield.php';
+include_once '../../../fns/Page/sessionMessages.php';
 $content =
     create_tabs(
         [
             [
                 'title' => '&middot;&middot;&middot;',
-                'href' => '../../notifications/',
+                'href' => '../..',
             ],
             [
                 'title' => 'Channels',
@@ -38,5 +38,5 @@ $content =
     )
     .create_options_panel($id);
 
-include_once '../../fns/echo_page.php';
-echo_page($user, "Channel #$id", $content, '../../');
+include_once '../../../fns/echo_page.php';
+echo_page($user, "Channel #$id", $content, '../../../');

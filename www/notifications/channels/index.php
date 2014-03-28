@@ -1,47 +1,47 @@
 <?php
 
-$base = '../';
+$base = '../../';
 
-include_once '../fns/require_user.php';
+include_once '../../fns/require_user.php';
 $user = require_user($base);
 
-include_once '../fns/Channels/indexOnUser.php';
-include_once '../lib/mysqli.php';
+include_once '../../fns/Channels/indexOnUser.php';
+include_once '../../lib/mysqli.php';
 $channels = Channels\indexOnUser($mysqli, $user->idusers);
 
 $items = [];
 
-include_once '../fns/Page/imageArrowLink.php';
+include_once '../../fns/Page/imageArrowLink.php';
 
 if ($channels) {
     foreach ($channels as $channel) {
-        $items[] = Page\imageArrowLink(
-            htmlspecialchars($channel->channelname),
-            "view/?id=$channel->idchannels", 'channel');
+        $title = htmlspecialchars($channel->channelname);
+        $href = "view/?id=$channel->idchannels";
+        $items[] = Page\imageArrowLink($title, $href, 'channel');
     }
 } else {
-    include_once '../fns/Page/info.php';
+    include_once '../../fns/Page/info.php';
     $items[] = Page\info('No channels');
 }
 
 include_once 'fns/unset_session_vars.php';
 unset_session_vars();
 
-include_once '../fns/create_panel.php';
-include_once '../fns/create_tabs.php';
-include_once '../fns/Page/imageLink.php';
-include_once '../fns/Page/sessionErrors.php';
-include_once '../fns/Page/sessionMessages.php';
+include_once '../../fns/create_panel.php';
+include_once '../../fns/create_tabs.php';
+include_once '../../fns/Page/imageLink.php';
+include_once '../../fns/Page/sessionErrors.php';
+include_once '../../fns/Page/sessionMessages.php';
 $content =
     create_tabs(
         [
             [
                 'title' => '&middot;&middot;&middot;',
-                'href' => '../home/',
+                'href' => '../../home/',
             ],
             [
                 'title' => 'Notifications',
-                'href' => '../notifications/',
+                'href' => '..',
             ],
         ],
         'Channels',
@@ -57,5 +57,5 @@ $content =
             'download-zvini-api.php', 'download')
     );
 
-include_once '../fns/echo_page.php';
+include_once '../../fns/echo_page.php';
 echo_page($user, 'Channels', $content, $base);
