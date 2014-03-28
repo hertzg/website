@@ -1,14 +1,37 @@
 <?php
 
 function check_username ($mysqli, $username, array &$errors) {
+
     if ($username === '') {
         $errors[] = 'Enter username.';
-    } elseif (mb_strlen($username, 'UTF-8') < 6) {
-        $errors[] = 'Username too short. At least 6 characters required.';
-    } else {
-        include_once __DIR__.'/../../fns/Users/getByUsername.php';
-        if (Users\getByUsername($mysqli, $username)) {
-            $errors[] = 'The username is unavailable. Try another.';
-        }
+        return;
     }
+
+    include_once __DIR__.'/../../fns/Username/isShort.php';
+    if (Username\isShort($username)) {
+        include_once __DIR__.'/../../fns/Username/minLength.php';
+        $minLength = Username\minLength();
+        $errors[] = "Username too short. At least $minLength characters required.";
+        return;
+    }
+
+    include_once __DIR__.'/../../fns/Username/isLong.php';
+    if (Username\isLong($username)) {
+        include_once __DIR__.'/../../fns/Username/maxLength.php';
+        $maxLength = Username\maxLength();
+        $errors[] = "Username too long. Maximum $maxLength characters allowed.";
+        return;
+    }
+
+    include_once __DIR__.'/../../fns/Username/isLegalChars.php';
+    if (!Username\isLegalChars($username)) {
+        $errors[] = 'The username contains illegal characters.';
+        return;
+    }
+
+    include_once __DIR__.'/../../fns/Users/getByUsername.php';
+    if (Users\getByUsername($mysqli, $username)) {
+        $errors[] = 'The username is unavailable. Try another.';
+    }
+
 }

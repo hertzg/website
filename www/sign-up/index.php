@@ -42,7 +42,10 @@ $content =
                 'autofocus' => true,
                 'required' => true,
             ))
-            .Form\notes(array('Minimum 6 characters.'))
+            .Form\notes(array(
+                'Characters a-z, A-Z, 0-9, dash, dot and underscore only.',
+                'Minimum 6 characters.',
+            ))
             .'<div class="hr"></div>'
             .Form\textfield('email', 'Email', array(
                 'value' => $values['email'],
