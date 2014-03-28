@@ -31,9 +31,8 @@ if ($foldername === '') {
     $errors[] = 'Enter folder name.';
 } else {
     include_once '../../fns/Folders/getByName.php';
-    if ($folder = Folders\getByName($mysqli, $idusers, $parentidfolders, $foldername)) {
-        $errors[] = 'Folder with this name already exists.';
-    }
+    $folder = Folders\getByName($mysqli, $idusers, $parentidfolders, $foldername);
+    if ($folder) $errors[] = 'Folder with this name already exists.';
 }
 
 if ($errors) {

@@ -26,8 +26,7 @@ if ($subscribed_username === '') {
             $errors[] = "You don't have to add yourself in the list.";
             $errors[] = 'You will always receive notifications on your channels.';
         } else {
-            $file = '../../../../fns/SubscribedChannels/getOnChannelAndSubscribedUser.php';
-            include_once $file;
+            include_once '../../../../fns/SubscribedChannels/getOnChannelAndSubscribedUser.php';
             $subscribedChannel = SubscribedChannels\getOnChannelAndSubscribedUser(
                 $mysqli, $id, $subscribed_id_users);
             if ($subscribedChannel) {
