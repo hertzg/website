@@ -4,8 +4,9 @@ include_once '../fns/require_bookmark.php';
 include_once '../../lib/mysqli.php';
 list($bookmark, $id, $user) = require_bookmark($mysqli);
 
-if (array_key_exists('bookmarks/edit/values', $_SESSION)) {
-    $values = $_SESSION['bookmarks/edit/values'];
+$key = 'bookmarks/edit/values';
+if (array_key_exists($key, $_SESSION)) {
+    $values = $_SESSION[$key];
 } else {
     $values = (array)$bookmark;
 }

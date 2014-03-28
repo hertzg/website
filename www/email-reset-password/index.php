@@ -5,8 +5,9 @@ $base = '../';
 include_once '../fns/require_guest_user.php';
 require_guest_user($base);
 
-if (array_key_exists('email-reset-password/values', $_SESSION)) {
-    $values = $_SESSION['email-reset-password/values'];
+$key = 'email-reset-password/values';
+if (array_key_exists($key, $_SESSION)) {
+    $values = $_SESSION[$key];
 } else {
     $values = ['email' => ''];
 }

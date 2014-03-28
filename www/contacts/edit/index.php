@@ -4,8 +4,9 @@ include_once '../fns/require_contact.php';
 include_once '../../lib/mysqli.php';
 list($contact, $id, $user) = require_contact($mysqli);
 
-if (array_key_exists('contacts/edit/values', $_SESSION)) {
-    $values = $_SESSION['contacts/edit/values'];
+$key = 'contacts/edit/values';
+if (array_key_exists($key, $_SESSION)) {
+    $values = $_SESSION[$key];
 } else {
     $values = (array)$contact;
 }

@@ -8,8 +8,9 @@ require_guest_user($base);
 include_once '../fns/request_strings.php';
 list($return) = request_strings('return');
 
-if (array_key_exists('sign-in/values', $_SESSION)) {
-    $values = $_SESSION['sign-in/values'];
+$key = 'sign-in/values';
+if (array_key_exists($key, $_SESSION)) {
+    $values = $_SESSION[$key];
 } else {
 
     if (array_key_exists('username', $_COOKIE)) {

@@ -5,8 +5,9 @@ $base = '../';
 include_once '../fns/require_guest_user.php';
 require_guest_user($base);
 
-if (array_key_exists('sign-up/values', $_SESSION)) {
-    $values = $_SESSION['sign-up/values'];
+$key = 'sign-up/values';
+if (array_key_exists($key, $_SESSION)) {
+    $values = $_SESSION[$key];
 } else {
     $values = [
         'username' => '',

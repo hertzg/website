@@ -9,8 +9,9 @@ include_once 'fns/require_valid_key.php';
 include_once '../lib/mysqli.php';
 list($user, $key) = require_valid_key($mysqli);
 
-if (array_key_exists('reset-password/values', $_SESSION)) {
-    $values = $_SESSION['reset-password/values'];
+$key = 'reset-password/values';
+if (array_key_exists($key, $_SESSION)) {
+    $values = $_SESSION[$key];
 } else {
     $values = [
         'password1' => '',

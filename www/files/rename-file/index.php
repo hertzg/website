@@ -4,8 +4,9 @@ include_once '../fns/require_file.php';
 include_once '../../lib/mysqli.php';
 list($file, $id, $user) = require_file($mysqli);
 
-if (array_key_exists('files/rename-file/values', $_SESSION)) {
-    $values = $_SESSION['files/rename-file/values'];
+$key = 'files/rename-file/values';
+if (array_key_exists($key, $_SESSION)) {
+    $values = $_SESSION[$key];
 } else {
     $values = (array)$file;
 }

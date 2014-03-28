@@ -60,8 +60,8 @@ render_folders_and_files($folders, $files, $items, 'Folder is empty');
 include_once 'fns/unset_session_vars.php';
 unset_session_vars();
 
-if (array_key_exists('files/idfolders', $_SESSION) &&
-    $idfolders != $_SESSION['files/idfolders']) {
+$key = 'files/idfolders';
+if (array_key_exists($key, $_SESSION) && $idfolders != $_SESSION[$key]) {
     unset($_SESSION['files/messages']);
 }
 

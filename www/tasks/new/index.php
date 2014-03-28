@@ -5,8 +5,9 @@ $base = '../../';
 include_once '../../fns/require_user.php';
 $user = require_user($base);
 
-if (array_key_exists('tasks/new/values', $_SESSION)) {
-    $values = $_SESSION['tasks/new/values'];
+$key = 'tasks/new/values';
+if (array_key_exists($key, $_SESSION)) {
+    $values = $_SESSION[$key];
 } else {
     $values = [
         'tasktext' => '',

@@ -57,8 +57,8 @@ if ($parentidfolders != $folder->parentidfolders) {
         'move-folder');
 }
 
-if (array_key_exists('files/move-folder/parentidfolders', $_SESSION) &&
-    $parentidfolders != $_SESSION['files/move-folder/parentidfolders']) {
+$key = 'files/move-folder/parentidfolders';
+if (array_key_exists($key, $_SESSION) && $parentidfolders != $_SESSION[$key]) {
     unset($_SESSION['files/move-folder/errors']);
 }
 

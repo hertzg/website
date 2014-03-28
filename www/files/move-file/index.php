@@ -47,8 +47,8 @@ if ($idfolders != $file->idfolders) {
         "submit.php?id=$id&idfolders=$idfolders", 'move-file');
 }
 
-if (array_key_exists('files/move-file/idfolders', $_SESSION) &&
-    $idfolders != $_SESSION['files/move-file/idfolders']) {
+$key = 'files/move-file/idfolders';
+if (array_key_exists($key, $_SESSION) && $idfolders != $_SESSION[$key]) {
     unset($_SESSION['files/move-file/errors']);
 }
 

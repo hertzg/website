@@ -5,8 +5,9 @@ $base = '../../';
 include_once '../../fns/require_user.php';
 $user = require_user($base);
 
-if (array_key_exists('account/edit-profile/values', $_SESSION)) {
-    $values = (object)$_SESSION['account/edit-profile/values'];
+$key = 'account/edit-profile/values';
+if (array_key_exists($key, $_SESSION)) {
+    $values = (object)$_SESSION[$key];
 } else {
     $values = $user;
 }

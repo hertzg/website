@@ -5,8 +5,9 @@ $base = '../../../';
 include_once '../../../fns/require_user.php';
 $user = require_user($base);
 
-if (array_key_exists('notifications/channels/add/values', $_SESSION)) {
-    $values = $_SESSION['notifications/channels/add/values'];
+$key = 'notifications/channels/add/values';
+if (array_key_exists($key, $_SESSION)) {
+    $values = $_SESSION[$key];
 } else {
     $values = ['channelname' => ''];
 }

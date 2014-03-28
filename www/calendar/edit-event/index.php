@@ -4,8 +4,9 @@ include_once '../fns/require_event.php';
 include_once '../../lib/mysqli.php';
 list($event, $idevents, $user) = require_event($mysqli);
 
-if (array_key_exists('calendar/edit-event/values', $_SESSION)) {
-    $values = $_SESSION['calendar/edit-event/values'];
+$key = 'calendar/edit-event/values';
+if (array_key_exists($key, $_SESSION)) {
+    $values = $_SESSION[$key];
 } else {
     $values = ['eventtext' => $event->eventtext];
 }

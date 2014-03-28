@@ -5,8 +5,9 @@ $base = '../../';
 include_once '../../fns/require_user.php';
 $user = require_user($base);
 
-if (array_key_exists('account/change-password/values', $_SESSION)) {
-    $values = $_SESSION['account/change-password/values'];
+$key = 'account/change-password/values';
+if (array_key_exists($key, $_SESSION)) {
+    $values = $_SESSION[$key];
 } else {
     $values = [
         'currentpassword' => '',

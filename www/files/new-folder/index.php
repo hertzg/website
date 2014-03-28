@@ -8,8 +8,9 @@ $user = require_user($base);
 include_once '../../fns/request_strings.php';
 list($parentidfolders) = request_strings('parentidfolders');
 
-if (array_key_exists('files/add-folder/values', $_SESSION)) {
-    $values = $_SESSION['files/add-folder/values'];
+$key = 'files/add-folder/values';
+if (array_key_exists($key, $_SESSION)) {
+    $values = $_SESSION[$key];
 } else {
     $values = ['foldername' => ''];
 }
