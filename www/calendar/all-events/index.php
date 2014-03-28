@@ -35,7 +35,7 @@ if ($events) {
 
 } else {
     include_once '../../fns/Page/info.php';
-    $items[] = Page\info('No events.');
+    $items[] = Page\info('No events');
     $optionsPanel = '';
 }
 

@@ -74,7 +74,7 @@ include_once 'fns/render_prev_button.php';
 render_prev_button($offset, $limit, $total, $items, $keyword, $tag);
 
 include_once '../fns/render_tasks.php';
-render_tasks($tasks, $items, 'No tasks found.', '../');
+render_tasks($tasks, $items, 'No tasks found', '../');
 
 include_once 'fns/render_next_button.php';
 render_next_button($offset, $limit, $total, $items, $keyword, $tag);

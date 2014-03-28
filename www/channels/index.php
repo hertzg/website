@@ -21,7 +21,7 @@ if ($channels) {
     }
 } else {
     include_once '../fns/Page/info.php';
-    $items[] = Page\info('No channels.');
+    $items[] = Page\info('No channels');
 }
 
 include_once 'fns/unset_session_vars.php';

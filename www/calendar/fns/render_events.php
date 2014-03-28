@@ -10,6 +10,6 @@ function render_events (array $events, array &$eventItems) {
         }
     } else {
         include_once __DIR__.'/../../fns/Page/info.php';
-        $eventItems[] = Page\info('No events on this day.');
+        $eventItems[] = Page\info('No events on this day');
     }
 }

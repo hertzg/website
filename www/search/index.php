@@ -69,7 +69,7 @@ if ($bookmarks || $contacts || $notes || $tasks || $folders || $files) {
 } else {
 
     include_once '../fns/Page/info.php';
-    $items[] = Page\info('Nothing found.');
+    $items[] = Page\info('Nothing found');
 
     include_once 'fns/render_search_files_link.php';
     render_search_files_link($searchFiles, $keyword, 0, $items);

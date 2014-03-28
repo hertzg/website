@@ -63,7 +63,7 @@ if ($notifications) {
     }
 } else {
     include_once '../fns/Page/info.php';
-    $items[] = Page\info('No notifications.');
+    $items[] = Page\info('No notifications');
 }
 
 include_once 'fns/unset_session_vars.php';

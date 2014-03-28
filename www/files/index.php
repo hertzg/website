@@ -55,7 +55,7 @@ if ($idfolders) {
 }
 
 include_once 'fns/render_folders_and_files.php';
-render_folders_and_files($folders, $files, $items, 'Folder is empty.');
+render_folders_and_files($folders, $files, $items, 'Folder is empty');
 
 include_once 'fns/unset_session_vars.php';
 unset_session_vars();
