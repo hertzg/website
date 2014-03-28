@@ -12,7 +12,8 @@ function require_subscribed_channel ($mysqli, $base) {
     $id = abs((int)$id);
 
     include_once __DIR__.'/../../../fns/SubscribedChannels/getOnSubscribedUser.php';
-    $subscribedChannel = SubscribedChannels\getOnSubscribedUser($mysqli, $idusers, $id);
+    $subscribedChannel = SubscribedChannels\getOnSubscribedUser(
+        $mysqli, $idusers, $id);
 
     if (!$subscribedChannel) {
         unset($_SESSION['notifications/messages']);
@@ -22,7 +23,7 @@ function require_subscribed_channel ($mysqli, $base) {
         include_once __DIR__.'/../../../fns/redirect.php';
         redirect($base);
     }
-    
+
     return [$subscribedChannel, $id, $user];
 
 }
