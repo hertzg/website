@@ -1,13 +1,13 @@
 <?php
 
-include_once '../fns/require_same_domain_referer.php';
+include_once '../../fns/require_same_domain_referer.php';
 require_same_domain_referer('./');
 
-include_once '../fns/require_user.php';
-$user = require_user('../');
+include_once '../../fns/require_user.php';
+$user = require_user('../../');
 $idusers = $user->idusers;
 
-include_once '../fns/request_strings.php';
+include_once '../../fns/request_strings.php';
 list($currentpassword, $password1, $password2) = request_strings(
     'currentpassword', 'password1', 'password2');
 
@@ -16,7 +16,7 @@ $errors = array();
 if ($currentpassword === '') {
     $errors[] = 'Enter current password.';
 } else {
-    include_once '../fns/Password/match.php';
+    include_once '../../fns/Password/match.php';
     $hash = $user->password_hash;
     $salt = $user->password_salt;
     if (!Password\match($hash, $salt, $currentpassword)) {
@@ -27,9 +27,9 @@ if ($currentpassword === '') {
 if ($password1 === '') {
     $errors[] = 'Enter new password.';
 } else {
-    include_once '../fns/Password/isShort.php';
+    include_once '../../fns/Password/isShort.php';
     if (Password\isShort($password1)) {
-        include_once '../fns/Password/minLength.php';
+        include_once '../../fns/Password/minLength.php';
         $errors[] =
             'New password too short.'
             .' At least '.Password\minLength().' characters required.';
@@ -38,7 +38,7 @@ if ($password1 === '') {
     }
 }
 
-include_once '../fns/redirect.php';
+include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['change-password/errors'] = $errors;
@@ -55,9 +55,9 @@ unset(
     $_SESSION['change-password/values']
 );
 
-include_once '../fns/Users/editPassword.php';
-include_once '../lib/mysqli.php';
+include_once '../../fns/Users/editPassword.php';
+include_once '../../lib/mysqli.php';
 Users\editPassword($mysqli, $idusers, $password1);
 
 $_SESSION['account/messages'] = array('Password has been changed.');
-redirect('../account/');
+redirect('..');
