@@ -29,7 +29,7 @@ function create_options_panel ($user) {
     $options[] = Page\imageArrowLink('Manage Connections', $href, 'connections');
 
     $title = 'Close Account';
-    $href = '../close-account/';
+    $href = 'close/';
     $options[] = Page\imageArrowLink($title, $href, 'trash-bin');
 
     $content = join('<div class="hr"></div>', $options);

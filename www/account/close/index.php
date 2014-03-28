@@ -1,26 +1,26 @@
 <?php
 
-$base = '../';
+$base = '../../';
 
-include_once '../fns/require_user.php';
+include_once '../../fns/require_user.php';
 $user = require_user($base);
 
 unset($_SESSION['account/messages']);
 
-include_once '../fns/create_tabs.php';
-include_once '../fns/Form/button.php';
-include_once '../fns/Form/password.php';
-include_once '../fns/Page/sessionErrors.php';
-include_once '../fns/Page/warnings.php';
+include_once '../../fns/create_tabs.php';
+include_once '../../fns/Form/button.php';
+include_once '../../fns/Form/password.php';
+include_once '../../fns/Page/sessionErrors.php';
+include_once '../../fns/Page/warnings.php';
 $content = create_tabs(
         array(
             array(
                 'title' => '&middot;&middot;&middot;',
-                'href' => '../home/',
+                'href' => '../../home/',
             ),
             array(
                 'title' => 'Account',
-                'href' => '../account/',
+                'href' => '..',
             ),
         ),
         'Close',
@@ -39,5 +39,5 @@ $content = create_tabs(
         .'</form>'
     );
 
-include_once '../fns/echo_page.php';
+include_once '../../fns/echo_page.php';
 echo_page($user, 'Close Account', $content, $base);
