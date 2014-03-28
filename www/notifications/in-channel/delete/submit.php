@@ -14,9 +14,9 @@ include_once '../../../fns/Users/clearNumNotifications.php';
 Users\clearNumNotifications($mysqli, $user->idusers);
 
 unset($_SESSION['notifications/errors']);
-$_SESSION['notifications/in-channel/messages'] = array(
+$_SESSION['notifications/in-channel/messages'] = [
     'Notifications have been deleted.',
-);
+];
 
 include_once '../../../fns/redirect.php';
 redirect("../?id=$id");

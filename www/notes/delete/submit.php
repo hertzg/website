@@ -17,7 +17,7 @@ include_once '../../fns/Users/addNumNotes.php';
 Users\addNumNotes($mysqli, $user->idusers, -1);
 
 unset($_SESSION['notes/errors']);
-$_SESSION['notes/messages'] = array('Note has been deleted.');
+$_SESSION['notes/messages'] = ['Note has been deleted.'];
 
 include_once '../../fns/redirect.php';
 redirect('..');

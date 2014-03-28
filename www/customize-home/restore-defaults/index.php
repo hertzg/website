@@ -14,16 +14,16 @@ include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/imageLink.php';
 include_once '../../fns/Page/text.php';
 $content = create_tabs(
-    array(
-        array(
+    [
+        [
             'title' => '&middot;&middot;&middot;',
             'href' => '../../home/',
-        ),
-        array(
+        ],
+        [
             'title' => 'Customize',
             'href' => '../',
-        ),
-    ),
+        ],
+    ],
     'Restore Defaults',
     Page\text('Are you sure you want to restore the default home?')
     .'<div class="hr"></div>'

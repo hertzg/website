@@ -9,7 +9,7 @@ include_once '../fns/Channels/indexOnUser.php';
 include_once '../lib/mysqli.php';
 $channels = Channels\indexOnUser($mysqli, $user->idusers);
 
-$items = array();
+$items = [];
 
 include_once '../fns/Page/imageArrowLink.php';
 
@@ -34,16 +34,16 @@ include_once '../fns/Page/sessionErrors.php';
 include_once '../fns/Page/sessionMessages.php';
 $content =
     create_tabs(
-        array(
-            array(
+        [
+            [
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../home/',
-            ),
-            array(
+            ],
+            [
                 'title' => 'Notifications',
                 'href' => '../notifications/',
-            ),
-        ),
+            ],
+        ],
         'Channels',
         Page\sessionErrors('channels/errors')
         .Page\sessionMessages('channels/messages')

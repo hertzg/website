@@ -16,12 +16,12 @@ include_once '../fns/Page/imageLink.php';
 include_once '../fns/Page/sessionMessages.php';
 $content =
     create_tabs(
-        array(
-            array(
+        [
+            [
                 'title' => 'Home',
                 'href' => '../home/',
-            ),
-        ),
+            ],
+        ],
         'Help',
         Page\sessionMessages('help/messages')
         .Page\imageLink('Install Zvini App', 'install.php', 'download')

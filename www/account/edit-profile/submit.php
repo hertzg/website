@@ -13,7 +13,7 @@ list($email, $full_name) = request_strings('email', 'full_name');
 include_once '../../fns/str_collapse_spaces.php';
 $full_name = str_collapse_spaces($full_name);
 
-$errors = array();
+$errors = [];
 
 $email = str_collapse_spaces($email);
 $email = mb_strtolower($email, 'UTF-8');
@@ -36,10 +36,10 @@ include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['account/edit-profile/errors'] = $errors;
-    $_SESSION['account/edit-profile/values'] = array(
+    $_SESSION['account/edit-profile/values'] = [
         'email' => $email,
         'full_name' => $full_name,
-    );
+    ];
     redirect();
 }
 
@@ -56,6 +56,6 @@ if ($email !== $user->email) {
     Users\invalidateEmail($mysqli, $idusers);
 }
 
-$_SESSION['account/messages'] = array('Changes have been saved.');
+$_SESSION['account/messages'] = ['Changes have been saved.'];
 
 redirect('..');

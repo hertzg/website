@@ -15,12 +15,12 @@ include_once '../../fns/Page/imageLink.php';
 include_once '../../fns/Page/text.php';
 $content =
     create_tabs(
-        array(
-            array(
+        [
+            [
                 'title' => 'Home',
                 'href' => '../../home/',
-            ),
-        ),
+            ],
+        ],
         'Files',
         Page\text(
             'Are you sure you want to delete the folder'

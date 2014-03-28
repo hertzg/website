@@ -8,9 +8,9 @@ include_once 'fns/unset_session_vars.php';
 unset_session_vars();
 
 include_once '../../fns/Form/label.php';
-$items = array(
+$items = [
     Form\label('Full name', htmlspecialchars($contact->full_name)),
-);
+];
 
 $alias = $contact->alias;
 if ($alias !== '') {
@@ -58,16 +58,16 @@ include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../fns/Page/sessionMessages.php';
 $content =
     create_tabs(
-        array(
-            array(
+        [
+            [
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../../home/',
-            ),
-            array(
+            ],
+            [
                 'title' => 'Contacts',
                 'href' => '..',
-            ),
-        ),
+            ],
+        ],
         "Contact #$id",
         Page\sessionMessages('contacts/view/messages')
         .join('<div class="hr"></div>', $items)

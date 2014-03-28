@@ -2,7 +2,7 @@
 
 function request_strings () {
     $keys = func_get_args();
-    $values = array();
+    $values = [];
     foreach ($keys as $key) {
         if (array_key_exists($key, $_GET) && is_string($_GET[$key])) {
             $values[] = $_GET[$key];

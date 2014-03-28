@@ -18,9 +18,9 @@ include_once '../../fns/Users/clearNumContacts.php';
 Users\clearNumContacts($mysqli, $idusers);
 
 unset($_SESSION['contacts/errors']);
-$_SESSION['contacts/messages'] = array(
+$_SESSION['contacts/messages'] = [
     'All contacts have been deleted.',
-);
+];
 
 include_once '../../fns/redirect.php';
 redirect('..');

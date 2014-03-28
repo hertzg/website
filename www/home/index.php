@@ -8,7 +8,7 @@ $user = require_user($base);
 include_once 'fns/unset_session_vars.php';
 unset_session_vars();
 
-$items = array();
+$items = [];
 
 include_once '../fns/SearchForm/emptyContent.php';
 $formContent = SearchForm\emptyContent('Search...');
@@ -30,7 +30,7 @@ include_once '../fns/Page/imageArrowLink.php';
 include_once '../fns/Page/sessionMessages.php';
 $content =
     create_tabs(
-        array(),
+        [],
         'Home',
         Page\sessionMessages('home/messages')
         .create_new_notifications($mysqli, $user)

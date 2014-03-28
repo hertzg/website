@@ -13,7 +13,7 @@ list($username, $password, $remember, $return) = request_strings(
     'username', 'password', 'remember', 'return');
 
 $remember = (bool)$remember;
-$errors = array();
+$errors = [];
 
 if ($remember) {
     setcookie('remember', '1', time() + 60 * 60 * 24 * 30, '/');
@@ -41,11 +41,11 @@ include_once '../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['sign-in/errors'] = $errors;
-    $_SESSION['sign-in/values'] = array(
+    $_SESSION['sign-in/values'] = [
         'username' => $username,
         'password' => $password,
         'remember' => $remember,
-    );
+    ];
     redirect();
 }
 
@@ -77,10 +77,10 @@ if (parse_url($return, PHP_URL_HOST) !== null) $return = '';
 
 if ($return == '') {
     include_once '../fns/nth_order.php';
-    $_SESSION['home/messages'] = array(
+    $_SESSION['home/messages'] = [
         'Welcome to Zvini!',
         'This is your '.nth_order($user->num_logins + 1).' login.',
-    );
+    ];
     $return = '../home/';
 }
 

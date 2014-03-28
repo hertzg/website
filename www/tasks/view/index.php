@@ -14,7 +14,7 @@ unset(
 include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../fns/Page/imageLink.php';
 
-$options = array();
+$options = [];
 if ($task->top_priority) {
     $href = "submit-set-normal-priority.php?id=$id";
     $options[] = Page\imageLink('Mark as Normal Priority', $href, 'task');
@@ -30,7 +30,7 @@ $options[] = Page\imageArrowLink('Delete Task', $href, 'trash-bin');
 
 $base = '../../';
 
-$items = array();
+$items = [];
 
 include_once '../../fns/Page/text.php';
 include_once '../../fns/render_external_links.php';
@@ -61,16 +61,16 @@ include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/sessionMessages.php';
 $content =
     create_tabs(
-        array(
-            array(
+        [
+            [
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../../home/',
-            ),
-            array(
+            ],
+            [
                 'title' => 'Tasks',
                 'href' => '..',
-            ),
-        ),
+            ],
+        ],
         "Task #$id",
         Page\sessionMessages('tasks/view/messages')
         .join('<div class="hr"></div>', $items)

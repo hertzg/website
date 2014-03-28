@@ -20,24 +20,24 @@ include_once '../../fns/Form/textfield.php';
 include_once '../../fns/Page/sessionErrors.php';
 $content =
     create_tabs(
-        array(
-            array(
+        [
+            [
                 'title' => '&middot;&middot;&middot;',
                 'href' => create_folder_link($file->idfolders, '../'),
-            ),
-            array(
+            ],
+            [
                 'title' => "File #$id",
                 'href' => "../view-file/?id=$id",
-            ),
-        ),
+            ],
+        ],
         'Rename',
         Page\sessionErrors('files/rename-file/errors')
         .'<form action="submit.php" method="post">'
-            .Form\textfield('filename', 'File name', array(
+            .Form\textfield('filename', 'File name', [
                 'value' => $values['filename'],
                 'autofocus' => true,
                 'required' => true,
-            ))
+            ])
             .'<div class="hr"></div>'
             .Form\button('Rename')
             .Form\hidden('id', $id)

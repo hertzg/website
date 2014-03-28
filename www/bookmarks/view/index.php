@@ -18,7 +18,7 @@ $base = '../../';
 include_once '../../fns/create_external_url.php';
 $externalUrl = create_external_url($url, $base);
 
-$items = array();
+$items = [];
 
 include_once '../../fns/Page/text.php';
 
@@ -52,16 +52,16 @@ include_once '../../fns/Page/imageLink.php';
 include_once '../../fns/Page/sessionMessages.php';
 $content =
     create_tabs(
-        array(
-            array(
+        [
+            [
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../../home/',
-            ),
-            array(
+            ],
+            [
                 'title' => 'Bookmarks',
                 'href' => '..',
-            ),
-        ),
+            ],
+        ],
         "Bookmark #$id",
         Page\sessionMessages('bookmarks/view/messages')
         .join('<div class="hr"></div>', $items)
@@ -70,9 +70,9 @@ $content =
         'Options',
         Page\imageLink('Open', $externalUrl, 'run')
         .'<div class="hr"></div>'
-        .Page\imageLink('Open in New Tab', $externalUrl, 'run', array(
+        .Page\imageLink('Open in New Tab', $externalUrl, 'run', [
             'target' => '_blank',
-        ))
+        ])
         .'<div class="hr"></div>'
         .Page\imageArrowLink('Edit Bookmark', "../edit/?id=$id", 'edit-bookmark')
         .'<div class="hr"></div>'

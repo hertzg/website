@@ -8,7 +8,7 @@ require_guest_user($base);
 if (array_key_exists('email-reset-password/values', $_SESSION)) {
     $values = $_SESSION['email-reset-password/values'];
 } else {
-    $values = array('email' => '');
+    $values = ['email' => ''];
 }
 
 unset(
@@ -24,20 +24,20 @@ include_once '../fns/Form/textfield.php';
 include_once '../fns/Page/sessionErrors.php';
 $content =
     create_tabs(
-        array(
-            array(
+        [
+            [
                 'title' => 'Sign In',
                 'href' => '../sign-in/',
-            ),
-        ),
+            ],
+        ],
         'Reset Password',
         Page\sessionErrors('email-reset-password/errors')
         .'<form action="submit.php" method="post">'
-            .Form\textfield('email', 'Email', array(
+            .Form\textfield('email', 'Email', [
                 'value' => $values['email'],
                 'autofocus' => true,
                 'required' => true,
-            ))
+            ])
             .'<div class="hr"></div>'
             .Form\captcha($base)
             .Form\button('Send Recovery Email')

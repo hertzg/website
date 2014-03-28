@@ -11,7 +11,7 @@ list($parentidfolders) = request_strings('parentidfolders');
 if (array_key_exists('files/add-folder/values', $_SESSION)) {
     $values = $_SESSION['files/add-folder/values'];
 } else {
-    $values = array('foldername' => '');
+    $values = ['foldername' => ''];
 }
 
 $parentidfolders = abs((int)$parentidfolders);
@@ -41,24 +41,24 @@ include_once '../../fns/Form/textfield.php';
 include_once '../../fns/Page/sessionErrors.php';
 $content =
     create_tabs(
-        array(
-            array(
+        [
+            [
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../../home/',
-            ),
-            array(
+            ],
+            [
                 'title' => 'Files',
                 'href' => create_folder_link($parentidfolders, '../'),
-            ),
-        ),
+            ],
+        ],
         'New Folder',
         Page\sessionErrors('files/add-folder/errors')
         .'<form action="submit.php" method="post">'
-            .Form\textfield('foldername', 'Folder name', array(
+            .Form\textfield('foldername', 'Folder name', [
                 'value' => $values['foldername'],
                 'autofocus' => true,
                 'required' => true,
-            ))
+            ])
             .'<div class="hr"></div>'
             .Form\button('Create')
             .Form\hidden('parentidfolders', $parentidfolders)

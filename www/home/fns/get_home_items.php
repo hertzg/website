@@ -2,7 +2,7 @@
 
 function get_home_items ($mysqli, $user) {
 
-    $items = array();
+    $items = [];
 
     include_once __DIR__.'/render_bookmarks.php';
     render_bookmarks($user, $items);
@@ -57,7 +57,7 @@ function get_home_items ($mysqli, $user) {
         $items['new-task'] = Page\imageArrowLink($title, $href, $icon);
     }
 
-    $sortedItems = array();
+    $sortedItems = [];
     $order_home_items = json_decode($user->order_home_items);
     foreach ($order_home_items as $key) {
         if (array_key_exists($key, $items)) {

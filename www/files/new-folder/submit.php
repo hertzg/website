@@ -22,7 +22,7 @@ if ($parentidfolders) {
     if (!$parentFolder) redirect('..');
 }
 
-$errors = array();
+$errors = [];
 
 include_once '../../fns/str_collapse_spaces.php';
 $foldername = str_collapse_spaces($foldername);
@@ -38,7 +38,7 @@ if ($foldername === '') {
 
 if ($errors) {
     $_SESSION['files/add-folder/errors'] = $errors;
-    $_SESSION['files/add-folder/values'] = array('foldername' => $foldername);
+    $_SESSION['files/add-folder/values'] = ['foldername' => $foldername];
     redirect("./?parentidfolders=$parentidfolders");
 }
 
@@ -51,6 +51,6 @@ include_once '../../fns/Folders/add.php';
 $idfolders = Folders\add($mysqli, $idusers, $parentidfolders, $foldername);
 
 $_SESSION['files/idfolders'] = $idfolders;
-$_SESSION['files/messages'] = array('Folder has been created.');
+$_SESSION['files/messages'] = ['Folder has been created.'];
 include_once '../../fns/create_folder_link.php';
 redirect("../?idfolders=$idfolders");

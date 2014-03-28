@@ -14,9 +14,9 @@ include_once '../../fns/Users/addNumTokens.php';
 Users\addNumTokens($mysqli, $user->idusers, -1);
 
 unset($_SESSION['tokens/errors']);
-$_SESSION['tokens/messages'] = array(
+$_SESSION['tokens/messages'] = [
     'Remembered session has been deleted.'
-);
+];
 
 include_once '../../fns/redirect.php';
 redirect('..');

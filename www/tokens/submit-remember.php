@@ -38,9 +38,9 @@ if (!$token) {
 }
 
 unset($_SESSION['tokens/errors']);
-$_SESSION['tokens/messages'] = array(
+$_SESSION['tokens/messages'] = [
     'Current session has been remembered.',
-);
+];
 
 include_once '../fns/redirect.php';
 redirect();

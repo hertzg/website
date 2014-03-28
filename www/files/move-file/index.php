@@ -32,7 +32,7 @@ $folders = Folders\indexInUserFolder($mysqli, $idusers, $idfolders);
 include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../fns/Page/imageLink.php';
 
-$items = array();
+$items = [];
 if ($idfolders) {
     $items[] = Page\imageLink('.. Parent folder',
         create_link($id, $parentFolder->parentidfolders), 'parent-folder');
@@ -60,22 +60,22 @@ include_once '../../fns/Page/warnings.php';
 include_once '../../fns/Page/sessionErrors.php';
 $content =
     create_tabs(
-        array(
-            array(
+        [
+            [
                 'title' => '&middot;&middot;&middot;',
                 'href' => create_folder_link($file->idfolders, '../'),
-            ),
-            array(
+            ],
+            [
                 'title' => "File #$id",
                 'href' => "../view-file/?id=$file->idfiles",
-            ),
-        ),
+            ],
+        ],
         'Move',
         Page\sessionErrors('files/move-file/errors')
-        .Page\warnings(array(
+        .Page\warnings([
             'Moving the file "<b>'.htmlspecialchars($file->filename).'</b>".',
             'Select a folder to move the file into.',
-        ))
+        ])
         .join('<div class="hr"></div>', $items)
     );
 

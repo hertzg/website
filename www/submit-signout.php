@@ -23,9 +23,9 @@ if (array_key_exists('token', $_SESSION)) {
 
 session_destroy();
 
-$_SESSION['sign-in/messages'] = array(
+$_SESSION['sign-in/messages'] = [
     'You have been signed out.',
-);
+];
 
 include_once 'fns/redirect.php';
 redirect('sign-in/');

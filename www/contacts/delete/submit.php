@@ -17,7 +17,7 @@ include_once '../../fns/Users/addNumContacts.php';
 Users\addNumContacts($mysqli, $user->idusers, -1);
 
 unset($_SESSION['contacts/errors']);
-$_SESSION['contacts/messages'] = array('Contact has been deleted.');
+$_SESSION['contacts/messages'] = ['Contact has been deleted.'];
 
 include_once '../../fns/redirect.php';
 redirect('..');

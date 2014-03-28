@@ -11,16 +11,16 @@ include_once '../../fns/Page/imageLink.php';
 include_once '../../fns/Page/text.php';
 $content =
     create_tabs(
-        array(
-            array(
+        [
+            [
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../..',
-            ),
-            array(
+            ],
+            [
                 'title' => 'Contacts',
                 'href' => '..',
-            ),
-        ),
+            ],
+        ],
         "Contact #$id",
         Page\text(
             'Are you sure you want to delete the contact'

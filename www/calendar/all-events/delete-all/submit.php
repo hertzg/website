@@ -15,7 +15,7 @@ include_once '../../../fns/Users/clearNumEvents.php';
 Users\clearNumEvents($mysqli, $idusers);
 
 unset($_SESSION['calendar/errors']);
-$_SESSION['calendar/messages'] = array('All events have been deleted.');
+$_SESSION['calendar/messages'] = ['All events have been deleted.'];
 
 include_once '../../../fns/redirect.php';
 redirect('../..');

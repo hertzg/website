@@ -10,7 +10,7 @@ function search_folders_and_files ($mysqli, $searchFiles, $idusers, $keyword) {
         $files = Files\search($mysqli, $idusers, $keyword);
 
     } else {
-        $folders = $files = array();
+        $folders = $files = [];
     }
-    return array($folders, $files);
+    return [$folders, $files];
 }

@@ -15,7 +15,7 @@ $username = str_collapse_spaces($username);
 $email = str_collapse_spaces($email);
 $email = mb_strtolower($email, 'UTF-8');
 
-$errors = array();
+$errors = [];
 
 include_once '../lib/mysqli.php';
 
@@ -35,12 +35,12 @@ include_once '../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['sign-up/errors'] = $errors;
-    $_SESSION['sign-up/values'] = array(
+    $_SESSION['sign-up/values'] = [
         'username' => $username,
         'email' => $email,
         'password1' => $password1,
         'password2' => $password2,
-    );
+    ];
     redirect();
 }
 
@@ -64,9 +64,9 @@ ZviniAPI::notify('zvini-signups', '03feb769e474c9c9c257597d462c41eb', $text);
 include_once 'fns/send_email.php';
 send_email($username, $email);
 
-$_SESSION['sign-in/messages'] = array(
+$_SESSION['sign-in/messages'] = [
     'Thank you for signing up.',
     'Sign in to proceed.'
-);
+];
 
 redirect('../sign-in/');

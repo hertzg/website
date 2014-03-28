@@ -18,7 +18,7 @@ include_once '../../fns/Users/clearNumNotes.php';
 Users\clearNumNotes($mysqli, $idusers);
 
 unset($_SESSION['notes/errors']);
-$_SESSION['notes/messages'] = array('All notes have been deleted.');
+$_SESSION['notes/messages'] = ['All notes have been deleted.'];
 
 include_once '../../fns/redirect.php';
 redirect('..');

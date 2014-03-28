@@ -6,7 +6,7 @@ function create_options_panel ($user, $base = '') {
 
     $title = 'New Contact';
     $href = "{$base}new/";
-    $options = array(Page\imageArrowLink($title, $href, 'create-contact'));
+    $options = [Page\imageArrowLink($title, $href, 'create-contact')];
 
     if ($user->num_contacts) {
         $title = 'Delete All Contacts';

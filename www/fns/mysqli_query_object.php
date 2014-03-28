@@ -1,7 +1,7 @@
 <?php
 
 function mysqli_query_object ($mysqli, $query) {
-    $objects = array();
+    $objects = [];
     $result = $mysqli->query($query);
     if ($result == false) trigger_error($mysqli->error);
     if ($result) {

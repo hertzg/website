@@ -11,10 +11,10 @@ function captcha ($base, $autofocus = false) {
                 ."<img src=\"{$base}captcha/\""
                 .' alt="CAPTCHA" width="102" height="40" />'
             .'</div>'
-            .textfield('captcha', 'Verification', array(
+            .textfield('captcha', 'Verification', [
                 'required' => true,
                 'autofocus' => $autofocus,
-            ))
+            ])
             .'<div class="hr"></div>';
     }
 }

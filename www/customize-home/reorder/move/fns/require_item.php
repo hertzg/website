@@ -16,10 +16,10 @@ function require_item () {
         redirect('../../');
     }
 
-    $item = array(
+    $item = [
         'title' => $homeItems[$key][0],
-    );
+    ];
 
-    return array($item, $key, $user);
+    return [$item, $key, $user];
 
 }

@@ -18,7 +18,7 @@ $options[] = create_channels_link($user, '../');
 include_once '../fns/create_subscribed_channels_link.php';
 $options[] = create_subscribed_channels_link($user, '../');
 
-$items = array();
+$items = [];
 
 include_once '../../fns/Notifications/indexOnUserChannel.php';
 $notifications = Notifications\indexOnUserChannel($mysqli, $idusers, $id);
@@ -69,12 +69,12 @@ include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/sessionMessages.php';
 $content =
     create_tabs(
-        array(
-            array(
+        [
+            [
                 'title' => 'Home',
                 'href' => '../../home/',
-            ),
-        ),
+            ],
+        ],
         'Notifications',
         Page\sessionMessages('notifications/in-channel/messages')
         .'<div class="filterBar">'

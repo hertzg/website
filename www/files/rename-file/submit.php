@@ -11,7 +11,7 @@ $idusers = $user->idusers;
 include_once '../../fns/request_strings.php';
 list($filename) = request_strings('filename');
 
-$errors = array();
+$errors = [];
 
 include_once '../../fns/str_collapse_spaces.php';
 $filename = str_collapse_spaces($filename);
@@ -34,7 +34,7 @@ include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['files/rename-file/errors'] = $errors;
-    $_SESSION['files/rename-file/values'] = array('filename' => $filename);
+    $_SESSION['files/rename-file/values'] = ['filename' => $filename];
     redirect("./?id=$id");
 }
 
@@ -46,5 +46,5 @@ unset(
 include_once '../../fns/Files/rename.php';
 Files\rename($mysqli, $idusers, $id, $filename);
 
-$_SESSION['files/view-file/messages'] = array('Renamed.');
+$_SESSION['files/view-file/messages'] = ['Renamed.'];
 redirect("../view-file/?id=$id");

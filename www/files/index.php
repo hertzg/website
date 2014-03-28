@@ -21,7 +21,7 @@ if ($idfolders) {
     }
 }
 
-$items = array();
+$items = [];
 
 include_once '../fns/Folders/indexInUserFolder.php';
 $folders = Folders\indexInUserFolder($mysqli, $idusers, $idfolders);
@@ -70,12 +70,12 @@ include_once '../fns/create_tabs.php';
 include_once '../fns/Page/sessionMessages.php';
 $content =
     create_tabs(
-        array(
-            array(
+        [
+            [
                 'title' => 'Home',
                 'href' => '../home/',
-            ),
-        ),
+            ],
+        ],
         'Files',
         Page\sessionMessages('files/messages')
         .join('<div class="hr"></div>', $items)

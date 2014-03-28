@@ -24,7 +24,7 @@ if ($idfolders) {
 
 $deep = (bool)$deep;
 
-$items = array();
+$items = [];
 
 include_once '../../fns/str_collapse_spaces.php';
 $keyword = str_collapse_spaces($keyword);
@@ -56,7 +56,7 @@ render_folders_and_files($folders, $files, $items, 'No files found', '../');
 
 if (!$deep) {
 
-    $params = array();
+    $params = [];
     if ($idfolders) $params['idfolders'] = $idfolders;
     $params['keyword'] = $keyword;
     $params['deep'] = '1';
@@ -74,12 +74,12 @@ include_once '../fns/create_options_panel.php';
 include_once '../../fns/create_tabs.php';
 $content =
     create_tabs(
-        array(
-            array(
+        [
+            [
                 'title' => 'Home',
                 'href' => '../../home/',
-            ),
-        ),
+            ],
+        ],
         'Files',
         join('<div class="hr"></div>', $items)
     )

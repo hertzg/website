@@ -24,7 +24,7 @@ $phone1 = str_collapse_spaces($phone1);
 $phone2 = str_collapse_spaces($phone2);
 $tags = str_collapse_spaces($tags);
 
-$errors = array();
+$errors = [];
 
 if ($full_name === '') {
     $errors[] = 'Enter full name.';
@@ -44,7 +44,7 @@ include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['contacts/new/errors'] = $errors;
-    $_SESSION['contacts/new/values'] = array(
+    $_SESSION['contacts/new/values'] = [
         'full_name' => $full_name,
         'alias' => $alias,
         'address' => $address,
@@ -52,7 +52,7 @@ if ($errors) {
         'phone1' => $phone1,
         'phone2' => $phone2,
         'tags' => $tags,
-    );
+    ];
     redirect();
 }
 
@@ -71,5 +71,5 @@ ContactTags\add($mysqli, $idusers, $id, $tagnames, $full_name, $alias);
 include_once '../../fns/Users/addNumContacts.php';
 Users\addNumContacts($mysqli, $idusers, 1);
 
-$_SESSION['contacts/view/messages'] = array('Contact has been saved.');
+$_SESSION['contacts/view/messages'] = ['Contact has been saved.'];
 redirect("../view/?id=$id");

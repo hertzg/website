@@ -8,12 +8,12 @@ require_guest_user($base);
 if (array_key_exists('sign-up/values', $_SESSION)) {
     $values = $_SESSION['sign-up/values'];
 } else {
-    $values = array(
+    $values = [
         'username' => '',
         'email' => '',
         'password1' => '',
         'password2' => '',
-    );
+    ];
 }
 
 unset(
@@ -33,35 +33,35 @@ include_once '../fns/Page/imageLinkWithDescription.php';
 include_once '../fns/Page/sessionErrors.php';
 $content =
     create_tabs(
-        array(),
+        [],
         'Sign Up',
         Page\sessionErrors('sign-up/errors')
         .'<form action="submit.php" method="post">'
-            .Form\textfield('username', 'Username', array(
+            .Form\textfield('username', 'Username', [
                 'value' => $values['username'],
                 'autofocus' => true,
                 'required' => true,
-            ))
-            .Form\notes(array(
+            ])
+            .Form\notes([
                 'Characters a-z, A-Z, 0-9, dash, dot and underscore only.',
                 'Minimum 6 characters.',
-            ))
+            ])
             .'<div class="hr"></div>'
-            .Form\textfield('email', 'Email', array(
+            .Form\textfield('email', 'Email', [
                 'value' => $values['email'],
                 'required' => true,
-            ))
+            ])
             .'<div class="hr"></div>'
-            .Form\password('password1', 'Password', array(
+            .Form\password('password1', 'Password', [
                 'value' => $values['password1'],
                 'required' => true,
-            ))
-            .Form\notes(array('Minimum 6 characters.'))
+            ])
+            .Form\notes(['Minimum 6 characters.'])
             .'<div class="hr"></div>'
-            .Form\password('password2', 'Repeat password', array(
+            .Form\password('password2', 'Repeat password', [
                 'value' => $values['password2'],
                 'required' => true,
-            ))
+            ])
             .'<div class="hr"></div>'
             .Form\captcha($base)
             .Form\button('Sign Up')

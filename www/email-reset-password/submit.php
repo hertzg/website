@@ -12,7 +12,7 @@ list($email) = request_strings('email');
 include_once '../fns/str_collapse_spaces.php';
 $email = str_collapse_spaces($email);
 
-$errors = array();
+$errors = [];
 
 if ($email === '') $errors[] = 'Enter email.';
 
@@ -35,7 +35,7 @@ include_once '../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['email-reset-password/errors'] = $errors;
-    $_SESSION['email-reset-password/values'] = array('email' => $email);
+    $_SESSION['email-reset-password/values'] = ['email' => $email];
     redirect();
 }
 
@@ -53,10 +53,10 @@ include_once '../fns/Captcha/reset.php';
 Captcha\reset();
 
 $href = htmlspecialchars(
-    'http://zvini.com/reset-password/?'.http_build_query(array(
+    'http://zvini.com/reset-password/?'.http_build_query([
         'idusers' => $user->idusers,
         'key' => bin2hex($key)
-    ))
+    ])
 );
 
 $title = 'Reset Password for Zvini Account';
@@ -86,8 +86,8 @@ $headers =
 
 mail($email, $subject, $html, $headers);
 
-$_SESSION['sign-in/messages'] = array(
+$_SESSION['sign-in/messages'] = [
     'Instructions to reset password have been sent to your email address.',
-);
+];
 
 redirect('../sign-in/');

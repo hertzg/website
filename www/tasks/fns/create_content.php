@@ -7,12 +7,12 @@ function create_content ($user, $filterMessage, array $items) {
     include_once __DIR__.'/../../fns/Page/sessionMessages.php';
     return
         create_tabs(
-            array(
-                array(
+            [
+                [
                     'title' => 'Home',
                     'href' => '../home/',
-                ),
-            ),
+                ],
+            ],
             'Tasks',
             Page\sessionErrors('tasks/errors')
             .Page\sessionMessages('tasks/messages')

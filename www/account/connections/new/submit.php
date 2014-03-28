@@ -42,10 +42,10 @@ if ($username === '') {
 
 if ($errors) {
     $_SESSION['account/connections/new/errors'] = $errors;
-    $_SESSION['account/connections/new/values'] = array(
+    $_SESSION['account/connections/new/values'] = [
         'username' => $username,
         'can_send_channel' => $can_send_channel,
-    );
+    ];
     redirect();
 }
 
@@ -58,8 +58,8 @@ unset(
     $_SESSION['account/connections/new/values']
 );
 
-$_SESSION['account/connections/messages'] = array(
+$_SESSION['account/connections/messages'] = [
     'Connection has been added.',
-);
+];
 
 redirect('..');

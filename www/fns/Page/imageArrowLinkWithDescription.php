@@ -3,7 +3,7 @@
 namespace Page;
 
 function imageArrowLinkWithDescription ($title, $description, $href,
-    $iconName, array $options = array()) {
+    $iconName, array $options = []) {
 
     $options['class'] = 'withArrow';
 

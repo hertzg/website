@@ -13,7 +13,7 @@ list($eventtext) = request_strings('eventtext');
 include_once '../../fns/str_collapse_spaces.php';
 $eventtext = str_collapse_spaces($eventtext);
 
-$errors = array();
+$errors = [];
 
 if ($eventtext === '') $errors[] = 'Enter text.';
 
@@ -21,9 +21,9 @@ include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['calendar/edit-event/errors'] = $errors;
-    $_SESSION['calendar/edit-event/values'] = array(
+    $_SESSION['calendar/edit-event/values'] = [
         'eventtext' => $eventtext,
-    );
+    ];
     redirect("./?idevents=$idevents");
 }
 
@@ -32,6 +32,6 @@ unset($_SESSION['calendar/edit-event/errors']);
 include_once '../../fns/Events/edit.php';
 Events\edit($mysqli, $user->idusers, $idevents, $eventtext);
 
-$_SESSION['calendar/view-event/messages'] = array('Changes have been saved.');
+$_SESSION['calendar/view-event/messages'] = ['Changes have been saved.'];
 
 redirect("../view-event/?idevents=$idevents");

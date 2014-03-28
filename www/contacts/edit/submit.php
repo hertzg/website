@@ -23,7 +23,7 @@ $phone1 = str_collapse_spaces($phone1);
 $phone2 = str_collapse_spaces($phone2);
 $tags = str_collapse_spaces($tags);
 
-$errors = array();
+$errors = [];
 
 if ($full_name === '') {
     $errors[] = 'Enter full name.';
@@ -43,7 +43,7 @@ include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['contacts/edit/errors'] = $errors;
-    $_SESSION['contacts/edit/values'] = array(
+    $_SESSION['contacts/edit/values'] = [
         'full_name' => $full_name,
         'alias' => $alias,
         'address' => $address,
@@ -51,7 +51,7 @@ if ($errors) {
         'phone1' => $phone1,
         'phone2' => $phone2,
         'tags' => $tags,
-    );
+    ];
     redirect("./?id=$id");
 }
 
@@ -70,5 +70,5 @@ ContactTags\deleteOnContact($mysqli, $id);
 include_once '../../fns/ContactTags/add.php';
 ContactTags\add($mysqli, $idusers, $id, $tagnames, $full_name, $alias);
 
-$_SESSION['contacts/view/messages'] = array('Changes have been saved.');
+$_SESSION['contacts/view/messages'] = ['Changes have been saved.'];
 redirect("../view/?id=$id");

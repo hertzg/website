@@ -15,16 +15,16 @@ include_once '../../fns/Page/imageLink.php';
 include_once '../../fns/Page/text.php';
 $content =
     create_tabs(
-        array(
-            array(
+        [
+            [
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../../home/',
-            ),
-            array(
+            ],
+            [
                 'title' => 'Account',
                 'href' => '../../account/',
-            ),
-        ),
+            ],
+        ],
         'Sessions',
         Page\text(
             'Are you sure you want to delete all the remembered sessions?'

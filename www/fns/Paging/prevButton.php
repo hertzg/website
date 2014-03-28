@@ -2,7 +2,7 @@
 
 namespace Paging;
 
-function prevButton ($offset, $limit, $total, $label, array $args = array()) {
+function prevButton ($offset, $limit, $total, $label, array $args = []) {
 
     $html = '<form action="./">';
 

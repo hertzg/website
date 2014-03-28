@@ -10,7 +10,7 @@ $idusers = $user->idusers;
 include_once '../../fns/request_strings.php';
 list($feedbacktext) = request_strings('feedbacktext');
 
-$errors = array();
+$errors = [];
 
 include_once '../../fns/str_collapse_spaces.php';
 $feedbacktext = str_collapse_spaces($feedbacktext);
@@ -25,9 +25,9 @@ include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['help/feedback/errors'] = $errors;
-    $_SESSION['help/feedback/values'] = array(
+    $_SESSION['help/feedback/values'] = [
         'feedbacktext' => $feedbacktext,
-    );
+    ];
     redirect();
 }
 
@@ -66,5 +66,5 @@ $headers =
 
 mail('info@zvini.com', $title, $html, $headers);
 
-$_SESSION['help/messages'] = array('Thank you for the feedback.');
+$_SESSION['help/messages'] = ['Thank you for the feedback.'];
 redirect('..');

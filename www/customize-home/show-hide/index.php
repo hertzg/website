@@ -12,7 +12,7 @@ include_once '../fns/get_user_home_items.php';
 $userHomeItems = get_user_home_items($homeItems, $user);
 
 include_once '../../fns/Page/imageLink.php';
-$items = array();
+$items = [];
 foreach ($userHomeItems as $key => $item) {
     list($title, $propertyPart) = $item;
     $userProperty = "show_$propertyPart";
@@ -38,21 +38,21 @@ include_once '../../fns/Page/imageLinkWithDescription.php';
 include_once '../../fns/Page/sessionMessages.php';
 include_once '../../fns/Page/warnings.php';
 $content = create_tabs(
-    array(
-        array(
+    [
+        [
             'title' => '&middot;&middot;&middot;',
             'href' => '../../home/',
-        ),
-        array(
+        ],
+        [
             'title' => 'Customize',
             'href' => '../../customize-home/',
-        ),
-    ),
+        ],
+    ],
     'Show / Hide Items',
     Page\sessionMessages('customize-home/show-hide/messages')
-    .Page\warnings(array(
+    .Page\warnings([
         'Select items to see them on your home page.',
-    ))
+    ])
     .join('<div class="hr"></div>', $items)
     .create_panel(
         'Options',

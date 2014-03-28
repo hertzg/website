@@ -23,16 +23,16 @@ include_once '../../fns/Page/sessionMessages.php';
 include_once '../../fns/Page/text.php';
 $content =
     create_tabs(
-        array(
-            array(
+        [
+            [
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../../home/',
-            ),
-            array(
+            ],
+            [
                 'title' => 'Calendar',
                 'href' => '..',
-            ),
-        ),
+            ],
+        ],
         "Event #$idevents",
         Page\sessionMessages('calendar/view-event/messages')
         .Page\text(htmlspecialchars($event->eventtext))

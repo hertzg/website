@@ -2,7 +2,7 @@
 
 namespace Paging;
 
-function nextButton ($offset, $limit, $label, array $args = array()) {
+function nextButton ($offset, $limit, $label, array $args = []) {
 
     include_once __DIR__.'/../Form/button.php';
     $html =

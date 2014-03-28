@@ -16,7 +16,7 @@ $tasktext = str_collapse_spaces_multiline($tasktext);
 include_once '../../fns/str_collapse_spaces.php';
 $tags = str_collapse_spaces($tags);
 
-$errors = array();
+$errors = [];
 
 if ($tasktext === '') $errors[] = 'Enter text.';
 
@@ -27,10 +27,10 @@ include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['tasks/new/errors'] = $errors;
-    $_SESSION['tasks/new/values'] = array(
+    $_SESSION['tasks/new/values'] = [
         'tasktext' => $tasktext,
         'tags' => $tags,
-    );
+    ];
     redirect();
 }
 
@@ -49,5 +49,5 @@ TaskTags\add($mysqli, $idusers, $id, $tagnames, $tasktext, $tags);
 include_once '../../fns/Users/addNumTasks.php';
 Users\addNumTasks($mysqli, $idusers, 1);
 
-$_SESSION['tasks/view/messages'] = array('Task has been saved.');
+$_SESSION['tasks/view/messages'] = ['Task has been saved.'];
 redirect("../view/?id=$id");

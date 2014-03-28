@@ -13,16 +13,16 @@ include_once '../../fns/Form/captcha.php';
 include_once '../../fns/Page/sessionErrors.php';
 $content =
     create_tabs(
-        array(
-            array(
+        [
+            [
                 'title' => ' &middot;&middot;&middot; ',
                 'href' => '../../home/',
-            ),
-            array(
+            ],
+            [
                 'title' => 'Account',
                 'href' => '../',
-            ),
-        ),
+            ],
+        ],
         'Verify Email',
         Page\sessionErrors('account/verify-email/errors')
         .'<form action="submit.php" method="post">'

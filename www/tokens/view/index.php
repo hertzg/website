@@ -16,26 +16,26 @@ include_once '../../fns/Form/textfield.php';
 include_once '../../fns/Page/imageArrowLink.php';
 $content =
     create_tabs(
-        array(
-            array(
+        [
+            [
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../../account/',
-            ),
-            array(
+            ],
+            [
                 'title' => 'Sessions',
                 'href' => '..',
-            ),
-        ),
+            ],
+        ],
         "Session #$id",
-        Form\textfield('tokentext', 'Identifier', array(
+        Form\textfield('tokentext', 'Identifier', [
             'value' => bin2hex($token->tokentext),
             'readonly' => true,
-        ))
+        ])
         .'<div class="hr"></div>'
-        .Form\textarea('useragent', 'User agent', array(
+        .Form\textarea('useragent', 'User agent', [
             'value' => $token->useragent,
             'readonly' => true,
-        ))
+        ])
     )
     .create_panel(
         'Options',

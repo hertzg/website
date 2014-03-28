@@ -15,6 +15,6 @@ function search_recursively ($mysqli, $idusers, $parentidfolders, $keyword) {
         $folders = array_merge($folders, $subfolders);
         $files = array_merge($files, $subfiles);
     }
-    return array($folders, $files);
+    return [$folders, $files];
 
 }

@@ -8,10 +8,10 @@ $user = require_user($base);
 if (array_key_exists('notes/new/values', $_SESSION)) {
     $values = $_SESSION['notes/new/values'];
 } else {
-    $values = array(
+    $values = [
         'notetext' => '',
         'tags' => '',
-    );
+    ];
 }
 
 unset(
@@ -26,28 +26,28 @@ include_once '../../fns/Form/textfield.php';
 include_once '../../fns/Page/sessionErrors.php';
 $content =
     create_tabs(
-        array(
-            array(
+        [
+            [
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../../home/',
-            ),
-            array(
+            ],
+            [
                 'title' => 'Notes',
                 'href' => '..',
-            ),
-        ),
+            ],
+        ],
         'New',
         Page\sessionErrors('notes/new/errors')
         .'<form action="submit.php" method="post">'
-            .Form\textarea('notetext', 'Text', array(
+            .Form\textarea('notetext', 'Text', [
                 'value' => $values['notetext'],
                 'autofocus' => true,
                 'required' => true,
-            ))
+            ])
             .'<div class="hr"></div>'
-            .Form\textfield('tags', 'Tags', array(
+            .Form\textfield('tags', 'Tags', [
                 'value' => $values['tags'],
-            ))
+            ])
             .'<div class="hr"></div>'
             .Form\button('Save Note')
         .'</form>'

@@ -13,7 +13,7 @@ unset(
 
 $base = '../../';
 
-$items = array();
+$items = [];
 
 include_once '../../fns/render_external_links.php';
 include_once '../../fns/Page/text.php';
@@ -45,16 +45,16 @@ include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../fns/Page/sessionMessages.php';
 $content =
     create_tabs(
-        array(
-            array(
+        [
+            [
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../../home/',
-            ),
-            array(
+            ],
+            [
                 'title' => 'Notes',
                 'href' => '..',
-            ),
-        ),
+            ],
+        ],
         "Note #$id",
         Page\sessionMessages('notes/view/messages')
         .join('<div class="hr"></div>', $items)

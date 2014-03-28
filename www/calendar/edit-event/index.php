@@ -7,7 +7,7 @@ list($event, $idevents, $user) = require_event($mysqli);
 if (array_key_exists('calendar/edit-event/values', $_SESSION)) {
     $values = $_SESSION['calendar/edit-event/values'];
 } else {
-    $values = array('eventtext' => $event->eventtext);
+    $values = ['eventtext' => $event->eventtext];
 }
 
 unset($_SESSION['calendar/view-event/messages']);
@@ -20,26 +20,26 @@ include_once '../../fns/Form/textfield.php';
 include_once '../../fns/Page/sessionErrors.php';
 $content =
     create_tabs(
-        array(
-            array(
+        [
+            [
                 'title' => '&middot;&middot;&middot;',
                 'href' => '..',
-            ),
-            array(
+            ],
+            [
                 'title' => "Event #$idevents",
                 'href' => "../view-event/?idevents=$idevents",
-            ),
-        ),
+            ],
+        ],
         'Edit',
         Page\sessionErrors('calendar/edit-event/errors')
         .'<form action="submit.php" method="post">'
             .Form\label('When', date('F d, Y', $event->eventtime))
             .'<div class="hr"></div>'
-            .Form\textfield('eventtext', 'Text', array(
+            .Form\textfield('eventtext', 'Text', [
                 'value' => $values['eventtext'],
                 'autofocus' => true,
                 'required' => true,
-            ))
+            ])
             .'<div class="hr"></div>'
             .Form\button('Save Changes')
             .Form\hidden('idevents', $idevents)

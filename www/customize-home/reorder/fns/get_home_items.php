@@ -1,17 +1,17 @@
 <?php
 
 function get_home_items () {
-    return array(
-        'bookmarks' => array('Bookmarks', 'bookmarks'),
-        'new-bookmark' => array('New Bookmark', 'create-bookmark'),
-        'calendar' => array('Calendar', 'calendar'),
-        'contacts' => array('Contacts', 'contacts'),
-        'new-contact' => array('New Contact', 'create-contact'),
-        'files' => array('Files', 'files'),
-        'notes' => array('Notes', 'notes'),
-        'new-note' => array('New Note', 'create-note'),
-        'notifications' => array('Notifications', 'old-notification'),
-        'tasks' => array('Tasks', 'tasks'),
-        'new-task' => array('New Task', 'create-task'),
-    );
+    return [
+        'bookmarks' => ['Bookmarks', 'bookmarks'],
+        'new-bookmark' => ['New Bookmark', 'create-bookmark'],
+        'calendar' => ['Calendar', 'calendar'],
+        'contacts' => ['Contacts', 'contacts'],
+        'new-contact' => ['New Contact', 'create-contact'],
+        'files' => ['Files', 'files'],
+        'notes' => ['Notes', 'notes'],
+        'new-note' => ['New Note', 'create-note'],
+        'notifications' => ['Notifications', 'old-notification'],
+        'tasks' => ['Tasks', 'tasks'],
+        'new-task' => ['New Task', 'create-task'],
+    ];
 }

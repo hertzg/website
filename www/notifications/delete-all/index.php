@@ -15,12 +15,12 @@ include_once '../../fns/Page/imageLink.php';
 include_once '../../fns/Page/text.php';
 $content =
     create_tabs(
-        array(
-            array(
+        [
+            [
                 'title' => 'Home',
                 'href' => '../../home/',
-            ),
-        ),
+            ],
+        ],
         'Notifications',
         Page\text('Are you sure you want to delete all the notifications?')
         .'<div class="hr"></div>'

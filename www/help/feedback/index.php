@@ -8,7 +8,7 @@ $user = require_user($base);
 if (array_key_exists('help/feedback/values', $_SESSION)) {
     $values = $_SESSION['help/feedback/values'];
 } else {
-    $values = array('feedbacktext' => '');
+    $values = ['feedbacktext' => ''];
 }
 
 unset($_SESSION['help/messages']);
@@ -20,25 +20,25 @@ include_once '../../fns/Form/textarea.php';
 include_once '../../fns/Page/sessionErrors.php';
 $content =
     create_tabs(
-        array(
-            array(
+        [
+            [
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../../home/',
-            ),
-            array(
+            ],
+            [
                 'title' => 'Help',
                 'href' => '..',
-            ),
-        ),
+            ],
+        ],
         'Feedback',
         Page\sessionErrors('help/feedback/errors')
         .'<form action="submit.php" method="post">'
-            .Form\textarea('feedbacktext', 'Feedback text', array(
+            .Form\textarea('feedbacktext', 'Feedback text', [
                 'value' => $values['feedbacktext'],
                 'autofocus' => true,
                 'required' => true,
-            ))
-            .Form\notes(array('Minimum 6 words.'))
+            ])
+            .Form\notes(['Minimum 6 words.'])
             .'<div class="hr"></div>'
             .Form\button('Submit Feedback')
         .'</form>'

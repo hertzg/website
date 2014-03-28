@@ -12,7 +12,7 @@ include_once '../fns/get_user_home_items.php';
 $userHomeItems = get_user_home_items($homeItems, $user);
 
 include_once '../../fns/Page/imageArrowLink.php';
-$items = array();
+$items = [];
 foreach ($userHomeItems as $key => $item) {
     list($title, $icon) = $item;
     $items[] = Page\imageArrowLink($title, "move/?key=$key", $icon);
@@ -27,19 +27,19 @@ include_once '../../fns/Page/imageLinkWithDescription.php';
 include_once '../../fns/Page/sessionMessages.php';
 include_once '../../fns/Page/warnings.php';
 $content = create_tabs(
-    array(
-        array(
+    [
+        [
             'title' => '&middot;&middot;&middot;',
             'href' => '../../home/',
-        ),
-        array(
+        ],
+        [
             'title' => 'Customize',
             'href' => '../../customize-home/',
-        ),
-    ),
+        ],
+    ],
     'Reorder Items',
     Page\sessionMessages('customize-home/reorder/messages')
-    .Page\warnings(array('Select an item to move up or down.'))
+    .Page\warnings(['Select an item to move up or down.'])
     .join('<div class="hr"></div>', $items)
     .create_panel(
         'Options',

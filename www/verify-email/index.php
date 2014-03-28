@@ -25,5 +25,5 @@ Users\verifyEmail($mysqli, $idusers);
 include_once '../fns/session_start_custom.php';
 session_start_custom();
 
-$_SESSION['account/messages'] = array('The email has been verified.');
+$_SESSION['account/messages'] = ['The email has been verified.'];
 redirect('../account/');

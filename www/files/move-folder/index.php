@@ -34,7 +34,7 @@ $folders = Folders\indexInUserFolder($mysqli, $idusers, $parentidfolders);
 include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../fns/Page/imageLink.php';
 
-$items = array();
+$items = [];
 if ($parentidfolders) {
     $items[] = Page\imageLink('.. Parent folder',
         create_link($idfolders, $parentFolder->parentidfolders),
@@ -73,22 +73,22 @@ include_once '../../fns/Page/sessionErrors.php';
 include_once '../../fns/Page/warnings.php';
 $content =
     create_tabs(
-        array(
-            array(
+        [
+            [
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../../home/',
-            ),
-            array(
+            ],
+            [
                 'title' => 'Files',
                 'href' => create_folder_link($idfolders, '../'),
-            )
-        ),
+            ]
+        ],
         'Move',
         Page\sessionErrors('files/move-folder/errors')
-        .Page\warnings(array(
+        .Page\warnings([
             'Moving the folder "<b>'.htmlspecialchars($folder->foldername).'</b>".',
             'Select a folder to move the folder into.'
-        ))
+        ])
         .join('<div class="hr"></div>', $items)
     );
 

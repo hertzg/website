@@ -19,7 +19,7 @@ include_once '../../fns/Users/editTheme.php';
 include_once '../../lib/mysqli.php';
 Users\editTheme($mysqli, $idusers, $theme);
 
-$_SESSION['account/messages'] = array('Theme has changed.');
+$_SESSION['account/messages'] = ['Theme has changed.'];
 
 include_once '../../fns/redirect.php';
 redirect('..');

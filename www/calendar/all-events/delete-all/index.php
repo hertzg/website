@@ -10,16 +10,16 @@ include_once '../../../fns/Page/imageLink.php';
 include_once '../../../fns/Page/text.php';
 $content =
     create_tabs(
-        array(
-            array(
+        [
+            [
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../../../home/',
-            ),
-            array(
+            ],
+            [
                 'title' => 'Calendar',
                 'href' => '../..',
-            ),
-        ),
+            ],
+        ],
         'All Events',
         Page\text('Are you sure you want to delete all the events?')
         .'<div class="hr"></div>'

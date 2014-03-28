@@ -5,7 +5,7 @@ function create_options_panel ($user, $base = '') {
     include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
 
     $href = "{$base}new/";
-    $options = array(Page\imageArrowLink('New Task', $href, 'create-task'));
+    $options = [Page\imageArrowLink('New Task', $href, 'create-task')];
 
     if ($user->num_tasks) {
         $title = 'Delete All Tasks';

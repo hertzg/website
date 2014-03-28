@@ -15,7 +15,7 @@ $title = str_collapse_spaces($title);
 $url = str_collapse_spaces($url);
 $tags = str_collapse_spaces($tags);
 
-$errors = array();
+$errors = [];
 
 if ($url === '') $errors[] = 'Enter URL.';
 
@@ -26,11 +26,11 @@ include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['bookmarks/new/errors'] = $errors;
-    $_SESSION['bookmarks/new/values'] = array(
+    $_SESSION['bookmarks/new/values'] = [
         'title' => $title,
         'url' => $url,
         'tags' => $tags,
-    );
+    ];
     redirect();
 }
 
@@ -49,5 +49,5 @@ BookmarkTags\add($mysqli, $idusers, $id, $tagnames, $title, $url);
 include_once '../../fns/Users/addNumBookmarks.php';
 Users\addNumBookmarks($mysqli, $idusers, 1);
 
-$_SESSION['bookmarks/view/messages'] = array('Bookmark has been saved.');
+$_SESSION['bookmarks/view/messages'] = ['Bookmark has been saved.'];
 redirect("../view/?id=$id");

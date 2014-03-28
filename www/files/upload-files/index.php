@@ -38,22 +38,22 @@ include_once '../../fns/Page/sessionErrors.php';
 include_once '../../fns/Page/warnings.php';
 $content =
     create_tabs(
-        array(
-            array(
+        [
+            [
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../../home/',
-            ),
-            array(
+            ],
+            [
                 'title' => 'Files',
                 'href' => create_folder_link($idfolders, '../'),
-            ),
-        ),
+            ],
+        ],
         'Upload Files',
         Page\sessionErrors('files/upload-files/errors')
-        .Page\warnings(array(
+        .Page\warnings([
             'Maximum '.bytestr(ini_get_bytes('upload_max_filesize')).' each file.',
             'Maximum '.bytestr(ini_get_bytes('post_max_size')).' at once.',
-        ))
+        ])
         .'<form action="submit.php" method="post"'
         .' enctype="multipart/form-data">'
             .Form\filefield('file1[]', 'File 1:')

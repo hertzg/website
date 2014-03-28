@@ -2,7 +2,7 @@
 
 namespace Form;
 
-function textarea ($name, $text, $config = array()) {
+function textarea ($name, $text, $config = []) {
 
     if (array_key_exists('value', $config)) {
         $content = "\n".htmlspecialchars($config['value']);

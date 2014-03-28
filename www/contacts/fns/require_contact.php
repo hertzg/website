@@ -15,13 +15,13 @@ function require_contact ($mysqli) {
 
     if (!$contact) {
         unset($_SESSION['contacts/messages']);
-        $_SESSION['contacts/errors'] = array(
+        $_SESSION['contacts/errors'] = [
             'The contact no longer exists.',
-        );
+        ];
         include_once __DIR__.'/../../fns/redirect.php';
         redirect('..');
     }
 
-    return array($contact, $id, $user);
+    return [$contact, $id, $user];
 
 }

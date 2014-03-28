@@ -9,7 +9,7 @@ include_once '../fns/require_valid_token.php';
 include_once '../lib/mysqli.php';
 $token = require_valid_token($mysqli);
 
-$options = array();
+$options = [];
 if (!$token) {
     include_once '../fns/Page/imageLink.php';
     $options[] = Page\imageLink('Remember Current Session',
@@ -19,7 +19,7 @@ if (!$token) {
 include_once __DIR__.'/../fns/Tokens/indexOnUser.php';
 $tokens = Tokens\indexOnUser($mysqli, $user->idusers);
 
-$items = array();
+$items = [];
 if ($tokens) {
 
     include_once '../fns/Page/imageArrowLink.php';
@@ -65,16 +65,16 @@ include_once '../fns/Page/sessionErrors.php';
 include_once '../fns/Page/sessionMessages.php';
 $content =
     create_tabs(
-        array(
-            array(
+        [
+            [
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../home/',
-            ),
-            array(
+            ],
+            [
                 'title' => 'Account',
                 'href' => '../account/',
-            ),
-        ),
+            ],
+        ],
         'Sessions',
         Page\sessionErrors('tokens/errors')
         .Page\sessionMessages('tokens/messages')

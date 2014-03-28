@@ -15,9 +15,9 @@ include_once '../../fns/Users/clearNumTokens.php';
 Users\clearNumTokens($mysqli, $idusers);
 
 unset($_SESSION['tokens/errors']);
-$_SESSION['tokens/messages'] = array(
+$_SESSION['tokens/messages'] = [
     'All remembered sessions have been deleted.'
-);
+];
 
 include_once '../../fns/redirect.php';
 redirect('..');

@@ -14,20 +14,20 @@ $key = 'account/connections/new/values';
 if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];
 } else {
-    $values = array(
+    $values = [
         'username' => '',
         'can_send_channel' => false,
-    );
+    ];
 }
 
 include_once '../../../fns/Form/textfield.php';
-$items = array(
-    Form\textfield('username', 'Username', array(
+$items = [
+    Form\textfield('username', 'Username', [
         'value' => $values['username'],
         'required' => true,
         'autofocus' => true,
-    )),
-);
+    ]),
+];
 
 include_once '../../../fns/Form/checkbox.php';
 $name = 'can_send_channel';
@@ -41,16 +41,16 @@ $items[] = Form\button('Save Connection');
 include_once '../../../fns/create_tabs.php';
 include_once '../../../fns/Page/sessionErrors.php';
 $content = create_tabs(
-    array(
-        array(
+    [
+        [
             'title' => '&middot;&middot;&middot;',
             'href' => '../..',
-        ),
-        array(
+        ],
+        [
             'title' => 'Connections',
             'href' => '..',
-        ),
-    ),
+        ],
+    ],
     'New',
     Page\sessionErrors('account/connections/new/errors')
     .'<form action="submit.php" method="post">'

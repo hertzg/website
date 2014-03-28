@@ -4,7 +4,7 @@ function create_options_panel ($file) {
 
     $id = $file->idfiles;
 
-    $options = array();
+    $options = [];
 
     $href = "../download-file/?id=$id";
     $options[] = Page\imageLink('Download File', $href, 'download');

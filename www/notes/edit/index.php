@@ -23,28 +23,28 @@ include_once '../../fns/Form/textfield.php';
 include_once '../../fns/Page/sessionErrors.php';
 $content =
     create_tabs(
-        array(
-            array(
+        [
+            [
                 'title' => '&middot;&middot;&middot;',
                 'href' => '..',
-            ),
-            array(
+            ],
+            [
                 'title' => "Note #$id",
                 'href' => "../view/?id=$id",
-            ),
-        ),
+            ],
+        ],
         'Edit',
         Page\sessionErrors('notes/edit/errors')
         .'<form action="submit.php" method="post">'
-            .Form\textarea('notetext', 'Text', array(
+            .Form\textarea('notetext', 'Text', [
                 'value' => $values['notetext'],
                 'autofocus' => true,
                 'required' => true,
-            ))
+            ])
             .'<div class="hr"></div>'
-            .Form\textfield('tags', 'Tags', array(
+            .Form\textfield('tags', 'Tags', [
                 'value' => $values['tags'],
-            ))
+            ])
             .'<div class="hr"></div>'
             .Form\button('Save Changes')
             .Form\hidden('id', $id)

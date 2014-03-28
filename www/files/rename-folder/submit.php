@@ -11,7 +11,7 @@ $idusers = $user->idusers;
 include_once '../../fns/request_strings.php';
 list($foldername) = request_strings('foldername');
 
-$errors = array();
+$errors = [];
 
 include_once '../../fns/str_collapse_spaces.php';
 $foldername = str_collapse_spaces($foldername);
@@ -34,9 +34,9 @@ include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['files/rename-folder/errors'] = $errors;
-    $_SESSION['files/rename-folder/values'] = array(
+    $_SESSION['files/rename-folder/values'] = [
         'foldername' => $foldername,
-    );
+    ];
     redirect("./?idfolders=$idfolders");
 }
 
@@ -49,7 +49,7 @@ include_once '../../fns/Folders/rename.php';
 Folders\rename($mysqli, $idusers, $idfolders, $foldername);
 
 $_SESSION['files/idfolders'] = $idfolders;
-$_SESSION['files/messages'] = array('Renamed.');
+$_SESSION['files/messages'] = ['Renamed.'];
 
 include_once '../../fns/create_folder_link.php';
 redirect(create_folder_link($idfolders, '../'));

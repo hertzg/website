@@ -8,11 +8,11 @@ $user = require_user($base);
 if (array_key_exists('account/change-password/values', $_SESSION)) {
     $values = $_SESSION['account/change-password/values'];
 } else {
-    $values = array(
+    $values = [
         'currentpassword' => '',
         'password1' => '',
         'password2' => '',
-    );
+    ];
 }
 
 unset($_SESSION['account/messages']);
@@ -24,35 +24,35 @@ include_once '../../fns/Form/password.php';
 include_once '../../fns/Page/sessionErrors.php';
 $content =
     create_tabs(
-        array(
-            array(
+        [
+            [
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../../home/',
-            ),
-            array(
+            ],
+            [
                 'title' => 'Account',
                 'href' => '..',
-            ),
-        ),
+            ],
+        ],
         'Change Password',
         Page\sessionErrors('account/change-password/errors')
         .'<form action="submit.php" method="post">'
-            .Form\password('currentpassword', 'Current password', array(
+            .Form\password('currentpassword', 'Current password', [
                 'value' => $values['currentpassword'],
                 'autofocus' => true,
                 'required' => true,
-            ))
+            ])
             .'<div class="hr"></div>'
-            .Form\password('password1', 'New password', array(
+            .Form\password('password1', 'New password', [
                 'value' => $values['password1'],
                 'required' => true,
-            ))
-            .Form\notes(array('Minimum 6 characters.'))
+            ])
+            .Form\notes(['Minimum 6 characters.'])
             .'<div class="hr"></div>'
-            .Form\password('password2', 'Repeat new password', array(
+            .Form\password('password2', 'Repeat new password', [
                 'value' => $values['password2'],
                 'required' => true,
-            ))
+            ])
             .'<div class="hr"></div>'
             .Form\button('Change')
         .'</form>'

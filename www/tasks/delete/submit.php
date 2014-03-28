@@ -17,7 +17,7 @@ include_once '../../fns/Users/addNumTasks.php';
 Users\addNumTasks($mysqli, $user->idusers, -1);
 
 unset($_SESSION['tasks/errors']);
-$_SESSION['tasks/messages'] = array('Task has been deleted.');
+$_SESSION['tasks/messages'] = ['Task has been deleted.'];
 
 include_once '../../fns/redirect.php';
 redirect('..');

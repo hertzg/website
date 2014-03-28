@@ -15,13 +15,13 @@ function require_connection ($mysqli) {
 
     if (!$connection) {
         unset($_SESSION['account/connections/messages']);
-        $_SESSION['account/connections/errors'] = array(
+        $_SESSION['account/connections/errors'] = [
             'The connection no longer exists.',
-        );
+        ];
         include_once __DIR__.'/../../../fns/redirect.php';
         redirect('..');
     }
 
-    return array($connection, $id, $user);
+    return [$connection, $id, $user];
 
 }

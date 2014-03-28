@@ -11,7 +11,7 @@ include_once '../../fns/request_strings.php';
 list($currentpassword, $password1, $password2) = request_strings(
     'currentpassword', 'password1', 'password2');
 
-$errors = array();
+$errors = [];
 
 if ($currentpassword === '') {
     $errors[] = 'Enter current password.';
@@ -42,11 +42,11 @@ include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['account/change-password/errors'] = $errors;
-    $_SESSION['account/change-password/values'] = array(
+    $_SESSION['account/change-password/values'] = [
         'currentpassword' => $currentpassword,
         'password1' => $password1,
         'password2' => $password2,
-    );
+    ];
     redirect();
 }
 
@@ -59,5 +59,5 @@ include_once '../../fns/Users/editPassword.php';
 include_once '../../lib/mysqli.php';
 Users\editPassword($mysqli, $idusers, $password1);
 
-$_SESSION['account/messages'] = array('Password has been changed.');
+$_SESSION['account/messages'] = ['Password has been changed.'];
 redirect('..');

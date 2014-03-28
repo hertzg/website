@@ -17,24 +17,24 @@ include_once '../../fns/Form/textfield.php';
 include_once '../../fns/Page/sessionMessages.php';
 $content =
     create_tabs(
-        array(
-            array(
+        [
+            [
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../../notifications/',
-            ),
-            array(
+            ],
+            [
                 'title' => 'Channels',
                 'href' => '..',
-            ),
-        ),
+            ],
+        ],
         "Channel #$id",
         Page\sessionMessages('channels/view/messages')
         .Form\label('Channel name', htmlspecialchars($channel->channelname))
         .'<div class="hr"></div>'
-        .Form\textfield('channelkey', 'Channel key', array(
+        .Form\textfield('channelkey', 'Channel key', [
             'readonly' => true,
             'value' => bin2hex($channel->channelkey),
-        ))
+        ])
     )
     .create_options_panel($id);
 

@@ -17,7 +17,7 @@ if ($keyword === '') {
     redirect($url);
 }
 
-$items = array();
+$items = [];
 
 $offset = abs((int)$offset);
 
@@ -49,9 +49,9 @@ if ($tag === '') {
 
         if ($tags) {
             include_once '../../fns/create_tag_filter_bar.php';
-            $filterMessage = create_tag_filter_bar($tags, array(
+            $filterMessage = create_tag_filter_bar($tags, [
                 'keyword' => $keyword,
-            ));
+            ]);
         }
 
     }
@@ -70,7 +70,7 @@ if ($tag === '') {
     $items[] = SearchForm\create($searchAction, $formContent);
 
     $clearHref = '?'.htmlspecialchars(
-        http_build_query(array('keyword' => $keyword))
+        http_build_query(['keyword' => $keyword])
     );
     include_once '../../fns/create_clear_filter_bar.php';
     $filterMessage = create_clear_filter_bar($tag, $clearHref);

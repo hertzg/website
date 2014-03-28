@@ -38,16 +38,16 @@ include_once '../../fns/Page/imageLink.php';
 include_once '../../fns/Page/sessionMessages.php';
 $content =
     create_tabs(
-        array(
-            array(
+        [
+            [
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../../home/',
-            ),
-            array(
+            ],
+            [
                 'title' => 'Files',
                 'href' => create_folder_link($file->idfolders, '../'),
-            ),
-        ),
+            ],
+        ],
         "File #$id",
         Page\sessionMessages('files/view-file/messages')
         .Form\label('File name', $file->filename)
@@ -61,6 +61,6 @@ $content =
     .create_options_panel($file);
 
 include_once '../../fns/echo_page.php';
-echo_page($user, "File #$id", $content, $base, array(
+echo_page($user, "File #$id", $content, $base, [
     'head' => '<link rel="stylesheet" type="text/css" href="index.css?1" />',
-));
+]);

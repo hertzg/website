@@ -14,6 +14,6 @@ function require_keyword_and_tag () {
 
     $offset = abs((int)$offset);
 
-    return array($keyword, $tag, $offset);
+    return [$keyword, $tag, $offset];
 
 }

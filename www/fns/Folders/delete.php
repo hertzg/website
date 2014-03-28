@@ -7,7 +7,7 @@ function delete ($mysqli, $idusers, $idfolders) {
     include_once __DIR__.'/../Files/delete.php';
     include_once __DIR__.'/../Files/indexInUserFolder.php';
 
-    $idfolderss = array($idfolders);
+    $idfolderss = [$idfolders];
     while ($idfolderss) {
 
         $idfolders = array_shift($idfolderss);

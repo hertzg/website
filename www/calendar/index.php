@@ -31,7 +31,7 @@ include_once '../fns/Events/indexOnUserAndTime.php';
 include_once '../lib/mysqli.php';
 $events = Events\indexOnUserAndTime($mysqli, $user->idusers, $timeSelected);
 
-$eventItems = array();
+$eventItems = [];
 include_once 'fns/render_events.php';
 render_events($events, $eventItems);
 
@@ -53,12 +53,12 @@ include_once '../fns/Page/sessionErrors.php';
 include_once '../fns/Page/sessionMessages.php';
 $content =
     create_tabs(
-        array(
-            array(
+        [
+            [
                 'title' => 'Home',
                 'href' => '../home/',
-            ),
-        ),
+            ],
+        ],
         'Calendar',
         Page\sessionErrors('calendar/errors')
         .Page\sessionMessages('calendar/messages')
@@ -78,9 +78,9 @@ $content =
     );
 
 include_once '../fns/echo_page.php';
-echo_page($user, 'Calendar', $content, '../', array(
+echo_page($user, 'Calendar', $content, '../', [
     'head' =>
         '<link rel="stylesheet" type="text/css" href="index.css?5" />'
         .'<link rel="stylesheet" type="text/css"'
         ." href=\"themes/$user->theme/index.css?2\" />"
-));
+]);

@@ -8,7 +8,7 @@ $user = require_user($base);
 if (array_key_exists('channels/add/values', $_SESSION)) {
     $values = $_SESSION['channels/add/values'];
 } else {
-    $values = array('channelname' => '');
+    $values = ['channelname' => ''];
 }
 
 unset(
@@ -23,29 +23,29 @@ include_once '../../fns/Form/textfield.php';
 include_once '../../fns/Page/sessionErrors.php';
 $content =
     create_tabs(
-        array(
-            array(
+        [
+            [
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../../notifications/',
-            ),
-            array(
+            ],
+            [
                 'title' => 'Channels',
                 'href' => '..',
-            ),
-        ),
+            ],
+        ],
         'New',
         Page\sessionErrors('channels/add/errors')
         .'<form action="submit.php" method="post">'
-            .Form\textfield('channelname', 'Channel name', array(
+            .Form\textfield('channelname', 'Channel name', [
                 'value' => $values['channelname'],
                 'maxlength' => 32,
                 'autofocus' => true,
                 'required' => true,
-            ))
-            .Form\notes(array(
+            ])
+            .Form\notes([
                 'Characters a-z, A-Z, 0-9, dash, dot and underscore only.',
                 'Minimum 6 maximum 32 characters.',
-            ))
+            ])
             .'<div class="hr"></div>'
             .Form\button('Create')
         .'</form>'

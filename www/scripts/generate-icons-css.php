@@ -3,7 +3,7 @@
 
 include_once 'lib/require-cli.php';
 
-$names = array(
+$names = [
     'blue-theme', 'green-theme', 'orange-theme', 'pink-theme',
     'edit-blue-theme', 'edit-green-theme', 'edit-orange-theme',
     'edit-pink-theme', 'bookmark', 'bookmarks', 'create-bookmark',
@@ -22,7 +22,7 @@ $names = array(
     'move-up', 'move-to-top', 'move-down', 'move-to-bottom', 'reorder', 'show-hide',
     'restore-defaults', 'connection', 'create-connection', 'edit-connection',
     'connections', 'forbid-notifications', 'receive-notifications', 'user',
-    'add-user', 'remove-user', 'users');
+    'add-user', 'remove-user', 'users'];
 
 $content = "/* auto-generated */\n";
 $x = 0;

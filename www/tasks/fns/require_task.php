@@ -13,13 +13,13 @@ function require_task ($mysqli) {
 
     if (!$task) {
         unset($_SESSION['tasks/messages']);
-        $_SESSION['tasks/errors'] = array(
+        $_SESSION['tasks/errors'] = [
             'The task no longer exists.',
-        );
+        ];
         include_once __DIR__.'/../../fns/redirect.php';
         redirect('..');
     }
 
-    return array($task, $task->idtasks, $user);
+    return [$task, $task->idtasks, $user];
 
 }

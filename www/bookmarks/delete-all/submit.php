@@ -18,9 +18,9 @@ include_once '../../fns/Users/clearNumBookmarks.php';
 Users\clearNumBookmarks($mysqli, $idusers);
 
 unset($_SESSION['bookmarks/errors']);
-$_SESSION['bookmarks/messages'] = array(
+$_SESSION['bookmarks/messages'] = [
     'All bookmarks have been deleted.',
-);
+];
 
 include_once '../../fns/redirect.php';
 redirect('..');

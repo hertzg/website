@@ -12,10 +12,10 @@ function create_options_panel ($idfolders, $base = '') {
         $uploadFilesHref = "{$base}upload-files/";
     }
 
-    $options = array(
+    $options = [
         Page\imageArrowLink('New Folder', $newFolderHref, 'create-folder'),
         Page\imageArrowLink('Upload Files', $uploadFilesHref, 'upload'),
-    );
+    ];
 
     if ($idfolders) {
 

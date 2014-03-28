@@ -15,13 +15,13 @@ function require_event ($mysqli) {
 
     if (!$event) {
         unset($_SESSION['calendar/messages']);
-        $_SESSION['calendar/errors'] = array(
+        $_SESSION['calendar/errors'] = [
             'The event no longer exists.',
-        );
+        ];
         include_once __DIR__.'/../../fns/redirect.php';
         redirect('..');
     }
 
-    return array($event, $idevents, $user);
+    return [$event, $idevents, $user];
 
 }

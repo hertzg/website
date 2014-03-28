@@ -11,7 +11,7 @@ list($year, $month, $day) = request_strings('year', 'month', 'day');
 if (array_key_exists('calendar/add-event/values', $_SESSION)) {
     $values = $_SESSION['calendar/add-event/values'];
 } else {
-    $values = array('eventtext' => '');
+    $values = ['eventtext' => ''];
 }
 
 $year = (int)$year;
@@ -32,26 +32,26 @@ include_once '../../fns/Form/textfield.php';
 include_once '../../fns/Page/sessionErrors.php';
 $content =
     create_tabs(
-        array(
-            array(
+        [
+            [
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../../home/',
-            ),
-            array(
+            ],
+            [
                 'title' => 'Calendar',
                 'href' => '..',
-            ),
-        ),
+            ],
+        ],
         'New Event',
         Page\sessionErrors('calendar/add-event/errors')
         .'<form action="submit.php" method="post">'
             .Form\label('When', date('F d, Y', $time))
             .'<div class="hr"></div>'
-            .Form\textfield('eventtext', 'Text', array(
+            .Form\textfield('eventtext', 'Text', [
                 'value' => $values['eventtext'],
                 'autofocus' => true,
                 'required' => true,
-            ))
+            ])
             .'<div class="hr"></div>'
             .Form\button('Save Event')
             .Form\hidden('year', $year)

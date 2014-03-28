@@ -6,14 +6,14 @@ $description =
 
 header('Content-Type: application/x-web-app-manifest+json');
 
-echo json_encode(array(
+echo json_encode([
     'name' => 'Zvini',
     'description' => $description,
-    'developer' => array(
+    'developer' => [
         'name' => 'Zvini Developers',
         'url' => 'http://zvini.com/',
-    ),
-    'icons' => array(
+    ],
+    'icons' => [
         16 => '/zvini-icons/16.png',
         32 => '/zvini-icons/32.png',
         60 => '/zvini-icons/60.png',
@@ -22,5 +22,5 @@ echo json_encode(array(
         120 => '/zvini-icons/120.png',
         128 => '/zvini-icons/128.png',
         256 => '/zvini-icons/256.png',
-    ),
-));
+    ],
+]);

@@ -9,7 +9,7 @@ $idusers = $user->idusers;
 include_once '../fns/request_strings.php';
 list($tag, $offset) = request_strings('tag', 'offset');
 
-$items = array();
+$items = [];
 $filterMessage = '';
 
 include_once '../lib/mysqli.php';
@@ -40,7 +40,7 @@ if ($tag === '') {
         $tags = TaskTags\indexOnUser($mysqli, $idusers);
         if ($tags) {
             include_once '../fns/create_tag_filter_bar.php';
-            $filterMessage = create_tag_filter_bar($tags, array());
+            $filterMessage = create_tag_filter_bar($tags, []);
         }
 
     }

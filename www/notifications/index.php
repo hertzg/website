@@ -74,12 +74,12 @@ include_once '../fns/create_tabs.php';
 include_once '../fns/Page/sessionErrors.php';
 include_once '../fns/Page/sessionMessages.php';
 $content = create_tabs(
-    array(
-        array(
+    [
+        [
             'title' => 'Home',
             'href' => '../home/',
-        ),
-    ),
+        ],
+    ],
     'Notifications',
     Page\sessionErrors('notifications/errors')
     .Page\sessionMessages('notifications/messages')

@@ -19,11 +19,11 @@ if (array_key_exists('sign-in/values', $_SESSION)) {
         $username = '';
     }
 
-    $values = array(
+    $values = [
         'username' => $username,
         'password' => '',
         'remember' => array_key_exists('remember', $_COOKIE),
-    );
+    ];
 
 }
 
@@ -48,22 +48,22 @@ include_once '../fns/Page/sessionErrors.php';
 include_once '../fns/Page/sessionMessages.php';
 $content =
     create_tabs(
-        array(),
+        [],
         'Sign In',
         Page\sessionMessages('sign-in/messages')
         .Page\sessionErrors('sign-in/errors')
         .'<form action="submit.php" method="post">'
-            .Form\textfield('username', 'Username', array(
+            .Form\textfield('username', 'Username', [
                 'value' => $username,
                 'autofocus' => $username === '',
                 'required' => true,
-            ))
+            ])
             .'<div class="hr"></div>'
-            .Form\password('password', 'Password', array(
+            .Form\password('password', 'Password', [
                 'value' => $values['password'],
                 'autofocus' => $username !== '',
                 'required' => true,
-            ))
+            ])
             .'<div class="hr"></div>'
             .Form\checkbox($base, 'remember', 'Stay signed in', $values['remember'])
             .'<div class="hr"></div>'

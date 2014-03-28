@@ -11,7 +11,7 @@ include_once '../../fns/Folders/delete.php';
 Folders\delete($mysqli, $user->idusers, $idfolders);
 
 $_SESSION['files/idfolders'] = $folder->parentidfolders;
-$_SESSION['files/messages'] = array('Folder has been deleted.');
+$_SESSION['files/messages'] = ['Folder has been deleted.'];
 
 include_once '../../fns/create_folder_link.php';
 include_once '../../fns/redirect.php';

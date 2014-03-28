@@ -14,11 +14,11 @@ include_once '../../fns/Users/addNumEvents.php';
 Users\addNumEvents($mysqli, $user->idusers, -1);
 
 unset($_SESSION['calendar/errors']);
-$_SESSION['calendar/messages'] = array('Event has been deleted.');
+$_SESSION['calendar/messages'] = ['Event has been deleted.'];
 
 include_once '../../fns/redirect.php';
-redirect('../?'.http_build_query(array(
+redirect('../?'.http_build_query([
     'year' => date('Y', $event->eventtime),
     'month' => date('n', $event->eventtime),
     'day' => date('d', $event->eventtime),
-)));
+]));

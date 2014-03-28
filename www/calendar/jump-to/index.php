@@ -15,7 +15,7 @@ $maxYear = date('Y', $timeNow) + 100;
 $year = max($minYear, min($maxYear, (int)$year));
 $month = max(1, min(12, (int)$month));
 
-$monthOptions = array(
+$monthOptions = [
     1 => 'January',
     2 => 'February',
     3 => 'March',
@@ -28,9 +28,9 @@ $monthOptions = array(
     10 => 'October',
     11 => 'November',
     12 => 'December',
-);
+];
 
-$yearOptions = array();
+$yearOptions = [];
 for ($i = $minYear; $i <= $maxYear; $i++) {
     $yearOptions[$i] = $i;
 }
@@ -45,16 +45,16 @@ include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/select.php';
 $content =
     create_tabs(
-        array(
-            array(
+        [
+            [
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../../home/',
-            ),
-            array(
+            ],
+            [
                 'title' => 'Calendar',
                 'href' => "../?year=$year&month=$month",
-            ),
-        ),
+            ],
+        ],
         'Jump To',
         '<form action="submit.php" method="post">'
             .Form\select('month', 'Month:', $monthOptions, $month)

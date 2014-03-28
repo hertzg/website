@@ -3,7 +3,7 @@
 function create_options_panel ($user) {
 
     include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
-    $options = array();
+    $options = [];
     if (!$user->email_verified) {
         $title = 'Verify Email';
         $href = 'verify-email/';

@@ -11,16 +11,16 @@ include_once '../../../fns/create_tabs.php';
 include_once '../../../fns/Page/imageLink.php';
 include_once '../../../fns/Page/text.php';
 $content = create_tabs(
-    array(
-        array(
+    [
+        [
             'title' => '&middot;&middot;&middot;',
             'href' => '../../',
-        ),
-        array(
+        ],
+        [
             'title' => 'Reorder Items',
             'href' => '../',
-        ),
-    ),
+        ],
+    ],
     'Restore Defaults',
     Page\text('Are you sure you want to restore the default order of the items?')
     .'<div class="hr"></div>'

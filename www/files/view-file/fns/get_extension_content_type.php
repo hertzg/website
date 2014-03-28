@@ -1,7 +1,7 @@
 <?php
 
 function get_extension_content_type ($extension) {
-    static $contentTypes = array(
+    static $contentTypes = [
         'bmp' => 'image/bmp',
         'gif' => 'image/gif',
         'flac' => 'audio/flac',
@@ -15,7 +15,7 @@ function get_extension_content_type ($extension) {
         'png' => 'image/png',
         'svg' => 'image/svg+xml',
         'wav' => 'audio/wav',
-    );
+    ];
     if (array_key_exists($extension, $contentTypes)) {
         return $contentTypes[$extension];
     }

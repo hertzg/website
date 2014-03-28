@@ -15,13 +15,13 @@ function require_channel ($mysqli, $channelsBase = '..') {
 
     if (!$channel) {
         unset($_SESSION['channels/messages']);
-        $_SESSION['channels/errors'] = array(
+        $_SESSION['channels/errors'] = [
             'The channel no longer exists.',
-        );
+        ];
         include_once __DIR__.'/../../fns/redirect.php';
         redirect($channelsBase);
     }
 
-    return array($channel, $id, $user);
+    return [$channel, $id, $user];
 
 }

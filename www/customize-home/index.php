@@ -15,12 +15,12 @@ include_once '../fns/Page/imageArrowLink.php';
 include_once '../fns/Page/imageArrowLinkWithDescription.php';
 include_once '../fns/Page/sessionMessages.php';
 $content = create_tabs(
-    array(
-        array(
+    [
+        [
             'title' => 'Home',
             'href' => '../home/',
-        ),
-    ),
+        ],
+    ],
     'Customize',
     Page\sessionMessages('customize-home/messages')
     .Page\imageArrowLinkWithDescription('Show / Hide Items',

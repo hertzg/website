@@ -11,9 +11,9 @@ Users\restoreOrderHomeItems($mysqli, $user->idusers);
 include_once '../../fns/Users/restoreDefaultVisibilities.php';
 Users\restoreDefaultVisibilities($mysqli, $user->idusers);
 
-$_SESSION['customize-home/messages'] = array(
+$_SESSION['customize-home/messages'] = [
     'Default home has been restored.'
-);
+];
 
 include_once '../../fns/redirect.php';
 redirect('..');

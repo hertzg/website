@@ -3,7 +3,7 @@
 namespace Page;
 
 function imageLinkWithDescription ($title, $description, $href,
-    $iconName, array $options = array()) {
+    $iconName, array $options = []) {
 
     $content =
         '<div class="title_and_description">'

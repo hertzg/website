@@ -1,6 +1,6 @@
 <?php
 
-function echo_page ($user, $title, $content, $base, array $options = array()) {
+function echo_page ($user, $title, $content, $base, array $options = []) {
 
     $theme = $user ? $user->theme : 'orange';
 

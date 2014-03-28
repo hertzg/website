@@ -10,7 +10,7 @@ if ($user->email_verified) redirect('..');
 include_once '../../fns/request_strings.php';
 list($captcha) = request_strings('captcha');
 
-$errors = array();
+$errors = [];
 
 include_once '../../fns/Captcha/check.php';
 Captcha\check($errors);
@@ -30,10 +30,10 @@ include_once '../../lib/mysqli.php';
 Users\editVerifyEmailKey($mysqli, $user->idusers, $key);
 
 $href = htmlspecialchars(
-    'http://zvini.com/verify-email/?'.http_build_query(array(
+    'http://zvini.com/verify-email/?'.http_build_query([
         'idusers' => $user->idusers,
         'key' => bin2hex($key),
-    ))
+    ])
 );
 
 $title = 'Verify Zvini Account Email Address';
@@ -65,8 +65,8 @@ $headers =
 
 mail($user->email, $subject, $html, $headers);
 
-$_SESSION['account/messages'] = array(
+$_SESSION['account/messages'] = [
     'Instructions to verify email have been sent to your email address.',
-);
+];
 
 redirect('..');

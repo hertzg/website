@@ -10,7 +10,7 @@ $idusers = $user->idusers;
 include_once '../../fns/request_strings.php';
 list($password) = request_strings('password');
 
-$errors = array();
+$errors = [];
 
 if ($password === '') {
     $errors[] = 'Enter password.';
@@ -87,9 +87,9 @@ Tokens\deleteOnUser($mysqli, $idusers);
 include_once '../../fns/Users/delete.php';
 Users\delete($mysqli, $idusers);
 
-$_SESSION['sign-in/messages'] = array(
+$_SESSION['sign-in/messages'] = [
     'Your account has been closed.',
-);
+];
 
 setcookie('username', '', time() - 60 * 60 * 24, '/');
 redirect('../../sign-in/');

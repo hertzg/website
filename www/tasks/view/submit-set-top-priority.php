@@ -13,7 +13,7 @@ Tasks\setTopPriority($mysqli, $user->idusers, $id, true);
 include_once '../../fns/TaskTags/setTaskTopPriority.php';
 TaskTags\setTaskTopPriority($mysqli, $id, true);
 
-$_SESSION['tasks/view/messages'] = array('Marked as top priority.');
+$_SESSION['tasks/view/messages'] = ['Marked as top priority.'];
 
 include_once '../../fns/redirect.php';
 redirect("./?id=$id");

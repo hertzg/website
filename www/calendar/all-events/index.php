@@ -10,7 +10,7 @@ if (!$user->num_events) {
     redirect('..');
 }
 
-$items = array();
+$items = [];
 
 include_once '../../fns/Events/indexOnUser.php';
 include_once '../../lib/mysqli.php';
@@ -48,16 +48,16 @@ include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
 $content =
     create_tabs(
-        array(
-            array(
+        [
+            [
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../../home/',
-            ),
-            array(
+            ],
+            [
                 'title' => 'Calendar',
                 'href' => '..',
-            ),
-        ),
+            ],
+        ],
         'All Events',
         join('<div class="hr"></div>', $items)
     )

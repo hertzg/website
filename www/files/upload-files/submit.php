@@ -29,7 +29,7 @@ include_once '../../fns/Files/add.php';
 include_once '../../fns/Files/getByName.php';
 
 $numfiles = 0;
-foreach (array($file1, $file2, $file3) as $file) {
+foreach ([$file1, $file2, $file3] as $file) {
     foreach ($file['name'] as $i => $filename) {
         if ($file['error'][$i] == UPLOAD_ERR_OK) {
 
@@ -59,7 +59,7 @@ foreach (array($file1, $file2, $file3) as $file) {
     }
 }
 
-$errors = array();
+$errors = [];
 
 if (!$posttest) {
     $errors[] = 'Maximum upload size excceeded.';
@@ -81,7 +81,7 @@ if ($numfiles == 1) {
 }
 
 $_SESSION['files/idfolders'] = $idfolders;
-$_SESSION['files/messages'] = array($message);
+$_SESSION['files/messages'] = [$message];
 
 include_once '../../fns/create_folder_link.php';
 redirect(create_folder_link($idfolders, '../'));

@@ -2,7 +2,7 @@
 
 namespace Form;
 
-function textfield ($name, $text, array $config = array()) {
+function textfield ($name, $text, array $config = []) {
 
     if (array_key_exists('type', $config)) {
         $type = $config['type'];

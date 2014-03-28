@@ -19,6 +19,6 @@ function require_valid_key ($mysqli) {
         redirect('..');
     }
 
-    return array($user, $key);
+    return [$user, $key];
 
 }

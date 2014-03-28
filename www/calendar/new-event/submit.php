@@ -19,7 +19,7 @@ $eventtime = mktime(0, 0, 0, $month, $day, $year);
 include_once '../../fns/str_collapse_spaces.php';
 $eventtext = str_collapse_spaces($eventtext);
 
-$errors = array();
+$errors = [];
 
 if ($eventtext === '') $errors[] = 'Enter text.';
 
@@ -27,14 +27,14 @@ include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['calendar/add-event/errors'] = $errors;
-    $_SESSION['calendar/add-event/values'] = array(
+    $_SESSION['calendar/add-event/values'] = [
         'eventtext' => $eventtext,
-    );
-    redirect('./?'.http_build_query(array(
+    ];
+    redirect('./?'.http_build_query([
         'year' => $year,
         'month' => $month,
         'day' => $day,
-    )));
+    ]));
 }
 
 unset(
@@ -49,6 +49,6 @@ $id = Events\add($mysqli, $idusers, $eventtext, $eventtime);
 include_once '../../fns/Users/addNumEvents.php';
 Users\addNumEvents($mysqli, $idusers, 1);
 
-$_SESSION['calendar/view-event/messages'] = array('Event has been saved.');
+$_SESSION['calendar/view-event/messages'] = ['Event has been saved.'];
 
 redirect("../view-event/?idevents=$id");

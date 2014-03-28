@@ -15,13 +15,13 @@ function require_token ($mysqli) {
 
     if (!$token) {
         unset($_SESSION['tokens/messages']);
-        $_SESSION['tokens/errors'] = array(
+        $_SESSION['tokens/errors'] = [
             'The remembered session no longer exists.',
-        );
+        ];
         include_once __DIR__.'/../../fns/redirect.php';
         redirect('..');
     }
 
-    return array($token, $id, $user);
+    return [$token, $id, $user];
 
 }

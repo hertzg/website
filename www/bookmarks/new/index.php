@@ -8,11 +8,11 @@ $user = require_user($base);
 if (array_key_exists('bookmarks/new/values', $_SESSION)) {
     $values = $_SESSION['bookmarks/new/values'];
 } else {
-    $values = array(
+    $values = [
         'url' => '',
         'title' => '',
         'tags' => '',
-    );
+    ];
 }
 
 unset(
@@ -26,32 +26,32 @@ include_once '../../fns/Form/textfield.php';
 include_once '../../fns/Page/sessionErrors.php';
 $content =
     create_tabs(
-        array(
-            array(
+        [
+            [
                 'title' => '&middot;&middot;&middot;',
                 'href' => '../../home/',
-            ),
-            array(
+            ],
+            [
                 'title' => 'Bookmarks',
                 'href' => '..',
-            ),
-        ),
+            ],
+        ],
         'New',
         Page\sessionErrors('bookmarks/new/errors')
         .'<form action="submit.php" method="post">'
-            .Form\textfield('url', 'URL', array(
+            .Form\textfield('url', 'URL', [
                 'value' => $values['url'],
                 'autofocus' => true,
                 'required' => true,
-            ))
+            ])
             .'<div class="hr"></div>'
-            .Form\textfield('title', 'Title', array(
+            .Form\textfield('title', 'Title', [
                 'value' => $values['title'],
-            ))
+            ])
             .'<div class="hr"></div>'
-            .Form\textfield('tags', 'Tags', array(
+            .Form\textfield('tags', 'Tags', [
                 'value' => $values['tags'],
-            ))
+            ])
             .'<div class="hr"></div>'
             .Form\button('Save Bookmark')
         .'</form>'

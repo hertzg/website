@@ -14,7 +14,7 @@ $idusers = $user->idusers;
 include_once '../fns/request_strings.php';
 list($password1, $password2) = request_strings('password1', 'password2');
 
-$errors = array();
+$errors = [];
 
 if ($password1 === '') {
     $errors[] = 'Enter new password.';
@@ -36,10 +36,10 @@ include_once '../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['reset-password/errors'] = $errors;
-    $_SESSION['reset-password/values'] = array(
+    $_SESSION['reset-password/values'] = [
         'password1' => $password1,
         'password2' => $password2,
-    );
+    ];
     redirect("./?idusers=$idusers&key=$key");
 }
 
@@ -53,8 +53,8 @@ Users\editPassword($mysqli, $idusers, $password1);
 
 setcookie('username', $user->username, time() + 60 * 60 * 24 * 30, '/');
 
-$_SESSION['sign-in/messages'] = array(
+$_SESSION['sign-in/messages'] = [
     'Password has been reset.',
     'You can sign in with your new password.'
-);
+];
 redirect('../sign-in/');

@@ -3,7 +3,7 @@
 function create_items (array $bookmarks, array $contacts, array $notes,
     array $tasks, array $folders, array $files) {
 
-    $items = array();
+    $items = [];
 
     if ($bookmarks) {
         include_once __DIR__.'/render_bookmarks.php';

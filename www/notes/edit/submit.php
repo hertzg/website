@@ -17,7 +17,7 @@ $notetext = str_collapse_spaces_multiline($notetext);
 include_once '../../fns/str_collapse_spaces.php';
 $tags = str_collapse_spaces($tags);
 
-$errors = array();
+$errors = [];
 
 if ($notetext === '') $errors[] = 'Enter text.';
 
@@ -28,10 +28,10 @@ include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['notes/edit/errors'] = $errors;
-    $_SESSION['notes/edit/values'] = array(
+    $_SESSION['notes/edit/values'] = [
         'notetext' => $notetext,
         'tags' => $tags,
-    );
+    ];
     redirect("./?id=$id");
 }
 
@@ -49,5 +49,5 @@ NoteTags\deleteOnNote($mysqli, $id);
 include_once '../../fns/NoteTags/add.php';
 NoteTags\add($mysqli, $idusers, $id, $tagnames, $notetext);
 
-$_SESSION['notes/view/messages'] = array('Changes have been saved.');
+$_SESSION['notes/view/messages'] = ['Changes have been saved.'];
 redirect("../view/?id=$id");

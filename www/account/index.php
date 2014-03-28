@@ -37,12 +37,12 @@ include_once '../fns/n_times.php';
 include_once '../fns/Page/sessionMessages.php';
 $content =
     create_tabs(
-        array(
-            array(
+        [
+            [
                 'title' => 'Home',
                 'href' => '../home/',
-            ),
-        ),
+            ],
+        ],
         'Account',
         Page\sessionMessages('account/messages')
         .Form\label('Username', $user->username)
@@ -61,6 +61,6 @@ $content =
     .create_options_panel($user);
 
 include_once '../fns/echo_page.php';
-echo_page($user, 'Account', $content, $base, array(
+echo_page($user, 'Account', $content, $base, [
     'head' => '<link rel="stylesheet" type="text/css" href="index.css" />',
-));
+]);
