@@ -10,24 +10,15 @@ include_once '../fns/Users/clearNumNewNotifications.php';
 include_once '../lib/mysqli.php';
 Users\clearNumNewNotifications($mysqli, $idusers);
 
+$options = [];
+
 include_once 'fns/create_channels_link.php';
-$options = array(create_channels_link($user));
+$options[] = create_channels_link($user);
 
-$title = 'Other Channels';
-$href = 'subscribed-channels/';
-$icon = 'subscribed-channels';
-$num_subscribed_channels = $user->num_subscribed_channels;
-if ($num_subscribed_channels) {
-    $description = "$num_subscribed_channels total.";
-    include_once '../fns/Page/imageArrowLinkWithDescription.php';
-    $options[] = Page\imageArrowLinkWithDescription($title,
-        $description, $href, $icon);
-} else {
-    include_once '../fns/Page/imageArrowLink.php';
-    $options[] = Page\imageArrowLink($title, $href, $icon);
-}
+include_once 'fns/create_subscribed_channels_link.php';
+$options[] = create_subscribed_channels_link($user);
 
-$items = array();
+$items = [];
 
 include_once '../fns/Notifications/indexOnUser.php';
 $notifications = Notifications\indexOnUser($mysqli, $idusers);
@@ -50,7 +41,7 @@ if ($notifications) {
 
         $id_subscribed_channels = $notification->id_subscribed_channels;
         if ($id_subscribed_channels) {
-            $href = "in-channel/?id_subscribed_channels=$id_subscribed_channels";
+            $href = "in-subscribed-channel/?id=$id_subscribed_channels";
         } else {
             $href = "in-channel/?id=$notification->idchannels";
         }
