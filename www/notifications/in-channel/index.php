@@ -10,8 +10,13 @@ $idusers = $user->idusers;
 include_once '../../fns/Users/clearNumNewNotifications.php';
 Users\clearNumNewNotifications($mysqli, $idusers);
 
+$options = [];
+
 include_once '../fns/create_channels_link.php';
-$options = array(create_channels_link($user, '../../channels/'));
+$options[] = create_channels_link($user, '../');
+
+include_once '../fns/create_subscribed_channels_link.php';
+$options[] = create_subscribed_channels_link($user, '../');
 
 $items = array();
 

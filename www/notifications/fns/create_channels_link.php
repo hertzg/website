@@ -1,8 +1,9 @@
 <?php
 
-function create_channels_link ($user, $href) {
+function create_channels_link ($user, $base = '') {
     $title = 'My Channels';
     $icon = 'channels';
+    $href = "{$base}../channels/";
     $num_channels = $user->num_channels;
     if ($num_channels) {
         $description = "$num_channels total.";

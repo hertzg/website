@@ -11,7 +11,7 @@ include_once '../lib/mysqli.php';
 Users\clearNumNewNotifications($mysqli, $idusers);
 
 include_once 'fns/create_channels_link.php';
-$options = array(create_channels_link($user, '../channels/'));
+$options = array(create_channels_link($user));
 
 $title = 'Other Channels';
 $href = 'subscribed-channels/';
