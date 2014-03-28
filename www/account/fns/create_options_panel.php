@@ -15,7 +15,7 @@ function create_options_panel ($user) {
     $options[] = Page\imageArrowLink($title, $href, 'edit-password');
 
     $title = 'Edit Profile';
-    $href = '../edit-profile/';
+    $href = 'edit-profile/';
     $options[] = Page\imageArrowLink($title, $href, 'edit-profile');
 
     $href = './edit-theme/';
