@@ -35,8 +35,8 @@ if ($email === '') {
 include_once '../../fns/redirect.php';
 
 if ($errors) {
-    $_SESSION['edit-profile/errors'] = $errors;
-    $_SESSION['edit-profile/values'] = array(
+    $_SESSION['account/edit-profile/errors'] = $errors;
+    $_SESSION['account/edit-profile/values'] = array(
         'email' => $email,
         'full_name' => $full_name,
     );
@@ -44,8 +44,8 @@ if ($errors) {
 }
 
 unset(
-    $_SESSION['edit-profile/errors'],
-    $_SESSION['edit-profile/values']
+    $_SESSION['account/edit-profile/errors'],
+    $_SESSION['account/edit-profile/values']
 );
 
 include_once '../../fns/Users/editProfile.php';

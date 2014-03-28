@@ -26,11 +26,11 @@ if ($password === '') {
 include_once '../../fns/redirect.php';
 
 if ($errors) {
-    $_SESSION['close-account/errors'] = $errors;
+    $_SESSION['account/close/errors'] = $errors;
     redirect();
 }
 
-unset($_SESSION['close-account/errors']);
+unset($_SESSION['account/close/errors']);
 
 include_once '../../fns/Bookmarks/deleteOnUser.php';
 include_once '../../lib/mysqli.php';

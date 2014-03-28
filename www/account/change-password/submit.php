@@ -41,8 +41,8 @@ if ($password1 === '') {
 include_once '../../fns/redirect.php';
 
 if ($errors) {
-    $_SESSION['change-password/errors'] = $errors;
-    $_SESSION['change-password/values'] = array(
+    $_SESSION['account/change-password/errors'] = $errors;
+    $_SESSION['account/change-password/values'] = array(
         'currentpassword' => $currentpassword,
         'password1' => $password1,
         'password2' => $password2,
@@ -51,8 +51,8 @@ if ($errors) {
 }
 
 unset(
-    $_SESSION['change-password/errors'],
-    $_SESSION['change-password/values']
+    $_SESSION['account/change-password/errors'],
+    $_SESSION['account/change-password/values']
 );
 
 include_once '../../fns/Users/editPassword.php';

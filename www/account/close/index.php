@@ -24,7 +24,7 @@ $content = create_tabs(
             ),
         ),
         'Close',
-        Page\sessionErrors('close-account/errors')
+        Page\sessionErrors('account/close/errors')
         .Page\warnings(array(
             'Are you sure you want to close your account?',
             ' You will lose all your data.',

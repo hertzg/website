@@ -5,8 +5,8 @@ $base = '../../';
 include_once '../../fns/require_user.php';
 $user = require_user($base);
 
-if (array_key_exists('edit-profile/values', $_SESSION)) {
-    $values = (object)$_SESSION['edit-profile/values'];
+if (array_key_exists('account/edit-profile/values', $_SESSION)) {
+    $values = (object)$_SESSION['account/edit-profile/values'];
 } else {
     $values = $user;
 }
@@ -30,7 +30,7 @@ $content =
             ),
         ),
         'Edit Profile',
-        Page\sessionErrors('edit-profile/errors')
+        Page\sessionErrors('account/edit-profile/errors')
         .'<form action="submit.php" method="post">'
             .Form\textfield('email', 'Email', array(
                 'value' => $values->email,

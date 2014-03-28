@@ -5,8 +5,8 @@ $base = '../../';
 include_once '../../fns/require_user.php';
 $user = require_user($base);
 
-if (array_key_exists('change-password/values', $_SESSION)) {
-    $values = $_SESSION['change-password/values'];
+if (array_key_exists('account/change-password/values', $_SESSION)) {
+    $values = $_SESSION['account/change-password/values'];
 } else {
     $values = array(
         'currentpassword' => '',
@@ -35,7 +35,7 @@ $content =
             ),
         ),
         'Change Password',
-        Page\sessionErrors('change-password/errors')
+        Page\sessionErrors('account/change-password/errors')
         .'<form action="submit.php" method="post">'
             .Form\password('currentpassword', 'Current password', array(
                 'value' => $values['currentpassword'],
