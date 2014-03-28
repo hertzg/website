@@ -4,7 +4,7 @@ include_once '../fns/require_subscribed_channel.php';
 include_once '../../../../lib/mysqli.php';
 list($subscribed_channel, $id, $user) = require_subscribed_channel($mysqli, '../../..');
 
-unset($_SESSION['channels/users/messages']);
+unset($_SESSION['notifications/channels/users/messages']);
 
 $id_channels = $subscribed_channel->id_channels;
 
@@ -29,7 +29,7 @@ $content = create_tabs(
         ],
     ],
     "User #$id",
-    Page\sessionMessages('channels/users/view/messages')
+    Page\sessionMessages('notifications/channels/users/view/messages')
     .Form\label('Username', htmlspecialchars($subscribed_channel->subscribed_username))
     .create_panel('Options', $deleteLink)
 );

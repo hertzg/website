@@ -45,8 +45,8 @@ $content =
             ],
         ],
         'Channels',
-        Page\sessionErrors('channels/errors')
-        .Page\sessionMessages('channels/messages')
+        Page\sessionErrors('notifications/channels/errors')
+        .Page\sessionMessages('notifications/channels/messages')
         .join('<div class="hr"></div>', $items)
     )
     .create_panel(

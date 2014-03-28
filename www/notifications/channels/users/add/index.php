@@ -4,7 +4,7 @@ include_once '../../fns/require_channel.php';
 include_once '../../../../lib/mysqli.php';
 list($channel, $id, $user) = require_channel($mysqli, '../../..');
 
-$key = 'channels/users/add/values';
+$key = 'notifications/channels/users/add/values';
 if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];
 } else {
@@ -12,8 +12,8 @@ if (array_key_exists($key, $_SESSION)) {
 }
 
 unset(
-    $_SESSION['channels/users/errors'],
-    $_SESSION['channels/users/messages']
+    $_SESSION['notifications/channels/users/errors'],
+    $_SESSION['notifications/channels/users/messages']
 );
 
 include_once '../../../../fns/create_tabs.php';
@@ -33,7 +33,7 @@ $content = create_tabs(
         ],
     ],
     'Add',
-    Page\sessionErrors('channels/users/add/errors')
+    Page\sessionErrors('notifications/channels/users/add/errors')
     .'<form action="submit.php" method="post">'
         .Form\textfield('subscribed_username', 'Username', [
             'value' => $values['subscribed_username'],

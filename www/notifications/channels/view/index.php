@@ -5,9 +5,9 @@ include_once '../../../lib/mysqli.php';
 list($channel, $id, $user) = require_channel($mysqli);
 
 unset(
-    $_SESSION['channels/errors'],
-    $_SESSION['channels/messages'],
-    $_SESSION['channels/users/messages']
+    $_SESSION['notifications/channels/errors'],
+    $_SESSION['notifications/channels/messages'],
+    $_SESSION['notifications/channels/users/messages']
 );
 
 include_once 'fns/create_options_panel.php';
@@ -28,7 +28,7 @@ $content =
             ],
         ],
         "Channel #$id",
-        Page\sessionMessages('channels/view/messages')
+        Page\sessionMessages('notifications/channels/view/messages')
         .Form\label('Channel name', htmlspecialchars($channel->channelname))
         .'<div class="hr"></div>'
         .Form\textfield('channelkey', 'Channel key', [

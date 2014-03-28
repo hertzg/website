@@ -5,15 +5,15 @@ $base = '../../../';
 include_once '../../../fns/require_user.php';
 $user = require_user($base);
 
-if (array_key_exists('channels/add/values', $_SESSION)) {
-    $values = $_SESSION['channels/add/values'];
+if (array_key_exists('notifications/channels/add/values', $_SESSION)) {
+    $values = $_SESSION['notifications/channels/add/values'];
 } else {
     $values = ['channelname' => ''];
 }
 
 unset(
-    $_SESSION['channels/errors'],
-    $_SESSION['channels/messages']
+    $_SESSION['notifications/channels/errors'],
+    $_SESSION['notifications/channels/messages']
 );
 
 include_once '../../../fns/create_tabs.php';
@@ -34,7 +34,7 @@ $content =
             ],
         ],
         'New',
-        Page\sessionErrors('channels/add/errors')
+        Page\sessionErrors('notifications/channels/add/errors')
         .'<form action="submit.php" method="post">'
             .Form\textfield('channelname', 'Channel name', [
                 'value' => $values['channelname'],

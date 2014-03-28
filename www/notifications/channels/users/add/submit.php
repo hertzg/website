@@ -46,14 +46,14 @@ if ($subscribed_username === '') {
 include_once '../../../../fns/redirect.php';
 
 if ($errors) {
-    $_SESSION['channels/users/add/errors'] = $errors;
-    $_SESSION['channels/users/add/values'] = [
+    $_SESSION['notifications/channels/users/add/errors'] = $errors;
+    $_SESSION['notifications/channels/users/add/values'] = [
         'subscribed_username' => $subscribed_username,
     ];
     redirect("./?id=$id");
 }
 
-$_SESSION['channels/users/view/messages'] = [
+$_SESSION['notifications/channels/users/view/messages'] = [
     'The user has been added.',
 ];
 

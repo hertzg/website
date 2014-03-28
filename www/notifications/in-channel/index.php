@@ -58,8 +58,8 @@ if ($notifications) {
 }
 
 unset(
-    $_SESSION['channels/messages'],
     $_SESSION['home/messages'],
+    $_SESSION['notifications/channels/messages'],
     $_SESSION['notifications/errors'],
     $_SESSION['notifications/messages']
 );

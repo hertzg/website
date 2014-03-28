@@ -13,7 +13,7 @@ SubscribedChannels\delete($mysqli, $id);
 include_once '../../../../fns/Users/addNumSubscribedChannels.php';
 Users\addNumSubscribedChannels($mysqli, $subscribed_channel->subscribed_id_users, -1);
 
-$_SESSION['channels/users/messages'] = ['The user has been removed.'];
+$_SESSION['notifications/channels/users/messages'] = ['The user has been removed.'];
 
 include_once '../../../../fns/redirect.php';
 redirect("..?id=$subscribed_channel->id_channels");

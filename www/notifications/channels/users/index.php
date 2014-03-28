@@ -5,10 +5,10 @@ include_once '../../../lib/mysqli.php';
 list($channel, $id, $user) = require_channel($mysqli);
 
 unset(
-    $_SESSION['channels/users/add/errors'],
-    $_SESSION['channels/users/add/values'],
-    $_SESSION['channels/users/view/messages'],
-    $_SESSION['channels/view/messages']
+    $_SESSION['notifications/channels/users/add/errors'],
+    $_SESSION['notifications/channels/users/add/values'],
+    $_SESSION['notifications/channels/users/view/messages'],
+    $_SESSION['notifications/channels/view/messages']
 );
 
 $items = [];
@@ -46,7 +46,7 @@ $content = create_tabs(
         ],
     ],
     'Users',
-    Page\sessionMessages('channels/users/messages')
+    Page\sessionMessages('notifications/channels/users/messages')
     .join('<div class="hr"></div>', $items)
     .create_panel('Options', join('<div class="hr"></div>', $options))
 );
