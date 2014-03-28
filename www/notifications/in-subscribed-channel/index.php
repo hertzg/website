@@ -2,9 +2,9 @@
 
 $base = '../../';
 
-include_once 'fns/require_channel.php';
+include_once 'fns/require_subscribed_channel.php';
 include_once '../../lib/mysqli.php';
-list($channel, $id, $user) = require_channel($mysqli, '..');
+list($subscribedChannel, $id, $user) = require_subscribed_channel($mysqli, '..');
 $idusers = $user->idusers;
 
 include_once '../../fns/Users/clearNumNewNotifications.php';
@@ -21,7 +21,8 @@ $options[] = create_subscribed_channels_link($user, '../');
 $items = array();
 
 include_once '../../fns/Notifications/indexOnUserChannel.php';
-$notifications = Notifications\indexOnUserChannel($mysqli, $idusers, $id);
+$notifications = Notifications\indexOnUserChannel($mysqli,
+    $idusers, $subscribedChannel->id_channels);
 
 if ($notifications) {
 
@@ -78,7 +79,7 @@ $content =
         'Notifications',
         Page\sessionMessages('notifications/in-channel/messages')
         .'<div class="filterBar">'
-            .'Channel: <b>'.htmlspecialchars($channel->channelname).'</b>'
+            .'Channel: <b>'.htmlspecialchars($subscribedChannel->channel_name).'</b>'
             .'<a class="clickable" title="Clear Filter" href="..">'
                 .'<span class="icon no"></span>'
             .'</a>'

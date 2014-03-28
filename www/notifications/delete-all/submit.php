@@ -11,9 +11,6 @@ include_once '../../fns/Notifications/deleteAll.php';
 include_once '../../lib/mysqli.php';
 Notifications\deleteAll($mysqli, $idusers);
 
-include_once '../../fns/Channels/clearNumNotificationsOnUser.php';
-Channels\clearNumNotificationsOnUser($mysqli, $idusers);
-
 include_once '../../fns/Users/clearNumNotifications.php';
 Users\clearNumNotifications($mysqli, $idusers);
 
