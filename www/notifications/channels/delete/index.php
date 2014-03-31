@@ -24,7 +24,7 @@ $content =
         "Channel #$id",
         Page\text(
             'Are you sure you want to delete the channel'
-            .' "<b>'.htmlspecialchars($channel->channelname).'</b>"?'
+            .' "<b>'.htmlspecialchars($channel->channel_name).'</b>"?'
         )
         .'<div class="hr"></div>'
         .Page\imageLink('Yes, delete channel', "submit.php?id=$id", 'yes')

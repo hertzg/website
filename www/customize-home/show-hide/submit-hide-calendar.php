@@ -5,7 +5,7 @@ $user = require_user('../');
 
 include_once '../../fns/Users/showCalendar.php';
 include_once '../../lib/mysqli.php';
-Users\showCalendar($mysqli, $user->idusers, false);
+Users\showCalendar($mysqli, $user->id_users, false);
 
 $_SESSION['customize-home/show-hide/messages'] = [
     '"Calendar" is now hidden.',

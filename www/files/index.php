@@ -4,17 +4,17 @@ $base = '../';
 
 include_once '../fns/require_user.php';
 $user = require_user($base);
-$idusers = $user->idusers;
+$id_users = $user->id_users;
 
 include_once '../lib/mysqli.php';
 
 include_once '../fns/request_strings.php';
-list($idfolders) = request_strings('idfolders');
+list($id_folders) = request_strings('id_folders');
 
-$idfolders = abs((int)$idfolders);
-if ($idfolders) {
+$id_folders = abs((int)$id_folders);
+if ($id_folders) {
     include_once '../fns/Folders/get.php';
-    $folder = Folders\get($mysqli, $idusers, $idfolders);
+    $folder = Folders\get($mysqli, $id_users, $id_folders);
     if (!$folder) {
         include_once '../fns/redirect.php';
         redirect();
@@ -24,18 +24,18 @@ if ($idfolders) {
 $items = [];
 
 include_once '../fns/Folders/indexInUserFolder.php';
-$folders = Folders\indexInUserFolder($mysqli, $idusers, $idfolders);
+$folders = Folders\indexInUserFolder($mysqli, $id_users, $id_folders);
 
 include_once '../fns/Files/indexInUserFolder.php';
-$files = Files\indexInUserFolder($mysqli, $idusers, $idfolders);
+$files = Files\indexInUserFolder($mysqli, $id_users, $id_folders);
 
 if (count($files) + count($folders) > 1) {
 
     include_once '../fns/SearchForm/emptyContent.php';
     $formContent = SearchForm\emptyContent('Search folders and files...');
-    if ($idfolders) {
+    if ($id_folders) {
         $formContent =
-            "<input type=\"hidden\" name=\"idfolders\" value=\"$idfolders\" />"
+            "<input type=\"hidden\" name=\"id_folders\" value=\"$id_folders\" />"
             .$formContent;
     }
 
@@ -44,10 +44,10 @@ if (count($files) + count($folders) > 1) {
 
 }
 
-if ($idfolders) {
+if ($id_folders) {
 
     include_once '../fns/create_folder_link.php';
-    $href = create_folder_link($folder->parentidfolders);
+    $href = create_folder_link($folder->parent_id_folders);
 
     include_once '../fns/Page/imageLink.php';
     $items[] = Page\imageLink('.. Parent folder', $href, 'parent-folder');
@@ -60,8 +60,8 @@ render_folders_and_files($folders, $files, $items, 'Folder is empty');
 include_once 'fns/unset_session_vars.php';
 unset_session_vars();
 
-$key = 'files/idfolders';
-if (array_key_exists($key, $_SESSION) && $idfolders != $_SESSION[$key]) {
+$key = 'files/id_folders';
+if (array_key_exists($key, $_SESSION) && $id_folders != $_SESSION[$key]) {
     unset($_SESSION['files/messages']);
 }
 
@@ -80,7 +80,7 @@ $content =
         Page\sessionMessages('files/messages')
         .join('<div class="hr"></div>', $items)
     )
-    .create_options_panel($idfolders);
+    .create_options_panel($id_folders);
 
 include_once '../fns/echo_page.php';
 echo_page($user, 'Files', $content, $base);

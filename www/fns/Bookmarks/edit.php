@@ -2,7 +2,7 @@
 
 namespace Bookmarks;
 
-function edit ($mysqli, $idusers, $id, $title, $url, $tags) {
+function edit ($mysqli, $id_users, $id, $title, $url, $tags) {
     $title = $mysqli->real_escape_string($title);
     $url = $mysqli->real_escape_string($url);
     $tags = $mysqli->real_escape_string($tags);
@@ -12,6 +12,6 @@ function edit ($mysqli, $idusers, $id, $title, $url, $tags) {
         ." url = '$url',"
         ." tags = '$tags',"
         ." update_time = $update_time"
-        ." where idusers = $idusers and idbookmarks = $id";
+        ." where id_users = $id_users and id_bookmarks = $id";
     $mysqli->query($sql);
 }

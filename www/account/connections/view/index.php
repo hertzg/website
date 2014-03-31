@@ -7,7 +7,7 @@ list($connection, $id, $user) = require_connection($mysqli);
 $id = abs((int)$id);
 
 include_once '../../../fns/Connections/get.php';
-$connection = Connections\get($mysqli, $user->idusers, $id);
+$connection = Connections\get($mysqli, $user->id_users, $id);
 
 unset(
     $_SESSION['account/connections/edit/errors'],

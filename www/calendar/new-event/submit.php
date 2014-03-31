@@ -5,30 +5,30 @@ require_same_domain_referer('./');
 
 include_once '../../fns/require_user.php';
 $user = require_user('../../');
-$idusers = $user->idusers;
+$id_users = $user->id_users;
 
 include_once '../../fns/request_strings.php';
-list($year, $month, $day, $eventtext) = request_strings(
-    'year', 'month', 'day', 'eventtext');
+list($year, $month, $day, $event_text) = request_strings(
+    'year', 'month', 'day', 'event_text');
 
 $year = (int)$year;
 $month = (int)$month;
 $day = (int)$day;
-$eventtime = mktime(0, 0, 0, $month, $day, $year);
+$event_time = mktime(0, 0, 0, $month, $day, $year);
 
 include_once '../../fns/str_collapse_spaces.php';
-$eventtext = str_collapse_spaces($eventtext);
+$event_text = str_collapse_spaces($event_text);
 
 $errors = [];
 
-if ($eventtext === '') $errors[] = 'Enter text.';
+if ($event_text === '') $errors[] = 'Enter text.';
 
 include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['calendar/add-event/errors'] = $errors;
     $_SESSION['calendar/add-event/values'] = [
-        'eventtext' => $eventtext,
+        'event_text' => $event_text,
     ];
     redirect('./?'.http_build_query([
         'year' => $year,
@@ -44,11 +44,11 @@ unset(
 
 include_once '../../fns/Events/add.php';
 include_once '../../lib/mysqli.php';
-$id = Events\add($mysqli, $idusers, $eventtext, $eventtime);
+$id = Events\add($mysqli, $id_users, $event_text, $event_time);
 
 include_once '../../fns/Users/addNumEvents.php';
-Users\addNumEvents($mysqli, $idusers, 1);
+Users\addNumEvents($mysqli, $id_users, 1);
 
 $_SESSION['calendar/view-event/messages'] = ['Event has been saved.'];
 
-redirect("../view-event/?idevents=$id");
+redirect("../view-event/?id_events=$id");

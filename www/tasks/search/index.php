@@ -4,7 +4,7 @@ $base = '../../';
 
 include_once '../../fns/require_user.php';
 $user = require_user($base);
-$idusers = $user->idusers;
+$id_users = $user->id_users;
 
 include_once 'fns/require_keyword_and_tag.php';
 list($keyword, $tag, $offset) = require_keyword_and_tag();
@@ -28,7 +28,7 @@ if ($tag === '') {
     $filterMessage = '';
 
     include_once '../../fns/Tasks/searchPage.php';
-    $tasks = Tasks\searchPage($mysqli, $idusers, $keyword,
+    $tasks = Tasks\searchPage($mysqli, $id_users, $keyword,
         $offset, $limit, $total);
 
     $formContent = SearchForm\content($keyword, $searchPlaceholder, '..');
@@ -37,7 +37,7 @@ if ($tag === '') {
     if ($total > 1) {
 
         include_once '../../fns/TaskTags/indexOnUser.php';
-        $tags = TaskTags\indexOnUser($mysqli, $idusers);
+        $tags = TaskTags\indexOnUser($mysqli, $id_users);
 
         if ($tags) {
             include_once '../../fns/create_tag_filter_bar.php';
@@ -51,7 +51,7 @@ if ($tag === '') {
 } else {
 
     include_once '../../fns/TaskTags/searchOnTagName.php';
-    $tasks = TaskTags\searchOnTagName($mysqli, $idusers, $keyword, $tag,
+    $tasks = TaskTags\searchOnTagName($mysqli, $id_users, $keyword, $tag,
         $offset, $limit, $total);
 
     $clearHref = '../?tag='.rawurlencode($tag);

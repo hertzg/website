@@ -5,7 +5,7 @@ require_same_domain_referer('./');
 
 include_once '../../fns/require_user.php';
 $user = require_user('../../');
-$idusers = $user->idusers;
+$id_users = $user->id_users;
 
 include_once '../../fns/request_strings.php';
 list($feedbacktext) = request_strings('feedbacktext');
@@ -38,7 +38,7 @@ unset(
 
 include_once '../../fns/Feedbacks/add.php';
 include_once '../../lib/mysqli.php';
-$id = Feedbacks\add($mysqli, $idusers, $feedbacktext);
+$id = Feedbacks\add($mysqli, $id_users, $feedbacktext);
 
 include_once '../../classes/ZviniAPI.php';
 ZviniAPI::notify('zvini-feedbacks', '58ff602ff1c79d81ca43d51f59ca03bd', $feedbacktext);

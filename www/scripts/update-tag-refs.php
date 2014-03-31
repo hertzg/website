@@ -9,10 +9,10 @@ include_once '../lib/mysqli.php';
 
 $microtime = microtime(true);
 
-$sql = 'select distinct idbookmarks value from bookmark_tags';
+$sql = 'select distinct id_bookmarks value from bookmark_tags';
 $ids = mysqli_query_object($mysqli, $sql);
 foreach ($ids as $id) {
-    $sql = "select * from bookmarks where idbookmarks = $id->value";
+    $sql = "select * from bookmarks where id_bookmarks = $id->value";
     $bookmark = mysqli_single_object($mysqli, $sql);
     if ($bookmark) {
         $title = $mysqli->real_escape_string($bookmark->title);
@@ -22,40 +22,40 @@ foreach ($ids as $id) {
             ." url = '$url',"
             ." insert_time = $bookmark->insert_time,"
             ." update_time = $bookmark->update_time"
-            ." where idbookmarks = $bookmark->idbookmarks";
+            ." where id_bookmarks = $bookmark->id_bookmarks";
         $mysqli->query($sql);
     }
 }
 
-$sql = 'select distinct idnotes value from note_tags';
+$sql = 'select distinct id_notes value from note_tags';
 $ids = mysqli_query_object($mysqli, $sql);
 foreach ($ids as $id) {
-    $sql = "select * from notes where idnotes = $id->value";
+    $sql = "select * from notes where id_notes = $id->value";
     $note = mysqli_single_object($mysqli, $sql);
     if ($note) {
-        $notetext = $mysqli->real_escape_string($note->notetext);
+        $note_text = $mysqli->real_escape_string($note->note_text);
         $sql = 'update note_tags set'
-            ." notetext = '$notetext',"
+            ." note_text = '$note_text',"
             ." insert_time = $note->insert_time,"
             ." update_time = $note->update_time"
-            ." where idnotes = $note->idnotes";
+            ." where id_notes = $note->id_notes";
         $mysqli->query($sql);
     }
 }
 
-$sql = 'select distinct idtasks value from task_tags';
+$sql = 'select distinct id_tasks value from task_tags';
 $ids = mysqli_query_object($mysqli, $sql);
 foreach ($ids as $id) {
-    $sql = "select * from tasks where idtasks = $id->value";
+    $sql = "select * from tasks where id_tasks = $id->value";
     $task = mysqli_single_object($mysqli, $sql);
     if ($task) {
-        $tasktext = $mysqli->real_escape_string($task->tasktext);
+        $task_text = $mysqli->real_escape_string($task->task_text);
         $sql = 'update task_tags set'
-            ." tasktext = '$tasktext',"
+            ." task_text = '$task_text',"
             ." top_priority = $task->top_priority,"
             ." insert_time = $task->insert_time,"
             ." update_time = $task->update_time"
-            ." where idtasks = $task->idtasks";
+            ." where id_tasks = $task->id_tasks";
         $mysqli->query($sql);
     }
 }

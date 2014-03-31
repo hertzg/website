@@ -2,7 +2,7 @@
 
 namespace Contacts;
 
-function add ($mysqli, $idusers, $full_name, $alias, $address,
+function add ($mysqli, $id_users, $full_name, $alias, $address,
     $email, $phone1, $phone2, $tags) {
 
     $full_name = $mysqli->real_escape_string($full_name);
@@ -15,9 +15,9 @@ function add ($mysqli, $idusers, $full_name, $alias, $address,
     $insert_time = $update_time = time();
 
     $sql = 'insert into contacts'
-        .' (idusers, full_name, alias, address, email, '
+        .' (id_users, full_name, alias, address, email, '
         .'phone1, phone2, tags, insert_time, update_time)'
-        ." values ($idusers, '$full_name', '$alias', '$address', '$email',"
+        ." values ($id_users, '$full_name', '$alias', '$address', '$email',"
         ." '$phone1', '$phone2', '$tags', $insert_time, $update_time)";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);

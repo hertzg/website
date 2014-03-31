@@ -12,7 +12,7 @@ $items = [];
 include_once '../../fns/SubscribedChannels/indexOnSubscribedUser.php';
 include_once '../../lib/mysqli.php';
 $subscribedChannels = SubscribedChannels\indexOnSubscribedUser(
-    $mysqli, $user->idusers);
+    $mysqli, $user->id_users);
 
 include_once '../../fns/Page/imageArrowLink.php';
 

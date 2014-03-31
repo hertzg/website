@@ -24,7 +24,7 @@ $content =
         [
             [
                 'title' => '&middot;&middot;&middot;',
-                'href' => create_folder_link($file->idfolders, '../'),
+                'href' => create_folder_link($file->id_folders, '../'),
             ],
             [
                 'title' => "File #$id",
@@ -34,8 +34,8 @@ $content =
         'Rename',
         Page\sessionErrors('files/rename-file/errors')
         .'<form action="submit.php" method="post">'
-            .Form\textfield('filename', 'File name', [
-                'value' => $values['filename'],
+            .Form\textfield('file_name', 'File name', [
+                'value' => $values['file_name'],
                 'autofocus' => true,
                 'required' => true,
             ])

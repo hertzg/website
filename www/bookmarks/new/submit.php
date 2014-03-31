@@ -5,7 +5,7 @@ require_same_domain_referer('./');
 
 include_once '../../fns/require_user.php';
 $user = require_user('../../');
-$idusers = $user->idusers;
+$id_users = $user->id_users;
 
 include_once '../../fns/request_strings.php';
 list($title, $url, $tags) = request_strings('title', 'url', 'tags');
@@ -20,7 +20,7 @@ $errors = [];
 if ($url === '') $errors[] = 'Enter URL.';
 
 include_once '../../fns/parse_tags.php';
-parse_tags($tags, $tagnames, $errors);
+parse_tags($tags, $tag_names, $errors);
 
 include_once '../../fns/redirect.php';
 
@@ -41,13 +41,13 @@ unset(
 
 include_once '../../fns/Bookmarks/add.php';
 include_once '../../lib/mysqli.php';
-$id = Bookmarks\add($mysqli, $idusers, $title, $url, $tags);
+$id = Bookmarks\add($mysqli, $id_users, $title, $url, $tags);
 
 include_once '../../fns/BookmarkTags/add.php';
-BookmarkTags\add($mysqli, $idusers, $id, $tagnames, $title, $url);
+BookmarkTags\add($mysqli, $id_users, $id, $tag_names, $title, $url);
 
 include_once '../../fns/Users/addNumBookmarks.php';
-Users\addNumBookmarks($mysqli, $idusers, 1);
+Users\addNumBookmarks($mysqli, $id_users, 1);
 
 $_SESSION['bookmarks/view/messages'] = ['Bookmark has been saved.'];
 redirect("../view/?id=$id");

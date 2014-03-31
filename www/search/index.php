@@ -4,7 +4,7 @@ $base = '../';
 
 include_once '../fns/require_user.php';
 $user = require_user($base);
-$idusers = $user->idusers;
+$id_users = $user->id_users;
 
 include_once '../lib/mysqli.php';
 
@@ -27,20 +27,20 @@ include_once '../fns/SearchForm/create.php';
 $items = [SearchForm\create('./', $formContent)];
 
 include_once '../fns/Bookmarks/search.php';
-$bookmarks = Bookmarks\search($mysqli, $idusers, $keyword);
+$bookmarks = Bookmarks\search($mysqli, $id_users, $keyword);
 
 include_once '../fns/Contacts/search.php';
-$contacts = Contacts\search($mysqli, $idusers, $keyword);
+$contacts = Contacts\search($mysqli, $id_users, $keyword);
 
 include_once '../fns/Notes/search.php';
-$notes = Notes\search($mysqli, $idusers, $keyword);
+$notes = Notes\search($mysqli, $id_users, $keyword);
 
 include_once '../fns/Tasks/search.php';
-$tasks = Tasks\search($mysqli, $idusers, $keyword);
+$tasks = Tasks\search($mysqli, $id_users, $keyword);
 
 include_once 'fns/search_folders_and_files.php';
 list($folders, $files) = search_folders_and_files($mysqli,
-    $searchFiles, $idusers, $keyword);
+    $searchFiles, $id_users, $keyword);
 
 if ($bookmarks || $contacts || $notes || $tasks || $folders || $files) {
 

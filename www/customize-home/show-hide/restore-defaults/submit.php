@@ -5,7 +5,7 @@ $user = require_user('../../../');
 
 include_once '../../../fns/Users/restoreDefaultVisibilities.php';
 include_once '../../../lib/mysqli.php';
-Users\restoreDefaultVisibilities($mysqli, $user->idusers);
+Users\restoreDefaultVisibilities($mysqli, $user->id_users);
 
 $_SESSION['customize-home/show-hide/messages'] = [
     'Default visibilities has been restored.'

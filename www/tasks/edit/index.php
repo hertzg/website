@@ -37,8 +37,8 @@ $content =
         'Edit',
         Page\sessionErrors('tasks/edit/errors')
         .'<form action="submit.php" method="post">'
-            .Form\textarea('tasktext', 'Text', [
-                'value' => $values['tasktext'],
+            .Form\textarea('task_text', 'Text', [
+                'value' => $values['task_text'],
                 'autofocus' => true,
                 'required' => true,
             ])

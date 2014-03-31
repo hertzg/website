@@ -19,13 +19,13 @@ $content =
             ],
             [
                 'title' => 'Files',
-                'href' => create_folder_link($file->idfolders, '../'),
+                'href' => create_folder_link($file->id_folders, '../'),
             ],
         ],
         "File #$id",
         Page\text(
             'Are you sure you want to delete the file'
-            .' "<b>'.htmlspecialchars($file->filename).'</b>"?'
+            .' "<b>'.htmlspecialchars($file->file_name).'</b>"?'
         )
         .'<div class="hr"></div>'
         .Page\imageLink('Yes, delete file', "submit.php?id=$id", 'yes')

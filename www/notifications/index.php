@@ -4,11 +4,11 @@ $base = '../';
 
 include_once '../fns/require_user.php';
 $user = require_user($base);
-$idusers = $user->idusers;
+$id_users = $user->id_users;
 
 include_once '../fns/Users/clearNumNewNotifications.php';
 include_once '../lib/mysqli.php';
-Users\clearNumNewNotifications($mysqli, $idusers);
+Users\clearNumNewNotifications($mysqli, $id_users);
 
 $options = [];
 
@@ -21,7 +21,7 @@ $options[] = create_subscribed_channels_link($user);
 $items = [];
 
 include_once '../fns/Notifications/indexOnUser.php';
-$notifications = Notifications\indexOnUser($mysqli, $idusers);
+$notifications = Notifications\indexOnUser($mysqli, $id_users);
 
 if ($notifications) {
 
@@ -43,18 +43,18 @@ if ($notifications) {
         if ($id_subscribed_channels) {
             $href = "in-subscribed-channel/?id=$id_subscribed_channels";
         } else {
-            $href = "in-channel/?id=$notification->idchannels";
+            $href = "in-channel/?id=$notification->id_channels";
         }
 
         $content =
             "<a class=\"a\" href=\"$href\">"
-                .$notification->channelname
+                .$notification->channel_name
             .'</a>: '
             .nl2br(
                 preg_replace(
                     '#(http://.*?)(\s|$)#',
                     '<a class="a" rel="noreferrer" href="$1">$1</a>$2',
-                    htmlspecialchars($notification->notificationtext)
+                    htmlspecialchars($notification->notification_text)
                 )
             );
 

@@ -6,43 +6,43 @@ require_same_domain_referer('..');
 include_once '../fns/require_file.php';
 include_once '../../lib/mysqli.php';
 list($file, $id, $user) = require_file($mysqli);
-$idusers = $user->idusers;
+$id_users = $user->id_users;
 
 include_once '../../fns/request_strings.php';
-list($idfolders) = request_strings('idfolders');
+list($id_folders) = request_strings('id_folders');
 
 include_once '../../fns/redirect.php';
 
-$idfolders = abs((int)$idfolders);
-if ($idfolders) {
+$id_folders = abs((int)$id_folders);
+if ($id_folders) {
 
     include_once '../../fns/Folders/get.php';
-    $parentFolder = Folders\get($mysqli, $idusers, $idfolders);
+    $parentFolder = Folders\get($mysqli, $id_users, $id_folders);
 
     if (!$parentFolder) redirect("./?id=$id");
 
 }
 
 include_once '../../fns/Files/getByName.php';
-$existingFile = Files\getByName($mysqli, $idusers, $idfolders, $file->filename);
+$existingFile = Files\getByName($mysqli, $id_users, $id_folders, $file->file_name);
 
 if ($existingFile) {
-    $_SESSION['files/move-file/idfolders'] = $idfolders;
+    $_SESSION['files/move-file/id_folders'] = $id_folders;
     $_SESSION['files/move-file/errors'] = [
         'A file with the same name already exists in this folder.',
     ];
-    redirect("./?id=$id&idfolders=$idfolders");
+    redirect("./?id=$id&id_folders=$id_folders");
 }
 
 unset(
-    $_SESSION['files/move-file/idfolders'],
+    $_SESSION['files/move-file/id_folders'],
     $_SESSION['files/move-file/errors']
 );
 
 include_once '../../fns/Files/move.php';
-Files\move($mysqli, $idusers, $id, $idfolders);
+Files\move($mysqli, $id_users, $id, $id_folders);
 
-$_SESSION['files/idfolders'] = $idfolders;
+$_SESSION['files/id_folders'] = $id_folders;
 $_SESSION['files/messages'] = ['File has been moved.'];
 include_once '../../fns/create_folder_link.php';
-redirect(create_folder_link($idfolders, '../'));
+redirect(create_folder_link($id_folders, '../'));

@@ -30,7 +30,7 @@ query('alter table feedbacks change idusers id_users bigint unsigned not null');
 query('alter table files change idfiles id_files bigint unsigned not null auto_increment');
 query('alter table files change idfolders id_folders bigint unsigned not null');
 query('alter table files change idusers id_users bigint unsigned not null');
-query('alter table files change file_name file_name varchar(255) character set utf8 collate utf8_unicode_ci not null');
+query('alter table files change filename file_name varchar(255) character set utf8 collate utf8_unicode_ci not null');
 query('alter table files change filesize file_size bigint unsigned not null');
 query('alter table folders change foldername folder_name varchar(255) character set utf8 collate utf8_unicode_ci not null');
 query('alter table folders change idfolders id_folders bigint unsigned not null auto_increment');

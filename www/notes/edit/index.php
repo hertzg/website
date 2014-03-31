@@ -37,8 +37,8 @@ $content =
         'Edit',
         Page\sessionErrors('notes/edit/errors')
         .'<form action="submit.php" method="post">'
-            .Form\textarea('notetext', 'Text', [
-                'value' => $values['notetext'],
+            .Form\textarea('note_text', 'Text', [
+                'value' => $values['note_text'],
                 'autofocus' => true,
                 'required' => true,
             ])

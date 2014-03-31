@@ -5,7 +5,7 @@ require_same_domain_referer('./');
 
 include_once '../../fns/require_user.php';
 $user = require_user('../../');
-$idusers = $user->idusers;
+$id_users = $user->id_users;
 
 include_once '../../fns/request_strings.php';
 list($password) = request_strings('password');
@@ -34,58 +34,58 @@ unset($_SESSION['account/close/errors']);
 
 include_once '../../fns/Bookmarks/deleteOnUser.php';
 include_once '../../lib/mysqli.php';
-Bookmarks\deleteOnUser($mysqli, $idusers);
+Bookmarks\deleteOnUser($mysqli, $id_users);
 
 include_once '../../fns/BookmarkTags/deleteOnUser.php';
-BookmarkTags\deleteOnUser($mysqli, $idusers);
+BookmarkTags\deleteOnUser($mysqli, $id_users);
 
 include_once '../../fns/Channels/deleteOnUser.php';
-Channels\deleteOnUser($mysqli, $idusers);
+Channels\deleteOnUser($mysqli, $id_users);
 
 include_once '../../fns/SubscribedChannels/deleteContainingUser.php';
-SubscribedChannels\deleteContainingUser($mysqli, $idusers);
+SubscribedChannels\deleteContainingUser($mysqli, $id_users);
 
 include_once '../../fns/Contacts/deleteOnUser.php';
-Contacts\deleteOnUser($mysqli, $idusers);
+Contacts\deleteOnUser($mysqli, $id_users);
 
 include_once '../../fns/ContactTags/deleteOnUser.php';
-ContactTags\deleteOnUser($mysqli, $idusers);
+ContactTags\deleteOnUser($mysqli, $id_users);
 
 include_once '../../fns/Connections/deleteContainingUser.php';
-Connections\deleteContainingUser($mysqli, $idusers);
+Connections\deleteContainingUser($mysqli, $id_users);
 
 include_once '../../fns/Events/deleteOnUser.php';
-Events\deleteOnUser($mysqli, $idusers);
+Events\deleteOnUser($mysqli, $id_users);
 
 include_once '../../fns/Feedbacks/deleteOnUser.php';
-Feedbacks\deleteOnUser($mysqli, $idusers);
+Feedbacks\deleteOnUser($mysqli, $id_users);
 
 include_once '../../fns/Files/deleteOnUser.php';
-Files\deleteOnUser($mysqli, $idusers);
+Files\deleteOnUser($mysqli, $id_users);
 
 include_once '../../fns/Folders/deleteOnUser.php';
-Folders\deleteOnUser($mysqli, $idusers);
+Folders\deleteOnUser($mysqli, $id_users);
 
 include_once '../../fns/Notes/deleteOnUser.php';
-Notes\deleteOnUser($mysqli, $idusers);
+Notes\deleteOnUser($mysqli, $id_users);
 
 include_once '../../fns/NoteTags/deleteOnUser.php';
-NoteTags\deleteOnUser($mysqli, $idusers);
+NoteTags\deleteOnUser($mysqli, $id_users);
 
 include_once '../../fns/Notifications/deleteOnUser.php';
-Notifications\deleteOnUser($mysqli, $idusers);
+Notifications\deleteOnUser($mysqli, $id_users);
 
 include_once '../../fns/Tasks/deleteOnUser.php';
-Tasks\deleteOnUser($mysqli, $idusers);
+Tasks\deleteOnUser($mysqli, $id_users);
 
 include_once '../../fns/TaskTags/deleteOnUser.php';
-TaskTags\deleteOnUser($mysqli, $idusers);
+TaskTags\deleteOnUser($mysqli, $id_users);
 
 include_once '../../fns/Tokens/deleteOnUser.php';
-Tokens\deleteOnUser($mysqli, $idusers);
+Tokens\deleteOnUser($mysqli, $id_users);
 
 include_once '../../fns/Users/delete.php';
-Users\delete($mysqli, $idusers);
+Users\delete($mysqli, $id_users);
 
 $_SESSION['sign-in/messages'] = [
     'Your account has been closed.',

@@ -2,14 +2,14 @@
 
 namespace Notes;
 
-function edit ($mysqli, $idusers, $id, $notetext, $tags) {
-    $notetext = $mysqli->real_escape_string($notetext);
+function edit ($mysqli, $id_users, $id, $note_text, $tags) {
+    $note_text = $mysqli->real_escape_string($note_text);
     $tags = $mysqli->real_escape_string($tags);
     $update_time = time();
     $sql = 'update notes set'
-        ." notetext = '$notetext',"
+        ." note_text = '$note_text',"
         ." tags = '$tags',"
         ." update_time = $update_time"
-        ." where idusers = $idusers and idnotes = $id";
+        ." where id_users = $id_users and id_notes = $id";
     $mysqli->query($sql);
 }

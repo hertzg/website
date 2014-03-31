@@ -18,7 +18,7 @@ function signed_user () {
         if ($token) {
 
             include_once __DIR__.'/Users/get.php';
-            $user = Users\get($mysqli, $token->idusers);
+            $user = Users\get($mysqli, $token->id_users);
 
             if ($user) {
                 $_SESSION['user'] = $user;
@@ -35,7 +35,7 @@ function signed_user () {
         $mysqli = get_mysqli();
 
         include_once __DIR__.'/Users/get.php';
-        $user = Users\get($mysqli, $_SESSION['user']->idusers);
+        $user = Users\get($mysqli, $_SESSION['user']->id_users);
 
         if ($user) {
             $expires = time() + 60 * 60 * 24 * 30;
@@ -43,10 +43,10 @@ function signed_user () {
             if (array_key_exists('token', $_SESSION)) {
 
                 $token = $_SESSION['token'];
-                setcookie('token', bin2hex($token->tokentext), $expires, '/');
+                setcookie('token', bin2hex($token->token_text), $expires, '/');
 
                 include_once __DIR__.'/Tokens/updateAccessTime.php';
-                Tokens\updateAccessTime($mysqli, $token->tokentext);
+                Tokens\updateAccessTime($mysqli, $token->token_text);
 
             }
         }

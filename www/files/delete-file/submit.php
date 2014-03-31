@@ -8,12 +8,12 @@ include_once '../../lib/mysqli.php';
 list($file, $id, $user) = require_file($mysqli);
 
 include_once '../../fns/Files/delete.php';
-Files\delete($mysqli, $user->idusers, $id);
+Files\delete($mysqli, $user->id_users, $id);
 
-$_SESSION['files/idfolders'] = $file->idfolders;
+$_SESSION['files/id_folders'] = $file->id_folders;
 $_SESSION['files/messages'] = ['File has been deleted.'];
 
 include_once '../../fns/create_folder_link.php';
 include_once '../../fns/redirect.php';
-redirect(create_folder_link($file->idfolders, '../'));
+redirect(create_folder_link($file->id_folders, '../'));
 

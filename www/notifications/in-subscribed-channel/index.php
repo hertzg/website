@@ -5,10 +5,10 @@ $base = '../../';
 include_once 'fns/require_subscribed_channel.php';
 include_once '../../lib/mysqli.php';
 list($subscribedChannel, $id, $user) = require_subscribed_channel($mysqli, '..');
-$idusers = $user->idusers;
+$id_users = $user->id_users;
 
 include_once '../../fns/Users/clearNumNewNotifications.php';
-Users\clearNumNewNotifications($mysqli, $idusers);
+Users\clearNumNewNotifications($mysqli, $id_users);
 
 $options = [];
 
@@ -22,7 +22,7 @@ $items = [];
 
 include_once '../../fns/Notifications/indexOnUserChannel.php';
 $notifications = Notifications\indexOnUserChannel($mysqli,
-    $idusers, $subscribedChannel->id_channels);
+    $id_users, $subscribedChannel->id_channels);
 
 if ($notifications) {
 
@@ -46,7 +46,7 @@ if ($notifications) {
                 preg_replace(
                     '#(http://.*?)(\s|$)#',
                     '<a class="a" rel="noreferrer" href="$1">$1</a>$2',
-                    htmlspecialchars($notification->notificationtext)
+                    htmlspecialchars($notification->notification_text)
                 )
             );
 

@@ -14,16 +14,16 @@ $items = [];
 
 include_once '../../fns/Events/indexOnUser.php';
 include_once '../../lib/mysqli.php';
-$events = Events\indexOnUser($mysqli, $user->idusers);
+$events = Events\indexOnUser($mysqli, $user->id_users);
 
 if ($events) {
 
     include_once '../../fns/Page/imageArrowLinkWithDescription.php';
     foreach ($events as $event) {
-        $description = date('F d, Y', $event->eventtime);
+        $description = date('F d, Y', $event->event_time);
         $items[] = Page\imageArrowLinkWithDescription(
-            htmlspecialchars($event->eventtext),
-            $description, "../view-event/?idevents=$event->idevents", 'event');
+            htmlspecialchars($event->event_text),
+            $description, "../view-event/?id_events=$event->id_events", 'event');
     }
 
     include_once '../../fns/create_panel.php';

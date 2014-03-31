@@ -5,7 +5,7 @@ $user = require_user('../');
 
 include_once '../../fns/Users/showContacts.php';
 include_once '../../lib/mysqli.php';
-Users\showContacts($mysqli, $user->idusers, true);
+Users\showContacts($mysqli, $user->id_users, true);
 
 $_SESSION['customize-home/show-hide/messages'] = [
     '"Contacts" is now visible.',

@@ -6,12 +6,12 @@ function require_event ($mysqli) {
     $user = require_user('../../');
 
     include_once __DIR__.'/../../fns/request_strings.php';
-    list($idevents) = request_strings('idevents');
+    list($id_events) = request_strings('id_events');
 
-    $idevents = abs((int)$idevents);
+    $id_events = abs((int)$id_events);
 
     include_once __DIR__.'/../../fns/Events/get.php';
-    $event = Events\get($mysqli, $user->idusers, $idevents);
+    $event = Events\get($mysqli, $user->id_users, $id_events);
 
     if (!$event) {
         unset($_SESSION['calendar/messages']);
@@ -22,6 +22,6 @@ function require_event ($mysqli) {
         redirect('..');
     }
 
-    return [$event, $idevents, $user];
+    return [$event, $id_events, $user];
 
 }

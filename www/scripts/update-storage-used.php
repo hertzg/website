@@ -8,14 +8,14 @@ include_once '../lib/mysqli.php';
 
 $microtime = microtime(true);
 
-$sql = 'select users.idusers, sum(filesize) storage_used from users'
-    .' left join files on users.idusers = files.idusers'
-    .' group by users.idusers';
+$sql = 'select users.id_users, sum(file_size) storage_used from users'
+    .' left join files on users.id_users = files.id_users'
+    .' group by users.id_users';
 $users = mysqli_query_object($mysqli, $sql);
 
 foreach ($users as $user) {
     $sql = "update users set storage_used = $user->storage_used"
-        ." where idusers = $user->idusers";
+        ." where id_users = $user->id_users";
     $mysqli->query($sql);
 }
 

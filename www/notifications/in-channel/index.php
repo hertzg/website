@@ -5,10 +5,10 @@ $base = '../../';
 include_once 'fns/require_channel.php';
 include_once '../../lib/mysqli.php';
 list($channel, $id, $user) = require_channel($mysqli, '..');
-$idusers = $user->idusers;
+$id_users = $user->id_users;
 
 include_once '../../fns/Users/clearNumNewNotifications.php';
-Users\clearNumNewNotifications($mysqli, $idusers);
+Users\clearNumNewNotifications($mysqli, $id_users);
 
 $options = [];
 
@@ -21,7 +21,7 @@ $options[] = create_subscribed_channels_link($user, '../');
 $items = [];
 
 include_once '../../fns/Notifications/indexOnUserChannel.php';
-$notifications = Notifications\indexOnUserChannel($mysqli, $idusers, $id);
+$notifications = Notifications\indexOnUserChannel($mysqli, $id_users, $id);
 
 if ($notifications) {
 
@@ -45,7 +45,7 @@ if ($notifications) {
                 preg_replace(
                     '#(http://.*?)(\s|$)#',
                     '<a class="a" rel="noreferrer" href="$1">$1</a>$2',
-                    htmlspecialchars($notification->notificationtext)
+                    htmlspecialchars($notification->notification_text)
                 )
             );
 
@@ -78,7 +78,7 @@ $content =
         'Notifications',
         Page\sessionMessages('notifications/in-channel/messages')
         .'<div class="filterBar">'
-            .'Channel: <b>'.htmlspecialchars($channel->channelname).'</b>'
+            .'Channel: <b>'.htmlspecialchars($channel->channel_name).'</b>'
             .'<a class="clickable" title="Clear Filter" href="..">'
                 .'<span class="icon no"></span>'
             .'</a>'

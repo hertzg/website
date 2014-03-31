@@ -5,14 +5,14 @@ require_same_domain_referer('./');
 
 include_once '../../fns/require_user.php';
 $user = require_user('../../');
-$idusers = $user->idusers;
+$id_users = $user->id_users;
 
 include_once '../../fns/Tokens/deleteOnUser.php';
 include_once '../../lib/mysqli.php';
-Tokens\deleteOnUser($mysqli, $idusers);
+Tokens\deleteOnUser($mysqli, $id_users);
 
 include_once '../../fns/Users/clearNumTokens.php';
-Users\clearNumTokens($mysqli, $idusers);
+Users\clearNumTokens($mysqli, $id_users);
 
 unset($_SESSION['tokens/errors']);
 $_SESSION['tokens/messages'] = [

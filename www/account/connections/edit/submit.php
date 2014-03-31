@@ -6,7 +6,7 @@ require_same_domain_referer('..');
 include_once '../fns/require_connection.php';
 include_once '../../../lib/mysqli.php';
 list($connection, $id, $user) = require_connection($mysqli);
-$idusers = $user->idusers;
+$id_users = $user->id_users;
 
 include_once '../../../fns/request_strings.php';
 list($username, $can_send_channel) = request_strings(
@@ -24,13 +24,13 @@ if ($username === '') {
     if (!$userToConnect) {
         $errors[] = "A user with the username doesn't exist.";
     } else {
-        $connected_id_users = $userToConnect->idusers;
-        if ($connected_id_users == $idusers) {
+        $connected_id_users = $userToConnect->id_users;
+        if ($connected_id_users == $id_users) {
             $errors[] = 'You cannot connect to yourself.';
         } else {
             include_once '../../../fns/Connections/getByConnectedUser.php';
             $connectedUser = Connections\getByConnectedUser($mysqli,
-                $idusers, $connected_id_users, $connection->connected_id_users);
+                $id_users, $connected_id_users, $connection->connected_id_users);
             if ($connectedUser) {
                 $errors[] = 'A connection to this user already exists.';
             }

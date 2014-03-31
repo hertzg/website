@@ -54,14 +54,14 @@ unset(
     $_SESSION['sign-in/values']
 );
 
-$idusers = $user->idusers;
+$id_users = $user->id_users;
 
 include_once '../fns/Users/login.php';
-Users\login($mysqli, $idusers);
+Users\login($mysqli, $id_users);
 
 if ($user->password_salt === '') {
     include_once '../fns/Users/editPassword.php';
-    Users\editPassword($mysqli, $idusers, $password);
+    Users\editPassword($mysqli, $id_users, $password);
 }
 
 if ($remember) {

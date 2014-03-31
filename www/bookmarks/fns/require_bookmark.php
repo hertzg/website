@@ -11,7 +11,7 @@ function require_bookmark ($mysqli) {
     $id = abs((int)$id);
 
     include_once __DIR__.'/../../fns/Bookmarks/get.php';
-    $bookmark = Bookmarks\get($mysqli, $user->idusers, $id);
+    $bookmark = Bookmarks\get($mysqli, $user->id_users, $id);
 
     if (!$bookmark) {
         unset($_SESSION['bookmarks/messages']);

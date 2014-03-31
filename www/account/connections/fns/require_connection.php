@@ -11,7 +11,7 @@ function require_connection ($mysqli) {
     $id = abs((int)$id);
 
     include_once __DIR__.'/../../../fns/Connections/get.php';
-    $connection = Connections\get($mysqli, $user->idusers, $id);
+    $connection = Connections\get($mysqli, $user->id_users, $id);
 
     if (!$connection) {
         unset($_SESSION['account/connections/messages']);

@@ -5,7 +5,7 @@ $user = require_user('../');
 
 include_once '../../fns/Users/showNewBookmark.php';
 include_once '../../lib/mysqli.php';
-Users\showNewBookmark($mysqli, $user->idusers, true);
+Users\showNewBookmark($mysqli, $user->id_users, true);
 
 $_SESSION['customize-home/show-hide/messages'] = [
     '"New Bookmark" is now visible.',

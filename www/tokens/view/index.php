@@ -27,13 +27,13 @@ $content =
             ],
         ],
         "Session #$id",
-        Form\textfield('tokentext', 'Identifier', [
-            'value' => bin2hex($token->tokentext),
+        Form\textfield('token_text', 'Identifier', [
+            'value' => bin2hex($token->token_text),
             'readonly' => true,
         ])
         .'<div class="hr"></div>'
-        .Form\textarea('useragent', 'User agent', [
-            'value' => $token->useragent,
+        .Form\textarea('user_agent', 'User agent', [
+            'value' => $token->user_agent,
             'readonly' => true,
         ])
     )

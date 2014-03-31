@@ -14,7 +14,7 @@ include_once '../../fns/BookmarkTags/deleteOnBookmark.php';
 BookmarkTags\deleteOnBookmark($mysqli, $id);
 
 include_once '../../fns/Users/addNumBookmarks.php';
-Users\addNumBookmarks($mysqli, $user->idusers, -1);
+Users\addNumBookmarks($mysqli, $user->id_users, -1);
 
 unset($_SESSION['bookmarks/errors']);
 $_SESSION['bookmarks/messages'] = ['Bookmark has been deleted.'];

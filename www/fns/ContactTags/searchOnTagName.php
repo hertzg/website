@@ -2,23 +2,23 @@
 
 namespace ContactTags;
 
-function searchOnTagName ($mysqli, $idusers, $keyword, $tagname,
+function searchOnTagName ($mysqli, $id_users, $keyword, $tag_name,
     $offset, $limit, &$total) {
 
     include_once __DIR__.'/../escape_like.php';
     $keyword = escape_like($keyword);
     $keyword = $mysqli->real_escape_string($keyword);
-    $tagname = $mysqli->real_escape_string($tagname);
+    $tag_name = $mysqli->real_escape_string($tag_name);
 
-    $sql = "select count(*) total from contact_tags where idusers = $idusers"
+    $sql = "select count(*) total from contact_tags where id_users = $id_users"
         ." and (full_name like '%$keyword%' or alias like '%$keyword%')"
-        ." and tagname = '$tagname'";
+        ." and tag_name = '$tag_name'";
     include_once __DIR__.'/../mysqli_single_object.php';
     $total = mysqli_single_object($mysqli, $sql)->total;
 
-    $sql = "select * from contact_tags where idusers = $idusers"
+    $sql = "select * from contact_tags where id_users = $id_users"
         ." and (full_name like '%$keyword%' or alias like '%$keyword%')"
-        ." and tagname = '$tagname' order by full_name"
+        ." and tag_name = '$tag_name' order by full_name"
         ." limit $limit offset $offset";
     include_once __DIR__.'/../mysqli_query_object.php';
     return mysqli_query_object($mysqli, $sql);

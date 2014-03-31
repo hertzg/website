@@ -5,7 +5,7 @@ $user = require_user('../');
 
 include_once '../../fns/Users/showNotifications.php';
 include_once '../../lib/mysqli.php';
-Users\showNotifications($mysqli, $user->idusers, true);
+Users\showNotifications($mysqli, $user->id_users, true);
 
 $_SESSION['customize-home/show-hide/messages'] = [
     '"Notifications" is now visible.',

@@ -1,23 +1,23 @@
 <?php
 
-function create_link ($id, $idfolders) {
-    if ($idfolders) return "./?id=$id&idfolders=$idfolders";
+function create_link ($id, $id_folders) {
+    if ($id_folders) return "./?id=$id&id_folders=$id_folders";
     return "./?id=$id";
 }
 
 include_once '../fns/require_file.php';
 include_once '../../lib/mysqli.php';
 list($file, $id, $user) = require_file($mysqli);
-$idusers = $user->idusers;
+$id_users = $user->id_users;
 
 include_once '../../fns/request_strings.php';
-list($idfolders) = request_strings('idfolders');
+list($id_folders) = request_strings('id_folders');
 
-$idfolders = abs((int)$idfolders);
-if ($idfolders) {
+$id_folders = abs((int)$id_folders);
+if ($id_folders) {
 
     include_once '../../fns/Folders/get.php';
-    $parentFolder = Folders\get($mysqli, $idusers, $idfolders);
+    $parentFolder = Folders\get($mysqli, $id_users, $id_folders);
 
     if (!$parentFolder) {
         include_once '../../fns/redirect.php';
@@ -27,28 +27,28 @@ if ($idfolders) {
 }
 
 include_once '../../fns/Folders/indexInUserFolder.php';
-$folders = Folders\indexInUserFolder($mysqli, $idusers, $idfolders);
+$folders = Folders\indexInUserFolder($mysqli, $id_users, $id_folders);
 
 include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../fns/Page/imageLink.php';
 
 $items = [];
-if ($idfolders) {
+if ($id_folders) {
     $items[] = Page\imageLink('.. Parent folder',
-        create_link($id, $parentFolder->parentidfolders), 'parent-folder');
+        create_link($id, $parentFolder->parent_id_folders), 'parent-folder');
 }
 foreach ($folders as $folder) {
-    $items[] = Page\imageArrowLink(htmlspecialchars($folder->foldername),
-        create_link($id, $folder->idfolders), 'folder');
+    $items[] = Page\imageArrowLink(htmlspecialchars($folder->folder_name),
+        create_link($id, $folder->id_folders), 'folder');
 }
 
-if ($idfolders != $file->idfolders) {
+if ($id_folders != $file->id_folders) {
     $items[] = Page\imageLink('Move Here',
-        "submit.php?id=$id&idfolders=$idfolders", 'move-file');
+        "submit.php?id=$id&id_folders=$id_folders", 'move-file');
 }
 
-$key = 'files/move-file/idfolders';
-if (array_key_exists($key, $_SESSION) && $idfolders != $_SESSION[$key]) {
+$key = 'files/move-file/id_folders';
+if (array_key_exists($key, $_SESSION) && $id_folders != $_SESSION[$key]) {
     unset($_SESSION['files/move-file/errors']);
 }
 
@@ -63,17 +63,17 @@ $content =
         [
             [
                 'title' => '&middot;&middot;&middot;',
-                'href' => create_folder_link($file->idfolders, '../'),
+                'href' => create_folder_link($file->id_folders, '../'),
             ],
             [
                 'title' => "File #$id",
-                'href' => "../view-file/?id=$file->idfiles",
+                'href' => "../view-file/?id=$file->id_files",
             ],
         ],
         'Move',
         Page\sessionErrors('files/move-file/errors')
         .Page\warnings([
-            'Moving the file "<b>'.htmlspecialchars($file->filename).'</b>".',
+            'Moving the file "<b>'.htmlspecialchars($file->file_name).'</b>".',
             'Select a folder to move the file into.',
         ])
         .join('<div class="hr"></div>', $items)

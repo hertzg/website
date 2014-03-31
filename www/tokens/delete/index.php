@@ -22,7 +22,7 @@ $content =
         "Session #$id",
         Page\text(
             'Are you sure you want to delete the remembered session'
-            .' "<b>'.bin2hex($token->tokentext).'</b>"?'
+            .' "<b>'.bin2hex($token->token_text).'</b>"?'
         )
         .'<div class="hr"></div>'
         .Page\imageLink('Yes, delete remembered session',

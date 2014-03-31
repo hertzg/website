@@ -2,6 +2,6 @@
 
 namespace Tasks;
 
-function deleteOnUser ($mysqli, $idusers) {
-    $mysqli->query("delete from tasks where idusers = $idusers");
+function deleteOnUser ($mysqli, $id_users) {
+    $mysqli->query("delete from tasks where id_users = $id_users");
 }

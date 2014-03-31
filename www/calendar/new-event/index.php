@@ -12,7 +12,7 @@ $key = 'calendar/add-event/values';
 if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];
 } else {
-    $values = ['eventtext' => ''];
+    $values = ['event_text' => ''];
 }
 
 $year = (int)$year;
@@ -48,8 +48,8 @@ $content =
         .'<form action="submit.php" method="post">'
             .Form\label('When', date('F d, Y', $time))
             .'<div class="hr"></div>'
-            .Form\textfield('eventtext', 'Text', [
-                'value' => $values['eventtext'],
+            .Form\textfield('event_text', 'Text', [
+                'value' => $values['event_text'],
                 'autofocus' => true,
                 'required' => true,
             ])

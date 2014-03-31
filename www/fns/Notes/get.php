@@ -2,9 +2,9 @@
 
 namespace Notes;
 
-function get ($mysqli, $idusers, $id) {
+function get ($mysqli, $id_users, $id) {
     $sql = 'select * from notes'
-        ." where idusers = $idusers and idnotes = $id";
+        ." where id_users = $id_users and id_notes = $id";
     include_once __DIR__.'/../mysqli_single_object.php';
     return mysqli_single_object($mysqli, $sql);
 }

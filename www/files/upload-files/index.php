@@ -6,14 +6,14 @@ include_once '../../fns/require_user.php';
 $user = require_user($base);
 
 include_once '../../fns/request_strings.php';
-list($idfolders) = request_strings('idfolders');
+list($id_folders) = request_strings('id_folders');
 
-$idfolders = abs((int)$idfolders);
-if ($idfolders) {
+$id_folders = abs((int)$id_folders);
+if ($id_folders) {
 
     include_once '../../fns/Folders/get.php';
     include_once '../../lib/mysqli.php';
-    $parentFolder = Folders\get($mysqli, $user->idusers, $idfolders);
+    $parentFolder = Folders\get($mysqli, $user->id_users, $id_folders);
 
     if (!$parentFolder) {
         include_once '../../fns/redirect.php';
@@ -23,7 +23,7 @@ if ($idfolders) {
 }
 
 unset(
-    $_SESSION['files/idfolders'],
+    $_SESSION['files/id_folders'],
     $_SESSION['files/messages']
 );
 
@@ -45,7 +45,7 @@ $content =
             ],
             [
                 'title' => 'Files',
-                'href' => create_folder_link($idfolders, '../'),
+                'href' => create_folder_link($id_folders, '../'),
             ],
         ],
         'Upload Files',
@@ -64,7 +64,7 @@ $content =
             .'<div class="hr"></div>'
             .Form\button('Upload')
             .Form\hidden('posttest', '1')
-            .Form\hidden('idfolders', $idfolders)
+            .Form\hidden('id_folders', $id_folders)
         .'</form>'
     );
 

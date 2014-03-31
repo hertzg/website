@@ -12,7 +12,7 @@ $id = abs((int)$id);
 
 include_once '../../fns/Files/get.php';
 include_once '../../lib/mysqli.php';
-$file = Files\get($mysqli, $user->idusers, $id);
+$file = Files\get($mysqli, $user->id_users, $id);
 
 if (!$file) {
     include_once '../../fns/redirect.php';
@@ -20,7 +20,7 @@ if (!$file) {
 }
 
 unset(
-    $_SESSION['files/idfolders'],
+    $_SESSION['files/id_folders'],
     $_SESSION['files/messages'],
     $_SESSION['files/rename-file/errors'],
     $_SESSION['files/rename-file/values']
@@ -45,14 +45,14 @@ $content =
             ],
             [
                 'title' => 'Files',
-                'href' => create_folder_link($file->idfolders, '../'),
+                'href' => create_folder_link($file->id_folders, '../'),
             ],
         ],
         "File #$id",
         Page\sessionMessages('files/view-file/messages')
-        .Form\label('File name', $file->filename)
+        .Form\label('File name', $file->file_name)
         .'<div class="hr"></div>'
-        .Form\label('Size', bytestr($file->filesize))
+        .Form\label('Size', bytestr($file->file_size))
         .'<div class="hr"></div>'
         .Form\label('Uploaded', date_ago($file->insert_time))
         .'<div class="hr"></div>'

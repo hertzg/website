@@ -13,7 +13,7 @@ $order_home_items = json_encode($order_home_items);
 
 include_once '../../../fns/Users/editOrderHomeItems.php';
 include_once '../../../lib/mysqli.php';
-Users\editOrderHomeItems($mysqli, $user->idusers, $order_home_items);
+Users\editOrderHomeItems($mysqli, $user->id_users, $order_home_items);
 
 $_SESSION['customize-home/reorder/messages'] = [
     "\"$item[title]\" has been moved to the top.",

@@ -2,7 +2,7 @@
 
 namespace Contacts;
 
-function getByFullName ($mysqli, $idusers, $full_name, $excludeid = 0) {
+function getByFullName ($mysqli, $id_users, $full_name, $excludeid = 0) {
 
     $full_name = $mysqli->real_escape_string($full_name);
 
@@ -10,9 +10,9 @@ function getByFullName ($mysqli, $idusers, $full_name, $excludeid = 0) {
     return mysqli_single_object(
         $mysqli,
         'select * from contacts'
-        ." where idusers = $idusers"
+        ." where id_users = $id_users"
         ." and full_name = '$full_name'"
-        ." and idcontacts != $excludeid"
+        ." and id_contacts != $excludeid"
     );
 
 }

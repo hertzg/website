@@ -2,7 +2,7 @@
 
 include_once '../../fns/require_user.php';
 $user = require_user('../../');
-$idusers = $user->idusers;
+$id_users = $user->id_users;
 
 include_once '../../fns/redirect.php';
 if ($user->email_verified) redirect('..');
@@ -27,11 +27,11 @@ $key = md5(uniqid(), true);
 
 include_once '../../fns/Users/editVerifyEmailKey.php';
 include_once '../../lib/mysqli.php';
-Users\editVerifyEmailKey($mysqli, $user->idusers, $key);
+Users\editVerifyEmailKey($mysqli, $user->id_users, $key);
 
 $href = htmlspecialchars(
     'http://zvini.com/verify-email/?'.http_build_query([
-        'idusers' => $user->idusers,
+        'id_users' => $user->id_users,
         'key' => bin2hex($key),
     ])
 );

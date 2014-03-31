@@ -2,24 +2,24 @@
 
 namespace NoteTags;
 
-function searchOnTagName ($mysqli, $idusers, $keyword, $tagname,
+function searchOnTagName ($mysqli, $id_users, $keyword, $tag_name,
     $offset, $limit, &$total) {
 
     include_once __DIR__.'/../escape_like.php';
     $keyword = escape_like($keyword);
 
     $keyword = $mysqli->real_escape_string($keyword);
-    $tagname = $mysqli->real_escape_string($tagname);
+    $tag_name = $mysqli->real_escape_string($tag_name);
 
     $sql = 'select count(*) total from note_tags'
-        ." where idusers = $idusers and notetext like '%$keyword%'"
-        ." and tagname = '$tagname'";
+        ." where id_users = $id_users and note_text like '%$keyword%'"
+        ." and tag_name = '$tag_name'";
     include_once __DIR__.'/../mysqli_single_object.php';
     $total = mysqli_single_object($mysqli, $sql)->total;
 
     $sql = 'select * from note_tags'
-        ." where idusers = $idusers and notetext like '%$keyword%'"
-        ." and tagname = '$tagname' order by update_time desc"
+        ." where id_users = $id_users and note_text like '%$keyword%'"
+        ." and tag_name = '$tag_name' order by update_time desc"
         ." limit $limit offset $offset";
     include_once __DIR__.'/../mysqli_query_object.php';
     return mysqli_query_object($mysqli, $sql);

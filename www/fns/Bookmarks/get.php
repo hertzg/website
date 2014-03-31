@@ -2,9 +2,9 @@
 
 namespace Bookmarks;
 
-function get ($mysqli, $idusers, $id) {
+function get ($mysqli, $id_users, $id) {
     $sql = 'select * from bookmarks'
-        ." where idusers = $idusers and idbookmarks = $id";
+        ." where id_users = $id_users and id_bookmarks = $id";
     include_once __DIR__.'/../mysqli_single_object.php';
     return mysqli_single_object($mysqli, $sql);
 }

@@ -5,7 +5,7 @@ $user = require_user('../');
 
 include_once '../../fns/Users/showNewNote.php';
 include_once '../../lib/mysqli.php';
-Users\showNewNote($mysqli, $user->idusers, false);
+Users\showNewNote($mysqli, $user->id_users, false);
 
 $_SESSION['customize-home/show-hide/messages'] = [
     '"New Note" is now hidden.',

@@ -9,7 +9,7 @@ function require_task ($mysqli) {
     list($id) = request_strings('id');
 
     include_once __DIR__.'/../../fns/Tasks/get.php';
-    $task = Tasks\get($mysqli, $user->idusers, $id);
+    $task = Tasks\get($mysqli, $user->id_users, $id);
 
     if (!$task) {
         unset($_SESSION['tasks/messages']);
@@ -20,6 +20,6 @@ function require_task ($mysqli) {
         redirect('..');
     }
 
-    return [$task, $task->idtasks, $user];
+    return [$task, $task->id_tasks, $user];
 
 }

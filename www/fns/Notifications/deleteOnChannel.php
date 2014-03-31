@@ -2,7 +2,7 @@
 
 namespace Notifications;
 
-function deleteOnChannel ($mysqli, $idchannels) {
-    $sql = "delete from notifications where idchannels = $idchannels";
+function deleteOnChannel ($mysqli, $id_channels) {
+    $sql = "delete from notifications where id_channels = $id_channels";
     $mysqli->query($sql);
 }

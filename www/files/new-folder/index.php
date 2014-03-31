@@ -6,21 +6,21 @@ include_once '../../fns/require_user.php';
 $user = require_user($base);
 
 include_once '../../fns/request_strings.php';
-list($parentidfolders) = request_strings('parentidfolders');
+list($parent_id_folders) = request_strings('parent_id_folders');
 
 $key = 'files/add-folder/values';
 if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];
 } else {
-    $values = ['foldername' => ''];
+    $values = ['folder_name' => ''];
 }
 
-$parentidfolders = abs((int)$parentidfolders);
-if ($parentidfolders) {
+$parent_id_folders = abs((int)$parent_id_folders);
+if ($parent_id_folders) {
 
     include_once '../../fns/Folders/get.php';
     include_once '../../lib/mysqli.php';
-    $parentFolder = Folders\get($mysqli, $user->idusers, $parentidfolders);
+    $parentFolder = Folders\get($mysqli, $user->id_users, $parent_id_folders);
 
     if (!$parentFolder) {
         include_once '../../fns/redirect.php';
@@ -30,7 +30,7 @@ if ($parentidfolders) {
 }
 
 unset(
-    $_SESSION['files/idfolders'],
+    $_SESSION['files/id_folders'],
     $_SESSION['files/messages']
 );
 
@@ -49,20 +49,20 @@ $content =
             ],
             [
                 'title' => 'Files',
-                'href' => create_folder_link($parentidfolders, '../'),
+                'href' => create_folder_link($parent_id_folders, '../'),
             ],
         ],
         'New Folder',
         Page\sessionErrors('files/add-folder/errors')
         .'<form action="submit.php" method="post">'
-            .Form\textfield('foldername', 'Folder name', [
-                'value' => $values['foldername'],
+            .Form\textfield('folder_name', 'Folder name', [
+                'value' => $values['folder_name'],
                 'autofocus' => true,
                 'required' => true,
             ])
             .'<div class="hr"></div>'
             .Form\button('Create')
-            .Form\hidden('parentidfolders', $parentidfolders)
+            .Form\hidden('parent_id_folders', $parent_id_folders)
         .'</form>'
     );
 

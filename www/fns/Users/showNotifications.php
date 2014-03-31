@@ -2,10 +2,10 @@
 
 namespace Users;
 
-function showNotifications ($mysqli, $idusers, $show) {
+function showNotifications ($mysqli, $id_users, $show) {
     $show_notifications = $show ? '1' : '0';
     $mysqli->query(
         "update users set show_notifications = $show_notifications"
-        ." where idusers = $idusers"
+        ." where id_users = $id_users"
     );
 }

@@ -24,9 +24,9 @@ function add ($mysqli, $username, $email, $password) {
         ." '$password_salt', '$order_home_items', $insert_time)";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
-    $idusers = $mysqli->insert_id;
+    $id_users = $mysqli->insert_id;
 
-    mkdir(__DIR__."/../../users/$idusers");
-    mkdir(__DIR__."/../../users/$idusers/files");
+    mkdir(__DIR__."/../../users/$id_users");
+    mkdir(__DIR__."/../../users/$id_users/files");
 
 }

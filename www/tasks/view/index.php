@@ -36,7 +36,7 @@ include_once '../../fns/Page/text.php';
 include_once '../../fns/render_external_links.php';
 $items[] = Page\text(
     nl2br(
-        render_external_links(htmlspecialchars($task->tasktext), $base)
+        render_external_links(htmlspecialchars($task->task_text), $base)
     )
 );
 

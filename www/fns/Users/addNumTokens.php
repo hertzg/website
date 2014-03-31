@@ -2,8 +2,8 @@
 
 namespace Users;
 
-function addNumTokens ($mysqli, $idusers, $num_tokens) {
+function addNumTokens ($mysqli, $id_users, $num_tokens) {
     $sql = "update users set num_tokens = num_tokens + $num_tokens"
-        ." where idusers = $idusers";
+        ." where id_users = $id_users";
     $mysqli->query($sql);
 }

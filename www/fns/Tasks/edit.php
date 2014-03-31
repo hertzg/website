@@ -2,14 +2,14 @@
 
 namespace Tasks;
 
-function edit ($mysqli, $idusers, $id, $tasktext, $tags) {
-    $tasktext = $mysqli->real_escape_string($tasktext);
+function edit ($mysqli, $id_users, $id, $task_text, $tags) {
+    $task_text = $mysqli->real_escape_string($task_text);
     $tags = $mysqli->real_escape_string($tags);
     $update_time = time();
     $sql = 'update tasks set'
-        ." tasktext = '$tasktext',"
+        ." task_text = '$task_text',"
         ." tags = '$tags',"
         ." update_time = $update_time"
-        ." where idusers = $idusers and idtasks = $id";
+        ." where id_users = $id_users and id_tasks = $id";
     $mysqli->query($sql);
 }

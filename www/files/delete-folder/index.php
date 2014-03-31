@@ -2,10 +2,10 @@
 
 include_once '../fns/require_folder.php';
 include_once '../../lib/mysqli.php';
-list($folder, $idfolders, $user) = require_folder($mysqli);
+list($folder, $id_folders, $user) = require_folder($mysqli);
 
 unset(
-    $_SESSION['files/idfolders'],
+    $_SESSION['files/id_folders'],
     $_SESSION['files/messages']
 );
 
@@ -24,15 +24,15 @@ $content =
         'Files',
         Page\text(
             'Are you sure you want to delete the folder'
-            .' "<b>'.htmlspecialchars($folder->foldername).'</b>"?'
+            .' "<b>'.htmlspecialchars($folder->folder_name).'</b>"?'
         )
         .'<div class="hr"></div>'
         .Page\imageLink('Yes, delete folder',
-            "submit.php?idfolders=$idfolders", 'yes')
+            "submit.php?id_folders=$id_folders", 'yes')
         .'<div class="hr"></div>'
         .Page\imageLink('No, return back',
-            create_folder_link($idfolders, '../'), 'no')
+            create_folder_link($id_folders, '../'), 'no')
     );
 
 include_once '../../fns/echo_page.php';
-echo_page($user, "Delete Folder #$idfolders?", $content, '../../');
+echo_page($user, "Delete Folder #$id_folders?", $content, '../../');

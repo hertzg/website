@@ -6,7 +6,7 @@ require_same_domain_referer('..');
 include_once '../fns/require_contact.php';
 include_once '../../lib/mysqli.php';
 list($contact, $id, $user) = require_contact($mysqli);
-$idusers = $user->idusers;
+$id_users = $user->id_users;
 
 include_once '../../fns/request_strings.php';
 list($full_name, $alias, $address, $email,
@@ -31,13 +31,13 @@ if ($full_name === '') {
     $errors[] = 'Full name too long. At most 32 characters required.';
 } else {
     include_once '../../fns/Contacts/getByFullName.php';
-    if (Contacts\getByFullName($mysqli, $idusers, $full_name, $id)) {
+    if (Contacts\getByFullName($mysqli, $id_users, $full_name, $id)) {
         $errors[] = 'A contact with this name already exists.';
     }
 }
 
 include_once '../../fns/parse_tags.php';
-parse_tags($tags, $tagnames, $errors);
+parse_tags($tags, $tag_names, $errors);
 
 include_once '../../fns/redirect.php';
 
@@ -61,14 +61,14 @@ unset(
 );
 
 include_once '../../fns/Contacts/edit.php';
-Contacts\edit($mysqli, $idusers, $id, $full_name, $alias,
+Contacts\edit($mysqli, $id_users, $id, $full_name, $alias,
     $address, $email, $phone1, $phone2, $tags);
 
 include_once '../../fns/ContactTags/deleteOnContact.php';
 ContactTags\deleteOnContact($mysqli, $id);
 
 include_once '../../fns/ContactTags/add.php';
-ContactTags\add($mysqli, $idusers, $id, $tagnames, $full_name, $alias);
+ContactTags\add($mysqli, $id_users, $id, $tag_names, $full_name, $alias);
 
 $_SESSION['contacts/view/messages'] = ['Changes have been saved.'];
 redirect("../view/?id=$id");

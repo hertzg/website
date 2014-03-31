@@ -16,11 +16,11 @@ function render_calendar ($user, $mysqli, array &$items) {
     $timeToday = mktime(0, 0, 0, $monthToday, $dayToday, $yearToday);
     $timeTomorrow = mktime(0, 0, 0, $monthToday, $dayToday + 1, $yearToday);
 
-    $idusers = $user->idusers;
+    $id_users = $user->id_users;
 
     include_once __DIR__.'/../../fns/Events/countOnTime.php';
-    $numEventsToday = Events\countOnTime($mysqli, $idusers, $timeToday);
-    $numEventsTomorrow = Events\countOnTime($mysqli, $idusers, $timeTomorrow);
+    $numEventsToday = Events\countOnTime($mysqli, $id_users, $timeToday);
+    $numEventsTomorrow = Events\countOnTime($mysqli, $id_users, $timeTomorrow);
 
     $key = 'calendar';
     $title = 'Calendar';

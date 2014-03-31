@@ -15,7 +15,7 @@ $options = [
 
 include_once '../../fns/Connections/indexOnUser.php';
 include_once '../../lib/mysqli.php';
-$connections = Connections\indexOnUser($mysqli, $user->idusers);
+$connections = Connections\indexOnUser($mysqli, $user->id_users);
 
 $items = [];
 

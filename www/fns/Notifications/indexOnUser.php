@@ -2,9 +2,9 @@
 
 namespace Notifications;
 
-function indexOnUser ($mysqli, $idusers) {
+function indexOnUser ($mysqli, $id_users) {
     $sql = 'select * from notifications'
-        ." where idusers = $idusers"
+        ." where id_users = $id_users"
         .' order by insert_time desc';
     include_once __DIR__.'/../mysqli_query_object.php';
     return mysqli_query_object($mysqli, $sql);

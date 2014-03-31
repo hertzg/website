@@ -4,7 +4,7 @@ $base = '../';
 
 include_once '../fns/require_user.php';
 $user = require_user($base);
-$idusers = $user->idusers;
+$id_users = $user->id_users;
 
 include_once '../fns/request_strings.php';
 list($tag, $offset) = request_strings('tag', 'offset');
@@ -26,7 +26,7 @@ if ($tag === '') {
     $filterMessage = '';
 
     include_once '../fns/Notes/indexOnUser.php';
-    $notes = Notes\indexOnUser($mysqli, $idusers,
+    $notes = Notes\indexOnUser($mysqli, $id_users,
         $offset, $limit, $total);
 
     if ($total > 1) {
@@ -38,7 +38,7 @@ if ($tag === '') {
         $items[] = SearchForm\create($searchAction, $formContent);
 
         include_once '../fns/NoteTags/indexOnUser.php';
-        $tags = NoteTags\indexOnUser($mysqli, $idusers);
+        $tags = NoteTags\indexOnUser($mysqli, $id_users);
         if ($tags) {
             include_once '../fns/create_tag_filter_bar.php';
             $filterMessage = create_tag_filter_bar($tags, []);
@@ -49,7 +49,7 @@ if ($tag === '') {
 } else {
 
     include_once '../fns/NoteTags/indexOnTagName.php';
-    $notes = NoteTags\indexOnTagName($mysqli, $idusers, $tag,
+    $notes = NoteTags\indexOnTagName($mysqli, $id_users, $tag,
         $offset, $limit, $total);
 
     if ($total > 1) {

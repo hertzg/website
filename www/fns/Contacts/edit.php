@@ -2,7 +2,7 @@
 
 namespace Contacts;
 
-function edit ($mysqli, $idusers, $id, $full_name, $alias, $address,
+function edit ($mysqli, $id_users, $id, $full_name, $alias, $address,
     $email, $phone1, $phone2, $tags) {
 
     $full_name = $mysqli->real_escape_string($full_name);
@@ -19,7 +19,7 @@ function edit ($mysqli, $idusers, $id, $full_name, $alias, $address,
         ." address = '$address', email = '$email',"
         ." phone1 = '$phone1', phone2 = '$phone2',"
         ." tags = '$tags', update_time = $update_time"
-        ." where idusers = $idusers and idcontacts = $id";
+        ." where id_users = $id_users and id_contacts = $id";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 

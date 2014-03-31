@@ -2,6 +2,6 @@
 
 namespace Notifications;
 
-function deleteAll ($mysqli, $idusers) {
-    $mysqli->query("delete from notifications where idusers = $idusers");
+function deleteAll ($mysqli, $id_users) {
+    $mysqli->query("delete from notifications where id_users = $id_users");
 }

@@ -10,7 +10,7 @@ function render_bookmarks (array $bookmarks, array &$items, $emptyMessage,
 
         $icon = 'bookmark';
         foreach ($bookmarks as $bookmark) {
-            $href = "{$base}view/?id=$bookmark->idbookmarks";
+            $href = "{$base}view/?id=$bookmark->id_bookmarks";
             $escapedUrl = htmlspecialchars($bookmark->url);
             $title = $bookmark->title;
             if ($title === '') {

@@ -4,7 +4,7 @@ $base = '../';
 
 include_once '../fns/require_user.php';
 $user = require_user($base);
-$idusers = $user->idusers;
+$id_users = $user->id_users;
 
 include_once '../fns/request_strings.php';
 list($tag, $offset) = request_strings('tag', 'offset');
@@ -25,7 +25,7 @@ $limit = Paging\limit();
 if ($tag === '') {
 
     include_once '../fns/Contacts/indexOnUser.php';
-    $contacts = Contacts\indexOnUser($mysqli, $idusers,
+    $contacts = Contacts\indexOnUser($mysqli, $id_users,
         $offset, $limit, $total);
 
     if ($total > 1) {
@@ -37,7 +37,7 @@ if ($tag === '') {
         $items[] = SearchForm\create($searchAction, $formContent);
 
         include_once '../fns/ContactTags/indexOnUser.php';
-        $tags = ContactTags\indexOnUser($mysqli, $idusers);
+        $tags = ContactTags\indexOnUser($mysqli, $id_users);
 
         if ($tags) {
             include_once '../fns/create_tag_filter_bar.php';
@@ -49,7 +49,7 @@ if ($tag === '') {
 } else {
 
     include_once '../fns/ContactTags/indexOnTagName.php';
-    $contacts = ContactTags\indexOnTagName($mysqli, $idusers, $tag,
+    $contacts = ContactTags\indexOnTagName($mysqli, $id_users, $tag,
         $offset, $limit, $total);
 
     if ($total > 1) {

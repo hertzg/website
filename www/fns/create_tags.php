@@ -5,7 +5,7 @@ function create_tags ($base, $tags) {
         '<div class="page-text tags">'
             .'<span class="tags-label">Tags:</span>';
     foreach ($tags as $tag) {
-        $escapedTag = htmlspecialchars($tag->tagname);
+        $escapedTag = htmlspecialchars($tag->tag_name);
         $html .=
             "<a class=\"tag\" href=\"$base?tag=$escapedTag\">"
                 .$escapedTag

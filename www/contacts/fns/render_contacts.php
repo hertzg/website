@@ -9,7 +9,7 @@ function render_contacts (array $contacts, array &$items, $emptyMessage,
         foreach ($contacts as $contact) {
             $alias = $contact->alias;
             $title = htmlspecialchars($contact->full_name);
-            $href = "{$base}view/?id=$contact->idcontacts";
+            $href = "{$base}view/?id=$contact->id_contacts";
             $icon = 'contact';
             if ($alias === '') {
                 $items[] = Page\imageArrowLink($title, $href, $icon);

@@ -5,7 +5,7 @@ $user = require_user('../');
 
 include_once '../../fns/Users/showNotes.php';
 include_once '../../lib/mysqli.php';
-Users\showNotes($mysqli, $user->idusers, true);
+Users\showNotes($mysqli, $user->id_users, true);
 
 $_SESSION['customize-home/show-hide/messages'] = [
     '"Show Notes" is now visible.',

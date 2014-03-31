@@ -5,25 +5,25 @@ require_same_domain_referer('./');
 
 include_once '../../../fns/require_user.php';
 $user = require_user('../../../');
-$idusers = $user->idusers;
+$id_users = $user->id_users;
 
 include_once '../../../fns/request_strings.php';
-list($channelname) = request_strings('channelname');
+list($channel_name) = request_strings('channel_name');
 
 $errors = [];
 
-if ($channelname === '') {
+if ($channel_name === '') {
     $errors[] = 'Enter channel name.';
-} elseif (preg_match('/[^a-z0-9._-]/ui', $channelname)) {
+} elseif (preg_match('/[^a-z0-9._-]/ui', $channel_name)) {
     $errors[] = 'Channel name contains illegal characters.';
-} elseif (strlen($channelname) < 6) {
+} elseif (strlen($channel_name) < 6) {
     $errors[] = 'Channel name too short. At least 6 characters required.';
-} elseif (strlen($channelname) > 32) {
+} elseif (strlen($channel_name) > 32) {
     $errors[] = 'Channel name too long. At most 32 characters required.';
 } else {
     include_once '../../../fns/Channels/getByName.php';
     include_once '../../../lib/mysqli.php';
-    if (Channels\getByName($mysqli, $idusers, $channelname)) {
+    if (Channels\getByName($mysqli, $id_users, $channel_name)) {
         $errors[] = 'A channel with this name already exists.';
     }
 }
@@ -33,7 +33,7 @@ include_once '../../../fns/redirect.php';
 if ($errors) {
     $_SESSION['notifications/channels/add/errors'] = $errors;
     $_SESSION['notifications/channels/add/values'] = [
-        'channelname' => $channelname,
+        'channel_name' => $channel_name,
     ];
     redirect();
 }
@@ -44,10 +44,10 @@ unset(
 );
 
 include_once '../../../fns/Channels/add.php';
-$id = Channels\add($mysqli, $idusers, $channelname);
+$id = Channels\add($mysqli, $id_users, $channel_name);
 
 include_once '../../../fns/Users/addNumChannels.php';
-Users\addNumChannels($mysqli, $idusers, 1);
+Users\addNumChannels($mysqli, $id_users, 1);
 
 $_SESSION['notifications/channels/view/messages'] = ['Channel has been added.'];
 redirect("../view/?id=$id");

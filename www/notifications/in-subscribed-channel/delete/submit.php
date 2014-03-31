@@ -11,7 +11,7 @@ include_once '../../../fns/Notifications/deleteOnSubscribedChannel.php';
 Notifications\deleteOnSubscribedChannel($mysqli, $id);
 
 include_once '../../../fns/Users/clearNumNotifications.php';
-Users\clearNumNotifications($mysqli, $user->idusers);
+Users\clearNumNotifications($mysqli, $user->id_users);
 
 unset($_SESSION['notifications/errors']);
 $_SESSION['notifications/in-subscribed-channel/messages'] = [

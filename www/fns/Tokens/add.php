@@ -2,18 +2,18 @@
 
 namespace Tokens;
 
-function add ($mysqli, $idusers, $username, $tokentext, $useragent) {
+function add ($mysqli, $id_users, $username, $token_text, $user_agent) {
     $username = $mysqli->real_escape_string($username);
-    $tokentext = $mysqli->real_escape_string($tokentext);
+    $token_text = $mysqli->real_escape_string($token_text);
     $insert_time = $access_time = time();
-    if ($useragent === null) {
-        $useragent = 'null';
+    if ($user_agent === null) {
+        $user_agent = 'null';
     } else {
-        $useragent = "'".$mysqli->real_escape_string($useragent)."'";
+        $user_agent = "'".$mysqli->real_escape_string($user_agent)."'";
     }
-    $sql = 'insert into tokens (idusers, username, tokentext, useragent,'
+    $sql = 'insert into tokens (id_users, username, token_text, user_agent,'
         .' insert_time, access_time)'
-        ." values ($idusers, '$username', '$tokentext', $useragent,"
+        ." values ($id_users, '$username', '$token_text', $user_agent,"
         ." $insert_time, $access_time)";
     $mysqli->query($sql);
     return $mysqli->insert_id;

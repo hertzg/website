@@ -8,7 +8,7 @@ include_once '../../../lib/mysqli.php';
 list($channel, $id, $user) = require_channel($mysqli);
 
 include_once '../../../fns/Channels/randomizeKey.php';
-Channels\randomizeKey($mysqli, $user->idusers, $id);
+Channels\randomizeKey($mysqli, $user->id_users, $id);
 
 $_SESSION['notifications/channels/view/messages'] = ['Channel key has been randomized.'];
 

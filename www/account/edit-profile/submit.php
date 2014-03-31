@@ -5,7 +5,7 @@ require_same_domain_referer('./');
 
 include_once '../../fns/require_user.php';
 $user = require_user('../../');
-$idusers = $user->idusers;
+$id_users = $user->id_users;
 
 include_once '../../fns/request_strings.php';
 list($email, $full_name) = request_strings('email', 'full_name');
@@ -26,7 +26,7 @@ if ($email === '') {
     } else {
         include_once '../../fns/Users/getByEmail.php';
         include_once '../../lib/mysqli.php';
-        if (Users\getByEmail($mysqli, $email, $idusers)) {
+        if (Users\getByEmail($mysqli, $email, $id_users)) {
             $errors[] = 'A username with this email is already registered. Try another.';
         }
     }
@@ -49,11 +49,11 @@ unset(
 );
 
 include_once '../../fns/Users/editProfile.php';
-Users\editProfile($mysqli, $idusers, $email, $full_name);
+Users\editProfile($mysqli, $id_users, $email, $full_name);
 
 if ($email !== $user->email) {
     include_once '../../fns/Users/invalidateEmail.php';
-    Users\invalidateEmail($mysqli, $idusers);
+    Users\invalidateEmail($mysqli, $id_users);
 }
 
 $_SESSION['account/messages'] = ['Changes have been saved.'];

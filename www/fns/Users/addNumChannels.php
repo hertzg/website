@@ -2,8 +2,8 @@
 
 namespace Users;
 
-function addNumChannels ($mysqli, $idusers, $num_channels) {
+function addNumChannels ($mysqli, $id_users, $num_channels) {
     $sql = "update users set num_channels = num_channels + $num_channels"
-        ." where idusers = $idusers";
+        ." where id_users = $id_users";
     $mysqli->query($sql);
 }

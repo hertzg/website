@@ -3,5 +3,5 @@
 namespace Contacts;
 
 function delete ($mysqli, $id) {
-    $mysqli->query("delete from contacts where idcontacts = $id");
+    $mysqli->query("delete from contacts where id_contacts = $id");
 }

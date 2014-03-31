@@ -5,33 +5,33 @@ require_same_domain_referer('..');
 
 include_once '../fns/require_event.php';
 include_once '../../lib/mysqli.php';
-list($event, $idevents, $user) = require_event($mysqli);
+list($event, $id_events, $user) = require_event($mysqli);
 
 include_once '../../fns/request_strings.php';
-list($eventtext) = request_strings('eventtext');
+list($event_text) = request_strings('event_text');
 
 include_once '../../fns/str_collapse_spaces.php';
-$eventtext = str_collapse_spaces($eventtext);
+$event_text = str_collapse_spaces($event_text);
 
 $errors = [];
 
-if ($eventtext === '') $errors[] = 'Enter text.';
+if ($event_text === '') $errors[] = 'Enter text.';
 
 include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['calendar/edit-event/errors'] = $errors;
     $_SESSION['calendar/edit-event/values'] = [
-        'eventtext' => $eventtext,
+        'event_text' => $event_text,
     ];
-    redirect("./?idevents=$idevents");
+    redirect("./?id_events=$id_events");
 }
 
 unset($_SESSION['calendar/edit-event/errors']);
 
 include_once '../../fns/Events/edit.php';
-Events\edit($mysqli, $user->idusers, $idevents, $eventtext);
+Events\edit($mysqli, $user->id_users, $id_events, $event_text);
 
 $_SESSION['calendar/view-event/messages'] = ['Changes have been saved.'];
 
-redirect("../view-event/?idevents=$idevents");
+redirect("../view-event/?id_events=$id_events");

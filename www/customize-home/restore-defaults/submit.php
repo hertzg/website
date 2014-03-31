@@ -6,10 +6,10 @@ $user = require_user('../../');
 include_once '../../lib/mysqli.php';
 
 include_once '../../fns/Users/restoreOrderHomeItems.php';
-Users\restoreOrderHomeItems($mysqli, $user->idusers);
+Users\restoreOrderHomeItems($mysqli, $user->id_users);
 
 include_once '../../fns/Users/restoreDefaultVisibilities.php';
-Users\restoreDefaultVisibilities($mysqli, $user->idusers);
+Users\restoreDefaultVisibilities($mysqli, $user->id_users);
 
 $_SESSION['customize-home/messages'] = [
     'Default home has been restored.'

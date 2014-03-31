@@ -6,7 +6,7 @@ function render_contacts (array $contacts, array &$items) {
     foreach ($contacts as $contact) {
         $alias = $contact->alias;
         $title = htmlspecialchars($contact->full_name);
-        $href = "../contacts/view/?id=$contact->idcontacts";
+        $href = "../contacts/view/?id=$contact->id_contacts";
         $icon = 'contact';
         if ($alias === '') {
             $items[] = Page\imageArrowLink($title, $href, $icon);

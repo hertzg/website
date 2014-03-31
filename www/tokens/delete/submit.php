@@ -11,7 +11,7 @@ include_once '../../fns/Tokens/delete.php';
 Tokens\delete($mysqli, $id);
 
 include_once '../../fns/Users/addNumTokens.php';
-Users\addNumTokens($mysqli, $user->idusers, -1);
+Users\addNumTokens($mysqli, $user->id_users, -1);
 
 unset($_SESSION['tokens/errors']);
 $_SESSION['tokens/messages'] = [

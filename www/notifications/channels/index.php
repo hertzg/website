@@ -7,7 +7,7 @@ $user = require_user($base);
 
 include_once '../../fns/Channels/indexOnUser.php';
 include_once '../../lib/mysqli.php';
-$channels = Channels\indexOnUser($mysqli, $user->idusers);
+$channels = Channels\indexOnUser($mysqli, $user->id_users);
 
 $items = [];
 
@@ -15,8 +15,8 @@ include_once '../../fns/Page/imageArrowLink.php';
 
 if ($channels) {
     foreach ($channels as $channel) {
-        $title = htmlspecialchars($channel->channelname);
-        $href = "view/?id=$channel->idchannels";
+        $title = htmlspecialchars($channel->channel_name);
+        $href = "view/?id=$channel->id_channels";
         $items[] = Page\imageArrowLink($title, $href, 'channel');
     }
 } else {

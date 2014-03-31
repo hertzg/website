@@ -2,6 +2,6 @@
 
 namespace Folders;
 
-function deleteOnUser ($mysqli, $idusers) {
-    $mysqli->query("delete from folders where idusers = $idusers");
+function deleteOnUser ($mysqli, $id_users) {
+    $mysqli->query("delete from folders where id_users = $id_users");
 }

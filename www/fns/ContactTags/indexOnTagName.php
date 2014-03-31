@@ -2,18 +2,18 @@
 
 namespace ContactTags;
 
-function indexOnTagName ($mysqli, $idusers, $tagname,
+function indexOnTagName ($mysqli, $id_users, $tag_name,
     $offset, $limit, &$total) {
 
-    $tagname = $mysqli->real_escape_string($tagname);
+    $tag_name = $mysqli->real_escape_string($tag_name);
 
     $sql = 'select count(*) total from contact_tags'
-        ." where idusers = $idusers and tagname = '$tagname'";
+        ." where id_users = $id_users and tag_name = '$tag_name'";
     include_once __DIR__.'/../mysqli_single_object.php';
     $total = mysqli_single_object($mysqli, $sql)->total;
 
-    $sql = "select * from contact_tags where idusers = $idusers"
-        ." and tagname = '$tagname' order by full_name"
+    $sql = "select * from contact_tags where id_users = $id_users"
+        ." and tag_name = '$tag_name' order by full_name"
         ." limit $limit offset $offset";
     include_once __DIR__.'/../mysqli_query_object.php';
     return mysqli_query_object($mysqli, $sql);

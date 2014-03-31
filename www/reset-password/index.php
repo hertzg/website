@@ -58,7 +58,7 @@ $content =
             ])
             .'<div class="hr"></div>'
             .Form\button('Reset Password')
-            .Form\hidden('idusers', $user->idusers)
+            .Form\hidden('id_users', $user->id_users)
             .Form\hidden('key', $key)
         .'</form>'
     );

@@ -2,15 +2,15 @@
 
 namespace Notifications;
 
-function addExternal ($mysqli, $idusers, $idchannels, $channelname,
-    $notificationtext, $id_subscribed_channels) {
-    $channelname = $mysqli->real_escape_string($channelname);
-    $notificationtext = $mysqli->real_escape_string($notificationtext);
+function addExternal ($mysqli, $id_users, $id_channels, $channel_name,
+    $notification_text, $id_subscribed_channels) {
+    $channel_name = $mysqli->real_escape_string($channel_name);
+    $notification_text = $mysqli->real_escape_string($notification_text);
     $insert_time = time();
     $sql = 'insert into notifications'
-        .' (idusers, idchannels, channelname,'
-        .' notificationtext, insert_time, id_subscribed_channels)'
-        ." values ($idusers, $idchannels, '$channelname',"
-        ." '$notificationtext', $insert_time, $id_subscribed_channels)";
+        .' (id_users, id_channels, channel_name,'
+        .' notification_text, insert_time, id_subscribed_channels)'
+        ." values ($id_users, $id_channels, '$channel_name',"
+        ." '$notification_text', $insert_time, $id_subscribed_channels)";
     $mysqli->query($sql);
 }

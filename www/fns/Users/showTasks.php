@@ -2,10 +2,10 @@
 
 namespace Users;
 
-function showTasks ($mysqli, $idusers, $show) {
+function showTasks ($mysqli, $id_users, $show) {
     $show_tasks = $show ? '1' : '0';
     $mysqli->query(
         "update users set show_tasks = $show_tasks"
-        ." where idusers = $idusers"
+        ." where id_users = $id_users"
     );
 }

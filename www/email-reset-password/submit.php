@@ -47,14 +47,14 @@ unset(
 $key = md5(uniqid(), true);
 
 include_once '../fns/Users/editResetPasswordKey.php';
-Users\editResetPasswordKey($mysqli, $user->idusers, $key);
+Users\editResetPasswordKey($mysqli, $user->id_users, $key);
 
 include_once '../fns/Captcha/reset.php';
 Captcha\reset();
 
 $href = htmlspecialchars(
     'http://zvini.com/reset-password/?'.http_build_query([
-        'idusers' => $user->idusers,
+        'id_users' => $user->id_users,
         'key' => bin2hex($key)
     ])
 );

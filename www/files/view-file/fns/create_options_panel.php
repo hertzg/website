@@ -2,7 +2,7 @@
 
 function create_options_panel ($file) {
 
-    $id = $file->idfiles;
+    $id = $file->id_files;
 
     $options = [];
 
@@ -12,7 +12,7 @@ function create_options_panel ($file) {
     $href = "../rename-file/?id=$id";
     $options[] = Page\imageArrowLink('Rename File', $href, 'rename');
 
-    $href = "../move-file/?id=$id&idfolders=$file->idfolders";
+    $href = "../move-file/?id=$id&id_folders=$file->id_folders";
     $options[] = Page\imageArrowLink('Move File', $href, 'move-file');
 
     $href = "../delete-file/?id=$id";

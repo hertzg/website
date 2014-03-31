@@ -13,7 +13,7 @@ $can_send_channel = (bool)$can_send_channel;
 
 include_once '../../../../fns/Users/editAnonymousConnection.php';
 include_once '../../../../lib/mysqli.php';
-Users\editAnonymousConnection($mysqli, $user->idusers, $can_send_channel);
+Users\editAnonymousConnection($mysqli, $user->id_users, $can_send_channel);
 
 $_SESSION['account/connections/default/messages'] = [
     'Changes have been saved.',

@@ -6,7 +6,7 @@ require_same_domain_referer('..');
 include_once '../fns/require_bookmark.php';
 include_once '../../lib/mysqli.php';
 list($bookmark, $id, $user) = require_bookmark($mysqli);
-$idusers = $user->idusers;
+$id_users = $user->id_users;
 
 include_once '../../fns/request_strings.php';
 list($title, $url, $tags) = request_strings('title', 'url', 'tags');
@@ -21,7 +21,7 @@ $errors = [];
 if ($url === '') $errors[] = 'Enter URL.';
 
 include_once '../../fns/parse_tags.php';
-parse_tags($tags, $tagnames, $errors);
+parse_tags($tags, $tag_names, $errors);
 
 include_once '../../fns/redirect.php';
 
@@ -41,13 +41,13 @@ unset(
 );
 
 include_once '../../fns/Bookmarks/edit.php';
-Bookmarks\edit($mysqli, $idusers, $id, $title, $url, $tags);
+Bookmarks\edit($mysqli, $id_users, $id, $title, $url, $tags);
 
 include_once '../../fns/BookmarkTags/deleteOnBookmark.php';
 BookmarkTags\deleteOnBookmark($mysqli, $id);
 
 include_once '../../fns/BookmarkTags/add.php';
-BookmarkTags\add($mysqli, $idusers, $id, $tagnames, $title, $url);
+BookmarkTags\add($mysqli, $id_users, $id, $tag_names, $title, $url);
 
 $_SESSION['bookmarks/view/messages'] = ['Changes have been saved.'];
 redirect("../view/?id=$id");

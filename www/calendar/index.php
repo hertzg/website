@@ -29,7 +29,7 @@ $daySelected = date('d', $timeSelected);
 
 include_once '../fns/Events/indexOnUserAndTime.php';
 include_once '../lib/mysqli.php';
-$events = Events\indexOnUserAndTime($mysqli, $user->idusers, $timeSelected);
+$events = Events\indexOnUserAndTime($mysqli, $user->id_users, $timeSelected);
 
 $eventItems = [];
 include_once 'fns/render_events.php';

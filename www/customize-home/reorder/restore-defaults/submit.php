@@ -5,7 +5,7 @@ $user = require_user('../../../');
 
 include_once '../../../fns/Users/restoreOrderHomeItems.php';
 include_once '../../../lib/mysqli.php';
-Users\restoreOrderHomeItems($mysqli, $user->idusers);
+Users\restoreOrderHomeItems($mysqli, $user->id_users);
 
 $_SESSION['customize-home/reorder/messages'] = [
     'Default order has been restored.'

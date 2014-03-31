@@ -2,12 +2,12 @@
 
 namespace Events;
 
-function edit ($mysqli, $idusers, $id, $eventtext) {
-    $eventtext = $mysqli->real_escape_string($eventtext);
+function edit ($mysqli, $id_users, $id, $event_text) {
+    $event_text = $mysqli->real_escape_string($event_text);
     $update_time = time();
     $sql = 'update events set'
-        ." eventtext = '$eventtext',"
+        ." event_text = '$event_text',"
         ." update_time = $update_time"
-        ." where idusers = $idusers and idevents = $id";
+        ." where id_users = $id_users and id_events = $id";
     $mysqli->query($sql);
 }

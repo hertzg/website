@@ -5,7 +5,7 @@ $user = require_user('../');
 
 include_once '../../fns/Users/showNewTask.php';
 include_once '../../lib/mysqli.php';
-Users\showNewTask($mysqli, $user->idusers, false);
+Users\showNewTask($mysqli, $user->id_users, false);
 
 $_SESSION['customize-home/show-hide/messages'] = [
     '"New Task" is now hidden.',

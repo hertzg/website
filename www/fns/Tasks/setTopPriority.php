@@ -2,11 +2,11 @@
 
 namespace Tasks;
 
-function setTopPriority ($mysqli, $idusers, $id, $top_priority) {
+function setTopPriority ($mysqli, $id_users, $id, $top_priority) {
     $top_priority = $top_priority ? '1' : '0';
     $update_time = time();
     $sql = "update tasks set top_priority = $top_priority,"
         ." update_time = $update_time"
-        ." where idusers = $idusers and idtasks = $id";
+        ." where id_users = $id_users and id_tasks = $id";
     $mysqli->query($sql);
 }

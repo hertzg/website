@@ -6,7 +6,7 @@ require_same_domain_referer('../../..');
 include_once '../../fns/require_channel.php';
 include_once '../../../../lib/mysqli.php';
 list($channel, $id, $user) = require_channel($mysqli);
-$idusers = $user->idusers;
+$id_users = $user->id_users;
 
 include_once '../../../../fns/request_strings.php';
 list($subscribed_username) = request_strings('subscribed_username');
@@ -21,8 +21,8 @@ if ($subscribed_username === '') {
     if (!$userToSubscribe) {
         $errors[] = "A user with the username doesn't exist.";
     } else {
-        $subscribed_id_users = $userToSubscribe->idusers;
-        if ($subscribed_id_users == $idusers) {
+        $subscribed_id_users = $userToSubscribe->id_users;
+        if ($subscribed_id_users == $id_users) {
             $errors[] = "You don't have to add yourself in the list.";
             $errors[] = 'You will always receive notifications on your channels.';
         } else {
@@ -33,7 +33,7 @@ if ($subscribed_username === '') {
                 $errors[] = 'The user is already added.';
             } else {
                 include_once '../../../../fns/get_users_connection.php';
-                $connection = get_users_connection($mysqli, $userToSubscribe, $idusers);
+                $connection = get_users_connection($mysqli, $userToSubscribe, $id_users);
                 if (!$connection['can_send_channel']) {
                     $errors[] = "The user isn't receiving channels from you.";
                 }
@@ -57,7 +57,7 @@ $_SESSION['notifications/channels/users/view/messages'] = [
 ];
 
 include_once '../../../../fns/SubscribedChannels/add.php';
-$id = SubscribedChannels\add($mysqli, $id, $channel->channelname, $idusers,
+$id = SubscribedChannels\add($mysqli, $id, $channel->channel_name, $id_users,
     $user->username, $subscribed_id_users , $subscribed_username);
 
 include_once '../../../../fns/Users/addNumSubscribedChannels.php';

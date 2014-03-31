@@ -5,7 +5,7 @@ require_same_domain_referer('./');
 
 include_once '../../fns/require_user.php';
 $user = require_user('../../');
-$idusers = $user->idusers;
+$id_users = $user->id_users;
 
 include_once '../../fns/request_strings.php';
 list($theme) = request_strings('theme');
@@ -17,7 +17,7 @@ if (!array_key_exists($theme, $themes)) redirect();
 
 include_once '../../fns/Users/editTheme.php';
 include_once '../../lib/mysqli.php';
-Users\editTheme($mysqli, $idusers, $theme);
+Users\editTheme($mysqli, $id_users, $theme);
 
 $_SESSION['account/messages'] = ['Theme has changed.'];
 

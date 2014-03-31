@@ -5,12 +5,12 @@ function create_tag_filter_bar ($tags, array $params) {
         '<div class="tags tagFilterBar">'
             .'<span class="tags-label">Filter by tags:</span>';
     foreach ($tags as $tag) {
-        $tagname = $tag->tagname;
-        $params['tag'] = $tagname;
+        $tag_name = $tag->tag_name;
+        $params['tag'] = $tag_name;
         $href = '?'.htmlspecialchars(http_build_query($params));
         $html .=
             "<a class=\"tag\" href=\"$href\">"
-                .htmlspecialchars($tagname)
+                .htmlspecialchars($tag_name)
             .'</a>';
     }
     $html .=

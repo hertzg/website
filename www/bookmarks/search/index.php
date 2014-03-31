@@ -4,7 +4,7 @@ $base = '../../';
 
 include_once '../../fns/require_user.php';
 $user = require_user($base);
-$idusers = $user->idusers;
+$id_users = $user->id_users;
 
 include_once '../../fns/request_strings.php';
 list($keyword, $tag, $offset) = request_strings(
@@ -36,7 +36,7 @@ if ($tag === '') {
     $filterMessage = '';
 
     include_once '../../fns/Bookmarks/searchPage.php';
-    $bookmarks = Bookmarks\searchPage($mysqli, $idusers, $keyword,
+    $bookmarks = Bookmarks\searchPage($mysqli, $id_users, $keyword,
         $offset, $limit, $total);
 
     $formContent = SearchForm\content($keyword, $searchPlaceholder, '..');
@@ -45,7 +45,7 @@ if ($tag === '') {
     if ($total > 1) {
 
         include_once '../../fns/BookmarkTags/indexOnUser.php';
-        $tags = BookmarkTags\indexOnUser($mysqli, $idusers);
+        $tags = BookmarkTags\indexOnUser($mysqli, $id_users);
 
         if ($tags) {
             include_once '../../fns/create_tag_filter_bar.php';
@@ -59,7 +59,7 @@ if ($tag === '') {
 } else {
 
     include_once '../../fns/BookmarkTags/searchOnTagName.php';
-    $bookmarks = BookmarkTags\searchOnTagName($mysqli, $idusers, $keyword, $tag,
+    $bookmarks = BookmarkTags\searchOnTagName($mysqli, $id_users, $keyword, $tag,
         $offset, $limit, $total);
 
     $clearHref = '../?tag='.rawurlencode($tag);

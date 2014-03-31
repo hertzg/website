@@ -2,15 +2,15 @@
 
 namespace Tags;
 
-function parse ($tagnames) {
+function parse ($tag_names) {
 
     include_once __DIR__.'/../str_collapse_spaces.php';
-    $tagnames = str_collapse_spaces($tagnames);
+    $tag_names = str_collapse_spaces($tag_names);
 
-    if ($tagnames === '') return [];
+    if ($tag_names === '') return [];
 
-    $tagnames = explode(' ', $tagnames);
-    $tagnames = array_unique($tagnames);
-    return $tagnames;
+    $tag_names = explode(' ', $tag_names);
+    $tag_names = array_unique($tag_names);
+    return $tag_names;
 
 }

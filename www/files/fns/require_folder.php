@@ -6,18 +6,18 @@ function require_folder ($mysqli) {
     $user = require_user('../../');
 
     include_once __DIR__.'/../../fns/request_strings.php';
-    list($idfolders) = request_strings('idfolders');
+    list($id_folders) = request_strings('id_folders');
 
-    $idfolders = abs((int)$idfolders);
+    $id_folders = abs((int)$id_folders);
 
     include_once __DIR__.'/../../fns/Folders/get.php';
-    $folder = Folders\get($mysqli, $user->idusers, $idfolders);
+    $folder = Folders\get($mysqli, $user->id_users, $id_folders);
 
     if (!$folder) {
         include_once __DIR__.'/../../fns/redirect.php';
         redirect('..');
     }
 
-    return [$folder, $idfolders, $user];
+    return [$folder, $id_folders, $user];
 
 }

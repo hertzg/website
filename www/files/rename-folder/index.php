@@ -2,7 +2,7 @@
 
 include_once '../fns/require_folder.php';
 include_once '../../lib/mysqli.php';
-list($folder, $idfolders, $user) = require_folder($mysqli);
+list($folder, $id_folders, $user) = require_folder($mysqli);
 
 $key = 'files/rename-folder/values';
 if (array_key_exists($key, $_SESSION)) {
@@ -12,7 +12,7 @@ if (array_key_exists($key, $_SESSION)) {
 }
 
 unset(
-    $_SESSION['files/idfolders'],
+    $_SESSION['files/id_folders'],
     $_SESSION['files/messages']
 );
 
@@ -31,22 +31,22 @@ $content =
             ],
             [
                 'title' => 'Files',
-                'href' => create_folder_link($idfolders, '../'),
+                'href' => create_folder_link($id_folders, '../'),
             ],
         ],
-        "Rename Folder #$idfolders",
+        "Rename Folder #$id_folders",
         Page\sessionErrors('files/rename-folder/errors')
         .'<form action="submit.php" method="post">'
-            .Form\textfield('foldername', 'Folder name', [
-                'value' => $values['foldername'],
+            .Form\textfield('folder_name', 'Folder name', [
+                'value' => $values['folder_name'],
                 'autofocus' => true,
                 'required' => true,
             ])
             .'<div class="hr"></div>'
             .Form\button('Rename')
-            .Form\hidden('idfolders', $idfolders)
+            .Form\hidden('id_folders', $id_folders)
         .'</form>'
     );
 
 include_once '../../fns/echo_page.php';
-echo_page($user, "Rename Folder #$idfolders", $content, '../../');
+echo_page($user, "Rename Folder #$id_folders", $content, '../../');

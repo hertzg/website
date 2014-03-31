@@ -17,7 +17,7 @@ if (!$token) {
 }
 
 include_once __DIR__.'/../fns/Tokens/indexOnUser.php';
-$tokens = Tokens\indexOnUser($mysqli, $user->idusers);
+$tokens = Tokens\indexOnUser($mysqli, $user->id_users);
 
 $items = [];
 if ($tokens) {
@@ -29,19 +29,19 @@ if ($tokens) {
         'delete-all/', 'trash-bin');
     foreach ($tokens as $itemToken) {
 
-        $text = bin2hex($itemToken->tokentext);
-        if ($token && $itemToken->idtokens == $token->idtokens) {
+        $text = bin2hex($itemToken->token_text);
+        if ($token && $itemToken->id_tokens == $token->id_tokens) {
             $text .= ' (Current)';
         }
 
-        $useragent = $itemToken->useragent;
-        if ($useragent === null) {
+        $user_agent = $itemToken->user_agent;
+        if ($user_agent === null) {
             $items[] = Page\imageArrowLink($text,
-                "view/?id=$itemToken->idtokens", 'token');
+                "view/?id=$itemToken->id_tokens", 'token');
         } else {
             $items[] = Page\imageArrowLinkWithDescription($text,
-                htmlspecialchars($useragent),
-                "view/?id=$itemToken->idtokens", 'token');
+                htmlspecialchars($user_agent),
+                "view/?id=$itemToken->id_tokens", 'token');
         }
 
     }

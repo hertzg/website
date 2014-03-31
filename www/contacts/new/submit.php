@@ -5,7 +5,7 @@ require_same_domain_referer('./');
 
 include_once '../../fns/require_user.php';
 $user = require_user('../../');
-$idusers = $user->idusers;
+$id_users = $user->id_users;
 
 include_once '../../lib/mysqli.php';
 
@@ -32,13 +32,13 @@ if ($full_name === '') {
     $errors[] = 'Full name too long. At most 32 characters required.';
 } else {
     include_once '../../fns/Contacts/getByFullName.php';
-    if (Contacts\getByFullName($mysqli, $idusers, $full_name)) {
+    if (Contacts\getByFullName($mysqli, $id_users, $full_name)) {
         $errors[] = 'A contact with this name already exists.';
     }
 }
 
 include_once '../../fns/parse_tags.php';
-parse_tags($tags, $tagnames, $errors);
+parse_tags($tags, $tag_names, $errors);
 
 include_once '../../fns/redirect.php';
 
@@ -62,14 +62,14 @@ unset(
 );
 
 include_once '../../fns/Contacts/add.php';
-$id = Contacts\add($mysqli, $idusers, $full_name, $alias,
+$id = Contacts\add($mysqli, $id_users, $full_name, $alias,
     $address, $email, $phone1, $phone2, $tags);
 
 include_once '../../fns/ContactTags/add.php';
-ContactTags\add($mysqli, $idusers, $id, $tagnames, $full_name, $alias);
+ContactTags\add($mysqli, $id_users, $id, $tag_names, $full_name, $alias);
 
 include_once '../../fns/Users/addNumContacts.php';
-Users\addNumContacts($mysqli, $idusers, 1);
+Users\addNumContacts($mysqli, $id_users, 1);
 
 $_SESSION['contacts/view/messages'] = ['Contact has been saved.'];
 redirect("../view/?id=$id");

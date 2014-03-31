@@ -5,10 +5,10 @@ require_same_domain_referer('..');
 
 include_once '../../fns/require_user.php';
 $user = require_user('../../');
-$idusers = $user->idusers;
+$id_users = $user->id_users;
 
 include_once '../../fns/request_strings.php';
-list($idfolders, $posttest) = request_strings('idfolders', 'posttest');
+list($id_folders, $posttest) = request_strings('id_folders', 'posttest');
 
 include_once '../../fns/request_multiple_files.php';
 list($file1, $file2, $file3) = request_multiple_files('file1', 'file2', 'file3');
@@ -17,10 +17,10 @@ include_once '../../lib/mysqli.php';
 
 include_once '../../fns/redirect.php';
 
-$idfolders = abs((int)$idfolders);
-if ($idfolders) {
+$id_folders = abs((int)$id_folders);
+if ($id_folders) {
     include_once '../../fns/Folders/get.php';
-    $parentFolder = Folders\get($mysqli, $idusers, $idfolders);
+    $parentFolder = Folders\get($mysqli, $id_users, $id_folders);
     if (!$parentFolder) redirect('..');
 }
 
@@ -30,28 +30,28 @@ include_once '../../fns/Files/getByName.php';
 
 $numfiles = 0;
 foreach ([$file1, $file2, $file3] as $file) {
-    foreach ($file['name'] as $i => $filename) {
+    foreach ($file['name'] as $i => $file_name) {
         if ($file['error'][$i] == UPLOAD_ERR_OK) {
 
-            $filename = str_collapse_spaces($filename);
+            $file_name = str_collapse_spaces($file_name);
 
-            while (Files\getByName($mysqli, $idusers, $idfolders, $filename)) {
+            while (Files\getByName($mysqli, $id_users, $id_folders, $file_name)) {
                 $extension = '';
-                if (preg_match('/\..*?$/', $filename, $match)) {
-                    $filename = preg_replace('/\..*?$/', '', $filename);
+                if (preg_match('/\..*?$/', $file_name, $match)) {
+                    $file_name = preg_replace('/\..*?$/', '', $file_name);
                     $extension = $match[0];
                 }
-                if (preg_match('/_(\d+)$/', $filename, $match)) {
-                    $filename = preg_replace('/_\d+$/', '_'.($match[1] + 1), $filename);
+                if (preg_match('/_(\d+)$/', $file_name, $match)) {
+                    $file_name = preg_replace('/_\d+$/', '_'.($match[1] + 1), $file_name);
                 } else {
-                    $filename .= '_1';
+                    $file_name .= '_1';
                 }
                 if ($extension) {
-                    $filename = "$filename$extension";
+                    $file_name = "$file_name$extension";
                 }
             }
 
-            Files\add($mysqli, $idusers, $idfolders, $filename, $file['tmp_name'][$i]);
+            Files\add($mysqli, $id_users, $id_folders, $file_name, $file['tmp_name'][$i]);
 
             $numfiles++;
 
@@ -69,7 +69,7 @@ if (!$posttest) {
 
 if ($errors) {
     $_SESSION['files/upload-files/errors'] = $errors;
-    redirect("./?idfolders=$idfolders");
+    redirect("./?id_folders=$id_folders");
 }
 
 unset($_SESSION['files/upload-files/errors']);
@@ -80,8 +80,8 @@ if ($numfiles == 1) {
     $message = "$numfiles files have been uploaded.";
 }
 
-$_SESSION['files/idfolders'] = $idfolders;
+$_SESSION['files/id_folders'] = $id_folders;
 $_SESSION['files/messages'] = [$message];
 
 include_once '../../fns/create_folder_link.php';
-redirect(create_folder_link($idfolders, '../'));
+redirect(create_folder_link($id_folders, '../'));

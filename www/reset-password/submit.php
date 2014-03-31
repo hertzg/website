@@ -9,7 +9,7 @@ require_guest_user('../');
 include_once 'fns/require_valid_key.php';
 include_once '../lib/mysqli.php';
 list($user, $key) = require_valid_key($mysqli);
-$idusers = $user->idusers;
+$id_users = $user->id_users;
 
 include_once '../fns/request_strings.php';
 list($password1, $password2) = request_strings('password1', 'password2');
@@ -40,7 +40,7 @@ if ($errors) {
         'password1' => $password1,
         'password2' => $password2,
     ];
-    redirect("./?idusers=$idusers&key=$key");
+    redirect("./?id_users=$id_users&key=$key");
 }
 
 unset(
@@ -49,7 +49,7 @@ unset(
 );
 
 include_once '../fns/Users/editPassword.php';
-Users\editPassword($mysqli, $idusers, $password1);
+Users\editPassword($mysqli, $id_users, $password1);
 
 setcookie('username', $user->username, time() + 60 * 60 * 24 * 30, '/');
 

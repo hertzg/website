@@ -5,7 +5,7 @@ $user = require_user('../');
 
 include_once '../../fns/Users/showFiles.php';
 include_once '../../lib/mysqli.php';
-Users\showFiles($mysqli, $user->idusers, false);
+Users\showFiles($mysqli, $user->id_users, false);
 
 $_SESSION['customize-home/show-hide/messages'] = [
     '"Files" is now hidden.',

@@ -8,7 +8,7 @@ include_once '../../lib/mysqli.php';
 list($task, $id, $user) = require_task($mysqli);
 
 include_once '../../fns/Tasks/setTopPriority.php';
-Tasks\setTopPriority($mysqli, $user->idusers, $id, true);
+Tasks\setTopPriority($mysqli, $user->id_users, $id, true);
 
 include_once '../../fns/TaskTags/setTaskTopPriority.php';
 TaskTags\setTaskTopPriority($mysqli, $id, true);

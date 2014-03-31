@@ -29,11 +29,11 @@ $content =
         ],
         "Channel #$id",
         Page\sessionMessages('notifications/channels/view/messages')
-        .Form\label('Channel name', htmlspecialchars($channel->channelname))
+        .Form\label('Channel name', htmlspecialchars($channel->channel_name))
         .'<div class="hr"></div>'
-        .Form\textfield('channelkey', 'Channel key', [
+        .Form\textfield('channel_key', 'Channel key', [
             'readonly' => true,
-            'value' => bin2hex($channel->channelkey),
+            'value' => bin2hex($channel->channel_key),
         ])
     )
     .create_options_panel($id);

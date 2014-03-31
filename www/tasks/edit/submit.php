@@ -6,30 +6,30 @@ require_same_domain_referer('..');
 include_once '../fns/require_task.php';
 include_once '../../lib/mysqli.php';
 list($task, $id, $user) = require_task($mysqli);
-$idusers = $user->idusers;
+$id_users = $user->id_users;
 
 include_once '../../fns/request_strings.php';
-list($tasktext, $tags) = request_strings('tasktext', 'tags');
+list($task_text, $tags) = request_strings('task_text', 'tags');
 
 include_once '../../fns/str_collapse_spaces_multiline.php';
-$tasktext = str_collapse_spaces_multiline($tasktext);
+$task_text = str_collapse_spaces_multiline($task_text);
 
 include_once '../../fns/str_collapse_spaces.php';
 $tags = str_collapse_spaces($tags);
 
 $errors = [];
 
-if ($tasktext === '') $errors[] = 'Enter text.';
+if ($task_text === '') $errors[] = 'Enter text.';
 
 include_once '../../fns/parse_tags.php';
-parse_tags($tags, $tagnames, $errors);
+parse_tags($tags, $tag_names, $errors);
 
 include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['tasks/edit/errors'] = $errors;
     $_SESSION['tasks/edit/values'] = [
-        'tasktext' => $tasktext,
+        'task_text' => $task_text,
         'tags' => $tags,
     ];
     redirect("./?id=$id");
@@ -41,13 +41,13 @@ unset(
 );
 
 include_once '../../fns/Tasks/edit.php';
-Tasks\edit($mysqli, $idusers, $id, $tasktext, $tags);
+Tasks\edit($mysqli, $id_users, $id, $task_text, $tags);
 
 include_once '../../fns/TaskTags/deleteOnTask.php';
 TaskTags\deleteOnTask($mysqli, $id);
 
 include_once '../../fns/TaskTags/add.php';
-TaskTags\add($mysqli, $idusers, $id, $tagnames, $tasktext, $tags);
+TaskTags\add($mysqli, $id_users, $id, $tag_names, $task_text, $tags);
 
 $_SESSION['tasks/view/messages'] = ['Changes have been saved.'];
 redirect("../view/?id=$id");

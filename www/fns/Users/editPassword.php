@@ -2,7 +2,7 @@
 
 namespace Users;
 
-function editPassword ($mysqli, $idusers, $password) {
+function editPassword ($mysqli, $id_users, $password) {
 
     include_once __DIR__.'/../Password/hash.php';
     list($password_hash, $password_salt) = \Password\hash($password);
@@ -13,7 +13,7 @@ function editPassword ($mysqli, $idusers, $password) {
     $sql = "update users set password_hash = '$password_hash',"
         ." password_salt = '$password_salt',"
         .' reset_password_key = null, reset_password_key_time = null'
-        ." where idusers = $idusers";
+        ." where id_users = $id_users";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
 }

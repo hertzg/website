@@ -2,22 +2,22 @@
 
 namespace BookmarkTags;
 
-function searchOnTagName ($mysqli, $idusers, $keyword, $tagname,
+function searchOnTagName ($mysqli, $id_users, $keyword, $tag_name,
     $offset, $limit, &$total) {
 
     include_once __DIR__.'/../escape_like.php';
     $keyword = escape_like($keyword);
     $keyword = $mysqli->real_escape_string($keyword);
-    $tagname = $mysqli->real_escape_string($tagname);
+    $tag_name = $mysqli->real_escape_string($tag_name);
 
     $sql = 'select count(*) total from bookmark_tags'
-        ." where idusers = $idusers and title like '%$keyword%'"
-        ." and tagname = '$tagname'";
+        ." where id_users = $id_users and title like '%$keyword%'"
+        ." and tag_name = '$tag_name'";
     include_once __DIR__.'/../mysqli_single_object.php';
     $total = mysqli_single_object($mysqli, $sql)->total;
 
-    $sql = "select * from bookmark_tags where idusers = $idusers"
-        ." and title like '%$keyword%' and tagname = '$tagname'"
+    $sql = "select * from bookmark_tags where id_users = $id_users"
+        ." and title like '%$keyword%' and tag_name = '$tag_name'"
         ." order by update_time desc limit $limit offset $offset";
     include_once __DIR__.'/../mysqli_query_object.php';
     return mysqli_query_object($mysqli, $sql);

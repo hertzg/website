@@ -2,7 +2,7 @@
 
 function create_preview ($file) {
 
-    $extension = pathinfo($file->filename, PATHINFO_EXTENSION);
+    $extension = pathinfo($file->file_name, PATHINFO_EXTENSION);
     $extension = strtolower($extension);
 
     $imageRegex = 'bmp|gif|jpe?g|png|svg';
@@ -14,7 +14,7 @@ function create_preview ($file) {
         $contentType = get_extension_content_type($extension);
 
         $contentType = rawurlencode($contentType);
-        $src = "../download-file/?id=$file->idfiles&amp;contentType=$contentType";
+        $src = "../download-file/?id=$file->id_files&amp;contentType=$contentType";
 
         $html = '<div class="preview">';
         if (preg_match("/^($audioRegex)$/", $extension)) {

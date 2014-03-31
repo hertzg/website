@@ -16,11 +16,11 @@ class ZviniAPI {
         curl_exec($curl);
     }
 
-    static function notify ($channelname, $channelkey, $notificationtext) {
+    static function notify ($channel_name, $channel_key, $notification_text) {
         self::post('notify.php', [
-            'channelname' => $channelname,
-            'channelkey' => $channelkey,
-            'notificationtext' => $notificationtext,
+            'channel_name' => $channel_name,
+            'channel_key' => $channel_key,
+            'notification_text' => $notification_text,
         ]);
     }
 

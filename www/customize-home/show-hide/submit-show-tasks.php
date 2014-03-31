@@ -5,7 +5,7 @@ $user = require_user('../');
 
 include_once '../../fns/Users/showTasks.php';
 include_once '../../lib/mysqli.php';
-Users\showTasks($mysqli, $user->idusers, true);
+Users\showTasks($mysqli, $user->id_users, true);
 
 $_SESSION['customize-home/show-hide/messages'] = [
     '"Tasks" is now visible.',

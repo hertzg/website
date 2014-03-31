@@ -11,7 +11,7 @@ function require_channel ($mysqli, $channelsBase = '..') {
     $id = abs((int)$id);
 
     include_once __DIR__.'/../../../fns/Channels/getOnUser.php';
-    $channel = Channels\getOnUser($mysqli, $user->idusers, $id);
+    $channel = Channels\getOnUser($mysqli, $user->id_users, $id);
 
     if (!$channel) {
         unset($_SESSION['notifications/channels/messages']);

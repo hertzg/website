@@ -9,7 +9,7 @@ $key = 'notifications/channels/add/values';
 if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];
 } else {
-    $values = ['channelname' => ''];
+    $values = ['channel_name' => ''];
 }
 
 unset(
@@ -37,8 +37,8 @@ $content =
         'New',
         Page\sessionErrors('notifications/channels/add/errors')
         .'<form action="submit.php" method="post">'
-            .Form\textfield('channelname', 'Channel name', [
-                'value' => $values['channelname'],
+            .Form\textfield('channel_name', 'Channel name', [
+                'value' => $values['channel_name'],
                 'maxlength' => 32,
                 'autofocus' => true,
                 'required' => true,

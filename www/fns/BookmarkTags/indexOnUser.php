@@ -2,9 +2,9 @@
 
 namespace BookmarkTags;
 
-function indexOnUser ($mysqli, $idusers) {
-    $sql = 'select distinct tagname from bookmark_tags'
-        ." where idusers = $idusers order by tagname";
+function indexOnUser ($mysqli, $id_users) {
+    $sql = 'select distinct tag_name from bookmark_tags'
+        ." where id_users = $id_users order by tag_name";
     include_once __DIR__.'/../mysqli_query_object.php';
     return mysqli_query_object($mysqli, $sql);
 }
