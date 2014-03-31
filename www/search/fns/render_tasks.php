@@ -5,7 +5,7 @@ function render_tasks (array $tasks, array &$items) {
     include_once __DIR__.'/../../fns/Page/imageArrowLinkWithDescription.php';
     foreach ($tasks as $task) {
         $icon = $task->top_priority ? 'task-top-priority' : 'task';
-        $title = htmlspecialchars($task->task_text);
+        $title = htmlspecialchars($task->text);
         $href = "../tasks/view/?id=$task->id_tasks";
         $tags = $task->tags;
         if ($tags) {

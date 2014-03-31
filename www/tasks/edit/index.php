@@ -40,9 +40,9 @@ $content =
         'Edit',
         Page\sessionErrors('tasks/edit/errors')
         .'<form action="submit.php" method="post">'
-            .Form\textarea('task_text', 'Text', [
-                'value' => $values['task_text'],
-                'maxlength' => $maxLengths['task_text'],
+            .Form\textarea('text', 'Text', [
+                'value' => $values['text'],
+                'maxlength' => $maxLengths['text'],
                 'autofocus' => true,
                 'required' => true,
             ])

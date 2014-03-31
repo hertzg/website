@@ -49,9 +49,9 @@ foreach ($ids as $id) {
     $sql = "select * from tasks where id_tasks = $id->value";
     $task = mysqli_single_object($mysqli, $sql);
     if ($task) {
-        $task_text = $mysqli->real_escape_string($task->task_text);
+        $text = $mysqli->real_escape_string($task->text);
         $sql = 'update task_tags set'
-            ." task_text = '$task_text',"
+            ." text = '$text',"
             ." top_priority = $task->top_priority,"
             ." insert_time = $task->insert_time,"
             ." update_time = $task->update_time"

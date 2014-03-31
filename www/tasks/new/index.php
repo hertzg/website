@@ -10,7 +10,7 @@ if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];
 } else {
     $values = [
-        'task_text' => '',
+        'text' => '',
         'tags' => '',
     ];
 }
@@ -43,9 +43,9 @@ $content =
         'New',
         Page\sessionErrors('tasks/new/errors')
         .'<form action="submit.php" method="post">'
-            .Form\textarea('task_text', 'Text', [
-                'value' => $values['task_text'],
-                'maxlength' => $maxLengths['task_text'],
+            .Form\textarea('text', 'Text', [
+                'value' => $values['text'],
+                'maxlength' => $maxLengths['text'],
                 'autofocus' => true,
                 'required' => true,
             ])

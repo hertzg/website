@@ -8,7 +8,7 @@ function render_tasks (array $tasks, array &$items, $emptyMessage, $base = '') {
 
         foreach ($tasks as $task) {
             $icon = $task->top_priority ? 'task-top-priority' : 'task';
-            $title = htmlspecialchars($task->task_text);
+            $title = htmlspecialchars($task->text);
             $href = "{$base}view/?id=$task->id_tasks";
             $tags = $task->tags;
             if ($tags) {
