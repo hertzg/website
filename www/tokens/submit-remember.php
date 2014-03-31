@@ -21,14 +21,14 @@ if (!$token) {
     }
 
     include_once '../fns/Tokens/add.php';
-    $id_tokens = Tokens\add($mysqli, $id_users, $user->username,
+    $id = Tokens\add($mysqli, $id_users, $user->username,
         $token_text, $user_agent);
 
     include_once '../fns/Users/addNumTokens.php';
     Users\addNumTokens($mysqli, $id_users, 1);
 
     include_once '../fns/Tokens/get.php';
-    $token = Tokens\get($mysqli, $id_tokens);
+    $token = Tokens\get($mysqli, $id);
 
     if ($token) {
         setcookie('token', bin2hex($token_text), time() + 60 * 60 * 24 * 30, '/');

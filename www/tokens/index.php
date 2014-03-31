@@ -30,18 +30,18 @@ if ($tokens) {
     foreach ($tokens as $itemToken) {
 
         $text = bin2hex($itemToken->token_text);
-        if ($token && $itemToken->id_tokens == $token->id_tokens) {
+        if ($token && $itemToken->id == $token->id) {
             $text .= ' (Current)';
         }
 
         $user_agent = $itemToken->user_agent;
         if ($user_agent === null) {
             $items[] = Page\imageArrowLink($text,
-                "view/?id=$itemToken->id_tokens", 'token');
+                "view/?id=$itemToken->id", 'token');
         } else {
             $items[] = Page\imageArrowLinkWithDescription($text,
                 htmlspecialchars($user_agent),
-                "view/?id=$itemToken->id_tokens", 'token');
+                "view/?id=$itemToken->id", 'token');
         }
 
     }

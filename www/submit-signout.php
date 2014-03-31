@@ -12,7 +12,7 @@ if (array_key_exists('token', $_SESSION)) {
 
     include_once 'fns/Tokens/remove.php';
     include_once 'lib/mysqli.php';
-    Tokens\remove($mysqli, $token->id_tokens);
+    Tokens\remove($mysqli, $token->id);
 
     include_once 'fns/Users/addNumTokens.php';
     Users\addNumTokens($mysqli, $token->id_users, -1);
