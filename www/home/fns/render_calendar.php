@@ -2,6 +2,11 @@
 
 function render_calendar ($user, $mysqli, array &$items) {
 
+    include_once __DIR__.'/check_event_check_day.php';
+    check_event_check_day($mysqli, $user);
+    $num_events_today = $user->num_events_today;
+    $num_events_tomorrow = $user->num_events_tomorrow;
+
     if (!$user->show_calendar) return;
 
     $n_events = function ($n) {
@@ -9,36 +14,23 @@ function render_calendar ($user, $mysqli, array &$items) {
         return "$n events";
     };
 
-    $timeNow = time();
-    $dayToday = date('j', $timeNow);
-    $monthToday = date('n', $timeNow);
-    $yearToday = date('Y', $timeNow);
-    $timeToday = mktime(0, 0, 0, $monthToday, $dayToday, $yearToday);
-    $timeTomorrow = mktime(0, 0, 0, $monthToday, $dayToday + 1, $yearToday);
-
-    $id_users = $user->id_users;
-
-    include_once __DIR__.'/../../fns/Events/countOnTime.php';
-    $numEventsToday = Events\countOnTime($mysqli, $id_users, $timeToday);
-    $numEventsTomorrow = Events\countOnTime($mysqli, $id_users, $timeTomorrow);
-
     $key = 'calendar';
     $title = 'Calendar';
     $href = '../calendar/';
     $icon = 'calendar';
-    if ($numEventsToday) {
-        if ($numEventsTomorrow) {
+    if ($num_events_today) {
+        if ($num_events_tomorrow) {
             $description =
-                $n_events($numEventsToday).' today. '
-                .$n_events($numEventsTomorrow).' tomorrow.';
+                $n_events($num_events_today).' today. '
+                .$n_events($num_events_tomorrow).' tomorrow.';
         } else {
-            $description = $n_events($numEventsToday).' today.';
+            $description = $n_events($num_events_today).' today.';
         }
         include_once __DIR__.'/../../fns/Page/imageArrowLinkWithDescription.php';
         $items[$key] = Page\imageArrowLinkWithDescription($title,
             $description, $href, $icon);
-    } elseif ($numEventsTomorrow) {
-        $description = $n_events($numEventsTomorrow).' tomorrow.';
+    } elseif ($num_events_tomorrow) {
+        $description = $n_events($num_events_tomorrow).' tomorrow.';
         include_once __DIR__.'/../../fns/Page/imageArrowLinkWithDescription.php';
         $items[$key] = Page\imageArrowLinkWithDescription($title,
             $description, $href, $icon);
