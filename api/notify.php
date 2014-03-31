@@ -36,7 +36,7 @@ if ($notification_text === '') {
 }
 
 $id_users = $channel->id_users;
-$id_channels = $channel->id_channels;
+$id_channels = $channel->id;
 $channel_name = $channel->channel_name;
 
 include_once 'fns/Notifications/add.php';
