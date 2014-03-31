@@ -25,6 +25,9 @@ if ($task->top_priority) {
 }
 $options[] = Page\imageArrowLink('Edit Task', "../edit/?id=$id", 'edit-task');
 
+$href = "../send/?id=$id";
+$options[] = Page\imageArrowLink('Send Task', $href, 'TODO');
+
 $href = "../delete/?id=$id";
 $options[] = Page\imageArrowLink('Delete Task', $href, 'trash-bin');
 
