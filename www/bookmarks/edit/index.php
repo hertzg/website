@@ -16,6 +16,9 @@ unset(
     $_SESSION['bookmarks/messages']
 );
 
+include_once '../../fns/Bookmarks/maxLengths.php';
+$maxLengths = Bookmarks\maxLengths();
+
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/hidden.php';
@@ -38,15 +41,18 @@ $content =
         .'<form action="submit.php" method="post">'
             .Form\textfield('url', 'URL', [
                 'value' => $values['url'],
+                'maxlength' => $maxLengths['url'],
                 'autofocus' => true,
                 'required' => true,
             ])
             .'<div class="hr"></div>'
             .Form\textfield('title', 'Title', [
+                'maxlength' => $maxLengths['title'],
                 'value' => $values['title'],
             ])
             .'<div class="hr"></div>'
             .Form\textfield('tags', 'Tags', [
+                'maxlength' => $maxLengths['tags'],
                 'value' => $values['tags'],
             ])
             .'<div class="hr"></div>'
