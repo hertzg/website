@@ -23,7 +23,7 @@ if ($events) {
         $description = date('F d, Y', $event->event_time);
         $items[] = Page\imageArrowLinkWithDescription(
             htmlspecialchars($event->event_text),
-            $description, "../view-event/?id_events=$event->id_events", 'event');
+            $description, "../view-event/?id=$event->id", 'event');
     }
 
     include_once '../../fns/create_panel.php';

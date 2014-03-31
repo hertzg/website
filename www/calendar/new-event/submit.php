@@ -51,4 +51,4 @@ Users\addNumEvents($mysqli, $id_users, 1);
 
 $_SESSION['calendar/view-event/messages'] = ['Event has been saved.'];
 
-redirect("../view-event/?id_events=$id");
+redirect("../view-event/?id=$id");

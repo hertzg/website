@@ -2,7 +2,7 @@
 
 include_once '../fns/require_event.php';
 include_once '../../lib/mysqli.php';
-list($event, $id_events, $user) = require_event($mysqli);
+list($event, $id, $user) = require_event($mysqli);
 
 $key = 'calendar/edit-event/values';
 if (array_key_exists($key, $_SESSION)) {
@@ -27,8 +27,8 @@ $content =
                 'href' => '..',
             ],
             [
-                'title' => "Event #$id_events",
-                'href' => "../view-event/?id_events=$id_events",
+                'title' => "Event #$id",
+                'href' => "../view-event/?id=$id",
             ],
         ],
         'Edit',
@@ -43,9 +43,9 @@ $content =
             ])
             .'<div class="hr"></div>'
             .Form\button('Save Changes')
-            .Form\hidden('id_events', $id_events)
+            .Form\hidden('id', $id)
         .'</form>'
     );
 
 include_once '../../fns/echo_page.php';
-echo_page($user, "Edit Event #$id_events", $content, '../../');
+echo_page($user, "Edit Event #$id", $content, '../../');

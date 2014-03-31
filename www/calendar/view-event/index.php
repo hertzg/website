@@ -2,7 +2,7 @@
 
 include_once '../fns/require_event.php';
 include_once '../../lib/mysqli.php';
-list($event, $id_events, $user) = require_event($mysqli);
+list($event, $id, $user) = require_event($mysqli);
 
 include_once 'fns/unset_session_vars.php';
 unset_session_vars();
@@ -33,7 +33,7 @@ $content =
                 'href' => '..',
             ],
         ],
-        "Event #$id_events",
+        "Event #$id",
         Page\sessionMessages('calendar/view-event/messages')
         .Page\text(htmlspecialchars($event->event_text))
         .'<div class="hr"></div>'
@@ -44,11 +44,11 @@ $content =
     .create_panel(
         'Options',
         Page\imageArrowLink('Edit Event',
-            "../edit-event/?id_events=$id_events", 'edit-event')
+            "../edit-event/?id=$id", 'edit-event')
         .'<div class="hr"></div>'
         .Page\imageArrowLink('Delete Event',
-            "../delete-event/?id_events=$id_events", 'trash-bin')
+            "../delete-event/?id=$id", 'trash-bin')
     );
 
 include_once '../../fns/echo_page.php';
-echo_page($user, "Event #$id_events", $content, '../../');
+echo_page($user, "Event #$id", $content, '../../');
