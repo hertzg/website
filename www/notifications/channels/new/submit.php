@@ -16,16 +16,32 @@ if ($channel_name === '') {
     $errors[] = 'Enter channel name.';
 } elseif (preg_match('/[^a-z0-9._-]/ui', $channel_name)) {
     $errors[] = 'Channel name contains illegal characters.';
-} elseif (strlen($channel_name) < 6) {
-    $errors[] = 'Channel name too short. At least 6 characters required.';
-} elseif (strlen($channel_name) > 32) {
-    $errors[] = 'Channel name too long. At most 32 characters required.';
 } else {
-    include_once '../../../fns/Channels/getByName.php';
-    include_once '../../../lib/mysqli.php';
-    if (Channels\getByName($mysqli, $id_users, $channel_name)) {
-        $errors[] = 'A channel with this name already exists.';
+
+    $length = strlen($channel_name);
+
+    include_once '../../../fns/ChannelName/minLength.php';
+    $minLength = ChannelName\minLength();
+
+    if ($length < $minLength) {
+        $errors[] = "Channel name too short. At least $minLength characters required.";
+    } else {
+
+        include_once '../../../fns/ChannelName/maxLength.php';
+        $maxLength = ChannelName\maxLength();
+
+        if ($length > $maxLength) {
+            $errors[] = "Channel name too long. At most $maxLength characters required.";
+        } else {
+            include_once '../../../fns/Channels/getByName.php';
+            include_once '../../../lib/mysqli.php';
+            if (Channels\getByName($mysqli, $id_users, $channel_name)) {
+                $errors[] = 'A channel with this name already exists.';
+            }
+        }
+
     }
+
 }
 
 include_once '../../../fns/redirect.php';

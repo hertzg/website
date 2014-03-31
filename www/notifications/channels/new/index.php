@@ -17,6 +17,12 @@ unset(
     $_SESSION['notifications/channels/messages']
 );
 
+include_once '../../../fns/ChannelName/maxLength.php';
+$maxLength = ChannelName\maxLength();
+
+include_once '../../../fns/ChannelName/minLength.php';
+$minLength = ChannelName\minLength();
+
 include_once '../../../fns/create_tabs.php';
 include_once '../../../fns/Form/button.php';
 include_once '../../../fns/Form/notes.php';
@@ -39,13 +45,13 @@ $content =
         .'<form action="submit.php" method="post">'
             .Form\textfield('channel_name', 'Channel name', [
                 'value' => $values['channel_name'],
-                'maxlength' => 32,
+                'maxlength' => $maxLength,
                 'autofocus' => true,
                 'required' => true,
             ])
             .Form\notes([
                 'Characters a-z, A-Z, 0-9, dash, dot and underscore only.',
-                'Minimum 6 maximum 32 characters.',
+                "Minimum $minLength maximum $maxLength characters.",
             ])
             .'<div class="hr"></div>'
             .Form\button('Create')
