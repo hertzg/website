@@ -2,6 +2,9 @@
 
 function create_options_panel ($file) {
 
+    include_once __DIR__.'/../../../fns/Page/imageArrowLink.php';
+    include_once __DIR__.'/../../../fns/Page/imageLink.php';
+
     $id = $file->id_files;
 
     $options = [];

@@ -37,14 +37,13 @@ unset(
 
 $username = $values['username'];
 
-include_once '../fns/create_panel.php';
+include_once 'fns/create_options_panel.php';
 include_once '../fns/create_tabs.php';
 include_once '../fns/Form/button.php';
 include_once '../fns/Form/checkbox.php';
 include_once '../fns/Form/hidden.php';
 include_once '../fns/Form/password.php';
 include_once '../fns/Form/textfield.php';
-include_once '../fns/Page/imageLinkWithDescription.php';
 include_once '../fns/Page/sessionErrors.php';
 include_once '../fns/Page/sessionMessages.php';
 $content =
@@ -71,15 +70,7 @@ $content =
             .Form\button('Sign In')
             .Form\hidden('return', $return)
         .'</form>'
-        .create_panel(
-            'Options',
-            Page\imageLinkWithDescription('Forgot password?',
-                'Reset your account password here.', '../email-reset-password/',
-                'reset-password')
-            .'<div class="hr"></div>'
-            .Page\imageLinkWithDescription('Don\'t have an account?',
-                'Sign up here.', '../sign-up/', 'new-password')
-        )
+        .create_options_panel()
     );
 
 include_once '../fns/echo_guest_page.php';

@@ -11,9 +11,10 @@ $token = require_valid_token($mysqli);
 
 $options = [];
 if (!$token) {
+    $title = 'Remember Current Session';
+    $href = 'submit-remember.php';
     include_once '../fns/Page/imageLink.php';
-    $options[] = Page\imageLink('Remember Current Session',
-        'submit-remember.php', 'create-token');
+    $options[] = Page\imageLink($title, $href, 'create-token');
 }
 
 include_once __DIR__.'/../fns/Tokens/indexOnUser.php';

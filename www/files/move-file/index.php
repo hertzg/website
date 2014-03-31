@@ -1,6 +1,6 @@
 <?php
 
-function create_link ($id, $id_folders) {
+function create_href ($id, $id_folders) {
     if ($id_folders) return "./?id=$id&id_folders=$id_folders";
     return "./?id=$id";
 }
@@ -34,17 +34,19 @@ include_once '../../fns/Page/imageLink.php';
 
 $items = [];
 if ($id_folders) {
-    $items[] = Page\imageLink('.. Parent folder',
-        create_link($id, $parentFolder->parent_id_folders), 'parent-folder');
+    $title = '.. Parent folder';
+    $href = create_href($id, $parentFolder->parent_id_folders);
+    $items[] = Page\imageLink($title, $href, 'parent-folder');
 }
 foreach ($folders as $folder) {
-    $items[] = Page\imageArrowLink(htmlspecialchars($folder->folder_name),
-        create_link($id, $folder->id_folders), 'folder');
+    $title = htmlspecialchars($folder->folder_name);
+    $href = create_href($id, $folder->id_folders);
+    $items[] = Page\imageArrowLink($title, $href, 'folder');
 }
 
 if ($id_folders != $file->id_folders) {
-    $items[] = Page\imageLink('Move Here',
-        "submit.php?id=$id&id_folders=$id_folders", 'move-file');
+    $href = "submit.php?id=$id&id_folders=$id_folders";
+    $items[] = Page\imageLink('Move Here', $href, 'move-file');
 }
 
 $key = 'files/move-file/id_folders';

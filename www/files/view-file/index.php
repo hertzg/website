@@ -33,8 +33,6 @@ include_once '../../fns/create_folder_link.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/date_ago.php';
 include_once '../../fns/Form/label.php';
-include_once '../../fns/Page/imageArrowLink.php';
-include_once '../../fns/Page/imageLink.php';
 include_once '../../fns/Page/sessionMessages.php';
 $content =
     create_tabs(

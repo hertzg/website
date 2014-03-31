@@ -20,10 +20,8 @@ foreach ($userHomeItems as $key => $item) {
 
 unset($_SESSION['customize-home/messages']);
 
-include_once '../../fns/create_panel.php';
+include_once 'fns/create_options_panel.php';
 include_once '../../fns/create_tabs.php';
-include_once '../../fns/Page/imageArrowLink.php';
-include_once '../../fns/Page/imageLinkWithDescription.php';
 include_once '../../fns/Page/sessionMessages.php';
 include_once '../../fns/Page/warnings.php';
 $content = create_tabs(
@@ -41,14 +39,7 @@ $content = create_tabs(
     Page\sessionMessages('customize-home/reorder/messages')
     .Page\warnings(['Select an item to move up or down.'])
     .join('<div class="hr"></div>', $items)
-    .create_panel(
-        'Options',
-        Page\imageLinkWithDescription('Show / Hide Items',
-            'Change the visibility of the items.', '../show-hide/', 'show-hide')
-        .'<div class="hr"></div>'
-        .Page\imageArrowLink('Restore Defaults', 'restore-defaults/',
-            'restore-defaults')
-    )
+    .create_options_panel()
 );
 
 include_once '../../fns/echo_page.php';

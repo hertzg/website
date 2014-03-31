@@ -27,11 +27,9 @@ $content =
             .' "<b>'.htmlspecialchars($folder->folder_name).'</b>"?'
         )
         .'<div class="hr"></div>'
-        .Page\imageLink('Yes, delete folder',
-            "submit.php?id_folders=$id_folders", 'yes')
+        .Page\imageLink('Yes, delete folder', "submit.php?id_folders=$id_folders", 'yes')
         .'<div class="hr"></div>'
-        .Page\imageLink('No, return back',
-            create_folder_link($id_folders, '../'), 'no')
+        .Page\imageLink('No, return back', create_folder_link($id_folders, '../'), 'no')
     );
 
 include_once '../../fns/echo_page.php';

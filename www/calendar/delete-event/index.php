@@ -24,11 +24,9 @@ $content =
         "Event #$id",
         Page\text('Are you sure you want to delete the event?')
         .'<div class="hr"></div>'
-        .Page\imageLink('Yes, delete event',
-            "submit.php?id=$id", 'yes')
+        .Page\imageLink('Yes, delete event', "submit.php?id=$id", 'yes')
         .'<div class="hr"></div>'
-        .Page\imageLink('No, return back',
-            "../view-event/?id=$id", 'no')
+        .Page\imageLink('No, return back', "../view-event/?id=$id", 'no')
     );
 
 include_once '../../fns/echo_page.php';

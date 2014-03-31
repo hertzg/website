@@ -1,6 +1,6 @@
 <?php
 
-function create_link ($id_folders, $parent_id_folders) {
+function create_href ($id_folders, $parent_id_folders) {
     if ($parent_id_folders) {
         return "./?id_folders=$id_folders&parent_id_folders=$parent_id_folders";
     }
@@ -36,9 +36,9 @@ include_once '../../fns/Page/imageLink.php';
 
 $items = [];
 if ($parent_id_folders) {
-    $items[] = Page\imageLink('.. Parent folder',
-        create_link($id_folders, $parentFolder->parent_id_folders),
-        'parent-folder');
+    $title = '.. Parent folder';
+    $href = create_href($id_folders, $parentFolder->parent_id_folders);
+    $items[] = Page\imageLink($title, $href, 'parent-folder');
 }
 foreach ($folders as $itemFolder) {
     $escapedName = htmlspecialchars($itemFolder->folder_name);
@@ -46,15 +46,14 @@ foreach ($folders as $itemFolder) {
         include_once '../../fns/Page/disabledImageLink.php';
         $items[] = Page\disabledImageLink($escapedName, 'folder');
     } else {
-        $items[] = Page\imageArrowLink($escapedName,
-            create_link($id_folders, $itemFolder->id_folders), 'folder');
+        $href = create_href($id_folders, $itemFolder->id_folders);
+        $items[] = Page\imageArrowLink($escapedName, $href, 'folder');
     }
 }
 
 if ($parent_id_folders != $folder->parent_id_folders) {
-    $items[] = Page\imageLink('Move Here',
-        "submit.php?id_folders=$id_folders&parent_id_folders=$parent_id_folders",
-        'move-folder');
+    $href = "submit.php?id_folders=$id_folders&parent_id_folders=$parent_id_folders";
+    $items[] = Page\imageLink('Move Here', $href, 'move-folder');
 }
 
 $key = 'files/move-folder/parent_id_folders';
