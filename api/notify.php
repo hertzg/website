@@ -4,6 +4,13 @@ include_once 'fns/request_strings.php';
 list($channel_name, $channel_key, $notification_text) = request_strings(
     'channel_name', 'channel_key', 'notification_text');
 
+list($channelname, $channelkey, $notificationtext) = request_strings(
+    'channelname', 'channelkey', 'notificationtext');
+
+if ($channelname !== '') $channel_name = $channelname;
+if ($channelkey !== '') $channel_key = $channelkey;
+if ($notificationtext !== '') $notification_text = $notificationtext;
+
 include_once 'fns/hex2bin.php';
 $channel_key = hex2bin($channel_key);
 
