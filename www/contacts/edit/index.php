@@ -18,6 +18,7 @@ include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/hidden.php';
 include_once '../../fns/Form/textfield.php';
 include_once '../../fns/Page/sessionErrors.php';
+include_once '../../fns/Username/maxLength.php';
 $content =
     create_tabs(
         [
@@ -57,6 +58,11 @@ $content =
             .'<div class="hr"></div>'
             .Form\textfield('phone2', 'Phone 2', [
                 'value' => $values['phone2'],
+            ])
+            .'<div class="hr"></div>'
+            .Form\textfield('username', 'Zvini username', [
+                'value' => $values['username'],
+                'maxlength' => Username\maxLength(),
             ])
             .'<div class="hr"></div>'
             .Form\textfield('tags', 'Tags', [

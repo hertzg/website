@@ -34,6 +34,11 @@ include_once 'fns/render_phone_number.php';
 render_phone_number('Phone 1', $contact->phone1, $items);
 render_phone_number('Phone 2', $contact->phone2, $items);
 
+$username = $contact->username;
+if ($username !== '') {
+    $items[] = Form\label('Zvini username', htmlspecialchars($username));
+}
+
 $insert_time = $contact->insert_time;
 $update_time = $contact->update_time;
 

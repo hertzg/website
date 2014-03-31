@@ -10,9 +10,9 @@ $id_users = $user->id_users;
 
 include_once '../../fns/request_strings.php';
 list($full_name, $alias, $address, $email,
-    $phone1, $phone2, $tags) = request_strings(
+    $phone1, $phone2, $username, $tags) = request_strings(
     'full_name', 'alias', 'address', 'email',
-    'phone1', 'phone2', 'tags');
+    'phone1', 'phone2', 'username', 'tags');
 
 include_once '../../fns/str_collapse_spaces.php';
 $full_name = str_collapse_spaces($full_name);
@@ -21,6 +21,7 @@ $address = str_collapse_spaces($address);
 $email = str_collapse_spaces($email);
 $phone1 = str_collapse_spaces($phone1);
 $phone2 = str_collapse_spaces($phone2);
+$username = str_collapse_spaces($username);
 $tags = str_collapse_spaces($tags);
 
 $errors = [];
@@ -50,6 +51,7 @@ if ($errors) {
         'email' => $email,
         'phone1' => $phone1,
         'phone2' => $phone2,
+        'username' => $username,
         'tags' => $tags,
     ];
     redirect("./?id=$id");
@@ -62,7 +64,7 @@ unset(
 
 include_once '../../fns/Contacts/edit.php';
 Contacts\edit($mysqli, $id_users, $id, $full_name, $alias,
-    $address, $email, $phone1, $phone2, $tags);
+    $address, $email, $phone1, $phone2, $username, $tags);
 
 include_once '../../fns/ContactTags/deleteOnContact.php';
 ContactTags\deleteOnContact($mysqli, $id);

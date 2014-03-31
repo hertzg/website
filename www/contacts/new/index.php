@@ -16,6 +16,7 @@ if (array_key_exists($key, $_SESSION)) {
         'email' => '',
         'phone1' => '',
         'phone2' => '',
+        'username' => '',
         'tags' => '',
     ];
 }
@@ -29,6 +30,7 @@ include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/textfield.php';
 include_once '../../fns/Page/sessionErrors.php';
+include_once '../../fns/Username/maxLength.php';
 $content =
     create_tabs(
         [
@@ -74,6 +76,11 @@ $content =
             .Form\textfield('phone2', 'Phone 2', [
                 'value' => $values['phone2'],
                 'maxlength' => 32,
+            ])
+            .'<div class="hr"></div>'
+            .Form\textfield('username', 'Zvini username', [
+                'value' => $values['username'],
+                'maxlength' => Username\maxLength(),
             ])
             .'<div class="hr"></div>'
             .Form\textfield('tags', 'Tags', [
