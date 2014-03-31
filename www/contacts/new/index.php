@@ -26,11 +26,13 @@ unset(
     $_SESSION['contacts/messages']
 );
 
+include_once '../../fns/Contacts/maxLengths.php';
+$maxLengths = Contacts\maxLengths();
+
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/textfield.php';
 include_once '../../fns/Page/sessionErrors.php';
-include_once '../../fns/Username/maxLength.php';
 $content =
     create_tabs(
         [
@@ -48,43 +50,44 @@ $content =
         .'<form action="submit.php" method="post">'
             .Form\textfield('full_name', 'Full name', [
                 'value' => $values['full_name'],
-                'maxlength' => 32,
+                'maxlength' => $maxLengths['full_name'],
                 'autofocus' => true,
                 'required' => true,
             ])
             .'<div class="hr"></div>'
             .Form\textfield('alias', 'Alias', [
                 'value' => $values['alias'],
-                'maxlength' => 32,
+                'maxlength' => $maxLengths['alias'],
             ])
             .'<div class="hr"></div>'
             .Form\textfield('address', 'Address', [
                 'value' => $values['address'],
-                'maxlength' => 128,
+                'maxlength' => $maxLengths['address'],
             ])
             .'<div class="hr"></div>'
             .Form\textfield('email', 'Email', [
                 'value' => $values['email'],
-                'maxlength' => 32,
+                'maxlength' => $maxLengths['email'],
             ])
             .'<div class="hr"></div>'
             .Form\textfield('phone1', 'Phone 1', [
                 'value' => $values['phone1'],
-                'maxlength' => 32,
+                'maxlength' => $maxLengths['phone1'],
             ])
             .'<div class="hr"></div>'
             .Form\textfield('phone2', 'Phone 2', [
                 'value' => $values['phone2'],
-                'maxlength' => 32,
+                'maxlength' => $maxLengths['phone2'],
             ])
             .'<div class="hr"></div>'
             .Form\textfield('username', 'Zvini username', [
                 'value' => $values['username'],
-                'maxlength' => Username\maxLength(),
+                'maxlength' => $maxLengths['username'],
             ])
             .'<div class="hr"></div>'
             .Form\textfield('tags', 'Tags', [
                 'value' => $values['tags'],
+                'maxlength' => $maxLengths['tags'],
             ])
             .'<div class="hr"></div>'
             .Form\button('Save Contact')
