@@ -20,6 +20,9 @@ unset(
     $_SESSION['notes/messages']
 );
 
+include_once '../../fns/Notes/maxLengths.php';
+$maxLengths = Notes\maxLengths();
+
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/textarea.php';
@@ -42,12 +45,14 @@ $content =
         .'<form action="submit.php" method="post">'
             .Form\textarea('note_text', 'Text', [
                 'value' => $values['note_text'],
+                'maxlength' => $maxLengths['note_text'],
                 'autofocus' => true,
                 'required' => true,
             ])
             .'<div class="hr"></div>'
             .Form\textfield('tags', 'Tags', [
                 'value' => $values['tags'],
+                'maxlength' => $maxLengths['tags'],
             ])
             .'<div class="hr"></div>'
             .Form\button('Save Note')
