@@ -50,13 +50,13 @@ foreach ($users as $user) {
 $channels = mysqli_query_object($mysqli, 'select * from channels');
 foreach ($channels as $channel) {
 
-    $id_channels = $channel->id_channels;
+    $id = $channel->id;
 
-    $sql = "select count(*) value from notifications where id_channels = $id_channels";
+    $sql = "select count(*) value from notifications where id_channels = $id";
     $num_notifications = mysqli_single_object($mysqli, $sql)->value;
 
     $sql = "update channels set num_notifications = $num_notifications"
-        ." where id_channels = $id_channels";
+        ." where id = $id";
     $mysqli->query($sql) || die($mysqli->error);
 
 }
