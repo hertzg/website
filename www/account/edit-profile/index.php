@@ -14,6 +14,9 @@ if (array_key_exists($key, $_SESSION)) {
 
 unset($_SESSION['account/messages']);
 
+include_once '../../fns/Users/maxLengths.php';
+$maxLengths = Users\maxLengths();
+
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/textfield.php';
@@ -35,12 +38,14 @@ $content =
         .'<form action="submit.php" method="post">'
             .Form\textfield('email', 'Email', [
                 'value' => $values->email,
+                'maxlength' => $maxLengths['email'],
                 'autofocus' => true,
                 'required' => true,
             ])
             .'<div class="hr"></div>'
             .Form\textfield('full_name', 'Full name', [
                 'value' => $values->full_name,
+                'maxlength' => $maxLengths['full_name'],
             ])
             .'<div class="hr"></div>'
             .Form\button('Save Changes')
