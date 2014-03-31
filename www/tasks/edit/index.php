@@ -16,6 +16,9 @@ unset(
     $_SESSION['tasks/messages']
 );
 
+include_once '../../fns/Tasks/maxLengths.php';
+$maxLengths = Tasks\maxLengths();
+
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/hidden.php';
@@ -39,12 +42,14 @@ $content =
         .'<form action="submit.php" method="post">'
             .Form\textarea('task_text', 'Text', [
                 'value' => $values['task_text'],
+                'maxlength' => $maxLengths['task_text'],
                 'autofocus' => true,
                 'required' => true,
             ])
             .'<div class="hr"></div>'
             .Form\textfield('tags', 'Tags', [
                 'value' => $values['tags'],
+                'maxlength' => $maxLengths['tags'],
             ])
             .'<div class="hr"></div>'
             .Form\button('Save Changes')
