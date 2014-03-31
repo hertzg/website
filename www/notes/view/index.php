@@ -19,7 +19,7 @@ include_once '../../fns/render_external_links.php';
 include_once '../../fns/Page/text.php';
 $items[] = Page\text(
     nl2br(
-        render_external_links(htmlspecialchars($note->note_text), $base)
+        render_external_links(htmlspecialchars($note->text), $base)
     )
 );
 

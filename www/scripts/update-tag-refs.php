@@ -33,9 +33,9 @@ foreach ($ids as $id) {
     $sql = "select * from notes where id_notes = $id->value";
     $note = mysqli_single_object($mysqli, $sql);
     if ($note) {
-        $note_text = $mysqli->real_escape_string($note->note_text);
+        $text = $mysqli->real_escape_string($note->text);
         $sql = 'update note_tags set'
-            ." note_text = '$note_text',"
+            ." text = '$text',"
             ." insert_time = $note->insert_time,"
             ." update_time = $note->update_time"
             ." where id_notes = $note->id_notes";

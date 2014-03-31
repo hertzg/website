@@ -2,14 +2,14 @@
 
 namespace Notes;
 
-function add ($mysqli, $id_users, $note_text, $tags) {
-    $note_text = $mysqli->real_escape_string($note_text);
+function add ($mysqli, $id_users, $text, $tags) {
+    $text = $mysqli->real_escape_string($text);
     $tags = $mysqli->real_escape_string($tags);
     $insert_time = $update_time = time();
     $sql = 'insert into notes'
-        .' (id_users, note_text, tags,'
+        .' (id_users, text, tags,'
         .' insert_time, update_time)'
-        ." values ($id_users, '$note_text', '$tags',"
+        ." values ($id_users, '$text', '$tags',"
         ." $insert_time, $update_time)";
     $mysqli->query($sql);
     return $mysqli->insert_id;

@@ -10,7 +10,7 @@ if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];
 } else {
     $values = [
-        'note_text' => '',
+        'text' => '',
         'tags' => '',
     ];
 }
@@ -43,9 +43,9 @@ $content =
         'New',
         Page\sessionErrors('notes/new/errors')
         .'<form action="submit.php" method="post">'
-            .Form\textarea('note_text', 'Text', [
-                'value' => $values['note_text'],
-                'maxlength' => $maxLengths['note_text'],
+            .Form\textarea('text', 'Text', [
+                'value' => $values['text'],
+                'maxlength' => $maxLengths['text'],
                 'autofocus' => true,
                 'required' => true,
             ])

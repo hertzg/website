@@ -40,9 +40,9 @@ $content =
         'Edit',
         Page\sessionErrors('notes/edit/errors')
         .'<form action="submit.php" method="post">'
-            .Form\textarea('note_text', 'Text', [
-                'value' => $values['note_text'],
-                'maxlength' => $maxLengths['note_text'],
+            .Form\textarea('text', 'Text', [
+                'value' => $values['text'],
+                'maxlength' => $maxLengths['text'],
                 'autofocus' => true,
                 'required' => true,
             ])

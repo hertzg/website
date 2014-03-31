@@ -8,17 +8,17 @@ $user = require_user('../../');
 $id_users = $user->id_users;
 
 include_once '../../fns/request_strings.php';
-list($note_text, $tags) = request_strings('note_text', 'tags');
+list($text, $tags) = request_strings('text', 'tags');
 
 include_once '../../fns/str_collapse_spaces_multiline.php';
-$note_text = str_collapse_spaces_multiline($note_text);
+$text = str_collapse_spaces_multiline($text);
 
 include_once '../../fns/str_collapse_spaces.php';
 $tags = str_collapse_spaces($tags);
 
 $errors = [];
 
-if ($note_text === '') $errors[] = 'Enter text.';
+if ($text === '') $errors[] = 'Enter text.';
 
 include_once '../../fns/parse_tags.php';
 parse_tags($tags, $tag_names, $errors);
@@ -28,7 +28,7 @@ include_once '../../fns/redirect.php';
 if ($errors) {
     $_SESSION['notes/new/errors'] = $errors;
     $_SESSION['notes/new/values'] = [
-        'note_text' => $note_text,
+        'text' => $text,
         'tags' => $tags,
     ];
     redirect();
@@ -41,10 +41,10 @@ unset(
 
 include_once '../../fns/Notes/add.php';
 include_once '../../lib/mysqli.php';
-$id = Notes\add($mysqli, $id_users, $note_text, $tags);
+$id = Notes\add($mysqli, $id_users, $text, $tags);
 
 include_once '../../fns/NoteTags/add.php';
-NoteTags\add($mysqli, $id_users, $id, $tag_names, $note_text);
+NoteTags\add($mysqli, $id_users, $id, $tag_names, $text);
 
 include_once '../../fns/Users/addNumNotes.php';
 Users\addNumNotes($mysqli, $id_users, 1);
