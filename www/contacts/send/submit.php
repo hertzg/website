@@ -1,8 +1,8 @@
 <?php
 
-include_once '../fns/require_note.php';
+include_once '../fns/require_contact.php';
 include_once '../../lib/mysqli.php';
-list($note, $id, $user) = require_note($mysqli);
+list($contact, $id, $user) = require_contact($mysqli);
 $id_users = $user->id_users;
 
 include_once '../../fns/request_strings.php';
@@ -20,12 +20,12 @@ if ($username === '') {
     } else {
         $receiver_id_users = $receiverUser->id_users;
         if ($receiver_id_users == $id_users) {
-            $errors[] = 'You cannot send a note to yourself.';
+            $errors[] = 'You cannot send a contact to yourself.';
         } else {
             include_once '../../fns/get_users_connection.php';
             $connection = get_users_connection($mysqli, $receiverUser, $id_users);
-            if (!$connection['can_send_note']) {
-                $errors[] = "The user isn't receiving notes from you.";
+            if (!$connection['can_send_contact']) {
+                $errors[] = "The user isn't receiving contacts from you.";
             }
         }
     }
@@ -34,15 +34,16 @@ if ($username === '') {
 include_once '../../fns/redirect.php';
 
 if ($errors) {
-    $_SESSION['notes/send/errors'] = $errors;
-    $_SESSION['notes/send/values'] = ['username' => $username];
+    $_SESSION['contacts/send/errors'] = $errors;
+    $_SESSION['contacts/send/values'] = ['username' => $username];
     redirect("./?id=$id");
 }
 
-include_once '../../fns/ReceivedNotes/add.php';
-ReceivedNotes\add($mysqli, $id_users, $user->username,
-    $receiver_id_users, $note->text, $note->tags);
+include_once '../../fns/ReceivedContacts/add.php';
+ReceivedContacts\add($mysqli, $id_users, $user->username, $receiver_id_users,
+    $contact->full_name, $contact->address, $contact->alias, $contact->address,
+    $contact->phone1, $contact->phone2, $contact->username, $contact->tags);
 
-$_SESSION['notes/view/messages'] = ['Sent.'];
+$_SESSION['contacts/view/messages'] = ['Sent.'];
 
 redirect("../view/?id=$id");

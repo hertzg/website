@@ -26,6 +26,22 @@ $mysqli->query('drop table received_notes');
 $mysqli->query('drop table received_tasks');
 
 $mysqli->query(
+    'create table received_contacts'
+    .' (id bigint unsigned not null auto_increment primary key,'
+    .' sender_id_users bigint unsigned not null,'
+    .' sender_username varchar(32) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,'
+    .' receiver_id_users bigint unsigned not null,'
+    .' full_name varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,'
+    .' alias varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,'
+    .' address varchar(128) NOT NULL,'
+    .' email varchar(64) NOT NULL,'
+    .' phone1 varchar(32) NOT NULL,'
+    .' phone2 varchar(32) NOT NULL,'
+    .' username varchar(32) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,'
+    .' tags varchar(256) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,'
+    .' insert_time bigint(20) unsigned NOT NULL)');
+
+$mysqli->query(
     'create table received_notes'
     .' (id bigint unsigned not null auto_increment primary key,'
     .' sender_id_users bigint unsigned not null,'

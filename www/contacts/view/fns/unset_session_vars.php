@@ -5,6 +5,7 @@ function unset_session_vars () {
         $_SESSION['contacts/edit/errors'],
         $_SESSION['contacts/edit/values'],
         $_SESSION['contacts/errors'],
-        $_SESSION['contacts/messages']
+        $_SESSION['contacts/messages'],
+        $_SESSION['contacts/send/errors']
     );
 }
