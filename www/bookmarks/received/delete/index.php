@@ -21,7 +21,7 @@ $content = create_tabs(
     "Received Bookmark #$id",
     Page\text('Are you sure you want to delete the bookmark?')
     .'<div class="hr"></div>'
-    .Page\imageLink('Yes, delete bookmark', "../view/?id=$id", 'yes')
+    .Page\imageLink('Yes, delete bookmark', "submit.php?id=$id", 'yes')
     .'<div class="hr"></div>'
     .Page\imageLink('No, return back', "../view/?id=$id", 'no')
 );

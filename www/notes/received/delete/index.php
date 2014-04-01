@@ -21,7 +21,7 @@ $content = create_tabs(
     "Received Note #$id",
     Page\text('Are you sure you want to delete the note?')
     .'<div class="hr"></div>'
-    .Page\imageLink('Yes, delete note', "../view/?id=$id", 'yes')
+    .Page\imageLink('Yes, delete note', "submit.php?id=$id", 'yes')
     .'<div class="hr"></div>'
     .Page\imageLink('No, return back', "../view/?id=$id", 'no')
 );
