@@ -8,7 +8,9 @@ unset(
     $_SESSION['notes/edit/errors'],
     $_SESSION['notes/edit/values'],
     $_SESSION['notes/errors'],
-    $_SESSION['notes/messages']
+    $_SESSION['notes/messages'],
+    $_SESSION['notes/send/errors'],
+    $_SESSION['notes/send/values']
 );
 
 $base = '../../';
