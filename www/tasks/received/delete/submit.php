@@ -15,7 +15,15 @@ ReceivedTasks\delete($mysqli, $id);
 include_once '../../../fns/Users/addNumReceivedTasks.php';
 Users\addNumReceivedTasks($mysqli, $user->id_users, -1);
 
-$_SESSION['tasks/received/messages'] = ['Note has been deleted.'];
-
+$messages = ['Task has been deleted.'];
 include_once '../../../fns/redirect.php';
+
+if ($user->num_received_tasks == 1) {
+    $messages[] = 'No more received task.';
+    $_SESSION['tasks/messages'] = $messages;
+    unset($_SESSION['tasks/errors']);
+    redirect('../..');
+}
+
+$_SESSION['tasks/received/messages'] = $messages;
 redirect('..');

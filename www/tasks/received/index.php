@@ -50,8 +50,8 @@ $content = create_tabs(
         ],
     ],
     'Received',
-    Page\sessionMessages('contacts/received/messages')
-    .    join('<div class="hr"></div>', $items)
+    Page\sessionMessages('tasks/received/messages')
+    .join('<div class="hr"></div>', $items)
 );
 
 include_once '../../fns/echo_page.php';

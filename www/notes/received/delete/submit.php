@@ -15,7 +15,15 @@ ReceivedNotes\delete($mysqli, $id);
 include_once '../../../fns/Users/addNumReceivedNotes.php';
 Users\addNumReceivedNotes($mysqli, $user->id_users, -1);
 
-$_SESSION['notes/received/messages'] = ['Note has been deleted.'];
-
+$messages = ['Note has been deleted.'];
 include_once '../../../fns/redirect.php';
+
+if ($user->num_received_notes == 1) {
+    $messages[] = 'No more received notes.';
+    $_SESSION['notes/messages'] = $messages;
+    unset($_SESSION['notes/errors']);
+    redirect('../..');
+}
+
+$_SESSION['notes/received/messages'] = $messages;
 redirect('..');

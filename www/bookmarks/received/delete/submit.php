@@ -15,7 +15,15 @@ ReceivedBookmarks\delete($mysqli, $id);
 include_once '../../../fns/Users/addNumReceivedBookmarks.php';
 Users\addNumReceivedBookmarks($mysqli, $user->id_users, -1);
 
-$_SESSION['bookmarks/received/messages'] = ['Note has been deleted.'];
-
+$messages = ['Bookmark has been deleted.'];
 include_once '../../../fns/redirect.php';
+
+if ($user->num_received_bookmarks == 1) {
+    $messages[] = 'No more received bookmarks.';
+    $_SESSION['bookmarks/messages'] = $messages;
+    unset($_SESSION['bookmarks/errors']);
+    redirect('../..');
+}
+
+$_SESSION['bookmarks/received/messages'] = $messages;
 redirect('..');
