@@ -24,8 +24,9 @@ if ($username === '') {
         } else {
             include_once '../../fns/get_users_connection.php';
             $connection = get_users_connection($mysqli, $receiverUser, $id_users);
-            var_dump($connection);
-            die('TODO');
+            if (!$connection['can_send_note']) {
+                $errors[] = "The user isn't receiving notes from you.";
+            }
         }
     }
 }
@@ -37,5 +38,11 @@ if ($errors) {
     $_SESSION['notes/send/values'] = ['username' => $username];
     redirect("./?id=$id");
 }
+
+include_once '../../fns/ReceivedNotes/add.php';
+ReceivedNotes\add($mysqli, $id_users, $user->username,
+    $receiver_id_users, $note->text, $note->tags);
+
+$_SESSION['notes/view/messages'] = ['Sent.'];
 
 redirect("../view/?id=$id");

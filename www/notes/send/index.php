@@ -4,6 +4,8 @@ include_once '../fns/require_note.php';
 include_once '../../lib/mysqli.php';
 list($note, $id, $user) = require_note($mysqli);
 
+unset($_SESSION['notes/view/messages']);
+
 $key = 'notes/send/values';
 if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];
