@@ -35,6 +35,7 @@ if ($tags !== '') {
     $items[] = Page\text('Tags: '.htmlspecialchars($tags));
 }
 
+include_once 'fns/create_options_panel.php';
 include_once '../../../fns/create_panel.php';
 include_once '../../../fns/create_tabs.php';
 include_once '../../../fns/Form/label.php';
@@ -52,6 +53,7 @@ $content = create_tabs(
     "Received Bookmark #$id",
     Form\label('Received from', htmlspecialchars($receivedBookmark->sender_username))
     .create_panel('The Bookmark', join('<div class="hr"></div>', $items))
+    .create_options_panel($id)
 );
 
 include_once '../../../fns/echo_page.php';
