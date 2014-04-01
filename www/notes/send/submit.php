@@ -43,6 +43,9 @@ include_once '../../fns/ReceivedNotes/add.php';
 ReceivedNotes\add($mysqli, $id_users, $user->username,
     $receiver_id_users, $note->text, $note->tags);
 
+include_once '../../fns/Users/addNumReceivedNotes.php';
+Users\addNumReceivedNotes($mysqli, $receiver_id_users, 1);
+
 $_SESSION['notes/view/messages'] = ['Sent.'];
 
 redirect("../view/?id=$id");

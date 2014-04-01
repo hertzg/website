@@ -3,25 +3,6 @@
 chdir(__DIR__);
 include_once '../lib/mysqli.php';
 
-$mysqli->query(
-    'alter table contacts'
-    .' change full_name full_name varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL') || var_dump($mysqli->error);
-$mysqli->query(
-    'alter table contacts'
-    .' change address address varchar(128) NOT NULL');
-$mysqli->query(
-    'alter table contacts'
-    .' change email email varchar(64) NOT NULL');
-$mysqli->query(
-    'alter table contacts'
-    .' change phone1 phone1 varchar(32) NOT NULL');
-$mysqli->query(
-    'alter table contacts'
-    .' change phone2 phone2 varchar(32) NOT NULL');
-$mysqli->query(
-    'alter table contacts'
-    .' change username username varchar(32) CHARACTER SET ascii COLLATE ascii_bin NOT NULL');
-
 $mysqli->query('drop table received_notes');
 $mysqli->query('drop table received_tasks');
 
@@ -72,6 +53,11 @@ $mysqli->query(
     .' tags varchar(256) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,'
     .' top_priority tinyint unsigned not null,'
     .' insert_time bigint unsigned not null)');
+
+$mysqli->query('alter table users add num_received_bookmarks bigint unsigned not null after num_logins') || var_dump($mysqli->error);
+$mysqli->query('alter table users add num_received_contacts bigint unsigned not null after num_received_bookmarks') || var_dump($mysqli->error);
+$mysqli->query('alter table users add num_received_notes bigint unsigned not null after num_received_contacts') || var_dump($mysqli->error);
+$mysqli->query('alter table users add num_received_tasks bigint unsigned not null after num_received_notes') || var_dump($mysqli->error);
 
 $mysqli->query('alter table users add anonymous_can_send_bookmark tinyint unsigned not null after order_home_items') || var_dump($mysqli->error);
 $mysqli->query('alter table users add anonymous_can_send_contact tinyint unsigned not null after anonymous_can_send_channel') || var_dump($mysqli->error);

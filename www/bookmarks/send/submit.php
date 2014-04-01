@@ -43,6 +43,9 @@ include_once '../../fns/ReceivedBookmarks/add.php';
 ReceivedBookmarks\add($mysqli, $id_users, $user->username, $receiver_id_users,
     $bookmark->url, $bookmark->title, $bookmark->tags);
 
+include_once '../../fns/Users/addNumReceivedBookmarks.php';
+Users\addNumReceivedBookmarks($mysqli, $receiver_id_users, 1);
+
 $_SESSION['bookmarks/view/messages'] = ['Sent.'];
 
 redirect("../view/?id=$id");
