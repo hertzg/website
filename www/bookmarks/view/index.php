@@ -8,7 +8,9 @@ unset(
     $_SESSION['bookmarks/edit/errors'],
     $_SESSION['bookmarks/edit/values'],
     $_SESSION['bookmarks/errors'],
-    $_SESSION['bookmarks/messages']
+    $_SESSION['bookmarks/messages'],
+    $_SESSION['bookmarks/send/errors'],
+    $_SESSION['bookmarks/send/values']
 );
 
 $url = $bookmark->url;
@@ -75,6 +77,8 @@ $content =
         ])
         .'<div class="hr"></div>'
         .Page\imageArrowLink('Edit Bookmark', "../edit/?id=$id", 'edit-bookmark')
+        .'<div class="hr"></div>'
+        .Page\imageArrowLink('Send Bookmark', "../send/?id=$id", 'TODO')
         .'<div class="hr"></div>'
         .Page\imageArrowLink('Delete Bookmark', "../delete/?id=$id", 'trash-bin')
     );
