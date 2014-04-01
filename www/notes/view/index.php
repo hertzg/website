@@ -65,7 +65,7 @@ $content =
         'Options',
         Page\imageArrowLink('Edit Note', "../edit/?id=$id", 'edit-note')
         .'<div class="hr"></div>'
-        .Page\imageArrowLink('Send Note', "../send/?id=$id", 'TODO')
+        .Page\imageArrowLink('Send Note', "../send/?id=$id", 'send')
         .'<div class="hr"></div>'
         .Page\imageArrowLink('Delete Note', "../delete/?id=$id", 'trash-bin')
     );

@@ -20,7 +20,7 @@ function create_options_panel ($user, $base = '') {
         $description = "$num_received_notes total.";
         $href = "{$base}received/";
         $options[] = Page\imageArrowLinkWithDescription($title,
-            $description, $href, 'TODO');
+            $description, $href, 'receive');
     }
 
     include_once __DIR__.'/../../fns/create_panel.php';

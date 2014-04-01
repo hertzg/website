@@ -81,7 +81,7 @@ $content =
         'Options',
         Page\imageArrowLink('Edit Contact', "../edit/?id=$id", 'edit-contact')
         .'<div class="hr"></div>'
-        .Page\imageArrowLink('Send Contact', "../send/?id=$id", 'TODO')
+        .Page\imageArrowLink('Send Contact', "../send/?id=$id", 'send')
         .'<div class="hr"></div>'
         .Page\imageArrowLink('Delete Contact',
             "../delete/?id=$id", 'trash-bin')

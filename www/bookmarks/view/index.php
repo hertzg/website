@@ -78,7 +78,7 @@ $content =
         .'<div class="hr"></div>'
         .Page\imageArrowLink('Edit Bookmark', "../edit/?id=$id", 'edit-bookmark')
         .'<div class="hr"></div>'
-        .Page\imageArrowLink('Send Bookmark', "../send/?id=$id", 'TODO')
+        .Page\imageArrowLink('Send Bookmark', "../send/?id=$id", 'send')
         .'<div class="hr"></div>'
         .Page\imageArrowLink('Delete Bookmark', "../delete/?id=$id", 'trash-bin')
     );
