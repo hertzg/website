@@ -4,6 +4,8 @@ include_once '../fns/require_received_contact.php';
 include_once '../../../lib/mysqli.php';
 list($receivedContact, $id, $user) = require_received_contact($mysqli);
 
+unset($_SESSION['contacts/received/messages']);
+
 include_once '../../../fns/Form/label.php';
 $items = [
     Form\label('Full name', htmlspecialchars($receivedContact->full_name)),

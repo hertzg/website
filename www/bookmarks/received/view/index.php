@@ -4,6 +4,8 @@ include_once '../fns/require_received_bookmark.php';
 include_once '../../../lib/mysqli.php';
 list($receivedBookmark, $id, $user) = require_received_bookmark($mysqli);
 
+unset($_SESSION['bookmarks/received/messages']);
+
 $items = [];
 
 include_once '../../../fns/Page/text.php';

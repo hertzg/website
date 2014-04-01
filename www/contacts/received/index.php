@@ -37,6 +37,7 @@ foreach ($receivedContacts as $receivedContact) {
 }
 
 include_once '../../fns/create_tabs.php';
+include_once '../../fns/Page/sessionMessages.php';
 $content = create_tabs(
     [
         [
@@ -49,7 +50,8 @@ $content = create_tabs(
         ],
     ],
     'Received',
-    join('<div class="hr"></div>', $items)
+    Page\sessionMessages('contacts/received/messages')
+    .    join('<div class="hr"></div>', $items)
 );
 
 include_once '../../fns/echo_page.php';

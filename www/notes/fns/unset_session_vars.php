@@ -5,6 +5,7 @@ function unset_session_vars () {
         $_SESSION['home/messages'],
         $_SESSION['notes/new/errors'],
         $_SESSION['notes/new/values'],
+        $_SESSION['notes/received/messages'],
         $_SESSION['notes/view/messages']
     );
 }
