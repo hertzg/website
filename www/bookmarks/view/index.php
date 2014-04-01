@@ -17,8 +17,13 @@ $url = $bookmark->url;
 
 $base = '../../';
 
+if (parse_url($url, PHP_URL_SCHEME) === null) {
+    $parsedUrl = "http://$url";
+} else {
+    $parsedUrl = $url;
+}
 include_once '../../fns/create_external_url.php';
-$externalUrl = create_external_url($url, $base);
+$externalUrl = create_external_url($parsedUrl, $base);
 
 $items = [];
 
