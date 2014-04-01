@@ -22,7 +22,8 @@ if ($file_name === '') {
 
     include_once '../../fns/Files/getByName.php';
     include_once '../../lib/mysqli.php';
-    $existingFile = Files\getByName($mysqli, $id_users, $file->id_folders, $file_name, $id);
+    $existingFile = Files\getByName($mysqli, $id_users,
+        $file->id_folders, $file_name, $id);
 
     if ($existingFile) {
         $errors[] = 'A file with the same name already exists.';

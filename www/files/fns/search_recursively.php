@@ -9,11 +9,13 @@ function search_recursively ($mysqli, $id_users, $parent_id_folders, $keyword) {
     $folders = Folders\searchInFolder($mysqli, $id_users, $parent_id_folders, $keyword);
 
     include_once __DIR__.'/../../fns/Folders/indexInUserFolder.php';
-    foreach (Folders\indexInUserFolder($mysqli, $id_users, $parent_id_folders) as $folder) {
-        list($subfolders, $subfiles) = search_recursively($mysqli, $id_users,
+    $subfolders = Folders\indexInUserFolder($mysqli, $id_users, $parent_id_folders);
+
+    foreach ($subfolders as $folder) {
+        list($foundFolders, $foundFile) = search_recursively($mysqli, $id_users,
             $folder->id_folders, $keyword);
-        $folders = array_merge($folders, $subfolders);
-        $files = array_merge($files, $subfiles);
+        $folders = array_merge($folders, $foundFolders);
+        $files = array_merge($files, $foundFile);
     }
     return [$folders, $files];
 
