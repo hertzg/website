@@ -1,23 +1,8 @@
 <?php
 
-$base = '../../../';
-
-include_once '../../../fns/require_user.php';
-$user = require_user($base);
-
-include_once '../../../fns/request_strings.php';
-list($id) = request_strings('id');
-
-$id = abs((int)$id);
-
-include_once '../../../fns/ReceivedNotes/getOnReceiver.php';
+include_once '../fns/require_received_note.php';
 include_once '../../../lib/mysqli.php';
-$receivedNote = ReceivedNotes\getOnReceiver($mysqli, $user->id_users, $id);
-
-if (!$receivedNote) {
-    include_once '../../../fns/redirect.php';
-    redirect('..');
-}
+list($receivedNote, $id, $user) = require_received_note($mysqli);
 
 include_once '../../../fns/Page/text.php';
 $items = [Page\text(htmlspecialchars($receivedNote->text))];
@@ -49,4 +34,4 @@ $content = create_tabs(
 );
 
 include_once '../../../fns/echo_page.php';
-echo_page($user, "Received Note #$id", $content, $base);
+echo_page($user, "Received Note #$id", $content, '../../../');

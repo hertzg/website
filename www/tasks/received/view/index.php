@@ -1,23 +1,8 @@
 <?php
 
-$base = '../../../';
-
-include_once '../../../fns/require_user.php';
-$user = require_user($base);
-
-include_once '../../../fns/request_strings.php';
-list($id) = request_strings('id');
-
-$id = abs((int)$id);
-
-include_once '../../../fns/ReceivedTasks/getOnReceiver.php';
+include_once '../fns/require_received_task.php';
 include_once '../../../lib/mysqli.php';
-$receivedTask = ReceivedTasks\getOnReceiver($mysqli, $user->id_users, $id);
-
-if (!$receivedTask) {
-    include_once '../../../fns/redirect.php';
-    redirect('..');
-}
+list($receivedTask, $id, $user) = require_received_task($mysqli);
 
 include_once '../../../fns/Page/text.php';
 $items = [Page\text(htmlspecialchars($receivedTask->text))];
@@ -49,4 +34,4 @@ $content = create_tabs(
 );
 
 include_once '../../../fns/echo_page.php';
-echo_page($user, "Received Task #$id", $content, $base);
+echo_page($user, "Received Task #$id", $content, '../../../');

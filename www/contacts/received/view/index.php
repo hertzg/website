@@ -1,23 +1,8 @@
 <?php
 
-$base = '../../../';
-
-include_once '../../../fns/require_user.php';
-$user = require_user($base);
-
-include_once '../../../fns/request_strings.php';
-list($id) = request_strings('id');
-
-$id = abs((int)$id);
-
-include_once '../../../fns/ReceivedContacts/getOnReceiver.php';
+include_once '../fns/require_received_contact.php';
 include_once '../../../lib/mysqli.php';
-$receivedContact = ReceivedContacts\getOnReceiver($mysqli, $user->id_users, $id);
-
-if (!$receivedContact) {
-    include_once '../../../fns/redirect.php';
-    redirect('..');
-}
+list($receivedContact, $id, $user) = require_received_contact($mysqli);
 
 include_once '../../../fns/Form/label.php';
 $items = [
@@ -78,4 +63,4 @@ $content = create_tabs(
 );
 
 include_once '../../../fns/echo_page.php';
-echo_page($user, "Received Contact #$id", $content, $base);
+echo_page($user, "Received Contact #$id", $content, '../../../');

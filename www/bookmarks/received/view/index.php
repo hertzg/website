@@ -1,23 +1,8 @@
 <?php
 
-$base = '../../../';
-
-include_once '../../../fns/require_user.php';
-$user = require_user($base);
-
-include_once '../../../fns/request_strings.php';
-list($id) = request_strings('id');
-
-$id = abs((int)$id);
-
-include_once '../../../fns/ReceivedBookmarks/getOnReceiver.php';
+include_once '../fns/require_received_bookmark.php';
 include_once '../../../lib/mysqli.php';
-$receivedBookmark = ReceivedBookmarks\getOnReceiver($mysqli, $user->id_users, $id);
-
-if (!$receivedBookmark) {
-    include_once '../../../fns/redirect.php';
-    redirect('..');
-}
+list($receivedBookmark, $id, $user) = require_received_bookmark($mysqli);
 
 $items = [];
 
@@ -57,4 +42,4 @@ $content = create_tabs(
 );
 
 include_once '../../../fns/echo_page.php';
-echo_page($user, "Received Bookmark #$id", $content, $base);
+echo_page($user, "Received Bookmark #$id", $content, '../../../');
