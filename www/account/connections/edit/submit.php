@@ -9,10 +9,16 @@ list($connection, $id, $user) = require_connection($mysqli);
 $id_users = $user->id_users;
 
 include_once '../../../fns/request_strings.php';
-list($username, $can_send_channel) = request_strings(
-    'username', 'can_send_channel');
+list($username, $can_send_bookmark, $can_send_channel, $can_send_contact,
+    $can_send_note, $can_send_task) = request_strings(
+    'username', 'can_send_bookmark', 'can_send_channel', 'can_send_contact',
+    'can_send_note', 'can_send_task');
 
+$can_send_bookmark = (bool)$can_send_bookmark;
 $can_send_channel = (bool)$can_send_channel;
+$can_send_contact = (bool)$can_send_contact;
+$can_send_note = (bool)$can_send_note;
+$can_send_task = (bool)$can_send_task;
 
 $errors = [];
 
@@ -44,14 +50,19 @@ if ($errors) {
     $_SESSION['account/connections/edit/errors'] = $errors;
     $_SESSION['account/connections/edit/values'] = [
         'username' => $username,
+        'can_send_bookmark' => $can_send_bookmark,
         'can_send_channel' => $can_send_channel,
+        'can_send_contact' => $can_send_contact,
+        'can_send_note' => $can_send_note,
+        'can_send_task' => $can_send_task,
     ];
     redirect("./?id=$id");
 }
 
 include_once '../../../fns/Connections/edit.php';
-Connections\edit($mysqli, $id, $connected_id_users,
-    $username, $can_send_channel);
+Connections\edit($mysqli, $id, $connected_id_users, $username,
+    $can_send_bookmark, $can_send_channel, $can_send_contact,
+    $can_send_note, $can_send_task);
 
 $_SESSION['account/connections/view/messages'] = [
     'Changes have been saved.',

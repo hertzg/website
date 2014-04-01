@@ -16,7 +16,11 @@ if (array_key_exists($key, $_SESSION)) {
 } else {
     $values = [
         'username' => '',
+        'can_send_bookmark' => false,
         'can_send_channel' => false,
+        'can_send_contact' => false,
+        'can_send_note' => false,
+        'can_send_task' => false,
     ];
 }
 
@@ -30,9 +34,30 @@ $items = [
 ];
 
 include_once '../../../fns/Form/checkbox.php';
+
+$name = 'can_send_bookmark';
+$title = 'Can send bookmarks';
+$checked = $values['can_send_bookmark'];
+$items[] = Form\checkbox($base, $name, $title, $checked);
+
 $name = 'can_send_channel';
 $title = 'Can send channels';
 $checked = $values['can_send_channel'];
+$items[] = Form\checkbox($base, $name, $title, $checked);
+
+$name = 'can_send_contact';
+$title = 'Can send contacts';
+$checked = $values['can_send_contact'];
+$items[] = Form\checkbox($base, $name, $title, $checked);
+
+$name = 'can_send_note';
+$title = 'Can send notes';
+$checked = $values['can_send_note'];
+$items[] = Form\checkbox($base, $name, $title, $checked);
+
+$name = 'can_send_task';
+$title = 'Can send tasks';
+$checked = $values['can_send_task'];
 $items[] = Form\checkbox($base, $name, $title, $checked);
 
 include_once '../../../fns/Form/button.php';

@@ -8,10 +8,16 @@ $user = require_user('../../../');
 $id_users = $user->id_users;
 
 include_once '../../../fns/request_strings.php';
-list($username, $can_send_channel) = request_strings(
-    'username', 'can_send_channel');
+list($username, $can_send_bookmark, $can_send_channel,
+    $can_send_contact, $can_send_note, $can_send_task) = request_strings(
+    'username', 'can_send_bookmark', 'can_send_channel',
+    'can_send_contact', 'can_send_note', 'can_send_task');
 
+$can_send_bookmark = (bool)$can_send_bookmark;
 $can_send_channel = (bool)$can_send_channel;
+$can_send_contact = (bool)$can_send_contact;
+$can_send_note = (bool)$can_send_note;
+$can_send_task = (bool)$can_send_task;
 
 include_once '../../../fns/redirect.php';
 
@@ -44,14 +50,19 @@ if ($errors) {
     $_SESSION['account/connections/new/errors'] = $errors;
     $_SESSION['account/connections/new/values'] = [
         'username' => $username,
+        'can_send_bookmark' => $can_send_bookmark,
         'can_send_channel' => $can_send_channel,
+        'can_send_contact' => $can_send_contact,
+        'can_send_note' => $can_send_note,
+        'can_send_task' => $can_send_task,
     ];
     redirect();
 }
 
 include_once '../../../fns/Connections/add.php';
 Connections\add($mysqli, $id_users, $connected_id_users,
-    $username, $can_send_channel);
+    $username, $can_send_bookmark, $can_send_channel,
+    $can_send_contact, $can_send_note, $can_send_task);
 
 unset(
     $_SESSION['account/connections/new/errors'],

@@ -29,10 +29,30 @@ $href = "../delete/?id=$id";
 $options[] = Page\imageArrowLink($title, $href, 'trash-bin');
 
 $permissions = '<div>';
-if ($connection->can_send_channel) {
-    $permissions .= 'Can send channels.';
+if ($connection->can_send_bookmark) {
+    $permissions .= 'Can send bookmarks.<br />';
 } else {
-    $permissions .= 'Cannot send channels.';
+    $permissions .= 'Cannot send bookmarks.<br />';
+}
+if ($connection->can_send_channel) {
+    $permissions .= 'Can send channels.<br />';
+} else {
+    $permissions .= 'Cannot send channels.<br />';
+}
+if ($connection->can_send_contact) {
+    $permissions .= 'Can send contacts.<br />';
+} else {
+    $permissions .= 'Cannot send contacts.<br />';
+}
+if ($connection->can_send_note) {
+    $permissions .= 'Can send notes.<br />';
+} else {
+    $permissions .= 'Cannot send notes.<br />';
+}
+if ($connection->can_send_task) {
+    $permissions .= 'Can send tasks.';
+} else {
+    $permissions .= 'Cannot send tasks.';
 }
 $permissions .= '</div>';
 
