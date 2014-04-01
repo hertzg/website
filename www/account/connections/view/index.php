@@ -28,7 +28,7 @@ $title = 'Delete Connection';
 $href = "../delete/?id=$id";
 $options[] = Page\imageArrowLink($title, $href, 'trash-bin');
 
-$permissions = '<div>';
+$permissions = '';
 if ($connection->can_send_bookmark) {
     $permissions .= 'Can send bookmarks.<br />';
 } else {
@@ -54,7 +54,6 @@ if ($connection->can_send_task) {
 } else {
     $permissions .= 'Cannot send tasks.';
 }
-$permissions .= '</div>';
 
 include_once '../../../fns/create_panel.php';
 include_once '../../../fns/create_tabs.php';

@@ -3,6 +3,24 @@
 chdir(__DIR__);
 include_once '../lib/mysqli.php';
 
+$mysqli->query(
+    'alter table contacts'
+    .' change full_name full_name varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL') || var_dump($mysqli->error);
+$mysqli->query(
+    'alter table contacts'
+    .' change address address varchar(128) NOT NULL');
+$mysqli->query(
+    'alter table contacts'
+    .' change email email varchar(64) NOT NULL');
+$mysqli->query(
+    'alter table contacts'
+    .' change phone1 phone1 varchar(32) NOT NULL');
+$mysqli->query(
+    'alter table contacts'
+    .' change phone2 phone2 varchar(32) NOT NULL');
+$mysqli->query(
+    'alter table contacts'
+    .' change username username varchar(32) CHARACTER SET ascii COLLATE ascii_bin NOT NULL');
 
 $mysqli->query('drop table received_notes');
 $mysqli->query('drop table received_tasks');

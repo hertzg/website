@@ -10,7 +10,7 @@ include_once '../../fns/Page/imageArrowLinkWithDescription.php';
 $options = [
     Page\imageArrowLink('New Connection', 'new/', 'create-connection'),
     Page\imageArrowLinkWithDescription('Default Connection',
-        'Other users', 'default/', 'connection'),
+        'Connection to other users', 'default/', 'connection'),
 ];
 
 include_once '../../fns/Connections/indexOnUser.php';

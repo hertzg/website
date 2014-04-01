@@ -12,13 +12,32 @@ unset(
 
 include_once '../../../fns/Page/imageArrowLink.php';
 
-$permissions = '<div>';
-if ($user->anonymous_can_send_channel) {
-    $permissions .= 'Can send channels.';
+$permissions = '';
+if ($user->anonymous_can_send_bookmark) {
+    $permissions .= 'Can send bookmarks.<br />';
 } else {
-    $permissions .= 'Cannot send channels.';
+    $permissions .= 'Cannot send bookmarks.<br />';
 }
-$permissions .= '</div>';
+if ($user->anonymous_can_send_channel) {
+    $permissions .= 'Can send channels.<br />';
+} else {
+    $permissions .= 'Cannot send channels.<br />';
+}
+if ($user->anonymous_can_send_contact) {
+    $permissions .= 'Can send contacts.<br />';
+} else {
+    $permissions .= 'Cannot send contacts.<br />';
+}
+if ($user->anonymous_can_send_note) {
+    $permissions .= 'Can send notes.<br />';
+} else {
+    $permissions .= 'Cannot send notes.<br />';
+}
+if ($user->anonymous_can_send_task) {
+    $permissions .= 'Can send tasks.';
+} else {
+    $permissions .= 'Cannot send tasks.';
+}
 
 include_once '../../../fns/create_panel.php';
 include_once '../../../fns/create_tabs.php';
