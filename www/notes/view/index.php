@@ -45,6 +45,7 @@ include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../fns/Page/sessionMessages.php';
+include_once '../../fns/Page/twoColumns.php';
 $content =
     create_tabs(
         [
@@ -63,9 +64,10 @@ $content =
     )
     .create_panel(
         'Note Options',
-        Page\imageArrowLink('Edit', "../edit/?id=$id", 'edit-note')
-        .'<div class="hr"></div>'
-        .Page\imageArrowLink('Send', "../send/?id=$id", 'send')
+        Page\twoColumns(
+            Page\imageArrowLink('Edit', "../edit/?id=$id", 'edit-note'),
+            Page\imageArrowLink('Send', "../send/?id=$id", 'send')
+        )
         .'<div class="hr"></div>'
         .Page\imageArrowLink('Delete', "../delete/?id=$id", 'trash-bin')
     );

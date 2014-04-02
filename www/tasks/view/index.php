@@ -16,22 +16,22 @@ unset(
 include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../fns/Page/imageLink.php';
 
-$options = [];
 if ($task->top_priority) {
     $href = "submit-set-normal-priority.php?id=$id";
-    $options[] = Page\imageLink('Mark as Normal Priority', $href, 'task');
+    $priorityLink = Page\imageLink('Mark as Normal Priority', $href, 'task');
 } else {
     $title = 'Mark as Top Priority';
     $href = "submit-set-top-priority.php?id=$id";
-    $options[] = Page\imageLink($title, $href, 'task-top-priority');
+    $priorityLink = Page\imageLink($title, $href, 'task-top-priority');
 }
-$options[] = Page\imageArrowLink('Edit', "../edit/?id=$id", 'edit-task');
+
+$editLink = Page\imageArrowLink('Edit', "../edit/?id=$id", 'edit-task');
 
 $href = "../send/?id=$id";
-$options[] = Page\imageArrowLink('Send', $href, 'send');
+$sendLink = Page\imageArrowLink('Send', $href, 'send');
 
 $href = "../delete/?id=$id";
-$options[] = Page\imageArrowLink('Delete', $href, 'trash-bin');
+$deleteLink = Page\imageArrowLink('Delete', $href, 'trash-bin');
 
 $base = '../../';
 
@@ -66,6 +66,7 @@ $items[] = Page\text($text);
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/sessionMessages.php';
+include_once '../../fns/Page/twoColumns.php';
 $content =
     create_tabs(
         [
@@ -82,7 +83,12 @@ $content =
         Page\sessionMessages('tasks/view/messages')
         .join('<div class="hr"></div>', $items)
     )
-    .create_panel('Task Options', join('<div class="hr"></div>', $options));
+    .create_panel(
+        'Task Options',
+        Page\twoColumns($priorityLink, $editLink)
+        .'<div class="hr"></div>'
+        .Page\twoColumns($sendLink, $deleteLink)
+    );
 
 include_once '../../fns/echo_page.php';
 echo_page($user, "Task #$id", $content, $base);

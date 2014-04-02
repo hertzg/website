@@ -18,15 +18,13 @@ unset(
 
 include_once '../../../fns/Page/imageArrowLink.php';
 
-$options = [];
-
 $title = 'Edit';
 $href = "../edit/?id=$id";
-$options[] = Page\imageArrowLink($title, $href, 'edit-connection');
+$editLink = Page\imageArrowLink($title, $href, 'edit-connection');
 
 $title = 'Delete';
 $href = "../delete/?id=$id";
-$options[] = Page\imageArrowLink($title, $href, 'trash-bin');
+$deleteLink = Page\imageArrowLink($title, $href, 'trash-bin');
 
 $permissions = '';
 if ($connection->can_send_bookmark) {
@@ -59,6 +57,7 @@ include_once '../../../fns/create_panel.php';
 include_once '../../../fns/create_tabs.php';
 include_once '../../../fns/Form/label.php';
 include_once '../../../fns/Page/sessionMessages.php';
+include_once '../../../fns/Page/twoColumns.php';
 $content = create_tabs(
     [
         [
@@ -75,7 +74,7 @@ $content = create_tabs(
     .Form\label('Username', htmlspecialchars($connection->username))
     .'<div class="hr"></div>'
     .Form\label('This user', $permissions)
-    .create_panel('Conneciton Options', join('<div class="hr"></div>', $options))
+    .create_panel('Conneciton Options', Page\twoColumns($editLink, $deleteLink))
 );
 
 include_once '../../../fns/echo_page.php';

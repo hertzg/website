@@ -21,6 +21,7 @@ include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../fns/Page/sessionMessages.php';
 include_once '../../fns/Page/text.php';
+include_once '../../fns/Page/twoColumns.php';
 $content =
     create_tabs(
         [
@@ -43,9 +44,10 @@ $content =
     )
     .create_panel(
         'Event Options',
-        Page\imageArrowLink('Edit', "../edit-event/?id=$id", 'edit-event')
-        .'<div class="hr"></div>'
-        .Page\imageArrowLink('Delete', "../delete-event/?id=$id", 'trash-bin')
+        Page\twoColumns(
+            Page\imageArrowLink('Edit', "../edit-event/?id=$id", 'edit-event'),
+            Page\imageArrowLink('Delete', "../delete-event/?id=$id", 'trash-bin')
+        )
     );
 
 include_once '../../fns/echo_page.php';

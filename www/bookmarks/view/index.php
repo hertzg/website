@@ -57,6 +57,7 @@ include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../fns/Page/imageLink.php';
 include_once '../../fns/Page/sessionMessages.php';
+include_once '../../fns/Page/twoColumns.php';
 $content =
     create_tabs(
         [
@@ -75,15 +76,17 @@ $content =
     )
     .create_panel(
         'Bookmark Options',
-        Page\imageLink('Open', $externalUrl, 'run')
+        Page\twoColumns(
+            Page\imageLink('Open', $externalUrl, 'run'),
+            Page\imageLink('Open in New Tab', $externalUrl, 'run', [
+                'target' => '_blank',
+            ])
+        )
         .'<div class="hr"></div>'
-        .Page\imageLink('Open in New Tab', $externalUrl, 'run', [
-            'target' => '_blank',
-        ])
-        .'<div class="hr"></div>'
-        .Page\imageArrowLink('Edit', "../edit/?id=$id", 'edit-bookmark')
-        .'<div class="hr"></div>'
-        .Page\imageArrowLink('Send', "../send/?id=$id", 'send')
+        .Page\twoColumns(
+            Page\imageArrowLink('Edit', "../edit/?id=$id", 'edit-bookmark'),
+            Page\imageArrowLink('Send', "../send/?id=$id", 'send')
+        )
         .'<div class="hr"></div>'
         .Page\imageArrowLink('Delete', "../delete/?id=$id", 'trash-bin')
     );
