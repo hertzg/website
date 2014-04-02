@@ -5,6 +5,10 @@ function create_options_panel ($id) {
     $options = [];
 
     include_once __DIR__.'/../../../../fns/Page/imageArrowLink.php';
+
+    $href = "submit-import.php?id=$id";
+    $options[] = Page\imageArrowLink('Import Task', $href, 'TODO');
+
     $href = "../delete/?id=$id";
     $options[] = Page\imageArrowLink('Delete Task', $href, 'trash-bin');
 
