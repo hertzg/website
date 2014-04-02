@@ -14,6 +14,8 @@ if ($tags !== '') {
     $items[] = Page\text('Tags: '.htmlspecialchars($tags));
 }
 
+$items[] = Page\text(($receivedTask->top_priority ? 'Top' : 'Normal').' priority task.');
+
 include_once 'fns/create_options_panel.php';
 include_once '../../../fns/create_panel.php';
 include_once '../../../fns/create_tabs.php';

@@ -55,7 +55,9 @@ if ($tags) {
 $insert_time = $task->insert_time;
 $update_time = $task->update_time;
 include_once '../../fns/date_ago.php';
-$text = '<div>Task created '.date_ago($insert_time).'.</div>';
+$text =
+    '<div>'.($task->top_priority ? 'Top' : 'Normal').' priority task.</div>'
+    .'<div>Task created '.date_ago($insert_time).'.</div>';
 if ($insert_time != $update_time) {
     $text .= '<div>Last modified '.date_ago($update_time).'.</div>';
 }

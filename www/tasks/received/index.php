@@ -23,8 +23,14 @@ include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../fns/Page/imageArrowLinkWithDescription.php';
 
 $items = [];
-$icon = 'task';
 foreach ($receivedTasks as $receivedTask) {
+
+    if ($receivedTask->top_priority) {
+        $icon = 'task-top-priority';
+    } else {
+        $icon = 'task';
+    }
+
     $href = "view/?id=$receivedTask->id";
     $tags = $receivedTask->tags;
     $title = htmlspecialchars($receivedTask->text);
@@ -34,6 +40,7 @@ foreach ($receivedTasks as $receivedTask) {
         $description = 'Tags: '.htmlspecialchars($tags);
         $items[] = Page\imageArrowLinkWithDescription($title, $description, $href, $icon);
     }
+
 }
 
 include_once '../../fns/create_tabs.php';
