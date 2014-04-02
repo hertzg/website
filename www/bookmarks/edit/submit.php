@@ -47,7 +47,7 @@ include_once '../../fns/BookmarkTags/deleteOnBookmark.php';
 BookmarkTags\deleteOnBookmark($mysqli, $id);
 
 include_once '../../fns/BookmarkTags/add.php';
-BookmarkTags\add($mysqli, $id_users, $id, $tag_names, $title, $url);
+BookmarkTags\add($mysqli, $id_users, $id, $tag_names, $url, $title);
 
 $_SESSION['bookmarks/view/messages'] = ['Changes have been saved.'];
 redirect("../view/?id=$id");

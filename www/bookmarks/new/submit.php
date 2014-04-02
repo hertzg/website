@@ -41,10 +41,10 @@ unset(
 
 include_once '../../fns/Bookmarks/add.php';
 include_once '../../lib/mysqli.php';
-$id = Bookmarks\add($mysqli, $id_users, $title, $url, $tags);
+$id = Bookmarks\add($mysqli, $id_users, $url, $title, $tags);
 
 include_once '../../fns/BookmarkTags/add.php';
-BookmarkTags\add($mysqli, $id_users, $id, $tag_names, $title, $url);
+BookmarkTags\add($mysqli, $id_users, $id, $tag_names, $url, $title);
 
 include_once '../../fns/Users/addNumBookmarks.php';
 Users\addNumBookmarks($mysqli, $id_users, 1);
