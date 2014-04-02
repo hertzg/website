@@ -1,6 +1,6 @@
 <?php
 
-function check_passwords ($password1, $password2, array &$errors) {
+function check_passwords ($username, $password1, $password2, array &$errors) {
 
     if ($password1 === '') {
         $errors[] = 'Enter password.';
@@ -12,6 +12,11 @@ function check_passwords ($password1, $password2, array &$errors) {
         include_once __DIR__.'/../../fns/Password/minLength.php';
         $minLength = Password\minLength();
         $errors[] = "Password too short. At least $minLength characters required.";
+        return;
+    }
+
+    if ($password1 === $username) {
+        $errors[] = 'Please, choose a password that is different from the username.';
         return;
     }
 

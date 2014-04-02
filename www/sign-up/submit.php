@@ -26,7 +26,7 @@ include_once 'fns/check_email.php';
 check_email($mysqli, $email, $errors);
 
 include_once 'fns/check_passwords.php';
-check_passwords($password1, $password2, $errors);
+check_passwords($username, $password1, $password2, $errors);
 
 include_once '../fns/Captcha/check.php';
 Captcha\check($errors);
