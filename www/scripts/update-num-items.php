@@ -38,10 +38,26 @@ foreach ($users as $user) {
     $sql = "select count(*) value from tokens where id_users = $id_users";
     $num_tokens = mysqli_single_object($mysqli, $sql)->value;
 
+    $sql = "select count(*) value from received_bookmarks where receiver_id_users = $id_users";
+    $num_received_bookmarks = mysqli_single_object($mysqli, $sql)->value;
+
+    $sql = "select count(*) value from received_contacts where receiver_id_users = $id_users";
+    $num_received_contacts = mysqli_single_object($mysqli, $sql)->value;
+
+    $sql = "select count(*) value from received_notes where receiver_id_users = $id_users";
+    $num_received_notes = mysqli_single_object($mysqli, $sql)->value;
+
+    $sql = "select count(*) value from received_tasks where receiver_id_users = $id_users";
+    $num_received_tasks = mysqli_single_object($mysqli, $sql)->value;
+
     $sql = "update users set num_bookmarks = $num_bookmarks,"
         ." num_channels = $num_channels, num_contacts = $num_contacts,"
         ." num_events = $num_events, num_notes = $num_notes,"
-        ." num_tasks = $num_tasks, num_tokens = $num_tokens"
+        ." num_tasks = $num_tasks, num_tokens = $num_tokens,"
+        ." num_received_bookmarks = $num_received_bookmarks,"
+        ." num_received_contacts = $num_received_contacts,"
+        ." num_received_notes = $num_received_notes,"
+        ." num_received_tasks = $num_received_tasks"
         ." where id_users = $id_users";
     $mysqli->query($sql) || die($mysqli->error);
 
