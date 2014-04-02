@@ -14,8 +14,10 @@ $token = require_valid_token($mysqli);
 if (!$token) {
 
     $token_text = md5(uniqid(), true);
-    if (array_key_exists('HTTP_USER_AGENT', $_SERVER)) {
-        $user_agent = $_SERVER['HTTP_USER_AGENT'];
+
+    $key = 'HTTP_USER_AGENT';
+    if (array_key_exists($key, $_SERVER)) {
+        $user_agent = $_SERVER[$key];
     } else {
         $user_agent = null;
     }
