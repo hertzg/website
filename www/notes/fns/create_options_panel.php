@@ -7,12 +7,6 @@ function create_options_panel ($user, $base = '') {
     $href = "{$base}new/";
     $options = [Page\imageArrowLink('New Note', $href, 'create-note')];
 
-    if ($user->num_notes) {
-        $title = 'Delete All Notes';
-        $href = "{$base}delete-all/";
-        $options[] = Page\imageArrowLink($title, $href, 'trash-bin');
-    }
-
     $num_received_notes = $user->num_received_notes;
     if ($num_received_notes) {
         include_once __DIR__.'/../../fns/Page/imageArrowLinkWithDescription.php';
@@ -21,6 +15,12 @@ function create_options_panel ($user, $base = '') {
         $href = "{$base}received/";
         $options[] = Page\imageArrowLinkWithDescription($title,
             $description, $href, 'receive');
+    }
+
+    if ($user->num_notes) {
+        $title = 'Delete All Notes';
+        $href = "{$base}delete-all/";
+        $options[] = Page\imageArrowLink($title, $href, 'trash-bin');
     }
 
     include_once __DIR__.'/../../fns/create_panel.php';
