@@ -74,18 +74,18 @@ $content =
         .join('<div class="hr"></div>', $items)
     )
     .create_panel(
-        'Options',
+        'Bookmark Options',
         Page\imageLink('Open', $externalUrl, 'run')
         .'<div class="hr"></div>'
         .Page\imageLink('Open in New Tab', $externalUrl, 'run', [
             'target' => '_blank',
         ])
         .'<div class="hr"></div>'
-        .Page\imageArrowLink('Edit Bookmark', "../edit/?id=$id", 'edit-bookmark')
+        .Page\imageArrowLink('Edit', "../edit/?id=$id", 'edit-bookmark')
         .'<div class="hr"></div>'
-        .Page\imageArrowLink('Send Bookmark', "../send/?id=$id", 'send')
+        .Page\imageArrowLink('Send', "../send/?id=$id", 'send')
         .'<div class="hr"></div>'
-        .Page\imageArrowLink('Delete Bookmark', "../delete/?id=$id", 'trash-bin')
+        .Page\imageArrowLink('Delete', "../delete/?id=$id", 'trash-bin')
     );
 
 include_once '../../fns/echo_page.php';

@@ -6,19 +6,19 @@ function create_options_panel ($id) {
 
     $options = [];
 
-    $title = 'Randomize Channel Key';
+    $title = 'Randomize Key';
     $href = "../randomize-key/?id=$id";
     $options[] = Page\imageArrowLink($title, $href, 'randomize');
 
-    $title = 'Channel Users';
+    $title = 'Users';
     $href = "../users/?id=$id";
     $options[] = Page\imageArrowLink($title, $href, 'users');
 
-    $title = 'Delete Channel';
+    $title = 'Delete';
     $href = "../delete/?id=$id";
     $options[] = Page\imageArrowLink($title, $href, 'trash-bin');
 
     include_once __DIR__.'/../../../../fns/create_panel.php';
-    return create_panel('Options', join('<div class="hr"></div>', $options));
+    return create_panel('Channel Options', join('<div class="hr"></div>', $options));
 
 }

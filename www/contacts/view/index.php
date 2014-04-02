@@ -78,13 +78,12 @@ $content =
         .join('<div class="hr"></div>', $items)
     )
     .create_panel(
-        'Options',
-        Page\imageArrowLink('Edit Contact', "../edit/?id=$id", 'edit-contact')
+        'Contact Options',
+        Page\imageArrowLink('Edit', "../edit/?id=$id", 'edit-contact')
         .'<div class="hr"></div>'
-        .Page\imageArrowLink('Send Contact', "../send/?id=$id", 'send')
+        .Page\imageArrowLink('Send', "../send/?id=$id", 'send')
         .'<div class="hr"></div>'
-        .Page\imageArrowLink('Delete Contact',
-            "../delete/?id=$id", 'trash-bin')
+        .Page\imageArrowLink('Delete', "../delete/?id=$id", 'trash-bin')
     );
 
 include_once '../../fns/echo_page.php';

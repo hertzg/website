@@ -10,18 +10,18 @@ function create_options_panel ($file) {
     $options = [];
 
     $href = "../download-file/?id=$id";
-    $options[] = Page\imageLink('Download File', $href, 'download');
+    $options[] = Page\imageLink('Download', $href, 'download');
 
     $href = "../rename-file/?id=$id";
-    $options[] = Page\imageArrowLink('Rename File', $href, 'rename');
+    $options[] = Page\imageArrowLink('Rename', $href, 'rename');
 
     $href = "../move-file/?id=$id&id_folders=$file->id_folders";
-    $options[] = Page\imageArrowLink('Move File', $href, 'move-file');
+    $options[] = Page\imageArrowLink('Move', $href, 'move-file');
 
     $href = "../delete-file/?id=$id";
-    $options[] = Page\imageArrowLink('Delete File', $href, 'trash-bin');
+    $options[] = Page\imageArrowLink('Delete', $href, 'trash-bin');
 
     include_once __DIR__.'/../../../fns/create_panel.php';
-    return create_panel('Options', join('<div class="hr"></div>', $options));
+    return create_panel('File Options', join('<div class="hr"></div>', $options));
 
 }

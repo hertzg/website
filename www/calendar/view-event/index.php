@@ -42,12 +42,10 @@ $content =
         .Page\text($datesText)
     )
     .create_panel(
-        'Options',
-        Page\imageArrowLink('Edit Event',
-            "../edit-event/?id=$id", 'edit-event')
+        'Event Options',
+        Page\imageArrowLink('Edit', "../edit-event/?id=$id", 'edit-event')
         .'<div class="hr"></div>'
-        .Page\imageArrowLink('Delete Event',
-            "../delete-event/?id=$id", 'trash-bin')
+        .Page\imageArrowLink('Delete', "../delete-event/?id=$id", 'trash-bin')
     );
 
 include_once '../../fns/echo_page.php';

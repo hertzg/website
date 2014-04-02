@@ -38,8 +38,8 @@ $content =
         ])
     )
     .create_panel(
-        'Options',
-        Page\imageArrowLink('Delete Session', "../delete/?id=$id", 'trash-bin')
+        'Session Options',
+        Page\imageArrowLink('Delete', "../delete/?id=$id", 'trash-bin')
     );
 
 include_once '../../fns/echo_page.php';

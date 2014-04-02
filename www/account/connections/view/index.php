@@ -20,11 +20,11 @@ include_once '../../../fns/Page/imageArrowLink.php';
 
 $options = [];
 
-$title = 'Edit Connection';
+$title = 'Edit';
 $href = "../edit/?id=$id";
 $options[] = Page\imageArrowLink($title, $href, 'edit-connection');
 
-$title = 'Delete Connection';
+$title = 'Delete';
 $href = "../delete/?id=$id";
 $options[] = Page\imageArrowLink($title, $href, 'trash-bin');
 
@@ -75,7 +75,7 @@ $content = create_tabs(
     .Form\label('Username', htmlspecialchars($connection->username))
     .'<div class="hr"></div>'
     .Form\label('This user', $permissions)
-    .create_panel('Options', join('<div class="hr"></div>', $options))
+    .create_panel('Conneciton Options', join('<div class="hr"></div>', $options))
 );
 
 include_once '../../../fns/echo_page.php';

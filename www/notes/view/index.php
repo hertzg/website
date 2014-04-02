@@ -62,12 +62,12 @@ $content =
         .join('<div class="hr"></div>', $items)
     )
     .create_panel(
-        'Options',
-        Page\imageArrowLink('Edit Note', "../edit/?id=$id", 'edit-note')
+        'Note Options',
+        Page\imageArrowLink('Edit', "../edit/?id=$id", 'edit-note')
         .'<div class="hr"></div>'
-        .Page\imageArrowLink('Send Note', "../send/?id=$id", 'send')
+        .Page\imageArrowLink('Send', "../send/?id=$id", 'send')
         .'<div class="hr"></div>'
-        .Page\imageArrowLink('Delete Note', "../delete/?id=$id", 'trash-bin')
+        .Page\imageArrowLink('Delete', "../delete/?id=$id", 'trash-bin')
     );
 
 include_once '../../fns/echo_page.php';

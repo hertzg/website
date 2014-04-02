@@ -25,13 +25,13 @@ if ($task->top_priority) {
     $href = "submit-set-top-priority.php?id=$id";
     $options[] = Page\imageLink($title, $href, 'task-top-priority');
 }
-$options[] = Page\imageArrowLink('Edit Task', "../edit/?id=$id", 'edit-task');
+$options[] = Page\imageArrowLink('Edit', "../edit/?id=$id", 'edit-task');
 
 $href = "../send/?id=$id";
-$options[] = Page\imageArrowLink('Send Task', $href, 'send');
+$options[] = Page\imageArrowLink('Send', $href, 'send');
 
 $href = "../delete/?id=$id";
-$options[] = Page\imageArrowLink('Delete Task', $href, 'trash-bin');
+$options[] = Page\imageArrowLink('Delete', $href, 'trash-bin');
 
 $base = '../../';
 
@@ -82,7 +82,7 @@ $content =
         Page\sessionMessages('tasks/view/messages')
         .join('<div class="hr"></div>', $items)
     )
-    .create_panel('Options', join('<div class="hr"></div>', $options));
+    .create_panel('Task Options', join('<div class="hr"></div>', $options));
 
 include_once '../../fns/echo_page.php';
 echo_page($user, "Task #$id", $content, $base);
