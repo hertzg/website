@@ -22,6 +22,9 @@ if ($tags !== '') {
     $items[] = Page\text('Tags: '.htmlspecialchars($tags));
 }
 
+include_once '../../../fns/date_ago.php';
+$items[] = Page\text('Bookmark received '.date_ago($receivedBookmark->insert_time).'.');
+
 include_once 'fns/create_options_panel.php';
 include_once '../../../fns/create_panel.php';
 include_once '../../../fns/create_tabs.php';

@@ -14,7 +14,11 @@ if ($tags !== '') {
     $items[] = Page\text('Tags: '.htmlspecialchars($tags));
 }
 
-$items[] = Page\text(($receivedTask->top_priority ? 'Top' : 'Normal').' priority task.');
+include_once '../../../fns/date_ago.php';
+$items[] = Page\text(
+    '<div>'.($receivedTask->top_priority ? 'Top' : 'Normal').' priority task.</div>'
+    .'<div>Task received '.date_ago($receivedTask->insert_time).'.</div>'
+);
 
 include_once 'fns/create_options_panel.php';
 include_once '../../../fns/create_panel.php';

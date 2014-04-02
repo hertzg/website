@@ -38,11 +38,15 @@ if ($username !== '') {
     $items[] = Form\label('Zvini username', htmlspecialchars($username));
 }
 
+include_once '../../../fns/Page/text.php';
+
 $tags = $receivedContact->tags;
 if ($tags !== '') {
-    include_once '../../../fns/Page/text.php';
     $items[] = Page\text('Tags: '.htmlspecialchars($tags));
 }
+
+include_once '../../../fns/date_ago.php';
+$items[] = Page\text('Contact received '.date_ago($receivedContact->insert_time).'.');
 
 include_once 'fns/create_options_panel.php';
 include_once '../../../fns/create_panel.php';
