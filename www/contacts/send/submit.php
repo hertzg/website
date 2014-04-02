@@ -41,7 +41,7 @@ if ($errors) {
 
 include_once '../../fns/ReceivedContacts/add.php';
 ReceivedContacts\add($mysqli, $id_users, $user->username, $receiver_id_users,
-    $contact->full_name, $contact->address, $contact->alias, $contact->address,
+    $contact->full_name, $contact->alias, $contact->address, $contact->email,
     $contact->phone1, $contact->phone2, $contact->username, $contact->tags);
 
 include_once '../../fns/Users/addNumReceivedContacts.php';
