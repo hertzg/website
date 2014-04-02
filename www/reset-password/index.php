@@ -8,6 +8,12 @@ require_guest_user($base);
 include_once 'fns/require_valid_key.php';
 include_once '../lib/mysqli.php';
 list($user, $key) = require_valid_key($mysqli);
+$id_users = $user->id_users;
+
+if (!$user->email_verified) {
+    include_once '../fns/Users/verifyEmail.php';
+    Users\verifyEmail($mysqli, $id_users);
+}
 
 include_once 'fns/get_values.php';
 $values = get_values();
@@ -51,7 +57,7 @@ $content =
             ])
             .'<div class="hr"></div>'
             .Form\button('Reset Password')
-            .Form\hidden('id_users', $user->id_users)
+            .Form\hidden('id_users', $id_users)
             .Form\hidden('key', $key)
         .'</form>'
     );
