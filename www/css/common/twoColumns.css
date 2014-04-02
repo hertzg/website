@@ -1,0 +1,23 @@
+.twoColumns {
+    position: relative;
+}
+.twoColumns > * {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    width: 50%;
+}
+.twoColumns > :last-child {
+    border-left: 1px solid #ddd;
+}
+
+@media (max-width: 440px) {
+    .twoColumns > * {
+        display: block;
+        width: auto;
+    }
+    .twoColumns > :last-child {
+        border-left: 0;
+        border-top: 1px solid #ddd;
+    }
+}

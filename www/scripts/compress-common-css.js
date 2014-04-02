@@ -27,6 +27,7 @@ var files = [
     'search_form.css',
     'searchButton.css',
     'tag.css',
+    'twoColumns.css',
 ]
 
 var source = ''
