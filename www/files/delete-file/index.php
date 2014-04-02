@@ -10,28 +10,29 @@ include_once '../../fns/create_folder_link.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/imageLink.php';
 include_once '../../fns/Page/text.php';
-$content =
-    create_tabs(
+include_once '../../fns/Page/twoColumns.php';
+$content = create_tabs(
+    [
         [
-            [
-                'title' => '&middot;&middot;&middot;',
-                'href' => '../../home/',
-            ],
-            [
-                'title' => 'Files',
-                'href' => create_folder_link($file->id_folders, '../'),
-            ],
+            'title' => '&middot;&middot;&middot;',
+            'href' => '../../home/',
         ],
-        "File #$id",
-        Page\text(
-            'Are you sure you want to delete the file'
-            .' "<b>'.htmlspecialchars($file->file_name).'</b>"?'
-        )
-        .'<div class="hr"></div>'
-        .Page\imageLink('Yes, delete file', "submit.php?id=$id", 'yes')
-        .'<div class="hr"></div>'
-        .Page\imageLink('No, return back', "../view-file/?id=$id", 'no')
-    );
+        [
+            'title' => 'Files',
+            'href' => create_folder_link($file->id_folders, '../'),
+        ],
+    ],
+    "File #$id",
+    Page\text(
+        'Are you sure you want to delete the file'
+        .' "<b>'.htmlspecialchars($file->file_name).'</b>"?'
+    )
+    .'<div class="hr"></div>'
+    .Page\twoColumns(
+        Page\imageLink('Yes, delete file', "submit.php?id=$id", 'yes'),
+        Page\imageLink('No, return back', "../view-file/?id=$id", 'no')
+    )
+);
 
 include_once '../../fns/echo_page.php';
 echo_page($user, "Delete File #$id?", $content, '../../');

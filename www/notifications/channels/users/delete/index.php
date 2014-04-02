@@ -9,6 +9,7 @@ $id_channels = $subscribed_channel->id_channels;
 include_once '../../../../fns/create_tabs.php';
 include_once '../../../../fns/Page/imageLink.php';
 include_once '../../../../fns/Page/text.php';
+include_once '../../../../fns/Page/twoColumns.php';
 $content = create_tabs(
     [
         [
@@ -29,9 +30,10 @@ $content = create_tabs(
         .'</b>"?'
     )
     .'<div class="hr"></div>'
-    .Page\imageLink('Yes, remove user', "submit.php?id=$id", 'yes')
-    .'<div class="hr"></div>'
-    .Page\imageLink('No, return back', "../view/?id=$id", 'no')
+    .Page\twoColumns(
+        Page\imageLink('Yes, remove user', "submit.php?id=$id", 'yes'),
+        Page\imageLink('No, return back', "../view/?id=$id", 'no')
+    )
 );
 
 include_once '../../../../fns/echo_page.php';

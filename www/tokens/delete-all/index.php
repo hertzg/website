@@ -13,27 +13,28 @@ unset(
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/imageLink.php';
 include_once '../../fns/Page/text.php';
-$content =
-    create_tabs(
+include_once '../../fns/Page/twoColumns.php';
+$content = create_tabs(
+    [
         [
-            [
-                'title' => '&middot;&middot;&middot;',
-                'href' => '../../home/',
-            ],
-            [
-                'title' => 'Account',
-                'href' => '../../account/',
-            ],
+            'title' => '&middot;&middot;&middot;',
+            'href' => '../../home/',
         ],
-        'Sessions',
-        Page\text(
-            'Are you sure you want to delete all the remembered sessions?'
-        )
-        .'<div class="hr"></div>'
-        .Page\imageLink('Yes, delete all sessions', 'submit.php', 'yes')
-        .'<div class="hr"></div>'
-        .Page\imageLink('No, return back', '..', 'no')
-    );
+        [
+            'title' => 'Account',
+            'href' => '../../account/',
+        ],
+    ],
+    'Sessions',
+    Page\text(
+        'Are you sure you want to delete all the remembered sessions?'
+    )
+    .'<div class="hr"></div>'
+    .Page\twoColumns(
+        Page\imageLink('Yes, delete all sessions', 'submit.php', 'yes'),
+        Page\imageLink('No, return back', '..', 'no')
+    )
+);
 
 include_once '../../fns/echo_page.php';
 echo_page($user, 'Delete All Remembered Sessions?', $content, $base);
