@@ -54,6 +54,7 @@ $messages = ['Task has been imported.'];
 if ($user->num_received_tasks == 1) {
     $messages[] = 'No more received tasks.';
     $_SESSION['tasks/messages'] = $messages;
+    unset($_SESSION['tasks/errors']);
     redirect('../..');
 }
 

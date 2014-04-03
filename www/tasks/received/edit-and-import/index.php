@@ -11,6 +11,9 @@ if (array_key_exists($key, $_SESSION)) {
     $values = (array)$receivedTask;
 }
 
+include_once '../../../fns/Tasks/maxLengths.php';
+$maxLengths = Tasks\maxLengths();
+
 include_once '../../../fns/create_tabs.php';
 include_once '../../../fns/Form/button.php';
 include_once '../../../fns/Form/hidden.php';
@@ -24,7 +27,7 @@ $content = create_tabs(
             'href' => '..',
         ],
         [
-            'title' => "Received Contact #$id",
+            'title' => "Received Task #$id",
             'href' => "../view/?id=$id",
         ],
     ],
@@ -33,12 +36,14 @@ $content = create_tabs(
     .'<form action="submit.php" method="post">'
         .Form\textarea('text', 'Text', [
             'value' => $values['text'],
+            'maxlength' => $maxLengths['text'],
             'required' => true,
             'autofocus' => true,
         ])
         .'<div class="hr"></div>'
         .Form\textfield('tags', 'Tags', [
             'value' => $values['tags'],
+            'maxlength' => $maxLengths['tags'],
         ])
         .'<div class="hr"></div>'
         .Form\button('Import Task')
