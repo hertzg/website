@@ -52,6 +52,7 @@ $messages = ['Note has been imported.'];
 if ($user->num_received_notes == 1) {
     $messages[] = 'No more received notes.';
     $_SESSION['notes/messages'] = $messages;
+    unset($_SESSION['notes/errors']);
     redirect('../..');
 }
 
