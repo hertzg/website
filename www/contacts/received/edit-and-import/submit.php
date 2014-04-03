@@ -76,6 +76,7 @@ $messages = ['Contact has been imported.'];
 if ($user->num_received_contacts == 1) {
     $messages[] = 'No more received contacts.';
     $_SESSION['contacts/messages'] = $messages;
+    unset($_SESSION['contacts/errors']);
     redirect('../..');
 }
 
