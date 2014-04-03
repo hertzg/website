@@ -11,6 +11,9 @@ if (array_key_exists($key, $_SESSION)) {
     $values = (array)$receivedBookmark;
 }
 
+include_once '../../../fns/Bookmarks/maxLengths.php';
+$maxLengths = Bookmarks\maxLengths();
+
 include_once '../../../fns/create_tabs.php';
 include_once '../../../fns/Form/button.php';
 include_once '../../../fns/Form/hidden.php';
@@ -23,7 +26,7 @@ $content = create_tabs(
             'href' => '..',
         ],
         [
-            'title' => "Received Contact #$id",
+            'title' => "Received Bookmark #$id",
             'href' => "../view/?id=$id",
         ],
     ],
@@ -32,16 +35,19 @@ $content = create_tabs(
     .'<form action="submit.php" method="post">'
         .Form\textfield('url', 'URL', [
             'value' => $values['url'],
+            'maxlength' => $maxLengths['url'],
             'required' => true,
             'autofocus' => true,
         ])
         .'<div class="hr"></div>'
         .Form\textfield('title', 'Title', [
             'value' => $values['title'],
+            'maxlength' => $maxLengths['title'],
         ])
         .'<div class="hr"></div>'
         .Form\textfield('tags', 'Tags', [
             'value' => $values['tags'],
+            'maxlength' => $maxLengths['tags'],
         ])
         .'<div class="hr"></div>'
         .Form\button('Import Bookmark')

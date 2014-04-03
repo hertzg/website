@@ -36,6 +36,7 @@ include_once '../../../fns/redirect.php';
 if ($user->num_received_bookmarks == 1) {
     $messages[] = 'No more received bookmarks.';
     $_SESSION['bookmarks/messages'] = $messages;
+    unset($_SESSION['bookmarks/errors']);
     redirect('../..');
 }
 
