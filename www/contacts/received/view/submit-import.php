@@ -10,17 +10,41 @@ $id_users = $user->id_users;
 
 $full_name = $receivedContact->full_name;
 $alias = $receivedContact->alias;
+$address = $receivedContact->address;
+$email = $receivedContact->email;
+$phone1 = $receivedContact->phone1;
+$phone2 = $receivedContact->phone2;
+$username = $receivedContact->username;
 $tags = $receivedContact->tags;
 $favorite = $receivedContact->favorite;
+
+include_once '../../../fns/redirect.php';
+
+include_once '../../../fns/Contacts/getByFullName.php';
+if (Contacts\getByFullName($mysqli, $id_users, $full_name)) {
+    $_SESSION['contacts/received/edit-and-import/errors'] = [
+        'A contact with this name already exists.',
+    ];
+    $_SESSION['contacts/received/edit-and-import/values'] = [
+        'full_name' => $full_name,
+        'alias' => $alias,
+        'address' => $address,
+        'email' => $email,
+        'phone1' => $phone1,
+        'phone2' => $phone2,
+        'username' => $username,
+        'tags' => $tags,
+        'favorite' => $favorite,
+    ];
+    redirect("../edit-and-import/?id=$id");
+}
 
 include_once '../../../fns/Tags/parse.php';
 $tag_names = Tags\parse($tags);
 
 include_once '../../../fns/Contacts/add.php';
-$id_contacts = Contacts\add($mysqli, $id_users, $full_name, $alias,
-    $receivedContact->address, $receivedContact->email,
-    $receivedContact->phone1, $receivedContact->phone2,
-    $receivedContact->username, $tags, $favorite);
+$id_contacts = Contacts\add($mysqli, $id_users, $full_name, $alias, $address,
+    $email, $phone1, $phone2, $username, $tags, $favorite);
 
 include_once '../../../fns/ContactTags/add.php';
 ContactTags\add($mysqli, $id_users, $id_contacts,
@@ -36,7 +60,6 @@ include_once '../../../fns/Users/addNumReceivedContacts.php';
 Users\addNumReceivedContacts($mysqli, $id_users, -1);
 
 $messages = ['Contact has been imported.'];
-include_once '../../../fns/redirect.php';
 
 if ($user->num_received_contacts == 1) {
     $messages[] = 'No more received contacts.';
