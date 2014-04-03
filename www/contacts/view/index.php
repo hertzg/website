@@ -57,11 +57,9 @@ if ($insert_time != $update_time) {
 include_once '../../fns/Page/text.php';
 $items[] = Page\text($datesText);
 
-include_once '../../fns/create_panel.php';
+include_once 'fns/create_options_panel.php';
 include_once '../../fns/create_tabs.php';
-include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../fns/Page/sessionMessages.php';
-include_once '../../fns/Page/twoColumns.php';
 $content =
     create_tabs(
         [
@@ -78,15 +76,7 @@ $content =
         Page\sessionMessages('contacts/view/messages')
         .join('<div class="hr"></div>', $items)
     )
-    .create_panel(
-        'Contact Options',
-        Page\twoColumns(
-            Page\imageArrowLink('Edit', "../edit/?id=$id", 'edit-contact'),
-            Page\imageArrowLink('Send', "../send/?id=$id", 'send')
-        )
-        .'<div class="hr"></div>'
-        .Page\imageArrowLink('Delete', "../delete/?id=$id", 'trash-bin')
-    );
+    .create_options_panel($id);
 
 include_once '../../fns/echo_page.php';
 echo_page($user, "Contact #$id", $content, '../../');

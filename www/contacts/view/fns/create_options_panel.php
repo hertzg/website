@@ -1,0 +1,17 @@
+<?php
+
+function create_options_panel ($id) {
+
+    include_once __DIR__.'/../../../fns/Page/imageArrowLink.php';
+    include_once __DIR__.'/../../../fns/Page/twoColumns.php';
+    $content =
+        Page\twoColumns(
+            Page\imageArrowLink('Edit', "../edit/?id=$id", 'edit-contact'),
+            Page\imageArrowLink('Send', "../send/?id=$id", 'send')
+        )
+        .'<div class="hr"></div>'
+        .Page\imageArrowLink('Delete', "../delete/?id=$id", 'trash-bin');
+
+    include_once __DIR__.'/../../../fns/create_panel.php';
+    return create_panel('Contact Options', $content);
+}
