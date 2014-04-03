@@ -14,8 +14,11 @@ if (array_key_exists($key, $_SESSION)) {
 include_once '../../../fns/Tasks/maxLengths.php';
 $maxLengths = Tasks\maxLengths();
 
+$base = '../../../';
+
 include_once '../../../fns/create_tabs.php';
 include_once '../../../fns/Form/button.php';
+include_once '../../../fns/Form/checkbox.php';
 include_once '../../../fns/Form/hidden.php';
 include_once '../../../fns/Form/textarea.php';
 include_once '../../../fns/Form/textfield.php';
@@ -41,6 +44,9 @@ $content = create_tabs(
             'autofocus' => true,
         ])
         .'<div class="hr"></div>'
+        .Form\checkbox($base, 'top_priority',
+            'Mark as Top Priority', $values['top_priority'])
+        .'<div class="hr"></div>'
         .Form\textfield('tags', 'Tags', [
             'value' => $values['tags'],
             'maxlength' => $maxLengths['tags'],
@@ -52,4 +58,4 @@ $content = create_tabs(
 );
 
 include_once '../../../fns/echo_page.php';
-echo_page($user, "Edit Received Task #$id", $content, '../../../');
+echo_page($user, "Edit Received Task #$id", $content, $base);

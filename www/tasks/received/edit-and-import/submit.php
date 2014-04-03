@@ -6,7 +6,10 @@ list($receivedTask, $id, $user) = require_received_task($mysqli);
 $id_users = $user->id_users;
 
 include_once '../../../fns/request_strings.php';
-list($text, $tags) = request_strings('text', 'tags');
+list($text, $top_priority, $tags) = request_strings(
+    'text', 'top_priority', 'tags');
+
+$top_priority = (bool)$top_priority;
 
 include_once '../../../fns/str_collapse_spaces_multiline.php';
 $text = str_collapse_spaces_multiline($text);
@@ -31,8 +34,6 @@ if ($errors) {
     ];
     redirect("./?id=$id");
 }
-
-$top_priority = false;
 
 include_once '../../../fns/Tasks/add.php';
 $id_tasks = Tasks\add($mysqli, $id_users, $text, $top_priority, $tags);

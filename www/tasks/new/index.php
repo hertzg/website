@@ -11,6 +11,7 @@ if (array_key_exists($key, $_SESSION)) {
 } else {
     $values = [
         'text' => '',
+        'top_priority' => false,
         'tags' => '',
     ];
 }
@@ -25,6 +26,7 @@ $maxLengths = Tasks\maxLengths();
 
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
+include_once '../../fns/Form/checkbox.php';
 include_once '../../fns/Form/textarea.php';
 include_once '../../fns/Form/textfield.php';
 include_once '../../fns/Page/sessionErrors.php';
@@ -49,6 +51,9 @@ $content =
                 'autofocus' => true,
                 'required' => true,
             ])
+            .'<div class="hr"></div>'
+            .Form\checkbox($base, 'top_priority',
+                'Mark as Top Priority', $values['top_priority'])
             .'<div class="hr"></div>'
             .Form\textfield('tags', 'Tags', [
                 'value' => $values['tags'],
