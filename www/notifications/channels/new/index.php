@@ -28,35 +28,34 @@ include_once '../../../fns/Form/button.php';
 include_once '../../../fns/Form/notes.php';
 include_once '../../../fns/Form/textfield.php';
 include_once '../../../fns/Page/sessionErrors.php';
-$content =
-    create_tabs(
+$content = create_tabs(
+    [
         [
-            [
-                'title' => '&middot;&middot;&middot;',
-                'href' => '../..',
-            ],
-            [
-                'title' => 'Channels',
-                'href' => '..',
-            ],
+            'title' => '&middot;&middot;&middot;',
+            'href' => '../..',
         ],
-        'New',
-        Page\sessionErrors('notifications/channels/add/errors')
-        .'<form action="submit.php" method="post">'
-            .Form\textfield('channel_name', 'Channel name', [
-                'value' => $values['channel_name'],
-                'maxlength' => $maxLength,
-                'autofocus' => true,
-                'required' => true,
-            ])
-            .Form\notes([
-                'Characters a-z, A-Z, 0-9, dash, dot and underscore only.',
-                "Minimum $minLength maximum $maxLength characters.",
-            ])
-            .'<div class="hr"></div>'
-            .Form\button('Create')
-        .'</form>'
-    );
+        [
+            'title' => 'Channels',
+            'href' => '..',
+        ],
+    ],
+    'New',
+    Page\sessionErrors('notifications/channels/add/errors')
+    .'<form action="submit.php" method="post">'
+        .Form\textfield('channel_name', 'Channel name', [
+            'value' => $values['channel_name'],
+            'maxlength' => $maxLength,
+            'autofocus' => true,
+            'required' => true,
+        ])
+        .Form\notes([
+            'Characters a-z, A-Z, 0-9, dash, dot and underscore only.',
+            "Minimum $minLength maximum $maxLength characters.",
+        ])
+        .'<div class="hr"></div>'
+        .Form\button('Create')
+    .'</form>'
+);
 
 include_once '../../../fns/echo_page.php';
 echo_page($user, 'New Channel', $content, $base);

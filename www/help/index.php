@@ -14,20 +14,19 @@ include_once '../fns/create_tabs.php';
 include_once '../fns/Page/imageArrowLink.php';
 include_once '../fns/Page/imageLink.php';
 include_once '../fns/Page/sessionMessages.php';
-$content =
-    create_tabs(
+$content = create_tabs(
+    [
         [
-            [
-                'title' => 'Home',
-                'href' => '../home/',
-            ],
+            'title' => 'Home',
+            'href' => '../home/',
         ],
-        'Help',
-        Page\sessionMessages('help/messages')
-        .Page\imageLink('Install Zvini App', 'install.php', 'download')
-        .'<div class="hr"></div>'
-        .Page\imageArrowLink('Leave Feedback', 'feedback/', 'feedback')
-    );
+    ],
+    'Help',
+    Page\sessionMessages('help/messages')
+    .Page\imageLink('Install Zvini App', 'install.php', 'download')
+    .'<div class="hr"></div>'
+    .Page\imageArrowLink('Leave Feedback', 'feedback/', 'feedback')
+);
 
 include_once '../fns/echo_page.php';
 echo_page($user, 'Help', $content, $base);

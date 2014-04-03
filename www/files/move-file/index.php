@@ -60,26 +60,25 @@ include_once '../../fns/create_folder_link.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/warnings.php';
 include_once '../../fns/Page/sessionErrors.php';
-$content =
-    create_tabs(
+$content = create_tabs(
+    [
         [
-            [
-                'title' => '&middot;&middot;&middot;',
-                'href' => create_folder_link($file->id_folders, '../'),
-            ],
-            [
-                'title' => "File #$id",
-                'href' => "../view-file/?id=$file->id_files",
-            ],
+            'title' => '&middot;&middot;&middot;',
+            'href' => create_folder_link($file->id_folders, '../'),
         ],
-        'Move',
-        Page\sessionErrors('files/move-file/errors')
-        .Page\warnings([
-            'Moving the file "<b>'.htmlspecialchars($file->file_name).'</b>".',
-            'Select a folder to move the file into.',
-        ])
-        .join('<div class="hr"></div>', $items)
-    );
+        [
+            'title' => "File #$id",
+            'href' => "../view-file/?id=$file->id_files",
+        ],
+    ],
+    'Move',
+    Page\sessionErrors('files/move-file/errors')
+    .Page\warnings([
+        'Moving the file "<b>'.htmlspecialchars($file->file_name).'</b>".',
+        'Select a folder to move the file into.',
+    ])
+    .join('<div class="hr"></div>', $items)
+);
 
 include_once '../../fns/echo_page.php';
 echo_page($user, "Move File #$id", $content, '../../');

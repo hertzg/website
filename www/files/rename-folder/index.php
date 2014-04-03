@@ -22,31 +22,30 @@ include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/hidden.php';
 include_once '../../fns/Form/textfield.php';
 include_once '../../fns/Page/sessionErrors.php';
-$content =
-    create_tabs(
+$content = create_tabs(
+    [
         [
-            [
-                'title' => '&middot;&middot;&middot;',
-                'href' => '../../home/',
-            ],
-            [
-                'title' => 'Files',
-                'href' => create_folder_link($id_folders, '../'),
-            ],
+            'title' => '&middot;&middot;&middot;',
+            'href' => '../../home/',
         ],
-        "Rename Folder #$id_folders",
-        Page\sessionErrors('files/rename-folder/errors')
-        .'<form action="submit.php" method="post">'
-            .Form\textfield('folder_name', 'Folder name', [
-                'value' => $values['folder_name'],
-                'autofocus' => true,
-                'required' => true,
-            ])
-            .'<div class="hr"></div>'
-            .Form\button('Rename')
-            .Form\hidden('id_folders', $id_folders)
-        .'</form>'
-    );
+        [
+            'title' => 'Files',
+            'href' => create_folder_link($id_folders, '../'),
+        ],
+    ],
+    "Rename Folder #$id_folders",
+    Page\sessionErrors('files/rename-folder/errors')
+    .'<form action="submit.php" method="post">'
+        .Form\textfield('folder_name', 'Folder name', [
+            'value' => $values['folder_name'],
+            'autofocus' => true,
+            'required' => true,
+        ])
+        .'<div class="hr"></div>'
+        .Form\button('Rename')
+        .Form\hidden('id_folders', $id_folders)
+    .'</form>'
+);
 
 include_once '../../fns/echo_page.php';
 echo_page($user, "Rename Folder #$id_folders", $content, '../../');

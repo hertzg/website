@@ -23,27 +23,26 @@ include_once '../fns/Form/button.php';
 include_once '../fns/Form/captcha.php';
 include_once '../fns/Form/textfield.php';
 include_once '../fns/Page/sessionErrors.php';
-$content =
-    create_tabs(
+$content = create_tabs(
+    [
         [
-            [
-                'title' => 'Sign In',
-                'href' => '../sign-in/',
-            ],
+            'title' => 'Sign In',
+            'href' => '../sign-in/',
         ],
-        'Reset Password',
-        Page\sessionErrors('email-reset-password/errors')
-        .'<form action="submit.php" method="post">'
-            .Form\textfield('email', 'Email', [
-                'value' => $values['email'],
-                'autofocus' => true,
-                'required' => true,
-            ])
-            .'<div class="hr"></div>'
-            .Form\captcha($base)
-            .Form\button('Send Recovery Email')
-        .'</form>'
-    );
+    ],
+    'Reset Password',
+    Page\sessionErrors('email-reset-password/errors')
+    .'<form action="submit.php" method="post">'
+        .Form\textfield('email', 'Email', [
+            'value' => $values['email'],
+            'autofocus' => true,
+            'required' => true,
+        ])
+        .'<div class="hr"></div>'
+        .Form\captcha($base)
+        .Form\button('Send Recovery Email')
+    .'</form>'
+);
 
 include_once '../fns/echo_guest_page.php';
 echo_guest_page('Reset Password', $content, $base);

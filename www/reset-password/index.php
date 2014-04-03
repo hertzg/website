@@ -31,36 +31,35 @@ include_once '../fns/Form/label.php';
 include_once '../fns/Form/notes.php';
 include_once '../fns/Form/password.php';
 include_once '../fns/Page/sessionErrors.php';
-$content =
-    create_tabs(
+$content = create_tabs(
+    [
         [
-            [
-                'title' => 'Sign In',
-                'href' => '../sign-in/',
-            ],
+            'title' => 'Sign In',
+            'href' => '../sign-in/',
         ],
-        'Reset Password',
-        Page\sessionErrors('reset-password/errors')
-        .'<form action="submit.php" method="post">'
-            .Form\label('Username', $user->username)
-            .'<div class="hr"></div>'
-            .Form\password('password1', 'New password', [
-                'value' => $values['password1'],
-                'autofocus' => true,
-                'required' => true,
-            ])
-            .Form\notes(['Minimum 6 characters.'])
-            .'<div class="hr"></div>'
-            .Form\password('password2', 'Repeat new password', [
-                'value' => $values['password2'],
-                'required' => true,
-            ])
-            .'<div class="hr"></div>'
-            .Form\button('Reset Password')
-            .Form\hidden('id_users', $id_users)
-            .Form\hidden('key', $key)
-        .'</form>'
-    );
+    ],
+    'Reset Password',
+    Page\sessionErrors('reset-password/errors')
+    .'<form action="submit.php" method="post">'
+        .Form\label('Username', $user->username)
+        .'<div class="hr"></div>'
+        .Form\password('password1', 'New password', [
+            'value' => $values['password1'],
+            'autofocus' => true,
+            'required' => true,
+        ])
+        .Form\notes(['Minimum 6 characters.'])
+        .'<div class="hr"></div>'
+        .Form\password('password2', 'Repeat new password', [
+            'value' => $values['password2'],
+            'required' => true,
+        ])
+        .'<div class="hr"></div>'
+        .Form\button('Reset Password')
+        .Form\hidden('id_users', $id_users)
+        .Form\hidden('key', $key)
+    .'</form>'
+);
 
 include_once '../fns/echo_page.php';
 echo_page($user, 'Reset Password', $content, $base);

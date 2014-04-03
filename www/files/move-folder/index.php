@@ -70,26 +70,25 @@ include_once '../../fns/create_folder_link.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/sessionErrors.php';
 include_once '../../fns/Page/warnings.php';
-$content =
-    create_tabs(
+$content = create_tabs(
+    [
         [
-            [
-                'title' => '&middot;&middot;&middot;',
-                'href' => '../../home/',
-            ],
-            [
-                'title' => 'Files',
-                'href' => create_folder_link($id_folders, '../'),
-            ]
+            'title' => '&middot;&middot;&middot;',
+            'href' => '../../home/',
         ],
-        'Move',
-        Page\sessionErrors('files/move-folder/errors')
-        .Page\warnings([
-            'Moving the folder "<b>'.htmlspecialchars($folder->folder_name).'</b>".',
-            'Select a folder to move the folder into.'
-        ])
-        .join('<div class="hr"></div>', $items)
-    );
+        [
+            'title' => 'Files',
+            'href' => create_folder_link($id_folders, '../'),
+        ]
+    ],
+    'Move',
+    Page\sessionErrors('files/move-folder/errors')
+    .Page\warnings([
+        'Moving the folder "<b>'.htmlspecialchars($folder->folder_name).'</b>".',
+        'Select a folder to move the folder into.'
+    ])
+    .join('<div class="hr"></div>', $items)
+);
 
 include_once '../../fns/echo_page.php';
 echo_page($user, "Move Folder #$id_folders", $content, '../../');

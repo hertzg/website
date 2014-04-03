@@ -21,36 +21,35 @@ include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/textfield.php';
 include_once '../../fns/Page/sessionErrors.php';
-$content =
-    create_tabs(
+$content = create_tabs(
+    [
         [
-            [
-                'title' => '&middot;&middot;&middot;',
-                'href' => '../../home/',
-            ],
-            [
-                'title' => 'Account',
-                'href' => '..',
-            ],
+            'title' => '&middot;&middot;&middot;',
+            'href' => '../../home/',
         ],
-        'Edit Profile',
-        Page\sessionErrors('account/edit-profile/errors')
-        .'<form action="submit.php" method="post">'
-            .Form\textfield('email', 'Email', [
-                'value' => $values->email,
-                'maxlength' => $maxLengths['email'],
-                'autofocus' => true,
-                'required' => true,
-            ])
-            .'<div class="hr"></div>'
-            .Form\textfield('full_name', 'Full name', [
-                'value' => $values->full_name,
-                'maxlength' => $maxLengths['full_name'],
-            ])
-            .'<div class="hr"></div>'
-            .Form\button('Save Changes')
-        .'</form>'
-    );
+        [
+            'title' => 'Account',
+            'href' => '..',
+        ],
+    ],
+    'Edit Profile',
+    Page\sessionErrors('account/edit-profile/errors')
+    .'<form action="submit.php" method="post">'
+        .Form\textfield('email', 'Email', [
+            'value' => $values->email,
+            'maxlength' => $maxLengths['email'],
+            'autofocus' => true,
+            'required' => true,
+        ])
+        .'<div class="hr"></div>'
+        .Form\textfield('full_name', 'Full name', [
+            'value' => $values->full_name,
+            'maxlength' => $maxLengths['full_name'],
+        ])
+        .'<div class="hr"></div>'
+        .Form\button('Save Changes')
+    .'</form>'
+);
 
 include_once '../../fns/echo_page.php';
 echo_page($user, 'Edit Profile', $content, $base);

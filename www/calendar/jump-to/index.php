@@ -43,27 +43,26 @@ unset(
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/select.php';
-$content =
-    create_tabs(
+$content = create_tabs(
+    [
         [
-            [
-                'title' => '&middot;&middot;&middot;',
-                'href' => '../../home/',
-            ],
-            [
-                'title' => 'Calendar',
-                'href' => "../?year=$year&month=$month",
-            ],
+            'title' => '&middot;&middot;&middot;',
+            'href' => '../../home/',
         ],
-        'Jump To',
-        '<form action="submit.php" method="post">'
-            .Form\select('month', 'Month:', $monthOptions, $month)
-            .'<div class="hr"></div>'
-            .Form\select('year', 'Year:', $yearOptions, $year)
-            .'<div class="hr"></div>'
-            .Form\button('Jump To')
-        .'</form>'
-    );
+        [
+            'title' => 'Calendar',
+            'href' => "../?year=$year&month=$month",
+        ],
+    ],
+    'Jump To',
+    '<form action="submit.php" method="post">'
+        .Form\select('month', 'Month:', $monthOptions, $month)
+        .'<div class="hr"></div>'
+        .Form\select('year', 'Year:', $yearOptions, $year)
+        .'<div class="hr"></div>'
+        .Form\button('Jump To')
+    .'</form>'
+);
 
 include_once '../../fns/echo_page.php';
 echo_page($user, 'Jumo To', $content, $base);

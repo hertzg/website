@@ -46,32 +46,31 @@ include_once '../fns/Form/password.php';
 include_once '../fns/Form/textfield.php';
 include_once '../fns/Page/sessionErrors.php';
 include_once '../fns/Page/sessionMessages.php';
-$content =
-    create_tabs(
-        [],
-        'Sign In',
-        Page\sessionMessages('sign-in/messages')
-        .Page\sessionErrors('sign-in/errors')
-        .'<form action="submit.php" method="post">'
-            .Form\textfield('username', 'Username', [
-                'value' => $username,
-                'autofocus' => $username === '',
-                'required' => true,
-            ])
-            .'<div class="hr"></div>'
-            .Form\password('password', 'Password', [
-                'value' => $values['password'],
-                'autofocus' => $username !== '',
-                'required' => true,
-            ])
-            .'<div class="hr"></div>'
-            .Form\checkbox($base, 'remember', 'Stay signed in', $values['remember'])
-            .'<div class="hr"></div>'
-            .Form\button('Sign In')
-            .Form\hidden('return', $return)
-        .'</form>'
-        .create_options_panel()
-    );
+$content = create_tabs(
+    [],
+    'Sign In',
+    Page\sessionMessages('sign-in/messages')
+    .Page\sessionErrors('sign-in/errors')
+    .'<form action="submit.php" method="post">'
+        .Form\textfield('username', 'Username', [
+            'value' => $username,
+            'autofocus' => $username === '',
+            'required' => true,
+        ])
+        .'<div class="hr"></div>'
+        .Form\password('password', 'Password', [
+            'value' => $values['password'],
+            'autofocus' => $username !== '',
+            'required' => true,
+        ])
+        .'<div class="hr"></div>'
+        .Form\checkbox($base, 'remember', 'Stay signed in', $values['remember'])
+        .'<div class="hr"></div>'
+        .Form\button('Sign In')
+        .Form\hidden('return', $return)
+    .'</form>'
+    .create_options_panel()
+);
 
 include_once '../fns/echo_guest_page.php';
 echo_guest_page('Sign In', $content, $base);

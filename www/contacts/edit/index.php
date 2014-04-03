@@ -22,66 +22,65 @@ include_once '../../fns/Form/hidden.php';
 include_once '../../fns/Form/textfield.php';
 include_once '../../fns/Page/sessionErrors.php';
 include_once '../../fns/Username/maxLength.php';
-$content =
-    create_tabs(
+$content = create_tabs(
+    [
         [
-            [
-                'title' => '&middot;&middot;&middot;',
-                'href' => '..',
-            ],
-            [
-                'title' => "Contact #$id",
-                'href' => "../view/?id=$id",
-            ],
+            'title' => '&middot;&middot;&middot;',
+            'href' => '..',
         ],
-        'Edit',
-        Page\sessionErrors('contacts/edit/errors')
-        .'<form action="submit.php" method="post">'
-            .Form\textfield('full_name', 'Full name', [
-                'value' => $values['full_name'],
-                'maxlength' => $maxLengths['full_name'],
-                'autofocus' => true,
-                'required' => true,
-            ])
-            .'<div class="hr"></div>'
-            .Form\textfield('alias', 'Alias', [
-                'value' => $values['alias'],
-                'maxlength' => $maxLengths['alias'],
-            ])
-            .'<div class="hr"></div>'
-            .Form\textfield('address', 'Address', [
-                'value' => $values['address'],
-                'maxlength' => $maxLengths['address'],
-            ])
-            .'<div class="hr"></div>'
-            .Form\textfield('email', 'Email', [
-                'value' => $values['email'],
-                'maxlength' => $maxLengths['email'],
-            ])
-            .'<div class="hr"></div>'
-            .Form\textfield('phone1', 'Phone 1', [
-                'value' => $values['phone1'],
-                'maxlength' => $maxLengths['phone1'],
-            ])
-            .'<div class="hr"></div>'
-            .Form\textfield('phone2', 'Phone 2', [
-                'value' => $values['phone2'],
-                'maxlength' => $maxLengths['phone2'],
-            ])
-            .'<div class="hr"></div>'
-            .Form\textfield('username', 'Zvini username', [
-                'value' => $values['username'],
-                'maxlength' => $maxLengths['username'],
-            ])
-            .'<div class="hr"></div>'
-            .Form\textfield('tags', 'Tags', [
-                'value' => $values['tags'],
-            ])
-            .'<div class="hr"></div>'
-            .Form\button('Save Changes')
-            .Form\hidden('id', $id)
-        .'</form>'
-    );
+        [
+            'title' => "Contact #$id",
+            'href' => "../view/?id=$id",
+        ],
+    ],
+    'Edit',
+    Page\sessionErrors('contacts/edit/errors')
+    .'<form action="submit.php" method="post">'
+        .Form\textfield('full_name', 'Full name', [
+            'value' => $values['full_name'],
+            'maxlength' => $maxLengths['full_name'],
+            'autofocus' => true,
+            'required' => true,
+        ])
+        .'<div class="hr"></div>'
+        .Form\textfield('alias', 'Alias', [
+            'value' => $values['alias'],
+            'maxlength' => $maxLengths['alias'],
+        ])
+        .'<div class="hr"></div>'
+        .Form\textfield('address', 'Address', [
+            'value' => $values['address'],
+            'maxlength' => $maxLengths['address'],
+        ])
+        .'<div class="hr"></div>'
+        .Form\textfield('email', 'Email', [
+            'value' => $values['email'],
+            'maxlength' => $maxLengths['email'],
+        ])
+        .'<div class="hr"></div>'
+        .Form\textfield('phone1', 'Phone 1', [
+            'value' => $values['phone1'],
+            'maxlength' => $maxLengths['phone1'],
+        ])
+        .'<div class="hr"></div>'
+        .Form\textfield('phone2', 'Phone 2', [
+            'value' => $values['phone2'],
+            'maxlength' => $maxLengths['phone2'],
+        ])
+        .'<div class="hr"></div>'
+        .Form\textfield('username', 'Zvini username', [
+            'value' => $values['username'],
+            'maxlength' => $maxLengths['username'],
+        ])
+        .'<div class="hr"></div>'
+        .Form\textfield('tags', 'Tags', [
+            'value' => $values['tags'],
+        ])
+        .'<div class="hr"></div>'
+        .Form\button('Save Changes')
+        .Form\hidden('id', $id)
+    .'</form>'
+);
 
 include_once '../../fns/echo_page.php';
 echo_page($user, "Edit Contact #$id", $content, '../../');

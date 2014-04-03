@@ -19,31 +19,30 @@ include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/notes.php';
 include_once '../../fns/Form/textarea.php';
 include_once '../../fns/Page/sessionErrors.php';
-$content =
-    create_tabs(
+$content = create_tabs(
+    [
         [
-            [
-                'title' => '&middot;&middot;&middot;',
-                'href' => '../../home/',
-            ],
-            [
-                'title' => 'Help',
-                'href' => '..',
-            ],
+            'title' => '&middot;&middot;&middot;',
+            'href' => '../../home/',
         ],
-        'Feedback',
-        Page\sessionErrors('help/feedback/errors')
-        .'<form action="submit.php" method="post">'
-            .Form\textarea('feedbacktext', 'Feedback text', [
-                'value' => $values['feedbacktext'],
-                'autofocus' => true,
-                'required' => true,
-            ])
-            .Form\notes(['Minimum 6 words.'])
-            .'<div class="hr"></div>'
-            .Form\button('Submit Feedback')
-        .'</form>'
-    );
+        [
+            'title' => 'Help',
+            'href' => '..',
+        ],
+    ],
+    'Feedback',
+    Page\sessionErrors('help/feedback/errors')
+    .'<form action="submit.php" method="post">'
+        .Form\textarea('feedbacktext', 'Feedback text', [
+            'value' => $values['feedbacktext'],
+            'autofocus' => true,
+            'required' => true,
+        ])
+        .Form\notes(['Minimum 6 words.'])
+        .'<div class="hr"></div>'
+        .Form\button('Submit Feedback')
+    .'</form>'
+);
 
 include_once '../../fns/echo_page.php';
 echo_page($user, 'Leave Feedback', $content, $base);

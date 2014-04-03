@@ -40,31 +40,30 @@ include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/hidden.php';
 include_once '../../fns/Form/textfield.php';
 include_once '../../fns/Page/sessionErrors.php';
-$content =
-    create_tabs(
+$content = create_tabs(
+    [
         [
-            [
-                'title' => '&middot;&middot;&middot;',
-                'href' => '../../home/',
-            ],
-            [
-                'title' => 'Files',
-                'href' => create_folder_link($parent_id_folders, '../'),
-            ],
+            'title' => '&middot;&middot;&middot;',
+            'href' => '../../home/',
         ],
-        'New Folder',
-        Page\sessionErrors('files/add-folder/errors')
-        .'<form action="submit.php" method="post">'
-            .Form\textfield('folder_name', 'Folder name', [
-                'value' => $values['folder_name'],
-                'autofocus' => true,
-                'required' => true,
-            ])
-            .'<div class="hr"></div>'
-            .Form\button('Create')
-            .Form\hidden('parent_id_folders', $parent_id_folders)
-        .'</form>'
-    );
+        [
+            'title' => 'Files',
+            'href' => create_folder_link($parent_id_folders, '../'),
+        ],
+    ],
+    'New Folder',
+    Page\sessionErrors('files/add-folder/errors')
+    .'<form action="submit.php" method="post">'
+        .Form\textfield('folder_name', 'Folder name', [
+            'value' => $values['folder_name'],
+            'autofocus' => true,
+            'required' => true,
+        ])
+        .'<div class="hr"></div>'
+        .Form\button('Create')
+        .Form\hidden('parent_id_folders', $parent_id_folders)
+    .'</form>'
+);
 
 include_once '../../fns/echo_page.php';
 echo_page($user, 'New Folder', $content, $base);

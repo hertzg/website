@@ -31,35 +31,34 @@ include_once '../../fns/Form/hidden.php';
 include_once '../../fns/Form/label.php';
 include_once '../../fns/Form/textfield.php';
 include_once '../../fns/Page/sessionErrors.php';
-$content =
-    create_tabs(
+$content = create_tabs(
+    [
         [
-            [
-                'title' => '&middot;&middot;&middot;',
-                'href' => '../../home/',
-            ],
-            [
-                'title' => 'Calendar',
-                'href' => '..',
-            ],
+            'title' => '&middot;&middot;&middot;',
+            'href' => '../../home/',
         ],
-        'New Event',
-        Page\sessionErrors('calendar/add-event/errors')
-        .'<form action="submit.php" method="post">'
-            .Form\label('When', date('F d, Y', $time))
-            .'<div class="hr"></div>'
-            .Form\textfield('event_text', 'Text', [
-                'value' => $values['event_text'],
-                'autofocus' => true,
-                'required' => true,
-            ])
-            .'<div class="hr"></div>'
-            .Form\button('Save Event')
-            .Form\hidden('year', $year)
-            .Form\hidden('month', $month)
-            .Form\hidden('day', $day)
-        .'</form>'
-    );
+        [
+            'title' => 'Calendar',
+            'href' => '..',
+        ],
+    ],
+    'New Event',
+    Page\sessionErrors('calendar/add-event/errors')
+    .'<form action="submit.php" method="post">'
+        .Form\label('When', date('F d, Y', $time))
+        .'<div class="hr"></div>'
+        .Form\textfield('event_text', 'Text', [
+            'value' => $values['event_text'],
+            'autofocus' => true,
+            'required' => true,
+        ])
+        .'<div class="hr"></div>'
+        .Form\button('Save Event')
+        .Form\hidden('year', $year)
+        .Form\hidden('month', $month)
+        .Form\hidden('day', $day)
+    .'</form>'
+);
 
 include_once '../../fns/echo_page.php';
 echo_page($user, 'New Event', $content, $base);

@@ -22,22 +22,21 @@ foreach ($themes as $id => $theme) {
 
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/warnings.php';
-$content =
-    create_tabs(
+$content = create_tabs(
+    [
         [
-            [
-                'title' => '&middot;&middot;&middot;',
-                'href' => '../../home/',
-            ],
-            [
-                'title' => 'Account',
-                'href' => '..',
-            ],
+            'title' => '&middot;&middot;&middot;',
+            'href' => '../../home/',
         ],
-        'Edit Theme',
-        Page\warnings(['Select theme color:'])
-        .join('<div class="hr"></div>', $themeItems)
-    );
+        [
+            'title' => 'Account',
+            'href' => '..',
+        ],
+    ],
+    'Edit Theme',
+    Page\warnings(['Select theme color:'])
+    .join('<div class="hr"></div>', $themeItems)
+);
 
 include_once '../../fns/echo_page.php';
 echo_page($user, 'Edit Theme', $content, $base);

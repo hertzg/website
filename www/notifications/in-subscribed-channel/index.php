@@ -68,26 +68,25 @@ unset(
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/sessionMessages.php';
-$content =
-    create_tabs(
+$content = create_tabs(
+    [
         [
-            [
-                'title' => 'Home',
-                'href' => '../../home/',
-            ],
+            'title' => 'Home',
+            'href' => '../../home/',
         ],
-        'Notifications',
-        Page\sessionMessages('notifications/in-subscribed-channel/messages')
-        .'<div class="filterBar">'
-            .'Channel: <b>'.htmlspecialchars($subscribedChannel->channel_name).'</b>'
-            .'<a class="clickable" title="Clear Filter" href="..">'
-                .'<span class="icon no"></span>'
-            .'</a>'
-        .'</div>'
-        .'<div class="hr"></div>'
-        .join('<div class="hr"></div>', $items)
-        .create_panel('Options', join('<div class="hr"></div>', $options))
-    );
+    ],
+    'Notifications',
+    Page\sessionMessages('notifications/in-subscribed-channel/messages')
+    .'<div class="filterBar">'
+        .'Channel: <b>'.htmlspecialchars($subscribedChannel->channel_name).'</b>'
+        .'<a class="clickable" title="Clear Filter" href="..">'
+            .'<span class="icon no"></span>'
+        .'</a>'
+    .'</div>'
+    .'<div class="hr"></div>'
+    .join('<div class="hr"></div>', $items)
+    .create_panel('Options', join('<div class="hr"></div>', $options))
+);
 
 include_once '../../fns/echo_page.php';
 echo_page($user, 'Notifications', $content, $base);

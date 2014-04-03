@@ -36,37 +36,36 @@ include_once '../../fns/Form/filefield.php';
 include_once '../../fns/Form/hidden.php';
 include_once '../../fns/Page/sessionErrors.php';
 include_once '../../fns/Page/warnings.php';
-$content =
-    create_tabs(
+$content = create_tabs(
+    [
         [
-            [
-                'title' => '&middot;&middot;&middot;',
-                'href' => '../../home/',
-            ],
-            [
-                'title' => 'Files',
-                'href' => create_folder_link($id_folders, '../'),
-            ],
+            'title' => '&middot;&middot;&middot;',
+            'href' => '../../home/',
         ],
-        'Upload Files',
-        Page\sessionErrors('files/upload-files/errors')
-        .Page\warnings([
-            'Maximum '.bytestr(ini_get_bytes('upload_max_filesize')).' each file.',
-            'Maximum '.bytestr(ini_get_bytes('post_max_size')).' at once.',
-        ])
-        .'<form action="submit.php" method="post"'
-        .' enctype="multipart/form-data">'
-            .Form\filefield('file1[]', 'File 1:')
-            .'<div class="hr"></div>'
-            .Form\filefield('file2[]', 'File 2:')
-            .'<div class="hr"></div>'
-            .Form\filefield('file3[]', 'File 3:')
-            .'<div class="hr"></div>'
-            .Form\button('Upload')
-            .Form\hidden('posttest', '1')
-            .Form\hidden('id_folders', $id_folders)
-        .'</form>'
-    );
+        [
+            'title' => 'Files',
+            'href' => create_folder_link($id_folders, '../'),
+        ],
+    ],
+    'Upload Files',
+    Page\sessionErrors('files/upload-files/errors')
+    .Page\warnings([
+        'Maximum '.bytestr(ini_get_bytes('upload_max_filesize')).' each file.',
+        'Maximum '.bytestr(ini_get_bytes('post_max_size')).' at once.',
+    ])
+    .'<form action="submit.php" method="post"'
+    .' enctype="multipart/form-data">'
+        .Form\filefield('file1[]', 'File 1:')
+        .'<div class="hr"></div>'
+        .Form\filefield('file2[]', 'File 2:')
+        .'<div class="hr"></div>'
+        .Form\filefield('file3[]', 'File 3:')
+        .'<div class="hr"></div>'
+        .Form\button('Upload')
+        .Form\hidden('posttest', '1')
+        .Form\hidden('id_folders', $id_folders)
+    .'</form>'
+);
 
 include_once '../../fns/echo_page.php';
 echo_page($user, 'Upload Files', $content, $base);

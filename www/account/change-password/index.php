@@ -23,41 +23,40 @@ include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/notes.php';
 include_once '../../fns/Form/password.php';
 include_once '../../fns/Page/sessionErrors.php';
-$content =
-    create_tabs(
+$content = create_tabs(
+    [
         [
-            [
-                'title' => '&middot;&middot;&middot;',
-                'href' => '../../home/',
-            ],
-            [
-                'title' => 'Account',
-                'href' => '..',
-            ],
+            'title' => '&middot;&middot;&middot;',
+            'href' => '../../home/',
         ],
-        'Change Password',
-        Page\sessionErrors('account/change-password/errors')
-        .'<form action="submit.php" method="post">'
-            .Form\password('currentpassword', 'Current password', [
-                'value' => $values['currentpassword'],
-                'autofocus' => true,
-                'required' => true,
-            ])
-            .'<div class="hr"></div>'
-            .Form\password('password1', 'New password', [
-                'value' => $values['password1'],
-                'required' => true,
-            ])
-            .Form\notes(['Minimum 6 characters.'])
-            .'<div class="hr"></div>'
-            .Form\password('password2', 'Repeat new password', [
-                'value' => $values['password2'],
-                'required' => true,
-            ])
-            .'<div class="hr"></div>'
-            .Form\button('Change')
-        .'</form>'
-    );
+        [
+            'title' => 'Account',
+            'href' => '..',
+        ],
+    ],
+    'Change Password',
+    Page\sessionErrors('account/change-password/errors')
+    .'<form action="submit.php" method="post">'
+        .Form\password('currentpassword', 'Current password', [
+            'value' => $values['currentpassword'],
+            'autofocus' => true,
+            'required' => true,
+        ])
+        .'<div class="hr"></div>'
+        .Form\password('password1', 'New password', [
+            'value' => $values['password1'],
+            'required' => true,
+        ])
+        .Form\notes(['Minimum 6 characters.'])
+        .'<div class="hr"></div>'
+        .Form\password('password2', 'Repeat new password', [
+            'value' => $values['password2'],
+            'required' => true,
+        ])
+        .'<div class="hr"></div>'
+        .Form\button('Change')
+    .'</form>'
+);
 
 include_once '../../fns/echo_page.php';
 echo_page($user, 'Change Password', $content, $base);

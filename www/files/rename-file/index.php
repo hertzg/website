@@ -19,31 +19,30 @@ include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/hidden.php';
 include_once '../../fns/Form/textfield.php';
 include_once '../../fns/Page/sessionErrors.php';
-$content =
-    create_tabs(
+$content = create_tabs(
+    [
         [
-            [
-                'title' => '&middot;&middot;&middot;',
-                'href' => create_folder_link($file->id_folders, '../'),
-            ],
-            [
-                'title' => "File #$id",
-                'href' => "../view-file/?id=$id",
-            ],
+            'title' => '&middot;&middot;&middot;',
+            'href' => create_folder_link($file->id_folders, '../'),
         ],
-        'Rename',
-        Page\sessionErrors('files/rename-file/errors')
-        .'<form action="submit.php" method="post">'
-            .Form\textfield('file_name', 'File name', [
-                'value' => $values['file_name'],
-                'autofocus' => true,
-                'required' => true,
-            ])
-            .'<div class="hr"></div>'
-            .Form\button('Rename')
-            .Form\hidden('id', $id)
-        .'</form>'
-    );
+        [
+            'title' => "File #$id",
+            'href' => "../view-file/?id=$id",
+        ],
+    ],
+    'Rename',
+    Page\sessionErrors('files/rename-file/errors')
+    .'<form action="submit.php" method="post">'
+        .Form\textfield('file_name', 'File name', [
+            'value' => $values['file_name'],
+            'autofocus' => true,
+            'required' => true,
+        ])
+        .'<div class="hr"></div>'
+        .Form\button('Rename')
+        .Form\hidden('id', $id)
+    .'</form>'
+);
 
 include_once '../../fns/echo_page.php';
 echo_page($user, "Rename File #$id", $content, '../../');

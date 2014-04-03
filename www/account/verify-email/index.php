@@ -11,25 +11,24 @@ include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/captcha.php';
 include_once '../../fns/Page/sessionErrors.php';
-$content =
-    create_tabs(
+$content = create_tabs(
+    [
         [
-            [
-                'title' => ' &middot;&middot;&middot; ',
-                'href' => '../../home/',
-            ],
-            [
-                'title' => 'Account',
-                'href' => '../',
-            ],
+            'title' => ' &middot;&middot;&middot; ',
+            'href' => '../../home/',
         ],
-        'Verify Email',
-        Page\sessionErrors('account/verify-email/errors')
-        .'<form action="submit.php" method="post">'
-            .Form\captcha($base, true)
-            .Form\button('Send Verification Email')
-        .'</form>'
-    );
+        [
+            'title' => 'Account',
+            'href' => '../',
+        ],
+    ],
+    'Verify Email',
+    Page\sessionErrors('account/verify-email/errors')
+    .'<form action="submit.php" method="post">'
+        .Form\captcha($base, true)
+        .Form\button('Send Verification Email')
+    .'</form>'
+);
 
 include_once '../../fns/echo_page.php';
 echo_page($user, 'Verify Email', $content, $base);
