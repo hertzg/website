@@ -50,7 +50,12 @@ if ($tags !== '') {
 }
 
 include_once '../../../fns/date_ago.php';
-$items[] = Page\text('Contact received '.date_ago($receivedContact->insert_time).'.');
+$items[] = Page\text(
+    '<div>'
+        .($receivedContact->favorite ? 'Favorite' : 'Regular').' contact.'
+    .'</div>'
+    .'<div>Contact received '.date_ago($receivedContact->insert_time).'.</div>'
+);
 
 include_once 'fns/create_options_panel.php';
 include_once '../../../fns/create_panel.php';

@@ -18,6 +18,7 @@ if (array_key_exists($key, $_SESSION)) {
         'phone2' => '',
         'username' => '',
         'tags' => '',
+        'favorite' => false,
     ];
 }
 
@@ -31,6 +32,7 @@ $maxLengths = Contacts\maxLengths();
 
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
+include_once '../../fns/Form/checkbox.php';
 include_once '../../fns/Form/textfield.php';
 include_once '../../fns/Page/sessionErrors.php';
 $content = create_tabs(
@@ -88,6 +90,9 @@ $content = create_tabs(
             'value' => $values['tags'],
             'maxlength' => $maxLengths['tags'],
         ])
+        .'<div class="hr"></div>'
+        .Form\checkbox($base, 'favorite',
+            'Mark as Favorite', $values['favorite'])
         .'<div class="hr"></div>'
         .Form\button('Save Contact')
     .'</form>'

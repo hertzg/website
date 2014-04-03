@@ -11,6 +11,7 @@ $id_users = $user->id_users;
 $full_name = $receivedContact->full_name;
 $alias = $receivedContact->alias;
 $tags = $receivedContact->tags;
+$favorite = $receivedContact->favorite;
 
 include_once '../../../fns/Tags/parse.php';
 $tag_names = Tags\parse($tags);
@@ -19,10 +20,11 @@ include_once '../../../fns/Contacts/add.php';
 $id_contacts = Contacts\add($mysqli, $id_users, $full_name, $alias,
     $receivedContact->address, $receivedContact->email,
     $receivedContact->phone1, $receivedContact->phone2,
-    $receivedContact->username, $tags);
+    $receivedContact->username, $tags, $favorite);
 
 include_once '../../../fns/ContactTags/add.php';
-ContactTags\add($mysqli, $id_users, $id_contacts, $tag_names, $alias, $full_name);
+ContactTags\add($mysqli, $id_users, $id_contacts,
+    $tag_names, $full_name, $alias, $favorite);
 
 include_once '../../../fns/Users/addNumContacts.php';
 Users\addNumContacts($mysqli, $id_users, 1);

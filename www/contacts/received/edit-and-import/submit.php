@@ -6,10 +6,10 @@ list($receivedContact, $id, $user) = require_received_contact($mysqli);
 $id_users = $user->id_users;
 
 include_once '../../../fns/request_strings.php';
-list($full_name, $alias, $address, $email,
-    $phone1, $phone2, $username, $tags) = request_strings(
-    'full_name', 'alias', 'address', 'email',
-    'phone1', 'phone2', 'username', 'tags');
+list($full_name, $alias, $address, $email, $phone1,
+    $phone2, $username, $tags, $favorite) = request_strings(
+    'full_name', 'alias', 'address', 'email', 'phone1',
+    'phone2', 'username', 'tags', 'favorite');
 
 include_once '../../../fns/str_collapse_spaces.php';
 $full_name = str_collapse_spaces($full_name);
@@ -20,6 +20,8 @@ $phone1 = str_collapse_spaces($phone1);
 $phone2 = str_collapse_spaces($phone2);
 $username = str_collapse_spaces($username);
 $tags = str_collapse_spaces($tags);
+
+$favorite = (bool)$favorite;
 
 $errors = [];
 
@@ -50,17 +52,18 @@ if ($errors) {
         'phone2' => $phone2,
         'username' => $username,
         'tags' => $tags,
+        'favorite' => $favorite,
     ];
     redirect("./?id=$id");
 }
 
 include_once '../../../fns/Contacts/add.php';
 $id_contacts = Contacts\add($mysqli, $id_users, $full_name, $alias,
-    $address, $email, $phone1, $phone2, $username, $tags);
+    $address, $email, $phone1, $phone2, $username, $tags, $favorite);
 
 include_once '../../../fns/ContactTags/add.php';
 ContactTags\add($mysqli, $id_users, $id_contacts,
-    $tag_names, $full_name, $alias);
+    $tag_names, $full_name, $alias, $favorite);
 
 include_once '../../../fns/Users/addNumContacts.php';
 Users\addNumContacts($mysqli, $id_users, 1);

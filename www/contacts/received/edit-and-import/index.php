@@ -11,11 +11,14 @@ if (array_key_exists($key, $_SESSION)) {
     $values = (array)$receivedContact;
 }
 
-include_once '../../fns/Contacts/maxLengths.php';
+include_once '../../../fns/Contacts/maxLengths.php';
 $maxLengths = Contacts\maxLengths();
+
+$base = '../../../';
 
 include_once '../../../fns/create_tabs.php';
 include_once '../../../fns/Form/button.php';
+include_once '../../../fns/Form/checkbox.php';
 include_once '../../../fns/Form/hidden.php';
 include_once '../../../fns/Form/textfield.php';
 include_once '../../../fns/Page/sessionErrors.php';
@@ -75,10 +78,13 @@ $content = create_tabs(
             'maxlength' => $maxLengths['tags'],
         ])
         .'<div class="hr"></div>'
+        .Form\checkbox($base, 'favorite',
+            'Mark as Favorite', $values['favorite'])
+        .'<div class="hr"></div>'
         .Form\button('Import Contact')
         .Form\hidden('id', $id)
     .'</form>'
 );
 
 include_once '../../../fns/echo_page.php';
-echo_page($user, "Edit Received Contact #$id", $content, '../../../');
+echo_page($user, "Edit Received Contact #$id", $content, $base);

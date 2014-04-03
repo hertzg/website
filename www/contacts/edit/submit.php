@@ -70,7 +70,8 @@ include_once '../../fns/ContactTags/deleteOnContact.php';
 ContactTags\deleteOnContact($mysqli, $id);
 
 include_once '../../fns/ContactTags/add.php';
-ContactTags\add($mysqli, $id_users, $id, $tag_names, $full_name, $alias);
+ContactTags\add($mysqli, $id_users, $id,
+    $tag_names, $full_name, $alias, $contact->favorite);
 
 $_SESSION['contacts/view/messages'] = ['Changes have been saved.'];
 redirect("../view/?id=$id");
