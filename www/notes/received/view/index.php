@@ -4,7 +4,11 @@ include_once '../fns/require_received_note.php';
 include_once '../../../lib/mysqli.php';
 list($receivedNote, $id, $user) = require_received_note($mysqli);
 
-unset($_SESSION['notes/received/messages']);
+unset(
+    $_SESSION['notes/received/edit-and-import/errors'],
+    $_SESSION['notes/received/edit-and-import/values'],
+    $_SESSION['notes/received/messages']
+);
 
 include_once '../../../fns/Page/text.php';
 $items = [Page\text(htmlspecialchars($receivedNote->text))];

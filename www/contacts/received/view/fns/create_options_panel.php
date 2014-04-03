@@ -7,11 +7,18 @@ function create_options_panel ($id) {
     $href = "submit-import.php?id=$id";
     $importLink = Page\imageArrowLink('Import', $href, 'import-contact');
 
+    $href = "../edit-and-import/?id=$id";
+    $icon = 'import-contact';
+    $editAndImportLink = Page\imageArrowLink('Edit and Import', $href, $icon);
+
     $href = "../delete/?id=$id";
     $deleteLink = Page\imageArrowLink('Delete', $href, 'trash-bin');
 
     include_once __DIR__.'/../../../../fns/Page/twoColumns.php';
-    $content = Page\twoColumns($importLink, $deleteLink);
+    $content =
+        Page\twoColumns($importLink, $editAndImportLink)
+        .'<div class="hr"></div>'
+        .$deleteLink;
 
     include_once __DIR__.'/../../../../fns/create_panel.php';
     return create_panel('Contact Options', $content);

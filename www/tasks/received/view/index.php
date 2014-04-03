@@ -4,7 +4,11 @@ include_once '../fns/require_received_task.php';
 include_once '../../../lib/mysqli.php';
 list($receivedTask, $id, $user) = require_received_task($mysqli);
 
-unset($_SESSION['tasks/received/messages']);
+unset(
+    $_SESSION['tasks/received/edit-and-import/errors'],
+    $_SESSION['tasks/received/edit-and-import/values'],
+    $_SESSION['tasks/received/messages']
+);
 
 include_once '../../../fns/Page/text.php';
 $items = [Page\text(htmlspecialchars($receivedTask->text))];
