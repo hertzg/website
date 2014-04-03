@@ -80,7 +80,7 @@ $content =
 include_once '../fns/echo_page.php';
 echo_page($user, 'Calendar', $content, '../', [
     'head' =>
-        '<link rel="stylesheet" type="text/css" href="index.css?5" />'
+        '<link rel="stylesheet" type="text/css" href="index.css?6" />'
         .'<link rel="stylesheet" type="text/css"'
         ." href=\"themes/$user->theme/index.css?2\" />"
 ]);

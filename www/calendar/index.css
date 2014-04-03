@@ -10,7 +10,6 @@
     height: 48px;
     text-align: center;
     line-height: 48px;
-    font-weight: bold;
     display: inline-block;
     vertical-align: top;
 }
@@ -27,6 +26,9 @@
     width: 15%;
 }
 
+.calendar-days {
+    font-weight: bold;
+}
 .calendar-days > :focus {
     border-width: 2px;
     border-style: solid;
@@ -48,7 +50,6 @@
 
 .navigation {
     background: #eee;
-    font-weight: bold;
     text-align: center;
     line-height: 48px;
     color: #444;
