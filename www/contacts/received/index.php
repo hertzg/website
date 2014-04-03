@@ -23,17 +23,22 @@ include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../fns/Page/imageArrowLinkWithDescription.php';
 
 $items = [];
-$icon = 'contact';
 foreach ($receivedContacts as $receivedContact) {
+
     $href = "view/?id=$receivedContact->id";
     $alias = $receivedContact->alias;
     $title = htmlspecialchars($receivedContact->full_name);
+
+    if ($receivedContact->favorite) $icon = 'favorite-contact';
+    else $icon = 'contact';
+
     if ($alias === '') {
         $items[] = Page\imageArrowLink($title, $href, $icon);
     } else {
         $description = htmlspecialchars($alias);
         $items[] = Page\imageArrowLinkWithDescription($title, $description, $href, $icon);
     }
+
 }
 
 include_once '../../fns/create_tabs.php';

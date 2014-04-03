@@ -50,12 +50,14 @@ if ($tags) {
 }
 
 include_once '../../fns/date_ago.php';
-$datesText = '<div>Contact created '.date_ago($insert_time).'.</div>';
+$text =
+    '<div>'.($contact->favorite ? 'Favorite' : 'Regular').' contact.</div>'
+    .'<div>Contact created '.date_ago($insert_time).'.</div>';
 if ($insert_time != $update_time) {
-    $datesText .= '<div>Last modified '.date_ago($update_time).'.</div>';
+    $text .= '<div>Last modified '.date_ago($update_time).'.</div>';
 }
 include_once '../../fns/Page/text.php';
-$items[] = Page\text($datesText);
+$items[] = Page\text($text);
 
 include_once 'fns/create_options_panel.php';
 include_once '../../fns/create_tabs.php';
@@ -76,7 +78,7 @@ $content =
         Page\sessionMessages('contacts/view/messages')
         .join('<div class="hr"></div>', $items)
     )
-    .create_options_panel($id);
+    .create_options_panel($contact);
 
 include_once '../../fns/echo_page.php';
 echo_page($user, "Contact #$id", $content, '../../');
