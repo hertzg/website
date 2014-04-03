@@ -2,15 +2,12 @@
 
 function check_event_check_day ($mysqli, &$user) {
 
-    $timeNow = time();
-    $dayToday = date('j', $timeNow);
-    $monthToday = date('n', $timeNow);
-    $yearToday = date('Y', $timeNow);
-    $timeToday = mktime(0, 0, 0, $monthToday, $dayToday, $yearToday);
+    include_once __DIR__.'/../../fns/time_today.php';
+    $timeToday = time_today();
 
     if ($user->events_check_day < $timeToday) {
 
-        $timeTomorrow = mktime(0, 0, 0, $monthToday, $dayToday + 1, $yearToday);
+        $timeTomorrow = $timeToday + 60 * 60 * 24;
         $id_users = $user->id_users;
 
         include_once __DIR__.'/../../fns/Events/countOnTime.php';
