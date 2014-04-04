@@ -79,7 +79,7 @@ include_once 'fns/render_prev_button.php';
 render_prev_button($offset, $limit, $total, $items, $tag);
 
 include_once 'fns/render_notes.php';
-render_notes($notes, $items);
+render_notes($notes, $items, 'No notes');
 
 include_once 'fns/render_next_button.php';
 render_next_button($offset, $limit, $total, $items, $tag);
