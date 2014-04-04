@@ -1,6 +1,6 @@
 <?php
 
-function render_tasks (array $tasks, array &$items) {
+function render_tasks (array $tasks, array &$items, $emptyMessage, $base = '') {
     if ($tasks) {
 
         include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
@@ -9,7 +9,7 @@ function render_tasks (array $tasks, array &$items) {
         foreach ($tasks as $task) {
             $icon = $task->top_priority ? 'task-top-priority' : 'task';
             $title = htmlspecialchars($task->text);
-            $href = "view/?id=$task->id_tasks";
+            $href = "{$base}view/?id=$task->id_tasks";
             $tags = $task->tags;
             if ($tags) {
                 $description = 'Tags: '.htmlspecialchars($tags);
@@ -22,6 +22,6 @@ function render_tasks (array $tasks, array &$items) {
 
     } else {
         include_once __DIR__.'/../../fns/Page/info.php';
-        $items[] = Page\info('No tasks');
+        $items[] = Page\info($emptyMessage);
     }
 }
