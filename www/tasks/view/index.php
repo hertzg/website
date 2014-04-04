@@ -63,6 +63,7 @@ if ($insert_time != $update_time) {
 }
 $items[] = Page\text($text);
 
+include_once '../../fns/create_list_href.php';
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/sessionMessages.php';
@@ -76,7 +77,7 @@ $content =
             ],
             [
                 'title' => 'Tasks',
-                'href' => '..',
+                'href' => create_list_href(),
             ],
         ],
         "Task #$id",
