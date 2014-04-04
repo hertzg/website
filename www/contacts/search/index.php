@@ -6,9 +6,8 @@ include_once '../../fns/require_user.php';
 $user = require_user($base);
 $id_users = $user->id_users;
 
-include_once '../../fns/request_strings.php';
-list($keyword, $tag, $offset) = request_strings(
-    'keyword', 'tag', 'offset');
+include_once '../../fns/request_keyword_tag_offset.php';
+list($keyword, $tag, $offset) = request_keyword_tag_offset();
 
 if ($keyword === '') {
     $url = '../';
@@ -25,8 +24,6 @@ include_once '../../lib/mysqli.php';
 
 $searchAction = './';
 $searchPlaceholder = 'Search contacts...';
-
-$offset = abs((int)$offset);
 
 include_once '../../fns/Paging/limit.php';
 $limit = Paging\limit();
