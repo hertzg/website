@@ -19,6 +19,11 @@ $offset = abs((int)$offset);
 include_once '../../fns/Paging/limit.php';
 $limit = Paging\limit();
 
+if ($offset % $limit) {
+    include_once '../../fns/redirect.php';
+    redirect('./?keyword='.rawurlencode($keyword));
+}
+
 include_once '../../fns/SearchForm/content.php';
 include_once '../../fns/SearchForm/create.php';
 include_once '../../lib/mysqli.php';

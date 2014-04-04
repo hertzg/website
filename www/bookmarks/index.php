@@ -21,6 +21,11 @@ $offset = abs((int)$offset);
 include_once '../fns/Paging/limit.php';
 $limit = Paging\limit();
 
+if ($offset % $limit) {
+    include_once '../fns/redirect.php';
+    redirect();
+}
+
 if ($tag === '') {
 
     $filterMessage = '';
