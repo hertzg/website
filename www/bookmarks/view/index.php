@@ -15,16 +15,6 @@ unset(
 
 $url = $bookmark->url;
 
-$base = '../../';
-
-if (parse_url($url, PHP_URL_SCHEME) === null) {
-    $parsedUrl = "http://$url";
-} else {
-    $parsedUrl = $url;
-}
-include_once '../../fns/create_external_url.php';
-$externalUrl = create_external_url($parsedUrl, $base);
-
 $items = [];
 
 include_once '../../fns/Page/text.php';
@@ -52,13 +42,10 @@ if ($insert_time != $update_time) {
 }
 $items[] = Page\text($text);
 
+include_once 'fns/create_options_panel.php';
 include_once '../../fns/create_list_href.php';
-include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
-include_once '../../fns/Page/imageArrowLink.php';
-include_once '../../fns/Page/imageLink.php';
 include_once '../../fns/Page/sessionMessages.php';
-include_once '../../fns/Page/twoColumns.php';
 $content =
     create_tabs(
         [
@@ -75,22 +62,7 @@ $content =
         Page\sessionMessages('bookmarks/view/messages')
         .join('<div class="hr"></div>', $items)
     )
-    .create_panel(
-        'Bookmark Options',
-        Page\twoColumns(
-            Page\imageLink('Open', $externalUrl, 'run'),
-            Page\imageLink('Open in New Tab', $externalUrl, 'run', [
-                'target' => '_blank',
-            ])
-        )
-        .'<div class="hr"></div>'
-        .Page\twoColumns(
-            Page\imageArrowLink('Edit', "../edit/?id=$id", 'edit-bookmark'),
-            Page\imageArrowLink('Send', "../send/?id=$id", 'send')
-        )
-        .'<div class="hr"></div>'
-        .Page\imageArrowLink('Delete', "../delete/?id=$id", 'trash-bin')
-    );
+    .create_options_panel($bookmark);
 
 include_once '../../fns/echo_page.php';
-echo_page($user, "Bookmark #$id", $content, $base);
+echo_page($user, "Bookmark #$id", $content, '../../');

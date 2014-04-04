@@ -41,12 +41,10 @@ if ($insert_time != $update_time) {
 }
 $items[] = Page\text($text);
 
+include_once 'fns/create_options_panel.php';
 include_once '../../fns/create_list_href.php';
-include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
-include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../fns/Page/sessionMessages.php';
-include_once '../../fns/Page/twoColumns.php';
 $content =
     create_tabs(
         [
@@ -63,15 +61,7 @@ $content =
         Page\sessionMessages('notes/view/messages')
         .join('<div class="hr"></div>', $items)
     )
-    .create_panel(
-        'Note Options',
-        Page\twoColumns(
-            Page\imageArrowLink('Edit', "../edit/?id=$id", 'edit-note'),
-            Page\imageArrowLink('Send', "../send/?id=$id", 'send')
-        )
-        .'<div class="hr"></div>'
-        .Page\imageArrowLink('Delete', "../delete/?id=$id", 'trash-bin')
-    );
+    .create_options_panel($id);
 
 include_once '../../fns/echo_page.php';
 echo_page($user, "Note #$id", $content, $base);
