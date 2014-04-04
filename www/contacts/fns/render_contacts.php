@@ -1,6 +1,7 @@
 <?php
 
-function render_contacts (array $contacts, array &$items) {
+function render_contacts (array $contacts, array &$items, $emptyMessage,
+    $base = '') {
 
     if ($contacts) {
         include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
@@ -9,7 +10,7 @@ function render_contacts (array $contacts, array &$items) {
 
             $alias = $contact->alias;
             $title = htmlspecialchars($contact->full_name);
-            $href = "view/?id=$contact->id_contacts";
+            $href = "{$base}view/?id=$contact->id_contacts";
 
             if ($contact->favorite) $icon = 'favorite-contact';
             else $icon = 'contact';
@@ -24,7 +25,7 @@ function render_contacts (array $contacts, array &$items) {
         }
     } else {
         include_once __DIR__.'/../../fns/Page/info.php';
-        $items[] = Page\info('No contacts');
+        $items[] = Page\info($emptyMessage);
     }
 
 }
