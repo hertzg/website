@@ -6,6 +6,14 @@ list($contact, $id, $user) = require_contact($mysqli);
 
 unset($_SESSION['contacts/view/messages']);
 
+include_once '../../fns/ItemList/itemQueryHref.php';
+$itemQueryHref = ItemList\itemQueryHref($id);
+
+$href = "submit.php?$itemQueryHref";
+$yesLink = Page\imageLink('Yes, delete contact', $href, 'yes');
+
+$noLink = Page\imageLink('No, return back', "../view/?$itemQueryHref", 'no');
+
 include_once '../../fns/ItemList/listHref.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/imageLink.php';
@@ -28,10 +36,7 @@ $content = create_tabs(
         .' "<b>'.htmlspecialchars($contact->full_name).'</b>"?'
     )
     .'<div class="hr"></div>'
-    .Page\twoColumns(
-        Page\imageLink('Yes, delete contact', "submit.php?id=$id", 'yes'),
-        Page\imageLink('No, return back', "../view/?id=$id", 'no')
-    )
+    .Page\twoColumns($yesLink, $noLink)
 );
 
 include_once '../../fns/echo_page.php';
