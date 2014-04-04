@@ -6,6 +6,7 @@ list($task, $id, $user) = require_task($mysqli);
 
 unset($_SESSION['tasks/view/messages']);
 
+include_once '../../fns/create_list_href.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/imageLink.php';
 include_once '../../fns/Page/text.php';
@@ -18,7 +19,7 @@ $content = create_tabs(
         ],
         [
             'title' => 'Tasks',
-            'href' => '..',
+            'href' => create_list_href(),
         ],
     ],
     "Task #$id",

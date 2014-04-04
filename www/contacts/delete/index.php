@@ -6,6 +6,7 @@ list($contact, $id, $user) = require_contact($mysqli);
 
 unset($_SESSION['contacts/view/messages']);
 
+include_once '../../fns/create_list_href.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/imageLink.php';
 include_once '../../fns/Page/text.php';
@@ -18,7 +19,7 @@ $content = create_tabs(
         ],
         [
             'title' => 'Contacts',
-            'href' => '..',
+            'href' => create_list_href(),
         ],
     ],
     "Contact #$id",
