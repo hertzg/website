@@ -13,6 +13,7 @@ if (array_key_exists($key, $_SESSION)) {
     $values = ['username' => ''];
 }
 
+include_once '../../fns/build_item_query_string.php';
 include_once '../../fns/create_list_href.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
@@ -28,7 +29,7 @@ $content = create_tabs(
         ],
         [
             'title' => "Task #$id",
-            'href' => "../view/?id=$id",
+            'href' => '../view/?'.build_item_query_string($id),
         ],
     ],
     'Send',

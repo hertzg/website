@@ -19,6 +19,7 @@ unset(
 include_once '../../fns/Bookmarks/maxLengths.php';
 $maxLengths = Bookmarks\maxLengths();
 
+include_once '../../fns/build_item_query_string.php';
 include_once '../../fns/create_list_href.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
@@ -33,7 +34,7 @@ $content = create_tabs(
         ],
         [
             'title' => "Bookmark #$id",
-            'href' => "../view/?id=$id",
+            'href' => '../view/?'.build_item_query_string($id),
         ],
     ],
     'Edit',

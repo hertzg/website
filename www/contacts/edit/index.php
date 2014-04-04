@@ -16,6 +16,7 @@ unset($_SESSION['contacts/view/messages']);
 include_once '../../fns/Contacts/maxLengths.php';
 $maxLengths = Contacts\maxLengths();
 
+include_once '../../fns/build_item_query_string.php';
 include_once '../../fns/create_list_href.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
@@ -31,7 +32,7 @@ $content = create_tabs(
         ],
         [
             'title' => "Contact #$id",
-            'href' => "../view/?id=$id",
+            'href' => '../view/?'.build_item_query_string($id),
         ],
     ],
     'Edit',
