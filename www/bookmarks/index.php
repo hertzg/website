@@ -76,7 +76,7 @@ include_once 'fns/render_prev_button.php';
 render_prev_button($offset, $limit, $total, $items, $tag);
 
 include_once 'fns/render_bookmarks.php';
-render_bookmarks($bookmarks, $items);
+render_bookmarks($bookmarks, $items, 'No bookmarks');
 
 include_once 'fns/render_next_button.php';
 render_next_button($offset, $limit, $total, $items, $tag);

@@ -1,6 +1,7 @@
 <?php
 
-function render_bookmarks (array $bookmarks, array &$items) {
+function render_bookmarks (array $bookmarks, array &$items, $emptyMessage,
+    $base = '') {
 
     if ($bookmarks) {
 
@@ -9,7 +10,7 @@ function render_bookmarks (array $bookmarks, array &$items) {
 
         $icon = 'bookmark';
         foreach ($bookmarks as $bookmark) {
-            $href = "view/?id=$bookmark->id_bookmarks";
+            $href = "{$base}view/?id=$bookmark->id_bookmarks";
             $escapedUrl = htmlspecialchars($bookmark->url);
             $title = $bookmark->title;
             if ($title === '') {
@@ -23,7 +24,7 @@ function render_bookmarks (array $bookmarks, array &$items) {
 
     } else {
         include_once __DIR__.'/../../fns/Page/info.php';
-        $items[] = Page\info('No bookmarks');
+        $items[] = Page\info($emptyMessage);
     }
 
 }
