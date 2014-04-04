@@ -13,7 +13,6 @@ function create_options_panel ($bookmark) {
     include_once __DIR__.'/../../../fns/create_external_url.php';
     $externalUrl = create_external_url($parsedUrl, '../../');
 
-    include_once __DIR__.'/../../../fns/Page/imageArrowLink.php';
     include_once __DIR__.'/../../../fns/Page/imageLink.php';
 
     $openLink = Page\imageLink('Open', $externalUrl, 'run');
@@ -23,12 +22,18 @@ function create_options_panel ($bookmark) {
         'target' => '_blank',
     ]);
 
-    $href = "../edit/?id=$id";
+    include_once __DIR__.'/../../../fns/build_item_query_string.php';
+    $queryString = build_item_query_string($bookmark->id_bookmarks);
+
+    include_once __DIR__.'/../../../fns/Page/imageArrowLink.php';
+
+    $href = "../edit/?$queryString";
     $editLink = Page\imageArrowLink('Edit', $href, 'edit-bookmark');
 
-    $sendLink = Page\imageArrowLink('Send', "../send/?id=$id", 'send');
+    $href = "../send/?$queryString";
+    $sendLink = Page\imageArrowLink('Send', $href, 'send');
 
-    $href = "../delete/?id=$id";
+    $href = "../delete/?$queryString";
     $deleteLink = Page\imageArrowLink('Delete', $href, 'trash-bin');
 
     include_once __DIR__.'/../../../fns/Page/twoColumns.php';

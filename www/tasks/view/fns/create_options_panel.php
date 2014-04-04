@@ -15,14 +15,18 @@ function create_options_panel ($task) {
         $priorityLink = Page\imageLink($title, $href, 'task-top-priority');
     }
 
+    include_once __DIR__.'/../../../fns/build_item_query_string.php';
+    $queryString = build_item_query_string($id);
+
     include_once __DIR__.'/../../../fns/Page/imageArrowLink.php';
 
-    $editLink = Page\imageArrowLink('Edit', "../edit/?id=$id", 'edit-task');
+    $href = "../edit/?$queryString";
+    $editLink = Page\imageArrowLink('Edit', $href, 'edit-task');
 
-    $href = "../send/?id=$id";
+    $href = "../send/?$queryString";
     $sendLink = Page\imageArrowLink('Send', $href, 'send');
 
-    $href = "../delete/?id=$id";
+    $href = "../delete/?$queryString";
     $deleteLink = Page\imageArrowLink('Delete', $href, 'trash-bin');
 
     include_once __DIR__.'/../../../fns/Page/twoColumns.php';

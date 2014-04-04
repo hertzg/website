@@ -2,15 +2,18 @@
 
 function create_options_panel ($id) {
 
+    include_once __DIR__.'/../../../fns/build_item_query_string.php';
+    $queryString = build_item_query_string($id);
+
     include_once __DIR__.'/../../../fns/Page/imageArrowLink.php';
     include_once __DIR__.'/../../../fns/Page/twoColumns.php';
     $content =
         Page\twoColumns(
-            Page\imageArrowLink('Edit', "../edit/?id=$id", 'edit-note'),
-            Page\imageArrowLink('Send', "../send/?id=$id", 'send')
+            Page\imageArrowLink('Edit', "../edit/?$queryString", 'edit-note'),
+            Page\imageArrowLink('Send', "../send/?$queryString", 'send')
         )
         .'<div class="hr"></div>'
-        .Page\imageArrowLink('Delete', "../delete/?id=$id", 'trash-bin');
+        .Page\imageArrowLink('Delete', "../delete/?$queryString", 'trash-bin');
 
     include_once __DIR__.'/../../../fns/create_panel.php';
     return create_panel('Note Options', $content);
