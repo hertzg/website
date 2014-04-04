@@ -24,6 +24,9 @@ if ($text === '') $errors[] = 'Enter text.';
 include_once '../../fns/parse_tags.php';
 parse_tags($tags, $tag_names, $errors);
 
+include_once '../../fns/ItemList/itemQuery.php';
+$itemQuery = ItemList\itemQuery($id);
+
 include_once '../../fns/redirect.php';
 
 if ($errors) {
@@ -32,7 +35,7 @@ if ($errors) {
         'text' => $text,
         'tags' => $tags,
     ];
-    redirect("./?id=$id");
+    redirect("./?$itemQuery");
 }
 
 unset(
@@ -52,4 +55,4 @@ include_once '../../fns/TaskTags/add.php';
 TaskTags\add($mysqli, $id_users, $id, $tag_names, $text, $top_priority, $tags);
 
 $_SESSION['tasks/view/messages'] = ['Changes have been saved.'];
-redirect("../view/?id=$id");
+redirect("../view/?$itemQuery");

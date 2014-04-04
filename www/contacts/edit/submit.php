@@ -40,6 +40,9 @@ if ($full_name === '') {
 include_once '../../fns/parse_tags.php';
 parse_tags($tags, $tag_names, $errors);
 
+include_once '../../fns/ItemList/itemQuery.php';
+$itemQuery = ItemList\itemQuery($id);
+
 include_once '../../fns/redirect.php';
 
 if ($errors) {
@@ -54,7 +57,7 @@ if ($errors) {
         'username' => $username,
         'tags' => $tags,
     ];
-    redirect("./?id=$id");
+    redirect("./?$itemQuery");
 }
 
 unset(
@@ -74,4 +77,4 @@ ContactTags\add($mysqli, $id_users, $id,
     $tag_names, $full_name, $alias, $contact->favorite);
 
 $_SESSION['contacts/view/messages'] = ['Changes have been saved.'];
-redirect("../view/?id=$id");
+redirect("../view/?$itemQuery");

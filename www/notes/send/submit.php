@@ -31,12 +31,15 @@ if ($username === '') {
     }
 }
 
+include_once '../../fns/ItemList/itemQuery.php';
+$itemQuery = ItemList\itemQuery($id);
+
 include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['notes/send/errors'] = $errors;
     $_SESSION['notes/send/values'] = ['username' => $username];
-    redirect("./?id=$id");
+    redirect("./?$itemQuery");
 }
 
 include_once '../../fns/ReceivedNotes/add.php';
@@ -48,4 +51,4 @@ Users\addNumReceivedNotes($mysqli, $receiver_id_users, 1);
 
 $_SESSION['notes/view/messages'] = ['Sent.'];
 
-redirect("../view/?id=$id");
+redirect("../view/?$itemQuery");

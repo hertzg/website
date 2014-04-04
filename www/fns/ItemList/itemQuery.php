@@ -11,6 +11,6 @@ function itemQuery ($id) {
     if ($keyword !== '') $params['keyword'] = $keyword;
     if ($tag !== '') $params['tag'] = $tag;
     if ($offset) $params['offset'] = $offset;
-    return htmlspecialchars(http_build_query($params));
+    return http_build_query($params);
 
 }
