@@ -6,7 +6,7 @@ list($note, $id, $user) = require_note($mysqli);
 
 unset($_SESSION['notes/view/messages']);
 
-include_once '../../fns/create_list_href.php';
+include_once '../../fns/ItemList/listHref.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/imageLink.php';
 include_once '../../fns/Page/text.php';
@@ -19,7 +19,7 @@ $content = create_tabs(
         ],
         [
             'title' => 'Notes',
-            'href' => create_list_href(),
+            'href' => ItemList\listHref(),
         ],
     ],
     "Note #$id",

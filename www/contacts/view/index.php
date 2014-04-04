@@ -60,7 +60,7 @@ include_once '../../fns/Page/text.php';
 $items[] = Page\text($text);
 
 include_once 'fns/create_options_panel.php';
-include_once '../../fns/create_list_href.php';
+include_once '../../fns/ItemList/listHref.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/sessionMessages.php';
 $content =
@@ -72,7 +72,7 @@ $content =
             ],
             [
                 'title' => 'Contacts',
-                'href' => create_list_href(),
+                'href' => ItemList\listHref(),
             ],
         ],
         "Contact #$id",

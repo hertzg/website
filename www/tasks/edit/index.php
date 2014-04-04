@@ -19,8 +19,8 @@ unset(
 include_once '../../fns/Tasks/maxLengths.php';
 $maxLengths = Tasks\maxLengths();
 
-include_once '../../fns/build_item_query_string.php';
-include_once '../../fns/create_list_href.php';
+include_once '../../fns/ItemList/itemQueryHref.php';
+include_once '../../fns/ItemList/listHref.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/hidden.php';
@@ -31,11 +31,11 @@ $content = create_tabs(
     [
         [
             'title' => '&middot;&middot;&middot;',
-            'href' => create_list_href(),
+            'href' => ItemList\listHref(),
         ],
         [
             'title' => "Task #$id",
-            'href' => '../view/?'.build_item_query_string($id),
+            'href' => '../view/?'.ItemList\itemQueryHref($id),
         ],
     ],
     'Edit',

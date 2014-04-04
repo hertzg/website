@@ -22,8 +22,8 @@ function create_options_panel ($bookmark) {
         'target' => '_blank',
     ]);
 
-    include_once __DIR__.'/../../../fns/build_item_query_string.php';
-    $queryString = build_item_query_string($bookmark->id_bookmarks);
+    include_once __DIR__.'/../../../fns/ItemList/itemQueryHref.php';
+    $queryString = ItemList\itemQueryHref($bookmark->id_bookmarks);
 
     include_once __DIR__.'/../../../fns/Page/imageArrowLink.php';
 

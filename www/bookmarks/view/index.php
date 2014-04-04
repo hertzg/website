@@ -43,7 +43,7 @@ if ($insert_time != $update_time) {
 $items[] = Page\text($text);
 
 include_once 'fns/create_options_panel.php';
-include_once '../../fns/create_list_href.php';
+include_once '../../fns/ItemList/listHref.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/sessionMessages.php';
 $content =
@@ -55,7 +55,7 @@ $content =
             ],
             [
                 'title' => 'Bookmarks',
-                'href' => create_list_href(),
+                'href' => ItemList\listHref(),
             ],
         ],
         "Bookmark #$id",

@@ -2,8 +2,8 @@
 
 function create_options_panel ($id) {
 
-    include_once __DIR__.'/../../../fns/build_item_query_string.php';
-    $queryString = build_item_query_string($id);
+    include_once __DIR__.'/../../../fns/ItemList/itemQueryHref.php';
+    $queryString = ItemList\itemQueryHref($id);
 
     include_once __DIR__.'/../../../fns/Page/imageArrowLink.php';
     include_once __DIR__.'/../../../fns/Page/twoColumns.php';

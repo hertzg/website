@@ -1,8 +1,10 @@
 <?php
 
-function build_item_query_string ($id) {
+namespace ItemList;
 
-    include_once __DIR__.'/request_keyword_tag_offset.php';
+function itemQueryHref ($id) {
+
+    include_once __DIR__.'/../request_keyword_tag_offset.php';
     list($keyword, $tag, $offset) = request_keyword_tag_offset();
 
     $params = ['id' => $id];

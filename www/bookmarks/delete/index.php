@@ -6,7 +6,7 @@ list($bookmark, $id, $user) = require_bookmark($mysqli);
 
 unset($_SESSION['bookmarks/view/messages']);
 
-include_once '../../fns/create_list_href.php';
+include_once '../../fns/ItemList/listHref.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/imageLink.php';
 include_once '../../fns/Page/text.php';
@@ -19,7 +19,7 @@ $content = create_tabs(
         ],
         [
             'title' => 'Bookmarks',
-            'href' => create_list_href(),
+            'href' => ItemList\listHref(),
         ],
     ],
     "Bookmark #$id",

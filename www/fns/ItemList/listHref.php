@@ -1,8 +1,10 @@
 <?php
 
-function create_list_href () {
+namespace ItemList;
 
-    include_once __DIR__.'/request_keyword_tag_offset.php';
+function listHref () {
+
+    include_once __DIR__.'/../request_keyword_tag_offset.php';
     list($keyword, $tag, $offset) = request_keyword_tag_offset();
 
     $href = '../';
