@@ -85,8 +85,12 @@ if ($tag === '') {
 include_once 'fns/render_prev_button.php';
 render_prev_button($offset, $limit, $total, $items, $keyword, $tag);
 
+$params = [];
+if ($keyword !== '') $params['keyword'] = $keyword;
+if ($tag !== '') $params['tag'] = $tag;
+if ($offset) $params['offset'] = $offset;
 include_once '../fns/render_notes.php';
-render_notes($notes, $items, 'No notes found', '../');
+render_notes($notes, $items, 'No notes found', $params, '../');
 
 include_once 'fns/render_next_button.php';
 render_next_button($offset, $limit, $total, $items, $keyword, $tag);

@@ -78,8 +78,11 @@ if ($tag === '') {
 include_once 'fns/render_prev_button.php';
 render_prev_button($offset, $limit, $total, $items, $tag);
 
+$params = [];
+if ($tag !== '') $params['tag'] = $tag;
+if ($offset) $params['offset'] = $offset;
 include_once 'fns/render_contacts.php';
-render_contacts($contacts, $items, 'No contacts');
+render_contacts($contacts, $items, 'No contacts', $params);
 
 include_once 'fns/render_next_button.php';
 render_next_button($offset, $limit, $total, $items, $tag);

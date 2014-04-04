@@ -1,7 +1,7 @@
 <?php
 
 function render_bookmarks (array $bookmarks, array &$items, $emptyMessage,
-    $base = '') {
+    array $params, $base = '') {
 
     if ($bookmarks) {
 
@@ -10,7 +10,14 @@ function render_bookmarks (array $bookmarks, array &$items, $emptyMessage,
 
         $icon = 'bookmark';
         foreach ($bookmarks as $bookmark) {
-            $href = "{$base}view/?id=$bookmark->id_bookmarks";
+
+            $queryString = htmlspecialchars(
+                http_build_query(
+                    array_merge(['id' => $bookmark->id_bookmarks], $params)
+                )
+            );
+            $href = "{$base}view/?$queryString";
+
             $escapedUrl = htmlspecialchars($bookmark->url);
             $title = $bookmark->title;
             if ($title === '') {
@@ -20,6 +27,7 @@ function render_bookmarks (array $bookmarks, array &$items, $emptyMessage,
                 $items[] = Page\imageArrowLinkWithDescription($title,
                     $escapedUrl, $href, $icon);
             }
+
         }
 
     } else {
