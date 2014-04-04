@@ -22,6 +22,7 @@ include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/hidden.php';
 include_once '../../fns/Form/textfield.php';
+include_once '../../fns/ItemList/itemHiddenInputs.php';
 include_once '../../fns/Page/sessionErrors.php';
 include_once '../../fns/Username/maxLength.php';
 $content = create_tabs(
@@ -80,7 +81,7 @@ $content = create_tabs(
         ])
         .'<div class="hr"></div>'
         .Form\button('Save Changes')
-        .Form\hidden('id', $id)
+        .ItemList\itemHiddenInputs($id)
     .'</form>'
 );
 
