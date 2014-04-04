@@ -6,15 +6,15 @@ list($bookmark, $id, $user) = require_bookmark($mysqli);
 
 unset($_SESSION['bookmarks/view/messages']);
 
-include_once '../../fns/ItemList/itemQueryHref.php';
-$itemQueryHref = ItemList\itemQueryHref($id);
+include_once '../../fns/ItemList/escapedItemQuery.php';
+$escapedItemQuery = ItemList\escapedItemQuery($id);
 
 include_once '../../fns/Page/imageLink.php';
 
-$href = "submit.php?id=$itemQueryHref";
+$href = "submit.php$escapedItemQuery";
 $yesLink = Page\imageLink('Yes, delete bookmark', $href, 'yes');
 
-$noLink = Page\imageLink('No, return back', "../view/?$itemQueryHref", 'no');
+$noLink = Page\imageLink('No, return back', "../view/$escapedItemQuery", 'no');
 
 include_once '../../fns/ItemList/listHref.php';
 include_once '../../fns/create_tabs.php';

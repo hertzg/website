@@ -19,7 +19,7 @@ unset(
 include_once '../../fns/Notes/maxLengths.php';
 $maxLengths = Notes\maxLengths();
 
-include_once '../../fns/ItemList/itemQueryHref.php';
+include_once '../../fns/ItemList/escapedItemQuery.php';
 include_once '../../fns/ItemList/listHref.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
@@ -36,7 +36,7 @@ $content = create_tabs(
         ],
         [
             'title' => "Note #$id",
-            'href' => '../view/?'.ItemList\itemQueryHref($id),
+            'href' => '../view/'.ItemList\escapedItemQuery($id),
         ],
     ],
     'Edit',

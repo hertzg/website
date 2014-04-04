@@ -2,7 +2,7 @@
 
 namespace ItemList;
 
-function itemQueryHref ($id) {
+function escapedItemQuery ($id) {
     include_once __DIR__.'/itemQuery.php';
     return htmlspecialchars(itemQuery($id));
 }

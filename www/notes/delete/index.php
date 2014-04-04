@@ -6,8 +6,8 @@ list($note, $id, $user) = require_note($mysqli);
 
 unset($_SESSION['notes/view/messages']);
 
-include_once '../../fns/ItemList/itemQueryHref.php';
-$itemQueryHref = ItemList\itemQueryHref($id);
+include_once '../../fns/ItemList/escapedItemQuery.php';
+$escapedItemQuery = ItemList\escapedItemQuery($id);
 
 include_once '../../fns/ItemList/listHref.php';
 include_once '../../fns/create_tabs.php';
@@ -29,8 +29,8 @@ $content = create_tabs(
     Page\text('Are you sure you want to delete the note?')
     .'<div class="hr"></div>'
     .Page\twoColumns(
-        Page\imageLink('Yes, delete note', "submit.php?$itemQueryHref", 'yes'),
-        Page\imageLink('No, return back', "../view/?$itemQueryHref", 'no')
+        Page\imageLink('Yes, delete note', "submit.php$escapedItemQuery", 'yes'),
+        Page\imageLink('No, return back', "../view/$escapedItemQuery", 'no')
     )
 );
 
