@@ -83,8 +83,8 @@ if ($tag === '') {
 include_once 'fns/render_prev_button.php';
 render_prev_button($offset, $limit, $total, $items, $keyword, $tag);
 
-include_once '../fns/render_bookmarks.php';
-render_bookmarks($bookmarks, $items, 'No bookmarks found', '../');
+include_once 'fns/render_bookmarks.php';
+render_bookmarks($bookmarks, $items);
 
 include_once 'fns/render_next_button.php';
 render_next_button($offset, $limit, $total, $items, $keyword, $tag);
