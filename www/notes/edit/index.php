@@ -19,6 +19,7 @@ unset(
 include_once '../../fns/Notes/maxLengths.php';
 $maxLengths = Notes\maxLengths();
 
+include_once '../../fns/create_list_href.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/hidden.php';
@@ -29,7 +30,7 @@ $content = create_tabs(
     [
         [
             'title' => '&middot;&middot;&middot;',
-            'href' => '..',
+            'href' => create_list_href(),
         ],
         [
             'title' => "Note #$id",
