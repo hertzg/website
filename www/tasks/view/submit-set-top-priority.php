@@ -15,5 +15,8 @@ TaskTags\setTaskTopPriority($mysqli, $id, true);
 
 $_SESSION['tasks/view/messages'] = ['Marked as top priority.'];
 
+include_once '../../fns/ItemList/itemQuery.php';
+$itemQuery = ItemList\itemQuery($id);
+
 include_once '../../fns/redirect.php';
-redirect("./?id=$id");
+redirect("./$itemQuery");

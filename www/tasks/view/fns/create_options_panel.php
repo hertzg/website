@@ -2,21 +2,19 @@
 
 function create_options_panel ($task) {
 
-    $id = $task->id_tasks;
+    include_once __DIR__.'/../../../fns/ItemList/escapedItemQuery.php';
+    $queryString = ItemList\escapedItemQuery($task->id_tasks);
 
     include_once __DIR__.'/../../../fns/Page/imageLink.php';
     if ($task->top_priority) {
         $title = 'Mark as Normal Priority';
-        $href = "submit-set-normal-priority.php?id=$id";
+        $href = "submit-set-normal-priority.php$queryString";
         $priorityLink = Page\imageLink($title, $href, 'task');
     } else {
         $title = 'Mark as Top Priority';
-        $href = "submit-set-top-priority.php?id=$id";
+        $href = "submit-set-top-priority.php$queryString";
         $priorityLink = Page\imageLink($title, $href, 'task-top-priority');
     }
-
-    include_once __DIR__.'/../../../fns/ItemList/escapedItemQuery.php';
-    $queryString = ItemList\escapedItemQuery($id);
 
     include_once __DIR__.'/../../../fns/Page/imageArrowLink.php';
 

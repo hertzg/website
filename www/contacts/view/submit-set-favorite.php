@@ -15,5 +15,8 @@ ContactTags\setContactFavorite($mysqli, $id, true);
 
 $_SESSION['contacts/view/messages'] = ['Marked as favorite.'];
 
+include_once '../../fns/ItemList/itemQuery.php';
+$itemQuery = ItemList\itemQuery($id);
+
 include_once '../../fns/redirect.php';
-redirect("./?id=$id");
+redirect("./$itemQuery");
