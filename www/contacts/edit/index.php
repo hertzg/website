@@ -9,13 +9,13 @@ if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];
 } else {
 
-    $birth_time = $contact->birth_time;
-    if ($birth_time === null) {
-        $birth_day = $birth_month = $birth_year = 0;
+    $birthday_time = $contact->birthday_time;
+    if ($birthday_time === null) {
+        $birthday_day = $birthday_month = $birthday_year = 0;
     } else {
-        $birth_day = date('d', $birth_time);
-        $birth_month = date('n', $birth_time);
-        $birth_year = date('Y', $birth_time);
+        $birthday_day = date('d', $birthday_time);
+        $birthday_month = date('n', $birthday_time);
+        $birthday_year = date('Y', $birthday_time);
     }
 
     $values = [
@@ -25,9 +25,9 @@ if (array_key_exists($key, $_SESSION)) {
         'email' => $contact->email,
         'phone1' => $contact->phone1,
         'phone2' => $contact->phone2,
-        'birth_day' => $birth_day,
-        'birth_month' => $birth_month,
-        'birth_year' => $birth_year,
+        'birthday_day' => $birthday_day,
+        'birthday_month' => $birthday_month,
+        'birthday_year' => $birthday_year,
         'username' => $contact->username,
         'tags' => $contact->tags,
         'favorite' => $contact->favorite,
@@ -97,14 +97,14 @@ $content = create_tabs(
         ])
         .'<div class="hr"></div>'
         .Form\datefield([
-            'name' => 'birth_day',
-            'value' => $values['birth_day'],
+            'name' => 'birthday_day',
+            'value' => $values['birthday_day'],
         ], [
-            'name' => 'birth_month',
-            'value' => $values['birth_month'],
+            'name' => 'birthday_month',
+            'value' => $values['birthday_month'],
         ], [
-            'name' => 'birth_year',
-            'value' => $values['birth_year'],
+            'name' => 'birthday_year',
+            'value' => $values['birthday_year'],
         ], 'Birth date', false, true)
         .'<div class="hr"></div>'
         .Form\textfield('username', 'Zvini username', [

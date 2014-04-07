@@ -3,7 +3,7 @@
 namespace Contacts;
 
 function edit ($mysqli, $id_users, $id, $full_name, $alias, $address,
-    $email, $phone1, $phone2, $birth_time, $username, $tags) {
+    $email, $phone1, $phone2, $birthday_time, $username, $tags) {
 
     $full_name = $mysqli->real_escape_string($full_name);
     $alias = $mysqli->real_escape_string($alias);
@@ -11,11 +11,11 @@ function edit ($mysqli, $id_users, $id, $full_name, $alias, $address,
     $email = $mysqli->real_escape_string($email);
     $phone1 = $mysqli->real_escape_string($phone1);
     $phone2 = $mysqli->real_escape_string($phone2);
-    if ($birth_time === null) {
-        $birth_time = $birth_day = $birth_month = 'null';
+    if ($birthday_time === null) {
+        $birthday_time = $birthday_day = $birthday_month = 'null';
     } else {
-        $birth_day = date('j', $birth_time);
-        $birth_month = date('n', $birth_time);
+        $birthday_day = date('j', $birthday_time);
+        $birthday_month = date('n', $birthday_time);
     }
     $username = $mysqli->real_escape_string($username);
     $tags = $mysqli->real_escape_string($tags);
@@ -23,8 +23,8 @@ function edit ($mysqli, $id_users, $id, $full_name, $alias, $address,
 
     $sql = "update contacts set full_name = '$full_name',"
         ." alias = '$alias', address = '$address', email = '$email',"
-        ." phone1 = '$phone1', phone2 = '$phone2', birth_time = $birth_time,"
-        ." birth_day = $birth_day, birth_month = $birth_month,"
+        ." phone1 = '$phone1', phone2 = '$phone2', birthday_time = $birthday_time,"
+        ." birthday_day = $birthday_day, birthday_month = $birthday_month,"
         ." username = '$username', tags = '$tags', update_time = $update_time"
         ." where id_users = $id_users and id_contacts = $id";
 

@@ -16,9 +16,9 @@ if (array_key_exists($key, $_SESSION)) {
         'email' => '',
         'phone1' => '',
         'phone2' => '',
-        'birth_day' => 0,
-        'birth_month' => 0,
-        'birth_year' => 0,
+        'birthday_day' => 0,
+        'birthday_month' => 0,
+        'birthday_year' => 0,
         'username' => '',
         'tags' => '',
         'favorite' => false,
@@ -86,14 +86,14 @@ $content = create_tabs(
         ])
         .'<div class="hr"></div>'
         .Form\datefield([
-            'name' => 'birth_day',
-            'value' => $values['birth_day'],
+            'name' => 'birthday_day',
+            'value' => $values['birthday_day'],
         ], [
-            'name' => 'birth_month',
-            'value' => $values['birth_month'],
+            'name' => 'birthday_month',
+            'value' => $values['birthday_month'],
         ], [
-            'name' => 'birth_year',
-            'value' => $values['birth_year'],
+            'name' => 'birthday_year',
+            'value' => $values['birthday_year'],
         ], 'Birth date', false, true)
         .'<div class="hr"></div>'
         .Form\textfield('username', 'Zvini username', [

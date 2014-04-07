@@ -1,6 +1,6 @@
 <?php
 
-function parse_birth_date ($day, $month, $year, &$errors, &$time) {
+function parse_birthday ($day, $month, $year, &$errors, &$time) {
 
     if ($day === 0 && $month === 0 && $year === 0) return;
 
