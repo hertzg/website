@@ -41,7 +41,7 @@ if ($user->num_events) {
     $href = 'all-events/';
     include_once '../fns/Page/imageArrowLinkWithDescription.php';
     $eventItems[] = Page\imageArrowLinkWithDescription($title,
-        $description, $href, 'event');
+        $description, $href, 'events');
 }
 
 $newEventHref =
