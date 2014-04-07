@@ -8,9 +8,8 @@ $user = require_user($base);
 include_once '../../fns/request_strings.php';
 list($month, $year) = request_strings('month', 'year');
 
-$timeNow = time();
-$minYear = 1900;
-$maxYear = date('Y', $timeNow) + 100;
+$maxYear = date('Y');
+$minYear = $maxYear - 100;
 
 $year = max($minYear, min($maxYear, (int)$year));
 $month = max(1, min(12, (int)$month));
@@ -31,7 +30,7 @@ $monthOptions = [
 ];
 
 $yearOptions = [];
-for ($i = $minYear; $i <= $maxYear; $i++) {
+for ($i = $maxYear; $i >= $minYear; $i--) {
     $yearOptions[$i] = $i;
 }
 
