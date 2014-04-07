@@ -11,9 +11,11 @@ include_once '../../lib/mysqli.php';
 
 include_once '../../fns/request_strings.php';
 list($full_name, $alias, $address, $email, $phone1,
-    $phone2, $username, $tags, $favorite) = request_strings(
+    $phone2, $birth_day, $birth_month, $birth_year,
+    $username, $tags, $favorite) = request_strings(
     'full_name', 'alias', 'address', 'email', 'phone1',
-    'phone2', 'username', 'tags', 'favorite');
+    'phone2', 'birth_day', 'birth_month', 'birth_year',
+    'username', 'tags', 'favorite');
 
 include_once '../../fns/str_collapse_spaces.php';
 $full_name = str_collapse_spaces($full_name);
@@ -24,6 +26,10 @@ $phone1 = str_collapse_spaces($phone1);
 $phone2 = str_collapse_spaces($phone2);
 $username = str_collapse_spaces($username);
 $tags = str_collapse_spaces($tags);
+
+$birth_day = abs((int)$birth_day);
+$birth_month = abs((int)$birth_month);
+$birth_year = abs((int)$birth_year);
 
 $favorite = (bool)$favorite;
 
@@ -40,6 +46,9 @@ if ($full_name === '') {
     }
 }
 
+include_once '../fns/parse_birth_date.php';
+parse_birth_date($birth_day, $birth_month, $birth_year, $errors, $birth_time);
+
 include_once '../../fns/parse_tags.php';
 parse_tags($tags, $tag_names, $errors);
 
@@ -54,6 +63,9 @@ if ($errors) {
         'email' => $email,
         'phone1' => $phone1,
         'phone2' => $phone2,
+        'birth_day' => $birth_day,
+        'birth_month' => $birth_month,
+        'birth_year' => $birth_year,
         'username' => $username,
         'tags' => $tags,
         'favorite' => $favorite,
@@ -67,8 +79,8 @@ unset(
 );
 
 include_once '../../fns/Contacts/add.php';
-$id = Contacts\add($mysqli, $id_users, $full_name, $alias,
-    $address, $email, $phone1, $phone2, $username, $tags, $favorite);
+$id = Contacts\add($mysqli, $id_users, $full_name, $alias, $address,
+    $email, $phone1, $phone2, $birth_time, $username, $tags, $favorite);
 
 include_once '../../fns/ContactTags/add.php';
 ContactTags\add($mysqli, $id_users, $id,

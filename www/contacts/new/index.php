@@ -16,6 +16,9 @@ if (array_key_exists($key, $_SESSION)) {
         'email' => '',
         'phone1' => '',
         'phone2' => '',
+        'birth_day' => 0,
+        'birth_month' => 0,
+        'birth_year' => 0,
         'username' => '',
         'tags' => '',
         'favorite' => false,
@@ -33,6 +36,7 @@ $maxLengths = Contacts\maxLengths();
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/checkbox.php';
+include_once '../../fns/Form/datefield.php';
 include_once '../../fns/Form/textfield.php';
 include_once '../../fns/Page/sessionErrors.php';
 $content = create_tabs(
@@ -80,6 +84,17 @@ $content = create_tabs(
             'value' => $values['phone2'],
             'maxlength' => $maxLengths['phone2'],
         ])
+        .'<div class="hr"></div>'
+        .Form\datefield([
+            'name' => 'birth_day',
+            'value' => $values['birth_day'],
+        ], [
+            'name' => 'birth_month',
+            'value' => $values['birth_month'],
+        ], [
+            'name' => 'birth_year',
+            'value' => $values['birth_year'],
+        ], 'Birth date', false, true)
         .'<div class="hr"></div>'
         .Form\textfield('username', 'Zvini username', [
             'value' => $values['username'],

@@ -9,10 +9,10 @@ list($contact, $id, $user) = require_contact($mysqli);
 $id_users = $user->id_users;
 
 include_once '../../fns/request_strings.php';
-list($full_name, $alias, $address, $email,
-    $phone1, $phone2, $username, $tags) = request_strings(
-    'full_name', 'alias', 'address', 'email',
-    'phone1', 'phone2', 'username', 'tags');
+list($full_name, $alias, $address, $email, $phone1, $phone2, $birth_day,
+    $birth_month, $birth_year, $username, $tags) = request_strings(
+    'full_name', 'alias', 'address', 'email', 'phone1', 'phone2', 'birth_day',
+    'birth_month', 'birth_year', 'username', 'tags');
 
 include_once '../../fns/str_collapse_spaces.php';
 $full_name = str_collapse_spaces($full_name);
@@ -23,6 +23,10 @@ $phone1 = str_collapse_spaces($phone1);
 $phone2 = str_collapse_spaces($phone2);
 $username = str_collapse_spaces($username);
 $tags = str_collapse_spaces($tags);
+
+$birth_day = abs((int)$birth_day);
+$birth_month = abs((int)$birth_month);
+$birth_year = abs((int)$birth_year);
 
 $errors = [];
 
@@ -36,6 +40,9 @@ if ($full_name === '') {
         $errors[] = 'A contact with this name already exists.';
     }
 }
+
+include_once '../fns/parse_birth_date.php';
+parse_birth_date($birth_day, $birth_month, $birth_year, $errors, $birth_time);
 
 include_once '../../fns/parse_tags.php';
 parse_tags($tags, $tag_names, $errors);
@@ -54,10 +61,13 @@ if ($errors) {
         'email' => $email,
         'phone1' => $phone1,
         'phone2' => $phone2,
+        'birth_day' => $birth_day,
+        'birth_month' => $birth_month,
+        'birth_year' => $birth_year,
         'username' => $username,
         'tags' => $tags,
     ];
-    redirect("./?$itemQuery");
+    redirect("./$itemQuery");
 }
 
 unset(
@@ -66,8 +76,8 @@ unset(
 );
 
 include_once '../../fns/Contacts/edit.php';
-Contacts\edit($mysqli, $id_users, $id, $full_name, $alias,
-    $address, $email, $phone1, $phone2, $username, $tags);
+Contacts\edit($mysqli, $id_users, $id, $full_name, $alias, $address,
+    $email, $phone1, $phone2, $birth_time, $username, $tags);
 
 include_once '../../fns/ContactTags/deleteOnContact.php';
 ContactTags\deleteOnContact($mysqli, $id);
@@ -77,4 +87,4 @@ ContactTags\add($mysqli, $id_users, $id,
     $tag_names, $full_name, $alias, $contact->favorite);
 
 $_SESSION['contacts/view/messages'] = ['Changes have been saved.'];
-redirect("../view/?$itemQuery");
+redirect("../view/$itemQuery");
