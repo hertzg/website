@@ -46,7 +46,7 @@ $event_time = mktime(0, 0, 0, $event_month, $event_day, $event_year);
 include_once '../../fns/Events/edit.php';
 Events\edit($mysqli, $id_users, $id, $event_time, $event_text);
 
-include_once '../../fns/invalidate_user_events.php';
+include_once '../fns/invalidate_user_events.php';
 invalidate_user_events($mysqli, $id_users, $event->event_time);
 invalidate_user_events($mysqli, $id_users, $event_time);
 

@@ -5,22 +5,20 @@ $base = '../../';
 include_once '../../fns/require_user.php';
 $user = require_user($base);
 
+include_once '../../fns/request_strings.php';
+list($event_year, $event_month, $event_day) = request_strings(
+    'event_year', 'event_month', 'event_day');
+
 $key = 'calendar/add-event/values';
 if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];
 } else {
-
-    include_once '../../fns/request_strings.php';
-    list($day, $month, $year) = request_strings('day', 'month', 'year');
-
-    $values = [
-        'event_day' => abs((int)$day),
-        'event_month' => abs((int)$month),
-        'event_year' => abs((int)$year),
-        'event_text' => '',
-    ];
-
+    $values = ['event_text' => ''];
 }
+
+$event_year = abs((int)$event_year);
+$event_month = abs((int)$event_month);
+$event_day = abs((int)$event_day);
 
 unset(
     $_SESSION['calendar/errors'],
@@ -49,15 +47,15 @@ $content = create_tabs(
     .'<form action="submit.php" method="post">'
         .Form\datefield([
             'name' => 'event_day',
-            'value' => $values['event_day'],
+            'value' => $event_day,
         ],
         [
             'name' => 'event_month',
-            'value' => $values['event_month'],
+            'value' => $event_month,
         ],
         [
             'name' => 'event_year',
-            'value' => $values['event_year'],
+            'value' => $event_year,
         ], 'When', true)
         .'<div class="hr"></div>'
         .Form\textfield('event_text', 'Text', [

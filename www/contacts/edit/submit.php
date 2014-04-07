@@ -86,15 +86,5 @@ include_once '../../fns/ContactTags/add.php';
 ContactTags\add($mysqli, $id_users, $id,
     $tag_names, $full_name, $alias, $contact->favorite);
 
-if ($contact->birth_time !== null) {
-    include_once '../../fns/invalidate_user_events.php';
-    invalidate_user_events($mysqli, $id_users, $contact->birth_time);
-}
-
-if ($birth_time !== null) {
-    include_once '../../fns/invalidate_user_events.php';
-    invalidate_user_events($mysqli, $id_users, $birth_time);
-}
-
 $_SESSION['contacts/view/messages'] = ['Changes have been saved.'];
 redirect("../view/$itemQuery");
