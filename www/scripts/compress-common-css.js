@@ -11,6 +11,7 @@ var files = [
     'common.css',
     'textList.css',
     'form.css',
+    'form-select.css',
     'form-property.css',
     'form-value.css',
     'form-captcha.css',
