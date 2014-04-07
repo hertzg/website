@@ -28,8 +28,8 @@ if ($event_text === '') $errors[] = 'Enter text.';
 include_once '../../fns/redirect.php';
 
 if ($errors) {
-    $_SESSION['calendar/add-event/errors'] = $errors;
-    $_SESSION['calendar/add-event/values'] = [
+    $_SESSION['calendar/new-event/errors'] = $errors;
+    $_SESSION['calendar/new-event/values'] = [
         'event_day' => $event_day,
         'event_month' => $event_month,
         'event_year' => $event_year,
@@ -39,8 +39,8 @@ if ($errors) {
 }
 
 unset(
-    $_SESSION['calendar/add-event/errors'],
-    $_SESSION['calendar/add-event/values']
+    $_SESSION['calendar/new-event/errors'],
+    $_SESSION['calendar/new-event/values']
 );
 
 include_once '../../fns/Events/add.php';

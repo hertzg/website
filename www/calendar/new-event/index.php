@@ -5,7 +5,7 @@ $base = '../../';
 include_once '../../fns/require_user.php';
 $user = require_user($base);
 
-$key = 'calendar/add-event/values';
+$key = 'calendar/new-event/values';
 if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];
 } else {
@@ -45,7 +45,7 @@ $content = create_tabs(
         ],
     ],
     'New Event',
-    Page\sessionErrors('calendar/add-event/errors')
+    Page\sessionErrors('calendar/new-event/errors')
     .'<form action="submit.php" method="post">'
         .Form\datefield([
             'name' => 'event_day',
