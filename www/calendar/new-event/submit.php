@@ -8,18 +8,20 @@ $user = require_user('../../');
 $id_users = $user->id_users;
 
 include_once '../../fns/request_strings.php';
-list($year, $month, $day, $event_text) = request_strings(
-    'year', 'month', 'day', 'event_text');
+list($day, $month, $year, $event_text) = request_strings(
+    'day', 'month', 'year', 'event_text');
 
-$year = (int)$year;
-$month = (int)$month;
 $day = (int)$day;
-$event_time = mktime(0, 0, 0, $month, $day, $year);
+$month = (int)$month;
+$year = (int)$year;
 
 include_once '../../fns/str_collapse_spaces.php';
 $event_text = str_collapse_spaces($event_text);
 
 $errors = [];
+
+include_once '../fns/check_date.php';
+check_date($day, $month, $year, $errors);
 
 if ($event_text === '') $errors[] = 'Enter text.';
 
@@ -41,6 +43,8 @@ unset(
     $_SESSION['calendar/add-event/errors'],
     $_SESSION['calendar/add-event/values']
 );
+
+$event_time = mktime(0, 0, 0, $month, $day, $year);
 
 include_once '../../fns/Events/add.php';
 include_once '../../lib/mysqli.php';

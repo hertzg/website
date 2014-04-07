@@ -7,11 +7,14 @@
     border-radius: 2px;
 }
 
-.form-select.year,
-.form-select.day {
+.form-select.year {
     width: 30%;
 }
 
 .form-select.month {
-    width: 40%;
+    width: 45%;
+}
+
+.form-select.day {
+    width: 25%;
 }

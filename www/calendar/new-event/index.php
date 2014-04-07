@@ -27,8 +27,8 @@ unset(
 
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Form/button.php';
+include_once '../../fns/Form/datefield.php';
 include_once '../../fns/Form/hidden.php';
-include_once '../../fns/Form/label.php';
 include_once '../../fns/Form/textfield.php';
 include_once '../../fns/Page/sessionErrors.php';
 $content = create_tabs(
@@ -45,7 +45,18 @@ $content = create_tabs(
     'New Event',
     Page\sessionErrors('calendar/add-event/errors')
     .'<form action="submit.php" method="post">'
-        .Form\label('When', date('F d, Y', $time))
+        .Form\datefield([
+            'name' => 'day',
+            'value' => $day,
+        ],
+        [
+            'name' => 'month',
+            'value' => $month,
+        ],
+        [
+            'name' => 'year',
+            'value' => $year,
+        ], 'When', true)
         .'<div class="hr"></div>'
         .Form\textfield('event_text', 'Text', [
             'value' => $values['event_text'],
@@ -54,9 +65,6 @@ $content = create_tabs(
         ])
         .'<div class="hr"></div>'
         .Form\button('Save Event')
-        .Form\hidden('year', $year)
-        .Form\hidden('month', $month)
-        .Form\hidden('day', $day)
     .'</form>'
 );
 
