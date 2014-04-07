@@ -31,9 +31,11 @@ include_once '../fns/Events/indexOnUserAndTime.php';
 include_once '../lib/mysqli.php';
 $events = Events\indexOnUserAndTime($mysqli, $user->id_users, $timeSelected);
 
-$eventItems = [];
+include_once '../fns/Contacts/indexBirthDays.php';
+$contacts = Contacts\indexBirthDays($mysqli, $daySelected, $monthSelected);
+
 include_once 'fns/render_events.php';
-render_events($events, $eventItems);
+render_events($contacts, $events, $eventItems);
 
 if ($user->num_events) {
     $title = 'All Events';

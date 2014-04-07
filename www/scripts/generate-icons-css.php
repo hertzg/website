@@ -18,7 +18,7 @@ $names = [
     'sign-in', 'trash-bin', 'calendar', 'arrow-right', 'arrow-left',
     'copy-file', 'move-file', 'copy-folder', 'move-folder', 'import-bookmark',
     'import-contact', 'import-note', 'import-task', 'search', 'search-folder',
-    'birth-cake', 'events', 'event', 'create-event', 'edit-event', 'checkbox',
+    'birthday-cake', 'events', 'event', 'create-event', 'edit-event', 'checkbox',
     'checked-checkbox', 'help', 'token', 'create-token', 'tokens', 'run',
     'mail', 'send', 'receive', 'phone', 'edit-home', 'move-up', 'move-to-top',
     'move-down', 'move-to-bottom', 'reorder', 'show-hide', 'restore-defaults',
