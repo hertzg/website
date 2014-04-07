@@ -30,13 +30,12 @@ include_once '../../fns/redirect.php';
 if ($errors) {
     $_SESSION['calendar/add-event/errors'] = $errors;
     $_SESSION['calendar/add-event/values'] = [
+        'event_day' => $event_day,
+        'event_month' => $event_month,
+        'event_year' => $event_year,
         'event_text' => $event_text,
     ];
-    redirect('./?'.http_build_query([
-        'event_year' => $event_year,
-        'event_month' => $event_month,
-        'event_day' => $event_day,
-    ]));
+    redirect();
 }
 
 unset(
