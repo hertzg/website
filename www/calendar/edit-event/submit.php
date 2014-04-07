@@ -9,12 +9,12 @@ list($event, $id, $user) = require_event($mysqli);
 $id_users = $user->id_users;
 
 include_once '../../fns/request_strings.php';
-list($day, $month, $year, $event_text) = request_strings(
-    'day', 'month', 'year', 'event_text');
+list($event_day, $event_month, $event_year, $event_text) = request_strings(
+    'event_day', 'event_month', 'event_year', 'event_text');
 
-$day = (int)$day;
-$month = (int)$month;
-$year = (int)$year;
+$event_day = abs((int)$event_day);
+$event_month = abs((int)$event_month);
+$event_year = abs((int)$event_year);
 
 include_once '../../fns/str_collapse_spaces.php';
 $event_text = str_collapse_spaces($event_text);
@@ -22,7 +22,7 @@ $event_text = str_collapse_spaces($event_text);
 $errors = [];
 
 include_once '../fns/check_date.php';
-check_date($day, $month, $year, $errors);
+check_date($event_day, $event_month, $event_year, $errors);
 
 if ($event_text === '') $errors[] = 'Enter text.';
 
@@ -31,9 +31,9 @@ include_once '../../fns/redirect.php';
 if ($errors) {
     $_SESSION['calendar/edit-event/errors'] = $errors;
     $_SESSION['calendar/edit-event/values'] = [
-        'day' => $day,
-        'month' => $month,
-        'year' => $year,
+        'event_day' => $event_day,
+        'event_month' => $event_month,
+        'event_year' => $event_year,
         'event_text' => $event_text,
     ];
     redirect("./?id=$id");
@@ -41,7 +41,7 @@ if ($errors) {
 
 unset($_SESSION['calendar/edit-event/errors']);
 
-$event_time = mktime(0, 0, 0, $month, $day, $year);
+$event_time = mktime(0, 0, 0, $event_month, $event_day, $event_year);
 
 include_once '../../fns/Events/edit.php';
 Events\edit($mysqli, $id_users, $id, $event_time, $event_text);

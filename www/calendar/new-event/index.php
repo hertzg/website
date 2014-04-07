@@ -6,7 +6,8 @@ include_once '../../fns/require_user.php';
 $user = require_user($base);
 
 include_once '../../fns/request_strings.php';
-list($year, $month, $day) = request_strings('year', 'month', 'day');
+list($event_year, $event_month, $event_day) = request_strings(
+    'event_year', 'event_month', 'event_day');
 
 $key = 'calendar/add-event/values';
 if (array_key_exists($key, $_SESSION)) {
@@ -15,10 +16,9 @@ if (array_key_exists($key, $_SESSION)) {
     $values = ['event_text' => ''];
 }
 
-$year = (int)$year;
-$month = (int)$month;
-$day = (int)$day;
-$time = mktime(0, 0, 0, $month, $day, $year);
+$event_year = abs((int)$event_year);
+$event_month = abs((int)$event_month);
+$event_day = abs((int)$event_day);
 
 unset(
     $_SESSION['calendar/errors'],
@@ -46,16 +46,16 @@ $content = create_tabs(
     Page\sessionErrors('calendar/add-event/errors')
     .'<form action="submit.php" method="post">'
         .Form\datefield([
-            'name' => 'day',
-            'value' => $day,
+            'name' => 'event_day',
+            'value' => $event_day,
         ],
         [
-            'name' => 'month',
-            'value' => $month,
+            'name' => 'event_month',
+            'value' => $event_month,
         ],
         [
-            'name' => 'year',
-            'value' => $year,
+            'name' => 'event_year',
+            'value' => $event_year,
         ], 'When', true)
         .'<div class="hr"></div>'
         .Form\textfield('event_text', 'Text', [

@@ -10,9 +10,9 @@ if (array_key_exists($key, $_SESSION)) {
 } else {
     $event_time = $event->event_time;
     $values = [
-        'day' => date('d', $event_time),
-        'month' => date('n', $event_time),
-        'year' => date('Y', $event_time),
+        'event_day' => date('d', $event_time),
+        'event_month' => date('n', $event_time),
+        'event_year' => date('Y', $event_time),
         'event_text' => $event->event_text,
     ];
 }
@@ -40,16 +40,16 @@ $content = create_tabs(
     Page\sessionErrors('calendar/edit-event/errors')
     .'<form action="submit.php" method="post">'
         .Form\datefield([
-            'name' => 'day',
-            'value' => $values['day'],
+            'name' => 'event_day',
+            'value' => $values['event_day'],
         ],
         [
-            'name' => 'month',
-            'value' => $values['month'],
+            'name' => 'event_month',
+            'value' => $values['event_month'],
         ],
         [
-            'name' => 'year',
-            'value' => $values['year'],
+            'name' => 'event_year',
+            'value' => $values['event_year'],
         ], 'When', true)
         .'<div class="hr"></div>'
         .Form\textfield('event_text', 'Text', [
