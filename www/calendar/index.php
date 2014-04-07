@@ -31,8 +31,8 @@ include_once '../fns/Events/indexOnUserAndTime.php';
 include_once '../lib/mysqli.php';
 $events = Events\indexOnUserAndTime($mysqli, $user->id_users, $timeSelected);
 
-include_once '../fns/Contacts/indexBirthDays.php';
-$contacts = Contacts\indexBirthDays($mysqli, $daySelected, $monthSelected);
+include_once '../fns/Contacts/indexBirthdays.php';
+$contacts = Contacts\indexBirthdays($mysqli, $daySelected, $monthSelected);
 
 include_once 'fns/render_events.php';
 render_events($contacts, $events, $eventItems);

@@ -2,7 +2,7 @@
 
 namespace Contacts;
 
-function indexBirthDays ($mysqli, $day, $month) {
+function indexBirthdays ($mysqli, $day, $month) {
     $sql = 'select * from contacts'
         ." where birthday_day = $day and birthday_month = $month";
     include_once __DIR__.'/../mysqli_query_object.php';
