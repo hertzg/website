@@ -34,6 +34,11 @@ include_once 'fns/render_phone_number.php';
 render_phone_number('Phone 1', $contact->phone1, $items);
 render_phone_number('Phone 2', $contact->phone2, $items);
 
+$birth_time = $contact->birth_time;
+if ($birth_time !== null) {
+    $items[] = Form\label('Birth date', date('F d, Y', $birth_time));
+}
+
 $username = $contact->username;
 if ($username !== '') {
     $items[] = Form\label('Zvini username', htmlspecialchars($username));
