@@ -2,7 +2,6 @@
 
 include_once __DIR__.'/../fns/require_user.php';
 $user = require_user('../');
-$id_users = $user->id_users;
 
 include_once 'fns/unset_session_vars.php';
 unset_session_vars();
@@ -30,11 +29,10 @@ $daySelected = date('d', $timeSelected);
 
 include_once '../fns/Events/indexOnUserAndTime.php';
 include_once '../lib/mysqli.php';
-$events = Events\indexOnUserAndTime($mysqli, $id_users, $timeSelected);
+$events = Events\indexOnUserAndTime($mysqli, $user->id_users, $timeSelected);
 
 include_once '../fns/Contacts/indexBirthDays.php';
-$contacts = Contacts\indexBirthDays($mysqli,
-    $id_users, $daySelected, $monthSelected);
+$contacts = Contacts\indexBirthDays($mysqli, $daySelected, $monthSelected);
 
 include_once 'fns/render_events.php';
 render_events($contacts, $events, $eventItems);
