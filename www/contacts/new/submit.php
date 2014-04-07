@@ -89,5 +89,8 @@ ContactTags\add($mysqli, $id_users, $id,
 include_once '../../fns/Users/addNumContacts.php';
 Users\addNumContacts($mysqli, $id_users, 1);
 
+include_once '../fns/invalidate_user_birthdays.php';
+invalidate_user_birthdays($mysqli, $id_users, $birthday_time);
+
 $_SESSION['contacts/view/messages'] = ['Contact has been saved.'];
 redirect("../view/?id=$id");
