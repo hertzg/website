@@ -1,6 +1,6 @@
 <?php
 
-function check_date ($day, $month, $year, &$errors) {
+function parse_event_time ($day, $month, $year, &$errors, &$time) {
 
     if ($day === 0) {
         $errors[] = 'Enter day.';
@@ -21,5 +21,7 @@ function check_date ($day, $month, $year, &$errors) {
     if (!date_is_valid($day, $month, $year)) {
         $errors[] = 'The date is invalid.';
     }
+
+    $time = mktime(0, 0, 0, $month, $day, $year);
 
 }

@@ -21,8 +21,8 @@ $event_text = str_collapse_spaces($event_text);
 
 $errors = [];
 
-include_once '../fns/check_date.php';
-check_date($event_day, $event_month, $event_year, $errors);
+include_once '../fns/parse_event_time.php';
+parse_event_time($event_day, $event_month, $event_year, $errors, $event_time);
 
 if ($event_text === '') $errors[] = 'Enter text.';
 
@@ -40,8 +40,6 @@ if ($errors) {
 }
 
 unset($_SESSION['calendar/edit-event/errors']);
-
-$event_time = mktime(0, 0, 0, $event_month, $event_day, $event_year);
 
 include_once '../../fns/Events/edit.php';
 Events\edit($mysqli, $id_users, $id, $event_time, $event_text);
