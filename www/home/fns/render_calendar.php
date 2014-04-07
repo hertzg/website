@@ -7,6 +7,11 @@ function render_calendar ($user, $mysqli, array &$items) {
     $num_events_today = $user->num_events_today;
     $num_events_tomorrow = $user->num_events_tomorrow;
 
+    include_once __DIR__.'/check_birthday_check_day.php';
+    check_birthday_check_day($mysqli, $user);
+    $num_events_today += $user->num_birthdays_today;
+    $num_events_tomorrow += $user->num_birthdays_tomorrow;
+
     if (!$user->show_calendar) return;
 
     $n_events = function ($n) {
