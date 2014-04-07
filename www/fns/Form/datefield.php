@@ -20,8 +20,7 @@ function datefield (array $day, array $month, array $year, $text,
 
     $daySelect =
         '<select class="form-select day"'
-        ." name=\"$dayName\" id=\"$dayName\"$requiredAttribute>"
-            .'<option value="">--</option>';
+        ." name=\"$dayName\" id=\"$dayName\"$requiredAttribute>";
     for ($i = 1; $i <= 31; $i++) {
         if ($i == $selectedDay) $selectedAttribute = ' selected="selected"';
         else $selectedAttribute = '';
@@ -31,8 +30,7 @@ function datefield (array $day, array $month, array $year, $text,
 
     $monthSelect =
         '<select class="form-select month"'
-        ." name=\"$month[name]\"$requiredAttribute>"
-            .'<option value="">--</option>';
+        ." name=\"$month[name]\"$requiredAttribute>";
     for ($i = 1; $i <= 12; $i++) {
         if ($i == $selectedMonth) $selectedAttribute = ' selected="selected"';
         else $selectedAttribute = '';
@@ -45,8 +43,7 @@ function datefield (array $day, array $month, array $year, $text,
 
     $yearSelect =
         '<select class="form-select year"'
-        ." name=\"$year[name]\"$requiredAttribute>"
-            .'<option value="">--</option>';
+        ." name=\"$year[name]\"$requiredAttribute>";
     for ($i = $maxYear; $i >= $minYear; $i--) {
         if ($i == $selectedYear) $selectedAttribute = ' selected="selected"';
         else $selectedAttribute = '';
