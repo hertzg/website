@@ -36,9 +36,12 @@ include_once 'fns/render_events.php';
 render_events($events, $eventItems);
 
 if ($user->num_events) {
+    $title = 'All Events';
+    $description = "$user->num_events total.";
+    $href = 'all-events/';
     include_once '../fns/Page/imageArrowLinkWithDescription.php';
-    $eventItems[] = Page\imageArrowLinkWithDescription('All Events',
-        "$user->num_events total.", 'all-events/', 'event');
+    $eventItems[] = Page\imageArrowLinkWithDescription($title,
+        $description, $href, 'event');
 }
 
 $newEventHref =
