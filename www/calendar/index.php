@@ -26,7 +26,7 @@ else $day = (int)$day;
 $timeSelected = mktime(0, 0, 0, $month, $day, $year);
 $yearSelected = date('Y', $timeSelected);
 $monthSelected = date('n', $timeSelected);
-$daySelected = date('d', $timeSelected);
+$daySelected = date('j', $timeSelected);
 
 include_once '../fns/Events/indexOnUserAndTime.php';
 include_once '../lib/mysqli.php';
