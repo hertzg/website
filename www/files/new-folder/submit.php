@@ -36,14 +36,14 @@ if ($folder_name === '') {
 }
 
 if ($errors) {
-    $_SESSION['files/add-folder/errors'] = $errors;
-    $_SESSION['files/add-folder/values'] = ['folder_name' => $folder_name];
+    $_SESSION['files/new-folder/errors'] = $errors;
+    $_SESSION['files/new-folder/values'] = ['folder_name' => $folder_name];
     redirect("./?parent_id_folders=$parent_id_folders");
 }
 
 unset(
-    $_SESSION['files/add-folder/errors'],
-    $_SESSION['files/add-folder/values']
+    $_SESSION['files/new-folder/errors'],
+    $_SESSION['files/new-folder/values']
 );
 
 include_once '../../fns/Folders/add.php';

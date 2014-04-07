@@ -8,7 +8,7 @@ $user = require_user($base);
 include_once '../../fns/request_strings.php';
 list($parent_id_folders) = request_strings('parent_id_folders');
 
-$key = 'files/add-folder/values';
+$key = 'files/new-folder/values';
 if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];
 } else {
@@ -52,7 +52,7 @@ $content = create_tabs(
         ],
     ],
     'New Folder',
-    Page\sessionErrors('files/add-folder/errors')
+    Page\sessionErrors('files/new-folder/errors')
     .'<form action="submit.php" method="post">'
         .Form\textfield('folder_name', 'Folder name', [
             'value' => $values['folder_name'],
