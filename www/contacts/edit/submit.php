@@ -87,8 +87,8 @@ ContactTags\add($mysqli, $id_users, $id,
     $tag_names, $full_name, $alias, $contact->favorite);
 
 include_once '../fns/invalidate_user_birthdays.php';
-invalidate_user_birthdays($mysqli, $id_users, $contact->birthday_time);
-invalidate_user_birthdays($mysqli, $id_users, $birthday_time);
+invalidate_user_birthdays($mysqli, $user, $contact->birthday_time);
+invalidate_user_birthdays($mysqli, $user, $birthday_time);
 
 $_SESSION['contacts/view/messages'] = ['Changes have been saved.'];
 redirect("../view/$itemQuery");

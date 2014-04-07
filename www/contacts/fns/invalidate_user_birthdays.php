@@ -1,6 +1,6 @@
 <?php
 
-function invalidate_user_birthdays ($mysqli, $id_users, $birthday_time) {
+function invalidate_user_birthdays ($mysqli, &$user, $birthday_time) {
     if ($birthday_time !== null) {
 
         $timeNow = time();
@@ -17,8 +17,11 @@ function invalidate_user_birthdays ($mysqli, $id_users, $birthday_time) {
         if ($birthdayTimeThisYear == $timeToday ||
             $birthdayTimeThisYear == $timeTomorrow) {
 
-            include_once __DIR__.'/../../fns/Users/invalidateBirthdays.php';
-            Users\invalidateBirthdays($mysqli, $id_users);
+            if ($user->birthdays_check_day) {
+                $user->birthdays_check_day = 0;
+                include_once __DIR__.'/../../fns/Users/invalidateBirthdays.php';
+                Users\invalidateBirthdays($mysqli, $user->id_users);
+            }
 
         }
 
