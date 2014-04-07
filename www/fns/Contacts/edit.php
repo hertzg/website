@@ -11,7 +11,12 @@ function edit ($mysqli, $id_users, $id, $full_name, $alias, $address,
     $email = $mysqli->real_escape_string($email);
     $phone1 = $mysqli->real_escape_string($phone1);
     $phone2 = $mysqli->real_escape_string($phone2);
-    if ($birth_time === null) $birth_time = 'null';
+    if ($birth_time === null) {
+        $birth_time = $birth_day = $birth_month = 'null';
+    } else {
+        $birth_day = date('j', $birth_time);
+        $birth_month = date('n', $birth_time);
+    }
     $username = $mysqli->real_escape_string($username);
     $tags = $mysqli->real_escape_string($tags);
     $update_time = time();
@@ -19,6 +24,7 @@ function edit ($mysqli, $id_users, $id, $full_name, $alias, $address,
     $sql = "update contacts set full_name = '$full_name',"
         ." alias = '$alias', address = '$address', email = '$email',"
         ." phone1 = '$phone1', phone2 = '$phone2', birth_time = $birth_time,"
+        ." birth_day = $birth_day, birth_month = $birth_month,"
         ." username = '$username', tags = '$tags', update_time = $update_time"
         ." where id_users = $id_users and id_contacts = $id";
 
