@@ -18,9 +18,17 @@ include_once '../../fns/Page/imageArrowLink.php';
 
 if ($subscribedChannels) {
     foreach ($subscribedChannels as $subscribedChannel) {
+
+        if ($subscribedChannel->receive_notifications) {
+            $icon = 'subscribed-channel';
+        } else {
+            $icon = 'inactive-subscribed-channel';
+        }
+
         $title = htmlspecialchars($subscribedChannel->channel_name);
         $href = "view/?id=$subscribedChannel->id";
-        $items[] = Page\imageArrowLink($title, $href, 'subscribed-channel');
+        $items[] = Page\imageArrowLink($title, $href, $icon);
+
     }
 } else {
     include_once '../../fns/Page/info.php';
