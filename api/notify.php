@@ -27,6 +27,7 @@ if (!$channel) {
 
 include_once 'fns/str_collapse_spaces_multiline.php';
 $notification_text = str_collapse_spaces_multiline($notification_text);
+$notification_text = trim($notification_text);
 
 if ($notification_text === '') {
     die(json_encode(array(
@@ -35,37 +36,8 @@ if ($notification_text === '') {
     )));
 }
 
-$id_users = $channel->id_users;
-$id_channels = $channel->id;
-$channel_name = $channel->channel_name;
-
-if ($channel->receive_notifications) {
-
-    include_once 'fns/Notifications/add.php';
-    Notifications\add($mysqli, $id_users, $id_channels,
-        $channel_name, $notification_text);
-
-    include_once 'fns/Users/addNumNewNotifications.php';
-    Users\addNumNewNotifications($mysqli, $id_users, 1);
-
-}
-
-include_once 'fns/SubscribedChannels/indexOnChannel.php';
-$subscribedChannels = SubscribedChannels\indexOnChannel($mysqli, $id_channels);
-
-if ($subscribedChannels) {
-    include_once 'fns/Notifications/addExternal.php';
-    include_once 'fns/Users/addNumNewNotifications.php';
-    foreach ($subscribedChannels as $subscribedChannel) {
-        if ($subscribedChannel->receive_notifications) {
-            $id_users = $subscribedChannel->subscribed_id_users;
-            Notifications\addExternal($mysqli, $id_users,
-                $id_channels, $channel_name, $notification_text,
-                $subscribedChannel->id);
-            Users\addNumNewNotifications($mysqli, $id_users, 1);
-        }
-    }
-}
+include_once 'fns/send_notification.php';
+send_notification($mysqli, $channel, $notification_text);
 
 echo json_encode(array(
     'ok' => true,

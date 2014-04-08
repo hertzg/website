@@ -7,6 +7,10 @@ function create_options_panel ($channel) {
     include_once __DIR__.'/../../../../fns/Page/imageArrowLink.php';
     include_once __DIR__.'/../../../../fns/Page/imageLink.php';
 
+    $title = 'Post a Notification';
+    $href = "../notify/?id=$id";
+    $notifyLink = Page\imageArrowLink($title, $href, 'create-notification');
+
     $title = 'Randomize Key';
     $href = "../randomize-key/?id=$id";
     $randomizeKeyLink = Page\imageArrowLink($title, $href, 'randomize');
@@ -32,9 +36,11 @@ function create_options_panel ($channel) {
 
     include_once __DIR__.'/../../../../fns/Page/twoColumns.php';
     $content =
-        Page\twoColumns($receiveLink, $randomizeKeyLink)
+        Page\twoColumns($receiveLink, $notifyLink)
         .'<div class="hr"></div>'
-        .Page\twoColumns($usersLink, $deleteLink);
+        .Page\twoColumns($randomizeKeyLink, $usersLink)
+        .'<div class="hr"></div>'
+        .$deleteLink;
 
     include_once __DIR__.'/../../../../fns/create_panel.php';
     return create_panel('Channel Options', $content);
