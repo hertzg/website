@@ -47,6 +47,11 @@ ReceivedNotes\delete($mysqli, $id);
 include_once '../../../fns/Users/addNumReceivedNotes.php';
 Users\addNumReceivedNotes($mysqli, $id_users, -1);
 
+unset(
+    $_SESSION['notes/received/edit-and-import/errors'],
+    $_SESSION['notes/received/edit-and-import/values']
+);
+
 $messages = ['Note has been imported.'];
 
 if ($user->num_received_notes == 1) {

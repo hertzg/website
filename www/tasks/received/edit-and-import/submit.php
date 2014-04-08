@@ -50,6 +50,11 @@ ReceivedTasks\delete($mysqli, $id);
 include_once '../../../fns/Users/addNumReceivedTasks.php';
 Users\addNumReceivedTasks($mysqli, $id_users, -1);
 
+unset(
+    $_SESSION['tasks/received/edit-and-import/errors'],
+    $_SESSION['tasks/received/edit-and-import/values']
+);
+
 $messages = ['Task has been imported.'];
 
 if ($user->num_received_tasks == 1) {

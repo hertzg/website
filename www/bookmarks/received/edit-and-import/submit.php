@@ -47,6 +47,11 @@ ReceivedBookmarks\delete($mysqli, $id);
 include_once '../../../fns/Users/addNumReceivedBookmarks.php';
 Users\addNumReceivedBookmarks($mysqli, $id_users, -1);
 
+unset(
+    $_SESSION['bookmarks/received/edit-and-import/errors'],
+    $_SESSION['bookmarks/received/edit-and-import/values']
+);
+
 $messages = ['Bookmark has been imported.'];
 
 if ($user->num_received_bookmarks == 1) {

@@ -90,6 +90,11 @@ Users\addNumReceivedContacts($mysqli, $id_users, -1);
 include_once '../../fns/invalidate_user_birthdays.php';
 invalidate_user_birthdays($mysqli, $user, $birthday_time);
 
+unset(
+    $_SESSION['contacts/received/edit-and-import/errors'],
+    $_SESSION['contacts/received/edit-and-import/values']
+);
+
 $messages = ['Contact has been imported.'];
 
 if ($user->num_received_contacts == 1) {
