@@ -39,7 +39,7 @@ include_once '../../fns/redirect.php';
 if ($errors) {
     $_SESSION['notes/send/errors'] = $errors;
     $_SESSION['notes/send/values'] = ['username' => $username];
-    redirect("./?$itemQuery");
+    redirect("./$itemQuery");
 }
 
 include_once '../../fns/ReceivedNotes/add.php';
@@ -51,4 +51,4 @@ Users\addNumReceivedNotes($mysqli, $receiver_id_users, 1);
 
 $_SESSION['notes/view/messages'] = ['Sent.'];
 
-redirect("../view/?$itemQuery");
+redirect("../view/$itemQuery");

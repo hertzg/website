@@ -39,7 +39,7 @@ include_once '../../fns/redirect.php';
 if ($errors) {
     $_SESSION['bookmarks/send/errors'] = $errors;
     $_SESSION['bookmarks/send/values'] = ['username' => $username];
-    redirect("./?$itemQuery");
+    redirect("./$itemQuery");
 }
 
 include_once '../../fns/ReceivedBookmarks/add.php';
@@ -51,4 +51,4 @@ Users\addNumReceivedBookmarks($mysqli, $receiver_id_users, 1);
 
 $_SESSION['bookmarks/view/messages'] = ['Sent.'];
 
-redirect("../view/?$itemQuery");
+redirect("../view/$itemQuery");

@@ -35,7 +35,7 @@ if ($errors) {
         'text' => $text,
         'tags' => $tags,
     ];
-    redirect("./?$itemQuery");
+    redirect("./$itemQuery");
 }
 
 unset(
@@ -53,4 +53,4 @@ include_once '../../fns/NoteTags/add.php';
 NoteTags\add($mysqli, $id_users, $id, $tag_names, $text);
 
 $_SESSION['notes/view/messages'] = ['Changes have been saved.'];
-redirect("../view/?$itemQuery");
+redirect("../view/$itemQuery");

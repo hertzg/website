@@ -39,7 +39,7 @@ include_once '../../fns/redirect.php';
 if ($errors) {
     $_SESSION['contacts/send/errors'] = $errors;
     $_SESSION['contacts/send/values'] = ['username' => $username];
-    redirect("./?$itemQuery");
+    redirect("./$itemQuery");
 }
 
 include_once '../../fns/ReceivedContacts/add.php';
@@ -53,4 +53,4 @@ Users\addNumReceivedContacts($mysqli, $receiver_id_users, 1);
 
 $_SESSION['contacts/view/messages'] = ['Sent.'];
 
-redirect("../view/?$itemQuery");
+redirect("../view/$itemQuery");

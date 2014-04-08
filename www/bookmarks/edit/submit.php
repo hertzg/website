@@ -35,7 +35,7 @@ if ($errors) {
         'url' => $url,
         'tags' => $tags,
     ];
-    redirect("./?$itemQuery");
+    redirect("./$itemQuery");
 }
 
 unset(
@@ -53,4 +53,4 @@ include_once '../../fns/BookmarkTags/add.php';
 BookmarkTags\add($mysqli, $id_users, $id, $tag_names, $url, $title);
 
 $_SESSION['bookmarks/view/messages'] = ['Changes have been saved.'];
-redirect("../view/?$itemQuery");
+redirect("../view/$itemQuery");

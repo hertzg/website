@@ -35,7 +35,7 @@ if ($errors) {
         'text' => $text,
         'tags' => $tags,
     ];
-    redirect("./?$itemQuery");
+    redirect("./$itemQuery");
 }
 
 unset(
@@ -55,4 +55,4 @@ include_once '../../fns/TaskTags/add.php';
 TaskTags\add($mysqli, $id_users, $id, $tag_names, $text, $top_priority, $tags);
 
 $_SESSION['tasks/view/messages'] = ['Changes have been saved.'];
-redirect("../view/?$itemQuery");
+redirect("../view/$itemQuery");

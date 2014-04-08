@@ -39,7 +39,7 @@ include_once '../../fns/redirect.php';
 if ($errors) {
     $_SESSION['tasks/send/errors'] = $errors;
     $_SESSION['tasks/send/values'] = ['username' => $username];
-    redirect("./?$itemQuery");
+    redirect("./$itemQuery");
 }
 
 include_once '../../fns/ReceivedTasks/add.php';
@@ -51,4 +51,4 @@ Users\addNumReceivedTasks($mysqli, $receiver_id_users, 1);
 
 $_SESSION['tasks/view/messages'] = ['Sent.'];
 
-redirect("../view/?$itemQuery");
+redirect("../view/$itemQuery");
