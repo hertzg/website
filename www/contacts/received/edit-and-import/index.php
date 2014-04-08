@@ -8,7 +8,31 @@ $key = 'contacts/received/edit-and-import/values';
 if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];
 } else {
-    $values = (array)$receivedContact;
+
+    $birthday_time = $receivedContact->birthday_time;
+    if ($birthday_time === null) {
+        $birthday_day = $birthday_month = $birthday_year = 0;
+    } else {
+        $birthday_day = date('d', $birthday_time);
+        $birthday_month = date('n', $birthday_time);
+        $birthday_year = date('Y', $birthday_time);
+    }
+
+    $values = [
+        'full_name' => $receivedContact->full_name,
+        'alias' => $receivedContact->alias,
+        'address' => $receivedContact->address,
+        'email' => $receivedContact->email,
+        'phone1' => $receivedContact->phone1,
+        'phone2' => $receivedContact->phone2,
+        'birthday_day' => $birthday_day,
+        'birthday_month' => $birthday_month,
+        'birthday_year' => $birthday_year,
+        'username' => $receivedContact->username,
+        'tags' => $receivedContact->tags,
+        'favorite' => $receivedContact->favorite,
+    ];
+
 }
 
 include_once '../../../fns/Contacts/maxLengths.php';
@@ -19,6 +43,7 @@ $base = '../../../';
 include_once '../../../fns/create_tabs.php';
 include_once '../../../fns/Form/button.php';
 include_once '../../../fns/Form/checkbox.php';
+include_once '../../../fns/Form/datefield.php';
 include_once '../../../fns/Form/hidden.php';
 include_once '../../../fns/Form/textfield.php';
 include_once '../../../fns/Page/sessionErrors.php';
@@ -67,6 +92,17 @@ $content = create_tabs(
             'value' => $values['phone2'],
             'maxlength' => $maxLengths['phone2'],
         ])
+        .'<div class="hr"></div>'
+        .Form\datefield([
+            'name' => 'birthday_day',
+            'value' => $values['birthday_day'],
+        ], [
+            'name' => 'birthday_month',
+            'value' => $values['birthday_month'],
+        ], [
+            'name' => 'birthday_year',
+            'value' => $values['birthday_year'],
+        ], 'Birth date', false, true)
         .'<div class="hr"></div>'
         .Form\textfield('username', 'Zvini username', [
             'value' => $values['username'],

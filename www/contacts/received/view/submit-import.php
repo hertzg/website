@@ -14,6 +14,7 @@ $address = $receivedContact->address;
 $email = $receivedContact->email;
 $phone1 = $receivedContact->phone1;
 $phone2 = $receivedContact->phone2;
+$birthday_time = $receivedContact->birthday_time;
 $username = $receivedContact->username;
 $tags = $receivedContact->tags;
 $favorite = $receivedContact->favorite;
@@ -32,6 +33,9 @@ if (Contacts\getByFullName($mysqli, $id_users, $full_name)) {
         'email' => $email,
         'phone1' => $phone1,
         'phone2' => $phone2,
+        'birthday_day' => date('d', $birthday_time),
+        'birthday_month' => date('n', $birthday_time),
+        'birthday_year' => date('Y', $birthday_time),
         'username' => $username,
         'tags' => $tags,
         'favorite' => $favorite,
@@ -41,8 +45,6 @@ if (Contacts\getByFullName($mysqli, $id_users, $full_name)) {
 
 include_once '../../../fns/Tags/parse.php';
 $tag_names = Tags\parse($tags);
-
-$birthday_time = null;
 
 include_once '../../../fns/Contacts/add.php';
 $id_contacts = Contacts\add($mysqli, $id_users, $full_name, $alias, $address,

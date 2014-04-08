@@ -42,7 +42,8 @@ if ($full_name === '') {
 }
 
 include_once '../fns/parse_birthday.php';
-parse_birthday($birthday_day, $birthday_month, $birthday_year, $errors, $birthday_time);
+parse_birthday($birthday_day, $birthday_month,
+    $birthday_year, $errors, $birthday_time);
 
 include_once '../../fns/parse_tags.php';
 parse_tags($tags, $tag_names, $errors);
