@@ -57,9 +57,11 @@ if ($errors) {
     redirect("./?id=$id");
 }
 
+$birthday_time = null;
+
 include_once '../../../fns/Contacts/add.php';
-$id_contacts = Contacts\add($mysqli, $id_users, $full_name, $alias,
-    $address, $email, $phone1, $phone2, $username, $tags, $favorite);
+$id_contacts = Contacts\add($mysqli, $id_users, $full_name, $alias, $address,
+    $email, $phone1, $phone2, $birthday_time, $username, $tags, $favorite);
 
 include_once '../../../fns/ContactTags/add.php';
 ContactTags\add($mysqli, $id_users, $id_contacts,

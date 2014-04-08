@@ -42,9 +42,11 @@ if (Contacts\getByFullName($mysqli, $id_users, $full_name)) {
 include_once '../../../fns/Tags/parse.php';
 $tag_names = Tags\parse($tags);
 
+$birthday_time = null;
+
 include_once '../../../fns/Contacts/add.php';
 $id_contacts = Contacts\add($mysqli, $id_users, $full_name, $alias, $address,
-    $email, $phone1, $phone2, $username, $tags, $favorite);
+    $email, $phone1, $phone2, $birthday_time, $username, $tags, $favorite);
 
 include_once '../../../fns/ContactTags/add.php';
 ContactTags\add($mysqli, $id_users, $id_contacts,
