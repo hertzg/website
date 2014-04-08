@@ -31,6 +31,7 @@ if ($errors) {
     $_SESSION['tasks/received/edit-and-import/values'] = [
         'text' => $text,
         'tags' => $tags,
+        'top_priority' => $top_priority,
     ];
     redirect("./?id=$id");
 }
