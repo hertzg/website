@@ -3,8 +3,7 @@
 
 include_once 'lib/require-cli.php';
 
-$names = [
-    'blue-theme', 'green-theme', 'orange-theme', 'pink-theme',
+$names = ['blue-theme', 'green-theme', 'orange-theme', 'pink-theme',
     'edit-blue-theme', 'edit-green-theme', 'edit-orange-theme',
     'edit-pink-theme', 'bookmark', 'bookmarks', 'create-bookmark',
     'edit-bookmark', 'channel', 'create-channel', 'channels',
@@ -13,18 +12,18 @@ $names = [
     'file', 'files', 'create-file', 'folder', 'create-folder', 'parent-folder',
     'note', 'notes', 'create-note', 'edit-note', 'task', 'task-top-priority',
     'tasks', 'create-task', 'edit-task', 'download', 'upload', 'feedback',
-    'yes', 'no', 'notification', 'old-notification', 'edit-password',
-    'new-password', 'reset-password', 'randomize', 'rename', 'sign-out',
-    'sign-in', 'trash-bin', 'calendar', 'arrow-right', 'arrow-left',
+    'yes', 'no', 'notification', 'create-notification', 'old-notification',
+    'edit-password', 'new-password', 'reset-password', 'randomize', 'rename',
+    'sign-out', 'sign-in', 'trash-bin', 'calendar', 'arrow-right', 'arrow-left',
     'copy-file', 'move-file', 'copy-folder', 'move-folder', 'import-bookmark',
     'import-contact', 'import-note', 'import-task', 'search', 'search-folder',
-    'birthday-cake', 'events', 'event', 'create-event', 'edit-event', 'checkbox',
-    'checked-checkbox', 'help', 'token', 'create-token', 'tokens', 'run',
-    'mail', 'send', 'receive', 'phone', 'edit-home', 'move-up', 'move-to-top',
-    'move-down', 'move-to-bottom', 'reorder', 'show-hide', 'restore-defaults',
-    'connection', 'create-connection', 'edit-connection', 'connections',
-    'forbid-notifications', 'receive-notifications', 'user', 'add-user',
-    'remove-user', 'users'];
+    'birthday-cake', 'events', 'event', 'create-event', 'edit-event',
+    'checkbox', 'checked-checkbox', 'help', 'token', 'create-token', 'tokens',
+    'run', 'mail', 'send', 'receive', 'phone', 'edit-home', 'move-up',
+    'move-to-top', 'move-down', 'move-to-bottom', 'reorder', 'show-hide',
+    'restore-defaults', 'connection', 'create-connection', 'edit-connection',
+    'connections', 'forbid-notifications', 'receive-notifications', 'user',
+    'add-user', 'remove-user', 'users'];
 
 $content = "/* auto-generated */\n";
 $x = 0;
