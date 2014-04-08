@@ -36,7 +36,7 @@ $content =
             'value' => bin2hex($channel->channel_key),
         ])
     )
-    .create_options_panel($id);
+    .create_options_panel($channel);
 
 include_once '../../../fns/echo_page.php';
 echo_page($user, "Channel #$id", $content, '../../../');

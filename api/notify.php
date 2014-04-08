@@ -39,18 +39,23 @@ $id_users = $channel->id_users;
 $id_channels = $channel->id;
 $channel_name = $channel->channel_name;
 
-include_once 'fns/Notifications/add.php';
-Notifications\add($mysqli, $id_users, $id_channels,
-    $channel_name, $notification_text);
+if ($channel->receive_notifications) {
 
-include_once 'fns/Users/addNumNewNotifications.php';
-Users\addNumNewNotifications($mysqli, $id_users, 1);
+    include_once 'fns/Notifications/add.php';
+    Notifications\add($mysqli, $id_users, $id_channels,
+        $channel_name, $notification_text);
+
+    include_once 'fns/Users/addNumNewNotifications.php';
+    Users\addNumNewNotifications($mysqli, $id_users, 1);
+
+}
 
 include_once 'fns/SubscribedChannels/indexOnChannel.php';
 $subscribedChannels = SubscribedChannels\indexOnChannel($mysqli, $id_channels);
 
 if ($subscribedChannels) {
     include_once 'fns/Notifications/addExternal.php';
+    include_once 'fns/Users/addNumNewNotifications.php';
     foreach ($subscribedChannels as $subscribedChannel) {
         if ($subscribedChannel->receive_notifications) {
             $id_users = $subscribedChannel->subscribed_id_users;
