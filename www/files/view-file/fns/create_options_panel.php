@@ -16,6 +16,9 @@ function create_options_panel ($file) {
     $href = "../move-file/?id=$id&id_folders=$file->id_folders";
     $moveLink = Page\imageArrowLink('Move', $href, 'move-file');
 
+    $href = "../send-file/?id=$id";
+    $sendLink = Page\imageArrowLink('Send', $href, 'send');
+
     $href = "../delete-file/?id=$id";
     $deleteLink = Page\imageArrowLink('Delete', $href, 'trash-bin');
 
@@ -23,7 +26,9 @@ function create_options_panel ($file) {
     $content =
         Page\twoColumns($downloadLink, $renameLink)
         .'<div class="hr"></div>'
-        .Page\twoColumns($moveLink, $deleteLink);
+        .Page\twoColumns($moveLink, $sendLink)
+        .'<div class="hr"></div>'
+        .$deleteLink;
 
     include_once __DIR__.'/../../../fns/create_panel.php';
     return create_panel('File Options', $content);
