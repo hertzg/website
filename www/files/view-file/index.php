@@ -1,23 +1,8 @@
 <?php
 
-$base = '../../';
-
-include_once '../../fns/require_user.php';
-$user = require_user($base);
-
-include_once '../../fns/request_strings.php';
-list($id) = request_strings('id');
-
-$id = abs((int)$id);
-
-include_once '../../fns/Files/get.php';
+include_once '../fns/require_file.php';
 include_once '../../lib/mysqli.php';
-$file = Files\get($mysqli, $user->id_users, $id);
-
-if (!$file) {
-    include_once '../../fns/redirect.php';
-    redirect('..');
-}
+list($file, $id, $user) = require_file($mysqli);
 
 unset(
     $_SESSION['files/id_folders'],
@@ -59,6 +44,6 @@ $content =
     .create_options_panel($file);
 
 include_once '../../fns/echo_page.php';
-echo_page($user, "File #$id", $content, $base, [
+echo_page($user, "File #$id", $content, '../../', [
     'head' => '<link rel="stylesheet" type="text/css" href="index.css?1" />',
 ]);
