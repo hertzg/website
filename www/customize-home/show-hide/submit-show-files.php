@@ -1,5 +1,8 @@
 <?php
 
+include_once '../../fns/require_same_domain_referer.php';
+require_same_domain_referer('./');
+
 include_once '../../fns/require_user.php';
 $user = require_user('../');
 

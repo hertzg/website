@@ -1,5 +1,8 @@
 <?php
 
+include_once '../../fns/require_same_domain_referer.php';
+require_same_domain_referer('./');
+
 include_once '../fns/require_task.php';
 include_once '../../lib/mysqli.php';
 list($task, $id, $user) = require_task($mysqli);
