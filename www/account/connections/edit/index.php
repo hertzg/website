@@ -39,6 +39,11 @@ $title = 'Can send contacts';
 $checked = $values['can_send_contact'];
 $items[] = Form\checkbox($base, $name, $title, $checked);
 
+$name = 'can_send_file';
+$title = 'Can send files';
+$checked = $values['can_send_file'];
+$items[] = Form\checkbox($base, $name, $title, $checked);
+
 $name = 'can_send_note';
 $title = 'Can send notes';
 $checked = $values['can_send_note'];

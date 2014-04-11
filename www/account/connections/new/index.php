@@ -19,6 +19,7 @@ if (array_key_exists($key, $_SESSION)) {
         'can_send_bookmark' => false,
         'can_send_channel' => false,
         'can_send_contact' => false,
+        'can_send_file' => false,
         'can_send_note' => false,
         'can_send_task' => false,
     ];
@@ -48,6 +49,11 @@ $items[] = Form\checkbox($base, $name, $title, $checked);
 $name = 'can_send_contact';
 $title = 'Can send contacts';
 $checked = $values['can_send_contact'];
+$items[] = Form\checkbox($base, $name, $title, $checked);
+
+$name = 'can_send_file';
+$title = 'Can send files';
+$checked = $values['can_send_file'];
 $items[] = Form\checkbox($base, $name, $title, $checked);
 
 $name = 'can_send_note';

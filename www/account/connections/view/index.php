@@ -42,6 +42,11 @@ if ($connection->can_send_contact) {
 } else {
     $permissions .= 'Cannot send contacts.<br />';
 }
+if ($connection->can_send_file) {
+    $permissions .= 'Can send files.<br />';
+} else {
+    $permissions .= 'Cannot send files.<br />';
+}
 if ($connection->can_send_note) {
     $permissions .= 'Can send notes.<br />';
 } else {
