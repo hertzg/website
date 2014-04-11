@@ -8,7 +8,9 @@ unset(
     $_SESSION['files/id_folders'],
     $_SESSION['files/messages'],
     $_SESSION['files/rename-file/errors'],
-    $_SESSION['files/rename-file/values']
+    $_SESSION['files/rename-file/values'],
+    $_SESSION['files/send-file/errors'],
+    $_SESSION['files/send-file/values']
 );
 
 include_once 'fns/create_options_panel.php';
