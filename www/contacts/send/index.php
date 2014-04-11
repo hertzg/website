@@ -21,6 +21,7 @@ include_once '../../fns/Form/hidden.php';
 include_once '../../fns/Form/textfield.php';
 include_once '../../fns/ItemList/itemHiddenInputs.php';
 include_once '../../fns/Page/sessionErrors.php';
+include_once '../../fns/Page/warnings.php';
 include_once '../../fns/Username/maxLength.php';
 $content = create_tabs(
     [
@@ -35,6 +36,7 @@ $content = create_tabs(
     ],
     'Send',
     Page\sessionErrors('contacts/send/errors')
+    .Page\warnings(['Send the contact to:'])
     .'<form action="submit.php" method="post">'
         .Form\textfield('username', 'Zvini username', [
             'value' => $values['username'],
