@@ -1,6 +1,6 @@
 <?php
 
-function create_options_panel ($id_folders, $base = '') {
+function create_options_panel ($user, $id_folders, $base = '') {
 
     include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
 
@@ -31,6 +31,16 @@ function create_options_panel ($id_folders, $base = '') {
         $href = "{$base}delete-folder/?id_folders=$id_folders";
         $options[] = Page\imageArrowLink($title, $href, 'trash-bin');
 
+    }
+
+    $num_received_files = $user->num_received_files;
+    if ($num_received_files) {
+        include_once __DIR__.'/../../fns/Page/imageArrowLinkWithDescription.php';
+        $title = 'Received Files';
+        $description = "$num_received_files total.";
+        $href = "{$base}received/";
+        $options[] = Page\imageArrowLinkWithDescription($title,
+            $description, $href, 'mail');
     }
 
     include_once __DIR__.'/../../fns/create_panel.php';

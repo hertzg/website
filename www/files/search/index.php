@@ -84,7 +84,7 @@ $content =
         'Files',
         join('<div class="hr"></div>', $items)
     )
-    .create_options_panel($id_folders, '../');
+    .create_options_panel($user, $id_folders, '../');
 
 include_once '../../fns/echo_page.php';
 echo_page($user, 'Files', $content, $base);
