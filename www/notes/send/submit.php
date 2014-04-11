@@ -42,6 +42,11 @@ if ($errors) {
     redirect("./$itemQuery");
 }
 
+unset(
+    $_SESSION['notes/send/errors'],
+    $_SESSION['notes/send/values']
+);
+
 include_once '../../fns/ReceivedNotes/add.php';
 ReceivedNotes\add($mysqli, $id_users, $user->username,
     $receiver_id_users, $note->text, $note->tags);

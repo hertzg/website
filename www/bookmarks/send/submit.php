@@ -42,6 +42,11 @@ if ($errors) {
     redirect("./$itemQuery");
 }
 
+unset(
+    $_SESSION['bookmarks/send/errors'],
+    $_SESSION['bookmarks/send/values']
+);
+
 include_once '../../fns/ReceivedBookmarks/add.php';
 ReceivedBookmarks\add($mysqli, $id_users, $user->username, $receiver_id_users,
     $bookmark->url, $bookmark->title, $bookmark->tags);

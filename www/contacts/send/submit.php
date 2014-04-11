@@ -42,6 +42,11 @@ if ($errors) {
     redirect("./$itemQuery");
 }
 
+unset(
+    $_SESSION['contacts/send/errors'],
+    $_SESSION['contacts/send/values']
+);
+
 include_once '../../fns/ReceivedContacts/add.php';
 ReceivedContacts\add($mysqli, $id_users, $user->username, $receiver_id_users,
     $contact->full_name, $contact->alias, $contact->address, $contact->email,

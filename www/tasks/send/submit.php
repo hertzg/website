@@ -42,6 +42,11 @@ if ($errors) {
     redirect("./$itemQuery");
 }
 
+unset(
+    $_SESSION['tasks/send/errors'],
+    $_SESSION['tasks/send/values']
+);
+
 include_once '../../fns/ReceivedTasks/add.php';
 ReceivedTasks\add($mysqli, $id_users, $user->username,
     $receiver_id_users, $task->text, $task->top_priority, $task->tags);
