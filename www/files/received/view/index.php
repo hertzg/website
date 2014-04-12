@@ -4,6 +4,8 @@ include_once '../fns/require_received_file.php';
 include_once '../../../lib/mysqli.php';
 list($receivedFile, $id, $user) = require_received_file($mysqli);
 
+unset($_SESSION['files/received/messages']);
+
 include_once '../../../fns/bytestr.php';
 include_once '../../../fns/create_panel.php';
 include_once '../../../fns/create_tabs.php';
