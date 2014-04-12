@@ -39,10 +39,10 @@ $content = create_tabs(
         'Options',
         Page\twoColumns(
             Page\imageLink('Download', "../download/?id=$id", 'download'),
-            Page\imageLink('Import', "submit-import.php?id=$id", 'import-file')
+            //Page\imageLink('Import', "submit-import.php?id=$id", 'import-file')
+            Page\imageLink('Delete', "../delete/?id=$id", 'trash-bin')
         )
-        .'<div class="hr"></div>'
-        .Page\imageLink('Delete', "../delete/?id=$id", 'trash-bin')
+        //.'<div class="hr"></div>'
     )
 );
 
