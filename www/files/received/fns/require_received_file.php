@@ -10,8 +10,8 @@ function require_received_file ($mysqli) {
 
     $id = abs((int)$id);
 
-    include_once __DIR__.'/../../../fns/ReceivedFiles/get.php';
-    $receivedFile = ReceivedFiles\get($mysqli, $id);
+    include_once __DIR__.'/../../../fns/ReceivedFiles/getOnReceiver.php';
+    $receivedFile = ReceivedFiles\getOnReceiver($mysqli, $user->id_users, $id);
 
     if (!$receivedFile) {
         include_once __DIR__.'/../../../fns/redirect.php';
