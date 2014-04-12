@@ -7,8 +7,6 @@ include_once '../fns/require_received_note.php';
 include_once '../../../lib/mysqli.php';
 list($receivedNote, $id, $user) = require_received_note($mysqli);
 
-include_once '../../../lib/mysqli.php';
-
 include_once '../../../fns/ReceivedNotes/delete.php';
 ReceivedNotes\delete($mysqli, $id);
 

@@ -7,8 +7,6 @@ include_once '../fns/require_received_task.php';
 include_once '../../../lib/mysqli.php';
 list($receivedTask, $id, $user) = require_received_task($mysqli);
 
-include_once '../../../lib/mysqli.php';
-
 include_once '../../../fns/ReceivedTasks/delete.php';
 ReceivedTasks\delete($mysqli, $id);
 
