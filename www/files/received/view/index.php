@@ -9,6 +9,7 @@ include_once '../../../fns/create_panel.php';
 include_once '../../../fns/create_tabs.php';
 include_once '../../../fns/date_ago.php';
 include_once '../../../fns/Form/label.php';
+include_once '../../../fns/Page/imageLink.php';
 include_once '../../../fns/Page/text.php';
 $content = create_tabs(
     [
@@ -30,6 +31,10 @@ $content = create_tabs(
         .Form\label('Size', bytestr($receivedFile->file_size))
         .'<div class="hr"></div>'
         .Page\text('File received '.date_ago($receivedFile->insert_time).'.')
+    )
+    .create_panel(
+        'Options',
+        Page\imageLink('Import', "submit-import.php?id=$id", 'import-file')
     )
 );
 
