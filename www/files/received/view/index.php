@@ -13,6 +13,7 @@ include_once '../../../fns/date_ago.php';
 include_once '../../../fns/Form/label.php';
 include_once '../../../fns/Page/imageLink.php';
 include_once '../../../fns/Page/text.php';
+include_once '../../../fns/Page/twoColumns.php';
 $content = create_tabs(
     [
         [
@@ -36,7 +37,12 @@ $content = create_tabs(
     )
     .create_panel(
         'Options',
-        Page\imageLink('Import', "submit-import.php?id=$id", 'import-file')
+        Page\twoColumns(
+            Page\imageLink('Download', "../download/?id=$id", 'download'),
+            Page\imageLink('Import', "submit-import.php?id=$id", 'import-file')
+        )
+        .'<div class="hr"></div>'
+        .Page\imageLink('Delete', "../delete/?id=$id", 'trash-bin')
     )
 );
 
