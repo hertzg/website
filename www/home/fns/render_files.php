@@ -9,10 +9,18 @@ function render_files ($user, array &$items) {
     $href = '../files/';
     $icon = 'files';
     $storage_used = $user->storage_used;
-    if ($storage_used) {
+    $num_received_files = $user->num_received_files;
+    if ($num_received_files || $storage_used) {
 
-        include_once '../fns/bytestr.php';
-        $description = bytestr($storage_used).' used.';
+        $descriptionItems = [];
+        if ($storage_used) {
+            include_once '../fns/bytestr.php';
+            $descriptionItems[] = bytestr($storage_used).' used.';
+        }
+        if ($num_received_files) {
+            $descriptionItems[] = "$num_received_files received.";
+        }
+        $description = join(' ', $descriptionItems);
 
         include_once __DIR__.'/../../fns/Page/imageArrowLinkWithDescription.php';
         $items[$key] = Page\imageArrowLinkWithDescription($title,
