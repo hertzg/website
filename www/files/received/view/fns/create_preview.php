@@ -1,8 +1,8 @@
 <?php
 
-function create_preview ($file) {
+function create_preview ($receivedFile) {
 
-    $extension = pathinfo($file->file_name, PATHINFO_EXTENSION);
+    $extension = pathinfo($receivedFile->file_name, PATHINFO_EXTENSION);
     $extension = strtolower($extension);
 
     $imageRegex = 'bmp|gif|jpe?g|png|svg';
@@ -10,11 +10,11 @@ function create_preview ($file) {
     $audioRegex = 'flac|mp3|oga|wav';
     if (preg_match("/^($audioRegex|$imageRegex|$videoRegex)$/", $extension)) {
 
-        include_once __DIR__.'/../../fns/get_extension_content_type.php';
+        include_once __DIR__.'/../../../fns/get_extension_content_type.php';
         $contentType = get_extension_content_type($extension);
 
         $contentType = rawurlencode($contentType);
-        $src = "../download-file/?id=$file->id_files&amp;contentType=$contentType";
+        $src = "../download/?id=$receivedFile->id&amp;contentType=$contentType";
 
         $html = '<div class="preview">';
         if (preg_match("/^($audioRegex)$/", $extension)) {

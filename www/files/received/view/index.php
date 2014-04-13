@@ -6,6 +6,7 @@ list($receivedFile, $id, $user) = require_received_file($mysqli);
 
 unset($_SESSION['files/received/messages']);
 
+include_once 'fns/create_preview.php';
 include_once '../../../fns/bytestr.php';
 include_once '../../../fns/create_panel.php';
 include_once '../../../fns/create_tabs.php';
@@ -32,6 +33,8 @@ $content = create_tabs(
         Form\label('File name', htmlspecialchars($receivedFile->file_name))
         .'<div class="hr"></div>'
         .Form\label('Size', bytestr($receivedFile->file_size))
+        .'<div class="hr"></div>'
+        .Form\label('Preview', create_preview($receivedFile))
         .'<div class="hr"></div>'
         .Page\text('File received '.date_ago($receivedFile->insert_time).'.')
     )
