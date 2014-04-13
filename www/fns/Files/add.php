@@ -2,10 +2,10 @@
 
 namespace Files;
 
-function add ($mysqli, $id_users, $id_folders, $file_name, $filePath) {
+function add ($mysqli, $id_users, $id_folders, $file_name, $sourcePath) {
 
     $file_name = $mysqli->real_escape_string($file_name);
-    $file_size = filesize($filePath);
+    $file_size = filesize($sourcePath);
     $insert_time = time();
 
     $sql = 'insert into files'
@@ -19,9 +19,9 @@ function add ($mysqli, $id_users, $id_folders, $file_name, $filePath) {
     $id = $mysqli->insert_id;
 
     include_once __DIR__.'/filePath.php';
-    $filePath = filePath($id_users, $id);
+    $destinationPath = filePath($id_users, $id);
 
-    rename($filePath, $filePath);
+    rename($sourcePath, $destinationPath);
 
     include_once __DIR__.'/../Users/addStorageUsed.php';
     \Users\addStorageUsed($mysqli, $id_users, $file_size);
