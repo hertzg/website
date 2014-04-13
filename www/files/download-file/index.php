@@ -19,6 +19,4 @@ header("Content-Type: $contentType");
 header("Content-Length: $file->file_size");
 
 include_once '../../fns/Files/filePath.php';
-$filePath = Files\filePath($user->id_users, $id);
-
-readfile($filePath);
+readfile(Files\filePath($user->id_users, $id));
