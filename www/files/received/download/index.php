@@ -11,6 +11,4 @@ header('Content-Type: application/x-octet-stream');
 header("Content-Length: $receivedFile->file_size");
 
 include_once '../../../fns/ReceivedFiles/filePath.php';
-$filename = ReceivedFiles\filePath($user->id_users, $id);
-
-readfile($filename);
+readfile(ReceivedFiles\filePath($user->id_users, $id));

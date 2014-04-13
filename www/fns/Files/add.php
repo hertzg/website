@@ -18,10 +18,10 @@ function add ($mysqli, $id_users, $id_folders, $file_name, $filepath) {
 
     $id = $mysqli->insert_id;
 
-    include_once __DIR__.'/filename.php';
-    $filename = filename($id_users, $id);
+    include_once __DIR__.'/filePath.php';
+    $filePath = filePath($id_users, $id);
 
-    rename($filepath, $filename);
+    rename($filepath, $filePath);
 
     include_once __DIR__.'/../Users/addStorageUsed.php';
     \Users\addStorageUsed($mysqli, $id_users, $file_size);

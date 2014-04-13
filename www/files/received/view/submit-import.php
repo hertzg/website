@@ -7,8 +7,8 @@ $id_users = $user->id_users;
 
 $id_folders = 0;
 
-include_once '../../../fns/Files/filename.php';
-$filePath = Files\filename($receivedFile->sender_id_users,
+include_once '../../../fns/Files/filePath.php';
+$filePath = Files\filePath($receivedFile->sender_id_users,
     $receivedFile->id_files);
 
 $file_name = $receivedFile->file_name;

@@ -42,8 +42,8 @@ if ($errors) {
     redirect("./?id=$id");
 }
 
-include_once '../../fns/Files/filename.php';
-$filePath = Files\filename($id_users, $id);
+include_once '../../fns/Files/filePath.php';
+$filePath = Files\filePath($id_users, $id);
 
 include_once '../../fns/ReceivedFiles/add.php';
 ReceivedFiles\add($mysqli, $id_users, $user->username,

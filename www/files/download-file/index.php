@@ -18,7 +18,7 @@ header('Content-Disposition: attachment; filename="'.addslashes($file->file_name
 header("Content-Type: $contentType");
 header("Content-Length: $file->file_size");
 
-include_once '../../fns/Files/filename.php';
-$filename = Files\filename($user->id_users, $id);
+include_once '../../fns/Files/filePath.php';
+$filePath = Files\filePath($user->id_users, $id);
 
-readfile($filename);
+readfile($filePath);
