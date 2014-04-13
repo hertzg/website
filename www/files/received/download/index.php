@@ -10,7 +10,7 @@ header('Content-Disposition: attachment; filename="'.addslashes($receivedFile->f
 header('Content-Type: application/x-octet-stream');
 header("Content-Length: $receivedFile->file_size");
 
-include_once '../../../fns/Files/filename.php';
-$filename = Files\filename($receivedFile->sender_id_users, $receivedFile->id_files);
+include_once '../../../fns/ReceivedFiles/filePath.php';
+$filename = ReceivedFiles\filePath($user->id_users, $id);
 
 readfile($filename);
