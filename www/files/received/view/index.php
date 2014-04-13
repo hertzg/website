@@ -45,7 +45,10 @@ $content = create_tabs(
             Page\imageLink('Import', "submit-import.php?id=$id", 'import-file')
         )
         .'<div class="hr"></div>'
-        .Page\imageLink('Delete', "../delete/?id=$id", 'trash-bin')
+        .Page\twoColumns(
+            Page\imageLink('Rename and Import', "../rename-and-import/?id=$id", 'import-file'),
+            Page\imageLink('Delete', "../delete/?id=$id", 'trash-bin')
+        )
     )
 );
 
