@@ -7,9 +7,8 @@ $id_users = $user->id_users;
 
 $id_folders = 0;
 
-include_once '../../../fns/Files/filePath.php';
-$filePath = Files\filePath($receivedFile->sender_id_users,
-    $receivedFile->id_files);
+include_once '../../../fns/ReceivedFiles/filePath.php';
+$receivedFilePath = ReceivedFiles\filePath($id_users, $id);
 
 $file_name = $receivedFile->file_name;
 
@@ -31,10 +30,10 @@ while (Files\getByName($mysqli, $id_users, $id_folders, $file_name)) {
 }
 
 include_once '../../../fns/Files/add.php';
-Files\add($mysqli, $id_users, $id_folders, $file_name, $filePath);
+Files\add($mysqli, $id_users, $id_folders, $file_name, $receivedFilePath);
 
 include_once '../../../fns/ReceivedFiles/delete.php';
-ReceivedFiles\delete($mysqli, $id);
+ReceivedFiles\delete($mysqli, $id_users, $id);
 
 include_once '../../../fns/Users/addNumReceivedFiles.php';
 Users\addNumReceivedFiles($mysqli, $id_users, -1);

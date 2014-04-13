@@ -19,4 +19,5 @@ function delete ($mysqli, $id_users, $id) {
         \Users\addStorageUsed($mysqli, $id_users, -$file_size);
 
     }
+
 }
