@@ -13,7 +13,7 @@ function deleteOnUser ($mysqli, $id_users) {
         include_once __DIR__.'/filePath.php';
         foreach ($files as $file) {
             $filePath = filePath($id_users, $file->id_files);
-            unlink($filePath);
+            if (is_file($filePath)) unlink($filePath);
         }
     }
 

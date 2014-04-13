@@ -15,12 +15,16 @@ $mysqli->query('create table received_files (
     file_size bigint unsigned not null,
     insert_time bigint unsigned not null)') || trigger_error($mysqli->error);
 
+$mkdir = function ($dirname) {
+    if (!is_dir($dirname)) mkdir($dirname);
+};
+
 include_once '../fns/mysqli_query_object.php';
 $users = mysqli_query_object($mysqli, 'select * from users');
 foreach ($users as $user) {
-    mkdir("../users/$user->id_users");
-    mkdir("../users/$user->id_users/files");
-    mkdir("../users/$user->id_users/received-files");
+    $mkdir("../users/$user->id_users");
+    $mkdir("../users/$user->id_users/files");
+    $mkdir("../users/$user->id_users/received-files");
 }
 
 echo 'Done';
