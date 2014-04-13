@@ -7,8 +7,7 @@ function create_options_panel () {
     $accountLink = Page\imageArrowLink('Account', '../account/', 'account');
 
     $title = 'Customize Home';
-    $href = '../customize-home/';
-    $customizeHomeLink = Page\imageArrowLink($title, $href, 'edit-home');
+    $customizeHomeLink = Page\imageArrowLink($title, 'customize/', 'edit-home');
 
     $helpLink = Page\imageArrowLink('Help', '../help/', 'help');
 
