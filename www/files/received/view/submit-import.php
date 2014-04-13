@@ -8,17 +8,36 @@ $id_users = $user->id_users;
 $id_folders = 0;
 
 include_once '../../../fns/Files/filename.php';
-$filename = Files\filename($receivedFile->sender_id_users,
+$filePath = Files\filename($receivedFile->sender_id_users,
     $receivedFile->id_files);
 
+$file_name = $receivedFile->file_name;
+
+include_once '../../../fns/Files/getByName.php';
+while (Files\getByName($mysqli, $id_users, $id_folders, $file_name)) {
+    $extension = '';
+    if (preg_match('/\..*?$/', $file_name, $match)) {
+        $file_name = preg_replace('/\..*?$/', '', $file_name);
+        $extension = $match[0];
+    }
+    if (preg_match('/_(\d+)$/', $file_name, $match)) {
+        $file_name = preg_replace('/_\d+$/', '_'.($match[1] + 1), $file_name);
+    } else {
+        $file_name .= '_1';
+    }
+    if ($extension) {
+        $file_name = "$file_name$extension";
+    }
+}
+
 include_once '../../../fns/Files/add.php';
-Files\add($mysqli, $id_users, $id_folders, $receivedFile->file_name, $filename);
+Files\add($mysqli, $id_users, $id_folders, $file_name, $filePath);
 
-//include_once '../../../fns/ReceivedFiles/delete.php';
-//ReceivedFiles\delete($mysqli, $id);
+include_once '../../../fns/ReceivedFiles/delete.php';
+ReceivedFiles\delete($mysqli, $id);
 
-//include_once '../../../fns/Users/addNumReceivedFiles.php';
-//Users\addNumReceivedFiles($mysqli, $id_users, -1);
+include_once '../../../fns/Users/addNumReceivedFiles.php';
+Users\addNumReceivedFiles($mysqli, $id_users, -1);
 
 $messages = ['File has been imported.'];
 include_once '../../../fns/redirect.php';
