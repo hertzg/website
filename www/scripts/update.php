@@ -13,6 +13,14 @@ $mysqli->query('create table received_files (
     receiver_id_users bigint unsigned not null,
     file_name varchar(255) character set utf8 collate utf8_unicode_ci not null,
     file_size bigint unsigned not null,
-    id_files bigint unsigned not null,
     insert_time bigint unsigned not null)') || trigger_error($mysqli->error);
+
+include_once '../fns/mysqli_query_object.php';
+$users = mysqli_query_object($mysqli, 'select * from users');
+foreach ($users as $user) {
+    mkdir("../users/$user->id_users");
+    mkdir("../users/$user->id_users/files");
+    mkdir("../users/$user->id_users/received-files");
+}
+
 echo 'Done';
