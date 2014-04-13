@@ -21,6 +21,7 @@ include_once '../../fns/create_tabs.php';
 include_once '../../fns/date_ago.php';
 include_once '../../fns/Form/label.php';
 include_once '../../fns/Page/sessionMessages.php';
+include_once '../../fns/Page/text.php';
 $content =
     create_tabs(
         [
@@ -39,9 +40,9 @@ $content =
         .'<div class="hr"></div>'
         .Form\label('Size', bytestr($file->file_size))
         .'<div class="hr"></div>'
-        .Form\label('Uploaded', date_ago($file->insert_time))
-        .'<div class="hr"></div>'
         .Form\label('Preview', create_preview($file))
+        .'<div class="hr"></div>'
+        .Page\text('File uploaded '.date_ago($file->insert_time))
     )
     .create_options_panel($file);
 
