@@ -42,9 +42,6 @@ BookmarkTags\deleteOnUser($mysqli, $id_users);
 include_once '../../fns/Channels/deleteOnUser.php';
 Channels\deleteOnUser($mysqli, $id_users);
 
-include_once '../../fns/SubscribedChannels/deleteContainingUser.php';
-SubscribedChannels\deleteContainingUser($mysqli, $id_users);
-
 include_once '../../fns/Contacts/deleteOnUser.php';
 Contacts\deleteOnUser($mysqli, $id_users);
 
@@ -74,6 +71,24 @@ NoteTags\deleteOnUser($mysqli, $id_users);
 
 include_once '../../fns/Notifications/deleteOnUser.php';
 Notifications\deleteOnUser($mysqli, $id_users);
+
+include_once '../../fns/ReceivedBookmarks/deleteContainingUser.php';
+ReceivedBookmarks\deleteContainingUser($mysqli, $id_users);
+
+include_once '../../fns/ReceivedContacts/deleteContainingUser.php';
+ReceivedContacts\deleteContainingUser($mysqli, $id_users);
+
+include_once '../../fns/ReceivedFiles/deleteContainingUser.php';
+ReceivedFiles\deleteContainingUser($mysqli, $id_users);
+
+include_once '../../fns/ReceivedNotes/deleteContainingUser.php';
+ReceivedNotes\deleteContainingUser($mysqli, $id_users);
+
+include_once '../../fns/ReceivedTasks/deleteContainingUser.php';
+ReceivedTasks\deleteContainingUser($mysqli, $id_users);
+
+include_once '../../fns/SubscribedChannels/deleteContainingUser.php';
+SubscribedChannels\deleteContainingUser($mysqli, $id_users);
 
 include_once '../../fns/Tasks/deleteOnUser.php';
 Tasks\deleteOnUser($mysqli, $id_users);

@@ -12,6 +12,7 @@ $mkdir = function ($dirname) {
     chmod($dirname, 0770);
 };
 
+$mkdir('../users');
 foreach ($users as $user) {
     $userDir = "../users/$user->id_users";
     $mkdir($userDir);
