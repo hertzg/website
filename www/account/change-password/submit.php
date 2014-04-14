@@ -8,18 +8,18 @@ $user = require_user('../../');
 $id_users = $user->id_users;
 
 include_once '../../fns/request_strings.php';
-list($currentpassword, $password1, $password2) = request_strings(
-    'currentpassword', 'password1', 'password2');
+list($currentPassword, $password1, $password2) = request_strings(
+    'currentPassword', 'password1', 'password2');
 
 $errors = [];
 
-if ($currentpassword === '') {
+if ($currentPassword === '') {
     $errors[] = 'Enter current password.';
 } else {
     include_once '../../fns/Password/match.php';
     $hash = $user->password_hash;
     $salt = $user->password_salt;
-    if (!Password\match($hash, $salt, $currentpassword)) {
+    if (!Password\match($hash, $salt, $currentPassword)) {
         $errors[] = 'Invalid current password.';
     }
 }
@@ -45,7 +45,7 @@ include_once '../../fns/redirect.php';
 if ($errors) {
     $_SESSION['account/change-password/errors'] = $errors;
     $_SESSION['account/change-password/values'] = [
-        'currentpassword' => $currentpassword,
+        'currentPassword' => $currentPassword,
         'password1' => $password1,
         'password2' => $password2,
     ];

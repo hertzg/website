@@ -10,7 +10,7 @@ if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];
 } else {
     $values = [
-        'currentpassword' => '',
+        'currentPassword' => '',
         'password1' => '',
         'password2' => '',
     ];
@@ -37,8 +37,8 @@ $content = create_tabs(
     'Change Password',
     Page\sessionErrors('account/change-password/errors')
     .'<form action="submit.php" method="post">'
-        .Form\password('currentpassword', 'Current password', [
-            'value' => $values['currentpassword'],
+        .Form\password('currentPassword', 'Current password', [
+            'value' => $values['currentPassword'],
             'autofocus' => true,
             'required' => true,
         ])
