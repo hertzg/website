@@ -21,9 +21,6 @@ $id_bookmarks = Bookmarks\add($mysqli, $id_users, $url, $title, $tags);
 include_once '../../../fns/BookmarkTags/add.php';
 BookmarkTags\add($mysqli, $id_users, $id_bookmarks, $tag_names, $url, $title);
 
-include_once '../../../fns/Users/addNumBookmarks.php';
-Users\addNumBookmarks($mysqli, $id_users, 1);
-
 include_once '../../../fns/ReceivedBookmarks/delete.php';
 ReceivedBookmarks\delete($mysqli, $id);
 
