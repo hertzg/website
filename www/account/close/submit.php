@@ -72,20 +72,20 @@ NoteTags\deleteOnUser($mysqli, $id_users);
 include_once '../../fns/Notifications/deleteOnUser.php';
 Notifications\deleteOnUser($mysqli, $id_users);
 
-include_once '../../fns/ReceivedBookmarks/deleteContainingUser.php';
-ReceivedBookmarks\deleteContainingUser($mysqli, $id_users);
+include_once '../../fns/ReceivedBookmarks/deleteOnReceiver.php';
+ReceivedBookmarks\deleteOnReceiver($mysqli, $id_users);
 
-include_once '../../fns/ReceivedContacts/deleteContainingUser.php';
-ReceivedContacts\deleteContainingUser($mysqli, $id_users);
+include_once '../../fns/ReceivedContacts/deleteOnReceiver.php';
+ReceivedContacts\deleteOnReceiver($mysqli, $id_users);
 
-include_once '../../fns/ReceivedFiles/deleteContainingUser.php';
-ReceivedFiles\deleteContainingUser($mysqli, $id_users);
+include_once '../../fns/ReceivedFiles/deleteOnReceiver.php';
+ReceivedFiles\deleteOnReceiver($mysqli, $id_users);
 
-include_once '../../fns/ReceivedNotes/deleteContainingUser.php';
-ReceivedNotes\deleteContainingUser($mysqli, $id_users);
+include_once '../../fns/ReceivedNotes/deleteOnReceiver.php';
+ReceivedNotes\deleteOnReceiver($mysqli, $id_users);
 
-include_once '../../fns/ReceivedTasks/deleteContainingUser.php';
-ReceivedTasks\deleteContainingUser($mysqli, $id_users);
+include_once '../../fns/ReceivedTasks/deleteOnReceiver.php';
+ReceivedTasks\deleteOnReceiver($mysqli, $id_users);
 
 include_once '../../fns/SubscribedChannels/deleteContainingUser.php';
 SubscribedChannels\deleteContainingUser($mysqli, $id_users);
