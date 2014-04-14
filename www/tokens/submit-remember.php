@@ -26,9 +26,6 @@ if (!$token) {
     $id = Tokens\add($mysqli, $id_users, $user->username,
         $token_text, $user_agent);
 
-    include_once '../fns/Users/addNumTokens.php';
-    Users\addNumTokens($mysqli, $id_users, 1);
-
     include_once '../fns/Tokens/get.php';
     $token = Tokens\get($mysqli, $id);
 
