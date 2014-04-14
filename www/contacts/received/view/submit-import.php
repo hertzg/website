@@ -54,9 +54,6 @@ include_once '../../../fns/ContactTags/add.php';
 ContactTags\add($mysqli, $id_users, $id_contacts,
     $tag_names, $full_name, $alias, $favorite);
 
-include_once '../../../fns/Users/addNumContacts.php';
-Users\addNumContacts($mysqli, $id_users, 1);
-
 include_once '../../../fns/ReceivedContacts/delete.php';
 ReceivedContacts\delete($mysqli, $id);
 
