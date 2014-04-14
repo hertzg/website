@@ -53,4 +53,6 @@ $content = create_tabs(
 );
 
 include_once '../../../fns/echo_page.php';
-echo_page($user, "Received File #$id", $content, '../../../');
+echo_page($user, "Received File #$id", $content, '../../../', [
+    'head' => '<link rel="stylesheet" type="text/css" href="index.css?1" />',
+]);
