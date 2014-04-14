@@ -84,4 +84,4 @@ $content =
     .$optionsPanel;
 
 include_once '../fns/echo_page.php';
-echo_page($user, 'Remembered Sessions', $content, '../');
+echo_page($user, 'Remembered Sessions', $content, $base);

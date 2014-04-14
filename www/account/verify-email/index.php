@@ -19,7 +19,7 @@ $content = create_tabs(
         ],
         [
             'title' => 'Account',
-            'href' => '../',
+            'href' => '..',
         ],
     ],
     'Verify Email',
