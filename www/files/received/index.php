@@ -6,6 +6,8 @@ include_once '../../fns/require_user.php';
 $user = require_user($base);
 
 if (!$user->num_received_files) {
+    $_SESSION['files/messages'] = ['No more received files.'];
+    unset($_SESSION['files/errors']);
     include_once '../../fns/redirect.php';
     redirect('..');
 }

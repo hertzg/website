@@ -6,6 +6,8 @@ include_once '../../fns/require_user.php';
 $user = require_user($base);
 
 if (!$user->num_received_notes) {
+    $_SESSION['notes/messages'] = ['No more received notes.'];
+    unset($_SESSION['notes/errors']);
     include_once '../../fns/redirect.php';
     redirect('..');
 }

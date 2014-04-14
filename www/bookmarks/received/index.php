@@ -6,6 +6,8 @@ include_once '../../fns/require_user.php';
 $user = require_user($base);
 
 if (!$user->num_received_bookmarks) {
+    $_SESSION['bookmarks/messages'] = ['No more received bookmarks.'];
+    unset($_SESSION['bookmarks/errors']);
     include_once '../../fns/redirect.php';
     redirect('..');
 }

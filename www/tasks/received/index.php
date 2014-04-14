@@ -6,6 +6,8 @@ include_once '../../fns/require_user.php';
 $user = require_user($base);
 
 if (!$user->num_received_tasks) {
+    $_SESSION['tasks/messages'] = ['No more received tasks.'];
+    unset($_SESSION['tasks/errors']);
     include_once '../../fns/redirect.php';
     redirect('..');
 }

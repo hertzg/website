@@ -6,6 +6,8 @@ include_once '../../fns/require_user.php';
 $user = require_user($base);
 
 if (!$user->num_received_contacts) {
+    $_SESSION['contacts/messages'] = ['No more received contacts.'];
+    unset($_SESSION['contacts/errors']);
     include_once '../../fns/redirect.php';
     redirect('..');
 }
