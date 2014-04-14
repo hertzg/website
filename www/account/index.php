@@ -9,31 +9,33 @@ include_once 'fns/unset_session_vars.php';
 unset_session_vars();
 
 include_once '../fns/Form/label.php';
-include_once '../fns/Page/imageArrowLink.php';
-include_once '../fns/Page/imageArrowLinkWithDescription.php';
+$items = [Form\label('Username', $user->username)];
+
+$value =
+    "<span>$user->email</span>"
+    .'<span class="emailStatus">'
+        .' ('.($user->email_verified ? 'Verified' : 'Not verified').')'
+    .'</span>';
+$items[] = Form\label('Email', $value);
 
 $full_name = $user->full_name;
-if ($full_name !== '') {
-    $full_name_field =
-        Form\label('Full name', $full_name)
-        .'<div class="hr"></div>';
-} else {
-    $full_name_field = '';
-}
+if ($full_name !== '') $items[] = Form\label('Full name', $full_name);
 
 include_once '../fns/get_themes.php';
 $themes = get_themes();
+$items[] = Form\label('Theme', $themes[$user->theme]);
 
-$emailVerifiedText = $user->email_verified ? 'Verified' : 'Not verified';
-$emailValue =
-    "<span>$user->email</span>"
-    ."<span class=\"emailStatus\"> ($emailVerifiedText)</span>";
+include_once '../fns/date_ago.php';
+$items[] = Form\label('Account created', date_ago($user->insert_time));
+
+include_once '../fns/bytestr.php';
+$items[] = Form\label('Using storage', bytestr($user->storage_used));
+
+include_once '../fns/n_times.php';
+$items[] = Form\label('Signed in', n_times($user->num_logins));
 
 include_once 'fns/create_options_panel.php';
-include_once '../fns/bytestr.php';
 include_once '../fns/create_tabs.php';
-include_once '../fns/date_ago.php';
-include_once '../fns/n_times.php';
 include_once '../fns/Page/sessionMessages.php';
 $content =
     create_tabs(
@@ -45,18 +47,7 @@ $content =
         ],
         'Account',
         Page\sessionMessages('account/messages')
-        .Form\label('Username', $user->username)
-        .'<div class="hr"></div>'
-        .Form\label('Email', $emailValue)
-        .'<div class="hr"></div>'
-        .$full_name_field
-        .Form\label('Theme', $themes[$user->theme])
-        .'<div class="hr"></div>'
-        .Form\label('Account created', date_ago($user->insert_time))
-        .'<div class="hr"></div>'
-        .Form\label('Using storage', bytestr($user->storage_used))
-        .'<div class="hr"></div>'
-        .Form\label('Signed in', n_times($user->num_logins))
+        .join('<div class="hr"></div>', $items)
     )
     .create_options_panel($user);
 
