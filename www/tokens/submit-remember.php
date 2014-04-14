@@ -30,7 +30,8 @@ if (!$token) {
     $token = Tokens\get($mysqli, $id);
 
     if ($token) {
-        setcookie('token', bin2hex($token_text), time() + 60 * 60 * 24 * 30, '/');
+        $expires = time() + 60 * 60 * 24 * 30;
+        setcookie('token', bin2hex($token_text), $expires, '/');
         $_SESSION['token'] = $token;
     }
 
