@@ -46,8 +46,5 @@ $id = Notes\add($mysqli, $id_users, $text, $tags);
 include_once '../../fns/NoteTags/add.php';
 NoteTags\add($mysqli, $id_users, $id, $tag_names, $text);
 
-include_once '../../fns/Users/addNumNotes.php';
-Users\addNumNotes($mysqli, $id_users, 1);
-
 $_SESSION['notes/view/messages'] = ['Note has been saved.'];
 redirect("../view/?id=$id");
