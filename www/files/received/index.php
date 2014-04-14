@@ -20,6 +20,10 @@ foreach ($receivedFiles as $receivedFile) {
     $items[] = Page\imageArrowLink($title, $href, 'file');
 }
 
+$title = 'Delete All Files';
+$deleteAllLink = Page\imageArrowLink($title, 'delete-all/', 'trash-bin');
+
+include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/sessionMessages.php';
 $content = create_tabs(
@@ -36,6 +40,7 @@ $content = create_tabs(
     'Received',
     Page\sessionMessages('files/received/messages')
     .join('<div class="hr"></div>', $items)
+    .create_panel('Options', $deleteAllLink)
 );
 
 include_once '../../fns/echo_page.php';
