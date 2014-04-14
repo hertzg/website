@@ -7,7 +7,8 @@ $user = require_user($base);
 
 unset(
     $_SESSION['help/feedback/errors'],
-    $_SESSION['help/feedback/values']
+    $_SESSION['help/feedback/values'],
+    $_SESSION['home/messages']
 );
 
 include_once '../fns/create_tabs.php';
