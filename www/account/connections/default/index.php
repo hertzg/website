@@ -44,6 +44,8 @@ if ($user->anonymous_can_send_task) {
     $permissions .= 'Cannot send tasks.';
 }
 
+$editLink = Page\imageArrowLink('Edit', 'edit/', 'edit-connection');
+
 include_once '../../../fns/create_panel.php';
 include_once '../../../fns/create_tabs.php';
 include_once '../../../fns/Form/label.php';
@@ -62,10 +64,7 @@ $content = create_tabs(
     "Default Connection",
     Page\sessionMessages('account/connections/default/messages')
     .Form\label('Other users', $permissions)
-    .create_panel(
-        'Options',
-        Page\imageArrowLink('Edit Connection', 'edit/', 'edit-connection')
-    )
+    .create_panel('Connection Options', $editLink)
 );
 
 include_once '../../../fns/echo_page.php';

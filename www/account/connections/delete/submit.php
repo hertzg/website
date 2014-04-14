@@ -13,6 +13,7 @@ Connections\delete($mysqli, $id);
 $_SESSION['account/connections/messages'] = [
     'Connection has been deleted.',
 ];
+unset($_SESSION['account/connections/errors']);
 
 include_once '../../../fns/redirect.php';
 redirect('..');

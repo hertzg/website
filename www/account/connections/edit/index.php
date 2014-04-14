@@ -7,11 +7,8 @@ list($connection, $id, $user) = require_connection($mysqli);
 $base = '../../../';
 
 $key = 'account/connections/edit/values';
-if (array_key_exists($key, $_SESSION)) {
-    $values = $_SESSION[$key];
-} else {
-    $values = (array)$connection;
-}
+if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
+else $values = (array)$connection;
 
 include_once '../../../fns/Form/textfield.php';
 $items = [

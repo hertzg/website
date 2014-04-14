@@ -6,12 +6,15 @@ include_once '../../fns/require_user.php';
 $user = require_user($base);
 
 include_once '../../fns/Page/imageArrowLink.php';
-include_once '../../fns/Page/imageArrowLinkWithDescription.php';
 $options = [
     Page\imageArrowLink('New Connection', 'new/', 'create-connection'),
-    Page\imageArrowLinkWithDescription('Default Connection',
-        'Connection to other users', 'default/', 'connection'),
 ];
+
+include_once '../../fns/Page/imageArrowLinkWithDescription.php';
+$title = 'Default Connection';
+$description = 'Connection to other users.';
+$options[] = Page\imageArrowLinkWithDescription($title,
+    $description, 'default/', 'connection');
 
 include_once '../../fns/Connections/indexOnUser.php';
 include_once '../../lib/mysqli.php';
@@ -22,7 +25,8 @@ $items = [];
 if ($connections) {
     foreach ($connections as $connection) {
         $title = htmlspecialchars($connection->username);
-        $items[] = Page\imageArrowLink($title, "view/?id=$connection->id", 'connection');
+        $href = "view/?id=$connection->id";
+        $items[] = Page\imageArrowLink($title, $href, 'connection');
     }
 } else {
     include_once '../../fns/Page/info.php';
