@@ -11,20 +11,17 @@ $homeItems = get_home_items();
 include_once '../fns/get_user_home_items.php';
 $userHomeItems = get_user_home_items($homeItems, $user);
 
-include_once '../../../fns/Page/imageLink.php';
+include_once '../../../fns/Form/checkboxItem.php';
 $items = [];
 foreach ($userHomeItems as $key => $item) {
     list($title, $propertyPart) = $item;
     $userProperty = "show_$propertyPart";
-    if ($user->$userProperty) {
-        $href = "submit-hide-$key.php";
-        $icon = 'checked-checkbox';
-    } else {
-        $href = "submit-show-$key.php";
-        $icon = 'checkbox';
-    }
-    $items[] = Page\imageLink($title, $href, $icon);
+    $checked = $user->$userProperty;
+    $items[] = Form\checkboxItem($base, $propertyPart, $title, $checked);
 }
+
+include_once '../../../fns/Form/button.php';
+$items[] = Form\button('Save Changes');
 
 unset(
     $_SESSION['home/customize/messages'],
@@ -53,7 +50,9 @@ $content = create_tabs(
     .Page\warnings([
         'Select items to see them on your home page.',
     ])
-    .join('<div class="hr"></div>', $items)
+    .'<form action="submit.php" method="post">'
+        .join('<div class="hr"></div>', $items)
+    .'</form>'
     .create_panel(
         'Options',
         Page\imageLinkWithDescription('Reorder Items',
