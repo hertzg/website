@@ -25,8 +25,9 @@ function create_options_panel ($user) {
     include_once __DIR__.'/create_tokens_link.php';
     $options[] = create_tokens_link($user);
 
+    $title = 'Manage Connections';
     $href = 'connections/';
-    $options[] = Page\imageArrowLink('Manage Connections', $href, 'connections');
+    $options[] = Page\imageArrowLink($title, $href, 'connections');
 
     $title = 'Close Account';
     $href = 'close/';

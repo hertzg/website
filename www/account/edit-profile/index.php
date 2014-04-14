@@ -6,11 +6,8 @@ include_once '../../fns/require_user.php';
 $user = require_user($base);
 
 $key = 'account/edit-profile/values';
-if (array_key_exists($key, $_SESSION)) {
-    $values = (object)$_SESSION[$key];
-} else {
-    $values = $user;
-}
+if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
+else $values = (array)$user;
 
 unset($_SESSION['account/messages']);
 
@@ -36,14 +33,14 @@ $content = create_tabs(
     Page\sessionErrors('account/edit-profile/errors')
     .'<form action="submit.php" method="post">'
         .Form\textfield('email', 'Email', [
-            'value' => $values->email,
+            'value' => $values['email'],
             'maxlength' => $maxLengths['email'],
             'autofocus' => true,
             'required' => true,
         ])
         .'<div class="hr"></div>'
         .Form\textfield('full_name', 'Full name', [
-            'value' => $values->full_name,
+            'value' => $values['full_name'],
             'maxlength' => $maxLengths['full_name'],
         ])
         .'<div class="hr"></div>'

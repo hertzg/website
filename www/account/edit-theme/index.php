@@ -14,9 +14,7 @@ include_once '../../fns/Page/imageLink.php';
 $themeItems = [];
 foreach ($themes as $id => $theme) {
     $href = "submit.php?theme=$id";
-    if ($id == $user->theme) {
-        $theme .= ' (Current)';
-    }
+    if ($id == $user->theme) $theme .= ' (Current)';
     $themeItems[] = Page\imageLink($theme, $href, "$id-theme");
 }
 
