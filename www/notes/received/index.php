@@ -1,16 +1,7 @@
 <?php
 
-$base = '../../';
-
-include_once '../../fns/require_user.php';
-$user = require_user($base);
-
-if (!$user->num_received_notes) {
-    $_SESSION['notes/messages'] = ['No more received notes.'];
-    unset($_SESSION['notes/errors']);
-    include_once '../../fns/redirect.php';
-    redirect('..');
-}
+include_once 'fns/require_received_notes.php';
+$user = require_received_notes();
 
 unset(
     $_SESSION['notes/errors'],
@@ -50,4 +41,4 @@ $content = create_tabs(
 );
 
 include_once '../../fns/echo_page.php';
-echo_page($user, 'Received Notes', $content, $base);
+echo_page($user, 'Received Notes', $content, '../../');

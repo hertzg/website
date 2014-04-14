@@ -1,16 +1,7 @@
 <?php
 
-$base = '../../';
-
-include_once '../../fns/require_user.php';
-$user = require_user($base);
-
-if (!$user->num_received_bookmarks) {
-    $_SESSION['bookmarks/messages'] = ['No more received bookmarks.'];
-    unset($_SESSION['bookmarks/errors']);
-    include_once '../../fns/redirect.php';
-    redirect('..');
-}
+include_once 'fns/require_received_bookmarks.php';
+$user = require_received_bookmarks();
 
 unset(
     $_SESSION['bookmarks/errors'],
@@ -57,4 +48,4 @@ $content = create_tabs(
 );
 
 include_once '../../fns/echo_page.php';
-echo_page($user, 'Received Bookmarks', $content, $base);
+echo_page($user, 'Received Bookmarks', $content, '../../');

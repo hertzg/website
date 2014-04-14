@@ -1,16 +1,7 @@
 <?php
 
-$base = '../../';
-
-include_once '../../fns/require_user.php';
-$user = require_user($base);
-
-if (!$user->num_received_contacts) {
-    $_SESSION['contacts/messages'] = ['No more received contacts.'];
-    unset($_SESSION['contacts/errors']);
-    include_once '../../fns/redirect.php';
-    redirect('..');
-}
+include_once 'fns/require_received_contacts.php';
+$user = require_received_contacts();
 
 unset(
     $_SESSION['contacts/errors'],
@@ -62,4 +53,4 @@ $content = create_tabs(
 );
 
 include_once '../../fns/echo_page.php';
-echo_page($user, 'Received Contacts', $content, $base);
+echo_page($user, 'Received Contacts', $content, '../../');

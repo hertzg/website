@@ -1,16 +1,7 @@
 <?php
 
-$base = '../../';
-
-include_once '../../fns/require_user.php';
-$user = require_user($base);
-
-if (!$user->num_received_files) {
-    $_SESSION['files/messages'] = ['No more received files.'];
-    unset($_SESSION['files/errors']);
-    include_once '../../fns/redirect.php';
-    redirect('..');
-}
+include_once 'fns/require_received_files.php';
+$user = require_received_files();
 
 unset(
     $_SESSION['files/id_folders'],
@@ -48,4 +39,4 @@ $content = create_tabs(
 );
 
 include_once '../../fns/echo_page.php';
-echo_page($user, 'Received Files', $content, $base);
+echo_page($user, 'Received Files', $content, '../../');

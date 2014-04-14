@@ -1,16 +1,7 @@
 <?php
 
-$base = '../../';
-
-include_once '../../fns/require_user.php';
-$user = require_user($base);
-
-if (!$user->num_received_tasks) {
-    $_SESSION['tasks/messages'] = ['No more received tasks.'];
-    unset($_SESSION['tasks/errors']);
-    include_once '../../fns/redirect.php';
-    redirect('..');
-}
+include_once 'fns/require_received_tasks.php';
+$user = require_received_tasks();
 
 unset(
     $_SESSION['tasks/errors'],
@@ -40,7 +31,8 @@ foreach ($receivedTasks as $receivedTask) {
         $items[] = Page\imageArrowLink($title, $href, $icon);
     } else {
         $description = 'Tags: '.htmlspecialchars($tags);
-        $items[] = Page\imageArrowLinkWithDescription($title, $description, $href, $icon);
+        $items[] = Page\imageArrowLinkWithDescription($title,
+            $description, $href, $icon);
     }
 
 }
@@ -64,4 +56,4 @@ $content = create_tabs(
 );
 
 include_once '../../fns/echo_page.php';
-echo_page($user, 'Received Tasks', $content, $base);
+echo_page($user, 'Received Tasks', $content, '../../');
