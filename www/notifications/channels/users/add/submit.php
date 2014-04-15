@@ -58,7 +58,7 @@ $_SESSION['notifications/channels/users/view/messages'] = [
 
 include_once '../../../../fns/SubscribedChannels/add.php';
 $id = SubscribedChannels\add($mysqli, $id, $channel->channel_name, $id_users,
-    $user->username, $subscriber_id_users , $subscriber_username);
+    $user->username, $subscriber_id_users, $subscriber_username, false);
 
 include_once '../../../../fns/Users/addNumSubscribedChannels.php';
 Users\addNumSubscribedChannels($mysqli, $subscriber_id_users, 1);

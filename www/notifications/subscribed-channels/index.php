@@ -35,6 +35,7 @@ if ($subscribedChannels) {
     $items[] = Page\info('No channels');
 }
 
+include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
 $content = create_tabs(
     [
@@ -49,6 +50,7 @@ $content = create_tabs(
     ],
     'Other Channels',
     join('<div class="hr"></div>', $items)
+    .create_panel('Options', Page\imageArrowLink('Subscribe to a Public Channel', 'subscribe/', 'TODO'))
 );
 
 include_once '../../fns/echo_page.php';
