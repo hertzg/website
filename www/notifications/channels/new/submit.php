@@ -37,7 +37,7 @@ if ($channel_name === '') {
         } else {
             include_once '../../../fns/Channels/getByName.php';
             include_once '../../../lib/mysqli.php';
-            if (Channels\getByName($mysqli, $id_users, $channel_name)) {
+            if (Channels\getByName($mysqli, $channel_name)) {
                 $errors[] = 'A channel with this name already exists.';
             }
         }
