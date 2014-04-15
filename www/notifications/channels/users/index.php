@@ -20,7 +20,7 @@ $subscribedChannels = SubscribedChannels\indexOnChannel($mysqli, $id);
 
 if ($subscribedChannels) {
     foreach ($subscribedChannels as $subscribedChannel) {
-        $title = htmlspecialchars($subscribedChannel->subscribed_username);
+        $title = htmlspecialchars($subscribedChannel->subscriber_username);
         $href = "view/?id=$subscribedChannel->id";
         $items[] = Page\imageArrowLink($title, $href, 'user');
     }

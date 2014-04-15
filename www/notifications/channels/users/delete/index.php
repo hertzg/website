@@ -24,7 +24,7 @@ $content = create_tabs(
     "User #$id",
     Page\text(
         'Are you sure you want to remove the user "<b>'
-        .htmlspecialchars($subscribed_channel->subscribed_username)
+        .htmlspecialchars($subscribed_channel->subscriber_username)
         .'</b>" from the channel "<b>'
         .htmlspecialchars($subscribed_channel->channel_name)
         .'</b>"?'

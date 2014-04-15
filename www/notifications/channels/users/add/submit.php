@@ -9,15 +9,15 @@ list($channel, $id, $user) = require_channel($mysqli);
 $id_users = $user->id_users;
 
 include_once '../../../../fns/request_strings.php';
-list($subscribed_username) = request_strings('subscribed_username');
+list($subscriber_username) = request_strings('subscriber_username');
 
 $errors = [];
 
-if ($subscribed_username === '') {
+if ($subscriber_username === '') {
     $errors[] = 'Enter username.';
 } else {
     include_once '../../../../fns/Users/getByUsername.php';
-    $userToSubscribe = Users\getByUsername($mysqli, $subscribed_username);
+    $userToSubscribe = Users\getByUsername($mysqli, $subscriber_username);
     if (!$userToSubscribe) {
         $errors[] = "A user with the username doesn't exist.";
     } else {
@@ -47,7 +47,7 @@ include_once '../../../../fns/redirect.php';
 if ($errors) {
     $_SESSION['notifications/channels/users/add/errors'] = $errors;
     $_SESSION['notifications/channels/users/add/values'] = [
-        'subscribed_username' => $subscribed_username,
+        'subscriber_username' => $subscriber_username,
     ];
     redirect("./?id=$id");
 }
@@ -58,7 +58,7 @@ $_SESSION['notifications/channels/users/view/messages'] = [
 
 include_once '../../../../fns/SubscribedChannels/add.php';
 $id = SubscribedChannels\add($mysqli, $id, $channel->channel_name, $id_users,
-    $user->username, $subscriber_id_users , $subscribed_username);
+    $user->username, $subscriber_id_users , $subscriber_username);
 
 include_once '../../../../fns/Users/addNumSubscribedChannels.php';
 Users\addNumSubscribedChannels($mysqli, $subscriber_id_users, 1);
