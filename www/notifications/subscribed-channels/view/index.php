@@ -24,7 +24,7 @@ $content =
         Page\sessionMessages('notifications/subscribed-channels/view/messages')
         .Form\label('Channel name', htmlspecialchars($subscribed_channel->channel_name))
         .'<div class="hr"></div>'
-        .Form\label('Channel owner', htmlspecialchars($subscribed_channel->username))
+        .Form\label('Channel owner', htmlspecialchars($subscribed_channel->publisher_username))
     )
     .create_options_panel($subscribed_channel);
 
