@@ -23,7 +23,7 @@ $homeItems = get_home_items($mysqli, $user);
 
 $items = array_merge($items, $homeItems);
 
-$pairs = array_chunk($items, 2);
+$items = array_chunk($items, 2);
 include_once '../fns/Page/twoColumns.php';
 foreach ($items as &$item) {
     if (count($item) == 2) {
