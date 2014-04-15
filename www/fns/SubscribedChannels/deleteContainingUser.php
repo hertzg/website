@@ -20,4 +20,5 @@ function deleteContainingUser ($mysqli, $id_users) {
                 $subscribedChannel->subscriber_id_users, -1);
         }
     }
+
 }
