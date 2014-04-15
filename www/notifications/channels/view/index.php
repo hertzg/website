@@ -15,6 +15,7 @@ include_once '../../../fns/create_tabs.php';
 include_once '../../../fns/Form/label.php';
 include_once '../../../fns/Form/textfield.php';
 include_once '../../../fns/Page/sessionMessages.php';
+include_once '../../../fns/Page/text.php';
 $content =
     create_tabs(
         [
@@ -35,6 +36,8 @@ $content =
             'readonly' => true,
             'value' => bin2hex($channel->channel_key),
         ])
+        .'<div class="hr"></div>'
+        .Page\text(($channel->public ? 'Public' : 'Private').' channel.')
     )
     .create_options_panel($channel);
 

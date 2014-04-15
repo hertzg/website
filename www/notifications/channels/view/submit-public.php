@@ -11,7 +11,7 @@ include_once '../../../fns/Channels/setPublic.php';
 Channels\setPublic($mysqli, $id, true);
 
 $_SESSION['notifications/channels/view/messages'] = [
-    'You will receive notifications from this channel.',
+    'The channel is now public.',
 ];
 
 include_once '../../../fns/redirect.php';

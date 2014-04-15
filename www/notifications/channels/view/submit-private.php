@@ -8,10 +8,10 @@ include_once '../../../lib/mysqli.php';
 list($channel, $id, $user) = require_channel($mysqli);
 
 include_once '../../../fns/Channels/setPublic.php';
-Channels\setPublic($mysqli, $id, true);
+Channels\setPublic($mysqli, $id, false);
 
 $_SESSION['notifications/channels/view/messages'] = [
-    'You will receive notifications from this channel.',
+    'The channel is now private.',
 ];
 
 include_once '../../../fns/redirect.php';

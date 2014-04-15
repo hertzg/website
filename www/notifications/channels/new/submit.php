@@ -8,7 +8,9 @@ $user = require_user('../../../');
 $id_users = $user->id_users;
 
 include_once '../../../fns/request_strings.php';
-list($channel_name) = request_strings('channel_name');
+list($channel_name, $public) = request_strings('channel_name', 'public');
+
+$public = (bool)$public;
 
 $errors = [];
 
@@ -50,6 +52,7 @@ if ($errors) {
     $_SESSION['notifications/channels/add/errors'] = $errors;
     $_SESSION['notifications/channels/add/values'] = [
         'channel_name' => $channel_name,
+        'public' => $public,
     ];
     redirect();
 }
@@ -60,7 +63,7 @@ unset(
 );
 
 include_once '../../../fns/Channels/add.php';
-$id = Channels\add($mysqli, $id_users, $channel_name);
+$id = Channels\add($mysqli, $id_users, $channel_name, $public);
 
 include_once '../../../fns/Users/addNumChannels.php';
 Users\addNumChannels($mysqli, $id_users, 1);

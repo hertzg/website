@@ -9,7 +9,10 @@ $key = 'notifications/channels/add/values';
 if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];
 } else {
-    $values = ['channel_name' => ''];
+    $values = [
+        'channel_name' => '',
+        'public' => '',
+    ];
 }
 
 unset(
@@ -25,6 +28,7 @@ $minLength = ChannelName\minLength();
 
 include_once '../../../fns/create_tabs.php';
 include_once '../../../fns/Form/button.php';
+include_once '../../../fns/Form/checkbox.php';
 include_once '../../../fns/Form/notes.php';
 include_once '../../../fns/Form/textfield.php';
 include_once '../../../fns/Page/sessionErrors.php';
@@ -52,6 +56,8 @@ $content = create_tabs(
             'Characters a-z, A-Z, 0-9, dash, dot and underscore only.',
             "Minimum $minLength maximum $maxLength characters.",
         ])
+        .'<div class="hr"></div>'
+        .Form\checkbox($base, 'public', 'Mark as Public', $values['public'])
         .'<div class="hr"></div>'
         .Form\button('Create')
     .'</form>'
