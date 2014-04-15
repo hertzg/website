@@ -8,17 +8,11 @@ function deleteContainingUser ($mysqli, $id_users) {
         ." where subscriber_id_users = $id_users";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
-    $sql = "select * from subscribed_channels where id_users = $id_users";
+    $sql = "select * from subscribed_channels where publisher_id_users = $id_users";
     include_once __DIR__.'/../mysqli_query_object.php';
     $subscribedChannels = mysqli_query_object($mysqli, $sql);
-    if ($subscribedChannels) {
-        include_once __DIR__.'/delete.php';
-        include_once __DIR__.'/../Users/addNumSubscribedChannels.php';
-        foreach ($subscribedChannels as $subscribedChannel) {
-            delete($mysqli, $subscribedChannel->id);
-            \Users\addNumSubscribedChannels($mysqli,
-                $subscribedChannel->subscriber_id_users, -1);
-        }
-    }
+
+    include_once __DIR__.'/deleteArray.php';
+    deleteArray($mysqli, $subscribedChannels);
 
 }

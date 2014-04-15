@@ -3,7 +3,11 @@
 namespace SubscribedChannels;
 
 function deleteOnChannel ($mysqli, $id_channels) {
-    $sql = 'delete from subscribed_channels'
-        ." where id_channels = $id_channels";
-    $mysqli->query($sql) || trigger_error($mysqli->error);
+
+    include_once __DIR__.'/indexOnChannel.php';
+    $subscribedChannels = indexOnChannel($mysqli, $id_channels);
+
+    include_once __DIR__.'/deleteArray.php';
+    deleteArray($mysqli, $subscribedChannels);
+
 }
