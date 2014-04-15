@@ -17,9 +17,11 @@ function add ($mysqli, $id_users, $text, $top_priority, $tags) {
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
+    $id_tasks = $mysqli->insert_id;
+
     include_once __DIR__.'/../Users/addNumTasks.php';
     \Users\addNumTasks($mysqli, $id_users, 1);
 
-    return $mysqli->insert_id;
+    return $id_tasks;
 
 }
