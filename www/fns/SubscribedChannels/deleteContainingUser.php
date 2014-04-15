@@ -5,7 +5,7 @@ namespace SubscribedChannels;
 function deleteContainingUser ($mysqli, $id_users) {
 
     $sql = 'delete from subscribed_channels'
-        ." where subscribed_id_users = $id_users";
+        ." where subscriber_id_users = $id_users";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
     $sql = "select * from subscribed_channels where id_users = $id_users";
@@ -17,7 +17,7 @@ function deleteContainingUser ($mysqli, $id_users) {
         foreach ($subscribedChannels as $subscribedChannel) {
             delete($mysqli, $subscribedChannel->id);
             \Users\addNumSubscribedChannels($mysqli,
-                $subscribedChannel->subscribed_id_users, -1);
+                $subscribedChannel->subscriber_id_users, -1);
         }
     }
 }

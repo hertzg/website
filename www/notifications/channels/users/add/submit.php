@@ -21,14 +21,14 @@ if ($subscribed_username === '') {
     if (!$userToSubscribe) {
         $errors[] = "A user with the username doesn't exist.";
     } else {
-        $subscribed_id_users = $userToSubscribe->id_users;
-        if ($subscribed_id_users == $id_users) {
+        $subscriber_id_users = $userToSubscribe->id_users;
+        if ($subscriber_id_users == $id_users) {
             $errors[] = "You don't have to add yourself in the list.";
             $errors[] = 'You will always receive notifications on your channels.';
         } else {
             include_once '../../../../fns/SubscribedChannels/getExistingUser.php';
             $subscribedChannel = SubscribedChannels\getExistingUser(
-                $mysqli, $id, $subscribed_id_users);
+                $mysqli, $id, $subscriber_id_users);
             if ($subscribedChannel) {
                 $errors[] = 'The user is already added.';
             } else {
@@ -58,9 +58,9 @@ $_SESSION['notifications/channels/users/view/messages'] = [
 
 include_once '../../../../fns/SubscribedChannels/add.php';
 $id = SubscribedChannels\add($mysqli, $id, $channel->channel_name, $id_users,
-    $user->username, $subscribed_id_users , $subscribed_username);
+    $user->username, $subscriber_id_users , $subscribed_username);
 
 include_once '../../../../fns/Users/addNumSubscribedChannels.php';
-Users\addNumSubscribedChannels($mysqli, $subscribed_id_users, 1);
+Users\addNumSubscribedChannels($mysqli, $subscriber_id_users, 1);
 
 redirect("../view/?id=$id");

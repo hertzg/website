@@ -11,7 +11,7 @@ include_once '../../../../fns/SubscribedChannels/delete.php';
 SubscribedChannels\delete($mysqli, $id);
 
 include_once '../../../../fns/Users/addNumSubscribedChannels.php';
-Users\addNumSubscribedChannels($mysqli, $subscribed_channel->subscribed_id_users, -1);
+Users\addNumSubscribedChannels($mysqli, $subscribed_channel->subscriber_id_users, -1);
 
 $_SESSION['notifications/channels/users/messages'] = ['The user has been removed.'];
 
