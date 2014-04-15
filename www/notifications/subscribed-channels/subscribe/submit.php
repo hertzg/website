@@ -20,6 +20,13 @@ if (!$channel) {
     $errors[] = "A channel with this name doesn't exist.";
 } elseif (!$channel->public) {
     $errors[] = 'The channel is not public.';
+} else {
+    include_once '../../../fns/SubscribedChannels/getExistingUser.php';
+    $existingChannel = SubscribedChannels\getExistingUser($mysqli,
+        $channel->id, $id_users);
+    if ($existingChannel) {
+        $errors[] = 'You are already subscribed to this channel.';
+    }
 }
 
 include_once '../../../fns/redirect.php';
