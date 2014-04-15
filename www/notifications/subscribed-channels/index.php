@@ -9,9 +9,9 @@ unset($_SESSION['notifications/subscribed-channels/view/messages']);
 
 $items = [];
 
-include_once '../../fns/SubscribedChannels/indexOnSubscribedUser.php';
+include_once '../../fns/SubscribedChannels/indexOnSubscriber.php';
 include_once '../../lib/mysqli.php';
-$subscribedChannels = SubscribedChannels\indexOnSubscribedUser(
+$subscribedChannels = SubscribedChannels\indexOnSubscriber(
     $mysqli, $user->id_users);
 
 include_once '../../fns/Page/imageArrowLink.php';

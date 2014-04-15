@@ -11,8 +11,8 @@ function require_subscribed_channel ($mysqli, $base) {
 
     $id = abs((int)$id);
 
-    include_once __DIR__.'/../../../fns/SubscribedChannels/getOnSubscribedUser.php';
-    $subscribedChannel = SubscribedChannels\getOnSubscribedUser(
+    include_once __DIR__.'/../../../fns/SubscribedChannels/getOnSubscriber.php';
+    $subscribedChannel = SubscribedChannels\getOnSubscriber(
         $mysqli, $id_users, $id);
 
     if (!$subscribedChannel) {
