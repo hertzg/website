@@ -1,9 +1,9 @@
 <?php
 
-function require_channel ($mysqli, $channelsBase = '..') {
+function require_channel ($mysqli, $base = '') {
 
     include_once __DIR__.'/../../../fns/require_user.php';
-    $user = require_user("$channelsBase/../");
+    $user = require_user("$base../../../");
 
     include_once __DIR__.'/../../../fns/request_strings.php';
     list($id) = request_strings('id');
@@ -19,7 +19,7 @@ function require_channel ($mysqli, $channelsBase = '..') {
             'The channel no longer exists.',
         ];
         include_once __DIR__.'/../../../fns/redirect.php';
-        redirect($channelsBase);
+        redirect("$base..");
     }
 
     return [$channel, $id, $user];
