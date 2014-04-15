@@ -1,9 +1,23 @@
 #!/bin/bash
 
+function render () {
+    for i in *.svg
+    do
+        name=`basename $i .svg`
+        inkscape --export-plain-svg=../$name.svg $name.svg
+    done
+}
+
 cd `dirname $BASH_SOURCE`
+
 cd ../images/inkscape
-for i in *.svg
+render
+
+cd ../../themes
+for i in *
 do
-    name=`basename $i .svg`
-    inkscape --export-plain-svg=../$name.svg $name.svg
+    cd $i
+    cd images/inkscape
+    render
+    cd ../../..
 done

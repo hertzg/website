@@ -36,7 +36,7 @@ echo
                 .'<div></div>'
             .'</div>'
             .'<div class="centerWrapper">'
-                .'<img src="images/zvini-large.png" />'
+                .'<img src="images/zvini-large.svg" />'
                 .'<div class="siteInfo">'
                     .'<h1>Save Your Data in Zvini</h1>'
                     .'<div class="description">'

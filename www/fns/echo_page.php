@@ -25,7 +25,7 @@ function echo_page ($user, $title, $content, $base, array $options = []) {
     $body =
         '<div id="tbar">'
             .'<a class="topLink logoLink" href="'.($base === '' ? './' : $base).'">'
-                ."<img src=\"{$base}themes/$theme/images/zvini.png?2\""
+                ."<img src=\"{$base}themes/$theme/images/zvini.svg?2\""
                 .' alt="Zvini" width="68" height="32" class="logoImg" />'
             .'</a>'
             .$signOutLink
