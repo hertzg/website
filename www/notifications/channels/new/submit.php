@@ -63,7 +63,7 @@ unset(
 );
 
 include_once '../../../fns/Channels/add.php';
-$id = Channels\add($mysqli, $id_users, $channel_name, $public);
+$id = Channels\add($mysqli, $id_users, $user->username, $channel_name, $public);
 
 include_once '../../../fns/Users/addNumChannels.php';
 Users\addNumChannels($mysqli, $id_users, 1);
