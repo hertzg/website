@@ -39,7 +39,7 @@ unset(
 
 include_once '../../../fns/SubscribedChannels/add.php';
 $id = SubscribedChannels\add($mysqli, $channel->id, $channel->channel_name,
-    $channel->id_users, 'TODO', $id_users, $user->username, false);
+    $channel->id_users, $channel->username, $id_users, $user->username, false);
 
 include_once '../../../fns/Users/addNumSubscribedChannels.php';
 Users\addNumSubscribedChannels($mysqli, $id_users, 1);
