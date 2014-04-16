@@ -14,7 +14,8 @@ $contentType = str_collapse_spaces($contentType);
 
 if ($contentType === '') $contentType = 'application/x-octet-stream';
 
-header('Content-Disposition: attachment; filename="'.addslashes($receivedFile->file_name).'"');
+$filename = addslashes($receivedFile->file_name);
+header("Content-Disposition: attachment; filename=\"$filename\"");
 header("Content-Type: $contentType");
 header("Content-Length: $receivedFile->file_size");
 

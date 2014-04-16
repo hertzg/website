@@ -6,13 +6,25 @@ list($receivedFile, $id, $user) = require_received_file($mysqli);
 
 unset($_SESSION['files/received/messages']);
 
+include_once '../../../fns/Page/imageLink.php';
+
+$downloadLink = Page\imageLink('Download', "../download/?id=$id", 'download');
+
+$href = "submit-import.php?id=$id";
+$importLink = Page\imageLink('Import', $href, 'import-file');
+
+$title = 'Rename and Import';
+$href = "../rename-and-import/?id=$id";
+$renameAndImportLink = Page\imageLink($title, $href, 'import-file');
+
+$deleteLink = Page\imageLink('Delete', "../delete/?id=$id", 'trash-bin');
+
 include_once 'fns/create_preview.php';
 include_once '../../../fns/bytestr.php';
 include_once '../../../fns/create_panel.php';
 include_once '../../../fns/create_tabs.php';
 include_once '../../../fns/date_ago.php';
 include_once '../../../fns/Form/label.php';
-include_once '../../../fns/Page/imageLink.php';
 include_once '../../../fns/Page/text.php';
 include_once '../../../fns/Page/twoColumns.php';
 $content = create_tabs(
@@ -40,15 +52,9 @@ $content = create_tabs(
     )
     .create_panel(
         'Options',
-        Page\twoColumns(
-            Page\imageLink('Download', "../download/?id=$id", 'download'),
-            Page\imageLink('Import', "submit-import.php?id=$id", 'import-file')
-        )
+        Page\twoColumns($downloadLink, $importLink)
         .'<div class="hr"></div>'
-        .Page\twoColumns(
-            Page\imageLink('Rename and Import', "../rename-and-import/?id=$id", 'import-file'),
-            Page\imageLink('Delete', "../delete/?id=$id", 'trash-bin')
-        )
+        .Page\twoColumns($renameAndImportLink, $deleteLink)
     )
 );
 
