@@ -4,6 +4,8 @@ include_once '../fns/require_subscribed_channel.php';
 include_once '../../../lib/mysqli.php';
 list($subscribed_channel, $id, $user) = require_subscribed_channel($mysqli);
 
+unset($_SESSION['notifications/subscribed-channels/messages']);
+
 include_once 'fns/create_options_panel.php';
 include_once '../../../fns/create_tabs.php';
 include_once '../../../fns/Form/label.php';

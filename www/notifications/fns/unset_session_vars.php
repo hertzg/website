@@ -6,6 +6,7 @@ function unset_session_vars () {
         $_SESSION['notifications/channels/errors'],
         $_SESSION['notifications/channels/messages'],
         $_SESSION['notifications/in-channel/messages'],
-        $_SESSION['notifications/in-subscribed-channel/messages']
+        $_SESSION['notifications/in-subscribed-channel/messages'],
+        $_SESSION['notifications/subscribed-channels/messages']
     );
 }

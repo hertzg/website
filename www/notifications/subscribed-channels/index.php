@@ -37,6 +37,7 @@ if ($subscribedChannels) {
 
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
+include_once '../../fns/Page/sessionMessages.php';
 $content = create_tabs(
     [
         [
@@ -49,7 +50,8 @@ $content = create_tabs(
         ],
     ],
     'Other Channels',
-    join('<div class="hr"></div>', $items)
+    Page\sessionMessages('notifications/subscribed-channels/messages')
+    .join('<div class="hr"></div>', $items)
     .create_panel('Options', Page\imageArrowLink('Subscribe to a Public Channel', 'subscribe/', 'TODO'))
 );
 
