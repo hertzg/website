@@ -1,10 +1,10 @@
 <?php
 
-include_once '../fns/require_subscribed_channel.php';
+include_once 'fns/require_nonpublic_subscribed_channel.php';
 include_once '../../../../lib/mysqli.php';
-list($subscribed_channel, $id, $user) = require_subscribed_channel($mysqli);
+list($subscribedChannel, $id, $user) = require_nonpublic_subscribed_channel($mysqli);
 
-$id_channels = $subscribed_channel->id_channels;
+$id_channels = $subscribedChannel->id_channels;
 
 include_once '../../../../fns/create_tabs.php';
 include_once '../../../../fns/Page/imageLink.php';
@@ -24,9 +24,9 @@ $content = create_tabs(
     "User #$id",
     Page\text(
         'Are you sure you want to remove the user "<b>'
-        .htmlspecialchars($subscribed_channel->subscriber_username)
+        .htmlspecialchars($subscribedChannel->subscriber_username)
         .'</b>" from the channel "<b>'
-        .htmlspecialchars($subscribed_channel->channel_name)
+        .htmlspecialchars($subscribedChannel->channel_name)
         .'</b>"?'
     )
     .'<div class="hr"></div>'
