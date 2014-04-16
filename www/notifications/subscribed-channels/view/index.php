@@ -17,6 +17,14 @@ if (!$subscribedChannel->public_subscriber) {
     $items[] = Form\label('Channel owner', $value);
 }
 
+include_once '../../../fns/Page/text.php';
+$items[] = Page\text(
+    '<div>'
+        .'You are '.($subscribedChannel->receive_notifications ? '' : 'not ')
+        .' receiving notifications from this channel.'
+    .'</div>'
+);
+
 include_once 'fns/create_options_panel.php';
 include_once '../../../fns/create_tabs.php';
 include_once '../../../fns/Page/sessionMessages.php';

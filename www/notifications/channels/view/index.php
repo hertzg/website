@@ -37,7 +37,13 @@ $content =
             'value' => bin2hex($channel->channel_key),
         ])
         .'<div class="hr"></div>'
-        .Page\text(($channel->public ? 'Public' : 'Private').' channel.')
+        .Page\text(
+            '<div>'.($channel->public ? 'Public' : 'Private').' channel.</div>'
+            .'<div>'
+                .'You are '.($channel->receive_notifications ? '' : 'not ')
+                .' receiving notifications from this channel.'
+            .'</div>'
+        )
     )
     .create_options_panel($channel);
 
