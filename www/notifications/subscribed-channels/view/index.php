@@ -2,13 +2,23 @@
 
 include_once '../fns/require_subscribed_channel.php';
 include_once '../../../lib/mysqli.php';
-list($subscribed_channel, $id, $user) = require_subscribed_channel($mysqli);
+list($subscribedChannel, $id, $user) = require_subscribed_channel($mysqli);
 
 unset($_SESSION['notifications/subscribed-channels/messages']);
 
+$items = [];
+
+include_once '../../../fns/Form/label.php';
+$value = htmlspecialchars($subscribedChannel->channel_name);
+$items[] = Form\label('Channel name', $value);
+
+if (!$subscribedChannel->public_subscriber) {
+    $value = htmlspecialchars($subscribedChannel->publisher_username);
+    $items[] = Form\label('Channel owner', $value);
+}
+
 include_once 'fns/create_options_panel.php';
 include_once '../../../fns/create_tabs.php';
-include_once '../../../fns/Form/label.php';
 include_once '../../../fns/Page/sessionMessages.php';
 $content =
     create_tabs(
@@ -24,11 +34,9 @@ $content =
         ],
         "Other Channel #$id",
         Page\sessionMessages('notifications/subscribed-channels/view/messages')
-        .Form\label('Channel name', htmlspecialchars($subscribed_channel->channel_name))
-        .'<div class="hr"></div>'
-        .Form\label('Channel owner', htmlspecialchars($subscribed_channel->publisher_username))
+        .join('<div class="hr"></div>', $items)
     )
-    .create_options_panel($subscribed_channel);
+    .create_options_panel($subscribedChannel);
 
 include_once '../../../fns/echo_page.php';
 echo_page($user, "Other Channel #$id", $content, '../../../');
