@@ -12,14 +12,22 @@ include_once '../../../fns/Form/label.php';
 $value = htmlspecialchars($subscribedChannel->channel_name);
 $items[] = Form\label('Channel name', $value);
 
-if (!$subscribedChannel->public_subscriber) {
+$public_subscriber = $subscribedChannel->public_subscriber;
+if (!$public_subscriber) {
     $value = htmlspecialchars($subscribedChannel->publisher_username);
     $items[] = Form\label('Channel owner', $value);
 }
 
+if ($public_subscriber) {
+    $publicText = 'You have subscribed to this channel yourself.';
+} else {
+    $publicText = 'The owner has added you to the channel.';
+}
+
 include_once '../../../fns/Page/text.php';
 $items[] = Page\text(
-    '<div>'
+    "<div>$publicText</div>"
+    .'<div>'
         .'You are '.($subscribedChannel->receive_notifications ? '' : 'not ')
         .' receiving notifications from this channel.'
     .'</div>'
