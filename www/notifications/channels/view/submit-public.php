@@ -10,6 +10,9 @@ list($channel, $id, $user) = require_channel($mysqli);
 include_once '../../../fns/Channels/setPublic.php';
 Channels\setPublic($mysqli, $id, true);
 
+include_once '../../../fns/SubscribedChannels/setChannelPublic.php';
+SubscribedChannels\setChannelPublic($mysqli, $id, true);
+
 $_SESSION['notifications/channels/view/messages'] = [
     'The channel is now public.',
 ];
