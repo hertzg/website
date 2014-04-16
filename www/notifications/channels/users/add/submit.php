@@ -24,7 +24,6 @@ if ($subscriber_username === '') {
         $subscriber_id_users = $userToSubscribe->id_users;
         if ($subscriber_id_users == $id_users) {
             $errors[] = "You don't have to add yourself in the list.";
-            $errors[] = 'You will always receive notifications on your channels.';
         } else {
             include_once '../../../../fns/SubscribedChannels/getExistingUser.php';
             $subscribedChannel = SubscribedChannels\getExistingUser(
