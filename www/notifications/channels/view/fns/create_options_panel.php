@@ -29,11 +29,11 @@ function create_options_panel ($channel) {
     if ($channel->public) {
         $title = 'Mark as Private';
         $href = "submit-private.php?id=$id";
-        $icon = 'TODO';
+        $icon = 'lock';
     } else {
         $title = 'Mark as Public';
         $href = "submit-public.php?id=$id";
-        $icon = 'TODO';
+        $icon = 'unlock';
     }
     $publicLink = Page\imageLink($title, $href, $icon);
 
