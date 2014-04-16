@@ -25,8 +25,8 @@ if ($subscriber_username === '') {
         if ($subscriber_id_users == $id_users) {
             $errors[] = "You don't have to add yourself in the list.";
         } else {
-            include_once '../../../../fns/SubscribedChannels/getExistingUser.php';
-            $subscribedChannel = SubscribedChannels\getExistingUser(
+            include_once '../../../../fns/SubscribedChannels/getExistingSubscriber.php';
+            $subscribedChannel = SubscribedChannels\getExistingSubscriber(
                 $mysqli, $id, $subscriber_id_users);
             if ($subscribedChannel) {
                 $errors[] = 'The user is already added.';
