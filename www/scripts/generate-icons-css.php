@@ -6,7 +6,7 @@ include_once 'lib/require-cli.php';
 $names = ['blue-theme', 'green-theme', 'orange-theme', 'pink-theme',
     'edit-blue-theme', 'edit-green-theme', 'edit-orange-theme',
     'edit-pink-theme', 'bookmark', 'bookmarks', 'create-bookmark',
-    'edit-bookmark', 'channel', 'inactive-channel', 'create-channel',
+    'edit-bookmark', 'channel', 'locked-channel', 'inactive-channel', 'locked-inactive-channel', 'create-channel',
     'channels', 'subscribed-channel', 'inactive-subscribed-channel',
     'create-subscribed-channel', 'subscribed-channels', 'account',
     'edit-profile', 'contact', 'contacts', 'create-contact', 'edit-contact',
@@ -25,7 +25,7 @@ $names = ['blue-theme', 'green-theme', 'orange-theme', 'pink-theme',
     'move-to-top', 'move-down', 'move-to-bottom', 'reorder', 'show-hide',
     'restore-defaults', 'connection', 'create-connection', 'edit-connection',
     'connections', 'forbid-notifications', 'receive-notifications', 'user',
-    'add-user', 'remove-user', 'users'];
+    'add-user', 'remove-user', 'locked-user', 'users'];
 
 $content = "/* auto-generated */\n";
 $x = 0;
