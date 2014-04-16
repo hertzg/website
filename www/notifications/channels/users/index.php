@@ -20,9 +20,14 @@ $subscribedChannels = SubscribedChannels\indexOnChannel($mysqli, $id);
 
 if ($subscribedChannels) {
     foreach ($subscribedChannels as $subscribedChannel) {
+
+        if ($subscribedChannel->public_subscriber) $icon = 'user';
+        else $icon = 'locked-user';
+
         $title = htmlspecialchars($subscribedChannel->subscriber_username);
         $href = "view/?id=$subscribedChannel->id";
-        $items[] = Page\imageArrowLink($title, $href, 'user');
+        $items[] = Page\imageArrowLink($title, $href, $icon);
+
     }
 } else {
     include_once '../../../fns/Page/info.php';
