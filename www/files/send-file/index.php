@@ -7,11 +7,8 @@ list($file, $id, $user) = require_file($mysqli);
 unset($_SESSION['files/view-file/messages']);
 
 $key = 'files/send-file/values';
-if (array_key_exists($key, $_SESSION)) {
-    $values = $_SESSION[$key];
-} else {
-    $values = ['username' => ''];
-}
+if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
+else $values = ['username' => ''];
 
 include_once '../../fns/create_folder_link.php';
 include_once '../../fns/create_tabs.php';
@@ -36,6 +33,7 @@ $content = create_tabs(
     .Page\warnings(["Send the file to:"])
     .'<form action="submit.php" method="post">'
         .Form\textfield('username', 'Zvini username', [
+            'value' => $values['username'],
             'required' => true,
             'autofocus' => true,
         ])
