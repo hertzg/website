@@ -16,10 +16,13 @@ include_once '../../fns/Page/imageArrowLink.php';
 if ($channels) {
     foreach ($channels as $channel) {
 
+        $public = $channel->public;
         if ($channel->receive_notifications) {
-            $icon = 'channel';
+            if ($public) $icon = 'channel';
+            else $icon = 'locked-channel';
         } else {
-            $icon = 'inactive-channel';
+            if ($public) $icon = 'inactive-channel';
+            else $icon = 'locked-inactive-channel';
         }
 
         $title = htmlspecialchars($channel->channel_name);
