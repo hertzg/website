@@ -106,7 +106,6 @@
 .icon.user { background-position: -3328px 0; }
 .icon.add-user { background-position: -3360px 0; }
 .icon.remove-user { background-position: -3392px 0; }
-.icon.locked-user { background-position: -3424px 0; }
-.icon.users { background-position: -3456px 0; }
-.icon.lock { background-position: -3488px 0; }
-.icon.unlock { background-position: -3520px 0; }
+.icon.users { background-position: -3424px 0; }
+.icon.lock { background-position: -3456px 0; }
+.icon.unlock { background-position: -3488px 0; }

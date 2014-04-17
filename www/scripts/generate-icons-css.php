@@ -26,7 +26,7 @@ $names = ['blue-theme', 'green-theme', 'orange-theme', 'pink-theme',
     'move-to-top', 'move-down', 'move-to-bottom', 'reorder', 'show-hide',
     'restore-defaults', 'connection', 'create-connection', 'edit-connection',
     'connections', 'forbid-notifications', 'receive-notifications', 'user',
-    'add-user', 'remove-user', 'locked-user', 'users', 'lock', 'unlock'];
+    'add-user', 'remove-user', 'users', 'lock', 'unlock'];
 
 $content = "/* auto-generated */\n";
 $x = 0;
