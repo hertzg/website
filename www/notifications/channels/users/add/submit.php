@@ -28,7 +28,7 @@ if ($subscriber_username === '') {
             include_once '../../../../fns/SubscribedChannels/getExistingSubscriber.php';
             $subscribedChannel = SubscribedChannels\getExistingSubscriber(
                 $mysqli, $id, $subscriber_id_users);
-            if ($subscribedChannel) {
+            if ($subscribedChannel && $subscribedChannel->publisher_locked) {
                 $errors[] = 'The user is already added.';
             } else {
                 include_once '../../../../fns/get_users_connection.php';
@@ -51,16 +51,28 @@ if ($errors) {
     redirect("./?id=$id");
 }
 
+if ($subscribedChannel) {
+
+    $id = $subscribedChannel->id;
+
+    include_once '../../../../fns/SubscribedChannels/setPublisherLocked.php';
+    SubscribedChannels\setPublisherLocked($mysqli, $id, true);
+
+} else {
+
+    include_once '../../../../fns/SubscribedChannels/add.php';
+    $id = SubscribedChannels\add($mysqli, $id, $channel->channel_name,
+        $id_users, $user->username, true, $subscriber_id_users,
+        $subscriber_username, false, false);
+
+    include_once '../../../../fns/Users/addNumSubscribedChannels.php';
+    Users\addNumSubscribedChannels($mysqli, $subscriber_id_users, 1);
+
+}
+
+
 $_SESSION['notifications/channels/users/view/messages'] = [
     'The user has been added.',
 ];
-
-include_once '../../../../fns/SubscribedChannels/add.php';
-$id = SubscribedChannels\add($mysqli, $id, $channel->channel_name,
-    $id_users, $user->username, true, $subscriber_id_users,
-    $subscriber_username, false, false);
-
-include_once '../../../../fns/Users/addNumSubscribedChannels.php';
-Users\addNumSubscribedChannels($mysqli, $subscriber_id_users, 1);
 
 redirect("../view/?id=$id");

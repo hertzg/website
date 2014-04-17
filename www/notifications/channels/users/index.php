@@ -15,19 +15,14 @@ $items = [];
 
 include_once '../../../fns/Page/imageArrowLink.php';
 
-include_once '../../../fns/SubscribedChannels/indexOnChannel.php';
-$subscribedChannels = SubscribedChannels\indexOnChannel($mysqli, $id);
+include_once '../../../fns/SubscribedChannels/indexPublisherLockedOnChannel.php';
+$subscribedChannels = SubscribedChannels\indexPublisherLockedOnChannel($mysqli, $id);
 
 if ($subscribedChannels) {
     foreach ($subscribedChannels as $subscribedChannel) {
-
-        if ($subscribedChannel->subscriber_locked) $icon = 'user';
-        else $icon = 'locked-user';
-
         $title = htmlspecialchars($subscribedChannel->subscriber_username);
         $href = "view/?id=$subscribedChannel->id";
-        $items[] = Page\imageArrowLink($title, $href, $icon);
-
+        $items[] = Page\imageArrowLink($title, $href, 'user');
     }
 } else {
     include_once '../../../fns/Page/info.php';

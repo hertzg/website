@@ -13,7 +13,7 @@ function require_subscribed_channel ($mysqli) {
     include_once __DIR__.'/../../../../fns/SubscribedChannels/getOnPublisher.php';
     $subscribedChannel = SubscribedChannels\getOnPublisher($mysqli, $user->id_users, $id);
 
-    if (!$subscribedChannel) {
+    if (!$subscribedChannel || !$subscribedChannel->publisher_locked) {
         include_once __DIR__.'/../../../../fns/redirect.php';
         redirect('..');
     }

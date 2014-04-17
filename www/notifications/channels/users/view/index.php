@@ -9,20 +9,12 @@ unset($_SESSION['notifications/channels/users/messages']);
 $id_channels = $subscribed_channel->id_channels;
 $subscriber_locked = $subscribed_channel->subscriber_locked;
 
-if ($subscriber_locked) {
-    $optionsPanel = '';
-} else {
+include_once '../../../../fns/Page/imageArrowLink.php';
+$title = 'Remove User';
+$href = "../delete/?id=$id";
+$deleteLink = Page\imageArrowLink($title, $href, 'remove-user');
 
-    include_once '../../../../fns/Page/imageArrowLink.php';
-    $title = 'Remove User';
-    $href = "../delete/?id=$id";
-    $deleteLink = Page\imageArrowLink($title, $href, 'remove-user');
-
-    include_once '../../../../fns/create_panel.php';
-    $optionsPanel = create_panel('Options', $deleteLink);
-
-}
-
+include_once '../../../../fns/create_panel.php';
 include_once '../../../../fns/create_tabs.php';
 include_once '../../../../fns/Form/label.php';
 include_once '../../../../fns/Page/sessionMessages.php';
@@ -41,9 +33,7 @@ $content = create_tabs(
     "User #$id",
     Page\sessionMessages('notifications/channels/users/view/messages')
     .Form\label('Username', htmlspecialchars($subscribed_channel->subscriber_username))
-    .'<div class="hr"></div>'
-    .Page\text(($subscriber_locked ? 'Public' : 'Private').' subscriber.')
-    .$optionsPanel
+    .create_panel('Options', $deleteLink)
 );
 
 include_once '../../../../fns/echo_page.php';

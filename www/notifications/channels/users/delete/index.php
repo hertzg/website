@@ -1,8 +1,8 @@
 <?php
 
-include_once 'fns/require_nonpublic_subscribed_channel.php';
+include_once '../fns/require_subscribed_channel.php';
 include_once '../../../../lib/mysqli.php';
-list($subscribedChannel, $id, $user) = require_nonpublic_subscribed_channel($mysqli);
+list($subscribedChannel, $id, $user) = require_subscribed_channel($mysqli);
 
 $id_channels = $subscribedChannel->id_channels;
 
