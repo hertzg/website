@@ -12,8 +12,8 @@ include_once '../../../fns/Form/label.php';
 $value = htmlspecialchars($subscribedChannel->channel_name);
 $items[] = Form\label('Channel name', $value);
 
-$subscriber_locked = $subscribedChannel->subscriber_locked;
-if (!$subscriber_locked) {
+$publisher_locked = $subscribedChannel->publisher_locked;
+if ($publisher_locked) {
     $value = htmlspecialchars($subscribedChannel->publisher_username);
     $items[] = Form\label('Channel owner', $value);
 }
@@ -21,6 +21,9 @@ if (!$subscriber_locked) {
 include_once '../../../fns/Page/text.php';
 $items[] = Page\text(
     '<div>'
+        .($subscribedChannel->channel_public ? 'Public' : 'Private').' channel.'
+    .'</div>'
+    .'<div>'
         .'You are '.($subscribedChannel->receive_notifications ? '' : 'not ')
         .' receiving notifications from this channel.'
     .'</div>'

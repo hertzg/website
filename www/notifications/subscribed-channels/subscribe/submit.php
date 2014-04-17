@@ -20,19 +20,14 @@ if (!$channel) {
     $errors[] = "A channel with this name doesn't exist.";
 } elseif (!$channel->public) {
     $errors[] = 'The channel is not public.';
+} elseif ($channel->id_users == $id_users) {
+    $errors[] = 'You cannot subscribe to your own channels.';
 } else {
-    include_once '../../../fns/SubscribedChannels/getExistingPublisher.php';
-    $existingPublisher = SubscribedChannels\getExistingPublisher(
+    include_once '../../../fns/SubscribedChannels/getExistingSubscriber.php';
+    $subscribedChannel = SubscribedChannels\getExistingSubscriber(
         $mysqli, $channel->id, $id_users);
-    if ($existingPublisher) {
-        $errors[] = 'You cannot subscribe to your own channels.';
-    } else {
-        include_once '../../../fns/SubscribedChannels/getExistingSubscriber.php';
-        $existingSubscriber = SubscribedChannels\getExistingSubscriber(
-            $mysqli, $channel->id, $id_users);
-        if ($existingSubscriber) {
-            $errors[] = 'You are already subscribed to this channel.';
-        }
+    if ($subscribedChannel && $subscribedChannel->subscriber_locked) {
+        $errors[] = 'You are already subscribed to this channel.';
     }
 }
 

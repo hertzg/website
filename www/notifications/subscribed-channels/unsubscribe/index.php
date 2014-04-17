@@ -1,8 +1,8 @@
 <?php
 
-include_once '../fns/require_public_subscribed_channel.php';
+include_once '../fns/require_subscriber_locked_channel.php';
 include_once '../../../lib/mysqli.php';
-list($subscribed_channel, $id, $user) = require_public_subscribed_channel($mysqli);
+list($subscribed_channel, $id, $user) = require_subscriber_locked_channel($mysqli);
 
 include_once '../../../fns/create_tabs.php';
 include_once '../../../fns/Page/imageLink.php';

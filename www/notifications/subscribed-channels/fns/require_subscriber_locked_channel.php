@@ -1,6 +1,6 @@
 <?php
 
-function require_public_subscribed_channel ($mysqli) {
+function require_subscriber_locked_channel ($mysqli) {
 
     include_once __DIR__.'/require_subscribed_channel.php';
     $values = require_subscribed_channel($mysqli);
