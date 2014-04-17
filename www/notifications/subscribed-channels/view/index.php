@@ -18,16 +18,9 @@ if (!$subscriber_locked) {
     $items[] = Form\label('Channel owner', $value);
 }
 
-if ($subscriber_locked) {
-    $publicText = 'You have subscribed to this channel yourself.';
-} else {
-    $publicText = 'The owner has added you to the channel.';
-}
-
 include_once '../../../fns/Page/text.php';
 $items[] = Page\text(
-    "<div>$publicText</div>"
-    .'<div>'
+    '<div>'
         .'You are '.($subscribedChannel->receive_notifications ? '' : 'not ')
         .' receiving notifications from this channel.'
     .'</div>'
