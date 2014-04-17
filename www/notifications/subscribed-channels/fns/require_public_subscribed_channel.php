@@ -6,7 +6,7 @@ function require_public_subscribed_channel ($mysqli) {
     $values = require_subscribed_channel($mysqli);
     list($subscribedChannel, $id, $user) = $values;
 
-    if (!$subscribedChannel->public_subscriber) {
+    if (!$subscribedChannel->subscriber_locked) {
         include_once __DIR__.'/../../../fns/redirect.php';
         redirect('..');
     }

@@ -12,13 +12,13 @@ include_once '../../../fns/Form/label.php';
 $value = htmlspecialchars($subscribedChannel->channel_name);
 $items[] = Form\label('Channel name', $value);
 
-$public_subscriber = $subscribedChannel->public_subscriber;
-if (!$public_subscriber) {
+$subscriber_locked = $subscribedChannel->subscriber_locked;
+if (!$subscriber_locked) {
     $value = htmlspecialchars($subscribedChannel->publisher_username);
     $items[] = Form\label('Channel owner', $value);
 }
 
-if ($public_subscriber) {
+if ($subscriber_locked) {
     $publicText = 'You have subscribed to this channel yourself.';
 } else {
     $publicText = 'The owner has added you to the channel.';

@@ -15,7 +15,7 @@ function create_options_panel ($subscribed_channel) {
         $link = Page\imageLink($title, $href, 'receive-notifications');
     }
 
-    if ($subscribed_channel->public_subscriber) {
+    if ($subscribed_channel->subscriber_locked) {
         $href = "../unsubscribe/?id=$id";
         $deleteLink =
             '<div class="hr"></div>'

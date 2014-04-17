@@ -7,9 +7,9 @@ list($subscribed_channel, $id, $user) = require_subscribed_channel($mysqli, '../
 unset($_SESSION['notifications/channels/users/messages']);
 
 $id_channels = $subscribed_channel->id_channels;
-$public_subscriber = $subscribed_channel->public_subscriber;
+$subscriber_locked = $subscribed_channel->subscriber_locked;
 
-if ($public_subscriber) {
+if ($subscriber_locked) {
     $optionsPanel = '';
 } else {
 
@@ -42,7 +42,7 @@ $content = create_tabs(
     Page\sessionMessages('notifications/channels/users/view/messages')
     .Form\label('Username', htmlspecialchars($subscribed_channel->subscriber_username))
     .'<div class="hr"></div>'
-    .Page\text(($public_subscriber ? 'Public' : 'Private').' subscriber.')
+    .Page\text(($subscriber_locked ? 'Public' : 'Private').' subscriber.')
     .$optionsPanel
 );
 

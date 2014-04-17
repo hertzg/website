@@ -21,7 +21,7 @@ $subscribedChannels = SubscribedChannels\indexOnChannel($mysqli, $id);
 if ($subscribedChannels) {
     foreach ($subscribedChannels as $subscribedChannel) {
 
-        if ($subscribedChannel->public_subscriber) $icon = 'user';
+        if ($subscribedChannel->subscriber_locked) $icon = 'user';
         else $icon = 'locked-user';
 
         $title = htmlspecialchars($subscribedChannel->subscriber_username);
