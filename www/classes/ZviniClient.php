@@ -15,7 +15,7 @@ class ZviniClient {
         curl_setopt_array($ch, [
             CURLOPT_POSTFIELDS => http_build_query($params),
             CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_TIMEOUT => 5,
+            CURLOPT_TIMEOUT => 10,
             CURLOPT_URL => "$this->base$method.php",
         ]);
         $response = curl_exec($ch);
