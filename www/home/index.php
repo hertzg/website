@@ -23,14 +23,11 @@ $homeItems = get_home_items($mysqli, $user);
 
 $items = array_merge($items, $homeItems);
 
-$items = array_chunk($items, 2);
+$groupedItems = [];
+if (count($items) % 2) $groupedItems[] = array_shift($items);
 include_once '../fns/Page/twoColumns.php';
-foreach ($items as &$item) {
-    if (count($item) == 2) {
-        $item = Page\twoColumns($item[0], $item[1]);
-    } else {
-        $item = $item[0];
-    }
+foreach (array_chunk($items, 2) as $item) {
+    $groupedItems[] = Page\twoColumns($item[0], $item[1]);
 }
 
 include_once 'fns/create_new_notifications.php';
@@ -43,7 +40,7 @@ $content =
         'Home',
         Page\sessionMessages('home/messages')
         .create_new_notifications($mysqli, $user)
-        .join('<div class="hr"></div>', $items)
+        .join('<div class="hr"></div>', $groupedItems)
     )
     .create_options_panel();
 
