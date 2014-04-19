@@ -16,4 +16,7 @@ $mysqli->query(
     'alter table channels change receive_notifications receive_notifications tinyint not null'
 ) || trigger_error($mysqli->error);
 
+$mysqli->query(
+    'alter table channels change channel_key channel_key binary(16)'
+) || trigger_error($mysqli->error);
 echo "Done\n";
