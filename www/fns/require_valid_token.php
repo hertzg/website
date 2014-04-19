@@ -8,7 +8,6 @@ function require_valid_token ($mysqli) {
         $token_text = $_COOKIE['token'];
         if (is_string($username) && is_string($token_text)) {
 
-            include_once __DIR__.'/hex2bin.php';
             $token_text = hex2bin($token_text);
 
             include_once __DIR__.'/Tokens/getByUsernameTokenText.php';
