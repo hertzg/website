@@ -58,8 +58,12 @@ Captcha\reset();
 setcookie('username', $username, time() + 60 * 60 * 24 * 30, '/');
 
 $text = "$username has signed up with the email $email";
-include_once '../classes/ZviniAPI.php';
-ZviniAPI::notify('zvini-signups', '03feb769e474c9c9c257597d462c41eb', $text);
+
+include_once '../fns/get_zvini_client.php';
+get_zvini_client()->call('notification/post', [
+    'channel_name' => 'zvini-signups',
+    'notification_text' => $text,
+]);
 
 include_once 'fns/send_email.php';
 send_email($username, $email);

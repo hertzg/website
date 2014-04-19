@@ -40,8 +40,11 @@ include_once '../../fns/Feedbacks/add.php';
 include_once '../../lib/mysqli.php';
 $id = Feedbacks\add($mysqli, $id_users, $feedbacktext);
 
-include_once '../../classes/ZviniAPI.php';
-ZviniAPI::notify('zvini-feedbacks', '58ff602ff1c79d81ca43d51f59ca03bd', $feedbacktext);
+include_once '../../fns/get_zvini_client.php';
+get_zvini_client()->call('notification/post', [
+    'channel_name' => 'zvini-feedbacks',
+    'notification_text' => $feedbacktext,
+]);
 
 $title = "Zvini Feedback #$id";
 
