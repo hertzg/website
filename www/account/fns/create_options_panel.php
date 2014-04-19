@@ -6,8 +6,7 @@ function create_options_panel ($user) {
     $options = [];
     if (!$user->email_verified) {
         $title = 'Verify Email';
-        $href = 'verify-email/';
-        $options[] = Page\imageArrowLink($title, $href, 'yes');
+        $options[] = Page\imageArrowLink($title, 'verify-email/', 'yes');
     }
 
     $title = 'Change Password';
@@ -15,23 +14,20 @@ function create_options_panel ($user) {
     $options[] = Page\imageArrowLink($title, $href, 'edit-password');
 
     $title = 'Edit Profile';
-    $href = 'edit-profile/';
-    $options[] = Page\imageArrowLink($title, $href, 'edit-profile');
+    $options[] = Page\imageArrowLink($title, 'edit-profile/', 'edit-profile');
 
-    $href = './edit-theme/';
     $icon = "edit-$user->theme-theme";
-    $options[] = Page\imageArrowLink('Edit Theme', $href, $icon);
+    $options[] = Page\imageArrowLink('Edit Theme', './edit-theme/', $icon);
 
     include_once __DIR__.'/create_tokens_link.php';
     $options[] = create_tokens_link($user);
 
     $title = 'Manage Connections';
-    $href = 'connections/';
-    $options[] = Page\imageArrowLink($title, $href, 'connections');
+    $options[] = Page\imageArrowLink($title, 'connections/', 'connections');
 
-    $title = 'Close Account';
-    $href = 'close/';
-    $options[] = Page\imageArrowLink($title, $href, 'trash-bin');
+    $options[] = Page\imageArrowLink('API Keys', 'api-keys/', 'TODO');
+
+    $options[] = Page\imageArrowLink('Close Account', 'close/', 'trash-bin');
 
     $content = join('<div class="hr"></div>', $options);
 
