@@ -9,6 +9,7 @@ var fs = require('fs'),
 var files = [
     'defaults.css',
     'common.css',
+    'page.css',
     'textList.css',
     'form.css',
     'form-select.css',

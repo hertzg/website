@@ -1,0 +1,17 @@
+.page-text {
+    padding: 15px 16px;
+    word-wrap: break-word;
+}
+.page-infoText {
+    padding: 10px 12px;
+    font-size: 12px;
+    line-height: 14px;
+    color: #555;
+    background: #eee;
+}
+.page-info {
+    line-height: 48px;
+    color: #555;
+    text-align: center;
+    font-style: italic;
+}
