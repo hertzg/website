@@ -15,7 +15,7 @@ function require_subscribed_channel ($mysqli) {
 
     if (!$subscribedChannel || !$subscribedChannel->publisher_locked) {
         include_once __DIR__.'/../../../../fns/redirect.php';
-        redirect('..');
+        redirect('../..');
     }
 
     return [$subscribedChannel, $id, $user];

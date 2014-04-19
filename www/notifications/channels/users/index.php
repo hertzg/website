@@ -13,10 +13,10 @@ unset(
 
 $items = [];
 
-include_once '../../../fns/Page/imageArrowLink.php';
-
 include_once '../../../fns/SubscribedChannels/indexPublisherLockedOnChannel.php';
 $subscribedChannels = SubscribedChannels\indexPublisherLockedOnChannel($mysqli, $id);
+
+include_once '../../../fns/Page/imageArrowLink.php';
 
 if ($subscribedChannels) {
     foreach ($subscribedChannels as $subscribedChannel) {

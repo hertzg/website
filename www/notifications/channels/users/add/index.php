@@ -5,11 +5,8 @@ include_once '../../../../lib/mysqli.php';
 list($channel, $id, $user) = require_channel($mysqli, '../');
 
 $key = 'notifications/channels/users/add/values';
-if (array_key_exists($key, $_SESSION)) {
-    $values = $_SESSION[$key];
-} else {
-    $values = ['subscriber_username' => ''];
-}
+if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
+else $values = ['subscriber_username' => ''];
 
 unset(
     $_SESSION['notifications/channels/users/errors'],

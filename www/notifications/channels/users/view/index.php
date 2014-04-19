@@ -2,7 +2,7 @@
 
 include_once '../fns/require_subscribed_channel.php';
 include_once '../../../../lib/mysqli.php';
-list($subscribedChannel, $id, $user) = require_subscribed_channel($mysqli, '../../..');
+list($subscribedChannel, $id, $user) = require_subscribed_channel($mysqli);
 
 unset($_SESSION['notifications/channels/users/messages']);
 
