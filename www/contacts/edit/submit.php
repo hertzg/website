@@ -9,10 +9,12 @@ list($contact, $id, $user) = require_contact($mysqli);
 $id_users = $user->id_users;
 
 include_once '../../fns/request_strings.php';
-list($full_name, $alias, $address, $email, $phone1, $phone2, $birthday_day,
-    $birthday_month, $birthday_year, $username, $tags) = request_strings(
-    'full_name', 'alias', 'address', 'email', 'phone1', 'phone2', 'birthday_day',
-    'birthday_month', 'birthday_year', 'username', 'tags');
+list($full_name, $alias, $address, $email, $phone1,
+    $phone2, $birthday_day, $birthday_month, $birthday_year,
+    $username, $tags, $favorite) = request_strings(
+    'full_name', 'alias', 'address', 'email', 'phone1',
+    'phone2', 'birthday_day', 'birthday_month', 'birthday_year',
+    'username', 'tags', 'favorite');
 
 include_once '../../fns/str_collapse_spaces.php';
 $full_name = str_collapse_spaces($full_name);
@@ -23,6 +25,7 @@ $phone1 = str_collapse_spaces($phone1);
 $phone2 = str_collapse_spaces($phone2);
 $username = str_collapse_spaces($username);
 $tags = str_collapse_spaces($tags);
+$favorite = (bool)$favorite;
 
 $birthday_day = abs((int)$birthday_day);
 $birthday_month = abs((int)$birthday_month);
@@ -67,6 +70,7 @@ if ($errors) {
         'birthday_year' => $birthday_year,
         'username' => $username,
         'tags' => $tags,
+        'favorite' => $favorite,
     ];
     redirect("./$itemQuery");
 }
@@ -78,14 +82,14 @@ unset(
 
 include_once '../../fns/Contacts/edit.php';
 Contacts\edit($mysqli, $id_users, $id, $full_name, $alias, $address,
-    $email, $phone1, $phone2, $birthday_time, $username, $tags);
+    $email, $phone1, $phone2, $birthday_time, $username, $tags, $favorite);
 
 include_once '../../fns/ContactTags/deleteOnContact.php';
 ContactTags\deleteOnContact($mysqli, $id);
 
 include_once '../../fns/ContactTags/add.php';
 ContactTags\add($mysqli, $id_users, $id,
-    $tag_names, $full_name, $alias, $contact->favorite);
+    $tag_names, $full_name, $alias, $favorite);
 
 include_once '../fns/invalidate_user_birthdays.php';
 invalidate_user_birthdays($mysqli, $user, $contact->birthday_time);

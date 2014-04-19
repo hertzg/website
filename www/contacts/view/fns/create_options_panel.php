@@ -5,16 +5,6 @@ function create_options_panel ($contact) {
     include_once __DIR__.'/../../../fns/ItemList/escapedItemQuery.php';
     $queryString = ItemList\escapedItemQuery($contact->id_contacts);
 
-    include_once __DIR__.'/../../../fns/Page/imageLink.php';
-    if ($contact->favorite) {
-        $href = "submit-set-regular.php$queryString";
-        $favoriteLink = Page\imageLink('Mark as Regular', $href, 'contact');
-    } else {
-        $title = 'Mark as Favorite';
-        $href = "submit-set-favorite.php$queryString";
-        $favoriteLink = Page\imageLink($title, $href, 'favorite-contact');
-    }
-
     include_once __DIR__.'/../../../fns/Page/imageArrowLink.php';
 
     $href = "../edit/$queryString";
@@ -27,9 +17,9 @@ function create_options_panel ($contact) {
 
     include_once __DIR__.'/../../../fns/Page/twoColumns.php';
     $content =
-        Page\twoColumns($favoriteLink, $editLink)
+        Page\twoColumns($editLink, $sendLink)
         .'<div class="hr"></div>'
-        .Page\twoColumns($sendLink, $deleteLink);
+        .$deleteLink;
 
     include_once __DIR__.'/../../../fns/create_panel.php';
     return create_panel('Contact Options', $content);

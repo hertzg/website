@@ -3,7 +3,7 @@
 namespace Contacts;
 
 function edit ($mysqli, $id_users, $id, $full_name, $alias, $address,
-    $email, $phone1, $phone2, $birthday_time, $username, $tags) {
+    $email, $phone1, $phone2, $birthday_time, $username, $tags, $favorite) {
 
     $full_name = $mysqli->real_escape_string($full_name);
     $alias = $mysqli->real_escape_string($alias);
@@ -19,13 +19,15 @@ function edit ($mysqli, $id_users, $id, $full_name, $alias, $address,
     }
     $username = $mysqli->real_escape_string($username);
     $tags = $mysqli->real_escape_string($tags);
+    $favorite = $favorite ? '1' : '0';
     $update_time = time();
 
     $sql = "update contacts set full_name = '$full_name',"
         ." alias = '$alias', address = '$address', email = '$email',"
-        ." phone1 = '$phone1', phone2 = '$phone2', birthday_time = $birthday_time,"
-        ." birthday_day = $birthday_day, birthday_month = $birthday_month,"
-        ." username = '$username', tags = '$tags', update_time = $update_time"
+        ." phone1 = '$phone1', phone2 = '$phone2',"
+        ." birthday_time = $birthday_time, birthday_day = $birthday_day,"
+        ." birthday_month = $birthday_month, username = '$username',"
+        ." tags = '$tags', favorite = $favorite,"." update_time = $update_time"
         ." where id_users = $id_users and id_contacts = $id";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);

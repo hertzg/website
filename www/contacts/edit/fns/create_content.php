@@ -9,6 +9,7 @@ function create_content ($id, array $values) {
     include_once __DIR__.'/../../../fns/ItemList/listHref.php';
     include_once __DIR__.'/../../../fns/create_tabs.php';
     include_once __DIR__.'/../../../fns/Form/button.php';
+    include_once __DIR__.'/../../../fns/Form/checkbox.php';
     include_once __DIR__.'/../../../fns/Form/datefield.php';
     include_once __DIR__.'/../../../fns/Form/hidden.php';
     include_once __DIR__.'/../../../fns/Form/textfield.php';
@@ -80,6 +81,9 @@ function create_content ($id, array $values) {
             .Form\textfield('tags', 'Tags', [
                 'value' => $values['tags'],
             ])
+            .'<div class="hr"></div>'
+            .Form\checkbox('../../', 'favorite',
+                'Mark as Favorite', $values['favorite'])
             .'<div class="hr"></div>'
             .Form\button('Save Changes')
             .ItemList\itemHiddenInputs($id)
