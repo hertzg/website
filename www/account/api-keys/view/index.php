@@ -20,7 +20,7 @@ unset(
 include_once '../../../fns/create_panel.php';
 include_once '../../../fns/create_tabs.php';
 include_once '../../../fns/Form/label.php';
-include_once '../../../fns/Form/textfield.php';
+include_once '../../../fns/Form/textarea.php';
 include_once '../../../fns/Page/sessionMessages.php';
 include_once '../../../fns/Page/twoColumns.php';
 $content = create_tabs(
@@ -38,7 +38,7 @@ $content = create_tabs(
     Page\sessionMessages('account/api-keys/view/messages')
     .Form\label('Name', htmlspecialchars($apiKey->name))
     .'<div class="hr"></div>'
-    .Form\textfield('key', 'Key', [
+    .Form\textarea('key', 'Key', [
         'value' => bin2hex($apiKey->key),
         'readonly' => true,
     ])
