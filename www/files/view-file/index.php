@@ -19,9 +19,9 @@ include_once '../../fns/bytestr.php';
 include_once '../../fns/create_folder_link.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/date_ago.php';
+include_once '../../fns/Page/infoText.php';
 include_once '../../fns/Form/label.php';
 include_once '../../fns/Page/sessionMessages.php';
-include_once '../../fns/Page/text.php';
 $content =
     create_tabs(
         [
@@ -42,7 +42,7 @@ $content =
         .'<div class="hr"></div>'
         .Form\label('Preview', create_preview($file))
         .'<div class="hr"></div>'
-        .Page\text('File uploaded '.date_ago($file->insert_time))
+        .Page\infoText('File uploaded '.date_ago($file->insert_time))
     )
     .create_options_panel($file);
 

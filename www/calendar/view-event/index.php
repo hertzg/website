@@ -19,6 +19,7 @@ if ($insert_time != $update_time) {
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
 include_once '../../fns/Page/imageArrowLink.php';
+include_once '../../fns/Page/infoText.php';
 include_once '../../fns/Page/sessionMessages.php';
 include_once '../../fns/Page/text.php';
 include_once '../../fns/Page/twoColumns.php';
@@ -40,7 +41,7 @@ $content =
         .'<div class="hr"></div>'
         .Page\text(date('F d, Y', $event->event_time))
         .'<div class="hr"></div>'
-        .Page\text($datesText)
+        .Page\infoText($datesText)
     )
     .create_panel(
         'Event Options',

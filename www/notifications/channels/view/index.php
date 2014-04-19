@@ -12,10 +12,10 @@ unset(
 
 include_once 'fns/create_options_panel.php';
 include_once '../../../fns/create_tabs.php';
+include_once '../../../fns/Page/infoText.php';
 include_once '../../../fns/Form/label.php';
 include_once '../../../fns/Form/textfield.php';
 include_once '../../../fns/Page/sessionMessages.php';
-include_once '../../../fns/Page/text.php';
 $content =
     create_tabs(
         [
@@ -37,7 +37,7 @@ $content =
             'value' => bin2hex($channel->channel_key),
         ])
         .'<div class="hr"></div>'
-        .Page\text(
+        .Page\infoText(
             '<div>'.($channel->public ? 'Public' : 'Private').' channel.</div>'
             .'<div>'
                 .'You are '.($channel->receive_notifications ? '' : 'not ')

@@ -61,8 +61,8 @@ $text =
 if ($insert_time != $update_time) {
     $text .= '<div>Last modified '.date_ago($update_time).'.</div>';
 }
-include_once '../../fns/Page/text.php';
-$items[] = Page\text($text);
+include_once '../../fns/Page/infoText.php';
+$items[] = Page\infoText($text);
 
 include_once 'fns/create_options_panel.php';
 include_once '../../fns/ItemList/listHref.php';

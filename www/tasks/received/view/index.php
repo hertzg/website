@@ -19,7 +19,8 @@ if ($tags !== '') {
 }
 
 include_once '../../../fns/date_ago.php';
-$items[] = Page\text(
+include_once '../../../fns/Page/infoText.php';
+$items[] = Page\infoText(
     '<div>'.($receivedTask->top_priority ? 'Top' : 'Normal').' priority task.</div>'
     .'<div>Task received '.date_ago($receivedTask->insert_time).'.</div>'
 );

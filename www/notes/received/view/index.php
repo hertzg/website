@@ -19,7 +19,8 @@ if ($tags !== '') {
 }
 
 include_once '../../../fns/date_ago.php';
-$items[] = Page\text('Note received '.date_ago($receivedNote->insert_time).'.');
+include_once '../../../fns/Page/infoText.php';
+$items[] = Page\infoText('Note received '.date_ago($receivedNote->insert_time).'.');
 
 include_once 'fns/create_options_panel.php';
 include_once '../../../fns/create_panel.php';

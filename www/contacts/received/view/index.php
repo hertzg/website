@@ -47,15 +47,15 @@ if ($username !== '') {
     $items[] = Form\label('Zvini username', htmlspecialchars($username));
 }
 
-include_once '../../../fns/Page/text.php';
-
 $tags = $receivedContact->tags;
 if ($tags !== '') {
+    include_once '../../../fns/Page/text.php';
     $items[] = Page\text('Tags: '.htmlspecialchars($tags));
 }
 
 include_once '../../../fns/date_ago.php';
-$items[] = Page\text(
+include_once '../../../fns/Page/infoText.php';
+$items[] = Page\infoText(
     '<div>'
         .($receivedContact->favorite ? 'Favorite' : 'Regular').' contact.'
     .'</div>'

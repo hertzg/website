@@ -24,8 +24,8 @@ include_once '../../../fns/bytestr.php';
 include_once '../../../fns/create_panel.php';
 include_once '../../../fns/create_tabs.php';
 include_once '../../../fns/date_ago.php';
+include_once '../../../fns/Page/infoText.php';
 include_once '../../../fns/Form/label.php';
-include_once '../../../fns/Page/text.php';
 include_once '../../../fns/Page/twoColumns.php';
 $content = create_tabs(
     [
@@ -48,7 +48,7 @@ $content = create_tabs(
         .'<div class="hr"></div>'
         .Form\label('Preview', create_preview($receivedFile))
         .'<div class="hr"></div>'
-        .Page\text('File received '.date_ago($receivedFile->insert_time).'.')
+        .Page\infoText('File received '.date_ago($receivedFile->insert_time).'.')
     )
     .create_panel(
         'Options',

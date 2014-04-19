@@ -18,8 +18,8 @@ if ($publisher_locked) {
     $items[] = Form\label('Channel owner', $value);
 }
 
-include_once '../../../fns/Page/text.php';
-$items[] = Page\text(
+include_once '../../../fns/Page/infoText.php';
+$items[] = Page\infoText(
     '<div>'
         .($subscribedChannel->channel_public ? 'Public' : 'Private').' channel.'
     .'</div>'
