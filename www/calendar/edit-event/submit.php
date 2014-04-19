@@ -38,7 +38,10 @@ if ($errors) {
     redirect("./?id=$id");
 }
 
-unset($_SESSION['calendar/edit-event/errors']);
+unset(
+    $_SESSION['calendar/edit-event/errors'],
+    $_SESSION['calendar/edit-event/values']
+);
 
 include_once '../../fns/Events/edit.php';
 Events\edit($mysqli, $user->id_users, $id, $event_time, $event_text);

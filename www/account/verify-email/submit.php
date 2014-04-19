@@ -23,6 +23,8 @@ if ($errors) {
     redirect();
 }
 
+unset($_SESSION['account/verify-email/errors']);
+
 include_once '../../fns/Captcha/reset.php';
 Captcha\reset();
 

@@ -61,15 +61,15 @@ if ($errors) {
     redirect();
 }
 
-include_once '../../../fns/Connections/add.php';
-Connections\add($mysqli, $id_users, $connected_id_users,
-    $username, $can_send_bookmark, $can_send_channel, $can_send_contact,
-    $can_send_file, $can_send_note, $can_send_task);
-
 unset(
     $_SESSION['account/connections/new/errors'],
     $_SESSION['account/connections/new/values']
 );
+
+include_once '../../../fns/Connections/add.php';
+Connections\add($mysqli, $id_users, $connected_id_users,
+    $username, $can_send_bookmark, $can_send_channel, $can_send_contact,
+    $can_send_file, $can_send_note, $can_send_task);
 
 $_SESSION['account/connections/messages'] = [
     'Connection has been added.',

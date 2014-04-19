@@ -73,6 +73,11 @@ if ($errors) {
     redirect("./?id=$id");
 }
 
+unset(
+    $_SESSION['contacts/received/edit-and-import/errors'],
+    $_SESSION['contacts/received/edit-and-import/values']
+);
+
 include_once '../../../fns/Contacts/add.php';
 $id_contacts = Contacts\add($mysqli, $id_users, $full_name, $alias, $address,
     $email, $phone1, $phone2, $birthday_time, $username, $tags, $favorite);
@@ -89,11 +94,6 @@ Users\addNumReceivedContacts($mysqli, $id_users, -1);
 
 include_once '../../fns/invalidate_user_birthdays.php';
 invalidate_user_birthdays($mysqli, $user, $birthday_time);
-
-unset(
-    $_SESSION['contacts/received/edit-and-import/errors'],
-    $_SESSION['contacts/received/edit-and-import/values']
-);
 
 $messages = ['Contact has been imported.'];
 

@@ -86,6 +86,7 @@ $headers =
 
 mail($email, $subject, $html, $headers);
 
+unset($_SESSION['sign-in/errors']);
 $_SESSION['sign-in/messages'] = [
     'Instructions to reset password have been sent to your email address.',
 ];

@@ -42,6 +42,11 @@ if ($errors) {
     redirect("./?id=$id");
 }
 
+unset(
+    $_SESSION['files/send-file/errors'],
+    $_SESSION['files/send-file/values']
+);
+
 include_once '../../fns/Files/filePath.php';
 $filePath = Files\filePath($id_users, $id);
 

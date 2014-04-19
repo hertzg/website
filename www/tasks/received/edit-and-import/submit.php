@@ -39,6 +39,11 @@ if ($errors) {
     redirect("./?id=$id");
 }
 
+unset(
+    $_SESSION['tasks/received/edit-and-import/errors'],
+    $_SESSION['tasks/received/edit-and-import/values']
+);
+
 include_once '../../../fns/Tasks/add.php';
 $id_tasks = Tasks\add($mysqli, $id_users, $text, $top_priority, $tags);
 
@@ -50,11 +55,6 @@ ReceivedTasks\delete($mysqli, $id);
 
 include_once '../../../fns/Users/addNumReceivedTasks.php';
 Users\addNumReceivedTasks($mysqli, $id_users, -1);
-
-unset(
-    $_SESSION['tasks/received/edit-and-import/errors'],
-    $_SESSION['tasks/received/edit-and-import/values']
-);
 
 $messages = ['Task has been imported.'];
 

@@ -43,6 +43,11 @@ if (Contacts\getByFullName($mysqli, $id_users, $full_name)) {
     redirect("../edit-and-import/?id=$id");
 }
 
+unset(
+    $_SESSION['contacts/received/edit-and-import/errors'],
+    $_SESSION['contacts/received/edit-and-import/values']
+);
+
 include_once '../../../fns/Tags/parse.php';
 $tag_names = Tags\parse($tags);
 

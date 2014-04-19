@@ -61,6 +61,11 @@ if ($errors) {
     redirect("./?id=$id");
 }
 
+unset(
+    $_SESSION['account/connections/edit/errors'],
+    $_SESSION['account/connections/edit/values']
+);
+
 include_once '../../../fns/Connections/edit.php';
 Connections\edit($mysqli, $id, $connected_id_users, $username,
     $can_send_bookmark, $can_send_channel, $can_send_contact,

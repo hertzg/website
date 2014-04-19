@@ -35,6 +35,11 @@ if ($errors) {
     redirect("./?id=$id");
 }
 
+unset(
+    $_SESSION['bookmarks/received/edit-and-import/errors'],
+    $_SESSION['bookmarks/received/edit-and-import/values']
+);
+
 include_once '../../../fns/Bookmarks/add.php';
 $id_bookmarks = Bookmarks\add($mysqli, $id_users, $url, $title, $tags);
 

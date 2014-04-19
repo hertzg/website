@@ -35,6 +35,11 @@ if ($errors) {
     redirect("./?id=$id");
 }
 
+unset(
+    $_SESSION['notes/received/edit-and-import/errors'],
+    $_SESSION['notes/received/edit-and-import/values']
+);
+
 include_once '../../../fns/Notes/add.php';
 $id_notes = Notes\add($mysqli, $id_users, $text, $tags);
 
@@ -46,11 +51,6 @@ ReceivedNotes\delete($mysqli, $id);
 
 include_once '../../../fns/Users/addNumReceivedNotes.php';
 Users\addNumReceivedNotes($mysqli, $id_users, -1);
-
-unset(
-    $_SESSION['notes/received/edit-and-import/errors'],
-    $_SESSION['notes/received/edit-and-import/values']
-);
 
 $messages = ['Note has been imported.'];
 

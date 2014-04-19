@@ -51,6 +51,11 @@ if ($errors) {
     redirect("./?id=$id");
 }
 
+unset(
+    $_SESSION['notifications/channels/users/add/errors'],
+    $_SESSION['notifications/channels/users/add/values']
+);
+
 if ($subscribedChannel) {
 
     $id = $subscribedChannel->id;
