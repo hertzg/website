@@ -9,13 +9,16 @@ list($task, $id, $user) = require_task($mysqli);
 $id_users = $user->id_users;
 
 include_once '../../fns/request_strings.php';
-list($text, $tags) = request_strings('text', 'tags');
+list($text, $tags, $top_priority) = request_strings(
+    'text', 'tags', 'top_priority');
 
 include_once '../../fns/str_collapse_spaces_multiline.php';
 $text = str_collapse_spaces_multiline($text);
 
 include_once '../../fns/str_collapse_spaces.php';
 $tags = str_collapse_spaces($tags);
+
+$top_priority = (bool)$top_priority;
 
 $errors = [];
 
@@ -34,6 +37,7 @@ if ($errors) {
     $_SESSION['tasks/edit/values'] = [
         'text' => $text,
         'tags' => $tags,
+        'top_priority' => $top_priority,
     ];
     redirect("./$itemQuery");
 }
@@ -43,16 +47,15 @@ unset(
     $_SESSION['tasks/edit/values']
 );
 
-$top_priority = $task->top_priority;
-
 include_once '../../fns/Tasks/edit.php';
-Tasks\edit($mysqli, $id_users, $id, $text, $tags);
+Tasks\edit($mysqli, $id_users, $id, $text, $tags, $top_priority);
 
 include_once '../../fns/TaskTags/deleteOnTask.php';
 TaskTags\deleteOnTask($mysqli, $id);
 
 include_once '../../fns/TaskTags/add.php';
-TaskTags\add($mysqli, $id_users, $id, $tag_names, $text, $top_priority, $tags);
+TaskTags\add($mysqli, $id_users, $id, $tag_names,
+    $text, $top_priority, $tags, $top_priority);
 
 $_SESSION['tasks/view/messages'] = ['Changes have been saved.'];
 redirect("../view/$itemQuery");
