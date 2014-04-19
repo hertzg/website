@@ -12,4 +12,8 @@ $mysqli->query(
     .' insert_time bigint unsigned not null)'
 ) || trigger_error($mysqli->error);
 
+$mysqli->query(
+    'alter table channels change receive_notifications receive_notifications tinyint not null'
+) || trigger_error($mysqli->error);
+
 echo "Done\n";

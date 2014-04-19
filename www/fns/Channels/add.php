@@ -9,8 +9,10 @@ function add ($mysqli, $id_users, $username, $channel_name, $public) {
     $channel_key = $mysqli->real_escape_string(md5(uniqid(), true));
     $public = $public ? '1' : '0';
 
-    $sql = 'insert into channels (id_users, username, channel_name, channel_key, public)'
-        ." values ($id_users, '$username', '$channel_name', '$channel_key', $public)";
+    $sql = 'insert into channels (id_users, username,'
+        .' channel_name, channel_key, public)'
+        ." values ($id_users, '$username',"
+        ." '$channel_name', '$channel_key', $public)";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
