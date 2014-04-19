@@ -9,18 +9,33 @@ include_once '../../fns/ApiKeys/indexOnUser.php';
 include_once '../../lib/mysqli.php';
 $apiKeys = ApiKeys\indexOnUser($mysqli, $user->id_users);
 
+include_once '../../fns/Page/imageArrowLink.php';
+
 $items = [];
 if ($apiKeys) {
+    foreach ($apiKeys as $apiKey) {
+        $title = htmlspecialchars($apiKey->name);
+        $href = "view/?id=$apiKey->id";
+        $items[] = Page\imageArrowLink($title, $href, 'TODO');
+    }
 } else {
     include_once '../../fns/Page/info.php';
     $items[] = Page\info('No keys');
 }
 
-include_once '../../fns/Page/imageArrowLink.php';
 $newLink = Page\imageArrowLink('New Key', 'new/', 'TODO');
+
+unset(
+    $_SESSION['account/api-keys/new/errors'],
+    $_SESSION['account/api-keys/new/values'],
+    $_SESSION['account/api-keys/view/messages'],
+    $_SESSION['account/messages']
+);
 
 include_once '../../fns/create_panel.php';
 include_once '../../fns/create_tabs.php';
+include_once '../../fns/Page/sessionErrors.php';
+include_once '../../fns/Page/sessionMessages.php';
 $content = create_tabs(
     [
         [
@@ -33,7 +48,9 @@ $content = create_tabs(
         ],
     ],
     'API Keys',
-    join('<div class="hr"></div>', $items)
+    Page\sessionErrors('account/api-keys/errors')
+    .Page\sessionMessages('account/api-keys/messages')
+    .join('<div class="hr"></div>', $items)
     .create_panel('Options', $newLink)
 );
 
