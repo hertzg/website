@@ -9,10 +9,12 @@ list($apiKey, $id, $user) = require_api_key($mysqli);
 $id_users = $user->id_users;
 
 include_once '../../../fns/request_strings.php';
-list($name) = request_strings('name');
+list($name, $randomizeKey) = request_strings('name', 'randomizeKey');
 
 include_once '../../../fns/str_collapse_spaces.php';
 $name = str_collapse_spaces($name);
+
+$randomizeKey = (bool)$randomizeKey;
 
 $errors = [];
 
@@ -30,7 +32,10 @@ include_once '../../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['account/api-keys/edit/errors'] = $errors;
-    $_SESSION['account/api-keys/edit/values'] = ['name' => $name];
+    $_SESSION['account/api-keys/edit/values'] = [
+        'name' => $name,
+        'randomizeKey' => $randomizeKey,
+    ];
     redirect("./?id=$id");
 }
 
@@ -41,6 +46,11 @@ unset(
 
 include_once '../../../fns/ApiKeys/edit.php';
 ApiKeys\edit($mysqli, $id, $name);
+
+if ($randomizeKey) {
+    include_once '../../../fns/ApiKeys/randomizeKey.php';
+    ApiKeys\randomizeKey($mysqli, $id);
+}
 
 $_SESSION['account/api-keys/view/messages'] = ['Changes have been saved.'];
 

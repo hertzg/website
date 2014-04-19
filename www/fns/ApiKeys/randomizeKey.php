@@ -10,7 +10,7 @@ function randomizeKey ($mysqli, $id) {
     $key = openssl_random_pseudo_bytes($maxLengths['key']);
     $key = $mysqli->real_escape_string($key);
 
-    $sql = "update api_keys set key = '$key' where id = $id";
+    $sql = "update api_keys set `key` = '$key' where id = $id";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
 }

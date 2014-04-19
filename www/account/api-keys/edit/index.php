@@ -7,11 +7,20 @@ list($apiKey, $id, $user) = require_api_key($mysqli);
 unset($_SESSION['account/api-keys/view/messages']);
 
 $key = 'account/api-keys/edit/values';
-if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
-else $values = (array)$apiKey;
+if (array_key_exists($key, $_SESSION)) {
+    $values = $_SESSION[$key];
+} else {
+    $values = [
+        'name' => $apiKey->name,
+        'randomizeKey' => false,
+    ];
+}
+
+$base = '../../../';
 
 include_once '../../../fns/create_tabs.php';
 include_once '../../../fns/Form/button.php';
+include_once '../../../fns/Form/checkbox.php';
 include_once '../../../fns/Form/hidden.php';
 include_once '../../../fns/Form/textfield.php';
 include_once '../../../fns/Page/sessionErrors.php';
@@ -35,10 +44,13 @@ $content = create_tabs(
             'autofocus' => true,
         ])
         .'<div class="hr"></div>'
+        .Form\checkbox($base, 'randomizeKey',
+            'Randomize key', $values['randomizeKey'])
+        .'<div class="hr"></div>'
         .Form\button('Save Changes')
         .Form\hidden('id', $id)
     .'</form>'
 );
 
 include_once '../../../fns/echo_page.php';
-echo_page($user, "Delete API Key #$id", $content, '../../../');
+echo_page($user, "Delete API Key #$id", $content, $base);
