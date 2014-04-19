@@ -20,9 +20,14 @@ if ($subscribedChannel->subscriber_locked) {
 
 }
 
+$id_channels = $subscribedChannel->id_channels;
+
+include_once '../../../../fns/Channels/addNumUsers.php';
+Channels\addNumUsers($mysqli, $id_channels, -1);
+
 $_SESSION['notifications/channels/users/messages'] = [
     'The user has been removed.',
 ];
 
 include_once '../../../../fns/redirect.php';
-redirect("..?id=$subscribedChannel->id_channels");
+redirect("..?id=$id_channels");

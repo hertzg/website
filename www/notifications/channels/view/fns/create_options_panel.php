@@ -13,7 +13,15 @@ function create_options_panel ($channel) {
 
     $title = 'Users';
     $href = "../users/?id=$id";
-    $usersLink = Page\imageArrowLink($title, $href, 'users');
+    $num_users = $channel->num_users;
+    if ($num_users) {
+        include_once __DIR__.'/../../../../fns/Page/imageArrowLinkWithDescription.php';
+        $description = "$num_users total.";
+        $usersLink = Page\imageArrowLinkWithDescription($title,
+            $description, $href, 'users');
+    } else {
+        $usersLink = Page\imageArrowLink($title, $href, 'users');
+    }
 
     if ($channel->receive_notifications) {
         $title = 'Forbid Notifications';

@@ -58,7 +58,7 @@ unset(
 
 if ($subscribedChannel) {
 
-    $id = $subscribedChannel->id;
+    $new_id = $subscribedChannel->id;
 
     include_once '../../../../fns/SubscribedChannels/setPublisherLocked.php';
     SubscribedChannels\setPublisherLocked($mysqli, $id, true);
@@ -66,7 +66,7 @@ if ($subscribedChannel) {
 } else {
 
     include_once '../../../../fns/SubscribedChannels/add.php';
-    $id = SubscribedChannels\add($mysqli, $id, $channel->channel_name,
+    $new_id = SubscribedChannels\add($mysqli, $id, $channel->channel_name,
         $id_users, $user->username, true, $subscriber_id_users,
         $subscriber_username, false, false);
 
@@ -75,9 +75,11 @@ if ($subscribedChannel) {
 
 }
 
+include_once '../../../../fns/Channels/addNumUsers.php';
+Channels\addNumUsers($mysqli, $id, 1);
 
 $_SESSION['notifications/channels/users/view/messages'] = [
     'The user has been added.',
 ];
 
-redirect("../view/?id=$id");
+redirect("../view/?id=$new_id");
