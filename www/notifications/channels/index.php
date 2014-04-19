@@ -63,8 +63,6 @@ $content =
     .create_panel(
         'Options',
         Page\imageArrowLink('New Channel', 'new/', 'create-channel')
-        .'<div class="hr"></div>'
-        .Page\imageLink('Download API', 'download-zvini-api.php', 'download')
     );
 
 include_once '../../fns/echo_page.php';
