@@ -45,10 +45,6 @@ function create_options_panel ($channel) {
     }
     $publicLink = Page\imageLink($title, $href, $icon);
 
-    $title = 'Randomize Key';
-    $href = "../randomize-key/?id=$id";
-    $randomizeKeyLink = Page\imageArrowLink($title, $href, 'randomize');
-
     $title = 'Delete';
     $href = "../delete/?id=$id";
     $deleteLink = Page\imageArrowLink($title, $href, 'trash-bin');
@@ -59,7 +55,7 @@ function create_options_panel ($channel) {
         .'<div class="hr"></div>'
         .Page\twoColumns($receiveLink, $publicLink)
         .'<div class="hr"></div>'
-        .Page\twoColumns($randomizeKeyLink, $deleteLink);
+        .$deleteLink;
 
     include_once __DIR__.'/../../../../fns/create_panel.php';
     return create_panel('Channel Options', $content);
