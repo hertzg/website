@@ -5,13 +5,24 @@ include_once '../../../lib/mysqli.php';
 list($apiKey, $id, $user) = require_api_key($mysqli);
 
 include_once '../../../fns/Page/imageArrowLink.php';
+
+$editLink = Page\imageArrowLink('Edit', "../edit/?id=$id", 'TODO');
+
 $deleteLink = Page\imageArrowLink('Delete', "../delete/?id=$id", 'trash-bin');
+
+unset(
+    $_SESSION['account/api-keys/edit/errors'],
+    $_SESSION['account/api-keys/edit/values'],
+    $_SESSION['account/api-keys/errors'],
+    $_SESSION['account/api-keys/messages']
+);
 
 include_once '../../../fns/create_panel.php';
 include_once '../../../fns/create_tabs.php';
 include_once '../../../fns/Form/label.php';
 include_once '../../../fns/Form/textfield.php';
 include_once '../../../fns/Page/sessionMessages.php';
+include_once '../../../fns/Page/twoColumns.php';
 $content = create_tabs(
     [
         [
@@ -33,7 +44,7 @@ $content = create_tabs(
     ])
     .create_panel(
         'Options',
-        $deleteLink
+        Page\twoColumns($editLink, $deleteLink)
     )
 );
 
