@@ -2,8 +2,8 @@
 
 function create_tag_filter_bar ($tags, array $params) {
     $html =
-        '<div class="tags tagFilterBar">'
-            .'<span class="tags-label">Filter by tags:</span>';
+        '<div class="page-tags tagFilterBar">'
+            .'<span class="label">Filter by tags:</span>';
     foreach ($tags as $tag) {
         $tag_name = $tag->tag_name;
         $params['tag'] = $tag_name;
