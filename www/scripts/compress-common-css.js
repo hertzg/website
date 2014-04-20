@@ -10,6 +10,7 @@ var files = [
     'defaults.css',
     'common.css',
     'page.css',
+    'page-tags.css',
     'textList.css',
     'form.css',
     'form-select.css',

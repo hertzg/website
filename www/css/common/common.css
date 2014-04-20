@@ -33,17 +33,6 @@
     height: 1px;
 }
 
-.tags {
-    padding: 6px 16px 0px;
-    line-height: 42px;
-}
-.tags-label {
-    display: inline-block;
-    vertical-align: top;
-    line-height: 36px;
-    margin-right: 8px;
-}
-
 .tagFilterBar {
     background: #eee;
     color: #444;

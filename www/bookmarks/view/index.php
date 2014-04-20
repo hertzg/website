@@ -29,8 +29,8 @@ $items[] = Page\text(htmlspecialchars($url));
 include_once '../../fns/BookmarkTags/indexOnBookmark.php';
 $tags = BookmarkTags\indexOnBookmark($mysqli, $id);
 if ($tags) {
-    include_once '../../fns/create_tags.php';
-    $items[] = create_tags('../', $tags);
+    include_once '../../fns/Page/tags.php';
+    $items[] = Page\tags('../', $tags);
 }
 
 $insert_time = $bookmark->insert_time;

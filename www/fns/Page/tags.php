@@ -1,9 +1,11 @@
 <?php
 
-function create_tags ($base, $tags) {
+namespace Page;
+
+function tags ($base, $tags) {
     $html =
-        '<div class="page-text tags">'
-            .'<span class="tags-label">Tags:</span>';
+        '<div class="page-tags">'
+            .'<span class="label">Tags:</span>';
     foreach ($tags as $tag) {
         $escapedTag = htmlspecialchars($tag->tag_name);
         $html .=

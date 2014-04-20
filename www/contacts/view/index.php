@@ -50,8 +50,8 @@ $update_time = $contact->update_time;
 include_once '../../fns/ContactTags/indexOnContact.php';
 $tags = ContactTags\indexOnContact($mysqli, $id);
 if ($tags) {
-    include_once '../../fns/create_tags.php';
-    $items[] = create_tags('../', $tags);
+    include_once '../../fns/Page/tags.php';
+    $items[] = Page\tags('../', $tags);
 }
 
 include_once '../../fns/date_ago.php';

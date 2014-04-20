@@ -28,8 +28,8 @@ $items[] = Page\text(
 include_once __DIR__.'/../../fns/TaskTags/indexOnTask.php';
 $tags = TaskTags\indexOnTask($mysqli, $id);
 if ($tags) {
-    include_once '../../fns/create_tags.php';
-    $items[] = create_tags('../', $tags);
+    include_once '../../fns/Page/tags.php';
+    $items[] = Page\tags('../', $tags);
 }
 
 $insert_time = $task->insert_time;

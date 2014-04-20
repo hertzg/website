@@ -28,8 +28,8 @@ $items[] = Page\text(
 include_once '../../fns/NoteTags/indexOnNote.php';
 $tags = NoteTags\indexOnNote($mysqli, $id);
 if ($tags) {
-    include_once '../../fns/create_tags.php';
-    $items[] = create_tags('../', $tags);
+    include_once '../../fns/Page/tags.php';
+    $items[] = Page\tags('../', $tags);
 }
 
 $insert_time = $note->insert_time;
