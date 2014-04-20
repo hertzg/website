@@ -61,7 +61,7 @@ $items[] = Form\button('Save Changes');
 
 include_once '../../../../fns/Page/tabs.php';
 include_once '../../../../fns/Page/sessionErrors.php';
-$content = create_tabs(
+$content = Page\tabs(
     [
         [
             'title' => '&middot;&middot;&middot;',

@@ -49,7 +49,7 @@ include_once '../../fns/ItemList/listHref.php';
 include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Page/sessionMessages.php';
 $content =
-    create_tabs(
+    Page\tabs(
         [
             [
                 'title' => '&middot;&middot;&middot;',

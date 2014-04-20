@@ -23,7 +23,7 @@ include_once '../../fns/Page/infoText.php';
 include_once '../../fns/Form/label.php';
 include_once '../../fns/Page/sessionMessages.php';
 $content =
-    create_tabs(
+    Page\tabs(
         [
             [
                 'title' => '&middot;&middot;&middot;',

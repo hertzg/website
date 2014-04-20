@@ -34,7 +34,7 @@ include_once 'fns/create_options_panel.php';
 include_once '../../../fns/create_panel.php';
 include_once '../../../fns/Page/tabs.php';
 include_once '../../../fns/Form/label.php';
-$content = create_tabs(
+$content = Page\tabs(
     [
         [
             'title' => '&middot;&middot;&middot;',

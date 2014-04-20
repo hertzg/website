@@ -32,7 +32,7 @@ include_once '../fns/Form/password.php';
 include_once '../fns/Form/textfield.php';
 include_once '../fns/Page/imageLinkWithDescription.php';
 include_once '../fns/Page/sessionErrors.php';
-$content = create_tabs(
+$content = Page\tabs(
     [],
     'Sign Up',
     Page\sessionErrors('sign-up/errors')

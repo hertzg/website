@@ -65,7 +65,7 @@ $items[] = Page\infoText(
 include_once 'fns/create_options_panel.php';
 include_once '../../../fns/create_panel.php';
 include_once '../../../fns/Page/tabs.php';
-$content = create_tabs(
+$content = Page\tabs(
     [
         [
             'title' => '&middot;&middot;&middot;',

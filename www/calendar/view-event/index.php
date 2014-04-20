@@ -24,7 +24,7 @@ include_once '../../fns/Page/sessionMessages.php';
 include_once '../../fns/Page/text.php';
 include_once '../../fns/Page/twoColumns.php';
 $content =
-    create_tabs(
+    Page\tabs(
         [
             [
                 'title' => '&middot;&middot;&middot;',

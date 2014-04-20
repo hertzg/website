@@ -58,7 +58,7 @@ include_once '../fns/Page/imageArrowLink.php';
 include_once '../fns/Page/sessionErrors.php';
 include_once '../fns/Page/sessionMessages.php';
 $content =
-    create_tabs(
+    Page\tabs(
         [
             [
                 'title' => 'Home',

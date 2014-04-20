@@ -32,7 +32,7 @@ include_once '../../../fns/Form/checkbox.php';
 include_once '../../../fns/Form/notes.php';
 include_once '../../../fns/Form/textfield.php';
 include_once '../../../fns/Page/sessionErrors.php';
-$content = create_tabs(
+$content = Page\tabs(
     [
         [
             'title' => '&middot;&middot;&middot;',

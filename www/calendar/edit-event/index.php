@@ -25,7 +25,7 @@ include_once '../../fns/Form/datefield.php';
 include_once '../../fns/Form/hidden.php';
 include_once '../../fns/Form/textfield.php';
 include_once '../../fns/Page/sessionErrors.php';
-$content = create_tabs(
+$content = Page\tabs(
     [
         [
             'title' => '&middot;&middot;&middot;',

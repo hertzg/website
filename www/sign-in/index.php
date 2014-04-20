@@ -46,7 +46,7 @@ include_once '../fns/Form/password.php';
 include_once '../fns/Form/textfield.php';
 include_once '../fns/Page/sessionErrors.php';
 include_once '../fns/Page/sessionMessages.php';
-$content = create_tabs(
+$content = Page\tabs(
     [],
     'Sign In',
     Page\sessionMessages('sign-in/messages')

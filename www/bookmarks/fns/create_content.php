@@ -6,7 +6,7 @@ function create_content ($user, $filterMessage, array $items) {
     include_once __DIR__.'/../../fns/Page/sessionErrors.php';
     include_once __DIR__.'/../../fns/Page/sessionMessages.php';
     return
-        create_tabs(
+        Page\tabs(
             [
                 [
                     'title' => 'Home',

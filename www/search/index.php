@@ -77,7 +77,7 @@ if ($bookmarks || $contacts || $notes || $tasks || $folders || $files) {
 }
 
 include_once '../fns/Page/tabs.php';
-$content = create_tabs([], 'Home', join('<div class="hr"></div>', $items));
+$content = Page\tabs([], 'Home', join('<div class="hr"></div>', $items));
 
 include_once '../fns/echo_page.php';
 echo_page($user, 'Search: '.htmlspecialchars($keyword), $content, $base);

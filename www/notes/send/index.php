@@ -23,7 +23,7 @@ include_once '../../fns/ItemList/itemHiddenInputs.php';
 include_once '../../fns/Page/sessionErrors.php';
 include_once '../../fns/Page/warnings.php';
 include_once '../../fns/Username/maxLength.php';
-$content = create_tabs(
+$content = Page\tabs(
     [
         [
             'title' => '&middot;&middot;&middot;',

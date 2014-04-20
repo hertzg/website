@@ -11,7 +11,7 @@ function create_content ($base, array $values) {
     include_once __DIR__.'/../../../fns/Form/datefield.php';
     include_once __DIR__.'/../../../fns/Form/textfield.php';
     include_once __DIR__.'/../../../fns/Page/sessionErrors.php';
-    return create_tabs(
+    return Page\tabs(
         [
             [
                 'title' => '&middot;&middot;&middot;',

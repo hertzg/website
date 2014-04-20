@@ -15,7 +15,7 @@ include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../fns/Page/imageArrowLinkWithDescription.php';
 include_once '../../fns/Page/sessionMessages.php';
-$content = create_tabs(
+$content = Page\tabs(
     [
         [
             'title' => 'Home',

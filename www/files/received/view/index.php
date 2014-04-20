@@ -27,7 +27,7 @@ include_once '../../../fns/date_ago.php';
 include_once '../../../fns/Page/infoText.php';
 include_once '../../../fns/Form/label.php';
 include_once '../../../fns/Page/twoColumns.php';
-$content = create_tabs(
+$content = Page\tabs(
     [
         [
             'title' => '&middot;&middot;&middot;',

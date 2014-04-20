@@ -12,7 +12,7 @@ function create_content ($base, $id, array $values) {
     include_once __DIR__.'/../../../../fns/Form/hidden.php';
     include_once __DIR__.'/../../../../fns/Form/textfield.php';
     include_once __DIR__.'/../../../../fns/Page/sessionErrors.php';
-    return create_tabs(
+    return Page\tabs(
         [
             [
                 'title' => '&middot;&middot;&middot;',

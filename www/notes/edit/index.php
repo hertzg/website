@@ -28,7 +28,7 @@ include_once '../../fns/Form/textarea.php';
 include_once '../../fns/Form/textfield.php';
 include_once '../../fns/ItemList/itemHiddenInputs.php';
 include_once '../../fns/Page/sessionErrors.php';
-$content = create_tabs(
+$content = Page\tabs(
     [
         [
             'title' => '&middot;&middot;&middot;',

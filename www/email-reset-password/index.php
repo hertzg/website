@@ -23,7 +23,7 @@ include_once '../fns/Form/button.php';
 include_once '../fns/Form/captcha.php';
 include_once '../fns/Form/textfield.php';
 include_once '../fns/Page/sessionErrors.php';
-$content = create_tabs(
+$content = Page\tabs(
     [
         [
             'title' => 'Sign In',
