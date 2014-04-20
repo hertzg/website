@@ -24,7 +24,7 @@ unset(
 include_once '../../fns/Tasks/maxLengths.php';
 $maxLengths = Tasks\maxLengths();
 
-include_once '../../fns/create_tabs.php';
+include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/checkbox.php';
 include_once '../../fns/Form/textarea.php';

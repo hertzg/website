@@ -66,7 +66,7 @@ if (array_key_exists($key, $_SESSION) && $id_folders != $_SESSION[$key]) {
 }
 
 include_once 'fns/create_options_panel.php';
-include_once '../fns/create_tabs.php';
+include_once '../fns/Page/tabs.php';
 include_once '../fns/Page/sessionMessages.php';
 $content =
     create_tabs(

@@ -17,7 +17,7 @@ include_once 'fns/create_options_panel.php';
 include_once 'fns/create_preview.php';
 include_once '../../fns/bytestr.php';
 include_once '../../fns/create_folder_link.php';
-include_once '../../fns/create_tabs.php';
+include_once '../../fns/Page/tabs.php';
 include_once '../../fns/date_ago.php';
 include_once '../../fns/Page/infoText.php';
 include_once '../../fns/Form/label.php';

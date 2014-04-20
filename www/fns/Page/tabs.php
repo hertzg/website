@@ -1,6 +1,8 @@
 <?php
 
-function create_tabs (array $tabs, $activeTabTitle, $content) {
+namespace Page;
+
+function tabs (array $tabs, $activeTabTitle, $content) {
 
     $itemsHtml = '';
     foreach ($tabs as $tab) {

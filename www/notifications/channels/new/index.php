@@ -26,7 +26,7 @@ $maxLength = ChannelName\maxLength();
 include_once '../../../fns/ChannelName/minLength.php';
 $minLength = ChannelName\minLength();
 
-include_once '../../../fns/create_tabs.php';
+include_once '../../../fns/Page/tabs.php';
 include_once '../../../fns/Form/button.php';
 include_once '../../../fns/Form/checkbox.php';
 include_once '../../../fns/Form/notes.php';

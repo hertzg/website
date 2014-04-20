@@ -14,7 +14,7 @@ if (array_key_exists($key, $_SESSION)) {
 include_once '../../../fns/Bookmarks/maxLengths.php';
 $maxLengths = Bookmarks\maxLengths();
 
-include_once '../../../fns/create_tabs.php';
+include_once '../../../fns/Page/tabs.php';
 include_once '../../../fns/Form/button.php';
 include_once '../../../fns/Form/hidden.php';
 include_once '../../../fns/Form/textfield.php';

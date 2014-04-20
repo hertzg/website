@@ -6,7 +6,7 @@ list($event, $id, $user) = require_event($mysqli);
 
 unset($_SESSION['calendar/view-event/messages']);
 
-include_once '../../fns/create_tabs.php';
+include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Page/imageLink.php';
 include_once '../../fns/Page/text.php';
 include_once '../../fns/Page/twoColumns.php';

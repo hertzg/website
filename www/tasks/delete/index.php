@@ -10,7 +10,7 @@ include_once '../../fns/ItemList/escapedItemQuery.php';
 $escapedItemQuery = ItemList\escapedItemQuery($id);
 
 include_once '../../fns/ItemList/listHref.php';
-include_once '../../fns/create_tabs.php';
+include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Page/imageLink.php';
 include_once '../../fns/Page/text.php';
 include_once '../../fns/Page/twoColumns.php';

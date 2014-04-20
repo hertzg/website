@@ -24,7 +24,7 @@ unset(
 include_once '../../fns/Bookmarks/maxLengths.php';
 $maxLengths = Bookmarks\maxLengths();
 
-include_once '../../fns/create_tabs.php';
+include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/textfield.php';
 include_once '../../fns/Page/sessionErrors.php';

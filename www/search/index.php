@@ -76,7 +76,7 @@ if ($bookmarks || $contacts || $notes || $tasks || $folders || $files) {
 
 }
 
-include_once '../fns/create_tabs.php';
+include_once '../fns/Page/tabs.php';
 $content = create_tabs([], 'Home', join('<div class="hr"></div>', $items));
 
 include_once '../fns/echo_page.php';

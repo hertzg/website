@@ -23,7 +23,7 @@ unset(
 include_once '../../fns/Notes/maxLengths.php';
 $maxLengths = Notes\maxLengths();
 
-include_once '../../fns/create_tabs.php';
+include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/textarea.php';
 include_once '../../fns/Form/textfield.php';

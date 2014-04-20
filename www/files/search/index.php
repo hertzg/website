@@ -72,7 +72,7 @@ include_once '../fns/unset_session_vars.php';
 unset_session_vars();
 
 include_once '../fns/create_options_panel.php';
-include_once '../../fns/create_tabs.php';
+include_once '../../fns/Page/tabs.php';
 $content =
     create_tabs(
         [

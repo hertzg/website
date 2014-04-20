@@ -21,7 +21,7 @@ foreach ($userHomeItems as $key => $item) {
 unset($_SESSION['home/customize/messages']);
 
 include_once 'fns/create_options_panel.php';
-include_once '../../../fns/create_tabs.php';
+include_once '../../../fns/Page/tabs.php';
 include_once '../../../fns/Page/sessionMessages.php';
 include_once '../../../fns/Page/warnings.php';
 $content = create_tabs(

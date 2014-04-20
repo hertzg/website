@@ -67,7 +67,7 @@ unset(
 );
 
 include_once '../../fns/create_folder_link.php';
-include_once '../../fns/create_tabs.php';
+include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Page/sessionErrors.php';
 include_once '../../fns/Page/warnings.php';
 $content = create_tabs(

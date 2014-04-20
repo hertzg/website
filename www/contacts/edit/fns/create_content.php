@@ -7,7 +7,7 @@ function create_content ($id, array $values) {
 
     include_once __DIR__.'/../../../fns/ItemList/escapedItemQuery.php';
     include_once __DIR__.'/../../../fns/ItemList/listHref.php';
-    include_once __DIR__.'/../../../fns/create_tabs.php';
+    include_once __DIR__.'/../../../fns/Page/tabs.php';
     include_once __DIR__.'/../../../fns/Form/button.php';
     include_once __DIR__.'/../../../fns/Form/checkbox.php';
     include_once __DIR__.'/../../../fns/Form/datefield.php';

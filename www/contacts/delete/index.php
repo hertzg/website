@@ -17,7 +17,7 @@ $yesLink = Page\imageLink('Yes, delete contact', $href, 'yes');
 $noLink = Page\imageLink('No, return back', "../view/$escapedItemQuery", 'no');
 
 include_once '../../fns/ItemList/listHref.php';
-include_once '../../fns/create_tabs.php';
+include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Page/text.php';
 include_once '../../fns/Page/twoColumns.php';
 $content = create_tabs(

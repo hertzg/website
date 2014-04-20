@@ -4,7 +4,7 @@ include_once '../fns/require_received_file.php';
 include_once '../../../lib/mysqli.php';
 list($receivedFile, $id, $user) = require_received_file($mysqli);
 
-include_once '../../../fns/create_tabs.php';
+include_once '../../../fns/Page/tabs.php';
 include_once '../../../fns/Page/imageLink.php';
 include_once '../../../fns/Page/text.php';
 include_once '../../../fns/Page/twoColumns.php';

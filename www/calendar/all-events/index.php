@@ -45,7 +45,7 @@ unset(
 );
 
 include_once '../../fns/create_panel.php';
-include_once '../../fns/create_tabs.php';
+include_once '../../fns/Page/tabs.php';
 $content =
     create_tabs(
         [

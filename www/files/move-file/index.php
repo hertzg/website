@@ -57,7 +57,7 @@ if (array_key_exists($key, $_SESSION) && $id_folders != $_SESSION[$key]) {
 unset($_SESSION['files/view-file/messages']);
 
 include_once '../../fns/create_folder_link.php';
-include_once '../../fns/create_tabs.php';
+include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Page/warnings.php';
 include_once '../../fns/Page/sessionErrors.php';
 $content = create_tabs(

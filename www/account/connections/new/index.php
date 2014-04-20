@@ -69,7 +69,7 @@ $items[] = Form\checkbox($base, $name, $title, $checked);
 include_once '../../../fns/Form/button.php';
 $items[] = Form\button('Save Connection');
 
-include_once '../../../fns/create_tabs.php';
+include_once '../../../fns/Page/tabs.php';
 include_once '../../../fns/Page/sessionErrors.php';
 $content = create_tabs(
     [

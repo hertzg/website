@@ -11,7 +11,7 @@ unset(
     $_SESSION['home/customize/show-hide/messages']
 );
 
-include_once '../../fns/create_tabs.php';
+include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../fns/Page/imageArrowLinkWithDescription.php';
 include_once '../../fns/Page/sessionMessages.php';

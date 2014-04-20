@@ -33,7 +33,7 @@ $title = 'Delete All Bookmarks';
 $deleteAllLink = Page\imageArrowLink($title, 'delete-all/', 'trash-bin');
 
 include_once '../../fns/create_panel.php';
-include_once '../../fns/create_tabs.php';
+include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Page/sessionMessages.php';
 $content = create_tabs(
     [

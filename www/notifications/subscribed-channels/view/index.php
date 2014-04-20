@@ -30,7 +30,7 @@ $items[] = Page\infoText(
 );
 
 include_once 'fns/create_options_panel.php';
-include_once '../../../fns/create_tabs.php';
+include_once '../../../fns/Page/tabs.php';
 include_once '../../../fns/Page/sessionMessages.php';
 $content =
     create_tabs(

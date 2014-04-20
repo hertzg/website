@@ -18,7 +18,7 @@ foreach ($themes as $id => $theme) {
     $themeItems[] = Page\imageLink($theme, $href, "$id-theme");
 }
 
-include_once '../../fns/create_tabs.php';
+include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Page/warnings.php';
 $content = create_tabs(
     [

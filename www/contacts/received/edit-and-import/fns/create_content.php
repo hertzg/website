@@ -5,7 +5,7 @@ function create_content ($base, $id, array $values) {
     include_once __DIR__.'/../../../../fns/Contacts/maxLengths.php';
     $maxLengths = Contacts\maxLengths();
 
-    include_once __DIR__.'/../../../../fns/create_tabs.php';
+    include_once __DIR__.'/../../../../fns/Page/tabs.php';
     include_once __DIR__.'/../../../../fns/Form/button.php';
     include_once __DIR__.'/../../../../fns/Form/checkbox.php';
     include_once __DIR__.'/../../../../fns/Form/datefield.php';

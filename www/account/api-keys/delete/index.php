@@ -6,7 +6,7 @@ list($apiKey, $id, $user) = require_api_key($mysqli);
 
 unset($_SESSION['account/api-keys/view/messages']);
 
-include_once '../../../fns/create_tabs.php';
+include_once '../../../fns/Page/tabs.php';
 include_once '../../../fns/Page/imageLink.php';
 include_once '../../../fns/Page/text.php';
 $content = create_tabs(

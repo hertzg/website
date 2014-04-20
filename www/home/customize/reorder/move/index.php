@@ -10,7 +10,7 @@ unset($_SESSION['home/customize/reorder/messages']);
 $topHref = "submit-to-top.php?key=$key";
 $bottomHref = "submit-to-bottom.php?key=$key";
 
-include_once '../../../../fns/create_tabs.php';
+include_once '../../../../fns/Page/tabs.php';
 include_once '../../../../fns/Page/imageLink.php';
 include_once '../../../../fns/Page/text.php';
 $content = create_tabs(

@@ -59,7 +59,7 @@ if ($connection->can_send_task) {
 }
 
 include_once '../../../fns/create_panel.php';
-include_once '../../../fns/create_tabs.php';
+include_once '../../../fns/Page/tabs.php';
 include_once '../../../fns/Form/label.php';
 include_once '../../../fns/Page/sessionMessages.php';
 include_once '../../../fns/Page/twoColumns.php';
