@@ -7,8 +7,8 @@ function require_note ($mysqli, $id_users) {
 
     $id = abs((int)$id);
 
-    include_once __DIR__.'/../../../fns/Notes/get.php';
-    $note = Notes\get($mysqli, $id_users, $id);
+    include_once __DIR__.'/../../../fns/Notes/getOnUser.php';
+    $note = Notes\getOnUser($mysqli, $id_users, $id);
 
     if (!$note) {
         include_once __DIR__.'/../../fns/bad_request.php';
