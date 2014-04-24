@@ -7,11 +7,11 @@ include_once '../../fns/require_user.php';
 $user = require_user('../../');
 $id_users = $user->id_users;
 
-include_once '../../fns/request_strings.php';
-list($text, $tags) = request_strings('text', 'tags');
+include_once '../../fns/Notes/requestText.php';
+$text = Notes\requestText();
 
-include_once '../../fns/str_collapse_spaces_multiline.php';
-$text = str_collapse_spaces_multiline($text);
+include_once '../../fns/request_strings.php';
+list($tags) = request_strings('tags');
 
 include_once '../../fns/str_collapse_spaces.php';
 $tags = str_collapse_spaces($tags);
