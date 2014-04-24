@@ -8,12 +8,11 @@ include_once '../../lib/mysqli.php';
 list($task, $id, $user) = require_task($mysqli);
 $id_users = $user->id_users;
 
-include_once '../../fns/request_strings.php';
-list($text, $tags, $top_priority) = request_strings(
-    'text', 'tags', 'top_priority');
+include_once '../../fns/Tasks/requestText.php';
+$text = Tasks\requestText();
 
-include_once '../../fns/str_collapse_spaces_multiline.php';
-$text = str_collapse_spaces_multiline($text);
+include_once '../../fns/request_strings.php';
+list($tags, $top_priority) = request_strings('tags', 'top_priority');
 
 include_once '../../fns/str_collapse_spaces.php';
 $tags = str_collapse_spaces($tags);
