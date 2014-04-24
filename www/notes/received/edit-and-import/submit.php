@@ -8,15 +8,10 @@ include_once '../../../lib/mysqli.php';
 list($receivedNote, $id, $user) = require_received_note($mysqli);
 $id_users = $user->id_users;
 
-include_once '../../../fns/Notes/requestText.php';
-$text = Notes\requestText();
-
 $errors = [];
 
-if ($text === '') $errors[] = 'Enter URL.';
-
-include_once '../../../fns/request_tags.php';
-request_tags($tags, $tag_names, $errors);
+include_once '../../fns/request_note_params.php';
+list($text, $tags, $tag_names) = request_note_params($errors);
 
 include_once '../../../fns/redirect.php';
 
