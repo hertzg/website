@@ -10,8 +10,17 @@ unset(
     $_SESSION['tasks/received/messages']
 );
 
+$base = '../../../';
+
+include_once '../../../fns/render_external_links.php';
 include_once '../../../fns/Page/text.php';
-$items = [Page\text(htmlspecialchars($receivedTask->text))];
+$items = [
+    Page\text(
+        nl2br(
+            render_external_links(htmlspecialchars($receivedTask->text), $base)
+        )
+    ),
+];
 
 $tags = $receivedTask->tags;
 if ($tags !== '') $items[] = Page\text('Tags: '.htmlspecialchars($tags));
@@ -46,4 +55,4 @@ $content = Page\tabs(
 );
 
 include_once '../../../fns/echo_page.php';
-echo_page($user, "Received Task #$id", $content, '../../../');
+echo_page($user, "Received Task #$id", $content, $base);
