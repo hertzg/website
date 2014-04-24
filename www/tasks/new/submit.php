@@ -11,19 +11,16 @@ include_once '../../fns/Tasks/requestText.php';
 $text = Tasks\requestText();
 
 include_once '../../fns/request_strings.php';
-list($top_priority, $tags) = request_strings('top_priority', 'tags');
+list($top_priority) = request_strings('top_priority');
 
 $top_priority = (bool)$top_priority;
-
-include_once '../../fns/str_collapse_spaces.php';
-$tags = str_collapse_spaces($tags);
 
 $errors = [];
 
 if ($text === '') $errors[] = 'Enter text.';
 
-include_once '../../fns/parse_tags.php';
-parse_tags($tags, $tag_names, $errors);
+include_once '../../fns/request_tags.php';
+request_tags($tags, $tag_names, $errors);
 
 include_once '../../fns/redirect.php';
 

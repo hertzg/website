@@ -12,10 +12,7 @@ include_once '../../fns/Tasks/requestText.php';
 $text = Tasks\requestText();
 
 include_once '../../fns/request_strings.php';
-list($tags, $top_priority) = request_strings('tags', 'top_priority');
-
-include_once '../../fns/str_collapse_spaces.php';
-$tags = str_collapse_spaces($tags);
+list($top_priority) = request_strings('top_priority');
 
 $top_priority = (bool)$top_priority;
 
@@ -23,8 +20,8 @@ $errors = [];
 
 if ($text === '') $errors[] = 'Enter text.';
 
-include_once '../../fns/parse_tags.php';
-parse_tags($tags, $tag_names, $errors);
+include_once '../../fns/request_tags.php';
+request_tags($tags, $tag_names, $errors);
 
 include_once '../../fns/ItemList/itemQuery.php';
 $itemQuery = ItemList\itemQuery($id);

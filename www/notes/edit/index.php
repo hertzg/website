@@ -5,16 +5,10 @@ include_once '../../lib/mysqli.php';
 list($note, $id, $user) = require_note($mysqli);
 
 $key = 'notes/edit/values';
-if (array_key_exists($key, $_SESSION)) {
-    $values = $_SESSION[$key];
-} else {
-    $values = (array)$note;
-}
+if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
+else $values = (array)$note;
 
-unset(
-    $_SESSION['notes/errors'],
-    $_SESSION['notes/messages']
-);
+unset($_SESSION['notes/view/messages']);
 
 include_once '../../fns/Notes/maxLengths.php';
 $maxLengths = Notes\maxLengths();

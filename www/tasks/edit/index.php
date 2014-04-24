@@ -8,10 +8,7 @@ $key = 'tasks/edit/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else $values = (array)$task;
 
-unset(
-    $_SESSION['tasks/errors'],
-    $_SESSION['tasks/messages']
-);
+unset($_SESSION['tasks/view/messages']);
 
 include_once '../../fns/Tasks/maxLengths.php';
 $maxLengths = Tasks\maxLengths();

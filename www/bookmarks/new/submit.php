@@ -8,19 +8,18 @@ $user = require_user('../../');
 $id_users = $user->id_users;
 
 include_once '../../fns/request_strings.php';
-list($title, $url, $tags) = request_strings('title', 'url', 'tags');
+list($title, $url) = request_strings('title', 'url');
 
 include_once '../../fns/str_collapse_spaces.php';
 $title = str_collapse_spaces($title);
 $url = str_collapse_spaces($url);
-$tags = str_collapse_spaces($tags);
 
 $errors = [];
 
 if ($url === '') $errors[] = 'Enter URL.';
 
-include_once '../../fns/parse_tags.php';
-parse_tags($tags, $tag_names, $errors);
+include_once '../../fns/request_tags.php';
+request_tags($tags, $tag_names, $errors);
 
 include_once '../../fns/redirect.php';
 

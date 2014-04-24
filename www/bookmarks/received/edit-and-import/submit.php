@@ -9,19 +9,18 @@ list($receivedBookmark, $id, $user) = require_received_bookmark($mysqli);
 $id_users = $user->id_users;
 
 include_once '../../../fns/request_strings.php';
-list($url, $title, $tags) = request_strings('url', 'title', 'tags');
+list($url, $title) = request_strings('url', 'title');
 
 include_once '../../../fns/str_collapse_spaces.php';
 $title = str_collapse_spaces($title);
 $url = str_collapse_spaces($url);
-$tags = str_collapse_spaces($tags);
 
 $errors = [];
 
 if ($url === '') $errors[] = 'Enter URL.';
 
-include_once '../../../fns/parse_tags.php';
-parse_tags($tags, $tag_names, $errors);
+include_once '../../../fns/request_tags.php';
+request_tags($tags, $tag_names, $errors);
 
 include_once '../../../fns/redirect.php';
 

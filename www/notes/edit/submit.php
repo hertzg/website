@@ -11,18 +11,12 @@ $id_users = $user->id_users;
 include_once '../../fns/Notes/requestText.php';
 $text = Notes\requestText();
 
-include_once '../../fns/request_strings.php';
-list($tags) = request_strings('tags');
-
-include_once '../../fns/str_collapse_spaces.php';
-$tags = str_collapse_spaces($tags);
-
 $errors = [];
 
 if ($text === '') $errors[] = 'Enter text.';
 
-include_once '../../fns/parse_tags.php';
-parse_tags($tags, $tag_names, $errors);
+include_once '../../fns/request_tags.php';
+request_tags($tags, $tag_names, $errors);
 
 include_once '../../fns/ItemList/itemQuery.php';
 $itemQuery = ItemList\itemQuery($id);

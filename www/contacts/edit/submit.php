@@ -11,10 +11,10 @@ $id_users = $user->id_users;
 include_once '../../fns/request_strings.php';
 list($full_name, $alias, $address, $email, $phone1,
     $phone2, $birthday_day, $birthday_month, $birthday_year,
-    $username, $tags, $favorite) = request_strings(
+    $username, $favorite) = request_strings(
     'full_name', 'alias', 'address', 'email', 'phone1',
     'phone2', 'birthday_day', 'birthday_month', 'birthday_year',
-    'username', 'tags', 'favorite');
+    'username', 'favorite');
 
 include_once '../../fns/str_collapse_spaces.php';
 $full_name = str_collapse_spaces($full_name);
@@ -24,7 +24,6 @@ $email = str_collapse_spaces($email);
 $phone1 = str_collapse_spaces($phone1);
 $phone2 = str_collapse_spaces($phone2);
 $username = str_collapse_spaces($username);
-$tags = str_collapse_spaces($tags);
 $favorite = (bool)$favorite;
 
 $birthday_day = abs((int)$birthday_day);
@@ -48,8 +47,8 @@ include_once '../fns/parse_birthday.php';
 parse_birthday($birthday_day, $birthday_month,
     $birthday_year, $errors, $birthday_time);
 
-include_once '../../fns/parse_tags.php';
-parse_tags($tags, $tag_names, $errors);
+include_once '../../fns/request_tags.php';
+request_tags($tags, $tag_names, $errors);
 
 include_once '../../fns/ItemList/itemQuery.php';
 $itemQuery = ItemList\itemQuery($id);

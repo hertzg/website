@@ -5,16 +5,10 @@ include_once '../../lib/mysqli.php';
 list($bookmark, $id, $user) = require_bookmark($mysqli);
 
 $key = 'bookmarks/edit/values';
-if (array_key_exists($key, $_SESSION)) {
-    $values = $_SESSION[$key];
-} else {
-    $values = (array)$bookmark;
-}
+if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
+else $values = (array)$bookmark;
 
-unset(
-    $_SESSION['bookmarks/errors'],
-    $_SESSION['bookmarks/messages']
-);
+unset($_SESSION['bookmarks/view/messages']);
 
 include_once '../../fns/Bookmarks/maxLengths.php';
 $maxLengths = Bookmarks\maxLengths();
