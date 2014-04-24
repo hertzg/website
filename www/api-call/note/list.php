@@ -10,11 +10,11 @@ header('Content-Type: application/json');
 echo json_encode(
     array_map(function ($note) {
         return [
-            'id' => $note->id_notes,
+            'id' => (int)$note->id_notes,
             'text' => $note->text,
             'tags' => $note->tags,
-            'insert_time' => $note->insert_time,
-            'update_time' => $note->update_time,
+            'insert_time' => (int)$note->insert_time,
+            'update_time' => (int)$note->update_time,
         ];
     }, $notes)
 );

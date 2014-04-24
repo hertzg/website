@@ -7,7 +7,7 @@ function request_note_params () {
 
     if ($text === '') {
         include_once __DIR__.'/../../fns/bad_request.php';
-        bad_request('Enter text.');
+        bad_request('ENTER_TEXT');
     }
 
     include_once __DIR__.'/../../fns/request_tags.php';

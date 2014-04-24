@@ -15,7 +15,10 @@ function require_api_key () {
 
     if (!$apiKey) {
         http_response_code(403);
-        die('403 Forbidden');
+        header('Content-Type: application/json');
+        die(json_encode([
+            'error' => 'INVALID_API_KEY',
+        ]));
     }
 
     return [$apiKey, $apiKey->id_users, $mysqli];
