@@ -7,8 +7,8 @@ function require_bookmark ($mysqli, $id_users) {
 
     $id = abs((int)$id);
 
-    include_once __DIR__.'/../../../fns/Bookmarks/get.php';
-    $bookmark = Bookmarks\get($mysqli, $id_users, $id);
+    include_once __DIR__.'/../../../fns/Bookmarks/getOnUser.php';
+    $bookmark = Bookmarks\getOnUser($mysqli, $id_users, $id);
 
     if (!$bookmark) {
         include_once __DIR__.'/../../fns/bad_request.php';
