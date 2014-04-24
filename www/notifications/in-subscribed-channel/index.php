@@ -83,7 +83,6 @@ $content = Page\tabs(
             .'<span class="icon no"></span>'
         .'</a>'
     .'</div>'
-    .'<div class="hr"></div>'
     .join('<div class="hr"></div>', $items)
     .create_panel('Options', join('<div class="hr"></div>', $options))
 );

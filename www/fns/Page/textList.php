@@ -11,7 +11,6 @@ function textList (array $texts, $class) {
     }
     $html .=
             '</ul>'
-            .'<div class="hr"></div>'
         .'</div>';
     return $html;
 }

@@ -13,8 +13,6 @@ function create_tag_filter_bar ($tags, array $params) {
                 .htmlspecialchars($tag_name)
             .'</a>';
     }
-    $html .=
-        '</div>'
-        .'<div class="hr"></div>';
+    $html .= '</div>';
     return $html;
 }

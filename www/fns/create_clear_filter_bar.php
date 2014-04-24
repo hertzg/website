@@ -7,6 +7,5 @@ function create_clear_filter_bar ($tag, $clearHref) {
             ."<a class=\"clickable\" title=\"Clear Filter\" href=\"$clearHref\">"
                 .'<span class="icon no"></span>'
             .'</a>'
-        .'</div>'
-        .'<div class="hr"></div>';
+        .'</div>';
 }
