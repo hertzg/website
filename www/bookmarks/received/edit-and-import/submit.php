@@ -8,19 +8,10 @@ include_once '../../../lib/mysqli.php';
 list($receivedBookmark, $id, $user) = require_received_bookmark($mysqli);
 $id_users = $user->id_users;
 
-include_once '../../../fns/request_strings.php';
-list($url, $title) = request_strings('url', 'title');
-
-include_once '../../../fns/str_collapse_spaces.php';
-$title = str_collapse_spaces($title);
-$url = str_collapse_spaces($url);
-
 $errors = [];
 
-if ($url === '') $errors[] = 'Enter URL.';
-
-include_once '../../../fns/request_tags.php';
-request_tags($tags, $tag_names, $errors);
+include_once '../../fns/request_bookmark_params.php';
+list($url, $title, $tags, $tag_names) = request_bookmark_params($errors);
 
 include_once '../../../fns/redirect.php';
 

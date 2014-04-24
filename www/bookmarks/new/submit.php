@@ -7,19 +7,10 @@ include_once '../../fns/require_user.php';
 $user = require_user('../../');
 $id_users = $user->id_users;
 
-include_once '../../fns/request_strings.php';
-list($title, $url) = request_strings('title', 'url');
-
-include_once '../../fns/str_collapse_spaces.php';
-$title = str_collapse_spaces($title);
-$url = str_collapse_spaces($url);
-
 $errors = [];
 
-if ($url === '') $errors[] = 'Enter URL.';
-
-include_once '../../fns/request_tags.php';
-request_tags($tags, $tag_names, $errors);
+include_once '../fns/request_bookmark_params.php';
+list($url, $title, $tags, $tag_names) = request_bookmark_params($errors);
 
 include_once '../../fns/redirect.php';
 
