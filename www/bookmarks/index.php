@@ -30,9 +30,9 @@ if ($tag === '') {
 
     $filterMessage = '';
 
-    include_once '../fns/Bookmarks/indexOnUser.php';
-    $bookmarks = Bookmarks\indexOnUser($mysqli, $id_users,
-        $offset, $limit, $total);
+    include_once '../fns/Bookmarks/indexPageOnUser.php';
+    $bookmarks = Bookmarks\indexPageOnUser($mysqli,
+        $id_users, $offset, $limit, $total);
 
     if ($total > 1) {
 

@@ -29,9 +29,9 @@ if ($offset % $limit) {
 
 if ($tag === '') {
 
-    include_once '../fns/Tasks/indexOnUser.php';
-    $tasks = Tasks\indexOnUser($mysqli, $id_users,
-        $offset, $limit, $total);
+    include_once '../fns/Tasks/indexPageOnUser.php';
+    $tasks = Tasks\indexPageOnUser($mysqli,
+        $id_users, $offset, $limit, $total);
 
     if ($total > 1) {
 

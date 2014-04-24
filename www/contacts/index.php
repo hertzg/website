@@ -29,9 +29,9 @@ if ($offset % $limit) {
 
 if ($tag === '') {
 
-    include_once '../fns/Contacts/indexOnUser.php';
-    $contacts = Contacts\indexOnUser($mysqli, $id_users,
-        $offset, $limit, $total);
+    include_once '../fns/Contacts/indexPageOnUser.php';
+    $contacts = Contacts\indexPageOnUser($mysqli,
+        $id_users, $offset, $limit, $total);
 
     if ($total > 1) {
 

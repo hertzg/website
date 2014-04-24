@@ -30,9 +30,9 @@ if ($tag === '') {
 
     $filterMessage = '';
 
-    include_once '../fns/Notes/indexOnUser.php';
-    $notes = Notes\indexOnUser($mysqli, $id_users,
-        $offset, $limit, $total);
+    include_once '../fns/Notes/indexPageOnUser.php';
+    $notes = Notes\indexPageOnUser($mysqli,
+        $id_users, $offset, $limit, $total);
 
     if ($total > 1) {
 
