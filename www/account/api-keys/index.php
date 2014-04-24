@@ -16,14 +16,14 @@ if ($apiKeys) {
     foreach ($apiKeys as $apiKey) {
         $title = htmlspecialchars($apiKey->name);
         $href = "view/?id=$apiKey->id";
-        $items[] = Page\imageArrowLink($title, $href, 'TODO');
+        $items[] = Page\imageArrowLink($title, $href, 'api-key');
     }
 } else {
     include_once '../../fns/Page/info.php';
     $items[] = Page\info('No keys');
 }
 
-$newLink = Page\imageArrowLink('New Key', 'new/', 'TODO');
+$newLink = Page\imageArrowLink('New Key', 'new/', 'create-api-key');
 
 unset(
     $_SESSION['account/api-keys/new/errors'],

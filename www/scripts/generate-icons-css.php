@@ -26,7 +26,8 @@ $names = ['blue-theme', 'green-theme', 'orange-theme', 'pink-theme',
     'move-to-top', 'move-down', 'move-to-bottom', 'reorder', 'show-hide',
     'restore-defaults', 'connection', 'create-connection', 'edit-connection',
     'connections', 'forbid-notifications', 'receive-notifications', 'user',
-    'add-user', 'remove-user', 'users', 'lock', 'unlock'];
+    'add-user', 'remove-user', 'users', 'lock', 'unlock', 'api-keys', 'api-key',
+    'create-api-key', 'edit-api-key'];
 
 $content = "/* auto-generated */\n";
 $x = 0;

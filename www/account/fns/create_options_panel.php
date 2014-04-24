@@ -25,7 +25,7 @@ function create_options_panel ($user) {
     $title = 'Manage Connections';
     $options[] = Page\imageArrowLink($title, 'connections/', 'connections');
 
-    $options[] = Page\imageArrowLink('API Keys', 'api-keys/', 'TODO');
+    $options[] = Page\imageArrowLink('API Keys', 'api-keys/', 'api-keys');
 
     $options[] = Page\imageArrowLink('Close Account', 'close/', 'trash-bin');
 

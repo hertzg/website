@@ -109,3 +109,7 @@
 .icon.users { background-position: -3424px 0; }
 .icon.lock { background-position: -3456px 0; }
 .icon.unlock { background-position: -3488px 0; }
+.icon.api-keys { background-position: -3520px 0; }
+.icon.api-key { background-position: -3552px 0; }
+.icon.create-api-key { background-position: -3584px 0; }
+.icon.edit-api-key { background-position: -3616px 0; }

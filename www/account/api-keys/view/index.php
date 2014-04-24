@@ -6,7 +6,7 @@ list($apiKey, $id, $user) = require_api_key($mysqli);
 
 include_once '../../../fns/Page/imageArrowLink.php';
 
-$editLink = Page\imageArrowLink('Edit', "../edit/?id=$id", 'TODO');
+$editLink = Page\imageArrowLink('Edit', "../edit/?id=$id", 'edit-api-key');
 
 $deleteLink = Page\imageArrowLink('Delete', "../delete/?id=$id", 'trash-bin');
 
