@@ -44,13 +44,13 @@ $content = Page\tabs(
             'autofocus' => true,
         ])
         .'<div class="hr"></div>'
-        .Form\checkbox($base, 'top_priority',
-            'Mark as Top Priority', $values['top_priority'])
-        .'<div class="hr"></div>'
         .Form\textfield('tags', 'Tags', [
             'value' => $values['tags'],
             'maxlength' => $maxLengths['tags'],
         ])
+        .'<div class="hr"></div>'
+        .Form\checkbox($base, 'top_priority',
+            'Mark as Top Priority', $values['top_priority'])
         .'<div class="hr"></div>'
         .Form\button('Import Task')
         .Form\hidden('id', $id)

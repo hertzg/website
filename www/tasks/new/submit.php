@@ -7,20 +7,10 @@ include_once '../../fns/require_user.php';
 $user = require_user('../../');
 $id_users = $user->id_users;
 
-include_once '../../fns/Tasks/requestText.php';
-$text = Tasks\requestText();
-
-include_once '../../fns/request_strings.php';
-list($top_priority) = request_strings('top_priority');
-
-$top_priority = (bool)$top_priority;
-
 $errors = [];
 
-if ($text === '') $errors[] = 'Enter text.';
-
-include_once '../../fns/request_tags.php';
-request_tags($tags, $tag_names, $errors);
+include_once '../fns/request_task_params.php';
+list($text, $tags, $tag_names, $top_priority) = request_task_params($errors);
 
 include_once '../../fns/redirect.php';
 
