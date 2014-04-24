@@ -14,13 +14,12 @@ include_once '../../../fns/Page/text.php';
 $items = [Page\text(htmlspecialchars($receivedNote->text))];
 
 $tags = $receivedNote->tags;
-if ($tags !== '') {
-    $items[] = Page\text('Tags: '.htmlspecialchars($tags));
-}
+if ($tags !== '') $items[] = Page\text('Tags: '.htmlspecialchars($tags));
 
 include_once '../../../fns/date_ago.php';
+$text = 'Note received '.date_ago($receivedNote->insert_time).'.';
 include_once '../../../fns/Page/infoText.php';
-$items[] = Page\infoText('Note received '.date_ago($receivedNote->insert_time).'.');
+$infoText = Page\infoText($text);
 
 include_once 'fns/create_options_panel.php';
 include_once '../../../fns/create_panel.php';
@@ -40,6 +39,7 @@ $content = Page\tabs(
     "Received Note #$id",
     Form\label('Received from', htmlspecialchars($receivedNote->sender_username))
     .create_panel('The Note', join('<div class="hr"></div>', $items))
+    .$infoText
     .create_options_panel($id)
 );
 

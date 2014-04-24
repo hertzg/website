@@ -55,7 +55,7 @@ if ($tags !== '') {
 
 include_once '../../../fns/date_ago.php';
 include_once '../../../fns/Page/infoText.php';
-$items[] = Page\infoText(
+$infoText = Page\infoText(
     '<div>'
         .($receivedContact->favorite ? 'Favorite' : 'Regular').' contact.'
     .'</div>'
@@ -79,6 +79,7 @@ $content = Page\tabs(
     "Received Contact #$id",
     Form\label('Received from', htmlspecialchars($receivedContact->sender_username))
     .create_panel('The Contact', join('<div class="hr"></div>', $items))
+    .$infoText
     .create_options_panel($id)
 );
 

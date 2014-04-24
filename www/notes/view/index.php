@@ -40,7 +40,7 @@ if ($insert_time != $update_time) {
     $text .= '<div>Last modified '.date_ago($update_time).'.</div>';
 }
 include_once '../../fns/Page/infoText.php';
-$items[] = Page\infoText($text);
+$infoText = Page\infoText($text);
 
 include_once 'fns/create_options_panel.php';
 include_once '../../fns/ItemList/listHref.php';
@@ -61,6 +61,7 @@ $content =
         "Note #$id",
         Page\sessionMessages('notes/view/messages')
         .join('<div class="hr"></div>', $items)
+        .$infoText
     )
     .create_options_panel($id);
 

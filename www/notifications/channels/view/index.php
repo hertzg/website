@@ -31,7 +31,6 @@ $content =
         "Channel #$id",
         Page\sessionMessages('notifications/channels/view/messages')
         .Form\label('Channel name', htmlspecialchars($channel->channel_name))
-        .'<div class="hr"></div>'
         .Page\infoText(
             '<div>'.($channel->public ? 'Public' : 'Private').' channel.</div>'
             .'<div>'

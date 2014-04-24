@@ -41,7 +41,6 @@ $content =
         .Form\label('Size', bytestr($file->file_size))
         .'<div class="hr"></div>'
         .Form\label('Preview', create_preview($file))
-        .'<div class="hr"></div>'
         .Page\infoText('File uploaded '.date_ago($file->insert_time))
     )
     .create_options_panel($file);

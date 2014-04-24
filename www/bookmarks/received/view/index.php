@@ -22,13 +22,12 @@ if ($title !== '') {
 $items[] = Page\text(htmlspecialchars($receivedBookmark->url));
 
 $tags = $receivedBookmark->tags;
-if ($tags !== '') {
-    $items[] = Page\text('Tags: '.htmlspecialchars($tags));
-}
+if ($tags !== '') $items[] = Page\text('Tags: '.htmlspecialchars($tags));
 
 include_once '../../../fns/date_ago.php';
+$text = 'Bookmark received '.date_ago($receivedBookmark->insert_time).'.';
 include_once '../../../fns/Page/infoText.php';
-$items[] = Page\infoText('Bookmark received '.date_ago($receivedBookmark->insert_time).'.');
+$infoText = Page\infoText($text);
 
 include_once 'fns/create_options_panel.php';
 include_once '../../../fns/create_panel.php';
@@ -48,6 +47,7 @@ $content = Page\tabs(
     "Received Bookmark #$id",
     Form\label('Received from', htmlspecialchars($receivedBookmark->sender_username))
     .create_panel('The Bookmark', join('<div class="hr"></div>', $items))
+    .$infoText
     .create_options_panel($id)
 );
 

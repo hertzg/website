@@ -14,13 +14,11 @@ include_once '../../../fns/Page/text.php';
 $items = [Page\text(htmlspecialchars($receivedTask->text))];
 
 $tags = $receivedTask->tags;
-if ($tags !== '') {
-    $items[] = Page\text('Tags: '.htmlspecialchars($tags));
-}
+if ($tags !== '') $items[] = Page\text('Tags: '.htmlspecialchars($tags));
 
 include_once '../../../fns/date_ago.php';
 include_once '../../../fns/Page/infoText.php';
-$items[] = Page\infoText(
+$infoText = Page\infoText(
     '<div>'.($receivedTask->top_priority ? 'Top' : 'Normal').' priority task.</div>'
     .'<div>Task received '.date_ago($receivedTask->insert_time).'.</div>'
 );
@@ -43,6 +41,7 @@ $content = Page\tabs(
     "Received Task #$id",
     Form\label('Received from', htmlspecialchars($receivedTask->sender_username))
     .create_panel('The Task', join('<div class="hr"></div>', $items))
+    .$infoText
     .create_options_panel($id)
 );
 

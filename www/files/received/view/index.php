@@ -47,7 +47,6 @@ $content = Page\tabs(
         .Form\label('Size', bytestr($receivedFile->file_size))
         .'<div class="hr"></div>'
         .Form\label('Preview', create_preview($receivedFile))
-        .'<div class="hr"></div>'
         .Page\infoText('File received '.date_ago($receivedFile->insert_time).'.')
     )
     .create_panel(

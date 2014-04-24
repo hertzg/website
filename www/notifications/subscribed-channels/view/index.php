@@ -19,7 +19,7 @@ if ($publisher_locked) {
 }
 
 include_once '../../../fns/Page/infoText.php';
-$items[] = Page\infoText(
+$infoText = Page\infoText(
     '<div>'
         .($subscribedChannel->channel_public ? 'Public' : 'Private').' channel.'
     .'</div>'
@@ -47,6 +47,7 @@ $content =
         "Other Channel #$id",
         Page\sessionMessages('notifications/subscribed-channels/view/messages')
         .join('<div class="hr"></div>', $items)
+        .$infoText
     )
     .create_options_panel($subscribedChannel);
 

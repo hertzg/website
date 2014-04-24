@@ -40,7 +40,6 @@ $content =
         .Page\text(htmlspecialchars($event->event_text))
         .'<div class="hr"></div>'
         .Page\text(date('F d, Y', $event->event_time))
-        .'<div class="hr"></div>'
         .Page\infoText($datesText)
     )
     .create_panel(
