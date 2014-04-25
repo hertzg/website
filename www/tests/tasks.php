@@ -12,12 +12,14 @@ function expect_task_object ($engine, $variableName, $task) {
     $engine->expectNatural("$variableName.update_time", $task->update_time);
 }
 
-$newTaskText = 'sample task text';
-$newTaskTags = 'tag1 tag2';
-$newTaskTopPriority = false;
-$editedTaskText = 'edited text';
-$editedTaskTags = 'tag1 tag2 tag3';
-$editedTaskTopPriority = true;
+$new_task_text = 'sample task text';
+$new_task_tags = 'tag1 tag2';
+$new_task_top_priority = false;
+
+$edit_task_text = 'edited text';
+$edit_task_tags = 'tag1 tag2 tag3';
+$edit_task_top_priority = true;
+
 $manyTags = 'a b c d e f';
 
 include_once 'classes/Engine.php';
@@ -28,17 +30,17 @@ $engine->expectStatus(400);
 $engine->expectError('ENTER_TEXT', $response);
 
 $response = $engine->request('task/add', [
-    'text' => $newTaskText,
+    'text' => $new_task_text,
     'tags' => $manyTags,
-    'top_priority' => $newTaskTopPriority,
+    'top_priority' => $new_task_top_priority,
 ]);
 $engine->expectStatus(400);
 $engine->expectError('TOO_MANY_TAGS', $response);
 
 $response = $engine->request('task/add', [
-    'text' => $newTaskText,
-    'tags' => $newTaskTags,
-    'top_priority' => $newTaskTopPriority,
+    'text' => $new_task_text,
+    'tags' => $new_task_tags,
+    'top_priority' => $new_task_top_priority,
 ]);
 $engine->expectStatus(200);
 $engine->expectObject('', ['id'], $response);
@@ -53,9 +55,9 @@ $engine->expectError('TASK_NOT_FOUND', $response);
 $task = $engine->request('task/get', ['id' => $id]);
 $engine->expectStatus(200);
 expect_task_object($engine, '', $task);
-$engine->expectValue('.text', $newTaskText, $task->text);
-$engine->expectValue('.tags', $newTaskTags, $task->tags);
-$engine->expectValue('.top_priority', $newTaskTopPriority, $task->top_priority);
+$engine->expectValue('.text', $new_task_text, $task->text);
+$engine->expectValue('.tags', $new_task_tags, $task->tags);
+$engine->expectValue('.top_priority', $new_task_top_priority, $task->top_priority);
 $engine->expectEquals('.insert_time', '.update_time', $task->insert_time, $task->update_time);
 
 $response = $engine->request('task/edit');
@@ -68,27 +70,27 @@ $engine->expectError('ENTER_TEXT', $response);
 
 $response = $engine->request('task/edit', [
     'id' => $id,
-    'text' => $editedTaskText,
+    'text' => $edit_task_text,
     'tags' => $manyTags,
-    'top_priority' => $editedTaskTopPriority,
+    'top_priority' => $edit_task_top_priority,
 ]);
 $engine->expectStatus(400);
 $engine->expectError('TOO_MANY_TAGS', $response);
 
 $response = $engine->request('task/edit', [
     'id' => $id,
-    'text' => $editedTaskText,
-    'tags' => $editedTaskTags,
-    'top_priority' => $editedTaskTopPriority,
+    'text' => $edit_task_text,
+    'tags' => $edit_task_tags,
+    'top_priority' => $edit_task_top_priority,
 ]);
 $engine->expectStatus(200);
 $engine->expectValue('', true, $response);
 
 $task = $engine->request('task/get', ['id' => $id]);
 expect_task_object($engine, '', $task);
-$engine->expectValue('.text', $editedTaskText, $task->text);
-$engine->expectValue('.tags', $editedTaskTags, $task->tags);
-$engine->expectValue('.top_priority', $editedTaskTopPriority, $task->top_priority);
+$engine->expectValue('.text', $edit_task_text, $task->text);
+$engine->expectValue('.tags', $edit_task_tags, $task->tags);
+$engine->expectValue('.top_priority', $edit_task_top_priority, $task->top_priority);
 
 $tasks = $engine->request('task/list');
 $engine->expectStatus(200);

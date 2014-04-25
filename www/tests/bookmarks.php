@@ -12,12 +12,14 @@ function expect_bookmark_object ($engine, $variableName, $bookmark) {
     $engine->expectNatural("$variableName.update_time", $bookmark->update_time);
 }
 
-$newBookmarkUrl = 'sample bookmark url';
-$newBookmarkTitle = 'sample bookmark title';
-$newBookmarkTags = 'tag1 tag2';
-$editedBookmarkUrl = 'edited url';
-$editedBookmarkTitle = 'edited title';
-$editedBookmarkTags = 'tag1 tag2 tag3';
+$new_bookmark_url = 'sample bookmark url';
+$new_bookmark_title = 'sample bookmark title';
+$new_bookmark_tags = 'tag1 tag2';
+
+$edited_bookmark_url = 'edited url';
+$edited_bookmark_title = 'edited title';
+$edited_bookmark_tags = 'tag1 tag2 tag3';
+
 $manyTags = 'a b c d e f';
 
 include_once 'classes/Engine.php';
@@ -28,17 +30,17 @@ $engine->expectStatus(400);
 $engine->expectError('ENTER_URL', $response);
 
 $response = $engine->request('bookmark/add', [
-    'url' => $newBookmarkUrl,
-    'title' => $newBookmarkTitle,
+    'url' => $new_bookmark_url,
+    'title' => $new_bookmark_title,
     'tags' => $manyTags,
 ]);
 $engine->expectStatus(400);
 $engine->expectError('TOO_MANY_TAGS', $response);
 
 $response = $engine->request('bookmark/add', [
-    'url' => $newBookmarkUrl,
-    'title' => $newBookmarkTitle,
-    'tags' => $newBookmarkTags,
+    'url' => $new_bookmark_url,
+    'title' => $new_bookmark_title,
+    'tags' => $new_bookmark_tags,
 ]);
 $engine->expectStatus(200);
 $engine->expectObject('', ['id'], $response);
@@ -53,9 +55,9 @@ $engine->expectError('BOOKMARK_NOT_FOUND', $response);
 $bookmark = $engine->request('bookmark/get', ['id' => $id]);
 $engine->expectStatus(200);
 expect_bookmark_object($engine, '', $bookmark);
-$engine->expectValue('.url', $newBookmarkUrl, $bookmark->url);
-$engine->expectValue('.title', $newBookmarkTitle, $bookmark->title);
-$engine->expectValue('.tags', $newBookmarkTags, $bookmark->tags);
+$engine->expectValue('.url', $new_bookmark_url, $bookmark->url);
+$engine->expectValue('.title', $new_bookmark_title, $bookmark->title);
+$engine->expectValue('.tags', $new_bookmark_tags, $bookmark->tags);
 $engine->expectEquals('.insert_time', '.update_time', $bookmark->insert_time, $bookmark->update_time);
 
 $response = $engine->request('bookmark/edit');
@@ -68,8 +70,8 @@ $engine->expectError('ENTER_URL', $response);
 
 $response = $engine->request('bookmark/edit', [
     'id' => $id,
-    'url' => $editedBookmarkUrl,
-    'title' => $editedBookmarkTitle,
+    'url' => $edited_bookmark_url,
+    'title' => $edited_bookmark_title,
     'tags' => $manyTags,
 ]);
 $engine->expectStatus(400);
@@ -77,18 +79,18 @@ $engine->expectError('TOO_MANY_TAGS', $response);
 
 $response = $engine->request('bookmark/edit', [
     'id' => $id,
-    'url' => $editedBookmarkUrl,
-    'title' => $editedBookmarkTitle,
-    'tags' => $editedBookmarkTags,
+    'url' => $edited_bookmark_url,
+    'title' => $edited_bookmark_title,
+    'tags' => $edited_bookmark_tags,
 ]);
 $engine->expectStatus(200);
 $engine->expectValue('', true, $response);
 
 $bookmark = $engine->request('bookmark/get', ['id' => $id]);
 expect_bookmark_object($engine, '', $bookmark);
-$engine->expectValue('.url', $editedBookmarkUrl, $bookmark->url);
-$engine->expectValue('.title', $editedBookmarkTitle, $bookmark->title);
-$engine->expectValue('.tags', $editedBookmarkTags, $bookmark->tags);
+$engine->expectValue('.url', $edited_bookmark_url, $bookmark->url);
+$engine->expectValue('.title', $edited_bookmark_title, $bookmark->title);
+$engine->expectValue('.tags', $edited_bookmark_tags, $bookmark->tags);
 
 $bookmarks = $engine->request('bookmark/list');
 $engine->expectStatus(200);

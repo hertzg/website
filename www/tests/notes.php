@@ -11,10 +11,12 @@ function expect_note_object ($engine, $variableName, $note) {
     $engine->expectNatural("$variableName.update_time", $note->update_time);
 }
 
-$newNoteText = 'sample note content';
-$newNoteTags = 'tag1 tag2';
-$editedNoteText = 'edited content';
-$editedNoteTags = 'tag1 tag2 tag3';
+$new_note_text = 'sample note content';
+$new_note_tags = 'tag1 tag2';
+
+$edited_note_text = 'edited content';
+$edited_note_tags = 'tag1 tag2 tag3';
+
 $manyTags = 'a b c d e f';
 
 include_once 'classes/Engine.php';
@@ -25,15 +27,15 @@ $engine->expectStatus(400);
 $engine->expectError('ENTER_TEXT', $response);
 
 $response = $engine->request('note/add', [
-    'text' => $newNoteText,
+    'text' => $new_note_text,
     'tags' => $manyTags,
 ]);
 $engine->expectStatus(400);
 $engine->expectError('TOO_MANY_TAGS', $response);
 
 $response = $engine->request('note/add', [
-    'text' => $newNoteText,
-    'tags' => $newNoteTags,
+    'text' => $new_note_text,
+    'tags' => $new_note_tags,
 ]);
 $engine->expectStatus(200);
 $engine->expectObject('', ['id'], $response);
@@ -48,8 +50,8 @@ $engine->expectError('NOTE_NOT_FOUND', $response);
 $note = $engine->request('note/get', ['id' => $id]);
 $engine->expectStatus(200);
 expect_note_object($engine, '', $note);
-$engine->expectValue('.text', $newNoteText, $note->text);
-$engine->expectValue('.tags', $newNoteTags, $note->tags);
+$engine->expectValue('.text', $new_note_text, $note->text);
+$engine->expectValue('.tags', $new_note_tags, $note->tags);
 $engine->expectEquals('.insert_time', '.update_time', $note->insert_time, $note->update_time);
 
 $response = $engine->request('note/edit');
@@ -62,7 +64,7 @@ $engine->expectError('ENTER_TEXT', $response);
 
 $response = $engine->request('note/edit', [
     'id' => $id,
-    'text' => $editedNoteText,
+    'text' => $edited_note_text,
     'tags' => $manyTags,
 ]);
 $engine->expectStatus(400);
@@ -70,16 +72,16 @@ $engine->expectError('TOO_MANY_TAGS', $response);
 
 $response = $engine->request('note/edit', [
     'id' => $id,
-    'text' => $editedNoteText,
-    'tags' => $editedNoteTags,
+    'text' => $edited_note_text,
+    'tags' => $edited_note_tags,
 ]);
 $engine->expectStatus(200);
 $engine->expectValue('', true, $response);
 
 $note = $engine->request('note/get', ['id' => $id]);
 expect_note_object($engine, '', $note);
-$engine->expectValue('.text', $editedNoteText, $note->text);
-$engine->expectValue('.tags', $editedNoteTags, $note->tags);
+$engine->expectValue('.text', $edited_note_text, $note->text);
+$engine->expectValue('.tags', $edited_note_tags, $note->tags);
 
 $notes = $engine->request('note/list');
 $engine->expectStatus(200);

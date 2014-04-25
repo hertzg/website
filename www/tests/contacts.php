@@ -11,10 +11,12 @@ function expect_contact_object ($engine, $variableName, $contact) {
     $engine->expectNatural("$variableName.update_time", $contact->update_time);
 }
 
-$newContactFullName = 'sample full name '.rand();
-$newContactTags = 'tag1 tag2';
-$editedContactFullName = 'edited full name'.rand();
-$editedContactTags = 'tag1 tag2 tag3';
+$new_contact_full_name = 'sample full name '.rand();
+$new_contact_tags = 'tag1 tag2';
+
+$edited_contact_full_name = 'edited full name'.rand();
+$edited_contact_tags = 'tag1 tag2 tag3';
+
 $manyTags = 'a b c d e f';
 
 include_once 'classes/Engine.php';
@@ -25,15 +27,15 @@ $engine->expectStatus(400);
 $engine->expectError('ENTER_FULL_NAME', $response);
 
 $response = $engine->request('contact/add', [
-    'full_name' => $newContactFullName,
+    'full_name' => $new_contact_full_name,
     'tags' => $manyTags,
 ]);
 $engine->expectStatus(400);
 $engine->expectError('TOO_MANY_TAGS', $response);
 
 $response = $engine->request('contact/add', [
-    'full_name' => $newContactFullName,
-    'tags' => $newContactTags,
+    'full_name' => $new_contact_full_name,
+    'tags' => $new_contact_tags,
 ]);
 $engine->expectStatus(200);
 $engine->expectObject('', ['id'], $response);
@@ -48,8 +50,8 @@ $engine->expectError('CONTACT_NOT_FOUND', $response);
 $contact = $engine->request('contact/get', ['id' => $id]);
 $engine->expectStatus(200);
 expect_contact_object($engine, '', $contact);
-$engine->expectValue('.full_name', $newContactFullName, $contact->full_name);
-$engine->expectValue('.tags', $newContactTags, $contact->tags);
+$engine->expectValue('.full_name', $new_contact_full_name, $contact->full_name);
+$engine->expectValue('.tags', $new_contact_tags, $contact->tags);
 $engine->expectEquals('.insert_time', '.update_time', $contact->insert_time, $contact->update_time);
 
 $response = $engine->request('contact/edit');
@@ -62,7 +64,7 @@ $engine->expectError('ENTER_FULL_NAME', $response);
 
 $response = $engine->request('contact/edit', [
     'id' => $id,
-    'full_name' => $editedContactFullName,
+    'full_name' => $edited_contact_full_name,
     'tags' => $manyTags,
 ]);
 $engine->expectStatus(400);
@@ -70,16 +72,16 @@ $engine->expectError('TOO_MANY_TAGS', $response);
 
 $response = $engine->request('contact/edit', [
     'id' => $id,
-    'full_name' => $editedContactFullName,
-    'tags' => $editedContactTags,
+    'full_name' => $edited_contact_full_name,
+    'tags' => $edited_contact_tags,
 ]);
 $engine->expectStatus(200);
 $engine->expectValue('', true, $response);
 
 $contact = $engine->request('contact/get', ['id' => $id]);
 expect_contact_object($engine, '', $contact);
-$engine->expectValue('.full_name', $editedContactFullName, $contact->full_name);
-$engine->expectValue('.tags', $editedContactTags, $contact->tags);
+$engine->expectValue('.full_name', $edited_contact_full_name, $contact->full_name);
+$engine->expectValue('.tags', $edited_contact_tags, $contact->tags);
 
 $contacts = $engine->request('contact/list');
 $engine->expectStatus(200);
