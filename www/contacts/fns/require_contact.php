@@ -10,8 +10,8 @@ function require_contact ($mysqli) {
 
     $id = abs((int)$id);
 
-    include_once __DIR__.'/../../fns/Contacts/get.php';
-    $contact = Contacts\get($mysqli, $user->id_users, $id);
+    include_once __DIR__.'/../../fns/Contacts/getOnUser.php';
+    $contact = Contacts\getOnUser($mysqli, $user->id_users, $id);
 
     if (!$contact) {
         unset($_SESSION['contacts/messages']);

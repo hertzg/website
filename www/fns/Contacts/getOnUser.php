@@ -2,7 +2,7 @@
 
 namespace Contacts;
 
-function get ($mysqli, $id_users, $id) {
+function getOnUser ($mysqli, $id_users, $id) {
     $sql = 'select * from contacts'
         ." where id_users = $id_users and id_contacts = $id";
     include_once __DIR__.'/../mysqli_single_object.php';
