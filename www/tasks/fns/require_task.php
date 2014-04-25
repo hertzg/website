@@ -8,8 +8,8 @@ function require_task ($mysqli) {
     include_once __DIR__.'/../../fns/request_strings.php';
     list($id) = request_strings('id');
 
-    include_once __DIR__.'/../../fns/Tasks/get.php';
-    $task = Tasks\get($mysqli, $user->id_users, $id);
+    include_once __DIR__.'/../../fns/Tasks/getOnUser.php';
+    $task = Tasks\getOnUser($mysqli, $user->id_users, $id);
 
     if (!$task) {
         unset($_SESSION['tasks/messages']);
