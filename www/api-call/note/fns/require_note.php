@@ -12,7 +12,7 @@ function require_note ($mysqli, $id_users) {
 
     if (!$note) {
         include_once __DIR__.'/../../fns/bad_request.php';
-        bad_request('The note no longer exists.');
+        bad_request('NOTE_NOT_FOUND');
     }
 
     return [$id, $note];

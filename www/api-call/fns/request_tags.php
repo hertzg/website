@@ -13,7 +13,7 @@ function request_tags () {
 
     if (count($tag_names) > $maxNumber) {
         include_once __DIR__.'/bad_request.php';
-        bad_request("Please, enter maximum $maxNumber tags.");
+        bad_request('TOO_MANY_TAGS');
     }
 
     return [$tags, $tag_names];
