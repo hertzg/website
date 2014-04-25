@@ -11,7 +11,7 @@ echo json_encode(
     array_map(function ($contact) {
         return [
             'id' => (int)$contact->id_contacts,
-            'text' => $contact->text,
+            'full_name' => $contact->full_name,
             'tags' => $contact->tags,
             'insert_time' => (int)$contact->insert_time,
             'update_time' => (int)$contact->update_time,

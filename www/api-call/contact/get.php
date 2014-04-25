@@ -9,7 +9,7 @@ list($id, $contact) = require_contact($mysqli, $id_users);
 header('Content-Type: application/json');
 echo json_encode([
     'id' => (int)$contact->id_contacts,
-    'text' => $contact->text,
+    'full_name' => $contact->full_name,
     'tags' => $contact->tags,
     'insert_time' => (int)$contact->insert_time,
     'update_time' => (int)$contact->update_time,
