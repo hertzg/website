@@ -10,12 +10,12 @@ header('Content-Type: application/json');
 echo json_encode(
     array_map(function ($bookmark) {
         return [
-            'id' => $bookmark->id_bookmarks,
+            'id' => (int)$bookmark->id_bookmarks,
             'url' => $bookmark->url,
             'title' => $bookmark->title,
             'tags' => $bookmark->tags,
-            'insert_time' => $bookmark->insert_time,
-            'update_time' => $bookmark->update_time,
+            'insert_time' => (int)$bookmark->insert_time,
+            'update_time' => (int)$bookmark->update_time,
         ];
     }, $bookmarks)
 );

@@ -8,10 +8,10 @@ list($id, $bookmark) = require_bookmark($mysqli, $id_users);
 
 header('Content-Type: application/json');
 echo json_encode([
-    'id' => $id,
+    'id' => (int)$id,
     'url' => $bookmark->url,
     'title' => $bookmark->title,
     'tags' => $bookmark->tags,
-    'insert_time' => $bookmark->insert_time,
-    'update_time' => $bookmark->update_time,
+    'insert_time' => (int)$bookmark->insert_time,
+    'update_time' => (int)$bookmark->update_time,
 ]);

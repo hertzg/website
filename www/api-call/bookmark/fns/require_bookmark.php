@@ -12,7 +12,7 @@ function require_bookmark ($mysqli, $id_users) {
 
     if (!$bookmark) {
         include_once __DIR__.'/../../fns/bad_request.php';
-        bad_request('The bookmark no longer exists.');
+        bad_request('BOOKMARK_NOT_FOUND');
     }
 
     return [$id, $bookmark];

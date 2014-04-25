@@ -11,7 +11,7 @@ function require_bookmark_params () {
 
     if ($url === '') {
         include_once __DIR__.'/../../fns/bad_request.php';
-        bad_request('Enter URL.');
+        bad_request('ENTER_URL');
     }
 
     include_once __DIR__.'/../../fns/request_tags.php';
