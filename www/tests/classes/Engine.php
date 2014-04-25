@@ -3,7 +3,7 @@
 class Engine {
 
     private $api_base = 'http://localhost/sites/zvini.com/www/api-call/';
-    private $api_key = 'ab51195cf4c66596a399c91c97f0c2b899bcb3b601acb608eeb3cb1899470cfa';
+    private $api_key = '5bde19f90d228c0212ef826c643101f47ee6f18b66f595722ca8ee9e8b78bac4';
 
     private $ch;
     private $method;
@@ -26,6 +26,13 @@ class Engine {
         }
     }
 
+    function expectNatural ($variableName, $value) {
+        $this->expectType($variableName, 'integer', $value);
+        if ($value <= 0) {
+            $this->error("Expected $variableName to be >= 0. $value received.");
+        }
+    }
+
     function expectObject ($object, array $properties) {
         foreach ($properties as $property) {
             if (!property_exists($object, $property)) {
@@ -39,13 +46,17 @@ class Engine {
         }
     }
 
-    function expectType () {
-    }
-
     function expectStatus ($expectedStatus) {
         $status = curl_getinfo($this->ch, CURLINFO_HTTP_CODE);
         if ($status != $expectedStatus) {
             $this->error("Expected HTTP status $expectedStatus. Status $status received.");
+        }
+    }
+
+    function expectType ($variableName, $expectedType, $value) {
+        $type = gettype($value);
+        if ($type != $expectedType) {
+            $this->error("Expected $variableName to be $expectedType. $type received.");
         }
     }
 

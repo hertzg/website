@@ -14,6 +14,7 @@ $response = $engine->request('note/add', [
 $engine->expectStatus(200);
 $engine->expectObject($response, ['id']);
 $engine->expectType('.id', 'integer', $response->id);
+$engine->expectNatural('.id', $response->id);
 
 $id = $response->id;
 
@@ -22,7 +23,7 @@ $response = $engine->request('note/edit', [
     'text' => 'edited content',
 ]);
 $engine->expectStatus(200);
-$engine->expectType('boolean', $response);
+$engine->expectType('', 'boolean', $response);
 
 $notes = $engine->request('note/list', []);
 $engine->expectStatus(200);
