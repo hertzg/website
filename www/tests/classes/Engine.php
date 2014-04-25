@@ -11,12 +11,14 @@ class Engine {
     private $method;
     private $params;
     private $url;
+    private $response;
 
     function error ($text) {
         echo "ERROR in $this->method\n"
             ."  Message: $text\n"
             ."  URL: $this->url\n"
-            .'  Params: '.json_encode($this->params)."\n";
+            .'  Params: '.json_encode($this->params)."\n"
+            .'  Response: '.json_encode($this->response)."\n";
         exit;
     }
 
@@ -91,7 +93,7 @@ class Engine {
             CURLOPT_POSTFIELDS => $params,
             CURLOPT_RETURNTRANSFER => true,
         ]);
-        $response = curl_exec($this->ch);
+        $this->response = $response = curl_exec($this->ch);
         $this->numRequests++;
 
         $contentType = curl_getinfo($this->ch, CURLINFO_CONTENT_TYPE);
