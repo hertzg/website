@@ -21,6 +21,9 @@ function require_api_key () {
         ]));
     }
 
-    return [$apiKey, $apiKey->id_users, $mysqli];
+    include_once __DIR__.'/../../fns/Users/get.php';
+    $user = Users\get($mysqli, $apiKey->id_users);
+
+    return [$apiKey, $user, $mysqli];
 
 }

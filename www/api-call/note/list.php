@@ -1,10 +1,10 @@
 <?php
 
 include_once '../fns/require_api_key.php';
-list($apiKey, $id_users, $mysqli) = require_api_key();
+list($apiKey, $user, $mysqli) = require_api_key();
 
 include_once '../../fns/Notes/indexOnUser.php';
-$notes = Notes\indexOnUser($mysqli, $id_users);
+$notes = Notes\indexOnUser($mysqli, $user->id_users);
 
 header('Content-Type: application/json');
 echo json_encode(

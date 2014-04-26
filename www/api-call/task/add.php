@@ -1,7 +1,8 @@
 <?php
 
 include_once '../fns/require_api_key.php';
-list($apiKey, $id_users, $mysqli) = require_api_key();
+list($apiKey, $user, $mysqli) = require_api_key();
+$id_users = $user->id_users;
 
 include_once 'fns/request_task_params.php';
 list($text, $tags, $tag_names, $top_priority) = request_task_params();

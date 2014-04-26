@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/require_api_key.php';
-list($apiKey, $id_users, $mysqli) = require_api_key();
+list($apiKey, $user, $mysqli) = require_api_key();
 
 list($channel_name, $notification_text) = request_strings(
     'channel_name', 'notification_text');
@@ -13,7 +13,7 @@ $notification_text = trim($notification_text);
 include_once '../../fns/Channels/getByName.php';
 $channel = Channels\getByName($mysqli, $channel_name);
 
-if (!$channel || $channel->id_users != $id_users) {
+if (!$channel || $channel->id_users != $user->id_users) {
     include_once '../fns/bad_request.php';
     bad_request('Channel not found.');
 }
