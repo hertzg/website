@@ -16,7 +16,7 @@ ContactTags\deleteOnContact($mysqli, $id);
 include_once '../../fns/Users/addNumContacts.php';
 Users\addNumContacts($mysqli, $user->id_users, -1);
 
-include_once '../fns/invalidate_user_birthdays.php';
+include_once '../../fns/invalidate_user_birthdays.php';
 invalidate_user_birthdays($mysqli, $user, $contact->birthday_time);
 
 unset($_SESSION['contacts/errors']);
