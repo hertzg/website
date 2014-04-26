@@ -2,7 +2,7 @@
 
 namespace Notes;
 
-function requestText () {
+function request () {
 
     include_once __DIR__.'/../request_strings.php';
     list($text) = request_strings('text');
@@ -12,6 +12,6 @@ function requestText () {
 
     $text = trim($text);
 
-    return $text;
+    return [$text];
 
 }

@@ -2,8 +2,8 @@
 
 function request_note_params () {
 
-    include_once __DIR__.'/../../../fns/Notes/requestText.php';
-    $text = Notes\requestText();
+    include_once __DIR__.'/../../../fns/Notes/request.php';
+    list($text) = Notes\request();
 
     if ($text === '') {
         include_once __DIR__.'/../../fns/bad_request.php';
