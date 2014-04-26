@@ -2,16 +2,17 @@
 
 namespace Tasks;
 
-function requestText () {
+function request () {
 
     include_once __DIR__.'/../request_strings.php';
-    list($text) = request_strings('text');
+    list($text, $top_priority) = request_strings('text', 'top_priority');
 
     include_once __DIR__.'/../str_collapse_spaces_multiline.php';
     $text = str_collapse_spaces_multiline($text);
-
     $text = trim($text);
 
-    return $text;
+    $top_priority = (bool)$top_priority;
+
+    return [$text, $top_priority];
 
 }
