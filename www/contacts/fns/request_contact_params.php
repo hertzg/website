@@ -2,28 +2,17 @@
 
 function request_contact_params ($mysqli, $id_users, &$errors, $exclude_id = 0) {
 
-    include_once __DIR__.'/../../fns/request_strings.php';
+    include_once __DIR__.'/../../fns/Contacts/request.php';
     list($full_name, $alias, $address, $email, $phone1,
-        $phone2, $birthday_day, $birthday_month, $birthday_year,
-        $username, $favorite) = request_strings(
-        'full_name', 'alias', 'address', 'email', 'phone1',
-        'phone2', 'birthday_day', 'birthday_month', 'birthday_year',
-        'username', 'favorite');
+        $phone2, $username, $favorite) = Contacts\request();
 
-    include_once __DIR__.'/../../fns/str_collapse_spaces.php';
-    $full_name = str_collapse_spaces($full_name);
-    $alias = str_collapse_spaces($alias);
-    $address = str_collapse_spaces($address);
-    $email = str_collapse_spaces($email);
-    $phone1 = str_collapse_spaces($phone1);
-    $phone2 = str_collapse_spaces($phone2);
-    $username = str_collapse_spaces($username);
+    include_once __DIR__.'/../../fns/request_strings.php';
+    list($birthday_day, $birthday_month, $birthday_year) = request_strings(
+        'birthday_day', 'birthday_month', 'birthday_year');
 
     $birthday_day = abs((int)$birthday_day);
     $birthday_month = abs((int)$birthday_month);
     $birthday_year = abs((int)$birthday_year);
-
-    $favorite = (bool)$favorite;
 
     if ($full_name === '') {
         $errors[] = 'Enter full name.';
