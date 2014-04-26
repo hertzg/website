@@ -2,12 +2,8 @@
 
 function request_bookmark_params (&$errors) {
 
-    include_once __DIR__.'/../../fns/request_strings.php';
-    list($title, $url) = request_strings('title', 'url');
-
-    include_once __DIR__.'/../../fns/str_collapse_spaces.php';
-    $title = str_collapse_spaces($title);
-    $url = str_collapse_spaces($url);
+    include_once __DIR__.'/../../fns/Bookmarks/request.php';
+    list($url, $title) = Bookmarks\request();
 
     if ($url === '') $errors[] = 'Enter URL.';
 

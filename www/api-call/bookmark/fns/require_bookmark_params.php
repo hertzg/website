@@ -2,12 +2,8 @@
 
 function require_bookmark_params () {
 
-    include_once __DIR__.'/../../../fns/request_strings.php';
-    list($url, $title) = request_strings('url', 'title');
-
-    include_once __DIR__.'/../../../fns/str_collapse_spaces.php';
-    $url = str_collapse_spaces($url);
-    $title = str_collapse_spaces($title);
+    include_once __DIR__.'/../../../fns/Bookmarks/request.php';
+    list($url, $title) = Bookmarks\request();
 
     if ($url === '') {
         include_once __DIR__.'/../../fns/bad_request.php';
