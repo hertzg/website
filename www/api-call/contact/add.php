@@ -17,5 +17,8 @@ include_once '../../fns/ContactTags/add.php';
 ContactTags\add($mysqli, $id_users, $id,
     $tag_names, $full_name, $alias, $favorite);
 
+include_once '../../fns/invalidate_user_birthdays.php';
+invalidate_user_birthdays($mysqli, $user, $birthday_time);
+
 header('Content-Type: application/json');
 echo json_encode(['id' => $id]);
