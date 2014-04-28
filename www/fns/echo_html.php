@@ -7,8 +7,8 @@ function echo_html ($title, $head, $body, $theme, $base) {
     $revision = get_revision('common.compressed.css');
     $commonCss = "{$base}common.compressed.css?$revision";
 
-    $revision = get_revision('icons.css');
-    $iconsCss = "{$base}icons.css?$revision";
+    $revision = get_revision('icons.compressed.css');
+    $iconsCss = "{$base}icons.compressed.css?$revision";
 
     $revision = get_revision('images/icons.svg');
     $iconsSvg = "{$base}images/icons.svg?$revision";

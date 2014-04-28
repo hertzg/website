@@ -30,10 +30,10 @@ $names = ['blue-theme', 'green-theme', 'orange-theme', 'pink-theme',
     'remove-user', 'users', 'api-keys', 'api-key', 'create-api-key',
     'edit-api-key', 'generic'];
 
-$content = "/* auto-generated */\n";
+$content = '';
 $x = 0;
 foreach ($names as $name) {
-    $content .= ".icon.$name { background-position: {$x}px 0; }\n";
+    $content .= ".icon.$name{background-position:{$x}px 0}";
     $x -= 32;
 }
-file_put_contents(__DIR__.'/../icons.css', $content);
+file_put_contents(__DIR__.'/../icons.compressed.css', $content);
