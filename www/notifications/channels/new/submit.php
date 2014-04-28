@@ -7,10 +7,8 @@ include_once '../../../fns/require_user.php';
 $user = require_user('../../../');
 $id_users = $user->id_users;
 
-include_once '../../../fns/request_strings.php';
-list($channel_name, $public) = request_strings('channel_name', 'public');
-
-$public = (bool)$public;
+include_once '../../../fns/Channels/request.php';
+list($channel_name, $public) = Channels\request();
 
 $errors = [];
 
