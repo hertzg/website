@@ -8,7 +8,7 @@ $user = require_user($base);
 $api_base = 'https://zvini.com/api-call/';
 
 include_once '../../fns/create_panel.php';
-include_once '../../fns/Page/imageLink.php';
+include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Page/text.php';
 $content = Page\tabs(
@@ -39,20 +39,20 @@ $content = Page\tabs(
         .'</div>'
     )
     .'<div class="hr"></div>'
-    .Page\imageLink('PHP Example', 'php-example', 'generic')
+    .Page\imageArrowLink('PHP Example', 'php-example', 'generic')
     .create_panel(
         'API Method Groups',
-        Page\imageLink('Bookmark', 'bookmark/', 'generic')
+        Page\imageArrowLink('Bookmark', 'bookmark/', 'generic')
         .'<div class="hr"></div>'
-        .Page\imageLink('Channel', 'channel/', 'generic')
+        .Page\imageArrowLink('Channel', 'channel/', 'generic')
         .'<div class="hr"></div>'
-        .Page\imageLink('Contact', 'contact/', 'generic')
+        .Page\imageArrowLink('Contact', 'contact/', 'generic')
         .'<div class="hr"></div>'
-        .Page\imageLink('Note', 'note/', 'generic')
+        .Page\imageArrowLink('Note', 'note/', 'generic')
         .'<div class="hr"></div>'
-        .Page\imageLink('Notification', 'notification/', 'generic')
+        .Page\imageArrowLink('Notification', 'notification/', 'generic')
         .'<div class="hr"></div>'
-        .Page\imageLink('Task', 'task/', 'generic')
+        .Page\imageArrowLink('Task', 'task/', 'generic')
     )
 );
 

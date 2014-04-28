@@ -7,11 +7,11 @@ function method_group_page ($groupName, $prefix, array $methods) {
     include_once __DIR__.'/../../../fns/require_user.php';
     $user = require_user($base);
 
-    include_once __DIR__.'/../../../fns/Page/imageLinkWithDescription.php';
+    include_once __DIR__.'/../../../fns/Page/imageArrowLinkWithDescription.php';
     $items = [];
     foreach ($methods as $name => $description) {
-        $items[] = Page\imageLinkWithDescription($name,
-            $description, "$name/", 'generic');
+        $items[] = Page\imageArrowLinkWithDescription(
+            $name, $description, "$name/", 'generic');
     }
 
     include_once __DIR__.'/../../../fns/Page/tabs.php';
