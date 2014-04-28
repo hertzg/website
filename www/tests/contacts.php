@@ -3,7 +3,8 @@
 
 function expect_contact_object ($engine, $variableName, $contact) {
     $properties = ['id', 'full_name', 'alias', 'address', 'email', 'phone1',
-        'phone2', 'birthday_time', 'username', 'tags', 'favorite', 'insert_time', 'update_time'];
+        'phone2', 'birthday_time', 'username', 'tags', 'favorite',
+        'insert_time', 'update_time'];
     $engine->expectObject($variableName, $properties, $contact);
     $engine->expectNatural("$variableName.id", $contact->id);
     $engine->expectType("$variableName.full_name", 'string', $contact->full_name);
@@ -12,7 +13,8 @@ function expect_contact_object ($engine, $variableName, $contact) {
     $engine->expectType("$variableName.email", 'string', $contact->email);
     $engine->expectType("$variableName.phone1", 'string', $contact->phone1);
     $engine->expectType("$variableName.phone2", 'string', $contact->phone2);
-    $engine->expectType("$variableName.birthday_time", 'integer', $contact->birthday_time);
+    $engine->expectType("$variableName.birthday_time",
+        'integer', $contact->birthday_time);
     $engine->expectType("$variableName.username", 'string', $contact->username);
     $engine->expectType("$variableName.tags", 'string', $contact->tags);
     $engine->expectType("$variableName.favorite", 'boolean', $contact->favorite);
@@ -93,7 +95,8 @@ $engine->expectValue('.address', $new_contact_address, $response->address);
 $engine->expectValue('.email', $new_contact_email, $response->email);
 $engine->expectValue('.phone1', $new_contact_phone1, $response->phone1);
 $engine->expectValue('.phone2', $new_contact_phone2, $response->phone2);
-$engine->expectValue('.birthday_time', $new_contact_birthday_time, $response->birthday_time);
+$engine->expectValue('.birthday_time',
+    $new_contact_birthday_time, $response->birthday_time);
 $engine->expectValue('.username', $new_contact_username, $response->username);
 $engine->expectValue('.tags', $new_contact_tags, $response->tags);
 $engine->expectValue('.favorite', $new_contact_favorite, $response->favorite);
@@ -145,7 +148,8 @@ $engine->expectValue('.address', $edited_contact_address, $response->address);
 $engine->expectValue('.email', $edited_contact_email, $response->email);
 $engine->expectValue('.phone1', $edited_contact_phone1, $response->phone1);
 $engine->expectValue('.phone2', $edited_contact_phone2, $response->phone2);
-$engine->expectValue('.birthday_time', $edited_contact_birthday_time, $response->birthday_time);
+$engine->expectValue('.birthday_time',
+    $edited_contact_birthday_time, $response->birthday_time);
 $engine->expectValue('.username', $edited_contact_username, $response->username);
 $engine->expectValue('.tags', $edited_contact_tags, $response->tags);
 $engine->expectValue('.favorite', $edited_contact_favorite, $response->favorite);

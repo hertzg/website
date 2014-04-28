@@ -59,7 +59,8 @@ $engine->expectError('CHANNEL_NOT_FOUND');
 $response = $engine->request('channel/get', ['id' => $id]);
 $engine->expectStatus(200);
 expect_channel_object($engine, '', $response);
-$engine->expectValue('.channel_name', $new_channel_channel_name, $response->channel_name);
+$engine->expectValue('.channel_name',
+    $new_channel_channel_name, $response->channel_name);
 $engine->expectValue('.public', $new_channel_public, $response->public);
 $engine->expectNatural('.insert_time', $response->insert_time);
 $engine->expectNatural('.update_time', $response->update_time);
@@ -94,7 +95,8 @@ $engine->expectValue('', true, $response);
 $response = $engine->request('channel/get', ['id' => $id]);
 $engine->expectStatus(200);
 expect_channel_object($engine, '', $response);
-$engine->expectValue('.channel_name', $edited_channel_channel_name, $response->channel_name);
+$engine->expectValue('.channel_name',
+    $edited_channel_channel_name, $response->channel_name);
 $engine->expectValue('.public', $edited_channel_public, $response->public);
 $engine->expectNatural('.insert_time', $response->insert_time);
 $engine->expectNatural('.update_time', $response->update_time);
