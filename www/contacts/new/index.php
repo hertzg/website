@@ -33,6 +33,5 @@ unset(
 include_once 'fns/create_content.php';
 $content = create_content($base, $values);
 
-
 include_once '../../fns/echo_page.php';
 echo_page($user, 'New Contact', $content, $base);
