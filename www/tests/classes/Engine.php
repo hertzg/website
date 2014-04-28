@@ -5,12 +5,13 @@ class Engine {
     public $numRequests;
 
     private $api_base = 'http://localhost/sites/zvini.com/www/api-call/';
-    private $api_key = '5bde19f90d228c0212ef826c643101f47ee6f18b66f595722ca8ee9e8b78bac4';
+    private $api_key = '58cf6cc977042242d6f2e67dd3fd56e00b978d75eb01a6bb2b54e6b60886bb96';
 
     private $ch;
     private $method;
     private $params;
     private $url;
+    private $response;
     private $rawResponse;
 
     function error ($text) {
@@ -37,7 +38,10 @@ class Engine {
 
         $contentType = curl_getinfo($this->ch, CURLINFO_CONTENT_TYPE);
         if ($contentType != 'application/json') {
-            $this->error("Expected content type application/json. $contentType received.");
+            $this->error(
+                "Expected content type application/json."
+                ." $contentType received."
+            );
         }
 
         return json_decode($this->rawResponse);
@@ -46,20 +50,34 @@ class Engine {
 
     function expectEquals ($variableName1, $variableName2, $value1, $value2) {
         if ($value1 !== $value2) {
-            $this->error("response$variableName1 should have been equal to response$variableName2.");
+            $this->error(
+                "response$variableName1 should have been"
+                ." equal to response$variableName2."
+            );
         }
+    }
+
+    function expectError ($error) {
+        $this->expectStatus(400);
+        $this->expectValue('', $error, $this->response);
     }
 
     function expectGreater ($variableName1, $variableName2, $value1, $value2) {
         if ($value1 <= $value2) {
-            $this->error("response$variableName1 should have been greater than response$variableName2.");
+            $this->error(
+                "response$variableName1 should have been"
+                ." greater than response$variableName2."
+            );
         }
     }
 
     function expectNatural ($variableName, $value) {
         $this->expectType($variableName, 'integer', $value);
         if ($value <= 0) {
-            $this->error("Expected response$variableName to be a natural number. $value received.");
+            $this->error(
+                "Expected response$variableName to be"
+                ." a natural number. $value received."
+            );
         }
     }
 
@@ -67,12 +85,18 @@ class Engine {
         $this->expectType($variableName, 'object', $object);
         foreach ($properties as $property) {
             if (!property_exists($object, $property)) {
-                $this->error("Required property $property not present in response$variableName.");
+                $this->error(
+                    "Required property $property"
+                    ." not present in response$variableName."
+                );
             }
         }
         foreach ($object as $property => $value) {
             if (!in_array($property, $properties)) {
-                $this->error("Extra property $property was received in response$variableName.");
+                $this->error(
+                    "Extra property $property"
+                    ." was received in response$variableName."
+                );
             }
         }
     }
@@ -80,20 +104,31 @@ class Engine {
     function expectStatus ($expectedStatus) {
         $status = curl_getinfo($this->ch, CURLINFO_HTTP_CODE);
         if ($status != $expectedStatus) {
-            $this->error("Expected HTTP status $expectedStatus. Status $status received.");
+            $this->error(
+                "Expected HTTP status $expectedStatus."
+                ." Status $status received."
+            );
         }
     }
 
     function expectType ($variableName, $expectedType, $value) {
         $type = gettype($value);
         if ($type != $expectedType) {
-            $this->error("Expected response$variableName to be of $expectedType type. Type $type received.");
+            $this->error(
+                "Expected response$variableName to be"
+                ." of $expectedType type. Type $type received."
+            );
         }
     }
 
     function expectValue ($variableName, $expectedValue, $value) {
         if ($value !== $expectedValue) {
-            $this->error("Expected response$variableName to be ".json_encode($expectedValue).'. '.json_encode($value).' received.');
+            $expectedValue = json_encode($expectedValue);
+            $value = json_encode($value);
+            $this->error(
+                "Expected response$variableName to be $expectedValue."
+                ." $value received."
+            );
         }
     }
 
@@ -108,7 +143,8 @@ class Engine {
         $this->expectValue('', 'INVALID_API_KEY', $response);
 
         $params['api_key'] = $this->api_key;
-        return $this->execCurl($this->url, $params);
+        $this->response = $this->execCurl($this->url, $params);
+        return $this->response;
 
     }
 

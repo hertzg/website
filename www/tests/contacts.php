@@ -48,8 +48,7 @@ include_once 'classes/Engine.php';
 $engine = new Engine;
 
 $response = $engine->request('contact/add');
-$engine->expectStatus(400);
-$engine->expectValue('', 'ENTER_FULL_NAME', $response);
+$engine->expectError('ENTER_FULL_NAME');
 
 $response = $engine->request('contact/add', [
     'full_name' => $new_contact_full_name,
@@ -63,8 +62,7 @@ $response = $engine->request('contact/add', [
     'tags' => $manyTags,
     'favorite' => $new_contact_favorite,
 ]);
-$engine->expectStatus(400);
-$engine->expectValue('', 'TOO_MANY_TAGS', $response);
+$engine->expectError('TOO_MANY_TAGS');
 
 $response = $engine->request('contact/add', [
     'full_name' => $new_contact_full_name,
@@ -84,8 +82,7 @@ $engine->expectNatural('', $response);
 $id = $response;
 
 $response = $engine->request('contact/get');
-$engine->expectStatus(400);
-$engine->expectValue('', 'CONTACT_NOT_FOUND', $response);
+$engine->expectError('CONTACT_NOT_FOUND');
 
 $contact = $engine->request('contact/get', ['id' => $id]);
 $engine->expectStatus(200);
@@ -103,12 +100,10 @@ $engine->expectValue('.favorite', $new_contact_favorite, $contact->favorite);
 $engine->expectEquals('.insert_time', '.update_time', $contact->insert_time, $contact->update_time);
 
 $response = $engine->request('contact/edit');
-$engine->expectStatus(400);
-$engine->expectValue('', 'CONTACT_NOT_FOUND', $response);
+$engine->expectError('CONTACT_NOT_FOUND');
 
 $response = $engine->request('contact/edit', ['id' => $id]);
-$engine->expectStatus(400);
-$engine->expectValue('', 'ENTER_FULL_NAME', $response);
+$engine->expectError('ENTER_FULL_NAME');
 
 $response = $engine->request('contact/edit', [
     'id' => $id,
@@ -123,8 +118,7 @@ $response = $engine->request('contact/edit', [
     'tags' => $manyTags,
     'favorite' => $edited_contact_favorite,
 ]);
-$engine->expectStatus(400);
-$engine->expectValue('', 'TOO_MANY_TAGS', $response);
+$engine->expectError('TOO_MANY_TAGS');
 
 $response = $engine->request('contact/edit', [
     'id' => $id,
@@ -163,16 +157,14 @@ foreach ($contacts as $i => $contact) {
 }
 
 $response = $engine->request('contact/delete');
-$engine->expectStatus(400);
-$engine->expectValue('', 'CONTACT_NOT_FOUND', $response);
+$engine->expectError('CONTACT_NOT_FOUND');
 
 $response = $engine->request('contact/delete', ['id' => $id]);
 $engine->expectStatus(200);
 $engine->expectValue('', true, $response);
 
 $response = $engine->request('contact/delete', ['id' => $id]);
-$engine->expectStatus(400);
-$engine->expectValue('', 'CONTACT_NOT_FOUND', $response);
+$engine->expectError('CONTACT_NOT_FOUND');
 
 echo "Done\n";
 echo "$engine->numRequests requests made.\n";
