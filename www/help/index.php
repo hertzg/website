@@ -24,7 +24,7 @@ $content = Page\tabs(
     ],
     'Help',
     Page\sessionMessages('help/messages')
-    .Page\imageLink('Install Zvini App', 'install.php', 'download')
+    .Page\imageLink('Install Zvini App', 'install/', 'download')
     .'<div class="hr"></div>'
     .Page\imageArrowLink('Leave Feedback', 'feedback/', 'feedback')
 );

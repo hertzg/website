@@ -2,7 +2,7 @@
 
     function alertAndRedirect (text) {
         alert(text)
-        location = './'
+        location = '..'
     }
 
     var mozApps = navigator.mozApps
@@ -10,7 +10,7 @@
 
         var protocol = location.protocol,
             host = location.host,
-            pathname = location.pathname.replace(/help\/install\.php$/, ''),
+            pathname = location.pathname.replace(/help\/install\/$/, ''),
             manifest = protocol + '//' + host + pathname + 'webapp-manifest/'
 
         var checkRequest = mozApps.checkInstalled(manifest)
