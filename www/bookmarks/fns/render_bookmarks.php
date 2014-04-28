@@ -1,7 +1,6 @@
 <?php
 
-function render_bookmarks (array $bookmarks, array &$items, $emptyMessage,
-    array $params, $base = '') {
+function render_bookmarks (array $bookmarks, array &$items, array $params) {
 
     if ($bookmarks) {
 
@@ -16,7 +15,7 @@ function render_bookmarks (array $bookmarks, array &$items, $emptyMessage,
                     array_merge(['id' => $bookmark->id_bookmarks], $params)
                 )
             );
-            $href = "{$base}view/?$queryString";
+            $href = "view/?$queryString";
 
             $escapedUrl = htmlspecialchars($bookmark->url);
             $title = $bookmark->title;
@@ -32,7 +31,7 @@ function render_bookmarks (array $bookmarks, array &$items, $emptyMessage,
 
     } else {
         include_once __DIR__.'/../../fns/Page/info.php';
-        $items[] = Page\info($emptyMessage);
+        $items[] = Page\info('No bookmarks');
     }
 
 }
