@@ -1,7 +1,6 @@
 <?php
 
-function render_contacts (array $contacts, array &$items, $emptyMessage,
-    array $params, $base = '') {
+function render_contacts (array $contacts, array &$items, array $params) {
 
     if ($contacts) {
         include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
@@ -13,7 +12,7 @@ function render_contacts (array $contacts, array &$items, $emptyMessage,
                     array_merge(['id' => $contact->id_contacts], $params)
                 )
             );
-            $href = "{$base}view/?$queryString";
+            $href = "view/?$queryString";
 
             $alias = $contact->alias;
             $title = htmlspecialchars($contact->full_name);
@@ -31,7 +30,7 @@ function render_contacts (array $contacts, array &$items, $emptyMessage,
         }
     } else {
         include_once __DIR__.'/../../fns/Page/info.php';
-        $items[] = Page\info($emptyMessage);
+        $items[] = Page\info('No contacts');
     }
 
 }

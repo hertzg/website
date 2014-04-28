@@ -84,8 +84,8 @@ $params = [];
 if ($keyword !== '') $params['keyword'] = $keyword;
 if ($tag !== '') $params['tag'] = $tag;
 if ($offset) $params['offset'] = $offset;
-include_once '../fns/render_contacts.php';
-render_contacts($contacts, $items, 'No contacts found', $params, '../');
+include_once 'fns/render_contacts.php';
+render_contacts($contacts, $items, $params, $keyword);
 
 include_once 'fns/render_next_button.php';
 render_next_button($offset, $limit, $total, $items, $keyword, $tag);
