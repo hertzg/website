@@ -12,4 +12,5 @@ echo json_encode([
     'channel_name' => $channel->channel_name,
     'public' => (bool)$channel->public,
     'insert_time' => (int)$channel->insert_time,
+    'update_time' => (int)$channel->update_time,
 ]);

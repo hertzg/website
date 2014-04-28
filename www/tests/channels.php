@@ -2,12 +2,13 @@
 <?php
 
 function expect_channel_object ($engine, $variableName, $channel) {
-    $properties = ['id', 'channel_name', 'public', 'insert_time'];
+    $properties = ['id', 'channel_name', 'public', 'insert_time', 'update_time'];
     $engine->expectObject($variableName, $properties, $channel);
     $engine->expectNatural("$variableName.id", $channel->id);
     $engine->expectType("$variableName.channel_name", 'string', $channel->channel_name);
     $engine->expectType("$variableName.public", 'boolean', $channel->public);
     $engine->expectNatural("$variableName.insert_time", $channel->insert_time);
+    $engine->expectNatural("$variableName.update_time", $channel->update_time);
 }
 
 $new_channel_channel_name = 'new-channel-name';
@@ -66,6 +67,8 @@ expect_channel_object($engine, '', $response);
 $engine->expectValue('.channel_name', $new_channel_channel_name, $response->channel_name);
 $engine->expectValue('.public', $new_channel_public, $response->public);
 $engine->expectNatural('.insert_time', $response->insert_time);
+$engine->expectNatural('.update_time', $response->update_time);
+$engine->expectEquals('.insert_time', '.update_time', $response->insert_time, $response->update_time);
 
 $response = $engine->request('channel/edit');
 $engine->expectStatus(400);
@@ -101,6 +104,7 @@ expect_channel_object($engine, '', $response);
 $engine->expectValue('.channel_name', $edited_channel_channel_name, $response->channel_name);
 $engine->expectValue('.public', $edited_channel_public, $response->public);
 $engine->expectNatural('.insert_time', $response->insert_time);
+$engine->expectNatural('.update_time', $response->update_time);
 
 $response = $engine->request('channel/list');
 $engine->expectStatus(200);
