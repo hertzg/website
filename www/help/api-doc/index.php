@@ -37,7 +37,6 @@ $content = Page\tabs(
     )
     .'<div class="hr"></div>'
     .Page\imageLink('PHP Example', 'php-example', 'generic')
-    .'<div class="hr"></div>'
     .create_panel(
         'API Methods',
         Page\imageLink('Bookmark Methods', 'bookmark/', 'generic')

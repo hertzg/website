@@ -1,7 +1,8 @@
 .php-code {
     background: #f7f7f7;
-    padding: 8px;
+    padding: 7px 8px;
     margin: -8px;
+    overflow: auto;
 }
 
 .php-code .comment {
