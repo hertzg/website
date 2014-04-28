@@ -1,0 +1,46 @@
+<?php
+
+function request_channel_params ($mysqli) {
+
+    include_once __DIR__.'/../../../fns/Channels/request.php';
+    list($channel_name, $public) = Channels\request();
+
+    if ($channel_name === '') {
+        include_once __DIR__.'/../../fns/bad_request.php';
+        bad_request('ENTER_CHANNEL_NAME');
+    } elseif (preg_match('/[^a-z0-9._-]/ui', $channel_name)) {
+        include_once __DIR__.'/../../fns/bad_request.php';
+        bad_request('INVALID_CHANNEL_NAME');
+    } else {
+
+        $length = strlen($channel_name);
+
+        include_once __DIR__.'/../../../fns/ChannelName/minLength.php';
+        $minLength = ChannelName\minLength();
+
+        if ($length < $minLength) {
+            include_once __DIR__.'/../../fns/bad_request.php';
+            bad_request('CHANNEL_NAME_TOO_SHORT');
+        } else {
+
+            include_once __DIR__.'/../../../fns/ChannelName/maxLength.php';
+            $maxLength = ChannelName\maxLength();
+
+            if ($length > $maxLength) {
+                include_once __DIR__.'/../../fns/bad_request.php';
+                bad_request('CHANNEL_NAME_TOO_LONG');
+            } else {
+                include_once __DIR__.'/../../../fns/Channels/getByName.php';
+                if (Channels\getByName($mysqli, $channel_name)) {
+                    include_once __DIR__.'/../../fns/bad_request.php';
+                    bad_request('CHANNEL_ALREADY_EXISTS');
+                }
+            }
+
+        }
+
+    }
+
+    return [$channel_name, $public];
+
+}
