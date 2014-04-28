@@ -5,7 +5,6 @@ function render_notes (array $notes, array &$items, array $params, $keyword) {
     if ($notes) {
 
         $regex = '/'.preg_quote(htmlspecialchars($keyword)).'/i';
-        $replace = '<mark>$0</mark>';
 
         include_once __DIR__.'/../../../fns/Page/imageArrowLink.php';
         foreach ($notes as $note) {
@@ -18,7 +17,7 @@ function render_notes (array $notes, array &$items, array $params, $keyword) {
             $href = "../view/?$queryString";
 
             $title = htmlspecialchars($note->text);
-            $title = preg_replace($regex, $replace, $title);
+            $title = preg_replace($regex, '<mark>$0</mark>', $title);
             $items[] = Page\imageArrowLink($title, $href, 'note');
 
         }

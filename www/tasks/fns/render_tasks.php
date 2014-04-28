@@ -1,7 +1,6 @@
 <?php
 
-function render_tasks (array $tasks, array &$items, $emptyMessage,
-    array $params, $base = '') {
+function render_tasks (array $tasks, array &$items, array $params) {
 
     if ($tasks) {
 
@@ -15,7 +14,7 @@ function render_tasks (array $tasks, array &$items, $emptyMessage,
                     array_merge(['id' => $task->id_tasks], $params)
                 )
             );
-            $href = "{$base}view/?$queryString";
+            $href = "view/?$queryString";
 
             $icon = $task->top_priority ? 'task-top-priority' : 'task';
             $title = htmlspecialchars($task->text);
@@ -32,7 +31,7 @@ function render_tasks (array $tasks, array &$items, $emptyMessage,
 
     } else {
         include_once __DIR__.'/../../fns/Page/info.php';
-        $items[] = Page\info($emptyMessage);
+        $items[] = Page\info('No tasks');
     }
 
 }

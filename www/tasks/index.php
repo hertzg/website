@@ -81,7 +81,7 @@ $params = [];
 if ($tag !== '') $params['tag'] = $tag;
 if ($offset) $params['offset'] = $offset;
 include_once 'fns/render_tasks.php';
-render_tasks($tasks, $items, 'No tasks', $params);
+render_tasks($tasks, $items, $params);
 
 include_once 'fns/render_next_button.php';
 render_next_button($offset, $limit, $total, $items, $tag);
