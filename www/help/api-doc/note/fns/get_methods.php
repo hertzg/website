@@ -6,6 +6,6 @@ function get_methods () {
         'delete' => 'Deletes an existing note.',
         'edit' => 'Edits an existing note.',
         'get' => 'Returns a single existing note.',
-        'list' => 'Returns a list of all note.',
+        'list' => 'Returns a list of all notes.',
     ];
 }
