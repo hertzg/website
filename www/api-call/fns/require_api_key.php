@@ -16,9 +16,7 @@ function require_api_key () {
     if (!$apiKey) {
         http_response_code(403);
         header('Content-Type: application/json');
-        die(json_encode([
-            'error' => 'INVALID_API_KEY',
-        ]));
+        die('"INVALID_API_KEY"');
     }
 
     include_once __DIR__.'/../../fns/Users/get.php';

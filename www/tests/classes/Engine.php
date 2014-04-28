@@ -11,28 +11,42 @@ class Engine {
     private $method;
     private $params;
     private $url;
-    private $response;
+    private $rawResponse;
 
     function error ($text) {
         echo "ERROR in $this->method\n"
             ."  Message: $text\n"
             ."  URL: $this->url\n"
             .'  Params: '.json_encode($this->params)."\n"
-            .'  Response: '.json_encode($this->response)."\n";
+            .'  Raw response: '.json_encode($this->rawResponse)."\n";
         exit;
+    }
+
+    private function execCurl ($url, $params) {
+
+        if ($this->ch) curl_close($this->ch);
+
+        $this->ch = curl_init();
+        curl_setopt_array($this->ch, [
+            CURLOPT_URL => $this->url,
+            CURLOPT_POSTFIELDS => $params,
+            CURLOPT_RETURNTRANSFER => true,
+        ]);
+        $this->rawResponse = curl_exec($this->ch);
+        $this->numRequests++;
+
+        $contentType = curl_getinfo($this->ch, CURLINFO_CONTENT_TYPE);
+        if ($contentType != 'application/json') {
+            $this->error("Expected content type application/json. $contentType received.");
+        }
+
+        return json_decode($this->rawResponse);
+
     }
 
     function expectEquals ($variableName1, $variableName2, $value1, $value2) {
         if ($value1 !== $value2) {
             $this->error("response$variableName1 should have been equal to response$variableName2.");
-        }
-    }
-
-    function expectError ($expectedError, $response) {
-        $this->expectObject('', ['error'], $response);
-        $error = $response->error;
-        if ($error !== $expectedError) {
-            $this->error("Expected error $expectedError. ".json_encode($response).' received.');
         }
     }
 
@@ -83,41 +97,18 @@ class Engine {
         }
     }
 
-    private function newCurl ($url, $params) {
-
-        if ($this->ch) curl_close($this->ch);
-
-        $this->ch = curl_init();
-        curl_setopt_array($this->ch, [
-            CURLOPT_URL => $this->url,
-            CURLOPT_POSTFIELDS => $params,
-            CURLOPT_RETURNTRANSFER => true,
-        ]);
-        $this->response = $response = curl_exec($this->ch);
-        $this->numRequests++;
-
-        $contentType = curl_getinfo($this->ch, CURLINFO_CONTENT_TYPE);
-        if ($contentType != 'application/json') {
-            $this->error("Expected content type application/json. $contentType received.");
-        }
-
-        return $response;
-
-    }
-
     function request ($method, array $params = []) {
 
         $this->method = $method;
         $this->params = $params;
         $this->url = $this->api_base.$method;
 
-        $response = $this->newCurl($this->url, $params);
+        $response = $this->execCurl($this->url, $params);
         $this->expectStatus(403);
+        $this->expectValue('', 'INVALID_API_KEY', $response);
 
         $params['api_key'] = $this->api_key;
-        $response = $this->newCurl($this->url, $params);
-        $response = json_decode($response);
-        return $response;
+        return $this->execCurl($this->url, $params);
 
     }
 

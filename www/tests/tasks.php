@@ -27,7 +27,7 @@ $engine = new Engine;
 
 $response = $engine->request('task/add');
 $engine->expectStatus(400);
-$engine->expectError('ENTER_TEXT', $response);
+$engine->expectValue('', 'ENTER_TEXT', $response);
 
 $response = $engine->request('task/add', [
     'text' => $new_task_text,
@@ -35,7 +35,7 @@ $response = $engine->request('task/add', [
     'top_priority' => $new_task_top_priority,
 ]);
 $engine->expectStatus(400);
-$engine->expectError('TOO_MANY_TAGS', $response);
+$engine->expectValue('', 'TOO_MANY_TAGS', $response);
 
 $response = $engine->request('task/add', [
     'text' => $new_task_text,
@@ -49,7 +49,7 @@ $id = $response;
 
 $response = $engine->request('task/get');
 $engine->expectStatus(400);
-$engine->expectError('TASK_NOT_FOUND', $response);
+$engine->expectValue('', 'TASK_NOT_FOUND', $response);
 
 $task = $engine->request('task/get', ['id' => $id]);
 $engine->expectStatus(200);
@@ -61,11 +61,11 @@ $engine->expectEquals('.insert_time', '.update_time', $task->insert_time, $task-
 
 $response = $engine->request('task/edit');
 $engine->expectStatus(400);
-$engine->expectError('TASK_NOT_FOUND', $response);
+$engine->expectValue('', 'TASK_NOT_FOUND', $response);
 
 $response = $engine->request('task/edit', ['id' => $id]);
 $engine->expectStatus(400);
-$engine->expectError('ENTER_TEXT', $response);
+$engine->expectValue('', 'ENTER_TEXT', $response);
 
 $response = $engine->request('task/edit', [
     'id' => $id,
@@ -74,7 +74,7 @@ $response = $engine->request('task/edit', [
     'top_priority' => $edit_task_top_priority,
 ]);
 $engine->expectStatus(400);
-$engine->expectError('TOO_MANY_TAGS', $response);
+$engine->expectValue('', 'TOO_MANY_TAGS', $response);
 
 $response = $engine->request('task/edit', [
     'id' => $id,
@@ -100,7 +100,7 @@ foreach ($tasks as $i => $task) {
 
 $response = $engine->request('task/delete');
 $engine->expectStatus(400);
-$engine->expectError('TASK_NOT_FOUND', $response);
+$engine->expectValue('', 'TASK_NOT_FOUND', $response);
 
 $response = $engine->request('task/delete', ['id' => $id]);
 $engine->expectStatus(200);
@@ -108,7 +108,7 @@ $engine->expectValue('', true, $response);
 
 $response = $engine->request('task/delete', ['id' => $id]);
 $engine->expectStatus(400);
-$engine->expectError('TASK_NOT_FOUND', $response);
+$engine->expectValue('', 'TASK_NOT_FOUND', $response);
 
 echo "Done\n";
 echo "$engine->numRequests requests made.\n";

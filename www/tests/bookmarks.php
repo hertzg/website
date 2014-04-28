@@ -27,7 +27,7 @@ $engine = new Engine;
 
 $response = $engine->request('bookmark/add');
 $engine->expectStatus(400);
-$engine->expectError('ENTER_URL', $response);
+$engine->expectValue('', 'ENTER_URL', $response);
 
 $response = $engine->request('bookmark/add', [
     'url' => $new_bookmark_url,
@@ -35,7 +35,7 @@ $response = $engine->request('bookmark/add', [
     'tags' => $manyTags,
 ]);
 $engine->expectStatus(400);
-$engine->expectError('TOO_MANY_TAGS', $response);
+$engine->expectValue('', 'TOO_MANY_TAGS', $response);
 
 $response = $engine->request('bookmark/add', [
     'url' => $new_bookmark_url,
@@ -49,7 +49,7 @@ $id = $response;
 
 $response = $engine->request('bookmark/get');
 $engine->expectStatus(400);
-$engine->expectError('BOOKMARK_NOT_FOUND', $response);
+$engine->expectValue('', 'BOOKMARK_NOT_FOUND', $response);
 
 $bookmark = $engine->request('bookmark/get', ['id' => $id]);
 $engine->expectStatus(200);
@@ -61,11 +61,11 @@ $engine->expectEquals('.insert_time', '.update_time', $bookmark->insert_time, $b
 
 $response = $engine->request('bookmark/edit');
 $engine->expectStatus(400);
-$engine->expectError('BOOKMARK_NOT_FOUND', $response);
+$engine->expectValue('', 'BOOKMARK_NOT_FOUND', $response);
 
 $response = $engine->request('bookmark/edit', ['id' => $id]);
 $engine->expectStatus(400);
-$engine->expectError('ENTER_URL', $response);
+$engine->expectValue('', 'ENTER_URL', $response);
 
 $response = $engine->request('bookmark/edit', [
     'id' => $id,
@@ -74,7 +74,7 @@ $response = $engine->request('bookmark/edit', [
     'tags' => $manyTags,
 ]);
 $engine->expectStatus(400);
-$engine->expectError('TOO_MANY_TAGS', $response);
+$engine->expectValue('', 'TOO_MANY_TAGS', $response);
 
 $response = $engine->request('bookmark/edit', [
     'id' => $id,
@@ -100,7 +100,7 @@ foreach ($bookmarks as $i => $bookmark) {
 
 $response = $engine->request('bookmark/delete');
 $engine->expectStatus(400);
-$engine->expectError('BOOKMARK_NOT_FOUND', $response);
+$engine->expectValue('', 'BOOKMARK_NOT_FOUND', $response);
 
 $response = $engine->request('bookmark/delete', ['id' => $id]);
 $engine->expectStatus(200);
@@ -108,7 +108,7 @@ $engine->expectValue('', true, $response);
 
 $response = $engine->request('bookmark/delete', ['id' => $id]);
 $engine->expectStatus(400);
-$engine->expectError('BOOKMARK_NOT_FOUND', $response);
+$engine->expectValue('', 'BOOKMARK_NOT_FOUND', $response);
 
 echo "Done\n";
 echo "$engine->numRequests requests made.\n";

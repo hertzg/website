@@ -24,14 +24,14 @@ $engine = new Engine;
 
 $response = $engine->request('note/add');
 $engine->expectStatus(400);
-$engine->expectError('ENTER_TEXT', $response);
+$engine->expectValue('', 'ENTER_TEXT', $response);
 
 $response = $engine->request('note/add', [
     'text' => $new_note_text,
     'tags' => $manyTags,
 ]);
 $engine->expectStatus(400);
-$engine->expectError('TOO_MANY_TAGS', $response);
+$engine->expectValue('', 'TOO_MANY_TAGS', $response);
 
 $response = $engine->request('note/add', [
     'text' => $new_note_text,
@@ -44,7 +44,7 @@ $id = $response;
 
 $response = $engine->request('note/get');
 $engine->expectStatus(400);
-$engine->expectError('NOTE_NOT_FOUND', $response);
+$engine->expectValue('', 'NOTE_NOT_FOUND', $response);
 
 $note = $engine->request('note/get', ['id' => $id]);
 $engine->expectStatus(200);
@@ -55,11 +55,11 @@ $engine->expectEquals('.insert_time', '.update_time', $note->insert_time, $note-
 
 $response = $engine->request('note/edit');
 $engine->expectStatus(400);
-$engine->expectError('NOTE_NOT_FOUND', $response);
+$engine->expectValue('', 'NOTE_NOT_FOUND', $response);
 
 $response = $engine->request('note/edit', ['id' => $id]);
 $engine->expectStatus(400);
-$engine->expectError('ENTER_TEXT', $response);
+$engine->expectValue('', 'ENTER_TEXT', $response);
 
 $response = $engine->request('note/edit', [
     'id' => $id,
@@ -67,7 +67,7 @@ $response = $engine->request('note/edit', [
     'tags' => $manyTags,
 ]);
 $engine->expectStatus(400);
-$engine->expectError('TOO_MANY_TAGS', $response);
+$engine->expectValue('', 'TOO_MANY_TAGS', $response);
 
 $response = $engine->request('note/edit', [
     'id' => $id,
@@ -91,7 +91,7 @@ foreach ($notes as $i => $note) {
 
 $response = $engine->request('note/delete');
 $engine->expectStatus(400);
-$engine->expectError('NOTE_NOT_FOUND', $response);
+$engine->expectValue('', 'NOTE_NOT_FOUND', $response);
 
 $response = $engine->request('note/delete', ['id' => $id]);
 $engine->expectStatus(200);
@@ -99,7 +99,7 @@ $engine->expectValue('', true, $response);
 
 $response = $engine->request('note/delete', ['id' => $id]);
 $engine->expectStatus(400);
-$engine->expectError('NOTE_NOT_FOUND', $response);
+$engine->expectValue('', 'NOTE_NOT_FOUND', $response);
 
 echo "Done\n";
 echo "$engine->numRequests requests made.\n";
