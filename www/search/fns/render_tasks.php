@@ -1,11 +1,12 @@
 <?php
 
-function render_tasks (array $tasks, array &$items) {
+function render_tasks (array $tasks, array &$items, $regex) {
     include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
     include_once __DIR__.'/../../fns/Page/imageArrowLinkWithDescription.php';
     foreach ($tasks as $task) {
         $icon = $task->top_priority ? 'task-top-priority' : 'task';
         $title = htmlspecialchars($task->text);
+        $title = preg_replace($regex, '<mark>$0</mark>', $title);
         $href = "../tasks/view/?id=$task->id_tasks";
         $tags = $task->tags;
         if ($tags) {

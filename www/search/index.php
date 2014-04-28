@@ -46,7 +46,7 @@ if ($bookmarks || $contacts || $notes || $tasks || $folders || $files) {
 
     include_once 'fns/create_items.php';
     $resultItems = create_items($bookmarks, $contacts,
-        $notes, $tasks, $folders, $files);
+        $notes, $tasks, $folders, $files, $keyword);
 
     include_once 'fns/render_search_files_link.php';
     render_search_files_link($searchFiles, $keyword, $offset, $resultItems);

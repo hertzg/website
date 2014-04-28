@@ -1,6 +1,6 @@
 <?php
 
-function render_notes (array $notes, array &$items, array $params, $keyword) {
+function render_notes (array $notes, array &$items, array $params, $regex) {
 
     if ($notes) {
 

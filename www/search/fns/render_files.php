@@ -1,9 +1,11 @@
 <?php
 
-function render_files (array $files, array &$items) {
+function render_files (array $files, array &$items, $regex) {
     include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
     foreach ($files as $file) {
-        $items[] = Page\imageArrowLink(htmlspecialchars($file->file_name),
-            "../files/view-file/?id=$file->id_files", 'file');
+        $title = htmlspecialchars($file->file_name);
+        $title = preg_replace($regex, '<mark>$0</mark>', $title);
+        $href = "../files/view-file/?id=$file->id_files";
+        $items[] = Page\imageArrowLink($title, $href, 'file');
     }
 }
