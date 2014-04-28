@@ -27,6 +27,8 @@ $content = Page\tabs(
     .Page\imageLink('Install Zvini App', 'install/', 'download')
     .'<div class="hr"></div>'
     .Page\imageArrowLink('Leave Feedback', 'feedback/', 'feedback')
+    .'<div class="hr"></div>'
+    .Page\imageArrowLink('API Documentation', 'api-doc/', 'TODO')
 );
 
 include_once '../fns/echo_page.php';

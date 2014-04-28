@@ -1,0 +1,15 @@
+.php-code {
+    background: #f7f7f7;
+    padding: 8px;
+    margin: -8px;
+}
+
+.php-code .comment {
+    color: #999;
+}
+.php-code .string {
+    color: #f50;
+}
+.php-code .keyword {
+    font-weight: bold;
+}

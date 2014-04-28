@@ -31,6 +31,7 @@ var files = [
     'searchButton.css',
     'tag.css',
     'twoColumns.css',
+    'php-code.css',
 ]
 
 var source = ''
