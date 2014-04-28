@@ -6,6 +6,6 @@ function contact_method_page ($methodName, $params = []) {
     $description = get_methods()[$methodName];
 
     include_once '../../fns/method_page.php';
-    method_page('Contact Methods', 'contact', $methodName, $description, $params);
+    method_page('Contact', 'contact', $methodName, $description, $params);
 
 }

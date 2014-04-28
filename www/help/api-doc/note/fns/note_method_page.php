@@ -6,6 +6,6 @@ function note_method_page ($methodName, $params = []) {
     $description = get_methods()[$methodName];
 
     include_once '../../fns/method_page.php';
-    method_page('Note Methods', 'note', $methodName, $description, $params);
+    method_page('Note', 'note', $methodName, $description, $params);
 
 }

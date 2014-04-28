@@ -38,16 +38,16 @@ $content = Page\tabs(
     .'<div class="hr"></div>'
     .Page\imageLink('PHP Example', 'php-example', 'generic')
     .create_panel(
-        'API Methods',
-        Page\imageLink('Bookmark Methods', 'bookmark/', 'generic')
+        'API Method Groups',
+        Page\imageLink('Bookmark', 'bookmark/', 'generic')
         .'<div class="hr"></div>'
-        .Page\imageLink('Contact Methods', 'contact/', 'generic')
+        .Page\imageLink('Contact', 'contact/', 'generic')
         .'<div class="hr"></div>'
-        .Page\imageLink('Note Methods', 'note/', 'generic')
+        .Page\imageLink('Note', 'note/', 'generic')
         .'<div class="hr"></div>'
-        .Page\imageLink('Notification Methods', 'notification/', 'generic')
+        .Page\imageLink('Notification', 'notification/', 'generic')
         .'<div class="hr"></div>'
-        .Page\imageLink('Task Methods', 'task/', 'generic')
+        .Page\imageLink('Task', 'task/', 'generic')
     )
 );
 

@@ -6,6 +6,6 @@ function task_method_page ($methodName, $params = []) {
     $description = get_methods()[$methodName];
 
     include_once '../../fns/method_page.php';
-    method_page('Task Methods', 'task', $methodName, $description, $params);
+    method_page('Task', 'task', $methodName, $description, $params);
 
 }

@@ -6,6 +6,6 @@ function bookmark_method_page ($methodName, $params = []) {
     $description = get_methods()[$methodName];
 
     include_once '../../fns/method_page.php';
-    method_page('Bookmark Methods', 'bookmark', $methodName, $description, $params);
+    method_page('Bookmark', 'bookmark', $methodName, $description, $params);
 
 }
