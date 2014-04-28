@@ -43,10 +43,9 @@ $response = $engine->request('task/add', [
     'top_priority' => $new_task_top_priority,
 ]);
 $engine->expectStatus(200);
-$engine->expectObject('', ['id'], $response);
-$engine->expectNatural('.id', $response->id);
+$engine->expectNatural('', $response);
 
-$id = $response->id;
+$id = $response;
 
 $response = $engine->request('task/get');
 $engine->expectStatus(400);

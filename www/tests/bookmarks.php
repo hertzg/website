@@ -43,10 +43,9 @@ $response = $engine->request('bookmark/add', [
     'tags' => $new_bookmark_tags,
 ]);
 $engine->expectStatus(200);
-$engine->expectObject('', ['id'], $response);
-$engine->expectNatural('.id', $response->id);
+$engine->expectNatural('', $response);
 
-$id = $response->id;
+$id = $response;
 
 $response = $engine->request('bookmark/get');
 $engine->expectStatus(400);

@@ -14,4 +14,4 @@ include_once '../../fns/TaskTags/add.php';
 TaskTags\add($mysqli, $id_users, $id, $tag_names, $text, $top_priority, $tags);
 
 header('Content-Type: application/json');
-echo json_encode(['id' => $id]);
+echo $id;

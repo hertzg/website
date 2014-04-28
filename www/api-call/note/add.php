@@ -14,4 +14,4 @@ include_once '../../fns/NoteTags/add.php';
 NoteTags\add($mysqli, $id_users, $id, $tag_names, $text);
 
 header('Content-Type: application/json');
-echo json_encode(['id' => $id]);
+echo $id;

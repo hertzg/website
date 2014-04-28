@@ -38,10 +38,9 @@ $response = $engine->request('note/add', [
     'tags' => $new_note_tags,
 ]);
 $engine->expectStatus(200);
-$engine->expectObject('', ['id'], $response);
-$engine->expectNatural('.id', $response->id);
+$engine->expectNatural('', $response);
 
-$id = $response->id;
+$id = $response;
 
 $response = $engine->request('note/get');
 $engine->expectStatus(400);

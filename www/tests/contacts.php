@@ -79,10 +79,9 @@ $response = $engine->request('contact/add', [
     'favorite' => $new_contact_favorite,
 ]);
 $engine->expectStatus(200);
-$engine->expectObject('', ['id'], $response);
-$engine->expectNatural('.id', $response->id);
+$engine->expectNatural('', $response);
 
-$id = $response->id;
+$id = $response;
 
 $response = $engine->request('contact/get');
 $engine->expectStatus(400);

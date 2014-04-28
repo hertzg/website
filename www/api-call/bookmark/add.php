@@ -14,4 +14,4 @@ include_once '../../fns/BookmarkTags/add.php';
 BookmarkTags\add($mysqli, $id_users, $id, $tag_names, $url, $title);
 
 header('Content-Type: application/json');
-echo json_encode(['id' => $id]);
+echo $id;
