@@ -34,7 +34,10 @@ function create_options_panel ($channel) {
     }
     $receiveLink = Page\imageLink($title, $href, $icon);
 
-    $publicLink = Page\imageLink('Edit', "../edit/?id=$id", 'TODO');
+    $href = "../edit/?id=$id";
+    if ($channel->receive_notifications) $icon = 'edit-channel';
+    else $icon = 'edit-inactive-channel';
+    $publicLink = Page\imageArrowLink('Edit', $href, $icon);
 
     $title = 'Delete';
     $href = "../delete/?id=$id";
