@@ -54,3 +54,7 @@ b {
 label {
     cursor: pointer;
 }
+
+code {
+    font-family: monospace;
+}
