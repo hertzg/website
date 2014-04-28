@@ -63,3 +63,7 @@ code {
 pre {
     font-family: monospace;
 }
+
+mark {
+    background-color: #f7f;
+}

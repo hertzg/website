@@ -82,7 +82,7 @@ $params = [];
 if ($tag !== '') $params['tag'] = $tag;
 if ($offset) $params['offset'] = $offset;
 include_once 'fns/render_notes.php';
-render_notes($notes, $items, 'No notes', $params);
+render_notes($notes, $items, $params);
 
 include_once 'fns/render_next_button.php';
 render_next_button($offset, $limit, $total, $items, $tag);
