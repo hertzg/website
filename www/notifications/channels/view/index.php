@@ -5,6 +5,8 @@ include_once '../../../lib/mysqli.php';
 list($channel, $id, $user) = require_channel($mysqli);
 
 unset(
+    $_SESSION['notifications/channels/edit/errors'],
+    $_SESSION['notifications/channels/edit/values'],
     $_SESSION['notifications/channels/errors'],
     $_SESSION['notifications/channels/messages'],
     $_SESSION['notifications/channels/notify/errors'],

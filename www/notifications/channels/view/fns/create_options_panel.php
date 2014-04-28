@@ -34,16 +34,7 @@ function create_options_panel ($channel) {
     }
     $receiveLink = Page\imageLink($title, $href, $icon);
 
-    if ($channel->public) {
-        $title = 'Mark as Private';
-        $href = "submit-private.php?id=$id";
-        $icon = 'lock';
-    } else {
-        $title = 'Mark as Public';
-        $href = "submit-public.php?id=$id";
-        $icon = 'unlock';
-    }
-    $publicLink = Page\imageLink($title, $href, $icon);
+    $publicLink = Page\imageLink('Edit', "../edit/?id=$id", 'TODO');
 
     $title = 'Delete';
     $href = "../delete/?id=$id";
