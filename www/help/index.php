@@ -28,7 +28,7 @@ $content = Page\tabs(
     .'<div class="hr"></div>'
     .Page\imageArrowLink('Leave Feedback', 'feedback/', 'feedback')
     .'<div class="hr"></div>'
-    .Page\imageArrowLink('API Documentation', 'api-doc/', 'TODO')
+    .Page\imageArrowLink('API Documentation', 'api-doc/', 'generic')
 );
 
 include_once '../fns/echo_page.php';

@@ -11,7 +11,7 @@ function method_group_page ($groupName, $prefix, array $methods) {
     $items = [];
     foreach ($methods as $name => $description) {
         $items[] = Page\imageLinkWithDescription($name,
-            $description, "$name/", 'TODO');
+            $description, "$name/", 'generic');
     }
 
     include_once __DIR__.'/../../../fns/Page/tabs.php';
