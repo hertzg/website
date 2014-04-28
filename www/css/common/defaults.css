@@ -43,7 +43,7 @@ body {
     cursor: default;
     background: #444;
     text-align: left;
-    min-width: 320px;
+    min-width: 300px;
 }
 a, button {
     cursor: pointer;
