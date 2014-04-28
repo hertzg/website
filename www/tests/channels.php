@@ -16,6 +16,7 @@ $new_channel_public = true;
 $edited_channel_channel_name = 'new-channel-name';
 $edited_channel_public = false;
 
+$shortChannelName = 'short';
 $invalidChannelName = 'invalid channel name';
 
 include_once 'classes/Engine.php';
@@ -31,6 +32,13 @@ $response = $engine->request('channel/add', [
 ]);
 $engine->expectStatus(400);
 $engine->expectValue('', 'INVALID_CHANNEL_NAME', $response);
+
+$response = $engine->request('channel/add', [
+    'channel_name' => $shortChannelName,
+    'public' => $new_channel_public,
+]);
+$engine->expectStatus(400);
+$engine->expectValue('', 'CHANNEL_NAME_TOO_SHORT', $response);
 
 $response = $engine->request('channel/add', [
     'channel_name' => $new_channel_channel_name,
@@ -70,6 +78,14 @@ $response = $engine->request('channel/edit', [
 ]);
 $engine->expectStatus(400);
 $engine->expectValue('', 'INVALID_CHANNEL_NAME', $response);
+
+$response = $engine->request('channel/edit', [
+    'id' => $id,
+    'channel_name' => $shortChannelName,
+    'public' => $edited_channel_public,
+]);
+$engine->expectStatus(400);
+$engine->expectValue('', 'CHANNEL_NAME_TOO_SHORT', $response);
 
 $response = $engine->request('channel/edit', [
     'id' => $id,
