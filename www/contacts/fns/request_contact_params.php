@@ -26,7 +26,8 @@ function request_contact_params ($mysqli, $id_users, &$errors, $exclude_id = 0) 
     }
 
     include_once __DIR__.'/../fns/parse_birthday.php';
-    parse_birthday($birthday_day, $birthday_month, $birthday_year, $errors, $birthday_time);
+    parse_birthday($birthday_day, $birthday_month,
+        $birthday_year, $errors, $birthday_time);
 
     include_once __DIR__.'/../../fns/request_tags.php';
     request_tags($tags, $tag_names, $errors);

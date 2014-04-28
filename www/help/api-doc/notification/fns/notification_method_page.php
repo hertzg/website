@@ -6,6 +6,7 @@ function notification_method_page ($methodName, $params, $errors) {
     $description = get_methods()[$methodName];
 
     include_once '../../fns/method_page.php';
-    method_page('Notification', 'notification', $methodName, $description, $params, $errors);
+    method_page('Notification', 'notification',
+        $methodName, $description, $params, $errors);
 
 }
