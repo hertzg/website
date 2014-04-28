@@ -10,4 +10,4 @@ note_method_page('add', [
         'name' => 'tags',
         'description' => 'Space-separated list of tags.',
     ],
-]);
+], ['ENTER_TEXT', 'TOO_MANY_TAGS']);

@@ -6,4 +6,4 @@ contact_method_page('delete', [
         'name' => 'id',
         'description' => 'The ID of the contact to delete.',
     ],
-]);
+], ['CONTACT_NOT_FOUND']);

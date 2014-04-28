@@ -18,4 +18,4 @@ task_method_page('edit', [
         'name' => 'top_priority',
         'description' => 'Whether the task should be marked as top priority.',
     ],
-]);
+], ['TASK_NOT_FOUND', 'ENTER_TEXT', 'TOO_MANY_TAGS']);

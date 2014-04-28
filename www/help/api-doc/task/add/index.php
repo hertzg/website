@@ -14,4 +14,4 @@ task_method_page('add', [
         'name' => 'top_priority',
         'description' => 'Whether the task should be marked as top priority.',
     ],
-]);
+], ['ENTER_TEXT', 'TOO_MANY_TAGS']);

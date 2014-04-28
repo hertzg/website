@@ -10,4 +10,4 @@ notification_method_page('post', [
         'name' => 'notification_text',
         'description' => 'The text to send.',
     ],
-]);
+], ['CHANNEL_NOT_FOUND', 'ENTER_NOTIFICATION_TEXT']);

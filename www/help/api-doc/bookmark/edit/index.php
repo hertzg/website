@@ -18,4 +18,4 @@ bookmark_method_page('edit', [
         'name' => 'tags',
         'description' => 'Space-separated list of tags.',
     ],
-]);
+], ['BOOKMARK_NOT_FOUND', 'ENTER_URL', 'TOO_MANY_TAGS']);

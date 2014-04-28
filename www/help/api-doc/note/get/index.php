@@ -6,4 +6,4 @@ note_method_page('get', [
         'name' => 'id',
         'description' => 'The ID of the note to get.',
     ],
-]);
+], ['NOTE_NOT_FOUND']);

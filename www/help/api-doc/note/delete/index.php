@@ -6,4 +6,4 @@ note_method_page('delete', [
         'name' => 'id',
         'description' => 'The ID of the note to delete.',
     ],
-]);
+], ['NOTE_NOT_FOUND']);

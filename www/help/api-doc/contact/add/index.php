@@ -38,4 +38,4 @@ contact_method_page('add', [
         'name' => 'favorite',
         'description' => 'Whether the contact should be marked as favorite.',
     ],
-]);
+], ['ENTER_FULL_NAME', 'CONTACT_ALREADY_EXISTS', 'TOO_MANY_TAGS']);

@@ -14,4 +14,4 @@ bookmark_method_page('add', [
         'name' => 'tags',
         'description' => 'Space-separated list of tags.',
     ],
-]);
+], ['ENTER_URL', 'TOO_MANY_TAGS']);

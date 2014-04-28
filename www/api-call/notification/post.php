@@ -15,12 +15,12 @@ $channel = Channels\getByName($mysqli, $channel_name);
 
 if (!$channel || $channel->id_users != $user->id_users) {
     include_once '../fns/bad_request.php';
-    bad_request('Channel not found.');
+    bad_request('CHANNEL_NOT_FOUND');
 }
 
 if ($notification_text === '') {
     include_once '../fns/bad_request.php';
-    bad_request('Nofitication text cannot be left blank.');
+    bad_request('ENTER_NOTIFICATION_TEXT');
 }
 
 include_once '../../fns/send_notification.php';

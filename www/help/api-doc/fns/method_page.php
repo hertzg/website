@@ -1,6 +1,7 @@
 <?php
 
-function method_page ($groupName, $prefix, $methodName, $description, array $params) {
+function method_page ($groupName, $prefix, $methodName,
+    $description, array $params, array $errors) {
 
     $base = '../../../../';
 
@@ -22,6 +23,10 @@ function method_page ($groupName, $prefix, $methodName, $description, array $par
     } else {
         $items[] = Page\text('The method has no parameters.');
     }
+
+    if ($errors) $text = 'Expected errors: '.join(', ', $errors);
+    else $text = 'No errors expected.';
+    $items[] = Page\text($text);
 
     include_once __DIR__.'/../../../fns/Page/tabs.php';
     $content = Page\tabs(

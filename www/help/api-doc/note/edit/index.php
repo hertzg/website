@@ -14,4 +14,4 @@ note_method_page('edit', [
         'name' => 'tags',
         'description' => 'Space-separated list of tags.',
     ],
-]);
+], ['NOTE_NOT_FOUND', 'ENTER_TEXT', 'TOO_MANY_TAGS']);

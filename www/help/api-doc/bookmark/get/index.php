@@ -6,4 +6,4 @@ bookmark_method_page('get', [
         'name' => 'id',
         'description' => 'The ID of the bookmark to get.',
     ],
-]);
+], ['BOOKMARK_NOT_FOUND']);
