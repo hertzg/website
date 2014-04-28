@@ -48,13 +48,14 @@ $id = $response;
 $response = $engine->request('task/get');
 $engine->expectError('TASK_NOT_FOUND');
 
-$task = $engine->request('task/get', ['id' => $id]);
+$response = $engine->request('task/get', ['id' => $id]);
 $engine->expectStatus(200);
-expect_task_object($engine, '', $task);
-$engine->expectValue('.text', $new_task_text, $task->text);
-$engine->expectValue('.tags', $new_task_tags, $task->tags);
-$engine->expectValue('.top_priority', $new_task_top_priority, $task->top_priority);
-$engine->expectEquals('.insert_time', '.update_time', $task->insert_time, $task->update_time);
+expect_task_object($engine, '', $response);
+$engine->expectValue('.text', $new_task_text, $response->text);
+$engine->expectValue('.tags', $new_task_tags, $response->tags);
+$engine->expectValue('.top_priority', $new_task_top_priority, $response->top_priority);
+$engine->expectEquals('.insert_time', '.update_time',
+    $response->insert_time, $response->update_time);
 
 $response = $engine->request('task/edit');
 $engine->expectError('TASK_NOT_FOUND');
@@ -79,16 +80,16 @@ $response = $engine->request('task/edit', [
 $engine->expectStatus(200);
 $engine->expectValue('', true, $response);
 
-$task = $engine->request('task/get', ['id' => $id]);
-expect_task_object($engine, '', $task);
-$engine->expectValue('.text', $edit_task_text, $task->text);
-$engine->expectValue('.tags', $edit_task_tags, $task->tags);
-$engine->expectValue('.top_priority', $edit_task_top_priority, $task->top_priority);
+$response = $engine->request('task/get', ['id' => $id]);
+expect_task_object($engine, '', $response);
+$engine->expectValue('.text', $edit_task_text, $response->text);
+$engine->expectValue('.tags', $edit_task_tags, $response->tags);
+$engine->expectValue('.top_priority', $edit_task_top_priority, $response->top_priority);
 
-$tasks = $engine->request('task/list');
+$response = $engine->request('task/list');
 $engine->expectStatus(200);
-$engine->expectType('', 'array', $tasks);
-foreach ($tasks as $i => $task) {
+$engine->expectType('', 'array', $response);
+foreach ($response as $i => $task) {
     expect_task_object($engine, ".[$i]", $task);
 }
 

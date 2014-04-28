@@ -84,20 +84,21 @@ $id = $response;
 $response = $engine->request('contact/get');
 $engine->expectError('CONTACT_NOT_FOUND');
 
-$contact = $engine->request('contact/get', ['id' => $id]);
+$response = $engine->request('contact/get', ['id' => $id]);
 $engine->expectStatus(200);
-expect_contact_object($engine, '', $contact);
-$engine->expectValue('.full_name', $new_contact_full_name, $contact->full_name);
-$engine->expectValue('.alias', $new_contact_alias, $contact->alias);
-$engine->expectValue('.address', $new_contact_address, $contact->address);
-$engine->expectValue('.email', $new_contact_email, $contact->email);
-$engine->expectValue('.phone1', $new_contact_phone1, $contact->phone1);
-$engine->expectValue('.phone2', $new_contact_phone2, $contact->phone2);
-$engine->expectValue('.birthday_time', $new_contact_birthday_time, $contact->birthday_time);
-$engine->expectValue('.username', $new_contact_username, $contact->username);
-$engine->expectValue('.tags', $new_contact_tags, $contact->tags);
-$engine->expectValue('.favorite', $new_contact_favorite, $contact->favorite);
-$engine->expectEquals('.insert_time', '.update_time', $contact->insert_time, $contact->update_time);
+expect_contact_object($engine, '', $response);
+$engine->expectValue('.full_name', $new_contact_full_name, $response->full_name);
+$engine->expectValue('.alias', $new_contact_alias, $response->alias);
+$engine->expectValue('.address', $new_contact_address, $response->address);
+$engine->expectValue('.email', $new_contact_email, $response->email);
+$engine->expectValue('.phone1', $new_contact_phone1, $response->phone1);
+$engine->expectValue('.phone2', $new_contact_phone2, $response->phone2);
+$engine->expectValue('.birthday_time', $new_contact_birthday_time, $response->birthday_time);
+$engine->expectValue('.username', $new_contact_username, $response->username);
+$engine->expectValue('.tags', $new_contact_tags, $response->tags);
+$engine->expectValue('.favorite', $new_contact_favorite, $response->favorite);
+$engine->expectEquals('.insert_time', '.update_time',
+    $response->insert_time, $response->update_time);
 
 $response = $engine->request('contact/edit');
 $engine->expectError('CONTACT_NOT_FOUND');
@@ -136,23 +137,23 @@ $response = $engine->request('contact/edit', [
 $engine->expectStatus(200);
 $engine->expectValue('', true, $response);
 
-$contact = $engine->request('contact/get', ['id' => $id]);
-expect_contact_object($engine, '', $contact);
-$engine->expectValue('.full_name', $edited_contact_full_name, $contact->full_name);
-$engine->expectValue('.alias', $edited_contact_alias, $contact->alias);
-$engine->expectValue('.address', $edited_contact_address, $contact->address);
-$engine->expectValue('.email', $edited_contact_email, $contact->email);
-$engine->expectValue('.phone1', $edited_contact_phone1, $contact->phone1);
-$engine->expectValue('.phone2', $edited_contact_phone2, $contact->phone2);
-$engine->expectValue('.birthday_time', $edited_contact_birthday_time, $contact->birthday_time);
-$engine->expectValue('.username', $edited_contact_username, $contact->username);
-$engine->expectValue('.tags', $edited_contact_tags, $contact->tags);
-$engine->expectValue('.favorite', $edited_contact_favorite, $contact->favorite);
+$response = $engine->request('contact/get', ['id' => $id]);
+expect_contact_object($engine, '', $response);
+$engine->expectValue('.full_name', $edited_contact_full_name, $response->full_name);
+$engine->expectValue('.alias', $edited_contact_alias, $response->alias);
+$engine->expectValue('.address', $edited_contact_address, $response->address);
+$engine->expectValue('.email', $edited_contact_email, $response->email);
+$engine->expectValue('.phone1', $edited_contact_phone1, $response->phone1);
+$engine->expectValue('.phone2', $edited_contact_phone2, $response->phone2);
+$engine->expectValue('.birthday_time', $edited_contact_birthday_time, $response->birthday_time);
+$engine->expectValue('.username', $edited_contact_username, $response->username);
+$engine->expectValue('.tags', $edited_contact_tags, $response->tags);
+$engine->expectValue('.favorite', $edited_contact_favorite, $response->favorite);
 
-$contacts = $engine->request('contact/list');
+$response = $engine->request('contact/list');
 $engine->expectStatus(200);
-$engine->expectType('', 'array', $contacts);
-foreach ($contacts as $i => $contact) {
+$engine->expectType('', 'array', $response);
+foreach ($response as $i => $contact) {
     expect_contact_object($engine, ".[$i]", $contact);
 }
 

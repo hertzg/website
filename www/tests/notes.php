@@ -43,12 +43,13 @@ $id = $response;
 $response = $engine->request('note/get');
 $engine->expectError('NOTE_NOT_FOUND');
 
-$note = $engine->request('note/get', ['id' => $id]);
+$response = $engine->request('note/get', ['id' => $id]);
 $engine->expectStatus(200);
-expect_note_object($engine, '', $note);
-$engine->expectValue('.text', $new_note_text, $note->text);
-$engine->expectValue('.tags', $new_note_tags, $note->tags);
-$engine->expectEquals('.insert_time', '.update_time', $note->insert_time, $note->update_time);
+expect_note_object($engine, '', $response);
+$engine->expectValue('.text', $new_note_text, $response->text);
+$engine->expectValue('.tags', $new_note_tags, $response->tags);
+$engine->expectEquals('.insert_time', '.update_time',
+    $response->insert_time, $response->update_time);
 
 $response = $engine->request('note/edit');
 $engine->expectError('NOTE_NOT_FOUND');
@@ -71,15 +72,15 @@ $response = $engine->request('note/edit', [
 $engine->expectStatus(200);
 $engine->expectValue('', true, $response);
 
-$note = $engine->request('note/get', ['id' => $id]);
-expect_note_object($engine, '', $note);
-$engine->expectValue('.text', $edited_note_text, $note->text);
-$engine->expectValue('.tags', $edited_note_tags, $note->tags);
+$response = $engine->request('note/get', ['id' => $id]);
+expect_note_object($engine, '', $response);
+$engine->expectValue('.text', $edited_note_text, $response->text);
+$engine->expectValue('.tags', $edited_note_tags, $response->tags);
 
-$notes = $engine->request('note/list');
+$response = $engine->request('note/list');
 $engine->expectStatus(200);
-$engine->expectType('', 'array', $notes);
-foreach ($notes as $i => $note) {
+$engine->expectType('', 'array', $response);
+foreach ($response as $i => $note) {
     expect_note_object($engine, ".[$i]", $note);
 }
 

@@ -48,13 +48,14 @@ $id = $response;
 $response = $engine->request('bookmark/get');
 $engine->expectError('BOOKMARK_NOT_FOUND');
 
-$bookmark = $engine->request('bookmark/get', ['id' => $id]);
+$response = $engine->request('bookmark/get', ['id' => $id]);
 $engine->expectStatus(200);
-expect_bookmark_object($engine, '', $bookmark);
-$engine->expectValue('.url', $new_bookmark_url, $bookmark->url);
-$engine->expectValue('.title', $new_bookmark_title, $bookmark->title);
-$engine->expectValue('.tags', $new_bookmark_tags, $bookmark->tags);
-$engine->expectEquals('.insert_time', '.update_time', $bookmark->insert_time, $bookmark->update_time);
+expect_bookmark_object($engine, '', $response);
+$engine->expectValue('.url', $new_bookmark_url, $response->url);
+$engine->expectValue('.title', $new_bookmark_title, $response->title);
+$engine->expectValue('.tags', $new_bookmark_tags, $response->tags);
+$engine->expectEquals('.insert_time', '.update_time',
+    $response->insert_time, $response->update_time);
 
 $response = $engine->request('bookmark/edit');
 $engine->expectError('BOOKMARK_NOT_FOUND');
@@ -79,16 +80,16 @@ $response = $engine->request('bookmark/edit', [
 $engine->expectStatus(200);
 $engine->expectValue('', true, $response);
 
-$bookmark = $engine->request('bookmark/get', ['id' => $id]);
-expect_bookmark_object($engine, '', $bookmark);
-$engine->expectValue('.url', $edited_bookmark_url, $bookmark->url);
-$engine->expectValue('.title', $edited_bookmark_title, $bookmark->title);
-$engine->expectValue('.tags', $edited_bookmark_tags, $bookmark->tags);
+$response = $engine->request('bookmark/get', ['id' => $id]);
+expect_bookmark_object($engine, '', $response);
+$engine->expectValue('.url', $edited_bookmark_url, $response->url);
+$engine->expectValue('.title', $edited_bookmark_title, $response->title);
+$engine->expectValue('.tags', $edited_bookmark_tags, $response->tags);
 
-$bookmarks = $engine->request('bookmark/list');
+$response = $engine->request('bookmark/list');
 $engine->expectStatus(200);
-$engine->expectType('', 'array', $bookmarks);
-foreach ($bookmarks as $i => $bookmark) {
+$engine->expectType('', 'array', $response);
+foreach ($response as $i => $bookmark) {
     expect_bookmark_object($engine, ".[$i]", $bookmark);
 }
 
