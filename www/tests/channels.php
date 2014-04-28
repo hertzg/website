@@ -48,10 +48,48 @@ $response = $engine->request('channel/add', [
 $engine->expectStatus(400);
 $engine->expectValue('', 'CHANNEL_ALREADY_EXISTS', $response);
 
-$channels = $engine->request('channel/list');
+$response = $engine->request('channel/get');
+$engine->expectStatus(400);
+$engine->expectValue('', 'CHANNEL_NOT_FOUND', $response);
+
+$response = $engine->request('channel/get', ['id' => $id]);
 $engine->expectStatus(200);
-$engine->expectType('', 'array', $channels);
-foreach ($channels as $i => $channel) {
+expect_channel_object($engine, '', $response);
+$engine->expectValue('.channel_name', $new_channel_channel_name, $response->channel_name);
+$engine->expectValue('.public', $new_channel_public, $response->public);
+$engine->expectNatural('.insert_time', $response->insert_time);
+
+$response = $engine->request('channel/edit');
+$engine->expectStatus(400);
+$engine->expectValue('', 'CHANNEL_NOT_FOUND', $response);
+
+$response = $engine->request('channel/edit', [
+    'id' => $id,
+    'channel_name' => $invalidChannelName,
+    'public' => $edited_channel_public,
+]);
+$engine->expectStatus(400);
+$engine->expectValue('', 'INVALID_CHANNEL_NAME', $response);
+
+$response = $engine->request('channel/edit', [
+    'id' => $id,
+    'channel_name' => $edited_channel_channel_name,
+    'public' => $edited_channel_public,
+]);
+$engine->expectStatus(200);
+$engine->expectValue('', true, $response);
+
+$response = $engine->request('channel/get', ['id' => $id]);
+$engine->expectStatus(200);
+expect_channel_object($engine, '', $response);
+$engine->expectValue('.channel_name', $edited_channel_channel_name, $response->channel_name);
+$engine->expectValue('.public', $edited_channel_public, $response->public);
+$engine->expectNatural('.insert_time', $response->insert_time);
+
+$response = $engine->request('channel/list');
+$engine->expectStatus(200);
+$engine->expectType('', 'array', $response);
+foreach ($response as $i => $channel) {
     expect_channel_object($engine, ".[$i]", $channel);
 }
 

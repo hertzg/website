@@ -9,6 +9,7 @@ function require_channel ($mysqli, $id_users) {
 
     include_once __DIR__.'/../../../fns/Channels/getOnUser.php';
     $channel = Channels\getOnUser($mysqli, $id_users, $id);
+    header('Content-Type: application/json');
 
     if (!$channel) {
         include_once __DIR__.'/../../fns/bad_request.php';
