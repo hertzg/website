@@ -1,7 +1,6 @@
 <?php
 
-function render_folders_and_files (array $folders, array $files, &$items,
-    $emptyMessage, $base = '') {
+function render_folders_and_files (array $folders, array $files, &$items) {
 
     if ($folders || $files) {
 
@@ -9,19 +8,19 @@ function render_folders_and_files (array $folders, array $files, &$items,
 
         foreach ($folders as $i => $folder) {
             $title = htmlspecialchars($folder->folder_name);
-            $href = "$base?id_folders=$folder->id_folders";
+            $href = "?id_folders=$folder->id_folders";
             $items[] = Page\imageArrowLink($title, $href, 'folder');
         }
 
         foreach ($files as $i => $file) {
             $title = htmlspecialchars($file->file_name);
-            $href = "{$base}view-file/?id=$file->id_files";
+            $href = "view-file/?id=$file->id_files";
             $items[] = Page\imageArrowLink($title, $href, 'file');
         }
 
     } else {
         include_once __DIR__.'/../../fns/Page/info.php';
-        $items[] = Page\info($emptyMessage);
+        $items[] = Page\info('Folder is empty');
     }
 
 }
