@@ -24,8 +24,14 @@ function method_page ($groupName, $prefix, $methodName,
         $items[] = Page\text('The method has no parameters.');
     }
 
-    if ($errors) $text = 'Expected errors: '.join(', ', $errors);
-    else $text = 'No errors expected.';
+    if ($errors) {
+        $text = 'Expected errors: ';
+        foreach ($errors as $error) {
+            $text .= "<br /><code>$error</code>";
+        }
+    } else {
+        $text = 'No errors expected.';
+    }
     $items[] = Page\text($text);
 
     include_once __DIR__.'/../../../fns/Page/tabs.php';

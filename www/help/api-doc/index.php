@@ -41,6 +41,8 @@ $content = Page\tabs(
         'API Method Groups',
         Page\imageLink('Bookmark', 'bookmark/', 'generic')
         .'<div class="hr"></div>'
+        .Page\imageLink('Channel', 'channel/', 'generic')
+        .'<div class="hr"></div>'
         .Page\imageLink('Contact', 'contact/', 'generic')
         .'<div class="hr"></div>'
         .Page\imageLink('Note', 'note/', 'generic')
