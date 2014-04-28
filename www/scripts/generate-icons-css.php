@@ -6,8 +6,8 @@ include_once 'lib/require-cli.php';
 $names = ['blue-theme', 'green-theme', 'orange-theme', 'pink-theme',
     'edit-blue-theme', 'edit-green-theme', 'edit-orange-theme',
     'edit-pink-theme', 'bookmark', 'bookmarks', 'create-bookmark',
-    'edit-bookmark', 'channel', 'locked-channel', 'inactive-channel',
-    'locked-inactive-channel', 'create-channel', 'channels',
+    'edit-bookmark', 'channel', 'edit-channel', 'locked-channel',
+    'inactive-channel', 'locked-inactive-channel', 'create-channel', 'channels',
     'subscribed-channel', 'inactive-subscribed-channel',
     'create-subscribed-channel', 'subscribed-channels', 'account',
     'edit-profile', 'contact', 'contacts', 'create-contact', 'edit-contact',
@@ -26,8 +26,8 @@ $names = ['blue-theme', 'green-theme', 'orange-theme', 'pink-theme',
     'move-to-top', 'move-down', 'move-to-bottom', 'reorder', 'show-hide',
     'restore-defaults', 'connection', 'create-connection', 'edit-connection',
     'connections', 'forbid-notifications', 'receive-notifications', 'user',
-    'add-user', 'remove-user', 'users', 'lock', 'unlock', 'api-keys', 'api-key',
-    'create-api-key', 'edit-api-key', 'generic'];
+    'add-user', 'remove-user', 'users', 'api-keys', 'api-key', 'create-api-key',
+    'edit-api-key', 'generic'];
 
 $content = "/* auto-generated */\n";
 $x = 0;
