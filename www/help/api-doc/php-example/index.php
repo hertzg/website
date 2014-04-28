@@ -1,5 +1,14 @@
 <?php
 
+function highlight ($string) {
+    $string = htmlspecialchars($string);
+    $replace = '$1<span class="comment">$2</span>$3';
+    $string = preg_replace('/(^|\n)(\/\/.*)(\n|$)/', $replace, $string);
+    $replace = '<span class="string">$0</span>';
+    $string = preg_replace('/\'.*?\'/', $replace, $string);
+    return $string;
+}
+
 $base = '../../../';
 
 include_once '../../../fns/require_user.php';
@@ -25,36 +34,9 @@ $content = Page\tabs(
     Page\text('Below is a PHP code that calls an example method:')
     .'<div class="hr"></div>'
     .Page\phpCode(
-        "<span class=\"comment\">// prepare parameters</span>\n"
-        ."\$method = <span class=\"string\">'some-app/do-something'</span>;\n"
-        ."\$params = [\n"
-        ."    <span class=\"string\">'param1'</span> =&gt; <span class=\"string\">'value1'</span>,\n"
-        ."    <span class=\"string\">'param2'</span> =&gt; <span class=\"string\">'value2'</span>,\n"
-        ."];\n"
-        ."\$api_key = <span class=\"string\">'dee48716455972ce2...'</span>;\n"
-        ."\$api_base = <span class=\"string\">'$api_base'</span>;\n\n"
-        ."<span class=\"comment\">// send request</span>\n"
-        ."\$ch = curl_init();\n"
-        ."curl_setopt_array(\$ch, [\n"
-        ."    CURLOPT_POSTFIELDS =&gt; http_build_query(\$params),\n"
-        ."    CURLOPT_RETURNTRANSFER =&gt; true,\n"
-        ."    CURLOPT_URL =&gt; \$api_base.\$method,\n"
-        ."]);\n"
-        ."\$response = curl_exec(\$ch);\n"
-        ."\n"
-        ."<span class=\"comment\">// check for errors</span>\n"
-        ."<span class=\"keyword\">if</span> (\$response === false) {\n"
-        ."    <span class=\"keyword\">die</span>(<span class=\"string\">'ERROR: '</span>.curl_error(\$ch));\n"
-        ."}\n"
-        ."<span class=\"keyword\">if</span> (curl_getinfo(\$ch, CURLINFO_HTTP_CODE) != 200) {\n"
-        ."    <span class=\"keyword\">die</span>(<span class=\"string\">'ERROR: '</span>.\$response);\n"
-        ."}\n\n"
-        ."\$response = json_decode(\$response);\n"
-        ."<span class=\"comment\">// do something with the response</span>"
+        highlight(file_get_contents('code'))
     )
 );
 
 include_once '../../../fns/echo_page.php';
-echo_page($user, 'PHP Example', $content, $base, [
-//    'head' => '<link rel="stylesheet" type="text/css" href="index.css" />',
-]);
+echo_page($user, 'PHP Example', $content, $base);

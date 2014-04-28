@@ -1,0 +1,28 @@
+// prepare parameters
+$method = 'some-app/do-something';
+$params = [
+    'param1' => 'value1',
+    'param2' => 'value2',
+];
+$api_key = 'dee48716455972ce2...';
+$api_base = 'https://zvini.com/api-call/';
+
+// send request
+$ch = curl_init();
+curl_setopt_array($ch, [
+    CURLOPT_POSTFIELDS => http_build_query($params),
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_URL => $api_base.$method,
+]);
+$response = curl_exec($ch);
+
+// check for errors
+if ($response === false) {
+    die('ERROR: '.curl_error($ch));
+}
+if (curl_getinfo($ch, CURLINFO_HTTP_CODE) != 200) {
+    die('ERROR: '.$response);
+}
+
+$response = json_decode($response);
+// do something with the response
