@@ -5,7 +5,11 @@ $base = '../';
 include_once '../fns/require_user.php';
 $user = require_user($base);
 
-unset($_SESSION['home/messages']);
+unset(
+    $_SESSION['home/messages'],
+    $_SESSION['schedules/new/errors'],
+    $_SESSION['schedules/new/values']
+);
 
 include_once '../fns/Schedules/indexOnUser.php';
 include_once '../lib/mysqli.php';
