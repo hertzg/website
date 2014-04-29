@@ -9,6 +9,8 @@ unset(
     $_SESSION['schedule/messages']
 );
 
+include_once '../../fns/create_panel.php';
+include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../fns/Page/sessionMessages.php';
 include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Page/text.php';
@@ -26,6 +28,10 @@ $content = Page\tabs(
     "Schedule #$id",
     Page\sessionMessages('schedules/view/messages')
     .Page\text(htmlspecialchars($schedule->text))
+    .create_panel(
+        'Schedule Options',
+        Page\imageArrowLink('Delete', "../delete/?id=$id", 'trash-bin')
+    )
 );
 
 include_once '../../fns/echo_page.php';
