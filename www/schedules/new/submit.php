@@ -30,6 +30,8 @@ unset(
 
 include_once '../../fns/Schedules/add.php';
 include_once '../../lib/mysqli.php';
-Schedules\add($mysqli, $user->id_users, $text);
+$id = Schedules\add($mysqli, $user->id_users, $text);
 
-redirect();
+$_SESSION['schedules/view/messages'] = ['Schedule has been created.'];
+
+redirect("../view/?id=$id");

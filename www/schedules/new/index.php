@@ -5,6 +5,11 @@ $base = '../../';
 include_once '../../fns/require_user.php';
 $user = require_user($base);
 
+unset(
+    $_SESSION['schedules/errors'],
+    $_SESSION['schedules/messages']
+);
+
 $key = 'schedules/new/values';
 if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];

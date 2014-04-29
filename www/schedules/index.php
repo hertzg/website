@@ -8,7 +8,8 @@ $user = require_user($base);
 unset(
     $_SESSION['home/messages'],
     $_SESSION['schedules/new/errors'],
-    $_SESSION['schedules/new/values']
+    $_SESSION['schedules/new/values'],
+    $_SESSION['schedules/view/messages']
 );
 
 include_once '../fns/Schedules/indexOnUser.php';
@@ -30,6 +31,8 @@ if ($schedules) {
 }
 
 include_once '../fns/create_panel.php';
+include_once '../fns/Page/sessionErrors.php';
+include_once '../fns/Page/sessionMessages.php';
 include_once '../fns/Page/tabs.php';
 $content = Page\tabs(
     [
@@ -39,7 +42,9 @@ $content = Page\tabs(
         ],
     ],
     'Schedules',
-    join('<div class="hr"></div>', $items)
+    Page\sessionErrors('schedules/errors')
+    .Page\sessionMessages('schedules/messages')
+    .join('<div class="hr"></div>', $items)
     .create_panel(
         'Options',
         Page\imageArrowLink('New Schedule', 'new/', 'TODO')
