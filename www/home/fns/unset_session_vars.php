@@ -16,6 +16,8 @@ function unset_session_vars () {
         $_SESSION['notifications/in-channel/messages'],
         $_SESSION['notifications/in-subscribed-channel/messages'],
         $_SESSION['notifications/messages'],
+        $_SESSION['schedules/errors'],
+        $_SESSION['schedules/messages'],
         $_SESSION['tasks/errors'],
         $_SESSION['tasks/messages']
     );

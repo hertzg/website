@@ -5,8 +5,8 @@ include_once '../../lib/mysqli.php';
 list($schedule, $id, $user) = require_schedule($mysqli);
 
 unset(
-    $_SESSION['schedule/errors'],
-    $_SESSION['schedule/messages']
+    $_SESSION['schedules/errors'],
+    $_SESSION['schedules/messages']
 );
 
 include_once '../../fns/create_panel.php';
