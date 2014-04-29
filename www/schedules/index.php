@@ -15,15 +15,21 @@ include_once '../fns/Schedules/indexOnUser.php';
 include_once '../lib/mysqli.php';
 $schedules = Schedules\indexOnUser($mysqli, $user->id_users);
 
+include_once '../fns/Page/imageArrowLink.php';
+
 $items = [];
 if ($schedules) {
+    foreach ($schedules as $schedule) {
+        $title = htmlspecialchars($schedule->text);
+        $href = "view/?id=$schedule->id";
+        $items[] = Page\imageArrowLink($title, $href, 'TODO');
+    }
 } else {
     include_once '../fns/Page/info.php';
     $items[] = Page\info('No schedules');
 }
 
 include_once '../fns/create_panel.php';
-include_once '../fns/Page/imageArrowLink.php';
 include_once '../fns/Page/tabs.php';
 $content = Page\tabs(
     [
