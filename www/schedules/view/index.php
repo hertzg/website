@@ -14,6 +14,7 @@ include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../fns/Page/sessionMessages.php';
 include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Page/text.php';
+include_once '../../fns/Page/twoColumns.php';
 $content = Page\tabs(
     [
         [
@@ -30,7 +31,10 @@ $content = Page\tabs(
     .Page\text(htmlspecialchars($schedule->text))
     .create_panel(
         'Schedule Options',
-        Page\imageArrowLink('Delete', "../delete/?id=$id", 'trash-bin')
+        Page\twoColumns(
+            Page\imageArrowLink('Edit', "../edit/?id=$id", 'TODO'),
+            Page\imageArrowLink('Delete', "../delete/?id=$id", 'trash-bin')
+        )
     )
 );
 
