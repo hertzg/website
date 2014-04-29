@@ -5,6 +5,8 @@ include_once '../../lib/mysqli.php';
 list($schedule, $id, $user) = require_schedule($mysqli);
 
 unset(
+    $_SESSION['schedules/edit/errors'],
+    $_SESSION['schedules/edit/values'],
     $_SESSION['schedules/errors'],
     $_SESSION['schedules/messages']
 );
