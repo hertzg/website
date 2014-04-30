@@ -2,7 +2,7 @@
 
 function create_interval_select ($value) {
     include_once __DIR__.'/../../fns/Form/select.php';
-    return Form\select('time_interval', 'Repeat in every', [
+    return Form\select('day_interval', 'Repeat in every', [
         '2' => '2 days',
         '3' => '3 days',
         '4' => '4 days',

@@ -16,7 +16,7 @@ if (array_key_exists($key, $_SESSION)) {
 } else {
     $values = [
         'text' => '',
-        'time_interval' => '',
+        'day_interval' => '',
         'time_offset' => '',
     ];
 }
@@ -49,7 +49,7 @@ $content = Page\tabs(
             'autofocus' => true,
         ])
         .'<div class="hr"></div>'
-        .create_interval_select($values['time_interval'])
+        .create_interval_select($values['day_interval'])
         .'<div class="hr"></div>'
         .create_offset_select($values['time_offset'])
         .'<div class="hr"></div>'

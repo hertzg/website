@@ -10,7 +10,7 @@ if (array_key_exists($key, $_SESSION)) {
 } else {
     $values = [
         'text' => $schedule->text,
-        'time_interval' => $schedule->time_interval / (60 * 60 * 24),
+        'day_interval' => $schedule->time_interval / (60 * 60 * 24),
         'time_offset' => '',
     ];
 }
@@ -46,7 +46,7 @@ $content = Page\tabs(
             'autofocus' => true,
         ])
         .'<div class="hr"></div>'
-        .create_interval_select($values['time_interval'])
+        .create_interval_select($values['day_interval'])
         .'<div class="hr"></div>'
         .create_offset_select($values['time_offset'])
         .'<div class="hr"></div>'

@@ -8,7 +8,7 @@ include_once '../../lib/mysqli.php';
 list($schedule, $id, $user) = require_schedule($mysqli);
 
 include_once '../../fns/Schedules/request.php';
-list($text, $time_interval, $time_offset) = Schedules\request();
+list($text, $day_interval, $time_offset) = Schedules\request();
 
 $errors = [];
 
@@ -20,7 +20,7 @@ if ($errors) {
     $_SESSION['schedules/edit/errors'] = $errors;
     $_SESSION['schedules/edit/values'] = [
         'text' => $text,
-        'time_interval' => $time_interval,
+        'day_interval' => $day_interval,
         'time_offset' => $time_offset,
     ];
     redirect("./?id=$id");
@@ -31,8 +31,10 @@ unset(
     $_SESSION['schedules/edit/values']
 );
 
+$time_interval = $day_interval * 60 * 60 * 24;
+
 include_once '../../fns/Schedules/edit.php';
-Schedules\edit($mysqli, $id, $text, $time_interval * 60 * 60 * 24);
+Schedules\edit($mysqli, $id, $text, $time_interval);
 
 $_SESSION['schedules/view/messages'] = ['Changes have been saved.'];
 
