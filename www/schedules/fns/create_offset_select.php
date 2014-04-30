@@ -6,7 +6,7 @@ function create_offset_select ($value) {
     $timeToday = time_today();
 
     include_once __DIR__.'/../../fns/Form/select.php';
-    return Form\select('time_offset', 'Start from', [
+    return Form\select('day_offset', 'Start from', [
         '0' => 'Today',
         '1' => 'Tomorrow',
         '2' => date('l', $timeToday + 60 * 60 * 24 * 2),

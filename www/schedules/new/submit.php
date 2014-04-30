@@ -7,7 +7,7 @@ include_once '../../fns/require_user.php';
 $user = require_user('../../');
 
 include_once '../../fns/Schedules/request.php';
-list($text, $day_interval, $time_offset) = Schedules\request();
+list($text, $day_interval, $day_offset) = Schedules\request();
 
 $errors = [];
 
@@ -20,7 +20,7 @@ if ($errors) {
     $_SESSION['schedules/new/values'] = [
         'text' => $text,
         'day_interval' => $day_interval,
-        'time_offset' => $time_offset,
+        'day_offset' => $day_offset,
     ];
     redirect();
 }

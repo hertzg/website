@@ -8,7 +8,7 @@ include_once '../../lib/mysqli.php';
 list($schedule, $id, $user) = require_schedule($mysqli);
 
 include_once '../../fns/Schedules/request.php';
-list($text, $day_interval, $time_offset) = Schedules\request();
+list($text, $day_interval, $day_offset) = Schedules\request();
 
 $errors = [];
 
@@ -21,7 +21,7 @@ if ($errors) {
     $_SESSION['schedules/edit/values'] = [
         'text' => $text,
         'day_interval' => $day_interval,
-        'time_offset' => $time_offset,
+        'day_offset' => $day_offset,
     ];
     redirect("./?id=$id");
 }

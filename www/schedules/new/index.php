@@ -17,7 +17,7 @@ if (array_key_exists($key, $_SESSION)) {
     $values = [
         'text' => '',
         'day_interval' => '',
-        'time_offset' => '',
+        'day_offset' => '',
     ];
 }
 
@@ -51,7 +51,7 @@ $content = Page\tabs(
         .'<div class="hr"></div>'
         .create_interval_select($values['day_interval'])
         .'<div class="hr"></div>'
-        .create_offset_select($values['time_offset'])
+        .create_offset_select($values['day_offset'])
         .'<div class="hr"></div>'
         .Form\button('Save Schedule')
     .'</form>'
