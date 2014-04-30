@@ -32,9 +32,12 @@ unset(
 
 $time_interval = $day_interval * 60 * 60 * 24;
 
+include_once '../../fns/time_today.php';
+$time_offset = (time_today() + $day_offset * 60 * 60 * 24) % $time_interval;
+
 include_once '../../fns/Schedules/add.php';
 include_once '../../lib/mysqli.php';
-$id = Schedules\add($mysqli, $user->id_users, $text, $day_interval);
+$id = Schedules\add($mysqli, $user->id_users, $text, $time_interval, $time_offset);
 
 $_SESSION['schedules/view/messages'] = ['Schedule has been created.'];
 
