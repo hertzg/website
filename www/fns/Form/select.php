@@ -16,5 +16,5 @@ function select ($name, $text, array $options, $value) {
     }
     $selectHtml .= '</select>';
     include_once __DIR__.'/association.php';
-    return association($selectHtml, "<label for=\"$name\">$text</label>");
+    return association($selectHtml, "<label for=\"$name\">$text:</label>");
 }
