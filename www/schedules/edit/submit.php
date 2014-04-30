@@ -31,13 +31,11 @@ unset(
     $_SESSION['schedules/edit/values']
 );
 
-$time_interval = $day_interval * 60 * 60 * 24;
-
 include_once '../../fns/time_today.php';
-$time_offset = (time_today() + $day_offset * 60 * 60 * 24) % $time_interval;
+$day_offset = (time_today() / (60 * 60 * 24) + $day_offset) % $day_interval;
 
 include_once '../../fns/Schedules/edit.php';
-Schedules\edit($mysqli, $id, $text, $time_interval, $time_offset);
+Schedules\edit($mysqli, $id, $text, $day_interval, $day_offset);
 
 $_SESSION['schedules/view/messages'] = ['Changes have been saved.'];
 

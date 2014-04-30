@@ -10,7 +10,7 @@ if (array_key_exists($key, $_SESSION)) {
 } else {
     $values = [
         'text' => $schedule->text,
-        'day_interval' => $schedule->time_interval / (60 * 60 * 24),
+        'day_interval' => $schedule->day_interval,
         'day_offset' => '',
     ];
 }
