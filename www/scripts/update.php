@@ -10,6 +10,7 @@ $mysqli->query(
     .' text varchar(1024) character set utf8 collate utf8_unicode_ci,'
     .' day_interval bigint unsigned not null,'
     .' day_offset bigint unsigned not null,'
+    .' start_day bigint unsigned not null,'
     .' insert_time bigint unsigned not null,'
     .' update_time bigint unsigned not null)'
 );

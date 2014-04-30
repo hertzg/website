@@ -31,11 +31,13 @@ unset(
 );
 
 include_once '../../fns/time_today.php';
-$day_offset = (time_today() / (60 * 60 * 24) + $day_offset) % $day_interval;
+$start_day = time_today() / (60 * 60 * 24) + $day_offset;
+$day_offset = $start_day % $day_interval;
 
 include_once '../../fns/Schedules/add.php';
 include_once '../../lib/mysqli.php';
-$id = Schedules\add($mysqli, $user->id_users, $text, $day_interval, $day_offset);
+$id = Schedules\add($mysqli, $user->id_users, $text,
+    $day_interval, $day_offset, $start_day);
 
 $_SESSION['schedules/view/messages'] = ['Schedule has been created.'];
 
