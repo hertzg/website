@@ -6,11 +6,8 @@ require_same_domain_referer('./');
 include_once '../../fns/require_user.php';
 $user = require_user('../../');
 
-include_once '../../fns/request_strings.php';
-list($text) = request_strings('text');
-
-include_once '../../fns/str_collapse_spaces.php';
-$text = str_collapse_spaces($text);
+include_once '../../fns/Schedules/request.php';
+list($text, $time_interval, $time_offset) = Schedules\request();
 
 $errors = [];
 
@@ -22,6 +19,8 @@ if ($errors) {
     $_SESSION['schedules/new/errors'] = $errors;
     $_SESSION['schedules/new/values'] = [
         'text' => $text,
+        'time_interval' => $time_interval,
+        'time_offset' => $time_offset,
     ];
     redirect();
 }

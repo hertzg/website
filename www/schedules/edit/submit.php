@@ -7,11 +7,8 @@ include_once '../fns/require_schedule.php';
 include_once '../../lib/mysqli.php';
 list($schedule, $id, $user) = require_schedule($mysqli);
 
-include_once '../../fns/request_strings.php';
-list($text) = request_strings('text');
-
-include_once '../../fns/str_collapse_spaces.php';
-$text = str_collapse_spaces($text);
+include_once '../../fns/Schedules/request.php';
+list($text, $time_interval, $time_offset) = Schedules\request();
 
 $errors = [];
 
@@ -23,6 +20,8 @@ if ($errors) {
     $_SESSION['schedules/edit/errors'] = $errors;
     $_SESSION['schedules/edit/values'] = [
         'text' => $text,
+        'time_interval' => $time_interval,
+        'time_offset' => $time_offset,
     ];
     redirect("./?id=$id");
 }

@@ -21,8 +21,12 @@ if (array_key_exists($key, $_SESSION)) {
     ];
 }
 
+include_once '../../fns/time_today.php';
+$timeToday = time_today();
+
+include_once '../fns/create_interval_select.php';
+include_once '../fns/create_offset_select.php';
 include_once '../../fns/Form/button.php';
-include_once '../../fns/Form/select.php';
 include_once '../../fns/Form/textfield.php';
 include_once '../../fns/Page/sessionErrors.php';
 include_once '../../fns/Page/tabs.php';
@@ -45,27 +49,10 @@ $content = Page\tabs(
             'autofocus' => true,
         ])
         .'<div class="hr"></div>'
-        .Form\select('time_interval', 'Repeat in every', [
-            '2' => '2 days',
-            '3' => '3 days',
-            '4' => '4 days',
-            '5' => '5 days',
-            '6' => '6 days',
-            '7' => '7 days',
-            '8' => '8 days',
-            '9' => '9 days',
-            '10' => '10 days',
-            '11' => '11 days',
-            '12' => '12 days',
-            '13' => '13 days',
-            '14' => '14 days',
-            '15' => '15 days',
-        ], $values['time_interval'])
+        .create_interval_select($values['time_interval'])
         .'<div class="hr"></div>'
-        .Form\select('time_offset', 'Start from', [
-            '0' => 'Today',
-            '1' => 'Tomorrow',
-        ], $values['time_offset'])
+        .create_offset_select($values['time_offset'])
+        .'<div class="hr"></div>'
         .Form\button('Save Schedule')
     .'</form>'
 );
