@@ -32,7 +32,7 @@ unset(
 );
 
 include_once '../../fns/Schedules/edit.php';
-Schedules\edit($mysqli, $id, $text);
+Schedules\edit($mysqli, $id, $text, $time_interval * 60 * 60 * 24);
 
 $_SESSION['schedules/view/messages'] = ['Changes have been saved.'];
 

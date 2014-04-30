@@ -32,7 +32,8 @@ unset(
 
 include_once '../../fns/Schedules/add.php';
 include_once '../../lib/mysqli.php';
-$id = Schedules\add($mysqli, $user->id_users, $text);
+$id = Schedules\add($mysqli, $user->id_users,
+    $text, $time_interval * 60 * 60 * 24);
 
 $_SESSION['schedules/view/messages'] = ['Schedule has been created.'];
 
