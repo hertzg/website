@@ -11,6 +11,7 @@ function get_home_items () {
         'notes' => ['Notes', 'notes'],
         'new-note' => ['New Note', 'create-note'],
         'notifications' => ['Notifications', 'old-notification'],
+        'schedules' => ['Schedules', 'TODO'],
         'tasks' => ['Tasks', 'tasks'],
         'new-task' => ['New Task', 'create-task'],
     ];
