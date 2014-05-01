@@ -2,6 +2,7 @@
 
 include_once 'fns/require_first_stage.php';
 list($user, $first_stage) = require_first_stage();
+$id = $first_stage['id'];
 
 $key = 'schedules/new/next/errors';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
@@ -15,20 +16,20 @@ $content = Page\tabs(
     [
         [
             'title' => '&middot;&middot;&middot;',
-            'href' => '../../../home/',
-        ],
-        [
-            'title' => 'Schedules',
             'href' => '../..',
         ],
+        [
+            'title' => "Schedule #$id",
+            'href' => "../../view/?id=$id",
+        ],
     ],
-    'New',
-    Page\imageLink('Back', '..', 'arrow-left')
+    'Edit',
+    Page\imageLink('Back', "../?id=$id", 'arrow-left')
     .'<div class="hr"></div>'
     .'<form action="submit.php" method="post">'
         .create_offset_select($first_stage['day_interval'], $values['day_offset'])
         .'<div class="hr"></div>'
-        .Form\button('Save Schedule')
+        .Form\button('Save Changes')
     .'</form>'
 );
 

@@ -16,16 +16,22 @@ if ($text === '') $errors[] = 'Enter text.';
 
 include_once '../../fns/redirect.php';
 
+$_SESSION['schedules/edit/values'] = [
+    'text' => $text,
+    'day_interval' => $day_interval,
+];
+
 if ($errors) {
     $_SESSION['schedules/edit/errors'] = $errors;
-    $_SESSION['schedules/edit/values'] = [
-        'text' => $text,
-        'day_interval' => $day_interval,
-    ];
     redirect("./?id=$id");
 }
 
-unset(
-    $_SESSION['schedules/edit/errors'],
-    $_SESSION['schedules/edit/values']
-);
+unset($_SESSION['schedules/edit/errors']);
+
+$_SESSION['schedules/edit/next/first_stage'] = [
+    'id' => $id,
+    'text' => $text,
+    'day_interval' => $day_interval,
+];
+
+redirect('next/');

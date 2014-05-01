@@ -32,4 +32,4 @@ $_SESSION['schedules/new/next/first_stage'] = [
     'day_interval' => $day_interval,
 ];
 
- redirect('next/');
+redirect('next/');

@@ -14,7 +14,10 @@ if (array_key_exists($key, $_SESSION)) {
     ];
 }
 
-unset($_SESSION['schedules/view/messages']);
+unset(
+    $_SESSION['schedules/edit/next/first_stage'],
+    $_SESSION['schedules/view/messages']
+);
 
 include_once '../fns/create_interval_select.php';
 include_once '../../fns/create_panel.php';
@@ -46,7 +49,7 @@ $content = Page\tabs(
         .'<div class="hr"></div>'
         .create_interval_select($values['day_interval'])
         .'<div class="hr"></div>'
-        .Form\button('Save Changes')
+        .Form\button('Next')
         .Form\hidden('id', $id)
     .'</form>'
 );
