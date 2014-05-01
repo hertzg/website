@@ -28,7 +28,8 @@ $names = ['blue-theme', 'green-theme', 'orange-theme', 'pink-theme',
     'create-connection', 'edit-connection', 'connections',
     'forbid-notifications', 'receive-notifications', 'user', 'add-user',
     'remove-user', 'users', 'api-keys', 'api-key', 'create-api-key',
-    'edit-api-key', 'generic'];
+    'edit-api-key', 'generic', 'schedule', 'create-schedule', 'edit-schedule',
+    'schedules'];
 
 $content = '';
 $x = 0;
