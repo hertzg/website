@@ -11,7 +11,25 @@ unset(
     $_SESSION['schedules/messages']
 );
 
+include_once '../fns/day_offset_from_today.php';
+$day_offset_from_today = day_offset_from_today($schedule->day_interval, $schedule->day_offset);
+
+if ($day_offset_from_today == 0) {
+    $next = 'Today';
+} elseif ($day_offset_from_today == 1) {
+    $next = 'Tomorrow';
+} else {
+    include_once '../../fns/time_today.php';
+    $time = time_today() + $day_offset_from_today * 60 * 60 * 25;
+    if ($day_offset_from_today < 7) {
+        $next = date('l', $time);
+    } else {
+        $next = date('M j, l', $time);
+    }
+}
+
 include_once '../../fns/create_panel.php';
+include_once '../../fns/Form/label.php';
 include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../fns/Page/sessionMessages.php';
 include_once '../../fns/Page/tabs.php';
@@ -31,6 +49,8 @@ $content = Page\tabs(
     "Schedule #$id",
     Page\sessionMessages('schedules/view/messages')
     .Page\text(htmlspecialchars($schedule->text))
+    .'<div class="hr"></div>'
+    .Form\label('Next', $next)
     .create_panel(
         'Schedule Options',
         Page\twoColumns(
