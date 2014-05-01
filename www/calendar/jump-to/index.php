@@ -5,8 +5,8 @@ $base = '../../';
 include_once '../../fns/require_user.php';
 $user = require_user($base);
 
-include_once '../../fns/request_strings.php';
-list($month, $year) = request_strings('month', 'year');
+include_once '../../fns/Date/request.php';
+list($day, $month, $year) = Date\request();
 
 $maxYear = date('Y');
 $minYear = $maxYear - 100;

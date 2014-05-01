@@ -10,17 +10,20 @@ unset_session_vars();
 include_once '../fns/request_strings.php';
 list($year, $month, $day) = request_strings('year', 'month', 'day');
 
-$timeNow = time();
-$monthNow = (int)date('n', $timeNow);
-$yearNow = (int)date('Y', $timeNow);
+include_once '../fns/time_today.php';
+$timeToday = time_today();
 
-if ($year === '') $year = $yearNow;
+$monthToday = (int)date('n', $timeToday);
+$yearToday = (int)date('Y', $timeToday);
+$dayToday = (int)date('d', $timeToday);
+
+if ($year === '') $year = $yearToday;
 else $year = (int)$year;
 
-if ($month === '') $month = $monthNow;
+if ($month === '') $month = $monthToday;
 else $month = (int)$month;
 
-if ($day === '') $day = date('d', $timeNow);
+if ($day === '') $day = $dayToday;
 else $day = (int)$day;
 
 $timeSelected = mktime(0, 0, 0, $month, $day, $year);
@@ -47,9 +50,9 @@ if ($user->num_events) {
         $description, $href, 'events');
 }
 
-$newEventHref =
-    "new-event/?year=$yearSelected&amp;month=$monthSelected&amp;day=$daySelected";
-$jumpToHref = "jump-to/?year=$yearNow&amp;month=$monthNow";
+$queryString = "?year=$yearSelected&amp;month=$monthSelected&amp;day=$daySelected";
+$newEventHref = "new-event/$queryString";
+$jumpToHref = "jump-to/$queryString";
 
 include_once 'fns/create_calendar.php';
 include_once '../fns/create_panel.php';
