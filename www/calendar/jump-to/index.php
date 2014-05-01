@@ -10,9 +10,7 @@ list($day, $month, $year) = Date\request();
 
 $maxYear = date('Y');
 $minYear = $maxYear - 100;
-
 $year = max($minYear, min($maxYear, (int)$year));
-$month = max(1, min(12, (int)$month));
 
 $monthOptions = [
     1 => 'January',
@@ -41,7 +39,7 @@ unset(
 
 include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Form/button.php';
-include_once '../../fns/Form/select.php';
+include_once '../../fns/Form/datefield.php';
 $content = Page\tabs(
     [
         [
@@ -55,9 +53,22 @@ $content = Page\tabs(
     ],
     'Jump To',
     '<form action="submit.php" method="post">'
-        .Form\select('month', 'Month', $monthOptions, $month)
-        .'<div class="hr"></div>'
-        .Form\select('year', 'Year', $yearOptions, $year)
+        .Form\datefield(
+            [
+                'name' => 'day',
+                'value' => $day,
+            ],
+            [
+                'name' => 'month',
+                'value' => $month,
+            ],
+            [
+                'name' => 'year',
+                'value' => $year,
+            ],
+            'Select a day',
+            true
+        )
         .'<div class="hr"></div>'
         .Form\button('Jump To')
     .'</form>'
