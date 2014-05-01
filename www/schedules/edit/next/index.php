@@ -1,8 +1,7 @@
 <?php
 
 include_once 'fns/require_first_stage.php';
-list($user, $first_stage) = require_first_stage();
-$id = $first_stage['id'];
+list($user, $id, $first_stage) = require_first_stage();
 
 include_once '../../fns/create_offset_select.php';
 include_once '../../../fns/Form/button.php';

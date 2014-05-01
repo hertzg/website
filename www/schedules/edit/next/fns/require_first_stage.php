@@ -11,6 +11,8 @@ function require_first_stage () {
         redirect('..');
     }
 
-    return [$user, $_SESSION[$key]];
+    $first_stage = $_SESSION[$key];
+
+    return [$user, $first_stage['id'], $first_stage];
 
 }
