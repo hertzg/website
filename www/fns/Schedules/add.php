@@ -2,7 +2,7 @@
 
 namespace Schedules;
 
-function add ($mysqli, $id_users, $text, $day_interval, $day_offset, $start_day) {
+function add ($mysqli, $id_users, $text, $day_interval, $day_offset) {
     $text = $mysqli->real_escape_string($text);
     $insert_time = $update_time = time();
     $sql = 'insert into schedules (id_users, text, day_interval,'
