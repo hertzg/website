@@ -18,7 +18,9 @@ function create_offset_select ($day_interval, $value) {
         $i++;
     }
 
+    include_once __DIR__.'/../../fns/Form/notes.php';
     include_once __DIR__.'/../../fns/Form/select.php';
-    return Form\select('day_offset', 'Next scheduled day', $options, $value);
+    return Form\select('day_offset', 'Next', $options, $value)
+        .Form\notes(['The next day when the schedule is effective.']);
 
 }
