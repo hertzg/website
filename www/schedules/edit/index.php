@@ -8,27 +8,15 @@ $key = 'schedules/edit/values';
 if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];
 } else {
-
-    include_once '../../fns/time_today.php';
-    $dayNow = time_today() / (60 * 60 * 25);
-
-    $day_interval = $schedule->day_interval;
-    $remainder = ($dayNow - $schedule->day_offset) % $day_interval;
-    if ($remainder) $day_offset = $day_interval - $remainder;
-    else $day_offset = 0;
-
     $values = [
         'text' => $schedule->text,
-        'day_interval' => $day_interval,
-        'day_offset' => $day_offset,
+        'day_interval' => $schedule->day_interval,
     ];
-
 }
 
 unset($_SESSION['schedules/view/messages']);
 
 include_once '../fns/create_interval_select.php';
-include_once '../fns/create_offset_select.php';
 include_once '../../fns/create_panel.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/hidden.php';
@@ -57,8 +45,6 @@ $content = Page\tabs(
         ])
         .'<div class="hr"></div>'
         .create_interval_select($values['day_interval'])
-        .'<div class="hr"></div>'
-        .create_offset_select($values['day_offset'])
         .'<div class="hr"></div>'
         .Form\button('Save Changes')
         .Form\hidden('id', $id)

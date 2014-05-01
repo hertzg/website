@@ -7,7 +7,8 @@ $user = require_user($base);
 
 unset(
     $_SESSION['schedules/errors'],
-    $_SESSION['schedules/messages']
+    $_SESSION['schedules/messages'],
+    $_SESSION['schedules/new/next/firstStageValues']
 );
 
 $key = 'schedules/new/values';
@@ -17,7 +18,6 @@ if (array_key_exists($key, $_SESSION)) {
     $values = [
         'text' => '',
         'day_interval' => '',
-        'day_offset' => '',
     ];
 }
 
@@ -25,7 +25,6 @@ include_once '../../fns/time_today.php';
 $timeToday = time_today();
 
 include_once '../fns/create_interval_select.php';
-include_once '../fns/create_offset_select.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/textfield.php';
 include_once '../../fns/Page/sessionErrors.php';
@@ -45,15 +44,14 @@ $content = Page\tabs(
     Page\sessionErrors('schedules/new/errors')
     .'<form action="submit.php" method="post">'
         .Form\textfield('text', 'Text', [
+            'value' => $values['text'],
             'required' => true,
             'autofocus' => true,
         ])
         .'<div class="hr"></div>'
         .create_interval_select($values['day_interval'])
         .'<div class="hr"></div>'
-        .create_offset_select($values['day_offset'])
-        .'<div class="hr"></div>'
-        .Form\button('Save Schedule')
+        .Form\button('Next')
     .'</form>'
 );
 

@@ -6,8 +6,8 @@ require_same_domain_referer('./');
 include_once '../../fns/require_user.php';
 $user = require_user('../../');
 
-include_once '../../fns/Schedules/request.php';
-list($text, $day_interval, $day_offset) = Schedules\request();
+include_once '../../fns/Schedules/requestFirstStage.php';
+list($text, $day_interval) = Schedules\requestFirstStage();
 
 $errors = [];
 
@@ -15,30 +15,21 @@ if ($text === '') $errors[] = 'Enter text.';
 
 include_once '../../fns/redirect.php';
 
+$_SESSION['schedules/new/values'] = [
+    'text' => $text,
+    'day_interval' => $day_interval,
+];
+
 if ($errors) {
     $_SESSION['schedules/new/errors'] = $errors;
-    $_SESSION['schedules/new/values'] = [
-        'text' => $text,
-        'day_interval' => $day_interval,
-        'day_offset' => $day_offset,
-    ];
     redirect();
 }
 
-unset(
-    $_SESSION['schedules/new/errors'],
-    $_SESSION['schedules/new/values']
-);
+unset($_SESSION['schedules/new/errors']);
 
-include_once '../../fns/time_today.php';
-$dayToday = time_today() / (60 * 60 * 24);
-$day_offset = ($dayToday + $day_offset) % $day_interval;
+$_SESSION['schedules/new/next/firstStageValues'] = [
+    'text' => $text,
+    'day_interval' => $day_interval,
+];
 
-include_once '../../fns/Schedules/add.php';
-include_once '../../lib/mysqli.php';
-$id = Schedules\add($mysqli, $user->id_users, $text,
-    $day_interval, $day_offset);
-
-$_SESSION['schedules/view/messages'] = ['Schedule has been created.'];
-
-redirect("../view/?id=$id");
+ redirect('next/');
