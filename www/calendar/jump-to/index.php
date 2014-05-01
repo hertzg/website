@@ -37,9 +37,10 @@ unset(
     $_SESSION['calendar/messages']
 );
 
-include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/datefield.php';
+include_once '../../fns/Page/sessionErrors.php';
+include_once '../../fns/Page/tabs.php';
 $content = Page\tabs(
     [
         [
@@ -52,7 +53,8 @@ $content = Page\tabs(
         ],
     ],
     'Jump To',
-    '<form action="submit.php" method="post">'
+    Page\sessionErrors('calendar/jump-to/errors')
+    .'<form action="submit.php" method="post">'
         .Form\datefield(
             [
                 'name' => 'day',

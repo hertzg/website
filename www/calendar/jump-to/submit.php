@@ -15,4 +15,13 @@ $maxYear = date('Y', $timeNow) + 100;
 $year = max(1900, min($maxYear, (int)$year));
 
 include_once '../../fns/redirect.php';
+
+include_once '../../fns/date_is_valid.php';
+if (!date_is_valid($day, $month, $year)) {
+    $_SESSION['calendar/jump-to/errors'] = ['The date is invalid'];
+    redirect("./?year=$year&month=$month&day=$day");
+}
+
+unset($_SESSION['calendar/jump-to/errors']);
+
 redirect("../?year=$year&month=$month&day=$day");
