@@ -36,7 +36,8 @@ if ($schedules) {
         $title = htmlspecialchars($schedule->text);
         $description = format_days_left($schedule->days_left);
         $href = "view/?id=$schedule->id";
-        $items[] = Page\imageArrowLinkWithDescription($title, $description, $href, 'TODO');
+        $items[] = Page\imageArrowLinkWithDescription(
+            $title, $description, $href, 'schedule');
     }
 
 } else {
@@ -62,7 +63,7 @@ $content = Page\tabs(
     .join('<div class="hr"></div>', $items)
     .create_panel(
         'Options',
-        Page\imageArrowLink('New Schedule', 'new/', 'TODO')
+        Page\imageArrowLink('New Schedule', 'new/', 'create-schedule')
     )
 );
 

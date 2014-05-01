@@ -43,7 +43,7 @@ $content = Page\tabs(
     .create_panel(
         'Schedule Options',
         Page\twoColumns(
-            Page\imageArrowLink('Edit', "../edit/?id=$id", 'TODO'),
+            Page\imageArrowLink('Edit', "../edit/?id=$id", 'edit-schedule'),
             Page\imageArrowLink('Delete', "../delete/?id=$id", 'trash-bin')
         )
     )
