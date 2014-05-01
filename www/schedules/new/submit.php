@@ -27,7 +27,7 @@ if ($errors) {
 
 unset($_SESSION['schedules/new/errors']);
 
-$_SESSION['schedules/new/next/firstStageValues'] = [
+$_SESSION['schedules/new/next/first_stage'] = [
     'text' => $text,
     'day_interval' => $day_interval,
 ];
