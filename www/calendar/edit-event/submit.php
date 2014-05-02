@@ -46,9 +46,9 @@ unset(
 include_once '../../fns/Events/edit.php';
 Events\edit($mysqli, $user->id_users, $id, $event_time, $event_text);
 
-include_once '../fns/invalidate_user_events.php';
-invalidate_user_events($mysqli, $user, $event->event_time);
-invalidate_user_events($mysqli, $user, $event_time);
+include_once '../../fns/Users/Events/invalidateIfNeeded.php';
+Users\Events\invalidateIfNeeded($mysqli, $user, $event->event_time);
+Users\Events\invalidateIfNeeded($mysqli, $user, $event_time);
 
 $_SESSION['calendar/view-event/messages'] = ['Changes have been saved.'];
 
