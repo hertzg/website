@@ -1,8 +1,8 @@
 <?php
 
-namespace Users;
+namespace Users\Birthdays;
 
-function updateBirthdays ($mysqli, $id_users, $num_birthdays_today,
+function update ($mysqli, $id_users, $num_birthdays_today,
     $num_birthdays_tomorrow, $birthdays_check_day) {
 
     $sql = "update users set num_birthdays_today = $num_birthdays_today,"
