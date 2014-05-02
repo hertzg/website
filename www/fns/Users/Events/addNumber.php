@@ -1,8 +1,8 @@
 <?php
 
-namespace Users;
+namespace Users\Events;
 
-function addNumEvents ($mysqli, $id_users, $num_events) {
+function addNumber ($mysqli, $id_users, $num_events) {
     $sql = "update users set num_events = num_events + $num_events"
         ." where id_users = $id_users";
     $mysqli->query($sql) || trigger_error($mysqli->error);

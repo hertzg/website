@@ -11,8 +11,8 @@ $event_time = $event->event_time;
 include_once '../../fns/Events/delete.php';
 Events\delete($mysqli, $id);
 
-include_once '../../fns/Users/addNumEvents.php';
-Users\addNumEvents($mysqli, $user->id_users, -1);
+include_once '../../fns/Users/Events/addNumber.php';
+Users\Events\addNumber($mysqli, $user->id_users, -1);
 
 include_once '../../fns/Users/Events/invalidateIfNeeded.php';
 Users\Events\invalidateIfNeeded($mysqli, $user, $event_time);

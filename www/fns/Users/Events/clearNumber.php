@@ -1,9 +1,9 @@
 <?php
 
-namespace Users;
+namespace Users\Events;
 
-function clearNumEvents ($mysqli, $id_users) {
-    include_once __DIR__.'/../../fns/time_today.php';
+function clearNumber ($mysqli, $id_users) {
+    include_once __DIR__.'/../../time_today.php';
     $events_check_day = time_today();
     $sql = 'update users set num_events = 0, num_events_today = 0,'
         ." num_events_tomorrow = 0, events_check_day = $events_check_day"

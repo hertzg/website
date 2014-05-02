@@ -11,8 +11,8 @@ include_once '../../../fns/Events/deleteOnUser.php';
 include_once '../../../lib/mysqli.php';
 Events\deleteOnUser($mysqli, $id_users);
 
-include_once '../../../fns/Users/clearNumEvents.php';
-Users\clearNumEvents($mysqli, $id_users);
+include_once '../../../fns/Users/Events/clearNumber.php';
+Users\Events\clearNumber($mysqli, $id_users);
 
 unset($_SESSION['calendar/errors']);
 $_SESSION['calendar/messages'] = ['All events have been deleted.'];
