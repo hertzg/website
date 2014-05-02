@@ -13,8 +13,8 @@ function check_schedule_check_day ($mysqli, &$user) {
         $num_schedules_today = Schedules\countOnDay($mysqli, $id_users, $day_today);
         $num_schedules_tomorrow = Schedules\countOnDay($mysqli, $id_users, $day_today + 1);
 
-        include_once __DIR__.'/../../fns/Users/updateSchedules.php';
-        Users\updateSchedules($mysqli, $id_users, $num_schedules_today,
+        include_once __DIR__.'/../../fns/Users/Schedules/update.php';
+        Users\Schedules\update($mysqli, $id_users, $num_schedules_today,
             $num_schedules_tomorrow, $day_today);
 
         $user->num_schedules_today = $num_schedules_today;
