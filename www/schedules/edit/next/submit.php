@@ -19,6 +19,9 @@ include_once '../../../fns/Schedules/edit.php';
 include_once '../../../lib/mysqli.php';
 Schedules\edit($mysqli, $id, $first_stage['text'], $interval, $offset);
 
+include_once '../../../fns/Users/invalidateSchedules.php';
+Users\invalidateSchedules($mysqli, $user->id_users);
+
 unset(
     $_SESSION['schedules/edit/values'],
     $_SESSION['schedules/edit/next/first_stage']
