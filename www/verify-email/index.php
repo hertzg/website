@@ -19,8 +19,8 @@ if (!$user) {
     redirect('..');
 }
 
-include_once '../fns/Users/verifyEmail.php';
-Users\verifyEmail($mysqli, $id_users);
+include_once '../fns/Users/Email/verify.php';
+Users\Email\verify($mysqli, $id_users);
 
 include_once '../fns/session_start_custom.php';
 session_start_custom();

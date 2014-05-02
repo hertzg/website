@@ -11,8 +11,8 @@ list($user, $key) = require_valid_key($mysqli);
 $id_users = $user->id_users;
 
 if (!$user->email_verified) {
-    include_once '../fns/Users/verifyEmail.php';
-    Users\verifyEmail($mysqli, $id_users);
+    include_once '../fns/Users/Email/verify.php';
+    Users\Email\verify($mysqli, $id_users);
 }
 
 include_once 'fns/get_values.php';
