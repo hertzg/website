@@ -19,8 +19,8 @@ function invalidate_user_birthdays ($mysqli, &$user, $birthday_time) {
 
             if ($user->birthdays_check_day) {
                 $user->birthdays_check_day = 0;
-                include_once __DIR__.'/Users/invalidateBirthdays.php';
-                Users\invalidateBirthdays($mysqli, $user->id_users);
+                include_once __DIR__.'/Users/Invalidate/birthdays.php';
+                Users\Invalidate\birthdays($mysqli, $user->id_users);
             }
 
         }
