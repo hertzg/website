@@ -2,8 +2,11 @@
 
 function create_interval_select ($value) {
 
+    include_once __DIR__.'/../../fns/Schedules/limits.php';
+    $limits = Schedules\limits();
+
     $options = [];
-    for ($i = 2; $i <= 14; $i++) {
+    for ($i = $limits['minInterval']; $i <= $limits['maxInterval']; $i++) {
         $options[$i] = "$i days";
     }
 
