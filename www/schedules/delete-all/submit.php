@@ -16,8 +16,8 @@ Schedules\deleteOnUser($mysqli, $id_users);
 include_once '../../fns/Users/clearNumSchedules.php';
 Users\clearNumSchedules($mysqli, $id_users);
 
-include_once '../../fns/Users/Invalidate/schedules.php';
-Users\Invalidate\schedules($mysqli, $id_users);
+include_once '../../fns/Users/Schedules/invalidate.php';
+Users\Schedules\invalidate($mysqli, $id_users);
 
 $_SESSION['schedules/messages'] = ['All schedules have been delete.'];
 unset($_SESSION['schedules/errors']);

@@ -52,8 +52,8 @@ include_once '../../fns/Users/editProfile.php';
 Users\editProfile($mysqli, $id_users, $email, $full_name);
 
 if ($email !== $user->email) {
-    include_once '../../fns/Users/Invalidate/email.php';
-    Users\Invalidate\email($mysqli, $id_users);
+    include_once '../../fns/Users/Email/invalidate.php';
+    Users\Email\invalidate($mysqli, $id_users);
 }
 
 $_SESSION['account/messages'] = ['Changes have been saved.'];
