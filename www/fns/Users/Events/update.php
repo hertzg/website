@@ -1,8 +1,8 @@
 <?php
 
-namespace Users;
+namespace Users\Events;
 
-function updateEvents ($mysqli, $id_users, $num_events_today,
+function update ($mysqli, $id_users, $num_events_today,
     $num_events_tomorrow, $events_check_day) {
 
     $sql = "update users set num_events_today = $num_events_today,"
