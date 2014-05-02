@@ -1,11 +1,13 @@
 <?php
 
-function invalidate_user_birthdays ($mysqli, &$user, $birthday_time) {
+namespace Users\Birthdays;
+
+function invalidateIfNeeded ($mysqli, &$user, $birthday_time) {
     if ($birthday_time !== null) {
 
         $timeNow = time();
 
-        include_once __DIR__.'/time_today.php';
+        include_once __DIR__.'/../../time_today.php';
         $timeToday = time_today();
         $timeTomorrow = $timeToday + 60 * 60 * 24;
 
@@ -19,8 +21,8 @@ function invalidate_user_birthdays ($mysqli, &$user, $birthday_time) {
 
             if ($user->birthdays_check_day) {
                 $user->birthdays_check_day = 0;
-                include_once __DIR__.'/Users/Birthdays/invalidate.php';
-                Users\Birthdays\invalidate($mysqli, $user->id_users);
+                include_once __DIR__.'/invalidate.php';
+                invalidate($mysqli, $user->id_users);
             }
 
         }

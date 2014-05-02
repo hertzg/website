@@ -50,8 +50,8 @@ include_once '../../fns/ContactTags/add.php';
 ContactTags\add($mysqli, $id_users, $id,
     $tag_names, $full_name, $alias, $favorite);
 
-include_once '../../fns/invalidate_user_birthdays.php';
-invalidate_user_birthdays($mysqli, $user, $birthday_time);
+include_once '../../fns/Users/Birthdays/invalidateIfNeeded.php';
+Users\Birthdays\invalidateIfNeeded($mysqli, $user, $birthday_time);
 
 $_SESSION['contacts/view/messages'] = ['Contact has been saved.'];
 redirect("../view/?id=$id");

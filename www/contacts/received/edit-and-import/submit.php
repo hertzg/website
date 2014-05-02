@@ -55,8 +55,8 @@ ReceivedContacts\delete($mysqli, $id);
 include_once '../../../fns/Users/addNumReceivedContacts.php';
 Users\addNumReceivedContacts($mysqli, $id_users, -1);
 
-include_once '../../../fns/invalidate_user_birthdays.php';
-invalidate_user_birthdays($mysqli, $user, $birthday_time);
+include_once '../../../fns/Users/Birthdays/invalidateIfNeeded.php';
+Users\Birthdays\invalidateIfNeeded($mysqli, $user, $birthday_time);
 
 $messages = ['Contact has been imported.'];
 
