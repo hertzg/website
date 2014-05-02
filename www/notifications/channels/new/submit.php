@@ -63,8 +63,8 @@ unset(
 include_once '../../../fns/Channels/add.php';
 $id = Channels\add($mysqli, $id_users, $user->username, $channel_name, $public);
 
-include_once '../../../fns/Users/addNumChannels.php';
-Users\addNumChannels($mysqli, $id_users, 1);
+include_once '../../../fns/Users/Channels/addNumber.php';
+Users\Channels\addNumber($mysqli, $id_users, 1);
 
 $_SESSION['notifications/channels/view/messages'] = ['Channel has been added.'];
 redirect("../view/?id=$id");

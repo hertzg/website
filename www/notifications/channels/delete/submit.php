@@ -17,8 +17,8 @@ Channels\delete($mysqli, $id);
 include_once '../../../fns/SubscribedChannels/deleteOnChannel.php';
 SubscribedChannels\deleteOnChannel($mysqli, $id);
 
-include_once '../../../fns/Users/addNumChannels.php';
-Users\addNumChannels($mysqli, $id_users, -1);
+include_once '../../../fns/Users/Channels/addNumber.php';
+Users\Channels\addNumber($mysqli, $id_users, -1);
 
 include_once '../../../fns/Users/clearNumNotifications.php';
 Users\clearNumNotifications($mysqli, $id_users);
