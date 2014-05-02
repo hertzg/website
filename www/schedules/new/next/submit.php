@@ -12,9 +12,8 @@ list($offset) = Schedules\requestSecondStage($first_stage['interval']);
 
 $interval = $first_stage['interval'];
 
-include_once '../../../fns/time_today.php';
-$dayToday = time_today() / (60 * 60 * 24);
-$offset = ($dayToday + $offset) % $interval;
+include_once '../../../fns/day_today.php';
+$offset = (day_today() + $offset) % $interval;
 
 include_once '../../../fns/Schedules/add.php';
 include_once '../../../lib/mysqli.php';

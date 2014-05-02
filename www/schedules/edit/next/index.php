@@ -4,9 +4,8 @@ include_once 'fns/require_first_stage.php';
 list($user, $id, $schedule, $first_stage) = require_first_stage();
 
 $interval = $schedule->interval;
-include_once '../../../fns/time_today.php';
-$dayNow = time_today() / (60 * 60 * 24);
-$remainder = ($dayNow - $schedule->offset) % $interval;
+include_once '../../../fns/day_today.php';
+$remainder = (day_today() - $schedule->offset) % $interval;
 if ($remainder) $offset = $interval - $remainder;
 else $offset = 0;
 

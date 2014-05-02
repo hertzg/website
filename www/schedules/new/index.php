@@ -21,9 +21,6 @@ if (array_key_exists($key, $_SESSION)) {
     ];
 }
 
-include_once '../../fns/time_today.php';
-$timeToday = time_today();
-
 include_once '../fns/create_interval_select.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/textfield.php';
