@@ -18,8 +18,8 @@ function invalidate_user_schedules ($mysqli, &$user, $schedule_time) {
 
         if ($user->schedules_check_day) {
             $user->schedules_check_day = 0;
-            include_once __DIR__.'/Users/invalidateSchedules.php';
-            Users\invalidateSchedules($mysqli, $user->id_users);
+            include_once __DIR__.'/Users/Invalidate/schedules.php';
+            Users\Invalidate\schedules($mysqli, $user->id_users);
         }
 
     }
