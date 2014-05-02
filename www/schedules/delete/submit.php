@@ -14,10 +14,10 @@ include_once '../../fns/Users/Schedules/addNumber.php';
 Users\Schedules\addNumber($mysqli, $user->id_users, -1);
 
 include_once '../fns/days_left_from_today.php';
-$offset = days_left_from_today($schedule->interval, $schedule->offset);
+$days_left = days_left_from_today($schedule->interval, $schedule->offset);
 
 include_once '../../fns/Users/Schedules/invalidateIfNeeded.php';
-Users\Schedules\invalidateIfNeeded($mysqli, $user, $offset);
+Users\Schedules\invalidateIfNeeded($mysqli, $user, $days_left);
 
 $_SESSION['schedules/messages'] = ['Schedule has been deleted.'];
 unset($_SESSION['schedules/errors']);

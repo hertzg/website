@@ -4,7 +4,7 @@ include_once 'fns/require_first_stage.php';
 list($user, $id, $schedule, $first_stage) = require_first_stage();
 
 include_once '../../fns/days_left_from_today.php';
-$offset = days_left_from_today($schedule->interval, $schedule->offset);
+$days_left = days_left_from_today($schedule->interval, $schedule->offset);
 
 include_once '../../fns/create_offset_select.php';
 include_once '../../../fns/Form/button.php';
@@ -25,7 +25,7 @@ $content = Page\tabs(
     Page\imageLink('Back', "../?id=$id", 'arrow-left')
     .'<div class="hr"></div>'
     .'<form action="submit.php" method="post">'
-        .create_offset_select($first_stage['interval'], $offset)
+        .create_offset_select($first_stage['interval'], $days_left)
         .'<div class="hr"></div>'
         .Form\button('Save Changes')
     .'</form>'

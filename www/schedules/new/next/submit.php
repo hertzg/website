@@ -8,12 +8,12 @@ list($user, $first_stage) = require_first_stage();
 $id_users = $user->id_users;
 
 include_once '../../../fns/Schedules/requestSecondStage.php';
-list($offset) = Schedules\requestSecondStage($first_stage['interval']);
+list($days_left) = Schedules\requestSecondStage($first_stage['interval']);
 
 $interval = $first_stage['interval'];
 
 include_once '../../../fns/day_today.php';
-$offset = (day_today() + $offset) % $interval;
+$offset = (day_today() + $days_left) % $interval;
 
 include_once '../../../fns/Schedules/add.php';
 include_once '../../../lib/mysqli.php';
@@ -24,7 +24,7 @@ include_once '../../../fns/Users/Schedules/addNumber.php';
 Users\Schedules\addNumber($mysqli, $id_users, 1);
 
 include_once '../../../fns/Users/Schedules/invalidateIfNeeded.php';
-Users\Schedules\invalidateIfNeeded($mysqli, $user, $offset);
+Users\Schedules\invalidateIfNeeded($mysqli, $user, $days_left);
 
 unset(
     $_SESSION['schedules/new/values'],
