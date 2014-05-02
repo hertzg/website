@@ -87,6 +87,9 @@ ReceivedNotes\deleteOnReceiver($mysqli, $id_users);
 include_once '../../fns/ReceivedTasks/deleteOnReceiver.php';
 ReceivedTasks\deleteOnReceiver($mysqli, $id_users);
 
+include_once '../../fns/Schedules/deleteOnUser.php';
+Schedules\deleteOnUser($mysqli, $id_users);
+
 include_once '../../fns/SubscribedChannels/deleteContainingUser.php';
 SubscribedChannels\deleteContainingUser($mysqli, $id_users);
 
