@@ -1,8 +1,8 @@
+#!/usr/bin/php
 <?php
 
-include_once __DIR__.'/days_left.php';
-
-header('Content-Type: text/plain');
+chdir(__DIR__);
+include_once '../fns/days_left.php';
 
 function check ($interval, $offset, $day, $expectedValue) {
     $value = days_left($interval, $offset, $day);
