@@ -25,7 +25,7 @@ $users = mysqli_query_object($mysqli, 'select * from users');
 foreach ($users as $user) {
     $order_home_items = json_decode($user->order_home_items);
     $index = array_search('notifications', $order_home_items);
-    array_splice($order_home_items, $index, 0, 'schedules');
+    array_splice($order_home_items, $index + 1, 0, 'schedules');
     $order_home_items = json_encode($order_home_items);
     $order_home_items = $mysqli->real_escape_string($order_home_items);
     $mysqli->query("update users set order_home_items = '$order_home_items' where id_users = $user->id_users");
