@@ -10,6 +10,10 @@ list($schedule, $id, $user) = require_schedule($mysqli);
 include_once '../../fns/Schedules/delete.php';
 Schedules\delete($mysqli, $id);
 
+
+include_once '../../fns/Users/addNumSchedules.php';
+Users\addNumSchedules($mysqli, $user->id_users, -1);
+
 $_SESSION['schedules/messages'] = ['Schedule has been deleted.'];
 unset($_SESSION['schedules/errors']);
 
