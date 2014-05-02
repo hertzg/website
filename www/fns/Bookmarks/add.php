@@ -19,8 +19,8 @@ function add ($mysqli, $id_users, $url, $title, $tags) {
 
     $id_bookmarks = $mysqli->insert_id;
 
-    include_once __DIR__.'/../Users/addNumBookmarks.php';
-    \Users\addNumBookmarks($mysqli, $id_users, 1);
+    include_once __DIR__.'/../Users/Bookmarks/addNumber.php';
+    \Users\Bookmarks\addNumber($mysqli, $id_users, 1);
 
     return $id_bookmarks;
 

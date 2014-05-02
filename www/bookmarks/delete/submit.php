@@ -13,8 +13,8 @@ Bookmarks\delete($mysqli, $id);
 include_once '../../fns/BookmarkTags/deleteOnBookmark.php';
 BookmarkTags\deleteOnBookmark($mysqli, $id);
 
-include_once '../../fns/Users/addNumBookmarks.php';
-Users\addNumBookmarks($mysqli, $user->id_users, -1);
+include_once '../../fns/Users/Bookmarks/addNumber.php';
+Users\Bookmarks\addNumber($mysqli, $user->id_users, -1);
 
 unset($_SESSION['bookmarks/errors']);
 $_SESSION['bookmarks/messages'] = ['Bookmark has been deleted.'];

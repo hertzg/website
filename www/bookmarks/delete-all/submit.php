@@ -14,8 +14,8 @@ Bookmarks\deleteOnUser($mysqli, $id_users);
 include_once '../../fns/BookmarkTags/deleteOnUser.php';
 BookmarkTags\deleteOnUser($mysqli, $id_users);
 
-include_once '../../fns/Users/clearNumBookmarks.php';
-Users\clearNumBookmarks($mysqli, $id_users);
+include_once '../../fns/Users/Bookmarks/clearNumber.php';
+Users\Bookmarks\clearNumber($mysqli, $id_users);
 
 unset($_SESSION['bookmarks/errors']);
 $_SESSION['bookmarks/messages'] = [
