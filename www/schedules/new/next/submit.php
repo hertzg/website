@@ -20,8 +20,8 @@ include_once '../../../lib/mysqli.php';
 $id = Schedules\add($mysqli, $id_users,
     $first_stage['text'], $interval, $offset);
 
-include_once '../../../fns/Users/addNumSchedules.php';
-Users\addNumSchedules($mysqli, $id_users, 1);
+include_once '../../../fns/Users/Schedules/addNumber.php';
+Users\Schedules\addNumber($mysqli, $id_users, 1);
 
 include_once '../../../fns/Users/Schedules/invalidateIfNeeded.php';
 Users\Schedules\invalidateIfNeeded($mysqli, $user, $offset);

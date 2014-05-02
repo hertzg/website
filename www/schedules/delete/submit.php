@@ -10,8 +10,8 @@ list($schedule, $id, $user) = require_schedule($mysqli);
 include_once '../../fns/Schedules/delete.php';
 Schedules\delete($mysqli, $id);
 
-include_once '../../fns/Users/addNumSchedules.php';
-Users\addNumSchedules($mysqli, $user->id_users, -1);
+include_once '../../fns/Users/Schedules/addNumber.php';
+Users\Schedules\addNumber($mysqli, $user->id_users, -1);
 
 include_once '../fns/days_left_from_today.php';
 $offset = days_left_from_today($schedule->interval, $schedule->offset);

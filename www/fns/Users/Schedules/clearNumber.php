@@ -1,9 +1,9 @@
 <?php
 
-namespace Users;
+namespace Users\Schedules;
 
-function clearNumSchedules ($mysqli, $id_users) {
-    include_once __DIR__.'/../../fns/day_today.php';
+function clearNumber ($mysqli, $id_users) {
+    include_once __DIR__.'/../../day_today.php';
     $day_today = day_today();
     $sql = 'update users set num_schedules = 0, num_schedules_today = 0,'
         ." num_schedules_tomorrow = 0, schedules_check_day = $day_today"
