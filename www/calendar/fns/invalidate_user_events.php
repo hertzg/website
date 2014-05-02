@@ -9,8 +9,8 @@ function invalidate_user_events ($mysqli, &$user, $event_time) {
     if ($event_time == $timeToday || $event_time == $timeTomorrow) {
         if ($user->events_check_day) {
             $user->events_check_day = 0;
-            include_once __DIR__.'/../../fns/Users/invalidateEvents.php';
-            Users\invalidateEvents($mysqli, $user->id_users);
+            include_once __DIR__.'/../../fns/Users/Invalidate/events.php';
+            Users\Invalidate\events($mysqli, $user->id_users);
         }
     }
 
