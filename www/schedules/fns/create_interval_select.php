@@ -11,6 +11,6 @@ function create_interval_select ($value) {
     }
 
     include_once __DIR__.'/../../fns/Form/select.php';
-    return Form\select('day_interval', 'Repeat in every', $options, $value);
+    return Form\select('day_interval', 'Repeats in every', $options, $value);
 
 }

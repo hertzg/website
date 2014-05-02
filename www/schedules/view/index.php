@@ -39,6 +39,8 @@ $content = Page\tabs(
     Page\sessionMessages('schedules/view/messages')
     .Page\text(htmlspecialchars($schedule->text))
     .'<div class="hr"></div>'
+    .Form\label('Repeats in every', "$schedule->day_interval days")
+    .'<div class="hr"></div>'
     .Form\label('Next', $next)
     .create_panel(
         'Schedule Options',
