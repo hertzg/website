@@ -1,10 +1,32 @@
 <?php
 
-function render_schedules ($user, &$items) {
+function render_schedules ($user, $mysqli, &$items) {
 
     if (!$user->show_schedules) return;
 
-    include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
-    $items['schedules'] = Page\imageArrowLink('Schedules', '../schedules/', 'schedules');
+    include_once __DIR__.'/check_schedule_check_day.php';
+    check_schedule_check_day($mysqli, $user);
+    $today = $user->num_schedules_today;
+    $tomorrow = $user->num_schedules_tomorrow;
+
+    $title = 'Schedules';
+    $href = '../schedules/';
+    $icon = 'schedules';
+
+    if ($today || $tomorrow) {
+
+        $descriptionItems = [];
+        if ($today) $descriptionItems[] = "$today today.";
+        if ($tomorrow) $descriptionItems[] = "$tomorrow tomorrow.";
+        $description = join(' ', $descriptionItems);
+
+        include_once __DIR__.'/../../fns/Page/imageArrowLinkWithDescription.php';
+        $items['schedules'] = Page\imageArrowLinkWithDescription(
+            $title, $description, $href, $icon);
+
+    } else {
+        include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
+        $items['schedules'] = Page\imageArrowLink($title, $href, $icon);
+    }
 
 }

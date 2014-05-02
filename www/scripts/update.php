@@ -16,6 +16,9 @@ $mysqli->query(
 
 $mysqli->query('alter table users add show_schedules tinyint unsigned not null default 1 after show_notifications');
 $mysqli->query('alter table users add num_schedules bigint unsigned not null after num_notifications');
+$mysqli->query('alter table users add num_schedules_today bigint unsigned not null');
+$mysqli->query('alter table users add num_schedules_tomorrow bigint unsigned not null after num_schedules_today');
+$mysqli->query('alter table users add schedules_check_day bigint unsigned not null after num_schedules_tomorrow');
 
 include_once '../fns/mysqli_query_object.php';
 $users = mysqli_query_object($mysqli, 'select * from users');

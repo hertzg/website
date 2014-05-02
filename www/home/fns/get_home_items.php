@@ -47,7 +47,7 @@ function get_home_items ($mysqli, $user) {
     render_notifications($user, $items);
 
     include_once __DIR__.'/render_schedules.php';
-    render_schedules($user, $items);
+    render_schedules($user, $mysqli, $items);
 
     include_once __DIR__.'/render_tasks.php';
     render_tasks($user, $items);
