@@ -3,11 +3,8 @@
 include_once 'fns/require_first_stage.php';
 list($user, $id, $schedule, $first_stage) = require_first_stage();
 
-$interval = $schedule->interval;
-include_once '../../../fns/day_today.php';
-$remainder = (day_today() - $schedule->offset) % $interval;
-if ($remainder) $offset = $interval - $remainder;
-else $offset = 0;
+include_once '../../fns/days_left_from_today.php';
+$offset = days_left_from_today($schedule->interval, $schedule->offset);
 
 include_once '../../fns/create_offset_select.php';
 include_once '../../../fns/Form/button.php';

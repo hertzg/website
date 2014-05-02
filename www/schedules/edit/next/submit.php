@@ -12,14 +12,20 @@ list($offset) = Schedules\requestSecondStage($first_stage['interval']);
 $interval = $first_stage['interval'];
 
 include_once '../../../fns/day_today.php';
-$offset = (day_today() + $offset) % $interval;
+$day_today = day_today();
+
+$offset = ($day_today + $offset) % $interval;
 
 include_once '../../../fns/Schedules/edit.php';
 include_once '../../../lib/mysqli.php';
 Schedules\edit($mysqli, $id, $first_stage['text'], $interval, $offset);
 
+include_once '../../../fns/days_left.php';
+$oldOffset = days_left($schedule->interval, $schedule->offset, $day_today);
+
 include_once '../../../fns/Users/Schedules/invalidateIfNeeded.php';
 Users\Schedules\invalidateIfNeeded($mysqli, $user, $offset);
+Users\Schedules\invalidateIfNeeded($mysqli, $user, $oldOffset);
 
 unset(
     $_SESSION['schedules/edit/values'],

@@ -13,11 +13,8 @@ Schedules\delete($mysqli, $id);
 include_once '../../fns/Users/addNumSchedules.php';
 Users\addNumSchedules($mysqli, $user->id_users, -1);
 
-$interval = $schedule->interval;
-include_once '../../fns/day_today.php';
-$remainder = (day_today() - $schedule->offset) % $interval;
-if ($remainder) $offset = $interval - $remainder;
-else $offset = 0;
+include_once '../../fns/days_left_from_today.php';
+$offset = days_left_from_today($schedule->interval, $schedule->offset);
 
 include_once '../../fns/Users/Schedules/invalidateIfNeeded.php';
 Users\Schedules\invalidateIfNeeded($mysqli, $user, $offset);
