@@ -18,8 +18,8 @@ function add ($mysqli, $id_users, $text, $tags) {
 
     $id_notes = $mysqli->insert_id;
 
-    include_once __DIR__.'/../Users/addNumNotes.php';
-    \Users\addNumNotes($mysqli, $id_users, 1);
+    include_once __DIR__.'/../Users/Notes/addNumber.php';
+    \Users\Notes\addNumber($mysqli, $id_users, 1);
 
     return $id_notes;
 

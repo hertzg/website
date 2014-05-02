@@ -13,8 +13,8 @@ Notes\delete($mysqli, $id);
 include_once '../../fns/NoteTags/deleteOnNote.php';
 NoteTags\deleteOnNote($mysqli, $id);
 
-include_once '../../fns/Users/addNumNotes.php';
-Users\addNumNotes($mysqli, $user->id_users, -1);
+include_once '../../fns/Users/Notes/addNumber.php';
+Users\Notes\addNumber($mysqli, $user->id_users, -1);
 
 unset($_SESSION['notes/errors']);
 $_SESSION['notes/messages'] = ['Note has been deleted.'];

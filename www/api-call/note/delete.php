@@ -13,8 +13,8 @@ Notes\delete($mysqli, $id);
 include_once '../../fns/NoteTags/deleteOnNote.php';
 NoteTags\deleteOnNote($mysqli, $id);
 
-include_once '../../fns/Users/addNumNotes.php';
-Users\addNumNotes($mysqli, $id_users, -1);
+include_once '../../fns/Users/Notes/addNumber.php';
+Users\Notes\addNumber($mysqli, $id_users, -1);
 
 header('Content-Type: application/json');
 echo 'true';
