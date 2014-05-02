@@ -8,18 +8,18 @@ list($user, $first_stage) = require_first_stage();
 $id_users = $user->id_users;
 
 include_once '../../../fns/Schedules/requestSecondStage.php';
-list($day_offset) = Schedules\requestSecondStage($first_stage['day_interval']);
+list($offset) = Schedules\requestSecondStage($first_stage['interval']);
 
-$day_interval = $first_stage['day_interval'];
+$interval = $first_stage['interval'];
 
 include_once '../../../fns/time_today.php';
 $dayToday = time_today() / (60 * 60 * 24);
-$day_offset = ($dayToday + $day_offset) % $day_interval;
+$offset = ($dayToday + $offset) % $interval;
 
 include_once '../../../fns/Schedules/add.php';
 include_once '../../../lib/mysqli.php';
-$id = Schedules\add($mysqli, $id_users, $first_stage['text'],
-    $day_interval, $day_offset);
+$id = Schedules\add($mysqli, $id_users,
+    $first_stage['text'], $interval, $offset);
 
 include_once '../../../fns/Users/addNumSchedules.php';
 Users\addNumSchedules($mysqli, $id_users, 1);

@@ -7,7 +7,7 @@ include_once '../../fns/require_user.php';
 $user = require_user('../../');
 
 include_once '../../fns/Schedules/requestFirstStage.php';
-list($text, $day_interval) = Schedules\requestFirstStage();
+list($text, $interval) = Schedules\requestFirstStage();
 
 $errors = [];
 
@@ -17,7 +17,7 @@ include_once '../../fns/redirect.php';
 
 $_SESSION['schedules/new/values'] = [
     'text' => $text,
-    'day_interval' => $day_interval,
+    'interval' => $interval,
 ];
 
 if ($errors) {
@@ -29,7 +29,7 @@ unset($_SESSION['schedules/new/errors']);
 
 $_SESSION['schedules/new/next/first_stage'] = [
     'text' => $text,
-    'day_interval' => $day_interval,
+    'interval' => $interval,
 ];
 
 redirect('next/');

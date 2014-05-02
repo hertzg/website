@@ -2,11 +2,11 @@
 
 namespace Schedules;
 
-function edit ($mysqli, $id, $text, $day_interval, $day_offset) {
+function edit ($mysqli, $id, $text, $interval, $offset) {
     $text = $mysqli->real_escape_string($text);
     $update_time = time();
     $sql = "update schedules set text = '$text',"
-        ." day_interval = $day_interval, day_offset = $day_offset,"
+        ." `interval` = $interval, offset = $offset,"
         ." update_time = $update_time where id = $id";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 }

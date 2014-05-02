@@ -10,7 +10,7 @@ if (array_key_exists($key, $_SESSION)) {
 } else {
     $values = [
         'text' => $schedule->text,
-        'day_interval' => $schedule->day_interval,
+        'interval' => $schedule->interval,
     ];
 }
 
@@ -47,7 +47,7 @@ $content = Page\tabs(
             'autofocus' => true,
         ])
         .'<div class="hr"></div>'
-        .create_interval_select($values['day_interval'])
+        .create_interval_select($values['interval'])
         .'<div class="hr"></div>'
         .Form\button('Next')
         .Form\hidden('id', $id)

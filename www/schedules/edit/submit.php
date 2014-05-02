@@ -8,7 +8,7 @@ include_once '../../lib/mysqli.php';
 list($schedule, $id, $user) = require_schedule($mysqli);
 
 include_once '../../fns/Schedules/requestFirstStage.php';
-list($text, $day_interval) = Schedules\requestFirstStage();
+list($text, $interval) = Schedules\requestFirstStage();
 
 $errors = [];
 
@@ -18,7 +18,7 @@ include_once '../../fns/redirect.php';
 
 $_SESSION['schedules/edit/values'] = [
     'text' => $text,
-    'day_interval' => $day_interval,
+    'interval' => $interval,
 ];
 
 if ($errors) {
@@ -31,7 +31,7 @@ unset($_SESSION['schedules/edit/errors']);
 $_SESSION['schedules/edit/next/first_stage'] = [
     'schedule' => $schedule,
     'text' => $text,
-    'day_interval' => $day_interval,
+    'interval' => $interval,
 ];
 
 redirect('next/');

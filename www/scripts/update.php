@@ -8,11 +8,11 @@ $mysqli->query(
     .' (id bigint unsigned not null auto_increment primary key,'
     .' id_users bigint unsigned not null,'
     .' text varchar(1024) character set utf8 collate utf8_unicode_ci,'
-    .' day_interval bigint unsigned not null,'
-    .' day_offset bigint unsigned not null,'
+    .' `interval` bigint unsigned not null,'
+    .' offset bigint unsigned not null,'
     .' insert_time bigint unsigned not null,'
     .' update_time bigint unsigned not null)'
-);
+) || trigger_error($mysqli->error);
 
 $mysqli->query('alter table users add show_schedules tinyint unsigned not null default 1 after show_notifications');
 $mysqli->query('alter table users add num_schedules bigint unsigned not null after num_notifications');

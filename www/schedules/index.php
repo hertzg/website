@@ -21,8 +21,8 @@ if ($schedules) {
 
     include_once 'fns/days_left_from_today.php';
     foreach ($schedules as $schedule) {
-        $interval = $schedule->day_interval;
-        $offset = $schedule->day_offset;
+        $interval = $schedule->interval;
+        $offset = $schedule->offset;
         $schedule->days_left = days_left_from_today($interval, $offset);
     }
 

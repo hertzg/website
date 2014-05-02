@@ -1,6 +1,6 @@
 <?php
 
-function create_offset_select ($day_interval, $value) {
+function create_offset_select ($interval, $value) {
 
     include_once __DIR__.'/../../fns/time_today.php';
     $timeToday = time_today();
@@ -10,17 +10,17 @@ function create_offset_select ($day_interval, $value) {
         '1' => 'Tomorrow',
     ];
 
-    for ($i = 2; $i < min($day_interval, 7); $i++) {
+    for ($i = 2; $i < min($interval, 7); $i++) {
         $options[$i] = date('l', $timeToday + 60 * 60 * 24 * $i);
     }
-    while ($i < $day_interval) {
+    while ($i < $interval) {
         $options[$i] = date('j M, l', $timeToday + 60 * 60 * 24 * $i);
         $i++;
     }
 
     include_once __DIR__.'/../../fns/Form/notes.php';
     include_once __DIR__.'/../../fns/Form/select.php';
-    return Form\select('day_offset', 'Next', $options, $value)
+    return Form\select('offset', 'Next', $options, $value)
         .Form\notes(['The next day when the schedule is effective.']);
 
 }

@@ -12,7 +12,7 @@ unset(
 );
 
 include_once '../fns/days_left_from_today.php';
-$days_left = days_left_from_today($schedule->day_interval, $schedule->day_offset);
+$days_left = days_left_from_today($schedule->interval, $schedule->offset);
 
 include_once '../fns/format_days_left.php';
 $next = format_days_left($days_left);
@@ -39,7 +39,7 @@ $content = Page\tabs(
     Page\sessionMessages('schedules/view/messages')
     .Page\text(htmlspecialchars($schedule->text))
     .'<div class="hr"></div>'
-    .Form\label('Repeats in every', "$schedule->day_interval days")
+    .Form\label('Repeats in every', "$schedule->interval days")
     .'<div class="hr"></div>'
     .Form\label('Next', $next)
     .create_panel(
