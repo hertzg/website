@@ -45,7 +45,7 @@ if ($schedules) {
     $items[] = Page\info('No schedules');
 }
 
-include_once '../fns/create_panel.php';
+include_once 'fns/create_options_panel.php';
 include_once '../fns/Page/imageArrowLink.php';
 include_once '../fns/Page/sessionErrors.php';
 include_once '../fns/Page/sessionMessages.php';
@@ -61,10 +61,7 @@ $content = Page\tabs(
     Page\sessionErrors('schedules/errors')
     .Page\sessionMessages('schedules/messages')
     .join('<div class="hr"></div>', $items)
-    .create_panel(
-        'Options',
-        Page\imageArrowLink('New Schedule', 'new/', 'create-schedule')
-    )
+    .create_options_panel($user)
 );
 
 include_once '../fns/echo_page.php';
