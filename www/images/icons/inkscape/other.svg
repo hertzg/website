@@ -10,7 +10,7 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   sodipodi:docname="icons.svg"
+   sodipodi:docname="other.svg"
    inkscape:version="0.48.4 r9939"
    version="1.1"
    id="svg3007"
@@ -23,9 +23,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.0000001"
-     inkscape:cx="1378.1243"
-     inkscape:cy="-29.39979"
+     inkscape:zoom="16.000001"
+     inkscape:cx="1462.5672"
+     inkscape:cy="16.732718"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -276,7 +276,7 @@
     <linearGradient
        id="linearGradient8947">
       <stop
-         style="stop-color:#cccccc;stop-opacity:0;"
+         style="stop-color:#ffffff;stop-opacity:1;"
          offset="0"
          id="stop8949" />
       <stop
