@@ -10,9 +10,6 @@ function echo_html ($title, $head, $body, $theme, $base) {
     $revision = get_revision('icons.compressed.css');
     $iconsCss = "{$base}icons.compressed.css?$revision";
 
-    $revision = get_revision('images/icons.svg');
-    $iconsSvg = "{$base}images/icons.svg?$revision";
-
     header('Content-Type: text/html; charset=UTF-8');
 
     echo
@@ -30,9 +27,6 @@ function echo_html ($title, $head, $body, $theme, $base) {
                 .' content="width=device-width, user-scalable=no" />'
                 ."<link rel=\"stylesheet\" type=\"text/css\" href=\"$commonCss\" />"
                 ."<link rel=\"stylesheet\" type=\"text/css\" href=\"$iconsCss\" />"
-                .'<style type="text/css">'
-                    .".icon { background-image: url($iconsSvg) }"
-                .'</style>'
                 .'<link rel="stylesheet" type="text/css"'
                 ." href=\"{$base}themes/$theme/common.css?12\" />"
                 .$head
