@@ -41,13 +41,9 @@ unset(
     $_SESSION['contacts/received/edit-and-import/values']
 );
 
-include_once '../../../fns/Contacts/add.php';
-$id_contacts = Contacts\add($mysqli, $id_users, $full_name, $alias, $address,
-    $email, $phone1, $phone2, $birthday_time, $username, $tags, $favorite);
-
-include_once '../../../fns/ContactTags/add.php';
-ContactTags\add($mysqli, $id_users, $id_contacts,
-    $tag_names, $full_name, $alias, $favorite);
+include_once '../../../fns/Users/Contacts/add.php';
+Users\Contacts\add($mysqli, $id_users, $full_name, $alias, $address, $email,
+    $phone1, $phone2, $birthday_time, $username, $tags, $tag_names, $favorite);
 
 include_once '../../../fns/ReceivedContacts/delete.php';
 ReceivedContacts\delete($mysqli, $id);
