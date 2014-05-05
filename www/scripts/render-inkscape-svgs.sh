@@ -12,8 +12,10 @@ cd `dirname $BASH_SOURCE`
 
 cd ../images/inkscape
 render
+cd ../icons/inkscape
+render
 
-cd ../../themes
+cd ../../../themes
 for i in *
 do
     cd $i
