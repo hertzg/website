@@ -7,14 +7,8 @@ include_once '../fns/require_note.php';
 include_once '../../lib/mysqli.php';
 list($note, $id, $user) = require_note($mysqli);
 
-include_once '../../fns/Notes/delete.php';
-Notes\delete($mysqli, $id);
-
-include_once '../../fns/NoteTags/deleteOnNote.php';
-NoteTags\deleteOnNote($mysqli, $id);
-
-include_once '../../fns/Users/Notes/addNumber.php';
-Users\Notes\addNumber($mysqli, $user->id_users, -1);
+include_once '../../fns/Users/Notes/delete.php';
+Users\Notes\delete($mysqli, $id, $user->id_users);
 
 unset($_SESSION['notes/errors']);
 $_SESSION['notes/messages'] = ['Note has been deleted.'];
