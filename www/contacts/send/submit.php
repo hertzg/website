@@ -56,8 +56,8 @@ ReceivedContacts\add($mysqli, $id_users, $user->username, $receiver_id_users,
     $contact->phone1, $contact->phone2, $contact->birthday_time,
     $contact->username, $contact->tags, $contact->favorite);
 
-include_once '../../fns/Users/addNumReceivedContacts.php';
-Users\addNumReceivedContacts($mysqli, $receiver_id_users, 1);
+include_once '../../fns/Users/Contacts/Received/addNumber.php';
+Users\Contacts\Received\addNumber($mysqli, $receiver_id_users, 1);
 
 $_SESSION['contacts/view/messages'] = ['Sent.'];
 

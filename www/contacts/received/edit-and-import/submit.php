@@ -52,8 +52,8 @@ ContactTags\add($mysqli, $id_users, $id_contacts,
 include_once '../../../fns/ReceivedContacts/delete.php';
 ReceivedContacts\delete($mysqli, $id);
 
-include_once '../../../fns/Users/addNumReceivedContacts.php';
-Users\addNumReceivedContacts($mysqli, $id_users, -1);
+include_once '../../../fns/Users/Contacts/Received/addNumber.php';
+Users\Contacts\Received\addNumber($mysqli, $id_users, -1);
 
 include_once '../../../fns/Users/Birthdays/invalidateIfNeeded.php';
 Users\Birthdays\invalidateIfNeeded($mysqli, $user, $birthday_time);

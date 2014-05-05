@@ -11,8 +11,8 @@ include_once '../../../fns/ReceivedContacts/deleteOnReceiver.php';
 include_once '../../../lib/mysqli.php';
 ReceivedContacts\deleteOnReceiver($mysqli, $id_users);
 
-include_once '../../../fns/Users/clearNumReceivedContacts.php';
-Users\clearNumReceivedContacts($mysqli, $id_users);
+include_once '../../../fns/Users/Contacts/Received/clearNumber.php';
+Users\Contacts\Received\clearNumber($mysqli, $id_users);
 
 unset($_SESSION['contacts/errors']);
 $_SESSION['contacts/messages'] = [

@@ -10,8 +10,8 @@ list($receivedContact, $id, $user) = require_received_contact($mysqli);
 include_once '../../../fns/ReceivedContacts/delete.php';
 ReceivedContacts\delete($mysqli, $id);
 
-include_once '../../../fns/Users/addNumReceivedContacts.php';
-Users\addNumReceivedContacts($mysqli, $user->id_users, -1);
+include_once '../../../fns/Users/Contacts/Received/addNumber.php';
+Users\Contacts\Received\addNumber($mysqli, $user->id_users, -1);
 
 $messages = ['Contact has been deleted.'];
 include_once '../../../fns/redirect.php';
