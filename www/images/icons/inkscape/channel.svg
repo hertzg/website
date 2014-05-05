@@ -19,28 +19,6 @@
   <defs
      id="defs16681">
     <linearGradient
-       id="linearGradient3592-9">
-      <stop
-         id="stop3594-6"
-         offset="0"
-         style="stop-color:#000000;stop-opacity:0.2;" />
-      <stop
-         id="stop3596-3"
-         offset="1"
-         style="stop-color:#000000;stop-opacity:0;" />
-    </linearGradient>
-    <linearGradient
-       id="linearGradient3592-9-3">
-      <stop
-         id="stop3594-6-3"
-         offset="0"
-         style="stop-color:#000000;stop-opacity:0.2;" />
-      <stop
-         id="stop3596-3-0"
-         offset="1"
-         style="stop-color:#000000;stop-opacity:0;" />
-    </linearGradient>
-    <linearGradient
        id="linearGradient3592-9-1">
       <stop
          id="stop3594-6-6"
@@ -114,28 +92,6 @@
          offset="1"
          style="stop-color:#ffff88;stop-opacity:1;" />
     </linearGradient>
-    <radialGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient3592-9"
-       id="radialGradient17394"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1,0,0,0.3125,383.9998,1038.9248)"
-       cx="16"
-       cy="27"
-       fx="16"
-       fy="27"
-       r="16" />
-    <radialGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient3592-9-3"
-       id="radialGradient17396"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1,0,0,0.3125,415.9998,1038.9248)"
-       cx="16"
-       cy="27"
-       fx="16"
-       fy="27"
-       r="16" />
     <radialGradient
        inkscape:collect="always"
        xlink:href="#linearGradient5195-0"
@@ -215,6 +171,28 @@
        fx="16"
        fy="27"
        r="16" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3592-9-1"
+       id="radialGradient11359"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.3125,415.9998,1038.9248)"
+       cx="16"
+       cy="27"
+       fx="16"
+       fy="27"
+       r="16" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3592-9-1"
+       id="radialGradient11361"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.3125,383.9998,1038.9248)"
+       cx="16"
+       cy="27"
+       fx="16"
+       fy="27"
+       r="16" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -223,17 +201,17 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="7.9195959"
-     inkscape:cx="186.51314"
-     inkscape:cy="18.580362"
+     inkscape:zoom="3.959798"
+     inkscape:cx="37.266558"
+     inkscape:cy="23.920683"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
      inkscape:snap-bbox="true"
-     inkscape:window-width="1920"
-     inkscape:window-height="1044"
-     inkscape:window-x="1920"
-     inkscape:window-y="0"
+     inkscape:window-width="1366"
+     inkscape:window-height="705"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
      inkscape:window-maximized="1">
     <inkscape:grid
        type="xygrid"
@@ -263,7 +241,7 @@
        transform="translate(-384,1.7382813e-5)"
        id="g5386">
       <rect
-         style="fill:url(#radialGradient17394);fill-opacity:1;fill-rule:evenodd;stroke:none"
+         style="fill:url(#radialGradient11361);fill-opacity:1;fill-rule:evenodd;stroke:none"
          id="use5382"
          width="32"
          height="10"
@@ -348,7 +326,7 @@
          height="10"
          width="32"
          id="rect16784"
-         style="fill:url(#radialGradient17396);fill-opacity:1;fill-rule:evenodd;stroke:none" />
+         style="fill:url(#radialGradient11359);fill-opacity:1;fill-rule:evenodd;stroke:none" />
       <path
          sodipodi:type="arc"
          style="fill:#0066cc;fill-opacity:1;stroke:none"

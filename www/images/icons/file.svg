@@ -15,28 +15,6 @@
    id="svg3837">
   <defs
      id="defs3839">
-    <linearGradient
-       id="linearGradient3592-9-5">
-      <stop
-         id="stop3594-6-8"
-         style="stop-color:#000000;stop-opacity:0.2"
-         offset="0" />
-      <stop
-         id="stop3596-3-1"
-         style="stop-color:#000000;stop-opacity:0"
-         offset="1" />
-    </linearGradient>
-    <linearGradient
-       id="linearGradient4225-8">
-      <stop
-         id="stop4227-5"
-         style="stop-color:#eeeeee;stop-opacity:1"
-         offset="0" />
-      <stop
-         id="stop4229-3"
-         style="stop-color:#ffffff;stop-opacity:1"
-         offset="1" />
-    </linearGradient>
     <radialGradient
        cx="16"
        cy="27"
@@ -44,20 +22,9 @@
        fx="16"
        fy="27"
        id="radialGradient4233-0"
-       xlink:href="#linearGradient3592-5"
+       xlink:href="#linearGradient3592"
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(1,0,0,0.3125,768,1038.9247)" />
-    <linearGradient
-       id="linearGradient3592-5">
-      <stop
-         id="stop3594-4"
-         style="stop-color:#000000;stop-opacity:0.2"
-         offset="0" />
-      <stop
-         id="stop3596-7"
-         style="stop-color:#000000;stop-opacity:0"
-         offset="1" />
-    </linearGradient>
     <linearGradient
        x1="33"
        y1="19"
@@ -138,25 +105,6 @@
        r="16"
        fx="16"
        fy="27"
-       id="radialGradient5104"
-       xlink:href="#linearGradient3592-9-5"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1,0,0,0.3125,735.9998,1038.9248)" />
-    <linearGradient
-       x1="33"
-       y1="19"
-       x2="25"
-       y2="-1"
-       id="linearGradient5106"
-       xlink:href="#linearGradient4225-8"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(735,1019.3622)" />
-    <radialGradient
-       cx="16"
-       cy="27"
-       r="16"
-       fx="16"
-       fy="27"
        id="radialGradient5827"
        xlink:href="#linearGradient3592"
        gradientUnits="userSpaceOnUse"
@@ -173,15 +121,6 @@
          offset="1" />
     </linearGradient>
     <linearGradient
-       x1="1501"
-       y1="5"
-       x2="1503"
-       y2="11"
-       id="linearGradient3824"
-       xlink:href="#linearGradient6008"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(1.1345935e-4,1020.5617)" />
-    <linearGradient
        id="linearGradient6008">
       <stop
          id="stop6010"
@@ -196,39 +135,6 @@
          style="stop-color:#2fbb17;stop-opacity:1"
          offset="1" />
     </linearGradient>
-    <linearGradient
-       x1="1498.8068"
-       y1="4.2157669"
-       x2="1504"
-       y2="17"
-       id="linearGradient3826"
-       xlink:href="#linearGradient6008"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(-3.2806452e-6,1020.5622)" />
-    <linearGradient
-       id="linearGradient5028">
-      <stop
-         id="stop5030"
-         style="stop-color:#2fba18;stop-opacity:1"
-         offset="0" />
-      <stop
-         id="stop5032"
-         style="stop-color:#28a114;stop-opacity:1"
-         offset="0.5" />
-      <stop
-         id="stop5034"
-         style="stop-color:#2fbb17;stop-opacity:1"
-         offset="1" />
-    </linearGradient>
-    <linearGradient
-       x1="1515"
-       y1="25"
-       x2="1511"
-       y2="15"
-       id="linearGradient3828"
-       xlink:href="#linearGradient4225"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(3,1022.8622)" />
     <linearGradient
        id="linearGradient4225">
       <stop
@@ -250,105 +156,6 @@
        xlink:href="#linearGradient3592"
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(1,0,0,0.3125,1792,1038.9248)" />
-    <linearGradient
-       id="linearGradient5041">
-      <stop
-         id="stop5043"
-         style="stop-color:#000000;stop-opacity:0.2"
-         offset="0" />
-      <stop
-         id="stop5045"
-         style="stop-color:#000000;stop-opacity:0"
-         offset="1" />
-    </linearGradient>
-    <linearGradient
-       x1="1501"
-       y1="5"
-       x2="1503"
-       y2="11"
-       id="linearGradient5047"
-       xlink:href="#linearGradient6008"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(1.1345935e-4,1020.5617)" />
-    <linearGradient
-       id="linearGradient5049">
-      <stop
-         id="stop5051"
-         style="stop-color:#2fba18;stop-opacity:1"
-         offset="0" />
-      <stop
-         id="stop5053"
-         style="stop-color:#28a114;stop-opacity:1"
-         offset="0.5" />
-      <stop
-         id="stop5055"
-         style="stop-color:#2fbb17;stop-opacity:1"
-         offset="1" />
-    </linearGradient>
-    <linearGradient
-       x1="1498.8068"
-       y1="4.2157669"
-       x2="1504"
-       y2="17"
-       id="linearGradient5057"
-       xlink:href="#linearGradient6008"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(-3.2806452e-6,1020.5622)" />
-    <linearGradient
-       id="linearGradient5059">
-      <stop
-         id="stop5061"
-         style="stop-color:#2fba18;stop-opacity:1"
-         offset="0" />
-      <stop
-         id="stop5063"
-         style="stop-color:#28a114;stop-opacity:1"
-         offset="0.5" />
-      <stop
-         id="stop5065"
-         style="stop-color:#2fbb17;stop-opacity:1"
-         offset="1" />
-    </linearGradient>
-    <linearGradient
-       x1="1515"
-       y1="25"
-       x2="1511"
-       y2="15"
-       id="linearGradient5067"
-       xlink:href="#linearGradient4225"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(3,1022.8622)" />
-    <linearGradient
-       id="linearGradient5069">
-      <stop
-         id="stop5071"
-         style="stop-color:#eeeeee;stop-opacity:1"
-         offset="0" />
-      <stop
-         id="stop5073"
-         style="stop-color:#ffffff;stop-opacity:1"
-         offset="1" />
-    </linearGradient>
-    <linearGradient
-       x1="1515"
-       y1="25"
-       x2="1511"
-       y2="15"
-       id="linearGradient5075"
-       xlink:href="#linearGradient4225"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(3,1022.8622)" />
-    <linearGradient
-       id="linearGradient5077">
-      <stop
-         id="stop5079"
-         style="stop-color:#eeeeee;stop-opacity:1"
-         offset="0" />
-      <stop
-         id="stop5081"
-         style="stop-color:#ffffff;stop-opacity:1"
-         offset="1" />
-    </linearGradient>
     <linearGradient
        x1="1501"
        y1="5"
@@ -376,6 +183,25 @@
        xlink:href="#linearGradient4225"
        gradientUnits="userSpaceOnUse"
        gradientTransform="translate(3,1022.8622)" />
+    <linearGradient
+       x1="33"
+       y1="19"
+       x2="25"
+       y2="-1"
+       id="linearGradient9249"
+       xlink:href="#linearGradient4225-0"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(735,1019.3622)" />
+    <radialGradient
+       cx="16"
+       cy="27"
+       r="16"
+       fx="16"
+       fy="27"
+       id="radialGradient9251"
+       xlink:href="#linearGradient3592"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.3125,735.9998,1038.9248)" />
   </defs>
   <metadata
      id="metadata3842">
@@ -409,7 +235,7 @@
          x="736"
          y="1042.3622"
          id="use4221"
-         style="fill:url(#radialGradient5104);fill-opacity:1;fill-rule:evenodd;stroke:none" />
+         style="fill:url(#radialGradient9251);fill-opacity:1;fill-rule:evenodd;stroke:none" />
       <g
          transform="translate(0,1)"
          id="use4207">
@@ -417,7 +243,7 @@
            d="m 748,1046.3622 15,-6 -6,-15 -7,-3 -10,4 8,20 z"
            inkscape:connector-curvature="0"
            id="path11711"
-           style="fill:url(#linearGradient5106);fill-opacity:1;stroke:#888888;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1" />
+           style="fill:url(#linearGradient9249);fill-opacity:1;stroke:#888888;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1" />
         <path
            d="m 750,1022.3622 2,5 5,-2 -7,-3 z"
            inkscape:connector-curvature="0"
