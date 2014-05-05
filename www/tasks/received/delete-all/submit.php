@@ -11,8 +11,8 @@ include_once '../../../fns/ReceivedTasks/deleteOnReceiver.php';
 include_once '../../../lib/mysqli.php';
 ReceivedTasks\deleteOnReceiver($mysqli, $id_users);
 
-include_once '../../../fns/Users/clearNumReceivedTasks.php';
-Users\clearNumReceivedTasks($mysqli, $id_users);
+include_once '../../../fns/Users/Tasks/Received/clearNumber.php';
+Users\Tasks\Received\clearNumber($mysqli, $id_users);
 
 unset($_SESSION['tasks/errors']);
 $_SESSION['tasks/messages'] = [

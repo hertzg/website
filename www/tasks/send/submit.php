@@ -54,8 +54,8 @@ include_once '../../fns/ReceivedTasks/add.php';
 ReceivedTasks\add($mysqli, $id_users, $user->username,
     $receiver_id_users, $task->text, $task->top_priority, $task->tags);
 
-include_once '../../fns/Users/addNumReceivedTasks.php';
-Users\addNumReceivedTasks($mysqli, $receiver_id_users, 1);
+include_once '../../fns/Users/Tasks/Received/addNumber.php';
+Users\Tasks\Received\addNumber($mysqli, $receiver_id_users, 1);
 
 $_SESSION['tasks/view/messages'] = ['Sent.'];
 

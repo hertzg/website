@@ -39,8 +39,8 @@ TaskTags\add($mysqli, $id_users, $id_tasks, $tag_names, $text, $top_priority, $t
 include_once '../../../fns/ReceivedTasks/delete.php';
 ReceivedTasks\delete($mysqli, $id);
 
-include_once '../../../fns/Users/addNumReceivedTasks.php';
-Users\addNumReceivedTasks($mysqli, $id_users, -1);
+include_once '../../../fns/Users/Tasks/Received/addNumber.php';
+Users\Tasks\Received\addNumber($mysqli, $id_users, -1);
 
 $messages = ['Task has been imported.'];
 
