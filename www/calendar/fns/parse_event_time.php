@@ -17,8 +17,8 @@ function parse_event_time ($day, $month, $year, &$errors, &$time) {
         return;
     }
 
-    include_once __DIR__.'/../../fns/date_is_valid.php';
-    if (!date_is_valid($day, $month, $year)) {
+    include_once __DIR__.'/../../fns/Date/isValid.php';
+    if (!Date\isValid($day, $month, $year)) {
         $errors[] = 'The date is invalid.';
     }
 
