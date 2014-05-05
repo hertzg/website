@@ -29,12 +29,9 @@ unset(
     $_SESSION['bookmarks/new/values']
 );
 
-include_once '../../fns/Bookmarks/add.php';
+include_once '../../fns/Users/Bookmarks/add.php';
 include_once '../../lib/mysqli.php';
-$id = Bookmarks\add($mysqli, $id_users, $url, $title, $tags);
-
-include_once '../../fns/BookmarkTags/add.php';
-BookmarkTags\add($mysqli, $id_users, $id, $tag_names, $url, $title);
+$id = Users\Bookmarks\add($mysqli, $id_users, $url, $title, $tags, $tag_names);
 
 $_SESSION['bookmarks/view/messages'] = ['Bookmark has been saved.'];
 redirect("../view/?id=$id");

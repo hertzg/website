@@ -15,11 +15,8 @@ $tags = $receivedBookmark->tags;
 include_once '../../../fns/Tags/parse.php';
 $tag_names = Tags\parse($tags);
 
-include_once '../../../fns/Bookmarks/add.php';
-$id_bookmarks = Bookmarks\add($mysqli, $id_users, $url, $title, $tags);
-
-include_once '../../../fns/BookmarkTags/add.php';
-BookmarkTags\add($mysqli, $id_users, $id_bookmarks, $tag_names, $url, $title);
+include_once '../../../fns/Users/Bookmarks/add.php';
+Users\Bookmarks\add($mysqli, $id_users, $url, $title, $tags, $tag_names);
 
 include_once '../../../fns/ReceivedBookmarks/delete.php';
 ReceivedBookmarks\delete($mysqli, $id);
