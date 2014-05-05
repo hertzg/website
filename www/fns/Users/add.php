@@ -7,8 +7,8 @@ function add ($mysqli, $username, $email, $password) {
     include_once __DIR__.'/../Password/hash.php';
     list($password_hash, $password_salt) = \Password\hash($password);
 
-    include_once __DIR__.'/../get_default_order_home_items.php';
-    $order_home_items = get_default_order_home_items();
+    include_once __DIR__.'/Home/defaultOrder.php';
+    $order_home_items = Home\defaultOrder();
     $order_home_items = json_encode($order_home_items);
     $order_home_items = $mysqli->real_escape_string($order_home_items);
 
