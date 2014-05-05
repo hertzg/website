@@ -59,11 +59,8 @@ unset(
     $_SESSION['notifications/channels/edit/values']
 );
 
-include_once '../../../fns/Channels/edit.php';
-Channels\edit($mysqli, $id, $channel_name, $public);
-
-include_once '../../../fns/SubscribedChannels/editChannel.php';
-SubscribedChannels\editChannel($mysqli, $id, $channel_name, $public);
+include_once '../../../fns/Users/Channels/edit.php';
+Users\Channels\edit($mysqli, $id, $channel_name, $public);
 
 $_SESSION['notifications/channels/view/messages'] = ['Changes have been saved.'];
 
