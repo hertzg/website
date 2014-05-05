@@ -180,16 +180,6 @@
        xlink:href="#linearGradient3604"
        gradientUnits="userSpaceOnUse"
        gradientTransform="translate(832,1052.3622)" />
-    <radialGradient
-       cx="16"
-       cy="27"
-       r="16"
-       fx="16"
-       fy="27"
-       id="radialGradient5819"
-       xlink:href="#linearGradient3592"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1,0,0,0.3125,1888,1038.9248)" />
     <linearGradient
        id="linearGradient3592">
       <stop
@@ -227,16 +217,6 @@
          style="stop-color:#dd7700;stop-opacity:1"
          offset="1" />
     </linearGradient>
-    <radialGradient
-       cx="16"
-       cy="27"
-       r="16"
-       fx="16"
-       fy="27"
-       id="radialGradient5815"
-       xlink:href="#linearGradient3592"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1,0,0,0.3125,1856,1038.9248)" />
     <radialGradient
        cx="16"
        cy="27"

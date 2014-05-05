@@ -52,8 +52,8 @@ render($content, 'note.svg?1', $names);
 
 $names = ['account', 'edit-profile', 'download', 'upload', 'feedback', 'yes',
     'no', 'notification', 'create-notification', 'old-notification',
-    'edit-password', 'new-password', 'reset-password', 'randomize', 'rename',
-    'sign-out', 'sign-in', 'trash-bin', 'calendar', 'arrow-right', 'arrow-left',
+    'edit-password', 'new-password', 'reset-password', 'rename', 'sign-out',
+    'sign-in', 'trash-bin', 'calendar', 'arrow-right', 'arrow-left',
     'import-file', 'import-bookmark', 'import-contact', 'import-file',
     'import-note', 'import-task', 'search', 'search-folder', 'birthday-cake',
     'checkbox', 'checked-checkbox', 'help', 'run', 'mail', 'send', 'receive',
