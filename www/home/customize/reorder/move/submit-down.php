@@ -16,9 +16,9 @@ if ($index === false) {
 }
 $order_home_items = json_encode($order_home_items);
 
-include_once '../../../../fns/Users/editOrderHomeItems.php';
+include_once '../../../../fns/Users/Home/editOrder.php';
 include_once '../../../../lib/mysqli.php';
-Users\editOrderHomeItems($mysqli, $user->id_users, $order_home_items);
+Users\Home\editOrder($mysqli, $user->id_users, $order_home_items);
 
 $_SESSION['home/customize/reorder/messages'] = [
     "\"$item[title]\" has been moved down.",

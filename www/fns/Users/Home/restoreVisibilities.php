@@ -1,8 +1,8 @@
 <?php
 
-namespace Users;
+namespace Users\Home;
 
-function restoreDefaultVisibilities ($mysqli, $id_users) {
+function restoreVisibilities ($mysqli, $id_users) {
     $sql = 'update users set'
         .' show_bookmarks = 1, show_new_bookmark = 0,'
         .' show_calendar = 1, show_contacts = 1, show_new_contact = 0,'

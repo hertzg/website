@@ -1,8 +1,8 @@
 <?php
 
-namespace Users;
+namespace Users\Home;
 
-function showHomeItems ($mysqli, $id_users, $bookmarks, $new_bookmark,
+function editVisibilities ($mysqli, $id_users, $bookmarks, $new_bookmark,
     $calendar, $contacts, $new_contact, $files, $notes, $new_note,
     $notifications, $schedules, $tasks, $new_task) {
 

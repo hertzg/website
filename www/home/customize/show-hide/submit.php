@@ -25,11 +25,11 @@ $schedules = (bool)$schedules;
 $tasks = (bool)$tasks;
 $new_task = (bool)$new_task;
 
-include_once '../../../fns/Users/showHomeItems.php';
+include_once '../../../fns/Users/Home/editVisibilities.php';
 include_once '../../../lib/mysqli.php';
-Users\showHomeItems($mysqli, $user->id_users, $bookmarks, $new_bookmark,
-    $calendar, $contacts, $new_contact, $files, $notes, $new_note,
-    $notifications, $schedules, $tasks, $new_task);
+Users\Home\editVisibilities($mysqli, $user->id_users, $bookmarks,
+    $new_bookmark, $calendar, $contacts, $new_contact, $files, $notes,
+    $new_note, $notifications, $schedules, $tasks, $new_task);
 
 $_SESSION['home/customize/show-hide/messages'] = ['Changes have been saved.'];
 
