@@ -5,7 +5,6 @@ require_same_domain_referer('./');
 
 include_once '../../../fns/require_user.php';
 $user = require_user('../../../');
-$id_users = $user->id_users;
 
 include_once '../../../fns/Channels/request.php';
 list($channel_name, $public) = Channels\request();
@@ -60,11 +59,8 @@ unset(
     $_SESSION['notifications/channels/add/values']
 );
 
-include_once '../../../fns/Channels/add.php';
-$id = Channels\add($mysqli, $id_users, $user->username, $channel_name, $public);
-
-include_once '../../../fns/Users/Channels/addNumber.php';
-Users\Channels\addNumber($mysqli, $id_users, 1);
+include_once '../../../fns/Users/Channels/add.php';
+$id = Users\Channels\add($mysqli, $user, $channel_name, $public);
 
 $_SESSION['notifications/channels/view/messages'] = ['Channel has been added.'];
 redirect("../view/?id=$id");
