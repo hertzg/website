@@ -37,15 +37,17 @@ render($content, 'contact.svg?1', $names);
 $names = ['event', 'create-event', 'edit-event', 'events'];
 render($content, 'event.svg?1', $names);
 
+$names = ['file', 'create-file', 'files'];
+render($content, 'file.svg?2', $names);
+
 $names = ['move-up', 'move-to-top', 'move-down', 'move-to-bottom'];
 render($content, 'move.svg?1', $names);
 
 $names = ['note', 'create-note', 'edit-note', 'notes'];
 render($content, 'note.svg?1', $names);
 
-$names = ['account', 'edit-profile', 'file', 'files',
-    'create-file', 'folder', 'create-folder', 'parent-folder', 'download',
-    'upload', 'feedback', 'yes', 'no',
+$names = ['account', 'edit-profile', 'folder', 'create-folder',
+    'parent-folder', 'download', 'upload', 'feedback', 'yes', 'no',
     'notification', 'create-notification', 'old-notification', 'edit-password',
     'new-password', 'reset-password', 'randomize', 'rename', 'sign-out',
     'sign-in', 'trash-bin', 'calendar', 'arrow-right', 'arrow-left',
@@ -55,7 +57,7 @@ $names = ['account', 'edit-profile', 'file', 'files',
     'run', 'mail', 'send', 'receive', 'phone',
     'edit-home', 'reorder', 'show-hide', 'restore-defaults',
     'forbid-notifications', 'receive-notifications', 'generic'];
-render($content, 'other.svg?1', $names);
+render($content, 'other.svg?2', $names);
 
 $names = ['schedule', 'create-schedule', 'edit-schedule', 'schedules'];
 render($content, 'schedule.svg?1', $names);
