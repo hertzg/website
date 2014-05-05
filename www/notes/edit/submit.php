@@ -32,14 +32,8 @@ unset(
     $_SESSION['notes/edit/values']
 );
 
-include_once '../../fns/Notes/edit.php';
-Notes\edit($mysqli, $id_users, $id, $text, $tags);
-
-include_once '../../fns/NoteTags/deleteOnNote.php';
-NoteTags\deleteOnNote($mysqli, $id);
-
-include_once '../../fns/NoteTags/add.php';
-NoteTags\add($mysqli, $id_users, $id, $tag_names, $text);
+include_once '../../fns/Users/Notes/edit.php';
+Users\Notes\edit($mysqli, $id_users, $id, $text, $tags, $tag_names);
 
 $_SESSION['notes/view/messages'] = ['Changes have been saved.'];
 redirect("../view/$itemQuery");
