@@ -52,7 +52,7 @@ include_once '../../../fns/Tags/parse.php';
 $tag_names = Tags\parse($tags);
 
 include_once '../../../fns/Users/Contacts/add.php';
-Users\Contacts\add($mysqli, $id_users, $full_name, $alias, $address, $email,
+Users\Contacts\add($mysqli, $user, $full_name, $alias, $address, $email,
     $phone1, $phone2, $birthday_time, $username, $tags, $tag_names, $favorite);
 
 include_once '../../../fns/ReceivedContacts/delete.php';
@@ -60,9 +60,6 @@ ReceivedContacts\delete($mysqli, $id);
 
 include_once '../../../fns/Users/Contacts/Received/addNumber.php';
 Users\Contacts\Received\addNumber($mysqli, $id_users, -1);
-
-include_once '../../../fns/Users/Birthdays/invalidateIfNeeded.php';
-Users\Birthdays\invalidateIfNeeded($mysqli, $user, $birthday_time);
 
 $messages = ['Contact has been imported.'];
 

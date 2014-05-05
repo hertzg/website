@@ -5,7 +5,6 @@ require_same_domain_referer('./');
 
 include_once '../../fns/require_user.php';
 $user = require_user('../../');
-$id_users = $user->id_users;
 
 include_once '../../lib/mysqli.php';
 
@@ -14,7 +13,7 @@ $errors = [];
 include_once '../fns/request_contact_params.php';
 list($full_name, $alias, $address, $email, $phone1, $phone2, $birthday_day,
     $birthday_month, $birthday_year, $birthday_time, $username, $tags,
-    $tag_names, $favorite) = request_contact_params($mysqli, $id_users, $errors);
+    $tag_names, $favorite) = request_contact_params($mysqli, $user->id_users, $errors);
 
 include_once '../../fns/redirect.php';
 
@@ -43,7 +42,7 @@ unset(
 );
 
 include_once '../../fns/Users/Contacts/add.php';
-$id = Users\Contacts\add($mysqli, $id_users, $full_name, $alias,
+$id = Users\Contacts\add($mysqli, $user, $full_name, $alias,
     $address, $email, $phone1, $phone2, $birthday_time, $username,
     $tags, $tag_names, $favorite);
 
