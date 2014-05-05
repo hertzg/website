@@ -34,8 +34,8 @@ function add ($mysqli, $id_users, $full_name, $alias, $address, $email,
 
     $id_contacts = $mysqli->insert_id;
 
-    include_once __DIR__.'/../Users/addNumContacts.php';
-    \Users\addNumContacts($mysqli, $id_users, 1);
+    include_once __DIR__.'/../Users/Contacts/addNumber.php';
+    \Users\Contacts\addNumber($mysqli, $id_users, 1);
 
     return $id_contacts;
 

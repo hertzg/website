@@ -13,8 +13,8 @@ Contacts\delete($mysqli, $id);
 include_once '../../fns/ContactTags/deleteOnContact.php';
 ContactTags\deleteOnContact($mysqli, $id);
 
-include_once '../../fns/Users/addNumContacts.php';
-Users\addNumContacts($mysqli, $user->id_users, -1);
+include_once '../../fns/Users/Contacts/addNumber.php';
+Users\Contacts\addNumber($mysqli, $user->id_users, -1);
 
 include_once '../../fns/Users/Birthdays/invalidateIfNeeded.php';
 Users\Birthdays\invalidateIfNeeded($mysqli, $user, $contact->birthday_time);

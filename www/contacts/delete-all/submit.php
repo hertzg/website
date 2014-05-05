@@ -14,8 +14,8 @@ Contacts\deleteOnUser($mysqli, $id_users);
 include_once '../../fns/ContactTags/deleteOnUser.php';
 ContactTags\deleteOnUser($mysqli, $id_users);
 
-include_once '../../fns/Users/clearNumContacts.php';
-Users\clearNumContacts($mysqli, $id_users);
+include_once '../../fns/Users/Contacts/clearNumber.php';
+Users\Contacts\clearNumber($mysqli, $id_users);
 
 unset($_SESSION['contacts/errors']);
 $_SESSION['contacts/messages'] = [
