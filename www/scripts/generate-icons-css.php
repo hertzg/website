@@ -40,17 +40,19 @@ render($content, 'event.svg?1', $names);
 $names = ['file', 'create-file', 'files'];
 render($content, 'file.svg?2', $names);
 
+$names = ['folder', 'create-folder', 'parent-folder'];
+render($content, 'folder.svg?2', $names);
+
 $names = ['move-up', 'move-to-top', 'move-down', 'move-to-bottom'];
 render($content, 'move.svg?1', $names);
 
 $names = ['note', 'create-note', 'edit-note', 'notes'];
 render($content, 'note.svg?1', $names);
 
-$names = ['account', 'edit-profile', 'folder', 'create-folder',
-    'parent-folder', 'download', 'upload', 'feedback', 'yes', 'no',
-    'notification', 'create-notification', 'old-notification', 'edit-password',
-    'new-password', 'reset-password', 'randomize', 'rename', 'sign-out',
-    'sign-in', 'trash-bin', 'calendar', 'arrow-right', 'arrow-left',
+$names = ['account', 'edit-profile', 'download', 'upload', 'feedback', 'yes',
+    'no', 'notification', 'create-notification', 'old-notification',
+    'edit-password', 'new-password', 'reset-password', 'randomize', 'rename',
+    'sign-out', 'sign-in', 'trash-bin', 'calendar', 'arrow-right', 'arrow-left',
     'copy-file', 'move-file', 'copy-folder', 'move-folder', 'import-bookmark',
     'import-contact', 'import-file', 'import-note', 'import-task', 'search',
     'search-folder', 'birthday-cake', 'checkbox', 'checked-checkbox', 'help',
