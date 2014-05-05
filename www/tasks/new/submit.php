@@ -29,12 +29,10 @@ unset(
     $_SESSION['tasks/new/values']
 );
 
-include_once '../../fns/Tasks/add.php';
+include_once '../../fns/Users/Tasks/add.php';
 include_once '../../lib/mysqli.php';
-$id = Tasks\add($mysqli, $id_users, $text, $top_priority, $tags);
-
-include_once '../../fns/TaskTags/add.php';
-TaskTags\add($mysqli, $id_users, $id, $tag_names, $text, $top_priority, $tags);
+$id = Users\Tasks\add($mysqli, $id_users,
+    $text, $top_priority, $tags, $tag_names);
 
 $_SESSION['tasks/view/messages'] = ['Task has been saved.'];
 redirect("../view/?id=$id");

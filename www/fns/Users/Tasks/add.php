@@ -1,0 +1,16 @@
+<?php
+
+namespace Users\Tasks;
+
+function add ($mysqli, $id_users, $text, $top_priority, $tags, $tag_names) {
+
+    include_once __DIR__.'/../../Tasks/add.php';
+    $id = \Tasks\add($mysqli, $id_users, $text, $top_priority, $tags);
+
+    include_once __DIR__.'/../../TaskTags/add.php';
+    \TaskTags\add($mysqli, $id_users, $id,
+        $tag_names, $text, $top_priority, $tags);
+
+    return $id;
+
+}
