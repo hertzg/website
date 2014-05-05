@@ -45,12 +45,9 @@ unset(
 );
 
 include_once '../../fns/Users/Contacts/edit.php';
-Users\Contacts\edit($mysqli, $id_users, $id, $full_name, $alias, $address,
-    $email, $phone1, $phone2, $birthday_time, $username, $tags, $tag_names, $favorite);
-
-include_once '../../fns/Users/Birthdays/invalidateIfNeeded.php';
-Users\Birthdays\invalidateIfNeeded($mysqli, $user, $contact->birthday_time);
-Users\Birthdays\invalidateIfNeeded($mysqli, $user, $birthday_time);
+Users\Contacts\edit($mysqli, $user, $id, $full_name, $alias, $address, $email,
+    $phone1, $phone2, $birthday_time, $username, $tags, $tag_names, $favorite,
+    $contact->birthday_time);
 
 $_SESSION['contacts/view/messages'] = ['Changes have been saved.'];
 redirect("../view/$itemQuery");
