@@ -38,8 +38,8 @@ NoteTags\add($mysqli, $id_users, $id_notes, $tag_names, $text);
 include_once '../../../fns/ReceivedNotes/delete.php';
 ReceivedNotes\delete($mysqli, $id);
 
-include_once '../../../fns/Users/addNumReceivedNotes.php';
-Users\addNumReceivedNotes($mysqli, $id_users, -1);
+include_once '../../../fns/Users/Notes/Received/addNumber.php';
+Users\Notes\Received\addNumber($mysqli, $id_users, -1);
 
 $messages = ['Note has been imported.'];
 
