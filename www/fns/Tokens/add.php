@@ -23,8 +23,8 @@ function add ($mysqli, $id_users, $username, $token_text, $user_agent) {
 
     $id_tokens = $mysqli->insert_id;
 
-    include_once __DIR__.'/../Users/addNumTokens.php';
-    \Users\addNumTokens($mysqli, $id_users, 1);
+    include_once __DIR__.'/../Users/Tokens/addNumber.php';
+    \Users\Tokens\addNumber($mysqli, $id_users, 1);
 
     return $id_tokens;
 

@@ -11,8 +11,8 @@ include_once '../../fns/Tokens/deleteOnUser.php';
 include_once '../../lib/mysqli.php';
 Tokens\deleteOnUser($mysqli, $id_users);
 
-include_once '../../fns/Users/clearNumTokens.php';
-Users\clearNumTokens($mysqli, $id_users);
+include_once '../../fns/Users/Tokens/clearNumber.php';
+Users\Tokens\clearNumber($mysqli, $id_users);
 
 unset($_SESSION['tokens/errors']);
 $_SESSION['tokens/messages'] = [

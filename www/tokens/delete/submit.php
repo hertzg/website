@@ -10,8 +10,8 @@ list($token, $id, $user) = require_token($mysqli);
 include_once '../../fns/Tokens/delete.php';
 Tokens\delete($mysqli, $id);
 
-include_once '../../fns/Users/addNumTokens.php';
-Users\addNumTokens($mysqli, $user->id_users, -1);
+include_once '../../fns/Users/Tokens/addNumber.php';
+Users\Tokens\addNumber($mysqli, $user->id_users, -1);
 
 unset($_SESSION['tokens/errors']);
 $_SESSION['tokens/messages'] = [

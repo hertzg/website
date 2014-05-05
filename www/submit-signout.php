@@ -14,8 +14,8 @@ if (array_key_exists('token', $_SESSION)) {
     include_once 'lib/mysqli.php';
     Tokens\remove($mysqli, $token->id);
 
-    include_once 'fns/Users/addNumTokens.php';
-    Users\addNumTokens($mysqli, $token->id_users, -1);
+    include_once 'fns/Users/Tokens/addNumber.php';
+    Users\Tokens\addNumber($mysqli, $token->id_users, -1);
 
     setcookie('token', '', time() - 60 * 60 * 24, '/');
 
