@@ -12,16 +12,9 @@ list($full_name, $alias, $address, $email, $phone1,
     $phone2, $birthday_time, $username, $tags, $tag_names,
     $favorite) = request_contact_params($mysqli, $id_users, $id);
 
-include_once '../../fns/Contacts/edit.php';
-Contacts\edit($mysqli, $id_users, $id, $full_name, $alias, $address, $email,
-    $phone1, $phone2, $birthday_time, $username, $tags, $favorite);
-
-include_once '../../fns/ContactTags/deleteOnContact.php';
-ContactTags\deleteOnContact($mysqli, $id);
-
-include_once '../../fns/ContactTags/add.php';
-ContactTags\add($mysqli, $id_users, $id,
-    $tag_names, $full_name, $alias, $favorite);
+include_once '../../fns/Users/Contacts/edit.php';
+Users\Contacts\edit($mysqli, $id_users, $id, $full_name, $alias, $address, $email,
+    $phone1, $phone2, $birthday_time, $username, $tags, $tag_names, $favorite);
 
 include_once '../../fns/Users/Birthdays/invalidateIfNeeded.php';
 Users\Birthdays\invalidateIfNeeded($mysqli, $user, $contact->birthday_time);
