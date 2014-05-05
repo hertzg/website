@@ -37,11 +37,12 @@ render($content, 'contact.svg?1', $names);
 $names = ['event', 'create-event', 'edit-event', 'events'];
 render($content, 'event.svg?1', $names);
 
-$names = ['file', 'create-file', 'files'];
-render($content, 'file.svg?2', $names);
+$names = ['file', 'create-file', 'files', 'copy-file', 'move-file'];
+render($content, 'file.svg?3', $names);
 
-$names = ['folder', 'create-folder', 'parent-folder'];
-render($content, 'folder.svg?2', $names);
+$names = ['folder', 'create-folder',
+    'parent-folder', 'copy-folder', 'move-folder'];
+render($content, 'folder.svg?3', $names);
 
 $names = ['move-up', 'move-to-top', 'move-down', 'move-to-bottom'];
 render($content, 'move.svg?1', $names);
@@ -53,13 +54,12 @@ $names = ['account', 'edit-profile', 'download', 'upload', 'feedback', 'yes',
     'no', 'notification', 'create-notification', 'old-notification',
     'edit-password', 'new-password', 'reset-password', 'randomize', 'rename',
     'sign-out', 'sign-in', 'trash-bin', 'calendar', 'arrow-right', 'arrow-left',
-    'copy-file', 'move-file', 'copy-folder', 'move-folder', 'import-bookmark',
-    'import-contact', 'import-file', 'import-note', 'import-task', 'search',
-    'search-folder', 'birthday-cake', 'checkbox', 'checked-checkbox', 'help',
-    'run', 'mail', 'send', 'receive', 'phone',
-    'edit-home', 'reorder', 'show-hide', 'restore-defaults',
+    'import-file', 'import-bookmark', 'import-contact', 'import-file',
+    'import-note', 'import-task', 'search', 'search-folder', 'birthday-cake',
+    'checkbox', 'checked-checkbox', 'help', 'run', 'mail', 'send', 'receive',
+    'phone', 'edit-home', 'reorder', 'show-hide', 'restore-defaults',
     'forbid-notifications', 'receive-notifications', 'generic'];
-render($content, 'other.svg?2', $names);
+render($content, 'other.svg?3', $names);
 
 $names = ['schedule', 'create-schedule', 'edit-schedule', 'schedules'];
 render($content, 'schedule.svg?1', $names);
