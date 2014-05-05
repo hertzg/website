@@ -33,14 +33,8 @@ unset(
     $_SESSION['bookmarks/edit/values']
 );
 
-include_once '../../fns/Bookmarks/edit.php';
-Bookmarks\edit($mysqli, $id_users, $id, $title, $url, $tags);
-
-include_once '../../fns/BookmarkTags/deleteOnBookmark.php';
-BookmarkTags\deleteOnBookmark($mysqli, $id);
-
-include_once '../../fns/BookmarkTags/add.php';
-BookmarkTags\add($mysqli, $id_users, $id, $tag_names, $url, $title);
+include_once '../../fns/Users/Bookmarks/edit.php';
+Users\Bookmarks\edit($mysqli, $id_users, $id, $title, $url, $tags, $tag_names);
 
 $_SESSION['bookmarks/view/messages'] = ['Changes have been saved.'];
 redirect("../view/$itemQuery");
