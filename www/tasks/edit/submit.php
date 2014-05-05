@@ -33,15 +33,9 @@ unset(
     $_SESSION['tasks/edit/values']
 );
 
-include_once '../../fns/Tasks/edit.php';
-Tasks\edit($mysqli, $id_users, $id, $text, $tags, $top_priority);
-
-include_once '../../fns/TaskTags/deleteOnTask.php';
-TaskTags\deleteOnTask($mysqli, $id);
-
-include_once '../../fns/TaskTags/add.php';
-TaskTags\add($mysqli, $id_users, $id, $tag_names,
-    $text, $top_priority, $tags, $top_priority);
+include_once '../../fns/Users/Tasks/edit.php';
+Users\Tasks\edit($mysqli, $id_users, $id,
+    $text, $tags, $tag_names, $top_priority);
 
 $_SESSION['tasks/view/messages'] = ['Changes have been saved.'];
 redirect("../view/$itemQuery");
