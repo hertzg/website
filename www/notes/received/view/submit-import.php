@@ -14,11 +14,8 @@ $tags = $receivedNote->tags;
 include_once '../../../fns/Tags/parse.php';
 $tag_names = Tags\parse($tags);
 
-include_once '../../../fns/Notes/add.php';
-$id_notes = Notes\add($mysqli, $id_users, $text, $tags);
-
-include_once '../../../fns/NoteTags/add.php';
-NoteTags\add($mysqli, $id_users, $id_notes, $tag_names, $text);
+include_once '../../../fns/Users/Notes/add.php';
+Users\Notes\add($mysqli, $id_users, $text, $tags, $tag_names);
 
 include_once '../../../fns/ReceivedNotes/delete.php';
 ReceivedNotes\delete($mysqli, $id);
