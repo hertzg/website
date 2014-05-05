@@ -24,8 +24,8 @@ BookmarkTags\add($mysqli, $id_users, $id_bookmarks, $tag_names, $url, $title);
 include_once '../../../fns/ReceivedBookmarks/delete.php';
 ReceivedBookmarks\delete($mysqli, $id);
 
-include_once '../../../fns/Users/addNumReceivedBookmarks.php';
-Users\addNumReceivedBookmarks($mysqli, $id_users, -1);
+include_once '../../../fns/Users/Bookmarks/Received/addNumber.php';
+Users\Bookmarks\Received\addNumber($mysqli, $id_users, -1);
 
 $messages = ['Bookmark has been imported.'];
 include_once '../../../fns/redirect.php';

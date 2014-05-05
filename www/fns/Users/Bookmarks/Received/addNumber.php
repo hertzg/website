@@ -1,8 +1,8 @@
 <?php
 
-namespace Users;
+namespace Users\Bookmarks\Received;
 
-function addNumReceivedBookmarks ($mysqli, $id_users, $n) {
+function addNumber ($mysqli, $id_users, $n) {
     $sql = 'update users set'
         ." num_received_bookmarks = num_received_bookmarks + $n"
         ." where id_users = $id_users";

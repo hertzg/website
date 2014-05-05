@@ -11,8 +11,8 @@ include_once '../../../fns/ReceivedBookmarks/deleteOnReceiver.php';
 include_once '../../../lib/mysqli.php';
 ReceivedBookmarks\deleteOnReceiver($mysqli, $id_users);
 
-include_once '../../../fns/Users/clearNumReceivedBookmarks.php';
-Users\clearNumReceivedBookmarks($mysqli, $id_users);
+include_once '../../../fns/Users/Bookmarks/Received/clearNumber.php';
+Users\Bookmarks\Received\clearNumber($mysqli, $id_users);
 
 unset($_SESSION['bookmarks/errors']);
 $_SESSION['bookmarks/messages'] = [
