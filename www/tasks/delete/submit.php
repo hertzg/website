@@ -13,8 +13,8 @@ Tasks\delete($mysqli, $id);
 include_once '../../fns/TaskTags/deleteOnTask.php';
 TaskTags\deleteOnTask($mysqli, $id);
 
-include_once '../../fns/Users/addNumTasks.php';
-Users\addNumTasks($mysqli, $user->id_users, -1);
+include_once '../../fns/Users/Tasks/addNumber.php';
+Users\Tasks\addNumber($mysqli, $user->id_users, -1);
 
 unset($_SESSION['tasks/errors']);
 $_SESSION['tasks/messages'] = ['Task has been deleted.'];

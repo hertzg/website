@@ -14,8 +14,8 @@ Tasks\deleteOnUser($mysqli, $id_users);
 include_once '../../fns/TaskTags/deleteOnUser.php';
 TaskTags\deleteOnUser($mysqli, $id_users);
 
-include_once '../../fns/Users/clearNumTasks.php';
-Users\clearNumTasks($mysqli, $id_users);
+include_once '../../fns/Users/Tasks/clearNumber.php';
+Users\Tasks\clearNumber($mysqli, $id_users);
 
 unset($_SESSION['tasks/errors']);
 $_SESSION['tasks/messages'] = ['All tasks have been deleted.'];

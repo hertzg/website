@@ -13,8 +13,8 @@ Tasks\delete($mysqli, $id);
 include_once '../../fns/TaskTags/deleteOnTask.php';
 TaskTags\deleteOnTask($mysqli, $id);
 
-include_once '../../fns/Users/addNumTasks.php';
-Users\addNumTasks($mysqli, $id_users, -1);
+include_once '../../fns/Users/Tasks/addNumber.php';
+Users\Tasks\addNumber($mysqli, $id_users, -1);
 
 header('Content-Type: application/json');
 echo 'true';
