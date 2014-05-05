@@ -7,14 +7,8 @@ $id_users = $user->id_users;
 include_once 'fns/require_task.php';
 list($id, $task) = require_task($mysqli, $id_users);
 
-include_once '../../fns/Tasks/delete.php';
-Tasks\delete($mysqli, $id);
-
-include_once '../../fns/TaskTags/deleteOnTask.php';
-TaskTags\deleteOnTask($mysqli, $id);
-
-include_once '../../fns/Users/Tasks/addNumber.php';
-Users\Tasks\addNumber($mysqli, $id_users, -1);
+include_once '../../fns/Users/Tasks/delete.php';
+Users\Tasks\delete($mysqli, $id, $id_users);
 
 header('Content-Type: application/json');
 echo 'true';
