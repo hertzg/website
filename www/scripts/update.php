@@ -17,4 +17,13 @@ foreach ($subscribed_channels as $subscribed_channel) {
         ." set num_notifications = $num_notifications where id = $id") || trigger_error($mysqli->error);
 }
 
+$channels = mysqli_query_object($mysqli, 'select * from channels');
+foreach ($channels as $channel) {
+    $id = $channel->id;
+    $num_notifications = mysqli_single_object($mysqli, 'select count(*) total'
+        ." from notifications where id_channels = $id")->total;
+    $mysqli->query('update channels'
+        ." set num_notifications = $num_notifications where id = $id") || trigger_error($mysqli->error);
+}
+
 echo "Done\n";
