@@ -23,7 +23,7 @@ if ($notification_text === '') {
     bad_request('ENTER_NOTIFICATION_TEXT');
 }
 
-include_once '../../fns/send_notification.php';
-send_notification($mysqli, $channel, $notification_text);
+include_once '../../fns/Users/Notifications/post.php';
+Users\Notifications\post($mysqli, $channel, $notification_text);
 
 echo json_encode(true);

@@ -29,8 +29,8 @@ if ($errors) {
 
 unset($_SESSION['notifications/channels/notify/errors']);
 
-include_once '../../../fns/send_notification.php';
-send_notification($mysqli, $channel, $notification_text);
+include_once '../../../fns/Users/Notifications/post.php';
+Users\Notifications\post($mysqli, $channel, $notification_text);
 
 $_SESSION['notifications/channels/view/messages'] = [
     'Notification has been posted.',
