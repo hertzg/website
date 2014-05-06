@@ -62,7 +62,8 @@ foreach ($users as $user) {
         ." num_received_bookmarks = $num_received_bookmarks,"
         ." num_received_contacts = $num_received_contacts,"
         ." num_received_notes = $num_received_notes,"
-        ." num_received_tasks = $num_received_tasks"
+        ." num_received_tasks = $num_received_tasks,"
+        ." num_notifications = $num_notifications"
         ." where id_users = $id_users";
     $mysqli->query($sql) || die($mysqli->error);
 
