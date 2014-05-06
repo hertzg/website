@@ -5,6 +5,9 @@ include_once '../fns/mysqli_query_object.php';
 include_once '../fns/mysqli_single_object.php';
 include_once '../lib/mysqli.php';
 
+$mysqli->query('update notifications set id_channels = null'
+    .' where id_subscribed_channels is not null') || trigger_error($mysqli->error);
+
 $mysqli->query('alter table subscribed_channels'
     .' add num_notifications bigint unsigned not null') || trigger_error($mysqli->error);
 
