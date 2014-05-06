@@ -14,6 +14,9 @@ Notifications\deleteAll($mysqli, $id_users);
 include_once '../../fns/Users/Notifications/clearNumber.php';
 Users\Notifications\clearNumber($mysqli, $id_users);
 
+include_once '../../fns/Channels/clearNumNotificationsOnUser.php';
+Channels\clearNumNotificationsOnUser($mysqli, $id_users);
+
 include_once '../../fns/SubscribedChannels/clearNumNotificationsOnSubscriber.php';
 SubscribedChannels\clearNumNotificationsOnSubscriber($mysqli, $id_users);
 
