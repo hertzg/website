@@ -17,6 +17,9 @@ function post ($mysqli, $channel, $notification_text) {
         include_once __DIR__.'/addNumberNew.php';
         addNumberNew($mysqli, $id_users, 1);
 
+        include_once __DIR__.'/../../Channels/addNumNotifications.php';
+        \Channels\addNumNotifications($mysqli, $id_channels, 1);
+
     }
 
     include_once __DIR__.'/../../SubscribedChannels/indexOnChannel.php';
