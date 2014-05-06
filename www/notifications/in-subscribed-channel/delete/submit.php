@@ -10,8 +10,8 @@ list($subscribedChannel, $id, $user) = require_subscribed_channel($mysqli, '../.
 include_once '../../../fns/Notifications/deleteOnSubscribedChannel.php';
 Notifications\deleteOnSubscribedChannel($mysqli, $id);
 
-include_once '../../../fns/Users/clearNumNotifications.php';
-Users\clearNumNotifications($mysqli, $user->id_users);
+include_once '../../../fns/Users/Notifications/clearNumber.php';
+Users\Notifications\clearNumber($mysqli, $user->id_users);
 
 unset($_SESSION['notifications/errors']);
 $_SESSION['notifications/in-subscribed-channel/messages'] = [

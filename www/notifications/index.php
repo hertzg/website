@@ -6,9 +6,9 @@ include_once '../fns/require_user.php';
 $user = require_user($base);
 $id_users = $user->id_users;
 
-include_once '../fns/Users/clearNumNewNotifications.php';
+include_once '../fns/Users/Notifications/clearNumberNew.php';
 include_once '../lib/mysqli.php';
-Users\clearNumNewNotifications($mysqli, $id_users);
+Users\Notifications\clearNumberNew($mysqli, $id_users);
 
 $options = [];
 

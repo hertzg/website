@@ -16,7 +16,7 @@ function delete ($mysqli, $id, $id_users) {
     include_once __DIR__.'/../../Users/Channels/addNumber.php';
     \Users\Channels\addNumber($mysqli, $id_users, -1);
 
-    include_once __DIR__.'/../../Users/clearNumNotifications.php';
-    \Users\clearNumNotifications($mysqli, $id_users);
+    include_once __DIR__.'/../../Users/Notifications/clearNumber.php';
+    \Users\Notifications\clearNumber($mysqli, $id_users);
 
 }

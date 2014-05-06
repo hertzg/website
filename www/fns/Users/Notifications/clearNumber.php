@@ -1,11 +1,11 @@
 <?php
 
-namespace Users;
+namespace Users\Notifications;
 
-function clearNumNotifications ($mysqli, $id_users) {
+function clearNumber ($mysqli, $id_users) {
     $sql = 'update users set num_notifications = 0,'
         .' num_new_notifications = 0,'
         .' num_new_notifications_for_home = 0'
         ." where id_users = $id_users";
-    $mysqli->query($sql);
+    $mysqli->query($sql) || trigger_error($mysqli->error);
 }

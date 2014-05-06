@@ -1,8 +1,8 @@
 <?php
 
-namespace Users;
+namespace Users\Notifications;
 
-function addNumNewNotifications ($mysqli, $id_users, $n) {
+function addNumberNew ($mysqli, $id_users, $n) {
     $sql = 'update users set'
         ." num_notifications = num_notifications + $n,"
         ." num_new_notifications = num_new_notifications + $n,"

@@ -11,8 +11,8 @@ include_once '../../fns/Notifications/deleteAll.php';
 include_once '../../lib/mysqli.php';
 Notifications\deleteAll($mysqli, $id_users);
 
-include_once '../../fns/Users/clearNumNotifications.php';
-Users\clearNumNotifications($mysqli, $id_users);
+include_once '../../fns/Users/Notifications/clearNumber.php';
+Users\Notifications\clearNumber($mysqli, $id_users);
 
 unset($_SESSION['notifications/errors']);
 $_SESSION['notifications/messages'] = [
