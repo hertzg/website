@@ -10,8 +10,12 @@ list($channel, $id, $user) = require_channel($mysqli, '../..');
 include_once '../../../fns/Notifications/deleteOnChannel.php';
 Notifications\deleteOnChannel($mysqli, $id);
 
-include_once '../../../fns/Users/Notifications/clearNumber.php';
-Users\Notifications\clearNumber($mysqli, $user->id_users);
+include_once '../../../fns/Users/Notifications/addNumber.php';
+Users\Notifications\addNumber($mysqli, $user->id_users,
+    -$channel->num_notifications);
+
+include_once '../../fns/Channels/clearNumNotifications.php';
+Channels\clearNumNotifications($mysqli, $id);
 
 unset($_SESSION['notifications/errors']);
 $_SESSION['notifications/in-channel/messages'] = [
