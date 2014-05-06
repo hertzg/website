@@ -14,7 +14,7 @@ include_once '../../../fns/Users/Notifications/addNumber.php';
 Users\Notifications\addNumber($mysqli, $user->id_users,
     -$channel->num_notifications);
 
-include_once '../../fns/Channels/clearNumNotifications.php';
+include_once '../../../fns/Channels/clearNumNotifications.php';
 Channels\clearNumNotifications($mysqli, $id);
 
 unset($_SESSION['notifications/errors']);
