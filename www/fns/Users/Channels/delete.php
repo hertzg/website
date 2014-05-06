@@ -2,7 +2,10 @@
 
 namespace Users\Channels;
 
-function delete ($mysqli, $id, $id_users) {
+function delete ($mysqli, $channel) {
+
+    $id = $channel->id;
+    $id_users = $channel->id_users;
 
     include_once __DIR__.'/../../Notifications/deleteOnChannel.php';
     \Notifications\deleteOnChannel($mysqli, $id);
@@ -16,7 +19,7 @@ function delete ($mysqli, $id, $id_users) {
     include_once __DIR__.'/../../Users/Channels/addNumber.php';
     \Users\Channels\addNumber($mysqli, $id_users, -1);
 
-    include_once __DIR__.'/../../Users/Notifications/clearNumber.php';
-    \Users\Notifications\clearNumber($mysqli, $id_users);
+    include_once __DIR__.'/../../Users/Notifications/addNumber.php';
+    \Users\Notifications\addNumber($mysqli, $id_users, -$channel->num_notifications);
 
 }
