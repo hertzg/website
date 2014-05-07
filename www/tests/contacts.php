@@ -171,5 +171,29 @@ $engine->expectValue('', true, $response);
 $response = $engine->request('contact/delete', ['id' => $id]);
 $engine->expectError('CONTACT_NOT_FOUND');
 
+$response = $engine->request('contact/add', [
+    'full_name' => $new_contact_full_name,
+    'alias' => $new_contact_alias,
+    'address' => $new_contact_address,
+    'email' => $new_contact_email,
+    'phone1' => $new_contact_phone1,
+    'phone2' => $new_contact_phone2,
+    'birthday_time' => $new_contact_birthday_time,
+    'username' => $new_contact_username,
+    'tags' => $new_contact_tags,
+    'favorite' => $new_contact_favorite,
+]);
+$engine->expectStatus(200);
+$engine->expectNatural('', $response);
+
+$response = $engine->request('contact/deleteAll');
+$engine->expectStatus(200);
+$engine->expectValue('', true, $response);
+
+$response = $engine->request('contact/list');
+$engine->expectStatus(200);
+$engine->expectType('', 'array', $response);
+$engine->expectValue('.length', 0, count($response));
+
 echo "Done\n";
 echo "$engine->numRequests requests made.\n";

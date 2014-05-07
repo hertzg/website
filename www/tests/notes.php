@@ -94,5 +94,21 @@ $engine->expectValue('', true, $response);
 $response = $engine->request('note/delete', ['id' => $id]);
 $engine->expectError('NOTE_NOT_FOUND');
 
+$response = $engine->request('note/add', [
+    'text' => $new_note_text,
+    'tags' => $new_note_tags,
+]);
+$engine->expectStatus(200);
+$engine->expectNatural('', $response);
+
+$response = $engine->request('note/deleteAll');
+$engine->expectStatus(200);
+$engine->expectValue('', true, $response);
+
+$response = $engine->request('note/list');
+$engine->expectStatus(200);
+$engine->expectType('', 'array', $response);
+$engine->expectValue('.length', 0, count($response));
+
 echo "Done\n";
 echo "$engine->numRequests requests made.\n";

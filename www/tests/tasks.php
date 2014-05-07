@@ -103,5 +103,22 @@ $engine->expectValue('', true, $response);
 $response = $engine->request('task/delete', ['id' => $id]);
 $engine->expectError('TASK_NOT_FOUND');
 
+$response = $engine->request('task/add', [
+    'text' => $new_task_text,
+    'tags' => $new_task_tags,
+    'top_priority' => $new_task_top_priority,
+]);
+$engine->expectStatus(200);
+$engine->expectNatural('', $response);
+
+$response = $engine->request('task/deleteAll');
+$engine->expectStatus(200);
+$engine->expectValue('', true, $response);
+
+$response = $engine->request('task/list');
+$engine->expectStatus(200);
+$engine->expectType('', 'array', $response);
+$engine->expectValue('.length', 0, count($response));
+
 echo "Done\n";
 echo "$engine->numRequests requests made.\n";
