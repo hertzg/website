@@ -17,11 +17,6 @@ function add ($mysqli, $id_users, $url, $title, $tags) {
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
-    $id_bookmarks = $mysqli->insert_id;
-
-    include_once __DIR__.'/../Users/Bookmarks/addNumber.php';
-    \Users\Bookmarks\addNumber($mysqli, $id_users, 1);
-
-    return $id_bookmarks;
+    return $mysqli->insert_id;
 
 }
