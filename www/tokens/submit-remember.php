@@ -22,8 +22,8 @@ if (!$token) {
         $user_agent = null;
     }
 
-    include_once '../fns/Tokens/add.php';
-    $id = Tokens\add($mysqli, $id_users, $user->username,
+    include_once '../fns/Users/Tokens/add.php';
+    $id = Users\Tokens\add($mysqli, $id_users, $user->username,
         $token_text, $user_agent);
 
     include_once '../fns/Tokens/get.php';

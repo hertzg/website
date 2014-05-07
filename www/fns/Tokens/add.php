@@ -19,13 +19,8 @@ function add ($mysqli, $id_users, $username, $token_text, $user_agent) {
         ." values ($id_users, '$username', '$token_text', $user_agent,"
         ." $insert_time, $access_time)";
 
-    $mysqli->query($sql) || trigger_error();
+    $mysqli->query($sql) || trigger_error($mysqli->error);
 
-    $id_tokens = $mysqli->insert_id;
-
-    include_once __DIR__.'/../Users/Tokens/addNumber.php';
-    \Users\Tokens\addNumber($mysqli, $id_users, 1);
-
-    return $id_tokens;
+    return $mysqli->insert_id;
 
 }

@@ -13,8 +13,8 @@ function remember_session ($mysqli, $user) {
 
     $id_users = $user->id_users;
 
-    include_once __DIR__.'/../../fns/Tokens/add.php';
-    $id = Tokens\add($mysqli, $id_users, $user->username,
+    include_once __DIR__.'/../../fns/Users/Tokens/add.php';
+    $id = Users\Tokens\add($mysqli, $id_users, $user->username,
         $token_text, $user_agent);
 
     include_once __DIR__.'/../../fns/Tokens/get.php';
