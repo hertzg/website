@@ -26,4 +26,5 @@ if ($notification_text === '') {
 include_once '../../fns/Users/Notifications/post.php';
 Users\Notifications\post($mysqli, $channel, $notification_text);
 
-echo json_encode(true);
+header('Content-Type: application/json');
+echo 'true';
