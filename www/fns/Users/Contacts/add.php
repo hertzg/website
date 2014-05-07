@@ -18,6 +18,9 @@ function add ($mysqli, $user, $full_name, $alias, $address, $email,
     include_once __DIR__.'/../Birthdays/invalidateIfNeeded.php';
     \Users\Birthdays\invalidateIfNeeded($mysqli, $user, $birthday_time);
 
+    include_once __DIR__.'/addNumber.php';
+    addNumber($mysqli, $id_users, 1);
+
     return $id;
 
 }

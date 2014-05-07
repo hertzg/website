@@ -32,11 +32,6 @@ function add ($mysqli, $id_users, $full_name, $alias, $address, $email,
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
-    $id_contacts = $mysqli->insert_id;
-
-    include_once __DIR__.'/../Users/Contacts/addNumber.php';
-    \Users\Contacts\addNumber($mysqli, $id_users, 1);
-
-    return $id_contacts;
+    return $mysqli->insert_id;
 
 }

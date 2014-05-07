@@ -11,6 +11,9 @@ function add ($mysqli, $id_users, $text, $top_priority, $tags, $tag_names) {
     \TaskTags\add($mysqli, $id_users, $id,
         $tag_names, $text, $top_priority, $tags);
 
+    include_once __DIR__.'/addNumber.php';
+    addNumber($mysqli, $id_users, 1);
+
     return $id;
 
 }
