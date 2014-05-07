@@ -81,6 +81,7 @@ $engine->expectStatus(200);
 $engine->expectValue('', true, $response);
 
 $response = $engine->request('bookmark/get', ['id' => $id]);
+$engine->expectStatus(200);
 expect_bookmark_object($engine, '', $response);
 $engine->expectValue('.url', $edited_bookmark_url, $response->url);
 $engine->expectValue('.title', $edited_bookmark_title, $response->title);
