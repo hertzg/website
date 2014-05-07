@@ -11,7 +11,8 @@ if (array_key_exists($key, $_SESSION)) {
 } else {
     $values = [
         'channel_name' => '',
-        'public' => '',
+        'public' => false,
+        'receive_notifications' => false,
     ];
 }
 
@@ -58,6 +59,9 @@ $content = Page\tabs(
         ])
         .'<div class="hr"></div>'
         .Form\checkbox($base, 'public', 'Mark as Public', $values['public'])
+        .'<div class="hr"></div>'
+        .Form\checkbox($base, 'receive_notifications',
+            'Receive Notifications', $values['receive_notifications'])
         .'<div class="hr"></div>'
         .Form\button('Create')
     .'</form>'

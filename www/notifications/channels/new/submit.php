@@ -7,7 +7,7 @@ include_once '../../../fns/require_user.php';
 $user = require_user('../../../');
 
 include_once '../../../fns/Channels/request.php';
-list($channel_name, $public) = Channels\request();
+list($channel_name, $public, $receive_notifications) = Channels\request();
 
 $errors = [];
 
@@ -50,6 +50,7 @@ if ($errors) {
     $_SESSION['notifications/channels/add/values'] = [
         'channel_name' => $channel_name,
         'public' => $public,
+        'receive_notifications' => $receive_notifications,
     ];
     redirect();
 }
@@ -60,7 +61,8 @@ unset(
 );
 
 include_once '../../../fns/Users/Channels/add.php';
-$id = Users\Channels\add($mysqli, $user, $channel_name, $public);
+$id = Users\Channels\add($mysqli, $user,
+    $channel_name, $public, $receive_notifications);
 
 $_SESSION['notifications/channels/view/messages'] = ['Channel has been added.'];
 redirect("../view/?id=$id");
