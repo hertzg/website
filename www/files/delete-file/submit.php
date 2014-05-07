@@ -7,8 +7,8 @@ include_once '../fns/require_file.php';
 include_once '../../lib/mysqli.php';
 list($file, $id, $user) = require_file($mysqli);
 
-include_once '../../fns/Files/delete.php';
-Files\delete($mysqli, $user->id_users, $id);
+include_once '../../fns/Users/Files/delete.php';
+Users\Files\delete($mysqli, $file);
 
 $_SESSION['files/id_folders'] = $file->id_folders;
 $_SESSION['files/messages'] = ['File has been deleted.'];

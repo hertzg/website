@@ -4,8 +4,8 @@ namespace Folders;
 
 function delete ($mysqli, $id_users, $id_folders) {
 
-    include_once __DIR__.'/../Files/delete.php';
     include_once __DIR__.'/../Files/indexInUserFolder.php';
+    include_once __DIR__.'/../Users/Files/delete.php';
 
     $id_folderss = [$id_folders];
     while ($id_folderss) {
@@ -22,7 +22,7 @@ function delete ($mysqli, $id_users, $id_folders) {
             if (!in_array($file->id_folders, $id_folderss)) {
                 $id_folderss[] = $id_folders;
             }
-            \Files\delete($mysqli, $id_users, $file->id_files);
+            \Users\Files\delete($mysqli, $file);
         }
 
     }
