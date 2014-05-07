@@ -1,8 +1,8 @@
 <?php
 
-namespace Users;
+namespace Users\SubscribedChannels;
 
-function addNumSubscribedChannels ($mysqli, $id_users, $n) {
+function addNumber ($mysqli, $id_users, $n) {
     $sql = 'update users set'
         ." num_subscribed_channels = num_subscribed_channels + $n"
         ." where id_users = $id_users";

@@ -24,8 +24,8 @@ if ($subscribedChannel->publisher_locked) {
 include_once '../../../fns/SubscribedChannels/delete.php';
 SubscribedChannels\delete($mysqli, $id);
 
-include_once '../../../fns/Users/addNumSubscribedChannels.php';
-Users\addNumSubscribedChannels($mysqli, $user->id_users, -1);
+include_once '../../../fns/Users/SubscribedChannels/addNumber.php';
+Users\SubscribedChannels\addNumber($mysqli, $user->id_users, -1);
 
 $_SESSION['notifications/subscribed-channels/messages'] = $messages;
 
