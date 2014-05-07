@@ -8,7 +8,7 @@ include_once '../../../lib/mysqli.php';
 list($channel, $id, $user) = require_channel($mysqli);
 
 include_once '../../../fns/Channels/request.php';
-list($channel_name, $public) = Channels\request();
+list($channel_name, $public, $receive_notifications) = Channels\request();
 
 $errors = [];
 
@@ -50,6 +50,7 @@ if ($errors) {
     $_SESSION['notifications/channels/edit/values'] = [
         'channel_name' => $channel_name,
         'public' => $public,
+        'receive_notifications' => $receive_notifications,
     ];
     redirect("./?id=$id");
 }
@@ -60,7 +61,7 @@ unset(
 );
 
 include_once '../../../fns/Users/Channels/edit.php';
-Users\Channels\edit($mysqli, $id, $channel_name, $public);
+Users\Channels\edit($mysqli, $id, $channel_name, $public, $receive_notifications);
 
 $_SESSION['notifications/channels/view/messages'] = ['Changes have been saved.'];
 

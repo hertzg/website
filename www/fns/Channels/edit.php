@@ -2,14 +2,16 @@
 
 namespace Channels;
 
-function edit ($mysqli, $id, $channel_name, $public) {
+function edit ($mysqli, $id, $channel_name, $public, $receive_notifications) {
 
     $channel_name = $mysqli->real_escape_string($channel_name);
     $public = $public ? '1' : '0';
+    $receive_notifications = $receive_notifications ? '1' : '0';
     $update_time = time();
 
     $sql = "update channels set channel_name = '$channel_name',"
-        ." public = $public, update_time = $update_time where id = $id";
+        ." public = $public, receive_notifications = $receive_notifications,"
+        ." update_time = $update_time where id = $id";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 

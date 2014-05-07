@@ -50,6 +50,9 @@ $content = Page\tabs(
         .'<div class="hr"></div>'
         .Form\checkbox($base, 'public', 'Mark as Public', $values['public'])
         .'<div class="hr"></div>'
+        .Form\checkbox($base, 'receive_notifications',
+            'Receive Notifications', $values['receive_notifications'])
+        .'<div class="hr"></div>'
         .Form\button('Save Channel')
         .Form\hidden('id', $id)
     .'</form>'
