@@ -5,7 +5,6 @@ require_same_domain_referer('./');
 
 include_once '../../fns/require_user.php';
 $user = require_user('../../');
-$id_users = $user->id_users;
 
 include_once '../../fns/request_strings.php';
 list($currentPassword, $password1, $password2) = request_strings(
@@ -59,7 +58,7 @@ unset(
 
 include_once '../../fns/Users/editPassword.php';
 include_once '../../lib/mysqli.php';
-Users\editPassword($mysqli, $id_users, $password1);
+Users\editPassword($mysqli, $user->id_users, $password1);
 
 $_SESSION['account/messages'] = ['Password has been changed.'];
 redirect('..');
