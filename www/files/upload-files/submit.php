@@ -25,8 +25,8 @@ if ($id_folders) {
 }
 
 include_once '../../fns/str_collapse_spaces.php';
-include_once '../../fns/Files/add.php';
 include_once '../../fns/Files/getByName.php';
+include_once '../../fns/Users/Files/add.php';
 
 $numfiles = 0;
 foreach ([$file1, $file2, $file3] as $file) {
@@ -51,7 +51,7 @@ foreach ([$file1, $file2, $file3] as $file) {
                 }
             }
 
-            Files\add($mysqli, $id_users, $id_folders, $file_name, $file['tmp_name'][$i]);
+            Users\Files\add($mysqli, $id_users, $id_folders, $file_name, $file['tmp_name'][$i]);
 
             $numfiles++;
 

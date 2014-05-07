@@ -32,8 +32,8 @@ while (Files\getByName($mysqli, $id_users, $id_folders, $file_name)) {
     }
 }
 
-include_once '../../../fns/Files/add.php';
-Files\add($mysqli, $id_users, $id_folders, $file_name, $receivedFilePath);
+include_once '../../../fns/Users/Files/add.php';
+Users\Files\add($mysqli, $id_users, $id_folders, $file_name, $receivedFilePath);
 
 include_once '../../../fns/ReceivedFiles/delete.php';
 ReceivedFiles\delete($mysqli, $id_users, $id);
