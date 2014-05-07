@@ -103,5 +103,22 @@ $engine->expectValue('', true, $response);
 $response = $engine->request('bookmark/delete', ['id' => $id]);
 $engine->expectError('BOOKMARK_NOT_FOUND');
 
+$response = $engine->request('bookmark/add', [
+    'url' => $new_bookmark_url,
+    'title' => $new_bookmark_title,
+    'tags' => $new_bookmark_tags,
+]);
+$engine->expectStatus(200);
+$engine->expectNatural('', $response);
+
+$response = $engine->request('bookmark/deleteAll');
+$engine->expectStatus(200);
+$engine->expectValue('', true, $response);
+
+$response = $engine->request('bookmark/list');
+$engine->expectStatus(200);
+$engine->expectType('', 'array', $response);
+$engine->expectValue('.length', 0, count($response));
+
 echo "Done\n";
 echo "$engine->numRequests requests made.\n";

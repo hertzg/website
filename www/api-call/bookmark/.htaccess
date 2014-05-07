@@ -1,2 +1,2 @@
 RewriteEngine On
-RewriteRule ^([a-z]+)$ $1.php [L]
+RewriteRule ^([a-zA-Z]+)$ $1.php [L]
