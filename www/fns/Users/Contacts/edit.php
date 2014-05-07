@@ -19,7 +19,7 @@ function edit ($mysqli, $user, $id, $full_name, $alias, $address, $email,
     \ContactTags\add($mysqli, $id_users, $id,
         $tag_names, $full_name, $alias, $favorite);
 
-    include_once __DIR__.'/../../Users/Birthdays/invalidateIfNeeded.php';
+    include_once __DIR__.'/../Birthdays/invalidateIfNeeded.php';
     \Users\Birthdays\invalidateIfNeeded($mysqli, $user, $old_birthday_time);
     \Users\Birthdays\invalidateIfNeeded($mysqli, $user, $birthday_time);
 

@@ -10,8 +10,8 @@ function add ($mysqli, $user, $channel_name, $public, $receive_notifications) {
     $id = \Channels\add($mysqli, $id_users, $user->username,
         $channel_name, $public, $receive_notifications);
 
-    include_once __DIR__.'/../../Users/Channels/addNumber.php';
-    \Users\Channels\addNumber($mysqli, $id_users, 1);
+    include_once __DIR__.'/addNumber.php';
+    addNumber($mysqli, $id_users, 1);
 
     return $id;
 

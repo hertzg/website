@@ -16,11 +16,6 @@ function add ($mysqli, $id_users, $text, $tags) {
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
-    $id_notes = $mysqli->insert_id;
-
-    include_once __DIR__.'/../Users/Notes/addNumber.php';
-    \Users\Notes\addNumber($mysqli, $id_users, 1);
-
-    return $id_notes;
+    return $mysqli->insert_id;
 
 }

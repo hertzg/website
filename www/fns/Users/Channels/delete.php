@@ -16,10 +16,10 @@ function delete ($mysqli, $channel) {
     include_once __DIR__.'/../../SubscribedChannels/deleteOnChannel.php';
     \SubscribedChannels\deleteOnChannel($mysqli, $id);
 
-    include_once __DIR__.'/../../Users/Channels/addNumber.php';
-    \Users\Channels\addNumber($mysqli, $id_users, -1);
+    include_once __DIR__.'/addNumber.php';
+    addNumber($mysqli, $id_users, -1);
 
-    include_once __DIR__.'/../../Users/Notifications/addNumber.php';
-    \Users\Notifications\addNumber($mysqli, $id_users, -$channel->num_notifications);
+    include_once __DIR__.'/../Notifications/addNumber.php';
+    Notifications\addNumber($mysqli, $id_users, -$channel->num_notifications);
 
 }
