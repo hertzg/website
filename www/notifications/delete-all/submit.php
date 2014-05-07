@@ -7,9 +7,9 @@ include_once '../../fns/require_user.php';
 $user = require_user('../../');
 $id_users = $user->id_users;
 
-include_once '../../fns/Notifications/deleteAll.php';
+include_once '../../fns/Notifications/deleteAllOnUser.php';
 include_once '../../lib/mysqli.php';
-Notifications\deleteAll($mysqli, $id_users);
+Notifications\deleteAllOnUser($mysqli, $id_users);
 
 include_once '../../fns/Users/Notifications/clearNumber.php';
 Users\Notifications\clearNumber($mysqli, $id_users);
