@@ -23,21 +23,10 @@ function create_options_panel ($channel) {
         $usersLink = Page\imageArrowLink($title, $href, 'users');
     }
 
-    if ($channel->receive_notifications) {
-        $title = 'Forbid Notifications';
-        $href = "submit-forbid.php?id=$id";
-        $icon = 'forbid-notifications';
-    } else {
-        $title = 'Receive Notifications';
-        $href = "submit-receive.php?id=$id";
-        $icon = 'receive-notifications';
-    }
-    $receiveLink = Page\imageLink($title, $href, $icon);
-
     $href = "../edit/?id=$id";
     if ($channel->receive_notifications) $icon = 'edit-channel';
     else $icon = 'edit-inactive-channel';
-    $publicLink = Page\imageArrowLink('Edit', $href, $icon);
+    $editLink = Page\imageArrowLink('Edit', $href, $icon);
 
     $title = 'Delete';
     $href = "../delete/?id=$id";
@@ -47,9 +36,7 @@ function create_options_panel ($channel) {
     $content =
         Page\twoColumns($notifyLink, $usersLink)
         .'<div class="hr"></div>'
-        .Page\twoColumns($receiveLink, $publicLink)
-        .'<div class="hr"></div>'
-        .$deleteLink;
+        .Page\twoColumns($editLink, $deleteLink);
 
     include_once __DIR__.'/../../../../fns/create_panel.php';
     return create_panel('Channel Options', $content);
