@@ -38,8 +38,8 @@ unset(
     $_SESSION['account/api-keys/new/values']
 );
 
-include_once '../../../fns/ApiKeys/add.php';
-$id = ApiKeys\add($mysqli, $id_users, $name);
+include_once '../../../fns/Users/ApiKeys/add.php';
+$id = Users\ApiKeys\add($mysqli, $id_users, $name);
 
 $_SESSION['account/api-keys/view/messages'] = ['API key has been generated.'];
 
