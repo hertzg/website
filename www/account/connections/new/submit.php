@@ -67,12 +67,12 @@ unset(
 );
 
 include_once '../../../fns/Users/Connections/add.php';
-Users\Connections\add($mysqli, $id_users, $connected_id_users,
+$id = Users\Connections\add($mysqli, $id_users, $connected_id_users,
     $username, $can_send_bookmark, $can_send_channel, $can_send_contact,
     $can_send_file, $can_send_note, $can_send_task);
 
-$_SESSION['account/connections/messages'] = [
-    'Connection has been added.',
+$_SESSION['account/connections/view/messages'] = [
+    'Connection has been saved.',
 ];
 
-redirect('..');
+redirect("../view/?id=$id");
