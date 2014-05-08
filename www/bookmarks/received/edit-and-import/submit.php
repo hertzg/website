@@ -33,11 +33,8 @@ unset(
 include_once '../../../fns/Users/Bookmarks/add.php';
 Users\Bookmarks\add($mysqli, $id_users, $url, $title, $tags, $tag_names);
 
-include_once '../../../fns/ReceivedBookmarks/delete.php';
-ReceivedBookmarks\delete($mysqli, $id);
-
-include_once '../../../fns/Users/Bookmarks/Received/addNumber.php';
-Users\Bookmarks\Received\addNumber($mysqli, $id_users, -1);
+include_once '../../../fns/Users/Bookmarks/Received/delete.php';
+Users\Bookmarks\Received\delete($mysqli, $id_users, $id);
 
 unset(
     $_SESSION['bookmarks/received/edit-and-import/errors'],

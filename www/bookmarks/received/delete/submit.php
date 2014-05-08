@@ -7,11 +7,8 @@ include_once '../fns/require_received_bookmark.php';
 include_once '../../../lib/mysqli.php';
 list($receivedBookmark, $id, $user) = require_received_bookmark($mysqli);
 
-include_once '../../../fns/ReceivedBookmarks/delete.php';
-ReceivedBookmarks\delete($mysqli, $id);
-
-include_once '../../../fns/Users/Bookmarks/Received/addNumber.php';
-Users\Bookmarks\Received\addNumber($mysqli, $user->id_users, -1);
+include_once '../../../fns/Users/Bookmarks/Received/delete.php';
+Users\Bookmarks\Received\delete($mysqli, $user->id_users, $id);
 
 $messages = ['Bookmark has been deleted.'];
 include_once '../../../fns/redirect.php';
