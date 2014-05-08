@@ -7,11 +7,8 @@ include_once '../fns/require_received_contact.php';
 include_once '../../../lib/mysqli.php';
 list($receivedContact, $id, $user) = require_received_contact($mysqli);
 
-include_once '../../../fns/ReceivedContacts/delete.php';
-ReceivedContacts\delete($mysqli, $id);
-
-include_once '../../../fns/Users/Contacts/Received/addNumber.php';
-Users\Contacts\Received\addNumber($mysqli, $user->id_users, -1);
+include_once '../../../fns/Users/Contacts/Received/delete.php';
+Users\Contacts\Received\delete($mysqli, $receivedContact);
 
 $messages = ['Contact has been deleted.'];
 include_once '../../../fns/redirect.php';

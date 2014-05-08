@@ -55,11 +55,8 @@ include_once '../../../fns/Users/Contacts/add.php';
 Users\Contacts\add($mysqli, $user, $full_name, $alias, $address, $email,
     $phone1, $phone2, $birthday_time, $username, $tags, $tag_names, $favorite);
 
-include_once '../../../fns/ReceivedContacts/delete.php';
-ReceivedContacts\delete($mysqli, $id);
-
-include_once '../../../fns/Users/Contacts/Received/addNumber.php';
-Users\Contacts\Received\addNumber($mysqli, $id_users, -1);
+include_once '../../../fns/Users/Contacts/Received/delete.php';
+Users\Contacts\Received\delete($mysqli, $receivedContact);
 
 $messages = ['Contact has been imported.'];
 
