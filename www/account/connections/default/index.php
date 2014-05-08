@@ -1,5 +1,13 @@
 <?php
 
+function denied (&$permissions, $text) {
+    $permissions .= "<span class=\"denied\">$text</span><br />";
+}
+
+function granted (&$permissions, $text) {
+    $permissions .= "<span class=\"granted\">$text</span><br />";
+}
+
 $base = '../../../';
 
 include_once '../../../fns/require_user.php';
@@ -14,34 +22,34 @@ include_once '../../../fns/Page/imageArrowLink.php';
 
 $permissions = '';
 if ($user->anonymous_can_send_bookmark) {
-    $permissions .= 'Can send bookmarks.<br />';
+    granted($permissions, 'Can send bookmarks.');
 } else {
-    $permissions .= 'Cannot send bookmarks.<br />';
+    denied($permissions, 'Cannot send bookmarks.');
 }
 if ($user->anonymous_can_send_channel) {
-    $permissions .= 'Can send channels.<br />';
+    granted($permissions, 'Can send channels.');
 } else {
-    $permissions .= 'Cannot send channels.<br />';
+    denied($permissions, 'Cannot send channels.');
 }
 if ($user->anonymous_can_send_contact) {
-    $permissions .= 'Can send contacts.<br />';
+    granted($permissions, 'Can send contacts.');
 } else {
-    $permissions .= 'Cannot send contacts.<br />';
+    denied($permissions, 'Cannot send contacts.');
 }
 if ($user->anonymous_can_send_file) {
-    $permissions .= 'Can send files.<br />';
+    granted($permissions, 'Can send files.');
 } else {
-    $permissions .= 'Cannot send files.<br />';
+    denied($permissions, 'Cannot send files.');
 }
 if ($user->anonymous_can_send_note) {
-    $permissions .= 'Can send notes.<br />';
+    granted($permissions, 'Can send notes.');
 } else {
-    $permissions .= 'Cannot send notes.<br />';
+    denied($permissions, 'Cannot send notes.');
 }
 if ($user->anonymous_can_send_task) {
-    $permissions .= 'Can send tasks.';
+    granted($permissions, 'Can send tasks.');
 } else {
-    $permissions .= 'Cannot send tasks.';
+    denied($permissions, 'Cannot send tasks.');
 }
 
 $editLink = Page\imageArrowLink('Edit', 'edit/', 'edit-connection');
@@ -68,4 +76,6 @@ $content = Page\tabs(
 );
 
 include_once '../../../fns/echo_page.php';
-echo_page($user, 'Default Connection', $content, $base);
+echo_page($user, 'Default Connection', $content, $base, [
+    'head' => '<link rel="stylesheet" type="text/css" href="../view.css" />',
+]);
