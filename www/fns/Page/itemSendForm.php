@@ -31,7 +31,7 @@ function itemSendForm ($mysqli, $id_users, $username, $id, $hiddenInputs = '') {
 
             $contactUsername = $contact->username;
             $title = htmlspecialchars($contact->full_name);
-            $description = htmlspecialchars($contactUsername);
+            $description = 'Username: '.htmlspecialchars($contactUsername);
             $href = 'submit.php?'.htmlspecialchars(
                 http_build_query([
                     'id' => $id,
