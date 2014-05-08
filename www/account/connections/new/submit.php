@@ -66,8 +66,8 @@ unset(
     $_SESSION['account/connections/new/values']
 );
 
-include_once '../../../fns/Connections/add.php';
-Connections\add($mysqli, $id_users, $connected_id_users,
+include_once '../../../fns/Users/Connections/add.php';
+Users\Connections\add($mysqli, $id_users, $connected_id_users,
     $username, $can_send_bookmark, $can_send_channel, $can_send_contact,
     $can_send_file, $can_send_note, $can_send_task);
 
