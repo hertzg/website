@@ -25,6 +25,9 @@ foreach ($users as $user) {
     $sql = "channels where id_users = $id_users";
     $num_channels = mysqli_count($mysqli, $sql);
 
+    $sql = "connections where id_users = $id_users";
+    $num_connections = mysqli_count($mysqli, $sql);
+
     $sql = "contacts where id_users = $id_users";
     $num_contacts = mysqli_count($mysqli, $sql);
 
@@ -63,9 +66,9 @@ foreach ($users as $user) {
     $num_tokens = mysqli_count($mysqli, $sql);
 
     $sql = "update users set num_bookmarks = $num_bookmarks,"
-        ." num_channels = $num_channels, num_contacts = $num_contacts,"
-        ." num_events = $num_events, num_notes = $num_notes,"
-        ." num_notifications = $num_notifications,"
+        ." num_channels = $num_channels, num_connections = $num_connections,"
+        ." num_contacts = $num_contacts, num_events = $num_events,"
+        ." num_notes = $num_notes, num_notifications = $num_notifications,"
         ." num_received_bookmarks = $num_received_bookmarks,"
         ." num_received_contacts = $num_received_contacts,"
         ." num_received_files = $num_received_files,"
