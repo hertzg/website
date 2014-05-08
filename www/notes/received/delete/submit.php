@@ -7,11 +7,8 @@ include_once '../fns/require_received_note.php';
 include_once '../../../lib/mysqli.php';
 list($receivedNote, $id, $user) = require_received_note($mysqli);
 
-include_once '../../../fns/ReceivedNotes/delete.php';
-ReceivedNotes\delete($mysqli, $id);
-
-include_once '../../../fns/Users/Notes/Received/addNumber.php';
-Users\Notes\Received\addNumber($mysqli, $user->id_users, -1);
+include_once '../../../fns/Users/Notes/Received/delete.php';
+Users\Notes\Received\delete($mysqli, $receivedNote);
 
 $messages = ['Note has been deleted.'];
 include_once '../../../fns/redirect.php';

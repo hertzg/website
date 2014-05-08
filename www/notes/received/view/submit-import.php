@@ -6,7 +6,6 @@ require_same_domain_referer('..');
 include_once '../fns/require_received_note.php';
 include_once '../../../lib/mysqli.php';
 list($receivedNote, $id, $user) = require_received_note($mysqli);
-$id_users = $user->id_users;
 
 $text = $receivedNote->text;
 $tags = $receivedNote->tags;
@@ -15,13 +14,10 @@ include_once '../../../fns/Tags/parse.php';
 $tag_names = Tags\parse($tags);
 
 include_once '../../../fns/Users/Notes/add.php';
-Users\Notes\add($mysqli, $id_users, $text, $tags, $tag_names);
+Users\Notes\add($mysqli, $user->id_users, $text, $tags, $tag_names);
 
-include_once '../../../fns/ReceivedNotes/delete.php';
-ReceivedNotes\delete($mysqli, $id);
-
-include_once '../../../fns/Users/Notes/Received/addNumber.php';
-Users\Notes\Received\addNumber($mysqli, $id_users, -1);
+include_once '../../../fns/Users/Notes/Received/delete.php';
+Users\Notes\Received\delete($mysqli, $receivedNote);
 
 $messages = ['Note has been imported.'];
 include_once '../../../fns/redirect.php';
