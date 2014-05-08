@@ -8,7 +8,7 @@ include_once '../../../lib/mysqli.php';
 list($receivedBookmark, $id, $user) = require_received_bookmark($mysqli);
 
 include_once '../../../fns/Users/Bookmarks/Received/delete.php';
-Users\Bookmarks\Received\delete($mysqli, $user->id_users, $id);
+Users\Bookmarks\Received\delete($mysqli, $receivedBookmark);
 
 $messages = ['Bookmark has been deleted.'];
 include_once '../../../fns/redirect.php';

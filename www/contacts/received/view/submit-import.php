@@ -6,7 +6,6 @@ require_same_domain_referer('..');
 include_once '../fns/require_received_contact.php';
 include_once '../../../lib/mysqli.php';
 list($receivedContact, $id, $user) = require_received_contact($mysqli);
-$id_users = $user->id_users;
 
 $full_name = $receivedContact->full_name;
 $alias = $receivedContact->alias;
@@ -22,7 +21,7 @@ $favorite = $receivedContact->favorite;
 include_once '../../../fns/redirect.php';
 
 include_once '../../../fns/Contacts/getByFullName.php';
-if (Contacts\getByFullName($mysqli, $id_users, $full_name)) {
+if (Contacts\getByFullName($mysqli, $user->id_users, $full_name)) {
     $_SESSION['contacts/received/edit-and-import/errors'] = [
         'A contact with this name already exists.',
     ];

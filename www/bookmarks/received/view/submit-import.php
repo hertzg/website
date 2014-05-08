@@ -6,7 +6,6 @@ require_same_domain_referer('..');
 include_once '../fns/require_received_bookmark.php';
 include_once '../../../lib/mysqli.php';
 list($receivedBookmark, $id, $user) = require_received_bookmark($mysqli);
-$id_users = $user->id_users;
 
 $url = $receivedBookmark->url;
 $title = $receivedBookmark->title;
@@ -16,10 +15,10 @@ include_once '../../../fns/Tags/parse.php';
 $tag_names = Tags\parse($tags);
 
 include_once '../../../fns/Users/Bookmarks/add.php';
-Users\Bookmarks\add($mysqli, $id_users, $url, $title, $tags, $tag_names);
+Users\Bookmarks\add($mysqli, $user->id_users, $url, $title, $tags, $tag_names);
 
 include_once '../../../fns/Users/Bookmarks/Received/delete.php';
-Users\Bookmarks\Received\delete($mysqli, $id_users, $id);
+Users\Bookmarks\Received\delete($mysqli, $receivedBookmark);
 
 $messages = ['Bookmark has been imported.'];
 include_once '../../../fns/redirect.php';

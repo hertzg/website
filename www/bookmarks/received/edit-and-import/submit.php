@@ -6,7 +6,6 @@ require_same_domain_referer('..');
 include_once '../fns/require_received_bookmark.php';
 include_once '../../../lib/mysqli.php';
 list($receivedBookmark, $id, $user) = require_received_bookmark($mysqli);
-$id_users = $user->id_users;
 
 $errors = [];
 
@@ -31,10 +30,10 @@ unset(
 );
 
 include_once '../../../fns/Users/Bookmarks/add.php';
-Users\Bookmarks\add($mysqli, $id_users, $url, $title, $tags, $tag_names);
+Users\Bookmarks\add($mysqli, $user->id_users, $url, $title, $tags, $tag_names);
 
 include_once '../../../fns/Users/Bookmarks/Received/delete.php';
-Users\Bookmarks\Received\delete($mysqli, $id_users, $id);
+Users\Bookmarks\Received\delete($mysqli, $receivedBookmark);
 
 unset(
     $_SESSION['bookmarks/received/edit-and-import/errors'],

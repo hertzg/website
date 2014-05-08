@@ -2,12 +2,12 @@
 
 namespace Users\Bookmarks\Received;
 
-function delete ($mysqli, $receiver_id_users, $id) {
+function delete ($mysqli, $receivedBookmark) {
 
     include_once __DIR__.'/../../../ReceivedBookmarks/delete.php';
-    \ReceivedBookmarks\delete($mysqli, $id);
+    \ReceivedBookmarks\delete($mysqli, $receivedBookmark->id);
 
     include_once __DIR__.'/addNumber.php';
-    addNumber($mysqli, $receiver_id_users, -1);
+    addNumber($mysqli, $receivedBookmark->receiver_id_users, -1);
 
 }
