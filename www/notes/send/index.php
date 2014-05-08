@@ -32,7 +32,8 @@ $content = Page\tabs(
     'Send',
     Page\sessionErrors('notes/send/errors')
     .Page\warnings(['Send the note to:'])
-    .Page\itemSendForm($values['username'], ItemList\itemHiddenInputs($id))
+    .Page\itemSendForm($mysqli, $user->id_users,
+        $values['username'], $id, ItemList\itemHiddenInputs($id))
 );
 
 include_once '../../fns/echo_page.php';

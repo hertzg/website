@@ -30,7 +30,8 @@ $content = Page\tabs(
     'Send',
     Page\sessionErrors('files/send-file/errors')
     .Page\warnings(["Send the file to:"])
-    .Page\itemSendForm($values['username'], Form\hidden('id', $id))
+    .Page\itemSendForm($mysqli, $user->id_users,
+        $values['username'], $id, Form\hidden('id', $id))
 );
 
 include_once '../../fns/echo_page.php';
