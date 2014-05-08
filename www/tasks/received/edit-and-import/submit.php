@@ -33,11 +33,8 @@ unset(
 include_once '../../../fns/Users/Tasks/add.php';
 Users\Tasks\add($mysqli, $id_users, $text, $top_priority, $tags, $tag_names);
 
-include_once '../../../fns/ReceivedTasks/delete.php';
-ReceivedTasks\delete($mysqli, $id);
-
-include_once '../../../fns/Users/Tasks/Received/addNumber.php';
-Users\Tasks\Received\addNumber($mysqli, $id_users, -1);
+include_once '../../../fns/Users/Tasks/Received/delete.php';
+Users\Tasks\Received\delete($mysqli, $receivedTask);
 
 $messages = ['Task has been imported.'];
 

@@ -7,11 +7,8 @@ include_once '../fns/require_received_task.php';
 include_once '../../../lib/mysqli.php';
 list($receivedTask, $id, $user) = require_received_task($mysqli);
 
-include_once '../../../fns/ReceivedTasks/delete.php';
-ReceivedTasks\delete($mysqli, $id);
-
-include_once '../../../fns/Users/Tasks/Received/addNumber.php';
-Users\Tasks\Received\addNumber($mysqli, $user->id_users, -1);
+include_once '../../../fns/Users/Tasks/Received/delete.php';
+Users\Tasks\Received\delete($mysqli, $receivedTask);
 
 $messages = ['Task has been deleted.'];
 include_once '../../../fns/redirect.php';
