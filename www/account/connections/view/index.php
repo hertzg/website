@@ -26,37 +26,11 @@ $title = 'Delete';
 $href = "../delete/?id=$id";
 $deleteLink = Page\imageArrowLink($title, $href, 'trash-bin');
 
-$permissions = '';
-if ($connection->can_send_bookmark) {
-    $permissions .= 'Can send bookmarks.<br />';
-} else {
-    $permissions .= 'Cannot send bookmarks.<br />';
-}
-if ($connection->can_send_channel) {
-    $permissions .= 'Can send channels.<br />';
-} else {
-    $permissions .= 'Cannot send channels.<br />';
-}
-if ($connection->can_send_contact) {
-    $permissions .= 'Can send contacts.<br />';
-} else {
-    $permissions .= 'Cannot send contacts.<br />';
-}
-if ($connection->can_send_file) {
-    $permissions .= 'Can send files.<br />';
-} else {
-    $permissions .= 'Cannot send files.<br />';
-}
-if ($connection->can_send_note) {
-    $permissions .= 'Can send notes.<br />';
-} else {
-    $permissions .= 'Cannot send notes.<br />';
-}
-if ($connection->can_send_task) {
-    $permissions .= 'Can send tasks.';
-} else {
-    $permissions .= 'Cannot send tasks.';
-}
+include_once '../fns/format_permissions.php';
+$permissions = format_permissions($connection->can_send_bookmark,
+    $connection->can_send_channel, $connection->can_send_contact,
+    $connection->can_send_file, $connection->can_send_note,
+    $connection->can_send_task);
 
 include_once '../../../fns/create_panel.php';
 include_once '../../../fns/Page/tabs.php';
@@ -83,4 +57,6 @@ $content = Page\tabs(
 );
 
 include_once '../../../fns/echo_page.php';
-echo_page($user, "Connection #$id", $content, '../../../');
+echo_page($user, "Connection #$id", $content, '../../../', [
+    'head' => '<link rel="stylesheet" type="text/css" href="../view.css" />',
+]);

@@ -1,13 +1,5 @@
 <?php
 
-function denied (&$permissions, $text) {
-    $permissions .= "<span class=\"denied\">$text</span><br />";
-}
-
-function granted (&$permissions, $text) {
-    $permissions .= "<span class=\"granted\">$text</span><br />";
-}
-
 $base = '../../../';
 
 include_once '../../../fns/require_user.php';
@@ -18,40 +10,13 @@ unset(
     $_SESSION['account/connections/messages']
 );
 
+include_once '../fns/format_permissions.php';
+$permissions = format_permissions($user->anonymous_can_send_bookmark,
+    $user->anonymous_can_send_channel, $user->anonymous_can_send_contact,
+    $user->anonymous_can_send_file, $user->anonymous_can_send_note,
+    $user->anonymous_can_send_task);
+
 include_once '../../../fns/Page/imageArrowLink.php';
-
-$permissions = '';
-if ($user->anonymous_can_send_bookmark) {
-    granted($permissions, 'Can send bookmarks.');
-} else {
-    denied($permissions, 'Cannot send bookmarks.');
-}
-if ($user->anonymous_can_send_channel) {
-    granted($permissions, 'Can send channels.');
-} else {
-    denied($permissions, 'Cannot send channels.');
-}
-if ($user->anonymous_can_send_contact) {
-    granted($permissions, 'Can send contacts.');
-} else {
-    denied($permissions, 'Cannot send contacts.');
-}
-if ($user->anonymous_can_send_file) {
-    granted($permissions, 'Can send files.');
-} else {
-    denied($permissions, 'Cannot send files.');
-}
-if ($user->anonymous_can_send_note) {
-    granted($permissions, 'Can send notes.');
-} else {
-    denied($permissions, 'Cannot send notes.');
-}
-if ($user->anonymous_can_send_task) {
-    granted($permissions, 'Can send tasks.');
-} else {
-    denied($permissions, 'Cannot send tasks.');
-}
-
 $editLink = Page\imageArrowLink('Edit', 'edit/', 'edit-connection');
 
 include_once '../../../fns/create_panel.php';
