@@ -23,9 +23,28 @@ function create_options_panel ($user) {
     $options[] = create_tokens_link($user);
 
     $title = 'Manage Connections';
-    $options[] = Page\imageArrowLink($title, 'connections/', 'connections');
+    $href = 'connections/';
+    $icon = 'connections';
+    $num_connections = $user->num_connections;
+    if ($num_connections) {
+        $description = "$num_connections total.";
+        $options[] = Page\imageArrowLinkWithDescription(
+            $title, $description, $href, $icon);
+    } else {
+        $options[] = Page\imageArrowLink($title, $href, $icon);
+    }
 
-    $options[] = Page\imageArrowLink('API Keys', 'api-keys/', 'api-keys');
+    $title = 'API Keys';
+    $href = 'api-keys/';
+    $icon = 'api-keys';
+    $num_api_keys = $user->num_api_keys;
+    if ($num_api_keys) {
+        $description = "$num_api_keys total.";
+        $options[] = Page\imageArrowLinkWithDescription(
+            $title, $description, $href, $icon);
+    } else {
+        $options[] = Page\imageArrowLink($title, $href, $icon);
+    }
 
     $options[] = Page\imageArrowLink('Close Account', 'close/', 'trash-bin');
 
