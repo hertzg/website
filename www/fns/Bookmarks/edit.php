@@ -10,5 +10,5 @@ function edit ($mysqli, $id_users, $id, $title, $url, $tags) {
     $sql = "update bookmarks set title = '$title',"
         ." url = '$url', tags = '$tags', update_time = $update_time"
         ." where id_users = $id_users and id_bookmarks = $id";
-    $mysqli->query($sql);
+    $mysqli->query($sql) || trigger_error($mysqli->error);
 }

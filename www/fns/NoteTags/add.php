@@ -11,6 +11,6 @@ function add ($mysqli, $id_users, $id_notes, array $tag_names, $text) {
             .' text, insert_time, update_time)'
             ." values ($id_users, $id_notes, '$tag_name',"
             ." '$text', $insert_time, $update_time)";
-        $mysqli->query($sql);
+        $mysqli->query($sql) || trigger_error($mysqli->error);
     }
 }

@@ -13,7 +13,7 @@ function add ($mysqli, $id_users, $id_folders, $file_name, $file_size, $sourcePa
         ." value ($id_users, $id_folders, '$file_name',"
         ." $file_size, $insert_time)";
 
-    $mysqli->query($sql);
+    $mysqli->query($sql) || trigger_error($mysqli->error);
 
     $id = $mysqli->insert_id;
 

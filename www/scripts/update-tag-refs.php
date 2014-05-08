@@ -18,12 +18,29 @@ foreach ($ids as $id) {
         $title = $mysqli->real_escape_string($bookmark->title);
         $url = $mysqli->real_escape_string($bookmark->url);
         $sql = 'update bookmark_tags set'
-            ." title = '$title',"
-            ." url = '$url',"
+            ." title = '$title', url = '$url',"
             ." insert_time = $bookmark->insert_time,"
             ." update_time = $bookmark->update_time"
             ." where id_bookmarks = $bookmark->id_bookmarks";
-        $mysqli->query($sql);
+        $mysqli->query($sql) || trigger_error($mysqli->error);
+    }
+}
+
+$sql = 'select distinct id_contacts value from contact_tags';
+$ids = mysqli_query_object($mysqli, $sql);
+foreach ($ids as $id) {
+    $sql = "select * from contacts where id_contacts = $id->value";
+    $contact = mysqli_single_object($mysqli, $sql);
+    if ($contact) {
+        $full_name = $mysqli->real_escape_string($contact->full_name);
+        $alias = $mysqli->real_escape_string($contact->alias);
+        $favorite = $contact->favorite ? '1' : '0';
+        $sql = 'update contact_tags set'
+            ." full_name = '$full_name', alias = '$alias',"
+            ." favorite = $favorite, insert_time = $contact->insert_time,"
+            ." update_time = $contact->update_time"
+            ." where id_contacts = $contact->id_contacts";
+        $mysqli->query($sql) || trigger_error($mysqli->error);
     }
 }
 
@@ -39,7 +56,7 @@ foreach ($ids as $id) {
             ." insert_time = $note->insert_time,"
             ." update_time = $note->update_time"
             ." where id_notes = $note->id_notes";
-        $mysqli->query($sql);
+        $mysqli->query($sql) || trigger_error($mysqli->error);
     }
 }
 
@@ -56,7 +73,7 @@ foreach ($ids as $id) {
             ." insert_time = $task->insert_time,"
             ." update_time = $task->update_time"
             ." where id_tasks = $task->id_tasks";
-        $mysqli->query($sql);
+        $mysqli->query($sql) || trigger_error($mysqli->error);
     }
 }
 

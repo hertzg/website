@@ -16,7 +16,7 @@ $users = mysqli_query_object($mysqli, $sql);
 foreach ($users as $user) {
     $sql = "update users set storage_used = $user->storage_used"
         ." where id_users = $user->id_users";
-    $mysqli->query($sql);
+    $mysqli->query($sql) || trigger_error($mysqli->error);
 }
 
 $elapsedSeconds = number_format(microtime(true) - $microtime, 3);

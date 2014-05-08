@@ -8,5 +8,5 @@ function setTopPriority ($mysqli, $id_users, $id, $top_priority) {
     $sql = "update tasks set top_priority = $top_priority,"
         ." update_time = $update_time"
         ." where id_users = $id_users and id_tasks = $id";
-    $mysqli->query($sql);
+    $mysqli->query($sql) || trigger_error($mysqli->error);
 }

@@ -15,7 +15,7 @@ function add ($mysqli, $id_users, $id_tasks, array $tag_names,
             .' top_priority, tags, insert_time, update_time)'
             ." values ($id_users, $id_tasks, '$tag_name', '$text',"
             ." $top_priority, '$tags', $insert_time, $update_time)";
-        $mysqli->query($sql);
+        $mysqli->query($sql) || trigger_error($mysqli->error);
     }
 
 }

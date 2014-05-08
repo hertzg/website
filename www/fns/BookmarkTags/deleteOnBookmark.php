@@ -4,5 +4,5 @@ namespace BookmarkTags;
 
 function deleteOnBookmark ($mysqli, $id_bookmarks) {
     $sql = "delete from bookmark_tags where id_bookmarks = $id_bookmarks";
-    $mysqli->query($sql);
+    $mysqli->query($sql) || trigger_error($mysqli->error);
 }

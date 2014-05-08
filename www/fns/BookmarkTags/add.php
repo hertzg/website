@@ -14,7 +14,7 @@ function add ($mysqli, $id_users, $id_bookmarks,
             .' url, title, insert_time, update_time)'
             ." values ($id_users, $id_bookmarks, '$tag_name',"
             ." '$url', '$title', $insert_time, $update_time)";
-        $mysqli->query($sql);
+        $mysqli->query($sql) || trigger_error($mysqli->error);
     }
 
 }

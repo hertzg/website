@@ -8,6 +8,6 @@ function add ($mysqli, $id_users, $feedbacktext) {
     $sql = 'insert into feedbacks'
         .' (id_users, feedbacktext, insert_time)'
         ." values ($id_users, '$feedbacktext', $insert_time)";
-    $mysqli->query($sql);
+    $mysqli->query($sql) || trigger_error($mysqli->error);
     return $mysqli->insert_id;
 }

@@ -8,6 +8,6 @@ function add ($mysqli, $id_users, $parent_id_folders, $folder_name) {
     $sql = 'insert into folders'
         .' (id_users, parent_id_folders, folder_name, insert_time)'
         ." values ($id_users, $parent_id_folders, '$folder_name', $insert_time)";
-    $mysqli->query($sql);
+    $mysqli->query($sql) || trigger_error($mysqli->error);
     return $mysqli->insert_id;
 }
