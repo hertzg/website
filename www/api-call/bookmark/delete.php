@@ -8,7 +8,7 @@ include_once 'fns/require_bookmark.php';
 list($id, $bookmark) = require_bookmark($mysqli, $id_users);
 
 include_once '../../fns/Users/Bookmarks/delete.php';
-Users\Bookmarks\delete($mysqli, $id, $id_users);
+Users\Bookmarks\delete($mysqli, $bookmark);
 
 header('Content-Type: application/json');
 echo 'true';
