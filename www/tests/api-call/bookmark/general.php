@@ -12,6 +12,8 @@ function expect_bookmark_object ($engine, $variableName, $bookmark) {
     $engine->expectNatural("$variableName.update_time", $bookmark->update_time);
 }
 
+chdir(__DIR__);
+
 $new_bookmark_url = 'sample bookmark url';
 $new_bookmark_title = 'sample bookmark title';
 $new_bookmark_tags = 'tag1 tag2';

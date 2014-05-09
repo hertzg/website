@@ -12,6 +12,8 @@ function expect_channel_object ($engine, $variableName, $channel) {
     $engine->expectNatural("$variableName.update_time", $channel->update_time);
 }
 
+chdir(__DIR__);
+
 $new_channel_channel_name = 'new-channel-name';
 $new_channel_public = true;
 $new_channel_receive_notifications = true;

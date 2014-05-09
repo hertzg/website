@@ -22,6 +22,8 @@ function expect_contact_object ($engine, $variableName, $contact) {
     $engine->expectNatural("$variableName.update_time", $contact->update_time);
 }
 
+chdir(__DIR__);
+
 $new_contact_full_name = 'sample full name '.rand();
 $new_contact_alias = 'sample alias';
 $new_contact_address = 'sample address';
@@ -46,7 +48,7 @@ $edited_contact_favorite = false;
 
 $manyTags = 'a b c d e f';
 
-include_once 'classes/Engine.php';
+include_once '../classes/Engine.php';
 $engine = new Engine;
 
 $response = $engine->request('contact/add');

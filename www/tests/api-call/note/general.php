@@ -11,6 +11,8 @@ function expect_note_object ($engine, $variableName, $note) {
     $engine->expectNatural("$variableName.update_time", $note->update_time);
 }
 
+chdir(__DIR__);
+
 $new_note_text = 'sample note content';
 $new_note_tags = 'tag1 tag2';
 
@@ -19,7 +21,7 @@ $edited_note_tags = 'tag1 tag2 tag3';
 
 $manyTags = 'a b c d e f';
 
-include_once 'classes/Engine.php';
+include_once '../classes/Engine.php';
 $engine = new Engine;
 
 $response = $engine->request('note/add');

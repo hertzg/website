@@ -1,6 +1,8 @@
 #!/usr/bin/php
 <?php
 
+chdir(__DIR__);
+
 include_once 'classes/Engine.php';
 $engine = new Engine;
 

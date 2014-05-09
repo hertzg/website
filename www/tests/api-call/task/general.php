@@ -12,6 +12,8 @@ function expect_task_object ($engine, $variableName, $task) {
     $engine->expectNatural("$variableName.update_time", $task->update_time);
 }
 
+chdir(__DIR__);
+
 $new_task_text = 'sample task text';
 $new_task_tags = 'tag1 tag2';
 $new_task_top_priority = false;
@@ -22,7 +24,7 @@ $edit_task_top_priority = true;
 
 $manyTags = 'a b c d e f';
 
-include_once 'classes/Engine.php';
+include_once '../classes/Engine.php';
 $engine = new Engine;
 
 $response = $engine->request('task/add');
