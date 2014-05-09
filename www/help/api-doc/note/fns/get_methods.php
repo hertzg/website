@@ -8,5 +8,6 @@ function get_methods () {
         'edit' => 'Edits an existing note.',
         'get' => 'Returns a single existing note.',
         'list' => 'Returns a list of all notes.',
+        'send' => 'Sends a note.',
     ];
 }
