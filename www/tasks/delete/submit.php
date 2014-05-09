@@ -8,7 +8,7 @@ include_once '../../lib/mysqli.php';
 list($task, $id, $user) = require_task($mysqli);
 
 include_once '../../fns/Users/Tasks/delete.php';
-Users\Tasks\delete($mysqli, $id, $user->id_users);
+Users\Tasks\delete($mysqli, $task);
 
 unset($_SESSION['tasks/errors']);
 $_SESSION['tasks/messages'] = ['Task has been deleted.'];
