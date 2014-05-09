@@ -2,10 +2,9 @@
 
 include_once '../fns/require_api_key.php';
 list($apiKey, $user, $mysqli) = require_api_key();
-$id_users = $user->id_users;
 
 include_once 'fns/require_channel.php';
-list($id, $channel) = require_channel($mysqli, $id_users);
+list($id, $channel) = require_channel($mysqli, $user->id_users);
 
 include_once 'fns/request_channel_params.php';
 list($channel_name, $public, $receive_notifications) = request_channel_params($mysqli, $id);
