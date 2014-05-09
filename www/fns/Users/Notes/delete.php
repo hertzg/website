@@ -2,7 +2,9 @@
 
 namespace Users\Notes;
 
-function delete ($mysqli, $id, $id_users) {
+function delete ($mysqli, $note) {
+
+    $id = $note->id_notes;
 
     include_once __DIR__.'/../../Notes/delete.php';
     \Notes\delete($mysqli, $id);
@@ -11,6 +13,6 @@ function delete ($mysqli, $id, $id_users) {
     \NoteTags\deleteOnNote($mysqli, $id);
 
     include_once __DIR__.'/addNumber.php';
-    addNumber($mysqli, $id_users, -1);
+    addNumber($mysqli, $note->id_users, -1);
 
 }
