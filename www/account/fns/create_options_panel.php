@@ -3,6 +3,7 @@
 function create_options_panel ($user) {
 
     include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
+
     $options = [];
     if (!$user->email_verified) {
         $title = 'Verify Email';
@@ -27,6 +28,7 @@ function create_options_panel ($user) {
     $icon = 'connections';
     $num_connections = $user->num_connections;
     if ($num_connections) {
+        include_once __DIR__.'/../../fns/Page/imageArrowLinkWithDescription.php';
         $description = "$num_connections total.";
         $options[] = Page\imageArrowLinkWithDescription(
             $title, $description, $href, $icon);
@@ -39,6 +41,7 @@ function create_options_panel ($user) {
     $icon = 'api-keys';
     $num_api_keys = $user->num_api_keys;
     if ($num_api_keys) {
+        include_once __DIR__.'/../../fns/Page/imageArrowLinkWithDescription.php';
         $description = "$num_api_keys total.";
         $options[] = Page\imageArrowLinkWithDescription(
             $title, $description, $href, $icon);
