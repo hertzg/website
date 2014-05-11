@@ -80,7 +80,7 @@ $response = $engine->request('contact/add', [
     'tags' => $new_contact_tags,
     'favorite' => $new_contact_favorite,
 ]);
-$engine->expectStatus(200);
+$engine->expectSuccess();
 $engine->expectNatural('', $response);
 
 $id = $response;
@@ -89,7 +89,7 @@ $response = $engine->request('contact/get');
 $engine->expectError('CONTACT_NOT_FOUND');
 
 $response = $engine->request('contact/get', ['id' => $id]);
-$engine->expectStatus(200);
+$engine->expectSuccess();
 expect_contact_object($engine, '', $response);
 $engine->expectValue('.full_name', $new_contact_full_name, $response->full_name);
 $engine->expectValue('.alias', $new_contact_alias, $response->alias);
@@ -139,7 +139,7 @@ $response = $engine->request('contact/edit', [
     'tags' => $edited_contact_tags,
     'favorite' => $edited_contact_favorite,
 ]);
-$engine->expectStatus(200);
+$engine->expectSuccess();
 $engine->expectValue('', true, $response);
 
 $response = $engine->request('contact/get', ['id' => $id]);
@@ -157,7 +157,7 @@ $engine->expectValue('.tags', $edited_contact_tags, $response->tags);
 $engine->expectValue('.favorite', $edited_contact_favorite, $response->favorite);
 
 $response = $engine->request('contact/list');
-$engine->expectStatus(200);
+$engine->expectSuccess();
 $engine->expectType('', 'array', $response);
 foreach ($response as $i => $contact) {
     expect_contact_object($engine, ".[$i]", $contact);
@@ -167,7 +167,7 @@ $response = $engine->request('contact/delete');
 $engine->expectError('CONTACT_NOT_FOUND');
 
 $response = $engine->request('contact/delete', ['id' => $id]);
-$engine->expectStatus(200);
+$engine->expectSuccess();
 $engine->expectValue('', true, $response);
 
 $response = $engine->request('contact/delete', ['id' => $id]);
@@ -185,15 +185,15 @@ $response = $engine->request('contact/add', [
     'tags' => $new_contact_tags,
     'favorite' => $new_contact_favorite,
 ]);
-$engine->expectStatus(200);
+$engine->expectSuccess();
 $engine->expectNatural('', $response);
 
 $response = $engine->request('contact/deleteAll');
-$engine->expectStatus(200);
+$engine->expectSuccess();
 $engine->expectValue('', true, $response);
 
 $response = $engine->request('contact/list');
-$engine->expectStatus(200);
+$engine->expectSuccess();
 $engine->expectType('', 'array', $response);
 $engine->expectValue('.length', 0, count($response));
 

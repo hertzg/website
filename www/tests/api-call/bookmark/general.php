@@ -42,7 +42,7 @@ $response = $engine->request('bookmark/add', [
     'title' => $new_bookmark_title,
     'tags' => $new_bookmark_tags,
 ]);
-$engine->expectStatus(200);
+$engine->expectSuccess();
 $engine->expectNatural('', $response);
 
 $id = $response;
@@ -51,7 +51,7 @@ $response = $engine->request('bookmark/get');
 $engine->expectError('BOOKMARK_NOT_FOUND');
 
 $response = $engine->request('bookmark/get', ['id' => $id]);
-$engine->expectStatus(200);
+$engine->expectSuccess();
 expect_bookmark_object($engine, '', $response);
 $engine->expectValue('.url', $new_bookmark_url, $response->url);
 $engine->expectValue('.title', $new_bookmark_title, $response->title);
@@ -79,18 +79,18 @@ $response = $engine->request('bookmark/edit', [
     'title' => $edited_bookmark_title,
     'tags' => $edited_bookmark_tags,
 ]);
-$engine->expectStatus(200);
+$engine->expectSuccess();
 $engine->expectValue('', true, $response);
 
 $response = $engine->request('bookmark/get', ['id' => $id]);
-$engine->expectStatus(200);
+$engine->expectSuccess();
 expect_bookmark_object($engine, '', $response);
 $engine->expectValue('.url', $edited_bookmark_url, $response->url);
 $engine->expectValue('.title', $edited_bookmark_title, $response->title);
 $engine->expectValue('.tags', $edited_bookmark_tags, $response->tags);
 
 $response = $engine->request('bookmark/list');
-$engine->expectStatus(200);
+$engine->expectSuccess();
 $engine->expectType('', 'array', $response);
 foreach ($response as $i => $bookmark) {
     expect_bookmark_object($engine, ".[$i]", $bookmark);
@@ -100,7 +100,7 @@ $response = $engine->request('bookmark/delete');
 $engine->expectError('BOOKMARK_NOT_FOUND');
 
 $response = $engine->request('bookmark/delete', ['id' => $id]);
-$engine->expectStatus(200);
+$engine->expectSuccess();
 $engine->expectValue('', true, $response);
 
 $response = $engine->request('bookmark/delete', ['id' => $id]);
@@ -111,15 +111,15 @@ $response = $engine->request('bookmark/add', [
     'title' => $new_bookmark_title,
     'tags' => $new_bookmark_tags,
 ]);
-$engine->expectStatus(200);
+$engine->expectSuccess();
 $engine->expectNatural('', $response);
 
 $response = $engine->request('bookmark/deleteAll');
-$engine->expectStatus(200);
+$engine->expectSuccess();
 $engine->expectValue('', true, $response);
 
 $response = $engine->request('bookmark/list');
-$engine->expectStatus(200);
+$engine->expectSuccess();
 $engine->expectType('', 'array', $response);
 $engine->expectValue('.length', 0, count($response));
 

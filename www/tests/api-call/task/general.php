@@ -42,7 +42,7 @@ $response = $engine->request('task/add', [
     'tags' => $new_task_tags,
     'top_priority' => $new_task_top_priority,
 ]);
-$engine->expectStatus(200);
+$engine->expectSuccess();
 $engine->expectNatural('', $response);
 
 $id = $response;
@@ -51,7 +51,7 @@ $response = $engine->request('task/get');
 $engine->expectError('TASK_NOT_FOUND');
 
 $response = $engine->request('task/get', ['id' => $id]);
-$engine->expectStatus(200);
+$engine->expectSuccess();
 expect_task_object($engine, '', $response);
 $engine->expectValue('.text', $new_task_text, $response->text);
 $engine->expectValue('.tags', $new_task_tags, $response->tags);
@@ -79,7 +79,7 @@ $response = $engine->request('task/edit', [
     'tags' => $edit_task_tags,
     'top_priority' => $edit_task_top_priority,
 ]);
-$engine->expectStatus(200);
+$engine->expectSuccess();
 $engine->expectValue('', true, $response);
 
 $response = $engine->request('task/get', ['id' => $id]);
@@ -89,7 +89,7 @@ $engine->expectValue('.tags', $edit_task_tags, $response->tags);
 $engine->expectValue('.top_priority', $edit_task_top_priority, $response->top_priority);
 
 $response = $engine->request('task/list');
-$engine->expectStatus(200);
+$engine->expectSuccess();
 $engine->expectType('', 'array', $response);
 foreach ($response as $i => $task) {
     expect_task_object($engine, ".[$i]", $task);
@@ -99,7 +99,7 @@ $response = $engine->request('task/delete');
 $engine->expectError('TASK_NOT_FOUND');
 
 $response = $engine->request('task/delete', ['id' => $id]);
-$engine->expectStatus(200);
+$engine->expectSuccess();
 $engine->expectValue('', true, $response);
 
 $response = $engine->request('task/delete', ['id' => $id]);
@@ -110,15 +110,15 @@ $response = $engine->request('task/add', [
     'tags' => $new_task_tags,
     'top_priority' => $new_task_top_priority,
 ]);
-$engine->expectStatus(200);
+$engine->expectSuccess();
 $engine->expectNatural('', $response);
 
 $response = $engine->request('task/deleteAll');
-$engine->expectStatus(200);
+$engine->expectSuccess();
 $engine->expectValue('', true, $response);
 
 $response = $engine->request('task/list');
-$engine->expectStatus(200);
+$engine->expectSuccess();
 $engine->expectType('', 'array', $response);
 $engine->expectValue('.length', 0, count($response));
 

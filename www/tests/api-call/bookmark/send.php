@@ -30,7 +30,7 @@ $response = $engine->request('bookmark/send', [
     'url' => $sent_bookmark_url,
     'title' => $sent_bookmark_title,
 ]);
-$engine->expectStatus(200);
+$engine->expectSuccess();
 $engine->expectValue('', true, $response);
 
 echo "Done\n";

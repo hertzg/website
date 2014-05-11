@@ -28,7 +28,7 @@ $response = $engine->request('note/send', [
     'receiver_username' => $allowedUsername,
     'text' => $sent_note_text,
 ]);
-$engine->expectStatus(200);
+$engine->expectSuccess();
 $engine->expectValue('', true, $response);
 
 echo "Done\n";

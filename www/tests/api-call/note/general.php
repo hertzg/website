@@ -37,7 +37,7 @@ $response = $engine->request('note/add', [
     'text' => $new_note_text,
     'tags' => $new_note_tags,
 ]);
-$engine->expectStatus(200);
+$engine->expectSuccess();
 $engine->expectNatural('', $response);
 
 $id = $response;
@@ -46,7 +46,7 @@ $response = $engine->request('note/get');
 $engine->expectError('NOTE_NOT_FOUND');
 
 $response = $engine->request('note/get', ['id' => $id]);
-$engine->expectStatus(200);
+$engine->expectSuccess();
 expect_note_object($engine, '', $response);
 $engine->expectValue('.text', $new_note_text, $response->text);
 $engine->expectValue('.tags', $new_note_tags, $response->tags);
@@ -71,7 +71,7 @@ $response = $engine->request('note/edit', [
     'text' => $edited_note_text,
     'tags' => $edited_note_tags,
 ]);
-$engine->expectStatus(200);
+$engine->expectSuccess();
 $engine->expectValue('', true, $response);
 
 $response = $engine->request('note/get', ['id' => $id]);
@@ -80,7 +80,7 @@ $engine->expectValue('.text', $edited_note_text, $response->text);
 $engine->expectValue('.tags', $edited_note_tags, $response->tags);
 
 $response = $engine->request('note/list');
-$engine->expectStatus(200);
+$engine->expectSuccess();
 $engine->expectType('', 'array', $response);
 foreach ($response as $i => $note) {
     expect_note_object($engine, ".[$i]", $note);
@@ -90,7 +90,7 @@ $response = $engine->request('note/delete');
 $engine->expectError('NOTE_NOT_FOUND');
 
 $response = $engine->request('note/delete', ['id' => $id]);
-$engine->expectStatus(200);
+$engine->expectSuccess();
 $engine->expectValue('', true, $response);
 
 $response = $engine->request('note/delete', ['id' => $id]);
@@ -100,15 +100,15 @@ $response = $engine->request('note/add', [
     'text' => $new_note_text,
     'tags' => $new_note_tags,
 ]);
-$engine->expectStatus(200);
+$engine->expectSuccess();
 $engine->expectNatural('', $response);
 
 $response = $engine->request('note/deleteAll');
-$engine->expectStatus(200);
+$engine->expectSuccess();
 $engine->expectValue('', true, $response);
 
 $response = $engine->request('note/list');
-$engine->expectStatus(200);
+$engine->expectSuccess();
 $engine->expectType('', 'array', $response);
 $engine->expectValue('.length', 0, count($response));
 

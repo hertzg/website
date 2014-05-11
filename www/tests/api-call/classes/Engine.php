@@ -101,7 +101,7 @@ class Engine {
         }
     }
 
-    function expectStatus ($expectedStatus) {
+    private function expectStatus ($expectedStatus) {
         $status = curl_getinfo($this->ch, CURLINFO_HTTP_CODE);
         if ($status != $expectedStatus) {
             $this->error(
@@ -109,6 +109,10 @@ class Engine {
                 ." Status $status received."
             );
         }
+    }
+
+    function expectSuccess () {
+        $this->expectStatus(200);
     }
 
     function expectType ($variableName, $expectedType, $value) {

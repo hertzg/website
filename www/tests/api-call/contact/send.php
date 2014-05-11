@@ -28,7 +28,7 @@ $response = $engine->request('contact/send', [
     'receiver_username' => $allowedUsername,
     'full_name' => $sent_contact_full_name,
 ]);
-$engine->expectStatus(200);
+$engine->expectSuccess();
 $engine->expectValue('', true, $response);
 
 echo "Done\n";

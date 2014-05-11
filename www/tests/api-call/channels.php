@@ -50,7 +50,7 @@ $response = $engine->request('channel/add', [
     'public' => $new_channel_public,
     'receive_notifications' => $new_channel_receive_notifications,
 ]);
-$engine->expectStatus(200);
+$engine->expectSuccess();
 $engine->expectNatural('', $response);
 
 $id = $response;
@@ -66,7 +66,7 @@ $response = $engine->request('channel/get');
 $engine->expectError('CHANNEL_NOT_FOUND');
 
 $response = $engine->request('channel/get', ['id' => $id]);
-$engine->expectStatus(200);
+$engine->expectSuccess();
 expect_channel_object($engine, '', $response);
 $engine->expectValue('.channel_name',
     $new_channel_channel_name, $response->channel_name);
@@ -102,11 +102,11 @@ $response = $engine->request('channel/edit', [
     'public' => $edited_channel_public,
     'receive_notifications' => $edited_channel_receive_notifications,
 ]);
-$engine->expectStatus(200);
+$engine->expectSuccess();
 $engine->expectValue('', true, $response);
 
 $response = $engine->request('channel/get', ['id' => $id]);
-$engine->expectStatus(200);
+$engine->expectSuccess();
 expect_channel_object($engine, '', $response);
 $engine->expectValue('.channel_name',
     $edited_channel_channel_name, $response->channel_name);
@@ -116,7 +116,7 @@ $engine->expectNatural('.insert_time', $response->insert_time);
 $engine->expectNatural('.update_time', $response->update_time);
 
 $response = $engine->request('channel/list');
-$engine->expectStatus(200);
+$engine->expectSuccess();
 $engine->expectType('', 'array', $response);
 foreach ($response as $i => $channel) {
     expect_channel_object($engine, ".[$i]", $channel);
@@ -125,7 +125,7 @@ foreach ($response as $i => $channel) {
 $response = $engine->request('channel/delete', [
     'id' => $id,
 ]);
-$engine->expectStatus(200);
+$engine->expectSuccess();
 $engine->expectValue('', true, $response);
 
 $response = $engine->request('channel/delete', [
