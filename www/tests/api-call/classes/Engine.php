@@ -5,7 +5,7 @@ class Engine {
     public $numRequests;
 
     private $api_base = 'http://localhost/sites/zvini.com/www/api-call/';
-    private $api_key = 'bb4a051b6eb44a85eadfde4a81c414f8a4e64cf44ec94b722a6da49b01318456';
+    public $api_key = 'bb4a051b6eb44a85eadfde4a81c414f8a4e64cf44ec94b722a6da49b01318456';
 
     private $ch;
     private $method;
