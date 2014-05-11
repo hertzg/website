@@ -46,7 +46,7 @@ function signed_user () {
                 setcookie('token', bin2hex($token->token_text), $expires, '/');
 
                 include_once __DIR__.'/Tokens/updateAccessTime.php';
-                Tokens\updateAccessTime($mysqli, $token->token_text);
+                Tokens\updateAccessTime($mysqli, $token->id);
 
             }
         }
