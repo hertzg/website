@@ -15,6 +15,6 @@ function require_note ($mysqli, $id_users) {
         bad_request('NOTE_NOT_FOUND');
     }
 
-    return [$id, $note];
+    return $note;
 
 }

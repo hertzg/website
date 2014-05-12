@@ -4,7 +4,7 @@ include_once '../fns/require_api_key.php';
 list($apiKey, $user, $mysqli) = require_api_key();
 
 include_once 'fns/require_task.php';
-list($id, $task) = require_task($mysqli, $user->id_users);
+$task = require_task($mysqli, $user->id_users);
 
 header('Content-Type: application/json');
 echo json_encode([

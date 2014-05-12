@@ -4,7 +4,7 @@ include_once '../fns/require_api_key.php';
 list($apiKey, $user, $mysqli) = require_api_key();
 
 include_once 'fns/require_contact.php';
-list($id, $contact) = require_contact($mysqli, $user->id_users);
+$contact = require_contact($mysqli, $user->id_users);
 
 header('Content-Type: application/json');
 echo json_encode([

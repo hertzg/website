@@ -16,6 +16,6 @@ function require_channel ($mysqli, $id_users) {
         bad_request('CHANNEL_NOT_FOUND');
     }
 
-    return [$id, $channel];
+    return $channel;
 
 }

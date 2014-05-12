@@ -5,7 +5,8 @@ list($apiKey, $user, $mysqli) = require_api_key();
 $id_users = $user->id_users;
 
 include_once 'fns/require_contact.php';
-list($id, $contact) = require_contact($mysqli, $id_users);
+$contact = require_contact($mysqli, $id_users);
+$id = $contact->id_contacts;
 
 include_once 'fns/request_contact_params.php';
 list($full_name, $alias, $address, $email, $phone1,

@@ -4,11 +4,11 @@ include_once '../fns/require_api_key.php';
 list($apiKey, $user, $mysqli) = require_api_key();
 
 include_once 'fns/require_bookmark.php';
-list($id, $bookmark) = require_bookmark($mysqli, $user->id_users);
+$bookmark = require_bookmark($mysqli, $user->id_users);
 
 header('Content-Type: application/json');
 echo json_encode([
-    'id' => (int)$id,
+    'id' => (int)$bookmark->id_bookmarks,
     'url' => $bookmark->url,
     'title' => $bookmark->title,
     'tags' => $bookmark->tags,

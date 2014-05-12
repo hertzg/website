@@ -15,6 +15,6 @@ function require_bookmark ($mysqli, $id_users) {
         bad_request('BOOKMARK_NOT_FOUND');
     }
 
-    return [$id, $bookmark];
+    return $bookmark;
 
 }

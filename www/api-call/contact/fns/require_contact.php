@@ -15,6 +15,6 @@ function require_contact ($mysqli, $id_users) {
         bad_request('CONTACT_NOT_FOUND');
     }
 
-    return [$id, $contact];
+    return $contact;
 
 }

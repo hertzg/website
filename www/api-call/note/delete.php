@@ -4,7 +4,7 @@ include_once '../fns/require_api_key.php';
 list($apiKey, $user, $mysqli) = require_api_key();
 
 include_once 'fns/require_note.php';
-list($id, $note) = require_note($mysqli, $user->id_users);
+$note = require_note($mysqli, $user->id_users);
 
 include_once '../../fns/Users/Notes/delete.php';
 Users\Notes\delete($mysqli, $note);

@@ -15,6 +15,6 @@ function require_task ($mysqli, $id_users) {
         bad_request('TASK_NOT_FOUND');
     }
 
-    return [$id, $task];
+    return $task;
 
 }
