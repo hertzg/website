@@ -2,25 +2,9 @@
 
 function create_options_panel ($bookmark) {
 
-    $id = $bookmark->id_bookmarks;
-
-    $url = $bookmark->url;
-    if (parse_url($url, PHP_URL_SCHEME) === null) {
-        $parsedUrl = "http://$url";
-    } else {
-        $parsedUrl = $url;
-    }
-    include_once __DIR__.'/../../../fns/create_external_url.php';
-    $externalUrl = create_external_url($parsedUrl, '../../');
-
-    include_once __DIR__.'/../../../fns/Page/imageLink.php';
-
-    $openLink = Page\imageLink('Open', $externalUrl, 'run');
-
-    $title = 'Open in New Tab';
-    $openInNewTabLink = Page\imageLink($title, $externalUrl, 'run', [
-        'target' => '_blank',
-    ]);
+    include_once __DIR__.'/../../fns/create_open_links.php';
+    $values = create_open_links($bookmark->url, '../../');
+    list($openLink, $openInNewTabLink) = $values;
 
     include_once __DIR__.'/../../../fns/ItemList/escapedItemQuery.php';
     $queryString = ItemList\escapedItemQuery($bookmark->id_bookmarks);

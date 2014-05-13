@@ -1,6 +1,12 @@
 <?php
 
-function create_options_panel ($id) {
+function create_options_panel ($receivedBookmark) {
+
+    $id = $receivedBookmark->id;
+
+    include_once __DIR__.'/../../../fns/create_open_links.php';
+    $values = create_open_links($receivedBookmark->url, '../../../');
+    list($openLink, $openInNewTabLink) = $values;
 
     include_once __DIR__.'/../../../../fns/Page/imageArrowLink.php';
 
@@ -16,7 +22,9 @@ function create_options_panel ($id) {
 
     include_once __DIR__.'/../../../../fns/Page/twoColumns.php';
     $content =
-        Page\twoColumns($importLink, $editAndImportLink)
+        Page\twoColumns($openLink, $openInNewTabLink)
+        .'<div class="hr"></div>'
+        .Page\twoColumns($importLink, $editAndImportLink)
         .'<div class="hr"></div>'
         .$deleteLink;
 

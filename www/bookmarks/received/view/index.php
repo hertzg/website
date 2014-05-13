@@ -48,7 +48,7 @@ $content = Page\tabs(
     Form\label('Received from', htmlspecialchars($receivedBookmark->sender_username))
     .create_panel('The Bookmark', join('<div class="hr"></div>', $items))
     .$infoText
-    .create_options_panel($id)
+    .create_options_panel($receivedBookmark)
 );
 
 include_once '../../../fns/echo_page.php';
