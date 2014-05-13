@@ -1,6 +1,17 @@
 #!/usr/bin/php
 <?php
 
+function expect_received_bookmark_object ($engine, $variableName, $receivedBookmark) {
+    $properties = ['id', 'sender_username', 'url', 'title', 'tags', 'insert_time'];
+    $engine->expectObject($variableName, $properties, $receivedBookmark);
+    $engine->expectNatural("$variableName.id", $receivedBookmark->id);
+    $engine->expectType("$variableName.sender_username", 'string', $receivedBookmark->sender_username);
+    $engine->expectType("$variableName.url", 'string', $receivedBookmark->url);
+    $engine->expectType("$variableName.title", 'string', $receivedBookmark->title);
+    $engine->expectType("$variableName.tags", 'string', $receivedBookmark->tags);
+    $engine->expectNatural("$variableName.insert_time", $receivedBookmark->insert_time);
+}
+
 chdir(__DIR__);
 
 include_once '../classes/Engine.php';
@@ -28,23 +39,24 @@ $response = $engine->request('bookmark/received/list');
 $engine->expectSuccess();
 $engine->expectType('', 'array', $response);
 foreach ($response as $i => $receivedBookmark) {
-    $properties = ['id', 'sender_username', 'url', 'title', 'tags', 'insert_time'];
-    $engine->expectObject("[$i]", $properties, $receivedBookmark);
-    $engine->expectNatural("[$i].id", $receivedBookmark->id);
-    $engine->expectType("[$i].sender_username", 'string', $receivedBookmark->sender_username);
-    $engine->expectType("[$i].url", 'string', $receivedBookmark->url);
-    $engine->expectType("[$i].title", 'string', $receivedBookmark->title);
-    $engine->expectType("[$i].tags", 'string', $receivedBookmark->tags);
-    $engine->expectNatural("[$i].insert_time", $receivedBookmark->insert_time);
+    expect_received_bookmark_object($engine, "[$i]", $receivedBookmark);
     $ids[] = $receivedBookmark->id;
 }
 
 foreach ($ids as $id) {
+
+    $response = $engine->request('bookmark/received/get', [
+        'id' => $id,
+    ]);
+    $engine->expectSuccess();
+    expect_received_bookmark_object($engine, '', $response);
+
     $response = $engine->request('bookmark/received/delete', [
         'id' => $id,
     ]);
     $engine->expectSuccess();
     $engine->expectValue('', true, $response);
+
 }
 
 echo "Done\n";
