@@ -1,0 +1,24 @@
+<?php
+
+include_once '../../fns/require_api_key.php';
+list($apiKey, $user, $mysqli) = require_api_key();
+
+include_once 'fns/require_received_contact.php';
+$receivedContact = require_received_contact($mysqli, $user->id_users);
+
+header('Content-Type: application/json');
+echo json_encode([
+    'id' => (int)$receivedContact->id,
+    'sender_username' => $receivedContact->sender_username,
+    'full_name' => $receivedContact->full_name,
+    'alias' => $receivedContact->alias,
+    'address' => $receivedContact->address,
+    'email' => $receivedContact->email,
+    'phone1' => $receivedContact->phone1,
+    'phone2' => $receivedContact->phone2,
+    'birthday_time' => (int)$receivedContact->birthday_time,
+    'username' => $receivedContact->username,
+    'tags' => $receivedContact->tags,
+    'favorite' => (bool)$receivedContact->favorite,
+    'insert_time' => (int)$receivedContact->insert_time,
+]);
