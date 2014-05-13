@@ -5,6 +5,12 @@ function method_groups () {
         'bookmark' => [
             'title' => 'Bookmark',
             'description' => 'Methods for manipulating bookmarks.',
+            'subgroups' => [
+                'received' => [
+                    'title' => 'Received',
+                    'description' => 'Methods for manipulating received bookmarks.',
+                ],
+            ],
         ],
         'channel' => [
             'title' => 'Channel',
@@ -13,10 +19,22 @@ function method_groups () {
         'contact' => [
             'title' => 'Contact',
             'description' => 'Methods for manipulating contacts.',
+            'subgroups' => [
+                'received' => [
+                    'title' => 'Received',
+                    'description' => 'Methods for manipulating received contacts.',
+                ],
+            ],
         ],
         'note' => [
             'title' => 'Note',
             'description' => 'Methods for manipulating notes.',
+            'subgroups' => [
+                'received' => [
+                    'title' => 'Received',
+                    'description' => 'Methods for manipulating received notes.',
+                ],
+            ],
         ],
         'notification' => [
             'title' => 'Notification',
@@ -25,6 +43,12 @@ function method_groups () {
         'task' => [
             'title' => 'Task',
             'description' => 'Methods for manipulating tasks.',
+            'subgroups' => [
+                'received' => [
+                    'title' => 'Received',
+                    'description' => 'Methods for manipulating received tasks.',
+                ],
+            ],
         ],
     ];
 }

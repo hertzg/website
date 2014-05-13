@@ -2,4 +2,4 @@
 
 include_once 'fns/get_methods.php';
 include_once '../fns/method_group_page.php';
-method_group_page('Channel', 'channel', get_methods());
+method_group_page(['channel'], get_methods());
