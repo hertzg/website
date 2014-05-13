@@ -7,6 +7,16 @@ $user = require_user($base);
 
 $api_base = 'https://zvini.com/api-call/';
 
+include_once 'fns/method_groups.php';
+$method_groups = method_groups();
+
+include_once '../../fns/Page/imageArrowLinkWithDescription.php';
+$items = [];
+foreach ($method_groups as $key => $group) {
+    $items[] = Page\imageArrowLinkWithDescription($group['title'],
+        $group['description'], "$key/", 'generic');
+}
+
 include_once '../../fns/create_panel.php';
 include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../fns/Page/tabs.php';
@@ -42,17 +52,7 @@ $content = Page\tabs(
     .Page\imageArrowLink('PHP Example', 'php-example', 'generic')
     .create_panel(
         'API Method Groups',
-        Page\imageArrowLink('Bookmark', 'bookmark/', 'generic')
-        .'<div class="hr"></div>'
-        .Page\imageArrowLink('Channel', 'channel/', 'generic')
-        .'<div class="hr"></div>'
-        .Page\imageArrowLink('Contact', 'contact/', 'generic')
-        .'<div class="hr"></div>'
-        .Page\imageArrowLink('Note', 'note/', 'generic')
-        .'<div class="hr"></div>'
-        .Page\imageArrowLink('Notification', 'notification/', 'generic')
-        .'<div class="hr"></div>'
-        .Page\imageArrowLink('Task', 'task/', 'generic')
+        join('<div class="hr"></div>', $items)
     )
 );
 
