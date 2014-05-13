@@ -7,12 +7,12 @@ $user = require_user($base);
 
 $api_base = 'https://zvini.com/api-call/';
 
-include_once 'fns/method_groups.php';
-$method_groups = method_groups();
+include_once 'fns/get_groups.php';
+$groups = get_groups();
 
 include_once '../../fns/Page/imageArrowLinkWithDescription.php';
 $items = [];
-foreach ($method_groups as $key => $group) {
+foreach ($groups as $key => $group) {
     $items[] = Page\imageArrowLinkWithDescription($group['title'],
         $group['description'], "$key/", 'generic');
 }

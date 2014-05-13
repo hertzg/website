@@ -1,16 +1,13 @@
 <?php
 
-function method_group_page (array $keys, array $methods) {
+function group_page ($key, array $methods) {
 
     $base = '../../../';
 
-    include_once __DIR__.'/method_groups.php';
-    $method_groups = method_groups();
+    include_once __DIR__.'/get_groups.php';
+    $groups = get_groups();
 
-    $method_group = $method_groups[array_shift($keys)];
-    foreach ($keys as $key) $method_group = $method_group['subgroups'][$key];
-
-    $title = $method_group['title'];
+    $title = $groups[$key]['title'];
 
     include_once __DIR__.'/../../../fns/require_user.php';
     $user = require_user($base);

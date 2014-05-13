@@ -1,5 +1,5 @@
 <?php
 
 include_once 'fns/get_methods.php';
-include_once '../fns/method_group_page.php';
-method_group_page(['channel'], get_methods());
+include_once '../fns/group_page.php';
+group_page('channel', get_methods());
