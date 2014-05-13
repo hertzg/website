@@ -6,12 +6,6 @@ list($apiKey, $user, $mysqli) = require_api_key();
 include_once 'fns/require_received_bookmark.php';
 $receivedBookmark = require_received_bookmark($mysqli, $user->id_users);
 
+include_once 'fns/to_client_json.php';
 header('Content-Type: application/json');
-echo json_encode([
-    'id' => (int)$receivedBookmark->id,
-    'sender_username' => $receivedBookmark->sender_username,
-    'url' => $receivedBookmark->url,
-    'title' => $receivedBookmark->title,
-    'tags' => $receivedBookmark->tags,
-    'insert_time' => (int)$receivedBookmark->insert_time,
-]);
+echo json_encode(to_client_json($receivedBookmark));
