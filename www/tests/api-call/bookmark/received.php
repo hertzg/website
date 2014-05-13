@@ -12,21 +12,24 @@ function expect_received_bookmark_object ($engine, $variableName, $receivedBookm
     $engine->expectNatural("$variableName.insert_time", $receivedBookmark->insert_time);
 }
 
+function receive () {
+    $engine = new Engine;
+    $engine->api_key = '6dd831e2f696691091a36b5b4d400e6af6a4fe4c68d3ab2727432338a258144d';
+    $engine->request('bookmark/send', [
+        'url' => 'sample url',
+        'title' => 'sample title',
+        'tags' => 'tag1 tag2',
+        'receiver_username' => 'aimnadze',
+    ]);
+    $engine->expectSuccess();
+}
+
 chdir(__DIR__);
 
 include_once '../classes/Engine.php';
-
 $engine = new Engine;
-$engine->api_key = '6dd831e2f696691091a36b5b4d400e6af6a4fe4c68d3ab2727432338a258144d';
-$engine->request('bookmark/send', [
-    'url' => 'sample url',
-    'title' => 'sample title',
-    'tags' => 'tag1 tag2',
-    'receiver_username' => 'aimnadze',
-]);
-$engine->expectSuccess();
 
-$engine = new Engine;
+receive();
 
 $ids = [];
 
@@ -64,6 +67,17 @@ foreach ($ids as $id) {
     $engine->expectError('RECEIVED_BOOKMARK_NOT_FOUND');
 
 }
+
+receive();
+
+$response = $engine->request('bookmark/received/deleteAll');
+$engine->expectSuccess();
+$engine->expectValue('', true, $response);
+
+$response = $engine->request('bookmark/received/list');
+$engine->expectSuccess();
+$engine->expectType('', 'array', $response);
+$engine->expectValue('.length', 0, count($response));
 
 echo "Done\n";
 echo "$engine->numRequests requests made.\n";

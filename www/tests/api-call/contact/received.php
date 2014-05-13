@@ -24,28 +24,31 @@ function expect_received_contact_object ($engine, $variableName, $receivedContac
     $engine->expectNatural("$variableName.insert_time", $receivedContact->insert_time);
 }
 
+function receive () {
+    $engine = new Engine;
+    $engine->api_key = '6dd831e2f696691091a36b5b4d400e6af6a4fe4c68d3ab2727432338a258144d';
+    $engine->request('contact/send', [
+        'full_name' => 'sample full_name',
+        'alias' => 'sample alias',
+        'address' => 'sample address',
+        'email' => 'sample email',
+        'phone1' => 'sample phone1',
+        'phone2' => 'sample phone2',
+        'birthday_time' => 0,
+        'username' => 'sample username',
+        'tags' => 'tag1 tag2',
+        'favorite' => true,
+        'receiver_username' => 'aimnadze',
+    ]);
+    $engine->expectSuccess();
+}
+
 chdir(__DIR__);
 
 include_once '../classes/Engine.php';
-
 $engine = new Engine;
-$engine->api_key = '6dd831e2f696691091a36b5b4d400e6af6a4fe4c68d3ab2727432338a258144d';
-$engine->request('contact/send', [
-    'full_name' => 'sample full_name',
-    'alias' => 'sample alias',
-    'address' => 'sample address',
-    'email' => 'sample email',
-    'phone1' => 'sample phone1',
-    'phone2' => 'sample phone2',
-    'birthday_time' => 0,
-    'username' => 'sample username',
-    'tags' => 'tag1 tag2',
-    'favorite' => true,
-    'receiver_username' => 'aimnadze',
-]);
-$engine->expectSuccess();
 
-$engine = new Engine;
+receive();
 
 $ids = [];
 
@@ -83,6 +86,17 @@ foreach ($ids as $id) {
     $engine->expectError('RECEIVED_CONTACT_NOT_FOUND');
 
 }
+
+receive();
+
+$response = $engine->request('contact/received/deleteAll');
+$engine->expectSuccess();
+$engine->expectValue('', true, $response);
+
+$response = $engine->request('contact/received/list');
+$engine->expectSuccess();
+$engine->expectType('', 'array', $response);
+$engine->expectValue('.length', 0, count($response));
 
 echo "Done\n";
 echo "$engine->numRequests requests made.\n";
