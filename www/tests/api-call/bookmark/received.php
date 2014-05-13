@@ -16,18 +16,13 @@ chdir(__DIR__);
 
 include_once '../classes/Engine.php';
 
-$url = 'sample url';
-$title = 'sample title';
-$tags = 'tag1 tag2';
-$receiver_username = 'aimnadze';
-
 $engine = new Engine;
 $engine->api_key = '6dd831e2f696691091a36b5b4d400e6af6a4fe4c68d3ab2727432338a258144d';
 $engine->request('bookmark/send', [
-    'url' => $url,
-    'title' => $title,
-    'tags' => $tags,
-    'receiver_username' => $receiver_username,
+    'url' => 'sample url',
+    'title' => 'sample title',
+    'tags' => 'tag1 tag2',
+    'receiver_username' => 'aimnadze',
 ]);
 $engine->expectSuccess();
 
@@ -43,6 +38,12 @@ foreach ($response as $i => $receivedBookmark) {
     $ids[] = $receivedBookmark->id;
 }
 
+$response = $engine->request('bookmark/received/get');
+$engine->expectError('RECEIVED_BOOKMARK_NOT_FOUND');
+
+$response = $engine->request('bookmark/received/delete');
+$engine->expectError('RECEIVED_BOOKMARK_NOT_FOUND');
+
 foreach ($ids as $id) {
 
     $response = $engine->request('bookmark/received/get', [
@@ -56,6 +57,11 @@ foreach ($ids as $id) {
     ]);
     $engine->expectSuccess();
     $engine->expectValue('', true, $response);
+
+    $response = $engine->request('bookmark/received/get', [
+        'id' => $id,
+    ]);
+    $engine->expectError('RECEIVED_BOOKMARK_NOT_FOUND');
 
 }
 
