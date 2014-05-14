@@ -14,7 +14,7 @@ function expect_received_bookmark_object ($engine, $variableName, $receivedBookm
 
 function receive () {
     $engine = new Engine;
-    $engine->api_key = '6dd831e2f696691091a36b5b4d400e6af6a4fe4c68d3ab2727432338a258144d';
+    $engine->api_key = 'fc9418fe96d7062d20251a60d46889f01b08c5bfe803244f71dd6ac1f3c42e3c';
     $engine->request('bookmark/send', [
         'url' => 'sample url',
         'title' => 'sample title',

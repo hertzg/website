@@ -1,6 +1,6 @@
 <?php
 
-function request_contact_params ($mysqli, $id_users, $exclude_id = 0) {
+function request_contact_params () {
 
     include_once __DIR__.'/../../../fns/Contacts/request.php';
     list($full_name, $alias, $address, $email, $phone1,
@@ -15,15 +15,6 @@ function request_contact_params ($mysqli, $id_users, $exclude_id = 0) {
     if ($full_name === '') {
         include_once __DIR__.'/../../fns/bad_request.php';
         bad_request('ENTER_FULL_NAME');
-    }
-    if (mb_strlen($full_name, 'UTF-8') > 32) {
-        include_once __DIR__.'/../../fns/bad_request.php';
-        bad_request('FULL_NAME_TOO_LONG');
-    }
-    include_once __DIR__.'/../../../fns/Contacts/getByFullName.php';
-    if (Contacts\getByFullName($mysqli, $id_users, $full_name, $exclude_id)) {
-        include_once __DIR__.'/../../fns/bad_request.php';
-        bad_request('CONTACT_ALREADY_EXISTS');
     }
 
     include_once __DIR__.'/../../fns/request_tags.php';

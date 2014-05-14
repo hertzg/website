@@ -5,7 +5,7 @@ class Engine {
     public $numRequests;
 
     private $api_base = 'http://localhost/sites/zvini.com/www/api-call/';
-    public $api_key = 'bb4a051b6eb44a85eadfde4a81c414f8a4e64cf44ec94b722a6da49b01318456';
+    public $api_key = '013892f4738cc44f17a9fdf8642181f250eb4652fda014e4f3537690f2ce1e77';
 
     private $ch;
     private $method;
@@ -20,7 +20,7 @@ class Engine {
             ."  URL: $this->url\n"
             .'  Params: '.json_encode($this->params)."\n"
             .'  Raw response: '.json_encode($this->rawResponse)."\n";
-        exit;
+        exit(1);
     }
 
     private function execCurl ($url, $params) {

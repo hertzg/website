@@ -10,7 +10,7 @@ $receiver_user = request_receiver_user($mysqli, $id_users, 'can_send_contact');
 include_once 'fns/request_contact_params.php';
 list($full_name, $alias, $address, $email, $phone1,
     $phone2, $birthday_time, $username, $tags, $tag_names,
-    $favorite) = request_contact_params($mysqli, $user->id_users);
+    $favorite) = request_contact_params();
 
 include_once '../../fns/Users/Contacts/Received/add.php';
 Users\Contacts\Received\add($mysqli, $id_users, $user->username,
