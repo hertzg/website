@@ -17,17 +17,20 @@ if (array_key_exists($key, $_SESSION)) {
 
 unset(
     $_SESSION['notes/errors'],
-    $_SESSION['notes/messages']
+    $_SESSION['notes/messages'],
+    $_SESSION['notes/new/send/errors'],
+    $_SESSION['notes/new/send/values']
 );
 
 include_once '../../fns/Notes/maxLengths.php';
 $maxLengths = Notes\maxLengths();
 
-include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/textarea.php';
 include_once '../../fns/Form/textfield.php';
 include_once '../../fns/Page/sessionErrors.php';
+include_once '../../fns/Page/tabs.php';
+include_once '../../fns/Page/twoColumns.php';
 $content = Page\tabs(
     [
         [
@@ -54,7 +57,10 @@ $content = Page\tabs(
             'maxlength' => $maxLengths['tags'],
         ])
         .'<div class="hr"></div>'
-        .Form\button('Save Note')
+        .Page\twoColumns(
+            Form\button('Save Note'),
+            Form\button('Send Note', 'sendButton')
+        )
     .'</form>'
 );
 

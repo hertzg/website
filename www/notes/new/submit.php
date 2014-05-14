@@ -12,21 +12,25 @@ $errors = [];
 include_once '../fns/request_note_params.php';
 list($text, $tags, $tag_names) = request_note_params($errors);
 
+$_SESSION['notes/new/values'] = [
+    'text' => $text,
+    'tags' => $tags,
+];
+
 include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['notes/new/errors'] = $errors;
-    $_SESSION['notes/new/values'] = [
-        'text' => $text,
-        'tags' => $tags,
-    ];
     redirect();
 }
 
-unset(
-    $_SESSION['notes/new/errors'],
-    $_SESSION['notes/new/values']
-);
+unset($_SESSION['notes/new/errors']);
+
+include_once '../../fns/request_strings.php';
+list($sendButton) = request_strings('sendButton');
+if ($sendButton) redirect('send/');
+
+unset($_SESSION['notes/new/values']);
 
 include_once '../../fns/Users/Notes/add.php';
 include_once '../../lib/mysqli.php';
