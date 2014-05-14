@@ -12,27 +12,9 @@ list($username) = request_strings('username');
 
 $errors = [];
 
-if ($username === '') {
-    $errors[] = 'Enter username.';
-} else {
-    include_once '../../../fns/Users/getByUsername.php';
-    include_once '../../../lib/mysqli.php';
-    $receiverUser = Users\getByUsername($mysqli, $username);
-    if (!$receiverUser) {
-        $errors[] = "A user with the username doesn't exist.";
-    } else {
-        $receiver_id_users = $receiverUser->id_users;
-        if ($receiver_id_users == $id_users) {
-            $errors[] = 'You cannot send a bookmark to yourself.';
-        } else {
-            include_once '../../../fns/get_users_connection.php';
-            $connection = get_users_connection($mysqli, $receiverUser, $id_users);
-            if (!$connection['can_send_bookmark']) {
-                $errors[] = "The user isn't receiving bookmarks from you.";
-            }
-        }
-    }
-}
+include_once '../../fns/check_receiver_username.php';
+include_once '../../../lib/mysqli.php';
+check_receiver_username($mysqli, $id_users, $username, $receiver_id_users, $errors);
 
 include_once '../../../fns/redirect.php';
 
