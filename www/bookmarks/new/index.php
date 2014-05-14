@@ -18,16 +18,19 @@ if (array_key_exists($key, $_SESSION)) {
 
 unset(
     $_SESSION['bookmarks/errors'],
-    $_SESSION['bookmarks/messages']
+    $_SESSION['bookmarks/messages'],
+    $_SESSION['bookmarks/new/send/errors'],
+    $_SESSION['bookmarks/new/send/values']
 );
 
 include_once '../../fns/Bookmarks/maxLengths.php';
 $maxLengths = Bookmarks\maxLengths();
 
-include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/textfield.php';
 include_once '../../fns/Page/sessionErrors.php';
+include_once '../../fns/Page/tabs.php';
+include_once '../../fns/Page/twoColumns.php';
 $content = Page\tabs(
     [
         [
@@ -59,7 +62,10 @@ $content = Page\tabs(
             'maxlength' => $maxLengths['tags'],
         ])
         .'<div class="hr"></div>'
-        .Form\button('Save Bookmark')
+        .Page\twoColumns(
+            Form\button('Save Bookmark'),
+            Form\button('Send Bookmark', 'sendButton')
+        )
     .'</form>'
 );
 
