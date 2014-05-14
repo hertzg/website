@@ -1,14 +1,13 @@
 <?php
 
-function group_page ($groupKey, array $methods, array $subgroups = null) {
+function subgroup_page ($groupKey, $subgroup, array $methods) {
 
-    $base = '../../../';
+    $base = '../../../../';
 
     include_once __DIR__.'/get_groups.php';
     $groups = get_groups();
 
-    $group = $groups[$groupKey];
-    $title = $group['title'];
+    $title = $subgroup['title'];
 
     include_once __DIR__.'/../../../fns/require_user.php';
     $user = require_user($base);
@@ -29,24 +28,14 @@ function group_page ($groupKey, array $methods, array $subgroups = null) {
                 'href' => '../..',
             ],
             [
-                'title' => 'API Documentation',
+                'title' => $groups[$groupKey]['title'],
                 'href' => '..',
             ],
         ],
         $title,
-        Page\warnings([$group['description']])
+        Page\warnings([$subgroup['description']])
         .join('<div class="hr"></div>', $items)
     );
-
-    if ($subgroups) {
-        $items = [];
-        foreach ($subgroups as $key => $subgroup) {
-            $items[] = Page\imageArrowLinkWithDescription($subgroup['title'],
-                $subgroup['description'], "$key/", 'generic');
-        }
-        include_once __DIR__.'/../../../fns/create_panel.php';
-        $content .= create_panel('Subgroups', join('<div class="hr"></div>', $items));
-    }
 
     include_once __DIR__.'/../../../fns/echo_page.php';
     echo_page($user, $title, $content, $base);
