@@ -51,7 +51,7 @@ $content = Page\tabs(
     .'<div class="hr"></div>'
     .Page\imageArrowLink('PHP Example', 'php-example', 'generic')
     .create_panel(
-        'API Method Groups',
+        'Root Namespaces',
         join('<div class="hr"></div>', $items)
     )
 );

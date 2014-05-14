@@ -8,7 +8,6 @@ function group_page ($groupKey, array $methods, array $subgroups = null) {
     $groups = get_groups();
 
     $group = $groups[$groupKey];
-    $title = $group['title'];
 
     include_once __DIR__.'/../../../fns/require_user.php';
     $user = require_user($base);
@@ -33,7 +32,7 @@ function group_page ($groupKey, array $methods, array $subgroups = null) {
                 'href' => '..',
             ],
         ],
-        $title,
+        $group['title'],
         Page\warnings([$group['description']])
         .join('<div class="hr"></div>', $items)
     );
@@ -45,10 +44,10 @@ function group_page ($groupKey, array $methods, array $subgroups = null) {
                 $subgroup['description'], "$key/", 'generic');
         }
         include_once __DIR__.'/../../../fns/create_panel.php';
-        $content .= create_panel('Subgroups', join('<div class="hr"></div>', $items));
+        $content .= create_panel('Subnamespaces', join('<div class="hr"></div>', $items));
     }
 
     include_once __DIR__.'/../../../fns/echo_page.php';
-    echo_page($user, $title, $content, $base);
+    echo_page($user, "$groupKey Namespace", $content, $base);
 
 }

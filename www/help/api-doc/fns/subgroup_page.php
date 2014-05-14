@@ -1,6 +1,6 @@
 <?php
 
-function subgroup_page ($groupKey, $subgroup, array $methods) {
+function subgroup_page ($groupKey, $subgroup, $subgroupKey, array $methods) {
 
     $base = '../../../../';
 
@@ -38,6 +38,6 @@ function subgroup_page ($groupKey, $subgroup, array $methods) {
     );
 
     include_once __DIR__.'/../../../fns/echo_page.php';
-    echo_page($user, $title, $content, $base);
+    echo_page($user, "$groupKey/$subgroupKey Namespace", $content, $base);
 
 }
