@@ -12,9 +12,9 @@ list($username) = request_strings('username');
 
 $errors = [];
 
-include_once '../../fns/check_receiver_username.php';
+include_once '../../fns/check_receiver.php';
 include_once '../../../lib/mysqli.php';
-check_receiver_username($mysqli, $id_users, $username, $receiver_id_users, $errors);
+check_receiver($mysqli, $id_users, $username, $receiver_id_users, $errors);
 
 include_once '../../../fns/redirect.php';
 

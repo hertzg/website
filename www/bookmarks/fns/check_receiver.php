@@ -1,6 +1,6 @@
 <?php
 
-function check_receiver_username ($mysqli, $id_users,
+function check_receiver ($mysqli, $id_users,
     $username, &$receiver_id_users, &$errors) {
 
     if ($username === '') {
