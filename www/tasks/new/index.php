@@ -18,18 +18,21 @@ if (array_key_exists($key, $_SESSION)) {
 
 unset(
     $_SESSION['tasks/errors'],
-    $_SESSION['tasks/messages']
+    $_SESSION['tasks/messages'],
+    $_SESSION['tasks/new/send/errors'],
+    $_SESSION['tasks/new/send/values']
 );
 
 include_once '../../fns/Tasks/maxLengths.php';
 $maxLengths = Tasks\maxLengths();
 
-include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/checkbox.php';
 include_once '../../fns/Form/textarea.php';
 include_once '../../fns/Form/textfield.php';
 include_once '../../fns/Page/sessionErrors.php';
+include_once '../../fns/Page/tabs.php';
+include_once '../../fns/Page/twoColumns.php';
 $content = Page\tabs(
     [
         [
@@ -59,7 +62,10 @@ $content = Page\tabs(
         .Form\checkbox($base, 'top_priority',
             'Mark as Top Priority', $values['top_priority'])
         .'<div class="hr"></div>'
-        .Form\button('Save Task')
+        .Page\twoColumns(
+            Form\button('Save Task'),
+            Form\button('Send Task', 'sendButton')
+        )
     .'</form>'
 );
 
