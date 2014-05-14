@@ -30,8 +30,22 @@ $response = $engine->request('notification/post', [
 ]);
 $engine->expectValue('', true, $response);
 
+$response = $engine->request('notification/list');
+$engine->expectSuccess();
+$engine->expectType('', 'array', $response);
+foreach ($response as $i => $notification) {
+    $engine->expectObject("[$i]", ['notification_text', 'channel_name', 'insert_time'], $notification);
+    $engine->expectType("[$i].notification_text", 'string', $notification->notification_text);
+    $engine->expectType("[$i].channel_name", 'string', $notification->channel_name);
+    $engine->expectNatural("[$i].insert_time", $notification->insert_time);
+}
+
 $response = $engine->request('notification/deleteAll');
 $engine->expectValue('', true, $response);
+
+$response = $engine->request('notification/list');
+$engine->expectSuccess();
+$engine->expectValue('.length', 0, count($response));
 
 $response = $engine->request('channel/delete', [
     'id' => $id,
