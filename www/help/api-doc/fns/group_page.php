@@ -33,7 +33,7 @@ function group_page ($groupKey, array $methods, array $subgroups = null) {
             ],
         ],
         $group['title'],
-        Page\warnings([$group['description']])
+        Page\warnings(["$group[description]:"])
         .join('<div class="hr"></div>', $items)
     );
 
@@ -41,7 +41,7 @@ function group_page ($groupKey, array $methods, array $subgroups = null) {
         $items = [];
         foreach ($subgroups as $key => $subgroup) {
             $items[] = Page\imageArrowLinkWithDescription($subgroup['title'],
-                $subgroup['description'], "$key/", 'generic');
+                "$subgroup[description].", "$key/", 'generic');
         }
         include_once __DIR__.'/../../../fns/create_panel.php';
         $content .= create_panel('Subnamespaces', join('<div class="hr"></div>', $items));

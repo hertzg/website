@@ -14,7 +14,7 @@ include_once '../../fns/Page/imageArrowLinkWithDescription.php';
 $items = [];
 foreach ($groups as $key => $group) {
     $items[] = Page\imageArrowLinkWithDescription($group['title'],
-        $group['description'], "$key/", 'generic');
+        "$group[description].", "$key/", 'generic');
 }
 
 include_once '../../fns/create_panel.php';

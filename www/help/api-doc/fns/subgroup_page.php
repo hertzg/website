@@ -33,7 +33,7 @@ function subgroup_page ($groupKey, $subgroup, $subgroupKey, array $methods) {
             ],
         ],
         $title,
-        Page\warnings([$subgroup['description']])
+        Page\warnings(["$subgroup[description]:"])
         .join('<div class="hr"></div>', $items)
     );
 
