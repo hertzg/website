@@ -4,7 +4,7 @@ function render_contacts (array $contacts, array &$items, array $params, $keywor
 
     if ($contacts) {
 
-        $regex = '/'.preg_quote(htmlspecialchars($keyword)).'/i';
+        $regex = '/('.preg_quote(htmlspecialchars($keyword)).')+/i';
 
         include_once __DIR__.'/../../../fns/Page/imageArrowLink.php';
         include_once __DIR__.'/../../../fns/Page/imageArrowLinkWithDescription.php';

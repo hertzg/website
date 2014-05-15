@@ -4,7 +4,7 @@ function render_bookmarks (array $bookmarks, array &$items, array $params, $keyw
 
     if ($bookmarks) {
 
-        $regex = '/'.preg_quote(htmlspecialchars($keyword)).'/i';
+        $regex = '/('.preg_quote(htmlspecialchars($keyword)).')+/i';
 
         include_once __DIR__.'/../../../fns/Page/imageArrowLinkWithDescription.php';
         foreach ($bookmarks as $bookmark) {

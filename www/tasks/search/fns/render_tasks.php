@@ -4,7 +4,8 @@ function render_tasks (array $tasks, array &$items, array $params, $keyword) {
 
     if ($tasks) {
 
-        $regex = '/'.preg_quote(htmlspecialchars($keyword)).'/i';
+        include_once __DIR__.'/../../../fns/mark_regex.php';
+        $regex = mark_regex($keyword);
 
         include_once __DIR__.'/../../../fns/Page/imageArrowLink.php';
         include_once __DIR__.'/../../../fns/Page/imageArrowLinkWithDescription.php';
