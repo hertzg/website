@@ -11,7 +11,7 @@ if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else $values = ['username' => ''];
 
 include_once '../../fns/ItemList/escapedItemQuery.php';
-include_once '../../fns/ItemList/itemHiddenInputs.php';
+include_once '../../fns/ItemList/itemParams.php';
 include_once '../../fns/ItemList/listHref.php';
 include_once '../../fns/Page/itemSendForm.php';
 include_once '../../fns/Page/tabs.php';
@@ -33,7 +33,7 @@ $content = Page\tabs(
     Page\sessionErrors('tasks/send/errors')
     .Page\warnings(['Send the task to:'])
     .Page\itemSendForm($mysqli, $user->id_users,
-        $values['username'], $id, ItemList\itemHiddenInputs($id))
+        $values['username'], ItemList\itemParams($id))
 );
 
 include_once '../../fns/echo_page.php';

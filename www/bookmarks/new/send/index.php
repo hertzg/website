@@ -7,7 +7,7 @@ $key = 'bookmarks/new/send/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else $values = ['username' => ''];
 
-include_once '../../../fns/Page/newItemSendForm.php';
+include_once '../../../fns/Page/itemSendForm.php';
 include_once '../../../fns/Page/sessionErrors.php';
 include_once '../../../fns/Page/tabs.php';
 include_once '../../../fns/Page/warnings.php';
@@ -26,7 +26,7 @@ $content = Page\tabs(
     'Send',
     Page\sessionErrors('bookmarks/new/send/errors')
     .Page\warnings(['Send the new bookmark to:'])
-    .Page\newItemSendForm($mysqli, $user->id_users, $values['username'])
+    .Page\itemSendForm($mysqli, $user->id_users, $values['username'])
 );
 
 include_once '../../../fns/echo_page.php';

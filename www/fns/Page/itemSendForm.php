@@ -2,7 +2,13 @@
 
 namespace Page;
 
-function itemSendForm ($mysqli, $id_users, $username, $id, $hiddenInputs = '') {
+function itemSendForm ($mysqli, $id_users, $username, array $params = []) {
+
+    include_once __DIR__.'/../Form/hidden.php';
+    $hiddens = '';
+    foreach ($params as $key => $value) {
+        $hiddens .= \Form\hidden($key, $value);
+    }
 
     include_once __DIR__.'/../Form/button.php';
     include_once __DIR__.'/../Form/textfield.php';
@@ -17,7 +23,7 @@ function itemSendForm ($mysqli, $id_users, $username, $id, $hiddenInputs = '') {
             ])
             .'<div class="hr"></div>'
             .\Form\button('Send')
-            .$hiddenInputs
+            .$hiddens
         .'</form>';
 
     include_once __DIR__.'/../Contacts/indexWithUsernameOnUser.php';
@@ -32,12 +38,8 @@ function itemSendForm ($mysqli, $id_users, $username, $id, $hiddenInputs = '') {
             $contactUsername = $contact->username;
             $title = htmlspecialchars($contact->full_name);
             $description = 'Username: '.htmlspecialchars($contactUsername);
-            $href = 'submit.php?'.htmlspecialchars(
-                http_build_query([
-                    'id' => $id,
-                    'username' => $contactUsername,
-                ])
-            );
+            $params['username'] = $contactUsername;
+            $href = 'submit.php?'.htmlspecialchars(http_build_query($params));
 
             if ($contact->favorite) $icon = 'favorite-contact';
             else $icon = 'contact';
@@ -46,8 +48,10 @@ function itemSendForm ($mysqli, $id_users, $username, $id, $hiddenInputs = '') {
 
         }
 
+        $content = join('<div class="hr"></div>', $items);
+
         include_once __DIR__.'/../create_panel.php';
-        $html .= create_panel('Select from Contacts', join('<div class="hr"></div>', $items));
+        $html .= create_panel('Select from Contacts', $content);
 
     }
 
