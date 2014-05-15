@@ -2,11 +2,11 @@
 
 function request_multiple_files () {
     static $default = [
-        'name' => '',
-        'type' => '',
-        'tmp_name' => '',
-        'error' => UPLOAD_ERR_NO_FILE,
-        'size' => 0,
+        'name' => [''],
+        'type' => [''],
+        'tmp_name' => [''],
+        'error' => [UPLOAD_ERR_NO_FILE],
+        'size' => [0],
     ];
     $keys = func_get_args();
     $values = [];
