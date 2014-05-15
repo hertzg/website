@@ -51,7 +51,8 @@ foreach ([$file1, $file2, $file3] as $file) {
                 }
             }
 
-            Users\Files\add($mysqli, $id_users, $id_folders, $file_name, $file['tmp_name'][$i]);
+            Users\Files\add($mysqli, $id_users, $id_folders,
+                $file_name, $file['tmp_name'][$i]);
 
             $numfiles++;
 
