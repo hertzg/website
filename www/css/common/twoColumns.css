@@ -12,11 +12,11 @@
 }
 
 @media (max-width: 440px) {
-    .twoColumns > * {
+    .twoColumns.dynamic > * {
         display: block;
         width: auto;
     }
-    .twoColumns > :last-child {
+    .twoColumns.dynamic > :last-child {
         border-left: 0;
         border-top: 1px solid #eee;
     }

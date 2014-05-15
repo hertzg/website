@@ -29,8 +29,8 @@ include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/textarea.php';
 include_once '../../fns/Form/textfield.php';
 include_once '../../fns/Page/sessionErrors.php';
+include_once '../../fns/Page/staticTwoColumns.php';
 include_once '../../fns/Page/tabs.php';
-include_once '../../fns/Page/twoColumns.php';
 $content = Page\tabs(
     [
         [
@@ -57,9 +57,9 @@ $content = Page\tabs(
             'maxlength' => $maxLengths['tags'],
         ])
         .'<div class="hr"></div>'
-        .Page\twoColumns(
-            Form\button('Save Note'),
-            Form\button('Send Note', 'sendButton')
+        .Page\staticTwoColumns(
+            Form\button('Save'),
+            Form\button('Send', 'sendButton')
         )
     .'</form>'
 );

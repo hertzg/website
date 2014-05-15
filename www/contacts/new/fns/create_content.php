@@ -10,8 +10,8 @@ function create_content ($base, array $values) {
     include_once __DIR__.'/../../../fns/Form/datefield.php';
     include_once __DIR__.'/../../../fns/Form/textfield.php';
     include_once __DIR__.'/../../../fns/Page/sessionErrors.php';
+    include_once __DIR__.'/../../../fns/Page/staticTwoColumns.php';
     include_once __DIR__.'/../../../fns/Page/tabs.php';
-    include_once __DIR__.'/../../../fns/Page/twoColumns.php';
     return Page\tabs(
         [
             [
@@ -82,9 +82,9 @@ function create_content ($base, array $values) {
             .Form\checkbox($base, 'favorite',
                 'Mark as Favorite', $values['favorite'])
             .'<div class="hr"></div>'
-            .Page\twoColumns(
-                Form\button('Save Contact'),
-                Form\button('Send Contact', 'sendButton')
+            .Page\staticTwoColumns(
+                Form\button('Save'),
+                Form\button('Send', 'sendButton')
             )
         .'</form>'
     );

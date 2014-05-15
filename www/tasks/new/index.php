@@ -31,8 +31,8 @@ include_once '../../fns/Form/checkbox.php';
 include_once '../../fns/Form/textarea.php';
 include_once '../../fns/Form/textfield.php';
 include_once '../../fns/Page/sessionErrors.php';
+include_once '../../fns/Page/staticTwoColumns.php';
 include_once '../../fns/Page/tabs.php';
-include_once '../../fns/Page/twoColumns.php';
 $content = Page\tabs(
     [
         [
@@ -62,9 +62,9 @@ $content = Page\tabs(
         .Form\checkbox($base, 'top_priority',
             'Mark as Top Priority', $values['top_priority'])
         .'<div class="hr"></div>'
-        .Page\twoColumns(
-            Form\button('Save Task'),
-            Form\button('Send Task', 'sendButton')
+        .Page\staticTwoColumns(
+            Form\button('Save'),
+            Form\button('Send', 'sendButton')
         )
     .'</form>'
 );

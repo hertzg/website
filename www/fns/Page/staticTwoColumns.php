@@ -2,9 +2,9 @@
 
 namespace Page;
 
-function twoColumns ($column1, $column2) {
+function staticTwoColumns ($column1, $column2) {
     return
-        '<div class="twoColumns dynamic">'
+        '<div class="twoColumns">'
             ."<div>$column1</div>"
             ."<div>$column2</div>"
         .'</div>';
