@@ -10,6 +10,17 @@ include_once '../fns/Users/Notifications/clearNumberNew.php';
 include_once '../lib/mysqli.php';
 Users\Notifications\clearNumberNew($mysqli, $id_users);
 
+include_once '../fns/Paging/limit.php';
+$limit = Paging\limit();
+
+include_once '../fns/request_strings.php';
+list($offset) = request_strings('offset');
+$offset = abs((int)$offset);
+if ($offset % $limit) {
+    include_once '../fns/redirect.php';
+    redirect();
+}
+
 $options = [];
 
 include_once 'fns/create_channels_link.php';
@@ -20,8 +31,9 @@ $options[] = create_subscribed_channels_link($user);
 
 $items = [];
 
-include_once '../fns/Notifications/indexOnUser.php';
-$notifications = Notifications\indexOnUser($mysqli, $id_users);
+include_once '../fns/Notifications/indexPageOnUser.php';
+$notifications = Notifications\indexPageOnUser($mysqli,
+    $id_users, $offset, $limit, $total);
 
 if ($notifications) {
 
@@ -29,8 +41,10 @@ if ($notifications) {
     $options[] = Page\imageArrowLink('Delete All Notifications',
         'delete-all/', 'trash-bin');
 
-    include_once '../fns/create_image_text.php';
+    include_once 'fns/render_prev_button.php';
+    render_prev_button($offset, $limit, $total, $items);
 
+    include_once '../fns/create_image_text.php';
     foreach ($notifications as $i => $notification) {
 
         if ($i < $user->num_new_notifications) {
@@ -61,6 +75,10 @@ if ($notifications) {
         $items[] = create_image_text($content, $icon);
 
     }
+
+    include_once 'fns/render_next_button.php';
+    render_next_button($offset, $limit, $total, $items);
+
 } else {
     include_once '../fns/Page/info.php';
     $items[] = Page\info('No notifications');
