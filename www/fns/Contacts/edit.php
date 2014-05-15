@@ -27,8 +27,9 @@ function edit ($mysqli, $id_users, $id, $full_name, $alias, $address,
         ." phone1 = '$phone1', phone2 = '$phone2',"
         ." birthday_time = $birthday_time, birthday_day = $birthday_day,"
         ." birthday_month = $birthday_month, username = '$username',"
-        ." tags = '$tags', favorite = $favorite,"." update_time = $update_time"
-        ." where id_users = $id_users and id_contacts = $id";
+        ." tags = '$tags', favorite = $favorite,"." update_time = $update_time,"
+        ." num_edits = num_edits + 1 where id_users = $id_users"
+        ." and id_contacts = $id";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 

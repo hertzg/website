@@ -10,8 +10,9 @@ function edit ($mysqli, $id_users, $id, $text, $tags, $top_priority) {
     $update_time = time();
 
     $sql = "update tasks set text = '$text', tags = '$tags',"
-        ." top_priority = $top_priority, update_time = $update_time"
-        ." where id_users = $id_users and id_tasks = $id";
+        ." top_priority = $top_priority, update_time = $update_time,"
+        ." num_edits = num_edits + 1 where id_users = $id_users"
+        ." and id_tasks = $id";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
