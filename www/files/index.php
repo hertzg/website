@@ -62,11 +62,15 @@ unset_session_vars();
 
 $key = 'files/id_folders';
 if (array_key_exists($key, $_SESSION) && $id_folders != $_SESSION[$key]) {
-    unset($_SESSION['files/messages']);
+    unset(
+        $_SESSION['files/errors'],
+        $_SESSION['files/messages']
+    );
 }
 
 include_once 'fns/create_options_panel.php';
 include_once '../fns/Page/tabs.php';
+include_once '../fns/Page/sessionErrors.php';
 include_once '../fns/Page/sessionMessages.php';
 $content =
     Page\tabs(
@@ -77,7 +81,8 @@ $content =
             ],
         ],
         'Files',
-        Page\sessionMessages('files/messages')
+        Page\sessionErrors('files/errors')
+        .Page\sessionMessages('files/messages')
         .join('<div class="hr"></div>', $items)
     )
     .create_options_panel($user, $id_folders);

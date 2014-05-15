@@ -8,6 +8,8 @@ function unset_session_vars () {
         $_SESSION['calendar/messages'],
         $_SESSION['contacts/errors'],
         $_SESSION['contacts/messages'],
+        $_SESSION['files/errors'],
+        $_SESSION['files/id_folders'],
         $_SESSION['files/messages'],
         $_SESSION['help/messages'],
         $_SESSION['home/customize/messages'],

@@ -28,10 +28,12 @@ include_once '../../fns/str_collapse_spaces.php';
 include_once '../../fns/Files/getByName.php';
 include_once '../../fns/Users/Files/add.php';
 
-$numfiles = 0;
+$num_uploaded = 0;
+$num_failed = 0;
 foreach ([$file1, $file2, $file3] as $file) {
     foreach ($file['name'] as $i => $file_name) {
-        if ($file['error'][$i] == UPLOAD_ERR_OK) {
+        $error = $file['error'][$i];
+        if ($error === UPLOAD_ERR_OK) {
 
             $file_name = str_collapse_spaces($file_name);
 
@@ -54,8 +56,10 @@ foreach ([$file1, $file2, $file3] as $file) {
             Users\Files\add($mysqli, $id_users, $id_folders,
                 $file_name, $file['tmp_name'][$i]);
 
-            $numfiles++;
+            $num_uploaded++;
 
+        } elseif ($error !== UPLOAD_ERR_NO_FILE) {
+            $num_failed++;
         }
     }
 }
@@ -64,23 +68,34 @@ $errors = [];
 
 if (!$posttest) {
     $errors[] = 'Maximum upload size excceeded.';
-} elseif (!$numfiles) {
+} elseif ($num_failed) {
+    if ($num_failed == 1) $text = '1 file has failed to upload.';
+    else $text = "$num_failed files have failed to upload.";
+    $errors[] = $text;
+} elseif (!$num_uploaded) {
     $errors[] = 'Select files to upload.';
 }
 
-if ($errors) {
+if (!$num_uploaded) {
+
     $_SESSION['files/upload-files/errors'] = $errors;
-    redirect("./?id_folders=$id_folders");
+
+    if ($id_folders) $queryString = "?id_folders=$id_folders";
+    else $queryString = '';
+
+    redirect("./$queryString");
+
 }
 
 unset($_SESSION['files/upload-files/errors']);
 
-if ($numfiles == 1) {
+if ($num_uploaded == 1) {
     $message = '1 file has been uploaded.';
 } else {
-    $message = "$numfiles files have been uploaded.";
+    $message = "$num_uploaded files have been uploaded.";
 }
 
+$_SESSION['files/errors'] = $errors;
 $_SESSION['files/id_folders'] = $id_folders;
 $_SESSION['files/messages'] = [$message];
 

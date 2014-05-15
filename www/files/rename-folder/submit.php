@@ -48,6 +48,7 @@ unset(
 include_once '../../fns/Folders/rename.php';
 Folders\rename($mysqli, $id_users, $id_folders, $folder_name);
 
+unset($_SESSION['files/errors']);
 $_SESSION['files/id_folders'] = $id_folders;
 $_SESSION['files/messages'] = ['Renamed.'];
 

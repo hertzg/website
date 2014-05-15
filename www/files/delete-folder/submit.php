@@ -10,6 +10,7 @@ list($folder, $id_folders, $user) = require_folder($mysqli);
 include_once '../../fns/Users/Folders/delete.php';
 Users\Folders\delete($mysqli, $id_folders);
 
+unset($_SESSION['files/errors']);
 $_SESSION['files/id_folders'] = $folder->parent_id_folders;
 $_SESSION['files/messages'] = ['Folder has been deleted.'];
 

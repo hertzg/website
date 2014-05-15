@@ -10,6 +10,7 @@ list($file, $id, $user) = require_file($mysqli);
 include_once '../../fns/Users/Files/delete.php';
 Users\Files\delete($mysqli, $file);
 
+unset($_SESSION['files/errors']);
 $_SESSION['files/id_folders'] = $file->id_folders;
 $_SESSION['files/messages'] = ['File has been deleted.'];
 

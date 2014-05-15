@@ -23,6 +23,7 @@ if ($id_folders) {
 }
 
 unset(
+    $_SESSION['files/errors'],
     $_SESSION['files/id_folders'],
     $_SESSION['files/messages']
 );

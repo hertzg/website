@@ -62,6 +62,7 @@ if (array_key_exists($key, $_SESSION) && $parent_id_folders != $_SESSION[$key]) 
 }
 
 unset(
+    $_SESSION['files/errors'],
     $_SESSION['files/id_folders'],
     $_SESSION['files/messages']
 );

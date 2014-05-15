@@ -5,6 +5,7 @@ include_once '../../lib/mysqli.php';
 list($folder, $id_folders, $user) = require_folder($mysqli);
 
 unset(
+    $_SESSION['files/errors'],
     $_SESSION['files/id_folders'],
     $_SESSION['files/messages']
 );
