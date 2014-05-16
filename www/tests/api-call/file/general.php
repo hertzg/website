@@ -11,6 +11,10 @@ function expect_file_object ($engine, $variableName, $file) {
 
 chdir(__DIR__);
 
+$tempName = sys_get_temp_dir().'/test_'.rand();
+file_put_contents($tempName, 'test contenct '.rand());
+$file = new CURLFile($tempName);
+
 include_once '../classes/Engine.php';
 $engine = new Engine;
 
@@ -23,6 +27,12 @@ $engine->expectError('ENTER_NAME');
 $response = $engine->request('file/add', [
     'name' => $new_name,
 ]);
+$engine->expectError('SELECT_FILE');
+
+$response = $engine->request('file/add', [
+    'name' => $new_name,
+    'file' => $file,
+]);
 $engine->expectSuccess();
 $engine->expectNatural('', $response);
 
@@ -30,6 +40,7 @@ $id = $response;
 
 $response = $engine->request('file/add', [
     'name' => $new_name,
+    'file' => $file,
 ]);
 $engine->expectError('FILE_ALREADY_EXISTS');
 
@@ -84,6 +95,8 @@ $response = $engine->request('file/get', [
     'id' => $id,
 ]);
 $engine->expectError('FILE_NOT_FOUND');
+
+unset($tempName);
 
 echo "Done\n";
 echo "$engine->numRequests requests made.\n";
