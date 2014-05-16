@@ -40,15 +40,15 @@ $engine->expectSuccess();
 expect_folder_object($engine, '', $response);
 $engine->expectValue('.name', $response->name, $new_name);
 
-$response = $engine->request('folder/edit');
+$response = $engine->request('folder/rename');
 $engine->expectError('FOLDER_NOT_FOUND');
 
-$response = $engine->request('folder/edit', [
+$response = $engine->request('folder/rename', [
     'id' => $id,
 ]);
 $engine->expectError('ENTER_NAME');
 
-$response = $engine->request('folder/edit', [
+$response = $engine->request('folder/rename', [
     'id' => $id,
     'name' => $edited_name,
 ]);
