@@ -26,7 +26,6 @@ $tags = 'edited tags';
 $response = $engine->request('bookmark/edit', [
     'id' => $id,
     'url' => $url,
-    'title' => $title,
     'tags' => 'a b c d e f',
 ]);
 $engine->expectError('TOO_MANY_TAGS');

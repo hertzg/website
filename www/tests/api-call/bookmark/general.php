@@ -12,7 +12,6 @@ $tags = 'sample tags';
 
 $response = $engine->request('bookmark/add', [
     'url' => $url,
-    'title' => $title,
     'tags' => 'a b c d e f',
 ]);
 $engine->expectError('TOO_MANY_TAGS');

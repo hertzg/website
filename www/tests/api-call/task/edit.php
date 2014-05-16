@@ -27,7 +27,6 @@ $response = $engine->request('task/edit', [
     'id' => $id,
     'text' => $text,
     'tags' => 'a b c d e f',
-    'top_priority' => $top_priority,
 ]);
 $engine->expectError('TOO_MANY_TAGS');
 

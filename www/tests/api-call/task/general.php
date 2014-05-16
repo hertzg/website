@@ -13,7 +13,6 @@ $top_priority = true;
 $response = $engine->request('task/add', [
     'text' => $text,
     'tags' => 'a b c d e f',
-    'top_priority' => $top_priority,
 ]);
 $engine->expectError('TOO_MANY_TAGS');
 

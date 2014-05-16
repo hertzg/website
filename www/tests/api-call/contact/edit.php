@@ -40,15 +40,7 @@ $favorite = true;
 $response = $engine->request('contact/edit', [
     'id' => $id,
     'full_name' => $full_name,
-    'alias' => $alias,
-    'address' => $address,
-    'email' => $email,
-    'phone1' => $phone1,
-    'phone2' => $phone2,
-    'birthday_time' => $birthday_time,
-    'username' => $username,
     'tags' => 'a b c d e f',
-    'favorite' => $favorite,
 ]);
 $engine->expectError('TOO_MANY_TAGS');
 

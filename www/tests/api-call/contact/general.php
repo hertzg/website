@@ -6,7 +6,7 @@ chdir(__DIR__);
 include_once '../classes/Engine.php';
 $engine = new Engine;
 
-$full_name = 'sample full name '.rand();
+$full_name = 'sample full_name';
 $alias = 'sample alias';
 $address = 'sample address';
 $email = 'sample email';
@@ -19,15 +19,7 @@ $favorite = true;
 
 $response = $engine->request('contact/add', [
     'full_name' => $full_name,
-    'alias' => $alias,
-    'address' => $address,
-    'email' => $email,
-    'phone1' => $phone1,
-    'phone2' => $phone2,
-    'birthday_time' => $birthday_time,
-    'username' => $username,
     'tags' => 'a b c d e f',
-    'favorite' => $favorite,
 ]);
 $engine->expectError('TOO_MANY_TAGS');
 
