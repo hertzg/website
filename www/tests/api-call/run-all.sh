@@ -6,7 +6,7 @@ function run_test () {
     ./$name.php
 }
 
-chdir `dirname $BASH_SOURCE`
+cd `dirname $BASH_SOURCE`
 
 run_test bookmark/general
 run_test bookmark/received

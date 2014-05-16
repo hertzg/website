@@ -1,18 +1,9 @@
 #!/usr/bin/php
 <?php
 
-function check ($interval, $offset, $day, $expectedValue) {
-    $value = days_left($interval, $offset, $day);
-    $expression = days_left($interval, $offset, $day);
-    if ($value === $expectedValue) {
-        echo "$expression returned $expectedValue.\n";
-    } else {
-        echo "$expression returned $value instead of $expectedValue.\n";
-    }
-}
-
 chdir(__DIR__);
-include_once '../fns/days_left.php';
+
+include_once 'fns/check.php';
 
 check(2, 0, 0, 0);
 check(2, 0, 1, 1);
@@ -97,4 +88,3 @@ check(7, 2, 7, 2);
 check(7, 2, 8, 1);
 
 echo "Done\n";
-
