@@ -15,6 +15,10 @@ run_test channels
 run_test contact/general
 run_test contact/received
 run_test contact/send
+run_test file/general
+run_test file/subfolder
+run_test folder/general
+run_test folder/subfolder
 run_test note/general
 run_test note/received
 run_test note/send

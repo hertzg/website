@@ -14,7 +14,7 @@ function expect_received_note_object ($engine, $variableName, $receivedNote) {
 
 function receive () {
     $engine = new Engine;
-    $engine->api_key = 'fc9418fe96d7062d20251a60d46889f01b08c5bfe803244f71dd6ac1f3c42e3c';
+    $engine->api_key = '85e35f1bba845b05e33ef3ee2f990eed1a43158fa48049e6ffe74234f222731e';
     $engine->request('note/send', [
         'text' => 'sample text',
         'tags' => 'tag1 tag2',
