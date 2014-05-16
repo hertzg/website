@@ -1,0 +1,64 @@
+#!/usr/bin/php
+<?php
+
+chdir(__DIR__);
+
+include_once '../classes/Engine.php';
+$engine = new Engine;
+
+$response = $engine->request('channel/add', [
+    'channel_name' => 'sample-channel-name',
+    'public' => false,
+    'receive_notifications' => false,
+]);
+$engine->expectSuccess();
+$engine->expectNatural('', $response);
+
+$id = $response;
+
+$response = $engine->request('channel/edit', [
+    'id' => $id,
+    'channel_name' => 'invalid channel name',
+    'public' => true,
+    'receive_notifications' => true,
+]);
+$engine->expectError('INVALID_CHANNEL_NAME');
+
+$response = $engine->request('channel/edit', [
+    'id' => $id,
+    'channel_name' => 'short',
+    'public' => true,
+    'receive_notifications' => true,
+]);
+$engine->expectError('CHANNEL_NAME_TOO_SHORT');
+
+$edited_channel_name = 'edit-channel-name';
+$edited_public = true;
+$edited_receive_notifications = true;
+
+$response = $engine->request('channel/edit', [
+    'id' => $id,
+    'channel_name' => $edited_channel_name,
+    'public' => $edited_public,
+    'receive_notifications' => $edited_receive_notifications,
+]);
+$engine->expectSuccess();
+$engine->expectValue('', true, $response);
+
+include_once 'fns/expect_channel_object.php';
+$response = $engine->request('channel/get', ['id' => $id]);
+$engine->expectSuccess();
+expect_channel_object($engine, '', $response);
+$engine->expectValue('.channel_name',
+    $edited_channel_name, $response->channel_name);
+$engine->expectValue('.public', $edited_public, $response->public);
+$engine->expectValue('.receive_notifications',
+    $edited_receive_notifications, $response->receive_notifications);
+
+$response = $engine->request('channel/delete', [
+    'id' => $id,
+]);
+$engine->expectSuccess();
+$engine->expectValue('', true, $response);
+
+echo 'Done '.__FILE__."\n  $engine->numRequests requests made.\n";

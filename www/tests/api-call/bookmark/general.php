@@ -1,26 +1,13 @@
 #!/usr/bin/php
 <?php
 
-function expect_bookmark_object ($engine, $variableName, $bookmark) {
-    $properties = ['id', 'url', 'title', 'tags', 'insert_time', 'update_time'];
-    $engine->expectObject($variableName, $properties, $bookmark);
-    $engine->expectNatural("$variableName.id", $bookmark->id);
-    $engine->expectType("$variableName.url", 'string', $bookmark->url);
-    $engine->expectType("$variableName.title", 'string', $bookmark->title);
-    $engine->expectType("$variableName.tags", 'string', $bookmark->tags);
-    $engine->expectNatural("$variableName.insert_time", $bookmark->insert_time);
-    $engine->expectNatural("$variableName.update_time", $bookmark->update_time);
-}
-
 chdir(__DIR__);
+
+include_once 'fns/expect_bookmark_object.php';
 
 $new_bookmark_url = 'sample bookmark url';
 $new_bookmark_title = 'sample bookmark title';
 $new_bookmark_tags = 'tag1 tag2';
-
-$edited_bookmark_url = 'edited url';
-$edited_bookmark_title = 'edited title';
-$edited_bookmark_tags = 'tag1 tag2 tag3';
 
 $manyTags = 'a b c d e f';
 
@@ -52,33 +39,6 @@ $engine->expectValue('.title', $new_bookmark_title, $response->title);
 $engine->expectValue('.tags', $new_bookmark_tags, $response->tags);
 $engine->expectEquals('.insert_time', '.update_time',
     $response->insert_time, $response->update_time);
-
-$response = $engine->request('bookmark/edit', ['id' => $id]);
-$engine->expectError('ENTER_URL');
-
-$response = $engine->request('bookmark/edit', [
-    'id' => $id,
-    'url' => $edited_bookmark_url,
-    'title' => $edited_bookmark_title,
-    'tags' => $manyTags,
-]);
-$engine->expectError('TOO_MANY_TAGS');
-
-$response = $engine->request('bookmark/edit', [
-    'id' => $id,
-    'url' => $edited_bookmark_url,
-    'title' => $edited_bookmark_title,
-    'tags' => $edited_bookmark_tags,
-]);
-$engine->expectSuccess();
-$engine->expectValue('', true, $response);
-
-$response = $engine->request('bookmark/get', ['id' => $id]);
-$engine->expectSuccess();
-expect_bookmark_object($engine, '', $response);
-$engine->expectValue('.url', $edited_bookmark_url, $response->url);
-$engine->expectValue('.title', $edited_bookmark_title, $response->title);
-$engine->expectValue('.tags', $edited_bookmark_tags, $response->tags);
 
 $response = $engine->request('bookmark/list');
 $engine->expectSuccess();
