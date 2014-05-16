@@ -55,6 +55,7 @@ $response = $engine->request('folder/rename', [
     'name' => $edited_name,
 ]);
 $engine->expectSuccess();
+$engine->expectValue('', true, $response);
 
 $response = $engine->request('folder/get', [
     'id' => $id,

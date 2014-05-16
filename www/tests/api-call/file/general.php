@@ -15,6 +15,7 @@ include_once '../classes/Engine.php';
 $engine = new Engine;
 
 $new_name = 'test file name';
+$edited_name = 'test edited name';
 
 $response = $engine->request('file/add');
 $engine->expectError('ENTER_NAME');
@@ -41,6 +42,28 @@ $response = $engine->request('file/get', [
 $engine->expectSuccess();
 expect_file_object($engine, '', $response);
 $engine->expectValue('.name', $new_name, $response->name);
+
+$response = $engine->request('file/rename');
+$engine->expectError('FILE_NOT_FOUND');
+
+$response = $engine->request('file/rename', [
+    'id' => $id,
+]);
+$engine->expectError('ENTER_NAME');
+
+$response = $engine->request('file/rename', [
+    'id' => $id,
+    'name' => $edited_name,
+]);
+$engine->expectSuccess();
+$engine->expectValue('', true, $response);
+
+$response = $engine->request('file/get', [
+    'id' => $id,
+]);
+$engine->expectSuccess();
+expect_file_object($engine, '', $response);
+$engine->expectValue('.name', $edited_name, $response->name);
 
 $response = $engine->request('file/list');
 $engine->expectSuccess();
