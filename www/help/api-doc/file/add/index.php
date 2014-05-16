@@ -8,7 +8,7 @@ file_method_page('add', [
     ],
     [
         'name' => 'file',
-        'description' => 'File content.',
+        'description' => 'The content file to upload.',
     ],
     [
         'name' => 'parent_id',
