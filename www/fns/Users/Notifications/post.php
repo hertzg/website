@@ -26,9 +26,10 @@ function post ($mysqli, $channel, $notification_text) {
     $subscribedChannels = \SubscribedChannels\indexOnChannel(
         $mysqli, $id_channels);
 
-    $subscribedChannels = array_filter($subscribedChannels, function ($subscribedChannel) {
+    $callback = function ($subscribedChannel) {
         return $subscribedChannel->receive_notifications;
-    });
+    };
+    $subscribedChannels = array_filter($subscribedChannels, $callback);
 
     if ($subscribedChannels) {
         include_once __DIR__.'/../../Notifications/addOnSubscribedChannel.php';

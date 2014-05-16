@@ -16,7 +16,8 @@ if ($subscribedChannel->subscriber_locked) {
     SubscribedChannels\delete($mysqli, $id);
 
     include_once '../../../../fns/Users/SubscribedChannels/addNumber.php';
-    Users\SubscribedChannels\addNumber($mysqli, $subscribedChannel->subscriber_id_users, -1);
+    Users\SubscribedChannels\addNumber($mysqli,
+        $subscribedChannel->subscriber_id_users, -1);
 
 }
 

@@ -4,13 +4,15 @@ namespace Users\Notifications;
 
 function deleteAll ($mysqli, $id_users) {
 
-    include_once __DIR__.'/../../Notifications/deleteAllOnUser.php';
+    $fnsDir = __DIR__.'/../..';
+
+    include_once "$fnsDir/Notifications/deleteAllOnUser.php";
     \Notifications\deleteAllOnUser($mysqli, $id_users);
 
-    include_once __DIR__.'/../../Channels/clearNumNotificationsOnUser.php';
+    include_once "$fnsDir/Channels/clearNumNotificationsOnUser.php";
     \Channels\clearNumNotificationsOnUser($mysqli, $id_users);
 
-    include_once __DIR__.'/../../SubscribedChannels/clearNumNotificationsOnSubscriber.php';
+    include_once "$fnsDir/SubscribedChannels/clearNumNotificationsOnSubscriber.php";
     \SubscribedChannels\clearNumNotificationsOnSubscriber($mysqli, $id_users);
 
     $sql = 'update users set num_notifications = 0,'

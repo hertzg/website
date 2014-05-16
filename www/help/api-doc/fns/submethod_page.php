@@ -8,8 +8,10 @@ function submethod_page ($groupKey, $subgroupName, $subgroupKey, $methodName,
     include_once __DIR__.'/../../../fns/require_user.php';
     $user = require_user($base);
 
+    $methodFullName = "$groupKey/$subgroupKey/$methodName";
+
     include_once __DIR__.'/../../../fns/Page/text.php';
-    $items = [Page\text("<code>$groupKey/$subgroupKey/$methodName</code> - $description")];
+    $items = [Page\text("<code>$methodFullName</code> - $description")];
 
     if ($params) {
         $text = 'Method parameters: ';
@@ -51,6 +53,6 @@ function submethod_page ($groupKey, $subgroupName, $subgroupKey, $methodName,
     );
 
     include_once __DIR__.'/../../../fns/echo_page.php';
-    echo_page($user, "$groupKey/$subgroupKey/$methodName Method", $content, $base);
+    echo_page($user, "$methodFullName Method", $content, $base);
 
 }
