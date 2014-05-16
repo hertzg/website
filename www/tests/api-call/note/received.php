@@ -40,12 +40,6 @@ foreach ($response as $i => $receivedNote) {
     $ids[] = $receivedNote->id;
 }
 
-$response = $engine->request('note/received/get');
-$engine->expectError('RECEIVED_NOTE_NOT_FOUND');
-
-$response = $engine->request('note/received/delete');
-$engine->expectError('RECEIVED_NOTE_NOT_FOUND');
-
 foreach ($ids as $id) {
 
     $response = $engine->request('note/received/get', [

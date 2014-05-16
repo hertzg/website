@@ -51,9 +51,6 @@ $manyTags = 'a b c d e f';
 include_once '../classes/Engine.php';
 $engine = new Engine;
 
-$response = $engine->request('contact/add');
-$engine->expectError('ENTER_FULL_NAME');
-
 $response = $engine->request('contact/add', [
     'full_name' => $new_contact_full_name,
     'alias' => $new_contact_alias,
@@ -85,9 +82,6 @@ $engine->expectNatural('', $response);
 
 $id = $response;
 
-$response = $engine->request('contact/get');
-$engine->expectError('CONTACT_NOT_FOUND');
-
 $response = $engine->request('contact/get', ['id' => $id]);
 $engine->expectSuccess();
 expect_contact_object($engine, '', $response);
@@ -104,9 +98,6 @@ $engine->expectValue('.tags', $new_contact_tags, $response->tags);
 $engine->expectValue('.favorite', $new_contact_favorite, $response->favorite);
 $engine->expectEquals('.insert_time', '.update_time',
     $response->insert_time, $response->update_time);
-
-$response = $engine->request('contact/edit');
-$engine->expectError('CONTACT_NOT_FOUND');
 
 $response = $engine->request('contact/edit', ['id' => $id]);
 $engine->expectError('ENTER_FULL_NAME');
@@ -162,9 +153,6 @@ $engine->expectType('', 'array', $response);
 foreach ($response as $i => $contact) {
     expect_contact_object($engine, ".[$i]", $contact);
 }
-
-$response = $engine->request('contact/delete');
-$engine->expectError('CONTACT_NOT_FOUND');
 
 $response = $engine->request('contact/delete', ['id' => $id]);
 $engine->expectSuccess();

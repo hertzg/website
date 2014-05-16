@@ -27,9 +27,6 @@ $manyTags = 'a b c d e f';
 include_once '../classes/Engine.php';
 $engine = new Engine;
 
-$response = $engine->request('bookmark/add');
-$engine->expectError('ENTER_URL');
-
 $response = $engine->request('bookmark/add', [
     'url' => $new_bookmark_url,
     'title' => $new_bookmark_title,
@@ -47,9 +44,6 @@ $engine->expectNatural('', $response);
 
 $id = $response;
 
-$response = $engine->request('bookmark/get');
-$engine->expectError('BOOKMARK_NOT_FOUND');
-
 $response = $engine->request('bookmark/get', ['id' => $id]);
 $engine->expectSuccess();
 expect_bookmark_object($engine, '', $response);
@@ -58,9 +52,6 @@ $engine->expectValue('.title', $new_bookmark_title, $response->title);
 $engine->expectValue('.tags', $new_bookmark_tags, $response->tags);
 $engine->expectEquals('.insert_time', '.update_time',
     $response->insert_time, $response->update_time);
-
-$response = $engine->request('bookmark/edit');
-$engine->expectError('BOOKMARK_NOT_FOUND');
 
 $response = $engine->request('bookmark/edit', ['id' => $id]);
 $engine->expectError('ENTER_URL');
@@ -95,9 +86,6 @@ $engine->expectType('', 'array', $response);
 foreach ($response as $i => $bookmark) {
     expect_bookmark_object($engine, ".[$i]", $bookmark);
 }
-
-$response = $engine->request('bookmark/delete');
-$engine->expectError('BOOKMARK_NOT_FOUND');
 
 $response = $engine->request('bookmark/delete', ['id' => $id]);
 $engine->expectSuccess();

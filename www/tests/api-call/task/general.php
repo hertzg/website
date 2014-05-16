@@ -27,9 +27,6 @@ $manyTags = 'a b c d e f';
 include_once '../classes/Engine.php';
 $engine = new Engine;
 
-$response = $engine->request('task/add');
-$engine->expectError('ENTER_TEXT');
-
 $response = $engine->request('task/add', [
     'text' => $new_task_text,
     'tags' => $manyTags,
@@ -47,9 +44,6 @@ $engine->expectNatural('', $response);
 
 $id = $response;
 
-$response = $engine->request('task/get');
-$engine->expectError('TASK_NOT_FOUND');
-
 $response = $engine->request('task/get', ['id' => $id]);
 $engine->expectSuccess();
 expect_task_object($engine, '', $response);
@@ -58,9 +52,6 @@ $engine->expectValue('.tags', $new_task_tags, $response->tags);
 $engine->expectValue('.top_priority', $new_task_top_priority, $response->top_priority);
 $engine->expectEquals('.insert_time', '.update_time',
     $response->insert_time, $response->update_time);
-
-$response = $engine->request('task/edit');
-$engine->expectError('TASK_NOT_FOUND');
 
 $response = $engine->request('task/edit', ['id' => $id]);
 $engine->expectError('ENTER_TEXT');
@@ -94,9 +85,6 @@ $engine->expectType('', 'array', $response);
 foreach ($response as $i => $task) {
     expect_task_object($engine, ".[$i]", $task);
 }
-
-$response = $engine->request('task/delete');
-$engine->expectError('TASK_NOT_FOUND');
 
 $response = $engine->request('task/delete', ['id' => $id]);
 $engine->expectSuccess();

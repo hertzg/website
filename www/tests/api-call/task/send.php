@@ -11,9 +11,6 @@ $deniedUsername = 'giorgi';
 $allowedUsername = 'angeli';
 $sent_task_text = 'sent task text';
 
-$response = $engine->request('task/send');
-$engine->expectError('ENTER_RECEIVER_USERNAME');
-
 $response = $engine->request('task/send', [
     'receiver_username' => $nonExistingUsername,
 ]);

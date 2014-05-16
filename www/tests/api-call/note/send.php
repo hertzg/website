@@ -11,9 +11,6 @@ $deniedUsername = 'giorgi';
 $allowedUsername = 'angeli';
 $sent_note_text = 'sent note text';
 
-$response = $engine->request('note/send');
-$engine->expectError('ENTER_RECEIVER_USERNAME');
-
 $response = $engine->request('note/send', [
     'receiver_username' => $nonExistingUsername,
 ]);

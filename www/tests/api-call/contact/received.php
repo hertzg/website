@@ -60,12 +60,6 @@ foreach ($response as $i => $receivedContact) {
     $ids[] = $receivedContact->id;
 }
 
-$response = $engine->request('contact/received/get');
-$engine->expectError('RECEIVED_CONTACT_NOT_FOUND');
-
-$response = $engine->request('contact/received/delete');
-$engine->expectError('RECEIVED_CONTACT_NOT_FOUND');
-
 foreach ($ids as $id) {
 
     $response = $engine->request('contact/received/get', [

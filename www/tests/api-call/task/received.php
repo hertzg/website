@@ -45,12 +45,6 @@ foreach ($response as $i => $receivedTask) {
     $ids[] = $receivedTask->id;
 }
 
-$response = $engine->request('task/received/get');
-$engine->expectError('RECEIVED_TASK_NOT_FOUND');
-
-$response = $engine->request('task/received/delete');
-$engine->expectError('RECEIVED_TASK_NOT_FOUND');
-
 foreach ($ids as $id) {
 
     $response = $engine->request('task/received/get', [

@@ -24,9 +24,6 @@ $manyTags = 'a b c d e f';
 include_once '../classes/Engine.php';
 $engine = new Engine;
 
-$response = $engine->request('note/add');
-$engine->expectError('ENTER_TEXT');
-
 $response = $engine->request('note/add', [
     'text' => $new_note_text,
     'tags' => $manyTags,
@@ -42,9 +39,6 @@ $engine->expectNatural('', $response);
 
 $id = $response;
 
-$response = $engine->request('note/get');
-$engine->expectError('NOTE_NOT_FOUND');
-
 $response = $engine->request('note/get', ['id' => $id]);
 $engine->expectSuccess();
 expect_note_object($engine, '', $response);
@@ -52,9 +46,6 @@ $engine->expectValue('.text', $new_note_text, $response->text);
 $engine->expectValue('.tags', $new_note_tags, $response->tags);
 $engine->expectEquals('.insert_time', '.update_time',
     $response->insert_time, $response->update_time);
-
-$response = $engine->request('note/edit');
-$engine->expectError('NOTE_NOT_FOUND');
 
 $response = $engine->request('note/edit', ['id' => $id]);
 $engine->expectError('ENTER_TEXT');
@@ -85,9 +76,6 @@ $engine->expectType('', 'array', $response);
 foreach ($response as $i => $note) {
     expect_note_object($engine, ".[$i]", $note);
 }
-
-$response = $engine->request('note/delete');
-$engine->expectError('NOTE_NOT_FOUND');
 
 $response = $engine->request('note/delete', ['id' => $id]);
 $engine->expectSuccess();

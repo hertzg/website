@@ -49,12 +49,6 @@ foreach ($response as $i => $receivedBookmark) {
     $ids[] = $receivedBookmark->id;
 }
 
-$response = $engine->request('bookmark/received/get');
-$engine->expectError('RECEIVED_BOOKMARK_NOT_FOUND');
-
-$response = $engine->request('bookmark/received/delete');
-$engine->expectError('RECEIVED_BOOKMARK_NOT_FOUND');
-
 foreach ($ids as $id) {
 
     $response = $engine->request('bookmark/received/get', [

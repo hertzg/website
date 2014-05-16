@@ -12,9 +12,6 @@ $allowedUsername = 'angeli';
 $sent_bookmark_url = 'sent bookmark url';
 $sent_bookmark_title = 'sent bookmark title';
 
-$response = $engine->request('bookmark/send');
-$engine->expectError('ENTER_RECEIVER_USERNAME');
-
 $response = $engine->request('bookmark/send', [
     'receiver_username' => $nonExistingUsername,
 ]);

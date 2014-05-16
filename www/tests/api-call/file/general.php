@@ -15,9 +15,6 @@ $engine = new Engine;
 $new_name = 'test file name';
 $edited_name = 'test edited name';
 
-$response = $engine->request('file/add');
-$engine->expectError('ENTER_NAME');
-
 $response = $engine->request('file/add', [
     'name' => $new_name,
 ]);
@@ -38,18 +35,12 @@ $response = $engine->request('file/add', [
 ]);
 $engine->expectError('FILE_ALREADY_EXISTS');
 
-$response = $engine->request('file/get');
-$engine->expectError('FILE_NOT_FOUND');
-
 $response = $engine->request('file/get', [
     'id' => $id,
 ]);
 $engine->expectSuccess();
 expect_file_object($engine, '', $response);
 $engine->expectValue('.name', $new_name, $response->name);
-
-$response = $engine->request('file/rename');
-$engine->expectError('FILE_NOT_FOUND');
 
 $response = $engine->request('file/rename', [
     'id' => $id,
@@ -78,9 +69,6 @@ $engine->expectType('', 'array', $response);
 foreach ($response as $i => $file) {
     expect_file_object($engine, "[$i]", $file);
 }
-
-$response = $engine->request('file/delete');
-$engine->expectError('FILE_NOT_FOUND');
 
 $response = $engine->request('file/delete', [
     'id' => $id,

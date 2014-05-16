@@ -11,9 +11,6 @@ $deniedUsername = 'giorgi';
 $allowedUsername = 'angeli';
 $sent_contact_full_name = 'sent contact full_name';
 
-$response = $engine->request('contact/send');
-$engine->expectError('ENTER_RECEIVER_USERNAME');
-
 $response = $engine->request('contact/send', [
     'receiver_username' => $nonExistingUsername,
 ]);

@@ -10,9 +10,6 @@ $engine = new Engine;
 $new_name = 'test folder name';
 $edited_name = 'edited folder name';
 
-$response = $engine->request('folder/add');
-$engine->expectError('ENTER_NAME');
-
 $response = $engine->request('folder/add', [
     'name' => $new_name,
 ]);
@@ -26,9 +23,6 @@ $response = $engine->request('folder/add', [
 ]);
 $engine->expectError('FOLDER_ALREADY_EXISTS');
 
-$response = $engine->request('folder/get');
-$engine->expectError('FOLDER_NOT_FOUND');
-
 $response = $engine->request('folder/get', [
     'id' => $id,
 ]);
@@ -37,9 +31,6 @@ expect_folder_object($engine, '', $response);
 $engine->expectValue('.name', $response->name, $new_name);
 $engine->expectEquals('.insert_time', '.rename_time',
     $response->insert_time, $response->rename_time);
-
-$response = $engine->request('folder/rename');
-$engine->expectError('FOLDER_NOT_FOUND');
 
 $response = $engine->request('folder/rename', [
     'id' => $id,
@@ -65,9 +56,6 @@ $engine->expectType('', 'array', $response);
 foreach ($response as $i => $folder) {
     expect_folder_object($engine, "[$i]", $folder);
 }
-
-$response = $engine->request('folder/delete');
-$engine->expectError('FOLDER_NOT_FOUND');
 
 $response = $engine->request('folder/delete', [
     'id' => $id,
