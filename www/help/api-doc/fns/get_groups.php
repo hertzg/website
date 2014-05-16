@@ -14,6 +14,14 @@ function get_groups () {
             'title' => 'Contact',
             'description' => 'Methods for manipulating contacts',
         ],
+        'file' => [
+            'title' => 'File',
+            'description' => 'Methods for manipulating files',
+        ],
+        'folder' => [
+            'title' => 'Folder',
+            'description' => 'Methods for manipulating folders',
+        ],
         'note' => [
             'title' => 'Note',
             'description' => 'Methods for manipulating notes',
