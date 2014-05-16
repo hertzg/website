@@ -1,9 +1,17 @@
 #!/usr/bin/php
 <?php
 
-function mysqli_count ($mysqli, $sql) {
+function count_rows ($mysqli, $sql) {
     $sql = "select count(*) value from $sql";
     return mysqli_single_object($mysqli, $sql)->value;
+}
+
+function receiver_user_rows ($mysqli, $table, $id_users) {
+    return count_rows($mysqli, "$table where receiver_id_users = $id_users");
+}
+
+function user_rows ($mysqli, $table, $id_users) {
+    return count_rows($mysqli, "$table where id_users = $id_users");
 }
 
 chdir(__DIR__);
@@ -19,54 +27,22 @@ foreach ($users as $user) {
 
     $id_users = $user->id_users;
 
-    $sql = "api_keys where id_users = $id_users";
-    $num_api_keys = mysqli_count($mysqli, $sql);
-
-    $sql = "bookmarks where id_users = $id_users";
-    $num_bookmarks = mysqli_count($mysqli, $sql);
-
-    $sql = "channels where id_users = $id_users";
-    $num_channels = mysqli_count($mysqli, $sql);
-
-    $sql = "connections where id_users = $id_users";
-    $num_connections = mysqli_count($mysqli, $sql);
-
-    $sql = "contacts where id_users = $id_users";
-    $num_contacts = mysqli_count($mysqli, $sql);
-
-    $sql = "events where id_users = $id_users";
-    $num_events = mysqli_count($mysqli, $sql);
-
-    $sql = "notes where id_users = $id_users";
-    $num_notes = mysqli_count($mysqli, $sql);
-
-    $sql = 'notifications'
-        ." where id_users = $id_users";
-    $num_notifications = mysqli_count($mysqli, $sql);
-
-    $sql = "received_bookmarks where receiver_id_users = $id_users";
-    $num_received_bookmarks = mysqli_count($mysqli, $sql);
-
-    $sql = "received_contacts where receiver_id_users = $id_users";
-    $num_received_contacts = mysqli_count($mysqli, $sql);
-
-    $sql = "received_files where receiver_id_users = $id_users";
-    $num_received_files = mysqli_count($mysqli, $sql);
-
-    $sql = "received_notes where receiver_id_users = $id_users";
-    $num_received_notes = mysqli_count($mysqli, $sql);
-
-    $sql = "received_tasks where receiver_id_users = $id_users";
-    $num_received_tasks = mysqli_count($mysqli, $sql);
-
-    $sql = "schedules where id_users = $id_users";
-    $num_schedules = mysqli_count($mysqli, $sql);
-
-    $sql = "tasks where id_users = $id_users";
-    $num_tasks = mysqli_count($mysqli, $sql);
-
-    $sql = "tokens where id_users = $id_users";
-    $num_tokens = mysqli_count($mysqli, $sql);
+    $num_api_keys = user_rows($mysqli, 'api_keys', $id_users);
+    $num_bookmarks = user_rows($mysqli, 'bookmarks', $id_users);
+    $num_channels = user_rows($mysqli, 'channels', $id_users);
+    $num_connections = user_rows($mysqli, 'connections', $id_users);
+    $num_contacts = user_rows($mysqli, 'contacts', $id_users);
+    $num_events = user_rows($mysqli, 'events', $id_users);
+    $num_notes = user_rows($mysqli, 'notes', $id_users);
+    $num_notifications = user_rows($mysqli, 'notifications', $id_users);
+    $num_received_bookmarks = receiver_user_rows($mysqli, 'received_bookmarks', $id_users);
+    $num_received_contacts = receiver_user_rows($mysqli, 'received_contacts', $id_users);
+    $num_received_files = receiver_user_rows($mysqli, 'received_files', $id_users);
+    $num_received_notes = receiver_user_rows($mysqli, 'received_notes', $id_users);
+    $num_received_tasks = receiver_user_rows($mysqli, 'received_tasks', $id_users);
+    $num_schedules = user_rows($mysqli, 'schedules', $id_users);
+    $num_tasks = user_rows($mysqli, 'tasks', $id_users);
+    $num_tokens = user_rows($mysqli, 'tokens', $id_users);
 
     $sql = "update users set num_api_keys = $num_api_keys,"
         ." num_bookmarks = $num_bookmarks, num_channels = $num_channels,"
@@ -90,7 +66,7 @@ foreach ($channels as $channel) {
     $id = $channel->id;
 
     $sql = "notifications where id_channels = $id";
-    $num_notifications = mysqli_count($mysqli, $sql);
+    $num_notifications = count_rows($mysqli, $sql);
 
     $sql = 'update channels set'
         ." num_notifications = $num_notifications where id = $id";
@@ -104,7 +80,7 @@ foreach ($subscribed_channels as $subscribed_channel) {
     $id = $subscribed_channel->id;
 
     $sql = "notifications where id_subscribed_channels = $id";
-    $num_notifications = mysqli_count($mysqli, $sql);
+    $num_notifications = count_rows($mysqli, $sql);
 
     $sql = 'update subscribed_channels set'
         ." num_notifications = $num_notifications where id = $id";
