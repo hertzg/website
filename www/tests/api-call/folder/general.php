@@ -2,10 +2,10 @@
 <?php
 
 function expect_folder_object ($engine, $variableName, $folder) {
-    $engine->expectObject('', ['id', 'name', 'insert_time'], $folder);
-    $engine->expectNatural('', $folder->id);
-    $engine->expectType('.name', 'string', $folder->name);
-    $engine->expectNatural('', $folder->insert_time);
+    $engine->expectObject($variableName, ['id', 'name', 'insert_time'], $folder);
+    $engine->expectNatural("$variableName.id", $folder->id);
+    $engine->expectType("$variableName.name", 'string', $folder->name);
+    $engine->expectNatural("$variableName.insert_time", $folder->insert_time);
 }
 
 chdir(__DIR__);
