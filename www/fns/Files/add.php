@@ -22,4 +22,6 @@ function add ($mysqli, $id_users, $id_folders, $file_name, $file_size, $sourcePa
 
     rename($sourcePath, $destinationPath);
 
+    return $id;
+
 }

@@ -8,6 +8,8 @@ function expect_folder_object ($engine, $variableName, $folder) {
     $engine->expectNatural('', $folder->insert_time);
 }
 
+chdir(__DIR__);
+
 include_once '../classes/Engine.php';
 $engine = new Engine;
 

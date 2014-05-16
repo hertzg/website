@@ -2,7 +2,7 @@
 
 class Engine {
 
-    public $numRequests;
+    public $numRequests = 0;
 
     private $api_base = 'http://localhost/sites/zvini.com/www/api-call/';
     public $api_key = 'fc9418fe96d7062d20251a60d46889f01b08c5bfe803244f71dd6ac1f3c42e3c';
