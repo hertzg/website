@@ -20,8 +20,8 @@ function check_birthday_check_day ($mysqli, &$user) {
         $num_birthdays_today = $count($timeToday);
         $num_birthdays_tomorrow = $count($timeTomorrow);
 
-        include_once __DIR__.'/../../fns/Users/Birthdays/update.php';
-        Users\Birthdays\update($mysqli, $id_users, $num_birthdays_today,
+        include_once __DIR__.'/../../fns/Users/Birthdays/setNumbers.php';
+        Users\Birthdays\setNumbers($mysqli, $id_users, $num_birthdays_today,
             $num_birthdays_tomorrow, $timeToday);
 
         $user->num_birthdays_today = $num_birthdays_today;

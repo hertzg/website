@@ -2,7 +2,7 @@
 
 namespace Users\Schedules;
 
-function update ($mysqli, $id_users, $num_schedules_today,
+function setNumbers ($mysqli, $id_users, $num_schedules_today,
     $num_schedules_tomorrow, $schedules_check_day) {
 
     $sql = "update users set num_schedules_today = $num_schedules_today,"

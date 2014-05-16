@@ -2,7 +2,7 @@
 
 namespace Users\Birthdays;
 
-function update ($mysqli, $id_users, $num_birthdays_today,
+function setNumbers ($mysqli, $id_users, $num_birthdays_today,
     $num_birthdays_tomorrow, $birthdays_check_day) {
 
     $sql = "update users set num_birthdays_today = $num_birthdays_today,"

@@ -43,15 +43,9 @@ unset(
     $_SESSION['calendar/new-event/values']
 );
 
-include_once '../../fns/Events/add.php';
+include_once '../../fns/Users/Events/add.php';
 include_once '../../lib/mysqli.php';
-$id = Events\add($mysqli, $id_users, $event_text, $event_time);
-
-include_once '../../fns/Users/Events/addNumber.php';
-Users\Events\addNumber($mysqli, $id_users, 1);
-
-include_once '../../fns/Users/Events/invalidateIfNeeded.php';
-Users\Events\invalidateIfNeeded($mysqli, $user, $event_time);
+$id = Users\Events\add($mysqli, $user, $event_text, $event_time);
 
 $_SESSION['calendar/view-event/messages'] = ['Event has been saved.'];
 
