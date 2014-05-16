@@ -95,7 +95,9 @@ if ($num_uploaded == 1) {
     $message = "$num_uploaded files have been uploaded.";
 }
 
-$_SESSION['files/errors'] = $errors;
+if ($errors) $_SESSION['files/errors'] = $errors;
+else unset($_SESSION['files/errors']);
+
 $_SESSION['files/id_folders'] = $id_folders;
 $_SESSION['files/messages'] = [$message];
 
