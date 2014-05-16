@@ -1,18 +1,12 @@
 #!/usr/bin/php
 <?php
 
-function expect_file_object ($engine, $variableName, $file) {
-    $engine->expectObject($variableName, ['id', 'name', 'size', 'insert_time'], $file);
-    $engine->expectNatural("$variableName.id", $file->id);
-    $engine->expectType("$variableName.name", 'string', $file->name);
-    $engine->expectnatural("$variableName.size", $file->size);
-    $engine->expectNatural("$variableName.insert_time", $file->insert_time);
-}
-
 chdir(__DIR__);
 
+include_once 'fns/expect_file_object.php';
+
 $tempName = sys_get_temp_dir().'/test_'.rand();
-file_put_contents($tempName, 'test contenct '.rand());
+file_put_contents($tempName, 'test content '.rand());
 $file = new CURLFile($tempName);
 
 include_once '../classes/Engine.php';
