@@ -16,10 +16,10 @@ function check_schedule_check_day ($mysqli, &$user) {
             $mysqli, $id_users, $day_today + 1);
 
         include_once __DIR__.'/../../fns/Users/Schedules/setNumbers.php';
-        Users\Schedules\setNumbers($mysqli, $id_users, $num_today,
+        Users\Schedules\setNumbers($mysqli, $id_users, $num_schedules_today,
             $num_schedules_tomorrow, $day_today);
 
-        $user->num_schedules_today = $num_today;
+        $user->num_schedules_today = $num_schedules_today;
         $user->num_schedules_tomorrow = $num_schedules_tomorrow;
 
     }
