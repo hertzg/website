@@ -3,40 +3,37 @@
 
 chdir(__DIR__);
 
-include_once 'fns/expect_bookmark_object.php';
-
-$new_bookmark_url = 'sample bookmark url';
-$new_bookmark_title = 'sample bookmark title';
-$new_bookmark_tags = 'tag1 tag2';
-
-$manyTags = 'a b c d e f';
-
 include_once '../classes/Engine.php';
 $engine = new Engine;
 
+$url = 'sample url';
+$title = 'sample title';
+$tags = 'sample tags';
+
 $response = $engine->request('bookmark/add', [
-    'url' => $new_bookmark_url,
-    'title' => $new_bookmark_title,
-    'tags' => $manyTags,
+    'url' => $url,
+    'title' => $title,
+    'tags' => 'a b c d e f',
 ]);
 $engine->expectError('TOO_MANY_TAGS');
 
 $response = $engine->request('bookmark/add', [
-    'url' => $new_bookmark_url,
-    'title' => $new_bookmark_title,
-    'tags' => $new_bookmark_tags,
+    'url' => $url,
+    'title' => $title,
+    'tags' => $tags,
 ]);
 $engine->expectSuccess();
 $engine->expectNatural('', $response);
 
 $id = $response;
 
+include_once 'fns/expect_bookmark_object.php';
 $response = $engine->request('bookmark/get', ['id' => $id]);
 $engine->expectSuccess();
 expect_bookmark_object($engine, '', $response);
-$engine->expectValue('.url', $new_bookmark_url, $response->url);
-$engine->expectValue('.title', $new_bookmark_title, $response->title);
-$engine->expectValue('.tags', $new_bookmark_tags, $response->tags);
+$engine->expectValue('.url', $url, $response->url);
+$engine->expectValue('.title', $title, $response->title);
+$engine->expectValue('.tags', $tags, $response->tags);
 $engine->expectEquals('.insert_time', '.update_time',
     $response->insert_time, $response->update_time);
 
@@ -55,9 +52,9 @@ $response = $engine->request('bookmark/delete', ['id' => $id]);
 $engine->expectError('BOOKMARK_NOT_FOUND');
 
 $response = $engine->request('bookmark/add', [
-    'url' => $new_bookmark_url,
-    'title' => $new_bookmark_title,
-    'tags' => $new_bookmark_tags,
+    'url' => $url,
+    'title' => $title,
+    'tags' => $tags,
 ]);
 $engine->expectSuccess();
 $engine->expectNatural('', $response);

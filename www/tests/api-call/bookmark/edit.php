@@ -19,23 +19,23 @@ $id = $response;
 $response = $engine->request('bookmark/edit', ['id' => $id]);
 $engine->expectError('ENTER_URL');
 
-$edited_url = 'edited url';
-$edited_title = 'edited title';
-$edited_tags = 'edited tags';
+$url = 'edited url';
+$title = 'edited title';
+$tags = 'edited tags';
 
 $response = $engine->request('bookmark/edit', [
     'id' => $id,
-    'url' => $edited_url,
-    'title' => $edited_title,
+    'url' => $url,
+    'title' => $title,
     'tags' => 'a b c d e f',
 ]);
 $engine->expectError('TOO_MANY_TAGS');
 
 $response = $engine->request('bookmark/edit', [
     'id' => $id,
-    'url' => $edited_url,
-    'title' => $edited_title,
-    'tags' => $edited_tags,
+    'url' => $url,
+    'title' => $title,
+    'tags' => $tags,
 ]);
 $engine->expectSuccess();
 $engine->expectValue('', true, $response);
@@ -44,9 +44,9 @@ $response = $engine->request('bookmark/get', ['id' => $id]);
 $engine->expectSuccess();
 include_once 'fns/expect_bookmark_object.php';
 expect_bookmark_object($engine, '', $response);
-$engine->expectValue('.url', $edited_url, $response->url);
-$engine->expectValue('.title', $edited_title, $response->title);
-$engine->expectValue('.tags', $edited_tags, $response->tags);
+$engine->expectValue('.url', $url, $response->url);
+$engine->expectValue('.title', $title, $response->title);
+$engine->expectValue('.tags', $tags, $response->tags);
 
 $response = $engine->request('bookmark/delete', [
     'id' => $id,

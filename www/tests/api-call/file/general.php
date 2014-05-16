@@ -3,14 +3,12 @@
 
 chdir(__DIR__);
 
-include_once 'fns/expect_file_object.php';
+include_once '../classes/Engine.php';
+$engine = new Engine;
 
 $tempName = sys_get_temp_dir().'/test_'.rand();
 file_put_contents($tempName, 'test content '.rand());
 $file = new CURLFile($tempName);
-
-include_once '../classes/Engine.php';
-$engine = new Engine;
 
 $new_name = 'test file name';
 $edited_name = 'test edited name';
@@ -35,6 +33,7 @@ $response = $engine->request('file/add', [
 ]);
 $engine->expectError('FILE_ALREADY_EXISTS');
 
+include_once 'fns/expect_file_object.php';
 $response = $engine->request('file/get', [
     'id' => $id,
 ]);

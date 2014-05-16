@@ -2,7 +2,6 @@
 <?php
 
 chdir(__DIR__);
-include_once 'fns/expect_folder_object.php';
 
 include_once '../classes/Engine.php';
 $engine = new Engine;
@@ -23,6 +22,7 @@ $response = $engine->request('folder/add', [
 ]);
 $engine->expectError('FOLDER_ALREADY_EXISTS');
 
+include_once 'fns/expect_folder_object.php';
 $response = $engine->request('folder/get', [
     'id' => $id,
 ]);

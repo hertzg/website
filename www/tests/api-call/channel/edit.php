@@ -32,15 +32,15 @@ $response = $engine->request('channel/edit', [
 ]);
 $engine->expectError('CHANNEL_NAME_TOO_SHORT');
 
-$edited_channel_name = 'edit-channel-name';
-$edited_public = true;
-$edited_receive_notifications = true;
+$channel_name = 'edit-channel-name';
+$public = true;
+$receive_notifications = true;
 
 $response = $engine->request('channel/edit', [
     'id' => $id,
-    'channel_name' => $edited_channel_name,
-    'public' => $edited_public,
-    'receive_notifications' => $edited_receive_notifications,
+    'channel_name' => $channel_name,
+    'public' => $public,
+    'receive_notifications' => $receive_notifications,
 ]);
 $engine->expectSuccess();
 $engine->expectValue('', true, $response);
@@ -50,10 +50,10 @@ $response = $engine->request('channel/get', ['id' => $id]);
 $engine->expectSuccess();
 expect_channel_object($engine, '', $response);
 $engine->expectValue('.channel_name',
-    $edited_channel_name, $response->channel_name);
-$engine->expectValue('.public', $edited_public, $response->public);
+    $channel_name, $response->channel_name);
+$engine->expectValue('.public', $public, $response->public);
 $engine->expectValue('.receive_notifications',
-    $edited_receive_notifications, $response->receive_notifications);
+    $receive_notifications, $response->receive_notifications);
 
 $response = $engine->request('channel/delete', [
     'id' => $id,
