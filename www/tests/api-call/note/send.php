@@ -31,5 +31,4 @@ $response = $engine->request('note/send', [
 $engine->expectSuccess();
 $engine->expectValue('', true, $response);
 
-echo "Done\n";
-echo "$engine->numRequests requests made.\n";
+echo 'Done '.__FILE__."\n  $engine->numRequests requests made.\n";

@@ -87,4 +87,4 @@ check(7, 2, 6, 3);
 check(7, 2, 7, 2);
 check(7, 2, 8, 1);
 
-echo "Done\n";
+echo 'Done '.__FILE__."\n";
