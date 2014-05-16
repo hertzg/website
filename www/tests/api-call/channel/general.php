@@ -28,11 +28,8 @@ $edited_receive_notifications = false;
 $shortChannelName = 'short';
 $invalidChannelName = 'invalid channel name';
 
-include_once 'classes/Engine.php';
+include_once '../classes/Engine.php';
 $engine = new Engine;
-
-$response = $engine->request('channel/add');
-$engine->expectError('ENTER_CHANNEL_NAME');
 
 $response = $engine->request('channel/add', [
     'channel_name' => $invalidChannelName,
@@ -65,9 +62,6 @@ $response = $engine->request('channel/add', [
 ]);
 $engine->expectError('CHANNEL_ALREADY_EXISTS');
 
-$response = $engine->request('channel/get');
-$engine->expectError('CHANNEL_NOT_FOUND');
-
 $response = $engine->request('channel/get', ['id' => $id]);
 $engine->expectSuccess();
 expect_channel_object($engine, '', $response);
@@ -80,9 +74,6 @@ $engine->expectNatural('.insert_time', $response->insert_time);
 $engine->expectNatural('.update_time', $response->update_time);
 $engine->expectEquals('.insert_time', '.update_time',
     $response->insert_time, $response->update_time);
-
-$response = $engine->request('channel/edit');
-$engine->expectError('CHANNEL_NOT_FOUND');
 
 $response = $engine->request('channel/edit', [
     'id' => $id,

@@ -9,13 +9,13 @@ $engine = new Engine;
 $response = $engine->request('task/add');
 $engine->expectError('ENTER_TEXT');
 
-$response = $engine->request('task/get');
+$response = $engine->request('task/delete');
 $engine->expectError('TASK_NOT_FOUND');
 
 $response = $engine->request('task/edit');
 $engine->expectError('TASK_NOT_FOUND');
 
-$response = $engine->request('task/delete');
+$response = $engine->request('task/get');
 $engine->expectError('TASK_NOT_FOUND');
 
 $response = $engine->request('task/received/get');

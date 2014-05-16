@@ -3,7 +3,7 @@
 
 chdir(__DIR__);
 
-include_once 'classes/Engine.php';
+include_once '../classes/Engine.php';
 $engine = new Engine;
 
 $channel_name = 'test-channel-name';
@@ -15,9 +15,6 @@ $response = $engine->request('channel/add', [
 $engine->expectNatural('', $response);
 
 $id = $response;
-
-$response = $engine->request('notification/post');
-$engine->expectError('CHANNEL_NOT_FOUND');
 
 $response = $engine->request('notification/post', [
     'channel_name' => $channel_name,
