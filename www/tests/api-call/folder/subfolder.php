@@ -1,14 +1,8 @@
 #!/usr/bin/php
 <?php
 
-function expect_folder_object ($engine, $variableName, $folder) {
-    $engine->expectObject($variableName, ['id', 'name', 'insert_time'], $folder);
-    $engine->expectNatural("$variableName.id", $folder->id);
-    $engine->expectType("$variableName.name", 'string', $folder->name);
-    $engine->expectNatural("$variableName.insert_time", $folder->insert_time);
-}
-
 chdir(__DIR__);
+include_once 'fns/expect_folder_object.php';
 
 include_once '../classes/Engine.php';
 $engine = new Engine;
