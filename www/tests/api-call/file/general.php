@@ -69,6 +69,8 @@ $response = $engine->request('file/get', [
 $engine->expectSuccess();
 expect_file_object($engine, '', $response);
 $engine->expectValue('.name', $edited_name, $response->name);
+$engine->expectEquals('.insert_time', '.rename_time',
+    $response->insert_time, $response->rename_time);
 
 $response = $engine->request('file/list');
 $engine->expectSuccess();

@@ -35,6 +35,8 @@ $response = $engine->request('folder/get', [
 $engine->expectSuccess();
 expect_folder_object($engine, '', $response);
 $engine->expectValue('.name', $response->name, $new_name);
+$engine->expectEquals('.insert_time', '.rename_time',
+    $response->insert_time, $response->rename_time);
 
 $response = $engine->request('folder/rename');
 $engine->expectError('FOLDER_NOT_FOUND');
