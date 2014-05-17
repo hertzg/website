@@ -6,7 +6,6 @@ chdir(__DIR__);
 include_once '../classes/Engine.php';
 $engine = new Engine;
 
-$selfUsername = 'aimnadze';
 $nonExistingUsername = 'non-existing-username';
 $deniedUsername = 'giorgi';
 $allowedUsername = 'angeli';
@@ -19,12 +18,6 @@ $engine->expectSuccess();
 $engine->expectNatural('', $response);
 
 $id = $response;
-
-$response = $engine->request('note/sendExisting', [
-    'id' => $id,
-    'receiver_username' => $selfUsername,
-]);
-$engine->expectError('SENDING_TO_SELF');
 
 $response = $engine->request('note/sendExisting', [
     'id' => $id,
