@@ -2,9 +2,21 @@
 
 function get_users_connection ($mysqli, $user, $connected_id_users) {
 
+    $id_users = $user->id_users;
+    if ($id_users == $connected_id_users) {
+        return [
+            'can_send_bookmark' => true,
+            'can_send_channel' => true,
+            'can_send_contact' => true,
+            'can_send_file' => true,
+            'can_send_note' => true,
+            'can_send_task' => true,
+        ];
+    }
+
     include_once __DIR__.'/Connections/getByConnectedUser.php';
     $connection = Connections\getByConnectedUser($mysqli,
-        $user->id_users, $connected_id_users);
+        $id_users, $connected_id_users);
 
     if ($connection) {
         return [

@@ -21,15 +21,12 @@ if ($username === '') {
     if (!$receiverUser) {
         $errors[] = "A user with the username doesn't exist.";
     } else {
-        $receiver_id_users = $receiverUser->id_users;
-        if ($receiver_id_users == $id_users) {
-            $errors[] = 'You cannot send a file to yourself.';
+        include_once '../../fns/get_users_connection.php';
+        $connection = get_users_connection($mysqli, $receiverUser, $id_users);
+        if ($connection['can_send_file']) {
+            $receiver_id_users = $receiverUser->id_users;
         } else {
-            include_once '../../fns/get_users_connection.php';
-            $connection = get_users_connection($mysqli, $receiverUser, $id_users);
-            if (!$connection['can_send_file']) {
-                $errors[] = "The user isn't receiving files from you.";
-            }
+            $errors[] = "The user isn't receiving files from you.";
         }
     }
 }

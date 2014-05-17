@@ -11,15 +11,12 @@ function check_receiver ($mysqli, $id_users,
         if (!$receiverUser) {
             $errors[] = "A user with the username doesn't exist.";
         } else {
-            $receiver_id_users = $receiverUser->id_users;
-            if ($receiver_id_users == $id_users) {
-                $errors[] = 'You cannot send a note to yourself.';
+            include_once __DIR__.'/../../fns/get_users_connection.php';
+            $connection = get_users_connection($mysqli, $receiverUser, $id_users);
+            if ($connection['can_send_note']) {
+                $receiver_id_users = $receiverUser->id_users;
             } else {
-                include_once __DIR__.'/../../fns/get_users_connection.php';
-                $connection = get_users_connection($mysqli, $receiverUser, $id_users);
-                if (!$connection['can_send_note']) {
-                    $errors[] = "The user isn't receiving notes from you.";
-                }
+                $errors[] = "The user isn't receiving notes from you.";
             }
         }
     }
