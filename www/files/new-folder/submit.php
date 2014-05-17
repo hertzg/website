@@ -7,13 +7,14 @@ include_once '../../fns/require_user.php';
 $user = require_user('../../');
 $id_users = $user->id_users;
 
-include_once '../../lib/mysqli.php';
+include_once '../../fns/Folders/request.php';
+$name = Folders\request();
 
 include_once '../../fns/request_strings.php';
-list($parent_id_folders, $name) = request_strings(
-    'parent_id_folders', 'name');
+list($parent_id_folders) = request_strings('parent_id_folders');
 
 include_once '../../fns/redirect.php';
+include_once '../../lib/mysqli.php';
 
 $parent_id_folders = abs((int)$parent_id_folders);
 if ($parent_id_folders) {
@@ -23,9 +24,6 @@ if ($parent_id_folders) {
 }
 
 $errors = [];
-
-include_once '../../fns/str_collapse_spaces.php';
-$name = str_collapse_spaces($name);
 
 if ($name === '') {
     $errors[] = 'Enter folder name.';

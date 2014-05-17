@@ -8,13 +8,10 @@ include_once '../../lib/mysqli.php';
 list($folder, $id_folders, $user) = require_folder($mysqli);
 $id_users = $user->id_users;
 
-include_once '../../fns/request_strings.php';
-list($name) = request_strings('name');
+include_once '../../fns/Folders/request.php';
+$name = Folders\request();
 
 $errors = [];
-
-include_once '../../fns/str_collapse_spaces.php';
-$name = str_collapse_spaces($name);
 
 if ($name === '') {
     $errors[] = 'Enter folder name.';
