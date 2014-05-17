@@ -9,21 +9,21 @@ list($file, $id, $user) = require_file($mysqli);
 $id_users = $user->id_users;
 
 include_once '../../fns/request_strings.php';
-list($file_name) = request_strings('file_name');
+list($name) = request_strings('name');
 
 $errors = [];
 
 include_once '../../fns/str_collapse_spaces.php';
-$file_name = str_collapse_spaces($file_name);
+$name = str_collapse_spaces($name);
 
-if ($file_name === '') {
+if ($name === '') {
     $errors[] = 'Enter file name.';
 } else {
 
     include_once '../../fns/Files/getByName.php';
     include_once '../../lib/mysqli.php';
     $existingFile = Files\getByName($mysqli, $id_users,
-        $file->id_folders, $file_name, $id);
+        $file->id_folders, $name, $id);
 
     if ($existingFile) {
         $errors[] = 'A file with the same name already exists.';
@@ -35,7 +35,7 @@ include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['files/rename-file/errors'] = $errors;
-    $_SESSION['files/rename-file/values'] = ['file_name' => $file_name];
+    $_SESSION['files/rename-file/values'] = ['name' => $name];
     redirect("./?id=$id");
 }
 
@@ -45,7 +45,7 @@ unset(
 );
 
 include_once '../../fns/Files/rename.php';
-Files\rename($mysqli, $id_users, $id, $file_name);
+Files\rename($mysqli, $id_users, $id, $name);
 
 $_SESSION['files/view-file/messages'] = ['File has been renamed.'];
 redirect("../view-file/?id=$id");

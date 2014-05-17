@@ -10,8 +10,8 @@ $id_users = $user->id_users;
 include_once '../../lib/mysqli.php';
 
 include_once '../../fns/request_strings.php';
-list($parent_id_folders, $folder_name) = request_strings(
-    'parent_id_folders', 'folder_name');
+list($parent_id_folders, $name) = request_strings(
+    'parent_id_folders', 'name');
 
 include_once '../../fns/redirect.php';
 
@@ -25,19 +25,19 @@ if ($parent_id_folders) {
 $errors = [];
 
 include_once '../../fns/str_collapse_spaces.php';
-$folder_name = str_collapse_spaces($folder_name);
+$name = str_collapse_spaces($name);
 
-if ($folder_name === '') {
+if ($name === '') {
     $errors[] = 'Enter folder name.';
 } else {
     include_once '../../fns/Folders/getByName.php';
-    $folder = Folders\getByName($mysqli, $id_users, $parent_id_folders, $folder_name);
+    $folder = Folders\getByName($mysqli, $id_users, $parent_id_folders, $name);
     if ($folder) $errors[] = 'Folder with this name already exists.';
 }
 
 if ($errors) {
     $_SESSION['files/new-folder/errors'] = $errors;
-    $_SESSION['files/new-folder/values'] = ['folder_name' => $folder_name];
+    $_SESSION['files/new-folder/values'] = ['name' => $name];
     redirect("./?parent_id_folders=$parent_id_folders");
 }
 
@@ -47,7 +47,7 @@ unset(
 );
 
 include_once '../../fns/Folders/add.php';
-$id_folders = Folders\add($mysqli, $id_users, $parent_id_folders, $folder_name);
+$id_folders = Folders\add($mysqli, $id_users, $parent_id_folders, $name);
 
 unset($_SESSION['files/errors']);
 $_SESSION['files/id_folders'] = $id_folders;

@@ -9,20 +9,20 @@ list($receivedFile, $id, $user) = require_received_file($mysqli);
 $id_users = $user->id_users;
 
 include_once '../../../fns/request_strings.php';
-list($file_name) = request_strings('file_name');
+list($name) = request_strings('name');
 
 include_once '../../../fns/str_collapse_spaces.php';
-$file_name = str_collapse_spaces($file_name);
+$name = str_collapse_spaces($name);
 
 $id_folders = 0;
 $errors = [];
 
-if ($file_name === '') $errors[] = 'Enter file name.';
+if ($name === '') $errors[] = 'Enter file name.';
 
 if (!$errors) {
     include_once '../../../fns/Files/getByName.php';
     $existingFile = Files\getByName($mysqli,
-        $id_users, $id_folders, $file_name);
+        $id_users, $id_folders, $name);
     if ($existingFile) {
         $errors[] = 'A file with the same name already exists.';
     }
@@ -33,7 +33,7 @@ include_once '../../../fns/redirect.php';
 if ($errors) {
     $_SESSION['files/received/rename-and-import/errors'] = $errors;
     $_SESSION['files/received/rename-and-import/values'] = [
-        'file_name' => $file_name,
+        'name' => $name,
     ];
     redirect("./?id=$id");
 }
@@ -47,7 +47,7 @@ include_once '../../../fns/ReceivedFiles/filePath.php';
 $receivedFilePath = ReceivedFiles\filePath($id_users, $id);
 
 include_once '../../../fns/Users/Files/add.php';
-Users\Files\add($mysqli, $id_users, $id_folders, $file_name, $receivedFilePath);
+Users\Files\add($mysqli, $id_users, $id_folders, $name, $receivedFilePath);
 
 include_once '../../../fns/Users/Files/Received/delete.php';
 Users\Files\Received\delete($mysqli, $id_users, $id);

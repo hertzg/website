@@ -42,7 +42,7 @@ $content = Page\tabs(
     Form\label('Received from', htmlspecialchars($receivedFile->sender_username))
     .create_panel(
         'The File',
-        Form\label('File name', htmlspecialchars($receivedFile->file_name))
+        Form\label('File name', htmlspecialchars($receivedFile->name))
         .'<div class="hr"></div>'
         .Form\label('Size', bytestr($receivedFile->file_size))
         .'<div class="hr"></div>'

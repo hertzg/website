@@ -9,20 +9,20 @@ list($folder, $id_folders, $user) = require_folder($mysqli);
 $id_users = $user->id_users;
 
 include_once '../../fns/request_strings.php';
-list($folder_name) = request_strings('folder_name');
+list($name) = request_strings('name');
 
 $errors = [];
 
 include_once '../../fns/str_collapse_spaces.php';
-$folder_name = str_collapse_spaces($folder_name);
+$name = str_collapse_spaces($name);
 
-if ($folder_name === '') {
+if ($name === '') {
     $errors[] = 'Enter folder name.';
 } else {
 
     include_once '../../fns/Folders/getByName.php';
     $existingFolder = Folders\getByName($mysqli, $id_users,
-        $folder->parent_id_folders, $folder_name, $id_folders);
+        $folder->parent_id_folders, $name, $id_folders);
 
     if ($existingFolder) {
         $errors[] = 'Folder with this name already exists.';
@@ -35,7 +35,7 @@ include_once '../../fns/redirect.php';
 if ($errors) {
     $_SESSION['files/rename-folder/errors'] = $errors;
     $_SESSION['files/rename-folder/values'] = [
-        'folder_name' => $folder_name,
+        'name' => $name,
     ];
     redirect("./?id_folders=$id_folders");
 }
@@ -46,7 +46,7 @@ unset(
 );
 
 include_once '../../fns/Folders/rename.php';
-Folders\rename($mysqli, $id_users, $id_folders, $folder_name);
+Folders\rename($mysqli, $id_users, $id_folders, $name);
 
 unset($_SESSION['files/errors']);
 $_SESSION['files/id_folders'] = $id_folders;

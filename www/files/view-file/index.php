@@ -37,7 +37,7 @@ $content =
         ],
         "File #$id",
         Page\sessionMessages('files/view-file/messages')
-        .Form\label('File name', $file->file_name)
+        .Form\label('File name', $file->name)
         .'<div class="hr"></div>'
         .Form\label('Size', bytestr($file->file_size))
         .'<div class="hr"></div>'

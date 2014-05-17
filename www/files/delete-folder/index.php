@@ -25,7 +25,7 @@ $content = Page\tabs(
     'Files',
     Page\text(
         'Are you sure you want to delete the folder'
-        .' "<b>'.htmlspecialchars($folder->folder_name).'</b>"?'
+        .' "<b>'.htmlspecialchars($folder->name).'</b>"?'
     )
     .'<div class="hr"></div>'
     .Page\twoColumns(

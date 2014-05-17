@@ -2,12 +2,12 @@
 
 namespace Files;
 
-function rename ($mysqli, $id_users, $id, $file_name) {
+function rename ($mysqli, $id_users, $id, $name) {
 
-    $file_name = $mysqli->real_escape_string($file_name);
+    $name = $mysqli->real_escape_string($name);
     $rename_time = time();
 
-    $sql = "update files set file_name = '$file_name',"
+    $sql = "update files set name = '$name',"
         ." rename_time = $rename_time"
         ." where id_users = $id_users and id_files = $id";
 

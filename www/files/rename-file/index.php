@@ -33,8 +33,8 @@ $content = Page\tabs(
     'Rename',
     Page\sessionErrors('files/rename-file/errors')
     .'<form action="submit.php" method="post">'
-        .Form\textfield('file_name', 'File name', [
-            'value' => $values['file_name'],
+        .Form\textfield('name', 'File name', [
+            'value' => $values['name'],
             'autofocus' => true,
             'required' => true,
         ])

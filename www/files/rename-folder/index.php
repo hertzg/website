@@ -37,8 +37,8 @@ $content = Page\tabs(
     "Rename Folder #$id_folders",
     Page\sessionErrors('files/rename-folder/errors')
     .'<form action="submit.php" method="post">'
-        .Form\textfield('folder_name', 'Folder name', [
-            'value' => $values['folder_name'],
+        .Form\textfield('name', 'Folder name', [
+            'value' => $values['name'],
             'autofocus' => true,
             'required' => true,
         ])

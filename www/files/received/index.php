@@ -16,7 +16,7 @@ $receivedFiles = ReceivedFiles\indexOnReceiver($mysqli, $user->id_users);
 include_once '../../fns/Page/imageArrowLink.php';
 $items = [];
 foreach ($receivedFiles as $receivedFile) {
-    $title = htmlspecialchars($receivedFile->file_name);
+    $title = htmlspecialchars($receivedFile->name);
     $href = "view/?id=$receivedFile->id";
     $items[] = Page\imageArrowLink($title, $href, 'file');
 }

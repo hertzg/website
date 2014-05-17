@@ -2,7 +2,7 @@
 
 function create_preview ($receivedFile) {
 
-    $extension = pathinfo($receivedFile->file_name, PATHINFO_EXTENSION);
+    $extension = pathinfo($receivedFile->name, PATHINFO_EXTENSION);
     $extension = strtolower($extension);
 
     $imageRegex = 'bmp|gif|jpe?g|png|svg';

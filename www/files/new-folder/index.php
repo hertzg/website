@@ -12,7 +12,7 @@ $key = 'files/new-folder/values';
 if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];
 } else {
-    $values = ['folder_name' => ''];
+    $values = ['name' => ''];
 }
 
 $parent_id_folders = abs((int)$parent_id_folders);
@@ -55,8 +55,8 @@ $content = Page\tabs(
     'New Folder',
     Page\sessionErrors('files/new-folder/errors')
     .'<form action="submit.php" method="post">'
-        .Form\textfield('folder_name', 'Folder name', [
-            'value' => $values['folder_name'],
+        .Form\textfield('name', 'Folder name', [
+            'value' => $values['name'],
             'autofocus' => true,
             'required' => true,
         ])

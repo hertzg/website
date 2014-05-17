@@ -24,7 +24,7 @@ if ($id_folders) {
 }
 
 include_once '../../fns/Files/getByName.php';
-$existingFile = Files\getByName($mysqli, $id_users, $id_folders, $file->file_name);
+$existingFile = Files\getByName($mysqli, $id_users, $id_folders, $file->name);
 
 if ($existingFile) {
     $_SESSION['files/move-file/id_folders'] = $id_folders;

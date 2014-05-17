@@ -31,30 +31,30 @@ include_once '../../fns/Users/Files/add.php';
 $num_uploaded = 0;
 $num_failed = 0;
 foreach ([$file1, $file2, $file3] as $file) {
-    foreach ($file['name'] as $i => $file_name) {
+    foreach ($file['name'] as $i => $name) {
         $error = $file['error'][$i];
         if ($error === UPLOAD_ERR_OK) {
 
-            $file_name = str_collapse_spaces($file_name);
+            $name = str_collapse_spaces($name);
 
-            while (Files\getByName($mysqli, $id_users, $id_folders, $file_name)) {
+            while (Files\getByName($mysqli, $id_users, $id_folders, $name)) {
                 $extension = '';
-                if (preg_match('/\..*?$/', $file_name, $match)) {
-                    $file_name = preg_replace('/\..*?$/', '', $file_name);
+                if (preg_match('/\..*?$/', $name, $match)) {
+                    $name = preg_replace('/\..*?$/', '', $name);
                     $extension = $match[0];
                 }
-                if (preg_match('/_(\d+)$/', $file_name, $match)) {
-                    $file_name = preg_replace('/_\d+$/', '_'.($match[1] + 1), $file_name);
+                if (preg_match('/_(\d+)$/', $name, $match)) {
+                    $name = preg_replace('/_\d+$/', '_'.($match[1] + 1), $name);
                 } else {
-                    $file_name .= '_1';
+                    $name .= '_1';
                 }
                 if ($extension) {
-                    $file_name = "$file_name$extension";
+                    $name = "$name$extension";
                 }
             }
 
             Users\Files\add($mysqli, $id_users, $id_folders,
-                $file_name, $file['tmp_name'][$i]);
+                $name, $file['tmp_name'][$i]);
 
             $num_uploaded++;
 

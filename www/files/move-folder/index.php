@@ -41,7 +41,7 @@ if ($parent_id_folders) {
     $items[] = Page\imageLink($title, $href, 'parent-folder');
 }
 foreach ($folders as $itemFolder) {
-    $escapedName = htmlspecialchars($itemFolder->folder_name);
+    $escapedName = htmlspecialchars($itemFolder->name);
     if ($itemFolder->id_folders == $id_folders) {
         include_once '../../fns/Page/disabledImageLink.php';
         $items[] = Page\disabledImageLink($escapedName, 'folder');
@@ -85,7 +85,7 @@ $content = Page\tabs(
     'Move',
     Page\sessionErrors('files/move-folder/errors')
     .Page\warnings([
-        'Moving the folder "<b>'.htmlspecialchars($folder->folder_name).'</b>".',
+        'Moving the folder "<b>'.htmlspecialchars($folder->name).'</b>".',
         'Select a folder to move the folder into.'
     ])
     .join('<div class="hr"></div>', $items)

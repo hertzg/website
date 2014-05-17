@@ -25,7 +25,7 @@ $content = Page\tabs(
     "File #$id",
     Page\text(
         'Are you sure you want to delete the file'
-        .' "<b>'.htmlspecialchars($file->file_name).'</b>"?'
+        .' "<b>'.htmlspecialchars($file->name).'</b>"?'
     )
     .'<div class="hr"></div>'
     .Page\twoColumns(

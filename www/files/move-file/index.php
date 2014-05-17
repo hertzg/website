@@ -39,7 +39,7 @@ if ($id_folders) {
     $items[] = Page\imageLink($title, $href, 'parent-folder');
 }
 foreach ($folders as $folder) {
-    $title = htmlspecialchars($folder->folder_name);
+    $title = htmlspecialchars($folder->name);
     $href = create_href($id, $folder->id_folders);
     $items[] = Page\imageArrowLink($title, $href, 'folder');
 }
@@ -74,7 +74,7 @@ $content = Page\tabs(
     'Move',
     Page\sessionErrors('files/move-file/errors')
     .Page\warnings([
-        'Moving the file "<b>'.htmlspecialchars($file->file_name).'</b>".',
+        'Moving the file "<b>'.htmlspecialchars($file->name).'</b>".',
         'Select a folder to move the file into.',
     ])
     .join('<div class="hr"></div>', $items)
