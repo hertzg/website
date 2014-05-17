@@ -4,4 +4,5 @@ cd `dirname $BASH_SOURCE`
 ./general.php
 ./edit.php
 ./send.php
+./send-existing.php
 ./received.php
