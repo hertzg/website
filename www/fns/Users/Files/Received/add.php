@@ -13,7 +13,7 @@ function add ($mysqli, $user, $receiver_id_users, $file) {
     \ReceivedFiles\add($mysqli, $id_users, $user->username,
         $receiver_id_users, $file->file_name, $file->file_size, $filePath);
 
-    include_once __DIR__.'/../../../Users/addNumReceivedFiles.php';
-    \Users\addNumReceivedFiles($mysqli, $receiver_id_users, 1);
+    include_once __DIR__.'/addNumber.php';
+    addNumber($mysqli, $receiver_id_users, 1);
 
 }

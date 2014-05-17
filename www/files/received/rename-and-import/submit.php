@@ -52,8 +52,8 @@ Users\Files\add($mysqli, $id_users, $id_folders, $file_name, $receivedFilePath);
 include_once '../../../fns/ReceivedFiles/delete.php';
 ReceivedFiles\delete($mysqli, $id_users, $id);
 
-include_once '../../../fns/Users/addNumReceivedFiles.php';
-Users\addNumReceivedFiles($mysqli, $id_users, -1);
+include_once '../../../fns/Users/Files/Received/addNumber.php';
+Users\Files\Received\addNumber($mysqli, $id_users, -1);
 
 $messages = ['File has been imported.'];
 
