@@ -47,8 +47,8 @@ unset(
     $_SESSION['files/send-file/values']
 );
 
-include_once '../../fns/Users/Files/Received/add.php';
-Users\Files\Received\add($mysqli, $user, $receiver_id_users, $file);
+include_once '../../fns/Users/Files/send.php';
+Users\Files\send($mysqli, $user, $receiver_id_users, $file);
 
 $_SESSION['files/view-file/messages'] = ['Sent.'];
 
