@@ -8,6 +8,7 @@ function get_methods () {
         'edit' => 'Edits an existing contact.',
         'get' => 'Returns a single existing contact.',
         'list' => 'Returns a list of all contacts.',
-        'send' => 'Sends a contact.',
+        'send' => 'Sends a new contact.',
+        'sendExisting' => 'Sends an existing contact.',
     ];
 }

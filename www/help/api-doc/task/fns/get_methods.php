@@ -8,6 +8,7 @@ function get_methods () {
         'edit' => 'Edits an existing task.',
         'get' => 'Returns a single existing task.',
         'list' => 'Returns a list of all tasks.',
-        'send' => 'Sends a task.',
+        'send' => 'Sends a new task.',
+        'sendExisting' => 'Sends an existing task.',
     ];
 }

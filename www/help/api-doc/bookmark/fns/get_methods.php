@@ -8,6 +8,7 @@ function get_methods () {
         'edit' => 'Edits an existing bookmark.',
         'get' => 'Returns a single existing bookmark.',
         'list' => 'Returns a list of all bookmarks.',
-        'send' => 'Sends a bookmark.',
+        'send' => 'Sends a new bookmark.',
+        'sendExisting' => 'Sends an existing bookmark.',
     ];
 }
