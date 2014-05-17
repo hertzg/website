@@ -32,9 +32,8 @@ unset(
     $_SESSION['notes/send/values']
 );
 
-include_once '../../fns/Users/Notes/Received/add.php';
-Users\Notes\Received\add($mysqli, $id_users, $user->username,
-    $receiver_id_users, $note->text, $note->tags);
+include_once '../../fns/Users/Notes/send.php';
+Users\Notes\send($mysqli, $user, $receiver_id_users, $note);
 
 $_SESSION['notes/view/messages'] = ['Sent.'];
 redirect("../view/$itemQuery");

@@ -32,9 +32,8 @@ unset(
     $_SESSION['tasks/send/values']
 );
 
-include_once '../../fns/Users/Tasks/Received/add.php';
-Users\Tasks\Received\add($mysqli, $id_users, $user->username,
-    $receiver_id_users, $task->text, $task->top_priority, $task->tags);
+include_once '../../fns/Users/Tasks/send.php';
+Users\Tasks\send($mysqli, $user, $receiver_id_users, $task);
 
 $_SESSION['tasks/view/messages'] = ['Sent.'];
 

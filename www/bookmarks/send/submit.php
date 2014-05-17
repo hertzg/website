@@ -32,9 +32,8 @@ unset(
     $_SESSION['bookmarks/send/values']
 );
 
-include_once '../../fns/Users/Bookmarks/Received/add.php';
-Users\Bookmarks\Received\add($mysqli, $id_users, $user->username,
-    $receiver_id_users, $bookmark->url, $bookmark->title, $bookmark->tags);
+include_once '../../fns/Users/Bookmarks/send.php';
+Users\Bookmarks\send($mysqli, $user, $receiver_id_users, $bookmark);
 
 $_SESSION['bookmarks/view/messages'] = ['Sent.'];
 redirect("../view/$itemQuery");
