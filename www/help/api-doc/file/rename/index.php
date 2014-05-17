@@ -10,4 +10,4 @@ file_method_page('rename', [
         'name' => 'name',
         'description' => 'The new name of the file.',
     ],
-], ['ENTER_NAME', 'FILE_ALREADY_EXISTS']);
+], ['FILE_NOT_FOUND', 'ENTER_NAME', 'FILE_ALREADY_EXISTS']);

@@ -10,4 +10,4 @@ folder_method_page('rename', [
         'name' => 'name',
         'description' => 'The new name of the folder.',
     ],
-], ['ENTER_NAME', 'FOLDER_ALREADY_EXISTS']);
+], ['FOLDER_NOT_FOUND', 'ENTER_NAME', 'FOLDER_ALREADY_EXISTS']);
