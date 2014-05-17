@@ -47,15 +47,8 @@ unset(
     $_SESSION['files/send-file/values']
 );
 
-include_once '../../fns/Files/filePath.php';
-$filePath = Files\filePath($id_users, $id);
-
-include_once '../../fns/ReceivedFiles/add.php';
-ReceivedFiles\add($mysqli, $id_users, $user->username,
-    $receiver_id_users, $file->file_name, $file->file_size, $filePath);
-
-include_once '../../fns/Users/addNumReceivedFiles.php';
-Users\addNumReceivedFiles($mysqli, $receiver_id_users, 1);
+include_once '../../fns/Users/Files/Received/add.php';
+Users\Files\Received\add($mysqli, $user, $receiver_id_users, $file);
 
 $_SESSION['files/view-file/messages'] = ['Sent.'];
 
