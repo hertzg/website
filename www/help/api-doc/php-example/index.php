@@ -31,7 +31,7 @@ $content = Page\tabs(
         ],
     ],
     'PHP Example',
-    Page\text('Below is a PHP code that calls an example method:')
+    Page\text('Below is a PHP code that calls an example API method:')
     .'<div class="hr"></div>'
     .Page\phpCode(
         highlight(file_get_contents('code'))
