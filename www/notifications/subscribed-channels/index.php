@@ -6,6 +6,7 @@ include_once '../../fns/require_user.php';
 $user = require_user($base);
 
 unset(
+    $_SESSION['notifications/messages'],
     $_SESSION['notifications/subscribed-channels/subscribe/errors'],
     $_SESSION['notifications/subscribed-channels/subscribe/values'],
     $_SESSION['notifications/subscribed-channels/view/messages']
