@@ -8,31 +8,31 @@ contact_method_page('edit', [
     ],
     [
         'name' => 'full_name',
-        'description' => 'The full name of the contact.',
+        'description' => 'The new full name of the contact.',
     ],
     [
         'name' => 'alias',
-        'description' => 'The alias of the contact.',
+        'description' => 'The new alias of the contact.',
     ],
     [
         'name' => 'address',
-        'description' => 'The address of the contact.',
+        'description' => 'The new address of the contact.',
     ],
     [
         'name' => 'phone1',
-        'description' => 'The primary phone number of the contact.',
+        'description' => 'The new primary phone number of the contact.',
     ],
     [
         'name' => 'phone2',
-        'description' => 'The secondary phone number of the contact.',
+        'description' => 'The new secondary phone number of the contact.',
     ],
     [
         'name' => 'birthday_time',
-        'description' => 'The Unix timestamp of the birthday of the contact.',
+        'description' => 'The new Unix timestamp of the birthday of the contact.',
     ],
     [
         'name' => 'username',
-        'description' => 'The Zvini username of the contact.',
+        'description' => 'The new Zvini username of the contact.',
     ],
     [
         'name' => 'tags',

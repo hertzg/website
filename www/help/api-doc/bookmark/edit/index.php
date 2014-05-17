@@ -8,11 +8,11 @@ bookmark_method_page('edit', [
     ],
     [
         'name' => 'url',
-        'description' => 'The URL of the bookmark.',
+        'description' => 'The new URL of the bookmark.',
     ],
     [
         'name' => 'title',
-        'description' => 'The title of the bookmark.',
+        'description' => 'The new title of the bookmark.',
     ],
     [
         'name' => 'tags',

@@ -8,7 +8,7 @@ channel_method_page('edit', [
     ],
     [
         'name' => 'channel_name',
-        'description' => 'The name of the channel.',
+        'description' => 'The new name of the channel.',
     ],
     [
         'name' => 'public',

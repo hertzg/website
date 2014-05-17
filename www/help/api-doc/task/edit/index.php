@@ -8,7 +8,7 @@ task_method_page('edit', [
     ],
     [
         'name' => 'text',
-        'description' => 'The text of the task.',
+        'description' => 'The new text of the task.',
     ],
     [
         'name' => 'tags',

@@ -8,7 +8,7 @@ note_method_page('edit', [
     ],
     [
         'name' => 'text',
-        'description' => 'The text of the note.',
+        'description' => 'The new text of the note.',
     ],
     [
         'name' => 'tags',
