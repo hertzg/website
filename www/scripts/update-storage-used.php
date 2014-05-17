@@ -8,7 +8,7 @@ include_once '../lib/mysqli.php';
 
 $microtime = microtime(true);
 
-$sql = 'select users.id_users, sum(file_size) storage_used from users'
+$sql = 'select users.id_users, sum(size) storage_used from users'
     .' left join files on users.id_users = files.id_users'
     .' group by users.id_users';
 $users = mysqli_query_object($mysqli, $sql);

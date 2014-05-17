@@ -44,7 +44,7 @@ $content = Page\tabs(
         'The File',
         Form\label('File name', htmlspecialchars($receivedFile->name))
         .'<div class="hr"></div>'
-        .Form\label('Size', bytestr($receivedFile->file_size))
+        .Form\label('Size', bytestr($receivedFile->size))
         .'<div class="hr"></div>'
         .Form\label('Preview', create_preview($receivedFile))
         .Page\infoText('File received '.date_ago($receivedFile->insert_time).'.')

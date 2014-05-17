@@ -2,16 +2,16 @@
 
 namespace Files;
 
-function add ($mysqli, $id_users, $id_folders, $name, $file_size, $sourcePath) {
+function add ($mysqli, $id_users, $id_folders, $name, $size, $sourcePath) {
 
     $name = $mysqli->real_escape_string($name);
     $insert_time = $rename_time = time();
 
     $sql = 'insert into files'
         .' (id_users, id_folders, name,'
-        .' file_size, insert_time, rename_time)'
+        .' size, insert_time, rename_time)'
         ." value ($id_users, $id_folders, '$name',"
-        ." $file_size, $insert_time, $rename_time)";
+        ." $size, $insert_time, $rename_time)";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 

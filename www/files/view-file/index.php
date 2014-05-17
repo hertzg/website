@@ -39,7 +39,7 @@ $content =
         Page\sessionMessages('files/view-file/messages')
         .Form\label('File name', $file->name)
         .'<div class="hr"></div>'
-        .Form\label('Size', bytestr($file->file_size))
+        .Form\label('Size', bytestr($file->size))
         .'<div class="hr"></div>'
         .Form\label('Preview', create_preview($file))
         .Page\infoText('File uploaded '.date_ago($file->insert_time))

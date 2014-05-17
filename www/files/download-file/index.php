@@ -16,7 +16,7 @@ if ($contentType === '') $contentType = 'application/x-octet-stream';
 
 header('Content-Disposition: attachment; filename="'.addslashes($file->name).'"');
 header("Content-Type: $contentType");
-header("Content-Length: $file->file_size");
+header("Content-Length: $file->size");
 
 include_once '../../fns/Files/filePath.php';
 readfile(Files\filePath($user->id_users, $id));
