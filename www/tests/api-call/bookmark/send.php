@@ -6,10 +6,16 @@ chdir(__DIR__);
 include_once '../classes/Engine.php';
 $engine = new Engine;
 
+$selfUsername = 'aimnadze';
 $nonExistingUsername = 'non-existing-username';
 $deniedUsername = 'giorgi';
 $allowedUsername = 'angeli';
 $url = 'sample url';
+
+$response = $engine->request('bookmark/send', [
+    'receiver_username' => $selfUsername,
+]);
+$engine->expectError('SENDING_TO_SELF');
 
 $response = $engine->request('bookmark/send', [
     'receiver_username' => $nonExistingUsername,
