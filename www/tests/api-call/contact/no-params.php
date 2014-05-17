@@ -27,4 +27,7 @@ $engine->expectError('RECEIVED_CONTACT_NOT_FOUND');
 $response = $engine->request('contact/send');
 $engine->expectError('ENTER_RECEIVER_USERNAME');
 
+$response = $engine->request('contact/sendExisting');
+$engine->expectError('CONTACT_NOT_FOUND');
+
 echo 'Done '.__FILE__."\n  $engine->numRequests requests made.\n";
