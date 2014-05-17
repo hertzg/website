@@ -9,7 +9,7 @@ $engine = new Engine;
 $nonExistingUsername = 'non-existing-username';
 $deniedUsername = 'giorgi';
 $allowedUsername = 'angeli';
-$sent_contact_full_name = 'sent contact full_name';
+$full_name = 'sample full_name';
 
 $response = $engine->request('contact/send', [
     'receiver_username' => $nonExistingUsername,
@@ -23,7 +23,7 @@ $engine->expectError('RECEIVER_NOT_RECEIVING');
 
 $response = $engine->request('contact/send', [
     'receiver_username' => $allowedUsername,
-    'full_name' => $sent_contact_full_name,
+    'full_name' => $full_name,
 ]);
 $engine->expectSuccess();
 $engine->expectValue('', true, $response);

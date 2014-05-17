@@ -9,7 +9,7 @@ $engine = new Engine;
 $nonExistingUsername = 'non-existing-username';
 $deniedUsername = 'giorgi';
 $allowedUsername = 'angeli';
-$sent_note_text = 'sent note text';
+$text = 'sample text';
 
 $response = $engine->request('note/send', [
     'receiver_username' => $nonExistingUsername,
@@ -23,7 +23,7 @@ $engine->expectError('RECEIVER_NOT_RECEIVING');
 
 $response = $engine->request('note/send', [
     'receiver_username' => $allowedUsername,
-    'text' => $sent_note_text,
+    'text' => $text,
 ]);
 $engine->expectSuccess();
 $engine->expectValue('', true, $response);
