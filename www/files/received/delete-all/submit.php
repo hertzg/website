@@ -7,12 +7,9 @@ include_once '../fns/require_received_files.php';
 $user = require_received_files('../');
 $id_users = $user->id_users;
 
-include_once '../../../fns/ReceivedFiles/deleteOnReceiver.php';
+include_once '../../../fns/Users/Files/Received/deleteAll.php';
 include_once '../../../lib/mysqli.php';
-ReceivedFiles\deleteOnReceiver($mysqli, $id_users);
-
-include_once '../../../fns/Users/clearNumReceivedFiles.php';
-Users\clearNumReceivedFiles($mysqli, $id_users);
+Users\Files\Received\deleteAll($mysqli, $id_users);
 
 unset($_SESSION['files/errors']);
 $_SESSION['files/messages'] = [
