@@ -8,11 +8,8 @@ include_once '../../../lib/mysqli.php';
 list($receivedFile, $id, $user) = require_received_file($mysqli);
 $id_users = $user->id_users;
 
-include_once '../../../fns/ReceivedFiles/delete.php';
-ReceivedFiles\delete($mysqli, $id_users, $id);
-
-include_once '../../../fns/Users/Files/Received/addNumber.php';
-Users\Files\Received\addNumber($mysqli, $id_users, -1);
+include_once '../../../fns/Users/Files/Received/delete.php';
+Users\Files\Received\delete($mysqli, $id_users, $id);
 
 $messages = ['File has been deleted.'];
 include_once '../../../fns/redirect.php';

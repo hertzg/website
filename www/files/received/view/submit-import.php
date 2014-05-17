@@ -35,11 +35,8 @@ while (Files\getByName($mysqli, $id_users, $id_folders, $file_name)) {
 include_once '../../../fns/Users/Files/add.php';
 Users\Files\add($mysqli, $id_users, $id_folders, $file_name, $receivedFilePath);
 
-include_once '../../../fns/ReceivedFiles/delete.php';
-ReceivedFiles\delete($mysqli, $id_users, $id);
-
-include_once '../../../fns/Users/Files/Received/addNumber.php';
-Users\Files\Received\addNumber($mysqli, $id_users, -1);
+include_once '../../../fns/Users/Files/Received/delete.php';
+Users\Files\Received\delete($mysqli, $id_users, $id);
 
 $messages = ['File has been imported.'];
 include_once '../../../fns/redirect.php';
