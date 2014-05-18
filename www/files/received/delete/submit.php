@@ -6,10 +6,9 @@ require_same_domain_referer('../..');
 include_once '../fns/require_received_file.php';
 include_once '../../../lib/mysqli.php';
 list($receivedFile, $id, $user) = require_received_file($mysqli);
-$id_users = $user->id_users;
 
 include_once '../../../fns/Users/Files/Received/delete.php';
-Users\Files\Received\delete($mysqli, $id_users, $id);
+Users\Files\Received\delete($mysqli, $receivedFile);
 
 $messages = ['File has been deleted.'];
 include_once '../../../fns/redirect.php';

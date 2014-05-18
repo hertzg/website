@@ -36,7 +36,7 @@ include_once '../../../fns/Users/Files/add.php';
 Users\Files\add($mysqli, $id_users, $id_folders, $name, $receivedFilePath);
 
 include_once '../../../fns/Users/Files/Received/delete.php';
-Users\Files\Received\delete($mysqli, $id_users, $id);
+Users\Files\Received\delete($mysqli, $receivedFile);
 
 $messages = ['File has been imported.'];
 include_once '../../../fns/redirect.php';
