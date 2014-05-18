@@ -7,5 +7,7 @@ function get_methods () {
         'get' => 'Returns a single existing file.',
         'list' => 'Returns a list of files.',
         'rename' => 'Renames an existing file.',
+        'send' => 'Sends a new file.',
+        'sendExisting' => 'Sends an existing file.',
     ];
 }
