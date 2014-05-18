@@ -54,6 +54,12 @@ foreach ($ids as $id) {
     $engine->expectSuccess();
     expect_received_file_object($engine, '', $response);
 
+    $response = $engine->download('file/received/download', [
+        'id' => $id,
+    ]);
+    $engine->expectSuccess();
+    $engine->expectType('', 'string', $response);
+
     $response = $engine->request('file/received/delete', [
         'id' => $id,
     ]);
