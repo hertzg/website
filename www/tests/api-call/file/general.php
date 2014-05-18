@@ -6,8 +6,10 @@ chdir(__DIR__);
 include_once '../classes/Engine.php';
 $engine = new Engine;
 
+$content = 'test content '.rand();
+
 $tempName = sys_get_temp_dir().'/test_'.rand();
-file_put_contents($tempName, 'test content '.rand());
+file_put_contents($tempName, $content);
 $file = new CURLFile($tempName);
 
 $new_name = 'test file name';
@@ -40,6 +42,12 @@ $response = $engine->request('file/get', [
 $engine->expectSuccess();
 expect_file_object($engine, '', $response);
 $engine->expectValue('.name', $new_name, $response->name);
+
+$response = $engine->download('file/download', [
+    'id' => $id,
+]);
+$engine->expectSuccess();
+$engine->expectValue('', $content, $response);
 
 $response = $engine->request('file/rename', [
     'id' => $id,

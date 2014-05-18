@@ -1,6 +1,8 @@
 <?php
 
 include_once __DIR__.'/execCurl.php';
+include_once __DIR__.'/execJsonCurl.php';
+include_once __DIR__.'/execOctetCurl.php';
 include_once __DIR__.'/expectGreater.php';
 include_once __DIR__.'/expectObject.php';
 include_once __DIR__.'/expectType.php';
@@ -9,6 +11,8 @@ include_once __DIR__.'/expectValue.php';
 class Engine {
 
     use execCurl;
+    use execJsonCurl;
+    use execOctetCurl;
     use expectGreater;
     use expectObject;
     use expectType;
@@ -25,6 +29,22 @@ class Engine {
     private $url;
     private $response;
     private $rawResponse;
+
+    function download ($method, array $params = []) {
+
+        $this->method = $method;
+        $this->params = $params;
+        $this->url = $this->api_base.$method;
+
+        $response = $this->execJsonCurl($this->url, $params);
+        $this->expectStatus(403);
+        $this->expectValue('', 'INVALID_API_KEY', $response);
+
+        $params['api_key'] = $this->api_key;
+        $this->response = $this->execOctetCurl($this->url, $params);
+        return $this->response;
+
+    }
 
     function error ($text) {
         echo "ERROR in $this->method\n"
@@ -79,12 +99,12 @@ class Engine {
         $this->params = $params;
         $this->url = $this->api_base.$method;
 
-        $response = $this->execCurl($this->url, $params);
+        $response = $this->execJsonCurl($this->url, $params);
         $this->expectStatus(403);
         $this->expectValue('', 'INVALID_API_KEY', $response);
 
         $params['api_key'] = $this->api_key;
-        $this->response = $this->execCurl($this->url, $params);
+        $this->response = $this->execJsonCurl($this->url, $params);
         return $this->response;
 
     }

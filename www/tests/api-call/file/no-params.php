@@ -9,6 +9,9 @@ $engine = new Engine;
 $response = $engine->request('file/add');
 $engine->expectError('ENTER_NAME');
 
+$response = $engine->request('file/download');
+$engine->expectError('FILE_NOT_FOUND');
+
 $response = $engine->request('file/delete');
 $engine->expectError('FILE_NOT_FOUND');
 

@@ -1,7 +1,7 @@
 <?php
 
 trait execCurl {
-    private function execCurl ($url, $params) {
+    private function execCurl ($url, $params, $expectedContentType) {
 
         if ($this->ch) curl_close($this->ch);
 
@@ -15,14 +15,12 @@ trait execCurl {
         $this->numRequests++;
 
         $contentType = curl_getinfo($this->ch, CURLINFO_CONTENT_TYPE);
-        if ($contentType != 'application/json') {
+        if ($contentType != $expectedContentType) {
             $this->error(
-                "Expected content type application/json."
+                "Expected content type $expectedContentType."
                 ." $contentType received."
             );
         }
-
-        return json_decode($this->rawResponse);
 
     }
 }
