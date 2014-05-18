@@ -31,7 +31,7 @@ $response = $engine->request('notification/list');
 $engine->expectSuccess();
 $engine->expectType('', 'array', $response);
 foreach ($response as $i => $notification) {
-    $properties = ['notification_text', 'channel_name', 'insert_time'];
+    $properties = ['id', 'notification_text', 'channel_name', 'insert_time'];
     $engine->expectObject("[$i]", $properties, $notification);
     $engine->expectType("[$i].notification_text",
         'string', $notification->notification_text);

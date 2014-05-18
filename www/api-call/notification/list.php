@@ -10,6 +10,7 @@ header('Content-Type: application/json');
 echo json_encode(
     array_map(function ($notification) {
         return [
+            'id' => $notification->id,
             'notification_text' => $notification->notification_text,
             'channel_name' => $notification->channel_name,
             'insert_time' => (int)$notification->insert_time,
