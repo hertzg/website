@@ -79,6 +79,6 @@ $response = $engine->request('file/get', [
 ]);
 $engine->expectError('FILE_NOT_FOUND');
 
-unset($tempName);
+unlink($tempName);
 
 echo 'Done '.__FILE__."\n  $engine->numRequests requests made.\n";

@@ -18,4 +18,7 @@ $engine->expectError('FILE_NOT_FOUND');
 $response = $engine->request('file/rename');
 $engine->expectError('FILE_NOT_FOUND');
 
+$response = $engine->request('file/send');
+$engine->expectError('ENTER_RECEIVER_USERNAME');
+
 echo 'Done '.__FILE__."\n  $engine->numRequests requests made.\n";
