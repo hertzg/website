@@ -7,17 +7,8 @@ include_once '../fns/require_received_note.php';
 include_once '../../../lib/mysqli.php';
 list($receivedNote, $id, $user) = require_received_note($mysqli);
 
-$text = $receivedNote->text;
-$tags = $receivedNote->tags;
-
-include_once '../../../fns/Tags/parse.php';
-$tag_names = Tags\parse($tags);
-
-include_once '../../../fns/Users/Notes/add.php';
-Users\Notes\add($mysqli, $user->id_users, $text, $tags, $tag_names);
-
-include_once '../../../fns/Users/Notes/Received/delete.php';
-Users\Notes\Received\delete($mysqli, $receivedNote);
+include_once '../../../fns/Users/Notes/Received/import.php';
+Users\Notes\Received\import($mysqli, $receivedNote);
 
 $messages = ['Note has been imported.'];
 include_once '../../../fns/redirect.php';
