@@ -87,23 +87,8 @@ if ($notifications) {
 include_once 'fns/unset_session_vars.php';
 unset_session_vars();
 
-include_once '../fns/create_panel.php';
-include_once '../fns/Page/tabs.php';
-include_once '../fns/Page/sessionErrors.php';
-include_once '../fns/Page/sessionMessages.php';
-$content = Page\tabs(
-    [
-        [
-            'title' => 'Home',
-            'href' => '../home/',
-        ],
-    ],
-    'Notifications',
-    Page\sessionErrors('notifications/errors')
-    .Page\sessionMessages('notifications/messages')
-    .join('<div class="hr"></div>', $items)
-    .create_panel('Options', join('<div class="hr"></div>', $options))
-);
+include_once 'fns/create_content.php';
+$content = create_content($items, $options);
 
 include_once '../fns/echo_page.php';
 echo_page($user, 'Notifications', $content, $base);
