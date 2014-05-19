@@ -24,5 +24,10 @@ if (curl_getinfo($ch, CURLINFO_HTTP_CODE) != 200) {
     die('ERROR: '.$response);
 }
 
-$response = json_decode($response);
+// decode json
+$contentType = curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
+if ($contentType == 'application/json') {
+    $response = json_decode($response);
+}
+
 // do something with the response

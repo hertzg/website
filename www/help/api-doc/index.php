@@ -39,12 +39,13 @@ $content = Page\tabs(
             .' and delete user data using HTTP and JSON.'
             .' Programs are given API keys with which they call API methods.'
             .' The API methods can be called with either GET or POST methods.'
-            .' The methods parameters can be passes either in'
+            .' The methods parameters can be passed either in'
             .' a query string or as a URL-encoded form data'
             .' or as a multipart form data. The API key parameter'
             .' <code>api_key</code> should be present in all requests.'
             ." The base URL of all the API methods is <code>$api_base</code>."
-            .' The response returned from the server is always a JSON document.'
+            .' The response returned from the server is either a JSON document'
+            .' or binary data in case of file downloads.'
             .' Click below to see a PHP example code that calls an API method.'
         .'</div>'
     )
