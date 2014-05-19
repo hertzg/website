@@ -35,8 +35,10 @@ foreach ($users as $user) {
     $num_events = user_rows($mysqli, 'events', $id_users);
     $num_notes = user_rows($mysqli, 'notes', $id_users);
     $num_notifications = user_rows($mysqli, 'notifications', $id_users);
-    $num_received_bookmarks = receiver_user_rows($mysqli, 'received_bookmarks', $id_users);
-    $num_received_contacts = receiver_user_rows($mysqli, 'received_contacts', $id_users);
+    $num_received_bookmarks = receiver_user_rows(
+        $mysqli, 'received_bookmarks', $id_users);
+    $num_received_contacts = receiver_user_rows(
+        $mysqli, 'received_contacts', $id_users);
     $num_received_files = receiver_user_rows($mysqli, 'received_files', $id_users);
     $num_received_notes = receiver_user_rows($mysqli, 'received_notes', $id_users);
     $num_received_tasks = receiver_user_rows($mysqli, 'received_tasks', $id_users);

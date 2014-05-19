@@ -3,7 +3,9 @@
 include_once __DIR__.'/execCurl.php';
 include_once __DIR__.'/execJsonCurl.php';
 include_once __DIR__.'/execOctetCurl.php';
+include_once __DIR__.'/expectEquals.php';
 include_once __DIR__.'/expectGreater.php';
+include_once __DIR__.'/expectNatural.php';
 include_once __DIR__.'/expectObject.php';
 include_once __DIR__.'/expectType.php';
 include_once __DIR__.'/expectValue.php';
@@ -13,7 +15,9 @@ class Engine {
     use execCurl;
     use execJsonCurl;
     use execOctetCurl;
+    use expectEquals;
     use expectGreater;
+    use expectNatural;
     use expectObject;
     use expectType;
     use expectValue;
@@ -59,28 +63,9 @@ class Engine {
         exit(1);
     }
 
-    function expectEquals ($variableName1, $variableName2, $value1, $value2) {
-        if ($value1 !== $value2) {
-            $this->error(
-                "response$variableName1 should have been"
-                ." equal to response$variableName2."
-            );
-        }
-    }
-
     function expectError ($error) {
         $this->expectStatus(400);
         $this->expectValue('', $error, $this->response);
-    }
-
-    function expectNatural ($variableName, $value) {
-        $this->expectType($variableName, 'integer', $value);
-        if ($value <= 0) {
-            $this->error(
-                "Expected response$variableName to be"
-                ." a natural number. $value received."
-            );
-        }
     }
 
     private function expectStatus ($expectedStatus) {
