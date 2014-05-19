@@ -7,6 +7,7 @@ include_once __DIR__.'/expectEquals.php';
 include_once __DIR__.'/expectGreater.php';
 include_once __DIR__.'/expectNatural.php';
 include_once __DIR__.'/expectObject.php';
+include_once __DIR__.'/expectStatus.php';
 include_once __DIR__.'/expectType.php';
 include_once __DIR__.'/expectValue.php';
 
@@ -19,6 +20,7 @@ class Engine {
     use expectGreater;
     use expectNatural;
     use expectObject;
+    use expectStatus;
     use expectType;
     use expectValue;
 
@@ -66,16 +68,6 @@ class Engine {
     function expectError ($error) {
         $this->expectStatus(400);
         $this->expectValue('', $error, $this->response);
-    }
-
-    private function expectStatus ($expectedStatus) {
-        $status = curl_getinfo($this->ch, CURLINFO_HTTP_CODE);
-        if ($status != $expectedStatus) {
-            $this->error(
-                "Expected HTTP status $expectedStatus."
-                ." Status $status received."
-            );
-        }
     }
 
     function expectSuccess () {
