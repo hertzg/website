@@ -24,6 +24,9 @@ $engine->expectError('RECEIVED_BOOKMARK_NOT_FOUND');
 $response = $engine->request('bookmark/received/delete');
 $engine->expectError('RECEIVED_BOOKMARK_NOT_FOUND');
 
+$response = $engine->request('bookmark/received/import');
+$engine->expectError('RECEIVED_BOOKMARK_NOT_FOUND');
+
 $response = $engine->request('bookmark/send');
 $engine->expectError('ENTER_RECEIVER_USERNAME');
 

@@ -1,45 +1,12 @@
 #!/usr/bin/php
 <?php
 
-function expect_received_bookmark_object ($engine,
-    $variableName, $receivedBookmark) {
-
-    $properties = ['id', 'sender_username',
-        'url', 'title', 'tags', 'insert_time'];
-    $engine->expectObject($variableName, $properties, $receivedBookmark);
-    $engine->expectNatural("$variableName.id", $receivedBookmark->id);
-    $engine->expectType("$variableName.sender_username",
-        'string', $receivedBookmark->sender_username);
-    $engine->expectType("$variableName.url", 'string', $receivedBookmark->url);
-    $engine->expectType("$variableName.title",
-        'string', $receivedBookmark->title);
-    $engine->expectType("$variableName.tags",
-        'string', $receivedBookmark->tags);
-    $engine->expectNatural("$variableName.insert_time",
-        $receivedBookmark->insert_time);
-
-}
-
-function receive () {
-
-    include_once '../fns/get_sender_engine.php';
-    $engine = get_sender_engine();
-
-    $engine->request('bookmark/send', [
-        'url' => 'sample url',
-        'title' => 'sample title',
-        'tags' => 'tag1 tag2',
-        'receiver_username' => 'aimnadze',
-    ]);
-    $engine->expectSuccess();
-
-}
-
 chdir(__DIR__);
 
 include_once '../fns/get_main_engine.php';
 $engine = get_main_engine();
 
+include_once 'fns/receive.php';
 receive();
 
 $ids = [];
@@ -47,6 +14,7 @@ $ids = [];
 $response = $engine->request('bookmark/received/list');
 $engine->expectSuccess();
 $engine->expectType('', 'array', $response);
+include_once 'fns/expect_received_bookmark_object.php';
 foreach ($response as $i => $receivedBookmark) {
     expect_received_bookmark_object($engine, "[$i]", $receivedBookmark);
     $ids[] = $receivedBookmark->id;

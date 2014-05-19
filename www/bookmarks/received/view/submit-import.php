@@ -7,18 +7,8 @@ include_once '../fns/require_received_bookmark.php';
 include_once '../../../lib/mysqli.php';
 list($receivedBookmark, $id, $user) = require_received_bookmark($mysqli);
 
-$url = $receivedBookmark->url;
-$title = $receivedBookmark->title;
-$tags = $receivedBookmark->tags;
-
-include_once '../../../fns/Tags/parse.php';
-$tag_names = Tags\parse($tags);
-
-include_once '../../../fns/Users/Bookmarks/add.php';
-Users\Bookmarks\add($mysqli, $user->id_users, $url, $title, $tags, $tag_names);
-
-include_once '../../../fns/Users/Bookmarks/Received/delete.php';
-Users\Bookmarks\Received\delete($mysqli, $receivedBookmark);
+include_once '../../../fns/Users/Bookmarks/Received/import.php';
+Users\Bookmarks\Received\import($mysqli, $receivedBookmark);
 
 $messages = ['Bookmark has been imported.'];
 include_once '../../../fns/redirect.php';
