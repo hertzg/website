@@ -14,13 +14,21 @@ unset(
     $_SESSION['files/send-file/values']
 );
 
+$insert_time = $file->insert_time;
+$rename_time = $file->rename_time;
+include_once '../../fns/date_ago.php';
+$text = '<div>File uploaded '.date_ago($insert_time).'.</div>';
+if ($rename_time > $insert_time) {
+    $text .= '<div>Last renamed '.date_ago($rename_time).'.</div>';
+}
+include_once '../../fns/Page/infoText.php';
+$infoText = Page\infoText($text);
+
 include_once 'fns/create_options_panel.php';
 include_once 'fns/create_preview.php';
 include_once '../../fns/bytestr.php';
 include_once '../../fns/create_folder_link.php';
 include_once '../../fns/Page/tabs.php';
-include_once '../../fns/date_ago.php';
-include_once '../../fns/Page/infoText.php';
 include_once '../../fns/Form/label.php';
 include_once '../../fns/Page/sessionMessages.php';
 $content =
@@ -42,7 +50,7 @@ $content =
         .Form\label('Size', bytestr($file->size))
         .'<div class="hr"></div>'
         .Form\label('Preview', create_preview($file))
-        .Page\infoText('File uploaded '.date_ago($file->insert_time))
+        .$infoText
     )
     .create_options_panel($file);
 
