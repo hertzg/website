@@ -3,8 +3,8 @@
 
 chdir(__DIR__);
 
-include_once '../classes/Engine.php';
-$engine = new Engine;
+include_once '../fns/get_main_engine.php';
+$engine = get_main_engine();
 
 $response = $engine->request('bookmark/add');
 $engine->expectError('ENTER_URL');

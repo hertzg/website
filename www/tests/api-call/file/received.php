@@ -18,8 +18,9 @@ function receive () {
     file_put_contents($tempName, 'test content '.rand());
     $file = new CURLFile($tempName);
 
-    $engine = new Engine;
-    $engine->api_key = '85e35f1bba845b05e33ef3ee2f990eed1a43158fa48049e6ffe74234f222731e';
+    include_once '../fns/get_sender_engine.php';
+    $engine = get_sender_engine();
+
     $engine->request('file/send', [
         'name' => 'sample name',
         'file' => $file,
@@ -31,8 +32,8 @@ function receive () {
 
 chdir(__DIR__);
 
-include_once '../classes/Engine.php';
-$engine = new Engine;
+include_once '../fns/get_main_engine.php';
+$engine = get_main_engine();
 
 receive();
 

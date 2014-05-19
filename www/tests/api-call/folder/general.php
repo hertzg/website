@@ -3,8 +3,8 @@
 
 chdir(__DIR__);
 
-include_once '../classes/Engine.php';
-$engine = new Engine;
+include_once '../fns/get_main_engine.php';
+$engine = get_main_engine();
 
 $new_name = 'test folder name';
 $edited_name = 'edited folder name';

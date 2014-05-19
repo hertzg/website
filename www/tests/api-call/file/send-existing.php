@@ -3,8 +3,8 @@
 
 chdir(__DIR__);
 
-include_once '../classes/Engine.php';
-$engine = new Engine;
+include_once '../fns/get_main_engine.php';
+$engine = get_main_engine();
 
 $tempName = sys_get_temp_dir().'/test_'.rand();
 file_put_contents($tempName, 'test content '.rand());

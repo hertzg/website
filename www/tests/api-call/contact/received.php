@@ -25,8 +25,10 @@ function expect_received_contact_object ($engine, $variableName, $receivedContac
 }
 
 function receive () {
-    $engine = new Engine;
-    $engine->api_key = '85e35f1bba845b05e33ef3ee2f990eed1a43158fa48049e6ffe74234f222731e';
+
+    include_once '../fns/get_sender_engine.php';
+    $engine = get_sender_engine();
+
     $engine->request('contact/send', [
         'full_name' => 'sample full_name',
         'alias' => 'sample alias',
@@ -41,12 +43,13 @@ function receive () {
         'receiver_username' => 'aimnadze',
     ]);
     $engine->expectSuccess();
+
 }
 
 chdir(__DIR__);
 
-include_once '../classes/Engine.php';
-$engine = new Engine;
+include_once '../fns/get_main_engine.php';
+$engine = get_main_engine();
 
 receive();
 

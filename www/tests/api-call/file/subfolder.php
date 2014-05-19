@@ -9,8 +9,8 @@ $tempName = sys_get_temp_dir().'/test_'.rand();
 file_put_contents($tempName, 'test content '.rand());
 $file = new CURLFile($tempName);
 
-include_once '../classes/Engine.php';
-$engine = new Engine;
+include_once '../fns/get_main_engine.php';
+$engine = get_main_engine();
 
 $new_name = 'test file name';
 

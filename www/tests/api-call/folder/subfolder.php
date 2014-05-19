@@ -4,8 +4,8 @@
 chdir(__DIR__);
 include_once 'fns/expect_folder_object.php';
 
-include_once '../classes/Engine.php';
-$engine = new Engine;
+include_once '../fns/get_main_engine.php';
+$engine = get_main_engine();
 
 $response = $engine->request('folder/add', [
     'name' => 'wrapper folder',

@@ -21,7 +21,7 @@ class Engine {
     public $numRequests = 0;
 
     private $api_base = 'http://localhost/sites/zvini.com/www/api-call/';
-    public $api_key = 'bb4a051b6eb44a85eadfde4a81c414f8a4e64cf44ec94b722a6da49b01318456';
+    public $api_key;
 
     private $ch;
     private $method;
@@ -29,6 +29,10 @@ class Engine {
     private $url;
     private $response;
     private $rawResponse;
+
+    function __construct ($api_key) {
+        $this->api_key = $api_key;
+    }
 
     function download ($method, array $params = []) {
 
