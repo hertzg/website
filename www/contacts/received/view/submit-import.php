@@ -7,20 +7,8 @@ include_once '../fns/require_received_contact.php';
 include_once '../../../lib/mysqli.php';
 list($receivedContact, $id, $user) = require_received_contact($mysqli);
 
-$tags = $receivedContact->tags;
-
-include_once '../../../fns/Tags/parse.php';
-$tag_names = Tags\parse($tags);
-
-include_once '../../../fns/Users/Contacts/add.php';
-Users\Contacts\add($mysqli, $user, $receivedContact->full_name,
-    $receivedContact->alias, $receivedContact->address, $receivedContact->email,
-    $receivedContact->phone1, $receivedContact->phone2,
-    $receivedContact->birthday_time, $receivedContact->username, $tags,
-    $tag_names, $receivedContact->favorite);
-
-include_once '../../../fns/Users/Contacts/Received/delete.php';
-Users\Contacts\Received\delete($mysqli, $receivedContact);
+include_once '../../../fns/Users/Contacts/Received/import.php';
+Users\Contacts\Received\import($mysqli, $user, $receivedContact);
 
 $messages = ['Contact has been imported.'];
 
