@@ -6,3 +6,4 @@ cd `dirname $BASH_SOURCE`
 ./send.php
 ./send-existing.php
 ./received.php
+./import.php
