@@ -14,7 +14,9 @@ $sql = 'select users.id_users, sum(size) storage_used from users'
 $users = mysqli_query_object($mysqli, $sql);
 
 foreach ($users as $user) {
-    $sql = "update users set storage_used = $user->storage_used"
+    $storage_used = $user->storage_used;
+    if ($storage_used === null) $storage_used = 0;
+    $sql = "update users set storage_used = $storage_used"
         ." where id_users = $user->id_users";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 }
