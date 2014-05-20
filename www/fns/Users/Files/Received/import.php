@@ -2,7 +2,7 @@
 
 namespace Users\Files\Received;
 
-function import ($mysqli, $receivedFile, $id_folders) {
+function import ($mysqli, $receivedFile, $parent_id) {
 
     $id_users = $receivedFile->receiver_id_users;
     $name = $receivedFile->name;
@@ -11,7 +11,7 @@ function import ($mysqli, $receivedFile, $id_folders) {
     $filePath = \ReceivedFiles\filePath($id_users, $receivedFile->id);
 
     include_once __DIR__.'/../../../Files/getByName.php';
-    while (\Files\getByName($mysqli, $id_users, $id_folders, $name)) {
+    while (\Files\getByName($mysqli, $id_users, $parent_id, $name)) {
         $extension = '';
         if (preg_match('/\..*?$/', $name, $match)) {
             $name = preg_replace('/\..*?$/', '', $name);
@@ -28,9 +28,11 @@ function import ($mysqli, $receivedFile, $id_folders) {
     }
 
     include_once __DIR__.'/../../../Users/Files/add.php';
-    \Users\Files\add($mysqli, $id_users, $id_folders, $name, $filePath);
+    $id = \Users\Files\add($mysqli, $id_users, $parent_id, $name, $filePath);
 
     include_once __DIR__.'/delete.php';
     delete($mysqli, $receivedFile);
+
+    return $id;
 
 }
