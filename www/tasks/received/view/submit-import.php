@@ -6,20 +6,9 @@ require_same_domain_referer('..');
 include_once '../fns/require_received_task.php';
 include_once '../../../lib/mysqli.php';
 list($receivedTask, $id, $user) = require_received_task($mysqli);
-$id_users = $user->id_users;
 
-$text = $receivedTask->text;
-$top_priority = $receivedTask->top_priority;
-$tags = $receivedTask->tags;
-
-include_once '../../../fns/Tags/parse.php';
-$tag_names = Tags\parse($tags);
-
-include_once '../../../fns/Users/Tasks/add.php';
-Users\Tasks\add($mysqli, $id_users, $text, $top_priority, $tags, $tag_names);
-
-include_once '../../../fns/Users/Tasks/Received/delete.php';
-Users\Tasks\Received\delete($mysqli, $receivedTask);
+include_once '../../../fns/Users/Tasks/Received/import.php';
+Users\Tasks\Received\import($mysqli, $receivedTask);
 
 $messages = ['Task has been imported.'];
 include_once '../../../fns/redirect.php';
