@@ -9,47 +9,44 @@ $engine = get_main_engine();
 include_once 'fns/receive.php';
 receive();
 
-$ids = [];
-
 $response = $engine->request('task/received/list');
 $engine->expectSuccess();
 $engine->expectType('', 'array', $response);
 include_once 'fns/expect_received_task_object.php';
 foreach ($response as $i => $receivedTask) {
+
     expect_received_task_object($engine, "[$i]", $receivedTask);
-    $ids[] = $receivedTask->id;
-}
 
-foreach ($ids as $id) {
+    $id = $receivedTask->id;
+    $text = $receivedTask->text;
+    $tags = $receivedTask->tags;
 
-    $response = $engine->request('task/received/get', [
+    $response = $engine->request('task/received/import', [
         'id' => $id,
     ]);
     $engine->expectSuccess();
-    expect_received_task_object($engine, '', $response);
+    $engine->expectNatural('', $response);
 
-    $response = $engine->request('task/received/delete', [
-        'id' => $id,
-    ]);
-    $engine->expectSuccess();
-    $engine->expectValue('', true, $response);
+    $task_id = $response;
 
     $response = $engine->request('task/received/get', [
         'id' => $id,
     ]);
     $engine->expectError('RECEIVED_TASK_NOT_FOUND');
 
+    $response = $engine->request('task/get', [
+        'id' => $task_id,
+    ]);
+    $engine->expectSuccess();
+    $engine->expectValue('.text', $text, $response->text);
+    $engine->expectValue('.tags', $tags, $response->tags);
+
+    $response = $engine->request('task/delete', [
+        'id' => $task_id,
+    ]);
+    $engine->expectSuccess();
+    $engine->expectValue('', true, $response);
+
 }
-
-receive();
-
-$response = $engine->request('task/received/deleteAll');
-$engine->expectSuccess();
-$engine->expectValue('', true, $response);
-
-$response = $engine->request('task/received/list');
-$engine->expectSuccess();
-$engine->expectType('', 'array', $response);
-$engine->expectValue('.length', 0, count($response));
 
 echo 'Done '.__FILE__."\n  $engine->numRequests requests made.\n";
