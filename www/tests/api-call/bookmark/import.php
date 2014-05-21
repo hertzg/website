@@ -22,6 +22,28 @@ foreach ($response as $i => $receivedBookmark) {
     $title = $receivedBookmark->title;
     $tags = $receivedBookmark->tags;
 
+    $response = $engine->request('bookmark/received/importCopy', [
+        'id' => $id,
+    ]);
+    $engine->expectSuccess();
+    $engine->expectNatural('', $response);
+
+    $bookmark_id = $response;
+
+    $response = $engine->request('bookmark/received/get', [
+        'id' => $id,
+    ]);
+    $engine->expectSuccess();
+    expect_received_bookmark_object($engine, '', $response);
+
+    $response = $engine->request('bookmark/get', [
+        'id' => $bookmark_id,
+    ]);
+    $engine->expectSuccess();
+    $engine->expectValue('.url', $url, $response->url);
+    $engine->expectValue('.title', $title, $response->title);
+    $engine->expectValue('.tags', $tags, $response->tags);
+
     $response = $engine->request('bookmark/received/import', [
         'id' => $id,
     ]);

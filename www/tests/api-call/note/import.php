@@ -21,6 +21,27 @@ foreach ($response as $i => $receivedNote) {
     $text = $receivedNote->text;
     $tags = $receivedNote->tags;
 
+    $response = $engine->request('note/received/importCopy', [
+        'id' => $id,
+    ]);
+    $engine->expectSuccess();
+    $engine->expectNatural('', $response);
+
+    $note_id = $response;
+
+    $response = $engine->request('note/received/get', [
+        'id' => $id,
+    ]);
+    $engine->expectSuccess();
+    expect_received_note_object($engine, '', $response);
+
+    $response = $engine->request('note/get', [
+        'id' => $note_id,
+    ]);
+    $engine->expectSuccess();
+    $engine->expectValue('.text', $text, $response->text);
+    $engine->expectValue('.tags', $tags, $response->tags);
+
     $response = $engine->request('note/received/import', [
         'id' => $id,
     ]);

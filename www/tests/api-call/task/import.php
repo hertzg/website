@@ -21,6 +21,27 @@ foreach ($response as $i => $receivedTask) {
     $text = $receivedTask->text;
     $tags = $receivedTask->tags;
 
+    $response = $engine->request('task/received/importCopy', [
+        'id' => $id,
+    ]);
+    $engine->expectSuccess();
+    $engine->expectNatural('', $response);
+
+    $task_id = $response;
+
+    $response = $engine->request('task/received/get', [
+        'id' => $id,
+    ]);
+    $engine->expectSuccess();
+    expect_received_task_object($engine, "[$i]", $response);
+
+    $response = $engine->request('task/get', [
+        'id' => $task_id,
+    ]);
+    $engine->expectSuccess();
+    $engine->expectValue('.text', $text, $response->text);
+    $engine->expectValue('.tags', $tags, $response->tags);
+
     $response = $engine->request('task/received/import', [
         'id' => $id,
     ]);

@@ -39,6 +39,25 @@ foreach ($response as $i => $receivedFile) {
     $engine->expectSuccess();
     $engine->expectValue('.name', $name, $response->name);
 
+    $response = $engine->request('file/received/importCopy', [
+        'id' => $id,
+    ]);
+    $engine->expectSuccess();
+    expect_received_file_object($engine, '', $response);
+
+    $file_id = $response;
+
+    $response = $engine->request('file/received/get', [
+        'id' => $id,
+    ]);
+    $engine->expectSuccess();
+
+    $response = $engine->request('file/get', [
+        'id' => $file_id,
+    ]);
+    $engine->expectSuccess();
+    $engine->expectValue('.name', $name, $response->name);
+
     $response = $engine->request('file/delete', [
         'id' => $file_id,
     ]);
