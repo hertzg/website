@@ -1,6 +1,12 @@
 #!/usr/bin/php
 <?php
 
+function expect_imported ($engine, $receivedFile, $response) {
+    include_once 'fns/expect_file_object.php';
+    expect_file_object($engine, '', $response);
+    $engine->expectValue('.name', $receivedFile->name, $response->name);
+}
+
 chdir(__DIR__);
 
 include_once '../fns/get_main_engine.php';
@@ -18,13 +24,32 @@ foreach ($response as $i => $receivedFile) {
     expect_received_file_object($engine, "[$i]", $receivedFile);
 
     $id = $receivedFile->id;
-    $name = $receivedFile->name;
+
+    $response = $engine->request('file/received/importCopy', [
+        'id' => $id,
+    ]);
+    $engine->expectSuccess();
+    $engine->expectNatural('', $response);
+
+    $file_id = $response;
+
+    $response = $engine->request('file/received/get', [
+        'id' => $id,
+    ]);
+    $engine->expectSuccess();
+    expect_received_file_object($engine, '', $response);
+
+    $response = $engine->request('file/get', [
+        'id' => $file_id,
+    ]);
+    $engine->expectSuccess();
+    expect_imported($engine, $receivedFile, $response);
 
     $response = $engine->request('file/received/import', [
         'id' => $id,
     ]);
     $engine->expectSuccess();
-    $engine->expectNatural('', $response);
+    expect_received_file_object($engine, '', $response);
 
     $file_id = $response;
 
@@ -37,26 +62,7 @@ foreach ($response as $i => $receivedFile) {
         'id' => $file_id,
     ]);
     $engine->expectSuccess();
-    $engine->expectValue('.name', $name, $response->name);
-
-    $response = $engine->request('file/received/importCopy', [
-        'id' => $id,
-    ]);
-    $engine->expectSuccess();
-    expect_received_file_object($engine, '', $response);
-
-    $file_id = $response;
-
-    $response = $engine->request('file/received/get', [
-        'id' => $id,
-    ]);
-    $engine->expectSuccess();
-
-    $response = $engine->request('file/get', [
-        'id' => $file_id,
-    ]);
-    $engine->expectSuccess();
-    $engine->expectValue('.name', $name, $response->name);
+    expect_imported($engine, $receivedFile, $response);
 
     $response = $engine->request('file/delete', [
         'id' => $file_id,

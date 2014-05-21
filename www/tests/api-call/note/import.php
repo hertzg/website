@@ -1,6 +1,13 @@
 #!/usr/bin/php
 <?php
 
+function expect_imported ($engine, $receivedNote, $response) {
+    include_once 'fns/expect_note_object.php';
+    expect_note_object($engine, '', $response);
+    $engine->expectValue('.text', $receivedNote->text, $response->text);
+    $engine->expectValue('.tags', $receivedNote->tags, $response->tags);
+}
+
 chdir(__DIR__);
 
 include_once '../fns/get_main_engine.php';
@@ -18,8 +25,6 @@ foreach ($response as $i => $receivedNote) {
     expect_received_note_object($engine, "[$i]", $receivedNote);
 
     $id = $receivedNote->id;
-    $text = $receivedNote->text;
-    $tags = $receivedNote->tags;
 
     $response = $engine->request('note/received/importCopy', [
         'id' => $id,
@@ -39,8 +44,7 @@ foreach ($response as $i => $receivedNote) {
         'id' => $note_id,
     ]);
     $engine->expectSuccess();
-    $engine->expectValue('.text', $text, $response->text);
-    $engine->expectValue('.tags', $tags, $response->tags);
+    expect_imported($engine, $receivedNote, $response);
 
     $response = $engine->request('note/received/import', [
         'id' => $id,
@@ -59,8 +63,7 @@ foreach ($response as $i => $receivedNote) {
         'id' => $note_id,
     ]);
     $engine->expectSuccess();
-    $engine->expectValue('.text', $text, $response->text);
-    $engine->expectValue('.tags', $tags, $response->tags);
+    expect_imported($engine, $receivedNote, $response);
 
     $response = $engine->request('note/delete', [
         'id' => $note_id,

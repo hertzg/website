@@ -1,6 +1,14 @@
 #!/usr/bin/php
 <?php
 
+function expect_imported ($engine, $receivedBookmark, $response) {
+    include_once 'fns/expect_bookmark_object.php';
+    expect_bookmark_object($engine, '', $response);
+    $engine->expectValue('.url', $receivedBookmark->url, $response->url);
+    $engine->expectValue('.title', $receivedBookmark->title, $response->title);
+    $engine->expectValue('.tags', $receivedBookmark->tags, $response->tags);
+}
+
 chdir(__DIR__);
 
 include_once '../fns/get_main_engine.php';
@@ -18,9 +26,6 @@ foreach ($response as $i => $receivedBookmark) {
     expect_received_bookmark_object($engine, "[$i]", $receivedBookmark);
 
     $id = $receivedBookmark->id;
-    $url = $receivedBookmark->url;
-    $title = $receivedBookmark->title;
-    $tags = $receivedBookmark->tags;
 
     $response = $engine->request('bookmark/received/importCopy', [
         'id' => $id,
@@ -40,9 +45,7 @@ foreach ($response as $i => $receivedBookmark) {
         'id' => $bookmark_id,
     ]);
     $engine->expectSuccess();
-    $engine->expectValue('.url', $url, $response->url);
-    $engine->expectValue('.title', $title, $response->title);
-    $engine->expectValue('.tags', $tags, $response->tags);
+    expect_imported($engine, $receivedBookmark, $response);
 
     $response = $engine->request('bookmark/received/import', [
         'id' => $id,
@@ -61,9 +64,7 @@ foreach ($response as $i => $receivedBookmark) {
         'id' => $bookmark_id,
     ]);
     $engine->expectSuccess();
-    $engine->expectValue('.url', $url, $response->url);
-    $engine->expectValue('.title', $title, $response->title);
-    $engine->expectValue('.tags', $tags, $response->tags);
+    expect_imported($engine, $receivedBookmark, $response);
 
     $response = $engine->request('bookmark/delete', [
         'id' => $bookmark_id,
