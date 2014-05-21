@@ -9,8 +9,15 @@ function request_contact_params () {
     include_once __DIR__.'/../../../fns/request_strings.php';
     list($birthday_time) = request_strings('birthday_time');
 
-    if ($birthday_time === '') $birthday_time = null;
-    else $birthday_time = (int)$birthday_time;
+    if ($birthday_time === '') {
+        $birthday_time = null;
+    } else {
+        $birthday_time = (int)$birthday_time;
+        $day = date('j', $birthday_time);
+        $month = date('n', $birthday_time);
+        $year = date('Y', $birthday_time);
+        $birthday_time = mktime(0, 0, 0, $month, $day, $year);
+    }
 
     if ($full_name === '') {
         include_once __DIR__.'/../../fns/bad_request.php';
