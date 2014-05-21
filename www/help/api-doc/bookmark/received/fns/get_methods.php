@@ -6,6 +6,7 @@ function get_methods () {
         'deleteAll' => 'Deletes all received bookmarks.',
         'get' => 'Returns a single existing received bookmark.',
         'import' => 'Moves an existing received bookmark in receiver\'s bookmarks.',
+        'importCopy' => 'Copies an existing received bookmark in receiver\'s bookmarks.',
         'list' => 'Returns a list of all received bookmarks.',
     ];
 }

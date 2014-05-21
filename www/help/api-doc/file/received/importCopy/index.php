@@ -1,10 +1,10 @@
 <?php
 
 include_once '../fns/received_file_method_page.php';
-received_file_method_page('import', [
+received_file_method_page('importCopy', [
     [
         'name' => 'id',
-        'description' => 'The ID of the received file to move.',
+        'description' => 'The ID of the received file to copy.',
     ],
     [
         'name' => 'parent_id',

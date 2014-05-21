@@ -1,9 +1,9 @@
 <?php
 
 include_once '../fns/received_task_method_page.php';
-received_task_method_page('import', [
+received_task_method_page('importCopy', [
     [
         'name' => 'id',
-        'description' => 'The ID of the received task to move.',
+        'description' => 'The ID of the received task to copy.',
     ],
 ], ['RECEIVED_TASK_NOT_FOUND']);
