@@ -10,8 +10,8 @@ function require_event ($mysqli) {
 
     $id = abs((int)$id);
 
-    include_once __DIR__.'/../../fns/Events/get.php';
-    $event = Events\get($mysqli, $user->id_users, $id);
+    include_once __DIR__.'/../../fns/Events/getOnUser.php';
+    $event = Events\getOnUser($mysqli, $user->id_users, $id);
 
     if (!$event) {
         unset($_SESSION['calendar/messages']);
