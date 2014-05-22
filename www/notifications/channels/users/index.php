@@ -1,6 +1,6 @@
 <?php
 
-$fns = '../../../fns';
+$fnsDir = '../../../fns';
 
 include_once '../fns/require_channel.php';
 include_once '../../../lib/mysqli.php';
@@ -16,7 +16,8 @@ unset(
 $items = [];
 
 include_once "$fnsDir/SubscribedChannels/indexPublisherLockedOnChannel.php";
-$subscribedChannels = SubscribedChannels\indexPublisherLockedOnChannel($mysqli, $id);
+$subscribedChannels = SubscribedChannels\indexPublisherLockedOnChannel(
+    $mysqli, $id);
 
 include_once "$fnsDir/Page/imageArrowLink.php";
 

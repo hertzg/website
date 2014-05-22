@@ -39,7 +39,8 @@ $content = Page\tabs(
         ],
     ],
     "Received File #$id",
-    Form\label('Received from', htmlspecialchars($receivedFile->sender_username))
+    Form\label('Received from',
+        htmlspecialchars($receivedFile->sender_username))
     .create_panel(
         'The File',
         Form\label('File name', htmlspecialchars($receivedFile->name))
@@ -47,7 +48,8 @@ $content = Page\tabs(
         .Form\label('Size', bytestr($receivedFile->size))
         .'<div class="hr"></div>'
         .Form\label('Preview', create_preview($receivedFile))
-        .Page\infoText('File received '.date_ago($receivedFile->insert_time).'.')
+        .Page\infoText(
+            'File received '.date_ago($receivedFile->insert_time).'.')
     )
     .create_panel(
         'Options',

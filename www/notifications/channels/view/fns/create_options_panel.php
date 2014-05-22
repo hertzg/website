@@ -2,10 +2,12 @@
 
 function create_options_panel ($channel) {
 
+    $fnsDir = __DIR__.'/../../../../fns';
+
     $id = $channel->id;
 
-    include_once __DIR__.'/../../../../fns/Page/imageArrowLink.php';
-    include_once __DIR__.'/../../../../fns/Page/imageLink.php';
+    include_once "$fnsDir/Page/imageArrowLink.php";
+    include_once "$fnsDir/Page/imageLink.php";
 
     $title = 'Post a Notification';
     $href = "../notify/?id=$id";
@@ -15,7 +17,7 @@ function create_options_panel ($channel) {
     $href = "../users/?id=$id";
     $num_users = $channel->num_users;
     if ($num_users) {
-        include_once __DIR__.'/../../../../fns/Page/imageArrowLinkWithDescription.php';
+        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         $description = "$num_users total.";
         $usersLink = Page\imageArrowLinkWithDescription($title,
             $description, $href, 'users');
@@ -32,13 +34,13 @@ function create_options_panel ($channel) {
     $href = "../delete/?id=$id";
     $deleteLink = Page\imageArrowLink($title, $href, 'trash-bin');
 
-    include_once __DIR__.'/../../../../fns/Page/twoColumns.php';
+    include_once "$fnsDir/Page/twoColumns.php";
     $content =
         Page\twoColumns($notifyLink, $usersLink)
         .'<div class="hr"></div>'
         .Page\twoColumns($editLink, $deleteLink);
 
-    include_once __DIR__.'/../../../../fns/create_panel.php';
+    include_once "$fnsDir/create_panel.php";
     return create_panel('Channel Options', $content);
 
 }

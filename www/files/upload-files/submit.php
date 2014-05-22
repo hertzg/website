@@ -11,7 +11,8 @@ include_once '../../fns/request_strings.php';
 list($id_folders, $posttest) = request_strings('id_folders', 'posttest');
 
 include_once '../../fns/request_multiple_files.php';
-list($file1, $file2, $file3) = request_multiple_files('file1', 'file2', 'file3');
+list($file1, $file2, $file3) = request_multiple_files(
+    'file1', 'file2', 'file3');
 
 include_once '../../lib/mysqli.php';
 

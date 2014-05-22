@@ -2,7 +2,7 @@
 
 function create_options_panel ($user, $id_folders, $base = '') {
 
-    include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
+    $fnsDir = __DIR__.'/../../fns';
 
     if ($id_folders) {
         $newFolderHref = "{$base}new-folder/?parent_id_folders=$id_folders";
@@ -12,6 +12,7 @@ function create_options_panel ($user, $id_folders, $base = '') {
         $uploadFilesHref = "{$base}upload-files/";
     }
 
+    include_once "$fnsDir/Page/imageArrowLink.php";
     $options = [
         Page\imageArrowLink('New Folder', $newFolderHref, 'create-folder'),
         Page\imageArrowLink('Upload Files', $uploadFilesHref, 'upload'),
@@ -35,7 +36,7 @@ function create_options_panel ($user, $id_folders, $base = '') {
 
     $num_received_files = $user->num_received_files;
     if ($num_received_files) {
-        include_once __DIR__.'/../../fns/Page/imageArrowLinkWithDescription.php';
+        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         $title = 'Received Files';
         $description = "$num_received_files total.";
         $href = "{$base}received/";
@@ -43,7 +44,7 @@ function create_options_panel ($user, $id_folders, $base = '') {
             $description, $href, 'mail');
     }
 
-    include_once __DIR__.'/../../fns/create_panel.php';
+    include_once "$fnsDir/create_panel.php";
     return create_panel('Options', join('<div class="hr"></div>', $options));
 
 }

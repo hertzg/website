@@ -44,7 +44,8 @@ function itemSendForm ($mysqli, $id_users, $username, array $params = []) {
             if ($contact->favorite) $icon = 'favorite-contact';
             else $icon = 'contact';
 
-            $items[] = imageLinkWithDescription($title, $description, $href, $icon);
+            $items[] = imageLinkWithDescription($title,
+                $description, $href, $icon);
 
         }
 

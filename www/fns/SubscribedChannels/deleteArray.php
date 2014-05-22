@@ -12,7 +12,8 @@ function deleteArray ($mysqli, array $subscribedChannels) {
             delete($mysqli, $subscribedChannel->id);
             $id_users = $subscribedChannel->subscriber_id_users;
             \Users\SubscribedChannels\addNumber($mysqli, $id_users, -1);
-            \Notifications\deleteOnSubscribedChannel($mysqli, $subscribedChannel->id);
+            \Notifications\deleteOnSubscribedChannel(
+                $mysqli, $subscribedChannel->id);
             \Users\Notifications\addNumber($mysqli, $id_users,
                 -$subscribedChannel->num_notifications);
         }

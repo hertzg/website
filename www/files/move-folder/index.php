@@ -52,13 +52,17 @@ foreach ($folders as $itemFolder) {
 }
 
 if ($parent_id_folders != $folder->parent_id_folders) {
-    $href = "submit.php?id_folders=$id_folders&parent_id_folders=$parent_id_folders";
+    $parentParam = "parent_id_folders=$parent_id_folders";
+    $href = "submit.php?id_folders=$id_folders&amp;$parentParam";
     $items[] = Page\imageLink('Move Here', $href, 'move-folder');
 }
 
 $key = 'files/move-folder/parent_id_folders';
-if (array_key_exists($key, $_SESSION) && $parent_id_folders != $_SESSION[$key]) {
+if (array_key_exists($key, $_SESSION) &&
+    $parent_id_folders != $_SESSION[$key]) {
+
     unset($_SESSION['files/move-folder/errors']);
+
 }
 
 unset(

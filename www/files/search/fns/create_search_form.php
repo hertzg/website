@@ -9,9 +9,8 @@ function create_search_form ($id_folders, $keyword, $deep) {
     include_once __DIR__.'/../../../fns/SearchForm/content.php';
     $formContent = SearchForm\content($keyword, $placeholder, $clearHref);
     if ($id_folders) {
-        $formContent =
-            "<input type=\"hidden\" name=\"id_folders\" value=\"$id_folders\" />"
-            .$formContent;
+        include_once __DIR__.'/../../../fns/Form/hidden.php';
+        $formContent = Form\hidden('id_folders', $id_folders).$formContent;
     }
     if ($deep) {
         $formContent .= '<input type="hidden" name="deep" value="1" />';

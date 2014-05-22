@@ -11,8 +11,11 @@ function request_files () {
     $keys = func_get_args();
     $values = [];
     foreach ($keys as $key) {
-        if (array_key_exists($key, $_FILES) && is_string($_FILES[$key]['name'])) {
+        if (array_key_exists($key, $_FILES) &&
+            is_string($_FILES[$key]['name'])) {
+
             $values[] = $_FILES[$key];
+
         } else {
             $values[] = $default;
         }

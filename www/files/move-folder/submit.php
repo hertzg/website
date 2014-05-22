@@ -29,9 +29,9 @@ if ($parent_id_folders) {
 
     if (!$parentFolder) redirect("./?id_folders=$id_folders");
 
-    if (is_child_folder($mysqli, $id_users, $parentFolder, $folder->id_folders)) {
-        redirect("./?id_folders=$id_folders");
-    }
+    $is_child_folder = is_child_folder($mysqli, $id_users,
+        $parentFolder, $folder->id_folders);
+    if ($is_child_folder) redirect("./?id_folders=$id_folders");
 
 }
 

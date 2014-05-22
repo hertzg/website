@@ -2,7 +2,8 @@
 
 include_once '../fns/require_subscriber_locked_channel.php';
 include_once '../../../lib/mysqli.php';
-list($subscribedChannel, $id, $user) = require_subscriber_locked_channel($mysqli);
+$values = require_subscriber_locked_channel($mysqli);
+list($subscribedChannel, $id, $user) = $values;
 
 include_once '../../../fns/Page/imageLink.php';
 include_once '../../../fns/Page/tabs.php';

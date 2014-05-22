@@ -21,7 +21,8 @@ function deleteContainingUser ($mysqli, $id_users) {
         }
     }
 
-    $sql = "select * from subscribed_channels where publisher_id_users = $id_users";
+    $sql = 'select * from subscribed_channels'
+        ." where publisher_id_users = $id_users";
     $subscribedChannels = mysqli_query_object($mysqli, $sql);
 
     include_once __DIR__.'/deleteArray.php';

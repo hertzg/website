@@ -34,9 +34,8 @@ if (count($files) + count($folders) > 1) {
     include_once '../fns/SearchForm/emptyContent.php';
     $formContent = SearchForm\emptyContent('Search folders and files...');
     if ($id_folders) {
-        $formContent =
-            "<input type=\"hidden\" name=\"id_folders\" value=\"$id_folders\" />"
-            .$formContent;
+        include_once '../fns/Form/hidden.php';
+        $formContent = Form\hidden('id_folders', $id_folders).$formContent;
     }
 
     include_once '../fns/SearchForm/create.php';

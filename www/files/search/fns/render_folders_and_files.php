@@ -1,6 +1,7 @@
 <?php
 
-function render_folders_and_files (array $folders, array $files, &$items, $keyword) {
+function render_folders_and_files (array $folders,
+    array $files, &$items, $keyword) {
 
     if ($folders || $files) {
 

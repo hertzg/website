@@ -16,9 +16,14 @@ if ($insert_time != $update_time) {
     $datesText .= '<div>Last modified '.date_ago($update_time).'.</div>';
 }
 
+include_once '../../fns/Page/imageArrowLink.php';
+$editLink = Page\imageArrowLink('Edit', "../edit-event/?id=$id", 'edit-event');
+
+$href = "../delete-event/?id=$id";
+$deleteLink = Page\imageArrowLink('Delete', $href, 'trash-bin');
+
 include_once '../../fns/create_panel.php';
 include_once '../../fns/Page/tabs.php';
-include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../fns/Page/infoText.php';
 include_once '../../fns/Page/sessionMessages.php';
 include_once '../../fns/Page/text.php';
@@ -42,13 +47,7 @@ $content =
         .Page\text(date('F d, Y', $event->event_time))
         .Page\infoText($datesText)
     )
-    .create_panel(
-        'Event Options',
-        Page\twoColumns(
-            Page\imageArrowLink('Edit', "../edit-event/?id=$id", 'edit-event'),
-            Page\imageArrowLink('Delete', "../delete-event/?id=$id", 'trash-bin')
-        )
-    );
+    .create_panel('Event Options', Page\twoColumns($editLink, $deleteLink));
 
 include_once '../../fns/echo_page.php';
 echo_page($user, "Event #$id", $content, '../../');

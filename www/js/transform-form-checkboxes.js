@@ -1,5 +1,6 @@
 (function () {
-    var formCheckboxes = document.querySelectorAll('.form-checkbox.transformable')
+    var selector = '.form-checkbox.transformable'
+    var formCheckboxes = document.querySelectorAll(selector)
     Array.prototype.forEach.call(formCheckboxes, function (formCheckbox) {
 
         function check () {

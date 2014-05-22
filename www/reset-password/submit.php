@@ -25,10 +25,12 @@ if ($password1 === '') {
         include_once '../fns/Password/minLength.php';
         $minLength = Password\minLength();
 
-        $errors[] = "New password should be at least $minLength characters long.";
+        $errors[] = 'New password should be'
+            ." at least $minLength characters long.";
 
     } elseif ($password1 === $user->username) {
-        $errors[] = 'Please, choose a password that is different from your username.';
+        $errors[] = 'Please, choose a password'
+            .' that is different from your username.';
     } elseif ($password1 !== $password2) {
         $errors[] = 'New passwords does not match.';
     }

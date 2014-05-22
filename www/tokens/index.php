@@ -52,12 +52,9 @@ if ($tokens) {
     $items[] = Page\info('No sessions remembered');
 }
 
-if ($options) {
-    include_once '../fns/create_panel.php';
-    $optionsPanel = create_panel('Options', join('<div class="hr"></div>', $options));
-} else {
-    $optionsPanel = '';
-}
+include_once '../fns/create_panel.php';
+$panelContent = join('<div class="hr"></div>', $options);
+$optionsPanel = create_panel('Options', $panelContent);
 
 unset($_SESSION['account/messages']);
 

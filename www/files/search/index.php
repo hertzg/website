@@ -42,7 +42,8 @@ if ($deep) {
 } else {
 
     include_once '../../fns/Folders/searchInFolder.php';
-    $folders = Folders\searchInFolder($mysqli, $id_users, $id_folders, $keyword);
+    $folders = Folders\searchInFolder($mysqli,
+        $id_users, $id_folders, $keyword);
 
     include_once '../../fns/Files/searchInFolder.php';
     $files = Files\searchInFolder($mysqli, $id_users, $id_folders, $keyword);

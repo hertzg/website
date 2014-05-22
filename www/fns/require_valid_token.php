@@ -11,7 +11,8 @@ function require_valid_token ($mysqli) {
             $token_text = hex2bin($token_text);
 
             include_once __DIR__.'/Tokens/getByUsernameTokenText.php';
-            $token = Tokens\getByUsernameTokenText($mysqli, $username, $token_text);
+            $token = Tokens\getByUsernameTokenText(
+                $mysqli, $username, $token_text);
 
             if ($token) {
 

@@ -9,7 +9,8 @@ function content ($keyword, $placeholder, $clearHref) {
             .' value="'.htmlspecialchars($keyword).'"'
             ." placeholder=\"$placeholder\" />"
         .'</div>'
-        .'<button class="searchButton withClearButton clickable" title="Search">'
+        .'<button class="searchButton withClearButton clickable"'
+        .' title="Search">'
             .'<span class="icon search"></span>'
         .'</button>'
         ."<a href=\"$clearHref\" title=\"Clear Search Keyword\""

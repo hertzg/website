@@ -3,12 +3,8 @@
 function echo_html ($title, $head, $body, $theme, $base) {
 
     include_once __DIR__.'/get_revision.php';
-
-    $revision = get_revision('common.compressed.css');
-    $commonCss = "{$base}common.compressed.css?$revision";
-
-    $revision = get_revision('icons.compressed.css');
-    $iconsCss = "{$base}icons.compressed.css?$revision";
+    $commonCssRevision = get_revision('common.compressed.css');
+    $iconsCssRevision = get_revision('icons.compressed.css');
 
     header('Content-Type: text/html; charset=UTF-8');
 
@@ -25,8 +21,10 @@ function echo_html ($title, $head, $body, $theme, $base) {
                 .' content="text/html; charset=UTF-8" />'
                 .'<meta name="viewport"'
                 .' content="width=device-width, user-scalable=no" />'
-                ."<link rel=\"stylesheet\" type=\"text/css\" href=\"$commonCss\" />"
-                ."<link rel=\"stylesheet\" type=\"text/css\" href=\"$iconsCss\" />"
+                .'<link rel="stylesheet" type="text/css"'
+                ." href=\"{$base}common.compressed.css?$commonCssRevision\" />"
+                .'<link rel="stylesheet" type="text/css"'
+                ." href=\"{$base}icons.compressed.css?$iconsCssRevision\" />"
                 .'<link rel="stylesheet" type="text/css"'
                 ." href=\"{$base}themes/$theme/common.css?12\" />"
                 .$head

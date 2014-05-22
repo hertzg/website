@@ -24,11 +24,13 @@ function add ($mysqli, $id_users, $full_name, $alias, $address, $email,
 
     $sql = 'insert into contacts'
         .' (id_users, full_name, alias, address, email,'
-        .' phone1, phone2, birthday_time, birthday_day, birthday_month,'
-        .' username, tags, favorite, insert_time, update_time)'
+        .' phone1, phone2, birthday_time, birthday_day,'
+        .' birthday_month, username, tags, favorite,'
+        .' insert_time, update_time)'
         ." values ($id_users, '$full_name', '$alias', '$address', '$email',"
-        ." '$phone1', '$phone2', $birthday_time, $birthday_day, $birthday_month,"
-        ." '$username', '$tags', $favorite, $insert_time, $update_time)";
+        ." '$phone1', '$phone2', $birthday_time, $birthday_day,"
+        ." $birthday_month, '$username', '$tags', $favorite,"
+        ." $insert_time, $update_time)";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
