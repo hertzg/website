@@ -5,25 +5,12 @@ require_same_domain_referer('./');
 
 include_once '../../fns/require_user.php';
 $user = require_user('../../');
-$id_users = $user->id_users;
-
-include_once '../../fns/Events/request.php';
-$text = Events\request();
-
-include_once '../../fns/request_strings.php';
-list($event_day, $event_month, $event_year) = request_strings(
-    'event_day', 'event_month', 'event_year');
-
-$event_day = abs((int)$event_day);
-$event_month = abs((int)$event_month);
-$event_year = abs((int)$event_year);
 
 $errors = [];
 
-include_once '../fns/parse_event_time.php';
-parse_event_time($event_day, $event_month, $event_year, $errors, $event_time);
-
-if ($text === '') $errors[] = 'Enter text.';
+include_once '../fns/request_event_params.php';
+$values = request_event_params($errors);
+list($event_day, $event_month, $event_year, $event_time, $text) = $values;
 
 include_once '../../fns/redirect.php';
 
