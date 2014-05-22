@@ -20,6 +20,7 @@ function delete ($mysqli, $channel) {
     addNumber($mysqli, $id_users, -1);
 
     include_once __DIR__.'/../Notifications/addNumber.php';
-    \Users\Notifications\addNumber($mysqli, $id_users, -$channel->num_notifications);
+    \Users\Notifications\addNumber($mysqli,
+        $id_users, -$channel->num_notifications);
 
 }
