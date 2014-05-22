@@ -11,7 +11,8 @@ function check_username ($mysqli, $username, array &$errors) {
     if (Username\isShort($username)) {
         include_once __DIR__.'/../../fns/Username/minLength.php';
         $minLength = Username\minLength();
-        $errors[] = "Username too short. At least $minLength characters required.";
+        $errors[] = 'Username too short.'
+            ." At least $minLength characters required.";
         return;
     }
 

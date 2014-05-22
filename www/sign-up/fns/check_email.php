@@ -15,7 +15,8 @@ function check_email ($mysqli, $email, array &$errors) {
 
     include_once __DIR__.'/../../fns/Users/getByEmail.php';
     if (Users\getByEmail($mysqli, $email)) {
-        $errors[] = 'A username with this email is already registered. Try another.';
+        $errors[] = 'A username with this email is already registered.'
+            .' Try another.';
     }
 
 }
