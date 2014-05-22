@@ -4,16 +4,23 @@
 function expect_imported ($engine, $receivedContact, $response) {
     include_once 'fns/expect_contact_object.php';
     expect_contact_object($engine, '', $response);
-    $engine->expectValue('.full_name', $receivedContact->full_name, $response->full_name);
+    $engine->expectValue('.full_name',
+        $receivedContact->full_name, $response->full_name);
     $engine->expectValue('.alias', $receivedContact->alias, $response->alias);
-    $engine->expectValue('.address', $receivedContact->address, $response->address);
+    $engine->expectValue('.address',
+        $receivedContact->address, $response->address);
     $engine->expectValue('.email', $receivedContact->email, $response->email);
-    $engine->expectValue('.phone1', $receivedContact->phone1, $response->phone1);
-    $engine->expectValue('.phone2', $receivedContact->phone2, $response->phone2);
-    $engine->expectValue('.birthday_time', $receivedContact->birthday_time, $response->birthday_time);
-    $engine->expectValue('.username', $receivedContact->username, $response->username);
+    $engine->expectValue('.phone1',
+        $receivedContact->phone1, $response->phone1);
+    $engine->expectValue('.phone2',
+        $receivedContact->phone2, $response->phone2);
+    $engine->expectValue('.birthday_time',
+        $receivedContact->birthday_time, $response->birthday_time);
+    $engine->expectValue('.username',
+        $receivedContact->username, $response->username);
     $engine->expectValue('.tags', $receivedContact->tags, $response->tags);
-    $engine->expectValue('.favorite', $receivedContact->favorite, $response->favorite);
+    $engine->expectValue('.favorite',
+        $receivedContact->favorite, $response->favorite);
 }
 
 chdir(__DIR__);
