@@ -22,9 +22,10 @@ function echo_page ($user, $title, $content, $base, array $options = []) {
             .'</div>';
     }
 
+    $topLinkHref = $base === '' ? './' : $base;
     $body =
         '<div id="tbar">'
-            .'<a class="topLink logoLink" href="'.($base === '' ? './' : $base).'">'
+            ."<a class=\"topLink logoLink\" href=\"$topLinkHref\">"
                 ."<img src=\"{$base}themes/$theme/images/zvini.svg?2\""
                 .' alt="Zvini" width="68" height="32" class="logoImg" />'
             .'</a>'

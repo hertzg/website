@@ -4,7 +4,8 @@ $base = '../../';
 
 include_once 'fns/require_subscribed_channel.php';
 include_once '../../lib/mysqli.php';
-list($subscribedChannel, $id, $user) = require_subscribed_channel($mysqli, '..');
+$values = require_subscribed_channel($mysqli, '..');
+list($subscribedChannel, $id, $user) = $values;
 $id_users = $user->id_users;
 
 include_once '../../fns/Users/Notifications/clearNumberNew.php';
@@ -78,7 +79,9 @@ $content = Page\tabs(
     'Notifications',
     Page\sessionMessages('notifications/in-subscribed-channel/messages')
     .'<div class="filterBar">'
-        .'Channel: <b>'.htmlspecialchars($subscribedChannel->channel_name).'</b>'
+        .'Channel: <b>'
+            .htmlspecialchars($subscribedChannel->channel_name)
+        .'</b>'
         .'<a class="clickable" title="Clear Filter" href="..">'
             .'<span class="icon no"></span>'
         .'</a>'

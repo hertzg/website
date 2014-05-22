@@ -1,8 +1,9 @@
 <?php
 
 function render_external_links ($html, $base) {
+
     include_once __DIR__.'/create_external_url.php';
-    return preg_replace_callback('#(http://.*?)(\s|$)#', function ($match) use ($base) {
+    $callback = function ($match) use ($base) {
         $url = html_entity_decode($match[1]);
         $href = htmlspecialchars(create_external_url($url, $base));
         return
@@ -10,5 +11,8 @@ function render_external_links ($html, $base) {
                 .htmlspecialchars($url)
             .'</a>'
             .$match[2];
-    }, $html);
+    };
+
+    return preg_replace_callback('#(http://.*?)(\s|$)#', $callback, $html);
+
 }

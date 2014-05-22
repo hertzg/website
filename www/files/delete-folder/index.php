@@ -10,9 +10,15 @@ unset(
     $_SESSION['files/messages']
 );
 
-include_once '../../fns/create_folder_link.php';
-include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Page/imageLink.php';
+$href = "submit.php?id_folders=$id_folders";
+$yesLink = Page\imageLink('Yes, delete folder', $href, 'yes');
+
+include_once '../../fns/create_folder_link.php';
+$href = create_folder_link($id_folders, '../');
+$noLink = Page\imageLink('No, return back', $href, 'no');
+
+include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Page/text.php';
 include_once '../../fns/Page/twoColumns.php';
 $content = Page\tabs(
@@ -28,10 +34,7 @@ $content = Page\tabs(
         .' "<b>'.htmlspecialchars($folder->name).'</b>"?'
     )
     .'<div class="hr"></div>'
-    .Page\twoColumns(
-        Page\imageLink('Yes, delete folder', "submit.php?id_folders=$id_folders", 'yes'),
-        Page\imageLink('No, return back', create_folder_link($id_folders, '../'), 'no')
-    )
+    .Page\twoColumns($yesLink, $noLink)
 );
 
 include_once '../../fns/echo_page.php';

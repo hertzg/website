@@ -24,14 +24,16 @@ if ($channel_name === '') {
     $minLength = ChannelName\minLength();
 
     if ($length < $minLength) {
-        $errors[] = "Channel name too short. At least $minLength characters required.";
+        $errors[] = 'Channel name too short.'
+            ." At least $minLength characters required.";
     } else {
 
         include_once '../../../fns/ChannelName/maxLength.php';
         $maxLength = ChannelName\maxLength();
 
         if ($length > $maxLength) {
-            $errors[] = "Channel name too long. At most $maxLength characters required.";
+            $errors[] = 'Channel name too long.'
+                ." At most $maxLength characters required.";
         } else {
             include_once '../../../fns/Channels/getByName.php';
             if (Channels\getByName($mysqli, $channel_name, $id)) {
@@ -61,8 +63,11 @@ unset(
 );
 
 include_once '../../../fns/Users/Channels/edit.php';
-Users\Channels\edit($mysqli, $id, $channel_name, $public, $receive_notifications);
+Users\Channels\edit($mysqli, $id, $channel_name,
+    $public, $receive_notifications);
 
-$_SESSION['notifications/channels/view/messages'] = ['Changes have been saved.'];
+$_SESSION['notifications/channels/view/messages'] = [
+    'Changes have been saved.',
+];
 
 redirect("../view/?id=$id");
