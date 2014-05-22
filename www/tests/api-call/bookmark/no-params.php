@@ -18,13 +18,16 @@ $engine->expectError('BOOKMARK_NOT_FOUND');
 $response = $engine->request('bookmark/get');
 $engine->expectError('BOOKMARK_NOT_FOUND');
 
-$response = $engine->request('bookmark/received/get');
-$engine->expectError('RECEIVED_BOOKMARK_NOT_FOUND');
-
 $response = $engine->request('bookmark/received/delete');
 $engine->expectError('RECEIVED_BOOKMARK_NOT_FOUND');
 
+$response = $engine->request('bookmark/received/get');
+$engine->expectError('RECEIVED_BOOKMARK_NOT_FOUND');
+
 $response = $engine->request('bookmark/received/import');
+$engine->expectError('RECEIVED_BOOKMARK_NOT_FOUND');
+
+$response = $engine->request('bookmark/received/importCopy');
 $engine->expectError('RECEIVED_BOOKMARK_NOT_FOUND');
 
 $response = $engine->request('bookmark/send');

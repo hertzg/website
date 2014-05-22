@@ -18,10 +18,16 @@ $engine->expectError('NOTE_NOT_FOUND');
 $response = $engine->request('note/get');
 $engine->expectError('NOTE_NOT_FOUND');
 
+$response = $engine->request('note/received/delete');
+$engine->expectError('RECEIVED_NOTE_NOT_FOUND');
+
 $response = $engine->request('note/received/get');
 $engine->expectError('RECEIVED_NOTE_NOT_FOUND');
 
-$response = $engine->request('note/received/delete');
+$response = $engine->request('note/received/import');
+$engine->expectError('RECEIVED_NOTE_NOT_FOUND');
+
+$response = $engine->request('note/received/importCopy');
 $engine->expectError('RECEIVED_NOTE_NOT_FOUND');
 
 $response = $engine->request('note/send');

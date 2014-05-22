@@ -18,10 +18,16 @@ $engine->expectError('TASK_NOT_FOUND');
 $response = $engine->request('task/get');
 $engine->expectError('TASK_NOT_FOUND');
 
+$response = $engine->request('task/received/delete');
+$engine->expectError('RECEIVED_TASK_NOT_FOUND');
+
 $response = $engine->request('task/received/get');
 $engine->expectError('RECEIVED_TASK_NOT_FOUND');
 
-$response = $engine->request('task/received/delete');
+$response = $engine->request('task/received/import');
+$engine->expectError('RECEIVED_TASK_NOT_FOUND');
+
+$response = $engine->request('task/received/importCopy');
 $engine->expectError('RECEIVED_TASK_NOT_FOUND');
 
 $response = $engine->request('task/send');

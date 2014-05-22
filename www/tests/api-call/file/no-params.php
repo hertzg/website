@@ -9,10 +9,10 @@ $engine = get_main_engine();
 $response = $engine->request('file/add');
 $engine->expectError('ENTER_NAME');
 
-$response = $engine->request('file/download');
+$response = $engine->request('file/delete');
 $engine->expectError('FILE_NOT_FOUND');
 
-$response = $engine->request('file/delete');
+$response = $engine->request('file/download');
 $engine->expectError('FILE_NOT_FOUND');
 
 $response = $engine->request('file/get');
@@ -20,6 +20,21 @@ $engine->expectError('FILE_NOT_FOUND');
 
 $response = $engine->request('file/rename');
 $engine->expectError('FILE_NOT_FOUND');
+
+$response = $engine->request('file/received/delete');
+$engine->expectError('RECEIVED_FILE_NOT_FOUND');
+
+$response = $engine->request('file/received/download');
+$engine->expectError('RECEIVED_FILE_NOT_FOUND');
+
+$response = $engine->request('file/received/get');
+$engine->expectError('RECEIVED_FILE_NOT_FOUND');
+
+$response = $engine->request('file/received/import');
+$engine->expectError('RECEIVED_FILE_NOT_FOUND');
+
+$response = $engine->request('file/received/importCopy');
+$engine->expectError('RECEIVED_FILE_NOT_FOUND');
 
 $response = $engine->request('file/send');
 $engine->expectError('ENTER_RECEIVER_USERNAME');

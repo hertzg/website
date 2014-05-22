@@ -18,10 +18,16 @@ $engine->expectError('CONTACT_NOT_FOUND');
 $response = $engine->request('contact/get');
 $engine->expectError('CONTACT_NOT_FOUND');
 
+$response = $engine->request('contact/received/delete');
+$engine->expectError('RECEIVED_CONTACT_NOT_FOUND');
+
 $response = $engine->request('contact/received/get');
 $engine->expectError('RECEIVED_CONTACT_NOT_FOUND');
 
-$response = $engine->request('contact/received/delete');
+$response = $engine->request('contact/received/import');
+$engine->expectError('RECEIVED_CONTACT_NOT_FOUND');
+
+$response = $engine->request('contact/received/importCopy');
 $engine->expectError('RECEIVED_CONTACT_NOT_FOUND');
 
 $response = $engine->request('contact/send');
