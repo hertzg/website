@@ -12,11 +12,8 @@ function request_contact_params () {
     if ($birthday_time === '') {
         $birthday_time = null;
     } else {
-        $birthday_time = (int)$birthday_time;
-        $day = date('j', $birthday_time);
-        $month = date('n', $birthday_time);
-        $year = date('Y', $birthday_time);
-        $birthday_time = mktime(0, 0, 0, $month, $day, $year);
+        include_once __DIR__.'/../../../fns/time_today.php';
+        $birthday_time = time_today($birthday_time);
     }
 
     if ($full_name === '') {

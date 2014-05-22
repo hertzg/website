@@ -1,9 +1,9 @@
 <?php
 
-function time_today () {
-    $timeNow = time();
-    $dayToday = date('j', $timeNow);
-    $monthToday = date('n', $timeNow);
-    $yearToday = date('Y', $timeNow);
-    return mktime(0, 0, 0, $monthToday, $dayToday, $yearToday);
+function time_today ($time = null) {
+    if ($time === null) $time = time();
+    $day = date('j', $time);
+    $month = date('n', $time);
+    $year = date('Y', $time);
+    return mktime(0, 0, 0, $month, $day, $year);
 }
