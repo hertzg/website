@@ -12,61 +12,65 @@ $tempName = sys_get_temp_dir().'/test_'.rand();
 file_put_contents($tempName, $content);
 $file = new CURLFile($tempName);
 
-$name = 'sample name';
+$name1 = 'sample name 1';
+$name2 = 'sample name 2';
 $edited_name = 'sample edited name';
 
 $response = $engine->request('file/add', [
-    'name' => $name,
-]);
-$engine->expectError('SELECT_FILE');
-
-$response = $engine->request('file/add', [
-    'name' => $name,
+    'name' => $name1,
     'file' => $file,
 ]);
 $engine->expectSuccess();
 $engine->expectNatural('', $response);
 
-$id = $response;
+$id1 = $response;
 
 $response = $engine->request('file/add', [
-    'name' => $name,
+    'name' => $name2,
     'file' => $file,
+]);
+$engine->expectSuccess();
+$engine->expectNatural('', $response);
+
+$id2 = $response;
+
+$response = $engine->request('file/rename', [
+    'id' => $id1,
+]);
+$engine->expectError('ENTER_NAME');
+
+$engine->request('file/rename', [
+    'id' => $id1,
+    'name' => $name2,
 ]);
 $engine->expectError('FILE_ALREADY_EXISTS');
 
+$response = $engine->request('file/rename', [
+    'id' => $id1,
+    'name' => $edited_name,
+]);
+$engine->expectSuccess();
+$engine->expectValue('', true, $response);
+
 $response = $engine->request('file/get', [
-    'id' => $id,
+    'id' => $id1,
 ]);
 $engine->expectSuccess();
 include_once 'fns/expect_file_object.php';
 expect_file_object($engine, '', $response);
-$engine->expectValue('.name', $name, $response->name);
-$engine->expectEquals('.insert_time', '.rename_time',
-    $response->insert_time, $response->rename_time);
-
-$response = $engine->download('file/download', [
-    'id' => $id,
-]);
-$engine->expectSuccess();
-$engine->expectValue('', $content, $response);
-
-$response = $engine->request('file/list');
-$engine->expectSuccess();
-$engine->expectType('', 'array', $response);
-foreach ($response as $i => $file) {
-    expect_file_object($engine, "[$i]", $file);
-}
+$engine->expectValue('', $edited_name, $response->name);
 
 $response = $engine->request('file/delete', [
-    'id' => $id,
+    'id' => $id1,
 ]);
 $engine->expectSuccess();
+$engine->expectValue('', true, $response);
 
-$response = $engine->request('file/get', [
-    'id' => $id,
+$response = $engine->request('file/delete', [
+    'id' => $id2,
 ]);
-$engine->expectError('FILE_NOT_FOUND');
+$engine->expectSuccess();
+$engine->expectValue('', true, $response);
 
 unlink($tempName);
 

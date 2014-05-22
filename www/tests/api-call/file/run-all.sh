@@ -2,6 +2,7 @@
 cd `dirname $BASH_SOURCE`
 ./no-params.php
 ./general.php
+./rename.php
 ./subfolder.php
 ./send.php
 ./send-existing.php
