@@ -7,16 +7,16 @@ include_once '../../fns/require_user.php';
 $user = require_user('../../');
 $id_users = $user->id_users;
 
+include_once '../../fns/Events/request.php';
+$text = Events\request();
+
 include_once '../../fns/request_strings.php';
-list($event_day, $event_month, $event_year, $text) = request_strings(
-    'event_day', 'event_month', 'event_year', 'text');
+list($event_day, $event_month, $event_year) = request_strings(
+    'event_day', 'event_month', 'event_year');
 
 $event_day = abs((int)$event_day);
 $event_month = abs((int)$event_month);
 $event_year = abs((int)$event_year);
-
-include_once '../../fns/str_collapse_spaces.php';
-$text = str_collapse_spaces($text);
 
 $errors = [];
 
