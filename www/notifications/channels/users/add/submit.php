@@ -64,7 +64,7 @@ if ($subscribedChannel) {
     $new_id = $subscribedChannel->id;
 
     include_once "$fnsDir/SubscribedChannels/setPublisherLocked.php";
-    SubscribedChannels\setPublisherLocked($mysqli, $id, true);
+    SubscribedChannels\setPublisherLocked($mysqli, $new_id, true);
 
 } else {
 
