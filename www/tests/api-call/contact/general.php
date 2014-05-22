@@ -6,13 +6,15 @@ chdir(__DIR__);
 include_once '../fns/get_main_engine.php';
 $engine = get_main_engine();
 
+include_once '../../../fns/time_today.php';
+$birthday_time = time_today();
+
 $full_name = 'sample full_name';
 $alias = 'sample alias';
 $address = 'sample address';
 $email = 'sample email';
 $phone1 = 'sample phone1';
 $phone2 = 'sample phone2';
-$birthday_time = mktime(0, 0, 0, date('n'), date('j'), date('Y'));
 $username = 'sample username';
 $tags = 'tag1 tag2';
 $favorite = true;
