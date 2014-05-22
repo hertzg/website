@@ -10,7 +10,7 @@ $id_folders = $folder->id_folders;
 
 include_once 'fns/request_folder_params.php';
 $name = request_folder_params($mysqli, $id_users,
-    $id_folders, $folder->parent_id_folders);
+    $folder->parent_id_folders, $id_folders);
 
 include_once '../../fns/Folders/rename.php';
 Folders\rename($mysqli, $id_users, $id_folders, $name);

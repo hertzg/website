@@ -6,11 +6,11 @@ chdir(__DIR__);
 include_once '../fns/get_main_engine.php';
 $engine = get_main_engine();
 
-$new_name = 'test folder name';
-$edited_name = 'edited folder name';
+$name = 'sample name';
+$edited_name = 'sample edited name';
 
 $response = $engine->request('folder/add', [
-    'name' => $new_name,
+    'name' => $name,
 ]);
 $engine->expectSuccess();
 $engine->expectNatural('', $response);
@@ -18,7 +18,7 @@ $engine->expectNatural('', $response);
 $id = $response;
 
 $response = $engine->request('folder/add', [
-    'name' => $new_name,
+    'name' => $name,
 ]);
 $engine->expectError('FOLDER_ALREADY_EXISTS');
 
@@ -28,28 +28,9 @@ $response = $engine->request('folder/get', [
 ]);
 $engine->expectSuccess();
 expect_folder_object($engine, '', $response);
-$engine->expectValue('.name', $response->name, $new_name);
+$engine->expectValue('.name', $response->name, $name);
 $engine->expectEquals('.insert_time', '.rename_time',
     $response->insert_time, $response->rename_time);
-
-$response = $engine->request('folder/rename', [
-    'id' => $id,
-]);
-$engine->expectError('ENTER_NAME');
-
-$response = $engine->request('folder/rename', [
-    'id' => $id,
-    'name' => $edited_name,
-]);
-$engine->expectSuccess();
-$engine->expectValue('', true, $response);
-
-$response = $engine->request('folder/get', [
-    'id' => $id,
-]);
-$engine->expectSuccess();
-expect_folder_object($engine, '', $response);
-$engine->expectValue('.name', $response->name, $edited_name);
 
 $response = $engine->request('folder/list');
 $engine->expectType('', 'array', $response);
@@ -61,6 +42,7 @@ $response = $engine->request('folder/delete', [
     'id' => $id,
 ]);
 $engine->expectSuccess();
+$engine->expectValue('', true, $response);
 
 $response = $engine->request('folder/delete', [
     'id' => $id,
