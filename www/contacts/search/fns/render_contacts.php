@@ -1,13 +1,16 @@
 <?php
 
-function render_contacts (array $contacts, array &$items, array $params, $keyword) {
+function render_contacts (array $contacts,
+    array &$items, array $params, $keyword) {
+
+    $fnsPageDir = __DIR__.'/../../../fns/Page';
 
     if ($contacts) {
 
         $regex = '/('.preg_quote(htmlspecialchars($keyword)).')+/i';
 
-        include_once __DIR__.'/../../../fns/Page/imageArrowLink.php';
-        include_once __DIR__.'/../../../fns/Page/imageArrowLinkWithDescription.php';
+        include_once "$fnsPageDir/imageArrowLink.php";
+        include_once "$fnsPageDir/imageArrowLinkWithDescription.php";
         foreach ($contacts as $contact) {
 
             $queryString = htmlspecialchars(
@@ -35,7 +38,7 @@ function render_contacts (array $contacts, array &$items, array $params, $keywor
         }
 
     } else {
-        include_once __DIR__.'/../../../fns/Page/info.php';
+        include_once "$fnsPageDir/info.php";
         $items[] = Page\info('No contacts found');
     }
 

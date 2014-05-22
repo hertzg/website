@@ -16,6 +16,7 @@ function delete ($mysqli, $contact, $user) {
     addNumber($mysqli, $user->id_users, -1);
 
     include_once __DIR__.'/../Birthdays/invalidateIfNeeded.php';
-    \Users\Birthdays\invalidateIfNeeded($mysqli, $user, $contact->birthday_time);
+    \Users\Birthdays\invalidateIfNeeded(
+        $mysqli, $user, $contact->birthday_time);
 
 }

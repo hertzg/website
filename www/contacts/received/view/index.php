@@ -75,7 +75,8 @@ $content = Page\tabs(
         ],
     ],
     "Received Contact #$id",
-    Form\label('Received from', htmlspecialchars($receivedContact->sender_username))
+    Form\label('Received from',
+        htmlspecialchars($receivedContact->sender_username))
     .create_panel('The Contact', join('<div class="hr"></div>', $items))
     .$infoText
     .create_options_panel($id)

@@ -2,9 +2,11 @@
 
 function render_contacts (array $contacts, array &$items, array $params) {
 
+    $fnsPageDir =  __DIR__.'/../../fns/Page';
+
     if ($contacts) {
-        include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
-        include_once __DIR__.'/../../fns/Page/imageArrowLinkWithDescription.php';
+        include_once "$fnsPageDir/imageArrowLink.php";
+        include_once "$fnsPageDir/imageArrowLinkWithDescription.php";
         foreach ($contacts as $contact) {
 
             $queryString = htmlspecialchars(
@@ -23,13 +25,13 @@ function render_contacts (array $contacts, array &$items, array $params) {
             if ($alias === '') {
                 $items[] = Page\imageArrowLink($title, $href, $icon);
             } else {
-                $items[] = Page\imageArrowLinkWithDescription($title, $alias,
-                    $href, $icon);
+                $items[] = Page\imageArrowLinkWithDescription(
+                    $title, $alias, $href, $icon);
             }
 
         }
     } else {
-        include_once __DIR__.'/../../fns/Page/info.php';
+        include_once "$fnsPageDir/info.php";
         $items[] = Page\info('No contacts');
     }
 

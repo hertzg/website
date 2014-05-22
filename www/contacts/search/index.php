@@ -64,9 +64,10 @@ if ($tag === '') {
     $contacts = ContactTags\searchOnTagName($mysqli, $id_users, $keyword, $tag,
         $offset, $limit, $total);
 
+    include_once '../../fns/Form/hidden.php';
     $clearHref = '../?tag='.rawurlencode($tag);
     $formContent = SearchForm\content($keyword, $searchPlaceholder, $clearHref)
-        .'<input type="hidden" name="tag" value="'.htmlspecialchars($tag).'" />';
+        .Form\hidden('tag', $tag);
     $items[] = SearchForm\create($searchAction, $formContent);
 
     $clearHref = '?'.htmlspecialchars(

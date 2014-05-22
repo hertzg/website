@@ -36,7 +36,8 @@ include_once '../lib/mysqli.php';
 $events = Events\indexOnUserAndTime($mysqli, $id_users, $timeSelected);
 
 include_once '../fns/Contacts/indexBirthdays.php';
-$contacts = Contacts\indexBirthdays($mysqli, $id_users, $daySelected, $monthSelected);
+$contacts = Contacts\indexBirthdays($mysqli,
+    $id_users, $daySelected, $monthSelected);
 
 include_once 'fns/render_events.php';
 render_events($contacts, $events, $eventItems);
@@ -50,7 +51,8 @@ if ($user->num_events) {
         $description, $href, 'events');
 }
 
-$queryString = "?year=$yearSelected&amp;month=$monthSelected&amp;day=$daySelected";
+$yearParam = "year=$yearSelected";
+$queryString = "?$yearParam&amp;month=$monthSelected&amp;day=$daySelected";
 $newEventHref = "new-event/$queryString";
 $jumpToHref = "jump-to/$queryString";
 
