@@ -59,7 +59,7 @@ $response = $engine->request('channel/list');
 $engine->expectSuccess();
 $engine->expectType('', 'array', $response);
 foreach ($response as $i => $channel) {
-    expect_channel_object($engine, ".[$i]", $channel);
+    expect_channel_object($engine, "[$i]", $channel);
 }
 
 $response = $engine->request('channel/delete', [

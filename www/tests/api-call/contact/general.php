@@ -64,7 +64,7 @@ $response = $engine->request('contact/list');
 $engine->expectSuccess();
 $engine->expectType('', 'array', $response);
 foreach ($response as $i => $contact) {
-    expect_contact_object($engine, ".[$i]", $contact);
+    expect_contact_object($engine, "[$i]", $contact);
 }
 
 $response = $engine->request('contact/delete', ['id' => $id]);

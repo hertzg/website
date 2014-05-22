@@ -37,7 +37,7 @@ $response = $engine->request('note/list');
 $engine->expectSuccess();
 $engine->expectType('', 'array', $response);
 foreach ($response as $i => $note) {
-    expect_note_object($engine, ".[$i]", $note);
+    expect_note_object($engine, "[$i]", $note);
 }
 
 $response = $engine->request('note/delete', ['id' => $id]);

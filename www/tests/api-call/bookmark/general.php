@@ -40,7 +40,7 @@ $response = $engine->request('bookmark/list');
 $engine->expectSuccess();
 $engine->expectType('', 'array', $response);
 foreach ($response as $i => $bookmark) {
-    expect_bookmark_object($engine, ".[$i]", $bookmark);
+    expect_bookmark_object($engine, "[$i]", $bookmark);
 }
 
 $response = $engine->request('bookmark/delete', ['id' => $id]);
