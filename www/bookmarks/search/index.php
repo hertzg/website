@@ -61,12 +61,13 @@ if ($tag === '') {
 } else {
 
     include_once '../../fns/BookmarkTags/searchOnTagName.php';
-    $bookmarks = BookmarkTags\searchOnTagName($mysqli, $id_users, $keyword, $tag,
-        $offset, $limit, $total);
+    $bookmarks = BookmarkTags\searchOnTagName($mysqli, $id_users, $keyword,
+        $tag, $offset, $limit, $total);
 
+    include_once '../../fns/Form/hidden.php';
     $clearHref = '../?tag='.rawurlencode($tag);
     $formContent = SearchForm\content($keyword, $searchPlaceholder, $clearHref)
-        .'<input type="hidden" name="tag" value="'.htmlspecialchars($tag).'" />';
+        .Form\hidden('tag', $tag);
     $items[] = SearchForm\create($searchAction, $formContent);
 
     $clearHref = '?'.htmlspecialchars(

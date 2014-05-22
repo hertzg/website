@@ -45,7 +45,8 @@ $content = Page\tabs(
         ],
     ],
     "Received Bookmark #$id",
-    Form\label('Received from', htmlspecialchars($receivedBookmark->sender_username))
+    Form\label('Received from',
+        htmlspecialchars($receivedBookmark->sender_username))
     .create_panel('The Bookmark', join('<div class="hr"></div>', $items))
     .$infoText
     .create_options_panel($receivedBookmark)

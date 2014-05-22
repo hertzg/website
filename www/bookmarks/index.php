@@ -59,9 +59,10 @@ if ($tag === '') {
 
     if ($total > 1) {
 
+        include_once '../fns/Form/hidden.php';
         include_once '../fns/SearchForm/emptyContent.php';
         $formContent = SearchForm\emptyContent($searchPlaceholder)
-            .'<input type="hidden" name="tag" value="'.htmlspecialchars($tag).'" />';
+            .Form\hidden('tag', $tag);
 
         include_once '../fns/SearchForm/create.php';
         $items[] = SearchForm\create($searchAction, $formContent);

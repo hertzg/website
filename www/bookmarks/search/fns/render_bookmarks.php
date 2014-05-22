@@ -1,12 +1,15 @@
 <?php
 
-function render_bookmarks (array $bookmarks, array &$items, array $params, $keyword) {
+function render_bookmarks (array $bookmarks,
+    array &$items, array $params, $keyword) {
+
+    $fnsPageDir = __DIR__.'/../../../fns/Page';
 
     if ($bookmarks) {
 
         $regex = '/('.preg_quote(htmlspecialchars($keyword)).')+/i';
 
-        include_once __DIR__.'/../../../fns/Page/imageArrowLinkWithDescription.php';
+        include_once "$fnsPageDir/imageArrowLinkWithDescription.php";
         foreach ($bookmarks as $bookmark) {
 
             $queryString = htmlspecialchars(
@@ -25,7 +28,7 @@ function render_bookmarks (array $bookmarks, array &$items, array $params, $keyw
         }
 
     } else {
-        include_once __DIR__.'/../../../fns/Page/info.php';
+        include_once "$fnsPageDir/info.php";
         $items[] = Page\info('No bookmarks found');
     }
 

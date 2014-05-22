@@ -2,15 +2,16 @@
 
 function create_options_panel ($user, $base = '') {
 
-    include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
+    $fnsDir = __DIR__.'/../../fns';
 
+    include_once "$fnsDir/Page/imageArrowLink.php";
     $title = 'New Bookmark';
     $href = "{$base}new/";
     $options = [Page\imageArrowLink($title, $href, 'create-bookmark')];
 
     $num_received_bookmarks = $user->num_received_bookmarks;
     if ($num_received_bookmarks) {
-        include_once __DIR__.'/../../fns/Page/imageArrowLinkWithDescription.php';
+        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         $title = 'Received Bookmarks';
         $description = "$num_received_bookmarks total.";
         $href = "{$base}received/";
@@ -24,7 +25,7 @@ function create_options_panel ($user, $base = '') {
         $options[] = Page\imageArrowLink($title, $href, 'trash-bin');
     }
 
-    include_once __DIR__.'/../../fns/create_panel.php';
+    include_once "$fnsDir/create_panel.php";
     return create_panel('Options', join('<div class="hr"></div>', $options));
 
 }
