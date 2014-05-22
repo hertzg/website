@@ -17,7 +17,7 @@ if (array_key_exists($key, $_SESSION)) {
         'event_day' => abs((int)$day),
         'event_month' => abs((int)$month),
         'event_year' => abs((int)$year),
-        'event_text' => '',
+        'text' => '',
     ];
 
 }
@@ -60,8 +60,8 @@ $content = Page\tabs(
             'value' => $values['event_year'],
         ], 'When', true)
         .'<div class="hr"></div>'
-        .Form\textfield('event_text', 'Text', [
-            'value' => $values['event_text'],
+        .Form\textfield('text', 'Text', [
+            'value' => $values['text'],
             'autofocus' => true,
             'required' => true,
         ])

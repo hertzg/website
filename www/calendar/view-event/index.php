@@ -42,7 +42,7 @@ $content =
         ],
         "Event #$id",
         Page\sessionMessages('calendar/view-event/messages')
-        .Page\text(htmlspecialchars($event->event_text))
+        .Page\text(htmlspecialchars($event->text))
         .'<div class="hr"></div>'
         .Page\text(date('F d, Y', $event->event_time))
         .Page\infoText($datesText)

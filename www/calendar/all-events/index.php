@@ -22,7 +22,7 @@ if ($events) {
     foreach ($events as $event) {
         $description = date('F d, Y', $event->event_time);
         $items[] = Page\imageArrowLinkWithDescription(
-            htmlspecialchars($event->event_text),
+            htmlspecialchars($event->text),
             $description, "../view-event/?id=$event->id", 'event');
     }
 

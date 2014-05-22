@@ -14,7 +14,7 @@ function render_events (array $contacts, array $events, &$items) {
         if ($events) {
             include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
             foreach ($events as $event) {
-                $title = htmlspecialchars($event->event_text);
+                $title = htmlspecialchars($event->text);
                 $href = "view-event/?id=$event->id";
                 $items[] = Page\imageArrowLink($title, $href, 'event');
             }

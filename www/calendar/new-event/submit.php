@@ -8,22 +8,22 @@ $user = require_user('../../');
 $id_users = $user->id_users;
 
 include_once '../../fns/request_strings.php';
-list($event_day, $event_month, $event_year, $event_text) = request_strings(
-    'event_day', 'event_month', 'event_year', 'event_text');
+list($event_day, $event_month, $event_year, $text) = request_strings(
+    'event_day', 'event_month', 'event_year', 'text');
 
 $event_day = abs((int)$event_day);
 $event_month = abs((int)$event_month);
 $event_year = abs((int)$event_year);
 
 include_once '../../fns/str_collapse_spaces.php';
-$event_text = str_collapse_spaces($event_text);
+$text = str_collapse_spaces($text);
 
 $errors = [];
 
 include_once '../fns/parse_event_time.php';
 parse_event_time($event_day, $event_month, $event_year, $errors, $event_time);
 
-if ($event_text === '') $errors[] = 'Enter text.';
+if ($text === '') $errors[] = 'Enter text.';
 
 include_once '../../fns/redirect.php';
 
@@ -33,7 +33,7 @@ if ($errors) {
         'event_day' => $event_day,
         'event_month' => $event_month,
         'event_year' => $event_year,
-        'event_text' => $event_text,
+        'text' => $text,
     ];
     redirect();
 }
@@ -45,7 +45,7 @@ unset(
 
 include_once '../../fns/Users/Events/add.php';
 include_once '../../lib/mysqli.php';
-$id = Users\Events\add($mysqli, $user, $event_text, $event_time);
+$id = Users\Events\add($mysqli, $user, $text, $event_time);
 
 $_SESSION['calendar/view-event/messages'] = ['Event has been saved.'];
 
