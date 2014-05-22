@@ -48,7 +48,7 @@ unset(
 
 include_once '../../../fns/SubscribedChannels/add.php';
 $id = SubscribedChannels\add($mysqli, $channel->id, $channel->channel_name,
-    $channel->id_users, $channel->username, false,
+    $channel->public, $channel->id_users, $channel->username, false,
     $id_users, $user->username, true, true);
 
 include_once '../../../fns/Users/SubscribedChannels/addNumber.php';

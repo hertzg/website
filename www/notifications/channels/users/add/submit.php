@@ -70,8 +70,8 @@ if ($subscribedChannel) {
 
     include_once "$fnsDir/SubscribedChannels/add.php";
     $new_id = SubscribedChannels\add($mysqli, $id, $channel->channel_name,
-        $id_users, $user->username, true, $subscriber_id_users,
-        $subscriber_username, false, false);
+        $channel->public, $id_users, $user->username, true,
+        $subscriber_id_users, $subscriber_username, false, false);
 
     include_once "$fnsDir/Users/SubscribedChannels/addNumber.php";
     Users\SubscribedChannels\addNumber($mysqli, $subscriber_id_users, 1);
