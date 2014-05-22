@@ -20,7 +20,7 @@ function add ($mysqli, $id_users, $id_folders, $name, $size, $sourcePath) {
     include_once __DIR__.'/filePath.php';
     $destinationPath = filePath($id_users, $id);
 
-    rename($sourcePath, $destinationPath);
+    copy($sourcePath, $destinationPath);
 
     return $id;
 
