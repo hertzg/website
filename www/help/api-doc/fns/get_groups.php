@@ -14,6 +14,10 @@ function get_groups () {
             'title' => 'Contact',
             'description' => 'Methods for manipulating contacts',
         ],
+        'event' => [
+            'title' => 'Event',
+            'description' => 'Methods for manipulating events',
+        ],
         'file' => [
             'title' => 'File',
             'description' => 'Methods for manipulating files',
