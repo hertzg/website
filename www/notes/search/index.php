@@ -6,15 +6,11 @@ include_once '../../fns/require_user.php';
 $user = require_user($base);
 $id_users = $user->id_users;
 
-include_once '../../fns/request_keyword_tag_offset.php';
-list($keyword, $tag, $offset) = request_keyword_tag_offset();
+include_once '../../fns/request_valid_keyword_tag_offset.php';
+list($keyword, $tag, $offset) = request_valid_keyword_tag_offset();
 
-if ($keyword === '') {
-    $url = '../';
-    if ($tag !== '') $url .= '?tag='.rawurlencode($tag);
-    include_once '../../fns/redirect.php';
-    redirect($url);
-}
+$searchAction = './';
+$searchPlaceholder = 'Search notes...';
 
 $items = [];
 
@@ -29,9 +25,6 @@ if ($offset % $limit) {
 include_once '../../fns/SearchForm/content.php';
 include_once '../../fns/SearchForm/create.php';
 include_once '../../lib/mysqli.php';
-
-$searchAction = './';
-$searchPlaceholder = 'Search notes...';
 
 if ($tag === '') {
 

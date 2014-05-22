@@ -6,13 +6,13 @@ include_once '../../fns/require_user.php';
 $user = require_user($base);
 $id_users = $user->id_users;
 
-include_once '../../fns/request_keyword_tag_offset.php';
-list($keyword, $tag, $offset) = request_keyword_tag_offset();
-
-$items = [];
+include_once '../../fns/request_valid_keyword_tag_offset.php';
+list($keyword, $tag, $offset) = request_valid_keyword_tag_offset();
 
 $searchAction = './';
 $searchPlaceholder = 'Search tasks...';
+
+$items = [];
 
 include_once '../../fns/Paging/limit.php';
 $limit = Paging\limit();
