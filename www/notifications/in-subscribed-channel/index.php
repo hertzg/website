@@ -21,9 +21,8 @@ $options[] = create_subscribed_channels_link($user, '../');
 
 $items = [];
 
-include_once '../../fns/Notifications/indexOnUserChannel.php';
-$notifications = Notifications\indexOnUserChannel($mysqli,
-    $id_users, $subscribedChannel->id_channels);
+include_once '../../fns/Notifications/indexOnSubscribedChannel.php';
+$notifications = Notifications\indexOnSubscribedChannel($mysqli, $id);
 
 if ($notifications) {
 
