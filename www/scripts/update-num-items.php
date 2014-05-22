@@ -39,9 +39,12 @@ foreach ($users as $user) {
         $mysqli, 'received_bookmarks', $id_users);
     $num_received_contacts = receiver_user_rows(
         $mysqli, 'received_contacts', $id_users);
-    $num_received_files = receiver_user_rows($mysqli, 'received_files', $id_users);
-    $num_received_notes = receiver_user_rows($mysqli, 'received_notes', $id_users);
-    $num_received_tasks = receiver_user_rows($mysqli, 'received_tasks', $id_users);
+    $num_received_files = receiver_user_rows(
+        $mysqli, 'received_files', $id_users);
+    $num_received_notes = receiver_user_rows(
+        $mysqli, 'received_notes', $id_users);
+    $num_received_tasks = receiver_user_rows(
+        $mysqli, 'received_tasks', $id_users);
     $num_schedules = user_rows($mysqli, 'schedules', $id_users);
     $num_tasks = user_rows($mysqli, 'tasks', $id_users);
     $num_tokens = user_rows($mysqli, 'tokens', $id_users);
@@ -76,7 +79,8 @@ foreach ($channels as $channel) {
 
 }
 
-$subscribed_channels = mysqli_query_object($mysqli, 'select * from subscribed_channels');
+$sql = 'select * from subscribed_channels';
+$subscribed_channels = mysqli_query_object($mysqli, $sql);
 foreach ($subscribed_channels as $subscribed_channel) {
 
     $id = $subscribed_channel->id;

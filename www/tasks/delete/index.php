@@ -29,7 +29,8 @@ $content = Page\tabs(
     Page\text('Are you sure you want to delete the task?')
     .'<div class="hr"></div>'
     .Page\twoColumns(
-        Page\imageLink('Yes, delete task', "submit.php$escapedItemQuery", 'yes'),
+        Page\imageLink('Yes, delete task',
+            "submit.php$escapedItemQuery", 'yes'),
         Page\imageLink('No, return back', "../view/$escapedItemQuery", 'no')
     )
 );
