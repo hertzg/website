@@ -2,10 +2,12 @@
 
 function render_tasks (array $tasks, array &$items, array $params) {
 
+    $fnsPageDir = __DIR__.'/../../fns/Page';
+
     if ($tasks) {
 
-        include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
-        include_once __DIR__.'/../../fns/Page/imageArrowLinkWithDescription.php';
+        include_once "$fnsPageDir/imageArrowLink.php";
+        include_once "$fnsPageDir/imageArrowLinkWithDescription.php";
 
         foreach ($tasks as $task) {
 
@@ -30,7 +32,7 @@ function render_tasks (array $tasks, array &$items, array $params) {
         }
 
     } else {
-        include_once __DIR__.'/../../fns/Page/info.php';
+        include_once "$fnsPageDir/info.php";
         $items[] = Page\info('No tasks');
     }
 

@@ -2,13 +2,14 @@
 
 function render_tasks (array $tasks, array &$items, array $params, $keyword) {
 
+    $fnsDir = __DIR__.'/../../../fns';
+
     if ($tasks) {
 
-        include_once __DIR__.'/../../../fns/mark_regex.php';
-        $regex = mark_regex($keyword);
+        $regex = '/('.preg_quote(htmlspecialchars($keyword)).')+/i';
 
-        include_once __DIR__.'/../../../fns/Page/imageArrowLink.php';
-        include_once __DIR__.'/../../../fns/Page/imageArrowLinkWithDescription.php';
+        include_once "$fnsDir/Page/imageArrowLink.php";
+        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
 
         foreach ($tasks as $task) {
 
@@ -34,7 +35,7 @@ function render_tasks (array $tasks, array &$items, array $params, $keyword) {
         }
 
     } else {
-        include_once __DIR__.'/../../../fns/Page/info.php';
+        include_once "$fnsDir/Page/info.php";
         $items[] = Page\info('No tasks found');
     }
 
