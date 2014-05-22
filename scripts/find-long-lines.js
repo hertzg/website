@@ -14,7 +14,7 @@ function scan (dir) {
             var content = fs.readFileSync(file, 'utf8')
             var lines = content.split(/\r\n|\r|\n/)
             lines.forEach(function (line, index) {
-                if (line.length > 90) {
+                if (line.length > 80) {
                     foundLines.push({
                         file: file.substr(2),
                         line: line,
@@ -44,5 +44,6 @@ foundLines.sort(function (a, b) {
     return b.line.length - a.line.length
 })
 foundLines.forEach(function (foundFile) {
-    console.log(foundFile.file + ':' + foundFile.lineNumber + ':' + foundFile.line)
+    var lineNumber = foundFile.lineNumber
+    console.log(foundFile.file + ':' + lineNumber + ':' + foundFile.line)
 })

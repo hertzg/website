@@ -38,13 +38,17 @@ function group_page ($groupKey, array $methods, array $subgroups = null) {
     );
 
     if ($subgroups) {
+
         $items = [];
         foreach ($subgroups as $key => $subgroup) {
             $items[] = Page\imageArrowLinkWithDescription($subgroup['title'],
                 "$subgroup[description].", "$key/", 'generic');
         }
+        $items = join('<div class="hr"></div>', $items);
+
         include_once __DIR__.'/../../../fns/create_panel.php';
-        $content .= create_panel('Subnamespaces', join('<div class="hr"></div>', $items));
+        $content .= create_panel('Subnamespaces', $items);
+
     }
 
     include_once __DIR__.'/../../../fns/echo_page.php';

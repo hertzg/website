@@ -4,6 +4,8 @@ function render_files ($user, array &$items) {
 
     if (!$user->show_files) return;
 
+    $fnsPageDir = __DIR__.'/../../fns/Page';
+
     $key = 'files';
     $title = 'Files';
     $href = '../files/';
@@ -14,7 +16,7 @@ function render_files ($user, array &$items) {
 
         $descriptionItems = [];
         if ($storage_used) {
-            include_once '../fns/bytestr.php';
+            include_once __DIR__.'/../../fns/bytestr.php';
             $descriptionItems[] = bytestr($storage_used).' used.';
         }
         if ($num_received_files) {
@@ -22,12 +24,12 @@ function render_files ($user, array &$items) {
         }
         $description = join(' ', $descriptionItems);
 
-        include_once __DIR__.'/../../fns/Page/imageArrowLinkWithDescription.php';
+        include_once "$fnsPageDir/imageArrowLinkWithDescription.php";
         $items[$key] = Page\imageArrowLinkWithDescription($title,
             $description, $href, $icon);
 
     } else {
-        include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
+        include_once "$fnsPageDir/imageArrowLink.php";
         $items[$key] = Page\imageArrowLink($title, $href, $icon);
     }
 

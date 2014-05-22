@@ -16,7 +16,8 @@ channel_method_page('edit', [
     ],
     [
         'name' => 'receive_notifications',
-        'description' => 'Whether the channel owner should receive notifications.',
+        'description' => 'Whether the channel owner'
+            .' should receive notifications.',
     ],
 ], [
     'CHANNEL_NOT_FOUND', 'ENTER_CHANNEL_NAME', 'INVALID_CHANNEL_NAME',

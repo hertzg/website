@@ -10,7 +10,8 @@ unset(
 
 include_once '../../fns/ReceivedBookmarks/indexOnReceiver.php';
 include_once '../../lib/mysqli.php';
-$receivedBookmarks = ReceivedBookmarks\indexOnReceiver($mysqli, $user->id_users);
+$receivedBookmarks = ReceivedBookmarks\indexOnReceiver(
+    $mysqli, $user->id_users);
 
 include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../fns/Page/imageArrowLinkWithDescription.php';
@@ -25,7 +26,8 @@ foreach ($receivedBookmarks as $receivedBookmark) {
         $items[] = Page\imageArrowLink($description, $href, $icon);
     } else {
         $title = htmlspecialchars($title);
-        $items[] = Page\imageArrowLinkWithDescription($title, $description, $href, $icon);
+        $items[] = Page\imageArrowLinkWithDescription($title,
+            $description, $href, $icon);
     }
 }
 

@@ -36,8 +36,8 @@ if ($username === '') {
             $errors[] = 'You cannot connect to yourself.';
         } else {
             include_once '../../../fns/Connections/getByConnectedUser.php';
-            $connectedUser = Connections\getByConnectedUser($mysqli,
-                $id_users, $connected_id_users, $connection->connected_id_users);
+            $connectedUser = Connections\getByConnectedUser($mysqli, $id_users,
+                $connected_id_users, $connection->connected_id_users);
             if ($connectedUser) {
                 $errors[] = 'A connection to this user already exists.';
             }

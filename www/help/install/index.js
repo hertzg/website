@@ -20,16 +20,19 @@
             } else {
                 var installRequest = mozApps.install(manifest)
                 installRequest.onsuccess = function () {
-                    alertAndRedirect('Zvini has been installed on your platform.')
+                    var text = 'Zvini has been installed on your platform.'
+                    alertAndRedirect(text)
                 }
                 installRequest.onerror = function () {
-                    alertAndRedirect('Failed to install Zvini on your platform.')
+                    var text = 'Failed to install Zvini on your platform.'
+                    alertAndRedirect(text)
                 }
             }
         }
 
     } else {
-        alertAndRedirect('We\'re sorry, Zvini cannot be installed on your platform.')
+        var text = 'We\'re sorry, Zvini cannot be installed on your platform.'
+        alertAndRedirect(text)
     }
 
 })()

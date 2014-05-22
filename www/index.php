@@ -16,17 +16,21 @@ include_once 'fns/get_revision.php';
 
 header('Content-Type: text/html; charset=UTF-8');
 
+$commonCssRevision = get_revision('common.compressed.css');
+
 echo
     '<!DOCTYPE html>'
     .'<html>'
         .'<head>'
             .'<title>Zvini</title>'
-            .'<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />'
+            .'<meta http-equiv="Content-Type"'
+            .' content="text/html; charset=UTF-8" />'
             .'<meta name="viewport"'
             .' content="width=device-width, user-scalable=no" />'
             .'<link rel="stylesheet" type="text/css"'
-            .' href="common.compressed.css?'.get_revision('common.compressed.css').'" />'
-            .'<link rel="stylesheet" type="text/css" href="index.compressed.css" />'
+            ." href=\"common.compressed.css?$commonCssRevision\" />"
+            .'<link rel="stylesheet" type="text/css"'
+            .' href="index.compressed.css" />'
             .'<link rel="icon" type="image/png" href="zvini-icons/16.png" />'
             .'<link rel="icon" type="image/png" sizes="32x32"'
             .' href="zvini-icons/32.png" />'

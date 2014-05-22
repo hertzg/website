@@ -6,7 +6,8 @@ function get_methods () {
         'deleteAll' => 'Deletes all received tasks.',
         'get' => 'Returns a single existing received task.',
         'import' => 'Moves an existing received task in receiver\'s tasks.',
-        'importCopy' => 'Copies an existing received task in receiver\'s tasks.',
+        'importCopy' => 'Copies an existing received task'
+            .' in receiver\'s tasks.',
         'list' => 'Returns a list of all received tasks.',
     ];
 }

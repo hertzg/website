@@ -4,6 +4,8 @@ function render_tasks ($user, &$items) {
 
     if (!$user->show_tasks) return;
 
+    $fnsPageDir = __DIR__.'/../../fns/Page';
+
     $num_tasks = $user->num_tasks;
     $num_received_tasks = $user->num_received_tasks;
 
@@ -22,12 +24,12 @@ function render_tasks ($user, &$items) {
         }
         $description = join(' ', $descriptionItems);
 
-        include_once __DIR__.'/../../fns/Page/imageArrowLinkWithDescription.php';
+        include_once "$fnsPageDir/imageArrowLinkWithDescription.php";
         $items[$key] = Page\imageArrowLinkWithDescription($title,
             $description, $href, $icon);
 
     } else {
-        include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
+        include_once "$fnsPageDir/imageArrowLink.php";
         $items[$key] = Page\imageArrowLink($title, $href, $icon);
     }
 

@@ -22,7 +22,8 @@ $content = Page\tabs(
         ],
     ],
     'Restore Defaults',
-    Page\text('Are you sure you want to restore the default visibility of the items?')
+    Page\text('Are you sure you want to restore'
+        .' the default visibility of the items?')
     .'<div class="hr"></div>'
     .Page\imageLink('Yes, restore defaults', 'submit.php', 'yes')
     .'<div class="hr"></div>'

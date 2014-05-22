@@ -28,7 +28,8 @@ contact_method_page('edit', [
     ],
     [
         'name' => 'birthday_time',
-        'description' => 'The new Unix timestamp of the birthday of the contact.',
+        'description' => 'The new Unix timestamp'
+            .' of the birthday of the contact.',
     ],
     [
         'name' => 'username',

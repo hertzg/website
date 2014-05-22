@@ -29,7 +29,8 @@ foreach ($receivedContacts as $receivedContact) {
         $items[] = Page\imageArrowLink($title, $href, $icon);
     } else {
         $description = htmlspecialchars($alias);
-        $items[] = Page\imageArrowLinkWithDescription($title, $description, $href, $icon);
+        $items[] = Page\imageArrowLinkWithDescription($title,
+            $description, $href, $icon);
     }
 
 }

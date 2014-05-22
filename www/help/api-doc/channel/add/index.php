@@ -12,7 +12,8 @@ channel_method_page('add', [
     ],
     [
         'name' => 'receive_notifications',
-        'description' => 'Whether the channel owner should receive notifications.',
+        'description' => 'Whether the channel owner'
+            .' should receive notifications.',
     ],
 ], [
     'ENTER_CHANNEL_NAME', 'INVALID_CHANNEL_NAME', 'CHANNEL_NAME_TOO_SHORT',

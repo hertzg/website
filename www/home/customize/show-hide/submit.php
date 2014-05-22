@@ -7,10 +7,12 @@ include_once '../../../fns/require_user.php';
 $user = require_user('../../../');
 
 include_once '../../../fns/request_strings.php';
-list($bookmarks, $new_bookmark, $calendar, $contacts, $new_contact, $files,
-    $notes, $new_note, $notifications, $schedules, $tasks, $new_task) = request_strings(
-    'bookmarks', 'new_bookmark', 'calendar', 'contacts', 'new_contact', 'files',
-    'notes', 'new_note', 'notifications', 'schedules', 'tasks', 'new_task');
+list($bookmarks, $new_bookmark, $calendar, $contacts,
+    $new_contact, $files, $notes, $new_note, $notifications,
+    $schedules, $tasks, $new_task) = request_strings(
+    'bookmarks', 'new_bookmark', 'calendar', 'contacts',
+    'new_contact', 'files', 'notes', 'new_note', 'notifications',
+    'schedules', 'tasks', 'new_task');
 
 $bookmarks = (bool)$bookmarks;
 $new_bookmark = (bool)$new_bookmark;
