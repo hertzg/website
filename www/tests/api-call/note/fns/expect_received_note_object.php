@@ -8,5 +8,6 @@ function expect_received_note_object ($engine, $variableName, $receivedNote) {
         'string', $receivedNote->sender_username);
     $engine->expectType("$variableName.text", 'string', $receivedNote->text);
     $engine->expectType("$variableName.tags", 'string', $receivedNote->tags);
-    $engine->expectNatural("$variableName.insert_time", $receivedNote->insert_time);
+    $engine->expectNatural("$variableName.insert_time",
+        $receivedNote->insert_time);
 }

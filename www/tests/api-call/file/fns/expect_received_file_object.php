@@ -8,5 +8,6 @@ function expect_received_file_object ($engine, $variableName, $receivedFile) {
         'string', $receivedFile->sender_username);
     $engine->expectType("$variableName.name", 'string', $receivedFile->name);
     $engine->expectNatural("$variableName.size", $receivedFile->size);
-    $engine->expectNatural("$variableName.insert_time", $receivedFile->insert_time);
+    $engine->expectNatural("$variableName.insert_time",
+        $receivedFile->insert_time);
 }

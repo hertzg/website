@@ -46,7 +46,8 @@ $content = Page\tabs(
         ],
     ],
     "Received Note #$id",
-    Form\label('Received from', htmlspecialchars($receivedNote->sender_username))
+    Form\label('Received from',
+        htmlspecialchars($receivedNote->sender_username))
     .create_panel('The Note', join('<div class="hr"></div>', $items))
     .$infoText
     .create_options_panel($id)

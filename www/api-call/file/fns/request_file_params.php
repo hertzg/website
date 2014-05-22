@@ -1,6 +1,7 @@
 <?php
 
-function request_file_params ($mysqli, $id_users, $id_folders, $exclude_id = 0) {
+function request_file_params ($mysqli,
+    $id_users, $id_folders, $exclude_id = 0) {
 
     include_once __DIR__.'/../../../fns/Files/request.php';
     $name = Files\request();

@@ -12,7 +12,8 @@ function check_receiver ($mysqli, $id_users,
             $errors[] = "A user with the username doesn't exist.";
         } else {
             include_once __DIR__.'/../../fns/get_users_connection.php';
-            $connection = get_users_connection($mysqli, $receiverUser, $id_users);
+            $connection = get_users_connection(
+                $mysqli, $receiverUser, $id_users);
             if ($connection['can_send_note']) {
                 $receiver_id_users = $receiverUser->id_users;
             } else {

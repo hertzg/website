@@ -1,6 +1,7 @@
 <?php
 
-function request_folder_params ($mysqli, $id_users, $id_folders, $exclude_id = 0) {
+function request_folder_params ($mysqli,
+    $id_users, $id_folders, $exclude_id = 0) {
 
     include_once __DIR__.'/../../../fns/Folders/request.php';
     $name = Folders\request();
