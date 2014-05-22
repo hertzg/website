@@ -10,6 +10,7 @@ unset($_SESSION['home/customize/reorder/messages']);
 include_once '../../../../fns/Page/tabs.php';
 include_once '../../../../fns/Page/imageLink.php';
 include_once '../../../../fns/Page/text.php';
+include_once '../../../../fns/Page/twoColumns.php';
 $content = Page\tabs(
     [
         [
@@ -25,9 +26,10 @@ $content = Page\tabs(
     Page\text('Are you sure you want to restore'
         .' the default order of the items?')
     .'<div class="hr"></div>'
-    .Page\imageLink('Yes, restore defaults', 'submit.php', 'yes')
-    .'<div class="hr"></div>'
-    .Page\imageLink('No, return back', '..', 'no')
+    .Page\twoColumns(
+        Page\imageLink('Yes, restore defaults', 'submit.php', 'yes'),
+        Page\imageLink('No, return back', '..', 'no')
+    )
 );
 
 include_once '../../../../fns/echo_page.php';
