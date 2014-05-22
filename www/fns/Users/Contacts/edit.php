@@ -9,8 +9,8 @@ function edit ($mysqli, $user, $id, $full_name, $alias, $address, $email,
     $id_users = $user->id_users;
 
     include_once __DIR__.'/../../Contacts/edit.php';
-    \Contacts\edit($mysqli, $id_users, $id, $full_name, $alias, $address, $email,
-        $phone1, $phone2, $birthday_time, $username, $tags, $favorite);
+    \Contacts\edit($mysqli, $id_users, $id, $full_name, $alias, $address,
+        $email, $phone1, $phone2, $birthday_time, $username, $tags, $favorite);
 
     include_once __DIR__.'/../../ContactTags/deleteOnContact.php';
     \ContactTags\deleteOnContact($mysqli, $id);
