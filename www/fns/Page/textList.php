@@ -6,8 +6,12 @@ function textList (array $texts, $class) {
     $html =
         "<div class=\"textList $class\">"
             .'<ul>';
-    foreach ($texts as $text) {
-        $html .= "<li><span class=\"bullet\"></span>$text</li>";
+    if (count($texts) == 1) {
+        $html .= "<li>$texts[0]</li>";
+    } else {
+        foreach ($texts as $text) {
+            $html .= "<li><span class=\"bullet\"></span>$text</li>";
+        }
     }
     $html .=
             '</ul>'
