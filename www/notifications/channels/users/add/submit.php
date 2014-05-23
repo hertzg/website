@@ -19,11 +19,11 @@ if ($subscriber_username === '') {
     $errors[] = 'Enter username.';
 } else {
     include_once "$fnsDir/Users/getByUsername.php";
-    $userToSubscribe = Users\getByUsername($mysqli, $subscriber_username);
-    if (!$userToSubscribe) {
+    $subscriberUser = Users\getByUsername($mysqli, $subscriber_username);
+    if (!$subscriberUser) {
         $errors[] = "A user with the username doesn't exist.";
     } else {
-        $subscriber_id_users = $userToSubscribe->id_users;
+        $subscriber_id_users = $subscriberUser->id_users;
         if ($subscriber_id_users == $id_users) {
             $errors[] = "You don't have to add yourself in the list.";
         } else {
@@ -35,7 +35,7 @@ if ($subscriber_username === '') {
             } else {
                 include_once "$fnsDir/get_users_connection.php";
                 $connection = get_users_connection(
-                    $mysqli, $userToSubscribe, $id_users);
+                    $mysqli, $subscriberUser, $id_users);
                 if (!$connection['can_send_channel']) {
                     $errors[] = "The user isn't receiving channels from you.";
                 }
@@ -59,27 +59,9 @@ unset(
     $_SESSION['notifications/channels/users/add/values']
 );
 
-if ($subscribedChannel) {
-
-    $new_id = $subscribedChannel->id;
-
-    include_once "$fnsDir/SubscribedChannels/setPublisherLocked.php";
-    SubscribedChannels\setPublisherLocked($mysqli, $new_id, true);
-
-} else {
-
-    include_once "$fnsDir/SubscribedChannels/add.php";
-    $new_id = SubscribedChannels\add($mysqli, $id, $channel->channel_name,
-        $channel->public, $id_users, $user->username, true,
-        $subscriber_id_users, $subscriber_username, false, false);
-
-    include_once "$fnsDir/Users/SubscribedChannels/addNumber.php";
-    Users\SubscribedChannels\addNumber($mysqli, $subscriber_id_users, 1);
-
-}
-
-include_once "$fnsDir/Channels/addNumUsers.php";
-Channels\addNumUsers($mysqli, $id, 1);
+include_once "$fnsDir/Users/Channels/Users/add.php";
+$new_id = Users\Channels\Users\add($mysqli, $user,
+    $channel, $subscribedChannel, $subscriberUser);
 
 $_SESSION['notifications/channels/users/view/messages'] = [
     'The user has been added.',
