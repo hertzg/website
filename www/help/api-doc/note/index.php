@@ -1,10 +1,6 @@
 <?php
 
 include_once 'fns/get_methods.php';
+include_once 'fns/get_subgroups.php';
 include_once '../fns/group_page.php';
-group_page('note', get_methods(), [
-    'received' => [
-        'title' => 'Received',
-        'description' => 'Methods for manipulating received notes',
-    ],
-]);
+group_page('note', get_methods(), get_subgroups());
