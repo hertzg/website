@@ -13,13 +13,12 @@ $base = '../../../';
 include_once '../../../fns/ChannelName/maxLength.php';
 $maxLength = ChannelName\maxLength();
 
-include_once '../../../fns/ChannelName/minLength.php';
-$minLength = ChannelName\minLength();
+include_once '../fns/get_field_notes.php';
+$field_notes = get_field_notes();
 
 include_once '../../../fns/Form/button.php';
 include_once '../../../fns/Form/checkbox.php';
 include_once '../../../fns/Form/hidden.php';
-include_once '../../../fns/Form/notes.php';
 include_once '../../../fns/Form/textfield.php';
 include_once '../../../fns/Page/sessionErrors.php';
 include_once '../../../fns/Page/tabs.php';
@@ -43,15 +42,14 @@ $content = Page\tabs(
             'autofocus' => true,
             'required' => true,
         ])
-        .Form\notes([
-            'Characters a-z, A-Z, 0-9, dash, dot and underscore only.',
-            "Minimum $minLength maximum $maxLength characters.",
-        ])
+        .$field_notes['channel_name']
         .'<div class="hr"></div>'
         .Form\checkbox($base, 'public', 'Mark as Public', $values['public'])
+        .$field_notes['public']
         .'<div class="hr"></div>'
         .Form\checkbox($base, 'receive_notifications',
             'Receive Notifications', $values['receive_notifications'])
+        .$field_notes['receive_notifications']
         .'<div class="hr"></div>'
         .Form\button('Save Channel')
         .Form\hidden('id', $id)
