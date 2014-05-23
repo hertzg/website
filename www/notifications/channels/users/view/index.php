@@ -32,7 +32,7 @@ $content = Page\tabs(
     Page\sessionMessages('notifications/channels/users/view/messages')
     .Form\label('Username',
         htmlspecialchars($subscribedChannel->subscriber_username))
-    .create_panel('Options', $deleteLink)
+    .create_panel('User Options', $deleteLink)
 );
 
 include_once '../../../../fns/echo_page.php';

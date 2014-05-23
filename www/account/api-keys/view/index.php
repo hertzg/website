@@ -42,10 +42,7 @@ $content = Page\tabs(
         'value' => bin2hex($apiKey->key),
         'readonly' => true,
     ])
-    .create_panel(
-        'Options',
-        Page\twoColumns($editLink, $deleteLink)
-    )
+    .create_panel('API Key Options', Page\twoColumns($editLink, $deleteLink))
 );
 
 include_once '../../../fns/echo_page.php';

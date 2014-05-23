@@ -20,7 +20,6 @@ unset(
 );
 
 include_once '../fns/create_interval_select.php';
-include_once '../../fns/create_panel.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/hidden.php';
 include_once '../../fns/Form/textfield.php';

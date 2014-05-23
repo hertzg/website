@@ -29,6 +29,6 @@ function create_options_panel ($subscribedChannel) {
     }
 
     include_once __DIR__.'/../../../../fns/create_panel.php';
-    return create_panel('Options', join('<div class="hr"></div>', $items));
+    return create_panel('Channel Options', join('<div class="hr"></div>', $items));
 
 }
