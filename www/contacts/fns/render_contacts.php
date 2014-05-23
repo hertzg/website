@@ -2,7 +2,7 @@
 
 function render_contacts (array $contacts, array &$items, array $params) {
 
-    $fnsPageDir =  __DIR__.'/../../fns/Page';
+    $fnsPageDir = __DIR__.'/../../fns/Page';
 
     if ($contacts) {
         include_once "$fnsPageDir/imageArrowLink.php";
