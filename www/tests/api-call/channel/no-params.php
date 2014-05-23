@@ -15,4 +15,13 @@ $engine->expectError('CHANNEL_NOT_FOUND');
 $response = $engine->request('channel/get');
 $engine->expectError('CHANNEL_NOT_FOUND');
 
+$response = $engine->request('channel/user/add');
+$engine->expectError('CHANNEL_NOT_FOUND');
+
+$response = $engine->request('channel/user/list');
+$engine->expectError('CHANNEL_NOT_FOUND');
+
+$response = $engine->request('channel/user/remove');
+$engine->expectError('CHANNEL_NOT_FOUND');
+
 echo 'Done '.__FILE__."\n  $engine->numRequests requests made.\n";
