@@ -3,5 +3,6 @@
 namespace Notes;
 
 function delete ($mysqli, $id) {
-    $mysqli->query("delete from notes where id_notes = $id");
+    $sql = "delete from notes where id_notes = $id";
+    $mysqli->query($sql) || trigger_error($mysqli->error);
 }

@@ -8,5 +8,5 @@ function editResetPasswordKey ($mysqli, $id_users, $reset_password_key) {
     $sql = "update users set reset_password_key = '$reset_password_key',"
         ." reset_password_key_time = $reset_password_key_time"
         ." where id_users = $id_users";
-    $mysqli->query($sql) || die($mysqli->error);
+    $mysqli->query($sql) || trigger_error($mysqli->error);
 }

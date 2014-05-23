@@ -3,5 +3,6 @@
 namespace Channels;
 
 function delete ($mysqli, $id) {
-    $mysqli->query("delete from channels where id = $id");
+    $sql = "delete from channels where id = $id";
+    $mysqli->query($sql) || trigger_error($mysqli->error);
 }

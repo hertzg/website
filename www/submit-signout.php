@@ -10,9 +10,9 @@ if (array_key_exists('token', $_SESSION)) {
 
     $token = $_SESSION['token'];
 
-    include_once 'fns/Tokens/remove.php';
+    include_once 'fns/Tokens/delete.php';
     include_once 'lib/mysqli.php';
-    Tokens\remove($mysqli, $token->id);
+    Tokens\delete($mysqli, $token->id);
 
     include_once 'fns/Users/Tokens/addNumber.php';
     Users\Tokens\addNumber($mysqli, $token->id_users, -1);

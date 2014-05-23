@@ -3,5 +3,6 @@
 namespace Events;
 
 function deleteOnUser ($mysqli, $id_users) {
-    $mysqli->query("delete from events where id_users = $id_users");
+    $sql = "delete from events where id_users = $id_users";
+    $mysqli->query($sql) || trigger_error($mysqli->error);
 }

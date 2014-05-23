@@ -3,5 +3,6 @@
 namespace Bookmarks;
 
 function delete ($mysqli, $id) {
-    $mysqli->query("delete from bookmarks where id_bookmarks = $id");
+    $sql = "delete from bookmarks where id_bookmarks = $id";
+    $mysqli->query($sql) || trigger_error($mysqli->error);
 }
