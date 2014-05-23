@@ -32,8 +32,12 @@ if ($errors) {
 
 unset($_SESSION['account/close/errors']);
 
-include_once '../../fns/Bookmarks/deleteOnUser.php';
 include_once '../../lib/mysqli.php';
+
+include_once '../../fns/ApiKeys/deleteOnUser.php';
+ApiKeys\deleteOnUser($mysqli, $id_users);
+
+include_once '../../fns/Bookmarks/deleteOnUser.php';
 Bookmarks\deleteOnUser($mysqli, $id_users);
 
 include_once '../../fns/BookmarkTags/deleteOnUser.php';
