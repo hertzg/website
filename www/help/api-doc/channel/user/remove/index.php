@@ -11,5 +11,5 @@ channel_user_method_page('remove', [
         'description' => 'The Zvini username of the user to remove.',
     ],
 ], [
-    'CHANNEL_NOT_FOUND', 'ENTER_USERNAME', 'USER_NOT_ADDED',
+    'CHANNEL_NOT_FOUND', 'ENTER_USERNAME', 'USER_NOT_FOUND', 'USER_NOT_ADDED',
 ]);

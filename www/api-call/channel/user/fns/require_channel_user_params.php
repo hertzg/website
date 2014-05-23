@@ -20,17 +20,6 @@ function require_channel_user_params ($mysqli, $user, $channel) {
         bad_request('USER_NOT_FOUND');
     }
 
-    $subscriber_id_users = $subscriberUser->id_users;
-
-    if ($subscriber_id_users == $user->id_users) {
-        include_once __DIR__.'/../../../fns/bad_request.php';
-        bad_request('USER_IS_SELF');
-    }
-
-    include_once "$fnsDir/SubscribedChannels/getExistingSubscriber.php";
-    $subscribedChannel = SubscribedChannels\getExistingSubscriber(
-        $mysqli, $channel->id, $subscriber_id_users);
-
-    return [$subscriberUser, $subscribedChannel];
+    return $subscriberUser;
 
 }
