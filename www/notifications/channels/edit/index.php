@@ -8,6 +8,8 @@ $key = 'notifications/channels/edit/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else $values = (array)$channel;
 
+unset($_SESSION['notifications/channels/view/messages']);
+
 $base = '../../../';
 
 include_once '../../../fns/ChannelName/maxLength.php';
