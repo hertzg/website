@@ -13,7 +13,13 @@ function render_notes (array $notes, array &$items, array $params) {
             );
             $href = "view/?$queryString";
 
-            $title = htmlspecialchars($note->text);
+            $text = $note->text;
+            if ($note->encrypt) {
+                include_once __DIR__.'/../../fns/encrypt_text.php';
+                $text = encrypt_text($text);
+            }
+
+            $title = htmlspecialchars($text);
             $items[] = Page\imageArrowLink($title, $href, 'note');
 
         }

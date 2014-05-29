@@ -17,9 +17,17 @@ include_once '../../fns/Page/imageArrowLink.php';
 $items = [];
 $icon = 'note';
 foreach ($receivedNotes as $receivedNote) {
+
+    $text = $receivedNote->text;
+    if ($receivedNote->encrypt) {
+        include_once '../../fns/encrypt_text.php';
+        $text = encrypt_text($text);
+    }
+
     $href = "view/?id=$receivedNote->id";
-    $title = htmlspecialchars($receivedNote->text);
+    $title = htmlspecialchars($text);
     $items[] = Page\imageArrowLink($title, $href, $icon);
+
 }
 
 $title = 'Delete All Notes';
