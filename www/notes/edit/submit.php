@@ -23,6 +23,7 @@ if ($errors) {
     $_SESSION['notes/edit/values'] = [
         'text' => $text,
         'tags' => $tags,
+        'encrypt' => $encrypt,
     ];
     redirect("./$itemQuery");
 }

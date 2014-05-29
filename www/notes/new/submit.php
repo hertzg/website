@@ -15,6 +15,7 @@ list($text, $tags, $tag_names, $encrypt) = request_note_params($errors);
 $_SESSION['notes/new/values'] = [
     'text' => $text,
     'tags' => $tags,
+    'encrypt' => $encrypt,
 ];
 
 include_once '../../fns/redirect.php';

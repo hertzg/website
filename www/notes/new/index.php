@@ -12,6 +12,7 @@ if (array_key_exists($key, $_SESSION)) {
     $values = [
         'text' => '',
         'tags' => '',
+        'encrypt' => false,
     ];
 }
 
@@ -26,6 +27,7 @@ include_once '../../fns/Notes/maxLengths.php';
 $maxLengths = Notes\maxLengths();
 
 include_once '../../fns/Form/button.php';
+include_once '../../fns/Form/checkbox.php';
 include_once '../../fns/Form/textarea.php';
 include_once '../../fns/Form/textfield.php';
 include_once '../../fns/Page/sessionErrors.php';
@@ -56,6 +58,8 @@ $content = Page\tabs(
             'value' => $values['tags'],
             'maxlength' => $maxLengths['tags'],
         ])
+        .'<div class="hr"></div>'
+        .Form\checkbox($base, 'encrypt', 'Encrypt', $values['encrypt'])
         .'<div class="hr"></div>'
         .Page\staticTwoColumns(
             Form\button('Save'),

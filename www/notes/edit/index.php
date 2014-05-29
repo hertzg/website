@@ -13,15 +13,18 @@ unset($_SESSION['notes/view/messages']);
 include_once '../../fns/Notes/maxLengths.php';
 $maxLengths = Notes\maxLengths();
 
-include_once '../../fns/ItemList/escapedItemQuery.php';
-include_once '../../fns/ItemList/listHref.php';
-include_once '../../fns/Page/tabs.php';
+$base = '../../';
+
 include_once '../../fns/Form/button.php';
+include_once '../../fns/Form/checkbox.php';
 include_once '../../fns/Form/hidden.php';
 include_once '../../fns/Form/textarea.php';
 include_once '../../fns/Form/textfield.php';
+include_once '../../fns/ItemList/escapedItemQuery.php';
 include_once '../../fns/ItemList/itemHiddenInputs.php';
+include_once '../../fns/ItemList/listHref.php';
 include_once '../../fns/Page/sessionErrors.php';
+include_once '../../fns/Page/tabs.php';
 $content = Page\tabs(
     [
         [
@@ -48,10 +51,12 @@ $content = Page\tabs(
             'maxlength' => $maxLengths['tags'],
         ])
         .'<div class="hr"></div>'
+        .Form\checkbox($base, 'encrypt', 'Encrypt', $values['encrypt'])
+        .'<div class="hr"></div>'
         .Form\button('Save Changes')
         .ItemList\itemHiddenInputs($id)
     .'</form>'
 );
 
 include_once '../../fns/echo_page.php';
-echo_page($user, "Edit Note #$id", $content, '../../');
+echo_page($user, "Edit Note #$id", $content, $base);

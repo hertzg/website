@@ -5,21 +5,21 @@ include_once '../../../lib/mysqli.php';
 list($receivedNote, $id, $user) = require_received_note($mysqli);
 
 $key = 'notes/received/edit-and-import/values';
-if (array_key_exists($key, $_SESSION)) {
-    $values = $_SESSION[$key];
-} else {
-    $values = (array)$receivedNote;
-}
+if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
+else $values = (array)$receivedNote;
 
 include_once '../../../fns/Notes/maxLengths.php';
 $maxLengths = Notes\maxLengths();
 
-include_once '../../../fns/Page/tabs.php';
+$base = '../../../';
+
 include_once '../../../fns/Form/button.php';
+include_once '../../../fns/Form/checkbox.php';
 include_once '../../../fns/Form/hidden.php';
 include_once '../../../fns/Form/textarea.php';
 include_once '../../../fns/Form/textfield.php';
 include_once '../../../fns/Page/sessionErrors.php';
+include_once '../../../fns/Page/tabs.php';
 $content = Page\tabs(
     [
         [
@@ -46,10 +46,12 @@ $content = Page\tabs(
             'maxlength' => $maxLengths['tags'],
         ])
         .'<div class="hr"></div>'
+        .Form\checkbox($base, 'encrypt', 'Encrypt', $values['encrypt'])
+        .'<div class="hr"></div>'
         .Form\button('Import Note')
         .Form\hidden('id', $id)
     .'</form>'
 );
 
 include_once '../../../fns/echo_page.php';
-echo_page($user, "Edit Received Note #$id", $content, '../../../');
+echo_page($user, "Edit Received Note #$id", $content, $base);
