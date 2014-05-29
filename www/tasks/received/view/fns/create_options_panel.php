@@ -13,9 +13,6 @@ function create_options_panel ($receivedTask) {
     $icon = 'import-task';
     $editAndImportLink = Page\imageArrowLink('Edit and Import', $href, $icon);
 
-    $href = "../delete/$queryString";
-    $deleteLink = Page\imageArrowLink('Delete', $href, 'trash-bin');
-
     include_once __DIR__.'/../../../../fns/Page/imageLink.php';
     if ($receivedTask->archived) {
         $archiveLink = Page\imageLink('Unarchive',
@@ -24,6 +21,9 @@ function create_options_panel ($receivedTask) {
         $archiveLink = Page\imageLink('Archive',
             "submit-archive.php$queryString", 'TODO');
     }
+
+    $href = "../delete/$queryString";
+    $deleteLink = Page\imageArrowLink('Delete', $href, 'trash-bin');
 
     include_once __DIR__.'/../../../../fns/Page/twoColumns.php';
     $content =
