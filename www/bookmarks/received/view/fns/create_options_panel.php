@@ -2,7 +2,7 @@
 
 function create_options_panel ($receivedBookmark) {
 
-    $id = $receivedBookmark->id;
+    $queryString = "?id=$receivedBookmark->id";
 
     include_once __DIR__.'/../../../fns/create_open_links.php';
     $values = create_open_links($receivedBookmark->url, '../../../');
@@ -10,14 +10,23 @@ function create_options_panel ($receivedBookmark) {
 
     include_once __DIR__.'/../../../../fns/Page/imageArrowLink.php';
 
-    $href = "submit-import.php?id=$id";
+    $href = "submit-import.php$queryString";
     $importLink = Page\imageArrowLink('Import', $href, 'import-bookmark');
 
-    $href = "../edit-and-import/?id=$id";
+    $href = "../edit-and-import/$queryString";
     $icon = 'import-bookmark';
     $editAndImportLink = Page\imageArrowLink('Edit and Import', $href, $icon);
 
-    $href = "../delete/?id=$id";
+    include_once __DIR__.'/../../../../fns/Page/imageLink.php';
+    if ($receivedBookmark->archived) {
+        $archiveLink = Page\imageLink('Unarchive',
+            "submit-unarchive.php$queryString", 'TODO');
+    } else {
+        $archiveLink = Page\imageLink('Archive',
+            "submit-archive.php$queryString", 'TODO');
+    }
+
+    $href = "../delete/$queryString";
     $deleteLink = Page\imageArrowLink('Delete', $href, 'trash-bin');
 
     include_once __DIR__.'/../../../../fns/Page/twoColumns.php';
@@ -26,7 +35,7 @@ function create_options_panel ($receivedBookmark) {
         .'<div class="hr"></div>'
         .Page\twoColumns($importLink, $editAndImportLink)
         .'<div class="hr"></div>'
-        .$deleteLink;
+        .Page\twoColumns($archiveLink, $deleteLink);
 
     include_once __DIR__.'/../../../../fns/create_panel.php';
     return create_panel('Bookmark Options', $content);

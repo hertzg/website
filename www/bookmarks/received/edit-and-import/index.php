@@ -4,12 +4,11 @@ include_once '../fns/require_received_bookmark.php';
 include_once '../../../lib/mysqli.php';
 list($receivedBookmark, $id, $user) = require_received_bookmark($mysqli);
 
+unset($_SESSION['bookmarks/received/view/messages']);
+
 $key = 'bookmarks/received/edit-and-import/values';
-if (array_key_exists($key, $_SESSION)) {
-    $values = $_SESSION[$key];
-} else {
-    $values = (array)$receivedBookmark;
-}
+if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
+else $values = (array)$receivedBookmark;
 
 include_once '../../../fns/Bookmarks/maxLengths.php';
 $maxLengths = Bookmarks\maxLengths();

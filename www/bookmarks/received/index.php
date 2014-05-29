@@ -5,7 +5,8 @@ $user = require_received_bookmarks();
 
 unset(
     $_SESSION['bookmarks/errors'],
-    $_SESSION['bookmarks/messages']
+    $_SESSION['bookmarks/messages'],
+    $_SESSION['bookmarks/received/view/messages']
 );
 
 include_once '../../fns/ReceivedBookmarks/indexOnReceiver.php';

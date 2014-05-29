@@ -31,8 +31,9 @@ $infoText = Page\infoText($text);
 
 include_once 'fns/create_options_panel.php';
 include_once '../../../fns/create_panel.php';
-include_once '../../../fns/Page/tabs.php';
 include_once '../../../fns/Form/label.php';
+include_once '../../../fns/Page/sessionMessages.php';
+include_once '../../../fns/Page/tabs.php';
 $content = Page\tabs(
     [
         [
@@ -45,7 +46,8 @@ $content = Page\tabs(
         ],
     ],
     "Received Bookmark #$id",
-    Form\label('Received from',
+    Page\sessionMessages('bookmarks/received/view/messages')
+    .Form\label('Received from',
         htmlspecialchars($receivedBookmark->sender_username))
     .create_panel('The Bookmark', join('<div class="hr"></div>', $items))
     .$infoText
