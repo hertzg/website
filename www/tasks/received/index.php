@@ -5,7 +5,8 @@ $user = require_received_tasks();
 
 unset(
     $_SESSION['tasks/errors'],
-    $_SESSION['tasks/messages']
+    $_SESSION['tasks/messages'],
+    $_SESSION['tasks/received/view/messages']
 );
 
 include_once '../../fns/ReceivedTasks/indexOnReceiver.php';

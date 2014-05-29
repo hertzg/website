@@ -4,6 +4,8 @@ include_once '../fns/require_received_task.php';
 include_once '../../../lib/mysqli.php';
 list($receivedTask, $id, $user) = require_received_task($mysqli);
 
+unset($_SESSION['tasks/received/view/messages']);
+
 $key = 'tasks/received/edit-and-import/values';
 if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];

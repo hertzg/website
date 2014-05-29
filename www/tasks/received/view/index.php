@@ -36,8 +36,9 @@ $infoText = Page\infoText(
 
 include_once 'fns/create_options_panel.php';
 include_once '../../../fns/create_panel.php';
-include_once '../../../fns/Page/tabs.php';
 include_once '../../../fns/Form/label.php';
+include_once '../../../fns/Page/sessionMessages.php';
+include_once '../../../fns/Page/tabs.php';
 $content = Page\tabs(
     [
         [
@@ -50,11 +51,12 @@ $content = Page\tabs(
         ],
     ],
     "Received Task #$id",
-    Form\label('Received from',
+    Page\sessionMessages('tasks/received/view/messages')
+    .Form\label('Received from',
         htmlspecialchars($receivedTask->sender_username))
     .create_panel('The Task', join('<div class="hr"></div>', $items))
     .$infoText
-    .create_options_panel($id)
+    .create_options_panel($receivedTask)
 );
 
 include_once '../../../fns/echo_page.php';

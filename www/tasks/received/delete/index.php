@@ -4,6 +4,8 @@ include_once '../fns/require_received_task.php';
 include_once '../../../lib/mysqli.php';
 list($receivedTask, $id, $user) = require_received_task($mysqli);
 
+unset($_SESSION['tasks/received/view/messages']);
+
 include_once '../../../fns/Page/tabs.php';
 include_once '../../../fns/Page/imageLink.php';
 include_once '../../../fns/Page/text.php';
