@@ -4,6 +4,8 @@ include_once '../fns/require_received_contact.php';
 include_once '../../../lib/mysqli.php';
 list($receivedContact, $id, $user) = require_received_contact($mysqli);
 
+unset($_SESSION['contacts/received/view/messages']);
+
 $key = 'contacts/received/edit-and-import/values';
 if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];

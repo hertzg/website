@@ -4,6 +4,8 @@ include_once '../fns/require_received_contact.php';
 include_once '../../../lib/mysqli.php';
 list($receivedContact, $id, $user) = require_received_contact($mysqli);
 
+unset($_SESSION['contacts/received/view/messages']);
+
 include_once '../../../fns/Page/tabs.php';
 include_once '../../../fns/Page/imageLink.php';
 include_once '../../../fns/Page/text.php';

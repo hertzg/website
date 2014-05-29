@@ -5,7 +5,8 @@ $user = require_received_contacts();
 
 unset(
     $_SESSION['contacts/errors'],
-    $_SESSION['contacts/messages']
+    $_SESSION['contacts/messages'],
+    $_SESSION['contacts/received/view/messages']
 );
 
 include_once '../../fns/ReceivedContacts/indexOnReceiver.php';

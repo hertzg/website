@@ -62,6 +62,7 @@ $infoText = Page\infoText(
 
 include_once 'fns/create_options_panel.php';
 include_once '../../../fns/create_panel.php';
+include_once '../../../fns/Page/sessionMessages.php';
 include_once '../../../fns/Page/tabs.php';
 $content = Page\tabs(
     [
@@ -75,11 +76,12 @@ $content = Page\tabs(
         ],
     ],
     "Received Contact #$id",
-    Form\label('Received from',
+    Page\sessionMessages('contacts/received/view/messages')
+    .Form\label('Received from',
         htmlspecialchars($receivedContact->sender_username))
     .create_panel('The Contact', join('<div class="hr"></div>', $items))
     .$infoText
-    .create_options_panel($id)
+    .create_options_panel($receivedContact)
 );
 
 include_once '../../../fns/echo_page.php';
