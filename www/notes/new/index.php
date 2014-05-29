@@ -59,7 +59,7 @@ $content = Page\tabs(
             'maxlength' => $maxLengths['tags'],
         ])
         .'<div class="hr"></div>'
-        .Form\checkbox($base, 'encrypt', 'Encrypt', $values['encrypt'])
+        .Form\checkbox($base, 'encrypt', 'Encrypt in Listings', $values['encrypt'])
         .'<div class="hr"></div>'
         .Page\staticTwoColumns(
             Form\button('Save'),
