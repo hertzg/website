@@ -3,6 +3,13 @@
 namespace Users\Bookmarks\Received;
 
 function archive ($mysqli, $receivedBookmark) {
-    include_once __DIR__.'/../../../ReceivedBookmarks/setArchived.php';
-    \ReceivedBookmarks\setArchived($mysqli, $receivedBookmark->id, true);
+    if (!$receivedBookmark->archived) {
+
+        include_once __DIR__.'/../../../ReceivedBookmarks/setArchived.php';
+        \ReceivedBookmarks\setArchived($mysqli, $receivedBookmark->id, true);
+
+        include_once __DIR__.'/addNumberArchived.php';
+        addNumberArchived($mysqli, $receivedBookmark->receiver_id_users, 1);
+
+    }
 }
