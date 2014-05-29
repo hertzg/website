@@ -26,13 +26,15 @@ if ($all) {
 include_once '../../fns/Page/imageArrowLink.php';
 
 $items = [];
-$icon = 'note';
 foreach ($receivedNotes as $receivedNote) {
 
     $text = $receivedNote->text;
     if ($receivedNote->encrypt) {
         include_once '../../fns/encrypt_text.php';
         $text = encrypt_text($text);
+        $icon = 'encrypted-note';
+    } else {
+        $icon = 'note';
     }
 
     $href = "view/?id=$receivedNote->id";

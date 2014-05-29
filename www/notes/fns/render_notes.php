@@ -17,10 +17,13 @@ function render_notes (array $notes, array &$items, array $params) {
             if ($note->encrypt) {
                 include_once __DIR__.'/../../fns/encrypt_text.php';
                 $text = encrypt_text($text);
+                $icon = 'encrypted-note';
+            } else {
+                $icon = 'note';
             }
 
             $title = htmlspecialchars($text);
-            $items[] = Page\imageArrowLink($title, $href, 'note');
+            $items[] = Page\imageArrowLink($title, $href, $icon);
 
         }
     } else {

@@ -47,8 +47,8 @@ render($content, 'folder.svg?3', $names);
 $names = ['move-up', 'move-to-top', 'move-down', 'move-to-bottom'];
 render($content, 'move.svg?1', $names);
 
-$names = ['note', 'create-note', 'edit-note', 'notes'];
-render($content, 'note.svg?1', $names);
+$names = ['note', 'create-note', 'edit-note', 'encrypted-note', 'notes'];
+render($content, 'note.svg?2', $names);
 
 $names = ['account', 'edit-profile', 'download', 'upload', 'feedback', 'yes',
     'no', 'notification', 'create-notification', 'old-notification',
