@@ -14,4 +14,5 @@ unset($_SESSION['bookmarks/errors']);
 $_SESSION['bookmarks/messages'] = ['Bookmark has been deleted.'];
 
 include_once '../../fns/redirect.php';
-redirect('..');
+include_once '../../fns/ItemList/listUrl.php';
+redirect(ItemList\listUrl());

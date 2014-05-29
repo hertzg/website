@@ -14,4 +14,5 @@ unset($_SESSION['notes/errors']);
 $_SESSION['notes/messages'] = ['Note has been deleted.'];
 
 include_once '../../fns/redirect.php';
-redirect('..');
+include_once '../../fns/ItemList/listUrl.php';
+redirect(ItemList\listUrl());
