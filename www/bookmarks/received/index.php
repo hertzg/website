@@ -40,7 +40,7 @@ foreach ($receivedBookmarks as $receivedBookmark) {
             $description, $href, $icon);
     }
 }
-if (!$all) {
+if (!$all && $user->num_archived_received_bookmarks) {
     include_once '../../fns/Form/button.php';
     $items[] =
         '<form action="./">'

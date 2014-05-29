@@ -31,7 +31,7 @@ foreach ($receivedFiles as $receivedFile) {
     $href = "view/?id=$receivedFile->id";
     $items[] = Page\imageArrowLink($title, $href, 'file');
 }
-if (!$all) {
+if (!$all && $user->num_archived_received_files) {
     include_once '../../fns/Form/button.php';
     $items[] =
         '<form action="./">'

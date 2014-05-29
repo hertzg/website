@@ -40,7 +40,7 @@ foreach ($receivedNotes as $receivedNote) {
     $items[] = Page\imageArrowLink($title, $href, $icon);
 
 }
-if (!$all) {
+if (!$all && $user->num_archived_received_notes) {
     include_once '../../fns/Form/button.php';
     $items[] =
         '<form action="./">'

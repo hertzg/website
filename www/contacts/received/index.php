@@ -45,7 +45,7 @@ foreach ($receivedContacts as $receivedContact) {
     }
 
 }
-if (!$all) {
+if (!$all && $user->num_archived_received_contacts) {
     include_once '../../fns/Form/button.php';
     $items[] =
         '<form action="./">'

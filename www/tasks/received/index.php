@@ -44,7 +44,7 @@ foreach ($receivedTasks as $receivedTask) {
     }
 
 }
-if (!$all) {
+if (!$all && $user->num_archived_received_tasks) {
     include_once '../../fns/Form/button.php';
     $items[] =
         '<form action="./">'
