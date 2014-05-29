@@ -6,6 +6,9 @@ include_once '../fns/require_user.php';
 $user = require_user($base);
 $id_users = $user->id_users;
 
+include_once 'fns/unset_session_vars.php';
+unset_session_vars();
+
 include_once '../lib/mysqli.php';
 
 include_once '../fns/request_strings.php';
