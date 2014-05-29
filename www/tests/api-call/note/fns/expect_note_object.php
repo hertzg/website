@@ -1,7 +1,8 @@
 <?php
 
 function expect_note_object ($engine, $variableName, $note) {
-    $properties = ['id', 'text', 'tags', 'encrypt', 'insert_time', 'update_time'];
+    $properties = ['id', 'text', 'tags',
+        'encrypt', 'insert_time', 'update_time'];
     $engine->expectObject($variableName, $properties, $note);
     $engine->expectNatural("$variableName.id", $note->id);
     $engine->expectType("$variableName.text", 'string', $note->text);

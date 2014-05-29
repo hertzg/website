@@ -48,7 +48,8 @@ $content = Page\tabs(
             'maxlength' => $maxLengths['tags'],
         ])
         .'<div class="hr"></div>'
-        .Form\checkbox($base, 'encrypt', 'Encrypt in Listings', $values['encrypt'])
+        .Form\checkbox($base, 'encrypt',
+            'Encrypt in Listings', $values['encrypt'])
         .'<div class="hr"></div>'
         .Form\button('Import Note')
         .Form\hidden('id', $id)

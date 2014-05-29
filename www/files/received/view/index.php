@@ -10,7 +10,8 @@ $queryString = "?id=$id";
 
 include_once '../../../fns/Page/imageLink.php';
 
-$downloadLink = Page\imageLink('Download', "../download/$queryString", 'download');
+$href = "../download/$queryString";
+$downloadLink = Page\imageLink('Download', $href, 'download');
 
 $href = "submit-import.php$queryString";
 $importLink = Page\imageLink('Import', $href, 'import-file');
