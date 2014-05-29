@@ -10,7 +10,7 @@ $id_users = $user->id_users;
 $errors = [];
 
 include_once '../fns/request_note_params.php';
-list($text, $tags, $tag_names) = request_note_params($errors);
+list($text, $tags, $tag_names, $encrypt) = request_note_params($errors);
 
 $_SESSION['notes/new/values'] = [
     'text' => $text,
@@ -34,7 +34,7 @@ unset($_SESSION['notes/new/values']);
 
 include_once '../../fns/Users/Notes/add.php';
 include_once '../../lib/mysqli.php';
-$id = Users\Notes\add($mysqli, $id_users, $text, $tags, $tag_names);
+$id = Users\Notes\add($mysqli, $id_users, $text, $tags, $tag_names, $encrypt);
 
 $_SESSION['notes/view/messages'] = ['Note has been saved.'];
 redirect("../view/?id=$id");

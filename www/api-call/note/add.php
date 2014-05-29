@@ -4,10 +4,11 @@ include_once '../fns/require_api_key.php';
 list($apiKey, $user, $mysqli) = require_api_key();
 
 include_once 'fns/request_note_params.php';
-list($text, $tags, $tag_names) = request_note_params();
+list($text, $tags, $tag_names, $encrypt) = request_note_params();
 
 include_once '../../fns/Users/Notes/add.php';
-$id = Users\Notes\add($mysqli, $user->id_users, $text, $tags, $tag_names);
+$id = Users\Notes\add($mysqli, $user->id_users,
+    $text, $tags, $tag_names, $encrypt);
 
 header('Content-Type: application/json');
 echo $id;

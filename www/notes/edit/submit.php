@@ -11,7 +11,7 @@ $id_users = $user->id_users;
 $errors = [];
 
 include_once '../fns/request_note_params.php';
-list($text, $tags, $tag_names) = request_note_params($errors);
+list($text, $tags, $tag_names, $encrypt) = request_note_params($errors);
 
 include_once '../../fns/ItemList/itemQuery.php';
 $itemQuery = ItemList\itemQuery($id);
@@ -33,7 +33,7 @@ unset(
 );
 
 include_once '../../fns/Users/Notes/edit.php';
-Users\Notes\edit($mysqli, $id_users, $id, $text, $tags, $tag_names);
+Users\Notes\edit($mysqli, $id_users, $id, $text, $tags, $tag_names, $encrypt);
 
 $_SESSION['notes/view/messages'] = ['Changes have been saved.'];
 redirect("../view/$itemQuery");

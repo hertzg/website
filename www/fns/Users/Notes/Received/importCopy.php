@@ -11,6 +11,6 @@ function importCopy ($mysqli, $receivedNote) {
 
     include_once __DIR__.'/../add.php';
     return \Users\Notes\add($mysqli, $receivedNote->receiver_id_users,
-        $receivedNote->text, $tags, $tag_names);;
+        $receivedNote->text, $tags, $tag_names, $receivedNote->encrypt);
 
 }

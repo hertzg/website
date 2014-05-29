@@ -10,7 +10,7 @@ list($receivedNote, $id, $user) = require_received_note($mysqli);
 $errors = [];
 
 include_once '../../fns/request_note_params.php';
-list($text, $tags, $tag_names) = request_note_params($errors);
+list($text, $tags, $tag_names, $encrypt) = request_note_params($errors);
 
 include_once '../../../fns/redirect.php';
 
@@ -29,7 +29,7 @@ unset(
 );
 
 include_once '../../../fns/Users/Notes/add.php';
-Users\Notes\add($mysqli, $user->id_users, $text, $tags, $tag_names);
+Users\Notes\add($mysqli, $user->id_users, $text, $tags, $tag_names, $encrypt);
 
 include_once '../../../fns/Users/Notes/Received/delete.php';
 Users\Notes\Received\delete($mysqli, $receivedNote);
