@@ -2,6 +2,7 @@
 
 include_once 'fns/require_received_bookmarks.php';
 $user = require_received_bookmarks();
+$id_users = $user->id_users;
 
 unset(
     $_SESSION['bookmarks/errors'],
@@ -9,10 +10,18 @@ unset(
     $_SESSION['bookmarks/received/view/messages']
 );
 
-include_once '../../fns/ReceivedBookmarks/indexOnReceiver.php';
+include_once '../../fns/request_strings.php';
+list($all) = request_strings('all');
+
 include_once '../../lib/mysqli.php';
-$receivedBookmarks = ReceivedBookmarks\indexOnReceiver(
-    $mysqli, $user->id_users);
+if ($all) {
+    include_once '../../fns/ReceivedBookmarks/indexOnReceiver.php';
+    $receivedBookmarks = ReceivedBookmarks\indexOnReceiver($mysqli, $id_users);
+} else {
+    include_once '../../fns/ReceivedBookmarks/indexNotArchivedOnReceiver.php';
+    $receivedBookmarks = ReceivedBookmarks\indexNotArchivedOnReceiver(
+        $mysqli, $id_users);
+}
 
 include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../fns/Page/imageArrowLinkWithDescription.php';
@@ -31,13 +40,21 @@ foreach ($receivedBookmarks as $receivedBookmark) {
             $description, $href, $icon);
     }
 }
+if (!$all) {
+    include_once '../../fns/Form/button.php';
+    $items[] =
+        '<form action="./">'
+            .Form\button('Show Archived Bookmarks')
+            .'<input type="hidden" name="all" value="1" />'
+        .'</form>';
+}
 
 $title = 'Delete All Bookmarks';
 $deleteAllLink = Page\imageArrowLink($title, 'delete-all/', 'trash-bin');
 
 include_once '../../fns/create_panel.php';
-include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Page/sessionMessages.php';
+include_once '../../fns/Page/tabs.php';
 $content = Page\tabs(
     [
         [
