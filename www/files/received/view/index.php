@@ -6,26 +6,37 @@ list($receivedFile, $id, $user) = require_received_file($mysqli);
 
 unset($_SESSION['files/received/messages']);
 
+$queryString = "?id=$id";
+
 include_once '../../../fns/Page/imageLink.php';
 
-$downloadLink = Page\imageLink('Download', "../download/?id=$id", 'download');
+$downloadLink = Page\imageLink('Download', "../download/$queryString", 'download');
 
-$href = "submit-import.php?id=$id";
+$href = "submit-import.php$queryString";
 $importLink = Page\imageLink('Import', $href, 'import-file');
 
 $title = 'Rename and Import';
-$href = "../rename-and-import/?id=$id";
+$href = "../rename-and-import/$queryString";
 $renameAndImportLink = Page\imageLink($title, $href, 'import-file');
 
-$deleteLink = Page\imageLink('Delete', "../delete/?id=$id", 'trash-bin');
+if ($receivedFile->archived) {
+    $archiveLink = Page\imageLink('Unarchive',
+        "submit-unarchive.php$queryString", 'TODO');
+} else {
+    $archiveLink = Page\imageLink('Archive',
+        "submit-archive.php$queryString", 'TODO');
+}
+
+$deleteLink = Page\imageLink('Delete', "../delete/$queryString", 'trash-bin');
 
 include_once 'fns/create_preview.php';
 include_once '../../../fns/bytestr.php';
 include_once '../../../fns/create_panel.php';
-include_once '../../../fns/Page/tabs.php';
 include_once '../../../fns/date_ago.php';
-include_once '../../../fns/Page/infoText.php';
 include_once '../../../fns/Form/label.php';
+include_once '../../../fns/Page/infoText.php';
+include_once '../../../fns/Page/sessionMessages.php';
+include_once '../../../fns/Page/tabs.php';
 include_once '../../../fns/Page/twoColumns.php';
 $content = Page\tabs(
     [
@@ -39,7 +50,8 @@ $content = Page\tabs(
         ],
     ],
     "Received File #$id",
-    Form\label('Received from',
+    Page\sessionMessages('files/received/view/messages')
+    .Form\label('Received from',
         htmlspecialchars($receivedFile->sender_username))
     .create_panel(
         'The File',
@@ -55,7 +67,9 @@ $content = Page\tabs(
         'Options',
         Page\twoColumns($downloadLink, $importLink)
         .'<div class="hr"></div>'
-        .Page\twoColumns($renameAndImportLink, $deleteLink)
+        .Page\twoColumns($renameAndImportLink, $archiveLink)
+        .'<div class="hr"></div>'
+        .$deleteLink
     )
 );
 
