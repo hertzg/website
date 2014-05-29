@@ -4,6 +4,8 @@ include_once '../fns/require_received_note.php';
 include_once '../../../lib/mysqli.php';
 list($receivedNote, $id, $user) = require_received_note($mysqli);
 
+unset($_SESSION['notes/received/view/messages']);
+
 $key = 'notes/received/edit-and-import/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else $values = (array)$receivedNote;

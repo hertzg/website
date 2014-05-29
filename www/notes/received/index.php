@@ -5,7 +5,8 @@ $user = require_received_notes();
 
 unset(
     $_SESSION['notes/errors'],
-    $_SESSION['notes/messages']
+    $_SESSION['notes/messages'],
+    $_SESSION['notes/received/view/messages']
 );
 
 include_once '../../fns/ReceivedNotes/indexOnReceiver.php';
