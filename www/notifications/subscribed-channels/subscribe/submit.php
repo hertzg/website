@@ -46,21 +46,8 @@ unset(
     $_SESSION['notifications/subscribed-channels/subscribe/values']
 );
 
-if ($subscribedChannel) {
-    $id = $subscribedChannel->id;
-    include_once '../../../fns/SubscribedChannels/setSubscriberLocked.php';
-    SubscribedChannels\setSubscriberLocked($mysqli, $id, true);
-} else {
-
-    include_once '../../../fns/SubscribedChannels/add.php';
-    $id = SubscribedChannels\add($mysqli, $channel->id, $channel->channel_name,
-        $channel->public, $channel->id_users, $channel->username, false,
-        $id_users, $user->username, true, true);
-
-    include_once '../../../fns/Users/SubscribedChannels/addNumber.php';
-    Users\SubscribedChannels\addNumber($mysqli, $id_users, 1);
-
-}
+include_once '../../../fns/Users/SubscribedChannels/add.php';
+$id = Users\SubscribedChannels\add($mysqli, $user, $channel, $subscribedChannel);
 
 $_SESSION['notifications/subscribed-channels/view/messages'] = [
     'You have subscribed to a public channel.',
