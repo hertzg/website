@@ -46,8 +46,8 @@ if ($subscribedChannel && $subscribedChannel->subscriber_locked) {
 $receive_notifications = (bool)$receive_notifications;
 
 include_once '../../../fns/Users/SubscribedChannels/add.php';
-$id = Users\SubscribedChannels\add($mysqli,
-    $user, $channel, $subscribedChannel);
+$id = Users\SubscribedChannels\add($mysqli, $user,
+    $channel, $subscribedChannel, $receive_notifications);
 
 header('Content-Type: application/json');
 echo $id;
