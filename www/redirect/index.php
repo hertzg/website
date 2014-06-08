@@ -17,7 +17,7 @@ $escapedUrl = htmlspecialchars($url);
 
 $body =
     '<div class="page-text">'
-        .'<div>Redirecting to:</div>'
+        .'<div style="color: #fff">Redirecting to:</div>'
         .'<div>'
             ."<a class=\"a\" href=\"$escapedUrl\">$escapedUrl</a>"
         .'</div>'
