@@ -7,7 +7,6 @@ function create_content ($id, array $values) {
 
     include_once __DIR__.'/../../../fns/ItemList/escapedItemQuery.php';
     include_once __DIR__.'/../../../fns/ItemList/listHref.php';
-    include_once __DIR__.'/../../../fns/Page/tabs.php';
     include_once __DIR__.'/../../../fns/Form/button.php';
     include_once __DIR__.'/../../../fns/Form/checkbox.php';
     include_once __DIR__.'/../../../fns/Form/datefield.php';
@@ -15,6 +14,8 @@ function create_content ($id, array $values) {
     include_once __DIR__.'/../../../fns/Form/textfield.php';
     include_once __DIR__.'/../../../fns/ItemList/itemHiddenInputs.php';
     include_once __DIR__.'/../../../fns/Page/sessionErrors.php';
+    include_once __DIR__.'/../../../fns/Page/staticTwoColumns.php';
+    include_once __DIR__.'/../../../fns/Page/tabs.php';
     include_once __DIR__.'/../../../fns/Username/maxLength.php';
     return Page\tabs(
         [
@@ -85,7 +86,10 @@ function create_content ($id, array $values) {
             .Form\checkbox('../../', 'favorite',
                 'Mark as Favorite', $values['favorite'])
             .'<div class="hr"></div>'
-            .Form\button('Save Changes')
+            .Page\staticTwoColumns(
+                Form\button('Save Changes'),
+                Form\button('Send', 'sendButton')
+            )
             .ItemList\itemHiddenInputs($id)
         .'</form>'
     );

@@ -24,6 +24,7 @@ include_once '../../fns/ItemList/escapedItemQuery.php';
 include_once '../../fns/ItemList/itemHiddenInputs.php';
 include_once '../../fns/ItemList/listHref.php';
 include_once '../../fns/Page/sessionErrors.php';
+include_once '../../fns/Page/staticTwoColumns.php';
 include_once '../../fns/Page/tabs.php';
 $content = Page\tabs(
     [
@@ -54,7 +55,10 @@ $content = Page\tabs(
         .Form\checkbox($base, 'encrypt',
             'Encrypt in Listings', $values['encrypt'])
         .'<div class="hr"></div>'
-        .Form\button('Save Changes')
+        .Page\staticTwoColumns(
+            Form\button('Save Changes'),
+            Form\button('Send', 'sendButton')
+        )
         .ItemList\itemHiddenInputs($id)
     .'</form>'
 );

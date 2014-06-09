@@ -17,31 +17,35 @@ list($full_name, $alias, $address, $email, $phone1, $phone2, $birthday_day,
 include_once '../../fns/ItemList/itemQuery.php';
 $itemQuery = ItemList\itemQuery($id);
 
+$_SESSION['contacts/edit/values'] = [
+    'full_name' => $full_name,
+    'alias' => $alias,
+    'address' => $address,
+    'email' => $email,
+    'phone1' => $phone1,
+    'phone2' => $phone2,
+    'birthday_day' => $birthday_day,
+    'birthday_month' => $birthday_month,
+    'birthday_year' => $birthday_year,
+    'username' => $username,
+    'tags' => $tags,
+    'favorite' => $favorite,
+];
+
 include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['contacts/edit/errors'] = $errors;
-    $_SESSION['contacts/edit/values'] = [
-        'full_name' => $full_name,
-        'alias' => $alias,
-        'address' => $address,
-        'email' => $email,
-        'phone1' => $phone1,
-        'phone2' => $phone2,
-        'birthday_day' => $birthday_day,
-        'birthday_month' => $birthday_month,
-        'birthday_year' => $birthday_year,
-        'username' => $username,
-        'tags' => $tags,
-        'favorite' => $favorite,
-    ];
     redirect("./$itemQuery");
 }
 
-unset(
-    $_SESSION['contacts/edit/errors'],
-    $_SESSION['contacts/edit/values']
-);
+unset($_SESSION['contacts/edit/errors']);
+
+include_once '../../fns/request_strings.php';
+list($sendButton) = request_strings('sendButton');
+if ($sendButton) redirect('send/');
+
+unset($_SESSION['contacts/edit/values']);
 
 include_once '../../fns/Users/Contacts/edit.php';
 Users\Contacts\edit($mysqli, $user, $id, $full_name, $alias, $address, $email,

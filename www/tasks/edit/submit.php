@@ -16,22 +16,26 @@ list($text, $tags, $tag_names, $top_priority) = request_task_params($errors);
 include_once '../../fns/ItemList/itemQuery.php';
 $itemQuery = ItemList\itemQuery($id);
 
+$_SESSION['tasks/edit/values'] = [
+    'text' => $text,
+    'tags' => $tags,
+    'top_priority' => $top_priority,
+];
+
 include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['tasks/edit/errors'] = $errors;
-    $_SESSION['tasks/edit/values'] = [
-        'text' => $text,
-        'tags' => $tags,
-        'top_priority' => $top_priority,
-    ];
     redirect("./$itemQuery");
 }
 
-unset(
-    $_SESSION['tasks/edit/errors'],
-    $_SESSION['tasks/edit/values']
-);
+unset($_SESSION['tasks/edit/errors']);
+
+include_once '../../fns/request_strings.php';
+list($sendButton) = request_strings('sendButton');
+if ($sendButton) redirect('send/');
+
+unset($_SESSION['tasks/edit/values']);
 
 include_once '../../fns/Users/Tasks/edit.php';
 Users\Tasks\edit($mysqli, $id_users, $id,

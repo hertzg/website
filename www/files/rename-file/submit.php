@@ -28,18 +28,22 @@ if ($name === '') {
 
 }
 
+$_SESSION['files/rename-file/values'] = ['name' => $name];
+
 include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['files/rename-file/errors'] = $errors;
-    $_SESSION['files/rename-file/values'] = ['name' => $name];
     redirect("./?id=$id");
 }
 
-unset(
-    $_SESSION['files/rename-file/errors'],
-    $_SESSION['files/rename-file/values']
-);
+unset($_SESSION['files/rename-file/errors']);
+
+include_once '../../fns/request_strings.php';
+list($sendButton) = request_strings('sendButton');
+if ($sendButton) redirect('send/');
+
+unset($_SESSION['files/rename-file/values']);
 
 include_once '../../fns/Files/rename.php';
 Files\rename($mysqli, $id_users, $id, $name);

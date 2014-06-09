@@ -14,11 +14,12 @@ if (array_key_exists($key, $_SESSION)) {
 unset($_SESSION['files/view-file/messages']);
 
 include_once '../../fns/create_folder_link.php';
-include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/hidden.php';
 include_once '../../fns/Form/textfield.php';
 include_once '../../fns/Page/sessionErrors.php';
+include_once '../../fns/Page/staticTwoColumns.php';
+include_once '../../fns/Page/tabs.php';
 $content = Page\tabs(
     [
         [
@@ -39,7 +40,10 @@ $content = Page\tabs(
             'required' => true,
         ])
         .'<div class="hr"></div>'
-        .Form\button('Rename')
+        .Page\staticTwoColumns(
+            Form\button('Rename'),
+            Form\button('Send', 'sendButton')
+        )
         .Form\hidden('id', $id)
     .'</form>'
 );

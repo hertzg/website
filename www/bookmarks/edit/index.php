@@ -15,12 +15,13 @@ $maxLengths = Bookmarks\maxLengths();
 
 include_once '../../fns/ItemList/escapedItemQuery.php';
 include_once '../../fns/ItemList/listHref.php';
-include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/hidden.php';
 include_once '../../fns/Form/textfield.php';
 include_once '../../fns/ItemList/itemHiddenInputs.php';
 include_once '../../fns/Page/sessionErrors.php';
+include_once '../../fns/Page/staticTwoColumns.php';
+include_once '../../fns/Page/tabs.php';
 $content = Page\tabs(
     [
         [
@@ -52,7 +53,10 @@ $content = Page\tabs(
             'value' => $values['tags'],
         ])
         .'<div class="hr"></div>'
-        .Form\button('Save Changes')
+        .Page\staticTwoColumns(
+            Form\button('Save Changes'),
+            Form\button('Send', 'sendButton')
+        )
         .ItemList\itemHiddenInputs($id)
     .'</form>'
 );

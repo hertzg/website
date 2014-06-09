@@ -16,22 +16,26 @@ list($text, $tags, $tag_names, $encrypt) = request_note_params($errors);
 include_once '../../fns/ItemList/itemQuery.php';
 $itemQuery = ItemList\itemQuery($id);
 
+$_SESSION['notes/edit/values'] = [
+    'text' => $text,
+    'tags' => $tags,
+    'encrypt' => $encrypt,
+];
+
 include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['notes/edit/errors'] = $errors;
-    $_SESSION['notes/edit/values'] = [
-        'text' => $text,
-        'tags' => $tags,
-        'encrypt' => $encrypt,
-    ];
     redirect("./$itemQuery");
 }
 
-unset(
-    $_SESSION['notes/edit/errors'],
-    $_SESSION['notes/edit/values']
-);
+unset($_SESSION['notes/edit/errors']);
+
+include_once '../../fns/request_strings.php';
+list($sendButton) = request_strings('sendButton');
+if ($sendButton) redirect('send/');
+
+unset($_SESSION['notes/edit/values']);
 
 include_once '../../fns/Users/Notes/edit.php';
 Users\Notes\edit($mysqli, $id_users, $id, $text, $tags, $tag_names, $encrypt);

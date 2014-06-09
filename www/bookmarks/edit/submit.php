@@ -16,22 +16,26 @@ list($url, $title, $tags, $tag_names) = request_bookmark_params($errors);
 include_once '../../fns/ItemList/itemQuery.php';
 $itemQuery = ItemList\itemQuery($id);
 
+$_SESSION['bookmarks/edit/values'] = [
+    'title' => $title,
+    'url' => $url,
+    'tags' => $tags,
+];
+
 include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['bookmarks/edit/errors'] = $errors;
-    $_SESSION['bookmarks/edit/values'] = [
-        'title' => $title,
-        'url' => $url,
-        'tags' => $tags,
-    ];
     redirect("./$itemQuery");
 }
 
-unset(
-    $_SESSION['bookmarks/edit/errors'],
-    $_SESSION['bookmarks/edit/values']
-);
+unset($_SESSION['bookmarks/edit/errors']);
+
+include_once '../../fns/request_strings.php';
+list($sendButton) = request_strings('sendButton');
+if ($sendButton) redirect('send/');
+
+unset($_SESSION['bookmarks/edit/values']);
 
 include_once '../../fns/Users/Bookmarks/edit.php';
 Users\Bookmarks\edit($mysqli, $id_users, $id, $title, $url, $tags, $tag_names);
