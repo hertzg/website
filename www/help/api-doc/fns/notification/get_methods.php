@@ -1,5 +1,7 @@
 <?php
 
+namespace notification;
+
 function get_methods () {
     return [
         'deleteAll' => 'Deletes all notifications.',

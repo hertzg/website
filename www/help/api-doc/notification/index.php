@@ -1,5 +1,5 @@
 <?php
 
-include_once 'fns/get_methods.php';
+include_once '../fns/notification/get_methods.php';
 include_once '../fns/group_page.php';
-group_page('notification', get_methods());
+group_page('notification', notification\get_methods());
