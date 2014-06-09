@@ -1,5 +1,7 @@
 <?php
 
+namespace folder;
+
 function get_methods () {
     return [
         'add' => 'Creates a new folder.',
