@@ -16,9 +16,27 @@ if ($keyword === '') {
     redirect('..');
 }
 
-include_once '../../../fns/Page/tabs.php';
+$lowerKeyword = mb_strtolower($keyword, 'UTF-8');
+$regex = '/'.preg_quote($lowerKeyword).'/i';
+
 include_once '../../../fns/SearchForm/content.php';
+$searchContent = SearchForm\content($keyword, 'Search page...', '..');
+
 include_once '../../../fns/SearchForm/create.php';
+$items = [SearchForm\create('./', $searchContent)];
+
+include_once '../../../fns/Page/imageLinkWithDescription.php';
+include_once '../fns/get_groups.php';
+$rootGroups = get_groups();
+foreach ($rootGroups as $key => $rootGroup) {
+    if (strpos($key, $lowerKeyword) !== false) {
+        $title = preg_replace($regex, '<mark>$0</mark>', $rootGroup['title']);
+        $items[] = Page\imageLinkWithDescription($title,
+            $rootGroup['description'], "../$key/", 'generic');
+    }
+}
+
+include_once '../../../fns/Page/tabs.php';
 $content = Page\tabs(
     [
         [
@@ -31,7 +49,7 @@ $content = Page\tabs(
         ],
     ],
     'API Documentation',
-    SearchForm\create('./', SearchForm\content($keyword, 'Search...', '..'))
+    join('<div class="hr"></div>', $items)
 );
 
 include_once '../../../fns/echo_page.php';
