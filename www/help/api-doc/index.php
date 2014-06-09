@@ -10,8 +10,13 @@ $api_base = 'https://zvini.com/api-call/';
 include_once 'fns/get_groups.php';
 $groups = get_groups();
 
+include_once '../../fns/SearchForm/emptyContent.php';
+$searchContent = SearchForm\emptyContent('Search page...');
+
+include_once '../../fns/SearchForm/create.php';
+$items = [SearchForm\create('search/', $searchContent)];
+
 include_once '../../fns/Page/imageArrowLinkWithDescription.php';
-$items = [];
 foreach ($groups as $key => $group) {
     $items[] = Page\imageArrowLinkWithDescription($group['title'],
         "$group[description].", "$key/", 'generic');
@@ -51,10 +56,7 @@ $content = Page\tabs(
     )
     .'<div class="hr"></div>'
     .Page\imageArrowLink('PHP Example', 'php-example', 'generic')
-    .create_panel(
-        'Root Namespaces',
-        join('<div class="hr"></div>', $items)
-    )
+    .create_panel('Root Namespaces', join('<div class="hr"></div>', $items))
 );
 
 include_once '../../fns/echo_page.php';
