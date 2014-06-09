@@ -26,39 +26,23 @@ $searchContent = SearchForm\content($keyword, 'Search page...', '..');
 include_once '../../../fns/SearchForm/create.php';
 $items = [SearchForm\create('./', $searchContent)];
 
-include_once '../fns/bookmark/get_subgroups.php';
-include_once '../fns/channel/get_subgroups.php';
-include_once '../fns/contact/get_subgroups.php';
-include_once '../fns/file/get_subgroups.php';
-include_once '../fns/note/get_subgroups.php';
-include_once '../fns/task/get_subgroups.php';
-$groupSubgroups = [
-    'bookmark' => bookmark\get_subgroups(),
-    'channel' => channel\get_subgroups(),
-    'contact' => contact\get_subgroups(),
-    'file' => file\get_subgroups(),
-    'note' => note\get_subgroups(),
-    'task' => task\get_subgroups(),
-];
+include_once 'fns/get_full_groups.php';
+$groups = get_full_groups();
 
 include_once '../../../fns/Page/imageLinkWithDescription.php';
-include_once '../fns/get_groups.php';
-$groups = get_groups();
 foreach ($groups as $groupKey => $group) {
     if (strpos($groupKey, $lowerKeyword) !== false) {
         $title = preg_replace($regex, $replace, $groupKey);
         $items[] = Page\imageLinkWithDescription($title,
             $group['description'], "../$groupKey/", 'generic');
     }
-    if (array_key_exists($groupKey, $groupSubgroups)) {
-        foreach ($groupSubgroups[$groupKey] as $subgroupKey => $subgroup) {
-            $fullKey = "$groupKey/$subgroupKey";
-            if (strpos($fullKey, $lowerKeyword) !== false) {
-                $title = preg_replace($regex, $replace, $fullKey);
-                $href = "../$groupKey/$subgroupKey";
-                $items[] = Page\imageLinkWithDescription($title,
-                    $subgroup['description'], $href, 'generic');
-            }
+    foreach ($group['subgroups'] as $subgroupKey => $subgroup) {
+        $fullKey = "$groupKey/$subgroupKey";
+        if (strpos($fullKey, $lowerKeyword) !== false) {
+            $title = preg_replace($regex, $replace, $fullKey);
+            $href = "../$groupKey/$subgroupKey";
+            $items[] = Page\imageLinkWithDescription($title,
+                $subgroup['description'], $href, 'generic');
         }
     }
 }
