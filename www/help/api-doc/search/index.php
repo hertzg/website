@@ -29,10 +29,13 @@ $items = [SearchForm\create('./', $searchContent)];
 include_once 'fns/get_full_groups.php';
 $groups = get_full_groups();
 
+$found = false;
+
 include_once '../../../fns/Page/imageLinkWithDescription.php';
 foreach ($groups as $groupKey => $group) {
 
     if (strpos($groupKey, $lowerKeyword) !== false) {
+        $found = true;
         $title = preg_replace($regex, $replace, $groupKey);
         $items[] = Page\imageLinkWithDescription($title,
             $group['description'], "../$groupKey/", 'generic');
@@ -41,6 +44,7 @@ foreach ($groups as $groupKey => $group) {
     foreach ($group['methods'] as $name => $description) {
         $title = "$groupKey/$name";
         if (strpos($title, $lowerKeyword) !== false) {
+            $found = true;
             $title = preg_replace($regex, $replace, $title);
             $href = "../$groupKey/$name/";
             $items[] = Page\imageLinkWithDescription($title,
@@ -53,6 +57,7 @@ foreach ($groups as $groupKey => $group) {
 
             $title = "$groupKey/$subgroupKey";
             if (strpos($title, $lowerKeyword) !== false) {
+                $found = true;
                 $title = preg_replace($regex, $replace, $title);
                 $href = "../$groupKey/$subgroupKey/";
                 $items[] = Page\imageLinkWithDescription($title,
@@ -62,6 +67,7 @@ foreach ($groups as $groupKey => $group) {
             foreach ($subgroup['methods'] as $name => $description) {
                 $title = "$groupKey/$subgroupKey/$name";
                 if (strpos($title, $lowerKeyword) !== false) {
+                    $found = true;
                     $title = preg_replace($regex, $replace, $title);
                     $href = "../$groupKey/$subgroupKey/$name/";
                     $items[] = Page\imageLinkWithDescription($title,
@@ -72,6 +78,11 @@ foreach ($groups as $groupKey => $group) {
         }
     }
 
+}
+
+if (!$found) {
+    include_once '../../../fns/Page/info.php';
+    $items[] = Page\info('Nothing found');
 }
 
 include_once '../../../fns/Page/tabs.php';
