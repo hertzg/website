@@ -6,7 +6,6 @@ require_same_domain_referer('..');
 include_once '../fns/require_bookmark.php';
 include_once '../../lib/mysqli.php';
 list($bookmark, $id, $user) = require_bookmark($mysqli);
-$id_users = $user->id_users;
 
 $errors = [];
 
@@ -38,7 +37,7 @@ if ($sendButton) redirect('send/');
 unset($_SESSION['bookmarks/edit/values']);
 
 include_once '../../fns/Users/Bookmarks/edit.php';
-Users\Bookmarks\edit($mysqli, $id_users, $id, $title, $url, $tags, $tag_names);
+Users\Bookmarks\edit($mysqli, $user->id_users, $id, $title, $url, $tags, $tag_names);
 
 $_SESSION['bookmarks/view/messages'] = ['Changes have been saved.'];
 redirect("../view/$itemQuery");

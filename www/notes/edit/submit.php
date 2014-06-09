@@ -6,7 +6,6 @@ require_same_domain_referer('..');
 include_once '../fns/require_note.php';
 include_once '../../lib/mysqli.php';
 list($note, $id, $user) = require_note($mysqli);
-$id_users = $user->id_users;
 
 $errors = [];
 
@@ -38,7 +37,8 @@ if ($sendButton) redirect('send/');
 unset($_SESSION['notes/edit/values']);
 
 include_once '../../fns/Users/Notes/edit.php';
-Users\Notes\edit($mysqli, $id_users, $id, $text, $tags, $tag_names, $encrypt);
+Users\Notes\edit($mysqli, $user->id_users, $id,
+    $text, $tags, $tag_names, $encrypt);
 
 $_SESSION['notes/view/messages'] = ['Changes have been saved.'];
 redirect("../view/$itemQuery");
