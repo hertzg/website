@@ -6,7 +6,7 @@ function render_tasks (array $tasks, array &$items, array $params, $keyword) {
 
     if ($tasks) {
 
-        $regex = '/('.preg_quote(htmlspecialchars($keyword)).')+/i';
+        $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
 
         include_once "$fnsDir/Page/imageArrowLink.php";
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";

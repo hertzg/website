@@ -3,7 +3,7 @@
 function create_items (array $bookmarks, array $contacts, array $notes,
     array $tasks, array $folders, array $files, $keyword) {
 
-    $regex = '/('.preg_quote(htmlspecialchars($keyword)).')+/i';
+    $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
 
     $items = [];
 

@@ -5,7 +5,7 @@ function render_folders_and_files (array $folders,
 
     if ($folders || $files) {
 
-        $regex = '/('.preg_quote(htmlspecialchars($keyword)).')+/i';
+        $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
         $replace = '<mark>$0</mark>';
 
         include_once __DIR__.'/../../../fns/Page/imageArrowLink.php';
