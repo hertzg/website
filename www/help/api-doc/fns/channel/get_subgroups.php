@@ -1,5 +1,7 @@
 <?php
 
+namespace channel;
+
 function get_subgroups () {
     return [
         'subscribed' => [

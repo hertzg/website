@@ -1,5 +1,7 @@
 <?php
 
+namespace channel\user;
+
 function get_methods () {
     return [
         'add' => 'Adds a new user to a channel.',

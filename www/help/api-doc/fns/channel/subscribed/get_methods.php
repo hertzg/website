@@ -1,5 +1,7 @@
 <?php
 
+namespace channel\subscribed;
+
 function get_methods () {
     return [
         'edit' => 'Edits an existing subscribed channel.',

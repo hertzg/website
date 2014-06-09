@@ -1,5 +1,7 @@
 <?php
 
+namespace channel;
+
 function get_methods () {
     return [
         'add' => 'Creates a new channel.',
