@@ -1,5 +1,7 @@
 <?php
 
+namespace note\received;
+
 function get_methods () {
     return [
         'delete' => 'Deletes an existing received note.',

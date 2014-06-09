@@ -1,5 +1,7 @@
 <?php
 
+namespace note;
+
 function get_methods () {
     return [
         'add' => 'Creates a new note.',
