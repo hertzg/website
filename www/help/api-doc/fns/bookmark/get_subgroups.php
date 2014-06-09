@@ -1,5 +1,7 @@
 <?php
 
+namespace bookmark;
+
 function get_subgroups () {
     return [
         'received' => [
