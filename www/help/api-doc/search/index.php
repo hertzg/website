@@ -39,10 +39,10 @@ foreach ($groups as $groupKey => $group) {
     }
 
     foreach ($group['methods'] as $name => $description) {
-        $methodKey = "$groupKey/$name";
-        if (strpos($methodKey, $lowerKeyword) !== false) {
-            $title = preg_replace($regex, $replace, $methodKey);
-            $href = "../$groupKey/$name";
+        $title = "$groupKey/$name";
+        if (strpos($title, $lowerKeyword) !== false) {
+            $title = preg_replace($regex, $replace, $title);
+            $href = "../$groupKey/$name/";
             $items[] = Page\imageLinkWithDescription($title,
                 $description, $href, 'generic');
         }
@@ -51,19 +51,19 @@ foreach ($groups as $groupKey => $group) {
     if (array_key_exists('subgroups', $group)) {
         foreach ($group['subgroups'] as $subgroupKey => $subgroup) {
 
-            $subgroupKey = "$groupKey/$subgroupKey";
-            if (strpos($subgroupKey, $lowerKeyword) !== false) {
-                $title = preg_replace($regex, $replace, $subgroupKey);
-                $href = "../$groupKey/$subgroupKey";
+            $title = "$groupKey/$subgroupKey";
+            if (strpos($title, $lowerKeyword) !== false) {
+                $title = preg_replace($regex, $replace, $title);
+                $href = "../$groupKey/$subgroupKey/";
                 $items[] = Page\imageLinkWithDescription($title,
                     $subgroup['description'], $href, 'generic');
             }
 
             foreach ($subgroup['methods'] as $name => $description) {
-                $methodKey = "$subgroupKey/$name";
-                if (strpos($methodKey, $lowerKeyword) !== false) {
-                    $title = preg_replace($regex, $replace, $methodKey);
-                    $href = "../$subgroupKey/$name";
+                $title = "$groupKey/$subgroupKey/$name";
+                if (strpos($title, $lowerKeyword) !== false) {
+                    $title = preg_replace($regex, $replace, $title);
+                    $href = "../$groupKey/$subgroupKey/$name/";
                     $items[] = Page\imageLinkWithDescription($title,
                         $description, $href, 'generic');
                 }
