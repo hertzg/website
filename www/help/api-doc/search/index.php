@@ -36,6 +36,15 @@ foreach ($groups as $groupKey => $group) {
         $items[] = Page\imageLinkWithDescription($title,
             $group['description'], "../$groupKey/", 'generic');
     }
+    foreach ($group['methods'] as $name => $description) {
+        $fullKey = "$groupKey/$name";
+        if (strpos($fullKey, $lowerKeyword) !== false) {
+            $title = preg_replace($regex, $replace, $fullKey);
+            $href = "../$groupKey/$name";
+            $items[] = Page\imageLinkWithDescription($title,
+                $description, $href, 'generic');
+        }
+    }
     foreach ($group['subgroups'] as $subgroupKey => $subgroup) {
         $fullKey = "$groupKey/$subgroupKey";
         if (strpos($fullKey, $lowerKeyword) !== false) {
