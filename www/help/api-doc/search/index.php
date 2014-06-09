@@ -31,29 +31,47 @@ $groups = get_full_groups();
 
 include_once '../../../fns/Page/imageLinkWithDescription.php';
 foreach ($groups as $groupKey => $group) {
+
     if (strpos($groupKey, $lowerKeyword) !== false) {
         $title = preg_replace($regex, $replace, $groupKey);
         $items[] = Page\imageLinkWithDescription($title,
             $group['description'], "../$groupKey/", 'generic');
     }
+
     foreach ($group['methods'] as $name => $description) {
-        $fullKey = "$groupKey/$name";
-        if (strpos($fullKey, $lowerKeyword) !== false) {
-            $title = preg_replace($regex, $replace, $fullKey);
+        $methodKey = "$groupKey/$name";
+        if (strpos($methodKey, $lowerKeyword) !== false) {
+            $title = preg_replace($regex, $replace, $methodKey);
             $href = "../$groupKey/$name";
             $items[] = Page\imageLinkWithDescription($title,
                 $description, $href, 'generic');
         }
     }
-    foreach ($group['subgroups'] as $subgroupKey => $subgroup) {
-        $fullKey = "$groupKey/$subgroupKey";
-        if (strpos($fullKey, $lowerKeyword) !== false) {
-            $title = preg_replace($regex, $replace, $fullKey);
-            $href = "../$groupKey/$subgroupKey";
-            $items[] = Page\imageLinkWithDescription($title,
-                $subgroup['description'], $href, 'generic');
+
+    if (array_key_exists('subgroups', $group)) {
+        foreach ($group['subgroups'] as $subgroupKey => $subgroup) {
+
+            $subgroupKey = "$groupKey/$subgroupKey";
+            if (strpos($subgroupKey, $lowerKeyword) !== false) {
+                $title = preg_replace($regex, $replace, $subgroupKey);
+                $href = "../$groupKey/$subgroupKey";
+                $items[] = Page\imageLinkWithDescription($title,
+                    $subgroup['description'], $href, 'generic');
+            }
+
+            foreach ($subgroup['methods'] as $name => $description) {
+                $methodKey = "$subgroupKey/$name";
+                if (strpos($methodKey, $lowerKeyword) !== false) {
+                    $title = preg_replace($regex, $replace, $methodKey);
+                    $href = "../$subgroupKey/$name";
+                    $items[] = Page\imageLinkWithDescription($title,
+                        $description, $href, 'generic');
+                }
+            }
+
         }
     }
+
 }
 
 include_once '../../../fns/Page/tabs.php';
