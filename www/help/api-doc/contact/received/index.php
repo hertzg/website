@@ -2,9 +2,11 @@
 
 $subgroupKey = 'received';
 
-include_once '../fns/get_subgroups.php';
-$subgroup = get_subgroups()['received'];
+include_once '../../fns/contact/get_subgroups.php';
+$subgroup = contact\get_subgroups()['received'];
 
-include_once 'fns/get_methods.php';
+include_once '../../fns/contact/received/get_methods.php';
+$methods = contact\received\get_methods();
+
 include_once '../../fns/subgroup_page.php';
-subgroup_page('contact', $subgroup, $subgroupKey, get_methods());
+subgroup_page('contact', $subgroup, $subgroupKey, $methods);

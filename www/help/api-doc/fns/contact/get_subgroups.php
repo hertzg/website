@@ -1,5 +1,7 @@
 <?php
 
+namespace contact;
+
 function get_subgroups () {
     return [
         'received' => [

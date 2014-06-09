@@ -1,5 +1,7 @@
 <?php
 
+namespace contact;
+
 function get_methods () {
     return [
         'add' => 'Creates a new contact.',

@@ -1,5 +1,7 @@
 <?php
 
+namespace contact\received;
+
 function get_methods () {
     return [
         'delete' => 'Deletes an existing received contact.',
