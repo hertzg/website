@@ -1,6 +1,6 @@
 <?php
 
-include_once '../fns/bookmark/get_methods.php';
-include_once '../fns/bookmark/get_subgroups.php';
+include_once 'fns/get_methods.php';
+include_once 'fns/get_subgroups.php';
 include_once '../fns/group_page.php';
-group_page('bookmark', bookmark\get_methods(), bookmark\get_subgroups());
+group_page('bookmark', get_methods(), get_subgroups());

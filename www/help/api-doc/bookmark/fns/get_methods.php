@@ -1,7 +1,5 @@
 <?php
 
-namespace bookmark;
-
 function get_methods () {
     return [
         'add' => 'Creates a new bookmark.',
