@@ -1,6 +1,6 @@
 <?php
 
-include_once 'fns/get_methods.php';
-include_once 'fns/get_subgroups.php';
+include_once '../fns/task/get_methods.php';
+include_once '../fns/task/get_subgroups.php';
 include_once '../fns/group_page.php';
-group_page('task', get_methods(), get_subgroups());
+group_page('task', task\get_methods(), task\get_subgroups());

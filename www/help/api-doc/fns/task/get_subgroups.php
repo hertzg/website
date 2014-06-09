@@ -1,5 +1,7 @@
 <?php
 
+namespace task;
+
 function get_subgroups () {
     return [
         'received' => [

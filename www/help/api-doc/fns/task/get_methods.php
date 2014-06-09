@@ -1,5 +1,7 @@
 <?php
 
+namespace task;
+
 function get_methods () {
     return [
         'add' => 'Creates a new task.',
