@@ -55,10 +55,11 @@ $content = Page\tabs(
         .Form\checkbox($base, 'encrypt',
             'Encrypt in Listings', $values['encrypt'])
         .'<div class="hr"></div>'
-        .Page\staticTwoColumns(
-            Form\button('Save Changes'),
-            Form\button('Send', 'sendButton')
-        )
+        .Form\button('Save Changes')
+//        .Page\staticTwoColumns(
+//            Form\button('Save Changes'),
+//            Form\button('Send', 'sendButton')
+//        )
         .ItemList\itemHiddenInputs($id)
     .'</form>'
 );

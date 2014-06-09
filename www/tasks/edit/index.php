@@ -55,10 +55,11 @@ $content = Page\tabs(
         .Form\checkbox($base, 'top_priority',
             'Mark as Top Priority', $values['top_priority'])
         .'<div class="hr"></div>'
-        .Page\staticTwoColumns(
-            Form\button('Save Changes'),
-            Form\button('Send', 'sendButton')
-        )
+        .Form\button('Save Changes')
+//        .Page\staticTwoColumns(
+//            Form\button('Save Changes'),
+//            Form\button('Send', 'sendButton')
+//        )
         .ItemList\itemHiddenInputs($id)
     .'</form>'
 );

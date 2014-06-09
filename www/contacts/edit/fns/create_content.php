@@ -86,10 +86,11 @@ function create_content ($id, array $values) {
             .Form\checkbox('../../', 'favorite',
                 'Mark as Favorite', $values['favorite'])
             .'<div class="hr"></div>'
-            .Page\staticTwoColumns(
-                Form\button('Save Changes'),
-                Form\button('Send', 'sendButton')
-            )
+            .Form\button('Save Changes')
+//            .Page\staticTwoColumns(
+//                Form\button('Save Changes'),
+//                Form\button('Send', 'sendButton')
+//            )
             .ItemList\itemHiddenInputs($id)
         .'</form>'
     );

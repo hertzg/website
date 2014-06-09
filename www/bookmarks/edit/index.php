@@ -53,10 +53,11 @@ $content = Page\tabs(
             'value' => $values['tags'],
         ])
         .'<div class="hr"></div>'
-        .Page\staticTwoColumns(
-            Form\button('Save Changes'),
-            Form\button('Send', 'sendButton')
-        )
+        .Form\button('Save Changes')
+//        .Page\staticTwoColumns(
+//            Form\button('Save Changes'),
+//            Form\button('Send', 'sendButton')
+//        )
         .ItemList\itemHiddenInputs($id)
     .'</form>'
 );
