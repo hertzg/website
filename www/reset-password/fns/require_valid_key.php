@@ -2,20 +2,22 @@
 
 function require_valid_key ($mysqli) {
 
-    include_once __DIR__.'/../../fns/request_strings.php';
+    $fnsDir = __DIR__.'/../../fns';
+
+    include_once "$fnsDir/request_strings.php";
     list($id_users, $key) = request_strings('id_users', 'key');
 
-    include_once __DIR__.'/../../fns/is_md5.php';
+    include_once "$fnsDir/is_md5.php";
     if (!is_md5($key)) {
-        include_once __DIR__.'/../../fns/redirect.php';
+        include_once "$fnsDir/redirect.php";
         redirect('..');
     }
 
-    include_once __DIR__.'/../../fns/Users/getByResetPasswordKey.php';
+    include_once "$fnsDir/Users/getByResetPasswordKey.php";
     $user = Users\getByResetPasswordKey($mysqli, $id_users, $key);
 
     if (!$user) {
-        include_once __DIR__.'/../../fns/redirect.php';
+        include_once "$fnsDir/redirect.php";
         redirect('..');
     }
 

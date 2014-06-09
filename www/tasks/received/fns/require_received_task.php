@@ -2,19 +2,21 @@
 
 function require_received_task ($mysqli) {
 
-    include_once __DIR__.'/../../../fns/require_user.php';
+    $fnsDir = __DIR__.'/../../../fns';
+
+    include_once "$fnsDir/require_user.php";
     $user = require_user('../../../');
 
-    include_once __DIR__.'/../../../fns/request_strings.php';
+    include_once "$fnsDir/request_strings.php";
     list($id) = request_strings('id');
 
     $id = abs((int)$id);
 
-    include_once __DIR__.'/../../../fns/ReceivedTasks/getOnReceiver.php';
+    include_once "$fnsDir/ReceivedTasks/getOnReceiver.php";
     $receivedTask = ReceivedTasks\getOnReceiver($mysqli, $user->id_users, $id);
 
     if (!$receivedTask) {
-        include_once __DIR__.'/../../../fns/redirect.php';
+        include_once "$fnsDir/redirect.php";
         redirect('..');
     }
 

@@ -2,12 +2,14 @@
 
 function require_first_stage () {
 
-    include_once __DIR__.'/../../../../fns/require_user.php';
+    $fnsDir = __DIR__.'/../../../../fns';
+
+    include_once "$fnsDir/require_user.php";
     $user = require_user('../../../');
 
     $key = 'schedules/new/next/first_stage';
     if (!array_key_exists($key, $_SESSION)) {
-        include_once __DIR__.'/../../../../fns/redirect.php';
+        include_once "$fnsDir/redirect.php";
         redirect('..');
     }
 

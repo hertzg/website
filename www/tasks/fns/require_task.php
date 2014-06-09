@@ -2,13 +2,15 @@
 
 function require_task ($mysqli) {
 
-    include_once __DIR__.'/../../fns/require_user.php';
+    $fnsDir = __DIR__.'/../../fns';
+
+    include_once "$fnsDir/require_user.php";
     $user = require_user('../../');
 
-    include_once __DIR__.'/../../fns/request_strings.php';
+    include_once "$fnsDir/request_strings.php";
     list($id) = request_strings('id');
 
-    include_once __DIR__.'/../../fns/Tasks/getOnUser.php';
+    include_once "$fnsDir/Tasks/getOnUser.php";
     $task = Tasks\getOnUser($mysqli, $user->id_users, $id);
 
     if (!$task) {
@@ -16,7 +18,7 @@ function require_task ($mysqli) {
         $_SESSION['tasks/errors'] = [
             'The task no longer exists.',
         ];
-        include_once __DIR__.'/../../fns/redirect.php';
+        include_once "$fnsDir/redirect.php";
         redirect('..');
     }
 

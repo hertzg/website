@@ -2,23 +2,23 @@
 
 function require_event ($mysqli) {
 
-    include_once __DIR__.'/../../fns/require_user.php';
+    $fnsDir = __DIR__.'/../../fns';
+
+    include_once "$fnsDir/require_user.php";
     $user = require_user('../../');
 
-    include_once __DIR__.'/../../fns/request_strings.php';
+    include_once "$fnsDir/request_strings.php";
     list($id) = request_strings('id');
 
     $id = abs((int)$id);
 
-    include_once __DIR__.'/../../fns/Events/getOnUser.php';
+    include_once "$fnsDir/Events/getOnUser.php";
     $event = Events\getOnUser($mysqli, $user->id_users, $id);
 
     if (!$event) {
         unset($_SESSION['calendar/messages']);
-        $_SESSION['calendar/errors'] = [
-            'The event no longer exists.',
-        ];
-        include_once __DIR__.'/../../fns/redirect.php';
+        $_SESSION['calendar/errors'] = ['The event no longer exists.'];
+        include_once "$fnsDir/redirect.php";
         redirect('..');
     }
 

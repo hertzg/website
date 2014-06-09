@@ -6,10 +6,15 @@ function request_valid_keyword_tag_offset () {
     $values = request_keyword_tag_offset();
 
     if ($values[0] === '') {
+
         $url = '../';
+
+        $tag = $values[1];
         if ($tag !== '') $url .= '?tag='.rawurlencode($tag);
+
         include_once __DIR__.'/redirect.php';
         redirect($url);
+
     }
 
     return $values;
