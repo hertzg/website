@@ -2,9 +2,9 @@
 
 $subgroupKey = 'received';
 
-include_once '../fns/get_subgroups.php';
-$subgroup = get_subgroups()['received'];
+include_once '../../fns/file/get_subgroups.php';
+$subgroup = file\get_subgroups()['received'];
 
-include_once 'fns/get_methods.php';
+include_once '../../fns/file/received/get_methods.php';
 include_once '../../fns/subgroup_page.php';
-subgroup_page('file', $subgroup, $subgroupKey, get_methods());
+subgroup_page('file', $subgroup, $subgroupKey, file\received\get_methods());

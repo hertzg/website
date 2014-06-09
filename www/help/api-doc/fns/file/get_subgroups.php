@@ -1,5 +1,7 @@
 <?php
 
+namespace file;
+
 function get_subgroups () {
     return [
         'received' => [
