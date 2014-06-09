@@ -1,5 +1,5 @@
 <?php
 
-include_once 'fns/get_methods.php';
+include_once '../fns/event/get_methods.php';
 include_once '../fns/group_page.php';
-group_page('event', get_methods());
+group_page('event', event\get_methods());

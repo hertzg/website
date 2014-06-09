@@ -1,5 +1,7 @@
 <?php
 
+namespace event;
+
 function get_methods () {
     return [
         'add' => 'Creates a new event.',
