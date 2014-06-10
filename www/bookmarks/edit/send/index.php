@@ -20,7 +20,7 @@ $content = Page\tabs(
             'href' => '../..',
         ],
         [
-            'title' => "Note #$id",
+            'title' => "Bookmark #$id",
             'href' => "../?id=$id",
         ],
     ],
