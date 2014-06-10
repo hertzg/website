@@ -11,6 +11,9 @@ else $values = ['username' => ''];
 include_once '../../../fns/ItemList/escapedItemQuery.php';
 $escapedItemQuery = ItemList\escapedItemQuery($id);
 
+include_once '../../../fns/ItemList/itemParams.php';
+$itemParams = ItemList\itemParams($id);
+
 include_once '../../../fns/Page/itemSendForm.php';
 include_once '../../../fns/Page/sessionErrors.php';
 include_once '../../../fns/Page/tabs.php';
@@ -29,9 +32,8 @@ $content = Page\tabs(
     'Send',
     Page\sessionErrors('bookmarks/edit/send/errors')
     .Page\warnings(['Send the edited bookmark to:'])
-    .Page\itemSendForm($mysqli, $user->id_users, $values['username'], [
-        'id' => $id,
-    ])
+    .Page\itemSendForm($mysqli, $user->id_users,
+        $values['username'], $itemParams)
 );
 
 include_once '../../../fns/echo_page.php';

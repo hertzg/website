@@ -16,12 +16,15 @@ $errors = [];
 include_once '../../fns/check_receiver.php';
 check_receiver($mysqli, $id_users, $username, $receiver_id_users, $errors);
 
+include_once '../../../fns/ItemList/itemQuery.php';
+$itemQuery = ItemList\itemQuery($id);
+
 include_once '../../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['contacts/edit/send/errors'] = $errors;
     $_SESSION['contacts/edit/send/values'] = ['username' => $username];
-    redirect("./?id=$id");
+    redirect("./$itemQuery");
 }
 
 unset(
@@ -47,4 +50,4 @@ Users\Contacts\Received\add($mysqli, $id_users, $user->username,
 
 $_SESSION['contacts/view/messages'] = ['Sent.'];
 
-redirect("../../view/?id=$id");
+redirect("../../view/$itemQuery");
