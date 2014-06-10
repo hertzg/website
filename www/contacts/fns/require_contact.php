@@ -17,9 +17,7 @@ function require_contact ($mysqli, $base = '') {
 
     if (!$contact) {
         unset($_SESSION['contacts/messages']);
-        $_SESSION['contacts/errors'] = [
-            'The contact no longer exists.',
-        ];
+        $_SESSION['contacts/errors'] = ['The contact no longer exists.'];
         include_once "$fnsDir/redirect.php";
         redirect("$base..");
     }

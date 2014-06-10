@@ -17,9 +17,7 @@ function require_bookmark ($mysqli, $base = '') {
 
     if (!$bookmark) {
         unset($_SESSION['bookmarks/messages']);
-        $_SESSION['bookmarks/errors'] = [
-            'The bookmark no longer exists.',
-        ];
+        $_SESSION['bookmarks/errors'] = ['The bookmark no longer exists.'];
         include_once "$fnsDir/redirect.php";
         redirect("$base..");
     }

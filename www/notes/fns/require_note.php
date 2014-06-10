@@ -17,9 +17,7 @@ function require_note ($mysqli, $base = '') {
 
     if (!$note) {
         unset($_SESSION['notes/messages']);
-        $_SESSION['notes/errors'] = [
-            'The note no longer exists.',
-        ];
+        $_SESSION['notes/errors'] = ['The note no longer exists.'];
         include_once "$fnsDir/redirect.php";
         redirect("$base..");
     }
