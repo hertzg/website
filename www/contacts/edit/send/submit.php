@@ -22,7 +22,7 @@ include_once '../../../fns/redirect.php';
 if ($errors) {
     $_SESSION['contacts/edit/send/errors'] = $errors;
     $_SESSION['contacts/edit/send/values'] = ['username' => $username];
-    redirect();
+    redirect("./?id=$id");
 }
 
 unset(

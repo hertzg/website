@@ -22,7 +22,7 @@ include_once '../../../fns/redirect.php';
 if ($errors) {
     $_SESSION['bookmarks/edit/send/errors'] = $errors;
     $_SESSION['bookmarks/edit/send/values'] = ['username' => $username];
-    redirect();
+    redirect("./?id=$id");
 }
 
 unset(
