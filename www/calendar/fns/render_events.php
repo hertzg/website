@@ -4,7 +4,7 @@ function render_events (array $contacts, array $events, &$items) {
     $items = [];
     if ($events || $contacts) {
         if ($contacts) {
-            include_once '../fns/Page/imageLink.php';
+            include_once __DIR__.'/../../fns/Page/imageLink.php';
             foreach ($contacts as $contact) {
                 $title = 'Birthday of '.htmlspecialchars($contact->full_name);
                 $href = "../contacts/view/?id=$contact->id_contacts";

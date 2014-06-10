@@ -18,7 +18,7 @@ function request_receiver_user ($mysqli, $id_users, $permission) {
         bad_request('RECEIVER_NOT_FOUND');
     }
 
-    include_once '../../fns/get_users_connection.php';
+    include_once __DIR__.'/../../fns/get_users_connection.php';
     $connection = get_users_connection($mysqli, $receiverUser, $id_users);
     if (!$connection[$permission]) {
         include_once __DIR__.'/bad_request.php';
