@@ -13,23 +13,8 @@ list($username) = request_strings('username');
 
 $errors = [];
 
-if ($username === '') {
-    $errors[] = 'Enter username.';
-} else {
-    include_once '../../fns/Users/getByUsername.php';
-    $receiverUser = Users\getByUsername($mysqli, $username);
-    if (!$receiverUser) {
-        $errors[] = "A user with the username doesn't exist.";
-    } else {
-        include_once '../../fns/get_users_connection.php';
-        $connection = get_users_connection($mysqli, $receiverUser, $id_users);
-        if ($connection['can_send_file']) {
-            $receiver_id_users = $receiverUser->id_users;
-        } else {
-            $errors[] = "The user isn't receiving files from you.";
-        }
-    }
-}
+include_once '../fns/check_receiver.php';
+check_receiver($mysqli, $id_users, $username, $receiver_id_users, $errors);
 
 include_once '../../fns/redirect.php';
 
