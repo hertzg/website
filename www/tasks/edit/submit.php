@@ -32,7 +32,7 @@ unset($_SESSION['tasks/edit/errors']);
 
 include_once '../../fns/request_strings.php';
 list($sendButton) = request_strings('sendButton');
-if ($sendButton) redirect("send/?id=$id");
+if ($sendButton) redirect("send/$itemQuery");
 
 unset($_SESSION['tasks/edit/values']);
 
