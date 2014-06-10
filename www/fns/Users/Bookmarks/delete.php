@@ -5,6 +5,7 @@ namespace Users\Bookmarks;
 function delete ($mysqli, $bookmark) {
 
     $id = $bookmark->id_bookmarks;
+    $id_users = $bookmark->id_users;
 
     include_once __DIR__.'/../../Bookmarks/delete.php';
     \Bookmarks\delete($mysqli, $id);
@@ -13,6 +14,9 @@ function delete ($mysqli, $bookmark) {
     \BookmarkTags\deleteOnBookmark($mysqli, $id);
 
     include_once __DIR__.'/addNumber.php';
-    addNumber($mysqli, $bookmark->id_users, -1);
+    addNumber($mysqli, $id_users, -1);
+
+    include_once __DIR__.'/../../DeletedItems/Bookmarks/add.php';
+    \DeletedItems\Bookmarks\add($mysqli, $bookmark);
 
 }

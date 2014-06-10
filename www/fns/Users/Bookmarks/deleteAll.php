@@ -4,6 +4,16 @@ namespace Users\Bookmarks;
 
 function deleteAll ($mysqli, $id_users) {
 
+    include_once __DIR__.'/../../Bookmarks/indexOnUser.php';
+    $bookmarks = \Bookmarks\indexOnUser($mysqli, $id_users);
+
+    if ($bookmarks) {
+        include_once __DIR__.'/../../DeletedItems/Bookmarks/add.php';
+        foreach ($bookmarks as $bookmark) {
+            \DeletedItems\Bookmarks\add($mysqli, $bookmark);
+        }
+    }
+
     include_once __DIR__.'/../../Bookmarks/deleteOnUser.php';
     \Bookmarks\deleteOnUser($mysqli, $id_users);
 
