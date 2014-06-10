@@ -8,6 +8,9 @@ $key = 'contacts/edit/send/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else $values = ['username' => ''];
 
+include_once '../../../fns/ItemList/escapedItemQuery.php';
+$escapedItemQuery = ItemList\escapedItemQuery($id);
+
 include_once '../../../fns/Page/itemSendForm.php';
 include_once '../../../fns/Page/sessionErrors.php';
 include_once '../../../fns/Page/tabs.php';
@@ -16,11 +19,11 @@ $content = Page\tabs(
     [
         [
             'title' => '&middot;&middot;&middot;',
-            'href' => "../../view/?id=$id",
+            'href' => "../../view/$escapedItemQuery",
         ],
         [
             'title' => 'Edit',
-            'href' => "../?id=$id",
+            'href' => "../$escapedItemQuery",
         ],
     ],
     'Send',
