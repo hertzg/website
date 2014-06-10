@@ -52,6 +52,9 @@ function get_home_items ($mysqli, $user) {
     include_once __DIR__.'/render_tasks.php';
     render_tasks($user, $items);
 
+    include_once __DIR__.'/render_trash.php';
+    render_trash($user, $items);
+
     if ($user->show_new_task) {
         $title = 'New Task';
         $href = '../tasks/new/';

@@ -9,10 +9,10 @@ $user = require_user('../../../');
 include_once '../../../fns/request_strings.php';
 list($bookmarks, $new_bookmark, $calendar, $contacts,
     $new_contact, $files, $notes, $new_note, $notifications,
-    $schedules, $tasks, $new_task) = request_strings(
+    $schedules, $tasks, $new_task, $trash) = request_strings(
     'bookmarks', 'new_bookmark', 'calendar', 'contacts',
     'new_contact', 'files', 'notes', 'new_note', 'notifications',
-    'schedules', 'tasks', 'new_task');
+    'schedules', 'tasks', 'new_task', 'trash');
 
 $bookmarks = (bool)$bookmarks;
 $new_bookmark = (bool)$new_bookmark;
@@ -26,12 +26,13 @@ $notifications = (bool)$notifications;
 $schedules = (bool)$schedules;
 $tasks = (bool)$tasks;
 $new_task = (bool)$new_task;
+$trash = (bool)$trash;
 
 include_once '../../../fns/Users/Home/editVisibilities.php';
 include_once '../../../lib/mysqli.php';
 Users\Home\editVisibilities($mysqli, $user->id_users, $bookmarks,
     $new_bookmark, $calendar, $contacts, $new_contact, $files, $notes,
-    $new_note, $notifications, $schedules, $tasks, $new_task);
+    $new_note, $notifications, $schedules, $tasks, $new_task, $trash);
 
 $_SESSION['home/customize/show-hide/messages'] = ['Changes have been saved.'];
 

@@ -14,5 +14,6 @@ function get_home_items () {
         'schedules' => ['Schedules', 'schedules'],
         'tasks' => ['Tasks', 'tasks'],
         'new-task' => ['New Task', 'create-task'],
+        'trash' => ['Trash', 'trash-bin'],
     ];
 }
