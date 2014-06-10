@@ -16,10 +16,10 @@ $content = Page\tabs(
     [
         [
             'title' => '&middot;&middot;&middot;',
-            'href' => '../..',
+            'href' => "../../view/?id=$id",
         ],
         [
-            'title' => "Note #$id",
+            'title' => 'Edit',
             'href' => "../?id=$id",
         ],
     ],

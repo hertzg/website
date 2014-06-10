@@ -8,7 +8,6 @@ $key = 'files/rename-file/send/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else $values = ['username' => ''];
 
-include_once '../../../fns/create_folder_link.php';
 include_once '../../../fns/Page/itemSendForm.php';
 include_once '../../../fns/Page/sessionErrors.php';
 include_once '../../../fns/Page/tabs.php';
@@ -17,10 +16,10 @@ $content = Page\tabs(
     [
         [
             'title' => '&middot;&middot;&middot;',
-            'href' => create_folder_link($file->id_folders, '../../'),
+            'href' => "../../view-file/?id=$id",
         ],
         [
-            'title' => "File #$id",
+            'title' => 'Rename',
             'href' => "../?id=$id",
         ],
     ],
