@@ -35,7 +35,11 @@ if (array_key_exists($key, $_SESSION)) {
 
 }
 
-unset($_SESSION['contacts/view/messages']);
+unset(
+    $_SESSION['contacts/edit/send/errors'],
+    $_SESSION['contacts/edit/send/values'],
+    $_SESSION['contacts/view/messages']
+);
 
 include_once 'fns/create_content.php';
 $content = create_content($id, $values);

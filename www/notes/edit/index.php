@@ -8,7 +8,11 @@ $key = 'notes/edit/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else $values = (array)$note;
 
-unset($_SESSION['notes/view/messages']);
+unset(
+    $_SESSION['notes/edit/send/errors'],
+    $_SESSION['notes/edit/send/values'],
+    $_SESSION['notes/view/messages']
+);
 
 include_once '../../fns/Notes/maxLengths.php';
 $maxLengths = Notes\maxLengths();

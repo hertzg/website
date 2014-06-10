@@ -5,13 +5,14 @@ include_once '../../lib/mysqli.php';
 list($file, $id, $user) = require_file($mysqli);
 
 $key = 'files/rename-file/values';
-if (array_key_exists($key, $_SESSION)) {
-    $values = $_SESSION[$key];
-} else {
-    $values = (array)$file;
-}
+if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
+else $values = (array)$file;
 
-unset($_SESSION['files/view-file/messages']);
+unset(
+    $_SESSION['files/rename-file/send/errors'],
+    $_SESSION['files/rename-file/send/values'],
+    $_SESSION['files/view-file/messages']
+);
 
 include_once '../../fns/create_folder_link.php';
 include_once '../../fns/Form/button.php';

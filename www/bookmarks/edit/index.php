@@ -8,7 +8,11 @@ $key = 'bookmarks/edit/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else $values = (array)$bookmark;
 
-unset($_SESSION['bookmarks/view/messages']);
+unset(
+    $_SESSION['bookmarks/edit/send/errors'],
+    $_SESSION['bookmarks/edit/send/values'],
+    $_SESSION['bookmarks/view/messages']
+);
 
 include_once '../../fns/Bookmarks/maxLengths.php';
 $maxLengths = Bookmarks\maxLengths();
