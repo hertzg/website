@@ -20,6 +20,13 @@ unset(
 include_once '../../../fns/Page/staticTwoColumns.php';
 $optionsContent = Page\staticTwoColumns($editLink, $deleteLink);
 
+$access_time = $apiKey->access_time;
+if ($access_time === null) $accessed = 'never';
+else {
+    include_once '../../../fns/date_ago.php';
+    $accessed = date_ago($access_time);
+}
+
 include_once '../../../fns/create_panel.php';
 include_once '../../../fns/Form/label.php';
 include_once '../../../fns/Form/textarea.php';
@@ -44,6 +51,8 @@ $content = Page\tabs(
         'value' => bin2hex($apiKey->key),
         'readonly' => true,
     ])
+    .'<div class="hr"></div>'
+    .Form\label('Last accessed', $accessed)
     .create_panel('API Key Options', $optionsContent)
 );
 

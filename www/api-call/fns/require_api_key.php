@@ -19,6 +19,9 @@ function require_api_key () {
         die('"INVALID_API_KEY"');
     }
 
+    include_once __DIR__.'/../../fns/ApiKeys/updateAccessTime.php';
+    ApiKeys\updateAccessTime($mysqli, $apiKey->id);
+
     include_once __DIR__.'/../../fns/Users/get.php';
     $user = Users\get($mysqli, $apiKey->id_users);
 

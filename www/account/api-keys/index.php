@@ -9,20 +9,31 @@ include_once '../../fns/ApiKeys/indexOnUser.php';
 include_once '../../lib/mysqli.php';
 $apiKeys = ApiKeys\indexOnUser($mysqli, $user->id_users);
 
-include_once '../../fns/Page/imageArrowLink.php';
-
 $items = [];
 if ($apiKeys) {
+    include_once '../../fns/Page/imageArrowLinkWithDescription.php';
     foreach ($apiKeys as $apiKey) {
+
+        $access_time = $apiKey->access_time;
+        if ($access_time === null) {
+            $description = 'Never accessed.';
+        } else {
+            include_once '../../fns/date_ago.php';
+            $description = 'Last accessed '.date_ago($access_time).'.';
+        }
+
         $title = htmlspecialchars($apiKey->name);
         $href = "view/?id=$apiKey->id";
-        $items[] = Page\imageArrowLink($title, $href, 'api-key');
+        $items[] = Page\imageArrowLinkWithDescription(
+            $title, $description, $href, 'api-key');
+
     }
 } else {
     include_once '../../fns/Page/info.php';
     $items[] = Page\info('No keys');
 }
 
+include_once '../../fns/Page/imageArrowLink.php';
 $newLink = Page\imageArrowLink('New Key', 'new/', 'create-api-key');
 
 unset(
