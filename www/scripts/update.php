@@ -6,7 +6,7 @@ include_once '../lib/mysqli.php';
 $mysqli->query('create table deleted_items'
     .' (data_json text not null,'
     .' data_type varchar(32) not null,'
-    .' id bigint unsigned not null,'
+    .' id bigint unsigned not null auto_increment primary key,'
     .' id_users bigint unsigned not null,'
     .' insert_time bigint unsigned not null)') || trigger_error($mysqli->error);
 
