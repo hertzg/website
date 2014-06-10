@@ -1,6 +1,7 @@
 <?php
 
-function subscribed_channel_method_page ($methodName, array $params, array $errors) {
+function subscribed_channel_method_page (
+    $methodName, array $params, array $errors) {
 
     include_once __DIR__.'/../../../fns/channel/subscribed/get_methods.php';
     $description = channel\subscribed\get_methods()[$methodName];

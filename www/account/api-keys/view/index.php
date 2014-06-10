@@ -17,11 +17,13 @@ unset(
     $_SESSION['account/api-keys/messages']
 );
 
+include_once '../../../fns/Page/staticTwoColumns.php';
+$optionsContent = Page\staticTwoColumns($editLink, $deleteLink);
+
 include_once '../../../fns/create_panel.php';
 include_once '../../../fns/Form/label.php';
 include_once '../../../fns/Form/textarea.php';
 include_once '../../../fns/Page/sessionMessages.php';
-include_once '../../../fns/Page/staticTwoColumns.php';
 include_once '../../../fns/Page/tabs.php';
 $content = Page\tabs(
     [
@@ -42,7 +44,7 @@ $content = Page\tabs(
         'value' => bin2hex($apiKey->key),
         'readonly' => true,
     ])
-    .create_panel('API Key Options', Page\staticTwoColumns($editLink, $deleteLink))
+    .create_panel('API Key Options', $optionsContent)
 );
 
 include_once '../../../fns/echo_page.php';

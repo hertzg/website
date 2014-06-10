@@ -32,11 +32,13 @@ $permissions = format_permissions($connection->can_send_bookmark,
     $connection->can_send_file, $connection->can_send_note,
     $connection->can_send_task);
 
+include_once '../../../fns/Page/staticTwoColumns.php';
+$optionsContent = Page\staticTwoColumns($editLink, $deleteLink);
+
 include_once '../../../fns/create_panel.php';
-include_once '../../../fns/Page/tabs.php';
 include_once '../../../fns/Form/label.php';
 include_once '../../../fns/Page/sessionMessages.php';
-include_once '../../../fns/Page/staticTwoColumns.php';
+include_once '../../../fns/Page/tabs.php';
 $content = Page\tabs(
     [
         [
@@ -53,7 +55,7 @@ $content = Page\tabs(
     .Form\label('Username', htmlspecialchars($connection->username))
     .'<div class="hr"></div>'
     .Form\label('This user', $permissions)
-    .create_panel('Conneciton Options', Page\staticTwoColumns($editLink, $deleteLink))
+    .create_panel('Conneciton Options', $optionsContent)
 );
 
 include_once '../../../fns/echo_page.php';

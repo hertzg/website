@@ -22,10 +22,12 @@ $editLink = Page\imageArrowLink('Edit', "../edit-event/?id=$id", 'edit-event');
 $href = "../delete-event/?id=$id";
 $deleteLink = Page\imageArrowLink('Delete', $href, 'trash-bin');
 
+include_once '../../fns/Page/staticTwoColumns.php';
+$optionsContent = Page\staticTwoColumns($editLink, $deleteLink);
+
 include_once '../../fns/create_panel.php';
 include_once '../../fns/Page/infoText.php';
 include_once '../../fns/Page/sessionMessages.php';
-include_once '../../fns/Page/staticTwoColumns.php';
 include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Page/text.php';
 $content =
@@ -47,7 +49,7 @@ $content =
         .Page\text(date('F d, Y', $event->event_time))
         .Page\infoText($datesText)
     )
-    .create_panel('Event Options', Page\staticTwoColumns($editLink, $deleteLink));
+    .create_panel('Event Options', $optionsContent);
 
 include_once '../../fns/echo_page.php';
 echo_page($user, "Event #$id", $content, '../../');
