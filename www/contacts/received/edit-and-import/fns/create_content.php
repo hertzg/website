@@ -2,16 +2,18 @@
 
 function create_content ($base, $id, array $values) {
 
-    include_once __DIR__.'/../../../../fns/Contacts/maxLengths.php';
+    $fnsDir = __DIR__.'/../../../../fns';
+
+    include_once "$fnsDir/Contacts/maxLengths.php";
     $maxLengths = Contacts\maxLengths();
 
-    include_once __DIR__.'/../../../../fns/Page/tabs.php';
-    include_once __DIR__.'/../../../../fns/Form/button.php';
-    include_once __DIR__.'/../../../../fns/Form/checkbox.php';
-    include_once __DIR__.'/../../../../fns/Form/datefield.php';
-    include_once __DIR__.'/../../../../fns/Form/hidden.php';
-    include_once __DIR__.'/../../../../fns/Form/textfield.php';
-    include_once __DIR__.'/../../../../fns/Page/sessionErrors.php';
+    include_once "$fnsDir/Page/tabs.php";
+    include_once "$fnsDir/Form/button.php";
+    include_once "$fnsDir/Form/checkbox.php";
+    include_once "$fnsDir/Form/datefield.php";
+    include_once "$fnsDir/Form/hidden.php";
+    include_once "$fnsDir/Form/textfield.php";
+    include_once "$fnsDir/Page/sessionErrors.php";
     return Page\tabs(
         [
             [

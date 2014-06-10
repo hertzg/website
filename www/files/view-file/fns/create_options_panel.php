@@ -2,8 +2,10 @@
 
 function create_options_panel ($file) {
 
-    include_once __DIR__.'/../../../fns/Page/imageArrowLink.php';
-    include_once __DIR__.'/../../../fns/Page/imageLink.php';
+    $fnsDir = __DIR__.'/../../../fns';
+
+    include_once "$fnsDir/Page/imageArrowLink.php";
+    include_once "$fnsDir/Page/imageLink.php";
 
     $id = $file->id_files;
 
@@ -22,15 +24,15 @@ function create_options_panel ($file) {
     $href = "../delete-file/?id=$id";
     $deleteLink = Page\imageArrowLink('Delete', $href, 'trash-bin');
 
-    include_once __DIR__.'/../../../fns/Page/twoColumns.php';
+    include_once "$fnsDir/Page/staticTwoColumns.php";
     $content =
-        Page\twoColumns($downloadLink, $renameLink)
-        .'<div class="hr"></div>'
-        .Page\twoColumns($moveLink, $sendLink)
+        Page\staticTwoColumns($downloadLink, $renameLink)
+        .'<div staticTwoColumns="hr"></div>'
+        .Page\staticTwoColumns($moveLink, $sendLink)
         .'<div class="hr"></div>'
         .$deleteLink;
 
-    include_once __DIR__.'/../../../fns/create_panel.php';
+    include_once "$fnsDir/create_panel.php";
     return create_panel('File Options', $content);
 
 }

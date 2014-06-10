@@ -34,11 +34,12 @@ function create_options_panel ($channel) {
     $href = "../delete/?id=$id";
     $deleteLink = Page\imageArrowLink($title, $href, 'trash-bin');
 
+    include_once "$fnsDir/Page/staticTwoColumns.php";
     include_once "$fnsDir/Page/twoColumns.php";
     $content =
         Page\twoColumns($notifyLink, $usersLink)
         .'<div class="hr"></div>'
-        .Page\twoColumns($editLink, $deleteLink);
+        .Page\staticTwoColumns($editLink, $deleteLink);
 
     include_once "$fnsDir/create_panel.php";
     return create_panel('Channel Options', $content);

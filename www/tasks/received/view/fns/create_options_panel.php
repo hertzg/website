@@ -2,36 +2,39 @@
 
 function create_options_panel ($receivedTask) {
 
-    $queryString = "?id=$receivedTask->id";
+    $fnsDir = __DIR__.'/../../../../fns';
 
-    include_once __DIR__.'/../../../../fns/Page/imageArrowLink.php';
+    $itemQuery = "?id=$receivedTask->id";
 
-    $href = "submit-import.php$queryString";
+    include_once "$fnsDir/Page/imageArrowLink.php";
+
+    $href = "submit-import.php$itemQuery";
     $importLink = Page\imageArrowLink('Import', $href, 'import-task');
 
-    $href = "../edit-and-import/$queryString";
+    $href = "../edit-and-import/$itemQuery";
     $icon = 'import-task';
     $editAndImportLink = Page\imageArrowLink('Edit and Import', $href, $icon);
 
-    include_once __DIR__.'/../../../../fns/Page/imageLink.php';
+    include_once "$fnsDir/Page/imageLink.php";
     if ($receivedTask->archived) {
         $archiveLink = Page\imageLink('Unarchive',
-            "submit-unarchive.php$queryString", 'TODO');
+            "submit-unarchive.php$itemQuery", 'TODO');
     } else {
         $archiveLink = Page\imageLink('Archive',
-            "submit-archive.php$queryString", 'TODO');
+            "submit-archive.php$itemQuery", 'TODO');
     }
 
-    $href = "../delete/$queryString";
+    $href = "../delete/$itemQuery";
     $deleteLink = Page\imageArrowLink('Delete', $href, 'trash-bin');
 
-    include_once __DIR__.'/../../../../fns/Page/twoColumns.php';
+    include_once "$fnsDir/Page/staticTwoColumns.php";
+    include_once "$fnsDir/Page/twoColumns.php";
     $content =
         Page\twoColumns($importLink, $editAndImportLink)
         .'<div class="hr"></div>'
-        .Page\twoColumns($archiveLink, $deleteLink);
+        .Page\staticTwoColumns($archiveLink, $deleteLink);
 
-    include_once __DIR__.'/../../../../fns/create_panel.php';
+    include_once "$fnsDir/create_panel.php";
     return create_panel('Task Options', $content);
 
 }

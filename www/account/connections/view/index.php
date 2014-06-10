@@ -36,7 +36,7 @@ include_once '../../../fns/create_panel.php';
 include_once '../../../fns/Page/tabs.php';
 include_once '../../../fns/Form/label.php';
 include_once '../../../fns/Page/sessionMessages.php';
-include_once '../../../fns/Page/twoColumns.php';
+include_once '../../../fns/Page/staticTwoColumns.php';
 $content = Page\tabs(
     [
         [
@@ -53,7 +53,7 @@ $content = Page\tabs(
     .Form\label('Username', htmlspecialchars($connection->username))
     .'<div class="hr"></div>'
     .Form\label('This user', $permissions)
-    .create_panel('Conneciton Options', Page\twoColumns($editLink, $deleteLink))
+    .create_panel('Conneciton Options', Page\staticTwoColumns($editLink, $deleteLink))
 );
 
 include_once '../../../fns/echo_page.php';
