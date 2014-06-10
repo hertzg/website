@@ -21,7 +21,7 @@ if ($deletedItems) {
 
         $description = 'Deleted '.date_ago($deletedItem->insert_time);
 
-        $href = "../view/?id=$deletedItem->id";
+        $href = "view/?id=$deletedItem->id";
 
         if ($data_type == 'bookmark') {
 
