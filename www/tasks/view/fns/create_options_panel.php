@@ -2,27 +2,29 @@
 
 function create_options_panel ($task) {
 
-    include_once __DIR__.'/../../../fns/ItemList/escapedItemQuery.php';
-    $queryString = ItemList\escapedItemQuery($task->id_tasks);
+    $fnsDir = __DIR__.'/../../../fns';
 
-    include_once __DIR__.'/../../../fns/Page/imageArrowLink.php';
+    include_once "$fnsDir/ItemList/escapedItemQuery.php";
+    $escapedItemQuery = ItemList\escapedItemQuery($task->id_tasks);
 
-    $href = "../edit/$queryString";
+    include_once "$fnsDir/Page/imageArrowLink.php";
+
+    $href = "../edit/$escapedItemQuery";
     $editLink = Page\imageArrowLink('Edit', $href, 'edit-task');
 
-    $href = "../send/$queryString";
+    $href = "../send/$escapedItemQuery";
     $sendLink = Page\imageArrowLink('Send', $href, 'send');
 
-    $href = "../delete/$queryString";
+    $href = "../delete/$escapedItemQuery";
     $deleteLink = Page\imageArrowLink('Delete', $href, 'trash-bin');
 
-    include_once __DIR__.'/../../../fns/Page/twoColumns.php';
+    include_once "$fnsDir/Page/staticTwoColumns.php";
     $content =
-        Page\twoColumns($editLink, $sendLink)
+        Page\staticTwoColumns($editLink, $sendLink)
         .'<div class="hr"></div>'
         .$deleteLink;
 
-    include_once __DIR__.'/../../../fns/create_panel.php';
+    include_once "$fnsDir/create_panel.php";
     return create_panel('Task Options', $content);
 
 }
