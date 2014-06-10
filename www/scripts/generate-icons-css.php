@@ -82,4 +82,7 @@ render($content, 'token.svg?1', $names);
 $names = ['user', 'add-user', 'remove-user', 'users'];
 render($content, 'user.svg?1', $names);
 
+$names = ['archive', 'unarchive'];
+render($content, 'archive.svg', $names);
+
 file_put_contents(__DIR__.'/../icons.compressed.css', $content);

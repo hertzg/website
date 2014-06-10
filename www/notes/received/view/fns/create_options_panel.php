@@ -18,10 +18,10 @@ function create_options_panel ($receivedNote) {
     include_once "$fnsDir/Page/imageLink.php";
     if ($receivedNote->archived) {
         $archiveLink = Page\imageLink('Unarchive',
-            "submit-unarchive.php$itemQuery", 'TODO');
+            "submit-unarchive.php$itemQuery", 'unarchive');
     } else {
         $archiveLink = Page\imageLink('Archive',
-            "submit-archive.php$itemQuery", 'TODO');
+            "submit-archive.php$itemQuery", 'archive');
     }
 
     $href = "../delete/$itemQuery";

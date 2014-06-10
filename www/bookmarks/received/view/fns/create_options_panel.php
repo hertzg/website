@@ -23,10 +23,10 @@ function create_options_panel ($receivedBookmark) {
     include_once "$fnsDir/Page/imageLink.php";
     if ($receivedBookmark->archived) {
         $archiveLink = Page\imageLink('Unarchive',
-            "submit-unarchive.php$queryString", 'TODO');
+            "submit-unarchive.php$queryString", 'unarchive');
     } else {
         $archiveLink = Page\imageLink('Archive',
-            "submit-archive.php$queryString", 'TODO');
+            "submit-archive.php$queryString", 'archive');
     }
 
     $href = "../delete/$queryString";
