@@ -24,7 +24,12 @@ if ($data_type == 'bookmark') {
 }
 
 include_once '../../fns/Page/imageLink.php';
-$purgeLink = Page\imageLink('Purge', "../purge/?id=$id", 'trash-bin');
+$purgeLink = Page\imageLink('Purge', "../purge/?id=$id", 'TODO');
+
+$restoreLink = Page\imageLink('Restore', "submit-restore.php?id=$id", 'TODO');
+
+include_once '../../fns/Page/twoColumns.php';
+$optionsContent = Page\twoColumns($restoreLink, $purgeLink);
 
 unset($_SESSION['trash/messages']);
 
@@ -46,7 +51,7 @@ $content = Page\tabs(
     "$typeName #$id",
     join('<div class="hr"></div>', $items)
     .Page\infoText("$typeName deleted ".date_ago($deletedItem->insert_time).'.')
-    .create_panel("$typeName Options", $purgeLink)
+    .create_panel("$typeName Options", $optionsContent)
 );
 
 include_once '../../fns/echo_page.php';
