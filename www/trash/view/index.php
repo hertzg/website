@@ -13,13 +13,42 @@ include_once '../fns/item_type_name.php';
 $typeName = item_type_name($data_type);
 
 if ($data_type == 'bookmark') {
-
     include_once '../../fns/Page/text.php';
     $title = $data_json->title;
-    if ($title !== '') {
-        $items[] = Page\text(htmlspecialchars($title));
-    }
+    if ($title !== '') $items[] = Page\text(htmlspecialchars($title));
     $items[] = Page\text(htmlspecialchars($data_json->url));
+} elseif ($data_type == 'contact') {
+
+    include_once '../../fns/Form/label.php';
+    $items[] = Form\label('Full name', $data_json->full_name);
+
+    $alias = $data_json->alias;
+    if ($alias !== '') $items[] = Form\label('Alias', $data_json->alias);
+
+    $address = $data_json->address;
+    if ($address !== '') $items[] = Form\label('Address', $data_json->address);
+
+    $email = $data_json->email;
+    if ($email !== '') $items[] = Form\label('Email', $data_json->email);
+
+    $phone1 = $data_json->phone1;
+    if ($phone1 !== '') $items[] = Form\label('Phone 1', $data_json->phone1);
+
+    $phone2 = $data_json->phone2;
+    if ($phone2 !== '') $items[] = Form\label('Phone 2', $data_json->phone2);
+
+    $birthday_time = $data_json->birthday_time;
+    if ($birthday_time !== null) {
+        $items[] = Form\label('Birthday', date('F d, Y', $birthday_time));
+    }
+
+    $username = $data_json->username;
+    if ($username !== '') {
+        $items[] = Form\label('Username', $data_json->username);
+    }
+
+    $tags = $data_json->tags;
+    if ($tags !== '') $items[] = Form\label('Tags', $data_json->tags);
 
 }
 

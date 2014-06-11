@@ -36,6 +36,16 @@ if ($deletedItems) {
             $items[] = Page\imageArrowLinkWithDescription(
                 $title, $description, $href, 'bookmark');
 
+        } elseif ($data_type == 'contact') {
+
+            $title = htmlspecialchars($data_json->full_name);
+
+            if ($data_json->favorite) $icon = 'favorite-contact';
+            else $icon = 'contact';
+
+            $items[] = Page\imageArrowLinkWithDescription(
+                $title, $description, $href, $icon);
+
         }
 
     }

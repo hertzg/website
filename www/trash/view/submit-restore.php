@@ -13,6 +13,9 @@ $data_json = json_decode($deletedItem->data_json);
 if ($data_type == 'bookmark') {
     include_once '../../fns/Users/Bookmarks/addDeleted.php';
     Users\Bookmarks\addDeleted($mysqli, $user->id_users, $data_json);
+} elseif ($data_type == 'contact') {
+    include_once '../../fns/Users/Contacts/addDeleted.php';
+    Users\Contacts\addDeleted($mysqli, $user, $data_json);
 }
 
 include_once '../../fns/DeletedItems/delete.php';
