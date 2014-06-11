@@ -39,6 +39,7 @@ if ($deletedItems) {
 
     }
 } else {
+    include_once '../fns/Page/info.php';
     $items[] = Page\info('Trash is empty');
 }
 
