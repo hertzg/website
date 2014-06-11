@@ -26,6 +26,8 @@ if ($data_type == 'bookmark') {
 include_once '../../fns/Page/imageLink.php';
 $purgeLink = Page\imageLink('Purge', "../purge/?id=$id", 'trash-bin');
 
+unset($_SESSION['trash/messages']);
+
 include_once '../../fns/create_panel.php';
 include_once '../../fns/date_ago.php';
 include_once '../../fns/Page/infoText.php';
