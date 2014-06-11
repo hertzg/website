@@ -14,7 +14,6 @@ $deletedItems = DeletedItems\indexOnUser($mysqli, $user->id_users);
 if ($deletedItems) {
 
     include_once '../fns/date_ago.php';
-    include_once '../fns/Page/imageArrowLink.php';
     include_once '../fns/Page/imageArrowLinkWithDescription.php';
     foreach ($deletedItems as $deletedItem) {
 
@@ -61,23 +60,19 @@ if ($deletedItems) {
 
             $title = htmlspecialchars($text);
 
-            $items[] = Page\imageArrowLink($title, $href, $icon);
+            $items[] = Page\imageArrowLinkWithDescription(
+                $title, $description, $href, $icon);
 
         } elseif ($data_type == 'task') {
+
+            $title = htmlspecialchars($data_json->text);
 
             if ($data_json->top_priority) $icon = 'task-top-priority';
             else $icon = 'task';
 
-            $title = htmlspecialchars($data_json->text);
+            $items[] = Page\imageArrowLinkWithDescription(
+                $title, $description, $href, $icon);
 
-            $tags = $data_json->tags;
-            if ($tags === '') {
-                $items[] = Page\imageArrowLink($title, $href, $icon);
-            } else {
-                $description = htmlspecialchars($tags);
-                $items[] = Page\imageArrowLinkWithDescription(
-                    $title, $description, $href, $icon);
-            }
         }
 
     }
