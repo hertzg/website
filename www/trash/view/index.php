@@ -13,10 +13,15 @@ include_once '../fns/item_type_name.php';
 $typeName = item_type_name($data_type);
 
 if ($data_type == 'bookmark') {
+
     include_once '../../fns/Page/text.php';
     $title = $data_json->title;
     if ($title !== '') $items[] = Page\text(htmlspecialchars($title));
     $items[] = Page\text(htmlspecialchars($data_json->url));
+
+    $tags = $data_json->tags;
+    if ($tags !== '') $items[] = Page\text('Tags: '.htmlspecialchars($tags));
+
 } elseif ($data_type == 'contact') {
 
     include_once '../../fns/Form/label.php';
@@ -49,6 +54,22 @@ if ($data_type == 'bookmark') {
 
     $tags = $data_json->tags;
     if ($tags !== '') $items[] = Form\label('Tags', $data_json->tags);
+
+} elseif ($data_type == 'note') {
+
+    include_once '../../fns/Page/text.php';
+    $items[] = Page\text(htmlspecialchars($data_json->text));
+
+    $tags = $data_json->tags;
+    if ($tags !== '') $items[] = Page\text('Tags: '.htmlspecialchars($tags));
+
+} elseif ($data_type == 'task') {
+
+    include_once '../../fns/Page/text.php';
+    $items[] = Page\text(htmlspecialchars($data_json->text));
+
+    $tags = $data_json->tags;
+    if ($tags !== '') $items[] = Page\text('Tags: '.htmlspecialchars($tags));
 
 }
 
