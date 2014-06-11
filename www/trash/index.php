@@ -12,6 +12,7 @@ include_once '../lib/mysqli.php';
 $deletedItems = DeletedItems\indexOnUser($mysqli, $user->id_users);
 
 if ($deletedItems) {
+
     include_once '../fns/date_ago.php';
     include_once '../fns/Page/imageArrowLinkWithDescription.php';
     foreach ($deletedItems as $deletedItem) {
@@ -38,9 +39,20 @@ if ($deletedItems) {
         }
 
     }
+
+    include_once '../fns/Page/imageArrowLink.php';
+    $emptyLink = Page\imageArrowLink('Empty Trash', 'empty/', 'TODO');
+
+    include_once '../fns/create_panel.php';
+    $optionsPanel = create_panel('Options', $emptyLink);
+
 } else {
+
     include_once '../fns/Page/info.php';
     $items[] = Page\info('Trash is empty');
+
+    $optionsPanel = '';
+
 }
 
 include_once '../fns/Page/tabs.php';
@@ -53,6 +65,7 @@ $content = Page\tabs(
     ],
     'Trash',
     join('<div class="hr"></div>', $items)
+    .$optionsPanel
 );
 
 include_once '../fns/echo_page.php';
