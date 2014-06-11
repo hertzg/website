@@ -24,7 +24,7 @@ if ($data_type == 'bookmark') {
 }
 
 include_once '../../fns/Page/imageLink.php';
-$deleteLink = Page\imageLink('Delete', "../delete/?id=$id", 'trash-bin');
+$purgeLink = Page\imageLink('Purge', "../purge/?id=$id", 'trash-bin');
 
 include_once '../../fns/create_panel.php';
 include_once '../../fns/date_ago.php';
@@ -44,7 +44,7 @@ $content = Page\tabs(
     "$typeName #$id",
     join('<div class="hr"></div>', $items)
     .Page\infoText("$typeName deleted ".date_ago($deletedItem->insert_time).'.')
-    .create_panel("$typeName Options", $deleteLink)
+    .create_panel("$typeName Options", $purgeLink)
 );
 
 include_once '../../fns/echo_page.php';
