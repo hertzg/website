@@ -19,6 +19,7 @@ $users = mysqli_query_object($mysqli, 'select * from users');
 foreach ($users as $user) {
     $order_home_items = json_decode($user->order_home_items);
     $order_home_items[] = 'trash';
+    $order_home_items = array_values(array_unique($order_home_items));
     $order_home_items = json_encode($order_home_items);
     $order_home_items = $mysqli->real_escape_string($order_home_items);
     $sql = "update users set order_home_items = '$order_home_items'"
