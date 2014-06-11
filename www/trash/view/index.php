@@ -9,9 +9,10 @@ $items = [];
 $data_type = $deletedItem->data_type;
 $data_json = json_decode($deletedItem->data_json);
 
-if ($data_type == 'bookmark') {
+include_once '../fns/item_type_name.php';
+$typeName = item_type_name($data_type);
 
-    $typeName = 'Bookmark';
+if ($data_type == 'bookmark') {
 
     include_once '../../fns/Page/text.php';
     $title = $data_json->title;
