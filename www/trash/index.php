@@ -55,6 +55,7 @@ if ($deletedItems) {
 
 }
 
+include_once '../fns/Page/sessionMessages.php';
 include_once '../fns/Page/tabs.php';
 $content = Page\tabs(
     [
@@ -64,7 +65,8 @@ $content = Page\tabs(
         ],
     ],
     'Trash',
-    join('<div class="hr"></div>', $items)
+    Page\sessionMessages('trash/messages')
+    .join('<div class="hr"></div>', $items)
     .$optionsPanel
 );
 

@@ -21,6 +21,7 @@ function unset_session_vars () {
         $_SESSION['schedules/errors'],
         $_SESSION['schedules/messages'],
         $_SESSION['tasks/errors'],
-        $_SESSION['tasks/messages']
+        $_SESSION['tasks/messages'],
+        $_SESSION['trash/messages']
     );
 }
