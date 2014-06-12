@@ -22,10 +22,10 @@ $renameAndImportLink = Page\imageLink($title, $href, 'import-file');
 
 if ($receivedFile->archived) {
     $archiveLink = Page\imageLink('Unarchive',
-        "submit-unarchive.php$queryString", 'TODO');
+        "submit-unarchive.php$queryString", 'unarchive');
 } else {
     $archiveLink = Page\imageLink('Archive',
-        "submit-archive.php$queryString", 'TODO');
+        "submit-archive.php$queryString", 'archive');
 }
 
 $deleteLink = Page\imageLink('Delete', "../delete/$queryString", 'trash-bin');
