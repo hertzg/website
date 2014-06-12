@@ -26,7 +26,8 @@ $content = Page\tabs(
         ],
     ],
     "Task #$id",
-    Page\text('Are you sure you want to delete the task?')
+    Page\text('Are you sure you want to delete the task?'
+        .' It will be moved to Trash.')
     .'<div class="hr"></div>'
     .Page\twoColumns(
         Page\imageLink('Yes, delete task',

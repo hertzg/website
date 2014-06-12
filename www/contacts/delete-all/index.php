@@ -22,7 +22,8 @@ $content = Page\tabs(
         ],
     ],
     'Contacts',
-    Page\text('Are you sure you want to delete all the contacts?')
+    Page\text('Are you sure you want to delete all the contacts?'
+        .' They will be moved to Trash.')
     .'<div class="hr"></div>'
     .Page\twoColumns(
         Page\imageLink('Yes, delete all contacts', 'submit.php', 'yes'),
