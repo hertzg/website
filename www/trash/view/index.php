@@ -76,7 +76,8 @@ if ($data_type == 'bookmark') {
 include_once '../../fns/Page/imageLink.php';
 $purgeLink = Page\imageLink('Purge', "../purge/?id=$id", 'purge');
 
-$restoreLink = Page\imageLink('Restore', "submit-restore.php?id=$id", 'TODO');
+$href = "submit-restore.php?id=$id";
+$restoreLink = Page\imageLink('Restore', $href, 'restore-defaults');
 
 include_once '../../fns/Page/twoColumns.php';
 $optionsContent = Page\twoColumns($restoreLink, $purgeLink);
