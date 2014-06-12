@@ -53,13 +53,13 @@ render($content, 'note.svg?2', $names);
 $names = ['account', 'edit-profile', 'download', 'upload', 'feedback', 'yes',
     'no', 'notification', 'create-notification', 'old-notification',
     'edit-password', 'new-password', 'reset-password', 'rename',
-    'sign-in', 'trash-bin', 'calendar', 'arrow-right', 'arrow-left',
-    'import-file', 'import-bookmark', 'import-contact', 'import-file',
-    'import-note', 'import-task', 'search', 'search-folder', 'birthday-cake',
-    'checkbox', 'checked-checkbox', 'help', 'run', 'mail', 'send', 'receive',
-    'phone', 'edit-home', 'reorder', 'show-hide', 'restore-defaults',
+    'sign-in', 'calendar', 'arrow-right', 'arrow-left', 'import-file',
+    'import-bookmark', 'import-contact', 'import-file', 'import-note',
+    'import-task', 'search', 'search-folder', 'birthday-cake', 'checkbox',
+    'checked-checkbox', 'help', 'run', 'mail', 'send', 'receive', 'phone',
+    'edit-home', 'reorder', 'show-hide', 'restore-defaults',
     'forbid-notifications', 'receive-notifications', 'generic'];
-render($content, 'other.svg?4', $names);
+render($content, 'other.svg?5', $names);
 
 $names = ['schedule', 'create-schedule', 'edit-schedule', 'schedules'];
 render($content, 'schedule.svg?1', $names);
@@ -84,5 +84,8 @@ render($content, 'user.svg?1', $names);
 
 $names = ['archive', 'unarchive'];
 render($content, 'archive.svg', $names);
+
+$names = ['trash-bin', 'empty-trash', 'purge'];
+render($content, 'trash.svg', $names);
 
 file_put_contents(__DIR__.'/../icons.compressed.css', $content);

@@ -74,7 +74,7 @@ if ($data_type == 'bookmark') {
 }
 
 include_once '../../fns/Page/imageLink.php';
-$purgeLink = Page\imageLink('Purge', "../purge/?id=$id", 'TODO');
+$purgeLink = Page\imageLink('Purge', "../purge/?id=$id", 'purge');
 
 $restoreLink = Page\imageLink('Restore', "submit-restore.php?id=$id", 'TODO');
 

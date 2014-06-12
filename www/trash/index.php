@@ -78,7 +78,7 @@ if ($deletedItems) {
     }
 
     include_once '../fns/Page/imageArrowLink.php';
-    $emptyLink = Page\imageArrowLink('Empty Trash', 'empty/', 'TODO');
+    $emptyLink = Page\imageArrowLink('Empty Trash', 'empty/', 'empty-trash');
 
     include_once '../fns/create_panel.php';
     $optionsPanel = create_panel('Options', $emptyLink);
