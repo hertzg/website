@@ -32,4 +32,4 @@ $content = Page\tabs(
 );
 
 include_once '../../../fns/echo_page.php';
-echo_page($user, 'Delete Received Bookmark #?', $content, '../../../');
+echo_page($user, "Delete Received Bookmark #$id?", $content, '../../../');

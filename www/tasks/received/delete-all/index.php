@@ -21,7 +21,8 @@ $content = Page\tabs(
         ],
     ],
     'Received',
-    Page\text('Are you sure you want to delete all the received tasks?')
+    Page\text('Are you sure you want to delete all the received tasks?'
+        .' They will be moved to Trash.')
     .'<div class="hr"></div>'
     .Page\twoColumns(
         Page\imageLink('Yes, delete all tasks', 'submit.php', 'yes'),

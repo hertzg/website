@@ -22,7 +22,8 @@ $content = Page\tabs(
         ],
     ],
     "Received Note #$id",
-    Page\text('Are you sure you want to delete the note?')
+    Page\text('Are you sure you want to delete the note?'
+        .' It will be moved to Trash.')
     .'<div class="hr"></div>'
     .Page\twoColumns(
         Page\imageLink('Yes, delete note', "submit.php?id=$id", 'yes'),
@@ -31,4 +32,4 @@ $content = Page\tabs(
 );
 
 include_once '../../../fns/echo_page.php';
-echo_page($user, 'Delete Received Note #?', $content, '../../../');
+echo_page($user, "Delete Received Note #$id?", $content, '../../../');

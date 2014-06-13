@@ -21,7 +21,8 @@ $content = Page\tabs(
         ],
     ],
     'Received',
-    Page\text('Are you sure you want to delete all the received notes?')
+    Page\text('Are you sure you want to delete all the received notes?'
+        .' They will be moved to Trash.')
     .'<div class="hr"></div>'
     .Page\twoColumns(
         Page\imageLink('Yes, delete all notes', 'submit.php', 'yes'),

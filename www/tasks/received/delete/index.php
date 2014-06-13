@@ -22,7 +22,8 @@ $content = Page\tabs(
         ],
     ],
     "Received Task #$id",
-    Page\text('Are you sure you want to delete the task?')
+    Page\text('Are you sure you want to delete the task?'
+        .' It will be moved to Trash.')
     .'<div class="hr"></div>'
     .Page\twoColumns(
         Page\imageLink('Yes, delete task', "submit.php?id=$id", 'yes'),
@@ -31,4 +32,4 @@ $content = Page\tabs(
 );
 
 include_once '../../../fns/echo_page.php';
-echo_page($user, 'Delete Received Task #?', $content, '../../../');
+echo_page($user, "Delete Received Task #$id?", $content, '../../../');
