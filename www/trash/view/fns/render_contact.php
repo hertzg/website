@@ -1,6 +1,6 @@
 <?php
 
-function render_contact ($contact, &$items) {
+function render_contact ($contact, &$items, &$infoText) {
 
     include_once __DIR__.'/../../../fns/Form/label.php';
     $items[] = Form\label('Full name', $contact->full_name);
@@ -32,5 +32,8 @@ function render_contact ($contact, &$items) {
 
     $tags = $contact->tags;
     if ($tags !== '') $items[] = Form\label('Tags', $tags);
+
+    $priority = $contact->favorite ? 'Favorite' : 'Regular';
+    $infoText = "$priority contact.</br>$infoText";
 
 }

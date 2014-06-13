@@ -20,15 +20,13 @@ if ($type == 'bookmark' || $type == 'receivedBookmark') {
     render_bookmark($data, $items);
 } elseif ($type == 'contact' || $type == 'receivedContact') {
     include_once 'fns/render_contact.php';
-    render_contact($data, $items);
+    render_contact($data, $items, $infoText);
 } elseif ($type == 'note' || $type == 'receivedNote') {
     include_once 'fns/render_note.php';
     render_note($data, $items);
 } elseif ($type == 'task' || $type == 'receivedTask') {
     include_once 'fns/render_task.php';
-    render_task($data, $items);
-    $priority = $data->top_priority ? 'Top' : 'Normal';
-    $infoText = "$priority priotity task.</br>$infoText";
+    render_task($data, $items, $infoText);
 }
 
 include_once '../../fns/Page/imageLink.php';
