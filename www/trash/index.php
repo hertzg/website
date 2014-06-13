@@ -25,54 +25,17 @@ if ($deletedItems) {
         $href = "view/?id=$deletedItem->id";
 
         if ($type == 'bookmark' || $type == 'receivedBookmark') {
-
-            $title = $data->title;
-            if ($title === '') {
-                $title = htmlspecialchars($data->url);
-            } else {
-                $title = htmlspecialchars($title);
-            }
-
-            $items[] = Page\imageArrowLinkWithDescription(
-                $title, $description, $href, 'bookmark');
-
+            include_once 'fns/render_bookmark.php';
+            render_bookmark($data, $description, $href, $items);
         } elseif ($type == 'contact' || $type == 'receivedContact') {
-
-            $title = htmlspecialchars($data->full_name);
-
-            if ($data->favorite) $icon = 'favorite-contact';
-            else $icon = 'contact';
-
-            $items[] = Page\imageArrowLinkWithDescription(
-                $title, $description, $href, $icon);
-
+            include_once 'fns/render_contact.php';
+            render_contact($data, $description, $href, $items);
         } elseif ($type == 'note' || $type == 'receivedNote') {
-
-            $text = $data->text;
-
-            if ($data->encrypt) {
-                include_once '../fns/encrypt_text.php';
-                $text = encrypt_text($text);
-                $icon = 'encrypted-note';
-            } else {
-                $icon = 'note';
-            }
-
-            $title = htmlspecialchars($text);
-
-            $items[] = Page\imageArrowLinkWithDescription(
-                $title, $description, $href, $icon);
-
+            include_once 'fns/render_note.php';
+            render_note($data, $description, $href, $items);
         } elseif ($type == 'task' || $type == 'receivedTask') {
-
-            $title = htmlspecialchars($data->text);
-
-            if ($data->top_priority) $icon = 'task-top-priority';
-            else $icon = 'task';
-
-            $items[] = Page\imageArrowLinkWithDescription(
-                $title, $description, $href, $icon);
-
+            include_once 'fns/render_task.php';
+            render_task($data, $description, $href, $items);
         }
 
     }
