@@ -4,7 +4,19 @@ namespace Users\Tasks\Received;
 
 function deleteAll ($mysqli, $id_users) {
 
-    include_once __DIR__.'/../../../ReceivedTasks/deleteOnReceiver.php';
+    $fnsDir = __DIR__.'/../../..';
+
+    include_once "$fnsDir/ReceivedTasks/indexOnReceiver.php";
+    $receivedTasks = \ReceivedTasks\indexOnReceiver($mysqli, $id_users);
+
+    if ($receivedTasks) {
+        include_once __DIR__.'/../../DeletedItems/addReceivedTask.php';
+        foreach ($receivedTasks as $receivedTask) {
+            \Users\DeletedItems\addReceivedTask($mysqli, $receivedTask);
+        }
+    }
+
+    include_once "$fnsDir/ReceivedTasks/deleteOnReceiver.php";
     \ReceivedTasks\deleteOnReceiver($mysqli, $id_users);
 
     $sql = 'update users set num_received_tasks = 0'

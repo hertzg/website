@@ -10,4 +10,7 @@ function delete ($mysqli, $receivedContact) {
     include_once __DIR__.'/addNumber.php';
     addNumber($mysqli, $receivedContact->receiver_id_users, -1);
 
+    include_once __DIR__.'/../../DeletedItems/addReceivedContact.php';
+    \Users\DeletedItems\addReceivedContact($mysqli, $receivedContact);
+
 }
