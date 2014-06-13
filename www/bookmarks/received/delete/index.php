@@ -22,7 +22,8 @@ $content = Page\tabs(
         ],
     ],
     "Received Bookmark #$id",
-    Page\text('Are you sure you want to delete the bookmark?')
+    Page\text('Are you sure you want to delete the bookmark?'
+        .' It will be moved to Trash.')
     .'<div class="hr"></div>'
     .Page\twoColumns(
         Page\imageLink('Yes, delete bookmark', "submit.php?id=$id", 'yes'),

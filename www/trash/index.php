@@ -17,18 +17,18 @@ if ($deletedItems) {
     include_once '../fns/Page/imageArrowLinkWithDescription.php';
     foreach ($deletedItems as $deletedItem) {
 
-        $data_type = $deletedItem->data_type;
-        $data_json = json_decode($deletedItem->data_json);
+        $type = $deletedItem->data_type;
+        $data = json_decode($deletedItem->data_json);
 
         $description = 'Deleted '.date_ago($deletedItem->insert_time);
 
         $href = "view/?id=$deletedItem->id";
 
-        if ($data_type == 'bookmark') {
+        if ($type == 'bookmark' || $type == 'receivedBookmark') {
 
-            $title = $data_json->title;
+            $title = $data->title;
             if ($title === '') {
-                $title = htmlspecialchars($data_json->url);
+                $title = htmlspecialchars($data->url);
             } else {
                 $title = htmlspecialchars($title);
             }
@@ -36,21 +36,21 @@ if ($deletedItems) {
             $items[] = Page\imageArrowLinkWithDescription(
                 $title, $description, $href, 'bookmark');
 
-        } elseif ($data_type == 'contact') {
+        } elseif ($type == 'contact' || $type == 'receivedContact') {
 
-            $title = htmlspecialchars($data_json->full_name);
+            $title = htmlspecialchars($data->full_name);
 
-            if ($data_json->favorite) $icon = 'favorite-contact';
+            if ($data->favorite) $icon = 'favorite-contact';
             else $icon = 'contact';
 
             $items[] = Page\imageArrowLinkWithDescription(
                 $title, $description, $href, $icon);
 
-        } elseif ($data_type == 'note') {
+        } elseif ($type == 'note' || $type == 'receivedNote') {
 
-            $text = $data_json->text;
+            $text = $data->text;
 
-            if ($data_json->encrypt) {
+            if ($data->encrypt) {
                 include_once '../fns/encrypt_text.php';
                 $text = encrypt_text($text);
                 $icon = 'encrypted-note';
@@ -63,11 +63,11 @@ if ($deletedItems) {
             $items[] = Page\imageArrowLinkWithDescription(
                 $title, $description, $href, $icon);
 
-        } elseif ($data_type == 'task') {
+        } elseif ($type == 'task' || $type == 'receivedTask') {
 
-            $title = htmlspecialchars($data_json->text);
+            $title = htmlspecialchars($data->text);
 
-            if ($data_json->top_priority) $icon = 'task-top-priority';
+            if ($data->top_priority) $icon = 'task-top-priority';
             else $icon = 'task';
 
             $items[] = Page\imageArrowLinkWithDescription(

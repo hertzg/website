@@ -6,69 +6,69 @@ list($deletedItem, $id, $user) = require_deleted_item($mysqli);
 
 $items = [];
 
-$data_type = $deletedItem->data_type;
-$data_json = json_decode($deletedItem->data_json);
+$type = $deletedItem->data_type;
+$data = json_decode($deletedItem->data_json);
 
 include_once '../fns/item_type_name.php';
-$typeName = item_type_name($data_type);
+$typeName = item_type_name($type);
 
-if ($data_type == 'bookmark') {
+if ($type == 'bookmark' || $type == 'receivedBookmark') {
 
     include_once '../../fns/Page/text.php';
-    $title = $data_json->title;
+    $title = $data->title;
     if ($title !== '') $items[] = Page\text(htmlspecialchars($title));
-    $items[] = Page\text(htmlspecialchars($data_json->url));
+    $items[] = Page\text(htmlspecialchars($data->url));
 
-    $tags = $data_json->tags;
+    $tags = $data->tags;
     if ($tags !== '') $items[] = Page\text('Tags: '.htmlspecialchars($tags));
 
-} elseif ($data_type == 'contact') {
+} elseif ($type == 'contact' || $type == 'receivedContact') {
 
     include_once '../../fns/Form/label.php';
-    $items[] = Form\label('Full name', $data_json->full_name);
+    $items[] = Form\label('Full name', $data->full_name);
 
-    $alias = $data_json->alias;
-    if ($alias !== '') $items[] = Form\label('Alias', $data_json->alias);
+    $alias = $data->alias;
+    if ($alias !== '') $items[] = Form\label('Alias', $data->alias);
 
-    $address = $data_json->address;
-    if ($address !== '') $items[] = Form\label('Address', $data_json->address);
+    $address = $data->address;
+    if ($address !== '') $items[] = Form\label('Address', $data->address);
 
-    $email = $data_json->email;
-    if ($email !== '') $items[] = Form\label('Email', $data_json->email);
+    $email = $data->email;
+    if ($email !== '') $items[] = Form\label('Email', $data->email);
 
-    $phone1 = $data_json->phone1;
-    if ($phone1 !== '') $items[] = Form\label('Phone 1', $data_json->phone1);
+    $phone1 = $data->phone1;
+    if ($phone1 !== '') $items[] = Form\label('Phone 1', $data->phone1);
 
-    $phone2 = $data_json->phone2;
-    if ($phone2 !== '') $items[] = Form\label('Phone 2', $data_json->phone2);
+    $phone2 = $data->phone2;
+    if ($phone2 !== '') $items[] = Form\label('Phone 2', $data->phone2);
 
-    $birthday_time = $data_json->birthday_time;
+    $birthday_time = $data->birthday_time;
     if ($birthday_time !== null) {
         $items[] = Form\label('Birthday', date('F d, Y', $birthday_time));
     }
 
-    $username = $data_json->username;
+    $username = $data->username;
     if ($username !== '') {
-        $items[] = Form\label('Username', $data_json->username);
+        $items[] = Form\label('Username', $data->username);
     }
 
-    $tags = $data_json->tags;
-    if ($tags !== '') $items[] = Form\label('Tags', $data_json->tags);
+    $tags = $data->tags;
+    if ($tags !== '') $items[] = Form\label('Tags', $data->tags);
 
-} elseif ($data_type == 'note') {
+} elseif ($type == 'note' || $type == 'receivedNote') {
 
     include_once '../../fns/Page/text.php';
-    $items[] = Page\text(htmlspecialchars($data_json->text));
+    $items[] = Page\text(htmlspecialchars($data->text));
 
-    $tags = $data_json->tags;
+    $tags = $data->tags;
     if ($tags !== '') $items[] = Page\text('Tags: '.htmlspecialchars($tags));
 
-} elseif ($data_type == 'task') {
+} elseif ($type == 'task' || $type == 'receivedTask') {
 
     include_once '../../fns/Page/text.php';
-    $items[] = Page\text(htmlspecialchars($data_json->text));
+    $items[] = Page\text(htmlspecialchars($data->text));
 
-    $tags = $data_json->tags;
+    $tags = $data->tags;
     if ($tags !== '') $items[] = Page\text('Tags: '.htmlspecialchars($tags));
 
 }
@@ -101,7 +101,7 @@ $content = Page\tabs(
     ],
     "$typeName #$id",
     join('<div class="hr"></div>', $items)
-    .Page\infoText("$typeName deleted ".date_ago($deletedItem->insert_time).'.')
+    .Page\infoText(ucfirst(strtolower($typeName)).' deleted '.date_ago($deletedItem->insert_time).'.')
     .create_panel("$typeName Options", $optionsContent)
 );
 

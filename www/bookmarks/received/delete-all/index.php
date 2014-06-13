@@ -21,7 +21,8 @@ $content = Page\tabs(
         ],
     ],
     'Received',
-    Page\text('Are you sure you want to delete all the received bookmarks?')
+    Page\text('Are you sure you want to delete all the received bookmarks?'
+        .' They will be moved to Trash.')
     .'<div class="hr"></div>'
     .Page\twoColumns(
         Page\imageLink('Yes, delete all bookmarks', 'submit.php', 'yes'),
