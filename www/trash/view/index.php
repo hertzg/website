@@ -13,64 +13,17 @@ include_once '../fns/item_type_name.php';
 $typeName = item_type_name($type);
 
 if ($type == 'bookmark' || $type == 'receivedBookmark') {
-
-    include_once '../../fns/Page/text.php';
-    $title = $data->title;
-    if ($title !== '') $items[] = Page\text(htmlspecialchars($title));
-    $items[] = Page\text(htmlspecialchars($data->url));
-
-    $tags = $data->tags;
-    if ($tags !== '') $items[] = Page\text('Tags: '.htmlspecialchars($tags));
-
+    include_once 'fns/render_bookmark.php';
+    render_bookmark($data, $items);
 } elseif ($type == 'contact' || $type == 'receivedContact') {
-
-    include_once '../../fns/Form/label.php';
-    $items[] = Form\label('Full name', $data->full_name);
-
-    $alias = $data->alias;
-    if ($alias !== '') $items[] = Form\label('Alias', $data->alias);
-
-    $address = $data->address;
-    if ($address !== '') $items[] = Form\label('Address', $data->address);
-
-    $email = $data->email;
-    if ($email !== '') $items[] = Form\label('Email', $data->email);
-
-    $phone1 = $data->phone1;
-    if ($phone1 !== '') $items[] = Form\label('Phone 1', $data->phone1);
-
-    $phone2 = $data->phone2;
-    if ($phone2 !== '') $items[] = Form\label('Phone 2', $data->phone2);
-
-    $birthday_time = $data->birthday_time;
-    if ($birthday_time !== null) {
-        $items[] = Form\label('Birthday', date('F d, Y', $birthday_time));
-    }
-
-    $username = $data->username;
-    if ($username !== '') {
-        $items[] = Form\label('Username', $data->username);
-    }
-
-    $tags = $data->tags;
-    if ($tags !== '') $items[] = Form\label('Tags', $data->tags);
-
+    include_once 'fns/render_contact.php';
+    render_contact($data, $items);
 } elseif ($type == 'note' || $type == 'receivedNote') {
-
-    include_once '../../fns/Page/text.php';
-    $items[] = Page\text(htmlspecialchars($data->text));
-
-    $tags = $data->tags;
-    if ($tags !== '') $items[] = Page\text('Tags: '.htmlspecialchars($tags));
-
+    include_once 'fns/render_note.php';
+    render_note($data, $items);
 } elseif ($type == 'task' || $type == 'receivedTask') {
-
-    include_once '../../fns/Page/text.php';
-    $items[] = Page\text(htmlspecialchars($data->text));
-
-    $tags = $data->tags;
-    if ($tags !== '') $items[] = Page\text('Tags: '.htmlspecialchars($tags));
-
+    include_once 'fns/render_task.php';
+    render_task($data, $items);
 }
 
 include_once '../../fns/Page/imageLink.php';
