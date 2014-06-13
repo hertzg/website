@@ -16,7 +16,7 @@ function delete ($mysqli, $note) {
     include_once __DIR__.'/addNumber.php';
     addNumber($mysqli, $note->id_users, -1);
 
-    include_once "$fnsDir/DeletedItems/Notes/add.php";
-    \DeletedItems\Notes\add($mysqli, $note);
+    include_once __DIR__.'/../DeletedItems/addNote.php';
+    \Users\DeletedItems\addNote($mysqli, $note);
 
 }

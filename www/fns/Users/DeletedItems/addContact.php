@@ -1,9 +1,9 @@
 <?php
 
-namespace DeletedItems\Contacts;
+namespace Users\DeletedItems;
 
-function add ($mysqli, $contact) {
-    include_once __DIR__.'/../add.php';
+function addContact ($mysqli, $contact) {
+    include_once __DIR__.'/../../DeletedItems/add.php';
     \DeletedItems\add($mysqli, $contact->id_users, 'contact', [
         'id' => $contact->id_contacts,
         'full_name' => $contact->full_name,

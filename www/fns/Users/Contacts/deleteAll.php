@@ -10,9 +10,9 @@ function deleteAll ($mysqli, $id_users) {
     $contacts = \Contacts\indexOnUser($mysqli, $id_users);
 
     if ($contacts) {
-        include_once "$fnsDir/DeletedItems/Contacts/add.php";
+        include_once __DIR__.'/../DeletedItems/addContact.php';
         foreach ($contacts as $contact) {
-            \DeletedItems\Contacts\add($mysqli, $contact);
+            \Users\DeletedItems\addContact($mysqli, $contact);
         }
     }
 

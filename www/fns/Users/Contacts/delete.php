@@ -16,8 +16,8 @@ function delete ($mysqli, $contact, $user) {
     include_once __DIR__.'/addNumber.php';
     addNumber($mysqli, $user->id_users, -1);
 
-    include_once "$fnsDir/DeletedItems/Contacts/add.php";
-    \DeletedItems\Contacts\add($mysqli, $contact);
+    include_once __DIR__.'/../DeletedItems/addContact.php';
+    \Users\DeletedItems\addContact($mysqli, $contact);
 
     include_once __DIR__.'/../Birthdays/invalidateIfNeeded.php';
     \Users\Birthdays\invalidateIfNeeded(

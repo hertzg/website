@@ -10,9 +10,9 @@ function deleteAll ($mysqli, $id_users) {
     $notes = \Notes\indexOnUser($mysqli, $id_users);
 
     if ($notes) {
-        include_once "$fnsDir/DeletedItems/Notes/add.php";
+        include_once __DIR__.'/../DeletedItems/addNote.php';
         foreach ($notes as $note) {
-            \DeletedItems\Notes\add($mysqli, $note);
+            \Users\DeletedItems\addNote($mysqli, $note);
         }
     }
 

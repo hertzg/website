@@ -16,7 +16,7 @@ function delete ($mysqli, $task) {
     include_once __DIR__.'/addNumber.php';
     addNumber($mysqli, $task->id_users, -1);
 
-    include_once "$fnsDir/DeletedItems/Tasks/add.php";
-    \DeletedItems\Tasks\add($mysqli, $task);
+    include_once __DIR__.'/../DeletedItems/addTask.php';
+    \Users\DeletedItems\addTask($mysqli, $task);
 
 }

@@ -10,9 +10,9 @@ function deleteAll ($mysqli, $id_users) {
     $tasks = \Tasks\indexOnUser($mysqli, $id_users);
 
     if ($tasks) {
-        include_once "$fnsDir/DeletedItems/Tasks/add.php";
+        include_once __DIR__.'/../DeletedItems/addTask.php';
         foreach ($tasks as $task) {
-            \DeletedItems\Tasks\add($mysqli, $task);
+            \Users\DeletedItems\addTask($mysqli, $task);
         }
     }
 

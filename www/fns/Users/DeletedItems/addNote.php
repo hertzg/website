@@ -1,9 +1,9 @@
 <?php
 
-namespace DeletedItems\Notes;
+namespace Users\DeletedItems;
 
-function add ($mysqli, $note) {
-    include_once __DIR__.'/../add.php';
+function addNote ($mysqli, $note) {
+    include_once __DIR__.'/../../DeletedItems/add.php';
     \DeletedItems\add($mysqli, $note->id_users, 'note', [
         'id' => $note->id_notes,
         'text' => $note->text,
