@@ -16,7 +16,7 @@ function delete ($mysqli, $bookmark) {
     include_once __DIR__.'/addNumber.php';
     addNumber($mysqli, $bookmark->id_users, -1);
 
-    include_once "$fnsDir/DeletedItems/Bookmarks/add.php";
-    \DeletedItems\Bookmarks\add($mysqli, $bookmark);
+    include_once __DIR__.'/../DeletedItems/addBookmark.php';
+    \Users\DeletedItems\addBookmark($mysqli, $bookmark);
 
 }

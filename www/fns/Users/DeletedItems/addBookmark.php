@@ -1,9 +1,9 @@
 <?php
 
-namespace DeletedItems\Bookmarks;
+namespace Users\DeletedItems;
 
-function add ($mysqli, $bookmark) {
-    include_once __DIR__.'/../add.php';
+function addBookmark ($mysqli, $bookmark) {
+    include_once __DIR__.'/../../DeletedItems/add.php';
     \DeletedItems\add($mysqli, $bookmark->id_users, 'bookmark', [
         'id' => $bookmark->id_bookmarks,
         'url' => $bookmark->url,

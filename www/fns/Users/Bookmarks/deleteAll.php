@@ -10,9 +10,9 @@ function deleteAll ($mysqli, $id_users) {
     $bookmarks = \Bookmarks\indexOnUser($mysqli, $id_users);
 
     if ($bookmarks) {
-        include_once "$fnsDir/DeletedItems/Bookmarks/add.php";
+        include_once __DIR__.'/../DeletedItems/addBookmark.php';
         foreach ($bookmarks as $bookmark) {
-            \DeletedItems\Bookmarks\add($mysqli, $bookmark);
+            \Users\DeletedItems\addBookmark($mysqli, $bookmark);
         }
     }
 
