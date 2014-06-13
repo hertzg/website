@@ -29,6 +29,21 @@ if ($type == 'bookmark' || $type == 'receivedBookmark') {
     render_task($data, $items, $infoText);
 }
 
+if ($type == 'receivedBookmark' || $type == 'receivedContact'
+    || $type == 'receivedNote' || $type == 'receivedTask') {
+
+    $senderUsername = htmlspecialchars($data->sender_username);
+
+    include_once '../../fns/create_panel.php';
+    include_once '../../fns/Form/label.php';
+    $content =
+        Form\label('Received from', $senderUsername)
+        .create_panel("The $typeName", join('<div class="hr"></div>', $items));
+
+} else {
+    $content = join('<div class="hr"></div>', $items);
+}
+
 include_once '../../fns/Page/imageLink.php';
 $purgeLink = Page\imageLink('Purge', "../purge/?id=$id", 'purge');
 
@@ -58,7 +73,7 @@ $content = Page\tabs(
         ],
     ],
     $title,
-    join('<div class="hr"></div>', $items)
+    $content
     .Page\infoText($infoText)
     .create_panel("$typeName Options", $optionsContent)
 );
