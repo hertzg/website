@@ -25,7 +25,7 @@ if ($type == 'bookmark') {
     Users\Bookmarks\Received\addDeleted($mysqli, $id_users, $data);
 } elseif ($type == 'receivedContact') {
     include_once '../../fns/Users/Contacts/Received/addDeleted.php';
-    Users\Contacts\Received\addDeleted($mysqli, $user, $data);
+    Users\Contacts\Received\addDeleted($mysqli, $id_users, $data);
 } elseif ($type == 'receivedNote') {
     include_once '../../fns/Users/Notes/Received/addDeleted.php';
     Users\Notes\Received\addDeleted($mysqli, $id_users, $data);
