@@ -12,6 +12,9 @@ $data = json_decode($deletedItem->data_json);
 include_once '../fns/item_type_name.php';
 $typeName = item_type_name($type);
 
+include_once '../../fns/date_ago.php';
+$infoText = ucfirst(strtolower($typeName)).' deleted '.date_ago($deletedItem->insert_time).'.';
+
 if ($type == 'bookmark' || $type == 'receivedBookmark') {
     include_once 'fns/render_bookmark.php';
     render_bookmark($data, $items);
@@ -24,6 +27,8 @@ if ($type == 'bookmark' || $type == 'receivedBookmark') {
 } elseif ($type == 'task' || $type == 'receivedTask') {
     include_once 'fns/render_task.php';
     render_task($data, $items);
+    $priority = $data->top_priority ? 'Top' : 'Normal';
+    $infoText = "$priority priotity task.</br>$infoText";
 }
 
 include_once '../../fns/Page/imageLink.php';
@@ -37,8 +42,10 @@ $optionsContent = Page\twoColumns($restoreLink, $purgeLink);
 
 unset($_SESSION['trash/messages']);
 
+include_once '../fns/item_type_title.php';
+$title = item_type_title($type)." #$id";
+
 include_once '../../fns/create_panel.php';
-include_once '../../fns/date_ago.php';
 include_once '../../fns/Page/infoText.php';
 include_once '../../fns/Page/tabs.php';
 $content = Page\tabs(
@@ -52,11 +59,11 @@ $content = Page\tabs(
             'href' => '..',
         ],
     ],
-    "$typeName #$id",
+    $title,
     join('<div class="hr"></div>', $items)
-    .Page\infoText(ucfirst(strtolower($typeName)).' deleted '.date_ago($deletedItem->insert_time).'.')
+    .Page\infoText($infoText)
     .create_panel("$typeName Options", $optionsContent)
 );
 
 include_once '../../fns/echo_page.php';
-echo_page($user, "$typeName #$id", $content, '../../');
+echo_page($user, $title, $content, '../../');
