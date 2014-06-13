@@ -15,28 +15,16 @@ $typeName = item_type_name($type);
 include_once '../../fns/date_ago.php';
 $infoText = ucfirst(strtolower($typeName)).' deleted '.date_ago($deletedItem->insert_time).'.';
 
-if ($type == 'bookmark') {
+if ($type == 'bookmark' || $type == 'receivedBookmark') {
     include_once 'fns/render_bookmark.php';
     render_bookmark($data, $items);
-} elseif ($type == 'contact') {
+} elseif ($type == 'contact' || $type == 'receivedContact') {
     include_once 'fns/render_contact.php';
     render_contact($data, $items, $infoText);
-} elseif ($type == 'note') {
+} elseif ($type == 'note' || $type == 'receivedNote') {
     include_once 'fns/render_note.php';
     render_note($data, $items);
-} elseif ($type == 'receivedBookmark') {
-    include_once 'fns/render_received_bookmark.php';
-    render_received_bookmark($data, $items);
-} elseif ($type == 'receivedContact') {
-    include_once 'fns/render_received_contact.php';
-    render_received_contact($data, $items, $infoText);
-} elseif ($type == 'receivedNote') {
-    include_once 'fns/render_received_note.php';
-    render_received_note($data, $items);
-} elseif ($type == 'receivedTask') {
-    include_once 'fns/render_received_task.php';
-    render_received_task($data, $items, $infoText);
-} elseif ($type == 'task') {
+} elseif ($type == 'task' || $type == 'receivedTask') {
     include_once 'fns/render_task.php';
     render_task($data, $items, $infoText);
 }
