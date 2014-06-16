@@ -4,10 +4,19 @@ namespace Users\Files\Received;
 
 function deleteAll ($mysqli, $id_users) {
 
-    include_once __DIR__.'/../../../ReceivedFiles/File/deleteOnReceiver.php';
-    \ReceivedFiles\File\deleteOnReceiver($id_users);
+    $fnsDir = __DIR__.'/../../..';
 
-    include_once __DIR__.'/../../../ReceivedFiles/deleteOnReceiver.php';
+    include_once "$fnsDir/ReceivedFiles/indexOnReceiver.php";
+    $receivedFiles = \ReceivedFiles\indexOnReceiver($mysqli, $id_users);
+
+    if ($receivedFiles) {
+        include_once __DIR__.'/../../DeletedItems/addReceivedFile.php';
+        foreach ($receivedFiles as $receivedFile) {
+            \Users\DeletedItems\addReceivedFile($mysqli, $receivedFile);
+        }
+    }
+
+    include_once "$fnsDir/ReceivedFiles/deleteOnReceiver.php";
     \ReceivedFiles\deleteOnReceiver($mysqli, $id_users);
 
     $sql = 'update users set num_received_files = 0'
