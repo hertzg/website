@@ -26,6 +26,9 @@ if ($type == 'bookmark') {
 } elseif ($type == 'receivedContact') {
     include_once '../../fns/Users/Contacts/Received/addDeleted.php';
     Users\Contacts\Received\addDeleted($mysqli, $id_users, $data);
+} elseif ($type == 'receivedFile') {
+    include_once '../../fns/Users/Files/Received/addDeleted.php';
+    Users\Files\Received\addDeleted($mysqli, $id_users, $data);
 } elseif ($type == 'receivedNote') {
     include_once '../../fns/Users/Notes/Received/addDeleted.php';
     Users\Notes\Received\addDeleted($mysqli, $id_users, $data);
