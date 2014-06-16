@@ -17,8 +17,8 @@ function add ($mysqli, $id_users, $id_folders, $name, $size, $sourcePath) {
 
     $id = $mysqli->insert_id;
 
-    include_once __DIR__.'/filePath.php';
-    $destinationPath = filePath($id_users, $id);
+    include_once __DIR__.'/File/path.php';
+    $destinationPath = \Files\File\path($id_users, $id);
 
     copy($sourcePath, $destinationPath);
 

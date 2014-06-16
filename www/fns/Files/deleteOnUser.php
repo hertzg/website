@@ -10,9 +10,9 @@ function deleteOnUser ($mysqli, $id_users) {
     $files = mysqli_query_object($mysqli, $sql);
 
     if ($files) {
-        include_once __DIR__.'/filePath.php';
+        include_once __DIR__.'/File/path.php';
         foreach ($files as $file) {
-            $filePath = filePath($id_users, $file->id_files);
+            $filePath = \Files\File\path($id_users, $file->id_files);
             if (is_file($filePath)) unlink($filePath);
         }
     }
