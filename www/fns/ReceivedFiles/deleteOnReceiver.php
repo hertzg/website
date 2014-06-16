@@ -11,10 +11,9 @@ function deleteOnReceiver ($mysqli, $receiver_id_users) {
     $receivedFiles = mysqli_query_object($mysqli, $sql);
 
     if ($receivedFiles) {
-        include_once __DIR__.'/File/path.php';
+        include_once __DIR__.'/File/delete.php';
         foreach ($receivedFiles as $receivedFile) {
-            $filePath = \ReceivedFiles\File\path($receiver_id_users, $receivedFile->id);
-            if (is_file($filePath)) unlink($filePath);
+            \ReceivedFiles\File\delete($receiver_id_users, $receivedFile->id);
         }
     }
 
