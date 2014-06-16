@@ -7,8 +7,8 @@ include_once '../fns/require_deleted_item.php';
 include_once '../../lib/mysqli.php';
 list($deletedItem, $id, $user) = require_deleted_item($mysqli);
 
-include_once '../../fns/DeletedItems/delete.php';
-DeletedItems\delete($mysqli, $id);
+include_once '../../fns/Users/DeletedItems/delete.php';
+Users\DeletedItems\delete($mysqli, $id);
 
 $_SESSION['trash/messages'] = ['The item has been purged.'];
 
