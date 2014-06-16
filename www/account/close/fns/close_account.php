@@ -25,6 +25,9 @@ function close_account ($mysqli, $id_users) {
     include_once "$fnsDir/ContactTags/deleteOnUser.php";
     ContactTags\deleteOnUser($mysqli, $id_users);
 
+    include_once "$fnsDir/DeletedItems/deleteOnUser.php";
+    DeletedItems\deleteOnUser($mysqli, $id_users);
+
     include_once "$fnsDir/Events/deleteOnUser.php";
     Events\deleteOnUser($mysqli, $id_users);
 
