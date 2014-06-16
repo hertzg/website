@@ -53,7 +53,7 @@ unset(
 );
 
 include_once '../../fns/Folders/move.php';
-Folders\move($mysqli, $id_users, $id_folders, $parent_id_folders);
+Folders\move($mysqli, $id_folders, $parent_id_folders);
 
 unset($_SESSION['files/errors']);
 $_SESSION['files/id_folders'] = $parent_id_folders;

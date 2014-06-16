@@ -40,7 +40,7 @@ unset(
 );
 
 include_once '../../fns/Files/move.php';
-Files\move($mysqli, $id_users, $id, $id_folders);
+Files\move($mysqli, $id, $id_folders);
 
 unset($_SESSION['files/errors']);
 $_SESSION['files/id_folders'] = $id_folders;
