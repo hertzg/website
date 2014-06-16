@@ -44,8 +44,8 @@ include_once '../../../fns/Users/Contacts/add.php';
 Users\Contacts\add($mysqli, $user, $full_name, $alias, $address, $email,
     $phone1, $phone2, $birthday_time, $username, $tags, $tag_names, $favorite);
 
-include_once '../../../fns/Users/Contacts/Received/delete.php';
-Users\Contacts\Received\delete($mysqli, $receivedContact);
+include_once '../../../fns/Users/Contacts/Received/purge.php';
+Users\Contacts\Received\purge($mysqli, $receivedContact);
 
 $messages = ['Contact has been imported.'];
 
