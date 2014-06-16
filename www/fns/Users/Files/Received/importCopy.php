@@ -7,8 +7,8 @@ function importCopy ($mysqli, $receivedFile, $parent_id) {
     $id_users = $receivedFile->receiver_id_users;
     $name = $receivedFile->name;
 
-    include_once __DIR__.'/../../../ReceivedFiles/filePath.php';
-    $filePath = \ReceivedFiles\filePath($id_users, $receivedFile->id);
+    include_once __DIR__.'/../../../ReceivedFiles/File/path.php';
+    $filePath = \ReceivedFiles\File\path($id_users, $receivedFile->id);
 
     include_once __DIR__.'/../../../Files/getByName.php';
     while (\Files\getByName($mysqli, $id_users, $parent_id, $name)) {

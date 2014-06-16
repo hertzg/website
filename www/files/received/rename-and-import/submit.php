@@ -43,8 +43,8 @@ unset(
     $_SESSION['files/received/rename-and-import/values']
 );
 
-include_once '../../../fns/ReceivedFiles/filePath.php';
-$receivedFilePath = ReceivedFiles\filePath($id_users, $id);
+include_once '../../../fns/ReceivedFiles/File/path.php';
+$receivedFilePath = ReceivedFiles\File\path($id_users, $id);
 
 include_once '../../../fns/Users/Files/add.php';
 Users\Files\add($mysqli, $id_users, $id_folders, $name, $receivedFilePath);

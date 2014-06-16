@@ -19,5 +19,5 @@ header("Content-Disposition: attachment; filename=\"$filename\"");
 header("Content-Type: $contentType");
 header("Content-Length: $receivedFile->size");
 
-include_once '../../../fns/ReceivedFiles/filePath.php';
-readfile(ReceivedFiles\filePath($user->id_users, $id));
+include_once '../../../fns/ReceivedFiles/File/path.php';
+readfile(ReceivedFiles\File\path($user->id_users, $id));
