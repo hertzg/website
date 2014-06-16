@@ -24,13 +24,17 @@ if ($type == 'bookmark' || $type == 'receivedBookmark') {
 } elseif ($type == 'note' || $type == 'receivedNote') {
     include_once 'fns/render_note.php';
     render_note($data, $items);
+} elseif ($type == 'file' || $type == 'receivedFile') {
+    include_once 'fns/render_file.php';
+    render_file($data, $items);
 } elseif ($type == 'task' || $type == 'receivedTask') {
     include_once 'fns/render_task.php';
     render_task($data, $items, $infoText);
 }
 
 if ($type == 'receivedBookmark' || $type == 'receivedContact'
-    || $type == 'receivedNote' || $type == 'receivedTask') {
+    || $type == 'receivedFile' || $type == 'receivedNote'
+    || $type == 'receivedTask') {
 
     $senderUsername = htmlspecialchars($data->sender_username);
 
