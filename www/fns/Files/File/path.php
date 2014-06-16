@@ -3,5 +3,6 @@
 namespace Files\File;
 
 function path ($id_users, $id) {
-    return __DIR__."/../../../users/$id_users/files/$id";
+    include_once __DIR__.'/dir.php';
+    return dir($id_users)."/$id";
 }

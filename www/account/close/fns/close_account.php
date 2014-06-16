@@ -37,6 +37,9 @@ function close_account ($mysqli, $id_users) {
     include_once "$fnsDir/Files/deleteOnUser.php";
     Files\deleteOnUser($mysqli, $id_users);
 
+    include_once "$fnsDir/Files/File/deleteOnUser.php";
+    Files\File\deleteOnUser($id_users);
+
     include_once "$fnsDir/Folders/deleteOnUser.php";
     Folders\deleteOnUser($mysqli, $id_users);
 
