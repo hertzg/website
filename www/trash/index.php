@@ -33,6 +33,9 @@ if ($deletedItems) {
         } elseif ($type == 'note' || $type == 'receivedNote') {
             include_once 'fns/render_note.php';
             render_note($data, $description, $href, $items);
+        } elseif ($type == 'file' || $type == 'receivedFile') {
+            include_once 'fns/render_file.php';
+            render_file($data, $description, $href, $items);
         } elseif ($type == 'task' || $type == 'receivedTask') {
             include_once 'fns/render_task.php';
             render_task($data, $description, $href, $items);
