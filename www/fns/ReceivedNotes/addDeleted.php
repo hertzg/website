@@ -12,10 +12,10 @@ function addDeleted ($mysqli, $id, $sender_id_users, $sender_username,
     $archived = $archived ? '1' : '0';
 
     $sql = 'insert into received_notes'
-        .' (sender_id_users, sender_username,'
+        .' (id, sender_id_users, sender_username,'
         .' receiver_id_users, text, tags,'
         .' encrypt, archived, insert_time)'
-        ." values ($sender_id_users, '$sender_username'"
+        ." values ($id, $sender_id_users, '$sender_username'"
         .", $receiver_id_users, '$text', '$tags',"
         ." $encrypt, $archived, $insert_time)";
     $mysqli->query($sql) || trigger_error($mysqli->error);
