@@ -30,8 +30,8 @@ unset(
     $_SESSION['files/rename-file/send/values']
 );
 
-include_once '../../../fns/Files/filePath.php';
-$filePath = Files\filePath($id_users, $id);
+include_once '../../../fns/Files/File/path.php';
+$filePath = Files\File\path($id_users, $id);
 
 include_once '../../../fns/Users/Files/Received/add.php';
 Users\Files\Received\add($mysqli, $user, $receiver_id_users,
