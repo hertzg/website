@@ -26,7 +26,9 @@ function add ($mysqli, $username, $email, $password) {
 
     $id_users = $mysqli->insert_id;
 
-    mkdir(__DIR__."/../../users/$id_users");
-    mkdir(__DIR__."/../../users/$id_users/files");
+    $userDir = __DIR__."/../../users/$id_users";
+    mkdir($userDir);
+    mkdir("$userDir/files");
+    mkdir("$userDir/received-files");
 
 }
