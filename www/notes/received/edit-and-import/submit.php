@@ -31,8 +31,8 @@ unset(
 include_once '../../../fns/Users/Notes/add.php';
 Users\Notes\add($mysqli, $user->id_users, $text, $tags, $tag_names, $encrypt);
 
-include_once '../../../fns/Users/Notes/Received/delete.php';
-Users\Notes\Received\delete($mysqli, $receivedNote);
+include_once '../../../fns/Users/Notes/Received/purge.php';
+Users\Notes\Received\purge($mysqli, $receivedNote);
 
 $messages = ['Note has been imported.'];
 
