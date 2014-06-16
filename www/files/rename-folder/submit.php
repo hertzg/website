@@ -6,7 +6,6 @@ require_same_domain_referer('..');
 include_once '../fns/require_folder.php';
 include_once '../../lib/mysqli.php';
 list($folder, $id_folders, $user) = require_folder($mysqli);
-$id_users = $user->id_users;
 
 include_once '../../fns/Folders/request.php';
 $name = Folders\request();
@@ -18,7 +17,7 @@ if ($name === '') {
 } else {
 
     include_once '../../fns/Folders/getByName.php';
-    $existingFolder = Folders\getByName($mysqli, $id_users,
+    $existingFolder = Folders\getByName($mysqli, $user->id_users,
         $folder->parent_id_folders, $name, $id_folders);
 
     if ($existingFolder) {
@@ -43,7 +42,7 @@ unset(
 );
 
 include_once '../../fns/Folders/rename.php';
-Folders\rename($mysqli, $id_users, $id_folders, $name);
+Folders\rename($mysqli, $id_folders, $name);
 
 unset($_SESSION['files/errors']);
 $_SESSION['files/id_folders'] = $id_folders;

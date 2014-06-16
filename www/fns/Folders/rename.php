@@ -2,14 +2,13 @@
 
 namespace Folders;
 
-function rename ($mysqli, $id_users, $id_folders, $name) {
+function rename ($mysqli, $id, $name) {
 
     $name = $mysqli->real_escape_string($name);
     $rename_time = time();
 
-    $sql = "update folders set name = '$name',"
-        ." rename_time = $rename_time"
-        ." where id_users = $id_users and id_folders = $id_folders";
+    $sql = "update folders set name = '$name', rename_time = $rename_time"
+        ." where id_folders = $id";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
