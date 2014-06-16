@@ -3,5 +3,6 @@
 namespace ReceivedFiles\File;
 
 function path ($receiver_id_users, $id) {
-    return __DIR__."/../../../users/$receiver_id_users/received-files/$id";
+    include_once __DIR__.'/dir.php';
+    return dir($receiver_id_users)."/$id";
 }
