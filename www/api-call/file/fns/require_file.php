@@ -7,8 +7,8 @@ function require_file ($mysqli, $id_users) {
 
     $id = abs((int)$id);
 
-    include_once __DIR__.'/../../../fns/Files/get.php';
-    $file = Files\get($mysqli, $id_users, $id);
+    include_once __DIR__.'/../../../fns/Files/getOnUser.php';
+    $file = Files\getOnUser($mysqli, $id_users, $id);
 
     if (!$file) {
         include_once __DIR__.'/../../fns/bad_request.php';

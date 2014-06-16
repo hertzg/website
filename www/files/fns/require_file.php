@@ -12,8 +12,8 @@ function require_file ($mysqli, $base = '') {
 
     $id = abs((int)$id);
 
-    include_once "$fnsDir/Files/get.php";
-    $file = Files\get($mysqli, $user->id_users, $id);
+    include_once "$fnsDir/Files/getOnUser.php";
+    $file = Files\getOnUser($mysqli, $user->id_users, $id);
 
     if (!$file) {
         include_once "$fnsDir/redirect.php";
