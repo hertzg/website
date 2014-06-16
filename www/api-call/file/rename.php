@@ -15,7 +15,7 @@ include_once 'fns/request_file_params.php';
 $name = request_file_params($mysqli, $id_users, $parent_id, $id);
 
 include_once '../../fns/Files/rename.php';
-Files\rename($mysqli, $id_users, $id, $name);
+Files\rename($mysqli, $id, $name);
 
 header('Content-Type: application/json');
 echo 'true';

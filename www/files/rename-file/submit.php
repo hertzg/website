@@ -6,7 +6,6 @@ require_same_domain_referer('..');
 include_once '../fns/require_file.php';
 include_once '../../lib/mysqli.php';
 list($file, $id, $user) = require_file($mysqli);
-$id_users = $user->id_users;
 
 include_once '../../fns/Files/request.php';
 $name = Files\request();
@@ -19,7 +18,7 @@ if ($name === '') {
 
     include_once '../../fns/Files/getByName.php';
     include_once '../../lib/mysqli.php';
-    $existingFile = Files\getByName($mysqli, $id_users,
+    $existingFile = Files\getByName($mysqli, $user->id_users,
         $file->id_folders, $name, $id);
 
     if ($existingFile) {
@@ -46,7 +45,7 @@ if ($sendButton) redirect("send/?id=$id");
 unset($_SESSION['files/rename-file/values']);
 
 include_once '../../fns/Files/rename.php';
-Files\rename($mysqli, $id_users, $id, $name);
+Files\rename($mysqli, $id, $name);
 
 $_SESSION['files/view-file/messages'] = ['File has been renamed.'];
 redirect("../view-file/?id=$id");
