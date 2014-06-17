@@ -4,7 +4,11 @@ namespace Users\DeletedItems;
 
 function delete ($mysqli, $deletedItem) {
 
-    if ($deletedItem->data_type == 'receivedFile') {
+    $type = $deletedItem->data_type;
+    if ($type == 'file') {
+        include_once __DIR__.'/deleteFile.php';
+        deleteFile($deletedItem);
+    } elseif ($type == 'receivedFile') {
         include_once __DIR__.'/deleteReceivedFile.php';
         deleteReceivedFile($deletedItem);
     }
