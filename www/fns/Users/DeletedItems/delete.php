@@ -13,6 +13,6 @@ function delete ($mysqli, $deletedItem) {
     \DeletedItems\delete($mysqli, $deletedItem->id);
 
     include_once __DIR__.'/addNumber.php';
-    addNumber($mysqli, $id_users, -1);
+    addNumber($mysqli, $deletedItem->id_users, -1);
 
 }
