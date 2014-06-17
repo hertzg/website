@@ -22,8 +22,13 @@ function delete ($mysqli, $id) {
         $files = \Files\indexInFolder($mysqli, $id);
 
         foreach ($files as $file) {
-            include_once __DIR__.'/../Files/delete.php';
-            \Users\Files\delete($mysqli, $file);
+
+            include_once __DIR__.'/../Files/purge.php';
+            \Users\Files\purge($mysqli, $file);
+
+            include_once __DIR__.'/../../Files/File/delete.php';
+            \Files\File\delete($file->id_users, $file->id_files);
+
         }
 
     }
