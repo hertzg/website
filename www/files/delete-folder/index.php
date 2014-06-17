@@ -14,8 +14,7 @@ include_once '../../fns/Page/imageLink.php';
 $href = "submit.php?id_folders=$id_folders";
 $yesLink = Page\imageLink('Yes, delete folder', $href, 'yes');
 
-include_once '../../fns/create_folder_link.php';
-$href = create_folder_link($id_folders, '../');
+$href = "../?id_folders=$id_folders";
 $noLink = Page\imageLink('No, return back', $href, 'no');
 
 include_once '../../fns/Page/tabs.php';
