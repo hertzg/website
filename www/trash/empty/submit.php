@@ -6,9 +6,9 @@ require_same_domain_referer('./');
 include_once '../../fns/require_user.php';
 $user = require_user('../../');
 
-include_once '../../fns/Users/DeletedItems/deleteOnUser.php';
+include_once '../../fns/Users/DeletedItems/purgeOnUser.php';
 include_once '../../lib/mysqli.php';
-Users\DeletedItems\deleteOnUser($mysqli, $user->id_users);
+Users\DeletedItems\purgeOnUser($mysqli, $user->id_users);
 
 $_SESSION['trash/messages'] = ['Trash has been emptied.'];
 

@@ -2,23 +2,23 @@
 
 namespace Users\DeletedItems;
 
-function deleteOnUser ($mysqli, $id_users) {
+function purgeOnUser ($mysqli, $id_users) {
 
     include_once __DIR__.'/../../DeletedItems/indexReceivedFilesOnUser.php';
     $deletedItems = \DeletedItems\indexReceivedFilesOnUser($mysqli, $id_users);
     if ($deletedItems) {
-        include_once __DIR__.'/deleteReceivedFile.php';
+        include_once __DIR__.'/purgeReceivedFile.php';
         foreach ($deletedItems as $deletedItem) {
-            deleteReceivedFile($deletedItem);
+            purgeReceivedFile($deletedItem);
         }
     }
 
     include_once __DIR__.'/../../DeletedItems/indexFilesOnUser.php';
     $deletedItems = \DeletedItems\indexFilesOnUser($mysqli, $id_users);
     if ($deletedItems) {
-        include_once __DIR__.'/deleteFile.php';
+        include_once __DIR__.'/purgeFile.php';
         foreach ($deletedItems as $deletedItem) {
-            deleteFile($deletedItem);
+            purgeFile($deletedItem);
         }
     }
 

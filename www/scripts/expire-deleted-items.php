@@ -15,9 +15,9 @@ $sql = "select * from deleted_items where insert_time < $expire_time";
 $deletedItems = mysqli_query_object($mysqli, $sql);
 
 if ($deletedItems) {
-    include_once '../fns/Users/DeletedItems/delete.php';
+    include_once '../fns/Users/DeletedItems/purge.php';
     foreach ($deletedItems as $deletedItem) {
-        Users\DeletedItems\delete($mysqli, $deletedItem);
+        Users\DeletedItems\purge($mysqli, $deletedItem);
     }
 }
 
