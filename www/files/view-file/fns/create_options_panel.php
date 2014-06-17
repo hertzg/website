@@ -27,7 +27,7 @@ function create_options_panel ($file) {
     include_once "$fnsDir/Page/staticTwoColumns.php";
     $content =
         Page\staticTwoColumns($downloadLink, $renameLink)
-        .'<div staticTwoColumns="hr"></div>'
+        .'<div class="hr"></div>'
         .Page\staticTwoColumns($moveLink, $sendLink)
         .'<div class="hr"></div>'
         .$deleteLink;
