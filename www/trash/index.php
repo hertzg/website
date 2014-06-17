@@ -5,6 +5,9 @@ $base = '../';
 include_once '../fns/require_user.php';
 $user = require_user($base);
 
+include_once '../fns/DeletedItems/expireDays.php';
+$expireDays = DeletedItems\expireDays();
+
 $items = [];
 
 include_once '../fns/DeletedItems/indexOnUser.php';
@@ -47,6 +50,7 @@ if ($deletedItems) {
     $emptyLink = Page\imageArrowLink('Empty Trash', 'empty/', 'empty-trash');
 
     include_once '../fns/create_panel.php';
+    include_once '../fns/Page/text.php';
     $optionsPanel = create_panel('Options', $emptyLink);
 
 } else {
@@ -58,6 +62,7 @@ if ($deletedItems) {
 
 }
 
+include_once '../fns/Page/infoText.php';
 include_once '../fns/Page/sessionMessages.php';
 include_once '../fns/Page/tabs.php';
 $content = Page\tabs(
@@ -70,6 +75,8 @@ $content = Page\tabs(
     'Trash',
     Page\sessionMessages('trash/messages')
     .join('<div class="hr"></div>', $items)
+    .Page\infoText('Items in Trash are automatically'
+        ." deleted within $expireDays days.")
     .$optionsPanel
 );
 
