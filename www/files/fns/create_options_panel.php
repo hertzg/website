@@ -28,6 +28,10 @@ function create_options_panel ($user, $id_folders, $base = '') {
         $href = "{$base}move-folder/?id_folders=$id_folders";
         $options[] = Page\imageArrowLink($title, $href, 'move-folder');
 
+        $title = 'Send This Folder';
+        $href = "{$base}send-folder/?id_folders=$id_folders";
+        $options[] = Page\imageArrowLink($title, $href, 'send');
+
         $title = 'Delete This Folder';
         $href = "{$base}delete-folder/?id_folders=$id_folders";
         $options[] = Page\imageArrowLink($title, $href, 'trash-bin');
