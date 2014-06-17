@@ -8,7 +8,9 @@ include_once '../lib/mysqli.php';
 
 $microtime = microtime(true);
 
-$expire_time = time() - 30 * 24 * 60 * 60;
+include_once '../fns/DeletedItems/expireDays.php';
+$expire_time = time() - DeletedItems\expireDays() * 24 * 60 * 60;
+
 $sql = "select * from deleted_items where insert_time < $expire_time";
 $deletedItems = mysqli_query_object($mysqli, $sql);
 
