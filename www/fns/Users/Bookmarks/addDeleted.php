@@ -2,19 +2,19 @@
 
 namespace Users\Bookmarks;
 
-function addDeleted ($mysqli, $id_users, $object) {
+function addDeleted ($mysqli, $id_users, $data) {
 
-    $id = $object->id;
-    $url = $object->url;
-    $title = $object->title;
-    $tags = $object->tags;
+    $id = $data->id;
+    $url = $data->url;
+    $title = $data->title;
+    $tags = $data->tags;
 
     include_once __DIR__.'/../../Tags/parse.php';
     $tag_names = \Tags\parse($tags);
 
     include_once __DIR__.'/../../Bookmarks/addDeleted.php';
     \Bookmarks\addDeleted($mysqli, $id, $id_users, $url, $title, $tags,
-        $object->insert_time, $object->update_time);
+        $data->insert_time, $data->update_time);
 
     include_once __DIR__.'/../../BookmarkTags/add.php';
     \BookmarkTags\add($mysqli, $id_users, $id, $tag_names, $url, $title);

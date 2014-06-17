@@ -2,25 +2,25 @@
 
 namespace Users\Contacts;
 
-function addDeleted ($mysqli, $user, $object) {
+function addDeleted ($mysqli, $user, $data) {
 
     $id_users = $user->id_users;
 
-    $id = $object->id;
-    $full_name = $object->full_name;
-    $alias = $object->alias;
-    $birthday_time = $object->birthday_time;
-    $tags = $object->tags;
-    $favorite = $object->favorite;
+    $id = $data->id;
+    $full_name = $data->full_name;
+    $alias = $data->alias;
+    $birthday_time = $data->birthday_time;
+    $tags = $data->tags;
+    $favorite = $data->favorite;
 
     include_once __DIR__.'/../../Tags/parse.php';
     $tag_names = \Tags\parse($tags);
 
     include_once __DIR__.'/../../Contacts/addDeleted.php';
     \Contacts\addDeleted($mysqli, $id, $id_users, $full_name, $alias,
-        $object->address, $object->email, $object->phone1, $object->phone2,
-        $birthday_time, $object->username, $object->tags, $favorite,
-        $object->insert_time, $object->update_time);
+        $data->address, $data->email, $data->phone1, $data->phone2,
+        $birthday_time, $data->username, $data->tags, $favorite,
+        $data->insert_time, $data->update_time);
 
     include_once __DIR__.'/../../ContactTags/add.php';
     \ContactTags\add($mysqli, $id_users, $id,
