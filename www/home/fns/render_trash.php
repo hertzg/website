@@ -4,7 +4,12 @@ function render_trash ($user, &$items) {
 
     if (!$user->show_trash) return;
 
-    include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
-    $items['trash'] = Page\imageArrowLink('Trash', '../trash/', 'trash-bin');
+    $num_deleted_items = $user->num_deleted_items;
+    if ($num_deleted_items) $description = "$num_deleted_items total.";
+    else $description = 'Empty';
+
+    include_once __DIR__.'/../../fns/Page/imageArrowLinkWithDescription.php';
+    $items['trash'] = Page\imageArrowLinkWithDescription(
+        'Trash', $description, '../trash/', 'trash-bin');
 
 }

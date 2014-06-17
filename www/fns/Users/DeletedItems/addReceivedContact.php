@@ -3,9 +3,8 @@
 namespace Users\DeletedItems;
 
 function addReceivedContact ($mysqli, $receivedContact) {
-    $id_users = $receivedContact->receiver_id_users;
-    include_once __DIR__.'/../../DeletedItems/add.php';
-    \DeletedItems\add($mysqli, $id_users, 'receivedContact', [
+    include_once __DIR__.'/add.php';
+    add($mysqli, $receivedContact->receiver_id_users, 'receivedContact', [
         'id' => $receivedContact->id,
         'full_name' => $receivedContact->full_name,
         'alias' => $receivedContact->alias,

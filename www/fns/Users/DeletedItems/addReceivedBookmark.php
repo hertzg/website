@@ -3,9 +3,8 @@
 namespace Users\DeletedItems;
 
 function addReceivedBookmark ($mysqli, $receivedBookmark) {
-    $id_users = $receivedBookmark->receiver_id_users;
-    include_once __DIR__.'/../../DeletedItems/add.php';
-    \DeletedItems\add($mysqli, $id_users, 'receivedBookmark', [
+    include_once __DIR__.'/add.php';
+    add($mysqli, $receivedBookmark->receiver_id_users, 'receivedBookmark', [
         'id' => $receivedBookmark->id,
         'url' => $receivedBookmark->url,
         'title' => $receivedBookmark->title,

@@ -3,9 +3,8 @@
 namespace Users\DeletedItems;
 
 function addReceivedFile ($mysqli, $receivedFile) {
-    $id_users = $receivedFile->receiver_id_users;
-    include_once __DIR__.'/../../DeletedItems/add.php';
-    \DeletedItems\add($mysqli, $id_users, 'receivedFile', [
+    include_once __DIR__.'/add.php';
+    add($mysqli, $receivedFile->receiver_id_users, 'receivedFile', [
         'id' => $receivedFile->id,
         'name' => $receivedFile->name,
         'size' => $receivedFile->size,

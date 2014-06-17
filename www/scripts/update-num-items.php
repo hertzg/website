@@ -32,6 +32,7 @@ foreach ($users as $user) {
     $num_channels = user_rows($mysqli, 'channels', $id_users);
     $num_connections = user_rows($mysqli, 'connections', $id_users);
     $num_contacts = user_rows($mysqli, 'contacts', $id_users);
+    $num_deleted_items = user_rows($mysqli, 'deleted_items', $id_users);
     $num_events = user_rows($mysqli, 'events', $id_users);
     $num_notes = user_rows($mysqli, 'notes', $id_users);
     $num_notifications = user_rows($mysqli, 'notifications', $id_users);
@@ -52,6 +53,7 @@ foreach ($users as $user) {
     $sql = "update users set num_api_keys = $num_api_keys,"
         ." num_bookmarks = $num_bookmarks, num_channels = $num_channels,"
         ." num_connections = $num_connections, num_contacts = $num_contacts,"
+        ." num_deleted_items = $num_deleted_items,"
         ." num_events = $num_events, num_notes = $num_notes,"
         ." num_notifications = $num_notifications,"
         ." num_received_bookmarks = $num_received_bookmarks,"

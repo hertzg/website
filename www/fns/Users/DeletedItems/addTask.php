@@ -3,8 +3,8 @@
 namespace Users\DeletedItems;
 
 function addTask ($mysqli, $task) {
-    include_once __DIR__.'/../../DeletedItems/add.php';
-    \DeletedItems\add($mysqli, $task->id_users, 'task', [
+    include_once __DIR__.'/add.php';
+    add($mysqli, $task->id_users, 'task', [
         'id' => $task->id_tasks,
         'text' => $task->text,
         'tags' => $task->tags,
