@@ -1,0 +1,23 @@
+#!/usr/bin/php
+<?php
+
+chdir(__DIR__);
+include_once 'lib/require-cli.php';
+include_once '../fns/mysqli_query_object.php';
+include_once '../lib/mysqli.php';
+
+$microtime = microtime(true);
+
+$expire_time = time() - 30 * 24 * 60 * 60;
+$sql = "select * from deleted_items where insert_time < $expire_time";
+$deletedItems = mysqli_query_object($mysqli, $sql);
+
+if ($deletedItems) {
+    include_once '../fns/Users/DeletedItems/delete.php';
+    foreach ($deletedItems as $deletedItem) {
+        Users\DeletedItems\delete($mysqli, $deletedItem);
+    }
+}
+
+$elapsedSeconds = number_format(microtime(true) - $microtime, 3);
+echo "Done in $elapsedSeconds seconds.\n";
