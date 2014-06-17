@@ -76,7 +76,7 @@ $content = Page\tabs(
     Page\sessionMessages('trash/messages')
     .join('<div class="hr"></div>', $items)
     .Page\infoText('Items in Trash are automatically'
-        ." deleted within $expireDays days.")
+        ." purged in $expireDays days after deletion.")
     .$optionsPanel
 );
 
