@@ -48,5 +48,4 @@ unset($_SESSION['files/errors']);
 $_SESSION['files/id_folders'] = $id_folders;
 $_SESSION['files/messages'] = ['Folder has been renamed.'];
 
-include_once '../../fns/create_folder_link.php';
-redirect(create_folder_link($id_folders, '../'));
+redirect("../?id_folders=$id_folders");
