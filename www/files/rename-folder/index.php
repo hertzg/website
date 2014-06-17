@@ -5,11 +5,8 @@ include_once '../../lib/mysqli.php';
 list($folder, $id_folders, $user) = require_folder($mysqli);
 
 $key = 'files/rename-folder/values';
-if (array_key_exists($key, $_SESSION)) {
-    $values = $_SESSION[$key];
-} else {
-    $values = (array)$folder;
-}
+if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
+else $values = (array)$folder;
 
 unset(
     $_SESSION['files/errors'],
