@@ -54,8 +54,8 @@ $purgeLink = Page\imageLink('Purge', "../purge/?id=$id", 'purge');
 $href = "submit-restore.php?id=$id";
 $restoreLink = Page\imageLink('Restore', $href, 'restore-defaults');
 
-include_once '../../fns/Page/twoColumns.php';
-$optionsContent = Page\twoColumns($restoreLink, $purgeLink);
+include_once '../../fns/Page/staticTwoColumns.php';
+$optionsContent = Page\staticTwoColumns($restoreLink, $purgeLink);
 
 unset($_SESSION['trash/messages']);
 
