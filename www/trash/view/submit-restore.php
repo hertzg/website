@@ -43,8 +43,8 @@ if ($type == 'bookmark') {
     Users\Tasks\addDeleted($mysqli, $id_users, $data);
 }
 
-include_once '../../fns/DeletedItems/delete.php';
-DeletedItems\delete($mysqli, $id);
+include_once '../../fns/Users/DeletedItems/delete.php';
+Users\DeletedItems\delete($mysqli, $deletedItem);
 
 $_SESSION['trash/messages'] = ['The item has been restored.'];
 
