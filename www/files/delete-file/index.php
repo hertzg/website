@@ -26,6 +26,7 @@ $content = Page\tabs(
     Page\text(
         'Are you sure you want to delete the file'
         .' "<b>'.htmlspecialchars($file->name).'</b>"?'
+        .' It will be moved to Trash.'
     )
     .'<div class="hr"></div>'
     .Page\twoColumns(
