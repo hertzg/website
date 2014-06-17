@@ -29,8 +29,8 @@ unset(
     $_SESSION['files/send-folder/values']
 );
 
-//include_once '../../fns/Users/Folders/send.php';
-//Users\Folders\send($mysqli, $user, $receiver_id_users, $folder);
+include_once '../../fns/Users/Folders/send.php';
+Users\Folders\send($mysqli, $user, $receiver_id_users, $folder);
 
 unset($_SESSION['files/errors']);
 $_SESSION['files/id_folders'] = $id_folders;
