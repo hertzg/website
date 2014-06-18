@@ -55,6 +55,4 @@ $content =
     .create_options_panel($file);
 
 include_once '../../fns/echo_page.php';
-echo_page($user, "File #$id", $content, '../../', [
-    'head' => '<link rel="stylesheet" type="text/css" href="index.css?1" />',
-]);
+echo_page($user, "File #$id", $content, '../../');

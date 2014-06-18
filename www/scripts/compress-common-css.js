@@ -32,6 +32,7 @@ var files = [
     'tag.css',
     'twoColumns.css',
     'php-code.css',
+    'preview.css',
 ]
 
 var source = ''

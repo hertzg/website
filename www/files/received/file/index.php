@@ -81,6 +81,4 @@ $content = Page\tabs(
 );
 
 include_once "$fnsDir/echo_page.php";
-echo_page($user, "Received File #$id", $content, '../../../', [
-    'head' => '<link rel="stylesheet" type="text/css" href="index.css?1" />',
-]);
+echo_page($user, "Received File #$id", $content, '../../../');
