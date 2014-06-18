@@ -36,11 +36,11 @@ if ($receivedFile->archived) {
 $href = "delete/$queryString";
 $deleteLink = Page\imageLink('Delete', $href, 'trash-bin');
 
-include_once 'fns/create_preview.php';
 include_once "$fnsDir/bytestr.php";
 include_once "$fnsDir/create_panel.php";
 include_once "$fnsDir/date_ago.php";
 include_once "$fnsDir/Form/label.php";
+include_once "$fnsDir/Page/filePreview.php";
 include_once "$fnsDir/Page/infoText.php";
 include_once "$fnsDir/Page/sessionMessages.php";
 include_once "$fnsDir/Page/tabs.php";
@@ -66,7 +66,7 @@ $content = Page\tabs(
         .'<div class="hr"></div>'
         .Form\label('Size', bytestr($receivedFile->size))
         .'<div class="hr"></div>'
-        .Form\label('Preview', create_preview($receivedFile))
+        .Form\label('Preview', Page\filePreview($receivedFile->name, $id, 'download/'))
         .Page\infoText(
             'File received '.date_ago($receivedFile->insert_time).'.')
     )

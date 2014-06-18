@@ -25,12 +25,12 @@ include_once '../../fns/Page/infoText.php';
 $infoText = Page\infoText($text);
 
 include_once 'fns/create_options_panel.php';
-include_once 'fns/create_preview.php';
 include_once '../../fns/bytestr.php';
 include_once '../../fns/create_folder_link.php';
-include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Form/label.php';
+include_once '../../fns/Page/filePreview.php';
 include_once '../../fns/Page/sessionMessages.php';
+include_once '../../fns/Page/tabs.php';
 $content =
     Page\tabs(
         [
@@ -49,7 +49,7 @@ $content =
         .'<div class="hr"></div>'
         .Form\label('Size', bytestr($file->size))
         .'<div class="hr"></div>'
-        .Form\label('Preview', create_preview($file))
+        .Form\label('Preview', Page\filePreview($file->name, $id, '../download-file/'))
         .$infoText
     )
     .create_options_panel($file);
