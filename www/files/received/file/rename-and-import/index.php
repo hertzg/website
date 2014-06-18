@@ -4,9 +4,9 @@ include_once '../fns/require_received_file.php';
 include_once '../../../../lib/mysqli.php';
 list($receivedFile, $id, $user) = require_received_file($mysqli, '../');
 
-unset($_SESSION['files/received/view-file/messages']);
+unset($_SESSION['files/received/file/messages']);
 
-$key = 'files/received/rename-and-import/values';
+$key = 'files/received/file/rename-and-import/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else $values = (array)$receivedFile;
 
@@ -29,7 +29,7 @@ $content = Page\tabs(
         ],
     ],
     'Rename and Import',
-    Page\sessionErrors('files/received/rename-and-import/errors')
+    Page\sessionErrors('files/received/file/rename-and-import/errors')
     .'<form action="submit.php" method="post">'
         .Form\textfield('name', 'File name', [
             'value' => $values['name'],

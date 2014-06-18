@@ -4,7 +4,7 @@ include_once '../fns/require_received_file.php';
 include_once '../../../../lib/mysqli.php';
 list($receivedFile, $id, $user) = require_received_file($mysqli, '../');
 
-unset($_SESSION['files/received/view-file/messages']);
+unset($_SESSION['files/received/file/messages']);
 
 $fnsDir = '../../../../fns';
 

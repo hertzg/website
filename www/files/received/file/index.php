@@ -4,7 +4,11 @@ include_once 'fns/require_received_file.php';
 include_once '../../../lib/mysqli.php';
 list($receivedFile, $id, $user) = require_received_file($mysqli);
 
-unset($_SESSION['files/received/messages']);
+unset(
+    $_SESSION['files/received/file/rename-and-import/errors'],
+    $_SESSION['files/received/file/rename-and-import/values'],
+    $_SESSION['files/received/messages']
+);
 
 $queryString = "?id=$id";
 $fnsDir = '../../../fns';
@@ -53,7 +57,7 @@ $content = Page\tabs(
         ],
     ],
     "Received File #$id",
-    Page\sessionMessages('files/received/view-file/messages')
+    Page\sessionMessages('files/received/file/messages')
     .Form\label('Received from',
         htmlspecialchars($receivedFile->sender_username))
     .create_panel(

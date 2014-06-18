@@ -8,7 +8,7 @@ unset(
     $_SESSION['files/errors'],
     $_SESSION['files/id_folders'],
     $_SESSION['files/messages'],
-    $_SESSION['files/received/view-file/messages']
+    $_SESSION['files/received/file/messages']
 );
 
 include_once '../../fns/request_strings.php';

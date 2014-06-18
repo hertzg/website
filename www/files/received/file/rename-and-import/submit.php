@@ -33,16 +33,16 @@ if (!$errors) {
 include_once "$fnsDir/redirect.php";
 
 if ($errors) {
-    $_SESSION['files/received/rename-and-import/errors'] = $errors;
-    $_SESSION['files/received/rename-and-import/values'] = [
+    $_SESSION['files/received/file/rename-and-import/errors'] = $errors;
+    $_SESSION['files/received/file/rename-and-import/values'] = [
         'name' => $name,
     ];
     redirect("./?id=$id");
 }
 
 unset(
-    $_SESSION['files/received/rename-and-import/errors'],
-    $_SESSION['files/received/rename-and-import/values']
+    $_SESSION['files/received/file/rename-and-import/errors'],
+    $_SESSION['files/received/file/rename-and-import/values']
 );
 
 include_once "$fnsDir/ReceivedFiles/File/path.php";
