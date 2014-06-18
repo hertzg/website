@@ -21,14 +21,15 @@ $href = "../rename-and-import/$queryString";
 $renameAndImportLink = Page\imageLink($title, $href, 'import-file');
 
 if ($receivedFile->archived) {
-    $archiveLink = Page\imageLink('Unarchive',
-        "submit-unarchive.php$queryString", 'unarchive');
+    $href = "submit-unarchive.php$queryString";
+    $archiveLink = Page\imageLink('Unarchive', $href, 'unarchive');
 } else {
-    $archiveLink = Page\imageLink('Archive',
-        "submit-archive.php$queryString", 'archive');
+    $href = "submit-archive.php$queryString";
+    $archiveLink = Page\imageLink('Archive', $href, 'archive');
 }
 
-$deleteLink = Page\imageLink('Delete', "../delete/$queryString", 'trash-bin');
+$href = "../delete-file/$queryString";
+$deleteLink = Page\imageLink('Delete', $href, 'trash-bin');
 
 include_once 'fns/create_preview.php';
 include_once '../../../fns/bytestr.php';
