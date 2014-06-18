@@ -1,24 +1,26 @@
 <?php
 
 include_once '../fns/require_received_file.php';
-include_once '../../../lib/mysqli.php';
-list($receivedFile, $id, $user) = require_received_file($mysqli);
+include_once '../../../../lib/mysqli.php';
+list($receivedFile, $id, $user) = require_received_file($mysqli, '../');
 
 unset($_SESSION['files/received/view-file/messages']);
 
-include_once '../../../fns/Page/tabs.php';
-include_once '../../../fns/Page/imageLink.php';
-include_once '../../../fns/Page/text.php';
-include_once '../../../fns/Page/twoColumns.php';
+$fnsDir = '../../../../fns';
+
+include_once "$fnsDir/Page/tabs.php";
+include_once "$fnsDir/Page/imageLink.php";
+include_once "$fnsDir/Page/text.php";
+include_once "$fnsDir/Page/twoColumns.php";
 $content = Page\tabs(
     [
         [
             'title' => '&middot;&middot;&middot;',
-            'href' => '../..',
+            'href' => '../../..',
         ],
         [
             'title' => 'Received',
-            'href' => '..',
+            'href' => '../..',
         ],
     ],
     "Received File #$id",
@@ -26,9 +28,9 @@ $content = Page\tabs(
     .'<div class="hr"></div>'
     .Page\twoColumns(
         Page\imageLink('Yes, delete file', "submit.php?id=$id", 'yes'),
-        Page\imageLink('No, return back', "../view-file/?id=$id", 'no')
+        Page\imageLink('No, return back', "../?id=$id", 'no')
     )
 );
 
-include_once '../../../fns/echo_page.php';
-echo_page($user, "Delete Received File #$id", $content, '../../../');
+include_once "$fnsDir/echo_page.php";
+echo_page($user, "Delete Received File #$id", $content, '../../../../');

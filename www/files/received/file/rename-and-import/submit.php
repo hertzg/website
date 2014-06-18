@@ -1,17 +1,19 @@
 <?php
 
-include_once '../../../fns/require_same_domain_referer.php';
+$fnsDir = '../../../../fns';
+
+include_once "$fnsDir/require_same_domain_referer.php";
 require_same_domain_referer('..');
 
 include_once '../fns/require_received_file.php';
-include_once '../../../lib/mysqli.php';
-list($receivedFile, $id, $user) = require_received_file($mysqli);
+include_once '../../../../lib/mysqli.php';
+list($receivedFile, $id, $user) = require_received_file($mysqli, '../');
 $id_users = $user->id_users;
 
-include_once '../../../fns/request_strings.php';
+include_once "$fnsDir/request_strings.php";
 list($name) = request_strings('name');
 
-include_once '../../../fns/str_collapse_spaces.php';
+include_once "$fnsDir/str_collapse_spaces.php";
 $name = str_collapse_spaces($name);
 
 $id_folders = 0;
@@ -20,7 +22,7 @@ $errors = [];
 if ($name === '') $errors[] = 'Enter file name.';
 
 if (!$errors) {
-    include_once '../../../fns/Files/getByName.php';
+    include_once "$fnsDir/Files/getByName.php";
     $existingFile = Files\getByName($mysqli,
         $id_users, $id_folders, $name);
     if ($existingFile) {
@@ -28,7 +30,7 @@ if (!$errors) {
     }
 }
 
-include_once '../../../fns/redirect.php';
+include_once "$fnsDir/redirect.php";
 
 if ($errors) {
     $_SESSION['files/received/rename-and-import/errors'] = $errors;
@@ -43,13 +45,13 @@ unset(
     $_SESSION['files/received/rename-and-import/values']
 );
 
-include_once '../../../fns/ReceivedFiles/File/path.php';
+include_once "$fnsDir/ReceivedFiles/File/path.php";
 $receivedFilePath = ReceivedFiles\File\path($id_users, $id);
 
-include_once '../../../fns/Users/Files/add.php';
+include_once "$fnsDir/Users/Files/add.php";
 Users\Files\add($mysqli, $id_users, $id_folders, $name, $receivedFilePath);
 
-include_once '../../../fns/Users/Files/Received/delete.php';
+include_once "$fnsDir/Users/Files/Received/delete.php";
 Users\Files\Received\delete($mysqli, $receivedFile);
 
 $messages = ['File has been imported.'];

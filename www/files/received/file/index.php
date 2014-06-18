@@ -7,8 +7,9 @@ list($receivedFile, $id, $user) = require_received_file($mysqli);
 unset($_SESSION['files/received/messages']);
 
 $queryString = "?id=$id";
+$fnsDir = '../../../fns';
 
-include_once '../../../fns/Page/imageLink.php';
+include_once "$fnsDir/Page/imageLink.php";
 
 $href = "download/$queryString";
 $downloadLink = Page\imageLink('Download', $href, 'download');
@@ -28,18 +29,18 @@ if ($receivedFile->archived) {
     $archiveLink = Page\imageLink('Archive', $href, 'archive');
 }
 
-$href = "../delete/$queryString";
+$href = "delete/$queryString";
 $deleteLink = Page\imageLink('Delete', $href, 'trash-bin');
 
 include_once 'fns/create_preview.php';
-include_once '../../../fns/bytestr.php';
-include_once '../../../fns/create_panel.php';
-include_once '../../../fns/date_ago.php';
-include_once '../../../fns/Form/label.php';
-include_once '../../../fns/Page/infoText.php';
-include_once '../../../fns/Page/sessionMessages.php';
-include_once '../../../fns/Page/tabs.php';
-include_once '../../../fns/Page/twoColumns.php';
+include_once "$fnsDir/bytestr.php";
+include_once "$fnsDir/create_panel.php";
+include_once "$fnsDir/date_ago.php";
+include_once "$fnsDir/Form/label.php";
+include_once "$fnsDir/Page/infoText.php";
+include_once "$fnsDir/Page/sessionMessages.php";
+include_once "$fnsDir/Page/tabs.php";
+include_once "$fnsDir/Page/twoColumns.php";
 $content = Page\tabs(
     [
         [
@@ -75,7 +76,7 @@ $content = Page\tabs(
     )
 );
 
-include_once '../../../fns/echo_page.php';
+include_once "$fnsDir/echo_page.php";
 echo_page($user, "Received File #$id", $content, '../../../', [
     'head' => '<link rel="stylesheet" type="text/css" href="index.css?1" />',
 ]);

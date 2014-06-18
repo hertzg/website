@@ -14,7 +14,7 @@ function create_preview ($receivedFile) {
         $contentType = get_extension_content_type($extension);
 
         $contentType = rawurlencode($contentType);
-        $src = "../download/?id=$receivedFile->id&amp;contentType=$contentType";
+        $src = "download/?id=$receivedFile->id&amp;contentType=$contentType";
 
         $html = '<div class="preview">';
         if (preg_match("/^($audioRegex)$/", $extension)) {

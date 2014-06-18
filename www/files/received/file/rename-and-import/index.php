@@ -1,8 +1,8 @@
 <?php
 
 include_once '../fns/require_received_file.php';
-include_once '../../../lib/mysqli.php';
-list($receivedFile, $id, $user) = require_received_file($mysqli);
+include_once '../../../../lib/mysqli.php';
+list($receivedFile, $id, $user) = require_received_file($mysqli, '../');
 
 unset($_SESSION['files/received/view-file/messages']);
 
@@ -10,20 +10,22 @@ $key = 'files/received/rename-and-import/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else $values = (array)$receivedFile;
 
-include_once '../../../fns/Page/tabs.php';
-include_once '../../../fns/Form/button.php';
-include_once '../../../fns/Form/hidden.php';
-include_once '../../../fns/Form/textfield.php';
-include_once '../../../fns/Page/sessionErrors.php';
+$fnsDir = '../../../../fns';
+
+include_once "$fnsDir/Page/tabs.php";
+include_once "$fnsDir/Form/button.php";
+include_once "$fnsDir/Form/hidden.php";
+include_once "$fnsDir/Form/textfield.php";
+include_once "$fnsDir/Page/sessionErrors.php";
 $content = Page\tabs(
     [
         [
             'title' => '&middot;&middot;&middot;',
-            'href' => '..',
+            'href' => '../..',
         ],
         [
             'title' => "Received File #$id",
-            'href' => "../view-file/?id=$id",
+            'href' => "../?id=$id",
         ],
     ],
     'Rename and Import',
@@ -40,5 +42,5 @@ $content = Page\tabs(
     .'</form>'
 );
 
-include_once '../../../fns/echo_page.php';
-echo_page($user, "Rename and Import Received File #$id", $content, '../../../');
+include_once "$fnsDir/echo_page.php";
+echo_page($user, "Rename and Import Received File #$id", $content, '../../../../');
