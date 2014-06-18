@@ -35,13 +35,28 @@ if ($all) {
 
 }
 
-include_once '../../fns/Page/imageArrowLink.php';
 $items = [];
+include_once '../../fns/Page/imageArrowLink.php';
+
+foreach ($receivedFolders as $receivedFolder) {
+    $title = htmlspecialchars($receivedFolder->name);
+    $href = "folder/?id=$receivedFolder->id";
+    $html = Page\imageArrowLink($title, $href, 'folder');
+    $items[$receivedFolder->insert_time] = $html;
+}
+
 foreach ($receivedFiles as $receivedFile) {
     $title = htmlspecialchars($receivedFile->name);
     $href = "file/?id=$receivedFile->id";
-    $items[] = Page\imageArrowLink($title, $href, 'file');
+    $html = Page\imageArrowLink($title, $href, 'file');
+    $items[$receivedFile->insert_time] = $html;
 }
+
+ksort($items);
+$items = array_reverse($items);
+$items = array_values($items);
+
+/*
 if (!$all && $user->num_archived_received_files) {
     include_once '../../fns/Form/button.php';
     $items[] =
@@ -50,6 +65,7 @@ if (!$all && $user->num_archived_received_files) {
             .'<input type="hidden" name="all" value="1" />'
         .'</form>';
 }
+*/
 
 $title = 'Delete All Files';
 $deleteAllLink = Page\imageArrowLink($title, 'delete-all/', 'trash-bin');
