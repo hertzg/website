@@ -15,4 +15,17 @@ $mysqli->query('create table received_folders'
 $mysqli->query('alter table users add num_received_folders bigint unsigned not null after num_received_files') || trigger_error($mysqli->error);
 $mysqli->query('alter table users add num_archived_received_folders bigint unsigned not null after num_archived_received_files') || trigger_error($mysqli->error);
 
+$mysqli->query('create table received_folder_subfolders'
+    .' (id bigint unsigned not null auto_increment primary key,'
+    .' id_received_folders bigint unsigned not null,'
+    .' name varchar(255) character set utf8 collate utf8_unicode_ci not null,'
+    .' parent_id bigint unsigned not null)') || trigger_error($mysqli->error);
+
+$mysqli->query('create table received_folder_files'
+    .' (id bigint unsigned not null auto_increment primary key,'
+    .' id_received_folders bigint unsigned not null,'
+    .' name varchar(255) character set utf8 collate utf8_unicode_ci not null,'
+    .' parent_id bigint unsigned not null,'
+    .' size bigint(20) unsigned not null)') || trigger_error($mysqli->error);
+
 echo 'Done';
