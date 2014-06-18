@@ -24,7 +24,8 @@ $content = Page\tabs(
         ],
     ],
     "Received Folder #$id",
-    Page\text('Are you sure you want to delete the folder?')
+    Page\text('Are you sure you want to delete the folder?'
+        .' It will be moved to Trash.')
     .'<div class="hr"></div>'
     .Page\twoColumns(
         Page\imageLink('Yes, delete folder', "submit.php?id=$id", 'yes'),

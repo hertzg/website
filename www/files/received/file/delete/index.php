@@ -24,7 +24,8 @@ $content = Page\tabs(
         ],
     ],
     "Received File #$id",
-    Page\text('Are you sure you want to delete the file?')
+    Page\text('Are you sure you want to delete the file?'
+        .' It will be moved to Trash.')
     .'<div class="hr"></div>'
     .Page\twoColumns(
         Page\imageLink('Yes, delete file', "submit.php?id=$id", 'yes'),
