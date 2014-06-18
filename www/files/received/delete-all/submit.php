@@ -11,10 +11,11 @@ include_once '../../../fns/Users/Files/Received/deleteAll.php';
 include_once '../../../lib/mysqli.php';
 Users\Files\Received\deleteAll($mysqli, $id_users);
 
+include_once '../../../fns/Users/Folders/Received/deleteAll.php';
+Users\Folders\Received\deleteAll($mysqli, $id_users);
+
 unset($_SESSION['files/errors']);
-$_SESSION['files/messages'] = [
-    'All received files have been deleted.',
-];
+$_SESSION['files/messages'] = ['All received files have been deleted.'];
 
 include_once '../../../fns/redirect.php';
 redirect('../..');
