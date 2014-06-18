@@ -5,17 +5,17 @@ $fnsDir = '../../../../fns';
 include_once "$fnsDir/require_same_domain_referer.php";
 require_same_domain_referer('../..');
 
-include_once '../fns/require_received_file.php';
+include_once '../fns/require_received_folder.php';
 include_once '../../../../lib/mysqli.php';
-list($receivedFile, $id, $user) = require_received_file($mysqli, '../');
+list($receivedFolder, $id, $user) = require_received_folder($mysqli, '../');
 
-include_once "$fnsDir/Users/Files/Received/delete.php";
-Users\Files\Received\delete($mysqli, $receivedFile);
+include_once "$fnsDir/Users/Folders/Received/delete.php";
+Users\Folders\Received\delete($mysqli, $receivedFolder);
 
-$messages = ['File has been deleted.'];
+$messages = ['Folder has been deleted.'];
 include_once "$fnsDir/redirect.php";
 
-if (!$user->num_received_folders && $user->num_received_files == 1) {
+if ($user->num_received_folders == 1 && !$user->num_received_files) {
     $messages[] = 'No more received files.';
     $_SESSION['files/messages'] = $messages;
     unset($_SESSION['files/errors']);
