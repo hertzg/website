@@ -1,5 +1,6 @@
 <?php
 
+chdir(__DIR__);
 include_once '../lib/mysqli.php';
 
 $mysqli->query('create table received_folders'
@@ -9,3 +10,7 @@ $mysqli->query('create table received_folders'
     .' receiver_id_users bigint unsigned not null,'
     .' sender_id_users bigint unsigned not null,'
     .' sender_username varchar(32) character set ascii collate ascii_bin not null)') || trigger_error($mysqli->error);
+
+$mysqli->query('alter table users add num_received_folders bigint unsigned not null after num_received_files') || trigger_error($mysqli->error);
+
+echo 'Done';
