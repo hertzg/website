@@ -39,7 +39,7 @@ include_once '../../fns/Page/imageArrowLink.php';
 $items = [];
 foreach ($receivedFiles as $receivedFile) {
     $title = htmlspecialchars($receivedFile->name);
-    $href = "view-file/?id=$receivedFile->id";
+    $href = "file/?id=$receivedFile->id";
     $items[] = Page\imageArrowLink($title, $href, 'file');
 }
 if (!$all && $user->num_archived_received_files) {

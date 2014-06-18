@@ -2,7 +2,7 @@
 
 function require_received_file ($mysqli) {
 
-    $fnsDir = __DIR__.'/../../../fns';
+    $fnsDir = __DIR__.'/../../../../fns';
 
     include_once "$fnsDir/require_user.php";
     $user = require_user('../../../');

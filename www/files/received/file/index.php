@@ -1,6 +1,6 @@
 <?php
 
-include_once '../fns/require_received_file.php';
+include_once 'fns/require_received_file.php';
 include_once '../../../lib/mysqli.php';
 list($receivedFile, $id, $user) = require_received_file($mysqli);
 
@@ -10,14 +10,14 @@ $queryString = "?id=$id";
 
 include_once '../../../fns/Page/imageLink.php';
 
-$href = "../download/$queryString";
+$href = "download/$queryString";
 $downloadLink = Page\imageLink('Download', $href, 'download');
 
 $href = "submit-import.php$queryString";
 $importLink = Page\imageLink('Import', $href, 'import-file');
 
 $title = 'Rename and Import';
-$href = "../rename-and-import/$queryString";
+$href = "rename-and-import/$queryString";
 $renameAndImportLink = Page\imageLink($title, $href, 'import-file');
 
 if ($receivedFile->archived) {
@@ -28,7 +28,7 @@ if ($receivedFile->archived) {
     $archiveLink = Page\imageLink('Archive', $href, 'archive');
 }
 
-$href = "../delete-file/$queryString";
+$href = "../delete/$queryString";
 $deleteLink = Page\imageLink('Delete', $href, 'trash-bin');
 
 include_once 'fns/create_preview.php';
