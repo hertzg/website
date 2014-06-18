@@ -7,7 +7,14 @@ function purge ($mysqli, $receivedContact) {
     include_once __DIR__.'/../../../ReceivedContacts/delete.php';
     \ReceivedContacts\delete($mysqli, $receivedContact->id);
 
+    $id_users = $receivedContact->receiver_id_users;
+
     include_once __DIR__.'/addNumber.php';
-    addNumber($mysqli, $receivedContact->receiver_id_users, -1);
+    addNumber($mysqli, $id_users, -1);
+
+    if ($receivedContact->archived) {
+        include_once __DIR__.'/addNumberArchived.php';
+        addNumberArchived($mysqli, $id_users, -1);
+    }
 
 }
