@@ -39,10 +39,12 @@ function create_options_panel ($user, $id_folders, $base = '') {
     }
 
     $num_received_files = $user->num_received_files;
-    if ($num_received_files) {
+    $num_received_folders = $user->num_received_folders;
+    if ($num_received_files || $num_received_folders) {
+        $n = $num_received_files + $num_received_folders;
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         $title = 'Received Files';
-        $description = "$num_received_files total.";
+        $description = "$n total.";
         $href = "{$base}received/";
         $options[] = Page\imageArrowLinkWithDescription($title,
             $description, $href, 'mail');
