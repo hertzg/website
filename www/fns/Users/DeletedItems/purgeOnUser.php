@@ -4,6 +4,15 @@ namespace Users\DeletedItems;
 
 function purgeOnUser ($mysqli, $id_users) {
 
+    include_once __DIR__.'/../../DeletedItems/indexFilesOnUser.php';
+    $deletedItems = \DeletedItems\indexFilesOnUser($mysqli, $id_users);
+    if ($deletedItems) {
+        include_once __DIR__.'/purgeFile.php';
+        foreach ($deletedItems as $deletedItem) {
+            purgeFile($deletedItem);
+        }
+    }
+
     include_once __DIR__.'/../../DeletedItems/indexReceivedFilesOnUser.php';
     $deletedItems = \DeletedItems\indexReceivedFilesOnUser($mysqli, $id_users);
     if ($deletedItems) {
@@ -13,12 +22,12 @@ function purgeOnUser ($mysqli, $id_users) {
         }
     }
 
-    include_once __DIR__.'/../../DeletedItems/indexFilesOnUser.php';
-    $deletedItems = \DeletedItems\indexFilesOnUser($mysqli, $id_users);
+    include_once __DIR__.'/../../DeletedItems/indexReceivedFoldersOnUser.php';
+    $deletedItems = \DeletedItems\indexReceivedFoldersOnUser($mysqli, $id_users);
     if ($deletedItems) {
-        include_once __DIR__.'/purgeFile.php';
+        include_once __DIR__.'/purgeReceivedFolder.php';
         foreach ($deletedItems as $deletedItem) {
-            purgeFile($deletedItem);
+            purgeReceivedFolder($mysqli, $deletedItem);
         }
     }
 

@@ -11,6 +11,9 @@ function purge ($mysqli, $deletedItem) {
     } elseif ($type == 'receivedFile') {
         include_once __DIR__.'/purgeReceivedFile.php';
         purgeReceivedFile($deletedItem);
+    } elseif ($type == 'receivedFolder') {
+        include_once __DIR__.'/purgeReceivedFolder.php';
+        purgeReceivedFolder($mysqli, $deletedItem);
     }
 
     include_once __DIR__.'/delete.php';
