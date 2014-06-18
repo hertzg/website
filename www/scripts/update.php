@@ -13,5 +13,6 @@ $mysqli->query('create table received_folders'
     .' sender_username varchar(32) character set ascii collate ascii_bin not null)') || trigger_error($mysqli->error);
 
 $mysqli->query('alter table users add num_received_folders bigint unsigned not null after num_received_files') || trigger_error($mysqli->error);
+$mysqli->query('alter table users add num_archived_received_folders bigint unsigned not null after num_archived_received_files') || trigger_error($mysqli->error);
 
 echo 'Done';
