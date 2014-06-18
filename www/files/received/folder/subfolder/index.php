@@ -15,7 +15,7 @@ $items = [];
 include_once "$fnsDir/Page/imageLink.php";
 $parent_id = $receivedFolderSubfolder->parent_id;
 if ($parent_id) $href = $href = "?id=$parent_id";
-else $href = '..';
+else $href = "../?id=$id_received_folders";
 $items[] = Page\imageLink('.. Parent folder', $href, 'parent-folder');
 
 include_once "$fnsDir/ReceivedFolderSubfolders/indexOnFolder.php";
