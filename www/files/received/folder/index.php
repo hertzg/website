@@ -6,12 +6,7 @@ list($receivedFolder, $id, $user) = require_received_folder($mysqli);
 
 unset($_SESSION['files/received/messages']);
 
-$queryString = "?id=$id";
 $fnsDir = '../../../fns';
-
-include_once "$fnsDir/Page/imageLink.php";
-$href = "delete/$queryString";
-$deleteLink = Page\imageLink('Delete', $href, 'trash-bin');
 
 include_once "$fnsDir/ReceivedFolderFiles/indexOnFolder.php";
 $files = ReceivedFolderFiles\indexOnFolder($mysqli, $id, 0);
@@ -22,6 +17,8 @@ $subfolders = ReceivedFolderSubfolders\indexOnFolder($mysqli, $id, 0);
 $items = [];
 
 if ($files || $subfolders) {
+
+    include_once "$fnsDir/Page/imageLink.php";
 
     foreach ($subfolders as $subfolder) {
         $title = htmlspecialchars($subfolder->name);
@@ -39,6 +36,7 @@ if ($files || $subfolders) {
     $items[] = Page\info('Folder is empty');
 }
 
+include_once 'fns/create_options_panel.php';
 include_once "$fnsDir/create_panel.php";
 include_once "$fnsDir/Form/label.php";
 include_once "$fnsDir/Page/sessionMessages.php";
@@ -62,7 +60,7 @@ $content = Page\tabs(
     .Form\label('Folder name',
         htmlspecialchars($receivedFolder->name))
     .create_panel('The Folder', join('<div class="hr"></div>', $items))
-    .create_panel('Options', $deleteLink)
+    .create_options_panel($receivedFolder)
 );
 
 include_once "$fnsDir/echo_page.php";

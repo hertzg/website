@@ -71,7 +71,7 @@ $content = Page\tabs(
             'File received '.date_ago($receivedFile->insert_time).'.')
     )
     .create_panel(
-        'Options',
+        'File Options',
         Page\twoColumns($downloadLink, $importLink)
         .'<div class="hr"></div>'
         .Page\twoColumns($renameAndImportLink, $archiveLink)
