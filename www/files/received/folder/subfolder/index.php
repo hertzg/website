@@ -5,6 +5,8 @@ include_once '../../../../lib/mysqli.php';
 $values = require_received_folder_subfolder($mysqli);
 list($receivedFolderSubfolder, $id, $user) = $values;
 
+unset($_SESSION['files/received/folder/messages']);
+
 $fnsDir = '../../../../fns';
 $id_received_folders = $receivedFolderSubfolder->id_received_folders;
 
