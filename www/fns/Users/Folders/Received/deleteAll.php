@@ -4,7 +4,19 @@ namespace Users\Folders\Received;
 
 function deleteAll ($mysqli, $id_users) {
 
-    include_once __DIR__.'/../../../ReceivedFolders/deleteOnReceiver.php';
+    $fnsDir = __DIR__.'/../../..';
+
+    include_once "$fnsDir/ReceivedFolders/indexOnReceiver.php";
+    $receivedFolders = \ReceivedFolders\indexOnReceiver($mysqli, $id_users);
+
+    if ($receivedFolders) {
+        include_once __DIR__.'/../../DeletedItems/addReceivedFolder.php';
+        foreach ($receivedFolders as $receivedFolder) {
+            \Users\DeletedItems\addReceivedFolder($mysqli, $receivedFolder);
+        }
+    }
+
+    include_once "$fnsDir/ReceivedFolders/deleteOnReceiver.php";
     \ReceivedFolders\deleteOnReceiver($mysqli, $id_users);
 
     $sql = 'update users set num_received_folders = 0,'
