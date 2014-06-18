@@ -42,6 +42,8 @@ foreach ($users as $user) {
         $mysqli, 'received_contacts', $id_users);
     $num_received_files = receiver_user_rows(
         $mysqli, 'received_files', $id_users);
+    $num_received_folders = receiver_user_rows(
+        $mysqli, 'received_folders', $id_users);
     $num_received_notes = receiver_user_rows(
         $mysqli, 'received_notes', $id_users);
     $num_received_tasks = receiver_user_rows(
@@ -59,6 +61,7 @@ foreach ($users as $user) {
         ." num_received_bookmarks = $num_received_bookmarks,"
         ." num_received_contacts = $num_received_contacts,"
         ." num_received_files = $num_received_files,"
+        ." num_received_folders = $num_received_folders,"
         ." num_received_notes = $num_received_notes,"
         ." num_received_tasks = $num_received_tasks,"
         ." num_tasks = $num_tasks, num_tokens = $num_tokens"
