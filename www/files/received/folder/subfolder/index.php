@@ -2,7 +2,8 @@
 
 include_once 'fns/require_received_folder_subfolder.php';
 include_once '../../../../lib/mysqli.php';
-list($receivedFolderSubfolder, $id, $user) = require_received_folder_subfolder($mysqli);
+$values = require_received_folder_subfolder($mysqli);
+list($receivedFolderSubfolder, $id, $user) = $values;
 
 $fnsDir = '../../../../fns';
 $id_received_folders = $receivedFolderSubfolder->id_received_folders;
@@ -16,7 +17,8 @@ else $href = '..';
 $items[] = Page\imageLink('.. Parent folder', $href, 'parent-folder');
 
 include_once "$fnsDir/ReceivedFolderSubfolders/indexOnFolder.php";
-$subfolders = ReceivedFolderSubfolders\indexOnFolder($mysqli, $id_received_folders, $id);
+$subfolders = ReceivedFolderSubfolders\indexOnFolder(
+    $mysqli, $id_received_folders, $id);
 
 include_once "$fnsDir/ReceivedFolderFiles/indexOnFolder.php";
 $files = ReceivedFolderFiles\indexOnFolder($mysqli, $id_received_folders, $id);

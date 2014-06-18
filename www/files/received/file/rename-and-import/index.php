@@ -42,5 +42,6 @@ $content = Page\tabs(
     .'</form>'
 );
 
+$title = "Rename and Import Received File #$id";
 include_once "$fnsDir/echo_page.php";
-echo_page($user, "Rename and Import Received File #$id", $content, '../../../../');
+echo_page($user, $title, $content, '../../../../');

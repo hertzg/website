@@ -13,7 +13,7 @@ include_once '../fns/item_type_name.php';
 $typeName = item_type_name($type);
 
 include_once '../../fns/date_ago.php';
-$infoText = ucfirst(strtolower($typeName)).' deleted '.date_ago($deletedItem->insert_time).'.';
+$infoText = "$typeName deleted ".date_ago($deletedItem->insert_time).'.';
 
 if ($type == 'bookmark' || $type == 'receivedBookmark') {
     include_once 'fns/render_bookmark.php';

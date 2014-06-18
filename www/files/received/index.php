@@ -56,13 +56,18 @@ ksort($items);
 $items = array_reverse($items);
 $items = array_values($items);
 
-if (!$all && ($user->num_archived_received_folders || $user->num_archived_received_files)) {
-    include_once '../../fns/Form/button.php';
-    $items[] =
-        '<form action="./">'
-            .Form\button('Show Archived Files')
-            .'<input type="hidden" name="all" value="1" />'
-        .'</form>';
+if (!$all) {
+    if ($user->num_archived_received_folders ||
+        $user->num_archived_received_files) {
+
+        include_once '../../fns/Form/button.php';
+        $items[] =
+            '<form action="./">'
+                .Form\button('Show Archived Files')
+                .'<input type="hidden" name="all" value="1" />'
+            .'</form>';
+
+    }
 }
 
 $title = 'Delete All Files';
