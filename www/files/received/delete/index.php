@@ -4,7 +4,7 @@ include_once '../fns/require_received_file.php';
 include_once '../../../lib/mysqli.php';
 list($receivedFile, $id, $user) = require_received_file($mysqli);
 
-unset($_SESSION['files/received/view/messages']);
+unset($_SESSION['files/received/view-file/messages']);
 
 include_once '../../../fns/Page/tabs.php';
 include_once '../../../fns/Page/imageLink.php';
@@ -26,7 +26,7 @@ $content = Page\tabs(
     .'<div class="hr"></div>'
     .Page\twoColumns(
         Page\imageLink('Yes, delete file', "submit.php?id=$id", 'yes'),
-        Page\imageLink('No, return back', "../view/?id=$id", 'no')
+        Page\imageLink('No, return back', "../view-file/?id=$id", 'no')
     )
 );
 

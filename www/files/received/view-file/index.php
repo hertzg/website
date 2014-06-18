@@ -51,7 +51,7 @@ $content = Page\tabs(
         ],
     ],
     "Received File #$id",
-    Page\sessionMessages('files/received/view/messages')
+    Page\sessionMessages('files/received/view-file/messages')
     .Form\label('Received from',
         htmlspecialchars($receivedFile->sender_username))
     .create_panel(

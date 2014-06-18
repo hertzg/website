@@ -4,7 +4,7 @@ include_once '../fns/require_received_file.php';
 include_once '../../../lib/mysqli.php';
 list($receivedFile, $id, $user) = require_received_file($mysqli);
 
-unset($_SESSION['files/received/view/messages']);
+unset($_SESSION['files/received/view-file/messages']);
 
 $key = 'files/received/rename-and-import/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
@@ -23,7 +23,7 @@ $content = Page\tabs(
         ],
         [
             'title' => "Received File #$id",
-            'href' => "../view/?id=$id",
+            'href' => "../view-file/?id=$id",
         ],
     ],
     'Rename and Import',

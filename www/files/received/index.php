@@ -8,7 +8,7 @@ unset(
     $_SESSION['files/errors'],
     $_SESSION['files/id_folders'],
     $_SESSION['files/messages'],
-    $_SESSION['files/received/view/messages']
+    $_SESSION['files/received/view-file/messages']
 );
 
 include_once '../../fns/request_strings.php';
@@ -39,7 +39,7 @@ include_once '../../fns/Page/imageArrowLink.php';
 $items = [];
 foreach ($receivedFiles as $receivedFile) {
     $title = htmlspecialchars($receivedFile->name);
-    $href = "view/?id=$receivedFile->id";
+    $href = "view-file/?id=$receivedFile->id";
     $items[] = Page\imageArrowLink($title, $href, 'file');
 }
 if (!$all && $user->num_archived_received_files) {

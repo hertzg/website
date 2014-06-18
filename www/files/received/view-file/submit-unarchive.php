@@ -10,7 +10,7 @@ list($receivedFile, $id, $user) = require_received_file($mysqli);
 include_once '../../../fns/Users/Files/Received/unarchive.php';
 Users\Files\Received\unarchive($mysqli, $receivedFile);
 
-$_SESSION['files/received/view/messages'] = ['File has been unarchived.'];
+$_SESSION['files/received/view-file/messages'] = ['File has been unarchived.'];
 
 include_once '../../../fns/redirect.php';
 redirect("./?id=$id");
