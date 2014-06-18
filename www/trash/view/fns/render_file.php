@@ -1,13 +1,18 @@
 <?php
 
-function render_file ($file, &$items) {
+function render_file ($id, $file, &$items) {
 
-    include_once __DIR__.'/../../../fns/Form/label.php';
-    $items[] = Form\label('File name', htmlspecialchars($file->name));
+    $fnsDir = __DIR__.'/../../../fns';
+    $name = $file->name;
 
-    include_once __DIR__.'/../../../fns/bytestr.php';
+    include_once "$fnsDir/Form/label.php";
+    $items[] = Form\label('File name', htmlspecialchars($name));
+
+    include_once "$fnsDir/bytestr.php";
     $items[] = Form\label('Size', bytestr($file->size));
 
-    // TODO preview
+    include_once "$fnsDir/Page/filePreview.php";
+    $filePreview = Page\filePreview($name, $id, '../download-file/');
+    $items[] = Form\label('Preview', $filePreview);
 
 }

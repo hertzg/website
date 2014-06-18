@@ -26,7 +26,7 @@ if ($type == 'bookmark' || $type == 'receivedBookmark') {
     render_note($data, $items);
 } elseif ($type == 'file' || $type == 'receivedFile') {
     include_once 'fns/render_file.php';
-    render_file($data, $items);
+    render_file($id, $data, $items);
 } elseif ($type == 'folder' || $type == 'receivedFolder') {
     include_once 'fns/render_folder.php';
     render_folder($data, $items);
