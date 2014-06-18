@@ -56,8 +56,7 @@ ksort($items);
 $items = array_reverse($items);
 $items = array_values($items);
 
-/*
-if (!$all && $user->num_archived_received_files) {
+if (!$all && ($user->num_archived_received_folders || $user->num_archived_received_files)) {
     include_once '../../fns/Form/button.php';
     $items[] =
         '<form action="./">'
@@ -65,7 +64,6 @@ if (!$all && $user->num_archived_received_files) {
             .'<input type="hidden" name="all" value="1" />'
         .'</form>';
 }
-*/
 
 $title = 'Delete All Files';
 $deleteAllLink = Page\imageArrowLink($title, 'delete-all/', 'trash-bin');
