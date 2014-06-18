@@ -16,12 +16,23 @@ list($all) = request_strings('all');
 
 include_once '../../lib/mysqli.php';
 if ($all) {
+
+    include_once '../../fns/ReceivedFolders/indexOnReceiver.php';
+    $receivedFolders = ReceivedFolders\indexOnReceiver($mysqli, $id_users);
+
     include_once '../../fns/ReceivedFiles/indexOnReceiver.php';
     $receivedFiles = ReceivedFiles\indexOnReceiver($mysqli, $id_users);
+
 } else {
+
+    include_once '../../fns/ReceivedFolders/indexNotArchivedOnReceiver.php';
+    $receivedFolders = ReceivedFolders\indexNotArchivedOnReceiver(
+        $mysqli, $id_users);
+
     include_once '../../fns/ReceivedFiles/indexNotArchivedOnReceiver.php';
     $receivedFiles = ReceivedFiles\indexNotArchivedOnReceiver(
         $mysqli, $id_users);
+
 }
 
 include_once '../../fns/Page/imageArrowLink.php';
