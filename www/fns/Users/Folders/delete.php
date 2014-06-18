@@ -21,14 +21,13 @@ function delete ($mysqli, $id) {
         include_once __DIR__.'/../../Files/indexInFolder.php';
         $files = \Files\indexInFolder($mysqli, $id);
 
-        foreach ($files as $file) {
-
+        if ($files) {
             include_once __DIR__.'/../Files/purge.php';
-            \Users\Files\purge($mysqli, $file);
-
             include_once __DIR__.'/../../Files/File/delete.php';
-            \Files\File\delete($file->id_users, $file->id_files);
-
+            foreach ($files as $file) {
+                \Users\Files\purge($mysqli, $file);
+                \Files\File\delete($file->id_users, $file->id_files);
+            }
         }
 
     }
