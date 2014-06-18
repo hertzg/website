@@ -39,6 +39,9 @@ if ($deletedItems) {
         } elseif ($type == 'file' || $type == 'receivedFile') {
             include_once 'fns/render_file.php';
             render_file($data, $description, $href, $items);
+        } elseif ($type == 'folder' || $type == 'receivedFolder') {
+            include_once 'fns/render_folder.php';
+            render_folder($data, $description, $href, $items);
         } elseif ($type == 'task' || $type == 'receivedTask') {
             include_once 'fns/render_task.php';
             render_task($data, $description, $href, $items);

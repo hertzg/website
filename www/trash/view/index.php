@@ -27,14 +27,17 @@ if ($type == 'bookmark' || $type == 'receivedBookmark') {
 } elseif ($type == 'file' || $type == 'receivedFile') {
     include_once 'fns/render_file.php';
     render_file($data, $items);
+} elseif ($type == 'folder' || $type == 'receivedFolder') {
+    include_once 'fns/render_folder.php';
+    render_folder($data, $items);
 } elseif ($type == 'task' || $type == 'receivedTask') {
     include_once 'fns/render_task.php';
     render_task($data, $items, $infoText);
 }
 
 if ($type == 'receivedBookmark' || $type == 'receivedContact'
-    || $type == 'receivedFile' || $type == 'receivedNote'
-    || $type == 'receivedTask') {
+    || $type == 'receivedFile' || $type == 'receivedFolder'
+    || $type == 'receivedNote' || $type == 'receivedTask') {
 
     $senderUsername = htmlspecialchars($data->sender_username);
 

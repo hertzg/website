@@ -32,6 +32,9 @@ if ($type == 'bookmark') {
 } elseif ($type == 'receivedFile') {
     include_once '../../fns/Users/Files/Received/addDeleted.php';
     Users\Files\Received\addDeleted($mysqli, $id_users, $data);
+} elseif ($type == 'receivedFolder') {
+    include_once '../../fns/Users/Folders/Received/addDeleted.php';
+    Users\Folders\Received\addDeleted($mysqli, $id_users, $data);
 } elseif ($type == 'receivedNote') {
     include_once '../../fns/Users/Notes/Received/addDeleted.php';
     Users\Notes\Received\addDeleted($mysqli, $id_users, $data);
