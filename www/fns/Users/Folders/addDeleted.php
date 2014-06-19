@@ -5,11 +5,17 @@ namespace Users\Folders;
 function addDeleted ($mysqli, $id_users, $folder) {
 
     $id_folders = $folder->id;
+    $parent_id_folders = $folder->parent_id_folders;
+
+    if ($parent_id_folders) {
+        include_once __DIR__.'/../../Folders/get.php';
+        $parentFolder = \Folders\get($mysqli, $id_users, $parent_id_folders);
+        if (!$parentFolder) $parent_id_folders = 0;
+    }
 
     include_once __DIR__.'/../../Folders/addDeleted.php';
-    \Folders\addDeleted($mysqli, $id_folders, $id_users,
-        $folder->parent_id_folders, $folder->name,
-        $folder->insert_time, $folder->rename_time);
+    \Folders\addDeleted($mysqli, $id_folders, $id_users, $parent_id_folders,
+        $folder->name, $folder->insert_time, $folder->rename_time);
 
     $restore = function ($parent_id_folders, $restore) use ($mysqli, $id_users) {
 
