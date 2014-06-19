@@ -19,17 +19,5 @@ if ($type == 'file') {
     redirect('..');
 }
 
-include_once '../../fns/request_strings.php';
-list($contentType) = request_strings('contentType');
-
-include_once '../../fns/str_collapse_spaces.php';
-$contentType = str_collapse_spaces($contentType);
-
-if ($contentType === '') $contentType = 'application/x-octet-stream';
-
-$filename = addslashes($data->name);
-header("Content-Disposition: attachment; filename=\"$filename\"");
-header("Content-Type: $contentType");
-header("Content-Length: $data->size");
-
-readfile($path);
+include_once '../../fns/echo_file.php';
+echo_file($data, $path);
