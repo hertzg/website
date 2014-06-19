@@ -4,8 +4,9 @@ namespace Users\DeletedItems;
 
 function purgeOnUser ($mysqli, $id_users) {
 
-    include_once __DIR__.'/../../DeletedItems/indexFilesOnUser.php';
-    $deletedItems = \DeletedItems\indexFilesOnUser($mysqli, $id_users);
+    include_once __DIR__.'/../../DeletedItems/indexOnUserOfType.php';
+
+    $deletedItems = \DeletedItems\indexOnUserOfType($mysqli, $id_users, 'file');
     if ($deletedItems) {
         include_once __DIR__.'/purgeFile.php';
         foreach ($deletedItems as $deletedItem) {
@@ -13,8 +14,8 @@ function purgeOnUser ($mysqli, $id_users) {
         }
     }
 
-    include_once __DIR__.'/../../DeletedItems/indexFoldersOnUser.php';
-    $deletedItems = \DeletedItems\indexFoldersOnUser($mysqli, $id_users);
+    $deletedItems = \DeletedItems\indexOnUserOfType(
+        $mysqli, $id_users, 'folder');
     if ($deletedItems) {
         include_once __DIR__.'/purgeFolder.php';
         foreach ($deletedItems as $deletedItem) {
@@ -22,8 +23,8 @@ function purgeOnUser ($mysqli, $id_users) {
         }
     }
 
-    include_once __DIR__.'/../../DeletedItems/indexReceivedFilesOnUser.php';
-    $deletedItems = \DeletedItems\indexReceivedFilesOnUser($mysqli, $id_users);
+    $deletedItems = \DeletedItems\indexOnUserOfType(
+        $mysqli, $id_users, 'receivedFile');
     if ($deletedItems) {
         include_once __DIR__.'/purgeReceivedFile.php';
         foreach ($deletedItems as $deletedItem) {
@@ -31,8 +32,8 @@ function purgeOnUser ($mysqli, $id_users) {
         }
     }
 
-    include_once __DIR__.'/../../DeletedItems/indexReceivedFoldersOnUser.php';
-    $deletedItems = \DeletedItems\indexReceivedFoldersOnUser($mysqli, $id_users);
+    $deletedItems = \DeletedItems\indexOnUserOfType(
+        $mysqli, $id_users, 'receivedFolder');
     if ($deletedItems) {
         include_once __DIR__.'/purgeReceivedFolder.php';
         foreach ($deletedItems as $deletedItem) {
