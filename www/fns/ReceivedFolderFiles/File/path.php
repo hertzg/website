@@ -1,6 +1,6 @@
 <?php
 
-namespace Files\File;
+namespace ReceivedFolderFiles\File;
 
 function path ($id_users, $id) {
     include_once __DIR__.'/dir.php';

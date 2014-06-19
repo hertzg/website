@@ -21,9 +21,11 @@ function send ($mysqli, $user, $receiver_id_users, $folder) {
 
         if ($files) {
             include_once __DIR__.'/Received/addFile.php';
+            include_once __DIR__.'/../../Files/File/path.php';
             foreach ($files as $file) {
+                $path = \Files\File\path($id_users, $file->id_files);
                 \Users\Folders\Received\addFile($mysqli, $id_received_folders,
-                    $id_users, $parent_id, $file->name, $file->size);
+                    $id_users, $parent_id, $file->name, $file->size, $path);
             }
         }
 
