@@ -25,6 +25,24 @@ function addDeleted ($mysqli, $id_users, $data) {
             $restore($id_folders, $deletedFolder->id, $restore);
         }
 
+        include_once __DIR__.'/../../DeletedFiles/indexOnParent.php';
+        $deletedFiles = \DeletedFiles\indexOnParent(
+            $mysqli, $id_users, $parent_id);
+
+        if ($deletedFiles) {
+            include_once __DIR__.'/../Files/addDeleted.php';
+            foreach ($deletedFiles as $deletedFile) {
+                \Users\Files\addDeleted($mysqli, $id_users, (object)[
+                    'id' => $deletedFile->id_files,
+                    'id_folders' => $deletedFile->id_folders,
+                    'name' => $deletedFile->name,
+                    'size' => $deletedFile->size,
+                    'insert_time' => $deletedFile->insert_time,
+                    'rename_time' => $deletedFile->rename_time,
+                ]);
+            }
+        }
+
     };
     $restore($id_folders, 0, $restore);
 
