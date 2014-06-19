@@ -36,9 +36,7 @@ include_once 'fns/close_account.php';
 include_once '../../lib/mysqli.php';
 close_account($mysqli, $id_users);
 
-$_SESSION['sign-in/messages'] = [
-    'Your account has been closed.',
-];
+$_SESSION['sign-in/messages'] = ['Your account has been closed.'];
 
 setcookie('username', '', time() - 60 * 60 * 24, '/');
 redirect('../../sign-in/');

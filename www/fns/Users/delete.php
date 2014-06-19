@@ -14,6 +14,7 @@ function delete ($mysqli, $id_users) {
     $userDir = __DIR__."/../../users/$id_users";
     $rmdir("$userDir/files");
     $rmdir("$userDir/received-files");
+    $rmdir("$userDir/received-folder-files");
     $rmdir($userDir);
 
 }
