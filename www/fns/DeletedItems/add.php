@@ -14,4 +14,6 @@ function add ($mysqli, $id_users, $data_type, $data_json) {
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
+    return $mysqli->insert_id;
+
 }
