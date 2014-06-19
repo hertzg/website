@@ -1,11 +1,18 @@
 <?php
 
-include_once 'fns/require_received_folder_file.php';
+include_once '../../fns/require_received_folder_file.php';
 include_once '../../../../../lib/mysqli.php';
-list($receivedFolderFile, $id, $user) = require_received_folder_file($mysqli);
+$values = require_received_folder_file($mysqli, '../');
+list($receivedFolderFile, $id, $user) = $values;
+
+$fnsDir = '../../../../../fns';
+
+if (!$receivedFolderFile->parent_id) {
+    include_once "$fnsDir/redirect.php";
+    redirect("../../file/?id=$id");
+}
 
 $id_received_folders = $receivedFolderFile->id_received_folders;
-$fnsDir = '../../../../../fns';
 $title = "Received Folder #$id_received_folders";
 $parentHref = "../?id=$id_received_folders";
 $name = $receivedFolderFile->name;
