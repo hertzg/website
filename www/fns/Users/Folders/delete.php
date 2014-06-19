@@ -38,12 +38,10 @@ function delete ($mysqli, $folder) {
 
         if ($files) {
             include_once __DIR__.'/../Files/purge.php';
-            include_once __DIR__.'/../../Files/File/delete.php';
             include_once __DIR__.'/../../DeletedFiles/add.php';
             foreach ($files as $file) {
                 $id_files = $file->id_files;
                 \Users\Files\purge($mysqli, $file);
-                \Files\File\delete($id_users, $id_files);
                 \DeletedFiles\add($mysqli, $id_deleted_items, $parent_id,
                     $id_files, $id, $id_users, $file->name,
                     $file->size, $file->insert_time, $file->rename_time);
