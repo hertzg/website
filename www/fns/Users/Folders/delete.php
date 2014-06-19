@@ -2,8 +2,8 @@
 
 namespace Users\Folders;
 
-function delete ($mysqli, $id) {
-    $ids = [$id];
+function delete ($mysqli, $folder) {
+    $ids = [$folder->id_folders];
     while ($ids) {
 
         $id = array_shift($ids);

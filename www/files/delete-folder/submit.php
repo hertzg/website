@@ -8,7 +8,7 @@ include_once '../../lib/mysqli.php';
 list($folder, $id_folders, $user) = require_folder($mysqli);
 
 include_once '../../fns/Users/Folders/delete.php';
-Users\Folders\delete($mysqli, $id_folders);
+Users\Folders\delete($mysqli, $folder);
 
 unset($_SESSION['files/errors']);
 $_SESSION['files/id_folders'] = $folder->parent_id_folders;
