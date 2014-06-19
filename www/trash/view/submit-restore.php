@@ -20,6 +20,9 @@ if ($type == 'bookmark') {
 } elseif ($type == 'file') {
     include_once '../../fns/Users/Files/addDeleted.php';
     Users\Files\addDeleted($mysqli, $id_users, $data);
+} elseif ($type == 'folder') {
+    include_once '../../fns/Users/Folders/addDeleted.php';
+    Users\Folders\addDeleted($mysqli, $id_users, $data);
 } elseif ($type == 'note') {
     include_once '../../fns/Users/Notes/addDeleted.php';
     Users\Notes\addDeleted($mysqli, $id_users, $data);
