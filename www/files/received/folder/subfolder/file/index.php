@@ -17,10 +17,14 @@ $title = "Received Folder #$id_received_folders";
 $parentHref = "../?id=$id_received_folders";
 $name = $receivedFolderFile->name;
 
+include_once "$fnsDir/Page/imageLink.php";
+$href = "../../download-file/?id=$id";
+$downloadLink = Page\imageLink('Download', $href, 'download');
+
 include_once "$fnsDir/bytestr.php";
+include_once "$fnsDir/create_panel.php";
 include_once "$fnsDir/Form/label.php";
 include_once "$fnsDir/Page/filePreview.php";
-include_once "$fnsDir/Page/imageLink.php";
 include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
     [
@@ -41,6 +45,7 @@ $content = Page\tabs(
     .Form\label('Size', bytestr($receivedFolderFile->size))
     .'<div class="hr"></div>'
     .Form\label('Preview', Page\filePreview($name, $id, '../../download-file/'))
+    .create_panel('File Options', $downloadLink)
 );
 
 include_once "$fnsDir/echo_page.php";
