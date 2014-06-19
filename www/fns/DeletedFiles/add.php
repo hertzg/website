@@ -15,6 +15,4 @@ function add ($mysqli, $id_deleted_items, $id_files,
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
-    return $mysqli->insert_id;
-
 }
