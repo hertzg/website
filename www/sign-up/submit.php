@@ -59,12 +59,6 @@ setcookie('username', $username, time() + 60 * 60 * 24 * 30, '/');
 
 $text = "$username has signed up with the email $email";
 
-include_once '../fns/get_zvini_client.php';
-get_zvini_client()->call('notification/post', [
-    'channel_name' => 'zvini-signups',
-    'notification_text' => $text,
-]);
-
 include_once 'fns/send_email.php';
 send_email($username, $email);
 
@@ -72,5 +66,13 @@ $_SESSION['sign-in/messages'] = [
     'Thank you for signing up.',
     'Sign in to proceed.'
 ];
+
+session_commit();
+
+include_once '../fns/get_zvini_client.php';
+get_zvini_client()->call('notification/post', [
+    'channel_name' => 'zvini-signups',
+    'notification_text' => $text,
+]);
 
 redirect('../sign-in/');

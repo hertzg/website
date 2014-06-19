@@ -40,12 +40,6 @@ include_once '../../fns/Feedbacks/add.php';
 include_once '../../lib/mysqli.php';
 $id = Feedbacks\add($mysqli, $id_users, $feedbacktext);
 
-include_once '../../fns/get_zvini_client.php';
-get_zvini_client()->call('notification/post', [
-    'channel_name' => 'zvini-feedbacks',
-    'notification_text' => $feedbacktext,
-]);
-
 $title = "Zvini Feedback #$id";
 
 $html =
@@ -71,4 +65,13 @@ $headers =
 mail('info@zvini.com', $title, $html, $headers);
 
 $_SESSION['help/messages'] = ['Thank you for the feedback.'];
+
+session_commit();
+
+include_once '../../fns/get_zvini_client.php';
+get_zvini_client()->call('notification/post', [
+    'channel_name' => 'zvini-feedbacks',
+    'notification_text' => $feedbacktext,
+]);
+
 redirect('..');
