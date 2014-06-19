@@ -28,6 +28,12 @@ function close_account ($mysqli, $id_users) {
     include_once "$fnsDir/DeletedItems/deleteOnUser.php";
     DeletedItems\deleteOnUser($mysqli, $id_users);
 
+    include_once "$fnsDir/DeletedFiles/deleteOnUser.php";
+    DeletedFiles\deleteOnUser($mysqli, $id_users);
+
+    include_once "$fnsDir/DeletedFolders/deleteOnUser.php";
+    DeletedFolders\deleteOnUser($mysqli, $id_users);
+
     include_once "$fnsDir/Events/deleteOnUser.php";
     Events\deleteOnUser($mysqli, $id_users);
 
