@@ -13,10 +13,10 @@ function echo_html ($title, $head, $body, $theme, $base) {
         .'<html>'
             .'<head>'
                 ."<title>$title</title>"
-                .'<link rel="icon" type="image/svg"'
-                ." href=\"{$base}zvini-icons/16.svg\" />"
-                .'<link rel="icon" type="image/svg" sizes="32x32"'
-                ." href=\"{$base}zvini-icons/32.svg\" />"
+                .'<link rel="icon" type="image/png"'
+                ." href=\"{$base}zvini-icons/16.png\" />"
+                .'<link rel="icon" type="image/png" sizes="32x32"'
+                ." href=\"{$base}zvini-icons/32.png\" />"
                 .'<meta http-equiv="Content-Type"'
                 .' content="text/html; charset=UTF-8" />'
                 .'<meta name="viewport"'
