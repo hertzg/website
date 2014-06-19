@@ -8,6 +8,9 @@ function purge ($mysqli, $deletedItem) {
     if ($type == 'file') {
         include_once __DIR__.'/purgeFile.php';
         purgeFile($deletedItem);
+    } elseif ($type == 'folder') {
+        include_once __DIR__.'/purgeFolder.php';
+        purgeFolder($mysqli, $deletedItem);
     } elseif ($type == 'receivedFile') {
         include_once __DIR__.'/purgeReceivedFile.php';
         purgeReceivedFile($deletedItem);

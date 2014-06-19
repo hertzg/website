@@ -13,6 +13,15 @@ function purgeOnUser ($mysqli, $id_users) {
         }
     }
 
+    include_once __DIR__.'/../../DeletedItems/indexFoldersOnUser.php';
+    $deletedItems = \DeletedItems\indexFoldersOnUser($mysqli, $id_users);
+    if ($deletedItems) {
+        include_once __DIR__.'/purgeFolder.php';
+        foreach ($deletedItems as $deletedItem) {
+            purgeFolder($mysqli, $deletedItem);
+        }
+    }
+
     include_once __DIR__.'/../../DeletedItems/indexReceivedFilesOnUser.php';
     $deletedItems = \DeletedItems\indexReceivedFilesOnUser($mysqli, $id_users);
     if ($deletedItems) {
