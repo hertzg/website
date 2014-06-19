@@ -10,7 +10,8 @@ function purgeFolder ($mysqli, $deletedItem) {
     \DeletedFolders\deleteOnDeletedItem($mysqli, $id_deleted_items);
 
     include_once __DIR__.'/../../DeletedFiles/indexOnDeletedItem.php';
-    $deletedFiles = \DeletedFiles\indexOnDeletedItem($mysqli, $id_deleted_items);
+    $deletedFiles = \DeletedFiles\indexOnDeletedItem(
+        $mysqli, $id_deleted_items);
 
     if ($deletedFiles) {
         include_once __DIR__.'/../../Files/File/delete.php';

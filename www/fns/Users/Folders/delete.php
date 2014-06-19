@@ -10,11 +10,9 @@ function delete ($mysqli, $folder) {
     $id_deleted_items = \Users\DeletedItems\addFolder($mysqli, $folder);
 
     $ids = [$folder->id_folders];
-    $parent_ids = [0];
     while ($ids) {
 
         $id = array_shift($ids);
-        $parent_id = array_shift($parent_ids);
 
         include_once __DIR__.'/../../Folders/delete.php';
         \Folders\delete($mysqli, $id);
@@ -27,9 +25,9 @@ function delete ($mysqli, $folder) {
             foreach ($folders as $folder) {
                 $id_folders = $folder->id_folders;
                 $ids[] = $id_folders;
-                $parent_ids[] = \DeletedFolders\add($mysqli,
-                    $id_deleted_items, $parent_id, $id_folders, $id, $id_users,
-                    $folder->name, $folder->insert_time, $folder->rename_time);
+                \DeletedFolders\add($mysqli, $id_deleted_items,
+                    $id_folders, $id, $id_users, $folder->name,
+                    $folder->insert_time, $folder->rename_time);
             }
         }
 
@@ -42,9 +40,9 @@ function delete ($mysqli, $folder) {
             foreach ($files as $file) {
                 $id_files = $file->id_files;
                 \Users\Files\purge($mysqli, $file);
-                \DeletedFiles\add($mysqli, $id_deleted_items, $parent_id,
-                    $id_files, $id, $id_users, $file->name,
-                    $file->size, $file->insert_time, $file->rename_time);
+                \DeletedFiles\add($mysqli, $id_deleted_items, $id_files, $id,
+                    $id_users, $file->name, $file->size, $file->insert_time,
+                    $file->rename_time);
             }
         }
 
