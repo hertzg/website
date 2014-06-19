@@ -11,10 +11,10 @@ function send ($mysqli, $user, $receiver_id_users, $folder) {
         $user->username, $receiver_id_users, $folder->name);
 
     include_once __DIR__.'/Received/addNumber.php';
-    \Users\Folders\Received\addNumber($mysqli, $id_users, 1);
+    \Users\Folders\Received\addNumber($mysqli, $receiver_id_users, 1);
 
     $copy = function ($id, $parent_id, $copy) use ($mysqli,
-        $id_received_folders, $id_users) {
+        $id_received_folders, $id_users, $receiver_id_users) {
 
         include_once __DIR__.'/../../Files/indexInFolder.php';
         $files = \Files\indexInFolder($mysqli, $id);
@@ -25,7 +25,8 @@ function send ($mysqli, $user, $receiver_id_users, $folder) {
             foreach ($files as $file) {
                 $path = \Files\File\path($id_users, $file->id_files);
                 \Users\Folders\Received\addFile($mysqli, $id_received_folders,
-                    $id_users, $parent_id, $file->name, $file->size, $path);
+                    $receiver_id_users, $parent_id, $file->name,
+                    $file->size, $path);
             }
         }
 
@@ -36,7 +37,8 @@ function send ($mysqli, $user, $receiver_id_users, $folder) {
             include_once __DIR__.'/../../ReceivedFolderSubfolders/add.php';
             foreach ($folders as $folder) {
                 $id = \ReceivedFolderSubfolders\add($mysqli,
-                    $id_received_folders, $id_users, $parent_id, $folder->name);
+                    $id_received_folders, $receiver_id_users,
+                    $parent_id, $folder->name);
                 $copy($folder->id_folders, $id, $copy);
             }
         }
