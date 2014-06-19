@@ -30,5 +30,6 @@ function add ($mysqli, $username, $email, $password) {
     mkdir($userDir);
     mkdir("$userDir/files");
     mkdir("$userDir/received-files");
+    mkdir("$userDir/received-folder-files");
 
 }

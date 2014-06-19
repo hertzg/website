@@ -18,4 +18,5 @@ foreach ($users as $user) {
     $mkdir($userDir);
     $mkdir("$userDir/files");
     $mkdir("$userDir/received-files");
+    $mkdir("$userDir/received-folder-files");
 }
