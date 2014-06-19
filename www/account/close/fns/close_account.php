@@ -64,6 +64,18 @@ function close_account ($mysqli, $id_users) {
     include_once "$fnsDir/ReceivedFiles/File/deleteOnReceiver.php";
     ReceivedFiles\File\deleteOnReceiver($id_users);
 
+    include_once "$fnsDir/ReceivedFolders/deleteOnReceiver.php";
+    ReceivedFolders\deleteOnReceiver($mysqli, $id_users);
+
+    include_once "$fnsDir/ReceivedFolderFiles/deleteOnUser.php";
+    ReceivedFolderFiles\deleteOnUser($mysqli, $id_users);
+
+    include_once "$fnsDir/ReceivedFolderFiles/File/deleteOnUser.php";
+    ReceivedFolderFiles\File\deleteOnUser($id_users);
+
+    include_once "$fnsDir/ReceivedFolderSubfolders/deleteOnUser.php";
+    ReceivedFolderSubfolders\deleteOnUser($mysqli, $id_users);
+
     include_once "$fnsDir/ReceivedNotes/deleteOnReceiver.php";
     ReceivedNotes\deleteOnReceiver($mysqli, $id_users);
 
