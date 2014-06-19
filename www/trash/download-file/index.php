@@ -15,8 +15,8 @@ if ($type == 'file') {
     include_once '../../fns/ReceivedFiles/File/path.php';
     $path = ReceivedFiles\File\path($id_users, $data->id);
 } else {
-    include_once '../../fns/redirect.php';
-    redirect('..');
+    include_once '../../fns/Page/error404.php';
+    Page\error404();
 }
 
 include_once '../../fns/echo_file.php';
