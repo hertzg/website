@@ -31,9 +31,9 @@ echo
             ." href=\"common.compressed.css?$commonCssRevision\" />"
             .'<link rel="stylesheet" type="text/css"'
             .' href="index.compressed.css" />'
-            .'<link rel="icon" type="image/png" href="zvini-icons/16.png" />'
-            .'<link rel="icon" type="image/png" sizes="32x32"'
-            .' href="zvini-icons/32.png" />'
+            .'<link rel="icon" type="image/svg" href="zvini-icons/16.svg" />'
+            .'<link rel="icon" type="image/svg" sizes="32x32"'
+            .' href="zvini-icons/32.svg" />'
         .'</head>'
         .'<body>'
             .'<div class="backgroundGradient">'

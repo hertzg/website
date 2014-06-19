@@ -10,7 +10,10 @@ function render () {
 
 cd `dirname $BASH_SOURCE`
 
-cd ../images/inkscape
+cd ../zvini-icons/inkscape
+render
+convert 16.svg ../../favicon.ico
+cd ../../images/inkscape
 render
 cd ../icons/inkscape
 render

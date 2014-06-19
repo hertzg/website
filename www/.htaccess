@@ -10,6 +10,6 @@ RewriteCond %{HTTP_HOST} ^zvini\.com$
 RewriteCond %{REQUEST_URI} !^/manifest.php$
 RewriteRule (.*) https://zvini.com/$1 [R=301,L]
 
-<filesMatch "\.(css|js|png|svg)$">
+<filesMatch "\.(css|js|svg)$">
     Header set Cache-Control "public, max-age=2592000"
 </filesMatch>
