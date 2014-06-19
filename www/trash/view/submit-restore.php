@@ -21,8 +21,16 @@ if ($type == 'bookmark') {
     include_once '../../fns/Users/Files/addDeleted.php';
     Users\Files\addDeleted($mysqli, $id_users, $data);
 } elseif ($type == 'folder') {
+
     include_once '../../fns/Users/Folders/addDeleted.php';
     Users\Folders\addDeleted($mysqli, $id_users, $data);
+
+    include_once '../../fns/DeletedFolders/deleteOnDeletedItem.php';
+    DeletedFolders\deleteOnDeletedItem($mysqli, $id);
+
+    include_once '../../fns/DeletedFiles/deleteOnDeletedItem.php';
+    DeletedFiles\deleteOnDeletedItem($mysqli, $id);
+
 } elseif ($type == 'note') {
     include_once '../../fns/Users/Notes/addDeleted.php';
     Users\Notes\addDeleted($mysqli, $id_users, $data);
