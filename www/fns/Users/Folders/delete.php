@@ -3,6 +3,10 @@
 namespace Users\Folders;
 
 function delete ($mysqli, $folder) {
+
+    include_once __DIR__.'/../DeletedItems/addFolder.php';
+    $id_deleted_items = \Users\DeletedItems\addFolder($mysqli, $folder);
+
     $ids = [$folder->id_folders];
     while ($ids) {
 
@@ -31,4 +35,5 @@ function delete ($mysqli, $folder) {
         }
 
     }
+
 }
