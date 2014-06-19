@@ -31,6 +31,7 @@ $content = Page\tabs(
     Page\text(
         'Are you sure you want to delete the folder'
         .' "<b>'.htmlspecialchars($folder->name).'</b>"?'
+        .' It will be moved to Trash.'
     )
     .'<div class="hr"></div>'
     .Page\twoColumns($yesLink, $noLink)
