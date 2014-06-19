@@ -2,13 +2,13 @@
 
 namespace Users\Folders\Received;
 
-function addFile ($mysqli, $id, $id_users,
+function addFile ($mysqli, $id_received_folders, $id_users,
     $parent_id, $name, $size, $filePath) {
 
     $fnsDir = __DIR__.'/../../..';
 
     include_once "$fnsDir/ReceivedFolderFiles/add.php";
-    \ReceivedFolderFiles\add($mysqli, $id,
+    $id = \ReceivedFolderFiles\add($mysqli, $id_received_folders,
         $id_users, $parent_id, $name, $size);
 
     include_once "$fnsDir/ReceivedFolderFiles/File/path.php";
