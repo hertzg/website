@@ -51,8 +51,7 @@ foreach ($ids as $id) {
     $note = mysqli_single_object($mysqli, $sql);
     if ($note) {
         $text = $mysqli->real_escape_string($note->text);
-        $sql = 'update note_tags set'
-            ." text = '$text',"
+        $sql = "update note_tags set text = '$text',"
             ." insert_time = $note->insert_time,"
             ." update_time = $note->update_time"
             ." where id_notes = $note->id_notes";
@@ -67,8 +66,7 @@ foreach ($ids as $id) {
     $task = mysqli_single_object($mysqli, $sql);
     if ($task) {
         $text = $mysqli->real_escape_string($task->text);
-        $sql = 'update task_tags set'
-            ." text = '$text',"
+        $sql = "update task_tags set text = '$text',"
             ." top_priority = $task->top_priority,"
             ." insert_time = $task->insert_time,"
             ." update_time = $task->update_time"
