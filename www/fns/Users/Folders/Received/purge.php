@@ -4,10 +4,10 @@ namespace Users\Folders\Received;
 
 function purge ($mysqli, $receivedFolder) {
 
-    $id_users = $receivedFolder->receiver_id_users;
-
     include_once __DIR__.'/../../../ReceivedFolders/delete.php';
-    \ReceivedFolders\delete($mysqli, $id_users, $receivedFolder->id);
+    \ReceivedFolders\delete($mysqli, $receivedFolder->id);
+
+    $id_users = $receivedFolder->receiver_id_users;
 
     include_once __DIR__.'/addNumber.php';
     addNumber($mysqli, $id_users, -1);
