@@ -24,11 +24,13 @@ if ($rename_time > $insert_time) {
 include_once '../../fns/Page/infoText.php';
 $infoText = Page\infoText($text);
 
+include_once '../../fns/Page/filePreview.php';
+$filePreview = Page\filePreview($file->name, $id, '../download-file/');
+
 include_once 'fns/create_options_panel.php';
 include_once '../../fns/bytestr.php';
 include_once '../../fns/create_folder_link.php';
 include_once '../../fns/Form/label.php';
-include_once '../../fns/Page/filePreview.php';
 include_once '../../fns/Page/sessionMessages.php';
 include_once '../../fns/Page/tabs.php';
 $content =
@@ -49,7 +51,7 @@ $content =
         .'<div class="hr"></div>'
         .Form\label('Size', bytestr($file->size))
         .'<div class="hr"></div>'
-        .Form\label('Preview', Page\filePreview($file->name, $id, '../download-file/'))
+        .Form\label('Preview', $filePreview)
         .$infoText
     )
     .create_options_panel($file);
