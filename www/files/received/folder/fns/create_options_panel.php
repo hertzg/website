@@ -6,6 +6,12 @@ function create_options_panel ($receivedFolder) {
     include_once "$fnsDir/Page/imageLink.php";
     $queryString = "?id=$receivedFolder->id";
 
+    $importLink = Page\imageLink('Import', 'submit-import.php', 'import-folder');
+
+    $title = 'Rename and Import';
+    $href = "rename-and-import/$queryString";
+    $renameAndImportLink = Page\imageLink($title, $href, 'import-folder');
+
     if ($receivedFolder->archived) {
         $title = 'Unarchive';
         $href = "submit-unarchive.php$queryString";
@@ -24,7 +30,9 @@ function create_options_panel ($receivedFolder) {
     include_once "$fnsDir/Page/staticTwoColumns.php";
     return create_panel(
         'Folder Options',
-        Page\staticTwoColumns($archiveLink, $deleteLink)
+        Page\staticTwoColumns($importLink, $renameAndImportLink)
+        .'<div class="hr"></div>'
+        .Page\staticTwoColumns($archiveLink, $deleteLink)
     );
 
 }
