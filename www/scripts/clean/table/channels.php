@@ -2,11 +2,11 @@
 <?php
 
 chdir(__DIR__);
-include_once '../../lib/mysqli.php';
+include_once '../../../lib/mysqli.php';
 
 $microtime = microtime(true);
 
-$sql = 'delete from feedbacks'
+$sql = 'delete from channels'
     .' where id_users not in (select id_users from users)';
 $mysqli->query($sql) || trigger_error($mysqli->error);
 

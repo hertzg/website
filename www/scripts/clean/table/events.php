@@ -2,7 +2,7 @@
 <?php
 
 chdir(__DIR__);
-include_once '../../lib/mysqli.php';
+include_once '../../../lib/mysqli.php';
 
 $microtime = microtime(true);
 

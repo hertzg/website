@@ -1,6 +1,6 @@
 #!/bin/bash
 for i in *.php
 do
-    echo "Running $i..."
+    echo -n "Running $i... "
     php $i
 done
