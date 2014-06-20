@@ -54,12 +54,12 @@ $names = ['account', 'edit-profile', 'download', 'upload', 'feedback', 'yes',
     'no', 'notification', 'create-notification', 'old-notification',
     'edit-password', 'new-password', 'reset-password', 'rename',
     'sign-in', 'calendar', 'arrow-right', 'arrow-left', 'import-file',
-    'import-bookmark', 'import-contact', 'import-file', 'import-note',
-    'import-task', 'search', 'search-folder', 'birthday-cake', 'checkbox',
-    'checked-checkbox', 'help', 'run', 'mail', 'send', 'receive', 'phone',
-    'edit-home', 'reorder', 'show-hide', 'restore-defaults',
+    'import-bookmark', 'import-contact', 'import-file', 'import-folder',
+    'import-note', 'import-task', 'search', 'search-folder', 'birthday-cake',
+    'checkbox', 'checked-checkbox', 'help', 'run', 'mail', 'send', 'receive',
+    'phone', 'edit-home', 'reorder', 'show-hide', 'restore-defaults',
     'forbid-notifications', 'receive-notifications', 'generic'];
-render($content, 'other.svg?5', $names);
+render($content, 'other.svg?6', $names);
 
 $names = ['schedule', 'create-schedule', 'edit-schedule', 'schedules'];
 render($content, 'schedule.svg?1', $names);
