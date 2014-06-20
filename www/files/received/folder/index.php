@@ -15,8 +15,8 @@ $fnsDir = '../../../fns';
 include_once "$fnsDir/ReceivedFolderFiles/indexOnFolder.php";
 $files = ReceivedFolderFiles\indexOnFolder($mysqli, $id, 0);
 
-include_once "$fnsDir/ReceivedFolderSubfolders/indexOnFolder.php";
-$subfolders = ReceivedFolderSubfolders\indexOnFolder($mysqli, $id, 0);
+include_once "$fnsDir/ReceivedFolderSubfolders/indexOnParent.php";
+$subfolders = ReceivedFolderSubfolders\indexOnParent($mysqli, $id, 0);
 
 $items = [];
 

@@ -18,8 +18,8 @@ if ($parent_id) $href = $href = "?id=$parent_id";
 else $href = "../?id=$id_received_folders";
 $items[] = Page\imageLink('.. Parent folder', $href, 'parent-folder');
 
-include_once "$fnsDir/ReceivedFolderSubfolders/indexOnFolder.php";
-$subfolders = ReceivedFolderSubfolders\indexOnFolder(
+include_once "$fnsDir/ReceivedFolderSubfolders/indexOnParent.php";
+$subfolders = ReceivedFolderSubfolders\indexOnParent(
     $mysqli, $id_received_folders, $id);
 
 include_once "$fnsDir/ReceivedFolderFiles/indexOnFolder.php";

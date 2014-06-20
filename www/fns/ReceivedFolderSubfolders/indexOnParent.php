@@ -2,7 +2,7 @@
 
 namespace ReceivedFolderSubfolders;
 
-function indexOnFolder ($mysqli, $id_received_folders, $parent_id) {
+function indexOnParent ($mysqli, $id_received_folders, $parent_id) {
     $sql = 'select * from received_folder_subfolders'
         ." where id_received_folders = $id_received_folders"
         ." and parent_id = $parent_id";
