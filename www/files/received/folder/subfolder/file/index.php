@@ -6,15 +6,15 @@ $values = require_received_folder_file($mysqli, '../');
 list($receivedFolderFile, $id, $user) = $values;
 
 $fnsDir = '../../../../../fns';
+$parent_id = $receivedFolderFile->parent_id;
 
-if (!$receivedFolderFile->parent_id) {
+if (!$parent_id) {
     include_once "$fnsDir/redirect.php";
     redirect("../../file/?id=$id");
 }
 
-$id_received_folders = $receivedFolderFile->id_received_folders;
-$title = "Received Folder #$id_received_folders";
-$parentHref = "../?id=$id_received_folders";
+$title = "Received Folder #$receivedFolderFile->id_received_folders";
+$parentHref = "../?id=$parent_id";
 $name = $receivedFolderFile->name;
 
 include_once "$fnsDir/Page/imageLink.php";
