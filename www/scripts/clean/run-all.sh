@@ -1,7 +1,7 @@
 #!/bin/bash
 cd `dirname $BASH_SOURCE`
-for i in *.php
+for i in */run-all.sh
 do
     echo -n "Running $i... "
-    php $i
+    ./$i
 done

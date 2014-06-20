@@ -20,4 +20,4 @@ for_each_user(function ($id_users) use ($mysqli, &$deleted) {
 
 $elapsedSeconds = number_format(microtime(true) - $microtime, 3);
 echo "Done in $elapsedSeconds seconds.\n"
-    ."$deleted file(s) deleted.\n";
+    ." $deleted file(s) deleted.\n";
