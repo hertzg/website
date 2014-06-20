@@ -12,8 +12,8 @@ unset(
 
 $fnsDir = '../../../fns';
 
-include_once "$fnsDir/ReceivedFolderFiles/indexOnFolder.php";
-$files = ReceivedFolderFiles\indexOnFolder($mysqli, $id, 0);
+include_once "$fnsDir/ReceivedFolderFiles/indexOnParent.php";
+$files = ReceivedFolderFiles\indexOnParent($mysqli, $id, 0);
 
 include_once "$fnsDir/ReceivedFolderSubfolders/indexOnParent.php";
 $subfolders = ReceivedFolderSubfolders\indexOnParent($mysqli, $id, 0);

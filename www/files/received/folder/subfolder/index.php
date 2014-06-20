@@ -22,8 +22,8 @@ include_once "$fnsDir/ReceivedFolderSubfolders/indexOnParent.php";
 $subfolders = ReceivedFolderSubfolders\indexOnParent(
     $mysqli, $id_received_folders, $id);
 
-include_once "$fnsDir/ReceivedFolderFiles/indexOnFolder.php";
-$files = ReceivedFolderFiles\indexOnFolder($mysqli, $id_received_folders, $id);
+include_once "$fnsDir/ReceivedFolderFiles/indexOnParent.php";
+$files = ReceivedFolderFiles\indexOnParent($mysqli, $id_received_folders, $id);
 
 if ($subfolders || $files) {
 
