@@ -29,11 +29,12 @@ unset(
     $_SESSION['bookmarks/received/edit-and-import/values']
 );
 
-include_once '../../../fns/Users/Bookmarks/add.php';
-Users\Bookmarks\add($mysqli, $user->id_users, $url, $title, $tags, $tag_names);
+$receivedBookmark->url = $url;
+$receivedBookmark->title = $title;
+$receivedBookmark->tags = $tags;
 
-include_once '../../../fns/Users/Bookmarks/Received/purge.php';
-Users\Bookmarks\Received\purge($mysqli, $receivedBookmark);
+include_once '../../../fns/Users/Bookmarks/Received/import.php';
+Users\Bookmarks\Received\import($mysqli, $receivedBookmark);
 
 unset(
     $_SESSION['bookmarks/received/edit-and-import/errors'],

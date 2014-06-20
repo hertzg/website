@@ -30,11 +30,12 @@ unset(
     $_SESSION['tasks/received/edit-and-import/values']
 );
 
-include_once '../../../fns/Users/Tasks/add.php';
-Users\Tasks\add($mysqli, $id_users, $text, $top_priority, $tags, $tag_names);
+$receivedTask->text = $text;
+$receivedTask->tags = $tags;
+$receivedTask->top_priority = $top_priority;
 
-include_once '../../../fns/Users/Tasks/Received/purge.php';
-Users\Tasks\Received\purge($mysqli, $receivedTask);
+include_once '../../../fns/Users/Tasks/Received/import.php';
+Users\Tasks\Received\import($mysqli, $receivedTask);
 
 $messages = ['Task has been imported.'];
 

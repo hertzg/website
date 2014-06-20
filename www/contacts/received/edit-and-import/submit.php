@@ -40,12 +40,19 @@ unset(
     $_SESSION['contacts/received/edit-and-import/values']
 );
 
-include_once '../../../fns/Users/Contacts/add.php';
-Users\Contacts\add($mysqli, $user, $full_name, $alias, $address, $email,
-    $phone1, $phone2, $birthday_time, $username, $tags, $tag_names, $favorite);
+$receivedContact->full_name = $full_name;
+$receivedContact->alias = $alias;
+$receivedContact->address = $address;
+$receivedContact->email = $email;
+$receivedContact->phone1 = $phone1;
+$receivedContact->phone2 = $phone2;
+$receivedContact->birthday_time = $birthday_time;
+$receivedContact->username = $username;
+$receivedContact->tags = $tags;
+$receivedContact->favorite = $favorite;
 
-include_once '../../../fns/Users/Contacts/Received/purge.php';
-Users\Contacts\Received\purge($mysqli, $receivedContact);
+include_once '../../../fns/Users/Contacts/Received/import.php';
+Users\Contacts\Received\import($mysqli, $user, $receivedContact);
 
 $messages = ['Contact has been imported.'];
 

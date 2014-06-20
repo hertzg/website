@@ -28,11 +28,12 @@ unset(
     $_SESSION['notes/received/edit-and-import/values']
 );
 
-include_once '../../../fns/Users/Notes/add.php';
-Users\Notes\add($mysqli, $user->id_users, $text, $tags, $tag_names, $encrypt);
+$receivedNote->text = $text;
+$receivedNote->tags = $tags;
+$receivedNote->encrypt = $encrypt;
 
-include_once '../../../fns/Users/Notes/Received/purge.php';
-Users\Notes\Received\purge($mysqli, $receivedNote);
+include_once '../../../fns/Users/Notes/Received/import.php';
+Users\Notes\Received\import($mysqli, $receivedNote);
 
 $messages = ['Note has been imported.'];
 
