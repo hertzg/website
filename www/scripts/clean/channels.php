@@ -6,8 +6,8 @@ include_once '../../lib/mysqli.php';
 
 $microtime = microtime(true);
 
-$sql = 'delete from channels where id_users'
-    .' not in (select id_users from users)';
+$sql = 'delete from channels'
+    .' where id_users not in (select id_users from users)';
 $mysqli->query($sql) || trigger_error($mysqli->error);
 
 $elapsedSeconds = number_format(microtime(true) - $microtime, 3);
