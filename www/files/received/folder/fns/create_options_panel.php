@@ -6,7 +6,8 @@ function create_options_panel ($receivedFolder) {
     include_once "$fnsDir/Page/imageLink.php";
     $queryString = "?id=$receivedFolder->id";
 
-    $importLink = Page\imageLink('Import', 'submit-import.php', 'import-folder');
+    $href = "submit-import.php$queryString";
+    $importLink = Page\imageLink('Import', $href, 'import-folder');
 
     $title = 'Rename and Import';
     $href = "rename-and-import/$queryString";
