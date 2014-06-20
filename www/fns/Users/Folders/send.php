@@ -20,11 +20,11 @@ function send ($mysqli, $user, $receiver_id_users, $folder) {
         $files = \Files\indexInFolder($mysqli, $id);
 
         if ($files) {
-            include_once __DIR__.'/Received/addFile.php';
+            include_once __DIR__.'/Received/Files/add.php';
             include_once __DIR__.'/../../Files/File/path.php';
             foreach ($files as $file) {
                 $path = \Files\File\path($id_users, $file->id_files);
-                \Users\Folders\Received\addFile($mysqli, $id_received_folders,
+                \Users\Folders\Received\Files\add($mysqli, $id_received_folders,
                     $receiver_id_users, $parent_id, $file->name,
                     $file->size, $path);
             }
