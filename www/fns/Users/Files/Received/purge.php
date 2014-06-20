@@ -7,7 +7,7 @@ function purge ($mysqli, $receivedFile) {
     $id_users = $receivedFile->receiver_id_users;
 
     include_once __DIR__.'/../../../ReceivedFiles/delete.php';
-    \ReceivedFiles\delete($mysqli, $id_users, $receivedFile->id);
+    \ReceivedFiles\delete($mysqli, $receivedFile->id);
 
     include_once __DIR__.'/addNumber.php';
     addNumber($mysqli, $id_users, -1);
