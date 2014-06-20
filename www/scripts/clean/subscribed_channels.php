@@ -6,9 +6,10 @@ include_once '../../lib/mysqli.php';
 
 $microtime = microtime(true);
 
-$sql = 'delete from contact_tags'
-    .' where id_users not in (select id_users from users)'
-    .' or id_contacts not in (select id_contacts from contacts)';
+$sql = 'delete from subscribed_channels'
+    .' where id_channels not in (select id from channels)'
+    .' or publisher_id_users not in (select id_users from users)'
+    .' or subscriber_id_users not in (select id_users from users)';
 $mysqli->query($sql) || trigger_error($mysqli->error);
 
 $elapsedSeconds = number_format(microtime(true) - $microtime, 3);
