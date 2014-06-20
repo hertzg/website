@@ -51,6 +51,11 @@ if (!$user->num_received_files && $user->num_received_folders == 1) {
     redirect('../../..');
 }
 
+$receivedFolder->name = $name;
+
+include_once "$fnsDir/Users/Folders/Received/import.php";
+Users\Folders\Received\import($mysqli, $receivedFolder, $parent_id_folders);
+
 $_SESSION['files/received/messages'] = $messages;
 
 redirect('../..');

@@ -16,7 +16,7 @@ function importCopy ($mysqli, $receivedFolder, $parent_id) {
         }
     }
 
-    include_once __DIR__.'/../../../Users/Folders/add.php';
-    return \Users\Folders\add($mysqli, $id_users, $parent_id, $name);
+    include_once __DIR__.'/../../../Folders/add.php';
+    return \Folders\add($mysqli, $id_users, $parent_id, $name);
 
 }
