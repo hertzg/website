@@ -50,8 +50,8 @@ $microtime = microtime(true);
 
 $deleted = 0;
 include_once 'fns/for_each_user.php';
-for_each_user(function ($id) use ($mysqli, &$deleted) {
-    clean_user_files($mysqli, $id, $deleted);
+for_each_user(function ($id_users) use ($mysqli, &$deleted) {
+    clean_user_files($mysqli, $id_users, $deleted);
 });
 
 $elapsedSeconds = number_format(microtime(true) - $microtime, 3);
