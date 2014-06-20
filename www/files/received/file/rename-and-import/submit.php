@@ -45,14 +45,10 @@ unset(
     $_SESSION['files/received/file/rename-and-import/values']
 );
 
-include_once "$fnsDir/ReceivedFiles/File/path.php";
-$receivedFilePath = ReceivedFiles\File\path($id_users, $id);
+$receivedFile->name = $name;
 
-include_once "$fnsDir/Users/Files/add.php";
-Users\Files\add($mysqli, $id_users, $id_folders, $name, $receivedFilePath);
-
-include_once "$fnsDir/Users/Files/Received/delete.php";
-Users\Files\Received\delete($mysqli, $receivedFile);
+include_once "$fnsDir/Users/Files/Received/import.php";
+Users\Files\Received\import($mysqli, $receivedFile, $id_folders);
 
 $messages = ['File has been imported.'];
 
