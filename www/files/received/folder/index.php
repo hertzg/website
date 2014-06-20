@@ -4,7 +4,11 @@ include_once 'fns/require_received_folder.php';
 include_once '../../../lib/mysqli.php';
 list($receivedFolder, $id, $user) = require_received_folder($mysqli);
 
-unset($_SESSION['files/received/messages']);
+unset(
+    $_SESSION['files/received/messages'],
+    $_SESSION['files/received/folder/rename-and-import/errors'],
+    $_SESSION['files/received/folder/rename-and-import/values']
+);
 
 $fnsDir = '../../../fns';
 

@@ -56,13 +56,13 @@ Users\Files\Received\delete($mysqli, $receivedFile);
 
 $messages = ['File has been imported.'];
 
-if ($user->num_received_files == 1) {
+if ($user->num_received_files == 1 && !$user->num_received_folders) {
     $messages[] = 'No more received files.';
     $_SESSION['files/messages'] = $messages;
     unset($_SESSION['files/errors']);
-    redirect('../..');
+    redirect('../../..');
 }
 
 $_SESSION['files/received/messages'] = $messages;
 
-redirect('..');
+redirect('../..');
