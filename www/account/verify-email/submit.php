@@ -5,7 +5,6 @@ require_same_domain_referer('./');
 
 include_once '../../fns/require_user.php';
 $user = require_user('../../');
-$id_users = $user->id_users;
 
 include_once '../../fns/redirect.php';
 if ($user->email_verified) redirect('..');

@@ -5,7 +5,6 @@ require_same_domain_referer('./');
 
 include_once '../fns/require_user.php';
 $user = require_user('../');
-$id_users = $user->id_users;
 
 include_once '../fns/require_valid_token.php';
 include_once '../lib/mysqli.php';
@@ -23,7 +22,7 @@ if (!$token) {
     }
 
     include_once '../fns/Users/Tokens/add.php';
-    $id = Users\Tokens\add($mysqli, $id_users, $user->username,
+    $id = Users\Tokens\add($mysqli, $user->id_users, $user->username,
         $token_text, $user_agent);
 
     include_once '../fns/Tokens/get.php';

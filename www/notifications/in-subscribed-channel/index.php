@@ -6,10 +6,9 @@ include_once 'fns/require_subscribed_channel.php';
 include_once '../../lib/mysqli.php';
 $values = require_subscribed_channel($mysqli, '..');
 list($subscribedChannel, $id, $user) = $values;
-$id_users = $user->id_users;
 
 include_once '../../fns/Users/Notifications/clearNumberNew.php';
-Users\Notifications\clearNumberNew($mysqli, $id_users);
+Users\Notifications\clearNumberNew($mysqli, $user->id_users);
 
 $options = [];
 

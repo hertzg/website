@@ -5,7 +5,6 @@ require_same_domain_referer('./');
 
 include_once '../../fns/require_user.php';
 $user = require_user('../../');
-$id_users = $user->id_users;
 
 include_once '../../fns/Date/request.php';
 list($day, $month, $year) = Date\request();

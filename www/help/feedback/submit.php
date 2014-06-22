@@ -5,7 +5,6 @@ require_same_domain_referer('./');
 
 include_once '../../fns/require_user.php';
 $user = require_user('../../');
-$id_users = $user->id_users;
 
 include_once '../../fns/request_strings.php';
 list($feedbacktext) = request_strings('feedbacktext');
@@ -38,7 +37,7 @@ unset(
 
 include_once '../../fns/Feedbacks/add.php';
 include_once '../../lib/mysqli.php';
-$id = Feedbacks\add($mysqli, $id_users, $feedbacktext);
+$id = Feedbacks\add($mysqli, $user->id_users, $feedbacktext);
 
 $title = "Zvini Feedback #$id";
 

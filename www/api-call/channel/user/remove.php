@@ -2,10 +2,9 @@
 
 include_once '../../fns/require_api_key.php';
 list($apiKey, $user, $mysqli) = require_api_key();
-$id_users = $user->id_users;
 
 include_once '../fns/require_channel.php';
-$channel = require_channel($mysqli, $id_users);
+$channel = require_channel($mysqli, $user->id_users);
 
 include_once 'fns/require_channel_user_params.php';
 $subscriberUser = require_channel_user_params($mysqli, $user, $channel);

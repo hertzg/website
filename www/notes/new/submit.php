@@ -5,7 +5,6 @@ require_same_domain_referer('./');
 
 include_once '../../fns/require_user.php';
 $user = require_user('../../');
-$id_users = $user->id_users;
 
 $errors = [];
 
@@ -35,7 +34,8 @@ unset($_SESSION['notes/new/values']);
 
 include_once '../../fns/Users/Notes/add.php';
 include_once '../../lib/mysqli.php';
-$id = Users\Notes\add($mysqli, $id_users, $text, $tags, $tag_names, $encrypt);
+$id = Users\Notes\add($mysqli, $user->id_users,
+    $text, $tags, $tag_names, $encrypt);
 
 $_SESSION['notes/view/messages'] = ['Note has been saved.'];
 redirect("../view/?id=$id");

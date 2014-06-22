@@ -6,7 +6,6 @@ require_same_domain_referer('..');
 include_once '../fns/require_api_key.php';
 include_once '../../../lib/mysqli.php';
 list($apiKey, $id, $user) = require_api_key($mysqli);
-$id_users = $user->id_users;
 
 include_once '../../../fns/request_strings.php';
 list($name, $randomizeKey) = request_strings('name', 'randomizeKey');
@@ -22,7 +21,7 @@ if ($name === '') $errors[] = 'Enter name.';
 else {
     include_once '../../../fns/ApiKeys/getOnUserByName.php';
     include_once '../../../lib/mysqli.php';
-    $apiKey = ApiKeys\getOnUserByName($mysqli, $id_users, $name, $id);
+    $apiKey = ApiKeys\getOnUserByName($mysqli, $user->id_users, $name, $id);
     if ($apiKey) {
         $errors[] = 'An API key with the same name already exists.';
     }

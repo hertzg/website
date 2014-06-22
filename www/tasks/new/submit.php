@@ -5,7 +5,6 @@ require_same_domain_referer('./');
 
 include_once '../../fns/require_user.php';
 $user = require_user('../../');
-$id_users = $user->id_users;
 
 $errors = [];
 
@@ -35,7 +34,7 @@ unset($_SESSION['tasks/new/values']);
 
 include_once '../../fns/Users/Tasks/add.php';
 include_once '../../lib/mysqli.php';
-$id = Users\Tasks\add($mysqli, $id_users,
+$id = Users\Tasks\add($mysqli, $user->id_users,
     $text, $top_priority, $tags, $tag_names);
 
 $_SESSION['tasks/view/messages'] = ['Task has been saved.'];

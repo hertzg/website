@@ -8,7 +8,6 @@ require_same_domain_referer('..');
 include_once '../fns/require_received_file.php';
 include_once '../../../../lib/mysqli.php';
 list($receivedFile, $id, $user) = require_received_file($mysqli, '../');
-$id_users = $user->id_users;
 
 include_once "$fnsDir/request_strings.php";
 list($name) = request_strings('name');
@@ -24,7 +23,7 @@ if ($name === '') $errors[] = 'Enter file name.';
 if (!$errors) {
     include_once "$fnsDir/Files/getByName.php";
     $existingFile = Files\getByName($mysqli,
-        $id_users, $id_folders, $name);
+        $user->id_users, $id_folders, $name);
     if ($existingFile) {
         $errors[] = 'A file with the same name already exists.';
     }

@@ -5,7 +5,6 @@ require_same_domain_referer('./');
 
 include_once '../../fns/require_user.php';
 $user = require_user('../../');
-$id_users = $user->id_users;
 
 include_once '../../fns/request_strings.php';
 list($password) = request_strings('password');
@@ -34,7 +33,7 @@ unset($_SESSION['account/close/errors']);
 
 include_once 'fns/close_account.php';
 include_once '../../lib/mysqli.php';
-close_account($mysqli, $id_users);
+close_account($mysqli, $user->id_users);
 
 $_SESSION['sign-in/messages'] = ['Your account has been closed.'];
 
