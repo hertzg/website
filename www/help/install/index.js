@@ -5,6 +5,8 @@
         location = '..'
     }
 
+    document.getElementById('installingMessage').style.display = 'block'
+
     var mozApps = navigator.mozApps
     if (mozApps) {
 
