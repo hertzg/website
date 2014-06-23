@@ -12,8 +12,8 @@ function require_received_folder ($mysqli, $base = '') {
 
     $id = abs((int)$id);
 
-    include_once "$fnsDir/ReceivedFolders/getOnReceiver.php";
-    $receivedFolder = ReceivedFolders\getOnReceiver(
+    include_once "$fnsDir/ReceivedFolders/Committed/getOnReceiver.php";
+    $receivedFolder = ReceivedFolders\Committed\getOnReceiver(
         $mysqli, $user->id_users, $id);
 
     if (!$receivedFolder) {
