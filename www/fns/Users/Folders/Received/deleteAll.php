@@ -6,8 +6,8 @@ function deleteAll ($mysqli, $id_users) {
 
     $fnsDir = __DIR__.'/../../..';
 
-    include_once "$fnsDir/ReceivedFolders/indexOnReceiver.php";
-    $receivedFolders = \ReceivedFolders\indexOnReceiver($mysqli, $id_users);
+    include_once "$fnsDir/ReceivedFolders/Committed/indexOnReceiver.php";
+    $receivedFolders = \ReceivedFolders\Committed\indexOnReceiver($mysqli, $id_users);
 
     if ($receivedFolders) {
         include_once __DIR__.'/../../DeletedItems/addReceivedFolder.php';
