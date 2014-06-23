@@ -7,6 +7,7 @@ include_once '../../../fns/mysqli_query_object.php';
 
 $microtime = microtime(true);
 
+// TODO fix this, the item may be in trash
 $sql = 'select id from received_folder_subfolders'
     .' where id_received_folders not in (select id from received_folders)'
     .' or id_users not in (select id_users from users)'

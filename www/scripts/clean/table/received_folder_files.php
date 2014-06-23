@@ -6,6 +6,7 @@ include_once '../../../lib/mysqli.php';
 
 $microtime = microtime(true);
 
+// TODO fix this, the item may be in trash
 $sql = 'delete from received_folder_files'
     .' where id_received_folders not in (select id from received_folders)'
     .' or id_users not in (select id_users from users)'
