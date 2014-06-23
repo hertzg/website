@@ -9,5 +9,6 @@ function get_methods () {
         'get' => 'Returns a single existing folder.',
         'list' => 'Returns a list of folders.',
         'rename' => 'Renames an existing folder.',
+        'sendExisting' => 'Sends an existing folder.',
     ];
 }
