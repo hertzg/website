@@ -12,32 +12,39 @@ unset(
     $_SESSION['files/received/folder/messages']
 );
 
-include_once '../../fns/request_strings.php';
+$fnsDir = "../../fns";
+
+include_once "$fnsDir/request_strings.php";
 list($all) = request_strings('all');
+
+$receivedFoldersDir = "$fnsDir/ReceivedFolders/Committed";
+$receivedFilesDir = "$fnsDir/ReceivedFiles/Committed";
 
 include_once '../../lib/mysqli.php';
 if ($all) {
 
-    include_once '../../fns/ReceivedFolders/Committed/indexOnReceiver.php';
-    $receivedFolders = ReceivedFolders\Committed\indexOnReceiver($mysqli, $id_users);
+    include_once "$receivedFoldersDir/indexOnReceiver.php";
+    $receivedFolders = ReceivedFolders\Committed\indexOnReceiver(
+        $mysqli, $id_users);
 
-    include_once '../../fns/ReceivedFiles/Committed/indexOnReceiver.php';
-    $receivedFiles = ReceivedFiles\Committed\indexOnReceiver($mysqli, $id_users);
+    include_once "$receivedFilesDir/indexOnReceiver.php";
+    $receivedFiles = ReceivedFiles\Committed\indexOnReceiver(
+        $mysqli, $id_users);
 
 } else {
 
-    include_once '../../fns/ReceivedFolders/Committed/indexNotArchivedOnReceiver.php';
+    include_once "$receivedFoldersDir/indexNotArchivedOnReceiver.php";
     $receivedFolders = ReceivedFolders\Committed\indexNotArchivedOnReceiver(
         $mysqli, $id_users);
 
-    include_once '../../fns/ReceivedFiles/Committed/indexNotArchivedOnReceiver.php';
+    include_once "$receivedFilesDir/indexNotArchivedOnReceiver.php";
     $receivedFiles = ReceivedFiles\Committed\indexNotArchivedOnReceiver(
         $mysqli, $id_users);
 
 }
 
 $items = [];
-include_once '../../fns/Page/imageArrowLink.php';
+include_once "$fnsDir/Page/imageArrowLink.php";
 
 foreach ($receivedFolders as $receivedFolder) {
     $title = htmlspecialchars($receivedFolder->name);
@@ -61,7 +68,7 @@ if (!$all) {
     if ($user->num_archived_received_folders ||
         $user->num_archived_received_files) {
 
-        include_once '../../fns/Form/button.php';
+        include_once "$fnsDir/Form/button.php";
         $items[] =
             '<form action="./">'
                 .Form\button('Show Archived Files')
@@ -74,9 +81,9 @@ if (!$all) {
 $title = 'Delete All Files';
 $deleteAllLink = Page\imageArrowLink($title, 'delete-all/', 'trash-bin');
 
-include_once '../../fns/create_panel.php';
-include_once '../../fns/Page/tabs.php';
-include_once '../../fns/Page/sessionMessages.php';
+include_once "$fnsDir/create_panel.php";
+include_once "$fnsDir/Page/tabs.php";
+include_once "$fnsDir/Page/sessionMessages.php";
 $content = Page\tabs(
     [
         [
@@ -94,5 +101,5 @@ $content = Page\tabs(
     .create_panel('Options', $deleteAllLink)
 );
 
-include_once '../../fns/echo_page.php';
+include_once "$fnsDir/echo_page.php";
 echo_page($user, 'Received Files', $content, '../../');

@@ -10,7 +10,8 @@ $deleted = 0;
 
 $sql = 'delete from received_folder_files'
     .' where id_users not in (select id_users from users)'
-    .' or (parent_id != 0 and parent_id not in (select id from received_folder_subfolders))';
+    .' or (parent_id != 0'
+    .' and parent_id not in (select id from received_folder_subfolders))';
 $mysqli->query($sql) || trigger_error($mysqli->error);
 $deleted = $mysqli->affected_rows;
 

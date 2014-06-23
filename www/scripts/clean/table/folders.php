@@ -9,7 +9,8 @@ $microtime = microtime(true);
 
 $sql = 'select id_folders from folders'
     .' where id_users not in (select id_users from users)'
-    .' or (parent_id_folders != 0 and parent_id_folders not in (select id_folders from folders))';
+    .' or (parent_id_folders != 0'
+    .' and parent_id_folders not in (select id_folders from folders))';
 $rows = mysqli_query_object($mysqli, $sql);
 foreach ($rows as $row) {
     $sql = "delete from folders where id_folders = $row->id_folders";

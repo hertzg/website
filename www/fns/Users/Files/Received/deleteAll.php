@@ -7,7 +7,8 @@ function deleteAll ($mysqli, $id_users) {
     $fnsDir = __DIR__.'/../../..';
 
     include_once "$fnsDir/ReceivedFiles/Committed/indexOnReceiver.php";
-    $receivedFiles = \ReceivedFiles\Committed\indexOnReceiver($mysqli, $id_users);
+    $receivedFiles = \ReceivedFiles\Committed\indexOnReceiver(
+        $mysqli, $id_users);
 
     if ($receivedFiles) {
         include_once __DIR__.'/../../DeletedItems/addReceivedFile.php';

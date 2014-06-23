@@ -13,7 +13,8 @@ function import ($mysqli, $receivedFolder, $parent_id) {
     $fnsDir = __DIR__.'/../../..';
 
     include_once "$fnsDir/ReceivedFolderSubfolders/deleteOnReceivedFolder.php";
-    \ReceivedFolderSubfolders\deleteOnReceivedFolder($mysqli, $receivedFolder->id);
+    \ReceivedFolderSubfolders\deleteOnReceivedFolder(
+        $mysqli, $receivedFolder->id);
 
     include_once "$fnsDir/Users/Folders/Received/Files/deleteAll.php";
     \Users\Folders\Received\Files\deleteAll($mysqli, $receivedFolder->id);
