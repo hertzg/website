@@ -1,6 +1,11 @@
 #!/usr/bin/php
 <?php
 
+function committed_receiver_user_rows ($mysqli, $table, $id_users) {
+    $sql = "$table where committed = 1 and receiver_id_users = $id_users";
+    return count_rows($mysqli, $sql);
+}
+
 function count_rows ($mysqli, $sql) {
     $sql = "select count(*) value from $sql";
     return mysqli_single_object($mysqli, $sql)->value;
@@ -40,9 +45,9 @@ foreach ($users as $user) {
         $mysqli, 'received_bookmarks', $id_users);
     $num_received_contacts = receiver_user_rows(
         $mysqli, 'received_contacts', $id_users);
-    $num_received_files = receiver_user_rows(
+    $num_received_files = committed_receiver_user_rows(
         $mysqli, 'received_files', $id_users);
-    $num_received_folders = receiver_user_rows(
+    $num_received_folders = committed_receiver_user_rows(
         $mysqli, 'received_folders', $id_users);
     $num_received_notes = receiver_user_rows(
         $mysqli, 'received_notes', $id_users);
