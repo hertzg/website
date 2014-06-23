@@ -3,31 +3,16 @@
 chdir(__DIR__);
 include_once '../lib/mysqli.php';
 
-$sql = 'drop table if exists deleted_folders';
+$sql = 'alter table received_files add committed tinyint not null after archived';
 $mysqli->query($sql) || trigger_error($mysqli->error);
 
-$sql = 'create table deleted_folders'
-    .' (id_deleted_items bigint unsigned not null,'
-    .' id_folders bigint unsigned not null primary key,'
-    .' id_users bigint unsigned not null,'
-    .' insert_time bigint unsigned not null,'
-    .' name varchar(255) character set utf8 collate utf8_unicode_ci not null,'
-    .' parent_id_folders bigint unsigned not null,'
-    .' rename_time bigint unsigned not null)';
+$sql = 'alter table received_folders add committed tinyint not null after archived';
 $mysqli->query($sql) || trigger_error($mysqli->error);
 
-$sql = 'drop table if exists deleted_files';
+$sql = 'update received_files set committed = 1';
 $mysqli->query($sql) || trigger_error($mysqli->error);
 
-$sql = 'create table deleted_files'
-    .' (id_deleted_items bigint unsigned not null,'
-    .' id_files bigint unsigned not null primary key,'
-    .' id_folders bigint unsigned not null,'
-    .' id_users bigint unsigned not null,'
-    .' insert_time bigint unsigned not null,'
-    .' name varchar(255) character set utf8 collate utf8_unicode_ci not null,'
-    .' rename_time bigint unsigned not null,'
-    .' size bigint unsigned not null)';
+$sql = 'update received_folders set committed = 1';
 $mysqli->query($sql) || trigger_error($mysqli->error);
 
-echo 'Done';
+echo "Done\n";

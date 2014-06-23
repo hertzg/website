@@ -10,9 +10,6 @@ function send ($mysqli, $user, $receiver_id_users, $folder) {
     $id_received_folders = \ReceivedFolders\add($mysqli, $id_users,
         $user->username, $receiver_id_users, $folder->name);
 
-    include_once __DIR__.'/Received/addNumber.php';
-    \Users\Folders\Received\addNumber($mysqli, $receiver_id_users, 1);
-
     $copy = function ($id, $parent_id, $copy) use ($mysqli,
         $id_received_folders, $id_users, $receiver_id_users) {
 
@@ -45,5 +42,11 @@ function send ($mysqli, $user, $receiver_id_users, $folder) {
 
     };
     $copy($folder->id_folders, 0, $copy);
+
+    include_once __DIR__.'/../../ReceivedFolders/commit.php';
+    \ReceivedFolders\commit($mysqli, $id_received_folders);
+
+    include_once __DIR__.'/Received/addNumber.php';
+    \Users\Folders\Received\addNumber($mysqli, $receiver_id_users, 1);
 
 }

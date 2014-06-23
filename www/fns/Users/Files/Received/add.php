@@ -13,6 +13,9 @@ function add ($mysqli, $user, $receiver_id_users,
     $storagePath = \ReceivedFiles\File\path($receiver_id_users, $id);
     copy($filePath, $storagePath);
 
+    include_once __DIR__.'/../../../ReceivedFiles/commit.php';
+    \ReceivedFiles\commit($mysqli, $id);
+
     include_once __DIR__.'/addNumber.php';
     addNumber($mysqli, $receiver_id_users, 1);
 
