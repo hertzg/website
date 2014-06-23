@@ -11,3 +11,5 @@ RewriteRule (.*) https://zvini.com/$1 [R=301,L]
 <filesMatch "\.(css|js|svg)$">
     Header set Cache-Control "public, max-age=2592000"
 </filesMatch>
+
+DirectoryIndex index.php
