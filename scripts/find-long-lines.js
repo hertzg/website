@@ -33,7 +33,7 @@ function scan (dir) {
 
 process.chdir(__dirname)
 process.chdir('..')
-process.stdout.on('error', function (error) {})
+process.stdout.on('error', function () {})
 
 var fs = require('fs')
 

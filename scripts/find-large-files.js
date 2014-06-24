@@ -22,9 +22,7 @@ function scan (dir) {
 
         } else {
             var stat = fs.statSync(file)
-            if (stat.isDirectory()) {
-                scan(file)
-            }
+            if (stat.isDirectory()) scan(file)
         }
 
     })
@@ -36,6 +34,7 @@ var fs = require('fs')
 
 process.chdir(__dirname)
 process.chdir('..')
+process.stdout.on('error', function () {})
 
 scan('.')
 foundFiles.sort(function (a, b) {
