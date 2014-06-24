@@ -36,4 +36,4 @@ $engine->expectError('ENTER_RECEIVER_USERNAME');
 $response = $engine->request('note/sendExisting');
 $engine->expectError('NOTE_NOT_FOUND');
 
-echo 'Done '.__FILE__."\n  $engine->numRequests requests made.\n";
+echo 'Done '.__FILE__."\n $engine->numRequests requests made.\n";

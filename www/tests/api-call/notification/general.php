@@ -52,4 +52,4 @@ $response = $engine->request('channel/delete', [
 ]);
 $engine->expectValue('', true, $response);
 
-echo 'Done '.__FILE__."\n  $engine->numRequests requests made.\n";
+echo 'Done '.__FILE__."\n $engine->numRequests requests made.\n";

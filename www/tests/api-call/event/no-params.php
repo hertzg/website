@@ -18,4 +18,4 @@ $engine->expectError('EVENT_NOT_FOUND');
 $response = $engine->request('event/get');
 $engine->expectError('EVENT_NOT_FOUND');
 
-echo 'Done '.__FILE__."\n  $engine->numRequests requests made.\n";
+echo 'Done '.__FILE__."\n $engine->numRequests requests made.\n";

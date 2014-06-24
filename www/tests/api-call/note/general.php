@@ -63,4 +63,4 @@ $engine->expectSuccess();
 $engine->expectType('', 'array', $response);
 $engine->expectValue('.length', 0, count($response));
 
-echo 'Done '.__FILE__."\n  $engine->numRequests requests made.\n";
+echo 'Done '.__FILE__."\n $engine->numRequests requests made.\n";

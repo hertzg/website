@@ -73,4 +73,4 @@ $response = $engine->request('channel/delete', [
 ]);
 $engine->expectError('CHANNEL_NOT_FOUND');
 
-echo 'Done '.__FILE__."\n  $engine->numRequests requests made.\n";
+echo 'Done '.__FILE__."\n $engine->numRequests requests made.\n";

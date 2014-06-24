@@ -40,4 +40,4 @@ $response = $engine->request('event/delete', ['id' => $id]);
 $engine->expectSuccess();
 $engine->expectValue('', true, $response);
 
-echo 'Done '.__FILE__."\n  $engine->numRequests requests made.\n";
+echo 'Done '.__FILE__."\n $engine->numRequests requests made.\n";
