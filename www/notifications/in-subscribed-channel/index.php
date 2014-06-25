@@ -1,14 +1,9 @@
 <?php
 
-$base = '../../';
-
 include_once 'fns/require_subscribed_channel.php';
 include_once '../../lib/mysqli.php';
 $values = require_subscribed_channel($mysqli, '..');
 list($subscribedChannel, $id, $user) = $values;
-
-include_once '../../fns/Users/Notifications/clearNumberNew.php';
-Users\Notifications\clearNumberNew($mysqli, $user->id_users);
 
 include_once '../../fns/Paging/limit.php';
 $limit = Paging\limit();
@@ -48,13 +43,6 @@ if ($notifications) {
     include_once '../../fns/create_image_text.php';
 
     foreach ($notifications as $i => $notification) {
-
-        if ($i < $user->num_new_notifications) {
-            $icon = 'notification';
-        } else {
-            $icon = 'old-notification';
-        }
-
         $content =
             nl2br(
                 preg_replace(
@@ -63,9 +51,7 @@ if ($notifications) {
                     htmlspecialchars($notification->notification_text)
                 )
             );
-
-        $items[] = create_image_text($content, $icon);
-
+        $items[] = create_image_text($content, 'old-notification');
     }
 
     include_once '../fns/render_next_button.php';
@@ -108,4 +94,4 @@ $content = Page\tabs(
 );
 
 include_once '../../fns/echo_page.php';
-echo_page($user, 'Notifications', $content, $base);
+echo_page($user, 'Notifications', $content, '../../');
