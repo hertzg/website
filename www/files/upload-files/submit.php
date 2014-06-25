@@ -26,7 +26,7 @@ if ($id_folders) {
 }
 
 include_once '../../fns/str_collapse_spaces.php';
-include_once '../../fns/Files/getByName.php';
+include_once '../../fns/Files/getUniqueName.php';
 include_once '../../fns/Users/Files/add.php';
 
 $num_uploaded = 0;
@@ -35,30 +35,11 @@ foreach ([$file1, $file2, $file3] as $file) {
     foreach ($file['name'] as $i => $name) {
         $error = $file['error'][$i];
         if ($error === UPLOAD_ERR_OK) {
-
             $name = str_collapse_spaces($name);
-
-            while (Files\getByName($mysqli, $id_users, $id_folders, $name)) {
-                $extension = '';
-                if (preg_match('/\..*?$/', $name, $match)) {
-                    $name = preg_replace('/\..*?$/', '', $name);
-                    $extension = $match[0];
-                }
-                if (preg_match('/_(\d+)$/', $name, $match)) {
-                    $name = preg_replace('/_\d+$/', '_'.($match[1] + 1), $name);
-                } else {
-                    $name .= '_1';
-                }
-                if ($extension) {
-                    $name = "$name$extension";
-                }
-            }
-
+            $name = Files\getUniqueName($mysqli, $id_users, $id_folders, $name);
             Users\Files\add($mysqli, $id_users, $id_folders,
                 $name, $file['tmp_name'][$i]);
-
             $num_uploaded++;
-
         } elseif ($error !== UPLOAD_ERR_NO_FILE) {
             $num_failed++;
         }
