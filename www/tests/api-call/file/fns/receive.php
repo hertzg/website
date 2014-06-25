@@ -1,6 +1,6 @@
 <?php
 
-function receive () {
+function receive (&$numRequests) {
 
     $tempName = sys_get_temp_dir().'/test_'.rand();
     file_put_contents($tempName, 'test content '.rand());
@@ -15,5 +15,9 @@ function receive () {
         'receiver_username' => 'aimnadze',
     ]);
     $engine->expectSuccess();
+
+    unlink($tempName);
+
+    $numRequests += $engine->numRequests;
 
 }

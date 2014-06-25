@@ -7,7 +7,7 @@ include_once '../fns/get_main_engine.php';
 $engine = get_main_engine();
 
 include_once 'fns/receive.php';
-receive();
+receive($engine->numRequests);
 
 $ids = [];
 
@@ -41,7 +41,7 @@ foreach ($ids as $id) {
 
 }
 
-receive();
+receive($engine->numRequests);
 
 $response = $engine->request('bookmark/received/deleteAll');
 $engine->expectSuccess();

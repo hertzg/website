@@ -1,6 +1,6 @@
 <?php
 
-function receive () {
+function receive (&$numRequests) {
 
     include_once __DIR__.'/../../fns/get_sender_engine.php';
     $engine = get_sender_engine();
@@ -19,5 +19,7 @@ function receive () {
         'receiver_username' => 'aimnadze',
     ]);
     $engine->expectSuccess();
+
+    $numRequests += $engine->numRequests;
 
 }
