@@ -16,8 +16,8 @@ function close_account ($mysqli, $id_users) {
     include_once "$fnsDir/Channels/deleteOnUser.php";
     Channels\deleteOnUser($mysqli, $id_users);
 
-    include_once "$fnsDir/Connections/deleteContainingUser.php";
-    Connections\deleteContainingUser($mysqli, $id_users);
+    include_once 'fns/delete_connections.php';
+    delete_connections($mysqli, $id_users);
 
     include_once "$fnsDir/Contacts/deleteOnUser.php";
     Contacts\deleteOnUser($mysqli, $id_users);
