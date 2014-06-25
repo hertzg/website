@@ -10,10 +10,12 @@ unset(
 );
 
 include_once '../../fns/create_panel.php';
-include_once '../../fns/Page/tabs.php';
+include_once '../../fns/date_ago.php';
+include_once '../../fns/Form/label.php';
 include_once '../../fns/Form/textarea.php';
 include_once '../../fns/Form/textfield.php';
 include_once '../../fns/Page/imageArrowLink.php';
+include_once '../../fns/Page/tabs.php';
 $content =
     Page\tabs(
         [
@@ -36,6 +38,8 @@ $content =
             'value' => $token->user_agent,
             'readonly' => true,
         ])
+        .'<div class="hr"></div>'
+        .Form\label('Last accessed', date_ago($token->access_time))
     )
     .create_panel(
         'Session Options',
