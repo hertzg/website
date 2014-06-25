@@ -18,7 +18,7 @@ list($offset) = request_strings('offset');
 $offset = abs((int)$offset);
 if ($offset % $limit) {
     include_once '../../fns/redirect.php';
-    redirect();
+    redirect('..');
 }
 
 $options = [];
