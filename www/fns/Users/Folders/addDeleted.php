@@ -6,20 +6,26 @@ function addDeleted ($mysqli, $id_users, $folder) {
 
     $id_folders = $folder->id;
     $parent_id_folders = $folder->parent_id_folders;
+    $name = $folder->name;
+    $fnsDir = __DIR__.'/../..';
 
     if ($parent_id_folders) {
-        include_once __DIR__.'/../../Folders/get.php';
+        include_once "$fnsDir/Folders/get.php";
         $parentFolder = \Folders\get($mysqli, $id_users, $parent_id_folders);
         if (!$parentFolder) $parent_id_folders = 0;
     }
 
-    include_once __DIR__.'/../../Folders/addDeleted.php';
-    \Folders\addDeleted($mysqli, $id_folders, $id_users, $parent_id_folders,
-        $folder->name, $folder->insert_time, $folder->rename_time);
+    include_once "$fnsDir/Folders/getUniqueName.php";
+    $name = \Folders\getUniqueName($mysqli,
+        $id_users, $parent_id_folders, $name);
 
-    $restore = function ($parent_id_folders, $restore) use ($mysqli, $id_users) {
+    include_once "$fnsDir/Folders/addDeleted.php";
+    \Folders\addDeleted($mysqli, $id_folders, $id_users,
+        $parent_id_folders, $name, $folder->insert_time, $folder->rename_time);
 
-        include_once __DIR__.'/../../DeletedFolders/indexOnParent.php';
+    $restore = function ($parent_id_folders, $restore) use ($mysqli, $id_users, $fnsDir) {
+
+        include_once "$fnsDir/DeletedFolders/indexOnParent.php";
         $deletedFolders = \DeletedFolders\indexOnParent(
             $mysqli, $id_users, $parent_id_folders);
 
@@ -31,7 +37,7 @@ function addDeleted ($mysqli, $id_users, $folder) {
             $restore($id_folders, $restore);
         }
 
-        include_once __DIR__.'/../../DeletedFiles/indexOnParent.php';
+        include_once "$fnsDir/DeletedFiles/indexOnParent.php";
         $deletedFiles = \DeletedFiles\indexOnParent(
             $mysqli, $id_users, $parent_id_folders);
 

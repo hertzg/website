@@ -9,14 +9,8 @@ function importCopy ($mysqli, $receivedFolder, $parent_id) {
 
     $fnsDir = __DIR__.'/../../..';
 
-    include_once "$fnsDir/Folders/getByName.php";
-    while (\Folders\getByName($mysqli, $id_users, $parent_id, $name)) {
-        if (preg_match('/_(\d+)$/', $name, $match)) {
-            $name = preg_replace('/_\d+$/', '_'.($match[1] + 1), $name);
-        } else {
-            $name .= '_1';
-        }
-    }
+    include_once "$fnsDir/Folders/getUniqueName.php";
+    $name = \Folders\getUniqueName($mysqli, $id_users, $parent_id, $name);
 
     include_once "$fnsDir/Folders/add.php";
     $id_folders = \Folders\add($mysqli, $id_users, $parent_id, $name);
