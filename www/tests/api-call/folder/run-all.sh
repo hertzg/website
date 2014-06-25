@@ -4,3 +4,4 @@ cd `dirname $BASH_SOURCE`
 ./general.php
 ./rename.php
 ./subfolder.php
+./send-existing.php
