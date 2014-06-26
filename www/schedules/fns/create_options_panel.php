@@ -1,13 +1,15 @@
 <?php
 
-function create_options_panel ($user) {
+function create_options_panel ($user, $base = '') {
 
     include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
-    $options = [Page\imageArrowLink('New Schedule', 'new/', 'create-schedule')];
+    $href = "{$base}new/";
+    $options = [Page\imageArrowLink('New Schedule', $href, 'create-schedule')];
 
     if ($user->num_schedules) {
         $title = 'Delete All Schedules';
-        $options[] = Page\imageArrowLink($title, 'delete-all/', 'trash-bin');
+        $href = "{$base}delete-all/";
+        $options[] = Page\imageArrowLink($title, $href, 'trash-bin');
     }
 
     include_once __DIR__.'/../../fns/create_panel.php';

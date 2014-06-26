@@ -5,12 +5,8 @@ $base = '../';
 include_once '../fns/require_user.php';
 $user = require_user($base);
 
-unset(
-    $_SESSION['home/messages'],
-    $_SESSION['schedules/new/errors'],
-    $_SESSION['schedules/new/values'],
-    $_SESSION['schedules/view/messages']
-);
+include_once 'fns/unset_session_vars.php';
+unset_session_vars();
 
 include_once '../fns/Schedules/indexOnUser.php';
 include_once '../lib/mysqli.php';
@@ -19,16 +15,18 @@ $schedules = Schedules\indexOnUser($mysqli, $user->id_users);
 $items = [];
 if ($schedules) {
 
-    include_once 'fns/days_left_from_today.php';
-    foreach ($schedules as $schedule) {
-        $interval = $schedule->interval;
-        $offset = $schedule->offset;
-        $schedule->days_left = days_left_from_today($interval, $offset);
+    if (count($schedules) > 1) {
+
+        include_once '../fns/SearchForm/emptyContent.php';
+        $formContent = SearchForm\emptyContent('Search schedules...');
+
+        include_once '../fns/SearchForm/create.php';
+        $items[] = SearchForm\create('search/', $formContent);
+
     }
 
-    usort($schedules, function ($a, $b) {
-        return $a->days_left - $b->days_left;
-    });
+    include_once 'fns/sort_schedules.php';
+    sort_schedules($schedules);
 
     include_once 'fns/format_days_left.php';
     include_once '../fns/Page/imageArrowLinkWithDescription.php';
