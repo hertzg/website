@@ -38,4 +38,6 @@ $id = Users\Notes\add($mysqli, $user->id_users,
     $text, $tags, $tag_names, $encrypt);
 
 $_SESSION['notes/view/messages'] = ['Note has been saved.'];
-redirect("../view/?id=$id");
+
+include_once '../../fns/ItemList/itemQuery.php';
+redirect('../view/'.ItemList\itemQuery($id));

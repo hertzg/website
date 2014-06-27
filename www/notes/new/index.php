@@ -30,6 +30,8 @@ include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/checkbox.php';
 include_once '../../fns/Form/textarea.php';
 include_once '../../fns/Form/textfield.php';
+include_once '../../fns/ItemList/listHref.php';
+include_once '../../fns/ItemList/pageHiddenInputs.php';
 include_once '../../fns/Page/sessionErrors.php';
 include_once '../../fns/Page/staticTwoColumns.php';
 include_once '../../fns/Page/tabs.php';
@@ -41,7 +43,7 @@ $content = Page\tabs(
         ],
         [
             'title' => 'Notes',
-            'href' => '..',
+            'href' => ItemList\listHref(),
         ],
     ],
     'New',
@@ -66,6 +68,7 @@ $content = Page\tabs(
             Form\button('Save'),
             Form\button('Send', 'sendButton')
         )
+        .ItemList\pageHiddenInputs()
     .'</form>'
 );
 
