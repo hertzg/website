@@ -16,8 +16,8 @@ Schedules\deleteOnUser($mysqli, $id_users);
 include_once '../../fns/Users/Schedules/clearNumber.php';
 Users\Schedules\clearNumber($mysqli, $id_users);
 
-$_SESSION['schedules/messages'] = ['All schedules have been delete.'];
 unset($_SESSION['schedules/errors']);
+$_SESSION['schedules/messages'] = ['All schedules have been delete.'];
 
 include_once '../../fns/redirect.php';
 include_once '../../fns/ItemList/listUrl.php';

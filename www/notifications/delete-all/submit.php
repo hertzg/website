@@ -11,9 +11,7 @@ include_once '../../lib/mysqli.php';
 Users\Notifications\deleteAll($mysqli, $user->id_users);
 
 unset($_SESSION['notifications/errors']);
-$_SESSION['notifications/messages'] = [
-    'All notifications have been deleted.',
-];
+$_SESSION['notifications/messages'] = ['All notifications have been deleted.'];
 
 include_once '../../fns/redirect.php';
 redirect('..');
