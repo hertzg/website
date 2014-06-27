@@ -15,16 +15,9 @@ $interval = $first_stage['interval'];
 include_once '../../../fns/day_today.php';
 $offset = (day_today() + $days_left) % $interval;
 
-include_once '../../../fns/Schedules/add.php';
+include_once '../../../fns/Users/Schedules/add.php';
 include_once '../../../lib/mysqli.php';
-$id = Schedules\add($mysqli, $id_users,
-    $first_stage['text'], $interval, $offset);
-
-include_once '../../../fns/Users/Schedules/addNumber.php';
-Users\Schedules\addNumber($mysqli, $id_users, 1);
-
-include_once '../../../fns/Users/Schedules/invalidateIfNeeded.php';
-Users\Schedules\invalidateIfNeeded($mysqli, $user, $days_left);
+$id = Users\Schedules\add($mysqli, $user, $first_stage['text'], $interval, $offset);
 
 unset(
     $_SESSION['schedules/new/values'],
