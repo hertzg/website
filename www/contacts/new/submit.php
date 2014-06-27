@@ -42,7 +42,10 @@ unset($_SESSION['contacts/new/errors']);
 
 include_once '../../fns/request_strings.php';
 list($sendButton) = request_strings('sendButton');
-if ($sendButton) redirect('send/');
+if ($sendButton !== '') {
+    include_once '../../fns/ItemList/pageQuery.php';
+    redirect('send/'.ItemList\pageQuery());
+}
 
 unset($_SESSION['contacts/new/values']);
 

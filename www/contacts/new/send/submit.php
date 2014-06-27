@@ -19,9 +19,13 @@ check_receiver($mysqli, $id_users, $username, $receiver_id_users, $errors);
 include_once '../../../fns/redirect.php';
 
 if ($errors) {
+
     $_SESSION['contacts/new/send/errors'] = $errors;
     $_SESSION['contacts/new/send/values'] = ['username' => $username];
-    redirect();
+
+    include_once '../../../fns/ItemList/pageQuery.php';
+    redirect('./'.ItemList\pageQuery());
+
 }
 
 unset(
@@ -40,4 +44,5 @@ Users\Contacts\Received\add($mysqli, $id_users, $user->username,
 $_SESSION['contacts/messages'] = ['Sent.'];
 unset($_SESSION['contacts/errors']);
 
-redirect('../..');
+include_once '../../../fns/ItemList/listUrl.php';
+redirect('../'.ItemList\listUrl());

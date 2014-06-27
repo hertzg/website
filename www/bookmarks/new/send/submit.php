@@ -19,9 +19,13 @@ check_receiver($mysqli, $id_users, $username, $receiver_id_users, $errors);
 include_once '../../../fns/redirect.php';
 
 if ($errors) {
+
     $_SESSION['bookmarks/new/send/errors'] = $errors;
     $_SESSION['bookmarks/new/send/values'] = ['username' => $username];
-    redirect();
+
+    include_once '../../../fns/ItemList/pageQuery.php';
+    redirect('./'.ItemList\pageQuery());
+
 }
 
 unset(
@@ -38,4 +42,5 @@ Users\Bookmarks\Received\add($mysqli, $id_users, $user->username,
 $_SESSION['bookmarks/messages'] = ['Sent.'];
 unset($_SESSION['bookmarks/errors']);
 
-redirect('../..');
+include_once '../../../fns/ItemList/listUrl.php';
+redirect('../'.ItemList\listUrl());
