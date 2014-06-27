@@ -45,13 +45,11 @@ if ($notifications) {
     render_prev_button($offset, $limit, $total, $items);
 
     include_once '../fns/create_image_text.php';
+    include_once '../fns/date_ago.php';
     foreach ($notifications as $i => $notification) {
 
-        if ($i < $user->num_new_notifications) {
-            $icon = 'notification';
-        } else {
-            $icon = 'old-notification';
-        }
+        if ($i < $user->num_new_notifications) $icon = 'notification';
+        else $icon = 'old-notification';
 
         $id_subscribed_channels = $notification->id_subscribed_channels;
         if ($id_subscribed_channels) {
@@ -61,16 +59,21 @@ if ($notifications) {
         }
 
         $content =
-            "<a class=\"a\" href=\"$href\">"
-                .$notification->channel_name
-            .'</a>: '
-            .nl2br(
+            nl2br(
                 preg_replace(
                     '#(http://.*?)(\s|$)#',
                     '<a class="a" rel="noreferrer" href="$1">$1</a>$2',
                     htmlspecialchars($notification->notification_text)
                 )
-            );
+            )
+            .'<div style="color: #555">'
+                ."<a class=\"a\" href=\"$href\">"
+                    .$notification->channel_name
+                .'</a>'
+                .' <span style="font-size: 12px; line-height: 14px">'
+                    .date_ago($notification->insert_time)
+                .'</span>'
+            .'</div>';
 
         $items[] = create_image_text($content, $icon);
 

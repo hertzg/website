@@ -41,7 +41,7 @@ if ($notifications) {
     render_prev_button($offset, $limit, $total, $items, ['id' => $id]);
 
     include_once '../../fns/create_image_text.php';
-
+    include_once '../../fns/date_ago.php';
     foreach ($notifications as $i => $notification) {
         $content =
             nl2br(
@@ -50,7 +50,10 @@ if ($notifications) {
                     '<a class="a" rel="noreferrer" href="$1">$1</a>$2',
                     htmlspecialchars($notification->notification_text)
                 )
-            );
+            )
+            .'<div style="color: #777; font-size: 12px; line-height: 14px">'
+                .date_ago($notification->insert_time)
+            .'</div>';
         $items[] = create_image_text($content, 'old-notification');
     }
 
