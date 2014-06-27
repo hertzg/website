@@ -6,11 +6,11 @@ function create_options_panel ($receivedTask) {
 
     $itemQuery = "?id=$receivedTask->id";
 
-    include_once "$fnsDir/Page/imageArrowLink.php";
-
+    include_once "$fnsDir/Page/imageLink.php";
     $href = "submit-import.php$itemQuery";
-    $importLink = Page\imageArrowLink('Import', $href, 'import-task');
+    $importLink = Page\imageLink('Import', $href, 'import-task');
 
+    include_once "$fnsDir/Page/imageArrowLink.php";
     $href = "../edit-and-import/$itemQuery";
     $icon = 'import-task';
     $editAndImportLink = Page\imageArrowLink('Edit and Import', $href, $icon);

@@ -14,16 +14,16 @@ $queryString = "?id=$id";
 $fnsDir = '../../../fns';
 
 include_once "$fnsDir/Page/imageLink.php";
-
 $href = "download/$queryString";
 $downloadLink = Page\imageLink('Download', $href, 'download');
 
 $href = "submit-import.php$queryString";
 $importLink = Page\imageLink('Import', $href, 'import-file');
 
+include_once "$fnsDir/Page/imageArrowLink.php";
 $title = 'Rename and Import';
 $href = "rename-and-import/$queryString";
-$renameAndImportLink = Page\imageLink($title, $href, 'import-file');
+$renameAndImportLink = Page\imageArrowLink($title, $href, 'import-file');
 
 if ($receivedFile->archived) {
     $href = "submit-unarchive.php$queryString";
@@ -34,7 +34,7 @@ if ($receivedFile->archived) {
 }
 
 $href = "delete/$queryString";
-$deleteLink = Page\imageLink('Delete', $href, 'trash-bin');
+$deleteLink = Page\imageArrowLink('Delete', $href, 'trash-bin');
 
 include_once "$fnsDir/Page/filePreview.php";
 $filePreview = Page\filePreview($receivedFile->name, $id, 'download/');
@@ -45,6 +45,7 @@ include_once "$fnsDir/date_ago.php";
 include_once "$fnsDir/Form/label.php";
 include_once "$fnsDir/Page/infoText.php";
 include_once "$fnsDir/Page/sessionMessages.php";
+include_once "$fnsDir/Page/staticTwoColumns.php";
 include_once "$fnsDir/Page/tabs.php";
 include_once "$fnsDir/Page/twoColumns.php";
 $content = Page\tabs(
@@ -74,7 +75,7 @@ $content = Page\tabs(
     )
     .create_panel(
         'File Options',
-        Page\twoColumns($downloadLink, $importLink)
+        Page\staticTwoColumns($downloadLink, $importLink)
         .'<div class="hr"></div>'
         .Page\twoColumns($renameAndImportLink, $archiveLink)
         .'<div class="hr"></div>'

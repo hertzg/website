@@ -6,11 +6,11 @@ function create_options_panel ($receivedNote) {
 
     $itemQuery = "?id=$receivedNote->id";
 
-    include_once "$fnsDir/Page/imageArrowLink.php";
-
+    include_once "$fnsDir/Page/imageLink.php";
     $href = "submit-import.php$itemQuery";
-    $importLink = Page\imageArrowLink('Import', $href, 'import-note');
+    $importLink = Page\imageLink('Import', $href, 'import-note');
 
+    include_once "$fnsDir/Page/imageArrowLink.php";
     $href = "../edit-and-import/$itemQuery";
     $icon = 'import-note';
     $editAndImportLink = Page\imageArrowLink('Edit and Import', $href, $icon);

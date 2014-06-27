@@ -3,15 +3,16 @@
 function create_options_panel ($receivedFolder) {
 
     $fnsDir = '../../../fns';
-    include_once "$fnsDir/Page/imageLink.php";
     $queryString = "?id=$receivedFolder->id";
 
+    include_once "$fnsDir/Page/imageLink.php";
     $href = "submit-import.php$queryString";
     $importLink = Page\imageLink('Import', $href, 'import-folder');
 
+    include_once "$fnsDir/Page/imageArrowLink.php";
     $title = 'Rename and Import';
     $href = "rename-and-import/$queryString";
-    $renameAndImportLink = Page\imageLink($title, $href, 'import-folder');
+    $renameAndImportLink = Page\imageArrowLink($title, $href, 'import-folder');
 
     if ($receivedFolder->archived) {
         $title = 'Unarchive';
@@ -25,13 +26,14 @@ function create_options_panel ($receivedFolder) {
     $archiveLink = Page\imageLink($title, $href, $icon);
 
     $href = "delete/$queryString";
-    $deleteLink = Page\imageLink('Delete', $href, 'trash-bin');
+    $deleteLink = Page\imageArrowLink('Delete', $href, 'trash-bin');
 
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Page/staticTwoColumns.php";
+    include_once "$fnsDir/Page/twoColumns.php";
     return create_panel(
         'Folder Options',
-        Page\staticTwoColumns($importLink, $renameAndImportLink)
+        Page\twoColumns($importLink, $renameAndImportLink)
         .'<div class="hr"></div>'
         .Page\staticTwoColumns($archiveLink, $deleteLink)
     );

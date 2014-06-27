@@ -11,11 +11,11 @@ function create_options_panel ($receivedBookmark) {
     $values = create_open_links($receivedBookmark->url, '../../../');
     list($openLink, $openInNewTabLink) = $values;
 
-    include_once "$fnsDir/Page/imageArrowLink.php";
-
+    include_once "$fnsDir/Page/imageLink.php";
     $href = "submit-import.php$queryString";
-    $importLink = Page\imageArrowLink('Import', $href, 'import-bookmark');
+    $importLink = Page\imageLink('Import', $href, 'import-bookmark');
 
+    include_once "$fnsDir/Page/imageArrowLink.php";
     $href = "../edit-and-import/$queryString";
     $icon = 'import-bookmark';
     $editAndImportLink = Page\imageArrowLink('Edit and Import', $href, $icon);

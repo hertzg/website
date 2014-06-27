@@ -6,11 +6,11 @@ function create_options_panel ($receivedContact) {
 
     $itemQuery = "?id=$receivedContact->id";
 
-    include_once "$fnsDir/Page/imageArrowLink.php";
-
+    include_once "$fnsDir/Page/imageLink.php";
     $href = "submit-import.php$itemQuery";
-    $importLink = Page\imageArrowLink('Import', $href, 'import-contact');
+    $importLink = Page\imageLink('Import', $href, 'import-contact');
 
+    include_once "$fnsDir/Page/imageArrowLink.php";
     $href = "../edit-and-import/$itemQuery";
     $icon = 'import-contact';
     $editAndImportLink = Page\imageArrowLink('Edit and Import', $href, $icon);
