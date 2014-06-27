@@ -38,4 +38,6 @@ $id = Users\Bookmarks\add($mysqli,
     $user->id_users, $url, $title, $tags, $tag_names);
 
 $_SESSION['bookmarks/view/messages'] = ['Bookmark has been saved.'];
-redirect("../view/?id=$id");
+
+include_once '../../fns/ItemList/itemQuery.php';
+redirect('../view/'.ItemList\itemQuery($id));

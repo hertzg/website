@@ -10,6 +10,7 @@ unset(
     $_SESSION['bookmarks/messages']
 );
 
+include_once '../../fns/ItemList/listHref.php';
 include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Page/imageLink.php';
 include_once '../../fns/Page/text.php';
@@ -27,7 +28,7 @@ $content = Page\tabs(
     .'<div class="hr"></div>'
     .Page\twoColumns(
         Page\imageLink('Yes, delete all bookmarks', 'submit.php', 'yes'),
-        Page\imageLink('No, return back', '..', 'no')
+        Page\imageLink('No, return back', ItemList\listHref(), 'no')
     )
 );
 

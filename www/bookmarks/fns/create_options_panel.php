@@ -4,9 +4,12 @@ function create_options_panel ($user, $base = '') {
 
     $fnsDir = __DIR__.'/../../fns';
 
+    include_once "$fnsDir/ItemList/escapedPageQuery.php";
+    $escapedPageQuery = ItemList\escapedPageQuery();
+
     include_once "$fnsDir/Page/imageArrowLink.php";
     $title = 'New Bookmark';
-    $href = "{$base}new/";
+    $href = "{$base}new/$escapedPageQuery";
     $options = [Page\imageArrowLink($title, $href, 'create-bookmark')];
 
     $num_received_bookmarks = $user->num_received_bookmarks;
@@ -21,7 +24,7 @@ function create_options_panel ($user, $base = '') {
 
     if ($user->num_bookmarks) {
         $title = 'Delete All Bookmarks';
-        $href = "{$base}delete-all/";
+        $href = "{$base}delete-all/$escapedPageQuery";
         $options[] = Page\imageArrowLink($title, $href, 'trash-bin');
     }
 
