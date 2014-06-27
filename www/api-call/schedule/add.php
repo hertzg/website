@@ -1,0 +1,13 @@
+<?php
+
+include_once '../fns/require_api_key.php';
+list($apiKey, $user, $mysqli) = require_api_key();
+
+include_once 'fns/request_schedule_params.php';
+list($text, $interval, $offset) = request_schedule_params();
+
+include_once '../../fns/Users/Schedules/add.php';
+$id = Users\Schedules\add($mysqli, $user, $text, $interval, $offset);
+
+header('Content-Type: application/json');
+echo $id;
