@@ -4,8 +4,11 @@ function create_options_panel ($user, $base = '') {
 
     $fnsDir = __DIR__.'/../../fns';
 
+    include_once "$fnsDir/ItemList/escapedPageQuery.php";
+    $escapedPageQuery = ItemList\escapedPageQuery();
+
     include_once "$fnsDir/Page/imageArrowLink.php";
-    $href = "{$base}new/";
+    $href = "{$base}new/$escapedPageQuery";
     $options = [Page\imageArrowLink('New Task', $href, 'create-task')];
 
     $num_received_tasks = $user->num_received_tasks;
@@ -20,7 +23,7 @@ function create_options_panel ($user, $base = '') {
 
     if ($user->num_tasks) {
         $title = 'Delete All Tasks';
-        $href = "{$base}delete-all/";
+        $href = "{$base}delete-all/$escapedPageQuery";
         $options[] = Page\imageArrowLink($title, $href, 'trash-bin');
     }
 

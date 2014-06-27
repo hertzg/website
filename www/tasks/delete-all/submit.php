@@ -14,4 +14,5 @@ unset($_SESSION['tasks/errors']);
 $_SESSION['tasks/messages'] = ['All tasks have been deleted.'];
 
 include_once '../../fns/redirect.php';
-redirect('..');
+include_once '../../fns/ItemList/listUrl.php';
+redirect(ItemList\listUrl());

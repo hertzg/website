@@ -38,4 +38,6 @@ $id = Users\Tasks\add($mysqli, $user->id_users,
     $text, $top_priority, $tags, $tag_names);
 
 $_SESSION['tasks/view/messages'] = ['Task has been saved.'];
-redirect("../view/?id=$id");
+
+include_once '../../fns/ItemList/itemQuery.php';
+redirect('../view/'.ItemList\itemQuery($id));
