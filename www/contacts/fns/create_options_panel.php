@@ -4,9 +4,12 @@ function create_options_panel ($user, $base = '') {
 
     $fnsDir = __DIR__.'/../../fns';
 
+    include_once "$fnsDir/ItemList/escapedPageQuery.php";
+    $escapedPageQuery = ItemList\escapedPageQuery();
+
     include_once "$fnsDir/Page/imageArrowLink.php";
     $title = 'New Contact';
-    $href = "{$base}new/";
+    $href = "{$base}new/$escapedPageQuery";
     $options = [Page\imageArrowLink($title, $href, 'create-contact')];
 
     $num_received_contacts = $user->num_received_contacts;
@@ -21,7 +24,7 @@ function create_options_panel ($user, $base = '') {
 
     if ($user->num_contacts) {
         $title = 'Delete All Contacts';
-        $href = "{$base}delete-all/";
+        $href = "{$base}delete-all/$escapedPageQuery";
         $options[] = Page\imageArrowLink($title, $href, 'trash-bin');
     }
 

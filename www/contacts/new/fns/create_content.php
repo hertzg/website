@@ -2,16 +2,20 @@
 
 function create_content ($base, array $values) {
 
-    include_once __DIR__.'/../../../fns/Contacts/maxLengths.php';
+    $fnsDir = __DIR__.'/../../../fns';
+
+    include_once "$fnsDir/Contacts/maxLengths.php";
     $maxLengths = Contacts\maxLengths();
 
-    include_once __DIR__.'/../../../fns/Form/button.php';
-    include_once __DIR__.'/../../../fns/Form/checkbox.php';
-    include_once __DIR__.'/../../../fns/Form/datefield.php';
-    include_once __DIR__.'/../../../fns/Form/textfield.php';
-    include_once __DIR__.'/../../../fns/Page/sessionErrors.php';
-    include_once __DIR__.'/../../../fns/Page/staticTwoColumns.php';
-    include_once __DIR__.'/../../../fns/Page/tabs.php';
+    include_once "$fnsDir/Form/button.php";
+    include_once "$fnsDir/Form/checkbox.php";
+    include_once "$fnsDir/Form/datefield.php";
+    include_once "$fnsDir/Form/textfield.php";
+    include_once "$fnsDir/ItemList/listHref.php";
+    include_once "$fnsDir/ItemList/pageHiddenInputs.php";
+    include_once "$fnsDir/Page/sessionErrors.php";
+    include_once "$fnsDir/Page/staticTwoColumns.php";
+    include_once "$fnsDir/Page/tabs.php";
     return Page\tabs(
         [
             [
@@ -20,7 +24,7 @@ function create_content ($base, array $values) {
             ],
             [
                 'title' => 'Contacts',
-                'href' => '..',
+                'href' => ItemList\listHref(),
             ],
         ],
         'New',
@@ -86,6 +90,7 @@ function create_content ($base, array $values) {
                 Form\button('Save'),
                 Form\button('Send', 'sendButton')
             )
+            .ItemList\pageHiddenInputs()
         .'</form>'
     );
 

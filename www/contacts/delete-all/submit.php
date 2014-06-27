@@ -11,9 +11,8 @@ include_once '../../lib/mysqli.php';
 Users\Contacts\deleteAll($mysqli, $user->id_users);
 
 unset($_SESSION['contacts/errors']);
-$_SESSION['contacts/messages'] = [
-    'All contacts have been deleted.',
-];
+$_SESSION['contacts/messages'] = ['All contacts have been deleted.'];
 
 include_once '../../fns/redirect.php';
-redirect('..');
+include_once '../../fns/ItemList/listHref.php';
+redirect(ItemList\listHref());

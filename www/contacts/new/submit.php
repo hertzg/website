@@ -55,4 +55,6 @@ include_once '../../fns/Users/Birthdays/invalidateIfNeeded.php';
 Users\Birthdays\invalidateIfNeeded($mysqli, $user, $birthday_time);
 
 $_SESSION['contacts/view/messages'] = ['Contact has been saved.'];
-redirect("../view/?id=$id");
+
+include_once '../../fns/ItemList/itemQuery.php';
+redirect('../view/'.ItemList\itemQuery($id));
