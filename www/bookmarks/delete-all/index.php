@@ -10,9 +10,13 @@ unset(
     $_SESSION['bookmarks/messages']
 );
 
+include_once '../../fns/ItemList/escapedPageQuery.php';
+include_once '../../fns/Page/imageLink.php';
+$href = 'submit.php'.ItemList\escapedPageQuery();
+$yesLink = Page\imageLink('Yes, delete all bookmarks', $href, 'yes');
+
 include_once '../../fns/ItemList/listHref.php';
 include_once '../../fns/Page/tabs.php';
-include_once '../../fns/Page/imageLink.php';
 include_once '../../fns/Page/text.php';
 include_once '../../fns/Page/twoColumns.php';
 $content = Page\tabs(
@@ -27,7 +31,7 @@ $content = Page\tabs(
         .' They will be moved to Trash.')
     .'<div class="hr"></div>'
     .Page\twoColumns(
-        Page\imageLink('Yes, delete all bookmarks', 'submit.php', 'yes'),
+        $yesLink,
         Page\imageLink('No, return back', ItemList\listHref(), 'no')
     )
 );
