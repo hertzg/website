@@ -14,5 +14,5 @@ unset($_SESSION['contacts/errors']);
 $_SESSION['contacts/messages'] = ['All contacts have been deleted.'];
 
 include_once '../../fns/redirect.php';
-include_once '../../fns/ItemList/listHref.php';
-redirect(ItemList\listHref());
+include_once '../../fns/ItemList/listUrl.php';
+redirect(ItemList\listUrl());
