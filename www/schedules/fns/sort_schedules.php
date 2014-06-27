@@ -2,7 +2,7 @@
 
 function sort_schedules (&$schedules) {
 
-    include_once __DIR__.'/days_left_from_today.php';
+    include_once __DIR__.'/../../fns/days_left_from_today.php';
     foreach ($schedules as $schedule) {
         $interval = $schedule->interval;
         $offset = $schedule->offset;

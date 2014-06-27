@@ -13,7 +13,7 @@ Schedules\delete($mysqli, $id);
 include_once '../../fns/Users/Schedules/addNumber.php';
 Users\Schedules\addNumber($mysqli, $user->id_users, -1);
 
-include_once '../fns/days_left_from_today.php';
+include_once '../../fns/days_left_from_today.php';
 $days_left = days_left_from_today($schedule->interval, $schedule->offset);
 
 include_once '../../fns/Users/Schedules/invalidateIfNeeded.php';

@@ -11,7 +11,7 @@ unset(
     $_SESSION['schedules/messages']
 );
 
-include_once '../fns/days_left_from_today.php';
+include_once '../../fns/days_left_from_today.php';
 $days_left = days_left_from_today($schedule->interval, $schedule->offset);
 
 include_once '../fns/format_days_left.php';
