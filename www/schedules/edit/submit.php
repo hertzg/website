@@ -34,4 +34,5 @@ $_SESSION['schedules/edit/next/first_stage'] = [
     'interval' => $interval,
 ];
 
-redirect('next/');
+include_once '../../fns/ItemList/itemQuery.php';
+redirect('next/'.ItemList\itemQuery($id));

@@ -6,6 +6,10 @@ list($schedule, $id, $user) = require_schedule($mysqli);
 
 unset($_SESSION['schedules/view/messages']);
 
+include_once '../../fns/ItemList/escapedItemQuery.php';
+$escapedItemQuery = ItemList\escapedItemQuery($id);
+
+include_once '../../fns/ItemList/listHref.php';
 include_once '../../fns/Page/imageLink.php';
 include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Page/text.php';
@@ -18,15 +22,15 @@ $content = Page\tabs(
         ],
         [
             'title' => 'Schedules',
-            'href' => '..',
+            'href' => ItemList\listHref(),
         ],
     ],
     "Schedule #$id",
     Page\text('Are you sure you want to delete the schedule?')
     .'<div class="hr"></div>'
     .Page\twoColumns(
-        Page\imageLink('Yes, delete schedule', "submit.php?id=$id", 'yes'),
-        Page\imageLink('No, return back', "../view/?id=$id", 'no')
+        Page\imageLink('Yes, delete schedule', "submit.php$escapedItemQuery", 'yes'),
+        Page\imageLink('No, return back', "../view/$escapedItemQuery", 'no')
     )
 );
 

@@ -17,9 +17,20 @@ $days_left = days_left_from_today($schedule->interval, $schedule->offset);
 include_once '../fns/format_days_left.php';
 $next = format_days_left($days_left);
 
+include_once '../../fns/ItemList/escapedItemQuery.php';
+$escapedItemQuery = ItemList\escapedItemQuery($id);
+
+include_once '../../fns/Page/imageArrowLink.php';
+
+$href = "../edit/$escapedItemQuery";
+$editLink = Page\imageArrowLink('Edit', $href, 'edit-schedule');
+
+$href = "../delete/$escapedItemQuery";
+$deleteLink = Page\imageArrowLink('Delete', $href, 'trash-bin');
+
 include_once '../../fns/create_panel.php';
 include_once '../../fns/Form/label.php';
-include_once '../../fns/Page/imageArrowLink.php';
+include_once '../../fns/ItemList/listHref.php';
 include_once '../../fns/Page/sessionMessages.php';
 include_once '../../fns/Page/staticTwoColumns.php';
 include_once '../../fns/Page/tabs.php';
@@ -32,7 +43,7 @@ $content = Page\tabs(
         ],
         [
             'title' => 'Schedules',
-            'href' => '..',
+            'href' => ItemList\listHref(),
         ],
     ],
     "Schedule #$id",
@@ -44,10 +55,7 @@ $content = Page\tabs(
     .Form\label('Next', $next)
     .create_panel(
         'Schedule Options',
-        Page\staticTwoColumns(
-            Page\imageArrowLink('Edit', "../edit/?id=$id", 'edit-schedule'),
-            Page\imageArrowLink('Delete', "../delete/?id=$id", 'trash-bin')
-        )
+        Page\staticTwoColumns($editLink, $deleteLink)
     )
 );
 

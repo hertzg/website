@@ -21,8 +21,10 @@ unset(
 
 include_once '../fns/create_interval_select.php';
 include_once '../../fns/Form/button.php';
-include_once '../../fns/Form/hidden.php';
 include_once '../../fns/Form/textfield.php';
+include_once '../../fns/ItemList/escapedItemQuery.php';
+include_once '../../fns/ItemList/itemHiddenInputs.php';
+include_once '../../fns/ItemList/listHref.php';
 include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../fns/Page/sessionErrors.php';
 include_once '../../fns/Page/tabs.php';
@@ -30,11 +32,11 @@ $content = Page\tabs(
     [
         [
             'title' => '&middot;&middot;&middot;',
-            'href' => '..',
+            'href' => ItemList\listHref(),
         ],
         [
             'title' => "Schedule #$id",
-            'href' => "../view/?id=$id",
+            'href' => '../view/'.ItemList\escapedItemQuery($id),
         ],
     ],
     'Edit',
@@ -49,9 +51,9 @@ $content = Page\tabs(
         .create_interval_select($values['interval'])
         .'<div class="hr"></div>'
         .Form\button('Next')
-        .Form\hidden('id', $id)
+        .ItemList\itemHiddenInputs($id)
     .'</form>'
 );
 
 include_once '../../fns/echo_page.php';
-echo_page($user, "Schedule #$id", $content, '../../');
+echo_page($user, "Edit Schedule #$id", $content, '../../');

@@ -37,6 +37,7 @@ if ($schedules) {
     $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
 
     include_once '../fns/format_days_left.php';
+    include_once '../../fns/ItemList/escapedItemQuery.php';
     include_once '../../fns/Page/imageArrowLinkWithDescription.php';
     foreach ($schedules as $schedule) {
 
@@ -44,7 +45,7 @@ if ($schedules) {
         $title = preg_replace($regex, '<mark>$0</mark>', $title);
         
         $description = format_days_left($schedule->days_left);
-        $href = "view/?id=$schedule->id";
+        $href = '../view/'.ItemList\escapedItemQuery($schedule->id);
         $items[] = Page\imageArrowLinkWithDescription(
             $title, $description, $href, 'schedule');
 

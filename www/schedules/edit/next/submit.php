@@ -35,4 +35,5 @@ unset(
 $_SESSION['schedules/view/messages'] = ['Changes have been saved.'];
 
 include_once '../../../fns/redirect.php';
-redirect("../../view/?id=$id");
+include_once '../../../fns/ItemList/itemQuery.php';
+redirect('../../view/'.ItemList\itemQuery($id));

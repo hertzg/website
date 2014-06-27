@@ -29,11 +29,12 @@ if ($schedules) {
     sort_schedules($schedules);
 
     include_once 'fns/format_days_left.php';
+    include_once '../fns/ItemList/escapedItemQuery.php';
     include_once '../fns/Page/imageArrowLinkWithDescription.php';
     foreach ($schedules as $schedule) {
         $title = htmlspecialchars($schedule->text);
         $description = format_days_left($schedule->days_left);
-        $href = "view/?id=$schedule->id";
+        $href = 'view/'.ItemList\escapedItemQuery($schedule->id);
         $items[] = Page\imageArrowLinkWithDescription(
             $title, $description, $href, 'schedule');
     }
