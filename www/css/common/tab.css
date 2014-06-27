@@ -8,6 +8,12 @@
     background-color: #555;
     border-radius: 2px 2px 0 0;
 }
+.tab-normal {
+    max-width: 140px;
+}
+.tab-active {
+    max-width: 160px;
+}
 .tab-normal,
 .tab-active {
     padding: 16px 10px;
@@ -19,6 +25,9 @@
     background-color: #555;
     box-shadow: 0 -16px 16px #444 inset, 0 0 6px rgba(34, 34, 34, 0.6);
     border-radius: 2px 2px 0 0;
+    direction: rtl;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .tab-normal:focus {
     border: 2px solid transparent;
