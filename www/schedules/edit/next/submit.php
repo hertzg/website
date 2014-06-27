@@ -12,9 +12,7 @@ $days_left = Schedules\requestSecondStage($first_stage['interval']);
 $interval = $first_stage['interval'];
 
 include_once '../../../fns/day_today.php';
-$day_today = day_today();
-
-$offset = ($day_today + $days_left) % $interval;
+$offset = (day_today() + $days_left) % $interval;
 
 include_once '../../../fns/Users/Schedules/edit.php';
 include_once '../../../lib/mysqli.php';
