@@ -5,7 +5,6 @@ require_same_domain_referer('./');
 
 include_once 'fns/require_first_stage.php';
 list($user, $first_stage) = require_first_stage();
-$id_users = $user->id_users;
 
 include_once '../../../fns/Schedules/requestSecondStage.php';
 $days_left = Schedules\requestSecondStage($first_stage['interval']);
@@ -17,7 +16,8 @@ $offset = (day_today() + $days_left) % $interval;
 
 include_once '../../../fns/Users/Schedules/add.php';
 include_once '../../../lib/mysqli.php';
-$id = Users\Schedules\add($mysqli, $user, $first_stage['text'], $interval, $offset);
+$id = Users\Schedules\add($mysqli, $user,
+    $first_stage['text'], $interval, $offset);
 
 unset(
     $_SESSION['schedules/new/values'],
