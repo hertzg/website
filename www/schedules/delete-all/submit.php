@@ -20,4 +20,5 @@ $_SESSION['schedules/messages'] = ['All schedules have been delete.'];
 unset($_SESSION['schedules/errors']);
 
 include_once '../../fns/redirect.php';
-redirect('..');
+include_once '../../fns/ItemList/listUrl.php';
+redirect(ItemList\listUrl());

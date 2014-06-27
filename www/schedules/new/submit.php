@@ -32,4 +32,5 @@ $_SESSION['schedules/new/next/first_stage'] = [
     'interval' => $interval,
 ];
 
-redirect('next/');
+include_once '../../fns/ItemList/pageQuery.php';
+redirect('next/'.ItemList\pageQuery());

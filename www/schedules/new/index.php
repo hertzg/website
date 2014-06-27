@@ -24,6 +24,8 @@ if (array_key_exists($key, $_SESSION)) {
 include_once '../fns/create_interval_select.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/textfield.php';
+include_once '../../fns/ItemList/listHref.php';
+include_once '../../fns/ItemList/pageHiddenInputs.php';
 include_once '../../fns/Page/sessionErrors.php';
 include_once '../../fns/Page/tabs.php';
 $content = Page\tabs(
@@ -34,7 +36,7 @@ $content = Page\tabs(
         ],
         [
             'title' => 'Schedules',
-            'href' => '..',
+            'href' => ItemList\listHref(),
         ],
     ],
     'New',
@@ -49,6 +51,7 @@ $content = Page\tabs(
         .create_interval_select($values['interval'])
         .'<div class="hr"></div>'
         .Form\button('Next')
+        .ItemList\pageHiddenInputs()
     .'</form>'
 );
 

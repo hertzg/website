@@ -5,6 +5,9 @@ list($user, $first_stage) = require_first_stage();
 
 include_once '../../fns/create_offset_select.php';
 include_once '../../../fns/Form/button.php';
+include_once '../../../fns/ItemList/escapedPageQuery.php';
+include_once '../../../fns/ItemList/listHref.php';
+include_once '../../../fns/ItemList/pageHiddenInputs.php';
 include_once '../../../fns/Page/imageLink.php';
 include_once '../../../fns/Page/tabs.php';
 $content = Page\tabs(
@@ -15,16 +18,17 @@ $content = Page\tabs(
         ],
         [
             'title' => 'Schedules',
-            'href' => '../..',
+            'href' => '../'.ItemList\listHref(),
         ],
     ],
     'New',
-    Page\imageLink('Back', '..', 'arrow-left')
+    Page\imageLink('Back', '../'.ItemList\escapedPageQuery(), 'arrow-left')
     .'<div class="hr"></div>'
     .'<form action="submit.php" method="post">'
         .create_offset_select($first_stage['interval'], 0)
         .'<div class="hr"></div>'
         .Form\button('Save Schedule')
+        .ItemList\pageHiddenInputs()
     .'</form>'
 );
 
