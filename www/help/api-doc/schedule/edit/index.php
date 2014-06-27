@@ -12,7 +12,7 @@ schedule_method_page('edit', [
     ],
     [
         'name' => 'interval',
-        'description' => 'The number of days in which the schedule repeats.'
+        'description' => 'The new number of days in which the schedule repeats.'
             .' Its value can be 2 or greater.',
     ],
     [
