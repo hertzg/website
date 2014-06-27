@@ -16,16 +16,10 @@ $day_today = day_today();
 
 $offset = ($day_today + $days_left) % $interval;
 
-include_once '../../../fns/Schedules/edit.php';
+include_once '../../../fns/Users/Schedules/edit.php';
 include_once '../../../lib/mysqli.php';
-Schedules\edit($mysqli, $id, $first_stage['text'], $interval, $offset);
-
-include_once '../../../fns/days_left.php';
-$old_days_left = days_left($schedule->interval, $schedule->offset, $day_today);
-
-include_once '../../../fns/Users/Schedules/invalidateIfNeeded.php';
-Users\Schedules\invalidateIfNeeded($mysqli, $user, $days_left);
-Users\Schedules\invalidateIfNeeded($mysqli, $user, $old_days_left);
+Users\Schedules\edit($mysqli, $user, $schedule,
+    $first_stage['text'], $interval, $offset);
 
 unset(
     $_SESSION['schedules/edit/values'],
