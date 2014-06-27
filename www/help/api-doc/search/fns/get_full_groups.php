@@ -68,6 +68,9 @@ function get_full_groups () {
     include_once __DIR__.'/../../fns/notification/get_methods.php';
     $groups['notification']['methods'] = notification\get_methods();
 
+    include_once __DIR__.'/../../fns/schedule/get_methods.php';
+    $groups['schedule']['methods'] = schedule\get_methods();
+
     include_once __DIR__.'/../../fns/task/get_methods.php';
     $groups['task']['methods'] = task\get_methods();
 
