@@ -7,7 +7,7 @@ include_once 'fns/require_first_stage.php';
 list($user, $id, $schedule, $first_stage) = require_first_stage();
 
 include_once '../../../fns/Schedules/requestSecondStage.php';
-list($days_left) = Schedules\requestSecondStage($first_stage['interval']);
+$days_left = Schedules\requestSecondStage($first_stage['interval']);
 
 $interval = $first_stage['interval'];
 
