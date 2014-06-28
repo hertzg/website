@@ -6,11 +6,8 @@ include_once '../../fns/require_user.php';
 $user = require_user($base);
 
 $key = 'help/feedback/values';
-if (array_key_exists($key, $_SESSION)) {
-    $values = $_SESSION[$key];
-} else {
-    $values = ['feedbacktext' => ''];
-}
+if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
+else $values = ['text' => ''];
 
 unset($_SESSION['help/messages']);
 
@@ -33,8 +30,8 @@ $content = Page\tabs(
     'Feedback',
     Page\sessionErrors('help/feedback/errors')
     .'<form action="submit.php" method="post">'
-        .Form\textarea('feedbacktext', 'Feedback text', [
-            'value' => $values['feedbacktext'],
+        .Form\textarea('text', 'Text', [
+            'value' => $values['text'],
             'autofocus' => true,
             'required' => true,
         ])

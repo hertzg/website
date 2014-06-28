@@ -7,26 +7,24 @@ include_once '../../fns/require_user.php';
 $user = require_user('../../');
 
 include_once '../../fns/request_strings.php';
-list($feedbacktext) = request_strings('feedbacktext');
+list($text) = request_strings('text');
 
 $errors = [];
 
 include_once '../../fns/str_collapse_spaces.php';
-$feedbacktext = str_collapse_spaces($feedbacktext);
+$text = str_collapse_spaces($text);
 
-if ($feedbacktext === '') {
-    $errors[] = 'Enter feedback text.';
-} elseif (count(explode(' ', $feedbacktext)) < 6) {
-    $errors[] = 'Feedback text too short. At least 6 words required.';
+if ($text === '') {
+    $errors[] = 'Enter text.';
+} elseif (count(explode(' ', $text)) < 6) {
+    $errors[] = 'Text too short. At least 6 words required.';
 }
 
 include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['help/feedback/errors'] = $errors;
-    $_SESSION['help/feedback/values'] = [
-        'feedbacktext' => $feedbacktext,
-    ];
+    $_SESSION['help/feedback/values'] = ['text' => $text];
     redirect();
 }
 
@@ -37,7 +35,7 @@ unset(
 
 include_once '../../fns/Feedbacks/add.php';
 include_once '../../lib/mysqli.php';
-$id = Feedbacks\add($mysqli, $user->id_users, $feedbacktext);
+$id = Feedbacks\add($mysqli, $user->id_users, $text);
 
 $title = "Zvini Feedback #$id";
 
@@ -50,7 +48,7 @@ $html =
             .' content="text/html; charset=UTF-8" />'
         .'</head>'
         .'<body>'
-            .htmlspecialchars($feedbacktext)
+            .htmlspecialchars($text)
         .'</body>'
     .'</html>';
 
@@ -70,7 +68,7 @@ session_commit();
 include_once '../../fns/get_zvini_client.php';
 get_zvini_client()->call('notification/post', [
     'channel_name' => 'zvini-feedbacks',
-    'text' => $feedbacktext,
+    'text' => $text,
 ]);
 
 redirect('..');
