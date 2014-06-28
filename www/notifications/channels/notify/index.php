@@ -25,7 +25,7 @@ $content = Page\tabs(
     'Post',
     Page\sessionErrors('notifications/channels/notify/errors')
     .'<form action="submit.php" method="post">'
-        .Form\textarea('notification_text', 'Notification text', [
+        .Form\textarea('text', 'Text', [
             'required' => true,
             'autofocus' => true,
         ])

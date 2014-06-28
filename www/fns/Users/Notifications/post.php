@@ -2,7 +2,7 @@
 
 namespace Users\Notifications;
 
-function post ($mysqli, $channel, $notification_text) {
+function post ($mysqli, $channel, $text) {
 
     $fnsDir = __DIR__.'/../../';
 
@@ -14,7 +14,7 @@ function post ($mysqli, $channel, $notification_text) {
 
         include_once "$fnsDir/Notifications/addOnChannel.php";
         \Notifications\addOnChannel($mysqli, $id_users, $id_channels,
-            $channel_name, $notification_text);
+            $channel_name, $text);
 
         include_once "$fnsDir/Channels/addNumNotifications.php";
         \Channels\addNumNotifications($mysqli, $id_channels, 1);
@@ -41,7 +41,7 @@ function post ($mysqli, $channel, $notification_text) {
             $id = $subscribedChannel->id;
             $id_users = $subscribedChannel->subscriber_id_users;
             \Notifications\addOnSubscribedChannel($mysqli, $id_users,
-                $channel_name, $notification_text, $id);
+                $channel_name, $text, $id);
             \SubscribedChannels\addNumNotifications($mysqli, $id, 1);
             addNumberNew($mysqli, $id_users, 1);
         }

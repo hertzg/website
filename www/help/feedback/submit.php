@@ -70,7 +70,7 @@ session_commit();
 include_once '../../fns/get_zvini_client.php';
 get_zvini_client()->call('notification/post', [
     'channel_name' => 'zvini-feedbacks',
-    'notification_text' => $feedbacktext,
+    'text' => $feedbacktext,
 ]);
 
 redirect('..');

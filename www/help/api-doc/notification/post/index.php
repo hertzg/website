@@ -8,7 +8,7 @@ notification_method_page('post', [
             .' the notification will be published.',
     ],
     [
-        'name' => 'notification_text',
+        'name' => 'text',
         'description' => 'The text to send.',
     ],
-], ['CHANNEL_NOT_FOUND', 'ENTER_NOTIFICATION_TEXT']);
+], ['CHANNEL_NOT_FOUND', 'ENTER_TEXT']);

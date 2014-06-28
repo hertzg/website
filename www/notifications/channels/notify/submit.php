@@ -8,17 +8,15 @@ include_once '../../../lib/mysqli.php';
 list($channel, $id, $user) = require_channel($mysqli);
 
 include_once '../../../fns/request_strings.php';
-list($notification_text) = request_strings('notification_text');
+list($text) = request_strings('text');
 
 include_once '../../../fns/str_collapse_spaces_multiline.php';
-$notification_text = str_collapse_spaces_multiline($notification_text);
-$notification_text = trim($notification_text);
+$text = str_collapse_spaces_multiline($text);
+$text = trim($text);
 
 $errors = [];
 
-if ($notification_text === '') {
-    $errors[] = 'Enter notification text.';
-}
+if ($text === '') $errors[] = 'Enter text.';
 
 include_once '../../../fns/redirect.php';
 
@@ -30,7 +28,7 @@ if ($errors) {
 unset($_SESSION['notifications/channels/notify/errors']);
 
 include_once '../../../fns/Users/Notifications/post.php';
-Users\Notifications\post($mysqli, $channel, $notification_text);
+Users\Notifications\post($mysqli, $channel, $text);
 
 $_SESSION['notifications/channels/view/messages'] = [
     'Notification has been posted.',

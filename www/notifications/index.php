@@ -63,7 +63,7 @@ if ($notifications) {
                 preg_replace(
                     '#(http://.*?)(\s|$)#',
                     '<a class="a" rel="noreferrer" href="$1">$1</a>$2',
-                    htmlspecialchars($notification->notification_text)
+                    htmlspecialchars($notification->text)
                 )
             )
             .'<div style="color: #555">'

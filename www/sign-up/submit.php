@@ -72,7 +72,7 @@ session_commit();
 include_once '../fns/get_zvini_client.php';
 get_zvini_client()->call('notification/post', [
     'channel_name' => 'zvini-signups',
-    'notification_text' => $text,
+    'text' => $text,
 ]);
 
 redirect('../sign-in/');

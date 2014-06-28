@@ -19,11 +19,11 @@ $id = $response;
 $response = $engine->request('notification/post', [
     'channel_name' => $channel_name,
 ]);
-$engine->expectError('ENTER_NOTIFICATION_TEXT');
+$engine->expectError('ENTER_TEXT');
 
 $response = $engine->request('notification/post', [
     'channel_name' => $channel_name,
-    'notification text' => 'notification text',
+    'text' => 'text',
 ]);
 $engine->expectValue('', true, $response);
 
@@ -31,10 +31,9 @@ $response = $engine->request('notification/list');
 $engine->expectSuccess();
 $engine->expectType('', 'array', $response);
 foreach ($response as $i => $notification) {
-    $properties = ['id', 'notification_text', 'channel_name', 'insert_time'];
+    $properties = ['id', 'text', 'channel_name', 'insert_time'];
     $engine->expectObject("[$i]", $properties, $notification);
-    $engine->expectType("[$i].notification_text",
-        'string', $notification->notification_text);
+    $engine->expectType("[$i].text", 'string', $notification->text);
     $engine->expectType("[$i].channel_name",
         'string', $notification->channel_name);
     $engine->expectNatural("[$i].insert_time", $notification->insert_time);
