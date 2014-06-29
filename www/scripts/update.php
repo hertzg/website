@@ -3,8 +3,25 @@
 chdir(__DIR__);
 include_once '../lib/mysqli.php';
 
-$mysqli->query('alter table notifications change notification_text text text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL') || trigger_error($mysqli->error);
+$sql = 'alter table users change num_new_notifications_for_home home_num_new_notifications bigint unsigned not null after insert_time';
+$mysqli->query($sql) || trigger_error($mysqli->error);
 
-$mysqli->query('alter table feedbacks change feedbacktext text text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL after insert_time') || trigger_error($mysqli->error);
+$sql = 'alter table users add home_num_new_received_bookmarks bigint unsigned not null after home_num_new_notifications';
+$mysqli->query($sql) || trigger_error($mysqli->error);
+
+$sql = 'alter table users add home_num_new_received_contacts bigint unsigned not null after home_num_new_received_bookmarks';
+$mysqli->query($sql) || trigger_error($mysqli->error);
+
+$sql = 'alter table users add home_num_new_received_files bigint unsigned not null after home_num_new_received_contacts';
+$mysqli->query($sql) || trigger_error($mysqli->error);
+
+$sql = 'alter table users add home_num_new_received_folders bigint unsigned not null after home_num_new_received_files';
+$mysqli->query($sql) || trigger_error($mysqli->error);
+
+$sql = 'alter table users add home_num_new_received_notes bigint unsigned not null after home_num_new_received_folders';
+$mysqli->query($sql) || trigger_error($mysqli->error);
+
+$sql = 'alter table users add home_num_new_received_tasks bigint unsigned not null after home_num_new_received_notes';
+$mysqli->query($sql) || trigger_error($mysqli->error);
 
 echo "Done\n";
