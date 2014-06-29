@@ -2,11 +2,11 @@
 
 namespace Tasks;
 
-function add ($mysqli, $id_users, $text, $top_priority, $tags) {
+function add ($mysqli, $id_users, $text, $tags, $top_priority) {
 
     $text = $mysqli->real_escape_string($text);
-    $top_priority = $top_priority ? '1' : '0';
     $tags = $mysqli->real_escape_string($tags);
+    $top_priority = $top_priority ? '1' : '0';
     $insert_time = $update_time = time();
 
     $sql = 'insert into tasks'
