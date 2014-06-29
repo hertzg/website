@@ -46,7 +46,7 @@ function send ($mysqli, $user, $receiver_id_users, $folder) {
     include_once __DIR__.'/../../ReceivedFolders/commit.php';
     \ReceivedFolders\commit($mysqli, $id_received_folders);
 
-    include_once __DIR__.'/Received/addNumber.php';
-    \Users\Folders\Received\addNumber($mysqli, $receiver_id_users, 1);
+    include_once __DIR__.'/Received/addNumberNew.php';
+    \Users\Folders\Received\addNumberNew($mysqli, $receiver_id_users, 1);
 
 }

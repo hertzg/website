@@ -15,7 +15,10 @@ $mysqli->query($sql) || trigger_error($mysqli->error);
 $sql = 'alter table users add home_num_new_received_files bigint unsigned not null after home_num_new_received_contacts';
 $mysqli->query($sql) || trigger_error($mysqli->error);
 
-$sql = 'alter table users add home_num_new_received_notes bigint unsigned not null after home_num_new_received_files';
+$sql = 'alter table users add home_num_new_received_folders bigint unsigned not null after home_num_new_received_files';
+$mysqli->query($sql) || trigger_error($mysqli->error);
+
+$sql = 'alter table users add home_num_new_received_notes bigint unsigned not null after home_num_new_received_folders';
 $mysqli->query($sql) || trigger_error($mysqli->error);
 
 $sql = 'alter table users add home_num_new_received_tasks bigint unsigned not null after home_num_new_received_notes';

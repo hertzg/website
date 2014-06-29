@@ -16,7 +16,7 @@ function add ($mysqli, $user, $receiver_id_users,
     include_once __DIR__.'/../../../ReceivedFiles/commit.php';
     \ReceivedFiles\commit($mysqli, $id);
 
-    include_once __DIR__.'/addNumber.php';
-    addNumber($mysqli, $receiver_id_users, 1);
+    include_once __DIR__.'/addNumberNew.php';
+    addNumberNew($mysqli, $receiver_id_users, 1);
 
 }
