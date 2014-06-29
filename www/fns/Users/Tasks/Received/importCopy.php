@@ -11,6 +11,6 @@ function importCopy ($mysqli, $receivedTask) {
 
     include_once __DIR__.'/../add.php';
     return \Users\Tasks\add($mysqli, $receivedTask->receiver_id_users,
-        $receivedTask->text, $receivedTask->top_priority, $tags, $tag_names);
+        $receivedTask->text, $tags, $tag_names, $receivedTask->top_priority);
 
 }

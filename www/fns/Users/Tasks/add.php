@@ -2,7 +2,7 @@
 
 namespace Users\Tasks;
 
-function add ($mysqli, $id_users, $text, $top_priority, $tags, $tag_names) {
+function add ($mysqli, $id_users, $text, $tags, $tag_names, $top_priority) {
 
     include_once __DIR__.'/../../Tasks/add.php';
     $id = \Tasks\add($mysqli, $id_users, $text, $tags, $top_priority);
