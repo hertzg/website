@@ -18,7 +18,7 @@ function addDeleted ($mysqli, $id_users, $data) {
 
     include_once __DIR__.'/../../TaskTags/add.php';
     \TaskTags\add($mysqli, $id_users, $id,
-        $tag_names, $text, $top_priority, $tags);
+        $tag_names, $text, $tags, $top_priority);
 
     include_once __DIR__.'/addNumber.php';
     addNumber($mysqli, $id_users, 1);

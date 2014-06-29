@@ -13,6 +13,6 @@ function edit ($mysqli, $id_users, $id,
 
     include_once __DIR__.'/../../TaskTags/add.php';
     \TaskTags\add($mysqli, $id_users, $id, $tag_names,
-        $text, $top_priority, $tags, $top_priority);
+        $text, $tags, $top_priority);
 
 }

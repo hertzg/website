@@ -10,10 +10,10 @@ function add ($mysqli, $id_users, $text, $tags, $top_priority) {
     $insert_time = $update_time = time();
 
     $sql = 'insert into tasks'
-        .' (id_users, text, top_priority,'
-        .' tags, insert_time, update_time)'
-        ." values ($id_users, '$text', $top_priority,"
-        ." '$tags', $insert_time, $update_time)";
+        .' (id_users, text, tags,'
+        .' top_priority, insert_time, update_time)'
+        ." values ($id_users, '$text', '$tags',"
+        ." $top_priority, $insert_time, $update_time)";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
