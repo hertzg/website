@@ -13,8 +13,8 @@ list($text, $tags, $tag_names, $top_priority) = request_task_params($errors);
 
 $_SESSION['tasks/new/values'] = [
     'text' => $text,
-    'top_priority' => $top_priority,
     'tags' => $tags,
+    'top_priority' => $top_priority,
 ];
 
 include_once '../../fns/redirect.php';

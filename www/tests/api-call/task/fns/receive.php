@@ -7,8 +7,8 @@ function receive (&$numRequests) {
 
     $engine->request('task/send', [
         'text' => 'sample text',
-        'top_priority' => true,
         'tags' => 'tag1 tag2',
+        'top_priority' => true,
         'receiver_username' => 'aimnadze',
     ]);
     $engine->expectSuccess();

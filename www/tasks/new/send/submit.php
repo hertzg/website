@@ -36,8 +36,8 @@ unset(
 
 include_once '../../../fns/Users/Tasks/Received/add.php';
 Users\Tasks\Received\add($mysqli, $id_users, $user->username,
-    $receiver_id_users, $stageValues['text'], $stageValues['top_priority'],
-    $stageValues['tags']);
+    $receiver_id_users, $stageValues['text'], $stageValues['tags'],
+    $stageValues['top_priority']);
 
 $_SESSION['tasks/messages'] = ['Sent.'];
 unset($_SESSION['tasks/errors']);

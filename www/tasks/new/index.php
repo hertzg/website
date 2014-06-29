@@ -11,8 +11,8 @@ if (array_key_exists($key, $_SESSION)) {
 } else {
     $values = [
         'text' => '',
-        'top_priority' => false,
         'tags' => '',
+        'top_priority' => false,
     ];
 }
 

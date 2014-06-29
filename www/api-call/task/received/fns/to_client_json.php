@@ -5,8 +5,8 @@ function to_client_json ($receivedTask) {
         'id' => (int)$receivedTask->id,
         'sender_username' => $receivedTask->sender_username,
         'text' => $receivedTask->text,
-        'top_priority' => (bool)$receivedTask->top_priority,
         'tags' => $receivedTask->tags,
+        'top_priority' => (bool)$receivedTask->top_priority,
         'insert_time' => (int)$receivedTask->insert_time,
     ];
 }
