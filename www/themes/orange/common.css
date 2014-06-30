@@ -25,10 +25,12 @@
 .tag:focus {
     box-shadow: 0 -16px 16px #ffefe1 inset;
 }
+.tag.active,
 .tag:active {
     box-shadow: none;
 }
 
+.tag.active,
 .tag:active,
 .clickable:active {
     background-color: #f80;

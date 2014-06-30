@@ -16,6 +16,7 @@
     line-height: 32px;
     margin-right: 6px;
 }
+.tag.active,
 .tag:active {
     box-shadow: none;
     color: #fff;
