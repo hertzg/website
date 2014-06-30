@@ -2,8 +2,13 @@
 
 $base = '../';
 
-include_once '../fns/require_user.php';
-$user = require_user($base);
+include_once '../fns/signed_user.php';
+$user = signed_user($base);
+
+if (!$user) {
+    include_once '../fns/redirect.php';
+    redirect('../sign-in/');
+}
 
 include_once 'fns/unset_session_vars.php';
 unset_session_vars();
