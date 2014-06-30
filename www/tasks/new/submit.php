@@ -11,8 +11,11 @@ $errors = [];
 include_once '../fns/request_task_params.php';
 list($text, $tags, $tag_names, $top_priority) = request_task_params($errors);
 
+$deadline_time = null;
+
 $_SESSION['tasks/new/values'] = [
     'text' => $text,
+    'deadline_time' => $deadline_time,
     'tags' => $tags,
     'top_priority' => $top_priority,
 ];
@@ -34,8 +37,6 @@ if ($sendButton !== '') {
 }
 
 unset($_SESSION['tasks/new/values']);
-
-$deadline_time = null;
 
 include_once '../../fns/Users/Tasks/add.php';
 include_once '../../lib/mysqli.php';

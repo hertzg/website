@@ -34,11 +34,9 @@ unset(
     $_SESSION['tasks/new/send/values']
 );
 
-$deadline_time = null;
-
 include_once '../../../fns/Users/Tasks/Received/add.php';
 Users\Tasks\Received\add($mysqli, $id_users, $user->username,
-    $receiver_id_users, $stageValues['text'], $deadline_time,
+    $receiver_id_users, $stageValues['text'], $stageValues['deadline_time'],
     $stageValues['tags'], $stageValues['top_priority']);
 
 $_SESSION['tasks/messages'] = ['Sent.'];

@@ -15,8 +15,11 @@ list($text, $tags, $tag_names, $top_priority) = request_task_params($errors);
 include_once '../../fns/ItemList/itemQuery.php';
 $itemQuery = ItemList\itemQuery($id);
 
+$deadline_time = null;
+
 $_SESSION['tasks/edit/values'] = [
     'text' => $text,
+    'deadline_time' => $deadline_time,
     'tags' => $tags,
     'top_priority' => $top_priority,
 ];
@@ -35,8 +38,6 @@ list($sendButton) = request_strings('sendButton');
 if ($sendButton) redirect("send/$itemQuery");
 
 unset($_SESSION['tasks/edit/values']);
-
-$deadline_time = null;
 
 include_once '../../fns/Users/Tasks/edit.php';
 Users\Tasks\edit($mysqli, $user->id_users, $id,
