@@ -4,13 +4,10 @@ function echo_page ($user, $title, $content, $base, array $options = []) {
 
     $theme = $user ? $user->theme : 'orange';
 
-    if (array_key_exists('head', $options)) {
-        $head = $options['head'];
-    } else {
-        $head = '';
-    }
+    if (array_key_exists('head', $options)) $head = $options['head'];
+    else $head = '';
 
-    if (array_key_exists('hideSignOutLink', $options)) {
+    if (!$user || array_key_exists('hideSignOutLink', $options)) {
         $signOutLink = '';
     } else {
         $signOutLink =

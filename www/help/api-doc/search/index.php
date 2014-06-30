@@ -1,9 +1,7 @@
 <?php
 
-$base = '../../../';
-
-include_once '../../../fns/require_user.php';
-$user = require_user($base);
+include_once '../../../fns/signed_user.php';
+$user = signed_user();
 
 include_once '../../../fns/request_strings.php';
 list($keyword) = request_strings('keyword');
@@ -102,4 +100,4 @@ $content = Page\tabs(
 );
 
 include_once '../../../fns/echo_page.php';
-echo_page($user, 'Search API Documentation', $content, $base);
+echo_page($user, 'Search API Documentation', $content, '../../../');

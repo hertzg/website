@@ -3,10 +3,8 @@
 function submethod_page ($groupKey, $subgroupName, $subgroupKey, $methodName,
     $description, array $params, array $errors) {
 
-    $base = '../../../../../';
-
-    include_once __DIR__.'/../../../fns/require_user.php';
-    $user = require_user($base);
+    include_once __DIR__.'/../../../fns/signed_user.php';
+    $user = signed_user();
 
     $methodFullName = "$groupKey/$subgroupKey/$methodName";
 
@@ -53,6 +51,6 @@ function submethod_page ($groupKey, $subgroupName, $subgroupKey, $methodName,
     );
 
     include_once __DIR__.'/../../../fns/echo_page.php';
-    echo_page($user, "$methodFullName Method", $content, $base);
+    echo_page($user, "$methodFullName Method", $content, '../../../../../');
 
 }

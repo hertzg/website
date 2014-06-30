@@ -3,10 +3,8 @@
 function method_page ($groupName, $prefix, $methodName,
     $description, array $params, array $errors) {
 
-    $base = '../../../../';
-
-    include_once __DIR__.'/../../../fns/require_user.php';
-    $user = require_user($base);
+    include_once __DIR__.'/../../../fns/signed_user.php';
+    $user = signed_user();
 
     include_once __DIR__.'/../../../fns/Page/text.php';
     $items = [Page\text("<code>$prefix/$methodName</code> - $description")];
@@ -51,6 +49,6 @@ function method_page ($groupName, $prefix, $methodName,
     );
 
     include_once __DIR__.'/../../../fns/echo_page.php';
-    echo_page($user, "$prefix/$methodName Method", $content, $base);
+    echo_page($user, "$prefix/$methodName Method", $content, '../../../../');
 
 }

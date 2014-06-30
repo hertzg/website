@@ -2,15 +2,13 @@
 
 function group_page ($groupKey, array $methods, array $subgroups = null) {
 
-    $base = '../../../';
-
     include_once __DIR__.'/get_groups.php';
     $groups = get_groups();
 
     $group = $groups[$groupKey];
 
-    include_once __DIR__.'/../../../fns/require_user.php';
-    $user = require_user($base);
+    include_once __DIR__.'/../../../fns/signed_user.php';
+    $user = signed_user();
 
     include_once __DIR__.'/../../../fns/Page/imageArrowLinkWithDescription.php';
     $items = [];
@@ -52,6 +50,6 @@ function group_page ($groupKey, array $methods, array $subgroups = null) {
     }
 
     include_once __DIR__.'/../../../fns/echo_page.php';
-    echo_page($user, "$groupKey Namespace", $content, $base);
+    echo_page($user, "$groupKey Namespace", $content, '../../../');
 
 }

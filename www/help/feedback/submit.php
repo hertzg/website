@@ -3,8 +3,8 @@
 include_once '../../fns/require_same_domain_referer.php';
 require_same_domain_referer('./');
 
-include_once '../../fns/require_user.php';
-$user = require_user('../../');
+include_once '../../fns/signed_user.php';
+$user = signed_user('../../');
 
 include_once '../../fns/request_strings.php';
 list($text) = request_strings('text');
@@ -35,7 +35,7 @@ unset(
 
 include_once '../../fns/Feedbacks/add.php';
 include_once '../../lib/mysqli.php';
-$id = Feedbacks\add($mysqli, $user->id_users, $text);
+$id = Feedbacks\add($mysqli, $user ? $user->id_users : null, $text);
 
 $title = "Zvini Feedback #$id";
 
@@ -55,9 +55,9 @@ $html =
 $subject = mb_encode_mimeheader($title, 'UTF-8');
 
 $headers =
-    "From: no-reply@zvini.com\r\n"
-    ."Reply-To: $user->email\r\n"
-    .'Content-Type: text/html; charset=UTF-8';
+    "Content-Type: text/html; charset=UTF-8\r\n"
+    .'From: no-reply@zvini.com';
+if ($user) $header .= "\r\nReply-To: $user->email";
 
 mail('info@zvini.com', $title, $html, $headers);
 

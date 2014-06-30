@@ -1,9 +1,7 @@
 <?php
 
-$base = '../../';
-
-include_once '../../fns/require_user.php';
-$user = require_user($base);
+include_once '../../fns/signed_user.php';
+$user = signed_user();
 
 $api_base = 'https://zvini.com/api-call/';
 
@@ -60,4 +58,4 @@ $content = Page\tabs(
 );
 
 include_once '../../fns/echo_page.php';
-echo_page($user, 'API Documentation', $content, $base);
+echo_page($user, 'API Documentation', $content, '../../');

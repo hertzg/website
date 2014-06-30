@@ -2,15 +2,13 @@
 
 function subgroup_page ($groupKey, $subgroup, $subgroupKey, array $methods) {
 
-    $base = '../../../../';
-
     include_once __DIR__.'/get_groups.php';
     $groups = get_groups();
 
     $title = $subgroup['title'];
 
-    include_once __DIR__.'/../../../fns/require_user.php';
-    $user = require_user($base);
+    include_once __DIR__.'/../../../fns/signed_user.php';
+    $user = signed_user();
 
     include_once __DIR__.'/../../../fns/Page/imageArrowLinkWithDescription.php';
     $items = [];
@@ -38,6 +36,6 @@ function subgroup_page ($groupKey, $subgroup, $subgroupKey, array $methods) {
     );
 
     include_once __DIR__.'/../../../fns/echo_page.php';
-    echo_page($user, "$groupKey/$subgroupKey Namespace", $content, $base);
+    echo_page($user, "$groupKey/$subgroupKey Namespace", $content, '../../../../');
 
 }

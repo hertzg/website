@@ -1,9 +1,7 @@
 <?php
 
-$base = '../../';
-
-include_once '../../fns/require_user.php';
-$user = require_user($base);
+include_once '../../fns/signed_user.php';
+$user = signed_user();
 
 $key = 'help/feedback/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
@@ -42,4 +40,4 @@ $content = Page\tabs(
 );
 
 include_once '../../fns/echo_page.php';
-echo_page($user, 'Leave Feedback', $content, $base);
+echo_page($user, 'Leave Feedback', $content, '../../');
