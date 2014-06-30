@@ -21,7 +21,7 @@ if ($id_folders) {
 
     if (!$parentFolder) {
         include_once '../../fns/redirect.php';
-        redirect("move-file.php?id=$id");
+        redirect("./?id=$id");
     }
 
 }

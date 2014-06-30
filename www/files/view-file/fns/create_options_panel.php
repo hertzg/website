@@ -15,7 +15,9 @@ function create_options_panel ($file) {
     $href = "../rename-file/?id=$id";
     $renameLink = Page\imageArrowLink('Rename', $href, 'rename');
 
-    $href = "../move-file/?id=$id&id_folders=$file->id_folders";
+    $id_folders = $file->id_folders;
+    $href = "../move-file/?id=$id";
+    if ($id_folders) $href .= "&amp;id_folders=$file->id_folders";
     $moveLink = Page\imageArrowLink('Move', $href, 'move-file');
 
     $href = "../send-file/?id=$id";
