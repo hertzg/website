@@ -27,4 +27,9 @@ function parse_deadline ($day, $month, $year, &$errors, &$time) {
 
     $time = mktime(0, 0, 0, $month, $day, $year);
 
+    include_once __DIR__.'/../../fns/time_today.php';
+    if ($time < time_today()) {
+        $errors[] = 'The deadline is the past.';
+    }
+
 }

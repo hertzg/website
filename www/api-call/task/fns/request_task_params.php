@@ -15,6 +15,7 @@ function request_task_params () {
     } else {
         include_once "$fnsDir/time_today.php";
         $deadline_time = time_today($deadline_time);
+        $deadline_time = max($deadline_time, time_today());
     }
 
     if ($text === '') {
