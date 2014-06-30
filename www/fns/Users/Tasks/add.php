@@ -4,8 +4,11 @@ namespace Users\Tasks;
 
 function add ($mysqli, $id_users, $text, $tags, $tag_names, $top_priority) {
 
+    $deadline_time = null;
+
     include_once __DIR__.'/../../Tasks/add.php';
-    $id = \Tasks\add($mysqli, $id_users, $text, $tags, $top_priority);
+    $id = \Tasks\add($mysqli, $id_users, $text,
+        $deadline_time, $tags, $top_priority);
 
     include_once __DIR__.'/../../TaskTags/add.php';
     \TaskTags\add($mysqli, $id_users, $id,
