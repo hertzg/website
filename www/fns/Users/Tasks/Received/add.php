@@ -3,9 +3,7 @@
 namespace Users\Tasks\Received;
 
 function add ($mysqli, $sender_id_users, $sender_username,
-    $receiver_id_users, $text, $tags, $top_priority) {
-
-    $deadline_time = null;
+    $receiver_id_users, $text, $deadline_time, $tags, $top_priority) {
 
     include_once __DIR__.'/../../../ReceivedTasks/add.php';
     \ReceivedTasks\add($mysqli, $sender_id_users, $sender_username,
