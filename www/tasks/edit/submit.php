@@ -36,9 +36,11 @@ if ($sendButton) redirect("send/$itemQuery");
 
 unset($_SESSION['tasks/edit/values']);
 
+$deadline = null;
+
 include_once '../../fns/Users/Tasks/edit.php';
 Users\Tasks\edit($mysqli, $user->id_users, $id,
-    $text, $tags, $tag_names, $top_priority);
+    $text, $deadline, $tags, $tag_names, $top_priority);
 
 $_SESSION['tasks/view/messages'] = ['Changes have been saved.'];
 redirect("../view/$itemQuery");
