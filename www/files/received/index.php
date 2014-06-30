@@ -4,6 +4,13 @@ include_once 'fns/require_received_files.php';
 $user = require_received_files();
 $id_users = $user->id_users;
 
+include_once '../../fns/Users/Folders/Received/clearNumberNew.php';
+include_once '../../lib/mysqli.php';
+Users\Folders\Received\clearNumberNew($mysqli, $id_users);
+
+include_once '../../fns/Users/Files/Received/clearNumberNew.php';
+Users\Files\Received\clearNumberNew($mysqli, $id_users);
+
 unset(
     $_SESSION['files/errors'],
     $_SESSION['files/id_folders'],
@@ -20,7 +27,6 @@ list($all) = request_strings('all');
 $receivedFoldersDir = "$fnsDir/ReceivedFolders/Committed";
 $receivedFilesDir = "$fnsDir/ReceivedFiles/Committed";
 
-include_once '../../lib/mysqli.php';
 if ($all) {
 
     include_once "$receivedFoldersDir/indexOnReceiver.php";

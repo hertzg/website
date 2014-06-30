@@ -4,6 +4,10 @@ include_once 'fns/require_received_bookmarks.php';
 $user = require_received_bookmarks();
 $id_users = $user->id_users;
 
+include_once '../../fns/Users/Bookmarks/Received/clearNumberNew.php';
+include_once '../../lib/mysqli.php';
+Users\Bookmarks\Received\clearNumberNew($mysqli, $id_users);
+
 unset(
     $_SESSION['bookmarks/errors'],
     $_SESSION['bookmarks/messages'],
@@ -13,7 +17,6 @@ unset(
 include_once '../../fns/request_strings.php';
 list($all) = request_strings('all');
 
-include_once '../../lib/mysqli.php';
 if ($all) {
     include_once '../../fns/ReceivedBookmarks/indexOnReceiver.php';
     $receivedBookmarks = ReceivedBookmarks\indexOnReceiver($mysqli, $id_users);

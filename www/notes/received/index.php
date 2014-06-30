@@ -4,6 +4,10 @@ include_once 'fns/require_received_notes.php';
 $user = require_received_notes();
 $id_users = $user->id_users;
 
+include_once '../../fns/Users/Notes/Received/clearNumberNew.php';
+include_once '../../lib/mysqli.php';
+Users\Notes\Received\clearNumberNew($mysqli, $id_users);
+
 unset(
     $_SESSION['notes/errors'],
     $_SESSION['notes/messages'],
@@ -13,7 +17,6 @@ unset(
 include_once '../../fns/request_strings.php';
 list($all) = request_strings('all');
 
-include_once '../../lib/mysqli.php';
 if ($all) {
     include_once '../../fns/ReceivedNotes/indexOnReceiver.php';
     $receivedNotes = ReceivedNotes\indexOnReceiver($mysqli, $id_users);
