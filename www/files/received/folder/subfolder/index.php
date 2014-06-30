@@ -12,12 +12,6 @@ $id_received_folders = $receivedFolderSubfolder->id_received_folders;
 
 $items = [];
 
-include_once "$fnsDir/Page/imageLink.php";
-$parent_id = $receivedFolderSubfolder->parent_id;
-if ($parent_id) $href = $href = "?id=$parent_id";
-else $href = "../?id=$id_received_folders";
-$items[] = Page\imageLink('.. Parent folder', $href, 'parent-folder');
-
 include_once "$fnsDir/ReceivedFolderSubfolders/indexOnParent.php";
 $subfolders = ReceivedFolderSubfolders\indexOnParent(
     $mysqli, $id_received_folders, $id);
@@ -26,6 +20,8 @@ include_once "$fnsDir/ReceivedFolderFiles/indexOnParent.php";
 $files = ReceivedFolderFiles\indexOnParent($mysqli, $id_received_folders, $id);
 
 if ($subfolders || $files) {
+
+    include_once "$fnsDir/Page/imageLink.php";
 
     foreach ($subfolders as $subfolder) {
         $title = htmlspecialchars($subfolder->name);
@@ -45,6 +41,7 @@ if ($subfolders || $files) {
 
 $title = "Received Folder #$id_received_folders";
 
+include_once 'fns/create_location_bar.php';
 include_once "$fnsDir/bytestr.php";
 include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
@@ -59,7 +56,8 @@ $content = Page\tabs(
         ],
     ],
     $title,
-    join('<div class="hr"></div>', $items)
+    create_location_bar($mysqli, $receivedFolderSubfolder)
+    .join('<div class="hr"></div>', $items)
 );
 
 include_once "$fnsDir/echo_page.php";

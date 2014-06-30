@@ -6,21 +6,20 @@ $values = require_received_folder_file($mysqli, '../');
 list($receivedFolderFile, $id, $user) = $values;
 
 $fnsDir = '../../../../../fns';
-$parent_id = $receivedFolderFile->parent_id;
 
-if (!$parent_id) {
+if (!$receivedFolderFile->parent_id) {
     include_once "$fnsDir/redirect.php";
     redirect("../../file/?id=$id");
 }
 
 $title = "Received Folder #$receivedFolderFile->id_received_folders";
-$parentHref = "../?id=$parent_id";
 $name = $receivedFolderFile->name;
 
 include_once "$fnsDir/Page/imageLink.php";
 $href = "../../download-file/?id=$id";
 $downloadLink = Page\imageLink('Download', $href, 'download');
 
+include_once "fns/create_location_bar.php";
 include_once "$fnsDir/bytestr.php";
 include_once "$fnsDir/create_panel.php";
 include_once "$fnsDir/Form/label.php";
@@ -38,8 +37,7 @@ $content = Page\tabs(
         ],
     ],
     $title,
-    Page\imageLink('.. Parent folder', $parentHref, 'parent-folder')
-    .'<div class="hr"></div>'
+    create_location_bar($mysqli, $receivedFolderFile)
     .Form\label('File name', htmlspecialchars($name))
     .'<div class="hr"></div>'
     .Form\label('Size', bytestr($receivedFolderFile->size))

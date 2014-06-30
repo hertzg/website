@@ -13,7 +13,6 @@ if ($receivedFolderFile->parent_id) {
 
 $id_received_folders = $receivedFolderFile->id_received_folders;
 $title = "Received Folder #$id_received_folders";
-$parentHref = "../?id=$id_received_folders";
 $name = $receivedFolderFile->name;
 
 include_once "$fnsDir/Page/imageLink.php";
@@ -37,8 +36,10 @@ $content = Page\tabs(
         ],
     ],
     $title,
-    Page\imageLink('.. Parent folder', $parentHref, 'parent-folder')
-    .'<div class="hr"></div>'
+    '<div class="page-tags tagFilterBar">'
+        .'<span class="label">Location:</span>'
+        ."<a class=\"tag\" href=\"../?id=$id_received_folders\">root</a>"
+    .'</div>'
     .Form\label('File name', htmlspecialchars($name))
     .'<div class="hr"></div>'
     .Form\label('Size', bytestr($receivedFolderFile->size))
