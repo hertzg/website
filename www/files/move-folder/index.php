@@ -91,7 +91,7 @@ $content = Page\tabs(
             'href' => create_folder_link($id_folders, '../'),
         ]
     ],
-    'Move',
+    "Move Folder #$id_folders",
     Page\sessionErrors('files/move-folder/errors')
     .Page\warnings([
         'Moving the folder "<b>'.htmlspecialchars($folder->name).'</b>".',
