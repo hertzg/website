@@ -27,6 +27,7 @@ $infoText = Page\infoText($text);
 include_once '../../fns/Page/filePreview.php';
 $filePreview = Page\filePreview($file->name, $id, '../download-file/');
 
+include_once 'fns/create_location_bar.php';
 include_once 'fns/create_options_panel.php';
 include_once '../../fns/bytestr.php';
 include_once '../../fns/create_folder_link.php';
@@ -47,6 +48,7 @@ $content =
         ],
         "File #$id",
         Page\sessionMessages('files/view-file/messages')
+        .create_location_bar($mysqli, $file)
         .Form\label('File name', $file->name)
         .'<div class="hr"></div>'
         .Form\label('Size', bytestr($file->size))
