@@ -10,10 +10,14 @@ $errors = [];
 
 include_once '../fns/request_task_params.php';
 $values = request_task_params($errors);
-list($text, $deadline_time, $tags, $tag_names, $top_priority) = $values;
+list($text, $deadline_day, $deadline_month, $deadline_year,
+    $deadline_time, $tags, $tag_names, $top_priority) = $values;
 
 $_SESSION['tasks/new/values'] = [
     'text' => $text,
+    'deadline_day' => $deadline_day,
+    'deadline_month' => $deadline_month,
+    'deadline_year' => $deadline_year,
     'deadline_time' => $deadline_time,
     'tags' => $tags,
     'top_priority' => $top_priority,
