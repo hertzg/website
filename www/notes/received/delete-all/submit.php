@@ -11,9 +11,7 @@ include_once '../../../lib/mysqli.php';
 Users\Notes\Received\deleteAll($mysqli, $user->id_users);
 
 unset($_SESSION['notes/errors']);
-$_SESSION['notes/messages'] = [
-    'All received notes have been deleted.',
-];
+$_SESSION['notes/messages'] = ['All received notes have been deleted.'];
 
 include_once '../../../fns/redirect.php';
 redirect('../..');

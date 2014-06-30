@@ -11,9 +11,7 @@ include_once '../../../lib/mysqli.php';
 Users\Bookmarks\Received\deleteAll($mysqli, $user->id_users);
 
 unset($_SESSION['bookmarks/errors']);
-$_SESSION['bookmarks/messages'] = [
-    'All received bookmarks have been deleted.',
-];
+$_SESSION['bookmarks/messages'] = ['All received bookmarks have been deleted.'];
 
 include_once '../../../fns/redirect.php';
 redirect('../..');

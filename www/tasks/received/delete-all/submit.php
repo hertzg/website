@@ -11,9 +11,7 @@ include_once '../../../lib/mysqli.php';
 Users\Tasks\Received\deleteAll($mysqli, $user->id_users);
 
 unset($_SESSION['tasks/errors']);
-$_SESSION['tasks/messages'] = [
-    'All received tasks have been deleted.',
-];
+$_SESSION['tasks/messages'] = ['All received tasks have been deleted.'];
 
 include_once '../../../fns/redirect.php';
 redirect('../..');

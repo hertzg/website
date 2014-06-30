@@ -11,9 +11,7 @@ include_once '../../../lib/mysqli.php';
 Users\Contacts\Received\deleteAll($mysqli, $user->id_users);
 
 unset($_SESSION['contacts/errors']);
-$_SESSION['contacts/messages'] = [
-    'All received contacts have been deleted.',
-];
+$_SESSION['contacts/messages'] = ['All received contacts have been deleted.'];
 
 include_once '../../../fns/redirect.php';
 redirect('../..');
