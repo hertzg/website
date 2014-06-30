@@ -12,8 +12,10 @@ function addDeleted ($mysqli, $id_users, $data) {
     include_once __DIR__.'/../../Tags/parse.php';
     $tag_names = \Tags\parse($tags);
 
+    $deadline_time = null;
+
     include_once __DIR__.'/../../Tasks/addDeleted.php';
-    \Tasks\addDeleted($mysqli, $id, $id_users, $text, $tags,
+    \Tasks\addDeleted($mysqli, $id, $id_users, $text, $deadline_time, $tags,
         $top_priority, $data->insert_time, $data->update_time);
 
     include_once __DIR__.'/../../TaskTags/add.php';
