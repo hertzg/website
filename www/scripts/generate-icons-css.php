@@ -40,9 +40,8 @@ render($content, 'event.svg?1', $names);
 $names = ['file', 'create-file', 'files', 'copy-file', 'move-file'];
 render($content, 'file.svg?3', $names);
 
-$names = ['folder', 'create-folder',
-    'parent-folder', 'copy-folder', 'move-folder'];
-render($content, 'folder.svg?3', $names);
+$names = ['folder', 'create-folder', 'copy-folder', 'move-folder'];
+render($content, 'folder.svg?4', $names);
 
 $names = ['move-up', 'move-to-top', 'move-down', 'move-to-bottom'];
 render($content, 'move.svg?1', $names);
