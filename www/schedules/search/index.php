@@ -43,7 +43,7 @@ if ($schedules) {
 
         $title = htmlspecialchars($schedule->text);
         $title = preg_replace($regex, '<mark>$0</mark>', $title);
-        
+
         $description = format_days_left($schedule->days_left);
         $href = '../view/'.ItemList\escapedItemQuery($schedule->id);
         $items[] = Page\imageArrowLinkWithDescription(

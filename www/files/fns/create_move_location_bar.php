@@ -1,6 +1,6 @@
 <?php
 
-function create_location_bar ($mysqli, $folder) {
+function create_move_location_bar ($mysqli, $id, $folder, $item_id, $folder_id) {
 
     $html =
         '<div class="page-tags tagFilterBar">'
@@ -8,7 +8,7 @@ function create_location_bar ($mysqli, $folder) {
 
     if ($folder) {
 
-        $html .= '<a class="tag" href="./">root</a>';
+        $html .= "<a class=\"tag\" href=\"./?$item_id=$id\">root</a>";
 
         $parentFolders = [];
         $parent_id_folders = $folder->parent_id_folders;
@@ -23,7 +23,7 @@ function create_location_bar ($mysqli, $folder) {
         }
         $parentFolders = array_reverse($parentFolders);
         foreach ($parentFolders as $parentFolder) {
-            $href = "./?id_folders=$parentFolder->id_folders";
+            $href = "./?$item_id=$id&amp;$folder_id=$parentFolder->id_folders";
             $html .=
                 "<a class=\"tag\" href=\"$href\">"
                     .htmlspecialchars($parentFolder->name)

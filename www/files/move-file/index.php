@@ -13,6 +13,7 @@ $id_users = $user->id_users;
 include_once '../../fns/request_strings.php';
 list($id_folders) = request_strings('id_folders');
 
+$parentFolder = null;
 $id_folders = abs((int)$id_folders);
 if ($id_folders) {
 
@@ -33,11 +34,6 @@ include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../fns/Page/imageLink.php';
 
 $items = [];
-if ($id_folders) {
-    $title = '.. Parent folder';
-    $href = create_href($id, $parentFolder->parent_id_folders);
-    $items[] = Page\imageLink($title, $href, 'parent-folder');
-}
 if ($folders) {
     foreach ($folders as $folder) {
         $title = htmlspecialchars($folder->name);
@@ -61,6 +57,7 @@ if (array_key_exists($key, $_SESSION) && $id_folders != $_SESSION[$key]) {
 
 unset($_SESSION['files/view-file/messages']);
 
+include_once '../fns/create_move_location_bar.php';
 include_once '../../fns/create_folder_link.php';
 include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Page/warnings.php';
@@ -73,7 +70,7 @@ $content = Page\tabs(
         ],
         [
             'title' => "File #$id",
-            'href' => "../view-file/?id=$file->id_files",
+            'href' => "../view-file/?id=$id",
         ],
     ],
     'Move',
@@ -82,6 +79,7 @@ $content = Page\tabs(
         'Moving the file "<b>'.htmlspecialchars($file->name).'</b>".',
         'Select a folder to move the file into.',
     ])
+    .create_move_location_bar($mysqli, $id, $parentFolder, 'id', 'id_folders')
     .join('<div class="hr"></div>', $items)
 );
 

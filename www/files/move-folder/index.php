@@ -15,6 +15,7 @@ $id_users = $user->id_users;
 include_once '../../fns/request_strings.php';
 list($parent_id_folders) = request_strings('parent_id_folders');
 
+$parentFolder = null;
 $parent_id_folders = abs((int)$parent_id_folders);
 if ($parent_id_folders) {
 
@@ -35,11 +36,6 @@ include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../fns/Page/imageLink.php';
 
 $items = [];
-if ($parent_id_folders) {
-    $title = '.. Parent folder';
-    $href = create_href($id_folders, $parentFolder->parent_id_folders);
-    $items[] = Page\imageLink($title, $href, 'parent-folder');
-}
 if ($folders) {
     foreach ($folders as $itemFolder) {
         $escapedName = htmlspecialchars($itemFolder->name);
@@ -76,6 +72,7 @@ unset(
     $_SESSION['files/messages']
 );
 
+include_once '../fns/create_move_location_bar.php';
 include_once '../../fns/create_folder_link.php';
 include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Page/sessionErrors.php';
@@ -97,6 +94,7 @@ $content = Page\tabs(
         'Moving the folder "<b>'.htmlspecialchars($folder->name).'</b>".',
         'Select a folder to move the folder into.'
     ])
+    .create_move_location_bar($mysqli, $id_folders, $parentFolder, 'id_folders', 'parent_id_folders')
     .join('<div class="hr"></div>', $items)
 );
 

@@ -38,5 +38,5 @@ function create_location_bar ($mysqli, $file) {
     $html .= '</div>';
 
     return $html;
-    
+
 }
