@@ -26,7 +26,7 @@ function create_location_bar ($mysqli, $file) {
         $parentFolders = array_reverse($parentFolders);
 
         foreach ($parentFolders as $parentFolder) {
-            $href = "./?id_folders=$parentFolder->id_folders";
+            $href = "../?id_folders=$parentFolder->id_folders";
             $html .=
                 "<a class=\"tag\" href=\"$href\">"
                     .htmlspecialchars($parentFolder->name)
