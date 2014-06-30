@@ -27,4 +27,7 @@ function parse_birthday ($day, $month, $year, &$errors, &$time) {
 
     $time = mktime(0, 0, 0, $month, $day, $year);
 
+    include_once __DIR__.'/../../fns/time_today.php';
+    $time = min($time, time_today());
+
 }
