@@ -7,10 +7,27 @@ list($receivedTask, $id, $user) = require_received_task($mysqli);
 unset($_SESSION['tasks/received/view/messages']);
 
 $key = 'tasks/received/edit-and-import/values';
-if (array_key_exists($key, $_SESSION)) {
-    $values = $_SESSION[$key];
-} else {
-    $values = (array)$receivedTask;
+if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
+else {
+
+    $deadline_time = $receivedTask->deadline_time;
+    if ($deadline_time === null) {
+        $deadline_day = $deadline_month = $deadline_year = 0;
+    } else {
+        $deadline_day = date('d', $deadline_time);
+        $deadline_month = date('n', $deadline_time);
+        $deadline_year = date('Y', $deadline_time);
+    }
+
+    $values = [
+        'text' => $receivedTask->text,
+        'deadline_day' => $deadline_day,
+        'deadline_month' => $deadline_month,
+        'deadline_year' => $deadline_year,
+        'tags' => $receivedTask->tags,
+        'top_priority' => $receivedTask->top_priority,
+    ];
+
 }
 
 include_once '../../../fns/Tasks/maxLengths.php';
@@ -21,6 +38,7 @@ $base = '../../../';
 include_once '../../../fns/Page/tabs.php';
 include_once '../../../fns/Form/button.php';
 include_once '../../../fns/Form/checkbox.php';
+include_once '../../../fns/Form/datefield.php';
 include_once '../../../fns/Form/hidden.php';
 include_once '../../../fns/Form/textarea.php';
 include_once '../../../fns/Form/textfield.php';
@@ -45,6 +63,19 @@ $content = Page\tabs(
             'required' => true,
             'autofocus' => true,
         ])
+        .'<div class="hr"></div>'
+        .Form\datefield([
+            'name' => 'deadline_day',
+            'value' => $values['deadline_day'],
+        ], [
+            'name' => 'deadline_month',
+            'value' => $values['deadline_month'],
+        ], [
+            'name' => 'deadline_year',
+            'value' => $values['deadline_year'],
+            'min' => date('Y'),
+            'max' => date('Y') + 2,
+        ], 'Deadline', false, true)
         .'<div class="hr"></div>'
         .Form\textfield('tags', 'Tags', [
             'value' => $values['tags'],

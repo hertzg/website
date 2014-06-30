@@ -10,7 +10,9 @@ list($receivedTask, $id, $user) = require_received_task($mysqli);
 $errors = [];
 
 include_once '../../fns/request_task_params.php';
-list($text, $tags, $tag_names, $top_priority) = request_task_params($errors);
+$values = request_task_params($errors);
+list($text, $deadline_day, $deadline_month, $deadline_year,
+    $deadline_time, $tags, $tag_names, $top_priority) = $values;
 
 include_once '../../../fns/redirect.php';
 
@@ -18,6 +20,9 @@ if ($errors) {
     $_SESSION['tasks/received/edit-and-import/errors'] = $errors;
     $_SESSION['tasks/received/edit-and-import/values'] = [
         'text' => $text,
+        'deadline_day' => $deadline_day,
+        'deadline_month' => $deadline_month,
+        'deadline_year' => $deadline_year,
         'tags' => $tags,
         'top_priority' => $top_priority,
     ];
@@ -30,6 +35,7 @@ unset(
 );
 
 $receivedTask->text = $text;
+$receivedTask->deadline_time = $deadline_time;
 $receivedTask->tags = $tags;
 $receivedTask->top_priority = $top_priority;
 

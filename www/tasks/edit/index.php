@@ -71,6 +71,7 @@ $content = Page\tabs(
             'autofocus' => true,
             'required' => true,
         ])
+        .'<div class="hr"></div>'
         .Form\datefield([
             'name' => 'deadline_day',
             'value' => $values['deadline_day'],
