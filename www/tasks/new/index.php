@@ -69,6 +69,8 @@ $content = Page\tabs(
         ], [
             'name' => 'deadline_year',
             'value' => $values['deadline_year'],
+            'min' => date('Y'),
+            'max' => date('Y') + 2,
         ], 'Deadline', false, true)
         .'<div class="hr"></div>'
         .Form\textfield('tags', 'Tags', [

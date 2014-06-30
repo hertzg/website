@@ -11,9 +11,11 @@ function datefield (array $day, array $month, array $year, $text, $required,
     if ($emptyOption) $emptyOption = '<option value="">--</option>';
     else $emptyOption = '';
 
-    $time = time();
-    $maxYear = date('Y', $time);
-    $minYear = $maxYear - 100;
+    if (array_key_exists('max', $year)) $maxYear = $year['max'];
+    else $maxYear = date('Y');
+
+    if (array_key_exists('min', $year)) $minYear = $year['min'];
+    else $minYear = $maxYear - 100;
 
     $selectedDay = $day['value'];
     $selectedMonth = $month['value'];
