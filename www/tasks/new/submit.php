@@ -9,9 +9,8 @@ $user = require_user('../../');
 $errors = [];
 
 include_once '../fns/request_task_params.php';
-list($text, $tags, $tag_names, $top_priority) = request_task_params($errors);
-
-$deadline_time = null;
+$values = request_task_params($errors);
+list($text, $deadline_time, $tags, $tag_names, $top_priority) = $values;
 
 $_SESSION['tasks/new/values'] = [
     'text' => $text,

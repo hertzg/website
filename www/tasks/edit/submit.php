@@ -10,12 +10,11 @@ list($task, $id, $user) = require_task($mysqli);
 $errors = [];
 
 include_once '../fns/request_task_params.php';
-list($text, $tags, $tag_names, $top_priority) = request_task_params($errors);
+$values = request_task_params($errors);
+list($text, $deadline_time, $tags, $tag_names, $top_priority) = $values;
 
 include_once '../../fns/ItemList/itemQuery.php';
 $itemQuery = ItemList\itemQuery($id);
-
-$deadline_time = null;
 
 $_SESSION['tasks/edit/values'] = [
     'text' => $text,
