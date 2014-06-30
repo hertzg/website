@@ -11,6 +11,7 @@ include_once '../lib/mysqli.php';
 include_once '../fns/request_strings.php';
 list($id_folders) = request_strings('id_folders');
 
+$folder = null;
 $id_folders = abs((int)$id_folders);
 if ($id_folders) {
     include_once '../fns/Folders/get.php';
@@ -43,16 +44,6 @@ if (count($files) + count($folders) > 1) {
 
 }
 
-if ($id_folders) {
-
-    include_once '../fns/create_folder_link.php';
-    $href = create_folder_link($folder->parent_id_folders);
-
-    include_once '../fns/Page/imageLink.php';
-    $items[] = Page\imageLink('.. Parent folder', $href, 'parent-folder');
-
-}
-
 include_once 'fns/render_folders_and_files.php';
 render_folders_and_files($folders, $files, $items);
 
@@ -68,6 +59,7 @@ if (array_key_exists($key, $_SESSION) && $id_folders != $_SESSION[$key]) {
 }
 
 include_once 'fns/create_options_panel.php';
+include_once 'fns/create_location_bar.php';
 include_once '../fns/Page/tabs.php';
 include_once '../fns/Page/sessionErrors.php';
 include_once '../fns/Page/sessionMessages.php';
@@ -82,6 +74,7 @@ $content =
         'Files',
         Page\sessionErrors('files/errors')
         .Page\sessionMessages('files/messages')
+        .create_location_bar($mysqli, $folder)
         .join('<div class="hr"></div>', $items)
     )
     .create_options_panel($user, $id_folders);
