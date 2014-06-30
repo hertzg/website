@@ -2,7 +2,7 @@
 
 function expect_received_task_object ($engine, $variableName, $receivedTask) {
     $properties = ['id', 'sender_username', 'text',
-        'top_priority', 'tags', 'insert_time'];
+        'deadline_time', 'top_priority', 'tags', 'insert_time'];
     $engine->expectObject($variableName, $properties, $receivedTask);
     $engine->expectNatural("$variableName.id", $receivedTask->id);
     $engine->expectType("$variableName.sender_username",

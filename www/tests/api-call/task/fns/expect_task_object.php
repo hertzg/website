@@ -1,8 +1,8 @@
 <?php
 
 function expect_task_object ($engine, $variableName, $task) {
-    $properties = ['id', 'text', 'tags', 'top_priority',
-        'insert_time', 'update_time'];
+    $properties = ['id', 'text', 'deadline_time', 'tags',
+        'top_priority', 'insert_time', 'update_time'];
     $engine->expectObject($variableName, $properties, $task);
     $engine->expectNatural("$variableName.id", $task->id);
     $engine->expectType("$variableName.text", 'string', $task->text);
