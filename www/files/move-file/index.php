@@ -38,10 +38,15 @@ if ($id_folders) {
     $href = create_href($id, $parentFolder->parent_id_folders);
     $items[] = Page\imageLink($title, $href, 'parent-folder');
 }
-foreach ($folders as $folder) {
-    $title = htmlspecialchars($folder->name);
-    $href = create_href($id, $folder->id_folders);
-    $items[] = Page\imageArrowLink($title, $href, 'folder');
+if ($folders) {
+    foreach ($folders as $folder) {
+        $title = htmlspecialchars($folder->name);
+        $href = create_href($id, $folder->id_folders);
+        $items[] = Page\imageArrowLink($title, $href, 'folder');
+    }
+} else {
+    include_once '../../fns/Page/info.php';
+    $items[] = Page\info('No subfolders');
 }
 
 if ($id_folders != $file->id_folders) {

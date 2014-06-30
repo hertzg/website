@@ -40,15 +40,20 @@ if ($parent_id_folders) {
     $href = create_href($id_folders, $parentFolder->parent_id_folders);
     $items[] = Page\imageLink($title, $href, 'parent-folder');
 }
-foreach ($folders as $itemFolder) {
-    $escapedName = htmlspecialchars($itemFolder->name);
-    if ($itemFolder->id_folders == $id_folders) {
-        include_once '../../fns/Page/disabledImageLink.php';
-        $items[] = Page\disabledImageLink($escapedName, 'folder');
-    } else {
-        $href = create_href($id_folders, $itemFolder->id_folders);
-        $items[] = Page\imageArrowLink($escapedName, $href, 'folder');
+if ($folders) {
+    foreach ($folders as $itemFolder) {
+        $escapedName = htmlspecialchars($itemFolder->name);
+        if ($itemFolder->id_folders == $id_folders) {
+            include_once '../../fns/Page/disabledImageLink.php';
+            $items[] = Page\disabledImageLink($escapedName, 'folder');
+        } else {
+            $href = create_href($id_folders, $itemFolder->id_folders);
+            $items[] = Page\imageArrowLink($escapedName, $href, 'folder');
+        }
     }
+} else {
+    include_once '../../fns/Page/info.php';
+    $items[] = Page\info('No subfolders');
 }
 
 if ($parent_id_folders != $folder->parent_id_folders) {
