@@ -22,8 +22,6 @@ function request_task_params (&$errors) {
     include_once __DIR__.'/../../fns/request_tags.php';
     request_tags($tags, $tag_names, $errors);
 
-    $deadline_time = null;
-
     return [$text, $deadline_day, $deadline_month, $deadline_year,
         $deadline_time, $tags, $tag_names, $top_priority];
 

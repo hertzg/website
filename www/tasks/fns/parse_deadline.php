@@ -21,7 +21,7 @@ function parse_deadline ($day, $month, $year, &$errors, &$time) {
 
     include_once __DIR__.'/../../fns/Date/isValid.php';
     if (!Date\isValid($day, $month, $year)) {
-        $errors[] = 'The deadline date is invalid.';
+        $errors[] = 'The deadline is invalid.';
         return;
     }
 

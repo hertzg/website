@@ -11,6 +11,9 @@ if (array_key_exists($key, $_SESSION)) {
 } else {
     $values = [
         'text' => '',
+        'deadline_day' => 0,
+        'deadline_month' => 0,
+        'deadline_year' => 0,
         'tags' => '',
         'top_priority' => false,
     ];
@@ -28,6 +31,7 @@ $maxLengths = Tasks\maxLengths();
 
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/checkbox.php';
+include_once '../../fns/Form/datefield.php';
 include_once '../../fns/Form/textarea.php';
 include_once '../../fns/Form/textfield.php';
 include_once '../../fns/ItemList/listHref.php';
@@ -55,6 +59,17 @@ $content = Page\tabs(
             'autofocus' => true,
             'required' => true,
         ])
+        .'<div class="hr"></div>'
+        .Form\datefield([
+            'name' => 'deadline_day',
+            'value' => $values['deadline_day'],
+        ], [
+            'name' => 'deadline_month',
+            'value' => $values['deadline_month'],
+        ], [
+            'name' => 'deadline_year',
+            'value' => $values['deadline_year'],
+        ], 'Deadline', false, true)
         .'<div class="hr"></div>'
         .Form\textfield('tags', 'Tags', [
             'value' => $values['tags'],
