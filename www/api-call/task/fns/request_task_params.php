@@ -13,6 +13,8 @@ function request_task_params () {
     include_once __DIR__.'/../../fns/request_tags.php';
     list($tags, $tag_names) = request_tags();
 
-    return [$text, $tags, $tag_names, $top_priority];
+    $deadline_time = null;
+
+    return [$text, $deadline_time, $tags, $tag_names, $top_priority];
 
 }

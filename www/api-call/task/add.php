@@ -4,9 +4,8 @@ include_once '../fns/require_api_key.php';
 list($apiKey, $user, $mysqli) = require_api_key();
 
 include_once 'fns/request_task_params.php';
-list($text, $tags, $tag_names, $top_priority) = request_task_params();
-
-$deadline_time = null;
+$values = request_task_params();
+list($text, $deadline_time, $tags, $tag_names, $top_priority) = $values;
 
 include_once '../../fns/Users/Tasks/add.php';
 $id = Users\Tasks\add($mysqli, $user->id_users,
