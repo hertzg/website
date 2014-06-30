@@ -25,6 +25,11 @@ $items[] = Page\text(
     )
 );
 
+$deadline_time = $task->deadline_time;
+if ($deadline_time !== null) {
+    $items[] = Page\text('Deadline '.date('F d, Y', $deadline_time));
+}
+
 include_once __DIR__.'/../../fns/TaskTags/indexOnTask.php';
 $tags = TaskTags\indexOnTask($mysqli, $id);
 if ($tags) {

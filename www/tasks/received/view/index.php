@@ -22,6 +22,11 @@ $items = [
     ),
 ];
 
+$deadline_time = $receivedTask->deadline_time;
+if ($deadline_time !== null) {
+    $items[] = Page\text('Deadline '.date('F d, Y', $deadline_time));
+}
+
 $tags = $receivedTask->tags;
 if ($tags !== '') $items[] = Page\text('Tags: '.htmlspecialchars($tags));
 
