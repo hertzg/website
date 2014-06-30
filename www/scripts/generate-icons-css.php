@@ -19,8 +19,9 @@ include_once 'lib/require-cli.php';
 $names = ['api-key', 'create-api-key', 'edit-api-key', 'api-keys'];
 render($content, 'api-key.svg?1', $names);
 
-$names = ['bookmark', 'create-bookmark', 'edit-bookmark', 'bookmarks'];
-render($content, 'bookmark.svg?1', $names);
+$names = ['bookmark', 'create-bookmark',
+    'edit-bookmark', 'bookmarks', 'import-bookmark'];
+render($content, 'bookmark.svg?2', $names);
 
 $names = ['channel', 'create-channel', 'edit-channel', 'locked-channel',
     'inactive-channel', 'create-inactive-channel', 'edit-inactive-channel',
@@ -31,34 +32,36 @@ $names = ['connection', 'create-connection', 'edit-connection', 'connections'];
 render($content, 'connection.svg?1', $names);
 
 $names = ['contact', 'create-contact', 'edit-contact',
-    'favorite-contact', 'contacts'];
-render($content, 'contact.svg?1', $names);
+    'favorite-contact', 'contacts', 'import-contact'];
+render($content, 'contact.svg?2', $names);
 
 $names = ['event', 'create-event', 'edit-event', 'events'];
 render($content, 'event.svg?1', $names);
 
-$names = ['file', 'create-file', 'files', 'copy-file', 'move-file'];
-render($content, 'file.svg?3', $names);
+$names = ['file', 'create-file', 'files',
+    'copy-file', 'move-file', 'import-file'];
+render($content, 'file.svg?4', $names);
 
-$names = ['folder', 'create-folder', 'copy-folder', 'move-folder'];
-render($content, 'folder.svg?4', $names);
+$names = ['folder', 'create-folder',
+    'copy-folder', 'move-folder', 'import-folder'];
+render($content, 'folder.svg?5', $names);
 
 $names = ['move-up', 'move-to-top', 'move-down', 'move-to-bottom'];
 render($content, 'move.svg?1', $names);
 
-$names = ['note', 'create-note', 'edit-note', 'encrypted-note', 'notes'];
-render($content, 'note.svg?2', $names);
+$names = ['note', 'create-note',
+    'edit-note', 'encrypted-note', 'notes', 'import-note'];
+render($content, 'note.svg?3', $names);
 
 $names = ['account', 'edit-profile', 'download', 'upload', 'feedback', 'yes',
     'no', 'notification', 'create-notification', 'old-notification',
     'edit-password', 'new-password', 'reset-password', 'rename',
-    'sign-in', 'calendar', 'arrow-right', 'arrow-left', 'import-file',
-    'import-bookmark', 'import-contact', 'import-file', 'import-folder',
-    'import-note', 'import-task', 'search', 'search-folder', 'birthday-cake',
-    'checkbox', 'checked-checkbox', 'help', 'run', 'mail', 'send', 'receive',
+    'sign-in', 'calendar', 'arrow-right', 'arrow-left',
+    'search', 'search-folder', 'birthday-cake', 'checkbox',
+    'checked-checkbox', 'help', 'run', 'mail', 'send', 'receive',
     'phone', 'edit-home', 'reorder', 'show-hide', 'restore-defaults',
     'forbid-notifications', 'receive-notifications', 'generic'];
-render($content, 'other.svg?7', $names);
+render($content, 'other.svg?8', $names);
 
 $names = ['schedule', 'create-schedule', 'edit-schedule', 'schedules'];
 render($content, 'schedule.svg?1', $names);
@@ -67,8 +70,9 @@ $names = ['subscribed-channel', 'create-subscribed-channel',
     'inactive-subscribed-channel', 'subscribed-channels'];
 render($content, 'subscribed-channel.svg?1', $names);
 
-$names = ['task', 'create-task', 'edit-task', 'task-top-priority', 'tasks'];
-render($content, 'task.svg?1', $names);
+$names = ['task', 'create-task',
+    'edit-task', 'task-top-priority', 'tasks', 'import-task'];
+render($content, 'task.svg?2', $names);
 
 $names = ['blue-theme', 'green-theme', 'orange-theme', 'pink-theme',
     'edit-blue-theme', 'edit-green-theme', 'edit-orange-theme',
