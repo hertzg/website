@@ -11,6 +11,10 @@ task_method_page('edit', [
         'description' => 'The new text of the task.',
     ],
     [
+        'name' => 'deadline_time',
+        'description' => 'The new Unix timestamp of the deadline of the task.',
+    ],
+    [
         'name' => 'tags',
         'description' => 'Space-separated list of tags.',
     ],

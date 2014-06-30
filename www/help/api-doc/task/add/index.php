@@ -7,6 +7,10 @@ task_method_page('add', [
         'description' => 'The text of the task.',
     ],
     [
+        'name' => 'deadline_time',
+        'description' => 'The Unix timestamp of the deadline of the task.',
+    ],
+    [
         'name' => 'tags',
         'description' => 'Space-separated list of tags.',
     ],
