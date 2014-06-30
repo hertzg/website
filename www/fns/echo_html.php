@@ -14,9 +14,9 @@ function echo_html ($title, $head, $body, $theme, $base) {
             .'<head>'
                 ."<title>$title</title>"
                 .'<link rel="icon" type="image/png"'
-                ." href=\"{$base}zvini-icons/16.png\" />"
+                ." href=\"{$base}themes/$theme/images/icon16.png\" />"
                 .'<link rel="icon" type="image/png" sizes="32x32"'
-                ." href=\"{$base}zvini-icons/32.png\" />"
+                ." href=\"{$base}themes/$theme/images/icon32.png\" />"
                 .'<meta http-equiv="Content-Type"'
                 .' content="text/html; charset=UTF-8" />'
                 .'<meta name="viewport"'
