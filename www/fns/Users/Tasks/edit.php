@@ -14,6 +14,6 @@ function edit ($mysqli, $id_users, $id, $text,
 
     include_once __DIR__.'/../../TaskTags/add.php';
     \TaskTags\add($mysqli, $id_users, $id, $tag_names,
-        $text, $tags, $top_priority);
+        $text, $deadline_time, $tags, $top_priority);
 
 }
