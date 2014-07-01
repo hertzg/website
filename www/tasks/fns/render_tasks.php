@@ -30,7 +30,8 @@ function render_tasks (array $tasks, array &$items, array $params) {
             $descriptions = [];
             if ($deadline_time !== null) {
                 include_once "$fnsDir/format_deadline.php";
-                $descriptions[] = 'Deadline '.format_deadline($deadline_time, $time_today);
+                $descriptions[] = 'Deadline '.format_deadline(
+                    $deadline_time, $time_today);
             }
             if ($tags !== '') {
                 $descriptions[] = 'Tags: '.htmlspecialchars($tags);
