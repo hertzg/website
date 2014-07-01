@@ -2,12 +2,17 @@
 
 function render_task ($task, &$items, &$infoText) {
 
-    include_once __DIR__.'/../../../fns/Page/text.php';
+    $fnsDir = __DIR__.'/../../../fns';
+
+    include_once "$fnsDir/Page/text.php";
     $items[] = Page\text(htmlspecialchars($task->text));
 
     $deadline_time = $task->deadline_time;
     if ($deadline_time !== null) {
-        $items[] = Page\text('Deadline '.date('F d, Y', $deadline_time));
+        include_once "$fnsDir/time_today.php";
+        include_once "$fnsDir/format_deadline.php";
+        $items[] = Page\text('Deadline '.date('F d, Y', $deadline_time)
+            .' ('.format_deadline($deadline_time, time_today()).')');
     }
 
     $tags = $task->tags;

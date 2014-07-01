@@ -27,7 +27,10 @@ $items[] = Page\text(
 
 $deadline_time = $task->deadline_time;
 if ($deadline_time !== null) {
-    $items[] = Page\text('Deadline '.date('F d, Y', $deadline_time));
+    include_once '../../fns/time_today.php';
+    include_once '../../fns/format_deadline.php';
+    $items[] = Page\text('Deadline '.date('F d, Y', $deadline_time)
+        .' ('.format_deadline($deadline_time, time_today()).')');
 }
 
 include_once __DIR__.'/../../fns/TaskTags/indexOnTask.php';
