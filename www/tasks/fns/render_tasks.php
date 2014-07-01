@@ -2,12 +2,15 @@
 
 function render_tasks (array $tasks, array &$items, array $params) {
 
-    $fnsPageDir = __DIR__.'/../../fns/Page';
+    $fnsDir = __DIR__.'/../../fns';
 
     if ($tasks) {
 
-        include_once "$fnsPageDir/imageArrowLink.php";
-        include_once "$fnsPageDir/imageArrowLinkWithDescription.php";
+        include_once "$fnsDir/time_today.php";
+        $time_today = time_today();
+
+        include_once "$fnsDir/Page/imageArrowLink.php";
+        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
 
         foreach ($tasks as $task) {
 
@@ -20,11 +23,23 @@ function render_tasks (array $tasks, array &$items, array $params) {
 
             $icon = $task->top_priority ? 'task-top-priority' : 'task';
             $title = htmlspecialchars($task->text);
+
             $tags = $task->tags;
-            if ($tags) {
-                $description = 'Tags: '.htmlspecialchars($tags);
-                $items[] = Page\imageArrowLinkWithDescription($title,
-                    $description, $href, $icon);
+            $deadline_time = $task->deadline_time;
+
+            $descriptions = [];
+            if ($deadline_time !== null) {
+                include_once "$fnsDir/format_deadline.php";
+                $descriptions[] = 'Deadline '.format_deadline($deadline_time, $time_today);
+            }
+            if ($tags !== '') {
+                $descriptions[] = 'Tags: '.htmlspecialchars($tags);
+            }
+
+            if ($descriptions) {
+                $description = join(' &middot ', $descriptions);
+                $items[] = Page\imageArrowLinkWithDescription(
+                    $title, $description, $href, $icon);
             } else {
                 $items[] = Page\imageArrowLink($title, $href, $icon);
             }
@@ -32,7 +47,7 @@ function render_tasks (array $tasks, array &$items, array $params) {
         }
 
     } else {
-        include_once "$fnsPageDir/info.php";
+        include_once "$fnsDir/Page/info.php";
         $items[] = Page\info('No tasks');
     }
 
