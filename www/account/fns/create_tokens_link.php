@@ -5,7 +5,7 @@ function create_tokens_link ($user) {
     $fnsPageDir = __DIR__.'/../../fns/Page';
 
     $title = 'Remembered Sessions';
-    $href = '../tokens/';
+    $href = 'tokens/';
     $icon = 'tokens';
 
     $num_tokens = $user->num_tokens;

@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/require_token.php';
-include_once '../../lib/mysqli.php';
+include_once '../../../lib/mysqli.php';
 list($token, $id, $user) = require_token($mysqli);
 
 unset(
@@ -9,19 +9,19 @@ unset(
     $_SESSION['tokens/messages']
 );
 
-include_once '../../fns/create_panel.php';
-include_once '../../fns/date_ago.php';
-include_once '../../fns/Form/label.php';
-include_once '../../fns/Form/textarea.php';
-include_once '../../fns/Form/textfield.php';
-include_once '../../fns/Page/imageArrowLink.php';
-include_once '../../fns/Page/tabs.php';
+include_once '../../../fns/create_panel.php';
+include_once '../../../fns/date_ago.php';
+include_once '../../../fns/Form/label.php';
+include_once '../../../fns/Form/textarea.php';
+include_once '../../../fns/Form/textfield.php';
+include_once '../../../fns/Page/imageArrowLink.php';
+include_once '../../../fns/Page/tabs.php';
 $content =
     Page\tabs(
         [
             [
                 'title' => '&middot;&middot;&middot;',
-                'href' => '../../account/',
+                'href' => '../..',
             ],
             [
                 'title' => 'Sessions',
@@ -46,5 +46,5 @@ $content =
         Page\imageArrowLink('Delete', "../delete/?id=$id", 'trash-bin')
     );
 
-include_once '../../fns/echo_page.php';
-echo_page($user, "Session #$id", $content, '../../');
+include_once '../../../fns/echo_page.php';
+echo_page($user, "Session #$id", $content, '../../../');

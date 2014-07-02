@@ -1,8 +1,8 @@
 <?php
 
-$base = '../../';
+$base = '../../../';
 
-include_once '../../fns/require_user.php';
+include_once '../../../fns/require_user.php';
 $user = require_user($base);
 
 unset(
@@ -10,19 +10,19 @@ unset(
     $_SESSION['tokens/messages']
 );
 
-include_once '../../fns/Page/tabs.php';
-include_once '../../fns/Page/imageLink.php';
-include_once '../../fns/Page/text.php';
-include_once '../../fns/Page/twoColumns.php';
+include_once '../../../fns/Page/tabs.php';
+include_once '../../../fns/Page/imageLink.php';
+include_once '../../../fns/Page/text.php';
+include_once '../../../fns/Page/twoColumns.php';
 $content = Page\tabs(
     [
         [
             'title' => '&middot;&middot;&middot;',
-            'href' => '../../home/',
+            'href' => '../../../home/',
         ],
         [
             'title' => 'Account',
-            'href' => '../../account/',
+            'href' => '../..',
         ],
     ],
     'Sessions',
@@ -36,5 +36,5 @@ $content = Page\tabs(
     )
 );
 
-include_once '../../fns/echo_page.php';
+include_once '../../../fns/echo_page.php';
 echo_page($user, 'Delete All Remembered Sessions?', $content, $base);

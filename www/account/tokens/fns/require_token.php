@@ -2,10 +2,10 @@
 
 function require_token ($mysqli) {
 
-    $fnsDir = __DIR__.'/../../fns';
+    $fnsDir = __DIR__.'/../../../fns';
 
     include_once "$fnsDir/require_user.php";
-    $user = require_user('../../');
+    $user = require_user('../../../');
 
     include_once "$fnsDir/request_strings.php";
     list($id) = request_strings('id');

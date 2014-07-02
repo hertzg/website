@@ -1,30 +1,30 @@
 <?php
 
-$base = '../';
+$base = '../../';
 
-include_once '../fns/require_user.php';
+include_once '../../fns/require_user.php';
 $user = require_user($base);
 
-include_once '../fns/require_valid_token.php';
-include_once '../lib/mysqli.php';
+include_once '../../fns/require_valid_token.php';
+include_once '../../lib/mysqli.php';
 $token = require_valid_token($mysqli);
 
 $options = [];
 if (!$token) {
     $title = 'Remember Current Session';
     $href = 'submit-remember.php';
-    include_once '../fns/Page/imageLink.php';
+    include_once '../../fns/Page/imageLink.php';
     $options[] = Page\imageLink($title, $href, 'create-token');
 }
 
-include_once __DIR__.'/../fns/Tokens/indexOnUser.php';
+include_once '../../fns/Tokens/indexOnUser.php';
 $tokens = Tokens\indexOnUser($mysqli, $user->id_users);
 
 $items = [];
 if ($tokens) {
 
-    include_once '../fns/Page/imageArrowLink.php';
-    include_once '../fns/Page/imageArrowLinkWithDescription.php';
+    include_once '../../fns/Page/imageArrowLink.php';
+    include_once '../../fns/Page/imageArrowLinkWithDescription.php';
 
     $options[] = Page\imageArrowLink('Delete All Sessions',
         'delete-all/', 'trash-bin');
@@ -48,29 +48,29 @@ if ($tokens) {
     }
 
 } else {
-    include_once '../fns/Page/info.php';
+    include_once '../../fns/Page/info.php';
     $items[] = Page\info('No sessions remembered');
 }
 
-include_once '../fns/create_panel.php';
+include_once '../../fns/create_panel.php';
 $panelContent = join('<div class="hr"></div>', $options);
 $optionsPanel = create_panel('Options', $panelContent);
 
 unset($_SESSION['account/messages']);
 
-include_once '../fns/Page/tabs.php';
-include_once '../fns/Page/sessionErrors.php';
-include_once '../fns/Page/sessionMessages.php';
+include_once '../../fns/Page/sessionErrors.php';
+include_once '../../fns/Page/sessionMessages.php';
+include_once '../../fns/Page/tabs.php';
 $content =
     Page\tabs(
         [
             [
                 'title' => '&middot;&middot;&middot;',
-                'href' => '../home/',
+                'href' => '../../home/',
             ],
             [
                 'title' => 'Account',
-                'href' => '../account/',
+                'href' => '..',
             ],
         ],
         'Sessions',
@@ -80,5 +80,5 @@ $content =
     )
     .$optionsPanel;
 
-include_once '../fns/echo_page.php';
+include_once '../../fns/echo_page.php';
 echo_page($user, 'Remembered Sessions', $content, $base);

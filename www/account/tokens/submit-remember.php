@@ -1,13 +1,13 @@
 <?php
 
-include_once '../fns/require_same_domain_referer.php';
+include_once '../../fns/require_same_domain_referer.php';
 require_same_domain_referer('./');
 
-include_once '../fns/require_user.php';
-$user = require_user('../');
+include_once '../../fns/require_user.php';
+$user = require_user('../../');
 
-include_once '../fns/require_valid_token.php';
-include_once '../lib/mysqli.php';
+include_once '../../fns/require_valid_token.php';
+include_once '../../lib/mysqli.php';
 $token = require_valid_token($mysqli);
 
 if (!$token) {
@@ -21,11 +21,11 @@ if (!$token) {
         $user_agent = null;
     }
 
-    include_once '../fns/Users/Tokens/add.php';
+    include_once '../../fns/Users/Tokens/add.php';
     $id = Users\Tokens\add($mysqli, $user->id_users, $user->username,
         $token_text, $user_agent);
 
-    include_once '../fns/Tokens/get.php';
+    include_once '../../fns/Tokens/get.php';
     $token = Tokens\get($mysqli, $id);
 
     if ($token) {
@@ -37,9 +37,7 @@ if (!$token) {
 }
 
 unset($_SESSION['tokens/errors']);
-$_SESSION['tokens/messages'] = [
-    'Current session has been remembered.',
-];
+$_SESSION['tokens/messages'] = ['Current session has been remembered.'];
 
-include_once '../fns/redirect.php';
+include_once '../../fns/redirect.php';
 redirect();

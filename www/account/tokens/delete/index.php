@@ -1,18 +1,18 @@
 <?php
 
 include_once '../fns/require_token.php';
-include_once '../../lib/mysqli.php';
+include_once '../../../lib/mysqli.php';
 list($token, $id, $user) = require_token($mysqli);
 
-include_once '../../fns/Page/tabs.php';
-include_once '../../fns/Page/imageLink.php';
-include_once '../../fns/Page/text.php';
-include_once '../../fns/Page/twoColumns.php';
+include_once '../../../fns/Page/tabs.php';
+include_once '../../../fns/Page/imageLink.php';
+include_once '../../../fns/Page/text.php';
+include_once '../../../fns/Page/twoColumns.php';
 $content = Page\tabs(
     [
         [
             'title' => '&middot;&middot;&middot;',
-            'href' => '../../account/',
+            'href' => '../..',
         ],
         [
             'title' => 'Sessions',
@@ -32,5 +32,5 @@ $content = Page\tabs(
     )
 );
 
-include_once '../../fns/echo_page.php';
-echo_page($user, "Delete Remembered Session #$id?", $content, '../../');
+include_once '../../../fns/echo_page.php';
+echo_page($user, "Delete Remembered Session #$id?", $content, '../../../');
