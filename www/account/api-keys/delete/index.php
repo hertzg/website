@@ -22,7 +22,7 @@ $content = Page\tabs(
         ],
     ],
     "API Key #$id",
-    Page\text('Are you sure you want to remove the API Key?')
+    Page\text('Are you sure you want to remove the API key?')
     .'<div class="hr"></div>'
     .Page\twoColumns(
         Page\imageLink('Yes, delete API key', "submit.php?id=$id", 'yes'),
