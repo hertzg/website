@@ -3,28 +3,16 @@
 include_once '../../fns/require_same_domain_referer.php';
 require_same_domain_referer('..');
 
-include_once '../../fns/require_user.php';
-$user = require_user('../../');
+include_once '../fns/require_parent_folder.php';
+include_once '../../lib/mysqli.php';
+list($parentFolder, $parent_id_folders, $user) = require_parent_folder($mysqli);
 $id_users = $user->id_users;
-
-include_once '../../fns/request_strings.php';
-list($id_folders, $posttest) = request_strings('id_folders', 'posttest');
 
 include_once '../../fns/request_multiple_files.php';
 list($file1, $file2, $file3) = request_multiple_files(
     'file1', 'file2', 'file3');
 
-include_once '../../lib/mysqli.php';
-
 include_once '../../fns/redirect.php';
-
-$id_folders = abs((int)$id_folders);
-if ($id_folders) {
-    include_once '../../fns/Folders/get.php';
-    $parentFolder = Folders\get($mysqli, $id_users, $id_folders);
-    if (!$parentFolder) redirect('..');
-}
-
 include_once '../../fns/str_collapse_spaces.php';
 include_once '../../fns/Files/getUniqueName.php';
 include_once '../../fns/Users/Files/add.php';
@@ -36,8 +24,9 @@ foreach ([$file1, $file2, $file3] as $file) {
         $error = $file['error'][$i];
         if ($error === UPLOAD_ERR_OK) {
             $name = str_collapse_spaces($name);
-            $name = Files\getUniqueName($mysqli, $id_users, $id_folders, $name);
-            Users\Files\add($mysqli, $id_users, $id_folders,
+            $name = Files\getUniqueName($mysqli,
+                $id_users, $parent_id_folders, $name);
+            Users\Files\add($mysqli, $id_users, $parent_id_folders,
                 $name, $file['tmp_name'][$i]);
             $num_uploaded++;
         } elseif ($error !== UPLOAD_ERR_NO_FILE) {
@@ -47,6 +36,9 @@ foreach ([$file1, $file2, $file3] as $file) {
 }
 
 $errors = [];
+
+include_once '../../fns/request_strings.php';
+list($posttest) = request_strings('posttest');
 
 if (!$posttest) {
     $errors[] = 'Maximum upload size excceeded.';
@@ -62,7 +54,7 @@ if (!$num_uploaded) {
 
     $_SESSION['files/upload-files/errors'] = $errors;
 
-    if ($id_folders) $queryString = "?id_folders=$id_folders";
+    if ($parent_id_folders) $queryString = "?parent_id_folders=$parent_id_folders";
     else $queryString = '';
 
     redirect("./$queryString");
@@ -80,8 +72,8 @@ if ($num_uploaded == 1) {
 if ($errors) $_SESSION['files/errors'] = $errors;
 else unset($_SESSION['files/errors']);
 
-$_SESSION['files/id_folders'] = $id_folders;
+$_SESSION['files/id_folders'] = $parent_id_folders;
 $_SESSION['files/messages'] = [$message];
 
 include_once '../../fns/create_folder_link.php';
-redirect(create_folder_link($id_folders, '../'));
+redirect(create_folder_link($parent_id_folders, '../'));

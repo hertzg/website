@@ -1,26 +1,8 @@
 <?php
 
-$base = '../../';
-
-include_once '../../fns/require_user.php';
-$user = require_user($base);
-
-include_once '../../fns/request_strings.php';
-list($id_folders) = request_strings('id_folders');
-
-$id_folders = abs((int)$id_folders);
-if ($id_folders) {
-
-    include_once '../../fns/Folders/get.php';
-    include_once '../../lib/mysqli.php';
-    $parentFolder = Folders\get($mysqli, $user->id_users, $id_folders);
-
-    if (!$parentFolder) {
-        include_once '../../fns/redirect.php';
-        redirect('..');
-    }
-
-}
+include_once '../fns/require_parent_folder.php';
+include_once '../../lib/mysqli.php';
+list($parentFolder, $parent_id_folders, $user) = require_parent_folder($mysqli);
 
 unset(
     $_SESSION['files/errors'],
@@ -45,7 +27,7 @@ $content = Page\tabs(
         ],
         [
             'title' => 'Files',
-            'href' => create_folder_link($id_folders, '../'),
+            'href' => create_folder_link($parent_id_folders, '../'),
         ],
     ],
     'Upload Files',
@@ -64,9 +46,9 @@ $content = Page\tabs(
         .'<div class="hr"></div>'
         .Form\button('Upload')
         .Form\hidden('posttest', '1')
-        .Form\hidden('id_folders', $id_folders)
+        .Form\hidden('parent_id_folders', $parent_id_folders)
     .'</form>'
 );
 
 include_once '../../fns/echo_page.php';
-echo_page($user, 'Upload Files', $content, $base);
+echo_page($user, 'Upload Files', $content, '../../');
