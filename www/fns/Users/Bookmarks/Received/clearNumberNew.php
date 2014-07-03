@@ -1,6 +1,6 @@
 <?php
 
-namespace Users\Boomarks\Received;
+namespace Users\Bookmarks\Received;
 
 function clearNumberNew ($mysqli, $id_users) {
     $sql = 'update users set home_num_new_received_bookmarks = 0'
