@@ -4,19 +4,17 @@ function create_options_panel ($user, $id_folders, $base = '') {
 
     $fnsDir = __DIR__.'/../../fns';
 
-    if ($id_folders) {
-        $newFolderHref = "{$base}new-folder/?parent_id_folders=$id_folders";
-        $uploadFilesHref = "{$base}upload-files/?id_folders=$id_folders";
-    } else {
-        $newFolderHref = "{$base}new-folder/";
-        $uploadFilesHref = "{$base}upload-files/";
-    }
+    $options = [];
 
     include_once "$fnsDir/Page/imageArrowLink.php";
-    $options = [
-        Page\imageArrowLink('New Folder', $newFolderHref, 'create-folder'),
-        Page\imageArrowLink('Upload Files', $uploadFilesHref, 'upload'),
-    ];
+
+    $href = "{$base}new-folder/";
+    if ($id_folders) $href .= "?parent_id_folders=$id_folders";
+    $options[] = Page\imageArrowLink('New Folder', $href, 'create-folder');
+
+    $href = "{$base}upload-files/";
+    if ($id_folders) $href .= "?id_folders=$id_folders";
+    $options[] = Page\imageArrowLink('Upload Files', $href, 'upload');
 
     if ($id_folders) {
 
