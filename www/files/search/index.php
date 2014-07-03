@@ -72,20 +72,17 @@ if (!$deep) {
 include_once '../fns/unset_session_vars.php';
 unset_session_vars();
 
-include_once '../fns/create_options_panel.php';
 include_once '../../fns/Page/tabs.php';
-$content =
-    Page\tabs(
+$content = Page\tabs(
+    [
         [
-            [
-                'title' => 'Home',
-                'href' => '../../home/',
-            ],
+            'title' => 'Home',
+            'href' => '../../home/',
         ],
-        'Files',
-        join('<div class="hr"></div>', $items)
-    )
-    .create_options_panel($user, $id_folders, '../');
+    ],
+    'Files',
+    join('<div class="hr"></div>', $items)
+);
 
 include_once '../../fns/echo_page.php';
 echo_page($user, 'Files', $content, $base);
