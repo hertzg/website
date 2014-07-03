@@ -25,9 +25,8 @@ Users\editAnonymousConnection($mysqli, $user->id_users, $can_send_bookmark,
     $can_send_channel, $can_send_contact, $can_send_file, $can_send_note,
     $can_send_task);
 
-$_SESSION['account/connections/default/messages'] = [
-    'Changes have been saved.',
-];
+$message = 'Changes have been saved.';
+$_SESSION['account/connections/default/messages'] = [$message];
 
 include_once '../../../../fns/redirect.php';
 redirect('..');

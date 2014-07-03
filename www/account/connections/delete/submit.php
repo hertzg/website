@@ -10,9 +10,7 @@ list($connection, $id, $user) = require_connection($mysqli);
 include_once '../../../fns/Users/Connections/delete.php';
 Users\Connections\delete($mysqli, $connection);
 
-$_SESSION['account/connections/messages'] = [
-    'Connection has been deleted.',
-];
+$_SESSION['account/connections/messages'] = ['Connection has been deleted.'];
 unset($_SESSION['account/connections/errors']);
 
 include_once '../../../fns/redirect.php';

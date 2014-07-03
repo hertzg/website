@@ -17,9 +17,8 @@ function require_connection ($mysqli) {
 
     if (!$connection) {
         unset($_SESSION['account/connections/messages']);
-        $_SESSION['account/connections/errors'] = [
-            'The connection no longer exists.',
-        ];
+        $error = 'The connection no longer exists.';
+        $_SESSION['account/connections/errors'] = [$error];
         include_once "$fnsDir/redirect.php";
         redirect('..');
     }
