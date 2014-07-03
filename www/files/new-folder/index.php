@@ -1,33 +1,15 @@
 <?php
 
-$base = '../../';
-
-include_once '../../fns/require_user.php';
-$user = require_user($base);
+include_once '../fns/require_parent_folder.php';
+include_once '../../lib/mysqli.php';
+list($parentFolder, $parent_id_folders, $user) = require_parent_folder($mysqli);
 
 include_once '../../fns/request_strings.php';
 list($parent_id_folders) = request_strings('parent_id_folders');
 
 $key = 'files/new-folder/values';
-if (array_key_exists($key, $_SESSION)) {
-    $values = $_SESSION[$key];
-} else {
-    $values = ['name' => ''];
-}
-
-$parent_id_folders = abs((int)$parent_id_folders);
-if ($parent_id_folders) {
-
-    include_once '../../fns/Folders/get.php';
-    include_once '../../lib/mysqli.php';
-    $parentFolder = Folders\get($mysqli, $user->id_users, $parent_id_folders);
-
-    if (!$parentFolder) {
-        include_once '../../fns/redirect.php';
-        redirect('..');
-    }
-
-}
+if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
+else $values = ['name' => ''];
 
 unset(
     $_SESSION['files/errors'],
@@ -67,4 +49,4 @@ $content = Page\tabs(
 );
 
 include_once '../../fns/echo_page.php';
-echo_page($user, 'New Folder', $content, $base);
+echo_page($user, 'New Folder', $content, '../../');

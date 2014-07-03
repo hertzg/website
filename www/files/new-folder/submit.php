@@ -3,25 +3,13 @@
 include_once '../../fns/require_same_domain_referer.php';
 require_same_domain_referer('..');
 
-include_once '../../fns/require_user.php';
-$user = require_user('../../');
+include_once '../fns/require_parent_folder.php';
+include_once '../../lib/mysqli.php';
+list($parentFolder, $parent_id_folders, $user) = require_parent_folder($mysqli);
 $id_users = $user->id_users;
 
 include_once '../../fns/Folders/request.php';
 $name = Folders\request();
-
-include_once '../../fns/request_strings.php';
-list($parent_id_folders) = request_strings('parent_id_folders');
-
-include_once '../../fns/redirect.php';
-include_once '../../lib/mysqli.php';
-
-$parent_id_folders = abs((int)$parent_id_folders);
-if ($parent_id_folders) {
-    include_once '../../fns/Folders/get.php';
-    $parentFolder = Folders\get($mysqli, $id_users, $parent_id_folders);
-    if (!$parentFolder) redirect('..');
-}
 
 $errors = [];
 
@@ -32,6 +20,8 @@ if ($name === '') {
     $folder = Folders\getByName($mysqli, $id_users, $parent_id_folders, $name);
     if ($folder) $errors[] = 'Folder with this name already exists.';
 }
+
+include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['files/new-folder/errors'] = $errors;
