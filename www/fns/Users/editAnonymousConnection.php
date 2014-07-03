@@ -22,4 +22,7 @@ function editAnonymousConnection ($mysqli, $id_users, $can_send_bookmark,
         ." where id_users = $id_users";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
+    include_once __DIR__.'/SubscribedChannels/deleteDisconnected.php';
+    \Users\SubscribedChannels\deleteDisconnected($mysqli, $id_users);
+
 }
