@@ -20,9 +20,8 @@ include_once '../../../../fns/Users/Home/editOrder.php';
 include_once '../../../../lib/mysqli.php';
 Users\Home\editOrder($mysqli, $user->id_users, $order_home_items);
 
-$_SESSION['home/customize/reorder/messages'] = [
-    "\"$item[title]\" has been moved up.",
-];
+$message = "\"$item[title]\" has been moved up.";
+$_SESSION['home/customize/reorder/messages'] = [$message];
 
 include_once '../../../../fns/redirect.php';
 redirect('..');

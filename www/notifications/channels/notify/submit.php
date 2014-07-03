@@ -30,8 +30,7 @@ unset($_SESSION['notifications/channels/notify/errors']);
 include_once '../../../fns/Users/Notifications/post.php';
 Users\Notifications\post($mysqli, $channel, $text);
 
-$_SESSION['notifications/channels/view/messages'] = [
-    'Notification has been posted.',
-];
+$message = 'Notification has been posted.';
+$_SESSION['notifications/channels/view/messages'] = [$message];
 
 redirect("../view/?id=$id");

@@ -10,9 +10,8 @@ list($subscribedChannel, $id, $user) = require_subscribed_channel($mysqli);
 include_once '../../../fns/SubscribedChannels/setSubscriberLocked.php';
 SubscribedChannels\setSubscriberLocked($mysqli, $id, true);
 
-$_SESSION['notifications/subscribed-channels/view/messages'] = [
-    'Subscribed to this channel.',
-];
+$message = 'Subscribed to this channel.';
+$_SESSION['notifications/subscribed-channels/view/messages'] = [$message];
 
 include_once '../../../fns/redirect.php';
 redirect("./?id=$id");

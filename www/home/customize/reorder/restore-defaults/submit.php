@@ -10,9 +10,8 @@ include_once '../../../../fns/Users/Home/restoreOrder.php';
 include_once '../../../../lib/mysqli.php';
 Users\Home\restoreOrder($mysqli, $user->id_users);
 
-$_SESSION['home/customize/reorder/messages'] = [
-    'Default order has been restored.'
-];
+$message = 'Default order has been restored.';
+$_SESSION['home/customize/reorder/messages'] = [$message];
 
 include_once '../../../../fns/redirect.php';
 redirect('..');

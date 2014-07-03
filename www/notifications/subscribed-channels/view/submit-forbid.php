@@ -10,9 +10,8 @@ list($subscribedChannel, $id, $user) = require_subscribed_channel($mysqli);
 include_once '../../../fns/SubscribedChannels/setReceiveNotifications.php';
 SubscribedChannels\setReceiveNotifications($mysqli, $id, false);
 
-$_SESSION['notifications/subscribed-channels/view/messages'] = [
-    'You no longer will receive notifications from this channel.',
-];
+$message = 'You no longer will receive notifications from this channel.';
+$_SESSION['notifications/subscribed-channels/view/messages'] = [$message];
 
 include_once '../../../fns/redirect.php';
 redirect("./?id=$id");

@@ -19,9 +19,8 @@ include_once '../../../fns/SubscribedChannels/clearNumNotifications.php';
 SubscribedChannels\clearNumNotifications($mysqli, $id);
 
 unset($_SESSION['notifications/errors']);
-$_SESSION['notifications/in-subscribed-channel/messages'] = [
-    'Notifications have been deleted.',
-];
+$message = 'Notifications have been deleted.';
+$_SESSION['notifications/in-subscribed-channel/messages'] = [$message];
 
 include_once '../../../fns/redirect.php';
 redirect("../?id=$id");

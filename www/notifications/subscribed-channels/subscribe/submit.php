@@ -50,8 +50,7 @@ include_once '../../../fns/Users/SubscribedChannels/add.php';
 $id = Users\SubscribedChannels\add($mysqli,
     $user, $channel, $subscribedChannel, true);
 
-$_SESSION['notifications/subscribed-channels/view/messages'] = [
-    'You have subscribed to a public channel.',
-];
+$message = 'You have subscribed to a public channel.';
+$_SESSION['notifications/subscribed-channels/view/messages'] = [$message];
 
 redirect("../view/?id=$id");

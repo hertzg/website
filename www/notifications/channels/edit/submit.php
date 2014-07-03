@@ -66,8 +66,7 @@ include_once '../../../fns/Users/Channels/edit.php';
 Users\Channels\edit($mysqli, $id, $channel_name,
     $public, $receive_notifications);
 
-$_SESSION['notifications/channels/view/messages'] = [
-    'Changes have been saved.',
-];
+$message = 'Changes have been saved.';
+$_SESSION['notifications/channels/view/messages'] = [$message];
 
 redirect("../view/?id=$id");

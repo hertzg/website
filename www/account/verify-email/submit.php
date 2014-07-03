@@ -70,8 +70,7 @@ $headers =
 
 mail($user->email, $subject, $html, $headers);
 
-$_SESSION['account/messages'] = [
-    'Instructions to verify email have been sent to your email address.',
-];
+$message = 'Instructions to verify email have been sent to your email address.';
+$_SESSION['account/messages'] = [$message];
 
 redirect('..');

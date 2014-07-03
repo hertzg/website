@@ -10,9 +10,8 @@ include_once '../../../../fns/Users/Home/restoreVisibilities.php';
 include_once '../../../../lib/mysqli.php';
 Users\Home\restoreVisibilities($mysqli, $user->id_users);
 
-$_SESSION['home/customize/show-hide/messages'] = [
-    'Default visibilities has been restored.'
-];
+$message = 'Default visibilities has been restored.';
+$_SESSION['home/customize/show-hide/messages'] = [$message];
 
 include_once '../../../../fns/redirect.php';
 redirect('..');
