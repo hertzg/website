@@ -6,6 +6,7 @@ function schedule_method_page ($methodName, $params, $errors) {
     $description = schedule\get_methods()[$methodName];
 
     include_once __DIR__.'/../../fns/method_page.php';
-    method_page('Schedule', 'schedule', $methodName, $description, $params, $errors);
+    method_page('Schedule', 'schedule',
+        $methodName, $description, $params, $errors);
 
 }

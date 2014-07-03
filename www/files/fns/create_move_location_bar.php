@@ -1,6 +1,7 @@
 <?php
 
-function create_move_location_bar ($mysqli, $id, $folder, $item_id, $folder_id) {
+function create_move_location_bar ($mysqli,
+    $id, $folder, $item_id, $folder_id) {
 
     $html =
         '<div class="page-tags tagFilterBar">'

@@ -84,28 +84,8 @@ if (!$all) {
     }
 }
 
-$title = 'Delete All Files';
-$deleteAllLink = Page\imageArrowLink($title, 'delete-all/', 'trash-bin');
-
-include_once "$fnsDir/create_panel.php";
-include_once "$fnsDir/Page/tabs.php";
-include_once "$fnsDir/Page/sessionMessages.php";
-$content = Page\tabs(
-    [
-        [
-            'title' => '&middot;&middot;&middot;',
-            'href' => '../../home/',
-        ],
-        [
-            'title' => 'Files',
-            'href' => '..',
-        ],
-    ],
-    'Received',
-    Page\sessionMessages('files/received/messages')
-    .join('<div class="hr"></div>', $items)
-    .create_panel('Options', $deleteAllLink)
-);
+include_once 'fns/create_content.php';
+$content = create_content($items);
 
 include_once "$fnsDir/echo_page.php";
 echo_page($user, 'Received Files', $content, '../../');

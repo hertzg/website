@@ -83,21 +83,8 @@ if (!$found) {
     $items[] = Page\info('Nothing found');
 }
 
-include_once '../../../fns/Page/tabs.php';
-$content = Page\tabs(
-    [
-        [
-            'title' => '&middot;&middot;&middot;',
-            'href' => '../../../home/'
-        ],
-        [
-            'title' => 'Help',
-            'href' => '../..',
-        ],
-    ],
-    'API Documentation',
-    join('<div class="hr"></div>', $items)
-);
+include_once 'fns/create_content.php';
+$content = create_content($items);
 
 include_once '../../../fns/echo_page.php';
 echo_page($user, 'Search API Documentation', $content, '../../../');

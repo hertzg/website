@@ -54,10 +54,9 @@ if (!$num_uploaded) {
 
     $_SESSION['files/upload-files/errors'] = $errors;
 
-    if ($parent_id_folders) $queryString = "?parent_id_folders=$parent_id_folders";
-    else $queryString = '';
-
-    redirect("./$queryString");
+    $url = './';
+    if ($parent_id_folders) $url .= "?parent_id_folders=$parent_id_folders";
+    redirect($url);
 
 }
 

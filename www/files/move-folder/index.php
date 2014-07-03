@@ -94,7 +94,8 @@ $content = Page\tabs(
         'Moving the folder "<b>'.htmlspecialchars($folder->name).'</b>".',
         'Select a folder to move the folder into.'
     ])
-    .create_move_location_bar($mysqli, $id_folders, $parentFolder, 'id_folders', 'parent_id_folders')
+    .create_move_location_bar($mysqli, $id_folders,
+        $parentFolder, 'id_folders', 'parent_id_folders')
     .join('<div class="hr"></div>', $items)
 );
 
