@@ -1,12 +1,5 @@
 <?php
 
-function create_href ($id_folders, $parent_id_folders) {
-    if ($parent_id_folders) {
-        return "./?id_folders=$id_folders&parent_id_folders=$parent_id_folders";
-    }
-    return "./?id_folders=$id_folders";
-}
-
 include_once '../fns/require_folder.php';
 include_once '../../lib/mysqli.php';
 list($folder, $id_folders, $user) = require_folder($mysqli);
@@ -43,7 +36,7 @@ if ($folders) {
             include_once '../../fns/Page/disabledImageLink.php';
             $items[] = Page\disabledImageLink($escapedName, 'folder');
         } else {
-            $href = create_href($id_folders, $itemFolder->id_folders);
+            $href = "./?id_folders=$id_folders&amp;parent_id_folders=$itemFolder->id_folders";
             $items[] = Page\imageArrowLink($escapedName, $href, 'folder');
         }
     }
@@ -72,32 +65,8 @@ unset(
     $_SESSION['files/messages']
 );
 
-include_once '../fns/create_move_location_bar.php';
-include_once '../../fns/create_folder_link.php';
-include_once '../../fns/Page/tabs.php';
-include_once '../../fns/Page/sessionErrors.php';
-include_once '../../fns/Page/warnings.php';
-$content = Page\tabs(
-    [
-        [
-            'title' => '&middot;&middot;&middot;',
-            'href' => '../../home/',
-        ],
-        [
-            'title' => 'Files',
-            'href' => create_folder_link($id_folders, '../'),
-        ]
-    ],
-    "Move Folder #$id_folders",
-    Page\sessionErrors('files/move-folder/errors')
-    .Page\warnings([
-        'Moving the folder "<b>'.htmlspecialchars($folder->name).'</b>".',
-        'Select a folder to move the folder into.'
-    ])
-    .create_move_location_bar($mysqli, $id_folders,
-        $parentFolder, 'id_folders', 'parent_id_folders')
-    .join('<div class="hr"></div>', $items)
-);
+include_once 'fns/create_content.php';
+$content = create_content($mysqli, $folder, $parentFolder, $items);
 
 include_once '../../fns/echo_page.php';
 echo_page($user, "Move Folder #$id_folders", $content, '../../');
