@@ -24,7 +24,7 @@ function create_calendar ($timeSelected) {
             ."<a href=\"$prevMonthHref\" class=\"clickable arrow left\">"
                 .'<span class="icon arrow-left"></span>'
             .'</a>'
-            .'<div class="month">'
+            .'<div class="center">'
                 .date('F d, Y', $timeSelected)
             .'</div>'
             ."<a href=\"$nextMonthHref\" class=\"clickable arrow right\">"

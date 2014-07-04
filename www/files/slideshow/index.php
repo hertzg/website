@@ -4,6 +4,58 @@ include_once '../fns/require_parent_folder.php';
 include_once '../../lib/mysqli.php';
 list($parentFolder, $parent_id_folders, $user) = require_parent_folder($mysqli);
 
+include_once '../../fns/Files/indexInUserFolder.php';
+$files = Files\indexInUserFolder($mysqli, $user->id_users, $parent_id_folders);
+
+include_once '../../fns/request_strings.php';
+list($id) = request_strings('id');
+
+$id = abs((int)$id);
+
+if (!$files) {
+    include_once '../../create_folder_link.php';
+    redirect(create_folder_link($parent_id_folders));
+}
+
+$index = 0;
+foreach ($files as $i => $file) {
+    if ($file->id_files == $id) {
+        $index = $i;
+        break;
+    }
+}
+
+$file = $files[$index];
+$name = $file->name;
+
+$extension = pathinfo($name, PATHINFO_EXTENSION);
+$extension = strtolower($extension);
+
+include_once '../../fns/get_extension_content_type.php';
+$contentType = get_extension_content_type($extension);
+
+$contentType = rawurlencode($contentType);
+$src = "../download-file/?id=$file->id_files&amp;contentType=$contentType";
+
+if (preg_match('/^(flac|mp3|oga|wav)$/', $extension)) {
+    $previewHtml = "<audio src=\"$src\" controls=\"controls\" />";;
+} elseif (preg_match('/^(bmp|gif|jpe?g|png|svg)$/', $extension)) {
+    $previewHtml = "<img src=\"$src\" style=\"max-width: 100%; max-height: 100%\" />";;
+} elseif (preg_match('/^(mp4|ogg|ogv)$/', $extension)) {
+    $previewHtml = "<video src=\"$src\" controls=\"controls\" />";;
+} else {
+    die('error');
+}
+
+$numFiles = count($files);
+$prevHref = '?id='.$files[$index ? $index - 1 : $numFiles - 1]->id_files;
+$nextHref = '?id='.$files[$index < $numFiles - 1 ? $index + 1 : 0]->id_files;
+if ($parent_id_folders) {
+    $param = "&amp;parent_id_folders=$parent_id_folders";
+    $prevHref .= $param;
+    $nextHref .= $param;
+}
+
 include_once '../../fns/create_folder_link.php';
 include_once '../../fns/Page/tabs.php';
 $content = Page\tabs(
@@ -18,7 +70,20 @@ $content = Page\tabs(
         ],
     ],
     'Slideshow',
-    ''
+    '<div class="navigation">'
+        ."<a class=\"clickable arrow left\" href=\"$prevHref\">"
+            .'<span class="icon arrow-left"></span>'
+        .'</a>'
+        ."<a class=\"clickable center\" style=\"line-height: 44px\" href=\"../view-file/?id=$id\">"
+            .htmlspecialchars($name)
+        .'</a>'
+        ."<a class=\"clickable arrow right\" href=\"$nextHref\">"
+            .'<span class="icon arrow-right"></span>'
+        .'</a>'
+    .'</div>'
+    .'<div style="background: #000; text-align: center; max-height: 400px">'
+        .$previewHtml
+    .'</div>'
 );
 
 include_once '../../fns/echo_page.php';

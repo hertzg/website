@@ -1,0 +1,31 @@
+.navigation {
+    background: #eee;
+    text-align: center;
+    line-height: 48px;
+    color: #444;
+    position: relative;
+}
+.navigation > .center {
+    margin: 0 48px;
+    width: auto;
+}
+.navigation > .arrow {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 48px;
+}
+.navigation > .arrow > .icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+.navigation > .arrow.left {
+    left: 0;
+}
+.navigation > .arrow.right {
+    right: 0;
+}

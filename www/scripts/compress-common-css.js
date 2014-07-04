@@ -33,6 +33,7 @@ var files = [
     'twoColumns.css',
     'php-code.css',
     'preview.css',
+    'navigation.css',
 ]
 
 var source = ''
