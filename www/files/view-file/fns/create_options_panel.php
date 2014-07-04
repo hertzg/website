@@ -12,7 +12,7 @@ function create_options_panel ($file) {
 
     $href = "../slideshow/?id=$id";
     if ($id_folders) $href .= "&amp;parent_id_folders=$id_folders";
-    $slideshowLink = Page\imageLink('Slideshow', $href, 'TODO');
+    $slideshowLink = Page\imageLink('Slideshow', $href, 'slideshow');
 
     $href = "../download-file/?id=$id";
     $downloadLink = Page\imageLink('Download', $href, 'download');

@@ -13,7 +13,7 @@ function create_options_panel ($user, $id_folders, $files) {
 
     if ($files) {
         $href = "slideshow/$parentQuery";
-        $options[] = Page\imageArrowLink('Sldieshow', $href, 'TODO');
+        $options[] = Page\imageArrowLink('Sldieshow', $href, 'slideshow');
     }
 
     $href = "new-folder/$parentQuery";

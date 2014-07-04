@@ -60,8 +60,8 @@ $names = ['account', 'edit-profile', 'download', 'upload', 'feedback', 'yes',
     'search', 'search-folder', 'birthday-cake', 'checkbox',
     'checked-checkbox', 'help', 'run', 'mail', 'send', 'receive',
     'phone', 'edit-home', 'reorder', 'show-hide', 'restore-defaults',
-    'forbid-notifications', 'receive-notifications', 'generic'];
-render($content, 'other.svg?8', $names);
+    'forbid-notifications', 'receive-notifications', 'generic', 'slideshow'];
+render($content, 'other.svg?9', $names);
 
 $names = ['schedule', 'create-schedule', 'edit-schedule', 'schedules'];
 render($content, 'schedule.svg?1', $names);
