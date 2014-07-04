@@ -39,7 +39,7 @@ $src = "../download-file/?id=$file->id_files&amp;contentType=$contentType";
 if (preg_match('/^(flac|mp3|oga|wav)$/', $extension)) {
     $previewHtml = "<audio src=\"$src\" controls=\"controls\" />";;
 } elseif (preg_match('/^(bmp|gif|jpe?g|png|svg)$/', $extension)) {
-    $previewHtml = "<img src=\"$src\" style=\"vertical-align: middle; max-width: 100%; max-height: 400px\" />";;
+    $previewHtml = "<img src=\"$src\" />";;
 } elseif (preg_match('/^(mp4|ogg|ogv)$/', $extension)) {
     $previewHtml = "<video src=\"$src\" controls=\"controls\" />";;
 } else {
@@ -81,11 +81,13 @@ $content = Page\tabs(
             .'<span class="icon arrow-right"></span>'
         .'</a>'
     .'</div>'
-    .'<div style="background: #000; text-align: center; height: 400px">'
-        .'<span style="display: inline-block; vertical-align: middle; height: 100%"></span>'
+    .'<div class="slideshow">'
+        .'<span class="aligner"></span>'
         .$previewHtml
     .'</div>'
 );
 
 include_once '../../fns/echo_page.php';
-echo_page($user, 'Slideshow', $content, '../../');
+echo_page($user, 'Slideshow', $content, '../../', [
+    'head' => '<link rel="stylesheet" type="text/css" href="index.css" />',
+]);

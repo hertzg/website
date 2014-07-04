@@ -1,0 +1,19 @@
+.slideshow {
+    background: #000;
+    text-align: center;
+    height: 400px;
+    color: #fff;
+}
+.slideshow > .aligner {
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+
+.slideshow > audio,
+.slideshow > img,
+.slideshow > video {
+    vertical-align: middle;
+    max-width: 100%;
+    max-height: 400px;
+}
