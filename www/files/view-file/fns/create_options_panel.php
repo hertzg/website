@@ -8,6 +8,11 @@ function create_options_panel ($file) {
     include_once "$fnsDir/Page/imageLink.php";
 
     $id = $file->id_files;
+    $id_folders = $file->id_folders;
+
+    $href = "../slideshow/?id=$id";
+    if ($id_folders) $href .= "&amp;parent_id_folders=$id_folders";
+    $slideshowLink = Page\imageLink('Slideshow', $href, 'TODO');
 
     $href = "../download-file/?id=$id";
     $downloadLink = Page\imageLink('Download', $href, 'download');
@@ -15,7 +20,6 @@ function create_options_panel ($file) {
     $href = "../rename-file/?id=$id";
     $renameLink = Page\imageArrowLink('Rename', $href, 'rename');
 
-    $id_folders = $file->id_folders;
     $href = "../move-file/?id=$id";
     if ($id_folders) $href .= "&amp;id_folders=$file->id_folders";
     $moveLink = Page\imageArrowLink('Move', $href, 'move-file');
@@ -28,11 +32,11 @@ function create_options_panel ($file) {
 
     include_once "$fnsDir/Page/staticTwoColumns.php";
     $content =
-        Page\staticTwoColumns($downloadLink, $renameLink)
+        Page\staticTwoColumns($slideshowLink, $downloadLink)
         .'<div class="hr"></div>'
-        .Page\staticTwoColumns($moveLink, $sendLink)
+        .Page\staticTwoColumns($renameLink, $moveLink)
         .'<div class="hr"></div>'
-        .$deleteLink;
+        .Page\staticTwoColumns($sendLink, $deleteLink);
 
     include_once "$fnsDir/create_panel.php";
     return create_panel('File Options', $content);

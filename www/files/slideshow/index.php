@@ -10,8 +10,6 @@ $files = Files\indexInUserFolder($mysqli, $user->id_users, $parent_id_folders);
 include_once '../../fns/request_strings.php';
 list($id) = request_strings('id');
 
-$id = abs((int)$id);
-
 if (!$files) {
     include_once '../../create_folder_link.php';
     redirect(create_folder_link($parent_id_folders));
@@ -26,6 +24,7 @@ foreach ($files as $i => $file) {
 }
 
 $file = $files[$index];
+$id = $file->id_files;
 $name = $file->name;
 
 $extension = pathinfo($name, PATHINFO_EXTENSION);
@@ -40,11 +39,11 @@ $src = "../download-file/?id=$file->id_files&amp;contentType=$contentType";
 if (preg_match('/^(flac|mp3|oga|wav)$/', $extension)) {
     $previewHtml = "<audio src=\"$src\" controls=\"controls\" />";;
 } elseif (preg_match('/^(bmp|gif|jpe?g|png|svg)$/', $extension)) {
-    $previewHtml = "<img src=\"$src\" style=\"max-width: 100%; max-height: 100%\" />";;
+    $previewHtml = "<img src=\"$src\" style=\"vertical-align: middle; max-width: 100%; max-height: 400px\" />";;
 } elseif (preg_match('/^(mp4|ogg|ogv)$/', $extension)) {
     $previewHtml = "<video src=\"$src\" controls=\"controls\" />";;
 } else {
-    die('error');
+    $previewHtml = 'Preview not available';
 }
 
 $numFiles = count($files);
@@ -57,6 +56,7 @@ if ($parent_id_folders) {
 }
 
 include_once '../../fns/create_folder_link.php';
+include_once '../../fns/Page/buttonLink.php';
 include_once '../../fns/Page/tabs.php';
 $content = Page\tabs(
     [
@@ -74,14 +74,15 @@ $content = Page\tabs(
         ."<a class=\"clickable arrow left\" href=\"$prevHref\">"
             .'<span class="icon arrow-left"></span>'
         .'</a>'
-        ."<a class=\"clickable center\" style=\"line-height: 44px\" href=\"../view-file/?id=$id\">"
-            .htmlspecialchars($name)
-        .'</a>'
+        .'<div class="center">'
+            .Page\buttonLink(htmlspecialchars($name), "../view-file/?id=$id")
+        .'</div>'
         ."<a class=\"clickable arrow right\" href=\"$nextHref\">"
             .'<span class="icon arrow-right"></span>'
         .'</a>'
     .'</div>'
-    .'<div style="background: #000; text-align: center; max-height: 400px">'
+    .'<div style="background: #000; text-align: center; height: 400px">'
+        .'<span style="display: inline-block; vertical-align: middle; height: 100%"></span>'
         .$previewHtml
     .'</div>'
 );
