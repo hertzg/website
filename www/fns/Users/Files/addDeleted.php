@@ -12,8 +12,9 @@ function addDeleted ($mysqli, $id_users, $data) {
     if (!$folder) $id_folders = 0;
 
     include_once __DIR__.'/../../Files/addDeleted.php';
-    \Files\addDeleted($mysqli, $data->id, $id_users, $id_folders,
-        $data->name, $size, $data->insert_time, $data->rename_time);
+    \Files\addDeleted($mysqli, $data->id, $id_users,
+        $id_folders, $data->media_type, $data->name,
+        $size, $data->insert_time, $data->rename_time);
 
     include_once __DIR__.'/../addStorageUsed.php';
     \Users\addStorageUsed($mysqli, $id_users, $size);

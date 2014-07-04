@@ -11,9 +11,9 @@ function addDeleted ($mysqli, $id, $sender_id_users, $sender_username,
 
     $sql = 'insert into received_folders'
         .' (id, sender_id_users, sender_username,'
-        .' receiver_id_users, name, archived, insert_time)'
+        .' receiver_id_users, name, archived, insert_time, committed)'
         ." values ($id, $sender_id_users, '$sender_username',"
-        ." $receiver_id_users, '$name', $archived, $insert_time)";
+        ." $receiver_id_users, '$name', $archived, $insert_time, 1)";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
 }

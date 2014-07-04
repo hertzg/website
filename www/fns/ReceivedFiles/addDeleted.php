@@ -3,7 +3,7 @@
 namespace ReceivedFiles;
 
 function addDeleted ($mysqli, $id, $sender_id_users, $sender_username,
-    $receiver_id_users, $name, $size, $archived, $insert_time) {
+    $receiver_id_users, $media_type, $name, $size, $archived, $insert_time) {
 
     $sender_username = $mysqli->real_escape_string($sender_username);
     $name = $mysqli->real_escape_string($name);
@@ -11,9 +11,12 @@ function addDeleted ($mysqli, $id, $sender_id_users, $sender_username,
 
     $sql = 'insert into received_files'
         .' (id, sender_id_users, sender_username,'
-        .' receiver_id_users, name, size, archived, insert_time)'
+        .' receiver_id_users, media_type, name,'
+        .' size, archived, insert_time, committed)'
         ." values ($id, $sender_id_users, '$sender_username',"
-        ." $receiver_id_users, '$name', '$size', $archived, $insert_time)";
+        ." $receiver_id_users, '$media_type', '$name',"
+        ." '$size', $archived, $insert_time, 1)";
+
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
 }
