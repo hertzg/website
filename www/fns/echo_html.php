@@ -6,6 +6,10 @@ function echo_html ($title, $head, $body, $theme, $base) {
     $commonCssRevision = get_revision('common.compressed.css');
     $iconsCssRevision = get_revision('icons.compressed.css');
 
+    header_remove('Expires');
+    header_remove('Pragma');
+    header_remove('X-Powered-By');
+    header('Cache-Control: private');
     header('Content-Type: text/html; charset=UTF-8');
 
     echo
