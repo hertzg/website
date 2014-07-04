@@ -1,28 +1,26 @@
 #!/bin/bash
 
 function render () {
+    dir=`pwd`
+    cd $1/inkscape
     for i in *.svg
     do
         name=`basename $i .svg`
         inkscape --export-plain-svg=../$name.svg $name.svg
     done
+    cd $dir
 }
 
 cd `dirname $BASH_SOURCE`
+cd ..
 
-cd ../zvini-icons/inkscape
-render
-convert 16.svg ../../favicon.ico
-cd ../../images/inkscape
-render
-cd ../icons/inkscape
-render
+render zvini-icons
+render images
+render images/icons
 
-cd ../../../themes
-for i in *
+for i in themes/*
 do
-    cd $i
-    cd images/inkscape
-    render
-    cd ../../..
+    render $i/images
 done
+
+convert zvini-icons/16.svg favicon.ico
