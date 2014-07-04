@@ -1,6 +1,6 @@
 <?php
 
-function create_options_panel ($user, $id_folders) {
+function create_options_panel ($user, $id_folders, $files) {
 
     $fnsDir = __DIR__.'/../../fns';
 
@@ -10,6 +10,11 @@ function create_options_panel ($user, $id_folders) {
 
     if ($id_folders) $parentQuery = "?parent_id_folders=$id_folders";
     else $parentQuery = '';
+
+    if ($files) {
+        $href = "slideshow/$parentQuery";
+        $options[] = Page\imageArrowLink('Sldieshow', $href, 'TODO');
+    }
 
     $href = "new-folder/$parentQuery";
     $options[] = Page\imageArrowLink('New Folder', $href, 'create-folder');

@@ -77,7 +77,7 @@ $content =
         .create_location_bar($mysqli, $folder)
         .join('<div class="hr"></div>', $items)
     )
-    .create_options_panel($user, $id_folders);
+    .create_options_panel($user, $id_folders, $files);
 
 include_once '../fns/echo_page.php';
 echo_page($user, 'Files', $content, $base);
