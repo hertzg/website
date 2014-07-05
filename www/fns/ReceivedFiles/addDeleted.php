@@ -2,8 +2,9 @@
 
 namespace ReceivedFiles;
 
-function addDeleted ($mysqli, $id, $sender_id_users, $sender_username,
-    $receiver_id_users, $content_type, $media_type, $name, $size, $archived, $insert_time) {
+function addDeleted ($mysqli, $id, $sender_id_users,
+    $sender_username, $receiver_id_users, $content_type,
+    $media_type, $name, $size, $archived, $insert_time) {
 
     $sender_username = $mysqli->real_escape_string($sender_username);
     $name = $mysqli->real_escape_string($name);

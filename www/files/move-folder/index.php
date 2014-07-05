@@ -26,17 +26,17 @@ include_once '../../fns/Folders/indexInUserFolder.php';
 $folders = Folders\indexInUserFolder($mysqli, $id_users, $parent_id_folders);
 
 include_once '../../fns/Page/imageArrowLink.php';
-include_once '../../fns/Page/imageLink.php';
 
 $items = [];
 if ($folders) {
     foreach ($folders as $itemFolder) {
+        $itemId = $itemFolder->id_folders;
         $escapedName = htmlspecialchars($itemFolder->name);
-        if ($itemFolder->id_folders == $id_folders) {
+        if ($itemId == $id_folders) {
             include_once '../../fns/Page/disabledImageLink.php';
             $items[] = Page\disabledImageLink($escapedName, 'folder');
         } else {
-            $href = "./?id_folders=$id_folders&amp;parent_id_folders=$itemFolder->id_folders";
+            $href = "./?id_folders=$id_folders&amp;parent_id_folders=$itemId";
             $items[] = Page\imageArrowLink($escapedName, $href, 'folder');
         }
     }
@@ -48,6 +48,7 @@ if ($folders) {
 if ($parent_id_folders != $folder->parent_id_folders) {
     $parentParam = "parent_id_folders=$parent_id_folders";
     $href = "submit.php?id_folders=$id_folders&amp;$parentParam";
+    include_once '../../fns/Page/imageLink.php';
     $items[] = Page\imageLink('Move Here', $href, 'move-folder');
 }
 

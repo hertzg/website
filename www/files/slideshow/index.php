@@ -67,8 +67,11 @@ if ($index < count($files) - 1) {
     $nextLink = '';
 }
 
-include_once '../../fns/create_folder_link.php';
+$title = htmlspecialchars($file->name);
 include_once '../../fns/Page/buttonLink.php';
+$fileLink = Page\buttonLink($title, "../view-file/?id=$id");
+
+include_once '../../fns/create_folder_link.php';
 include_once '../../fns/Page/tabs.php';
 $content = Page\tabs(
     [
@@ -84,9 +87,7 @@ $content = Page\tabs(
     'Slideshow',
     '<div class="navigation">'
         .$prevLink
-        .'<div class="center">'
-            .Page\buttonLink(htmlspecialchars($file->name), "../view-file/?id=$id")
-        .'</div>'
+        ."<div class=\"center\">$fileLink</div>"
         .$nextLink
     .'</div>'
     .'<div class="slideshow">'

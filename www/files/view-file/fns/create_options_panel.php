@@ -33,13 +33,16 @@ function create_options_panel ($file) {
     include_once "$fnsDir/Page/staticTwoColumns.php";
 
     $media_type = $file->media_type;
-    if ($media_type == 'audio' || $media_type == 'image' || $media_type == 'video') {
+    if ($media_type == 'audio' || $media_type == 'image' ||
+        $media_type == 'video') {
+
         $content =
             Page\staticTwoColumns($slideshowLink, $downloadLink)
             .'<div class="hr"></div>'
             .Page\staticTwoColumns($renameLink, $moveLink)
             .'<div class="hr"></div>'
             .Page\staticTwoColumns($sendLink, $deleteLink);
+
     } else {
         $content =
             Page\staticTwoColumns($downloadLink, $renameLink)
