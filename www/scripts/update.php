@@ -3,20 +3,18 @@
 chdir(__DIR__);
 include_once '../lib/mysqli.php';
 
-$sql = 'alter table deleted_files'
-    ." add media_type enum('audio', 'image', 'video', 'unknown') default 'unknown' not null after insert_time";
+$content_type = 'content_type varchar(32) character set ascii collate ascii_bin';
+
+$sql = "alter table deleted_files add $content_type not null first";
 $mysqli->query($sql) || trigger_error($mysqli->error);
 
-$sql = 'alter table files'
-    ." add media_type enum('audio', 'image', 'video', 'unknown') default 'unknown' not null after insert_time";
+$sql = "alter table files add $content_type not null first";
 $mysqli->query($sql) || trigger_error($mysqli->error);
 
-$sql = 'alter table received_files'
-    ." add media_type enum('audio', 'image', 'video', 'unknown') default 'unknown' not null after insert_time";
+$sql = "alter table received_files add $content_type not null after committed";
 $mysqli->query($sql) || trigger_error($mysqli->error);
 
-$sql = 'alter table received_folder_files'
-    ." add media_type enum('audio', 'image', 'video', 'unknown') default 'unknown' not null after id_users";
+$sql = "alter table received_folder_files add $content_type not null first";
 $mysqli->query($sql) || trigger_error($mysqli->error);
 
 echo "Done\n";
