@@ -41,7 +41,7 @@ function delete ($mysqli, $folder) {
                 $id_files = $file->id_files;
                 \Users\Files\purge($mysqli, $file);
                 \DeletedFiles\add($mysqli, $id_deleted_items, $id_files, $id,
-                    $id_users, $file->media_type, $file->content_type,
+                    $id_users, $file->content_type, $file->media_type,
                     $file->name, $file->size, $file->insert_time,
                     $file->rename_time);
             }
