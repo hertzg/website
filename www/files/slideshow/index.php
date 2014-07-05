@@ -25,15 +25,8 @@ foreach ($files as $i => $file) {
 
 $file = $files[$index];
 $id = $file->id_files;
-$name = $file->name;
 
-$extension = pathinfo($name, PATHINFO_EXTENSION);
-$extension = strtolower($extension);
-
-include_once '../../fns/get_extension_content_type.php';
-$contentType = get_extension_content_type($extension);
-$contentType = rawurlencode($contentType);
-$src = "../download-file/?id=$file->id_files&amp;contentType=$contentType";
+$src = "../download-file/?id=$id&amp;contentType=$file->content_type";
 
 $media_type = $file->media_type;
 if ($media_type == 'audio') {
@@ -90,7 +83,7 @@ $content = Page\tabs(
     '<div class="navigation">'
         .$prevLink
         .'<div class="center">'
-            .Page\buttonLink(htmlspecialchars($name), "../view-file/?id=$id")
+            .Page\buttonLink(htmlspecialchars($file->name), "../view-file/?id=$id")
         .'</div>'
         .$nextLink
     .'</div>'
