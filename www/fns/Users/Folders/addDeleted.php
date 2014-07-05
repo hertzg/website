@@ -48,6 +48,8 @@ function addDeleted ($mysqli, $id_users, $folder) {
                 \Users\Files\addDeleted($mysqli, $id_users, (object)[
                     'id' => $deletedFile->id_files,
                     'id_folders' => $parent_id_folders,
+                    'content_type' => $deletedFile->content_type,
+                    'media_type' => $deletedFile->media_type,
                     'name' => $deletedFile->name,
                     'size' => $deletedFile->size,
                     'insert_time' => $deletedFile->insert_time,
