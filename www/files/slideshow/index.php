@@ -4,15 +4,17 @@ include_once '../fns/require_parent_folder.php';
 include_once '../../lib/mysqli.php';
 list($parentFolder, $parent_id_folders, $user) = require_parent_folder($mysqli);
 
-include_once '../../fns/Files/indexInUserFolder.php';
-$files = Files\indexInUserFolder($mysqli, $user->id_users, $parent_id_folders);
+include_once '../../fns/Files/indexPreviewableInUserFolder.php';
+$files = Files\indexPreviewableInUserFolder(
+    $mysqli, $user->id_users, $parent_id_folders);
 
 include_once '../../fns/request_strings.php';
 list($id) = request_strings('id');
 
 if (!$files) {
-    include_once '../../create_folder_link.php';
-    redirect(create_folder_link($parent_id_folders));
+    include_once '../../fns/create_folder_link.php';
+    include_once '../../fns/redirect.php';
+    redirect('../'.create_folder_link($parent_id_folders));
 }
 
 $index = 0;

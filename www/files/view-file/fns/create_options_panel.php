@@ -31,12 +31,24 @@ function create_options_panel ($file) {
     $deleteLink = Page\imageArrowLink('Delete', $href, 'trash-bin');
 
     include_once "$fnsDir/Page/staticTwoColumns.php";
-    $content =
-        Page\staticTwoColumns($slideshowLink, $downloadLink)
-        .'<div class="hr"></div>'
-        .Page\staticTwoColumns($renameLink, $moveLink)
-        .'<div class="hr"></div>'
-        .Page\staticTwoColumns($sendLink, $deleteLink);
+
+    $media_type = $file->media_type;
+    if ($media_type == 'audio' || $media_type == 'image' || $media_type == 'video') {
+        $content =
+            Page\staticTwoColumns($slideshowLink, $downloadLink)
+            .'<div class="hr"></div>'
+            .Page\staticTwoColumns($renameLink, $moveLink)
+            .'<div class="hr"></div>'
+            .Page\staticTwoColumns($sendLink, $deleteLink);
+    } else {
+        $content =
+            Page\staticTwoColumns($downloadLink, $renameLink)
+            .'<div class="hr"></div>'
+            .Page\staticTwoColumns($moveLink, $sendLink)
+            .'<div class="hr"></div>'
+            .$deleteLink;
+    }
+
 
     include_once "$fnsDir/create_panel.php";
     return create_panel('File Options', $content);

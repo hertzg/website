@@ -2,6 +2,12 @@
 
 function create_options_panel ($user, $id_folders, $files) {
 
+    $previewableFiles = array_filter($files, function ($file) {
+        $media_type = $file->media_type;
+        return $media_type == 'audio' || $media_type == 'image' ||
+            $media_type == 'video';
+    });
+
     $fnsDir = __DIR__.'/../../fns';
 
     $options = [];
@@ -11,7 +17,7 @@ function create_options_panel ($user, $id_folders, $files) {
     if ($id_folders) $parentQuery = "?parent_id_folders=$id_folders";
     else $parentQuery = '';
 
-    if ($files) {
+    if ($previewableFiles) {
         $href = "slideshow/$parentQuery";
         $options[] = Page\imageArrowLink('Sldieshow', $href, 'slideshow');
     }
