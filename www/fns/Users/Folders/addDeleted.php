@@ -23,7 +23,8 @@ function addDeleted ($mysqli, $id_users, $folder) {
     \Folders\addDeleted($mysqli, $id_folders, $id_users,
         $parent_id_folders, $name, $folder->insert_time, $folder->rename_time);
 
-    $restore = function ($parent_id_folders, $restore) use ($mysqli, $id_users, $fnsDir) {
+    $restore = function ($parent_id_folders, $restore) use ($mysqli,
+        $id_users, $fnsDir) {
 
         include_once "$fnsDir/DeletedFolders/indexOnParent.php";
         $deletedFolders = \DeletedFolders\indexOnParent(
