@@ -4,6 +4,9 @@ namespace Files;
 
 function add ($mysqli, $id_users, $id_folders, $name, $size) {
 
+    include_once __DIR__.'/../detect_content_type.php';
+    $content_type = \detect_content_type($name);
+
     include_once __DIR__.'/../detect_media_type.php';
     $media_type = \detect_media_type($name);
 
@@ -11,10 +14,10 @@ function add ($mysqli, $id_users, $id_folders, $name, $size) {
     $insert_time = $rename_time = time();
 
     $sql = 'insert into files'
-        .' (id_users, id_folders, media_type, name,'
-        .' size, insert_time, rename_time)'
-        ." value ($id_users, $id_folders, '$media_type', '$name',"
-        ." $size, $insert_time, $rename_time)";
+        .' (id_users, id_folders, content_type, media_type,'
+        .' name, size, insert_time, rename_time)'
+        ." value ($id_users, $id_folders, '$content_type', '$media_type',"
+        ." '$name', $size, $insert_time, $rename_time)";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 

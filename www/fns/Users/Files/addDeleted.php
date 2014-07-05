@@ -13,7 +13,7 @@ function addDeleted ($mysqli, $id_users, $data) {
 
     include_once __DIR__.'/../../Files/addDeleted.php';
     \Files\addDeleted($mysqli, $data->id, $id_users,
-        $id_folders, $data->media_type, $data->name,
+        $id_folders, $data->content_type, $data->media_type, $data->name,
         $size, $data->insert_time, $data->rename_time);
 
     include_once __DIR__.'/../addStorageUsed.php';
