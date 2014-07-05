@@ -25,7 +25,8 @@ include_once '../../fns/Page/infoText.php';
 $infoText = Page\infoText($text);
 
 include_once '../../fns/Page/filePreview.php';
-$filePreview = Page\filePreview($file->name, $id, '../download-file/');
+$filePreview = Page\filePreview($file->media_type,
+    $file->content_type, $id, '../download-file/');
 
 include_once 'fns/create_location_bar.php';
 include_once 'fns/create_options_panel.php';

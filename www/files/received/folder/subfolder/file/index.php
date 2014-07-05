@@ -13,17 +13,19 @@ if (!$receivedFolderFile->parent_id) {
 }
 
 $title = "Received Folder #$receivedFolderFile->id_received_folders";
-$name = $receivedFolderFile->name;
 
 include_once "$fnsDir/Page/imageLink.php";
 $href = "../../download-file/?id=$id";
 $downloadLink = Page\imageLink('Download', $href, 'download');
 
+include_once "$fnsDir/Page/filePreview.php";
+$filePreview = Page\filePreview($receivedFolderFile->media_type,
+    $receivedFolderFile->content_type, $id, '../../download-file/');
+
 include_once "fns/create_location_bar.php";
 include_once "$fnsDir/bytestr.php";
 include_once "$fnsDir/create_panel.php";
 include_once "$fnsDir/Form/label.php";
-include_once "$fnsDir/Page/filePreview.php";
 include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
     [
@@ -38,11 +40,11 @@ $content = Page\tabs(
     ],
     $title,
     create_location_bar($mysqli, $receivedFolderFile)
-    .Form\label('File name', htmlspecialchars($name))
+    .Form\label('File name', htmlspecialchars($receivedFolderFile->name))
     .'<div class="hr"></div>'
     .Form\label('Size', bytestr($receivedFolderFile->size))
     .'<div class="hr"></div>'
-    .Form\label('Preview', Page\filePreview($name, $id, '../../download-file/'))
+    .Form\label('Preview', $filePreview)
     .create_panel('File Options', $downloadLink)
 );
 

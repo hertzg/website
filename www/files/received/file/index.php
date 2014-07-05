@@ -37,7 +37,8 @@ $href = "delete/$queryString";
 $deleteLink = Page\imageArrowLink('Delete', $href, 'trash-bin');
 
 include_once "$fnsDir/Page/filePreview.php";
-$filePreview = Page\filePreview($receivedFile->name, $id, 'download/');
+$filePreview = Page\filePreview($receivedFile->media_type,
+    $receivedFile->content_type, $id, 'download/');
 
 include_once "$fnsDir/bytestr.php";
 include_once "$fnsDir/create_panel.php";

@@ -2,34 +2,25 @@
 
 namespace Page;
 
-function filePreview ($name, $id, $downloadBase) {
+function filePreview ($media_type, $content_type, $id, $downloadBase) {
 
-    $extension = pathinfo($name, PATHINFO_EXTENSION);
-    $extension = strtolower($extension);
+    $audio = $media_type == 'audio';
+    $image = $media_type == 'image';
+    $video = $media_type == 'video';
 
-    $imageRegex = 'bmp|gif|jpe?g|png|svg';
-    $videoRegex = 'mp4|ogg|ogv';
-    $audioRegex = 'flac|mp3|oga|wav';
-    if (preg_match("/^($audioRegex|$imageRegex|$videoRegex)$/", $extension)) {
+    if ($audio|| $image || $video) {
 
-        include_once __DIR__.'/../get_extension_content_type.php';
-        $contentType = get_extension_content_type($extension);
-
-        $contentType = rawurlencode($contentType);
-        $src = "$downloadBase?id=$id&amp;contentType=$contentType";
+        $src = "$downloadBase?id=$id&amp;contentType=$content_type";
 
         $html = '<div class="preview">';
-        if (preg_match("/^($audioRegex)$/", $extension)) {
-            $html .= "<audio src=\"$src\" controls=\"controls\" />";;
-        } elseif (preg_match("/^($imageRegex)$/", $extension)) {
-            $html .= "<img src=\"$src\" />";;
-        } else {
-            $html .= "<video src=\"$src\" controls=\"controls\" />";;
-        }
+        if ($audio) $html .= "<audio src=\"$src\" controls=\"controls\" />";
+        elseif ($image) $html .= "<img src=\"$src\" />";
+        else $html .= "<video src=\"$src\" controls=\"controls\" />";
         $html .= '</div>';
         return $html;
 
     }
+
     return 'Not available';
 
 }
