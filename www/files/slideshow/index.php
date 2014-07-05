@@ -32,13 +32,11 @@ $src = "../download-file/?id=$id&amp;contentType=$file->content_type";
 
 $media_type = $file->media_type;
 if ($media_type == 'audio') {
-    $previewHtml = "<audio src=\"$src\" controls=\"controls\" />";;
+    $previewHtml = "<audio src=\"$src\" controls=\"controls\" />";
 } elseif ($media_type == 'image') {
-    $previewHtml = "<img src=\"$src\" />";;
-} elseif ($media_type == 'video') {
-    $previewHtml = "<video src=\"$src\" controls=\"controls\" />";;
+    $previewHtml = "<img src=\"$src\" />";
 } else {
-    $previewHtml = 'Preview not available';
+    $previewHtml = "<video src=\"$src\" controls=\"controls\" />";
 }
 
 if ($index) {
