@@ -46,13 +46,30 @@ if ($media_type == 'audio') {
     $previewHtml = 'Preview not available';
 }
 
-$numFiles = count($files);
-$prevHref = '?id='.$files[$index ? $index - 1 : $numFiles - 1]->id_files;
-$nextHref = '?id='.$files[$index < $numFiles - 1 ? $index + 1 : 0]->id_files;
-if ($parent_id_folders) {
-    $param = "&amp;parent_id_folders=$parent_id_folders";
-    $prevHref .= $param;
-    $nextHref .= $param;
+if ($index) {
+    $href = '?id='.$files[$index - 1]->id_files;
+    if ($parent_id_folders) {
+        $href .= "&amp;parent_id_folders=$parent_id_folders";
+    }
+    $prevLink =
+        "<a class=\"clickable arrow left\" href=\"$href\">"
+            .'<span class="icon arrow-left"></span>'
+        .'</a>';
+} else {
+    $prevLink = '';
+}
+
+if ($index < count($files) - 1) {
+    $href = '?id='.$files[$index + 1]->id_files;
+    if ($parent_id_folders) {
+        $href .= "&amp;parent_id_folders=$parent_id_folders";
+    }
+    $nextLink =
+        "<a class=\"clickable arrow right\" href=\"$href\">"
+            .'<span class="icon arrow-right"></span>'
+        .'</a>';
+} else {
+    $nextLink = '';
 }
 
 include_once '../../fns/create_folder_link.php';
@@ -71,15 +88,11 @@ $content = Page\tabs(
     ],
     'Slideshow',
     '<div class="navigation">'
-        ."<a class=\"clickable arrow left\" href=\"$prevHref\">"
-            .'<span class="icon arrow-left"></span>'
-        .'</a>'
+        .$prevLink
         .'<div class="center">'
             .Page\buttonLink(htmlspecialchars($name), "../view-file/?id=$id")
         .'</div>'
-        ."<a class=\"clickable arrow right\" href=\"$nextHref\">"
-            .'<span class="icon arrow-right"></span>'
-        .'</a>'
+        .$nextLink
     .'</div>'
     .'<div class="slideshow">'
         .'<span class="aligner"></span>'
