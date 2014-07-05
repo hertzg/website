@@ -32,15 +32,15 @@ $extension = strtolower($extension);
 
 include_once '../../fns/get_extension_content_type.php';
 $contentType = get_extension_content_type($extension);
-
 $contentType = rawurlencode($contentType);
 $src = "../download-file/?id=$file->id_files&amp;contentType=$contentType";
 
-if (preg_match('/^(flac|mp3|oga|wav)$/', $extension)) {
+$media_type = $file->media_type;
+if ($media_type == 'audio') {
     $previewHtml = "<audio src=\"$src\" controls=\"controls\" />";;
-} elseif (preg_match('/^(bmp|gif|jpe?g|png|svg)$/', $extension)) {
+} elseif ($media_type == 'image') {
     $previewHtml = "<img src=\"$src\" />";;
-} elseif (preg_match('/^(mp4|ogg|ogv)$/', $extension)) {
+} elseif ($media_type == 'video') {
     $previewHtml = "<video src=\"$src\" controls=\"controls\" />";;
 } else {
     $previewHtml = 'Preview not available';
