@@ -13,20 +13,29 @@ function create_options_panel ($user, $id_folders, $files) {
     $options = [];
 
     include_once "$fnsDir/Page/imageArrowLink.php";
+    include_once "$fnsDir/Page/twoColumns.php";
 
     if ($id_folders) $parentQuery = "?parent_id_folders=$id_folders";
     else $parentQuery = '';
 
-    if ($previewableFiles) {
-        $href = "slideshow/$parentQuery";
-        $options[] = Page\imageArrowLink('Sldieshow', $href, 'slideshow');
-    }
-
     $href = "new-folder/$parentQuery";
-    $options[] = Page\imageArrowLink('New Folder', $href, 'create-folder');
+    $newFolderLink = Page\imageArrowLink('New Folder', $href, 'create-folder');
 
     $href = "upload-files/$parentQuery";
-    $options[] = Page\imageArrowLink('Upload Files', $href, 'upload');
+    $uploadLink = Page\imageArrowLink('Upload Files', $href, 'upload');
+
+    if ($previewableFiles) {
+
+        $href = "slideshow/$parentQuery";
+        $slideshowLink = Page\imageArrowLink('Sldieshow', $href, 'slideshow');
+
+        $options[] = Page\twoColumns($slideshowLink, $newFolderLink);
+
+        $options[] = $uploadLink;
+
+    } else {
+        $options[] = Page\twoColumns($newFolderLink, $uploadLink);
+    }
 
     if ($id_folders) {
 
