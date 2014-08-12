@@ -14,18 +14,16 @@ include_once '../../fns/str_collapse_spaces.php';
 $full_name = str_collapse_spaces($full_name);
 
 $errors = [];
+include_once '../../lib/mysqli.php';
 
 $email = str_collapse_spaces($email);
 $email = mb_strtolower($email, 'UTF-8');
-if ($email === '') {
-    $errors[] = 'Enter email.';
-} else {
+if ($email !== '') {
     include_once '../../fns/is_email_valid.php';
     if (!is_email_valid($email)) {
         $errors[] = 'Enter a valid email address.';
     } else {
         include_once '../../fns/Users/getByEmail.php';
-        include_once '../../lib/mysqli.php';
         if (Users\getByEmail($mysqli, $email, $id_users)) {
             $errors[] = 'A username with this email is already registered.'
                 .' Try another.';

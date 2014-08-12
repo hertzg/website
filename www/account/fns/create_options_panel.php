@@ -6,7 +6,7 @@ function create_options_panel ($user) {
     include_once "$fnsPageDir/imageArrowLink.php";
 
     $options = [];
-    if (!$user->email_verified) {
+    if ($user->email !== '' && !$user->email_verified) {
         $title = 'Verify Email';
         $options[] = Page\imageArrowLink($title, 'verify-email/', 'yes');
     }

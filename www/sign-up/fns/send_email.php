@@ -1,6 +1,6 @@
 <?php
 
-function send_email ($username, $email) {
+function send_email ($username) {
 
     $escapedUsername = htmlspecialchars($username);
     $html =
@@ -12,8 +12,7 @@ function send_email ($username, $email) {
                 .' content="text/html; charset=UTF-8" />'
             .'</head>'
             .'<body>'
-                ."<b>$escapedUsername</b> has signed up with the email"
-                .' <b>'.htmlspecialchars($email).'</b>.'
+                ."<b>$escapedUsername</b> has signed up."
             .'</body>'
         .'</html>';
 

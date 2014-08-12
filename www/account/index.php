@@ -11,12 +11,15 @@ unset_session_vars();
 include_once '../fns/Form/label.php';
 $items = [Form\label('Username', $user->username)];
 
-$value =
-    "<span>$user->email</span>"
-    .'<span class="emailStatus">'
-        .' ('.($user->email_verified ? 'Verified' : 'Not verified').')'
-    .'</span>';
-$items[] = Form\label('Email', $value);
+$email = $user->email;
+if ($email !== '') {
+    $value =
+        "<span>$email</span>"
+        .'<span class="emailStatus">'
+            .' ('.($user->email_verified ? 'Verified' : 'Not verified').')'
+        .'</span>';
+    $items[] = Form\label('Email', $value);
+}
 
 $full_name = $user->full_name;
 if ($full_name !== '') $items[] = Form\label('Full name', $full_name);

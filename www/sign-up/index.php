@@ -11,7 +11,6 @@ if (array_key_exists($key, $_SESSION)) {
 } else {
     $values = [
         'username' => '',
-        'email' => '',
         'password1' => '',
         'password2' => '',
     ];
@@ -45,11 +44,6 @@ $content = Page\tabs(
         .Form\notes([
             'Characters a-z, A-Z, 0-9, dash, dot and underscore only.',
             'Minimum 6 characters.',
-        ])
-        .'<div class="hr"></div>'
-        .Form\textfield('email', 'Email', [
-            'value' => $values['email'],
-            'required' => true,
         ])
         .'<div class="hr"></div>'
         .Form\password('password1', 'Password', [
