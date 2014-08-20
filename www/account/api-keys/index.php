@@ -11,16 +11,20 @@ $apiKeys = ApiKeys\indexOnUser($mysqli, $user->id_users);
 
 $items = [];
 if ($apiKeys) {
+    $time = time();
     include_once '../../fns/Page/imageArrowLinkWithDescription.php';
     foreach ($apiKeys as $apiKey) {
 
         $access_time = $apiKey->access_time;
+        $descriptions = [];
+        if ($apiKey->expire_time < $time) $descriptions[] = 'Expired.';
         if ($access_time === null) {
-            $description = 'Never accessed.';
+            $descriptions[] = 'Never accessed.';
         } else {
             include_once '../../fns/date_ago.php';
-            $description = 'Last accessed '.date_ago($access_time).'.';
+            $descriptions[] = 'Last accessed '.date_ago($access_time).'.';
         }
+        $description = join(' ', $descriptions);
 
         $title = htmlspecialchars($apiKey->name);
         $href = "view/?id=$apiKey->id";
