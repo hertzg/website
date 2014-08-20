@@ -17,7 +17,12 @@ if ($apiKeys) {
 
         $access_time = $apiKey->access_time;
         $descriptions = [];
-        if ($apiKey->expire_time < $time) $descriptions[] = 'Expired.';
+
+        $expire_time = $apiKey->expire_time;
+        if ($expire_time !== null && $expire_time < $time) {
+            $descriptions[] = 'Expired.';
+        }
+
         if ($access_time === null) {
             $descriptions[] = 'Never accessed.';
         } else {
