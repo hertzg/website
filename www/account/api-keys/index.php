@@ -22,7 +22,6 @@ if ($apiKeys) {
         $descriptions = [];
 
         $expire_time = $apiKey->expire_time;
-        $descriptions[] = date('d.m.Y H:i:s', $expire_time).' '.date('d.m.Y H:i:s', $time_today);
         if ($expire_time !== null && $expire_time < $time_today) {
             $descriptions[] = 'Expired.';
         }
