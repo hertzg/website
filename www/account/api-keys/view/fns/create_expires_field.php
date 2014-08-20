@@ -2,7 +2,6 @@
 
 function create_expires_field ($apiKey) {
     $expire_time = $apiKey->expire_time;
-    $expire_time = time();
     if ($expire_time === null) $content = 'never';
     else {
         $days = floor(($expire_time - time()) / (60 * 60 * 24));
