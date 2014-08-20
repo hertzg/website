@@ -10,11 +10,19 @@ $key = 'account/api-keys/edit/values';
 if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];
 } else {
+
+    $expire_time = $apiKey->expire_time;
+    if ($expire_time === null) $expires = '';
+    else {
+        $expires = ceil(($expire_time - time()) / (60 * 60 * 24));
+    }
+
     $values = [
         'name' => $apiKey->name,
-        'expires' => '',
+        'expires' => $expires,
         'randomizeKey' => false,
     ];
+
 }
 
 $base = '../../../';
