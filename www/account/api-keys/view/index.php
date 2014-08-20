@@ -27,6 +27,7 @@ else {
     $accessed = date_ago($access_time);
 }
 
+include_once 'fns/create_expires_field.php';
 include_once '../../../fns/create_panel.php';
 include_once '../../../fns/Form/label.php';
 include_once '../../../fns/Form/textarea.php';
@@ -51,6 +52,8 @@ $content = Page\tabs(
         'value' => bin2hex($apiKey->key),
         'readonly' => true,
     ])
+    .'<div class="hr"></div>'
+    .create_expires_field($apiKey)
     .'<div class="hr"></div>'
     .Form\label('Last accessed', $accessed)
     .create_panel('API Key Options', $optionsContent)
