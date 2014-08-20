@@ -8,7 +8,10 @@ $user = require_user('../../../');
 $id_users = $user->id_users;
 
 include_once '../../../fns/request_strings.php';
-list($name, $expires) = request_strings('name', 'expires');
+list($name) = request_strings('name');
+
+include_once '../fns/request_expires.php';
+request_expires($expires, $expire_time);
 
 include_once '../../../fns/str_collapse_spaces.php';
 $name = str_collapse_spaces($name);
@@ -42,7 +45,7 @@ unset(
 );
 
 include_once '../../../fns/Users/ApiKeys/add.php';
-$id = Users\ApiKeys\add($mysqli, $id_users, $name);
+$id = Users\ApiKeys\add($mysqli, $id_users, $name, $expire_time);
 
 $_SESSION['account/api-keys/view/messages'] = ['API key has been generated.'];
 

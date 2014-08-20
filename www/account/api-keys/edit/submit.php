@@ -8,8 +8,10 @@ include_once '../../../lib/mysqli.php';
 list($apiKey, $id, $user) = require_api_key($mysqli);
 
 include_once '../../../fns/request_strings.php';
-list($name, $expires, $randomizeKey) = request_strings(
-    'name', 'expires', 'randomizeKey');
+list($name, $randomizeKey) = request_strings('name', 'randomizeKey');
+
+include_once '../fns/request_expires.php';
+request_expires($expires, $expire_time);
 
 include_once '../../../fns/str_collapse_spaces.php';
 $name = str_collapse_spaces($name);
@@ -46,7 +48,7 @@ unset(
 );
 
 include_once '../../../fns/ApiKeys/edit.php';
-ApiKeys\edit($mysqli, $id, $name);
+ApiKeys\edit($mysqli, $id, $name, $expire_time);
 
 if ($randomizeKey) {
     include_once '../../../fns/ApiKeys/randomizeKey.php';
