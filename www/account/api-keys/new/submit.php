@@ -8,7 +8,7 @@ $user = require_user('../../../');
 $id_users = $user->id_users;
 
 include_once '../../../fns/request_strings.php';
-list($name) = request_strings('name');
+list($name, $expires) = request_strings('name', 'expires');
 
 include_once '../../../fns/str_collapse_spaces.php';
 $name = str_collapse_spaces($name);
@@ -29,7 +29,10 @@ include_once '../../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['account/api-keys/new/errors'] = $errors;
-    $_SESSION['account/api-keys/new/values'] = ['name' => $name];
+    $_SESSION['account/api-keys/new/values'] = [
+        'name' => $name,
+        'expires' => $expires,
+    ];
     redirect();
 }
 

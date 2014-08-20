@@ -8,7 +8,8 @@ include_once '../../../lib/mysqli.php';
 list($apiKey, $id, $user) = require_api_key($mysqli);
 
 include_once '../../../fns/request_strings.php';
-list($name, $randomizeKey) = request_strings('name', 'randomizeKey');
+list($name, $expires, $randomizeKey) = request_strings(
+    'name', 'expires', 'randomizeKey');
 
 include_once '../../../fns/str_collapse_spaces.php';
 $name = str_collapse_spaces($name);
@@ -33,6 +34,7 @@ if ($errors) {
     $_SESSION['account/api-keys/edit/errors'] = $errors;
     $_SESSION['account/api-keys/edit/values'] = [
         'name' => $name,
+        'expires' => $expires,
         'randomizeKey' => $randomizeKey,
     ];
     redirect("./?id=$id");

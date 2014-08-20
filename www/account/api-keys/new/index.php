@@ -7,8 +7,14 @@ $user = require_user($base);
 
 $key = 'account/api-keys/new/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
-else $values = ['name' => ''];
+else {
+    $values = [
+        'name' => '',
+        'expires' => '',
+    ];
+}
 
+include_once '../fns/create_expires_field.php';
 include_once '../../../fns/Page/tabs.php';
 include_once '../../../fns/Form/button.php';
 include_once '../../../fns/Form/textfield.php';
@@ -32,6 +38,8 @@ $content = Page\tabs(
             'required' => true,
             'autofocus' => true,
         ])
+        .'<div class="hr"></div>'
+        .create_expires_field($values['expires'])
         .'<div class="hr"></div>'
         .Form\button('Generate Key')
     .'</form>'

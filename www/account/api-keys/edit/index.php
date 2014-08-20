@@ -12,12 +12,14 @@ if (array_key_exists($key, $_SESSION)) {
 } else {
     $values = [
         'name' => $apiKey->name,
+        'expires' => '',
         'randomizeKey' => false,
     ];
 }
 
 $base = '../../../';
 
+include_once '../fns/create_expires_field.php';
 include_once '../../../fns/Page/tabs.php';
 include_once '../../../fns/Form/button.php';
 include_once '../../../fns/Form/checkbox.php';
@@ -43,6 +45,8 @@ $content = Page\tabs(
             'required' => true,
             'autofocus' => true,
         ])
+        .'<div class="hr"></div>'
+        .create_expires_field($values['expires'])
         .'<div class="hr"></div>'
         .Form\checkbox($base, 'randomizeKey',
             'Randomize key', $values['randomizeKey'])
