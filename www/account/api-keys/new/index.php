@@ -11,6 +11,15 @@ else {
     $values = [
         'name' => '',
         'expires' => 'never',
+        'bookmark_access' => 'none',
+        'channel_access' => 'none',
+        'contact_access' => 'none',
+        'event_access' => 'none',
+        'file_access' => 'none',
+        'note_access' => 'none',
+        'notification_access' => 'none',
+        'schedule_access' => 'none',
+        'task_access' => 'none',
     ];
 }
 
