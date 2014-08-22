@@ -14,10 +14,9 @@ else {
     ];
 }
 
-include_once '../fns/create_expires_field.php';
-include_once '../../../fns/Page/tabs.php';
+include_once '../fns/create_fields.php';
 include_once '../../../fns/Form/button.php';
-include_once '../../../fns/Form/textfield.php';
+include_once '../../../fns/Page/tabs.php';
 include_once '../../../fns/Page/sessionErrors.php';
 $content = Page\tabs(
     [
@@ -33,13 +32,7 @@ $content = Page\tabs(
     'New',
     Page\sessionErrors('account/api-keys/new/errors')
     .'<form action="submit.php" method="post">'
-        .Form\textfield('name', 'Name', [
-            'value' => $values['name'],
-            'required' => true,
-            'autofocus' => true,
-        ])
-        .'<div class="hr"></div>'
-        .create_expires_field($values['expires'])
+        .create_fields($values)
         .'<div class="hr"></div>'
         .Form\button('Generate Key')
     .'</form>'

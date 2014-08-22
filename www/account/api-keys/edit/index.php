@@ -31,13 +31,12 @@ if (array_key_exists($key, $_SESSION)) {
 
 $base = '../../../';
 
-include_once '../fns/create_expires_field.php';
-include_once '../../../fns/Page/tabs.php';
+include_once '../fns/create_fields.php';
 include_once '../../../fns/Form/button.php';
 include_once '../../../fns/Form/checkbox.php';
 include_once '../../../fns/Form/hidden.php';
-include_once '../../../fns/Form/textfield.php';
 include_once '../../../fns/Page/sessionErrors.php';
+include_once '../../../fns/Page/tabs.php';
 $content = Page\tabs(
     [
         [
@@ -52,13 +51,7 @@ $content = Page\tabs(
     'Edit',
     Page\sessionErrors('account/api-keys/edit/errors')
     .'<form action="submit.php" method="post">'
-        .Form\textfield('name', 'Name', [
-            'value' => $values['name'],
-            'required' => true,
-            'autofocus' => true,
-        ])
-        .'<div class="hr"></div>'
-        .create_expires_field($values['expires'])
+        .create_fields($values)
         .'<div class="hr"></div>'
         .Form\checkbox($base, 'randomizeKey',
             'Randomize key', $values['randomizeKey'])
