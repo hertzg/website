@@ -7,14 +7,8 @@ include_once '../../../fns/require_user.php';
 $user = require_user('../../../');
 $id_users = $user->id_users;
 
-include_once '../../../fns/request_strings.php';
-list($name) = request_strings('name');
-
-include_once '../fns/request_expires.php';
-request_expires($expires, $expire_time);
-
-include_once '../../../fns/str_collapse_spaces.php';
-$name = str_collapse_spaces($name);
+include_once '../fns/request_api_key_params.php';
+list($name, $expires, $expire_time) = request_api_key_params();
 
 $errors = [];
 

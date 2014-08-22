@@ -7,14 +7,11 @@ include_once '../fns/require_api_key.php';
 include_once '../../../lib/mysqli.php';
 list($apiKey, $id, $user) = require_api_key($mysqli);
 
+include_once '../fns/request_api_key_params.php';
+list($name, $expires, $expire_time) = request_api_key_params();
+
 include_once '../../../fns/request_strings.php';
-list($name, $randomizeKey) = request_strings('name', 'randomizeKey');
-
-include_once '../fns/request_expires.php';
-request_expires($expires, $expire_time);
-
-include_once '../../../fns/str_collapse_spaces.php';
-$name = str_collapse_spaces($name);
+list($randomizeKey) = request_strings('randomizeKey');
 
 $randomizeKey = (bool)$randomizeKey;
 
