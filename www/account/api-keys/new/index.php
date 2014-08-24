@@ -23,7 +23,8 @@ else {
     ];
 }
 
-include_once '../fns/create_fields.php';
+include_once '../fns/create_general_fields.php';
+include_once '../fns/create_permission_fields.php';
 include_once '../../../fns/Form/button.php';
 include_once '../../../fns/Page/tabs.php';
 include_once '../../../fns/Page/sessionErrors.php';
@@ -41,7 +42,8 @@ $content = Page\tabs(
     'New',
     Page\sessionErrors('account/api-keys/new/errors')
     .'<form action="submit.php" method="post">'
-        .create_fields($values)
+        .create_general_fields($values)
+        .create_permission_fields($values)
         .'<div class="hr"></div>'
         .Form\button('Generate Key')
     .'</form>'

@@ -45,7 +45,8 @@ if (array_key_exists($key, $_SESSION)) {
 
 $base = '../../../';
 
-include_once '../fns/create_fields.php';
+include_once '../fns/create_general_fields.php';
+include_once '../fns/create_permission_fields.php';
 include_once '../../../fns/Form/button.php';
 include_once '../../../fns/Form/checkbox.php';
 include_once '../../../fns/Form/hidden.php';
@@ -65,10 +66,11 @@ $content = Page\tabs(
     'Edit',
     Page\sessionErrors('account/api-keys/edit/errors')
     .'<form action="submit.php" method="post">'
-        .create_fields($values)
+        .create_general_fields($values)
         .'<div class="hr"></div>'
         .Form\checkbox($base, 'randomizeKey',
             'Randomize key', $values['randomizeKey'])
+        .create_permission_fields($values)
         .'<div class="hr"></div>'
         .Form\button('Save Changes')
         .Form\hidden('id', $id)
