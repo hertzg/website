@@ -37,23 +37,28 @@ $content = Page\tabs(
     ],
     'API Documentation',
     Page\text(
-        '<div>'
-            .'Zvini API allows programs to access, modify'
-            .' and delete user data using HTTP and JSON.'
-            .' Programs are given API keys with which they call API methods.'
-            .' The API methods can be called with either GET or POST methods.'
-            .' The methods parameters can be passed either in'
-            .' a query string or as a URL-encoded form data'
-            .' or as a multipart form data. The API key parameter'
-            .' <code>api_key</code> should be present in all requests.'
-            ." The base URL of all the API methods is <code>$api_base</code>."
-            .' The response returned from the server is either a JSON document'
-            .' or binary data in case of file downloads.'
-            .' Click below to see a PHP example code that calls an API method.'
-        .'</div>'
+        'Zvini API allows programs to access, modify'
+        .' and delete user data using HTTP and JSON.'
+        .' Programs are given API keys with which they call API methods.'
+        .' The API methods can be called with either GET or POST methods.'
+        .' The methods parameters can be passed either in'
+        .' a query string or as a URL-encoded form data'
+        .' or as a multipart form data. The API key parameter'
+        .' <code>api_key</code> should be present in all requests.'
+        ." The base URL of all the API methods is <code>$api_base</code>."
+        .' The response returned from the server is either a JSON document'
+        .' or binary data in case of file downloads.'
+        .' Click below to see a PHP example code that calls an API method.'
     )
     .'<div class="hr"></div>'
     .Page\imageArrowLink('PHP Example', 'php-example', 'generic')
+    .'<div class="hr"></div>'
+    .Page\text(
+        'Below is a list of errors that are expected from any API method:'
+        .'<br /><code>INVALID_API_KEY</code> - The API Key is invalid.'
+        .'<br /><code>API_KEY_EXPIRED</code> - The API Key is expired.'
+        .'<br /><code>ACCESS_DENIED</code> - The API Key doesn\'t have a permission to perform the action.'
+    )
     .create_panel('Root Namespaces', join('<div class="hr"></div>', $items))
 );
 
