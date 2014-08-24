@@ -11,6 +11,8 @@ file_method_page('sendExisting', [
         'description' => 'The Zvini username of the receiver.',
     ],
 ], [
-    'FILE_NOT_FOUND', 'ENTER_RECEIVER_USERNAME',
-    'RECEIVER_NOT_FOUND', 'RECEIVER_NOT_RECEIVING',
+    'FILE_NOT_FOUND' => "A file with the ID doesn't exist.",
+    'ENTER_RECEIVER_USERNAME' => 'The receiver username is empty.',
+    'RECEIVER_NOT_FOUND' => 'No such receiver with the username.',
+    'RECEIVER_NOT_RECEIVING' => "The receiver hasn't opened a connection to receive files from you.",
 ]);

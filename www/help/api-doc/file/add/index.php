@@ -14,4 +14,9 @@ file_method_page('add', [
         'name' => 'parent_id',
         'description' => 'The ID of the parent folder.',
     ],
-], ['ENTER_NAME', 'FILE_ALREADY_EXISTS', 'SELECT_FILE', 'FILE_ERROR']);
+], [
+    'ENTER_NAME' => 'The name is empty.',
+    'FILE_ALREADY_EXISTS' => 'A file with the name already exists.',
+    'SELECT_FILE' => 'The content file is empty.',
+    'FILE_ERROR' => 'An error occured while uploading the file.',
+]);
