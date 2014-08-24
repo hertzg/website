@@ -16,8 +16,8 @@ function edit ($mysqli, $user, $id, $full_name, $alias, $address, $email,
     \ContactTags\deleteOnContact($mysqli, $id);
 
     include_once __DIR__.'/../../ContactTags/add.php';
-    \ContactTags\add($mysqli, $id_users, $id,
-        $tag_names, $full_name, $alias, $favorite);
+    \ContactTags\add($mysqli, $id_users, $id, $tag_names,
+        $full_name, $alias, $phone1, $phone2, $favorite);
 
     include_once __DIR__.'/../Birthdays/invalidateIfNeeded.php';
     \Users\Birthdays\invalidateIfNeeded($mysqli, $user, $old_birthday_time);

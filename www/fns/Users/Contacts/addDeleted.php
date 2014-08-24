@@ -9,6 +9,8 @@ function addDeleted ($mysqli, $user, $data) {
     $id = $data->id;
     $full_name = $data->full_name;
     $alias = $data->alias;
+    $phone1 = $data->phone1;
+    $phone2 = $data->phone2;
     $birthday_time = $data->birthday_time;
     $tags = $data->tags;
     $favorite = $data->favorite;
@@ -18,13 +20,13 @@ function addDeleted ($mysqli, $user, $data) {
 
     include_once __DIR__.'/../../Contacts/addDeleted.php';
     \Contacts\addDeleted($mysqli, $id, $id_users, $full_name, $alias,
-        $data->address, $data->email, $data->phone1, $data->phone2,
-        $birthday_time, $data->username, $data->tags, $favorite,
+        $data->address, $data->email, $phone1, $phone2, $birthday_time,
+        $data->username, $data->tags, $favorite,
         $data->insert_time, $data->update_time);
 
     include_once __DIR__.'/../../ContactTags/add.php';
-    \ContactTags\add($mysqli, $id_users, $id,
-        $tag_names, $full_name, $alias, $favorite);
+    \ContactTags\add($mysqli, $id_users, $id, $tag_names,
+        $full_name, $alias, $phone1, $phone2, $favorite);
 
     include_once __DIR__.'/../Birthdays/invalidateIfNeeded.php';
     \Users\Birthdays\invalidateIfNeeded($mysqli, $user, $birthday_time);
