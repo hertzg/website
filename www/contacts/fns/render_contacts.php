@@ -16,7 +16,7 @@ function render_contacts (array $contacts, array &$items, array $params) {
             );
             $href = "view/?$queryString";
 
-            $alias = $contact->alias;
+            $alias = htmlspecialchars($contact->alias);
             $title = htmlspecialchars($contact->full_name);
 
             if ($contact->favorite) $icon = 'favorite-contact';

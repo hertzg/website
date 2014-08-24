@@ -20,7 +20,7 @@ function render_contacts (array $contacts,
             );
             $href = "../view/?$queryString";
 
-            $alias = $contact->alias;
+            $alias = htmlspecialchars($contact->alias);
             $title = htmlspecialchars($contact->full_name);
             $title = preg_replace($regex, '<mark>$0</mark>', $title);
 
