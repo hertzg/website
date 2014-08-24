@@ -1,10 +1,6 @@
 <?php
 
-function request_expires (&$expires, &$expire_time) {
-
-    include_once __DIR__.'/../../../fns/request_strings.php';
-    list($expires) = request_strings('expires');
-
+function parse_expire_time (&$expires, &$expire_time) {
     if ($expires !== 'never') {
 
         include_once __DIR__.'/../../../fns/time_today.php';
@@ -14,5 +10,4 @@ function request_expires (&$expires, &$expire_time) {
         $expire_time = $time_today + 60 * 60 * 24 * $expires;
 
     }
-
 }
