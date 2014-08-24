@@ -1,6 +1,7 @@
 <?php
 
 include_once '../fns/contact_method_page.php';
+include_once '../../../../fns/Tags/maxNumber.php';
 contact_method_page('send', [
     [
         'name' => 'receiver_username',
@@ -43,6 +44,9 @@ contact_method_page('send', [
         'description' => 'Whether the contact should be marked as favorite.',
     ],
 ], [
-    'ENTER_RECEIVER_USERNAME', 'RECEIVER_NOT_FOUND', 'RECEIVER_NOT_RECEIVING',
-    'ENTER_FULL_NAME', 'TOO_MANY_TAGS',
+    'ENTER_RECEIVER_USERNAME' => 'The receiver username is empty.',
+    'RECEIVER_NOT_FOUND' => 'No such receiver with the username.',
+    'RECEIVER_NOT_RECEIVING' => "The receiver hasn't opened a connection to receive contacts from you.",
+    'ENTER_URL' => 'The URL is empty.',
+    'TOO_MANY_TAGS' => 'More than '.Tags\maxNumber().' tags given.',
 ]);

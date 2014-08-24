@@ -1,6 +1,7 @@
 <?php
 
 include_once '../fns/contact_method_page.php';
+include_once '../../../../fns/Tags/maxNumber.php';
 contact_method_page('add', [
     [
         'name' => 'full_name',
@@ -38,4 +39,7 @@ contact_method_page('add', [
         'name' => 'favorite',
         'description' => 'Whether the contact should be marked as favorite.',
     ],
-], ['ENTER_FULL_NAME', 'TOO_MANY_TAGS']);
+], [
+    'ENTER_FULL_NAME' => 'The full name is empty.',
+    'TOO_MANY_TAGS' => 'More than '.Tags\maxNumber().' tags given.',
+]);

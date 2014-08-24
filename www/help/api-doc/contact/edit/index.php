@@ -1,6 +1,7 @@
 <?php
 
 include_once '../fns/contact_method_page.php';
+include_once '../../../../fns/Tags/maxNumber.php';
 contact_method_page('edit', [
     [
         'name' => 'id',
@@ -43,4 +44,8 @@ contact_method_page('edit', [
         'name' => 'favorite',
         'description' => 'Whether the contact should be marked as favorite.',
     ],
-], ['CONTACT_NOT_FOUND', 'ENTER_FULL_NAME', 'TOO_MANY_TAGS']);
+], [
+    'CONTACT_NOT_FOUND' => "A contact with the ID doesn't exist.",
+    'ENTER_FULL_NAME' => 'The full name is empty.',
+    'TOO_MANY_TAGS' => 'More than '.Tags\maxNumber().' tags given.',
+]);
