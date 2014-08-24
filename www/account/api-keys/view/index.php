@@ -28,6 +28,7 @@ else {
 }
 
 include_once 'fns/create_expires_field.php';
+include_once 'fns/create_permissions_field.php';
 include_once '../../../fns/create_panel.php';
 include_once '../../../fns/Form/label.php';
 include_once '../../../fns/Form/textarea.php';
@@ -48,12 +49,14 @@ $content = Page\tabs(
     Page\sessionMessages('account/api-keys/view/messages')
     .Form\label('Name', htmlspecialchars($apiKey->name))
     .'<div class="hr"></div>'
+    .create_expires_field($apiKey)
+    .'<div class="hr"></div>'
     .Form\textarea('key', 'Key', [
         'value' => bin2hex($apiKey->key),
         'readonly' => true,
     ])
     .'<div class="hr"></div>'
-    .create_expires_field($apiKey)
+    .create_permissions_field($apiKey)
     .'<div class="hr"></div>'
     .Form\label('Last accessed', $accessed)
     .create_panel('API Key Options', $optionsContent)
