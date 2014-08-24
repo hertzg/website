@@ -8,7 +8,10 @@ $user = require_user('../../../');
 $id_users = $user->id_users;
 
 include_once '../fns/request_api_key_params.php';
-list($name, $expires, $expire_time) = request_api_key_params();
+list($name, $expires, $expire_time, $bookmark_access,
+    $channel_access, $contact_access, $event_access,
+    $file_access, $note_access, $notification_access,
+    $schedule_access, $task_access) = request_api_key_params();
 
 $errors = [];
 
@@ -29,6 +32,15 @@ if ($errors) {
     $_SESSION['account/api-keys/new/values'] = [
         'name' => $name,
         'expires' => $expires,
+        'bookmark_access' => $bookmark_access,
+        'channel_access' => $channel_access,
+        'contact_access' => $contact_access,
+        'event_access' => $event_access,
+        'file_access' => $file_access,
+        'note_access' => $note_access,
+        'notification_access' => $notification_access,
+        'schedule_access' => $schedule_access,
+        'task_access' => $task_access
     ];
     redirect();
 }

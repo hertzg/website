@@ -8,7 +8,10 @@ include_once '../../../lib/mysqli.php';
 list($apiKey, $id, $user) = require_api_key($mysqli);
 
 include_once '../fns/request_api_key_params.php';
-list($name, $expires, $expire_time) = request_api_key_params();
+list($name, $expires, $expire_time, $bookmark_access,
+    $channel_access, $contact_access, $event_access,
+    $file_access, $note_access, $notification_access,
+    $schedule_access, $task_access) = request_api_key_params();
 
 include_once '../../../fns/request_strings.php';
 list($randomizeKey) = request_strings('randomizeKey');
@@ -35,6 +38,15 @@ if ($errors) {
         'name' => $name,
         'expires' => $expires,
         'randomizeKey' => $randomizeKey,
+        'bookmark_access' => $bookmark_access,
+        'channel_access' => $channel_access,
+        'contact_access' => $contact_access,
+        'event_access' => $event_access,
+        'file_access' => $file_access,
+        'note_access' => $note_access,
+        'notification_access' => $notification_access,
+        'schedule_access' => $schedule_access,
+        'task_access' => $task_access
     ];
     redirect("./?id=$id");
 }
