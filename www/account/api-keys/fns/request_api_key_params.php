@@ -9,12 +9,12 @@ function request_api_key_params () {
     $fnsDir = __DIR__.'/../../../fns';
 
     include_once "$fnsDir/request_strings.php";
-    list($name, $expires, $bookmark_access, $channel_access, $contact_access,
-        $event_access, $file_access, $note_access, $notification_access,
-        $schedule_access, $task_access) = request_strings(
-        'name', 'expires', 'bookmark_access', 'channel_access', 'contact_access',
-        'event_access', 'file_access', 'note_access', 'notification_access',
-        'schedule_access', 'task_access');
+    list($name, $expires, $bookmark_access, $channel_access,
+        $contact_access, $event_access, $file_access, $note_access,
+        $notification_access, $schedule_access, $task_access) = request_strings(
+        'name', 'expires', 'bookmark_access', 'channel_access',
+        'contact_access', 'event_access', 'file_access', 'note_access',
+        'notification_access', 'schedule_access', 'task_access');
 
     include_once "$fnsDir/str_collapse_spaces.php";
     $name = str_collapse_spaces($name);

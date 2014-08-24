@@ -63,7 +63,8 @@ parse_read_write($contact_access, $can_read_contacts, $can_write_contacts);
 parse_read_write($event_access, $can_read_events, $can_write_events);
 parse_read_write($file_access, $can_read_files, $can_write_files);
 parse_read_write($note_access, $can_read_notes, $can_write_notes);
-parse_read_write($notification_access, $can_read_notifications, $can_write_notifications);
+parse_read_write($notification_access,
+    $can_read_notifications, $can_write_notifications);
 parse_read_write($schedule_access, $can_read_schedules, $can_write_schedules);
 parse_read_write($task_access, $can_read_tasks, $can_write_tasks);
 

@@ -12,15 +12,16 @@ function create_expires_field ($apiKey) {
         $content = 'Never';
     } else {
         $days = floor(($expire_time - $time_today) / (60 * 60 * 24));
+        $date = date('M j, l', $expire_time);
         if ($expire_time >= $time_today) {
             if ($days == 0) $content = 'Today';
             elseif ($days == 1) $content = 'Tomorrow';
-            else $content = 'On '.date('M j, l', $expire_time)." ($days days left)";
+            else $content = "On $date ($days days left)";
         } else {
             $days = -$days;
             $label = 'Expired';
             if ($days == 1) $content = 'Yesterday';
-            else $content = 'On '.date('M j, l', $expire_time)." ($days days ago)";
+            else $content = "On $date ($days days ago)";
         }
     }
 

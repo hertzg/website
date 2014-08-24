@@ -4,11 +4,14 @@ function create_expires_field ($expires) {
 
     $options = [];
 
-    if ($expires !== 'never' && $expires !== '7' && $expires !== '30' && $expires !== '360') {
+    if ($expires !== 'never' && $expires !== '7' &&
+        $expires !== '30' && $expires !== '360') {
+
         if ($expires === '0') $text = 'Today';
         elseif ($expires === '1') $text = 'Tomorrow';
         else $text = "In $expires days";
         $options[$expires] = $text;
+
     }
 
     $options['never'] = 'Never';
