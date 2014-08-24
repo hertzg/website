@@ -7,5 +7,5 @@ folder_method_page('list', [
         'description' => 'The ID of the parent folder.',
     ],
 ], [
-    'FOLDER_NOT_FOUND' => "A parent folder with the ID doesn't exist.",
+    'PARENT_FOLDER_NOT_FOUND' => "A parent folder with the ID doesn't exist.",
 ]);

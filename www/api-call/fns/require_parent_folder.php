@@ -14,7 +14,7 @@ function require_parent_folder ($mysqli, $id_users) {
 
         if (!$folder) {
             include_once __DIR__.'/../fns/bad_request.php';
-            bad_request('FOLDER_NOT_FOUND');
+            bad_request('PARENT_FOLDER_NOT_FOUND');
         }
 
     } else {

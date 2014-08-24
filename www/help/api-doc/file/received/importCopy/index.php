@@ -12,5 +12,5 @@ received_file_method_page('importCopy', [
     ],
 ], [
     'RECEIVED_FILE_NOT_FOUND' => "A received file with the ID doesn't exist.",
-    'FOLDER_NOT_FOUND' => "A parent folder with the ID doesn't exist.",
+    'PARENT_FOLDER_NOT_FOUND' => "A parent folder with the ID doesn't exist.",
 ]);
