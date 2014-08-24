@@ -18,8 +18,8 @@ channel_method_page('add', [
             .' should receive notifications.',
     ],
 ], [
-    'ENTER_CHANNEL_NAME' => 'The channel name is empty.',
-    'INVALID_CHANNEL_NAME' => 'The channel name is invalid.',
+    'ENTER_CHANNEL_NAME' => 'The name is empty.',
+    'INVALID_CHANNEL_NAME' => 'The name is invalid.',
     'CHANNEL_NAME_TOO_SHORT' => 'The channel name is shorter than '.ChannelName\minLength().' characters.',
     'CHANNEL_NAME_TOO_LONG' => 'The channel name is longer than '.ChannelName\maxLength().' characters.',
     'CHANNEL_ALREADY_EXISTS' => 'A channel with the same name already exists.',
