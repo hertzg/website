@@ -6,4 +6,6 @@ received_note_method_page('import', [
         'name' => 'id',
         'description' => 'The ID of the received note to move.',
     ],
-], ['RECEIVED_NOTE_NOT_FOUND']);
+], [
+    'RECEIVED_NOTE_NOT_FOUND' => "A received note with the ID doesn't exist.",
+]);
