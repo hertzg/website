@@ -9,6 +9,7 @@ header('Content-Type: application/x-web-app-manifest+json');
 echo json_encode([
     'name' => 'Zvini',
     'description' => $description,
+    'fullscreen' => 'true',
     'developer' => [
         'name' => 'Zvini Developers',
         'url' => 'http://zvini.com/',
