@@ -8,6 +8,7 @@ function render_contacts (array $contacts,
     if ($contacts) {
 
         $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
+        $replace = '<mark>$0</mark>';
 
         include_once "$fnsPageDir/imageArrowLink.php";
         include_once "$fnsPageDir/imageArrowLinkWithDescription.php";
@@ -20,19 +21,33 @@ function render_contacts (array $contacts,
             );
             $href = "../view/?$queryString";
 
-            $alias = htmlspecialchars($contact->alias);
             $title = htmlspecialchars($contact->full_name);
-            $title = preg_replace($regex, '<mark>$0</mark>', $title);
+            $alias = htmlspecialchars($contact->alias);
+            $phone1 = htmlspecialchars($contact->phone1);
+            $phone2 = htmlspecialchars($contact->phone2);
+
+            $title = preg_replace($regex, $replace, $title);
 
             if ($contact->favorite) $icon = 'favorite-contact';
             else $icon = 'contact';
 
-            if ($alias === '') {
-                $items[] = Page\imageArrowLink($title, $href, $icon);
-            } else {
-                $alias = preg_replace($regex, '<mark>$0</mark>', $alias);
+            $descriptions = [];
+            if ($alias !== '') {
+                $descriptions[] = preg_replace($regex, $replace, $alias);
+            }
+            if (preg_match($regex, $phone1)) {
+                $descriptions[] = preg_replace($regex, $replace, $phone1);
+            }
+            if (preg_match($regex, $phone2)) {
+                $descriptions[] = preg_replace($regex, $replace, $phone2);
+            }
+
+            if ($descriptions) {
+                $description = join(' &middot; ', $descriptions);
                 $items[] = Page\imageArrowLinkWithDescription(
-                    $title, $alias, $href, $icon);
+                    $title, $description, $href, $icon);
+            } else {
+                $items[] = Page\imageArrowLink($title, $href, $icon);
             }
 
         }
