@@ -6,4 +6,6 @@ folder_method_page('delete', [
         'name' => 'id',
         'description' => 'The ID of the folder to delete.',
     ],
-], ['FOLDER_NOT_FOUND']);
+], [
+    'FOLDER_NOT_FOUND' => "A folder with the ID doesn't exist.",
+]);

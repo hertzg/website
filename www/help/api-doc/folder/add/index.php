@@ -10,4 +10,7 @@ folder_method_page('add', [
         'name' => 'parent_id',
         'description' => 'The ID of the parent folder.',
     ],
-], ['ENTER_NAME', 'FOLDER_ALREADY_EXISTS']);
+], [
+    'ENTER_NAME' => 'The name is empty.',
+    'FOLDER_ALREADY_EXISTS' => 'A folder with the name already exists.',
+]);
