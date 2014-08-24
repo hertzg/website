@@ -20,7 +20,6 @@ foreach ($deletedFiles as $deletedFile) {
     $mysqli->query($sql) || trigger_error($mysqli->error);
 }
 
-
 $files = mysqli_query_object($mysqli, 'select * from files');
 foreach ($files as $file) {
     $name = $file->name;

@@ -11,7 +11,6 @@ $deniedUsername = 'giorgi';
 $allowedUsername = 'angeli';
 $name = 'sample name';
 
-
 $response = $engine->request('folder/add', [
     'name' => $name,
 ]);
