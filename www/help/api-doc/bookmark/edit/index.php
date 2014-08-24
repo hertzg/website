@@ -21,6 +21,6 @@ bookmark_method_page('edit', [
     ],
 ], [
     'BOOKMARK_NOT_FOUND' => "A bookmark with the ID doesn't exist.",
-    'ENTER_URL' => 'The URL is empty.',
+    'ENTER_URL' => 'The new URL is empty.',
     'TOO_MANY_TAGS' => 'More than '.Tags\maxNumber().' tags given.',
 ]);

@@ -46,6 +46,6 @@ contact_method_page('edit', [
     ],
 ], [
     'CONTACT_NOT_FOUND' => "A contact with the ID doesn't exist.",
-    'ENTER_FULL_NAME' => 'The full name is empty.',
+    'ENTER_FULL_NAME' => 'The new full name is empty.',
     'TOO_MANY_TAGS' => 'More than '.Tags\maxNumber().' tags given.',
 ]);
