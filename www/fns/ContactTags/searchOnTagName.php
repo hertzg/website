@@ -10,15 +10,15 @@ function searchOnTagName ($mysqli, $id_users, $keyword, $tag_name,
     $keyword = $mysqli->real_escape_string($keyword);
     $tag_name = $mysqli->real_escape_string($tag_name);
 
-    $sql = "select count(*) total from contact_tags where id_users = $id_users"
+    $fromWhere = "from contact_tags where id_users = $id_users"
         ." and (full_name like '%$keyword%' or alias like '%$keyword%')"
         ." and tag_name = '$tag_name'";
+
+    $sql = "select count(*) total $fromWhere";
     include_once __DIR__.'/../mysqli_single_object.php';
     $total = mysqli_single_object($mysqli, $sql)->total;
 
-    $sql = "select * from contact_tags where id_users = $id_users"
-        ." and (full_name like '%$keyword%' or alias like '%$keyword%')"
-        ." and tag_name = '$tag_name' order by favorite desc, full_name"
+    $sql = "select * $fromWhere order by favorite desc, full_name"
         ." limit $limit offset $offset";
     include_once __DIR__.'/../mysqli_query_object.php';
     return mysqli_query_object($mysqli, $sql);
