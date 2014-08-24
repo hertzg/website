@@ -50,8 +50,24 @@ unset(
     $_SESSION['account/api-keys/new/values']
 );
 
+include_once '../fns/parse_read_write.php';
+parse_read_write($bookmark_access, $can_read_bookmarks, $can_write_bookmarks);
+parse_read_write($channel_access, $can_read_channels, $can_write_channels);
+parse_read_write($contact_access, $can_read_contacts, $can_write_contacts);
+parse_read_write($event_access, $can_read_events, $can_write_events);
+parse_read_write($file_access, $can_read_files, $can_write_files);
+parse_read_write($note_access, $can_read_notes, $can_write_notes);
+parse_read_write($notification_access, $can_read_notifications, $can_write_notifications);
+parse_read_write($schedule_access, $can_read_schedules, $can_write_schedules);
+parse_read_write($task_access, $can_read_tasks, $can_write_tasks);
+
 include_once '../../../fns/Users/ApiKeys/add.php';
-$id = Users\ApiKeys\add($mysqli, $id_users, $name, $expire_time);
+$id = Users\ApiKeys\add($mysqli, $id_users, $name, $expire_time, $can_read_bookmarks,
+    $can_read_channels, $can_read_contacts, $can_read_events, $can_read_files,
+    $can_read_notes, $can_read_notifications, $can_read_schedules,
+    $can_read_tasks, $can_write_bookmarks, $can_write_channels,
+    $can_write_contacts, $can_write_events, $can_write_files, $can_write_notes,
+    $can_write_notifications, $can_write_schedules, $can_write_tasks);
 
 $_SESSION['account/api-keys/view/messages'] = ['API key has been generated.'];
 

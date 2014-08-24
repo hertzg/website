@@ -32,7 +32,7 @@ if (array_key_exists($key, $_SESSION)) {
     foreach ($permissions as $key) {
         $property = "can_read_{$key}s";
         if ($apiKey->$property) {
-            $property = "can_read_{$key}s";
+            $property = "can_write_{$key}s";
             if ($apiKey->$property) $access = 'readwrite';
             else $access = 'readonly';
         } else {
