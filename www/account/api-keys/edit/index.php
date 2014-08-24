@@ -27,6 +27,20 @@ if (array_key_exists($key, $_SESSION)) {
         'randomizeKey' => false,
     ];
 
+    $permissions = ['bookmark', 'channel', 'contact', 'event',
+        'file', 'note', 'notification', 'schedule', 'task'];
+    foreach ($permissions as $key) {
+        $property = "can_read_{$key}s";
+        if ($apiKey->$property) {
+            $property = "can_read_{$key}s";
+            if ($apiKey->$property) $access = 'readwrite';
+            else $access = 'readonly';
+        } else {
+            $access = 'none';
+        }
+        $values["{$key}_access"] = $access;
+    }
+
 }
 
 $base = '../../../';
@@ -62,4 +76,4 @@ $content = Page\tabs(
 );
 
 include_once '../../../fns/echo_page.php';
-echo_page($user, "Delete API Key #$id", $content, $base);
+echo_page($user, "Edit API Key #$id", $content, $base);
