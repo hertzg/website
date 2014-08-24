@@ -7,5 +7,5 @@ received_task_method_page('importCopy', [
         'description' => 'The ID of the received task to copy.',
     ],
 ], [
-    'RECEIVED_TASK_NOT_FOUND' => "A received task with the ID doesn't' exist.",
+    'RECEIVED_TASK_NOT_FOUND' => "A received task with the ID doesn't exist.",
 ]);
