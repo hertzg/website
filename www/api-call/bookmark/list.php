@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/require_api_key.php';
-list($apiKey, $user, $mysqli) = require_api_key();
+list($apiKey, $user, $mysqli) = require_api_key('can_read_bookmarks');
 
 include_once '../../fns/Bookmarks/indexOnUser.php';
 $bookmarks = Bookmarks\indexOnUser($mysqli, $user->id_users);
