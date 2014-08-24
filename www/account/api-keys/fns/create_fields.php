@@ -15,26 +15,25 @@ function create_fields ($values) {
         .create_expires_field($values['expires'])
         .Page\infoText('Permissions:');
 
-    include_once __DIR__.'/../../../fns/Form/select.php';
-    $fields = [
-        'bookmark' => 'Bookmarks',
-        'channel' => 'Channels',
-        'contact' => 'Contacts',
-        'event' => 'Events',
-        'file' => 'Files',
-        'note' => 'Notes',
-        'notification' => 'Notifications',
-        'schedule' => 'Schedules',
-        'task' => 'Tasks',
+    $options = [
+        'none' => 'None',
+        'readonly' => 'Read-only',
+        'readwrite' => 'Read and write',
     ];
-    foreach ($fields as $key => $value) {
-        if ($key != 'bookmark') $html .= '<div class="hr"></div>';
-        $html .= Form\select("{$key}_access", $value, [
-            'none' => 'None',
-            'readonly' => 'Read-only',
-            'readwrite' => 'Read and write',
-        ], $values["{$key}_access"]);
-    }
+    include_once __DIR__.'/../../../fns/Form/select.php';
+    $addAccessField = function ($name, $title) use (&$html, $options, $values) {
+        $html .= Form\select($name, $title, $options, $values[$name]);
+    };
+
+    $addAccessField('bookmark_access', 'Bookmarks');
+    $addAccessField('channel_access', 'Channels');
+    $addAccessField('contact_access', 'Contacts');
+    $addAccessField('event_access', 'Events');
+    $addAccessField('file_access', 'Files');
+    $addAccessField('note_access', 'Notes');
+    $addAccessField('notification_access', 'Notifications');
+    $addAccessField('schedule_access', 'Schedules');
+    $addAccessField('task_access', 'Tasks');
 
     return $html;
 
