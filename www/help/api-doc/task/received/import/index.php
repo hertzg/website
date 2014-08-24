@@ -6,4 +6,6 @@ received_task_method_page('import', [
         'name' => 'id',
         'description' => 'The ID of the received task to move.',
     ],
-], ['RECEIVED_TASK_NOT_FOUND']);
+], [
+    'RECEIVED_TASK_NOT_FOUND' => "A received task with the ID doesn't' exist.",
+]);

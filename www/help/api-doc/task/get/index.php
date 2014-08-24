@@ -6,4 +6,6 @@ task_method_page('get', [
         'name' => 'id',
         'description' => 'The ID of the task to get.',
     ],
-], ['TASK_NOT_FOUND']);
+], [
+    'TASK_NOT_FOUND' => "A task with the ID doesn't exist.",
+]);
