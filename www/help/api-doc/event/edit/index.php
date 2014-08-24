@@ -8,10 +8,13 @@ event_method_page('edit', [
     ],
     [
         'name' => 'text',
-        'description' => 'The new text of the event.',
+        'description' => 'The new event text.',
     ],
     [
         'name' => 'event_time',
         'description' => 'The Unix timestamp of the day of the event.',
     ],
-], ['EVENT_NOT_FOUND', 'ENTER_TEXT']);
+], [
+    'EVENT_NOT_FOUND' => "An event with the ID doesn't exist.",
+    'ENTER_TEXT' => 'The new event text is empty.',
+]);

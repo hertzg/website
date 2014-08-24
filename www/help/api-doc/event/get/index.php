@@ -6,4 +6,6 @@ event_method_page('get', [
         'name' => 'id',
         'description' => 'The ID of the event to get.',
     ],
-], ['EVENT_NOT_FOUND']);
+], [
+    'EVENT_NOT_FOUND' => "An event with the ID doesn't exist.",
+]);
