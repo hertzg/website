@@ -16,4 +16,6 @@ schedule_method_page('add', [
         'description' => 'The number of days from January 1st 1970'
             .' to the next day on which the schedule is effective.',
     ],
-], ['ENTER_TEXT']);
+], [
+    'ENTER_TEXT' => 'The text is empty.',
+]);

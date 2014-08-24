@@ -6,4 +6,6 @@ schedule_method_page('get', [
         'name' => 'id',
         'description' => 'The ID of the schedule to get.',
     ],
-], ['SCHEDULE_NOT_FOUND']);
+], [
+    'SCHEDULE_NOT_FOUND' => "A schedule with the ID doesn't exist.",
+]);

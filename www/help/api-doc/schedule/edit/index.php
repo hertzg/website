@@ -20,4 +20,7 @@ schedule_method_page('edit', [
         'description' => 'The number of days from January 1st 1970'
             .' to the next day on which the schedule is effective.',
     ],
-], ['SCHEDULE_NOT_FOUND', 'ENTER_TEXT']);
+], [
+    'SCHEDULE_NOT_FOUND' => "A schedule with the ID doesn't exist.",
+    'ENTER_TEXT' => 'The text is empty.',
+]);
