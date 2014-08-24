@@ -11,7 +11,8 @@ function searchOnTagName ($mysqli, $id_users, $keyword, $tag_name,
     $tag_name = $mysqli->real_escape_string($tag_name);
 
     $fromWhere = "from contact_tags where id_users = $id_users"
-        ." and (full_name like '%$keyword%' or alias like '%$keyword%')"
+        ." and (full_name like '%$keyword%' or alias like '%$keyword%'"
+        ." or phone1 like '%$keyword%' or phone2 like '%$keyword%')"
         ." and tag_name = '$tag_name'";
 
     $sql = "select count(*) total $fromWhere";
