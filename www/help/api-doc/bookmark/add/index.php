@@ -1,6 +1,7 @@
 <?php
 
 include_once '../fns/bookmark_method_page.php';
+include_once '../../../../fns/Tags/maxNumber.php';
 bookmark_method_page('add', [
     [
         'name' => 'url',
@@ -14,4 +15,7 @@ bookmark_method_page('add', [
         'name' => 'tags',
         'description' => 'Space-separated list of tags.',
     ],
-], ['ENTER_URL', 'TOO_MANY_TAGS']);
+], [
+    'ENTER_URL' => 'The URL is empty.',
+    'TOO_MANY_TAGS' => 'More than '.Tags\maxNumber().' tags given.',
+]);

@@ -6,4 +6,6 @@ channel_method_page('delete', [
         'name' => 'id',
         'description' => 'The ID of the channel to delete.',
     ],
-], ['CHANNEL_NOT_FOUND']);
+], [
+    'CHANNEL_NOT_FOUND' => "A channel with the ID doesn't exist.",
+]);

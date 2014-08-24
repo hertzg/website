@@ -26,8 +26,8 @@ function submethod_page ($groupKey, $subgroupName, $subgroupKey, $methodName,
 
     if ($errors) {
         $text = 'Expected errors: ';
-        foreach ($errors as $error) {
-            $text .= "<br /><code>$error</code>";
+        foreach ($errors as $error => $description) {
+            $text .= "<br /><code>$error</code> - $description";
         }
     } else {
         $text = 'No errors expected.';

@@ -6,4 +6,6 @@ bookmark_method_page('delete', [
         'name' => 'id',
         'description' => 'The ID of the bookmark to delete.',
     ],
-], ['BOOKMARK_NOT_FOUND']);
+], [
+    'BOOKMARK_NOT_FOUND' => "A bookmark with the ID doesn't exist.",
+]);

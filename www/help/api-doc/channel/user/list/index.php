@@ -6,4 +6,6 @@ channel_user_method_page('list', [
         'name' => 'id',
         'description' => 'The ID of the channel.',
     ],
-], ['CHANNEL_NOT_FOUND']);
+], [
+    'CHANNEL_NOT_FOUND' => "A channel with the ID doesn't exist.",
+]);

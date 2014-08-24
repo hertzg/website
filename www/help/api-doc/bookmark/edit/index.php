@@ -1,6 +1,7 @@
 <?php
 
 include_once '../fns/bookmark_method_page.php';
+include_once '../../../../fns/Tags/maxNumber.php';
 bookmark_method_page('edit', [
     [
         'name' => 'id',
@@ -18,4 +19,8 @@ bookmark_method_page('edit', [
         'name' => 'tags',
         'description' => 'Space-separated list of tags.',
     ],
-], ['BOOKMARK_NOT_FOUND', 'ENTER_URL', 'TOO_MANY_TAGS']);
+], [
+    'BOOKMARK_NOT_FOUND' => "A bookmark with the ID doesn't exist.",
+    'ENTER_URL' => 'The URL is empty.',
+    'TOO_MANY_TAGS' => 'More than '.Tags\maxNumber().' tags given.',
+]);

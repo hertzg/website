@@ -12,6 +12,9 @@ subscribed_channel_method_page('subscribe', [
             .' should receive notifications.',
     ],
 ], [
-    'ENTER_CHANNEL_NAME', 'CHANNEL_NOT_FOUND', 'CHANNEL_NOT_PUBLIC',
-    'CHANNEL_IS_OWN', 'ALREADY_SUBSCRIBED',
+    'ENTER_CHANNEL_NAME' => 'The channel name is empty.',
+    'CHANNEL_NOT_FOUND' => "A channel with the name doesn't exist.",
+    'CHANNEL_NOT_PUBLIC' => 'The channel is not public.',
+    'CHANNEL_IS_OWN' => 'You are the owner of the channel.',
+    'ALREADY_SUBSCRIBED' => 'You are already subscribed to this channel.',
 ]);
