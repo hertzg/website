@@ -39,7 +39,7 @@ $content =
             'readonly' => true,
         ])
         .'<div class="hr"></div>'
-        .Form\label('Last accessed', date_ago($token->access_time))
+        .Form\label('Last accessed', ucfirst(date_ago($token->access_time)))
     )
     .create_panel(
         'Session Options',

@@ -21,10 +21,10 @@ include_once '../../../fns/Page/staticTwoColumns.php';
 $optionsContent = Page\staticTwoColumns($editLink, $deleteLink);
 
 $access_time = $apiKey->access_time;
-if ($access_time === null) $accessed = 'never';
+if ($access_time === null) $accessed = 'Never';
 else {
     include_once '../../../fns/date_ago.php';
-    $accessed = date_ago($access_time);
+    $accessed = ucfirst(date_ago($access_time));
 }
 
 include_once 'fns/create_expires_field.php';

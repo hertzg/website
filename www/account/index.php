@@ -29,13 +29,13 @@ $themes = get_themes();
 $items[] = Form\label('Theme', $themes[$user->theme]);
 
 include_once '../fns/date_ago.php';
-$items[] = Form\label('Account created', date_ago($user->insert_time));
+$items[] = Form\label('Account created', ucfirst(date_ago($user->insert_time)));
 
 include_once '../fns/bytestr.php';
 $items[] = Form\label('Using storage', bytestr($user->storage_used));
 
 include_once '../fns/n_times.php';
-$items[] = Form\label('Signed in', n_times($user->num_logins));
+$items[] = Form\label('Signed in', ucfirst(n_times($user->num_logins)));
 
 include_once 'fns/create_options_panel.php';
 include_once '../fns/Page/tabs.php';
