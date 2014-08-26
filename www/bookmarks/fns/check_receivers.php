@@ -7,7 +7,8 @@ function check_receivers ($mysqli, $id_users,
         include_once __DIR__.'/../../fns/Users/getByUsername.php';
         $receiverUser = Users\getByUsername($mysqli, $username);
         if (!$receiverUser) {
-            $errors[] = "The user \"".htmlspecialchars($username)."\" no longer exists.";
+            $escapedUsername = htmlspecialchars($username);
+            $errors[] = "The user \"$escapedUsername\" no longer exists.";
         } else {
             include_once __DIR__.'/../../fns/get_users_connection.php';
             $connection = get_users_connection(
@@ -15,7 +16,9 @@ function check_receivers ($mysqli, $id_users,
             if ($connection['can_send_bookmark']) {
                 $receiver_id_userss[] = $receiverUser->id_users;
             } else {
-                $errors[] = "The user \"".htmlspecialchars($username)."\" no longer receives bookmarks from you.";
+                $escapedUsername = htmlspecialchars($username);
+                $errors[] = "The user \"$escapedUsername\" no longer"
+                    .' receives bookmarks from you.';
             }
         }
     }
