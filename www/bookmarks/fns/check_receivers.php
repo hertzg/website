@@ -1,7 +1,7 @@
 <?php
 
-function check_receiver ($mysqli, $id_users,
-    $usernames, &$receiver_id_userss, &$errors) {
+function check_receivers ($mysqli, $id_users,
+    array $usernames, &$receiver_id_userss, &$errors) {
 
     foreach ($usernames as $username) {
         include_once __DIR__.'/../../fns/Users/getByUsername.php';
@@ -15,7 +15,7 @@ function check_receiver ($mysqli, $id_users,
             if ($connection['can_send_bookmark']) {
                 $receiver_id_userss[] = $receiverUser->id_users;
             } else {
-                $errors[] = "The user \"".htmlspecialchars($username)."\" isn't receiving bookmarks from you.";
+                $errors[] = "The user \"".htmlspecialchars($username)."\" no longer receives bookmarks from you.";
             }
         }
     }
