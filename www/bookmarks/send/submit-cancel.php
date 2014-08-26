@@ -12,6 +12,5 @@ unset(
     $_SESSION['bookmarks/send/messages']
 );
 
-include_once '../../fns/redirect.php';
-include_once '../../fns/ItemList/itemQuery.php';
-redirect('./'.ItemList\itemQuery($id));
+include_once '../../fns/SendForm/submitCancelPage.php';
+SendForm\submitCancelPage($id, 'bookmarks/send/values');

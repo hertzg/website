@@ -2,7 +2,18 @@
 
 namespace SendForm;
 
-function recipientsPage ($mysqli, $user, $id, $title, $values) {
+function recipientsPage ($mysqli, $user, $id, $title,
+    $text, $errorsKey, $messagesKey, $valuesKey) {
+
+    if (array_key_exists($valuesKey, $_SESSION)) {
+        $values = $_SESSION[$valuesKey];
+    } else {
+        $values = [
+            'recipients' => [],
+            'username' => '',
+            'usernameError' => false,
+        ];
+    }
 
     $recipients = $values['recipients'];
 
@@ -15,7 +26,7 @@ function recipientsPage ($mysqli, $user, $id, $title, $values) {
     include_once '../../fns/ItemList/escapedItemQuery.php';
     $escapedItemQuery = \ItemList\escapedItemQuery($id);
 
-    if (array_key_exists('bookmarks/send/errors', $_SESSION)) {
+    if ($values['usernameError']) {
         $username = $values['username'];
         if ($contacts || $recipients) {
             include_once '../../fns/RecipientList/enterCancelForm.php';
@@ -50,7 +61,8 @@ function recipientsPage ($mysqli, $user, $id, $title, $values) {
             include_once '../../fns/RecipientList/enterPanel.php';
             if ($contacts) {
                 include_once '../../fns/RecipientList/contactsPanel.php';
-                $content .= \RecipientList\contactsPanel($contacts, $itemParams);
+                $content .= \RecipientList\contactsPanel(
+                    $contacts, $itemParams);
             }
             $content .= \RecipientList\enterPanel('', $itemParams);
 
@@ -85,9 +97,9 @@ function recipientsPage ($mysqli, $user, $id, $title, $values) {
             ],
         ],
         'Send',
-        \Page\sessionErrors('bookmarks/send/errors')
-        .\Page\sessionMessages('bookmarks/send/messages')
-        .\Page\warnings(['Send the bookmark to:'])
+        \Page\sessionErrors($errorsKey)
+        .\Page\sessionMessages($messagesKey)
+        .\Page\warnings(["Send the $text to:"])
         .$content
     );
 
