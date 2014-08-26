@@ -1,26 +1,21 @@
 <?php
 
 function check_receiver ($mysqli, $id_users,
-    $username, &$receiver_id_users, &$errors) {
+    $usernames, &$receiver_id_userss, &$errors) {
 
-    include_once __DIR__.'/../../fns/str_collapse_spaces.php';
-    $username = str_collapse_spaces($username);
-
-    if ($username === '') {
-        $errors[] = 'Enter username.';
-    } else {
+    foreach ($usernames as $username) {
         include_once __DIR__.'/../../fns/Users/getByUsername.php';
         $receiverUser = Users\getByUsername($mysqli, $username);
         if (!$receiverUser) {
-            $errors[] = "A user with the username doesn't exist.";
+            $errors[] = "The user \"".htmlspecialchars($username)."\" no longer exists.";
         } else {
             include_once __DIR__.'/../../fns/get_users_connection.php';
             $connection = get_users_connection(
                 $mysqli, $receiverUser, $id_users);
             if ($connection['can_send_bookmark']) {
-                $receiver_id_users = $receiverUser->id_users;
+                $receiver_id_userss[] = $receiverUser->id_users;
             } else {
-                $errors[] = "The user isn't receiving bookmarks from you.";
+                $errors[] = "The user \"".htmlspecialchars($username)."\" isn't receiving bookmarks from you.";
             }
         }
     }
