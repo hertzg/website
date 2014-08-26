@@ -40,20 +40,11 @@ if ($notifications) {
     include_once '../fns/render_prev_button.php';
     render_prev_button($offset, $limit, $total, $items, ['id' => $id]);
 
+    include_once 'fns/render_notification_text.php';
     include_once '../../fns/create_image_text.php';
     include_once '../../fns/date_ago.php';
     foreach ($notifications as $i => $notification) {
-        $content =
-            nl2br(
-                preg_replace(
-                    '#(http://.*?)(\s|$)#',
-                    '<a class="a" rel="noreferrer" href="$1">$1</a>$2',
-                    htmlspecialchars($notification->text)
-                )
-            )
-            .'<div style="color: #777; font-size: 12px; line-height: 14px">'
-                .date_ago($notification->insert_time)
-            .'</div>';
+        $content = render_notification_text($notification);
         $items[] = create_image_text($content, 'old-notification');
     }
 
