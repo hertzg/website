@@ -39,31 +39,11 @@ if ($media_type == 'audio') {
     $previewHtml = "<video src=\"$src\" controls=\"controls\" />";
 }
 
-if ($index) {
-    $href = '?id='.$files[$index - 1]->id_files;
-    if ($parent_id_folders) {
-        $href .= "&amp;parent_id_folders=$parent_id_folders";
-    }
-    $prevLink =
-        "<a class=\"clickable arrow left\" href=\"$href\">"
-            .'<span class="icon arrow-left"></span>'
-        .'</a>';
-} else {
-    $prevLink = '';
-}
+include_once 'fns/create_prev_link.php';
+$prevLink = create_prev_link($files, $index, $parent_id_folders);
 
-if ($index < count($files) - 1) {
-    $href = '?id='.$files[$index + 1]->id_files;
-    if ($parent_id_folders) {
-        $href .= "&amp;parent_id_folders=$parent_id_folders";
-    }
-    $nextLink =
-        "<a class=\"clickable arrow right\" href=\"$href\">"
-            .'<span class="icon arrow-right"></span>'
-        .'</a>';
-} else {
-    $nextLink = '';
-}
+include_once 'fns/create_next_link.php';
+$nextLink = create_next_link($files, $index, $parent_id_folders);
 
 $title = htmlspecialchars($file->name);
 include_once '../../fns/Page/buttonLink.php';
