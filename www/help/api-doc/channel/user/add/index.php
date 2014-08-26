@@ -16,5 +16,6 @@ channel_user_method_page('add', [
     'USER_NOT_FOUND' => 'No such user with the username.',
     'USER_IS_SELF' => 'The user you tried to add is you.',
     'USER_ALREADY_ADDED' => 'The user is already added.',
-    'USER_NOT_RECEIVING' => 'The receiver hasn\'t opened a connection to receive channels from you.',
+    'USER_NOT_RECEIVING' =>
+        "The receiver hasn't opened a connection to receive channels from you.",
 ]);

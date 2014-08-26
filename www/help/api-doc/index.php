@@ -57,7 +57,8 @@ $content = Page\tabs(
         'Below is a list of errors that are expected from any API method:'
         .'<br /><code>INVALID_API_KEY</code> - The API Key is invalid.'
         .'<br /><code>API_KEY_EXPIRED</code> - The API Key is expired.'
-        .'<br /><code>ACCESS_DENIED</code> - The API Key doesn\'t have a permission to perform the action.'
+        .'<br /><code>ACCESS_DENIED</code> - '
+        .'The API Key doesn\'t have a permission to perform the action.'
     )
     .create_panel('Root Namespaces', join('<div class="hr"></div>', $items))
 );
