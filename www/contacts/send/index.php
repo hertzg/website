@@ -7,6 +7,6 @@ list($contact, $id, $user) = require_contact($mysqli);
 unset($_SESSION['contacts/view/messages']);
 
 include_once '../../fns/SendForm/recipientsPage.php';
-SendForm\recipientsPage($mysqli, $user, $id, "Contact #$id", 'contact',
-    'contacts/send/errors', 'contacts/send/messages',
-    'contacts/send/values');
+SendForm\recipientsPage($mysqli, $user, $id, "Contact #$id",
+    "Send Contact #$id", 'contact', 'contacts/send/errors',
+    'contacts/send/messages', 'contacts/send/values');

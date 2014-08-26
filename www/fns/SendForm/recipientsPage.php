@@ -2,8 +2,8 @@
 
 namespace SendForm;
 
-function recipientsPage ($mysqli, $user, $id, $title,
-    $text, $errorsKey, $messagesKey, $valuesKey) {
+function recipientsPage ($mysqli, $user, $id, $tabTitle,
+    $pageTitle, $text, $errorsKey, $messagesKey, $valuesKey) {
 
     if (array_key_exists($valuesKey, $_SESSION)) {
         $values = $_SESSION[$valuesKey];
@@ -76,7 +76,7 @@ function recipientsPage ($mysqli, $user, $id, $title,
                 'href' => \ItemList\listHref(),
             ],
             [
-                'title' => $title,
+                'title' => $tabTitle,
                 'href' => "../view/$escapedItemQuery",
             ],
         ],
@@ -88,6 +88,6 @@ function recipientsPage ($mysqli, $user, $id, $title,
     );
 
     include_once __DIR__.'/../echo_page.php';
-    echo_page($user, "Send Bookmark #$id", $content, '../../');
+    echo_page($user, $pageTitle, $content, '../../');
 
 }
