@@ -10,6 +10,9 @@ function enterCancelForm ($username, array $params) {
         $hiddens .= \Form\hidden($key, $value);
     }
 
+    $query = http_build_query($params);
+    $cancelHref = 'submit-cancel.php?'.htmlspecialchars($query);
+
     include_once __DIR__.'/../Form/button.php';
     include_once __DIR__.'/../Form/textfield.php';
     include_once __DIR__.'/../Page/buttonLink.php';
@@ -26,7 +29,7 @@ function enterCancelForm ($username, array $params) {
             .'<div class="hr"></div>'
             .\Page\staticTwoColumns(
                 \Form\button('Add Recipient'),
-                \Page\buttonLink('Cancel', 'submit-cancel.php?'.htmlspecialchars(http_build_query($params)))
+                \Page\buttonLink('Cancel', $cancelHref)
             )
             .$hiddens
         .'</form>';
