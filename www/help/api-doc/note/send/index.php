@@ -18,7 +18,8 @@ note_method_page('send', [
 ], [
     'ENTER_RECEIVER_USERNAME' => 'The receiver username is empty.',
     'RECEIVER_NOT_FOUND' => 'No such receiver with the username.',
-    'RECEIVER_NOT_RECEIVING' => "The receiver hasn't opened a connection to receive notes from you.",
+    'RECEIVER_NOT_RECEIVING' =>
+        "The receiver hasn't opened a connection to receive notes from you.",
     'ENTER_TEXT' => 'The text is empty.',
     'TOO_MANY_TAGS' => 'More than '.Tags\maxNumber().' tags given.',
 ]);

@@ -14,5 +14,6 @@ task_method_page('sendExisting', [
     'TASK_NOT_FOUND' => "A task with the ID doesn't exist.",
     'ENTER_RECEIVER_USERNAME' => 'The receiver username is empty.',
     'RECEIVER_NOT_FOUND' => 'No such receiver with the username.',
-    'RECEIVER_NOT_RECEIVING' => "The receiver hasn't opened a connection to receive tasks from you.",
+    'RECEIVER_NOT_RECEIVING' =>
+        "The receiver hasn't opened a connection to receive tasks from you.",
 ]);

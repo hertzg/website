@@ -17,7 +17,8 @@ file_method_page('send', [
 ], [
     'ENTER_RECEIVER_USERNAME' => 'The receiver username is empty.',
     'RECEIVER_NOT_FOUND' => 'No such receiver with the username.',
-    'RECEIVER_NOT_RECEIVING' => "The receiver hasn't opened a connection to receive files from you.",
+    'RECEIVER_NOT_RECEIVING' =>
+        "The receiver hasn't opened a connection to receive files from you.",
     'ENTER_NAME' => 'The name is empty.',
     'SELECT_FILE' => 'The content file is empty.',
     'FILE_ERROR' => 'An error occured while uploading the file.',
