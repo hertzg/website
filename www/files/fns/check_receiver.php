@@ -17,7 +17,7 @@ function check_receiver ($mysqli, $id_users,
             if ($connection['can_send_file']) {
                 $receiver_id_users = $receiverUser->id_users;
             } else {
-                $errors[] = "The user isn't receiving files from you.";
+                $errors[] = "The user doesn't receive files from you.";
             }
         }
     }
