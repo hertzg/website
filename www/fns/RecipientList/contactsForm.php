@@ -3,9 +3,11 @@
 namespace RecipientList;
 
 function contactsForm (array $contacts, array $params) {
-    $items = [];
+    $html = '';
     include_once __DIR__.'/../Page/imageLinkWithDescription.php';
-    foreach ($contacts as $contact) {
+    foreach ($contacts as $i => $contact) {
+
+        if ($i) $html .= '<div class="hr"></div>';
 
         $contactUsername = $contact->username;
         $title = htmlspecialchars($contactUsername);
@@ -16,9 +18,9 @@ function contactsForm (array $contacts, array $params) {
         if ($contact->favorite) $icon = 'favorite-contact';
         else $icon = 'contact';
 
-        $items[] = \Page\imageLinkWithDescription($title,
+        $html .= \Page\imageLinkWithDescription($title,
             $description, $href, $icon);
 
     }
-    return join('<div class="hr"></div>', $items);
+    return $html;
 }
