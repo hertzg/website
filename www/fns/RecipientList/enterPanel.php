@@ -8,6 +8,6 @@ function enterPanel ($username, array $params) {
     $enterForm = enterForm($username, $params, false);
 
     include_once __DIR__.'/../create_panel.php';
-    return create_panel('Add Somebidy Else', $enterForm);
+    return create_panel('Add somebody else', $enterForm);
 
 }
