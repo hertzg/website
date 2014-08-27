@@ -8,19 +8,20 @@ function submitSendPage ($user, $id, $errorsKey, $messagesKey,
     include_once __DIR__.'/../ItemList/itemQuery.php';
     $itemQuery = \ItemList\itemQuery($id);
 
+    $url = "./$itemQuery";
     include_once __DIR__.'/../redirect.php';
 
-    if (!array_key_exists($valuesKey, $_SESSION)) redirect("../$itemQuery");
+    if (!array_key_exists($valuesKey, $_SESSION)) redirect($url);
 
     $recipients = $_SESSION[$valuesKey]['recipients'];
-    if (!$recipients) redirect("../$itemQuery");
+    if (!$recipients) redirect($url);
 
     $checkFunction($recipients, $receiver_id_userss, $errors);
 
     if ($errors) {
         $_SESSION[$errorsKey] = $errors;
         unset($_SESSION[$messagesKey]);
-        redirect("./$itemQuery");
+        redirect($url);
     }
 
     $sendFunction($receiver_id_userss);
