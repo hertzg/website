@@ -10,7 +10,7 @@ list($file, $id, $user) = require_file($mysqli);
 $errorsKey = 'files/send-file/errors';
 $valuesKey = 'files/send-file/values';
 
-$url = './?id=$id';
+$url = "./?id=$id";
 include_once '../../fns/redirect.php';
 
 if (!array_key_exists($valuesKey, $_SESSION)) redirect($url);
