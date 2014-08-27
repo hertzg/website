@@ -2,7 +2,7 @@
 
 namespace SendForm;
 
-function renderRecipients (array $recipients, $itemParams, $escapedItemQuery) {
+function renderRecipients (array $recipients, $params) {
 
     $html = '';
     include_once __DIR__.'/../Page/imageLink.php';
@@ -10,7 +10,7 @@ function renderRecipients (array $recipients, $itemParams, $escapedItemQuery) {
         $username = htmlspecialchars($recipient);
         $href = 'remove-recipient/?'.htmlspecialchars(
             http_build_query(
-                array_merge($itemParams, ['username' => $recipient])
+                array_merge($params, ['username' => $recipient])
             )
         );
         $html .=
@@ -19,7 +19,7 @@ function renderRecipients (array $recipients, $itemParams, $escapedItemQuery) {
     }
 
     include_once __DIR__.'/../Page/buttonLink.php';
-    $href = "submit-send.php$escapedItemQuery";
+    $href = "submit-send.php?".htmlspecialchars(http_build_query($params));
     $html .= \Page\buttonLink('Send', $href);
 
     return $html;
