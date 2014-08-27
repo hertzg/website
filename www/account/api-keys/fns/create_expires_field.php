@@ -1,22 +1,22 @@
 <?php
 
-function create_expires_field ($value) {
+function create_expires_field ($expires) {
 
     $options = [];
 
-    if ($value !== '' && $value != 7 && $value != 30 && $value != 360) {
-        if ($value == 1) $text = 'today';
-        elseif ($value == 2) $text = 'tomorrow';
-        else $text = "in $value days";
-        $options[$value] = $text;
+    if ($expires !== 'never' && $expires !== '7' && $expires !== '30' && $expires !== '360') {
+        if ($expires === '0') $text = 'today';
+        elseif ($expires === '1') $text = 'tomorrow';
+        else $text = "in $expires days";
+        $options[$expires] = $text;
     }
 
-    $options[''] = 'never';
-    $options[7] = 'in 7 days';
-    $options[30] = 'in 30 days';
-    $options[360] = 'in 360 days';
+    $options['never'] = 'never';
+    $options['7'] = 'in 7 days';
+    $options['30'] = 'in 30 days';
+    $options['360'] = 'in 360 days';
 
     include_once __DIR__.'/../../../fns/Form/select.php';
-    return Form\select('expires', 'Expires', $options, $value);
+    return Form\select('expires', 'Expires', $options, $expires);
 
 }

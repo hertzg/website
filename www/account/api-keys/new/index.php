@@ -10,7 +10,7 @@ if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
     $values = [
         'name' => '',
-        'expires' => '',
+        'expires' => 'never',
     ];
 }
 

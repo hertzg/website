@@ -15,9 +15,10 @@ if (array_key_exists($key, $_SESSION)) {
     $time_today = time_today();
 
     $expire_time = $apiKey->expire_time;
-    if ($expire_time === null || $expire_time < $time_today) $expires = '';
-    else {
-        $expires = floor(($expire_time - $time_today) / (60 * 60 * 24));
+    if ($expire_time === null || $expire_time < $time_today) {
+        $expires = 'never';
+    } else {
+        $expires = (string)floor(($expire_time - $time_today) / (60 * 60 * 24));
     }
 
     $values = [

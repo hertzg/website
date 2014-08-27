@@ -11,7 +11,10 @@ $apiKeys = ApiKeys\indexOnUser($mysqli, $user->id_users);
 
 $items = [];
 if ($apiKeys) {
-    $time = time();
+
+    include_once '../../fns/time_today.php';
+    $time_today = time_today();
+
     include_once '../../fns/Page/imageArrowLinkWithDescription.php';
     foreach ($apiKeys as $apiKey) {
 
@@ -19,7 +22,8 @@ if ($apiKeys) {
         $descriptions = [];
 
         $expire_time = $apiKey->expire_time;
-        if ($expire_time !== null && $expire_time < $time) {
+        $descriptions[] = date('d.m.Y H:i:s', $expire_time).' '.date('d.m.Y H:i:s', $time_today);
+        if ($expire_time !== null && $expire_time < $time_today) {
             $descriptions[] = 'Expired.';
         }
 
@@ -37,6 +41,7 @@ if ($apiKeys) {
             $title, $description, $href, 'api-key');
 
     }
+
 } else {
     include_once '../../fns/Page/info.php';
     $items[] = Page\info('No keys');
