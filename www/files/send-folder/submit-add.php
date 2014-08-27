@@ -13,6 +13,7 @@ $valuesKey = 'files/send-folder/values';
 
 include_once '../../fns/request_strings.php';
 list($username) = request_strings('username');
+$username = preg_replace('/\s+/', '', $username);
 
 $url = "./?id_folders=$id";
 

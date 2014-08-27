@@ -7,7 +7,6 @@ function submitAddPage ($user, $id, $errorsKey,
 
     include_once __DIR__.'/../request_strings.php';
     list($username) = request_strings('username');
-
     $username = preg_replace('/\s+/', '', $username);
 
     include_once __DIR__.'/../ItemList/itemQuery.php';
