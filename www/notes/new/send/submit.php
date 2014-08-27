@@ -36,8 +36,10 @@ unset(
 
 include_once '../../../fns/Users/Notes/Received/add.php';
 Users\Notes\Received\add($mysqli, $id_users, $user->username,
-    $receiver_id_users, $stageValues['text'], $stageValues['tags'],
-    $stageValues['encrypt']);
+    $receiver_id_users, $stageValues['full_name'], $stageValues['alias'],
+    $stageValues['address'], $stageValues['email'], $stageValues['phone1'],
+    $stageValues['phone2'], $stageValues['birthday_time'],
+    $stageValues['username'], $stageValues['tags'], $stageValues['favorite']);
 
 $_SESSION['notes/messages'] = ['Sent.'];
 unset($_SESSION['notes/errors']);
