@@ -1,21 +1,21 @@
 <?php
 
-namespace SendForm;
+namespace SendForm\NewItem;
 
-function submitSendPage ($user, $id, $errorsKey, $messagesKey,
+function submitSendPage ($user, $errorsKey, $messagesKey,
     $valuesKey, $viewMessagesKey, $checkFunction, $sendFunction) {
 
-    include_once __DIR__.'/../redirect.php';
+    include_once __DIR__.'/../../redirect.php';
 
     if (!array_key_exists($valuesKey, $_SESSION)) {
-        include_once __DIR__.'/../ItemList/itemQuery.php';
-        redirect('./'.\ItemList\itemQuery($id));
+        include_once __DIR__.'/../../ItemList/pageQuery.php';
+        redirect('./'.\ItemList\pageQuery());
     }
 
     $recipients = $_SESSION[$valuesKey]['recipients'];
     if (!$recipients) {
-        include_once __DIR__.'/../ItemList/itemQuery.php';
-        redirect('./'.\ItemList\itemQuery($id));
+        include_once __DIR__.'/../../ItemList/pageQuery.php';
+        redirect('./'.\ItemList\pageQuery());
     }
 
     $checkFunction($recipients, $receiver_id_userss, $errors);
@@ -23,8 +23,8 @@ function submitSendPage ($user, $id, $errorsKey, $messagesKey,
     if ($errors) {
         $_SESSION[$errorsKey] = $errors;
         unset($_SESSION[$messagesKey]);
-        include_once __DIR__.'/../ItemList/itemQuery.php';
-        redirect('./'.\ItemList\itemQuery($id));
+        include_once __DIR__.'/../../ItemList/pageQuery.php';
+        redirect('./'.\ItemList\pageQuery());
     }
 
     $sendFunction($receiver_id_userss);
@@ -36,6 +36,7 @@ function submitSendPage ($user, $id, $errorsKey, $messagesKey,
 
     $_SESSION[$viewMessagesKey] = ['Sent.'];
 
-    redirect("../view/$itemQuery");
+    include_once __DIR__.'/../../ItemList/listHref.php';
+    redirect('../'.\ItemList\listHref());
 
 }

@@ -20,6 +20,7 @@ unset(
     $_SESSION['bookmarks/errors'],
     $_SESSION['bookmarks/messages'],
     $_SESSION['bookmarks/new/send/errors'],
+    $_SESSION['bookmarks/new/send/messages'],
     $_SESSION['bookmarks/new/send/values']
 );
 

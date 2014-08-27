@@ -1,11 +1,11 @@
 <?php
 
-namespace SendForm;
+namespace SendForm\NewItem;
 
 function renderRecipients (array $recipients, array $params) {
 
     $html = '';
-    include_once __DIR__.'/../Page/imageLink.php';
+    include_once __DIR__.'/../../Page/imageLink.php';
     foreach ($recipients as $recipient) {
         $username = htmlspecialchars($recipient);
         $href = 'remove-recipient/?'.htmlspecialchars(
@@ -18,8 +18,10 @@ function renderRecipients (array $recipients, array $params) {
             .'<div class="hr"></div>';
     }
 
-    include_once __DIR__.'/../Page/buttonLink.php';
-    $href = "submit-send.php?".htmlspecialchars(http_build_query($params));
+    $href = 'submit-send.php';
+    if ($params) $href .= '?'.htmlspecialchars(http_build_query($params));
+
+    include_once __DIR__.'/../../Page/buttonLink.php';
     $html .= \Page\buttonLink('Send', $href);
 
     return $html;
