@@ -3,9 +3,6 @@
 function check_receiver ($mysqli, $id_users,
     $username, &$receiver_id_users, &$errors) {
 
-    include_once __DIR__.'/../../fns/str_collapse_spaces.php';
-    $username = str_collapse_spaces($username);
-
     if ($username === '') {
         $errors[] = 'Enter username.';
     } else {
