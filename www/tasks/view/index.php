@@ -10,6 +10,7 @@ unset(
     $_SESSION['tasks/errors'],
     $_SESSION['tasks/messages'],
     $_SESSION['tasks/send/errors'],
+    $_SESSION['tasks/send/messages'],
     $_SESSION['tasks/send/values']
 );
 
