@@ -10,7 +10,7 @@ function submitAddPage ($user, $id, $errorsKey,
     $username = preg_replace('/\s+/', '', $username);
 
     include_once __DIR__.'/../ItemList/itemQuery.php';
-    $itemQuery = \ItemList\itemQuery($id);
+    $url = './'.\ItemList\itemQuery($id);
 
     if (!array_key_exists($valuesKey, $_SESSION)) {
         $_SESSION[$valuesKey] = [
@@ -27,7 +27,7 @@ function submitAddPage ($user, $id, $errorsKey,
         $_SESSION[$messagesKey] = ['The recipient is already added.'];
         $_SESSION[$valuesKey]['username'] = '';
         $_SESSION[$valuesKey]['usernameError'] = false;
-        redirect("./$itemQuery");
+        redirect($url);
     }
 
     $checkFunction($username, $errors);
@@ -37,7 +37,7 @@ function submitAddPage ($user, $id, $errorsKey,
         $_SESSION[$errorsKey] = $errors;
         $_SESSION[$valuesKey]['username'] = $username;
         $_SESSION[$valuesKey]['usernameError'] = true;
-        redirect("./$itemQuery");
+        redirect($url);
     }
 
     unset($_SESSION[$errorsKey]);
@@ -45,6 +45,6 @@ function submitAddPage ($user, $id, $errorsKey,
     $_SESSION[$valuesKey]['username'] = '';
     $_SESSION[$valuesKey]['usernameError'] = false;
     $_SESSION[$messagesKey] = ['The recipient has been added.'];
-    redirect("./$itemQuery");
+    redirect($url);
 
 }
