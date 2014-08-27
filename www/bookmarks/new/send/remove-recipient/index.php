@@ -1,10 +1,7 @@
 <?php
 
-include_once '../fns/require_stage.php';
-list($user) = require_stage();
-
-include_once '../../../../fns/SendForm/NewItem/requireRecipient.php';
-$username = SendForm\NewItem\requireRecipient('bookmarks/new/send/values');
+include_once 'fns/require_recipient.php';
+list($username, $user) = require_recipient();
 
 unset(
     $_SESSION['bookmarks/new/send/errors'],
