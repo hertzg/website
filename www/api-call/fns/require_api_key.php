@@ -19,6 +19,14 @@ function require_api_key () {
         die('"INVALID_API_KEY"');
     }
 
+    $expire_time = $apiKey->expire_time;
+    include_once __DIR__.'/../../fns/time_today.php';
+    if ($expire_time !== null && $expire_time < time_today()) {
+        http_response_code(403);
+        header('Content-Type: application/json');
+        die('"API_KEY_EXPIRED"');
+    }
+
     include_once __DIR__.'/../../fns/ApiKeys/updateAccessTime.php';
     ApiKeys\updateAccessTime($mysqli, $apiKey->id);
 
