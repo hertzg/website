@@ -5,17 +5,19 @@ namespace SendForm;
 function submitSendPage ($user, $id, $errorsKey, $messagesKey,
     $valuesKey, $viewMessagesKey, $checkFunction, $sendFunction) {
 
+    include_once __DIR__.'/../ItemList/itemQuery.php';
+    $itemQuery = \ItemList\itemQuery($id);
+
     include_once __DIR__.'/../redirect.php';
 
     if (!array_key_exists($valuesKey, $_SESSION)) {
-        include_once __DIR__.'/../ItemList/itemQuery.php';
-        redirect('./'.\ItemList\itemQuery($id));
+        redirect("./$itemQuery");
     }
 
     $recipients = $_SESSION[$valuesKey]['recipients'];
     if (!$recipients) {
         include_once __DIR__.'/../ItemList/itemQuery.php';
-        redirect('./'.\ItemList\itemQuery($id));
+        redirect("./$itemQuery");
     }
 
     $checkFunction($recipients, $receiver_id_userss, $errors);
@@ -24,7 +26,7 @@ function submitSendPage ($user, $id, $errorsKey, $messagesKey,
         $_SESSION[$errorsKey] = $errors;
         unset($_SESSION[$messagesKey]);
         include_once __DIR__.'/../ItemList/itemQuery.php';
-        redirect('./'.\ItemList\itemQuery($id));
+        redirect("./$itemQuery");
     }
 
     $sendFunction($receiver_id_userss);
