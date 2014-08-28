@@ -18,7 +18,7 @@ include_once '../../../fns/Page/imageLink.php';
 include_once '../../../fns/Page/tabs.php';
 include_once '../../../fns/Page/text.php';
 include_once '../../../fns/Page/twoColumns.php';
-$content = \Page\tabs(
+$content = Page\tabs(
     [
         [
             'title' => '&middot;&middot;&middot;',
@@ -30,12 +30,12 @@ $content = \Page\tabs(
         ],
     ],
     "Send Folder #$id",
-    \Page\text('Are you sure you want to remove the recipient'
+    Page\text('Are you sure you want to remove the recipient'
         .' "<b>'.htmlspecialchars($username).'</b>"?')
     .'<div class="hr"></div>'
     .\Page\twoColumns(
-        \Page\imageLink('Yes, remove recipient', $yesHref, 'yes'),
-        \Page\imageLink('No, return back', "../?id_folders=$id", 'no')
+        Page\imageLink('Yes, remove recipient', $yesHref, 'yes'),
+        Page\imageLink('No, return back', "../?id_folders=$id", 'no')
     )
 );
 

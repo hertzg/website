@@ -20,7 +20,7 @@ if (array_key_exists($key, $_SESSION)) {
 $recipients = $values['recipients'];
 
 include_once '../../fns/Contacts/indexWithUsernameOnUser.php';
-$contacts = \Contacts\indexWithUsernameOnUser($mysqli, $user->id_users);
+$contacts = Contacts\indexWithUsernameOnUser($mysqli, $user->id_users);
 
 $params = ['id_folders' => $id];
 
@@ -28,10 +28,10 @@ if ($values['usernameError']) {
     $username = $values['username'];
     if ($contacts || $recipients) {
         include_once '../../fns/RecipientList/enterCancelForm.php';
-        $content = \RecipientList\enterCancelForm($username, $params);
+        $content = RecipientList\enterCancelForm($username, $params);
     } else {
         include_once '../../fns/RecipientList/enterForm.php';
-        $content = \RecipientList\enterForm($username, $params, true);
+        $content = RecipientList\enterForm($username, $params, true);
     }
 } else {
     if ($recipients) {
@@ -42,20 +42,20 @@ if ($values['usernameError']) {
         include_once '../../fns/RecipientList/enterPanel.php';
         if ($contacts) {
             include_once '../../fns/RecipientList/contactsPanel.php';
-            $content .= \RecipientList\contactsPanel($contacts, $params);
+            $content .= RecipientList\contactsPanel($contacts, $params);
         }
-        $content .= \RecipientList\enterPanel('', $params);
+        $content .= RecipientList\enterPanel('', $params);
 
     } else {
         if ($contacts) {
             include_once '../../fns/RecipientList/contactsForm.php';
             include_once '../../fns/RecipientList/enterPanel.php';
             $content =
-                \RecipientList\contactsForm($contacts, $params)
+                RecipientList\contactsForm($contacts, $params)
                 .\RecipientList\enterPanel('', $params);
         } else {
             include_once '../../fns/RecipientList/enterForm.php';
-            $content = \RecipientList\enterForm('', $params, true);
+            $content = RecipientList\enterForm('', $params, true);
         }
     }
 }
@@ -64,7 +64,7 @@ include_once '../../fns/Page/sessionErrors.php';
 include_once '../../fns/Page/sessionMessages.php';
 include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Page/warnings.php';
-$content = \Page\tabs(
+$content = Page\tabs(
     [
         [
             'title' => '&middot;&middot;&middot;',
@@ -76,7 +76,7 @@ $content = \Page\tabs(
         ],
     ],
     "Send Folder #$id",
-    \Page\sessionErrors('files/send-folder/errors')
+    Page\sessionErrors('files/send-folder/errors')
     .\Page\sessionMessages('files/send-folder/messages')
     .\Page\warnings(['Send the file to:'])
     .$content
