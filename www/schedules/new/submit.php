@@ -22,7 +22,8 @@ $_SESSION['schedules/new/values'] = [
 
 if ($errors) {
     $_SESSION['schedules/new/errors'] = $errors;
-    redirect();
+    include_once '../../fns/ItemList/pageQuery.php';
+    redirect('./'.ItemList\pageQuery());
 }
 
 unset($_SESSION['schedules/new/errors']);

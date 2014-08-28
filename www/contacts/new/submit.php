@@ -35,7 +35,8 @@ $_SESSION['contacts/new/values'] = [
 
 if ($errors) {
     $_SESSION['contacts/new/errors'] = $errors;
-    redirect();
+    include_once '../../fns/ItemList/pageQuery.php';
+    redirect('./'.ItemList\pageQuery());
 }
 
 unset($_SESSION['contacts/new/errors']);

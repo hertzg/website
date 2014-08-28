@@ -21,7 +21,8 @@ include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['bookmarks/new/errors'] = $errors;
-    redirect();
+    include_once '../../fns/ItemList/pageQuery.php';
+    redirect('./'.ItemList\pageQuery());
 }
 
 unset($_SESSION['bookmarks/new/errors']);
