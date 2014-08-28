@@ -2,10 +2,10 @@
 
 function require_recipient () {
 
-    include_once '../fns/require_stage.php';
+    include_once __DIR__.'/../../fns/require_stage.php';
     list($user) = require_stage('../');
 
-    include_once '../../../../fns/SendForm/NewItem/requireRecipient.php';
+    include_once __DIR__.'/../../../../../fns/SendForm/NewItem/requireRecipient.php';
     $username = SendForm\NewItem\requireRecipient('notes/new/send/values');
 
     return [$username, $user];
