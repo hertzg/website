@@ -10,7 +10,8 @@ function require_stage ($base = '') {
     $key = 'contacts/new/values';
     if (!array_key_exists($key, $_SESSION)) {
         include_once "$fnsDir/redirect.php";
-        redirect("$base..");
+        include_once "$fnsDir/ItemList/pageQuery.php";
+        redirect("$base../".ItemList\pageQuery());
     }
 
     return [$user, $_SESSION[$key]];
