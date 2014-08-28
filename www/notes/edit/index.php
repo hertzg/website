@@ -10,6 +10,7 @@ else $values = (array)$note;
 
 unset(
     $_SESSION['notes/edit/send/errors'],
+    $_SESSION['notes/edit/send/messages'],
     $_SESSION['notes/edit/send/values'],
     $_SESSION['notes/view/messages']
 );
