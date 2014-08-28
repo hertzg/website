@@ -27,6 +27,7 @@ $_SESSION['contacts/edit/values'] = [
     'birthday_day' => $birthday_day,
     'birthday_month' => $birthday_month,
     'birthday_year' => $birthday_year,
+    'birthday_time' => $birthday_time,
     'username' => $username,
     'tags' => $tags,
     'favorite' => $favorite,

@@ -28,6 +28,7 @@ if (array_key_exists($key, $_SESSION)) {
         'birthday_day' => $birthday_day,
         'birthday_month' => $birthday_month,
         'birthday_year' => $birthday_year,
+        'birthday_time' => $birthday_time,
         'username' => $contact->username,
         'tags' => $contact->tags,
         'favorite' => $contact->favorite,
@@ -37,6 +38,7 @@ if (array_key_exists($key, $_SESSION)) {
 
 unset(
     $_SESSION['contacts/edit/send/errors'],
+    $_SESSION['contacts/edit/send/messages'],
     $_SESSION['contacts/edit/send/values'],
     $_SESSION['contacts/view/messages']
 );
