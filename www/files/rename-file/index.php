@@ -10,6 +10,7 @@ else $values = (array)$file;
 
 unset(
     $_SESSION['files/rename-file/send/errors'],
+    $_SESSION['files/rename-file/send/messages'],
     $_SESSION['files/rename-file/send/values'],
     $_SESSION['files/view-file/messages']
 );
