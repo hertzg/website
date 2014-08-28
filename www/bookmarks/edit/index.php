@@ -10,6 +10,7 @@ else $values = (array)$bookmark;
 
 unset(
     $_SESSION['bookmarks/edit/send/errors'],
+    $_SESSION['bookmarks/edit/send/messages'],
     $_SESSION['bookmarks/edit/send/values'],
     $_SESSION['bookmarks/view/messages']
 );
