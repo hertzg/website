@@ -10,7 +10,7 @@ function require_stage ($mysqli, $base = '') {
         $fnsDir = __DIR__.'/../../../../fns';
         include_once "$fnsDir/redirect.php";
         include_once "$fnsDir/ItemList/itemQuery.php";
-        redirect('../'.ItemList\itemQuery($id));
+        redirect("$base../".ItemList\itemQuery($id));
     }
 
     return [$user, $_SESSION[$key], $id];
