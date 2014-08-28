@@ -27,7 +27,7 @@ if (array_key_exists($key, $_SESSION)) {
 
 unset(
     $_SESSION['contacts/errors'],
-    $_SESSION['contacts/messages']
+    $_SESSION['contacts/messages'],
     $_SESSION['contacts/new/send/errors'],
     $_SESSION['contacts/new/send/messages'],
     $_SESSION['contacts/new/send/values']
