@@ -4,8 +4,8 @@ namespace SendForm;
 
 function removeRecipientPage ($user, $id, $username, $title) {
 
-    include_once __DIR__.'/../ItemList/itemQuery.php';
-    $itemQuery = \ItemList\itemQuery($id);
+    include_once __DIR__.'/../ItemList/escapedItemQuery.php';
+    $escapedItemQuery = \ItemList\escapedItemQuery($id);
 
     include_once __DIR__.'/../ItemList/itemParams.php';
     $itemParams = \ItemList\itemParams($id);
@@ -25,7 +25,7 @@ function removeRecipientPage ($user, $id, $username, $title) {
             ],
             [
                 'title' => $title,
-                'href' => "../../view/$itemQuery",
+                'href' => "../../view/$escapedItemQuery",
             ],
         ],
         'Send',
@@ -34,7 +34,7 @@ function removeRecipientPage ($user, $id, $username, $title) {
         .'<div class="hr"></div>'
         .\Page\twoColumns(
             \Page\imageLink('Yes, remove recipient', $yesHref, 'yes'),
-            \Page\imageLink('No, return back', "../$itemQuery", 'no')
+            \Page\imageLink('No, return back', "../$escapedItemQuery", 'no')
         )
     );
 
