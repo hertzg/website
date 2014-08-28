@@ -10,7 +10,8 @@ function require_first_stage () {
     $key = 'schedules/new/next/first_stage';
     if (!array_key_exists($key, $_SESSION)) {
         include_once "$fnsDir/redirect.php";
-        redirect('..');
+        include_once "$fnsDir/ItemList/pageQuery.php";
+        redirect('../'.ItemList\pageQuery());
     }
 
     return [$user, $_SESSION[$key]];
