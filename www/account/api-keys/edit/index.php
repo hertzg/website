@@ -11,10 +11,13 @@ if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];
 } else {
 
+    include_once '../../../fns/time_today.php';
+    $time_today = time_today();
+
     $expire_time = $apiKey->expire_time;
-    if ($expire_time === null) $expires = '';
+    if ($expire_time === null || $expire_time < $time_today) $expires = '';
     else {
-        $expires = ceil(($expire_time - time()) / (60 * 60 * 24));
+        $expires = floor(($expire_time - $time_today) / (60 * 60 * 24));
     }
 
     $values = [

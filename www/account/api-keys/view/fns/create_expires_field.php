@@ -11,7 +11,7 @@ function create_expires_field ($apiKey) {
     if ($expire_time === null) {
         $content = 'never';
     } else {
-        $days = ceil(($expire_time - $time_today) / (60 * 60 * 24));
+        $days = floor(($expire_time - $time_today) / (60 * 60 * 24));
         if ($expire_time >= $time_today) {
             if ($days == 0) $content = 'today';
             elseif ($days == 1) $content = 'tomorrow';
