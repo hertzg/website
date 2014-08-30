@@ -16,7 +16,9 @@ $checkFunction = function ($recipients,
 
 };
 
-$sendFunction = function ($receiver_id_userss) use ($mysqli, $stageValues, $user) {
+$sendFunction = function ($receiver_id_userss) use ($mysqli,
+    $stageValues, $user) {
+
     include_once '../../../fns/Users/Tasks/Received/add.php';
     foreach ($receiver_id_userss as $receiver_id_users) {
         Users\Tasks\Received\add($mysqli, $user->id_users, $user->username,
@@ -24,6 +26,7 @@ $sendFunction = function ($receiver_id_userss) use ($mysqli, $stageValues, $user
             $stageValues['deadline_time'], $stageValues['tags'],
             $stageValues['top_priority']);
     }
+
 };
 
 include_once '../../../fns/SendForm/EditItem/submitSendPage.php';

@@ -14,7 +14,9 @@ if (array_key_exists($key, $_SESSION)) {
     unset($_SESSION[$key]['recipients'][$username]);
 }
 
-$_SESSION['files/rename-file/send/messages'] = ['The recipient has been removed.'];
+$_SESSION['files/rename-file/send/messages'] = [
+    'The recipient has been removed.',
+];
 
 include_once '../../../../fns/redirect.php';
 redirect("../?id=$id");

@@ -16,13 +16,16 @@ $checkFunction = function ($recipients,
 
 };
 
-$sendFunction = function ($receiver_id_userss) use ($mysqli, $stageValues, $user) {
+$sendFunction = function ($receiver_id_userss) use ($mysqli,
+    $stageValues, $user) {
+
     include_once '../../../fns/Users/Bookmarks/Received/add.php';
     foreach ($receiver_id_userss as $receiver_id_users) {
         Users\Bookmarks\Received\add($mysqli, $user->id_users, $user->username,
             $receiver_id_users, $stageValues['url'], $stageValues['title'],
             $stageValues['tags']);
     }
+
 };
 
 include_once '../../../fns/SendForm/EditItem/submitSendPage.php';
