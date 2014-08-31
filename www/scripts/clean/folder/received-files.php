@@ -39,6 +39,7 @@ function clean_user_received_files ($mysqli, $id_users, &$deleted) {
 }
 
 chdir(__DIR__);
+include_once '../../lib/require-cli.php';
 include_once '../../../lib/mysqli.php';
 include_once '../../../fns/mysqli_query_object.php';
 include_once '../../../fns/mysqli_single_object.php';
