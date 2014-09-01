@@ -79,5 +79,10 @@ $content =
     )
     .create_options_panel($user, $id_folders, $files);
 
+if ($id_folders) {
+    include_once 'fns/create_folder_options_panel.php';
+    $content .= create_folder_options_panel($id_folders);
+}
+
 include_once '../fns/echo_page.php';
 echo_page($user, 'Files', $content, $base);

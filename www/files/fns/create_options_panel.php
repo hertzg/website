@@ -37,25 +37,7 @@ function create_options_panel ($user, $id_folders, $files) {
         $options[] = Page\twoColumns($newFolderLink, $uploadLink);
     }
 
-    if ($id_folders) {
-
-        $title = 'Rename This Folder';
-        $href = "rename-folder/?id_folders=$id_folders";
-        $options[] = Page\imageArrowLink($title, $href, 'rename');
-
-        $title = 'Move This Folder';
-        $href = "move-folder/?id_folders=$id_folders";
-        $options[] = Page\imageArrowLink($title, $href, 'move-folder');
-
-        $title = 'Send This Folder';
-        $href = "send-folder/?id_folders=$id_folders";
-        $options[] = Page\imageArrowLink($title, $href, 'send');
-
-        $title = 'Delete This Folder';
-        $href = "delete-folder/?id_folders=$id_folders";
-        $options[] = Page\imageArrowLink($title, $href, 'trash-bin');
-
-    } else {
+    if (!$id_folders) {
         $num_received_files = $user->num_received_files;
         $num_received_folders = $user->num_received_folders;
         if ($num_received_files || $num_received_folders) {
