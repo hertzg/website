@@ -1,0 +1,35 @@
+#!/usr/bin/php
+<?php
+
+include_once 'fns/ensure_table.php';
+ensure_table('note_tags', [
+    'encrypt' => [
+        'type' => 'tinyint(3) unsigned',
+    ],
+    'id' => [
+        'type' => 'bigint(20) unsigned',
+        'primary' => true,
+    ],
+    'id_notes' => [
+        'type' => 'bigint(20) unsigned',
+    ],
+    'id_users' => [
+        'type' => 'bigint(20) unsigned',
+    ],
+    'insert_time' => [
+        'type' => 'bigint(20) unsigned',
+    ],
+    'tag_name' => [
+        'type' => 'varchar(64)',
+        'characterSet' => 'utf8',
+        'collation' => 'utf8_unicode_ci',
+    ],
+    'text' => [
+        'type' => 'text',
+        'characterSet' => 'utf8',
+        'collation' => 'utf8_unicode_ci',
+    ],
+    'update_time' => [
+        'type' => 'bigint(20) unsigned',
+    ],
+]);
