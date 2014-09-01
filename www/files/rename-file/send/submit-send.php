@@ -29,13 +29,10 @@ if ($errors) {
     redirect($url);
 }
 
-include_once '../../../fns/Files/File/path.php';
-$filePath = Files\File\path($id_users, $id);
-
-include_once '../../../fns/Users/Files/Received/add.php';
+include_once '../../../fns/Users/Files/sendRenamed.php';
 foreach ($receiver_id_userss as $receiver_id_users) {
-    Users\Files\Received\add($mysqli, $user, $receiver_id_users,
-        $stageValues['name'], $file->size, $filePath);
+    Users\Files\sendRenamed($mysqli, $user,
+        $receiver_id_users, $file, $stageValues['name']);
 }
 
 unset(
