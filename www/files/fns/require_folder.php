@@ -1,11 +1,11 @@
 <?php
 
-function require_folder ($mysqli) {
+function require_folder ($mysqli, $base = '') {
 
     $fnsDir = __DIR__.'/../../fns';
 
     include_once "$fnsDir/require_user.php";
-    $user = require_user('../../');
+    $user = require_user("$base../../");
 
     include_once "$fnsDir/request_strings.php";
     list($id_folders) = request_strings('id_folders');
@@ -17,7 +17,7 @@ function require_folder ($mysqli) {
 
     if (!$folder) {
         include_once "$fnsDir/redirect.php";
-        redirect('..');
+        redirect("$base..");
     }
 
     return [$folder, $id_folders, $user];

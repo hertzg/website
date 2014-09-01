@@ -26,20 +26,22 @@ if ($name === '') {
 
 }
 
+$_SESSION['files/rename-folder/values'] = ['name' => $name];
+
 include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['files/rename-folder/errors'] = $errors;
-    $_SESSION['files/rename-folder/values'] = [
-        'name' => $name,
-    ];
     redirect("./?id_folders=$id_folders");
 }
 
-unset(
-    $_SESSION['files/rename-folder/errors'],
-    $_SESSION['files/rename-folder/values']
-);
+unset($_SESSION['files/rename-folder/errors']);
+
+include_once '../../fns/request_strings.php';
+list($sendButton) = request_strings('sendButton');
+if ($sendButton) redirect("send/?id_folders=$id_folders");
+
+unset($_SESSION['files/rename-folder/values']);
 
 include_once '../../fns/Folders/rename.php';
 Folders\rename($mysqli, $id_folders, $name);
