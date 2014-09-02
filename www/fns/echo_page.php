@@ -19,6 +19,8 @@ function echo_page ($user, $title, $content, $base, array $options = []) {
             .'</div>';
     }
 
+    $time = floor((microtime(true) + $user->timezone * 60) * 1000);
+
     $topLinkHref = $base === '' ? './' : $base;
     $body =
         '<div id="tbar">'
@@ -30,7 +32,7 @@ function echo_page ($user, $title, $content, $base, array $options = []) {
         .'</div>'
         .$content
         .'<div id="bbar"></div>'
-        .'<script type="text/javascript">var time = '.floor(microtime(true) * 1000).'</script>'
+        ."<script type=\"text/javascript\">var time = $time</script>"
         .'<script type="text/javascript" async="async"'
         ." src=\"{$base}js/battery.js\"></script>"
         .'<script type="text/javascript" async="async"'
