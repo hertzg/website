@@ -14,8 +14,9 @@
 
     var valueElement = document.createElement('div')
     ;(function (style) {
-        style.position = 'absolute'
-        style.top = style.right = style.bottom = '0'
+        style.display = 'inline-block'
+        style.verticalAlign = 'top'
+        style.height = '100%'
         style.backgroundColor = '#ccc'
     })(valueElement.style)
 
@@ -26,18 +27,19 @@
         style.height = '30%'
         style.margin = 'auto'
         style.background = '#ccc'
-        style.width = '3px'
-        style.borderRadius = '1px 0 0 1px'
+        style.width = '2px'
     })(plusElement.style)
 
     var borderElement = document.createElement('div')
     borderElement.appendChild(valueElement)
     ;(function (style) {
+        style.textAlign = 'right'
         style.position = 'absolute'
-        style.top = style.right = style.bottom = style.left = '3px'
-        style.border = '1.5px solid #ccc'
-        style.padding = '1.5px'
-        style.borderRadius = '2px'
+        style.top = style.right = style.bottom = '3px'
+        style.left = '2px'
+        style.border = '1px solid #ccc'
+        style.padding = '1px'
+        style.borderRadius = '1px'
     })(borderElement.style)
 
     var element = document.createElement('div')

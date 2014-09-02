@@ -35,7 +35,7 @@ function echo_page ($user, $title, $content, $base, array $options = []) {
         .'<div id="bbar"></div>'
         ."<script type=\"text/javascript\">var time = $time</script>"
         .'<script type="text/javascript" async="async"'
-        ." src=\"{$base}js/battery.js\"></script>"
+        ." src=\"{$base}js/battery.js?1\"></script>"
         .'<script type="text/javascript" async="async"'
         ." src=\"{$base}js/clock.js?4\"></script>";
 
