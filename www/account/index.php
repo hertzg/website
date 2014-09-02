@@ -24,6 +24,12 @@ if ($email !== '') {
 $full_name = $user->full_name;
 if ($full_name !== '') $items[] = Form\label('Full name', $full_name);
 
+$timezone = $user->timezone;
+if ($timezone) {
+    include_once '../fns/Timezone/format.php';
+    $items[] = Form\label('Timezone', Timezone\format($timezone));
+}
+
 include_once '../fns/get_themes.php';
 $themes = get_themes();
 $items[] = Form\label('Theme', $themes[$user->theme]);
