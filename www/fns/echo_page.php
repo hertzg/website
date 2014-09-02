@@ -30,10 +30,11 @@ function echo_page ($user, $title, $content, $base, array $options = []) {
         .'</div>'
         .$content
         .'<div id="bbar"></div>'
+        .'<script type="text/javascript">var time = '.floor(microtime(true) * 1000).'</script>'
         .'<script type="text/javascript" async="async"'
         ." src=\"{$base}js/battery.js\"></script>"
         .'<script type="text/javascript" async="async"'
-        ." src=\"{$base}js/clock.js\"></script>";
+        ." src=\"{$base}js/clock.js?1\"></script>";
 
     include_once __DIR__.'/../fns/echo_html.php';
     echo_html($title, $head, $body, $theme, $base);

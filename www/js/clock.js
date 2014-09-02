@@ -1,4 +1,4 @@
-(function () {
+(function (time) {
 
     function pad (n) {
         if (n < 10) return '0' + n
@@ -6,9 +6,15 @@
     }
 
     function update () {
-        var date = new Date
-        hourNode.nodeValue = pad(date.getHours())
-        minuteNode.nodeValue = pad(date.getMinutes())
+
+        var date = new Date(Date.now() - difference)
+
+        var hour = pad(date.getHours())
+        if (hour != hourNode.nodeValue) hourNode.nodeValue = hour
+
+        var minute = pad(date.getMinutes())
+        if (minute != minuteNode.nodeValue) minuteNode.nodeValue = minute
+
     }
 
     var hourNode = document.createTextNode('00')
@@ -35,7 +41,9 @@
 
     document.body.appendChild(element)
 
+    var difference = Date.now() - time
+
     setInterval(update, 1000)
     update()
 
-})()
+})(time)
