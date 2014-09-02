@@ -250,6 +250,9 @@ ensure_table('users', [
         'characterSet' => 'ascii',
         'collation' => 'ascii_bin',
     ],
+    'timezone' => [
+        'type' => 'int(11)',
+    ],
     'username' => [
         'type' => 'varchar(32)',
         'characterSet' => 'ascii',

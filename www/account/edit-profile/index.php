@@ -14,10 +14,11 @@ unset($_SESSION['account/messages']);
 include_once '../../fns/Users/maxLengths.php';
 $maxLengths = Users\maxLengths();
 
-include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/textfield.php';
+include_once '../../fns/Form/timezoneSelect.php';
 include_once '../../fns/Page/sessionErrors.php';
+include_once '../../fns/Page/tabs.php';
 $content = Page\tabs(
     [
         [
@@ -42,6 +43,8 @@ $content = Page\tabs(
             'value' => $values['full_name'],
             'maxlength' => $maxLengths['full_name'],
         ])
+        .'<div class="hr"></div>'
+        .Form\timezoneSelect('timezone', 'Timezone', $values['timezone'])
         .'<div class="hr"></div>'
         .Form\button('Save Changes')
     .'</form>'
