@@ -38,6 +38,7 @@
     ;(function (style) {
         style.width = '9px'
         style.height = '11px'
+        style.backgroundRepeat = 'none'
         style.backgroundImage = 'url(' + base + 'images/charging.svg)'
         style.position = 'absolute'
         style.top = '-1px'
@@ -76,7 +77,7 @@
     document.body.appendChild(element)
 
     var battery = navigator.battery
-    battery.addEventListener('changingchange', updateCharging)
+    battery.addEventListener('chargingchange', updateCharging)
     battery.addEventListener('levelchange', updateLevel)
     updateCharging()
     updateLevel()

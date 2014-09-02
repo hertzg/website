@@ -38,7 +38,7 @@ function echo_page ($user, $title, $content, $base, array $options = []) {
             ."var base = ".json_encode($base)
         .'</script>'
         .'<script type="text/javascript" async="async"'
-        ." src=\"{$base}js/battery.js?2\"></script>"
+        ." src=\"{$base}js/battery.js?3\"></script>"
         .'<script type="text/javascript" async="async"'
         ." src=\"{$base}js/clock.js?4\"></script>";
 
