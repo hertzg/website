@@ -1,6 +1,6 @@
-(function () {
+(function (base) {
 
-    function update () {
+    function updateLevel () {
 
         var roundLevel = Math.round(battery.level * 5) / 5
         valueElement.style.width = roundLevel * 100 + '%'
@@ -10,6 +10,10 @@
         plusElement.style.background = color
         valueElement.style.background = color
 
+    }
+
+    function updateCharging () {
+        chargingElement.style.display = battery.charging ? 'inline-block' : 'none'
     }
 
     var valueElement = document.createElement('div')
@@ -30,8 +34,20 @@
         style.width = '2px'
     })(plusElement.style)
 
+    var chargingElement = document.createElement('div')
+    ;(function (style) {
+        style.width = '9px'
+        style.height = '11px'
+        style.backgroundImage = 'url(' + base + 'images/charging.svg)'
+        style.position = 'absolute'
+        style.top = '-1px'
+        style.right = style.left = '0'
+        style.margin = 'auto'
+    })(chargingElement.style)
+
     var borderElement = document.createElement('div')
     borderElement.appendChild(valueElement)
+    borderElement.appendChild(chargingElement)
     ;(function (style) {
         style.textAlign = 'right'
         style.position = 'absolute'
@@ -60,7 +76,9 @@
     document.body.appendChild(element)
 
     var battery = navigator.battery
-    battery.addEventListener('levelchange', update)
-    update()
+    battery.addEventListener('changingchange', updateCharging)
+    battery.addEventListener('levelchange', updateLevel)
+    updateCharging()
+    updateLevel()
 
-})()
+})(base)
