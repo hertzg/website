@@ -19,7 +19,8 @@ function echo_page ($user, $title, $content, $base, array $options = []) {
             .'</div>';
     }
 
-    $time = floor((microtime(true) + $user->timezone * 60) * 1000);
+    $time = floor(microtime(true) * 1000);
+    if ($user) $time += $user->timezone * 60 * 1000;
 
     $topLinkHref = $base === '' ? './' : $base;
     $body =
@@ -36,7 +37,7 @@ function echo_page ($user, $title, $content, $base, array $options = []) {
         .'<script type="text/javascript" async="async"'
         ." src=\"{$base}js/battery.js\"></script>"
         .'<script type="text/javascript" async="async"'
-        ." src=\"{$base}js/clock.js?1\"></script>";
+        ." src=\"{$base}js/clock.js?2\"></script>";
 
     include_once __DIR__.'/../fns/echo_html.php';
     echo_html($title, $head, $body, $theme, $base);
