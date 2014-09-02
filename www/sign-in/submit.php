@@ -76,11 +76,15 @@ $_SESSION['user'] = $user;
 if (parse_url($return, PHP_URL_HOST) !== null) $return = '';
 
 if ($return == '') {
-    include_once '../fns/nth_order.php';
-    $_SESSION['home/messages'] = [
-        'Welcome to Zvini!',
-        'This is your '.nth_order($user->num_logins + 1).' login.',
-    ];
+    $num_logins = $user->num_logins;
+    if ($num_logins) {
+        include_once '../fns/nth_order.php';
+        $order = nth_order($user->num_logins + 1);
+        $message = "Welcome back! This is your $order login.";
+    } else {
+        $message = 'Welcome to Zvini!';
+    }
+    $_SESSION['home/messages'] = [$message];
     $return = '../home/';
 }
 
