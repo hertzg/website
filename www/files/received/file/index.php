@@ -12,9 +12,11 @@ unset(
 
 $queryString = "?id=$id";
 $fnsDir = '../../../fns';
+$name = $receivedFile->name;
 
 include_once "$fnsDir/Page/imageLink.php";
-$href = "download/$queryString";
+$namePart = urlencode(str_replace('/', '_', $name));
+$href = "download/$id/$namePart";
 $downloadLink = Page\imageLink('Download', $href, 'download');
 
 $href = "submit-import.php$queryString";
@@ -66,7 +68,7 @@ $content = Page\tabs(
         htmlspecialchars($receivedFile->sender_username))
     .create_panel(
         'The File',
-        Form\label('File name', htmlspecialchars($receivedFile->name))
+        Form\label('File name', htmlspecialchars($name))
         .'<div class="hr"></div>'
         .Form\label('Size', bytestr($receivedFile->size))
         .'<div class="hr"></div>'

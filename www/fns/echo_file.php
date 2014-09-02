@@ -11,10 +11,7 @@ function echo_file ($file, $path) {
     $contentType = str_collapse_spaces($contentType);
 
     if ($contentType === '') $contentType = 'application/x-octet-stream';
-    else {
-        $filename = addslashes($file->name);
-        header("Content-Disposition: attachment; filename=\"$filename\"");
-    }
+    else header('Content-Disposition: attachment');
 
     header_remove('Expires');
     header_remove('Pragma');

@@ -13,9 +13,11 @@ if ($receivedFolderFile->parent_id) {
 
 $id_received_folders = $receivedFolderFile->id_received_folders;
 $title = "Received Folder #$id_received_folders";
+$name = $receivedFolderFile->name;
 
 include_once "$fnsDir/Page/imageLink.php";
-$href = "../download-file/?id=$id";
+$namePart = urlencode(str_replace('/', '_', $name));
+$href = "../download-file/$id/$namePart";
 $downloadLink = Page\imageLink('Download', $href, 'download');
 
 include_once "$fnsDir/Page/filePreview.php";
@@ -42,7 +44,7 @@ $content = Page\tabs(
         .'<span class="label">Location:</span>'
         ."<a class=\"tag\" href=\"../?id=$id_received_folders\">root</a>"
     .'</div>'
-    .Form\label('File name', htmlspecialchars($receivedFolderFile->name))
+    .Form\label('File name', htmlspecialchars($name))
     .'<div class="hr"></div>'
     .Form\label('Size', bytestr($receivedFolderFile->size))
     .'<div class="hr"></div>'

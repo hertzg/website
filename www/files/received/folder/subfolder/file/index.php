@@ -13,9 +13,11 @@ if (!$receivedFolderFile->parent_id) {
 }
 
 $title = "Received Folder #$receivedFolderFile->id_received_folders";
+$name = $receivedFolderFile->name;
 
 include_once "$fnsDir/Page/imageLink.php";
-$href = "../../download-file/?id=$id";
+$namePart = urlencode(str_replace('/', '_', $name));
+$href = "../../download-file/$id/$namePart";
 $downloadLink = Page\imageLink('Download', $href, 'download');
 
 include_once "$fnsDir/Page/filePreview.php";
@@ -40,7 +42,7 @@ $content = Page\tabs(
     ],
     $title,
     create_location_bar($mysqli, $receivedFolderFile)
-    .Form\label('File name', htmlspecialchars($receivedFolderFile->name))
+    .Form\label('File name', htmlspecialchars($name))
     .'<div class="hr"></div>'
     .Form\label('Size', bytestr($receivedFolderFile->size))
     .'<div class="hr"></div>'
