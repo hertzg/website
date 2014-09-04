@@ -7,8 +7,11 @@
 
     function update () {
 
-        var offset = (new Date).getTimezoneOffset()
-        var date = new Date(Date.now() - difference + offset * 60 * 1000)
+        var date = new Date,
+            january = new Date(date.getFullYear(), 0, 1).getTimezoneOffset(),
+            july = new Date(date.getFullYear(), 6, 1).getTimezoneOffset(),
+            offset = Math.max(january, july),
+            date = new Date(Date.now() - difference + offset * 60 * 1000)
 
         var hour = pad(date.getHours())
         if (hour != hourNode.nodeValue) hourNode.nodeValue = hour
