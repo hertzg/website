@@ -15,6 +15,9 @@ function create_options_panel ($contact) {
     $href = "../send/$escapedItemQuery";
     $sendLink = Page\imageArrowLink('Send', $href, 'send');
 
+    $href = "../vcard/?id=$contact->id_contacts";
+    $vcardLink = Page\imageArrowLink('Export', $href, 'TODO');
+
     $href = "../delete/$escapedItemQuery";
     $deleteLink = Page\imageArrowLink('Delete', $href, 'trash-bin');
 
@@ -22,7 +25,7 @@ function create_options_panel ($contact) {
     $content =
         Page\staticTwoColumns($editLink, $sendLink)
         .'<div class="hr"></div>'
-        .$deleteLink;
+        .Page\staticTwoColumns($vcardLink, $deleteLink);
 
     include_once "$fnsDir/create_panel.php";
     return create_panel('Contact Options', $content);
