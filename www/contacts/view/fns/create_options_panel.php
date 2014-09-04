@@ -2,10 +2,11 @@
 
 function create_options_panel ($contact) {
 
+    $id_contacts = $contact->id_contacts;
     $fnsDir = __DIR__.'/../../../fns';
 
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
-    $escapedItemQuery = ItemList\escapedItemQuery($contact->id_contacts);
+    $escapedItemQuery = ItemList\escapedItemQuery($id_contacts);
 
     include_once "$fnsDir/Page/imageArrowLink.php";
 
@@ -15,7 +16,8 @@ function create_options_panel ($contact) {
     $href = "../send/$escapedItemQuery";
     $sendLink = Page\imageArrowLink('Send', $href, 'send');
 
-    $href = "../vcard/?id=$contact->id_contacts";
+    $safe_name = str_replace('/', '_', $contact->full_name);
+    $href = "../vcard/$id_contacts/$safe_name.vcf";
     $vcardLink = Page\imageArrowLink('Export', $href, 'TODO');
 
     $href = "../delete/$escapedItemQuery";
