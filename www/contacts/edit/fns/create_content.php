@@ -12,6 +12,7 @@ function create_content ($id, array $values) {
     include_once __DIR__.'/../../../fns/Form/datefield.php';
     include_once __DIR__.'/../../../fns/Form/hidden.php';
     include_once __DIR__.'/../../../fns/Form/textfield.php';
+    include_once __DIR__.'/../../../fns/Form/timezoneSelect.php';
     include_once __DIR__.'/../../../fns/ItemList/itemHiddenInputs.php';
     include_once __DIR__.'/../../../fns/Page/sessionErrors.php';
     include_once __DIR__.'/../../../fns/Page/staticTwoColumns.php';
@@ -78,6 +79,9 @@ function create_content ($id, array $values) {
                 'value' => $values['username'],
                 'maxlength' => $maxLengths['username'],
             ])
+            .'<div class="hr"></div>'
+            .Form\timezoneSelect('timezone', 'Timezone',
+                $values['timezone'], true)
             .'<div class="hr"></div>'
             .Form\textfield('tags', 'Tags', [
                 'value' => $values['tags'],

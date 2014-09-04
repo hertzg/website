@@ -11,6 +11,7 @@ function create_content ($base, array $values) {
     include_once "$fnsDir/Form/checkbox.php";
     include_once "$fnsDir/Form/datefield.php";
     include_once "$fnsDir/Form/textfield.php";
+    include_once "$fnsDir/Form/timezoneSelect.php";
     include_once "$fnsDir/ItemList/listHref.php";
     include_once "$fnsDir/ItemList/pageHiddenInputs.php";
     include_once "$fnsDir/Page/sessionErrors.php";
@@ -77,6 +78,9 @@ function create_content ($base, array $values) {
                 'value' => $values['username'],
                 'maxlength' => $maxLengths['username'],
             ])
+            .'<div class="hr"></div>'
+            .Form\timezoneSelect('timezone', 'Timezone',
+                $values['timezone'], true)
             .'<div class="hr"></div>'
             .Form\textfield('tags', 'Tags', [
                 'value' => $values['tags'],

@@ -20,6 +20,7 @@ if (array_key_exists($key, $_SESSION)) {
         'birthday_month' => 0,
         'birthday_year' => 0,
         'username' => '',
+        'timezone' => null,
         'tags' => '',
         'favorite' => false,
     ];

@@ -30,6 +30,7 @@ if (array_key_exists($key, $_SESSION)) {
         'birthday_year' => $birthday_year,
         'birthday_time' => $birthday_time,
         'username' => $contact->username,
+        'timezone' => $contact->timezone,
         'tags' => $contact->tags,
         'favorite' => $contact->favorite,
     ];
