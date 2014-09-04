@@ -42,6 +42,12 @@ if ($username !== '') {
     $items[] = Form\label('Zvini username', htmlspecialchars($username));
 }
 
+$timezone = $contact->timezone;
+if ($timezone !== null) {
+    include_once '../../fns/Timezone/format.php';
+    $items[] = Form\label('Timezone', Timezone\format($timezone));
+}
+
 $insert_time = $contact->insert_time;
 $update_time = $contact->update_time;
 

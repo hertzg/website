@@ -30,6 +30,12 @@ function render_contact ($contact, &$items, &$infoText) {
         $items[] = Form\label('Username', $username);
     }
 
+    $timezone = $contact->timezone;
+    if ($timezone !== null) {
+        include_once __DIR__.'/../../../fns/Timezone/format.php';
+        $items[] = Form\label('Timezone', Timezone\format($timezone));
+    }
+
     $tags = $contact->tags;
     if ($tags !== '') $items[] = Form\label('Tags', $tags);
 
