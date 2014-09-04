@@ -21,3 +21,17 @@
     text-align: center;
     font-weight: bold;
 }
+
+.page-clockWrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100px;
+    margin: auto;
+    color: #ccc;
+    font-family: monospace;
+    font-size: 12px;
+    text-align: center;
+    line-height: 48px;
+}

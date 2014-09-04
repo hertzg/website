@@ -74,7 +74,9 @@
         style.textAlign = 'center'
     })(element.style)
 
-    document.body.appendChild(element)
+    var wrapper = document.querySelector('.page-clockWrapper')
+    while (wrapper.firstChild) wrapper.removeChild(wrapper.firstChild)
+    wrapper.appendChild(element)
 
     var battery = navigator.battery
     battery.addEventListener('chargingchange', updateCharging)
