@@ -1,0 +1,13 @@
+.rightButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 48px;
+    text-align: center;
+}
+.rightButton > .icon {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+}

@@ -5,7 +5,7 @@ namespace SendForm;
 function renderRecipients (array $recipients, array $params) {
 
     $html = '';
-    include_once __DIR__.'/../Page/imageLink.php';
+    include_once __DIR__.'/../Page/removableItem.php';
     foreach ($recipients as $recipient) {
         $username = htmlspecialchars($recipient);
         $href = 'remove-recipient/?'.htmlspecialchars(
@@ -14,7 +14,7 @@ function renderRecipients (array $recipients, array $params) {
             )
         );
         $html .=
-            \Page\imageLink($username, $href, 'contact')
+            \Page\removableItem($username, $href, 'user')
             .'<div class="hr"></div>';
     }
 

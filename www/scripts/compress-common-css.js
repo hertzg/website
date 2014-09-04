@@ -34,6 +34,8 @@ var files = [
     'php-code.css',
     'preview.css',
     'navigation.css',
+    'rightButton.css',
+    'removableItem.css',
 ]
 
 var source = ''
