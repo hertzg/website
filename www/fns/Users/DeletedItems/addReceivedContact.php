@@ -14,6 +14,7 @@ function addReceivedContact ($mysqli, $receivedContact) {
         'phone2' => $receivedContact->phone2,
         'birthday_time' => $receivedContact->birthday_time,
         'username' => $receivedContact->username,
+        'timezone' => $receivedContact->timezone,
         'tags' => $receivedContact->tags,
         'favorite' => $receivedContact->favorite,
         'insert_time' => $receivedContact->insert_time,
