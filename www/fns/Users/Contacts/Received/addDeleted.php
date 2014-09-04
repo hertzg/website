@@ -10,8 +10,8 @@ function addDeleted ($mysqli, $receiver_id_users, $data) {
     \ReceivedContacts\addDeleted($mysqli, $data->id, $data->sender_id_users,
         $data->sender_username, $receiver_id_users, $data->full_name,
         $data->alias, $data->address, $data->email, $data->phone1,
-        $data->phone2, $data->birthday_time, $data->username, $data->tags,
-        $data->favorite, $archived, $data->insert_time);
+        $data->phone2, $data->birthday_time, $data->username, $data->timezone,
+        $data->tags, $data->favorite, $archived, $data->insert_time);
 
     include_once __DIR__.'/addNumber.php';
     addNumber($mysqli, $receiver_id_users, 1);
