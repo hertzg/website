@@ -3,14 +3,15 @@
 namespace Users\Contacts;
 
 function edit ($mysqli, $user, $id, $full_name, $alias, $address, $email,
-    $phone1, $phone2, $birthday_time, $username, $tags, $tag_names, $favorite,
-    $old_birthday_time) {
+    $phone1, $phone2, $birthday_time, $username, $timezone, $tags, $tag_names,
+    $favorite, $old_birthday_time) {
 
     $id_users = $user->id_users;
 
     include_once __DIR__.'/../../Contacts/edit.php';
-    \Contacts\edit($mysqli, $id_users, $id, $full_name, $alias, $address,
-        $email, $phone1, $phone2, $birthday_time, $username, $tags, $favorite);
+    \Contacts\edit($mysqli, $id_users, $id, $full_name, $alias,
+        $address, $email, $phone1, $phone2, $birthday_time,
+        $username, $timezone, $tags, $favorite);
 
     include_once __DIR__.'/../../ContactTags/deleteOnContact.php';
     \ContactTags\deleteOnContact($mysqli, $id);
