@@ -43,7 +43,9 @@
             classList.add('cleared')
         }
     })(wrapper.classList)
-    wrapper.appendChild(element)
+    var firstChild = wrapper.firstChild
+    if (firstChild) wrapper.insertBefore(element, firstChild)
+    else wrapper.appendChild(element)
 
     var difference = Date.now() - time
 
