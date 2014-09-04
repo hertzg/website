@@ -20,6 +20,7 @@ if (array_key_exists($key, $_SESSION)) {
 }
 
 unset(
+    $_SESSION['home/messages'],
     $_SESSION['tasks/errors'],
     $_SESSION['tasks/messages'],
     $_SESSION['tasks/new/send/errors'],

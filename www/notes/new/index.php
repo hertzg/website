@@ -17,6 +17,7 @@ if (array_key_exists($key, $_SESSION)) {
 }
 
 unset(
+    $_SESSION['home/messages'],
     $_SESSION['notes/errors'],
     $_SESSION['notes/messages'],
     $_SESSION['notes/new/send/errors'],

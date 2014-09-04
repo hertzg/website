@@ -21,7 +21,8 @@ unset(
     $_SESSION['bookmarks/messages'],
     $_SESSION['bookmarks/new/send/errors'],
     $_SESSION['bookmarks/new/send/messages'],
-    $_SESSION['bookmarks/new/send/values']
+    $_SESSION['bookmarks/new/send/values'],
+    $_SESSION['home/messages']
 );
 
 include_once '../../fns/Bookmarks/maxLengths.php';

@@ -31,7 +31,8 @@ unset(
     $_SESSION['contacts/messages'],
     $_SESSION['contacts/new/send/errors'],
     $_SESSION['contacts/new/send/messages'],
-    $_SESSION['contacts/new/send/values']
+    $_SESSION['contacts/new/send/values'],
+    $_SESSION['home/messages']
 );
 
 include_once 'fns/create_content.php';

@@ -65,6 +65,8 @@ if ($deletedItems) {
 
 }
 
+unset($_SESSION['home/messages']);
+
 include_once '../fns/Page/infoText.php';
 include_once '../fns/Page/sessionMessages.php';
 include_once '../fns/Page/tabs.php';
