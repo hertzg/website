@@ -11,6 +11,7 @@ function to_client_json ($contact) {
         'phone2' => $contact->phone2,
         'birthday_time' => (int)$contact->birthday_time,
         'username' => $contact->username,
+        'timezone' => $contact->timezone,
         'tags' => $contact->tags,
         'favorite' => (bool)$contact->favorite,
         'insert_time' => (int)$contact->insert_time,
