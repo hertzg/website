@@ -38,8 +38,8 @@ function recipientsPage ($mysqli, $user, $id, $tabTitle,
     } else {
         if ($recipients) {
 
-            include_once __DIR__.'/renderRecipients.php';
-            $content = renderRecipients($recipients, $itemParams);
+            include_once __DIR__.'/renderRecipientsPanel.php';
+            $content = renderRecipientsPanel($recipients, $itemParams);
 
             include_once __DIR__.'/../RecipientList/enterPanel.php';
             if ($contacts) {

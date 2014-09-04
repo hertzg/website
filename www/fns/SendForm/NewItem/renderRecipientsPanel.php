@@ -2,7 +2,7 @@
 
 namespace SendForm\NewItem;
 
-function renderRecipients (array $recipients, array $params) {
+function renderRecipientsPanel (array $recipients, array $params) {
 
     $html = '';
     include_once __DIR__.'/../../Page/imageLink.php';

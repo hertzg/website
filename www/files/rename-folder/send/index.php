@@ -34,8 +34,8 @@ if ($values['usernameError']) {
 } else {
     if ($recipients) {
 
-        include_once '../../../fns/SendForm/renderRecipients.php';
-        $content = SendForm\renderRecipients($recipients, $params);
+        include_once '../../../fns/SendForm/renderRecipientsPanel.php';
+        $content = SendForm\renderRecipientsPanel($recipients, $params);
 
         include_once '../../../fns/RecipientList/enterPanel.php';
         if ($contacts) {
