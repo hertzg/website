@@ -44,8 +44,8 @@ if ($username !== '') {
 
 $timezone = $contact->timezone;
 if ($timezone !== null) {
-    include_once '../../fns/Timezone/format.php';
-    $items[] = Form\label('Timezone', Timezone\format($timezone));
+    include_once '../../fns/Form/timezoneLabel.php';
+    $items[] = Form\timezoneLabel($timezone);
 }
 
 $insert_time = $contact->insert_time;
