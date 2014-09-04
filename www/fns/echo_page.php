@@ -39,9 +39,9 @@ function echo_page ($user, $title, $content, $base, array $options = []) {
             ."var base = ".json_encode($base)
         .'</script>'
         .'<script type="text/javascript" async="async"'
-        ." src=\"{$base}js/battery.js?4\"></script>"
+        ." src=\"{$base}js/battery.js?5\"></script>"
         .'<script type="text/javascript" async="async"'
-        ." src=\"{$base}js/clock.js?4\"></script>";
+        ." src=\"{$base}js/clock.js?5\"></script>";
 
     include_once __DIR__.'/../fns/echo_html.php';
     echo_html($title, $head, $body, $theme, $base);

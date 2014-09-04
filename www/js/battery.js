@@ -75,7 +75,10 @@
     })(element.style)
 
     var wrapper = document.querySelector('.page-clockWrapper')
-    while (wrapper.firstChild) wrapper.removeChild(wrapper.firstChild)
+    if (!wrapper.classList.contains('cleared')) {
+        while (wrapper.firstChild) wrapper.removeChild(wrapper.firstChild)
+        wrapper.classList.add('cleared')
+    }
     wrapper.appendChild(element)
 
     var battery = navigator.battery

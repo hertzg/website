@@ -39,7 +39,12 @@
     style.textAlign = 'right'
     style.paddingRight = '4px'
 
-    document.body.appendChild(element)
+    var wrapper = document.querySelector('.page-clockWrapper')
+    if (!wrapper.classList.contains('cleared')) {
+        while (wrapper.firstChild) wrapper.removeChild(wrapper.firstChild)
+        wrapper.classList.add('cleared')
+    }
+    wrapper.appendChild(element)
 
     var difference = Date.now() - time
 
