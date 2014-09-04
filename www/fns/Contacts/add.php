@@ -18,7 +18,7 @@ function add ($mysqli, $id_users, $full_name, $alias, $address, $email,
         $birthday_month = date('n', $birthday_time);
     }
     $username = $mysqli->real_escape_string($username);
-    if ($timezone == null) $timezone = 'null';
+    if ($timezone === null) $timezone = 'null';
     $tags = $mysqli->real_escape_string($tags);
     $favorite = $favorite ? '1' : '0';
     $insert_time = $update_time = time();
