@@ -2,8 +2,9 @@
 
 namespace Users\Contacts;
 
-function add ($mysqli, $user, $full_name, $alias, $address, $email,
-    $phone1, $phone2, $birthday_time, $username, $tags, $tag_names, $favorite) {
+function add ($mysqli, $user, $full_name, $alias, $address,
+    $email, $phone1, $phone2, $birthday_time, $username,
+    $timezone, $tags, $tag_names, $favorite) {
 
     $id_users = $user->id_users;
 

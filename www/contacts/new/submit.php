@@ -53,7 +53,7 @@ unset($_SESSION['contacts/new/values']);
 include_once '../../fns/Users/Contacts/add.php';
 $id = Users\Contacts\add($mysqli, $user, $full_name, $alias,
     $address, $email, $phone1, $phone2, $birthday_time, $username,
-    $tags, $tag_names, $favorite);
+    $timezone, $tags, $tag_names, $favorite);
 
 include_once '../../fns/Users/Birthdays/invalidateIfNeeded.php';
 Users\Birthdays\invalidateIfNeeded($mysqli, $user, $birthday_time);

@@ -9,8 +9,9 @@ list($full_name, $alias, $address, $email, $phone1, $phone2,
     $favorite) = request_contact_params();
 
 include_once '../../fns/Users/Contacts/add.php';
-$id = Users\Contacts\add($mysqli, $user, $full_name, $alias, $address, $email,
-    $phone1, $phone2, $birthday_time, $username, $tags, $tag_names, $favorite);
+$id = Users\Contacts\add($mysqli, $user, $full_name, $alias,
+    $address, $email, $phone1, $phone2, $birthday_time, $username,
+    $timezone, $tags, $tag_names, $favorite);
 
 header('Content-Type: application/json');
 echo $id;
