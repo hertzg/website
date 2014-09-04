@@ -29,6 +29,7 @@ $_SESSION['contacts/new/values'] = [
     'birthday_year' => $birthday_year,
     'birthday_time' => $birthday_time,
     'username' => $username,
+    'timezone' => $timezone,
     'tags' => $tags,
     'favorite' => $favorite,
 ];

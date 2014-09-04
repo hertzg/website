@@ -26,8 +26,8 @@ $sendFunction = function ($receiver_id_userss) use ($mysqli,
             $stageValues['alias'], $stageValues['address'],
             $stageValues['email'], $stageValues['phone1'],
             $stageValues['phone2'], $stageValues['birthday_time'],
-            $stageValues['username'], $stageValues['tags'],
-            $stageValues['favorite']);
+            $stageValues['username'], $stageValues['timezone'],
+            $stageValues['tags'], $stageValues['favorite']);
     }
 
 };

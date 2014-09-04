@@ -7,6 +7,6 @@ function send ($mysqli, $user, $receiver_id_users, $contact) {
     \Users\Contacts\Received\add($mysqli, $user->id_users, $user->username,
         $receiver_id_users, $contact->full_name, $contact->alias,
         $contact->address, $contact->email, $contact->phone1, $contact->phone2,
-        $contact->birthday_time, $contact->username, $contact->tags,
-        $contact->favorite);
+        $contact->birthday_time, $contact->username, $contact->timezone,
+        $contact->tags, $contact->favorite);
 }
