@@ -16,6 +16,11 @@
         chargingElement.style.display = battery.charging ? 'inline-block' : 'none'
     }
 
+    var battery = navigator.battery
+    if (!battery) return
+    battery.addEventListener('chargingchange', updateCharging)
+    battery.addEventListener('levelchange', updateLevel)
+
     var valueElement = document.createElement('div')
     ;(function (style) {
         style.display = 'inline-block'
@@ -81,9 +86,6 @@
     }
     wrapper.appendChild(element)
 
-    var battery = navigator.battery
-    battery.addEventListener('chargingchange', updateCharging)
-    battery.addEventListener('levelchange', updateLevel)
     updateCharging()
     updateLevel()
 
