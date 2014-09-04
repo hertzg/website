@@ -1,4 +1,4 @@
-(function (time) {
+(function (utcTime) {
 
     function pad (n) {
         if (n < 10) return '0' + n
@@ -7,8 +7,7 @@
 
     function update () {
 
-        var offset = (new Date).getTimezoneOffset()
-        var date = new Date(Date.now() - difference + offset * 60 * 1000)
+        var date = new Date(Date.now() - difference)
 
         var hour = pad(date.getHours())
         if (hour != hourNode.nodeValue) hourNode.nodeValue = hour
@@ -42,9 +41,9 @@
 
     document.body.appendChild(element)
 
-    var difference = Date.now() - time
+    var difference = Date.now() - utcTime
 
     setInterval(update, 1000)
     update()
 
-})(time)
+})(utcTime)

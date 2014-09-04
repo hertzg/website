@@ -19,8 +19,8 @@ function echo_page ($user, $title, $content, $base, array $options = []) {
             .'</div>';
     }
 
-    $time = floor(microtime(true) * 1000);
-    if ($user) $time += $user->timezone * 60 * 1000;
+    $localTime = $utcTime = floor(microtime(true) * 1000);
+    if ($user) $localTime += $timezone * 60 * 1000;
 
     $topLinkHref = $base === '' ? './' : $base;
     $body =
@@ -29,13 +29,13 @@ function echo_page ($user, $title, $content, $base, array $options = []) {
                 ."<img src=\"{$base}themes/$theme/images/zvini.svg?2\""
                 .' alt="Zvini" width="68" height="32" class="logoImg" />'
             .'</a>'
-            .'<div class="page-clockWrapper">'.date('H:i', $time / 1000).'</div>'
+            .'<div class="page-clockWrapper">'.date('H:i', $localTime / 1000).'</div>'
             .$signOutLink
         .'</div>'
         .$content
         .'<div id="bbar"></div>'
         .'<script type="text/javascript">'
-            ."var time = $time\n"
+            ."var utcTime = $utcTime\n"
             ."var base = ".json_encode($base)
         .'</script>'
         .'<script type="text/javascript" async="async"'
