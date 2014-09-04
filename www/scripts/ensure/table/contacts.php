@@ -66,6 +66,10 @@ ensure_table('contacts', [
         'characterSet' => 'utf8',
         'collation' => 'utf8_unicode_ci',
     ],
+    'timezone' => [
+        'type' => 'int(11)',
+        'nullable' => true,
+    ],
     'update_time' => [
         'type' => 'bigint(20) unsigned',
     ],

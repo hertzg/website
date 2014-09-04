@@ -66,6 +66,10 @@ ensure_table('received_contacts', [
         'characterSet' => 'utf8',
         'collation' => 'utf8_unicode_ci',
     ],
+    'timezone' => [
+        'type' => 'int(11)',
+        'nullable' => true,
+    ],
     'username' => [
         'type' => 'varchar(32)',
         'characterSet' => 'ascii',
