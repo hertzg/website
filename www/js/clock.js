@@ -1,5 +1,9 @@
 (function (time) {
 
+    function TextNode (text) {
+        return document.createTextNode(text)
+    }
+
     function pad (n) {
         if (n < 10) return '0' + n
         return n
@@ -17,13 +21,13 @@
 
     }
 
-    var hourNode = document.createTextNode('00')
+    var hourNode = TextNode('')
 
-    var minuteNode = document.createTextNode('00')
+    var minuteNode = TextNode('')
 
     var element = document.createElement('div')
     element.appendChild(hourNode)
-    element.appendChild(document.createTextNode(':'))
+    element.appendChild(TextNode(':'))
     element.appendChild(minuteNode)
 
     var style = element.style
@@ -48,7 +52,7 @@
 
     var difference = Date.now() - time
 
-    setInterval(update, 1000)
+    setInterval(update, 5000)
     update()
 
 })(time)
