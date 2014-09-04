@@ -26,6 +26,6 @@ function request_contact_params () {
     list($tags, $tag_names) = request_tags();
 
     return [$full_name, $alias, $address, $email, $phone1, $phone2,
-        $birthday_time, $username, $tags, $tag_names, $favorite];
+        $birthday_time, $username, $timezone, $tags, $tag_names, $favorite];
 
 }
