@@ -31,6 +31,7 @@ if (array_key_exists($key, $_SESSION)) {
         'birthday_month' => $birthday_month,
         'birthday_year' => $birthday_year,
         'username' => $receivedContact->username,
+        'timezone' => $receivedContact->timezone,
         'tags' => $receivedContact->tags,
         'favorite' => $receivedContact->favorite,
     ];

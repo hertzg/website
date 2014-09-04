@@ -29,6 +29,7 @@ if ($errors) {
         'birthday_month' => $birthday_month,
         'birthday_year' => $birthday_year,
         'username' => $username,
+        'timezone' => $timezone,
         'tags' => $tags,
         'favorite' => $favorite,
     ];
@@ -48,6 +49,7 @@ $receivedContact->phone1 = $phone1;
 $receivedContact->phone2 = $phone2;
 $receivedContact->birthday_time = $birthday_time;
 $receivedContact->username = $username;
+$receivedContact->timezone = $timezone;
 $receivedContact->tags = $tags;
 $receivedContact->favorite = $favorite;
 

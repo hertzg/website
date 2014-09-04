@@ -13,6 +13,7 @@ function create_content ($base, $id, array $values) {
     include_once "$fnsDir/Form/datefield.php";
     include_once "$fnsDir/Form/hidden.php";
     include_once "$fnsDir/Form/textfield.php";
+    include_once "$fnsDir/Form/timezoneSelect.php";
     include_once "$fnsDir/Page/sessionErrors.php";
     return Page\tabs(
         [
@@ -75,6 +76,9 @@ function create_content ($base, $id, array $values) {
                 'value' => $values['username'],
                 'maxlength' => $maxLengths['username'],
             ])
+            .'<div class="hr"></div>'
+            .Form\timezoneSelect('timezone', 'Timezone',
+                $values['timezone'], true)
             .'<div class="hr"></div>'
             .Form\textfield('tags', 'Tags', [
                 'value' => $values['tags'],
