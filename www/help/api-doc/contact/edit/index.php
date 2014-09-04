@@ -37,6 +37,10 @@ contact_method_page('edit', [
         'description' => 'The new Zvini username of the contact.',
     ],
     [
+        'name' => 'timezone',
+        'description' => 'The new timezone offset of the contact in minutes.',
+    ],
+    [
         'name' => 'tags',
         'description' => 'Space-separated list of tags.',
     ],
