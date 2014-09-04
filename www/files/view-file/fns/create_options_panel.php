@@ -14,7 +14,7 @@ function create_options_panel ($file) {
     if ($id_folders) $href .= "&amp;parent_id_folders=$id_folders";
     $slideshowLink = Page\imageArrowLink('Slideshow', $href, 'slideshow');
 
-    $namePart = urlencode(str_replace('/', '_', $file->name));
+    $namePart = rawurlencode(str_replace('/', '_', $file->name));
     $href = "../download-file/$id/$namePart";
     $downloadLink = Page\imageLink('Download', $href, 'download');
 

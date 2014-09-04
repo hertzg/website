@@ -15,7 +15,7 @@ $fnsDir = '../../../fns';
 $name = $receivedFile->name;
 
 include_once "$fnsDir/Page/imageLink.php";
-$namePart = urlencode(str_replace('/', '_', $name));
+$namePart = rawurlencode(str_replace('/', '_', $name));
 $href = "download/$id/$namePart";
 $downloadLink = Page\imageLink('Download', $href, 'download');
 
