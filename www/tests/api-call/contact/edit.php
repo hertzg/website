@@ -34,6 +34,7 @@ $phone1 = 'edited phone1';
 $phone2 = 'edited phone2';
 $birthday_time = 20;
 $username = 'edited username';
+$timezone = 60;
 $tags = 'edited tags';
 $favorite = true;
 
@@ -54,6 +55,7 @@ $response = $engine->request('contact/edit', [
     'phone2' => $phone2,
     'birthday_time' => $birthday_time,
     'username' => $username,
+    'timezone' => $timezone,
     'tags' => $tags,
     'favorite' => $favorite,
 ]);
@@ -72,6 +74,7 @@ $engine->expectValue('.phone2', $phone2, $response->phone2);
 $engine->expectValue('.birthday_time',
     $birthday_time, $response->birthday_time);
 $engine->expectValue('.username', $username, $response->username);
+$engine->expectValue('.timezone', $timezone, $response->timezone);
 $engine->expectValue('.tags', $tags, $response->tags);
 $engine->expectValue('.favorite', $favorite, $response->favorite);
 

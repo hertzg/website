@@ -3,7 +3,7 @@
 function expect_contact_object ($engine, $variableName, $contact) {
 
     $properties = ['id', 'full_name', 'alias', 'address', 'email',
-        'phone1', 'phone2', 'birthday_time', 'username', 'tags',
+        'phone1', 'phone2', 'birthday_time', 'username', 'timezone', 'tags',
         'favorite', 'insert_time', 'update_time'];
     $engine->expectObject($variableName, $properties, $contact);
 
@@ -18,6 +18,13 @@ function expect_contact_object ($engine, $variableName, $contact) {
     $engine->expectType("$variableName.birthday_time",
         'integer', $contact->birthday_time);
     $engine->expectType("$variableName.username", 'string', $contact->username);
+
+    $timezone = $contact->timezone;
+    if ($timezone !== null) {
+        $engine->expectType("$variableName.timezone",
+            'number', $contact->timezone);
+    }
+
     $engine->expectType("$variableName.tags", 'string', $contact->tags);
     $engine->expectType("$variableName.favorite",
         'boolean', $contact->favorite);

@@ -16,6 +16,7 @@ $email = 'sample email';
 $phone1 = 'sample phone1';
 $phone2 = 'sample phone2';
 $username = 'sample username';
+$timezone = -60;
 $tags = 'tag1 tag2';
 $favorite = true;
 
@@ -34,6 +35,7 @@ $response = $engine->request('contact/add', [
     'phone2' => $phone2,
     'birthday_time' => $birthday_time,
     'username' => $username,
+    'timezone' => $timezone,
     'tags' => $tags,
     'favorite' => $favorite,
 ]);
@@ -55,6 +57,7 @@ $engine->expectValue('.phone2', $phone2, $response->phone2);
 $engine->expectValue('.birthday_time',
     $birthday_time, $response->birthday_time);
 $engine->expectValue('.username', $username, $response->username);
+$engine->expectValue('.timezone', $timezone, $response->timezone);
 $engine->expectValue('.tags', $tags, $response->tags);
 $engine->expectValue('.favorite', $favorite, $response->favorite);
 $engine->expectEquals('.insert_time', '.update_time',
@@ -83,6 +86,7 @@ $response = $engine->request('contact/add', [
     'phone2' => $phone2,
     'birthday_time' => $birthday_time,
     'username' => $username,
+    'timezone' => $timezone,
     'tags' => $tags,
     'favorite' => $favorite,
 ]);

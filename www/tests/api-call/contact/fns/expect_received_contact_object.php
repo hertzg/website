@@ -4,8 +4,8 @@ function expect_received_contact_object ($engine,
     $variableName, $receivedContact) {
 
     $properties = ['id', 'sender_username', 'full_name', 'alias', 'address',
-        'email', 'phone1', 'phone2', 'birthday_time', 'username', 'tags',
-        'favorite', 'tags', 'insert_time'];
+        'email', 'phone1', 'phone2', 'birthday_time', 'username', 'timezone',
+        'tags', 'favorite', 'tags', 'insert_time'];
     $engine->expectObject($variableName, $properties, $receivedContact);
 
     $engine->expectNatural("$variableName.id", $receivedContact->id);
@@ -27,6 +27,13 @@ function expect_received_contact_object ($engine,
         'integer', $receivedContact->birthday_time);
     $engine->expectType("$variableName.username",
         'string', $receivedContact->username);
+
+    $timezone = $receivedContact->timezone;
+    if ($timezone !== null) {
+        $engine->expectType("$variableName.timezone",
+            'number', $contact->timezone);
+    }
+
     $engine->expectType("$variableName.tags",
         'string', $receivedContact->tags);
     $engine->expectType("$variableName.favorite",

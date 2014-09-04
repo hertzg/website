@@ -18,6 +18,8 @@ function expect_imported ($engine, $receivedContact, $response) {
         $receivedContact->birthday_time, $response->birthday_time);
     $engine->expectValue('.username',
         $receivedContact->username, $response->username);
+    $engine->expectValue('.timezone',
+        $receivedContact->timezone, $response->timezone);
     $engine->expectValue('.tags', $receivedContact->tags, $response->tags);
     $engine->expectValue('.favorite',
         $receivedContact->favorite, $response->favorite);
