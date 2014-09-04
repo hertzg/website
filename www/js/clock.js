@@ -7,13 +7,12 @@
 
     function update () {
 
-        var offset = (new Date).getTimezoneOffset()
-        var date = new Date(Date.now() - difference + offset * 60 * 1000)
+        var date = new Date(Date.now() - difference)
 
-        var hour = pad(date.getHours())
+        var hour = pad(date.getUTCHours())
         if (hour != hourNode.nodeValue) hourNode.nodeValue = hour
 
-        var minute = pad(date.getMinutes())
+        var minute = pad(date.getUTCMinutes())
         if (minute != minuteNode.nodeValue) minuteNode.nodeValue = minute
 
     }
