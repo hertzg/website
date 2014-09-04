@@ -42,10 +42,12 @@ if ($username !== '') {
     $items[] = Form\label('Zvini username', htmlspecialchars($username));
 }
 
+$base = '../../';
+
 $timezone = $contact->timezone;
 if ($timezone !== null) {
     include_once '../../fns/Form/timezoneLabel.php';
-    $items[] = Form\timezoneLabel($timezone);
+    $items[] = Form\timezoneLabel($base, $timezone);
 }
 
 $insert_time = $contact->insert_time;
@@ -92,4 +94,4 @@ $content =
     .create_options_panel($contact);
 
 include_once '../../fns/echo_page.php';
-echo_page($user, "Contact #$id", $content, '../../');
+echo_page($user, "Contact #$id", $content, $base);

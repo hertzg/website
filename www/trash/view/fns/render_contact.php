@@ -43,7 +43,7 @@ function render_contact ($contact, &$items, &$infoText) {
     $timezone = $contact->timezone;
     if ($timezone !== null) {
         include_once __DIR__.'/../../../fns/Form/timezoneLabel.php';
-        $items[] = Form\timezoneLabel($timezone);
+        $items[] = Form\timezoneLabel('../../', $timezone);
     }
 
     $tags = $contact->tags;

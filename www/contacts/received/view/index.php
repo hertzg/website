@@ -45,10 +45,12 @@ if ($username !== '') {
     $items[] = Form\label('Zvini username', htmlspecialchars($username));
 }
 
+$base = '../../../';
+
 $timezone = $receivedContact->timezone;
 if ($timezone !== null) {
     include_once '../../../fns/Form/timezoneLabel.php';
-    $items[] = Form\timezoneLabel($timezone);
+    $items[] = Form\timezoneLabel($base, $timezone);
 }
 
 $tags = $receivedContact->tags;
@@ -91,4 +93,4 @@ $content = Page\tabs(
 );
 
 include_once '../../../fns/echo_page.php';
-echo_page($user, "Received Contact #$id", $content, '../../../');
+echo_page($user, "Received Contact #$id", $content, $base);
