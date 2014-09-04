@@ -50,7 +50,7 @@ $content =
         "File #$id",
         Page\sessionMessages('files/view-file/messages')
         .create_location_bar($mysqli, $file)
-        .Form\label('File name', $file->name)
+        .Form\label('File name', htmlspecialchars($file->name))
         .'<div class="hr"></div>'
         .Form\label('Size', bytestr($file->size))
         .'<div class="hr"></div>'

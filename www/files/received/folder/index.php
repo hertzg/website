@@ -61,8 +61,7 @@ $content = Page\tabs(
     .Form\label('Received from',
         htmlspecialchars($receivedFolder->sender_username))
     .'<div class="hr"></div>'
-    .Form\label('Folder name',
-        htmlspecialchars($receivedFolder->name))
+    .Form\label('Folder name', htmlspecialchars($receivedFolder->name))
     .create_panel('The Folder', join('<div class="hr"></div>', $items))
     .create_options_panel($receivedFolder)
 );
