@@ -68,22 +68,22 @@
     element.appendChild(plusElement)
     element.appendChild(borderElement)
     ;(function (style) {
-        style.position = 'absolute'
-        style.top = '15px'
-        style.left = '50%'
-        style.color = '#fff'
-        style.fontFamily = 'monospace'
-        style.fontSize = '12px'
+        style.display = 'inline-block'
+        style.verticalAlign = 'top'
+        style.width = '50px'
+        style.position = 'relative'
+        style.marginTop = '15px'
         style.width = '30px'
         style.height = '17px'
-        style.textAlign = 'center'
     })(element.style)
 
     var wrapper = document.querySelector('.page-clockWrapper')
-    if (!wrapper.classList.contains('cleared')) {
-        while (wrapper.firstChild) wrapper.removeChild(wrapper.firstChild)
-        wrapper.classList.add('cleared')
-    }
+    ;(function (classList) {
+        if (!classList.contains('cleared')) {
+            while (wrapper.firstChild) wrapper.removeChild(wrapper.firstChild)
+            classList.add('cleared')
+        }
+    })(wrapper.classList)
     wrapper.appendChild(element)
 
     updateCharging()

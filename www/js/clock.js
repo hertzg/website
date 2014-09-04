@@ -31,23 +31,18 @@
     element.appendChild(minuteNode)
 
     var style = element.style
-    style.position = 'absolute'
-    style.top = '0'
-    style.right = '50%'
-    style.color = '#ccc'
-    style.fontFamily = 'monospace'
-    style.fontWeight = 'bold'
-    style.fontSize = '12px'
-    style.lineHeight = '48px'
+    style.display = 'inline-block'
+    style.verticalAlign = 'top'
     style.width = '50px'
-    style.textAlign = 'right'
-    style.paddingRight = '4px'
+    style.fontWeight = 'bold'
 
     var wrapper = document.querySelector('.page-clockWrapper')
-    if (!wrapper.classList.contains('cleared')) {
-        while (wrapper.firstChild) wrapper.removeChild(wrapper.firstChild)
-        wrapper.classList.add('cleared')
-    }
+    ;(function (classList) {
+        if (!classList.contains('cleared')) {
+            while (wrapper.firstChild) wrapper.removeChild(wrapper.firstChild)
+            classList.add('cleared')
+        }
+    })(wrapper.classList)
     wrapper.appendChild(element)
 
     var difference = Date.now() - time
