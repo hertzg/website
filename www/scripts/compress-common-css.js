@@ -26,7 +26,6 @@ var files = [
     'image_link.css',
     'panel.css',
     'title_and_description.css',
-    'clearSearchKeywordButton.css',
     'search_form.css',
     'searchButton.css',
     'tag.css',
