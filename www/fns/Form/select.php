@@ -5,7 +5,7 @@ namespace Form;
 function select ($name, $text, array $options, $value) {
     $selectHtml = "<select class=\"form-select\" name=\"$name\" id=\"$name\">";
     foreach ($options as $itemValue => $itemText) {
-        if ($itemValue == $value) {
+        if (strcmp($itemValue, $value) === 0) {
             $selectHtml .=
                 "<option selected=\"selected\" value=\"$itemValue\">"
                     .$itemText
