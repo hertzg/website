@@ -32,6 +32,22 @@
     color: #ccc;
     font-family: monospace;
     font-size: 12px;
+    font-weight: bold;
     text-align: center;
     line-height: 48px;
+}
+
+#batteryWrapper,
+#dynamicClockWrapper {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+}
+#batteryWrapper {
+    width: 30px;
+    height: 17px;
+    margin-top: 15px;
+}
+#dynamicClockWrapper {
+    width: 50px;
 }

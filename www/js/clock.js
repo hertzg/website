@@ -25,27 +25,13 @@
 
     var minuteNode = TextNode('')
 
-    var element = document.createElement('div')
-    element.appendChild(hourNode)
-    element.appendChild(TextNode(':'))
-    element.appendChild(minuteNode)
+    var dynamicClockWrapper = document.getElementById('dynamicClockWrapper')
+    dynamicClockWrapper.appendChild(hourNode)
+    dynamicClockWrapper.appendChild(TextNode(':'))
+    dynamicClockWrapper.appendChild(minuteNode)
 
-    var style = element.style
-    style.display = 'inline-block'
-    style.verticalAlign = 'top'
-    style.width = '50px'
-    style.fontWeight = 'bold'
-
-    var wrapper = document.querySelector('.page-clockWrapper')
-    ;(function (classList) {
-        if (!classList.contains('cleared')) {
-            while (wrapper.firstChild) wrapper.removeChild(wrapper.firstChild)
-            classList.add('cleared')
-        }
-    })(wrapper.classList)
-    var firstChild = wrapper.firstChild
-    if (firstChild) wrapper.insertBefore(element, firstChild)
-    else wrapper.appendChild(element)
+    var staticClockWrapper = document.getElementById('staticClockWrapper')
+    staticClockWrapper.parentNode.removeChild(staticClockWrapper)
 
     var difference = Date.now() - time
 
