@@ -16,15 +16,8 @@ unset(
 
 $base = '../../';
 
-$items = [];
-
-include_once '../../fns/render_external_links.php';
-include_once '../../fns/Page/text.php';
-$items[] = Page\text(
-    nl2br(
-        render_external_links(htmlspecialchars($note->text), $base)
-    )
-);
+include_once 'fns/create_text.php';
+$items = [create_text($note, $base)];
 
 include_once '../../fns/NoteTags/indexOnNote.php';
 $tags = NoteTags\indexOnNote($mysqli, $id);
