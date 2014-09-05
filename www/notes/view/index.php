@@ -16,8 +16,8 @@ unset(
 
 $base = '../../';
 
-include_once 'fns/create_text.php';
-$items = [create_text($note, $base)];
+include_once '../../fns/create_text_item.php';
+$items = [create_text_item($note->text, $base)];
 
 include_once '../../fns/NoteTags/indexOnNote.php';
 $tags = NoteTags\indexOnNote($mysqli, $id);
