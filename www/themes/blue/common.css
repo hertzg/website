@@ -57,3 +57,7 @@
 .topLink:active {
     background: rgba(51, 158, 224);
 }
+
+mark {
+    background-color: #ffc67f;
+}

@@ -30,7 +30,7 @@ function echo_html ($title, $head, $body, $theme, $base) {
                 .'<link rel="stylesheet" type="text/css"'
                 ." href=\"{$base}icons.compressed.css?$iconsCssRevision\" />"
                 .'<link rel="stylesheet" type="text/css"'
-                ." href=\"{$base}themes/$theme/common.css?13\" />"
+                ." href=\"{$base}themes/$theme/common.css?14\" />"
                 .$head
             .'</head>'
             ."<body>$body</body>"
