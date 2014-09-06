@@ -16,15 +16,8 @@ unset(
 
 $base = '../../';
 
-$items = [];
-
-include_once '../../fns/Page/text.php';
-include_once '../../fns/render_external_links.php';
-$items[] = Page\text(
-    nl2br(
-        render_external_links(htmlspecialchars($task->text), $base)
-    )
-);
+include_once '../../fns/create_text_item.php';
+$items = [create_text_item($task->text, $base)];
 
 $deadline_time = $task->deadline_time;
 if ($deadline_time !== null) {

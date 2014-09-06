@@ -64,27 +64,9 @@
         style.borderRadius = '1px'
     })(borderElement.style)
 
-    var element = document.createElement('div')
-    element.appendChild(plusElement)
-    element.appendChild(borderElement)
-    ;(function (style) {
-        style.display = 'inline-block'
-        style.verticalAlign = 'top'
-        style.width = '50px'
-        style.position = 'relative'
-        style.marginTop = '15px'
-        style.width = '30px'
-        style.height = '17px'
-    })(element.style)
-
-    var wrapper = document.querySelector('.page-clockWrapper')
-    ;(function (classList) {
-        if (!classList.contains('cleared')) {
-            while (wrapper.firstChild) wrapper.removeChild(wrapper.firstChild)
-            classList.add('cleared')
-        }
-    })(wrapper.classList)
-    wrapper.appendChild(element)
+    var batteryWrapper = document.getElementById('batteryWrapper')
+    batteryWrapper.appendChild(plusElement)
+    batteryWrapper.appendChild(borderElement)
 
     updateCharging()
     updateLevel()

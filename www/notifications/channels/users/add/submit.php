@@ -60,10 +60,10 @@ unset(
 );
 
 include_once "$fnsDir/Users/Channels/Users/add.php";
-$new_id = Users\Channels\Users\add($mysqli, $user,
+Users\Channels\Users\add($mysqli, $user,
     $channel, $subscribedChannel, $subscriberUser);
 
 $message = 'The user has been added.';
-$_SESSION['notifications/channels/users/view/messages'] = [$message];
+$_SESSION['notifications/channels/users/messages'] = [$message];
 
-redirect("../view/?id=$new_id");
+redirect("../?id=$id");

@@ -22,7 +22,22 @@ include_once '../../fns/Page/text.php';
 
 $title = $bookmark->title;
 if ($title !== '') {
-    $items[] = Page\text(htmlspecialchars($title));
+
+    include_once '../../fns/request_strings.php';
+    list($keyword) = request_strings('keyword');
+
+    include_once '../../fns/str_collapse_spaces.php';
+    $keyword = str_collapse_spaces($keyword);
+
+    $title = htmlspecialchars($title);
+
+    if ($keyword !== '') {
+        $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
+        $title = preg_replace($regex, '<mark>$0</mark>', $title);
+    }
+
+    $items[] = Page\text($title);
+
 }
 
 $items[] = Page\text(htmlspecialchars($url));

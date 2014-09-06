@@ -14,14 +14,14 @@ $content = Page\tabs(
     [
         [
             'title' => '&middot;&middot;&middot;',
-            'href' => "../../view/?id=$id_channels",
+            'href' => '../..',
         ],
         [
-            'title' => 'Users',
+            'title' => "Channel #$id_channels",
             'href' => "../?id=$id_channels",
         ],
     ],
-    "User #$id",
+    'Users',
     Page\text(
         'Are you sure you want to remove the user "<b>'
         .htmlspecialchars($subscribedChannel->subscriber_username)
@@ -32,7 +32,7 @@ $content = Page\tabs(
     .'<div class="hr"></div>'
     .Page\twoColumns(
         Page\imageLink('Yes, remove user', "submit.php?id=$id", 'yes'),
-        Page\imageLink('No, return back', "../view/?id=$id", 'no')
+        Page\imageLink('No, return back', "../?id=$id_channels", 'no')
     )
 );
 

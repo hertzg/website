@@ -34,7 +34,13 @@ function echo_page ($user, $title, $content, $base, array $options = []) {
                 ."<img src=\"{$base}themes/$theme/images/zvini.svg?2\""
                 .' alt="Zvini" width="68" height="32" class="logoImg" />'
             .'</a>'
-            .'<div class="page-clockWrapper">'.date('H:i', $time / 1000).'</div>'
+            .'<div class="page-clockWrapper">'
+                .'<div id="staticClockWrapper">'
+                    .date('H:i', $time / 1000)
+                .'</div>'
+                .'<div id="dynamicClockWrapper"></div>'
+                .'<div id="batteryWrapper"></div>'
+            .'</div>'
             .$signOutLink
         .'</div>'
         .$content
@@ -45,9 +51,9 @@ function echo_page ($user, $title, $content, $base, array $options = []) {
             ."var base = ".json_encode($base)
         .'</script>'
         .'<script type="text/javascript" async="async"'
-        ." src=\"{$base}js/battery.js?6\"></script>"
+        ." src=\"{$base}js/battery.js?7\"></script>"
         .'<script type="text/javascript" async="async"'
-        ." src=\"{$base}js/clock.js?7\"></script>";
+        ." src=\"{$base}js/clock.js?8\"></script>";
 
     include_once __DIR__.'/../fns/echo_html.php';
     echo_html($title, $head, $body, $theme, $base);

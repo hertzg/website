@@ -14,7 +14,7 @@ function content ($keyword, $placeholder, $clearHref) {
             .'<span class="icon search"></span>'
         .'</button>'
         ."<a href=\"$clearHref\" title=\"Clear Search Keyword\""
-        .' class="clearSearchKeywordButton clickable">'
+        .' class="rightButton clickable">'
             .'<span class="icon no"></span>'
         .'</a>';
 }

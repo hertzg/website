@@ -7,14 +7,27 @@ list($contact, $id, $user) = require_contact($mysqli);
 include_once 'fns/unset_session_vars.php';
 unset_session_vars();
 
+include_once '../../fns/request_strings.php';
+list($keyword) = request_strings('keyword');
+
+include_once '../../fns/str_collapse_spaces.php';
+$keyword = str_collapse_spaces($keyword);
+
+$full_name = htmlspecialchars($contact->full_name);
+if ($keyword !== '') {
+    $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
+    $replace = '<mark>$0</mark>';
+    $full_name = preg_replace($regex, $replace, $full_name);
+}
+
 include_once '../../fns/Form/label.php';
-$items = [
-    Form\label('Full name', htmlspecialchars($contact->full_name)),
-];
+$items = [Form\label('Full name', $full_name)];
 
 $alias = $contact->alias;
 if ($alias !== '') {
-    $items[] = Form\label('Alias', htmlspecialchars($alias));
+    $alias = htmlspecialchars($alias);
+    if ($keyword !== '') $alias = preg_replace($regex, $replace, $alias);
+    $items[] = Form\label('Alias', $alias);
 }
 
 $address = $contact->address;
@@ -31,8 +44,8 @@ if ($email !== '') {
 }
 
 include_once 'fns/render_phone_number.php';
-render_phone_number('Phone 1', $contact->phone1, $items);
-render_phone_number('Phone 2', $contact->phone2, $items);
+render_phone_number('Phone 1', $contact->phone1, $items, $keyword);
+render_phone_number('Phone 2', $contact->phone2, $items, $keyword);
 
 include_once '../fns/render_birthday.php';
 render_birthday($contact->birthday_time, $items);
