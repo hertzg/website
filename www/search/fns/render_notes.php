@@ -1,6 +1,8 @@
 <?php
 
-function render_notes (array $notes, array &$items, $regex) {
+function render_notes (array $notes,
+    array &$items, $regex, $encodedKeyword) {
+
     include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
     foreach ($notes as $note) {
 
@@ -15,7 +17,10 @@ function render_notes (array $notes, array &$items, $regex) {
             $icon = 'note';
         }
 
-        $href = "../notes/view/?id=$note->id_notes";
+        $query = "?id=$note->id_notes&amp;keyword=$encodedKeyword";
+        $href = "../notes/view/$query";
         $items[] = Page\imageArrowLink($title, $href, $icon);
+
     }
+
 }

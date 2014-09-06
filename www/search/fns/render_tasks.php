@@ -1,6 +1,7 @@
 <?php
 
-function render_tasks (array $tasks, array &$items, $regex) {
+function render_tasks (array $tasks,
+    array &$items, $regex, $encodedKeyword) {
 
     $fnsDir = __DIR__.'/../../fns';
 
@@ -12,7 +13,8 @@ function render_tasks (array $tasks, array &$items, $regex) {
 
         $title = htmlspecialchars($task->text);
         $title = preg_replace($regex, '<mark>$0</mark>', $title);
-        $href = "../tasks/view/?id=$task->id_tasks";
+        $query = "?id=$task->id_tasks&amp;keyword=$encodedKeyword";
+        $href = "../tasks/view/$query";
 
         $items[] = create_task_link($title, $task->deadline_time,
             $task->tags, $task->top_priority, $href, $time_today);

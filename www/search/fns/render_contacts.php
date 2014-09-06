@@ -1,6 +1,7 @@
 <?php
 
-function render_contacts (array $contacts, array &$items, $regex) {
+function render_contacts (array $contacts,
+    array &$items, $regex, $encodedKeyword) {
 
     $replace = '<mark>$0</mark>';
 
@@ -14,7 +15,8 @@ function render_contacts (array $contacts, array &$items, $regex) {
         $phone2 = htmlspecialchars($contact->phone2);
 
         $title = preg_replace($regex, $replace, $title);
-        $href = "../contacts/view/?id=$contact->id_contacts";
+        $query = "?id=$contact->id_contacts&amp;keyword=$encodedKeyword";
+        $href = "../contacts/view/$query";
 
         if ($contact->favorite) $icon = 'favorite-contact';
         else $icon = 'contact';
