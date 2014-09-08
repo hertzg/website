@@ -33,10 +33,15 @@ $content = Page\tabs(
     'Edit Profile',
     Page\sessionErrors('account/edit-profile/errors')
     .'<form action="submit.php" method="post">'
+        .Form\textfield('username', 'Username', [
+            'value' => $values['username'],
+            'maxlength' => $maxLengths['username'],
+            'autofocus' => true,
+        ])
+        .'<div class="hr"></div>'
         .Form\textfield('email', 'Email', [
             'value' => $values['email'],
             'maxlength' => $maxLengths['email'],
-            'autofocus' => true,
         ])
         .'<div class="hr"></div>'
         .Form\textfield('full_name', 'Full name', [

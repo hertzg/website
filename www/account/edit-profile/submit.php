@@ -8,8 +8,8 @@ $user = require_user('../../');
 $id_users = $user->id_users;
 
 include_once '../../fns/request_strings.php';
-list($email, $full_name, $timezone) = request_strings(
-    'email', 'full_name', 'timezone');
+list($username, $email, $full_name, $timezone) = request_strings(
+    'username', 'email', 'full_name', 'timezone');
 
 include_once '../../fns/Timezone/isValid.php';
 if (!Timezone\isValid($timezone)) $timezone = 0;
@@ -19,6 +19,9 @@ $full_name = str_collapse_spaces($full_name);
 
 $errors = [];
 include_once '../../lib/mysqli.php';
+
+include_once '../../fns/check_username.php';
+check_username($mysqli, $username, $errors, $id_users);
 
 $email = str_collapse_spaces($email);
 $email = mb_strtolower($email, 'UTF-8');
@@ -40,6 +43,7 @@ include_once '../../fns/redirect.php';
 if ($errors) {
     $_SESSION['account/edit-profile/errors'] = $errors;
     $_SESSION['account/edit-profile/values'] = [
+        'username' => $username,
         'email' => $email,
         'full_name' => $full_name,
         'timezone' => $timezone,
@@ -53,7 +57,12 @@ unset(
 );
 
 include_once '../../fns/Users/editProfile.php';
-Users\editProfile($mysqli, $id_users, $email, $full_name, $timezone);
+Users\editProfile($mysqli, $id_users, $username, $email, $full_name, $timezone);
+
+if ($username !== $user->username) {
+    include_once 'fns/update_username.php';
+    update_username($mysqli, $id_users, $username);
+}
 
 if ($email !== $user->email) {
     include_once '../../fns/Users/Email/invalidate.php';
