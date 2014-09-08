@@ -13,3 +13,5 @@ RewriteRule (.*) https://zvini.com/$1 [R=301,L]
 </filesMatch>
 
 DirectoryIndex index.php
+
+ErrorDocument 404 /404.php
