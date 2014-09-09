@@ -4,6 +4,9 @@
 chdir(__DIR__);
 include_once '../../lib/require-cli.php';
 
+include_once '../../../fns/ApiKeys/maxLengths.php';
+$maxLengths = ApiKeys\maxLengths();
+
 include_once 'fns/ensure_table.php';
 ensure_table('api_keys', [
     'access_time' => [
@@ -79,10 +82,10 @@ ensure_table('api_keys', [
         'type' => 'bigint(20) unsigned',
     ],
     'key' => [
-        'type' => 'binary(32)',
+        'type' => "binary($maxLengths[key])",
     ],
     'name' => [
-        'type' => 'varchar(64)',
+        'type' => "varchar($maxLengths[name])",
         'characterSet' => 'utf8',
         'collation' => 'utf8_general_ci',
     ],
