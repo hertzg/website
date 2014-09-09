@@ -83,28 +83,8 @@ if ($insert_time != $update_time) {
 include_once '../../fns/Page/infoText.php';
 $infoText = Page\infoText($text);
 
-include_once 'fns/create_options_panel.php';
-include_once '../../fns/ItemList/listHref.php';
-include_once '../../fns/Page/tabs.php';
-include_once '../../fns/Page/sessionMessages.php';
-$content =
-    Page\tabs(
-        [
-            [
-                'title' => '&middot;&middot;&middot;',
-                'href' => '../../home/',
-            ],
-            [
-                'title' => 'Contacts',
-                'href' => ItemList\listHref(),
-            ],
-        ],
-        "Contact #$id",
-        Page\sessionMessages('contacts/view/messages')
-        .join('<div class="hr"></div>', $items)
-        .$infoText
-    )
-    .create_options_panel($contact);
+include_once 'fns/create_content.php';
+$content = create_content($contact, $infoText, $items);
 
 include_once '../../fns/echo_page.php';
 echo_page($user, "Contact #$id", $content, $base);
