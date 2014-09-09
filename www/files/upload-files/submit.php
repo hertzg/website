@@ -5,7 +5,7 @@ require_same_domain_referer('..');
 
 include_once '../fns/require_parent_folder.php';
 include_once '../../lib/mysqli.php';
-list($parentFolder, $parent_id, $user) = require_parent_folder($mysqli);
+list($parentFolder, $parent_id_folders, $user) = require_parent_folder($mysqli);
 $id_users = $user->id_users;
 
 include_once '../../fns/request_multiple_files.php';
@@ -25,8 +25,8 @@ foreach ([$file1, $file2, $file3] as $file) {
         if ($error === UPLOAD_ERR_OK) {
             $name = str_collapse_spaces($name);
             $name = Files\getUniqueName($mysqli,
-                $id_users, $parent_id, $name);
-            Users\Files\add($mysqli, $id_users, $parent_id,
+                $id_users, $parent_id_folders, $name);
+            Users\Files\add($mysqli, $id_users, $parent_id_folders,
                 $name, $file['tmp_name'][$i]);
             $num_uploaded++;
         } elseif ($error !== UPLOAD_ERR_NO_FILE) {
@@ -55,7 +55,7 @@ if (!$num_uploaded) {
     $_SESSION['files/upload-files/errors'] = $errors;
 
     $url = './';
-    if ($parent_id) $url .= "?id=$parent_id";
+    if ($parent_id_folders) $url .= "?parent_id_folders=$parent_id_folders";
     redirect($url);
 
 }
@@ -71,8 +71,8 @@ if ($num_uploaded == 1) {
 if ($errors) $_SESSION['files/errors'] = $errors;
 else unset($_SESSION['files/errors']);
 
-$_SESSION['files/id_folders'] = $parent_id;
+$_SESSION['files/id_folders'] = $parent_id_folders;
 $_SESSION['files/messages'] = [$message];
 
 include_once '../../fns/create_folder_link.php';
-redirect(create_folder_link($parent_id, '../'));
+redirect(create_folder_link($parent_id_folders, '../'));

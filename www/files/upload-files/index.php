@@ -2,7 +2,7 @@
 
 include_once '../fns/require_parent_folder.php';
 include_once '../../lib/mysqli.php';
-list($parentFolder, $parent_id, $user) = require_parent_folder($mysqli);
+list($parentFolder, $parent_id_folders, $user) = require_parent_folder($mysqli);
 
 unset(
     $_SESSION['files/errors'],
@@ -27,7 +27,7 @@ $content = Page\tabs(
         ],
         [
             'title' => 'Files',
-            'href' => create_folder_link($parent_id, '../'),
+            'href' => create_folder_link($parent_id_folders, '../'),
         ],
     ],
     'Upload Files',
@@ -46,7 +46,7 @@ $content = Page\tabs(
         .'<div class="hr"></div>'
         .Form\button('Upload')
         .Form\hidden('posttest', '1')
-        .Form\hidden('id', $parent_id)
+        .Form\hidden('parent_id_folders', $parent_id_folders)
     .'</form>'
 );
 

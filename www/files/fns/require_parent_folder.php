@@ -8,7 +8,7 @@ function require_parent_folder ($mysqli) {
     $user = require_user('../../');
 
     include_once "$fnsDir/request_strings.php";
-    list($id) = request_strings('id');
+    list($id) = request_strings('parent_id_folders');
 
     $id = abs((int)$id);
 
