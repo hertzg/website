@@ -3,6 +3,6 @@
 namespace ErrorPage;
 
 function internalServerError () {
-    http_response_code(500);
-    die('500 Internal Server Error');
+    include_once __DIR__.'/create.php';
+    create(500, 'Internal Server Error');
 }
