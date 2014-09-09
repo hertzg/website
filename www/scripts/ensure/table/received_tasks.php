@@ -4,6 +4,9 @@
 chdir(__DIR__);
 include_once '../../lib/require-cli.php';
 
+include_once '../../../fns/Tasks/maxLengths.php';
+$maxLengths = Tasks\maxLengths();
+
 include_once 'fns/ensure_table.php';
 ensure_table('received_tasks', [
     'archived' => [
@@ -32,12 +35,12 @@ ensure_table('received_tasks', [
         'collation' => 'ascii_bin',
     ],
     'tags' => [
-        'type' => 'varchar(256)',
+        'type' => "varchar($maxLengths[tags])",
         'characterSet' => 'utf8',
         'collation' => 'utf8_unicode_ci',
     ],
     'text' => [
-        'type' => 'varchar(1024)',
+        'type' => "varchar($maxLengths[text])",
         'characterSet' => 'utf8',
         'collation' => 'utf8_unicode_ci',
     ],
