@@ -7,6 +7,6 @@ function filefield ($name, $text) {
     return association(
         '<input class="form-filefield" type="file" multiple="multiple"'
         ." id=\"$name\" name=\"$name\" />",
-        "<label for=\"$name\">$text</label>"
+        "<label for=\"$name\">$text:</label>"
     );
 }
