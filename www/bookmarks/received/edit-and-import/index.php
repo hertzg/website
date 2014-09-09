@@ -10,13 +10,10 @@ $key = 'bookmarks/received/edit-and-import/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else $values = (array)$receivedBookmark;
 
-include_once '../../../fns/Bookmarks/maxLengths.php';
-$maxLengths = Bookmarks\maxLengths();
-
+include_once '../../fns/create_form_items.php';
 include_once '../../../fns/Page/tabs.php';
 include_once '../../../fns/Form/button.php';
 include_once '../../../fns/Form/hidden.php';
-include_once '../../../fns/Form/textfield.php';
 include_once '../../../fns/Page/sessionErrors.php';
 $content = Page\tabs(
     [
@@ -32,22 +29,7 @@ $content = Page\tabs(
     'Edit and Import',
     Page\sessionErrors('bookmarks/received/edit-and-import/errors')
     .'<form action="submit.php" method="post">'
-        .Form\textfield('url', 'URL', [
-            'value' => $values['url'],
-            'maxlength' => $maxLengths['url'],
-            'required' => true,
-            'autofocus' => true,
-        ])
-        .'<div class="hr"></div>'
-        .Form\textfield('title', 'Title', [
-            'value' => $values['title'],
-            'maxlength' => $maxLengths['title'],
-        ])
-        .'<div class="hr"></div>'
-        .Form\textfield('tags', 'Tags', [
-            'value' => $values['tags'],
-            'maxlength' => $maxLengths['tags'],
-        ])
+        .create_form_items($values)
         .'<div class="hr"></div>'
         .Form\button('Import Bookmark')
         .Form\hidden('id', $id)

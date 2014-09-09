@@ -25,11 +25,8 @@ unset(
     $_SESSION['home/messages']
 );
 
-include_once '../../fns/Bookmarks/maxLengths.php';
-$maxLengths = Bookmarks\maxLengths();
-
+include_once '../fns/create_form_items.php';
 include_once '../../fns/Form/button.php';
-include_once '../../fns/Form/textfield.php';
 include_once '../../fns/ItemList/listHref.php';
 include_once '../../fns/ItemList/pageHiddenInputs.php';
 include_once '../../fns/Page/sessionErrors.php';
@@ -49,22 +46,7 @@ $content = Page\tabs(
     'New',
     Page\sessionErrors('bookmarks/new/errors')
     .'<form action="submit.php" method="post">'
-        .Form\textfield('url', 'URL', [
-            'value' => $values['url'],
-            'maxlength' => $maxLengths['url'],
-            'autofocus' => true,
-            'required' => true,
-        ])
-        .'<div class="hr"></div>'
-        .Form\textfield('title', 'Title', [
-            'value' => $values['title'],
-            'maxlength' => $maxLengths['title'],
-        ])
-        .'<div class="hr"></div>'
-        .Form\textfield('tags', 'Tags', [
-            'value' => $values['tags'],
-            'maxlength' => $maxLengths['tags'],
-        ])
+        .create_form_items($values)
         .'<div class="hr"></div>'
         .Page\staticTwoColumns(
             Form\button('Save'),

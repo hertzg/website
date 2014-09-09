@@ -15,14 +15,11 @@ unset(
     $_SESSION['bookmarks/view/messages']
 );
 
-include_once '../../fns/Bookmarks/maxLengths.php';
-$maxLengths = Bookmarks\maxLengths();
-
+include_once '../fns/create_form_items.php';
 include_once '../../fns/ItemList/escapedItemQuery.php';
 include_once '../../fns/ItemList/listHref.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/hidden.php';
-include_once '../../fns/Form/textfield.php';
 include_once '../../fns/ItemList/itemHiddenInputs.php';
 include_once '../../fns/Page/sessionErrors.php';
 include_once '../../fns/Page/staticTwoColumns.php';
@@ -41,22 +38,7 @@ $content = Page\tabs(
     'Edit',
     Page\sessionErrors('bookmarks/edit/errors')
     .'<form action="submit.php" method="post">'
-        .Form\textfield('url', 'URL', [
-            'value' => $values['url'],
-            'maxlength' => $maxLengths['url'],
-            'autofocus' => true,
-            'required' => true,
-        ])
-        .'<div class="hr"></div>'
-        .Form\textfield('title', 'Title', [
-            'maxlength' => $maxLengths['title'],
-            'value' => $values['title'],
-        ])
-        .'<div class="hr"></div>'
-        .Form\textfield('tags', 'Tags', [
-            'maxlength' => $maxLengths['tags'],
-            'value' => $values['tags'],
-        ])
+        .create_form_items($values)
         .'<div class="hr"></div>'
         .Page\staticTwoColumns(
             Form\button('Save Changes'),
