@@ -4,6 +4,9 @@
 chdir(__DIR__);
 include_once '../../lib/require-cli.php';
 
+include_once '../../../fns/Feedbacks/maxLengths.php';
+$maxLengths = Feedbacks\maxLengths();
+
 include_once 'fns/ensure_table.php';
 ensure_table('feedbacks', [
     'idfeedbacks' => [
@@ -18,7 +21,7 @@ ensure_table('feedbacks', [
         'type' => 'bigint(20) unsigned',
     ],
     'text' => [
-        'type' => 'text',
+        'type' => "varchar($maxLengths[text])",
         'characterSet' => 'utf8',
         'collation' => 'utf8_unicode_ci',
     ],

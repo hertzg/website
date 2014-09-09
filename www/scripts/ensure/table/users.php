@@ -5,6 +5,9 @@ chdir(__DIR__);
 include_once '../../lib/require-cli.php';
 
 include_once 'fns/ensure_table.php';
+include_once '../../../fns/Email/maxLength.php';
+include_once '../../../fns/FullName/maxLength.php';
+include_once '../../../fns/Username/maxLength.php';
 ensure_table('users', [
     'anonymous_can_send_bookmark' => [
         'type' => 'tinyint(3) unsigned',
@@ -28,7 +31,7 @@ ensure_table('users', [
         'type' => 'bigint(20) unsigned',
     ],
     'email' => [
-        'type' => 'varchar(64)',
+        'type' => 'varchar('.Email\maxLength().')',
         'characterSet' => 'ascii',
         'collation' => 'ascii_bin',
     ],
@@ -39,7 +42,7 @@ ensure_table('users', [
         'type' => 'bigint(20) unsigned',
     ],
     'full_name' => [
-        'type' => 'varchar(64)',
+        'type' => 'varchar('.FullName\maxLength().')',
         'characterSet' => 'utf8',
         'collation' => 'utf8_unicode_ci',
     ],
@@ -257,7 +260,7 @@ ensure_table('users', [
         'type' => 'int(11)',
     ],
     'username' => [
-        'type' => 'varchar(32)',
+        'type' => 'varchar('.Username\maxLength().')',
         'characterSet' => 'ascii',
         'collation' => 'ascii_bin',
     ],

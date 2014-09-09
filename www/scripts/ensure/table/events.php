@@ -4,6 +4,9 @@
 chdir(__DIR__);
 include_once '../../lib/require-cli.php';
 
+include_once '../../../fns/Events/maxLengths.php';
+$maxLengths = Events\maxLengths();
+
 include_once 'fns/ensure_table.php';
 ensure_table('events', [
     'event_time' => [
@@ -23,7 +26,7 @@ ensure_table('events', [
         'type' => 'bigint(20) unsigned',
     ],
     'text' => [
-        'type' => 'text',
+        'type' => "varchar($maxLengths[text])",
         'characterSet' => 'utf8',
         'collation' => 'utf8_unicode_ci',
     ],

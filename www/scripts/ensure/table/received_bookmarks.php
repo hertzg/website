@@ -8,6 +8,7 @@ include_once '../../../fns/Bookmarks/maxLengths.php';
 $maxLengths = Bookmarks\maxLengths();
 
 include_once 'fns/ensure_table.php';
+include_once '../../../fns/Username/maxLength.php';
 ensure_table('received_bookmarks', [
     'archived' => [
         'type' => 'tinyint(3) unsigned',
@@ -26,7 +27,7 @@ ensure_table('received_bookmarks', [
         'type' => 'bigint(20) unsigned',
     ],
     'sender_username' => [
-        'type' => 'varchar(32)',
+        'type' => 'varchar('.Username\maxLength().')',
         'characterSet' => 'ascii',
         'collation' => 'ascii_bin',
     ],

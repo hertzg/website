@@ -4,7 +4,11 @@
 chdir(__DIR__);
 include_once '../../lib/require-cli.php';
 
+include_once '../../../fns/Files/maxLengths.php';
+$maxLengths = Files\maxLengths();
+
 include_once 'fns/ensure_table.php';
+include_once '../../../fns/Username/maxLength.php';
 ensure_table('received_files', [
     'archived' => [
         'type' => 'tinyint(3) unsigned',
@@ -13,7 +17,7 @@ ensure_table('received_files', [
         'type' => 'tinyint(4)',
     ],
     'content_type' => [
-        'type' => 'varchar(32)',
+        'type' => "varchar($maxLengths[content_type])",
         'characterSet' => 'ascii',
         'collation' => 'ascii_bin',
     ],
@@ -31,7 +35,7 @@ ensure_table('received_files', [
         'collation' => 'utf8_general_ci',
     ],
     'name' => [
-        'type' => 'varchar(255)',
+        'type' => "varchar($maxLengths[name])",
         'characterSet' => 'utf8',
         'collation' => 'utf8_unicode_ci',
     ],
@@ -42,7 +46,7 @@ ensure_table('received_files', [
         'type' => 'bigint(20) unsigned',
     ],
     'sender_username' => [
-        'type' => 'varchar(32)',
+        'type' => 'varchar('.Username\maxLength().')',
         'characterSet' => 'ascii',
         'collation' => 'ascii_bin',
     ],

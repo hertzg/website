@@ -9,6 +9,9 @@ else $values = ['text' => ''];
 
 unset($_SESSION['help/messages']);
 
+include_once '../../fns/Feedbacks/maxLengths.php';
+$maxLengths = Feedbacks\maxLengths();
+
 include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/notes.php';
@@ -30,6 +33,7 @@ $content = Page\tabs(
     .'<form action="submit.php" method="post">'
         .Form\textarea('text', 'Text', [
             'value' => $values['text'],
+            'maxlength' => $maxLengths['text'],
             'autofocus' => true,
             'required' => true,
         ])

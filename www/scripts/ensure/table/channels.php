@@ -5,9 +5,11 @@ chdir(__DIR__);
 include_once '../../lib/require-cli.php';
 
 include_once 'fns/ensure_table.php';
+include_once '../../../fns/ChannelName/maxLength.php';
+include_once '../../../fns/Username/maxLength.php';
 ensure_table('channels', [
     'channel_name' => [
-        'type' => 'varchar(32)',
+        'type' => 'varchar('.ChannelName\maxLength().')',
         'characterSet' => 'ascii',
         'collation' => 'ascii_general_ci',
     ],
@@ -40,7 +42,7 @@ ensure_table('channels', [
         'type' => 'bigint(20) unsigned',
     ],
     'username' => [
-        'type' => 'varchar(32)',
+        'type' => 'varchar('.Username\maxLength().')',
         'characterSet' => 'ascii',
         'collation' => 'ascii_bin',
     ],

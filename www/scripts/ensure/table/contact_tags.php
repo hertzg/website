@@ -8,6 +8,7 @@ include_once '../../../fns/Contacts/maxLengths.php';
 $maxLengths = Contacts\maxLengths();
 
 include_once 'fns/ensure_table.php';
+include_once '../../../fns/Tag/maxLength.php';
 ensure_table('contact_tags', [
     'alias' => [
         'type' => "varchar($maxLengths[alias])",
@@ -46,7 +47,7 @@ ensure_table('contact_tags', [
         'collation' => 'utf8_general_ci',
     ],
     'tag_name' => [
-        'type' => 'varchar(64)',
+        'type' => 'varchar('.Tag\maxLength().')',
         'characterSet' => 'utf8',
         'collation' => 'utf8_unicode_ci',
     ],

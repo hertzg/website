@@ -4,7 +4,11 @@
 chdir(__DIR__);
 include_once '../../lib/require-cli.php';
 
+include_once '../../../fns/Folders/maxLengths.php';
+$maxLengths = Folders\maxLengths();
+
 include_once 'fns/ensure_table.php';
+include_once '../../../fns/Username/maxLength.php';
 ensure_table('received_folders', [
     'archived' => [
         'type' => 'tinyint(3) unsigned',
@@ -20,7 +24,7 @@ ensure_table('received_folders', [
         'type' => 'bigint(20) unsigned',
     ],
     'name' => [
-        'type' => 'varchar(255)',
+        'type' => "varchar($maxLengths[name])",
         'characterSet' => 'utf8',
         'collation' => 'utf8_unicode_ci',
     ],
@@ -31,7 +35,7 @@ ensure_table('received_folders', [
         'type' => 'bigint(20) unsigned',
     ],
     'sender_username' => [
-        'type' => 'varchar(32)',
+        'type' => 'varchar('.Username\maxLength().')',
         'characterSet' => 'ascii',
         'collation' => 'ascii_bin',
     ],

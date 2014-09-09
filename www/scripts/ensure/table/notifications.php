@@ -4,10 +4,13 @@
 chdir(__DIR__);
 include_once '../../lib/require-cli.php';
 
+include_once '../../../fns/Notifications/maxLengths.php';
+$maxLengths = Notifications\maxLengths();
+
 include_once 'fns/ensure_table.php';
 ensure_table('notifications', [
     'channel_name' => [
-        'type' => 'varchar(32)',
+        'type' => "varchar($maxLengths[channel_name])",
         'characterSet' => 'ascii',
         'collation' => 'ascii_general_ci',
     ],
@@ -30,7 +33,7 @@ ensure_table('notifications', [
         'type' => 'bigint(20) unsigned',
     ],
     'text' => [
-        'type' => 'text',
+        'type' => "varchar($maxLengths[text])",
         'characterSet' => 'utf8',
         'collation' => 'utf8_unicode_ci',
     ],

@@ -5,6 +5,7 @@ chdir(__DIR__);
 include_once '../../lib/require-cli.php';
 
 include_once 'fns/ensure_table.php';
+include_once '../../../fns/Username/maxLength.php';
 ensure_table('tokens', [
     'access_time' => [
         'type' => 'bigint(20) unsigned',
@@ -23,7 +24,7 @@ ensure_table('tokens', [
         'type' => 'binary(16)',
     ],
     'username' => [
-        'type' => 'varchar(32)',
+        'type' => 'varchar('.Username\maxLength().')',
         'characterSet' => 'ascii',
         'collation' => 'ascii_bin',
     ],

@@ -8,6 +8,7 @@ include_once '../../../fns/Bookmarks/maxLengths.php';
 $maxLengths = Bookmarks\maxLengths();
 
 include_once 'fns/ensure_table.php';
+include_once '../../../fns/Tag/maxLength.php';
 ensure_table('bookmark_tags', [
     'id' => [
         'type' => 'bigint(20) unsigned',
@@ -23,7 +24,7 @@ ensure_table('bookmark_tags', [
         'type' => 'bigint(20) unsigned',
     ],
     'tag_name' => [
-        'type' => 'varchar(64)',
+        'type' => 'varchar('.Tag\maxLength().')',
         'characterSet' => 'utf8',
         'collation' => 'utf8_unicode_ci',
     ],

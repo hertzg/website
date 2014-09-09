@@ -8,6 +8,7 @@ include_once '../../../fns/Tasks/maxLengths.php';
 $maxLengths = Tasks\maxLengths();
 
 include_once 'fns/ensure_table.php';
+include_once '../../../fns/Tag/maxLength.php';
 ensure_table('task_tags', [
     'deadline_time' => [
         'type' => 'bigint(20) unsigned',
@@ -32,7 +33,7 @@ ensure_table('task_tags', [
         'collation' => 'utf8_unicode_ci',
     ],
     'tag_name' => [
-        'type' => 'varchar(64)',
+        'type' => 'varchar('.Tag\maxLength().')',
         'characterSet' => 'utf8',
         'collation' => 'utf8_unicode_ci',
     ],

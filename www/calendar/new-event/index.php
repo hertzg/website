@@ -27,12 +27,15 @@ unset(
     $_SESSION['calendar/messages']
 );
 
-include_once '../../fns/Page/tabs.php';
+include_once '../../fns/Events/maxLengths.php';
+$maxLengths = Events\maxLengths();
+
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/datefield.php';
 include_once '../../fns/Form/hidden.php';
 include_once '../../fns/Form/textfield.php';
 include_once '../../fns/Page/sessionErrors.php';
+include_once '../../fns/Page/tabs.php';
 $content = Page\tabs(
     [
         [
@@ -62,6 +65,7 @@ $content = Page\tabs(
         .'<div class="hr"></div>'
         .Form\textfield('text', 'Text', [
             'value' => $values['text'],
+            'maxlength' => $maxLengths['text'],
             'autofocus' => true,
             'required' => true,
         ])

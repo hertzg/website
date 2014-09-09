@@ -4,10 +4,14 @@
 chdir(__DIR__);
 include_once '../../lib/require-cli.php';
 
+include_once '../../../fns/Username/maxLength.php';
+$usernameMaxLength = Username\maxLength();
+
 include_once 'fns/ensure_table.php';
+include_once '../../../fns/ChannelName/maxLength.php';
 ensure_table('subscribed_channels', [
     'channel_name' => [
-        'type' => 'varchar(32)',
+        'type' => 'varchar('.ChannelName\maxLength().')',
         'characterSet' => 'ascii',
         'collation' => 'ascii_general_ci',
     ],
@@ -34,7 +38,7 @@ ensure_table('subscribed_channels', [
         'type' => 'tinyint(4)',
     ],
     'publisher_username' => [
-        'type' => 'varchar(32)',
+        'type' => "varchar($usernameMaxLength)",
         'characterSet' => 'ascii',
         'collation' => 'ascii_bin',
     ],
@@ -48,7 +52,7 @@ ensure_table('subscribed_channels', [
         'type' => 'tinyint(4)',
     ],
     'subscriber_username' => [
-        'type' => 'varchar(32)',
+        'type' => "varchar($usernameMaxLength)",
         'characterSet' => 'ascii',
         'collation' => 'ascii_bin',
     ],

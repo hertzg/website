@@ -4,10 +4,13 @@
 chdir(__DIR__);
 include_once '../../lib/require-cli.php';
 
+include_once '../../../fns/Files/maxLengths.php';
+$maxLengths = Files\maxLengths();
+
 include_once 'fns/ensure_table.php';
 ensure_table('deleted_files', [
     'content_type' => [
-        'type' => 'varchar(32)',
+        'type' => "varchar($maxLengths[content_type])",
         'characterSet' => 'ascii',
         'collation' => 'ascii_bin',
     ],
@@ -34,7 +37,7 @@ ensure_table('deleted_files', [
         'collation' => 'utf8_general_ci',
     ],
     'name' => [
-        'type' => 'varchar(255)',
+        'type' => "varchar($maxLengths[name])",
         'characterSet' => 'utf8',
         'collation' => 'utf8_unicode_ci',
     ],

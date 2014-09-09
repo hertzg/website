@@ -8,6 +8,7 @@ include_once '../../../fns/Contacts/maxLengths.php';
 $maxLengths = Contacts\maxLengths();
 
 include_once 'fns/ensure_table.php';
+include_once '../../../fns/Username/maxLength.php';
 ensure_table('received_contacts', [
     'address' => [
         'type' => "varchar($maxLengths[address])",
@@ -63,7 +64,7 @@ ensure_table('received_contacts', [
         'type' => 'bigint(20) unsigned',
     ],
     'sender_username' => [
-        'type' => 'varchar(32)',
+        'type' => 'varchar('.Username\maxLength().')',
         'characterSet' => 'ascii',
         'collation' => 'ascii_bin',
     ],

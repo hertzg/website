@@ -19,6 +19,9 @@ if (array_key_exists($key, $_SESSION)) {
 
 unset($_SESSION['calendar/view-event/messages']);
 
+include_once '../../fns/Events/maxLengths.php';
+$maxLengths = Events\maxLengths();
+
 include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/datefield.php';
@@ -54,6 +57,7 @@ $content = Page\tabs(
         .'<div class="hr"></div>'
         .Form\textfield('text', 'Text', [
             'value' => $values['text'],
+            'maxlength' => $maxLengths['text'],
             'autofocus' => true,
             'required' => true,
         ])
