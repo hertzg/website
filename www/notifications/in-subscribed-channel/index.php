@@ -79,7 +79,7 @@ $content = Page\tabs(
         .'Channel: <b>'
             .htmlspecialchars($subscribedChannel->channel_name)
         .'</b>'
-        .'<a class="clickable" title="Clear Filter" href="..">'
+        .'<a class="rightButton clickable" title="Clear Filter" href="..">'
             .'<span class="icon no"></span>'
         .'</a>'
     .'</div>'

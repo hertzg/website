@@ -85,7 +85,7 @@ $content = Page\tabs(
     Page\sessionMessages('notifications/in-channel/messages')
     .'<div class="filterBar">'
         .'Channel: <b>'.htmlspecialchars($channel->channel_name).'</b>'
-        .'<a class="clickable" title="Clear Filter" href="..">'
+        .'<a class="rightButton clickable" title="Clear Filter" href="..">'
             .'<span class="icon no"></span>'
         .'</a>'
     .'</div>'
