@@ -4,6 +4,9 @@
 chdir(__DIR__);
 include_once '../../lib/require-cli.php';
 
+include_once '../../../fns/Schedules/maxLengths.php';
+$maxLengths = Schedules\maxLengths();
+
 include_once 'fns/ensure_table.php';
 ensure_table('schedules', [
     'id' => [
@@ -26,8 +29,7 @@ ensure_table('schedules', [
         'type' => 'bigint(20) unsigned',
     ],
     'text' => [
-        'type' => 'varchar(1024)',
-        'nullable' => true,
+        'type' => "varchar($maxLengths[text])",
         'characterSet' => 'utf8',
         'collation' => 'utf8_unicode_ci',
     ],
