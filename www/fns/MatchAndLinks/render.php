@@ -1,11 +1,11 @@
 <?php
 
-function render_match_and_external_links ($base, $text, $keyword) {
+namespace MatchAndLinks;
+
+function render ($base, $text, $keyword) {
 
     $text = htmlspecialchars($text);
     $keyword = htmlspecialchars($keyword);
-
-    $parts = [];
 
     $match = function ($regex, $callback) use ($text) {
         $flags = PREG_OFFSET_CAPTURE | PREG_SET_ORDER;
@@ -47,62 +47,14 @@ function render_match_and_external_links ($base, $text, $keyword) {
         return $a['index'] - $b['index'];
     });
 
-    $normalizedParts = [];
-    $linkStarted = false;
-    $keywordStarted = false;
-    foreach ($parts as $part) {
-        $type = $part['type'];
-        $index = $part['index'];
-        if ($type == 'linkStart') {
-            if ($keywordStarted) {
-                if ($keywordStartIndex == $index) {
-                    array_pop($normalizedParts);
-                } else {
-                    $normalizedParts[] = [
-                        'type' => 'keywordEnd',
-                        'index' => $index,
-                    ];
-                }
-            }
-            $linkStarted = true;
-            $normalizedParts[] = $part;
-            if ($keywordStarted) {
-                $keywordStartIndex = $index;
-                $normalizedParts[] = [
-                    'type' => 'keywordStart',
-                    'index' => $index,
-                ];
-            }
-        } elseif ($type == 'linkEnd') {
-            if ($keywordStarted) {
-                $normalizedParts[] = [
-                    'type' => 'keywordEnd',
-                    'index' => $index,
-                ];
-            }
-            $linkStarted = false;
-            $normalizedParts[] = $part;
-            if ($keywordStarted) {
-                $normalizedParts[] = [
-                    'type' => 'keywordStart',
-                    'index' => $index,
-                ];
-            }
-        } elseif ($type == 'keywordStart') {
-            $keywordStarted = true;
-            $normalizedParts[] = $part;
-            $keywordStartIndex = $index;
-        } elseif ($type == 'keywordEnd') {
-            $keywordStarted = false;
-            $normalizedParts[] = $part;
-        }
-    }
+    include_once __DIR__.'/normalizedParts.php';
+    $normalizedParts = normalizedParts($parts);
 
     foreach ($normalizedParts as $i => $normalizedPart) {
         $type = $normalizedPart['type'];
         if ($type == 'linkStart') {
             $url = html_entity_decode($normalizedPart['value']);
-            include_once __DIR__.'/create_external_url.php';
+            include_once __DIR__.'/../create_external_url.php';
             $href = htmlspecialchars(create_external_url($url, $base));
             $html = "<a class=\"a\" rel=\"noreferrer\" href=\"$href\">";
         } elseif ($type == 'linkEnd') {
