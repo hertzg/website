@@ -1,6 +1,9 @@
 #!/usr/bin/php
 <?php
 
+chdir(__DIR__);
+include_once '../../lib/require-cli.php';
+
 include_once 'fns/ensure_table.php';
 ensure_table('deleted_files', [
     'content_type' => [
