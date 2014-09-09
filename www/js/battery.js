@@ -13,7 +13,8 @@
     }
 
     function updateCharging () {
-        chargingElement.style.display = battery.charging ? 'inline-block' : 'none'
+        var display = battery.charging ? 'inline-block' : 'none'
+        chargingElement.style.display = display
     }
 
     var battery = navigator.battery

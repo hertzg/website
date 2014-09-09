@@ -52,7 +52,8 @@
         element.appendChild(dayNode)
 
         var localTimezone = element.dataset.local_timezone
-        var difference = Date.now() - time + (timezone - localTimezone) * 60 * 1000
+        var timezoneDiff = (timezone - localTimezone) * 60 * 1000
+        var difference = Date.now() - time + timezoneDiff
 
         setInterval(update, 5000)
         update()

@@ -68,7 +68,8 @@ function ensure_table ($tableName, array $columns) {
         foreach ($columns as $name => $column) {
             $escapedName = $mysqli->real_escape_string($name);
             $definition = build_definition($column);
-            $sql = "alter table `$escapedTableName` add `$escapedName` $definition";
+            $sql = "alter table `$escapedTableName`"
+                ." add `$escapedName` $definition";
             $mysqli->query($sql) || trigger_error($mysqli->error);
         }
 

@@ -39,7 +39,8 @@ function recipientsPage ($mysqli, $user, $id, $pageTitle,
         if ($recipients) {
 
             include_once __DIR__.'/../renderRecipientsPanel.php';
-            $content = \SendForm\renderRecipientsPanel($recipients, $itemParams);
+            $content = \SendForm\renderRecipientsPanel(
+                $recipients, $itemParams);
 
             include_once __DIR__.'/../../RecipientList/enterPanel.php';
             if ($contacts) {
