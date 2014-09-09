@@ -38,10 +38,8 @@ if (array_key_exists($key, $_SESSION)) {
 
 }
 
-$base = '../../../';
-
 include_once 'fns/create_content.php';
-$content = create_content($base, $id, $values);
+$content = create_content($id, $values);
 
 include_once '../../../fns/echo_page.php';
-echo_page($user, "Edit Received Contact #$id", $content, $base);
+echo_page($user, "Edit Received Contact #$id", $content, '../../../');
