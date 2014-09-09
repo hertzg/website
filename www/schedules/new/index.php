@@ -21,6 +21,9 @@ if (array_key_exists($key, $_SESSION)) {
     ];
 }
 
+include_once '../../fns/Schedules/maxLengths.php';
+$maxLengths = Schedules\maxLengths();
+
 include_once '../fns/create_interval_select.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/textfield.php';
@@ -44,6 +47,7 @@ $content = Page\tabs(
     .'<form action="submit.php" method="post">'
         .Form\textfield('text', 'Text', [
             'value' => $values['text'],
+            'maxlength' => $maxLengths['text'],
             'required' => true,
             'autofocus' => true,
         ])
