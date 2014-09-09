@@ -2,10 +2,7 @@
 
 include_once '../fns/require_parent_folder.php';
 include_once '../../lib/mysqli.php';
-list($parentFolder, $parent_id_folders, $user) = require_parent_folder($mysqli);
-
-include_once '../../fns/request_strings.php';
-list($parent_id_folders) = request_strings('parent_id_folders');
+list($parentFolder, $parent_id, $user) = require_parent_folder($mysqli);
 
 $key = 'files/new-folder/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
@@ -31,7 +28,7 @@ $content = Page\tabs(
         ],
         [
             'title' => 'Files',
-            'href' => create_folder_link($parent_id_folders, '../'),
+            'href' => create_folder_link($parent_id, '../'),
         ],
     ],
     'New Folder',
@@ -44,7 +41,7 @@ $content = Page\tabs(
         ])
         .'<div class="hr"></div>'
         .Form\button('Create')
-        .Form\hidden('parent_id_folders', $parent_id_folders)
+        .Form\hidden('id', $parent_id)
     .'</form>'
 );
 

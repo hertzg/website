@@ -2,11 +2,11 @@
 
 include_once '../fns/require_parent_folder.php';
 include_once '../../lib/mysqli.php';
-list($parentFolder, $parent_id_folders, $user) = require_parent_folder($mysqli);
+list($parentFolder, $parent_id, $user) = require_parent_folder($mysqli);
 
 include_once '../../fns/Files/indexPreviewableInUserFolder.php';
 $files = Files\indexPreviewableInUserFolder(
-    $mysqli, $user->id_users, $parent_id_folders);
+    $mysqli, $user->id_users, $parent_id);
 
 include_once '../../fns/request_strings.php';
 list($id) = request_strings('id');
@@ -14,7 +14,7 @@ list($id) = request_strings('id');
 if (!$files) {
     include_once '../../fns/create_folder_link.php';
     include_once '../../fns/redirect.php';
-    redirect('../'.create_folder_link($parent_id_folders));
+    redirect('../'.create_folder_link($parent_id));
 }
 
 $index = 0;
@@ -40,10 +40,10 @@ if ($media_type == 'audio') {
 }
 
 include_once 'fns/create_prev_link.php';
-$prevLink = create_prev_link($files, $index, $parent_id_folders);
+$prevLink = create_prev_link($files, $index, $parent_id);
 
 include_once 'fns/create_next_link.php';
-$nextLink = create_next_link($files, $index, $parent_id_folders);
+$nextLink = create_next_link($files, $index, $parent_id);
 
 $title = htmlspecialchars($file->name);
 include_once '../../fns/Page/buttonLink.php';
@@ -59,7 +59,7 @@ $content = Page\tabs(
         ],
         [
             'title' => 'Files',
-            'href' => '../'.create_folder_link($parent_id_folders),
+            'href' => '../'.create_folder_link($parent_id),
         ],
     ],
     'Slideshow',

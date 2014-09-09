@@ -15,7 +15,7 @@ function create_options_panel ($user, $id_folders, $files) {
     include_once "$fnsDir/Page/imageArrowLink.php";
     include_once "$fnsDir/Page/twoColumns.php";
 
-    if ($id_folders) $parentQuery = "?parent_id_folders=$id_folders";
+    if ($id_folders) $parentQuery = "?id=$id_folders";
     else $parentQuery = '';
 
     $href = "new-folder/$parentQuery";
