@@ -26,26 +26,20 @@ if ($all) {
         $mysqli, $id_users);
 }
 
-include_once '../../fns/Page/imageArrowLink.php';
+include_once '../../fns/create_sender_description.php';
 include_once '../../fns/Page/imageArrowLinkWithDescription.php';
 
 $items = [];
 foreach ($receivedContacts as $receivedContact) {
 
-    $href = "view/?id=$receivedContact->id";
-    $alias = $receivedContact->alias;
-    $title = htmlspecialchars($receivedContact->full_name);
-
     if ($receivedContact->favorite) $icon = 'favorite-contact';
     else $icon = 'contact';
 
-    if ($alias === '') {
-        $items[] = Page\imageArrowLink($title, $href, $icon);
-    } else {
-        $description = htmlspecialchars($alias);
-        $items[] = Page\imageArrowLinkWithDescription($title,
-            $description, $href, $icon);
-    }
+    $title = htmlspecialchars($receivedContact->full_name);
+    $description = create_sender_description($receivedContact);
+    $href = "view/?id=$receivedContact->id";
+    $items[] = Page\imageArrowLinkWithDescription($title,
+        $description, $href, $icon);
 
 }
 if (!$all && $user->num_archived_received_contacts) {
@@ -57,6 +51,7 @@ if (!$all && $user->num_archived_received_contacts) {
         .'</form>';
 }
 
+include_once '../../fns/Page/imageArrowLink.php';
 $title = 'Delete All Contacts';
 $deleteAllLink = Page\imageArrowLink($title, 'delete-all/', 'trash-bin');
 

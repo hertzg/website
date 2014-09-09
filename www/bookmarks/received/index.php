@@ -26,22 +26,21 @@ if ($all) {
         $mysqli, $id_users);
 }
 
-include_once '../../fns/Page/imageArrowLink.php';
+include_once '../../fns/create_sender_description.php';
 include_once '../../fns/Page/imageArrowLinkWithDescription.php';
 
 $items = [];
-$icon = 'bookmark';
 foreach ($receivedBookmarks as $receivedBookmark) {
-    $href = "view/?id=$receivedBookmark->id";
-    $description = htmlspecialchars($receivedBookmark->url);
+
     $title = $receivedBookmark->title;
-    if ($title === '') {
-        $items[] = Page\imageArrowLink($description, $href, $icon);
-    } else {
-        $title = htmlspecialchars($title);
-        $items[] = Page\imageArrowLinkWithDescription($title,
-            $description, $href, $icon);
-    }
+    if ($title === '') $title = $receivedBookmark->url;
+    $title = htmlspecialchars($title);
+
+    $description = create_sender_description($receivedBookmark);
+    $href = "view/?id=$receivedBookmark->id";
+    $items[] = Page\imageArrowLinkWithDescription($title,
+        $description, $href, 'bookmark');
+
 }
 if (!$all && $user->num_archived_received_bookmarks) {
     include_once '../../fns/Form/button.php';
@@ -52,6 +51,7 @@ if (!$all && $user->num_archived_received_bookmarks) {
         .'</form>';
 }
 
+include_once '../../fns/Page/imageArrowLink.php';
 $title = 'Delete All Bookmarks';
 $deleteAllLink = Page\imageArrowLink($title, 'delete-all/', 'trash-bin');
 

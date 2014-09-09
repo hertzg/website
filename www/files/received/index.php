@@ -50,19 +50,24 @@ if ($all) {
 }
 
 $items = [];
-include_once "$fnsDir/Page/imageArrowLink.php";
+include_once "$fnsDir/create_sender_description.php";
+include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
 
 foreach ($receivedFolders as $receivedFolder) {
     $title = htmlspecialchars($receivedFolder->name);
+    $description = create_sender_description($receivedFolder);
     $href = "folder/?id=$receivedFolder->id";
-    $html = Page\imageArrowLink($title, $href, 'folder');
+    $html = Page\imageArrowLinkWithDescription($title,
+        $description, $href, 'folder');
     $items[$receivedFolder->insert_time] = $html;
 }
 
 foreach ($receivedFiles as $receivedFile) {
     $title = htmlspecialchars($receivedFile->name);
+    $description = create_sender_description($receivedFile);
     $href = "file/?id=$receivedFile->id";
-    $html = Page\imageArrowLink($title, $href, 'file');
+    $html = Page\imageArrowLinkWithDescription($title,
+        $description, $href, 'file');
     $items[$receivedFile->insert_time] = $html;
 }
 

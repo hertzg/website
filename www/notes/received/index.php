@@ -26,7 +26,8 @@ if ($all) {
         $mysqli, $id_users);
 }
 
-include_once '../../fns/Page/imageArrowLink.php';
+include_once '../../fns/create_sender_description.php';
+include_once '../../fns/Page/imageArrowLinkWithDescription.php';
 
 $items = [];
 foreach ($receivedNotes as $receivedNote) {
@@ -40,9 +41,11 @@ foreach ($receivedNotes as $receivedNote) {
         $icon = 'note';
     }
 
-    $href = "view/?id=$receivedNote->id";
     $title = htmlspecialchars($text);
-    $items[] = Page\imageArrowLink($title, $href, $icon);
+    $description = create_sender_description($receivedNote);
+    $href = "view/?id=$receivedNote->id";
+    $items[] = Page\imageArrowLinkWithDescription($title,
+        $description, $href, $icon);
 
 }
 if (!$all && $user->num_archived_received_notes) {
@@ -54,6 +57,7 @@ if (!$all && $user->num_archived_received_notes) {
         .'</form>';
 }
 
+include_once '../../fns/Page/imageArrowLink.php';
 $title = 'Delete All Notes';
 $deleteAllLink = Page\imageArrowLink($title, 'delete-all/', 'trash-bin');
 

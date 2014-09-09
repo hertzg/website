@@ -26,7 +26,7 @@ if ($all) {
         $mysqli, $id_users);
 }
 
-include_once '../../fns/Page/imageArrowLink.php';
+include_once '../../fns/create_sender_description.php';
 include_once '../../fns/Page/imageArrowLinkWithDescription.php';
 
 $items = [];
@@ -35,16 +35,11 @@ foreach ($receivedTasks as $receivedTask) {
     if ($receivedTask->top_priority) $icon = 'task-top-priority';
     else $icon = 'task';
 
-    $href = "view/?id=$receivedTask->id";
-    $tags = $receivedTask->tags;
     $title = htmlspecialchars($receivedTask->text);
-    if ($tags === '') {
-        $items[] = Page\imageArrowLink($title, $href, $icon);
-    } else {
-        $description = 'Tags: '.htmlspecialchars($tags);
-        $items[] = Page\imageArrowLinkWithDescription($title,
-            $description, $href, $icon);
-    }
+    $description = create_sender_description($receivedTask);
+    $href = "view/?id=$receivedTask->id";
+    $items[] = Page\imageArrowLinkWithDescription($title,
+        $description, $href, $icon);
 
 }
 if (!$all && $user->num_archived_received_tasks) {
@@ -56,6 +51,7 @@ if (!$all && $user->num_archived_received_tasks) {
         .'</form>';
 }
 
+include_once '../../fns/Page/imageArrowLink.php';
 $title = 'Delete All Tasks';
 $deleteAllLink = Page\imageArrowLink($title, 'delete-all/', 'trash-bin');
 
