@@ -4,6 +4,9 @@
 chdir(__DIR__);
 include_once '../../lib/require-cli.php';
 
+include_once '../../../fns/Bookmarks/maxLengths.php';
+$maxLengths = Bookmarks\maxLengths();
+
 include_once 'fns/ensure_table.php';
 ensure_table('bookmarks', [
     'id_bookmarks' => [
@@ -20,12 +23,12 @@ ensure_table('bookmarks', [
         'type' => 'bigint(20) unsigned',
     ],
     'tags' => [
-        'type' => 'varchar(256)',
+        'type' => "varchar($maxLengths[tags])",
         'characterSet' => 'utf8',
         'collation' => 'utf8_unicode_ci',
     ],
     'title' => [
-        'type' => 'varchar(128)',
+        'type' => "varchar($maxLengths[title])",
         'characterSet' => 'utf8',
         'collation' => 'utf8_unicode_ci',
     ],
@@ -33,7 +36,7 @@ ensure_table('bookmarks', [
         'type' => 'bigint(20) unsigned',
     ],
     'url' => [
-        'type' => 'varchar(2048)',
+        'type' => "varchar($maxLengths[url])",
         'characterSet' => 'utf8',
         'collation' => 'utf8_unicode_ci',
     ],
