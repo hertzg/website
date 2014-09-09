@@ -20,6 +20,7 @@ $content =
     ."    Header set Cache-Control \"public, max-age=2592000\"\n"
     ."</filesMatch>\n\n"
     ."DirectoryIndex index.php\n\n"
-    ."ErrorDocument 404 {$siteBase}404.php";
+    ."ErrorDocument 403 {$siteBase}403.php\n"
+    ."ErrorDocument 404 {$siteBase}404.php\n";
 
 file_put_contents('../.htaccess', $content);
