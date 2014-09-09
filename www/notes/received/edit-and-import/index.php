@@ -15,11 +15,9 @@ $maxLengths = Notes\maxLengths();
 
 $base = '../../../';
 
+include_once '../../fns/create_form_items.php';
 include_once '../../../fns/Form/button.php';
-include_once '../../../fns/Form/checkbox.php';
 include_once '../../../fns/Form/hidden.php';
-include_once '../../../fns/Form/textarea.php';
-include_once '../../../fns/Form/textfield.php';
 include_once '../../../fns/Page/sessionErrors.php';
 include_once '../../../fns/Page/tabs.php';
 $content = Page\tabs(
@@ -36,20 +34,7 @@ $content = Page\tabs(
     'Edit and Import',
     Page\sessionErrors('notes/received/edit-and-import/errors')
     .'<form action="submit.php" method="post">'
-        .Form\textarea('text', 'Text', [
-            'value' => $values['text'],
-            'maxlength' => $maxLengths['text'],
-            'required' => true,
-            'autofocus' => true,
-        ])
-        .'<div class="hr"></div>'
-        .Form\textfield('tags', 'Tags', [
-            'value' => $values['tags'],
-            'maxlength' => $maxLengths['tags'],
-        ])
-        .'<div class="hr"></div>'
-        .Form\checkbox($base, 'encrypt',
-            'Encrypt in Listings', $values['encrypt'])
+        .create_form_items($base, $values)
         .'<div class="hr"></div>'
         .Form\button('Import Note')
         .Form\hidden('id', $id)

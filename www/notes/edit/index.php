@@ -20,11 +20,9 @@ $maxLengths = Notes\maxLengths();
 
 $base = '../../';
 
+include_once '../fns/create_form_items.php';
 include_once '../../fns/Form/button.php';
-include_once '../../fns/Form/checkbox.php';
 include_once '../../fns/Form/hidden.php';
-include_once '../../fns/Form/textarea.php';
-include_once '../../fns/Form/textfield.php';
 include_once '../../fns/ItemList/escapedItemQuery.php';
 include_once '../../fns/ItemList/itemHiddenInputs.php';
 include_once '../../fns/ItemList/listHref.php';
@@ -45,20 +43,7 @@ $content = Page\tabs(
     'Edit',
     Page\sessionErrors('notes/edit/errors')
     .'<form action="submit.php" method="post">'
-        .Form\textarea('text', 'Text', [
-            'value' => $values['text'],
-            'maxlength' => $maxLengths['text'],
-            'autofocus' => true,
-            'required' => true,
-        ])
-        .'<div class="hr"></div>'
-        .Form\textfield('tags', 'Tags', [
-            'value' => $values['tags'],
-            'maxlength' => $maxLengths['tags'],
-        ])
-        .'<div class="hr"></div>'
-        .Form\checkbox($base, 'encrypt',
-            'Encrypt in Listings', $values['encrypt'])
+        .create_form_items($base, $values)
         .'<div class="hr"></div>'
         .Page\staticTwoColumns(
             Form\button('Save Changes'),
