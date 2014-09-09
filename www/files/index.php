@@ -1,26 +1,9 @@
 <?php
 
-$base = '../';
-
-include_once '../fns/require_user.php';
-$user = require_user($base);
-$id_users = $user->id_users;
-
+include_once 'fns/require_optional_folder.php';
 include_once '../lib/mysqli.php';
-
-include_once '../fns/request_strings.php';
-list($id_folders) = request_strings('id_folders');
-
-$folder = null;
-$id_folders = abs((int)$id_folders);
-if ($id_folders) {
-    include_once '../fns/Folders/get.php';
-    $folder = Folders\get($mysqli, $id_users, $id_folders);
-    if (!$folder) {
-        include_once '../fns/redirect.php';
-        redirect();
-    }
-}
+list($user, $folder, $id_folders) = require_optional_folder($mysqli, './');
+$id_users = $user->id_users;
 
 $items = [];
 
@@ -85,4 +68,4 @@ if ($id_folders) {
 }
 
 include_once '../fns/echo_page.php';
-echo_page($user, 'Files', $content, $base);
+echo_page($user, 'Files', $content, '../');
