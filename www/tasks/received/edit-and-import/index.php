@@ -35,14 +35,11 @@ $maxLengths = Tasks\maxLengths();
 
 $base = '../../../';
 
-include_once '../../../fns/Page/tabs.php';
+include_once '../../fns/create_form_items.php';
 include_once '../../../fns/Form/button.php';
-include_once '../../../fns/Form/checkbox.php';
-include_once '../../../fns/Form/datefield.php';
 include_once '../../../fns/Form/hidden.php';
-include_once '../../../fns/Form/textarea.php';
-include_once '../../../fns/Form/textfield.php';
 include_once '../../../fns/Page/sessionErrors.php';
+include_once '../../../fns/Page/tabs.php';
 $content = Page\tabs(
     [
         [
@@ -57,33 +54,7 @@ $content = Page\tabs(
     'Edit and Import',
     Page\sessionErrors('tasks/received/edit-and-import/errors')
     .'<form action="submit.php" method="post">'
-        .Form\textarea('text', 'Text', [
-            'value' => $values['text'],
-            'maxlength' => $maxLengths['text'],
-            'required' => true,
-            'autofocus' => true,
-        ])
-        .'<div class="hr"></div>'
-        .Form\datefield([
-            'name' => 'deadline_day',
-            'value' => $values['deadline_day'],
-        ], [
-            'name' => 'deadline_month',
-            'value' => $values['deadline_month'],
-        ], [
-            'name' => 'deadline_year',
-            'value' => $values['deadline_year'],
-            'min' => date('Y'),
-            'max' => date('Y') + 2,
-        ], 'Deadline', false, true)
-        .'<div class="hr"></div>'
-        .Form\textfield('tags', 'Tags', [
-            'value' => $values['tags'],
-            'maxlength' => $maxLengths['tags'],
-        ])
-        .'<div class="hr"></div>'
-        .Form\checkbox($base, 'top_priority',
-            'Mark as Top Priority', $values['top_priority'])
+        .create_form_items($base, $values)
         .'<div class="hr"></div>'
         .Form\button('Import Task')
         .Form\hidden('id', $id)
