@@ -1,3 +1,4 @@
+# auto-generated
 RewriteEngine On
 
 RewriteCond %{HTTP_HOST} ^www\.zvini\.com$
