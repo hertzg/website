@@ -4,6 +4,9 @@
 chdir(__DIR__);
 include_once '../../lib/require-cli.php';
 
+include_once '../../../fns/Notes/maxLengths.php';
+$maxLengths = Notes\maxLengths();
+
 include_once 'fns/ensure_table.php';
 ensure_table('received_notes', [
     'archived' => [
@@ -31,12 +34,12 @@ ensure_table('received_notes', [
         'collation' => 'ascii_bin',
     ],
     'tags' => [
-        'type' => 'varchar(256)',
+        'type' => "varchar($maxLengths[tags])",
         'characterSet' => 'utf8',
         'collation' => 'utf8_unicode_ci',
     ],
     'text' => [
-        'type' => 'varchar(1024)',
+        'type' => "varchar($maxLengths[text])",
         'characterSet' => 'utf8',
         'collation' => 'utf8_unicode_ci',
     ],

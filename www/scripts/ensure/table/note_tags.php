@@ -4,6 +4,9 @@
 chdir(__DIR__);
 include_once '../../lib/require-cli.php';
 
+include_once '../../../fns/Notes/maxLengths.php';
+$maxLengths = Notes\maxLengths();
+
 include_once 'fns/ensure_table.php';
 ensure_table('note_tags', [
     'encrypt' => [
@@ -28,7 +31,7 @@ ensure_table('note_tags', [
         'collation' => 'utf8_unicode_ci',
     ],
     'text' => [
-        'type' => 'text',
+        'type' => "varchar($maxLengths[text])",
         'characterSet' => 'utf8',
         'collation' => 'utf8_unicode_ci',
     ],
