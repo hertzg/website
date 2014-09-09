@@ -3,7 +3,7 @@
 function create_tag_filter_bar ($tags, array $params) {
     $html =
         '<div class="page-tags tagFilterBar">'
-            .'<span class="label">Filter by tags:</span>';
+            .'<span class="label">Filter by a tag:</span>';
     foreach ($tags as $tag) {
         $tag_name = $tag->tag_name;
         $params['tag'] = $tag_name;
