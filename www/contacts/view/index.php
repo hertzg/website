@@ -87,4 +87,6 @@ include_once 'fns/create_content.php';
 $content = create_content($contact, $infoText, $items);
 
 include_once '../../fns/echo_page.php';
-echo_page($user, "Contact #$id", $content, $base);
+echo_page($user, "Contact #$id", $content, $base, [
+    'head' => '<link rel="stylesheet" type="text/css" href="index.css" />',
+]);

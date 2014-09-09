@@ -19,7 +19,12 @@ function create_content ($contact, $infoText, $items) {
             ],
             "Contact #$contact->id_contacts",
             Page\sessionMessages('contacts/view/messages')
-            .join('<div class="hr"></div>', $items)
+            .'<div class="contactPanel">'
+                .'<div class="photo"></div>'
+                .'<div class="info">'
+                    .join('<div class="hr"></div>', $items)
+                .'</div>'
+            .'</div>'
             .$infoText
         )
         .create_options_panel($contact);
