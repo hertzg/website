@@ -57,6 +57,9 @@ function ensure_table ($tableName, array $columns) {
             if ($type === $existingType && $nullable === $existingNullable &&
                 $default === $existingDefault) continue;
 
+            echo "changing column $tableName.$columnName"
+                ." from $existingType to $type...\n";
+
             $escapedColumnName = $mysqli->real_escape_string($columnName);
             $sql = "alter table `$escapedTableName` change `$escapedColumnName`"
                 ." `$escapedColumnName` ".build_definition($column);
@@ -66,6 +69,7 @@ function ensure_table ($tableName, array $columns) {
         }
 
         foreach ($columns as $name => $column) {
+            echo "adding column $tableName.$name...\n";
             $escapedName = $mysqli->real_escape_string($name);
             $definition = build_definition($column);
             $sql = "alter table `$escapedTableName`"
@@ -74,6 +78,7 @@ function ensure_table ($tableName, array $columns) {
         }
 
     } else {
+        echo "creagin table $tableName...\n";
         $sql = "create table `$escapedTableName` (";
         $first = true;
         foreach ($columns as $name => $column) {
