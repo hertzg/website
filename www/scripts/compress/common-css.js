@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 process.chdir(__dirname)
-process.chdir('..')
+process.chdir('../..')
 
 var fs = require('fs'),
     uglifyCss = require('uglifycss')
