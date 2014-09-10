@@ -8,16 +8,16 @@ function create_photo_options_panel ($contact) {
     $escapedItemQuery = ItemList\escapedItemQuery($contact->id_contacts);
 
     include_once "$fnsDir/Page/imageArrowLink.php";
-    $href = "../edit-photo/$escapedItemQuery";
+    $href = "../photo/edit/$escapedItemQuery";
     $editLink = Page\imageArrowLink('Edit', $href, 'TODO');
 
     if ($contact->photo_data) {
 
-        $href = "../clear-photo/$escapedItemQuery";
-        $clearLink = Page\imageArrowLink('Clear', $href, 'TODO');
+        $href = "../photo/delete/$escapedItemQuery";
+        $deleteLink = Page\imageArrowLink('Delete', $href, 'TODO');
 
         include_once "$fnsDir/Page/staticTwoColumns.php";
-        $content = Page\staticTwoColumns($editLink, $clearLink);
+        $content = Page\staticTwoColumns($editLink, $deleteLink);
 
     } else {
         $content = $editLink;
