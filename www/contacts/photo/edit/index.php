@@ -25,7 +25,10 @@ $content = Page\tabs(
     'Edit Photo',
     Page\sessionErrors('contacts/photo/edit/errors')
     .'<form action="submit.php" method="post" enctype="multipart/form-data">'
-        .Form\filefield('file', 'Photo file', []/*, ['required' => true]*/)
+        .Form\filefield('file', 'Photo file', [
+            'required' => true,
+            'accept' => 'image/*',
+        ])
         .'<div class="hr"></div>'
         .Form\button('Upload Photo')
         .Form\hidden('id', $id)

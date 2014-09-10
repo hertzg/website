@@ -14,10 +14,15 @@ function filefield ($name, $text, $options) {
         $requiredAttribute = ' required="required"';
     }
 
+    $acceptAttribute = '';
+    if (array_key_exists('accept', $options)) {
+        $acceptAttribute = " accept=\"$options[accept]\"";
+    }
+
     include_once __DIR__.'/association.php';
     return association(
         '<input class="form-filefield" type="file"'
-        ."$multipleAttribute$requiredAttribute"
+        ."$multipleAttribute$requiredAttribute$acceptAttribute"
         ." id=\"$name\" name=\"$name\" />",
         "<label for=\"$name\">$text:</label>"
     );
