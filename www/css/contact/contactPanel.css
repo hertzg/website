@@ -1,6 +1,18 @@
 .contactPanel {
     position: relative;
 }
+.contactPanel > .photo {
+    line-height: 200px;
+    text-align: center;
+}
+.contactPanel > .photo > img {
+    display: inline-block;
+    vertical-align: middle;
+    border: 0;
+    width: 160px;
+    height: 160px;
+    background: #eee;
+}
 .contactPanel > .info {
     position: relative;
     border-left: 0 solid #eee;
