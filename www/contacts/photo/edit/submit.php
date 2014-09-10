@@ -55,6 +55,18 @@ ob_start();
 imagepng($destImage);
 $photoData = ob_get_clean();
 
+include_once '../../../fns/ContactPhotos/add.php';
+$photo_id = ContactPhotos\add($mysqli, $photoData);
+
+include_once '../../../fns/Contacts/editPhoto.php';
+Contacts\editPhoto($mysqli, $id, $photo_id);
+
+$old_photo_id = $contact->photo_id;
+if ($old_photo_id) {
+    include_once '../../../fns/ContactPhotos/delete.php';
+    ContactPhotos\delete($mysqli, $old_photo_id);
+}
+
 unset($_SESSION['contacts/photo/edit/errors']);
 $_SESSION['contacts/view/messages'] = ['The photo has been uploaded.'];
 redirect("../../view/$itemQuery");

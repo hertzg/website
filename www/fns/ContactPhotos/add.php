@@ -4,7 +4,8 @@ namespace ContactPhotos;
 
 function add ($mysqli, $content) {
 
-    $sql = 'insert into contact_photos () values()';
+    $insert_time = time();
+    $sql = "insert into contact_photos (insert_time) values ($insert_time)";
     $mysqli->query($sql) || trigger_error($mysqli->error);
     $id = $mysqli->insert_id;
 
@@ -12,5 +13,7 @@ function add ($mysqli, $content) {
     $path = path($id);
 
     file_put_contents($path, $content);
+
+    return $id;
 
 }

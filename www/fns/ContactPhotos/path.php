@@ -1,7 +1,7 @@
 <?php
 
-namespace ContactPhoto;
+namespace ContactPhotos;
 
 function path ($id) {
-    return __DIR__."/../data/contact-photos/$id";
+    return __DIR__."/../../data/contact-photos/$id";
 }

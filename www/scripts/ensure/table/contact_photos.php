@@ -11,10 +11,6 @@ ensure_table('contact_photos', [
         'type' => 'bigint(20) unsigned',
         'primary' => true,
     ],
-    'num_refs' => [
-        'type' => 'bigint(20) unsigned',
-        'default' => '1',
-    ],
     'insert_time' => [
         'type' => 'bigint(20) unsigned',
     ],
