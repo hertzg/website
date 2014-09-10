@@ -2,6 +2,7 @@
 
 function create_content ($contact, $infoText, $items) {
     include_once __DIR__.'/../fns/create_options_panel.php';
+    include_once __DIR__.'/../fns/create_photo_options_panel.php';
     include_once __DIR__.'/../../../fns/create_contact_panel.php';
     include_once __DIR__.'/../../../fns/ItemList/listHref.php';
     include_once __DIR__.'/../../../fns/Page/tabs.php';
@@ -23,5 +24,6 @@ function create_content ($contact, $infoText, $items) {
             .create_contact_panel('', join('<div class="hr"></div>', $items))
             .$infoText
         )
-        .create_options_panel($contact);
+        .create_options_panel($contact)
+        .create_photo_options_panel($contact);
 }
