@@ -68,7 +68,10 @@ $infoText = Page\infoText(
     .'<div>Contact received '.date_ago($receivedContact->insert_time).'.</div>'
 );
 
+$contactContent = join('<div class="hr"></div>', $items);
+
 include_once 'fns/create_options_panel.php';
+include_once '../../../fns/create_contact_panel.php';
 include_once '../../../fns/create_panel.php';
 include_once '../../../fns/Page/sessionMessages.php';
 include_once '../../../fns/Page/tabs.php';
@@ -87,10 +90,16 @@ $content = Page\tabs(
     Page\sessionMessages('contacts/received/view/messages')
     .Form\label('Received from',
         htmlspecialchars($receivedContact->sender_username))
-    .create_panel('The Contact', join('<div class="hr"></div>', $items))
+    .create_panel('The Contact', create_contact_panel('', $contactContent))
     .$infoText
     .create_options_panel($receivedContact)
 );
 
+include_once '../../../fns/get_revision.php';
+$cssRevision = get_revision('contact.compressed.css');
+
 include_once '../../../fns/echo_page.php';
-echo_page($user, "Received Contact #$id", $content, $base);
+echo_page($user, "Received Contact #$id", $content, $base, [
+    'head' => '<link rel="stylesheet" type="text/css"'
+        ." href=\"{$base}contact.compressed.css?$cssRevision\" />"
+]);

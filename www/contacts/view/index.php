@@ -86,7 +86,11 @@ $infoText = Page\infoText($text);
 include_once 'fns/create_content.php';
 $content = create_content($contact, $infoText, $items);
 
+include_once '../../fns/get_revision.php';
+$cssRevision = get_revision('contact.compressed.css');
+
 include_once '../../fns/echo_page.php';
 echo_page($user, "Contact #$id", $content, $base, [
-    'head' => '<link rel="stylesheet" type="text/css" href="index.css" />',
+    'head' => '<link rel="stylesheet" type="text/css"'
+        ." href=\"{$base}contact.compressed.css?$cssRevision\" />"
 ]);
