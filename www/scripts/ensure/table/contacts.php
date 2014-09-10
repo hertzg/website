@@ -67,6 +67,11 @@ ensure_table('contacts', [
         'characterSet' => 'utf8',
         'collation' => 'utf8_general_ci',
     ],
+    'photo_data' => [
+        'type' => 'text',
+        'characterSet' => 'ascii',
+        'collation' => 'ascii_bin',
+    ],
     'tags' => [
         'type' => "varchar($maxLengths[tags])",
         'characterSet' => 'utf8',
