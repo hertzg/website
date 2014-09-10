@@ -6,8 +6,10 @@ list($contact, $id, $user) = require_contact($mysqli, '../');
 
 include_once '../../../fns/Form/button.php';
 include_once '../../../fns/Form/filefield.php';
+include_once '../../../fns/Form/hidden.php';
 include_once '../../../fns/ItemList/escapedItemQuery.php';
 include_once '../../../fns/ItemList/listHref.php';
+include_once '../../../fns/Page/sessionErrors.php';
 include_once '../../../fns/Page/tabs.php';
 $content = Page\tabs(
     [
@@ -21,10 +23,12 @@ $content = Page\tabs(
         ],
     ],
     'Edit Photo',
-    '<form action="submit.php" method="post">'
-        .Form\filefield('file', 'Select a file', ['required' => true])
+    Page\sessionErrors('contacts/photo/edit/errors')
+    .'<form action="submit.php" method="post" enctype="multipart/form-data">'
+        .Form\filefield('file', 'Photo file', []/*, ['required' => true]*/)
         .'<div class="hr"></div>'
         .Form\button('Upload Photo')
+        .Form\hidden('id', $id)
     .'</form>'
 );
 
