@@ -33,6 +33,28 @@ if ($errors) {
     redirect("./$itemQuery");
 }
 
+$width = imagesx($image);
+$height = imagesy($image);
+$photoSize = 160;
+$destImage = imagecreatetruecolor($photoSize, $photoSize);
+
+if ($width < $height) {
+    $destWidth = $photoSize;
+    $destHeight = $height * $photoSize / $width;
+} else {
+    $destWidth = $width * $photoSize / $height;
+    $destHeight = $photoSize;
+}
+
+$x = ($photoSize - $destWidth) / 2;
+$y = ($photoSize - $destHeight) / 2;
+
+imagecopyresampled($destImage, $image, $x, $y, 0, 0,
+    $destWidth, $destHeight, $width, $height);
+ob_start();
+imagepng($destImage);
+$photoData = ob_get_clean();
+
 unset($_SESSION['contacts/photo/edit/errors']);
 $_SESSION['contacts/view/messages'] = ['The photo has been uploaded.'];
 redirect("../../view/$itemQuery");
