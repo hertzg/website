@@ -1,4 +1,5 @@
 backup-code.tgz
 backup-data.tgz
 zviniwww.sql
+www/data/*
 www/users/*

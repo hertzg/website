@@ -11,7 +11,7 @@ function create_photo_options_panel ($contact) {
     $href = "../photo/edit/$escapedItemQuery";
     $editLink = Page\imageArrowLink('Edit', $href, 'TODO');
 
-    if ($contact->photo_data) {
+    if ($contact->photo_id) {
 
         $href = "../photo/delete/$escapedItemQuery";
         $deleteLink = Page\imageArrowLink('Delete', $href, 'TODO');
