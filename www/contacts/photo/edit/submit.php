@@ -35,7 +35,7 @@ if ($errors) {
 
 $width = imagesx($image);
 $height = imagesy($image);
-$photoSize = 160;
+$photoSize = 164;
 $destImage = imagecreatetruecolor($photoSize, $photoSize);
 
 if ($width < $height) {

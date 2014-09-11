@@ -1,6 +1,15 @@
 <?php
 
 function create_content ($contact, $infoText, $items) {
+
+    $photo_id = $contact->photo_id;
+    if ($photo_id) {
+        $query = "?id=$contact->id_contacts&photo_id=$photo_id";
+        $photoSrc = "../photo/download/$query";
+    } else {
+        $photoSrc = '../../images/empty-photo.svg';
+    }
+
     include_once __DIR__.'/../fns/create_options_panel.php';
     include_once __DIR__.'/../fns/create_photo_options_panel.php';
     include_once __DIR__.'/../../../fns/create_contact_panel.php';
@@ -21,9 +30,10 @@ function create_content ($contact, $infoText, $items) {
             ],
             "Contact #$contact->id_contacts",
             Page\sessionMessages('contacts/view/messages')
-            .create_contact_panel('', join('<div class="hr"></div>', $items))
+            .create_contact_panel($photoSrc, join('<div class="hr"></div>', $items))
             .$infoText
         )
         .create_options_panel($contact)
         .create_photo_options_panel($contact);
+
 }
