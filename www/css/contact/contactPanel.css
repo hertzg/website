@@ -13,7 +13,7 @@
     height: 170px;
     padding: 1px;
     border-radius: 2px;
-    border: 2px solid #eee;
+    border: 1px solid #eee;
 }
 .contactPanel > .info {
     position: relative;
