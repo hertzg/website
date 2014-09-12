@@ -25,9 +25,7 @@ else {
     include_once '../../../fns/ApiKeys/getOnUserByName.php';
     include_once '../../../lib/mysqli.php';
     $apiKey = ApiKeys\getOnUserByName($mysqli, $user->id_users, $name, $id);
-    if ($apiKey) {
-        $errors[] = 'An API key with the same name already exists.';
-    }
+    if ($apiKey) $errors[] = 'An API key with the same name already exists.';
 }
 
 include_once '../../../fns/redirect.php';

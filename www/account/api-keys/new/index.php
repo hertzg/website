@@ -26,8 +26,8 @@ else {
 include_once '../fns/create_general_fields.php';
 include_once '../fns/create_permission_fields.php';
 include_once '../../../fns/Form/button.php';
-include_once '../../../fns/Page/tabs.php';
 include_once '../../../fns/Page/sessionErrors.php';
+include_once '../../../fns/Page/tabs.php';
 $content = Page\tabs(
     [
         [
