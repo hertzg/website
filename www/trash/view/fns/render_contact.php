@@ -60,6 +60,8 @@ function render_contact ($id, $contact, &$items, &$infoText) {
     else $photoSrc = '../../images/empty-photo.svg';
 
     $content = join('<div class="hr"></div>', $labelItems);
+
     include_once __DIR__.'/../../../fns/create_contact_panel.php';
     $items[] = create_contact_panel($photoSrc, $content);
+
 }
