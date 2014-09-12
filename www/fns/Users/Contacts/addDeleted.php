@@ -22,7 +22,7 @@ function addDeleted ($mysqli, $user, $data) {
     \Contacts\addDeleted($mysqli, $id, $id_users, $full_name, $alias,
         $data->address, $data->email, $phone1, $phone2, $birthday_time,
         $data->username, $data->timezone, $data->tags, $favorite,
-        $data->insert_time, $data->update_time);
+        $data->insert_time, $data->update_time, $data->photo_id);
 
     include_once __DIR__.'/../../ContactTags/add.php';
     \ContactTags\add($mysqli, $id_users, $id, $tag_names,

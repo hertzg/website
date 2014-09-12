@@ -11,7 +11,8 @@ function addDeleted ($mysqli, $receiver_id_users, $data) {
         $data->sender_username, $receiver_id_users, $data->full_name,
         $data->alias, $data->address, $data->email, $data->phone1,
         $data->phone2, $data->birthday_time, $data->username, $data->timezone,
-        $data->tags, $data->favorite, $archived, $data->insert_time);
+        $data->tags, $data->favorite, $archived, $data->insert_time,
+        $data->photo_id);
 
     include_once __DIR__.'/addNumber.php';
     addNumber($mysqli, $receiver_id_users, 1);
