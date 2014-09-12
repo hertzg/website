@@ -6,9 +6,8 @@ include_once '../../fns/require_user.php';
 $user = require_user($base);
 
 $key = 'account/change-password/values';
-if (array_key_exists($key, $_SESSION)) {
-    $values = $_SESSION[$key];
-} else {
+if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
+else {
     $values = [
         'currentPassword' => '',
         'password1' => '',
@@ -18,11 +17,11 @@ if (array_key_exists($key, $_SESSION)) {
 
 unset($_SESSION['account/messages']);
 
-include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/notes.php';
 include_once '../../fns/Form/password.php';
 include_once '../../fns/Page/sessionErrors.php';
+include_once '../../fns/Page/tabs.php';
 $content = Page\tabs(
     [
         [
@@ -54,7 +53,7 @@ $content = Page\tabs(
             'required' => true,
         ])
         .'<div class="hr"></div>'
-        .Form\button('Change')
+        .Form\button('Set Password')
     .'</form>'
 );
 
