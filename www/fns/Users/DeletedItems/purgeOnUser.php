@@ -6,6 +6,17 @@ function purgeOnUser ($mysqli, $id_users) {
 
     include_once __DIR__.'/../../DeletedItems/indexOnUserOfType.php';
 
+    $deletedItems = array_merge(
+        \DeletedItems\indexOnUserOfType($mysqli, $id_users, 'contact'),
+        \DeletedItems\indexOnUserOfType($mysqli, $id_users, 'receivedContact')
+    );
+    if ($deletedItems) {
+        include_once __DIR__.'/purgeContact.php';
+        foreach ($deletedItems as $deletedItem) {
+            purgeContact($mysqli, $deletedItem);
+        }
+    }
+
     $deletedItems = \DeletedItems\indexOnUserOfType($mysqli, $id_users, 'file');
     if ($deletedItems) {
         include_once __DIR__.'/purgeFile.php';

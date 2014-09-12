@@ -21,6 +21,6 @@ function addReceivedContact ($mysqli, $receivedContact) {
         'sender_id_users' => $receivedContact->sender_id_users,
         'sender_username' => $receivedContact->sender_username,
         'archived' => $receivedContact->archived,
-        'photo_id' => $contact->photo_id,
+        'photo_id' => $receivedContact->photo_id,
     ]);
 }
