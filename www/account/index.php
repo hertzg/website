@@ -13,11 +13,8 @@ $items = [Form\label('Username', $user->username)];
 
 $email = $user->email;
 if ($email !== '') {
-    $value =
-        "<span>$email</span>"
-        .'<span class="emailStatus">'
-            .' ('.($user->email_verified ? 'Verified' : 'Not verified').')'
-        .'</span>';
+    $verifiedHtml = $user->email_verified ? 'Verified' : 'Not verified';
+    $value = "$email ($verifiedHtml)";
     $items[] = Form\label('Email', $value);
 }
 
@@ -61,6 +58,4 @@ $content =
     .create_options_panel($user);
 
 include_once '../fns/echo_page.php';
-echo_page($user, 'Account', $content, $base, [
-    'head' => '<link rel="stylesheet" type="text/css" href="index.css" />',
-]);
+echo_page($user, 'Account', $content, $base);
