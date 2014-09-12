@@ -70,7 +70,9 @@ $infoText = Page\infoText(
 
 $contactContent = join('<div class="hr"></div>', $items);
 
-$photoSrc = '../../../images/empty-photo.svg';
+$photo_id = $receivedContact->photo_id;
+if ($photo_id) $photoSrc = "../download-photo/?id=$id";
+else $photoSrc = '../../../images/empty-photo.svg';
 
 include_once 'fns/create_options_panel.php';
 include_once '../../../fns/create_panel.php';
