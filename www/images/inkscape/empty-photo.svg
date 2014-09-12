@@ -9,8 +9,8 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="164"
-   height="164"
+   width="170"
+   height="170"
    id="svg2"
    version="1.1"
    inkscape:version="0.48.5 r10040"
@@ -24,18 +24,18 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2"
-     inkscape:cx="237.13342"
-     inkscape:cy="32.672957"
+     inkscape:zoom="4.171875"
+     inkscape:cx="83.72518"
+     inkscape:cy="3.9089121"
      inkscape:document-units="px"
      inkscape:current-layer="g3762"
      showgrid="true"
      showborder="false"
      inkscape:snap-global="false"
-     inkscape:window-width="1920"
-     inkscape:window-height="1017"
+     inkscape:window-width="1366"
+     inkscape:window-height="707"
      inkscape:window-x="0"
-     inkscape:window-y="27"
+     inkscape:window-y="25"
      inkscape:window-maximized="1">
     <inkscape:grid
        type="xygrid"
@@ -61,14 +61,14 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-888.36218)">
+     transform="translate(0,-882.36218)">
     <g
        id="g3843">
       <g
          id="g3762">
         <g
            id="g2995"
-           transform="matrix(0.98794649,0,0,0.98795169,0,12.679188)">
+           transform="matrix(1.0240909,0,0,1.0240963,0,-25.357996)">
           <rect
              transform="translate(0,886.36218)"
              y="0"
