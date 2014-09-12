@@ -15,7 +15,7 @@ list($full_name, $alias, $address, $email, $phone1, $phone2,
 include_once '../../fns/Users/Contacts/Received/add.php';
 Users\Contacts\Received\add($mysqli, $id_users, $user->username,
     $receiver_user->id_users, $full_name, $alias, $address, $email, $phone1,
-    $phone2, $birthday_time, $username, $timezone, $tags, $favorite);
+    $phone2, $birthday_time, $username, $timezone, $tags, $favorite, null);
 
 header('Content-Type: application/json');
 echo 'true';
