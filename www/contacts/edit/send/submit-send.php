@@ -5,7 +5,7 @@ require_same_domain_referer('../..');
 
 include_once 'fns/require_stage.php';
 include_once '../../../lib/mysqli.php';
-list($user, $stageValues, $id) = require_stage($mysqli);
+list($user, $stageValues, $id, $contact) = require_stage($mysqli);
 
 $checkFunction = function ($recipients,
     &$receiver_id_userss, &$errors) use ($mysqli, $user) {
@@ -17,7 +17,7 @@ $checkFunction = function ($recipients,
 };
 
 $sendFunction = function ($receiver_id_userss) use ($mysqli,
-    $stageValues, $user) {
+    $stageValues, $user, $contact) {
 
     include_once '../../../fns/Users/Contacts/Received/add.php';
     foreach ($receiver_id_userss as $receiver_id_users) {
@@ -27,7 +27,8 @@ $sendFunction = function ($receiver_id_userss) use ($mysqli,
             $stageValues['email'], $stageValues['phone1'],
             $stageValues['phone2'], $stageValues['birthday_time'],
             $stageValues['username'], $stageValues['timezone'],
-            $stageValues['tags'], $stageValues['favorite'], null);
+            $stageValues['tags'], $stageValues['favorite'],
+            $contact->photo_id);
     }
 
 };

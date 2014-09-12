@@ -3,7 +3,8 @@
 namespace Contacts;
 
 function add ($mysqli, $id_users, $full_name, $alias, $address, $email,
-    $phone1, $phone2, $birthday_time, $username, $timezone, $tags, $favorite) {
+    $phone1, $phone2, $birthday_time, $username, $timezone, $tags,
+    $favorite, $photo_id) {
 
     $full_name = $mysqli->real_escape_string($full_name);
     $alias = $mysqli->real_escape_string($alias);
@@ -21,17 +22,18 @@ function add ($mysqli, $id_users, $full_name, $alias, $address, $email,
     if ($timezone === null) $timezone = 'null';
     $tags = $mysqli->real_escape_string($tags);
     $favorite = $favorite ? '1' : '0';
+    if ($photo_id === null) $photo_id = 'null';
     $insert_time = $update_time = time();
 
     $sql = 'insert into contacts'
         .' (id_users, full_name, alias, address, email,'
         .' phone1, phone2, birthday_time, birthday_day,'
         .' birthday_month, username, timezone, tags, favorite,'
-        .' insert_time, update_time)'
+        .' photo_id, insert_time, update_time)'
         ." values ($id_users, '$full_name', '$alias', '$address', '$email',"
         ." '$phone1', '$phone2', $birthday_time, $birthday_day,"
         ." $birthday_month, '$username', $timezone, '$tags', $favorite,"
-        ." $insert_time, $update_time)";
+        ." $photo_id, $insert_time, $update_time)";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 

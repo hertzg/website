@@ -15,6 +15,7 @@ function importCopy ($mysqli, $user, $receivedContact) {
         $receivedContact->email, $receivedContact->phone1,
         $receivedContact->phone2, $receivedContact->birthday_time,
         $receivedContact->username, $receivedContact->timezone,
-        $tags, $tag_names, $receivedContact->favorite);
+        $tags, $tag_names, $receivedContact->favorite,
+        $receivedContact->photo_id);
 
 }
