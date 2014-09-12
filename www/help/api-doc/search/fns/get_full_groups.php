@@ -35,6 +35,10 @@ function get_full_groups () {
     include_once __DIR__.'/../../fns/contact/get_subgroups.php';
     $groups['contact']['subgroups'] = contact\get_subgroups();
 
+    include_once __DIR__.'/../../fns/contact/photo/get_methods.php';
+    $methods = contact\photo\get_methods();
+    $groups['contact']['subgroups']['photo']['methods'] = $methods;
+
     include_once __DIR__.'/../../fns/contact/received/get_methods.php';
     $methods = contact\received\get_methods();
     $groups['contact']['subgroups']['received']['methods'] = $methods;
