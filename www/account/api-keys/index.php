@@ -57,9 +57,9 @@ unset(
 );
 
 include_once '../../fns/create_panel.php';
-include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Page/sessionErrors.php';
 include_once '../../fns/Page/sessionMessages.php';
+include_once '../../fns/Page/tabs.php';
 $content = Page\tabs(
     [
         [
