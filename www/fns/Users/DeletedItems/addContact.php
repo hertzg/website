@@ -19,5 +19,6 @@ function addContact ($mysqli, $contact) {
         'favorite' => $contact->favorite,
         'insert_time' => $contact->insert_time,
         'update_time' => $contact->update_time,
+        'photo_id' => $contact->photo_id,
     ]);
 }
