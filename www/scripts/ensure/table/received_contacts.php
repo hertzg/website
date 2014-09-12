@@ -57,6 +57,10 @@ ensure_table('received_contacts', [
         'characterSet' => 'utf8',
         'collation' => 'utf8_general_ci',
     ],
+    'photo_id' => [
+        'type' => 'bigint(20) unsigned',
+        'nullable' => true,
+    ],
     'receiver_id_users' => [
         'type' => 'bigint(20) unsigned',
     ],

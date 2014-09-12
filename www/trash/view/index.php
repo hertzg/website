@@ -15,12 +15,23 @@ $typeName = item_type_name($type);
 include_once '../../fns/date_ago.php';
 $infoText = "$typeName deleted ".date_ago($deletedItem->insert_time).'.';
 
+$base = '../../';
+$head = '';
+
 if ($type == 'bookmark' || $type == 'receivedBookmark') {
     include_once 'fns/render_bookmark.php';
     render_bookmark($data, $items);
 } elseif ($type == 'contact' || $type == 'receivedContact') {
+
     include_once 'fns/render_contact.php';
-    render_contact($data, $items, $infoText);
+    render_contact($id, $data, $items, $infoText);
+
+    include_once '../../fns/get_revision.php';
+    $cssRevision = get_revision('contact.compressed.css');
+
+    $head = '<link rel="stylesheet" type="text/css"'
+        ." href=\"{$base}contact.compressed.css?$cssRevision\" />";
+
 } elseif ($type == 'note' || $type == 'receivedNote') {
     include_once 'fns/render_note.php';
     render_note($data, $items);
@@ -86,4 +97,6 @@ $content = Page\tabs(
 );
 
 include_once '../../fns/echo_page.php';
-echo_page($user, $title, $content, '../../');
+echo_page($user, $title, $content, $base, [
+    'head' => $head,
+]);
