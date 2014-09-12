@@ -2,7 +2,9 @@
 
 function create_expires_field ($apiKey) {
 
-    include_once __DIR__.'/../../../../fns/time_today.php';
+    $fnsDir = __DIR__.'/../../../../fns';
+
+    include_once "$fnsDir/time_today.php";
     $time_today = time_today();
 
     $label = 'Expires';
@@ -25,7 +27,7 @@ function create_expires_field ($apiKey) {
         }
     }
 
-    include_once __DIR__.'/../../../../fns/Form/label.php';
+    include_once "$fnsDir/Form/label.php";
     return Form\label($label, $content);
 
 }
