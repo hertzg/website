@@ -33,39 +33,8 @@ if ($errors) {
     redirect("./$itemQuery");
 }
 
-$width = imagesx($image);
-$height = imagesy($image);
-$photoSize = 165;
-$destImage = imagecreatetruecolor($photoSize, $photoSize);
-
-if ($width < $height) {
-    $destWidth = $photoSize;
-    $destHeight = $height * $photoSize / $width;
-} else {
-    $destWidth = $width * $photoSize / $height;
-    $destHeight = $photoSize;
-}
-
-$x = ($photoSize - $destWidth) / 2;
-$y = ($photoSize - $destHeight) / 2;
-
-imagecopyresampled($destImage, $image, $x, $y, 0, 0,
-    $destWidth, $destHeight, $width, $height);
-ob_start();
-imagepng($destImage);
-$photoData = ob_get_clean();
-
-include_once '../../../fns/ContactPhotos/add.php';
-$photo_id = ContactPhotos\add($mysqli, $photoData);
-
-include_once '../../../fns/Contacts/editPhoto.php';
-Contacts\editPhoto($mysqli, $id, $photo_id);
-
-$old_photo_id = $contact->photo_id;
-if ($old_photo_id) {
-    include_once '../../../fns/ContactPhotos/delete.php';
-    ContactPhotos\delete($mysqli, $old_photo_id);
-}
+include_once '../../../fns/Users/Contacts/Photo/set.php';
+Users\Contacts\Photo\set($mysqli, $contact, $image);
 
 unset($_SESSION['contacts/photo/edit/errors']);
 $_SESSION['contacts/view/messages'] = ['The photo has been uploaded.'];
