@@ -28,8 +28,7 @@ if ($timezone) {
 }
 
 include_once '../fns/get_themes.php';
-$themes = get_themes();
-$items[] = Form\label('Theme', $themes[$user->theme]);
+$items[] = Form\label('Theme', get_themes()[$user->theme]);
 
 include_once '../fns/date_ago.php';
 $items[] = Form\label('Account created', ucfirst(date_ago($user->insert_time)));
@@ -41,8 +40,8 @@ include_once '../fns/n_times.php';
 $items[] = Form\label('Signed in', ucfirst(n_times($user->num_logins)));
 
 include_once 'fns/create_options_panel.php';
-include_once '../fns/Page/tabs.php';
 include_once '../fns/Page/sessionMessages.php';
+include_once '../fns/Page/tabs.php';
 $content =
     Page\tabs(
         [
