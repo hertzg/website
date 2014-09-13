@@ -1,6 +1,8 @@
 <?php
 
-function get_themes () {
+namespace Themes;
+
+function index () {
     return [
         'orange' => 'Orange',
         'green' => 'Green',

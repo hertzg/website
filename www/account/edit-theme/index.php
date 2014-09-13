@@ -7,8 +7,8 @@ $user = require_user($base);
 
 unset($_SESSION['account/messages']);
 
-include_once '../../fns/get_themes.php';
-$themes = get_themes();
+include_once '../../fns/Themes/index.php';
+$themes = Themes\index();
 
 include_once '../../fns/Page/imageLink.php';
 $items = [];

@@ -252,7 +252,6 @@ ensure_table('users', [
     ],
     'theme' => [
         'type' => 'varchar(10)',
-        'default' => 'orange',
         'characterSet' => 'ascii',
         'collation' => 'ascii_bin',
     ],

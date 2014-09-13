@@ -27,8 +27,8 @@ if ($timezone) {
     $items[] = Form\label('Timezone', Timezone\format($timezone));
 }
 
-include_once '../fns/get_themes.php';
-$items[] = Form\label('Theme', get_themes()[$user->theme]);
+include_once '../fns/Themes/index.php';
+$items[] = Form\label('Theme', Themes\index()[$user->theme]);
 
 include_once '../fns/date_ago.php';
 $items[] = Form\label('Account created', ucfirst(date_ago($user->insert_time)));

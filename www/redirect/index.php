@@ -26,7 +26,11 @@ $body =
     .'location = '.json_encode($url)
     .'</script>';
 
-$theme = $user ? $user->theme : 'orange';
+if ($user) $theme = $user->theme;
+else {
+    include_once '../fns/Themes/getDefault.php';
+    $theme = Themes\getDefault();
+};
 
 include_once '../fns/echo_html.php';
 echo_html('Redirecting', '', $body, $theme, $base);

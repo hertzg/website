@@ -17,10 +17,13 @@ function add ($mysqli, $username, $password) {
     $password_salt = $mysqli->real_escape_string($password_salt);
     $insert_time = time();
 
+    include_once __DIR__.'/../Themes/getDefault.php';
+    $theme = \Themes\getDefault();
+
     $sql = 'insert into users (username, password_hash,'
-        .' password_salt, order_home_items, insert_time)'
+        .' password_salt, order_home_items, insert_time, theme)'
         ." values ('$username', '$password_hash',"
-        ." '$password_salt', '$order_home_items', $insert_time)";
+        ." '$password_salt', '$order_home_items', $insert_time, '$theme')";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
     $id_users = $mysqli->insert_id;

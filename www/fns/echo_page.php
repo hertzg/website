@@ -2,7 +2,11 @@
 
 function echo_page ($user, $title, $content, $base, array $options = []) {
 
-    $theme = $user ? $user->theme : 'orange';
+    if ($user) $theme = $user->theme;
+    else {
+        include_once __DIR__.'/Themes/getDefault.php';
+        $theme = Themes\getDefault();
+    }
 
     if (array_key_exists('head', $options)) $head = $options['head'];
     else $head = '';
