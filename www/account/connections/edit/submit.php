@@ -8,18 +8,9 @@ include_once '../../../lib/mysqli.php';
 list($connection, $id, $user) = require_connection($mysqli);
 $id_users = $user->id_users;
 
-include_once '../../../fns/request_strings.php';
+include_once '../../../fns/Connections/request.php';
 list($username, $can_send_bookmark, $can_send_channel, $can_send_contact,
-    $can_send_file, $can_send_note, $can_send_task) = request_strings(
-    'username', 'can_send_bookmark', 'can_send_channel', 'can_send_contact',
-    'can_send_file', 'can_send_note', 'can_send_task');
-
-$can_send_bookmark = (bool)$can_send_bookmark;
-$can_send_channel = (bool)$can_send_channel;
-$can_send_contact = (bool)$can_send_contact;
-$can_send_file = (bool)$can_send_file;
-$can_send_note = (bool)$can_send_note;
-$can_send_task = (bool)$can_send_task;
+    $can_send_file, $can_send_note, $can_send_task) = Connections\request();
 
 $errors = [];
 
