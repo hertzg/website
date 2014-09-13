@@ -15,13 +15,6 @@ function build_definition ($mysqli, $column) {
         if (!array_key_exists('nullable', $column) || !$column['nullable']) {
             $definition .= ' not null';
         }
-        if (array_key_exists('default', $column)) {
-            $default = $column['default'];
-            if ($default !== null && $default !== '') {
-                $escapedDefault = $mysqli->real_escape_string($default);
-                $definition .= " default '$escapedDefault'";
-            }
-        }
     }
 
     return $definition;

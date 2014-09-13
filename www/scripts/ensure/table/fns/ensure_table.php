@@ -36,7 +36,6 @@ function ensure_table ($tableName, array $columns) {
 
             $existingType = $existingColumn->COLUMN_TYPE;
             $existingNullable = $existingColumn->IS_NULLABLE === 'YES';
-            $existingDefault = $existingColumn->COLUMN_DEFAULT;
 
             $column = $columns[$columnName];
             $type = $column['type'];
@@ -48,14 +47,8 @@ function ensure_table ($tableName, array $columns) {
                 $nullable = false;
             }
 
-            if (array_key_exists('default', $column)) {
-                $default = $column['default'];
-            } else {
-                $default = null;
-            }
-
-            if ($type === $existingType && $nullable === $existingNullable &&
-                $default === $existingDefault) continue;
+            if ($type === $existingType &&
+                $nullable === $existingNullable) continue;
 
             echo "changing column $tableName.$columnName"
                 ." from $existingType to $type...\n";

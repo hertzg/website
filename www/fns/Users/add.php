@@ -21,9 +21,13 @@ function add ($mysqli, $username, $password) {
     $theme = \Themes\getDefault();
 
     $sql = 'insert into users (username, password_hash,'
-        .' password_salt, order_home_items, insert_time, theme)'
+        .' password_salt, order_home_items, insert_time, theme,'
+        .' show_bookmarks, show_calendar, show_contacts,'
+        .' show_files, show_notes, show_notifications,'
+        .' show_schedules, show_tasks, show_trash)'
         ." values ('$username', '$password_hash',"
-        ." '$password_salt', '$order_home_items', $insert_time, '$theme')";
+        ." '$password_salt', '$order_home_items', $insert_time, '$theme',"
+        .' 1, 1, 1, 1, 1, 1, 1, 1, 1)';
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
     $id_users = $mysqli->insert_id;

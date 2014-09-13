@@ -26,7 +26,6 @@ ensure_table('received_folder_files', [
     ],
     'media_type' => [
         'type' => "enum('audio','image','video','unknown')",
-        'default' => 'unknown',
         'characterSet' => 'utf8',
         'collation' => 'utf8_general_ci',
     ],

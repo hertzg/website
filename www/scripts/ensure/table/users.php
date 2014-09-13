@@ -201,19 +201,15 @@ ensure_table('users', [
     ],
     'show_bookmarks' => [
         'type' => 'tinyint(3) unsigned',
-        'default' => '1',
     ],
     'show_calendar' => [
         'type' => 'tinyint(3) unsigned',
-        'default' => '1',
     ],
     'show_contacts' => [
         'type' => 'tinyint(3) unsigned',
-        'default' => '1',
     ],
     'show_files' => [
         'type' => 'tinyint(3) unsigned',
-        'default' => '1',
     ],
     'show_new_bookmark' => [
         'type' => 'tinyint(3) unsigned',
@@ -229,23 +225,18 @@ ensure_table('users', [
     ],
     'show_notes' => [
         'type' => 'tinyint(3) unsigned',
-        'default' => '1',
     ],
     'show_notifications' => [
         'type' => 'tinyint(3) unsigned',
-        'default' => '1',
     ],
     'show_schedules' => [
         'type' => 'tinyint(3) unsigned',
-        'default' => '1',
     ],
     'show_tasks' => [
         'type' => 'tinyint(3) unsigned',
-        'default' => '1',
     ],
     'show_trash' => [
         'type' => 'tinyint(4)',
-        'default' => '1',
     ],
     'storage_used' => [
         'type' => 'bigint(20) unsigned',
