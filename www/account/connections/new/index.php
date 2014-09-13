@@ -11,9 +11,8 @@ unset(
 );
 
 $key = 'account/connections/new/values';
-if (array_key_exists($key, $_SESSION)) {
-    $values = $_SESSION[$key];
-} else {
+if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
+else {
     $values = [
         'username' => '',
         'can_send_bookmark' => false,

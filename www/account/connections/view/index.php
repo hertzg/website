@@ -4,11 +4,6 @@ include_once '../fns/require_connection.php';
 include_once '../../../lib/mysqli.php';
 list($connection, $id, $user) = require_connection($mysqli);
 
-$id = abs((int)$id);
-
-include_once '../../../fns/Connections/get.php';
-$connection = Connections\get($mysqli, $user->id_users, $id);
-
 unset(
     $_SESSION['account/connections/edit/errors'],
     $_SESSION['account/connections/edit/values'],
@@ -18,13 +13,9 @@ unset(
 
 include_once '../../../fns/Page/imageArrowLink.php';
 
-$title = 'Edit';
-$href = "../edit/?id=$id";
-$editLink = Page\imageArrowLink($title, $href, 'edit-connection');
+$editLink = Page\imageArrowLink('Edit', "../edit/?id=$id", 'edit-connection');
 
-$title = 'Delete';
-$href = "../delete/?id=$id";
-$deleteLink = Page\imageArrowLink($title, $href, 'trash-bin');
+$deleteLink = Page\imageArrowLink('Delete', "../delete/?id=$id", 'trash-bin');
 
 include_once '../fns/format_permissions.php';
 $permissions = format_permissions($connection->can_send_bookmark,
