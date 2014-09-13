@@ -12,12 +12,9 @@ function method_page ($groupName, $prefix,
     $items = [Page\text("<code>$prefix/$methodName</code> - $description")];
 
     if ($params) {
-        $text = 'Method parameters: ';
+        $text = 'Method parameters:';
         foreach ($params as $param) {
-            $text .=
-                '<div>'
-                    ."<code>$param[name]</code> - $param[description]"
-                .'</div>';
+            $text .= "<br /><code>$param[name]</code> - $param[description]";
         }
         $items[] = Page\text($text);
     } else {
@@ -25,7 +22,7 @@ function method_page ($groupName, $prefix,
     }
 
     if ($errors) {
-        $text = 'Expected errors: ';
+        $text = 'Expected errors:';
         foreach ($errors as $error => $description) {
             $text .= "<br /><code>$error</code> - $description";
         }
