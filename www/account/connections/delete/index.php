@@ -6,8 +6,8 @@ list($connection, $id, $user) = require_connection($mysqli);
 
 unset($_SESSION['account/connections/view/messages']);
 
-include_once '../../../fns/Page/tabs.php';
 include_once '../../../fns/Page/imageLink.php';
+include_once '../../../fns/Page/tabs.php';
 include_once '../../../fns/Page/text.php';
 include_once '../../../fns/Page/twoColumns.php';
 $content = Page\tabs(
@@ -22,9 +22,7 @@ $content = Page\tabs(
         ],
     ],
     "Connection #$id",
-    Page\text(
-        'Are you sure you want to delete the connection?'
-    )
+    Page\text('Are you sure you want to delete the connection?')
     .'<div class="hr"></div>'
     .Page\twoColumns(
         Page\imageLink('Yes, delete connection', "submit.php?id=$id", 'yes'),
