@@ -6,8 +6,8 @@ include_once '../../../fns/require_user.php';
 $user = require_user($base);
 
 unset(
-    $_SESSION['tokens/errors'],
-    $_SESSION['tokens/messages']
+    $_SESSION['account/tokens/errors'],
+    $_SESSION['account/tokens/messages']
 );
 
 include_once '../../../fns/Page/imageLink.php';

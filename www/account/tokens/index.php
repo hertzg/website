@@ -75,8 +75,8 @@ $content =
             ],
         ],
         'Sessions',
-        Page\sessionErrors('tokens/errors')
-        .Page\sessionMessages('tokens/messages')
+        Page\sessionErrors('account/tokens/errors')
+        .Page\sessionMessages('account/tokens/messages')
         .join('<div class="hr"></div>', $items)
     )
     .$optionsPanel;

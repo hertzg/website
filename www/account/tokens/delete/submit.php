@@ -10,8 +10,8 @@ list($token, $id, $user) = require_token($mysqli);
 include_once '../../../fns/Users/Tokens/delete.php';
 Users\Tokens\delete($mysqli, $token);
 
-unset($_SESSION['tokens/errors']);
-$_SESSION['tokens/messages'] = ['Remembered session has been deleted.'];
+unset($_SESSION['account/tokens/errors']);
+$_SESSION['account/tokens/messages'] = ['Remembered session has been deleted.'];
 
 include_once '../../../fns/redirect.php';
 redirect('..');

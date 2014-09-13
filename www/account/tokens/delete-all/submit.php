@@ -10,8 +10,8 @@ include_once '../../../fns/Users/Tokens/deleteAll.php';
 include_once '../../../lib/mysqli.php';
 Users\Tokens\deleteAll($mysqli, $user->id_users);
 
-unset($_SESSION['tokens/errors']);
-$_SESSION['tokens/messages'] = ['All remembered sessions have been deleted.'];
+unset($_SESSION['account/tokens/errors']);
+$_SESSION['account/tokens/messages'] = ['All remembered sessions have been deleted.'];
 
 include_once '../../../fns/redirect.php';
 redirect('..');
