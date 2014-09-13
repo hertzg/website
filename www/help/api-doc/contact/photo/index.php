@@ -3,7 +3,7 @@
 $subgroupKey = 'photo';
 
 include_once '../../fns/contact/get_subgroups.php';
-$subgroup = contact\get_subgroups()['photo'];
+$subgroup = contact\get_subgroups()[$subgroupKey];
 
 include_once '../../fns/contact/photo/get_methods.php';
 $methods = contact\photo\get_methods();

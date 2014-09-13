@@ -3,7 +3,7 @@
 $subgroupKey = 'received';
 
 include_once '../../fns/file/get_subgroups.php';
-$subgroup = file\get_subgroups()['received'];
+$subgroup = file\get_subgroups()[$subgroupKey];
 
 include_once '../../fns/file/received/get_methods.php';
 include_once '../../fns/subgroup_page.php';

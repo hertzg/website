@@ -3,7 +3,7 @@
 $subgroupKey = 'subscribed';
 
 include_once '../../fns/channel/get_subgroups.php';
-$subgroup = channel\get_subgroups()['subscribed'];
+$subgroup = channel\get_subgroups()[$subgroupKey];
 
 include_once '../../fns/channel/subscribed/get_methods.php';
 $methods = channel\subscribed\get_methods();
