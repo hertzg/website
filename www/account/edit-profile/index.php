@@ -37,6 +37,7 @@ $content = Page\tabs(
             'value' => $values['username'],
             'maxlength' => $maxLengths['username'],
             'autofocus' => true,
+            'required' => true,
         ])
         .'<div class="hr"></div>'
         .Form\textfield('email', 'Email', [

@@ -10,8 +10,8 @@ unset(
     $_SESSION['tokens/messages']
 );
 
-include_once '../../../fns/Page/tabs.php';
 include_once '../../../fns/Page/imageLink.php';
+include_once '../../../fns/Page/tabs.php';
 include_once '../../../fns/Page/text.php';
 include_once '../../../fns/Page/twoColumns.php';
 $content = Page\tabs(

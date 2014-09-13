@@ -13,6 +13,7 @@ function unset_session_vars () {
         $_SESSION['account/edit-profile/values'],
         $_SESSION['account/verify-email/errors'],
         $_SESSION['home/messages'],
+        $_SESSION['tokens/errors'],
         $_SESSION['tokens/messages']
     );
 }

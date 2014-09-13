@@ -19,7 +19,7 @@ function create_options_panel ($user) {
     $options[] = Page\imageArrowLink($title, 'edit-profile/', 'edit-profile');
 
     $icon = "edit-$user->theme-theme";
-    $options[] = Page\imageArrowLink('Edit Theme', './edit-theme/', $icon);
+    $options[] = Page\imageArrowLink('Edit Theme', 'edit-theme/', $icon);
 
     include_once __DIR__.'/create_tokens_link.php';
     $options[] = create_tokens_link($user);

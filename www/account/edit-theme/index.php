@@ -11,11 +11,11 @@ include_once '../../fns/get_themes.php';
 $themes = get_themes();
 
 include_once '../../fns/Page/imageLink.php';
-$themeItems = [];
+$items = [];
 foreach ($themes as $id => $theme) {
     $href = "submit.php?theme=$id";
     if ($id == $user->theme) $theme .= ' (Current)';
-    $themeItems[] = Page\imageLink($theme, $href, "$id-theme");
+    $items[] = Page\imageLink($theme, $href, "$id-theme");
 }
 
 include_once '../../fns/Page/tabs.php';
@@ -33,7 +33,7 @@ $content = Page\tabs(
     ],
     'Edit Theme',
     Page\warnings(['Select theme color:'])
-    .join('<div class="hr"></div>', $themeItems)
+    .join('<div class="hr"></div>', $items)
 );
 
 include_once '../../fns/echo_page.php';

@@ -12,6 +12,8 @@ list($theme) = request_strings('theme');
 include_once '../../fns/get_themes.php';
 $themes = get_themes();
 
+include_once '../../fns/redirect.php';
+
 if (!array_key_exists($theme, $themes)) redirect();
 
 include_once '../../fns/Users/editTheme.php';
@@ -20,5 +22,4 @@ Users\editTheme($mysqli, $user->id_users, $theme);
 
 $_SESSION['account/messages'] = ['Theme has changed.'];
 
-include_once '../../fns/redirect.php';
 redirect('..');

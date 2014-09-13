@@ -12,9 +12,8 @@ $token = require_valid_token($mysqli);
 $options = [];
 if (!$token) {
     $title = 'Remember Current Session';
-    $href = 'submit-remember.php';
     include_once '../../fns/Page/imageLink.php';
-    $options[] = Page\imageLink($title, $href, 'create-token');
+    $options[] = Page\imageLink($title, 'submit-remember.php', 'create-token');
 }
 
 include_once '../../fns/Tokens/indexOnUser.php';
@@ -26,23 +25,25 @@ if ($tokens) {
     include_once '../../fns/Page/imageArrowLink.php';
     include_once '../../fns/Page/imageArrowLinkWithDescription.php';
 
-    $options[] = Page\imageArrowLink('Delete All Sessions',
-        'delete-all/', 'trash-bin');
+    $title = 'Delete All Sessions';
+    $options[] = Page\imageArrowLink($title, 'delete-all/', 'trash-bin');
+
+    $icon = 'token';
+
     foreach ($tokens as $itemToken) {
 
         $text = bin2hex($itemToken->token_text);
-        if ($token && $itemToken->id == $token->id) {
-            $text .= ' (Current)';
-        }
+        if ($token && $itemToken->id == $token->id) $text .= ' (Current)';
+
+        $href = "view/?id=$itemToken->id";
 
         $user_agent = $itemToken->user_agent;
         if ($user_agent === null) {
-            $items[] = Page\imageArrowLink($text,
-                "view/?id=$itemToken->id", 'token');
+            $items[] = Page\imageArrowLink($text, $href, $icon);
         } else {
+            $description = htmlspecialchars($user_agent);
             $items[] = Page\imageArrowLinkWithDescription($text,
-                htmlspecialchars($user_agent),
-                "view/?id=$itemToken->id", 'token');
+                $description, $href, $icon);
         }
 
     }
