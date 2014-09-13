@@ -20,9 +20,9 @@ include_once '../../../fns/Page/imageArrowLink.php';
 $editLink = Page\imageArrowLink('Edit', 'edit/', 'edit-connection');
 
 include_once '../../../fns/create_panel.php';
-include_once '../../../fns/Page/tabs.php';
 include_once '../../../fns/Form/label.php';
 include_once '../../../fns/Page/sessionMessages.php';
+include_once '../../../fns/Page/tabs.php';
 $content = Page\tabs(
     [
         [
@@ -34,7 +34,7 @@ $content = Page\tabs(
             'href' => '..',
         ],
     ],
-    "Default Connection",
+    'Default Connection',
     Page\sessionMessages('account/connections/default/messages')
     .Form\label('Other users', $permissions)
     .create_panel('Connection Options', $editLink)
