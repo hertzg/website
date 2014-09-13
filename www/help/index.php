@@ -9,10 +9,10 @@ unset(
     $_SESSION['home/messages']
 );
 
-include_once '../fns/Page/tabs.php';
 include_once '../fns/Page/imageArrowLink.php';
 include_once '../fns/Page/imageLink.php';
 include_once '../fns/Page/sessionMessages.php';
+include_once '../fns/Page/tabs.php';
 $content = Page\tabs(
     [
         [

@@ -1,6 +1,6 @@
 <?php
 
-function subgroup_page ($groupKey, $subgroup, $subgroupKey, array $methods) {
+function subgroup_page ($groupKey, $subgroup, $subgroupKey, $methods) {
 
     $fnsDir = __DIR__.'/../../../fns';
 

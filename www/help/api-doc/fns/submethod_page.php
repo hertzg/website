@@ -1,14 +1,16 @@
 <?php
 
-function submethod_page ($groupKey, $subgroupName, $subgroupKey, $methodName,
-    $description, array $params, array $errors) {
+function submethod_page ($groupKey, $subgroupName,
+    $subgroupKey, $methodName, $description, $params, $errors) {
 
-    include_once __DIR__.'/../../../fns/signed_user.php';
+    $fnsDir = __DIR__.'/../../../fns';
+
+    include_once "$fnsDir/signed_user.php";
     $user = signed_user();
 
     $methodFullName = "$groupKey/$subgroupKey/$methodName";
 
-    include_once __DIR__.'/../../../fns/Page/text.php';
+    include_once "$fnsDir/Page/text.php";
     $items = [Page\text("<code>$methodFullName</code> - $description")];
 
     if ($params) {
@@ -34,7 +36,7 @@ function submethod_page ($groupKey, $subgroupName, $subgroupKey, $methodName,
     }
     $items[] = Page\text($text);
 
-    include_once __DIR__.'/../../../fns/Page/tabs.php';
+    include_once "$fnsDir/Page/tabs.php";
     $content = Page\tabs(
         [
             [
@@ -50,7 +52,7 @@ function submethod_page ($groupKey, $subgroupName, $subgroupKey, $methodName,
         join('<div class="hr"></div>', $items)
     );
 
-    include_once __DIR__.'/../../../fns/echo_page.php';
+    include_once "$fnsDir/echo_page.php";
     echo_page($user, "$methodFullName Method", $content, '../../../../../');
 
 }

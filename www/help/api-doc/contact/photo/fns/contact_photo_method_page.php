@@ -1,12 +1,13 @@
 <?php
 
-function contact_photo_method_page ($methodName,
-    array $params, array $errors) {
+function contact_photo_method_page ($methodName, $params, $errors) {
 
-    include_once __DIR__.'/../../../fns/contact/photo/get_methods.php';
+    $dir = __DIR__.'/../../../fns';
+
+    include_once "$dir/contact/photo/get_methods.php";
     $description = contact\photo\get_methods()[$methodName];
 
-    include_once __DIR__.'/../../../fns/submethod_page.php';
+    include_once "$dir/submethod_page.php";
     submethod_page('contact', 'Photo', 'photo',
         $methodName, $description, $params, $errors);
 

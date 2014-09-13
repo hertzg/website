@@ -1,12 +1,14 @@
 <?php
 
-function method_page ($groupName, $prefix, $methodName,
-    $description, array $params, array $errors) {
+function method_page ($groupName, $prefix,
+    $methodName, $description, $params, $errors) {
 
-    include_once __DIR__.'/../../../fns/signed_user.php';
+    $fnsDir = __DIR__.'/../../../fns';
+
+    include_once "$fnsDir/signed_user.php";
     $user = signed_user();
 
-    include_once __DIR__.'/../../../fns/Page/text.php';
+    include_once "$fnsDir/Page/text.php";
     $items = [Page\text("<code>$prefix/$methodName</code> - $description")];
 
     if ($params) {
@@ -32,7 +34,7 @@ function method_page ($groupName, $prefix, $methodName,
     }
     $items[] = Page\text($text);
 
-    include_once __DIR__.'/../../../fns/Page/tabs.php';
+    include_once "$fnsDir/Page/tabs.php";
     $content = Page\tabs(
         [
             [
@@ -48,7 +50,7 @@ function method_page ($groupName, $prefix, $methodName,
         join('<div class="hr"></div>', $items)
     );
 
-    include_once __DIR__.'/../../../fns/echo_page.php';
+    include_once "$fnsDir/echo_page.php";
     echo_page($user, "$prefix/$methodName Method", $content, '../../../../');
 
 }

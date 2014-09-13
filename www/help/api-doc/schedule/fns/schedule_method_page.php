@@ -2,10 +2,12 @@
 
 function schedule_method_page ($methodName, $params, $errors) {
 
-    include_once __DIR__.'/../../fns/schedule/get_methods.php';
+    $dir = __DIR__.'/../../fns';
+
+    include_once "$dir/schedule/get_methods.php";
     $description = schedule\get_methods()[$methodName];
 
-    include_once __DIR__.'/../../fns/method_page.php';
+    include_once "$dir/method_page.php";
     method_page('Schedule', 'schedule',
         $methodName, $description, $params, $errors);
 

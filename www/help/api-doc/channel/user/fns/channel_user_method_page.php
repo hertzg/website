@@ -1,11 +1,13 @@
 <?php
 
-function channel_user_method_page ($methodName, array $params, array $errors) {
+function channel_user_method_page ($methodName, $params, $errors) {
 
-    include_once __DIR__.'/../../../fns/channel/user/get_methods.php';
+    $dir = __DIR__.'/../../../fns';
+
+    include_once "$dir/channel/user/get_methods.php";
     $description = channel\user\get_methods()[$methodName];
 
-    include_once __DIR__.'/../../../fns/submethod_page.php';
+    include_once "$dir/submethod_page.php";
     submethod_page('channel', 'User', 'user',
         $methodName, $description, $params, $errors);
 
