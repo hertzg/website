@@ -17,11 +17,6 @@
         chargingElement.style.display = display
     }
 
-    var battery = navigator.battery
-    if (!battery) return
-    battery.addEventListener('chargingchange', updateCharging)
-    battery.addEventListener('levelchange', updateLevel)
-
     var valueElement = document.createElement('div')
     ;(function (style) {
         style.display = 'inline-block'
@@ -40,21 +35,9 @@
         style.width = '2px'
     })(plusElement.style)
 
-    var chargingElement = document.createElement('div')
-    ;(function (style) {
-        style.width = '9px'
-        style.height = '11px'
-        style.backgroundRepeat = 'none'
-        style.backgroundImage = 'url(' + base + 'images/charging.svg)'
-        style.position = 'absolute'
-        style.top = '-1px'
-        style.right = style.left = '0'
-        style.margin = 'auto'
-    })(chargingElement.style)
 
     var borderElement = document.createElement('div')
     borderElement.appendChild(valueElement)
-    borderElement.appendChild(chargingElement)
     ;(function (style) {
         style.textAlign = 'right'
         style.position = 'absolute'
@@ -68,6 +51,40 @@
     var batteryWrapper = document.getElementById('batteryWrapper')
     batteryWrapper.appendChild(plusElement)
     batteryWrapper.appendChild(borderElement)
+
+    var battery = navigator.battery
+    if (battery) {
+
+        battery.addEventListener('chargingchange', updateCharging)
+        battery.addEventListener('levelchange', updateLevel)
+
+        var chargingElement = document.createElement('div')
+        ;(function (style) {
+            style.width = '9px'
+            style.height = '11px'
+            style.backgroundRepeat = 'none'
+            style.backgroundImage = 'url(' + base + 'images/charging.svg)'
+            style.position = 'absolute'
+            style.top = '-1px'
+            style.right = style.left = '0'
+            style.margin = 'auto'
+        })(chargingElement.style)
+        borderElement.appendChild(chargingElement)
+
+    } else {
+        var questionElement = document.createElement('div')
+        ;(function (style) {
+            style.width = '9px'
+            style.height = '11px'
+            style.backgroundRepeat = 'none'
+            style.backgroundImage = 'url(' + base + 'images/question.svg)'
+            style.position = 'absolute'
+            style.top = '-1px'
+            style.right = style.left = '0'
+            style.margin = 'auto'
+        })(questionElement.style)
+        borderElement.appendChild(questionElement)
+    }
 
     updateCharging()
     updateLevel()
