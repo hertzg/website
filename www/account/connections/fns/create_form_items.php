@@ -17,35 +17,29 @@ function create_form_items ($base, $values) {
 
     include_once "$fnsDir/Form/checkbox.php";
 
-    $name = 'can_send_bookmark';
     $title = 'Can send bookmarks';
     $checked = $values['can_send_bookmark'];
-    $items[] = Form\checkbox($base, $name, $title, $checked);
+    $items[] = Form\checkbox($base, 'can_send_bookmark', $title, $checked);
 
-    $name = 'can_send_channel';
     $title = 'Can send channels';
     $checked = $values['can_send_channel'];
-    $items[] = Form\checkbox($base, $name, $title, $checked);
+    $items[] = Form\checkbox($base, 'can_send_channel', $title, $checked);
 
-    $name = 'can_send_contact';
     $title = 'Can send contacts';
     $checked = $values['can_send_contact'];
-    $items[] = Form\checkbox($base, $name, $title, $checked);
+    $items[] = Form\checkbox($base, 'can_send_contact', $title, $checked);
 
-    $name = 'can_send_file';
     $title = 'Can send files';
     $checked = $values['can_send_file'];
-    $items[] = Form\checkbox($base, $name, $title, $checked);
+    $items[] = Form\checkbox($base, 'can_send_file', $title, $checked);
 
-    $name = 'can_send_note';
     $title = 'Can send notes';
     $checked = $values['can_send_note'];
-    $items[] = Form\checkbox($base, $name, $title, $checked);
+    $items[] = Form\checkbox($base, 'can_send_note', $title, $checked);
 
-    $name = 'can_send_task';
     $title = 'Can send tasks';
     $checked = $values['can_send_task'];
-    $items[] = Form\checkbox($base, $name, $title, $checked);
+    $items[] = Form\checkbox($base, 'can_send_task', $title, $checked);
 
     return join('<div class="hr"></div>', $items);
 

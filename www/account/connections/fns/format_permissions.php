@@ -3,33 +3,20 @@
 function format_permissions ($can_send_bookmark, $can_send_channel,
     $can_send_contact, $can_send_file, $can_send_note, $can_send_task) {
 
-    $denied = function (&$permissions, $text) {
-        $permissions .= "<span class=\"denied\">$text</span><br />";
-    };
-
-    $granted = function (&$permissions, $text) {
-        $permissions .= "<span class=\"granted\">$text</span><br />";
-    };
-
     $html = '';
 
-    if ($can_send_bookmark) $granted($html, 'Can send bookmarks.');
-    else $denied($html, 'Cannot send bookmarks.');
+    $add = function ($condition, $grantedText, $deniedText) use (&$html) {
+        if ($condition) $tag = "<span class=\"granted\">$grantedText";
+        else $tag = "<span class=\"denied\">$deniedText";
+        $html .= "$tag</span><br />";
+    };
 
-    if ($can_send_channel) $granted($html, 'Can send channels.');
-    else $denied($html, 'Cannot send channels.');
-
-    if ($can_send_contact) $granted($html, 'Can send contacts.');
-    else $denied($html, 'Cannot send contacts.');
-
-    if ($can_send_file) $granted($html, 'Can send files.');
-    else $denied($html, 'Cannot send files.');
-
-    if ($can_send_note) $granted($html, 'Can send notes.');
-    else $denied($html, 'Cannot send notes.');
-
-    if ($can_send_task) $granted($html, 'Can send tasks.');
-    else $denied($html, 'Cannot send tasks.');
+    $add($can_send_bookmark, 'Can send bookmarks.', 'Cannot send bookmarks.');
+    $add($can_send_channel, 'Can send channels.', 'Cannot send channels.');
+    $add($can_send_contact, 'Can send contacts.', 'Cannot send contacts.');
+    $add($can_send_file, 'Can send files.', 'Cannot send files.');
+    $add($can_send_note, 'Can send notes.', 'Cannot send notes.');
+    $add($can_send_task, 'Can send tasks.', 'Cannot send tasks.');
 
     return $html;
 
