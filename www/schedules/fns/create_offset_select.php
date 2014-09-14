@@ -2,7 +2,9 @@
 
 function create_offset_select ($interval, $value) {
 
-    include_once __DIR__.'/../../fns/time_today.php';
+    $fnsDir = __DIR__.'/../../fns';
+
+    include_once "$fnsDir/time_today.php";
     $timeToday = time_today();
 
     $options = [
@@ -18,8 +20,8 @@ function create_offset_select ($interval, $value) {
         $i++;
     }
 
-    include_once __DIR__.'/../../fns/Form/notes.php';
-    include_once __DIR__.'/../../fns/Form/select.php';
+    include_once "$fnsDir/Form/notes.php";
+    include_once "$fnsDir/Form/select.php";
     return Form\select('offset_from_today', 'Next', $options, $value)
         .Form\notes(['The next day when the schedule is effective.']);
 

@@ -38,4 +38,4 @@ $content = Page\tabs(
 );
 
 include_once '../../../fns/echo_page.php';
-echo_page($user, 'New Schedule', $content, '../../../');
+echo_page($user, "Edit Schedule #$id", $content, '../../../');

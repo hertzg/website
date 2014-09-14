@@ -2,7 +2,9 @@
 
 function create_interval_select ($value) {
 
-    include_once __DIR__.'/../../fns/Schedules/limits.php';
+    $fnsDir = __DIR__.'/../../fns';
+
+    include_once "$fnsDir/Schedules/limits.php";
     $limits = Schedules\limits();
 
     $maxInterval = $limits['maxInterval'];
@@ -17,7 +19,7 @@ function create_interval_select ($value) {
         $options[$i] = "$i days";
     }
 
-    include_once __DIR__.'/../../fns/Form/select.php';
+    include_once "$fnsDir/Form/select.php";
     return Form\select('interval', 'Repeats in every', $options, $value);
 
 }

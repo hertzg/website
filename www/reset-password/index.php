@@ -20,17 +20,17 @@ $values = get_values();
 
 unset(
     $_SESSION['sign-in/errors'],
-    $_SESSION['sign-in/values'],
-    $_SESSION['sign-in/messages']
+    $_SESSION['sign-in/messages'],
+    $_SESSION['sign-in/values']
 );
 
-include_once '../fns/Page/tabs.php';
 include_once '../fns/Form/button.php';
 include_once '../fns/Form/hidden.php';
 include_once '../fns/Form/label.php';
 include_once '../fns/Form/notes.php';
 include_once '../fns/Form/password.php';
 include_once '../fns/Page/sessionErrors.php';
+include_once '../fns/Page/tabs.php';
 $content = Page\tabs(
     [
         [
