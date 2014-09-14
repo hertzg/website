@@ -6,14 +6,14 @@ include_once '../../fns/require_user.php';
 $user = require_user($base);
 
 unset(
-    $_SESSION['home/messages'],
     $_SESSION['home/customize/reorder/messages'],
-    $_SESSION['home/customize/show-hide/messages']
+    $_SESSION['home/customize/show-hide/messages'],
+    $_SESSION['home/messages']
 );
 
-include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../fns/Page/imageArrowLinkWithDescription.php';
+include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Page/sessionMessages.php';
 $content = Page\tabs(
     [

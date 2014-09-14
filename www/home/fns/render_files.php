@@ -1,18 +1,18 @@
 <?php
 
-function render_files ($user, array &$items) {
+function render_files ($user, &$items) {
 
     if (!$user->show_files) return;
 
     $fnsPageDir = __DIR__.'/../../fns/Page';
 
-    $key = 'files';
-    $title = 'Files';
-    $href = '../files/';
-    $icon = 'files';
     $storage_used = $user->storage_used;
     $num_received_files = $user->num_received_files;
     $num_received_folders = $user->num_received_folders;
+
+    $title = 'Files';
+    $href = '../files/';
+    $icon = 'files';
     if ($num_received_files || $num_received_folders || $storage_used) {
 
         $descriptionItems = [];
@@ -27,12 +27,14 @@ function render_files ($user, array &$items) {
         $description = join(' ', $descriptionItems);
 
         include_once "$fnsPageDir/imageArrowLinkWithDescription.php";
-        $items[$key] = Page\imageArrowLinkWithDescription($title,
+        $link = Page\imageArrowLinkWithDescription($title,
             $description, $href, $icon);
 
     } else {
         include_once "$fnsPageDir/imageArrowLink.php";
-        $items[$key] = Page\imageArrowLink($title, $href, $icon);
+        $link = Page\imageArrowLink($title, $href, $icon);
     }
+
+    $items['files'] = $link;
 
 }

@@ -1,8 +1,9 @@
 <?php
 
 $base = '../../../';
+$fnsDir = '../../../fns';
 
-include_once '../../../fns/require_user.php';
+include_once "$fnsDir/require_user.php";
 $user = require_user($base);
 
 include_once 'fns/get_home_items.php';
@@ -11,7 +12,7 @@ $homeItems = get_home_items();
 include_once '../fns/get_user_home_items.php';
 $userHomeItems = get_user_home_items($homeItems, $user);
 
-include_once '../../../fns/Page/imageArrowLink.php';
+include_once "$fnsDir/Page/imageArrowLink.php";
 $items = [];
 foreach ($userHomeItems as $key => $item) {
     list($title, $icon) = $item;
@@ -21,9 +22,9 @@ foreach ($userHomeItems as $key => $item) {
 unset($_SESSION['home/customize/messages']);
 
 include_once 'fns/create_options_panel.php';
-include_once '../../../fns/Page/tabs.php';
-include_once '../../../fns/Page/sessionMessages.php';
-include_once '../../../fns/Page/warnings.php';
+include_once "$fnsDir/Page/sessionMessages.php";
+include_once "$fnsDir/Page/tabs.php";
+include_once "$fnsDir/Page/warnings.php";
 $content = Page\tabs(
     [
         [
@@ -42,5 +43,5 @@ $content = Page\tabs(
     .create_options_panel()
 );
 
-include_once '../../../fns/echo_page.php';
+include_once "$fnsDir/echo_page.php";
 echo_page($user, 'Reorder Items', $content, $base);

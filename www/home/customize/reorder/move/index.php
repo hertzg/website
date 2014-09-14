@@ -10,9 +10,11 @@ unset($_SESSION['home/customize/reorder/messages']);
 $topHref = "submit-to-top.php?key=$key";
 $bottomHref = "submit-to-bottom.php?key=$key";
 
-include_once '../../../../fns/Page/tabs.php';
-include_once '../../../../fns/Page/imageLink.php';
-include_once '../../../../fns/Page/text.php';
+$fnsDir = '../../../../fns';
+
+include_once "$fnsDir/Page/imageLink.php";
+include_once "$fnsDir/Page/tabs.php";
+include_once "$fnsDir/Page/text.php";
 $content = Page\tabs(
     [
         [
@@ -36,5 +38,5 @@ $content = Page\tabs(
     .Page\imageLink('Move to the Bottom', $bottomHref, 'move-to-bottom')
 );
 
-include_once '../../../../fns/echo_page.php';
+include_once "$fnsDir/echo_page.php";
 echo_page($user, "Move \"$title\"", $content, '../../../../');

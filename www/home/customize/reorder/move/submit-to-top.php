@@ -8,9 +8,7 @@ list($item, $key, $user) = require_item();
 
 $order_home_items = json_decode($user->order_home_items);
 $index = array_search($key, $order_home_items);
-if ($index !== -1) {
-    array_splice($order_home_items, $index, 1);
-}
+if ($index !== -1) array_splice($order_home_items, $index, 1);
 array_unshift($order_home_items, $key);
 $order_home_items = json_encode($order_home_items);
 

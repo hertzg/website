@@ -23,12 +23,14 @@ function render_schedules ($user, $mysqli, &$items) {
         $description = join(' ', $descriptionItems);
 
         include_once "$fnsPageDir/imageArrowLinkWithDescription.php";
-        $items['schedules'] = Page\imageArrowLinkWithDescription(
+        $link = Page\imageArrowLinkWithDescription(
             $title, $description, $href, $icon);
 
     } else {
         include_once "$fnsPageDir/imageArrowLink.php";
-        $items['schedules'] = Page\imageArrowLink($title, $href, $icon);
+        $link = Page\imageArrowLink($title, $href, $icon);
     }
+
+    $items['schedules'] = $link;
 
 }

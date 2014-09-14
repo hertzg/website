@@ -66,9 +66,7 @@ function get_home_items ($mysqli, $user) {
     $sortedItems = [];
     $order_home_items = json_decode($user->order_home_items);
     foreach ($order_home_items as $key) {
-        if (array_key_exists($key, $items)) {
-            $sortedItems[] = $items[$key];
-        }
+        if (array_key_exists($key, $items)) $sortedItems[] = $items[$key];
     }
     return $sortedItems;
 

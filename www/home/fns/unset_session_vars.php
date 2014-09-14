@@ -5,6 +5,7 @@ function unset_session_vars () {
         $_SESSION['account/messages'],
         $_SESSION['bookmarks/errors'],
         $_SESSION['bookmarks/messages'],
+        $_SESSION['contacts/errors'],
         $_SESSION['calendar/messages'],
         $_SESSION['contacts/errors'],
         $_SESSION['contacts/messages'],

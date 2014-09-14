@@ -1,6 +1,8 @@
 <?php
 
-include_once '../../../../fns/require_same_domain_referer.php';
+$dir = '../../../../';
+
+include_once "$dir/fns/require_same_domain_referer.php";
 require_same_domain_referer('..');
 
 include_once 'fns/require_item.php';
@@ -16,12 +18,12 @@ if ($index === false) {
 }
 $order_home_items = json_encode($order_home_items);
 
-include_once '../../../../fns/Users/Home/editOrder.php';
-include_once '../../../../lib/mysqli.php';
+include_once "$dir/fns/Users/Home/editOrder.php";
+include_once "$dir/lib/mysqli.php";
 Users\Home\editOrder($mysqli, $user->id_users, $order_home_items);
 
 $message = "\"$item[title]\" has been moved up.";
 $_SESSION['home/customize/reorder/messages'] = [$message];
 
-include_once '../../../../fns/redirect.php';
+include_once "$dir/fns/redirect.php";
 redirect('..');

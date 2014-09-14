@@ -1,16 +1,17 @@
 <?php
 
 $base = '../../../../';
+$fnsDir = '../../../../fns';
 
-include_once '../../../../fns/require_user.php';
+include_once "$fnsDir/require_user.php";
 $user = require_user($base);
 
 unset($_SESSION['home/customize/show-hide/messages']);
 
-include_once '../../../../fns/Page/tabs.php';
-include_once '../../../../fns/Page/imageLink.php';
-include_once '../../../../fns/Page/text.php';
-include_once '../../../../fns/Page/twoColumns.php';
+include_once "$fnsDir/Page/imageLink.php";
+include_once "$fnsDir/Page/tabs.php";
+include_once "$fnsDir/Page/text.php";
+include_once "$fnsDir/Page/twoColumns.php";
 $content = Page\tabs(
     [
         [
@@ -32,5 +33,5 @@ $content = Page\tabs(
     )
 );
 
-include_once '../../../../fns/echo_page.php';
+include_once "$fnsDir/echo_page.php";
 echo_page($user, 'Restore Defaults?', $content, $base);

@@ -12,11 +12,11 @@ unset($_SESSION['help/messages']);
 include_once '../../fns/Feedbacks/maxLengths.php';
 $maxLengths = Feedbacks\maxLengths();
 
-include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/notes.php';
 include_once '../../fns/Form/textarea.php';
 include_once '../../fns/Page/sessionErrors.php';
+include_once '../../fns/Page/tabs.php';
 $content = Page\tabs(
     [
         [
