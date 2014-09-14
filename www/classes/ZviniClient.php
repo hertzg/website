@@ -5,9 +5,9 @@ class ZviniClient {
     public $api_key;
     public $base;
 
-    function __construct ($api_key, $domain_name, $siteBase) {
+    function __construct ($api_key, $domain_name, $siteBase, $site_protocol) {
         $this->api_key = $api_key;
-        $this->base = "https://$domain_name{$siteBase}api-call/";
+        $this->base = "$site_protocol://$domain_name{$siteBase}api-call/";
     }
 
     function call ($method, array $params) {
@@ -17,7 +17,7 @@ class ZviniClient {
             CURLOPT_POSTFIELDS => http_build_query($params),
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_TIMEOUT => 10,
-            CURLOPT_URL => "$this->base$method.php",
+            CURLOPT_URL => "$this->base$method",
         ]);
         $response = curl_exec($ch);
         $response = json_decode($response);

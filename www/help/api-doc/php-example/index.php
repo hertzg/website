@@ -17,7 +17,13 @@ $user = signed_user();
 include_once "$fnsDir/get_domain_name.php";
 $domain_name = get_domain_name();
 
-$api_base = "https://$domain_name/api-call/";
+include_once "$fnsDir/get_site_base.php";
+$siteBase = get_site_base();
+
+include_once "$fnsDir/get_site_protocol.php";
+$site_protocol = get_site_protocol();
+
+$api_base = "$site_protocol://$domain_name{$siteBase}api-call/";
 
 $code =
     "// prepare parameters\n"
@@ -27,7 +33,7 @@ $code =
     ."    'param2' => 'value2',\n"
     ."];\n"
     ."\$api_key = 'dee48716455972ce2...';\n"
-    ."\$api_base = 'https://$domain_name/api-call/';\n"
+    ."\$api_base = '$api_base';\n"
     ."\n"
     ."// send request\n"
     ."\$ch = curl_init();\n"

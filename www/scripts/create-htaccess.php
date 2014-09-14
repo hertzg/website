@@ -11,17 +11,24 @@ include_once '../fns/get_domain_name.php';
 $domain_name = get_domain_name();
 $escaped_domain_name = preg_quote($domain_name);
 
+include_once '../fns/get_domain_name.php';
+$site_protocol = get_site_protocol();
+
 $content =
     "# auto-generated\n"
     ."RewriteEngine On\n"
     ."\n"
     ."RewriteCond %{HTTP_HOST} ^www\.$escaped_domain_name$\n"
-    ."RewriteRule (.*) https://$domain_name/$1 [R=301,L]\n"
-    ."\n"
-    ."RewriteCond %{HTTPS} !^on$\n"
-    ."RewriteCond %{HTTP_HOST} ^$escaped_domain_name$\n"
-    ."RewriteRule (.*) https://$domain_name/$1 [R=301,L]\n"
-    ."\n"
+    ."RewriteRule (.*) $site_protocol://$domain_name/$1 [R=301,L]\n"
+    ."\n";
+if ($site_protocol == 'http') {
+    $content .=
+        ."RewriteCond %{HTTPS} !^on$\n"
+        ."RewriteCond %{HTTP_HOST} ^$escaped_domain_name$\n"
+        ."RewriteRule (.*) https://$domain_name/$1 [R=301,L]\n"
+        ."\n";
+}
+$content .=
     ."<filesMatch \"\.(css|js|svg)$\">\n"
     ."    Header set Cache-Control \"public, max-age=2592000\"\n"
     ."</filesMatch>\n"
