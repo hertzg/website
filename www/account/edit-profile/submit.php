@@ -26,15 +26,15 @@ check_username($mysqli, $username, $errors, $id_users);
 $email = str_collapse_spaces($email);
 $email = mb_strtolower($email, 'UTF-8');
 if ($email !== '') {
-    include_once '../../fns/is_email_valid.php';
-    if (!is_email_valid($email)) {
-        $errors[] = 'Enter a valid email address.';
-    } else {
+    include_once '../../fns/Email/isValid.php';
+    if (Email\isValid($email)) {
         include_once '../../fns/Users/getByEmail.php';
         if (Users\getByEmail($mysqli, $email, $id_users)) {
             $errors[] = 'A username with this email is already registered.'
                 .' Try another.';
         }
+    } else {
+        $errors[] = 'Enter a valid email address.';
     }
 }
 
