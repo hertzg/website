@@ -12,7 +12,7 @@ function add ($mysqli, $id_users, $username,
     $insert_time = $update_time = time();
 
     $sql = 'insert into channels (id_users, username, channel_name,'
-    .' public, receive_notifications, insert_time, update_time)'
+        .' public, receive_notifications, insert_time, update_time)'
         ." values ($id_users, '$username', '$channel_name',"
         ." $public, $receive_notifications, $insert_time, $update_time)";
 
