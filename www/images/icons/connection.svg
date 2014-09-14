@@ -139,15 +139,6 @@
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(1,0,0,0.3125,2719.9998,1038.9248)" />
     <linearGradient
-       x1="2574.1982"
-       y1="52.821346"
-       x2="2576.625"
-       y2="54.96875"
-       id="linearGradient11087"
-       xlink:href="#linearGradient6449-7"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(-1,1020.2372)" />
-    <linearGradient
        id="linearGradient6449-7">
       <stop
          id="stop6451-1"
@@ -159,14 +150,6 @@
          offset="1" />
     </linearGradient>
     <linearGradient
-       x1="2561.688"
-       y1="1060.6854"
-       x2="2561.688"
-       y2="1071.6854"
-       id="linearGradient11089"
-       xlink:href="#linearGradient7187-9"
-       gradientUnits="userSpaceOnUse" />
-    <linearGradient
        id="linearGradient7187-9">
       <stop
          id="stop7189-3"
@@ -177,39 +160,6 @@
          style="stop-color:#499cd3;stop-opacity:1"
          offset="1" />
     </linearGradient>
-    <linearGradient
-       x1="2583.688"
-       y1="1060.6854"
-       x2="2583.688"
-       y2="1071.6854"
-       id="linearGradient11091"
-       xlink:href="#linearGradient7187-9"
-       gradientUnits="userSpaceOnUse" />
-    <linearGradient
-       x1="2574.1982"
-       y1="52.821346"
-       x2="2576.625"
-       y2="54.96875"
-       id="linearGradient11119"
-       xlink:href="#linearGradient6449-7"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(-1,1020.2372)" />
-    <linearGradient
-       x1="2561.688"
-       y1="1060.6854"
-       x2="2561.688"
-       y2="1071.6854"
-       id="linearGradient11121"
-       xlink:href="#linearGradient7187-9"
-       gradientUnits="userSpaceOnUse" />
-    <linearGradient
-       x1="2583.688"
-       y1="1060.6854"
-       x2="2583.688"
-       y2="1071.6854"
-       id="linearGradient11123"
-       xlink:href="#linearGradient7187-9"
-       gradientUnits="userSpaceOnUse" />
     <linearGradient
        x1="2574.1982"
        y1="52.821346"

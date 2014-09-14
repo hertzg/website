@@ -14,7 +14,7 @@
    height="32"
    id="svg4572"
    version="1.1"
-   inkscape:version="0.48.4 r9939"
+   inkscape:version="0.48.5 r10040"
    sodipodi:docname="trash.svg">
   <defs
      id="defs4574">
@@ -58,26 +58,6 @@
        inkscape:collect="always"
        xlink:href="#linearGradient3837-8"
        id="linearGradient4703"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(-1.1865904,1020.2709)"
-       x1="13"
-       y1="22"
-       x2="24.593296"
-       y2="17.041599" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient3837-8"
-       id="linearGradient6048"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(-1.1865904,1020.2709)"
-       x1="13"
-       y1="22"
-       x2="24.593296"
-       y2="17.041599" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient3837-8"
-       id="linearGradient6066"
        gradientUnits="userSpaceOnUse"
        gradientTransform="translate(-1.1865904,1020.2709)"
        x1="13"

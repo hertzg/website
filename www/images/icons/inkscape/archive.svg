@@ -14,7 +14,7 @@
    height="32"
    id="svg9290"
    version="1.1"
-   inkscape:version="0.48.4 r9939"
+   inkscape:version="0.48.5 r10040"
    sodipodi:docname="archive.svg">
   <defs
      id="defs9292">
@@ -55,45 +55,6 @@
        id="radialGradient9395"
        xlink:href="#linearGradient3592-9"
        inkscape:collect="always" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient10733"
-       id="linearGradient10739"
-       x1="7"
-       y1="33"
-       x2="7"
-       y2="44"
-       gradientUnits="userSpaceOnUse" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient10733"
-       id="linearGradient10792"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(0,1020.8622)"
-       x1="7"
-       y1="33"
-       x2="7"
-       y2="44" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient10733"
-       id="linearGradient10802"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(0,1020.8622)"
-       x1="7"
-       y1="33"
-       x2="7"
-       y2="44" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient10733"
-       id="linearGradient10805"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(0,1020.8622)"
-       x1="7"
-       y1="33"
-       x2="7"
-       y2="44" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient10733"
@@ -140,7 +101,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
