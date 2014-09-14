@@ -2,7 +2,7 @@
 
 namespace ItemList;
 
-function escapedPageQuery (array $params = []) {
+function escapedPageQuery ($params = []) {
     include_once __DIR__.'/pageQuery.php';
     return htmlspecialchars(pageQuery($params));
 }

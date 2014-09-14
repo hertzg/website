@@ -2,7 +2,7 @@
 
 namespace ItemList;
 
-function pageParams (array $params = []) {
+function pageParams ($params = []) {
 
     include_once __DIR__.'/../request_keyword_tag_offset.php';
     list($keyword, $tag, $offset) = request_keyword_tag_offset();
