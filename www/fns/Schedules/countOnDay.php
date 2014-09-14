@@ -12,8 +12,7 @@ function countOnDay ($mysqli, $id_users, $day) {
         include_once __DIR__.'/../days_left.php';
         foreach ($schedules as $schedule) {
             $interval = $schedule->interval;
-            $offset = $schedule->offset;
-            $days_left = days_left($interval, $offset, $day);
+            $days_left = days_left($interval, $schedule->offset, $day);
             if (!$days_left) $n++;
         }
     }
