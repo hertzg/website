@@ -49,12 +49,8 @@ if ($receivedContacts) {
 }
 
 if (!$all && $user->num_archived_received_contacts) {
-    include_once '../../fns/Form/button.php';
-    $items[] =
-        '<form action="./">'
-            .Form\button('Show Archived Contacts')
-            .'<input type="hidden" name="all" value="1" />'
-        .'</form>';
+    include_once '../../fns/Page/buttonLink.php';
+    $items[] = Page\buttonLink('Show Archived Contacts', '?all=1');
 }
 
 include_once '../../fns/Page/imageArrowLink.php';

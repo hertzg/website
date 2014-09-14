@@ -86,12 +86,8 @@ if (!$all) {
     if ($user->num_archived_received_folders ||
         $user->num_archived_received_files) {
 
-        include_once "$fnsDir/Form/button.php";
-        $items[] =
-            '<form action="./">'
-                .Form\button('Show Archived Files')
-                .'<input type="hidden" name="all" value="1" />'
-            .'</form>';
+        include_once '../../fns/Page/buttonLink.php';
+        $items[] = Page\buttonLink('Show Archived Files', '?all=1');
 
     }
 }
