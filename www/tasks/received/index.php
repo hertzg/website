@@ -30,18 +30,25 @@ include_once '../../fns/create_sender_description.php';
 include_once '../../fns/Page/imageArrowLinkWithDescription.php';
 
 $items = [];
-foreach ($receivedTasks as $receivedTask) {
 
-    if ($receivedTask->top_priority) $icon = 'task-top-priority';
-    else $icon = 'task';
+if ($receivedTasks) {
+    foreach ($receivedTasks as $receivedTask) {
 
-    $title = htmlspecialchars($receivedTask->text);
-    $description = create_sender_description($receivedTask);
-    $href = "view/?id=$receivedTask->id";
-    $items[] = Page\imageArrowLinkWithDescription($title,
-        $description, $href, $icon);
+        if ($receivedTask->top_priority) $icon = 'task-top-priority';
+        else $icon = 'task';
 
+        $title = htmlspecialchars($receivedTask->text);
+        $description = create_sender_description($receivedTask);
+        $href = "view/?id=$receivedTask->id";
+        $items[] = Page\imageArrowLinkWithDescription($title,
+            $description, $href, $icon);
+
+    }
+} else {
+    include_once '../../fns/Page/info.php';
+    $items[] = Page\info('No received tasks');
 }
+
 if (!$all && $user->num_archived_received_tasks) {
     include_once '../../fns/Form/button.php';
     $items[] =

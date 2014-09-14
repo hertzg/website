@@ -30,18 +30,24 @@ include_once '../../fns/create_sender_description.php';
 include_once '../../fns/Page/imageArrowLinkWithDescription.php';
 
 $items = [];
-foreach ($receivedContacts as $receivedContact) {
+if ($receivedContacts) {
+    foreach ($receivedContacts as $receivedContact) {
 
-    if ($receivedContact->favorite) $icon = 'favorite-contact';
-    else $icon = 'contact';
+        if ($receivedContact->favorite) $icon = 'favorite-contact';
+        else $icon = 'contact';
 
-    $title = htmlspecialchars($receivedContact->full_name);
-    $description = create_sender_description($receivedContact);
-    $href = "view/?id=$receivedContact->id";
-    $items[] = Page\imageArrowLinkWithDescription($title,
-        $description, $href, $icon);
+        $title = htmlspecialchars($receivedContact->full_name);
+        $description = create_sender_description($receivedContact);
+        $href = "view/?id=$receivedContact->id";
+        $items[] = Page\imageArrowLinkWithDescription($title,
+            $description, $href, $icon);
 
+    }
+} else {
+    include_once '../../fns/Page/info.php';
+    $items[] = Page\info('No received contacts');
 }
+
 if (!$all && $user->num_archived_received_contacts) {
     include_once '../../fns/Form/button.php';
     $items[] =

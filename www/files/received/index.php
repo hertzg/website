@@ -53,22 +53,29 @@ $items = [];
 include_once "$fnsDir/create_sender_description.php";
 include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
 
-foreach ($receivedFolders as $receivedFolder) {
-    $title = htmlspecialchars($receivedFolder->name);
-    $description = create_sender_description($receivedFolder);
-    $href = "folder/?id=$receivedFolder->id";
-    $html = Page\imageArrowLinkWithDescription($title,
-        $description, $href, 'folder');
-    $items[$receivedFolder->insert_time] = $html;
-}
+if ($receivedFolders || $receivedFiles) {
 
-foreach ($receivedFiles as $receivedFile) {
-    $title = htmlspecialchars($receivedFile->name);
-    $description = create_sender_description($receivedFile);
-    $href = "file/?id=$receivedFile->id";
-    $html = Page\imageArrowLinkWithDescription($title,
-        $description, $href, 'file');
-    $items[$receivedFile->insert_time] = $html;
+    foreach ($receivedFolders as $receivedFolder) {
+        $title = htmlspecialchars($receivedFolder->name);
+        $description = create_sender_description($receivedFolder);
+        $href = "folder/?id=$receivedFolder->id";
+        $html = Page\imageArrowLinkWithDescription($title,
+            $description, $href, 'folder');
+        $items[$receivedFolder->insert_time] = $html;
+    }
+
+    foreach ($receivedFiles as $receivedFile) {
+        $title = htmlspecialchars($receivedFile->name);
+        $description = create_sender_description($receivedFile);
+        $href = "file/?id=$receivedFile->id";
+        $html = Page\imageArrowLinkWithDescription($title,
+            $description, $href, 'file');
+        $items[$receivedFile->insert_time] = $html;
+    }
+
+} else {
+    include_once '../../fns/Page/info.php';
+    $items[] = Page\info('No received files');
 }
 
 ksort($items);
