@@ -1,6 +1,6 @@
 <?php
 
-function check_username ($mysqli, $username, array &$errors, $exclude_id = 0) {
+function check_username ($mysqli, $username, &$errors, $exclude_id = 0) {
 
     if ($username === '') {
         $errors[] = 'Enter username.';
@@ -24,8 +24,8 @@ function check_username ($mysqli, $username, array &$errors, $exclude_id = 0) {
         return;
     }
 
-    include_once __DIR__.'/Username/isLegalChars.php';
-    if (!Username\isLegalChars($username)) {
+    include_once __DIR__.'/Username/containsIllegalChars.php';
+    if (Username\containsIllegalChars($username)) {
         $errors[] = 'The username contains illegal characters.';
         return;
     }
