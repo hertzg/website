@@ -2,8 +2,8 @@
 
 namespace BookmarkTags;
 
-function indexOnTagName ($mysqli, $id_users, $tag_name,
-    $offset, $limit, &$total) {
+function indexOnTagName ($mysqli, $id_users,
+    $tag_name, $offset, $limit, &$total) {
 
     $tag_name = $mysqli->real_escape_string($tag_name);
 

@@ -2,9 +2,9 @@
 
 namespace Contacts;
 
-function edit ($mysqli, $id_users, $id, $full_name, $alias,
-    $address, $email, $phone1, $phone2, $birthday_time,
-    $username, $timezone, $tags, $favorite) {
+function edit ($mysqli, $id_users, $id,
+    $full_name, $alias, $address, $email, $phone1, $phone2,
+    $birthday_time, $username, $timezone, $tags, $favorite) {
 
     $full_name = $mysqli->real_escape_string($full_name);
     $alias = $mysqli->real_escape_string($alias);

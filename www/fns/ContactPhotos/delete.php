@@ -7,22 +7,22 @@ function delete ($mysqli, $id) {
     $sql = "select * from contact_photos where id = $id";
     $contactPhoto = mysqli_single_object($mysqli, $sql);
 
-    if ($contactPhoto) {
-        if ($contactPhoto->num_refs == 1) {
+    if (!$contactPhoto) return;
 
-            $sql = "delete from contact_photos where id = $id";
-            $mysqli->query($sql) || trigger_error($mysqli->error);
+    if ($contactPhoto->num_refs == 1) {
 
-            include_once __DIR__.'/path.php';
-            $path = path($id);
+        $sql = "delete from contact_photos where id = $id";
+        $mysqli->query($sql) || trigger_error($mysqli->error);
 
-            if (is_file($path)) unlink($path);
+        include_once __DIR__.'/path.php';
+        $path = path($id);
 
-        } else {
-            $sql = 'update contact_photos set num_refs = num_refs - 1'
-                ." where id = $id";
-            $mysqli->query($sql) || trigger_error($mysqli->error);
-        }
+        if (is_file($path)) unlink($path);
+
+    } else {
+        $sql = 'update contact_photos set num_refs = num_refs - 1'
+            ." where id = $id";
+        $mysqli->query($sql) || trigger_error($mysqli->error);
     }
 
 }

@@ -2,8 +2,8 @@
 
 namespace BookmarkTags;
 
-function searchOnTagName ($mysqli, $id_users, $keyword, $tag_name,
-    $offset, $limit, &$total) {
+function searchOnTagName ($mysqli, $id_users,
+    $keyword, $tag_name, $offset, $limit, &$total) {
 
     include_once __DIR__.'/../escape_like.php';
     $keyword = escape_like($keyword);

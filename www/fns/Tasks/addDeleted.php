@@ -2,8 +2,8 @@
 
 namespace Tasks;
 
-function addDeleted ($mysqli, $id, $id_users, $text, $deadline_time,
-    $tags, $top_priority, $insert_time, $update_time) {
+function addDeleted ($mysqli, $id, $id_users, $text,
+    $deadline_time, $tags, $top_priority, $insert_time, $update_time) {
 
     $text = $mysqli->real_escape_string($text);
     if ($deadline_time === null) $deadline_time = 'null';

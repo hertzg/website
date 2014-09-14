@@ -2,7 +2,7 @@
 
 namespace TaskTags;
 
-function add ($mysqli, $id_users, $id_tasks, array $tag_names,
+function add ($mysqli, $id_users, $id_tasks, $tag_names,
     $text, $deadline_time, $tags, $top_priority) {
 
     $text = $mysqli->real_escape_string($text);
