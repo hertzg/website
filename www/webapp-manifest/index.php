@@ -1,5 +1,8 @@
 <?php
 
+include_once '../fns/get_domain_name.php';
+$domain_name = get_domain_name();
+
 $description =
     'Save your data in Zvini. Save your files, contacts, notes and more.'
     .' It\'s free and easy.';
@@ -12,7 +15,7 @@ echo json_encode([
     'fullscreen' => 'true',
     'developer' => [
         'name' => 'Zvini Developers',
-        'url' => 'http://zvini.com/',
+        'url' => "http://$domain_name/",
     ],
     'icons' => [
         16 => '/zvini-icons/16.png',

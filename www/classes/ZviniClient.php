@@ -2,11 +2,12 @@
 
 class ZviniClient {
 
-    public $base = 'https://zvini.com/api-call/';
     public $api_key;
+    public $base;
 
-    function __construct ($api_key) {
+    function __construct ($api_key, $domain_name) {
         $this->api_key = $api_key;
+        $this->base = "https://$domain_name/api-call/";
     }
 
     function call ($method, array $params) {

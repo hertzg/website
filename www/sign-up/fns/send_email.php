@@ -2,6 +2,9 @@
 
 function send_email ($username) {
 
+    include_once __DIR__.'/../../fns/get_domain_name.php';
+    $domain_name = get_domain_name();
+
     $escapedUsername = htmlspecialchars($username);
     $html =
         '<!DOCTYPE html>'
@@ -19,9 +22,9 @@ function send_email ($username) {
     $subject = mb_encode_mimeheader("$username Signed Up", 'UTF-8');
 
     $headers =
-        "From: no-reply@zvini.com\r\n"
+        "From: no-reply@$domain_name\r\n"
         .'Content-Type: text/html; charset=UTF-8';
 
-    mail('info@zvini.com', $subject, $html, $headers);
+    mail("info@$domain_name", $subject, $html, $headers);
 
 }

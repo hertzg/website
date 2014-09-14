@@ -33,8 +33,11 @@ include_once '../../fns/Users/editVerifyEmailKey.php';
 include_once '../../lib/mysqli.php';
 Users\editVerifyEmailKey($mysqli, $user->id_users, $key);
 
+include_once '../../fns/get_domain_name.php';
+$domain_name = get_domain_name();
+
 $href = htmlspecialchars(
-    'http://zvini.com/verify-email/?'.http_build_query([
+    "http://$domain_name/verify-email/?".http_build_query([
         'id_users' => $user->id_users,
         'key' => bin2hex($key),
     ])
@@ -65,7 +68,7 @@ $html =
 $subject = mb_encode_mimeheader($title, 'UTF-8');
 
 $headers =
-    "From: no-reply@zvini.com\r\n"
+    "From: no-reply@$domain_name\r\n"
     .'Content-Type: text/html; charset=UTF-8';
 
 mail($user->email, $subject, $html, $headers);

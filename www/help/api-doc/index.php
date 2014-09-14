@@ -3,7 +3,12 @@
 include_once '../../fns/signed_user.php';
 $user = signed_user();
 
-$api_base = 'https://zvini.com/api-call/';
+unset($_SESSION['help/messages']);
+
+include_once '../../fns/get_domain_name.php';
+$domain_name = get_domain_name();
+
+$api_base = "https://$domain_name/api-call/";
 
 include_once 'fns/get_groups.php';
 $groups = get_groups();

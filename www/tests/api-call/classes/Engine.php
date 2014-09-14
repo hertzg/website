@@ -26,8 +26,7 @@ class Engine {
 
     public $numRequests = 0;
 
-    private $api_base =
-        'http://localhost/sites/zvini.com/website/www/api-call/';
+    private $api_base;
     public $api_key;
 
     private $ch;
@@ -38,7 +37,14 @@ class Engine {
     private $rawResponse;
 
     function __construct ($api_key) {
+
+        include_once __DIR__.'/../../../fns/get_domain_name.php';
+        $domain_name = get_domain_name();
+
+        $this->api_base =
+            "http://localhost/sites/$domain_name/website/www/api-call/";
         $this->api_key = $api_key;
+
     }
 
     function download ($method, array $params = []) {
