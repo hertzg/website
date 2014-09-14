@@ -55,8 +55,11 @@ Captcha\reset();
 include_once '../fns/get_domain_name.php';
 $domain_name = get_domain_name();
 
+include_once '../fns/get_site_base.php';
+$siteBase = get_site_base();
+
 $href = htmlspecialchars(
-    "http://$domain_name/reset-password/?".http_build_query([
+    "http://$domain_name{$siteBase}reset-password/?".http_build_query([
         'id_users' => $user->id_users,
         'key' => bin2hex($key)
     ])
