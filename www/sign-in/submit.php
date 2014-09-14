@@ -15,11 +15,8 @@ list($username, $password, $remember, $return) = request_strings(
 $remember = (bool)$remember;
 $errors = [];
 
-if ($remember) {
-    setcookie('remember', '1', time() + 60 * 60 * 24 * 30, '/');
-} else {
-    setcookie('remember', '', time() - 60 * 60 * 24, '/');
-}
+if ($remember) setcookie('remember', '1', time() + 60 * 60 * 24 * 30, '/');
+else setcookie('remember', '', time() - 60 * 60 * 24, '/');
 
 if ($username === '') $errors[] = 'Enter username.';
 
@@ -31,9 +28,7 @@ if (!$errors) {
     include_once '../lib/mysqli.php';
     $user = Users\getByUsernameAndPassword($mysqli, $username, $password);
 
-    if (!$user) {
-        $errors[] = 'Invalid username or password.';
-    }
+    if (!$user) $errors[] = 'Invalid username or password.';
 
 }
 
@@ -45,6 +40,7 @@ if ($errors) {
         'username' => $username,
         'password' => $password,
         'remember' => $remember,
+        'return' => $return,
     ];
     redirect();
 }

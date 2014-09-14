@@ -5,9 +5,6 @@ $base = '../';
 include_once '../fns/require_guest_user.php';
 require_guest_user($base);
 
-include_once '../fns/request_strings.php';
-list($return) = request_strings('return');
-
 $key = 'sign-in/values';
 if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];
@@ -20,25 +17,28 @@ if (array_key_exists($key, $_SESSION)) {
         $username = '';
     }
 
+    include_once '../fns/request_strings.php';
+    list($return) = request_strings('return');
+
     $values = [
         'username' => $username,
         'password' => '',
         'remember' => array_key_exists('remember', $_COOKIE),
+        'return' => $return,
     ];
 
 }
 
 unset(
-    $_SESSION['sign-up/errors'],
-    $_SESSION['sign-up/values'],
     $_SESSION['email-reset-password/errors'],
-    $_SESSION['email-reset-password/values']
+    $_SESSION['email-reset-password/values'],
+    $_SESSION['sign-up/errors'],
+    $_SESSION['sign-up/values']
 );
 
 $username = $values['username'];
 
 include_once 'fns/create_options_panel.php';
-include_once '../fns/Page/tabs.php';
 include_once '../fns/Form/button.php';
 include_once '../fns/Form/checkbox.php';
 include_once '../fns/Form/hidden.php';
@@ -46,6 +46,7 @@ include_once '../fns/Form/password.php';
 include_once '../fns/Form/textfield.php';
 include_once '../fns/Page/sessionErrors.php';
 include_once '../fns/Page/sessionMessages.php';
+include_once '../fns/Page/tabs.php';
 $content = Page\tabs(
     [],
     'Sign In',
@@ -67,7 +68,7 @@ $content = Page\tabs(
         .Form\checkbox($base, 'remember', 'Stay signed in', $values['remember'])
         .'<div class="hr"></div>'
         .Form\button('Sign In')
-        .Form\hidden('return', $return)
+        .Form\hidden('return', $values['return'])
     .'</form>'
     .create_options_panel()
 );
