@@ -13,8 +13,8 @@
    width="32"
    height="32"
    id="svg2"
-   inkscape:version="0.48.4 r9939"
-   sodipodi:docname="icon16.svg">
+   inkscape:version="0.48.5 r10040"
+   sodipodi:docname="icon32.svg">
   <sodipodi:namedview
      pagecolor="#ffffff"
      bordercolor="#666666"
@@ -43,7 +43,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
