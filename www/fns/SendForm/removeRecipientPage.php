@@ -39,6 +39,6 @@ function removeRecipientPage ($user, $id, $username, $title) {
     );
 
     include_once __DIR__.'/../echo_page.php';
-    echo_page($user, 'Remove Recipient', $content, '../../../');
+    echo_page($user, 'Remove Recipient?', $content, '../../../');
 
 }

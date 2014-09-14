@@ -44,4 +44,4 @@ $content = Page\tabs(
 );
 
 include_once '../../../fns/echo_page.php';
-echo_page($user, 'Remove Recipient', $content, '../../../');
+echo_page($user, 'Remove Recipient?', $content, '../../../');

@@ -33,4 +33,4 @@ $content = Page\tabs(
 );
 
 include_once '../../fns/echo_page.php';
-echo_page($user, 'Empty Trash', $content, $base);
+echo_page($user, 'Empty Trash?', $content, $base);

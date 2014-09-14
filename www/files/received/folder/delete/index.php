@@ -34,4 +34,4 @@ $content = Page\tabs(
 );
 
 include_once "$fnsDir/echo_page.php";
-echo_page($user, "Delete Received Folder #$id", $content, '../../../../');
+echo_page($user, "Delete Received Folder #$id?", $content, '../../../../');
