@@ -6,8 +6,8 @@ list($receivedBookmark, $id, $user) = require_received_bookmark($mysqli);
 
 unset($_SESSION['bookmarks/received/view/messages']);
 
-include_once '../../../fns/Page/tabs.php';
 include_once '../../../fns/Page/imageLink.php';
+include_once '../../../fns/Page/tabs.php';
 include_once '../../../fns/Page/text.php';
 include_once '../../../fns/Page/twoColumns.php';
 $content = Page\tabs(

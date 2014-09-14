@@ -15,9 +15,7 @@ $items = [];
 include_once '../../../fns/Page/text.php';
 
 $title = $receivedBookmark->title;
-if ($title !== '') {
-    $items[] = Page\text(htmlspecialchars($title));
-}
+if ($title !== '') $items[] = Page\text(htmlspecialchars($title));
 
 $items[] = Page\text(htmlspecialchars($receivedBookmark->url));
 

@@ -30,25 +30,28 @@ include_once '../../fns/create_sender_description.php';
 include_once '../../fns/Page/imageArrowLinkWithDescription.php';
 
 $items = [];
-foreach ($receivedBookmarks as $receivedBookmark) {
 
-    $title = $receivedBookmark->title;
-    if ($title === '') $title = $receivedBookmark->url;
-    $title = htmlspecialchars($title);
+if ($receivedBookmarks) {
+    foreach ($receivedBookmarks as $receivedBookmark) {
 
-    $description = create_sender_description($receivedBookmark);
-    $href = "view/?id=$receivedBookmark->id";
-    $items[] = Page\imageArrowLinkWithDescription($title,
-        $description, $href, 'bookmark');
+        $title = $receivedBookmark->title;
+        if ($title === '') $title = $receivedBookmark->url;
+        $title = htmlspecialchars($title);
 
+        $description = create_sender_description($receivedBookmark);
+        $href = "view/?id=$receivedBookmark->id";
+        $items[] = Page\imageArrowLinkWithDescription($title,
+            $description, $href, 'bookmark');
+
+    }
+} else {
+    include_once '../../fns/Page/info.php';
+    $items[] = Page\info('No received bookmarks');
 }
+
 if (!$all && $user->num_archived_received_bookmarks) {
-    include_once '../../fns/Form/button.php';
-    $items[] =
-        '<form action="./">'
-            .Form\button('Show Archived Bookmarks')
-            .'<input type="hidden" name="all" value="1" />'
-        .'</form>';
+    include_once '../../fns/Page/buttonLink.php';
+    $items[] = Page\buttonLink('Show Archived Bookmarks', '?all=1');
 }
 
 include_once '../../fns/Page/imageArrowLink.php';

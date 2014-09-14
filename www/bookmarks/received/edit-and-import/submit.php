@@ -36,11 +36,6 @@ $receivedBookmark->tags = $tags;
 include_once '../../../fns/Users/Bookmarks/Received/import.php';
 Users\Bookmarks\Received\import($mysqli, $receivedBookmark);
 
-unset(
-    $_SESSION['bookmarks/received/edit-and-import/errors'],
-    $_SESSION['bookmarks/received/edit-and-import/values']
-);
-
 $messages = ['Bookmark has been imported.'];
 
 if ($user->num_received_bookmarks == 1) {
