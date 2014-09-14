@@ -1,15 +1,17 @@
 <?php
 
-function check_passwords ($username, $password1, $password2, array &$errors) {
+function check_passwords ($username, $password1, $password2, &$errors) {
 
     if ($password1 === '') {
         $errors[] = 'Enter password.';
         return;
     }
 
-    include_once __DIR__.'/../../fns/Password/isShort.php';
+    $fnsDir = __DIR__.'/../../fns';
+
+    include_once "$fnsDir/Password/isShort.php";
     if (Password\isShort($password1)) {
-        include_once __DIR__.'/../../fns/Password/minLength.php';
+        include_once "$fnsDir/Password/minLength.php";
         $minLength = Password\minLength();
         $errors[] = 'Password too short.'
             ." At least $minLength characters required.";
@@ -22,8 +24,6 @@ function check_passwords ($username, $password1, $password2, array &$errors) {
         return;
     }
 
-    if ($password1 !== $password2) {
-        $errors[] = 'Passwords does not match.';
-    }
+    if ($password1 !== $password2) $errors[] = 'Passwords does not match.';
 
 }
