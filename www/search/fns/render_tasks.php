@@ -1,7 +1,6 @@
 <?php
 
-function render_tasks (array $tasks,
-    array &$items, $regex, $encodedKeyword) {
+function render_tasks ($tasks, &$items, $regex, $encodedKeyword) {
 
     $fnsDir = __DIR__.'/../../fns';
 

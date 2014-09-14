@@ -1,6 +1,6 @@
 <?php
 
-function render_files (array $files, array &$items, $regex) {
+function render_files ($files, &$items, $regex) {
     include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
     foreach ($files as $file) {
         $title = htmlspecialchars($file->name);

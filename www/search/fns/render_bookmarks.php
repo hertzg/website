@@ -1,8 +1,6 @@
 <?php
 
-function render_bookmarks (array $bookmarks,
-    array &$items, $regex, $encodedKeyword) {
-
+function render_bookmarks ($bookmarks, &$items, $regex, $encodedKeyword) {
     include_once __DIR__.'/../../fns/Page/imageArrowLinkWithDescription.php';
     foreach ($bookmarks as $bookmark) {
         $title = htmlspecialchars($bookmark->title);
@@ -10,8 +8,7 @@ function render_bookmarks (array $bookmarks,
         $description = htmlspecialchars($bookmark->url);
         $query = "?id=$bookmark->id_bookmarks&amp;keyword=$encodedKeyword";
         $href = "../bookmarks/view/$query";
-        $items[] = Page\imageArrowLinkWithDescription($title, $description,
-            $href, 'bookmark');
+        $items[] = Page\imageArrowLinkWithDescription($title,
+            $description, $href, 'bookmark');
     }
-
 }

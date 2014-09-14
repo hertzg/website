@@ -1,14 +1,13 @@
 <?php
 
-function render_notes (array $notes,
-    array &$items, $regex, $encodedKeyword) {
-
-    include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
+function render_notes ($notes, &$items, $regex, $encodedKeyword) {
+    $fnsDir = __DIR__.'/../../fns';
+    include_once "$fnsDir/Page/imageArrowLink.php";
     foreach ($notes as $note) {
 
         $text = $note->text;
         if ($note->encrypt) {
-            include_once __DIR__.'/../../fns/encrypt_text.php';
+            include_once "$fnsDir/encrypt_text.php";
             $title = htmlspecialchars(encrypt_text($text));
             $icon = 'encrypted-note';
         } else {
@@ -22,5 +21,4 @@ function render_notes (array $notes,
         $items[] = Page\imageArrowLink($title, $href, $icon);
 
     }
-
 }

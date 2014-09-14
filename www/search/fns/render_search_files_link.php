@@ -1,8 +1,6 @@
 <?php
 
-function render_search_files_link ($searchFiles, $keyword,
-    $offset, array &$items) {
-
+function render_search_files_link ($searchFiles, $keyword, $offset, &$items) {
     if (!$searchFiles) {
         $params = [
             'keyword' => $keyword,
@@ -13,5 +11,4 @@ function render_search_files_link ($searchFiles, $keyword,
         include_once __DIR__.'/../../fns/Page/imageLink.php';
         $items[] = Page\imageLink('Search in files', $href, 'search-folder');
     }
-
 }

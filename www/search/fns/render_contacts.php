@@ -1,12 +1,12 @@
 <?php
 
-function render_contacts (array $contacts,
-    array &$items, $regex, $encodedKeyword) {
+function render_contacts ($contacts, &$items, $regex, $encodedKeyword) {
 
     $replace = '<mark>$0</mark>';
+    $fnsDir = __DIR__.'/../../fns';
 
-    include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
-    include_once __DIR__.'/../../fns/Page/imageArrowLinkWithDescription.php';
+    include_once "$fnsDir/Page/imageArrowLink.php";
+    include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
     foreach ($contacts as $contact) {
 
         $title = htmlspecialchars($contact->full_name);

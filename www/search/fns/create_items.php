@@ -1,7 +1,7 @@
 <?php
 
-function create_items (array $bookmarks, array $contacts, array $notes,
-    array $tasks, array $folders, array $files, $keyword) {
+function create_items ($bookmarks, $contacts,
+    $notes, $tasks, $folders, $files, $keyword) {
 
     $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
     $encodedKeyword = rawurlencode($keyword);
