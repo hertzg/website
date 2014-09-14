@@ -7,12 +7,7 @@ list($deletedItem, $id, $user) = require_deleted_item($mysqli);
 include_once '../fns/item_type_name.php';
 $typeName = item_type_name($deletedItem->data_type);
 
-$content = 'a';
-
-include_once '../../fns/create_panel.php';
-include_once '../../fns/date_ago.php';
 include_once '../../fns/Page/imageLink.php';
-include_once '../../fns/Page/infoText.php';
 include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Page/text.php';
 include_once '../../fns/Page/twoColumns.php';

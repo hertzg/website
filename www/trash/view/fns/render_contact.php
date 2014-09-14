@@ -2,7 +2,9 @@
 
 function render_contact ($id, $contact, &$items, &$infoText) {
 
-    include_once __DIR__.'/../../../fns/Form/label.php';
+    $fnsDir = __DIR__.'/../../../fns';
+
+    include_once "$fnsDir/Form/label.php";
     $labelItems = [
         Form\label('Full name', htmlspecialchars($contact->full_name)),
     ];
@@ -44,7 +46,7 @@ function render_contact ($id, $contact, &$items, &$infoText) {
 
     $timezone = $contact->timezone;
     if ($timezone !== null) {
-        include_once __DIR__.'/../../../fns/Form/timezoneLabel.php';
+        include_once "$fnsDir/Form/timezoneLabel.php";
         $labelItems[] = Form\timezoneLabel('../../', $timezone);
     }
 
@@ -61,7 +63,7 @@ function render_contact ($id, $contact, &$items, &$infoText) {
 
     $content = join('<div class="hr"></div>', $labelItems);
 
-    include_once __DIR__.'/../../../fns/create_contact_panel.php';
+    include_once "$fnsDir/create_contact_panel.php";
     $items[] = create_contact_panel($photoSrc, $content);
 
 }
