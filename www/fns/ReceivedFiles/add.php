@@ -5,10 +5,12 @@ namespace ReceivedFiles;
 function add ($mysqli, $sender_id_users,
     $sender_username, $receiver_id_users, $name, $size) {
 
-    include_once __DIR__.'/../detect_content_type.php';
+    $fnsDir = __DIR__.'/..';
+
+    include_once "$fnsDir/detect_content_type.php";
     $content_type = \detect_content_type($name);
 
-    include_once __DIR__.'/../detect_media_type.php';
+    include_once "$fnsDir/detect_media_type.php";
     $media_type = \detect_media_type($name);
 
     $sender_username = $mysqli->real_escape_string($sender_username);
