@@ -4,10 +4,12 @@ namespace Users\Schedules;
 
 function edit ($mysqli, $user, $schedule, $text, $interval, $offset) {
 
-    include_once __DIR__.'/../../Schedules/edit.php';
+    $fnsDir = __DIR__.'/../..';
+
+    include_once "$fnsDir/Schedules/edit.php";
     \Schedules\edit($mysqli, $schedule->id, $text, $interval, $offset);
 
-    include_once __DIR__.'/../../days_left_from_today.php';
+    include_once "$fnsDir/days_left_from_today.php";
     $days_left = days_left_from_today($interval, $offset);
     $old_days_left = days_left_from_today(
         $schedule->interval, $schedule->offset);
