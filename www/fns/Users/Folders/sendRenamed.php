@@ -5,20 +5,21 @@ namespace Users\Folders;
 function sendRenamed ($mysqli, $user, $receiver_id_users, $folder, $name) {
 
     $id_users = $user->id_users;
+    $fnsDir = __DIR__.'/../..';
 
-    include_once __DIR__.'/../../ReceivedFolders/add.php';
+    include_once "$fnsDir/ReceivedFolders/add.php";
     $id_received_folders = \ReceivedFolders\add($mysqli, $id_users,
         $user->username, $receiver_id_users, $name);
 
     $copy = function ($id, $parent_id, $copy) use ($mysqli,
-        $id_received_folders, $id_users, $receiver_id_users) {
+        $id_received_folders, $id_users, $receiver_id_users, $fnsDir) {
 
-        include_once __DIR__.'/../../Files/indexInFolder.php';
+        include_once "$fnsDir/Files/indexInFolder.php";
         $files = \Files\indexInFolder($mysqli, $id);
 
         if ($files) {
             include_once __DIR__.'/Received/Files/add.php';
-            include_once __DIR__.'/../../Files/File/path.php';
+            include_once "$fnsDir/Files/File/path.php";
             foreach ($files as $file) {
                 $path = \Files\File\path($id_users, $file->id_files);
                 \Users\Folders\Received\Files\add($mysqli, $id_received_folders,
@@ -27,11 +28,11 @@ function sendRenamed ($mysqli, $user, $receiver_id_users, $folder, $name) {
             }
         }
 
-        include_once __DIR__.'/../../Folders/indexInFolder.php';
+        include_once "$fnsDir/Folders/indexInFolder.php";
         $folders = \Folders\indexInFolder($mysqli, $id);
 
         if ($folders) {
-            include_once __DIR__.'/../../ReceivedFolderSubfolders/add.php';
+            include_once "$fnsDir/ReceivedFolderSubfolders/add.php";
             foreach ($folders as $folder) {
                 $id = \ReceivedFolderSubfolders\add($mysqli,
                     $id_received_folders, $receiver_id_users,
@@ -43,7 +44,7 @@ function sendRenamed ($mysqli, $user, $receiver_id_users, $folder, $name) {
     };
     $copy($folder->id_folders, 0, $copy);
 
-    include_once __DIR__.'/../../ReceivedFolders/commit.php';
+    include_once "$fnsDir/ReceivedFolders/commit.php";
     \ReceivedFolders\commit($mysqli, $id_received_folders);
 
     include_once __DIR__.'/Received/addNumberNew.php';

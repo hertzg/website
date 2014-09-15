@@ -5,6 +5,7 @@ namespace Users\Folders;
 function delete ($mysqli, $folder) {
 
     $id_users = $folder->id_users;
+    $fnsDir = __DIR__.'/../..';
 
     include_once __DIR__.'/../DeletedItems/addFolder.php';
     $id_deleted_items = \Users\DeletedItems\addFolder($mysqli, $folder);
@@ -14,14 +15,14 @@ function delete ($mysqli, $folder) {
 
         $id = array_shift($ids);
 
-        include_once __DIR__.'/../../Folders/delete.php';
+        include_once "$fnsDir/Folders/delete.php";
         \Folders\delete($mysqli, $id);
 
-        include_once __DIR__.'/../../Folders/indexInFolder.php';
+        include_once "$fnsDir/Folders/indexInFolder.php";
         $folders = \Folders\indexInFolder($mysqli, $id);
 
         if ($folders) {
-            include_once __DIR__.'/../../DeletedFolders/add.php';
+            include_once "$fnsDir/DeletedFolders/add.php";
             foreach ($folders as $folder) {
                 $id_folders = $folder->id_folders;
                 $ids[] = $id_folders;
@@ -31,12 +32,12 @@ function delete ($mysqli, $folder) {
             }
         }
 
-        include_once __DIR__.'/../../Files/indexInFolder.php';
+        include_once "$fnsDir/Files/indexInFolder.php";
         $files = \Files\indexInFolder($mysqli, $id);
 
         if ($files) {
             include_once __DIR__.'/../Files/purge.php';
-            include_once __DIR__.'/../../DeletedFiles/add.php';
+            include_once "$fnsDir/DeletedFiles/add.php";
             foreach ($files as $file) {
                 $id_files = $file->id_files;
                 \Users\Files\purge($mysqli, $file);
