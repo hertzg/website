@@ -42,6 +42,7 @@ $content = Page\tabs(
         .'<div class="hr"></div>'
         .Form\textfield('email', 'Email', [
             'value' => $values['email'],
+            'email' => $maxLengths['email'],
             'maxlength' => $maxLengths['email'],
         ])
         .'<div class="hr"></div>'

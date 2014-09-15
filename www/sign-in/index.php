@@ -47,6 +47,7 @@ include_once '../fns/Form/textfield.php';
 include_once '../fns/Page/sessionErrors.php';
 include_once '../fns/Page/sessionMessages.php';
 include_once '../fns/Page/tabs.php';
+include_once '../fns/Username/maxLength.php';
 $content = Page\tabs(
     [],
     'Sign In',
@@ -55,6 +56,7 @@ $content = Page\tabs(
     .'<form action="submit.php" method="post">'
         .Form\textfield('username', 'Username', [
             'value' => $username,
+            'maxlength' => Username\maxLength(),
             'autofocus' => $username === '',
             'required' => true,
         ])
