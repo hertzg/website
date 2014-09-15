@@ -9,14 +9,16 @@ function addDeleted ($mysqli, $id_users, $data) {
     $tags = $data->tags;
     $encrypt = $data->encrypt;
 
-    include_once __DIR__.'/../../Tags/parse.php';
+    $fnsDir = __DIR__.'/../..';
+
+    include_once "$fnsDir/Tags/parse.php";
     $tag_names = \Tags\parse($tags);
 
-    include_once __DIR__.'/../../Notes/addDeleted.php';
+    include_once "$fnsDir/Notes/addDeleted.php";
     \Notes\addDeleted($mysqli, $id, $id_users, $text, $tags, $encrypt,
         $data->insert_time, $data->update_time);
 
-    include_once __DIR__.'/../../NoteTags/add.php';
+    include_once "$fnsDir/NoteTags/add.php";
     \NoteTags\add($mysqli, $id_users, $id, $tag_names, $text, $encrypt);
 
     include_once __DIR__.'/addNumber.php';
