@@ -3,5 +3,5 @@
 namespace Paging;
 
 function limit () {
-    return 20;
+    return 2;
 }

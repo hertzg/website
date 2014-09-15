@@ -9,14 +9,16 @@ function addDeleted ($mysqli, $id_users, $data) {
     $title = $data->title;
     $tags = $data->tags;
 
-    include_once __DIR__.'/../../Tags/parse.php';
+    $fnsDir = __DIR__.'/../..';
+
+    include_once "$fnsDir/Tags/parse.php";
     $tag_names = \Tags\parse($tags);
 
-    include_once __DIR__.'/../../Bookmarks/addDeleted.php';
+    include_once "$fnsDir/Bookmarks/addDeleted.php";
     \Bookmarks\addDeleted($mysqli, $id, $id_users, $url, $title, $tags,
         $data->insert_time, $data->update_time);
 
-    include_once __DIR__.'/../../BookmarkTags/add.php';
+    include_once "$fnsDir/BookmarkTags/add.php";
     \BookmarkTags\add($mysqli, $id_users, $id, $tag_names, $url, $title);
 
     include_once __DIR__.'/addNumber.php';

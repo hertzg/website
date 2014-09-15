@@ -1,5 +1,5 @@
 <?php
 
 function get_site_base () {
-    return '/';
+    return '/sites/zvini.com/website/www/';
 }
