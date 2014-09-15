@@ -4,10 +4,12 @@ namespace Users\Events;
 
 function deleteAll ($mysqli, $id_users) {
 
-    include_once __DIR__.'/../../Events/deleteOnUser.php';
+    $fnsDir = __DIR__.'/../..';
+
+    include_once "$fnsDir/Events/deleteOnUser.php";
     \Events\deleteOnUser($mysqli, $id_users);
 
-    include_once __DIR__.'/../../time_today.php';
+    include_once "$fnsDir/time_today.php";
     $time_today = time_today();
     $sql = 'update users set num_events = 0, num_events_today = 0,'
         ." num_events_tomorrow = 0, events_check_day = $time_today"
