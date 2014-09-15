@@ -91,4 +91,7 @@ render($content, 'archive.svg', $names);
 $names = ['trash-bin', 'empty-trash', 'purge'];
 render($content, 'trash.svg', $names);
 
+$names = ['edit-contact-photo', 'clear-contact-photo'];
+render($content, 'contact-photo.svg', $names);
+
 file_put_contents(__DIR__.'/../icons.compressed.css', $content);
