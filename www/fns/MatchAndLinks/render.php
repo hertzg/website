@@ -19,7 +19,8 @@ function render ($base, $text, $keyword) {
 
     $parts = [];
 
-    $match('#http://\S*#', function ($value, $start, $end) use (&$parts) {
+    $regex = '#(?:ftps?|https?|sftp)://\S+#';
+    $match($regex, function ($value, $start, $end) use (&$parts) {
         $parts[] = [
             'type' => 'linkStart',
             'index' => $start,
