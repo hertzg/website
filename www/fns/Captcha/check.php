@@ -16,7 +16,9 @@ function check (&$errors) {
             $errors[] = 'Please, enter verification.';
         } elseif (array_key_exists('captcha', $_SESSION) &&
             $captcha == $_SESSION['captcha']) {
+
             $_SESSION['captcha_left'] = 3;
+
         } else {
             $errors[] = 'Invalid verification. Try again.';
         }
@@ -25,8 +27,6 @@ function check (&$errors) {
 
     } else {
         $_SESSION['captcha_left']--;
-        if ($_SESSION['captcha_left'] <= 0) {
-            unset($_SESSION['captcha_left']);
-        }
+        if ($_SESSION['captcha_left'] <= 0) unset($_SESSION['captcha_left']);
     }
 }
