@@ -6,9 +6,12 @@ include_once '../fns/require_user.php';
 $user = require_user($base);
 $id_users = $user->id_users;
 
-include_once '../fns/Users/Notifications/clearNumberNew.php';
 include_once '../lib/mysqli.php';
-Users\Notifications\clearNumberNew($mysqli, $id_users);
+
+if ($user->num_new_notifications || $user->home_num_new_notifications) {
+    include_once '../fns/Users/Notifications/clearNumberNew.php';
+    Users\Notifications\clearNumberNew($mysqli, $id_users);
+}
 
 include_once '../fns/Paging/limit.php';
 $limit = Paging\limit();
