@@ -63,8 +63,9 @@ foreach ($ids as $id) {
     if ($note) {
 
         $text = $mysqli->real_escape_string($note->text);
+        $encrypt = $note->encrypt ? '1' : '0';
 
-        $sql = "update note_tags set text = '$text',"
+        $sql = "update note_tags set text = '$text', encrypt = $encrypt,"
             ." insert_time = $note->insert_time,"
             ." update_time = $note->update_time"
             ." where id_notes = $note->id_notes";
