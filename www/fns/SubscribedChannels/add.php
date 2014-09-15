@@ -7,6 +7,9 @@ function add ($mysqli, $id_channels, $channel_name,
     $publisher_locked, $subscriber_id_users, $subscriber_username,
     $subscriber_locked, $receive_notifications) {
 
+    $lowercase_name = strtolower($channel_name);
+    $lowercase_name = $mysqli->real_escape_string($lowercase_name);
+
     $channel_name = $mysqli->real_escape_string($channel_name);
     $channel_public = $channel_public ? '1' : '0';
     $publisher_username = $mysqli->real_escape_string($publisher_username);
@@ -17,17 +20,16 @@ function add ($mysqli, $id_channels, $channel_name,
     $insert_time = time();
 
     $sql = 'insert into subscribed_channels'
-        .' (id_channels, channel_name, channel_public,'
-        .' publisher_id_users, publisher_username,'
-        .' publisher_locked, subscriber_id_users,'
-        .' subscriber_username, subscriber_locked,'
-        .' receive_notifications, insert_time)'
-        ." values ($id_channels, '$channel_name', $channel_public,"
-        ." $publisher_id_users, '$publisher_username',"
-        ." $publisher_locked, $subscriber_id_users,"
-        ." '$subscriber_username', $subscriber_locked,"
-        ." $receive_notifications, $insert_time)";
+        .' (id_channels, channel_name, lowercase_name,'
+        .' channel_public, publisher_id_users, publisher_username,'
+        .' publisher_locked, subscriber_id_users, subscriber_username,'
+        .' subscriber_locked, receive_notifications, insert_time)'
+        ." values ($id_channels, '$channel_name', '$lowercase_name',"
+        ." $channel_public, $publisher_id_users, '$publisher_username',"
+        ." $publisher_locked, $subscriber_id_users, '$subscriber_username',"
+        ." $subscriber_locked, $receive_notifications, $insert_time)";
     $mysqli->query($sql) || trigger_error($mysqli->error);
+
     return $mysqli->insert_id;
 
 }
