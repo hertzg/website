@@ -4,10 +4,12 @@ namespace Files;
 
 function rename ($mysqli, $id, $name) {
 
-    include_once __DIR__.'/../detect_content_type.php';
+    $fnsDir = __DIR__.'/..';
+
+    include_once "$fnsDir/detect_content_type.php";
     $content_type = \detect_content_type($name);
 
-    include_once __DIR__.'/../detect_media_type.php';
+    include_once "$fnsDir/detect_media_type.php";
     $media_type = \detect_media_type($name);
 
     $name = $mysqli->real_escape_string($name);
