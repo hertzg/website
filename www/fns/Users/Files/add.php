@@ -5,11 +5,12 @@ namespace Users\Files;
 function add ($mysqli, $id_users, $id_folders, $name, $filePath) {
 
     $size = filesize($filePath);
+    $fnsDir = __DIR__.'/../..';
 
-    include_once __DIR__.'/../../Files/add.php';
+    include_once "$fnsDir/Files/add.php";
     $id = \Files\add($mysqli, $id_users, $id_folders, $name, $size);
 
-    include_once __DIR__.'/../../Files/File/path.php';
+    include_once "$fnsDir/Files/File/path.php";
     $storagePath = \Files\File\path($id_users, $id);
     copy($filePath, $storagePath);
 
