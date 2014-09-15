@@ -1,6 +1,6 @@
 <?php
 
-function build_definition ($mysqli, $column) {
+function build_definition ($column) {
 
     $definition = $column['type'];
 

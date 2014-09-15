@@ -1,6 +1,6 @@
 <?php
 
-function ensure_table ($tableName, array $columns) {
+function ensure_table ($tableName, $columns) {
 
     $fnsDir = __DIR__.'/../../../../fns';
 
@@ -55,7 +55,7 @@ function ensure_table ($tableName, array $columns) {
 
             $escapedColumnName = $mysqli->real_escape_string($columnName);
             $sql = "alter table `$escapedTableName` change `$escapedColumnName`"
-                ." `$escapedColumnName` ".build_definition($mysqli, $column);
+                ." `$escapedColumnName` ".build_definition($column);
 
             $mysqli->query($sql) || trigger_error($mysqli->error);
 
@@ -64,7 +64,7 @@ function ensure_table ($tableName, array $columns) {
         foreach ($columns as $name => $column) {
             echo "adding column $tableName.$name...\n";
             $escapedName = $mysqli->real_escape_string($name);
-            $definition = build_definition($mysqli, $column);
+            $definition = build_definition($column);
             $sql = "alter table `$escapedTableName`"
                 ." add `$escapedName` $definition";
             $mysqli->query($sql) || trigger_error($mysqli->error);
@@ -78,7 +78,7 @@ function ensure_table ($tableName, array $columns) {
             if ($first) $first = false;
             else $sql .= ', ';
             $escapedName = $mysqli->real_escape_string($name);
-            $definition = build_definition($mysqli, $column);
+            $definition = build_definition($column);
             $sql .= "`$escapedName` $definition";
         }
         $sql .= ')';
