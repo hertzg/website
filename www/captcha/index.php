@@ -1,10 +1,6 @@
 <?php
 
-$captcha = '';
-$chars = '23456789abcdefghijkmnpqrstuvwxyz';
-for ($i = 0; $i < 4; $i++) {
-    $chars .= $chars;
-}
+$chars = str_repeat('23456789abcdefghijkmnpqrstuvwxyz', 4);
 $chars = str_shuffle($chars);
 $captcha = substr($chars, -5);
 
@@ -23,7 +19,7 @@ foreach (str_split($captcha) as $i => $char) {
     $angle = rand(-30, 30);
     $x = 10 + $i * 17 + rand(-4, 4);
     $y = 26 + rand(-9, 9);
-    imagettftext($image, $size, $angle, $x, $y, 0x000000, './index.ttf', $char);
+    imagettftext($image, $size, $angle, $x, $y, 0, './index.ttf', $char);
 }
 
 header('Content-Type: image/png');
