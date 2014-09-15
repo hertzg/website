@@ -74,7 +74,7 @@ $optionsContent = Page\staticTwoColumns($restoreLink, $purgeLink);
 unset($_SESSION['trash/messages']);
 
 include_once '../fns/item_type_title.php';
-$title = item_type_title($type)." #$id";
+$title = item_type_title($type)." #$data->id";
 
 include_once '../../fns/create_panel.php';
 include_once '../../fns/Page/infoText.php';

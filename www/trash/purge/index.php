@@ -7,6 +7,8 @@ list($deletedItem, $id, $user) = require_deleted_item($mysqli);
 include_once '../fns/item_type_name.php';
 $typeName = item_type_name($deletedItem->data_type);
 
+$data_id = json_decode($deletedItem->data_json)->id;
+
 include_once '../../fns/Page/imageLink.php';
 include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Page/text.php';
@@ -18,7 +20,7 @@ $content = Page\tabs(
             'href' => '..',
         ],
         [
-            'title' => "$typeName #$id",
+            'title' => "$typeName #$data_id",
             'href' => "../view/?id=$id",
         ],
     ],
@@ -32,4 +34,4 @@ $content = Page\tabs(
 );
 
 include_once '../../fns/echo_page.php';
-echo_page($user, "Purge $typeName #$id?", $content, '../../');
+echo_page($user, "Purge $typeName #$data_id?", $content, '../../');
