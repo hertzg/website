@@ -2,7 +2,7 @@
 
 namespace ContactTags;
 
-function add ($mysqli, $id_users, $id_contacts, array $tag_names,
+function add ($mysqli, $id_users, $id_contacts, $tag_names,
     $full_name, $alias, $phone1, $phone2, $favorite) {
 
     $full_name = $mysqli->real_escape_string($full_name);
@@ -15,12 +15,12 @@ function add ($mysqli, $id_users, $id_contacts, array $tag_names,
     foreach ($tag_names as $tag_name) {
         $tag_name = $mysqli->real_escape_string($tag_name);
         $sql = 'insert into contact_tags'
-            .' (id_users, id_contacts, tag_name, full_name,'
-            .' alias, phone1, phone2, favorite,'
-            .' insert_time, update_time)'
-            ." values ($id_users, $id_contacts, '$tag_name', '$full_name',"
-            ." '$alias', '$phone1', '$phone2', $favorite,"
-            ." $insert_time, $update_time)";
+            .' (id_users, id_contacts, tag_name,'
+            .' full_name, alias, phone1, phone2,'
+            .' favorite, insert_time, update_time)'
+            ." values ($id_users, $id_contacts, '$tag_name',"
+            ." '$full_name', '$alias', '$phone1', '$phone2',"
+            ." $favorite, $insert_time, $update_time)";
         $mysqli->query($sql) || trigger_error($mysqli->error);
     }
 

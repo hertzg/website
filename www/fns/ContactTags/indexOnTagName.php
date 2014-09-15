@@ -2,8 +2,10 @@
 
 namespace ContactTags;
 
-function indexOnTagName ($mysqli, $id_users, $tag_name,
-    $offset, $limit, &$total) {
+function indexOnTagName ($mysqli, $id_users,
+    $tag_name, $offset, $limit, &$total) {
+
+    $fnsDir = __DIR__.'/..';
 
     $tag_name = $mysqli->real_escape_string($tag_name);
 
@@ -11,12 +13,12 @@ function indexOnTagName ($mysqli, $id_users, $tag_name,
         ." and tag_name = '$tag_name'";
 
     $sql = "select count(*) total $fromWhere";
-    include_once __DIR__.'/../mysqli_single_object.php';
+    include_once "$fnsDir/mysqli_single_object.php";
     $total = mysqli_single_object($mysqli, $sql)->total;
 
     $sql = "select * $fromWhere order by favorite desc, full_name"
         ." limit $limit offset $offset";
-    include_once __DIR__.'/../mysqli_query_object.php';
+    include_once "$fnsDir/mysqli_query_object.php";
     return mysqli_query_object($mysqli, $sql);
 
 }
