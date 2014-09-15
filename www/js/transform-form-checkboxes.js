@@ -4,13 +4,13 @@
     Array.prototype.forEach.call(formCheckboxes, function (formCheckbox) {
 
         function check () {
-            iconElement.classList.remove('checkbox')
-            iconElement.classList.add('checked-checkbox')
+            iconClassList.remove('checkbox')
+            iconClassList.add('checked-checkbox')
         }
 
         function uncheck () {
-            iconElement.classList.remove('checked-checkbox')
-            iconElement.classList.add('checkbox')
+            iconClassList.remove('checked-checkbox')
+            iconClassList.add('checkbox')
         }
 
         formCheckbox.classList.remove('transformable')
@@ -29,9 +29,13 @@
         iconElement.style.bottom = iconElement.style.left = '0'
         iconElement.style.margin = 'auto'
 
+        var iconClassList = iconElement.classList
+
         var clickableElement = formCheckbox.querySelector('.clickable')
         clickableElement.appendChild(iconElement)
         clickableElement.style.position = 'relative'
+
+        var clickableClassList = clickableElement.classList
 
         var checkboxInput = formCheckbox.querySelector('input')
         checkboxInput.addEventListener('click', function () {
@@ -39,10 +43,10 @@
             else uncheck()
         })
         checkboxInput.addEventListener('focus', function () {
-            clickableElement.classList.add('focus')
+            clickableClassList.add('focus')
         })
         checkboxInput.addEventListener('blur', function () {
-            clickableElement.classList.remove('focus')
+            clickableClassList.remove('focus')
         })
         if (checkboxInput.checked) check()
 

@@ -1,5 +1,22 @@
 (function (base) {
 
+    function ImageDiv (imageName) {
+
+        var div = document.createElement('div')
+
+        var style = div.style
+        style.width = '9px'
+        style.height = '11px'
+        style.backgroundRepeat = 'none'
+        style.backgroundImage = 'url(' + base + 'images/' + imageName + '.svg)'
+        style.position = 'absolute'
+        style.top = '-1px'
+        style.right = style.left = '0'
+        style.margin = 'auto'
+
+        return div
+    }
+
     function updateLevel () {
 
         var roundLevel = Math.round(battery.level * 5) / 5
@@ -58,35 +75,14 @@
         battery.addEventListener('chargingchange', updateCharging)
         battery.addEventListener('levelchange', updateLevel)
 
-        var chargingElement = document.createElement('div')
-        ;(function (style) {
-            style.width = '9px'
-            style.height = '11px'
-            style.backgroundRepeat = 'none'
-            style.backgroundImage = 'url(' + base + 'images/charging.svg)'
-            style.position = 'absolute'
-            style.top = '-1px'
-            style.right = style.left = '0'
-            style.margin = 'auto'
-        })(chargingElement.style)
+        var chargingElement = ImageDiv('charging')
         borderElement.appendChild(chargingElement)
 
-    } else {
-        var questionElement = document.createElement('div')
-        ;(function (style) {
-            style.width = '9px'
-            style.height = '11px'
-            style.backgroundRepeat = 'none'
-            style.backgroundImage = 'url(' + base + 'images/question.svg)'
-            style.position = 'absolute'
-            style.top = '-1px'
-            style.right = style.left = '0'
-            style.margin = 'auto'
-        })(questionElement.style)
-        borderElement.appendChild(questionElement)
-    }
+        updateCharging()
+        updateLevel()
 
-    updateCharging()
-    updateLevel()
+    } else {
+        borderElement.appendChild(ImageDiv('question'))
+    }
 
 })(base)
