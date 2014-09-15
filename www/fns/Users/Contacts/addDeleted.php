@@ -15,16 +15,18 @@ function addDeleted ($mysqli, $user, $data) {
     $tags = $data->tags;
     $favorite = $data->favorite;
 
-    include_once __DIR__.'/../../Tags/parse.php';
+    $fnsDir = __DIR__.'/../..';
+
+    include_once "$fnsDir/Tags/parse.php";
     $tag_names = \Tags\parse($tags);
 
-    include_once __DIR__.'/../../Contacts/addDeleted.php';
+    include_once "$fnsDir/Contacts/addDeleted.php";
     \Contacts\addDeleted($mysqli, $id, $id_users, $full_name, $alias,
         $data->address, $data->email, $phone1, $phone2, $birthday_time,
         $data->username, $data->timezone, $data->tags, $favorite,
         $data->insert_time, $data->update_time, $data->photo_id);
 
-    include_once __DIR__.'/../../ContactTags/add.php';
+    include_once "$fnsDir/ContactTags/add.php";
     \ContactTags\add($mysqli, $id_users, $id, $tag_names,
         $full_name, $alias, $phone1, $phone2, $favorite);
 

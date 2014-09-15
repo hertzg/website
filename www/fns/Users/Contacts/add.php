@@ -8,17 +8,19 @@ function add ($mysqli, $user, $full_name, $alias, $address,
 
     $id_users = $user->id_users;
 
-    include_once __DIR__.'/../../Contacts/add.php';
+    $fnsDir = __DIR__.'/../..';
+
+    include_once "$fnsDir/Contacts/add.php";
     $id = \Contacts\add($mysqli, $id_users, $full_name, $alias,
         $address, $email, $phone1, $phone2, $birthday_time,
         $username, $timezone, $tags, $favorite, $photo_id);
 
-    include_once __DIR__.'/../../ContactTags/add.php';
+    include_once "$fnsDir/ContactTags/add.php";
     \ContactTags\add($mysqli, $id_users, $id, $tag_names,
         $full_name, $alias, $phone1, $phone2, $favorite);
 
     if ($photo_id) {
-        include_once __DIR__.'/../../ContactPhotos/addRef.php';
+        include_once "$fnsDir/ContactPhotos/addRef.php";
         \ContactPhotos\addRef($mysqli, $photo_id);
     }
 

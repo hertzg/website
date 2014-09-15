@@ -4,6 +4,8 @@ namespace Users\Contacts\Photo;
 
 function set ($mysqli, $contact, $image) {
 
+    $fnsDir = __DIR__.'/../../..';
+
     $width = imagesx($image);
     $height = imagesy($image);
     $photoSize = 165;
@@ -26,15 +28,15 @@ function set ($mysqli, $contact, $image) {
     imagepng($destImage);
     $photoData = ob_get_clean();
 
-    include_once __DIR__.'/../../../ContactPhotos/add.php';
+    include_once "$fnsDir/ContactPhotos/add.php";
     $photo_id = \ContactPhotos\add($mysqli, $photoData);
 
-    include_once __DIR__.'/../../../Contacts/editPhoto.php';
+    include_once "$fnsDir/Contacts/editPhoto.php";
     \Contacts\editPhoto($mysqli, $contact->id_contacts, $photo_id);
 
     $old_photo_id = $contact->photo_id;
     if ($old_photo_id) {
-        include_once __DIR__.'/../../../ContactPhotos/delete.php';
+        include_once "$fnsDir/ContactPhotos/delete.php";
         \ContactPhotos\delete($mysqli, $old_photo_id);
     }
 
