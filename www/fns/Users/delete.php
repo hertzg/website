@@ -11,7 +11,7 @@ function delete ($mysqli, $id_users) {
         if (is_dir($dirname)) rmdir($dirname);
     };
 
-    $userDir = __DIR__."/../../users/$id_users";
+    $userDir = __DIR__."/../../data/users/$id_users";
     $rmdir("$userDir/files");
     $rmdir("$userDir/received-files");
     $rmdir("$userDir/received-folder-files");

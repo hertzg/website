@@ -30,9 +30,9 @@ function add ($mysqli, $username, $password) {
         .' 1, 1, 1, 1, 1, 1, 1, 1, 1)';
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
-    $id_users = $mysqli->insert_id;
+    $id = $mysqli->insert_id;
 
-    $userDir = __DIR__."/../../data/users/$id_users";
+    $userDir = __DIR__."/../../data/users/$id";
     mkdir($userDir);
     mkdir("$userDir/files");
     mkdir("$userDir/received-files");

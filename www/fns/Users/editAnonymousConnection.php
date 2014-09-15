@@ -2,9 +2,9 @@
 
 namespace Users;
 
-function editAnonymousConnection ($mysqli, $id_users, $can_send_bookmark,
-    $can_send_channel, $can_send_contact, $can_send_file, $can_send_note,
-    $can_send_task) {
+function editAnonymousConnection ($mysqli, $id_users,
+    $can_send_bookmark, $can_send_channel, $can_send_contact,
+    $can_send_file, $can_send_note, $can_send_task) {
 
     $can_send_bookmark = $can_send_bookmark ? '1' : '0';
     $can_send_channel = $can_send_channel ? '1' : '0';
