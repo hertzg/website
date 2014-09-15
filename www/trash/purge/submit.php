@@ -10,6 +10,7 @@ list($deletedItem, $id, $user) = require_deleted_item($mysqli);
 include_once '../../fns/Users/DeletedItems/purge.php';
 Users\DeletedItems\purge($mysqli, $deletedItem);
 
+unset($_SESSION['trash/errors']);
 $_SESSION['trash/messages'] = ['The item has been purged.'];
 
 include_once '../../fns/redirect.php';

@@ -71,7 +71,10 @@ $restoreLink = Page\imageLink('Restore', $href, 'restore-defaults');
 include_once '../../fns/Page/staticTwoColumns.php';
 $optionsContent = Page\staticTwoColumns($restoreLink, $purgeLink);
 
-unset($_SESSION['trash/messages']);
+unset(
+    $_SESSION['trash/errors'],
+    $_SESSION['trash/messages']
+);
 
 include_once '../fns/item_type_title.php';
 $title = item_type_title($type)." #$data->id";

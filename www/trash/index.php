@@ -68,6 +68,7 @@ if ($deletedItems) {
 unset($_SESSION['home/messages']);
 
 include_once '../fns/Page/infoText.php';
+include_once '../fns/Page/sessionErrors.php';
 include_once '../fns/Page/sessionMessages.php';
 include_once '../fns/Page/tabs.php';
 $content = Page\tabs(
@@ -78,7 +79,8 @@ $content = Page\tabs(
         ],
     ],
     'Trash',
-    Page\sessionMessages('trash/messages')
+    Page\sessionErrors('trash/errors')
+    .Page\sessionMessages('trash/messages')
     .join('<div class="hr"></div>', $items)
     .Page\infoText('Items in Trash are automatically'
         ." purged in $expireDays days after deletion.")

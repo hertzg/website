@@ -60,6 +60,7 @@ if ($type == 'bookmark') {
 include_once '../../fns/Users/DeletedItems/delete.php';
 Users\DeletedItems\delete($mysqli, $deletedItem);
 
+unset($_SESSION['trash/errors']);
 $_SESSION['trash/messages'] = ['The item has been restored.'];
 
 include_once '../../fns/redirect.php';

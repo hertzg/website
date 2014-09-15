@@ -17,6 +17,8 @@ function require_deleted_item ($mysqli) {
 
     if (!$deletedItem) {
         include_once "$fnsDir/redirect.php";
+        unset($_SESSION['trash/messages']);
+        $_SESSION['trash/errors'] = ['The item no longer exists.'];
         redirect('..');
     }
 

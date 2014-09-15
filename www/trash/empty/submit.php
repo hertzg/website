@@ -10,6 +10,7 @@ include_once '../../fns/Users/DeletedItems/purgeOnUser.php';
 include_once '../../lib/mysqli.php';
 Users\DeletedItems\purgeOnUser($mysqli, $user->id_users);
 
+unset($_SESSION['trash/errors']);
 $_SESSION['trash/messages'] = ['Trash has been emptied.'];
 
 include_once '../../fns/redirect.php';
