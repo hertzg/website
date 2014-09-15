@@ -5,11 +5,13 @@ namespace Users\Tasks;
 function add ($mysqli, $id_users, $text,
     $deadline_time, $tags, $tag_names, $top_priority) {
 
-    include_once __DIR__.'/../../Tasks/add.php';
+    $fnsDir = __DIR__.'/../..';
+
+    include_once "$fnsDir/Tasks/add.php";
     $id = \Tasks\add($mysqli, $id_users, $text,
         $deadline_time, $tags, $top_priority);
 
-    include_once __DIR__.'/../../TaskTags/add.php';
+    include_once "$fnsDir/TaskTags/add.php";
     \TaskTags\add($mysqli, $id_users, $id, $tag_names,
         $text, $deadline_time, $tags, $top_priority);
 
