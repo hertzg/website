@@ -1,0 +1,14 @@
+.actionButton {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    border-radius: 2px;
+    margin: 0;
+    padding-left: 0;
+}
+.actionButton:active {
+    padding-left: 2px;
+}
+.actionButton > .icon {
+    margin-right: 7px;
+}
