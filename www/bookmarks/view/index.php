@@ -14,8 +14,8 @@ unset(
     $_SESSION['bookmarks/send/values']
 );
 
-include_once '../fns/create_view_page.php';
-$content = create_view_page($mysqli, $user, $bookmark);
+include_once '../fns/ViewPage/create.php';
+$content = ViewPage\create($mysqli, $user, $bookmark);
 
 include_once '../../fns/echo_page.php';
 echo_page($user, "Bookmark #$id", $content, '../../', [

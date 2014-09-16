@@ -17,8 +17,8 @@ $addition = Page\confirmDialog('Are you sure you want to delete the bookmark?'
     .' It will be moved to Trash.', 'Yes, delete bookmark',
     $yesHref, $noHref);
 
-include_once '../fns/create_view_page.php';
-$content = create_view_page($mysqli, $user, $bookmark, $addition);
+include_once '../fns/ViewPage/create.php';
+$content = ViewPage\create($mysqli, $user, $bookmark, $addition);
 
 include_once '../../fns/echo_page.php';
 echo_page($user, "Delete Bookmark #$id?", $content, '../../', [
