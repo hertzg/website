@@ -3,10 +3,6 @@
 function create_options_panel ($user, $base = '') {
 
     $fnsDir = __DIR__.'/../../fns';
-
-    include_once "$fnsDir/ItemList/escapedPageQuery.php";
-    $escapedPageQuery = ItemList\escapedPageQuery();
-
     $options = [];
 
     $num_received_tasks = $user->num_received_tasks;
@@ -20,15 +16,17 @@ function create_options_panel ($user, $base = '') {
     }
 
     if ($user->num_tasks) {
-        $title = 'Delete All Tasks';
-        $href = "{$base}delete-all/$escapedPageQuery";
+        include_once "$fnsDir/ItemList/escapedPageQuery.php";
         include_once "$fnsDir/Page/imageArrowLink.php";
+        $title = 'Delete All Tasks';
+        $href = "{$base}delete-all/".ItemList\escapedPageQuery();
         $options[] = Page\imageArrowLink($title, $href, 'trash-bin');
     }
 
     if ($options) {
         include_once "$fnsDir/create_panel.php";
-        return create_panel('Options', join('<div class="hr"></div>', $options));
+        $content = join('<div class="hr"></div>', $options);
+        return create_panel('Options', $content);
     }
 
 }
