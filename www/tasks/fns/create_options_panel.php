@@ -26,7 +26,9 @@ function create_options_panel ($user, $base = '') {
         $options[] = Page\imageArrowLink($title, $href, 'trash-bin');
     }
 
-    include_once "$fnsDir/create_panel.php";
-    return create_panel('Options', join('<div class="hr"></div>', $options));
+    if ($options) {
+        include_once "$fnsDir/create_panel.php";
+        return create_panel('Options', join('<div class="hr"></div>', $options));
+    }
 
 }
