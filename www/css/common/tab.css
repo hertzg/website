@@ -40,16 +40,20 @@
 }
 
 @media (max-width: 440px) {
-    .tab-normal {
-        max-width: 140px;
-    }
+
     .tab-active {
-        max-width: 160px;
-    }
-    .tab-normal,
-    .tab-active {
+        max-width: 170px;
         direction: rtl;
         overflow: hidden;
         text-overflow: ellipsis;
     }
+
+    .tab-normal {
+        text-align: center;
+        width: 40px;
+    }
+    .tab-normal > .secondary {
+        display: none;
+    }
+
 }
