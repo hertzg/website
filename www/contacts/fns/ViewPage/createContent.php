@@ -2,7 +2,7 @@
 
 namespace ViewPage;
 
-function createContent ($contact, $infoText, $items, $addition) {
+function createContent ($contact, $infoText, $items) {
 
     $photo_id = $contact->photo_id;
     if ($photo_id) {
@@ -36,7 +36,6 @@ function createContent ($contact, $infoText, $items, $addition) {
             create_new_item_button('Contact', '../')
         )
         .optionsPanel($contact)
-        .photoOptionsPanel($contact)
-        .$addition;
+        .photoOptionsPanel($contact);
 
 }

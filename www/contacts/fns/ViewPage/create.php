@@ -2,7 +2,7 @@
 
 namespace ViewPage;
 
-function create ($mysqli, $user, $contact, $addition) {
+function create ($mysqli, $user, $contact) {
 
     $id = $contact->id_contacts;
     $fnsDir = __DIR__.'/../../../fns';
@@ -82,6 +82,6 @@ function create ($mysqli, $user, $contact, $addition) {
     $infoText = \Page\infoText($text);
 
     include_once __DIR__.'/createContent.php';
-    return createContent($contact, $infoText, $items, $addition);
+    return createContent($contact, $infoText, $items);
 
 }
