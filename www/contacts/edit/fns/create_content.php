@@ -8,16 +8,11 @@ function create_content ($id, array $values) {
     include_once "$fnsDir/Form/button.php";
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
     include_once "$fnsDir/ItemList/itemHiddenInputs.php";
-    include_once "$fnsDir/ItemList/listHref.php";
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/staticTwoColumns.php";
     include_once "$fnsDir/Page/tabs.php";
     return Page\tabs(
         [
-            [
-                'title' => '&middot;&middot;&middot;',
-                'href' => ItemList\listHref(),
-            ],
             [
                 'title' => "Contact #$id",
                 'href' => '../view/'.ItemList\escapedItemQuery($id),

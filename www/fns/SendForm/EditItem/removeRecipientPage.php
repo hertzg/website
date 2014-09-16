@@ -21,10 +21,6 @@ function removeRecipientPage ($user, $id, $username) {
     $content = \Page\tabs(
         [
             [
-                'title' => '&middot;&middot;&middot;',
-                'href' => "../../../view/$escapedItemQuery",
-            ],
-            [
                 'title' => 'Edit',
                 'href' => "../../$escapedItemQuery",
             ],

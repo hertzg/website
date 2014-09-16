@@ -16,10 +16,6 @@ include_once '../../../fns/Page/sessionErrors.php';
 $content = Page\tabs(
     [
         [
-            'title' => '&middot;&middot;&middot;',
-            'href' => '../..',
-        ],
-        [
             'title' => 'Other Channels',
             'href' => '..',
         ],

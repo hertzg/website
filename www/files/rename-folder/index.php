@@ -27,10 +27,6 @@ include_once '../../fns/Page/tabs.php';
 $content = Page\tabs(
     [
         [
-            'title' => '&middot;&middot;&middot;',
-            'href' => '../../home/',
-        ],
-        [
             'title' => 'Files',
             'href' => create_folder_link($id_folders, '../'),
         ],

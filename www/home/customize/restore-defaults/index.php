@@ -17,10 +17,6 @@ include_once '../../../fns/Page/twoColumns.php';
 $content = Page\tabs(
     [
         [
-            'title' => '&middot;&middot;&middot;',
-            'href' => '../..',
-        ],
-        [
             'title' => 'Customize',
             'href' => '..',
         ],

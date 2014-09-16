@@ -24,10 +24,6 @@ function subgroup_page ($groupKey, $subgroup, $subgroupKey, $methods) {
     $content = Page\tabs(
         [
             [
-                'title' => '&middot;&middot;&middot;',
-                'href' => '../..',
-            ],
-            [
                 'title' => $groups[$groupKey]['title'],
                 'href' => '..',
             ],

@@ -11,16 +11,11 @@ $escapedItemQuery = ItemList\escapedItemQuery($id);
 
 include_once '../../fns/create_offset_select.php';
 include_once '../../../fns/Form/button.php';
-include_once '../../../fns/ItemList/listHref.php';
 include_once '../../../fns/ItemList/itemHiddenInputs.php';
 include_once '../../../fns/Page/imageLink.php';
 include_once '../../../fns/Page/tabs.php';
 $content = Page\tabs(
     [
-        [
-            'title' => '&middot;&middot;&middot;',
-            'href' => '../'.ItemList\listHref(),
-        ],
         [
             'title' => "Schedule #$id",
             'href' => "../../view/$escapedItemQuery",

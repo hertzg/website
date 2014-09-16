@@ -14,10 +14,6 @@ function create_content ($items) {
     return Page\tabs(
         [
             [
-                'title' => '&middot;&middot;&middot;',
-                'href' => '../../home/',
-            ],
-            [
                 'title' => 'Files',
                 'href' => '..',
             ],

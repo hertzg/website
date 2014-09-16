@@ -60,20 +60,12 @@ if ($values['usernameError']) {
     }
 }
 
-$listHref = '..';
-$id_folders = $file->id_folders;
-if ($id_folders) $listHref .= "/?id_folders=$id_folders";
-
 include_once '../../fns/Page/sessionErrors.php';
 include_once '../../fns/Page/sessionMessages.php';
 include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Page/warnings.php';
 $content = Page\tabs(
     [
-        [
-            'title' => '&middot;&middot;&middot;',
-            'href' => $listHref,
-        ],
         [
             'title' => "File #$id",
             'href' => "../view-file/?id=$id",

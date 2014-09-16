@@ -31,10 +31,6 @@ include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
     [
         [
-            'title' => '&middot;&middot;&middot;',
-            'href' => '../../..',
-        ],
-        [
             'title' => 'Received',
             'href' => '../..',
         ],

@@ -28,10 +28,6 @@ include_once '../../../fns/Page/tabs.php';
 $content = Page\tabs(
     [
         [
-            'title' => '&middot;&middot;&middot;',
-            'href' => '../..',
-        ],
-        [
             'title' => 'Channels',
             'href' => '..',
         ],

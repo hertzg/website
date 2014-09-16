@@ -23,8 +23,6 @@ function recipientsPage ($mysqli, $user, $id, $pageTitle,
     include_once __DIR__.'/../../ItemList/itemParams.php';
     $itemParams = \ItemList\itemParams($id);
 
-    include_once __DIR__.'/../../ItemList/escapedItemQuery.php';
-    $escapedItemQuery = \ItemList\escapedItemQuery($id);
 
     if ($values['usernameError']) {
         $username = $values['username'];
@@ -64,6 +62,7 @@ function recipientsPage ($mysqli, $user, $id, $pageTitle,
         }
     }
 
+    include_once __DIR__.'/../../ItemList/escapedItemQuery.php';
     include_once __DIR__.'/../../Page/sessionErrors.php';
     include_once __DIR__.'/../../Page/sessionMessages.php';
     include_once __DIR__.'/../../Page/tabs.php';
@@ -71,12 +70,8 @@ function recipientsPage ($mysqli, $user, $id, $pageTitle,
     $content = \Page\tabs(
         [
             [
-                'title' => '&middot;&middot;&middot;',
-                'href' => "../../view/$escapedItemQuery",
-            ],
-            [
                 'title' => 'Edit',
-                'href' => "../$escapedItemQuery",
+                'href' => '../'.\ItemList\escapedItemQuery($id),
             ],
         ],
         'Send',

@@ -47,10 +47,6 @@ include_once '../../fns/Page/sessionMessages.php';
 $content = Page\tabs(
     [
         [
-            'title' => '&middot;&middot;&middot;',
-            'href' => '../../home/',
-        ],
-        [
             'title' => 'Account',
             'href' => '..',
         ],

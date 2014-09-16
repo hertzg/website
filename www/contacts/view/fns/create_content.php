@@ -23,10 +23,6 @@ function create_content ($contact, $infoText, $items) {
         Page\tabs(
             [
                 [
-                    'title' => '&middot;&middot;&middot;',
-                    'href' => '../../home/',
-                ],
-                [
                     'title' => 'Contacts',
                     'href' => ItemList\listHref(),
                 ],

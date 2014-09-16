@@ -20,10 +20,6 @@ include_once "$fnsDir/Page/sessionErrors.php";
 $content = Page\tabs(
     [
         [
-            'title' => '&middot;&middot;&middot;',
-            'href' => '../..',
-        ],
-        [
             'title' => "Received File #$id",
             'href' => "../?id=$id",
         ],

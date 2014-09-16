@@ -9,10 +9,6 @@ include_once '../../fns/Page/text.php';
 $content = Page\tabs(
     [
         [
-            'title' => '&middot;&middot;&middot;',
-            'href' => '../../home/',
-        ],
-        [
             'title' => 'Help',
             'href' => '../',
         ],

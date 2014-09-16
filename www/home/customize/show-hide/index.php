@@ -38,10 +38,6 @@ include_once "$fnsDir/Page/warnings.php";
 $content = Page\tabs(
     [
         [
-            'title' => '&middot;&middot;&middot;',
-            'href' => '../..',
-        ],
-        [
             'title' => 'Customize',
             'href' => '..',
         ],

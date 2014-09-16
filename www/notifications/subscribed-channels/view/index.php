@@ -36,10 +36,6 @@ $content =
     Page\tabs(
         [
             [
-                'title' => '&middot;&middot;&middot;',
-                'href' => '../..',
-            ],
-            [
                 'title' => 'Other Channels',
                 'href' => '..',
             ],

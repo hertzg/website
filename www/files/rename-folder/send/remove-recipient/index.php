@@ -21,10 +21,6 @@ include_once '../../../../fns/Page/twoColumns.php';
 $content = Page\tabs(
     [
         [
-            'title' => '&middot;&middot;&middot;',
-            'href' => "../../../?id_folders=$id",
-        ],
-        [
             'title' => "Rename Folder #$id",
             'href' => "../../?id_folders=$id",
         ],

@@ -15,10 +15,6 @@ include_once "$fnsDir/Page/twoColumns.php";
 $content = Page\tabs(
     [
         [
-            'title' => '&middot;&middot;&middot;',
-            'href' => '../../..',
-        ],
-        [
             'title' => 'Received',
             'href' => '../..',
         ],

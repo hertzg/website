@@ -21,10 +21,6 @@ include_once '../../../../fns/Page/twoColumns.php';
 $content = Page\tabs(
     [
         [
-            'title' => '&middot;&middot;&middot;',
-            'href' => "../../../view-file/?id=$id",
-        ],
-        [
             'title' => 'Rename',
             'href' => "../../?id=$id",
         ],

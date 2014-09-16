@@ -24,10 +24,6 @@ function group_page ($groupKey, $methods, $subgroups = null) {
     $content = Page\tabs(
         [
             [
-                'title' => '&middot;&middot;&middot;',
-                'href' => '../..',
-            ],
-            [
                 'title' => 'API Documentation',
                 'href' => '..',
             ],

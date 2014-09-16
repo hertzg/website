@@ -15,7 +15,6 @@ unset(
     $_SESSION['files/view-file/messages']
 );
 
-include_once '../../fns/create_folder_link.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/hidden.php';
 include_once '../../fns/Form/textfield.php';
@@ -24,10 +23,6 @@ include_once '../../fns/Page/staticTwoColumns.php';
 include_once '../../fns/Page/tabs.php';
 $content = Page\tabs(
     [
-        [
-            'title' => '&middot;&middot;&middot;',
-            'href' => create_folder_link($file->id_folders, '../'),
-        ],
         [
             'title' => "File #$id",
             'href' => "../view-file/?id=$id",

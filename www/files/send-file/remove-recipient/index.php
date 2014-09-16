@@ -14,20 +14,12 @@ $yesHref = 'submit.php?'.htmlspecialchars(http_build_query([
     'username' => $username,
 ]));
 
-$listHref = '../..';
-$id_folders = $file->id_folders;
-if ($id_folders) $listHref .= "/?id_folders=$id_folders";
-
 include_once '../../../fns/Page/imageLink.php';
 include_once '../../../fns/Page/tabs.php';
 include_once '../../../fns/Page/text.php';
 include_once '../../../fns/Page/twoColumns.php';
 $content = Page\tabs(
     [
-        [
-            'title' => '&middot;&middot;&middot;',
-            'href' => $listHref,
-        ],
         [
             'title' => "File #$id",
             'href' => "../../view-file/?id=$id",

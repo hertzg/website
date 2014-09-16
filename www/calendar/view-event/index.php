@@ -34,10 +34,6 @@ $content =
     Page\tabs(
         [
             [
-                'title' => '&middot;&middot;&middot;',
-                'href' => '../../home/',
-            ],
-            [
                 'title' => 'Calendar',
                 'href' => '..',
             ],

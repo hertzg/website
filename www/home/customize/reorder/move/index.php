@@ -18,10 +18,6 @@ include_once "$fnsDir/Page/text.php";
 $content = Page\tabs(
     [
         [
-            'title' => '&middot;&middot;&middot;',
-            'href' => '../..',
-        ],
-        [
             'title' => 'Reorder Items',
             'href' => '..',
         ],

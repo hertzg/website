@@ -40,10 +40,6 @@ include_once "$fnsDir/Page/sessionMessages.php";
 $content = Page\tabs(
     [
         [
-            'title' => '&middot;&middot;&middot;',
-            'href' => '..',
-        ],
-        [
             'title' => "Channel #$id",
             'href' => "../view/?id=$id",
         ],

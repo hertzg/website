@@ -20,10 +20,6 @@ include_once '../../../fns/Page/tabs.php';
 $content = Page\tabs(
     [
         [
-            'title' => '&middot;&middot;&middot;',
-            'href' => '..',
-        ],
-        [
             'title' => "Connection #$id",
             'href' => "../view/?id=$id",
         ],

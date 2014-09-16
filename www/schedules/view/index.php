@@ -38,10 +38,6 @@ include_once '../../fns/Page/text.php';
 $content = Page\tabs(
     [
         [
-            'title' => '&middot;&middot;&middot;',
-            'href' => '../../home/',
-        ],
-        [
             'title' => 'Schedules',
             'href' => ItemList\listHref(),
         ],

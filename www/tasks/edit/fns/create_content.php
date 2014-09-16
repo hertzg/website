@@ -6,7 +6,6 @@ function create_content ($id, $values) {
 
     include_once __DIR__.'/../../fns/create_form_items.php';
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
-    include_once "$fnsDir/ItemList/listHref.php";
     include_once "$fnsDir/Form/button.php";
     include_once "$fnsDir/Form/hidden.php";
     include_once "$fnsDir/ItemList/itemHiddenInputs.php";
@@ -15,10 +14,6 @@ function create_content ($id, $values) {
     include_once "$fnsDir/Page/tabs.php";
     return Page\tabs(
         [
-            [
-                'title' => '&middot;&middot;&middot;',
-                'href' => ItemList\listHref(),
-            ],
             [
                 'title' => "Task #$id",
                 'href' => '../view/'.ItemList\escapedItemQuery($id),

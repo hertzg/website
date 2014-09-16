@@ -15,10 +15,6 @@ include_once '../../fns/Page/warnings.php';
 $content = Page\tabs(
     [
         [
-            'title' => '&middot;&middot;&middot;',
-            'href' => '../../home/',
-        ],
-        [
             'title' => 'Account',
             'href' => '..',
         ],

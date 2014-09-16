@@ -61,17 +61,12 @@ function recipientsPage ($mysqli, $user,
     }
 
     include_once __DIR__.'/../../ItemList/escapedPageQuery.php';
-    include_once __DIR__.'/../../ItemList/listHref.php';
     include_once __DIR__.'/../../Page/sessionErrors.php';
     include_once __DIR__.'/../../Page/sessionMessages.php';
     include_once __DIR__.'/../../Page/tabs.php';
     include_once __DIR__.'/../../Page/warnings.php';
     $content = \Page\tabs(
         [
-            [
-                'title' => '&middot;&middot;&middot;',
-                'href' => '../'.\ItemList\listHref(),
-            ],
             [
                 'title' => 'New',
                 'href' => '../'.\ItemList\escapedPageQuery(),

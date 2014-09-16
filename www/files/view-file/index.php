@@ -39,10 +39,6 @@ $content =
     Page\tabs(
         [
             [
-                'title' => '&middot;&middot;&middot;',
-                'href' => '../../home/',
-            ],
-            [
                 'title' => 'Files',
                 'href' => create_folder_link($file->id_folders, '../'),
             ],

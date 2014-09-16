@@ -26,16 +26,11 @@ include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/textfield.php';
 include_once '../../fns/ItemList/escapedItemQuery.php';
 include_once '../../fns/ItemList/itemHiddenInputs.php';
-include_once '../../fns/ItemList/listHref.php';
 include_once '../../fns/Page/imageArrowLink.php';
 include_once '../../fns/Page/sessionErrors.php';
 include_once '../../fns/Page/tabs.php';
 $content = Page\tabs(
     [
-        [
-            'title' => '&middot;&middot;&middot;',
-            'href' => ItemList\listHref(),
-        ],
         [
             'title' => "Schedule #$id",
             'href' => '../view/'.ItemList\escapedItemQuery($id),

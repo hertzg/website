@@ -66,10 +66,6 @@ include_once '../../../fns/Page/warnings.php';
 $content = Page\tabs(
     [
         [
-            'title' => '&middot;&middot;&middot;',
-            'href' => "../../?id_folders=$id",
-        ],
-        [
             'title' => "Rename Folder #$id",
             'href' => "../?id_folders=$id",
         ],

@@ -12,17 +12,12 @@ function removeRecipientPage ($user, $id, $username, $title) {
     $itemParams['username'] = $username;
     $yesHref = 'submit.php?'.htmlspecialchars(http_build_query($itemParams));
 
-    include_once __DIR__.'/../ItemList/listHref.php';
     include_once __DIR__.'/../Page/imageLink.php';
     include_once __DIR__.'/../Page/tabs.php';
     include_once __DIR__.'/../Page/text.php';
     include_once __DIR__.'/../Page/twoColumns.php';
     $content = \Page\tabs(
         [
-            [
-                'title' => '&middot;&middot;&middot;',
-                'href' => '../'.\ItemList\listHref(),
-            ],
             [
                 'title' => $title,
                 'href' => "../../view/$escapedItemQuery",

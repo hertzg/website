@@ -14,10 +14,6 @@ function create_content (array $values) {
     return Page\tabs(
         [
             [
-                'title' => '&middot;&middot;&middot;',
-                'href' => '../../home/',
-            ],
-            [
                 'title' => 'Contacts',
                 'href' => ItemList\listHref(),
             ],

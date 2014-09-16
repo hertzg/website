@@ -12,10 +12,6 @@ function create_content ($id, array $values) {
     return Page\tabs(
         [
             [
-                'title' => '&middot;&middot;&middot;',
-                'href' => '..',
-            ],
-            [
                 'title' => "Received Contact #$id",
                 'href' => "../view/?id=$id",
             ],

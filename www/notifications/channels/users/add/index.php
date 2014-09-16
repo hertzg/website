@@ -21,10 +21,6 @@ include_once '../../../../fns/Page/sessionErrors.php';
 $content = Page\tabs(
     [
         [
-            'title' => '&middot;&middot;&middot;',
-            'href' => "../../view/?id=$id",
-        ],
-        [
             'title' => 'Users',
             'href' => "../?id=$id",
         ],

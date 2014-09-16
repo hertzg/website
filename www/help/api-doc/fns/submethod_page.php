@@ -37,10 +37,6 @@ function submethod_page ($groupKey, $subgroupName,
     $content = Page\tabs(
         [
             [
-                'title' => '&middot;&middot;&middot;',
-                'href' => '../..',
-            ],
-            [
                 'title' => $subgroupName,
                 'href' => '..',
             ],

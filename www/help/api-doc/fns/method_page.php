@@ -35,10 +35,6 @@ function method_page ($groupName, $prefix,
     $content = Page\tabs(
         [
             [
-                'title' => '&middot;&middot;&middot;',
-                'href' => '../..',
-            ],
-            [
                 'title' => $groupName,
                 'href' => '..',
             ],
