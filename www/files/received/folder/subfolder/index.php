@@ -31,7 +31,8 @@ if ($subfolders || $files) {
 
     foreach ($files as $file) {
         $title = htmlspecialchars($file->name);
-        $items[] = Page\imageLink($title, "file/?id=$file->id", 'file');
+        $icon = "$file->media_type-file";
+        $items[] = Page\imageLink($title, "file/?id=$file->id", $icon);
     }
 
 } else {

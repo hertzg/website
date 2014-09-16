@@ -1,7 +1,6 @@
 <?php
 
-function render_folders_and_files (array $folders,
-    array $files, &$items, $keyword) {
+function render_folders_and_files ($folders, $files, &$items, $keyword) {
 
     if ($folders || $files) {
 
@@ -21,7 +20,8 @@ function render_folders_and_files (array $folders,
             $title = htmlspecialchars($file->name);
             $title = preg_replace($regex, $replace, $title);
             $href = "../view-file/?id=$file->id_files";
-            $items[] = Page\imageArrowLink($title, $href, 'file');
+            $icon = "$file->media_type-file";
+            $items[] = Page\imageArrowLink($title, $href, $icon);
         }
 
     } else {

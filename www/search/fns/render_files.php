@@ -6,6 +6,6 @@ function render_files ($files, &$items, $regex) {
         $title = htmlspecialchars($file->name);
         $title = preg_replace($regex, '<mark>$0</mark>', $title);
         $href = "../files/view-file/?id=$file->id_files";
-        $items[] = Page\imageArrowLink($title, $href, 'file');
+        $items[] = Page\imageArrowLink($title, $href, "$file->media_type-file");
     }
 }

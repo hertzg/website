@@ -38,7 +38,7 @@ render($content, 'contact.svg?2', $names);
 $names = ['event', 'create-event', 'edit-event', 'events'];
 render($content, 'event.svg?1', $names);
 
-$names = ['file', 'audio-file', 'image-file', 'video-file',
+$names = ['unknown-file', 'audio-file', 'image-file', 'video-file',
     'files', 'copy-file', 'move-file', 'import-file'];
 render($content, 'file.svg?5', $names);
 

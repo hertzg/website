@@ -65,20 +65,13 @@ if ($receivedFolders || $receivedFiles) {
     }
 
     foreach ($receivedFiles as $receivedFile) {
-
-        $media_type = $receivedFile->media_type;
-        if ($media_type == 'audio') $icon = 'audio-file';
-        elseif ($media_type == 'image') $icon = 'image-file';
-        elseif ($media_type == 'video') $icon = 'video-file';
-        else $icon = 'file';
-
         $title = htmlspecialchars($receivedFile->name);
         $description = create_sender_description($receivedFile);
         $href = "file/?id=$receivedFile->id";
+        $icon = "$receivedFile->media_type-file";
         $html = Page\imageArrowLinkWithDescription(
             $title, $description, $href, $icon);
         $items[$receivedFile->insert_time] = $html;
-
     }
 
 } else {
