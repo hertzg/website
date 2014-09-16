@@ -1,10 +1,14 @@
 <?php
 
-function create_content ($user, $filterMessage, array $items) {
+function create_content ($user, $filterMessage, $items) {
+
+    $fnsDir = __DIR__.'/../../fns';
+
     include_once __DIR__.'/../fns/create_options_panel.php';
-    include_once __DIR__.'/../../fns/Page/tabs.php';
-    include_once __DIR__.'/../../fns/Page/sessionErrors.php';
-    include_once __DIR__.'/../../fns/Page/sessionMessages.php';
+    include_once "$fnsDir/create_new_item_button.php";
+    include_once "$fnsDir/Page/sessionErrors.php";
+    include_once "$fnsDir/Page/sessionMessages.php";
+    include_once "$fnsDir/Page/tabs.php";
     return
         Page\tabs(
             [
@@ -16,7 +20,9 @@ function create_content ($user, $filterMessage, array $items) {
             'Notes',
             Page\sessionErrors('notes/errors')
             .Page\sessionMessages('notes/messages')
-            .$filterMessage.join('<div class="hr"></div>', $items)
+            .$filterMessage.join('<div class="hr"></div>', $items),
+            create_new_item_button('Note')
         )
         .create_options_panel($user);
+
 }

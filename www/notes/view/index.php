@@ -37,9 +37,10 @@ include_once '../../fns/Page/infoText.php';
 $infoText = Page\infoText($text);
 
 include_once 'fns/create_options_panel.php';
+include_once '../../fns/create_new_item_button.php';
 include_once '../../fns/ItemList/listHref.php';
-include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Page/sessionMessages.php';
+include_once '../../fns/Page/tabs.php';
 $content =
     Page\tabs(
         [
@@ -55,7 +56,8 @@ $content =
         "Note #$id",
         Page\sessionMessages('notes/view/messages')
         .join('<div class="hr"></div>', $items)
-        .$infoText
+        .$infoText,
+        create_new_item_button('Note', '../')
     )
     .create_options_panel($id);
 
