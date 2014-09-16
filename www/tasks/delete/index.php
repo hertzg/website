@@ -9,28 +9,16 @@ unset($_SESSION['tasks/view/messages']);
 include_once '../../fns/ItemList/escapedItemQuery.php';
 $escapedItemQuery = ItemList\escapedItemQuery($id);
 
-include_once '../../fns/ItemList/listHref.php';
-include_once '../../fns/Page/tabs.php';
-include_once '../../fns/Page/imageLink.php';
-include_once '../../fns/Page/text.php';
-include_once '../../fns/Page/twoColumns.php';
-$content = Page\tabs(
-    [
-        [
-            'title' => 'Tasks',
-            'href' => ItemList\listHref(),
-        ],
-    ],
-    "Task #$id",
-    Page\text('Are you sure you want to delete the task?'
-        .' It will be moved to Trash.')
-    .'<div class="hr"></div>'
-    .Page\twoColumns(
-        Page\imageLink('Yes, delete task',
-            "submit.php$escapedItemQuery", 'yes'),
-        Page\imageLink('No, return back', "../view/$escapedItemQuery", 'no')
-    )
-);
+include_once '../fns/ViewPage/create.php';
+include_once '../../fns/Page/confirmDialog.php';
+$content =
+    ViewPage\create($mysqli, $user, $task)
+    .Page\confirmDialog('Are you sure you want to delete the task?'
+        .' It will be moved to Trash.', 'Yes, delete task',
+        "submit.php$escapedItemQuery", "../view/$escapedItemQuery");
 
 include_once '../../fns/echo_page.php';
-echo_page($user, "Delete Task #$id?", $content, '../../');
+echo_page($user, "Delete Task #$id?", $content, '../../', [
+    'head' => '<link rel="stylesheet" type="text/css"'
+        .' href="../../confirmDialog.compressed.css" />',
+]);
