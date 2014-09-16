@@ -1,6 +1,6 @@
 <?php
 
-function render_folders_and_files (array $folders, array $files, &$items) {
+function render_folders_and_files ($folders, $files, &$items) {
 
     if ($folders || $files) {
 
@@ -13,9 +13,17 @@ function render_folders_and_files (array $folders, array $files, &$items) {
         }
 
         foreach ($files as $i => $file) {
+
+            $media_type = $file->media_type;
+            if ($media_type == 'audio') $icon = 'audio-file';
+            elseif ($media_type == 'image') $icon = 'image-file';
+            elseif ($media_type == 'video') $icon = 'video-file';
+            else $icon = 'file';
+
             $title = htmlspecialchars($file->name);
             $href = "view-file/?id=$file->id_files";
-            $items[] = Page\imageArrowLink($title, $href, 'file');
+            $items[] = Page\imageArrowLink($title, $href, $icon);
+
         }
 
     } else {
