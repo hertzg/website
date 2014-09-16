@@ -9,33 +9,25 @@ unset($_SESSION['contacts/view/messages']);
 include_once '../../fns/ItemList/escapedItemQuery.php';
 $escapedItemQuery = ItemList\escapedItemQuery($id);
 
-include_once '../../fns/Page/imageLink.php';
+$yesHref = "submit.php$escapedItemQuery";
+$noHref = "../view/$escapedItemQuery";
 
-$href = "submit.php$escapedItemQuery";
-$yesLink = Page\imageLink('Yes, delete contact', $href, 'yes');
+include_once '../../fns/Page/confirmDialog.php';
+$addition = Page\confirmDialog('Are you sure you want to delete the contact?'
+    .' It will be moved to Trash.', 'Yes, delete contact',
+    $yesHref, $noHref);
 
-$noLink = Page\imageLink('No, return back', "../view/$escapedItemQuery", 'no');
+include_once '../fns/ViewPage/create.php';
+$content = ViewPage\create($mysqli, $user, $contact, $addition);
 
-include_once '../../fns/ItemList/listHref.php';
-include_once '../../fns/Page/tabs.php';
-include_once '../../fns/Page/text.php';
-include_once '../../fns/Page/twoColumns.php';
-$content = Page\tabs(
-    [
-        [
-            'title' => 'Contacts',
-            'href' => ItemList\listHref(),
-        ],
-    ],
-    "Contact #$id",
-    Page\text(
-        'Are you sure you want to delete the contact'
-        .' "<b>'.htmlspecialchars($contact->full_name).'</b>"?'
-        .' It will be moved to Trash.'
-    )
-    .'<div class="hr"></div>'
-    .Page\twoColumns($yesLink, $noLink)
-);
+include_once '../../fns/get_revision.php';
+$cssRevision = get_revision('contact.compressed.css');
 
 include_once '../../fns/echo_page.php';
-echo_page($user, "Delete Contact #$id?", $content, '../../');
+echo_page($user, "Delete Contact #$id?", $content, '../../', [
+    'head' =>
+        '<link rel="stylesheet" type="text/css"'
+        ." href=\"../../contact.compressed.css?$cssRevision\" />"
+        .'<link rel="stylesheet" type="text/css"'
+        .' href="../../confirmDialog.compressed.css" />',
+]);

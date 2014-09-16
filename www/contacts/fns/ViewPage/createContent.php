@@ -1,6 +1,8 @@
 <?php
 
-function create_content ($contact, $infoText, $items) {
+namespace ViewPage;
+
+function createContent ($contact, $infoText, $items, $addition) {
 
     $photo_id = $contact->photo_id;
     if ($photo_id) {
@@ -12,28 +14,29 @@ function create_content ($contact, $infoText, $items) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
-    include_once __DIR__.'/../fns/create_options_panel.php';
-    include_once __DIR__.'/../fns/create_photo_options_panel.php';
+    include_once __DIR__.'/optionsPanel.php';
+    include_once __DIR__.'/photoOptionsPanel.php';
     include_once "$fnsDir/create_contact_panel.php";
     include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/ItemList/listHref.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
     return
-        Page\tabs(
+        \Page\tabs(
             [
                 [
                     'title' => 'Contacts',
-                    'href' => ItemList\listHref(),
+                    'href' => \ItemList\listHref(),
                 ],
             ],
             "Contact #$contact->id_contacts",
-            Page\sessionMessages('contacts/view/messages')
+            \Page\sessionMessages('contacts/view/messages')
             .create_contact_panel($photoSrc, join('<div class="hr"></div>', $items))
             .$infoText,
             create_new_item_button('Contact', '../')
         )
-        .create_options_panel($contact)
-        .create_photo_options_panel($contact);
+        .optionsPanel($contact)
+        .photoOptionsPanel($contact)
+        .$addition;
 
 }

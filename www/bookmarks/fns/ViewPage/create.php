@@ -2,7 +2,7 @@
 
 namespace ViewPage;
 
-function create ($mysqli, $user, $bookmark, $addition = '') {
+function create ($mysqli, $user, $bookmark, $addition) {
 
     $id = $bookmark->id_bookmarks;
     $url = $bookmark->url;
