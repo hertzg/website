@@ -23,7 +23,7 @@ $addition =
     .'<script type="text/javascript">'
         .'var deleteHref = '.json_encode("../delete/submit.php$itemQuery")
     .'</script>'
-    .'<script type="text/javascript" defer="defer" src="index.js"></script>';
+    .'<script type="text/javascript" defer="defer" src="index.js?1"></script>';
 
 include_once '../fns/ViewPage/create.php';
 $content = ViewPage\create($mysqli, $user, $bookmark, $addition);
