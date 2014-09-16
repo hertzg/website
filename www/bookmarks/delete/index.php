@@ -9,30 +9,19 @@ unset($_SESSION['bookmarks/view/messages']);
 include_once '../../fns/ItemList/escapedItemQuery.php';
 $escapedItemQuery = ItemList\escapedItemQuery($id);
 
-include_once '../../fns/Page/imageLink.php';
+$yesHref = "submit.php$escapedItemQuery";
+$noHref = "../view/$escapedItemQuery";
 
-$href = "submit.php$escapedItemQuery";
-$yesLink = Page\imageLink('Yes, delete bookmark', $href, 'yes');
+include_once '../../fns/Page/confirmDialog.php';
+$addition = Page\confirmDialog('Are you sure you want to delete the bookmark?'
+    .' It will be moved to Trash.', 'Yes, delete bookmark',
+    $yesHref, $noHref);
 
-$noLink = Page\imageLink('No, return back', "../view/$escapedItemQuery", 'no');
-
-include_once '../../fns/ItemList/listHref.php';
-include_once '../../fns/Page/tabs.php';
-include_once '../../fns/Page/text.php';
-include_once '../../fns/Page/twoColumns.php';
-$content = Page\tabs(
-    [
-        [
-            'title' => 'Bookmarks',
-            'href' => ItemList\listHref(),
-        ],
-    ],
-    "Bookmark #$id",
-    Page\text('Are you sure you want to delete the bookmark?'
-        .' It will be moved to Trash.')
-    .'<div class="hr"></div>'
-    .Page\twoColumns($yesLink, $noLink)
-);
+include_once '../fns/create_view_page.php';
+$content = create_view_page($mysqli, $user, $bookmark, $addition);
 
 include_once '../../fns/echo_page.php';
-echo_page($user, "Delete Bookmark #$id?", $content, '../../');
+echo_page($user, "Delete Bookmark #$id?", $content, '../../', [
+    'head' => '<link rel="stylesheet" type="text/css"'
+        .' href="../../confirmDialog.compressed.css" />',
+]);

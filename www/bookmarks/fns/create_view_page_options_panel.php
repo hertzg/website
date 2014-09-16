@@ -1,8 +1,8 @@
 <?php
 
-function create_options_panel ($bookmark) {
+function create_view_page_options_panel ($bookmark) {
 
-    $bookmarksDir = __DIR__.'/../..';
+    $bookmarksDir = __DIR__.'/..';
     $fnsDir = "$bookmarksDir/../fns";
 
     include_once "$bookmarksDir/fns/create_open_links.php";
