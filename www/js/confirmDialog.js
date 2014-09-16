@@ -1,4 +1,4 @@
-function confirmDialog (questionText, yesText, noText, yesHref, noListener) {
+function confirmDialog (questionText, yesText, yesHref, noListener) {
 
     function hr () {
         var element = document.createElement('div')
@@ -46,7 +46,7 @@ function confirmDialog (questionText, yesText, noText, yesHref, noListener) {
     var yesLink = imageLink(yesText, 'yes')
     yesLink.href = yesHref
 
-    var noLink = imageLink(noText, 'no')
+    var noLink = imageLink('No, return back', 'no')
     noLink.addEventListener('click', function () {
         body.removeChild(element)
         noListener()
@@ -82,7 +82,7 @@ function confirmDialog (questionText, yesText, noText, yesHref, noListener) {
     ;(function (style) {
         style.position = 'fixed'
         style.top = style.right = style.bottom = style.left = '0'
-        style.background = 'rgba(0, 0, 0, 0.3)'
+        style.background = 'rgba(0, 0, 0, 0.5)'
         style.whiteSpace = 'nowrap'
         style.textAlign = 'center'
         style.padding = '8px'
