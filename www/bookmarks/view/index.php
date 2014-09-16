@@ -14,8 +14,19 @@ unset(
     $_SESSION['bookmarks/send/values']
 );
 
+include_once '../../fns/ItemList/itemQuery.php';
+$itemQuery = ItemList\itemQuery($id);
+
+$addition =
+    '<script type="text/javascript" defer="defer"'
+    .' src="../../js/confirmDialog.js"></script>'
+    .'<script type="text/javascript">'
+        .'var deleteHref = '.json_encode("../delete/submit.php$itemQuery")
+    .'</script>'
+    .'<script type="text/javascript" defer="defer" src="index.js"></script>';
+
 include_once '../fns/ViewPage/create.php';
-$content = ViewPage\create($mysqli, $user, $bookmark);
+$content = ViewPage\create($mysqli, $user, $bookmark, $addition);
 
 include_once '../../fns/echo_page.php';
 echo_page($user, "Bookmark #$id", $content, '../../', [

@@ -51,9 +51,6 @@ function create ($mysqli, $user, $bookmark, $addition = '') {
     include_once "$fnsDir/Page/infoText.php";
     $infoText = \Page\infoText($text);
 
-    include_once "$fnsDir/ItemList/itemQuery.php";
-    $itemQuery = \ItemList\itemQuery($id);
-
     include_once __DIR__.'/optionsPanel.php';
     include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/ItemList/listHref.php";
@@ -74,12 +71,6 @@ function create ($mysqli, $user, $bookmark, $addition = '') {
             create_new_item_button('Bookmark', '../')
         )
         .optionsPanel($bookmark)
-        .'<script type="text/javascript" defer="defer"'
-        .' src="../../js/confirmDialog.js"></script>'
-        .'<script type="text/javascript">'
-            .'var deleteHref = '.json_encode("../delete/submit.php$itemQuery")
-        .'</script>'
-        .'<script type="text/javascript" defer="defer" src="index.js"></script>'
         .$addition;
 
 }
