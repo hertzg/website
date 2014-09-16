@@ -9,16 +9,13 @@ unset($_SESSION['contacts/view/messages']);
 include_once '../../fns/ItemList/escapedItemQuery.php';
 $escapedItemQuery = ItemList\escapedItemQuery($id);
 
-$yesHref = "submit.php$escapedItemQuery";
-$noHref = "../view/$escapedItemQuery";
-
-include_once '../../fns/Page/confirmDialog.php';
-$addition = Page\confirmDialog('Are you sure you want to delete the contact?'
-    .' It will be moved to Trash.', 'Yes, delete contact',
-    $yesHref, $noHref);
-
 include_once '../fns/ViewPage/create.php';
-$content = ViewPage\create($mysqli, $user, $contact, $addition);
+include_once '../../fns/Page/confirmDialog.php';
+$content =
+    ViewPage\create($mysqli, $user, $contact)
+    .Page\confirmDialog('Are you sure you want to delete the contact?'
+        .' It will be moved to Trash.', 'Yes, delete contact',
+        "submit.php$escapedItemQuery", "../view/$escapedItemQuery");
 
 include_once '../../fns/get_revision.php';
 $cssRevision = get_revision('contact.compressed.css');

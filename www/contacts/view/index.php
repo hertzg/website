@@ -17,16 +17,15 @@ unset(
 include_once '../../fns/ItemList/itemQuery.php';
 $itemQuery = ItemList\itemQuery($id);
 
-$addition =
-    '<script type="text/javascript" defer="defer"'
+include_once '../fns/ViewPage/create.php';
+$content =
+    ViewPage\create($mysqli, $user, $contact)
+    .'<script type="text/javascript" defer="defer"'
     .' src="../../js/confirmDialog.js"></script>'
     .'<script type="text/javascript">'
         .'var deleteHref = '.json_encode("../delete/submit.php$itemQuery")
     .'</script>'
     .'<script type="text/javascript" defer="defer" src="index.js"></script>';
-
-include_once '../fns/ViewPage/create.php';
-$content = ViewPage\create($mysqli, $user, $contact, $addition);
 
 include_once '../../fns/get_revision.php';
 $cssRevision = get_revision('contact.compressed.css');
