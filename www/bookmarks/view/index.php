@@ -59,6 +59,9 @@ if ($insert_time != $update_time) {
 include_once '../../fns/Page/infoText.php';
 $infoText = Page\infoText($text);
 
+include_once '../../fns/ItemList/itemQuery.php';
+$itemQuery = ItemList\itemQuery($id);
+
 include_once 'fns/create_options_panel.php';
 include_once '../../fns/create_new_item_button.php';
 include_once '../../fns/ItemList/listHref.php';
@@ -78,7 +81,13 @@ $content =
         .$infoText,
         create_new_item_button('Bookmark', '../')
     )
-    .create_options_panel($bookmark);
+    .create_options_panel($bookmark)
+    .'<script type="text/javascript" defer="defer"'
+    .' src="../../js/confirmDialog.js"></script>'
+    .'<script type="text/javascript">'
+        .'var deleteHref = '.json_encode("../delete/submit.php$itemQuery")
+    .'</script>'
+    .'<script type="text/javascript" defer="defer" src="index.js"></script>';
 
 include_once '../../fns/echo_page.php';
 echo_page($user, "Bookmark #$id", $content, '../../');

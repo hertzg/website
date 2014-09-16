@@ -30,7 +30,7 @@ function create_options_panel ($bookmark) {
         .'<div class="hr"></div>'
         .Page\staticTwoColumns($editLink, $sendLink)
         .'<div class="hr"></div>'
-        .$deleteLink;
+        ."<div id=\"deleteButton\">$deleteLink</div>";
 
     include_once "$fnsDir/create_panel.php";
     return create_panel('Bookmark Options', $content);
