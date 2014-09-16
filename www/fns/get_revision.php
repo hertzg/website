@@ -5,6 +5,7 @@ function get_revision ($key) {
         'common.compressed.css' => 55,
         'contact.compressed.css' => 1,
         'icons.compressed.css' => 55,
+        'js/confirmDialog.js' => 1,
     ];
     return $revisions[$key];
 }

@@ -2,7 +2,7 @@
 
 namespace ViewPage;
 
-function create ($mysqli, $user, $bookmark, $addition) {
+function create ($mysqli, $user, $bookmark) {
 
     $id = $bookmark->id_bookmarks;
     $url = $bookmark->url;
@@ -70,7 +70,6 @@ function create ($mysqli, $user, $bookmark, $addition) {
             .$infoText,
             create_new_item_button('Bookmark', '../')
         )
-        .optionsPanel($bookmark)
-        .$addition;
+        .optionsPanel($bookmark);
 
 }

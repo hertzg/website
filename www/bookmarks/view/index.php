@@ -17,11 +17,14 @@ unset(
 include_once '../../fns/ItemList/itemQuery.php';
 $itemQuery = ItemList\itemQuery($id);
 
+include_once '../../fns/get_revision.php';
+$confirmDialogJsRevision = get_revision('js/confirmDialog.js');
+
 include_once '../fns/ViewPage/create.php';
 $content =
     ViewPage\create($mysqli, $user, $bookmark)
     .'<script type="text/javascript" defer="defer"'
-    .' src="../../js/confirmDialog.js"></script>'
+    ." src=\"../../js/confirmDialog.js?$confirmDialogJsRevision\"></script>"
     .'<script type="text/javascript">'
         .'var deleteHref = '.json_encode("../delete/submit.php$itemQuery")
     .'</script>'
