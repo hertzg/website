@@ -35,7 +35,7 @@ var files = [
     'navigation.css',
     'rightButton.css',
     'removableItem.css',
-    'activeButton.css',
+    'newItemButton.css',
 ]
 
 var source = ''

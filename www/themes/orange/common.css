@@ -22,18 +22,23 @@
     border-bottom-color: #b60;
 }
 
-.tag:focus {
+.tag:focus,
+.newItemButton:focus {
     box-shadow: 0 -16px 16px #ffefe1 inset;
+    border-color: #f80;
 }
 .tag.active,
-.tag:active {
+.tag:active,
+.newItemButton:active {
     box-shadow: none;
 }
 
 .tag.active,
 .tag:active,
-.clickable:active {
+.clickable:active,
+.newItemButton:active {
     background-color: #f80;
+    border-color: #f80;
 }
 
 .panel > .title {

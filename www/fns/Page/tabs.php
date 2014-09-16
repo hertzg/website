@@ -2,7 +2,7 @@
 
 namespace Page;
 
-function tabs ($tabs, $activeTabTitle, $content, $actionButton = '') {
+function tabs ($tabs, $activeTabTitle, $content, $newItemButton = '') {
 
     $itemsHtml = '';
     foreach ($tabs as $tab) {
@@ -16,7 +16,7 @@ function tabs ($tabs, $activeTabTitle, $content, $actionButton = '') {
     return
         '<div class="tab">'
             ."<div class=\"tab-bar\">$itemsHtml</div>"
-            .$actionButton
+            .$newItemButton
         .'</div>'
         .'<div class="tab-spacer"></div>'
         ."<div class=\"tab-content\">$content</div>";
