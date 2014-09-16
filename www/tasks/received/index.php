@@ -58,9 +58,10 @@ include_once '../../fns/Page/imageArrowLink.php';
 $title = 'Delete All Tasks';
 $deleteAllLink = Page\imageArrowLink($title, 'delete-all/', 'trash-bin');
 
+include_once '../../fns/create_new_item_button.php';
 include_once '../../fns/create_panel.php';
-include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Page/sessionMessages.php';
+include_once '../../fns/Page/tabs.php';
 $content = Page\tabs(
     [
         [
@@ -75,7 +76,8 @@ $content = Page\tabs(
     'Received',
     Page\sessionMessages('tasks/received/messages')
     .join('<div class="hr"></div>', $items)
-    .create_panel('Options', $deleteAllLink)
+    .create_panel('Options', $deleteAllLink),
+    create_new_item_button('Task', '../')
 );
 
 include_once '../../fns/echo_page.php';
