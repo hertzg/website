@@ -47,7 +47,7 @@ include_once '../../fns/Page/infoText.php';
 $infoText = Page\infoText($text);
 
 include_once 'fns/create_options_panel.php';
-include_once '../fns/create_new_task_button.php';
+include_once '../../fns/create_new_item_button.php';
 include_once '../../fns/ItemList/listHref.php';
 include_once '../../fns/Page/sessionMessages.php';
 include_once '../../fns/Page/tabs.php';
@@ -67,7 +67,7 @@ $content =
         Page\sessionMessages('tasks/view/messages')
         .join('<div class="hr"></div>', $items)
         .$infoText,
-        create_new_task_button('../')
+        create_new_item_button('Task', '../')
     )
     .create_options_panel($task);
 
