@@ -46,10 +46,14 @@ if ($insert_time != $update_time) {
 include_once '../../fns/Page/infoText.php';
 $infoText = Page\infoText($text);
 
+include_once '../../fns/ItemList/escapedPageQuery.php';
+$newTaskHref = '../new/'.ItemList\escapedPageQuery();
+
 include_once 'fns/create_options_panel.php';
 include_once '../../fns/ItemList/listHref.php';
-include_once '../../fns/Page/tabs.php';
+include_once '../../fns/Page/activeButton.php';
 include_once '../../fns/Page/sessionMessages.php';
+include_once '../../fns/Page/tabs.php';
 $content =
     Page\tabs(
         [
@@ -65,7 +69,8 @@ $content =
         "Task #$id",
         Page\sessionMessages('tasks/view/messages')
         .join('<div class="hr"></div>', $items)
-        .$infoText
+        .$infoText,
+        Page\activeButton('New Task', $newTaskHref, 'create-task')
     )
     .create_options_panel($task);
 
