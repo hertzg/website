@@ -33,11 +33,7 @@ function confirmDialog (questionText, yesText, yesHref, noListener) {
     }
 
     var alignerElement = document.createElement('div')
-    ;(function (style) {
-        style.display = 'inline-block'
-        style.verticalAlign = 'middle'
-        style.height = '100%'
-    })(alignerElement.style)
+    alignerElement.className = 'confirmDialog-aligner'
 
     var textElement = document.createElement('div')
     textElement.className = 'page-text'
@@ -64,29 +60,13 @@ function confirmDialog (questionText, yesText, yesHref, noListener) {
     twoColumnsElement.appendChild(column2Element)
 
     var frameElement = document.createElement('div')
-    ;(function (style) {
-        style.display = 'inline-block'
-        style.verticalAlign = 'middle'
-        style.background = '#fff'
-        style.whiteSpace = 'normal'
-        style.boxShadow = '0 8px 16px rgba(0, 0, 0, 0.3)'
-        style.textAlign = 'left'
-        style.width = '100%'
-        style.maxWidth = '684px'
-    })(frameElement.style)
+    frameElement.className = 'confirmDialog-frame'
     frameElement.appendChild(textElement)
     frameElement.appendChild(hr())
     frameElement.appendChild(twoColumnsElement)
 
     var element = document.createElement('div')
-    ;(function (style) {
-        style.position = 'fixed'
-        style.top = style.right = style.bottom = style.left = '0'
-        style.background = 'rgba(0, 0, 0, 0.5)'
-        style.whiteSpace = 'nowrap'
-        style.textAlign = 'center'
-        style.padding = '8px'
-    })(element.style)
+    element.className = 'confirmDialog'
     element.appendChild(alignerElement)
     element.appendChild(frameElement)
 

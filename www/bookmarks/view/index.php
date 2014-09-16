@@ -90,4 +90,7 @@ $content =
     .'<script type="text/javascript" defer="defer" src="index.js"></script>';
 
 include_once '../../fns/echo_page.php';
-echo_page($user, "Bookmark #$id", $content, '../../');
+echo_page($user, "Bookmark #$id", $content, '../../', [
+    'head' => '<link rel="stylesheet" type="text/css"'
+        .' href="../../confirmDialog.compressed.css" />',
+]);
