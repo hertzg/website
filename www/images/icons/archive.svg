@@ -10,7 +10,7 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    version="1.1"
-   width="64"
+   width="96"
    height="32"
    id="svg9290">
   <defs
@@ -47,7 +47,7 @@
        r="16"
        fx="16"
        fy="27"
-       id="radialGradient9395"
+       id="radialGradient8307"
        xlink:href="#linearGradient3592-9"
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(1,0,0,0.3125,-1.9998813e-4,1038.9247)" />
@@ -56,10 +56,20 @@
        y1="33"
        x2="7"
        y2="44"
-       id="linearGradient10928"
+       id="linearGradient8309"
        xlink:href="#linearGradient10733"
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(0.92882422,-0.37052069,0.37052069,0.92882422,-12.517883,999.67238)" />
+    <radialGradient
+       cx="16"
+       cy="27"
+       r="16"
+       fx="16"
+       fy="27"
+       id="radialGradient8327"
+       xlink:href="#linearGradient3592-9"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.3125,63.9998,1038.9247)" />
   </defs>
   <metadata
      id="metadata9295">
@@ -84,7 +94,7 @@
          x="0"
          y="1042.3622"
          id="use5574"
-         style="fill:url(#radialGradient9395);fill-opacity:1;fill-rule:evenodd;stroke:none" />
+         style="fill:url(#radialGradient8307);fill-opacity:1;fill-rule:evenodd;stroke:none" />
       <g
          id="g10820">
         <path
@@ -96,14 +106,14 @@
            d="m 9.4752342,1035.1605 -0.8399778,4.6416 14.8611876,-5.9283 -3.804143,-2.789 -10.2170668,4.0757"
            inkscape:connector-curvature="0"
            id="path10798"
-           style="fill:#f2c59b;fill-opacity:1;stroke:#ab5e13;stroke-width:1px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1" />
+           style="fill:#f2d09b;fill-opacity:1;stroke:#ab5e13;stroke-width:1px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1" />
       </g>
     </g>
     <path
        d="m 15.024809,1034.9803 2.60878,-9.6537 -0.370521,-0.9288 -3.715297,1.4821 -1.311123,-3.2867 -3.7152963,1.4821 1.3111233,3.2866 -3.7152974,1.4821 0.3705207,0.9288 z"
        inkscape:connector-curvature="0"
        id="path10800"
-       style="fill:url(#linearGradient10928);fill-opacity:1;stroke:#228811;stroke-width:1px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1" />
+       style="fill:url(#linearGradient8309);fill-opacity:1;stroke:#228811;stroke-width:1px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1" />
     <use
        transform="translate(32,1.7382813e-5)"
        id="use10830"
@@ -120,5 +130,22 @@
        width="64"
        height="32"
        xlink:href="#path10800" />
+    <rect
+       width="32"
+       height="10"
+       x="64"
+       y="1042.3622"
+       id="rect8313"
+       style="fill:url(#radialGradient8327);fill-opacity:1;fill-rule:evenodd;stroke:none" />
+    <path
+       d="m 66.539199,1036.0798 22.364743,-8.9215 4.460802,11.1823 L 71,1047.2622 z"
+       inkscape:connector-curvature="0"
+       id="path8317"
+       style="fill:#e58d39;fill-opacity:1;stroke:#ab5e13;stroke-width:0.99999994;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+    <path
+       d="m 67.803289,1029.0946 -1.264091,6.9852 22.364744,-8.9215 -5.724891,-4.1972 -15.375762,6.1335"
+       inkscape:connector-curvature="0"
+       id="path8319"
+       style="fill:#f2d09b;fill-opacity:1;stroke:#ab5e13;stroke-width:0.99999994;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
   </g>
 </svg>

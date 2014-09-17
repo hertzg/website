@@ -39,8 +39,8 @@ $names = ['event', 'create-event', 'edit-event', 'events'];
 render($content, 'event.svg?1', $names);
 
 $names = ['unknown-file', 'audio-file', 'image-file', 'video-file',
-    'files', 'copy-file', 'move-file', 'import-file'];
-render($content, 'file.svg?5', $names);
+    'text-file', 'files', 'copy-file', 'move-file', 'import-file'];
+render($content, 'file.svg?6', $names);
 
 $names = ['folder', 'create-folder',
     'copy-folder', 'move-folder', 'import-folder'];
@@ -85,8 +85,8 @@ render($content, 'token.svg?1', $names);
 $names = ['user', 'add-user', 'remove-user', 'users'];
 render($content, 'user.svg?1', $names);
 
-$names = ['archive', 'unarchive'];
-render($content, 'archive.svg', $names);
+$names = ['archive', 'unarchive', 'archive-file'];
+render($content, 'archive.svg?1', $names);
 
 $names = ['trash-bin', 'empty-trash', 'purge'];
 render($content, 'trash.svg', $names);

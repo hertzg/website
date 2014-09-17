@@ -25,7 +25,7 @@ ensure_table('received_folder_files', [
         'type' => 'bigint(20) unsigned',
     ],
     'media_type' => [
-        'type' => "enum('audio','image','video','unknown')",
+        'type' => "enum('archive','audio','image','text','unknown','video')",
         'characterSet' => 'utf8',
         'collation' => 'utf8_general_ci',
     ],
