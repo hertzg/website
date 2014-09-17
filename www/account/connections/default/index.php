@@ -21,6 +21,7 @@ $editLink = Page\imageArrowLink('Edit', 'edit/', 'edit-connection');
 
 include_once '../../../fns/create_panel.php';
 include_once '../../../fns/Form/label.php';
+include_once '../../../fns/Page/newItemButton.php';
 include_once '../../../fns/Page/sessionMessages.php';
 include_once '../../../fns/Page/tabs.php';
 $content = Page\tabs(
@@ -33,7 +34,8 @@ $content = Page\tabs(
     'Default Connection',
     Page\sessionMessages('account/connections/default/messages')
     .Form\label('Other users', $permissions)
-    .create_panel('Connection Options', $editLink)
+    .create_panel('Connection Options', $editLink),
+    Page\newItemButton('../new/', 'New', 'Connection')
 );
 
 include_once '../../../fns/echo_page.php';
