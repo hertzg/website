@@ -32,7 +32,7 @@ function render ($base, $text, $keyword) {
         ];
     });
 
-    $regex = '/'.preg_quote($keyword, '/').'/';
+    $regex = '/'.preg_quote($keyword, '/').'/i';
     $match($regex, function ($value, $start, $end) use (&$parts) {
         $parts[] = [
             'type' => 'keywordStart',
