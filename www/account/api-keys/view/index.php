@@ -32,6 +32,7 @@ include_once 'fns/create_permissions_field.php';
 include_once '../../../fns/create_panel.php';
 include_once '../../../fns/Form/label.php';
 include_once '../../../fns/Form/textarea.php';
+include_once '../../../fns/Page/newItemButton.php';
 include_once '../../../fns/Page/sessionMessages.php';
 include_once '../../../fns/Page/tabs.php';
 $content = Page\tabs(
@@ -55,7 +56,8 @@ $content = Page\tabs(
     .create_permissions_field($apiKey)
     .'<div class="hr"></div>'
     .Form\label('Last accessed', $accessed)
-    .create_panel('API Key Options', $optionsContent)
+    .create_panel('API Key Options', $optionsContent),
+    Page\newItemButton('../new/', 'New', 'API Key')
 );
 
 include_once '../../../fns/echo_page.php';

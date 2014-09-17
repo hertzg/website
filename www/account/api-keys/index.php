@@ -46,9 +46,6 @@ if ($apiKeys) {
     $items[] = Page\info('No keys');
 }
 
-include_once '../../fns/Page/imageArrowLink.php';
-$newLink = Page\imageArrowLink('New Key', 'new/', 'create-api-key');
-
 unset(
     $_SESSION['account/api-keys/new/errors'],
     $_SESSION['account/api-keys/new/values'],
@@ -56,7 +53,7 @@ unset(
     $_SESSION['account/messages']
 );
 
-include_once '../../fns/create_panel.php';
+include_once '../../fns/Page/newItemButton.php';
 include_once '../../fns/Page/sessionErrors.php';
 include_once '../../fns/Page/sessionMessages.php';
 include_once '../../fns/Page/tabs.php';
@@ -70,8 +67,8 @@ $content = Page\tabs(
     'API Keys',
     Page\sessionErrors('account/api-keys/errors')
     .Page\sessionMessages('account/api-keys/messages')
-    .join('<div class="hr"></div>', $items)
-    .create_panel('Options', $newLink)
+    .join('<div class="hr"></div>', $items),
+    Page\newItemButton('new/', 'New', 'API Key')
 );
 
 include_once '../../fns/echo_page.php';

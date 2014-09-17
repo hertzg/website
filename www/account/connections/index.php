@@ -36,7 +36,6 @@ unset(
     $_SESSION['account/connections/view/messages']
 );
 
-include_once '../../fns/create_panel.php';
 include_once '../../fns/Page/newItemButton.php';
 include_once '../../fns/Page/sessionErrors.php';
 include_once '../../fns/Page/sessionMessages.php';
