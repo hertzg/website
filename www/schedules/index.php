@@ -45,6 +45,7 @@ if ($schedules) {
 }
 
 include_once 'fns/create_options_panel.php';
+include_once '../fns/create_new_item_button.php';
 include_once '../fns/Page/imageArrowLink.php';
 include_once '../fns/Page/sessionErrors.php';
 include_once '../fns/Page/sessionMessages.php';
@@ -60,7 +61,8 @@ $content = Page\tabs(
     Page\sessionErrors('schedules/errors')
     .Page\sessionMessages('schedules/messages')
     .join('<div class="hr"></div>', $items)
-    .create_options_panel($user)
+    .create_options_panel($user),
+    create_new_item_button('Schedule')
 );
 
 include_once '../fns/echo_page.php';

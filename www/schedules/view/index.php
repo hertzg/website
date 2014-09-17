@@ -28,6 +28,7 @@ $editLink = Page\imageArrowLink('Edit', $href, 'edit-schedule');
 $href = "../delete/$escapedItemQuery";
 $deleteLink = Page\imageArrowLink('Delete', $href, 'trash-bin');
 
+include_once '../../fns/create_new_item_button.php';
 include_once '../../fns/create_panel.php';
 include_once '../../fns/Form/label.php';
 include_once '../../fns/ItemList/listHref.php';
@@ -52,7 +53,8 @@ $content = Page\tabs(
     .create_panel(
         'Schedule Options',
         Page\staticTwoColumns($editLink, $deleteLink)
-    )
+    ),
+    create_new_item_button('Schedule', '../')
 );
 
 include_once '../../fns/echo_page.php';
