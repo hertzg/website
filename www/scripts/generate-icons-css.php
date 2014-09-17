@@ -86,7 +86,7 @@ $names = ['user', 'add-user', 'remove-user', 'users'];
 render($content, 'user.svg?1', $names);
 
 $names = ['archive', 'unarchive', 'archive-file'];
-render($content, 'archive.svg?1', $names);
+render($content, 'archive.svg?2', $names);
 
 $names = ['trash-bin', 'empty-trash', 'purge'];
 render($content, 'trash.svg', $names);
