@@ -14,11 +14,12 @@ unset(
 );
 
 include_once 'fns/create_options_panel.php';
-include_once '../../../fns/Page/tabs.php';
-include_once '../../../fns/Page/infoText.php';
 include_once '../../../fns/Form/label.php';
 include_once '../../../fns/Form/textfield.php';
+include_once '../../../fns/Page/infoText.php';
+include_once '../../../fns/Page/newItemButton.php';
 include_once '../../../fns/Page/sessionMessages.php';
+include_once '../../../fns/Page/tabs.php';
 $content =
     Page\tabs(
         [
@@ -36,7 +37,8 @@ $content =
                 .'You are '.($channel->receive_notifications ? '' : 'not ')
                 .' receiving notifications from this channel.'
             .'</div>'
-        )
+        ),
+        Page\newItemButton('../new/', 'New', 'Channel')
     )
     .create_options_panel($channel);
 

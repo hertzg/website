@@ -38,11 +38,11 @@ if ($channels) {
 include_once 'fns/unset_session_vars.php';
 unset_session_vars();
 
-include_once '../../fns/create_panel.php';
-include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Page/imageLink.php';
+include_once '../../fns/Page/newItemButton.php';
 include_once '../../fns/Page/sessionErrors.php';
 include_once '../../fns/Page/sessionMessages.php';
+include_once '../../fns/Page/tabs.php';
 $content =
     Page\tabs(
         [
@@ -54,11 +54,8 @@ $content =
         'Channels',
         Page\sessionErrors('notifications/channels/errors')
         .Page\sessionMessages('notifications/channels/messages')
-        .join('<div class="hr"></div>', $items)
-    )
-    .create_panel(
-        'Options',
-        Page\imageArrowLink('New Channel', 'new/', 'create-channel')
+        .join('<div class="hr"></div>', $items),
+        Page\newItemButton('new/', 'New', 'Channel')
     );
 
 include_once '../../fns/echo_page.php';
