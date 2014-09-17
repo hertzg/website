@@ -38,7 +38,7 @@ $content =
                 .' receiving notifications from this channel.'
             .'</div>'
         ),
-        Page\newItemButton('../new/', 'New', 'Channel')
+        Page\newItemButton('../new/', 'Channel')
     )
     .create_options_panel($channel);
 

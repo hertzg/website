@@ -57,7 +57,7 @@ $content = Page\tabs(
     .'<div class="hr"></div>'
     .Form\label('Last accessed', $accessed)
     .create_panel('API Key Options', $optionsContent),
-    Page\newItemButton('../new/', 'New', 'API Key')
+    Page\newItemButton('../new/', 'API Key')
 );
 
 include_once '../../../fns/echo_page.php';

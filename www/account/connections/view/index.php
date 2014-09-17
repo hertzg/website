@@ -44,7 +44,7 @@ $content = Page\tabs(
     .'<div class="hr"></div>'
     .Form\label('This user', $permissions)
     .create_panel('Conneciton Options', $optionsContent),
-    Page\newItemButton('../new/', 'New', 'Connection')
+    Page\newItemButton('../new/', 'Connection')
 );
 
 include_once '../../../fns/echo_page.php';

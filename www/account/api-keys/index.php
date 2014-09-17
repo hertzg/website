@@ -68,7 +68,7 @@ $content = Page\tabs(
     Page\sessionErrors('account/api-keys/errors')
     .Page\sessionMessages('account/api-keys/messages')
     .join('<div class="hr"></div>', $items),
-    Page\newItemButton('new/', 'New', 'API Key')
+    Page\newItemButton('new/', 'API Key')
 );
 
 include_once '../../fns/echo_page.php';

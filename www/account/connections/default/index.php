@@ -35,7 +35,7 @@ $content = Page\tabs(
     Page\sessionMessages('account/connections/default/messages')
     .Form\label('Other users', $permissions)
     .create_panel('Connection Options', $editLink),
-    Page\newItemButton('../new/', 'New', 'Connection')
+    Page\newItemButton('../new/', 'Connection')
 );
 
 include_once '../../../fns/echo_page.php';

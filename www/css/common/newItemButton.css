@@ -57,12 +57,6 @@
     background: #fff;
 }
 
-@media (max-width: 440px) {
-    .newItemButton-text {
-        display: none;
-    }
-}
-
 @media (max-width: 700px) {
     .newItemButton-text > .secondary {
         display: none;
