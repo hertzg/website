@@ -69,7 +69,7 @@ function create ($user, $deletedItem, &$title, &$head) {
     $purgeLink = \Page\imageLink('Purge', "../purge/?id=$id", 'purge');
     $purgeLink = "<div id=\"purgeLink\">$purgeLink</div>";
 
-    $href = "submit-restore.php?id=$id";
+    $href = "../submit-restore.php?id=$id";
     $restoreLink = \Page\imageLink('Restore', $href, 'restore-defaults');
 
     include_once "$fnsDir/Page/staticTwoColumns.php";

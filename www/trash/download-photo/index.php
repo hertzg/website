@@ -2,7 +2,7 @@
 
 include_once '../fns/require_deleted_item.php';
 include_once '../../lib/mysqli.php';
-list($deletedItem, $id, $user) = require_deleted_item($mysqli);
+list($deletedItem, $id, $user) = require_deleted_item($mysqli, '../');
 
 $type = $deletedItem->data_type;
 if ($type != 'contact' && $type != 'receivedContact') {
