@@ -7,6 +7,9 @@ function create ($user, $schedule) {
     $id = $schedule->id;
     $fnsDir = __DIR__.'/../../../fns';
 
+    include_once "$fnsDir/create_text_item.php";
+    $textItem = create_text_item($schedule->text, '../../');
+
     include_once "$fnsDir/days_left_from_today.php";
     $days_left = days_left_from_today($schedule->interval, $schedule->offset);
 
@@ -23,6 +26,7 @@ function create ($user, $schedule) {
 
     $href = "../delete/$escapedItemQuery";
     $deleteLink = \Page\imageArrowLink('Delete', $href, 'trash-bin');
+    $deleteLink = "<div id=\"deleteLink\">$deleteLink</div>";
 
     include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/create_panel.php";
@@ -41,16 +45,14 @@ function create ($user, $schedule) {
         ],
         "Schedule #$id",
         \Page\sessionMessages('schedules/view/messages')
-        .\Page\text(htmlspecialchars($schedule->text))
+        .$textItem
         .'<div class="hr"></div>'
         .\Form\label('Repeats in every', "$schedule->interval days")
         .'<div class="hr"></div>'
         .\Form\label('Next', $next)
         .create_panel(
             'Schedule Options',
-            '<div id="deleteLink">'
-                .\Page\staticTwoColumns($editLink, $deleteLink)
-            .'</div>'
+            \Page\staticTwoColumns($editLink, $deleteLink)
         ),
         create_new_item_button('Schedule', '../')
     );
