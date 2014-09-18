@@ -9,28 +9,16 @@ unset($_SESSION['schedules/view/messages']);
 include_once '../../fns/ItemList/escapedItemQuery.php';
 $escapedItemQuery = ItemList\escapedItemQuery($id);
 
-include_once '../../fns/Page/imageLink.php';
-$href = "submit.php$escapedItemQuery";
-$yesLink = Page\imageLink('Yes, delete schedule', $href, 'yes');
-
-$noLink = Page\imageLink('No, return back', "../view/$escapedItemQuery", 'no');
-
-include_once '../../fns/ItemList/listHref.php';
-include_once '../../fns/Page/tabs.php';
-include_once '../../fns/Page/text.php';
-include_once '../../fns/Page/twoColumns.php';
-$content = Page\tabs(
-    [
-        [
-            'title' => 'Schedules',
-            'href' => ItemList\listHref(),
-        ],
-    ],
-    "Schedule #$id",
-    Page\text('Are you sure you want to delete the schedule?')
-    .'<div class="hr"></div>'
-    .Page\twoColumns($yesLink, $noLink)
-);
+include_once '../fns/ViewPage/create.php';
+include_once '../../fns/Page/confirmDialog.php';
+$content =
+    ViewPage\create($user, $schedule)
+    .Page\confirmDialog('Are you sure you want to delete the schedule?',
+        'Yes, delete schedule', "submit.php$escapedItemQuery",
+        "../view/$escapedItemQuery");
 
 include_once '../../fns/echo_page.php';
-echo_page($user, "Delete Schedule #$id?", $content, '../../');
+echo_page($user, "Delete Schedule #$id?", $content, '../../', [
+    'head' => '<link rel="stylesheet" type="text/css"'
+        .' href="../../confirmDialog.compressed.css" />',
+]);
