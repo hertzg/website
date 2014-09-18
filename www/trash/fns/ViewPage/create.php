@@ -2,7 +2,7 @@
 
 namespace ViewPage;
 
-function create ($user, $deletedItem, &$title, &$head) {
+function create ($deletedItem, &$title, &$head) {
 
     $id = $deletedItem->id;
     $fnsDir = __DIR__.'/../../../fns';

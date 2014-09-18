@@ -7,7 +7,7 @@ list($deletedItem, $id, $user) = require_deleted_item($mysqli, '../');
 include_once '../fns/ViewPage/create.php';
 include_once '../../fns/Page/confirmDialog.php';
 $content =
-    ViewPage\create($user, $deletedItem, $title, $head)
+    ViewPage\create($deletedItem, $title, $head)
     .Page\confirmDialog('Are you sure you want to purge the item?',
         'Yes, purge item', "submit.php?id=$id", "../view/?id=$id");
 

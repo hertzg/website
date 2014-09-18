@@ -12,7 +12,7 @@ $escapedItemQuery = ItemList\escapedItemQuery($id);
 include_once '../fns/ViewPage/create.php';
 include_once '../../fns/Page/confirmDialog.php';
 $content =
-    ViewPage\create($mysqli, $user, $contact)
+    ViewPage\create($mysqli, $contact)
     .Page\confirmDialog('Are you sure you want to delete the contact?'
         .' It will be moved to Trash.', 'Yes, delete contact',
         "submit.php$escapedItemQuery", "../view/$escapedItemQuery");

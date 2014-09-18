@@ -19,7 +19,7 @@ $confirmDialogJsRevision = get_revision('js/confirmDialog.js');
 
 include_once '../fns/ViewPage/create.php';
 $content =
-    ViewPage\create($user, $schedule)
+    ViewPage\create($schedule)
     .'<script type="text/javascript" defer="defer"'
     ." src=\"../../js/confirmDialog.js?$confirmDialogJsRevision\"></script>"
     .'<script type="text/javascript">'

@@ -2,7 +2,7 @@
 
 namespace ViewPage;
 
-function create ($user, $schedule) {
+function create ($schedule) {
 
     $id = $schedule->id;
     $fnsDir = __DIR__.'/../../../fns';

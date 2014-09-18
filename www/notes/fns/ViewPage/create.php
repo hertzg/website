@@ -2,7 +2,7 @@
 
 namespace ViewPage;
 
-function create ($mysqli, $user, $note) {
+function create ($mysqli, $note) {
 
     $id = $note->id_notes;
     $fnsDir = __DIR__.'/../../../fns';

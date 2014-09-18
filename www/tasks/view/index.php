@@ -22,7 +22,7 @@ $confirmDialogJsRevision = get_revision('js/confirmDialog.js');
 
 include_once '../fns/ViewPage/create.php';
 $content =
-    ViewPage\create($mysqli, $user, $task)
+    ViewPage\create($mysqli, $task)
     .'<script type="text/javascript" defer="defer"'
     ." src=\"../../js/confirmDialog.js?$confirmDialogJsRevision\"></script>"
     .'<script type="text/javascript">'

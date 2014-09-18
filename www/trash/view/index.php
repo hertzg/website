@@ -9,7 +9,7 @@ $confirmDialogJsRevision = get_revision('js/confirmDialog.js');
 
 include_once '../fns/ViewPage/create.php';
 $content =
-    ViewPage\create($user, $deletedItem, $title, $head)
+    ViewPage\create($deletedItem, $title, $head)
     .'<script type="text/javascript" defer="defer"'
     ." src=\"../../js/confirmDialog.js?$confirmDialogJsRevision\"></script>"
     .'<script type="text/javascript">'
