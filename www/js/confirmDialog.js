@@ -48,7 +48,11 @@ function confirmDialog (questionText, yesText, yesHref, noListener) {
     yesLink.href = yesHref
 
     var noLink = imageLink('No, return back', 'no')
-    noLink.addEventListener('click', hide)
+    noLink.addEventListener('click', function (e) {
+        e.preventDefault()
+        hide()
+    })
+    noLink.href = location.href
 
     var column1Element = document.createElement('div')
     column1Element.appendChild(yesLink)
@@ -75,9 +79,13 @@ function confirmDialog (questionText, yesText, yesHref, noListener) {
     var body = document.body
     body.appendChild(element)
 
-    addEventListener('keydown', function (e) {
+    addEventListener('keydown', function keywordListener (e) {
         if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return
-        if (e.keyCode == 27) hide()
+        if (e.keyCode == 27) {
+            e.preventDefault()
+            removeEventListener('keydown', keywordListener)
+            hide()
+        }
     })
 
 }
