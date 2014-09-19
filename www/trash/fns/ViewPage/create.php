@@ -77,11 +77,6 @@ function create ($deletedItem, &$title, &$head) {
     include_once "$fnsDir/Page/staticTwoColumns.php";
     $optionsContent = \Page\staticTwoColumns($restoreLink, $purgeLink);
 
-    unset(
-        $_SESSION['trash/errors'],
-        $_SESSION['trash/messages']
-    );
-
     include_once '../fns/item_type_title.php';
     $title = item_type_title($type)." #$data->id";
 

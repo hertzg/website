@@ -23,11 +23,6 @@ function create_page ($user, $base = '') {
     include_once "$fnsDir/Form/button.php";
     $items[] = Form\button('Save Changes');
 
-    unset(
-        $_SESSION['home/customize/messages'],
-        $_SESSION['home/customize/reorder/messages']
-    );
-
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Page/imageArrowLink.php";
     include_once "$fnsDir/Page/imageLinkWithDescription.php";

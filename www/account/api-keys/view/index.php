@@ -4,6 +4,13 @@ include_once '../fns/require_api_key.php';
 include_once '../../../lib/mysqli.php';
 list($apiKey, $id, $user) = require_api_key($mysqli);
 
+unset(
+    $_SESSION['account/api-keys/edit/errors'],
+    $_SESSION['account/api-keys/edit/values'],
+    $_SESSION['account/api-keys/errors'],
+    $_SESSION['account/api-keys/messages']
+);
+
 include_once '../../../fns/get_revision.php';
 $confirmDialogJsRevision = get_revision('js/confirmDialog.js');
 

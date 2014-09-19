@@ -15,13 +15,6 @@ function create ($apiKey) {
             .\Page\imageArrowLink('Delete', "../delete/?id=$id", 'trash-bin')
         .'</div>';
 
-    unset(
-        $_SESSION['account/api-keys/edit/errors'],
-        $_SESSION['account/api-keys/edit/values'],
-        $_SESSION['account/api-keys/errors'],
-        $_SESSION['account/api-keys/messages']
-    );
-
     include_once "$fnsDir/Page/staticTwoColumns.php";
     $optionsContent = \Page\staticTwoColumns($editLink, $deleteLink);
 

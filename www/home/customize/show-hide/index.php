@@ -6,6 +6,11 @@ $fnsDir = '../../../fns';
 include_once "$fnsDir/require_user.php";
 $user = require_user($base);
 
+unset(
+    $_SESSION['home/customize/messages'],
+    $_SESSION['home/customize/reorder/messages']
+);
+
 include_once "$fnsDir/get_revision.php";
 $confirmDialogJsRevision = get_revision('js/confirmDialog.js');
 

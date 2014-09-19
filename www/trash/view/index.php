@@ -4,6 +4,11 @@ include_once '../fns/require_deleted_item.php';
 include_once '../../lib/mysqli.php';
 list($deletedItem, $id, $user) = require_deleted_item($mysqli, '../');
 
+unset(
+    $_SESSION['trash/errors'],
+    $_SESSION['trash/messages']
+);
+
 include_once '../../fns/get_revision.php';
 $confirmDialogJsRevision = get_revision('js/confirmDialog.js');
 
