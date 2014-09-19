@@ -1,6 +1,8 @@
 <?php
 
-function create_permissions_field ($apiKey) {
+namespace ViewPage;
+
+function createPermissionsField ($apiKey) {
 
     $content = '';
     $add = function ($title, $key) use (&$content, $apiKey) {
@@ -25,5 +27,5 @@ function create_permissions_field ($apiKey) {
     if ($content === '') $content = 'None';
 
     include_once __DIR__.'/../../../../fns/Form/label.php';
-    return Form\label('Permissions', $content);
+    return \Form\label('Permissions', $content);
 }

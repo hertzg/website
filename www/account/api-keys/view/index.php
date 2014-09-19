@@ -4,61 +4,21 @@ include_once '../fns/require_api_key.php';
 include_once '../../../lib/mysqli.php';
 list($apiKey, $id, $user) = require_api_key($mysqli);
 
-include_once '../../../fns/Page/imageArrowLink.php';
+include_once '../../../fns/get_revision.php';
+$confirmDialogJsRevision = get_revision('js/confirmDialog.js');
 
-$editLink = Page\imageArrowLink('Edit', "../edit/?id=$id", 'edit-api-key');
-
-$deleteLink = Page\imageArrowLink('Delete', "../delete/?id=$id", 'trash-bin');
-
-unset(
-    $_SESSION['account/api-keys/edit/errors'],
-    $_SESSION['account/api-keys/edit/values'],
-    $_SESSION['account/api-keys/errors'],
-    $_SESSION['account/api-keys/messages']
-);
-
-include_once '../../../fns/Page/staticTwoColumns.php';
-$optionsContent = Page\staticTwoColumns($editLink, $deleteLink);
-
-$access_time = $apiKey->access_time;
-if ($access_time === null) $accessed = 'Never';
-else {
-    include_once '../../../fns/date_ago.php';
-    $accessed = ucfirst(date_ago($access_time));
-}
-
-include_once 'fns/create_expires_field.php';
-include_once 'fns/create_permissions_field.php';
-include_once '../../../fns/create_panel.php';
-include_once '../../../fns/Form/label.php';
-include_once '../../../fns/Form/textarea.php';
-include_once '../../../fns/Page/newItemButton.php';
-include_once '../../../fns/Page/sessionMessages.php';
-include_once '../../../fns/Page/tabs.php';
-$content = Page\tabs(
-    [
-        [
-            'title' => 'API Keys',
-            'href' => '..',
-        ],
-    ],
-    "API Key #$id",
-    Page\sessionMessages('account/api-keys/view/messages')
-    .Form\label('Name', htmlspecialchars($apiKey->name))
-    .'<div class="hr"></div>'
-    .create_expires_field($apiKey)
-    .'<div class="hr"></div>'
-    .Form\textarea('key', 'Key', [
-        'value' => bin2hex($apiKey->key),
-        'readonly' => true,
-    ])
-    .'<div class="hr"></div>'
-    .create_permissions_field($apiKey)
-    .'<div class="hr"></div>'
-    .Form\label('Last accessed', $accessed)
-    .create_panel('API Key Options', $optionsContent),
-    Page\newItemButton('../new/', 'API Key')
-);
+include_once '../fns/ViewPage/create.php';
+$content =
+    ViewPage\create($apiKey)
+    .'<script type="text/javascript" defer="defer"'
+    ." src=\"../../../js/confirmDialog.js?$confirmDialogJsRevision\"></script>"
+    .'<script type="text/javascript">'
+        .'var deleteHref = '.json_encode("../delete/submit.php?id=$id")
+    .'</script>'
+    .'<script type="text/javascript" defer="defer" src="index.js?1"></script>';
 
 include_once '../../../fns/echo_page.php';
-echo_page($user, "API Key #$id", $content, '../../../');
+echo_page($user, "API Key #$id", $content, '../../../', [
+    'head' => '<link rel="stylesheet" type="text/css"'
+        .' href="../../../confirmDialog.compressed.css" />',
+]);

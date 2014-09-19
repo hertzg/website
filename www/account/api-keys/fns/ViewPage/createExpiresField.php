@@ -1,6 +1,8 @@
 <?php
 
-function create_expires_field ($apiKey) {
+namespace ViewPage;
+
+function createExpiresField ($apiKey) {
 
     $fnsDir = __DIR__.'/../../../../fns';
 
@@ -28,6 +30,6 @@ function create_expires_field ($apiKey) {
     }
 
     include_once "$fnsDir/Form/label.php";
-    return Form\label($label, $content);
+    return \Form\label($label, $content);
 
 }
