@@ -1,5 +1,10 @@
 function confirmDialog (questionText, yesText, yesHref, noListener) {
 
+    function hide () {
+        body.removeChild(element)
+        noListener()
+    }
+
     function hr () {
         var element = document.createElement('div')
         element.className = 'hr'
@@ -43,10 +48,7 @@ function confirmDialog (questionText, yesText, yesHref, noListener) {
     yesLink.href = yesHref
 
     var noLink = imageLink('No, return back', 'no')
-    noLink.addEventListener('click', function () {
-        body.removeChild(element)
-        noListener()
-    })
+    noLink.addEventListener('click', hide)
 
     var column1Element = document.createElement('div')
     column1Element.appendChild(yesLink)
@@ -72,5 +74,10 @@ function confirmDialog (questionText, yesText, yesHref, noListener) {
 
     var body = document.body
     body.appendChild(element)
+
+    addEventListener('keydown', function (e) {
+        if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return
+        if (e.keyCode == 27) hide()
+    })
 
 }
