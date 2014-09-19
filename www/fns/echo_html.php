@@ -6,6 +6,8 @@ function echo_html ($title, $head, $body, $theme, $base) {
     $commonCssRevision = get_revision('css/common/compressed.css');
     $iconsCssRevision = get_revision('icons.compressed.css');
 
+    $commonCssHref = "{$base}css/common/compressed.css?$commonCssRevision";
+
     header_remove('Expires');
     header_remove('Pragma');
     header_remove('X-Powered-By');
@@ -26,7 +28,7 @@ function echo_html ($title, $head, $body, $theme, $base) {
                 .'<meta name="viewport"'
                 .' content="width=device-width, user-scalable=no" />'
                 .'<link rel="stylesheet" type="text/css"'
-                ." href=\"{$base}css/common/compressed.css?$commonCssRevision\" />"
+                ." href=\"$commonCssHref\" />"
                 .'<link rel="stylesheet" type="text/css"'
                 ." href=\"{$base}icons.compressed.css?$iconsCssRevision\" />"
                 .'<link rel="stylesheet" type="text/css"'

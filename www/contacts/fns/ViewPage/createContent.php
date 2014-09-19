@@ -14,6 +14,8 @@ function createContent ($contact, $infoText, $items) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
+    $content = join('<div class="hr"></div>', $items);
+
     include_once __DIR__.'/optionsPanel.php';
     include_once __DIR__.'/photoOptionsPanel.php';
     include_once "$fnsDir/create_contact_panel.php";
@@ -31,7 +33,7 @@ function createContent ($contact, $infoText, $items) {
             ],
             "Contact #$contact->id_contacts",
             \Page\sessionMessages('contacts/view/messages')
-            .create_contact_panel($photoSrc, join('<div class="hr"></div>', $items))
+            .create_contact_panel($photoSrc, $content)
             .$infoText,
             create_new_item_button('Contact', '../')
         )

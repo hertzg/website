@@ -15,7 +15,8 @@ function create_view_page ($event) {
     }
 
     include_once "$fnsDir/Page/imageArrowLink.php";
-    $editLink = Page\imageArrowLink('Edit', "../edit-event/?id=$id", 'edit-event');
+    $href = "../edit-event/?id=$id";
+    $editLink = Page\imageArrowLink('Edit', $href, 'edit-event');
 
     $href = "../delete-event/?id=$id";
     $deleteLink =

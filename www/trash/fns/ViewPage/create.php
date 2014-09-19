@@ -55,11 +55,13 @@ function create ($deletedItem, &$title, &$head) {
 
         $senderUsername = htmlspecialchars($data->sender_username);
 
+        $panelContent = join('<div class="hr"></div>', $items);
+
         include_once "$fnsDir/create_panel.php";
         include_once "$fnsDir/Form/label.php";
         $content =
             \Form\label('Received from', $senderUsername)
-            .create_panel("The $typeName", join('<div class="hr"></div>', $items));
+            .create_panel("The $typeName", $panelContent);
 
     } else {
         $content = join('<div class="hr"></div>', $items);

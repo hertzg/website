@@ -58,5 +58,4 @@ function create ($mysqli, $task) {
         )
         .optionsPanel($task);
 
-
 }

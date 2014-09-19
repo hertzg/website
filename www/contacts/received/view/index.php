@@ -74,9 +74,11 @@ $photo_id = $receivedContact->photo_id;
 if ($photo_id) $photoSrc = "../download-photo/?id=$id";
 else $photoSrc = '../../../images/empty-photo.svg';
 
+include_once '../../../fns/create_contact_panel.php';
+$contactPanel = create_contact_panel($photoSrc, $contactContent);
+
 include_once 'fns/create_options_panel.php';
 include_once '../../../fns/create_panel.php';
-include_once '../../../fns/create_contact_panel.php';
 include_once '../../../fns/Page/sessionMessages.php';
 include_once '../../../fns/Page/tabs.php';
 $content = Page\tabs(
@@ -90,7 +92,7 @@ $content = Page\tabs(
     Page\sessionMessages('contacts/received/view/messages')
     .Form\label('Received from',
         htmlspecialchars($receivedContact->sender_username))
-    .create_panel('The Contact', create_contact_panel($photoSrc, $contactContent))
+    .create_panel('The Contact', $contactPanel)
     .$infoText
     .create_options_panel($receivedContact)
 );

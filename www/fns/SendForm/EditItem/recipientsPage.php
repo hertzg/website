@@ -23,7 +23,6 @@ function recipientsPage ($mysqli, $user, $id, $pageTitle,
     include_once __DIR__.'/../../ItemList/itemParams.php';
     $itemParams = \ItemList\itemParams($id);
 
-
     if ($values['usernameError']) {
         $username = $values['username'];
         if ($contacts || $recipients) {

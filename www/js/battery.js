@@ -52,7 +52,6 @@
         style.width = '2px'
     })(plusElement.style)
 
-
     var borderElement = document.createElement('div')
     borderElement.appendChild(valueElement)
     ;(function (style) {

@@ -12,6 +12,7 @@ function render_external_links ($html, $base) {
             .'</a>';
     };
 
-    return preg_replace_callback('#(?:ftps?|https?|sftp)://\S+#', $callback, $html);
+    $regex = '#(?:ftps?|https?|sftp)://\S+#';
+    return preg_replace_callback($regex, $callback, $html);
 
 }
