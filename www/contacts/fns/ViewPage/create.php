@@ -43,9 +43,9 @@ function create ($mysqli, $contact) {
         $items[] = \Form\link('Email', $escapedEmail, $href, 'mail');
     }
 
-    include_once __DIR__.'/renderPhoneNumber.php';
-    renderPhoneNumber('Phone 1', $contact->phone1, $items, $keyword);
-    renderPhoneNumber('Phone 2', $contact->phone2, $items, $keyword);
+    include_once __DIR__.'/../render_phone_number.php';
+    render_phone_number('Phone 1', $contact->phone1, $items, $keyword);
+    render_phone_number('Phone 2', $contact->phone2, $items, $keyword);
 
     include_once __DIR__.'/../../fns/render_birthday.php';
     render_birthday($contact->birthday_time, $items);

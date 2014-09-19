@@ -30,10 +30,10 @@ function create ($deletedItem, &$title, &$head) {
         renderContact($id, $data, $items, $infoText);
 
         include_once "$fnsDir/get_revision.php";
-        $cssRevision = get_revision('contact.compressed.css');
+        $cssRevision = get_revision('css/contact/compressed.css');
 
         $head = '<link rel="stylesheet" type="text/css"'
-            ." href=\"{$base}contact.compressed.css?$cssRevision\" />";
+            ." href=\"{$base}css/contact/compressed.css?$cssRevision\" />";
 
     } elseif ($type == 'note' || $type == 'receivedNote') {
         include_once __DIR__.'/renderNote.php';

@@ -16,5 +16,5 @@ $content =
 include_once '../../../fns/echo_page.php';
 echo_page($user, "Delete API Key #$id?", $content, '../../../', [
     'head' => '<link rel="stylesheet" type="text/css"'
-        .' href="../../../confirmDialog.compressed.css" />',
+        .' href="../../../css/confirmDialog/compressed.css" />',
 ]);

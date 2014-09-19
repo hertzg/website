@@ -16,7 +16,7 @@ include_once 'fns/get_revision.php';
 
 header('Content-Type: text/html; charset=UTF-8');
 
-$commonCssRevision = get_revision('common.compressed.css');
+$commonCssRevision = get_revision('css/common/compressed.css');
 
 echo
     '<!DOCTYPE html>'
@@ -28,9 +28,9 @@ echo
             .'<meta name="viewport"'
             .' content="width=device-width, user-scalable=no" />'
             .'<link rel="stylesheet" type="text/css"'
-            ." href=\"common.compressed.css?$commonCssRevision\" />"
+            ." href=\"css/common/compressed.css?$commonCssRevision\" />"
             .'<link rel="stylesheet" type="text/css"'
-            .' href="index.compressed.css" />'
+            .' href="css/index/compressed.css" />'
             .'<link rel="icon" type="image/png" href="zvini-icons/16.png" />'
             .'<link rel="icon" type="image/png" sizes="32x32"'
             .' href="zvini-icons/32.png" />'

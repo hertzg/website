@@ -18,5 +18,5 @@ echo_page($user, "Delete Connection #$id?", $content, '../../../', [
     'head' =>
         '<link rel="stylesheet" type="text/css" href="../view.css" />'
         .'<link rel="stylesheet" type="text/css"'
-        .' href="../../../confirmDialog.compressed.css" />',
+        .' href="../../../css/confirmDialog/compressed.css" />',
 ]);

@@ -3,7 +3,7 @@
 function echo_html ($title, $head, $body, $theme, $base) {
 
     include_once __DIR__.'/get_revision.php';
-    $commonCssRevision = get_revision('common.compressed.css');
+    $commonCssRevision = get_revision('css/common/compressed.css');
     $iconsCssRevision = get_revision('icons.compressed.css');
 
     header_remove('Expires');
@@ -26,7 +26,7 @@ function echo_html ($title, $head, $body, $theme, $base) {
                 .'<meta name="viewport"'
                 .' content="width=device-width, user-scalable=no" />'
                 .'<link rel="stylesheet" type="text/css"'
-                ." href=\"{$base}common.compressed.css?$commonCssRevision\" />"
+                ." href=\"{$base}css/common/compressed.css?$commonCssRevision\" />"
                 .'<link rel="stylesheet" type="text/css"'
                 ." href=\"{$base}icons.compressed.css?$iconsCssRevision\" />"
                 .'<link rel="stylesheet" type="text/css"'

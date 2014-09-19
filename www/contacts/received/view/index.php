@@ -33,7 +33,7 @@ if ($email !== '') {
     $items[] = Form\link('Email', $escapedEmail, $href, 'mail');
 }
 
-include_once '../../view/fns/render_phone_number.php';
+include_once '../../fns/render_phone_number.php';
 render_phone_number('Phone 1', $receivedContact->phone1, $items);
 render_phone_number('Phone 2', $receivedContact->phone2, $items);
 
@@ -96,10 +96,10 @@ $content = Page\tabs(
 );
 
 include_once '../../../fns/get_revision.php';
-$cssRevision = get_revision('contact.compressed.css');
+$cssRevision = get_revision('css/contact/compressed.css');
 
 include_once '../../../fns/echo_page.php';
 echo_page($user, "Received Contact #$id", $content, $base, [
     'head' => '<link rel="stylesheet" type="text/css"'
-        ." href=\"{$base}contact.compressed.css?$cssRevision\" />"
+        ." href=\"{$base}css/contact/compressed.css?$cssRevision\" />"
 ]);

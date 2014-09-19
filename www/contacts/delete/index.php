@@ -18,13 +18,13 @@ $content =
         "submit.php$escapedItemQuery", "../view/$escapedItemQuery");
 
 include_once '../../fns/get_revision.php';
-$cssRevision = get_revision('contact.compressed.css');
+$cssRevision = get_revision('css/contact/compressed.css');
 
 include_once '../../fns/echo_page.php';
 echo_page($user, "Delete Contact #$id?", $content, '../../', [
     'head' =>
         '<link rel="stylesheet" type="text/css"'
-        ." href=\"../../contact.compressed.css?$cssRevision\" />"
+        ." href=\"../../css/contact/compressed.css?$cssRevision\" />"
         .'<link rel="stylesheet" type="text/css"'
-        .' href="../../confirmDialog.compressed.css" />',
+        .' href="../../css/confirmDialog/compressed.css" />',
 ]);
