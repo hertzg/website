@@ -15,4 +15,4 @@
         dialogShown = true
     })
 
-})(deleteHref)
+})(purgeHref)
