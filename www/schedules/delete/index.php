@@ -9,10 +9,10 @@ unset($_SESSION['schedules/view/messages']);
 include_once '../../fns/ItemList/escapedItemQuery.php';
 $escapedItemQuery = ItemList\escapedItemQuery($id);
 
-include_once '../fns/ViewPage/create.php';
+include_once '../fns/create_view_page.php';
 include_once '../../fns/Page/confirmDialog.php';
 $content =
-    ViewPage\create($schedule)
+    create_view_page($schedule)
     .Page\confirmDialog('Are you sure you want to delete the schedule?',
         'Yes, delete schedule', "submit.php$escapedItemQuery",
         "../view/$escapedItemQuery");

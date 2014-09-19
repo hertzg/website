@@ -1,11 +1,9 @@
 <?php
 
-namespace ViewPage;
-
-function create ($schedule) {
+function create_view_page ($schedule) {
 
     $id = $schedule->id;
-    $fnsDir = __DIR__.'/../../../fns';
+    $fnsDir = __DIR__.'/../../fns';
 
     include_once "$fnsDir/create_text_item.php";
     $textItem = create_text_item($schedule->text, '../../');
@@ -13,19 +11,19 @@ function create ($schedule) {
     include_once "$fnsDir/days_left_from_today.php";
     $days_left = days_left_from_today($schedule->interval, $schedule->offset);
 
-    include_once __DIR__.'/../format_days_left.php';
+    include_once __DIR__.'/format_days_left.php';
     $next = format_days_left($days_left);
 
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
-    $escapedItemQuery = \ItemList\escapedItemQuery($id);
+    $escapedItemQuery = ItemList\escapedItemQuery($id);
 
     include_once "$fnsDir/Page/imageArrowLink.php";
 
     $href = "../edit/$escapedItemQuery";
-    $editLink = \Page\imageArrowLink('Edit', $href, 'edit-schedule');
+    $editLink = Page\imageArrowLink('Edit', $href, 'edit-schedule');
 
     $href = "../delete/$escapedItemQuery";
-    $deleteLink = \Page\imageArrowLink('Delete', $href, 'trash-bin');
+    $deleteLink = Page\imageArrowLink('Delete', $href, 'trash-bin');
     $deleteLink = "<div id=\"deleteLink\">$deleteLink</div>";
 
     include_once "$fnsDir/create_new_item_button.php";
@@ -36,23 +34,23 @@ function create ($schedule) {
     include_once "$fnsDir/Page/staticTwoColumns.php";
     include_once "$fnsDir/Page/tabs.php";
     include_once "$fnsDir/Page/text.php";
-    return \Page\tabs(
+    return Page\tabs(
         [
             [
                 'title' => 'Schedules',
-                'href' => \ItemList\listHref(),
+                'href' => ItemList\listHref(),
             ],
         ],
         "Schedule #$id",
-        \Page\sessionMessages('schedules/view/messages')
+        Page\sessionMessages('schedules/view/messages')
         .$textItem
         .'<div class="hr"></div>'
-        .\Form\label('Repeats in every', "$schedule->interval days")
+        .Form\label('Repeats in every', "$schedule->interval days")
         .'<div class="hr"></div>'
-        .\Form\label('Next', $next)
+        .Form\label('Next', $next)
         .create_panel(
             'Schedule Options',
-            \Page\staticTwoColumns($editLink, $deleteLink)
+            Page\staticTwoColumns($editLink, $deleteLink)
         ),
         create_new_item_button('Schedule', '../')
     );
