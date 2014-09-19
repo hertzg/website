@@ -1,8 +1,9 @@
 <?php
 
 $base = '../../../';
+$fnsDir = '../../../fns';
 
-include_once '../../../fns/require_user.php';
+include_once "$fnsDir/require_user.php";
 $user = require_user($base);
 
 unset(
@@ -11,13 +12,13 @@ unset(
 );
 
 include_once '../fns/create_page.php';
-include_once '../../../fns/Page/confirmDialog.php';
+include_once "$fnsDir/Page/confirmDialog.php";
 $content =
     create_page('../')
     .Page\confirmDialog('Are you sure you want to restore the default home?',
         'Yes, restore defaults', 'submit.php', '..');
 
-include_once '../../../fns/echo_page.php';
+include_once "$fnsDir/echo_page.php";
 echo_page($user, 'Restore Defaults?', $content, $base, [
     'head' => '<link rel="stylesheet" type="text/css"'
         ." href=\"{$base}css/confirmDialog/compressed.css\" />",

@@ -4,6 +4,9 @@ include_once '../fns/require_schedule.php';
 include_once '../../lib/mysqli.php';
 list($schedule, $id, $user) = require_schedule($mysqli);
 
+$base = '../../';
+$fnsDir = '../../fns';
+
 unset(
     $_SESSION['schedules/edit/errors'],
     $_SESSION['schedules/edit/values'],
@@ -11,24 +14,24 @@ unset(
     $_SESSION['schedules/messages']
 );
 
-include_once '../../fns/ItemList/itemQuery.php';
+include_once "$fnsDir/ItemList/itemQuery.php";
 $itemQuery = ItemList\itemQuery($id);
 
-include_once '../../fns/get_revision.php';
+include_once "$fnsDir/get_revision.php";
 $confirmDialogJsRevision = get_revision('js/confirmDialog.js');
 
 include_once '../fns/create_view_page.php';
 $content =
     create_view_page($schedule)
     .'<script type="text/javascript" defer="defer"'
-    ." src=\"../../js/confirmDialog.js?$confirmDialogJsRevision\"></script>"
+    ." src=\"{$base}js/confirmDialog.js?$confirmDialogJsRevision\"></script>"
     .'<script type="text/javascript">'
         .'var deleteHref = '.json_encode("../delete/submit.php$itemQuery")
     .'</script>'
     .'<script type="text/javascript" defer="defer" src="index.js?1"></script>';
 
-include_once '../../fns/echo_page.php';
-echo_page($user, "Schedule #$id", $content, '../../', [
+include_once "$fnsDir/echo_page.php";
+echo_page($user, "Schedule #$id", $content, $base, [
     'head' => '<link rel="stylesheet" type="text/css"'
-        .' href="../../css/confirmDialog/compressed.css" />',
+        ." href=\"{$base}css/confirmDialog/compressed.css\" />",
 ]);

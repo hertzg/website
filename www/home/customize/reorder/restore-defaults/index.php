@@ -19,5 +19,5 @@ $content =
 include_once "$fnsDir/echo_page.php";
 echo_page($user, 'Restore Defaults?', $content, $base, [
     'head' => '<link rel="stylesheet" type="text/css"'
-        ." href=\"$base/css/confirmDialog/compressed.css\" />",
+        ." href=\"{$base}css/confirmDialog/compressed.css\" />",
 ]);

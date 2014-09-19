@@ -8,7 +8,8 @@
         deleteLink.blur()
         if (dialogShown) return
         var yesText = 'Yes, delete remembered session'
-        var questionText = 'Are you sure you want to delete the remembered session?'
+        var questionText =
+            'Are you sure you want to delete the remembered session?'
         confirmDialog(questionText, yesText, yesHref, function () {
             dialogShown = false
         })

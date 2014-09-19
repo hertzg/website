@@ -16,7 +16,7 @@ function create_page ($user, $base = '') {
         list($title, $propertyPart) = $item;
         $userProperty = "show_$propertyPart";
         $checked = $user->$userProperty;
-        $items[] = Form\checkboxItem('../../../',
+        $items[] = Form\checkboxItem("$base../../../",
             $propertyPart, $title, $checked);
     }
 

@@ -18,7 +18,7 @@ include_once 'fns/create_page.php';
 $content =
     create_page($user)
     .'<script type="text/javascript" defer="defer"'
-    ." src=\"../../../js/confirmDialog.js?$confirmDialogJsRevision\"></script>"
+    ." src=\"{$base}js/confirmDialog.js?$confirmDialogJsRevision\"></script>"
     .'<script type="text/javascript" defer="defer" src="index.js"></script>';
 
 include_once "$fnsDir/echo_page.php";
