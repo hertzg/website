@@ -4,48 +4,28 @@ include_once '../fns/require_event.php';
 include_once '../../lib/mysqli.php';
 list($event, $id, $user) = require_event($mysqli);
 
-include_once 'fns/unset_session_vars.php';
-unset_session_vars();
+unset(
+    $_SESSION['calendar/edit-event/errors'],
+    $_SESSION['calendar/edit-event/values'],
+    $_SESSION['calendar/errors'],
+    $_SESSION['calendar/messages']
+);
 
-$insert_time = $event->insert_time;
-$update_time = $event->update_time;
+include_once '../../fns/get_revision.php';
+$confirmDialogJsRevision = get_revision('js/confirmDialog.js');
 
-include_once '../../fns/date_ago.php';
-$datesText = '<div>Event created '.date_ago($insert_time).'.</div>';
-if ($insert_time != $update_time) {
-    $datesText .= '<div>Last modified '.date_ago($update_time).'.</div>';
-}
-
-include_once '../../fns/Page/imageArrowLink.php';
-$editLink = Page\imageArrowLink('Edit', "../edit-event/?id=$id", 'edit-event');
-
-$href = "../delete-event/?id=$id";
-$deleteLink = Page\imageArrowLink('Delete', $href, 'trash-bin');
-
-include_once '../../fns/Page/staticTwoColumns.php';
-$optionsContent = Page\staticTwoColumns($editLink, $deleteLink);
-
-include_once '../../fns/create_panel.php';
-include_once '../../fns/Page/infoText.php';
-include_once '../../fns/Page/sessionMessages.php';
-include_once '../../fns/Page/tabs.php';
-include_once '../../fns/Page/text.php';
+include_once '../fns/create_view_page.php';
 $content =
-    Page\tabs(
-        [
-            [
-                'title' => 'Calendar',
-                'href' => '..',
-            ],
-        ],
-        "Event #$id",
-        Page\sessionMessages('calendar/view-event/messages')
-        .Page\text(htmlspecialchars($event->text))
-        .'<div class="hr"></div>'
-        .Page\text(date('F d, Y', $event->event_time))
-        .Page\infoText($datesText)
-    )
-    .create_panel('Event Options', $optionsContent);
+    create_view_page($event)
+    .'<script type="text/javascript" defer="defer"'
+    ." src=\"../../js/confirmDialog.js?$confirmDialogJsRevision\"></script>"
+    .'<script type="text/javascript">'
+        .'var deleteHref = '.json_encode("../delete/submit.php?id=$id")
+    .'</script>'
+    .'<script type="text/javascript" defer="defer" src="index.js"></script>';
 
 include_once '../../fns/echo_page.php';
-echo_page($user, "Event #$id", $content, '../../');
+echo_page($user, "Event #$id", $content, '../../', [
+    'head' => '<link rel="stylesheet" type="text/css"'
+        .' href="../../css/confirmDialog/compressed.css" />',
+]);

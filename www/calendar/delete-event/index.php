@@ -6,25 +6,15 @@ list($event, $id, $user) = require_event($mysqli);
 
 unset($_SESSION['calendar/view-event/messages']);
 
-include_once '../../fns/Page/tabs.php';
-include_once '../../fns/Page/imageLink.php';
-include_once '../../fns/Page/text.php';
-include_once '../../fns/Page/twoColumns.php';
-$content = Page\tabs(
-    [
-        [
-            'title' => 'Calendar',
-            'href' => '..',
-        ],
-    ],
-    "Event #$id",
-    Page\text('Are you sure you want to delete the event?')
-    .'<div class="hr"></div>'
-    .Page\twoColumns(
-        Page\imageLink('Yes, delete event', "submit.php?id=$id", 'yes'),
-        Page\imageLink('No, return back', "../view-event/?id=$id", 'no')
-    )
-);
+include_once '../fns/create_view_page.php';
+include_once '../../fns/Page/confirmDialog.php';
+$content =
+    create_view_page($event)
+    .Page\confirmDialog('Are you sure you want to delete the event?',
+        'Yes, delete event', "submit.php?id=$id", "../view-event/?id=$id");
 
 include_once '../../fns/echo_page.php';
-echo_page($user, "Delete Event #$id?", $content, '../../');
+echo_page($user, "Delete Event #$id?", $content, '../../', [
+    'head' => '<link rel="stylesheet" type="text/css"'
+        .' href="../../css/confirmDialog/compressed.css" />',
+]);
