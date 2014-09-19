@@ -26,7 +26,8 @@ $content =
 
 include_once '../../../fns/echo_page.php';
 echo_page($user, "Connection #$id", $content, '../../../', [
-    'head' => '<link rel="stylesheet" type="text/css" href="../view.css" />'
+    'head' =>
+        '<link rel="stylesheet" type="text/css" href="../view.css" />'
         .'<link rel="stylesheet" type="text/css"'
         .' href="../../../confirmDialog.compressed.css" />',
 ]);

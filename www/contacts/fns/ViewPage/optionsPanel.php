@@ -23,8 +23,10 @@ function optionsPanel ($contact) {
     $sendLink = \Page\imageArrowLink('Send', $href, 'send');
 
     $href = "../delete/$escapedItemQuery";
-    $deleteLink = \Page\imageArrowLink('Delete', $href, 'trash-bin');
-    $deleteLink = "<div id=\"deleteLink\">$deleteLink</div>";
+    $deleteLink =
+        '<div id="deleteLink">'
+            .\Page\imageArrowLink('Delete', $href, 'trash-bin')
+        .'</div>';
 
     include_once "$fnsDir/Page/staticTwoColumns.php";
     $content =
