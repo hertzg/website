@@ -11,43 +11,22 @@ unset(
     $_SESSION['account/connections/messages']
 );
 
-include_once '../../../fns/Page/imageArrowLink.php';
+include_once '../../../fns/get_revision.php';
+$confirmDialogJsRevision = get_revision('js/confirmDialog.js');
 
-$editLink = Page\imageArrowLink('Edit', "../edit/?id=$id", 'edit-connection');
-
-$deleteLink = Page\imageArrowLink('Delete', "../delete/?id=$id", 'trash-bin');
-
-include_once '../fns/format_permissions.php';
-$permissions = format_permissions($connection->can_send_bookmark,
-    $connection->can_send_channel, $connection->can_send_contact,
-    $connection->can_send_file, $connection->can_send_note,
-    $connection->can_send_task);
-
-include_once '../../../fns/Page/staticTwoColumns.php';
-$optionsContent = Page\staticTwoColumns($editLink, $deleteLink);
-
-include_once '../../../fns/create_panel.php';
-include_once '../../../fns/Form/label.php';
-include_once '../../../fns/Page/newItemButton.php';
-include_once '../../../fns/Page/sessionMessages.php';
-include_once '../../../fns/Page/tabs.php';
-$content = Page\tabs(
-    [
-        [
-            'title' => 'Connections',
-            'href' => '..',
-        ],
-    ],
-    "Connection #$id",
-    Page\sessionMessages('account/connections/view/messages')
-    .Form\label('Username', htmlspecialchars($connection->username))
-    .'<div class="hr"></div>'
-    .Form\label('This user', $permissions)
-    .create_panel('Conneciton Options', $optionsContent),
-    Page\newItemButton('../new/', 'Connection')
-);
+include_once '../fns/create_view_page.php';
+$content =
+    create_view_page($connection)
+    .'<script type="text/javascript" defer="defer"'
+    ." src=\"../../../js/confirmDialog.js?$confirmDialogJsRevision\"></script>"
+    .'<script type="text/javascript">'
+        .'var deleteHref = '.json_encode("../delete/submit.php?id=$id")
+    .'</script>'
+    .'<script type="text/javascript" defer="defer" src="index.js?1"></script>';
 
 include_once '../../../fns/echo_page.php';
 echo_page($user, "Connection #$id", $content, '../../../', [
-    'head' => '<link rel="stylesheet" type="text/css" href="../view.css" />',
+    'head' => '<link rel="stylesheet" type="text/css" href="../view.css" />'
+        .'<link rel="stylesheet" type="text/css"'
+        .' href="../../../confirmDialog.compressed.css" />',
 ]);

@@ -6,25 +6,15 @@ list($connection, $id, $user) = require_connection($mysqli);
 
 unset($_SESSION['account/connections/view/messages']);
 
-include_once '../../../fns/Page/imageLink.php';
-include_once '../../../fns/Page/tabs.php';
-include_once '../../../fns/Page/text.php';
-include_once '../../../fns/Page/twoColumns.php';
-$content = Page\tabs(
-    [
-        [
-            'title' => 'Connections',
-            'href' => '..',
-        ],
-    ],
-    "Connection #$id",
-    Page\text('Are you sure you want to delete the connection?')
-    .'<div class="hr"></div>'
-    .Page\twoColumns(
-        Page\imageLink('Yes, delete connection', "submit.php?id=$id", 'yes'),
-        Page\imageLink('No, return back', "../view/?id=$id", 'no')
-    )
-);
+include_once '../fns/create_view_page.php';
+include_once '../../../fns/Page/confirmDialog.php';
+$content =
+    create_view_page($connection)
+    .Page\confirmDialog('Are you sure you want to delete the connection?',
+        'Yes, delete connection', "submit.php?id=$id", "../view/?id=$id");
 
 include_once '../../../fns/echo_page.php';
-echo_page($user, "Delete Connection #$id?", $content, '../../../');
+echo_page($user, "Delete Connection #$id?", $content, '../../../', [
+    'head' => '<link rel="stylesheet" type="text/css"'
+        .' href="../../../confirmDialog.compressed.css" />',
+]);
