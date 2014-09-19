@@ -11,28 +11,18 @@ unset(
     $_SESSION['home/messages']
 );
 
-include_once '../../fns/Page/imageArrowLink.php';
-include_once '../../fns/Page/imageArrowLinkWithDescription.php';
-include_once '../../fns/Page/tabs.php';
-include_once '../../fns/Page/sessionMessages.php';
-$content = Page\tabs(
-    [
-        [
-            'title' => 'Home',
-            'href' => '..',
-        ],
-    ],
-    'Customize',
-    Page\sessionMessages('home/customize/messages')
-    .Page\imageArrowLinkWithDescription('Show / Hide Items',
-        'Change the visibility of the items.', 'show-hide/', 'show-hide')
-    .'<div class="hr"></div>'
-    .Page\imageArrowLinkWithDescription('Reorder Items',
-        'Change the order in which the items appear.', 'reorder/', 'reorder')
-    .'<div class="hr"></div>'
-    .Page\imageArrowLink('Restore Defaults', 'restore-defaults/',
-        'restore-defaults')
-);
+include_once '../../fns/get_revision.php';
+$confirmDialogJsRevision = get_revision('js/confirmDialog.js');
+
+include_once 'fns/create_page.php';
+$content =
+    create_page()
+    .'<script type="text/javascript" defer="defer"'
+    ." src=\"../../js/confirmDialog.js?$confirmDialogJsRevision\"></script>"
+    .'<script type="text/javascript" defer="defer" src="index.js"></script>';
 
 include_once '../../fns/echo_page.php';
-echo_page($user, 'Customize Home', $content, $base);
+echo_page($user, 'Customize Home', $content, $base, [
+    'head' => '<link rel="stylesheet" type="text/css"'
+        ." href=\"{$base}css/confirmDialog/compressed.css\" />",
+]);
