@@ -9,38 +9,21 @@ unset(
     $_SESSION['account/tokens/messages']
 );
 
-include_once '../../../fns/create_panel.php';
-include_once '../../../fns/date_ago.php';
-include_once '../../../fns/Form/label.php';
-include_once '../../../fns/Form/textarea.php';
-include_once '../../../fns/Form/textfield.php';
-include_once '../../../fns/Page/imageArrowLink.php';
-include_once '../../../fns/Page/tabs.php';
+include_once '../../../fns/get_revision.php';
+$confirmDialogJsRevision = get_revision('js/confirmDialog.js');
+
+include_once '../fns/create_view_page.php';
 $content =
-    Page\tabs(
-        [
-            [
-                'title' => 'Sessions',
-                'href' => '..',
-            ],
-        ],
-        "Session #$id",
-        Form\textfield('token_text', 'Identifier', [
-            'value' => bin2hex($token->token_text),
-            'readonly' => true,
-        ])
-        .'<div class="hr"></div>'
-        .Form\textarea('user_agent', 'User agent', [
-            'value' => $token->user_agent,
-            'readonly' => true,
-        ])
-        .'<div class="hr"></div>'
-        .Form\label('Last accessed', ucfirst(date_ago($token->access_time)))
-    )
-    .create_panel(
-        'Session Options',
-        Page\imageArrowLink('Delete', "../delete/?id=$id", 'trash-bin')
-    );
+    create_view_page($token)
+    .'<script type="text/javascript" defer="defer"'
+    ." src=\"../../../js/confirmDialog.js?$confirmDialogJsRevision\"></script>"
+    .'<script type="text/javascript">'
+        .'var deleteHref = '.json_encode("../delete/submit.php?id=$id")
+    .'</script>'
+    .'<script type="text/javascript" defer="defer" src="index.js?1"></script>';
 
 include_once '../../../fns/echo_page.php';
-echo_page($user, "Session #$id", $content, '../../../');
+echo_page($user, "Session #$id", $content, '../../../', [
+    'head' => '<link rel="stylesheet" type="text/css"'
+        .' href="../../../confirmDialog.compressed.css" />',
+]);
