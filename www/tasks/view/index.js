@@ -1,4 +1,4 @@
-(function (deleteHref) {
+(function (yesHref) {
 
     var dialogShown = false
 
@@ -10,7 +10,7 @@
         var yesText = 'Yes, delete task'
         var questionText = 'Are you sure you want to delete the task?' +
             ' It will be moved to Trash.'
-        confirmDialog(questionText, yesText, deleteHref, function () {
+        confirmDialog(questionText, yesText, yesHref, function () {
             dialogShown = false
         })
         dialogShown = true

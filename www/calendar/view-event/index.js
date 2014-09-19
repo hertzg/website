@@ -1,4 +1,4 @@
-(function (deleteHref) {
+(function (yesHref) {
 
     var dialogShown = false
 
@@ -9,7 +9,7 @@
         if (dialogShown) return
         var yesText = 'Yes, delete event'
         var questionText = 'Are you sure you want to delete the event?'
-        confirmDialog(questionText, yesText, deleteHref, function () {
+        confirmDialog(questionText, yesText, yesHref, function () {
             dialogShown = false
         })
         dialogShown = true
