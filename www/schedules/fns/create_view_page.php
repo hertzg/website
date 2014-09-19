@@ -23,8 +23,10 @@ function create_view_page ($schedule) {
     $editLink = Page\imageArrowLink('Edit', $href, 'edit-schedule');
 
     $href = "../delete/$escapedItemQuery";
-    $deleteLink = Page\imageArrowLink('Delete', $href, 'trash-bin');
-    $deleteLink = "<div id=\"deleteLink\">$deleteLink</div>";
+    $deleteLink =
+        '<div id="deleteLink">'
+            .Page\imageArrowLink('Delete', $href, 'trash-bin')
+        .'</div>';
 
     include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/create_panel.php";

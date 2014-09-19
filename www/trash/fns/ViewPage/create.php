@@ -66,8 +66,10 @@ function create ($deletedItem, &$title, &$head) {
     }
 
     include_once "$fnsDir/Page/imageLink.php";
-    $purgeLink = \Page\imageLink('Purge', "../purge/?id=$id", 'purge');
-    $purgeLink = "<div id=\"purgeLink\">$purgeLink</div>";
+    $purgeLink =
+        '<div id="purgeLink">'
+            .\Page\imageLink('Purge', "../purge/?id=$id", 'purge')
+        .'</div>';
 
     $href = "../submit-restore.php?id=$id";
     $restoreLink = \Page\imageLink('Restore', $href, 'restore-defaults');

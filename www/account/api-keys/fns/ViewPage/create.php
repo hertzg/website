@@ -10,9 +10,10 @@ function create ($apiKey) {
     include_once "$fnsDir/Page/imageArrowLink.php";
     $editLink = \Page\imageArrowLink('Edit', "../edit/?id=$id", 'edit-api-key');
 
-    $href = "../delete/?id=$id";
-    $deleteLink = \Page\imageArrowLink('Delete', $href, 'trash-bin');
-    $deleteLink = "<div id=\"deleteLink\">$deleteLink</div>";
+    $deleteLink =
+        '<div id="deleteLink">'
+            .\Page\imageArrowLink('Delete', "../delete/?id=$id", 'trash-bin')
+        .'</div>';
 
     unset(
         $_SESSION['account/api-keys/edit/errors'],
