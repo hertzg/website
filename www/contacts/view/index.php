@@ -31,7 +31,7 @@ $content =
     .'<script type="text/javascript">'
         .'var deleteHref = '.json_encode("../delete/submit.php$itemQuery")
     .'</script>'
-    .'<script type="text/javascript" defer="defer" src="index.js"></script>';
+    .'<script type="text/javascript" defer="defer" src="../view.js"></script>';
 
 include_once "$fnsDir/get_revision.php";
 $cssRevision = get_revision('css/contact/compressed.css');
