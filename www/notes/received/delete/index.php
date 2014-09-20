@@ -2,7 +2,7 @@
 
 include_once '../fns/require_received_note.php';
 include_once '../../../lib/mysqli.php';
-list($receivedNote, $id, $user) = require_received_note($mysqli);
+list($receivedNote, $id, $user) = require_received_note($mysqli, '../');
 
 $base = '../../../';
 $fnsDir = '../../../fns';

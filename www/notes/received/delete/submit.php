@@ -5,7 +5,7 @@ require_same_domain_referer('../..');
 
 include_once '../fns/require_received_note.php';
 include_once '../../../lib/mysqli.php';
-list($receivedNote, $id, $user) = require_received_note($mysqli);
+list($receivedNote, $id, $user) = require_received_note($mysqli, '../');
 
 include_once '../../../fns/Users/Notes/Received/delete.php';
 Users\Notes\Received\delete($mysqli, $receivedNote);
