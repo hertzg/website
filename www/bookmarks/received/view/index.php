@@ -4,49 +4,30 @@ include_once '../fns/require_received_bookmark.php';
 include_once '../../../lib/mysqli.php';
 list($receivedBookmark, $id, $user) = require_received_bookmark($mysqli);
 
+$base = '../../../';
+$fnsDir = '../../../fns';
+
 unset(
     $_SESSION['bookmarks/received/edit-and-import/errors'],
     $_SESSION['bookmarks/received/edit-and-import/values'],
     $_SESSION['bookmarks/received/messages']
 );
 
-$items = [];
+include_once "$fnsDir/get_revision.php";
+$confirmDialogJsRevision = get_revision('js/confirmDialog.js');
 
-include_once '../../../fns/Page/text.php';
+include_once '../fns/ViewPage/create.php';
+$content =
+    ViewPage\create($receivedBookmark)
+    .'<script type="text/javascript" defer="defer"'
+    ." src=\"{$base}js/confirmDialog.js?$confirmDialogJsRevision\"></script>"
+    .'<script type="text/javascript">'
+        .'var deleteHref = '.json_encode("../delete/submit.php?id=$id")
+    .'</script>'
+    .'<script type="text/javascript" defer="defer" src="index.js"></script>';
 
-$title = $receivedBookmark->title;
-if ($title !== '') $items[] = Page\text(htmlspecialchars($title));
-
-$items[] = Page\text(htmlspecialchars($receivedBookmark->url));
-
-$tags = $receivedBookmark->tags;
-if ($tags !== '') $items[] = Page\text('Tags: '.htmlspecialchars($tags));
-
-include_once '../../../fns/date_ago.php';
-$text = 'Bookmark received '.date_ago($receivedBookmark->insert_time).'.';
-include_once '../../../fns/Page/infoText.php';
-$infoText = Page\infoText($text);
-
-include_once 'fns/create_options_panel.php';
-include_once '../../../fns/create_panel.php';
-include_once '../../../fns/Form/label.php';
-include_once '../../../fns/Page/sessionMessages.php';
-include_once '../../../fns/Page/tabs.php';
-$content = Page\tabs(
-    [
-        [
-            'title' => 'Received',
-            'href' => '..',
-        ],
-    ],
-    "Received Bookmark #$id",
-    Page\sessionMessages('bookmarks/received/view/messages')
-    .Form\label('Received from',
-        htmlspecialchars($receivedBookmark->sender_username))
-    .create_panel('The Bookmark', join('<div class="hr"></div>', $items))
-    .$infoText
-    .create_options_panel($receivedBookmark)
-);
-
-include_once '../../../fns/echo_page.php';
-echo_page($user, "Received Bookmark #$id", $content, '../../../');
+include_once "$fnsDir/echo_page.php";
+echo_page($user, "Received Bookmark #$id", $content, $base, [
+    'head' => '<link rel="stylesheet" type="text/css"'
+        ." href=\"{$base}css/confirmDialog/compressed.css\" />",
+]);
