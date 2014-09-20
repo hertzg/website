@@ -6,26 +6,19 @@ list($receivedTask, $id, $user) = require_received_task($mysqli);
 
 unset($_SESSION['tasks/received/view/messages']);
 
-include_once '../../../fns/Page/tabs.php';
-include_once '../../../fns/Page/imageLink.php';
-include_once '../../../fns/Page/text.php';
-include_once '../../../fns/Page/twoColumns.php';
-$content = Page\tabs(
-    [
-        [
-            'title' => 'Received',
-            'href' => '..',
-        ],
-    ],
-    "Received Task #$id",
-    Page\text('Are you sure you want to delete the task?'
-        .' It will be moved to Trash.')
-    .'<div class="hr"></div>'
-    .Page\twoColumns(
-        Page\imageLink('Yes, delete task', "submit.php?id=$id", 'yes'),
-        Page\imageLink('No, return back', "../view/?id=$id", 'no')
-    )
-);
+$base = '../../../';
+$fnsDir = '../../../fns';
 
-include_once '../../../fns/echo_page.php';
-echo_page($user, "Delete Received Task #$id?", $content, '../../../');
+include_once '../fns/ViewPage/create.php';
+include_once "$fnsDir/Page/confirmDialog.php";
+$content =
+    ViewPage\create($receivedTask)
+    .Page\confirmDialog('Are you sure you want to delete the task?'
+        .' It will be moved to Trash.', 'Yes, delete task',
+        "submit.php?id=$id", "../view/?id=$id");
+
+include_once "$fnsDir/echo_page.php";
+echo_page($user, "Delete Received Task #$id?", $content, $base, [
+    'head' => '<link rel="stylesheet" type="text/css"'
+        ." href=\"{$base}css/confirmDialog/compressed.css\" />",
+]);

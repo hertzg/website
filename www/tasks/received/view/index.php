@@ -11,57 +11,23 @@ unset(
 );
 
 $base = '../../../';
+$fnsDir = '../../../fns';
 
-include_once '../../../fns/render_external_links.php';
-include_once '../../../fns/Page/text.php';
-$items = [
-    Page\text(
-        nl2br(
-            render_external_links(htmlspecialchars($receivedTask->text), $base)
-        )
-    ),
-];
+include_once "$fnsDir/get_revision.php";
+$confirmDialogJsRevision = get_revision('js/confirmDialog.js');
 
-$deadline_time = $receivedTask->deadline_time;
-if ($deadline_time !== null) {
-    include_once '../../../fns/time_today.php';
-    include_once '../../../fns/format_deadline.php';
-    $items[] = Page\text('Deadline '.date('F d, Y', $deadline_time)
-        .' ('.format_deadline($deadline_time, time_today()).')');
-}
+include_once '../fns/ViewPage/create.php';
+$content =
+    ViewPage\create($receivedTask)
+    .'<script type="text/javascript" defer="defer"'
+    ." src=\"{$base}js/confirmDialog.js?$confirmDialogJsRevision\"></script>"
+    .'<script type="text/javascript">'
+        .'var deleteHref = '.json_encode("../delete/submit.php?id=$id")
+    .'</script>'
+    .'<script type="text/javascript" defer="defer" src="../../view.js"></script>';
 
-$tags = $receivedTask->tags;
-if ($tags !== '') $items[] = Page\text('Tags: '.htmlspecialchars($tags));
-
-include_once '../../../fns/date_ago.php';
-include_once '../../../fns/Page/infoText.php';
-$infoText = Page\infoText(
-    '<div>'
-        .($receivedTask->top_priority ? 'Top' : 'Normal').' priority task.'
-    .'</div>'
-    .'<div>Task received '.date_ago($receivedTask->insert_time).'.</div>'
-);
-
-include_once 'fns/create_options_panel.php';
-include_once '../../../fns/create_panel.php';
-include_once '../../../fns/Form/label.php';
-include_once '../../../fns/Page/sessionMessages.php';
-include_once '../../../fns/Page/tabs.php';
-$content = Page\tabs(
-    [
-        [
-            'title' => 'Received',
-            'href' => '..',
-        ],
-    ],
-    "Received Task #$id",
-    Page\sessionMessages('tasks/received/view/messages')
-    .Form\label('Received from',
-        htmlspecialchars($receivedTask->sender_username))
-    .create_panel('The Task', join('<div class="hr"></div>', $items))
-    .$infoText
-    .create_options_panel($receivedTask)
-);
-
-include_once '../../../fns/echo_page.php';
-echo_page($user, "Received Task #$id", $content, $base);
+include_once "$fnsDir/echo_page.php";
+echo_page($user, "Received Task #$id", $content, $base, [
+    'head' => '<link rel="stylesheet" type="text/css"'
+        ." href=\"{$base}css/confirmDialog/compressed.css\" />",
+]);
