@@ -1,11 +1,11 @@
 <?php
 
-function require_received_bookmark ($mysqli) {
+function require_received_bookmark ($mysqli, $base = '') {
 
     $fnsDir = __DIR__.'/../../../fns';
 
     include_once "$fnsDir/require_user.php";
-    $user = require_user('../../../');
+    $user = require_user("$base../../");
 
     include_once "$fnsDir/request_strings.php";
     list($id) = request_strings('id');
@@ -18,7 +18,7 @@ function require_received_bookmark ($mysqli) {
 
     if (!$receivedBookmark) {
         include_once "$fnsDir/redirect.php";
-        redirect('..');
+        redirect("$base./");
     }
 
     return [$receivedBookmark, $id, $user];
