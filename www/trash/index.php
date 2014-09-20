@@ -20,7 +20,7 @@ if ($user->num_deleted_items) {
         '<script type="text/javascript" defer="defer"'
         ." src=\"{$base}js/confirmDialog.js?$confirmDialogJsRevision\">"
         .'</script>'
-        .'<script type="text/javascript" defer="defer" src="index.js">'
+        .'<script type="text/javascript" defer="defer" src="index.js?1">'
         .'</script>';
     $head = '<link rel="stylesheet" type="text/css"'
         ." href=\"{$base}css/confirmDialog/compressed.css\">";

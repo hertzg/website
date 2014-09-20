@@ -7,10 +7,10 @@
         e.preventDefault()
         emptyLink.blur()
         if (dialogShown) return
-        var yesText = 'Yes, delete note'
+        var yesText = 'Yes, empty trash'
         var yesHref = 'empty/submit.php'
-        var questionText = 'Are you sure you want to delete the note?' +
-            ' It will be moved to Trash.'
+        var questionText = 'Are you sure you want to empty the trash?' +
+            ' All the items in it will be purged.'
         confirmDialog(questionText, yesText, yesHref, function () {
             dialogShown = false
         })
