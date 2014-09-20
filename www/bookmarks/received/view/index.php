@@ -24,7 +24,8 @@ $content =
     .'<script type="text/javascript">'
         .'var deleteHref = '.json_encode("../delete/submit.php?id=$id")
     .'</script>'
-    .'<script type="text/javascript" defer="defer" src="index.js"></script>';
+    .'<script type="text/javascript" defer="defer"'
+    .' src="../../view.js"></script>';
 
 include_once "$fnsDir/echo_page.php";
 echo_page($user, "Received Bookmark #$id", $content, $base, [
