@@ -4,52 +4,30 @@ include_once '../fns/require_received_note.php';
 include_once '../../../lib/mysqli.php';
 list($receivedNote, $id, $user) = require_received_note($mysqli);
 
+$base = '../../../';
+$fnsDir = '../../../fns';
+
 unset(
     $_SESSION['notes/received/edit-and-import/errors'],
     $_SESSION['notes/received/edit-and-import/values'],
     $_SESSION['notes/received/messages']
 );
 
-$base = '../../../';
+include_once "$fnsDir/get_revision.php";
+$confirmDialogJsRevision = get_revision('js/confirmDialog.js');
 
-include_once '../../../fns/render_external_links.php';
-include_once '../../../fns/Page/text.php';
-$items = [
-    Page\text(
-        nl2br(
-            render_external_links(htmlspecialchars($receivedNote->text), $base)
-        )
-    )
-];
+include_once '../fns/ViewPage/create.php';
+$content =
+    ViewPage\create($receivedNote)
+    .'<script type="text/javascript" defer="defer"'
+    ." src=\"{$base}js/confirmDialog.js?$confirmDialogJsRevision\"></script>"
+    .'<script type="text/javascript">'
+        .'var deleteHref = '.json_encode("../delete/submit.php?id=$id")
+    .'</script>'
+    .'<script type="text/javascript" defer="defer" src="../../view.js"></script>';
 
-$tags = $receivedNote->tags;
-if ($tags !== '') $items[] = Page\text('Tags: '.htmlspecialchars($tags));
-
-include_once '../../../fns/date_ago.php';
-$text = 'Note received '.date_ago($receivedNote->insert_time).'.';
-include_once '../../../fns/Page/infoText.php';
-$infoText = Page\infoText($text);
-
-include_once 'fns/create_options_panel.php';
-include_once '../../../fns/create_panel.php';
-include_once '../../../fns/Form/label.php';
-include_once '../../../fns/Page/sessionMessages.php';
-include_once '../../../fns/Page/tabs.php';
-$content = Page\tabs(
-    [
-        [
-            'title' => 'Received',
-            'href' => '..',
-        ],
-    ],
-    "Received Note #$id",
-    Page\sessionMessages('notes/received/view/messages')
-    .Form\label('Received from',
-        htmlspecialchars($receivedNote->sender_username))
-    .create_panel('The Note', join('<div class="hr"></div>', $items))
-    .$infoText
-    .create_options_panel($receivedNote)
-);
-
-include_once '../../../fns/echo_page.php';
-echo_page($user, "Received Note #$id", $content, $base);
+include_once "$fnsDir/echo_page.php";
+echo_page($user, "Received Note #$id", $content, $base, [
+    'head' => '<link rel="stylesheet" type="text/css"'
+        ." href=\"{$base}css/confirmDialog/compressed.css\" />"
+]);

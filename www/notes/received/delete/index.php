@@ -4,28 +4,21 @@ include_once '../fns/require_received_note.php';
 include_once '../../../lib/mysqli.php';
 list($receivedNote, $id, $user) = require_received_note($mysqli);
 
+$base = '../../../';
+$fnsDir = '../../../fns';
+
 unset($_SESSION['notes/received/view/messages']);
 
-include_once '../../../fns/Page/tabs.php';
-include_once '../../../fns/Page/imageLink.php';
-include_once '../../../fns/Page/text.php';
-include_once '../../../fns/Page/twoColumns.php';
-$content = Page\tabs(
-    [
-        [
-            'title' => 'Received',
-            'href' => '..',
-        ],
-    ],
-    "Received Note #$id",
-    Page\text('Are you sure you want to delete the note?'
-        .' It will be moved to Trash.')
-    .'<div class="hr"></div>'
-    .Page\twoColumns(
-        Page\imageLink('Yes, delete note', "submit.php?id=$id", 'yes'),
-        Page\imageLink('No, return back', "../view/?id=$id", 'no')
-    )
-);
+include_once '../fns/ViewPage/create.php';
+include_once "$fnsDir/Page/confirmDialog.php";
+$content =
+    ViewPage\create($receivedNote)
+    .Page\confirmDialog('Are you sure you want to delete the note?'
+        .' It will be moved to Trash.', 'Yes, delete note',
+        "submit.php?id=$id", "../view/?id=$id");
 
-include_once '../../../fns/echo_page.php';
-echo_page($user, "Delete Received Note #$id?", $content, '../../../');
+include_once "$fnsDir/echo_page.php";
+echo_page($user, "Delete Received Note #$id?", $content, $base, [
+    'head' => '<link rel="stylesheet" type="text/css"'
+        ." href=\"{$base}css/confirmDialog/compressed.css\" />",
+]);
