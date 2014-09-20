@@ -5,7 +5,7 @@ require_same_domain_referer('..');
 
 include_once '../fns/require_received_contact.php';
 include_once '../../../lib/mysqli.php';
-list($receivedContact, $id, $user) = require_received_contact($mysqli);
+list($receivedContact, $id, $user) = require_received_contact($mysqli, '../');
 
 $errors = [];
 
