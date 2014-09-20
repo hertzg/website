@@ -15,7 +15,7 @@ unset(
 
 include_once "$fnsDir/get_revision.php";
 $confirmDialogJsRevision = get_revision('js/confirmDialog.js');
-$cssRevision = get_revision('css/contact/compressed.css');
+$contactCssRevision = get_revision('css/contact/compressed.css');
 
 include_once '../fns/ViewPage/create.php';
 $content =
@@ -32,7 +32,7 @@ $content =
 include_once "$fnsDir/echo_page.php";
 echo_page($user, "Received Contact #$id", $content, $base, [
     'head' => '<link rel="stylesheet" type="text/css"'
-        ." href=\"{$base}css/contact/compressed.css?$cssRevision\" />"
+        ." href=\"{$base}css/contact/compressed.css?$contactCssRevision\" />"
         .'<link rel="stylesheet" type="text/css"'
         ." href=\"{$base}css/confirmDialog/compressed.css\" />"
 ]);
