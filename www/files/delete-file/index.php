@@ -1,35 +1,22 @@
 <?php
 
-include_once '../fns/require_file.php';
+include_once '../fns/ViewFilePage/create.php';
 include_once '../../lib/mysqli.php';
-list($file, $id, $user) = require_file($mysqli);
+$content = ViewFilePage\create($mysqli, $user, $file);
+$id = $file->id_files;
+
+$base = '../../';
+$fnsDir = '../../fns';
+
+include_once "$fnsDir/Page/confirmDialog.php";
+$content .= Page\confirmDialog('Are you sure you want to delete the file?'
+    .' It will be moved to Trash.', 'Yes, delete file', "submit.php?id=$id",
+    "../view-file/?id=$id");
 
 unset($_SESSION['files/view-file/messages']);
 
-include_once '../../fns/create_folder_link.php';
-include_once '../../fns/Page/tabs.php';
-include_once '../../fns/Page/imageLink.php';
-include_once '../../fns/Page/text.php';
-include_once '../../fns/Page/twoColumns.php';
-$content = Page\tabs(
-    [
-        [
-            'title' => 'Files',
-            'href' => create_folder_link($file->id_folders, '../'),
-        ],
-    ],
-    "File #$id",
-    Page\text(
-        'Are you sure you want to delete the file'
-        .' "<b>'.htmlspecialchars($file->name).'</b>"?'
-        .' It will be moved to Trash.'
-    )
-    .'<div class="hr"></div>'
-    .Page\twoColumns(
-        Page\imageLink('Yes, delete file', "submit.php?id=$id", 'yes'),
-        Page\imageLink('No, return back', "../view-file/?id=$id", 'no')
-    )
-);
-
-include_once '../../fns/echo_page.php';
-echo_page($user, "Delete File #$id?", $content, '../../');
+include_once "$fnsDir/echo_page.php";
+echo_page($user, "Delete File #$id?", $content, $base, [
+    'head' => '<link rel="stylesheet" type="text/css"'
+        ." href=\"{$base}css/confirmDialog/compressed.css\" />",
+]);

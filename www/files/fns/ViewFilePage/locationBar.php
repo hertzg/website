@@ -1,6 +1,8 @@
 <?php
 
-function create_location_bar ($mysqli, $file) {
+namespace ViewFilePage;
+
+function locationBar ($mysqli, $file) {
 
     $html =
         '<div class="page-tags tagFilterBar">'
@@ -13,7 +15,7 @@ function create_location_bar ($mysqli, $file) {
         $id_users = $file->id_users;
 
         include_once __DIR__.'/../../../fns/Folders/get.php';
-        $parentFolder = Folders\get($mysqli, $id_users, $id_folders);
+        $parentFolder = \Folders\get($mysqli, $id_users, $id_folders);
 
         $parentFolders = [$parentFolder];
         $parent_id_folders = $parentFolder->parent_id_folders;

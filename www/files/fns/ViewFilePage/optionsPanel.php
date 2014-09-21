@@ -1,6 +1,8 @@
 <?php
 
-function create_options_panel ($file) {
+namespace ViewFilePage;
+
+function optionsPanel ($file) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
@@ -12,24 +14,27 @@ function create_options_panel ($file) {
 
     $href = "../slideshow/?id=$id";
     if ($id_folders) $href .= "&amp;parent_id_folders=$id_folders";
-    $slideshowLink = Page\imageArrowLink('Slideshow', $href, 'slideshow');
+    $slideshowLink = \Page\imageArrowLink('Slideshow', $href, 'slideshow');
 
     $namePart = rawurlencode(str_replace('/', '_', $file->name));
     $href = "../download-file/$id/$namePart";
-    $downloadLink = Page\imageLink('Download', $href, 'download');
+    $downloadLink = \Page\imageLink('Download', $href, 'download');
 
     $href = "../rename-file/?id=$id";
-    $renameLink = Page\imageArrowLink('Rename', $href, 'rename');
+    $renameLink = \Page\imageArrowLink('Rename', $href, 'rename');
 
     $href = "../move-file/?id=$id";
     if ($id_folders) $href .= "&amp;id_folders=$file->id_folders";
-    $moveLink = Page\imageArrowLink('Move', $href, 'move-file');
+    $moveLink = \Page\imageArrowLink('Move', $href, 'move-file');
 
     $href = "../send-file/?id=$id";
-    $sendLink = Page\imageArrowLink('Send', $href, 'send');
+    $sendLink = \Page\imageArrowLink('Send', $href, 'send');
 
     $href = "../delete-file/?id=$id";
-    $deleteLink = Page\imageArrowLink('Delete', $href, 'trash-bin');
+    $deleteLink =
+        '<div id="deleteLink">'
+            .\Page\imageArrowLink('Delete', $href, 'trash-bin')
+        .'</div>';
 
     include_once "$fnsDir/Page/staticTwoColumns.php";
 
@@ -38,17 +43,17 @@ function create_options_panel ($file) {
         $media_type == 'video') {
 
         $content =
-            Page\staticTwoColumns($slideshowLink, $downloadLink)
+            \Page\staticTwoColumns($slideshowLink, $downloadLink)
             .'<div class="hr"></div>'
-            .Page\staticTwoColumns($renameLink, $moveLink)
+            .\Page\staticTwoColumns($renameLink, $moveLink)
             .'<div class="hr"></div>'
-            .Page\staticTwoColumns($sendLink, $deleteLink);
+            .\Page\staticTwoColumns($sendLink, $deleteLink);
 
     } else {
         $content =
-            Page\staticTwoColumns($downloadLink, $renameLink)
+            \Page\staticTwoColumns($downloadLink, $renameLink)
             .'<div class="hr"></div>'
-            .Page\staticTwoColumns($moveLink, $sendLink)
+            .\Page\staticTwoColumns($moveLink, $sendLink)
             .'<div class="hr"></div>'
             .$deleteLink;
     }
