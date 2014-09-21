@@ -15,7 +15,10 @@ function create_folder_options_panel ($id_folders) {
     $sendLink = Page\imageArrowLink('Send', $href, 'send');
 
     $href = "delete-folder/?id_folders=$id_folders";
-    $deleteLink = Page\imageArrowLink('Delete', $href, 'trash-bin');
+    $deleteLink =
+        '<div id="deleteLink">'
+            .Page\imageArrowLink('Delete', $href, 'trash-bin')
+        .'</div>';
 
     include_once "$fnsDir/Page/staticTwoColumns.php";
     $content =
