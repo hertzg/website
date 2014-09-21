@@ -65,7 +65,8 @@ if ($notifications) {
         $text = htmlspecialchars($notification->text);
         $text = nl2br(render_external_links($text, $base));
 
-        $content = $text
+        $content =
+            $text
             .'<div style="color: #555">'
                 ."<a class=\"a\" href=\"$href\">"
                     .$notification->channel_name

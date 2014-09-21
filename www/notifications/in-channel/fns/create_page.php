@@ -32,44 +32,9 @@ function create_page ($mysqli, &$user, &$id, $base = '') {
     $notifications = Notifications\indexPageOnUserChannel(
         $mysqli, $user->id_users, $id, $offset, $limit, $total);
 
-    if ($notifications) {
-
-        include_once "$fnsDir/Page/imageArrowLink.php";
-        $title = 'Delete Notifications';
-        $href = "{$base}delete/?id=$id";
-        $options[] =
-            '<div id="deleteLink">'
-                .Page\imageArrowLink($title, $href, 'trash-bin')
-            .'</div>';
-
-        include_once __DIR__.'/../../fns/render_prev_button.php';
-        render_prev_button($offset, $limit,
-            $total, $items, ['id' => $id], $base);
-
-        include_once "$fnsDir/create_image_text.php";
-        include_once "$fnsDir/date_ago.php";
-        include_once "$fnsDir/render_external_links.php";
-        foreach ($notifications as $i => $notification) {
-
-            $text = htmlspecialchars($notification->text);
-            $text = nl2br(render_external_links($text, $base));
-
-            $content = $text
-                .'<div style="color: #777; font-size: 12px; line-height: 14px">'
-                    .date_ago($notification->insert_time)
-                .'</div>';
-            $items[] = create_image_text($content, 'old-notification');
-
-        }
-
-        include_once __DIR__.'/../../fns/render_next_button.php';
-        render_next_button($offset, $limit,
-            $total, $items, ['id' => $id], $base);
-
-    } else {
-        include_once "$fnsDir/Page/info.php";
-        $items[] = Page\info('No notifications');
-    }
+    include_once __DIR__.'/../../fns/render_filtered_notifications.php';
+    render_filtered_notifications($base, $id, $offset,
+        $limit, $total, $notifications, $items, $options);
 
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Page/sessionMessages.php";
@@ -86,7 +51,7 @@ function create_page ($mysqli, &$user, &$id, $base = '') {
         .'<div class="filterBar">'
             .'Channel: <b>'.htmlspecialchars($channel->channel_name).'</b>'
             .'<a class="rightButton clickable" title="Clear Filter"'
-                ." href=\"$base..\">"
+            ." href=\"$base..\">"
                 .'<span class="icon no"></span>'
             .'</a>'
         .'</div>'
