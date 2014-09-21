@@ -1,32 +1,21 @@
 <?php
 
-include_once '../fns/require_channel.php';
+$base = '../../../';
+$fnsDir = '../../../fns';
+
+include_once '../fns/create_page.php';
 include_once '../../../lib/mysqli.php';
-list($channel, $id, $user) = require_channel($mysqli, '../..');
+$content = create_page($mysqli, $user, $id, '../');
+
+include_once "$fnsDir/Page/confirmDialog.php";
+$content .= Page\confirmDialog(
+    'Are you sure you want to delete notifications in this channel?',
+    'Yes, delete notifications', "submit.php?id=$id", "../?id=$id");
 
 unset($_SESSION['notifications/in-channel/messages']);
 
-include_once '../../../fns/Page/tabs.php';
-include_once '../../../fns/Page/imageLink.php';
-include_once '../../../fns/Page/text.php';
-include_once '../../../fns/Page/twoColumns.php';
-$content = Page\tabs(
-    [
-        [
-            'title' => 'Home',
-            'href' => '../../../home/',
-        ],
-    ],
-    'Notifications',
-    Page\text(
-        'Are you sure you want to delete notifications in this channel?'
-    )
-    .'<div class="hr"></div>'
-    .Page\twoColumns(
-        Page\imageLink('Yes, delete notifications', "submit.php?id=$id", 'yes'),
-        Page\imageLink('No, return back', "../?id=$id", 'no')
-    )
-);
-
-include_once '../../../fns/echo_page.php';
-echo_page($user, 'Delete Notifications?', $content, '../../../');
+include_once "$fnsDir/echo_page.php";
+echo_page($user, 'Delete Notifications?', $content, $base, [
+    'head' => '<link rel="stylesheet" type="text/css"'
+        ." href=\"{$base}css/confirmDialog/compressed.css\" />",
+]);
