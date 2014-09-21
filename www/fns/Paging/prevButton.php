@@ -2,12 +2,13 @@
 
 namespace Paging;
 
-function prevButton ($offset, $limit, $total, $label, $params = []) {
+function prevButton ($offset, $limit,
+    $total, $label, $params = [], $base = '') {
 
     $prevOffset = max(0, $offset - $limit);
     if ($prevOffset) $params['offset'] = $prevOffset;
 
-    $href = './?'.htmlspecialchars(http_build_query($params));
+    $href = "$base?".htmlspecialchars(http_build_query($params));
 
     $html = '';
     if ($offset) {

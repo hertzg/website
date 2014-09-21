@@ -38,10 +38,14 @@ function create_page ($mysqli, &$user, &$id, $base = '') {
         include_once "$fnsDir/Page/imageArrowLink.php";
         $title = 'Delete Notifications';
         $href = "{$base}delete/?id=$id";
-        $options[] = Page\imageArrowLink($title, $href, 'trash-bin');
+        $options[] =
+            '<div id="deleteLink">'
+                .Page\imageArrowLink($title, $href, 'trash-bin')
+            .'</div>';
 
         include_once __DIR__.'/../../fns/render_prev_button.php';
-        render_prev_button($offset, $limit, $total, $items, ['id' => $id]);
+        render_prev_button($offset, $limit,
+            $total, $items, ['id' => $id], $base);
 
         include_once __DIR__.'/render_notification_text.php';
         include_once "$fnsDir/create_image_text.php";
@@ -52,7 +56,8 @@ function create_page ($mysqli, &$user, &$id, $base = '') {
         }
 
         include_once __DIR__.'/../../fns/render_next_button.php';
-        render_next_button($offset, $limit, $total, $items, ['id' => $id]);
+        render_next_button($offset, $limit,
+            $total, $items, ['id' => $id], $base);
 
     } else {
         include_once "$fnsDir/Page/info.php";
