@@ -49,6 +49,7 @@ if ($notifications) {
 
     include_once '../fns/create_image_text.php';
     include_once '../fns/date_ago.php';
+    include_once '../fns/render_external_links.php';
     foreach ($notifications as $i => $notification) {
 
         if ($i < $user->num_new_notifications) $icon = 'notification';
@@ -61,14 +62,10 @@ if ($notifications) {
             $href = "in-channel/?id=$notification->id_channels";
         }
 
-        $content =
-            nl2br(
-                preg_replace(
-                    '#(http://.*?)(\s|$)#',
-                    '<a class="a" rel="noreferrer" href="$1">$1</a>$2',
-                    htmlspecialchars($notification->text)
-                )
-            )
+        $text = htmlspecialchars($notification->text);
+        $text = nl2br(render_external_links($text, $base));
+
+        $content = $text
             .'<div style="color: #555">'
                 ."<a class=\"a\" href=\"$href\">"
                     .$notification->channel_name

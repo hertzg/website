@@ -48,19 +48,18 @@ function create_page ($mysqli, &$user, &$id, $base = '') {
 
         include_once "$fnsDir/create_image_text.php";
         include_once "$fnsDir/date_ago.php";
+        include_once "$fnsDir/render_external_links.php";
         foreach ($notifications as $i => $notification) {
-            $content =
-                nl2br(
-                    preg_replace(
-                        '#(http://.*?)(\s|$)#',
-                        '<a class="a" rel="noreferrer" href="$1">$1</a>$2',
-                        htmlspecialchars($notification->text)
-                    )
-                )
+
+            $text = htmlspecialchars($notification->text);
+            $text = nl2br(render_external_links($text, $base));
+
+            $content = $text
                 .'<div style="color: #777; font-size: 12px; line-height: 14px">'
                     .date_ago($notification->insert_time)
                 .'</div>';
             $items[] = create_image_text($content, 'old-notification');
+
         }
 
         include_once __DIR__.'/../../fns/render_next_button.php';
