@@ -1,60 +1,23 @@
 <?php
 
-include_once 'fns/require_subscribed_channel.php';
+$base = '../../';
+$fnsDir = '../../fns';
+
+include_once 'fns/create_page.php';
 include_once '../../lib/mysqli.php';
-$values = require_subscribed_channel($mysqli, '..');
-list($subscribedChannel, $id, $user) = $values;
+$content = create_page($mysqli, $user, $id);
 
-include_once '../../fns/Paging/limit.php';
-$limit = Paging\limit();
+include_once "$fnsDir/get_revision.php";
+$confirmDialogJsRevision = get_revision('js/confirmDialog.js');
 
-include_once '../../fns/request_strings.php';
-list($offset) = request_strings('offset');
-$offset = abs((int)$offset);
-if ($offset % $limit) {
-    include_once '../../fns/redirect.php';
-    redirect('..');
-}
-
-$options = [];
-
-include_once '../fns/create_channels_link.php';
-$options[] = create_channels_link($user, '../');
-
-include_once '../fns/create_subscribed_channels_link.php';
-$options[] = create_subscribed_channels_link($user, '../');
-
-$items = [];
-
-include_once '../../fns/Notifications/indexPageOnSubscribedChannel.php';
-$notifications = Notifications\indexPageOnSubscribedChannel(
-    $mysqli, $id, $offset, $limit, $total);
-
-if ($notifications) {
-
-    include_once '../../fns/Page/imageArrowLink.php';
-    $title = 'Delete Notifications';
-    $href = "delete/?id=$id";
-    $options[] = Page\imageArrowLink($title, $href, 'trash-bin');
-
-    include_once '../fns/render_prev_button.php';
-    render_prev_button($offset, $limit, $total, $items, ['id' => $id]);
-
-    include_once 'fns/render_notification_text.php';
-    include_once '../../fns/create_image_text.php';
-    include_once '../../fns/date_ago.php';
-    foreach ($notifications as $i => $notification) {
-        $content = render_notification_text($notification);
-        $items[] = create_image_text($content, 'old-notification');
-    }
-
-    include_once '../fns/render_next_button.php';
-    render_next_button($offset, $limit, $total, $items, ['id' => $id]);
-
-} else {
-    include_once '../../fns/Page/info.php';
-    $items[] = Page\info('No notifications');
-}
+$content .=
+    '<script type="text/javascript" defer="defer"'
+    ." src=\"{$base}js/confirmDialog.js?$confirmDialogJsRevision\"></script>"
+    .'<script type="text/javascript">'
+        .'var deleteHref = '.json_encode("delete/submit.php?id=$id")
+    .'</script>'
+    .'<script type="text/javascript" defer="defer" src="../in-channel.js">'
+    .'</script>';
 
 unset(
     $_SESSION['home/messages'],
@@ -63,29 +26,8 @@ unset(
     $_SESSION['notifications/messages']
 );
 
-include_once '../../fns/create_panel.php';
-include_once '../../fns/Page/tabs.php';
-include_once '../../fns/Page/sessionMessages.php';
-$content = Page\tabs(
-    [
-        [
-            'title' => 'Home',
-            'href' => '../../home/',
-        ],
-    ],
-    'Notifications',
-    Page\sessionMessages('notifications/in-subscribed-channel/messages')
-    .'<div class="filterBar">'
-        .'Channel: <b>'
-            .htmlspecialchars($subscribedChannel->channel_name)
-        .'</b>'
-        .'<a class="rightButton clickable" title="Clear Filter" href="..">'
-            .'<span class="icon no"></span>'
-        .'</a>'
-    .'</div>'
-    .join('<div class="hr"></div>', $items)
-    .create_panel('Options', join('<div class="hr"></div>', $options))
-);
-
-include_once '../../fns/echo_page.php';
-echo_page($user, 'Notifications', $content, '../../');
+include_once "$fnsDir/echo_page.php";
+echo_page($user, 'Notifications', $content, $base, [
+    'head' => '<link rel="stylesheet" type="text/css"'
+        ." href=\"{$base}css/confirmDialog/compressed.css\" />",
+]);
