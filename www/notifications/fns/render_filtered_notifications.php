@@ -7,9 +7,12 @@ function render_filtered_notifications ($base, $id, $offset,
 
     if ($notifications) {
 
+        include_once "$fnsDir/ItemList/escapedItemQuery.php";
+        $escapedItemQuery = ItemList\escapedItemQuery($id);
+
         include_once "$fnsDir/Page/imageArrowLink.php";
         $title = 'Delete Notifications';
-        $href = "{$base}delete/?id=$id";
+        $href = "{$base}delete/$escapedItemQuery";
         $options[] =
             '<div id="deleteLink">'
                 .Page\imageArrowLink($title, $href, 'trash-bin')
