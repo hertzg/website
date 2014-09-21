@@ -3,10 +3,7 @@
 function echo_html ($title, $head, $body, $theme, $base) {
 
     include_once __DIR__.'/get_revision.php';
-    $commonCssRevision = get_revision('css/common/compressed.css');
     $iconsCssRevision = get_revision('icons.compressed.css');
-
-    $commonCssHref = "{$base}css/common/compressed.css?$commonCssRevision";
 
     header_remove('Expires');
     header_remove('Pragma');
@@ -14,6 +11,7 @@ function echo_html ($title, $head, $body, $theme, $base) {
     header('Cache-Control: private');
     header('Content-Type: text/html; charset=UTF-8');
 
+    include_once __DIR__.'/compressed_css_link.php';
     echo
         '<!DOCTYPE html>'
         .'<html>'
@@ -27,8 +25,7 @@ function echo_html ($title, $head, $body, $theme, $base) {
                 .' content="text/html; charset=UTF-8" />'
                 .'<meta name="viewport"'
                 .' content="width=device-width, user-scalable=no" />'
-                .'<link rel="stylesheet" type="text/css"'
-                ." href=\"$commonCssHref\" />"
+                .compressed_css_link('common', $base)
                 .'<link rel="stylesheet" type="text/css"'
                 ." href=\"{$base}icons.compressed.css?$iconsCssRevision\" />"
                 .'<link rel="stylesheet" type="text/css"'

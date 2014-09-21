@@ -29,11 +29,8 @@ function create ($deletedItem, &$title, &$head) {
         include_once __DIR__.'/renderContact.php';
         renderContact($id, $data, $items, $infoText);
 
-        include_once "$fnsDir/get_revision.php";
-        $cssRevision = get_revision('css/contact/compressed.css');
-
-        $head = '<link rel="stylesheet" type="text/css"'
-            ." href=\"{$base}css/contact/compressed.css?$cssRevision\" />";
+        include_once "$fnsDir/compressed_css_link.php";
+        $head = compressed_css_link('contact', $base);
 
     } elseif ($type == 'note' || $type == 'receivedNote') {
         include_once __DIR__.'/renderNote.php';

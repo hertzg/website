@@ -5,7 +5,7 @@ function render_note ($note, $description, $href, &$items) {
     $text = $note->text;
 
     if ($note->encrypt) {
-        include_once '../fns/encrypt_text.php';
+        include_once __DIR__.'/../../fns/encrypt_text.php';
         $text = encrypt_text($text);
         $icon = 'encrypted-note';
     } else {

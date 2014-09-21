@@ -16,8 +16,8 @@ $content =
         'Yes, delete remembered session', "submit.php?id=$id",
         "../view/?id=$id");
 
+include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";
 echo_page($user, "Delete Remembered Session #$id?", $content, $base, [
-    'head' => '<link rel="stylesheet" type="text/css"'
-        ." href=\"{$base}css/confirmDialog/compressed.css\" />",
+    'head' => compressed_css_link('confirmDialog', $base),
 ]);

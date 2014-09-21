@@ -16,10 +16,10 @@ $content =
     .Page\confirmDialog('Are you sure you want to delete the connection?',
         'Yes, delete connection', "submit.php?id=$id", "../view/?id=$id");
 
+include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";
 echo_page($user, "Delete Connection #$id?", $content, $base, [
     'head' =>
         '<link rel="stylesheet" type="text/css" href="../view.css" />'
-        .'<link rel="stylesheet" type="text/css"'
-        ." href=\"{$base}css/confirmDialog/compressed.css\" />",
+        .compressed_css_link('confirmDialog', $base),
 ]);

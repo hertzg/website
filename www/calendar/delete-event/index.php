@@ -16,8 +16,8 @@ $content =
     .Page\confirmDialog('Are you sure you want to delete the event?',
         'Yes, delete event', "submit.php?id=$id", "../view-event/?id=$id");
 
+include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";
 echo_page($user, "Delete Event #$id?", $content, $base, [
-    'head' => '<link rel="stylesheet" type="text/css"'
-        ." href=\"{$base}css/confirmDialog/compressed.css\" />",
+    'head' => compressed_css_link('confirmDialog', $base),
 ]);

@@ -16,7 +16,5 @@ $content =
 
 include_once "$fnsDir/echo_page.php";
 echo_page($user, "Purge $title?", $content, $base, [
-    'head' => $head
-        .'<link rel="stylesheet" type="text/css"'
-        ." href=\"{$base}css/confirmDialog/compressed.css\" />",
+    'head' => compressed_css_link('confirmDialog', $base),
 ]);

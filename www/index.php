@@ -12,12 +12,9 @@ if ($user) {
 include_once 'fns/unset_session_vars.php';
 unset_session_vars();
 
-include_once 'fns/get_revision.php';
-
 header('Content-Type: text/html; charset=UTF-8');
 
-$commonCssRevision = get_revision('css/common/compressed.css');
-
+include_once 'fns/compressed_css_link.php';
 echo
     '<!DOCTYPE html>'
     .'<html>'
@@ -27,10 +24,8 @@ echo
             .' content="text/html; charset=UTF-8" />'
             .'<meta name="viewport"'
             .' content="width=device-width, user-scalable=no" />'
-            .'<link rel="stylesheet" type="text/css"'
-            ." href=\"css/common/compressed.css?$commonCssRevision\" />"
-            .'<link rel="stylesheet" type="text/css"'
-            .' href="css/index/compressed.css" />'
+            .compressed_css_link('common')
+            .compressed_css_link('index')
             .'<link rel="icon" type="image/png" href="zvini-icons/16.png" />'
             .'<link rel="icon" type="image/png" sizes="32x32"'
             .' href="zvini-icons/32.png" />'

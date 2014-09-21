@@ -16,8 +16,8 @@ $content =
         .' the default visibility of the items?', 'Yes, restore defaults',
         'submit.php', '..');
 
+include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";
 echo_page($user, 'Restore Defaults?', $content, $base, [
-    'head' => '<link rel="stylesheet" type="text/css"'
-        ." href=\"{$base}css/confirmDialog/compressed.css\" />",
+    'head' => compressed_css_link('confirmDialog', $base),
 ]);
