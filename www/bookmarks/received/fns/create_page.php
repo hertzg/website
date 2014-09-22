@@ -1,6 +1,6 @@
 <?php
 
-function create_page ($mysqli, $user) {
+function create_page ($mysqli, $user, $base = '') {
 
     $fnsDir = __DIR__.'/../../../fns';
     $id_users = $user->id_users;
@@ -31,7 +31,7 @@ function create_page ($mysqli, $user) {
             $title = htmlspecialchars($title);
 
             $description = create_sender_description($receivedBookmark);
-            $href = "view/?id=$receivedBookmark->id";
+            $href = "{$base}view/?id=$receivedBookmark->id";
             $items[] = Page\imageArrowLinkWithDescription($title,
                 $description, $href, 'bookmark');
 
@@ -48,7 +48,10 @@ function create_page ($mysqli, $user) {
 
     include_once "$fnsDir/Page/imageArrowLink.php";
     $title = 'Delete All Bookmarks';
-    $deleteAllLink = Page\imageArrowLink($title, 'delete-all/', 'trash-bin');
+    $deleteAllLink =
+        '<div id="deleteAllLink">'
+            .Page\imageArrowLink($title, "{$base}delete-all/", 'trash-bin')
+        .'</div>';
 
     include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/create_panel.php";
@@ -58,14 +61,14 @@ function create_page ($mysqli, $user) {
         [
             [
                 'title' => 'Bookmarks',
-                'href' => '..',
+                'href' => "{$base}..",
             ],
         ],
         'Received',
         Page\sessionMessages('bookmarks/received/messages')
         .join('<div class="hr"></div>', $items)
         .create_panel('Options', $deleteAllLink),
-        create_new_item_button('Bookmark', '../')
+        create_new_item_button('Bookmark', "{$base}../")
     );
 
 }
