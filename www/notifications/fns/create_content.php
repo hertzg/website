@@ -1,6 +1,6 @@
 <?php
 
-function create_content ($items, $options) {
+function create_content ($items, $options, $base) {
     $fnsDir = __DIR__.'/../../fns';
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Page/sessionErrors.php";
@@ -10,7 +10,7 @@ function create_content ($items, $options) {
         [
             [
                 'title' => 'Home',
-                'href' => '../home/',
+                'href' => "$base../home/",
             ],
         ],
         'Notifications',

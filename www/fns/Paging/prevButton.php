@@ -8,7 +8,8 @@ function prevButton ($offset, $limit,
     $prevOffset = max(0, $offset - $limit);
     if ($prevOffset) $params['offset'] = $prevOffset;
 
-    $href = "$base?".htmlspecialchars(http_build_query($params));
+    if ($params) $href = "$base?".htmlspecialchars(http_build_query($params));
+    else $href = './';
 
     $html = '';
     if ($offset) {
