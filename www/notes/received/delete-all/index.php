@@ -5,26 +5,20 @@ $user = require_received_notes('../');
 
 unset($_SESSION['notes/received/messages']);
 
-include_once '../../../fns/Page/tabs.php';
-include_once '../../../fns/Page/imageLink.php';
-include_once '../../../fns/Page/text.php';
-include_once '../../../fns/Page/twoColumns.php';
-$content = Page\tabs(
-    [
-        [
-            'title' => 'Notes',
-            'href' => '../..',
-        ],
-    ],
-    'Received',
-    Page\text('Are you sure you want to delete all the received notes?'
-        .' They will be moved to Trash.')
-    .'<div class="hr"></div>'
-    .Page\twoColumns(
-        Page\imageLink('Yes, delete all notes', 'submit.php', 'yes'),
-        Page\imageLink('No, return back', '..', 'no')
-    )
-);
+$base = '../../../';
+$fnsDir = '../../../fns';
 
-include_once '../../../fns/echo_page.php';
-echo_page($user, 'Delete All Received Notes?', $content, '../../../');
+include_once '../fns/create_page.php';
+include_once "$fnsDir/Page/confirmDialog.php";
+include_once '../../../lib/mysqli.php';
+$content =
+    create_page($mysqli, $user, '../')
+    .Page\confirmDialog('Are you sure you want to delete'
+        .' all the received notes? They will be moved to Trash.',
+        'Yes, delete all notes', 'submit.php', '..');
+
+include_once "$fnsDir/compressed_css_link.php";
+include_once "$fnsDir/echo_page.php";
+echo_page($user, 'Delete All Received Notes?', $content, $base, [
+    'head' => compressed_css_link('confirmDialog', $base),
+]);

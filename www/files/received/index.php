@@ -7,7 +7,7 @@ $id_users = $user->id_users;
 $base = '../../';
 $fnsDir = '../../fns';
 
-include_once '../../fns/Users/Folders/Received/clearNumberNew.php';
+include_once "$fnsDir/Users/Folders/Received/clearNumberNew.php";
 include_once '../../lib/mysqli.php';
 Users\Folders\Received\clearNumberNew($mysqli, $id_users);
 
