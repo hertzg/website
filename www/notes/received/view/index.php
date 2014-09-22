@@ -13,14 +13,11 @@ unset(
     $_SESSION['notes/received/messages']
 );
 
-include_once "$fnsDir/get_revision.php";
-$confirmDialogJsRevision = get_revision('js/confirmDialog.js');
-
 include_once '../fns/ViewPage/create.php';
+include_once "$fnsDir/compressed_js_script.php";
 $content =
     ViewPage\create($receivedNote)
-    .'<script type="text/javascript" defer="defer"'
-    ." src=\"{$base}js/confirmDialog.js?$confirmDialogJsRevision\"></script>"
+    .compressed_js_script('confirmDialog', $base)
     .'<script type="text/javascript">'
         .'var deleteHref = '.json_encode("../delete/submit.php?id=$id")
     .'</script>'

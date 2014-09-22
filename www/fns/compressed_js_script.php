@@ -5,5 +5,5 @@ function compressed_js_script ($name, $base = '') {
     include_once __DIR__.'/get_revision.php';
     $revision = get_revision($fullName);
     return '<script type="text/javascript" defer="defer"'
-        ." src=\"$base$fullName?$revision\" />";
+        ." src=\"$base$fullName?$revision\"></script>";
 }

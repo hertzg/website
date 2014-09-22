@@ -8,18 +8,15 @@ $user = require_user($base);
 
 unset($_SESSION['home/messages']);
 
-include_once "$fnsDir/get_revision.php";
-$confirmDialogJsRevision = get_revision('js/confirmDialog.js');
-
 include_once 'fns/create_page.php';
 include_once '../lib/mysqli.php';
 $content = create_page($mysqli, $user);
 
 if ($user->num_deleted_items) {
 
+    include_once "$fnsDir/compressed_js_script.php";
     $content .=
-        '<script type="text/javascript" defer="defer"'
-        ." src=\"{$base}js/confirmDialog.js?$confirmDialogJsRevision\">"
+        compressed_js_script('confirmDialog', $base)
         .'</script>'
         .'<script type="text/javascript" defer="defer" src="index.js?1">'
         .'</script>';

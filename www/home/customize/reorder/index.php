@@ -8,14 +8,11 @@ $user = require_user($base);
 
 unset($_SESSION['home/customize/messages']);
 
-include_once "$fnsDir/get_revision.php";
-$confirmDialogJsRevision = get_revision('js/confirmDialog.js');
-
 include_once 'fns/create_page.php';
+include_once "$fnsDir/compressed_js_script.php";
 $content =
     create_page($user)
-    .'<script type="text/javascript" defer="defer"'
-    ." src=\"{$base}js/confirmDialog.js?$confirmDialogJsRevision\"></script>"
+    .compressed_js_script('confirmDialog', $base)
     .'<script type="text/javascript" defer="defer" src="index.js"></script>';
 
 include_once "$fnsDir/compressed_css_link.php";

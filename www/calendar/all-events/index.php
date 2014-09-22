@@ -6,15 +6,12 @@ $fnsDir = '../../fns';
 include_once "$fnsDir/require_user.php";
 $user = require_user($base);
 
-include_once "$fnsDir/get_revision.php";
-$confirmDialogJsRevision = get_revision('js/confirmDialog.js');
-
 include_once 'fns/create_page.php';
+include_once "$fnsDir/compressed_js_script.php";
 include_once '../../lib/mysqli.php';
 $content =
     create_page($mysqli, $user)
-    .'<script type="text/javascript" defer="defer"'
-    ." src=\"{$base}js/confirmDialog.js?$confirmDialogJsRevision\"></script>"
+    .compressed_js_script('confirmDialog', $base)
     .'<script type="text/javascript" defer="defer" src="index.js"></script>';
 
 unset(

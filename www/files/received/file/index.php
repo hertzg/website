@@ -13,14 +13,11 @@ unset(
     $_SESSION['files/received/messages']
 );
 
-include_once "$fnsDir/get_revision.php";
-$confirmDialogJsRevision = get_revision('js/confirmDialog.js');
-
 include_once 'fns/create_page.php';
+include_once "$fnsDir/compressed_js_script.php";
 $content =
     create_page($receivedFile)
-    .'<script type="text/javascript" defer="defer"'
-    ." src=\"{$base}js/confirmDialog.js?$confirmDialogJsRevision\"></script>"
+    .compressed_js_script('confirmDialog', $base)
     .'<script type="text/javascript">'
         .'var deleteHref = '.json_encode("delete/submit.php?id=$id")
     .'</script>'

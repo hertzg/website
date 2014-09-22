@@ -7,14 +7,11 @@ include_once 'fns/create_page.php';
 include_once '../../lib/mysqli.php';
 $content = create_page($mysqli, $user);
 
-include_once "$fnsDir/get_revision.php";
-$confirmDialogJsRevision = get_revision('js/confirmDialog.js');
-
 if ($user->num_tokens) {
 
+    include_once "$fnsDir/compressed_js_script.php";
     $content .=
-        '<script type="text/javascript" defer="defer"'
-        ." src=\"{$base}js/confirmDialog.js?$confirmDialogJsRevision\">"
+        compressed_js_script('confirmDialog', $base)
         .'</script>'
         .'<script type="text/javascript" defer="defer" src="index.js">'
         .'</script>';
