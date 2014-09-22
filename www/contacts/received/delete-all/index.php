@@ -5,26 +5,20 @@ $user = require_received_contacts('../');
 
 unset($_SESSION['contacts/received/messages']);
 
-include_once '../../../fns/Page/tabs.php';
-include_once '../../../fns/Page/imageLink.php';
-include_once '../../../fns/Page/text.php';
-include_once '../../../fns/Page/twoColumns.php';
-$content = Page\tabs(
-    [
-        [
-            'title' => 'Contacts',
-            'href' => '../..',
-        ],
-    ],
-    'Received',
-    Page\text('Are you sure you want to delete all the received contacts?'
-        .' They will be moved to Trash.')
-    .'<div class="hr"></div>'
-    .Page\twoColumns(
-        Page\imageLink('Yes, delete all contacts', 'submit.php', 'yes'),
-        Page\imageLink('No, return back', '..', 'no')
-    )
-);
+$base = '../../../';
+$fnsDir = '../../../fns';
 
-include_once '../../../fns/echo_page.php';
-echo_page($user, 'Delete All Received Contacts?', $content, '../../../');
+include_once '../fns/create_page.php';
+include_once "$fnsDir/Page/confirmDialog.php";
+include_once '../../../lib/mysqli.php';
+$content =
+    create_page($mysqli, $user, '../')
+    .Page\confirmDialog('Are you sure you want to delete'
+        .' all the received contacts? They will be moved to Trash.',
+        'Yes, delete all contacts', 'submit.php', '..');
+
+include_once "$fnsDir/compressed_css_link.php";
+include_once "$fnsDir/echo_page.php";
+echo_page($user, 'Delete All Received Contacts?', $content, $base, [
+    'head' => compressed_css_link('confirmDialog', $base),
+]);
