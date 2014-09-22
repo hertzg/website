@@ -1,10 +1,8 @@
 <?php
 
-function create_view_page ($mysqli, &$user, &$id) {
+function create_view_page ($schedule) {
 
-    include_once __DIR__.'/require_schedule.php';
-    list($schedule, $id, $user) = require_schedule($mysqli);
-
+    $id = $schedule->id;
     $fnsDir = __DIR__.'/../../fns';
 
     include_once "$fnsDir/create_text_item.php";
