@@ -1,8 +1,8 @@
 <?php
 
-include_once '../fns/require_schedule.php';
+include_once '../fns/create_view_page.php';
 include_once '../../lib/mysqli.php';
-list($schedule, $id, $user) = require_schedule($mysqli);
+$content = create_view_page($mysqli, $user, $id);
 
 $base = '../../';
 $fnsDir = '../../fns';
@@ -20,10 +20,8 @@ $itemQuery = ItemList\itemQuery($id);
 include_once "$fnsDir/get_revision.php";
 $confirmDialogJsRevision = get_revision('js/confirmDialog.js');
 
-include_once '../fns/create_view_page.php';
-$content =
-    create_view_page($schedule)
-    .'<script type="text/javascript" defer="defer"'
+$content .=
+    '<script type="text/javascript" defer="defer"'
     ." src=\"{$base}js/confirmDialog.js?$confirmDialogJsRevision\"></script>"
     .'<script type="text/javascript">'
         .'var deleteHref = '.json_encode("../delete/submit.php$itemQuery")
