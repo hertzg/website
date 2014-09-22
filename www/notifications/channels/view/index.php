@@ -4,6 +4,9 @@ include_once '../fns/require_channel.php';
 include_once '../../../lib/mysqli.php';
 list($channel, $id, $user) = require_channel($mysqli);
 
+$base = '../../../';
+$fnsDir = '../../../fns';
+
 unset(
     $_SESSION['notifications/channels/edit/errors'],
     $_SESSION['notifications/channels/edit/values'],
@@ -13,34 +16,18 @@ unset(
     $_SESSION['notifications/channels/users/messages']
 );
 
-include_once 'fns/create_options_panel.php';
-include_once '../../../fns/Form/label.php';
-include_once '../../../fns/Form/textfield.php';
-include_once '../../../fns/Page/infoText.php';
-include_once '../../../fns/Page/newItemButton.php';
-include_once '../../../fns/Page/sessionMessages.php';
-include_once '../../../fns/Page/tabs.php';
+include_once '../fns/ViewPage/create.php';
+include_once "$fnsDir/compressed_js_script.php";
 $content =
-    Page\tabs(
-        [
-            [
-                'title' => 'Channels',
-                'href' => '..',
-            ],
-        ],
-        "Channel #$id",
-        Page\sessionMessages('notifications/channels/view/messages')
-        .Form\label('Channel name', htmlspecialchars($channel->channel_name))
-        .Page\infoText(
-            '<div>'.($channel->public ? 'Public' : 'Private').' channel.</div>'
-            .'<div>'
-                .'You are '.($channel->receive_notifications ? '' : 'not ')
-                .' receiving notifications from this channel.'
-            .'</div>'
-        ),
-        Page\newItemButton('../new/', 'Channel')
-    )
-    .create_options_panel($channel);
+    ViewPage\create($channel)
+    .compressed_js_script('confirmDialog', $base)
+    .'<script type="text/javascript">'
+        .'var deleteHref = '.json_encode("../delete/submit.php?id=$id")
+    .'</script>'
+    .'<script type="text/javascript" src="index.js"></script>';
 
-include_once '../../../fns/echo_page.php';
-echo_page($user, "Channel #$id", $content, '../../../');
+include_once "$fnsDir/compressed_css_link.php";
+include_once "$fnsDir/echo_page.php";
+echo_page($user, "Channel #$id", $content, $base, [
+    'head' => compressed_css_link('confirmDialog', $base),
+]);
