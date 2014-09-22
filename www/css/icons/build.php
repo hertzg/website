@@ -1,12 +1,12 @@
 #!/usr/bin/php
 <?php
 
-function render (&$content, $file, array $names) {
+function render (&$content, $file, $names) {
     $content .=
         join(',', array_map(function ($name) {
             return ".icon.$name";
         }, $names))
-        ."{background-image:url(images/icons/$file)}";
+        ."{background-image:url(../../images/icons/$file)}";
     $x = 0;
     foreach ($names as $name) {
         $content .= ".icon.$name{background-position:${x}px 0}";
@@ -14,7 +14,8 @@ function render (&$content, $file, array $names) {
     }
 }
 
-include_once 'lib/require-cli.php';
+chdir(__DIR__);
+include_once '../../scripts/lib/require-cli.php';
 
 $names = ['api-key', 'create-api-key', 'edit-api-key', 'api-keys'];
 render($content, 'api-key.svg?1', $names);
@@ -94,4 +95,4 @@ render($content, 'trash.svg', $names);
 $names = ['edit-contact-photo', 'clear-contact-photo'];
 render($content, 'contact-photo.svg', $names);
 
-file_put_contents(__DIR__.'/../icons.compressed.css', $content);
+file_put_contents(__DIR__.'/compressed.css', $content);

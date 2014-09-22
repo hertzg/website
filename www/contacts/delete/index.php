@@ -20,9 +20,6 @@ $content =
         .' It will be moved to Trash.', 'Yes, delete contact',
         "submit.php$escapedItemQuery", "../view/$escapedItemQuery");
 
-include_once "$fnsDir/get_revision.php";
-$cssRevision = get_revision('css/contact/compressed.css');
-
 include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";
 echo_page($user, "Delete Contact #$id?", $content, $base, [
