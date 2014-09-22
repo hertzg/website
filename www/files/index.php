@@ -2,7 +2,7 @@
 
 include_once 'fns/require_optional_folder.php';
 include_once '../lib/mysqli.php';
-list($user, $folder, $id_folders) = require_optional_folder($mysqli, './');
+list($user, $folder, $id) = require_optional_folder($mysqli, './');
 
 $base = '../';
 $fnsDir = '../fns';
@@ -10,12 +10,13 @@ $fnsDir = '../fns';
 include_once 'fns/create_page.php';
 $content = create_page($mysqli, $user, $folder);
 
-if ($id_folders) {
+if ($id) {
+    $deleteHref = "delete-folder/submit.php?id_folders=$id";
     include_once "$fnsDir/compressed_js_script.php";
     $content .=
         compressed_js_script('confirmDialog', $base)
         .'<script type="text/javascript">'
-            .'var deleteHref = '.json_encode("delete-folder/submit.php?id_folders=$id_folders")
+            .'var deleteHref = '.json_encode($deleteHref)
         .'</script>'
         .'<script type="text/javascript" defer="defer" src="index.js"></script>';
 }

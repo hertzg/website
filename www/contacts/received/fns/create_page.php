@@ -11,7 +11,8 @@ function create_page ($mysqli, $user, $base = '') {
 
     if ($all) {
         include_once "$fnsDir/ReceivedContacts/indexOnReceiver.php";
-        $receivedContacts = ReceivedContacts\indexOnReceiver($mysqli, $id_users);
+        $receivedContacts = ReceivedContacts\indexOnReceiver(
+            $mysqli, $id_users);
     } else {
         include_once "$fnsDir/ReceivedContacts/indexNotArchivedOnReceiver.php";
         $receivedContacts = ReceivedContacts\indexNotArchivedOnReceiver(

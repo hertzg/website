@@ -44,8 +44,9 @@ if ($notifications) {
     $escapedPageQuery = ItemList\escapedPageQuery();
 
     include_once '../fns/Page/imageArrowLink.php';
+    $title = 'Delete All Notifications';
     $href = "delete-all/$escapedPageQuery";
-    $options[] = Page\imageArrowLink('Delete All Notifications', $href, 'trash-bin');
+    $options[] = Page\imageArrowLink($title, $href, 'trash-bin');
 
     include_once 'fns/render_prev_button.php';
     render_prev_button($offset, $limit, $total, $items);
