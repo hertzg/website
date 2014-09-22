@@ -32,6 +32,8 @@ function echo_page ($user, $title, $content, $base, array $options = []) {
     }
 
     $topLinkHref = $base === '' ? './' : $base;
+
+    include_once __DIR__.'/compressed_js_script.php';
     $body =
         '<div id="tbar">'
             ."<a class=\"topLink logoLink\" href=\"$topLinkHref\">"
@@ -54,10 +56,7 @@ function echo_page ($user, $title, $content, $base, array $options = []) {
             ."var timezone = $timezone\n"
             ."var base = ".json_encode($base)
         .'</script>'
-        .'<script type="text/javascript" async="async"'
-        ." src=\"{$base}js/battery.js?8\"></script>"
-        .'<script type="text/javascript" async="async"'
-        ." src=\"{$base}js/clock.js?8\"></script>";
+        .compressed_js_script('batteryAndClock', $base);
 
     include_once __DIR__.'/../fns/echo_html.php';
     echo_html($title, $head, $body, $theme, $base);
