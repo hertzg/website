@@ -33,4 +33,5 @@ $content = Page\tabs(
 );
 
 include_once '../../../fns/echo_page.php';
-echo_page($user, "Edit Received Bookmark #$id", $content, '../../../');
+$title = "Edit and Import Received Bookmark #$id";
+echo_page($user, $title, $content, '../../../');

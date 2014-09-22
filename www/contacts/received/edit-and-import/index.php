@@ -42,4 +42,5 @@ include_once 'fns/create_content.php';
 $content = create_content($id, $values);
 
 include_once '../../../fns/echo_page.php';
-echo_page($user, "Edit Received Contact #$id", $content, '../../../');
+$title = "Edit and Import Received Contact #$id";
+echo_page($user, $title, $content, '../../../');

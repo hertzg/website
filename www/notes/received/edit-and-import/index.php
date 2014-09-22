@@ -38,4 +38,5 @@ $content = Page\tabs(
 );
 
 include_once '../../../fns/echo_page.php';
-echo_page($user, "Edit Received Note #$id", $content, $base);
+$title = "Edit and Import Received Note #$id";
+echo_page($user, $title, $content, $base);

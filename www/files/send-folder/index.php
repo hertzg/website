@@ -79,4 +79,4 @@ $content = Page\tabs(
 );
 
 include_once '../../fns/echo_page.php';
-echo_page($user, "Send File #$id", $content, '../../');
+echo_page($user, "Send Folder #$id", $content, '../../');

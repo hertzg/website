@@ -39,4 +39,5 @@ $content = Page\tabs(
 );
 
 include_once "$fnsDir/echo_page.php";
-echo_page($user, "Delete Received Folder #$id", $content, '../../../../');
+$title = "Rename and Import Received Folder #$id";
+echo_page($user, $title, $content, '../../../../');
