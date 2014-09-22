@@ -22,7 +22,7 @@ $content =
     .'<script type="text/javascript" defer="defer"'
     ." src=\"{$base}js/confirmDialog.js?$confirmDialogJsRevision\"></script>"
     .'<script type="text/javascript">'
-        .'var deleteHref = '.json_encode("../delete/submit.php?id=$id")
+        .'var deleteHref = '.json_encode("delete/submit.php?id=$id")
     .'</script>'
     .'<script type="text/javascript" defer="defer" src="index.js"></script>';
 

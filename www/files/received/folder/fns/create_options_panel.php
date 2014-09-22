@@ -1,32 +1,35 @@
 <?php
 
-function create_options_panel ($receivedFolder) {
+function create_options_panel ($receivedFolder, $base) {
 
-    $fnsDir = '../../../fns';
+    $fnsDir = __DIR__.'/../../../../fns';
     $queryString = "?id=$receivedFolder->id";
 
     include_once "$fnsDir/Page/imageLink.php";
-    $href = "submit-import.php$queryString";
+    $href = "{$base}submit-import.php$queryString";
     $importLink = Page\imageLink('Import', $href, 'import-folder');
 
     include_once "$fnsDir/Page/imageArrowLink.php";
     $title = 'Rename and Import';
-    $href = "rename-and-import/$queryString";
+    $href = "{$base}rename-and-import/$queryString";
     $renameAndImportLink = Page\imageArrowLink($title, $href, 'import-folder');
 
     if ($receivedFolder->archived) {
         $title = 'Unarchive';
-        $href = "submit-unarchive.php$queryString";
+        $href = "{$base}submit-unarchive.php$queryString";
         $icon = 'unarchive';
     } else {
         $title = 'Archive';
-        $href = "submit-archive.php$queryString";
+        $href = "{$base}submit-archive.php$queryString";
         $icon = 'archive';
     }
     $archiveLink = Page\imageLink($title, $href, $icon);
 
-    $href = "delete/$queryString";
-    $deleteLink = Page\imageArrowLink('Delete', $href, 'trash-bin');
+    $href = "{$base}delete/$queryString";
+    $deleteLink =
+        '<div id="deleteLink">'
+            .Page\imageArrowLink('Delete', $href, 'trash-bin')
+        .'</div>';
 
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Page/staticTwoColumns.php";
