@@ -1,52 +1,29 @@
 <?php
 
 $base = '../../';
+$fnsDir = '../../fns';
 
-include_once '../../fns/require_user.php';
+include_once "$fnsDir/require_user.php";
 $user = require_user($base);
 
-if (!$user->num_events) {
-    include_once '../../fns/redirect.php';
-    redirect('..');
-}
+include_once "$fnsDir/get_revision.php";
+$confirmDialogJsRevision = get_revision('js/confirmDialog.js');
 
-$items = [];
-
-include_once '../../fns/Events/indexOnUser.php';
+include_once 'fns/create_page.php';
 include_once '../../lib/mysqli.php';
-$events = Events\indexOnUser($mysqli, $user->id_users);
-
-include_once '../../fns/Page/imageArrowLinkWithDescription.php';
-foreach ($events as $event) {
-    $description = date('F d, Y', $event->event_time);
-    $items[] = Page\imageArrowLinkWithDescription(
-        htmlspecialchars($event->text),
-        $description, "../view-event/?id=$event->id", 'event');
-}
+$content =
+    create_page($mysqli, $user)
+    .'<script type="text/javascript" defer="defer"'
+    ." src=\"{$base}js/confirmDialog.js?$confirmDialogJsRevision\"></script>"
+    .'<script type="text/javascript" defer="defer" src="index.js"></script>';
 
 unset(
     $_SESSION['calendar/errors'],
     $_SESSION['calendar/messages']
 );
 
-include_once '../../fns/create_panel.php';
-include_once '../../fns/Page/imageArrowLink.php';
-include_once '../../fns/Page/tabs.php';
-$content =
-    Page\tabs(
-        [
-            [
-                'title' => 'Calendar',
-                'href' => '..',
-            ],
-        ],
-        'All Events',
-        join('<div class="hr"></div>', $items)
-    )
-    .create_panel(
-        'Options',
-        Page\imageArrowLink('Delete All Events', 'delete-all/', 'trash-bin')
-    );
-
-include_once '../../fns/echo_page.php';
-echo_page($user, 'All Events', $content, $base);
+include_once "$fnsDir/compressed_css_link.php";
+include_once "$fnsDir/echo_page.php";
+echo_page($user, 'All Events', $content, $base, [
+    'head' => compressed_css_link('confirmDialog', $base),
+]);
