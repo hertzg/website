@@ -1,8 +1,8 @@
 <?php
 
-include_once '../fns/create_view_page.php';
+include_once '../fns/require_event.php';
 include_once '../../lib/mysqli.php';
-$content = create_view_page($mysqli, $user, $id);
+list($event, $id, $user) = require_event($mysqli);
 
 $base = '../../';
 $fnsDir = '../../fns';
@@ -17,8 +17,10 @@ unset(
 include_once "$fnsDir/get_revision.php";
 $confirmDialogJsRevision = get_revision('js/confirmDialog.js');
 
-$content .=
-    '<script type="text/javascript" defer="defer"'
+include_once '../fns/create_view_page.php';
+$content =
+    create_view_page($event)
+    .'<script type="text/javascript" defer="defer"'
     ." src=\"{$base}js/confirmDialog.js?$confirmDialogJsRevision\"></script>"
     .'<script type="text/javascript">'
         .'var deleteHref = '.json_encode("../delete/submit.php?id=$id")

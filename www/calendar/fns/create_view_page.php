@@ -1,10 +1,8 @@
 <?php
 
-function create_view_page ($mysqli, &$user, &$id) {
+function create_view_page ($event) {
 
-    include_once __DIR__.'/require_event.php';
-    list($event, $id, $user) = require_event($mysqli);
-
+    $id = $event->id;
     $fnsDir = __DIR__.'/../../fns';
 
     $insert_time = $event->insert_time;
