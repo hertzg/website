@@ -10,8 +10,11 @@ unset(
     $_SESSION['notifications/messages']
 );
 
-include_once '../../fns/Page/tabs.php';
+include_once '../../fns/ItemList/escapedPageQuery.php';
+$escapedPageQuery = ItemList\escapedPageQuery();
+
 include_once '../../fns/Page/imageLink.php';
+include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Page/text.php';
 include_once '../../fns/Page/twoColumns.php';
 $content = Page\tabs(
@@ -26,7 +29,7 @@ $content = Page\tabs(
     .'<div class="hr"></div>'
     .Page\twoColumns(
         Page\imageLink('Yes, delete all notifications', 'submit.php', 'yes'),
-        Page\imageLink('No, return back', '..', 'no')
+        Page\imageLink('No, return back', "../$escapedPageQuery", 'no')
     )
 );
 
