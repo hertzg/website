@@ -1,11 +1,8 @@
 <?php
 
-function create_page ($mysqli, &$user, $base = '') {
+function create_page ($mysqli, $user, $base = '') {
 
     $fnsDir = __DIR__.'/../../fns';
-
-    include_once "$fnsDir/require_user.php";
-    $user = require_user("$base../");
 
     include_once "$fnsDir/DeletedItems/expireDays.php";
     $expireDays = DeletedItems\expireDays();
