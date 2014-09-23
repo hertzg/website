@@ -1,4 +1,4 @@
-function confirmDialog (questionText, yesText, yesHref, noListener) {
+function confirmDialog (questionHtml, yesText, yesHref, noListener) {
 
     function hide () {
         body.removeChild(element)
@@ -42,7 +42,7 @@ function confirmDialog (questionText, yesText, yesHref, noListener) {
 
     var textElement = document.createElement('div')
     textElement.className = 'page-text'
-    textElement.appendChild(document.createTextNode(questionText))
+    textElement.innerHTML = questionHtml
 
     var yesLink = imageLink(yesText, 'yes')
     yesLink.href = yesHref

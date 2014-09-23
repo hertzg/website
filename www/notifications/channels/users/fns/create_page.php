@@ -13,9 +13,15 @@ function create_page ($mysqli, $id, $base = '') {
     if ($subscribedChannels) {
         include_once "$fnsDir/Page/removableItem.php";
         foreach ($subscribedChannels as $subscribedChannel) {
-            $title = htmlspecialchars($subscribedChannel->subscriber_username);
-            $href = "{$base}delete/?id=$subscribedChannel->id";
-            $items[] = Page\removableItem($title, $href, 'user');
+            $itemId = $subscribedChannel->id;
+            $username = $subscribedChannel->subscriber_username;
+            $escapedUsername = htmlspecialchars($username);
+            $href = "{$base}delete/?id=$itemId";
+            $items[] =
+                "<div class=\"deleteLinkWrapper\" data-id=\"$itemId\""
+                ." data-username=\"$escapedUsername\">"
+                    .Page\removableItem($escapedUsername, $href, 'user')
+                .'</div>';
         }
     } else {
         include_once "$fnsDir/Page/info.php";

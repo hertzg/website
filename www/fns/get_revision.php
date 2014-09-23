@@ -7,7 +7,7 @@ function get_revision ($key) {
         'css/contact/compressed.css' => 1,
         'css/icons/compressed.css' => 57,
         'js/batteryAndClock/compressed.js' => 1,
-        'js/confirmDialog/compressed.js' => 2,
+        'js/confirmDialog/compressed.js' => 3,
     ];
     return $revisions[$key];
 }
