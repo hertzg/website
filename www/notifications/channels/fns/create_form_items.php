@@ -1,6 +1,6 @@
 <?php
 
-function create_form_items ($base, $values) {
+function create_form_items ($values) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
@@ -25,14 +25,14 @@ function create_form_items ($base, $values) {
             "Minimum $minLength maximum $maxLength characters.",
         ])
         .'<div class="hr"></div>'
-        .Form\checkbox($base, 'public', 'Mark as Public', $values['public'])
+        .Form\checkbox('public', 'Mark as Public', $values['public'])
         .Form\notes([
             'If checked this will allow other users to subscribe'
             ." to this channel. Otherwise you'll have to maintain the list"
             .' of users who will receive notifications posted by you.',
         ])
         .'<div class="hr"></div>'
-        .Form\checkbox($base, 'receive_notifications',
+        .Form\checkbox('receive_notifications',
             'Receive Notifications', $values['receive_notifications'])
         .Form\notes([
             'If checked you will also receive notifications posted by you.'

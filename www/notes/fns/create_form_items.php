@@ -1,6 +1,6 @@
 <?php
 
-function create_form_items ($base, $values) {
+function create_form_items ($values) {
 
     $fnsDir = __DIR__.'/../../fns';
 
@@ -23,7 +23,6 @@ function create_form_items ($base, $values) {
             'maxlength' => $maxLengths['tags'],
         ])
         .'<div class="hr"></div>'
-        .Form\checkbox($base, 'encrypt',
-            'Encrypt in Listings', $values['encrypt']);
+        .Form\checkbox('encrypt', 'Encrypt in Listings', $values['encrypt']);
 
 }

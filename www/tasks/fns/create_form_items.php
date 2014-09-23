@@ -1,6 +1,6 @@
 <?php
 
-function create_form_items ($base, $values) {
+function create_form_items ($values) {
 
     $fnsDir = __DIR__.'/../../fns';
 
@@ -37,7 +37,7 @@ function create_form_items ($base, $values) {
             'maxlength' => $maxLengths['tags'],
         ])
         .'<div class="hr"></div>'
-        .Form\checkbox($base, 'top_priority',
+        .Form\checkbox('top_priority',
             'Mark as Top Priority', $values['top_priority']);
 
 }

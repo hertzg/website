@@ -22,7 +22,7 @@ function create_content ($id, $values) {
         'Edit',
         Page\sessionErrors('tasks/edit/errors')
         .'<form action="submit.php" method="post">'
-            .create_form_items('../../', $values)
+            .create_form_items($values)
             .'<div class="hr"></div>'
             .Page\staticTwoColumns(
                 Form\button('Save Changes'),

@@ -2,7 +2,7 @@
 
 namespace Form;
 
-function checkboxItem ($base, $name, $text, $checked) {
+function checkboxItem ($name, $text, $checked) {
     return
         '<div class="form-checkbox item transformable">'
             .'<label>'
@@ -14,8 +14,5 @@ function checkboxItem ($base, $name, $text, $checked) {
                 .'</div>'
                 .$text
             .'</label>'
-        .'</div>'
-        .'<script type="text/javascript" async="async"'
-        ." src=\"{$base}js/transform-form-checkboxes.js\">"
-        .'</script>';
+        .'</div>';
 }

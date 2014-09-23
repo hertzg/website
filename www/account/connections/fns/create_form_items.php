@@ -1,6 +1,6 @@
 <?php
 
-function create_form_items ($base, $values) {
+function create_form_items ($values) {
 
     $fnsDir = __DIR__.'/../../../fns';
     include_once "$fnsDir/Form/textfield.php";
@@ -15,7 +15,7 @@ function create_form_items ($base, $values) {
     ];
 
     include_once __DIR__.'/render_checkbox_items.php';
-    render_checkbox_items($base, $values, $items);
+    render_checkbox_items($values, $items);
 
     return join('<div class="hr"></div>', $items);
 

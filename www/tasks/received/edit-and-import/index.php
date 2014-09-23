@@ -36,26 +36,29 @@ $maxLengths = Tasks\maxLengths();
 $base = '../../../';
 
 include_once '../../fns/create_form_items.php';
+include_once '../../../fns/compressed_js_script.php';
 include_once '../../../fns/Form/button.php';
 include_once '../../../fns/Form/hidden.php';
 include_once '../../../fns/Page/sessionErrors.php';
 include_once '../../../fns/Page/tabs.php';
-$content = Page\tabs(
-    [
+$content =
+    Page\tabs(
         [
-            'title' => "Received Task #$id",
-            'href' => "../view/?id=$id",
+            [
+                'title' => "Received Task #$id",
+                'href' => "../view/?id=$id",
+            ],
         ],
-    ],
-    'Edit and Import',
-    Page\sessionErrors('tasks/received/edit-and-import/errors')
-    .'<form action="submit.php" method="post">'
-        .create_form_items($base, $values)
-        .'<div class="hr"></div>'
-        .Form\button('Import Task')
-        .Form\hidden('id', $id)
-    .'</form>'
-);
+        'Edit and Import',
+        Page\sessionErrors('tasks/received/edit-and-import/errors')
+        .'<form action="submit.php" method="post">'
+            .create_form_items($values)
+            .'<div class="hr"></div>'
+            .Form\button('Import Task')
+            .Form\hidden('id', $id)
+        .'</form>'
+    )
+    .compressed_js_script('formCheckbox', $base);
 
 include_once '../../../fns/echo_page.php';
 $title = "Edit and Import Received Task #$id";

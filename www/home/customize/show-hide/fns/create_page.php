@@ -16,43 +16,45 @@ function create_page ($user, $base = '') {
         list($title, $propertyPart) = $item;
         $userProperty = "show_$propertyPart";
         $checked = $user->$userProperty;
-        $items[] = Form\checkboxItem("$base../../../",
-            $propertyPart, $title, $checked);
+        $items[] = Form\checkboxItem($propertyPart, $title, $checked);
     }
 
     include_once "$fnsDir/Form/button.php";
     $items[] = Form\button('Save Changes');
 
+    include_once "$fnsDir/compressed_js_script.php";
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Page/imageArrowLink.php";
     include_once "$fnsDir/Page/imageLinkWithDescription.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
     include_once "$fnsDir/Page/warnings.php";
-    return Page\tabs(
-        [
+    return
+        Page\tabs(
             [
-                'title' => 'Customize',
-                'href' => "$base..",
+                [
+                    'title' => 'Customize',
+                    'href' => "$base..",
+                ],
             ],
-        ],
-        'Show / Hide Items',
-        Page\sessionMessages('home/customize/show-hide/messages')
-        .Page\warnings(['Select items to see them on your home page.'])
-        ."<form action=\"{$base}submit.php\" method=\"post\">"
-            .join('<div class="hr"></div>', $items)
-        .'</form>'
-        .create_panel(
-            'Options',
-            Page\imageLinkWithDescription('Reorder Items',
-                'Change the order in which the items appear.',
-                "$base../reorder/", 'reorder')
-            .'<div class="hr"></div>'
-            .'<div id="restoreLink">'
-                .Page\imageArrowLink('Restore Defaults',
-                    "{$base}restore-defaults/", 'restore-defaults')
-            .'</div>'
+            'Show / Hide Items',
+            Page\sessionMessages('home/customize/show-hide/messages')
+            .Page\warnings(['Select items to see them on your home page.'])
+            ."<form action=\"{$base}submit.php\" method=\"post\">"
+                .join('<div class="hr"></div>', $items)
+            .'</form>'
+            .create_panel(
+                'Options',
+                Page\imageLinkWithDescription('Reorder Items',
+                    'Change the order in which the items appear.',
+                    "$base../reorder/", 'reorder')
+                .'<div class="hr"></div>'
+                .'<div id="restoreLink">'
+                    .Page\imageArrowLink('Restore Defaults',
+                        "{$base}restore-defaults/", 'restore-defaults')
+                .'</div>'
+            )
         )
-    );
+        .compressed_js_script('formCheckbox', "$base../../../");
 
 }

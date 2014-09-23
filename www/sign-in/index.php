@@ -39,6 +39,7 @@ unset(
 $username = $values['username'];
 
 include_once 'fns/create_options_panel.php';
+include_once '../fns/compressed_js_script.php';
 include_once '../fns/Form/button.php';
 include_once '../fns/Form/checkbox.php';
 include_once '../fns/Form/hidden.php';
@@ -48,32 +49,34 @@ include_once '../fns/Page/sessionErrors.php';
 include_once '../fns/Page/sessionMessages.php';
 include_once '../fns/Page/tabs.php';
 include_once '../fns/Username/maxLength.php';
-$content = Page\tabs(
-    [],
-    'Sign In',
-    Page\sessionMessages('sign-in/messages')
-    .Page\sessionErrors('sign-in/errors')
-    .'<form action="submit.php" method="post">'
-        .Form\textfield('username', 'Username', [
-            'value' => $username,
-            'maxlength' => Username\maxLength(),
-            'autofocus' => $username === '',
-            'required' => true,
-        ])
-        .'<div class="hr"></div>'
-        .Form\password('password', 'Password', [
-            'value' => $values['password'],
-            'autofocus' => $username !== '',
-            'required' => true,
-        ])
-        .'<div class="hr"></div>'
-        .Form\checkbox($base, 'remember', 'Stay signed in', $values['remember'])
-        .'<div class="hr"></div>'
-        .Form\button('Sign In')
-        .Form\hidden('return', $values['return'])
-    .'</form>'
-    .create_options_panel()
-);
+$content =
+    Page\tabs(
+        [],
+        'Sign In',
+        Page\sessionMessages('sign-in/messages')
+        .Page\sessionErrors('sign-in/errors')
+        .'<form action="submit.php" method="post">'
+            .Form\textfield('username', 'Username', [
+                'value' => $username,
+                'maxlength' => Username\maxLength(),
+                'autofocus' => $username === '',
+                'required' => true,
+            ])
+            .'<div class="hr"></div>'
+            .Form\password('password', 'Password', [
+                'value' => $values['password'],
+                'autofocus' => $username !== '',
+                'required' => true,
+            ])
+            .'<div class="hr"></div>'
+            .Form\checkbox('remember', 'Stay signed in', $values['remember'])
+            .'<div class="hr"></div>'
+            .Form\button('Sign In')
+            .Form\hidden('return', $values['return'])
+        .'</form>'
+        .create_options_panel()
+    )
+    .compressed_js_script('formCheckbox', $base);
 
 include_once '../fns/echo_guest_page.php';
 echo_guest_page('Sign In', $content, $base);
