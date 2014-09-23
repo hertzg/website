@@ -10,6 +10,8 @@ list($contact, $id, $user) = require_contact($mysqli, '../');
 include_once '../../../fns/Users/Contacts/Photo/delete.php';
 Users\Contacts\Photo\delete($mysqli, $contact);
 
+$_SESSION['contacts/view/messages'] = ['The photo has been deleted.'];
+
 include_once '../../../fns/redirect.php';
 include_once '../../../fns/ItemList/itemQuery.php';
 redirect('../../view/'.ItemList\itemQuery($id));

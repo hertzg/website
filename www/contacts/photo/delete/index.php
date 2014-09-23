@@ -7,6 +7,8 @@ list($contact, $id, $user) = require_contact($mysqli, '../');
 $base = '../../../';
 $fnsDir = '../../../fns';
 
+unset($_SESSION['contacts/view/messages']);
+
 include_once "$fnsDir/ItemList/escapedItemQuery.php";
 $escapedItemQuery = ItemList\escapedItemQuery($id);
 

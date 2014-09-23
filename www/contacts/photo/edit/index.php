@@ -4,6 +4,8 @@ include_once '../../fns/require_contact.php';
 include_once '../../../lib/mysqli.php';
 list($contact, $id, $user) = require_contact($mysqli, '../');
 
+unset($_SESSION['contacts/view/messages']);
+
 include_once '../../../fns/Form/button.php';
 include_once '../../../fns/Form/filefield.php';
 include_once '../../../fns/Form/hidden.php';
