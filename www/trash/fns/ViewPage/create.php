@@ -20,6 +20,7 @@ function create ($deletedItem, &$title, &$head) {
 
     $base = '../../';
     $head = '';
+    $scripts = '';
 
     if ($type == 'bookmark' || $type == 'receivedBookmark') {
         include_once __DIR__.'/renderBookmark.php';
@@ -27,7 +28,7 @@ function create ($deletedItem, &$title, &$head) {
     } elseif ($type == 'contact' || $type == 'receivedContact') {
 
         include_once __DIR__.'/renderContact.php';
-        renderContact($id, $data, $items, $infoText);
+        renderContact($id, $data, $items, $infoText, $scripts);
 
         include_once "$fnsDir/compressed_css_link.php";
         $head = compressed_css_link('contact', $base);
@@ -82,17 +83,19 @@ function create ($deletedItem, &$title, &$head) {
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/tabs.php";
-    return \Page\tabs(
-        [
+    return
+        \Page\tabs(
             [
-                'title' => 'Trash',
-                'href' => '..',
+                [
+                    'title' => 'Trash',
+                    'href' => '..',
+                ],
             ],
-        ],
-        $title,
-        $content
-        .\Page\infoText($infoText)
-        .create_panel("$typeName Options", $optionsContent)
-    );
+            $title,
+            $content
+            .\Page\infoText($infoText)
+            .create_panel("$typeName Options", $optionsContent)
+        )
+        .$scripts;
 
 }

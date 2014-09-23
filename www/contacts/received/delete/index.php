@@ -17,6 +17,11 @@ $content =
         .' It will be moved to Trash.', 'Yes, delete contact',
         "submit.php?id=$id", "../view/?id=$id");
 
+if ($receivedContact->timezone !== null) {
+    include_once "$fnsDir/compressed_js_script.php";
+    $content .= compressed_js_script('timezoneLabel', $base);
+}
+
 include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";
 echo_page($user, "Delete Received Contact #$id?", $content, $base, [

@@ -9,6 +9,7 @@ function get_revision ($key) {
         'js/batteryAndClock/compressed.js' => 1,
         'js/confirmDialog/compressed.js' => 4,
         'js/formCheckbox/compressed.js' => 1,
+        'js/timezoneLabel/compressed.js' => 1,
     ];
     return $revisions[$key];
 }

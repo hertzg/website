@@ -42,12 +42,10 @@ function create ($receivedContact) {
         $items[] = \Form\label('Zvini username', htmlspecialchars($username));
     }
 
-    $base = '../../../';
-
     $timezone = $receivedContact->timezone;
     if ($timezone !== null) {
         include_once "$fnsDir/Form/timezoneLabel.php";
-        $items[] = \Form\timezoneLabel($base, $timezone);
+        $items[] = \Form\timezoneLabel($timezone);
     }
 
     $tags = $receivedContact->tags;

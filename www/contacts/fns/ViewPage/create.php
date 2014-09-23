@@ -58,7 +58,7 @@ function create ($mysqli, $contact) {
     $timezone = $contact->timezone;
     if ($timezone !== null) {
         include_once "$fnsDir/Form/timezoneLabel.php";
-        $items[] = \Form\timezoneLabel('../../', $timezone);
+        $items[] = \Form\timezoneLabel($timezone);
     }
 
     $insert_time = $contact->insert_time;

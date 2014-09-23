@@ -2,7 +2,7 @@
 
 namespace Form;
 
-function timezoneLabel ($base, $timezone) {
+function timezoneLabel ($timezone) {
 
     $time = time();
     include_once __DIR__.'/label.php';
@@ -12,8 +12,6 @@ function timezoneLabel ($base, $timezone) {
         ." data-local_timezone=\"$timezone\">"
         .date('H:i, M j', $time + $timezone * 60).'</span>)';
 
-    return label('Timezone', $content)
-        .'<script type="text/javascript" async="async"'
-        ." src=\"{$base}js/timezone-label.js\"></script>";
+    return label('Timezone', $content);
 
 }

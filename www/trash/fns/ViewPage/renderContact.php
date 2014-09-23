@@ -2,7 +2,7 @@
 
 namespace ViewPage;
 
-function renderContact ($id, $contact, &$items, &$infoText) {
+function renderContact ($id, $contact, &$items, &$infoText, &$scripts) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
@@ -48,8 +48,12 @@ function renderContact ($id, $contact, &$items, &$infoText) {
 
     $timezone = $contact->timezone;
     if ($timezone !== null) {
+
         include_once "$fnsDir/Form/timezoneLabel.php";
-        $labelItems[] = \Form\timezoneLabel('../../', $timezone);
+        $labelItems[] = \Form\timezoneLabel($timezone);
+
+        $scripts .= compressed_js_script('timezoneLabel', '../../');
+
     }
 
     $tags = $contact->tags;
