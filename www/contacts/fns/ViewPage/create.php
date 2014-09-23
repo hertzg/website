@@ -2,7 +2,7 @@
 
 namespace ViewPage;
 
-function create ($mysqli, $contact) {
+function create ($mysqli, $contact, $base = '') {
 
     $id = $contact->id_contacts;
     $fnsDir = __DIR__.'/../../../fns';
@@ -48,7 +48,7 @@ function create ($mysqli, $contact) {
     render_phone_number('Phone 2', $contact->phone2, $items, $keyword);
 
     include_once __DIR__.'/../../fns/render_birthday.php';
-    render_birthday($contact->birthday_time, $items);
+    render_birthday($contact->birthday_time, $items, $base);
 
     $username = $contact->username;
     if ($username !== '') {
@@ -68,7 +68,7 @@ function create ($mysqli, $contact) {
     $tags = \ContactTags\indexOnContact($mysqli, $id);
     if ($tags) {
         include_once "$fnsDir/Page/tags.php";
-        $items[] = \Page\tags('../', $tags);
+        $items[] = \Page\tags("$base../", $tags);
     }
 
     include_once "$fnsDir/date_ago.php";
@@ -82,6 +82,6 @@ function create ($mysqli, $contact) {
     $infoText = \Page\infoText($text);
 
     include_once __DIR__.'/createContent.php';
-    return createContent($contact, $infoText, $items);
+    return createContent($contact, $infoText, $items, $base);
 
 }

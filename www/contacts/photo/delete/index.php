@@ -4,32 +4,24 @@ include_once '../../fns/require_contact.php';
 include_once '../../../lib/mysqli.php';
 list($contact, $id, $user) = require_contact($mysqli, '../');
 
-include_once '../../../fns/ItemList/escapedItemQuery.php';
+$base = '../../../';
+$fnsDir = '../../../fns';
+
+include_once "$fnsDir/ItemList/escapedItemQuery.php";
 $escapedItemQuery = ItemList\escapedItemQuery($id);
 
-include_once '../../../fns/Page/imageLink.php';
-$href = "submit.php$escapedItemQuery";
-$yesLink = Page\imageLink('Yes, delete photo', $href, 'yes');
+include_once '../../fns/ViewPage/create.php';
+include_once "$fnsDir/Page/confirmDialog.php";
+$content =
+    ViewPage\create($mysqli, $contact, '../')
+    .Page\confirmDialog(
+        'Are you sure you want to delete the photo of the contact?',
+        'Yes, delete photo', "submit.php$escapedItemQuery",
+        "../../view/$escapedItemQuery");
 
-$href = "../../view/$escapedItemQuery";
-$noLink = Page\imageLink('No, return back', $href, 'no');
-
-include_once '../../../fns/ItemList/listHref.php';
-include_once '../../../fns/Page/tabs.php';
-include_once '../../../fns/Page/text.php';
-include_once '../../../fns/Page/twoColumns.php';
-$content = Page\tabs(
-    [
-        [
-            'title' => 'Contacts',
-            'href' => '../'.ItemList\listHref(),
-        ]
-    ],
-    "Contact #$id",
-    Page\text('Are you sure you want to delete the photo of the contact?')
-    .'<div class="hr"></div>'
-    .Page\twoColumns($yesLink, $noLink)
-);
-
-include_once '../../../fns/echo_page.php';
-echo_page($user, 'Delete Contact Photo?', $content, '../../../');
+include_once "$fnsDir/compressed_css_link.php";
+include_once "$fnsDir/echo_page.php";
+echo_page($user, 'Delete Contact Photo?', $content, $base, [
+    'head' => compressed_css_link('contact', $base)
+        .compressed_css_link('confirmDialog', $base),
+]);

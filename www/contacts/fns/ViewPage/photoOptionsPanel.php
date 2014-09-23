@@ -2,7 +2,7 @@
 
 namespace ViewPage;
 
-function photoOptionsPanel ($contact) {
+function photoOptionsPanel ($contact, $base) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
@@ -10,14 +10,17 @@ function photoOptionsPanel ($contact) {
     $escapedItemQuery = \ItemList\escapedItemQuery($contact->id_contacts);
 
     include_once "$fnsDir/Page/imageArrowLink.php";
-    $href = "../photo/edit/$escapedItemQuery";
+    $href = "$base../photo/edit/$escapedItemQuery";
     $editLink = \Page\imageArrowLink('Edit Photo', $href, 'edit-contact-photo');
 
     if ($contact->photo_id) {
 
-        $href = "../photo/delete/$escapedItemQuery";
+        $href = "$base../photo/delete/$escapedItemQuery";
         $icon = 'clear-contact-photo';
-        $deleteLink = \Page\imageArrowLink('Delete Photo', $href, $icon);
+        $deleteLink =
+            '<div id="deletePhotoLink">'
+                .\Page\imageArrowLink('Delete Photo', $href, $icon)
+            .'</div>';
 
         include_once "$fnsDir/Page/staticTwoColumns.php";
         $content = \Page\staticTwoColumns($editLink, $deleteLink);

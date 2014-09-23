@@ -2,7 +2,7 @@
 
 namespace ViewPage;
 
-function optionsPanel ($contact) {
+function optionsPanel ($contact, $base) {
 
     $id_contacts = $contact->id_contacts;
     $fnsDir = __DIR__.'/../../../fns';
@@ -13,16 +13,16 @@ function optionsPanel ($contact) {
     include_once "$fnsDir/Page/imageArrowLink.php";
 
     $safe_name = str_replace('/', '_', $contact->full_name);
-    $href = "../download/$id_contacts/$safe_name.vcf";
+    $href = "$base../download/$id_contacts/$safe_name.vcf";
     $downloadLink = \Page\imageArrowLink('Download', $href, 'download');
 
-    $href = "../edit/$escapedItemQuery";
+    $href = "$base../edit/$escapedItemQuery";
     $editLink = \Page\imageArrowLink('Edit', $href, 'edit-contact');
 
-    $href = "../send/$escapedItemQuery";
+    $href = "$base../send/$escapedItemQuery";
     $sendLink = \Page\imageArrowLink('Send', $href, 'send');
 
-    $href = "../delete/$escapedItemQuery";
+    $href = "$base../delete/$escapedItemQuery";
     $deleteLink =
         '<div id="deleteLink">'
             .\Page\imageArrowLink('Delete', $href, 'trash-bin')

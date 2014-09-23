@@ -2,14 +2,14 @@
 
 namespace ViewPage;
 
-function createContent ($contact, $infoText, $items) {
+function createContent ($contact, $infoText, $items, $base) {
 
     $photo_id = $contact->photo_id;
     if ($photo_id) {
         $query = "?id=$contact->id_contacts&photo_id=$photo_id";
-        $photoSrc = "../photo/download/$query";
+        $photoSrc = "$base../photo/download/$query";
     } else {
-        $photoSrc = '../../images/empty-photo.svg';
+        $photoSrc = "$base../../images/empty-photo.svg";
     }
 
     $fnsDir = __DIR__.'/../../../fns';
@@ -28,16 +28,16 @@ function createContent ($contact, $infoText, $items) {
             [
                 [
                     'title' => 'Contacts',
-                    'href' => \ItemList\listHref(),
+                    'href' => $base.\ItemList\listHref(),
                 ],
             ],
             "Contact #$contact->id_contacts",
             \Page\sessionMessages('contacts/view/messages')
             .create_contact_panel($photoSrc, $content)
             .$infoText,
-            create_new_item_button('Contact', '../')
+            create_new_item_button('Contact', "$base../")
         )
-        .optionsPanel($contact)
-        .photoOptionsPanel($contact);
+        .optionsPanel($contact, $base)
+        .photoOptionsPanel($contact, $base);
 
 }

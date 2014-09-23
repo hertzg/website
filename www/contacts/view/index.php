@@ -34,6 +34,16 @@ if ($contact->timezone !== null) {
     $content .= compressed_js_script('timezoneLabel', $base);
 }
 
+if ($contact->photo_id) {
+    $deletePhotoHref = "../photo/delete/submit.php?id=$id";
+    $content .=
+        '<script type="text/javascript">'
+            .'var deletePhotoHref = '.json_encode($deletePhotoHref)
+        .'</script>'
+        .'<script type="text/javascript" defer="defere" src="index.js">'
+        .'</script>';
+}
+
 include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";
 echo_page($user, "Contact #$id", $content, $base, [
