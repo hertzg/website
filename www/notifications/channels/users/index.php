@@ -22,7 +22,7 @@ $content =
     .'<script type="text/javascript">'
         .'var channelName = '.json_encode($channel->channel_name)
     .'</script>'
-    .'<script type="text/javascript" src="index.js"></script>';
+    .'<script type="text/javascript" src="index.js?1"></script>';
 
 include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";
