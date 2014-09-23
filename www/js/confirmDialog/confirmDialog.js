@@ -1,6 +1,7 @@
 function confirmDialog (questionHtml, yesText, yesHref, noListener) {
 
     function hide () {
+        removeEventListener('keydown', keydownListener)
         body.removeChild(element)
         noListener()
     }
@@ -35,6 +36,14 @@ function confirmDialog (questionHtml, yesText, yesHref, noListener) {
 
         return element
 
+    }
+
+    function keydownListener (e) {
+        if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return
+        if (e.keyCode == 27) {
+            e.preventDefault()
+            hide()
+        }
     }
 
     var alignerElement = document.createElement('div')
@@ -79,13 +88,6 @@ function confirmDialog (questionHtml, yesText, yesHref, noListener) {
     var body = document.body
     body.appendChild(element)
 
-    addEventListener('keydown', function keywordListener (e) {
-        if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return
-        if (e.keyCode == 27) {
-            e.preventDefault()
-            removeEventListener('keydown', keywordListener)
-            hide()
-        }
-    })
+    addEventListener('keydown', keydownListener)
 
 }
