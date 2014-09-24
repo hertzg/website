@@ -23,6 +23,7 @@ unset(
     $_SESSION['files/rename-file/errors'],
     $_SESSION['files/rename-file/values'],
     $_SESSION['files/send-file/errors'],
+    $_SESSION['files/send-file/messages'],
     $_SESSION['files/send-file/values']
 );
 
