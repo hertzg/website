@@ -2,7 +2,7 @@
 
 include_once 'fns/require_recipient.php';
 include_once '../../../lib/mysqli.php';
-list($file, $id, $username, $user, $values) = require_recipient($mysqli);
+list($file, $id, $username, $user, $recipients) = require_recipient($mysqli);
 
 $base = '../../../';
 $fnsDir = '../../../fns';
@@ -13,7 +13,6 @@ unset(
 );
 
 $params = ['id_folders' => $id];
-$recipients = $values['recipients'];
 
 include_once "$fnsDir/Contacts/indexWithUsernameOnUser.php";
 $contacts = Contacts\indexWithUsernameOnUser($mysqli, $user->id_users);

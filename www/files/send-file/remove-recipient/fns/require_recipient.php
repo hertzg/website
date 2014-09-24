@@ -13,8 +13,7 @@ function require_recipient ($mysqli) {
         redirect("../?id=$id");
     }
 
-    $values = $_SESSION[$valuesKey];
-    $recipients = $values['recipients'];
+    $recipients = $_SESSION[$valuesKey]['recipients'];
 
     include_once "$fnsDir/request_strings.php";
     list($username) = request_strings('username');
@@ -24,6 +23,6 @@ function require_recipient ($mysqli) {
         redirect("../?id=$id");
     }
 
-    return [$file, $id, $username, $user, $values];
+    return [$file, $id, $username, $user, $recipients];
 
 }
