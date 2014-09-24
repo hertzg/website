@@ -23,10 +23,10 @@ $yesHref = 'submit.php?'.htmlspecialchars(http_build_query([
     'username' => $username,
 ]));
 
-include_once '../fns/recipients_page.php';
 include_once "$fnsDir/Page/confirmDialog.php";
 include_once "$fnsDir/Page/tabs.php";
 include_once "$fnsDir/Page/warnings.php";
+include_once "$fnsDir/SendForm/recipientsPanels.php";
 $content =
     Page\tabs(
         [
@@ -37,7 +37,7 @@ $content =
         ],
         'Send',
         Page\warnings(['Send the file to:'])
-        .recipients_page($recipients, $contacts, $params, '../')
+        .SendForm\recipientsPanels($recipients, $contacts, $params, '../')
     )
     .Page\confirmDialog('Are you sure you want to remove the recipient'
         .' "<b>'.htmlspecialchars($username).'</b>"?', 'Yes, remove recipient',

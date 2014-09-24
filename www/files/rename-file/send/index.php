@@ -36,8 +36,8 @@ if ($values['usernameError']) {
     }
 } else {
     if ($recipients) {
-        include_once 'fns/recipients_page.php';
-        $content = recipients_page($recipients, $contacts, $params);
+        include_once "$fnsDir/SendForm/recipientsPanels.php";
+        $content = SendForm\recipientsPanels($recipients, $contacts, $params);
     } else {
         if ($contacts) {
             include_once "$fnsDir/RecipientList/contactsForm.php";
