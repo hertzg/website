@@ -1,7 +1,7 @@
 <?php
 
 include_once 'fns/require_recipient.php';
-list($username, $user) = require_recipient();
+list($username, $user, $recipients) = require_recipient();
 
 unset(
     $_SESSION['bookmarks/new/send/errors'],
@@ -9,4 +9,6 @@ unset(
 );
 
 include_once '../../../../fns/SendForm/NewItem/removeRecipientPage.php';
-SendForm\NewItem\removeRecipientPage($user, $username);
+include_once '../../../../lib/mysqli.php';
+SendForm\NewItem\removeRecipientPage($mysqli,
+    $user, $username, 'bookmark', $recipients);
