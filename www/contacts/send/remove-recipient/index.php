@@ -2,7 +2,7 @@
 
 include_once 'fns/require_recipient.php';
 include_once '../../../lib/mysqli.php';
-list($contact, $id, $username, $user) = require_recipient($mysqli);
+list($contact, $id, $username, $user, $recipients) = require_recipient($mysqli);
 
 unset(
     $_SESSION['contacts/send/errors'],
@@ -10,4 +10,5 @@ unset(
 );
 
 include_once '../../../fns/SendForm/removeRecipientPage.php';
-SendForm\removeRecipientPage($user, $id, $username, "Contact #$id");
+SendForm\removeRecipientPage($mysqli, $user, $id,
+    $username, "Contact #$id", 'contact', $recipients);
