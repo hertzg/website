@@ -46,7 +46,7 @@ if ($values['usernameError']) {
             include_once "$fnsDir/RecipientList/enterPanel.php";
             $content =
                 RecipientList\contactsForm($contacts, $params)
-                .\RecipientList\enterPanel('', $params);
+                .RecipientList\enterPanel('', $params);
         } else {
             include_once "$fnsDir/RecipientList/enterForm.php";
             $content = RecipientList\enterForm('', $params, true);
@@ -67,24 +67,13 @@ $content = Page\tabs(
     ],
     'Send',
     Page\sessionErrors('files/send-file/errors')
-    .\Page\sessionMessages('files/send-file/messages')
-    .\Page\warnings(['Send the file to:'])
+    .Page\sessionMessages('files/send-file/messages')
+    .Page\warnings(['Send the file to:'])
     .$content
 );
 
-if ($recipients) {
-
-    include_once "$fnsDir/compressed_js_script.php";
-    $content .=
-        compressed_js_script('confirmDialog', $base)
-        .compressed_js_script('removeRecipient', $base);
-
-    include_once "$fnsDir/compressed_css_link.php";
-    $head = compressed_css_link('confirmDialog', $base);
-
-} else {
-    $head = '';
-}
+include_once "$fnsDir/SendForm/removeDialog.php";
+SendForm\removeDialog($recipients, $base, $content, $head);
 
 include_once "$fnsDir/echo_page.php";
 echo_page($user, "Send File #$id", $content, $base, [
