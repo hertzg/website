@@ -5,6 +5,9 @@ namespace SendForm;
 function recipientsPage ($mysqli, $user, $id, $tabTitle,
     $pageTitle, $text, $errorsKey, $messagesKey, $valuesKey) {
 
+    $base = '../../';
+    $fnsDir = __DIR__.'/..';
+
     if (array_key_exists($valuesKey, $_SESSION)) {
         $values = $_SESSION[$valuesKey];
     } else {
@@ -17,22 +20,22 @@ function recipientsPage ($mysqli, $user, $id, $tabTitle,
 
     $recipients = $values['recipients'];
 
-    include_once __DIR__.'/../Contacts/indexWithUsernameOnUser.php';
+    include_once "$fnsDir/Contacts/indexWithUsernameOnUser.php";
     $contacts = \Contacts\indexWithUsernameOnUser($mysqli, $user->id_users);
 
-    include_once __DIR__.'/../ItemList/itemParams.php';
+    include_once "$fnsDir/ItemList/itemParams.php";
     $itemParams = \ItemList\itemParams($id);
 
-    include_once __DIR__.'/../ItemList/escapedItemQuery.php';
+    include_once "$fnsDir/ItemList/escapedItemQuery.php";
     $escapedItemQuery = \ItemList\escapedItemQuery($id);
 
     if ($values['usernameError']) {
         $username = $values['username'];
         if ($contacts || $recipients) {
-            include_once __DIR__.'/../RecipientList/enterCancelForm.php';
+            include_once "$fnsDir/RecipientList/enterCancelForm.php";
             $content = \RecipientList\enterCancelForm($username, $itemParams);
         } else {
-            include_once __DIR__.'/../RecipientList/enterForm.php';
+            include_once "$fnsDir/RecipientList/enterForm.php";
             $content = \RecipientList\enterForm($username, $itemParams, true);
         }
     } else {
@@ -41,22 +44,22 @@ function recipientsPage ($mysqli, $user, $id, $tabTitle,
             $content = recipientsPanels($recipients, $contacts, $itemParams);
         } else {
             if ($contacts) {
-                include_once __DIR__.'/../RecipientList/contactsForm.php';
-                include_once __DIR__.'/../RecipientList/enterPanel.php';
+                include_once "$fnsDir/RecipientList/contactsForm.php";
+                include_once "$fnsDir/RecipientList/enterPanel.php";
                 $content =
                     \RecipientList\contactsForm($contacts, $itemParams)
                     .\RecipientList\enterPanel('', $itemParams);
             } else {
-                include_once __DIR__.'/../RecipientList/enterForm.php';
+                include_once "$fnsDir/RecipientList/enterForm.php";
                 $content = \RecipientList\enterForm('', $itemParams, true);
             }
         }
     }
 
-    include_once __DIR__.'/../Page/sessionErrors.php';
-    include_once __DIR__.'/../Page/sessionMessages.php';
-    include_once __DIR__.'/../Page/tabs.php';
-    include_once __DIR__.'/../Page/warnings.php';
+    include_once "$fnsDir/Page/sessionErrors.php";
+    include_once "$fnsDir/Page/sessionMessages.php";
+    include_once "$fnsDir/Page/tabs.php";
+    include_once "$fnsDir/Page/warnings.php";
     $content = \Page\tabs(
         [
             [
@@ -71,7 +74,10 @@ function recipientsPage ($mysqli, $user, $id, $tabTitle,
         .$content
     );
 
-    include_once __DIR__.'/../echo_page.php';
-    echo_page($user, $pageTitle, $content, '../../');
+    include_once "$fnsDir/SendForm/removeDialog.php";
+    \SendForm\removeDialog($recipients, $base, $content, $head);
+
+    include_once "$fnsDir/echo_page.php";
+    echo_page($user, $pageTitle, $content, $base, ['head' => $head]);
 
 }
