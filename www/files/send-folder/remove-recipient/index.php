@@ -26,7 +26,6 @@ $yesHref = 'submit.php?'.htmlspecialchars(http_build_query([
 include_once '../fns/recipients_page.php';
 include_once "$fnsDir/Page/confirmDialog.php";
 include_once "$fnsDir/Page/tabs.php";
-include_once "$fnsDir/Page/twoColumns.php";
 include_once "$fnsDir/Page/warnings.php";
 $content =
     Page\tabs(
