@@ -22,6 +22,6 @@ function requireRecipient ($id, $valuesKey) {
         redirect('../'.\ItemList\itemQuery($id));
     }
 
-    return $username;
+    return [$username, $recipients];
 
 }

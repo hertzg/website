@@ -8,8 +8,9 @@ function require_recipient () {
     $fnsDir = __DIR__.'/../../../../../fns';
 
     include_once "$fnsDir/SendForm/NewItem/requireRecipient.php";
-    $username = SendForm\NewItem\requireRecipient('tasks/new/send/values');
+    $values = SendForm\NewItem\requireRecipient('tasks/new/send/values');
+    list($username, $recipients) = $values;
 
-    return [$username, $user];
+    return [$username, $user, $recipients];
 
 }

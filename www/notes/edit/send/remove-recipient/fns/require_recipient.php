@@ -9,8 +9,9 @@ function require_recipient ($mysqli) {
 
     include_once "$fnsDir/SendForm/EditItem/requireRecipient.php";
     $valuesKey = 'notes/edit/send/values';
-    $username = SendForm\EditItem\requireRecipient($id, $valuesKey);
+    $values = SendForm\EditItem\requireRecipient($id, $valuesKey);
+    list($username, $recipients) = $values;
 
-    return [$id, $username, $user];
+    return [$id, $username, $user, $recipients];
 
 }

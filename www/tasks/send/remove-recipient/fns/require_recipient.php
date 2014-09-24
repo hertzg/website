@@ -6,8 +6,9 @@ function require_recipient ($mysqli) {
     list($task, $id, $user) = require_task($mysqli, '../');
 
     include_once __DIR__.'/../../../../fns/SendForm/requireRecipient.php';
-    $username = SendForm\requireRecipient($id, 'tasks/send/values');
+    $values = SendForm\requireRecipient($id, 'tasks/send/values');
+    list($username, $recipients) = $values;
 
-    return [$task, $id, $username, $user];
+    return [$task, $id, $username, $user, $recipients];
 
 }

@@ -22,6 +22,6 @@ function requireRecipient ($valuesKey) {
         redirect('../'.\ItemList\pageQuery());
     }
 
-    return $username;
+    return [$username, $recipients];
 
 }
