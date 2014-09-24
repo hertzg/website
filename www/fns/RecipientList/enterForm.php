@@ -2,7 +2,7 @@
 
 namespace RecipientList;
 
-function enterForm ($username, array $params, $autofocus) {
+function enterForm ($username, $params, $autofocus, $base = '') {
 
     include_once __DIR__.'/../Form/hidden.php';
     $hiddens = '';
@@ -14,7 +14,7 @@ function enterForm ($username, array $params, $autofocus) {
     include_once __DIR__.'/../Form/textfield.php';
     include_once __DIR__.'/../Username/maxLength.php';
     return
-        '<form action="submit-add.php" method="post">'
+        "<form action=\"{$base}submit-add.php\" method=\"post\">"
             .\Form\textfield('username', 'Zvini username', [
                 'value' => $username,
                 'maxlength' => \Username\maxLength(),

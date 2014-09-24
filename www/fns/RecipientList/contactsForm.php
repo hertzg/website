@@ -2,7 +2,7 @@
 
 namespace RecipientList;
 
-function contactsForm (array $contacts, array $params) {
+function contactsForm ($contacts, $params, $base = '') {
     $html = '';
     include_once __DIR__.'/../Page/imageLinkWithDescription.php';
     foreach ($contacts as $i => $contact) {
@@ -13,7 +13,8 @@ function contactsForm (array $contacts, array $params) {
         $title = htmlspecialchars($contactUsername);
         $description = htmlspecialchars($contact->full_name);
         $params['username'] = $contactUsername;
-        $href = 'submit-add.php?'.htmlspecialchars(http_build_query($params));
+        $query = '?'.htmlspecialchars(http_build_query($params));
+        $href = "{$base}submit-add.php$query";
 
         if ($contact->favorite) $icon = 'favorite-contact';
         else $icon = 'contact';
