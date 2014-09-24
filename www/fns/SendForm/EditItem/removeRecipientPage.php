@@ -2,40 +2,51 @@
 
 namespace SendForm\EditItem;
 
-function removeRecipientPage ($user, $id, $username) {
+function removeRecipientPage ($mysqli,
+    $user, $id, $username, $text, $recipients) {
 
-    include_once __DIR__.'/../../ItemList/itemQuery.php';
+    $base = '../../../../';
+    $fnsDir = __DIR__.'/../..';
+
+    include_once "$fnsDir/ItemList/itemQuery.php";
     $itemQuery = \ItemList\itemQuery($id);
 
     $escapedItemQuery = htmlspecialchars($itemQuery);
 
-    include_once __DIR__.'/../../ItemList/itemParams.php';
+    include_once "$fnsDir/ItemList/itemParams.php";
     $itemParams = \ItemList\itemParams($id);
     $itemParams['username'] = $username;
     $yesHref = 'submit.php?'.htmlspecialchars(http_build_query($itemParams));
 
-    include_once __DIR__.'/../../Page/imageLink.php';
-    include_once __DIR__.'/../../Page/tabs.php';
-    include_once __DIR__.'/../../Page/text.php';
-    include_once __DIR__.'/../../Page/twoColumns.php';
-    $content = \Page\tabs(
-        [
-            [
-                'title' => 'Edit',
-                'href' => "../../$escapedItemQuery",
-            ],
-        ],
-        'Send',
-        \Page\text('Are you sure you want to remove the recipient'
-            .' "<b>'.htmlspecialchars($username).'</b>"?')
-        .'<div class="hr"></div>'
-        .\Page\twoColumns(
-            \Page\imageLink('Yes, remove recipient', $yesHref, 'yes'),
-            \Page\imageLink('No, return back', "../$escapedItemQuery", 'no')
-        )
-    );
+    include_once "$fnsDir/Contacts/indexWithUsernameOnUser.php";
+    $contacts = \Contacts\indexWithUsernameOnUser($mysqli, $user->id_users);
 
-    include_once __DIR__.'/../../echo_page.php';
-    echo_page($user, 'Remove Recipient?', $content, '../../../../');
+    include_once __DIR__.'/../recipientsPanels.php';
+    include_once "$fnsDir/Page/confirmDialog.php";
+    include_once "$fnsDir/Page/tabs.php";
+    include_once "$fnsDir/Page/text.php";
+    include_once "$fnsDir/Page/warnings.php";
+    $content =
+        \Page\tabs(
+            [
+                [
+                    'title' => 'Edit',
+                    'href' => "../../$escapedItemQuery",
+                ],
+            ],
+            'Send',
+            \Page\warnings(["Send the edited $text to:"])
+            .\SendForm\recipientsPanels($recipients,
+                $contacts, $itemParams, '../')
+        )
+        .\Page\confirmDialog('Are you sure you want to remove the recipient'
+            .' "<b>'.htmlspecialchars($username).'</b>"?',
+            'Yes, remove recipient', $yesHref, "../$escapedItemQuery");
+
+    include_once "$fnsDir/compressed_css_link.php";
+    include_once "$fnsDir/echo_page.php";
+    echo_page($user, 'Remove Recipient?', $content, $base, [
+        'head' => compressed_css_link('confirmDialog', $base),
+    ]);
 
 }
