@@ -2,38 +2,50 @@
 
 include_once 'fns/require_recipient.php';
 include_once '../../../../lib/mysqli.php';
-list($folder, $id, $username, $user) = require_recipient($mysqli);
+list($folder, $id, $username, $user, $values) = require_recipient($mysqli);
+
+$base = '../../../../';
+$fnsDir = '../../../../fns';
 
 unset(
     $_SESSION['files/rename-folder/send/errors'],
     $_SESSION['files/rename-folder/send/messages']
 );
 
+$params = ['id_folders' => $id];
+$recipients = $values['recipients'];
+
+include_once "$fnsDir/Contacts/indexWithUsernameOnUser.php";
+$contacts = Contacts\indexWithUsernameOnUser($mysqli, $user->id_users);
+
 $yesHref = 'submit.php?'.htmlspecialchars(http_build_query([
     'id_folders' => $id,
     'username' => $username,
 ]));
 
-include_once '../../../../fns/Page/imageLink.php';
-include_once '../../../../fns/Page/tabs.php';
-include_once '../../../../fns/Page/text.php';
-include_once '../../../../fns/Page/twoColumns.php';
-$content = Page\tabs(
-    [
+include_once '../fns/recipients_page.php';
+include_once "$fnsDir/Page/confirmDialog.php";
+include_once "$fnsDir/Page/tabs.php";
+include_once "$fnsDir/Page/twoColumns.php";
+include_once "$fnsDir/Page/warnings.php";
+$content =
+    Page\tabs(
         [
-            'title' => "Rename Folder #$id",
-            'href' => "../../?id_folders=$id",
+            [
+                'title' => "Rename Folder #$id",
+                'href' => "../../?id_folders=$id",
+            ],
         ],
-    ],
-    'Send',
-    Page\text('Are you sure you want to remove the recipient'
-        .' "<b>'.htmlspecialchars($username).'</b>"?')
-    .'<div class="hr"></div>'
-    .\Page\twoColumns(
-        Page\imageLink('Yes, remove recipient', $yesHref, 'yes'),
-        Page\imageLink('No, return back', "../?id_folders=$id", 'no')
+        'Send',
+        Page\warnings(['Send the renamed folder to:'])
+        .recipients_page($recipients, $contacts, $params, '../')
     )
-);
+    .Page\confirmDialog('Are you sure you want to remove the recipient'
+        .' "<b>'.htmlspecialchars($username).'</b>"?', 'Yes, remove recipient',
+        $yesHref, "../?id_folders=$id");
 
-include_once '../../../../fns/echo_page.php';
-echo_page($user, 'Remove Recipient?', $content, '../../../../');
+include_once "$fnsDir/compressed_css_link.php";
+include_once "$fnsDir/echo_page.php";
+echo_page($user, 'Remove Recipient?', $content, $base, [
+    'head' => compressed_css_link('confirmDialog', $base),
+]);
