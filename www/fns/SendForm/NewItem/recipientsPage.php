@@ -34,18 +34,9 @@ function recipientsPage ($mysqli, $user,
         }
     } else {
         if ($recipients) {
-
-            include_once __DIR__.'/renderRecipientsPanel.php';
-            $content = renderRecipientsPanel($recipients, $pageParams);
-
-            include_once __DIR__.'/../../RecipientList/enterPanel.php';
-            if ($contacts) {
-                include_once __DIR__.'/../../RecipientList/contactsPanel.php';
-                $content .= \RecipientList\contactsPanel(
-                    $contacts, $pageParams);
-            }
-            $content .= \RecipientList\enterPanel('', $pageParams);
-
+            include_once __DIR__.'/../recipientsPanels.php';
+            $content = \SendForm\recipientsPanels(
+                $recipients, $contacts, $pageParams);
         } else {
             if ($contacts) {
                 include_once __DIR__.'/../../RecipientList/contactsForm.php';
