@@ -4,6 +4,9 @@ include_once 'fns/require_stage.php';
 include_once '../../../lib/mysqli.php';
 list($user, $stageValues, $id, $file) = require_stage($mysqli);
 
+$base = '../../../';
+$fnsDir = '../../../fns';
+
 $key = 'files/rename-file/send/values';
 if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];
@@ -17,7 +20,7 @@ if (array_key_exists($key, $_SESSION)) {
 
 $recipients = $values['recipients'];
 
-include_once '../../../fns/Contacts/indexWithUsernameOnUser.php';
+include_once "$fnsDir/Contacts/indexWithUsernameOnUser.php";
 $contacts = Contacts\indexWithUsernameOnUser($mysqli, $user->id_users);
 
 $params = ['id' => $id];
@@ -25,44 +28,34 @@ $params = ['id' => $id];
 if ($values['usernameError']) {
     $username = $values['username'];
     if ($contacts || $recipients) {
-        include_once '../../../fns/RecipientList/enterCancelForm.php';
+        include_once "$fnsDir/RecipientList/enterCancelForm.php";
         $content = RecipientList\enterCancelForm($username, $params);
     } else {
-        include_once '../../../fns/RecipientList/enterForm.php';
+        include_once "$fnsDir/RecipientList/enterForm.php";
         $content = RecipientList\enterForm($username, $params, true);
     }
 } else {
     if ($recipients) {
-
-        include_once '../../../fns/SendForm/renderRecipientsPanel.php';
-        $content = SendForm\renderRecipientsPanel($recipients, $params);
-
-        include_once '../../../fns/RecipientList/enterPanel.php';
-        if ($contacts) {
-            include_once '../../../fns/RecipientList/contactsPanel.php';
-            $content .= RecipientList\contactsPanel(
-                $contacts, $params);
-        }
-        $content .= RecipientList\enterPanel('', $params);
-
+        include_once 'fns/recipients_page.php';
+        $content = recipients_page($recipients, $contacts, $params);
     } else {
         if ($contacts) {
-            include_once '../../../fns/RecipientList/contactsForm.php';
-            include_once '../../../fns/RecipientList/enterPanel.php';
+            include_once "$fnsDir/RecipientList/contactsForm.php";
+            include_once "$fnsDir/RecipientList/enterPanel.php";
             $content =
                 RecipientList\contactsForm($contacts, $params)
-                .\RecipientList\enterPanel('', $params);
+                .RecipientList\enterPanel('', $params);
         } else {
-            include_once '../../../fns/RecipientList/enterForm.php';
+            include_once "$fnsDir/RecipientList/enterForm.php";
             $content = RecipientList\enterForm('', $params, true);
         }
     }
 }
 
-include_once '../../../fns/Page/sessionErrors.php';
-include_once '../../../fns/Page/sessionMessages.php';
-include_once '../../../fns/Page/tabs.php';
-include_once '../../../fns/Page/warnings.php';
+include_once "$fnsDir/Page/sessionErrors.php";
+include_once "$fnsDir/Page/sessionMessages.php";
+include_once "$fnsDir/Page/tabs.php";
+include_once "$fnsDir/Page/warnings.php";
 $content = Page\tabs(
     [
         [
@@ -72,10 +65,15 @@ $content = Page\tabs(
     ],
     'Send',
     Page\sessionErrors('files/rename-file/send/errors')
-    .\Page\sessionMessages('files/rename-file/send/messages')
-    .\Page\warnings(['Send the renamed file to:'])
+    .Page\sessionMessages('files/rename-file/send/messages')
+    .Page\warnings(['Send the renamed file to:'])
     .$content
 );
 
-include_once '../../../fns/echo_page.php';
-echo_page($user, 'Send Renamed File', $content, '../../../');
+include_once "$fnsDir/SendForm/removeDialog.php";
+SendForm\removeDialog($recipients, $base, $content, $head);
+
+include_once "$fnsDir/echo_page.php";
+echo_page($user, 'Send Renamed File', $content, $base, [
+    'head' => $head,
+]);
