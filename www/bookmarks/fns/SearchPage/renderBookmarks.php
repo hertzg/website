@@ -1,7 +1,8 @@
 <?php
 
-function render_bookmarks (array $bookmarks,
-    array &$items, array $params, $keyword) {
+namespace SearchPage;
+
+function renderBookmarks ($bookmarks, &$items, $params, $keyword) {
 
     $fnsPageDir = __DIR__.'/../../../fns/Page';
 
@@ -22,14 +23,14 @@ function render_bookmarks (array $bookmarks,
             $url = htmlspecialchars($bookmark->url);
             $title = htmlspecialchars($bookmark->title);
             $title = preg_replace($regex, '<mark>$0</mark>', $title);
-            $items[] = Page\imageArrowLinkWithDescription(
+            $items[] = \Page\imageArrowLinkWithDescription(
                 $title, $url, $href, 'bookmark');
 
         }
 
     } else {
         include_once "$fnsPageDir/info.php";
-        $items[] = Page\info('No bookmarks found');
+        $items[] = \Page\info('No bookmarks found');
     }
 
 }

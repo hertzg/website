@@ -1,6 +1,6 @@
 <?php
 
-function create_content ($user, $filterMessage, $items) {
+function create_content ($user, $filterMessage, $items, $base) {
 
     $fnsDir = __DIR__.'/../../fns';
 
@@ -21,8 +21,8 @@ function create_content ($user, $filterMessage, $items) {
             Page\sessionErrors('bookmarks/errors')
             .Page\sessionMessages('bookmarks/messages')
             .$filterMessage.join('<div class="hr"></div>', $items),
-            create_new_item_button('Bookmark')
+            create_new_item_button('Bookmark', $base)
         )
-        .create_options_panel($user);
+        .create_options_panel($user, $base);
 
 }

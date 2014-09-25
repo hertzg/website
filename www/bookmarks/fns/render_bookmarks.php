@@ -1,6 +1,6 @@
 <?php
 
-function render_bookmarks (array $bookmarks, array &$items, array $params) {
+function render_bookmarks ($bookmarks, &$items, $params, $base = '') {
 
     $fnsPageDir = __DIR__.'/../../fns/Page';
 
@@ -17,7 +17,7 @@ function render_bookmarks (array $bookmarks, array &$items, array $params) {
                     array_merge(['id' => $bookmark->id_bookmarks], $params)
                 )
             );
-            $href = "view/?$queryString";
+            $href = "{$base}view/?$queryString";
 
             $escapedUrl = htmlspecialchars($bookmark->url);
             $title = $bookmark->title;
