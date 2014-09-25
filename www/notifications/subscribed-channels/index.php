@@ -1,8 +1,9 @@
 <?php
 
 $base = '../../';
+$fnsDir = '../../fns';
 
-include_once '../../fns/require_user.php';
+include_once "$fnsDir/require_user.php";
 $user = require_user($base);
 
 unset(
@@ -14,14 +15,14 @@ unset(
 
 $items = [];
 
-include_once '../../fns/SubscribedChannels/indexOnSubscriber.php';
-include_once '../../lib/mysqli.php';
-$subscribedChannels = SubscribedChannels\indexOnSubscriber(
-    $mysqli, $user->id_users);
+if ($user->num_subscribed_channels) {
 
-include_once '../../fns/Page/imageArrowLink.php';
+    include_once "$fnsDir/SubscribedChannels/indexOnSubscriber.php";
+    include_once '../../lib/mysqli.php';
+    $subscribedChannels = SubscribedChannels\indexOnSubscriber(
+        $mysqli, $user->id_users);
 
-if ($subscribedChannels) {
+    include_once "$fnsDir/Page/imageArrowLink.php";
     foreach ($subscribedChannels as $subscribedChannel) {
 
         if ($subscribedChannel->receive_notifications) {
@@ -35,14 +36,15 @@ if ($subscribedChannels) {
         $items[] = Page\imageArrowLink($title, $href, $icon);
 
     }
+
 } else {
-    include_once '../../fns/Page/info.php';
+    include_once "$fnsDir/Page/info.php";
     $items[] = Page\info('No channels');
 }
 
 include_once 'fns/create_options_panel.php';
-include_once '../../fns/Page/tabs.php';
-include_once '../../fns/Page/sessionMessages.php';
+include_once "$fnsDir/Page/tabs.php";
+include_once "$fnsDir/Page/sessionMessages.php";
 $content = Page\tabs(
     [
         [
@@ -56,5 +58,5 @@ $content = Page\tabs(
     .create_options_panel()
 );
 
-include_once '../../fns/echo_page.php';
+include_once "$fnsDir/echo_page.php";
 echo_page($user, 'Other Channels', $content, $base);
