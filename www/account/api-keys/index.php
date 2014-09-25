@@ -5,12 +5,12 @@ $base = '../../';
 include_once '../../fns/require_user.php';
 $user = require_user($base);
 
-include_once '../../fns/ApiKeys/indexOnUser.php';
-include_once '../../lib/mysqli.php';
-$apiKeys = ApiKeys\indexOnUser($mysqli, $user->id_users);
-
 $items = [];
-if ($apiKeys) {
+if ($user->num_api_keys) {
+
+    include_once '../../fns/ApiKeys/indexOnUser.php';
+    include_once '../../lib/mysqli.php';
+    $apiKeys = ApiKeys\indexOnUser($mysqli, $user->id_users);
 
     include_once '../../fns/time_today.php';
     $time_today = time_today();
