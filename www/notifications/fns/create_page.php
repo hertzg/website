@@ -31,11 +31,11 @@ function create_page ($mysqli, $user, $base = '') {
 
     $items = [];
 
-    include_once "$fnsDir/Notifications/indexPageOnUser.php";
-    $notifications = Notifications\indexPageOnUser($mysqli,
-        $id_users, $offset, $limit, $total);
+    if ($user->num_notifications) {
 
-    if ($notifications) {
+        include_once "$fnsDir/Notifications/indexPageOnUser.php";
+        $notifications = Notifications\indexPageOnUser($mysqli,
+            $id_users, $offset, $limit, $total);
 
         include_once "$fnsDir/ItemList/escapedPageQuery.php";
         $escapedPageQuery = ItemList\escapedPageQuery();
