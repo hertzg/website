@@ -1,19 +1,20 @@
 <?php
 
 $base = '../../';
+$fnsDir = '../../fns';
 
-include_once '../../fns/require_user.php';
+include_once "$fnsDir/require_user.php";
 $user = require_user($base);
-
-include_once '../../fns/Channels/indexOnUser.php';
-include_once '../../lib/mysqli.php';
-$channels = Channels\indexOnUser($mysqli, $user->id_users);
 
 $items = [];
 
-include_once '../../fns/Page/imageArrowLink.php';
+if ($user->num_channels) {
 
-if ($channels) {
+    include_once "$fnsDir/Channels/indexOnUser.php";
+    include_once '../../lib/mysqli.php';
+    $channels = Channels\indexOnUser($mysqli, $user->id_users);
+
+    include_once "$fnsDir/Page/imageArrowLink.php";
     foreach ($channels as $channel) {
 
         $public = $channel->public;
@@ -30,19 +31,20 @@ if ($channels) {
         $items[] = Page\imageArrowLink($title, $href, $icon);
 
     }
+
 } else {
-    include_once '../../fns/Page/info.php';
+    include_once "$fnsDir/Page/info.php";
     $items[] = Page\info('No channels');
 }
 
 include_once 'fns/unset_session_vars.php';
 unset_session_vars();
 
-include_once '../../fns/Page/imageLink.php';
-include_once '../../fns/Page/newItemButton.php';
-include_once '../../fns/Page/sessionErrors.php';
-include_once '../../fns/Page/sessionMessages.php';
-include_once '../../fns/Page/tabs.php';
+include_once "$fnsDir/Page/imageLink.php";
+include_once "$fnsDir/Page/newItemButton.php";
+include_once "$fnsDir/Page/sessionErrors.php";
+include_once "$fnsDir/Page/sessionMessages.php";
+include_once "$fnsDir/Page/tabs.php";
 $content =
     Page\tabs(
         [
@@ -58,5 +60,5 @@ $content =
         Page\newItemButton('new/', 'Channel')
     );
 
-include_once '../../fns/echo_page.php';
+include_once "$fnsDir/echo_page.php";
 echo_page($user, 'Channels', $content, $base);
