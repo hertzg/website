@@ -5,25 +5,21 @@ include_once '../../../lib/mysqli.php';
 $values = require_subscriber_locked_channel($mysqli);
 list($subscribedChannel, $id, $user) = $values;
 
-include_once '../../../fns/Page/imageLink.php';
-include_once '../../../fns/Page/tabs.php';
-include_once '../../../fns/Page/text.php';
-include_once '../../../fns/Page/twoColumns.php';
-$content = Page\tabs(
-    [
-        [
-            'title' => 'Other Channels',
-            'href' => '..',
-        ],
-    ],
-    "Other Channel #$id",
-    Page\text('Are you sure you want to unsubscribe from the channel?')
-    .'<div class="hr"></div>'
-    .Page\twoColumns(
-        Page\imageLink('Yes, unsubscribe', "submit.php?id=$id", 'yes'),
-        Page\imageLink('No, return back', "../view/?id=$id", 'no')
-    )
-);
+$base = '../../../';
+$fnsDir = '../../../fns';
 
-include_once '../../../fns/echo_page.php';
-echo_page($user, "Unsubscribe from Other Channel #$id", $content, '../../../');
+unset($_SESSION['notifications/subscribed-channels/view/messages']);
+
+include_once '../fns/ViewPage/create.php';
+include_once "$fnsDir/Page/confirmDialog.php";
+$content =
+    ViewPage\create($subscribedChannel)
+    .Page\confirmDialog(
+        'Are you sure you want to unsubscribe from the channel?',
+        'Yes, unsubscribe', "submit.php?id=$id", "../view/?id=$id");
+
+include_once "$fnsDir/compressed_css_link.php";
+include_once "$fnsDir/echo_page.php";
+echo_page($user, "Unsubscribe from Other Channel #$id", $content, $base, [
+    'head' => compressed_css_link('confirmDialog', $base),
+]);

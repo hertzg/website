@@ -5,6 +5,8 @@ $base = '../../../';
 include_once '../../../fns/require_user.php';
 $user = require_user($base);
 
+unset($_SESSION['notifications/subscribed-channels/messages']);
+
 $key = 'notifications/subscribed-channels/subscribe/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else $values = ['channel_name' => ''];
