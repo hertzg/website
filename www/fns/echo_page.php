@@ -56,7 +56,8 @@ function echo_page ($user, $title, $content, $base, array $options = []) {
             ."var timezone = $timezone\n"
             ."var base = ".json_encode($base)
         .'</script>'
-        .compressed_js_script('batteryAndClock', $base);
+        .compressed_js_script('batteryAndClock', $base)
+        .compressed_js_script('lineSizeRounding', $base);
 
     include_once __DIR__.'/../fns/echo_html.php';
     echo_html($title, $head, $body, $theme, $base);
