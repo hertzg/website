@@ -14,6 +14,7 @@ header('Content-Type: application/x-web-app-manifest+json');
 
 echo json_encode([
     'name' => 'Zvini',
+    'version' => '1.1',
     'description' => $description,
     'fullscreen' => 'true',
     'launch_path' => $siteBase,
