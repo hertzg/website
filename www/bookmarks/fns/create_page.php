@@ -41,6 +41,7 @@ function create_page ($mysqli, $user, $base = '') {
 
             include_once "$fnsDir/BookmarkTags/indexOnUser.php";
             $tags = BookmarkTags\indexOnUser($mysqli, $id_users);
+
             if ($tags) {
                 include_once "$fnsDir/create_tag_filter_bar.php";
                 $filterMessage = create_tag_filter_bar($tags, []);
@@ -58,11 +59,13 @@ function create_page ($mysqli, $user, $base = '') {
 
             include_once "$fnsDir/Form/hidden.php";
             include_once "$fnsDir/SearchForm/emptyContent.php";
-            $formContent = SearchForm\emptyContent($searchPlaceholder)
+            $formContent =
+                SearchForm\emptyContent($searchPlaceholder)
                 .Form\hidden('tag', $tag);
 
             include_once "$fnsDir/SearchForm/create.php";
             $items[] = SearchForm\create($searchAction, $formContent);
+
         }
 
         include_once "$fnsDir/create_clear_filter_bar.php";

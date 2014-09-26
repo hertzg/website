@@ -31,8 +31,8 @@ function create ($mysqli, $user) {
         $filterMessage = '';
 
         include_once "$fnsDir/Bookmarks/searchPage.php";
-        $bookmarks = \Bookmarks\searchPage($mysqli, $id_users, $keyword,
-            $offset, $limit, $total);
+        $bookmarks = \Bookmarks\searchPage($mysqli,
+            $id_users, $keyword, $offset, $limit, $total);
 
         $formContent = \SearchForm\content($keyword, $searchPlaceholder, '..');
         $items[] = \SearchForm\create($searchAction, $formContent);
@@ -54,12 +54,13 @@ function create ($mysqli, $user) {
     } else {
 
         include_once "$fnsDir/BookmarkTags/searchOnTagName.php";
-        $bookmarks = \BookmarkTags\searchOnTagName($mysqli, $id_users, $keyword,
-            $tag, $offset, $limit, $total);
+        $bookmarks = \BookmarkTags\searchOnTagName($mysqli,
+            $id_users, $keyword, $tag, $offset, $limit, $total);
 
         include_once "$fnsDir/Form/hidden.php";
         $clearHref = '../?tag='.rawurlencode($tag);
-        $formContent = \SearchForm\content($keyword, $searchPlaceholder, $clearHref)
+        $formContent =
+            \SearchForm\content($keyword, $searchPlaceholder, $clearHref)
             .\Form\hidden('tag', $tag);
         $items[] = \SearchForm\create($searchAction, $formContent);
 
