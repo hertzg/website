@@ -1,6 +1,6 @@
 <?php
 
-function render_contacts (array $contacts, array &$items, array $params) {
+function render_contacts ($contacts, &$items, $params, $base = '') {
 
     $fnsPageDir = __DIR__.'/../../fns/Page';
 
@@ -14,7 +14,7 @@ function render_contacts (array $contacts, array &$items, array $params) {
                     array_merge(['id' => $contact->id_contacts], $params)
                 )
             );
-            $href = "view/?$queryString";
+            $href = "{$base}view/?$queryString";
 
             $alias = htmlspecialchars($contact->alias);
             $title = htmlspecialchars($contact->full_name);
