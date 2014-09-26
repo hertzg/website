@@ -1,95 +1,21 @@
 <?php
 
 $base = '../../';
+$fnsDir = '../../fns';
 
-include_once '../../fns/require_user.php';
+include_once "$fnsDir/require_user.php";
 $user = require_user($base);
-$id_users = $user->id_users;
 
-include_once '../../fns/request_valid_keyword_tag_offset.php';
-list($keyword, $tag, $offset) = request_valid_keyword_tag_offset();
-
-$searchAction = './';
-$searchPlaceholder = 'Search notes...';
-
-$items = [];
-
-include_once '../../fns/Paging/limit.php';
-$limit = Paging\limit();
-
-if ($offset % $limit) {
-    include_once '../../fns/redirect.php';
-    redirect('./?keyword='.rawurlencode($keyword));
-}
-
-include_once '../../fns/SearchForm/content.php';
-include_once '../../fns/SearchForm/create.php';
+include_once '../fns/SearchPage/create.php';
 include_once '../../lib/mysqli.php';
+$content = SearchPage\create($mysqli, $user);
 
-if ($tag === '') {
-
-    $filterMessage = '';
-
-    include_once '../../fns/Notes/searchPage.php';
-    $notes = Notes\searchPage($mysqli, $id_users, $keyword,
-        $offset, $limit, $total);
-
-    $formContent = SearchForm\content($keyword, $searchPlaceholder, '..');
-    $items[] = SearchForm\create($searchAction, $formContent);
-
-    if ($total > 1) {
-
-        include_once '../../fns/NoteTags/indexOnUser.php';
-        $tags = NoteTags\indexOnUser($mysqli, $id_users);
-
-        if ($tags) {
-            include_once '../../fns/create_tag_filter_bar.php';
-            $filterMessage = create_tag_filter_bar($tags, [
-                'keyword' => $keyword,
-            ]);
-        }
-
-    }
-
+if ($user->num_notes) {
+    include_once "$fnsDir/delete_all_confirm_dialog.php";
+    $content .= delete_all_confirm_dialog($head, '../');
 } else {
-
-    include_once '../../fns/NoteTags/searchOnTagName.php';
-    $notes = NoteTags\searchOnTagName($mysqli, $id_users, $keyword, $tag,
-        $offset, $limit, $total);
-
-    $clearHref = '../?tag='.rawurlencode($tag);
-    include_once '../../fns/Form/hidden.php';
-    $formContent =
-        SearchForm\content($keyword, $searchPlaceholder, $clearHref)
-        .Form\hidden('tag', $tag);
-    $items[] = SearchForm\create($searchAction, $formContent);
-
-    $clearHref = '?'.htmlspecialchars(
-        http_build_query(['keyword' => $keyword])
-    );
-    include_once '../../fns/create_clear_filter_bar.php';
-    $filterMessage = create_clear_filter_bar($tag, $clearHref);
-
+    $head = '';
 }
 
-include_once 'fns/render_prev_button.php';
-render_prev_button($offset, $limit, $total, $items, $keyword, $tag);
-
-$params = [];
-if ($keyword !== '') $params['keyword'] = $keyword;
-if ($tag !== '') $params['tag'] = $tag;
-if ($offset) $params['offset'] = $offset;
-include_once 'fns/render_notes.php';
-render_notes($notes, $items, $params, $keyword);
-
-include_once 'fns/render_next_button.php';
-render_next_button($offset, $limit, $total, $items, $keyword, $tag);
-
-include_once '../fns/unset_session_vars.php';
-unset_session_vars();
-
-include_once 'fns/create_content.php';
-$content = create_content($user, $filterMessage, $items);
-
-include_once '../../fns/echo_page.php';
-echo_page($user, 'Notes', $content, $base);
+include_once "$fnsDir/echo_page.php";
+echo_page($user, 'Notes', $content, $base, ['head' => $head]);

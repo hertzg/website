@@ -1,9 +1,12 @@
 <?php
 
-function render_notes (array $notes, array &$items, array $params) {
+function render_notes ($notes, &$items, $params, $base = '') {
+
+    $fnsPageDir = __DIR__.'/../../fns/Page';
 
     if ($notes) {
-        include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
+
+        include_once "$fnsPageDir/imageArrowLink.php";
         foreach ($notes as $note) {
 
             $queryString = htmlspecialchars(
@@ -11,7 +14,7 @@ function render_notes (array $notes, array &$items, array $params) {
                     array_merge(['id' => $note->id_notes], $params)
                 )
             );
-            $href = "view/?$queryString";
+            $href = "{$base}view/?$queryString";
 
             $text = $note->text;
             if ($note->encrypt) {
@@ -27,7 +30,7 @@ function render_notes (array $notes, array &$items, array $params) {
 
         }
     } else {
-        include_once __DIR__.'/../../fns/Page/info.php';
+        include_once "$fnsPageDir/info.php";
         $items[] = Page\info('No notes');
     }
 

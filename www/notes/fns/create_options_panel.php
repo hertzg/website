@@ -20,7 +20,10 @@ function create_options_panel ($user, $base = '') {
         include_once "$fnsDir/Page/imageArrowLink.php";
         $title = 'Delete All Notes';
         $href = "{$base}delete-all/".ItemList\escapedPageQuery();
-        $options[] = Page\imageArrowLink($title, $href, 'trash-bin');
+        $options[] =
+            '<div id="deleteAllLink">'
+                .Page\imageArrowLink($title, $href, 'trash-bin')
+            .'</div>';
     }
 
     if ($options) {

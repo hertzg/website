@@ -1,12 +1,16 @@
 <?php
 
-function render_notes (array $notes, array &$items, array $params, $keyword) {
+namespace SearchPage;
+
+function renderNotes ($notes, &$items, $params, $keyword) {
+
+    $fnsDir = __DIR__.'/../../../fns';
 
     if ($notes) {
 
         $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
 
-        include_once __DIR__.'/../../../fns/Page/imageArrowLink.php';
+        include_once "$fnsDir/Page/imageArrowLink.php";
         foreach ($notes as $note) {
 
             $queryString = htmlspecialchars(
@@ -18,7 +22,7 @@ function render_notes (array $notes, array &$items, array $params, $keyword) {
 
             $text = $note->text;
             if ($note->encrypt) {
-                include_once __DIR__.'/../../../fns/encrypt_text.php';
+                include_once "$fnsDir/encrypt_text.php";
                 $title = htmlspecialchars(encrypt_text($text));
                 $icon = 'encrypted-note';
             } else {
@@ -27,13 +31,13 @@ function render_notes (array $notes, array &$items, array $params, $keyword) {
                 $icon = 'note';
             }
 
-            $items[] = Page\imageArrowLink($title, $href, $icon);
+            $items[] = \Page\imageArrowLink($title, $href, $icon);
 
         }
 
     } else {
-        include_once __DIR__.'/../../../fns/Page/info.php';
-        $items[] = Page\info('No notes found');
+        include_once "$fnsDir/Page/info.php";
+        $items[] = \Page\info('No notes found');
     }
 
 }
