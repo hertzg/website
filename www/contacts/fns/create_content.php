@@ -1,6 +1,6 @@
 <?php
 
-function create_content ($user, $filterMessage, $items) {
+function create_content ($user, $filterMessage, $items, $base) {
 
     $fnsDir = __DIR__.'/../../fns';
 
@@ -21,8 +21,8 @@ function create_content ($user, $filterMessage, $items) {
             Page\sessionErrors('contacts/errors')
             .Page\sessionMessages('contacts/messages')
             .$filterMessage.join('<div class="hr"></div>', $items),
-            create_new_item_button('Contact')
+            create_new_item_button('Contact', $base)
         )
-        .create_options_panel($user);
+        .create_options_panel($user, $base);
 
 }

@@ -1,7 +1,8 @@
 <?php
 
-function render_contacts (array $contacts,
-    array &$items, array $params, $keyword) {
+namespace SearchPage;
+
+function renderContacts ($contacts, &$items, $params, $keyword) {
 
     $fnsPageDir = __DIR__.'/../../../fns/Page';
 
@@ -44,17 +45,17 @@ function render_contacts (array $contacts,
 
             if ($descriptions) {
                 $description = join(' &middot; ', $descriptions);
-                $items[] = Page\imageArrowLinkWithDescription(
+                $items[] = \Page\imageArrowLinkWithDescription(
                     $title, $description, $href, $icon);
             } else {
-                $items[] = Page\imageArrowLink($title, $href, $icon);
+                $items[] = \Page\imageArrowLink($title, $href, $icon);
             }
 
         }
 
     } else {
         include_once "$fnsPageDir/info.php";
-        $items[] = Page\info('No contacts found');
+        $items[] = \Page\info('No contacts found');
     }
 
 }
