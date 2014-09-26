@@ -1,8 +1,6 @@
 <?php
 
-function delete_all_confirm_dialog ($user, &$head, $base = '') {
-
-    if (!$user->num_bookmarks) return;
+function delete_all_confirm_dialog (&$head, $base = '') {
 
     include_once __DIR__.'/compressed_css_link.php';
     $head = compressed_css_link('confirmDialog', "$base../");
