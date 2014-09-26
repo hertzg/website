@@ -1,6 +1,8 @@
 <?php
 
-function render_tasks (array $tasks, array &$items, array $params, $keyword) {
+namespace SearchPage;
+
+function renderTasks ($tasks, &$items, $params, $keyword) {
 
     $fnsDir = __DIR__.'/../../../fns';
 

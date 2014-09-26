@@ -1,6 +1,6 @@
 <?php
 
-function render_tasks (array $tasks, array &$items, array $params) {
+function render_tasks ($tasks, &$items, $params, $base = '') {
 
     $fnsDir = __DIR__.'/../../fns';
 
@@ -17,7 +17,7 @@ function render_tasks (array $tasks, array &$items, array $params) {
                     array_merge(['id' => $task->id_tasks], $params)
                 )
             );
-            $href = "view/?$queryString";
+            $href = "{$base}view/?$queryString";
 
             $title = htmlspecialchars($task->text);
             $items[] = create_task_link($title, $task->deadline_time,
