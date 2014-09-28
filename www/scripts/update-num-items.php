@@ -20,7 +20,7 @@ function user_rows ($mysqli, $table, $id_users) {
 }
 
 chdir(__DIR__);
-include_once 'lib/require-cli.php';
+include_once '../../lib/cli.php';
 include_once '../fns/mysqli_query_object.php';
 include_once '../fns/mysqli_single_object.php';
 include_once '../lib/mysqli.php';

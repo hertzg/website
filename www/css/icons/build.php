@@ -15,7 +15,7 @@ function render (&$content, $file, $names) {
 }
 
 chdir(__DIR__);
-include_once '../../scripts/lib/require-cli.php';
+include_once '../../../lib/cli.php';
 
 $names = ['api-key', 'create-api-key', 'edit-api-key', 'api-keys'];
 render($content, 'api-key.svg?1', $names);

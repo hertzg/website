@@ -2,7 +2,7 @@
 <?php
 
 chdir(__DIR__);
-include_once 'lib/require-cli.php';
+include_once '../../lib/cli.php';
 include_once '../lib/mysqli.php';
 include_once '../fns/detect_content_type.php';
 include_once '../fns/detect_media_type.php';

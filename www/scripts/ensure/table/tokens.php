@@ -2,7 +2,7 @@
 <?php
 
 chdir(__DIR__);
-include_once '../../lib/require-cli.php';
+include_once '../../../../lib/cli.php';
 
 include_once 'fns/ensure_table.php';
 include_once '../../../fns/Username/maxLength.php';

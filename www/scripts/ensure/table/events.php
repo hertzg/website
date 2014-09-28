@@ -2,7 +2,7 @@
 <?php
 
 chdir(__DIR__);
-include_once '../../lib/require-cli.php';
+include_once '../../../../lib/cli.php';
 
 include_once '../../../fns/Events/maxLengths.php';
 $maxLengths = Events\maxLengths();

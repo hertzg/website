@@ -2,6 +2,7 @@
 <?php
 
 chdir(__DIR__);
+include_once 'lib/cli.php';
 
 include_once 'www/fns/get_mysqli_config.php';
 get_mysqli_config($host, $username, $password, $db);
