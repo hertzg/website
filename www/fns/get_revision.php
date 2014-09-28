@@ -6,6 +6,7 @@ function get_revision ($key) {
         'css/confirmDialog/compressed.css' => 1,
         'css/contact/compressed.css' => 1,
         'css/icons/compressed.css' => 57,
+        'css/index/compressed.css' => 1,
         'js/batteryAndClock/compressed.js' => 1,
         'js/confirmDialog/compressed.js' => 4,
         'js/formCheckbox/compressed.js' => 1,
