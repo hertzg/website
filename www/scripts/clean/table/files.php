@@ -9,7 +9,8 @@ $microtime = microtime(true);
 
 $sql = 'delete from files'
     .' where id_users not in (select id_users from users)'
-    .' or id_folders not in (select id_folders from folders)';
+    .' or (id_folders != 0'
+    .' and id_folders not in (select id_folders from folders))';
 $mysqli->query($sql) || trigger_error($mysqli->error);
 
 $elapsedSeconds = number_format(microtime(true) - $microtime, 3);
