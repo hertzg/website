@@ -52,46 +52,8 @@ Users\editResetPasswordKey($mysqli, $user->id_users, $key);
 include_once '../fns/Captcha/reset.php';
 Captcha\reset();
 
-include_once '../fns/get_domain_name.php';
-$domain_name = get_domain_name();
-
-include_once '../fns/get_site_base.php';
-$siteBase = get_site_base();
-
-$href = htmlspecialchars(
-    "http://$domain_name{$siteBase}reset-password/?".http_build_query([
-        'id_users' => $user->id_users,
-        'key' => bin2hex($key)
-    ])
-);
-
-$title = 'Reset Password for Zvini Account';
-
-$html =
-    '<!DOCTYPE html>'
-    .'<html>'
-        .'<head>'
-            ."<title>$title</title>"
-            .'<meta http-equiv="Content-Type"'
-            .' content="text/html; charset=UTF-8" />'
-        .'</head>'
-        .'<body>'
-            .'<div>'
-                .'Password reset has been requested for your Zvini account.'
-                .' To reset password visit the following link:'
-            .'</div>'
-            .'<br />'
-            ."<a href=\"$href\">$href</a>"
-        .'</body>'
-    .'</html>';
-
-$subject = mb_encode_mimeheader($title, 'UTF-8');
-
-$headers =
-    "From: no-reply@$domain_name\r\n"
-    .'Content-Type: text/html; charset=UTF-8';
-
-mail($email, $subject, $html, $headers);
+include_once 'fns/send_email.php';
+send_email($user, $key);
 
 unset($_SESSION['sign-in/errors']);
 $_SESSION['sign-in/messages'] = [
