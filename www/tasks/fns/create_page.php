@@ -55,8 +55,8 @@ function create_page ($mysqli, $user, $base = '') {
     } else {
 
         include_once "$fnsDir/TaskTags/indexOnTagName.php";
-        $tasks = TaskTags\indexOnTagName($mysqli, $id_users, $tag,
-            $offset, $limit, $total);
+        $tasks = TaskTags\indexOnTagName($mysqli,
+            $id_users, $tag, $offset, $limit, $total);
 
         if ($total > 1) {
 

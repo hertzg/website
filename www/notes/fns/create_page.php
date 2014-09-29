@@ -55,8 +55,8 @@ function create_page ($mysqli, $user, $base = '') {
     } else {
 
         include_once "$fnsDir/NoteTags/indexOnTagName.php";
-        $notes = NoteTags\indexOnTagName($mysqli, $id_users, $tag,
-            $offset, $limit, $total);
+        $notes = NoteTags\indexOnTagName($mysqli,
+            $id_users, $tag, $offset, $limit, $total);
 
         if ($total > 1) {
 
