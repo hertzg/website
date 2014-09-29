@@ -11,6 +11,7 @@ function get_revision ($key) {
         'js/formCheckbox/compressed.js' => 1,
         'js/lineSizeRounding/compressed.js' => 1,
         'js/removeRecipient/compressed.js' => 1,
+        'js/searchForm/compressed.js' => 1,
         'js/timezoneLabel/compressed.js' => 1,
     ];
     return $revisions[$key];

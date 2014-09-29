@@ -1,0 +1,1 @@
+!function(){var e=document.querySelector(".searchButton"),r=e.form;r.addEventListener("submit",function(e){var r=a.value;r=r.replace(/\s{2,}/g," "),r=r.replace(/^\s+/,""),r=r.replace(/\s+$/,""),a.value=r,r||(e.preventDefault(),a.focus())});var a=r.keyword}();
