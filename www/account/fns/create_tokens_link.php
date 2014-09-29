@@ -2,7 +2,7 @@
 
 function create_tokens_link ($user) {
 
-    $fnsPageDir = __DIR__.'/../../fns/Page';
+    $fnsDir = __DIR__.'/../../fns';
 
     $title = 'Remembered Sessions';
     $href = 'tokens/';
@@ -11,12 +11,12 @@ function create_tokens_link ($user) {
     $num_tokens = $user->num_tokens;
     if ($num_tokens) {
         $description = "$num_tokens total.";
-        include_once "$fnsPageDir/imageArrowLinkWithDescription.php";
+        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         return Page\imageArrowLinkWithDescription($title,
             $description, $href, $icon);
     }
 
-    include_once "$fnsPageDir/imageArrowLink.php";
+    include_once "$fnsDir/Page/imageArrowLink.php";
     return Page\imageArrowLink($title, $href, $icon);
 
 }

@@ -4,15 +4,15 @@ namespace SearchPage;
 
 function renderContacts ($contacts, &$items, $params, $keyword) {
 
-    $fnsPageDir = __DIR__.'/../../../fns/Page';
+    $fnsDir = __DIR__.'/../../../fns';
 
     if ($contacts) {
 
         $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
         $replace = '<mark>$0</mark>';
 
-        include_once "$fnsPageDir/imageArrowLink.php";
-        include_once "$fnsPageDir/imageArrowLinkWithDescription.php";
+        include_once "$fnsDir/Page/imageArrowLink.php";
+        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         foreach ($contacts as $contact) {
 
             $queryString = htmlspecialchars(
@@ -54,7 +54,7 @@ function renderContacts ($contacts, &$items, $params, $keyword) {
         }
 
     } else {
-        include_once "$fnsPageDir/info.php";
+        include_once "$fnsDir/Page/info.php";
         $items[] = \Page\info('No contacts found');
     }
 

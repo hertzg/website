@@ -33,7 +33,7 @@ function renderTasks ($tasks, &$items, $params, $keyword) {
 
     } else {
         include_once "$fnsDir/Page/info.php";
-        $items[] = Page\info('No tasks found');
+        $items[] = \Page\info('No tasks found');
     }
 
 }

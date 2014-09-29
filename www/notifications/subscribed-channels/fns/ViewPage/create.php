@@ -27,6 +27,8 @@ function create ($subscribedChannel) {
         .'</div>'
     );
 
+    $messagesKey = 'notifications/subscribed-channels/view/messages';
+
     include_once __DIR__.'/optionsPanel.php';
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
@@ -39,7 +41,7 @@ function create ($subscribedChannel) {
                 ],
             ],
             "Other Channel #$subscribedChannel->id",
-            \Page\sessionMessages('notifications/subscribed-channels/view/messages')
+            \Page\sessionMessages($messagesKey)
             .join('<div class="hr"></div>', $items)
             .$infoText
         )

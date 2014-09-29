@@ -2,12 +2,12 @@
 
 function create_page ($base = '') {
 
-    $fnsPageDir = __DIR__.'/../../../fns/Page';
+    $fnsDir = __DIR__.'/../../../fns';
 
-    include_once "$fnsPageDir/imageArrowLink.php";
-    include_once "$fnsPageDir/imageArrowLinkWithDescription.php";
-    include_once "$fnsPageDir/sessionMessages.php";
-    include_once "$fnsPageDir/tabs.php";
+    include_once "$fnsDir/Page/imageArrowLink.php";
+    include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
+    include_once "$fnsDir/Page/sessionMessages.php";
+    include_once "$fnsDir/Page/tabs.php";
     return Page\tabs(
         [
             [

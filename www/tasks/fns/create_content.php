@@ -1,6 +1,6 @@
 <?php
 
-function create_content ($user, $filterMessage, $items, $base) {
+function create_content ($user, $filterMessage, $items, $base, $searchForm) {
 
     $fnsDir = __DIR__.'/../../fns';
 
@@ -9,7 +9,7 @@ function create_content ($user, $filterMessage, $items, $base) {
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
-    return
+    $content =
         Page\tabs(
             [
                 [
@@ -24,5 +24,12 @@ function create_content ($user, $filterMessage, $items, $base) {
             create_new_item_button('Task', $base)
         )
         .create_options_panel($user, $base);
+
+    if ($searchForm) {
+        include_once "$fnsDir/compressed_js_script.php";
+        $content .= compressed_js_script('searchForm', "$base../");
+    }
+
+    return $content;
 
 }

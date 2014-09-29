@@ -9,13 +9,15 @@ $fnsDir = '../../../fns';
 
 unset($_SESSION['notifications/subscribed-channels/messages']);
 
+$unsubscribeHref = "../unsubscribe/submit.php?id=$id";
+
 include_once '../fns/ViewPage/create.php';
 include_once "$fnsDir/compressed_js_script.php";
 $content =
     ViewPage\create($subscribedChannel)
     .compressed_js_script('confirmDialog', $base)
     .'<script type="text/javascript">'
-        .'var unsubscribeHref = '.json_encode("../unsubscribe/submit.php?id=$id")
+        .'var unsubscribeHref = '.json_encode($unsubscribeHref)
     .'</script>'
     .'<script type="text/javascript" src="index.js"></script>';
 

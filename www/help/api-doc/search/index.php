@@ -1,16 +1,19 @@
 <?php
 
-include_once '../../../fns/signed_user.php';
+$base = '../../../';
+$fnsDir = '../../../fns';
+
+include_once "$fnsDir/signed_user.php";
 $user = signed_user();
 
-include_once '../../../fns/request_strings.php';
+include_once "$fnsDir/request_strings.php";
 list($keyword) = request_strings('keyword');
 
-include_once '../../../fns/str_collapse_spaces.php';
+include_once "$fnsDir/str_collapse_spaces.php";
 $keyword = str_collapse_spaces($keyword);
 
 if ($keyword === '') {
-    include_once '../../../fns/redirect.php';
+    include_once "$fnsDir/redirect.php";
     redirect('..');
 }
 
@@ -18,10 +21,10 @@ $lowerKeyword = mb_strtolower($keyword, 'UTF-8');
 $regex = '/('.preg_quote($lowerKeyword, '/').')+/i';
 $replace = '<mark>$1</mark>';
 
-include_once '../../../fns/SearchForm/content.php';
+include_once "$fnsDir/SearchForm/content.php";
 $searchContent = SearchForm\content($keyword, 'Search page...', '..');
 
-include_once '../../../fns/SearchForm/create.php';
+include_once "$fnsDir/SearchForm/create.php";
 $items = [SearchForm\create('./', $searchContent)];
 
 include_once 'fns/get_full_groups.php';
@@ -29,7 +32,7 @@ $groups = get_full_groups();
 
 $found = false;
 
-include_once '../../../fns/Page/imageLinkWithDescription.php';
+include_once "$fnsDir/Page/imageLinkWithDescription.php";
 foreach ($groups as $groupKey => $group) {
 
     if (strpos($groupKey, $lowerKeyword) !== false) {
@@ -79,12 +82,15 @@ foreach ($groups as $groupKey => $group) {
 }
 
 if (!$found) {
-    include_once '../../../fns/Page/info.php';
+    include_once "$fnsDir/Page/info.php";
     $items[] = Page\info('Nothing found');
 }
 
 include_once 'fns/create_content.php';
-$content = create_content($items);
+include_once "$fnsDir/compressed_js_script.php";
+$content =
+    create_content($items)
+    .compressed_js_script('searchForm', $base);
 
-include_once '../../../fns/echo_page.php';
-echo_page($user, 'Search API Documentation', $content, '../../../');
+include_once "$fnsDir/echo_page.php";
+echo_page($user, 'Search API Documentation', $content, $base);

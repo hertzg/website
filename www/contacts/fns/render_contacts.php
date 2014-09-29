@@ -2,11 +2,11 @@
 
 function render_contacts ($contacts, &$items, $params, $base = '') {
 
-    $fnsPageDir = __DIR__.'/../../fns/Page';
+    $fnsDir = __DIR__.'/../../fns';
 
     if ($contacts) {
-        include_once "$fnsPageDir/imageArrowLink.php";
-        include_once "$fnsPageDir/imageArrowLinkWithDescription.php";
+        include_once "$fnsDir/Page/imageArrowLink.php";
+        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         foreach ($contacts as $contact) {
 
             $queryString = htmlspecialchars(
@@ -31,7 +31,7 @@ function render_contacts ($contacts, &$items, $params, $base = '') {
 
         }
     } else {
-        include_once "$fnsPageDir/info.php";
+        include_once "$fnsDir/Page/info.php";
         $items[] = Page\info('No contacts');
     }
 

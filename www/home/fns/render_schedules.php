@@ -4,7 +4,7 @@ function render_schedules ($user, $mysqli, &$items) {
 
     if (!$user->show_schedules) return;
 
-    $fnsPageDir = __DIR__.'/../../fns/Page';
+    $fnsDir = __DIR__.'/../../fns';
 
     include_once __DIR__.'/check_schedule_check_day.php';
     check_schedule_check_day($mysqli, $user);
@@ -22,12 +22,12 @@ function render_schedules ($user, $mysqli, &$items) {
         if ($tomorrow) $descriptionItems[] = "$tomorrow tomorrow.";
         $description = join(' ', $descriptionItems);
 
-        include_once "$fnsPageDir/imageArrowLinkWithDescription.php";
+        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         $link = Page\imageArrowLinkWithDescription(
             $title, $description, $href, $icon);
 
     } else {
-        include_once "$fnsPageDir/imageArrowLink.php";
+        include_once "$fnsDir/Page/imageArrowLink.php";
         $link = Page\imageArrowLink($title, $href, $icon);
     }
 
