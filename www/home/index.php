@@ -37,8 +37,9 @@ foreach (array_chunk($items, 2) as $item) {
 
 include_once 'fns/create_new_notifications.php';
 include_once 'fns/create_options_panel.php';
-include_once '../fns/Page/tabs.php';
+include_once '../fns/compressed_js_script.php';
 include_once '../fns/Page/sessionMessages.php';
+include_once '../fns/Page/tabs.php';
 $content =
     Page\tabs(
         [],
@@ -47,7 +48,8 @@ $content =
         .create_new_notifications($mysqli, $user)
         .join('<div class="hr"></div>', $groupedItems)
     )
-    .create_options_panel();
+    .create_options_panel()
+    .compressed_js_script('searchForm', $base);
 
 include_once '../fns/echo_page.php';
 echo_page($user, 'Home', $content, $base);

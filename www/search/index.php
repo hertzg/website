@@ -1,8 +1,9 @@
 <?php
 
 $base = '../';
+$fnsDir = '../fns';
 
-include_once '../fns/require_user.php';
+include_once "$fnsDir/require_user.php";
 $user = require_user($base);
 $id_users = $user->id_users;
 
@@ -11,34 +12,34 @@ unset_session_vars();
 
 include_once '../lib/mysqli.php';
 
-include_once '../fns/request_strings.php';
+include_once "$fnsDir/request_strings.php";
 list($keyword, $searchFiles, $offset) = request_strings(
     'keyword', 'files', 'offset');
 
-include_once '../fns/str_collapse_spaces.php';
+include_once "$fnsDir/str_collapse_spaces.php";
 $keyword = str_collapse_spaces($keyword);
 
 if ($keyword === '') {
-    include_once '../fns/redirect.php';
+    include_once "$fnsDir/redirect.php";
     redirect('..');
 }
 
-include_once '../fns/SearchForm/content.php';
+include_once "$fnsDir/SearchForm/content.php";
 $formContent = SearchForm\content($keyword, 'Search...', '..');
 
-include_once '../fns/SearchForm/create.php';
+include_once "$fnsDir/SearchForm/create.php";
 $items = [SearchForm\create('./', $formContent)];
 
-include_once '../fns/Bookmarks/search.php';
+include_once "$fnsDir/Bookmarks/search.php";
 $bookmarks = Bookmarks\search($mysqli, $id_users, $keyword);
 
-include_once '../fns/Contacts/search.php';
+include_once "$fnsDir/Contacts/search.php";
 $contacts = Contacts\search($mysqli, $id_users, $keyword);
 
-include_once '../fns/Notes/search.php';
+include_once "$fnsDir/Notes/search.php";
 $notes = Notes\search($mysqli, $id_users, $keyword);
 
-include_once '../fns/Tasks/search.php';
+include_once "$fnsDir/Tasks/search.php";
 $tasks = Tasks\search($mysqli, $id_users, $keyword);
 
 include_once 'fns/search_folders_and_files.php';
@@ -57,7 +58,7 @@ if ($bookmarks || $contacts || $notes || $tasks || $folders || $files) {
     $offset = abs((int)$offset);
     $total = count($resultItems);
 
-    include_once '../fns/Paging/limit.php';
+    include_once "$fnsDir/Paging/limit.php";
     $limit = Paging\limit();
 
     include_once 'fns/render_prev_button.php';
@@ -71,7 +72,7 @@ if ($bookmarks || $contacts || $notes || $tasks || $folders || $files) {
 
 } else {
 
-    include_once '../fns/Page/info.php';
+    include_once "$fnsDir/Page/info.php";
     $items[] = Page\info('Nothing found');
 
     include_once 'fns/render_search_files_link.php';
@@ -79,8 +80,11 @@ if ($bookmarks || $contacts || $notes || $tasks || $folders || $files) {
 
 }
 
-include_once '../fns/Page/tabs.php';
-$content = Page\tabs([], 'Home', join('<div class="hr"></div>', $items));
+include_once "$fnsDir/compressed_js_script.php";
+include_once "$fnsDir/Page/tabs.php";
+$content =
+    Page\tabs([], 'Home', join('<div class="hr"></div>', $items))
+    .compressed_js_script('searchForm', $base);
 
-include_once '../fns/echo_page.php';
+include_once "$fnsDir/echo_page.php";
 echo_page($user, 'Search: '.htmlspecialchars($keyword), $content, $base);

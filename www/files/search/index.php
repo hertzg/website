@@ -1,23 +1,26 @@
 <?php
 
+$base = '../../';
+$fnsDir = '../../fns';
+
 include_once '../fns/require_optional_folder.php';
 include_once '../../lib/mysqli.php';
 list($user, $folder, $id_folders) = require_optional_folder($mysqli, '../');
 $id_users = $user->id_users;
 
-include_once '../../fns/request_strings.php';
+include_once "$fnsDir/request_strings.php";
 list($keyword, $deep) = request_strings('keyword', 'deep');
 
 $deep = (bool)$deep;
 
 $items = [];
 
-include_once '../../fns/str_collapse_spaces.php';
+include_once "$fnsDir/str_collapse_spaces.php";
 $keyword = str_collapse_spaces($keyword);
 
 if ($keyword === '') {
-    include_once '../../fns/create_folder_link.php';
-    include_once '../../fns/redirect.php';
+    include_once "$fnsDir/create_folder_link.php";
+    include_once "$fnsDir/redirect.php";
     redirect(create_folder_link($id_folders, '../'));
 }
 
@@ -27,11 +30,11 @@ if ($deep) {
         $id_folders, $keyword);
 } else {
 
-    include_once '../../fns/Folders/searchInFolder.php';
+    include_once "$fnsDir/Folders/searchInFolder.php";
     $folders = Folders\searchInFolder($mysqli,
         $id_users, $id_folders, $keyword);
 
-    include_once '../../fns/Files/searchInFolder.php';
+    include_once "$fnsDir/Files/searchInFolder.php";
     $files = Files\searchInFolder($mysqli, $id_users, $id_folders, $keyword);
 
 }
@@ -50,7 +53,7 @@ if (!$deep) {
     $params['deep'] = '1';
     $href = htmlspecialchars('./?'.http_build_query($params));
 
-    include_once '../../fns/Page/imageLink.php';
+    include_once "$fnsDir/Page/imageLink.php";
     $items[] = Page\imageLink('Search in Subfolders', $href, 'search-folder');
 
 }
@@ -58,17 +61,20 @@ if (!$deep) {
 include_once '../fns/unset_session_vars.php';
 unset_session_vars();
 
-include_once '../../fns/Page/tabs.php';
-$content = Page\tabs(
-    [
+include_once "$fnsDir/compressed_js_script.php";
+include_once "$fnsDir/Page/tabs.php";
+$content =
+    Page\tabs(
         [
-            'title' => 'Home',
-            'href' => '../../home/',
+            [
+                'title' => 'Home',
+                'href' => '../../home/',
+            ],
         ],
-    ],
-    'Files',
-    join('<div class="hr"></div>', $items)
-);
+        'Files',
+        join('<div class="hr"></div>', $items)
+    )
+    .compressed_js_script('searchForm', $base);
 
-include_once '../../fns/echo_page.php';
-echo_page($user, 'Files', $content, '../../');
+include_once "$fnsDir/echo_page.php";
+echo_page($user, 'Files', $content, $base);
