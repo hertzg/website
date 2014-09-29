@@ -10,13 +10,8 @@ function create_page ($mysqli, &$user, &$id, $base = '') {
     include_once "$fnsDir/Paging/limit.php";
     $limit = Paging\limit();
 
-    include_once "$fnsDir/request_strings.php";
-    list($offset) = request_strings('offset');
-    $offset = abs((int)$offset);
-    if ($offset % $limit) {
-        include_once "$fnsDir/redirect.php";
-        redirect('..');
-    }
+    include_once "$fnsDir/Paging/requestOffset.php";
+    $offset = Paging\requestOffset('..');
 
     $options = [];
 

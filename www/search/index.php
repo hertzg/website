@@ -13,8 +13,10 @@ unset_session_vars();
 include_once '../lib/mysqli.php';
 
 include_once "$fnsDir/request_strings.php";
-list($keyword, $searchFiles, $offset) = request_strings(
-    'keyword', 'files', 'offset');
+list($keyword, $searchFiles) = request_strings('keyword', 'files');
+
+include_once "$fnsDir/Paging/requestOffset.php";
+$offset = Paging\requestOffset('../home/');
 
 include_once "$fnsDir/str_collapse_spaces.php";
 $keyword = str_collapse_spaces($keyword);

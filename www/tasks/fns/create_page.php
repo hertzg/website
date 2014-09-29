@@ -6,22 +6,18 @@ function create_page ($mysqli, $user, $base = '') {
     $id_users = $user->id_users;
 
     include_once "$fnsDir/request_strings.php";
-    list($tag, $offset) = request_strings('tag', 'offset');
+    list($tag) = request_strings('tag');
+
+    include_once "$fnsDir/Paging/requestOffset.php";
+    $offset = Paging\requestOffset();
 
     $items = [];
 
     $searchAction = "{$base}search/";
     $searchPlaceholder = 'Search tasks...';
 
-    $offset = abs((int)$offset);
-
     include_once "$fnsDir/Paging/limit.php";
     $limit = Paging\limit();
-
-    if ($offset % $limit) {
-        include_once "$fnsDir/redirect.php";
-        redirect();
-    }
 
     $searchForm = false;
 
