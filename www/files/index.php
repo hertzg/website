@@ -18,7 +18,8 @@ if ($id) {
         .'<script type="text/javascript">'
             .'var deleteHref = '.json_encode($deleteHref)
         .'</script>'
-        .'<script type="text/javascript" defer="defer" src="index.js"></script>';
+        .'<script type="text/javascript" defer="defer" src="index.js">'
+        .'</script>';
 }
 
 include_once 'fns/unset_session_vars.php';

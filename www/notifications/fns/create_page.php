@@ -61,7 +61,8 @@ function create_page ($mysqli, $user, $base = '') {
 
             $id_subscribed_channels = $notification->id_subscribed_channels;
             if ($id_subscribed_channels) {
-                $href = "{$base}in-subscribed-channel/?id=$id_subscribed_channels";
+                $query = "?id=$id_subscribed_channels";
+                $href = "{$base}in-subscribed-channel/$query";
             } else {
                 $href = "{$base}in-channel/?id=$notification->id_channels";
             }
