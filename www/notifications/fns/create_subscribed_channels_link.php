@@ -2,7 +2,7 @@
 
 function create_subscribed_channels_link ($user, $base = '') {
 
-    $fnsPageDir = __DIR__.'/../../fns/Page';
+    $fnsDir = __DIR__.'/../../fns';
 
     $title = 'Other Channels';
     $icon = 'subscribed-channels';
@@ -10,11 +10,11 @@ function create_subscribed_channels_link ($user, $base = '') {
     $num_subscribed_channels = $user->num_subscribed_channels;
     if ($num_subscribed_channels) {
         $description = "$num_subscribed_channels total.";
-        include_once "$fnsPageDir/imageArrowLinkWithDescription.php";
+        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         return Page\imageArrowLinkWithDescription($title,
             $description, $href, $icon);
     }
-    include_once "$fnsPageDir/imageArrowLink.php";
+    include_once "$fnsDir/Page/imageArrowLink.php";
     return Page\imageArrowLink($title, $href, $icon);
 
 }

@@ -2,12 +2,12 @@
 
 function render_bookmarks ($bookmarks, &$items, $params, $base = '') {
 
-    $fnsPageDir = __DIR__.'/../../fns/Page';
+    $fnsDir = __DIR__.'/../../fns';
 
     if ($bookmarks) {
 
-        include_once "$fnsPageDir/imageArrowLink.php";
-        include_once "$fnsPageDir/imageArrowLinkWithDescription.php";
+        include_once "$fnsDir/Page/imageArrowLink.php";
+        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
 
         $icon = 'bookmark';
         foreach ($bookmarks as $bookmark) {
@@ -32,7 +32,7 @@ function render_bookmarks ($bookmarks, &$items, $params, $base = '') {
         }
 
     } else {
-        include_once "$fnsPageDir/info.php";
+        include_once "$fnsDir/Page/info.php";
         $items[] = Page\info('No bookmarks');
     }
 

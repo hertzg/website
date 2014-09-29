@@ -4,7 +4,7 @@ function render_notifications ($user, &$items) {
 
     if (!$user->show_notifications) return;
 
-    $fnsPageDir = __DIR__.'/../../fns/Page';
+    $fnsDir = __DIR__.'/../../fns';
 
     $num_notifications = $user->num_notifications;
     $title = 'Notifications';
@@ -19,18 +19,18 @@ function render_notifications ($user, &$items) {
                 $description .= " $num_notifications total.";
             }
 
-            include_once "$fnsPageDir/imageArrowLinkWithDescription.php";
+            include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
             $link = Page\imageArrowLinkWithDescription($title,
                 $description, $href, 'notification');
 
         } else {
             $description = "$num_notifications total.";
-            include_once "$fnsPageDir/imageArrowLinkWithDescription.php";
+            include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
             $link = Page\imageArrowLinkWithDescription($title,
                 $description, $href, 'old-notification');
         }
     } else {
-        include_once "$fnsPageDir/imageArrowLink.php";
+        include_once "$fnsDir/Page/imageArrowLink.php";
         $link = Page\imageArrowLink($title, $href, 'old-notification');
     }
 

@@ -2,8 +2,8 @@
 
 function create_options_panel ($user) {
 
-    $fnsPageDir = __DIR__.'/../../fns/Page';
-    include_once "$fnsPageDir/imageArrowLink.php";
+    $fnsDir = __DIR__.'/../../fns';
+    include_once "$fnsDir/Page/imageArrowLink.php";
 
     $options = [];
     if ($user->email !== '' && !$user->email_verified) {
@@ -29,7 +29,7 @@ function create_options_panel ($user) {
     $icon = 'connections';
     $num_connections = $user->num_connections;
     if ($num_connections) {
-        include_once "$fnsPageDir/imageArrowLinkWithDescription.php";
+        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         $description = "$num_connections total.";
         $options[] = Page\imageArrowLinkWithDescription(
             $title, $description, $href, $icon);
@@ -42,7 +42,7 @@ function create_options_panel ($user) {
     $icon = 'api-keys';
     $num_api_keys = $user->num_api_keys;
     if ($num_api_keys) {
-        include_once "$fnsPageDir/imageArrowLinkWithDescription.php";
+        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         $description = "$num_api_keys total.";
         $options[] = Page\imageArrowLinkWithDescription(
             $title, $description, $href, $icon);
@@ -54,7 +54,7 @@ function create_options_panel ($user) {
 
     $content = join('<div class="hr"></div>', $options);
 
-    include_once __DIR__.'/../../fns/create_panel.php';
+    include_once "$fnsDir/create_panel.php";
     return create_panel('Options', $content);
 
 }

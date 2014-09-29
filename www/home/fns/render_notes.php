@@ -4,7 +4,7 @@ function render_notes ($user, &$items) {
 
     if (!$user->show_notes) return;
 
-    $fnsPageDir = __DIR__.'/../../fns/Page';
+    $fnsDir = __DIR__.'/../../fns';
 
     $num_notes = $user->num_notes;
     $num_received_notes = $user->num_received_notes;
@@ -21,12 +21,12 @@ function render_notes ($user, &$items) {
         }
         $description = join(' ', $descriptionItems);
 
-        include_once "$fnsPageDir/imageArrowLinkWithDescription.php";
+        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         $link = Page\imageArrowLinkWithDescription($title,
             $description, $href, $icon);
 
     } else {
-        include_once "$fnsPageDir/imageArrowLink.php";
+        include_once "$fnsDir/Page/imageArrowLink.php";
         $link = Page\imageArrowLink($title, $href, $icon);
     }
 

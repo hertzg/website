@@ -2,11 +2,11 @@
 
 function render_notes ($notes, &$items, $params, $base = '') {
 
-    $fnsPageDir = __DIR__.'/../../fns/Page';
+    $fnsDir = __DIR__.'/../../fns';
 
     if ($notes) {
 
-        include_once "$fnsPageDir/imageArrowLink.php";
+        include_once "$fnsDir/Page/imageArrowLink.php";
         foreach ($notes as $note) {
 
             $queryString = htmlspecialchars(
@@ -18,7 +18,7 @@ function render_notes ($notes, &$items, $params, $base = '') {
 
             $text = $note->text;
             if ($note->encrypt) {
-                include_once __DIR__.'/../../fns/encrypt_text.php';
+                include_once "$fnsDir/encrypt_text.php";
                 $text = encrypt_text($text);
                 $icon = 'encrypted-note';
             } else {
@@ -30,7 +30,7 @@ function render_notes ($notes, &$items, $params, $base = '') {
 
         }
     } else {
-        include_once "$fnsPageDir/info.php";
+        include_once "$fnsDir/Page/info.php";
         $items[] = Page\info('No notes');
     }
 

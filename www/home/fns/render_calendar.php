@@ -4,7 +4,7 @@ function render_calendar ($user, $mysqli, &$items) {
 
     if (!$user->show_calendar) return;
 
-    $fnsPageDir = __DIR__.'/../../fns/Page';
+    $fnsDir = __DIR__.'/../../fns';
 
     include_once __DIR__.'/check_event_check_day.php';
     check_event_check_day($mysqli, $user);
@@ -32,16 +32,16 @@ function render_calendar ($user, $mysqli, &$items) {
         } else {
             $description = $n_events($today).' today.';
         }
-        include_once "$fnsPageDir/imageArrowLinkWithDescription.php";
+        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         $link = Page\imageArrowLinkWithDescription($title,
             $description, $href, $icon);
     } elseif ($tomorrow) {
         $description = $n_events($tomorrow).' tomorrow.';
-        include_once "$fnsPageDir/imageArrowLinkWithDescription.php";
+        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         $link = Page\imageArrowLinkWithDescription($title,
             $description, $href, $icon);
     } else {
-        include_once "$fnsPageDir/imageArrowLink.php";
+        include_once "$fnsDir/Page/imageArrowLink.php";
         $link = Page\imageArrowLink($title, $href, $icon);
     }
 

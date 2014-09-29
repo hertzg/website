@@ -4,13 +4,13 @@ namespace SearchPage;
 
 function renderBookmarks ($bookmarks, &$items, $params, $keyword) {
 
-    $fnsPageDir = __DIR__.'/../../../fns/Page';
+    $fnsDir = __DIR__.'/../../../fns';
 
     if ($bookmarks) {
 
         $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
 
-        include_once "$fnsPageDir/imageArrowLinkWithDescription.php";
+        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         foreach ($bookmarks as $bookmark) {
 
             $queryString = htmlspecialchars(
@@ -29,7 +29,7 @@ function renderBookmarks ($bookmarks, &$items, $params, $keyword) {
         }
 
     } else {
-        include_once "$fnsPageDir/info.php";
+        include_once "$fnsDir/Page/info.php";
         $items[] = \Page\info('No bookmarks found');
     }
 

@@ -2,7 +2,7 @@
 
 function create_channels_link ($user, $base = '') {
 
-    $fnsPageDir = __DIR__.'/../../fns/Page';
+    $fnsDir = __DIR__.'/../../fns';
 
     $title = 'My Channels';
     $icon = 'channels';
@@ -10,11 +10,11 @@ function create_channels_link ($user, $base = '') {
     $num_channels = $user->num_channels;
     if ($num_channels) {
         $description = "$num_channels total.";
-        include_once "$fnsPageDir/imageArrowLinkWithDescription.php";
+        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         return Page\imageArrowLinkWithDescription($title,
             $description, $href, $icon);
     }
-    include_once "$fnsPageDir/imageArrowLink.php";
+    include_once "$fnsDir/Page/imageArrowLink.php";
     return Page\imageArrowLink($title, $href, $icon);
 
 }
