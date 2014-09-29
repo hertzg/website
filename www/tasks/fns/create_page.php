@@ -23,6 +23,8 @@ function create_page ($mysqli, $user, $base = '') {
         redirect();
     }
 
+    $searchForm = false;
+
     if ($tag === '') {
 
         $filterMessage = '';
@@ -38,6 +40,7 @@ function create_page ($mysqli, $user, $base = '') {
 
             include_once "$fnsDir/SearchForm/create.php";
             $items[] = SearchForm\create($searchAction, $formContent);
+            $searchForm = true;
 
             include_once "$fnsDir/TaskTags/indexOnUser.php";
             $tags = TaskTags\indexOnUser($mysqli, $id_users);
@@ -65,6 +68,7 @@ function create_page ($mysqli, $user, $base = '') {
 
             include_once "$fnsDir/SearchForm/create.php";
             $items[] = SearchForm\create($searchAction, $formContent);
+            $searchForm = true;
 
         }
 
@@ -89,6 +93,6 @@ function create_page ($mysqli, $user, $base = '') {
     unset_session_vars();
 
     include_once __DIR__.'/create_content.php';
-    return create_content($user, $filterMessage, $items, $base);
+    return create_content($user, $filterMessage, $items, $base, $searchForm);
 
 }
