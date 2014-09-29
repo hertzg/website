@@ -11,6 +11,6 @@ function renderPrevButton ($offset, $limit, $total, &$items, $keyword, $tag) {
     if ($tag !== '') $args['tag'] = $tag;
 
     include_once __DIR__.'/../../../fns/Paging/prevButton.php';
-    $items[] = Paging\prevButton($offset, $limit, $total, 'Contacts', $args);
+    $items[] = \Paging\prevButton($offset, $limit, $total, 'Contacts', $args);
 
 }
