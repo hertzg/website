@@ -14,6 +14,8 @@ function create_page ($mysqli, $user, $folder) {
     include_once "$fnsDir/Files/indexInUserFolder.php";
     $files = Files\indexInUserFolder($mysqli, $id_users, $id);
 
+    $scripts = '';
+
     if (count($files) + count($folders) > 1) {
 
         include_once "$fnsDir/SearchForm/emptyContent.php";
@@ -25,6 +27,9 @@ function create_page ($mysqli, $user, $folder) {
 
         include_once "$fnsDir/SearchForm/create.php";
         $items[] = SearchForm\create('search/', $formContent);
+
+        include_once "$fnsDir/compressed_js_script.php";
+        $scripts = compressed_js_script('searchForm', '../');
 
     }
 
@@ -58,7 +63,8 @@ function create_page ($mysqli, $user, $folder) {
             .create_location_bar($mysqli, $folder)
             .join('<div class="hr"></div>', $items)
         )
-        .create_options_panel($user, $id, $files);
+        .create_options_panel($user, $id, $files)
+        .$scripts;
 
     if ($id) {
         include_once __DIR__.'/create_folder_options_panel.php';

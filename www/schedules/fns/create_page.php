@@ -10,6 +10,8 @@ function create_page ($mysqli, $user, $base = '') {
     include_once "$fnsDir/Schedules/indexOnUser.php";
     $schedules = Schedules\indexOnUser($mysqli, $user->id_users);
 
+    $scripts = '';
+
     $items = [];
     if ($schedules) {
 
@@ -20,6 +22,9 @@ function create_page ($mysqli, $user, $base = '') {
 
             include_once "$fnsDir/SearchForm/create.php";
             $items[] = SearchForm\create("{$base}search/", $formContent);
+
+            include_once "$fnsDir/compressed_js_script.php";
+            $scripts = compressed_js_script('searchForm', "$base../");
 
         }
 
@@ -48,19 +53,21 @@ function create_page ($mysqli, $user, $base = '') {
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
-    return Page\tabs(
-        [
+    return
+        Page\tabs(
             [
-                'title' => 'Home',
-                'href' => "$base../home/",
+                [
+                    'title' => 'Home',
+                    'href' => "$base../home/",
+                ],
             ],
-        ],
-        'Schedules',
-        Page\sessionErrors('schedules/errors')
-        .Page\sessionMessages('schedules/messages')
-        .join('<div class="hr"></div>', $items)
-        .create_options_panel($user, $base),
-        create_new_item_button('Schedule', $base)
-    );
+            'Schedules',
+            Page\sessionErrors('schedules/errors')
+            .Page\sessionMessages('schedules/messages')
+            .join('<div class="hr"></div>', $items)
+            .create_options_panel($user, $base),
+            create_new_item_button('Schedule', $base)
+        )
+        .$scripts;
 
 }
