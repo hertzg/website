@@ -18,11 +18,6 @@ function create ($mysqli, $user) {
     include_once "$fnsDir/Paging/limit.php";
     $limit = \Paging\limit();
 
-    if ($offset % $limit) {
-        include_once "$fnsDir/redirect.php";
-        redirect('./?keyword='.rawurlencode($keyword));
-    }
-
     include_once "$fnsDir/SearchForm/content.php";
     include_once "$fnsDir/SearchForm/create.php";
 
