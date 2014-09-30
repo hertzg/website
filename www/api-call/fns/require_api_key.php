@@ -19,14 +19,6 @@ function require_api_key ($permission_field) {
         die('"INVALID_API_KEY"');
     }
 
-    $expire_time = $apiKey->expire_time;
-    include_once __DIR__.'/../../fns/time_today.php';
-    if ($expire_time !== null && $expire_time < time_today()) {
-        http_response_code(403);
-        header('Content-Type: application/json');
-        die('"API_KEY_EXPIRED"');
-    }
-
     if (!$apiKey->$permission_field) {
         http_response_code(403);
         header('Content-Type: application/json');
@@ -38,6 +30,16 @@ function require_api_key ($permission_field) {
 
     include_once __DIR__.'/../../fns/Users/get.php';
     $user = Users\get($mysqli, $apiKey->id_users);
+
+    include_once __DIR__.'/../../fns/user_time_today.php';
+    $time_today = user_time_today($user);
+
+    $expire_time = $apiKey->expire_time;
+    if ($expire_time !== null && $expire_time < $time_today) {
+        http_response_code(403);
+        header('Content-Type: application/json');
+        die('"API_KEY_EXPIRED"');
+    }
 
     return [$apiKey, $user, $mysqli];
 

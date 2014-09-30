@@ -2,7 +2,7 @@
 
 namespace ViewPage;
 
-function create ($apiKey) {
+function create ($user, $apiKey) {
 
     $id = $apiKey->id;
     $fnsDir = __DIR__.'/../../../../fns';
@@ -44,7 +44,7 @@ function create ($apiKey) {
         \Page\sessionMessages('account/api-keys/view/messages')
         .\Form\label('Name', htmlspecialchars($apiKey->name))
         .'<div class="hr"></div>'
-        .createExpiresField($apiKey)
+        .createExpiresField($user, $apiKey)
         .'<div class="hr"></div>'
         .\Form\textarea('key', 'Key', [
             'value' => bin2hex($apiKey->key),

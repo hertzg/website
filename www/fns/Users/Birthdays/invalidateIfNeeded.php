@@ -6,8 +6,8 @@ function invalidateIfNeeded ($mysqli, &$user, $birthday_time) {
 
     if ($birthday_time === null) return;
 
-    include_once __DIR__.'/../../time_today.php';
-    $timeToday = time_today();
+    include_once __DIR__.'/../../user_time_today.php';
+    $timeToday = user_time_today($user);
     $timeTomorrow = $timeToday + 60 * 60 * 24;
 
     $day = date('j', $birthday_time);

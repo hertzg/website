@@ -8,7 +8,7 @@ $user = require_user('../../../');
 
 include_once '../../../fns/Users/Events/deleteAll.php';
 include_once '../../../lib/mysqli.php';
-Users\Events\deleteAll($mysqli, $user->id_users);
+Users\Events\deleteAll($mysqli, $user);
 
 unset($_SESSION['calendar/errors']);
 $_SESSION['calendar/messages'] = ['All events have been deleted.'];

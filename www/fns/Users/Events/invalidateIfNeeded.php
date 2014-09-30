@@ -4,8 +4,8 @@ namespace Users\Events;
 
 function invalidateIfNeeded ($mysqli, &$user, $event_time) {
 
-    include_once __DIR__.'/../../time_today.php';
-    $timeToday = time_today();
+    include_once __DIR__.'/../../user_time_today.php';
+    $timeToday = user_time_today($user);
     $timeTomorrow = $timeToday + 60 * 60 * 24;
 
     if ($event_time == $timeToday || $event_time == $timeTomorrow) {

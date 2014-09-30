@@ -12,8 +12,8 @@ if ($user->num_api_keys) {
     include_once '../../lib/mysqli.php';
     $apiKeys = ApiKeys\indexOnUser($mysqli, $user->id_users);
 
-    include_once '../../fns/time_today.php';
-    $time_today = time_today();
+    include_once '../../fns/user_time_today.php';
+    $time_today = user_time_today($user);
 
     include_once '../../fns/Page/imageArrowLinkWithDescription.php';
     foreach ($apiKeys as $apiKey) {

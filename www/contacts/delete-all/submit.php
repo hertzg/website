@@ -8,7 +8,7 @@ $user = require_user('../../');
 
 include_once '../../fns/Users/Contacts/deleteAll.php';
 include_once '../../lib/mysqli.php';
-Users\Contacts\deleteAll($mysqli, $user->id_users);
+Users\Contacts\deleteAll($mysqli, $user);
 
 unset($_SESSION['contacts/errors']);
 $_SESSION['contacts/messages'] = ['All contacts have been deleted.'];

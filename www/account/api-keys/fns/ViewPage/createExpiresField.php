@@ -2,12 +2,12 @@
 
 namespace ViewPage;
 
-function createExpiresField ($apiKey) {
+function createExpiresField ($user, $apiKey) {
 
     $fnsDir = __DIR__.'/../../../../fns';
 
-    include_once "$fnsDir/time_today.php";
-    $time_today = time_today();
+    include_once "$fnsDir/user_time_today.php";
+    $time_today = user_time_today($user);
 
     $label = 'Expires';
 

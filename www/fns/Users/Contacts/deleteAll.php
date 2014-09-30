@@ -2,8 +2,9 @@
 
 namespace Users\Contacts;
 
-function deleteAll ($mysqli, $id_users) {
+function deleteAll ($mysqli, $user) {
 
+    $id_users = $user->id_users;
     $fnsDir = __DIR__.'/../..';
 
     include_once "$fnsDir/Contacts/indexOnUser.php";
@@ -22,8 +23,8 @@ function deleteAll ($mysqli, $id_users) {
     include_once "$fnsDir/ContactTags/deleteOnUser.php";
     \ContactTags\deleteOnUser($mysqli, $id_users);
 
-    include_once "$fnsDir/../fns/time_today.php";
-    $birthdays_check_day = time_today();
+    include_once "$fnsDir/../fns/user_time_today.php";
+    $birthdays_check_day = user_time_today($user);
     $sql = 'update users set num_contacts = 0,'
         .' num_birthdays_today = 0, num_birthdays_tomorrow = 0,'
         ." birthdays_check_day = $birthdays_check_day"
