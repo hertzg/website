@@ -1,11 +1,11 @@
 <?php
 
-function create_offset_select ($interval, $value) {
+function create_offset_select ($user, $interval, $value) {
 
     $fnsDir = __DIR__.'/../../fns';
 
-    include_once "$fnsDir/time_today.php";
-    $timeToday = time_today();
+    include_once "$fnsDir/user_time_today.php";
+    $timeToday = user_time_today($user);
 
     $options = [
         '0' => 'Today',

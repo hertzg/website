@@ -36,7 +36,7 @@ function create_page ($mysqli, $user, $base = '') {
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         foreach ($schedules as $schedule) {
             $title = htmlspecialchars($schedule->text);
-            $description = format_days_left($schedule->days_left);
+            $description = format_days_left($user, $schedule->days_left);
             $href = "{$base}view/".ItemList\escapedItemQuery($schedule->id);
             $items[] = Page\imageArrowLinkWithDescription(
                 $title, $description, $href, 'schedule');

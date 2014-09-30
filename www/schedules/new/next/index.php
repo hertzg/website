@@ -21,7 +21,7 @@ $content = Page\tabs(
     Page\imageLink('Back', '../'.ItemList\escapedPageQuery(), 'arrow-left')
     .'<div class="hr"></div>'
     .'<form action="submit.php" method="post">'
-        .create_offset_select($first_stage['interval'], 0)
+        .create_offset_select($user, $first_stage['interval'], 0)
         .'<div class="hr"></div>'
         .Form\button('Save Schedule')
         .ItemList\pageHiddenInputs()

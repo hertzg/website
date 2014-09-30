@@ -15,7 +15,7 @@ $escapedItemQuery = ItemList\escapedItemQuery($id);
 include_once '../fns/create_view_page.php';
 include_once "$fnsDir/Page/confirmDialog.php";
 $content =
-    create_view_page($schedule)
+    create_view_page($user, $schedule)
     .Page\confirmDialog('Are you sure you want to delete the schedule?',
         'Yes, delete schedule', "submit.php$escapedItemQuery",
         "../view/$escapedItemQuery");
