@@ -27,6 +27,9 @@ function create_page ($mysqli, &$user, &$id, $base = '') {
     $notifications = Notifications\indexPageOnUserChannel(
         $mysqli, $user->id_users, $id, $offset, $limit, $total);
 
+    include_once "$fnsDir/check_offset_overflow.php";
+    check_offset_overflow($offset, $limit, $total, ['id' => $id]);
+
     include_once __DIR__.'/../../fns/render_filtered_notifications.php';
     render_filtered_notifications($base, $id, $offset,
         $limit, $total, $notifications, $items, $options);

@@ -67,13 +67,16 @@ function create ($mysqli, $user) {
 
     }
 
+    $params = ['keyword' => $keyword];
+    if ($tag !== '') $params['tag'] = $tag;
+    if ($offset) $params['offset'] = $offset;
+
+    include_once "$fnsDir/check_offset_overflow.php";
+    check_offset_overflow($offset, $limit, $total, $params);
+
     include_once __DIR__.'/renderPrevButton.php';
     renderPrevButton($offset, $limit, $total, $items, $keyword, $tag);
 
-    $params = [];
-    if ($keyword !== '') $params['keyword'] = $keyword;
-    if ($tag !== '') $params['tag'] = $tag;
-    if ($offset) $params['offset'] = $offset;
     include_once __DIR__.'/renderTasks.php';
     renderTasks($tasks, $items, $params, $keyword);
 

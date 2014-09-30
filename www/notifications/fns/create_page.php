@@ -32,6 +32,9 @@ function create_page ($mysqli, $user, $base = '') {
         $notifications = Notifications\indexPageOnUser($mysqli,
             $id_users, $offset, $limit, $total);
 
+        include_once "$fnsDir/check_offset_overflow.php";
+        check_offset_overflow($offset, $limit, $total, []);
+
         include_once "$fnsDir/ItemList/escapedPageQuery.php";
         $escapedPageQuery = ItemList\escapedPageQuery();
 

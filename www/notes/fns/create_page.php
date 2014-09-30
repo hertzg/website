@@ -73,12 +73,16 @@ function create_page ($mysqli, $user, $base = '') {
 
     }
 
-    include_once __DIR__.'/render_prev_button.php';
-    render_prev_button($offset, $limit, $total, $items, $tag);
-
     $params = [];
     if ($tag !== '') $params['tag'] = $tag;
     if ($offset) $params['offset'] = $offset;
+
+    include_once "$fnsDir/check_offset_overflow.php";
+    check_offset_overflow($offset, $limit, $total, $params);
+
+    include_once __DIR__.'/render_prev_button.php';
+    render_prev_button($offset, $limit, $total, $items, $tag);
+
     include_once __DIR__.'/render_notes.php';
     render_notes($notes, $items, $params);
 
