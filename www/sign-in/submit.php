@@ -35,6 +35,10 @@ if (!$errors) {
 include_once '../fns/redirect.php';
 
 if ($errors) {
+
+    include_once '../fns/InvalidSignins/add.php';
+    InvalidSignins\add($mysqli, $_SERVER['REMOTE_ADDR']);
+
     $_SESSION['sign-in/errors'] = $errors;
     $_SESSION['sign-in/values'] = [
         'username' => $username,
@@ -43,6 +47,7 @@ if ($errors) {
         'return' => $return,
     ];
     redirect();
+
 }
 
 unset(
