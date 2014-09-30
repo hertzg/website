@@ -10,8 +10,8 @@ unset_session_vars();
 include_once '../fns/request_strings.php';
 list($year, $month, $day) = request_strings('year', 'month', 'day');
 
-include_once '../fns/time_today.php';
-$timeToday = time_today();
+include_once '../fns/user_time_today.php';
+$timeToday = user_time_today($user);
 
 $monthToday = (int)date('n', $timeToday);
 $yearToday = (int)date('Y', $timeToday);

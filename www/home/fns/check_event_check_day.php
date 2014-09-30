@@ -4,8 +4,8 @@ function check_event_check_day ($mysqli, &$user) {
 
     $fnsDir = __DIR__.'/../../fns';
 
-    include_once "$fnsDir/time_today.php";
-    $timeToday = time_today();
+    include_once "$fnsDir/user_time_today.php";
+    $timeToday = user_time_today($user);
 
     if ($user->events_check_day == $timeToday) return;
 
