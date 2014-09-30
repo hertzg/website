@@ -18,4 +18,4 @@ if ($user->num_tasks) {
 }
 
 include_once "$fnsDir/echo_page.php";
-echo_page($user, 'tasks', $content, $base, ['head' => $head]);
+echo_page($user, 'Tasks', $content, $base, ['head' => $head]);
