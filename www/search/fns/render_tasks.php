@@ -1,11 +1,11 @@
 <?php
 
-function render_tasks ($tasks, &$items, $regex, $encodedKeyword) {
+function render_tasks ($tasks, &$items, $regex, $encodedKeyword, $user) {
 
     $fnsDir = __DIR__.'/../../fns';
 
-    include_once "$fnsDir/time_today.php";
-    $time_today = time_today();
+    include_once "$fnsDir/user_time_today.php";
+    $time_today = user_time_today($user);
 
     include_once "$fnsDir/create_task_link.php";
     foreach ($tasks as $task) {

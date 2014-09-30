@@ -12,7 +12,7 @@ $fnsDir = '../../../fns';
 include_once '../fns/ViewPage/create.php';
 include_once "$fnsDir/Page/confirmDialog.php";
 $content =
-    ViewPage\create($receivedTask)
+    ViewPage\create($receivedTask, $user)
     .Page\confirmDialog('Are you sure you want to delete the task?'
         .' It will be moved to Trash.', 'Yes, delete task',
         "submit.php?id=$id", "../view/?id=$id");

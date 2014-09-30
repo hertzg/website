@@ -31,7 +31,7 @@ function expect_received_contact_object ($engine,
     $timezone = $receivedContact->timezone;
     if ($timezone !== null) {
         $engine->expectType("$variableName.timezone",
-            'number', $contact->timezone);
+            'integer', $contact->timezone);
     }
 
     $engine->expectType("$variableName.tags",

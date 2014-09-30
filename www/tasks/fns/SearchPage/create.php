@@ -78,7 +78,7 @@ function create ($mysqli, $user) {
     renderPrevButton($offset, $limit, $total, $items, $keyword, $tag);
 
     include_once __DIR__.'/renderTasks.php';
-    renderTasks($tasks, $items, $params, $keyword);
+    renderTasks($tasks, $items, $params, $keyword, $user);
 
     include_once __DIR__.'/renderNextButton.php';
     renderNextButton($offset, $limit, $total, $items, $keyword, $tag);

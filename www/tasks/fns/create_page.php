@@ -84,7 +84,7 @@ function create_page ($mysqli, $user, $base = '') {
     render_prev_button($offset, $limit, $total, $items, $tag);
 
     include_once __DIR__.'/render_tasks.php';
-    render_tasks($tasks, $items, $params, $base);
+    render_tasks($tasks, $items, $params, $user, $base);
 
     include_once __DIR__.'/render_next_button.php';
     render_next_button($offset, $limit, $total, $items, $tag);

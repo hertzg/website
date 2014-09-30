@@ -2,7 +2,7 @@
 
 namespace ViewPage;
 
-function create ($deletedItem, &$title, &$head) {
+function create ($deletedItem, $user, &$title, &$head) {
 
     $id = $deletedItem->id;
     $fnsDir = __DIR__.'/../../../fns';
@@ -44,7 +44,7 @@ function create ($deletedItem, &$title, &$head) {
         renderFolder($data, $items);
     } elseif ($type == 'task' || $type == 'receivedTask') {
         include_once __DIR__.'/renderTask.php';
-        renderTask($data, $items, $infoText);
+        renderTask($data, $user, $items, $infoText);
     }
 
     if ($type == 'receivedBookmark' || $type == 'receivedContact'

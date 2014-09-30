@@ -1,6 +1,7 @@
 <?php
 
 function to_client_json ($contact) {
+    $timezone = $contact->timezone;
     return [
         'id' => (int)$contact->id_contacts,
         'full_name' => $contact->full_name,
@@ -11,7 +12,7 @@ function to_client_json ($contact) {
         'phone2' => $contact->phone2,
         'birthday_time' => (int)$contact->birthday_time,
         'username' => $contact->username,
-        'timezone' => $contact->timezone,
+        'timezone' => $timezone === null ? null : (int)$contact->timezone,
         'tags' => $contact->tags,
         'favorite' => (bool)$contact->favorite,
         'insert_time' => (int)$contact->insert_time,

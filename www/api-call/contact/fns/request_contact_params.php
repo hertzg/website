@@ -1,6 +1,6 @@
 <?php
 
-function request_contact_params () {
+function request_contact_params ($user) {
 
     include_once __DIR__.'/../../../fns/Contacts/request.php';
     list($full_name, $alias, $address, $email, $phone1,
@@ -14,7 +14,8 @@ function request_contact_params () {
     } else {
         include_once __DIR__.'/../../../fns/time_today.php';
         $birthday_time = time_today($birthday_time);
-        $birthday_time = min($birthday_time, time_today());
+        include_once __DIR__.'/../../../fns/user_time_today.php';
+        $birthday_time = min($birthday_time, user_time_today($user));
     }
 
     if ($full_name === '') {

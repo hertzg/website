@@ -23,7 +23,7 @@ $itemQuery = ItemList\itemQuery($id);
 include_once '../fns/ViewPage/create.php';
 include_once "$fnsDir/compressed_js_script.php";
 $content =
-    ViewPage\create($mysqli, $task)
+    ViewPage\create($mysqli, $task, $user)
     .compressed_js_script('confirmDialog', $base)
     .'<script type="text/javascript">'
         .'var deleteHref = '.json_encode("../delete/submit.php$itemQuery")

@@ -8,7 +8,7 @@ include_once 'fns/require_task.php';
 $task = require_task($mysqli, $id_users);
 
 include_once 'fns/request_task_params.php';
-$values = request_task_params();
+$values = request_task_params($user);
 list($text, $deadline_time, $tags, $tag_names, $top_priority) = $values;
 
 include_once '../../fns/Users/Tasks/edit.php';

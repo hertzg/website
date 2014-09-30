@@ -2,7 +2,7 @@
 
 namespace ViewPage;
 
-function create ($mysqli, $task) {
+function create ($mysqli, $task, $user) {
 
     $id = $task->id_tasks;
     $fnsDir = __DIR__.'/../../../fns';
@@ -12,10 +12,14 @@ function create ($mysqli, $task) {
 
     $deadline_time = $task->deadline_time;
     if ($deadline_time !== null) {
-        include_once "$fnsDir/time_today.php";
+
+        include_once "$fnsDir/user_time_today.php";
+        $timeToday = user_time_today($user);
+
         include_once "$fnsDir/format_deadline.php";
         $items[] = \Page\text('Deadline '.date('F d, Y', $deadline_time)
-            .' ('.format_deadline($deadline_time, time_today()).')');
+            .' ('.format_deadline($deadline_time, $timeToday).')');
+
     }
 
     include_once "$fnsDir/TaskTags/indexOnTask.php";

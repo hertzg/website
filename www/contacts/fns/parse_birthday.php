@@ -1,6 +1,6 @@
 <?php
 
-function parse_birthday ($day, $month, $year, &$errors, &$time) {
+function parse_birthday ($day, $month, $year, $user, &$errors, &$time) {
 
     if ($day === 0 && $month === 0 && $year === 0) return;
 
@@ -27,7 +27,7 @@ function parse_birthday ($day, $month, $year, &$errors, &$time) {
 
     $time = mktime(0, 0, 0, $month, $day, $year);
 
-    include_once __DIR__.'/../../fns/time_today.php';
-    $time = min($time, time_today());
+    include_once __DIR__.'/../../fns/user_time_today.php';
+    $time = min($time, user_time_today($user));
 
 }

@@ -2,7 +2,7 @@
 
 namespace SearchPage;
 
-function renderTasks ($tasks, &$items, $params, $keyword) {
+function renderTasks ($tasks, &$items, $params, $keyword, $user) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
@@ -10,8 +10,8 @@ function renderTasks ($tasks, &$items, $params, $keyword) {
 
         $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
 
-        include_once "$fnsDir/time_today.php";
-        $time_today = time_today();
+        include_once "$fnsDir/user_time_today.php";
+        $time_today = user_time_today($user);
 
         include_once "$fnsDir/create_task_link.php";
         foreach ($tasks as $task) {

@@ -10,10 +10,11 @@ $fnsDir = '../../fns';
 include_once '../fns/ViewPage/create.php';
 include_once "$fnsDir/Page/confirmDialog.php";
 $content =
-    ViewPage\create($deletedItem, $title, $head)
+    ViewPage\create($deletedItem, $user, $title, $head)
     .Page\confirmDialog('Are you sure you want to purge the item?',
         'Yes, purge item', "submit.php?id=$id", "../view/?id=$id");
 
+include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";
 echo_page($user, "Purge $title?", $content, $base, [
     'head' => compressed_css_link('confirmDialog', $base),

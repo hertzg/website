@@ -22,7 +22,7 @@ function expect_contact_object ($engine, $variableName, $contact) {
     $timezone = $contact->timezone;
     if ($timezone !== null) {
         $engine->expectType("$variableName.timezone",
-            'number', $contact->timezone);
+            'integer', $contact->timezone);
     }
 
     $engine->expectType("$variableName.tags", 'string', $contact->tags);

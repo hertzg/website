@@ -1,7 +1,7 @@
 <?php
 
 function create_items ($bookmarks, $contacts,
-    $notes, $tasks, $folders, $files, $keyword) {
+    $notes, $tasks, $folders, $files, $keyword, $user) {
 
     $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
     $encodedKeyword = rawurlencode($keyword);
@@ -25,7 +25,7 @@ function create_items ($bookmarks, $contacts,
 
     if ($tasks) {
         include_once __DIR__.'/render_tasks.php';
-        render_tasks($tasks, $items, $regex, $encodedKeyword);
+        render_tasks($tasks, $items, $regex, $encodedKeyword, $user);
     }
 
     if ($folders) {

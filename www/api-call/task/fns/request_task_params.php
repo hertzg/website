@@ -1,6 +1,6 @@
 <?php
 
-function request_task_params () {
+function request_task_params ($user) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
@@ -13,9 +13,9 @@ function request_task_params () {
     if ($deadline_time === '') {
         $deadline_time = null;
     } else {
-        include_once "$fnsDir/time_today.php";
+        include_once "$fnsDir/user_time_today.php";
         $deadline_time = time_today($deadline_time);
-        $deadline_time = max($deadline_time, time_today());
+        $deadline_time = max($deadline_time, user_time_today($user));
     }
 
     if ($text === '') {

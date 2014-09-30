@@ -1,13 +1,13 @@
 <?php
 
-function render_tasks ($tasks, &$items, $params, $base = '') {
+function render_tasks ($tasks, &$items, $params, $user, $base = '') {
 
     $fnsDir = __DIR__.'/../../fns';
 
     if ($tasks) {
 
-        include_once "$fnsDir/time_today.php";
-        $time_today = time_today();
+        include_once "$fnsDir/user_time_today.php";
+        $time_today = user_time_today($user);
 
         include_once "$fnsDir/create_task_link.php";
         foreach ($tasks as $task) {
