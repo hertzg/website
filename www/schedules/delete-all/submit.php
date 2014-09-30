@@ -10,7 +10,7 @@ $user = require_user($base);
 
 include_once '../../fns/Users/Schedules/deleteAll.php';
 include_once '../../lib/mysqli.php';
-Users\Schedules\deleteAll($mysqli, $user->id_users);
+Users\Schedules\deleteAll($mysqli, $user);
 
 unset($_SESSION['schedules/errors']);
 $_SESSION['schedules/messages'] = ['All schedules have been delete.'];

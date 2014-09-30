@@ -14,7 +14,7 @@ function add ($mysqli, $user, $text, $interval, $offset) {
     addNumber($mysqli, $id_users, 1);
 
     include_once "$fnsDir/days_left_from_today.php";
-    $days_left = days_left_from_today($interval, $offset);
+    $days_left = days_left_from_today($user, $interval, $offset);
 
     include_once __DIR__.'/invalidateIfNeeded.php';
     invalidateIfNeeded($mysqli, $user, $days_left);

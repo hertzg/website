@@ -4,7 +4,8 @@ include_once 'fns/require_first_stage.php';
 list($user, $id, $schedule, $first_stage) = require_first_stage();
 
 include_once '../../../fns/days_left_from_today.php';
-$days_left = days_left_from_today($schedule->interval, $schedule->offset);
+$days_left = days_left_from_today($user,
+    $schedule->interval, $schedule->offset);
 
 include_once '../../../fns/ItemList/escapedItemQuery.php';
 $escapedItemQuery = ItemList\escapedItemQuery($id);

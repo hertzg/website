@@ -31,7 +31,7 @@ function create_search_page ($mysqli, $user) {
     if ($schedules) {
 
         include_once __DIR__.'/sort_schedules.php';
-        sort_schedules($schedules);
+        sort_schedules($user, $schedules);
 
         $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
 

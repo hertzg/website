@@ -9,7 +9,8 @@ function create_view_page ($user, $schedule) {
     $textItem = create_text_item($schedule->text, '../../');
 
     include_once "$fnsDir/days_left_from_today.php";
-    $days_left = days_left_from_today($schedule->interval, $schedule->offset);
+    $days_left = days_left_from_today($user,
+        $schedule->interval, $schedule->offset);
 
     include_once __DIR__.'/format_days_left.php';
     $next = format_days_left($user, $days_left);

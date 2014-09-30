@@ -11,8 +11,8 @@ $days_left = Schedules\requestSecondStage($first_stage['interval']);
 
 $interval = $first_stage['interval'];
 
-include_once '../../../fns/day_today.php';
-$offset = (day_today() + $days_left) % $interval;
+include_once '../../../fns/user_day.php';
+$offset = (user_day($user) + $days_left) % $interval;
 
 include_once '../../../fns/Users/Schedules/edit.php';
 include_once '../../../lib/mysqli.php';

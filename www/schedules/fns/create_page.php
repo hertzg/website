@@ -29,7 +29,7 @@ function create_page ($mysqli, $user, $base = '') {
         }
 
         include_once __DIR__.'/sort_schedules.php';
-        sort_schedules($schedules);
+        sort_schedules($user, $schedules);
 
         include_once __DIR__.'/format_days_left.php';
         include_once "$fnsDir/ItemList/escapedItemQuery.php";
