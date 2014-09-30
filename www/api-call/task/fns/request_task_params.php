@@ -13,8 +13,9 @@ function request_task_params ($user) {
     if ($deadline_time === '') {
         $deadline_time = null;
     } else {
+        include_once "$fnsDir/daytime.php";
+        $deadline_time = daytime($deadline_time);
         include_once "$fnsDir/user_time_today.php";
-        $deadline_time = time_today($deadline_time);
         $deadline_time = max($deadline_time, user_time_today($user));
     }
 

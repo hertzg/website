@@ -12,8 +12,8 @@ function request_contact_params ($user) {
     if ($birthday_time === '') {
         $birthday_time = null;
     } else {
-        include_once __DIR__.'/../../../fns/time_today.php';
-        $birthday_time = time_today($birthday_time);
+        include_once __DIR__.'/../../../fns/daytime.php';
+        $birthday_time = daytime($birthday_time);
         include_once __DIR__.'/../../../fns/user_time_today.php';
         $birthday_time = min($birthday_time, user_time_today($user));
     }
