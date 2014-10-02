@@ -28,17 +28,20 @@ if (!$errors) {
     include_once '../lib/mysqli.php';
     $user = Users\getByUsernameAndPassword($mysqli, $username, $password);
 
-    if (!$user) $errors[] = 'Invalid username or password.';
+    if (!$user) {
+
+        $errors[] = 'Invalid username or password.';
+
+        include_once '../fns/InvalidSignins/add.php';
+        InvalidSignins\add($mysqli, $_SERVER['REMOTE_ADDR']);
+
+    }
 
 }
 
 include_once '../fns/redirect.php';
 
 if ($errors) {
-
-    include_once '../fns/InvalidSignins/add.php';
-    InvalidSignins\add($mysqli, $_SERVER['REMOTE_ADDR']);
-
     $_SESSION['sign-in/errors'] = $errors;
     $_SESSION['sign-in/values'] = [
         'username' => $username,
@@ -47,7 +50,6 @@ if ($errors) {
         'return' => $return,
     ];
     redirect();
-
 }
 
 unset(
