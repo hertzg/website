@@ -4,6 +4,7 @@ include_once '../fns/require_received_folder_file.php';
 include_once '../../../../lib/mysqli.php';
 list($receivedFolderFile, $id, $user) = require_received_folder_file($mysqli);
 
+$base = '../../../../';
 $fnsDir = '../../../../fns';
 
 if ($receivedFolderFile->parent_id) {
@@ -22,7 +23,7 @@ $downloadLink = Page\imageLink('Download', $href, 'download');
 
 include_once "$fnsDir/Page/filePreview.php";
 $filePreview = Page\filePreview($receivedFolderFile->media_type,
-    $receivedFolderFile->content_type, $id, '../download-file/');
+    $receivedFolderFile->content_type, $id, '../download-file/', $base);
 
 include_once "$fnsDir/bytestr.php";
 include_once "$fnsDir/create_panel.php";
@@ -49,4 +50,4 @@ $content = Page\tabs(
 );
 
 include_once "$fnsDir/echo_page.php";
-echo_page($user, $title, $content, '../../../../');
+echo_page($user, $title, $content, $base);

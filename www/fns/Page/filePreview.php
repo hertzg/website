@@ -2,7 +2,7 @@
 
 namespace Page;
 
-function filePreview ($media_type, $content_type, $id, $downloadBase) {
+function filePreview ($media_type, $content_type, $id, $downloadBase, $base) {
 
     $audio = $media_type == 'audio';
     $image = $media_type == 'image';
@@ -12,12 +12,13 @@ function filePreview ($media_type, $content_type, $id, $downloadBase) {
 
         $src = "$downloadBase?id=$id&amp;contentType=$content_type";
 
-        $html = '<div class="preview">';
-        if ($audio) $html .= "<audio src=\"$src\" controls=\"controls\" />";
-        elseif ($image) $html .= "<img src=\"$src\" />";
-        else $html .= "<video src=\"$src\" controls=\"controls\" />";
-        $html .= '</div>';
-        return $html;
+        if ($audio) $content = "<audio src=\"$src\" controls=\"controls\" />";
+        elseif ($image) $content = "<img src=\"$src\" />";
+        else $content = "<video src=\"$src\" controls=\"controls\" />";
+
+        include_once __DIR__.'/../compressed_js_script.php';
+        return "<div class=\"preview\">$content</div>"
+            .compressed_js_script('filePreview', $base);
 
     }
 

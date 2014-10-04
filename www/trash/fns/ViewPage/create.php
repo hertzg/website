@@ -18,7 +18,6 @@ function create ($deletedItem, $user, &$title, &$head) {
     include_once "$fnsDir/date_ago.php";
     $infoText = "$typeName deleted ".date_ago($deletedItem->insert_time).'.';
 
-    $base = '../../';
     $head = '';
     $scripts = '';
 
@@ -31,7 +30,7 @@ function create ($deletedItem, $user, &$title, &$head) {
         renderContact($id, $data, $items, $infoText, $scripts);
 
         include_once "$fnsDir/compressed_css_link.php";
-        $head = compressed_css_link('contact', $base);
+        $head = compressed_css_link('contact', '../../');
 
     } elseif ($type == 'note' || $type == 'receivedNote') {
         include_once __DIR__.'/renderNote.php';

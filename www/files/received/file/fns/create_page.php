@@ -33,7 +33,8 @@ function create_page ($receivedFile, $base = '') {
 
     include_once "$fnsDir/Page/filePreview.php";
     $filePreview = Page\filePreview($receivedFile->media_type,
-        $receivedFile->content_type, $id, "{$base}download/");
+        $receivedFile->content_type, $id, "{$base}download/",
+        "$base../../../");
 
     include_once "$fnsDir/bytestr.php";
     include_once "$fnsDir/create_panel.php";

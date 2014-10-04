@@ -14,7 +14,7 @@ function renderFile ($id, $file, &$items) {
 
     include_once "$fnsDir/Page/filePreview.php";
     $filePreview = \Page\filePreview($file->media_type,
-        $file->content_type, $id, '../download-file/');
+        $file->content_type, $id, '../download-file/', '../../');
     $items[] = \Form\label('Preview', $filePreview);
 
 }
