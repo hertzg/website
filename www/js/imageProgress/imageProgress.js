@@ -18,12 +18,6 @@
         hideOverlay()
         wrapper.removeChild(progressDiv)
     })
-    ;(function (style) {
-        style.display = 'inline-block'
-        style.verticalAlign = 'top'
-        style.maxWidth = '100%'
-        style.maxHeight = '150px'
-    })(newImg.style)
 
     var progressDiv = document.createElement('div')
     ;(function (style) {
