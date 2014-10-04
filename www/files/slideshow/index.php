@@ -4,6 +4,8 @@ include_once '../fns/require_parent_folder.php';
 include_once '../../lib/mysqli.php';
 list($parentFolder, $parent_id_folders, $user) = require_parent_folder($mysqli);
 
+$base = '../../';
+
 include_once '../../fns/Files/indexPreviewableInUserFolder.php';
 $files = Files\indexPreviewableInUserFolder(
     $mysqli, $user->id_users, $parent_id_folders);
@@ -34,7 +36,12 @@ $media_type = $file->media_type;
 if ($media_type == 'audio') {
     $previewHtml = "<audio src=\"$src\" controls=\"controls\" />";
 } elseif ($media_type == 'image') {
-    $previewHtml = "<img src=\"$src\" />";
+    include_once '../../fns/compressed_js_script.php';
+    $previewHtml =
+        '<div class="imageProgress">'
+            ."<img src=\"$src\" />"
+        .'</div>'
+        .compressed_js_script('imageProgress', $base);
 } else {
     $previewHtml = "<video src=\"$src\" controls=\"controls\" />";
 }
@@ -71,6 +78,6 @@ $content = Page\tabs(
 );
 
 include_once '../../fns/echo_page.php';
-echo_page($user, 'Slideshow', $content, '../../', [
-    'head' => '<link rel="stylesheet" type="text/css" href="index.css" />',
+echo_page($user, 'Slideshow', $content, $base, [
+    'head' => '<link rel="stylesheet" type="text/css" href="index.css?1" />',
 ]);

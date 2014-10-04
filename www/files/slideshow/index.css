@@ -1,4 +1,5 @@
 .slideshow {
+    position: relative;
     background: #000;
     text-align: center;
     height: 400px;
@@ -11,9 +12,12 @@
 }
 
 .slideshow > audio,
-.slideshow > img,
-.slideshow > video {
+.slideshow > video,
+.slideshow > .imageProgress,
+.slideshow > .imageProgress > img {
+    display: inline-block;
     vertical-align: middle;
     max-width: 100%;
     max-height: 400px;
+    line-height: 0;
 }
