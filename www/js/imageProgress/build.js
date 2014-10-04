@@ -5,7 +5,7 @@ process.chdir(__dirname)
 var fs = require('fs'),
     uglifyJs = require('uglify-js')
 
-var source = fs.readFileSync('filePreview.js', 'utf8')
+var source = fs.readFileSync('imageProgress.js', 'utf8')
 
 var ast = uglifyJs.parse(source)
 ast.figure_out_scope()
