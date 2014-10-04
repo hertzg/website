@@ -6,9 +6,9 @@
         overlayHidden = true
     }
 
-    var oldImg = document.querySelector('img.imageProgress')
+    var wrapper = document.querySelector('.imageProgress')
 
-    var parentNode = oldImg.parentNode
+    var oldImg = wrapper.firstChild
 
     var overlayHidden = false
 
@@ -43,20 +43,10 @@
         style.background = 'rgba(0, 0, 0, 0.5)'
     })(overlayDiv.style)
 
-    var wrapper = document.createElement('div')
+    wrapper.removeChild(oldImg)
     wrapper.appendChild(newImg)
     wrapper.appendChild(overlayDiv)
     wrapper.appendChild(progressDiv)
-    ;(function (style) {
-        style.display = 'inline-block'
-        style.verticalAlign = 'top'
-        style.maxWidth = '100%'
-        style.maxHeight = '150px'
-        style.position = 'relative'
-    })(wrapper.style)
-
-    parentNode.removeChild(oldImg)
-    parentNode.appendChild(wrapper)
 
     var x = 0
     setInterval(function () {
