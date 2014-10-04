@@ -2,11 +2,7 @@
 RewriteEngine On
 
 RewriteCond %{HTTP_HOST} ^www\.zvini\.com$
-RewriteRule (.*) https://zvini.com/$1 [R=301,L]
-
-RewriteCond %{HTTPS} !^on$
-RewriteCond %{HTTP_HOST} ^zvini\.com$
-RewriteRule (.*) https://zvini.com/$1 [R=301,L]
+RewriteRule (.*) http://zvini.com/$1 [R=301,L]
 
 <filesMatch "\.(css|js|svg)$">
     Header set Cache-Control "public, max-age=2592000"
