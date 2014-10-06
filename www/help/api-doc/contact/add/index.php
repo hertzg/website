@@ -40,6 +40,10 @@ contact_method_page('add', [
         'description' => 'Space-separated list of tags.',
     ],
     [
+        'name' => 'notes',
+        'description' => 'Additional notes of the contact.',
+    ],
+    [
         'name' => 'favorite',
         'description' => 'Whether the contact should be marked as favorite.',
     ],
