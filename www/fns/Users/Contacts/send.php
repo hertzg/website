@@ -8,5 +8,6 @@ function send ($mysqli, $user, $receiver_id_users, $contact) {
         $receiver_id_users, $contact->full_name, $contact->alias,
         $contact->address, $contact->email, $contact->phone1, $contact->phone2,
         $contact->birthday_time, $contact->username, $contact->timezone,
-        $contact->tags, $contact->favorite, $contact->photo_id);
+        $contact->tags, $contact->notes, $contact->favorite,
+        $contact->photo_id);
 }

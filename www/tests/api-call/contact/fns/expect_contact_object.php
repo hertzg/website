@@ -4,7 +4,7 @@ function expect_contact_object ($engine, $variableName, $contact) {
 
     $properties = ['id', 'full_name', 'alias', 'address', 'email',
         'phone1', 'phone2', 'birthday_time', 'username', 'timezone', 'tags',
-        'favorite', 'insert_time', 'update_time'];
+        'notes', 'favorite', 'insert_time', 'update_time'];
     $engine->expectObject($variableName, $properties, $contact);
 
     $engine->expectNatural("$variableName.id", $contact->id);
@@ -26,6 +26,7 @@ function expect_contact_object ($engine, $variableName, $contact) {
     }
 
     $engine->expectType("$variableName.tags", 'string', $contact->tags);
+    $engine->expectType("$variableName.notes", 'string', $contact->notes);
     $engine->expectType("$variableName.favorite",
         'boolean', $contact->favorite);
     $engine->expectNatural("$variableName.insert_time", $contact->insert_time);

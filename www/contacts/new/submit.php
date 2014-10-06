@@ -32,6 +32,7 @@ $_SESSION['contacts/new/values'] = [
     'username' => $username,
     'timezone' => $timezone,
     'tags' => $tags,
+    'notes' => $notes,
     'favorite' => $favorite,
 ];
 
@@ -55,7 +56,7 @@ unset($_SESSION['contacts/new/values']);
 include_once '../../fns/Users/Contacts/add.php';
 $id = Users\Contacts\add($mysqli, $user, $full_name, $alias,
     $address, $email, $phone1, $phone2, $birthday_time, $username,
-    $timezone, $tags, $tag_names, $favorite, null);
+    $timezone, $tags, $tag_names, $notes, $favorite, null);
 
 include_once '../../fns/Users/Birthdays/invalidateIfNeeded.php';
 Users\Birthdays\invalidateIfNeeded($mysqli, $user, $birthday_time);

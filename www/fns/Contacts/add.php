@@ -3,8 +3,8 @@
 namespace Contacts;
 
 function add ($mysqli, $id_users, $full_name, $alias,
-    $address, $email, $phone1, $phone2, $birthday_time,
-    $username, $timezone, $tags, $tag_names, $favorite, $photo_id) {
+    $address, $email, $phone1, $phone2, $birthday_time, $username,
+    $timezone, $tags, $tag_names, $notes, $favorite, $photo_id) {
 
     $full_name = $mysqli->real_escape_string($full_name);
     $alias = $mysqli->real_escape_string($alias);
@@ -22,6 +22,7 @@ function add ($mysqli, $id_users, $full_name, $alias,
     if ($timezone === null) $timezone = 'null';
     $tags = $mysqli->real_escape_string($tags);
     $tags_json = $mysqli->real_escape_string(json_encode($tag_names));
+    $notes = $mysqli->real_escape_string($notes);
     $favorite = $favorite ? '1' : '0';
     if ($photo_id === null) $photo_id = 'null';
     $insert_time = $update_time = time();
@@ -30,11 +31,11 @@ function add ($mysqli, $id_users, $full_name, $alias,
         .' (id_users, full_name, alias, address, email,'
         .' phone1, phone2, birthday_time, birthday_day,'
         .' birthday_month, username, timezone, tags, tags_json,'
-        .' favorite, photo_id, insert_time, update_time)'
+        .' notes, favorite, photo_id, insert_time, update_time)'
         ." values ($id_users, '$full_name', '$alias', '$address', '$email',"
         ." '$phone1', '$phone2', $birthday_time, $birthday_day,"
         ." $birthday_month, '$username', $timezone, '$tags', '$tags_json',"
-        ." $favorite, $photo_id, $insert_time, $update_time)";
+        ." '$notes', $favorite, $photo_id, $insert_time, $update_time)";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 

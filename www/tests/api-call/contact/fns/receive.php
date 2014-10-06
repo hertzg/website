@@ -15,6 +15,7 @@ function receive (&$numRequests) {
         'birthday_time' => 0,
         'username' => 'sample username',
         'tags' => 'tag1 tag2',
+        'notes' => 'sample notes',
         'favorite' => true,
         'receiver_username' => 'aimnadze',
     ]);

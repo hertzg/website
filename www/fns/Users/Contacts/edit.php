@@ -4,7 +4,7 @@ namespace Users\Contacts;
 
 function edit ($mysqli, $user, $id, $full_name, $alias, $address, $email,
     $phone1, $phone2, $birthday_time, $username, $timezone, $tags, $tag_names,
-    $favorite, $old_birthday_time) {
+    $notes, $favorite, $old_birthday_time) {
 
     $id_users = $user->id_users;
     $fnsDir = __DIR__.'/../..';
@@ -12,7 +12,7 @@ function edit ($mysqli, $user, $id, $full_name, $alias, $address, $email,
     include_once "$fnsDir/Contacts/edit.php";
     \Contacts\edit($mysqli, $id_users, $id, $full_name, $alias,
         $address, $email, $phone1, $phone2, $birthday_time,
-        $username, $timezone, $tags, $tag_names, $favorite);
+        $username, $timezone, $tags, $tag_names, $notes, $favorite);
 
     include_once "$fnsDir/ContactTags/deleteOnContact.php";
     \ContactTags\deleteOnContact($mysqli, $id);

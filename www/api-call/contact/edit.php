@@ -14,7 +14,7 @@ list($full_name, $alias, $address, $email, $phone1, $phone2,
 include_once '../../fns/Users/Contacts/edit.php';
 Users\Contacts\edit($mysqli, $user, $contact->id_contacts, $full_name, $alias,
     $address, $email, $phone1, $phone2, $birthday_time, $username, $timezone,
-    $tags, $tag_names, $favorite, $contact->birthday_time);
+    $tags, $tag_names, $notes, $favorite, $contact->birthday_time);
 
 header('Content-Type: application/json');
 echo 'true';

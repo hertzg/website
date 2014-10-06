@@ -33,6 +33,7 @@ if (array_key_exists($key, $_SESSION)) {
         'username' => $receivedContact->username,
         'timezone' => $receivedContact->timezone,
         'tags' => $receivedContact->tags,
+        'notes' => $receivedContact->notes,
         'favorite' => $receivedContact->favorite,
     ];
 

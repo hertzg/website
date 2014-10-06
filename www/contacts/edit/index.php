@@ -32,6 +32,7 @@ if (array_key_exists($key, $_SESSION)) {
         'username' => $contact->username,
         'timezone' => $contact->timezone,
         'tags' => $contact->tags,
+        'notes' => $contact->notes,
         'favorite' => $contact->favorite,
     ];
 

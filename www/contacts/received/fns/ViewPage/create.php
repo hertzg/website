@@ -49,9 +49,11 @@ function create ($receivedContact) {
     }
 
     $tags = $receivedContact->tags;
-    if ($tags !== '') {
-        include_once "$fnsDir/Page/text.php";
-        $items[] = \Page\text('Tags: '.htmlspecialchars($tags));
+    if ($tags !== '') $items[] = \Form\label('Tags', htmlspecialchars($tags));
+
+    $notes = $receivedContact->notes;
+    if ($notes !== '') {
+        $items[] = \Form\label('Notes', nl2br(htmlspecialchars($notes)));
     }
 
     include_once "$fnsDir/date_ago.php";

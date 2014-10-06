@@ -4,7 +4,7 @@ namespace Users\Contacts;
 
 function add ($mysqli, $user, $full_name, $alias, $address,
     $email, $phone1, $phone2, $birthday_time, $username,
-    $timezone, $tags, $tag_names, $favorite, $photo_id) {
+    $timezone, $tags, $tag_names, $notes, $favorite, $photo_id) {
 
     $id_users = $user->id_users;
 
@@ -12,12 +12,12 @@ function add ($mysqli, $user, $full_name, $alias, $address,
 
     include_once "$fnsDir/Contacts/add.php";
     $id = \Contacts\add($mysqli, $id_users, $full_name, $alias,
-        $address, $email, $phone1, $phone2, $birthday_time,
-        $username, $timezone, $tags, $tag_names, $favorite, $photo_id);
+        $address, $email, $phone1, $phone2, $birthday_time, $username,
+        $timezone, $tags, $tag_names, $notes, $favorite, $photo_id);
 
     include_once "$fnsDir/ContactTags/add.php";
     \ContactTags\add($mysqli, $id_users, $id, $tag_names,
-        $full_name, $alias, $phone1, $phone2, $favorite);
+        $full_name, $alias, $phone1, $phone2, $notes, $favorite);
 
     if ($photo_id) {
         include_once "$fnsDir/ContactPhotos/addRef.php";

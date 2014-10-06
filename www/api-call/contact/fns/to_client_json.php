@@ -14,6 +14,7 @@ function to_client_json ($contact) {
         'username' => $contact->username,
         'timezone' => $timezone === null ? null : (int)$contact->timezone,
         'tags' => $contact->tags,
+        'notes' => $contact->notes,
         'favorite' => (bool)$contact->favorite,
         'insert_time' => (int)$contact->insert_time,
         'update_time' => (int)$contact->update_time,

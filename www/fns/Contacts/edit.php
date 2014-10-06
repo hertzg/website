@@ -2,9 +2,9 @@
 
 namespace Contacts;
 
-function edit ($mysqli, $id_users, $id,
-    $full_name, $alias, $address, $email, $phone1, $phone2,
-    $birthday_time, $username, $timezone, $tags, $tag_names, $favorite) {
+function edit ($mysqli, $id_users, $id, $full_name,
+    $alias, $address, $email, $phone1, $phone2, $birthday_time,
+    $username, $timezone, $tags, $tag_names, $notes, $favorite) {
 
     $full_name = $mysqli->real_escape_string($full_name);
     $alias = $mysqli->real_escape_string($alias);
@@ -22,6 +22,7 @@ function edit ($mysqli, $id_users, $id,
     if ($timezone === null) $timezone = 'null';
     $tags = $mysqli->real_escape_string($tags);
     $tags_json = $mysqli->real_escape_string(json_encode($tag_names));
+    $notes = $mysqli->real_escape_string($notes);
     $favorite = $favorite ? '1' : '0';
     $update_time = time();
 
@@ -31,7 +32,7 @@ function edit ($mysqli, $id_users, $id,
         ." birthday_time = $birthday_time, birthday_day = $birthday_day,"
         ." birthday_month = $birthday_month, username = '$username',"
         ." timezone = $timezone, tags = '$tags', tags_json = '$tags_json',"
-        ." favorite = $favorite, update_time = $update_time,"
+        ." notes = '$notes', favorite = $favorite, update_time = $update_time,"
         ." num_edits = num_edits + 1 where id_users = $id_users"
         ." and id_contacts = $id";
 

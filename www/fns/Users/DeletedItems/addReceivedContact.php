@@ -16,6 +16,7 @@ function addReceivedContact ($mysqli, $receivedContact) {
         'username' => $receivedContact->username,
         'timezone' => $receivedContact->timezone,
         'tags' => $receivedContact->tags,
+        'notes' => $receivedContact->notes,
         'favorite' => $receivedContact->favorite,
         'insert_time' => $receivedContact->insert_time,
         'sender_id_users' => $receivedContact->sender_id_users,

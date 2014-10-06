@@ -5,7 +5,7 @@ function expect_received_contact_object ($engine,
 
     $properties = ['id', 'sender_username', 'full_name', 'alias', 'address',
         'email', 'phone1', 'phone2', 'birthday_time', 'username', 'timezone',
-        'tags', 'favorite', 'tags', 'insert_time'];
+        'tags', 'notes', 'favorite', 'tags', 'insert_time'];
     $engine->expectObject($variableName, $properties, $receivedContact);
 
     $engine->expectNatural("$variableName.id", $receivedContact->id);
@@ -36,6 +36,8 @@ function expect_received_contact_object ($engine,
 
     $engine->expectType("$variableName.tags",
         'string', $receivedContact->tags);
+    $engine->expectType("$variableName.notes",
+        'string', $receivedContact->notes);
     $engine->expectType("$variableName.favorite",
         'boolean', $receivedContact->favorite);
     $engine->expectType("$variableName.tags",

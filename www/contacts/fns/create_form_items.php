@@ -9,6 +9,7 @@ function create_form_items ($values) {
 
     include_once "$fnsDir/Form/checkbox.php";
     include_once "$fnsDir/Form/datefield.php";
+    include_once "$fnsDir/Form/textarea.php";
     include_once "$fnsDir/Form/textfield.php";
     include_once "$fnsDir/Form/timezoneSelect.php";
     return
@@ -66,6 +67,11 @@ function create_form_items ($values) {
         .Form\textfield('tags', 'Tags', [
             'value' => $values['tags'],
             'maxlength' => $maxLengths['tags'],
+        ])
+        .'<div class="hr"></div>'
+        .Form\textarea('notes', 'Notes', [
+            'value' => $values['notes'],
+            'maxlength' => $maxLengths['notes'],
         ])
         .'<div class="hr"></div>'
         .Form\checkbox('favorite', 'Mark as Favorite', $values['favorite']);

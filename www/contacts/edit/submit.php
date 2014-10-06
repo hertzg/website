@@ -31,6 +31,7 @@ $_SESSION['contacts/edit/values'] = [
     'username' => $username,
     'timezone' => $timezone,
     'tags' => $tags,
+    'notes' => $notes,
     'favorite' => $favorite,
 ];
 
@@ -52,7 +53,7 @@ unset($_SESSION['contacts/edit/values']);
 include_once '../../fns/Users/Contacts/edit.php';
 Users\Contacts\edit($mysqli, $user, $id, $full_name, $alias, $address, $email,
     $phone1, $phone2, $birthday_time, $username, $timezone, $tags, $tag_names,
-    $favorite, $contact->birthday_time);
+    $notes, $favorite, $contact->birthday_time);
 
 $_SESSION['contacts/view/messages'] = ['Changes have been saved.'];
 redirect("../view/$itemQuery");

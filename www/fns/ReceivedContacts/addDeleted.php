@@ -4,8 +4,8 @@ namespace ReceivedContacts;
 
 function addDeleted ($mysqli, $id, $sender_id_users, $sender_username,
     $receiver_id_users, $full_name, $alias, $address, $email, $phone1,
-    $phone2, $birthday_time, $username, $timezone, $tags, $favorite,
-    $archived, $insert_time, $photo_id) {
+    $phone2, $birthday_time, $username, $timezone, $tags, $notes,
+    $favorite, $archived, $insert_time, $photo_id) {
 
     $sender_username = $mysqli->real_escape_string($sender_username);
     $full_name = $mysqli->real_escape_string($full_name);
@@ -18,6 +18,7 @@ function addDeleted ($mysqli, $id, $sender_id_users, $sender_username,
     $username = $mysqli->real_escape_string($username);
     if ($timezone === null) $timezone = 'null';
     $tags = $mysqli->real_escape_string($tags);
+    $notes = $mysqli->real_escape_string($notes);
     $favorite = $favorite ? '1' : '0';
     $archived = $archived ? '1' : '0';
     if ($photo_id === null) $photo_id = 'null';
@@ -26,11 +27,11 @@ function addDeleted ($mysqli, $id, $sender_id_users, $sender_username,
         .' (id, sender_id_users, sender_username,'
         .' receiver_id_users, full_name, alias, address, email,'
         .' phone1, phone2, birthday_time, username, timezone,'
-        .' tags, favorite, archived, insert_time, photo_id)'
+        .' tags, notes, favorite, archived, insert_time, photo_id)'
         ." values ($id, $sender_id_users, '$sender_username',"
         ." $receiver_id_users, '$full_name', '$alias', '$address', '$email',"
         ." '$phone1', '$phone2', $birthday_time, '$username', $timezone,"
-        ." '$tags', $favorite, $archived, $insert_time, $photo_id)";
+        ." '$tags', '$notes', $favorite, $archived, $insert_time, $photo_id)";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
 }

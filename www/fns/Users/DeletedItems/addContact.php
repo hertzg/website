@@ -16,6 +16,7 @@ function addContact ($mysqli, $contact) {
         'username' => $contact->username,
         'timezone' => $contact->timezone,
         'tags' => $contact->tags,
+        'notes' => $contact->notes,
         'favorite' => $contact->favorite,
         'insert_time' => $contact->insert_time,
         'update_time' => $contact->update_time,

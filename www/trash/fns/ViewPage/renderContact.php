@@ -61,6 +61,11 @@ function renderContact ($id, $contact, &$items, &$infoText, &$scripts) {
         $labelItems[] = \Form\label('Tags', htmlspecialchars($tags));
     }
 
+    $notes = $contact->notes;
+    if ($notes !== '') {
+        $labelItems[] = \Form\label('Notes', nl2br(htmlspecialchars($notes)));
+    }
+
     $priority = $contact->favorite ? 'Favorite' : 'Regular';
     $infoText = "$priority contact.</br>$infoText";
 

@@ -16,6 +16,7 @@ $response = $engine->request('contact/add', [
     'birthday_time' => null,
     'username' => 'sample username',
     'tags' => 'sample tags',
+    'notes' => 'sample notes',
     'favorite' => false,
 ]);
 $engine->expectSuccess();
@@ -36,6 +37,7 @@ $birthday_time = 24 * 60 * 60;
 $username = 'edited username';
 $timezone = 60;
 $tags = 'edited tags';
+$notes = 'edited notes';
 $favorite = true;
 
 $response = $engine->request('contact/edit', [
@@ -57,6 +59,7 @@ $response = $engine->request('contact/edit', [
     'username' => $username,
     'timezone' => $timezone,
     'tags' => $tags,
+    'notes' => $notes,
     'favorite' => $favorite,
 ]);
 $engine->expectSuccess();
@@ -76,6 +79,7 @@ $engine->expectValue('.birthday_time',
 $engine->expectValue('.username', $username, $response->username);
 $engine->expectValue('.timezone', $timezone, $response->timezone);
 $engine->expectValue('.tags', $tags, $response->tags);
+$engine->expectValue('.notes', $notes, $response->notes);
 $engine->expectValue('.favorite', $favorite, $response->favorite);
 
 $response = $engine->request('contact/delete', ['id' => $id]);

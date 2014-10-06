@@ -22,6 +22,7 @@ if (array_key_exists($key, $_SESSION)) {
         'username' => '',
         'timezone' => null,
         'tags' => '',
+        'notes' => '',
         'favorite' => false,
     ];
 }

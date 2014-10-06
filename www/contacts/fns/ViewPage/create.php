@@ -70,6 +70,11 @@ function create ($contact, $base = '') {
         $items[] = \Page\tags("$base../", $tags);
     }
 
+    $notes = $contact->notes;
+    if ($notes !== '') {
+        $items[] = \Form\label('Notes', nl2br(htmlspecialchars($notes)));
+    }
+
     include_once "$fnsDir/date_ago.php";
     $text =
         '<div>'.($contact->favorite ? 'Favorite' : 'Regular').' contact.</div>'
