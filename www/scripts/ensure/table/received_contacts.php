@@ -47,6 +47,11 @@ ensure_table('received_contacts', [
     'insert_time' => [
         'type' => 'bigint(20) unsigned',
     ],
+    'notes' => [
+        'type' => "varchar($maxLengths[notes])",
+        'characterSet' => 'utf8',
+        'collation' => 'utf8_general_ci',
+    ],
     'phone1' => [
         'type' => "varchar($maxLengths[phone1])",
         'characterSet' => 'utf8',

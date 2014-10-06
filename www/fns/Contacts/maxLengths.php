@@ -14,6 +14,7 @@ function maxLengths () {
         'alias' => 32,
         'email' => \Email\maxLength(),
         'full_name' => \FullName\maxLength(),
+        'notes' => 1024 * 2,
         'phone1' => 32,
         'phone2' => 32,
         'tags' => \Tags\maxLength(),
