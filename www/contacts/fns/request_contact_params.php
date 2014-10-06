@@ -4,7 +4,7 @@ function request_contact_params ($user, &$errors) {
 
     include_once __DIR__.'/../../fns/Contacts/request.php';
     list($full_name, $alias, $address, $email, $phone1,
-        $phone2, $username, $timezone, $favorite) = Contacts\request();
+        $phone2, $username, $timezone, $notes, $favorite) = Contacts\request();
 
     include_once __DIR__.'/../../fns/request_strings.php';
     list($birthday_day, $birthday_month, $birthday_year) = request_strings(
