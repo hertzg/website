@@ -1,5 +1,7 @@
 <?php
 
+$fnsDir = '../../../fns';
+
 include_once '../fns/require_received_bookmark.php';
 include_once '../../../lib/mysqli.php';
 list($receivedBookmark, $id, $user) = require_received_bookmark($mysqli, '../');
@@ -11,15 +13,17 @@ if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else $values = (array)$receivedBookmark;
 
 include_once '../../fns/create_form_items.php';
-include_once '../../../fns/Form/button.php';
-include_once '../../../fns/Form/hidden.php';
-include_once '../../../fns/Page/sessionErrors.php';
-include_once '../../../fns/Page/tabs.php';
+include_once "$fnsDir/Form/button.php";
+include_once "$fnsDir/Form/hidden.php";
+include_once "$fnsDir/ItemList/Received/escapedItemQuery.php";
+include_once "$fnsDir/ItemList/Received/itemHiddenInputs.php";
+include_once "$fnsDir/Page/sessionErrors.php";
+include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
     [
         [
             'title' => "Received Bookmark #$id",
-            'href' => "../view/?id=$id",
+            'href' => '../view/'.ItemList\Received\escapedItemQuery($id),
         ],
     ],
     'Edit and Import',
@@ -28,10 +32,10 @@ $content = Page\tabs(
         .create_form_items($values)
         .'<div class="hr"></div>'
         .Form\button('Import Bookmark')
-        .Form\hidden('id', $id)
+        .ItemList\Received\itemHiddenInputs($id)
     .'</form>'
 );
 
-include_once '../../../fns/echo_page.php';
+include_once "$fnsDir/echo_page.php";
 $title = "Edit and Import Received Bookmark #$id";
 echo_page($user, $title, $content, '../../../');

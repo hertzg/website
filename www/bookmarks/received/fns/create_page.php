@@ -18,12 +18,12 @@ function create_page ($mysqli, $user, $base = '') {
             $mysqli, $id_users);
     }
 
-    include_once "$fnsDir/create_sender_description.php";
-    include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
-
     $items = [];
 
     if ($receivedBookmarks) {
+        include_once "$fnsDir/create_sender_description.php";
+        include_once "$fnsDir/ItemList/Received/escapedItemQuery.php";
+        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         foreach ($receivedBookmarks as $receivedBookmark) {
 
             $title = $receivedBookmark->title;
@@ -31,7 +31,8 @@ function create_page ($mysqli, $user, $base = '') {
             $title = htmlspecialchars($title);
 
             $description = create_sender_description($receivedBookmark);
-            $href = "{$base}view/?id=$receivedBookmark->id";
+            $href = "{$base}view/".ItemList\Received\escapedItemQuery(
+                $receivedBookmark->id);
             $items[] = Page\imageArrowLinkWithDescription($title,
                 $description, $href, 'bookmark');
 
@@ -46,22 +47,24 @@ function create_page ($mysqli, $user, $base = '') {
         $items[] = Page\buttonLink('Show Archived Bookmarks', '?all=1');
     }
 
+    include_once "$fnsDir/ItemList/Received/pageQuery.php";
     include_once "$fnsDir/Page/imageLink.php";
-    $title = 'Delete All Bookmarks';
+    $href = "{$base}delete-all/".ItemList\Received\pageQuery();
     $deleteAllLink =
         '<div id="deleteAllLink">'
-            .Page\imageLink($title, "{$base}delete-all/", 'trash-bin')
+            .Page\imageLink('Delete All Bookmarks', $href, 'trash-bin')
         .'</div>';
 
     include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/ItemList/Received/listHref.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
     return Page\tabs(
         [
             [
                 'title' => 'Bookmarks',
-                'href' => "{$base}..",
+                'href' => "$base../".ItemList\Received\listHref(),
             ],
         ],
         'Received',

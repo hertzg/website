@@ -9,13 +9,16 @@ $fnsDir = '../../../fns';
 
 unset($_SESSION['bookmarks/received/view/messages']);
 
+include_once "$fnsDir/ItemList/Received/escapedItemQuery.php";
+$escapedItemQuery = ItemList\Received\escapedItemQuery($id);
+
 include_once '../fns/ViewPage/create.php';
 include_once "$fnsDir/Page/confirmDialog.php";
 $content =
     ViewPage\create($receivedBookmark)
     .Page\confirmDialog('Are you sure you want to delete the bookmark?'
         .' It will be moved to Trash.', 'Yes, delete bookmark',
-        "submit.php?id=$id", "../view/?id=$id");
+        "submit.php$escapedItemQuery", "../view/$escapedItemQuery");
 
 include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";

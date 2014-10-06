@@ -1,17 +1,19 @@
 <?php
 
-include_once '../../../fns/require_same_domain_referer.php';
+$fnsDir = '../../../fns';
+
+include_once "$fnsDir/require_same_domain_referer.php";
 require_same_domain_referer('../..');
 
 include_once '../fns/require_received_bookmark.php';
 include_once '../../../lib/mysqli.php';
 list($receivedBookmark, $id, $user) = require_received_bookmark($mysqli, '../');
 
-include_once '../../../fns/Users/Bookmarks/Received/delete.php';
+include_once "$fnsDir/Users/Bookmarks/Received/delete.php";
 Users\Bookmarks\Received\delete($mysqli, $receivedBookmark);
 
 $messages = ['Bookmark has been deleted.'];
-include_once '../../../fns/redirect.php';
+include_once "$fnsDir/redirect.php";
 
 if ($user->num_received_bookmarks == 1) {
     $messages[] = 'No more received bookmarks.';
@@ -21,4 +23,6 @@ if ($user->num_received_bookmarks == 1) {
 }
 
 $_SESSION['bookmarks/received/messages'] = $messages;
-redirect('..');
+
+include_once "$fnsDir/ItemList/Received/listUrl.php";
+redirect('../'.ItemList\Received\listUrl());
