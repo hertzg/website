@@ -25,6 +25,6 @@ function request_contact_params ($user, &$errors) {
 
     return [$full_name, $alias, $address, $email, $phone1, $phone2,
         $birthday_day, $birthday_month, $birthday_year, $birthday_time,
-        $username, $timezone, $tags, $tag_names, $favorite];
+        $username, $timezone, $tags, $tag_names, $notes, $favorite];
 
 }

@@ -11,9 +11,10 @@ include_once '../../lib/mysqli.php';
 $errors = [];
 
 include_once '../fns/request_contact_params.php';
-list($full_name, $alias, $address, $email, $phone1, $phone2, $birthday_day,
-    $birthday_month, $birthday_year, $birthday_time, $username, $timezone,
-    $tags, $tag_names, $favorite) = request_contact_params($user, $errors);
+list($full_name, $alias, $address, $email, $phone1, $phone2,
+    $birthday_day, $birthday_month, $birthday_year, $birthday_time,
+    $username, $timezone, $tags, $tag_names,
+    $notes, $favorite) = request_contact_params($user, $errors);
 
 include_once '../../fns/redirect.php';
 
