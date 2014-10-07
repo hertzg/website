@@ -39,7 +39,8 @@
 
             var x = 0
             setInterval(function () {
-                progressDiv.style.backgroundPosition = 'calc(50% + ' + x + 'px) 0'
+                var value = 'calc(50% + ' + x + 'px) 0'
+                progressDiv.style.backgroundPosition = value
                 x = (x + 1) % 8
             }, 50)
 

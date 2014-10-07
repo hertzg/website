@@ -8,7 +8,8 @@ function process ($mysqli, $table) {
         $tag_names = Tags\parse($row->tags);
         $tags_json = $mysqli->real_escape_string(json_encode($tag_names));
         $id = $row->$id_column;
-        $sql = "update $table set tags_json = '$tags_json' where $id_column = $id";
+        $sql = "update $table set tags_json = '$tags_json'"
+            ." where $id_column = $id";
         $mysqli->query($sql) || trigger_error($mysqli->error);
     }
 }
