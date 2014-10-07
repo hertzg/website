@@ -20,7 +20,7 @@ $content =
     create_view_page($event)
     .compressed_js_script('confirmDialog', $base)
     .'<script type="text/javascript">'
-        .'var deleteHref = '.json_encode("../delete/submit.php?id=$id")
+        .'var deleteHref = '.json_encode("../delete-event/submit.php?id=$id")
     .'</script>'
     .'<script type="text/javascript" defer="defer" src="index.js"></script>';
 
