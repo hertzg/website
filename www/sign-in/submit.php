@@ -19,6 +19,10 @@ if ($remember) setcookie('remember', '1', time() + 60 * 60 * 24 * 30, '/');
 else setcookie('remember', '', time() - 60 * 60 * 24, '/');
 
 if ($username === '') $errors[] = 'Enter username.';
+else {
+    include_once '../fns/Username/isValid.php';
+    if (!Username\isValid($username)) $errors[] = 'The username is invalid.';
+}
 
 if ($password === '') $errors[] = 'Enter password.';
 
