@@ -1,5 +1,6 @@
 <?php
 
+$base = '../../../';
 $fnsDir = '../../../fns';
 
 include_once '../fns/require_received_note.php';
@@ -14,8 +15,6 @@ else $values = (array)$receivedNote;
 
 include_once "$fnsDir/Notes/maxLengths.php";
 $maxLengths = Notes\maxLengths();
-
-$base = '../../../';
 
 include_once '../../fns/create_form_items.php';
 include_once "$fnsDir/compressed_js_script.php";
