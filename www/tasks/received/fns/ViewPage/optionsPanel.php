@@ -6,10 +6,11 @@ function optionsPanel ($receivedTask) {
 
     $fnsDir = __DIR__.'/../../../../fns';
 
-    $itemQuery = "?id=$receivedTask->id";
+    include_once "$fnsDir/ItemList/Received/escapedItemQuery.php";
+    $itemQuery = \ItemList\Received\escapedItemQuery($receivedTask->id);
 
     include_once "$fnsDir/Page/imageLink.php";
-    $href = "submit-import.php$itemQuery";
+    $href = "../submit-import.php$itemQuery";
     $importLink = \Page\imageLink('Import', $href, 'import-task');
 
     include_once "$fnsDir/Page/imageArrowLink.php";
@@ -18,10 +19,10 @@ function optionsPanel ($receivedTask) {
     $editAndImportLink = \Page\imageArrowLink($title, $href, 'import-task');
 
     if ($receivedTask->archived) {
-        $href = "submit-unarchive.php$itemQuery";
+        $href = "../submit-unarchive.php$itemQuery";
         $archiveLink = \Page\imageLink('Unarchive', $href, 'unarchive');
     } else {
-        $href = "submit-archive.php$itemQuery";
+        $href = "../submit-archive.php$itemQuery";
         $archiveLink = \Page\imageLink('Archive', $href, 'archive');
     }
 

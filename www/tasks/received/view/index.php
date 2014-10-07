@@ -2,7 +2,7 @@
 
 include_once '../fns/require_received_task.php';
 include_once '../../../lib/mysqli.php';
-list($receivedTask, $id, $user) = require_received_task($mysqli);
+list($receivedTask, $id, $user) = require_received_task($mysqli, '../');
 
 $base = '../../../';
 $fnsDir = '../../../fns';

@@ -17,12 +17,12 @@ function create_page ($mysqli, $user, $base = '') {
             $mysqli, $id_users);
     }
 
-    include_once "$fnsDir/create_sender_description.php";
-    include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
-
     $items = [];
 
     if ($receivedTasks) {
+        include_once "$fnsDir/create_sender_description.php";
+        include_once "$fnsDir/ItemList/Received/escapedItemQuery.php";
+        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         foreach ($receivedTasks as $receivedTask) {
 
             if ($receivedTask->top_priority) $icon = 'task-top-priority';
@@ -30,7 +30,8 @@ function create_page ($mysqli, $user, $base = '') {
 
             $title = htmlspecialchars($receivedTask->text);
             $description = create_sender_description($receivedTask);
-            $href = "{$base}view/?id=$receivedTask->id";
+            $href = "{$base}view/".ItemList\Received\escapedItemQuery(
+                $receivedTask->id);
             $items[] = Page\imageArrowLinkWithDescription($title,
                 $description, $href, $icon);
 
@@ -45,11 +46,12 @@ function create_page ($mysqli, $user, $base = '') {
         $items[] = Page\buttonLink('Show Archived Tasks', '?all=1');
     }
 
+    include_once "$fnsDir/ItemList/Received/escapedPageQuery.php";
     include_once "$fnsDir/Page/imageLink.php";
-    $title = 'Delete All Tasks';
+    $href = "{$base}delete-all/".ItemList\Received\escapedPageQuery();
     $deleteAllLink =
         '<div id="deleteAllLink">'
-            .Page\imageLink($title, "{$base}delete-all/", 'trash-bin')
+            .Page\imageLink('Delete All Tasks', $href, 'trash-bin')
         .'</div>';
 
     include_once "$fnsDir/create_new_item_button.php";
