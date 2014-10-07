@@ -6,7 +6,8 @@ function optionsPanel ($receivedContact) {
 
     $fnsDir = __DIR__.'/../../../../fns';
 
-    $itemQuery = "?id=$receivedContact->id";
+    include_once "$fnsDir/ItemList/Received/escapedItemQuery.php";
+    $itemQuery = \ItemList\Received\escapedItemQuery($receivedContact->id);
 
     include_once "$fnsDir/Page/imageLink.php";
     $href = "../submit-import.php$itemQuery";
