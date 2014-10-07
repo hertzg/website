@@ -3,7 +3,7 @@
 $fnsDir = '../../fns';
 
 include_once "$fnsDir/require_same_domain_referer.php";
-require_same_domain_referer('..');
+require_same_domain_referer('./');
 
 include_once 'fns/require_received_note.php';
 include_once '../../lib/mysqli.php';
