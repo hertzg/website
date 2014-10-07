@@ -47,9 +47,9 @@ function create_page ($mysqli, $user, $base = '') {
         $items[] = Page\buttonLink('Show Archived Bookmarks', '?all=1');
     }
 
-    include_once "$fnsDir/ItemList/Received/pageQuery.php";
+    include_once "$fnsDir/ItemList/Received/escapedPageQuery.php";
     include_once "$fnsDir/Page/imageLink.php";
-    $href = "{$base}delete-all/".ItemList\Received\pageQuery();
+    $href = "{$base}delete-all/".ItemList\Received\escapedPageQuery();
     $deleteAllLink =
         '<div id="deleteAllLink">'
             .Page\imageLink('Delete All Bookmarks', $href, 'trash-bin')
