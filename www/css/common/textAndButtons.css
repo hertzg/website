@@ -1,0 +1,12 @@
+.textAndButtons {
+    line-height: 42px;
+    padding-top: 6px;
+    padding-left: 16px;
+}
+
+.textAndButtons-text {
+    display: inline-block;
+    vertical-align: top;
+    line-height: 36px;
+    padding-right: 6px;
+}

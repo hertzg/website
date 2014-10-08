@@ -58,3 +58,8 @@
     padding: 2px;
     padding: 10px 12px;
 }
+
+.greyBar {
+    background: #eee;
+    color: #444;
+}
