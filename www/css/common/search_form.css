@@ -16,9 +16,5 @@
     left: 0;
 }
 .search_form-content.empty {
-    position: absolute;
-    top: 0;
     right: 48px;
-    bottom: 0;
-    left: 0;
 }
