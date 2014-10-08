@@ -56,26 +56,14 @@ function create_page ($mysqli, $user, $base = '') {
             if ($i < $user->num_new_notifications) $icon = 'notification';
             else $icon = 'old-notification';
 
-            $id_subscribed_channels = $notification->id_subscribed_channels;
-            if ($id_subscribed_channels) {
-                $query = "?id=$id_subscribed_channels";
-                $href = "{$base}in-subscribed-channel/$query";
-            } else {
-                $href = "{$base}in-channel/?id=$notification->id_channels";
-            }
-
             $text = htmlspecialchars($notification->text);
             $text = nl2br(render_external_links($text, "$base../"));
 
             $content =
                 $text
-                .'<div style="color: #555">'
-                    ."<a class=\"a\" href=\"$href\">"
-                        .$notification->channel_name
-                    .'</a>'
-                    .' <span style="font-size: 12px; line-height: 14px">'
-                        .date_ago($notification->insert_time)
-                    .'</span>'
+                .'<div style="color: #555; font-size: 12px; line-height: 14px">'
+                    ."$notification->channel_name "
+                    .date_ago($notification->insert_time)
                 .'</div>';
 
             $items[] = create_image_text($content, $icon);
@@ -91,6 +79,6 @@ function create_page ($mysqli, $user, $base = '') {
     }
 
     include_once __DIR__.'/create_content.php';
-    return create_content($items, $options, $base);
+    return create_content($mysqli, $user, $items, $options, $base);
 
 }
