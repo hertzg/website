@@ -55,7 +55,7 @@ $content =
             .' The API methods can be called with either GET or POST methods.'
             .' The methods parameters can be passed either in'
             .' a query string or as a URL-encoded form data'
-            .' or as a multipart form data. The API keyfcghgfhfg parameter'
+            .' or as a multipart form data. The API key parameter'
             .' <code>api_key</code> should be present in all requests.'
             ." The base URL of all the API methods is <code>$api_base</code>."
             .' The response returned from the server is either a JSON document'
