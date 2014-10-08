@@ -11,7 +11,7 @@ function edit ($mysqli, $user, $schedule, $text, $interval, $offset) {
 
     include_once "$fnsDir/days_left_from_today.php";
     $days_left = days_left_from_today($user, $interval, $offset);
-    $old_days_left = days_left_from_today($user, 
+    $old_days_left = days_left_from_today($user,
         $schedule->interval, $schedule->offset);
 
     include_once __DIR__.'/invalidateIfNeeded.php';

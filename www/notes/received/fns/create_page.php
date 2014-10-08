@@ -17,12 +17,12 @@ function create_page ($mysqli, $user, $base = '') {
             $mysqli, $id_users);
     }
 
-    include_once "$fnsDir/create_sender_description.php";
-    include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
-
     $items = [];
 
     if ($receivedNotes) {
+        include_once "$fnsDir/create_sender_description.php";
+        include_once "$fnsDir/ItemList/Received/escapedItemQuery.php";
+        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         foreach ($receivedNotes as $receivedNote) {
 
             $text = $receivedNote->text;
@@ -36,7 +36,8 @@ function create_page ($mysqli, $user, $base = '') {
 
             $title = htmlspecialchars($text);
             $description = create_sender_description($receivedNote);
-            $href = "{$base}view/?id=$receivedNote->id";
+            $href = "{$base}view/".ItemList\Received\escapedItemQuery(
+                $receivedNote->id);
             $items[] = Page\imageArrowLinkWithDescription($title,
                 $description, $href, $icon);
 
@@ -51,11 +52,12 @@ function create_page ($mysqli, $user, $base = '') {
         $items[] = Page\buttonLink('Show Archived Notes', '?all=1');
     }
 
+    include_once "$fnsDir/ItemList/Received/escapedPageQuery.php";
     include_once "$fnsDir/Page/imageLink.php";
-    $title = 'Delete All Notes';
+    $href = "{$base}delete-all/".ItemList\Received\escapedPageQuery();
     $deleteAllLink =
         '<div id="deleteAllLink">'
-            .Page\imageLink($title, "{$base}delete-all/", 'trash-bin')
+            .Page\imageLink('Delete All Notes', $href, 'trash-bin')
         .'</div>';
 
     include_once "$fnsDir/create_new_item_button.php";

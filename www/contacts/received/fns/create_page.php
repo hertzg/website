@@ -19,11 +19,12 @@ function create_page ($mysqli, $user, $base = '') {
             $mysqli, $id_users);
     }
 
-    include_once "$fnsDir/create_sender_description.php";
-    include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
-
     $items = [];
+
     if ($receivedContacts) {
+        include_once "$fnsDir/create_sender_description.php";
+        include_once "$fnsDir/ItemList/Received/escapedItemQuery.php";
+        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         foreach ($receivedContacts as $receivedContact) {
 
             if ($receivedContact->favorite) $icon = 'favorite-contact';
@@ -31,7 +32,8 @@ function create_page ($mysqli, $user, $base = '') {
 
             $title = htmlspecialchars($receivedContact->full_name);
             $description = create_sender_description($receivedContact);
-            $href = "{$base}view/?id=$receivedContact->id";
+            $href = "{$base}view/".ItemList\Received\escapedItemQuery(
+                $receivedContact->id);
             $items[] = Page\imageArrowLinkWithDescription($title,
                 $description, $href, $icon);
 
@@ -46,11 +48,12 @@ function create_page ($mysqli, $user, $base = '') {
         $items[] = Page\buttonLink('Show Archived Contacts', '?all=1');
     }
 
+    include_once "$fnsDir/ItemList/Received/escapedPageQuery.php";
     include_once "$fnsDir/Page/imageLink.php";
-    $title = 'Delete All Contacts';
+    $href = "{$base}delete-all/".ItemList\Received\escapedPageQuery();
     $deleteAllLink =
         '<div id="deleteAllLink">'
-            .Page\imageLink($title, "{$base}delete-all/", 'trash-bin')
+            .Page\imageLink('Delete All Contacts', $href, 'trash-bin')
         .'</div>';
 
     include_once "$fnsDir/create_new_item_button.php";

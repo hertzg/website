@@ -4,35 +4,36 @@ namespace ViewPage;
 
 function optionsPanel ($receivedBookmark) {
 
-    $queryString = "?id=$receivedBookmark->id";
-
     $bookmarksDir = __DIR__.'/../../..';
     $fnsDir = "$bookmarksDir/../fns";
+
+    include_once "$fnsDir/ItemList/Received/escapedItemQuery.php";
+    $itemQuery = \ItemList\Received\escapedItemQuery($receivedBookmark->id);
 
     include_once "$bookmarksDir/fns/create_open_links.php";
     $values = create_open_links($receivedBookmark->url, '../../../');
     list($openLink, $openInNewTabLink) = $values;
 
     include_once "$fnsDir/Page/imageLink.php";
-    $href = "../submit-import.php$queryString";
+    $href = "../submit-import.php$itemQuery";
     $importLink = \Page\imageLink('Import', $href, 'import-bookmark');
 
     include_once "$fnsDir/Page/imageArrowLink.php";
-    $href = "../edit-and-import/$queryString";
+    $href = "../edit-and-import/$itemQuery";
     $icon = 'import-bookmark';
     $editAndImportLink = \Page\imageArrowLink('Edit and Import', $href, $icon);
 
     if ($receivedBookmark->archived) {
-        $href = "../submit-unarchive.php$queryString";
+        $href = "../submit-unarchive.php$itemQuery";
         $archiveLink = \Page\imageLink('Unarchive', $href, 'unarchive');
     } else {
-        $href = "../submit-archive.php$queryString";
+        $href = "../submit-archive.php$itemQuery";
         $archiveLink = \Page\imageLink('Archive', $href, 'archive');
     }
 
     $deleteLink =
         '<div id="deleteLink">'
-            .\Page\imageLink('Delete', "../delete/$queryString", 'trash-bin')
+            .\Page\imageLink('Delete', "../delete/$itemQuery", 'trash-bin')
         .'</div>';
 
     include_once "$fnsDir/Page/staticTwoColumns.php";

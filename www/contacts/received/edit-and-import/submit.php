@@ -1,6 +1,8 @@
 <?php
 
-include_once '../../../fns/require_same_domain_referer.php';
+$fnsDir = '../../../fns';
+
+include_once "$fnsDir/require_same_domain_referer.php";
 require_same_domain_referer('..');
 
 include_once '../fns/require_received_contact.php';
@@ -15,7 +17,7 @@ list($full_name, $alias, $address, $email, $phone1, $phone2,
     $username, $timezone, $tags, $tag_names,
     $notes, $favorite) = request_contact_params($user, $errors);
 
-include_once '../../../fns/redirect.php';
+include_once "$fnsDir/redirect.php";
 
 if ($errors) {
     $_SESSION['contacts/received/edit-and-import/errors'] = $errors;
@@ -35,7 +37,8 @@ if ($errors) {
         'notes' => $notes,
         'favorite' => $favorite,
     ];
-    redirect("./?id=$id");
+    include_once "$fnsDir/ItemList/Received/itemQuery.php";
+    redirect('./'.ItemList\Received\itemQuery($id));
 }
 
 unset(
@@ -56,7 +59,7 @@ $receivedContact->tags = $tags;
 $receivedContact->notes = $notes;
 $receivedContact->favorite = $favorite;
 
-include_once '../../../fns/Users/Contacts/Received/import.php';
+include_once "$fnsDir/Users/Contacts/Received/import.php";
 Users\Contacts\Received\import($mysqli, $user, $receivedContact);
 
 $messages = ['Contact has been imported.'];
@@ -69,4 +72,6 @@ if ($user->num_received_contacts == 1) {
 }
 
 $_SESSION['contacts/received/messages'] = $messages;
-redirect('..');
+
+include_once "$fnsDir/ItemList/Received/listUrl.php";
+redirect('../'.ItemList\Received\listUrl());

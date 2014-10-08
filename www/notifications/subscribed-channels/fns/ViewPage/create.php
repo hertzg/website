@@ -16,13 +16,16 @@ function create ($subscribedChannel) {
         $items[] = \Form\label('Channel owner', $value);
     }
 
+    $channel_public = $subscribedChannel->channel_public;
+    $receive_notifications = $subscribedChannel->receive_notifications;
+
     include_once "$fnsDir/Page/infoText.php";
     $infoText = \Page\infoText(
         '<div>'
-            .($subscribedChannel->channel_public ? 'Public' : 'Private').' channel.'
+            .($channel_public ? 'Public' : 'Private').' channel.'
         .'</div>'
         .'<div>'
-            .'You are '.($subscribedChannel->receive_notifications ? '' : 'not ')
+            .'You are '.($receive_notifications ? '' : 'not ')
             .' receiving notifications from this channel.'
         .'</div>'
     );

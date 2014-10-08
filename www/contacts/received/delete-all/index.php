@@ -8,6 +8,9 @@ unset($_SESSION['contacts/received/messages']);
 $base = '../../../';
 $fnsDir = '../../../fns';
 
+include_once "$fnsDir/ItemList/Received/listHref.php";
+$noHref = '../'.ItemList\Received\listHref();
+
 include_once '../fns/create_page.php';
 include_once "$fnsDir/Page/confirmDialog.php";
 include_once '../../../lib/mysqli.php';
@@ -15,7 +18,7 @@ $content =
     create_page($mysqli, $user, '../')
     .Page\confirmDialog('Are you sure you want to delete'
         .' all the received contacts? They will be moved to Trash.',
-        'Yes, delete all contacts', 'submit.php', '..');
+        'Yes, delete all contacts', 'submit.php', $noHref);
 
 include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";

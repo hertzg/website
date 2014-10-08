@@ -1,6 +1,8 @@
 <?php
 
-include_once '../../../fns/require_same_domain_referer.php';
+$fnsDir = '../../../fns';
+
+include_once "$fnsDir/require_same_domain_referer.php";
 require_same_domain_referer('..');
 
 include_once '../fns/require_received_bookmark.php';
@@ -12,7 +14,7 @@ $errors = [];
 include_once '../../fns/request_bookmark_params.php';
 list($url, $title, $tags, $tag_names) = request_bookmark_params($errors);
 
-include_once '../../../fns/redirect.php';
+include_once "$fnsDir/redirect.php";
 
 if ($errors) {
     $_SESSION['bookmarks/received/edit-and-import/errors'] = $errors;
@@ -21,7 +23,8 @@ if ($errors) {
         'title' => $title,
         'tags' => $tags,
     ];
-    redirect("./?id=$id");
+    include_once "$fnsDir/ItemList/Received/itemQuery.php";
+    redirect('./'.ItemList\Received\itemQuery($id));
 }
 
 unset(
@@ -33,7 +36,7 @@ $receivedBookmark->url = $url;
 $receivedBookmark->title = $title;
 $receivedBookmark->tags = $tags;
 
-include_once '../../../fns/Users/Bookmarks/Received/import.php';
+include_once "$fnsDir/Users/Bookmarks/Received/import.php";
 Users\Bookmarks\Received\import($mysqli, $receivedBookmark);
 
 $messages = ['Bookmark has been imported.'];
@@ -46,4 +49,6 @@ if ($user->num_received_bookmarks == 1) {
 }
 
 $_SESSION['bookmarks/received/messages'] = $messages;
-redirect('..');
+
+include_once "$fnsDir/ItemList/Received/listUrl.php";
+redirect('../'.ItemList\Received\listUrl());

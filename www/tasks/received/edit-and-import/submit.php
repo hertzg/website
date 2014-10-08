@@ -1,11 +1,13 @@
 <?php
 
-include_once '../../../fns/require_same_domain_referer.php';
+$fnsDir = '../../../fns';
+
+include_once "$fnsDir/require_same_domain_referer.php";
 require_same_domain_referer('..');
 
 include_once '../fns/require_received_task.php';
 include_once '../../../lib/mysqli.php';
-list($receivedTask, $id, $user) = require_received_task($mysqli);
+list($receivedTask, $id, $user) = require_received_task($mysqli, '../');
 
 $errors = [];
 
@@ -14,7 +16,7 @@ $values = request_task_params($user, $errors);
 list($text, $deadline_day, $deadline_month, $deadline_year,
     $deadline_time, $tags, $tag_names, $top_priority) = $values;
 
-include_once '../../../fns/redirect.php';
+include_once "$fnsDir/redirect.php";
 
 if ($errors) {
     $_SESSION['tasks/received/edit-and-import/errors'] = $errors;
@@ -26,7 +28,8 @@ if ($errors) {
         'tags' => $tags,
         'top_priority' => $top_priority,
     ];
-    redirect("./?id=$id");
+    include_once "$fnsDir/ItemList/Received/itemQuery.php";
+    redirect('./'.ItemList\Received\itemQuery($id));
 }
 
 unset(
@@ -39,7 +42,7 @@ $receivedTask->deadline_time = $deadline_time;
 $receivedTask->tags = $tags;
 $receivedTask->top_priority = $top_priority;
 
-include_once '../../../fns/Users/Tasks/Received/import.php';
+include_once "$fnsDir/Users/Tasks/Received/import.php";
 Users\Tasks\Received\import($mysqli, $receivedTask);
 
 $messages = ['Task has been imported.'];
@@ -52,4 +55,6 @@ if ($user->num_received_tasks == 1) {
 }
 
 $_SESSION['tasks/received/messages'] = $messages;
-redirect('..');
+
+include_once "$fnsDir/ItemList/Received/listUrl.php";
+redirect('../'.ItemList\Received\listUrl());

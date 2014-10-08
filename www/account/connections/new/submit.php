@@ -1,42 +1,26 @@
 <?php
 
-include_once '../../../fns/require_same_domain_referer.php';
+$fnsDir = '../../../fns';
+
+include_once "$fnsDir/require_same_domain_referer.php";
 require_same_domain_referer('./');
 
-include_once '../../../fns/require_user.php';
+include_once "$fnsDir/require_user.php";
 $user = require_user('../../../');
 $id_users = $user->id_users;
 
-include_once '../../../fns/Connections/request.php';
+include_once "$fnsDir/Connections/request.php";
 list($username, $can_send_bookmark, $can_send_channel, $can_send_contact,
     $can_send_file, $can_send_note, $can_send_task) = Connections\request();
 
-include_once '../../../fns/redirect.php';
-
 $errors = [];
 
-if ($username === '') {
-    $errors[] = 'Enter username.';
-} else {
-    include_once '../../../fns/Users/getByUsername.php';
-    include_once '../../../lib/mysqli.php';
-    $userToConnect = Users\getByUsername($mysqli, $username);
-    if (!$userToConnect) {
-        $errors[] = "A user with the username doesn't exist.";
-    } else {
-        $connected_id_users = $userToConnect->id_users;
-        if ($connected_id_users == $id_users) {
-            $errors[] = 'You cannot connect to yourself.';
-        } else {
-            include_once '../../../fns/Connections/getByConnectedUser.php';
-            $connectedUser = Connections\getByConnectedUser($mysqli,
-                $id_users, $connected_id_users);
-            if ($connectedUser) {
-                $errors[] = 'A connection to this user already exists.';
-            }
-        }
-    }
-}
+include_once '../fns/check_username.php';
+include_once '../../../lib/mysqli.php';
+check_username($mysqli, $id_users,
+    $username, $connected_id_users, $errors);
+
+include_once "$fnsDir/redirect.php";
 
 if ($errors) {
     $_SESSION['account/connections/new/errors'] = $errors;
@@ -57,7 +41,7 @@ unset(
     $_SESSION['account/connections/new/values']
 );
 
-include_once '../../../fns/Users/Connections/add.php';
+include_once "$fnsDir/Users/Connections/add.php";
 $id = Users\Connections\add($mysqli, $id_users, $connected_id_users,
     $username, $can_send_bookmark, $can_send_channel, $can_send_contact,
     $can_send_file, $can_send_note, $can_send_task);

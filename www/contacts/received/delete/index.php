@@ -9,13 +9,16 @@ $fnsDir = '../../../fns';
 
 unset($_SESSION['contacts/received/view/messages']);
 
+include_once "$fnsDir/ItemList/Received/escapedItemQuery.php";
+$escapedItemQuery = ItemList\Received\escapedItemQuery($id);
+
 include_once '../fns/ViewPage/create.php';
 include_once "$fnsDir/Page/confirmDialog.php";
 $content =
     ViewPage\create($receivedContact)
     .Page\confirmDialog('Are you sure you want to delete the contact?'
         .' It will be moved to Trash.', 'Yes, delete contact',
-        "submit.php?id=$id", "../view/?id=$id");
+        "submit.php$escapedItemQuery", "../view/$escapedItemQuery");
 
 if ($receivedContact->timezone !== null) {
     include_once "$fnsDir/compressed_js_script.php";
@@ -25,5 +28,6 @@ if ($receivedContact->timezone !== null) {
 include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";
 echo_page($user, "Delete Received Contact #$id?", $content, $base, [
-    'head' => compressed_css_link('confirmDialog', $base),
+    'head' => compressed_css_link('contact', $base)
+        .compressed_css_link('confirmDialog', $base),
 ]);

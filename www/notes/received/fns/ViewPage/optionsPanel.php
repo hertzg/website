@@ -6,7 +6,8 @@ function optionsPanel ($receivedNote) {
 
     $fnsDir = __DIR__.'/../../../../fns';
 
-    $itemQuery = "?id=$receivedNote->id";
+    include_once "$fnsDir/ItemList/Received/escapedItemQuery.php";
+    $itemQuery = \ItemList\Received\escapedItemQuery($receivedNote->id);
 
     include_once "$fnsDir/Page/imageLink.php";
     $href = "../submit-import.php$itemQuery";
