@@ -23,6 +23,6 @@
 .form-checkbox.item {
     padding: 0;
 }
-.form-checkbox label {
+.form-checkbox.item label {
     display: block;
 }
