@@ -6,6 +6,7 @@ include_once '../../../../lib/cli.php';
 include_once '../../../lib/mysqli.php';
 include_once '../../../fns/mysqli_query_object.php';
 include_once '../../../fns/Users/get.php';
+include_once '../../../fns/Users/Directory/path.php';
 
 $microtime = microtime(true);
 
@@ -14,7 +15,8 @@ include_once 'fns/for_each_user.php';
 for_each_user(function ($id_users) use ($mysqli, &$deleted) {
     $user = Users\get($mysqli, $id_users);
     if (!$user) {
-        system("rm -r ../../../users/$id_users");
+        $path = Users\Directory\path($id_users);
+        system("rm -r $path");
         $deleted++;
     }
 });

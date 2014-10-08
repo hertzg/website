@@ -3,7 +3,9 @@
 
 function clean_user_received_folder_files ($mysqli, $id_users, &$deleted) {
 
-    include_once '../../../fns/ReceivedFolderFiles/File/dir.php';
+    $fnsDir = '../../../fns';
+
+    include_once "$fnsDir/ReceivedFolderFiles/File/dir.php";
     $dir = ReceivedFolderFiles\File\dir($id_users);
 
     if (!is_dir($dir)) return;
@@ -15,8 +17,8 @@ function clean_user_received_folder_files ($mysqli, $id_users, &$deleted) {
 
         $id = (int)$file;
 
-        $sql = "select * from received_folder_files where id = $id";
-        if (mysqli_single_object($mysqli, $sql)) continue;
+        include_once "$fnsDir/ReceivedFolderFiles/getOnUser.php";
+        if (ReceivedFolderFiles\getOnUser($mysqli, $id_users, $id)) continue;
 
         $deleted++;
         unlink("$dir/$id");

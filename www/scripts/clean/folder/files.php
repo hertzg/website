@@ -3,7 +3,9 @@
 
 function clean_user_files ($mysqli, $id_users, &$deleted) {
 
-    include_once '../../../fns/Files/File/dir.php';
+    $fnsDir = '../../../fns';
+
+    include_once "$fnsDir/Files/File/dir.php";
     $dir = Files\File\dir($id_users);
 
     if (!is_dir($dir)) return;
@@ -15,14 +17,15 @@ function clean_user_files ($mysqli, $id_users, &$deleted) {
 
         $id_files = (int)$file;
 
-        $sql = "select * from files where id_files = $id_files";
-        if (mysqli_single_object($mysqli, $sql)) continue;
+        include_once "$fnsDir/Files/getOnUser.php";
+        if (Files\getOnUser($mysqli, $id_users, $id_files)) continue;
 
-        $sql = "select * from deleted_files where id_files = $id_files";
-        if (mysqli_single_object($mysqli, $sql)) continue;
+        include_once "$fnsDir/DeletedFiles/getOnUser.php";
+        if (DeletedFiles\getOnUser($mysqli, $id_users, $id_files)) continue;
 
-        $sql = "select * from deleted_items where data_type = 'file'";
-        $deletedItems = mysqli_query_object($mysqli, $sql);
+        include_once "$fnsDir/DeletedItems/indexOnUserOfType.php";
+        $deletedItems = DeletedItems\indexOnUserOfType(
+            $mysqli, $id_users, 'file');
 
         $found = false;
         foreach ($deletedItems as $deletedItem) {
@@ -33,8 +36,11 @@ function clean_user_files ($mysqli, $id_users, &$deleted) {
             }
         }
 
+        include_once "$fnsDir/Files/File/path.php";
+        $path = Files\File\path($id_users, $id_files);
+
+        unlink($path);
         $deleted++;
-        unlink("$dir/$id_files");
 
     }
     closedir($d);

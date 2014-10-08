@@ -3,7 +3,9 @@
 
 function clean_user_received_files ($mysqli, $id_users, &$deleted) {
 
-    include_once '../../../fns/ReceivedFiles/File/dir.php';
+    $fnsDir = '../../../fns';
+
+    include_once "$fnsDir/ReceivedFiles/File/dir.php";
     $dir = ReceivedFiles\File\dir($id_users);
 
     if (!is_dir($dir)) return;
@@ -15,11 +17,12 @@ function clean_user_received_files ($mysqli, $id_users, &$deleted) {
 
         $id = (int)$file;
 
-        $sql = "select * from received_files where id = $id";
-        if (mysqli_single_object($mysqli, $sql)) continue;
+        include_once "$fnsDir/Files/getOnUser.php";
+        if (Files\getOnUser($mysqli, $id_users, $id)) continue;
 
-        $sql = "select * from deleted_items where data_type = 'receivedFile'";
-        $deletedItems = mysqli_query_object($mysqli, $sql);
+        include_once "$fnsDir/DeletedItems/indexOnUserOfType.php";
+        $deletedItems = DeletedItems\indexOnUserOfType(
+            $mysqli, $id_users, 'receivedFile');
 
         $found = false;
         foreach ($deletedItems as $deletedItem) {
