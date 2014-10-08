@@ -4,8 +4,8 @@ function create_move_location_bar ($mysqli,
     $id, $folder, $item_id, $folder_id) {
 
     $html =
-        '<div class="page-tags tagFilterBar">'
-            .'<span class="label">Location:</span>';
+        '<div class="greyBar textAndButtons">'
+            .'<span class="textAndButtons-text">Location:</span>';
 
     if ($folder) {
 

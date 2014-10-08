@@ -11,8 +11,8 @@ function create_location_bar ($mysqli, $file) {
 
     $rootHref = "../../?id=$parentFolder->id_received_folders";
     $html =
-        '<div class="page-tags tagFilterBar">'
-            .'<span class="label">Location:</span>'
+        '<div class="greyBar textAndButtons">'
+            .'<span class="textAndButtons-text">Location:</span>'
             ."<a class=\"tag\" href=\"$rootHref\">root</a>";
 
     $parentFolders = [$parentFolder];

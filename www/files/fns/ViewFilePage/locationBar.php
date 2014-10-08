@@ -5,8 +5,8 @@ namespace ViewFilePage;
 function locationBar ($mysqli, $file) {
 
     $html =
-        '<div class="page-tags tagFilterBar">'
-            .'<span class="label">Location:</span>'
+        '<div class="greyBar textAndButtons">'
+            .'<span class="textAndButtons-text">Location:</span>'
             .'<a class="tag" href="..">root</a>';
 
     $id_folders = $file->id_folders;

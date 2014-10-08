@@ -37,8 +37,8 @@ $content = Page\tabs(
         ],
     ],
     $title,
-    '<div class="page-tags tagFilterBar">'
-        .'<span class="label">Location:</span>'
+    '<div class="greyBar textAndButtons">'
+        .'<span class="textAndButtons-text">Location:</span>'
         ."<a class=\"tag\" href=\"../?id=$id_received_folders\">root</a>"
     .'</div>'
     .Form\label('File name', htmlspecialchars($name))
