@@ -16,9 +16,6 @@
     -moz-transform: rotate(-21deg);
     -webkit-transform: rotate(-21deg);
 }
-.textList .hr {
-    height: 1px;
-}
 
 .textList.errors {
     background: #fbb;
@@ -26,9 +23,6 @@
 }
 .textList.errors .bullet {
     background: #911;
-}
-.textList.errors .hr {
-    background: #e99;
 }
 
 .textList.messages {
@@ -38,9 +32,6 @@
 .textList.messages .bullet {
     background: #191;
 }
-.textList.messages .hr {
-    background: #8d8;
-}
 
 .textList.warnings {
     background: #eee;
@@ -48,7 +39,4 @@
 }
 .textList.warnings .bullet {
     background: #444;
-}
-.textList.warnings .hr {
-    background: #ddd;
 }
