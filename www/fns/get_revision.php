@@ -2,7 +2,7 @@
 
 function get_revision ($key) {
     static $revisions = [
-        'css/common/compressed.css' => 58,
+        'css/common/compressed.css' => 59,
         'css/confirmDialog/compressed.css' => 1,
         'css/contact/compressed.css' => 1,
         'css/icons/compressed.css' => 57,
@@ -13,7 +13,7 @@ function get_revision ($key) {
         'js/imageProgress/compressed.js' => 2,
         'js/lineSizeRounding/compressed.js' => 1,
         'js/removeRecipient/compressed.js' => 1,
-        'js/searchForm/compressed.js' => 1,
+        'js/searchForm/compressed.js' => 2,
         'js/timezoneLabel/compressed.js' => 1,
         'js/unloadProgress/compressed.js' => 4,
     ];

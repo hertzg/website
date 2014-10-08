@@ -1,6 +1,6 @@
 (function () {
 
-    var searchButton = document.querySelector('.searchButton')
+    var searchButton = document.querySelector('.search_form-button')
 
     var form = searchButton.form
     form.addEventListener('submit', function (e) {

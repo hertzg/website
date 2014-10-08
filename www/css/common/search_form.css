@@ -18,3 +18,7 @@
 .search_form-content.empty {
     right: 48px;
 }
+
+.search_form-button.withClearButton {
+    right: 48px;
+}
