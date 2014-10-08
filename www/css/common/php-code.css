@@ -14,3 +14,12 @@
 .php-code .keyword {
     font-weight: bold;
 }
+.php-code .variable {
+    color: #05c;
+}
+.php-code .constant {
+    color: #50a;
+}
+.php-code .number {
+    color: #f50;
+}
