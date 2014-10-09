@@ -44,6 +44,9 @@ if ($timezone !== null) {
     $text .= "TZ;VALUE=utc-offset:$sign$padded\n";
 }
 
+$notes = $contact->notes;
+if ($notes !== '') $text .= 'NOTE:'.vcard_text($notes)."\n";
+
 $text .= "END:VCARD\n";
 
 echo $text;
