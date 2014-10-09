@@ -1,6 +1,6 @@
 #!/bin/bash
 cd `dirname $BASH_SOURCE`
-cd ..
+cd ../..
 for i in `find -type f -name "*.php"`
 do
     echo $i
