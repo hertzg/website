@@ -1,9 +1,10 @@
 <?php
 
 function get_client_address () {
-//    $xForwardedFor = $_SERVER['HTTP_X_FORWARDED_FOR'];
-//    $xForwardedFor = explode(', ', $xForwardedFor);
-//    $xForwardedFor = array_pop($xForwardedFor);
-//    return $xForwardedFor;
+
+//    // uncomment when using the site behind a reverse proxy
+//    return array_pop(explode(', ', $_SERVER['HTTP_X_FORWARDED_FOR']));
+
     return $_SERVER['REMOTE_ADDR'];
+
 }
