@@ -13,7 +13,7 @@ function add ($mysqli, $user, $full_name, $alias, $address,
     include_once "$fnsDir/Contacts/add.php";
     $id = \Contacts\add($mysqli, $id_users, $full_name, $alias,
         $address, $email, $phone1, $phone2, $birthday_time,
-        $username, $timezone, $tags, $favorite, $photo_id);
+        $username, $timezone, $tags, $tag_names, $favorite, $photo_id);
 
     include_once "$fnsDir/ContactTags/add.php";
     \ContactTags\add($mysqli, $id_users, $id, $tag_names,

@@ -23,7 +23,7 @@ function addDeleted ($mysqli, $user, $data) {
     include_once "$fnsDir/Contacts/addDeleted.php";
     \Contacts\addDeleted($mysqli, $id, $id_users, $full_name, $alias,
         $data->address, $data->email, $phone1, $phone2, $birthday_time,
-        $data->username, $data->timezone, $data->tags, $favorite,
+        $data->username, $data->timezone, $data->tags, $tag_names, $favorite,
         $data->insert_time, $data->update_time, $data->photo_id);
 
     include_once "$fnsDir/ContactTags/add.php";

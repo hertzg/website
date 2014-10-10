@@ -4,7 +4,8 @@ namespace Contacts;
 
 function addDeleted ($mysqli, $id, $id_users, $full_name, $alias,
     $address, $email, $phone1, $phone2, $birthday_time, $username,
-    $timezone, $tags, $favorite, $insert_time, $update_time, $photo_id) {
+    $timezone, $tags, $tag_names, $favorite, $insert_time,
+    $update_time, $photo_id) {
 
     $full_name = $mysqli->real_escape_string($full_name);
     $alias = $mysqli->real_escape_string($alias);
@@ -16,17 +17,18 @@ function addDeleted ($mysqli, $id, $id_users, $full_name, $alias,
     $username = $mysqli->real_escape_string($username);
     if ($timezone === null) $timezone = 'null';
     $tags = $mysqli->real_escape_string($tags);
+    $tags_json = $mysqli->real_escape_string(json_encode($tag_names));
     $favorite = $favorite ? '1' : '0';
     if ($photo_id === null) $photo_id = 'null';
 
     $sql = 'insert into contacts'
         .' (id_contacts, id_users, full_name, alias, address,'
         .' email, phone1, phone2, birthday_time, username,'
-        .' timezone, tags, favorite, insert_time,'
+        .' timezone, tags, tags_json, favorite, insert_time,'
         .' update_time, photo_id)'
         ." values ($id, $id_users, '$full_name', '$alias', '$address',"
         ." '$email', '$phone1', '$phone2', $birthday_time, '$username',"
-        ." $timezone, '$tags', $favorite, $insert_time,"
+        ." $timezone, '$tags', '$tags_json', $favorite, $insert_time,"
         ." $update_time, $photo_id)";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
