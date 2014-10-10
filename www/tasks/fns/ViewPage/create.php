@@ -2,7 +2,7 @@
 
 namespace ViewPage;
 
-function create ($mysqli, $task, $user) {
+function create ($task, $user) {
 
     $id = $task->id_tasks;
     $fnsDir = __DIR__.'/../../../fns';

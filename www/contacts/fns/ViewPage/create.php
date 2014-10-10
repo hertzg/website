@@ -2,7 +2,7 @@
 
 namespace ViewPage;
 
-function create ($mysqli, $contact, $base = '') {
+function create ($contact, $base = '') {
 
     $id = $contact->id_contacts;
     $fnsDir = __DIR__.'/../../../fns';

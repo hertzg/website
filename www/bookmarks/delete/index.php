@@ -15,7 +15,7 @@ $escapedItemQuery = ItemList\escapedItemQuery($id);
 include_once '../fns/ViewPage/create.php';
 include_once "$fnsDir/Page/confirmDialog.php";
 $content =
-    ViewPage\create($mysqli, $bookmark)
+    ViewPage\create($bookmark)
     .Page\confirmDialog('Are you sure you want to delete the bookmark?'
         .' It will be moved to Trash.', 'Yes, delete bookmark',
         "submit.php$escapedItemQuery", "../view/$escapedItemQuery");

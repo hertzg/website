@@ -15,7 +15,7 @@ $escapedItemQuery = ItemList\escapedItemQuery($id);
 include_once '../fns/ViewPage/create.php';
 include_once "$fnsDir/Page/confirmDialog.php";
 $content =
-    ViewPage\create($mysqli, $task, $user)
+    ViewPage\create($task, $user)
     .Page\confirmDialog('Are you sure you want to delete the task?'
         .' It will be moved to Trash.', 'Yes, delete task',
         "submit.php$escapedItemQuery", "../view/$escapedItemQuery");
