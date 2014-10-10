@@ -9,7 +9,7 @@ function add ($mysqli, $id_users, $text,
 
     include_once "$fnsDir/Tasks/add.php";
     $id = \Tasks\add($mysqli, $id_users, $text,
-        $deadline_time, $tags, $top_priority);
+        $deadline_time, $tags, $tag_names, $top_priority);
 
     include_once "$fnsDir/TaskTags/add.php";
     \TaskTags\add($mysqli, $id_users, $id, $tag_names,

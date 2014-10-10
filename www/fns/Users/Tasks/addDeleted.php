@@ -16,8 +16,9 @@ function addDeleted ($mysqli, $id_users, $data) {
     $tag_names = \Tags\parse($tags);
 
     include_once "$fnsDir/Tasks/addDeleted.php";
-    \Tasks\addDeleted($mysqli, $id, $id_users, $text, $deadline_time,
-        $tags, $top_priority, $data->insert_time, $data->update_time);
+    \Tasks\addDeleted($mysqli, $id, $id_users, $text,
+        $deadline_time, $tags, $tag_names, $top_priority,
+        $data->insert_time, $data->update_time);
 
     include_once "$fnsDir/TaskTags/add.php";
     \TaskTags\add($mysqli, $id_users, $id, $tag_names,

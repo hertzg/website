@@ -9,7 +9,7 @@ function edit ($mysqli, $id_users, $id, $text,
 
     include_once "$fnsDir/Tasks/edit.php";
     \Tasks\edit($mysqli, $id_users, $id, $text,
-        $deadline_time, $tags, $top_priority);
+        $deadline_time, $tags, $tag_names, $top_priority);
 
     include_once "$fnsDir/TaskTags/deleteOnTask.php";
     \TaskTags\deleteOnTask($mysqli, $id);
