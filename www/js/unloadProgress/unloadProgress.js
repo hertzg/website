@@ -12,7 +12,7 @@
             style.position = 'fixed'
             style.right = style.bottom = style.left = '0'
             style.height = '4px'
-            style.backgroundColor = '#aaa'
+            style.backgroundColor = '#fff'
             style.backgroundImage = 'url(' + base + 'images/progress.svg)'
             style.backgroundPosition = '50% 0'
         })(progressDiv.style)
