@@ -3,9 +3,12 @@
 namespace Tasks;
 
 function maxLengths () {
-    include_once __DIR__.'/../Tags/maxLength.php';
+    $fnsDir = __DIR__.'/..';
+    include_once "$fnsDir/Tags/maxLength.php";
+    include_once "$fnsDir/TagsJson/maxLength.php";
     return [
-        'text' => 128,
         'tags' => \Tags\maxLength(),
+        'tags_json' => \TagsJson\maxLength(),
+        'text' => 128,
     ];
 }

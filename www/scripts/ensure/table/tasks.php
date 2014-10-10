@@ -31,6 +31,11 @@ ensure_table('tasks', [
         'characterSet' => 'utf8',
         'collation' => 'utf8_unicode_ci',
     ],
+    'tags_json' => [
+        'type' => "varchar($maxLengths[tags_json])",
+        'characterSet' => 'ascii',
+        'collation' => 'ascii_bin',
+    ],
     'text' => [
         'type' => "varchar($maxLengths[text])",
         'characterSet' => 'utf8',

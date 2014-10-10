@@ -27,6 +27,11 @@ ensure_table('bookmarks', [
         'characterSet' => 'utf8',
         'collation' => 'utf8_unicode_ci',
     ],
+    'tags_json' => [
+        'type' => "varchar($maxLengths[tags_json])",
+        'characterSet' => 'ascii',
+        'collation' => 'ascii_bin',
+    ],
     'title' => [
         'type' => "varchar($maxLengths[title])",
         'characterSet' => 'utf8',

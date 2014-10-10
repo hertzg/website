@@ -76,6 +76,11 @@ ensure_table('contacts', [
         'characterSet' => 'utf8',
         'collation' => 'utf8_unicode_ci',
     ],
+    'tags_json' => [
+        'type' => "varchar($maxLengths[tags_json])",
+        'characterSet' => 'ascii',
+        'collation' => 'ascii_bin',
+    ],
     'timezone' => [
         'type' => 'int(11)',
         'nullable' => true,
