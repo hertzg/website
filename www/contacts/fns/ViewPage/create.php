@@ -64,8 +64,7 @@ function create ($mysqli, $contact, $base = '') {
     $insert_time = $contact->insert_time;
     $update_time = $contact->update_time;
 
-    include_once "$fnsDir/ContactTags/indexOnContact.php";
-    $tags = \ContactTags\indexOnContact($mysqli, $id);
+    $tags = json_decode($contact->tags_json);
     if ($tags) {
         include_once "$fnsDir/Page/tags.php";
         $items[] = \Page\tags("$base../", $tags);

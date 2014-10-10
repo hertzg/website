@@ -34,8 +34,7 @@ function create ($mysqli, $bookmark) {
 
     $items[] = \Page\text(htmlspecialchars($url));
 
-    include_once "$fnsDir/BookmarkTags/indexOnBookmark.php";
-    $tags = \BookmarkTags\indexOnBookmark($mysqli, $id);
+    $tags = json_decode($bookmark->tags_json);
     if ($tags) {
         include_once "$fnsDir/Page/tags.php";
         $items[] = \Page\tags('../', $tags);

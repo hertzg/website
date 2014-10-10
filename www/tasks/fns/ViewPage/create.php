@@ -22,8 +22,7 @@ function create ($mysqli, $task, $user) {
 
     }
 
-    include_once "$fnsDir/TaskTags/indexOnTask.php";
-    $tags = \TaskTags\indexOnTask($mysqli, $id);
+    $tags = json_decode($task->tags_json);
     if ($tags) {
         include_once "$fnsDir/Page/tags.php";
         $items[] = \Page\tags('../', $tags);

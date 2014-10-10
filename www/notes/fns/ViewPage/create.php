@@ -10,8 +10,7 @@ function create ($mysqli, $note) {
     include_once "$fnsDir/create_text_item.php";
     $items = [create_text_item($note->text, '../../')];
 
-    include_once "$fnsDir/NoteTags/indexOnNote.php";
-    $tags = \NoteTags\indexOnNote($mysqli, $id);
+    $tags = json_decode($note->tags_json);
     if ($tags) {
         include_once "$fnsDir/Page/tags.php";
         $items[] = \Page\tags('../', $tags);

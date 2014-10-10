@@ -7,7 +7,7 @@ function tags ($base, $tags) {
         '<div class="page-tags">'
             .'<span class="label">Tags:</span>';
     foreach ($tags as $tag) {
-        $escapedTag = htmlspecialchars($tag->tag_name);
+        $escapedTag = htmlspecialchars($tag);
         $html .=
             "<a class=\"tag\" href=\"$base?tag=$escapedTag\">"
                 .$escapedTag
