@@ -9,9 +9,10 @@ function create_view_page ($connection) {
     $href = "../edit/?id=$id";
     $editLink = Page\imageArrowLink('Edit', $href, 'edit-connection');
 
+    include_once "$fnsDir/Page/imageLink.php";
     $deleteLink =
         '<div id="deleteLink">'
-            .Page\imageArrowLink('Delete', "../delete/?id=$id", 'trash-bin')
+            .Page\imageLink('Delete', "../delete/?id=$id", 'trash-bin')
         .'</div>';
 
     include_once '../fns/format_permissions.php';

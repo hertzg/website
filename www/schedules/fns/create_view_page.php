@@ -19,14 +19,14 @@ function create_view_page ($user, $schedule) {
     $escapedItemQuery = ItemList\escapedItemQuery($id);
 
     include_once "$fnsDir/Page/imageArrowLink.php";
-
     $href = "../edit/$escapedItemQuery";
     $editLink = Page\imageArrowLink('Edit', $href, 'edit-schedule');
 
+    include_once "$fnsDir/Page/imageLink.php";
     $href = "../delete/$escapedItemQuery";
     $deleteLink =
         '<div id="deleteLink">'
-            .Page\imageArrowLink('Delete', $href, 'trash-bin')
+            .Page\imageLink('Delete', $href, 'trash-bin')
         .'</div>';
 
     include_once "$fnsDir/create_new_item_button.php";

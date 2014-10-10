@@ -58,7 +58,6 @@ function create_search_page ($mysqli, $user) {
     include_once __DIR__.'/create_options_panel.php';
     include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/compressed_js_script.php";
-    include_once "$fnsDir/Page/imageArrowLink.php";
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";

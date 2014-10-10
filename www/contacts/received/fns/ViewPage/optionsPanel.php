@@ -17,7 +17,6 @@ function optionsPanel ($receivedContact) {
     $icon = 'import-contact';
     $editAndImportLink = \Page\imageArrowLink('Edit and Import', $href, $icon);
 
-    include_once "$fnsDir/Page/imageLink.php";
     if ($receivedContact->archived) {
         $href = "../submit-unarchive.php$itemQuery";
         $archiveLink = \Page\imageLink('Unarchive', $href, 'unarchive');
@@ -26,10 +25,9 @@ function optionsPanel ($receivedContact) {
         $archiveLink = \Page\imageLink('Archive', $href, 'archive');
     }
 
-    $href = "../delete/$itemQuery";
     $deleteLink =
         '<div id="deleteLink">'
-            .\Page\imageArrowLink('Delete', $href, 'trash-bin')
+            .\Page\imageLink('Delete', "../delete/$itemQuery", 'trash-bin')
         .'</div>';
 
     include_once "$fnsDir/Page/staticTwoColumns.php";

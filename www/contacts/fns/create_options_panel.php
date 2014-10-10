@@ -17,12 +17,11 @@ function create_options_panel ($user, $base = '') {
 
     if ($user->num_contacts) {
         include_once "$fnsDir/ItemList/escapedPageQuery.php";
-        include_once "$fnsDir/Page/imageArrowLink.php";
-        $title = 'Delete All Contacts';
+        include_once "$fnsDir/Page/imageLink.php";
         $href = "{$base}delete-all/".ItemList\escapedPageQuery();
         $options[] =
             '<div id="deleteAllLink">'
-                .Page\imageArrowLink($title, $href, 'trash-bin')
+                .Page\imageLink('Delete All Contacts', $href, 'trash-bin')
             .'</div>';
     }
 

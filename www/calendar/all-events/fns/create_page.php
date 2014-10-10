@@ -22,11 +22,11 @@ function create_page ($mysqli, $user, $base = '') {
             $description, "$base../view-event/?id=$event->id", 'event');
     }
 
-    include_once "$fnsDir/Page/imageArrowLink.php";
+    include_once "$fnsDir/Page/imageLink.php";
     $href = "{$base}delete-all/";
     $deleteLink =
         '<div id="deleteAllLink">'
-            .Page\imageArrowLink('Delete All Events', $href, 'trash-bin')
+            .Page\imageLink('Delete All Events', $href, 'trash-bin')
         .'</div>';
 
     include_once "$fnsDir/create_panel.php";

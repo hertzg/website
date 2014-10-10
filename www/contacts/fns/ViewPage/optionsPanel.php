@@ -11,7 +11,6 @@ function optionsPanel ($contact, $base) {
     $escapedItemQuery = \ItemList\escapedItemQuery($id_contacts);
 
     include_once "$fnsDir/Page/imageArrowLink.php";
-
     $safe_name = str_replace('/', '_', $contact->full_name);
     $href = "$base../download/$id_contacts/$safe_name.vcf";
     $downloadLink = \Page\imageArrowLink('Download', $href, 'download');
@@ -22,10 +21,11 @@ function optionsPanel ($contact, $base) {
     $href = "$base../send/$escapedItemQuery";
     $sendLink = \Page\imageArrowLink('Send', $href, 'send');
 
+    include_once "$fnsDir/Page/imageLink.php";
     $href = "$base../delete/$escapedItemQuery";
     $deleteLink =
         '<div id="deleteLink">'
-            .\Page\imageArrowLink('Delete', $href, 'trash-bin')
+            .\Page\imageLink('Delete', $href, 'trash-bin')
         .'</div>';
 
     include_once "$fnsDir/Page/staticTwoColumns.php";

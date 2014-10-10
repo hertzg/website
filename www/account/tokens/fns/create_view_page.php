@@ -5,10 +5,10 @@ function create_view_page ($token) {
     $id = $token->id;
     $fnsDir = __DIR__.'/../../../fns';
 
-    include_once "$fnsDir/Page/imageArrowLink.php";
+    include_once "$fnsDir/Page/imageLink.php";
     $deleteLink =
         '<div id="deleteLink">'
-            .Page\imageArrowLink('Delete', "../delete/?id=$id", 'trash-bin')
+            .Page\imageLink('Delete', "../delete/?id=$id", 'trash-bin')
         .'</div>';
 
     include_once "$fnsDir/create_panel.php";

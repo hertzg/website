@@ -17,12 +17,11 @@ function create_options_panel ($user, $base = '') {
 
     if ($user->num_bookmarks) {
         include_once "$fnsDir/ItemList/escapedPageQuery.php";
-        include_once "$fnsDir/Page/imageArrowLink.php";
-        $title = 'Delete All Bookmarks';
+        include_once "$fnsDir/Page/imageLink.php";
         $href = "{$base}delete-all/".ItemList\escapedPageQuery();
         $options[] =
             '<div id="deleteAllLink">'
-                .Page\imageArrowLink($title, $href, 'trash-bin')
+                .Page\imageLink('Delete All Bookmarks', $href, 'trash-bin')
             .'</div>';
     }
 

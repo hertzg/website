@@ -14,12 +14,11 @@ function create_options_panel ($base = '') {
     $options[] = Page\imageLinkWithDescription($title,
         $description, $href, $icon);
 
-    $title = 'Restore Defaults';
     $href = "{$base}restore-defaults/";
-    include_once "$fnsDir/Page/imageArrowLink.php";
+    include_once "$fnsDir/Page/imageLink.php";
     $options[] =
         '<div id="restoreLink">'
-            .Page\imageArrowLink($title, $href, 'restore-defaults')
+            .Page\imageLink('Restore Defaults', $href, 'restore-defaults')
         .'</div>';
 
     include_once "$fnsDir/create_panel.php";

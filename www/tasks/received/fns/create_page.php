@@ -45,11 +45,11 @@ function create_page ($mysqli, $user, $base = '') {
         $items[] = Page\buttonLink('Show Archived Tasks', '?all=1');
     }
 
-    include_once "$fnsDir/Page/imageArrowLink.php";
+    include_once "$fnsDir/Page/imageLink.php";
     $title = 'Delete All Tasks';
     $deleteAllLink =
         '<div id="deleteAllLink">'
-            .Page\imageArrowLink($title, "{$base}delete-all/", 'trash-bin')
+            .Page\imageLink($title, "{$base}delete-all/", 'trash-bin')
         .'</div>';
 
     include_once "$fnsDir/create_new_item_button.php";

@@ -22,7 +22,6 @@ function optionsPanel ($receivedBookmark) {
     $icon = 'import-bookmark';
     $editAndImportLink = \Page\imageArrowLink('Edit and Import', $href, $icon);
 
-    include_once "$fnsDir/Page/imageLink.php";
     if ($receivedBookmark->archived) {
         $href = "../submit-unarchive.php$queryString";
         $archiveLink = \Page\imageLink('Unarchive', $href, 'unarchive');
@@ -31,10 +30,9 @@ function optionsPanel ($receivedBookmark) {
         $archiveLink = \Page\imageLink('Archive', $href, 'archive');
     }
 
-    $href = "../delete/$queryString";
     $deleteLink =
         '<div id="deleteLink">'
-            .\Page\imageArrowLink('Delete', $href, 'trash-bin')
+            .\Page\imageLink('Delete', "../delete/$queryString", 'trash-bin')
         .'</div>';
 
     include_once "$fnsDir/Page/staticTwoColumns.php";

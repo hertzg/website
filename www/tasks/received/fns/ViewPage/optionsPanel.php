@@ -13,22 +13,21 @@ function optionsPanel ($receivedTask) {
     $importLink = \Page\imageLink('Import', $href, 'import-task');
 
     include_once "$fnsDir/Page/imageArrowLink.php";
+    $title = 'Edit and Import';
     $href = "../edit-and-import/$itemQuery";
-    $icon = 'import-task';
-    $editAndImportLink = \Page\imageArrowLink('Edit and Import', $href, $icon);
+    $editAndImportLink = \Page\imageArrowLink($title, $href, 'import-task');
 
-    include_once "$fnsDir/Page/imageLink.php";
     if ($receivedTask->archived) {
-        $archiveLink = \Page\imageLink('Unarchive',
-            "submit-unarchive.php$itemQuery", 'unarchive');
+        $href = "submit-unarchive.php$itemQuery";
+        $archiveLink = \Page\imageLink('Unarchive', $href, 'unarchive');
     } else {
-        $archiveLink = \Page\imageLink('Archive',
-            "submit-archive.php$itemQuery", 'archive');
+        $href = "submit-archive.php$itemQuery";
+        $archiveLink = \Page\imageLink('Archive', $href, 'archive');
     }
 
     $deleteLink =
         '<div id="deleteLink">'
-            .\Page\imageArrowLink('Delete', "../delete/$itemQuery", 'trash-bin')
+            .\Page\imageLink('Delete', "../delete/$itemQuery", 'trash-bin')
         .'</div>';
 
     include_once "$fnsDir/Page/staticTwoColumns.php";

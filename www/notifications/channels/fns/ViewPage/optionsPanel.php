@@ -9,8 +9,6 @@ function optionsPanel ($channel) {
     $id = $channel->id;
 
     include_once "$fnsDir/Page/imageArrowLink.php";
-    include_once "$fnsDir/Page/imageLink.php";
-
     $title = 'Post a Notification';
     $href = "../notify/?id=$id";
     $notifyLink = \Page\imageArrowLink($title, $href, 'create-notification');
@@ -32,9 +30,10 @@ function optionsPanel ($channel) {
     else $icon = 'edit-inactive-channel';
     $editLink = \Page\imageArrowLink('Edit', $href, $icon);
 
+    include_once "$fnsDir/Page/imageLink.php";
     $deleteLink =
         '<div id="deleteLink">'
-            .\Page\imageArrowLink('Delete', "../delete/?id=$id", 'trash-bin')
+            .\Page\imageLink('Delete', "../delete/?id=$id", 'trash-bin')
         .'</div>';
 
     include_once "$fnsDir/Page/staticTwoColumns.php";

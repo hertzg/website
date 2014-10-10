@@ -38,12 +38,11 @@ function create_page ($mysqli, $user, $base = '') {
         include_once "$fnsDir/ItemList/escapedPageQuery.php";
         $escapedPageQuery = ItemList\escapedPageQuery();
 
-        include_once "$fnsDir/Page/imageArrowLink.php";
-        $title = 'Delete All Notifications';
+        include_once "$fnsDir/Page/imageLink.php";
         $href = "{$base}delete-all/$escapedPageQuery";
         $options[] =
             '<div id="deleteAllLink">'
-                .Page\imageArrowLink($title, $href, 'trash-bin')
+                .Page\imageLink('Delete All Notifications', $href, 'trash-bin')
             .'</div>';
 
         include_once __DIR__.'/render_prev_button.php';

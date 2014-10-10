@@ -47,11 +47,10 @@ function create_page ($mysqli, $user, $base = '') {
 
         }
 
-        include_once "$fnsDir/Page/imageArrowLink.php";
-        $href = "{$base}empty/";
+        include_once "$fnsDir/Page/imageLink.php";
         $emptyLink =
             '<div id="emptyLink">'
-                .Page\imageArrowLink('Empty Trash', $href, 'empty-trash')
+                .Page\imageLink('Empty Trash', "{$base}empty/", 'empty-trash')
             .'<?div>';
 
         include_once "$fnsDir/create_panel.php";

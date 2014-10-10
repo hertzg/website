@@ -15,11 +15,11 @@ function photoOptionsPanel ($contact, $base) {
 
     if ($contact->photo_id) {
 
+        include_once "$fnsDir/Page/imageLink.php";
         $href = "$base../photo/delete/$escapedItemQuery";
-        $icon = 'clear-contact-photo';
         $deleteLink =
             '<div id="deletePhotoLink">'
-                .\Page\imageArrowLink('Delete Photo', $href, $icon)
+                .\Page\imageLink('Delete Photo', $href, 'clear-contact-photo')
             .'</div>';
 
         include_once "$fnsDir/Page/staticTwoColumns.php";

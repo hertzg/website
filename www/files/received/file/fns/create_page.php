@@ -29,7 +29,7 @@ function create_page ($receivedFile, $base = '') {
     }
 
     $href = "{$base}delete/$queryString";
-    $deleteLink = Page\imageArrowLink('Delete', $href, 'trash-bin');
+    $deleteLink = Page\imageLink('Delete', $href, 'trash-bin');
 
     include_once "$fnsDir/Page/filePreview.php";
     $filePreview = Page\filePreview($receivedFile->media_type,

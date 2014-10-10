@@ -18,10 +18,10 @@ function create_view_page ($event) {
     $href = "../edit-event/?id=$id";
     $editLink = Page\imageArrowLink('Edit', $href, 'edit-event');
 
-    $href = "../delete-event/?id=$id";
+    include_once "$fnsDir/Page/imageLink.php";
     $deleteLink =
         '<div id="deleteLink">'
-            .Page\imageArrowLink('Delete', $href, 'trash-bin')
+            .Page\imageLink('Delete', "../delete-event/?id=$id", 'trash-bin')
         .'</div>';
 
     include_once "$fnsDir/Page/staticTwoColumns.php";

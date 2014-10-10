@@ -30,10 +30,9 @@ function optionsPanel ($file) {
     $href = "../send-file/?id=$id";
     $sendLink = \Page\imageArrowLink('Send', $href, 'send');
 
-    $href = "../delete-file/?id=$id";
     $deleteLink =
         '<div id="deleteLink">'
-            .\Page\imageArrowLink('Delete', $href, 'trash-bin')
+            .\Page\imageLink('Delete', "../delete-file/?id=$id", 'trash-bin')
         .'</div>';
 
     include_once "$fnsDir/Page/staticTwoColumns.php";

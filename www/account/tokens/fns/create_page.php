@@ -24,16 +24,17 @@ function create_page ($mysqli, &$user, $base = '') {
         include_once "$fnsDir/Tokens/indexOnUser.php";
         $tokens = Tokens\indexOnUser($mysqli, $user->id_users);
 
-        include_once "$fnsDir/Page/imageArrowLink.php";
-        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
-
+        include_once "$fnsDir/Page/imageLink.php";
         $title = 'Delete All Sessions';
         $options[] =
             '<div id="deleteAllLink">'
-                .Page\imageArrowLink($title, "{$base}delete-all/", 'trash-bin')
+                .Page\imageLink($title, "{$base}delete-all/", 'trash-bin')
             .'</div>';
 
         $icon = 'token';
+
+        include_once "$fnsDir/Page/imageArrowLink.php";
+        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
 
         foreach ($tokens as $itemToken) {
 

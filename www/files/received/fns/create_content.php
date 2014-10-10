@@ -4,12 +4,11 @@ function create_content ($items, $base) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
-    include_once "$fnsDir/Page/imageArrowLink.php";
-    $title = 'Delete All Files';
+    include_once "$fnsDir/Page/imageLink.php";
     $href = "{$base}delete-all/";
     $deleteAllLink =
         '<div id="deleteAllLink">'
-            .Page\imageArrowLink($title, $href, 'trash-bin')
+            .Page\imageLink('Delete All Files', $href, 'trash-bin')
         .'</div>';
 
     include_once "$fnsDir/create_panel.php";

@@ -6,6 +6,7 @@ function create_page ($base = '') {
 
     include_once "$fnsDir/Page/imageArrowLink.php";
     include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
+    include_once "$fnsDir/Page/imageLink.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
     return Page\tabs(
@@ -26,7 +27,7 @@ function create_page ($base = '') {
             "{$base}reorder/", 'reorder')
         .'<div class="hr"></div>'
         .'<div id="restoreLink">'
-            .Page\imageArrowLink('Restore Defaults',
+            .Page\imageLink('Restore Defaults',
                 "{$base}restore-defaults/", 'restore-defaults')
         .'</div>'
     );

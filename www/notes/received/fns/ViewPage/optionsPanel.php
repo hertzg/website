@@ -17,19 +17,17 @@ function optionsPanel ($receivedNote) {
     $icon = 'import-note';
     $editAndImportLink = \Page\imageArrowLink('Edit and Import', $href, $icon);
 
-    include_once "$fnsDir/Page/imageLink.php";
     if ($receivedNote->archived) {
-        $archiveLink = \Page\imageLink('Unarchive',
-            "../submit-unarchive.php$itemQuery", 'unarchive');
+        $href = "../submit-unarchive.php$itemQuery";
+        $archiveLink = \Page\imageLink('Unarchive', $href, 'unarchive');
     } else {
-        $archiveLink = \Page\imageLink('Archive',
-            "../submit-archive.php$itemQuery", 'archive');
+        $href = "../submit-archive.php$itemQuery";
+        $archiveLink = \Page\imageLink('Archive', $href, 'archive');
     }
 
-    $href = "../delete/$itemQuery";
     $deleteLink =
         '<div id="deleteLink">'
-            .\Page\imageArrowLink('Delete', $href, 'trash-bin')
+            .\Page\imageLink('Delete', "../delete/$itemQuery", 'trash-bin')
         .'</div>';
 
     include_once "$fnsDir/Page/staticTwoColumns.php";

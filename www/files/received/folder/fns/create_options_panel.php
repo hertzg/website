@@ -28,7 +28,7 @@ function create_options_panel ($receivedFolder, $base) {
     $href = "{$base}delete/$queryString";
     $deleteLink =
         '<div id="deleteLink">'
-            .Page\imageArrowLink('Delete', $href, 'trash-bin')
+            .Page\imageLink('Delete', $href, 'trash-bin')
         .'</div>';
 
     include_once "$fnsDir/create_panel.php";

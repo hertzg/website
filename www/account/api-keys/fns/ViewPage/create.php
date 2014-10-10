@@ -10,9 +10,10 @@ function create ($user, $apiKey) {
     include_once "$fnsDir/Page/imageArrowLink.php";
     $editLink = \Page\imageArrowLink('Edit', "../edit/?id=$id", 'edit-api-key');
 
+    include_once "$fnsDir/Page/imageLink.php";
     $deleteLink =
         '<div id="deleteLink">'
-            .\Page\imageArrowLink('Delete', "../delete/?id=$id", 'trash-bin')
+            .\Page\imageLink('Delete', "../delete/?id=$id", 'trash-bin')
         .'</div>';
 
     include_once "$fnsDir/Page/staticTwoColumns.php";

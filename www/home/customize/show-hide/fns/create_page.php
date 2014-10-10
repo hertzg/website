@@ -24,7 +24,7 @@ function create_page ($user, $base = '') {
 
     include_once "$fnsDir/compressed_js_script.php";
     include_once "$fnsDir/create_panel.php";
-    include_once "$fnsDir/Page/imageArrowLink.php";
+    include_once "$fnsDir/Page/imageLink.php";
     include_once "$fnsDir/Page/imageLinkWithDescription.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
@@ -50,7 +50,7 @@ function create_page ($user, $base = '') {
                     "$base../reorder/", 'reorder')
                 .'<div class="hr"></div>'
                 .'<div id="restoreLink">'
-                    .Page\imageArrowLink('Restore Defaults',
+                    .Page\imageLink('Restore Defaults',
                         "{$base}restore-defaults/", 'restore-defaults')
                 .'</div>'
             )

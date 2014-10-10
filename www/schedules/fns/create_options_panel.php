@@ -10,10 +10,10 @@ function create_options_panel ($user, $base = '') {
     $escapedPageQuery = ItemList\escapedPageQuery();
 
     $href = "{$base}delete-all/$escapedPageQuery";
-    include_once "$fnsDir/Page/imageArrowLink.php";
+    include_once "$fnsDir/Page/imageLink.php";
     $deleteAllLink =
         '<div id="deleteAllLink">'
-            .Page\imageArrowLink('Delete All Schedules', $href, 'trash-bin')
+            .Page\imageLink('Delete All Schedules', $href, 'trash-bin')
         .'</div>';
 
     include_once "$fnsDir/create_panel.php";
