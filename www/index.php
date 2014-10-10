@@ -15,6 +15,7 @@ unset_session_vars();
 header('Content-Type: text/html; charset=UTF-8');
 
 include_once 'fns/compressed_css_link.php';
+include_once 'fns/compressed_js_script.php';
 echo
     '<!DOCTYPE html>'
     .'<html>'
@@ -60,5 +61,9 @@ echo
                     .'</div>'
                 .'</div>'
             .'</div>'
+            .'<script type="text/javascript">'
+                ."var base = ''"
+            .'</script>'
+            .compressed_js_script('unloadProgress')
         .'</body>'
     .'</html>';

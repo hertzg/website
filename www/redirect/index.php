@@ -23,7 +23,9 @@ $body =
         .'</div>'
     .'</div>'
     .'<script type="text/javascript">'
-    .'location = '.json_encode($url)
+    .'setTimeout(function () {'
+        .'location = '.json_encode($url)
+    .'}, 0)'
     .'</script>';
 
 if ($user) $theme = $user->theme;
