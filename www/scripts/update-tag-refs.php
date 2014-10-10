@@ -45,7 +45,7 @@ foreach ($ids as $id) {
 
         $sql = 'update contact_tags set'
             ." full_name = '$full_name', alias = '$alias',"
-            ." phone1 = $phone1, phone2 = $phone2,"
+            ." phone1 = '$phone1', phone2 = '$phone2',"
             ." favorite = $favorite, insert_time = $contact->insert_time,"
             ." update_time = $contact->update_time"
             ." where id_contacts = $contact->id_contacts";
