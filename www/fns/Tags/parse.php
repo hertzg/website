@@ -11,6 +11,7 @@ function parse ($tag_names) {
 
     $tag_names = explode(' ', $tag_names);
     $tag_names = array_unique($tag_names);
+    $tag_names = array_values($tag_names);
     return $tag_names;
 
 }
