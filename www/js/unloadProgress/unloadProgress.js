@@ -1,41 +1,52 @@
 (function (base) {
 
-    var unloaded = false
+    var body = document.body
+
+    var overlayShown = false,
+        progressShown = false
 
     addEventListener('beforeunload', function () {
 
-        if (unloaded) return
-        unloaded = true
+        if (!overlayShown) {
 
-        var progressDiv = document.createElement('div')
-        ;(function (style) {
+            var overlayDiv = document.createElement('div')
+            overlayDiv.addEventListener('click', function () {
+                body.removeChild(overlayDiv)
+                overlayShown = false
+            })
+
+            var style = overlayDiv.style
+            style.position = 'fixed'
+            style.top = style.right = style.bottom = style.left = '0'
+            style.background = 'rgba(0, 0, 0, 0.5)'
+
+            body.appendChild(overlayDiv)
+            overlayShown = true
+
+        }
+
+        if (!progressShown) {
+
+            var progressDiv = document.createElement('div')
+
+            var style = progressDiv.style
             style.position = 'fixed'
             style.right = style.bottom = style.left = '0'
             style.height = '4px'
             style.backgroundColor = '#fff'
             style.backgroundImage = 'url(' + base + 'images/progress.svg)'
             style.backgroundPosition = '50% 0'
-        })(progressDiv.style)
 
-        var overlayDiv = document.createElement('div')
-        ;(function (style) {
-            style.position = 'fixed'
-            style.top = style.right = style.bottom = style.left = '0'
-            style.background = 'rgba(0, 0, 0, 0.5)'
-        })(overlayDiv.style)
-        overlayDiv.addEventListener('click', function () {
-            body.removeChild(overlayDiv)
-        })
+            var x = 0
+            setInterval(function () {
+                progressDiv.style.backgroundPosition = 'calc(50% + ' + x + 'px) 0'
+                x = (x + 1) % 8
+            }, 50)
 
-        var body = document.body
-        body.appendChild(overlayDiv)
-        body.appendChild(progressDiv)
+            body.appendChild(progressDiv)
+            progressShown = true
 
-        var x = 0
-        setInterval(function () {
-            progressDiv.style.backgroundPosition = 'calc(50% + ' + x + 'px) 0'
-            x = (x + 1) % 8
-        }, 50)
+        }
 
     })
 
