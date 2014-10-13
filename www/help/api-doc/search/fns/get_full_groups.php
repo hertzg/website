@@ -61,6 +61,13 @@ function get_full_groups () {
     include_once "$dir/folder/get_methods.php";
     $groups['folder']['methods'] = folder\get_methods();
 
+    include_once "$dir/folder/get_subgroups.php";
+    $groups['folder']['subgroups'] = folder\get_subgroups();
+
+    include_once "$dir/folder/received/get_methods.php";
+    $methods = folder\received\get_methods();
+    $groups['folder']['subgroups']['received']['methods'] = $methods;
+
     include_once "$dir/note/get_methods.php";
     $groups['note']['methods'] = note\get_methods();
 
