@@ -17,14 +17,21 @@ function optionsPanel ($task) {
     $sendLink = \Page\imageArrowLink('Send', $href, 'send');
 
     include_once "$fnsDir/Page/imageLink.php";
+    $href = 'sms:?body='.rawurlencode($task->text);
+    $sendViaSmsLink = \Page\imageLink('Send via SMS', $href, 'send');
+
     $href = "../delete/$escapedItemQuery";
-    $deleteLink = \Page\imageLink('Delete', $href, 'trash-bin');
+    $deleteLink =
+        '<div id="deleteLink">'
+            .\Page\imageLink('Delete', $href, 'trash-bin')
+        .'</div>';
 
     include_once "$fnsDir/Page/staticTwoColumns.php";
+    include_once "$fnsDir/Page/twoColumns.php";
     $content =
         \Page\staticTwoColumns($editLink, $sendLink)
         .'<div class="hr"></div>'
-        ."<div id=\"deleteLink\">$deleteLink</div>";
+        .\Page\twoColumns($sendViaSmsLink, $deleteLink);
 
     include_once "$fnsDir/create_panel.php";
     return create_panel('Task Options', $content);

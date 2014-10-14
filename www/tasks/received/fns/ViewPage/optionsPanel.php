@@ -18,6 +18,9 @@ function optionsPanel ($receivedTask) {
     $href = "../edit-and-import/$itemQuery";
     $editAndImportLink = \Page\imageArrowLink($title, $href, 'import-task');
 
+    $href = 'sms:?body='.rawurlencode($receivedTask->text);
+    $sendViaSmsLink = \Page\imageLink('Send via SMS', $href, 'send');
+
     if ($receivedTask->archived) {
         $href = "../submit-unarchive.php$itemQuery";
         $archiveLink = \Page\imageLink('Unarchive', $href, 'unarchive');
@@ -35,6 +38,8 @@ function optionsPanel ($receivedTask) {
     include_once "$fnsDir/Page/twoColumns.php";
     $content =
         \Page\twoColumns($importLink, $editAndImportLink)
+        .'<div class="hr"></div>'
+        .$sendViaSmsLink
         .'<div class="hr"></div>'
         .\Page\staticTwoColumns($archiveLink, $deleteLink);
 
