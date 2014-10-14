@@ -18,9 +18,8 @@ function optionsPanel ($note) {
 
     include_once "$fnsDir/Page/imageLink.php";
     $href = 'sms:?body='.rawurlencode($note->text);
-    $sendViaSmsLink = \Page\imageLink('Send Text via SMS', $href, 'send');
+    $sendViaSmsLink = \Page\imageLink('Send via SMS', $href, 'send');
 
-    include_once "$fnsDir/Page/imageLink.php";
     $href = "../delete/$escapedItemQuery";
     $deleteLink =
         '<div id="deleteLink">'

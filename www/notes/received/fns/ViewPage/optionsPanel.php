@@ -18,6 +18,9 @@ function optionsPanel ($receivedNote) {
     $icon = 'import-note';
     $editAndImportLink = \Page\imageArrowLink('Edit and Import', $href, $icon);
 
+    $href = 'sms:?body='.rawurlencode($receivedNote->text);
+    $sendViaSmsLink = \Page\imageLink('Send via SMS', $href, 'send');
+
     if ($receivedNote->archived) {
         $href = "../submit-unarchive.php$itemQuery";
         $archiveLink = \Page\imageLink('Unarchive', $href, 'unarchive');
@@ -35,6 +38,8 @@ function optionsPanel ($receivedNote) {
     include_once "$fnsDir/Page/twoColumns.php";
     $content =
         \Page\twoColumns($importLink, $editAndImportLink)
+        .'<div class="hr"></div>'
+        .$sendViaSmsLink
         .'<div class="hr"></div>'
         .\Page\staticTwoColumns($archiveLink, $deleteLink);
 
