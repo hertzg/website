@@ -22,6 +22,9 @@ function optionsPanel ($bookmark) {
     $sendLink = \Page\imageArrowLink('Send', $href, 'send');
 
     include_once "$fnsDir/Page/imageLink.php";
+    $href = 'sms:?body='.rawurlencode($bookmark->url);
+    $sendViaSmsLink = \Page\imageLink('Send via SMS', $href, 'send');
+
     $href = "../delete/$escapedItemQuery";
     $deleteLink = \Page\imageLink('Delete', $href, 'trash-bin');
 
@@ -31,6 +34,8 @@ function optionsPanel ($bookmark) {
         \Page\twoColumns($openLink, $openInNewTabLink)
         .'<div class="hr"></div>'
         .\Page\staticTwoColumns($editLink, $sendLink)
+        .'<div class="hr"></div>'
+        .$sendViaSmsLink
         .'<div class="hr"></div>'
         ."<div id=\"deleteLink\">$deleteLink</div>";
 

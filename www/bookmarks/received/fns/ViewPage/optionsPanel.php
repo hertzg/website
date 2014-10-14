@@ -23,6 +23,10 @@ function optionsPanel ($receivedBookmark) {
     $icon = 'import-bookmark';
     $editAndImportLink = \Page\imageArrowLink('Edit and Import', $href, $icon);
 
+    include_once "$fnsDir/Page/imageLink.php";
+    $href = 'sms:?body='.rawurlencode($receivedBookmark->url);
+    $sendViaSmsLink = \Page\imageLink('Send via SMS', $href, 'send');
+
     if ($receivedBookmark->archived) {
         $href = "../submit-unarchive.php$itemQuery";
         $archiveLink = \Page\imageLink('Unarchive', $href, 'unarchive');
@@ -42,6 +46,8 @@ function optionsPanel ($receivedBookmark) {
         \Page\twoColumns($openLink, $openInNewTabLink)
         .'<div class="hr"></div>'
         .\Page\twoColumns($importLink, $editAndImportLink)
+        .'<div class="hr"></div>'
+        .$sendViaSmsLink
         .'<div class="hr"></div>'
         .\Page\staticTwoColumns($archiveLink, $deleteLink);
 
