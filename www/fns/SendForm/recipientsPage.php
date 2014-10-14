@@ -74,8 +74,8 @@ function recipientsPage ($mysqli, $user, $id, $tabTitle,
         .$content
     );
 
-    include_once "$fnsDir/SendForm/removeDialog.php";
-    \SendForm\removeDialog($recipients, $base, $content, $head);
+    include_once __DIR__.'/removeDialog.php';
+    removeDialog($recipients, $base, $content, $head);
 
     include_once "$fnsDir/echo_page.php";
     echo_page($user, $pageTitle, $content, $base, ['head' => $head]);
