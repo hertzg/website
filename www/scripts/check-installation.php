@@ -28,6 +28,6 @@ $ok = is_dir($dir);
 visual_assert($ok, "Data directory exists");
 
 $file = "$dir/test";
-$ok = file_put_contents($file, 'test');
+$ok = @file_put_contents($file, 'test');
 if ($ok) unlink($file);
 visual_assert($ok, 'Data directory writable');
