@@ -1,40 +1,41 @@
 .contactPanel {
     position: relative;
 }
-.contactPanel > .photo {
-    line-height: 195px;
+.contactPanel-photo {
+    height: 195px;
+    padding-top: 15px;
     text-align: center;
 }
-.contactPanel > .photo > img {
+.contactPanel-image {
     display: inline-block;
-    vertical-align: middle;
+    vertical-align: top;
     border: 0;
     width: 165px;
     height: 165px;
 }
-.contactPanel > .info {
+.contactPanel-info {
     position: relative;
     border-left: 0 solid #eee;
 }
 
 @media (max-width:700px) {
-    .contactPanel > .photo {
+    .contactPanel-photo {
         height: 195px;
     }
-    .contactPanel > .info {
+    .contactPanel-info {
         border-top-width: 1px;
         border-top: 1px solid #eee;
     }
 }
 @media (min-width:700px) {
-    .contactPanel > .photo {
+    .contactPanel-photo {
         position: absolute;
         top: 0;
         bottom: 0;
         left: 0;
         width: 195px;
     }
-    .contactPanel > .info {
+    .contactPanel-info {
         margin-left: 195px;
         min-height: 195px;
         border-left-width: 1px;
