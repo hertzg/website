@@ -3,23 +3,30 @@
 
 function visual_assert ($ok, $text) {
     $ok = $ok ? 'OK' : 'NOT OK';
-    echo str_pad($text, 30, ' ')." $ok\n";
+    echo str_pad($text, 40, ' ')." $ok\n";
 }
 
 chdir(__DIR__);
-include_once '../../lib/cli.php';
+
+$apacheModules = apache_get_modules();
+
+$ok = in_array('mod_rewrite', $apacheModules);
+visual_assert($ok, 'Apache mod_rewrite enabled');
+
+$ok = in_array('mod_headers', $apacheModules);
+visual_assert($ok, 'Apache mod_headers enabled');
 
 $ok = date_default_timezone_get() === 'UTC';
-visual_assert($ok, 'Default Timezone UTC');
+visual_assert($ok, 'PHP default timezone set to UTC');
 
 $ok = function_exists('curl_init');
-visual_assert($ok, 'PHP Client URL Library');
+visual_assert($ok, 'PHP Client URL Library installed');
 
 $ok = function_exists('imagecreatefromstring');
-visual_assert($ok, 'PHP Image Processing and GD');
+visual_assert($ok, 'PHP image processing and GD installed');
 
 $ok = function_exists('mysqli_connect');
-visual_assert($ok, 'PHP MySQL Improved Extension');
+visual_assert($ok, 'PHP MySQL improved extension installed');
 
 include_once '../fns/Users/Directory/dir.php';
 $dir =  Users\Directory\dir();
