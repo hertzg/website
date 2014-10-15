@@ -1,20 +1,30 @@
 #!/usr/bin/php
 <?php
 
+function print_assert ($text, $status) {
+    echo str_pad($text, 40, ' ')." $status\n";
+}
+
 function visual_assert ($ok, $text) {
-    $ok = $ok ? 'OK' : 'NOT OK';
-    echo str_pad($text, 40, ' ')." $ok\n";
+    echo print_assert($text, $ok ? 'OK' : 'NOT OK');
 }
 
 chdir(__DIR__);
 
-$apacheModules = apache_get_modules();
+if (!function_exists('apache_get_modules')) {
+    print_assert('Apache mod_rewrite enabled', 'CANNOT BE DETECTED FROM CLI');
+    print_assert('Apache mod_headers enabled', 'CANNOT BE DETECTED FROM CLI');
+} else {
 
-$ok = in_array('mod_rewrite', $apacheModules);
-visual_assert($ok, 'Apache mod_rewrite enabled');
+    $apacheModules = apache_get_modules();
 
-$ok = in_array('mod_headers', $apacheModules);
-visual_assert($ok, 'Apache mod_headers enabled');
+    $ok = in_array('mod_rewrite', $apacheModules);
+    visual_assert($ok, 'Apache mod_rewrite enabled');
+
+    $ok = in_array('mod_headers', $apacheModules);
+    visual_assert($ok, 'Apache mod_headers enabled');
+
+}
 
 $ok = date_default_timezone_get() === 'UTC';
 visual_assert($ok, 'PHP default timezone set to UTC');
