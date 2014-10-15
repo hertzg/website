@@ -23,7 +23,7 @@ function optionsPanel ($bookmark) {
 
     include_once "$fnsDir/Page/imageLink.php";
     $href = 'sms:?body='.rawurlencode($bookmark->url);
-    $sendViaSmsLink = \Page\imageLink('Send via SMS', $href, 'send');
+    $sendViaSmsLink = \Page\imageLink('Send via SMS', $href, 'send-sms');
 
     $href = "../delete/$escapedItemQuery";
     $deleteLink = \Page\imageLink('Delete', $href, 'trash-bin');

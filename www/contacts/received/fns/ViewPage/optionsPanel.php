@@ -20,7 +20,7 @@ function optionsPanel ($receivedContact) {
 
     include_once __DIR__.'/../../../fns/contact_sms_text.php';
     $href = 'sms:?body='.rawurlencode(contact_sms_text($receivedContact));
-    $sendViaSmsLink = \Page\imageLink('Send via SMS', $href, 'send');
+    $sendViaSmsLink = \Page\imageLink('Send via SMS', $href, 'send-sms');
 
     if ($receivedContact->archived) {
         $href = "../submit-unarchive.php$itemQuery";

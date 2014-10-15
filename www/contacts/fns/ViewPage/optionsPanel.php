@@ -24,7 +24,7 @@ function optionsPanel ($contact, $base) {
     include_once "$fnsDir/Page/imageLink.php";
     include_once __DIR__.'/../contact_sms_text.php';
     $href = 'sms:?body='.rawurlencode(contact_sms_text($contact));
-    $sendViaSmsLink = \Page\imageLink('Send via SMS', $href, 'send');
+    $sendViaSmsLink = \Page\imageLink('Send via SMS', $href, 'send-sms');
 
     $href = "$base../delete/$escapedItemQuery";
     $deleteLink =

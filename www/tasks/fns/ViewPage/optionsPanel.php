@@ -18,7 +18,7 @@ function optionsPanel ($task) {
 
     include_once "$fnsDir/Page/imageLink.php";
     $href = 'sms:?body='.rawurlencode($task->text);
-    $sendViaSmsLink = \Page\imageLink('Send via SMS', $href, 'send');
+    $sendViaSmsLink = \Page\imageLink('Send via SMS', $href, 'send-sms');
 
     $href = "../delete/$escapedItemQuery";
     $deleteLink =

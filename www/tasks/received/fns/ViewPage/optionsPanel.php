@@ -19,7 +19,7 @@ function optionsPanel ($receivedTask) {
     $editAndImportLink = \Page\imageArrowLink($title, $href, 'import-task');
 
     $href = 'sms:?body='.rawurlencode($receivedTask->text);
-    $sendViaSmsLink = \Page\imageLink('Send via SMS', $href, 'send');
+    $sendViaSmsLink = \Page\imageLink('Send via SMS', $href, 'send-sms');
 
     if ($receivedTask->archived) {
         $href = "../submit-unarchive.php$itemQuery";

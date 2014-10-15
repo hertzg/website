@@ -11,7 +11,7 @@ function phoneNumber ($text, $number, $title) {
             .\Page\imageLink($title, "tel:$escapedNumber", 'phone')
         .'</div>'
         ."<a class=\"rightButton clickable\" href=\"sms:$escapedNumber\">"
-            .'<span class="rightButton-icon icon send"></span>'
+            .'<span class="rightButton-icon icon sms"></span>'
         .'</a>',
         "<label>$text:</label>"
     );

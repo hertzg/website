@@ -25,7 +25,7 @@ function optionsPanel ($receivedBookmark) {
 
     include_once "$fnsDir/Page/imageLink.php";
     $href = 'sms:?body='.rawurlencode($receivedBookmark->url);
-    $sendViaSmsLink = \Page\imageLink('Send via SMS', $href, 'send');
+    $sendViaSmsLink = \Page\imageLink('Send via SMS', $href, 'send-sms');
 
     if ($receivedBookmark->archived) {
         $href = "../submit-unarchive.php$itemQuery";

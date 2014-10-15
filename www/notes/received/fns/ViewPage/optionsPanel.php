@@ -19,7 +19,7 @@ function optionsPanel ($receivedNote) {
     $editAndImportLink = \Page\imageArrowLink('Edit and Import', $href, $icon);
 
     $href = 'sms:?body='.rawurlencode($receivedNote->text);
-    $sendViaSmsLink = \Page\imageLink('Send via SMS', $href, 'send');
+    $sendViaSmsLink = \Page\imageLink('Send via SMS', $href, 'send-sms');
 
     if ($receivedNote->archived) {
         $href = "../submit-unarchive.php$itemQuery";
