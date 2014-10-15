@@ -18,6 +18,10 @@ function optionsPanel ($receivedContact) {
     $icon = 'import-contact';
     $editAndImportLink = \Page\imageArrowLink('Edit and Import', $href, $icon);
 
+    include_once __DIR__.'/../../../fns/contact_sms_text.php';
+    $href = 'sms:?body='.rawurlencode(contact_sms_text($receivedContact));
+    $sendViaSmsLink = \Page\imageLink('Send via SMS', $href, 'send');
+
     if ($receivedContact->archived) {
         $href = "../submit-unarchive.php$itemQuery";
         $archiveLink = \Page\imageLink('Unarchive', $href, 'unarchive');
@@ -35,6 +39,8 @@ function optionsPanel ($receivedContact) {
     include_once "$fnsDir/Page/twoColumns.php";
     $content =
         \Page\twoColumns($importLink, $editAndImportLink)
+        .'<div class="hr"></div>'
+        .$sendViaSmsLink
         .'<div class="hr"></div>'
         .\Page\staticTwoColumns($archiveLink, $deleteLink);
 

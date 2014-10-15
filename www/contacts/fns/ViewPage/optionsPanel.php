@@ -22,6 +22,10 @@ function optionsPanel ($contact, $base) {
     $sendLink = \Page\imageArrowLink('Send', $href, 'send');
 
     include_once "$fnsDir/Page/imageLink.php";
+    include_once __DIR__.'/../contact_sms_text.php';
+    $href = 'sms:?body='.rawurlencode(contact_sms_text($contact));
+    $sendViaSmsLink = \Page\imageLink('Send via SMS', $href, 'send');
+
     $href = "$base../delete/$escapedItemQuery";
     $deleteLink =
         '<div id="deleteLink">'
@@ -29,10 +33,13 @@ function optionsPanel ($contact, $base) {
         .'</div>';
 
     include_once "$fnsDir/Page/staticTwoColumns.php";
+    include_once "$fnsDir/Page/twoColumns.php";
     $content =
         \Page\staticTwoColumns($downloadLink, $editLink)
         .'<div class="hr"></div>'
-        .\Page\staticTwoColumns($sendLink, $deleteLink);
+        .\Page\twoColumns($sendLink, $sendViaSmsLink)
+        .'<div class="hr"></div>'
+        .$deleteLink;
 
     include_once "$fnsDir/create_panel.php";
     return create_panel('Contact Options', $content);
