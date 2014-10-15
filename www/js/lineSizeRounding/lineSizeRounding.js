@@ -5,7 +5,7 @@
         style.innerHTML =
             '.hr { height: ' + lineWidth + ' }' +
             '.tab-spacer { border-bottom-width: ' + lineWidth + ' }' +
-            '.twoColumns > *:last-child {' +
+            '.twoColumns-column2 {' +
                 ' border-left-width:' + lineWidth +
             ' }' +
             '.panel > .title { border-bottom-width:' + lineWidth + ' }'
