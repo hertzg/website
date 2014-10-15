@@ -64,9 +64,11 @@ function confirmDialog (questionHtml, yesText, yesHref, noListener) {
     noLink.href = location.href
 
     var column1Element = document.createElement('div')
+    column1Element.className = 'twoColumns-column1'
     column1Element.appendChild(yesLink)
 
     var column2Element = document.createElement('div')
+    column2Element.className = 'twoColumns-column2'
     column2Element.appendChild(noLink)
 
     var twoColumnsElement = document.createElement('div')
