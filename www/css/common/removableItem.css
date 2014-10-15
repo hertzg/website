@@ -5,7 +5,7 @@
     padding-right: 48px;
 }
 
-.removableItem > .icon {
+.removableItem-icon {
     position: absolute;
     top: 8px;
     left: 8px;
