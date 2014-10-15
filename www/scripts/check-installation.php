@@ -7,6 +7,7 @@ function visual_assert ($ok, $text) {
 }
 
 chdir(__DIR__);
+include_once '../../lib/cli.php';
 
 $ok = date_default_timezone_get() === 'UTC';
 visual_assert($ok, 'Default Timezone UTC');
