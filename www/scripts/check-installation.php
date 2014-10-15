@@ -8,7 +8,7 @@ function visual_assert ($ok, $text) {
     echo print_assert($text, $ok ? 'OK' : 'NOT OK');
 }
 
-chdir(__DIR__);
+header('Content-Type: text/plain');
 
 $apacheModules = apache_get_modules();
 
