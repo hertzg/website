@@ -8,7 +8,7 @@ function captcha ($base, $autofocus = false) {
         include_once __DIR__.'/textfield.php';
         return
             '<div class="form-captcha">'
-                ."<img src=\"{$base}captcha/\""
+                ."<img class=\"form-captcha-image\" src=\"{$base}captcha/\""
                 .' alt="CAPTCHA" width="102" height="40" />'
             .'</div>'
             .textfield('captcha', 'Verification', [
