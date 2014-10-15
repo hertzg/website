@@ -5,33 +5,30 @@
     left: 24px;
     height: 48px;
 }
-.buttonsWrapper > :first-child {
+
+.buttonsWrapper-half {
     position: absolute;
     top: 0;
-    bottom: 0;
-    left: 0;
-    width: 50%;
-}
-.buttonsWrapper > :first-child > * {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    max-width: 200px;
-}
-.buttonsWrapper > :last-child {
-    position: absolute;
-    top: 0;
-    right: 0;
     bottom: 0;
     width: 50%;
 }
-.buttonsWrapper > :last-child > * {
+.buttonsWrapper-half.left {
+    left: 0;
+}
+.buttonsWrapper-half.right {
+    right: 0;
+}
+
+.buttonsWrapper-limit {
     position: absolute;
     top: 0;
-    right: 0;
     bottom: 0;
     width: 100%;
     max-width: 200px;
+}
+.buttonsWrapper-limit.left {
+    left: 0;
+}
+.buttonsWrapper-limit.right {
+    right: 0;
 }

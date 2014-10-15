@@ -36,7 +36,7 @@ h1 {
     left: 0;
     background-color: #333;
 }
-.backgroundGradient > div {
+.backgroundGradient-gradient {
     position: absolute;
     right: 0;
     bottom: 0;
@@ -55,9 +55,6 @@ h1 {
     left: 24px;
     margin: auto;
 }
-.centerWrapper > img {
-    vertical-align: top;
-}
 
 .siteInfo {
     color: #fff;
@@ -66,4 +63,11 @@ h1 {
 .siteInfo > .description {
     margin-top: 12px;
     font-size: 11px;
+}
+
+.logoImage {
+    display: inline-block;
+    vertical-align: top;
+    width: 204px;
+    height: 94px;
 }
