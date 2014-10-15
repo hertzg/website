@@ -6,7 +6,7 @@
     height: 48px;
     text-align: center;
 }
-.rightButton > .icon {
+.rightButton-icon {
     position: absolute;
     top: 6px;
     left: 6px;

@@ -50,7 +50,7 @@ function create_page ($mysqli, &$user, &$id, $base = '') {
             .'Channel: <b>'.htmlspecialchars($channel->channel_name).'</b>'
             .'<a class="rightButton clickable" title="Clear Filter"'
             ." href=\"$base..\">"
-                .'<span class="icon no"></span>'
+                .'<span class="rightButton-icon icon no"></span>'
             .'</a>'
         .'</div>'
         .join('<div class="hr"></div>', $items)

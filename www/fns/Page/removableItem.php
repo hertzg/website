@@ -8,7 +8,7 @@ function removableItem ($text, $removeHref, $icon) {
             ."<div class=\"icon $icon\"></div>"
             ."<div class=\"removableItem-text\">$text</div>"
             ."<a class=\"clickable rightButton\" href=\"$removeHref\">"
-                .'<span class="icon no"></span>'
+                .'<span class="rightButton-icon icon no"></span>'
             .'</a>'
         .'</div>';
 }

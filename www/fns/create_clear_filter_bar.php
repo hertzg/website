@@ -6,7 +6,7 @@ function create_clear_filter_bar ($tag, $clearHref) {
             .'Tag: <b>'.htmlspecialchars($tag).'</b>'
             .'<a class="rightButton clickable" title="Clear Filter"'
             ." href=\"$clearHref\">"
-                .'<span class="icon no"></span>'
+                .'<span class="rightButton-icon icon no"></span>'
             .'</a>'
         .'</div>';
 }

@@ -11,10 +11,10 @@ function content ($keyword, $placeholder, $clearHref) {
         .'</div>'
         .'<button title="Search"'
         .' class="search_form-button withClearButton rightButton clickable">'
-            .'<span class="icon search"></span>'
+            .'<span class="rightButton-icon icon search"></span>'
         .'</button>'
         ."<a href=\"$clearHref\" title=\"Clear Search Keyword\""
         .' class="rightButton clickable">'
-            .'<span class="icon no"></span>'
+            .'<span class="rightButton-icon icon no"></span>'
         .'</a>';
 }
