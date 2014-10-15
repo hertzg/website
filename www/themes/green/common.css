@@ -41,7 +41,7 @@
     border-color: #2a1;
 }
 
-.panel > .title {
+.panel-title {
     background-color: #2a1;
     background-image: linear-gradient(#2a1, #281);
     border-bottom-color: #261;
