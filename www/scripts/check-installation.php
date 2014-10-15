@@ -10,6 +10,7 @@ function visual_assert ($ok, $text) {
 }
 
 chdir(__DIR__);
+header('Content-Type: text/plain');
 
 if (!function_exists('apache_get_modules')) {
     print_assert('Apache mod_rewrite enabled', 'CANNOT BE DETECTED FROM CLI');
