@@ -4,12 +4,17 @@ namespace ViewPage;
 
 function optionsPanel ($receivedContact) {
 
+    $id = $receivedContact->id;
     $fnsDir = __DIR__.'/../../../../fns';
 
     include_once "$fnsDir/ItemList/Received/escapedItemQuery.php";
-    $itemQuery = \ItemList\Received\escapedItemQuery($receivedContact->id);
+    $itemQuery = \ItemList\Received\escapedItemQuery($id);
 
     include_once "$fnsDir/Page/imageLink.php";
+    $safe_name = str_replace('/', '_', $receivedContact->full_name);
+    $href = "../download/$id/$safe_name.vcf";
+    $downloadLink = \Page\imageLink('Download', $href, 'download');
+
     $href = "../submit-import.php$itemQuery";
     $importLink = \Page\imageLink('Import', $href, 'import-contact');
 
@@ -38,9 +43,9 @@ function optionsPanel ($receivedContact) {
     include_once "$fnsDir/Page/staticTwoColumns.php";
     include_once "$fnsDir/Page/twoColumns.php";
     $content =
-        \Page\twoColumns($importLink, $editAndImportLink)
+        \Page\staticTwoColumns($downloadLink, $importLink)
         .'<div class="hr"></div>'
-        .$sendViaSmsLink
+        .\Page\twoColumns($editAndImportLink, $sendViaSmsLink)
         .'<div class="hr"></div>'
         .\Page\staticTwoColumns($archiveLink, $deleteLink);
 
