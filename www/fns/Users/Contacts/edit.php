@@ -14,8 +14,10 @@ function edit ($mysqli, $user, $contact, $full_name,
         $address, $email, $phone1, $phone2, $birthday_time,
         $username, $timezone, $tags, $tag_names, $notes, $favorite);
 
-    include_once "$fnsDir/ContactTags/deleteOnContact.php";
-    \ContactTags\deleteOnContact($mysqli, $id);
+    if ($contact->num_tags) {
+        include_once "$fnsDir/ContactTags/deleteOnContact.php";
+        \ContactTags\deleteOnContact($mysqli, $id);
+    }
 
     if ($tag_names) {
         include_once "$fnsDir/ContactTags/add.php";

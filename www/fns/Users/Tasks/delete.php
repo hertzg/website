@@ -10,8 +10,10 @@ function delete ($mysqli, $task) {
     include_once "$fnsDir/Tasks/delete.php";
     \Tasks\delete($mysqli, $id);
 
-    include_once "$fnsDir/TaskTags/deleteOnTask.php";
-    \TaskTags\deleteOnTask($mysqli, $id);
+    if ($task->num_tags) {
+        include_once "$fnsDir/TaskTags/deleteOnTask.php";
+        \TaskTags\deleteOnTask($mysqli, $id);
+    }
 
     include_once __DIR__.'/addNumber.php';
     addNumber($mysqli, $task->id_users, -1);

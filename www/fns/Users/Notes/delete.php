@@ -10,8 +10,10 @@ function delete ($mysqli, $note) {
     include_once "$fnsDir/Notes/delete.php";
     \Notes\delete($mysqli, $id);
 
-    include_once "$fnsDir/NoteTags/deleteOnNote.php";
-    \NoteTags\deleteOnNote($mysqli, $id);
+    if ($note->num_tags) {
+        include_once "$fnsDir/NoteTags/deleteOnNote.php";
+        \NoteTags\deleteOnNote($mysqli, $id);
+    }
 
     include_once __DIR__.'/addNumber.php';
     addNumber($mysqli, $note->id_users, -1);

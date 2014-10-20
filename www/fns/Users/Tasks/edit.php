@@ -12,8 +12,10 @@ function edit ($mysqli, $task, $text,
     \Tasks\edit($mysqli, $id, $text, $deadline_time,
         $tags, $tag_names, $top_priority);
 
-    include_once "$fnsDir/TaskTags/deleteOnTask.php";
-    \TaskTags\deleteOnTask($mysqli, $id);
+    if ($task->num_tags) {
+        include_once "$fnsDir/TaskTags/deleteOnTask.php";
+        \TaskTags\deleteOnTask($mysqli, $id);
+    }
 
     if ($tag_names) {
         include_once "$fnsDir/TaskTags/add.php";

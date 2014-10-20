@@ -10,8 +10,10 @@ function edit ($mysqli, $note, $text, $tags, $tag_names, $encrypt) {
     include_once "$fnsDir/Notes/edit.php";
     \Notes\edit($mysqli, $id, $text, $tags, $tag_names, $encrypt);
 
-    include_once "$fnsDir/NoteTags/deleteOnNote.php";
-    \NoteTags\deleteOnNote($mysqli, $id);
+    if ($note->num_tags) {
+        include_once "$fnsDir/NoteTags/deleteOnNote.php";
+        \NoteTags\deleteOnNote($mysqli, $id);
+    }
 
     if ($tag_names) {
         include_once "$fnsDir/NoteTags/add.php";
