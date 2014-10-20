@@ -67,7 +67,7 @@ function create ($contact, $base = '') {
     $tags = json_decode($contact->tags_json);
     if ($tags) {
         include_once "$fnsDir/Form/tags.php";
-        $items[] = \Form\tags("$base../", $tags);
+        $items[] = \Form\tags($base, $tags);
     }
 
     $notes = $contact->notes;
