@@ -21,6 +21,7 @@ function add ($mysqli, $id_users, $full_name, $alias,
     $username = $mysqli->real_escape_string($username);
     if ($timezone === null) $timezone = 'null';
     $tags = $mysqli->real_escape_string($tags);
+    $num_tags = count($tag_names);
     $tags_json = $mysqli->real_escape_string(json_encode($tag_names));
     $notes = $mysqli->real_escape_string($notes);
     $favorite = $favorite ? '1' : '0';
@@ -30,12 +31,14 @@ function add ($mysqli, $id_users, $full_name, $alias,
     $sql = 'insert into contacts'
         .' (id_users, full_name, alias, address, email,'
         .' phone1, phone2, birthday_time, birthday_day,'
-        .' birthday_month, username, timezone, tags, tags_json,'
-        .' notes, favorite, photo_id, insert_time, update_time)'
+        .' birthday_month, username, timezone, tags, num_tags,'
+        .' tags_json, notes, favorite, photo_id,'
+        .' insert_time, update_time)'
         ." values ($id_users, '$full_name', '$alias', '$address', '$email',"
         ." '$phone1', '$phone2', $birthday_time, $birthday_day,"
-        ." $birthday_month, '$username', $timezone, '$tags', '$tags_json',"
-        ." '$notes', $favorite, $photo_id, $insert_time, $update_time)";
+        ." $birthday_month, '$username', $timezone, '$tags', $num_tags,"
+        ." '$tags_json', '$notes', $favorite, $photo_id,"
+        ." $insert_time, $update_time)";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 

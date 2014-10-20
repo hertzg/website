@@ -59,6 +59,9 @@ ensure_table('contacts', [
         'characterSet' => 'utf8',
         'collation' => 'utf8_general_ci',
     ],
+    'num_tags' => [
+        'type' => 'tinyint(3) unsigned',
+    ],
     'phone1' => [
         'type' => "varchar($maxLengths[phone1])",
         'characterSet' => 'utf8',
