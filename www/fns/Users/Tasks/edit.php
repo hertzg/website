@@ -8,8 +8,8 @@ function edit ($mysqli, $id_users, $id, $text,
     $fnsDir = __DIR__.'/../..';
 
     include_once "$fnsDir/Tasks/edit.php";
-    \Tasks\edit($mysqli, $id_users, $id, $text,
-        $deadline_time, $tags, $tag_names, $top_priority);
+    \Tasks\edit($mysqli, $id, $text, $deadline_time,
+        $tags, $tag_names, $top_priority);
 
     include_once "$fnsDir/TaskTags/deleteOnTask.php";
     \TaskTags\deleteOnTask($mysqli, $id);

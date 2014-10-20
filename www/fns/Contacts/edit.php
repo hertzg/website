@@ -2,8 +2,8 @@
 
 namespace Contacts;
 
-function edit ($mysqli, $id_users, $id, $full_name,
-    $alias, $address, $email, $phone1, $phone2, $birthday_time,
+function edit ($mysqli, $id, $full_name, $alias,
+    $address, $email, $phone1, $phone2, $birthday_time,
     $username, $timezone, $tags, $tag_names, $notes, $favorite) {
 
     $full_name = $mysqli->real_escape_string($full_name);
@@ -35,8 +35,7 @@ function edit ($mysqli, $id_users, $id, $full_name,
         ." timezone = $timezone, tags = '$tags',"
         ." num_tags = $num_tags, tags_json = '$tags_json',"
         ." notes = '$notes', favorite = $favorite, update_time = $update_time,"
-        ." revision = revision + 1 where id_users = $id_users"
-        ." and id_contacts = $id";
+        ." revision = revision + 1 where id_contacts = $id";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 

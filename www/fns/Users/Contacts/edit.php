@@ -6,11 +6,10 @@ function edit ($mysqli, $user, $id, $full_name, $alias, $address, $email,
     $phone1, $phone2, $birthday_time, $username, $timezone, $tags, $tag_names,
     $notes, $favorite, $old_birthday_time) {
 
-    $id_users = $user->id_users;
     $fnsDir = __DIR__.'/../..';
 
     include_once "$fnsDir/Contacts/edit.php";
-    \Contacts\edit($mysqli, $id_users, $id, $full_name, $alias,
+    \Contacts\edit($mysqli, $id, $full_name, $alias,
         $address, $email, $phone1, $phone2, $birthday_time,
         $username, $timezone, $tags, $tag_names, $notes, $favorite);
 
@@ -19,7 +18,7 @@ function edit ($mysqli, $user, $id, $full_name, $alias, $address, $email,
 
     if ($tag_names) {
         include_once "$fnsDir/ContactTags/add.php";
-        \ContactTags\add($mysqli, $id_users, $id, $tag_names,
+        \ContactTags\add($mysqli, $user->id_users, $id, $tag_names,
             $full_name, $alias, $phone1, $phone2, $favorite);
     }
 

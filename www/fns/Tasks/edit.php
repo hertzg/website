@@ -2,8 +2,8 @@
 
 namespace Tasks;
 
-function edit ($mysqli, $id_users, $id,
-    $text, $deadline_time, $tags, $tag_names, $top_priority) {
+function edit ($mysqli, $id, $text,
+    $deadline_time, $tags, $tag_names, $top_priority) {
 
     $text = $mysqli->real_escape_string($text);
     if ($deadline_time === null) $deadline_time = 'null';
@@ -16,8 +16,7 @@ function edit ($mysqli, $id_users, $id,
     $sql = "update tasks set text = '$text', deadline_time = $deadline_time,"
         ." tags = '$tags', num_tags = $num_tags, tags_json = '$tags_json',"
         ." top_priority = $top_priority, update_time = $update_time,"
-        ." revision = revision + 1 where id_users = $id_users"
-        ." and id_tasks = $id";
+        ." revision = revision + 1 where id_tasks = $id";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 

@@ -7,7 +7,7 @@ function edit ($mysqli, $id_users, $id, $title, $url, $tags, $tag_names) {
     $fnsDir = __DIR__.'/../..';
 
     include_once "$fnsDir/Bookmarks/edit.php";
-    \Bookmarks\edit($mysqli, $id_users, $id, $title, $url, $tags, $tag_names);
+    \Bookmarks\edit($mysqli, $id, $title, $url, $tags, $tag_names);
 
     include_once "$fnsDir/BookmarkTags/deleteOnBookmark.php";
     \BookmarkTags\deleteOnBookmark($mysqli, $id);

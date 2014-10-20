@@ -2,7 +2,7 @@
 
 namespace Bookmarks;
 
-function edit ($mysqli, $id_users, $id, $title, $url, $tags, $tag_names) {
+function edit ($mysqli, $id, $title, $url, $tags, $tag_names) {
 
     $title = $mysqli->real_escape_string($title);
     $url = $mysqli->real_escape_string($url);
@@ -14,7 +14,7 @@ function edit ($mysqli, $id_users, $id, $title, $url, $tags, $tag_names) {
     $sql = "update bookmarks set title = '$title', url = '$url',"
         ." tags = '$tags', num_tags = $num_tags, tags_json = '$tags_json',"
         ." update_time = $update_time, revision = revision + 1"
-        ." where id_users = $id_users and id_bookmarks = $id";
+        ." where id_bookmarks = $id";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 

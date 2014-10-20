@@ -2,7 +2,7 @@
 
 namespace Notes;
 
-function edit ($mysqli, $id_users, $id, $text, $tags, $tag_names, $encrypt) {
+function edit ($mysqli, $id, $text, $tags, $tag_names, $encrypt) {
 
     $text = $mysqli->real_escape_string($text);
     $tags = $mysqli->real_escape_string($tags);
@@ -15,7 +15,7 @@ function edit ($mysqli, $id_users, $id, $text, $tags, $tag_names, $encrypt) {
         ." tags = '$tags', num_tags = $num_tags,"
         ." tags_json = '$tags_json', encrypt = $encrypt,"
         ." update_time = $update_time, revision = revision + 1"
-        ." where id_users = $id_users and id_notes = $id";
+        ." where id_notes = $id";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
