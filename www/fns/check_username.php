@@ -30,6 +30,13 @@ function check_username ($mysqli, $username, &$errors, $exclude_id = 0) {
         return;
     }
 
+    include_once __DIR__.'/Username/containsOnlyDigits.php';
+    if (Username\containsOnlyDigits($username)) {
+        $errors[] = 'Username should contain at least'
+            .' one alphabetic character.';
+        return;
+    }
+
     include_once __DIR__.'/Users/getByUsername.php';
     if (Users\getByUsername($mysqli, $username, $exclude_id)) {
         $errors[] = 'The username is unavailable. Try another.';
