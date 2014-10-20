@@ -2,9 +2,10 @@
 
 namespace Users\Tasks;
 
-function edit ($mysqli, $id_users, $id, $text,
+function edit ($mysqli, $task, $text,
     $deadline_time, $tags, $tag_names, $top_priority) {
 
+    $id = $task->id_tasks;
     $fnsDir = __DIR__.'/../..';
 
     include_once "$fnsDir/Tasks/edit.php";
@@ -16,7 +17,7 @@ function edit ($mysqli, $id_users, $id, $text,
 
     if ($tag_names) {
         include_once "$fnsDir/TaskTags/add.php";
-        \TaskTags\add($mysqli, $id_users, $id, $tag_names,
+        \TaskTags\add($mysqli, $task->id_users, $id, $tag_names,
             $text, $deadline_time, $tags, $top_priority);
     }
 
