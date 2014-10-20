@@ -11,9 +11,11 @@ function add ($mysqli, $id_users, $text,
     $id = \Tasks\add($mysqli, $id_users, $text,
         $deadline_time, $tags, $tag_names, $top_priority);
 
-    include_once "$fnsDir/TaskTags/add.php";
-    \TaskTags\add($mysqli, $id_users, $id, $tag_names,
-        $text, $deadline_time, $tags, $top_priority);
+    if ($tag_names) {
+        include_once "$fnsDir/TaskTags/add.php";
+        \TaskTags\add($mysqli, $id_users, $id, $tag_names,
+            $text, $deadline_time, $tags, $top_priority);
+    }
 
     include_once __DIR__.'/addNumber.php';
     addNumber($mysqli, $id_users, 1);

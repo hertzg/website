@@ -12,7 +12,9 @@ function edit ($mysqli, $id_users, $id, $text, $tags, $tag_names, $encrypt) {
     include_once "$fnsDir/NoteTags/deleteOnNote.php";
     \NoteTags\deleteOnNote($mysqli, $id);
 
-    include_once "$fnsDir/NoteTags/add.php";
-    \NoteTags\add($mysqli, $id_users, $id, $tag_names, $text, $encrypt);
+    if ($tag_names) {
+        include_once "$fnsDir/NoteTags/add.php";
+        \NoteTags\add($mysqli, $id_users, $id, $tag_names, $text, $encrypt);
+    }
 
 }

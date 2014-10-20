@@ -15,9 +15,11 @@ function add ($mysqli, $user, $full_name, $alias, $address,
         $address, $email, $phone1, $phone2, $birthday_time, $username,
         $timezone, $tags, $tag_names, $notes, $favorite, $photo_id);
 
-    include_once "$fnsDir/ContactTags/add.php";
-    \ContactTags\add($mysqli, $id_users, $id, $tag_names,
-        $full_name, $alias, $phone1, $phone2, $notes, $favorite);
+    if ($tag_names) {
+        include_once "$fnsDir/ContactTags/add.php";
+        \ContactTags\add($mysqli, $id_users, $id, $tag_names,
+            $full_name, $alias, $phone1, $phone2, $notes, $favorite);
+    }
 
     if ($photo_id) {
         include_once "$fnsDir/ContactPhotos/addRef.php";

@@ -27,9 +27,11 @@ function addDeleted ($mysqli, $user, $data) {
         $data->notes, $favorite, $data->insert_time,
         $data->update_time, $data->photo_id);
 
-    include_once "$fnsDir/ContactTags/add.php";
-    \ContactTags\add($mysqli, $id_users, $id, $tag_names,
-        $full_name, $alias, $phone1, $phone2, $favorite);
+    if ($tag_names) {
+        include_once "$fnsDir/ContactTags/add.php";
+        \ContactTags\add($mysqli, $id_users, $id, $tag_names,
+            $full_name, $alias, $phone1, $phone2, $favorite);
+    }
 
     include_once __DIR__.'/../Birthdays/invalidateIfNeeded.php';
     \Users\Birthdays\invalidateIfNeeded($mysqli, $user, $birthday_time);

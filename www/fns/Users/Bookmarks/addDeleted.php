@@ -18,8 +18,10 @@ function addDeleted ($mysqli, $id_users, $data) {
     \Bookmarks\addDeleted($mysqli, $id, $id_users, $url, $title, $tags,
         $tag_names, $data->insert_time, $data->update_time);
 
-    include_once "$fnsDir/BookmarkTags/add.php";
-    \BookmarkTags\add($mysqli, $id_users, $id, $tag_names, $url, $title);
+    if ($tag_names) {
+        include_once "$fnsDir/BookmarkTags/add.php";
+        \BookmarkTags\add($mysqli, $id_users, $id, $tag_names, $url, $title);
+    }
 
     include_once __DIR__.'/addNumber.php';
     addNumber($mysqli, $id_users, 1);

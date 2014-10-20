@@ -18,8 +18,10 @@ function addDeleted ($mysqli, $id_users, $data) {
     \Notes\addDeleted($mysqli, $id, $id_users, $text, $tags, $tag_names,
         $encrypt, $data->insert_time, $data->update_time);
 
-    include_once "$fnsDir/NoteTags/add.php";
-    \NoteTags\add($mysqli, $id_users, $id, $tag_names, $text, $encrypt);
+    if ($tag_names) {
+        include_once "$fnsDir/NoteTags/add.php";
+        \NoteTags\add($mysqli, $id_users, $id, $tag_names, $text, $encrypt);
+    }
 
     include_once __DIR__.'/addNumber.php';
     addNumber($mysqli, $id_users, 1);

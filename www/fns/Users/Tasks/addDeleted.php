@@ -20,9 +20,11 @@ function addDeleted ($mysqli, $id_users, $data) {
         $deadline_time, $tags, $tag_names, $top_priority,
         $data->insert_time, $data->update_time);
 
-    include_once "$fnsDir/TaskTags/add.php";
-    \TaskTags\add($mysqli, $id_users, $id, $tag_names,
-        $text, $deadline_time, $tags, $top_priority);
+    if ($tag_names) {
+        include_once "$fnsDir/TaskTags/add.php";
+        \TaskTags\add($mysqli, $id_users, $id, $tag_names,
+            $text, $deadline_time, $tags, $top_priority);
+    }
 
     include_once __DIR__.'/addNumber.php';
     addNumber($mysqli, $id_users, 1);

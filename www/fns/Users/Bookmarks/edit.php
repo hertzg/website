@@ -12,7 +12,9 @@ function edit ($mysqli, $id_users, $id, $title, $url, $tags, $tag_names) {
     include_once "$fnsDir/BookmarkTags/deleteOnBookmark.php";
     \BookmarkTags\deleteOnBookmark($mysqli, $id);
 
-    include_once "$fnsDir/BookmarkTags/add.php";
-    \BookmarkTags\add($mysqli, $id_users, $id, $tag_names, $url, $title);
+    if ($tag_names) {
+        include_once "$fnsDir/BookmarkTags/add.php";
+        \BookmarkTags\add($mysqli, $id_users, $id, $tag_names, $url, $title);
+    }
 
 }
