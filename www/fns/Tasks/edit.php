@@ -15,7 +15,7 @@ function edit ($mysqli, $id_users, $id,
     $sql = "update tasks set text = '$text', deadline_time = $deadline_time,"
         ." tags = '$tags', tags_json = '$tags_json',"
         ." top_priority = $top_priority, update_time = $update_time,"
-        ." num_edits = num_edits + 1 where id_users = $id_users"
+        ." revision = revision + 1 where id_users = $id_users"
         ." and id_tasks = $id";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);

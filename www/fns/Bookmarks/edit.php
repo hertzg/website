@@ -12,7 +12,7 @@ function edit ($mysqli, $id_users, $id, $title, $url, $tags, $tag_names) {
 
     $sql = "update bookmarks set title = '$title', url = '$url',"
         ." tags = '$tags', tags_json = '$tags_json',"
-        ." update_time = $update_time, num_edits = num_edits + 1"
+        ." update_time = $update_time, revision = revision + 1"
         ." where id_users = $id_users and id_bookmarks = $id";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);

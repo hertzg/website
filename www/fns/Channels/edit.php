@@ -16,7 +16,7 @@ function edit ($mysqli, $id, $channel_name, $public, $receive_notifications) {
     $sql = "update channels set channel_name = '$channel_name',"
         ." lowercase_name = '$lowercase_name', public = $public,"
         ." receive_notifications = $receive_notifications,"
-        ." update_time = $update_time, num_edits = num_edits + 1"
+        ." update_time = $update_time, revision = revision + 1"
         ." where id = $id";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);

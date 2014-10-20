@@ -30,9 +30,6 @@ ensure_table('channels', [
         'characterSet' => 'ascii',
         'collation' => 'ascii_general_ci',
     ],
-    'num_edits' => [
-        'type' => 'bigint(20) unsigned',
-    ],
     'num_notifications' => [
         'type' => 'bigint(20) unsigned',
     ],
@@ -44,6 +41,9 @@ ensure_table('channels', [
     ],
     'receive_notifications' => [
         'type' => 'tinyint(4)',
+    ],
+    'revision' => [
+        'type' => 'bigint(20) unsigned',
     ],
     'update_time' => [
         'type' => 'bigint(20) unsigned',

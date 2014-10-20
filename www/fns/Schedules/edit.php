@@ -9,7 +9,7 @@ function edit ($mysqli, $id, $text, $interval, $offset) {
 
     $sql = "update schedules set text = '$text',"
         ." `interval` = $interval, offset = $offset,"
-        ." update_time = $update_time, num_edits = num_edits + 1"
+        ." update_time = $update_time, revision = revision + 1"
         ." where id = $id";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);

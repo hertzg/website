@@ -33,7 +33,7 @@ function edit ($mysqli, $id_users, $id, $full_name,
         ." birthday_month = $birthday_month, username = '$username',"
         ." timezone = $timezone, tags = '$tags', tags_json = '$tags_json',"
         ." notes = '$notes', favorite = $favorite, update_time = $update_time,"
-        ." num_edits = num_edits + 1 where id_users = $id_users"
+        ." revision = revision + 1 where id_users = $id_users"
         ." and id_contacts = $id";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);

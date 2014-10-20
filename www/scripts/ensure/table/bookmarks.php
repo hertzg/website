@@ -19,7 +19,7 @@ ensure_table('bookmarks', [
     'insert_time' => [
         'type' => 'bigint(20) unsigned',
     ],
-    'num_edits' => [
+    'revision' => [
         'type' => 'bigint(20) unsigned',
     ],
     'tags' => [

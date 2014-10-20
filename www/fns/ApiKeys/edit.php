@@ -49,7 +49,7 @@ function edit ($mysqli, $id, $name, $expire_time, $can_read_bookmarks,
         ." can_write_notifications = $can_write_notifications,"
         ." can_write_schedules = $can_write_schedules,"
         ." can_write_tasks = $can_write_tasks,"
-        ." num_edits = num_edits + 1 where id = $id";
+        ." revision = revision + 1 where id = $id";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 

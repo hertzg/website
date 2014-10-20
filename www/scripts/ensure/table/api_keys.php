@@ -89,7 +89,7 @@ ensure_table('api_keys', [
         'characterSet' => 'utf8',
         'collation' => 'utf8_general_ci',
     ],
-    'num_edits' => [
+    'revision' => [
         'type' => 'bigint(20) unsigned',
     ],
 ]);

@@ -59,9 +59,6 @@ ensure_table('contacts', [
         'characterSet' => 'utf8',
         'collation' => 'utf8_general_ci',
     ],
-    'num_edits' => [
-        'type' => 'bigint(20) unsigned',
-    ],
     'phone1' => [
         'type' => "varchar($maxLengths[phone1])",
         'characterSet' => 'utf8',
@@ -75,6 +72,9 @@ ensure_table('contacts', [
     'photo_id' => [
         'type' => 'bigint(20) unsigned',
         'nullable' => true,
+    ],
+    'revision' => [
+        'type' => 'bigint(20) unsigned',
     ],
     'tags' => [
         'type' => "varchar($maxLengths[tags])",

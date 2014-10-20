@@ -22,10 +22,10 @@ ensure_table('schedules', [
     'interval' => [
         'type' => 'bigint(20) unsigned',
     ],
-    'num_edits' => [
+    'offset' => [
         'type' => 'bigint(20) unsigned',
     ],
-    'offset' => [
+    'revision' => [
         'type' => 'bigint(20) unsigned',
     ],
     'text' => [
