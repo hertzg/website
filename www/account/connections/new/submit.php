@@ -17,8 +17,7 @@ $errors = [];
 
 include_once '../fns/check_username.php';
 include_once '../../../lib/mysqli.php';
-check_username($mysqli, $id_users,
-    $username, $connected_id_users, $errors);
+check_username($mysqli, $id_users, $username, $connected_id_users, $errors);
 
 include_once "$fnsDir/redirect.php";
 
