@@ -12,9 +12,9 @@ list($full_name, $alias, $address, $email, $phone1, $phone2,
     $notes, $favorite) = request_contact_params($user);
 
 include_once '../../fns/Users/Contacts/edit.php';
-Users\Contacts\edit($mysqli, $user, $contact->id_contacts, $full_name, $alias,
-    $address, $email, $phone1, $phone2, $birthday_time, $username, $timezone,
-    $tags, $tag_names, $notes, $favorite, $contact->birthday_time);
+Users\Contacts\edit($mysqli, $user, $contact, $full_name,
+    $alias, $address, $email, $phone1, $phone2, $birthday_time,
+    $username, $timezone, $tags, $tag_names, $notes, $favorite);
 
 header('Content-Type: application/json');
 echo 'true';
