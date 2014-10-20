@@ -2,8 +2,9 @@
 
 namespace Users\Bookmarks;
 
-function edit ($mysqli, $id_users, $id, $title, $url, $tags, $tag_names) {
+function edit ($mysqli, $bookmark, $title, $url, $tags, $tag_names) {
 
+    $id = $bookmark->id_bookmarks;
     $fnsDir = __DIR__.'/../..';
 
     include_once "$fnsDir/Bookmarks/edit.php";
@@ -14,7 +15,8 @@ function edit ($mysqli, $id_users, $id, $title, $url, $tags, $tag_names) {
 
     if ($tag_names) {
         include_once "$fnsDir/BookmarkTags/add.php";
-        \BookmarkTags\add($mysqli, $id_users, $id, $tag_names, $url, $title);
+        \BookmarkTags\add($mysqli, $bookmark->id_users,
+            $id, $tag_names, $url, $title);
     }
 
 }
