@@ -37,8 +37,7 @@ if ($sendButton) redirect("send/$itemQuery");
 unset($_SESSION['notes/edit/values']);
 
 include_once '../../fns/Users/Notes/edit.php';
-Users\Notes\edit($mysqli, $user->id_users, $id,
-    $text, $tags, $tag_names, $encrypt);
+Users\Notes\edit($mysqli, $note, $text, $tags, $tag_names, $encrypt);
 
 $_SESSION['notes/view/messages'] = ['Changes have been saved.'];
 redirect("../view/$itemQuery");

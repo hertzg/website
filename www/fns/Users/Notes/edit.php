@@ -2,8 +2,9 @@
 
 namespace Users\Notes;
 
-function edit ($mysqli, $id_users, $id, $text, $tags, $tag_names, $encrypt) {
+function edit ($mysqli, $note, $text, $tags, $tag_names, $encrypt) {
 
+    $id = $note->id_notes;
     $fnsDir = __DIR__.'/../..';
 
     include_once "$fnsDir/Notes/edit.php";
@@ -14,7 +15,8 @@ function edit ($mysqli, $id_users, $id, $text, $tags, $tag_names, $encrypt) {
 
     if ($tag_names) {
         include_once "$fnsDir/NoteTags/add.php";
-        \NoteTags\add($mysqli, $id_users, $id, $tag_names, $text, $encrypt);
+        \NoteTags\add($mysqli, $note->id_users,
+            $id, $tag_names, $text, $encrypt);
     }
 
 }

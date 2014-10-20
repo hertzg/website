@@ -2,17 +2,15 @@
 
 include_once '../fns/require_api_key.php';
 list($apiKey, $user, $mysqli) = require_api_key('can_write_notes');
-$id_users = $user->id_users;
 
 include_once 'fns/require_note.php';
-$note = require_note($mysqli, $id_users);
+$note = require_note($mysqli, $user->id_users);
 
 include_once 'fns/request_note_params.php';
 list($text, $tags, $tag_names, $encrypt) = request_note_params();
 
 include_once '../../fns/Users/Notes/edit.php';
-Users\Notes\edit($mysqli, $id_users, $note->id_notes,
-    $text, $tags, $tag_names, $encrypt);
+Users\Notes\edit($mysqli, $note, $text, $tags, $tag_names, $encrypt);
 
 header('Content-Type: application/json');
 echo 'true';
