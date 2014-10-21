@@ -17,8 +17,8 @@ function clean_user_received_files ($mysqli, $id_users, &$deleted) {
 
         $id = (int)$file;
 
-        include_once "$fnsDir/Files/getOnUser.php";
-        if (Files\getOnUser($mysqli, $id_users, $id)) continue;
+        include_once "$fnsDir/ReceivedFiles/getOnReceiver.php";
+        if (ReceivedFiles\getOnReceiver($mysqli, $id_users, $id)) continue;
 
         include_once "$fnsDir/DeletedItems/indexOnUserOfType.php";
         $deletedItems = DeletedItems\indexOnUserOfType(
