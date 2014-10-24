@@ -22,13 +22,6 @@ function assert_writable_dir ($dir) {
 
 }
 
-function print_assert ($text, $status, $class) {
-    return
-        "<li class=\"$class\">"
-            .str_pad($text, 100, ' ')." $status"
-        .'</li>';
-}
-
 function resolve_path ($path) {
     $regex = '#/[^/.]+?/\.\.#';
     while (preg_match($regex, $path)) $path = preg_replace($regex, '', $path);
@@ -36,15 +29,13 @@ function resolve_path ($path) {
 }
 
 function visual_assert ($ok, $text) {
-    if ($ok) {
-        $status = 'OK';
-        $class = 'ok';
-    } else {
-        $status = 'NOT OK';
-        $class = 'not_ok';
-    }
-    return print_assert($text, $status, $class);
+    if ($ok) $class = 'ok';
+    else $class = 'not_ok';
+    return "<li class=\"$class\">$text</li>";
 }
+
+include_once 'fns/require_admin.php';
+require_admin();
 
 $html =
     '<!DOCTYPE html>'
@@ -56,7 +47,7 @@ $html =
             .'<link rel="stylesheet" type="text/css" href="index.css" />'
         .'</head>'
         .'<body>'
-            .'<ul style="font-family: monospace; white-space: pre">';
+            .'<ul style="font-family: monospace; white-space: pre-wrap">';
 
 $apacheModules = apache_get_modules();
 
