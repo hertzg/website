@@ -12,12 +12,17 @@ function create_permission_fields ($values) {
         'readonly' => 'Read-only',
         'readwrite' => 'Read and write',
     ];
+
     include_once "$fnsDir/Form/select.php";
+    $name = 'bookmark_access';
+    $html .= Form\select($name, 'Bookmarks', $options, $values[$name]);
+
     $add = function ($name, $title) use (&$html, $options, $values) {
-        $html .= Form\select($name, $title, $options, $values[$name]);
+        $html .=
+            '<div class="hr"></div>'
+            .Form\select($name, $title, $options, $values[$name]);
     };
 
-    $add('bookmark_access', 'Bookmarks');
     $add('channel_access', 'Channels');
     $add('contact_access', 'Contacts');
     $add('event_access', 'Events');
