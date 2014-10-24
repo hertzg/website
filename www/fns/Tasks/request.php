@@ -4,13 +4,13 @@ namespace Tasks;
 
 function request () {
 
-    include_once __DIR__.'/../request_strings.php';
-    list($text, $top_priority) = request_strings('text', 'top_priority');
+    $fnsDir = __DIR__.'/..';
 
-    include_once __DIR__.'/../str_collapse_spaces_multiline.php';
-    $text = str_collapse_spaces_multiline($text);
-    $text = trim($text);
+    include_once "$fnsDir/request_text.php";
+    $text = request_text('text');
 
+    include_once "$fnsDir/request_strings.php";
+    list($top_priority) = request_strings('top_priority');
     $top_priority = (bool)$top_priority;
 
     return [$text, $top_priority];

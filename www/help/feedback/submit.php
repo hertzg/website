@@ -6,8 +6,8 @@ require_same_domain_referer('./');
 include_once '../../fns/signed_user.php';
 $user = signed_user('../../');
 
-include_once '../../fns/request_strings.php';
-list($text) = request_strings('text');
+include_once '../../fns/request_text.php';
+$text = request_text('text');
 
 $errors = [];
 
