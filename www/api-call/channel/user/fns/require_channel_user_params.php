@@ -12,6 +12,12 @@ function require_channel_user_params ($mysqli, $user, $channel) {
         bad_request('ENTER_USERNAME');
     }
 
+    include_once "$fnsDir/Username/isValid.php";
+    if (!Username\isValid($username)) {
+        include_once __DIR__.'/../../../fns/bad_request.php';
+        bad_request('INVALID_USERNAME');
+    }
+
     include_once "$fnsDir/Users/getByUsername.php";
     $subscriberUser = Users\getByUsername($mysqli, $username);
 

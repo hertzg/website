@@ -7,6 +7,7 @@ include_once '../fns/get_main_engine.php';
 $engine = get_main_engine();
 
 $nonExistingUsername = 'non-existing-username';
+$invalidUsername = 'invld';
 $selfUsername = 'aimnadze';
 $deniedUsername = 'giorgi';
 $allowedUsername = 'angeli';
@@ -41,6 +42,12 @@ $response = $engine->request('channel/user/add', [
     'username' => $selfUsername,
 ]);
 $engine->expectError('USER_IS_SELF');
+
+$response = $engine->request('channel/user/add', [
+    'id' => $id,
+    'username' => $invalidUsername,
+]);
+$engine->expectError('INVALID_USERNAME');
 
 $response = $engine->request('channel/user/add', [
     'id' => $id,
