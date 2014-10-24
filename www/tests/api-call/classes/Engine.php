@@ -1,5 +1,6 @@
 <?php
 
+include_once __DIR__.'/error.php';
 include_once __DIR__.'/execCurl.php';
 include_once __DIR__.'/execJsonCurl.php';
 include_once __DIR__.'/execOctetCurl.php';
@@ -13,6 +14,7 @@ include_once __DIR__.'/expectValue.php';
 
 class Engine {
 
+    use error;
     use execCurl;
     use execJsonCurl;
     use execOctetCurl;
@@ -61,15 +63,6 @@ class Engine {
         $this->response = $this->execOctetCurl($this->url, $params);
         return $this->response;
 
-    }
-
-    function error ($text) {
-        echo "ERROR in $this->method\n"
-            ." Message: $text\n"
-            ." URL: $this->url\n"
-            .' Params: '.json_encode($this->params)."\n"
-            .' Raw response: '.json_encode($this->rawResponse)."\n";
-        exit(1);
     }
 
     function expectError ($error) {
