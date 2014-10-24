@@ -1,6 +1,8 @@
 <?php
 
-include_once '../../../fns/require_same_domain_referer.php';
+$fnsDir = '../../../fns';
+
+include_once "$fnsDir/require_same_domain_referer.php";
 require_same_domain_referer('..');
 
 include_once '../fns/require_api_key.php';
@@ -13,7 +15,7 @@ list($name, $expires, $expire_time, $bookmark_access,
     $file_access, $note_access, $notification_access,
     $schedule_access, $task_access) = request_api_key_params($user);
 
-include_once '../../../fns/request_strings.php';
+include_once "$fnsDir/request_strings.php";
 list($randomizeKey) = request_strings('randomizeKey');
 
 $randomizeKey = (bool)$randomizeKey;
@@ -22,13 +24,13 @@ $errors = [];
 
 if ($name === '') $errors[] = 'Enter name.';
 else {
-    include_once '../../../fns/ApiKeys/getOnUserByName.php';
+    include_once "$fnsDir/ApiKeys/getOnUserByName.php";
     include_once '../../../lib/mysqli.php';
     $apiKey = ApiKeys\getOnUserByName($mysqli, $user->id_users, $name, $id);
     if ($apiKey) $errors[] = 'An API key with the same name already exists.';
 }
 
-include_once '../../../fns/redirect.php';
+include_once "$fnsDir/redirect.php";
 
 if ($errors) {
     $_SESSION['account/api-keys/edit/errors'] = $errors;
@@ -66,7 +68,7 @@ parse_read_write($notification_access,
 parse_read_write($schedule_access, $can_read_schedules, $can_write_schedules);
 parse_read_write($task_access, $can_read_tasks, $can_write_tasks);
 
-include_once '../../../fns/ApiKeys/edit.php';
+include_once "$fnsDir/ApiKeys/edit.php";
 ApiKeys\edit($mysqli, $id, $name, $expire_time, $can_read_bookmarks,
     $can_read_channels, $can_read_contacts, $can_read_events, $can_read_files,
     $can_read_notes, $can_read_notifications, $can_read_schedules,
@@ -75,7 +77,7 @@ ApiKeys\edit($mysqli, $id, $name, $expire_time, $can_read_bookmarks,
     $can_write_notifications, $can_write_schedules, $can_write_tasks);
 
 if ($randomizeKey) {
-    include_once '../../../fns/ApiKeys/randomizeKey.php';
+    include_once "$fnsDir/ApiKeys/randomizeKey.php";
     ApiKeys\randomizeKey($mysqli, $id);
 }
 

@@ -1,9 +1,11 @@
 <?php
 
-include_once '../../../fns/require_same_domain_referer.php';
+$fnsDir = '../../../fns';
+
+include_once "$fnsDir/require_same_domain_referer.php";
 require_same_domain_referer('./');
 
-include_once '../../../fns/require_user.php';
+include_once "$fnsDir/require_user.php";
 $user = require_user('../../../');
 $id_users = $user->id_users;
 
@@ -17,13 +19,13 @@ $errors = [];
 
 if ($name === '') $errors[] = 'Enter name.';
 else {
-    include_once '../../../fns/ApiKeys/getOnUserByName.php';
+    include_once "$fnsDir/ApiKeys/getOnUserByName.php";
     include_once '../../../lib/mysqli.php';
     $apiKey = ApiKeys\getOnUserByName($mysqli, $id_users, $name);
     if ($apiKey) $errors[] = 'An API key with this name already exists.';
 }
 
-include_once '../../../fns/redirect.php';
+include_once "$fnsDir/redirect.php";
 
 if ($errors) {
     $_SESSION['account/api-keys/new/errors'] = $errors;
@@ -60,7 +62,7 @@ parse_read_write($notification_access,
 parse_read_write($schedule_access, $can_read_schedules, $can_write_schedules);
 parse_read_write($task_access, $can_read_tasks, $can_write_tasks);
 
-include_once '../../../fns/Users/ApiKeys/add.php';
+include_once "$fnsDir/Users/ApiKeys/add.php";
 $id = Users\ApiKeys\add($mysqli, $id_users, $name, $expire_time,
     $can_read_bookmarks, $can_read_channels, $can_read_contacts,
     $can_read_events, $can_read_files, $can_read_notes,
