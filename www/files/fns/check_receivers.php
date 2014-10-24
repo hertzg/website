@@ -1,25 +1,26 @@
 <?php
 
 function check_receivers ($mysqli, $id_users,
-    array $usernames, &$receiver_id_userss, &$errors) {
+    $usernames, &$receiver_id_userss, &$errors) {
 
+    $fnsDir = __DIR__.'/../../fns';
     foreach ($usernames as $username) {
-        include_once __DIR__.'/../../fns/Users/getByUsername.php';
+        include_once "$fnsDir/Users/getByUsername.php";
         $receiverUser = Users\getByUsername($mysqli, $username);
-        if (!$receiverUser) {
-            $escapedUsername = htmlspecialchars($username);
-            $errors[] = "The user \"$escapedUsername\" no longer exists.";
-        } else {
-            include_once __DIR__.'/../../fns/get_users_connection.php';
+        if ($receiverUser) {
+            include_once "$fnsDir/get_users_connection.php";
             $connection = get_users_connection(
                 $mysqli, $receiverUser, $id_users);
             if ($connection['can_send_file']) {
                 $receiver_id_userss[] = $receiverUser->id_users;
             } else {
                 $escapedUsername = htmlspecialchars($username);
-                $errors[] = "The user \"$escapedUsername\" no longer"
-                    .' receives files from you.';
+                $errors[] = "The user \"$escapedUsername\""
+                    .' no longer receives files from you.';
             }
+        } else {
+            $escapedUsername = htmlspecialchars($username);
+            $errors[] = "The user \"$escapedUsername\" no longer exists.";
         }
     }
 
