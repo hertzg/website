@@ -12,24 +12,38 @@ $id_users = $user->id_users;
 include_once "$fnsDir/request_strings.php";
 list($channel_name) = request_strings('channel_name');
 
-include_once "$fnsDir/Channels/getByName.php";
-include_once '../../../lib/mysqli.php';
-$channel = Channels\getByName($mysqli, $channel_name);
+include_once "$fnsDir/str_collapse_spaces.php";
+$channel_name = str_collapse_spaces($channel_name);
 
 $errors = [];
 
-if (!$channel) {
-    $errors[] = "A channel with this name doesn't exist.";
-} elseif (!$channel->public) {
-    $errors[] = 'The channel is not public.';
-} elseif ($channel->id_users == $id_users) {
-    $errors[] = 'You cannot subscribe to your own channels.';
+if ($channel_name === '') {
+    $errors[] = 'Enter channel name.';
 } else {
-    include_once "$fnsDir/SubscribedChannels/getExistingSubscriber.php";
-    $subscribedChannel = SubscribedChannels\getExistingSubscriber(
-        $mysqli, $channel->id, $id_users);
-    if ($subscribedChannel && $subscribedChannel->subscriber_locked) {
-        $errors[] = 'You are already subscribed to this channel.';
+    include_once "$fnsDir/ChannelName/isValid.php";
+    if (ChannelName\isValid($channel_name)) {
+
+        include_once "$fnsDir/Channels/getByName.php";
+        include_once '../../../lib/mysqli.php';
+        $channel = Channels\getByName($mysqli, $channel_name);
+
+        if (!$channel) {
+            $errors[] = "A channel with this name doesn't exist.";
+        } elseif (!$channel->public) {
+            $errors[] = 'The channel is not public.';
+        } elseif ($channel->id_users == $id_users) {
+            $errors[] = 'You cannot subscribe to your own channels.';
+        } else {
+            include_once "$fnsDir/SubscribedChannels/getExistingSubscriber.php";
+            $subscribedChannel = SubscribedChannels\getExistingSubscriber(
+                $mysqli, $channel->id, $id_users);
+            if ($subscribedChannel && $subscribedChannel->subscriber_locked) {
+                $errors[] = 'You are already subscribed to this channel.';
+            }
+        }
+
+    } else {
+        $errors[] = 'The channel name is invalid.';
     }
 }
 

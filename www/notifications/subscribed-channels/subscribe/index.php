@@ -11,10 +11,11 @@ $key = 'notifications/subscribed-channels/subscribe/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else $values = ['channel_name' => ''];
 
-include_once '../../../fns/Page/tabs.php';
+include_once '../../../fns/ChannelName/maxLength.php';
 include_once '../../../fns/Form/button.php';
 include_once '../../../fns/Form/textfield.php';
 include_once '../../../fns/Page/sessionErrors.php';
+include_once '../../../fns/Page/tabs.php';
 $content = Page\tabs(
     [
         [
@@ -27,6 +28,7 @@ $content = Page\tabs(
     .'<form action="submit.php" method="post">'
         .Form\textfield('channel_name', 'Channel name', [
             'value' => $values['channel_name'],
+            'maxlength' => ChannelName\maxLength(),
             'required' => true,
             'autofocus' => true,
         ])
