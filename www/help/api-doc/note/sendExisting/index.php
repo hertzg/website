@@ -13,6 +13,7 @@ note_method_page('sendExisting', [
 ], [
     'NOTE_NOT_FOUND' => "A note with the ID doesn't exist.",
     'ENTER_RECEIVER_USERNAME' => 'The receiver username is empty.',
+    'INVALID_RECEIVER_USERNAME' => 'The receiver username is invalid.',
     'RECEIVER_NOT_FOUND' => 'No such receiver with the username.',
     'RECEIVER_NOT_RECEIVING' =>
         "The receiver hasn't opened a connection to receive notes from you.",

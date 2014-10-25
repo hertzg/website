@@ -15,7 +15,7 @@ function request_receiver_user ($mysqli, $id_users, $permission) {
     include_once "$fnsDir/Username/isValid.php";
     if (!Username\isValid($receiver_username)) {
         include_once __DIR__.'/bad_request.php';
-        bad_request('RECEIVER_NOT_FOUND');
+        bad_request('INVALID_RECEIVER_USERNAME');
     }
 
     include_once "$fnsDir/Users/getByUsername.php";
