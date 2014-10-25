@@ -3,8 +3,8 @@
 include_once '../fns/require_api_key.php';
 list($apiKey, $user, $mysqli) = require_api_key('can_write_files');
 
-include_once '../fns/request_receiver_user.php';
-$receiver_user = request_receiver_user($mysqli,
+include_once '../fns/require_receiver_user.php';
+$receiver_user = require_receiver_user($mysqli,
     $user->id_users, 'can_send_file');
 
 include_once '../../fns/Files/request.php';

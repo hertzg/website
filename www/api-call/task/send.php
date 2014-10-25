@@ -4,8 +4,8 @@ include_once '../fns/require_api_key.php';
 list($apiKey, $user, $mysqli) = require_api_key('can_write_tasks');
 $id_users = $user->id_users;
 
-include_once '../fns/request_receiver_user.php';
-$receiver_user = request_receiver_user($mysqli, $id_users, 'can_send_task');
+include_once '../fns/require_receiver_user.php';
+$receiver_user = require_receiver_user($mysqli, $id_users, 'can_send_task');
 
 include_once 'fns/request_task_params.php';
 $values = request_task_params($user);

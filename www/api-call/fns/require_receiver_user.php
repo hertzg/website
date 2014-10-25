@@ -1,6 +1,6 @@
 <?php
 
-function request_receiver_user ($mysqli, $id_users, $permission) {
+function require_receiver_user ($mysqli, $id_users, $permission) {
 
     $fnsDir = __DIR__.'/../../fns';
 
