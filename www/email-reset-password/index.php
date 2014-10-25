@@ -15,11 +15,12 @@ unset(
     $_SESSION['sign-in/messages']
 );
 
-include_once '../fns/Page/tabs.php';
+include_once '../fns/Email/maxLength.php';
 include_once '../fns/Form/button.php';
 include_once '../fns/Form/captcha.php';
 include_once '../fns/Form/textfield.php';
 include_once '../fns/Page/sessionErrors.php';
+include_once '../fns/Page/tabs.php';
 $content = Page\tabs(
     [
         [
@@ -32,6 +33,7 @@ $content = Page\tabs(
     .'<form action="submit.php" method="post">'
         .Form\textfield('email', 'Email', [
             'value' => $values['email'],
+            'maxlength' => Email\maxLength(),
             'autofocus' => true,
             'required' => true,
         ])

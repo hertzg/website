@@ -34,7 +34,7 @@ if ($email !== '') {
                 .' Try another.';
         }
     } else {
-        $errors[] = 'Enter a valid email address.';
+        $errors[] = 'The email address is invalid.';
     }
 }
 

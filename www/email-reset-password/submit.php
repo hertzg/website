@@ -15,17 +15,21 @@ $email = str_collapse_spaces($email);
 $errors = [];
 
 if ($email === '') $errors[] = 'Enter email.';
+else {
+    include_once '../fns/Email/isValid.php';
+    if (Email\isValid($email)) {
 
-if (!$errors) {
+        include_once '../fns/Users/getByEmail.php';
+        include_once '../lib/mysqli.php';
+        $user = Users\getByEmail($mysqli, $email);
 
-    include_once '../fns/Users/getByEmail.php';
-    include_once '../lib/mysqli.php';
-    $user = Users\getByEmail($mysqli, $email);
+        if (!$user) {
+            $errors[] = 'User with this email was not found.';
+        }
 
-    if (!$user) {
-        $errors[] = 'User with this email was not found.';
+    } else {
+        $errors[] = 'The email address is invalid.';
     }
-
 }
 
 include_once '../fns/Captcha/check.php';
