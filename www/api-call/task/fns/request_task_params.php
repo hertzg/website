@@ -24,8 +24,8 @@ function request_task_params ($user) {
         bad_request('ENTER_TEXT');
     }
 
-    include_once __DIR__.'/../../fns/request_tags.php';
-    list($tags, $tag_names) = request_tags();
+    include_once __DIR__.'/../../fns/require_tags.php';
+    list($tags, $tag_names) = require_tags();
 
     return [$text, $deadline_time, $tags, $tag_names, $top_priority];
 

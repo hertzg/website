@@ -1,6 +1,6 @@
 <?php
 
-function request_tags () {
+function require_tags () {
 
     include_once __DIR__.'/../../fns/Tags/request.php';
     Tags\request($tags, $tag_names, $tooManyTags);

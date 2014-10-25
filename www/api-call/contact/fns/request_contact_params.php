@@ -23,8 +23,8 @@ function request_contact_params ($user) {
         bad_request('ENTER_FULL_NAME');
     }
 
-    include_once __DIR__.'/../../fns/request_tags.php';
-    list($tags, $tag_names) = request_tags();
+    include_once __DIR__.'/../../fns/require_tags.php';
+    list($tags, $tag_names) = require_tags();
 
     return [$full_name, $alias, $address, $email, $phone1,
         $phone2, $birthday_time, $username, $timezone,

@@ -10,8 +10,8 @@ function require_bookmark_params () {
         bad_request('ENTER_URL');
     }
 
-    include_once __DIR__.'/../../fns/request_tags.php';
-    list($tags, $tag_names) = request_tags();
+    include_once __DIR__.'/../../fns/require_tags.php';
+    list($tags, $tag_names) = require_tags();
 
     return [$url, $title, $tags, $tag_names];
 
