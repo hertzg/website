@@ -1,12 +1,14 @@
 <?php
 
-include_once '../../../fns/require_same_domain_referer.php';
+$fnsDir = '../../../fns';
+
+include_once "$fnsDir/require_same_domain_referer.php";
 require_same_domain_referer('./');
 
-include_once '../../../fns/require_user.php';
+include_once "$fnsDir/require_user.php";
 $user = require_user('../../../');
 
-include_once '../../../fns/Channels/request.php';
+include_once "$fnsDir/Channels/request.php";
 list($channel_name, $public, $receive_notifications) = Channels\request();
 
 $errors = [];
@@ -19,7 +21,7 @@ if ($channel_name === '') {
 
     $length = strlen($channel_name);
 
-    include_once '../../../fns/ChannelName/minLength.php';
+    include_once "$fnsDir/ChannelName/minLength.php";
     $minLength = ChannelName\minLength();
 
     if ($length < $minLength) {
@@ -27,14 +29,14 @@ if ($channel_name === '') {
             ." At least $minLength characters required.";
     } else {
 
-        include_once '../../../fns/ChannelName/maxLength.php';
+        include_once "$fnsDir/ChannelName/maxLength.php";
         $maxLength = ChannelName\maxLength();
 
         if ($length > $maxLength) {
             $errors[] = 'Channel name too long.'
                 ." At most $maxLength characters required.";
         } else {
-            include_once '../../../fns/Channels/getByName.php';
+            include_once "$fnsDir/Channels/getByName.php";
             include_once '../../../lib/mysqli.php';
             if (Channels\getByName($mysqli, $channel_name)) {
                 $errors[] = 'A channel with this name already exists.';
@@ -45,7 +47,7 @@ if ($channel_name === '') {
 
 }
 
-include_once '../../../fns/redirect.php';
+include_once "$fnsDir/redirect.php";
 
 if ($errors) {
     $_SESSION['notifications/channels/add/errors'] = $errors;
@@ -62,7 +64,7 @@ unset(
     $_SESSION['notifications/channels/add/values']
 );
 
-include_once '../../../fns/Users/Channels/add.php';
+include_once "$fnsDir/Users/Channels/add.php";
 $id = Users\Channels\add($mysqli, $user,
     $channel_name, $public, $receive_notifications);
 

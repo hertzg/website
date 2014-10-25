@@ -1,16 +1,18 @@
 <?php
 
-include_once '../../../fns/require_same_domain_referer.php';
+$fnsDir = '../../../fns';
+
+include_once "$fnsDir/require_same_domain_referer.php";
 require_same_domain_referer('./');
 
-include_once '../../../fns/require_user.php';
+include_once "$fnsDir/require_user.php";
 $user = require_user('../../../');
 $id_users = $user->id_users;
 
-include_once '../../../fns/request_strings.php';
+include_once "$fnsDir/request_strings.php";
 list($channel_name) = request_strings('channel_name');
 
-include_once '../../../fns/Channels/getByName.php';
+include_once "$fnsDir/Channels/getByName.php";
 include_once '../../../lib/mysqli.php';
 $channel = Channels\getByName($mysqli, $channel_name);
 
@@ -23,7 +25,7 @@ if (!$channel) {
 } elseif ($channel->id_users == $id_users) {
     $errors[] = 'You cannot subscribe to your own channels.';
 } else {
-    include_once '../../../fns/SubscribedChannels/getExistingSubscriber.php';
+    include_once "$fnsDir/SubscribedChannels/getExistingSubscriber.php";
     $subscribedChannel = SubscribedChannels\getExistingSubscriber(
         $mysqli, $channel->id, $id_users);
     if ($subscribedChannel && $subscribedChannel->subscriber_locked) {
@@ -31,7 +33,7 @@ if (!$channel) {
     }
 }
 
-include_once '../../../fns/redirect.php';
+include_once "$fnsDir/redirect.php";
 
 if ($errors) {
     $_SESSION['notifications/subscribed-channels/subscribe/errors'] = $errors;
@@ -46,7 +48,7 @@ unset(
     $_SESSION['notifications/subscribed-channels/subscribe/values']
 );
 
-include_once '../../../fns/Users/SubscribedChannels/add.php';
+include_once "$fnsDir/Users/SubscribedChannels/add.php";
 $id = Users\SubscribedChannels\add($mysqli,
     $user, $channel, $subscribedChannel, true);
 
