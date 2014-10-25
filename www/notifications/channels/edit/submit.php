@@ -9,43 +9,9 @@ include_once '../fns/require_channel.php';
 include_once '../../../lib/mysqli.php';
 list($channel, $id, $user) = require_channel($mysqli);
 
-include_once "$fnsDir/Channels/request.php";
-list($channel_name, $public, $receive_notifications) = Channels\request();
-
-$errors = [];
-
-if ($channel_name === '') {
-    $errors[] = 'Enter channel name.';
-} elseif (preg_match('/[^a-z0-9._-]/ui', $channel_name)) {
-    $errors[] = 'Channel name contains illegal characters.';
-} else {
-
-    $length = strlen($channel_name);
-
-    include_once "$fnsDir/ChannelName/minLength.php";
-    $minLength = ChannelName\minLength();
-
-    if ($length < $minLength) {
-        $errors[] = 'Channel name too short.'
-            ." At least $minLength characters required.";
-    } else {
-
-        include_once "$fnsDir/ChannelName/maxLength.php";
-        $maxLength = ChannelName\maxLength();
-
-        if ($length > $maxLength) {
-            $errors[] = 'Channel name too long.'
-                ." At most $maxLength characters required.";
-        } else {
-            include_once "$fnsDir/Channels/getByName.php";
-            if (Channels\getByName($mysqli, $channel_name, $id)) {
-                $errors[] = 'A channel with this name already exists.';
-            }
-        }
-
-    }
-
-}
+include_once '../fns/request_channel_params.php';
+$values = request_channel_params($mysqli, $errors, $channel->id);
+list($channel_name, $public, $receive_notifications) = $values;
 
 include_once "$fnsDir/redirect.php";
 
