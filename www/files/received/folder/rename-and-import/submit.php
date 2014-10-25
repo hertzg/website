@@ -9,11 +9,8 @@ include_once '../fns/require_received_folder.php';
 include_once '../../../../lib/mysqli.php';
 list($receivedFolder, $id, $user) = require_received_folder($mysqli, '../');
 
-include_once "$fnsDir/request_strings.php";
-list($name) = request_strings('name');
-
-include_once "$fnsDir/str_collapse_spaces.php";
-$name = str_collapse_spaces($name);
+include_once "$fnsDir/Folders/request.php";
+$name = Folders\request();
 
 $errors = [];
 

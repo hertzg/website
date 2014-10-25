@@ -12,6 +12,7 @@ unset($_SESSION['files/received/folder/messages']);
 
 $fnsDir = '../../../../fns';
 
+include_once "$fnsDir/Folders/maxLengths.php";
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/hidden.php";
 include_once "$fnsDir/Form/textfield.php";
@@ -29,6 +30,7 @@ $content = Page\tabs(
     .'<form action="submit.php" method="post">'
         .Form\textfield('name', 'Folder name', [
             'value' => $values['name'],
+            'maxlength' => Folders\maxLengths()['name'],
             'required' => true,
             'autofocus' => true,
         ])
