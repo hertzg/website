@@ -17,6 +17,7 @@ function require_valid_key ($mysqli) {
     $user = Users\getByResetPasswordKey($mysqli, $id_users, $key);
 
     if (!$user) {
+        // TODO tell user that the link is invalid
         include_once "$fnsDir/redirect.php";
         redirect('..');
     }
