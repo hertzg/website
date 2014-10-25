@@ -12,11 +12,12 @@ else $values = (array)$receivedFile;
 
 $fnsDir = '../../../../fns';
 
-include_once "$fnsDir/Page/tabs.php";
+include_once "$fnsDir/Files/maxLengths.php";
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/hidden.php";
 include_once "$fnsDir/Form/textfield.php";
 include_once "$fnsDir/Page/sessionErrors.php";
+include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
     [
         [
@@ -29,6 +30,7 @@ $content = Page\tabs(
     .'<form action="submit.php" method="post">'
         .Form\textfield('name', 'File name', [
             'value' => $values['name'],
+            'maxlength' => Files\maxLengths()['name'],
             'required' => true,
             'autofocus' => true,
         ])

@@ -15,6 +15,7 @@ unset(
     $_SESSION['files/view-file/messages']
 );
 
+include_once '../../fns/Files/maxLengths.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/hidden.php';
 include_once '../../fns/Form/textfield.php';
@@ -33,6 +34,7 @@ $content = Page\tabs(
     .'<form action="submit.php" method="post">'
         .Form\textfield('name', 'File name', [
             'value' => $values['name'],
+            'maxlength' => Files\maxLengths()['name'],
             'autofocus' => true,
             'required' => true,
         ])

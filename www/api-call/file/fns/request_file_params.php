@@ -12,8 +12,8 @@ function request_file_params ($mysqli,
     }
 
     include_once __DIR__.'/../../../fns/Files/getByName.php';
-    $existingFile = Files\getByName($mysqli, $id_users,
-        $id_folders, $name, $exclude_id);
+    $existingFile = Files\getByName($mysqli,
+        $id_users, $id_folders, $name, $exclude_id);
 
     if ($existingFile) {
         include_once __DIR__.'/../../fns/bad_request.php';

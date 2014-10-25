@@ -12,18 +12,15 @@ $name = Files\request();
 
 $errors = [];
 
-if ($name === '') {
-    $errors[] = 'Enter file name.';
-} else {
+if ($name === '') $errors[] = 'Enter file name.';
+else {
 
     include_once '../../fns/Files/getByName.php';
     include_once '../../lib/mysqli.php';
-    $existingFile = Files\getByName($mysqli, $user->id_users,
-        $file->id_folders, $name, $id);
+    $existingFile = Files\getByName($mysqli,
+        $user->id_users, $file->id_folders, $name, $id);
 
-    if ($existingFile) {
-        $errors[] = 'A file with the same name already exists.';
-    }
+    if ($existingFile) $errors[] = 'A file with the same name already exists.';
 
 }
 

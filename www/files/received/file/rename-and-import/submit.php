@@ -9,24 +9,21 @@ include_once '../fns/require_received_file.php';
 include_once '../../../../lib/mysqli.php';
 list($receivedFile, $id, $user) = require_received_file($mysqli, '../');
 
-include_once "$fnsDir/request_strings.php";
-list($name) = request_strings('name');
-
-include_once "$fnsDir/str_collapse_spaces.php";
-$name = str_collapse_spaces($name);
+include_once "$fnsDir/Files/request.php";
+$name = Files\request();
 
 $id_folders = 0;
 $errors = [];
 
 if ($name === '') $errors[] = 'Enter file name.';
+else {
 
-if (!$errors) {
     include_once "$fnsDir/Files/getByName.php";
     $existingFile = Files\getByName($mysqli,
         $user->id_users, $id_folders, $name);
-    if ($existingFile) {
-        $errors[] = 'A file with the same name already exists.';
-    }
+
+    if ($existingFile) $errors[] = 'A file with the same name already exists.';
+
 }
 
 include_once "$fnsDir/redirect.php";
