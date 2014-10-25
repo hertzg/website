@@ -7,8 +7,8 @@ function create_page ($mysqli, &$user, $base = '') {
     include_once "$fnsDir/require_user.php";
     $user = require_user("$base../../");
 
-    include_once "$fnsDir/require_valid_token.php";
-    $token = require_valid_token($mysqli);
+    include_once "$fnsDir/request_valid_token.php";
+    $token = request_valid_token($mysqli);
 
     $options = [];
     if (!$token) {

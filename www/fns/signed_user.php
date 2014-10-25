@@ -12,8 +12,8 @@ function signed_user () {
         include_once __DIR__.'/get_mysqli.php';
         $mysqli = get_mysqli();
 
-        include_once __DIR__.'/require_valid_token.php';
-        $token = require_valid_token($mysqli);
+        include_once __DIR__.'/request_valid_token.php';
+        $token = request_valid_token($mysqli);
 
         if ($token) {
 
