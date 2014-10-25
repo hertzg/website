@@ -12,8 +12,8 @@ function request_folder_params ($mysqli,
     }
 
     include_once __DIR__.'/../../../fns/Folders/getByName.php';
-    $existingFolder = Folders\getByName($mysqli, $id_users,
-        $id_folders, $name, $exclude_id);
+    $existingFolder = Folders\getByName($mysqli,
+        $id_users, $id_folders, $name, $exclude_id);
 
     if ($existingFolder) {
         include_once __DIR__.'/../../fns/bad_request.php';
