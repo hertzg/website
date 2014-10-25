@@ -13,6 +13,7 @@ subscribed_channel_method_page('subscribe', [
     ],
 ], [
     'ENTER_CHANNEL_NAME' => 'The channel name is empty.',
+    'INVALID_CHANNEL_NAME' => 'The channel name is invalid.',
     'CHANNEL_NOT_FOUND' => "A channel with the name doesn't exist.",
     'CHANNEL_NOT_PUBLIC' => 'The channel is not public.',
     'CHANNEL_IS_OWN' => 'You are the owner of the channel.',

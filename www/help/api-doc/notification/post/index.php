@@ -12,6 +12,8 @@ notification_method_page('post', [
         'description' => 'The text to send.',
     ],
 ], [
+    'ENTER_CHANNEL_NAME' => 'The channel name is empty.',
+    'INVALID_CHANNEL_NAME' => 'The channel name is invalid.',
     'CHANNEL_NOT_FOUND' => "A channel with the name doesn't exist.",
     'ENTER_TEXT' => 'The text is empty.',
 ]);
