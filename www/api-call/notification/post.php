@@ -3,19 +3,16 @@
 include_once '../fns/require_api_key.php';
 list($apiKey, $user, $mysqli) = require_api_key('can_write_notifications');
 
-list($channel_name, $text) = request_strings('channel_name', 'text');
+include_once '../fns/require_channel.php';
+$channel = require_channel($mysqli);
 
-include_once '../../fns/str_collapse_spaces_multiline.php';
-$text = str_collapse_spaces_multiline($text);
-$text = trim($text);
-
-include_once '../../fns/Channels/getByName.php';
-$channel = Channels\getByName($mysqli, $channel_name);
-
-if (!$channel || $channel->id_users != $user->id_users) {
+if ($channel->id_users != $user->id_users) {
     include_once '../fns/bad_request.php';
     bad_request('CHANNEL_NOT_FOUND');
 }
+
+include_once '../../fns/request_text.php';
+$text = request_text('text');
 
 if ($text === '') {
     include_once '../fns/bad_request.php';
