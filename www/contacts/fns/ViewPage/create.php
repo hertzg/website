@@ -64,10 +64,9 @@ function create ($contact, $base = '') {
     $insert_time = $contact->insert_time;
     $update_time = $contact->update_time;
 
-    $tags = json_decode($contact->tags_json);
-    if ($tags) {
+    if ($contact->num_tags) {
         include_once "$fnsDir/Form/tags.php";
-        $items[] = \Form\tags($base, $tags);
+        $items[] = \Form\tags($base, json_decode($contact->tags_json));
     }
 
     $notes = $contact->notes;

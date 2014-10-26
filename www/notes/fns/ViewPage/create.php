@@ -9,10 +9,9 @@ function create ($note) {
     include_once "$fnsDir/create_text_item.php";
     $items = [create_text_item($note->text, '../../')];
 
-    $tags = json_decode($note->tags_json);
-    if ($tags) {
+    if ($note->num_tags) {
         include_once "$fnsDir/Page/tags.php";
-        $items[] = \Page\tags('../', $tags);
+        $items[] = \Page\tags('../', json_decode($note->tags_json));
     }
 
     $insert_time = $note->insert_time;
