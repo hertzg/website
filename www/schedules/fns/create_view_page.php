@@ -29,6 +29,14 @@ function create_view_page ($user, $schedule) {
             .Page\imageLink('Delete', $href, 'trash-bin')
         .'</div>';
 
+    if ($schedule->num_tags) {
+        $tags = json_decode($schedule->tags_json);
+        include_once "$fnsDir/Form/tags.php";
+        $tagsItems =
+            '<div class="hr"></div>'
+            .Form\tags('', $tags);
+    }
+
     include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Form/label.php";
@@ -51,6 +59,7 @@ function create_view_page ($user, $schedule) {
         .Form\label('Repeats in every', "$schedule->interval days")
         .'<div class="hr"></div>'
         .Form\label('Next', $next)
+        .$tagsItems
         .create_panel(
             'Schedule Options',
             Page\staticTwoColumns($editLink, $deleteLink)
