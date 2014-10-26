@@ -11,6 +11,12 @@ function add ($mysqli, $user, $text, $interval, $offset, $tags, $tag_names) {
     $id = \Schedules\add($mysqli, $id_users,
         $text, $interval, $offset, $tags, $tag_names);
 
+    if ($tag_names) {
+        include_once "$fnsDir/ScheduleTags/add.php";
+        \ScheduleTags\add($mysqli, $id_users, $id,
+            $tag_names, $text, $interval, $offset);
+    }
+
     include_once __DIR__.'/addNumber.php';
     addNumber($mysqli, $id_users, 1);
 

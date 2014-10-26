@@ -4,10 +4,16 @@ namespace Users\Schedules;
 
 function delete ($mysqli, $user, $schedule) {
 
+    $id = $schedule->id;
     $fnsDir = __DIR__.'/../..';
 
     include_once "$fnsDir/Schedules/delete.php";
-    \Schedules\delete($mysqli, $schedule->id);
+    \Schedules\delete($mysqli, $id);
+
+    if ($schedule->num_tags) {
+        include_once "$fnsDir/ScheduleTags/deleteOnSchedule.php";
+        \ScheduleTags\deleteOnSchedule($mysqli, $id);
+    }
 
     include_once __DIR__.'/addNumber.php';
     addNumber($mysqli, $user->id_users, -1);
