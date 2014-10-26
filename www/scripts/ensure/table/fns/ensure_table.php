@@ -71,7 +71,7 @@ function ensure_table ($tableName, $columns) {
         }
 
     } else {
-        echo "creagin table $tableName...\n";
+        echo "creating table $tableName...\n";
         $sql = "create table `$escapedTableName` (";
         $first = true;
         foreach ($columns as $name => $column) {
