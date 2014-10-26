@@ -22,10 +22,9 @@ function create ($task, $user) {
 
     }
 
-    $tags = json_decode($task->tags_json);
-    if ($tags) {
+    if ($task->num_tags) {
         include_once "$fnsDir/Page/tags.php";
-        $items[] = \Page\tags('../', $tags);
+        $items[] = \Page\tags('../', json_decode($task->tags_json));
     }
 
     $insert_time = $task->insert_time;

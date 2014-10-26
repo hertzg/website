@@ -34,10 +34,9 @@ function create ($bookmark) {
 
     $items[] = \Page\text(htmlspecialchars($url));
 
-    $tags = json_decode($bookmark->tags_json);
-    if ($tags) {
+    if ($bookmark->num_tags) {
         include_once "$fnsDir/Page/tags.php";
-        $items[] = \Page\tags('../', $tags);
+        $items[] = \Page\tags('../', json_decode($bookmark->tags_json));
     }
 
     $insert_time = $bookmark->insert_time;
