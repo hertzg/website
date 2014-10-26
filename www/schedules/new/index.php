@@ -18,6 +18,7 @@ if (array_key_exists($key, $_SESSION)) {
     $values = [
         'text' => '',
         'interval' => '',
+        'tags' => '',
     ];
 }
 
@@ -49,6 +50,11 @@ $content = Page\tabs(
         ])
         .'<div class="hr"></div>'
         .create_interval_select($values['interval'])
+        .'<div class="hr"></div>'
+        .Form\textfield('tags', 'Tags', [
+            'value' => $values['tags'],
+            'maxlength' => $maxLengths['tags'],
+        ])
         .'<div class="hr"></div>'
         .Form\button('Next')
         .ItemList\pageHiddenInputs()

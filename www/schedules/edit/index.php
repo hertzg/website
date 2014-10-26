@@ -10,6 +10,7 @@ else {
     $values = [
         'text' => $schedule->text,
         'interval' => $schedule->interval,
+        'tags' => $schedule->tags,
     ];
 }
 
@@ -46,6 +47,11 @@ $content = Page\tabs(
         ])
         .'<div class="hr"></div>'
         .create_interval_select($values['interval'])
+        .'<div class="hr"></div>'
+        .Form\textfield('tags', 'Tags', [
+            'value' => $values['tags'],
+            'maxlength' => $maxLengths['tags'],
+        ])
         .'<div class="hr"></div>'
         .Form\button('Next')
         .ItemList\itemHiddenInputs($id)

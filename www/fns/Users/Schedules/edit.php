@@ -2,12 +2,14 @@
 
 namespace Users\Schedules;
 
-function edit ($mysqli, $user, $schedule, $text, $interval, $offset) {
+function edit ($mysqli, $user, $schedule,
+    $text, $interval, $offset, $tags, $tag_names) {
 
     $fnsDir = __DIR__.'/../..';
 
     include_once "$fnsDir/Schedules/edit.php";
-    \Schedules\edit($mysqli, $schedule->id, $text, $interval, $offset);
+    \Schedules\edit($mysqli, $schedule->id,
+        $text, $interval, $offset, $tags, $tag_names);
 
     include_once "$fnsDir/days_left_from_today.php";
     $days_left = days_left_from_today($user, $interval, $offset);
