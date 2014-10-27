@@ -13,7 +13,7 @@ ensure_table('tasks', [
         'type' => 'bigint(20) unsigned',
         'nullable' => true,
     ],
-    'id_tasks' => [
+    'id' => [
         'type' => 'bigint(20) unsigned',
         'primary' => true,
     ],

@@ -4,7 +4,7 @@ namespace Users\Tasks;
 
 function delete ($mysqli, $task) {
 
-    $id = $task->id_tasks;
+    $id = $task->id;
     $fnsDir = __DIR__.'/../..';
 
     include_once "$fnsDir/Tasks/delete.php";

@@ -5,7 +5,7 @@ namespace Users\Tasks;
 function edit ($mysqli, $task, $text,
     $deadline_time, $tags, $tag_names, $top_priority) {
 
-    $id = $task->id_tasks;
+    $id = $task->id;
     $fnsDir = __DIR__.'/../..';
 
     include_once "$fnsDir/Tasks/edit.php";

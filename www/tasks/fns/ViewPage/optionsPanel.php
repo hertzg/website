@@ -7,7 +7,7 @@ function optionsPanel ($task) {
     $fnsDir = __DIR__.'/../../../fns';
 
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
-    $escapedItemQuery = \ItemList\escapedItemQuery($task->id_tasks);
+    $escapedItemQuery = \ItemList\escapedItemQuery($task->id);
 
     include_once "$fnsDir/Page/imageArrowLink.php";
     $href = "../edit/$escapedItemQuery";

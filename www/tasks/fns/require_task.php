@@ -20,6 +20,6 @@ function require_task ($mysqli, $base = '') {
         redirect("$base..");
     }
 
-    return [$task, $task->id_tasks, $user];
+    return [$task, $task->id, $user];
 
 }

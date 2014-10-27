@@ -9,7 +9,7 @@ $microtime = microtime(true);
 
 $sql = 'delete from task_tags'
     .' where id_users not in (select id_users from users)'
-    .' or id_tasks not in (select id_tasks from tasks)';
+    .' or id_tasks not in (select id from tasks)';
 $mysqli->query($sql) || trigger_error($mysqli->error);
 
 $elapsedSeconds = number_format(microtime(true) - $microtime, 3);

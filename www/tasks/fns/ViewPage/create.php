@@ -4,7 +4,7 @@ namespace ViewPage;
 
 function create ($task, $user) {
 
-    $id = $task->id_tasks;
+    $id = $task->id;
     $fnsDir = __DIR__.'/../../../fns';
 
     include_once "$fnsDir/create_text_item.php";

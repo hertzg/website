@@ -77,7 +77,7 @@ foreach ($ids as $id) {
 $sql = 'select distinct id_tasks value from task_tags';
 $ids = mysqli_query_object($mysqli, $sql);
 foreach ($ids as $id) {
-    $sql = "select * from tasks where id_tasks = $id->value";
+    $sql = "select * from tasks where id = $id->value";
     $task = mysqli_single_object($mysqli, $sql);
     if ($task) {
 
@@ -87,7 +87,7 @@ foreach ($ids as $id) {
             ." top_priority = $task->top_priority,"
             ." insert_time = $task->insert_time,"
             ." update_time = $task->update_time"
-            ." where id_tasks = $task->id_tasks";
+            ." where id_tasks = $task->id";
 
         $mysqli->query($sql) || trigger_error($mysqli->error);
 

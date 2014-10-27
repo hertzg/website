@@ -17,4 +17,8 @@ $sql = 'alter table notes change id_notes'
     .' id bigint unsigned auto_increment';
 $mysqli->query($sql) || trigger_error($mysqli->error);
 
+$sql = 'alter table tasks change id_tasks'
+    .' id bigint unsigned auto_increment';
+$mysqli->query($sql) || trigger_error($mysqli->error);
+
 echo "Done\n";

@@ -21,7 +21,8 @@ function searchOnTagName ($mysqli, $id_users,
 
     if ($offset >= $total) return [];
 
-    $sql = "select * $fromWhere order by top_priority desc, update_time desc"
+    $sql = "select *, id_tasks id $fromWhere"
+        .' order by top_priority desc, update_time desc'
         ." limit $limit offset $offset";
     include_once "$fnsDir/mysqli_query_object.php";
     return mysqli_query_object($mysqli, $sql);

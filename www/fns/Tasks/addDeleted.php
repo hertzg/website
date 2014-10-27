@@ -13,7 +13,7 @@ function addDeleted ($mysqli, $id, $id_users, $text, $deadline_time,
     $top_priority = $top_priority ? '1' : '0';
 
     $sql = 'insert into tasks'
-        .' (id_tasks, id_users, text, deadline_time, tags,'
+        .' (id, id_users, text, deadline_time, tags,'
         .' num_tags, tags_json, top_priority, insert_time, update_time)'
         ." values ($id, $id_users, '$text', $deadline_time, '$tags',"
         ." $num_tags, '$tags_json', $top_priority, $insert_time, $update_time)";

@@ -3,7 +3,7 @@
 function to_client_json ($task) {
     $deadline_time = $task->deadline_time;
     return [
-        'id' => (int)$task->id_tasks,
+        'id' => (int)$task->id,
         'text' => $task->text,
         'deadline_time' => $deadline_time === null ? null : (int)$deadline_time,
         'tags' => $task->tags,

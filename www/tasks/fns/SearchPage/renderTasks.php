@@ -18,7 +18,7 @@ function renderTasks ($tasks, &$items, $params, $keyword, $user) {
 
             $queryString = htmlspecialchars(
                 http_build_query(
-                    array_merge(['id' => $task->id_tasks], $params)
+                    array_merge(['id' => $task->id], $params)
                 )
             );
             $href = "../view/?$queryString";
