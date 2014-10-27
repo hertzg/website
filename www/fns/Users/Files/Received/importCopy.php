@@ -7,10 +7,12 @@ function importCopy ($mysqli, $receivedFile, $parent_id) {
     $id_users = $receivedFile->receiver_id_users;
     $name = $receivedFile->name;
 
-    include_once __DIR__.'/../../../ReceivedFiles/File/path.php';
+    $fnsDir = __DIR__.'/../../..';
+
+    include_once "$fnsDir/ReceivedFiles/File/path.php";
     $filePath = \ReceivedFiles\File\path($id_users, $receivedFile->id);
 
-    include_once __DIR__.'/../../../Files/getByName.php';
+    include_once "$fnsDir/Files/getByName.php";
     while (\Files\getByName($mysqli, $id_users, $parent_id, $name)) {
         $extension = '';
         if (preg_match('/\..*?$/', $name, $match)) {
@@ -27,7 +29,7 @@ function importCopy ($mysqli, $receivedFile, $parent_id) {
         }
     }
 
-    include_once __DIR__.'/../../../Users/Files/add.php';
+    include_once "$fnsDir/Users/Files/add.php";
     return \Users\Files\add($mysqli, $id_users, $parent_id, $name, $filePath);
 
 }
