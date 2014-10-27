@@ -4,7 +4,7 @@ function create_content ($user, $filterMessage, $items, $base, $searchForm) {
 
     $fnsDir = __DIR__.'/../../fns';
 
-    include_once __DIR__.'/../fns/create_options_panel.php';
+    include_once __DIR__.'/create_options_panel.php';
     include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
