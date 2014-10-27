@@ -3,12 +3,30 @@
 function create_page ($mysqli, $user, $base = '') {
 
     $fnsDir = __DIR__.'/../../fns';
+    $id_users = $user->id_users;
+
+    include_once "$fnsDir/request_strings.php";
+    list($tag) = request_strings('tag');
+
+    if ($tag === '') {
+
+        $filterMessage = '';
+
+        include_once "$fnsDir/Schedules/indexOnUser.php";
+        $schedules = Schedules\indexOnUser($mysqli, $id_users);
+
+    } else {
+
+        include_once "$fnsDir/ScheduleTags/indexOnTagName.php";
+        $schedules = ScheduleTags\indexOnTagName($mysqli, $id_users, $tag);
+
+        include_once "$fnsDir/create_clear_filter_bar.php";
+        $filterMessage = create_clear_filter_bar($tag, "$base./");
+
+    }
 
     include_once __DIR__.'/unset_session_vars.php';
     unset_session_vars();
-
-    include_once "$fnsDir/Schedules/indexOnUser.php";
-    $schedules = Schedules\indexOnUser($mysqli, $user->id_users);
 
     $scripts = '';
 
@@ -63,7 +81,7 @@ function create_page ($mysqli, $user, $base = '') {
             'Schedules',
             Page\sessionErrors('schedules/errors')
             .Page\sessionMessages('schedules/messages')
-            .join('<div class="hr"></div>', $items)
+            .$filterMessage.join('<div class="hr"></div>', $items)
             .create_options_panel($user, $base),
             create_new_item_button('Schedule', $base)
         )
