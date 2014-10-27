@@ -2,7 +2,7 @@
 
 function to_client_json ($note) {
     return [
-        'id' => (int)$note->id_notes,
+        'id' => (int)$note->id,
         'text' => $note->text,
         'tags' => $note->tags,
         'encrypt' => (bool)$note->encrypt,

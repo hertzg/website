@@ -5,7 +5,7 @@ namespace Users\DeletedItems;
 function addNote ($mysqli, $note) {
     include_once __DIR__.'/add.php';
     add($mysqli, $note->id_users, 'note', [
-        'id' => $note->id_notes,
+        'id' => $note->id,
         'text' => $note->text,
         'tags' => $note->tags,
         'encrypt' => $note->encrypt,

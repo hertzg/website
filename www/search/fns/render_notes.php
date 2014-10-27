@@ -16,7 +16,7 @@ function render_notes ($notes, &$items, $regex, $encodedKeyword) {
             $icon = 'note';
         }
 
-        $query = "?id=$note->id_notes&amp;keyword=$encodedKeyword";
+        $query = "?id=$note->id&amp;keyword=$encodedKeyword";
         $href = "../notes/view/$query";
         $items[] = Page\imageArrowLink($title, $href, $icon);
 

@@ -57,7 +57,7 @@ foreach ($ids as $id) {
 $sql = 'select distinct id_notes value from note_tags';
 $ids = mysqli_query_object($mysqli, $sql);
 foreach ($ids as $id) {
-    $sql = "select * from notes where id_notes = $id->value";
+    $sql = "select * from notes where id = $id->value";
     $note = mysqli_single_object($mysqli, $sql);
     if ($note) {
 
@@ -67,7 +67,7 @@ foreach ($ids as $id) {
         $sql = "update note_tags set text = '$text', encrypt = $encrypt,"
             ." insert_time = $note->insert_time,"
             ." update_time = $note->update_time"
-            ." where id_notes = $note->id_notes";
+            ." where id_notes = $note->id";
 
         $mysqli->query($sql) || trigger_error($mysqli->error);
 

@@ -4,7 +4,7 @@ namespace Users\Notes;
 
 function edit ($mysqli, $note, $text, $tags, $tag_names, $encrypt) {
 
-    $id = $note->id_notes;
+    $id = $note->id;
     $fnsDir = __DIR__.'/../..';
 
     include_once "$fnsDir/Notes/edit.php";

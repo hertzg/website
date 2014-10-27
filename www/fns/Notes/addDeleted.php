@@ -12,7 +12,7 @@ function addDeleted ($mysqli, $id, $id_users,
     $encrypt = $encrypt ? '1' : '0';
 
     $sql = 'insert into notes'
-        .' (id_notes, id_users, text, tags, num_tags,'
+        .' (id, id_users, text, tags, num_tags,'
         .' tags_json, encrypt, insert_time, update_time)'
         ." values ($id, $id_users, '$text', '$tags', $num_tags,"
         ." '$tags_json', $encrypt, $insert_time, $update_time)";

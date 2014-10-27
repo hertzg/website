@@ -7,7 +7,7 @@ function optionsPanel ($note) {
     $fnsDir = __DIR__.'/../../../fns';
 
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
-    $escapedItemQuery = \ItemList\escapedItemQuery($note->id_notes);
+    $escapedItemQuery = \ItemList\escapedItemQuery($note->id);
 
     include_once "$fnsDir/Page/imageArrowLink.php";
     $href = "../edit/$escapedItemQuery";

@@ -9,7 +9,7 @@ $microtime = microtime(true);
 
 $sql = 'delete from note_tags'
     .' where id_users not in (select id_users from users)'
-    .' or id_notes not in (select id_notes from notes)';
+    .' or id_notes not in (select id from notes)';
 $mysqli->query($sql) || trigger_error($mysqli->error);
 
 $elapsedSeconds = number_format(microtime(true) - $microtime, 3);

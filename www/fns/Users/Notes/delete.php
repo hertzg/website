@@ -4,7 +4,7 @@ namespace Users\Notes;
 
 function delete ($mysqli, $note) {
 
-    $id = $note->id_notes;
+    $id = $note->id;
     $fnsDir = __DIR__.'/../..';
 
     include_once "$fnsDir/Notes/delete.php";

@@ -12,7 +12,7 @@ ensure_table('notes', [
     'encrypt' => [
         'type' => 'tinyint(3) unsigned',
     ],
-    'id_notes' => [
+    'id' => [
         'type' => 'bigint(20) unsigned',
         'primary' => true,
     ],

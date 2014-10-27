@@ -37,7 +37,7 @@ function create ($note) {
                     'href' => \ItemList\listHref(),
                 ],
             ],
-            "Note #$note->id_notes",
+            "Note #$note->id",
             \Page\sessionMessages('notes/view/messages')
             .join('<div class="hr"></div>', $items)
             .$infoText,

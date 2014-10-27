@@ -15,7 +15,7 @@ function renderNotes ($notes, &$items, $params, $keyword) {
 
             $queryString = htmlspecialchars(
                 http_build_query(
-                    array_merge(['id' => $note->id_notes], $params)
+                    array_merge(['id' => $note->id], $params)
                 )
             );
             $href = "../view/?$queryString";
