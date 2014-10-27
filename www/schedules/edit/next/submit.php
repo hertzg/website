@@ -16,8 +16,8 @@ $offset = (user_day($user) + $days_left) % $interval;
 
 include_once '../../../fns/Users/Schedules/edit.php';
 include_once '../../../lib/mysqli.php';
-Users\Schedules\edit($mysqli, $user, $schedule,
-    $first_stage['text'], $interval, $offset);
+Users\Schedules\edit($mysqli, $user, $schedule, $first_stage['text'],
+    $interval, $offset, $first_stage['tags'], $first_stage['tag_names']);
 
 unset(
     $_SESSION['schedules/edit/values'],

@@ -8,10 +8,14 @@ include_once '../../../fns/Schedules/maxLengths.php';
 $maxLengths = Schedules\maxLengths();
 
 include_once 'fns/ensure_table.php';
-ensure_table('schedules', [
+include_once '../../../fns/Tag/maxLength.php';
+ensure_table('schedule_tags', [
     'id' => [
         'type' => 'bigint(20) unsigned',
         'primary' => true,
+    ],
+    'id_schedules' => [
+        'type' => 'bigint(20) unsigned',
     ],
     'id_users' => [
         'type' => 'bigint(20) unsigned',
@@ -22,24 +26,13 @@ ensure_table('schedules', [
     'interval' => [
         'type' => 'bigint(20) unsigned',
     ],
-    'num_tags' => [
-        'type' => 'tinyint(3) unsigned',
-    ],
     'offset' => [
         'type' => 'bigint(20) unsigned',
     ],
-    'revision' => [
-        'type' => 'bigint(20) unsigned',
-    ],
-    'tags' => [
-        'type' => "varchar($maxLengths[tags])",
+    'tag_name' => [
+        'type' => 'varchar('.Tag\maxLength().')',
         'characterSet' => 'utf8',
         'collation' => 'utf8_unicode_ci',
-    ],
-    'tags_json' => [
-        'type' => "varchar($maxLengths[tags_json])",
-        'characterSet' => 'ascii',
-        'collation' => 'ascii_bin',
     ],
     'text' => [
         'type' => "varchar($maxLengths[text])",

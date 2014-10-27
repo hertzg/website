@@ -10,6 +10,9 @@ function deleteAll ($mysqli, $user) {
     include_once "$fnsDir/Schedules/deleteOnUser.php";
     \Schedules\deleteOnUser($mysqli, $id_users);
 
+    include_once "$fnsDir/ScheduleTags/deleteOnUser.php";
+    \ScheduleTags\deleteOnUser($mysqli, $id_users);
+
     include_once "$fnsDir/user_day.php";
     $day = user_day($user);
 

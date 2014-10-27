@@ -12,8 +12,8 @@ include_once "$fnsDir/ItemList/pageParams.php";
 $pageParams = ItemList\pageParams();
 
 if (array_key_exists('keyword', $pageParams)) {
-    include_once '../fns/create_search_page.php';
-    $content = create_search_page($mysqli, $user);
+    include_once '../fns/SearchPage/create.php';
+    $content = SearchPage\create($mysqli, $user);
 } else {
     include_once '../fns/create_page.php';
     $content = create_page($mysqli, $user, '../');

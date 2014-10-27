@@ -10,7 +10,9 @@ function sort_schedules ($user, &$schedules) {
     }
 
     usort($schedules, function ($a, $b) {
-        return $a->days_left - $b->days_left;
+        $result = $a->days_left - $b->days_left;
+        if ($result) return $result;
+        return $b->update_time - $a->update_time;
     });
 
 }

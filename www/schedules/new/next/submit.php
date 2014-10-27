@@ -16,8 +16,8 @@ $offset = (user_day($user) + $days_left) % $interval;
 
 include_once '../../../fns/Users/Schedules/add.php';
 include_once '../../../lib/mysqli.php';
-$id = Users\Schedules\add($mysqli, $user,
-    $first_stage['text'], $interval, $offset);
+$id = Users\Schedules\add($mysqli, $user, $first_stage['text'],
+    $interval, $offset, $first_stage['tags'], $first_stage['tag_names']);
 
 unset(
     $_SESSION['schedules/new/values'],

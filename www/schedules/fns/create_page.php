@@ -3,12 +3,39 @@
 function create_page ($mysqli, $user, $base = '') {
 
     $fnsDir = __DIR__.'/../../fns';
+    $id_users = $user->id_users;
 
-    include_once __DIR__.'/unset_session_vars.php';
-    unset_session_vars();
+    include_once "$fnsDir/request_keyword_tag_offset.php";
+    list($keyword, $tag, $offset) = request_keyword_tag_offset();
 
-    include_once "$fnsDir/Schedules/indexOnUser.php";
-    $schedules = Schedules\indexOnUser($mysqli, $user->id_users);
+    if ($tag === '') {
+
+        $filterMessage = '';
+
+        include_once "$fnsDir/Schedules/indexOnUser.php";
+        $schedules = Schedules\indexOnUser($mysqli, $id_users);
+
+        if (count($schedules) > 1) {
+
+            include_once "$fnsDir/ScheduleTags/indexOnUser.php";
+            $tags = \ScheduleTags\indexOnUser($mysqli, $id_users);
+
+            if ($tags) {
+                include_once "$fnsDir/create_tag_filter_bar.php";
+                $filterMessage = create_tag_filter_bar($tags, []);
+            }
+
+        }
+
+    } else {
+
+        include_once "$fnsDir/create_clear_filter_bar.php";
+        $filterMessage = create_clear_filter_bar($tag, "$base./");
+
+        include_once "$fnsDir/ScheduleTags/indexOnTagName.php";
+        $schedules = ScheduleTags\indexOnTagName($mysqli, $id_users, $tag);
+
+    }
 
     $scripts = '';
 
@@ -19,6 +46,11 @@ function create_page ($mysqli, $user, $base = '') {
 
             include_once "$fnsDir/SearchForm/emptyContent.php";
             $formContent = SearchForm\emptyContent('Search schedules...');
+
+            if ($tag !== '') {
+                include_once "$fnsDir/Form/hidden.php";
+                $formContent .= Form\hidden('tag', $tag);
+            }
 
             include_once "$fnsDir/SearchForm/create.php";
             $items[] = SearchForm\create("{$base}search/", $formContent);
@@ -47,26 +79,10 @@ function create_page ($mysqli, $user, $base = '') {
         $items[] = Page\info('No schedules');
     }
 
-    include_once __DIR__.'/create_options_panel.php';
-    include_once "$fnsDir/create_new_item_button.php";
-    include_once "$fnsDir/Page/sessionErrors.php";
-    include_once "$fnsDir/Page/sessionMessages.php";
-    include_once "$fnsDir/Page/tabs.php";
-    return
-        Page\tabs(
-            [
-                [
-                    'title' => 'Home',
-                    'href' => "$base../home/",
-                ],
-            ],
-            'Schedules',
-            Page\sessionErrors('schedules/errors')
-            .Page\sessionMessages('schedules/messages')
-            .join('<div class="hr"></div>', $items)
-            .create_options_panel($user, $base),
-            create_new_item_button('Schedule', $base)
-        )
-        .$scripts;
+    include_once __DIR__.'/unset_session_vars.php';
+    unset_session_vars();
+
+    include_once __DIR__.'/create_content.php';
+    return create_content($user, $filterMessage, $items, $base, $scripts);
 
 }

@@ -64,6 +64,9 @@ function close_account ($mysqli, $id_users) {
     include_once "$fnsDir/Schedules/deleteOnUser.php";
     Schedules\deleteOnUser($mysqli, $id_users);
 
+    include_once "$fnsDir/ScheduleTags/deleteOnUser.php";
+    ScheduleTags\deleteOnUser($mysqli, $id_users);
+
     include_once "$fnsDir/SubscribedChannels/deleteContainingUser.php";
     SubscribedChannels\deleteContainingUser($mysqli, $id_users);
 

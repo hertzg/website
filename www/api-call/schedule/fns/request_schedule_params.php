@@ -10,6 +10,9 @@ function request_schedule_params () {
         bad_request('ENTER_TEXT');
     }
 
-    return [$text, $interval, $offset];
+    include_once __DIR__.'/../../fns/require_tags.php';
+    list($tags, $tag_names) = require_tags();
+
+    return [$text, $interval, $offset, $tags, $tag_names];
 
 }
