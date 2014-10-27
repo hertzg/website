@@ -11,9 +11,9 @@ function searchOnTagName ($mysqli, $id_users, $keyword, $tag_name) {
     $keyword = $mysqli->real_escape_string($keyword);
     $tag_name = $mysqli->real_escape_string($tag_name);
 
-    $sql = "select * from schedule_tags where id_users = $id_users"
-        ." and text like '%$keyword%' and tag_name = '$tag_name'"
-        .' order by update_time desc';
+    $sql = "select *, id_schedules id from schedule_tags"
+        ." where id_users = $id_users and text like '%$keyword%'"
+        ." and tag_name = '$tag_name' order by update_time desc";
     include_once "$fnsDir/mysqli_query_object.php";
     return mysqli_query_object($mysqli, $sql);
 
