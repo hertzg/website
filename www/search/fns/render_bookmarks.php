@@ -6,7 +6,7 @@ function render_bookmarks ($bookmarks, &$items, $regex, $encodedKeyword) {
         $title = htmlspecialchars($bookmark->title);
         $title = preg_replace($regex, '<mark>$0</mark>', $title);
         $description = htmlspecialchars($bookmark->url);
-        $query = "?id=$bookmark->id_bookmarks&amp;keyword=$encodedKeyword";
+        $query = "?id=$bookmark->id&amp;keyword=$encodedKeyword";
         $href = "../bookmarks/view/$query";
         $items[] = Page\imageArrowLinkWithDescription($title,
             $description, $href, 'bookmark');

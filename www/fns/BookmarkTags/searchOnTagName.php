@@ -21,7 +21,7 @@ function searchOnTagName ($mysqli, $id_users,
 
     if ($offset >= $total) return [];
 
-    $sql = "select * $fromWhere order by update_time desc"
+    $sql = "select *, id_bookmarks id $fromWhere order by update_time desc"
         ." limit $limit offset $offset";
     include_once "$fnsDir/mysqli_query_object.php";
     return mysqli_query_object($mysqli, $sql);

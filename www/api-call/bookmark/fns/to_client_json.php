@@ -2,7 +2,7 @@
 
 function to_client_json ($bookmark) {
     return [
-        'id' => (int)$bookmark->id_bookmarks,
+        'id' => (int)$bookmark->id,
         'url' => $bookmark->url,
         'title' => $bookmark->title,
         'tags' => $bookmark->tags,

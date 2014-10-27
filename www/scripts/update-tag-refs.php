@@ -12,18 +12,17 @@ $microtime = microtime(true);
 $sql = 'select distinct id_bookmarks value from bookmark_tags';
 $ids = mysqli_query_object($mysqli, $sql);
 foreach ($ids as $id) {
-    $sql = "select * from bookmarks where id_bookmarks = $id->value";
+    $sql = "select * from bookmarks where id = $id->value";
     $bookmark = mysqli_single_object($mysqli, $sql);
     if ($bookmark) {
 
         $title = $mysqli->real_escape_string($bookmark->title);
         $url = $mysqli->real_escape_string($bookmark->url);
 
-        $sql = 'update bookmark_tags set'
-            ." title = '$title', url = '$url',"
+        $sql = "update bookmark_tags set title = '$title', url = '$url',"
             ." insert_time = $bookmark->insert_time,"
             ." update_time = $bookmark->update_time"
-            ." where id_bookmarks = $bookmark->id_bookmarks";
+            ." where id_bookmarks = $bookmark->id";
 
         $mysqli->query($sql) || trigger_error($mysqli->error);
 

@@ -14,7 +14,7 @@ function render_bookmarks ($bookmarks, &$items, $params, $base = '') {
 
             $queryString = htmlspecialchars(
                 http_build_query(
-                    array_merge(['id' => $bookmark->id_bookmarks], $params)
+                    array_merge(['id' => $bookmark->id], $params)
                 )
             );
             $href = "{$base}view/?$queryString";

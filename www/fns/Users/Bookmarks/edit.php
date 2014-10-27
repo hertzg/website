@@ -4,7 +4,7 @@ namespace Users\Bookmarks;
 
 function edit ($mysqli, $bookmark, $title, $url, $tags, $tag_names) {
 
-    $id = $bookmark->id_bookmarks;
+    $id = $bookmark->id;
     $fnsDir = __DIR__.'/../..';
 
     include_once "$fnsDir/Bookmarks/edit.php";

@@ -13,8 +13,7 @@ function edit ($mysqli, $id, $title, $url, $tags, $tag_names) {
 
     $sql = "update bookmarks set title = '$title', url = '$url',"
         ." tags = '$tags', num_tags = $num_tags, tags_json = '$tags_json',"
-        ." update_time = $update_time, revision = revision + 1"
-        ." where id_bookmarks = $id";
+        ." update_time = $update_time, revision = revision + 1 where id = $id";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 

@@ -9,7 +9,7 @@ $maxLengths = Bookmarks\maxLengths();
 
 include_once 'fns/ensure_table.php';
 ensure_table('bookmarks', [
-    'id_bookmarks' => [
+    'id' => [
         'type' => 'bigint(20) unsigned',
         'primary' => true,
     ],

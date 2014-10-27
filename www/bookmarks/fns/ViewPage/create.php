@@ -4,7 +4,7 @@ namespace ViewPage;
 
 function create ($bookmark) {
 
-    $id = $bookmark->id_bookmarks;
+    $id = $bookmark->id;
     $url = $bookmark->url;
     $fnsDir = __DIR__.'/../../../fns';
 

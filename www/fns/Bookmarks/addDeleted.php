@@ -12,7 +12,7 @@ function addDeleted ($mysqli, $id, $id_users,
     $tags_json = $mysqli->real_escape_string(json_encode($tag_names));
 
     $sql = 'insert into bookmarks'
-        .' (id_bookmarks, id_users, url, title, tags,'
+        .' (id, id_users, url, title, tags,'
         .' num_tags, tags_json, insert_time, update_time)'
         ." values ($id, $id_users, '$url', '$title', '$tags',"
         ." $num_tags, '$tags_json', $insert_time, $update_time)";

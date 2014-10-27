@@ -4,7 +4,7 @@ namespace Users\Bookmarks;
 
 function delete ($mysqli, $bookmark) {
 
-    $id = $bookmark->id_bookmarks;
+    $id = $bookmark->id;
     $fnsDir = __DIR__.'/../..';
 
     include_once "$fnsDir/Bookmarks/delete.php";

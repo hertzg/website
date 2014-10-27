@@ -12,7 +12,7 @@ function optionsPanel ($bookmark) {
     list($openLink, $openInNewTabLink) = $values;
 
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
-    $escapedItemQuery = \ItemList\escapedItemQuery($bookmark->id_bookmarks);
+    $escapedItemQuery = \ItemList\escapedItemQuery($bookmark->id);
 
     include_once "$fnsDir/Page/imageArrowLink.php";
     $href = "../edit/$escapedItemQuery";
