@@ -1,13 +1,13 @@
 <?php
 
-function render_events (array $contacts, array $events, &$items) {
+function render_events ($contacts, $events, &$items) {
     $items = [];
     if ($events || $contacts) {
         if ($contacts) {
             include_once __DIR__.'/../../fns/Page/imageLink.php';
             foreach ($contacts as $contact) {
                 $title = 'Birthday of '.htmlspecialchars($contact->full_name);
-                $href = "../contacts/view/?id=$contact->id_contacts";
+                $href = "../contacts/view/?id=$contact->id";
                 $items[] = Page\imageLink($title, $href, 'birthday-cake');
             }
         }

@@ -9,7 +9,7 @@ function delete ($mysqli, $contact) {
         $fnsDir = __DIR__.'/../../..';
 
         include_once "$fnsDir/Contacts/deletePhoto.php";
-        \Contacts\deletePhoto($mysqli, $contact->id_contacts);
+        \Contacts\deletePhoto($mysqli, $contact->id);
 
         include_once "$fnsDir/ContactPhotos/delete.php";
         \ContactPhotos\delete($mysqli, $photo_id);

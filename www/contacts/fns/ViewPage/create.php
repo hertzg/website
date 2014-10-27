@@ -4,7 +4,7 @@ namespace ViewPage;
 
 function create ($contact, $base = '') {
 
-    $id = $contact->id_contacts;
+    $id = $contact->id;
     $fnsDir = __DIR__.'/../../../fns';
 
     include_once "$fnsDir/request_strings.php";

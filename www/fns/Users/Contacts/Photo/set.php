@@ -32,7 +32,7 @@ function set ($mysqli, $contact, $image) {
     $photo_id = \ContactPhotos\add($mysqli, $photoData);
 
     include_once "$fnsDir/Contacts/editPhoto.php";
-    \Contacts\editPhoto($mysqli, $contact->id_contacts, $photo_id);
+    \Contacts\editPhoto($mysqli, $contact->id, $photo_id);
 
     $old_photo_id = $contact->photo_id;
     if ($old_photo_id) {

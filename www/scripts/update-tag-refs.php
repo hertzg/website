@@ -32,7 +32,7 @@ foreach ($ids as $id) {
 $sql = 'select distinct id_contacts value from contact_tags';
 $ids = mysqli_query_object($mysqli, $sql);
 foreach ($ids as $id) {
-    $sql = "select * from contacts where id_contacts = $id->value";
+    $sql = "select * from contacts where id = $id->value";
     $contact = mysqli_single_object($mysqli, $sql);
     if ($contact) {
 
@@ -47,7 +47,7 @@ foreach ($ids as $id) {
             ." phone1 = '$phone1', phone2 = '$phone2',"
             ." favorite = $favorite, insert_time = $contact->insert_time,"
             ." update_time = $contact->update_time"
-            ." where id_contacts = $contact->id_contacts";
+            ." where id_contacts = $contact->id";
 
         $mysqli->query($sql) || trigger_error($mysqli->error);
 

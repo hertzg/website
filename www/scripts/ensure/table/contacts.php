@@ -44,7 +44,7 @@ ensure_table('contacts', [
         'characterSet' => 'utf8',
         'collation' => 'utf8_unicode_ci',
     ],
-    'id_contacts' => [
+    'id' => [
         'type' => 'bigint(20) unsigned',
         'primary' => true,
     ],

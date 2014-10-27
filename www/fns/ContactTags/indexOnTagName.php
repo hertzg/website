@@ -18,8 +18,8 @@ function indexOnTagName ($mysqli, $id_users,
 
     if ($offset >= $total) return [];
 
-    $sql = "select * $fromWhere order by favorite desc, full_name"
-        ." limit $limit offset $offset";
+    $sql = "select *, id_contacts id $fromWhere"
+        ." order by favorite desc, full_name limit $limit offset $offset";
     include_once "$fnsDir/mysqli_query_object.php";
     return mysqli_query_object($mysqli, $sql);
 

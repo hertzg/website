@@ -35,7 +35,7 @@ function edit ($mysqli, $id, $full_name, $alias,
         ." timezone = $timezone, tags = '$tags',"
         ." num_tags = $num_tags, tags_json = '$tags_json',"
         ." notes = '$notes', favorite = $favorite, update_time = $update_time,"
-        ." revision = revision + 1 where id_contacts = $id";
+        ." revision = revision + 1 where id = $id";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 

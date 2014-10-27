@@ -4,7 +4,7 @@ namespace Users\Contacts;
 
 function delete ($mysqli, $contact, $user) {
 
-    $id = $contact->id_contacts;
+    $id = $contact->id;
     $fnsDir = __DIR__.'/../..';
 
     include_once "$fnsDir/Contacts/delete.php";

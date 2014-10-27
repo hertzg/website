@@ -3,7 +3,7 @@
 function to_client_json ($contact) {
     $timezone = $contact->timezone;
     return [
-        'id' => (int)$contact->id_contacts,
+        'id' => (int)$contact->id,
         'full_name' => $contact->full_name,
         'alias' => $contact->alias,
         'address' => $contact->address,

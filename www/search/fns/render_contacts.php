@@ -15,7 +15,7 @@ function render_contacts ($contacts, &$items, $regex, $encodedKeyword) {
         $phone2 = htmlspecialchars($contact->phone2);
 
         $title = preg_replace($regex, $replace, $title);
-        $query = "?id=$contact->id_contacts&amp;keyword=$encodedKeyword";
+        $query = "?id=$contact->id&amp;keyword=$encodedKeyword";
         $href = "../contacts/view/$query";
 
         if ($contact->favorite) $icon = 'favorite-contact';

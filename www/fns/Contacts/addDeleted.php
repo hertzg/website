@@ -24,7 +24,7 @@ function addDeleted ($mysqli, $id, $id_users, $full_name, $alias,
     if ($photo_id === null) $photo_id = 'null';
 
     $sql = 'insert into contacts'
-        .' (id_contacts, id_users, full_name, alias, address,'
+        .' (id, id_users, full_name, alias, address,'
         .' email, phone1, phone2, birthday_time, username,'
         .' timezone, tags, num_tags, tags_json, notes, favorite,'
         .' insert_time, update_time, photo_id)'

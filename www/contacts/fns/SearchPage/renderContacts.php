@@ -17,7 +17,7 @@ function renderContacts ($contacts, &$items, $params, $keyword) {
 
             $queryString = htmlspecialchars(
                 http_build_query(
-                    array_merge(['id' => $contact->id_contacts], $params)
+                    array_merge(['id' => $contact->id], $params)
                 )
             );
             $href = "../view/?$queryString";

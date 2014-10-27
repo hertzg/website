@@ -4,15 +4,15 @@ namespace ViewPage;
 
 function optionsPanel ($contact, $base) {
 
-    $id_contacts = $contact->id_contacts;
+    $id = $contact->id;
     $fnsDir = __DIR__.'/../../../fns';
 
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
-    $escapedItemQuery = \ItemList\escapedItemQuery($id_contacts);
+    $escapedItemQuery = \ItemList\escapedItemQuery($id);
 
     include_once "$fnsDir/Page/imageLink.php";
     $safe_name = str_replace('/', '_', $contact->full_name);
-    $href = "$base../download/$id_contacts/$safe_name.vcf";
+    $href = "$base../download/$id/$safe_name.vcf";
     $downloadLink = \Page\imageLink('Download', $href, 'download');
 
     include_once "$fnsDir/Page/imageArrowLink.php";

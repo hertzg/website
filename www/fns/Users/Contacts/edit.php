@@ -6,7 +6,7 @@ function edit ($mysqli, $user, $contact, $full_name,
     $alias, $address, $email, $phone1, $phone2, $birthday_time,
     $username, $timezone, $tags, $tag_names, $notes, $favorite) {
 
-    $id = $contact->id_contacts;
+    $id = $contact->id;
     $fnsDir = __DIR__.'/../..';
 
     include_once "$fnsDir/Contacts/edit.php";

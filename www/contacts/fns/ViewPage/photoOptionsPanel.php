@@ -7,7 +7,7 @@ function photoOptionsPanel ($contact, $base) {
     $fnsDir = __DIR__.'/../../../fns';
 
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
-    $escapedItemQuery = \ItemList\escapedItemQuery($contact->id_contacts);
+    $escapedItemQuery = \ItemList\escapedItemQuery($contact->id);
 
     include_once "$fnsDir/Page/imageArrowLink.php";
     $href = "$base../photo/edit/$escapedItemQuery";

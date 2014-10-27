@@ -9,7 +9,7 @@ $microtime = microtime(true);
 
 $sql = 'delete from contact_tags'
     .' where id_users not in (select id_users from users)'
-    .' or id_contacts not in (select id_contacts from contacts)';
+    .' or id_contacts not in (select id from contacts)';
 $mysqli->query($sql) || trigger_error($mysqli->error);
 
 $elapsedSeconds = number_format(microtime(true) - $microtime, 3);

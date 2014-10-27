@@ -4,15 +4,16 @@ namespace ViewPage;
 
 function createContent ($contact, $infoText, $items, $base) {
 
+    $id = $contact->id;
+    $fnsDir = __DIR__.'/../../../fns';
+
     $photo_id = $contact->photo_id;
     if ($photo_id) {
-        $query = "?id=$contact->id_contacts&photo_id=$photo_id";
+        $query = "?id=$id&photo_id=$photo_id";
         $photoSrc = "$base../photo/download/$query";
     } else {
         $photoSrc = "$base../../images/empty-photo.svg";
     }
-
-    $fnsDir = __DIR__.'/../../../fns';
 
     $content = join('<div class="hr"></div>', $items);
 
@@ -31,7 +32,7 @@ function createContent ($contact, $infoText, $items, $base) {
                     'href' => $base.\ItemList\listHref(),
                 ],
             ],
-            "Contact #$contact->id_contacts",
+            "Contact #$id",
             \Page\sessionMessages('contacts/view/messages')
             .create_contact_panel($photoSrc, $content)
             .$infoText,
