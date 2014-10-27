@@ -2,8 +2,7 @@
 
 namespace ScheduleTags;
 
-function searchOnTagName ($mysqli, $id_users,
-    $keyword, $tag_name, $offset, $limit, &$total) {
+function searchOnTagName ($mysqli, $id_users, $keyword, $tag_name) {
 
     $fnsDir = __DIR__.'/..';
 
@@ -12,17 +11,9 @@ function searchOnTagName ($mysqli, $id_users,
     $keyword = $mysqli->real_escape_string($keyword);
     $tag_name = $mysqli->real_escape_string($tag_name);
 
-    $fromWhere = "from schedule_tags where id_users = $id_users"
-        ." and text like '%$keyword%' and tag_name = '$tag_name'";
-
-    $sql = "select count(*) total $fromWhere";
-    include_once "$fnsDir/mysqli_single_object.php";
-    $total = mysqli_single_object($mysqli, $sql)->total;
-
-    if ($offset >= $total) return [];
-
-    $sql = "select * $fromWhere order by update_time desc"
-        ." limit $limit offset $offset";
+    $sql = "select * from schedule_tags where id_users = $id_users"
+        ." and text like '%$keyword%' and tag_name = '$tag_name'"
+        .' order by update_time desc';
     include_once "$fnsDir/mysqli_query_object.php";
     return mysqli_query_object($mysqli, $sql);
 

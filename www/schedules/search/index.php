@@ -6,9 +6,9 @@ $fnsDir = '../../fns';
 include_once "$fnsDir/require_user.php";
 $user = require_user($base);
 
-include_once '../fns/create_search_page.php';
+include_once '../fns/SearchPage/create.php';
 include_once '../../lib/mysqli.php';
-$content = create_search_page($mysqli, $user);
+$content = SearchPage\create($mysqli, $user);
 
 if ($user->num_schedules) {
     include_once "$fnsDir/delete_all_confirm_dialog.php";
