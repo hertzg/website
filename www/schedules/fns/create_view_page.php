@@ -6,7 +6,11 @@ function create_view_page ($user, $schedule) {
     $fnsDir = __DIR__.'/../../fns';
 
     include_once "$fnsDir/create_text_item.php";
-    $textItem = create_text_item($schedule->text, '../../');
+    include_once "$fnsDir/Form/label.php";
+    $items = [
+        create_text_item($schedule->text, '../../'),
+        Form\label('Repeats in every', "$schedule->interval days"),
+    ];
 
     include_once "$fnsDir/days_left_from_today.php";
     $days_left = days_left_from_today($user,
@@ -14,6 +18,13 @@ function create_view_page ($user, $schedule) {
 
     include_once __DIR__.'/format_days_left.php';
     $next = format_days_left($user, $days_left);
+
+    $items[] = Form\label('Next', $next);
+
+    if ($schedule->num_tags) {
+        include_once "$fnsDir/Form/tags.php";
+        $items[] = Form\tags('', json_decode($schedule->tags_json));
+    }
 
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
     $escapedItemQuery = ItemList\escapedItemQuery($id);
@@ -29,17 +40,8 @@ function create_view_page ($user, $schedule) {
             .Page\imageLink('Delete', $href, 'trash-bin')
         .'</div>';
 
-    if ($schedule->num_tags) {
-        $tags = json_decode($schedule->tags_json);
-        include_once "$fnsDir/Form/tags.php";
-        $tagsItems =
-            '<div class="hr"></div>'
-            .Form\tags('', $tags);
-    }
-
     include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/create_panel.php";
-    include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/ItemList/listHref.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/staticTwoColumns.php";
@@ -54,12 +56,7 @@ function create_view_page ($user, $schedule) {
         ],
         "Schedule #$id",
         Page\sessionMessages('schedules/view/messages')
-        .$textItem
-        .'<div class="hr"></div>'
-        .Form\label('Repeats in every', "$schedule->interval days")
-        .'<div class="hr"></div>'
-        .Form\label('Next', $next)
-        .$tagsItems
+        .join('<div class="hr"></div>', $items)
         .create_panel(
             'Schedule Options',
             Page\staticTwoColumns($editLink, $deleteLink)
