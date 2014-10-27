@@ -59,9 +59,7 @@ function create ($mysqli, $user) {
             .\Form\hidden('tag', $tag);
         $items[] = \SearchForm\create($searchAction, $formContent);
 
-        $clearHref = '?'.htmlspecialchars(
-            http_build_query(['keyword' => $keyword])
-        );
+        $clearHref = '?keyword='.rawurlencode($keyword);
         include_once "$fnsDir/create_clear_filter_bar.php";
         $filterMessage = create_clear_filter_bar($tag, $clearHref);
 
