@@ -108,7 +108,7 @@ ensure_table('contacts', [
         'nullable' => true,
     ],
     'update_api_key_name' => [
-        'type' => "varchar($maxLengths[insert_api_key_name])",
+        'type' => "varchar($maxLengths[update_api_key_name])",
         'nullable' => true,
         'characterSet' => 'utf8',
         'collation' => 'utf8_general_ci',
