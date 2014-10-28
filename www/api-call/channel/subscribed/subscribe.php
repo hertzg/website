@@ -34,7 +34,7 @@ if ($subscribedChannel && $subscribedChannel->subscriber_locked) {
 
 include_once "$fnsDir/Users/SubscribedChannels/add.php";
 $id = Users\SubscribedChannels\add($mysqli, $user,
-    $channel, $subscribedChannel, $receive_notifications);
+    $channel, $subscribedChannel, $receive_notifications, $apiKey);
 
 header('Content-Type: application/json');
 echo $id;

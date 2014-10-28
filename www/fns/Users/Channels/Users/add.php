@@ -23,7 +23,7 @@ function add ($mysqli, $user, $channel, $subscribedChannel, $subscriberUser) {
         $new_id = \SubscribedChannels\add($mysqli, $id,
             $channel->channel_name, $channel->public, $user->id_users,
             $user->username, true, $subscriber_id_users,
-            $subscriberUser->username, false, false);
+            $subscriberUser->username, false, false, null);
 
         include_once "$fnsDir/Users/SubscribedChannels/addNumber.php";
         \Users\SubscribedChannels\addNumber($mysqli, $subscriber_id_users, 1);

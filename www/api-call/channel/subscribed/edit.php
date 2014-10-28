@@ -12,8 +12,8 @@ list($receive_notifications) = request_strings('receive_notifications');
 $receive_notifications = (bool)$receive_notifications;
 
 include_once '../../../fns/SubscribedChannels/setReceiveNotifications.php';
-SubscribedChannels\setReceiveNotifications(
-    $mysqli, $subscribedChannel->id, $receive_notifications);
+SubscribedChannels\setReceiveNotifications($mysqli,
+    $subscribedChannel->id, $receive_notifications, $apiKey);
 
 header('Content-Type: application/json');
 echo 'true';

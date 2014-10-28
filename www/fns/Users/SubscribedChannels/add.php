@@ -3,7 +3,7 @@
 namespace Users\SubscribedChannels;
 
 function add ($mysqli, $user, $channel,
-    $subscribedChannel, $receive_notifications) {
+    $subscribedChannel, $receive_notifications, $insertApiKey = null) {
 
     $fnsDir = __DIR__.'/../..';
 
@@ -19,7 +19,7 @@ function add ($mysqli, $user, $channel,
         $id = \SubscribedChannels\add($mysqli, $channel->id,
             $channel->channel_name, $channel->public, $channel->id_users,
             $channel->username, false, $id_users, $user->username, true,
-            $receive_notifications);
+            $receive_notifications, $insertApiKey);
 
         include_once __DIR__.'/addNumber.php';
         addNumber($mysqli, $id_users, 1);
