@@ -2,10 +2,10 @@
 
 namespace Users\Contacts\Received;
 
-function import ($mysqli, $user, $receivedContact) {
+function import ($mysqli, $user, $receivedContact, $insertApiKey = null) {
 
     include_once __DIR__.'/importCopy.php';
-    $id = importCopy($mysqli, $user, $receivedContact);
+    $id = importCopy($mysqli, $user, $receivedContact, $insertApiKey);
 
     include_once __DIR__.'/purge.php';
     purge($mysqli, $receivedContact);

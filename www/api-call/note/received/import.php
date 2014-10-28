@@ -7,7 +7,7 @@ include_once 'fns/require_received_note.php';
 $receivedNote = require_received_note($mysqli, $user->id_users);
 
 include_once '../../../fns/Users/Notes/Received/import.php';
-$id = Users\Notes\Received\import($mysqli, $receivedNote);
+$id = Users\Notes\Received\import($mysqli, $receivedNote, $apiKey);
 
 header('Content-Type: application/json');
 echo $id;

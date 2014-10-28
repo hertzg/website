@@ -2,7 +2,7 @@
 
 namespace Users\Tasks\Received;
 
-function importCopy ($mysqli, $receivedTask) {
+function importCopy ($mysqli, $receivedTask, $insertApiKey = null) {
 
     $tags = $receivedTask->tags;
 
@@ -12,6 +12,6 @@ function importCopy ($mysqli, $receivedTask) {
     include_once __DIR__.'/../add.php';
     return \Users\Tasks\add($mysqli, $receivedTask->receiver_id_users,
         $receivedTask->text, $receivedTask->deadline_time, $tags, $tag_names,
-        $receivedTask->top_priority);
+        $receivedTask->top_priority, $insertApiKey);
 
 }

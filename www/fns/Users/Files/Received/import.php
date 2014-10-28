@@ -2,10 +2,10 @@
 
 namespace Users\Files\Received;
 
-function import ($mysqli, $receivedFile, $parent_id) {
+function import ($mysqli, $receivedFile, $parent_id, $insertApiKey = null) {
 
     include_once __DIR__.'/importCopy.php';
-    $id = importCopy($mysqli, $receivedFile, $parent_id);
+    $id = importCopy($mysqli, $receivedFile, $parent_id, $insertApiKey);
 
     include_once __DIR__.'/purge.php';
     purge($mysqli, $receivedFile);

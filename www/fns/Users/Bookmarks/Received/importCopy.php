@@ -2,7 +2,7 @@
 
 namespace Users\Bookmarks\Received;
 
-function importCopy ($mysqli, $receivedBookmark) {
+function importCopy ($mysqli, $receivedBookmark, $insertApiKey = null) {
 
     $tags = $receivedBookmark->tags;
 
@@ -10,7 +10,8 @@ function importCopy ($mysqli, $receivedBookmark) {
     $tag_names = \Tags\parse($tags);
 
     include_once __DIR__.'/../add.php';
-    return \Users\Bookmarks\add($mysqli, $receivedBookmark->receiver_id_users,
-        $receivedBookmark->url, $receivedBookmark->title, $tags, $tag_names);
+    return \Users\Bookmarks\add($mysqli,
+        $receivedBookmark->receiver_id_users, $receivedBookmark->url,
+        $receivedBookmark->title, $tags, $tag_names, $insertApiKey);
 
 }

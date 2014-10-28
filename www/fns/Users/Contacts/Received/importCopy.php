@@ -2,7 +2,7 @@
 
 namespace Users\Contacts\Received;
 
-function importCopy ($mysqli, $user, $receivedContact) {
+function importCopy ($mysqli, $user, $receivedContact, $insertApiKey = null) {
 
     $tags = $receivedContact->tags;
 
@@ -16,6 +16,6 @@ function importCopy ($mysqli, $user, $receivedContact) {
         $receivedContact->phone2, $receivedContact->birthday_time,
         $receivedContact->username, $receivedContact->timezone, $tags,
         $tag_names, $receivedContact->notes, $receivedContact->favorite,
-        $receivedContact->photo_id);
+        $receivedContact->photo_id, $insertApiKey);
 
 }

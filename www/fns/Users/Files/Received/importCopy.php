@@ -2,7 +2,7 @@
 
 namespace Users\Files\Received;
 
-function importCopy ($mysqli, $receivedFile, $parent_id) {
+function importCopy ($mysqli, $receivedFile, $parent_id, $insertApiKey = null) {
 
     $id_users = $receivedFile->receiver_id_users;
     $name = $receivedFile->name;
@@ -30,6 +30,7 @@ function importCopy ($mysqli, $receivedFile, $parent_id) {
     }
 
     include_once "$fnsDir/Users/Files/add.php";
-    return \Users\Files\add($mysqli, $id_users, $parent_id, $name, $filePath);
+    return \Users\Files\add($mysqli, $id_users,
+        $parent_id, $name, $filePath, $insertApiKey);
 
 }

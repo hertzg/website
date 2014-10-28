@@ -11,7 +11,8 @@ include_once '../../fns/require_parent_folder.php';
 list($folder, $parent_id) = require_parent_folder($mysqli, $id_users);
 
 include_once '../../../fns/Users/Folders/Received/importCopy.php';
-$id = Users\Folders\Received\importCopy($mysqli, $receivedFolder, $parent_id);
+$id = Users\Folders\Received\importCopy(
+    $mysqli, $receivedFolder, $parent_id, $apiKey);
 
 header('Content-Type: application/json');
 echo $id;

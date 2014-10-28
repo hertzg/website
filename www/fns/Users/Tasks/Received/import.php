@@ -2,10 +2,10 @@
 
 namespace Users\Tasks\Received;
 
-function import ($mysqli, $receivedTask) {
+function import ($mysqli, $receivedTask, $insertApiKey = null) {
 
     include_once __DIR__.'/importCopy.php';
-    $id = importCopy($mysqli, $receivedTask);
+    $id = importCopy($mysqli, $receivedTask, $insertApiKey);
 
     include_once __DIR__.'/purge.php';
     purge($mysqli, $receivedTask);
