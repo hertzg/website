@@ -44,7 +44,7 @@ if ($sendButton) redirect("send/?id_folders=$id_folders");
 unset($_SESSION['files/rename-folder/values']);
 
 include_once '../../fns/Folders/rename.php';
-Folders\rename($mysqli, $id_folders, $name);
+Folders\rename($mysqli, $id_folders, $name, null);
 
 unset($_SESSION['files/errors']);
 $_SESSION['files/id_folders'] = $id_folders;

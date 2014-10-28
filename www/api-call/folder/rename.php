@@ -13,7 +13,7 @@ $name = request_folder_params($mysqli, $id_users,
     $folder->parent_id_folders, $id_folders);
 
 include_once '../../fns/Folders/rename.php';
-Folders\rename($mysqli, $id_folders, $name);
+Folders\rename($mysqli, $id_folders, $name, $apiKey);
 
 header('Content-Type: application/json');
 echo 'true';
