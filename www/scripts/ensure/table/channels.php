@@ -4,14 +4,13 @@
 chdir(__DIR__);
 include_once '../../../../lib/cli.php';
 
-include_once '../../../fns/ChannelName/maxLength.php';
-$nameMaxLength = ChannelName\maxLength();
+include_once '../../../fns/Channels/maxLengths.php';
+$maxLengths = Channels\maxLengths();
 
 include_once 'fns/ensure_table.php';
-include_once '../../../fns/Username/maxLength.php';
 ensure_table('channels', [
     'channel_name' => [
-        'type' => "varchar($nameMaxLength)",
+        'type' => "varchar($maxLengths[channel_name])",
         'characterSet' => 'ascii',
         'collation' => 'ascii_general_ci',
     ],
@@ -26,7 +25,7 @@ ensure_table('channels', [
         'type' => 'bigint(20) unsigned',
     ],
     'lowercase_name' => [
-        'type' => "varchar($nameMaxLength)",
+        'type' => "varchar($maxLengths[lowercase_name])",
         'characterSet' => 'ascii',
         'collation' => 'ascii_general_ci',
     ],
@@ -49,7 +48,7 @@ ensure_table('channels', [
         'type' => 'bigint(20) unsigned',
     ],
     'username' => [
-        'type' => 'varchar('.Username\maxLength().')',
+        'type' => "varchar($maxLengths[username])",
         'characterSet' => 'ascii',
         'collation' => 'ascii_bin',
     ],
