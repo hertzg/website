@@ -4,16 +4,13 @@
 chdir(__DIR__);
 include_once '../../../../lib/cli.php';
 
-include_once '../../../fns/Username/maxLength.php';
-$usernameMaxLength = Username\maxLength();
-
-include_once '../../../fns/ChannelName/maxLength.php';
-$nameMaxLength = ChannelName\maxLength();
+include_once '../../../fns/SubscribedChannels/maxLengths.php';
+$maxLengths = SubscribedChannels\maxLengths();
 
 include_once 'fns/ensure_table.php';
 ensure_table('subscribed_channels', [
     'channel_name' => [
-        'type' => "varchar($nameMaxLength)",
+        'type' => "varchar($maxLengths[channel_name])",
         'characterSet' => 'ascii',
         'collation' => 'ascii_general_ci',
     ],
@@ -31,7 +28,7 @@ ensure_table('subscribed_channels', [
         'type' => 'bigint(20) unsigned',
     ],
     'lowercase_name' => [
-        'type' => "varchar($nameMaxLength)",
+        'type' => "varchar($maxLengths[lowercase_name])",
         'characterSet' => 'ascii',
         'collation' => 'ascii_general_ci',
     ],
@@ -45,7 +42,7 @@ ensure_table('subscribed_channels', [
         'type' => 'tinyint(4)',
     ],
     'publisher_username' => [
-        'type' => "varchar($usernameMaxLength)",
+        'type' => "varchar($maxLengths[username])",
         'characterSet' => 'ascii',
         'collation' => 'ascii_bin',
     ],
@@ -59,7 +56,7 @@ ensure_table('subscribed_channels', [
         'type' => 'tinyint(4)',
     ],
     'subscriber_username' => [
-        'type' => "varchar($usernameMaxLength)",
+        'type' => "varchar($maxLengths[username])",
         'characterSet' => 'ascii',
         'collation' => 'ascii_bin',
     ],
