@@ -8,7 +8,7 @@ list($url, $title, $tags, $tag_names) = require_bookmark_params();
 
 include_once '../../fns/Users/Bookmarks/add.php';
 $id = Users\Bookmarks\add($mysqli, $user->id_users,
-    $url, $title, $tags, $tag_names);
+    $url, $title, $tags, $tag_names, $apiKey);
 
 header('Content-Type: application/json');
 echo $id;

@@ -10,7 +10,8 @@ include_once 'fns/require_bookmark_params.php';
 list($url, $title, $tags, $tag_names) = require_bookmark_params();
 
 include_once '../../fns/Users/Bookmarks/edit.php';
-Users\Bookmarks\edit($mysqli, $bookmark, $title, $url, $tags, $tag_names);
+Users\Bookmarks\edit($mysqli, $bookmark,
+    $title, $url, $tags, $tag_names, $apiKey);
 
 header('Content-Type: application/json');
 echo 'true';
