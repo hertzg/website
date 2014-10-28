@@ -26,8 +26,11 @@ if ($name === '') $errors[] = 'Enter name.';
 else {
     include_once "$fnsDir/ApiKeys/getOnUserByName.php";
     include_once '../../../lib/mysqli.php';
-    $apiKey = ApiKeys\getOnUserByName($mysqli, $user->id_users, $name, $id);
-    if ($apiKey) $errors[] = 'An API key with the same name already exists.';
+    $existingApiKey = ApiKeys\getOnUserByName(
+        $mysqli, $user->id_users, $name, $id);
+    if ($existingApiKey) {
+        $errors[] = 'An API key with the same name already exists.';
+    }
 }
 
 include_once "$fnsDir/redirect.php";
@@ -68,8 +71,8 @@ parse_read_write($notification_access,
 parse_read_write($schedule_access, $can_read_schedules, $can_write_schedules);
 parse_read_write($task_access, $can_read_tasks, $can_write_tasks);
 
-include_once "$fnsDir/ApiKeys/edit.php";
-ApiKeys\edit($mysqli, $id, $name, $expire_time, $can_read_bookmarks,
+include_once "$fnsDir/Users/ApiKeys/edit.php";
+Users\ApiKeys\edit($mysqli, $apiKey, $name, $expire_time, $can_read_bookmarks,
     $can_read_channels, $can_read_contacts, $can_read_events, $can_read_files,
     $can_read_notes, $can_read_notifications, $can_read_schedules,
     $can_read_tasks, $can_write_bookmarks, $can_write_channels,
