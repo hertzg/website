@@ -2,14 +2,15 @@
 
 namespace Users\Schedules;
 
-function add ($mysqli, $user, $text, $interval, $offset, $tags, $tag_names) {
+function add ($mysqli, $user, $text, $interval,
+    $offset, $tags, $tag_names, $insertApiKey = null) {
 
     $id_users = $user->id_users;
     $fnsDir = __DIR__.'/../..';
 
     include_once "$fnsDir/Schedules/add.php";
-    $id = \Schedules\add($mysqli, $id_users,
-        $text, $interval, $offset, $tags, $tag_names);
+    $id = \Schedules\add($mysqli, $id_users, $text,
+        $interval, $offset, $tags, $tag_names, $insertApiKey);
 
     if ($tag_names) {
         include_once "$fnsDir/ScheduleTags/add.php";

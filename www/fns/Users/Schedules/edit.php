@@ -2,15 +2,15 @@
 
 namespace Users\Schedules;
 
-function edit ($mysqli, $user, $schedule,
-    $text, $interval, $offset, $tags, $tag_names) {
+function edit ($mysqli, $user, $schedule, $text,
+    $interval, $offset, $tags, $tag_names, $updateApiKey = null) {
 
     $id = $schedule->id;
     $fnsDir = __DIR__.'/../..';
 
     include_once "$fnsDir/Schedules/edit.php";
     \Schedules\edit($mysqli, $id, $text,
-        $interval, $offset, $tags, $tag_names);
+        $interval, $offset, $tags, $tag_names, $updateApiKey);
 
     if ($schedule->num_tags) {
         include_once "$fnsDir/ScheduleTags/deleteOnSchedule.php";
