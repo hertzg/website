@@ -13,7 +13,7 @@ list($channel_name, $public, $receive_notifications) = $values;
 
 include_once '../../fns/Users/Channels/edit.php';
 Users\Channels\edit($mysqli, $id, $channel_name,
-    $public, $receive_notifications);
+    $public, $receive_notifications, $apiKey);
 
 header('Content-Type: application/json');
 echo 'true';

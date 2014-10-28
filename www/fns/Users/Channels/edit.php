@@ -2,11 +2,12 @@
 
 namespace Users\Channels;
 
-function edit ($mysqli, $id, $channel_name, $public, $receive_notifications) {
+function edit ($mysqli, $id, $channel_name,
+    $public, $receive_notifications, $updateApiKey = null) {
 
     include_once __DIR__.'/../../Channels/edit.php';
     \Channels\edit($mysqli, $id, $channel_name,
-        $public, $receive_notifications);
+        $public, $receive_notifications, $updateApiKey);
 
     include_once __DIR__.'/../../SubscribedChannels/editChannel.php';
     \SubscribedChannels\editChannel($mysqli, $id, $channel_name, $public);
