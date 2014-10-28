@@ -2,13 +2,15 @@
 
 namespace Users\Notes;
 
-function edit ($mysqli, $note, $text, $tags, $tag_names, $encrypt) {
+function edit ($mysqli, $note, $text, $tags,
+    $tag_names, $encrypt, $updateApiKey = null) {
 
     $id = $note->id;
     $fnsDir = __DIR__.'/../..';
 
     include_once "$fnsDir/Notes/edit.php";
-    \Notes\edit($mysqli, $id, $text, $tags, $tag_names, $encrypt);
+    \Notes\edit($mysqli, $id, $text,
+        $tags, $tag_names, $encrypt, $updateApiKey);
 
     if ($note->num_tags) {
         include_once "$fnsDir/NoteTags/deleteOnNote.php";
