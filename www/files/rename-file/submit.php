@@ -42,7 +42,7 @@ if ($sendButton) redirect("send/?id=$id");
 unset($_SESSION['files/rename-file/values']);
 
 include_once '../../fns/Files/rename.php';
-Files\rename($mysqli, $id, $name);
+Files\rename($mysqli, $id, $name, null);
 
 $_SESSION['files/view-file/messages'] = ['File has been renamed.'];
 redirect("../view-file/?id=$id");

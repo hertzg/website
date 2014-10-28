@@ -23,7 +23,8 @@ if ($error === UPLOAD_ERR_NO_FILE) {
 }
 
 include_once '../../fns/Users/Files/add.php';
-$id = Users\Files\add($mysqli, $id_users, $parent_id, $name, $file['tmp_name']);
+$id = Users\Files\add($mysqli, $id_users,
+    $parent_id, $name, $file['tmp_name'], $apiKey);
 
 header('Content-Type: application/json');
 echo $id;
