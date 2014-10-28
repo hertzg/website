@@ -10,7 +10,9 @@ function addTask ($mysqli, $task) {
         'deadline_time' => $task->deadline_time,
         'tags' => $task->tags,
         'top_priority' => $task->top_priority,
+        'insert_api_key_id' => $task->insert_api_key_id,
         'insert_time' => $task->insert_time,
+        'update_api_key_id' => $task->update_api_key_id,
         'update_time' => $task->update_time,
     ]);
 }

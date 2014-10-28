@@ -18,7 +18,9 @@ function addContact ($mysqli, $contact) {
         'tags' => $contact->tags,
         'notes' => $contact->notes,
         'favorite' => $contact->favorite,
+        'insert_api_key_id' => $contact->insert_api_key_id,
         'insert_time' => $contact->insert_time,
+        'update_api_key_id' => $contact->update_api_key_id,
         'update_time' => $contact->update_time,
         'photo_id' => $contact->photo_id,
     ]);

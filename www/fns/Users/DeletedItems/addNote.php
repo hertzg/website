@@ -9,7 +9,9 @@ function addNote ($mysqli, $note) {
         'text' => $note->text,
         'tags' => $note->tags,
         'encrypt' => $note->encrypt,
+        'insert_api_key_id' => $note->insert_api_key_id,
         'insert_time' => $note->insert_time,
+        'update_api_key_id' => $note->update_api_key_id,
         'update_time' => $note->update_time,
     ]);
 }

@@ -11,7 +11,9 @@ function addFile ($mysqli, $file) {
         'media_type' => $file->media_type,
         'name' => $file->name,
         'size' => $file->size,
+        'insert_api_key_id' => $file->insert_api_key_id,
         'insert_time' => $file->insert_time,
+        'rename_api_key_id' => $file->rename_api_key_id,
         'rename_time' => $file->rename_time,
     ]);
 }
