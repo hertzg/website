@@ -2,9 +2,9 @@
 
 namespace Contacts;
 
-function edit ($mysqli, $id, $full_name, $alias,
-    $address, $email, $phone1, $phone2, $birthday_time,
-    $username, $timezone, $tags, $tag_names, $notes, $favorite) {
+function edit ($mysqli, $id, $full_name, $alias, $address,
+    $email, $phone1, $phone2, $birthday_time, $username, $timezone,
+    $tags, $tag_names, $notes, $favorite, $updateApiKey) {
 
     $full_name = $mysqli->real_escape_string($full_name);
     $alias = $mysqli->real_escape_string($alias);
@@ -26,6 +26,16 @@ function edit ($mysqli, $id, $full_name, $alias,
     $notes = $mysqli->real_escape_string($notes);
     $favorite = $favorite ? '1' : '0';
     $update_time = time();
+    if ($updateApiKey === null) {
+        $update_api_key_id = $update_api_key_name = 'null';
+    } else {
+
+        $update_api_key_id = $updateApiKey->id;
+
+        $name = $updateApiKey->name;
+        $update_api_key_name = "'".$mysqli->real_escape_string($name)."'";
+
+    }
 
     $sql = "update contacts set full_name = '$full_name',"
         ." alias = '$alias', address = '$address', email = '$email',"
@@ -35,6 +45,8 @@ function edit ($mysqli, $id, $full_name, $alias,
         ." timezone = $timezone, tags = '$tags',"
         ." num_tags = $num_tags, tags_json = '$tags_json',"
         ." notes = '$notes', favorite = $favorite, update_time = $update_time,"
+        ." update_api_key_id = $update_api_key_id,"
+        ." update_api_key_name = $update_api_key_name,"
         ." revision = revision + 1 where id = $id";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);

@@ -2,17 +2,17 @@
 
 namespace Users\Contacts;
 
-function edit ($mysqli, $user, $contact, $full_name,
-    $alias, $address, $email, $phone1, $phone2, $birthday_time,
-    $username, $timezone, $tags, $tag_names, $notes, $favorite) {
+function edit ($mysqli, $user, $contact, $full_name, $alias,
+    $address, $email, $phone1, $phone2, $birthday_time, $username,
+    $timezone, $tags, $tag_names, $notes, $favorite, $updateApiKey = null) {
 
     $id = $contact->id;
     $fnsDir = __DIR__.'/../..';
 
     include_once "$fnsDir/Contacts/edit.php";
-    \Contacts\edit($mysqli, $id, $full_name, $alias,
-        $address, $email, $phone1, $phone2, $birthday_time,
-        $username, $timezone, $tags, $tag_names, $notes, $favorite);
+    \Contacts\edit($mysqli, $id, $full_name, $alias, $address,
+        $email, $phone1, $phone2, $birthday_time, $username, $timezone,
+        $tags, $tag_names, $notes, $favorite, $updateApiKey);
 
     if ($contact->num_tags) {
         include_once "$fnsDir/ContactTags/deleteOnContact.php";

@@ -11,15 +11,15 @@ function add ($mysqli, $id_users, $url,
     $num_tags = count($tag_names);
     $tags_json = $mysqli->real_escape_string(json_encode($tag_names));
     $insert_time = $update_time = time();
-    if ($insertApiKey) {
+    if ($insertApiKey === null) {
+        $insert_api_key_id = $insert_api_key_name = 'null';
+    } else {
 
         $insert_api_key_id = $insertApiKey->id;
 
         $name = $insertApiKey->name;
         $insert_api_key_name = "'".$mysqli->real_escape_string($name)."'";
 
-    } else {
-        $insert_api_key_id = $insert_api_key_name = 'null';
     }
 
     $sql = 'insert into bookmarks'

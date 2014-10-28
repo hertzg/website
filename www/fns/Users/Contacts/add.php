@@ -3,17 +3,18 @@
 namespace Users\Contacts;
 
 function add ($mysqli, $user, $full_name, $alias, $address,
-    $email, $phone1, $phone2, $birthday_time, $username,
-    $timezone, $tags, $tag_names, $notes, $favorite, $photo_id) {
+    $email, $phone1, $phone2, $birthday_time, $username, $timezone,
+    $tags, $tag_names, $notes, $favorite, $photo_id, $insertApiKey = null) {
 
     $id_users = $user->id_users;
 
     $fnsDir = __DIR__.'/../..';
 
     include_once "$fnsDir/Contacts/add.php";
-    $id = \Contacts\add($mysqli, $id_users, $full_name, $alias,
-        $address, $email, $phone1, $phone2, $birthday_time, $username,
-        $timezone, $tags, $tag_names, $notes, $favorite, $photo_id);
+    $id = \Contacts\add($mysqli, $id_users,
+        $full_name, $alias, $address, $email, $phone1,
+        $phone2, $birthday_time, $username, $timezone, $tags,
+        $tag_names, $notes, $favorite, $photo_id, $insertApiKey);
 
     if ($tag_names) {
         include_once "$fnsDir/ContactTags/add.php";

@@ -2,9 +2,10 @@
 
 namespace Contacts;
 
-function add ($mysqli, $id_users, $full_name, $alias,
-    $address, $email, $phone1, $phone2, $birthday_time, $username,
-    $timezone, $tags, $tag_names, $notes, $favorite, $photo_id) {
+function add ($mysqli, $id_users, $full_name,
+    $alias, $address, $email, $phone1, $phone2,
+    $birthday_time, $username, $timezone, $tags,
+    $tag_names, $notes, $favorite, $photo_id, $insertApiKey) {
 
     $full_name = $mysqli->real_escape_string($full_name);
     $alias = $mysqli->real_escape_string($alias);
@@ -27,18 +28,28 @@ function add ($mysqli, $id_users, $full_name, $alias,
     $favorite = $favorite ? '1' : '0';
     if ($photo_id === null) $photo_id = 'null';
     $insert_time = $update_time = time();
+    if ($insertApiKey === null) {
+        $insert_api_key_id = $insert_api_key_name = 'null';
+    } else {
+
+        $insert_api_key_id = $insertApiKey->id;
+
+        $name = $insertApiKey->name;
+        $insert_api_key_name = "'".$mysqli->real_escape_string($name)."'";
+
+    }
 
     $sql = 'insert into contacts'
         .' (id_users, full_name, alias, address, email,'
         .' phone1, phone2, birthday_time, birthday_day,'
         .' birthday_month, username, timezone, tags, num_tags,'
-        .' tags_json, notes, favorite, photo_id,'
-        .' insert_time, update_time)'
+        .' tags_json, notes, favorite, photo_id, insert_time,'
+        .' update_time, insert_api_key_id, insert_api_key_name)'
         ." values ($id_users, '$full_name', '$alias', '$address', '$email',"
         ." '$phone1', '$phone2', $birthday_time, $birthday_day,"
         ." $birthday_month, '$username', $timezone, '$tags', $num_tags,"
-        ." '$tags_json', '$notes', $favorite, $photo_id,"
-        ." $insert_time, $update_time)";
+        ." '$tags_json', '$notes', $favorite, $photo_id, $insert_time,"
+        ." $update_time, $insert_api_key_id, $insert_api_key_name)";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
