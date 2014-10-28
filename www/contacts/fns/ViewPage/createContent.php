@@ -22,6 +22,7 @@ function createContent ($contact, $infoText, $items, $base) {
     include_once "$fnsDir/create_contact_panel.php";
     include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/ItemList/listHref.php";
+    include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
     return
@@ -35,7 +36,7 @@ function createContent ($contact, $infoText, $items, $base) {
             "Contact #$id",
             \Page\sessionMessages('contacts/view/messages')
             .create_contact_panel($photoSrc, $content)
-            .$infoText,
+            .\Page\infoText($infoText),
             create_new_item_button('Contact', "$base../")
         )
         .optionsPanel($contact, $base)

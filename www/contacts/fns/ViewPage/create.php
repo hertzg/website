@@ -61,9 +61,6 @@ function create ($contact, $base = '') {
         $items[] = \Form\timezoneLabel($timezone);
     }
 
-    $insert_time = $contact->insert_time;
-    $update_time = $contact->update_time;
-
     if ($contact->num_tags) {
         include_once "$fnsDir/Form/tags.php";
         $items[] = \Form\tags($base, json_decode($contact->tags_json));
@@ -74,15 +71,19 @@ function create ($contact, $base = '') {
         $items[] = \Form\label('Notes', nl2br(htmlspecialchars($notes)));
     }
 
-    include_once "$fnsDir/date_ago.php";
-    $text =
-        '<div>'.($contact->favorite ? 'Favorite' : 'Regular').' contact.</div>'
-        .'<div>Contact created '.date_ago($insert_time).'.</div>';
+    $insert_time = $contact->insert_time;
+    $update_time = $contact->update_time;
+
+    include_once "$fnsDir/format_author.php";
+    $author = format_author($insert_time, $contact->insert_api_key_name);
+
+    $infoText =
+        ($contact->favorite ? 'Favorite' : 'Regular').' contact.<br />'
+        ."Contact created $author.";
     if ($insert_time != $update_time) {
-        $text .= '<div>Last modified '.date_ago($update_time).'.</div>';
+        $author = format_author($update_time, $contact->update_api_key_name);
+        $infoText .= "<br />Last modified $author.";
     }
-    include_once "$fnsDir/Page/infoText.php";
-    $infoText = \Page\infoText($text);
 
     include_once __DIR__.'/createContent.php';
     return createContent($contact, $infoText, $items, $base);

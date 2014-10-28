@@ -8,10 +8,12 @@ function create_view_page ($event) {
     $insert_time = $event->insert_time;
     $update_time = $event->update_time;
 
-    include_once "$fnsDir/date_ago.php";
-    $datesText = '<div>Event created '.date_ago($insert_time).'.</div>';
+    include_once "$fnsDir/format_author.php";
+    $author = format_author($insert_time, $event->insert_api_key_name);
+    $infoText = "Event created $author.";
     if ($insert_time != $update_time) {
-        $datesText .= '<div>Last modified '.date_ago($update_time).'.</div>';
+        $author = format_author($update_time, $event->update_api_key_name);
+        $infoText .= "<br />Last modified $author.";
     }
 
     include_once "$fnsDir/Page/imageArrowLink.php";
@@ -45,7 +47,7 @@ function create_view_page ($event) {
             .Page\text(htmlspecialchars($event->text))
             .'<div class="hr"></div>'
             .Page\text(date('F d, Y', $event->event_time))
-            .Page\infoText($datesText)
+            .Page\infoText($infoText)
         )
         .create_panel('Event Options', $optionsContent);
 

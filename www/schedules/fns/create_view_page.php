@@ -40,9 +40,21 @@ function create_view_page ($user, $schedule) {
             .Page\imageLink('Delete', $href, 'trash-bin')
         .'</div>';
 
+    $insert_time = $schedule->insert_time;
+    $update_time = $schedule->update_time;
+
+    include_once "$fnsDir/format_author.php";
+    $author = format_author($insert_time, $schedule->insert_api_key_name);
+    $infoText = "Schedule created $author.";
+    if ($insert_time != $update_time) {
+        $author = format_author($insert_time, $schedule->update_api_key_name);
+        $infoText .= "<br />Last modified $author.";
+    }
+
     include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/ItemList/listHref.php";
+    include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/staticTwoColumns.php";
     include_once "$fnsDir/Page/tabs.php";
@@ -57,6 +69,7 @@ function create_view_page ($user, $schedule) {
         "Schedule #$id",
         Page\sessionMessages('schedules/view/messages')
         .join('<div class="hr"></div>', $items)
+        .Page\infoText($infoText)
         .create_panel(
             'Schedule Options',
             Page\staticTwoColumns($editLink, $deleteLink)

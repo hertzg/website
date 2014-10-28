@@ -19,20 +19,27 @@ function create ($subscribedChannel) {
     $channel_public = $subscribedChannel->channel_public;
     $receive_notifications = $subscribedChannel->receive_notifications;
 
-    include_once "$fnsDir/Page/infoText.php";
-    $infoText = \Page\infoText(
-        '<div>'
-            .($channel_public ? 'Public' : 'Private').' channel.'
-        .'</div>'
-        .'<div>'
-            .'You are '.($receive_notifications ? '' : 'not ')
-            .' receiving notifications from this channel.'
-        .'</div>'
-    );
+    $insert_time = $subscribedChannel->insert_time;
+    $update_time = $subscribedChannel->update_time;
+
+    include_once "$fnsDir/format_author.php";
+    $api_key_name = $subscribedChannel->insert_api_key_name;
+    $author = format_author($insert_time, $api_key_name);
+    $infoText =
+        ($channel_public ? 'Public' : 'Private').' channel.<br />'
+        .'You are '.($receive_notifications ? '' : 'not ')
+        .' receiving notifications from this channel.<br />'
+        ."Subscribed $author.";
+    if ($insert_time != $update_time) {
+        $api_key_name = $subscribedChannel->update_api_key_name;
+        $author = format_author($update_time, $api_key_name);
+        $infoText .= "<br />Last modified $author.";
+    }
 
     $messagesKey = 'notifications/subscribed-channels/view/messages';
 
     include_once __DIR__.'/optionsPanel.php';
+    include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
     return
@@ -46,7 +53,7 @@ function create ($subscribedChannel) {
             "Other Channel #$subscribedChannel->id",
             \Page\sessionMessages($messagesKey)
             .join('<div class="hr"></div>', $items)
-            .$infoText
+            .\Page\infoText($infoText)
         )
         .optionsPanel($subscribedChannel);
 

@@ -11,13 +11,14 @@ function create ($mysqli, &$user, &$file) {
 
     $insert_time = $file->insert_time;
     $rename_time = $file->rename_time;
-    include_once "$fnsDir/date_ago.php";
-    $text = '<div>File uploaded '.date_ago($insert_time).'.</div>';
-    if ($rename_time > $insert_time) {
-        $text .= '<div>Last renamed '.date_ago($rename_time).'.</div>';
+
+    include_once "$fnsDir/format_author.php";
+    $author = format_author($insert_time, $file->insert_api_key_name);
+    $infoText = "File uploaded $author.";
+    if ($rename_time != $insert_time) {
+        $author = format_author($rename_time, $file->rename_api_key_name);
+        $infoText .= "<br />Last renamed $author.";
     }
-    include_once "$fnsDir/Page/infoText.php";
-    $infoText = \Page\infoText($text);
 
     include_once "$fnsDir/Page/filePreview.php";
     $filePreview = \Page\filePreview($file->media_type,
@@ -28,6 +29,7 @@ function create ($mysqli, &$user, &$file) {
     include_once "$fnsDir/bytestr.php";
     include_once "$fnsDir/create_folder_link.php";
     include_once "$fnsDir/Form/label.php";
+    include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
     return
@@ -46,7 +48,7 @@ function create ($mysqli, &$user, &$file) {
             .\Form\label('Size', bytestr($file->size))
             .'<div class="hr"></div>'
             .\Form\label('Preview', $filePreview)
-            .$infoText
+            .\Page\infoText($infoText)
         )
         .optionsPanel($file);
 

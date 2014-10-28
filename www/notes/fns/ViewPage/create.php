@@ -16,17 +16,19 @@ function create ($note) {
 
     $insert_time = $note->insert_time;
     $update_time = $note->update_time;
-    include_once "$fnsDir/date_ago.php";
-    $text = '<div>Note created '.date_ago($insert_time).'.</div>';
+
+    include_once "$fnsDir/format_author.php";
+    $author = format_author($insert_time, $note->insert_api_key_name);
+    $infoText = "Note created $author.";
     if ($insert_time != $update_time) {
-        $text .= '<div>Last modified '.date_ago($update_time).'.</div>';
+        $author = format_author($update_time, $note->update_api_key_name);
+        $infoText .= "<br />Last modified $author.";
     }
-    include_once "$fnsDir/Page/infoText.php";
-    $infoText = \Page\infoText($text);
 
     include_once __DIR__.'/optionsPanel.php';
     include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/ItemList/listHref.php";
+    include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
     return
@@ -40,7 +42,7 @@ function create ($note) {
             "Note #$note->id",
             \Page\sessionMessages('notes/view/messages')
             .join('<div class="hr"></div>', $items)
-            .$infoText,
+            .\Page\infoText($infoText),
             create_new_item_button('Note', '../')
         )
         .optionsPanel($note);
