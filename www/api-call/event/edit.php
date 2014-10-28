@@ -10,7 +10,7 @@ include_once 'fns/request_event_params.php';
 list($text, $event_time) = request_event_params();
 
 include_once '../../fns/Users/Events/edit.php';
-Users\Events\edit($mysqli, $user, $event, $text, $event_time);
+Users\Events\edit($mysqli, $user, $event, $text, $event_time, $apiKey);
 
 header('Content-Type: application/json');
 echo 'true';
