@@ -1,16 +1,15 @@
 <?php
 
+include_once '../fns/require_schedules.php';
+$user = require_schedules();
+
 $base = '../../';
 $fnsDir = '../../fns';
-
-include_once "$fnsDir/require_user.php";
-$user = require_user($base);
-
-include_once '../../lib/mysqli.php';
 
 include_once "$fnsDir/ItemList/pageParams.php";
 $pageParams = ItemList\pageParams();
 
+include_once '../../lib/mysqli.php';
 if (array_key_exists('keyword', $pageParams)) {
     include_once '../fns/SearchPage/create.php';
     $content = SearchPage\create($mysqli, $user);

@@ -3,10 +3,8 @@
 include_once '../../fns/require_same_domain_referer.php';
 require_same_domain_referer('./');
 
-$base = '../../';
-
-include_once '../../fns/require_user.php';
-$user = require_user($base);
+include_once '../fns/require_schedules.php';
+$user = require_schedules();
 
 include_once '../../fns/Users/Schedules/deleteAll.php';
 include_once '../../lib/mysqli.php';

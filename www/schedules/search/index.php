@@ -1,10 +1,9 @@
 <?php
 
-$base = '../../';
-$fnsDir = '../../fns';
+include_once '../fns/require_schedules.php';
+$user = require_schedules();
 
-include_once "$fnsDir/require_user.php";
-$user = require_user($base);
+$fnsDir = '../../fns';
 
 include_once '../fns/SearchPage/create.php';
 include_once '../../lib/mysqli.php';
@@ -18,4 +17,4 @@ if ($user->num_schedules) {
 }
 
 include_once "$fnsDir/echo_page.php";
-echo_page($user, 'Schedules', $content, $base, ['head' => $head]);
+echo_page($user, 'Schedules', $content, '../../', ['head' => $head]);
