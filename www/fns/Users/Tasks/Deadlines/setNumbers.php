@@ -1,6 +1,6 @@
 <?php
 
-namespace Users\TaskDeadlines;
+namespace Users\Tasks\Deadlines;
 
 function setNumbers ($mysqli, $id_users, $num_task_deadlines_today,
     $num_task_deadlines_tomorrow, $task_deadlines_check_day) {
