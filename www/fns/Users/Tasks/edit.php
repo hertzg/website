@@ -23,8 +23,13 @@ function edit ($mysqli, $user, $task, $text, $deadline_time,
             $text, $deadline_time, $tags, $top_priority);
     }
 
-    include_once __DIR__.'/Deadlines/invalidateIfNeeded.php';
-    Deadlines\invalidateIfNeeded($mysqli, $user, $task->deadline_time);
-    Deadlines\invalidateIfNeeded($mysqli, $user, $deadline_time);
+    if ($task->deadline_time) {
+        include_once __DIR__.'/Deadlines/invalidateIfNeeded.php';
+        Deadlines\invalidateIfNeeded($mysqli, $user, $task->deadline_time);
+    }
+    if ($deadline_time !== null) {
+        include_once __DIR__.'/Deadlines/invalidateIfNeeded.php';
+        Deadlines\invalidateIfNeeded($mysqli, $user, $deadline_time);
+    }
 
 }

@@ -30,7 +30,9 @@ function addDeleted ($mysqli, $user, $data) {
     include_once __DIR__.'/addNumber.php';
     addNumber($mysqli, $id_users, 1);
 
-    include_once __DIR__.'/Deadlines/invalidateIfNeeded.php';
-    Deadlines\invalidateIfNeeded($mysqli, $user, $deadline_time);
+    if ($deadline_time !== null) {
+        include_once __DIR__.'/Deadlines/invalidateIfNeeded.php';
+        Deadlines\invalidateIfNeeded($mysqli, $user, $deadline_time);
+    }
 
 }
