@@ -7,6 +7,7 @@ function unset_session_vars () {
         $_SESSION['calendar/new-event/values'],
         $_SESSION['calendar/view-event/messages'],
         $_SESSION['contacts/view/messages'],
-        $_SESSION['home/messages']
+        $_SESSION['home/messages'],
+        $_SESSION['tasks/view/messages']
     );
 }

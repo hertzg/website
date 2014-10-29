@@ -31,16 +31,20 @@ $yearSelected = date('Y', $timeSelected);
 $monthSelected = date('n', $timeSelected);
 $daySelected = date('j', $timeSelected);
 
-include_once '../fns/Events/indexOnUserAndTime.php';
 include_once '../lib/mysqli.php';
-$events = Events\indexOnUserAndTime($mysqli, $id_users, $timeSelected);
 
 include_once '../fns/Contacts/indexBirthdays.php';
 $contacts = Contacts\indexBirthdays($mysqli,
     $id_users, $daySelected, $monthSelected);
 
+include_once '../fns/Tasks/indexOnUserAndDeadline.php';
+$tasks = Tasks\indexOnUserAndDeadline($mysqli, $id_users, $timeSelected);
+
+include_once '../fns/Events/indexOnUserAndTime.php';
+$events = Events\indexOnUserAndTime($mysqli, $id_users, $timeSelected);
+
 include_once 'fns/render_events.php';
-render_events($contacts, $events, $eventItems);
+render_events($contacts, $tasks, $events, $eventItems);
 
 if ($user->num_events) {
     $title = 'All Events';
@@ -91,7 +95,7 @@ $content =
 include_once '../fns/echo_page.php';
 echo_page($user, 'Calendar', $content, '../', [
     'head' =>
-        '<link rel="stylesheet" type="text/css" href="index.css?8" />'
+        '<link rel="stylesheet" type="text/css" href="index.css?9" />'
         .'<link rel="stylesheet" type="text/css"'
         ." href=\"themes/$user->theme/index.css?2\" />"
 ]);

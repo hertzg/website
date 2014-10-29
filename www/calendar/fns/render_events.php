@@ -1,18 +1,36 @@
 <?php
 
-function render_events ($contacts, $events, &$items) {
+function render_events ($contacts, $tasks, $events, &$items) {
+
+    $fnsDir = __DIR__.'/../../fns';
+
     $items = [];
-    if ($events || $contacts) {
+    if ($contacts || $tasks || $events) {
         if ($contacts) {
-            include_once __DIR__.'/../../fns/Page/imageLink.php';
+            include_once "$fnsDir/Page/imageLink.php";
             foreach ($contacts as $contact) {
-                $title = 'Birthday of '.htmlspecialchars($contact->full_name);
+                $title = '<span class="event-grey">Birthday of </span>'
+                    .htmlspecialchars($contact->full_name);
                 $href = "../contacts/view/?id=$contact->id";
                 $items[] = Page\imageLink($title, $href, 'birthday-cake');
             }
         }
+        if ($tasks) {
+            include_once "$fnsDir/Page/imageArrowLink.php";
+            foreach ($tasks as $task) {
+
+                if ($task->top_priority) $icon = 'top-priority-task';
+                else $icon = 'task';
+
+                $title = '<span class="event-grey">Deadline of </span>'
+                    .htmlspecialchars($task->text);
+                $href = "../tasks/view/?id=$task->id";
+                $items[] = Page\imageArrowLink($title, $href, $icon);
+
+            }
+        }
         if ($events) {
-            include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
+            include_once "$fnsDir/Page/imageArrowLink.php";
             foreach ($events as $event) {
                 $title = htmlspecialchars($event->text);
                 $href = "view-event/?id=$event->id";
@@ -20,7 +38,8 @@ function render_events ($contacts, $events, &$items) {
             }
         }
     } else {
-        include_once __DIR__.'/../../fns/Page/info.php';
+        include_once "$fnsDir/Page/info.php";
         $items[] = Page\info('No events on this day');
     }
+
 }
