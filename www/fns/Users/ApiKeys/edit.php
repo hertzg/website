@@ -44,6 +44,9 @@ function edit ($mysqli, $apiKey, $name, $expire_time, $can_read_bookmarks,
     include_once "$fnsDir/Notes/editApiKey.php";
     \Notes\editApiKey($mysqli, $id, $name);
 
+    include_once "$fnsDir/Notifications/editApiKey.php";
+    \Notifications\editApiKey($mysqli, $id, $name);
+
     include_once "$fnsDir/Schedules/editApiKey.php";
     \Schedules\editApiKey($mysqli, $id, $name);
 
