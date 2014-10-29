@@ -49,7 +49,7 @@ function create_page ($mysqli, $user, $base = '') {
         render_prev_button($offset, $limit, $total, $items, [], $base);
 
         include_once "$fnsDir/create_image_text.php";
-        include_once "$fnsDir/date_ago.php";
+        include_once "$fnsDir/format_author.php";
         include_once "$fnsDir/render_external_links.php";
         foreach ($notifications as $i => $notification) {
 
@@ -59,11 +59,13 @@ function create_page ($mysqli, $user, $base = '') {
             $text = htmlspecialchars($notification->text);
             $text = nl2br(render_external_links($text, "$base../"));
 
+            $author = format_author($notification->insert_time,
+                $notification->insert_api_key_name);
+
             $content =
                 $text
                 .'<div style="color: #555; font-size: 12px; line-height: 14px">'
-                    ."$notification->channel_name "
-                    .date_ago($notification->insert_time)
+                    ."$notification->channel_name $author."
                 .'</div>';
 
             $items[] = create_image_text($content, $icon);

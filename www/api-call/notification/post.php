@@ -20,7 +20,7 @@ if ($text === '') {
 }
 
 include_once '../../fns/Users/Notifications/post.php';
-Users\Notifications\post($mysqli, $channel, $text);
+Users\Notifications\post($mysqli, $channel, $text, $apiKey);
 
 header('Content-Type: application/json');
 echo 'true';

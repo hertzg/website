@@ -22,7 +22,7 @@ function render_filtered_notifications ($base, $id, $offset,
             $total, $items, ['id' => $id], $base);
 
         include_once "$fnsDir/create_image_text.php";
-        include_once "$fnsDir/date_ago.php";
+        include_once "$fnsDir/format_author.php";
         include_once "$fnsDir/render_external_links.php";
         foreach ($notifications as $notification) {
 
@@ -31,7 +31,8 @@ function render_filtered_notifications ($base, $id, $offset,
 
             $content = $text
                 .'<div style="color: #777; font-size: 12px; line-height: 14px">'
-                    .date_ago($notification->insert_time)
+                    .format_author($notification->insert_time,
+                        $notification->insert_api_key_name)
                 .'</div>';
             $items[] = create_image_text($content, 'old-notification');
 
