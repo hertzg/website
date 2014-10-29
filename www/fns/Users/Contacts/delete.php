@@ -21,8 +21,11 @@ function delete ($mysqli, $contact, $user) {
     include_once __DIR__.'/../DeletedItems/addContact.php';
     \Users\DeletedItems\addContact($mysqli, $contact);
 
-    include_once __DIR__.'/../Birthdays/invalidateIfNeeded.php';
-    \Users\Birthdays\invalidateIfNeeded(
-        $mysqli, $user, $contact->birthday_time);
+    $birthday_time = $contact->birthday_time;
+    if ($birthday_time !== null) {
+        include_once __DIR__.'/../Birthdays/invalidateIfNeeded.php';
+        \Users\Birthdays\invalidateIfNeeded(
+            $mysqli, $user, $contact->birthday_time);
+    }
 
 }

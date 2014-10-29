@@ -25,9 +25,14 @@ function edit ($mysqli, $user, $contact, $full_name, $alias,
             $full_name, $alias, $phone1, $phone2, $favorite);
     }
 
-    include_once __DIR__.'/../Birthdays/invalidateIfNeeded.php';
-    \Users\Birthdays\invalidateIfNeeded(
-        $mysqli, $user, $contact->birthday_time);
-    \Users\Birthdays\invalidateIfNeeded($mysqli, $user, $birthday_time);
+    if ($contact->birthday_time !== null) {
+        include_once __DIR__.'/../Birthdays/invalidateIfNeeded.php';
+        \Users\Birthdays\invalidateIfNeeded(
+            $mysqli, $user, $contact->birthday_time);
+    }
+    if ($birthday_time !== null) {
+        include_once __DIR__.'/../Birthdays/invalidateIfNeeded.php';
+        \Users\Birthdays\invalidateIfNeeded($mysqli, $user, $birthday_time);
+    }
 
 }

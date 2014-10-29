@@ -27,8 +27,10 @@ function add ($mysqli, $user, $full_name, $alias, $address,
         \ContactPhotos\addRef($mysqli, $photo_id);
     }
 
-    include_once __DIR__.'/../Birthdays/invalidateIfNeeded.php';
-    \Users\Birthdays\invalidateIfNeeded($mysqli, $user, $birthday_time);
+    if ($birthday_time !== null) {
+        include_once __DIR__.'/../Birthdays/invalidateIfNeeded.php';
+        \Users\Birthdays\invalidateIfNeeded($mysqli, $user, $birthday_time);
+    }
 
     include_once __DIR__.'/addNumber.php';
     addNumber($mysqli, $id_users, 1);
