@@ -4,11 +4,6 @@ function create_page ($mysqli, $user, $base = '') {
 
     $fnsDir = __DIR__.'/../../../fns';
 
-    if (!$user->num_events) {
-        include_once "$fnsDir/redirect.php";
-        redirect("$base..");
-    }
-
     $items = [];
 
     include_once "$fnsDir/Events/indexOnUser.php";
