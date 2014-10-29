@@ -54,7 +54,7 @@ if ($type == 'bookmark') {
     Users\Tasks\Received\addDeleted($mysqli, $id_users, $data);
 } elseif ($type == 'task') {
     include_once '../fns/Users/Tasks/addDeleted.php';
-    Users\Tasks\addDeleted($mysqli, $id_users, $data);
+    Users\Tasks\addDeleted($mysqli, $user, $data);
 }
 
 include_once '../fns/Users/DeletedItems/delete.php';

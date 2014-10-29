@@ -2,8 +2,9 @@
 
 namespace Users\Tasks;
 
-function addDeleted ($mysqli, $id_users, $data) {
+function addDeleted ($mysqli, $user, $data) {
 
+    $id_users = $user->id_users;
     $id = $data->id;
     $text = $data->text;
     $deadline_time = $data->deadline_time;
