@@ -2,9 +2,10 @@
 
 namespace Users\Tasks;
 
-function add ($mysqli, $id_users, $text, $deadline_time,
+function add ($mysqli, $user, $text, $deadline_time,
     $tags, $tag_names, $top_priority, $insertApiKey = null) {
 
+    $id_users = $user->id_users;
     $fnsDir = __DIR__.'/../..';
 
     include_once "$fnsDir/Tasks/add.php";

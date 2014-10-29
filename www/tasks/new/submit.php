@@ -44,8 +44,8 @@ unset($_SESSION['tasks/new/values']);
 
 include_once '../../fns/Users/Tasks/add.php';
 include_once '../../lib/mysqli.php';
-$id = Users\Tasks\add($mysqli, $user->id_users,
-    $text, $deadline_time, $tags, $tag_names, $top_priority);
+$id = Users\Tasks\add($mysqli, $user, $text,
+    $deadline_time, $tags, $tag_names, $top_priority);
 
 $_SESSION['tasks/view/messages'] = ['Task has been saved.'];
 

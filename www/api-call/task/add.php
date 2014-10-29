@@ -8,7 +8,7 @@ $values = request_task_params($user);
 list($text, $deadline_time, $tags, $tag_names, $top_priority) = $values;
 
 include_once '../../fns/Users/Tasks/add.php';
-$id = Users\Tasks\add($mysqli, $user->id_users, $text,
+$id = Users\Tasks\add($mysqli, $user, $text,
     $deadline_time, $tags, $tag_names, $top_priority, $apiKey);
 
 header('Content-Type: application/json');
