@@ -28,6 +28,8 @@ function parse_birthday ($day, $month, $year, $user, &$errors, &$time) {
     $time = mktime(0, 0, 0, $month, $day, $year);
 
     include_once __DIR__.'/../../fns/user_time_today.php';
-    $time = min($time, user_time_today($user));
+    if ($time > user_time_today($user)) {
+        $errors[] = 'The birth date is in the future.';
+    }
 
 }
