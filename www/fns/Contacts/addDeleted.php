@@ -13,7 +13,12 @@ function addDeleted ($mysqli, $id, $id_users, $full_name, $alias,
     $email = $mysqli->real_escape_string($email);
     $phone1 = $mysqli->real_escape_string($phone1);
     $phone2 = $mysqli->real_escape_string($phone2);
-    if ($birthday_time === null) $birthday_time = 'null';
+    if ($birthday_time === null) {
+        $birthday_time = $birthday_day = $birthday_month = 'null';
+    } else {
+        $birthday_day = date('j', $birthday_time);
+        $birthday_month = date('n', $birthday_time);
+    }
     $username = $mysqli->real_escape_string($username);
     if ($timezone === null) $timezone = 'null';
     $tags = $mysqli->real_escape_string($tags);
@@ -25,12 +30,14 @@ function addDeleted ($mysqli, $id, $id_users, $full_name, $alias,
 
     $sql = 'insert into contacts'
         .' (id, id_users, full_name, alias, address,'
-        .' email, phone1, phone2, birthday_time, username,'
-        .' timezone, tags, num_tags, tags_json, notes, favorite,'
+        .' email, phone1, phone2, birthday_time, birthday_day,'
+        .' birthday_month, username, timezone, tags,'
+        .' num_tags, tags_json, notes, favorite,'
         .' insert_time, update_time, photo_id)'
         ." values ($id, $id_users, '$full_name', '$alias', '$address',"
-        ." '$email', '$phone1', '$phone2', $birthday_time, '$username',"
-        ." $timezone, '$tags', $num_tags, '$tags_json', '$notes', $favorite,"
+        ." '$email', '$phone1', '$phone2', $birthday_time, $birthday_day,"
+        ." $birthday_month, '$username', $timezone, '$tags',"
+        ." $num_tags, '$tags_json', '$notes', $favorite,"
         ." $insert_time, $update_time, $photo_id)";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
