@@ -1,10 +1,10 @@
 <?php
 
+include_once '../fns/require_notes.php';
+$user = require_notes();
+
 $base = '../../';
 $fnsDir = '../../fns';
-
-include_once "$fnsDir/require_user.php";
-$user = require_user($base);
 
 unset(
     $_SESSION['notes/errors'],
