@@ -17,7 +17,6 @@ if ($user->num_deleted_items) {
     include_once "$fnsDir/compressed_js_script.php";
     $content .=
         compressed_js_script('confirmDialog', $base)
-        .'</script>'
         .'<script type="text/javascript" defer="defer" src="index.js?1">'
         .'</script>';
 
