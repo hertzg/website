@@ -2,7 +2,7 @@
 
 namespace Users\Tasks;
 
-function edit ($mysqli, $task, $text, $deadline_time,
+function edit ($mysqli, $user, $task, $text, $deadline_time,
     $tags, $tag_names, $top_priority, $updateApiKey = null) {
 
     $id = $task->id;
