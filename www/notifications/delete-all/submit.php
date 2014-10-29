@@ -3,8 +3,8 @@
 include_once '../../fns/require_same_domain_referer.php';
 require_same_domain_referer('./');
 
-include_once '../../fns/require_user.php';
-$user = require_user('../../');
+include_once '../fns/require_notifications.php';
+$user = require_notifications();
 
 include_once '../../fns/Users/Notifications/deleteAll.php';
 include_once '../../lib/mysqli.php';
