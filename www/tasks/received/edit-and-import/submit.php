@@ -43,7 +43,7 @@ $receivedTask->tags = $tags;
 $receivedTask->top_priority = $top_priority;
 
 include_once "$fnsDir/Users/Tasks/Received/import.php";
-Users\Tasks\Received\import($mysqli, $receivedTask);
+Users\Tasks\Received\import($mysqli, $user, $receivedTask);
 
 $messages = ['Task has been imported.'];
 

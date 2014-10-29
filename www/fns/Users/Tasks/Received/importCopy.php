@@ -2,7 +2,7 @@
 
 namespace Users\Tasks\Received;
 
-function importCopy ($mysqli, $receivedTask, $insertApiKey = null) {
+function importCopy ($mysqli, $user, $receivedTask, $insertApiKey = null) {
 
     $tags = $receivedTask->tags;
 

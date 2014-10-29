@@ -10,7 +10,7 @@ include_once '../../lib/mysqli.php';
 list($receivedTask, $id, $user) = require_received_task($mysqli);
 
 include_once "$fnsDir/Users/Tasks/Received/import.php";
-Users\Tasks\Received\import($mysqli, $receivedTask);
+Users\Tasks\Received\import($mysqli, $user, $receivedTask);
 
 $messages = ['Task has been imported.'];
 include_once "$fnsDir/redirect.php";
