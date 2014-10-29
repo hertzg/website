@@ -58,3 +58,8 @@
     background: #eee;
     color: #444;
 }
+
+b.author {
+    font-weight: normal;
+    background: #eee;
+}
