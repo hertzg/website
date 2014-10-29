@@ -21,6 +21,9 @@ function add ($mysqli, $user, $text, $deadline_time,
     include_once __DIR__.'/addNumber.php';
     addNumber($mysqli, $id_users, 1);
 
+    include_once __DIR__.'/Deadlines/invalidateIfNeeded.php';
+    Deadlines\invalidateIfNeeded($mysqli, $user, $deadline_time);
+
     return $id;
 
 }

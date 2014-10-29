@@ -21,4 +21,7 @@ function delete ($mysqli, $user, $task) {
     include_once __DIR__.'/../DeletedItems/addTask.php';
     \Users\DeletedItems\addTask($mysqli, $task);
 
+    include_once __DIR__.'/Deadlines/invalidateIfNeeded.php';
+    Deadlines\invalidateIfNeeded($mysqli, $user, $task->deadline_time);
+
 }
