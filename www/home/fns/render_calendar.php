@@ -11,6 +11,11 @@ function render_calendar ($user, $mysqli, &$items) {
     $today = $user->num_events_today;
     $tomorrow = $user->num_events_tomorrow;
 
+    include_once __DIR__.'/check_task_deadline_check_day.php';
+    check_task_deadline_check_day($mysqli, $user);
+    $today += $user->num_task_deadlines_today;
+    $tomorrow += $user->num_task_deadlines_tomorrow;
+
     include_once __DIR__.'/check_birthday_check_day.php';
     check_birthday_check_day($mysqli, $user);
     $today += $user->num_birthdays_today;

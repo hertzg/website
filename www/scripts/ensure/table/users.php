@@ -170,6 +170,12 @@ ensure_table('users', [
     'num_subscribed_channels' => [
         'type' => 'tinyint(4)',
     ],
+    'num_task_deadlines_today' => [
+        'type' => 'bigint(20) unsigned',
+    ],
+    'num_task_deadlines_tomorrow' => [
+        'type' => 'bigint(20) unsigned',
+    ],
     'num_tasks' => [
         'type' => 'bigint(20) unsigned',
     ],
@@ -239,6 +245,9 @@ ensure_table('users', [
         'type' => 'tinyint(4)',
     ],
     'storage_used' => [
+        'type' => 'bigint(20) unsigned',
+    ],
+    'task_deadlines_check_day' => [
         'type' => 'bigint(20) unsigned',
     ],
     'theme' => [
