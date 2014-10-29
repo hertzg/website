@@ -1,11 +1,14 @@
 <?php
 
+include_once '../fns/require_channel.php';
+include_once '../../../lib/mysqli.php';
+list($channel, $id, $user) = require_channel($mysqli, '../');
+
 $base = '../../../';
 $fnsDir = '../../../fns';
 
 include_once '../fns/create_page.php';
-include_once '../../../lib/mysqli.php';
-$content = create_page($mysqli, $user, $id, '../');
+$content = create_page($mysqli, $user, $channel, '../');
 
 include_once "$fnsDir/ItemList/escapedItemQuery.php";
 $escapedItemQuery = ItemList\escapedItemQuery($id);

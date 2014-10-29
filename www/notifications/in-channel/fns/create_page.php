@@ -1,10 +1,8 @@
 <?php
 
-function create_page ($mysqli, &$user, &$id, $base = '') {
+function create_page ($mysqli, $user, $channel, $base = '') {
 
-    include_once __DIR__.'/require_channel.php';
-    list($channel, $id, $user) = require_channel($mysqli, "$base..");
-
+    $id = $channel->id;
     $fnsDir = __DIR__.'/../../../fns';
 
     include_once "$fnsDir/Paging/limit.php";

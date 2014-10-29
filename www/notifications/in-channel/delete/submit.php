@@ -5,7 +5,7 @@ require_same_domain_referer('../..');
 
 include_once '../fns/require_channel.php';
 include_once '../../../lib/mysqli.php';
-list($channel, $id, $user) = require_channel($mysqli, '../..');
+list($channel, $id, $user) = require_channel($mysqli, '../');
 
 include_once '../../../fns/Notifications/deleteOnChannel.php';
 Notifications\deleteOnChannel($mysqli, $id);
