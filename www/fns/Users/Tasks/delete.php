@@ -2,7 +2,7 @@
 
 namespace Users\Tasks;
 
-function delete ($mysqli, $task) {
+function delete ($mysqli, $user, $task) {
 
     $id = $task->id;
     $fnsDir = __DIR__.'/../..';
