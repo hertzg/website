@@ -2,8 +2,9 @@
 
 namespace Users\Tasks;
 
-function deleteAll ($mysqli, $id_users) {
+function deleteAll ($mysqli, $user) {
 
+    $id_users = $user->id_users;
     $fnsDir = __DIR__.'/../..';
 
     include_once "$fnsDir/Tasks/indexOnUser.php";
@@ -22,7 +23,11 @@ function deleteAll ($mysqli, $id_users) {
     include_once "$fnsDir/TaskTags/deleteOnUser.php";
     \TaskTags\deleteOnUser($mysqli, $id_users);
 
-    $sql = "update users set num_tasks = 0 where id_users = $id_users";
+    include_once "$fnsDir/user_time_today.php";
+    $time_today = user_time_today($user);
+    $sql = 'update users set num_tasks = 0,'
+        .' num_task_deadlines_today = 0, num_task_deadlines_tomorrow = 0,'
+        ." task_deadlines_check_day = $time_today where id_users = $id_users";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
 }

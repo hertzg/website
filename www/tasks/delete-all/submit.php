@@ -8,7 +8,7 @@ $user = require_tasks();
 
 include_once '../../fns/Users/Tasks/deleteAll.php';
 include_once '../../lib/mysqli.php';
-Users\Tasks\deleteAll($mysqli, $user->id_users);
+Users\Tasks\deleteAll($mysqli, $user);
 
 unset($_SESSION['tasks/errors']);
 $_SESSION['tasks/messages'] = ['All tasks have been deleted.'];
