@@ -1,5 +1,8 @@
 <?php
 
+include_once 'fns/require_tokens.php';
+$user = require_tokens();
+
 $base = '../../../';
 $fnsDir = '../../../fns';
 

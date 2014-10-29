@@ -3,6 +3,9 @@
 $base = '../../';
 $fnsDir = '../../fns';
 
+include_once "$fnsDir/require_user.php";
+$user = require_user("$base../../");
+
 include_once 'fns/create_page.php';
 include_once '../../lib/mysqli.php';
 $content = create_page($mysqli, $user);
@@ -12,7 +15,6 @@ if ($user->num_tokens) {
     include_once "$fnsDir/compressed_js_script.php";
     $content .=
         compressed_js_script('confirmDialog', $base)
-        .'</script>'
         .'<script type="text/javascript" defer="defer" src="index.js">'
         .'</script>';
 

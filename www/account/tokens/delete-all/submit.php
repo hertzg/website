@@ -1,12 +1,12 @@
 <?php
 
+include_once 'fns/require_tokens.php';
+$user = require_tokens();
+
 $fnsDir = '../../../fns';
 
 include_once "$fnsDir/require_same_domain_referer.php";
 require_same_domain_referer('./');
-
-include_once "$fnsDir/require_user.php";
-$user = require_user('../../../');
 
 include_once "$fnsDir/Users/Tokens/deleteAll.php";
 include_once '../../../lib/mysqli.php';
