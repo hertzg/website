@@ -1,10 +1,10 @@
 <?php
 
+include_once '../fns/require_bookmarks.php';
+$user = require_bookmarks();
+
 $base = '../../';
 $fnsDir = '../../fns';
-
-include_once "$fnsDir/require_user.php";
-$user = require_user($base);
 
 unset(
     $_SESSION['bookmarks/errors'],
