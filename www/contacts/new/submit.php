@@ -58,9 +58,6 @@ $id = Users\Contacts\add($mysqli, $user, $full_name, $alias,
     $address, $email, $phone1, $phone2, $birthday_time, $username,
     $timezone, $tags, $tag_names, $notes, $favorite, null);
 
-include_once '../../fns/Users/Birthdays/invalidateIfNeeded.php';
-Users\Birthdays\invalidateIfNeeded($mysqli, $user, $birthday_time);
-
 $_SESSION['contacts/view/messages'] = ['Contact has been saved.'];
 
 include_once '../../fns/ItemList/itemQuery.php';
