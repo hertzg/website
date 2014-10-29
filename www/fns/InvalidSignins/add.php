@@ -2,13 +2,15 @@
 
 namespace InvalidSignins;
 
-function add ($mysqli, $remote_address) {
+function add ($mysqli, $username, $remote_address) {
 
-    $insert_time = time();
+    $username = $mysqli->real_escape_string($username);
     $remote_address = $mysqli->real_escape_string($remote_address);
+    $insert_time = time();
 
-    $sql = 'insert into invalid_signins (remote_address, insert_time)'
-        ." values ('$remote_address', $insert_time)";
+    $sql = 'insert into invalid_signins'
+        .' (username, remote_address, insert_time)'
+        ." values ('$username', '$remote_address', $insert_time)";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
 }

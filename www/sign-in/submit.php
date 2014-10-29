@@ -38,7 +38,7 @@ if (!$errors) {
 
         include_once '../fns/get_client_address.php';
         include_once '../fns/InvalidSignins/add.php';
-        InvalidSignins\add($mysqli, get_client_address());
+        InvalidSignins\add($mysqli, $username, get_client_address());
 
     }
 
