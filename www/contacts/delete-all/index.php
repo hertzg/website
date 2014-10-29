@@ -1,10 +1,10 @@
 <?php
 
+include_once '../fns/require_contacts.php';
+$user = require_contacts();
+
 $base = '../../';
 $fnsDir = '../../fns';
-
-include_once "$fnsDir/require_user.php";
-$user = require_user($base);
 
 unset(
     $_SESSION['contacts/errors'],
