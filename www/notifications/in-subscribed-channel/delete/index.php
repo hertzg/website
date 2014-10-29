@@ -1,8 +1,8 @@
 <?php
 
-include_once '../fns/require_subscribed_channel.php';
+include_once 'fns/require_subscribed_channel_notifications.php';
 include_once '../../../lib/mysqli.php';
-$values = require_subscribed_channel($mysqli, '../');
+$values = require_subscribed_channel_notifications($mysqli);
 list($subscribedChannel, $id, $user) = $values;
 
 $base = '../../../';

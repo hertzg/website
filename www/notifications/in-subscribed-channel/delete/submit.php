@@ -5,9 +5,9 @@ $fnsDir = '../../../fns';
 include_once "$fnsDir/require_same_domain_referer.php";
 require_same_domain_referer('../..');
 
-include_once '../fns/require_subscribed_channel.php';
+include_once 'fns/require_subscribed_channel_notifications.php';
 include_once '../../../lib/mysqli.php';
-$values = require_subscribed_channel($mysqli, '../');
+$values = require_subscribed_channel_notifications($mysqli);
 list($subscribedChannel, $id, $user) = $values;
 
 include_once "$fnsDir/Notifications/deleteOnSubscribedChannel.php";
