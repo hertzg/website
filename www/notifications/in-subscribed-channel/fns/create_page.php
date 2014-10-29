@@ -1,11 +1,8 @@
 <?php
 
-function create_page ($mysqli, &$user, &$id, $base = '') {
+function create_page ($mysqli, $user, $subscribedChannel, $base = '') {
 
-    include_once __DIR__.'/require_subscribed_channel.php';
-    $values = require_subscribed_channel($mysqli, "$base..");
-    list($subscribedChannel, $id, $user) = $values;
-
+    $id = $subscribedChannel->id;
     $fnsDir = __DIR__.'/../../../fns';
 
     include_once "$fnsDir/Paging/limit.php";
