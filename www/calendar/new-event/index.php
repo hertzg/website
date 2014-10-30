@@ -22,6 +22,10 @@ if (array_key_exists($key, $_SESSION)) {
 
 }
 
+$event_day = $values['event_day'];
+$event_month = $values['event_month'];
+$event_year = $values['event_year'];
+
 unset(
     $_SESSION['calendar/errors'],
     $_SESSION['calendar/messages']
@@ -30,6 +34,7 @@ unset(
 include_once '../../fns/Events/maxLengths.php';
 $maxLengths = Events\maxLengths();
 
+include_once '../fns/calendar_href.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/datefield.php';
 include_once '../../fns/Form/hidden.php';
@@ -40,7 +45,7 @@ $content = Page\tabs(
     [
         [
             'title' => 'Calendar',
-            'href' => '..',
+            'href' => calendar_href($event_day, $event_month, $event_year),
         ],
     ],
     'New Event',
@@ -48,15 +53,15 @@ $content = Page\tabs(
     .'<form action="submit.php" method="post">'
         .Form\datefield([
             'name' => 'event_day',
-            'value' => $values['event_day'],
+            'value' => $event_day,
         ],
         [
             'name' => 'event_month',
-            'value' => $values['event_month'],
+            'value' => $event_month,
         ],
         [
             'name' => 'event_year',
-            'value' => $values['event_year'],
+            'value' => $event_year,
         ], 'When', true)
         .'<div class="hr"></div>'
         .Form\textfield('text', 'Text', [

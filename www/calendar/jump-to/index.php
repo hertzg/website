@@ -28,15 +28,14 @@ $monthOptions = [
 ];
 
 $yearOptions = [];
-for ($i = $maxYear; $i >= $minYear; $i--) {
-    $yearOptions[$i] = $i;
-}
+for ($i = $maxYear; $i >= $minYear; $i--) $yearOptions[$i] = $i;
 
 unset(
     $_SESSION['calendar/errors'],
     $_SESSION['calendar/messages']
 );
 
+include_once '../fns/calendar_href.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/datefield.php';
 include_once '../../fns/Page/sessionErrors.php';
@@ -45,7 +44,7 @@ $content = Page\tabs(
     [
         [
             'title' => 'Calendar',
-            'href' => "../?year=$year&month=$month",
+            'href' => calendar_href($day, $month, $year),
         ],
     ],
     'Jump To',
