@@ -47,7 +47,7 @@ function create_options_panel ($user, $id_folders, $files) {
             $description = "$n total.";
             $href = 'received/';
             $options[] = Page\imageArrowLinkWithDescription($title,
-                $description, $href, 'mail');
+                $description, $href, 'receive');
         }
     }
 
