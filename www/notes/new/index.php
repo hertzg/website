@@ -19,10 +19,7 @@ if (array_key_exists($key, $_SESSION)) {
 unset(
     $_SESSION['home/messages'],
     $_SESSION['notes/errors'],
-    $_SESSION['notes/messages'],
-    $_SESSION['notes/new/send/errors'],
-    $_SESSION['notes/new/send/messages'],
-    $_SESSION['notes/new/send/values']
+    $_SESSION['notes/messages']
 );
 
 include_once '../fns/create_form_items.php';

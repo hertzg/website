@@ -11,11 +11,13 @@ $errors = [];
 include_once '../fns/request_bookmark_params.php';
 list($url, $title, $tags, $tag_names) = request_bookmark_params($errors);
 
-$_SESSION['bookmarks/new/values'] = [
+$values = [
     'title' => $title,
     'url' => $url,
     'tags' => $tags,
 ];
+
+$_SESSION['bookmarks/new/values'] = $values;
 
 include_once '../../fns/redirect.php';
 
@@ -30,6 +32,12 @@ unset($_SESSION['bookmarks/new/errors']);
 include_once '../../fns/request_strings.php';
 list($sendButton) = request_strings('sendButton');
 if ($sendButton !== '') {
+    $_SESSION['bookmarks/new/send/bookmark'] = $values;
+    unset(
+        $_SESSION['bookmarks/new/send/errors'],
+        $_SESSION['bookmarks/new/send/messages'],
+        $_SESSION['bookmarks/new/send/values']
+    );
     include_once '../../fns/ItemList/pageQuery.php';
     redirect('send/'.ItemList\pageQuery());
 }

@@ -7,7 +7,7 @@ function require_stage ($base = '') {
     include_once "$fnsDir/require_user.php";
     $user = require_user("$base../../../");
 
-    $key = 'contacts/new/values';
+    $key = 'contacts/new/send/contact';
     if (!array_key_exists($key, $_SESSION)) {
         include_once "$fnsDir/redirect.php";
         include_once "$fnsDir/ItemList/pageQuery.php";

@@ -13,7 +13,7 @@ $values = request_task_params($user, $errors);
 list($text, $deadline_day, $deadline_month, $deadline_year,
     $deadline_time, $tags, $tag_names, $top_priority) = $values;
 
-$_SESSION['tasks/new/values'] = [
+$values = [
     'text' => $text,
     'deadline_day' => $deadline_day,
     'deadline_month' => $deadline_month,
@@ -22,6 +22,8 @@ $_SESSION['tasks/new/values'] = [
     'tags' => $tags,
     'top_priority' => $top_priority,
 ];
+
+$_SESSION['tasks/new/values'] = $values;
 
 include_once '../../fns/redirect.php';
 
@@ -36,6 +38,12 @@ unset($_SESSION['tasks/new/errors']);
 include_once '../../fns/request_strings.php';
 list($sendButton) = request_strings('sendButton');
 if ($sendButton !== '') {
+    $_SESSION['tasks/new/send/task'] = $values;
+    unset(
+        $_SESSION['tasks/new/send/errors'],
+        $_SESSION['tasks/new/send/messages'],
+        $_SESSION['tasks/new/send/values']
+    );
     include_once '../../fns/ItemList/pageQuery.php';
     redirect('send/'.ItemList\pageQuery());
 }

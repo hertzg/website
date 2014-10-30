@@ -11,11 +11,13 @@ $errors = [];
 include_once '../fns/request_note_params.php';
 list($text, $tags, $tag_names, $encrypt) = request_note_params($errors);
 
-$_SESSION['notes/new/values'] = [
+$values = [
     'text' => $text,
     'tags' => $tags,
     'encrypt' => $encrypt,
 ];
+
+$_SESSION['notes/new/values'] = $values;
 
 include_once '../../fns/redirect.php';
 
@@ -30,6 +32,12 @@ unset($_SESSION['notes/new/errors']);
 include_once '../../fns/request_strings.php';
 list($sendButton) = request_strings('sendButton');
 if ($sendButton !== '') {
+    $_SESSION['notes/new/send/note'] = $values;
+    unset(
+        $_SESSION['notes/new/send/errors'],
+        $_SESSION['notes/new/send/messages'],
+        $_SESSION['notes/new/send/values']
+    );
     include_once '../../fns/ItemList/pageQuery.php';
     redirect('send/'.ItemList\pageQuery());
 }

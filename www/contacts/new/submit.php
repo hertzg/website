@@ -16,9 +16,7 @@ list($full_name, $alias, $address, $email, $phone1, $phone2,
     $username, $timezone, $tags, $tag_names,
     $notes, $favorite) = request_contact_params($user, $errors);
 
-include_once '../../fns/redirect.php';
-
-$_SESSION['contacts/new/values'] = [
+$values = [
     'full_name' => $full_name,
     'alias' => $alias,
     'address' => $address,
@@ -36,6 +34,10 @@ $_SESSION['contacts/new/values'] = [
     'favorite' => $favorite,
 ];
 
+$_SESSION['contacts/new/values'] = $values;
+
+include_once '../../fns/redirect.php';
+
 if ($errors) {
     $_SESSION['contacts/new/errors'] = $errors;
     include_once '../../fns/ItemList/pageQuery.php';
@@ -47,6 +49,12 @@ unset($_SESSION['contacts/new/errors']);
 include_once '../../fns/request_strings.php';
 list($sendButton) = request_strings('sendButton');
 if ($sendButton !== '') {
+    $_SESSION['contacts/new/send/contact'] = $values;
+    unset(
+        $_SESSION['contacts/new/send/errors'],
+        $_SESSION['contacts/new/send/messages'],
+        $_SESSION['contacts/new/send/values']
+    );
     include_once '../../fns/ItemList/pageQuery.php';
     redirect('send/'.ItemList\pageQuery());
 }
