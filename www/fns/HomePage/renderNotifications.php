@@ -1,10 +1,12 @@
 <?php
 
-function render_notifications ($user, &$items) {
+namespace HomePage;
+
+function renderNotifications ($user, &$items) {
 
     if (!$user->show_notifications) return;
 
-    $fnsDir = __DIR__.'/../../fns';
+    $fnsDir = __DIR__.'/..';
 
     $num_notifications = $user->num_notifications;
     $title = 'Notifications';
@@ -20,18 +22,18 @@ function render_notifications ($user, &$items) {
             }
 
             include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
-            $link = Page\imageArrowLinkWithDescription($title,
+            $link = \Page\imageArrowLinkWithDescription($title,
                 $description, $href, 'notification');
 
         } else {
             $description = "$num_notifications total.";
             include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
-            $link = Page\imageArrowLinkWithDescription($title,
+            $link = \Page\imageArrowLinkWithDescription($title,
                 $description, $href, 'old-notification');
         }
     } else {
         include_once "$fnsDir/Page/imageArrowLink.php";
-        $link = Page\imageArrowLink($title, $href, 'old-notification');
+        $link = \Page\imageArrowLink($title, $href, 'old-notification');
     }
 
     $items['notifications'] = $link;

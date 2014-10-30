@@ -1,10 +1,12 @@
 <?php
 
-function render_notes ($user, &$items) {
+namespace HomePage;
+
+function renderNotes ($user, &$items) {
 
     if (!$user->show_notes) return;
 
-    $fnsDir = __DIR__.'/../../fns';
+    $fnsDir = __DIR__.'/..';
 
     $num_notes = $user->num_notes;
     $num_received_notes = $user->num_received_notes;
@@ -22,12 +24,12 @@ function render_notes ($user, &$items) {
         $description = join(' ', $descriptionItems);
 
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
-        $link = Page\imageArrowLinkWithDescription($title,
+        $link = \Page\imageArrowLinkWithDescription($title,
             $description, $href, $icon);
 
     } else {
         include_once "$fnsDir/Page/imageArrowLink.php";
-        $link = Page\imageArrowLink($title, $href, $icon);
+        $link = \Page\imageArrowLink($title, $href, $icon);
     }
 
     $items['notes'] = $link;

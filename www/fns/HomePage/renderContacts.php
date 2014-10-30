@@ -1,10 +1,12 @@
 <?php
 
-function render_contacts ($user, &$items) {
+namespace HomePage;
+
+function renderContacts ($user, &$items) {
 
     if (!$user->show_contacts) return;
 
-    $fnsDir = __DIR__.'/../../fns';
+    $fnsDir = __DIR__.'/..';
 
     $num_contacts = $user->num_contacts;
     $num_received_contacts = $user->num_received_contacts;
@@ -22,12 +24,12 @@ function render_contacts ($user, &$items) {
         $description = join(' ', $descriptionItems);
 
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
-        $link = Page\imageArrowLinkWithDescription($title,
-            $description, $href, $icon);
+        $link = \Page\imageArrowLinkWithDescription(
+            $title, $description, $href, $icon);
 
     } else {
         include_once "$fnsDir/Page/imageArrowLink.php";
-        $link = Page\imageArrowLink($title, $href, $icon);
+        $link = \Page\imageArrowLink($title, $href, $icon);
     }
 
     $items['contacts'] = $link;

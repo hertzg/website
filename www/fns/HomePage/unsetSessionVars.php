@@ -1,6 +1,8 @@
 <?php
 
-function unset_session_vars () {
+namespace HomePage;
+
+function unsetSessionVars () {
     unset(
         $_SESSION['account/messages'],
         $_SESSION['bookmarks/errors'],

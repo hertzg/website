@@ -1,15 +1,17 @@
 <?php
 
-function create_new_notifications ($mysqli, $user) {
+namespace HomePage;
+
+function newNotifications ($mysqli, $user) {
 
     $warnings = [];
-    $fnsDir = __DIR__.'/../../fns';
+    $fnsDir = __DIR__.'/..';
 
     $n = $user->home_num_new_notifications;
     if ($n) {
 
         include_once "$fnsDir/Users/Notifications/clearNumberNewForHome.php";
-        Users\Notifications\clearNumberNewForHome($mysqli, $user->id_users);
+        \Users\Notifications\clearNumberNewForHome($mysqli, $user->id_users);
 
         if ($n == 1) $warnings[] = '<b>1</b> new notification.';
         else $warnings[] = "<b>$n</b> new notifications.";
@@ -43,7 +45,7 @@ function create_new_notifications ($mysqli, $user) {
     if ($items) {
 
         include_once "$fnsDir/Users/clearNumNewReceivedItems.php";
-        Users\clearNumNewReceivedItems($mysqli, $user->id_users);
+        \Users\clearNumNewReceivedItems($mysqli, $user->id_users);
 
         include_once "$fnsDir/join_and.php";
         $warnings[] = 'Received '.join_and($items).'.';
@@ -52,7 +54,7 @@ function create_new_notifications ($mysqli, $user) {
 
     if ($warnings) {
         include_once "$fnsDir/Page/warnings.php";
-        return Page\warnings($warnings);
+        return \Page\warnings($warnings);
     }
 
 }

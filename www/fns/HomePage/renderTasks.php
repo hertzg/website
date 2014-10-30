@@ -1,10 +1,12 @@
 <?php
 
-function render_tasks ($user, &$items) {
+namespace HomePage;
+
+function renderTasks ($user, &$items) {
 
     if (!$user->show_tasks) return;
 
-    $fnsDir = __DIR__.'/../../fns';
+    $fnsDir = __DIR__.'/..';
 
     $num_tasks = $user->num_tasks;
     $num_received_tasks = $user->num_received_tasks;
@@ -22,12 +24,12 @@ function render_tasks ($user, &$items) {
         $description = join(' ', $descriptionItems);
 
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
-        $link = Page\imageArrowLinkWithDescription($title,
+        $link = \Page\imageArrowLinkWithDescription($title,
             $description, $href, $icon);
 
     } else {
         include_once "$fnsDir/Page/imageArrowLink.php";
-        $link = Page\imageArrowLink($title, $href, $icon);
+        $link = \Page\imageArrowLink($title, $href, $icon);
     }
 
     $items['tasks'] = $link;

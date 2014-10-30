@@ -1,8 +1,10 @@
 <?php
 
-function check_event_check_day ($mysqli, &$user) {
+namespace HomePage;
 
-    $fnsDir = __DIR__.'/../../fns';
+function checkEventCheckDay ($mysqli, &$user) {
+
+    $fnsDir = __DIR__.'/..';
 
     include_once "$fnsDir/user_time_today.php";
     $timeToday = user_time_today($user);
@@ -13,11 +15,11 @@ function check_event_check_day ($mysqli, &$user) {
     $id_users = $user->id_users;
 
     include_once "$fnsDir/Events/countOnTime.php";
-    $today = Events\countOnTime($mysqli, $id_users, $timeToday);
-    $tomorrow = Events\countOnTime($mysqli, $id_users, $timeTomorrow);
+    $today = \Events\countOnTime($mysqli, $id_users, $timeToday);
+    $tomorrow = \Events\countOnTime($mysqli, $id_users, $timeTomorrow);
 
     include_once "$fnsDir/Users/Events/setNumbers.php";
-    Users\Events\setNumbers($mysqli,
+    \Users\Events\setNumbers($mysqli,
         $id_users, $today, $tomorrow, $timeToday);
 
     $user->num_events_today = $today;

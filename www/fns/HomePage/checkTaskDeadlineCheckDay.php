@@ -1,8 +1,10 @@
 <?php
 
-function check_task_deadline_check_day ($mysqli, &$user) {
+namespace HomePage;
 
-    $fnsDir = __DIR__.'/../../fns';
+function checkTaskDeadlineCheckDay ($mysqli, &$user) {
+
+    $fnsDir = __DIR__.'/..';
 
     include_once "$fnsDir/user_time_today.php";
     $timeToday = user_time_today($user);
@@ -13,11 +15,11 @@ function check_task_deadline_check_day ($mysqli, &$user) {
     $id_users = $user->id_users;
 
     include_once "$fnsDir/Tasks/countOnUserAndDeadline.php";
-    $today = Tasks\countOnUserAndDeadline($mysqli, $id_users, $timeToday);
-    $tomorrow = Tasks\countOnUserAndDeadline($mysqli, $id_users, $timeTomorrow);
+    $today = \Tasks\countOnUserAndDeadline($mysqli, $id_users, $timeToday);
+    $tomorrow = \Tasks\countOnUserAndDeadline($mysqli, $id_users, $timeTomorrow);
 
     include_once "$fnsDir/Users/Tasks/Deadlines/setNumbers.php";
-    Users\Tasks\Deadlines\setNumbers($mysqli,
+    \Users\Tasks\Deadlines\setNumbers($mysqli,
         $id_users, $today, $tomorrow, $timeToday);
 
     $user->num_task_deadlines_today = $today;
