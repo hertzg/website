@@ -7,12 +7,12 @@ function render_events ($contacts, $tasks, $events, &$items) {
     $items = [];
     if ($contacts || $tasks || $events) {
         if ($contacts) {
-            include_once "$fnsDir/Page/imageLink.php";
+            include_once "$fnsDir/Page/imageArrowLink.php";
             foreach ($contacts as $contact) {
                 $title = '<span class="event-grey">Birthday of </span>'
                     .htmlspecialchars($contact->full_name);
                 $href = "../contacts/view/?id=$contact->id";
-                $items[] = Page\imageLink($title, $href, 'birthday-cake');
+                $items[] = Page\imageArrowLink($title, $href, 'birthday-cake');
             }
         }
         if ($tasks) {
