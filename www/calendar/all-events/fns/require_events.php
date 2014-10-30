@@ -8,6 +8,10 @@ function require_events ($base = '') {
     $user = require_user("$base../../");
 
     if (!$user->num_events) {
+        unset(
+            $_SESSION['calendar/errors'],
+            $_SESSION['calendar/messages']
+        );
         include_once "$fnsDir/redirect.php";
         redirect("$base..");
     }

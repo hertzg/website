@@ -8,6 +8,10 @@ function require_tasks () {
     $user = require_user('../../');
 
     if (!$user->num_tasks) {
+        unset(
+            $_SESSION['tasks/errors'],
+            $_SESSION['tasks/messages']
+        );
         include_once "$fnsDir/redirect.php";
         redirect('..');
     }

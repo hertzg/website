@@ -8,6 +8,10 @@ function require_tokens () {
     $user = require_user('../../../');
 
     if (!$user->num_tokens) {
+        unset(
+            $_SESSION['account/tokens/errors'],
+            $_SESSION['account/tokens/messages']
+        );
         include_once "$fnsDir/redirect.php";
         redirect('..');
     }

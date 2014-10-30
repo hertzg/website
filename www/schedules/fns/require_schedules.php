@@ -8,6 +8,10 @@ function require_schedules () {
     $user = require_user('../../');
 
     if (!$user->num_schedules) {
+        unset(
+            $_SESSION['schedules/errors'],
+            $_SESSION['schedules/messages']
+        );
         include_once "$fnsDir/redirect.php";
         redirect('..');
     }

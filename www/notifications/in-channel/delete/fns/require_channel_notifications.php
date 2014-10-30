@@ -6,8 +6,9 @@ function require_channel_notifications ($mysqli) {
     list($channel, $id, $user) = require_channel($mysqli, '../');
 
     if (!$channel->num_notifications) {
+        unset($_SESSION['notifications/in-channel/messages']);
         include_once __DIR__.'/../../../../fns/redirect.php';
-        redirect('../..');
+        redirect("../?id=$id");
     }
 
     return [$channel, $id, $user];

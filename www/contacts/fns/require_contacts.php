@@ -8,6 +8,10 @@ function require_contacts () {
     $user = require_user('../../');
 
     if (!$user->num_contacts) {
+        unset(
+            $_SESSION['contacts/errors'],
+            $_SESSION['contacts/messages']
+        );
         include_once "$fnsDir/redirect.php";
         redirect('..');
     }
