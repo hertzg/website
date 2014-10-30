@@ -2,21 +2,9 @@
 
 namespace HomePage;
 
-function create ($mysqli) {
+function create ($mysqli, $user) {
 
-    $base = '../';
     $fnsDir = __DIR__.'/..';
-
-    include_once "$fnsDir/signed_user.php";
-    $user = signed_user($base);
-
-    if (!$user) {
-        include_once "$fnsDir/redirect.php";
-        redirect('../sign-in/');
-    }
-
-    include_once __DIR__.'/unsetSessionVars.php';
-    unsetSessionVars();
 
     $items = [];
 
@@ -43,7 +31,7 @@ function create ($mysqli) {
     include_once "$fnsDir/compressed_js_script.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
-    $content =
+    return
         \Page\tabs(
             [],
             'Home',
@@ -52,9 +40,6 @@ function create ($mysqli) {
             .join('<div class="hr"></div>', $groupedItems)
         )
         .optionsPanel()
-        .compressed_js_script('searchForm', $base);
-
-    include_once "$fnsDir/echo_page.php";
-    echo_page($user, 'Home', $content, $base);
+        .compressed_js_script('searchForm', '../');
 
 }

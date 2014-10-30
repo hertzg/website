@@ -1,6 +1,6 @@
 <?php
 
-function echo_page ($user, $title, $content, $base, array $options = []) {
+function echo_page ($user, $title, $content, $base, $options = []) {
 
     if ($user) $theme = $user->theme;
     else {
@@ -16,8 +16,7 @@ function echo_page ($user, $title, $content, $base, array $options = []) {
     } else {
         $signOutLink =
             '<div class="pageTopRightLinks">'
-                .'<a class="topLink"'
-                ." href=\"{$base}submit-signout.php\">"
+                ."<a class=\"topLink\" href=\"{$base}sign-out/\">"
                     .'Sign Out'
                 .'</a>'
             .'</div>';
