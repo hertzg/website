@@ -1,0 +1,1 @@
+!function(n){var t=!1,e=document.getElementById("signOutLink");e.addEventListener("click",function(i){if(i.preventDefault(),e.blur(),!t){var u="Yes, sign out",o="Are you sure you want to sign out?";confirmDialog(o,u,n,function(){t=!1}),t=!0}})}(signOutHref);

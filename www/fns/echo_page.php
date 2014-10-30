@@ -11,15 +11,16 @@ function echo_page ($user, $title, $content, $base, $options = []) {
     if (array_key_exists('head', $options)) $head = $options['head'];
     else $head = '';
 
-    if (!$user || array_key_exists('hideSignOutLink', $options)) {
-        $signOutLink = '';
-    } else {
+    if ($user) {
         $signOutLink =
             '<div class="pageTopRightLinks">'
-                ."<a class=\"topLink\" href=\"{$base}sign-out/\">"
+                .'<a id="signOutLink" class="topLink"'
+                ." href=\"{$base}sign-out/\">"
                     .'Sign Out'
                 .'</a>'
             .'</div>';
+    } else {
+        $signOutLink = '';
     }
 
     $time = floor(microtime(true) * 1000);
@@ -58,7 +59,21 @@ function echo_page ($user, $title, $content, $base, $options = []) {
         .compressed_js_script('batteryAndClock', $base)
         .compressed_js_script('lineSizeRounding', $base);
 
+    if ($user) {
+
+        $body .=
+            compressed_js_script('confirmDialog', $base)
+            .'<script type="text/javascript">'
+                .'var signOutHref = '.json_encode("{$base}sign-out/submit.php")
+            .'</script>'
+            .compressed_js_script('signOutConfirm', $base);
+
+        include_once __DIR__.'/compressed_css_link.php';
+        $head .= compressed_css_link('confirmDialog', $base);
+
+    }
+
     include_once __DIR__.'/../fns/echo_html.php';
-    echo_html($title, $head, $body, $theme, $base);
+    echo_html($title, $head, $body, $theme, $base, ['head' => $head]);
 
 }
