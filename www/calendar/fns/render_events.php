@@ -19,7 +19,7 @@ function render_events ($contacts, $tasks, $events, &$items) {
             include_once "$fnsDir/Page/imageArrowLink.php";
             foreach ($tasks as $task) {
 
-                if ($task->top_priority) $icon = 'top-priority-task';
+                if ($task->top_priority) $icon = 'task-top-priority';
                 else $icon = 'task';
 
                 $title = '<span class="event-grey">Deadline of </span>'
