@@ -23,12 +23,12 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="11.313708"
-     inkscape:cx="878.92399"
-     inkscape:cy="12.773861"
+     inkscape:zoom="1"
+     inkscape:cx="840.6997"
+     inkscape:cy="10.900125"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
-     showgrid="true"
+     showgrid="false"
      inkscape:window-width="1920"
      inkscape:window-height="1044"
      inkscape:window-x="1920"
@@ -4071,6 +4071,22 @@
            d="m 912.81399,1064.6564 c 0,0 -0.19581,-0.4859 -0.68169,-0.2901 -0.48589,0.1958 -1.45767,0.5874 -1.45767,0.5874 0,0 -0.48589,0.1958 -0.29008,0.6817 0.19581,0.4859 0.19581,0.4859 0.39161,0.9718 0.19581,0.4859 0.6817,0.2901 0.6817,0.2901 l 1.45766,-0.5875 c 0,0 0.48589,-0.1958 0.6817,0.2901 0.19581,0.4859 0.19581,0.4859 0.39161,0.9718 0.19581,0.4859 -0.29008,0.6817 -0.29008,0.6817 0,0 -0.97177,0.3916 -1.45766,0.5874 -0.48589,0.1958 -0.6817,-0.2901 -0.6817,-0.2901"
            style="fill:none;stroke:#1384e2;stroke-width:1.10021842;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
       </g>
+    </g>
+    <g
+       id="g4405"
+       transform="matrix(1.1912189,-0.47974264,0.47974264,1.1912189,-171.56127,1393.8906)">
+      <path
+         style="fill:none;stroke:#ffffff;stroke-width:3.11479306;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         d="m 821.4,35.600004 c 0,0 0,-1.000004 0,-1.500004 0,-0.5 -0.5,-0.499996 -0.5,-0.499996 0,0 -0.5,-4e-6 -0.5,0.499996 0,0.5 0,0.5 0,1 0,0.5 0.5,0.500004 0.5,0.500004 l 2.4,0 c 0,0 0.5,-4e-6 0.5,-0.500004 0,-0.5 0,0.1 0,-1.9 0,-2 -2,-2 -2,-2 l -1.8,0 c 0,0 -2,0 -2,2 0,2 0,0.8 0,2.8 0,2 2,2 2,2 l 2,0"
+         id="path4403"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="czzcczscczzczc" />
+      <path
+         sodipodi:nodetypes="czzcczscczzczc"
+         inkscape:connector-curvature="0"
+         id="path3576"
+         d="m 821.4,35.600004 c 0,0 0,-1.000004 0,-1.500004 0,-0.5 -0.5,-0.499996 -0.5,-0.499996 0,0 -0.5,-4e-6 -0.5,0.499996 0,0.5 0,0.5 0,1 0,0.5 0.5,0.500004 0.5,0.500004 l 2.4,0 c 0,0 0.5,-4e-6 0.5,-0.500004 0,-0.5 0,0.1 0,-1.9 0,-2 -2,-2 -2,-2 l -1.8,0 c 0,0 -2,0 -2,2 0,2 0,0.8 0,2.8 0,2 2,2 2,2 l 2,0"
+         style="fill:none;stroke:#1384e2;stroke-width:1.09017754;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
     </g>
   </g>
 </svg>
