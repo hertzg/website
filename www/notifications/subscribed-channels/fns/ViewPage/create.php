@@ -27,7 +27,7 @@ function create ($subscribedChannel) {
     $author = format_author($insert_time, $api_key_name);
     $infoText =
         ($channel_public ? 'Public' : 'Private').' channel.<br />'
-        .'You are '.($receive_notifications ? '' : 'not ')
+        .'You are '.($receive_notifications ? '' : 'NOT ')
         .' receiving notifications from this channel.<br />'
         ."Subscribed $author.";
     if ($insert_time != $update_time) {

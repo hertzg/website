@@ -13,7 +13,7 @@ function create ($channel) {
     $author = format_author($insert_time, $channel->insert_api_key_name);
     $text =
         ($channel->public ? 'Public' : 'Private').' channel.<br />'
-        .'You are '.($channel->receive_notifications ? '' : 'not ')
+        .'You are '.($channel->receive_notifications ? '' : 'NOT ')
         .' receiving notifications from this channel.<br />'
         ."Channel created $author.";
     if ($insert_time != $update_time) {
