@@ -15,11 +15,13 @@ list($text, $tags, $tag_names, $encrypt) = request_note_params($errors);
 include_once '../../fns/ItemList/itemQuery.php';
 $itemQuery = ItemList\itemQuery($id);
 
-$_SESSION['notes/edit/values'] = [
+$values = [
     'text' => $text,
     'tags' => $tags,
     'encrypt' => $encrypt,
 ];
+
+$_SESSION['notes/edit/values'] = $values;
 
 include_once '../../fns/redirect.php';
 
@@ -32,7 +34,15 @@ unset($_SESSION['notes/edit/errors']);
 
 include_once '../../fns/request_strings.php';
 list($sendButton) = request_strings('sendButton');
-if ($sendButton) redirect("send/$itemQuery");
+if ($sendButton) {
+    unset(
+        $_SESSION['notes/edit/send/errors'],
+        $_SESSION['notes/edit/send/messages'],
+        $_SESSION['notes/edit/send/values']
+    );
+    $_SESSION['notes/edit/send/note'] = $values;
+    redirect("send/$itemQuery");
+}
 
 unset($_SESSION['notes/edit/values']);
 

@@ -5,7 +5,7 @@ function require_stage ($mysqli, $base = '') {
     include_once __DIR__.'/../../../fns/require_bookmark.php';
     list($bookmark, $id, $user) = require_bookmark($mysqli, "$base../");
 
-    $key = 'bookmarks/edit/values';
+    $key = 'bookmarks/edit/send/bookmark';
     if (!array_key_exists($key, $_SESSION)) {
         $fnsDir = __DIR__.'/../../../../fns';
         include_once "$fnsDir/redirect.php";

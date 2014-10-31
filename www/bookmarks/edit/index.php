@@ -8,12 +8,7 @@ $key = 'bookmarks/edit/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else $values = (array)$bookmark;
 
-unset(
-    $_SESSION['bookmarks/edit/send/errors'],
-    $_SESSION['bookmarks/edit/send/messages'],
-    $_SESSION['bookmarks/edit/send/values'],
-    $_SESSION['bookmarks/view/messages']
-);
+unset($_SESSION['bookmarks/view/messages']);
 
 include_once '../fns/create_form_items.php';
 include_once '../../fns/Form/button.php';

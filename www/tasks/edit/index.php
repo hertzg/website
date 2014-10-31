@@ -28,12 +28,7 @@ else {
 
 }
 
-unset(
-    $_SESSION['tasks/edit/send/errors'],
-    $_SESSION['tasks/edit/send/messages'],
-    $_SESSION['tasks/edit/send/values'],
-    $_SESSION['tasks/view/messages']
-);
+unset($_SESSION['tasks/view/messages']);
 
 $base = '../../';
 

@@ -17,7 +17,7 @@ list($text, $deadline_day, $deadline_month, $deadline_year,
 include_once '../../fns/ItemList/itemQuery.php';
 $itemQuery = ItemList\itemQuery($id);
 
-$_SESSION['tasks/edit/values'] = [
+$values = [
     'text' => $text,
     'deadline_day' => $deadline_day,
     'deadline_month' => $deadline_month,
@@ -26,6 +26,8 @@ $_SESSION['tasks/edit/values'] = [
     'tags' => $tags,
     'top_priority' => $top_priority,
 ];
+
+$_SESSION['tasks/edit/values'] = $values;
 
 include_once '../../fns/redirect.php';
 
@@ -38,7 +40,15 @@ unset($_SESSION['tasks/edit/errors']);
 
 include_once '../../fns/request_strings.php';
 list($sendButton) = request_strings('sendButton');
-if ($sendButton) redirect("send/$itemQuery");
+if ($sendButton) {
+    unset(
+        $_SESSION['tasks/edit/send/errors'],
+        $_SESSION['tasks/edit/send/messages'],
+        $_SESSION['tasks/edit/send/values']
+    );
+    $_SESSION['tasks/edit/send/task'] = $values;
+    redirect("send/$itemQuery");
+}
 
 unset($_SESSION['tasks/edit/values']);
 
