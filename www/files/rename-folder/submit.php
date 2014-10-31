@@ -26,7 +26,8 @@ if ($name === '') {
 
 }
 
-$_SESSION['files/rename-folder/values'] = ['name' => $name];
+$values = ['name' => $name];
+$_SESSION['files/rename-folder/values'] = $values;
 
 include_once '../../fns/redirect.php';
 
@@ -39,7 +40,15 @@ unset($_SESSION['files/rename-folder/errors']);
 
 include_once '../../fns/request_strings.php';
 list($sendButton) = request_strings('sendButton');
-if ($sendButton) redirect("send/?id_folders=$id_folders");
+if ($sendButton) {
+    unset(
+        $_SESSION['files/rename-folder/send/errors'],
+        $_SESSION['files/rename-folder/send/messages'],
+        $_SESSION['files/rename-folder/send/values']
+    );
+    $_SESSION['files/rename-folder/send/folder'] = $values;
+    redirect("send/?id_folders=$id_folders");
+}
 
 unset($_SESSION['files/rename-folder/values']);
 

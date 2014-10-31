@@ -24,7 +24,8 @@ else {
 
 }
 
-$_SESSION['files/rename-file/values'] = ['name' => $name];
+$values = ['name' => $name];
+$_SESSION['files/rename-file/values'] = $values;
 
 include_once '../../fns/redirect.php';
 
@@ -37,7 +38,15 @@ unset($_SESSION['files/rename-file/errors']);
 
 include_once '../../fns/request_strings.php';
 list($sendButton) = request_strings('sendButton');
-if ($sendButton) redirect("send/?id=$id");
+if ($sendButton) {
+    unset(
+        $_SESSION['files/rename-file/send/errors'],
+        $_SESSION['files/rename-file/send/messages'],
+        $_SESSION['files/rename-file/send/values']
+    );
+    $_SESSION['files/rename-file/send/file'] = $values;
+    redirect("send/?id=$id");
+}
 
 unset($_SESSION['files/rename-file/values']);
 

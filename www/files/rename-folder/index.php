@@ -11,10 +11,7 @@ else $values = (array)$folder;
 unset(
     $_SESSION['files/errors'],
     $_SESSION['files/id_folders'],
-    $_SESSION['files/messages'],
-    $_SESSION['files/rename-folder/send/errors'],
-    $_SESSION['files/rename-folder/send/messages'],
-    $_SESSION['files/rename-folder/send/values']
+    $_SESSION['files/messages']
 );
 
 include_once '../../fns/create_folder_link.php';
