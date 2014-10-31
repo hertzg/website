@@ -11,13 +11,11 @@ list($text, $interval, $tags, $tag_names) = request_first_stage($errors);
 
 include_once '../../fns/redirect.php';
 
-$values = [
+$_SESSION['schedules/new/values'] = [
     'text' => $text,
     'interval' => $interval,
     'tags' => $tags,
 ];
-
-$_SESSION['schedules/new/values'] = $values;
 
 if ($errors) {
     $_SESSION['schedules/new/errors'] = $errors;
