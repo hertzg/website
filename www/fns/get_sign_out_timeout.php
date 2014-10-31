@@ -1,5 +1,5 @@
 <?php
 
 function get_sign_out_timeout () {
-    return 60;
+    return 30;
 }

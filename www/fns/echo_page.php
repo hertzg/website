@@ -61,9 +61,11 @@ function echo_page ($user, $title, $content, $base, $options = []) {
 
     if ($user) {
 
+        include_once __DIR__.'/get_sign_out_timeout.php';
         $body .=
             compressed_js_script('confirmDialog', $base)
             .'<script type="text/javascript">'
+                .'var signOutTimeout = '.get_sign_out_timeout().';'
                 .'var signOutHref = '.json_encode("{$base}sign-out/submit.php")
             .'</script>'
             .compressed_js_script('signOutConfirm', $base);
