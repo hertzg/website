@@ -1,0 +1,8 @@
+li.ok {
+    color: #080;
+}
+
+li.not_ok {
+    font-weight: bold;
+    color: #c00;
+}
