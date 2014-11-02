@@ -1,7 +1,7 @@
 <?php
 
 function get_admin (&$username, &$hash, &$salt) {
-    $username = 'admin';
-    $hash = 'f26643619fc99ec3b6f0b2f1422b1391';
-    $salt = '07dd459f7ce5b734fed1d9329bd22b836d76c3fcd357a57220df121b3880fe6b';
+    $username = 'admin1';
+    $hash = 'c1f357e8feedf7f96b08ded4193c9fa0';
+    $salt = '5573db135ca1e56f0a6c896948c156cc069ba394176a2d3fdb6670e7284935ca';
 }

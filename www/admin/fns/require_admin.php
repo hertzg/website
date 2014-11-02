@@ -18,7 +18,12 @@ function require_admin () {
     $hash = hex2bin($hash);
     $salt = hex2bin($salt);
 
-    include_once __DIR__.'/../../fns/Password/match.php';
+    $fnsDir = __DIR__.'/../../fns';
+
+    include_once "$fnsDir/Password/match.php";
     if (!Password\match($hash, $salt, $_SERVER['PHP_AUTH_PW'])) $invalid();
+
+    include_once "$fnsDir/session_start_custom.php";
+    session_start_custom();
 
 }
