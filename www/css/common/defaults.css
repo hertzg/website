@@ -1,3 +1,15 @@
+@font-face {
+    font-family: FreeMono;
+    src: url(../../fonts/FreeMono.ttf);
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: FreeMono;
+    src: url(../../fonts/FreeMonoBold.ttf);
+    font-weight: bold;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -56,10 +68,10 @@ label {
 }
 
 code {
-    font-family: monospace;
+    font-family: FreeMono, monospace;
     font-weight: bold;
 }
 
 pre {
-    font-family: monospace;
+    font-family: FreeMono, monospace;
 }
