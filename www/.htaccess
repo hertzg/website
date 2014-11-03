@@ -4,7 +4,7 @@ RewriteEngine On
 RewriteCond %{HTTP_HOST} ^www\.zvini\.com$
 RewriteRule (.*) http://zvini.com/$1 [R=301,L]
 
-<filesMatch "\.(css|js|svg)$">
+<filesMatch "\.(css|js|png|svg|ttf)$">
     Header set Cache-Control "public, max-age=2592000"
 </filesMatch>
 
