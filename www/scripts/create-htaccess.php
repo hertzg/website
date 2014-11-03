@@ -31,7 +31,7 @@ if ($site_protocol == 'https' && $forceHttps) {
         ."\n";
 }
 $content .=
-    "<filesMatch \"\.(css|js|svg)$\">\n"
+    "<filesMatch \"\.(css|js|png|svg|ttf)$\">\n"
     ."    Header set Cache-Control \"public, max-age=2592000\"\n"
     ."</filesMatch>\n"
     ."\n"
