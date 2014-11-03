@@ -1,14 +1,14 @@
 @font-face {
     font-family: FreeMono;
     src: url(../../fonts/FreeMono.ttf);
-    src: local('FreeMono') url(../../fonts/FreeMono.ttf);
+    src: local('FreeMono'), url(../../fonts/FreeMono.ttf);
     font-weight: normal;
 }
 
 @font-face {
     font-family: FreeMono;
     src: url(../../fonts/FreeMonoBold.ttf);
-    src: local('FreeMonoBold') url(../../fonts/FreeMonoBold.ttf);
+    src: local('FreeMono Bold'), url(../../fonts/FreeMonoBold.ttf);
     font-weight: bold;
 }
 
