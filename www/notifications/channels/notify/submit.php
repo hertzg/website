@@ -7,12 +7,8 @@ include_once '../fns/require_channel.php';
 include_once '../../../lib/mysqli.php';
 list($channel, $id, $user) = require_channel($mysqli);
 
-include_once '../../../fns/request_strings.php';
-list($text) = request_strings('text');
-
-include_once '../../../fns/str_collapse_spaces_multiline.php';
-$text = str_collapse_spaces_multiline($text);
-$text = trim($text);
+include_once '../../../fns/request_text.php';
+$text = request_text('text');
 
 $errors = [];
 

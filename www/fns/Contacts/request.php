@@ -8,9 +8,9 @@ function request () {
 
     include_once "$fnsDir/request_strings.php";
     list($full_name, $alias, $address, $email, $phone1,
-        $phone2, $username, $timezone, $notes, $favorite) = request_strings(
+        $phone2, $username, $timezone, $favorite) = request_strings(
         'full_name', 'alias', 'address', 'email', 'phone1',
-        'phone2', 'username', 'timezone', 'notes', 'favorite');
+        'phone2', 'username', 'timezone', 'favorite');
 
     include_once "$fnsDir/str_collapse_spaces.php";
     $full_name = str_collapse_spaces($full_name);
@@ -27,8 +27,8 @@ function request () {
         if (!\Timezone\isValid($timezone)) $timezone = null;
     }
 
-    include_once "$fnsDir/str_collapse_spaces_multiline.php";
-    $notes = str_collapse_spaces_multiline($notes);
+    include_once "$fnsDir/request_text.php";
+    $notes = request_text('notes');
 
     $favorite = (bool)$favorite;
 
