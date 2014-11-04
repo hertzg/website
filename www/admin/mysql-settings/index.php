@@ -28,13 +28,17 @@ if ($username === '') {
 if ($password === '') {
     $password = '<span class="form-label-default">None</span>';
 } else {
+    $password = preg_replace('/./', '*', $password);
     $password = htmlspecialchars($password);
 }
 
 include_once "$fnsDir/create_panel.php";
 include_once "$fnsDir/Form/label.php";
 include_once "$fnsDir/Page/imageArrowLink.php";
+include_once "$fnsDir/Page/imageLink.php";
+include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/sessionMessages.php";
+include_once "$fnsDir/Page/staticTwoColumns.php";
 include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
     [
@@ -44,7 +48,8 @@ $content = Page\tabs(
         ],
     ],
     'MySQL Settings',
-    Page\sessionMessages('admin/mysql-settings/messages')
+    Page\sessionErrors('admin/mysql-settings/errors')
+    .Page\sessionMessages('admin/mysql-settings/messages')
     .Form\label('Host', $host)
     .'<div class="hr"></div>'
     .Form\label('Username', $username)
@@ -54,7 +59,10 @@ $content = Page\tabs(
     .Form\label('Database', htmlspecialchars($db))
     .create_panel(
         'Options',
-        Page\imageArrowLink('Edit', 'edit/', 'none')
+        Page\staticTwoColumns(
+            Page\imageArrowLink('Edit', 'edit/', 'none'),
+            Page\imageLink('Test', 'submit-test.php', 'none')
+        )
     )
 );
 

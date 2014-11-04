@@ -3,7 +3,10 @@
 include_once '../../fns/require_admin.php';
 require_admin();
 
-unset($_SESSION['admin/mysql-settings/messages']);
+unset(
+    $_SESSION['admin/mysql-settings/errors'],
+    $_SESSION['admin/mysql-settings/messages']
+);
 
 $fnsDir = '../../../fns';
 
@@ -24,6 +27,7 @@ else {
 }
 
 include_once "$fnsDir/Form/button.php";
+include_once "$fnsDir/Form/password.php";
 include_once "$fnsDir/Form/textfield.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/tabs.php";
@@ -46,7 +50,7 @@ $content = Page\tabs(
             'value' => $values['username'],
         ])
         .'<div class="hr"></div>'
-        .Form\textfield('password', 'Password', [
+        .Form\password('password', 'Password', [
             'value' => $values['password'],
         ])
         .'<div class="hr"></div>'
