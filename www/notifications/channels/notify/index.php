@@ -13,6 +13,7 @@ include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/hidden.php";
 include_once "$fnsDir/Form/textarea.php";
+include_once "$fnsDir/Notifications/maxLengths.php";
 include_once "$fnsDir/Page/tabs.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 $content =
@@ -27,6 +28,7 @@ $content =
         Page\sessionErrors('notifications/channels/notify/errors')
         .'<form action="submit.php" method="post">'
             .Form\textarea('text', 'Text', [
+                'maxlength' => Notifications\maxLengths()['text'],
                 'required' => true,
                 'autofocus' => true,
             ])
