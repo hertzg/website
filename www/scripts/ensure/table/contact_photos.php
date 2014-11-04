@@ -3,19 +3,7 @@
 
 chdir(__DIR__);
 include_once '../../../../lib/cli.php';
+include_once '../../../lib/mysqli.php';
 
-include_once 'fns/ensure_table.php';
-include_once '../../../fns/Tag/maxLength.php';
-ensure_table('contact_photos', [
-    'id' => [
-        'type' => 'bigint(20) unsigned',
-        'primary' => true,
-    ],
-    'insert_time' => [
-        'type' => 'bigint(20) unsigned',
-    ],
-    'num_refs' => [
-        'type' => 'bigint(20) unsigned',
-    ],
-]);
-
+include_once '../../../fns/ContactPhotos/ensure.php';
+echo ContactPhotos\ensure($mysqli);
