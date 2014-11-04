@@ -42,6 +42,10 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.form-label-default {
+    font-style: italic;
+    color: #555;
+}
 
 .form-notes {
     font-size: 12px;

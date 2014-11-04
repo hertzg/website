@@ -3,12 +3,38 @@
 include_once '../fns/require_admin.php';
 require_admin();
 
+unset(
+    $_SESSION['admin/mysql-settings/edit/errors'],
+    $_SESSION['admin/mysql-settings/edit/values']
+);
+
 $fnsDir = '../../fns';
 
 include_once "$fnsDir/get_mysqli_config.php";
 get_mysqli_config($host, $username, $password, $db);
 
-include_once "$fnsDir/Form/textfield.php";
+if ($host === '') {
+    $host = '<span class="form-label-default">Default</span>';
+} else {
+    $host = htmlspecialchars($host);
+}
+
+if ($username === '') {
+    $username = '<span class="form-label-default">Default</span>';
+} else {
+    $username = htmlspecialchars($username);
+}
+
+if ($password === '') {
+    $password = '<span class="form-label-default">None</span>';
+} else {
+    $password = htmlspecialchars($password);
+}
+
+include_once "$fnsDir/create_panel.php";
+include_once "$fnsDir/Form/label.php";
+include_once "$fnsDir/Page/imageArrowLink.php";
+include_once "$fnsDir/Page/sessionMessages.php";
 include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
     [
@@ -18,21 +44,18 @@ $content = Page\tabs(
         ],
     ],
     'MySQL Settings',
-    Form\textfield('host', 'Host', [
-        'value' => $host,
-    ])
+    Page\sessionMessages('admin/mysql-settings/messages')
+    .Form\label('Host', $host)
     .'<div class="hr"></div>'
-    .Form\textfield('username', 'Username', [
-        'value' => $username,
-    ])
+    .Form\label('Username', $username)
     .'<div class="hr"></div>'
-    .Form\textfield('password', 'Password', [
-        'value' => $password,
-    ])
+    .Form\label('Password', $password)
     .'<div class="hr"></div>'
-    .Form\textfield('db', 'Database', [
-        'value' => $db,
-    ])
+    .Form\label('Database', htmlspecialchars($db))
+    .create_panel(
+        'Options',
+        Page\imageArrowLink('Edit', 'edit/', 'none')
+    )
 );
 
 include_once "$fnsDir/echo_guest_page.php";

@@ -2,24 +2,24 @@
 
 function assert_readable_file ($file) {
     $file = resolve_path($file);
-    $ok = is_file($file);
-    return visual_assert($ok, "File \"$file\" exists");
+    return
+        visual_assert(is_file($file), "File \"$file\" exists")
+        .visual_assert(is_readable($file), "File \"$file\" readable");
+}
+
+function assert_writable_file ($file) {
+    $file = realpath($file);
+    return
+        visual_assert(is_file($file), "File \"$file\" exists")
+        .visual_assert(is_readable($file), "File \"$file\" readable")
+        .visual_assert(is_writable($file), "File \"$file\" writable");
 }
 
 function assert_writable_dir ($dir) {
-
     $dir = resolve_path($dir);
-
-    $ok = is_dir($dir);
-    $content = visual_assert($ok, "Directory \"$dir\" exists");
-
-    $file = "$dir/test";
-    $ok = @file_put_contents($file, 'test');
-    if ($ok) unlink($file);
-    $content .= visual_assert($ok, "Directory \"$dir\" writable");
-
-    return $content;
-
+    return
+        visual_assert(is_dir($dir), "Directory \"$dir\" exists")
+        .visual_assert(is_writable($dir), "Directory \"$dir\" writable");
 }
 
 function resolve_path ($path) {
@@ -62,6 +62,9 @@ $content .= visual_assert($ok, 'PHP image processing and GD installed');
 
 $ok = function_exists('mysqli_connect');
 $content .= visual_assert($ok, 'PHP MySQL improved extension installed');
+
+$content .= assert_writable_file('../fns/get_admin.php');
+$content .= assert_writable_file('../../fns/get_mysqli_config.php');
 
 include_once '../../fns/Users/Directory/dir.php';
 assert_writable_dir(Users\Directory\dir());

@@ -51,8 +51,13 @@ if (!$errors) {
 
     $filename = '../fns/get_admin.php';
     $ok = @file_put_contents($filename, $content);
-    if ($ok) opcache_invalidate($filename);
-    else $errors[] = 'Failed to save the data.';
+    if ($ok) {
+        if (function_exists('opcache_invalidate')) {
+            opcache_invalidate($filename);
+        }
+    } else {
+        $errors[] = 'Failed to save the data.';
+    }
 
 }
 
