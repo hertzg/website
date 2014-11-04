@@ -61,6 +61,7 @@ $content =
             .ItemList\Received\itemHiddenInputs($id)
         .'</form>'
     )
+    .compressed_js_script('flexTextarea', $base)
     .compressed_js_script('formCheckbox', $base);
 
 include_once "$fnsDir/echo_page.php";

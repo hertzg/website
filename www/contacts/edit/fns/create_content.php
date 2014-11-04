@@ -2,6 +2,7 @@
 
 function create_content ($id, $values) {
 
+    $base = '../../';
     $fnsDir = __DIR__.'/../../../fns';
 
     include_once __DIR__.'/../../fns/create_form_items.php';
@@ -32,6 +33,7 @@ function create_content ($id, $values) {
                 .ItemList\itemHiddenInputs($id)
             .'</form>'
         )
-        .compressed_js_script('formCheckbox', '../../');
+        .compressed_js_script('flexTextarea', $base)
+        .compressed_js_script('formCheckbox', $base);
 
 }

@@ -30,13 +30,8 @@ else {
 
 unset($_SESSION['tasks/view/messages']);
 
-$base = '../../';
-
 include_once 'fns/create_content.php';
-include_once '../../fns/compressed_js_script.php';
-$content =
-    create_content($id, $values)
-    .compressed_js_script('formCheckbox', $base);
+$content = create_content($id, $values);
 
 include_once '../../fns/echo_page.php';
-echo_page($user, "Edit Task #$id", $content, $base);
+echo_page($user, "Edit Task #$id", $content, '../../');

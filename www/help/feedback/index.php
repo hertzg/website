@@ -1,6 +1,9 @@
 <?php
 
-include_once '../../fns/signed_user.php';
+$base = '../../';
+$fnsDir = '../../fns';
+
+include_once "$fnsDir/signed_user.php";
 $user = signed_user();
 
 $key = 'help/feedback/values';
@@ -9,35 +12,38 @@ else $values = ['text' => ''];
 
 unset($_SESSION['help/messages']);
 
-include_once '../../fns/Feedbacks/maxLengths.php';
+include_once "$fnsDir/Feedbacks/maxLengths.php";
 $maxLengths = Feedbacks\maxLengths();
 
-include_once '../../fns/Form/button.php';
-include_once '../../fns/Form/notes.php';
-include_once '../../fns/Form/textarea.php';
-include_once '../../fns/Page/sessionErrors.php';
-include_once '../../fns/Page/tabs.php';
-$content = Page\tabs(
-    [
+include_once "$fnsDir/compressed_js_script.php";
+include_once "$fnsDir/Form/button.php";
+include_once "$fnsDir/Form/notes.php";
+include_once "$fnsDir/Form/textarea.php";
+include_once "$fnsDir/Page/sessionErrors.php";
+include_once "$fnsDir/Page/tabs.php";
+$content =
+    Page\tabs(
         [
-            'title' => 'Help',
-            'href' => '..',
+            [
+                'title' => 'Help',
+                'href' => '..',
+            ],
         ],
-    ],
-    'Feedback',
-    Page\sessionErrors('help/feedback/errors')
-    .'<form action="submit.php" method="post">'
-        .Form\textarea('text', 'Text', [
-            'value' => $values['text'],
-            'maxlength' => $maxLengths['text'],
-            'autofocus' => true,
-            'required' => true,
-        ])
-        .Form\notes(['Minimum 6 words.'])
-        .'<div class="hr"></div>'
-        .Form\button('Submit Feedback')
-    .'</form>'
-);
+        'Feedback',
+        Page\sessionErrors('help/feedback/errors')
+        .'<form action="submit.php" method="post">'
+            .Form\textarea('text', 'Text', [
+                'value' => $values['text'],
+                'maxlength' => $maxLengths['text'],
+                'autofocus' => true,
+                'required' => true,
+            ])
+            .Form\notes(['Minimum 6 words.'])
+            .'<div class="hr"></div>'
+            .Form\button('Submit Feedback')
+        .'</form>'
+    )
+    .compressed_js_script('flexTextarea', $base);
 
-include_once '../../fns/echo_page.php';
-echo_page($user, 'Leave Feedback', $content, '../../');
+include_once "$fnsDir/echo_page.php";
+echo_page($user, 'Leave Feedback', $content, $base);

@@ -2,6 +2,7 @@
 
 function create_content ($id, $values) {
 
+    $base = '../../../';
     $fnsDir = __DIR__.'/../../../../fns';
 
     include_once "$fnsDir/ItemList/Received/escapedItemQuery.php";
@@ -31,5 +32,6 @@ function create_content ($id, $values) {
                 .ItemList\Received\itemHiddenInputs($id)
             .'</form>'
         )
-        .compressed_js_script('formCheckbox', '../../../');
+        .compressed_js_script('flexTextarea', $base)
+        .compressed_js_script('formCheckbox', $base);
 }
