@@ -3,8 +3,11 @@
 namespace Connections;
 
 function ensure ($mysqli) {
-    include_once __DIR__.'/../Table/ensure.php';
-    include_once __DIR__.'/../Username/maxLength.php';
+
+    $fnsDir = __DIR__.'/..';
+
+    include_once "$fnsDir/Table/ensure.php";
+    include_once "$fnsDir/Username/maxLength.php";
     return \Table\ensure($mysqli, 'connections', [
         'can_send_bookmark' => [
             'type' => 'tinyint(3) unsigned',
@@ -49,4 +52,5 @@ function ensure ($mysqli) {
             'collation' => 'ascii_bin',
         ],
     ]);
+
 }

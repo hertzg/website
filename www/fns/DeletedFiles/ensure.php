@@ -4,10 +4,12 @@ namespace DeletedFiles;
 
 function ensure ($mysqli) {
 
-    include_once __DIR__.'/../Files/maxLengths.php';
+    $fnsDir = __DIR__.'/..';
+
+    include_once "$fnsDir/Files/maxLengths.php";
     $maxLengths = \Files\maxLengths();
 
-    include_once __DIR__.'/../Table/ensure.php';
+    include_once "$fnsDir/Table/ensure.php";
     return \Table\ensure($mysqli, 'deleted_files', [
         'content_type' => [
             'type' => "varchar($maxLengths[content_type])",

@@ -4,11 +4,13 @@ namespace BookmarkTags;
 
 function ensure ($mysqli) {
 
-    include_once __DIR__.'/../Bookmarks/maxLengths.php';
+    $fnsDir = __DIR__.'/..';
+
+    include_once "$fnsDir/Bookmarks/maxLengths.php";
     $maxLengths = \Bookmarks\maxLengths();
 
-    include_once __DIR__.'/../Table/ensure.php';
-    include_once __DIR__.'/../Tag/maxLength.php';
+    include_once "$fnsDir/Table/ensure.php";
+    include_once "$fnsDir/Tag/maxLength.php";
     return \Table\ensure($mysqli, 'bookmark_tags', [
         'id' => [
             'type' => 'bigint(20) unsigned',

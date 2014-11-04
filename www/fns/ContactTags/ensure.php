@@ -4,11 +4,13 @@ namespace ContactTags;
 
 function ensure ($mysqli) {
 
-    include_once __DIR__.'/../Contacts/maxLengths.php';
+    $fnsDir = __DIR__.'/..';
+
+    include_once "$fnsDir/Contacts/maxLengths.php";
     $maxLengths = \Contacts\maxLengths();
 
-    include_once __DIR__.'/../Table/ensure.php';
-    include_once __DIR__.'/../Tag/maxLength.php';
+    include_once "$fnsDir/Table/ensure.php";
+    include_once "$fnsDir/Tag/maxLength.php";
     return \Table\ensure($mysqli, 'contact_tags', [
         'alias' => [
             'type' => "varchar($maxLengths[alias])",
