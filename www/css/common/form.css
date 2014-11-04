@@ -40,9 +40,7 @@
 .form-label {
     padding: 15px 16px;
     line-height: 18px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: normal;
 }
 .form-label-default {
     font-style: italic;
