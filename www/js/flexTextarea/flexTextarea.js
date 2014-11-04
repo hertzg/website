@@ -20,8 +20,9 @@
         wrapperElement.style.visibility = 'hidden'
         wrapperElement.appendChild(invisibleTextarea)
 
-        document.body.appendChild(wrapperElement)
+        textarea.style.resize = 'none'
         textarea.addEventListener('input', update)
+        document.body.appendChild(wrapperElement)
         addEventListener('resize', update)
         update()
 

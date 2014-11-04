@@ -17,8 +17,10 @@
     font-weight: bold;
     cursor: text;
     height: 100px;
+    min-height: 100px;
     vertical-align: top;
     padding: 12px 14px;
+    resize: vertical;
 }
 
 .form-filefield {
