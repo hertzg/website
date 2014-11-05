@@ -111,6 +111,7 @@ code {
     width: 100px;
     text-align: center;
     margin-left: 32px;
+    cursor: pointer;
 }
 .button:focus {
     box-shadow: 0 0 1px 2px #f80;
