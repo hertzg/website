@@ -51,8 +51,8 @@ function ensure ($mysqli, $tableName, $columns) {
             if ($type === $existingType &&
                 $nullable === $existingNullable) continue;
 
-            $output .= "change column $tableName.$columnName"
-                ." from $existingType to $type...\n";
+            $output .= "Change column \"$tableName.$columnName\""
+                ." from $existingType to $type.\n";
 
             $escapedColumnName = $mysqli->real_escape_string($columnName);
             $sql = "alter table `$escapedTableName` change `$escapedColumnName`"
@@ -63,7 +63,7 @@ function ensure ($mysqli, $tableName, $columns) {
         }
 
         foreach ($columns as $name => $column) {
-            $output .= "add column $tableName.$name...\n";
+            $output .= "Add column \"$tableName.$name\".\n";
             $escapedName = $mysqli->real_escape_string($name);
             $definition = columnDefinition($column);
             $sql = "alter table `$escapedTableName`"
@@ -72,7 +72,7 @@ function ensure ($mysqli, $tableName, $columns) {
         }
 
     } else {
-        $output .= "create table $tableName\n";
+        $output .= "Create table \"$tableName\".\n";
         $sql = "create table `$escapedTableName` (";
         $first = true;
         foreach ($columns as $name => $column) {
@@ -86,7 +86,7 @@ function ensure ($mysqli, $tableName, $columns) {
         $mysqli->query($sql) || trigger_error($mysqli->error);
     }
 
-    if ($output === '') $output .= "table $tableName already up-to-date\n";
+    if ($output === '') $output .= "Nothing to do for the table \"$tableName\".\n";
     return $output;
 
 }

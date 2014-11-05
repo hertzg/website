@@ -19,6 +19,8 @@ $content = Page\tabs(
     Page\sessionMessages('admin/messages')
     .Page\imageArrowLink('MySQL Settings', 'mysql-settings/', 'none')
     .'<div class="hr"></div>'
+    .Page\imageArrowLink('Ensure Tables', 'ensure-tables/', 'none')
+    .'<div class="hr"></div>'
     .Page\imageArrowLink('Check Installation', 'check-installation/', 'none')
     .'<div class="hr"></div>'
     .Page\imageArrowLink('Set New Username/Password', 'username-password/', 'none')

@@ -4,7 +4,7 @@ namespace TaskTags;
 
 function ensure ($mysqli) {
 
-    $fnsDir = '../../../fns';
+    $fnsDir = __DIR__.'/..';
 
     include_once "$fnsDir/Tasks/maxLengths.php";
     $maxLengths = \Tasks\maxLengths();
