@@ -6,8 +6,8 @@ function ensure ($mysqli, $tableName, $columns) {
 
     $fnsDir = __DIR__.'/..';
 
-    include_once "$fnsDir/get_mysqli_config.php";
-    get_mysqli_config($host, $user, $password, $db);
+    include_once "$fnsDir/mysqli_single_object.php";
+    $db = mysqli_single_object($mysqli, 'select database() db')->db;
 
     $escapedDb = $mysqli->real_escape_string($db);
     $escapedTableName = $mysqli->real_escape_string($tableName);
