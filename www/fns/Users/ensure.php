@@ -4,12 +4,10 @@ namespace Users;
 
 function ensure ($mysqli) {
 
-    $fnsDir = __DIR__.'/..';
+    include_once __DIR__.'/maxLengths.php';
+    $maxLengths = maxLengths();
 
-    include_once "$fnsDir/Email/maxLength.php";
-    include_once "$fnsDir/FullName/maxLength.php";
-    include_once "$fnsDir/Table/ensure.php";
-    include_once "$fnsDir/Username/maxLength.php";
+    include_once __DIR__.'/../Table/ensure.php';
     return \Table\ensure($mysqli, 'users', [
         'anonymous_can_send_bookmark' => [
             'type' => 'tinyint(3) unsigned',
@@ -33,7 +31,7 @@ function ensure ($mysqli) {
             'type' => 'bigint(20) unsigned',
         ],
         'email' => [
-            'type' => 'varchar('.\Email\maxLength().')',
+            'type' => "varchar($maxLengths[email])",
             'characterSet' => 'ascii',
             'collation' => 'ascii_bin',
         ],
@@ -44,7 +42,7 @@ function ensure ($mysqli) {
             'type' => 'bigint(20) unsigned',
         ],
         'full_name' => [
-            'type' => 'varchar('.\FullName\maxLength().')',
+            'type' => "varchar($maxLengths[full_name])",
             'characterSet' => 'utf8',
             'collation' => 'utf8_unicode_ci',
         ],
@@ -261,7 +259,7 @@ function ensure ($mysqli) {
             'type' => 'int(11)',
         ],
         'username' => [
-            'type' => 'varchar('.\Username\maxLength().')',
+            'type' => "varchar($maxLengths[username])",
             'characterSet' => 'ascii',
             'collation' => 'ascii_bin',
         ],

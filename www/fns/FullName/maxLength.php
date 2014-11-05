@@ -3,5 +3,5 @@
 namespace FullName;
 
 function maxLength () {
-    return 32;
+    return 64;
 }
