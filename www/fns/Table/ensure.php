@@ -86,6 +86,7 @@ function ensure ($mysqli, $tableName, $columns) {
         $mysqli->query($sql) || trigger_error($mysqli->error);
     }
 
+    if ($output === '') $output .= "table $tableName already up-to-date\n";
     return $output;
 
 }
