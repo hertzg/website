@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font: inherit;
+    color: inherit;
+    cursor: inherit;
+    background: transparent;
+    text-decoration: none;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+*::-moz-focus-inner {
+    border: 0;
+}
+
+html, body {
+    font: normal 16px/24px Arial, sans-serif;
+    cursor: default;
+    background: #444;
+    color: #fff;
+    height: 100%;
+}
+
+h1 {
+    font-weight: bold;
+    color: #aaa;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #555;
+}
+
+h2 {
+    font-weight: bold;
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+a {
+    cursor: pointer;
+}
+
+li {
+    display: block;
+}
+
+code {
+    font-family: FreeMono, monospace;
+}
+
+.page {
+    height: 100%;
+    padding: 32px;
+    text-align: center;
+    white-space: nowrap;
+}
+.page-aligner {
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+.page-content {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: left;
+}
+.page-icon {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 16px;
+    font-size: 32px;
+    line-height: 32px;
+}
+.page-title-text {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 32px;
+    line-height: 32px;
+}
+
+.wizard-left {
+    display: inline-block;
+    vertical-align: top;
+    width: 240px;
+    margin-top: 24px;
+}
+.wizard-center {
+    display: inline-block;
+    vertical-align: top;
+    white-space: normal;
+    width: 500px;
+    min-height: 260px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+.wizard-bottom {
+    border-top: 1px solid #555;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    text-align: right;
+}
+
+.button {
+    background: #555;
+    font-weight: bold;
+    line-height: 48px;
+    height: 48px;
+    display: inline-block;
+    vertical-align: top;
+    width: 100px;
+    text-align: center;
+    margin-left: 32px;
+}
+.button:focus {
+    box-shadow: 0 0 1px 2px #f80;
+}
+.button.disabled {
+    color: #777;
+}
+
+.steps {
+    display: inline-block;
+}
+.steps-active {
+    font-weight: bold;
+}
+.steps-next {
+    color: #aaa;
+}
+
+.error {
+    font-weight: bold;
+    color: #f55;
+}

@@ -1,0 +1,38 @@
+label {
+    cursor: pointer;
+}
+
+.columns {
+    white-space: nowrap;
+}
+
+.column {
+    display: inline-block;
+    vertical-align: top;
+    white-space: normal;
+}
+.column1 {
+    margin-right: 24px;
+}
+
+.field {
+    margin-bottom: 8px;
+}
+
+.textfield {
+    width: 238px;
+    height: 32px;
+    padding: 4px;
+    background: #333;
+}
+.textfield:focus {
+    border-color: #aaa;
+    box-shadow: 0 0 1px 2px #f80;
+}
+.textfield:-moz-ui-invalid {
+    box-shadow: 0 0 1px 2px #f44;
+}
+
+.error {
+    margin-top: 16px;
+}
