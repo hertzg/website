@@ -6,9 +6,9 @@ function ensure ($mysqli) {
 
     $fnsDir = __DIR__.'/..';
 
-    include_once "$fnsDir/Table/ensure.php";
     include_once "$fnsDir/Email/maxLength.php";
     include_once "$fnsDir/FullName/maxLength.php";
+    include_once "$fnsDir/Table/ensure.php";
     include_once "$fnsDir/Username/maxLength.php";
     return \Table\ensure($mysqli, 'users', [
         'anonymous_can_send_bookmark' => [

@@ -4,6 +4,7 @@ namespace Tokens;
 
 
 function ensure ($mysqli) {
+
     $fnsDir = __DIR__.'/..';
 
     include_once "$fnsDir/Table/ensure.php";
