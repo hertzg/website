@@ -25,27 +25,18 @@ if (array_key_exists($key, $_SESSION)) {
     $erroHtml = '';
 }
 
+$doneSteps = ['Requirements', 'General Information'];
+$nextSteps = ['Finalize Installation'];
+
 include_once '../fns/echo_page.php';
 include_once '../fns/field_columns.php';
+include_once '../fns/steps.php';
 include_once '../fns/wizard_layout.php';
 echo_page(
     'Step 3 - MySQL Configuration',
     '<form action="submit.php" method="post">'
         .wizard_layout(
-            '<ul class="steps">'
-                .'<li class="steps-done">'
-                    .'<code>&#x2713;</code> Requirements'
-                .'</li>'
-                .'<li class="steps-done">'
-                    .'<code>&#x2713;</code> General Information'
-                .'</li>'
-                .'<li class="steps-active">'
-                    .'<code>&bull;</code> MySQL Configuration'
-                .'</li>'
-                .'<li class="steps-next">'
-                    .'<code>&bull;</code> Finalize Installation'
-                .'</li>'
-            .'</ul>',
+            steps($doneSteps, 'MySQL Configuration', $nextSteps),
             '<span class="title-step">Step 3</span>'
             .'<h2>MySQL Configuration</h2>'
             .field_columns(

@@ -42,25 +42,16 @@ $assertsHtml .=
     .writable_file('fns/get_site_protocol.php')
     .writable_file('fns/installed.php');
 
+$nextSteps = ['General Information',
+    'MySQL Configuration', 'Finalize Installation'];
+
 include_once '../fns/echo_page.php';
+include_once '../fns/steps.php';
 include_once '../fns/wizard_layout.php';
 echo_page(
     'Step 1 - Requirements',
     wizard_layout(
-        '<ul class="steps">'
-            .'<li class="steps-active">'
-                .'<code>&bull;</code> Requirements'
-            .'</li>'
-            .'<li class="steps-next">'
-                .'<code>&bull;</code> General Information'
-            .'</li>'
-            .'<li class="steps-next">'
-                .'<code>&bull;</code> MySQL Configuration'
-            .'</li>'
-            .'<li class="steps-next">'
-                .'<code>&bull;</code> Finalize Installation'
-            .'</li>'
-        .'</ul>',
+        steps([], 'Requirements', $nextSteps),
         '<span class="title-step">Step 1</span>'
         .'<h2>Requirements</h2>'
         ."<ol>$assertsHtml</ol>",
