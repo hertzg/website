@@ -1,7 +1,7 @@
 <?php
 
-include_once '../../fns/session_start_custom.php';
-session_start_custom();
+include_once '../fns/require_not_installed.php';
+require_not_installed();
 
 $key = 'install/mysql-config/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
@@ -18,7 +18,7 @@ else {
 $key = 'install/mysql-config/error';
 if (array_key_exists($key, $_SESSION)) {
     $erroHtml =
-        '<div class="error">'
+        '<div class="error formError">'
             .htmlspecialchars($_SESSION[$key])
         .'</div>';
 } else {
@@ -34,6 +34,9 @@ echo_page(
             '<ul class="steps">'
                 .'<li class="steps-done">'
                     .'<code>&#x2713;</code> Requirements'
+                .'</li>'
+                .'<li class="steps-done">'
+                    .'<code>&#x2713;</code> General Information'
                 .'</li>'
                 .'<li class="steps-active">'
                     .'<code>&bull;</code> MySQL Configuration'
@@ -83,7 +86,7 @@ echo_page(
                     .'</div>'
                 .'</div>'
             .'</div>'
-            .'<div class="">'
+            .'<div>'
                 .'<input type="checkbox" name="create" id="createInput"'
                 .($values['create'] ? ' checked="checked"' : '').' />'
                 .' <label for="createInput">'
@@ -91,9 +94,8 @@ echo_page(
                 .'</label>'
             .'</div>'
             .$erroHtml,
-            '<a href="../requirements/" class="button">Back</a>'
+            '<a href="../general-info/" class="button">Back</a>'
             .'<input type="submit" class="button" value="Next" />'
         )
-    .'</form>',
-    '<link rel="stylesheet" type="text/css" href="index.css" />'
+    .'</form>'
 );

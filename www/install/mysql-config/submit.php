@@ -1,7 +1,7 @@
 <?php
 
-include_once '../../fns/session_start_custom.php';
-session_start_custom();
+include_once '../fns/require_not_installed.php';
+require_not_installed();
 
 include_once '../../fns/request_strings.php';
 list($host, $username, $password, $db, $create) = request_strings(

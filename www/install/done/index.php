@@ -1,5 +1,8 @@
 <?php
 
+include_once '../fns/require_not_installed.php';
+require_not_installed();
+
 include_once '../../lib/mysqli.php';
 
 include_once '../fns/echo_html.php';

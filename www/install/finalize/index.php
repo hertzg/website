@@ -1,5 +1,8 @@
 <?php
 
+include_once '../fns/require_not_installed.php';
+require_not_installed();
+
 include_once 'fns/require_values.php';
 list($values, $mysqli) = require_values();
 
@@ -14,6 +17,9 @@ echo_page(
         '<ul class="steps">'
             .'<li class="steps-done">'
                 .'<code>&#x2713;</code> Requirements'
+            .'</li>'
+            .'<li class="steps-done">'
+                .'<code>&#x2713;</code> General Information'
             .'</li>'
             .'<li class="steps-done">'
                 .'<code>&#x2713;</code> MySQL Configuration'
