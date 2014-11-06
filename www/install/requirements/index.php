@@ -1,13 +1,5 @@
 <?php
 
-function create_assert ($ok, $text) {
-    return
-        '<li'.($ok ? '' : ' class="error"').'>'
-            .'<code>'.($ok ? '&#x2713;' : '&bull;').'</code>'
-            ." $text"
-        .'</li>';
-}
-
 function writable_file ($filename) {
     $ok = is_writable("../../$filename");
     $text = "File \"<code>www/$filename</code>\" is writable.";
@@ -19,6 +11,7 @@ require_not_installed('../');
 
 $apacheModules = apache_get_modules();
 
+include_once '../fns/create_assert.php';
 $ok = in_array('mod_rewrite', $apacheModules);
 $text = 'Apache module "<code>mod_rewrite</code>" is enabled.';
 $assertsHtml = create_assert($ok, $text);

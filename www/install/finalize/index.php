@@ -3,8 +3,20 @@
 include_once '../fns/require_mysql_config.php';
 list($generalInfoValues, $mysqlConfigValues, $mysqli) = require_mysql_config();
 
+include_once '../fns/create_assert.php';
+
+if ($mysqlConfigValues['create']) {
+    $assertsHtml = create_assert(true, 'MySQL database has been created.');
+} else {
+    $assertsHtml = create_assert(true, 'MySQL database exists.');
+}
+
 include_once '../../fns/Table/ensureAll.php';
-$output = Table\ensureAll($mysqli);
+Table\ensureAll($mysqli);
+
+$assertsHtml .=
+    create_assert(true, 'Tables have been created.')
+    .create_assert(true, 'Ready to finish the installation.');
 
 include_once '../fns/echo_page.php';
 include_once '../fns/wizard_layout.php';
@@ -26,9 +38,8 @@ echo_page(
             .'</li>'
         .'</ul>',
         '<h2>Finalize Installation</h2>'
-        ."<div class=\"output\">$output</div>",
+        .$assertsHtml,
         '<a href="../mysql-config/" class="button" />Back</a>'
         .'<a href="submit.php" class="button" />Finish</a>'
-    ),
-    '<link rel="stylesheet" type="text/css" href="index.css" />'
+    )
 );

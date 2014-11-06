@@ -54,13 +54,6 @@ if ($error) {
     redirect();
 }
 
-$_SESSION['install/finalize/values'] = [
-    'host' => $host,
-    'username' => $username,
-    'password' => $password,
-    'db' => $db,
-];
-
 unset($_SESSION['install/mysql-config/error']);
 
 redirect('../finalize/');

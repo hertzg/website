@@ -1,10 +1,7 @@
 <?php
 
-include_once 'fns/installed.php';
-if (!installed()) {
-    include_once 'fns/redirect.php';
-    redirect('install/');
-}
+include_once 'fns/require_installed.php';
+require_installed();
 
 include_once 'fns/signed_user.php';
 $user = signed_user();

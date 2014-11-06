@@ -49,15 +49,10 @@ if (!$errors) {
         ."    \$salt = '".bin2hex($salt)."';\n"
         ."}\n";
 
+    include_once "$fnsDir/file_put_php.php";
     $filename = '../fns/get_admin.php';
-    $ok = @file_put_contents($filename, $content);
-    if ($ok) {
-        if (function_exists('opcache_invalidate')) {
-            opcache_invalidate($filename);
-        }
-    } else {
-        $errors[] = 'Failed to save the data.';
-    }
+    $ok = @file_put_php($filename, $content);
+    if (!$ok) $errors[] = 'Failed to save the data.';
 
 }
 

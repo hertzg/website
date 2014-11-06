@@ -31,15 +31,10 @@ if (!$errors) {
         ."    \$db = ".var_export($db, true).";\n"
         ."}\n";
 
+    include_once "$fnsDir/file_put_php.php";
     $filename = '../../../fns/get_mysqli_config.php';
-    $ok = @file_put_contents($filename, $content);
-    if ($ok) {
-        if (function_exists('opcache_invalidate')) {
-            opcache_invalidate($filename);
-        }
-    } else {
-        $errors[] = 'Failed to save the data.';
-    }
+    $ok = @file_put_php($filename, $content);
+    if (!$ok) $errors[] = 'Failed to save the data.';
 
 }
 
