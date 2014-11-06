@@ -3,7 +3,7 @@
 function require_requirements () {
 
     include_once __DIR__.'/require_not_installed.php';
-    require_not_installed();
+    require_not_installed('../');
 
     $rootDir = __DIR__.'/../..';
     $apacheModules = apache_get_modules();
@@ -18,6 +18,7 @@ function require_requirements () {
         !is_writable("$rootDir/fns/get_domain_name.php") ||
         !is_writable("$rootDir/fns/get_mysqli_config.php") ||
         !is_writable("$rootDir/fns/get_site_base.php") ||
+        !is_writable("$rootDir/fns/get_site_protocol.php") ||
         !is_writable("$rootDir/fns/installed.php")) {
 
         include_once __DIR__.'/../../fns/redirect.php';

@@ -15,7 +15,7 @@ function writable_file ($filename) {
 }
 
 include_once '../fns/require_not_installed.php';
-require_not_installed();
+require_not_installed('../');
 
 $apacheModules = apache_get_modules();
 
@@ -46,6 +46,7 @@ $assertsHtml .=
     .writable_file('fns/get_domain_name.php')
     .writable_file('fns/get_mysqli_config.php')
     .writable_file('fns/get_site_base.php')
+    .writable_file('fns/get_site_protocol.php')
     .writable_file('fns/installed.php');
 
 include_once '../fns/echo_page.php';

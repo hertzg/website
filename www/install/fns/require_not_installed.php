@@ -1,13 +1,13 @@
 <?php
 
-function require_not_installed () {
+function require_not_installed ($base = '') {
 
     $fnsDir = __DIR__.'/../../fns';
 
     include_once "$fnsDir/installed.php";
     if (installed()) {
         include_once "$fnsDir/redirect.php";
-        redirect('../..');
+        redirect("$base..");
     }
 
     include_once "$fnsDir/session_start_custom.php";

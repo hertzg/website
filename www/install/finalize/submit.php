@@ -29,6 +29,13 @@ file_put_contents('../../fns/get_site_base.php', $content);
 
 $content =
     "<?php\n\n"
+    ."function get_site_protocol () {\n"
+    .'    return \''.($generalInfoValues['https'] ? 'https' : 'http')."';\n"
+    ."}\n";
+file_put_contents('../../fns/get_site_protocol.php', $content);
+
+$content =
+    "<?php\n\n"
     ."function installed () {\n"
     ."    return true;\n"
     ."}\n";
