@@ -33,12 +33,16 @@ function echo_page ($user, $title, $content, $base, $options = []) {
 
     $topLinkHref = $base === '' ? './' : $base;
 
+    include_once __DIR__.'/get_revision.php';
+    $logoSrc = "{$base}themes/$theme/images/zvini.svg?"
+        .get_revision("themes/$theme/images/zvini.svg");
+
     include_once __DIR__.'/compressed_js_script.php';
     $body =
         '<div id="tbar">'
             ."<a class=\"topLink logoLink\" href=\"$topLinkHref\">"
-                ."<img src=\"{$base}themes/$theme/images/zvini.svg?2\""
-                .' alt="Zvini" width="68" height="32" class="logoImg" />'
+                ."<img src=\"$logoSrc\" alt=\"Zvini\""
+                .' width="68" height="32" class="logoImg" />'
             .'</a>'
             .'<div class="page-clockWrapper">'
                 .'<div id="staticClockWrapper">'

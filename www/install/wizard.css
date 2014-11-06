@@ -1,0 +1,41 @@
+.wizard-left {
+    display: inline-block;
+    vertical-align: top;
+    width: 200px;
+    margin-top: 24px;
+}
+
+.wizard-center {
+    display: inline-block;
+    vertical-align: top;
+    width: 436px;
+    min-height: 270px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.wizard-bottom {
+    border-top: 1px solid #555;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    text-align: right;
+    position: relative;
+}
+
+@media (max-width: 700px) {
+
+    .wizard-left {
+        display: block;
+        width: auto;
+    }
+
+    .wizard-center {
+        display: block;
+        width: auto;
+    }
+
+    .wizard-bottom {
+        text-align: left;
+    }
+
+}

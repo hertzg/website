@@ -26,9 +26,10 @@ if (array_key_exists($key, $_SESSION)) {
 }
 
 include_once '../fns/echo_page.php';
+include_once '../fns/field_columns.php';
 include_once '../fns/wizard_layout.php';
 echo_page(
-    'MySQL Configuration',
+    'Step 3 - MySQL Configuration',
     '<form action="submit.php" method="post">'
         .wizard_layout(
             '<ul class="steps">'
@@ -45,47 +46,32 @@ echo_page(
                     .'<code>&bull;</code> Finalize Installation'
                 .'</li>'
             .'</ul>',
-            '<h2>MySQL Configuration</h2>'
-            .'<div class="columns">'
-                .'<div class="column column1">'
-                    .'<div class="field">'
-                        .'<label for="hostInput">Host:</label>'
-                        .'<br />'
-                        .'<input class="textfield" type="text"'
-                        .' name="host" id="hostInput" autofocus="autofocus"'
-                        .' value="'.htmlspecialchars($values['host']).'" />'
-                    .'</div>'
-                .'</div>'
-                .'<div class="column column2">'
-                    .'<div class="field">'
-                        .'<label for="dbInput">Database:</label>'
-                        .'<br />'
-                        .'<input class="textfield" type="text"'
-                        .' name="db" id="dbInput" required="required"'
-                        .' value="'.htmlspecialchars($values['db']).'" />'
-                    .'</div>'
-                .'</div>'
-            .'</div>'
-            .'<div class="columns">'
-                .'<div class="column column1">'
-                    .'<div class="field">'
-                        .'<label for="usernameInput">Username:</label>'
-                        .'<br />'
-                        .'<input class="textfield" type="text"'
-                        .' name="username" id="usernameInput"'
-                        .' value="'.htmlspecialchars($values['username']).'" />'
-                    .'</div>'
-                .'</div>'
-                .'<div class="column column2">'
-                    .'<div class="field">'
-                        .'<label for="passwordInput">Password:</label>'
-                        .'<br />'
-                        .'<input class="textfield" type="password"'
-                        .' name="password" id="passwordInput"'
-                        .' value="'.htmlspecialchars($values['password']).'" />'
-                    .'</div>'
-                .'</div>'
-            .'</div>'
+            '<span class="title-step">Step 3</span>'
+            .'<h2>MySQL Configuration</h2>'
+            .field_columns(
+                '<label for="hostInput">Host:</label>'
+                .'<br />'
+                .'<input class="textfield" type="text"'
+                .' name="host" id="hostInput" autofocus="autofocus"'
+                .' value="'.htmlspecialchars($values['host']).'" />',
+                '<label for="dbInput">Database:</label>'
+                .'<br />'
+                .'<input class="textfield" type="text"'
+                .' name="db" id="dbInput" required="required"'
+                .' value="'.htmlspecialchars($values['db']).'" />'
+            )
+            .field_columns(
+                '<label for="usernameInput">Username:</label>'
+                .'<br />'
+                .'<input class="textfield" type="text"'
+                .' name="username" id="usernameInput"'
+                .' value="'.htmlspecialchars($values['username']).'" />',
+                '<label for="passwordInput">Password:</label>'
+                .'<br />'
+                .'<input class="textfield" type="password"'
+                .' name="password" id="passwordInput"'
+                .' value="'.htmlspecialchars($values['password']).'" />'
+            )
             .'<div>'
                 .'<input type="checkbox" name="create" id="createInput"'
                 .($values['create'] ? ' checked="checked"' : '').' />'
@@ -95,7 +81,7 @@ echo_page(
             .'</div>'
             .$erroHtml,
             '<a href="../general-info/" class="button">Back</a>'
-            .'<input type="submit" class="button" value="Next" />'
+            .'<input type="submit" class="button nextButton" value="Next" />'
         )
     .'</form>'
 );

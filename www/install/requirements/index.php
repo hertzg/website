@@ -45,7 +45,7 @@ $assertsHtml .=
 include_once '../fns/echo_page.php';
 include_once '../fns/wizard_layout.php';
 echo_page(
-    'Requirements',
+    'Step 1 - Requirements',
     wizard_layout(
         '<ul class="steps">'
             .'<li class="steps-active">'
@@ -61,9 +61,10 @@ echo_page(
                 .'<code>&bull;</code> Finalize Installation'
             .'</li>'
         .'</ul>',
-        '<h2>Requirements</h2>'
+        '<span class="title-step">Step 1</span>'
+        .'<h2>Requirements</h2>'
         ."<ol>$assertsHtml</ol>",
         '<span class="button disabled" />Back</span>'
-        .'<a href="submit.php" class="button" />Next</a>'
+        .'<a href="submit.php" class="button nextButton" />Next</a>'
     )
 );

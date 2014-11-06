@@ -2,11 +2,15 @@
 
 function echo_page ($title, $content, $head = '') {
 
+    include_once __DIR__.'/../../fns/get_revision.php';
+    $logoSrc = '../../themes/orange/images/zvini.svg?'
+        .get_revision('themes/orange/images/zvini.svg');
+
     $content =
-        '<h1 class="page-title">'
-            .'<img class="page-icon" src="../icons/32.svg" />'
-            .'<span class="page-title-text">Zvini Installation Wizard</span>'
-        .'</h1>'
+        '<div class="page-title">'
+            ."<img src=\"$logoSrc\" class=\"page-icon\" alt=\"Zvini\" />"
+            .'<h1 class="page-title-text">Installation Wizard</h1>'
+        .'</div>'
         .$content;
 
     include_once __DIR__.'/echo_html.php';

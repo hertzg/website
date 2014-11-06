@@ -35,9 +35,10 @@ $escapedDomainName = htmlspecialchars($values['domainName']);
 $escapedSiteBase = htmlspecialchars($values['siteBase']);
 
 include_once '../fns/echo_page.php';
+include_once '../fns/field_columns.php';
 include_once '../fns/wizard_layout.php';
 echo_page(
-    'General Information',
+    'Step 2 - General Information',
     '<form action="submit.php" method="post">'
         .wizard_layout(
             '<ul class="steps">'
@@ -54,31 +55,24 @@ echo_page(
                     .'<code>&bull;</code> Finalize Installation'
                 .'</li>'
             .'</ul>',
-            '<h2>General Information</h2>'
-            .'<div class="columns">'
-                .'<div class="column column1">'
-                    .'<div class="field">'
-                        .'<label for="domainNameInput">Domain name:</label>'
-                        .'<br />'
-                        .'<input class="textfield"'
-                        .' type="text" required="required"'
-                        .' autofocus="autofocus" id="domainNameInput"'
-                        ." value=\"$escapedDomainName\" name=\"domainName\" />"
-                    .'</div>'
-                .'</div>'
-                .'<div class="column column2">'
-                    .'<div class="field">'
-                        .'<label for="siteBaseInput">'
-                            .'Path to "<code>www</code>" folder:'
-                        .'</label>'
-                        .'<br />'
-                        .'<input type="text"'
-                        .' name="siteBase" required="required"'
-                        .' id="siteBaseInput" class="textfield"'
-                        ." value=\"$escapedSiteBase\" required=\"required\" />"
-                    .'</div>'
-                .'</div>'
-            .'</div>'
+            '<span class="title-step">Step 2</span>'
+            .'<h2>General Information</h2>'
+            .field_columns(
+                '<label for="domainNameInput">Domain name:</label>'
+                .'<br />'
+                .'<input class="textfield"'
+                .' type="text" required="required"'
+                .' autofocus="autofocus" id="domainNameInput"'
+                ." value=\"$escapedDomainName\" name=\"domainName\" />",
+                '<label for="siteBaseInput">'
+                    .'Path to "<code>www</code>" folder:'
+                .'</label>'
+                .'<br />'
+                .'<input type="text"'
+                .' name="siteBase" required="required"'
+                .' id="siteBaseInput" class="textfield"'
+                ." value=\"$escapedSiteBase\" required=\"required\" />"
+            )
             .'<div>'
                 .'<input type="checkbox" name="https" id="httpsInput"'
                 .($values['https'] ? ' checked="checked"' : '').' />'
@@ -88,7 +82,7 @@ echo_page(
             .'</div>'
             .$erroHtml,
             '<a href="../requirements/" class="button">Back</a>'
-            .'<input type="submit" class="button" value="Next" />'
+            .'<input type="submit" class="button nextButton" value="Next" />'
         )
     .'</form>'
 );

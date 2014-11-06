@@ -18,6 +18,10 @@ function get_revision ($key) {
         'js/signOutConfirm/compressed.js' => 2,
         'js/timezoneLabel/compressed.js' => 1,
         'js/unloadProgress/compressed.js' => 4,
+        'themes/blue/images/zvini.svg' => 2,
+        'themes/green/images/zvini.svg' => 2,
+        'themes/orange/images/zvini.svg' => 2,
+        'themes/pink/images/zvini.svg' => 2,
     ];
     return $revisions[$key];
 }

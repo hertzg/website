@@ -37,9 +37,10 @@ echo_page(
                 .'<code>&bull;</code> Finalize Installation'
             .'</li>'
         .'</ul>',
-        '<h2>Finalize Installation</h2>'
+        '<span class="title-step">Final step</span>'
+        .'<h2>Finalize Installation</h2>'
         .$assertsHtml,
         '<a href="../mysql-config/" class="button" />Back</a>'
-        .'<a href="submit.php" class="button" />Finish</a>'
+        .'<a href="submit.php" class="button nextButton" />Finish</a>'
     )
 );

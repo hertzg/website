@@ -24,13 +24,6 @@ html, body {
     height: 100%;
 }
 
-h1 {
-    font-weight: bold;
-    color: #aaa;
-    padding-bottom: 24px;
-    border-bottom: 1px solid #555;
-}
-
 h2 {
     font-weight: bold;
     font-size: 22px;
@@ -49,58 +42,6 @@ code {
     font-family: FreeMono, monospace;
 }
 
-.page {
-    height: 100%;
-    padding: 32px;
-    text-align: center;
-    white-space: nowrap;
-}
-.page-aligner {
-    display: inline-block;
-    vertical-align: middle;
-    height: 100%;
-}
-.page-content {
-    display: inline-block;
-    vertical-align: middle;
-    text-align: left;
-}
-.page-icon {
-    display: inline-block;
-    vertical-align: top;
-    margin-right: 16px;
-    font-size: 32px;
-    line-height: 32px;
-}
-.page-title-text {
-    display: inline-block;
-    vertical-align: top;
-    font-size: 32px;
-    line-height: 32px;
-}
-
-.wizard-left {
-    display: inline-block;
-    vertical-align: top;
-    width: 240px;
-    margin-top: 24px;
-}
-.wizard-center {
-    display: inline-block;
-    vertical-align: top;
-    white-space: normal;
-    width: 500px;
-    min-height: 330px;
-    margin-top: 24px;
-    margin-bottom: 24px;
-}
-.wizard-bottom {
-    border-top: 1px solid #555;
-    padding-top: 32px;
-    padding-bottom: 32px;
-    text-align: right;
-}
-
 .button {
     background: #555;
     font-weight: bold;
@@ -110,7 +51,6 @@ code {
     vertical-align: top;
     width: 100px;
     text-align: center;
-    margin-left: 32px;
     cursor: pointer;
 }
 .button:focus {
@@ -118,6 +58,9 @@ code {
 }
 .button.disabled {
     color: #777;
+}
+.button.nextButton {
+    margin-left: 32px;
 }
 
 .steps {
@@ -139,25 +82,8 @@ label {
     cursor: pointer;
 }
 
-.columns {
-    white-space: nowrap;
-}
-
-.column {
-    display: inline-block;
-    vertical-align: top;
-    white-space: normal;
-}
-.column1 {
-    margin-right: 24px;
-}
-
-.field {
-    margin-bottom: 8px;
-}
-
 .textfield {
-    width: 238px;
+    width: 100%;
     height: 32px;
     padding: 4px;
     background: #333;
@@ -172,4 +98,22 @@ label {
 
 .formError {
     margin-top: 16px;
+}
+
+.title-step {
+    float: right;
+    color: #aaa;
+}
+
+@media (max-width: 700px) {
+
+    .title-step {
+        float: none;
+    }
+
+    .button.nextButton {
+        position: absolute;
+        right: 0;
+    }
+
 }
