@@ -42,8 +42,8 @@ $assertsHtml .=
     .writable_file('fns/get_site_protocol.php')
     .writable_file('fns/installed.php');
 
-$nextSteps = ['General Information',
-    'MySQL Configuration', 'Finalize Installation'];
+$nextSteps = ['General Information', 'MySQL Configuration',
+    'Administrator', 'Finalize Installation'];
 
 include_once '../fns/echo_page.php';
 include_once '../fns/steps.php';

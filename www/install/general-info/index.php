@@ -34,8 +34,7 @@ if (array_key_exists($key, $_SESSION)) {
 $escapedDomainName = htmlspecialchars($values['domainName']);
 $escapedSiteBase = htmlspecialchars($values['siteBase']);
 
-$doneSteps = ['Requirements'];
-$nextSteps = ['MySQL Configuration', 'Finalize Installation'];
+$nextSteps = ['MySQL Configuration', 'Administrator', 'Finalize Installation'];
 
 include_once '../fns/echo_page.php';
 include_once '../fns/field_columns.php';
@@ -45,7 +44,7 @@ echo_page(
     'Step 2 - General Information',
     '<form action="submit.php" method="post">'
         .wizard_layout(
-            steps($doneSteps, 'General Information', $nextSteps),
+            steps(['Requirements'], 'General Information', $nextSteps),
             '<span class="title-step">Step 2</span>'
             .'<h2>General Information</h2>'
             .field_columns(

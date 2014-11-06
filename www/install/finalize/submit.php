@@ -1,9 +1,21 @@
 <?php
 
-include_once '../fns/require_mysql_config.php';
-list($generalInfoValues, $mysqlConfigValues) = require_mysql_config();
+include_once '../fns/require_admin.php';
+list($generalInfoValues, $mysqlConfigValues, $adminValues) = require_admin();
+
+include_once '../../fns/Password/hash.php';
+list($hash, $salt) = Password\hash($adminValues['password1']);
 
 include_once '../../fns/file_put_php.php';
+$content =
+    "<?php\n\n"
+    ."function get_admin (&\$username, &\$hash, &\$salt) {\n"
+    .'    $username = '.var_export($adminValues['username'], true).";\n"
+    .'    $hash = "'.bin2hex($hash)."\";\n"
+    .'    $salt = "'.bin2hex($salt)."\";\n"
+    ."}\n";
+file_put_php('../../admin/fns/get_admin.php', $content);
+
 $content =
     "<?php\n\n"
     ."function get_domain_name () {\n"
@@ -44,7 +56,8 @@ file_put_php('../../fns/installed.php', $content);
 
 unset(
     $_SESSION['install/general-info/values'],
-    $_SESSION['install/mysql-config/values']
+    $_SESSION['install/mysql-config/values'],
+    $_SESSION['install/admin/values']
 );
 
 include_once '../../fns/redirect.php';

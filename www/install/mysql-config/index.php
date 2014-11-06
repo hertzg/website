@@ -26,7 +26,7 @@ if (array_key_exists($key, $_SESSION)) {
 }
 
 $doneSteps = ['Requirements', 'General Information'];
-$nextSteps = ['Finalize Installation'];
+$nextSteps = ['Administrator', 'Finalize Installation'];
 
 include_once '../fns/echo_page.php';
 include_once '../fns/field_columns.php';

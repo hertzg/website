@@ -1,7 +1,8 @@
 <?php
 
-include_once '../fns/require_mysql_config.php';
-list($generalInfoValues, $mysqlConfigValues, $mysqli) = require_mysql_config();
+include_once '../fns/require_admin.php';
+$values = require_admin();
+list($generalInfoValues, $mysqlConfigValues, $adminValues, $mysqli) = $values;
 
 include_once '../fns/create_assert.php';
 
@@ -18,7 +19,8 @@ $assertsHtml .=
     create_assert(true, 'Tables have been created.')
     .create_assert(true, 'Ready to finish the installation.');
 
-$doneSteps = ['Requirements', 'General Information', 'MySQL Configuration'];
+$doneSteps = ['Requirements', 'General Information',
+    'MySQL Configuration', 'Administrator'];
 
 include_once '../fns/echo_page.php';
 include_once '../fns/steps.php';
@@ -30,7 +32,7 @@ echo_page(
         '<span class="title-step">Final step</span>'
         .'<h2>Finalize Installation</h2>'
         .$assertsHtml,
-        '<a href="../mysql-config/" class="button" />Back</a>'
+        '<a href="../admin/" class="button" />Back</a>'
         .'<a href="submit.php" class="button nextButton" />Finish</a>'
     )
 );

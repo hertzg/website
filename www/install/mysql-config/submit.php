@@ -39,6 +39,7 @@ else {
 
     }
 }
+
 $_SESSION['install/mysql-config/values'] = [
     'host' => $host,
     'username' => $username,
@@ -56,4 +57,4 @@ if ($error) {
 
 unset($_SESSION['install/mysql-config/error']);
 
-redirect('../finalize/');
+redirect('../admin/');
