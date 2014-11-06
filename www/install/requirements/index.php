@@ -8,42 +8,45 @@ function create_assert ($ok, $text) {
         .'</li>';
 }
 
+function writable_file ($filename) {
+    $ok = is_writable("../../$filename");
+    $text = "File \"<code>www/$filename</code>\" is writable.";
+    return create_assert($ok, $text);
+}
+
 include_once '../fns/require_not_installed.php';
 require_not_installed();
-
-unset($_SESSION['install/general-info/error']);
 
 $apacheModules = apache_get_modules();
 
 $ok = in_array('mod_rewrite', $apacheModules);
 $text = 'Apache module "<code>mod_rewrite</code>" is enabled.';
-$asserts = create_assert($ok, $text);
+$assertsHtml = create_assert($ok, $text);
 
 $ok = in_array('mod_headers', $apacheModules);
 $text = 'Apache module "<code>mod_headers</code>" is enabled.';
-$asserts .= create_assert($ok, $text);
+$assertsHtml .= create_assert($ok, $text);
 
 $ok = date_default_timezone_get() === 'UTC';
-$asserts .= create_assert($ok, 'PHP default timezone is set to UTC.');
+$assertsHtml .= create_assert($ok, 'PHP default timezone is set to UTC.');
 
 $ok = function_exists('curl_init');
-$asserts .= create_assert($ok, 'PHP Client URL Library is installed.');
+$assertsHtml .= create_assert($ok, 'PHP Client URL Library is installed.');
 
 $ok = function_exists('imagecreatefromstring');
-$asserts .= create_assert($ok, 'PHP image processing and GD is installed.');
+$text = 'PHP image processing and GD is installed.';
+$assertsHtml .= create_assert($ok, $text);
 
 $ok = function_exists('mysqli_connect');
-$asserts .= create_assert($ok, 'PHP MySQL improved extension is installed.');
+$text = 'PHP MySQL improved extension is installed.';
+$assertsHtml .= create_assert($ok, $text);
 
-$filename = 'fns/installed.php';
-$ok = is_writable("../../$filename");
-$text = "File \"<code>www/$filename</code>\" is writable.";
-$asserts .= create_assert($ok, $text);
-
-$filename = 'fns/get_mysqli_config.php';
-$ok = is_writable("../../$filename");
-$text = "File \"<code>www/$filename</code>\" is writable.";
-$asserts .= create_assert($ok, $text);
+$assertsHtml .=
+    writable_file('admin/fns/get_admin.php')
+    .writable_file('fns/get_domain_name.php')
+    .writable_file('fns/get_mysqli_config.php')
+    .writable_file('fns/get_site_base.php')
+    .writable_file('fns/installed.php');
 
 include_once '../fns/echo_page.php';
 include_once '../fns/wizard_layout.php';
@@ -65,7 +68,7 @@ echo_page(
             .'</li>'
         .'</ul>',
         '<h2>Requirements</h2>'
-        ."<ol>$asserts</ol>",
+        ."<ol>$assertsHtml</ol>",
         '<span class="button disabled" />Back</span>'
         .'<a href="submit.php" class="button" />Next</a>'
     )

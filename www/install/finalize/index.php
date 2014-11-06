@@ -1,10 +1,7 @@
 <?php
 
-include_once '../fns/require_not_installed.php';
-require_not_installed();
-
-include_once 'fns/require_values.php';
-list($values, $mysqli) = require_values();
+include_once '../fns/require_mysql_config.php';
+list($generalInfoValues, $mysqlConfigValues, $mysqli) = require_mysql_config();
 
 include_once '../../fns/Table/ensureAll.php';
 $output = Table\ensureAll($mysqli);

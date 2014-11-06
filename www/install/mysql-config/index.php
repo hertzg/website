@@ -1,7 +1,7 @@
 <?php
 
-include_once '../fns/require_not_installed.php';
-require_not_installed();
+include_once '../fns/require_general_info.php';
+require_general_info();
 
 $key = 'install/mysql-config/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];

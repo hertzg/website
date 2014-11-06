@@ -1,9 +1,7 @@
 <?php
 
-include_once '../fns/require_not_installed.php';
-require_not_installed();
-
-unset($_SESSION['install/mysql-config/error']);
+include_once '../fns/require_requirements.php';
+require_requirements();
 
 $key = 'install/general-info/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
@@ -28,13 +26,13 @@ else {
 
 $key = 'install/general-info/error';
 if (array_key_exists($key, $_SESSION)) {
-    $erroHtml =
-        '<div class="error formError">'
-            .htmlspecialchars($_SESSION[$key])
-        .'</div>';
+    $erroHtml = "<div class=\"error formError\">{$_SESSION[$key]}</div>";
 } else {
     $erroHtml = '';
 }
+
+$escapedDomainName = htmlspecialchars($values['domainName']);
+$escapedSiteBase = htmlspecialchars($values['siteBase']);
 
 include_once '../fns/echo_page.php';
 include_once '../fns/wizard_layout.php';
@@ -63,9 +61,9 @@ echo_page(
                         .'<label for="domainNameInput">Domain name:</label>'
                         .'<br />'
                         .'<input class="textfield"'
-                        .' name="domainName" type="text"'
+                        .' type="text" required="required"'
                         .' autofocus="autofocus" id="domainNameInput"'
-                        .' value="'.htmlspecialchars($values['domainName']).'" />'
+                        ." value=\"$escapedDomainName\" name=\"domainName\" />"
                     .'</div>'
                 .'</div>'
                 .'<div class="column column2">'
@@ -74,9 +72,10 @@ echo_page(
                             .'Path to "<code>www</code>" folder:'
                         .'</label>'
                         .'<br />'
-                        .'<input class="textfield" type="text"'
-                        .' name="siteBase" id="siteBaseInput" required="required"'
-                        .' value="'.htmlspecialchars($values['siteBase']).'" />'
+                        .'<input type="text"'
+                        .' name="siteBase" required="required"'
+                        .' id="siteBaseInput" class="textfield"'
+                        ." value=\"$escapedSiteBase\" required=\"required\" />"
                     .'</div>'
                 .'</div>'
             .'</div>'

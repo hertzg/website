@@ -1,6 +1,6 @@
 <?php
 
-function echo_html ($title, $content, $head = '') {
+function echo_html ($title, $content) {
     header('Content-Type: text/html; charset=UTF-8');
     echo '<!DOCTYPE html>'
         .'<html>'
@@ -14,7 +14,6 @@ function echo_html ($title, $content, $head = '') {
                 .'<link rel="icon" type="image/png"
                 href="../icons/32.png" sizes="32x32" />'
                 .'<link rel="stylesheet" type="text/css" href="../common.css" />'
-                .$head
             .'</head>'
             .'<body>'
                 .'<div class="page">'
