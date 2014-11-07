@@ -55,14 +55,13 @@ $html =
 $subject = mb_encode_mimeheader($title, 'UTF-8');
 
 include_once '../../fns/get_domain_name.php';
-$domain_name = get_domain_name();
-
 $headers =
     "Content-Type: text/html; charset=UTF-8\r\n"
-    ."From: no-reply@$domain_name";
-if ($user) $headers .= "\r\nReply-To: $user->email";
+    .'From: no-reply@'.get_domain_name();
+if ($user && $user->email !== '') $headers .= "\r\nReply-To: $user->email";
 
-mail("info@$domain_name", $title, $html, $headers);
+include_once '../../fns/get_admin_email.php';
+mail(get_admin_email(), $title, $html, $headers);
 
 $_SESSION['help/messages'] = ['Thank you for the feedback.'];
 

@@ -2,9 +2,6 @@
 
 function send_email ($username) {
 
-    include_once __DIR__.'/../../fns/get_domain_name.php';
-    $domain_name = get_domain_name();
-
     $escapedUsername = htmlspecialchars($username);
     $html =
         '<!DOCTYPE html>'
@@ -21,10 +18,14 @@ function send_email ($username) {
 
     $subject = mb_encode_mimeheader("$username Signed Up", 'UTF-8');
 
+    $fnsDir = __DIR__.'/../../fns';
+
+    include_once "$fnsDir/get_domain_name.php";
     $headers =
-        "From: no-reply@$domain_name\r\n"
+        'From: no-reply@'.get_domain_name()."\r\n"
         .'Content-Type: text/html; charset=UTF-8';
 
-    mail("info@$domain_name", $subject, $html, $headers);
+    include_once "$fnsDir/get_admin_email.php";
+    mail(get_admin_email(), $subject, $html, $headers);
 
 }
