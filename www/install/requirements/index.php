@@ -17,8 +17,8 @@ function assert_writable ($filename) {
     return assert_failure("$subject is NOT writable.");
 }
 
-include_once '../fns/require_not_installed.php';
-require_not_installed('../');
+include_once '../fns/require_agreement.php';
+require_agreement();
 
 include_once '../fns/assert_failure.php';
 include_once '../fns/assert_success.php';
@@ -62,13 +62,13 @@ include_once '../fns/echo_page.php';
 include_once '../fns/steps.php';
 include_once '../fns/wizard_layout.php';
 echo_page(
-    'Step 1 - Requirements',
+    'Step 2 - Requirements',
     wizard_layout(
-        steps([], 'Requirements', $nextSteps),
-        '<span class="title-step">Step 1</span>'
+        steps(['Agreement'], 'Requirements', $nextSteps),
+        '<span class="title-step">Step 2</span>'
         .'<h2>Requirements</h2>'
         ."<ol>$assertsHtml</ol>",
-        '<span class="button disabled" />Back</span>'
+        '<a class="button" href="../agreement/">Back</a>'
         .'<a href="submit.php" class="button nextButton" />Next</a>'
     )
 );

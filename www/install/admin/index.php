@@ -23,18 +23,19 @@ if (array_key_exists($key, $_SESSION)) {
     $errorHtml = '';
 }
 
-$doneSteps = ['Requirements', 'General Information', 'MySQL Configuration'];
+$doneSteps = ['Agreement', 'Requirements',
+    'General Information', 'MySQL Configuration'];
 
 include_once '../fns/echo_page.php';
 include_once '../fns/field_columns.php';
 include_once '../fns/steps.php';
 include_once '../fns/wizard_layout.php';
 echo_page(
-    'Step 4 - Administrator',
+    'Step 5 - Administrator',
     '<form action="submit.php" method="post">'
         .wizard_layout(
             steps($doneSteps, 'Administrator', ['Finalize Installation']),
-            '<span class="title-step">Step 4</span>'
+            '<span class="title-step">Step 5</span>'
             .'<h2>Administrator</h2>'
             .field_columns(
                 '<label for="usernameInput">Username:</label>'

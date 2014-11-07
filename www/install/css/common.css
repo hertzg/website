@@ -48,6 +48,15 @@ code {
     font-family: FreeMono, monospace;
 }
 
+p {
+    text-indent: 16px;
+}
+
+.link {
+    text-decoration: underline;
+    color: #f80;
+}
+
 .button {
     background: #555;
     font-weight: bold;
@@ -61,9 +70,6 @@ code {
 }
 .button:focus {
     box-shadow: 0 0 1px 2px #f80;
-}
-.button.disabled {
-    color: #777;
 }
 .button.nextButton {
     margin-left: 32px;

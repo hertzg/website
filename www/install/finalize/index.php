@@ -18,8 +18,8 @@ $assertsHtml .=
     assert_success('Tables have been created.')
     .assert_success('Ready to finish the installation.');
 
-$doneSteps = ['Requirements', 'General Information',
-    'MySQL Configuration', 'Administrator'];
+$doneSteps = ['Agreement', 'Requirements',
+    'General Information', 'MySQL Configuration', 'Administrator'];
 
 include_once '../fns/echo_page.php';
 include_once '../fns/steps.php';

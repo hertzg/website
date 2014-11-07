@@ -25,7 +25,7 @@ if (array_key_exists($key, $_SESSION)) {
     $errorHtml = '';
 }
 
-$doneSteps = ['Requirements', 'General Information'];
+$doneSteps = ['Agreement', 'Requirements', 'General Information'];
 $nextSteps = ['Administrator', 'Finalize Installation'];
 
 include_once '../fns/echo_page.php';
@@ -33,11 +33,11 @@ include_once '../fns/field_columns.php';
 include_once '../fns/steps.php';
 include_once '../fns/wizard_layout.php';
 echo_page(
-    'Step 3 - MySQL Configuration',
+    'Step 4 - MySQL Configuration',
     '<form action="submit.php" method="post">'
         .wizard_layout(
             steps($doneSteps, 'MySQL Configuration', $nextSteps),
-            '<span class="title-step">Step 3</span>'
+            '<span class="title-step">Step 4</span>'
             .'<h2>MySQL Configuration</h2>'
             .field_columns(
                 '<label for="hostInput">Host:</label>'

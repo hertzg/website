@@ -2,8 +2,8 @@
 
 function require_requirements () {
 
-    include_once __DIR__.'/require_not_installed.php';
-    require_not_installed('../');
+    include_once __DIR__.'/require_agreement.php';
+    require_agreement();
 
     $rootDir = __DIR__.'/../..';
     $apacheModules = apache_get_modules();
