@@ -10,13 +10,8 @@ list($username, $password1, $password2) = request_strings(
 include_once '../../fns/str_collapse_spaces.php';
 $username = str_collapse_spaces($username);
 
-include_once 'fns/check_username.php';
-$error = check_username($username);
-
-if ($error === null) {
-    include_once 'fns/check_passwords.php';
-    $error = check_passwords($username, $password1, $password2);
-}
+include_once '../fns/check_admin.php';
+$error = check_admin($username, $password1, $password2);
 
 $_SESSION['install/admin/values'] = [
     'username' => $username,

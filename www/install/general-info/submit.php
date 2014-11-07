@@ -14,8 +14,8 @@ $siteBase = str_collapse_spaces($siteBase);
 $https = (bool)$https;
 $error = null;
 
-if ($domainName === '') $error = 'Enter domain name.';
-else if ($siteBase === '') $error = 'Enter path to <code>"www"</code> folder.';
+include_once '../fns/check_general_info.php';
+$error = check_general_info($domainName, $siteBase);
 
 $_SESSION['install/general-info/values'] = [
     'domainName' => $domainName,

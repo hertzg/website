@@ -1,8 +1,8 @@
 <?php
 
-function check_passwords ($username, $password1, $password2) {
+function check_admin_passwords ($username, $password1, $password2) {
 
-    $fnsDir = __DIR__.'/../../../fns';
+    $fnsDir = __DIR__.'/../../fns';
 
     include_once "$fnsDir/Password/isShort.php";
     if (Password\isShort($password1)) {

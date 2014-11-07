@@ -10,7 +10,7 @@ function require_requirements () {
 
     if (!in_array('mod_rewrite', $apacheModules) ||
         !in_array('mod_headers', $apacheModules) ||
-        !date_default_timezone_get() === 'UTC' ||
+        date_default_timezone_get() !== 'UTC' ||
         !function_exists('curl_init') ||
         !function_exists('imagecreatefromstring') ||
         !function_exists('mysqli_connect') ||
@@ -21,7 +21,7 @@ function require_requirements () {
         !is_writable("$rootDir/fns/get_site_protocol.php") ||
         !is_writable("$rootDir/fns/installed.php")) {
 
-        include_once __DIR__.'/../../fns/redirect.php';
+        include_once "$rootDir/fns/redirect.php";
         redirect('../requirements/');
 
     }

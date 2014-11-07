@@ -1,10 +1,10 @@
 <?php
 
-function check_username ($username) {
+function check_admin_username ($username) {
 
     if ($username === '') return 'Enter username.';
 
-    $fnsDir = __DIR__.'/../../../fns';
+    $fnsDir = __DIR__.'/../../fns';
 
     include_once "$fnsDir/Username/isShort.php";
     if (Username\isShort($username)) {

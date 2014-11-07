@@ -13,18 +13,19 @@ function require_mysql_config () {
         redirect('../mysql-config/');
     }
 
-    $values = $_SESSION[$key];
-    $host = $values['host'];
-    $username = $values['username'];
-    $password = $values['password'];
+    $mysqlConfigValues = $_SESSION[$key];
 
-    $mysqli = @new mysqli($host, $username, $password, $values['db']);
-    if ($mysqli->connect_errno) {
-        $_SESSION['install/mysql-config/error'] = $mysqli->connect_error;
+    include_once __DIR__.'/check_mysql_config.php';
+    $error = check_mysql_config($mysqlConfigValues['host'],
+        $mysqlConfigValues['username'], $mysqlConfigValues['password'],
+        $mysqlConfigValues['db'], $mysqlConfigValues['create'], $mysqli);
+
+    if ($error) {
+        $_SESSION['install/mysql-config/error'] = $error;
         include_once "$fnsDir/redirect.php";
         redirect('../mysql-config/');
     }
 
-    return [$generalInfoValues, $values, $mysqli];
+    return [$generalInfoValues, $mysqlConfigValues, $mysqli];
 
 }

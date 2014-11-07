@@ -13,13 +13,18 @@ function require_general_info () {
         redirect('../general-info/');
     }
 
-    $values = $_SESSION[$key];
+    $generalInfoValues = $_SESSION[$key];
 
-    if ($values['domainName'] === '' || $values['siteBase'] === '') {
+    include_once __DIR__.'/check_general_info.php';
+    $error = check_general_info($generalInfoValues['domainName'],
+        $generalInfoValues['siteBase']);
+
+    if ($error) {
+        $_SESSION['install/general-info/error'] = $error;
         include_once "$fnsDir/redirect.php";
         redirect('../general-info/');
     }
 
-    return $values;
+    return $generalInfoValues;
 
 }
