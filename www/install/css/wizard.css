@@ -32,6 +32,7 @@
     .wizard-center {
         display: block;
         width: auto;
+        min-height: 0;
     }
 
     .wizard-bottom {
