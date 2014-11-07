@@ -8,12 +8,16 @@ list($host, $username, $password, $db, $create) = request_strings(
     'host', 'username', 'password', 'db', 'create');
 
 include_once '../../fns/str_collapse_spaces.php';
+$host = str_collapse_spaces($host);
 $db = str_collapse_spaces($db);
+$username = str_collapse_spaces($username);
 
 $create = (bool)$create;
 $error = null;
 
-if ($db === '') $error = 'Enter database.';
+if ($host === '') $error = 'Enter host.';
+elseif ($db === '') $error = 'Enter database.';
+elseif ($username === '') $error = 'Enter username.';
 else {
     $mysqli = @new mysqli($host, $username, $password);
     if ($mysqli->connect_errno) {

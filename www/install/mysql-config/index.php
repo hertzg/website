@@ -6,13 +6,15 @@ require_general_info();
 $key = 'install/mysql-config/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
+    $username = exec('whoami', $username);
     $values = [
-        'host' => '',
-        'username' => '',
+        'host' => 'localhost',
+        'username' => $username,
         'password' => '',
         'db' => 'zvini',
         'create' => true,
     ];
+
 }
 
 $key = 'install/mysql-config/error';
@@ -42,7 +44,7 @@ echo_page(
             .field_columns(
                 '<label for="hostInput">Host:</label>'
                 .'<br />'
-                .'<input class="textfield" type="text"'
+                .'<input class="textfield" type="text" required="required"'
                 .' name="host" id="hostInput" autofocus="autofocus"'
                 .' value="'.htmlspecialchars($values['host']).'" />',
                 '<label for="dbInput">Database:</label>'
@@ -55,7 +57,7 @@ echo_page(
                 '<label for="usernameInput">Username:</label>'
                 .'<br />'
                 .'<input class="textfield" type="text"'
-                .' name="username" id="usernameInput"'
+                .' name="username" id="usernameInput" required="required"'
                 .' value="'.htmlspecialchars($values['username']).'" />',
                 '<label for="passwordInput">Password:</label>'
                 .'<br />'
