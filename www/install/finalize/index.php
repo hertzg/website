@@ -4,20 +4,19 @@ include_once '../fns/require_admin.php';
 $values = require_admin();
 list($generalInfoValues, $mysqlConfigValues, $adminValues, $mysqli) = $values;
 
-include_once '../fns/create_assert.php';
-
+include_once '../fns/assert_success.php';
 if ($mysqlConfigValues['create']) {
-    $assertsHtml = create_assert(true, 'MySQL database has been created.');
+    $assertsHtml = assert_success('MySQL database has been created.');
 } else {
-    $assertsHtml = create_assert(true, 'MySQL database exists.');
+    $assertsHtml = assert_success('MySQL database exists.');
 }
 
 include_once '../../fns/Table/ensureAll.php';
 Table\ensureAll($mysqli);
 
 $assertsHtml .=
-    create_assert(true, 'Tables have been created.')
-    .create_assert(true, 'Ready to finish the installation.');
+    assert_success('Tables have been created.')
+    .assert_success('Ready to finish the installation.');
 
 $doneSteps = ['Requirements', 'General Information',
     'MySQL Configuration', 'Administrator'];

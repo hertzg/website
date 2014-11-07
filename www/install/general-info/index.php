@@ -26,9 +26,12 @@ else {
 
 $key = 'install/general-info/error';
 if (array_key_exists($key, $_SESSION)) {
-    $erroHtml = "<div class=\"error formError\">{$_SESSION[$key]}</div>";
+    $errorHtml =
+        '<div class="error formError">'
+            ."&times; {$_SESSION[$key]}"
+        .'</div>';
 } else {
-    $erroHtml = '';
+    $errorHtml = '';
 }
 
 $escapedDomainName = htmlspecialchars($values['domainName']);
@@ -70,7 +73,7 @@ echo_page(
                     .'The site uses HTTPS protocol.'
                 .'</label>'
             .'</div>'
-            .$erroHtml,
+            .$errorHtml,
             '<a href="../requirements/" class="button">Back</a>'
             .'<input type="submit" class="button nextButton" value="Next" />'
         )

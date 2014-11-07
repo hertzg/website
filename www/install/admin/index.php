@@ -15,12 +15,12 @@ else {
 
 $key = 'install/admin/error';
 if (array_key_exists($key, $_SESSION)) {
-    $erroHtml =
+    $errorHtml =
         '<div class="error formError">'
-            .htmlspecialchars($_SESSION[$key])
+            ."&times; {$_SESSION[$key]}"
         .'</div>';
 } else {
-    $erroHtml = '';
+    $errorHtml = '';
 }
 
 $doneSteps = ['Requirements', 'General Information', 'MySQL Configuration'];
@@ -56,7 +56,7 @@ echo_page(
                 .' name="password2" id="password2Input" required="required"'
                 .' value="'.htmlspecialchars($values['password2']).'" />'
             )
-            .$erroHtml,
+            .$errorHtml,
             '<a href="../mysql-config/" class="button">Back</a>'
             .'<input type="submit" class="button nextButton" value="Next" />'
         )

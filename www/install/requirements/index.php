@@ -1,46 +1,59 @@
 <?php
 
-function writable_file ($filename) {
+function assert_enabled ($ok, $subject) {
+    if ($ok) return assert_success("$subject is enabled.");
+    return assert_failure("$subject is NOT enabled.");
+}
+
+function assert_installed ($ok, $subject) {
+    if ($ok) return assert_success("$subject is installed.");
+    return assert_failure("$subject is NOT installed.");
+}
+
+function assert_writable ($filename) {
     $ok = is_writable("../../$filename");
-    $text = "File \"<code>www/$filename</code>\" is writable.";
-    return create_assert($ok, $text);
+    $subject = "File \"<code>www/$filename</code>\"";
+    if ($ok) return assert_success("$subject is writable.");
+    return assert_failure("$subject is NOT writable.");
 }
 
 include_once '../fns/require_not_installed.php';
 require_not_installed('../');
 
+include_once '../fns/assert_failure.php';
+include_once '../fns/assert_success.php';
+
 $apacheModules = apache_get_modules();
 
-include_once '../fns/create_assert.php';
 $ok = in_array('mod_rewrite', $apacheModules);
-$text = 'Apache module "<code>mod_rewrite</code>" is enabled.';
-$assertsHtml = create_assert($ok, $text);
+$subject = 'Apache module "<code>mod_rewrite</code>"';
+$assertsHtml = assert_enabled($ok, $subject);
 
 $ok = in_array('mod_headers', $apacheModules);
-$text = 'Apache module "<code>mod_headers</code>" is enabled.';
-$assertsHtml .= create_assert($ok, $text);
+$subject = 'Apache module "<code>mod_headers</code>"';
+$assertsHtml .= assert_enabled($ok, $subject);
 
 $ok = date_default_timezone_get() === 'UTC';
-$assertsHtml .= create_assert($ok, 'PHP default timezone is set to UTC.');
+$subject = 'PHP default timezone';
+if ($ok) $assertsHtml .= assert_success("$subject is set to UTC.");
+else $assertsHtml .= assert_failure("$subject is NOT set to UTC.");
 
 $ok = function_exists('curl_init');
-$assertsHtml .= create_assert($ok, 'PHP Client URL Library is installed.');
+$assertsHtml .= assert_installed($ok, 'PHP Client URL Library');
 
 $ok = function_exists('imagecreatefromstring');
-$text = 'PHP image processing and GD is installed.';
-$assertsHtml .= create_assert($ok, $text);
+$assertsHtml .= assert_installed($ok, 'PHP image processing and GD');
 
 $ok = function_exists('mysqli_connect');
-$text = 'PHP MySQL improved extension is installed.';
-$assertsHtml .= create_assert($ok, $text);
+$assertsHtml .= assert_installed($ok, 'PHP MySQL improved extension');
 
 $assertsHtml .=
-    writable_file('admin/fns/get_admin.php')
-    .writable_file('fns/get_domain_name.php')
-    .writable_file('fns/get_mysqli_config.php')
-    .writable_file('fns/get_site_base.php')
-    .writable_file('fns/get_site_protocol.php')
-    .writable_file('fns/installed.php');
+    assert_writable('admin/fns/get_admin.php')
+    .assert_writable('fns/get_domain_name.php')
+    .assert_writable('fns/get_mysqli_config.php')
+    .assert_writable('fns/get_site_base.php')
+    .assert_writable('fns/get_site_protocol.php')
+    .assert_writable('fns/installed.php');
 
 $nextSteps = ['General Information', 'MySQL Configuration',
     'Administrator', 'Finalize Installation'];

@@ -17,12 +17,12 @@ else {
 
 $key = 'install/mysql-config/error';
 if (array_key_exists($key, $_SESSION)) {
-    $erroHtml =
+    $errorHtml =
         '<div class="error formError">'
-            .htmlspecialchars($_SESSION[$key])
+            ."&times; {$_SESSION[$key]}"
         .'</div>';
 } else {
-    $erroHtml = '';
+    $errorHtml = '';
 }
 
 $doneSteps = ['Requirements', 'General Information'];
@@ -70,7 +70,7 @@ echo_page(
                     .'Create database if it doesn\'t exist.'
                 .'</label>'
             .'</div>'
-            .$erroHtml,
+            .$errorHtml,
             '<a href="../general-info/" class="button">Back</a>'
             .'<input type="submit" class="button nextButton" value="Next" />'
         )
