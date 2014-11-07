@@ -19,7 +19,7 @@ else {
     $values = [
         'domainName' => $domainName,
         'siteBase' => $siteBase,
-        'https' => false,
+        'https' => array_key_exists('HTTPS', $_SERVER),
     ];
 
 }
