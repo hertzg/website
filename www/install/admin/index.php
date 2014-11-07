@@ -30,6 +30,8 @@ include_once '../fns/echo_page.php';
 include_once '../fns/field_columns.php';
 include_once '../fns/steps.php';
 include_once '../fns/wizard_layout.php';
+include_once '../../fns/Password/minLength.php';
+include_once '../../fns/Username/minLength.php';
 echo_page(
     'Step 5 - Administrator',
     '<form action="submit.php" method="post">'
@@ -37,20 +39,33 @@ echo_page(
             steps($doneSteps, 'Administrator', ['Finalize Installation']),
             '<span class="title-step">Step 5</span>'
             .'<h2>Administrator</h2>'
-            .field_columns(
-                '<label for="usernameInput">Username:</label>'
+            .'<div style="margin-bottom: 8px">'
+                .'<label for="usernameInput">Username:</label>'
                 .'<br />'
                 .'<input class="textfield" type="text" required="required"'
                 .' name="username" id="usernameInput" autofocus="autofocus"'
-                .' value="'.htmlspecialchars($values['username']).'" />',
-                ''
-            )
+                .' value="'.htmlspecialchars($values['username']).'" />'
+                .'<div class="notes">'
+                    .'<div class="notes-note">'
+                        .'&bull; Characters a-z, A-Z, 0-9, dash, dot and underscore only.'
+                    .'</div>'
+                    .'<div class="notes-note">'
+                        .'&bull; Minimum '.Username\minLength().' charactes.'
+                    .'</div>'
+                .'</div>'
+            .'</div>'
             .field_columns(
                 '<label for="password1Input">Password:</label>'
                 .'<br />'
                 .'<input class="textfield" type="password"'
                 .' name="password1" id="password1Input" required="required"'
-                .' value="'.htmlspecialchars($values['password1']).'" />',
+                .' value="'.htmlspecialchars($values['password1']).'" />'
+                .'<br />'
+                .'<div class="notes">'
+                    .'<div class="notes-note">'
+                        .'&bull; Minimum '.Password\minLength().' charactes.'
+                    .'</div>'
+                .'</div>',
                 '<label for="password2Input">Repeat password:</label>'
                 .'<br />'
                 .'<input class="textfield" type="password"'
