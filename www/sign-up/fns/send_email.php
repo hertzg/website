@@ -25,7 +25,7 @@ function send_email ($username) {
         'From: no-reply@'.get_domain_name()."\r\n"
         .'Content-Type: text/html; charset=UTF-8';
 
-    include_once "$fnsDir/get_admin_email.php";
-    mail(get_admin_email(), $subject, $html, $headers);
+    include_once "$fnsDir/get_info_email.php";
+    mail(get_info_email(), $subject, $html, $headers);
 
 }
