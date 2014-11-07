@@ -19,7 +19,7 @@ file_put_php('../../admin/fns/get_admin.php', $content);
 $content =
     "<?php\n\n"
     ."function get_domain_name () {\n"
-    .'    return '.var_export($generalInfoValues['domainName'], true)."\n"
+    .'    return '.var_export($generalInfoValues['domainName'], true).";\n"
     ."}\n";
 file_put_php('../../fns/get_domain_name.php', $content);
 
@@ -36,7 +36,7 @@ file_put_php('../../fns/get_mysqli_config.php', $content);
 $content =
     "<?php\n\n"
     ."function get_site_base () {\n"
-    .'    return '.var_export($generalInfoValues['siteBase'], true)."\n"
+    .'    return '.var_export($generalInfoValues['siteBase'], true).";\n"
     ."}\n";
 file_put_php('../../fns/get_site_base.php', $content);
 

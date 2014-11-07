@@ -2,16 +2,18 @@
 
 namespace Users;
 
-function delete ($mysqli, $id_users) {
+function delete ($mysqli, $id) {
 
-    $sql = "delete from users where id_users = $id_users";
+    $sql = "delete from users where id_users = $id";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
     $rmdir = function ($dirname) {
         if (is_dir($dirname)) rmdir($dirname);
     };
 
-    $userDir = __DIR__."/../../data/users/$id_users";
+    include_once __DIR__.'/Directory/path.php';
+    $userDir = Directory\path($id);
+
     $rmdir("$userDir/files");
     $rmdir("$userDir/received-files");
     $rmdir("$userDir/received-folder-files");

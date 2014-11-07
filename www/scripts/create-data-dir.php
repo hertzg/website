@@ -13,13 +13,15 @@ $mkdir = function ($dirname) {
     chmod($dirname, 0770);
 };
 
-$dataDir = '../data';
-$mkdir($dataDir);
+include_once '../fns/get_data_dir.php';
+$data_dir = get_data_dir();
 
-$usersDir = "$dataDir/users";
+$mkdir($data_dir);
+
+$usersDir = "$data_dir/users";
 $mkdir($usersDir);
 
-$mkdir("$dataDir/contact-photos");
+$mkdir("$data_dir/contact-photos");
 
 foreach ($users as $user) {
     $userDir = "$usersDir/$user->id_users";
@@ -29,4 +31,4 @@ foreach ($users as $user) {
     $mkdir("$userDir/received-folder-files");
 }
 
-file_put_contents("$dataDir/.htaccess", "Deny from all\n");
+file_put_contents("$data_dir/.htaccess", "Deny from all\n");

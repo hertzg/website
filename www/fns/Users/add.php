@@ -32,7 +32,9 @@ function add ($mysqli, $username, $password) {
 
     $id = $mysqli->insert_id;
 
-    $userDir = __DIR__."/../../data/users/$id";
+    include_once __DIR__.'/Directory/path.php';
+    $userDir = Directory\path($id);
+
     mkdir($userDir);
     mkdir("$userDir/files");
     mkdir("$userDir/received-files");

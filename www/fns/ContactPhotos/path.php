@@ -3,5 +3,10 @@
 namespace ContactPhotos;
 
 function path ($id) {
-    return __DIR__."/../../data/contact-photos/$id";
+
+    include_once __DIR__.'/../get_data_dir.php';
+    $data_dir = get_data_dir();
+
+    return "$data_dir/contact-photos/$id";
+
 }
