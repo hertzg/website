@@ -17,6 +17,9 @@ function echo_html ($title, $content) {
                 .' href="../css/compressed.css?1" />'
             .'</head>'
             .'<body>'
+                .'<div class="backgroundGradient">'
+                    .'<div class="backgroundGradient-gradient"></div>'
+                .'</div>'
                 .'<div class="page">'
                     .'<div class="page-aligner"></div>'
                     ."<div class=\"page-content\">$content</div>"

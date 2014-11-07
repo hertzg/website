@@ -1,0 +1,21 @@
+.button {
+    background: #666;
+    font-weight: bold;
+    line-height: 48px;
+    height: 48px;
+    display: inline-block;
+    vertical-align: top;
+    width: 100px;
+    text-align: center;
+    cursor: pointer;
+}
+.button:focus {
+    box-shadow: 0 0 1px 2px #f80;
+}
+.button.nextButton {
+    margin-left: 32px;
+}
+.button.disabled {
+    background: #555;
+    color: #777;
+}
