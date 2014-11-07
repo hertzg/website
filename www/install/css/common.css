@@ -1,9 +1,3 @@
-@font-face {
-    font-family: FreeMono;
-    src: url(../../fonts/FreeMono.ttf);
-    src: local("FreeMono"), url(../../fonts/FreeMono.ttf);
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -23,7 +17,7 @@
 }
 
 html, body {
-    font: normal 16px/24px Arial, sans-serif;
+    font: normal 16px/22px Arial, sans-serif;
     cursor: default;
     background: #444;
     color: #fff;
@@ -42,10 +36,6 @@ a {
 
 li {
     display: block;
-}
-
-code {
-    font-family: FreeMono, monospace;
 }
 
 p {
@@ -73,6 +63,9 @@ p {
 }
 .button.nextButton {
     margin-left: 32px;
+}
+.button.disabled {
+    color: #777;
 }
 
 .steps {

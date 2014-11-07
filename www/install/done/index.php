@@ -9,7 +9,7 @@ include_once '../fns/echo_html.php';
 echo_html(
     'Installation Finished',
     '<h2 style="text-align: center">'
-        .'The installation has finished. Zvini is ready to use.'
+        .'The installation has finished.<br />Zvini is ready to be used.'
     .'</h2>'
     .'<div style="text-align: center; margin-top: 32px">'
         .'<a class="button" href="../..">Go to Zvini</a>'
