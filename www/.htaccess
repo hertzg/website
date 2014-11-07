@@ -1,8 +1,8 @@
 # auto-generated
 RewriteEngine On
 
-RewriteCond %{HTTP_HOST} ^www\.zvini\.com$
-RewriteRule (.*) http://zvini.com/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} ^www\.localhost$
+RewriteRule (.*) http://localhost/$1 [R=301,L]
 
 <filesMatch "\.(css|js|png|svg|ttf)$">
     Header set Cache-Control "public, max-age=2592000"
