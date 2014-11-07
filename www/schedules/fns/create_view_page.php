@@ -47,7 +47,7 @@ function create_view_page ($user, $schedule) {
     $author = format_author($insert_time, $schedule->insert_api_key_name);
     $infoText = "Schedule created $author.";
     if ($insert_time != $update_time) {
-        $author = format_author($insert_time, $schedule->update_api_key_name);
+        $author = format_author($update_time, $schedule->update_api_key_name);
         $infoText .= "<br />Last modified $author.";
     }
 
