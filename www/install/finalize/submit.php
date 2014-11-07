@@ -25,6 +25,13 @@ file_put_php('../../fns/get_domain_name.php', $content);
 
 $content =
     "<?php\n\n"
+    ."function get_info_email () {\n"
+    .'    return '.var_export($generalInfoValues['infoEmail'], true).";\n"
+    ."}\n";
+file_put_php('../../fns/get_info_email.php', $content);
+
+$content =
+    "<?php\n\n"
     ."function get_mysqli_config (&\$host, &\$username, &\$password, &\$db) {\n"
     .'    $host = '.var_export($mysqlConfigValues['host'], true).";\n"
     .'    $username = '.var_export($mysqlConfigValues['username'], true).";\n"

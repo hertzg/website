@@ -18,6 +18,7 @@ else {
 
     $values = [
         'domainName' => $domainName,
+        'infoEmail' => "info@$domainName",
         'siteBase' => $siteBase,
         'https' => array_key_exists('HTTPS', $_SERVER),
     ];
@@ -35,6 +36,7 @@ if (array_key_exists($key, $_SESSION)) {
 }
 
 $escapedDomainName = htmlspecialchars($values['domainName']);
+$escapedInfoEmail = htmlspecialchars($values['infoEmail']);
 $escapedSiteBase = htmlspecialchars($values['siteBase']);
 
 $doneSteps = ['Agreement', 'Requirements'];
@@ -54,19 +56,24 @@ echo_page(
             .field_columns(
                 '<label for="domainNameInput">Domain name:</label>'
                 .'<br />'
-                .'<input class="textfield"'
-                .' type="text" required="required"'
+                .'<input class="textfield" type="text" required="required"'
                 .' autofocus="autofocus" id="domainNameInput"'
                 ." value=\"$escapedDomainName\" name=\"domainName\" />",
-                '<label for="siteBaseInput">'
+                '<label for="infoEmailInput">Informational email:</label>'
+                .'<br />'
+                .'<input class="textfield" type="text" required="required"'
+                .' autofocus="autofocus" id="infoEmailInput"'
+                ." value=\"$escapedInfoEmail\" name=\"infoEmail\" />"
+            )
+            .'<div style="margin-bottom: 8px">'
+                .'<label for="siteBaseInput">'
                     .'Path to "<code>www</code>" folder:'
                 .'</label>'
                 .'<br />'
-                .'<input type="text"'
-                .' name="siteBase" required="required"'
+                .'<input type="text" name="siteBase" required="required"'
                 .' id="siteBaseInput" class="textfield"'
                 ." value=\"$escapedSiteBase\" required=\"required\" />"
-            )
+            .'</div>'
             .'<div>'
                 .'<input type="checkbox" name="https" id="httpsInput"'
                 .($values['https'] ? ' checked="checked"' : '').' />'
