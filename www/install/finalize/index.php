@@ -14,8 +14,12 @@ if ($mysqlConfigValues['create']) {
 include_once '../../fns/Table/ensureAll.php';
 Table\ensureAll($mysqli);
 
+include_once '../../fns/ensure_data_dir.php';
+ensure_data_dir($mysqli);
+
 $assertsHtml .=
     assert_success('Tables have been created.')
+    .assert_success('Data folder has been created.')
     .assert_success('Ready to finish the installation.');
 
 $doneSteps = ['Agreement', 'Requirements',

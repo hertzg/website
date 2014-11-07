@@ -47,6 +47,11 @@ $assertsHtml .= assert_installed($ok, 'PHP image processing and GD');
 $ok = function_exists('mysqli_connect');
 $assertsHtml .= assert_installed($ok, 'PHP MySQL improved extension');
 
+$ok = is_writable('../..');
+$subject = 'Folder "<code>www</code>"';
+if ($ok) $assertsHtml .= assert_success("$subject is writable.");
+else $assertsHtml .= assert_failure("$subject is NOT writable.");
+
 $assertsHtml .=
     assert_writable('admin/fns/get_admin.php')
     .assert_writable('fns/get_domain_name.php')

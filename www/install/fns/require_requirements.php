@@ -14,6 +14,7 @@ function require_requirements () {
         !function_exists('curl_init') ||
         !function_exists('imagecreatefromstring') ||
         !function_exists('mysqli_connect') ||
+        !is_writable($rootDir) ||
         !is_writable("$rootDir/admin/fns/get_admin.php") ||
         !is_writable("$rootDir/fns/get_domain_name.php") ||
         !is_writable("$rootDir/fns/get_mysqli_config.php") ||

@@ -24,9 +24,9 @@ function check_mysql_config ($host,
             $ok = $mysqli->query("create database `$escapedDb`");
             if (!$ok) return htmlspecialchars($mysqli->error);
         }
-    } else {
-        $ok = $mysqli->select_db($db);
-        if (!$ok) return htmlspecialchars($mysqli->error);
     }
+
+    $ok = $mysqli->select_db($db);
+    if (!$ok) return htmlspecialchars($mysqli->error);
 
 }

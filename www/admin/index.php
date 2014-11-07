@@ -21,9 +21,12 @@ $content = Page\tabs(
     .'<div class="hr"></div>'
     .Page\imageArrowLink('Ensure Tables', 'ensure-tables/', 'none')
     .'<div class="hr"></div>'
+    .Page\imageArrowLink('Ensure Data Folder', 'ensure-data-dir/', 'none')
+    .'<div class="hr"></div>'
     .Page\imageArrowLink('Check Installation', 'check-installation/', 'none')
     .'<div class="hr"></div>'
-    .Page\imageArrowLink('Set New Username/Password', 'username-password/', 'none')
+    .Page\imageArrowLink('Set New Username/Password',
+        'username-password/', 'none')
 );
 
 include_once '../fns/echo_guest_page.php';
