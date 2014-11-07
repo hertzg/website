@@ -6,6 +6,8 @@ require_not_installed('../');
 $nextSteps = ['Requirements', 'General Information',
     'MySQL Configuration', 'Administrator', 'Finalize Installation'];
 
+$href = 'http://www.gnu.org/licenses/';
+
 include_once '../fns/echo_page.php';
 include_once '../fns/steps.php';
 include_once '../fns/wizard_layout.php';
@@ -33,8 +35,7 @@ echo_page(
             .'<p>'
                 .'You should have received a copy of the GNU Affero'
                 .' General Public License along with this program. If not, see'
-                .' <a class="link" href="http://www.gnu.org/licenses/">'
-                .'http://www.gnu.org/licenses/</a>'
+                ." <a class=\"link\" target=\"_blank\" href=\"$href\">$href</a>"
             .'</p>',
             '<a class="button nextButton" href="submit.php">I Agree</a>'
         )
