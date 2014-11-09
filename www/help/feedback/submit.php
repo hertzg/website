@@ -60,8 +60,8 @@ $headers =
     .'From: no-reply@'.get_domain_name();
 if ($user && $user->email !== '') $headers .= "\r\nReply-To: $user->email";
 
-include_once '../../fns/get_info_email.php';
-mail(get_info_email(), $title, $html, $headers);
+include_once '../../fns/InfoEmail/get.php';
+mail(InfoEmail\get(), $title, $html, $headers);
 
 $_SESSION['help/messages'] = ['Thank you for the feedback.'];
 

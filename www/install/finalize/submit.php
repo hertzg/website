@@ -23,12 +23,8 @@ $content =
     ."}\n";
 file_put_php('../../fns/get_domain_name.php', $content);
 
-$content =
-    "<?php\n\n"
-    ."function get_info_email () {\n"
-    .'    return '.var_export($generalInfoValues['infoEmail'], true).";\n"
-    ."}\n";
-file_put_php('../../fns/get_info_email.php', $content);
+include_once '../../fns/InfoEmail/set.php';
+InfoEmail\set($generalInfoValues['infoEmail']);
 
 include_once '../../fns/MysqlConfig/set.php';
 MysqlConfig\set($mysqlConfigValues['host'], $mysqlConfigValues['username'],
