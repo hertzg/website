@@ -1,6 +1,8 @@
 <?php
 
-function get_mysqli_config (&$host, &$username, &$password, &$db) {
+namespace MysqlConfig;
+
+function get (&$host, &$username, &$password, &$db) {
     $host = 'localhost';
     $username = '';
     $password = '';

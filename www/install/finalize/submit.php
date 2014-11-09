@@ -30,15 +30,9 @@ $content =
     ."}\n";
 file_put_php('../../fns/get_info_email.php', $content);
 
-$content =
-    "<?php\n\n"
-    ."function get_mysqli_config (&\$host, &\$username, &\$password, &\$db) {\n"
-    .'    $host = '.var_export($mysqlConfigValues['host'], true).";\n"
-    .'    $username = '.var_export($mysqlConfigValues['username'], true).";\n"
-    .'    $password = '.var_export($mysqlConfigValues['password'], true).";\n"
-    .'    $db = '.var_export($mysqlConfigValues['db'], true).";\n"
-    ."}\n";
-file_put_php('../../fns/get_mysqli_config.php', $content);
+include_once '../../fns/MysqlConfig/set.php';
+MysqlConfig\set($mysqlConfigValues['host'], $mysqlConfigValues['username'],
+    $mysqlConfigValues['password'], $mysqlConfigValues['db']);
 
 $content =
     "<?php\n\n"

@@ -14,8 +14,8 @@ $key = 'admin/mysql-settings/edit/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
 
-    include_once "$fnsDir/get_mysqli_config.php";
-    get_mysqli_config($host, $username, $password, $db);
+    include_once "$fnsDir/MysqlConfig/get.php";
+    MysqlConfig\get($host, $username, $password, $db);
 
     $values = [
         'host' => $host,

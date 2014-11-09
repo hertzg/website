@@ -21,21 +21,9 @@ $errors = [];
 if ($db === '') $errors[] = 'Enter database.';
 
 if (!$errors) {
-
-    $content =
-        "<?php\n\n"
-        ."function get_mysqli_config (&\$host, &\$username, &\$password, &\$db) {\n"
-        ."    \$host = ".var_export($host, true).";\n"
-        ."    \$username = ".var_export($username, true).";\n"
-        ."    \$password = ".var_export($password, true).";\n"
-        ."    \$db = ".var_export($db, true).";\n"
-        ."}\n";
-
-    include_once "$fnsDir/file_put_php.php";
-    $filename = '../../../fns/get_mysqli_config.php';
-    $ok = @file_put_php($filename, $content);
+    include_once "$fnsDir/MysqlConfig/set.php";
+    $ok = MysqlConfig\set($host, $username, $password, $db);
     if (!$ok) $errors[] = 'Failed to save the data.';
-
 }
 
 include_once "$fnsDir/redirect.php";

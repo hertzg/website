@@ -64,7 +64,7 @@ $ok = function_exists('mysqli_connect');
 $content .= visual_assert($ok, 'PHP MySQL improved extension installed');
 
 $content .= assert_writable_file('../fns/get_admin.php');
-$content .= assert_writable_file('../../fns/get_mysqli_config.php');
+$content .= assert_writable_file('../../fns/MysqlConfig/get.php');
 
 include_once '../../fns/Users/Directory/dir.php';
 assert_writable_dir(Users\Directory\dir());

@@ -10,8 +10,8 @@ unset(
 
 $fnsDir = '../../fns';
 
-include_once "$fnsDir/get_mysqli_config.php";
-get_mysqli_config($host, $username, $password, $db);
+include_once "$fnsDir/MysqlConfig/get.php";
+MysqlConfig\get($host, $username, $password, $db);
 
 if ($host === '') {
     $host = '<span class="form-label-default">Default</span>';

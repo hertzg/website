@@ -8,8 +8,8 @@ require_same_domain_referer('./');
 include_once '../fns/require_admin.php';
 require_admin();
 
-include_once "$fnsDir/get_mysqli_config.php";
-get_mysqli_config($host, $username, $password, $db);
+include_once "$fnsDir/MysqlConfig/get.php";
+MysqlConfig\get($host, $username, $password, $db);
 
 $mysqli = @new mysqli($host, $username, $password, $db);
 

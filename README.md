@@ -7,7 +7,7 @@ Configuration
 -------------
 In `www/fns` folder:
 
-* `get_mysqli_config.php` contains MySQL server address,
+* `MysqlConfig/get.php` contains MySQL server address,
 username, password and a schema name.
 * `get_domain_name.php` contains the domain name of the server on which
 the website is running. If the server is running on a port different

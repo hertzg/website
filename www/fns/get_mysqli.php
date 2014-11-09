@@ -4,8 +4,8 @@ function get_mysqli () {
     static $mysqli;
     if ($mysqli === null) {
 
-        include_once __DIR__.'/../fns/get_mysqli_config.php';
-        get_mysqli_config($host, $username, $password, $db);
+        include_once __DIR__.'/../fns/MysqlConfig/get.php';
+        MysqlConfig\get($host, $username, $password, $db);
 
         $mysqli = @new mysqli($host, $username, $password, $db);
 
