@@ -7,8 +7,8 @@ function get_prepare_params () {
     include_once "$fnsDir/DomainName/get.php";
     $domainName = DomainName\get();
 
-    include_once "$fnsDir/get_site_base.php";
-    $siteBase = get_site_base();
+    include_once "$fnsDir/SiteBase/get.php";
+    $siteBase = SiteBase\get();
 
     include_once "$fnsDir/get_site_protocol.php";
     $site_protocol = get_site_protocol();

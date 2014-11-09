@@ -4,8 +4,8 @@
 chdir(__DIR__);
 include_once '../../lib/cli.php';
 
-include_once '../fns/get_site_base.php';
-$siteBase = get_site_base();
+include_once '../fns/SiteBase/get.php';
+$siteBase = SiteBase\get();
 
 include_once '../fns/DomainName/get.php';
 $domainName = DomainName\get();

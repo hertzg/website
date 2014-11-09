@@ -3,8 +3,8 @@
 include_once '../fns/DomainName/get.php';
 $domainName = DomainName\get();
 
-include_once '../fns/get_site_base.php';
-$siteBase = get_site_base();
+include_once '../fns/SiteBase/get.php';
+$siteBase = SiteBase\get();
 
 $description =
     'Save your data in Zvini. Save your files, contacts, notes and more.'

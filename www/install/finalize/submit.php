@@ -26,12 +26,8 @@ include_once '../../fns/MysqlConfig/set.php';
 MysqlConfig\set($mysqlConfigValues['host'], $mysqlConfigValues['username'],
     $mysqlConfigValues['password'], $mysqlConfigValues['db']);
 
-$content =
-    "<?php\n\n"
-    ."function get_site_base () {\n"
-    .'    return '.var_export($generalInfoValues['siteBase'], true).";\n"
-    ."}\n";
-file_put_php('../../fns/get_site_base.php', $content);
+include_once '../../fns/SiteBase/set.php';
+SiteBase\set($generalInfoValues['siteBase']);
 
 $content =
     "<?php\n\n"

@@ -5,8 +5,8 @@ function get_zvini_client () {
     include_once __DIR__.'/get_zvini_client_key.php';
     $key = get_zvini_client_key();
 
-    include_once __DIR__.'/get_site_base.php';
-    $siteBase = get_site_base();
+    include_once __DIR__.'/SiteBase/get.php';
+    $siteBase = SiteBase\get();
 
     include_once __DIR__.'/DomainName/get.php';
     $domainName = DomainName\get();

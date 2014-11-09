@@ -13,7 +13,7 @@ username, password and a schema name.
 the website is running. If the server is running on a port different
 from 80 the port should be added to the value. Examples:
 `'zvini.example.com'`, `'localhost:8080'`.
-* `get_site_base.php` contains the path from the document
+* `SiteBase/get.php` contains the path from the document
 root to `www` folder. Examples: `'/'`, `'/www/'`, `'/zvini/'`.
 * `get_site_protocol.php` contains the website
 protocol either `'http'` or `'https'`.

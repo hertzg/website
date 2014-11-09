@@ -36,8 +36,8 @@ Users\editVerifyEmailKey($mysqli, $user->id_users, $key);
 include_once '../../fns/DomainName/get.php';
 $domainName = DomainName\get();
 
-include_once '../../fns/get_site_base.php';
-$siteBase = get_site_base();
+include_once '../../fns/SiteBase/get.php';
+$siteBase = SiteBase\get();
 
 $href = htmlspecialchars(
     "http://$domainName{$siteBase}verify-email/?".http_build_query([

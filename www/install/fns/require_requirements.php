@@ -19,7 +19,7 @@ function require_requirements () {
         !is_writable("$rootDir/fns/DomainName/get.php") ||
         !is_writable("$rootDir/fns/InfoEmail/get.php") ||
         !is_writable("$rootDir/fns/MysqlConfig/get.php") ||
-        !is_writable("$rootDir/fns/get_site_base.php") ||
+        !is_writable("$rootDir/fns/SiteBase/get.php") ||
         !is_writable("$rootDir/fns/get_site_protocol.php") ||
         !is_writable("$rootDir/fns/installed.php")) {
 
