@@ -16,12 +16,8 @@ $content =
     ."}\n";
 file_put_php('../../admin/fns/get_admin.php', $content);
 
-$content =
-    "<?php\n\n"
-    ."function get_domain_name () {\n"
-    .'    return '.var_export($generalInfoValues['domainName'], true).";\n"
-    ."}\n";
-file_put_php('../../fns/get_domain_name.php', $content);
+include_once '../../fns/DomainName/set.php';
+DomainName\set($generalInfoValues['domainName']);
 
 include_once '../../fns/InfoEmail/set.php';
 InfoEmail\set($generalInfoValues['infoEmail']);

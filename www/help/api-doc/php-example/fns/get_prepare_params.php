@@ -4,8 +4,8 @@ function get_prepare_params () {
 
     $fnsDir = __DIR__.'/../../../../fns';
 
-    include_once "$fnsDir/get_domain_name.php";
-    $domain_name = get_domain_name();
+    include_once "$fnsDir/DomainName/get.php";
+    $domainName = DomainName\get();
 
     include_once "$fnsDir/get_site_base.php";
     $siteBase = get_site_base();
@@ -13,7 +13,7 @@ function get_prepare_params () {
     include_once "$fnsDir/get_site_protocol.php";
     $site_protocol = get_site_protocol();
 
-    $api_base = "$site_protocol://$domain_name{$siteBase}api-call/";
+    $api_base = "$site_protocol://$domainName{$siteBase}api-call/";
 
     include_once __DIR__.'/phpCode.php';
     return

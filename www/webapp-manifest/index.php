@@ -1,7 +1,7 @@
 <?php
 
-include_once '../fns/get_domain_name.php';
-$domain_name = get_domain_name();
+include_once '../fns/DomainName/get.php';
+$domainName = DomainName\get();
 
 include_once '../fns/get_site_base.php';
 $siteBase = get_site_base();
@@ -20,7 +20,7 @@ echo json_encode([
     'launch_path' => $siteBase,
     'developer' => [
         'name' => 'Zvini Developers',
-        'url' => "http://$domain_name/",
+        'url' => "http://$domainName/",
     ],
     'icons' => [
         16 => '/zvini-icons/16.png',

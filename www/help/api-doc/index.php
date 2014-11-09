@@ -8,8 +8,8 @@ $user = signed_user();
 
 unset($_SESSION['help/messages']);
 
-include_once "$fnsDir/get_domain_name.php";
-$domain_name = get_domain_name();
+include_once "$fnsDir/DomainName/get.php";
+$domainName = DomainName\get();
 
 include_once "$fnsDir/get_site_base.php";
 $siteBase = get_site_base();
@@ -17,7 +17,7 @@ $siteBase = get_site_base();
 include_once "$fnsDir/get_site_protocol.php";
 $site_protocol = get_site_protocol();
 
-$api_base = "$site_protocol://$domain_name{$siteBase}api-call/";
+$api_base = "$site_protocol://$domainName{$siteBase}api-call/";
 
 include_once 'fns/get_groups.php';
 $groups = get_groups();

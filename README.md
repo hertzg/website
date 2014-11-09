@@ -9,7 +9,7 @@ In `www/fns` folder:
 
 * `MysqlConfig/get.php` contains MySQL server address,
 username, password and a schema name.
-* `get_domain_name.php` contains the domain name of the server on which
+* `DomainName/get.php` contains the domain name of the server on which
 the website is running. If the server is running on a port different
 from 80 the port should be added to the value. Examples:
 `'zvini.example.com'`, `'localhost:8080'`.

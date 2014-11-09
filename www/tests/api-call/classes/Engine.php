@@ -40,11 +40,11 @@ class Engine {
 
     function __construct ($api_key) {
 
-        include_once __DIR__.'/../../../fns/get_domain_name.php';
-        $domain_name = get_domain_name();
+        include_once __DIR__.'/../../../fns/DomainName/get.php';
+        $domainName = DomainName\get();
 
         $this->api_base =
-            "http://localhost/sites/$domain_name/website/www/api-call/";
+            "http://localhost/sites/$domainName/website/www/api-call/";
         $this->api_key = $api_key;
 
     }

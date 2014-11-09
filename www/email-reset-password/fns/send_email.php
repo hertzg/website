@@ -7,11 +7,11 @@ function send_email ($user, $key) {
     include_once "$fnsDir/get_site_base.php";
     $siteBase = get_site_base();
 
-    include_once "$fnsDir/get_domain_name.php";
-    $domain_name = get_domain_name();
+    include_once "$fnsDir/DomainName/get.php";
+    $domainName = DomainName\get();
 
     $href = htmlspecialchars(
-        "http://$domain_name{$siteBase}reset-password/?".http_build_query([
+        "http://$domainName{$siteBase}reset-password/?".http_build_query([
             'id_users' => $user->id_users,
             'key' => bin2hex($key)
         ])
@@ -40,7 +40,7 @@ function send_email ($user, $key) {
     $subject = mb_encode_mimeheader($title, 'UTF-8');
 
     $headers =
-        "From: no-reply@$domain_name\r\n"
+        "From: no-reply@$domainName\r\n"
         .'Content-Type: text/html; charset=UTF-8';
 
     mail($user->email, $subject, $html, $headers);

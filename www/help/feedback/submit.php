@@ -54,10 +54,10 @@ $html =
 
 $subject = mb_encode_mimeheader($title, 'UTF-8');
 
-include_once '../../fns/get_domain_name.php';
+include_once '../../fns/DomainName/get.php';
 $headers =
     "Content-Type: text/html; charset=UTF-8\r\n"
-    .'From: no-reply@'.get_domain_name();
+    .'From: no-reply@'.DomainName\get();
 if ($user && $user->email !== '') $headers .= "\r\nReply-To: $user->email";
 
 include_once '../../fns/InfoEmail/get.php';

@@ -20,9 +20,9 @@ function send_email ($username) {
 
     $fnsDir = __DIR__.'/../../fns';
 
-    include_once "$fnsDir/get_domain_name.php";
+    include_once "$fnsDir/DomainName/get.php";
     $headers =
-        'From: no-reply@'.get_domain_name()."\r\n"
+        'From: no-reply@'.DomainName\get()."\r\n"
         .'Content-Type: text/html; charset=UTF-8';
 
     include_once "$fnsDir/InfoEmail/get.php";
