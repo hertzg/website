@@ -74,7 +74,7 @@ echo_page(
         '<span class="title-step">Step 2</span>'
         .'<h2>Requirements</h2>'
         ."<ol>$assertsHtml</ol>",
-        '<a class="button" href="../agreement/">Back</a>'
-        .'<a href="submit.php" class="button nextButton" />Next</a>'
+        '<a href="submit.php" class="button nextButton" />Next</a>'
+        .'<a class="button" href="../agreement/">Back</a>'
     )
 );

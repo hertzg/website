@@ -82,8 +82,8 @@ echo_page(
                 .'</label>'
             .'</div>'
             .$errorHtml,
-            '<a href="../requirements/" class="button">Back</a>'
-            .'<input type="submit" class="button nextButton" value="Next" />'
+            '<input type="submit" class="button nextButton" value="Next" />'
+            .'<a href="../requirements/" class="button">Back</a>'
         )
     .'</form>'
 );

@@ -20,6 +20,7 @@
     padding-bottom: 32px;
     text-align: right;
     position: relative;
+    direction: rtl;
 }
 
 @media (max-width: 700px) {

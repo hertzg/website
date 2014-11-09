@@ -73,8 +73,8 @@ echo_page(
                 .' value="'.htmlspecialchars($values['password2']).'" />'
             )
             .$errorHtml,
-            '<a href="../mysql-config/" class="button">Back</a>'
-            .'<input type="submit" class="button nextButton" value="Next" />'
+            '<input type="submit" class="button nextButton" value="Next" />'
+            .'<a href="../mysql-config/" class="button">Back</a>'
         )
     .'</form>'
 );
