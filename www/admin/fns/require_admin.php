@@ -15,9 +15,6 @@ function require_admin () {
 
     if ($username !== $_SERVER['PHP_AUTH_USER']) $invalid();
 
-    $hash = hex2bin($hash);
-    $salt = hex2bin($salt);
-
     $fnsDir = __DIR__.'/../../fns';
 
     include_once "$fnsDir/Password/match.php";
