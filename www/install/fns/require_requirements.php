@@ -18,10 +18,10 @@ function require_requirements () {
         !is_writable("$rootDir/fns/Admin/get.php") ||
         !is_writable("$rootDir/fns/DomainName/get.php") ||
         !is_writable("$rootDir/fns/InfoEmail/get.php") ||
+        !is_writable("$rootDir/fns/Installed/get.php") ||
         !is_writable("$rootDir/fns/MysqlConfig/get.php") ||
         !is_writable("$rootDir/fns/SiteBase/get.php") ||
-        !is_writable("$rootDir/fns/SiteProtocol/get.php") ||
-        !is_writable("$rootDir/fns/installed.php")) {
+        !is_writable("$rootDir/fns/SiteProtocol/get.php")) {
 
         include_once "$rootDir/fns/redirect.php";
         redirect('../requirements/');

@@ -56,10 +56,10 @@ $assertsHtml .=
     assert_writable('fns/Admin/get.php')
     .assert_writable('fns/DomainName/get.php')
     .assert_writable('fns/InfoEmail/get.php')
+    .assert_writable('fns/Installed/get.php')
     .assert_writable('fns/MysqlConfig/get.php')
     .assert_writable('fns/SiteBase/get.php')
-    .assert_writable('fns/SiteProtocol/get.php')
-    .assert_writable('fns/installed.php');
+    .assert_writable('fns/SiteProtocol/get.php');
 
 $nextSteps = ['General Information', 'MySQL Configuration',
     'Administrator', 'Finalize Installation'];

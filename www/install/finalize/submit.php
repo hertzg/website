@@ -25,12 +25,8 @@ SiteBase\set($generalInfoValues['siteBase']);
 include_once '../../fns/SiteProtocol/set.php';
 SiteProtocol\set($generalInfoValues['https'] ? 'https' : 'http');
 
-$content =
-    "<?php\n\n"
-    ."function installed () {\n"
-    ."    return true;\n"
-    ."}\n";
-file_put_php('../../fns/installed.php', $content);
+include_once '../../fns/Installed/set.php';
+Installed\set(true);
 
 unset(
     $_SESSION['install/general-info/values'],

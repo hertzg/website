@@ -4,8 +4,8 @@ function require_not_installed ($base = '') {
 
     $fnsDir = __DIR__.'/../../fns';
 
-    include_once "$fnsDir/installed.php";
-    if (installed()) {
+    include_once "$fnsDir/Installed/get.php";
+    if (Installed\get()) {
         include_once "$fnsDir/redirect.php";
         redirect("$base..");
     }
