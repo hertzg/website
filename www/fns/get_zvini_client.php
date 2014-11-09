@@ -11,10 +11,10 @@ function get_zvini_client () {
     include_once __DIR__.'/DomainName/get.php';
     $domainName = DomainName\get();
 
-    include_once __DIR__.'/get_site_protocol.php';
-    $site_protocol = get_site_protocol();
+    include_once __DIR__.'/SiteProtocol/get.php';
+    $siteProtocol = SiteProtocol\get();
 
     include_once __DIR__.'/../classes/ZviniClient.php';
-    return new ZviniClient($key, $domainName, $siteBase, $site_protocol);
+    return new ZviniClient($key, $domainName, $siteBase, $siteProtocol);
 
 }

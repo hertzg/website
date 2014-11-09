@@ -14,10 +14,10 @@ $domainName = DomainName\get();
 include_once "$fnsDir/SiteBase/get.php";
 $siteBase = SiteBase\get();
 
-include_once "$fnsDir/get_site_protocol.php";
-$site_protocol = get_site_protocol();
+include_once "$fnsDir/SiteProtocol/get.php";
+$siteProtocol = SiteProtocol\get();
 
-$api_base = "$site_protocol://$domainName{$siteBase}api-call/";
+$api_base = "$siteProtocol://$domainName{$siteBase}api-call/";
 
 include_once 'fns/get_groups.php';
 $groups = get_groups();

@@ -29,12 +29,8 @@ MysqlConfig\set($mysqlConfigValues['host'], $mysqlConfigValues['username'],
 include_once '../../fns/SiteBase/set.php';
 SiteBase\set($generalInfoValues['siteBase']);
 
-$content =
-    "<?php\n\n"
-    ."function get_site_protocol () {\n"
-    .'    return \''.($generalInfoValues['https'] ? 'https' : 'http')."';\n"
-    ."}\n";
-file_put_php('../../fns/get_site_protocol.php', $content);
+include_once '../../fns/SiteProtocol/set.php';
+SiteProtocol\set($generalInfoValues['https'] ? 'https' : 'http');
 
 $content =
     "<?php\n\n"

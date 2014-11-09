@@ -5,9 +5,9 @@ class ZviniClient {
     public $api_key;
     public $base;
 
-    function __construct ($api_key, $domain_name, $siteBase, $site_protocol) {
+    function __construct ($api_key, $domainName, $siteBase, $siteProtocol) {
         $this->api_key = $api_key;
-        $this->base = "$site_protocol://$domain_name{$siteBase}api-call/";
+        $this->base = "$siteProtocol://$domainName{$siteBase}api-call/";
     }
 
     function call ($method, array $params) {
