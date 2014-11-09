@@ -63,7 +63,7 @@ $content .= visual_assert($ok, 'PHP image processing and GD installed');
 $ok = function_exists('mysqli_connect');
 $content .= visual_assert($ok, 'PHP MySQL improved extension installed');
 
-$content .= assert_writable_file('../fns/get_admin.php');
+$content .= assert_writable_file('../../fns/Admin/get.php');
 $content .= assert_writable_file('../../fns/MysqlConfig/get.php');
 
 include_once '../../fns/Users/Directory/dir.php';

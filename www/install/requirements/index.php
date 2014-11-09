@@ -53,7 +53,7 @@ if ($ok) $assertsHtml .= assert_success("$subject is writable.");
 else $assertsHtml .= assert_failure("$subject is NOT writable.");
 
 $assertsHtml .=
-    assert_writable('admin/fns/get_admin.php')
+    assert_writable('fns/Admin/get.php')
     .assert_writable('fns/DomainName/get.php')
     .assert_writable('fns/InfoEmail/get.php')
     .assert_writable('fns/MysqlConfig/get.php')

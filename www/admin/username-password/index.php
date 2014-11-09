@@ -9,11 +9,11 @@ $key = 'admin/username-password/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
 
-    include_once '../fns/get_admin.php';
-    get_admin($adminUsername, $adminPasswordHash, $adminPasswordSalt);
+    include_once '../../fns/Admin/get.php';
+    Admin\get($username, $hash, $salt);
 
     $values = [
-        'username' => $adminUsername,
+        'username' => $username,
         'password1' => '',
         'password2' => '',
     ];

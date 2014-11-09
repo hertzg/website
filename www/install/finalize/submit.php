@@ -6,15 +6,8 @@ list($generalInfoValues, $mysqlConfigValues, $adminValues) = require_admin();
 include_once '../../fns/Password/hash.php';
 list($hash, $salt) = Password\hash($adminValues['password1']);
 
-include_once '../../fns/file_put_php.php';
-$content =
-    "<?php\n\n"
-    ."function get_admin (&\$username, &\$hash, &\$salt) {\n"
-    .'    $username = '.var_export($adminValues['username'], true).";\n"
-    .'    $hash = "'.bin2hex($hash)."\";\n"
-    .'    $salt = "'.bin2hex($salt)."\";\n"
-    ."}\n";
-file_put_php('../../admin/fns/get_admin.php', $content);
+include_once '../../fns/Admin/set.php';
+Admin\set($adminValues['username'], $hash, $salt);
 
 include_once '../../fns/DomainName/set.php';
 DomainName\set($generalInfoValues['domainName']);

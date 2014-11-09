@@ -1,6 +1,8 @@
 <?php
 
-function get_admin (&$username, &$hash, &$salt) {
+namespace Admin;
+
+function get (&$username, &$hash, &$salt) {
     $username = 'admin';
     $hash = "\x5c\xff\x78\xd3\x3c\xcb\x3f\x50\x3b\x51\x04\x11\x62\x53\x66\x51";
     $salt = "\x98\x55\xf6\x72\x33\x35\x75\x2c\x7c\xb1\x02\xf4\x07\x7e\x52\xde"

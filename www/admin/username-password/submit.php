@@ -41,17 +41,8 @@ if (!$errors) {
     include_once "$fnsDir/Password/hash.php";
     list($hash, $salt) = Password\hash($password1);
 
-    $content =
-        "<?php\n\n"
-        ."function get_admin (&\$username, &\$hash, &\$salt) {\n"
-        ."    \$username = ".var_export($username, true).";\n"
-        ."    \$hash = '".bin2hex($hash)."';\n"
-        ."    \$salt = '".bin2hex($salt)."';\n"
-        ."}\n";
-
-    include_once "$fnsDir/file_put_php.php";
-    $filename = '../fns/get_admin.php';
-    $ok = @file_put_php($filename, $content);
+    include_once "$fnsDir/Admin/set.php";
+    $ok = Admin\set($username, $hash, $salt);
     if (!$ok) $errors[] = 'Failed to save the data.';
 
 }
