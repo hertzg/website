@@ -46,6 +46,9 @@ p {
     text-decoration: underline;
     color: #f80;
 }
+.link:focus {
+    box-shadow: 0 0 1px 2px #f80;
+}
 
 .steps {
     display: inline-block;
