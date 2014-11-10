@@ -49,8 +49,6 @@ if (!$errors) {
 
 }
 
-include_once '../fns/redirect.php';
-
 if ($errors) {
     $_SESSION['sign-in/errors'] = $errors;
     $_SESSION['sign-in/values'] = [
@@ -59,6 +57,7 @@ if ($errors) {
         'remember' => $remember,
         'return' => $return,
     ];
+    include_once '../fns/redirect.php';
     redirect();
 }
 
@@ -87,19 +86,5 @@ Cookie\set('username', $user->username);
 
 $_SESSION['user'] = $user;
 
-if (parse_url($return, PHP_URL_HOST) !== null) $return = '';
-
-if ($return == '') {
-    $num_logins = $user->num_logins;
-    if ($num_logins) {
-        include_once '../fns/nth_order.php';
-        $order = nth_order($user->num_logins + 1);
-        $message = "Welcome back! This is your $order login.";
-    } else {
-        $message = 'Welcome to Zvini!';
-    }
-    $_SESSION['home/messages'] = [$message];
-    $return = '../home/';
-}
-
-redirect($return);
+include_once 'fns/redirect_back.php';
+redirect_back($user, $return);
