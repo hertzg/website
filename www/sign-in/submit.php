@@ -83,7 +83,7 @@ if ($remember) {
     remember_session($mysqli, $user);
 }
 
-setcookie('username', $user->username, time() + 60 * 60 * 24 * 30, '/');
+setcookie('username', $user->username, time() + 60 * 60 * 24 * 30, $siteBase);
 
 $_SESSION['user'] = $user;
 
