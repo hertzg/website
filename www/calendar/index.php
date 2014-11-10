@@ -27,7 +27,6 @@ if ($day === '') $day = $dayToday;
 else $day = (int)$day;
 
 $timeSelected = mktime(0, 0, 0, $month, $day, $year);
-$yearSelected = date('Y', $timeSelected);
 $monthSelected = date('n', $timeSelected);
 $daySelected = date('j', $timeSelected);
 
@@ -51,46 +50,13 @@ if ($user->num_events) {
     $description = "$user->num_events total.";
     $href = 'all-events/';
     include_once '../fns/Page/imageArrowLinkWithDescription.php';
-    $eventItems[] = Page\imageArrowLinkWithDescription($title,
-        $description, $href, 'events');
+    $eventItems[] = Page\imageArrowLinkWithDescription(
+        $title, $description, $href, 'events');
 }
 
-$yearParam = "year=$yearSelected";
-$queryString = "?$yearParam&amp;month=$monthSelected&amp;day=$daySelected";
-$newEventHref = "new-event/$queryString";
-$jumpToHref = "jump-to/$queryString";
-
-include_once 'fns/create_calendar.php';
-include_once '../fns/create_panel.php';
-include_once '../fns/Page/tabs.php';
-include_once '../fns/Page/imageArrowLink.php';
-include_once '../fns/Page/sessionErrors.php';
-include_once '../fns/Page/sessionMessages.php';
-$content =
-    Page\tabs(
-        [
-            [
-                'title' => 'Home',
-                'href' => '../home/',
-            ],
-        ],
-        'Calendar',
-        Page\sessionErrors('calendar/errors')
-        .Page\sessionMessages('calendar/messages')
-        .create_calendar($timeSelected)
-    )
-    .create_panel(
-        'Events on '.date('F d, Y', $timeSelected),
-        join('<div class="hr"></div>', $eventItems)
-    )
-    .create_panel(
-        'Options',
-        Page\imageArrowLink('New Event', $newEventHref, 'create-event')
-        .'<div class="hr"></div>'
-        .Page\imageArrowLink('Jump To', $jumpToHref, 'calendar')
-        .'<div class="hr"></div>'
-        .Page\imageArrowLink('Go to Today', './', 'calendar')
-    );
+include_once 'fns/create_content.php';
+$content = create_content($timeSelected,
+    $monthSelected, $daySelected, $eventItems);
 
 include_once '../fns/echo_page.php';
 echo_page($user, 'Calendar', $content, '../', [
