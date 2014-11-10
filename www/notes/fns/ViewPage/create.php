@@ -14,14 +14,11 @@ function create ($note) {
         $items[] = \Page\tags('../', json_decode($note->tags_json));
     }
 
-    $insert_time = $note->insert_time;
-    $update_time = $note->update_time;
-
     include_once "$fnsDir/format_author.php";
-    $author = format_author($insert_time, $note->insert_api_key_name);
+    $author = format_author($note->insert_time, $note->insert_api_key_name);
     $infoText = "Note created $author.";
-    if ($insert_time != $update_time) {
-        $author = format_author($update_time, $note->update_api_key_name);
+    if ($note->revision) {
+        $author = format_author($note->update_time, $note->update_api_key_name);
         $infoText .= "<br />Last modified $author.";
     }
 

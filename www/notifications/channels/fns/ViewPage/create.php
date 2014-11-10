@@ -6,20 +6,18 @@ function create ($channel) {
 
     $fnsDir = __DIR__.'/../../../../fns';
 
-    $insert_time = $channel->insert_time;
-    $update_time = $channel->update_time;
-
     include_once "$fnsDir/format_author.php";
-    $author = format_author($insert_time, $channel->insert_api_key_name);
-    $text =
+    $api_key_name = $channel->insert_api_key_name;
+    $author = format_author($channel->insert_time, $api_key_name);
+    $infoText =
         ($channel->public ? 'Public' : 'Private').' channel.<br />'
         .'You are '.($channel->receive_notifications ? '' : 'NOT ')
         .' receiving notifications from this channel.<br />'
         ."Channel created $author.";
-    if ($insert_time != $update_time) {
+    if ($channel->revision) {
         $api_key_name = $channel->update_api_key_name;
-        $author = format_author($update_time, $api_key_name);
-        $text .= "<br />Last modified $author.";
+        $author = format_author($channel->update_time, $api_key_name);
+        $infoText .= "<br />Last modified $author.";
     }
 
     include_once __DIR__.'/optionsPanel.php';
@@ -41,9 +39,7 @@ function create ($channel) {
             \Page\sessionMessages('notifications/channels/view/messages')
             .\Form\label('Channel name',
                 htmlspecialchars($channel->channel_name))
-            .\Page\infoText(
-                $text
-            ),
+            .\Page\infoText($infoText),
             \Page\newItemButton('../new/', 'Channel')
         )
         .optionsPanel($channel);

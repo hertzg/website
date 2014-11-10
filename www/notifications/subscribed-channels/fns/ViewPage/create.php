@@ -19,20 +19,17 @@ function create ($subscribedChannel) {
     $channel_public = $subscribedChannel->channel_public;
     $receive_notifications = $subscribedChannel->receive_notifications;
 
-    $insert_time = $subscribedChannel->insert_time;
-    $update_time = $subscribedChannel->update_time;
-
     include_once "$fnsDir/format_author.php";
     $api_key_name = $subscribedChannel->insert_api_key_name;
-    $author = format_author($insert_time, $api_key_name);
+    $author = format_author($subscribedChannel->insert_time, $api_key_name);
     $infoText =
         ($channel_public ? 'Public' : 'Private').' channel.<br />'
         .'You are '.($receive_notifications ? '' : 'NOT ')
         .' receiving notifications from this channel.<br />'
         ."Subscribed $author.";
-    if ($insert_time != $update_time) {
+    if ($subscribedChannel->revision) {
         $api_key_name = $subscribedChannel->update_api_key_name;
-        $author = format_author($update_time, $api_key_name);
+        $author = format_author($subscribedChannel->update_time, $api_key_name);
         $infoText .= "<br />Last modified $author.";
     }
 

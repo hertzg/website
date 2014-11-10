@@ -40,14 +40,13 @@ function create_view_page ($user, $schedule) {
             .Page\imageLink('Delete', $href, 'trash-bin')
         .'</div>';
 
-    $insert_time = $schedule->insert_time;
-    $update_time = $schedule->update_time;
-
     include_once "$fnsDir/format_author.php";
-    $author = format_author($insert_time, $schedule->insert_api_key_name);
+    $api_key_name = $schedule->insert_api_key_name;
+    $author = format_author($schedule->insert_time, $api_key_name);
     $infoText = "Schedule created $author.";
-    if ($insert_time != $update_time) {
-        $author = format_author($update_time, $schedule->update_api_key_name);
+    if ($schedule->revision) {
+        $api_key_name = $schedule->update_api_key_name;
+        $author = format_author($schedule->update_time, $api_key_name);
         $infoText .= "<br />Last modified $author.";
     }
 

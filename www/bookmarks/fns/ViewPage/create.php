@@ -39,14 +39,13 @@ function create ($bookmark) {
         $items[] = \Page\tags('../', json_decode($bookmark->tags_json));
     }
 
-    $insert_time = $bookmark->insert_time;
-    $update_time = $bookmark->update_time;
-
     include_once "$fnsDir/format_author.php";
-    $author = format_author($insert_time, $bookmark->insert_api_key_name);
+    $api_key_name = $bookmark->insert_api_key_name;
+    $author = format_author($bookmark->insert_time, $api_key_name);
     $infoText = "Bookmark created $author.";
-    if ($insert_time != $update_time) {
-        $author = format_author($update_time, $bookmark->update_api_key_name);
+    if ($bookmark->revision) {
+        $api_key_name = $bookmark->update_api_key_name;
+        $author = format_author($bookmark->update_time, $api_key_name);
         $infoText .= "<br />Last modified $author.";
     }
 

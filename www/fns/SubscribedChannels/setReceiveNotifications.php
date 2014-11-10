@@ -20,7 +20,8 @@ function setReceiveNotifications ($mysqli,
 
     $sql = 'update subscribed_channels set'
         ." receive_notifications = $receive_notifications,"
-        ." update_time = $update_time, update_api_key_id = $update_api_key_id,"
+        ." update_time = $update_time, revision = revision + 1,"
+        ." update_api_key_id = $update_api_key_id,"
         ." update_api_key_name = $update_api_key_name where id = $id";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);

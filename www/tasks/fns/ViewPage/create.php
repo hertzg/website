@@ -27,16 +27,13 @@ function create ($task, $user) {
         $items[] = \Page\tags('../', json_decode($task->tags_json));
     }
 
-    $insert_time = $task->insert_time;
-    $update_time = $task->update_time;
-
     include_once "$fnsDir/format_author.php";
-    $author = format_author($insert_time, $task->insert_api_key_name);
+    $author = format_author($task->insert_time, $task->insert_api_key_name);
     $infoText =
         ($task->top_priority ? 'Top' : 'Normal').' priority task.<br />'
         ."Task created $author.";
-    if ($insert_time != $update_time) {
-        $author = format_author($update_time, $task->update_api_key_name);
+    if ($task->revision) {
+        $author = format_author($task->update_time, $task->update_api_key_name);
         $infoText .= "<br />Last modified $author.";
     }
 

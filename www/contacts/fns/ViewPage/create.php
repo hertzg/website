@@ -71,17 +71,16 @@ function create ($contact, $base = '') {
         $items[] = \Form\label('Notes', nl2br(htmlspecialchars($notes)));
     }
 
-    $insert_time = $contact->insert_time;
-    $update_time = $contact->update_time;
-
     include_once "$fnsDir/format_author.php";
-    $author = format_author($insert_time, $contact->insert_api_key_name);
+    $api_key_name = $contact->insert_api_key_name;
+    $author = format_author($contact->insert_time, $api_key_name);
 
     $infoText =
         ($contact->favorite ? 'Favorite' : 'Regular').' contact.<br />'
         ."Contact created $author.";
-    if ($insert_time != $update_time) {
-        $author = format_author($update_time, $contact->update_api_key_name);
+    if ($contact->revision) {
+        $api_key_name = $contact->update_api_key_name;
+        $author = format_author($contact->update_time, $api_key_name);
         $infoText .= "<br />Last modified $author.";
     }
 

@@ -59,6 +59,9 @@ function ensure ($mysqli) {
         'receive_notifications' => [
             'type' => 'tinyint(4)',
         ],
+        'revision' => [
+            'type' => 'bigint(20) unsigned',
+        ],
         'subscriber_id_users' => [
             'type' => 'bigint(20) unsigned',
         ],

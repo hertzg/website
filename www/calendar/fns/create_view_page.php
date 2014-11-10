@@ -5,14 +5,12 @@ function create_view_page ($event) {
     $id = $event->id;
     $fnsDir = __DIR__.'/../../fns';
 
-    $insert_time = $event->insert_time;
-    $update_time = $event->update_time;
-
     include_once "$fnsDir/format_author.php";
-    $author = format_author($insert_time, $event->insert_api_key_name);
+    $author = format_author($event->insert_time, $event->insert_api_key_name);
     $infoText = "Event created $author.";
-    if ($insert_time != $update_time) {
-        $author = format_author($update_time, $event->update_api_key_name);
+    if ($event->revision) {
+        $api_key_name = $event->update_api_key_name;
+        $author = format_author($event->update_time, $api_key_name);
         $infoText .= "<br />Last modified $author.";
     }
 
