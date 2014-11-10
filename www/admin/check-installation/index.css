@@ -1,10 +1,10 @@
-li.status {
+.status {
     display: block;
 }
-li.status.ok {
+.status.ok {
     color: #080;
 }
-li.status.not_ok {
+.status.not_ok {
     font-weight: bold;
     color: #c00;
 }
