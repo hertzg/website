@@ -15,8 +15,14 @@ list($username, $password, $remember, $return) = request_strings(
 $remember = (bool)$remember;
 $errors = [];
 
-if ($remember) setcookie('remember', '1', time() + 60 * 60 * 24 * 30, '/');
-else setcookie('remember', '', time() - 60 * 60 * 24, '/');
+include_once '../fns/SiteBase/get.php';
+$siteBase = SiteBase\get();
+
+if ($remember) {
+    setcookie('remember', '1', time() + 60 * 60 * 24 * 30, $siteBase);
+} else {
+    setcookie('remember', '', time() - 60 * 60 * 24, $siteBase);
+}
 
 if ($username === '') $errors[] = 'Enter username.';
 else {

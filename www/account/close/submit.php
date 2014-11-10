@@ -37,5 +37,7 @@ close_account($mysqli, $user->id_users);
 
 $_SESSION['sign-in/messages'] = ['Your account has been closed.'];
 
-setcookie('username', '', time() - 60 * 60 * 24, '/');
+include_once '../fns/SiteBase/get.php';
+setcookie('username', '', time() - 60 * 60 * 24, SiteBase\get());
+
 redirect('../../sign-in/');

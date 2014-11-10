@@ -1,12 +1,14 @@
 <?php
 
-include_once '../../fns/require_same_domain_referer.php';
+$fnsDir = '../../fns';
+
+include_once "$fnsDir/require_same_domain_referer.php";
 require_same_domain_referer('./');
 
-include_once '../../fns/require_user.php';
+include_once "$fnsDir/require_user.php";
 $user = require_user('../../');
 
-include_once '../../fns/request_valid_token.php';
+include_once "$fnsDir/request_valid_token.php";
 include_once '../../lib/mysqli.php';
 $token = request_valid_token($mysqli);
 
@@ -18,16 +20,17 @@ if (!$token) {
     if (array_key_exists($key, $_SERVER)) $user_agent = $_SERVER[$key];
     else $user_agent = null;
 
-    include_once '../../fns/Users/Tokens/add.php';
+    include_once "$fnsDir/Users/Tokens/add.php";
     $id = Users\Tokens\add($mysqli, $user->id_users,
         $user->username, $token_text, $user_agent);
 
-    include_once '../../fns/Tokens/get.php';
+    include_once "$fnsDir/Tokens/get.php";
     $token = Tokens\get($mysqli, $id);
 
     if ($token) {
         $expires = time() + 60 * 60 * 24 * 30;
-        setcookie('token', bin2hex($token_text), $expires, '/');
+        include_once "$fnsDir/SiteBase/get.php";
+        setcookie('token', bin2hex($token_text), $expires, SiteBase\get());
         $_SESSION['token'] = $token;
     }
 
@@ -36,5 +39,5 @@ if (!$token) {
 unset($_SESSION['account/tokens/errors']);
 $_SESSION['account/tokens/messages'] = ['Current session has been remembered.'];
 
-include_once '../../fns/redirect.php';
+include_once "$fnsDir/redirect.php";
 redirect();

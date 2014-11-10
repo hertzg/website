@@ -55,7 +55,10 @@ unset(
 include_once '../fns/Users/editPassword.php';
 Users\editPassword($mysqli, $id_users, $password1);
 
-setcookie('username', $user->username, time() + 60 * 60 * 24 * 30, '/');
+include_once '../fns/SiteBase/get.php';
+$siteBase = SiteBase\get();
+
+setcookie('username', $user->username, time() + 60 * 60 * 24 * 30, $siteBase);
 
 $_SESSION['sign-in/messages'] = [
     'Password has been reset.',
