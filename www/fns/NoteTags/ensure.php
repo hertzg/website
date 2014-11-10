@@ -28,6 +28,11 @@ function ensure ($mysqli) {
         'insert_time' => [
             'type' => 'bigint(20) unsigned',
         ],
+        'tags' => [
+            'type' => "varchar($maxLengths[tags])",
+            'characterSet' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+        ],
         'tag_name' => [
             'type' => 'varchar('.\Tag\maxLength().')',
             'characterSet' => 'utf8',

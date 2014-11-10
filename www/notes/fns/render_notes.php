@@ -5,8 +5,7 @@ function render_notes ($notes, &$items, $params, $base = '') {
     $fnsDir = __DIR__.'/../../fns';
 
     if ($notes) {
-
-        include_once "$fnsDir/Page/imageArrowLink.php";
+        include_once "$fnsDir/create_note_link.php";
         foreach ($notes as $note) {
 
             $queryString = htmlspecialchars(
@@ -16,17 +15,16 @@ function render_notes ($notes, &$items, $params, $base = '') {
             );
             $href = "{$base}view/?$queryString";
 
+            $encrypt = $note->encrypt;
+
             $text = $note->text;
-            if ($note->encrypt) {
+            if ($encrypt) {
                 include_once "$fnsDir/encrypt_text.php";
                 $text = encrypt_text($text);
-                $icon = 'encrypted-note';
-            } else {
-                $icon = 'note';
             }
-
             $title = htmlspecialchars($text);
-            $items[] = Page\imageArrowLink($title, $href, $icon);
+
+            $items[] = create_note_link($title, $note->tags, $encrypt, $href);
 
         }
     } else {

@@ -10,7 +10,7 @@ function renderNotes ($notes, &$items, $params, $keyword) {
 
         $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
 
-        include_once "$fnsDir/Page/imageArrowLink.php";
+        include_once "$fnsDir/create_note_link.php";
         foreach ($notes as $note) {
 
             $queryString = htmlspecialchars(
@@ -20,18 +20,18 @@ function renderNotes ($notes, &$items, $params, $keyword) {
             );
             $href = "../view/?$queryString";
 
+            $encrypt = $note->encrypt;
+
             $text = $note->text;
-            if ($note->encrypt) {
+            if ($encrypt) {
                 include_once "$fnsDir/encrypt_text.php";
                 $title = htmlspecialchars(encrypt_text($text));
-                $icon = 'encrypted-note';
             } else {
                 $escapedText = htmlspecialchars($text);
                 $title = preg_replace($regex, '<mark>$0</mark>', $escapedText);
-                $icon = 'note';
             }
 
-            $items[] = \Page\imageArrowLink($title, $href, $icon);
+            $items[] = create_note_link($title, $note->tags, $encrypt, $href);
 
         }
 
