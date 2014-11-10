@@ -18,9 +18,8 @@ function remember_session ($mysqli, $user) {
     $token = Tokens\get($mysqli, $id);
 
     if ($token) {
-        $expires = time() + 60 * 60 * 24 * 30;
-        include_once "$fnsDir/SiteBase/get.php";
-        setcookie('token', bin2hex($token_text), $expires, SiteBase\get());
+        include_once "$fnsDir/Cookie/set.php";
+        Cookie\set('token', bin2hex($token_text));
         $_SESSION['token'] = $token;
     }
 

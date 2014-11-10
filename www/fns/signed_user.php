@@ -38,23 +38,18 @@ function signed_user () {
         $user = Users\get($mysqli, $_SESSION['user']->id_users);
 
         if ($user) {
-
-            include_once __DIR__.'/SiteBase/get.php';
-            $siteBase = SiteBase\get();
-
-            $expires = time() + 60 * 60 * 24 * 30;
-            setcookie('username', $user->username, $expires, $siteBase);
+            include_once __DIR__.'/Cookie/set.php';
+            Cookie\set('username', $user->username);
             if (array_key_exists('token', $_SESSION)) {
 
                 $token = $_SESSION['token'];
                 $value = bin2hex($token->token_text);
-                setcookie('token', $value, $expires, $siteBase);
+                Cookie\set('token', $value);
 
                 include_once __DIR__.'/Tokens/updateAccessTime.php';
                 Tokens\updateAccessTime($mysqli, $token->id);
 
             }
-
         }
 
     }

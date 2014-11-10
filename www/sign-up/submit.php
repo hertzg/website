@@ -49,8 +49,8 @@ Users\add($mysqli, $username, $password1);
 include_once '../fns/Captcha/reset.php';
 Captcha\reset();
 
-include_once '../fns/SiteBase/get.php';
-setcookie('username', $username, time() + 60 * 60 * 24 * 30, SiteBase\get());
+include_once '../fns/Cookie/set.php';
+Cookie\set('username', $username);
 
 $text = "$username has signed up.";
 

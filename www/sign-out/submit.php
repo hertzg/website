@@ -1,6 +1,5 @@
 <?php
 
-die('asd');
 include_once '../fns/require_same_domain_referer.php';
 require_same_domain_referer('./');
 
@@ -18,8 +17,8 @@ if (array_key_exists('token', $_SESSION)) {
     include_once '../fns/Users/Tokens/addNumber.php';
     Users\Tokens\addNumber($mysqli, $token->id_users, -1);
 
-    include_once '../fns/SiteBase/get.php';
-    setcookie('token', '', time() - 60 * 60 * 24, SiteBase\get());
+    include_once '../fns/Cookie/remove.php';
+    Cookie\remove('token');
 
 }
 

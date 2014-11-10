@@ -15,13 +15,12 @@ list($username, $password, $remember, $return) = request_strings(
 $remember = (bool)$remember;
 $errors = [];
 
-include_once '../fns/SiteBase/get.php';
-$siteBase = SiteBase\get();
-
 if ($remember) {
-    setcookie('remember', '1', time() + 60 * 60 * 24 * 30, $siteBase);
+    include_once '../fns/Cookie/set.php';
+    Cookie\set('remember', '1');
 } else {
-    setcookie('remember', '', time() - 60 * 60 * 24, $siteBase);
+    include_once '../fns/Cookie/remove.php';
+    Cookie\remove('remember');
 }
 
 if ($username === '') $errors[] = 'Enter username.';
@@ -83,7 +82,8 @@ if ($remember) {
     remember_session($mysqli, $user);
 }
 
-setcookie('username', $user->username, time() + 60 * 60 * 24 * 30, $siteBase);
+include_once '../fns/Cookie/set.php';
+Cookie\set('username', $user->username);
 
 $_SESSION['user'] = $user;
 
