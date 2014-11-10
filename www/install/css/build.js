@@ -5,7 +5,7 @@ process.chdir(__dirname)
 var fs = require('fs'),
     uglifyCss = require('uglifycss')
 
-var files = ['common', 'page', 'wizard',
+var files = ['common', 'steps', 'page', 'wizard',
     'field_columns', 'textfield', 'button', 'backgroundGradient']
 
 var source = ''

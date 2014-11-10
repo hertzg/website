@@ -50,16 +50,6 @@ p {
     box-shadow: 0 0 1px 2px #f80;
 }
 
-.steps {
-    display: inline-block;
-}
-.steps-active {
-    font-weight: bold;
-}
-.steps-next {
-    color: #aaa;
-}
-
 .error {
     font-weight: bold;
     color: #f55;

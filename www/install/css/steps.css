@@ -1,0 +1,11 @@
+.steps {
+    display: inline-block;
+}
+
+.steps-active {
+    font-weight: bold;
+}
+
+.steps-next {
+    color: #aaa;
+}
