@@ -82,8 +82,9 @@ foreach ($ids as $id) {
     if ($task) {
 
         $text = $mysqli->real_escape_string($task->text);
+        $tags = $mysqli->real_escape_string($task->tags);
 
-        $sql = "update task_tags set text = '$text',"
+        $sql = "update task_tags set text = '$text', tags = '$tags',"
             ." top_priority = $task->top_priority,"
             ." insert_time = $task->insert_time,"
             ." update_time = $task->update_time"
