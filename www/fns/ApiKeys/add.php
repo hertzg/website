@@ -13,7 +13,9 @@ function add ($mysqli, $id_users, $name, $expire_time, $can_read_bookmarks,
     $maxLengths = maxLengths();
 
     $key = openssl_random_pseudo_bytes($maxLengths['key']);
-    $key = $mysqli->real_escape_string($key);
+    include_once __DIR__.'/../base62_encode.php';
+    $key = substr(base62_encode($key), 0, $maxLengths['key']);
+
     $name = $mysqli->real_escape_string($name);
     if ($expire_time === null) $expire_time = 'null';
     $can_read_bookmarks = $can_read_bookmarks ? '1' : '0';

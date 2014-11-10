@@ -8,7 +8,8 @@ function randomizeKey ($mysqli, $id) {
     $maxLengths = maxLengths();
 
     $key = openssl_random_pseudo_bytes($maxLengths['key']);
-    $key = $mysqli->real_escape_string($key);
+    include_once __DIR__.'/../base62_encode.php';
+    $key = substr(base62_encode($key), 0, $maxLengths['key']);
 
     $sql = "update api_keys set `key` = '$key' where id = $id";
     $mysqli->query($sql) || trigger_error($mysqli->error);

@@ -48,7 +48,7 @@ function create ($user, $apiKey) {
         .createExpiresField($user, $apiKey)
         .'<div class="hr"></div>'
         .\Form\textarea('key', 'Key', [
-            'value' => bin2hex($apiKey->key),
+            'value' => $apiKey->key,
             'readonly' => true,
         ])
         .'<div class="hr"></div>'

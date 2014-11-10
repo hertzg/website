@@ -5,8 +5,6 @@ function require_api_key ($permission_field) {
     include_once __DIR__.'/../../fns/request_strings.php';
     list($api_key) = request_strings('api_key');
 
-    $api_key = @hex2bin($api_key);
-
     include_once __DIR__.'/../../fns/get_mysqli.php';
     $mysqli = get_mysqli();
 
