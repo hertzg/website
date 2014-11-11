@@ -12,6 +12,7 @@ else {
         'username' => '',
         'password1' => '',
         'password2' => '',
+        'email' => '',
     ];
 }
 
@@ -20,6 +21,9 @@ unset(
     $_SESSION['sign-in/messages'],
     $_SESSION['sign-in/values']
 );
+
+include_once '../fns/Users/maxLengths.php';
+$maxLengths = Users\maxLengths();
 
 include_once '../fns/create_panel.php';
 include_once '../fns/Form/button.php';
@@ -30,7 +34,6 @@ include_once '../fns/Form/textfield.php';
 include_once '../fns/Page/imageLinkWithDescription.php';
 include_once '../fns/Page/sessionErrors.php';
 include_once '../fns/Page/tabs.php';
-include_once '../fns/Username/maxLength.php';
 $content = Page\tabs(
     [],
     'Sign Up',
@@ -38,7 +41,7 @@ $content = Page\tabs(
     .'<form action="submit.php" method="post">'
         .Form\textfield('username', 'Username', [
             'value' => $values['username'],
-            'maxlength' => Username\maxLength(),
+            'maxlength' => $maxLengths['username'],
             'autofocus' => true,
             'required' => true,
         ])
@@ -57,6 +60,12 @@ $content = Page\tabs(
             'value' => $values['password2'],
             'required' => true,
         ])
+        .'<div class="hr"></div>'
+        .Form\textfield('email', 'Email', [
+            'value' => $values['email'],
+            'maxlength' => $maxLengths['email'],
+        ])
+        .Form\notes(['Optional.', 'Used for password recovery.'])
         .'<div class="hr"></div>'
         .Form\captcha($base)
         .Form\button('Sign Up')

@@ -7,11 +7,12 @@ include_once '../fns/require_guest_user.php';
 require_guest_user('../');
 
 include_once '../fns/request_strings.php';
-list($username, $password1, $password2, $captcha) = request_strings(
-    'username', 'password1', 'password2', 'captcha');
+list($username, $password1, $password2, $email, $captcha) = request_strings(
+    'username', 'password1', 'password2', 'email', 'captcha');
 
 include_once '../fns/str_collapse_spaces.php';
 $username = str_collapse_spaces($username);
+$email = str_collapse_spaces($email);
 
 $errors = [];
 
@@ -22,6 +23,11 @@ check_username($mysqli, $username, $errors);
 
 include_once 'fns/check_passwords.php';
 check_passwords($username, $password1, $password2, $errors);
+
+if ($email !== '') {
+    include_once '../fns/Email/isValid.php';
+    if (!Email\isValid($email)) $errors[] = 'The email is invalid.';
+}
 
 include_once '../fns/Captcha/check.php';
 Captcha\check($errors);
@@ -34,6 +40,7 @@ if ($errors) {
         'username' => $username,
         'password1' => $password1,
         'password2' => $password2,
+        'email' => $email,
     ];
     redirect();
 }
@@ -44,7 +51,7 @@ unset(
 );
 
 include_once '../fns/Users/add.php';
-Users\add($mysqli, $username, $password1);
+Users\add($mysqli, $username, $password1, $email);
 
 include_once '../fns/Captcha/reset.php';
 Captcha\reset();
