@@ -39,13 +39,20 @@ if ($ok) $assertsHtml .= assert_success("$subject is set to UTC.");
 else $assertsHtml .= assert_failure("$subject is NOT set to UTC.");
 
 $ok = function_exists('curl_init');
-$assertsHtml .= assert_installed($ok, 'PHP Client URL Library');
+$subject = 'PHP Client URL Library "<code>curl</code>"';
+$assertsHtml .= assert_installed($ok, $subject);
+
+$ok = function_exists('gmp_init');
+$subject = 'GNU Multiple Precision "<code>gmp</code>"';
+$assertsHtml .= assert_installed($ok, $subject);
 
 $ok = function_exists('imagecreatefromstring');
-$assertsHtml .= assert_installed($ok, 'PHP image processing and GD');
+$subject = 'PHP image processing and GD "<code>gd</code>"';
+$assertsHtml .= assert_installed($ok, $subject);
 
 $ok = function_exists('mysqli_connect');
-$assertsHtml .= assert_installed($ok, 'PHP MySQL improved extension');
+$subject = 'PHP MySQL improved extension "<code>mysqli</code>"';
+$assertsHtml .= assert_installed($ok, $subject);
 
 $ok = is_writable('../..');
 $subject = 'Folder "<code>www</code>"';

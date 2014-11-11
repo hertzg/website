@@ -19,13 +19,17 @@ if ($ok) $content .= assert_success("$subject is set to UTC.");
 else $content .= assert_failure("$subject is NOT set to UTC.");
 
 $ok = function_exists('curl_init');
-$content .= assert_installed($ok, 'PHP Client URL Library');
+$content .= assert_installed($ok, 'PHP Client URL Library "curl"');
+
+$ok = function_exists('gmp_init');
+$content .= assert_installed($ok, 'GNU Multiple Precision "gmp"');
 
 $ok = function_exists('imagecreatefromstring');
-$content .= assert_installed($ok, 'PHP image processing and GD');
+$content .= assert_installed($ok, 'PHP image processing and GD "gd"');
 
 $mysqliOk = function_exists('mysqli_connect');
-$content .= assert_installed($mysqliOk, 'PHP MySQL improved extension');
+$text = 'PHP MySQL improved extension "mysqli"';
+$content .= assert_installed($mysqliOk, $text);
 
 include_once '../../fns/ContactPhotos/dir.php';
 include_once '../../fns/Users/Directory/dir.php';

@@ -12,6 +12,7 @@ function require_requirements () {
         !in_array('mod_headers', $apacheModules) ||
         date_default_timezone_get() !== 'UTC' ||
         !function_exists('curl_init') ||
+        !function_exists('gmp_init') ||
         !function_exists('imagecreatefromstring') ||
         !function_exists('mysqli_connect') ||
         !is_writable($rootDir) ||
