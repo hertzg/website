@@ -1,6 +1,6 @@
 <?php
 
-function create_view_page ($user, $connection) {
+function create_view_page ($connection) {
 
     $id = $connection->id;
     $fnsDir = __DIR__.'/../../../fns';
@@ -41,7 +41,7 @@ function create_view_page ($user, $connection) {
         Page\sessionMessages('account/connections/view/messages')
         .Form\label('Username', htmlspecialchars($connection->username))
         .'<div class="hr"></div>'
-        .create_expires_label($user, $connection->expire_time)
+        .create_expires_label($connection->expire_time)
         .'<div class="hr"></div>'
         .Form\label('This user', $permissions)
         .create_panel('Conneciton Options', $optionsContent),

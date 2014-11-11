@@ -1,29 +1,19 @@
 <?php
 
-function create_expires_label ($user, $expire_time) {
-
-    $fnsDir = __DIR__.'/../../fns';
-
-    include_once "$fnsDir/user_time_today.php";
-    $time_today = user_time_today($user);
+function create_expires_label ($expire_time) {
 
     $label = 'Expires';
+    $fnsDir = __DIR__.'/../../fns';
 
     if ($expire_time === null) {
         $content = 'Never';
+    } elseif ($expire_time > time()) {
+        include_once "$fnsDir/date_in.php";
+        $content = ucfirst(date_in($expire_time));
     } else {
-        $days = floor(($expire_time - $time_today) / (60 * 60 * 24));
-        $date = date('M j, l', $expire_time);
-        if ($expire_time >= $time_today) {
-            if ($days == 0) $content = 'Today';
-            elseif ($days == 1) $content = 'Tomorrow';
-            else $content = "On $date ($days days left)";
-        } else {
-            $days = -$days;
-            $label = 'Expired';
-            if ($days == 1) $content = 'Yesterday';
-            else $content = "On $date ($days days ago)";
-        }
+        $label = 'Expired';
+        include_once "$fnsDir/date_ago.php";
+        $content = ucfirst(date_ago($expire_time));
     }
 
     include_once "$fnsDir/Form/label.php";
