@@ -26,7 +26,10 @@ function optionsPanel ($bookmark) {
     $sendViaSmsLink = \Page\imageLink('Send via SMS', $href, 'send-sms');
 
     $href = "../delete/$escapedItemQuery";
-    $deleteLink = \Page\imageLink('Delete', $href, 'trash-bin');
+    $deleteLink =
+        '<div id="deleteLink">'
+            .\Page\imageLink('Delete', $href, 'trash-bin')
+        .'</div>';
 
     include_once "$fnsDir/Page/staticTwoColumns.php";
     include_once "$fnsDir/Page/twoColumns.php";
@@ -35,9 +38,7 @@ function optionsPanel ($bookmark) {
         .'<div class="hr"></div>'
         .\Page\staticTwoColumns($editLink, $sendLink)
         .'<div class="hr"></div>'
-        .$sendViaSmsLink
-        .'<div class="hr"></div>'
-        ."<div id=\"deleteLink\">$deleteLink</div>";
+        .\Page\twoColumns($sendViaSmsLink, $deleteLink);
 
     include_once "$fnsDir/create_panel.php";
     return create_panel('Bookmark Options', $content);
