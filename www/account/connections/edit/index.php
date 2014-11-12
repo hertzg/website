@@ -13,7 +13,7 @@ else {
     $values = (array)$connection;
 
     include_once '../../fns/restore_expires.php';
-    $values['expires'] = restore_expires($user, $connection->expire_time);
+    $values['expires'] = restore_expires($connection->expire_time);
 
 }
 

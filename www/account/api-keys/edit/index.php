@@ -14,7 +14,7 @@ if (array_key_exists($key, $_SESSION)) {
     include_once '../../fns/restore_expires.php';
     $values = [
         'name' => $apiKey->name,
-        'expires' => restore_expires($user, $apiKey->expire_time),
+        'expires' => restore_expires($apiKey->expire_time),
         'randomizeKey' => false,
     ];
 
