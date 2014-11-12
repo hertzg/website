@@ -1,6 +1,6 @@
 <?php
 
-function request_api_key_params ($user) {
+function request_api_key_params () {
 
     $parseAccess = function (&$access) {
         if ($access != 'readonly' && $access != 'readwrite') $access = 'none';
@@ -23,7 +23,7 @@ function request_api_key_params ($user) {
     $name = mb_substr($name, 0, ApiKeys\maxLengths()['name'], 'UTF-8');
 
     include_once __DIR__.'/../../fns/parse_expire_time.php';
-    parse_expire_time($user, $expires, $expire_time);
+    parse_expire_time($expires, $expire_time);
 
     $parseAccess($bookmark_access);
     $parseAccess($channel_access);

@@ -1,13 +1,11 @@
 <?php
 
-function parse_expire_time ($user, &$expires, &$expire_time) {
-    if ($expires !== 'never') {
+function parse_expire_time (&$expires, &$expire_time) {
 
-        include_once __DIR__.'/../../fns/user_time_today.php';
-        $time_today = user_time_today($user);
+    if ($expires === 'never') return;
 
-        $expires = (string)abs((int)$expires);
-        $expire_time = $time_today + 60 * 60 * 24 * $expires;
+    $days = abs((int)$expires);
+    $expires = (string)$days;
+    $expire_time = time() + $days * 24 * 60 * 60;
 
-    }
 }

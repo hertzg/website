@@ -13,7 +13,7 @@ include_once '../fns/request_api_key_params.php';
 list($name, $expires, $expire_time, $bookmark_access,
     $channel_access, $contact_access, $event_access,
     $file_access, $note_access, $notification_access,
-    $schedule_access, $task_access) = request_api_key_params($user);
+    $schedule_access, $task_access) = request_api_key_params();
 
 $errors = [];
 

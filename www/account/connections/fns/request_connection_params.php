@@ -1,6 +1,6 @@
 <?php
 
-function request_connection_params ($user) {
+function request_connection_params () {
 
     $fnsDir = __DIR__.'/../../../fns';
 
@@ -12,7 +12,7 @@ function request_connection_params ($user) {
     list($expires) = request_strings('expires');
 
     include_once __DIR__.'/../../fns/parse_expire_time.php';
-    parse_expire_time($user, $expires, $expire_time);
+    parse_expire_time($expires, $expire_time);
 
     return [$username, $expires, $expire_time, $can_send_bookmark,
         $can_send_channel, $can_send_contact, $can_send_file,
