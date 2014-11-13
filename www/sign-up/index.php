@@ -65,7 +65,7 @@ $content = Page\tabs(
             'value' => $values['email'],
             'maxlength' => $maxLengths['email'],
         ])
-        .Form\notes(['Optional.', 'Used for password recovery.'])
+        .Form\notes(['Optional. Used for password recovery.'])
         .'<div class="hr"></div>'
         .Form\captcha($base)
         .Form\button('Sign Up')
