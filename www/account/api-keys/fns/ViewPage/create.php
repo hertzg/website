@@ -26,8 +26,8 @@ function create ($user, $apiKey) {
         $accessed = ucfirst(date_ago($access_time));
     }
 
-    include_once __DIR__.'/createExpiresField.php';
     include_once __DIR__.'/createPermissionsField.php';
+    include_once __DIR__.'/../../../fns/create_expires_label.php';
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/Form/textarea.php";
@@ -45,7 +45,7 @@ function create ($user, $apiKey) {
         \Page\sessionMessages('account/api-keys/view/messages')
         .\Form\label('Name', htmlspecialchars($apiKey->name))
         .'<div class="hr"></div>'
-        .createExpiresField($user, $apiKey)
+        .create_expires_label($user, $apiKey->expire_time)
         .'<div class="hr"></div>'
         .\Form\textarea('key', 'Key', [
             'value' => $apiKey->key,

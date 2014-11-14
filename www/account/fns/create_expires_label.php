@@ -1,17 +1,14 @@
 <?php
 
-namespace ViewPage;
+function create_expires_label ($user, $expire_time) {
 
-function createExpiresField ($user, $apiKey) {
-
-    $fnsDir = __DIR__.'/../../../../fns';
+    $fnsDir = __DIR__.'/../../fns';
 
     include_once "$fnsDir/user_time_today.php";
     $time_today = user_time_today($user);
 
     $label = 'Expires';
 
-    $expire_time = $apiKey->expire_time;
     if ($expire_time === null) {
         $content = 'Never';
     } else {
