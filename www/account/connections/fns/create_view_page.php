@@ -1,6 +1,6 @@
 <?php
 
-function create_view_page ($connection) {
+function create_view_page ($user, $connection) {
 
     $id = $connection->id;
     $fnsDir = __DIR__.'/../../../fns';
@@ -24,6 +24,7 @@ function create_view_page ($connection) {
     include_once "$fnsDir/Page/staticTwoColumns.php";
     $optionsContent = Page\staticTwoColumns($editLink, $deleteLink);
 
+    include_once __DIR__.'/../../fns/create_expires_label.php';
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/Page/newItemButton.php";
@@ -39,6 +40,8 @@ function create_view_page ($connection) {
         "Connection #$id",
         Page\sessionMessages('account/connections/view/messages')
         .Form\label('Username', htmlspecialchars($connection->username))
+        .'<div class="hr"></div>'
+        .create_expires_label($user, $connection->expire_time)
         .'<div class="hr"></div>'
         .Form\label('This user', $permissions)
         .create_panel('Conneciton Options', $optionsContent),
