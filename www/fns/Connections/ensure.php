@@ -47,9 +47,6 @@ function ensure ($mysqli) {
         'revision' => [
             'type' => 'bigint(20) unsigned',
         ],
-        'timezone' => [
-            'type' => 'int(11)',
-        ],
         'update_time' => [
             'type' => 'bigint(20) unsigned',
         ],

@@ -4,6 +4,7 @@ function update_username ($mysqli, $id_users, $username) {
 
     $data = [
         ['channels', 'id_users', 'username'],
+        ['connections', 'connected_id_users', 'username'],
         ['received_bookmarks', 'sender_id_users', 'sender_username'],
         ['received_contacts', 'sender_id_users', 'sender_username'],
         ['received_files', 'sender_id_users', 'sender_username'],
