@@ -69,6 +69,11 @@ if ($email !== $user->email) {
     Users\Email\invalidate($mysqli, $id_users);
 }
 
+if ($username !== $user->username) {
+    include_once '../../fns/Connections/editConnectedUser.php';
+    Connections\editConnectedUser($mysqli, $id_users, $username);
+}
+
 $_SESSION['account/messages'] = ['Changes have been saved.'];
 
 redirect('..');
