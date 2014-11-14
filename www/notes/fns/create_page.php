@@ -69,7 +69,7 @@ function create_page ($mysqli, $user, $base = '') {
         }
 
         include_once "$fnsDir/create_clear_filter_bar.php";
-        $filterMessage = create_clear_filter_bar($tag, "$base./");
+        $filterMessage = create_clear_filter_bar($tag, $base);
 
     }
 
