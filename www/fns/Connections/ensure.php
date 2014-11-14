@@ -30,6 +30,10 @@ function ensure ($mysqli) {
         'connected_id_users' => [
             'type' => 'bigint(20) unsigned',
         ],
+        'expire_time' => [
+            'type' => 'bigint(20) unsigned',
+            'nullable' => true,
+        ],
         'id' => [
             'type' => 'bigint(20) unsigned',
             'primary' => true,

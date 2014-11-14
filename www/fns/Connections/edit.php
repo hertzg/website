@@ -2,11 +2,12 @@
 
 namespace Connections;
 
-function edit ($mysqli, $id, $connected_id_users, $username,
+function edit ($mysqli, $id, $connected_id_users, $username, $expire_time,
     $can_send_bookmark, $can_send_channel, $can_send_contact,
     $can_send_file, $can_send_note, $can_send_task) {
 
     $username = $mysqli->real_escape_string($username);
+    if ($expire_time === null) $expire_time = 'null';
     $can_send_bookmark = $can_send_bookmark ? '1' : '0';
     $can_send_channel = $can_send_channel ? '1' : '0';
     $can_send_contact = $can_send_contact ? '1' : '0';
@@ -16,7 +17,7 @@ function edit ($mysqli, $id, $connected_id_users, $username,
 
     $sql = 'update connections set'
         ." connected_id_users = $connected_id_users, username = '$username',"
-        ." can_send_bookmark = $can_send_bookmark,"
+        ." expire_time = $expire_time, can_send_bookmark = $can_send_bookmark,"
         ." can_send_channel = $can_send_channel,"
         ." can_send_contact = $can_send_contact,"
         ." can_send_file = $can_send_file, can_send_note = $can_send_note,"

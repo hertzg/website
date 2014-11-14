@@ -43,8 +43,8 @@ unset(
 );
 
 include_once "$fnsDir/Users/Connections/add.php";
-$id = Users\Connections\add($mysqli, $id_users, $connected_id_users,
-    $username, $can_send_bookmark, $can_send_channel, $can_send_contact,
+$id = Users\Connections\add($mysqli, $id_users, $connected_id_users, $username,
+    $expire_time, $can_send_bookmark, $can_send_channel, $can_send_contact,
     $can_send_file, $can_send_note, $can_send_task);
 
 $_SESSION['account/connections/view/messages'] = ['Connection has been saved.'];
