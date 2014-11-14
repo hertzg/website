@@ -26,6 +26,7 @@ if ($errors) {
     $_SESSION['account/connections/new/errors'] = $errors;
     $_SESSION['account/connections/new/values'] = [
         'username' => $username,
+        'expires' => $expires,
         'can_send_bookmark' => $can_send_bookmark,
         'can_send_channel' => $can_send_channel,
         'can_send_contact' => $can_send_contact,

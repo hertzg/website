@@ -8,7 +8,14 @@ $base = '../../../';
 
 $key = 'account/connections/edit/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
-else $values = (array)$connection;
+else {
+
+    $values = (array)$connection;
+
+    include_once '../../fns/restore_expires.php';
+    $values['expires'] = restore_expires($user, $connection->expire_time);
+
+}
 
 unset($_SESSION['account/connections/view/messages']);
 

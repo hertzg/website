@@ -3,6 +3,8 @@
 function create_form_items ($values) {
 
     $fnsDir = __DIR__.'/../../../fns';
+
+    include_once __DIR__.'/../../fns/create_expires_field.php';
     include_once "$fnsDir/Form/textfield.php";
     include_once "$fnsDir/Username/maxLength.php";
     $items = [
@@ -12,6 +14,7 @@ function create_form_items ($values) {
             'required' => true,
             'autofocus' => true,
         ]),
+        create_expires_field($values['expires']),
     ];
 
     include_once __DIR__.'/render_checkbox_items.php';
