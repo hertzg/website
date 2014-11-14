@@ -9,9 +9,10 @@ include_once "$fnsDir/require_user.php";
 $user = require_user('../../../');
 $id_users = $user->id_users;
 
-include_once "$fnsDir/Connections/request.php";
-list($username, $can_send_bookmark, $can_send_channel, $can_send_contact,
-    $can_send_file, $can_send_note, $can_send_task) = Connections\request();
+include_once __DIR__.'/../fns/request_connection_params.php';
+list($username, $expires, $expire_time, $can_send_bookmark,
+    $can_send_channel, $can_send_contact, $can_send_file,
+    $can_send_note, $can_send_task) = request_connection_params($user);
 
 $errors = [];
 
