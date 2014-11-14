@@ -11,19 +11,10 @@ if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];
 } else {
 
-    include_once '../../../fns/user_time_today.php';
-    $time_today = user_time_today($user);
-
-    $expire_time = $apiKey->expire_time;
-    if ($expire_time === null || $expire_time < $time_today) {
-        $expires = 'never';
-    } else {
-        $expires = (string)floor(($expire_time - $time_today) / (60 * 60 * 24));
-    }
-
+    include_once '../../fns/restore_expires.php';
     $values = [
         'name' => $apiKey->name,
-        'expires' => $expires,
+        'expires' => restore_expires($user, $apiKey->expire_time),
         'randomizeKey' => false,
     ];
 
