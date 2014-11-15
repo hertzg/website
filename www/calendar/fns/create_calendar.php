@@ -1,6 +1,6 @@
 <?php
 
-function create_calendar ($timeSelected) {
+function create_calendar ($mysqli, $id_users, $timeSelected) {
 
     $monthSelected = date('n', $timeSelected);
     $yearSelected = date('Y', $timeSelected);
@@ -18,6 +18,19 @@ function create_calendar ($timeSelected) {
     $nextMonthYear = date('Y', $nextMonthStartTime);
     $nextMonth = date('n', $nextMonthStartTime);
     $nextMonthHref = "?year=$nextMonthYear&amp;month=$nextMonth";
+
+    $fnsDir = __DIR__.'/../../fns';
+    $busyTimes = [];
+
+    include_once "$fnsDir/Events/indexOnUserInTimeRange.php";
+    $events = Events\indexOnUserInTimeRange($mysqli, $id_users,
+        $calendarStartTime, $calendarStartTime + 6 * 7 * 24 * 60 * 60);
+    foreach ($events as $event) $busyTimes[$event->event_time] = true;
+
+    include_once "$fnsDir/Tasks/indexOnUserInDeadlineRange.php";
+    $tasks = Tasks\indexOnUserInDeadlineRange($mysqli, $id_users,
+        $calendarStartTime, $calendarStartTime + 6 * 7 * 24 * 60 * 60);
+    foreach ($tasks as $task) $busyTimes[$task->deadline_time] = true;
 
     $html =
         '<div class="navigation">'
@@ -59,7 +72,12 @@ function create_calendar ($timeSelected) {
             } else {
                 $html .= '>';
             }
-            $html .= "$day</a>";
+            if (array_key_exists($time, $busyTimes)) {
+                $html .= "<span class=\"busy\">$day</span>";
+            } else {
+                $html .= $day;
+            }
+            $html .= '</a>';
             $time += 60 * 60 * 24;
         }
         $html .= '</div>';

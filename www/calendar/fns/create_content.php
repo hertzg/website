@@ -1,7 +1,7 @@
 <?php
 
-function create_content ($timeSelected,
-    $monthSelected, $daySelected, $eventItems) {
+function create_content ($mysqli, $id_users,
+    $timeSelected, $monthSelected, $daySelected, $eventItems) {
 
     $fnsDir = __DIR__.'/../../fns';
     $yearSelected = date('Y', $timeSelected);
@@ -27,7 +27,7 @@ function create_content ($timeSelected,
             'Calendar',
             Page\sessionErrors('calendar/errors')
             .Page\sessionMessages('calendar/messages')
-            .create_calendar($timeSelected)
+            .create_calendar($mysqli, $id_users, $timeSelected)
         )
         .create_panel(
             'Events on '.date('F d, Y', $timeSelected),

@@ -50,3 +50,20 @@
 .event-grey {
     color: #777;
 }
+
+.busy {
+    display: inline-block;
+    vertical-align: middle;
+    height: 32px;
+    width: 32px;
+    border: 2px solid #aaa;
+    line-height: 28px;
+    border-radius: 16px;
+}
+.calendar-offmonth > .busy {
+    border-color: #eee;
+}
+.calendar-days > :active > .busy,
+.calendar-today > .busy {
+    border-color: rgba(255, 255, 255, 0.5);
+}

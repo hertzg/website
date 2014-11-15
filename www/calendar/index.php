@@ -55,13 +55,13 @@ if ($user->num_events) {
 }
 
 include_once 'fns/create_content.php';
-$content = create_content($timeSelected,
-    $monthSelected, $daySelected, $eventItems);
+$content = create_content($mysqli, $id_users,
+    $timeSelected, $monthSelected, $daySelected, $eventItems);
 
 include_once '../fns/echo_page.php';
 echo_page($user, 'Calendar', $content, '../', [
     'head' =>
-        '<link rel="stylesheet" type="text/css" href="index.css?9" />'
+        '<link rel="stylesheet" type="text/css" href="index.css?10" />'
         .'<link rel="stylesheet" type="text/css"'
         ." href=\"themes/$user->theme/index.css?2\" />"
 ]);
