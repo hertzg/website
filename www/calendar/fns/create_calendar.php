@@ -19,18 +19,9 @@ function create_calendar ($mysqli, $id_users, $timeSelected) {
     $nextMonth = date('n', $nextMonthStartTime);
     $nextMonthHref = "?year=$nextMonthYear&amp;month=$nextMonth";
 
-    $fnsDir = __DIR__.'/../../fns';
-    $busyTimes = [];
-
-    include_once "$fnsDir/Events/indexOnUserInTimeRange.php";
-    $events = Events\indexOnUserInTimeRange($mysqli, $id_users,
-        $calendarStartTime, $calendarStartTime + 6 * 7 * 24 * 60 * 60);
-    foreach ($events as $event) $busyTimes[$event->event_time] = true;
-
-    include_once "$fnsDir/Tasks/indexOnUserInDeadlineRange.php";
-    $tasks = Tasks\indexOnUserInDeadlineRange($mysqli, $id_users,
-        $calendarStartTime, $calendarStartTime + 6 * 7 * 24 * 60 * 60);
-    foreach ($tasks as $task) $busyTimes[$task->deadline_time] = true;
+    include_once __DIR__.'/get_busy_times.php';
+    $busyTimes = get_busy_times($mysqli, $id_users, $calendarStartTime,
+        $monthStartTime, $nextMonthStartTime, $monthSelected, $yearSelected);
 
     $html =
         '<div class="navigation">'
