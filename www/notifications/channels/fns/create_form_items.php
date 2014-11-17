@@ -25,7 +25,7 @@ function create_form_items ($values) {
             "Minimum $minLength maximum $maxLength characters.",
         ])
         .'<div class="hr"></div>'
-        .Form\checkbox('public', 'Mark as Public', $values['public'])
+        .Form\checkbox('public', 'Mark as public', $values['public'])
         .Form\notes([
             'If checked this will allow other users to subscribe'
             ." to this channel. Otherwise you'll have to maintain the list"
@@ -33,7 +33,7 @@ function create_form_items ($values) {
         ])
         .'<div class="hr"></div>'
         .Form\checkbox('receive_notifications',
-            'Receive Notifications', $values['receive_notifications'])
+            'Receive notifications', $values['receive_notifications'])
         .Form\notes([
             'If checked you will also receive notifications posted by you.'
             ." This is useful if you're posting"

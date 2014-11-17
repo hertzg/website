@@ -74,6 +74,6 @@ function create_form_items ($values) {
             'maxlength' => $maxLengths['notes'],
         ])
         .'<div class="hr"></div>'
-        .Form\checkbox('favorite', 'Mark as Favorite', $values['favorite']);
+        .Form\checkbox('favorite', 'Mark as favorite', $values['favorite']);
 
 }

@@ -23,6 +23,6 @@ function create_form_items ($values) {
             'maxlength' => $maxLengths['tags'],
         ])
         .'<div class="hr"></div>'
-        .Form\checkbox('encrypt', 'Encrypt in Listings', $values['encrypt']);
+        .Form\checkbox('encrypt', 'Encrypt in listings', $values['encrypt']);
 
 }

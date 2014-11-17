@@ -38,6 +38,6 @@ function create_form_items ($values) {
         ])
         .'<div class="hr"></div>'
         .Form\checkbox('top_priority',
-            'Mark as Top Priority', $values['top_priority']);
+            'Mark as top priority', $values['top_priority']);
 
 }
