@@ -1,7 +1,7 @@
 #!/bin/bash
 owner=www-data:www-data
-chown $owner www/data/contact-photos
-chown $owner www/data/users
+chown -R $owner www/data/contact-photos
+chown -R $owner www/data/users
 chown $owner www/fns/Admin/get.php
 chown $owner www/fns/DomainName/get.php
 chown $owner www/fns/InfoEmail/get.php
