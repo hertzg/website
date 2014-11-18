@@ -18,8 +18,8 @@ include_once '../../fns/ensure_data_dir.php';
 ensure_data_dir($mysqli);
 
 $assertsHtml .=
-    assert_success('Tables have been created.')
-    .assert_success('Data folder has been created.')
+    assert_success('Tables are ready.')
+    .assert_success('Data folder is ready.')
     .assert_success('Ready to finish the installation.');
 
 $doneSteps = ['Agreement', 'Requirements',

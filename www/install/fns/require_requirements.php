@@ -15,7 +15,8 @@ function require_requirements () {
         !function_exists('gmp_init') ||
         !function_exists('imagecreatefromstring') ||
         !function_exists('mysqli_connect') ||
-        !is_writable($rootDir) ||
+        !is_writable("$rootDir/data/contact-photos") ||
+        !is_writable("$rootDir/data/users") ||
         !is_writable("$rootDir/fns/Admin/get.php") ||
         !is_writable("$rootDir/fns/DomainName/get.php") ||
         !is_writable("$rootDir/fns/InfoEmail/get.php") ||

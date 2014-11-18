@@ -54,13 +54,10 @@ $ok = function_exists('mysqli_connect');
 $subject = 'PHP MySQL improved extension "<code>mysqli</code>"';
 $assertsHtml .= assert_installed($ok, $subject);
 
-$ok = is_writable('../..');
-$subject = 'Folder "<code>www</code>"';
-if ($ok) $assertsHtml .= assert_success("$subject is writable.");
-else $assertsHtml .= assert_failure("$subject is NOT writable.");
-
 $assertsHtml .=
-    assert_writable('fns/Admin/get.php')
+    assert_writable('data/contact-photos')
+    .assert_writable('data/users')
+    .assert_writable('fns/Admin/get.php')
     .assert_writable('fns/DomainName/get.php')
     .assert_writable('fns/InfoEmail/get.php')
     .assert_writable('fns/Installed/get.php')
