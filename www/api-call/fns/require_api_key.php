@@ -2,38 +2,57 @@
 
 function require_api_key ($permission_field) {
 
-    include_once __DIR__.'/../../fns/request_strings.php';
-    list($api_key) = request_strings('api_key');
+    $fnsDir = __DIR__.'/../../fns';
 
-    include_once __DIR__.'/../../fns/get_mysqli.php';
+    include_once "$fnsDir/request_strings.php";
+    list($session_auth, $api_key) = request_strings('session_auth', 'api_key');
+
+    include_once "$fnsDir/get_mysqli.php";
     $mysqli = get_mysqli();
 
-    include_once __DIR__.'/../../fns/ApiKeys/getByKey.php';
-    $apiKey = ApiKeys\getByKey($mysqli, $api_key);
+    if ($session_auth) {
 
-    if (!$apiKey) {
-        http_response_code(403);
-        header('Content-Type: application/json');
-        die('"INVALID_API_KEY"');
-    }
+        include_once "$fnsDir/signed_user.php";
+        $user = signed_user();
 
-    if (!$apiKey->$permission_field) {
-        http_response_code(403);
-        header('Content-Type: application/json');
-        die('"ACCESS_DENIED"');
-    }
+        if (!$user) {
+            http_response_code(403);
+            header('Content-Type: application/json');
+            die('"NOT_SIGNED_IN"');
+        }
 
-    include_once __DIR__.'/../../fns/ApiKeys/updateAccessTime.php';
-    ApiKeys\updateAccessTime($mysqli, $apiKey->id);
+        $apiKey = null;
 
-    include_once __DIR__.'/../../fns/Users/get.php';
-    $user = Users\get($mysqli, $apiKey->id_users);
+    } else {
 
-    $expire_time = $apiKey->expire_time;
-    if ($expire_time !== null && $expire_time < time()) {
-        http_response_code(403);
-        header('Content-Type: application/json');
-        die('"API_KEY_EXPIRED"');
+        include_once "$fnsDir/ApiKeys/getByKey.php";
+        $apiKey = ApiKeys\getByKey($mysqli, $api_key);
+
+        if (!$apiKey) {
+            http_response_code(403);
+            header('Content-Type: application/json');
+            die('"INVALID_API_KEY"');
+        }
+
+        if (!$apiKey->$permission_field) {
+            http_response_code(403);
+            header('Content-Type: application/json');
+            die('"ACCESS_DENIED"');
+        }
+
+        include_once "$fnsDir/ApiKeys/updateAccessTime.php";
+        ApiKeys\updateAccessTime($mysqli, $apiKey->id);
+
+        include_once "$fnsDir/Users/get.php";
+        $user = Users\get($mysqli, $apiKey->id_users);
+
+        $expire_time = $apiKey->expire_time;
+        if ($expire_time !== null && $expire_time < time()) {
+            http_response_code(403);
+            header('Content-Type: application/json');
+            die('"API_KEY_EXPIRED"');
+        }
+
     }
 
     return [$apiKey, $user, $mysqli];
