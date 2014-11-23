@@ -50,16 +50,34 @@ $content =
         'API Documentation',
         Page\text(
             'Zvini API allows programs to access, modify'
-            .' and delete user data using HTTP and JSON.'
-            .' Programs are given API keys with which they call API methods.'
+            .' and delete user data by calling API methods with HTTP requests.'
             .' The API methods can be called with either GET or POST methods.'
-            .' The methods parameters can be passed either in'
-            .' a query string or as a URL-encoded form data'
-            .' or as a multipart form data. The API key parameter'
-            .' <code>api_key</code> should be present in all requests.'
-            ." The base URL of all the API methods is <code>$api_base</code>."
+            .' The method parameters can be passed'
+            .' either as a query string or as a URL-encoded form data'
+            .' or as a multipart form data.'
+            ." The base URL of all the methods is <code>$api_base</code>."
             .' The response returned from the server is either a JSON document'
             .' or binary data in case of file downloads.'
+            .'<br />'
+            .'<br />'
+            .' There are two ways to access an API method.'
+            .' A program will require either of the following:'
+            .'<br />'
+            .'<br />'
+            .' 1. An API key. It\'s a random password.'
+            .' Users can generate multiples of them for their accounts.'
+            .' To call a method this way an <code>api_key</code>'
+            .' parameter should be present and its value'
+            .' should be the generated random password.'
+            .'<br />'
+            .'<br />'
+            .' 2. An authgenticated session.'
+            .' In this case a user should already be signed in.'
+            .' To call a method this way a <code>session_auth</code> parameter'
+            .' should be present and its value should be equal'
+            .' to a truthy value (e.g. 1).'
+            .'<br />'
+            .'<br />'
             .' Click below to see a PHP example code that calls an API method.'
         )
         .'<div class="hr"></div>'
@@ -71,6 +89,8 @@ $content =
             .'<br /><code>API_KEY_EXPIRED</code> - The API Key is expired.'
             .'<br /><code>ACCESS_DENIED</code> - '
             .'The API Key doesn\'t have a permission to perform the action.'
+            .'<br /><code>NOT_SIGNED_IN</code>'
+            .' - The user has already signed out.'
         )
         .create_panel('Root Namespaces', join('<div class="hr"></div>', $items))
     )
