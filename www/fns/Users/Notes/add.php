@@ -13,7 +13,8 @@ function add ($mysqli, $id_users, $text,
 
     if ($tag_names) {
         include_once "$fnsDir/NoteTags/add.php";
-        \NoteTags\add($mysqli, $id_users, $id, $tag_names, $text, $encrypt);
+        \NoteTags\add($mysqli, $id_users, $id,
+            $tag_names, $text, $tags, $encrypt);
     }
 
     include_once __DIR__.'/addNumber.php';

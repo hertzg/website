@@ -20,7 +20,7 @@ function edit ($mysqli, $note, $text, $tags,
     if ($tag_names) {
         include_once "$fnsDir/NoteTags/add.php";
         \NoteTags\add($mysqli, $note->id_users,
-            $id, $tag_names, $text, $encrypt);
+            $id, $tag_names, $text, $tags, $encrypt);
     }
 
 }
