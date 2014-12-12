@@ -6,6 +6,7 @@ function render () {
 }
 
 cd `dirname $BASH_SOURCE`
+render 48
 render 60
 render 64
 render 90

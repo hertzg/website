@@ -25,6 +25,7 @@ echo json_encode([
     'icons' => [
         16 => '/zvini-icons/16.png',
         32 => '/zvini-icons/32.png',
+        48 => '/zvini-icons/48.png',
         60 => '/zvini-icons/60.png',
         64 => '/zvini-icons/64.png',
         90 => '/zvini-icons/90.png',
