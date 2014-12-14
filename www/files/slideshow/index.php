@@ -4,6 +4,13 @@ include_once '../fns/require_parent_folder.php';
 include_once '../../lib/mysqli.php';
 list($parentFolder, $parent_id_folders, $user) = require_parent_folder($mysqli);
 
+unset(
+    $_SESSION['files/errors'],
+    $_SESSION['files/id_folders'],
+    $_SESSION['files/messages'],
+    $_SESSION['files/view-file/messages']
+);
+
 $base = '../../';
 
 include_once '../../fns/Files/indexPreviewableInUserFolder.php';
