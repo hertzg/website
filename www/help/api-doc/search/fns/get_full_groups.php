@@ -84,6 +84,9 @@ function get_full_groups () {
     include_once "$dir/schedule/get_methods.php";
     $groups['schedule']['methods'] = schedule\get_methods();
 
+    include_once "$dir/session/get_methods.php";
+    $groups['session']['methods'] = session\get_methods();
+
     include_once "$dir/task/get_methods.php";
     $groups['task']['methods'] = task\get_methods();
 

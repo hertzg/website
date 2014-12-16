@@ -38,6 +38,10 @@ function get_groups () {
             'title' => 'Schedule',
             'description' => 'Methods for manipulating schedules',
         ],
+        'session' => [
+            'title' => 'Session',
+            'description' => 'Methods for session authentication',
+        ],
         'task' => [
             'title' => 'Task',
             'description' => 'Methods for manipulating tasks',
