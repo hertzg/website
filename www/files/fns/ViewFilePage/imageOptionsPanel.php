@@ -9,11 +9,11 @@ function imageOptionsPanel ($file) {
     $id = $file->id_files;
 
     include_once "$fnsDir/Page/imageLink.php";
-    $href = "../submit-clockwise.php?id=$id";
+    $href = "../image/submit-clockwise.php?id=$id";
     $clockwiseLink = \Page\imageLink('Rotate Clockwise', $href, '');
 
     $title = 'Rotate Count-clockwise';
-    $href = "../submit-counter-clockwise.php?id=$id";
+    $href = "../image/submit-counter-clockwise.php?id=$id";
     $counterClockwiseLink = \Page\imageLink($title, $href, '');
 
     include_once "$fnsDir/Page/twoColumns.php";
