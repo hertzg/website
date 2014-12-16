@@ -11,6 +11,7 @@ function rotate_image ($file, $degrees) {
     $image = imagecreatefromstring(file_get_contents($path));
     if ($image) {
 
+        imagesavealpha($image, true);
         $rotatedImage = imagerotate($image, $degrees, 0);
 
         $content_type = $file->content_type;
