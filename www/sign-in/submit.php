@@ -32,21 +32,10 @@ else {
 if ($password === '') $errors[] = 'Enter password.';
 
 if (!$errors) {
-
-    include_once '../fns/Users/getByUsernameAndPassword.php';
+    include_once '../fns/Session/authenticate.php';
     include_once '../lib/mysqli.php';
-    $user = Users\getByUsernameAndPassword($mysqli, $username, $password);
-
-    if (!$user) {
-
-        $errors[] = 'Invalid username or password.';
-
-        include_once '../fns/get_client_address.php';
-        include_once '../fns/InvalidSignins/add.php';
-        InvalidSignins\add($mysqli, $username, get_client_address());
-
-    }
-
+    $user = Session\authenticate($mysqli, $username, $password, $remember);
+    if (!$user) $errors[] = 'Invalid username or password.';
 }
 
 if ($errors) {
@@ -66,25 +55,8 @@ unset(
     $_SESSION['sign-in/values']
 );
 
-$id_users = $user->id_users;
-
-include_once '../fns/Users/login.php';
-Users\login($mysqli, $id_users);
-
-if ($user->password_salt === '') {
-    include_once '../fns/Users/editPassword.php';
-    Users\editPassword($mysqli, $id_users, $password);
-}
-
-if ($remember) {
-    include_once 'fns/remember_session.php';
-    remember_session($mysqli, $user);
-}
-
 include_once '../fns/Cookie/set.php';
 Cookie\set('username', $user->username);
-
-$_SESSION['user'] = $user;
 
 include_once 'fns/redirect_back.php';
 redirect_back($user, $return);
