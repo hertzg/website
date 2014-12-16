@@ -38,6 +38,7 @@ function create ($mysqli, &$user, &$file) {
     include_once "$fnsDir/create_folder_link.php";
     include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/Page/infoText.php";
+    include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
     return
@@ -49,7 +50,8 @@ function create ($mysqli, &$user, &$file) {
                 ],
             ],
             "File #$id",
-            \Page\sessionMessages('files/view-file/messages')
+            \Page\sessionErrors('files/view-file/errors')
+            .\Page\sessionMessages('files/view-file/messages')
             .locationBar($mysqli, $file)
             .\Form\label('File name', htmlspecialchars($file->name))
             .'<div class="hr"></div>'
