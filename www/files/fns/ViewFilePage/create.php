@@ -9,6 +9,7 @@ function create ($mysqli, &$user, &$file) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
+    $media_type = $file->media_type;
     $insert_time = $file->insert_time;
     $rename_time = $file->rename_time;
 
@@ -21,8 +22,15 @@ function create ($mysqli, &$user, &$file) {
     }
 
     include_once "$fnsDir/Page/filePreview.php";
-    $filePreview = \Page\filePreview($file->media_type,
+    $filePreview = \Page\filePreview($media_type,
         $file->content_type, $id, '../download-file/', '../../');
+
+    if ($media_type == 'image') {
+        include_once __DIR__.'/imageOptionsPanel.php';
+        $imageOptionsPanel = imageOptionsPanel($file);
+    } else {
+        $imageOptionsPanel = '';
+    }
 
     include_once __DIR__.'/locationBar.php';
     include_once __DIR__.'/optionsPanel.php';
@@ -50,6 +58,7 @@ function create ($mysqli, &$user, &$file) {
             .\Form\label('Preview', $filePreview)
             .\Page\infoText($infoText)
         )
-        .optionsPanel($file);
+        .optionsPanel($file)
+        .$imageOptionsPanel;
 
 }
