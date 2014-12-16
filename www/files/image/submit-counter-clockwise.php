@@ -7,5 +7,5 @@ include_once 'fns/require_image_file.php';
 include_once '../../lib/mysqli.php';
 list($file, $id, $user) = require_image_file($mysqli);
 
-include_once '../../fns/redirect.php';
-redirect("../view-file/?id=$id");
+include_once 'fns/rotate_image.php';
+rotate_image($file, 90);
