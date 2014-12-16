@@ -8,6 +8,7 @@ unset(
     $_SESSION['files/errors'],
     $_SESSION['files/id_folders'],
     $_SESSION['files/messages'],
+    $_SESSION['files/view-file/errors'],
     $_SESSION['files/view-file/messages']
 );
 

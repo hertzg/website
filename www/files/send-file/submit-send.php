@@ -39,5 +39,6 @@ unset(
 );
 
 $_SESSION['files/view-file/messages'] = ['Sent.'];
+unset($_SESSION['files/view-file/errors']);
 
 redirect("../view-file/?id=$id");

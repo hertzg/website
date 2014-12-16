@@ -7,7 +7,10 @@ list($file, $id, $user) = require_file($mysqli);
 $base = '../../';
 $fnsDir = '../../fns';
 
-unset($_SESSION['files/view-file/messages']);
+unset(
+    $_SESSION['files/view-file/errors'],
+    $_SESSION['files/view-file/messages']
+);
 
 $key = 'files/send-file/values';
 if (array_key_exists($key, $_SESSION)) {

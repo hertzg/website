@@ -55,7 +55,10 @@ if (array_key_exists($key, $_SESSION) && $id_folders != $_SESSION[$key]) {
     unset($_SESSION['files/move-file/errors']);
 }
 
-unset($_SESSION['files/view-file/messages']);
+unset(
+    $_SESSION['files/view-file/errors'],
+    $_SESSION['files/view-file/messages']
+);
 
 include_once '../fns/create_move_location_bar.php';
 include_once '../../fns/Page/sessionErrors.php';
