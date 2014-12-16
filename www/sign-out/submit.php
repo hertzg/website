@@ -10,12 +10,19 @@ if (array_key_exists('token', $_SESSION)) {
 
     $token = $_SESSION['token'];
 
-    include_once '../fns/Tokens/delete.php';
+    include_once '../fns/Tokens/get.php';
     include_once '../lib/mysqli.php';
-    Tokens\delete($mysqli, $token->id);
+    $token = Tokens\get($mysqli, $token->id);
 
-    include_once '../fns/Users/Tokens/addNumber.php';
-    Users\Tokens\addNumber($mysqli, $token->id_users, -1);
+    if ($token) {
+
+        include_once '../fns/Tokens/delete.php';
+        Tokens\delete($mysqli, $token->id);
+
+        include_once '../fns/Users/Tokens/addNumber.php';
+        Users\Tokens\addNumber($mysqli, $token->id_users, -1);
+
+    }
 
     include_once '../fns/Cookie/remove.php';
     Cookie\remove('token');
