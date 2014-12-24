@@ -16,7 +16,7 @@ function get_revision ($key) {
         'js/removeRecipient/compressed.js' => 1,
         'js/searchForm/compressed.js' => 2,
         'js/signOutConfirm/compressed.js' => 2,
-        'js/timezoneLabel/compressed.js' => 1,
+        'js/timezoneLabel/compressed.js' => 2,
         'js/unloadProgress/compressed.js' => 4,
         'themes/blue/images/zvini.svg' => 2,
         'themes/green/images/zvini.svg' => 2,

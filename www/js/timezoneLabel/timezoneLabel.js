@@ -9,6 +9,11 @@
         return n
     }
 
+    var requestAnimationFrame = window.requestAnimationFrame
+    if (!requestAnimationFrame) {
+        requestAnimationFrame = window.mozRequestAnimationFrame
+    }
+
     var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May',
         'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
@@ -16,21 +21,29 @@
     Array.prototype.forEach.call(elements, function (element) {
 
         function update () {
+            var time = Date.now()
+            requestAnimationFrame(function () {
 
-            var date = new Date(Date.now() - difference)
+                var date = new Date(Date.now() - difference)
 
-            var hour = pad(date.getUTCHours())
-            if (hour != hourNode.nodeValue) hourNode.nodeValue = hour
+                var hour = pad(date.getUTCHours())
+                if (hour != hourNode.nodeValue) hourNode.nodeValue = hour
 
-            var minute = pad(date.getUTCMinutes())
-            if (minute != minuteNode.nodeValue) minuteNode.nodeValue = minute
+                var minute = pad(date.getUTCMinutes())
+                if (minute != minuteNode.nodeValue) minuteNode.nodeValue = minute
 
-            var month = months[date.getUTCMonth()]
-            if (month != monthNode.nodeValue) monthNode.nodeValue = month
+                var second = pad(date.getUTCSeconds())
+                if (second != secondNode.nodeValue) secondNode.nodeValue = second
 
-            var day = date.getUTCDate()
-            if (day != dayNode.nodeValue) dayNode.nodeValue = day
+                var month = months[date.getUTCMonth()]
+                if (month != monthNode.nodeValue) monthNode.nodeValue = month
 
+                var day = date.getUTCDate()
+                if (day != dayNode.nodeValue) dayNode.nodeValue = day
+
+                setTimeout(update, Math.max(0, time + 1000 - Date.now()))
+
+            })
         }
 
         var classList = element.classList
@@ -39,6 +52,7 @@
 
         var hourNode = TextNode(''),
             minuteNode = TextNode(''),
+            secondNode = TextNode(''),
             monthNode = TextNode(''),
             dayNode = TextNode('')
 
@@ -46,6 +60,8 @@
         element.appendChild(hourNode)
         element.appendChild(TextNode(':'))
         element.appendChild(minuteNode)
+        element.appendChild(TextNode(':'))
+        element.appendChild(secondNode)
         element.appendChild(TextNode(', '))
         element.appendChild(monthNode)
         element.appendChild(TextNode(' '))
@@ -55,7 +71,6 @@
         var timezoneDiff = (timezone - localTimezone) * 60 * 1000
         var difference = Date.now() - time + timezoneDiff
 
-        setInterval(update, 5000)
         update()
 
     })

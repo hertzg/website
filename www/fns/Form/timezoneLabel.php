@@ -10,7 +10,7 @@ function timezoneLabel ($timezone) {
     $content = \Timezone\format($timezone)
         .' (Local time <span class="localTime"'
         ." data-local_timezone=\"$timezone\">"
-        .date('H:i, M j', $time + $timezone * 60).'</span>)';
+        .date('H:i:s, M j', $time + $timezone * 60).'</span>)';
 
     return label('Timezone', $content);
 
