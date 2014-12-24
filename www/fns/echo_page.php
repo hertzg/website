@@ -46,7 +46,7 @@ function echo_page ($user, $title, $content, $base, $options = []) {
             .'</a>'
             .'<div class="page-clockWrapper">'
                 .'<div id="staticClockWrapper">'
-                    .date('H:i', $time / 1000)
+                    .date('H:i:s', $time / 1000)
                 .'</div>'
                 .'<div id="dynamicClockWrapper"></div>'
                 .'<div id="batteryWrapper"></div>'
