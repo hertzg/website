@@ -22,8 +22,8 @@ function create ($mysqli, &$user, &$file) {
     }
 
     include_once "$fnsDir/Page/filePreview.php";
-    $filePreview = \Page\filePreview($media_type,
-        $file->content_type, $id, '../download-file/', '../../');
+    $filePreview = \Page\filePreview($media_type, $file->content_type,
+        $id, '../download-file/', '../../', $file->content_revision);
 
     if ($media_type == 'image') {
         include_once __DIR__.'/imageOptionsPanel.php';

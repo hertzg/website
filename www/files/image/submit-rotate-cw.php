@@ -8,4 +8,4 @@ include_once '../../lib/mysqli.php';
 list($file, $id, $user) = require_image_file($mysqli);
 
 include_once 'fns/rotate_image.php';
-rotate_image($file, -90);
+rotate_image($mysqli, $file, -90);

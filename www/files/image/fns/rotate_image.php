@@ -1,11 +1,12 @@
 <?php
 
-function rotate_image ($file, $degrees) {
+function rotate_image ($mysqli, $file, $degrees) {
 
     $errors = [];
     $id = $file->id_files;
+    $fnsDir = __DIR__.'/../../../fns';
 
-    include_once __DIR__.'/../../../fns/Files/File/path.php';
+    include_once "$fnsDir/Files/File/path.php";
     $path = Files\File\path($file->id_users, $id);
 
     $image = imagecreatefromstring(file_get_contents($path));
@@ -35,7 +36,10 @@ function rotate_image ($file, $degrees) {
         unset($_SESSION['files/view-file/errors']);
     }
 
-    include_once __DIR__.'/../../../fns/redirect.php';
+    include_once "$fnsDir/Files/increaseContentRevision.php";
+    Files\increaseContentRevision($mysqli, $id);
+
+    include_once "$fnsDir/redirect.php";
     redirect("../view-file/?id=$id");
 
 }

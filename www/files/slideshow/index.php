@@ -38,7 +38,8 @@ foreach ($files as $i => $file) {
 $file = $files[$index];
 $id = $file->id_files;
 
-$src = "../download-file/?id=$id&amp;contentType=$file->content_type";
+$src = "../download-file/?id=$id&amp;contentType=$file->content_type"
+    ."&amp;revision=$file->content_revision";
 
 $media_type = $file->media_type;
 if ($media_type == 'audio') {

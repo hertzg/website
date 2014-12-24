@@ -2,7 +2,8 @@
 
 namespace Page;
 
-function filePreview ($media_type, $content_type, $id, $downloadBase, $base) {
+function filePreview ($media_type, $content_type,
+    $id, $downloadBase, $base, $revision = '0') {
 
     $audio = $media_type == 'audio';
     $image = $media_type == 'image';
@@ -10,7 +11,7 @@ function filePreview ($media_type, $content_type, $id, $downloadBase, $base) {
 
     if ($audio|| $image || $video) {
 
-        $src = "$downloadBase?id=$id&amp;contentType=$content_type";
+        $src = "$downloadBase?id=$id&amp;contentType=$content_type&amp;revision=$revision";
 
         if ($audio) {
             $content = "<audio src=\"$src\" controls=\"controls\" />";
