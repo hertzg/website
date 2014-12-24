@@ -34,12 +34,14 @@ function rotate_image ($mysqli, $file, $degrees) {
         $_SESSION['files/view-file/errors'] = $errors;
         unset($_SESSION['files/view-file/messages']);
     } else {
+
+        include_once "$fnsDir/Files/editContent.php";
+        Files\editContent($mysqli, $id, filesize($path));
+
         $_SESSION['files/view-file/messages'] = ['The image has been rotated.'];
         unset($_SESSION['files/view-file/errors']);
-    }
 
-    include_once "$fnsDir/Files/increaseContentRevision.php";
-    Files\increaseContentRevision($mysqli, $id);
+    }
 
     include_once "$fnsDir/redirect.php";
     redirect("../view-file/?id=$id");
