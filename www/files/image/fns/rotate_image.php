@@ -9,7 +9,7 @@ function rotate_image ($mysqli, $file, $degrees) {
     include_once "$fnsDir/Files/File/path.php";
     $path = Files\File\path($file->id_users, $id);
 
-    $image = imagecreatefromstring(file_get_contents($path));
+    $image = @imagecreatefromstring(file_get_contents($path));
     if ($image) {
 
         imagesavealpha($image, true);
