@@ -18,6 +18,8 @@ function rotate_image ($mysqli, $file, $degrees) {
         $content_type = $file->content_type;
         if ($content_type == 'image/jpeg') {
             imagejpeg($rotatedImage, $path);
+        } elseif ($content_type == 'image/gif') {
+            imagegif($rotatedImage, $path);
         } elseif ($content_type == 'image/png') {
             imagepng($rotatedImage, $path);
         } else {
