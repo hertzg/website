@@ -8,6 +8,10 @@
     background-color: #f5f8ff;
 }
 
+.clickable:target {
+    background-color: #f5f8ff;
+}
+
 .a,
 .tag {
     color: #37c;
