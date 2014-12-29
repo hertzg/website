@@ -38,7 +38,7 @@ function submethod_page ($groupKey, $subgroupName,
         [
             [
                 'title' => $subgroupName,
-                'href' => '..',
+                'href' => "../#$methodName",
             ],
         ],
         $methodName,

@@ -15,8 +15,8 @@ function subgroup_page ($groupKey, $subgroup, $subgroupKey, $methods) {
     include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
     $items = [];
     foreach ($methods as $name => $description) {
-        $items[] = Page\imageArrowLinkWithDescription(
-            $name, $description, "$name/", 'generic');
+        $items[] = Page\imageArrowLinkWithDescription($name,
+            $description, "$name/", 'generic', ['id' => $name]);
     }
 
     include_once "$fnsDir/Page/tabs.php";
@@ -25,7 +25,7 @@ function subgroup_page ($groupKey, $subgroup, $subgroupKey, $methods) {
         [
             [
                 'title' => $groups[$groupKey]['title'],
-                'href' => '..',
+                'href' => "../#$subgroupKey",
             ],
         ],
         $title,

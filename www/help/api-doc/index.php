@@ -31,7 +31,7 @@ $items = [SearchForm\create('search/', $searchContent)];
 include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
 foreach ($groups as $key => $group) {
     $items[] = Page\imageArrowLinkWithDescription($group['title'],
-        "$group[description].", "$key/", 'generic');
+        "$group[description].", "$key/", 'generic', ['id' => $key]);
 }
 
 include_once "$fnsDir/compressed_js_script.php";
