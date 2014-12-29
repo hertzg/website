@@ -15,9 +15,11 @@ function renderContacts ($contacts, &$items, $params, $keyword) {
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         foreach ($contacts as $contact) {
 
+            $id = $contact->id;
+            $options = ['id' => "contact_$id"];
             $queryString = htmlspecialchars(
                 http_build_query(
-                    array_merge(['id' => $contact->id], $params)
+                    array_merge(['id' => $id], $params)
                 )
             );
             $href = "../view/?$queryString";
@@ -46,9 +48,9 @@ function renderContacts ($contacts, &$items, $params, $keyword) {
             if ($descriptions) {
                 $description = join(' &middot; ', $descriptions);
                 $items[] = \Page\imageArrowLinkWithDescription(
-                    $title, $description, $href, $icon);
+                    $title, $description, $href, $icon, $options);
             } else {
-                $items[] = \Page\imageArrowLink($title, $href, $icon);
+                $items[] = \Page\imageArrowLink($title, $href, $icon, $options);
             }
 
         }
