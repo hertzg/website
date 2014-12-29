@@ -91,6 +91,8 @@ $content =
             .'The API Key doesn\'t have a permission to perform the action.'
             .'<br /><code>NOT_SIGNED_IN</code>'
             .' - The user has already signed out.'
+            .'<br /><code>CROSS_DOMAIN_REQUEST</code>'
+            .' - The request was referred by a different domain.'
         )
         .create_panel('Root Namespaces', join('<div class="hr"></div>', $items))
     )
