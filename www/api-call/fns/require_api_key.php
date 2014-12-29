@@ -12,6 +12,13 @@ function require_api_key ($permission_field) {
 
     if ($session_auth) {
 
+        include_once "$fnsDir/is_same_domain_referer.php";
+        if (!is_same_domain_referer()) {
+            http_response_code(403);
+            header('Content-Type: application/json');
+            die('"CROSS_DOMAIN_REQUEST"');
+        }
+
         include_once "$fnsDir/signed_user.php";
         $user = signed_user();
 
