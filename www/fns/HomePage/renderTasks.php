@@ -14,6 +14,7 @@ function renderTasks ($user, &$items) {
     $title = 'Tasks';
     $href = '../tasks/';
     $icon = 'tasks';
+    $options = ['id' => 'tasks'];
     if ($num_tasks || $num_received_tasks) {
 
         $descriptionItems = [];
@@ -25,11 +26,11 @@ function renderTasks ($user, &$items) {
 
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         $link = \Page\imageArrowLinkWithDescription($title,
-            $description, $href, $icon);
+            $description, $href, $icon, $options);
 
     } else {
         include_once "$fnsDir/Page/imageArrowLink.php";
-        $link = \Page\imageArrowLink($title, $href, $icon);
+        $link = \Page\imageArrowLink($title, $href, $icon, $options);
     }
 
     $items['tasks'] = $link;

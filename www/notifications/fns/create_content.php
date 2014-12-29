@@ -55,7 +55,7 @@ function create_content ($mysqli, $user, $items, $options, $base) {
         [
             [
                 'title' => 'Home',
-                'href' => "$base../home/",
+                'href' => "$base../home/#notifications",
             ],
         ],
         'Notifications',

@@ -14,6 +14,7 @@ function renderContacts ($user, &$items) {
     $title = 'Contacts';
     $href = '../contacts/';
     $icon = 'contacts';
+    $options = ['id' => 'contacts'];
     if ($num_contacts || $num_received_contacts) {
 
         $descriptionItems = [];
@@ -25,11 +26,11 @@ function renderContacts ($user, &$items) {
 
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         $link = \Page\imageArrowLinkWithDescription(
-            $title, $description, $href, $icon);
+            $title, $description, $href, $icon, $options);
 
     } else {
         include_once "$fnsDir/Page/imageArrowLink.php";
-        $link = \Page\imageArrowLink($title, $href, $icon);
+        $link = \Page\imageArrowLink($title, $href, $icon, $options);
     }
 
     $items['contacts'] = $link;

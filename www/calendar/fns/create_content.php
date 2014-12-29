@@ -21,7 +21,7 @@ function create_content ($mysqli, $id_users,
             [
                 [
                     'title' => 'Home',
-                    'href' => '../home/',
+                    'href' => '../home/#calendar',
                 ],
             ],
             'Calendar',

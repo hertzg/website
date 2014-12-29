@@ -76,7 +76,7 @@ function create_page ($mysqli, $user, $base = '') {
         [
             [
                 'title' => 'Home',
-                'href' => "$base../home/",
+                'href' => "$base../home/#trash",
             ],
         ],
         'Trash',
