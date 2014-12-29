@@ -66,7 +66,7 @@ function create_page ($mysqli, $user, $base = '') {
         [
             [
                 'title' => 'Contacts',
-                'href' => "$base..",
+                'href' => "$base../#received",
             ],
         ],
         'Received',

@@ -8,11 +8,9 @@ function create_options_panel ($user, $base = '') {
     $num_received_contacts = $user->num_received_contacts;
     if ($num_received_contacts) {
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
-        $title = 'Received Contacts';
-        $description = "$num_received_contacts total.";
-        $href = "{$base}received/";
-        $options[] = Page\imageArrowLinkWithDescription($title,
-            $description, $href, 'receive');
+        $options[] = Page\imageArrowLinkWithDescription('Received Contacts',
+            "$num_received_contacts total.", "{$base}received/",
+            'receive', ['id' => 'received']);
     }
 
     if ($user->num_contacts) {

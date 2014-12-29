@@ -8,11 +8,9 @@ function create_options_panel ($user, $base = '') {
     $num_received_notes = $user->num_received_notes;
     if ($num_received_notes) {
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
-        $title = 'Received Notes';
-        $description = "$num_received_notes total.";
-        $href = "{$base}received/";
-        $options[] = Page\imageArrowLinkWithDescription($title,
-            $description, $href, 'receive');
+        $options[] = Page\imageArrowLinkWithDescription('Received Notes',
+            "$num_received_notes total.", "{$base}received/",
+            'receive', ['id' => 'received']);
     }
 
     if ($user->num_notes) {

@@ -70,7 +70,7 @@ function create_page ($mysqli, $user, $base = '') {
         [
             [
                 'title' => 'Notes',
-                'href' => "$base..",
+                'href' => "$base../#received",
             ],
         ],
         'Received',
