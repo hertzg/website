@@ -17,4 +17,3 @@ $_SESSION['files/messages'] = ['File has been deleted.'];
 include_once '../../fns/create_folder_link.php';
 include_once '../../fns/redirect.php';
 redirect(create_folder_link($file->id_folders, '../'));
-

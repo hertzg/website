@@ -18,7 +18,7 @@ $name = $receivedFolderFile->name;
 
 include_once "$fnsDir/Page/imageLink.php";
 $namePart = rawurlencode(str_replace('/', '_', $name));
-$href = "../download-file/$id/$namePart";
+$href = "../download-file/$id/$namePart?0";
 $downloadLink = Page\imageLink('Download', $href, 'download');
 
 include_once "$fnsDir/Page/filePreview.php";

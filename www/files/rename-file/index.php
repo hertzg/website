@@ -8,7 +8,10 @@ $key = 'files/rename-file/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else $values = (array)$file;
 
-unset($_SESSION['files/view-file/messages']);
+unset(
+    $_SESSION['files/view-file/errors'],
+    $_SESSION['files/view-file/messages']
+);
 
 include_once '../../fns/Files/maxLengths.php';
 include_once '../../fns/Form/button.php';

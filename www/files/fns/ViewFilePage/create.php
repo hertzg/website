@@ -9,6 +9,7 @@ function create ($mysqli, &$user, &$file) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
+    $media_type = $file->media_type;
     $insert_time = $file->insert_time;
     $rename_time = $file->rename_time;
 
@@ -21,8 +22,15 @@ function create ($mysqli, &$user, &$file) {
     }
 
     include_once "$fnsDir/Page/filePreview.php";
-    $filePreview = \Page\filePreview($file->media_type,
-        $file->content_type, $id, '../download-file/', '../../');
+    $filePreview = \Page\filePreview($media_type, $file->content_type,
+        $id, '../download-file/', '../../', $file->content_revision);
+
+    if ($media_type == 'image') {
+        include_once __DIR__.'/imageOptionsPanel.php';
+        $imageOptionsPanel = imageOptionsPanel($file);
+    } else {
+        $imageOptionsPanel = '';
+    }
 
     include_once __DIR__.'/locationBar.php';
     include_once __DIR__.'/optionsPanel.php';
@@ -30,6 +38,7 @@ function create ($mysqli, &$user, &$file) {
     include_once "$fnsDir/create_folder_link.php";
     include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/Page/infoText.php";
+    include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
     return
@@ -41,7 +50,8 @@ function create ($mysqli, &$user, &$file) {
                 ],
             ],
             "File #$id",
-            \Page\sessionMessages('files/view-file/messages')
+            \Page\sessionErrors('files/view-file/errors')
+            .\Page\sessionMessages('files/view-file/messages')
             .locationBar($mysqli, $file)
             .\Form\label('File name', htmlspecialchars($file->name))
             .'<div class="hr"></div>'
@@ -50,6 +60,7 @@ function create ($mysqli, &$user, &$file) {
             .\Form\label('Preview', $filePreview)
             .\Page\infoText($infoText)
         )
-        .optionsPanel($file);
+        .optionsPanel($file)
+        .$imageOptionsPanel;
 
 }

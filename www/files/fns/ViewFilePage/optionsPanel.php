@@ -17,7 +17,7 @@ function optionsPanel ($file) {
     $slideshowLink = \Page\imageArrowLink('Slideshow', $href, 'slideshow');
 
     $namePart = rawurlencode(str_replace('/', '_', $file->name));
-    $href = "../download-file/$id/$namePart";
+    $href = "../download-file/$id/$namePart?$file->content_revision";
     $downloadLink = \Page\imageLink('Download', $href, 'download');
 
     $href = "../rename-file/?id=$id";
