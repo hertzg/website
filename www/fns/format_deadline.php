@@ -7,7 +7,8 @@ function format_deadline ($deadline_time, $time_today) {
         return "in $days days";
     }
     if ($days < 0) {
-        if ($days == -1) return 'yesterday';
+        $days = -$days;
+        if ($days == 1) return 'yesterday';
         return "$days days ago";
     }
     return 'today';
