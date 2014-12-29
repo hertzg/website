@@ -13,9 +13,11 @@ function renderNotes ($notes, &$items, $params, $keyword) {
         include_once "$fnsDir/create_note_link.php";
         foreach ($notes as $note) {
 
+            $id = $note->id;
+            $options = ['id' => "note_$id"];
             $queryString = htmlspecialchars(
                 http_build_query(
-                    array_merge(['id' => $note->id], $params)
+                    array_merge(['id' => $id], $params)
                 )
             );
             $href = "../view/?$queryString";
@@ -31,7 +33,8 @@ function renderNotes ($notes, &$items, $params, $keyword) {
                 $title = preg_replace($regex, '<mark>$0</mark>', $escapedText);
             }
 
-            $items[] = create_note_link($title, $note->tags, $encrypt, $href);
+            $items[] = create_note_link($title,
+                $note->tags, $encrypt, $href, $options);
 
         }
 

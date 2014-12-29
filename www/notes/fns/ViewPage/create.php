@@ -4,6 +4,7 @@ namespace ViewPage;
 
 function create ($note) {
 
+    $id = $note->id;
     $fnsDir = __DIR__.'/../../../fns';
 
     include_once "$fnsDir/create_text_item.php";
@@ -33,10 +34,10 @@ function create ($note) {
             [
                 [
                     'title' => 'Notes',
-                    'href' => \ItemList\listHref(),
+                    'href' => \ItemList\listHref()."#note_$id",
                 ],
             ],
-            "Note #$note->id",
+            "Note #$id",
             \Page\sessionMessages('notes/view/messages')
             .join('<div class="hr"></div>', $items)
             .\Page\infoText($infoText),
