@@ -10,12 +10,12 @@ function imageOptionsPanel ($file) {
 
     include_once "$fnsDir/Page/imageLinkWithDescription.php";
     $href = "../image/submit-rotate-cw.php?id=$id";
-    $rotateCwLink = \Page\imageLinkWithDescription(
-        'Rotate CW', 'Rotate clockwise', $href, 'TODO');
+    $rotateCwLink = \Page\imageLinkWithDescription('Rotate CW',
+        'Rotate clockwise', $href, 'rotate-image-cw');
 
     $href = "../image/submit-rotate-ccw.php?id=$id";
-    $rotateCcwLink = \Page\imageLinkWithDescription(
-        'Rotate CCW', 'Rotate counterclockwise', $href, 'TODO');
+    $rotateCcwLink = \Page\imageLinkWithDescription('Rotate CCW',
+        'Rotate counterclockwise', $href, 'rotate-image-ccw');
 
     include_once "$fnsDir/Page/twoColumns.php";
     $content = \Page\twoColumns($rotateCwLink, $rotateCcwLink);

@@ -95,4 +95,7 @@ render($content, 'trash.svg', $names);
 $names = ['edit-contact-photo', 'clear-contact-photo'];
 render($content, 'contact-photo.svg', $names);
 
+$names = ['rotate-image-cw', 'rotate-image-ccw'];
+render($content, 'edit-image.svg', $names);
+
 file_put_contents(__DIR__.'/compressed.css', $content);
