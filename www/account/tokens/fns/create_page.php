@@ -71,7 +71,7 @@ function create_page ($mysqli, $user, $base = '') {
             [
                 [
                     'title' => 'Account',
-                    'href' => "{$base}..",
+                    'href' => "{$base}../#tokens",
                 ],
             ],
             'Sessions',

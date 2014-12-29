@@ -6,8 +6,8 @@ function create_view_page ($connection) {
     $fnsDir = __DIR__.'/../../../fns';
 
     include_once "$fnsDir/Page/imageArrowLink.php";
-    $href = "../edit/?id=$id";
-    $editLink = Page\imageArrowLink('Edit', $href, 'edit-connection');
+    $editLink = Page\imageArrowLink('Edit',
+        "../edit/?id=$id", 'edit-connection', ['id' => 'edit']);
 
     include_once "$fnsDir/Page/imageLink.php";
     $deleteLink =

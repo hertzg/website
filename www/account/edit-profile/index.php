@@ -23,7 +23,7 @@ $content = Page\tabs(
     [
         [
             'title' => 'Account',
-            'href' => '..',
+            'href' => '../#edit_profile',
         ],
     ],
     'Edit Profile',

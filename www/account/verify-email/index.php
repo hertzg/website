@@ -15,7 +15,7 @@ $content = Page\tabs(
     [
         [
             'title' => 'Account',
-            'href' => '..',
+            'href' => '../#verify_email',
         ],
     ],
     'Verify Email',

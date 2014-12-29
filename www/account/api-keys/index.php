@@ -62,7 +62,7 @@ $content = Page\tabs(
     [
         [
             'title' => 'Account',
-            'href' => '..',
+            'href' => '../#api_keys',
         ],
     ],
     'API Keys',

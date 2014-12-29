@@ -31,7 +31,7 @@ include_once '../../fns/Page/imageArrowLinkWithDescription.php';
 $title = 'Default Connection';
 $description = 'Connection to other users.';
 $items[] = Page\imageArrowLinkWithDescription($title,
-    $description, 'default/', 'connection');
+    $description, 'default/', 'connection', ['id' => 'default']);
 
 unset(
     $_SESSION['account/connections/default/messages'],
@@ -48,7 +48,7 @@ $content = Page\tabs(
     [
         [
             'title' => 'Account',
-            'href' => '..',
+            'href' => '../#connections',
         ],
     ],
     'Connections',

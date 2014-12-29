@@ -47,7 +47,7 @@ $content =
         [
             [
                 'title' => 'Home',
-                'href' => '../home/',
+                'href' => '../home/#account',
             ],
         ],
         'Account',

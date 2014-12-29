@@ -8,7 +8,8 @@ function create ($apiKey) {
     $fnsDir = __DIR__.'/../../../../fns';
 
     include_once "$fnsDir/Page/imageArrowLink.php";
-    $editLink = \Page\imageArrowLink('Edit', "../edit/?id=$id", 'edit-api-key');
+    $editLink = \Page\imageArrowLink('Edit',
+        "../edit/?id=$id", 'edit-api-key', ['id' => 'edit']);
 
     include_once "$fnsDir/Page/imageLink.php";
     $deleteLink =

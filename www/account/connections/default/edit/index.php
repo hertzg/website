@@ -37,7 +37,7 @@ $content =
         [
             [
                 'title' => 'Default Connection',
-                'href' => '..',
+                'href' => '../#edit',
             ],
         ],
         'Edit',
