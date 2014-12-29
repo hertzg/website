@@ -16,9 +16,11 @@ function renderTasks ($tasks, &$items, $params, $keyword, $user) {
         include_once "$fnsDir/create_task_link.php";
         foreach ($tasks as $task) {
 
+            $id = $task->id;
+            $options = ['id' => "task_$id"];
             $queryString = htmlspecialchars(
                 http_build_query(
-                    array_merge(['id' => $task->id], $params)
+                    array_merge(['id' => $id], $params)
                 )
             );
             $href = "../view/?$queryString";
@@ -27,7 +29,7 @@ function renderTasks ($tasks, &$items, $params, $keyword, $user) {
             $title = preg_replace($regex, '<mark>$0</mark>', $title);
 
             $items[] = create_task_link($title, $task->deadline_time,
-                $task->tags, $task->top_priority, $href, $time_today);
+                $task->tags, $task->top_priority, $href, $time_today, $options);
 
         }
 

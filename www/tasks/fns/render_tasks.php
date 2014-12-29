@@ -12,16 +12,18 @@ function render_tasks ($tasks, &$items, $params, $user, $base = '') {
         include_once "$fnsDir/create_task_link.php";
         foreach ($tasks as $task) {
 
+            $id = $task->id;
+            $options = ['id' => "task_$id"];
             $queryString = htmlspecialchars(
                 http_build_query(
-                    array_merge(['id' => $task->id], $params)
+                    array_merge(['id' => $id], $params)
                 )
             );
             $href = "{$base}view/?$queryString";
 
             $title = htmlspecialchars($task->text);
             $items[] = create_task_link($title, $task->deadline_time,
-                $task->tags, $task->top_priority, $href, $time_today);
+                $task->tags, $task->top_priority, $href, $time_today, $options);
 
         }
 
