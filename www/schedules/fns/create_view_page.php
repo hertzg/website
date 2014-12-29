@@ -62,7 +62,7 @@ function create_view_page ($user, $schedule) {
         [
             [
                 'title' => 'Schedules',
-                'href' => ItemList\listHref(),
+                'href' => ItemList\listHref()."#schedule_$id",
             ],
         ],
         "Schedule #$id",
