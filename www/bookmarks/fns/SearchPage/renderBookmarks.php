@@ -13,9 +13,11 @@ function renderBookmarks ($bookmarks, &$items, $params, $keyword) {
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         foreach ($bookmarks as $bookmark) {
 
+            $id = $bookmark->id;
+            $options = ['id' => "bookmark_$id"];
             $queryString = htmlspecialchars(
                 http_build_query(
-                    array_merge(['id' => $bookmark->id], $params)
+                    array_merge(['id' => $id], $params)
                 )
             );
             $href = "../view/?$queryString";
@@ -24,7 +26,7 @@ function renderBookmarks ($bookmarks, &$items, $params, $keyword) {
             $title = htmlspecialchars($bookmark->title);
             $title = preg_replace($regex, '<mark>$0</mark>', $title);
             $items[] = \Page\imageArrowLinkWithDescription(
-                $title, $url, $href, 'bookmark');
+                $title, $url, $href, 'bookmark', $options);
 
         }
 
