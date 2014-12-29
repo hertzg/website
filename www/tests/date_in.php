@@ -5,6 +5,7 @@ include_once __DIR__.'/../fns/date_in.php';
 assert(date_in(time()) == 'right now');
 assert(date_in(time() + 60) == 'in a minute');
 assert(date_in(time() + 60 * 2) == 'in 2 minutes');
+assert(date_in(time() + 60 * 30) == 'in half an hour');
 assert(date_in(time() + 60 * 59) == 'in 59 minutes');
 assert(date_in(time() + 60 * 60) == 'in an hour');
 assert(date_in(time() + 60 * 60 * 2) == 'in 2 hours');
