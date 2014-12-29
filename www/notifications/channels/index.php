@@ -27,8 +27,9 @@ if ($user->num_channels) {
         }
 
         $title = htmlspecialchars($channel->channel_name);
-        $href = "view/?id=$channel->id";
-        $items[] = Page\imageArrowLink($title, $href, $icon);
+        $id = $channel->id;
+        $options = ['id' => "channel_$id"];
+        $items[] = Page\imageArrowLink($title, "view/?id=$id", $icon, $options);
 
     }
 
