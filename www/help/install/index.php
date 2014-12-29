@@ -10,7 +10,7 @@ $content = Page\tabs(
     [
         [
             'title' => 'Help',
-            'href' => '../',
+            'href' => '../#install',
         ],
     ],
     'Install Zvini App',

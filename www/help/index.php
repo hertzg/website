@@ -17,16 +17,19 @@ $content = Page\tabs(
     [
         [
             'title' => 'Home',
-            'href' => '../home/',
+            'href' => '../home/#help',
         ],
     ],
     'Help',
     Page\sessionMessages('help/messages')
-    .Page\imageLink('Install Zvini App', 'install/', 'download')
+    .Page\imageLink('Install Zvini App',
+        'install/', 'download', ['id' => 'install'])
     .'<div class="hr"></div>'
-    .Page\imageArrowLink('Leave Feedback', 'feedback/', 'feedback')
+    .Page\imageArrowLink('Leave Feedback',
+        'feedback/', 'feedback', ['id' => 'feedback'])
     .'<div class="hr"></div>'
-    .Page\imageArrowLink('API Documentation', 'api-doc/', 'generic')
+    .Page\imageArrowLink('API Documentation',
+        'api-doc/', 'generic', ['id' => 'api_doc'])
 );
 
 include_once '../fns/echo_page.php';

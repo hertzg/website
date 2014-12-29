@@ -44,7 +44,7 @@ $content =
         [
             [
                 'title' => 'Help',
-                'href' => '..',
+                'href' => '../#api_doc',
             ],
         ],
         'API Documentation',
@@ -81,7 +81,8 @@ $content =
             .' Click below to see a PHP example code that calls an API method.'
         )
         .'<div class="hr"></div>'
-        .Page\imageArrowLink('PHP Example', 'php-example', 'generic')
+        .Page\imageArrowLink('PHP Example',
+            'php-example', 'generic', ['id' => 'php_example'])
         .'<div class="hr"></div>'
         .Page\text(
             'Below is a list of errors that are expected from any API method:'
