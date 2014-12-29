@@ -22,7 +22,7 @@ function create_view_page ($token) {
             [
                 [
                     'title' => 'Sessions',
-                    'href' => '..',
+                    'href' => "../#token_$id",
                 ],
             ],
             "Session #$id",
