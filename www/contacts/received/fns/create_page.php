@@ -27,15 +27,17 @@ function create_page ($mysqli, $user, $base = '') {
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         foreach ($receivedContacts as $receivedContact) {
 
+            $id = $receivedContact->id;
+            $options = ['id' => "received_contact_$id"];
+
             if ($receivedContact->favorite) $icon = 'favorite-contact';
             else $icon = 'contact';
 
             $title = htmlspecialchars($receivedContact->full_name);
             $description = create_sender_description($receivedContact);
-            $href = "{$base}view/".ItemList\Received\escapedItemQuery(
-                $receivedContact->id);
+            $href = "{$base}view/".ItemList\Received\escapedItemQuery($id);
             $items[] = Page\imageArrowLinkWithDescription($title,
-                $description, $href, $icon);
+                $description, $href, $icon, $options);
 
         }
     } else {

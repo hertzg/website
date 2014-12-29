@@ -4,6 +4,7 @@ namespace ViewPage;
 
 function create ($receivedNote) {
 
+    $id = $receivedNote->id;
     $fnsDir = __DIR__.'/../../../../fns';
 
     include_once "$fnsDir/render_external_links.php";
@@ -35,10 +36,10 @@ function create ($receivedNote) {
         [
             [
                 'title' => 'Received',
-                'href' => '../'.\ItemList\Received\listHref(),
+                'href' => '../'.\ItemList\Received\listHref()."#received_note_$id",
             ],
         ],
-        "Received Note #$receivedNote->id",
+        "Received Note #$id",
         \Page\sessionMessages('notes/received/view/messages')
         .\Form\label('Received from',
             htmlspecialchars($receivedNote->sender_username))

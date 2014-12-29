@@ -4,6 +4,7 @@ namespace ViewPage;
 
 function create ($receivedBookmark) {
 
+    $id = $receivedBookmark->id;
     $fnsDir = __DIR__.'/../../../../fns';
 
     $items = [];
@@ -33,10 +34,10 @@ function create ($receivedBookmark) {
         [
             [
                 'title' => 'Received',
-                'href' => '../'.\ItemList\Received\listHref(),
+                'href' => '../'.\ItemList\Received\listHref()."#received_bookmark_$id",
             ],
         ],
-        "Received Bookmark #$receivedBookmark->id",
+        "Received Bookmark #$id",
         \Page\sessionMessages('bookmarks/received/view/messages')
         .\Form\label('Received from',
             htmlspecialchars($receivedBookmark->sender_username))
