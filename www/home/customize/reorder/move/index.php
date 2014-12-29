@@ -19,7 +19,7 @@ $content = Page\tabs(
     [
         [
             'title' => 'Reorder Items',
-            'href' => '..',
+            'href' => "../#item_$key",
         ],
     ],
     'Move Item',

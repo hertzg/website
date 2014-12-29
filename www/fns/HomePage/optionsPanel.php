@@ -9,8 +9,8 @@ function optionsPanel () {
     include_once "$fnsDir/Page/imageArrowLink.php";
     $accountLink = \Page\imageArrowLink('Account', '../account/', 'account');
 
-    $customizeHomeLink = \Page\imageArrowLink(
-        'Customize Home', 'customize/', 'edit-home');
+    $customizeHomeLink = \Page\imageArrowLink('Customize Home',
+        'customize/', 'edit-home', ['id' => 'customize']);
 
     include_once "$fnsDir/Page/twoColumns.php";
     $content =
