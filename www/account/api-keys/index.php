@@ -35,9 +35,10 @@ if ($user->num_api_keys) {
         $description = join(' ', $descriptions);
 
         $title = htmlspecialchars($apiKey->name);
-        $href = "view/?id=$apiKey->id";
-        $items[] = Page\imageArrowLinkWithDescription(
-            $title, $description, $href, 'api-key');
+        $id = $apiKey->id;
+        $options = ['id' => "api_key_$id"];
+        $items[] = Page\imageArrowLinkWithDescription($title,
+            $description, "view/?id=$id", 'api-key', $options);
 
     }
 
