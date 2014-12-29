@@ -1,6 +1,6 @@
 <?php
 
-function render_note ($note, $description, $href, &$items) {
+function render_note ($note, $description, $href, $options, &$items) {
 
     $text = $note->text;
 
@@ -15,6 +15,6 @@ function render_note ($note, $description, $href, &$items) {
     $title = htmlspecialchars($text);
 
     $items[] = Page\imageArrowLinkWithDescription(
-        $title, $description, $href, $icon);
+        $title, $description, $href, $icon, $options);
 
 }

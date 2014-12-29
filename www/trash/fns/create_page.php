@@ -23,26 +23,28 @@ function create_page ($mysqli, $user, $base = '') {
 
             $description = 'Deleted '.date_ago($deletedItem->insert_time);
 
-            $href = "{$base}view/?id=$deletedItem->id";
+            $id = $deletedItem->id;
+            $href = "{$base}view/?id=$id";
+            $options = ['id' => "deleted_item_$id"];
 
             if ($type == 'bookmark' || $type == 'receivedBookmark') {
                 include_once __DIR__.'/render_bookmark.php';
-                render_bookmark($data, $description, $href, $items);
+                render_bookmark($data, $description, $href, $options, $items);
             } elseif ($type == 'contact' || $type == 'receivedContact') {
                 include_once __DIR__.'/render_contact.php';
-                render_contact($data, $description, $href, $items);
+                render_contact($data, $description, $href, $options, $items);
             } elseif ($type == 'note' || $type == 'receivedNote') {
                 include_once __DIR__.'/render_note.php';
-                render_note($data, $description, $href, $items);
+                render_note($data, $description, $href, $options, $items);
             } elseif ($type == 'file' || $type == 'receivedFile') {
                 include_once __DIR__.'/render_file.php';
-                render_file($data, $description, $href, $items);
+                render_file($data, $description, $href, $options, $items);
             } elseif ($type == 'folder' || $type == 'receivedFolder') {
                 include_once __DIR__.'/render_folder.php';
-                render_folder($data, $description, $href, $items);
+                render_folder($data, $description, $href, $options, $items);
             } elseif ($type == 'task' || $type == 'receivedTask') {
                 include_once __DIR__.'/render_task.php';
-                render_task($data, $description, $href, $items);
+                render_task($data, $description, $href, $options, $items);
             }
 
         }

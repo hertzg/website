@@ -1,6 +1,6 @@
 <?php
 
-function render_contact ($contact, $description, $href, &$items) {
+function render_contact ($contact, $description, $href, $options, &$items) {
 
     $title = htmlspecialchars($contact->full_name);
 
@@ -8,6 +8,6 @@ function render_contact ($contact, $description, $href, &$items) {
     else $icon = 'contact';
 
     $items[] = Page\imageArrowLinkWithDescription(
-        $title, $description, $href, $icon);
+        $title, $description, $href, $icon, $options);
 
 }
