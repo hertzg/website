@@ -34,7 +34,7 @@ function create_view_page ($connection) {
         [
             [
                 'title' => 'Connections',
-                'href' => '..',
+                'href' => "../#connection_$id",
             ],
         ],
         "Connection #$id",
