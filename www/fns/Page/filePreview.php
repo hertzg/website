@@ -11,7 +11,8 @@ function filePreview ($media_type, $content_type,
 
     if ($audio|| $image || $video) {
 
-        $src = "$downloadBase?id=$id&amp;contentType=$content_type&amp;revision=$revision";
+        $src = "$downloadBase?id=$id&amp;contentType=$content_type"
+            ."&amp;revision=$revision";
 
         if ($audio) {
             $content = "<audio src=\"$src\" controls=\"controls\" />";

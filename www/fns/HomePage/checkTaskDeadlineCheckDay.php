@@ -16,7 +16,8 @@ function checkTaskDeadlineCheckDay ($mysqli, &$user) {
 
     include_once "$fnsDir/Tasks/countOnUserAndDeadline.php";
     $today = \Tasks\countOnUserAndDeadline($mysqli, $id_users, $timeToday);
-    $tomorrow = \Tasks\countOnUserAndDeadline($mysqli, $id_users, $timeTomorrow);
+    $tomorrow = \Tasks\countOnUserAndDeadline(
+        $mysqli, $id_users, $timeTomorrow);
 
     include_once "$fnsDir/Users/Tasks/Deadlines/setNumbers.php";
     \Users\Tasks\Deadlines\setNumbers($mysqli,

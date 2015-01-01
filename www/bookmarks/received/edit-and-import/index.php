@@ -12,10 +12,12 @@ $key = 'bookmarks/received/edit-and-import/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else $values = (array)$receivedBookmark;
 
+include_once "$fnsDir/ItemList/Received/escapedItemQuery.php";
+$escapedItemQuery = ItemList\Received\escapedItemQuery($id);
+
 include_once '../../fns/create_form_items.php';
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/hidden.php";
-include_once "$fnsDir/ItemList/Received/escapedItemQuery.php";
 include_once "$fnsDir/ItemList/Received/itemHiddenInputs.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/tabs.php";
@@ -23,7 +25,7 @@ $content = Page\tabs(
     [
         [
             'title' => "Received Bookmark #$id",
-            'href' => '../view/'.ItemList\Received\escapedItemQuery($id).'#edit-and-import',
+            'href' => "../view/$escapedItemQuery#edit-and-import",
         ],
     ],
     'Edit and Import',

@@ -14,11 +14,16 @@ function check_user_data ($mysqli) {
         include_once "$fnsDir/ReceivedFiles/File/dir.php";
         include_once "$fnsDir/ReceivedFolderFiles/File/dir.php";
         foreach ($users as $user) {
+
             $id_users = $user->id_users;
+
             $content .=
                 assert_writable_folder(Files\File\dir($id_users))
-                .assert_writable_folder(ReceivedFiles\File\dir($id_users))
-                .assert_writable_folder(ReceivedFolderFiles\File\dir($id_users));
+                .assert_writable_folder(ReceivedFiles\File\dir($id_users));
+
+            $dir = ReceivedFolderFiles\File\dir($id_users);
+            $content .= assert_writable_folder($dir);
+
         }
     }
 
@@ -31,12 +36,14 @@ function check_user_data ($mysqli) {
         }
     }
 
-    $receivedFiles = mysqli_query_object($mysqli, 'select * from received_files');
+    $sql = 'select * from received_files';
+    $receivedFiles = mysqli_query_object($mysqli, $sql);
     if ($receivedFiles) {
         include_once "$fnsDir/ReceivedFiles/File/path.php";
         foreach ($receivedFiles as $receivedFile) {
             $receiver_id_users = $receivedFile->receiver_id_users;
-            $path = ReceivedFiles\File\path($receiver_id_users, $receivedFile->id);
+            $path = ReceivedFiles\File\path(
+                $receiver_id_users, $receivedFile->id);
             $content .= assert_readable_file($path);
         }
     }

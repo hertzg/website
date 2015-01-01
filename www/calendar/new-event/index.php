@@ -35,6 +35,8 @@ include_once '../../fns/Events/maxLengths.php';
 $maxLengths = Events\maxLengths();
 
 include_once '../fns/calendar_href.php';
+$calendar_href = calendar_href($event_day, $event_month, $event_year);
+
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/datefield.php';
 include_once '../../fns/Form/hidden.php';
@@ -45,7 +47,7 @@ $content = Page\tabs(
     [
         [
             'title' => 'Calendar',
-            'href' => calendar_href($event_day, $event_month, $event_year).'#new-event',
+            'href' => "$calendar_href#new-event",
         ],
     ],
     'New Event',

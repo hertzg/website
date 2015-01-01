@@ -2,7 +2,6 @@
 
 namespace Tokens;
 
-
 function ensure ($mysqli) {
 
     $fnsDir = __DIR__.'/..';

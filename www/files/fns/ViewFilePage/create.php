@@ -32,10 +32,12 @@ function create ($mysqli, &$user, &$file) {
         $imageOptionsPanel = '';
     }
 
+    include_once "$fnsDir/create_folder_link.php";
+    $folder_link = create_folder_link($file->id_folders, '../');
+
     include_once __DIR__.'/locationBar.php';
     include_once __DIR__.'/optionsPanel.php';
     include_once "$fnsDir/bytestr.php";
-    include_once "$fnsDir/create_folder_link.php";
     include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionErrors.php";
@@ -46,7 +48,7 @@ function create ($mysqli, &$user, &$file) {
             [
                 [
                     'title' => 'Files',
-                    'href' => create_folder_link($file->id_folders, '../')."#file_$id",
+                    'href' => "$folder_link#file_$id",
                 ],
             ],
             "File #$id",

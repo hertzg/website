@@ -11,6 +11,8 @@ unset(
 );
 
 include_once '../../fns/create_folder_link.php';
+$folder_link = create_folder_link($parent_id_folders, '../');
+
 include_once '../../fns/bytestr.php';
 include_once '../../fns/Page/tabs.php';
 include_once '../../fns/ini_get_bytes.php';
@@ -23,7 +25,7 @@ $content = Page\tabs(
     [
         [
             'title' => 'Files',
-            'href' => create_folder_link($parent_id_folders, '../').'#upload-files',
+            'href' => "$folder_link#upload-files",
         ],
     ],
     'Upload Files',

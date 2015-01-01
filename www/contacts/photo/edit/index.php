@@ -6,17 +6,21 @@ list($contact, $id, $user) = require_contact($mysqli, '../');
 
 unset($_SESSION['contacts/view/messages']);
 
-include_once '../../../fns/Form/button.php';
-include_once '../../../fns/Form/filefield.php';
-include_once '../../../fns/Form/hidden.php';
-include_once '../../../fns/ItemList/escapedItemQuery.php';
-include_once '../../../fns/Page/sessionErrors.php';
-include_once '../../../fns/Page/tabs.php';
+$fnsDir = '../../../fns';
+
+include_once "$fnsDir/ItemList/escapedItemQuery.php";
+$escapedItemQuery = ItemList\escapedItemQuery($id);
+
+include_once "$fnsDir/Form/button.php";
+include_once "$fnsDir/Form/filefield.php";
+include_once "$fnsDir/Form/hidden.php";
+include_once "$fnsDir/Page/sessionErrors.php";
+include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
     [
         [
             'title' => "Contact #$id",
-            'href' => '../../view/'.ItemList\escapedItemQuery($id).'#edit-photo',
+            'href' => "../../view/$escapedItemQuery#edit-photo",
         ],
     ],
     'Edit Photo',
@@ -32,5 +36,5 @@ $content = Page\tabs(
     .'</form>'
 );
 
-include_once '../../../fns/echo_page.php';
+include_once "$fnsDir/echo_page.php";
 echo_page($user, 'Edit Contact Photo', $content, '../../../');

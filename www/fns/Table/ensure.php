@@ -86,7 +86,9 @@ function ensure ($mysqli, $tableName, $columns) {
         $mysqli->query($sql) || trigger_error($mysqli->error);
     }
 
-    if ($output === '') $output .= "Nothing to do for the table \"$tableName\".\n";
+    if ($output === '') {
+        $output .= "Nothing to do for the table \"$tableName\".\n";
+    }
     return $output;
 
 }

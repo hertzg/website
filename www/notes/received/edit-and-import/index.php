@@ -16,11 +16,13 @@ else $values = (array)$receivedNote;
 include_once "$fnsDir/Notes/maxLengths.php";
 $maxLengths = Notes\maxLengths();
 
+include_once "$fnsDir/ItemList/Received/escapedItemQuery.php";
+$escapedItemQuery = ItemList\Received\escapedItemQuery($id);
+
 include_once '../../fns/create_form_items.php';
 include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/hidden.php";
-include_once "$fnsDir/ItemList/Received/escapedItemQuery.php";
 include_once "$fnsDir/ItemList/Received/itemHiddenInputs.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/tabs.php";
@@ -29,7 +31,7 @@ $content =
         [
             [
                 'title' => "Received Note #$id",
-                'href' => '../view/'.ItemList\Received\escapedItemQuery($id).'#edit-and-import',
+                'href' => "../view/$escapedItemQuery#edit-and-import",
             ],
         ],
         'Edit and Import',
