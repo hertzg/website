@@ -35,7 +35,7 @@ $content = Page\tabs(
     [
         [
             'title' => 'MySQL Settings',
-            'href' => '..',
+            'href' => '../#edit',
         ],
     ],
     'Edit',

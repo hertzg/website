@@ -32,7 +32,7 @@ $content = Page\tabs(
     [
         [
             'title' => "Event #$id",
-            'href' => "../view-event/?id=$id",
+            'href' => "../view-event/?id=$id#edit",
         ],
     ],
     'Edit',

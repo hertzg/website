@@ -20,15 +20,16 @@ function optionsPanel ($file) {
     $href = "../download-file/$id/$namePart?$file->content_revision";
     $downloadLink = \Page\imageLink('Download', $href, 'download');
 
-    $href = "../rename-file/?id=$id";
-    $renameLink = \Page\imageArrowLink('Rename', $href, 'rename');
+    $renameLink = \Page\imageArrowLink('Rename',
+        "../rename-file/?id=$id", 'rename', ['id' => 'rename']);
 
     $href = "../move-file/?id=$id";
     if ($id_folders) $href .= "&amp;id_folders=$file->id_folders";
-    $moveLink = \Page\imageArrowLink('Move', $href, 'move-file');
+    $moveLink = \Page\imageArrowLink('Move',
+        $href, 'move-file', ['id' => 'move']);
 
-    $href = "../send-file/?id=$id";
-    $sendLink = \Page\imageArrowLink('Send', $href, 'send');
+    $sendLink = \Page\imageArrowLink('Send',
+        "../send-file/?id=$id", 'send', ['id' => 'send']);
 
     $deleteLink =
         '<div id="deleteLink">'

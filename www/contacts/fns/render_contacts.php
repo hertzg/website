@@ -10,7 +10,7 @@ function render_contacts ($contacts, &$items, $params, $base = '') {
         foreach ($contacts as $contact) {
 
             $id = $contact->id;
-            $options = ['id' => "contact_$id"];
+            $options = ['id' => $id];
             $queryString = htmlspecialchars(
                 http_build_query(
                     array_merge(['id' => $id], $params)

@@ -36,7 +36,7 @@ function create ($receivedNote) {
         [
             [
                 'title' => 'Received',
-                'href' => '../'.\ItemList\Received\listHref()."#received_note_$id",
+                'href' => '../'.\ItemList\Received\listHref()."#$id",
             ],
         ],
         "Received Note #$id",

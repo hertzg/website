@@ -10,9 +10,9 @@ function create_options_panel ($receivedFolder, $base) {
     $importLink = Page\imageLink('Import', $href, 'import-folder');
 
     include_once "$fnsDir/Page/imageArrowLink.php";
-    $title = 'Rename and Import';
-    $href = "{$base}rename-and-import/$queryString";
-    $renameAndImportLink = Page\imageArrowLink($title, $href, 'import-folder');
+    $renameAndImportLink = Page\imageArrowLink('Rename and Import',
+        "{$base}rename-and-import/$queryString", 'import-folder',
+        ['id' => 'rename-and-import']);
 
     if ($receivedFolder->archived) {
         $title = 'Unarchive';

@@ -9,26 +9,26 @@ function optionsPanel ($channel) {
     $id = $channel->id;
 
     include_once "$fnsDir/Page/imageArrowLink.php";
-    $title = 'Post a Notification';
-    $href = "../notify/?id=$id";
-    $notifyLink = \Page\imageArrowLink($title, $href, 'create-notification');
+    $notifyLink = \Page\imageArrowLink('Post a Notification',
+        "../notify/?id=$id", 'create-notification', ['id' => 'notify']);
 
     $title = 'Users';
     $href = "../users/?id=$id";
+    $options = ['id' => 'users'];
     $num_users = $channel->num_users;
     if ($num_users) {
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         $description = "$num_users total.";
         $usersLink = \Page\imageArrowLinkWithDescription($title,
-            $description, $href, 'users');
+            $description, $href, 'users', $options);
     } else {
-        $usersLink = \Page\imageArrowLink($title, $href, 'users');
+        $usersLink = \Page\imageArrowLink($title, $href, 'users', $options);
     }
 
-    $href = "../edit/?id=$id";
     if ($channel->receive_notifications) $icon = 'edit-channel';
     else $icon = 'edit-inactive-channel';
-    $editLink = \Page\imageArrowLink('Edit', $href, $icon);
+    $editLink = \Page\imageArrowLink('Edit',
+        "../edit/?id=$id", $icon, ['id' => 'edit']);
 
     include_once "$fnsDir/Page/imageLink.php";
     $deleteLink =

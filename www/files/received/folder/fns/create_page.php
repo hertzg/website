@@ -18,16 +18,17 @@ function create_page ($mysqli, $receivedFolder, $base = '') {
         include_once "$fnsDir/Page/imageLink.php";
 
         foreach ($subfolders as $subfolder) {
-            $title = htmlspecialchars($subfolder->name);
-            $href = "{$base}subfolder/?id=$subfolder->id";
-            $items[] = Page\imageLink($title, $href, 'folder');
+            $item_id = $subfolder->id;
+            $items[] = Page\imageLink(htmlspecialchars($subfolder->name),
+                "{$base}subfolder/?id=$item_id", 'folder',
+                ['id' => "folder_$item_id"]);
         }
 
         foreach ($files as $file) {
-            $title = htmlspecialchars($file->name);
-            $href = "{$base}file/?id=$file->id";
-            $icon = "$file->media_type-file";
-            $items[] = Page\imageLink($title, $href, $icon);
+            $item_id = $file->id;
+            $items[] = Page\imageLink(htmlspecialchars($file->name),
+                "{$base}file/?id=$item_id", "$file->media_type-file",
+                ['id' => "file_$item_id"]);
         }
 
     } else {
@@ -44,7 +45,7 @@ function create_page ($mysqli, $receivedFolder, $base = '') {
         [
             [
                 'title' => 'Received',
-                'href' => "$base..",
+                'href' => "$base../#folder_$id",
             ],
         ],
         "Received Folder #$id",

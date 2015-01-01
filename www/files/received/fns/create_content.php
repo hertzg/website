@@ -18,7 +18,7 @@ function create_content ($items, $base) {
         [
             [
                 'title' => 'Files',
-                'href' => "{$base}..",
+                'href' => "{$base}../#received",
             ],
         ],
         'Received',

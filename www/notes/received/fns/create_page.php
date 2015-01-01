@@ -26,7 +26,7 @@ function create_page ($mysqli, $user, $base = '') {
         foreach ($receivedNotes as $receivedNote) {
 
             $id = $receivedNote->id;
-            $options = ['id' => "received_note_$id"];
+            $options = ['id' => $id];
 
             $text = $receivedNote->text;
             if ($receivedNote->encrypt) {

@@ -8,17 +8,17 @@ function create_options_panel ($user) {
     $options = [];
     if ($user->email !== '' && !$user->email_verified) {
         $options[] = Page\imageArrowLink('Verify Email',
-            'verify-email/', 'yes', ['id' => 'verify_email']);
+            'verify-email/', 'yes', ['id' => 'verify-email']);
     }
 
     $options[] = Page\imageArrowLink('Change Password',
-        'change-password/', 'edit-password', ['id' => 'change_password']);
+        'change-password/', 'edit-password', ['id' => 'change-password']);
 
     $options[] = Page\imageArrowLink('Edit Profile',
-        'edit-profile/', 'edit-profile', ['id' => 'edit_profile']);
+        'edit-profile/', 'edit-profile', ['id' => 'edit-profile']);
 
     $options[] = Page\imageArrowLink('Edit Theme',
-        'edit-theme/', "edit-$user->theme-theme", ['id' => 'edit_theme']);
+        'edit-theme/', "edit-$user->theme-theme", ['id' => 'edit-theme']);
 
     include_once __DIR__.'/create_tokens_link.php';
     $options[] = create_tokens_link($user);
@@ -40,7 +40,7 @@ function create_options_panel ($user) {
     $title = 'API Keys';
     $href = 'api-keys/';
     $icon = 'api-keys';
-    $optionsParam = ['id' => 'api_keys'];
+    $optionsParam = ['id' => 'api-keys'];
     $num_api_keys = $user->num_api_keys;
     if ($num_api_keys) {
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";

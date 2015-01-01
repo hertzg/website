@@ -29,8 +29,8 @@ function create_page ($mysqli, $id, $base = '') {
     }
 
     include_once "$fnsDir/Page/imageArrowLink.php";
-    $href = "{$base}add/?id=$id";
-    $options = [Page\imageArrowLink('Add User', $href, 'add-user')];
+    $options = [Page\imageArrowLink('Add User',
+        "{$base}add/?id=$id", 'add-user', ['id' => 'add'])];
 
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Page/tabs.php";
@@ -39,7 +39,7 @@ function create_page ($mysqli, $id, $base = '') {
         [
             [
                 'title' => "Channel #$id",
-                'href' => "../view/?id=$id",
+                'href' => "../view/?id=$id#users",
             ],
         ],
         'Users',

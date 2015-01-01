@@ -87,7 +87,7 @@ function create ($deletedItem, $user, &$title, &$head) {
             [
                 [
                     'title' => 'Trash',
-                    'href' => "../#deleted_item_$id",
+                    'href' => "../#$id",
                 ],
             ],
             $title,

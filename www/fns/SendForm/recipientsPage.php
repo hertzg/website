@@ -64,7 +64,7 @@ function recipientsPage ($mysqli, $user, $id, $tabTitle,
         [
             [
                 'title' => $tabTitle,
-                'href' => "../view/$escapedItemQuery",
+                'href' => "../view/$escapedItemQuery#send",
             ],
         ],
         'Send',

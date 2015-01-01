@@ -39,7 +39,7 @@ function create_page ($mysqli, $user, $channel, $base = '') {
         [
             [
                 'title' => 'Home',
-                'href' => "$base../../home/",
+                'href' => "$base../../home/#notifications",
             ],
         ],
         'Notifications',

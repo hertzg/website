@@ -4,6 +4,7 @@ namespace ViewPage;
 
 function create ($subscribedChannel) {
 
+    $id = $subscribedChannel->id;
     $fnsDir = __DIR__.'/../../../../fns';
     $items = [];
 
@@ -44,10 +45,10 @@ function create ($subscribedChannel) {
             [
                 [
                     'title' => 'Other Channels',
-                    'href' => '..',
+                    'href' => "../#$id",
                 ],
             ],
-            "Other Channel #$subscribedChannel->id",
+            "Other Channel #$id",
             \Page\sessionMessages($messagesKey)
             .join('<div class="hr"></div>', $items)
             .\Page\infoText($infoText)

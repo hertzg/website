@@ -10,8 +10,9 @@ function photoOptionsPanel ($contact, $base) {
     $escapedItemQuery = \ItemList\escapedItemQuery($contact->id);
 
     include_once "$fnsDir/Page/imageArrowLink.php";
-    $href = "$base../photo/edit/$escapedItemQuery";
-    $editLink = \Page\imageArrowLink('Edit Photo', $href, 'edit-contact-photo');
+    $editLink = \Page\imageArrowLink('Edit Photo',
+        "$base../photo/edit/$escapedItemQuery", 'edit-contact-photo',
+        ['id' => 'edit-photo']);
 
     if ($contact->photo_id) {
 

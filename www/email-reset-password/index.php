@@ -25,7 +25,7 @@ $content = Page\tabs(
     [
         [
             'title' => 'Sign In',
-            'href' => '../sign-in/',
+            'href' => '../sign-in/#email-reset-password',
         ],
     ],
     'Reset Password',

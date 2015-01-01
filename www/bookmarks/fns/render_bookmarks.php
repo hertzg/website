@@ -13,7 +13,7 @@ function render_bookmarks ($bookmarks, &$items, $params, $base = '') {
         foreach ($bookmarks as $bookmark) {
 
             $id = $bookmark->id;
-            $options = ['id' => "bookmark_$id"];
+            $options = ['id' => $id];
             $queryString = htmlspecialchars(
                 http_build_query(
                     array_merge(['id' => $id], $params)

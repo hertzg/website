@@ -15,11 +15,9 @@ if ($user->num_connections) {
 
     include_once '../../fns/Page/imageArrowLink.php';
     foreach ($connections as $connection) {
-        $title = htmlspecialchars($connection->username);
         $id = $connection->id;
-        $options = ['id' => "connection_$id"];
-        $items[] = Page\imageArrowLink($title,
-            "view/?id=$id", 'connection', $options);
+        $items[] = Page\imageArrowLink(htmlspecialchars($connection->username),
+            "view/?id=$id", 'connection', ['id' => $id]);
     }
 
 } else {

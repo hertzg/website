@@ -25,7 +25,7 @@ function create_page ($mysqli, $user, $base = '') {
 
             $id = $deletedItem->id;
             $href = "{$base}view/?id=$id";
-            $options = ['id' => "deleted_item_$id"];
+            $options = ['id' => $id];
 
             if ($type == 'bookmark' || $type == 'receivedBookmark') {
                 include_once __DIR__.'/render_bookmark.php';

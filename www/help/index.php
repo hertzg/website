@@ -29,7 +29,7 @@ $content = Page\tabs(
         'feedback/', 'feedback', ['id' => 'feedback'])
     .'<div class="hr"></div>'
     .Page\imageArrowLink('API Documentation',
-        'api-doc/', 'generic', ['id' => 'api_doc'])
+        'api-doc/', 'generic', ['id' => 'api-doc'])
 );
 
 include_once '../fns/echo_page.php';

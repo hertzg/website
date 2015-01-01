@@ -28,7 +28,7 @@ function create_page ($mysqli, $user, $base = '') {
         foreach ($receivedContacts as $receivedContact) {
 
             $id = $receivedContact->id;
-            $options = ['id' => "received_contact_$id"];
+            $options = ['id' => $id];
 
             if ($receivedContact->favorite) $icon = 'favorite-contact';
             else $icon = 'contact';

@@ -27,7 +27,7 @@ function create_page ($mysqli, $user, $base = '') {
         foreach ($receivedBookmarks as $receivedBookmark) {
 
             $id = $receivedBookmark->id;
-            $options = ['id' => "received_bookmark_$id"];
+            $options = ['id' => $id];
 
             $title = $receivedBookmark->title;
             if ($title === '') $title = $receivedBookmark->url;

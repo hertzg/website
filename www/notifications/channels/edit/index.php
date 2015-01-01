@@ -23,7 +23,7 @@ $content =
         [
             [
                 'title' => "Channel #$id",
-                'href' => "../view/?id=$id",
+                'href' => "../view/?id=$id#edit",
             ],
         ],
         'Edit',

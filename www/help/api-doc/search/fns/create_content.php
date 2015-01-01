@@ -6,7 +6,7 @@ function create_content ($items) {
         [
             [
                 'title' => 'Help',
-                'href' => '../..',
+                'href' => '../../#api-doc',
             ],
         ],
         'API Documentation',

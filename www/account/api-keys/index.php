@@ -36,9 +36,8 @@ if ($user->num_api_keys) {
 
         $title = htmlspecialchars($apiKey->name);
         $id = $apiKey->id;
-        $options = ['id' => "api_key_$id"];
         $items[] = Page\imageArrowLinkWithDescription($title,
-            $description, "view/?id=$id", 'api-key', $options);
+            $description, "view/?id=$id", 'api-key', ['id' => $id]);
 
     }
 
@@ -62,7 +61,7 @@ $content = Page\tabs(
     [
         [
             'title' => 'Account',
-            'href' => '../#api_keys',
+            'href' => '../#api-keys',
         ],
     ],
     'API Keys',

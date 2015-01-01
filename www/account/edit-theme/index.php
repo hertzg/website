@@ -24,7 +24,7 @@ $content = Page\tabs(
     [
         [
             'title' => 'Account',
-            'href' => '../#edit_theme',
+            'href' => '../#edit-theme',
         ],
     ],
     'Edit Theme',

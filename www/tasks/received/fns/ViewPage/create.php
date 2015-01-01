@@ -47,7 +47,7 @@ function create ($receivedTask, $user) {
         [
             [
                 'title' => 'Received',
-                'href' => '../'.\ItemList\Received\listHref()."#received_task_$id",
+                'href' => '../'.\ItemList\Received\listHref()."#$id",
             ],
         ],
         "Received Task #$id",

@@ -16,9 +16,9 @@ function create_page ($receivedFile, $base = '') {
     $importLink = Page\imageLink('Import', $href, 'import-file');
 
     include_once "$fnsDir/Page/imageArrowLink.php";
-    $title = 'Rename and Import';
-    $href = "{$base}rename-and-import/$queryString";
-    $renameAndImportLink = Page\imageArrowLink($title, $href, 'import-file');
+    $renameAndImportLink = Page\imageArrowLink('Rename and Import',
+        "{$base}rename-and-import/$queryString", 'import-file',
+        ['id' => 'rename-and-import']);
 
     if ($receivedFile->archived) {
         $href = "{$base}submit-unarchive.php$queryString";
@@ -49,7 +49,7 @@ function create_page ($receivedFile, $base = '') {
         [
             [
                 'title' => 'Received',
-                'href' => "$base..",
+                'href' => "$base../#file_$id",
             ],
         ],
         "Received File #$id",

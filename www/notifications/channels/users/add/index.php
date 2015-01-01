@@ -22,7 +22,7 @@ $content = Page\tabs(
     [
         [
             'title' => 'Users',
-            'href' => "../?id=$id",
+            'href' => "../?id=$id#add",
         ],
     ],
     'Add',

@@ -28,7 +28,7 @@ if ($user->num_channels) {
 
         $title = htmlspecialchars($channel->channel_name);
         $id = $channel->id;
-        $options = ['id' => "channel_$id"];
+        $options = ['id' => $id];
         $items[] = Page\imageArrowLink($title, "view/?id=$id", $icon, $options);
 
     }
@@ -51,7 +51,7 @@ $content =
         [
             [
                 'title' => 'Notifications',
-                'href' => '..',
+                'href' => '../#channels',
             ],
         ],
         'Channels',

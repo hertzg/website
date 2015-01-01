@@ -26,7 +26,6 @@ function create_page ($mysqli, $user, $base = '') {
         foreach ($receivedTasks as $receivedTask) {
 
             $id = $receivedTask->id;
-            $options = ['id' => "received_task_$id"];
 
             if ($receivedTask->top_priority) $icon = 'task-top-priority';
             else $icon = 'task';
@@ -35,7 +34,7 @@ function create_page ($mysqli, $user, $base = '') {
             $description = create_sender_description($receivedTask);
             $href = "{$base}view/".ItemList\Received\escapedItemQuery($id);
             $items[] = Page\imageArrowLinkWithDescription($title,
-                $description, $href, $icon, $options);
+                $description, $href, $icon, ['id' => $id]);
 
         }
     } else {

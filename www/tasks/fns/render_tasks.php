@@ -13,7 +13,6 @@ function render_tasks ($tasks, &$items, $params, $user, $base = '') {
         foreach ($tasks as $task) {
 
             $id = $task->id;
-            $options = ['id' => "task_$id"];
             $queryString = htmlspecialchars(
                 http_build_query(
                     array_merge(['id' => $id], $params)
@@ -23,7 +22,8 @@ function render_tasks ($tasks, &$items, $params, $user, $base = '') {
 
             $title = htmlspecialchars($task->text);
             $items[] = create_task_link($title, $task->deadline_time,
-                $task->tags, $task->top_priority, $href, $time_today, $options);
+                $task->tags, $task->top_priority, $href, $time_today,
+                ['id' => $id]);
 
         }
 

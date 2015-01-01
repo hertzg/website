@@ -13,7 +13,7 @@ $content = Page\tabs(
     [
         [
             'title' => 'API Documentation',
-            'href' => '../#php_example',
+            'href' => '../#php-example',
         ],
     ],
     'PHP Example',

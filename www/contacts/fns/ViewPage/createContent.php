@@ -30,7 +30,7 @@ function createContent ($contact, $infoText, $items, $base) {
             [
                 [
                     'title' => 'Contacts',
-                    'href' => $base.\ItemList\listHref()."#contact_$id",
+                    'href' => $base.\ItemList\listHref()."#$id",
                 ],
             ],
             "Contact #$id",

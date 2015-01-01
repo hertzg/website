@@ -33,13 +33,13 @@ $content = Page\tabs(
     [
         [
             'title' => 'Received',
-            'href' => '../..',
+            'href' => "../../#folder_$id_received_folders",
         ],
     ],
     $title,
     '<div class="greyBar textAndButtons">'
         .'<span class="textAndButtons-text">Location:</span>'
-        ."<a class=\"tag\" href=\"../?id=$id_received_folders\">root</a>"
+        ."<a class=\"tag\" href=\"../?id=$id_received_folders#file_$id\">root</a>"
     .'</div>'
     .Form\label('File name', htmlspecialchars($name))
     .'<div class="hr"></div>'

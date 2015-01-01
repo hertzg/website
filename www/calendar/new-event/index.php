@@ -45,7 +45,7 @@ $content = Page\tabs(
     [
         [
             'title' => 'Calendar',
-            'href' => calendar_href($event_day, $event_month, $event_year),
+            'href' => calendar_href($event_day, $event_month, $event_year).'#new-event',
         ],
     ],
     'New Event',

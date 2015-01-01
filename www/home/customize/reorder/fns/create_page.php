@@ -15,7 +15,7 @@ function create_page ($user, $base = '') {
     foreach ($userHomeItems as $key => $item) {
         list($title, $icon) = $item;
         $items[] = Page\imageArrowLink($title,
-            "{$base}move/?key=$key", $icon, ['id' => "item_$key"]);
+            "{$base}move/?key=$key", $icon, ['id' => $key]);
     }
 
     include_once __DIR__.'/create_options_panel.php';

@@ -34,7 +34,7 @@ function create ($channel) {
             [
                 [
                     'title' => 'Channels',
-                    'href' => "../#channel_$id",
+                    'href' => "../#$id",
                 ],
             ],
             "Channel #$id",

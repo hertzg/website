@@ -18,7 +18,7 @@ function create_content ($id, $values) {
             [
                 [
                     'title' => "Contact #$id",
-                    'href' => '../view/'.ItemList\escapedItemQuery($id),
+                    'href' => '../view/'.ItemList\escapedItemQuery($id).'#edit',
                 ],
             ],
             'Edit',

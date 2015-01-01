@@ -9,7 +9,7 @@ function render_notes ($notes, &$items, $params, $base = '') {
         foreach ($notes as $note) {
 
             $id = $note->id;
-            $options = ['id' => "note_$id"];
+            $options = ['id' => $id];
             $queryString = htmlspecialchars(
                 http_build_query(
                     array_merge(['id' => $id], $params)

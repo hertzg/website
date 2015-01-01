@@ -42,19 +42,19 @@ function create_page ($mysqli, $user, $base = '') {
         foreach ($receivedFolders as $receivedFolder) {
             $title = htmlspecialchars($receivedFolder->name);
             $description = create_sender_description($receivedFolder);
-            $href = "{$base}folder/?id=$receivedFolder->id";
-            $html = Page\imageArrowLinkWithDescription($title,
-                $description, $href, 'folder');
+            $id = $receivedFolder->id;
+            $html = Page\imageArrowLinkWithDescription($title, $description,
+                "{$base}folder/?id=$id", 'folder', ['id' => "folder_$id"]);
             $items[$receivedFolder->insert_time] = $html;
         }
 
         foreach ($receivedFiles as $receivedFile) {
             $title = htmlspecialchars($receivedFile->name);
             $description = create_sender_description($receivedFile);
-            $href = "{$base}file/?id=$receivedFile->id";
-            $icon = "$receivedFile->media_type-file";
-            $html = Page\imageArrowLinkWithDescription(
-                $title, $description, $href, $icon);
+            $id = $receivedFile->id;
+            $html = Page\imageArrowLinkWithDescription($title, $description,
+                "{$base}file/?id=$id", "$receivedFile->media_type-file",
+                ['id' => "file_$id"]);
             $items[$receivedFile->insert_time] = $html;
         }
 

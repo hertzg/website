@@ -34,7 +34,7 @@ function create_page ($user, $base = '') {
             [
                 [
                     'title' => 'Customize',
-                    'href' => "$base../#show_hide",
+                    'href' => "$base../#show-hide",
                 ],
             ],
             'Show / Hide Items',

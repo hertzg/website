@@ -48,7 +48,7 @@ function create ($task, $user) {
             [
                 [
                     'title' => 'Tasks',
-                    'href' => \ItemList\listHref()."#task_$id",
+                    'href' => \ItemList\listHref()."#$id",
                 ],
             ],
             "Task #$id",

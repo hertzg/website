@@ -20,7 +20,7 @@ function create_page ($base = '') {
         Page\sessionMessages('home/customize/messages')
         .Page\imageArrowLinkWithDescription('Show / Hide Items',
             'Change the visibility of the items.', "{$base}show-hide/",
-            'show-hide', ['id' => 'show_hide'])
+            'show-hide', ['id' => 'show-hide'])
         .'<div class="hr"></div>'
         .Page\imageArrowLinkWithDescription('Reorder Items',
             'Change the order in which the items appear.',

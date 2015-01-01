@@ -39,7 +39,7 @@ function create ($apiKey) {
         [
             [
                 'title' => 'API Keys',
-                'href' => "../#api_key_$id",
+                'href' => "../#$id",
             ],
         ],
         "API Key #$id",

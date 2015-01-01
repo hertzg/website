@@ -10,13 +10,13 @@ function optionsPanel ($receivedTask) {
     $itemQuery = \ItemList\Received\escapedItemQuery($receivedTask->id);
 
     include_once "$fnsDir/Page/imageLink.php";
-    $href = "../submit-import.php$itemQuery";
-    $importLink = \Page\imageLink('Import', $href, 'import-task');
+    $importLink = \Page\imageLink('Import',
+        "../submit-import.php$itemQuery", 'import-task');
 
     include_once "$fnsDir/Page/imageArrowLink.php";
-    $title = 'Edit and Import';
-    $href = "../edit-and-import/$itemQuery";
-    $editAndImportLink = \Page\imageArrowLink($title, $href, 'import-task');
+    $editAndImportLink = \Page\imageArrowLink('Edit and Import',
+        "../edit-and-import/$itemQuery", 'import-task',
+        ['id' => 'edit-and-import']);
 
     $href = 'sms:?body='.rawurlencode($receivedTask->text);
     $sendViaSmsLink = \Page\imageLink('Send via SMS', $href, 'send-sms');

@@ -46,12 +46,10 @@ include_once 'fns/render_events.php';
 render_events($contacts, $tasks, $events, $eventItems);
 
 if ($user->num_events) {
-    $title = 'All Events';
-    $description = "$user->num_events total.";
-    $href = 'all-events/';
     include_once '../fns/Page/imageArrowLinkWithDescription.php';
-    $eventItems[] = Page\imageArrowLinkWithDescription(
-        $title, $description, $href, 'events');
+    $eventItems[] = Page\imageArrowLinkWithDescription('All Events',
+        "$user->num_events total.", 'all-events/', 'events',
+        ['id' => 'all-events']);
 }
 
 include_once 'fns/create_content.php';

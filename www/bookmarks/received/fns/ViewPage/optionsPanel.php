@@ -15,13 +15,13 @@ function optionsPanel ($receivedBookmark) {
     list($openLink, $openInNewTabLink) = $values;
 
     include_once "$fnsDir/Page/imageLink.php";
-    $href = "../submit-import.php$itemQuery";
-    $importLink = \Page\imageLink('Import', $href, 'import-bookmark');
+    $importLink = \Page\imageLink('Import',
+        "../submit-import.php$itemQuery", 'import-bookmark');
 
     include_once "$fnsDir/Page/imageArrowLink.php";
-    $href = "../edit-and-import/$itemQuery";
-    $icon = 'import-bookmark';
-    $editAndImportLink = \Page\imageArrowLink('Edit and Import', $href, $icon);
+    $editAndImportLink = \Page\imageArrowLink('Edit and Import',
+        "../edit-and-import/$itemQuery", 'import-bookmark',
+        ['id' => 'edit-and-import']);
 
     include_once "$fnsDir/Page/imageLink.php";
     $href = 'sms:?body='.rawurlencode($receivedBookmark->url);

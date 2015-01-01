@@ -36,7 +36,7 @@ function create_page ($mysqli, $user, $base = '') {
         foreach ($tokens as $itemToken) {
 
             $id = $itemToken->id;
-            $optionsParam = ['id' => "token_$id"];
+            $optionsParam = ['id' => $id];
             $text = bin2hex($itemToken->token_text);
             if ($token && $id == $token->id) $text .= ' (Current)';
 

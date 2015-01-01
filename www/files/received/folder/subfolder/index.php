@@ -49,7 +49,7 @@ $content = Page\tabs(
     [
         [
             'title' => 'Received',
-            'href' => '../..',
+            'href' => "../../#folder_$id_received_folders",
         ],
     ],
     $title,

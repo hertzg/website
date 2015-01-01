@@ -34,7 +34,7 @@ function create ($note) {
             [
                 [
                     'title' => 'Notes',
-                    'href' => \ItemList\listHref()."#note_$id",
+                    'href' => \ItemList\listHref()."#$id",
                 ],
             ],
             "Note #$id",

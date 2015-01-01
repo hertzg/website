@@ -34,7 +34,7 @@ function create ($receivedBookmark) {
         [
             [
                 'title' => 'Received',
-                'href' => '../'.\ItemList\Received\listHref()."#received_bookmark_$id",
+                'href' => '../'.\ItemList\Received\listHref()."#$id",
             ],
         ],
         "Received Bookmark #$id",

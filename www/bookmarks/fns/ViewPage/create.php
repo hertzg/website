@@ -60,7 +60,7 @@ function create ($bookmark) {
             [
                 [
                     'title' => 'Bookmarks',
-                    'href' => \ItemList\listHref()."#bookmark_$id",
+                    'href' => \ItemList\listHref()."#$id",
                 ],
             ],
             "Bookmark #$id",

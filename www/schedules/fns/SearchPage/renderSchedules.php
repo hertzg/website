@@ -19,7 +19,6 @@ function renderSchedules ($schedules, &$items, $keyword, $user) {
         foreach ($schedules as $schedule) {
 
             $id = $schedule->id;
-            $options = ['id' => "schedule_$id"];
 
             $title = htmlspecialchars($schedule->text);
             $title = preg_replace($regex, '<mark>$0</mark>', $title);
@@ -27,7 +26,7 @@ function renderSchedules ($schedules, &$items, $keyword, $user) {
             $description = format_days_left($user, $schedule->days_left);
             $href = '../view/'.\ItemList\escapedItemQuery($id);
             $items[] = \Page\imageArrowLinkWithDescription($title,
-                $description, $href, 'schedule', $options);
+                $description, $href, 'schedule', ['id' => $id]);
 
         }
 

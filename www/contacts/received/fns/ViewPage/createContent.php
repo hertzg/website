@@ -25,7 +25,7 @@ function createContent ($receivedContact, $infoText, $items) {
         [
             [
                 'title' => 'Received',
-                'href' => '../'.\ItemList\Received\listHref()."#received_contact_$id",
+                'href' => '../'.\ItemList\Received\listHref()."#$id",
             ],
         ],
         "Received Contact #$id",

@@ -44,7 +44,7 @@ $content =
         [
             [
                 'title' => 'Help',
-                'href' => '../#api_doc',
+                'href' => '../#api-doc',
             ],
         ],
         'API Documentation',
@@ -82,7 +82,7 @@ $content =
         )
         .'<div class="hr"></div>'
         .Page\imageArrowLink('PHP Example',
-            'php-example', 'generic', ['id' => 'php_example'])
+            'php-example', 'generic', ['id' => 'php-example'])
         .'<div class="hr"></div>'
         .Page\text(
             'Below is a list of errors that are expected from any API method:'

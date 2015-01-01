@@ -26,7 +26,7 @@ $content = Page\tabs(
     [
         [
             'title' => 'Account',
-            'href' => '../#change_password',
+            'href' => '../#change-password',
         ],
     ],
     'Change Password',

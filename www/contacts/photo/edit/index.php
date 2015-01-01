@@ -16,7 +16,7 @@ $content = Page\tabs(
     [
         [
             'title' => "Contact #$id",
-            'href' => '../../view/'.ItemList\escapedItemQuery($id),
+            'href' => '../../view/'.ItemList\escapedItemQuery($id).'#edit-photo',
         ],
     ],
     'Edit Photo',

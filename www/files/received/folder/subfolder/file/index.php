@@ -13,7 +13,8 @@ if (!$receivedFolderFile->parent_id) {
     redirect("../../file/?id=$id");
 }
 
-$title = "Received Folder #$receivedFolderFile->id_received_folders";
+$id_received_folders = $receivedFolderFile->id_received_folders;
+$title = "Received Folder #$id_received_folders";
 $name = $receivedFolderFile->name;
 
 include_once "$fnsDir/Page/imageLink.php";
@@ -34,7 +35,7 @@ $content = Page\tabs(
     [
         [
             'title' => 'Received',
-            'href' => '../../..',
+            'href' => "../../../#folder_$id_received_folders",
         ],
     ],
     $title,
