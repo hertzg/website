@@ -28,7 +28,7 @@ function removeRecipientPage ($mysqli, $user,
             [
                 [
                     'title' => $title,
-                    'href' => "../../view/$escapedItemQuery",
+                    'href' => "../../view/$escapedItemQuery#send",
                 ],
             ],
             'Send',

@@ -14,7 +14,7 @@ function create_content ($mysqli, $folder, $parentFolder, $items) {
         [
             [
                 'title' => 'Files',
-                'href' => create_folder_link($id_folders, '../'),
+                'href' => create_folder_link($id_folders, '../').'#move',
             ]
         ],
         "Move Folder #$id_folders",

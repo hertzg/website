@@ -16,7 +16,7 @@ function createContent ($user, $filterMessage, $items) {
             [
                 [
                     'title' => 'Home',
-                    'href' => '../../home/',
+                    'href' => '../../home/#contacts',
                 ],
             ],
             'Contacts',

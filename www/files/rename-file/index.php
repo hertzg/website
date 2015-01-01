@@ -24,7 +24,7 @@ $content = Page\tabs(
     [
         [
             'title' => "File #$id",
-            'href' => "../view-file/?id=$id",
+            'href' => "../view-file/?id=$id#rename",
         ],
     ],
     'Rename',

@@ -32,8 +32,9 @@ if ($user->num_subscribed_channels) {
         }
 
         $title = htmlspecialchars($subscribedChannel->channel_name);
-        $href = "view/?id=$subscribedChannel->id";
-        $items[] = Page\imageArrowLink($title, $href, $icon);
+        $id = $subscribedChannel->id;
+        $items[] = Page\imageArrowLink($title,
+            "view/?id=$id", $icon, ['id' => $id]);
 
     }
 
@@ -49,7 +50,7 @@ $content = Page\tabs(
     [
         [
             'title' => 'Notifications',
-            'href' => '..',
+            'href' => '../#subscribed-channels',
         ],
     ],
     'Other Channels',

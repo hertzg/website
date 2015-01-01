@@ -14,7 +14,7 @@ function create_content ($user, $filterMessage, $items, $base, $searchForm) {
             [
                 [
                     'title' => 'Home',
-                    'href' => '../home/',
+                    'href' => "$base../home/#notes",
                 ],
             ],
             'Notes',

@@ -35,18 +35,21 @@ function create_page ($mysqli, $user, $base = '') {
 
         foreach ($tokens as $itemToken) {
 
+            $id = $itemToken->id;
+            $optionsParam = ['id' => $id];
             $text = bin2hex($itemToken->token_text);
-            if ($token && $itemToken->id == $token->id) $text .= ' (Current)';
+            if ($token && $id == $token->id) $text .= ' (Current)';
 
             $href = "{$base}view/?id=$itemToken->id";
 
             $user_agent = $itemToken->user_agent;
             if ($user_agent === null) {
-                $items[] = Page\imageArrowLink($text, $href, $icon);
+                $items[] = Page\imageArrowLink($text,
+                    $href, $icon, $optionsParam);
             } else {
                 $description = htmlspecialchars($user_agent);
                 $items[] = Page\imageArrowLinkWithDescription($text,
-                    $description, $href, $icon);
+                    $description, $href, $icon, $optionsParam);
             }
 
         }
@@ -68,7 +71,7 @@ function create_page ($mysqli, $user, $base = '') {
             [
                 [
                     'title' => 'Account',
-                    'href' => "{$base}..",
+                    'href' => "{$base}../#tokens",
                 ],
             ],
             'Sessions',

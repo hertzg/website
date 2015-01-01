@@ -36,7 +36,7 @@ function method_page ($groupName, $prefix,
         [
             [
                 'title' => $groupName,
-                'href' => '..',
+                'href' => "../#$methodName",
             ],
         ],
         $methodName,

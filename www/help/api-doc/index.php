@@ -31,7 +31,7 @@ $items = [SearchForm\create('search/', $searchContent)];
 include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
 foreach ($groups as $key => $group) {
     $items[] = Page\imageArrowLinkWithDescription($group['title'],
-        "$group[description].", "$key/", 'generic');
+        "$group[description].", "$key/", 'generic', ['id' => $key]);
 }
 
 include_once "$fnsDir/compressed_js_script.php";
@@ -44,7 +44,7 @@ $content =
         [
             [
                 'title' => 'Help',
-                'href' => '..',
+                'href' => '../#api-doc',
             ],
         ],
         'API Documentation',
@@ -81,7 +81,8 @@ $content =
             .' Click below to see a PHP example code that calls an API method.'
         )
         .'<div class="hr"></div>'
-        .Page\imageArrowLink('PHP Example', 'php-example', 'generic')
+        .Page\imageArrowLink('PHP Example',
+            'php-example', 'generic', ['id' => 'php-example'])
         .'<div class="hr"></div>'
         .Page\text(
             'Below is a list of errors that are expected from any API method:'

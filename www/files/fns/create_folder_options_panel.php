@@ -5,14 +5,14 @@ function create_folder_options_panel ($id_folders) {
     $fnsDir = __DIR__.'/../../fns';
 
     include_once "$fnsDir/Page/imageArrowLink.php";
-    $href = "rename-folder/?id_folders=$id_folders";
-    $renameLink = Page\imageArrowLink('Rename', $href, 'rename');
+    $renameLink = Page\imageArrowLink('Rename',
+        "rename-folder/?id_folders=$id_folders", 'rename', ['id' => 'rename']);
 
-    $href = "move-folder/?id_folders=$id_folders";
-    $moveLink = Page\imageArrowLink('Move', $href, 'move-folder');
+    $moveLink = Page\imageArrowLink('Move',
+        "move-folder/?id_folders=$id_folders", 'move-folder', ['id' => 'move']);
 
-    $href = "send-folder/?id_folders=$id_folders";
-    $sendLink = Page\imageArrowLink('Send', $href, 'send');
+    $sendLink = Page\imageArrowLink('Send',
+        "send-folder/?id_folders=$id_folders", 'send', ['id' => 'send']);
 
     include_once "$fnsDir/Page/imageLink.php";
     $href = "delete-folder/?id_folders=$id_folders";

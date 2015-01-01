@@ -20,6 +20,8 @@ function create ($channel) {
         $infoText .= "<br />Last modified $author.";
     }
 
+    $id = $channel->id;
+
     include_once __DIR__.'/optionsPanel.php';
     include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/Form/textfield.php";
@@ -32,10 +34,10 @@ function create ($channel) {
             [
                 [
                     'title' => 'Channels',
-                    'href' => '..',
+                    'href' => "../#$id",
                 ],
             ],
-            "Channel #$channel->id",
+            "Channel #$id",
             \Page\sessionMessages('notifications/channels/view/messages')
             .\Form\label('Channel name',
                 htmlspecialchars($channel->channel_name))

@@ -25,6 +25,9 @@ function create_page ($mysqli, $user, $base = '') {
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         foreach ($receivedNotes as $receivedNote) {
 
+            $id = $receivedNote->id;
+            $options = ['id' => $id];
+
             $text = $receivedNote->text;
             if ($receivedNote->encrypt) {
                 include_once "$fnsDir/encrypt_text.php";
@@ -36,10 +39,9 @@ function create_page ($mysqli, $user, $base = '') {
 
             $title = htmlspecialchars($text);
             $description = create_sender_description($receivedNote);
-            $href = "{$base}view/".ItemList\Received\escapedItemQuery(
-                $receivedNote->id);
+            $href = "{$base}view/".ItemList\Received\escapedItemQuery($id);
             $items[] = Page\imageArrowLinkWithDescription($title,
-                $description, $href, $icon);
+                $description, $href, $icon, $options);
 
         }
     } else {
@@ -68,7 +70,7 @@ function create_page ($mysqli, $user, $base = '') {
         [
             [
                 'title' => 'Notes',
-                'href' => "$base..",
+                'href' => "$base../#received",
             ],
         ],
         'Received',

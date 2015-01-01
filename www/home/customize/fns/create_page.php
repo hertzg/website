@@ -13,18 +13,18 @@ function create_page ($base = '') {
         [
             [
                 'title' => 'Home',
-                'href' => "$base..",
+                'href' => "$base../#customize",
             ],
         ],
         'Customize',
         Page\sessionMessages('home/customize/messages')
         .Page\imageArrowLinkWithDescription('Show / Hide Items',
             'Change the visibility of the items.', "{$base}show-hide/",
-            'show-hide')
+            'show-hide', ['id' => 'show-hide'])
         .'<div class="hr"></div>'
         .Page\imageArrowLinkWithDescription('Reorder Items',
             'Change the order in which the items appear.',
-            "{$base}reorder/", 'reorder')
+            "{$base}reorder/", 'reorder', ['id' => 'reorder'])
         .'<div class="hr"></div>'
         .'<div id="restoreLink">'
             .Page\imageLink('Restore Defaults',

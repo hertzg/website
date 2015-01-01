@@ -17,7 +17,8 @@ $permissions = format_permissions($user->anonymous_can_send_bookmark,
     $user->anonymous_can_send_task);
 
 include_once '../../../fns/Page/imageArrowLink.php';
-$editLink = Page\imageArrowLink('Edit', 'edit/', 'edit-connection');
+$editLink = Page\imageArrowLink('Edit',
+    'edit/', 'edit-connection', ['id' => 'edit']);
 
 include_once '../../../fns/create_panel.php';
 include_once '../../../fns/Form/label.php';
@@ -28,7 +29,7 @@ $content = Page\tabs(
     [
         [
             'title' => 'Connections',
-            'href' => '..',
+            'href' => '../#default',
         ],
     ],
     'Default Connection',

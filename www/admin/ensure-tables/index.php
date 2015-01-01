@@ -13,7 +13,7 @@ $content = Page\tabs(
     [
         [
             'title' => 'Administration',
-            'href' => '..',
+            'href' => '../#ensure-tables',
         ],
     ],
     'Ensure Tables',

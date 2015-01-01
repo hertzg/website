@@ -26,7 +26,7 @@ $content =
         [
             [
                 'title' => 'Help',
-                'href' => '..',
+                'href' => '../#feedback',
             ],
         ],
         'Feedback',

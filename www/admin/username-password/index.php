@@ -29,7 +29,7 @@ $content = Page\tabs(
     [
         [
             'title' => 'Administration',
-            'href' => '..',
+            'href' => '../#username-password',
         ],
     ],
     'Set New Username/Password',

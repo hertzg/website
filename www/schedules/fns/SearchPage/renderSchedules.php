@@ -18,13 +18,15 @@ function renderSchedules ($schedules, &$items, $keyword, $user) {
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         foreach ($schedules as $schedule) {
 
+            $id = $schedule->id;
+
             $title = htmlspecialchars($schedule->text);
             $title = preg_replace($regex, '<mark>$0</mark>', $title);
 
             $description = format_days_left($user, $schedule->days_left);
-            $href = '../view/'.\ItemList\escapedItemQuery($schedule->id);
-            $items[] = \Page\imageArrowLinkWithDescription(
-                $title, $description, $href, 'schedule');
+            $href = '../view/'.\ItemList\escapedItemQuery($id);
+            $items[] = \Page\imageArrowLinkWithDescription($title,
+                $description, $href, 'schedule', ['id' => $id]);
 
         }
 

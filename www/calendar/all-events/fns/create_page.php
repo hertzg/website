@@ -31,7 +31,7 @@ function create_page ($mysqli, $user, $base = '') {
             [
                 [
                     'title' => 'Calendar',
-                    'href' => "$base..",
+                    'href' => "$base../#all-events",
                 ],
             ],
             'All Events',

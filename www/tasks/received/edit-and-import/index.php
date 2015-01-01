@@ -49,7 +49,7 @@ $content =
         [
             [
                 'title' => "Received Task #$id",
-                'href' => '../view/'.ItemList\Received\escapedItemQuery($id),
+                'href' => '../view/'.ItemList\Received\escapedItemQuery($id).'#edit-and-import',
             ],
         ],
         'Edit and Import',

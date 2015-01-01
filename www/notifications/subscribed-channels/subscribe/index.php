@@ -20,7 +20,7 @@ $content = Page\tabs(
     [
         [
             'title' => 'Other Channels',
-            'href' => '..',
+            'href' => '../#subscribe',
         ],
     ],
     'Subscribe',

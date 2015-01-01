@@ -14,6 +14,7 @@ function renderBookmarks ($user, &$items) {
     $title = 'Bookmarks';
     $href = '../bookmarks/';
     $icon = 'bookmarks';
+    $options = ['id' => 'bookmarks'];
     if ($num_bookmarks || $num_received_bookmarks) {
 
         $descriptionItems = [];
@@ -25,11 +26,11 @@ function renderBookmarks ($user, &$items) {
 
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         $link = \Page\imageArrowLinkWithDescription(
-            $title, $description, $href, $icon);
+            $title, $description, $href, $icon, $options);
 
     } else {
         include_once "$fnsDir/Page/imageArrowLink.php";
-        $link = \Page\imageArrowLink($title, $href, $icon);
+        $link = \Page\imageArrowLink($title, $href, $icon, $options);
     }
 
     $items['bookmarks'] = $link;

@@ -19,9 +19,9 @@ function optionsPanel ($receivedContact) {
     $importLink = \Page\imageLink('Import', $href, 'import-contact');
 
     include_once "$fnsDir/Page/imageArrowLink.php";
-    $href = "../edit-and-import/$itemQuery";
-    $icon = 'import-contact';
-    $editAndImportLink = \Page\imageArrowLink('Edit and Import', $href, $icon);
+    $editAndImportLink = \Page\imageArrowLink('Edit and Import',
+        "../edit-and-import/$itemQuery", 'import-contact',
+        ['id' => 'edit-and-import']);
 
     include_once __DIR__.'/../../../fns/contact_sms_text.php';
     $href = 'sms:?body='.rawurlencode(contact_sms_text($receivedContact));

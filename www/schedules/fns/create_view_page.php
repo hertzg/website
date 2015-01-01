@@ -30,8 +30,8 @@ function create_view_page ($user, $schedule) {
     $escapedItemQuery = ItemList\escapedItemQuery($id);
 
     include_once "$fnsDir/Page/imageArrowLink.php";
-    $href = "../edit/$escapedItemQuery";
-    $editLink = Page\imageArrowLink('Edit', $href, 'edit-schedule');
+    $editLink = Page\imageArrowLink('Edit',
+        "../edit/$escapedItemQuery", 'edit-schedule', ['id' => 'edit']);
 
     include_once "$fnsDir/Page/imageLink.php";
     $href = "../delete/$escapedItemQuery";
@@ -62,7 +62,7 @@ function create_view_page ($user, $schedule) {
         [
             [
                 'title' => 'Schedules',
-                'href' => ItemList\listHref(),
+                'href' => ItemList\listHref()."#$id",
             ],
         ],
         "Schedule #$id",

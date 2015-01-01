@@ -26,7 +26,7 @@ $content = Page\tabs(
     [
         [
             'title' => 'Files',
-            'href' => create_folder_link($id_folders, '../'),
+            'href' => create_folder_link($id_folders, '../').'#rename',
         ],
     ],
     "Rename Folder #$id_folders",

@@ -15,6 +15,7 @@ function renderFiles ($user, &$items) {
     $title = 'Files';
     $href = '../files/';
     $icon = 'files';
+    $options = ['id' => 'files'];
     if ($num_received_files || $num_received_folders || $storage_used) {
 
         $descriptionItems = [];
@@ -30,11 +31,11 @@ function renderFiles ($user, &$items) {
 
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         $link = \Page\imageArrowLinkWithDescription($title,
-            $description, $href, $icon);
+            $description, $href, $icon, $options);
 
     } else {
         include_once "$fnsDir/Page/imageArrowLink.php";
-        $link = \Page\imageArrowLink($title, $href, $icon);
+        $link = \Page\imageArrowLink($title, $href, $icon, $options);
     }
 
     $items['files'] = $link;

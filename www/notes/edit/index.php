@@ -29,7 +29,7 @@ $content =
         [
             [
                 'title' => "Note #$id",
-                'href' => '../view/'.ItemList\escapedItemQuery($id),
+                'href' => '../view/'.ItemList\escapedItemQuery($id).'#edit',
             ],
         ],
         'Edit',

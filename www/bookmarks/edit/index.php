@@ -22,7 +22,7 @@ $content = Page\tabs(
     [
         [
             'title' => "Bookmark #$id",
-            'href' => '../view/'.ItemList\escapedItemQuery($id),
+            'href' => '../view/'.ItemList\escapedItemQuery($id).'#edit',
         ],
     ],
     'Edit',

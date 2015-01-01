@@ -8,11 +8,9 @@ function create_options_panel ($user, $base = '') {
     $num_received_tasks = $user->num_received_tasks;
     if ($num_received_tasks) {
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
-        $title = 'Received Tasks';
-        $description = "$num_received_tasks total.";
-        $href = "{$base}received/";
-        $options[] = Page\imageArrowLinkWithDescription($title,
-            $description, $href, 'receive');
+        $options[] = Page\imageArrowLinkWithDescription('Received Tasks',
+            "$num_received_tasks total.", "{$base}received/",
+            'receive', ['id' => 'received']);
     }
 
     if ($user->num_tasks) {

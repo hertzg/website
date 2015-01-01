@@ -4,6 +4,7 @@ namespace ViewPage;
 
 function createContent ($receivedContact, $infoText, $items) {
 
+    $id = $receivedContact->id;
     $fnsDir = __DIR__.'/../../../../fns';
 
     $photo_id = $receivedContact->photo_id;
@@ -24,10 +25,10 @@ function createContent ($receivedContact, $infoText, $items) {
         [
             [
                 'title' => 'Received',
-                'href' => '../'.\ItemList\Received\listHref(),
+                'href' => '../'.\ItemList\Received\listHref()."#$id",
             ],
         ],
-        "Received Contact #$receivedContact->id",
+        "Received Contact #$id",
         \Page\sessionMessages('contacts/received/view/messages')
         .\Form\label('Received from',
             htmlspecialchars($receivedContact->sender_username))

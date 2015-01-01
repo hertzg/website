@@ -60,7 +60,7 @@ $content = Page\tabs(
     [
         [
             'title' => 'Administration',
-            'href' => '../',
+            'href' => '../#check-installation',
         ],
     ],
     'Check Installation',

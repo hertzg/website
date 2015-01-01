@@ -25,15 +25,16 @@ function create_page ($mysqli, $user, $base = '') {
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         foreach ($receivedTasks as $receivedTask) {
 
+            $id = $receivedTask->id;
+
             if ($receivedTask->top_priority) $icon = 'task-top-priority';
             else $icon = 'task';
 
             $title = htmlspecialchars($receivedTask->text);
             $description = create_sender_description($receivedTask);
-            $href = "{$base}view/".ItemList\Received\escapedItemQuery(
-                $receivedTask->id);
+            $href = "{$base}view/".ItemList\Received\escapedItemQuery($id);
             $items[] = Page\imageArrowLinkWithDescription($title,
-                $description, $href, $icon);
+                $description, $href, $icon, ['id' => $id]);
 
         }
     } else {
@@ -62,7 +63,7 @@ function create_page ($mysqli, $user, $base = '') {
         [
             [
                 'title' => 'Tasks',
-                'href' => "{$base}..",
+                'href' => "{$base}../#received",
             ],
         ],
         'Received',

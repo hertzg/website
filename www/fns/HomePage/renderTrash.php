@@ -11,7 +11,7 @@ function renderTrash ($user, &$items) {
     else $description = 'Empty';
 
     include_once __DIR__.'/../../fns/Page/imageArrowLinkWithDescription.php';
-    $items['trash'] = \Page\imageArrowLinkWithDescription(
-        'Trash', $description, '../trash/', 'trash-bin');
+    $items['trash'] = \Page\imageArrowLinkWithDescription('Trash',
+        $description, '../trash/', 'trash-bin', ['id' => 'trash']);
 
 }

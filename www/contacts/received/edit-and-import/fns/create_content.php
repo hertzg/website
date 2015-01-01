@@ -20,7 +20,7 @@ function create_content ($id, $values) {
             [
                 [
                     'title' => "Received Contact #$id",
-                    'href' => "../view/$itemQuery",
+                    'href' => "../view/$itemQuery#edit-and-import",
                 ],
             ],
             'Edit and Import',

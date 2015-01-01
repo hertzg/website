@@ -44,7 +44,7 @@ $content = Page\tabs(
     [
         [
             'title' => 'Calendar',
-            'href' => calendar_href($day, $month, $year),
+            'href' => calendar_href($day, $month, $year).'#jump-to',
         ],
     ],
     'Jump To',

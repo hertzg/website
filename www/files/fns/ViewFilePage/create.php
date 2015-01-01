@@ -46,7 +46,7 @@ function create ($mysqli, &$user, &$file) {
             [
                 [
                     'title' => 'Files',
-                    'href' => create_folder_link($file->id_folders, '../'),
+                    'href' => create_folder_link($file->id_folders, '../')."#file_$id",
                 ],
             ],
             "File #$id",

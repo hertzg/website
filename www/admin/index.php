@@ -17,16 +17,20 @@ $content = Page\tabs(
     [],
     'Administration',
     Page\sessionMessages('admin/messages')
-    .Page\imageArrowLink('MySQL Settings', 'mysql-settings/', 'none')
+    .Page\imageArrowLink('MySQL Settings',
+        'mysql-settings/', 'none', ['id' => 'mysql-settings'])
     .'<div class="hr"></div>'
-    .Page\imageArrowLink('Ensure Tables', 'ensure-tables/', 'none')
+    .Page\imageArrowLink('Ensure Tables',
+        'ensure-tables/', 'none', ['id' => 'ensure-tables'])
     .'<div class="hr"></div>'
-    .Page\imageArrowLink('Ensure Data Folder', 'ensure-data-dir/', 'none')
+    .Page\imageArrowLink('Ensure Data Folder',
+        'ensure-data-dir/', 'none', ['id' => 'ensure-data-dir'])
     .'<div class="hr"></div>'
-    .Page\imageArrowLink('Check Installation', 'check-installation/', 'none')
+    .Page\imageArrowLink('Check Installation',
+        'check-installation/', 'none', ['id' => 'check-installation'])
     .'<div class="hr"></div>'
     .Page\imageArrowLink('Set New Username/Password',
-        'username-password/', 'none')
+        'username-password/', 'none', ['id' => 'username-password'])
 );
 
 include_once '../fns/echo_guest_page.php';

@@ -10,11 +10,11 @@ function optionsPanel ($task) {
     $escapedItemQuery = \ItemList\escapedItemQuery($task->id);
 
     include_once "$fnsDir/Page/imageArrowLink.php";
-    $href = "../edit/$escapedItemQuery";
-    $editLink = \Page\imageArrowLink('Edit', $href, 'edit-task');
+    $editLink = \Page\imageArrowLink('Edit',
+        "../edit/$escapedItemQuery", 'edit-task', ['id' => 'edit']);
 
-    $href = "../send/$escapedItemQuery";
-    $sendLink = \Page\imageArrowLink('Send', $href, 'send');
+    $sendLink = \Page\imageArrowLink('Send',
+        "../send/$escapedItemQuery", 'send', ['id' => 'send']);
 
     include_once "$fnsDir/Page/imageLink.php";
     $href = 'sms:?body='.rawurlencode($task->text);

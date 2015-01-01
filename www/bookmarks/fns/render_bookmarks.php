@@ -12,9 +12,11 @@ function render_bookmarks ($bookmarks, &$items, $params, $base = '') {
         $icon = 'bookmark';
         foreach ($bookmarks as $bookmark) {
 
+            $id = $bookmark->id;
+            $options = ['id' => $id];
             $queryString = htmlspecialchars(
                 http_build_query(
-                    array_merge(['id' => $bookmark->id], $params)
+                    array_merge(['id' => $id], $params)
                 )
             );
             $href = "{$base}view/?$queryString";
@@ -22,11 +24,12 @@ function render_bookmarks ($bookmarks, &$items, $params, $base = '') {
             $escapedUrl = htmlspecialchars($bookmark->url);
             $title = $bookmark->title;
             if ($title === '') {
-                $items[] = Page\imageArrowLink($escapedUrl, $href, $icon);
+                $items[] = Page\imageArrowLink(
+                    $escapedUrl, $href, $icon, $options);
             } else {
                 $title = htmlspecialchars($title);
                 $items[] = Page\imageArrowLinkWithDescription($title,
-                    $escapedUrl, $href, $icon);
+                    $escapedUrl, $href, $icon, $options);
             }
 
         }

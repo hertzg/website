@@ -11,6 +11,7 @@ function renderNotifications ($user, &$items) {
     $num_notifications = $user->num_notifications;
     $title = 'Notifications';
     $href = '../notifications/';
+    $options = ['id' => 'notifications'];
     if ($num_notifications) {
         $description = '';
         $num_new_notifications = $user->num_new_notifications;
@@ -23,17 +24,18 @@ function renderNotifications ($user, &$items) {
 
             include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
             $link = \Page\imageArrowLinkWithDescription($title,
-                $description, $href, 'notification');
+                $description, $href, 'notification', $options);
 
         } else {
             $description = "$num_notifications total.";
             include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
             $link = \Page\imageArrowLinkWithDescription($title,
-                $description, $href, 'old-notification');
+                $description, $href, 'old-notification', $options);
         }
     } else {
         include_once "$fnsDir/Page/imageArrowLink.php";
-        $link = \Page\imageArrowLink($title, $href, 'old-notification');
+        $link = \Page\imageArrowLink($title,
+            $href, 'old-notification', $options);
     }
 
     $items['notifications'] = $link;

@@ -49,7 +49,7 @@ $content =
         [
             [
                 'title' => "API Key #$id",
-                'href' => "../view/?id=$id",
+                'href' => "../view/?id=$id#edit",
             ],
         ],
         'Edit',

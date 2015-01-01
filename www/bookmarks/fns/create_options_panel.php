@@ -8,11 +8,9 @@ function create_options_panel ($user, $base = '') {
     $num_received_bookmarks = $user->num_received_bookmarks;
     if ($num_received_bookmarks) {
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
-        $title = 'Received Bookmarks';
-        $description = "$num_received_bookmarks total.";
-        $href = "{$base}received/";
-        $options[] = Page\imageArrowLinkWithDescription($title,
-            $description, $href, 'receive');
+        $options[] = Page\imageArrowLinkWithDescription('Received Bookmarks',
+            "$num_received_bookmarks total.", "{$base}received/",
+            'receive', ['id' => 'received']);
     }
 
     if ($user->num_bookmarks) {

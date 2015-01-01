@@ -16,7 +16,7 @@ $content = Page\tabs(
     [
         [
             'title' => 'Account',
-            'href' => '..',
+            'href' => "../#close",
         ],
     ],
     'Close',

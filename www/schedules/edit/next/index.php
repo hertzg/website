@@ -19,7 +19,7 @@ $content = Page\tabs(
     [
         [
             'title' => "Schedule #$id",
-            'href' => "../../view/$escapedItemQuery",
+            'href' => "../../view/$escapedItemQuery#edit",
         ],
     ],
     'Edit',

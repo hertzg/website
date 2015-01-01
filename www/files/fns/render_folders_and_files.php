@@ -6,17 +6,17 @@ function render_folders_and_files ($folders, $files, &$items) {
 
         include_once __DIR__.'/../../fns/Page/imageArrowLink.php';
 
-        foreach ($folders as $i => $folder) {
-            $title = htmlspecialchars($folder->name);
-            $href = "?id_folders=$folder->id_folders";
-            $items[] = Page\imageArrowLink($title, $href, 'folder');
+        foreach ($folders as $folder) {
+            $id = $folder->id_folders;
+            $items[] = Page\imageArrowLink(htmlspecialchars($folder->name),
+                "?id_folders=$id", 'folder', ['id' => "folder_$id"]);
         }
 
-        foreach ($files as $i => $file) {
-            $title = htmlspecialchars($file->name);
-            $href = "view-file/?id=$file->id_files";
-            $icon = "$file->media_type-file";
-            $items[] = Page\imageArrowLink($title, $href, $icon);
+        foreach ($files as $file) {
+            $id = $file->id_files;
+            $items[] = Page\imageArrowLink(htmlspecialchars($file->name),
+                "view-file/?id=$id", "$file->media_type-file",
+                ['id' => "file_$id"]);
         }
 
     } else {

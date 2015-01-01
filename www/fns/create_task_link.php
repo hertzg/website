@@ -1,7 +1,7 @@
 <?php
 
 function create_task_link ($title, $deadline_time,
-    $tags, $top_priority, $href, $time_today) {
+    $tags, $top_priority, $href, $time_today, $options = []) {
 
     $icon = $top_priority ? 'task-top-priority' : 'task';
 
@@ -19,10 +19,10 @@ function create_task_link ($title, $deadline_time,
         $description = join(' &middot ', $descriptions);
         include_once __DIR__.'/Page/imageArrowLinkWithDescription.php';
         return Page\imageArrowLinkWithDescription(
-            $title, $description, $href, $icon);
+            $title, $description, $href, $icon, $options);
     }
 
     include_once __DIR__.'/Page/imageArrowLink.php';
-    return Page\imageArrowLink($title, $href, $icon);
+    return Page\imageArrowLink($title, $href, $icon, $options);
 
 }

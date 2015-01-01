@@ -16,11 +16,11 @@ function optionsPanel ($contact, $base) {
     $downloadLink = \Page\imageLink('Download', $href, 'download');
 
     include_once "$fnsDir/Page/imageArrowLink.php";
-    $href = "$base../edit/$escapedItemQuery";
-    $editLink = \Page\imageArrowLink('Edit', $href, 'edit-contact');
+    $editLink = \Page\imageArrowLink('Edit',
+        "$base../edit/$escapedItemQuery", 'edit-contact', ['id' => 'edit']);
 
-    $href = "$base../send/$escapedItemQuery";
-    $sendLink = \Page\imageArrowLink('Send', $href, 'send');
+    $sendLink = \Page\imageArrowLink('Send',
+        "$base../send/$escapedItemQuery", 'send', ['id' => 'send']);
 
     include_once __DIR__.'/../contact_sms_text.php';
     $href = 'sms:?body='.rawurlencode(contact_sms_text($contact));

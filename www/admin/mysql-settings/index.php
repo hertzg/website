@@ -44,7 +44,7 @@ $content = Page\tabs(
     [
         [
             'title' => 'Administration',
-            'href' => '..',
+            'href' => '../#mysql-settings',
         ],
     ],
     'MySQL Settings',
@@ -60,7 +60,7 @@ $content = Page\tabs(
     .create_panel(
         'Options',
         Page\staticTwoColumns(
-            Page\imageArrowLink('Edit', 'edit/', 'none'),
+            Page\imageArrowLink('Edit', 'edit/', 'none', ['id' => 'edit']),
             Page\imageLink('Test', 'submit-test.php', 'none')
         )
     )

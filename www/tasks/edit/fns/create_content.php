@@ -19,7 +19,7 @@ function create_content ($id, $values) {
             [
                 [
                     'title' => "Task #$id",
-                    'href' => '../view/'.ItemList\escapedItemQuery($id),
+                    'href' => '../view/'.ItemList\escapedItemQuery($id).'#edit',
                 ],
             ],
             'Edit',

@@ -15,8 +15,8 @@ function create_view_page ($event) {
     }
 
     include_once "$fnsDir/Page/imageArrowLink.php";
-    $href = "../edit-event/?id=$id";
-    $editLink = Page\imageArrowLink('Edit', $href, 'edit-event');
+    $editLink = Page\imageArrowLink('Edit',
+        "../edit-event/?id=$id", 'edit-event', ['id' => 'edit']);
 
     include_once "$fnsDir/Page/imageLink.php";
     $deleteLink =
@@ -37,7 +37,7 @@ function create_view_page ($event) {
             [
                 [
                     'title' => 'Calendar',
-                    'href' => '..',
+                    'href' => "../#$id",
                 ],
             ],
             "Event #$id",

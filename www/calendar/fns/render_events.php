@@ -32,9 +32,9 @@ function render_events ($contacts, $tasks, $events, &$items) {
         if ($events) {
             include_once "$fnsDir/Page/imageArrowLink.php";
             foreach ($events as $event) {
-                $title = htmlspecialchars($event->text);
-                $href = "view-event/?id=$event->id";
-                $items[] = Page\imageArrowLink($title, $href, 'event');
+                $id = $event->id;
+                $items[] = Page\imageArrowLink(htmlspecialchars($event->text),
+                    "view-event/?id=$id", 'event', ['id' => $id]);
             }
         }
     } else {

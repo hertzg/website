@@ -8,9 +8,11 @@ function render_notes ($notes, &$items, $params, $base = '') {
         include_once "$fnsDir/create_note_link.php";
         foreach ($notes as $note) {
 
+            $id = $note->id;
+            $options = ['id' => $id];
             $queryString = htmlspecialchars(
                 http_build_query(
-                    array_merge(['id' => $note->id], $params)
+                    array_merge(['id' => $id], $params)
                 )
             );
             $href = "{$base}view/?$queryString";
@@ -24,7 +26,8 @@ function render_notes ($notes, &$items, $params, $base = '') {
             }
             $title = htmlspecialchars($text);
 
-            $items[] = create_note_link($title, $note->tags, $encrypt, $href);
+            $items[] = create_note_link($title,
+                $note->tags, $encrypt, $href, $options);
 
         }
     } else {

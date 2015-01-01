@@ -1,6 +1,6 @@
 <?php
 
-function render_task ($task, $description, $href, &$items) {
+function render_task ($task, $description, $href, $options, &$items) {
 
     $title = htmlspecialchars($task->text);
 
@@ -8,6 +8,6 @@ function render_task ($task, $description, $href, &$items) {
     else $icon = 'task';
 
     $items[] = Page\imageArrowLinkWithDescription(
-        $title, $description, $href, $icon);
+        $title, $description, $href, $icon, $options);
 
 }

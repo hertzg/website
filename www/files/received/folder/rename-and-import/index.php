@@ -22,7 +22,7 @@ $content = Page\tabs(
     [
         [
             'title' => "Received Folder #$id",
-            'href' => "../?id=$id",
+            'href' => "../?id=$id#rename-and-import",
         ],
     ],
     'Rename and Import',

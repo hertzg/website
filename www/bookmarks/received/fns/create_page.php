@@ -26,15 +26,17 @@ function create_page ($mysqli, $user, $base = '') {
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         foreach ($receivedBookmarks as $receivedBookmark) {
 
+            $id = $receivedBookmark->id;
+            $options = ['id' => $id];
+
             $title = $receivedBookmark->title;
             if ($title === '') $title = $receivedBookmark->url;
             $title = htmlspecialchars($title);
 
             $description = create_sender_description($receivedBookmark);
-            $href = "{$base}view/".ItemList\Received\escapedItemQuery(
-                $receivedBookmark->id);
+            $href = "{$base}view/".ItemList\Received\escapedItemQuery($id);
             $items[] = Page\imageArrowLinkWithDescription($title,
-                $description, $href, 'bookmark');
+                $description, $href, 'bookmark', $options);
 
         }
     } else {
@@ -63,7 +65,7 @@ function create_page ($mysqli, $user, $base = '') {
         [
             [
                 'title' => 'Bookmarks',
-                'href' => "$base..",
+                'href' => "$base../#received",
             ],
         ],
         'Received',

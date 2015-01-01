@@ -7,8 +7,6 @@ function create_content ($mysqli, $id_users,
     $yearSelected = date('Y', $timeSelected);
     $yearParam = "year=$yearSelected";
     $queryString = "?$yearParam&amp;month=$monthSelected&amp;day=$daySelected";
-    $newEventHref = "new-event/$queryString";
-    $jumpToHref = "jump-to/$queryString";
 
     include_once __DIR__.'/create_calendar.php';
     include_once "$fnsDir/create_panel.php";
@@ -21,7 +19,7 @@ function create_content ($mysqli, $id_users,
             [
                 [
                     'title' => 'Home',
-                    'href' => '../home/',
+                    'href' => '../home/#calendar',
                 ],
             ],
             'Calendar',
@@ -35,9 +33,11 @@ function create_content ($mysqli, $id_users,
         )
         .create_panel(
             'Options',
-            Page\imageArrowLink('New Event', $newEventHref, 'create-event')
+            Page\imageArrowLink('New Event',
+                "new-event/$queryString", 'create-event', ['id' => 'new-event'])
             .'<div class="hr"></div>'
-            .Page\imageArrowLink('Jump To', $jumpToHref, 'calendar')
+            .Page\imageArrowLink('Jump To',
+                "jump-to/$queryString", 'calendar', ['id' => 'jump-to'])
             .'<div class="hr"></div>'
             .Page\imageArrowLink('Go to Today', './', 'calendar')
         );

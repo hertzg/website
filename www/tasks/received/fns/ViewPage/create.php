@@ -4,6 +4,7 @@ namespace ViewPage;
 
 function create ($receivedTask, $user) {
 
+    $id = $receivedTask->id;
     $fnsDir = __DIR__.'/../../../../fns';
 
     include_once "$fnsDir/render_external_links.php";
@@ -46,10 +47,10 @@ function create ($receivedTask, $user) {
         [
             [
                 'title' => 'Received',
-                'href' => '../'.\ItemList\Received\listHref(),
+                'href' => '../'.\ItemList\Received\listHref()."#$id",
             ],
         ],
-        "Received Task #$receivedTask->id",
+        "Received Task #$id",
         \Page\sessionMessages('tasks/received/view/messages')
         .\Form\label('Received from',
             htmlspecialchars($receivedTask->sender_username))

@@ -23,7 +23,7 @@ $content = Page\tabs(
     [
         [
             'title' => 'Files',
-            'href' => create_folder_link($parent_id_folders, '../'),
+            'href' => create_folder_link($parent_id_folders, '../').'#upload-files',
         ],
     ],
     'Upload Files',

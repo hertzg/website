@@ -61,7 +61,7 @@ $content = Page\tabs(
     [
         [
             'title' => 'Files',
-            'href' => "../?id_folders=$id",
+            'href' => "../?id_folders=$id#send",
         ],
     ],
     "Send Folder #$id",

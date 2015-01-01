@@ -15,9 +15,9 @@ if ($user->num_connections) {
 
     include_once '../../fns/Page/imageArrowLink.php';
     foreach ($connections as $connection) {
-        $title = htmlspecialchars($connection->username);
-        $href = "view/?id=$connection->id";
-        $items[] = Page\imageArrowLink($title, $href, 'connection');
+        $id = $connection->id;
+        $items[] = Page\imageArrowLink(htmlspecialchars($connection->username),
+            "view/?id=$id", 'connection', ['id' => $id]);
     }
 
 } else {
@@ -29,7 +29,7 @@ include_once '../../fns/Page/imageArrowLinkWithDescription.php';
 $title = 'Default Connection';
 $description = 'Connection to other users.';
 $items[] = Page\imageArrowLinkWithDescription($title,
-    $description, 'default/', 'connection');
+    $description, 'default/', 'connection', ['id' => 'default']);
 
 unset(
     $_SESSION['account/connections/default/messages'],
@@ -46,7 +46,7 @@ $content = Page\tabs(
     [
         [
             'title' => 'Account',
-            'href' => '..',
+            'href' => '../#connections',
         ],
     ],
     'Connections',
