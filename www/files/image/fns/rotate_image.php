@@ -35,8 +35,8 @@ function rotate_image ($mysqli, $file, $degrees) {
         unset($_SESSION['files/view-file/messages']);
     } else {
 
-        include_once "$fnsDir/Files/editContent.php";
-        Files\editContent($mysqli, $id, filesize($path));
+        include_once "$fnsDir/Users/Files/editContent.php";
+        Users\Files\editContent($mysqli, $file, filesize($path));
 
         $_SESSION['files/view-file/messages'] = ['The image has been rotated.'];
         unset($_SESSION['files/view-file/errors']);
