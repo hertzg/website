@@ -61,5 +61,5 @@
 
 b.author {
     font-weight: normal;
-    background: #eee;
+    border-bottom: 1px dotted;
 }
