@@ -1,33 +1,13 @@
 (function (base) {
 
     var body = document.body
-
-    var overlayShown = false,
-        progressShown = false
+    var overlayDiv, progressDiv
 
     addEventListener('beforeunload', function () {
 
-        if (!overlayShown) {
+        if (!progressDiv) {
 
-            var overlayDiv = document.createElement('div')
-            overlayDiv.addEventListener('click', function () {
-                body.removeChild(overlayDiv)
-                overlayShown = false
-            })
-
-            var style = overlayDiv.style
-            style.position = 'fixed'
-            style.top = style.right = style.bottom = style.left = '0'
-            style.background = 'rgba(0, 0, 0, 0.5)'
-
-            body.appendChild(overlayDiv)
-            overlayShown = true
-
-        }
-
-        if (!progressShown) {
-
-            var progressDiv = document.createElement('div')
+            progressDiv = document.createElement('div')
 
             var style = progressDiv.style
             style.position = 'fixed'
@@ -45,7 +25,23 @@
             }, 50)
 
             body.appendChild(progressDiv)
-            progressShown = true
+
+        }
+
+        if (!overlayDiv) {
+
+            overlayDiv = document.createElement('div')
+            overlayDiv.addEventListener('click', function () {
+                body.removeChild(overlayDiv)
+                overlayDiv = null
+            })
+
+            var style = overlayDiv.style
+            style.position = 'fixed'
+            style.top = style.right = style.bottom = style.left = '0'
+            style.background = 'rgba(0, 0, 0, 0.5)'
+
+            body.insertBefore(overlayDiv, progressDiv)
 
         }
 
