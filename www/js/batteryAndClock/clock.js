@@ -12,20 +12,11 @@
     function update () {
         var time = Date.now()
         requestAnimationFrame(function () {
-
             var date = new Date(Date.now() - difference)
-
-            var hour = pad(date.getUTCHours())
-            if (hour != hourNode.nodeValue) hourNode.nodeValue = hour
-
-            var minute = pad(date.getUTCMinutes())
-            if (minute != minuteNode.nodeValue) minuteNode.nodeValue = minute
-
-            var second = pad(date.getUTCSeconds())
-            if (second != secondNode.nodeValue) secondNode.nodeValue = second
-
+            hourNode.nodeValue = pad(date.getUTCHours())
+            minuteNode.nodeValue = pad(date.getUTCMinutes())
+            secondNode.nodeValue = pad(date.getUTCSeconds())
             setTimeout(update, Math.max(0, time + 1000 - Date.now()))
-
         })
 
     }

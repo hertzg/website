@@ -23,26 +23,13 @@
         function update () {
             var time = Date.now()
             requestAnimationFrame(function () {
-
                 var date = new Date(Date.now() - difference)
-
-                var hour = pad(date.getUTCHours())
-                if (hour != hourNode.nodeValue) hourNode.nodeValue = hour
-
-                var minute = pad(date.getUTCMinutes())
-                if (minute != minuteNode.nodeValue) minuteNode.nodeValue = minute
-
-                var second = pad(date.getUTCSeconds())
-                if (second != secondNode.nodeValue) secondNode.nodeValue = second
-
-                var month = months[date.getUTCMonth()]
-                if (month != monthNode.nodeValue) monthNode.nodeValue = month
-
-                var day = date.getUTCDate()
-                if (day != dayNode.nodeValue) dayNode.nodeValue = day
-
+                hourNode.nodeValue = pad(date.getUTCHours())
+                minuteNode.nodeValue = pad(date.getUTCMinutes())
+                secondNode.nodeValue = pad(date.getUTCSeconds())
+                monthNode.nodeValue = months[date.getUTCMonth()]
+                dayNode.nodeValue = date.getUTCDate()
                 setTimeout(update, Math.max(0, time + 1000 - Date.now()))
-
             })
         }
 
