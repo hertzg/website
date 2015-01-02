@@ -38,7 +38,8 @@ if ($folders) {
     foreach ($folders as $folder) {
         $title = htmlspecialchars($folder->name);
         $href = create_href($id, $folder->id_folders);
-        $items[] = Page\imageArrowLink($title, $href, 'folder');
+        $items[] = Page\imageArrowLink($title,
+            $href, 'folder', ['id' => $folder->id_folders]);
     }
 } else {
     include_once '../../fns/Page/info.php';

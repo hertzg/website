@@ -37,7 +37,8 @@ if ($folders) {
             $items[] = Page\disabledImageLink($escapedName, 'folder');
         } else {
             $href = "./?id_folders=$id_folders&amp;parent_id_folders=$itemId";
-            $items[] = Page\imageArrowLink($escapedName, $href, 'folder');
+            $items[] = Page\imageArrowLink($escapedName,
+                $href, 'folder', ['id' => $itemId]);
         }
     }
 } else {

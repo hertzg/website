@@ -15,18 +15,18 @@ function create_page ($mysqli, $receivedFolder, $base = '') {
 
     if ($files || $subfolders) {
 
-        include_once "$fnsDir/Page/imageLink.php";
+        include_once "$fnsDir/Page/imageArrowLink.php";
 
         foreach ($subfolders as $subfolder) {
             $item_id = $subfolder->id;
-            $items[] = Page\imageLink(htmlspecialchars($subfolder->name),
+            $items[] = Page\imageArrowLink(htmlspecialchars($subfolder->name),
                 "{$base}subfolder/?id=$item_id", 'folder',
                 ['id' => "folder_$item_id"]);
         }
 
         foreach ($files as $file) {
             $item_id = $file->id;
-            $items[] = Page\imageLink(htmlspecialchars($file->name),
+            $items[] = Page\imageArrowLink(htmlspecialchars($file->name),
                 "{$base}file/?id=$item_id", "$file->media_type-file",
                 ['id' => "file_$item_id"]);
         }

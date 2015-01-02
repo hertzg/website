@@ -9,29 +9,30 @@ function create_location_bar ($mysqli, $file) {
     $parentFolder = \ReceivedFolderSubfolders\getOnUser(
         $mysqli, $id_users, $file->parent_id);
 
-    $rootHref = "../../?id=$parentFolder->id_received_folders";
-    $html =
-        '<div class="greyBar textAndButtons">'
-            .'<span class="textAndButtons-text">Location:</span>'
-            ."<a class=\"tag\" href=\"$rootHref\">root</a>";
+    $parentLinks = [
+        "<a class=\"tag\" href=\"../?id=$parentFolder->id#file_$file->id\">"
+            .htmlspecialchars($parentFolder->name)
+        .'</a>',
+    ];
 
-    $parentFolders = [$parentFolder];
+    $hash = "folder_$parentFolder->id";
     while ($parentFolder->parent_id) {
         $parentFolder = \ReceivedFolderSubfolders\getOnUser(
             $mysqli, $id_users, $parentFolder->parent_id);
-        $parentFolders[] = $parentFolder;
-    }
-    $parentFolders = array_reverse($parentFolders);
-
-    foreach ($parentFolders as $parentFolder) {
-        $html .=
-            "<a class=\"tag\" href=\"../?id=$parentFolder->id\">"
+        $parentLinks[] =
+            "<a class=\"tag\" href=\"../?id=$parentFolder->id#$hash\">"
                 .htmlspecialchars($parentFolder->name)
             .'</a>';
+        $hash = "folder_$parentFolder->id";
     }
 
-    $html .= '</div>';
+    $href = "../../?id=$parentFolder->id_received_folders#$hash";
+    $parentLinks[] = "<a class=\"tag\" href=\"$href\">root</a>";
 
-    return $html;
+    return
+        '<div class="greyBar textAndButtons">'
+            .'<span class="textAndButtons-text">Location:</span>'
+            .join('', array_reverse($parentLinks))
+        .'</div>';
 
 }

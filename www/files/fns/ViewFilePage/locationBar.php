@@ -4,41 +4,30 @@ namespace ViewFilePage;
 
 function locationBar ($mysqli, $file) {
 
-    $html =
-        '<div class="greyBar textAndButtons">'
-            .'<span class="textAndButtons-text">Location:</span>'
-            .'<a class="tag" href="..">root</a>';
+    $parentLinks = [];
+    $hash = "file_$file->id_files";
 
-    $id_folders = $file->id_folders;
-    if ($id_folders) {
-
-        $id_users = $file->id_users;
-
+    $parent_id_folders = $file->id_folders;
+    if ($parent_id_folders) {
         include_once __DIR__.'/../../../fns/Folders/get.php';
-        $parentFolder = \Folders\get($mysqli, $id_users, $id_folders);
-
-        $parentFolders = [$parentFolder];
-        $parent_id_folders = $parentFolder->parent_id_folders;
         while ($parent_id_folders) {
             $parentFolder = \Folders\get($mysqli,
-                $id_users, $parent_id_folders);
-            $parent_id_folders = $parentFolder->parent_id_folders;
-            $parentFolders[] = $parentFolder;
-        }
-        $parentFolders = array_reverse($parentFolders);
-
-        foreach ($parentFolders as $parentFolder) {
-            $href = "../?id_folders=$parentFolder->id_folders";
-            $html .=
-                "<a class=\"tag\" href=\"$href\">"
+                $file->id_users, $parent_id_folders);
+            $parentLinks[] =
+                "<a class=\"tag\" href=\"../?id_folders=$parent_id_folders#$hash\">"
                     .htmlspecialchars($parentFolder->name)
                 .'</a>';
+            $hash = "folder_$parent_id_folders";
+            $parent_id_folders = $parentFolder->parent_id_folders;
         }
-
     }
 
-    $html .= '</div>';
+    $parentLinks[] = "<a class=\"tag\" href=\"../#$hash\">root</a>";
 
-    return $html;
+    return
+        '<div class="greyBar textAndButtons">'
+            .'<span class="textAndButtons-text">Location:</span>'
+            .join('', array_reverse($parentLinks))
+        .'</div>';
 
 }
