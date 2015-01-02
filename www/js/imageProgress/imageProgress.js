@@ -6,6 +6,11 @@
         overlayHidden = true
     }
 
+    function hideOverlayAndProgress () {
+        hideOverlay()
+        wrapper.removeChild(progressDiv)
+    }
+
     var wrapper = document.querySelector('.imageProgress')
 
     var oldImg = wrapper.firstChild
@@ -14,10 +19,9 @@
 
     var newImg = document.createElement('img')
     newImg.src = oldImg.src
-    newImg.addEventListener('load', function () {
-        hideOverlay()
-        wrapper.removeChild(progressDiv)
-    })
+    newImg.addEventListener('abort', hideOverlayAndProgress)
+    newImg.addEventListener('error', hideOverlayAndProgress)
+    newImg.addEventListener('load', hideOverlayAndProgress)
 
     var progressDiv = document.createElement('div')
     ;(function (style) {
