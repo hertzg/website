@@ -2,10 +2,11 @@
 
 namespace Tasks;
 
-function add ($mysqli, $id_users, $text, $deadline_time,
+function add ($mysqli, $id_users, $text, $title, $deadline_time,
     $tags, $tag_names, $top_priority, $insertApiKey) {
 
     $text = $mysqli->real_escape_string($text);
+    $title = $mysqli->real_escape_string($title);
     if ($deadline_time === null) $deadline_time = 'null';
     $tags = $mysqli->real_escape_string($tags);
     $num_tags = count($tag_names);
@@ -24,11 +25,11 @@ function add ($mysqli, $id_users, $text, $deadline_time,
     }
 
     $sql = 'insert into tasks'
-        .' (id_users, text, deadline_time, tags, num_tags,'
-        .' tags_json, top_priority, insert_time, update_time,'
+        .' (id_users, text, title, deadline_time, tags,'
+        .' num_tags, tags_json, top_priority, insert_time, update_time,'
         .' insert_api_key_id, insert_api_key_name)'
-        ." values ($id_users, '$text', $deadline_time, '$tags', $num_tags,"
-        ." '$tags_json', $top_priority, $insert_time, $update_time,"
+        ." values ($id_users, '$text', '$title', $deadline_time, '$tags',"
+        ." $num_tags, '$tags_json', $top_priority, $insert_time, $update_time,"
         ." $insert_api_key_id, $insert_api_key_name)";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);

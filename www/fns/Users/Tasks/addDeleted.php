@@ -13,18 +13,22 @@ function addDeleted ($mysqli, $user, $data) {
 
     $fnsDir = __DIR__.'/../..';
 
+    include_once "$fnsDir/Tasks/maxLengths.php";
+    include_once "$fnsDir/text_title.php";
+    $title = text_title($text, \Tasks\maxLengths()['title']);
+
     include_once "$fnsDir/Tags/parse.php";
     $tag_names = \Tags\parse($tags);
 
     include_once "$fnsDir/Tasks/addDeleted.php";
-    \Tasks\addDeleted($mysqli, $id, $id_users, $text,
+    \Tasks\addDeleted($mysqli, $id, $id_users, $text, $title,
         $deadline_time, $tags, $tag_names, $top_priority,
         $data->insert_time, $data->update_time);
 
     if ($tag_names) {
         include_once "$fnsDir/TaskTags/add.php";
         \TaskTags\add($mysqli, $id_users, $id, $tag_names,
-            $text, $deadline_time, $tags, $top_priority);
+            $text, $title, $deadline_time, $tags, $top_priority);
     }
 
     include_once __DIR__.'/addNumber.php';

@@ -2,10 +2,11 @@
 
 namespace Tasks;
 
-function addDeleted ($mysqli, $id, $id_users, $text, $deadline_time,
+function addDeleted ($mysqli, $id, $id_users, $text, $title, $deadline_time,
     $tags, $tag_names, $top_priority, $insert_time, $update_time) {
 
     $text = $mysqli->real_escape_string($text);
+    $title = $mysqli->real_escape_string($title);
     if ($deadline_time === null) $deadline_time = 'null';
     $tags = $mysqli->real_escape_string($tags);
     $num_tags = count($tag_names);
@@ -13,9 +14,9 @@ function addDeleted ($mysqli, $id, $id_users, $text, $deadline_time,
     $top_priority = $top_priority ? '1' : '0';
 
     $sql = 'insert into tasks'
-        .' (id, id_users, text, deadline_time, tags,'
+        .' (id, id_users, text, title, deadline_time, tags,'
         .' num_tags, tags_json, top_priority, insert_time, update_time)'
-        ." values ($id, $id_users, '$text', $deadline_time, '$tags',"
+        ." values ($id, $id_users, '$text', '$title', $deadline_time, '$tags',"
         ." $num_tags, '$tags_json', $top_priority, $insert_time, $update_time)";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);

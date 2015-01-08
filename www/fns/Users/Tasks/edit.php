@@ -8,8 +8,12 @@ function edit ($mysqli, $user, $task, $text, $deadline_time,
     $id = $task->id;
     $fnsDir = __DIR__.'/../..';
 
+    include_once "$fnsDir/Tasks/maxLengths.php";
+    include_once "$fnsDir/text_title.php";
+    $title = text_title($text, \Tasks\maxLengths()['title']);
+
     include_once "$fnsDir/Tasks/edit.php";
-    \Tasks\edit($mysqli, $id, $text, $deadline_time,
+    \Tasks\edit($mysqli, $id, $text, $title, $deadline_time,
         $tags, $tag_names, $top_priority, $updateApiKey);
 
     if ($task->num_tags) {
@@ -20,7 +24,7 @@ function edit ($mysqli, $user, $task, $text, $deadline_time,
     if ($tag_names) {
         include_once "$fnsDir/TaskTags/add.php";
         \TaskTags\add($mysqli, $task->id_users, $id, $tag_names,
-            $text, $deadline_time, $tags, $top_priority);
+            $text, $title, $deadline_time, $tags, $top_priority);
     }
 
     if ($task->deadline_time) {

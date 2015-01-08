@@ -8,14 +8,18 @@ function add ($mysqli, $user, $text, $deadline_time,
     $id_users = $user->id_users;
     $fnsDir = __DIR__.'/../..';
 
+    include_once "$fnsDir/Tasks/maxLengths.php";
+    include_once "$fnsDir/text_title.php";
+    $title = text_title($text, \Tasks\maxLengths()['title']);
+
     include_once "$fnsDir/Tasks/add.php";
-    $id = \Tasks\add($mysqli, $id_users, $text,
+    $id = \Tasks\add($mysqli, $id_users, $text, $title,
         $deadline_time, $tags, $tag_names, $top_priority, $insertApiKey);
 
     if ($tag_names) {
         include_once "$fnsDir/TaskTags/add.php";
         \TaskTags\add($mysqli, $id_users, $id, $tag_names,
-            $text, $deadline_time, $tags, $top_priority);
+            $text, $title, $deadline_time, $tags, $top_priority);
     }
 
     include_once __DIR__.'/addNumber.php';
