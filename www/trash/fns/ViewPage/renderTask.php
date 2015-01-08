@@ -7,7 +7,7 @@ function renderTask ($task, $user, &$items, &$infoText) {
     $fnsDir = __DIR__.'/../../../fns';
 
     include_once "$fnsDir/Page/text.php";
-    $items[] = \Page\text(htmlspecialchars($task->text));
+    $items[] = \Page\text(nl2br(htmlspecialchars($task->text)));
 
     $deadline_time = $task->deadline_time;
     if ($deadline_time !== null) {
