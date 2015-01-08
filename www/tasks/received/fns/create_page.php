@@ -30,7 +30,7 @@ function create_page ($mysqli, $user, $base = '') {
             if ($receivedTask->top_priority) $icon = 'task-top-priority';
             else $icon = 'task';
 
-            $title = htmlspecialchars($receivedTask->text);
+            $title = htmlspecialchars($receivedTask->title);
             $description = create_sender_description($receivedTask);
             $href = "{$base}view/".ItemList\Received\escapedItemQuery($id);
             $items[] = Page\imageArrowLinkWithDescription($title,

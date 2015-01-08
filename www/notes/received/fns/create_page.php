@@ -28,16 +28,16 @@ function create_page ($mysqli, $user, $base = '') {
             $id = $receivedNote->id;
             $options = ['id' => $id];
 
-            $text = $receivedNote->text;
+            $title = $receivedNote->title;
             if ($receivedNote->encrypt) {
                 include_once "$fnsDir/encrypt_text.php";
-                $text = encrypt_text($text);
+                $title = encrypt_title($text);
                 $icon = 'encrypted-note';
             } else {
                 $icon = 'note';
             }
 
-            $title = htmlspecialchars($text);
+            $title = htmlspecialchars($title);
             $description = create_sender_description($receivedNote);
             $href = "{$base}view/".ItemList\Received\escapedItemQuery($id);
             $items[] = Page\imageArrowLinkWithDescription($title,
