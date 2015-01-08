@@ -7,6 +7,7 @@ function addTask ($mysqli, $task) {
     add($mysqli, $task->id_users, 'task', [
         'id' => $task->id,
         'text' => $task->text,
+        'title' => $task->title,
         'deadline_time' => $task->deadline_time,
         'tags' => $task->tags,
         'top_priority' => $task->top_priority,

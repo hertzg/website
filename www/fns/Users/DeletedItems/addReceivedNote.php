@@ -7,6 +7,7 @@ function addReceivedNote ($mysqli, $receivedNote) {
     add($mysqli, $receivedNote->receiver_id_users, 'receivedNote', [
         'id' => $receivedNote->id,
         'text' => $receivedNote->text,
+        'title' => $receivedNote->title,
         'tags' => $receivedNote->tags,
         'encrypt' => $receivedNote->encrypt,
         'insert_time' => $receivedNote->insert_time,

@@ -7,6 +7,7 @@ function addNote ($mysqli, $note) {
     add($mysqli, $note->id_users, 'note', [
         'id' => $note->id,
         'text' => $note->text,
+        'title' => $note->title,
         'tags' => $note->tags,
         'encrypt' => $note->encrypt,
         'insert_api_key_id' => $note->insert_api_key_id,

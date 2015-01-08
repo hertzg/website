@@ -7,6 +7,7 @@ function addReceivedTask ($mysqli, $receivedTask) {
     add($mysqli, $receivedTask->receiver_id_users, 'receivedTask', [
         'id' => $receivedTask->id,
         'text' => $receivedTask->text,
+        'title' => $receivedTask->title,
         'deadline_time' => $receivedTask->deadline_time,
         'tags' => $receivedTask->tags,
         'top_priority' => $receivedTask->top_priority,

@@ -2,7 +2,7 @@
 
 function render_task ($task, $description, $href, $options, &$items) {
 
-    $title = htmlspecialchars($task->text);
+    $title = htmlspecialchars($task->title);
 
     if ($task->top_priority) $icon = 'task-top-priority';
     else $icon = 'task';
