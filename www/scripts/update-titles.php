@@ -26,7 +26,7 @@ function process_deleted ($mysqli, $types, $length) {
         $title = text_title($data_json->text, $length);
         $data_json = json_encode($data_json);
         $data_json = $mysqli->real_escape_string($data_json);
-        $sql = "update $table set data_json = '$data_json'"
+        $sql = "update deleted_items set data_json = '$data_json'"
             ." where id = $row->id";
         $mysqli->query($sql) || trigger_error($mysqli->error);
     }
