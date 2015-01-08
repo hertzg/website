@@ -15,7 +15,7 @@ function maxLengths () {
         'insert_api_key_name' => $apiKeyNameMaxLength,
         'tags' => \Tags\maxLength(),
         'tags_json' => \TagsJson\maxLength(),
-        'title' => 1024,
+        'title' => 512,
         'text' => 8 * 1024,
         'update_api_key_name' => $apiKeyNameMaxLength,
     ];
