@@ -10,13 +10,22 @@ function rotate_image ($mysqli, $file, $degrees) {
     $path = Files\File\path($file->id_users, $id);
 
     $image = @imagecreatefromstring(file_get_contents($path));
+
+    if (!$image) {
+        include_once "$fnsDir/image_create_using_imagick.php";
+        $image = image_create_using_imagick($path);
+    }
+
     if ($image) {
 
         imagesavealpha($image, true);
         $rotatedImage = imagerotate($image, $degrees, 0);
 
         $content_type = $file->content_type;
-        if ($content_type == 'image/jpeg') {
+        if ($content_type == 'image/bmp') {
+            include_once "$fnsDir/imagebmp.php";
+            imagebmp($rotatedImage, $path);
+        } elseif ($content_type == 'image/jpeg') {
             imagejpeg($rotatedImage, $path);
         } elseif ($content_type == 'image/gif') {
             imagegif($rotatedImage, $path);
