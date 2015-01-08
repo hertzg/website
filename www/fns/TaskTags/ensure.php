@@ -44,6 +44,11 @@ function ensure ($mysqli) {
             'characterSet' => 'utf8',
             'collation' => 'utf8_unicode_ci',
         ],
+        'title' => [
+            'type' => "varchar($maxLengths[title])",
+            'characterSet' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+        ],
         'top_priority' => [
             'type' => 'tinyint(4) unsigned',
         ],
