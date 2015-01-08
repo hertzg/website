@@ -20,7 +20,7 @@ function render_tasks ($tasks, &$items, $params, $user, $base = '') {
             );
             $href = "{$base}view/?$queryString";
 
-            $title = htmlspecialchars($task->text);
+            $title = htmlspecialchars($task->title);
             $items[] = create_task_link($title, $task->deadline_time,
                 $task->tags, $task->top_priority, $href, $time_today,
                 ['id' => $id]);

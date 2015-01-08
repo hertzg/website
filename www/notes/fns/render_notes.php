@@ -19,12 +19,12 @@ function render_notes ($notes, &$items, $params, $base = '') {
 
             $encrypt = $note->encrypt;
 
-            $text = $note->text;
+            $title = $note->title;
             if ($encrypt) {
                 include_once "$fnsDir/encrypt_text.php";
-                $text = encrypt_text($text);
+                $title = encrypt_text($title);
             }
-            $title = htmlspecialchars($text);
+            $title = htmlspecialchars($title);
 
             $items[] = create_note_link($title,
                 $note->tags, $encrypt, $href, $options);
