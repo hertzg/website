@@ -6,14 +6,11 @@ function addDeleted ($mysqli, $id_users, $data) {
 
     $id = $data->id;
     $text = $data->text;
+    $title = $data->title;
     $tags = $data->tags;
     $encrypt = $data->encrypt;
 
     $fnsDir = __DIR__.'/../..';
-
-    include_once "$fnsDir/Notes/maxLengths.php";
-    include_once "$fnsDir/text_title.php";
-    $title = text_title($text, \Notes\maxLengths()['title']);
 
     include_once "$fnsDir/Tags/parse.php";
     $tag_names = \Tags\parse($tags);

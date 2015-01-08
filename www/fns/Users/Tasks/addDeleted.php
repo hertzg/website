@@ -7,15 +7,12 @@ function addDeleted ($mysqli, $user, $data) {
     $id_users = $user->id_users;
     $id = $data->id;
     $text = $data->text;
+    $title = $data->title;
     $deadline_time = $data->deadline_time;
     $tags = $data->tags;
     $top_priority = $data->top_priority;
 
     $fnsDir = __DIR__.'/../..';
-
-    include_once "$fnsDir/Tasks/maxLengths.php";
-    include_once "$fnsDir/text_title.php";
-    $title = text_title($text, \Tasks\maxLengths()['title']);
 
     include_once "$fnsDir/Tags/parse.php";
     $tag_names = \Tags\parse($tags);
