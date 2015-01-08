@@ -2,10 +2,11 @@
 
 namespace Notes;
 
-function edit ($mysqli, $id, $text,
+function edit ($mysqli, $id, $text, $title,
     $tags, $tag_names, $encrypt, $updateApiKey) {
 
     $text = $mysqli->real_escape_string($text);
+    $title = $mysqli->real_escape_string($title);
     $tags = $mysqli->real_escape_string($tags);
     $num_tags = count($tag_names);
     $tags_json = $mysqli->real_escape_string(json_encode($tag_names));
@@ -22,7 +23,7 @@ function edit ($mysqli, $id, $text,
 
     }
 
-    $sql = "update notes set text = '$text', tags = '$tags',"
+    $sql = "update notes set text = '$text', title = '$title', tags = '$tags',"
         ." num_tags = $num_tags, tags_json = '$tags_json', encrypt = $encrypt,"
         ." update_time = $update_time, update_api_key_id = $update_api_key_id,"
         ." update_api_key_name = $update_api_key_name,"

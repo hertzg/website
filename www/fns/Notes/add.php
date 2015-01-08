@@ -2,10 +2,11 @@
 
 namespace Notes;
 
-function add ($mysqli, $id_users, $text,
+function add ($mysqli, $id_users, $text, $title,
     $tags, $tag_names, $encrypt, $insertApiKey) {
 
     $text = $mysqli->real_escape_string($text);
+    $title = $mysqli->real_escape_string($title);
     $tags = $mysqli->real_escape_string($tags);
     $num_tags = count($tag_names);
     $tags_json = $mysqli->real_escape_string(json_encode($tag_names));
@@ -23,10 +24,10 @@ function add ($mysqli, $id_users, $text,
     }
 
     $sql = 'insert into notes'
-        .' (id_users, text, tags, num_tags,'
+        .' (id_users, text, title, tags, num_tags,'
         .' tags_json, encrypt, insert_time, update_time,'
         .' insert_api_key_id, insert_api_key_name)'
-        ." values ($id_users, '$text', '$tags', $num_tags,"
+        ." values ($id_users, '$text', '$title', '$tags', $num_tags,"
         ." '$tags_json', $encrypt, $insert_time, $update_time,"
         ." $insert_api_key_id, $insert_api_key_name)";
 

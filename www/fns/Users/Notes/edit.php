@@ -8,8 +8,12 @@ function edit ($mysqli, $note, $text, $tags,
     $id = $note->id;
     $fnsDir = __DIR__.'/../..';
 
+    include_once "$fnsDir/Notes/maxLengths.php";
+    include_once "$fnsDir/text_title.php";
+    $title = text_title($text, \Notes\maxLengths()['title']);
+
     include_once "$fnsDir/Notes/edit.php";
-    \Notes\edit($mysqli, $id, $text,
+    \Notes\edit($mysqli, $id, $text, $title,
         $tags, $tag_names, $encrypt, $updateApiKey);
 
     if ($note->num_tags) {
@@ -19,8 +23,8 @@ function edit ($mysqli, $note, $text, $tags,
 
     if ($tag_names) {
         include_once "$fnsDir/NoteTags/add.php";
-        \NoteTags\add($mysqli, $note->id_users,
-            $id, $tag_names, $text, $tags, $encrypt);
+        \NoteTags\add($mysqli, $note->id_users, $id,
+            $tag_names, $text, $title, $tags, $encrypt);
     }
 
 }
