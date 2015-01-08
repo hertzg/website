@@ -20,10 +20,16 @@ include_once '../lib/mysqli.php';
 $microtime = microtime(true);
 
 include_once '../fns/Notes/maxLengths.php';
-process($mysqli, 'notes', Notes\maxLengths());
+$maxLengths = Notes\maxLengths();
+process($mysqli, 'notes', $maxLengths);
+process($mysqli, 'note_tags', $maxLengths);
+process($mysqli, 'received_notes', $maxLengths);
 
 include_once '../fns/Tasks/maxLengths.php';
-process($mysqli, 'tasks', Tasks\maxLengths());
+$maxLengths = Tasks\maxLengths();
+process($mysqli, 'tasks', $maxLengths);
+process($mysqli, 'task_tags', $maxLengths);
+process($mysqli, 'received_tasks', $maxLengths);
 
 $elapsedSeconds = number_format(microtime(true) - $microtime, 3);
 echo "Done in $elapsedSeconds seconds.\n";
