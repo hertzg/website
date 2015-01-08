@@ -43,6 +43,11 @@ function ensure ($mysqli) {
             'characterSet' => 'utf8',
             'collation' => 'utf8_unicode_ci',
         ],
+        'title' => [
+            'type' => "varchar($maxLengths[title])",
+            'characterSet' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+        ],
         'update_time' => [
             'type' => 'bigint(20) unsigned',
         ],

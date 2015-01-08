@@ -53,6 +53,11 @@ function ensure ($mysqli) {
             'characterSet' => 'utf8',
             'collation' => 'utf8_unicode_ci',
         ],
+        'title' => [
+            'type' => "varchar($maxLengths[title])",
+            'characterSet' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+        ],
         'update_api_key_id' => [
             'type' => 'bigint(20) unsigned',
             'nullable' => true,
