@@ -9,8 +9,7 @@ $user = require_user('../../');
 include_once '../../fns/Date/request.php';
 list($day, $month, $year) = Date\request();
 
-$timeNow = time();
-$maxYear = date('Y', $timeNow) + 100;
+$maxYear = date('Y', time()) + 100;
 $year = max(1900, min($maxYear, (int)$year));
 
 include_once '../../fns/redirect.php';
