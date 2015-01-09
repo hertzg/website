@@ -6,6 +6,11 @@ $fnsDir = '../fns';
 include_once "$fnsDir/require_user.php";
 $user = require_user($base);
 
+unset(
+    $_SESSION['wallets/new/errors'],
+    $_SESSION['wallets/new/values']
+);
+
 include_once "$fnsDir/Page/info.php";
 $content = Page\info('No wallets');
 
