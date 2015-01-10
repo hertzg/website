@@ -229,6 +229,9 @@ function ensure ($mysqli) {
         'show_new_task' => [
             'type' => 'tinyint(3) unsigned',
         ],
+        'show_new_wallet' => [
+            'type' => 'tinyint(3) unsigned',
+        ],
         'show_notes' => [
             'type' => 'tinyint(3) unsigned',
         ],
@@ -242,6 +245,9 @@ function ensure ($mysqli) {
             'type' => 'tinyint(3) unsigned',
         ],
         'show_trash' => [
+            'type' => 'tinyint(4)',
+        ],
+        'show_wallets' => [
             'type' => 'tinyint(4)',
         ],
         'storage_used' => [
