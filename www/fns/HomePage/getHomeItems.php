@@ -11,11 +11,9 @@ function getHomeItems ($mysqli, $user) {
     renderBookmarks($user, $items);
 
     if ($user->show_new_bookmark) {
-        $title = 'New Bookmark';
-        $href = '../bookmarks/new/';
-        $icon = 'create-bookmark';
         include_once "$fnsDir/Page/imageArrowLink.php";
-        $items['new-bookmark'] = \Page\imageArrowLink($title, $href, $icon);
+        $items['new-bookmark'] = \Page\imageArrowLink(
+            'New Bookmark', '../bookmarks/new/', 'create-bookmark');
     }
 
     include_once __DIR__.'/renderCalendar.php';
@@ -25,11 +23,9 @@ function getHomeItems ($mysqli, $user) {
     renderContacts($user, $items);
 
     if ($user->show_new_contact) {
-        $title = 'New Contact';
-        $href = '../contacts/new/';
-        $icon = 'create-contact';
         include_once "$fnsDir/Page/imageArrowLink.php";
-        $items['new-contact'] = \Page\imageArrowLink($title, $href, $icon);
+        $items['new-contact'] = \Page\imageArrowLink(
+            'New Contact', '../contacts/new/', 'create-contact');
     }
 
     include_once __DIR__.'/renderFiles.php';
@@ -39,11 +35,9 @@ function getHomeItems ($mysqli, $user) {
     renderNotes($user, $items);
 
     if ($user->show_new_note) {
-        $title = 'New Note';
-        $href = '../notes/new/';
-        $icon = 'create-note';
         include_once "$fnsDir/Page/imageArrowLink.php";
-        $items['new-note'] = \Page\imageArrowLink($title, $href, $icon);
+        $items['new-note'] = \Page\imageArrowLink(
+            'New Note', '../notes/new/', 'create-note');
     }
 
     include_once __DIR__.'/renderNotifications.php';
@@ -59,11 +53,21 @@ function getHomeItems ($mysqli, $user) {
     renderTrash($user, $items);
 
     if ($user->show_new_task) {
-        $title = 'New Task';
-        $href = '../tasks/new/';
-        $icon = 'create-task';
         include_once "$fnsDir/Page/imageArrowLink.php";
-        $items['new-task'] = \Page\imageArrowLink($title, $href, $icon);
+        $items['new-task'] = \Page\imageArrowLink(
+            'New Task', '../tasks/new/', 'create-task');
+    }
+
+    if ($user->show_wallets) {
+        include_once "$fnsDir/Page/imageArrowLink.php";
+        $items['wallets'] = \Page\imageArrowLink(
+            'Wallets', '../wallets/', 'TODO', ['id' => 'wallets']);
+    }
+
+    if ($user->show_new_wallet) {
+        include_once "$fnsDir/Page/imageArrowLink.php";
+        $items['new-wallet'] = \Page\imageArrowLink(
+            'New Wallet', '../wallets/new/', 'TODO');
     }
 
     $sortedItems = [];
