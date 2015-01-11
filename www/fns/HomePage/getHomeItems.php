@@ -58,11 +58,8 @@ function getHomeItems ($mysqli, $user) {
             'New Task', '../tasks/new/', 'create-task');
     }
 
-    if ($user->show_wallets) {
-        include_once "$fnsDir/Page/imageArrowLink.php";
-        $items['wallets'] = \Page\imageArrowLink(
-            'Wallets', '../wallets/', 'TODO', ['id' => 'wallets']);
-    }
+    include_once __DIR__.'/renderWallets.php';
+    renderWallets($user, $items);
 
     if ($user->show_new_wallet) {
         include_once "$fnsDir/Page/imageArrowLink.php";

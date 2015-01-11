@@ -182,6 +182,9 @@ function ensure ($mysqli) {
         'num_tokens' => [
             'type' => 'bigint(20) unsigned',
         ],
+        'num_wallets' => [
+            'type' => 'bigint(20) unsigned',
+        ],
         'order_home_items' => [
             'type' => 'text',
             'nullable' => true,

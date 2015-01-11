@@ -26,6 +26,9 @@ function create ($mysqli, $user) {
         $groupedItems[] = \Page\twoColumns($item[0], $item[1]);
     }
 
+    include_once __DIR__.'/unsetSessionVars.php';
+    unsetSessionVars();
+
     include_once __DIR__.'/newNotifications.php';
     include_once __DIR__.'/optionsPanel.php';
     include_once "$fnsDir/compressed_js_script.php";

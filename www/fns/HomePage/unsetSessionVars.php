@@ -7,7 +7,6 @@ function unsetSessionVars () {
         $_SESSION['account/messages'],
         $_SESSION['bookmarks/errors'],
         $_SESSION['bookmarks/messages'],
-        $_SESSION['contacts/errors'],
         $_SESSION['calendar/messages'],
         $_SESSION['contacts/errors'],
         $_SESSION['contacts/messages'],
@@ -26,6 +25,8 @@ function unsetSessionVars () {
         $_SESSION['tasks/errors'],
         $_SESSION['tasks/messages'],
         $_SESSION['trash/errors'],
-        $_SESSION['trash/messages']
+        $_SESSION['trash/messages'],
+        $_SESSION['wallets/errors'],
+        $_SESSION['wallets/messages']
     );
 }

@@ -109,6 +109,9 @@ function ensureAll ($mysqli) {
     include_once "$fnsDir/Users/ensure.php";
     $output .= \Users\ensure($mysqli);
 
+    include_once "$fnsDir/Wallets/ensure.php";
+    $output .= \Wallets\ensure($mysqli);
+
     return $output;
 
 }

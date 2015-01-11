@@ -30,7 +30,7 @@ $yesHref = 'submit.php'.ItemList\escapedPageQuery();
 include_once "$fnsDir/ItemList/listHref.php";
 include_once "$fnsDir/Page/confirmDialog.php";
 $content .= Page\confirmDialog(
-    'Are you sure you want to delete all the noteks?'
+    'Are you sure you want to delete all the notes?'
     .' They will be moved to Trash.', 'Yes, delete all notes',
     $yesHref, ItemList\listHref());
 

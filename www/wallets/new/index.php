@@ -10,6 +10,11 @@ $key = 'wallets/new/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else $values = ['name' => ''];
 
+unset(
+    $_SESSION['wallets/errors'],
+    $_SESSION['wallets/messages']
+);
+
 include_once "$fnsDir/Wallets/maxLengths.php";
 $maxLengths = Wallets\maxLengths();
 

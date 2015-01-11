@@ -9,12 +9,8 @@ require_same_domain_referer('./');
 include_once "$fnsDir/require_user.php";
 $user = require_user($base);
 
-include_once "$fnsDir/Wallets/request.php";
-$name = Wallets\request();
-
-$errors = [];
-
-if ($name === '') $errors[] = 'Enter name.';
+include_once '../fns/request_wallet_params.php';
+$name = request_wallet_params($errors);
 
 include_once "$fnsDir/redirect.php";
 
@@ -29,4 +25,10 @@ unset(
     $_SESSION['wallets/new/values']
 );
 
-redirect('..');
+include_once "$fnsDir/Users/Wallets/add.php";
+include_once '../../lib/mysqli.php';
+$id = Users\Wallets\add($mysqli, $user->id_users, $name);
+
+$_SESSION['wallets/view/messages'] = ['Wallet has been saved.'];
+
+redirect("../view/?id=$id");
