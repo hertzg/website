@@ -12,13 +12,16 @@ function create_view_page ($wallet) {
     }
 
     include_once "$fnsDir/Page/imageArrowLink.php";
+    $editLink = Page\imageArrowLink('Edit',
+        "../edit/?id=$id", 'TODO', ['id' => 'edit']);
+
+    $deleteLink =
+        '<div id="deleteLink">'
+            .Page\imageArrowLink('Delete', "../delete/?id=$id", 'trash-bin')
+        .'</div>';
+
     include_once "$fnsDir/Page/staticTwoColumns.php";
-    $optionsContent =
-        Page\staticTwoColumns(
-            Page\imageArrowLink('Edit',
-                "../edit/?id=$id", 'TODO', ['id' => 'edit']),
-            Page\imageArrowLink('Delete', "../delete/?id=$id", 'trash-bin')
-        );
+    $optionsContent = Page\staticTwoColumns($editLink, $deleteLink);
 
     unset(
         $_SESSION['wallets/errors'],

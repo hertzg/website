@@ -25,8 +25,11 @@ function create_page ($mysqli, $user, $base = '') {
         }
 
         include_once "$fnsDir/Page/imageLink.php";
-        $optionsContent = Page\imageLink(
-            'Delete All Wallets', "{$base}delete-all/", 'trash-bin');
+        $optionsContent =
+            '<div id="deleteAllLink">'
+                .Page\imageLink('Delete All Wallets',
+                    "{$base}delete-all/", 'trash-bin')
+            .'</div>';
 
         include_once "$fnsDir/create_panel.php";
         $content .=
