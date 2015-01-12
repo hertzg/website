@@ -17,10 +17,12 @@ function create_page ($mysqli, $user, $base = '') {
         include_once "$fnsDir/Wallets/indexOnUser.php";
         $wallets = Wallets\indexOnUser($mysqli, $user->id_users);
 
-        include_once "$fnsDir/Page/imageArrowLink.php";
+        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         foreach ($wallets as $wallet) {
             $id = $wallet->id;
-            $items[] = Page\imageArrowLink(htmlspecialchars($wallet->name),
+            $description = number_format($wallet->balance / 100, 2);
+            $items[] = Page\imageArrowLinkWithDescription(
+                htmlspecialchars($wallet->name), $description,
                 "{$base}view/?id=$id", 'TODO', ['id' => $id]);
         }
 

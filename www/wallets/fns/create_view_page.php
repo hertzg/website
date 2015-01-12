@@ -12,6 +12,9 @@ function create_view_page ($mysqli, $wallet) {
     }
 
     include_once "$fnsDir/Page/imageArrowLink.php";
+    $newTransactionLink = Page\imageArrowLink('New Transaction',
+        "../new-transaction/?id=$id", 'TODO', ['id' => 'new-transaction']);
+
     $editLink = Page\imageArrowLink('Edit',
         "../edit/?id=$id", 'TODO', ['id' => 'edit']);
 
@@ -21,7 +24,10 @@ function create_view_page ($mysqli, $wallet) {
         .'</div>';
 
     include_once "$fnsDir/Page/staticTwoColumns.php";
-    $optionsContent = Page\staticTwoColumns($editLink, $deleteLink);
+    $optionsContent =
+        Page\staticTwoColumns($newTransactionLink, $editLink)
+        .'<div class="hr"></div>'
+        .$deleteLink;
 
     unset(
         $_SESSION['wallets/errors'],
