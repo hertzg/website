@@ -112,6 +112,9 @@ function ensureAll ($mysqli) {
     include_once "$fnsDir/Wallets/ensure.php";
     $output .= \Wallets\ensure($mysqli);
 
+    include_once "$fnsDir/WalletTransactions/ensure.php";
+    $output .= \WalletTransactions\ensure($mysqli);
+
     return $output;
 
 }

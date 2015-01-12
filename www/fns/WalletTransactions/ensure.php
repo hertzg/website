@@ -1,6 +1,6 @@
 <?php
 
-namespace Wallets;
+namespace WalletTransactions;
 
 function ensure ($mysqli) {
 
@@ -8,8 +8,8 @@ function ensure ($mysqli) {
     $maxLengths = maxLengths();
 
     include_once __DIR__.'/../Table/ensure.php';
-    return \Table\ensure($mysqli, 'wallets', [
-        'balance' => [
+    return \Table\ensure($mysqli, 'wallet_transactions', [
+        'amount' => [
             'type' => 'bigint(20)',
         ],
         'id' => [
@@ -19,19 +19,16 @@ function ensure ($mysqli) {
         'id_users' => [
             'type' => 'bigint(20) unsigned',
         ],
+        'id_wallets' => [
+            'type' => 'bigint(20) unsigned',
+        ],
         'insert_time' => [
             'type' => 'bigint(20) unsigned',
         ],
-        'name' => [
-            'type' => "varchar($maxLengths[name])",
+        'description' => [
+            'type' => "varchar($maxLengths[description])",
             'characterSet' => 'utf8',
             'collation' => 'utf8_unicode_ci',
-        ],
-        'revision' => [
-            'type' => 'bigint(20) unsigned',
-        ],
-        'update_time' => [
-            'type' => 'bigint(20) unsigned',
         ],
     ]);
 
