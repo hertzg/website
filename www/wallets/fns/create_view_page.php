@@ -1,6 +1,6 @@
 <?php
 
-function create_view_page ($wallet) {
+function create_view_page ($mysqli, $wallet) {
 
     $fnsDir = __DIR__.'/../../fns';
     $id = $wallet->id;
@@ -28,11 +28,28 @@ function create_view_page ($wallet) {
         $_SESSION['wallets/messages']
     );
 
+    if ($wallet->num_transactions) {
+
+        include_once "$fnsDir/Transactions/indexOnWallet.php";
+        $transactions = Transactions\indexOnWallet($mysqli, $id);
+
+        $items = [];
+        foreach ($transactions as $transaction) {
+            $items[] = '';
+        }
+
+        $transactionsContent = join('<div class="hr"></div>', $items);
+
+    } else {
+        include_once "$fnsDir/Page/info.php";
+        $transactionsContent = Page\info('No transactions');
+    }
+
     include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
-    include_once "$fnsDir/Page/text.php";
     return Page\tabs(
         [
             [
@@ -42,8 +59,11 @@ function create_view_page ($wallet) {
         ],
         "Wallet #$id",
         Page\sessionMessages('wallets/view/messages')
-        .Page\text(htmlspecialchars($wallet->name))
+        .Form\label('Name', htmlspecialchars($wallet->name))
+        .'<div class="hr"></div>'
+        .Form\label('Balance', number_format($wallet->balance / 100, 2))
         .Page\infoText($infoText)
+        .create_panel('Transactions', $transactionsContent)
         .create_panel('Wallet Options', $optionsContent)
     );
 
