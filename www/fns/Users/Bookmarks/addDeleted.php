@@ -16,7 +16,7 @@ function addDeleted ($mysqli, $id_users, $data) {
 
     include_once "$fnsDir/Bookmarks/addDeleted.php";
     \Bookmarks\addDeleted($mysqli, $id, $id_users, $url, $title, $tags,
-        $tag_names, $data->insert_time, $data->update_time);
+        $tag_names, $data->insert_time, $data->update_time, $data->revision);
 
     if ($tag_names) {
         include_once "$fnsDir/BookmarkTags/add.php";

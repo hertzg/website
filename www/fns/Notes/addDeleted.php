@@ -3,7 +3,7 @@
 namespace Notes;
 
 function addDeleted ($mysqli, $id, $id_users, $text, $title,
-    $tags, $tag_names, $encrypt, $insert_time, $update_time) {
+    $tags, $tag_names, $encrypt, $insert_time, $update_time, $revision) {
 
     $text = $mysqli->real_escape_string($text);
     $title = $mysqli->real_escape_string($title);
@@ -14,9 +14,9 @@ function addDeleted ($mysqli, $id, $id_users, $text, $title,
 
     $sql = 'insert into notes'
         .' (id, id_users, text, title, tags, num_tags,'
-        .' tags_json, encrypt, insert_time, update_time)'
+        .' tags_json, encrypt, insert_time, update_time, revision)'
         ." values ($id, $id_users, '$text', '$title', '$tags', $num_tags,"
-        ." '$tags_json', $encrypt, $insert_time, $update_time)";
+        ." '$tags_json', $encrypt, $insert_time, $update_time, $revision)";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 

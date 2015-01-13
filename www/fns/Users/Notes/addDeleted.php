@@ -16,8 +16,9 @@ function addDeleted ($mysqli, $id_users, $data) {
     $tag_names = \Tags\parse($tags);
 
     include_once "$fnsDir/Notes/addDeleted.php";
-    \Notes\addDeleted($mysqli, $id, $id_users, $text, $title, $tags,
-        $tag_names, $encrypt, $data->insert_time, $data->update_time);
+    \Notes\addDeleted($mysqli, $id, $id_users, $text,
+        $title, $tags, $tag_names, $encrypt, $data->insert_time,
+        $data->update_time, $data->revision);
 
     if ($tag_names) {
         include_once "$fnsDir/NoteTags/add.php";

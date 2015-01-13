@@ -21,11 +21,11 @@ function addDeleted ($mysqli, $user, $data) {
     $tag_names = \Tags\parse($tags);
 
     include_once "$fnsDir/Contacts/addDeleted.php";
-    \Contacts\addDeleted($mysqli, $id, $id_users, $full_name, $alias,
-        $data->address, $data->email, $phone1, $phone2, $birthday_time,
-        $data->username, $data->timezone, $data->tags, $tag_names,
-        $data->notes, $favorite, $data->insert_time,
-        $data->update_time, $data->photo_id);
+    \Contacts\addDeleted($mysqli, $id, $id_users, $full_name,
+        $alias, $data->address, $data->email, $phone1, $phone2,
+        $birthday_time, $data->username, $data->timezone, $data->tags,
+        $tag_names, $data->notes, $favorite, $data->insert_time,
+        $data->update_time, $data->photo_id, $data->revision);
 
     if ($tag_names) {
         include_once "$fnsDir/ContactTags/add.php";
