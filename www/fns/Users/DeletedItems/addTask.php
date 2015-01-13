@@ -15,5 +15,6 @@ function addTask ($mysqli, $task) {
         'insert_time' => $task->insert_time,
         'update_api_key_id' => $task->update_api_key_id,
         'update_time' => $task->update_time,
+        'revision' => $task->revision,
     ]);
 }

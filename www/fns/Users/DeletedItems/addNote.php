@@ -14,5 +14,6 @@ function addNote ($mysqli, $note) {
         'insert_time' => $note->insert_time,
         'update_api_key_id' => $note->update_api_key_id,
         'update_time' => $note->update_time,
+        'revision' => $note->revision,
     ]);
 }
