@@ -10,7 +10,7 @@ function add ($mysqli, $id_users, $id_wallets, $parsed_amount, $description) {
     \WalletTransactions\add($mysqli, $id_users,
         $id_wallets, $parsed_amount, $description);
 
-    include_once "$fnsDir/Wallets/addNumTransactions.php";
-    \Users\Wallets\addNumTransactions($mysqli, $id_wallets);
+    include_once "$fnsDir/Wallets/addTransaction.php";
+    \Users\Wallets\addTransaction($mysqli, $id_wallets, $parsed_amount);
 
 }
