@@ -1,4 +1,5 @@
 #!/bin/bash
+cd `dirname $BASH_SOURCE`
 owner=www-data:www-data
 chown -R $owner www/data/contact-photos
 chown -R $owner www/data/users
