@@ -31,17 +31,31 @@ function create_view_page ($mysqli, $wallet) {
 
     unset(
         $_SESSION['wallets/errors'],
-        $_SESSION['wallets/messages']
+        $_SESSION['wallets/messages'],
+        $_SESSION['wallets/new-transaction/errors'],
+        $_SESSION['wallets/new-transaction/values']
     );
 
     if ($wallet->num_transactions) {
 
-        include_once "$fnsDir/Transactions/indexOnWallet.php";
-        $transactions = Transactions\indexOnWallet($mysqli, $id);
+        include_once "$fnsDir/WalletTransactions/indexOnWallet.php";
+        $transactions = WalletTransactions\indexOnWallet($mysqli, $id);
 
         $items = [];
+        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         foreach ($transactions as $transaction) {
-            $items[] = '';
+            $title = number_format($transaction->amount / 100, 2);
+            $description = $transaction->description;
+            $href = "view-transaction/?id=$transaction->id";
+            $icon = 'TODO';
+            if ($description === '') {
+                $link = Page\imageArrowLink($title, $href, $icon);
+            } else {
+                $description = htmlspecialchars($description);
+                $link = Page\imageArrowLinkWithDescription(
+                    $title, $description, $href, $icon);
+            }
+            $items[] = $link;
         }
 
         $transactionsContent = join('<div class="hr"></div>', $items);

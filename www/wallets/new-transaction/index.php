@@ -4,6 +4,15 @@ include_once '../fns/require_wallet.php';
 include_once '../../lib/mysqli.php';
 list($wallet, $id, $user) = require_wallet($mysqli);
 
+$key = 'wallets/new-transaction/values';
+if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
+else {
+    $values = [
+        'amount' => '',
+        'description' => '',
+    ];
+}
+
 $base = '../../';
 $fnsDir = '../../fns';
 
@@ -13,6 +22,7 @@ $maxLengths = WalletTransactions\maxLengths();
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/hidden.php";
 include_once "$fnsDir/Form/textfield.php";
+include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
     [
@@ -22,8 +32,10 @@ $content = Page\tabs(
         ]
     ],
     'New Transaction',
-    '<form action="submit.php" method="post">'
+    Page\sessionErrors('wallets/new-transaction/errors')
+    .'<form action="submit.php" method="post">'
         .Form\textfield('amount', 'Amount', [
+            'value' => $values['amount'],
             'autofocus' => true,
             'required' => true,
         ])
