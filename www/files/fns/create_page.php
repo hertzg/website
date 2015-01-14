@@ -46,14 +46,13 @@ function create_page ($mysqli, $user, $folder) {
 
     if ($id) {
 
-        $insert_time = $folder->insert_time;
-        $rename_time = $folder->rename_time;
-
         include_once "$fnsDir/format_author.php";
-        $author = format_author($insert_time, $folder->insert_api_key_name);
+        $author = format_author($folder->insert_time,
+            $folder->insert_api_key_name);
         $text = "Folder created $author.";
-        if ($insert_time != $rename_time) {
-            $author = format_author($rename_time, $folder->rename_api_key_name);
+        if ($folder->revision) {
+            $author = format_author($folder->rename_time,
+                $folder->rename_api_key_name);
             $text .= "<br />Last modified $author.";
         }
 
