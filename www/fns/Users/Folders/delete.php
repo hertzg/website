@@ -44,7 +44,7 @@ function delete ($mysqli, $folder) {
                 \DeletedFiles\add($mysqli, $id_deleted_items, $id_files, $id,
                     $id_users, $file->content_type, $file->media_type,
                     $file->name, $file->size, $file->insert_time,
-                    $file->rename_time);
+                    $file->rename_time, $file->content_revision);
             }
         }
 
