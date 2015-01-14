@@ -16,5 +16,6 @@ function addFile ($mysqli, $file) {
         'rename_api_key_id' => $file->rename_api_key_id,
         'rename_time' => $file->rename_time,
         'content_revision' => $file->content_revision,
+        'revision' => $file->revision,
     ]);
 }

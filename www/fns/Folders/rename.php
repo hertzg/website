@@ -19,7 +19,8 @@ function rename ($mysqli, $id, $name, $renameApiKey) {
 
     $sql = "update folders set name = '$name', rename_time = $rename_time,"
         ." rename_api_key_id = $rename_api_key_id,"
-        ." rename_api_key_name = $rename_api_key_name where id_folders = $id";
+        ." rename_api_key_name = $rename_api_key_name,"
+        ." revision = revision + 1 where id_folders = $id";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
