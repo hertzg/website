@@ -16,7 +16,7 @@ function create_view_page ($mysqli, $wallet) {
         "../new-transaction/?id=$id", 'TODO', ['id' => 'new-transaction']);
 
     $editLink = Page\imageArrowLink('Edit',
-        "../edit/?id=$id", 'TODO', ['id' => 'edit']);
+        "../edit/?id=$id", 'edit-wallet', ['id' => 'edit']);
 
     $deleteLink =
         '<div id="deleteLink">'

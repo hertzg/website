@@ -12,7 +12,7 @@ function renderWallets ($user, &$items) {
 
     $title = 'Wallets';
     $href = '../wallets/';
-    $icon = 'TODO';
+    $icon = 'wallets';
     $options = ['id' => 'wallets'];
 
     if ($num_wallets) {

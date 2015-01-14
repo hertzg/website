@@ -14,7 +14,7 @@ function get_home_items () {
         'schedules' => ['Schedules', 'schedules'],
         'tasks' => ['Tasks', 'tasks'],
         'new-task' => ['New Task', 'create-task'],
-        'wallets' => ['Wallets', 'TODO'],
+        'wallets' => ['Wallets', 'wallets'],
         'new-wallet' => ['New Wallet', 'TODO'],
         'trash' => ['Trash', 'trash-bin'],
     ];

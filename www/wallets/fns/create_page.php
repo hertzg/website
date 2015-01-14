@@ -23,7 +23,7 @@ function create_page ($mysqli, $user, $base = '') {
             $description = number_format($wallet->balance / 100, 2);
             $items[] = Page\imageArrowLinkWithDescription(
                 htmlspecialchars($wallet->name), $description,
-                "{$base}view/?id=$id", 'TODO', ['id' => $id]);
+                "{$base}view/?id=$id", 'wallet', ['id' => $id]);
         }
 
         include_once "$fnsDir/Page/imageLink.php";
