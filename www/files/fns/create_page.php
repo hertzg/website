@@ -53,7 +53,7 @@ function create_page ($mysqli, $user, $folder) {
         if ($folder->revision) {
             $author = format_author($folder->rename_time,
                 $folder->rename_api_key_name);
-            $text .= "<br />Last modified $author.";
+            $text .= "<br />Last renamed $author.";
         }
 
         include_once "$fnsDir/Page/infoText.php";
