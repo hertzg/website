@@ -54,6 +54,7 @@ function addDeleted ($mysqli, $id_users, $folder) {
                     'size' => $deletedFile->size,
                     'insert_time' => $deletedFile->insert_time,
                     'rename_time' => $deletedFile->rename_time,
+                    'content_revision' => $deletedFile->content_revision,
                 ]);
             }
         }
