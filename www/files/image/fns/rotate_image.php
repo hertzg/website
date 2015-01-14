@@ -18,8 +18,8 @@ function rotate_image ($mysqli, $file, $degrees) {
 
     if ($image) {
 
-        imagesavealpha($image, true);
         $rotatedImage = imagerotate($image, $degrees, 0);
+        imagesavealpha($rotatedImage, true);
 
         $content_type = $file->content_type;
         if ($content_type == 'image/bmp') {
