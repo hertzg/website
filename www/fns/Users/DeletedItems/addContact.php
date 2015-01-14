@@ -23,5 +23,6 @@ function addContact ($mysqli, $contact) {
         'update_api_key_id' => $contact->update_api_key_id,
         'update_time' => $contact->update_time,
         'photo_id' => $contact->photo_id,
+        'revision' => $contact->revision,
     ]);
 }

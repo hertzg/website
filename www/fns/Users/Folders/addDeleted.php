@@ -21,7 +21,8 @@ function addDeleted ($mysqli, $id_users, $folder) {
 
     include_once "$fnsDir/Folders/addDeleted.php";
     \Folders\addDeleted($mysqli, $id_folders, $id_users,
-        $parent_id_folders, $name, $folder->insert_time, $folder->rename_time);
+        $parent_id_folders, $name, $folder->insert_time,
+        $folder->rename_time, $folder->revision);
 
     $restore = function ($parent_id_folders, $restore) use ($mysqli,
         $id_users, $fnsDir) {
@@ -34,7 +35,8 @@ function addDeleted ($mysqli, $id_users, $folder) {
             $id_folders = $deletedFolder->id_folders;
             \Folders\addDeleted($mysqli, $id_folders, $id_users,
                 $parent_id_folders, $deletedFolder->name,
-                $deletedFolder->insert_time, $deletedFolder->rename_time);
+                $deletedFolder->insert_time, $deletedFolder->rename_time,
+                $deletedFolder->revision);
             $restore($id_folders, $restore);
         }
 
@@ -54,6 +56,8 @@ function addDeleted ($mysqli, $id_users, $folder) {
                     'size' => $deletedFile->size,
                     'insert_time' => $deletedFile->insert_time,
                     'rename_time' => $deletedFile->rename_time,
+                    'content_revision' => $deletedFile->content_revision,
+                    'revision' => $deletedFile->revision,
                 ]);
             }
         }

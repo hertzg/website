@@ -26,9 +26,9 @@ function delete ($mysqli, $folder) {
             foreach ($folders as $folder) {
                 $id_folders = $folder->id_folders;
                 $ids[] = $id_folders;
-                \DeletedFolders\add($mysqli, $id_deleted_items,
-                    $id_folders, $id, $id_users, $folder->name,
-                    $folder->insert_time, $folder->rename_time);
+                \DeletedFolders\add($mysqli, $id_deleted_items, $id_folders,
+                    $id, $id_users, $folder->name, $folder->insert_time,
+                    $folder->rename_time, $folder->revision);
             }
         }
 
@@ -44,7 +44,8 @@ function delete ($mysqli, $folder) {
                 \DeletedFiles\add($mysqli, $id_deleted_items, $id_files, $id,
                     $id_users, $file->content_type, $file->media_type,
                     $file->name, $file->size, $file->insert_time,
-                    $file->rename_time);
+                    $file->rename_time, $file->content_revision,
+                    $file->revision);
             }
         }
 

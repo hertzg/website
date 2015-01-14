@@ -5,7 +5,7 @@ namespace Contacts;
 function addDeleted ($mysqli, $id, $id_users, $full_name, $alias,
     $address, $email, $phone1, $phone2, $birthday_time, $username,
     $timezone, $tags, $tag_names, $notes, $favorite, $insert_time,
-    $update_time, $photo_id) {
+    $update_time, $photo_id, $revision) {
 
     $full_name = $mysqli->real_escape_string($full_name);
     $alias = $mysqli->real_escape_string($alias);
@@ -33,12 +33,12 @@ function addDeleted ($mysqli, $id, $id_users, $full_name, $alias,
         .' email, phone1, phone2, birthday_time, birthday_day,'
         .' birthday_month, username, timezone, tags,'
         .' num_tags, tags_json, notes, favorite,'
-        .' insert_time, update_time, photo_id)'
+        .' insert_time, update_time, photo_id, revision)'
         ." values ($id, $id_users, '$full_name', '$alias', '$address',"
         ." '$email', '$phone1', '$phone2', $birthday_time, $birthday_day,"
         ." $birthday_month, '$username', $timezone, '$tags',"
         ." $num_tags, '$tags_json', '$notes', $favorite,"
-        ." $insert_time, $update_time, $photo_id)";
+        ." $insert_time, $update_time, $photo_id, $revision)";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 

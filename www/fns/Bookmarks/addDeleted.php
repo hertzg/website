@@ -2,8 +2,8 @@
 
 namespace Bookmarks;
 
-function addDeleted ($mysqli, $id, $id_users,
-    $url, $title, $tags, $tag_names, $insert_time, $update_time) {
+function addDeleted ($mysqli, $id, $id_users, $url, $title,
+    $tags, $tag_names, $insert_time, $update_time, $revision) {
 
     $url = $mysqli->real_escape_string($url);
     $title = $mysqli->real_escape_string($title);
@@ -13,9 +13,9 @@ function addDeleted ($mysqli, $id, $id_users,
 
     $sql = 'insert into bookmarks'
         .' (id, id_users, url, title, tags,'
-        .' num_tags, tags_json, insert_time, update_time)'
+        .' num_tags, tags_json, insert_time, update_time, revision)'
         ." values ($id, $id_users, '$url', '$title', '$tags',"
-        ." $num_tags, '$tags_json', $insert_time, $update_time)";
+        ." $num_tags, '$tags_json', $insert_time, $update_time, $revision)";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 

@@ -9,17 +9,15 @@ function create ($mysqli, &$user, &$file) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
-    $media_type = $file->media_type;
-    $insert_time = $file->insert_time;
-    $rename_time = $file->rename_time;
-
     include_once "$fnsDir/format_author.php";
-    $author = format_author($insert_time, $file->insert_api_key_name);
+    $author = format_author($file->insert_time, $file->insert_api_key_name);
     $infoText = "File uploaded $author.";
-    if ($rename_time != $insert_time) {
-        $author = format_author($rename_time, $file->rename_api_key_name);
+    if ($file->revision) {
+        $author = format_author($file->rename_time, $file->rename_api_key_name);
         $infoText .= "<br />Last renamed $author.";
     }
+
+    $media_type = $file->media_type;
 
     include_once "$fnsDir/Page/filePreview.php";
     $filePreview = \Page\filePreview($media_type, $file->content_type,

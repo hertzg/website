@@ -12,5 +12,6 @@ function addFolder ($mysqli, $folder) {
         'insert_time' => $folder->insert_time,
         'rename_api_key_id' => $folder->rename_api_key_id,
         'rename_time' => $folder->rename_time,
+        'revision' => $folder->revision,
     ]);
 }

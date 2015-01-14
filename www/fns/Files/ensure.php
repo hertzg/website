@@ -63,6 +63,9 @@ function ensure ($mysqli) {
         'rename_time' => [
             'type' => 'bigint(20) unsigned',
         ],
+        'revision' => [
+            'type' => 'bigint(20) unsigned',
+        ],
         'size' => [
             'type' => 'bigint(20) unsigned',
         ],

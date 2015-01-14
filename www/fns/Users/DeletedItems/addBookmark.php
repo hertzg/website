@@ -13,5 +13,6 @@ function addBookmark ($mysqli, $bookmark) {
         'insert_time' => $bookmark->insert_time,
         'update_api_key_id' => $bookmark->update_api_key_id,
         'update_time' => $bookmark->update_time,
+        'revision' => $bookmark->revision,
     ]);
 }
