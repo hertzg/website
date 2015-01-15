@@ -13,7 +13,8 @@ function create_view_page ($mysqli, $wallet) {
 
     include_once "$fnsDir/Page/imageArrowLink.php";
     $newTransactionLink = Page\imageArrowLink('New Transaction',
-        "../new-transaction/?id=$id", 'create-transaction', ['id' => 'new-transaction']);
+        "../new-transaction/?id=$id", 'create-transaction',
+        ['id' => 'new-transaction']);
 
     $editLink = Page\imageArrowLink('Edit',
         "../edit/?id=$id", 'edit-wallet', ['id' => 'edit']);
