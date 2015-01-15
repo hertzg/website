@@ -31,21 +31,25 @@ function create_view_page ($mysqli, $wallet) {
         .$deleteLink;
 
     unset(
+        $_SESSION['wallets/edit/errors'],
+        $_SESSION['wallets/edit/values'],
         $_SESSION['wallets/errors'],
         $_SESSION['wallets/messages'],
         $_SESSION['wallets/new-transaction/errors'],
         $_SESSION['wallets/new-transaction/values']
     );
 
+    include_once __DIR__.'/format_amount.php';
+
     if ($wallet->num_transactions) {
 
         include_once "$fnsDir/WalletTransactions/indexOnWallet.php";
         $transactions = WalletTransactions\indexOnWallet($mysqli, $id);
 
-        $items = [];
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
+        $items = [];
         foreach ($transactions as $transaction) {
-            $title = number_format($transaction->amount / 100, 2);
+            $title = format_amount($transaction->amount);
             $description = $transaction->description;
             $href = "view-transaction/?id=$transaction->id";
             $icon = 'transaction';
@@ -82,7 +86,7 @@ function create_view_page ($mysqli, $wallet) {
         Page\sessionMessages('wallets/view/messages')
         .Form\label('Name', htmlspecialchars($wallet->name))
         .'<div class="hr"></div>'
-        .Form\label('Balance', number_format($wallet->balance / 100, 2))
+        .Form\label('Balance', format_amount($wallet->balance))
         .Page\infoText($infoText)
         .create_panel('Transactions', $transactionsContent)
         .create_panel('Wallet Options', $optionsContent)

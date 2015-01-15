@@ -18,6 +18,7 @@ unset($_SESSION['wallets/view/messages']);
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/hidden.php";
 include_once "$fnsDir/Form/textfield.php";
+include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
     [
@@ -27,7 +28,8 @@ $content = Page\tabs(
         ],
     ],
     'Edit',
-    '<form action="submit.php" method="post">'
+    Page\sessionErrors('wallets/edit/errors')
+    .'<form action="submit.php" method="post">'
         .Form\textfield('name', 'Name', [
             'value' => $values['name'],
             'maxlength' => $maxLengths['name'],
