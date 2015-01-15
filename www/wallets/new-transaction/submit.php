@@ -10,7 +10,8 @@ include_once "$fnsDir/WalletTransactions/request.php";
 list($amount, $parsed_amount, $description) = WalletTransactions\request();
 
 $errors = [];
-if ($parsed_amount === 0) $errors[] = 'Enter amount.';
+if ($amount === '') $errors[] = 'Enter amount.';
+elseif ($parsed_amount === 0) $errors[] = 'The amount is invalid.';
 
 include_once "$fnsDir/redirect.php";
 

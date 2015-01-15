@@ -13,7 +13,7 @@ function request () {
     $amount = preg_replace('/\s+/', '', $amount);
     $description = str_collapse_spaces($description);
 
-    $parsed_amount = floor($amount * 100);
+    $parsed_amount = (int)floor($amount * 100);
 
     return [$amount, $parsed_amount, $description];
 
