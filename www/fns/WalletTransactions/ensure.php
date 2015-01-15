@@ -12,6 +12,11 @@ function ensure ($mysqli) {
         'amount' => [
             'type' => 'bigint(20)',
         ],
+        'description' => [
+            'type' => "varchar($maxLengths[description])",
+            'characterSet' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+        ],
         'id' => [
             'type' => 'bigint(20) unsigned',
             'primary' => true,
@@ -25,10 +30,8 @@ function ensure ($mysqli) {
         'insert_time' => [
             'type' => 'bigint(20) unsigned',
         ],
-        'description' => [
-            'type' => "varchar($maxLengths[description])",
-            'characterSet' => 'utf8',
-            'collation' => 'utf8_unicode_ci',
+        'revision' => [
+            'type' => 'bigint(20) unsigned',
         ],
     ]);
 

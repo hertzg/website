@@ -49,16 +49,18 @@ function create_view_page ($mysqli, $wallet) {
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         $items = [];
         foreach ($transactions as $transaction) {
+            $item_id = $transaction->id;
             $title = format_amount($transaction->amount);
             $description = $transaction->description;
-            $href = "view-transaction/?id=$transaction->id";
+            $href = "../view-transaction/?id=$item_id";
             $icon = 'transaction';
+            $options = ['id' => $item_id];
             if ($description === '') {
-                $link = Page\imageArrowLink($title, $href, $icon);
+                $link = Page\imageArrowLink($title, $href, $icon, $options);
             } else {
                 $description = htmlspecialchars($description);
                 $link = Page\imageArrowLinkWithDescription(
-                    $title, $description, $href, $icon);
+                    $title, $description, $href, $icon, $options);
             }
             $items[] = $link;
         }
