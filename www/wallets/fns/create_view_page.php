@@ -13,7 +13,7 @@ function create_view_page ($mysqli, $wallet) {
 
     include_once "$fnsDir/Page/imageArrowLink.php";
     $newTransactionLink = Page\imageArrowLink('New Transaction',
-        "../new-transaction/?id=$id", 'TODO', ['id' => 'new-transaction']);
+        "../new-transaction/?id=$id", 'create-transaction', ['id' => 'new-transaction']);
 
     $editLink = Page\imageArrowLink('Edit',
         "../edit/?id=$id", 'edit-wallet', ['id' => 'edit']);
@@ -47,7 +47,7 @@ function create_view_page ($mysqli, $wallet) {
             $title = number_format($transaction->amount / 100, 2);
             $description = $transaction->description;
             $href = "view-transaction/?id=$transaction->id";
-            $icon = 'TODO';
+            $icon = 'transaction';
             if ($description === '') {
                 $link = Page\imageArrowLink($title, $href, $icon);
             } else {

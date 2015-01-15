@@ -98,7 +98,10 @@ render($content, 'contact-photo.svg', $names);
 $names = ['rotate-image-cw', 'rotate-image-ccw'];
 render($content, 'edit-image.svg', $names);
 
-$names = ['wallet', 'edit-wallet', 'wallets'];
+$names = ['wallet', 'create-wallet', 'edit-wallet', 'wallets'];
 render($content, 'wallet.svg', $names);
+
+$names = ['transaction', 'create-transaction', 'edit-transaction'];
+render($content, 'transaction.svg', $names);
 
 file_put_contents(__DIR__.'/compressed.css', $content);

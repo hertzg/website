@@ -64,7 +64,7 @@ function getHomeItems ($mysqli, $user) {
     if ($user->show_new_wallet) {
         include_once "$fnsDir/Page/imageArrowLink.php";
         $items['new-wallet'] = \Page\imageArrowLink(
-            'New Wallet', '../wallets/new/', 'TODO');
+            'New Wallet', '../wallets/new/', 'create-wallet');
     }
 
     $sortedItems = [];
