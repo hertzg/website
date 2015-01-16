@@ -9,7 +9,8 @@ function create_view_page ($transaction) {
     include_once "$fnsDir/date_ago.php";
     $infoText = 'Transaction created '.date_ago($transaction->insert_time).'.';
     if ($transaction->revision) {
-        $infoText .= '<br />Last modified '.date_ago($transaction->update_time).'.';
+        $date = date_ago($transaction->update_time);
+        $infoText .= "<br />Last modified $date.";
     }
 
     include_once "$fnsDir/Page/imageArrowLink.php";

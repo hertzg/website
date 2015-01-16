@@ -55,7 +55,9 @@ function create_view_page ($mysqli, $wallet) {
 
             $description = $transaction->description;
             if ($description === '') $description = $date;
-            else $description = "$date &middot; ".htmlspecialchars($description);
+            else {
+                $description = "$date &middot; ".htmlspecialchars($description);
+            }
 
             $item_id = $transaction->id;
             $title = amount_html($transaction->amount);
