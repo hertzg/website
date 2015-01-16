@@ -18,10 +18,10 @@ function create_page ($mysqli, $user, $base = '') {
     }
 
     include_once "$fnsDir/Page/imageLink.php";
-    $href = "{$base}delete-all/";
     $deleteLink =
         '<div id="deleteAllLink">'
-            .Page\imageLink('Delete All Events', $href, 'trash-bin')
+            .Page\imageLink('Delete All Events',
+                "{$base}delete-all/", 'trash-bin')
         .'</div>';
 
     include_once "$fnsDir/create_panel.php";
