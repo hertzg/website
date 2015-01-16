@@ -79,6 +79,12 @@ function close_account ($mysqli, $id_users) {
     include_once "$fnsDir/Tokens/deleteOnUser.php";
     Tokens\deleteOnUser($mysqli, $id_users);
 
+    include_once "$fnsDir/Wallets/deleteOnUser.php";
+    Wallets\deleteOnUser($mysqli, $id_users);
+
+    include_once "$fnsDir/WalletTransactions/deleteOnUser.php";
+    WalletTransactions\deleteOnUser($mysqli, $id_users);
+
     include_once "$fnsDir/Users/delete.php";
     Users\delete($mysqli, $id_users);
 
