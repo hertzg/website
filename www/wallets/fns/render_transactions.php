@@ -9,18 +9,17 @@ function render_transactions ($transactions, &$items, $base = '') {
     include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
     foreach ($transactions as $transaction) {
 
-        $date = ucfirst(date_ago($transaction->insert_time));
+        $itemDescription = ucfirst(date_ago($transaction->insert_time));
 
         $description = $transaction->description;
-        if ($description === '') $description = $date;
-        else {
-            $description = "$date &middot; ".htmlspecialchars($description);
+        if ($description !== '') {
+            $itemDescription .= ' &middot; '.htmlspecialchars($description);
         }
 
         $id = $transaction->id;
         $title = amount_html($transaction->amount);
 
-        $items[] = Page\imageArrowLinkWithDescription($title, $description,
+        $items[] = Page\imageArrowLinkWithDescription($title, $itemDescription,
             "$base../view-transaction/?id=$id", 'transaction', ['id' => $id]);
 
     }
