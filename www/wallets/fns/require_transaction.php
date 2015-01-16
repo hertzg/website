@@ -18,8 +18,8 @@ function require_transaction ($mysqli) {
 
     if (!$transaction) {
         $errors = ['The transaction no longer exists.'];
-        $_SESSION['transactions/errors'] = $errors;
-        unset($_SESSION['transactions/messages']);
+        $_SESSION['wallets/errors'] = $errors;
+        unset($_SESSION['wallets/messages']);
         include_once "$fnsDir/redirect.php";
         redirect('..');
     }
