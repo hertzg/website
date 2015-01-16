@@ -1,10 +1,13 @@
 <?php
 
+$fnsDir = '../../fns';
+
+include_once "$fnsDir/require_same_domain_referer.php";
+require_same_domain_referer('..');
+
 include_once '../fns/require_wallet.php';
 include_once '../../lib/mysqli.php';
 list($wallet, $id, $user) = require_wallet($mysqli);
-
-$fnsDir = '../../fns';
 
 include_once "$fnsDir/WalletTransactions/request.php";
 list($amount, $parsed_amount, $description) = WalletTransactions\request();
