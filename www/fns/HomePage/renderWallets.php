@@ -8,17 +8,18 @@ function renderWallets ($user, &$items) {
 
     $fnsDir = __DIR__.'/..';
 
-    $num_wallets = $user->num_wallets;
+    $balance_total = $user->balance_total;
 
     $title = 'Wallets';
     $href = '../wallets/';
     $icon = 'wallets';
     $options = ['id' => 'wallets'];
 
-    if ($num_wallets) {
+    if ($balance_total) {
+        include_once "$fnsDir/amount_text.php";
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         $link = \Page\imageArrowLinkWithDescription($title,
-            "$num_wallets total.", $href, $icon, $options);
+            amount_text($balance_total).' balance.', $href, $icon, $options);
     } else {
         include_once "$fnsDir/Page/imageArrowLink.php";
         $link = \Page\imageArrowLink($title, $href, $icon, $options);

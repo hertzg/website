@@ -4,17 +4,17 @@ include_once '../fns/require_transaction.php';
 include_once '../../lib/mysqli.php';
 list($transaction, $id, $user) = require_transaction($mysqli);
 
+$fnsDir = '../../fns';
+
 $key = 'wallets/edit-transaction/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
-    include_once '../fns/amount_text.php';
+    include_once "$fnsDir/amount_text.php";
     $values = [
         'amount' => amount_text($transaction->amount),
         'description' => $transaction->description,
     ];
 }
-
-$fnsDir = '../../fns';
 
 unset($_SESSION['wallets/view-transaction/messages']);
 
