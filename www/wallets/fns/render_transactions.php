@@ -1,6 +1,6 @@
 <?php
 
-function render_transactions ($transactions, &$items) {
+function render_transactions ($transactions, &$items, $base = '') {
 
     $fnsDir = __DIR__.'/../../fns';
 
@@ -21,7 +21,7 @@ function render_transactions ($transactions, &$items) {
         $title = amount_html($transaction->amount);
 
         $items[] = Page\imageArrowLinkWithDescription($title, $description,
-            "../view-transaction/?id=$id", 'transaction', ['id' => $id]);
+            "$base../view-transaction/?id=$id", 'transaction', ['id' => $id]);
 
     }
 
