@@ -33,6 +33,9 @@ function ensure ($mysqli) {
         'revision' => [
             'type' => 'bigint(20) unsigned',
         ],
+        'update_time' => [
+            'type' => 'bigint(20) unsigned',
+        ],
     ]);
 
 }

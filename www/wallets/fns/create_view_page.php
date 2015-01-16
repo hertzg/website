@@ -36,10 +36,11 @@ function create_view_page ($mysqli, $wallet) {
         $_SESSION['wallets/errors'],
         $_SESSION['wallets/messages'],
         $_SESSION['wallets/new-transaction/errors'],
-        $_SESSION['wallets/new-transaction/values']
+        $_SESSION['wallets/new-transaction/values'],
+        $_SESSION['wallets/view-transaction/messages']
     );
 
-    include_once __DIR__.'/format_amount.php';
+    include_once __DIR__.'/amount_html.php';
 
     if ($wallet->num_transactions) {
 
@@ -57,7 +58,7 @@ function create_view_page ($mysqli, $wallet) {
             else $description = "$date &middot; ".htmlspecialchars($description);
 
             $item_id = $transaction->id;
-            $title = format_amount($transaction->amount);
+            $title = amount_html($transaction->amount);
 
             $items[] = Page\imageArrowLinkWithDescription($title,
                 $description, "../view-transaction/?id=$item_id",
@@ -88,7 +89,7 @@ function create_view_page ($mysqli, $wallet) {
         Page\sessionMessages('wallets/view/messages')
         .Form\label('Name', htmlspecialchars($wallet->name))
         .'<div class="hr"></div>'
-        .Form\label('Balance', format_amount($wallet->balance))
+        .Form\label('Balance', amount_html($wallet->balance))
         .Page\infoText($infoText)
         .create_panel('Transactions', $transactionsContent)
         .create_panel('Wallet Options', $optionsContent)

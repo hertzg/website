@@ -7,6 +7,8 @@ list($transaction, $id, $user) = require_transaction($mysqli);
 $base = '../../';
 $fnsDir = '../../fns';
 
+unset($_SESSION['wallets/view-transaction/messages']);
+
 include_once '../fns/create_view_transaction_page.php';
 include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/Page/confirmDialog.php";
