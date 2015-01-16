@@ -75,6 +75,7 @@ function create_view_page ($mysqli, $wallet) {
         $transactionsContent = Page\info('No transactions');
     }
 
+    include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/Page/infoText.php";
@@ -94,7 +95,8 @@ function create_view_page ($mysqli, $wallet) {
         .Form\label('Balance', amount_html($wallet->balance))
         .Page\infoText($infoText)
         .create_panel('Transactions', $transactionsContent)
-        .create_panel('Wallet Options', $optionsContent)
+        .create_panel('Wallet Options', $optionsContent),
+        create_new_item_button('Wallet', '../')
     );
 
 }
