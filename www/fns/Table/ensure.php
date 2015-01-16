@@ -37,9 +37,12 @@ function ensure ($mysqli, $tableName, $columns) {
 
             $existingType = $existingColumn->COLUMN_TYPE;
             $existingNullable = $existingColumn->IS_NULLABLE === 'YES';
+            $existingPrimary = $existingColumn->COLUMN_KEY == 'PRI';
+            $existingIncrement = $existingColumn->EXTRA == 'auto_increment';
 
             $column = $columns[$columnName];
             $type = $column['type'];
+            $primary = array_key_exists('primary', $column);
             unset($columns[$columnName]);
 
             if (array_key_exists('nullable', $column)) {
@@ -48,8 +51,16 @@ function ensure ($mysqli, $tableName, $columns) {
                 $nullable = false;
             }
 
+            if ($primary) $primaryOk = $existingPrimary && $existingIncrement;
+            else $primaryOk = !$existingPrimary && !$existingIncrement;
+
             if ($type === $existingType &&
-                $nullable === $existingNullable) continue;
+                $nullable === $existingNullable && $primaryOk) continue;
+
+            if ($existingPrimary) {
+                $sql = "alter table `$escapedTableName` drop primary key";
+                $mysqli->query($sql) || trigger_error($mysqli->error);
+            }
 
             $output .= "Change column \"$tableName.$columnName\""
                 ." from $existingType to $type.\n";
