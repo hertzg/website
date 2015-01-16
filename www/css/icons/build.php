@@ -101,7 +101,8 @@ render($content, 'edit-image.svg', $names);
 $names = ['wallet', 'create-wallet', 'edit-wallet', 'wallets'];
 render($content, 'wallet.svg', $names);
 
-$names = ['transaction', 'create-transaction', 'edit-transaction'];
+$names = ['transaction', 'create-transaction',
+    'edit-transaction', 'transactions'];
 render($content, 'transaction.svg', $names);
 
 file_put_contents(__DIR__.'/compressed.css', $content);

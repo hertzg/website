@@ -42,14 +42,19 @@ function create_view_page ($mysqli, $wallet) {
 
     include_once __DIR__.'/amount_html.php';
 
-    if ($wallet->num_transactions) {
+    $num_transactions = $wallet->num_transactions;
+    if ($num_transactions) {
+
+        $limit = 5;
 
         include_once "$fnsDir/WalletTransactions/indexOnWallet.php";
         $transactions = WalletTransactions\indexOnWallet($mysqli, $id);
 
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         $items = [];
-        foreach ($transactions as $transaction) {
+        foreach ($transactions as $i => $transaction) {
+
+            if ($i == $limit) break;
 
             $date = ucfirst(date_ago($transaction->insert_time));
 
@@ -66,6 +71,12 @@ function create_view_page ($mysqli, $wallet) {
                 $description, "../view-transaction/?id=$item_id",
                 'transaction', ['id' => $item_id]);
 
+        }
+
+        if ($num_transactions > $limit) {
+            $items[] = Page\imageArrowLinkWithDescription('All Transactions',
+                "$num_transactions total.", "../all-transactions/?id=$id",
+                'transactions');
         }
 
         $transactionsContent = join('<div class="hr"></div>', $items);
