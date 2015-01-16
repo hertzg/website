@@ -9,12 +9,9 @@ include_once '../fns/require_wallet.php';
 include_once '../../lib/mysqli.php';
 list($wallet, $id, $user) = require_wallet($mysqli);
 
-include_once "$fnsDir/WalletTransactions/request.php";
-list($amount, $parsed_amount, $description) = WalletTransactions\request();
-
-$errors = [];
-if ($amount === '') $errors[] = 'Enter amount.';
-elseif ($parsed_amount === 0) $errors[] = 'The amount is invalid.';
+include_once '../fns/request_transaction_params.php';
+$values = request_transaction_params($errors);
+list($amount, $parsed_amount, $description) = $values;
 
 include_once "$fnsDir/redirect.php";
 
