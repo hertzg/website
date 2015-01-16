@@ -27,6 +27,9 @@ function ensure ($mysqli) {
         'anonymous_can_send_task' => [
             'type' => 'tinyint(3) unsigned',
         ],
+        'balance_total' => [
+            'type' => 'bigint(20)',
+        ],
         'birthdays_check_day' => [
             'type' => 'bigint(20) unsigned',
         ],
