@@ -11,7 +11,7 @@ if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
     include_once "$fnsDir/amount_text.php";
     $values = [
-        'amount' => amount_text($transaction->amount),
+        'amount' => amount_text($transaction->amount, ''),
         'description' => $transaction->description,
     ];
 }
