@@ -23,10 +23,20 @@ function sort_columns ($mysqli, $table, $db) {
         $sql = "alter table `$escapedTable`"
             ." modify `$name` $column->COLUMN_TYPE ";
 
+        $charset = $column->CHARACTER_SET_NAME;
+        if ($charset !== null) {
+            $sql .= "charset $charset collate $column->COLLATION_NAME ";
+        }
+
+        if ($column->IS_NULLABLE == 'YES') $sql .= 'default null ';
+        else $sql .= 'not null ';
+
+        if ($column->EXTRA == 'auto_increment') $sql .= 'auto_increment ';
+
         if ($i) $sql .= "after `$previousName`";
         else $sql .= 'first';
 
-        echo "$sql\n";
+        echo "SQL: $sql\n";
 
         $mysqli->query($sql) || trigger_error($mysqli->error);
 

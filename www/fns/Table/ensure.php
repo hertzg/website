@@ -39,6 +39,8 @@ function ensure ($mysqli, $tableName, $columns) {
             $existingNullable = $existingColumn->IS_NULLABLE === 'YES';
             $existingPrimary = $existingColumn->COLUMN_KEY == 'PRI';
             $existingIncrement = $existingColumn->EXTRA == 'auto_increment';
+            $existingCharset = $existingColumn->CHARACTER_SET_NAME;
+            $existingCollation = $existingColumn->COLLATION_NAME;
 
             $column = $columns[$columnName];
             $type = $column['type'];
@@ -51,39 +53,47 @@ function ensure ($mysqli, $tableName, $columns) {
                 $nullable = false;
             }
 
+            if (array_key_exists('characterSet', $column)) {
+                $charset = $column['characterSet'];
+                $collation = $column['collation'];
+            } else {
+                $charset = $collation = null;
+            }
+
             if ($primary) $primaryOk = $existingPrimary && $existingIncrement;
             else $primaryOk = !$existingPrimary && !$existingIncrement;
 
             if ($type === $existingType &&
-                $nullable === $existingNullable && $primaryOk) continue;
+                $nullable === $existingNullable &&
+                $charset === $existingCharset &&
+                $collation === $existingCollation && $primaryOk) continue;
 
             if ($existingPrimary) {
                 $sql = "alter table `$escapedTableName` drop primary key";
+                $output .= "$sql\n";
                 $mysqli->query($sql) || trigger_error($mysqli->error);
             }
-
-            $output .= "Change column \"$tableName.$columnName\""
-                ." from $existingType to $type.\n";
 
             $escapedColumnName = $mysqli->real_escape_string($columnName);
             $sql = "alter table `$escapedTableName` change `$escapedColumnName`"
                 ." `$escapedColumnName` ".columnDefinition($column);
+
+            $output .= "$sql\n";
 
             $mysqli->query($sql) || trigger_error($mysqli->error);
 
         }
 
         foreach ($columns as $name => $column) {
-            $output .= "Add column \"$tableName.$name\".\n";
             $escapedName = $mysqli->real_escape_string($name);
             $definition = columnDefinition($column);
             $sql = "alter table `$escapedTableName`"
                 ." add `$escapedName` $definition";
+            $output .= "$sql\n";
             $mysqli->query($sql) || trigger_error($mysqli->error);
         }
 
     } else {
-        $output .= "Create table \"$tableName\".\n";
         $sql = "create table `$escapedTableName` (";
         $first = true;
         foreach ($columns as $name => $column) {
@@ -94,12 +104,14 @@ function ensure ($mysqli, $tableName, $columns) {
             $sql .= "`$escapedName` $definition";
         }
         $sql .= ')';
+        $output .= "$sql\n";
         $mysqli->query($sql) || trigger_error($mysqli->error);
     }
 
     if ($output === '') {
         $output .= "Nothing to do for the table \"$tableName\".\n";
     }
+
     return $output;
 
 }
