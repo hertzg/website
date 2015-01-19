@@ -87,6 +87,7 @@ function ensure ($mysqli) {
         ],
         'last_login_time' => [
             'type' => 'bigint(20) unsigned',
+            'nullable' => true,
         ],
         'num_api_keys' => [
             'type' => 'bigint(20) unsigned',

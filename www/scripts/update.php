@@ -5,8 +5,10 @@ chdir(__DIR__);
 include_once '../../lib/cli.php';
 include_once '../lib/mysqli.php';
 
-$sql = 'update users set access_time = last_login_time'
-    .' where last_login_time <> 0';
+$sql = 'update users set last_login_time = null where last_login_time = 0';
+$mysqli->query($sql) || trigger_error($mysqli->error);
+
+$sql = 'update users set access_time = last_login_time';
 $mysqli->query($sql) || trigger_error($mysqli->error);
 
 include_once '../fns/Users/emailExpireDays.php';
