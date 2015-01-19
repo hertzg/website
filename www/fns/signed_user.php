@@ -44,18 +44,23 @@ function signed_user () {
             include_once __DIR__.'/Cookie/set.php';
             Cookie\set('username', $user->username);
 
-            if (array_key_exists('token', $_SESSION)) {
-
-                $token = $_SESSION['token'];
-                $value = bin2hex($token->token_text);
-                Cookie\set('token', $value);
-
-                include_once __DIR__.'/Tokens/updateAccessTime.php';
-                Tokens\updateAccessTime($mysqli, $token->id);
-
-            }
-
             $time = time();
+
+            if (array_key_exists('token', $_SESSION)) {
+                $token = $_SESSION['token'];
+                $access_time = $token->access_time;
+                if ($access_time === null || $access_time + 30 < $time) {
+
+                    $value = bin2hex($token->token_text);
+                    Cookie\set('token', $value);
+
+                    include_once __DIR__.'/Tokens/editAccessTime.php';
+                    Tokens\editAccessTime($mysqli, $token->id, $time);
+
+                    $token->access_time = $time;
+
+                }
+            }
 
             $access_time = $user->access_time;
             if ($access_time === null || $access_time + 30 < $time) {
