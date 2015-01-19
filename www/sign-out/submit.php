@@ -33,6 +33,7 @@ session_destroy();
 session_start_custom();
 
 $_SESSION['sign-in/messages'] = ['You have been signed out.'];
+unset($_SESSION['sign-in/errors']);
 
 include_once '../fns/redirect.php';
 redirect('../sign-in/');

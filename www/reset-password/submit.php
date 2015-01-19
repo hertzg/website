@@ -62,4 +62,6 @@ $_SESSION['sign-in/messages'] = [
     'Password has been reset.',
     'You can sign in with your new password.'
 ];
+unset($_SESSION['sign-in/errors']);
+
 redirect('../sign-in/');

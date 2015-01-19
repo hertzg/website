@@ -68,6 +68,7 @@ $_SESSION['sign-in/messages'] = [
     'Thank you for signing up.',
     'Sign in to proceed.'
 ];
+unset($_SESSION['sign-in/errors']);
 
 session_commit();
 
