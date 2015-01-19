@@ -4,6 +4,8 @@ namespace Users;
 
 function delete ($mysqli, $id) {
 
+    // TODO separate folder deletion from this function
+
     $sql = "delete from users where id_users = $id";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 

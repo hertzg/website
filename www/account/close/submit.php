@@ -1,12 +1,14 @@
 <?php
 
-include_once '../../fns/require_same_domain_referer.php';
+$fnsDir = '../../fns';
+
+include_once "$fnsDir/require_same_domain_referer.php";
 require_same_domain_referer('./');
 
-include_once '../../fns/require_user.php';
+include_once "$fnsDir/require_user.php";
 $user = require_user('../../');
 
-include_once '../../fns/request_strings.php';
+include_once "$fnsDir/request_strings.php";
 list($password) = request_strings('password');
 
 $errors = [];
@@ -14,7 +16,7 @@ $errors = [];
 if ($password === '') {
     $errors[] = 'Enter password.';
 } else {
-    include_once '../../fns/Password/match.php';
+    include_once "$fnsDir/Password/match.php";
     $hash = $user->password_hash;
     $salt = $user->password_salt;
     if (!Password\match($hash, $salt, $password)) {
@@ -22,7 +24,7 @@ if ($password === '') {
     }
 }
 
-include_once '../../fns/redirect.php';
+include_once "$fnsDir/redirect.php";
 
 if ($errors) {
     $_SESSION['account/close/errors'] = $errors;
@@ -31,13 +33,13 @@ if ($errors) {
 
 unset($_SESSION['account/close/errors']);
 
-include_once 'fns/close_account.php';
+include_once "$fnsDir/Users/Account/Close/close.php";
 include_once '../../lib/mysqli.php';
-close_account($mysqli, $user->id_users);
+Users\Account\Close\close($mysqli, $user);
 
 $_SESSION['sign-in/messages'] = ['Your account has been closed.'];
 
-include_once '../../fns/Cookie/remove.php';
+include_once "$fnsDir/Cookie/remove.php";
 Cookie\remove('username');
 
 redirect('../../sign-in/');

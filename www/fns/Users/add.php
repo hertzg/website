@@ -4,6 +4,8 @@ namespace Users;
 
 function add ($mysqli, $username, $password, $email) {
 
+    // TODO separate folder creation from this function
+
     include_once __DIR__.'/../Password/hash.php';
     list($password_hash, $password_salt) = \Password\hash($password);
 
