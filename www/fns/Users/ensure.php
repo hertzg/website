@@ -42,6 +42,10 @@ function ensure ($mysqli) {
             'characterSet' => 'ascii',
             'collation' => 'ascii_bin',
         ],
+        'email_expire_time' => [
+            'type' => 'bigint(20) unsigned',
+            'nullable' => true,
+        ],
         'email_verified' => [
             'type' => 'tinyint(4) unsigned',
         ],
