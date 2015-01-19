@@ -11,7 +11,7 @@ $microtime = microtime(true);
 include_once '../fns/Users/expireDays.php';
 $expire_time = time() - Users\expireDays() * 24 * 60 * 60;
 
-$sql = "select * from users where email_expire_time < $expire_time";
+$sql = "select * from users where email_expire_time < $expire_time limit 10";
 $users = mysqli_query_object($mysqli, $sql);
 
 if ($users) {
