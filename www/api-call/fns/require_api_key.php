@@ -47,18 +47,23 @@ function require_api_key ($permission_field) {
             die('"ACCESS_DENIED"');
         }
 
-        include_once "$fnsDir/ApiKeys/updateAccessTime.php";
-        ApiKeys\updateAccessTime($mysqli, $apiKey->id);
-
-        include_once "$fnsDir/Users/get.php";
-        $user = Users\get($mysqli, $apiKey->id_users);
+        $time = time();
 
         $expire_time = $apiKey->expire_time;
-        if ($expire_time !== null && $expire_time < time()) {
+        if ($expire_time !== null && $expire_time < $time) {
             http_response_code(403);
             header('Content-Type: application/json');
             die('"API_KEY_EXPIRED"');
         }
+
+        $access_time = $apiKey->access_time;
+        if ($access_time === null || $access_time + 30 < $time) {
+            include_once "$fnsDir/ApiKeys/editAccessTime.php";
+            ApiKeys\editAccessTime($mysqli, $apiKey->id, $time);
+        }
+
+        include_once "$fnsDir/Users/get.php";
+        $user = Users\get($mysqli, $apiKey->id_users);
 
     }
 
