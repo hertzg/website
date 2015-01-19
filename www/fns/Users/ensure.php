@@ -9,6 +9,10 @@ function ensure ($mysqli) {
 
     include_once __DIR__.'/../Table/ensure.php';
     return \Table\ensure($mysqli, 'users', [
+        'access_time' => [
+            'type' => 'bigint(21) unsigned',
+            'nullable' => true,
+        ],
         'anonymous_can_send_bookmark' => [
             'type' => 'tinyint(3) unsigned',
         ],

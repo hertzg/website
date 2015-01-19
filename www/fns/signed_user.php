@@ -31,15 +31,19 @@ function signed_user () {
 
     if (array_key_exists('user', $_SESSION)) {
 
+        $id_users = $_SESSION['user']->id_users;
+
         include_once __DIR__.'/get_mysqli.php';
         $mysqli = get_mysqli();
 
         include_once __DIR__.'/Users/get.php';
-        $user = Users\get($mysqli, $_SESSION['user']->id_users);
+        $user = Users\get($mysqli, $id_users);
 
         if ($user) {
+
             include_once __DIR__.'/Cookie/set.php';
             Cookie\set('username', $user->username);
+
             if (array_key_exists('token', $_SESSION)) {
 
                 $token = $_SESSION['token'];
@@ -50,6 +54,15 @@ function signed_user () {
                 Tokens\updateAccessTime($mysqli, $token->id);
 
             }
+
+            $time = time();
+
+            $access_time = $user->access_time;
+            if ($access_time === null || $access_time + 30 < $time) {
+                include_once __DIR__.'/Users/editAccessTime.php';
+                Users\editAccessTime($mysqli, $id_users, $time);
+            }
+
         }
 
     }

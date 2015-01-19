@@ -70,7 +70,7 @@ function ensure ($mysqli, $tableName, $columns) {
 
             if ($existingPrimary) {
                 $sql = "alter table `$escapedTableName` drop primary key";
-                $output .= "$sql\n";
+                $output .= "SQL: $sql\n";
                 $mysqli->query($sql) || trigger_error($mysqli->error);
             }
 
@@ -78,7 +78,7 @@ function ensure ($mysqli, $tableName, $columns) {
             $sql = "alter table `$escapedTableName` change `$escapedColumnName`"
                 ." `$escapedColumnName` ".columnDefinition($column);
 
-            $output .= "$sql\n";
+            $output .= "SQL: $sql\n";
 
             $mysqli->query($sql) || trigger_error($mysqli->error);
 
@@ -89,7 +89,7 @@ function ensure ($mysqli, $tableName, $columns) {
             $definition = columnDefinition($column);
             $sql = "alter table `$escapedTableName`"
                 ." add `$escapedName` $definition";
-            $output .= "$sql\n";
+            $output .= "SQL: $sql\n";
             $mysqli->query($sql) || trigger_error($mysqli->error);
         }
 
@@ -104,7 +104,7 @@ function ensure ($mysqli, $tableName, $columns) {
             $sql .= "`$escapedName` $definition";
         }
         $sql .= ')';
-        $output .= "$sql\n";
+        $output .= "SQL: $sql\n";
         $mysqli->query($sql) || trigger_error($mysqli->error);
     }
 
