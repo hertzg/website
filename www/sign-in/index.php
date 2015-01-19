@@ -10,15 +10,17 @@ if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];
 } else {
 
-    if (array_key_exists('username', $_COOKIE)) {
-        $username = $_COOKIE['username'];
-        if (!is_string($username)) $username = '';
-    } else {
-        $username = '';
-    }
-
     include_once '../fns/request_strings.php';
-    list($return) = request_strings('return');
+    list($username, $return) = request_strings('username', 'return');
+
+    if ($username === '') {
+        if (array_key_exists('username', $_COOKIE)) {
+            $username = $_COOKIE['username'];
+            if (!is_string($username)) $username = '';
+        } else {
+            $username = '';
+        }
+    }
 
     $values = [
         'username' => $username,
