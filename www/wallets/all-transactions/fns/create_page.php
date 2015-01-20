@@ -5,13 +5,28 @@ function create_page ($mysqli, $user, $wallet, $base = '') {
     $id = $wallet->id;
     $fnsDir = __DIR__.'/../../../fns';
 
-    include_once "$fnsDir/WalletTransactions/indexOnWallet.php";
-    $transactions = WalletTransactions\indexOnWallet($mysqli, $id);
+    include_once "$fnsDir/Paging/requestOffset.php";
+    $offset = Paging\requestOffset("./?id=$id");
+
+    include_once "$fnsDir/Paging/limit.php";
+    $limit = Paging\limit();
+
+    include_once "$fnsDir/WalletTransactions/indexPageOnWallet.php";
+    $transactions = WalletTransactions\indexPageOnWallet(
+        $mysqli, $id, $offset, $limit, $total);
 
     $items = [];
 
+    $params = ['id' => $id];
+
+    include_once __DIR__.'/render_prev_button.php';
+    render_prev_button($offset, $limit, $total, $items, $params);
+
     include_once __DIR__.'/../../fns/render_transactions.php';
     render_transactions($transactions, $items, $base);
+
+    include_once __DIR__.'/render_next_button.php';
+    render_next_button($offset, $limit, $total, $items, $params);
 
     unset($_SESSION['wallets/view/messages']);
 

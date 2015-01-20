@@ -1,12 +1,12 @@
 <?php
 
-namespace Notes;
+namespace WalletTransactions;
 
-function indexPageOnUser ($mysqli, $id_users, $offset, $limit, &$total) {
+function indexPageOnWallet ($mysqli, $id_wallets, $offset, $limit, &$total) {
 
     $fnsDir = __DIR__.'/..';
 
-    $fromWhere = "from notes where id_users = $id_users";
+    $fromWhere = "from wallet_transactions where id_wallets = $id_wallets";
 
     $sql = "select count(*) total $fromWhere";
     include_once "$fnsDir/mysqli_single_object.php";
