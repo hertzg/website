@@ -19,7 +19,10 @@ function imagebmp ($image, $filename = false) {
 
     fwrite($f, 'BM', 2);
     fwrite($f, pack('VvvV', $size, 0, 0, $offBits));
-    fwrite($f, pack('VVVvvVVVVVV', 40, $width, $height, 1, 24, 0, $sizeImage, 0, 0, 0, 0));
+
+    $data = pack('VVVvvVVVVVV', 40, $width,
+        $height, 1, 24, 0, $sizeImage, 0, 0, 0, 0);
+    fwrite($f, $data);
 
     $numpad = $stride - $bpLine;
     for ($y = $height - 1; $y >= 0; $y--) {

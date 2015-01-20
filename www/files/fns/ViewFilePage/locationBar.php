@@ -13,8 +13,9 @@ function locationBar ($mysqli, $file) {
         while ($parent_id_folders) {
             $parentFolder = \Folders\get($mysqli,
                 $file->id_users, $parent_id_folders);
+            $href = "../?id_folders=$parent_id_folders#$hash";
             $parentLinks[] =
-                "<a class=\"tag\" href=\"../?id_folders=$parent_id_folders#$hash\">"
+                "<a class=\"tag\" href=\"$href\">"
                     .htmlspecialchars($parentFolder->name)
                 .'</a>';
             $hash = "folder_$parent_id_folders";

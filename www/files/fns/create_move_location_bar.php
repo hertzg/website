@@ -19,7 +19,8 @@ function create_move_location_bar ($mysqli,
             while ($parent_id_folders) {
                 $parentFolder = \Folders\get($mysqli,
                     $folder->id_users, $parent_id_folders);
-                $href = "./?$item_id=$id&amp;$folder_id=$parentFolder->id_folders";
+                $href = "./?$item_id=$id&amp;"
+                    ."$folder_id=$parentFolder->id_folders";
                 $parentLinks[] =
                     "<a class=\"tag\" href=\"$href#$hash\">"
                         .htmlspecialchars($parentFolder->name)

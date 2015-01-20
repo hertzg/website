@@ -8,7 +8,8 @@
         deleteAllLink.blur()
         if (dialogShown) return
         var yesText = 'Yes, delete all transactions'
-        var questionText = 'Are you sure you want to delete all the transactions?'
+        var questionText = 'Are you sure you want' +
+            ' to delete all the transactions?'
         confirmDialog(questionText, yesText, yesHref, function () {
             dialogShown = false
         })

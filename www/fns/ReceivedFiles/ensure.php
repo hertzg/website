@@ -31,7 +31,8 @@ function ensure ($mysqli) {
             'type' => 'bigint(20) unsigned',
         ],
         'media_type' => [
-            'type' => "enum('archive','audio','image','text','unknown','video')",
+            'type' => "enum('archive','audio',"
+                ."'image','text','unknown','video')",
             'characterSet' => 'utf8',
             'collation' => 'utf8_general_ci',
         ],
