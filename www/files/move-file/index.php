@@ -10,28 +10,30 @@ include_once '../../lib/mysqli.php';
 list($file, $id, $user) = require_file($mysqli);
 $id_users = $user->id_users;
 
-include_once '../../fns/request_strings.php';
+$fnsDir = '../../fns';
+
+include_once "$fnsDir/request_strings.php";
 list($id_folders) = request_strings('id_folders');
 
 $parentFolder = null;
 $id_folders = abs((int)$id_folders);
 if ($id_folders) {
 
-    include_once '../../fns/Folders/get.php';
-    $parentFolder = Folders\get($mysqli, $id_users, $id_folders);
+    include_once "$fnsDir/Folders/getOnUser.php";
+    $parentFolder = Folders\getOnUser($mysqli, $id_users, $id_folders);
 
     if (!$parentFolder) {
-        include_once '../../fns/redirect.php';
+        include_once "$fnsDir/redirect.php";
         redirect("./?id=$id");
     }
 
 }
 
-include_once '../../fns/Folders/indexInUserFolder.php';
+include_once "$fnsDir/Folders/indexInUserFolder.php";
 $folders = Folders\indexInUserFolder($mysqli, $id_users, $id_folders);
 
-include_once '../../fns/Page/imageArrowLink.php';
-include_once '../../fns/Page/imageLink.php';
+include_once "$fnsDir/Page/imageArrowLink.php";
+include_once "$fnsDir/Page/imageLink.php";
 
 $items = [];
 if ($folders) {
@@ -42,7 +44,7 @@ if ($folders) {
             $href, 'folder', ['id' => $folder->id_folders]);
     }
 } else {
-    include_once '../../fns/Page/info.php';
+    include_once "$fnsDir/Page/info.php";
     $items[] = Page\info('No subfolders');
 }
 
@@ -62,9 +64,9 @@ unset(
 );
 
 include_once '../fns/create_move_location_bar.php';
-include_once '../../fns/Page/sessionErrors.php';
-include_once '../../fns/Page/tabs.php';
-include_once '../../fns/Page/warnings.php';
+include_once "$fnsDir/Page/sessionErrors.php";
+include_once "$fnsDir/Page/tabs.php";
+include_once "$fnsDir/Page/warnings.php";
 $content = Page\tabs(
     [
         [
@@ -82,5 +84,5 @@ $content = Page\tabs(
     .join('<div class="hr"></div>', $items)
 );
 
-include_once '../../fns/echo_page.php';
+include_once "$fnsDir/echo_page.php";
 echo_page($user, "Move File #$id", $content, '../../');

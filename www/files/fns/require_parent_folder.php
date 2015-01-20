@@ -14,8 +14,8 @@ function require_parent_folder ($mysqli) {
 
     if ($id) {
 
-        include_once "$fnsDir/Folders/get.php";
-        $folder = Folders\get($mysqli, $user->id_users, $id);
+        include_once "$fnsDir/Folders/getOnUser.php";
+        $folder = Folders\getOnUser($mysqli, $user->id_users, $id);
 
         if (!$folder) {
             include_once "$fnsDir/redirect.php";

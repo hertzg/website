@@ -9,9 +9,9 @@ function locationBar ($mysqli, $file) {
 
     $parent_id_folders = $file->id_folders;
     if ($parent_id_folders) {
-        include_once __DIR__.'/../../../fns/Folders/get.php';
+        include_once __DIR__.'/../../../fns/Folders/getOnUser.php';
         while ($parent_id_folders) {
-            $parentFolder = \Folders\get($mysqli,
+            $parentFolder = \Folders\getOnUser($mysqli,
                 $file->id_users, $parent_id_folders);
             $href = "../?id_folders=$parent_id_folders#$hash";
             $parentLinks[] =

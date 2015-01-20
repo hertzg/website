@@ -5,27 +5,29 @@ include_once '../../lib/mysqli.php';
 list($folder, $id_folders, $user) = require_folder($mysqli);
 $id_users = $user->id_users;
 
-include_once '../../fns/request_strings.php';
+$fnsDir = '../../fns';
+
+include_once "$fnsDir/request_strings.php";
 list($parent_id_folders) = request_strings('parent_id_folders');
 
 $parentFolder = null;
 $parent_id_folders = abs((int)$parent_id_folders);
 if ($parent_id_folders) {
 
-    include_once '../../fns/Folders/get.php';
-    $parentFolder = Folders\get($mysqli, $id_users, $parent_id_folders);
+    include_once "$fnsDir/Folders/getOnUser.php";
+    $parentFolder = Folders\getOnUser($mysqli, $id_users, $parent_id_folders);
 
     if (!$parentFolder) {
-        include_once '../../fns/redirect.php';
+        include_once "$fnsDir/redirect.php";
         redirect("./?id_folders=$id_folders");
     }
 
 }
 
-include_once '../../fns/Folders/indexInUserFolder.php';
+include_once "$fnsDir/Folders/indexInUserFolder.php";
 $folders = Folders\indexInUserFolder($mysqli, $id_users, $parent_id_folders);
 
-include_once '../../fns/Page/imageArrowLink.php';
+include_once "$fnsDir/Page/imageArrowLink.php";
 
 $items = [];
 if ($folders) {
@@ -33,7 +35,7 @@ if ($folders) {
         $itemId = $itemFolder->id_folders;
         $escapedName = htmlspecialchars($itemFolder->name);
         if ($itemId == $id_folders) {
-            include_once '../../fns/Page/disabledImageLink.php';
+            include_once "$fnsDir/Page/disabledImageLink.php";
             $items[] = Page\disabledImageLink($escapedName, 'folder');
         } else {
             $href = "./?id_folders=$id_folders&amp;parent_id_folders=$itemId";
@@ -42,14 +44,14 @@ if ($folders) {
         }
     }
 } else {
-    include_once '../../fns/Page/info.php';
+    include_once "$fnsDir/Page/info.php";
     $items[] = Page\info('No subfolders');
 }
 
 if ($parent_id_folders != $folder->parent_id_folders) {
     $parentParam = "parent_id_folders=$parent_id_folders";
     $href = "submit.php?id_folders=$id_folders&amp;$parentParam";
-    include_once '../../fns/Page/imageLink.php';
+    include_once "$fnsDir/Page/imageLink.php";
     $items[] = Page\imageLink('Move Here', $href, 'move-folder');
 }
 
@@ -70,5 +72,5 @@ unset(
 include_once 'fns/create_content.php';
 $content = create_content($mysqli, $folder, $parentFolder, $items);
 
-include_once '../../fns/echo_page.php';
+include_once "$fnsDir/echo_page.php";
 echo_page($user, "Move Folder #$id_folders", $content, '../../');

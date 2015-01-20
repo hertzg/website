@@ -12,8 +12,8 @@ function require_folder ($mysqli, $base = '') {
 
     $id_folders = abs((int)$id_folders);
 
-    include_once "$fnsDir/Folders/get.php";
-    $folder = Folders\get($mysqli, $user->id_users, $id_folders);
+    include_once "$fnsDir/Folders/getOnUser.php";
+    $folder = Folders\getOnUser($mysqli, $user->id_users, $id_folders);
 
     if (!$folder) {
         include_once "$fnsDir/redirect.php";

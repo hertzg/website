@@ -14,8 +14,8 @@ function require_optional_folder ($mysqli, $base) {
     $id_folders = abs((int)$id_folders);
 
     if ($id_folders) {
-        include_once "$fnsDir/Folders/get.php";
-        $folder = Folders\get($mysqli, $id_users, $id_folders);
+        include_once "$fnsDir/Folders/getOnUser.php";
+        $folder = Folders\getOnUser($mysqli, $id_users, $id_folders);
         if ($folder) {
             $id_folders = $folder->id_folders;
         } else {
