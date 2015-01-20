@@ -14,7 +14,6 @@ function ensure ($mysqli, $tableName, $columns) {
 
     include_once __DIR__.'/columnDefinition.php';
 
-    include_once "$fnsDir/mysqli_single_object.php";
     $sql = 'select * from information_schema.tables'
         ." where table_schema = '$escapedDb'"
         ." and table_name = '$escapedTableName'";
