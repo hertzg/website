@@ -1,6 +1,6 @@
 <?php
 
-function create_all_transactions_page ($mysqli, $user, $wallet, $base = '') {
+function create_page ($mysqli, $user, $wallet, $base = '') {
 
     $id = $wallet->id;
     $fnsDir = __DIR__.'/../../../fns';

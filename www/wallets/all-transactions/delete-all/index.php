@@ -7,10 +7,10 @@ list($wallet, $id, $user) = require_transactions($mysqli, '../');
 $base = '../../../';
 $fnsDir = '../../../fns';
 
-include_once '../fns/create_all_transactions_page.php';
+include_once '../fns/create_page.php';
 include_once "$fnsDir/Page/confirmDialog.php";
 $content =
-    create_all_transactions_page($mysqli, $user, $wallet, '../')
+    create_page($mysqli, $user, $wallet, '../')
     .Page\confirmDialog(
         'Are you sure you want to delete all the transactions?',
         'Yes, delete all transactions', "submit.php?id=$id", "../?id=$id");
