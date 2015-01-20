@@ -3,8 +3,7 @@
 function require_transactions ($mysqli, $base = '') {
 
     include_once __DIR__.'/../../fns/require_wallet.php';
-    $values = require_wallet($mysqli, $base);
-    list($wallet, $id, $user) = $values;
+    list($wallet, $id, $user) = require_wallet($mysqli, $base);
 
     if (!$wallet->num_transactions) {
         unset(

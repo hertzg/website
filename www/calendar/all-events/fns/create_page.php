@@ -4,10 +4,20 @@ function create_page ($mysqli, $user, $base = '') {
 
     $fnsDir = __DIR__.'/../../../fns';
 
+    include_once "$fnsDir/Paging/requestOffset.php";
+    $offset = Paging\requestOffset();
+
+    include_once "$fnsDir/Paging/limit.php";
+    $limit = Paging\limit();
+
     $items = [];
 
-    include_once "$fnsDir/Events/indexOnUser.php";
-    $events = Events\indexOnUser($mysqli, $user->id_users);
+    include_once "$fnsDir/Events/indexPageOnUser.php";
+    $events = Events\indexPageOnUser($mysqli,
+        $user->id_users, $offset, $limit, $total);
+
+    include_once __DIR__.'/render_prev_button.php';
+    render_prev_button($offset, $limit, $total, $items);
 
     include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
     foreach ($events as $event) {
@@ -16,6 +26,9 @@ function create_page ($mysqli, $user, $base = '') {
             htmlspecialchars($event->text),
             $description, "$base../view-event/?id=$event->id", 'event');
     }
+
+    include_once __DIR__.'/render_next_button.php';
+    render_next_button($offset, $limit, $total, $items);
 
     include_once "$fnsDir/Page/imageLink.php";
     $deleteLink =
