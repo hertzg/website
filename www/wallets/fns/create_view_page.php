@@ -5,10 +5,13 @@ function create_view_page ($mysqli, $wallet) {
     $fnsDir = __DIR__.'/../../fns';
     $id = $wallet->id;
 
-    include_once "$fnsDir/date_ago.php";
-    $infoText = 'Wallet created '.date_ago($wallet->insert_time).'.';
+    include_once "$fnsDir/format_author.php";
+    $author = format_author($wallet->insert_time, $wallet->insert_api_key_name);
+    $infoText = "Wallet created $author.";
     if ($wallet->revision) {
-        $infoText .= '<br />Last modified '.date_ago($wallet->update_time).'.';
+        $author = format_author($wallet->update_time,
+            $wallet->update_api_key_name);
+        $infoText .= "<br />Last modified $author.";
     }
 
     include_once "$fnsDir/Page/imageArrowLink.php";

@@ -58,8 +58,7 @@ function edit ($mysqli, $apiKey, $name, $expire_time, $can_read_bookmarks,
     include_once "$fnsDir/Tasks/editApiKey.php";
     \Tasks\editApiKey($mysqli, $id, $name);
 
-//    TODO
-//    include_once "$fnsDir/Wallets/editApiKey.php";
-//    \Wallets\editApiKey($mysqli, $id, $name);
+    include_once "$fnsDir/Wallets/editApiKey.php";
+    \Wallets\editApiKey($mysqli, $id, $name);
 
 }
