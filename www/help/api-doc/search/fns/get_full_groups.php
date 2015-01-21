@@ -97,6 +97,16 @@ function get_full_groups () {
     $methods = task\received\get_methods();
     $groups['task']['subgroups']['received']['methods'] = $methods;
 
+    include_once "$dir/wallet/get_methods.php";
+    $groups['wallet']['methods'] = wallet\get_methods();
+
+    include_once "$dir/wallet/get_subgroups.php";
+    $groups['wallet']['subgroups'] = wallet\get_subgroups();
+
+    include_once "$dir/wallet/transaction/get_methods.php";
+    $methods = wallet\transaction\get_methods();
+    $groups['wallet']['subgroups']['transaction']['methods'] = $methods;
+
     return $groups;
 
 }

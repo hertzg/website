@@ -46,5 +46,9 @@ function get_groups () {
             'title' => 'Task',
             'description' => 'Methods for manipulating tasks',
         ],
+        'wallet' => [
+            'title' => 'Wallet',
+            'description' => 'Methods for manipulating wallets',
+        ],
     ];
 }
