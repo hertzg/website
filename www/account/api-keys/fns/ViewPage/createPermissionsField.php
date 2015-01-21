@@ -24,6 +24,7 @@ function createPermissionsField ($apiKey) {
     $add('Notifications', 'notification');
     $add('Schedules', 'schedule');
     $add('Tasks', 'task');
+    $add('Wallets', 'wallet');
     if ($content === '') $content = 'None';
 
     include_once __DIR__.'/../../../../fns/Form/label.php';

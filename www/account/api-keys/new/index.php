@@ -20,6 +20,7 @@ else {
         'notification_access' => 'none',
         'schedule_access' => 'none',
         'task_access' => 'none',
+        'wallet_access' => 'none',
     ];
 }
 

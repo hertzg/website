@@ -40,6 +40,9 @@ function ensure ($mysqli) {
         'can_read_tasks' => [
             'type' => 'tinyint(4)',
         ],
+        'can_read_wallets' => [
+            'type' => 'tinyint(4)',
+        ],
         'can_write_bookmarks' => [
             'type' => 'tinyint(4)',
         ],
@@ -65,6 +68,9 @@ function ensure ($mysqli) {
             'type' => 'tinyint(4)',
         ],
         'can_write_tasks' => [
+            'type' => 'tinyint(4)',
+        ],
+        'can_write_wallets' => [
             'type' => 'tinyint(4)',
         ],
         'expire_time' => [

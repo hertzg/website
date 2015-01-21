@@ -31,6 +31,7 @@ function create_permission_fields ($values) {
     $add('notification_access', 'Notifications');
     $add('schedule_access', 'Schedules');
     $add('task_access', 'Tasks');
+    $add('wallet_access', 'Wallets');
 
     return $html;
 

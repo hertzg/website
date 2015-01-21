@@ -19,7 +19,7 @@ if (array_key_exists($key, $_SESSION)) {
     ];
 
     $permissions = ['bookmark', 'channel', 'contact', 'event',
-        'file', 'note', 'notification', 'schedule', 'task'];
+        'file', 'note', 'notification', 'schedule', 'task', 'wallet'];
     foreach ($permissions as $key) {
         $property = "can_read_{$key}s";
         if ($apiKey->$property) {

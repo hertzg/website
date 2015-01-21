@@ -5,9 +5,10 @@ namespace Users\ApiKeys;
 function edit ($mysqli, $apiKey, $name, $expire_time, $can_read_bookmarks,
     $can_read_channels, $can_read_contacts, $can_read_events, $can_read_files,
     $can_read_notes, $can_read_notifications, $can_read_schedules,
-    $can_read_tasks, $can_write_bookmarks, $can_write_channels,
-    $can_write_contacts, $can_write_events, $can_write_files, $can_write_notes,
-    $can_write_notifications, $can_write_schedules, $can_write_tasks) {
+    $can_read_tasks, $can_read_wallets, $can_write_bookmarks,
+    $can_write_channels, $can_write_contacts, $can_write_events,
+    $can_write_files, $can_write_notes, $can_write_notifications,
+    $can_write_schedules, $can_write_tasks, $can_write_wallets) {
 
     $id = $apiKey->id;
     $fnsDir = __DIR__.'/../..';
@@ -16,10 +17,11 @@ function edit ($mysqli, $apiKey, $name, $expire_time, $can_read_bookmarks,
     \ApiKeys\edit($mysqli, $id, $name, $expire_time, $can_read_bookmarks,
         $can_read_channels, $can_read_contacts, $can_read_events,
         $can_read_files, $can_read_notes, $can_read_notifications,
-        $can_read_schedules, $can_read_tasks, $can_write_bookmarks,
-        $can_write_channels, $can_write_contacts, $can_write_events,
-        $can_write_files, $can_write_notes, $can_write_notifications,
-        $can_write_schedules, $can_write_tasks);
+        $can_read_schedules, $can_read_tasks, $can_read_wallets,
+        $can_write_bookmarks, $can_write_channels, $can_write_contacts,
+        $can_write_events, $can_write_files, $can_write_notes,
+        $can_write_notifications, $can_write_schedules,
+        $can_write_tasks, $can_write_wallets);
 
     if ($name === $apiKey->name) return;
 
@@ -55,5 +57,9 @@ function edit ($mysqli, $apiKey, $name, $expire_time, $can_read_bookmarks,
 
     include_once "$fnsDir/Tasks/editApiKey.php";
     \Tasks\editApiKey($mysqli, $id, $name);
+
+//    TODO
+//    include_once "$fnsDir/Wallets/editApiKey.php";
+//    \Wallets\editApiKey($mysqli, $id, $name);
 
 }
