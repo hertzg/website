@@ -52,7 +52,7 @@ function create_options_panel ($user) {
     }
 
     $options[] = Page\imageArrowLink('Successful Signins',
-        'signins/', 'TODO', ['id' => 'signins']);
+        'signins/', 'sign-ins', ['id' => 'signins']);
 
     $options[] = Page\imageArrowLink('Close Account',
         'close/', 'trash-bin', ['id' => 'close']);

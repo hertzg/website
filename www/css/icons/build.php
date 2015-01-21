@@ -57,12 +57,12 @@ render($content, 'note.svg?3', $names);
 $names = ['account', 'edit-profile', 'download', 'upload', 'feedback', 'yes',
     'no', 'notification', 'create-notification', 'old-notification',
     'edit-password', 'new-password', 'reset-password', 'rename',
-    'sign-in', 'calendar', 'arrow-right', 'arrow-left', 'search',
+    'sign-in', 'sign-ins', 'calendar', 'arrow-right', 'arrow-left', 'search',
     'search-folder', 'birthday-cake', 'checkbox', 'checked-checkbox',
     'help', 'run', 'mail', 'sms', 'send', 'send-sms', 'receive',
     'phone', 'edit-home', 'reorder', 'show-hide', 'restore-defaults',
     'forbid-notifications', 'receive-notifications', 'generic', 'slideshow'];
-render($content, 'other.svg?11', $names);
+render($content, 'other.svg?12', $names);
 
 $names = ['schedule', 'create-schedule', 'edit-schedule', 'schedules'];
 render($content, 'schedule.svg?1', $names);

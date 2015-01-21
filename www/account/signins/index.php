@@ -22,7 +22,7 @@ foreach ($signins as $signin) {
             .ucfirst(date_ago($signin->insert_time))
         .'</div>';
 
-    $items[] = create_image_text($text, 'TODO');
+    $items[] = create_image_text($text, 'sign-in');
 }
 
 include_once "$fnsDir/Page/info.php";
