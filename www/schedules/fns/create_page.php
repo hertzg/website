@@ -5,8 +5,11 @@ function create_page ($mysqli, $user, $base = '') {
     $fnsDir = __DIR__.'/../../fns';
     $id_users = $user->id_users;
 
-    include_once "$fnsDir/request_keyword_tag_offset.php";
-    list($keyword, $tag, $offset) = request_keyword_tag_offset();
+    include_once "$fnsDir/request_strings.php";
+    list($tag) = request_strings('tag');
+
+    include_once "$fnsDir/Paging/requestOffset.php";
+    $offset = Paging\requestOffset();
 
     if ($tag === '') {
 

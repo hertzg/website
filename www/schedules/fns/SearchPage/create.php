@@ -7,8 +7,8 @@ function create ($mysqli, $user) {
     $fnsDir = __DIR__.'/../../../fns';
     $id_users = $user->id_users;
 
-    include_once "$fnsDir/request_keyword_tag_offset.php";
-    list($keyword, $tag, $offset) = request_keyword_tag_offset();
+    include_once "$fnsDir/request_valid_keyword_tag_offset.php";
+    list($keyword, $tag, $offset) = request_valid_keyword_tag_offset();
 
     if ($keyword === '') {
         include_once "$fnsDir/redirect.php";
