@@ -6,11 +6,14 @@ function create_view_page ($transaction) {
     $id = $transaction->id;
     $id_wallets = $transaction->id_wallets;
 
-    include_once "$fnsDir/date_ago.php";
-    $infoText = 'Transaction created '.date_ago($transaction->insert_time).'.';
+    include_once "$fnsDir/format_author.php";
+    $author = format_author($transaction->insert_time,
+        $transaction->insert_api_key_name);
+    $infoText = "Transaction created $author.";
     if ($transaction->revision) {
-        $date = date_ago($transaction->update_time);
-        $infoText .= "<br />Last modified $date.";
+        $author = format_author($transaction->update_time,
+            $transaction->update_api_key_name);
+        $infoText .= "<br />Last modified $author.";
     }
 
     include_once "$fnsDir/Page/imageArrowLink.php";
