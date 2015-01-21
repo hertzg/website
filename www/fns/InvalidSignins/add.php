@@ -11,6 +11,7 @@ function add ($mysqli, $username, $remote_address) {
     $sql = 'insert into invalid_signins'
         .' (username, remote_address, insert_time)'
         ." values ('$username', '$remote_address', $insert_time)";
+
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
 }

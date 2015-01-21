@@ -94,6 +94,9 @@ function ensureAll ($mysqli) {
     include_once "$fnsDir/ScheduleTags/ensure.php";
     $output .= \ScheduleTags\ensure($mysqli);
 
+    include_once "$fnsDir/Signins/ensure.php";
+    $output .= \Signins\ensure($mysqli);
+
     include_once "$fnsDir/SubscribedChannels/ensure.php";
     $output .= \SubscribedChannels\ensure($mysqli);
 

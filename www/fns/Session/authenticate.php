@@ -9,6 +9,9 @@ function authenticate ($mysqli, $username, $password, $remember) {
     include_once "$fnsDir/Users/getByUsernameAndPassword.php";
     $user = \Users\getByUsernameAndPassword($mysqli, $username, $password);
 
+    include_once "$fnsDir/get_client_address.php";
+    $client_address = get_client_address();
+
     if ($user) {
 
         $_SESSION['user'] = $user;
@@ -16,6 +19,9 @@ function authenticate ($mysqli, $username, $password, $remember) {
 
         include_once "$fnsDir/Users/login.php";
         \Users\login($mysqli, $id_users);
+
+        include_once "$fnsDir/Signins/add.php";
+        \Signins\add($mysqli, $id_users, $client_address);
 
         if ($user->password_salt === '') {
             include_once "$fnsDir/Users/editPassword.php";
@@ -28,9 +34,8 @@ function authenticate ($mysqli, $username, $password, $remember) {
         }
 
     } else {
-        include_once "$fnsDir/get_client_address.php";
         include_once "$fnsDir/InvalidSignins/add.php";
-        \InvalidSignins\add($mysqli, $username, get_client_address());
+        \InvalidSignins\add($mysqli, $username, $client_address);
     }
 
     return $user;
