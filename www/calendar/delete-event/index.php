@@ -12,7 +12,7 @@ unset($_SESSION['calendar/view-event/messages']);
 include_once '../fns/create_view_page.php';
 include_once "$fnsDir/Page/confirmDialog.php";
 $content =
-    create_view_page($event)
+    create_view_page($user, $event)
     .Page\confirmDialog('Are you sure you want to delete the event?',
         'Yes, delete event', "submit.php?id=$id", "../view-event/?id=$id");
 
