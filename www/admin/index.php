@@ -20,6 +20,9 @@ $content = Page\tabs(
     .Page\imageArrowLink('MySQL Settings',
         'mysql-settings/', 'none', ['id' => 'mysql-settings'])
     .'<div class="hr"></div>'
+    .Page\imageArrowLink('Ensure Crontab',
+        'ensure-crontab/', 'none', ['id' => 'ensure-crontab'])
+    .'<div class="hr"></div>'
     .Page\imageArrowLink('Ensure Tables',
         'ensure-tables/', 'none', ['id' => 'ensure-tables'])
     .'<div class="hr"></div>'
