@@ -25,6 +25,9 @@ SiteBase\set($generalInfoValues['siteBase']);
 include_once '../../fns/SiteProtocol/set.php';
 SiteProtocol\set($generalInfoValues['https'] ? 'https' : 'http');
 
+include_once '../../fns/write_crontab.php';
+write_crontab();
+
 include_once '../../fns/Installed/set.php';
 Installed\set(true);
 
