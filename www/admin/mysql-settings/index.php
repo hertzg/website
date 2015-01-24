@@ -13,6 +13,8 @@ $fnsDir = '../../fns';
 include_once "$fnsDir/MysqlConfig/get.php";
 MysqlConfig\get($host, $username, $password, $db);
 
+$mysqli = @new mysqli($host, $username, $password, $db);
+
 if ($host === '') {
     $host = '<span class="form-label-default">Default</span>';
 } else {
@@ -32,13 +34,31 @@ if ($password === '') {
     $password = htmlspecialchars($password);
 }
 
+$key = 'admin/mysql-settings/messages';
+if (array_key_exists($key, $_SESSION)) $messages = $_SESSION[$key];
+else $messages = [];
+
+if ($mysqli->connect_errno) {
+    include_once "$fnsDir/Page/errors.php";
+    $errors = Page\errors([
+        "The settings doesn't work.",
+        htmlspecialchars($mysqli->connect_error),
+    ]);
+} else {
+    $errors = '';
+    $messages[] = 'The settings work.';
+}
+
+if ($messages) {
+    include_once "$fnsDir/Page/messages.php";
+    $messages = Page\messages($messages);
+} else {
+    $messages = '';
+}
+
 include_once "$fnsDir/create_panel.php";
-include_once "$fnsDir/Form/label.php";
 include_once "$fnsDir/Page/imageArrowLink.php";
-include_once "$fnsDir/Page/imageLink.php";
-include_once "$fnsDir/Page/sessionErrors.php";
-include_once "$fnsDir/Page/sessionMessages.php";
-include_once "$fnsDir/Page/staticTwoColumns.php";
+include_once "$fnsDir/Form/label.php";
 include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
     [
@@ -48,8 +68,7 @@ $content = Page\tabs(
         ],
     ],
     'MySQL Settings',
-    Page\sessionErrors('admin/mysql-settings/errors')
-    .Page\sessionMessages('admin/mysql-settings/messages')
+    $messages.$errors
     .Form\label('Host', $host)
     .'<div class="hr"></div>'
     .Form\label('Username', $username)
@@ -59,10 +78,7 @@ $content = Page\tabs(
     .Form\label('Database', htmlspecialchars($db))
     .create_panel(
         'Options',
-        Page\staticTwoColumns(
-            Page\imageArrowLink('Edit', 'edit/', 'none', ['id' => 'edit']),
-            Page\imageLink('Test', 'submit-test.php', 'none')
-        )
+        Page\imageArrowLink('Edit', 'edit/', 'none', ['id' => 'edit'])
     )
 );
 
