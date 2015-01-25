@@ -11,7 +11,7 @@ function rotate_image ($mysqli, $file, $degrees) {
 
     $image = @imagecreatefromstring(file_get_contents($path));
 
-    if (!$image) {
+    if ($image === false) {
         include_once "$fnsDir/image_create_using_imagick.php";
         $image = image_create_using_imagick($path);
     }

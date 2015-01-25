@@ -16,7 +16,7 @@ $error = $file['error'];
 if ($error === UPLOAD_ERR_OK) {
     $content = file_get_contents($file['tmp_name']);
     $image = @imagecreatefromstring($content);
-    if (!$image) $errors[] = 'Failed to open the photo file.';
+    if ($image === false) $errors[] = 'Failed to open the photo file.';
 } elseif ($error === UPLOAD_ERR_NO_FILE) {
     $errors[] = 'Select photo file.';
 } else {

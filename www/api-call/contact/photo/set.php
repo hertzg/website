@@ -6,14 +6,16 @@ list($apiKey, $user, $mysqli) = require_api_key('can_write_contacts');
 include_once '../fns/require_contact.php';
 $contact = require_contact($mysqli, $user->id_users);
 
-include_once '../../../fns/request_files.php';
+$fnsDir = '../../../fns';
+
+include_once "$fnsDir/request_files.php";
 list($file) = request_files('file');
 
 $error = $file['error'];
 if ($error === UPLOAD_ERR_OK) {
     $content = file_get_contents($file['tmp_name']);
     $image = @imagecreatefromstring($content);
-    if (!$image) {
+    if ($image === false) {
         include_once '../../fns/bad_request.php';
         bad_request('INVALID_PHOTO');
     }
@@ -25,7 +27,7 @@ if ($error === UPLOAD_ERR_OK) {
     bad_request('FILE_ERROR');
 }
 
-include_once '../../../fns/Users/Contacts/Photo/set.php';
+include_once "$fnsDir/Users/Contacts/Photo/set.php";
 Users\Contacts\Photo\set($mysqli, $contact, $image);
 
 header('Content-Type: application/json');
