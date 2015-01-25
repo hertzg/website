@@ -15,7 +15,6 @@ function echo_file ($file, $path) {
 
     header_remove('Expires');
     header_remove('Pragma');
-    header_remove('X-Powered-By');
     header('Cache-Control: private, max-age='.(60 * 60 * 24 * 30 * 12));
     header("Content-Type: $contentType");
     header("Content-Length: $file->size");

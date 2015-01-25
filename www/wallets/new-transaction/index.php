@@ -4,6 +4,8 @@ include_once '../fns/require_wallet.php';
 include_once '../../lib/mysqli.php';
 list($wallet, $id, $user) = require_wallet($mysqli);
 
+unset($_SESSION['wallets/view/messages']);
+
 $key = 'wallets/new-transaction/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
