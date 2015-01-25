@@ -10,7 +10,7 @@ function get_mysqli () {
         $mysqli = @new mysqli($host, $username, $password, $db);
 
         if ($mysqli->connect_errno) {
-            error_log($mysqli->connect_error);
+            error_log('MySQL error: '.json_encode($mysqli->connect_error));
             include_once __DIR__.'/ErrorPage/internalServerError.php';
             ErrorPage\internalServerError();
         }
