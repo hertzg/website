@@ -14,7 +14,7 @@ function echo_html ($title, $content) {
                 .'<link rel="icon" type="image/png"
                 href="../icons/32.png" sizes="32x32" />'
                 .'<link rel="stylesheet" type="text/css"'
-                .' href="../css/compressed.css?4" />'
+                .' href="../css/compressed.css?5" />'
             .'</head>'
             .'<body>'
                 .'<div class="backgroundGradient">'

@@ -62,6 +62,9 @@ $assertsHtml .=
     .assert_writable('fns/SiteBase/get.php')
     .assert_writable('fns/SiteProtocol/get.php');
 
+$subject = 'Image Processing (ImageMagick) "<code>imagick</code>"';
+$optionalAssertsHtml = assert_installed(extension_loaded('imagick'), $subject);
+
 $nextSteps = ['General Information', 'MySQL Configuration',
     'Administrator', 'Finalize Installation'];
 
@@ -74,7 +77,9 @@ echo_page(
         steps(['Agreement'], 'Requirements', $nextSteps),
         '<span class="title-step">Step 2</span>'
         .'<h2>Requirements</h2>'
-        ."<ol>$assertsHtml</ol>",
+        ."<ol>$assertsHtml</ol>"
+        .'<h3>Optionally</h3>'
+        ."<ol>$optionalAssertsHtml</ol>",
         '<a href="submit.php" class="button nextButton" />Next</a>'
         .'<a class="button" href="../agreement/">Back</a>'
     )
