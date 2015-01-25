@@ -18,16 +18,16 @@ $subject = 'PHP default timezone';
 if ($ok) $content .= assert_success("$subject is set to UTC.");
 else $content .= assert_failure("$subject is NOT set to UTC.");
 
-$ok = function_exists('curl_init');
+$ok = extension_loaded('curl');
 $content .= assert_installed($ok, 'PHP Client URL Library "curl"');
 
-$ok = function_exists('gmp_init');
-$content .= assert_installed($ok, 'GNU Multiple Precision "gmp"');
-
-$ok = function_exists('imagecreatefromstring');
+$ok = extension_loaded('gd');
 $content .= assert_installed($ok, 'PHP image processing and GD "gd"');
 
-$mysqliOk = function_exists('mysqli_connect');
+$ok = extension_loaded('gmp');
+$content .= assert_installed($ok, 'GNU Multiple Precision "gmp"');
+
+$mysqliOk = extension_loaded('mysql');
 $text = 'PHP MySQL improved extension "mysqli"';
 $content .= assert_installed($mysqliOk, $text);
 

@@ -42,17 +42,14 @@ $ok = function_exists('curl_init');
 $subject = 'PHP Client URL Library "<code>curl</code>"';
 $assertsHtml .= assert_installed($ok, $subject);
 
-$ok = function_exists('gmp_init');
-$subject = 'GNU Multiple Precision "<code>gmp</code>"';
-$assertsHtml .= assert_installed($ok, $subject);
-
-$ok = function_exists('imagecreatefromstring');
 $subject = 'PHP image processing and GD "<code>gd</code>"';
-$assertsHtml .= assert_installed($ok, $subject);
+$assertsHtml .= assert_installed(extension_loaded('gd'), $subject);
 
-$ok = function_exists('mysqli_connect');
+$subject = 'GNU Multiple Precision "<code>gmp</code>"';
+$assertsHtml .= assert_installed(extension_loaded('gmp'), $subject);
+
 $subject = 'PHP MySQL improved extension "<code>mysqli</code>"';
-$assertsHtml .= assert_installed($ok, $subject);
+$assertsHtml .= assert_installed(function_exists('mysql'), $subject);
 
 $assertsHtml .=
     assert_writable('data/contact-photos')

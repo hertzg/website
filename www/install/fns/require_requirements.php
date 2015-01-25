@@ -11,10 +11,8 @@ function require_requirements () {
     if (!in_array('mod_rewrite', $apacheModules) ||
         !in_array('mod_headers', $apacheModules) ||
         date_default_timezone_get() !== 'UTC' ||
-        !function_exists('curl_init') ||
-        !function_exists('gmp_init') ||
-        !function_exists('imagecreatefromstring') ||
-        !function_exists('mysqli_connect') ||
+        !extension_loaded('curl') || !extension_loaded('gd') ||
+        !extension_loaded('gmp') || !extension_loaded('mysql') ||
         !is_writable("$rootDir/data/contact-photos") ||
         !is_writable("$rootDir/data/users") ||
         !is_writable("$rootDir/fns/Admin/get.php") ||
