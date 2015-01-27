@@ -6,8 +6,8 @@
 
             e.preventDefault()
 
-            var address = protocol + '//' + host + pathname +
-                '/handle-protocol/' + id + '/?value=%s'
+            var address = protocol + '//' + host +
+                pathname + 'handle-protocol/?value=%s'
 
             navigator.registerProtocolHandler(id, address, 'Open in Zvini')
 
