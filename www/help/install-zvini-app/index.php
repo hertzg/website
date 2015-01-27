@@ -10,18 +10,18 @@ $content = Page\tabs(
     [
         [
             'title' => 'Help',
-            'href' => '../#install',
+            'href' => '../#install-zvini-app',
         ],
     ],
-    'Install Zvini App',
+    'Install Protocol Handlers',
     '<noscript>'
-        .Page\errors(['We\'re sorry, Zvini app cannot be installed'
+        .Page\errors(['We\'re sorry. Zvini app cannot be installed'
             .' without enabling JavaScript in your web browser.'])
     .'</noscript>'
     .'<div id="installingMessage" style="display: none">'
         .Page\text('Please wait...')
     .'</div>'
-    .'<script type="text/javascript" src="index.js?2" async="true"></script>'
+    .'<script type="text/javascript" src="index.js?3" async="true"></script>'
 );
 
 include_once '../../fns/echo_page.php';
