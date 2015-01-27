@@ -75,9 +75,9 @@ $content = Page\tabs(
             'href' => '..',
         ],
     ],
-    'Handle Protocol',
+    'Handle Link',
     $errorsHtml.$warningsHtml.join('<div class="hr"></div>', $items)
 );
 
 include_once "$fnsDir/echo_page.php";
-echo_page($user, 'Handle Protocol', $content, $base);
+echo_page($user, 'Handle Link', $content, $base);

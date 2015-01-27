@@ -25,8 +25,8 @@ $content = Page\tabs(
     .Page\imageLink('Install Zvini App', 'install-zvini-app/',
         'download', ['id' => 'install-zvini-app'])
     .'<div class="hr"></div>'
-    .Page\imageLink('Install Protocol Handlers', 'install-protocol-handlers/',
-        'download', ['id' => 'install-protocol-handlers'])
+    .Page\imageLink('Install Link Handlers', 'install-link-handlers/',
+        'download', ['id' => 'install-link-handlers'])
     .'<div class="hr"></div>'
     .Page\imageArrowLink('Leave Feedback',
         'feedback/', 'feedback', ['id' => 'feedback'])

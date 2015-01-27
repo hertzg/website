@@ -7,7 +7,7 @@
             e.preventDefault()
 
             var address = protocol + '//' + host +
-                pathname + 'handle-protocol/?value=%s'
+                pathname + 'handle-link/?value=%s'
 
             navigator.registerProtocolHandler(id, address, 'Open in Zvini')
 
@@ -20,7 +20,7 @@
         host = location.host
 
     var pathname = location.pathname
-    pathname = pathname.replace(/help\/install-protocol-handlers\/$/, '')
+    pathname = pathname.replace(/help\/install-link-handlers\/$/, '')
 
     register('mailto')
     register('sms')

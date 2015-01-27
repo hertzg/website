@@ -16,15 +16,15 @@ $content = Page\tabs(
     ],
     'Install Zvini App',
     '<noscript>'
-        .Page\errors(['We\'re sorry. The protocol handlers cannot be installed'
+        .Page\errors(['We\'re sorry. The link handlers cannot be installed'
             .' without enabling JavaScript in your web browser.'])
     .'</noscript>'
     .'<div id="jsContent" style="display: none">'
-        .Page\imageLink('mailto: Protocol', '', 'TODO', ['id' => 'mailto'])
+        .Page\imageLink('mailto: Link', '', 'TODO', ['id' => 'mailto'])
         .'<div class="hr"></div>'
-        .Page\imageLink('sms: Protocol', '', 'TODO', ['id' => 'sms'])
+        .Page\imageLink('sms: Link', '', 'TODO', ['id' => 'sms'])
         .'<div class="hr"></div>'
-        .Page\imageLink('tel: Protocol', '', 'TODO', ['id' => 'tel'])
+        .Page\imageLink('tel: Link', '', 'TODO', ['id' => 'tel'])
     .'</div>'
     .'<script type="text/javascript" src="index.js?2" async="true"></script>'
 );

@@ -13,7 +13,7 @@ $content = Page\tabs(
             'href' => '../#install-zvini-app',
         ],
     ],
-    'Install Protocol Handlers',
+    'Install Zvini App',
     '<noscript>'
         .Page\errors(['We\'re sorry. Zvini app cannot be installed'
             .' without enabling JavaScript in your web browser.'])
