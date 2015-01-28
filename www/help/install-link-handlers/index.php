@@ -11,10 +11,10 @@ $content = Page\tabs(
     [
         [
             'title' => 'Help',
-            'href' => '../#install',
+            'href' => '../#install-link-handlers',
         ],
     ],
-    'Install Zvini App',
+    'Install Link Handlers',
     '<noscript>'
         .Page\errors(['We\'re sorry. The link handlers cannot be installed'
             .' without enabling JavaScript in your web browser.'])
