@@ -15,8 +15,10 @@ function create ($deletedItem, $user, &$title, &$head) {
     include_once __DIR__.'/../item_type_name.php';
     $typeName = item_type_name($type);
 
-    include_once "$fnsDir/date_ago.php";
-    $infoText = "$typeName deleted ".date_ago($deletedItem->insert_time).'.';
+    include_once "$fnsDir/format_author.php";
+    $author = format_author($deletedItem->insert_time,
+        $deletedItem->insert_api_key_name);
+    $infoText = "$typeName deleted $author.";
 
     $head = '';
     $scripts = '';
