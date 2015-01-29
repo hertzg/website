@@ -2,7 +2,7 @@
 
 namespace Users\DeletedItems;
 
-function addReceivedNote ($mysqli, $receivedNote, $apiKey = null) {
+function addReceivedNote ($mysqli, $receivedNote, $apiKey) {
     include_once __DIR__.'/add.php';
     add($mysqli, $receivedNote->receiver_id_users, 'receivedNote', [
         'id' => $receivedNote->id,

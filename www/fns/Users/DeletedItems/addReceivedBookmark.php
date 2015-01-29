@@ -2,7 +2,7 @@
 
 namespace Users\DeletedItems;
 
-function addReceivedBookmark ($mysqli, $receivedBookmark, $apiKey = null) {
+function addReceivedBookmark ($mysqli, $receivedBookmark, $apiKey) {
     include_once __DIR__.'/add.php';
     add($mysqli, $receivedBookmark->receiver_id_users, 'receivedBookmark', [
         'id' => $receivedBookmark->id,

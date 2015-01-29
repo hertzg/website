@@ -2,7 +2,7 @@
 
 namespace Users\DeletedItems;
 
-function addReceivedTask ($mysqli, $receivedTask, $apiKey = null) {
+function addReceivedTask ($mysqli, $receivedTask, $apiKey) {
     include_once __DIR__.'/add.php';
     add($mysqli, $receivedTask->receiver_id_users, 'receivedTask', [
         'id' => $receivedTask->id,
