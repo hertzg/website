@@ -34,6 +34,9 @@ function edit ($mysqli, $apiKey, $name, $expire_time, $can_read_bookmarks,
     include_once "$fnsDir/Contacts/editApiKey.php";
     \Contacts\editApiKey($mysqli, $id, $name);
 
+    include_once "$fnsDir/DeletedItems/editApiKey.php";
+    \DeletedItems\editApiKey($mysqli, $id, $name);
+
     include_once "$fnsDir/Events/editApiKey.php";
     \Events\editApiKey($mysqli, $id, $name);
 
