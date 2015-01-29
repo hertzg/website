@@ -32,7 +32,6 @@ unset(
 $_SESSION['wallets/view/messages'] = ['The transaction has been saved.'];
 
 include_once "$fnsDir/Users/Wallets/Transactions/add.php";
-Users\Wallets\Transactions\add($mysqli,
-    $user->id_users, $id, $parsed_amount, $description);
+Users\Wallets\Transactions\add($mysqli, $wallet, $parsed_amount, $description);
 
 redirect("../view/?id=$id");
