@@ -2,7 +2,7 @@
 
 namespace Users\DeletedItems;
 
-function addBookmark ($mysqli, $bookmark) {
+function addBookmark ($mysqli, $bookmark, $apiKey = null) {
     include_once __DIR__.'/add.php';
     add($mysqli, $bookmark->id_users, 'bookmark', [
         'id' => $bookmark->id,
@@ -14,5 +14,5 @@ function addBookmark ($mysqli, $bookmark) {
         'update_api_key_id' => $bookmark->update_api_key_id,
         'update_time' => $bookmark->update_time,
         'revision' => $bookmark->revision,
-    ]);
+    ], $apiKey);
 }

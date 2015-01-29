@@ -2,7 +2,7 @@
 
 namespace Users\Contacts;
 
-function deleteAll ($mysqli, $user) {
+function deleteAll ($mysqli, $user, $apiKey = null) {
 
     $id_users = $user->id_users;
     $fnsDir = __DIR__.'/../..';
@@ -13,7 +13,7 @@ function deleteAll ($mysqli, $user) {
     if ($contacts) {
         include_once __DIR__.'/../DeletedItems/addContact.php';
         foreach ($contacts as $contact) {
-            \Users\DeletedItems\addContact($mysqli, $contact);
+            \Users\DeletedItems\addContact($mysqli, $contact, $apiKey);
         }
     }
 

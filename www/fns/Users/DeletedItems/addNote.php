@@ -2,7 +2,7 @@
 
 namespace Users\DeletedItems;
 
-function addNote ($mysqli, $note) {
+function addNote ($mysqli, $note, $apiKey = null) {
     include_once __DIR__.'/add.php';
     add($mysqli, $note->id_users, 'note', [
         'id' => $note->id,
@@ -15,5 +15,5 @@ function addNote ($mysqli, $note) {
         'update_api_key_id' => $note->update_api_key_id,
         'update_time' => $note->update_time,
         'revision' => $note->revision,
-    ]);
+    ], $apiKey);
 }

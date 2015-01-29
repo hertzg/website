@@ -7,7 +7,7 @@ include_once 'fns/require_task.php';
 $task = require_task($mysqli, $user->id_users);
 
 include_once '../../fns/Users/Tasks/delete.php';
-Users\Tasks\delete($mysqli, $user, $task);
+Users\Tasks\delete($mysqli, $user, $task, $apiKey);
 
 header('Content-Type: application/json');
 echo 'true';

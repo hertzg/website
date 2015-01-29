@@ -7,7 +7,7 @@ include_once 'fns/require_note.php';
 $note = require_note($mysqli, $user->id_users);
 
 include_once '../../fns/Users/Notes/delete.php';
-Users\Notes\delete($mysqli, $note);
+Users\Notes\delete($mysqli, $note, $apiKey);
 
 header('Content-Type: application/json');
 echo 'true';

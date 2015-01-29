@@ -2,7 +2,7 @@
 
 namespace Users\Contacts;
 
-function delete ($mysqli, $contact, $user) {
+function delete ($mysqli, $contact, $user, $apiKey = null) {
 
     $id = $contact->id;
     $fnsDir = __DIR__.'/../..';
@@ -19,7 +19,7 @@ function delete ($mysqli, $contact, $user) {
     addNumber($mysqli, $user->id_users, -1);
 
     include_once __DIR__.'/../DeletedItems/addContact.php';
-    \Users\DeletedItems\addContact($mysqli, $contact);
+    \Users\DeletedItems\addContact($mysqli, $contact, $apiKey);
 
     $birthday_time = $contact->birthday_time;
     if ($birthday_time !== null) {

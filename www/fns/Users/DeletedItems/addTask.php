@@ -2,7 +2,7 @@
 
 namespace Users\DeletedItems;
 
-function addTask ($mysqli, $task) {
+function addTask ($mysqli, $task, $apiKey = null) {
     include_once __DIR__.'/add.php';
     add($mysqli, $task->id_users, 'task', [
         'id' => $task->id,
@@ -16,5 +16,5 @@ function addTask ($mysqli, $task) {
         'update_api_key_id' => $task->update_api_key_id,
         'update_time' => $task->update_time,
         'revision' => $task->revision,
-    ]);
+    ], $apiKey);
 }

@@ -2,7 +2,7 @@
 
 namespace Users\Tasks;
 
-function deleteAll ($mysqli, $user) {
+function deleteAll ($mysqli, $user, $apiKey = null) {
 
     $id_users = $user->id_users;
     $fnsDir = __DIR__.'/../..';
@@ -13,7 +13,7 @@ function deleteAll ($mysqli, $user) {
     if ($tasks) {
         include_once __DIR__.'/../DeletedItems/addTask.php';
         foreach ($tasks as $task) {
-            \Users\DeletedItems\addTask($mysqli, $task);
+            \Users\DeletedItems\addTask($mysqli, $task, $apiKey);
         }
     }
 

@@ -2,7 +2,7 @@
 
 namespace Users\DeletedItems;
 
-function addContact ($mysqli, $contact) {
+function addContact ($mysqli, $contact, $apiKey = null) {
     include_once __DIR__.'/add.php';
     add($mysqli, $contact->id_users, 'contact', [
         'id' => $contact->id,
@@ -24,5 +24,5 @@ function addContact ($mysqli, $contact) {
         'update_time' => $contact->update_time,
         'photo_id' => $contact->photo_id,
         'revision' => $contact->revision,
-    ]);
+    ], $apiKey);
 }

@@ -2,7 +2,7 @@
 
 namespace Users\Tasks;
 
-function delete ($mysqli, $user, $task) {
+function delete ($mysqli, $user, $task, $apiKey = null) {
 
     $id = $task->id;
     $fnsDir = __DIR__.'/../..';
@@ -19,7 +19,7 @@ function delete ($mysqli, $user, $task) {
     addNumber($mysqli, $task->id_users, -1);
 
     include_once __DIR__.'/../DeletedItems/addTask.php';
-    \Users\DeletedItems\addTask($mysqli, $task);
+    \Users\DeletedItems\addTask($mysqli, $task, $apiKey);
 
     $deadline_time = $task->deadline_time;
     if ($deadline_time !== null) {

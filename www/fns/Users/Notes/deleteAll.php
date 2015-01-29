@@ -2,7 +2,7 @@
 
 namespace Users\Notes;
 
-function deleteAll ($mysqli, $id_users) {
+function deleteAll ($mysqli, $id_users, $apiKey = null) {
 
     $fnsDir = __DIR__.'/../..';
 
@@ -12,7 +12,7 @@ function deleteAll ($mysqli, $id_users) {
     if ($notes) {
         include_once __DIR__.'/../DeletedItems/addNote.php';
         foreach ($notes as $note) {
-            \Users\DeletedItems\addNote($mysqli, $note);
+            \Users\DeletedItems\addNote($mysqli, $note, $apiKey);
         }
     }
 

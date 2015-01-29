@@ -2,7 +2,7 @@
 
 namespace Users\Bookmarks;
 
-function delete ($mysqli, $bookmark) {
+function delete ($mysqli, $bookmark, $apiKey = null) {
 
     $id = $bookmark->id;
     $fnsDir = __DIR__.'/../..';
@@ -19,6 +19,6 @@ function delete ($mysqli, $bookmark) {
     addNumber($mysqli, $bookmark->id_users, -1);
 
     include_once __DIR__.'/../DeletedItems/addBookmark.php';
-    \Users\DeletedItems\addBookmark($mysqli, $bookmark);
+    \Users\DeletedItems\addBookmark($mysqli, $bookmark, $apiKey);
 
 }

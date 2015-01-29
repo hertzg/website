@@ -2,7 +2,7 @@
 
 namespace Users\Notes;
 
-function delete ($mysqli, $note) {
+function delete ($mysqli, $note, $apiKey = null) {
 
     $id = $note->id;
     $fnsDir = __DIR__.'/../..';
@@ -19,6 +19,6 @@ function delete ($mysqli, $note) {
     addNumber($mysqli, $note->id_users, -1);
 
     include_once __DIR__.'/../DeletedItems/addNote.php';
-    \Users\DeletedItems\addNote($mysqli, $note);
+    \Users\DeletedItems\addNote($mysqli, $note, $apiKey);
 
 }
