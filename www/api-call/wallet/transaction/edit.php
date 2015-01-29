@@ -9,8 +9,13 @@ $transaction = require_transaction($mysqli, $user->id_users);
 include_once 'fns/request_transaction_params.php';
 list($amount, $description) = request_transaction_params($user);
 
-include_once '../../../fns/Users/Wallets/Transactions/edit.php';
-Users\Wallets\Transactions\edit($mysqli,
+$fnsDir = '../../../fns';
+
+include_once "$fnsDir/Wallets/get.php";
+$wallet = Wallets\get($mysqli, $transaction->id_wallets);
+
+include_once "$fnsDir/Users/Wallets/Transactions/edit.php";
+Users\Wallets\Transactions\edit($mysqli, $wallet,
     $transaction, $amount, $description, $apiKey);
 
 header('Content-Type: application/json');
