@@ -2,7 +2,7 @@
 
 namespace Users\DeletedItems;
 
-function addReceivedContact ($mysqli, $receivedContact) {
+function addReceivedContact ($mysqli, $receivedContact, $apiKey = null) {
     include_once __DIR__.'/add.php';
     add($mysqli, $receivedContact->receiver_id_users, 'receivedContact', [
         'id' => $receivedContact->id,
@@ -23,5 +23,5 @@ function addReceivedContact ($mysqli, $receivedContact) {
         'sender_username' => $receivedContact->sender_username,
         'archived' => $receivedContact->archived,
         'photo_id' => $receivedContact->photo_id,
-    ]);
+    ], $apiKey);
 }

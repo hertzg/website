@@ -2,7 +2,7 @@
 
 namespace Users\Bookmarks\Received;
 
-function deleteAll ($mysqli, $id_users) {
+function deleteAll ($mysqli, $id_users, $apiKey = null) {
 
     $fnsDir = __DIR__.'/../../..';
 
@@ -12,7 +12,8 @@ function deleteAll ($mysqli, $id_users) {
     if ($receivedBookmarks) {
         include_once __DIR__.'/../../DeletedItems/addReceivedBookmark.php';
         foreach ($receivedBookmarks as $receivedBookmark) {
-            \Users\DeletedItems\addReceivedBookmark($mysqli, $receivedBookmark);
+            \Users\DeletedItems\addReceivedBookmark(
+                $mysqli, $receivedBookmark, $apiKey);
         }
     }
 

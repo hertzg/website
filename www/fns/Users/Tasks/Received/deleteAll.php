@@ -2,7 +2,7 @@
 
 namespace Users\Tasks\Received;
 
-function deleteAll ($mysqli, $id_users) {
+function deleteAll ($mysqli, $id_users, $apiKey = null) {
 
     $fnsDir = __DIR__.'/../../..';
 
@@ -12,7 +12,8 @@ function deleteAll ($mysqli, $id_users) {
     if ($receivedTasks) {
         include_once __DIR__.'/../../DeletedItems/addReceivedTask.php';
         foreach ($receivedTasks as $receivedTask) {
-            \Users\DeletedItems\addReceivedTask($mysqli, $receivedTask);
+            \Users\DeletedItems\addReceivedTask(
+                $mysqli, $receivedTask, $apiKey);
         }
     }
 

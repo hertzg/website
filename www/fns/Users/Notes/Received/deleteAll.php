@@ -2,7 +2,7 @@
 
 namespace Users\Notes\Received;
 
-function deleteAll ($mysqli, $id_users) {
+function deleteAll ($mysqli, $id_users, $apiKey = null) {
 
     $fnsDir = __DIR__.'/../../..';
 
@@ -12,7 +12,8 @@ function deleteAll ($mysqli, $id_users) {
     if ($receivedNotes) {
         include_once __DIR__.'/../../DeletedItems/addReceivedNote.php';
         foreach ($receivedNotes as $receivedNote) {
-            \Users\DeletedItems\addReceivedNote($mysqli, $receivedNote);
+            \Users\DeletedItems\addReceivedNote(
+                $mysqli, $receivedNote, $apiKey);
         }
     }
 
