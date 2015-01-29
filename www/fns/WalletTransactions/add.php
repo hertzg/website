@@ -2,8 +2,8 @@
 
 namespace WalletTransactions;
 
-function add ($mysqli, $id_users, $id_wallets,
-    $amount, $description, $ordinal, $insertApiKey) {
+function add ($mysqli, $id_users, $id_wallets, $amount,
+    $balance_after, $description, $ordinal, $insertApiKey) {
 
     $description = $mysqli->real_escape_string($description);
     $insert_time = $update_time = time();
@@ -19,10 +19,10 @@ function add ($mysqli, $id_users, $id_wallets,
     }
 
     $sql = 'insert into wallet_transactions'
-        .' (id_users, id_wallets, amount,'
+        .' (id_users, id_wallets, amount, balance_after,'
         .' description, ordinal, insert_time, update_time,'
         .' insert_api_key_id, insert_api_key_name)'
-        ." values ($id_users, $id_wallets, $amount,"
+        ." values ($id_users, $id_wallets, $amount, $balance_after,"
         ." '$description', $ordinal, $insert_time, $update_time,"
         ." $insert_api_key_id, $insert_api_key_name)";
 

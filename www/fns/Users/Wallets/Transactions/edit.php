@@ -9,7 +9,7 @@ function edit ($mysqli, $transaction,
 
     include_once "$fnsDir/WalletTransactions/edit.php";
     \WalletTransactions\edit($mysqli, $transaction->id,
-        $amount, $description, $updateApiKey);
+        $amount, 0, $description, $updateApiKey);
 
     $amount_added = $amount - $transaction->amount;
     if ($amount_added) {

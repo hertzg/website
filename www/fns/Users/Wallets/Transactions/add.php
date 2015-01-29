@@ -10,7 +10,7 @@ function add ($mysqli, $wallet, $amount, $description, $insertApiKey = null) {
 
     include_once "$fnsDir/WalletTransactions/add.php";
     $id = \WalletTransactions\add($mysqli, $id_users, $id_wallets,
-        $amount, $description, $wallet->num_transactions, $insertApiKey);
+        $amount, 0, $description, $wallet->num_transactions, $insertApiKey);
 
     include_once "$fnsDir/Wallets/addTransaction.php";
     \Users\Wallets\addTransaction($mysqli, $id_wallets, $amount);
