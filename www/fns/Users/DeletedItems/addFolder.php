@@ -2,7 +2,7 @@
 
 namespace Users\DeletedItems;
 
-function addFolder ($mysqli, $folder) {
+function addFolder ($mysqli, $folder, $apiKey) {
     include_once __DIR__.'/add.php';
     return add($mysqli, $folder->id_users, 'folder', [
         'id' => $folder->id_folders,
@@ -13,5 +13,5 @@ function addFolder ($mysqli, $folder) {
         'rename_api_key_id' => $folder->rename_api_key_id,
         'rename_time' => $folder->rename_time,
         'revision' => $folder->revision,
-    ]);
+    ], $apiKey);
 }

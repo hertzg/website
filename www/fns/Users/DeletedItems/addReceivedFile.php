@@ -2,7 +2,7 @@
 
 namespace Users\DeletedItems;
 
-function addReceivedFile ($mysqli, $receivedFile) {
+function addReceivedFile ($mysqli, $receivedFile, $apiKey) {
     include_once __DIR__.'/add.php';
     add($mysqli, $receivedFile->receiver_id_users, 'receivedFile', [
         'id' => $receivedFile->id,
@@ -14,5 +14,5 @@ function addReceivedFile ($mysqli, $receivedFile) {
         'sender_id_users' => $receivedFile->sender_id_users,
         'sender_username' => $receivedFile->sender_username,
         'archived' => $receivedFile->archived,
-    ]);
+    ], $apiKey);
 }

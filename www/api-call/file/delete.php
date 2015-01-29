@@ -7,7 +7,7 @@ include_once 'fns/require_file.php';
 $file = require_file($mysqli, $user->id_users);
 
 include_once '../../fns/Users/Files/delete.php';
-Users\Files\delete($mysqli, $file);
+Users\Files\delete($mysqli, $file, $apiKey);
 
 header('Content-Type: application/json');
 echo 'true';

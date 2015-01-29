@@ -2,7 +2,7 @@
 
 namespace Users\Folders\Received;
 
-function deleteAll ($mysqli, $id_users) {
+function deleteAll ($mysqli, $id_users, $apiKey = null) {
 
     $fnsDir = __DIR__.'/../../..';
 
@@ -13,7 +13,8 @@ function deleteAll ($mysqli, $id_users) {
     if ($receivedFolders) {
         include_once __DIR__.'/../../DeletedItems/addReceivedFolder.php';
         foreach ($receivedFolders as $receivedFolder) {
-            \Users\DeletedItems\addReceivedFolder($mysqli, $receivedFolder);
+            \Users\DeletedItems\addReceivedFolder(
+                $mysqli, $receivedFolder, $apiKey);
         }
     }
 

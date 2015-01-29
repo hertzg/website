@@ -7,7 +7,7 @@ include_once 'fns/require_folder.php';
 $folder = require_folder($mysqli, $user->id_users);
 
 include_once '../../fns/Users/Folders/delete.php';
-Users\Folders\delete($mysqli, $folder);
+Users\Folders\delete($mysqli, $folder, $apiKey);
 
 header('Content-Type: application/json');
 echo 'true';

@@ -7,7 +7,7 @@ include_once 'fns/require_received_file.php';
 $receivedFile = require_received_file($mysqli, $user->id_users);
 
 include_once '../../../fns/Users/Files/Received/delete.php';
-Users\Files\Received\delete($mysqli, $receivedFile);
+Users\Files\Received\delete($mysqli, $receivedFile, $apiKey);
 
 header('Content-Type: application/json');
 echo 'true';

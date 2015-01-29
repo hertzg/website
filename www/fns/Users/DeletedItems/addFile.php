@@ -2,7 +2,7 @@
 
 namespace Users\DeletedItems;
 
-function addFile ($mysqli, $file) {
+function addFile ($mysqli, $file, $apiKey) {
     include_once __DIR__.'/add.php';
     add($mysqli, $file->id_users, 'file', [
         'id' => $file->id_files,
@@ -17,5 +17,5 @@ function addFile ($mysqli, $file) {
         'rename_time' => $file->rename_time,
         'content_revision' => $file->content_revision,
         'revision' => $file->revision,
-    ]);
+    ], $apiKey);
 }

@@ -2,13 +2,14 @@
 
 namespace Users\Folders;
 
-function delete ($mysqli, $folder) {
+function delete ($mysqli, $folder, $apiKey = null) {
 
     $id_users = $folder->id_users;
     $fnsDir = __DIR__.'/../..';
 
     include_once __DIR__.'/../DeletedItems/addFolder.php';
-    $id_deleted_items = \Users\DeletedItems\addFolder($mysqli, $folder);
+    $id_deleted_items = \Users\DeletedItems\addFolder(
+        $mysqli, $folder, $apiKey);
 
     $ids = [$folder->id_folders];
     while ($ids) {
