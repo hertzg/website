@@ -44,6 +44,9 @@ $content .=
     .assert_writable_folder(ContactPhotos\dir())
     .assert_writable_folder(Users\Directory\dir());
 
+$subject = 'Optionally Image Processing (ImageMagick) "imagick"';
+$content .= assert_installed(extension_loaded('imagick'), $subject);
+
 if ($mysqliOk) {
     include_once 'fns/check_user_data.php';
     include_once '../../lib/mysqli.php';
