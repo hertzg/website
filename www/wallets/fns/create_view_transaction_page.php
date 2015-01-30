@@ -41,9 +41,7 @@ function create_view_page ($transaction) {
     include_once "$fnsDir/Page/sessionMessages.php";
     $content =
         Page\sessionMessages('wallets/view-transaction/messages')
-        .Form\label('Amount', amount_html($transaction->amount))
-        .'<div class="hr"></div>'
-        .Form\label('Balance after', amount_html($transaction->balance_after));
+        .Form\label('Amount', amount_html($transaction->amount));
 
     $description = $transaction->description;
     if ($description !== '') {
@@ -51,6 +49,10 @@ function create_view_page ($transaction) {
             '<div class="hr"></div>'
             .Form\label('Description', htmlspecialchars($description));
     }
+
+    $content .=
+        '<div class="hr"></div>'
+        .Form\label('Balance after', amount_html($transaction->balance_after));
 
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/create_panel.php";
