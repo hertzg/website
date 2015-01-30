@@ -12,6 +12,9 @@ function ensure ($mysqli) {
         'amount' => [
             'type' => 'bigint(20)',
         ],
+        'balance_after' => [
+            'type' => 'bigint(20)',
+        ],
         'description' => [
             'type' => "varchar($maxLengths[description])",
             'characterSet' => 'utf8',

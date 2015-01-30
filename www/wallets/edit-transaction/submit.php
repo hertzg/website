@@ -30,8 +30,11 @@ unset(
     $_SESSION['wallets/edit-transaction/values']
 );
 
+include_once "$fnsDir/Wallets/get.php";
+$wallet = Wallets\get($mysqli, $transaction->id_wallets);
+
 include_once "$fnsDir/Users/Wallets/Transactions/edit.php";
-Users\Wallets\Transactions\edit($mysqli,
+Users\Wallets\Transactions\edit($mysqli, $wallet,
     $transaction, $parsed_amount, $description);
 
 $_SESSION['wallets/view-transaction/messages'] = ['Changes have been saved.'];

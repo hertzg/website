@@ -10,8 +10,8 @@ include_once 'fns/request_transaction_params.php';
 list($amount, $description) = request_transaction_params();
 
 include_once '../../../fns/Users/Wallets/Transactions/add.php';
-$id = Users\Wallets\Transactions\add($mysqli, $user->id_users,
-    $wallet->id, $amount, $description, $apiKey);
+$id = Users\Wallets\Transactions\add($mysqli,
+    $wallet, $amount, $description, $apiKey);
 
 header('Content-Type: application/json');
 echo $id;

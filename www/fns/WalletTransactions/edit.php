@@ -2,7 +2,8 @@
 
 namespace WalletTransactions;
 
-function edit ($mysqli, $id, $amount, $description, $updateApiKey) {
+function edit ($mysqli, $id, $amount,
+    $balance_after, $description, $updateApiKey) {
 
     $description = $mysqli->real_escape_string($description);
     $update_time = time();
@@ -18,8 +19,8 @@ function edit ($mysqli, $id, $amount, $description, $updateApiKey) {
     }
 
     $sql = "update wallet_transactions set amount = $amount,"
-        ." description = '$description', update_time = $update_time,"
-        ." update_api_key_id = $update_api_key_id,"
+        ." balance_after = $balance_after, description = '$description',"
+        ." update_time = $update_time, update_api_key_id = $update_api_key_id,"
         ." update_api_key_name = $update_api_key_name,"
         ." revision = revision + 1 where id = $id";
 
