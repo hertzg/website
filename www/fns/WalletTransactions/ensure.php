@@ -43,9 +43,6 @@ function ensure ($mysqli) {
         'insert_time' => [
             'type' => 'bigint(20) unsigned',
         ],
-        'ordinal' => [
-            'type' => 'bigint(20) unsigned',
-        ],
         'revision' => [
             'type' => 'bigint(20) unsigned',
         ],

@@ -5,18 +5,19 @@ namespace Users\Wallets\Transactions;
 function edit ($mysqli, $wallet, $transaction,
     $amount, $description, $updateApiKey = null) {
 
+    $id = $transaction->id;
     $id_wallets = $transaction->id_wallets;
     $amount_added = $amount - $transaction->amount;
     $balance_after = $wallet->balance + $amount_added;
     $fnsDir = __DIR__.'/../../..';
 
     include_once "$fnsDir/WalletTransactions/edit.php";
-    \WalletTransactions\edit($mysqli, $transaction->id,
-        $amount, $balance_after, $description, $updateApiKey);
+    \WalletTransactions\edit($mysqli, $id, $amount,
+        $balance_after, $description, $updateApiKey);
 
     include_once "$fnsDir/WalletTransactions/addBalanceAfter.php";
     \WalletTransactions\addBalanceAfter($mysqli,
-        $id_wallets, $transaction->ordinal, $amount_added);
+        $id_wallets, $id, $amount_added);
 
     if ($amount_added) {
 
