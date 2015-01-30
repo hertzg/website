@@ -66,22 +66,10 @@ function create ($deletedItem, $user, &$title, &$head) {
         $content = join('<div class="hr"></div>', $items);
     }
 
-    include_once "$fnsDir/Page/imageLink.php";
-    $purgeLink =
-        '<div id="purgeLink">'
-            .\Page\imageLink('Purge', "../purge/?id=$id", 'purge')
-        .'</div>';
-
-    $href = "../submit-restore.php?id=$id";
-    $restoreLink = \Page\imageLink('Restore', $href, 'restore-defaults');
-
-    include_once "$fnsDir/Page/staticTwoColumns.php";
-    $optionsContent = \Page\staticTwoColumns($restoreLink, $purgeLink);
-
     include_once '../fns/item_type_title.php';
     $title = item_type_title($type)." #$data->id";
 
-    include_once "$fnsDir/create_panel.php";
+    include_once __DIR__.'/optionsPanel.php';
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/tabs.php";
     return
@@ -93,9 +81,8 @@ function create ($deletedItem, $user, &$title, &$head) {
                 ],
             ],
             $title,
-            $content
-            .\Page\infoText($infoText)
-            .create_panel("$typeName Options", $optionsContent)
+            $content.\Page\infoText($infoText)
+            .optionsPanel($typeName, $id)
         )
         .$scripts;
 
