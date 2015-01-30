@@ -30,7 +30,6 @@ function create_location_bar ($mysqli, $folder) {
 
         $parentLinks[] = "<a class=\"tag\" href=\"./#$hash\">root</a>";
 
-
     } else {
         $parentLinks[] = '<span class="tag active">root</span>';
     }

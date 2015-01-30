@@ -8,6 +8,7 @@ function wallet_method_page ($methodName, $params, $errors) {
     $description = wallet\get_methods()[$methodName];
 
     include_once "$dir/method_page.php";
-    method_page('Wallet', 'wallet', $methodName, $description, $params, $errors);
+    method_page('Wallet', 'wallet', $methodName,
+        $description, $params, $errors);
 
 }

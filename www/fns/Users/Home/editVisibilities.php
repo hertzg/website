@@ -29,7 +29,7 @@ function editVisibilities ($mysqli, $id_users, $bookmarks,
         ." show_files = $files, show_notes = $notes, show_new_note = $new_note,"
         ." show_notifications = $notifications, show_schedules = $schedules,"
         ." show_tasks = $tasks, show_new_task = $new_task,"
-        ." show_wallets = $wallets,  show_new_wallet = $new_wallet,"
+        ." show_wallets = $wallets, show_new_wallet = $new_wallet,"
         ." show_trash = $trash where id_users = $id_users";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
