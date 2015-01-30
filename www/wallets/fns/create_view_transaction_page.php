@@ -41,7 +41,9 @@ function create_view_page ($transaction) {
     include_once "$fnsDir/Page/sessionMessages.php";
     $content =
         Page\sessionMessages('wallets/view-transaction/messages')
-        .Form\label('Amount', amount_html($transaction->amount));
+        .Form\label('Amount', amount_html($transaction->amount))
+        .'<div class="hr"></div>'
+        .Form\label('Balance after', amount_html($transaction->balance_after));
 
     $description = $transaction->description;
     if ($description !== '') {
