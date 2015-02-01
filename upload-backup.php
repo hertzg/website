@@ -1,6 +1,11 @@
 #!/usr/bin/php
 <?php
 
+function curl_file ($file) {
+    if (class_exists('CURLFile')) return new CURLFile($file);
+    return "@$file";
+}
+
 if (count($argv) != 4) {
     echo "Usage: ./upload-backup.php <zvini_location> <api_key> <parent_id>\n";
     exit(1);
@@ -48,19 +53,19 @@ $folder_id = $callZviniMethod('folder/add', [
 
 $callZviniMethod('file/add', [
     'parent_id' => $folder_id,
-    'file' => new CURLFile('backup-code.tgz'),
+    'file' => curl_file('backup-code.tgz'),
     'name' => 'backup-code.tgz',
 ]);
 
 $callZviniMethod('file/add', [
     'parent_id' => $folder_id,
-    'file' => new CURLFile('backup-data.tgz'),
+    'file' => curl_file('backup-data.tgz'),
     'name' => 'backup-data.tgz',
 ]);
 
 $callZviniMethod('file/add', [
     'parent_id' => $folder_id,
-    'file' => new CURLFile('backup-sql.tgz'),
+    'file' => curl_file('backup-sql.tgz'),
     'name' => 'backup-sql.tgz',
 ]);
 
