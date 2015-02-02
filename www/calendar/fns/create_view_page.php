@@ -32,11 +32,11 @@ function create_view_page ($user, $event) {
     $user_time_today = user_time_today($user);
 
     if ($event_time != $user_time_today) {
-        $dayQuery = '?year='.date('Y', $event_time)
+        $queryString = '?year='.date('Y', $event_time)
             .'&amp;month='.date('n', $event_time)
             .'&amp;day='.date('j', $event_time);
     } else {
-        $dayQuery = '';
+        $queryString = '';
     }
 
     include_once "$fnsDir/create_panel.php";
@@ -50,7 +50,7 @@ function create_view_page ($user, $event) {
             [
                 [
                     'title' => 'Calendar',
-                    'href' => "../$dayQuery#$id",
+                    'href' => "../$queryString#$id",
                 ],
             ],
             "Event #$id",
@@ -59,7 +59,7 @@ function create_view_page ($user, $event) {
             .'<div class="hr"></div>'
             .Page\text(date('F d, Y', $event_time))
             .Page\infoText($infoText),
-            Page\newItemButton("../new-event/$dayQuery", 'Event')
+            Page\newItemButton("../new-event/$queryString", 'Event')
         )
         .create_panel('Event Options', $optionsContent);
 
