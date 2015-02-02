@@ -20,11 +20,11 @@ $content = Page\tabs(
             .' without enabling JavaScript in your web browser.'])
     .'</noscript>'
     .'<div id="jsContent" style="display: none">'
-        .Page\imageLink('mailto: Link', '', 'TODO', ['id' => 'mailto'])
+        .Page\imageLink('mailto: Link', '', 'protocol', ['id' => 'mailto'])
         .'<div class="hr"></div>'
-        .Page\imageLink('sms: Link', '', 'TODO', ['id' => 'sms'])
+        .Page\imageLink('sms: Link', '', 'protocol', ['id' => 'sms'])
         .'<div class="hr"></div>'
-        .Page\imageLink('tel: Link', '', 'TODO', ['id' => 'tel'])
+        .Page\imageLink('tel: Link', '', 'protocol', ['id' => 'tel'])
     .'</div>'
     .'<script type="text/javascript" src="index.js?2" async="true"></script>'
 );

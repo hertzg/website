@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="32"
+   height="32"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.5 r10040"
+   sodipodi:docname="protocol.svg">
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient3592-9-6">
+      <stop
+         id="stop3594-6-5"
+         style="stop-color:#000000;stop-opacity:0.2"
+         offset="0" />
+      <stop
+         id="stop3596-3-6"
+         style="stop-color:#000000;stop-opacity:0"
+         offset="1" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3592-9-6"
+       id="radialGradient9185"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.3125,-2e-4,1038.9248)"
+       cx="16"
+       cy="27"
+       fx="16"
+       fy="27"
+       r="16" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1"
+     inkscape:cx="18.116721"
+     inkscape:cy="-19.86893"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:snap-global="false"
+     showborder="false">
+    <inkscape:grid
+       type="xygrid"
+       id="grid2985"
+       empspacing="5"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-1020.3622)">
+    <g
+       id="g9177">
+      <rect
+         style="fill:url(#radialGradient9185);fill-opacity:1;fill-rule:evenodd;stroke:none"
+         id="rect4375"
+         y="1042.3622"
+         x="0"
+         height="10"
+         width="32" />
+      <g
+         transform="translate(0.99113028,-3.8748737)"
+         id="g6897">
+        <path
+           style="fill:none;stroke:#3377cc;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1"
+           d="m 5.34375,1040.9247 17.465609,-6.8876"
+           id="path4193"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cc" />
+        <text
+           xml:space="preserve"
+           style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#3377cc;fill-opacity:1;stroke:#3377cc;stroke-width:0.2;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:Sans"
+           x="-368.73621"
+           y="970.90283"
+           id="text3348"
+           sodipodi:linespacing="125%"
+           transform="matrix(0.93358043,-0.35836795,0.35836795,0.93358043,0,0)"><tspan
+             sodipodi:role="line"
+             id="tspan3350"
+             x="-368.73621"
+             y="970.90283"
+             style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#3377cc;fill-opacity:1;stroke:#3377cc;stroke-width:0.2;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:FreeSans;-inkscape-font-specification:FreeSans">abc:</tspan></text>
+      </g>
+      <path
+         style="fill:#e1a773;fill-opacity:1;stroke:#ba8150;stroke-width:1px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+         d="m 14.46252,1041.2057 c -1.184368,-1.119 0.222327,-2.5843 1.479615,-1.4629 1.082072,0.9651 1.804613,2.1101 3.65929,1.6246 -0.157034,-0.8712 -2.556852,-6.3114 -3.560961,-8.7282 -0.575502,-1.3851 1.269652,-2.2002 1.876778,-0.9882 0.644617,1.2869 1.296832,2.6115 2.494962,5.2545 l -0.03584,-0.093 c -0.537552,-1.4003 1.516325,-2.1887 2.053876,-0.7884 l 0.215021,0.5602 -0.03584,-0.093 c -0.537551,-1.4004 1.516325,-2.1888 2.053877,-0.7884 l 0.215021,0.5602 c -0.344924,-0.8678 1.233799,-1.9956 1.963788,-0.1248 l 0.347714,0.8442 c 1.091923,2.9738 0.925831,5.3614 0.720003,8.2927 l -5.321552,2.0428 c 0,0 -1.396506,-1.0625 -2.107634,-1.3775 -0.711092,-0.3149 -2.243999,-1.1182 -3.155882,-1.6977 -0.911847,-0.5794 -1.612598,-1.6466 -2.862243,-3.0363 z"
+         id="use4197"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cscssccccccccccczzc" />
+    </g>
+  </g>
+</svg>

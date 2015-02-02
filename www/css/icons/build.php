@@ -105,4 +105,6 @@ $names = ['transaction', 'create-transaction',
     'edit-transaction', 'transactions'];
 render($content, 'transaction.svg', $names);
 
+render($content, 'protocol.svg', ['protocol']);
+
 file_put_contents(__DIR__.'/compressed.css', $content);
