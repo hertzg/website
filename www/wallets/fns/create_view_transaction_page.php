@@ -38,6 +38,7 @@ function create_view_page ($transaction) {
 
     include_once __DIR__.'/amount_html.php';
     include_once "$fnsDir/Form/label.php";
+    include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     $content =
         Page\sessionMessages('wallets/view-transaction/messages')
@@ -67,7 +68,8 @@ function create_view_page ($transaction) {
         "Transaction #$id",
         $content
         .Page\infoText($infoText)
-        .create_panel('Transaction Options', $optionsContent)
+        .create_panel('Transaction Options', $optionsContent),
+        Page\newItemButton("../new-transaction/?id=$id_wallets", 'Transaction')
     );
 
 }
