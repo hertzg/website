@@ -13,10 +13,18 @@ if (array_key_exists($key, $_SESSION)) {
     include_once '../../fns/request_strings.php';
     list($year, $month, $day) = request_strings('year', 'month', 'day');
 
+    $day = abs((int)$day);
+    $month = abs((int)$month);
+    $year = abs((int)$year);
+
+    if ($year === 0) $year = (int)date('Y');
+    if ($month === 0) $month = (int)date('n');
+    if ($day === 0) $day = (int)date('j');
+
     $values = [
-        'event_day' => abs((int)$day),
-        'event_month' => abs((int)$month),
-        'event_year' => abs((int)$year),
+        'event_day' => $day,
+        'event_month' => $month,
+        'event_year' => $year,
         'text' => '',
     ];
 

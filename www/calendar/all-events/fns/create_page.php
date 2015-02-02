@@ -38,6 +38,7 @@ function create_page ($mysqli, $user, $base = '') {
         .'</div>';
 
     include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/tabs.php";
     return
         Page\tabs(
@@ -48,7 +49,8 @@ function create_page ($mysqli, $user, $base = '') {
                 ],
             ],
             'All Events',
-            join('<div class="hr"></div>', $items)
+            join('<div class="hr"></div>', $items),
+            Page\newItemButton('../new-event/', 'Event')
         )
         .create_panel('Options', $deleteLink);
 
