@@ -11,6 +11,7 @@ function create_tag_filter_bar ($tags, $params) {
         $html .=
             "<a class=\"tag\" href=\"$href\">"
                 .htmlspecialchars($tag_name)
+                ." <span class=\"tag-number\">($tag->num_items)</span>"
             .'</a>';
     }
     $html .= '</div>';
