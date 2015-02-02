@@ -15,8 +15,10 @@ include_once '../lib/mysqli.php';
 $user = Users\getByVerifyEmailKey($mysqli, $id_users, $key);
 
 if (!$user) {
-    // TODO show that the key is no longer valid
-    redirect('..');
+    include_once '../fns/echo_alert_page.php';
+    echo_alert_page('Expired Link',
+        'The link has expired. You should try again to verify your email.',
+        '..', '../');
 }
 
 include_once '../fns/Users/Email/verify.php';

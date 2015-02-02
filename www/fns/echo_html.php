@@ -37,5 +37,6 @@ function echo_html ($title, $head, $body, $theme, $base) {
                 .compressed_js_script('unloadProgress', $base)
             .'</body>'
         .'</html>';
+    exit;
 
 }
