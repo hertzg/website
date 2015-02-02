@@ -7,8 +7,14 @@ require_guest_user($base);
 
 include_once 'fns/require_valid_key.php';
 include_once '../lib/mysqli.php';
-list($user, $key) = require_valid_key($mysqli);
-$id_users = $user->id_users;
+list($user, $key, $id_users) = require_valid_key($mysqli);
+
+if (!$user) {
+    include_once '../fns/echo_alert_page.php';
+    echo_alert_page('Link Expired',
+        'The link has expired. You should try again to reset your password.',
+        '..', $base);
+}
 
 if (!$user->email_verified) {
     include_once '../fns/Users/Email/verify.php';

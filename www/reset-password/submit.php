@@ -8,8 +8,12 @@ require_guest_user('../');
 
 include_once 'fns/require_valid_key.php';
 include_once '../lib/mysqli.php';
-list($user, $key) = require_valid_key($mysqli);
-$id_users = $user->id_users;
+list($user, $key, $id_users) = require_valid_key($mysqli);
+
+if (!$user) {
+    include_once '../fns/redirect.php';
+    redirect("./?id_users=$id_users&key=$key");
+}
 
 include_once '../fns/request_strings.php';
 list($password1, $password2) = request_strings('password1', 'password2');
