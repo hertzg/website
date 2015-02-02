@@ -3,12 +3,12 @@
 include_once '../fns/request_strings.php';
 list($id_users, $key) = request_strings('id_users', 'key');
 
-$id_users = abs((int)$id_users);
-
 include_once '../fns/redirect.php';
 
 include_once '../fns/is_md5.php';
 if (!is_md5($key)) redirect('..');
+
+$id_users = abs((int)$id_users);
 
 include_once '../fns/Users/getByVerifyEmailKey.php';
 include_once '../lib/mysqli.php';
