@@ -15,10 +15,6 @@ function create_view_page ($mysqli, $wallet) {
     }
 
     include_once "$fnsDir/Page/imageArrowLink.php";
-    $newTransactionLink = Page\imageArrowLink('New Transaction',
-        "../new-transaction/?id=$id", 'create-transaction',
-        ['id' => 'new-transaction']);
-
     $editLink = Page\imageArrowLink('Edit',
         "../edit/?id=$id", 'edit-wallet', ['id' => 'edit']);
 
@@ -28,10 +24,7 @@ function create_view_page ($mysqli, $wallet) {
         .'</div>';
 
     include_once "$fnsDir/Page/staticTwoColumns.php";
-    $optionsContent =
-        Page\staticTwoColumns($newTransactionLink, $editLink)
-        .'<div class="hr"></div>'
-        .$deleteLink;
+    $optionsContent = Page\staticTwoColumns($editLink, $deleteLink);
 
     unset(
         $_SESSION['wallets/edit/errors'],
@@ -70,10 +63,10 @@ function create_view_page ($mysqli, $wallet) {
         $transactionsContent = Page\info('No transactions');
     }
 
-    include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/Page/infoText.php";
+    include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
     return Page\tabs(
@@ -91,7 +84,7 @@ function create_view_page ($mysqli, $wallet) {
         .Page\infoText($infoText)
         .create_panel('Transactions', $transactionsContent)
         .create_panel('Wallet Options', $optionsContent),
-        create_new_item_button('Wallet', '../')
+        Page\newItemButton("../new-transaction/?id=$id", 'Transaction')
     );
 
 }

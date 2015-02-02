@@ -27,7 +27,7 @@ $content = Page\tabs(
     [
         [
             'title' => "Wallet #$id",
-            'href' => "../view/?id=$id#new-transaction",
+            'href' => "../view/?id=$id",
         ]
     ],
     'New Transaction',
