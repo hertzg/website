@@ -10,7 +10,9 @@ function create_tag_filter_bar ($tags, $params) {
         $href = '?'.htmlspecialchars(http_build_query($params));
         $html .=
             "<a class=\"tag\" href=\"$href\">"
-                .htmlspecialchars($tag_name)
+                .'<span class="tag-text">'
+                    .htmlspecialchars($tag_name)
+                .'</span>'
                 ." <span class=\"tag-number\">($tag->num_items)</span>"
             .'</a>';
     }
