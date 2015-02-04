@@ -2,12 +2,14 @@
 
 function require_received_bookmark ($mysqli, $id_users) {
 
-    include_once __DIR__.'/../../../../fns/request_strings.php';
+    $fnsDir = __DIR__.'/../../../../fns';
+
+    include_once "$fnsDir/request_strings.php";
     list($id) = request_strings('id');
 
     $id = abs((int)$id);
 
-    include_once __DIR__.'/../../../../fns/ReceivedBookmarks/getOnReceiver.php';
+    include_once "$fnsDir/ReceivedBookmarks/getOnReceiver.php";
     $receivedBookmark = ReceivedBookmarks\getOnReceiver(
         $mysqli, $id_users, $id);
 
