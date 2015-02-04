@@ -1,18 +1,19 @@
 <?php
 
-include_once '../../../fns/require_same_domain_referer.php';
+$fnsDir = '../../../fns';
+
+include_once "$fnsDir/require_same_domain_referer.php";
 require_same_domain_referer('..');
 
 include_once 'fns/require_received_folder.php';
 include_once '../../../lib/mysqli.php';
 list($receivedFolder, $id, $user) = require_received_folder($mysqli);
 
-include_once '../../../fns/Users/Folders/Received/import.php';
+include_once "$fnsDir/Users/Folders/Received/import.php";
 Users\Folders\Received\import($mysqli, $receivedFolder, 0);
 
 $messages = ['Folder has been imported.'];
-
-include_once '../../../fns/redirect.php';
+include_once "$fnsDir/redirect.php";
 
 if (!$user->num_received_files && $user->num_received_folders == 1) {
     $messages[] = 'No more received files.';
@@ -23,4 +24,4 @@ if (!$user->num_received_files && $user->num_received_folders == 1) {
 
 $_SESSION['files/received/messages'] = $messages;
 
-redirect('.. ');
+redirect('..');

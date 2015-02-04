@@ -15,7 +15,7 @@ Users\Files\Received\import($mysqli, $receivedFile, 0);
 $messages = ['File has been imported.'];
 include_once "$fnsDir/redirect.php";
 
-if ($user->num_received_files == 1) {
+if (!$user->num_received_folders && $user->num_received_files == 1) {
     $messages[] = 'No more received files.';
     $_SESSION['files/messages'] = $messages;
     unset($_SESSION['files/errors']);
