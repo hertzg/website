@@ -87,7 +87,7 @@
 
 })(base)
 ;
-(function (time) {
+(function (remoteTime) {
 
     function TextNode (text) {
         return document.createTextNode(text)
@@ -110,6 +110,17 @@
 
     }
 
+    var difference
+    var lastRemoteTime = parseInt(localStorage.lastRemoteTime, 10)
+    if (lastRemoteTime >= remoteTime) {
+        difference = parseInt(localStorage.lastLocalTime, 10) - lastRemoteTime
+    } else {
+        var localTime = Date.now()
+        difference = localTime - remoteTime
+        localStorage.lastLocalTime = localTime
+        localStorage.lastRemoteTime = remoteTime
+    }
+
     var requestAnimationFrame = window.requestAnimationFrame
     if (!requestAnimationFrame) {
         requestAnimationFrame = window.mozRequestAnimationFrame
@@ -130,8 +141,6 @@
 
     var staticClockWrapper = document.getElementById('staticClockWrapper')
     staticClockWrapper.parentNode.removeChild(staticClockWrapper)
-
-    var difference = Date.now() - time
 
     update()
 
