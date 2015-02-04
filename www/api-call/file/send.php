@@ -10,17 +10,8 @@ $receiver_user = require_receiver_user($mysqli,
 include_once '../../fns/Files/request.php';
 $name = Files\request();
 
-include_once '../../fns/request_files.php';
-list($file) = request_files('file');
-
-$error = $file['error'];
-if ($error === UPLOAD_ERR_NO_FILE) {
-    include_once '../fns/bad_request.php';
-    bad_request('SELECT_FILE');
-} elseif ($error !== UPLOAD_ERR_OK) {
-    include_once '../fns/bad_request.php';
-    bad_request('FILE_ERROR');
-}
+include_once '../fns/require_file_param.php';
+$file = require_file_param();
 
 include_once '../../fns/Users/Files/Received/add.php';
 Users\Files\Received\add($mysqli, $user, $receiver_user->id_users,
