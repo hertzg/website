@@ -140,6 +140,9 @@ function ensure ($mysqli) {
         'num_events_tomorrow' => [
             'type' => 'bigint(20) unsigned',
         ],
+        'num_folders' => [
+            'type' => 'bigint(20) unsigned',
+        ],
         'num_logins' => [
             'type' => 'bigint(20) unsigned',
         ],

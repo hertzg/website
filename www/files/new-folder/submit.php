@@ -34,8 +34,9 @@ unset(
     $_SESSION['files/new-folder/values']
 );
 
-include_once '../../fns/Folders/add.php';
-$id_folders = Folders\add($mysqli, $id_users, $parent_id_folders, $name, null);
+include_once '../../fns/Users/Folders/add.php';
+$id_folders = Users\Folders\add($mysqli,
+    $id_users, $parent_id_folders, $name);
 
 unset($_SESSION['files/errors']);
 $_SESSION['files/id_folders'] = $id_folders;

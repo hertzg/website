@@ -4,6 +4,7 @@ namespace Users\Folders;
 
 function delete ($mysqli, $folder, $apiKey = null) {
 
+    $num_folders = 0;
     $id_users = $folder->id_users;
     $fnsDir = __DIR__.'/../..';
 
@@ -18,6 +19,8 @@ function delete ($mysqli, $folder, $apiKey = null) {
 
         include_once "$fnsDir/Folders/delete.php";
         \Folders\delete($mysqli, $id);
+
+        $num_folders++;
 
         include_once "$fnsDir/Folders/indexInFolder.php";
         $folders = \Folders\indexInFolder($mysqli, $id);
@@ -51,5 +54,8 @@ function delete ($mysqli, $folder, $apiKey = null) {
         }
 
     }
+
+    include_once __DIR__.'/addNumber.php';
+    addNumber($mysqli, $id_users, -$num_folders);
 
 }

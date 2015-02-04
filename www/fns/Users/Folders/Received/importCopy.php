@@ -5,6 +5,7 @@ namespace Users\Folders\Received;
 function importCopy ($mysqli,
     $receivedFolder, $parent_id, $insertApiKey = null) {
 
+    $num_folders = 1;
     $id_users = $receivedFolder->receiver_id_users;
     $name = $receivedFolder->name;
 
@@ -18,7 +19,7 @@ function importCopy ($mysqli,
         $id_users, $parent_id, $name, $insertApiKey);
 
     $import = function ($parent_id, $parent_id_folders, $import) use ($mysqli,
-        $receivedFolder, $id_users, $fnsDir, $insertApiKey) {
+        $receivedFolder, $id_users, $fnsDir, $insertApiKey, &$num_folders) {
 
         include_once "$fnsDir/ReceivedFolderSubfolders/indexOnParent.php";
         $subfolders = \ReceivedFolderSubfolders\indexOnParent(
@@ -27,6 +28,7 @@ function importCopy ($mysqli,
         foreach ($subfolders as $subfolder) {
             $id_folders = \Folders\add($mysqli, $id_users,
                 $parent_id_folders, $subfolder->name, $insertApiKey);
+            $num_folders++;
             $import($subfolder->id, $id_folders, $import);
         }
 
@@ -47,6 +49,9 @@ function importCopy ($mysqli,
 
     };
     $import(0, $id_folders, $import);
+
+    include_once __DIR__.'/../addNumber.php';
+    \Users\Folders\addNumber($mysqli, $id_users, $num_folders);
 
     return $id_folders;
 

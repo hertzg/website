@@ -4,6 +4,7 @@ namespace Users\Folders;
 
 function addDeleted ($mysqli, $id_users, $folder) {
 
+    $num_folders = 1;
     $id_folders = $folder->id;
     $parent_id_folders = $folder->parent_id_folders;
     $name = $folder->name;
@@ -26,7 +27,7 @@ function addDeleted ($mysqli, $id_users, $folder) {
         $folder->rename_time, $folder->revision);
 
     $restore = function ($parent_id_folders, $restore) use ($mysqli,
-        $id_users, $fnsDir) {
+        $id_users, $fnsDir, &$num_folders) {
 
         include_once "$fnsDir/DeletedFolders/indexOnParent.php";
         $deletedFolders = \DeletedFolders\indexOnParent(
@@ -38,6 +39,7 @@ function addDeleted ($mysqli, $id_users, $folder) {
                 $parent_id_folders, $deletedFolder->name,
                 $deletedFolder->insert_time, $deletedFolder->rename_time,
                 $deletedFolder->revision);
+            $num_folders++;
             $restore($id_folders, $restore);
         }
 
@@ -65,5 +67,9 @@ function addDeleted ($mysqli, $id_users, $folder) {
 
     };
     $restore($id_folders, $restore);
+
+    include_once __DIR__.'/addNumber.php';
+    addNumber($mysqli, $id_users, $num_folders);
+
 
 }
