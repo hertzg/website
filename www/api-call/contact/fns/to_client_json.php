@@ -12,7 +12,7 @@ function to_client_json ($contact) {
         'phone2' => $contact->phone2,
         'birthday_time' => (int)$contact->birthday_time,
         'username' => $contact->username,
-        'timezone' => $timezone === null ? null : (int)$contact->timezone,
+        'timezone' => $timezone === null ? null : (int)$timezone,
         'tags' => $contact->tags,
         'notes' => $contact->notes,
         'favorite' => (bool)$contact->favorite,
