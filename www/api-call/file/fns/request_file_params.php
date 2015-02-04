@@ -3,7 +3,9 @@
 function request_file_params ($mysqli,
     $id_users, $id_folders, $exclude_id = 0) {
 
-    include_once __DIR__.'/../../../fns/Files/request.php';
+    $fnsDir = __DIR__.'/../../../fns';
+
+    include_once "$fnsDir/Files/request.php";
     $name = Files\request();
 
     if ($name === '') {
@@ -11,7 +13,7 @@ function request_file_params ($mysqli,
         bad_request('ENTER_NAME');
     }
 
-    include_once __DIR__.'/../../../fns/Files/getByName.php';
+    include_once "$fnsDir/Files/getByName.php";
     $existingFile = Files\getByName($mysqli,
         $id_users, $id_folders, $name, $exclude_id);
 

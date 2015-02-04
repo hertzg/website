@@ -3,7 +3,9 @@
 function request_folder_params ($mysqli,
     $id_users, $id_folders, $exclude_id = 0) {
 
-    include_once __DIR__.'/../../../fns/Folders/request.php';
+    $fnsDir = __DIR__.'/../../../fns';
+
+    include_once "$fnsDir/Folders/request.php";
     $name = Folders\request();
 
     if ($name === '') {
@@ -11,7 +13,7 @@ function request_folder_params ($mysqli,
         bad_request('ENTER_NAME');
     }
 
-    include_once __DIR__.'/../../../fns/Folders/getByName.php';
+    include_once "$fnsDir/Folders/getByName.php";
     $existingFolder = Folders\getByName($mysqli,
         $id_users, $id_folders, $name, $exclude_id);
 

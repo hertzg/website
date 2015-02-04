@@ -2,20 +2,25 @@
 
 function request_contact_params ($user) {
 
-    include_once __DIR__.'/../../../fns/Contacts/request.php';
+    $fnsDir = __DIR__.'/../../../fns';
+
+    include_once "$fnsDir/Contacts/request.php";
     list($full_name, $alias, $address, $email, $phone1,
         $phone2, $username, $timezone, $notes, $favorite) = Contacts\request();
 
-    include_once __DIR__.'/../../../fns/request_strings.php';
+    include_once "$fnsDir/request_strings.php";
     list($birthday_time) = request_strings('birthday_time');
 
     if ($birthday_time === '') {
         $birthday_time = null;
     } else {
-        include_once __DIR__.'/../../../fns/daytime.php';
+
+        include_once "$fnsDir/daytime.php";
         $birthday_time = daytime($birthday_time);
-        include_once __DIR__.'/../../../fns/user_time_today.php';
+
+        include_once "$fnsDir/user_time_today.php";
         $birthday_time = min($birthday_time, user_time_today($user));
+
     }
 
     if ($full_name === '') {
