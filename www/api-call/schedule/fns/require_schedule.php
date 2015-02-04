@@ -2,12 +2,14 @@
 
 function require_schedule ($mysqli, $id_users) {
 
-    include_once __DIR__.'/../../../fns/request_strings.php';
+    $fnsDir = __DIR__.'/../../../fns';
+
+    include_once "$fnsDir/request_strings.php";
     list($id) = request_strings('id');
 
     $id = abs((int)$id);
 
-    include_once __DIR__.'/../../../fns/Schedules/getOnUser.php';
+    include_once "$fnsDir/Schedules/getOnUser.php";
     $schedule = Schedules\getOnUser($mysqli, $id_users, $id);
 
     if (!$schedule) {

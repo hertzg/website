@@ -2,12 +2,14 @@
 
 function require_note ($mysqli, $id_users) {
 
-    include_once __DIR__.'/../../../fns/request_strings.php';
+    $fnsDir = __DIR__.'/../../../fns';
+
+    include_once "$fnsDir/request_strings.php";
     list($id) = request_strings('id');
 
     $id = abs((int)$id);
 
-    include_once __DIR__.'/../../../fns/Notes/getOnUser.php';
+    include_once "$fnsDir/Notes/getOnUser.php";
     $note = Notes\getOnUser($mysqli, $id_users, $id);
 
     if (!$note) {

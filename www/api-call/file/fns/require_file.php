@@ -2,12 +2,14 @@
 
 function require_file ($mysqli, $id_users) {
 
-    include_once __DIR__.'/../../../fns/request_strings.php';
+    $fnsDir = __DIR__.'/../../../fns';
+
+    include_once "$fnsDir/request_strings.php";
     list($id) = request_strings('id');
 
     $id = abs((int)$id);
 
-    include_once __DIR__.'/../../../fns/Files/getOnUser.php';
+    include_once "$fnsDir/Files/getOnUser.php";
     $file = Files\getOnUser($mysqli, $id_users, $id);
 
     if (!$file) {
