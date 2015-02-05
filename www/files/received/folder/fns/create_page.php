@@ -15,20 +15,27 @@ function create_page ($mysqli, $receivedFolder, $base = '') {
 
     if ($files || $subfolders) {
 
-        include_once "$fnsDir/Page/imageArrowLink.php";
-
-        foreach ($subfolders as $subfolder) {
-            $item_id = $subfolder->id;
-            $items[] = Page\imageArrowLink(htmlspecialchars($subfolder->name),
-                "{$base}subfolder/?id=$item_id", 'folder',
-                ['id' => "folder_$item_id"]);
+        if ($subfolders) {
+            include_once "$fnsDir/Page/imageArrowLink.php";
+            foreach ($subfolders as $subfolder) {
+                $item_id = $subfolder->id;
+                $items[] = Page\imageArrowLink(
+                    htmlspecialchars($subfolder->name),
+                    "{$base}subfolder/?id=$item_id", 'folder',
+                    ['id' => "folder_$item_id"]);
+            }
         }
 
-        foreach ($files as $file) {
-            $item_id = $file->id;
-            $items[] = Page\imageArrowLink(htmlspecialchars($file->name),
-                "{$base}file/?id=$item_id", "$file->media_type-file",
-                ['id' => "file_$item_id"]);
+        if ($files) {
+            include_once "$fnsDir/bytestr.php";
+            include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
+            foreach ($files as $file) {
+                $item_id = $file->id;
+                $items[] = Page\imageArrowLinkWithDescription(
+                    htmlspecialchars($file->name), bytestr($file->size),
+                    "{$base}file/?id=$item_id", "$file->media_type-file",
+                    ['id' => "file_$item_id"]);
+            }
         }
 
     } else {

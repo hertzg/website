@@ -21,20 +21,25 @@ $files = ReceivedFolderFiles\indexOnParent($mysqli, $id_received_folders, $id);
 
 if ($subfolders || $files) {
 
-    include_once "$fnsDir/Page/imageArrowLink.php";
-
-    foreach ($subfolders as $subfolder) {
-        $folder_id = $subfolder->id;
-        $title = htmlspecialchars($subfolder->name);
-        $items[] = Page\imageArrowLink($title,
-            "?id=$folder_id", 'folder', ['id' => "folder_$folder_id"]);
+    if ($subfolders) {
+        include_once "$fnsDir/Page/imageArrowLink.php";
+        foreach ($subfolders as $subfolder) {
+            $folder_id = $subfolder->id;
+            $items[] = Page\imageArrowLink(htmlspecialchars($subfolder->name),
+                "?id=$folder_id", 'folder', ['id' => "folder_$folder_id"]);
+        }
     }
 
-    foreach ($files as $file) {
-        $file_id = $file->id;
-        $title = htmlspecialchars($file->name);
-        $items[] = Page\imageArrowLink($title, "file/?id=$file_id",
-            "$file->media_type-file", ['id' => "file_$file_id"]);
+    if ($files) {
+        include_once "$fnsDir/bytestr.php";
+        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
+        foreach ($files as $file) {
+            $file_id = $file->id;
+            $items[] = Page\imageArrowLinkWithDescription(
+                htmlspecialchars($file->name), bytestr($file->size),
+                "file/?id=$file_id", "$file->media_type-file",
+                ['id' => "file_$file_id"]);
+        }
     }
 
 } else {

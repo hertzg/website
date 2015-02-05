@@ -2,30 +2,37 @@
 
 function render_folders_and_files ($folders, $files, &$items, $keyword) {
 
+    $fnsDir = __DIR__.'/../../../fns';
+
     if ($folders || $files) {
 
         $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
         $replace = '<mark>$0</mark>';
 
-        include_once __DIR__.'/../../../fns/Page/imageArrowLink.php';
-
-        foreach ($folders as $i => $folder) {
-            $title = htmlspecialchars($folder->name);
-            $title = preg_replace($regex, $replace, $title);
-            $href = "..?id_folders=$folder->id_folders";
-            $items[] = Page\imageArrowLink($title, $href, 'folder');
+        if ($folders) {
+            include_once "$fnsDir/Page/imageArrowLink.php";
+            foreach ($folders as $folder) {
+                $title = htmlspecialchars($folder->name);
+                $title = preg_replace($regex, $replace, $title);
+                $items[] = Page\imageArrowLink($title,
+                    "..?id_folders=$folder->id_folders", 'folder');
+            }
         }
 
-        foreach ($files as $i => $file) {
-            $title = htmlspecialchars($file->name);
-            $title = preg_replace($regex, $replace, $title);
-            $href = "../view-file/?id=$file->id_files";
-            $icon = "$file->media_type-file";
-            $items[] = Page\imageArrowLink($title, $href, $icon);
+        if ($files) {
+            include_once "$fnsDir/bytestr.php";
+            include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
+            foreach ($files as $file) {
+                $title = htmlspecialchars($file->name);
+                $title = preg_replace($regex, $replace, $title);
+                $items[] = Page\imageArrowLinkWithDescription($title,
+                    bytestr($file->size), "../view-file/?id=$file->id_files",
+                    "$file->media_type-file");
+            }
         }
 
     } else {
-        include_once __DIR__.'/../../../fns/Page/info.php';
+        include_once "$fnsDir/Page/info.php";
         $items[] = Page\info('No files found');
     }
 
