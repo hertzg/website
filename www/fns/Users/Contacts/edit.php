@@ -22,7 +22,7 @@ function edit ($mysqli, $user, $contact, $full_name, $alias,
     if ($tag_names) {
         include_once "$fnsDir/ContactTags/add.php";
         \ContactTags\add($mysqli, $contact->id_users, $id, $tag_names,
-            $full_name, $alias, $phone1, $phone2, $favorite);
+            $full_name, $alias, $email, $phone1, $phone2, $favorite);
     }
 
     if ($contact->birthday_time !== null) {

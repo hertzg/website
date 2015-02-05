@@ -17,6 +17,11 @@ function ensure ($mysqli) {
             'characterSet' => 'utf8',
             'collation' => 'utf8_unicode_ci',
         ],
+        'email' => [
+            'type' => "varchar($maxLengths[email])",
+            'characterSet' => 'utf8',
+            'collation' => 'utf8_general_ci',
+        ],
         'favorite' => [
             'type' => 'tinyint(3) unsigned',
         ],

@@ -19,7 +19,7 @@ function add ($mysqli, $user, $full_name, $alias, $address,
     if ($tag_names) {
         include_once "$fnsDir/ContactTags/add.php";
         \ContactTags\add($mysqli, $id_users, $id, $tag_names,
-            $full_name, $alias, $phone1, $phone2, $notes, $favorite);
+            $full_name, $alias, $email, $phone1, $phone2, $notes, $favorite);
     }
 
     if ($photo_id) {

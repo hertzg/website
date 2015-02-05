@@ -9,6 +9,7 @@ function addDeleted ($mysqli, $user, $data) {
     $id = $data->id;
     $full_name = $data->full_name;
     $alias = $data->alias;
+    $email = $data->email;
     $phone1 = $data->phone1;
     $phone2 = $data->phone2;
     $birthday_time = $data->birthday_time;
@@ -22,7 +23,7 @@ function addDeleted ($mysqli, $user, $data) {
 
     include_once "$fnsDir/Contacts/addDeleted.php";
     \Contacts\addDeleted($mysqli, $id, $id_users, $full_name,
-        $alias, $data->address, $data->email, $phone1, $phone2,
+        $alias, $data->address, $email, $phone1, $phone2,
         $birthday_time, $data->username, $data->timezone, $data->tags,
         $tag_names, $data->notes, $favorite, $data->insert_time,
         $data->update_time, $data->photo_id, $data->revision);
@@ -30,7 +31,7 @@ function addDeleted ($mysqli, $user, $data) {
     if ($tag_names) {
         include_once "$fnsDir/ContactTags/add.php";
         \ContactTags\add($mysqli, $id_users, $id, $tag_names,
-            $full_name, $alias, $phone1, $phone2, $favorite);
+            $full_name, $alias, $email, $phone1, $phone2, $favorite);
     }
 
     if ($birthday_time !== null) {
