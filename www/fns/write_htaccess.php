@@ -1,6 +1,6 @@
 <?php
 
-function write_htaccess ($forceHttps = false) {
+function write_htaccess () {
 
     include_once __DIR__.'/SiteBase/get.php';
     $siteBase = SiteBase\get();
@@ -18,16 +18,8 @@ function write_htaccess ($forceHttps = false) {
         ."\n"
         ."RewriteCond %{HTTP_HOST} ^www\.$escapedDomainName$\n"
         ."RewriteRule (.*) $siteProtocol://$domainName/$1 [R=301,L]\n"
-        ."\n";
-    if ($siteProtocol == 'https' && $forceHttps) {
-        $content .=
-            "RewriteCond %{HTTPS} !^on$\n"
-            ."RewriteCond %{HTTP_HOST} ^$escapedDomainName$\n"
-            ."RewriteRule (.*) https://$domainName/$1 [R=301,L]\n"
-            ."\n";
-    }
-    $content .=
-        "<filesMatch \"\.(css|js|png|svg|ttf)$\">\n"
+        ."\n"
+        ."<filesMatch \"\.(css|js|png|svg|ttf)$\">\n"
         ."    Header set Cache-Control \"public, max-age=2592000\"\n"
         ."</filesMatch>\n"
         ."\n"
