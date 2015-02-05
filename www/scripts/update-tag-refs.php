@@ -38,13 +38,14 @@ foreach ($ids as $id) {
 
         $full_name = $mysqli->real_escape_string($contact->full_name);
         $alias = $mysqli->real_escape_string($contact->alias);
+        $email = $mysqli->real_escape_string($contact->email);
         $phone1 = $mysqli->real_escape_string($contact->phone1);
         $phone2 = $mysqli->real_escape_string($contact->phone2);
         $favorite = $contact->favorite ? '1' : '0';
 
         $sql = 'update contact_tags set'
             ." full_name = '$full_name', alias = '$alias',"
-            ." phone1 = '$phone1', phone2 = '$phone2',"
+            ." email = '$email', phone1 = '$phone1', phone2 = '$phone2',"
             ." favorite = $favorite, insert_time = $contact->insert_time,"
             ." update_time = $contact->update_time"
             ." where id_contacts = $contact->id";
