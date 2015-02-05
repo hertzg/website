@@ -15,6 +15,7 @@ function require_requirements () {
         !extension_loaded('gmp') || !extension_loaded('mysql') ||
         !is_writable("$rootDir/data/contact-photos") ||
         !is_writable("$rootDir/data/users") ||
+        !is_writable("$rootDir/.htaccess") ||
         !is_writable("$rootDir/fns/Admin/get.php") ||
         !is_writable("$rootDir/fns/DomainName/get.php") ||
         !is_writable("$rootDir/fns/InfoEmail/get.php") ||

@@ -54,6 +54,7 @@ $assertsHtml .= assert_installed(function_exists('mysql'), $subject);
 $assertsHtml .=
     assert_writable('data/contact-photos')
     .assert_writable('data/users')
+    .assert_writable('.htaccess')
     .assert_writable('fns/Admin/get.php')
     .assert_writable('fns/DomainName/get.php')
     .assert_writable('fns/InfoEmail/get.php')

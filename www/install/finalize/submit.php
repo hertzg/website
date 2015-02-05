@@ -3,32 +3,37 @@
 include_once '../fns/require_admin.php';
 list($generalInfoValues, $mysqlConfigValues, $adminValues) = require_admin();
 
-include_once '../../fns/Password/hash.php';
+$fnsDir = '../../fns';
+
+include_once "$fnsDir/Password/hash.php";
 list($hash, $salt) = Password\hash($adminValues['password1']);
 
-include_once '../../fns/Admin/set.php';
+include_once "$fnsDir/Admin/set.php";
 Admin\set($adminValues['username'], $hash, $salt);
 
-include_once '../../fns/DomainName/set.php';
+include_once "$fnsDir/DomainName/set.php";
 DomainName\set($generalInfoValues['domainName']);
 
-include_once '../../fns/InfoEmail/set.php';
+include_once "$fnsDir/InfoEmail/set.php";
 InfoEmail\set($generalInfoValues['infoEmail']);
 
-include_once '../../fns/MysqlConfig/set.php';
+include_once "$fnsDir/MysqlConfig/set.php";
 MysqlConfig\set($mysqlConfigValues['host'], $mysqlConfigValues['username'],
     $mysqlConfigValues['password'], $mysqlConfigValues['db']);
 
-include_once '../../fns/SiteBase/set.php';
+include_once "$fnsDir/SiteBase/set.php";
 SiteBase\set($generalInfoValues['siteBase']);
 
-include_once '../../fns/SiteProtocol/set.php';
+include_once "$fnsDir/SiteProtocol/set.php";
 SiteProtocol\set($generalInfoValues['https'] ? 'https' : 'http');
 
-include_once '../../fns/write_crontab.php';
+include_once "$fnsDir/write_crontab.php";
 write_crontab();
 
-include_once '../../fns/Installed/set.php';
+include_once "$fnsDir/write_htaccess.php";
+write_htaccess();
+
+include_once "$fnsDir/Installed/set.php";
 Installed\set(true);
 
 unset(
@@ -37,5 +42,5 @@ unset(
     $_SESSION['install/admin/values']
 );
 
-include_once '../../fns/redirect.php';
+include_once "$fnsDir/redirect.php";
 redirect('../done/');

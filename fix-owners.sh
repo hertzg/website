@@ -3,6 +3,7 @@ cd `dirname $BASH_SOURCE`
 owner=www-data:www-data
 chown -R $owner www/data/contact-photos
 chown -R $owner www/data/users
+chown $owner www/.htaccess
 chown $owner www/fns/Admin/get.php
 chown $owner www/fns/DomainName/get.php
 chown $owner www/fns/InfoEmail/get.php

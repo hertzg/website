@@ -34,7 +34,8 @@ $content .= assert_installed($mysqliOk, $text);
 include_once '../../fns/ContactPhotos/dir.php';
 include_once '../../fns/Users/Directory/dir.php';
 $content .=
-    assert_writable_file('../../fns/Admin/get.php')
+    assert_writable_file('../../.htaccess')
+    .assert_writable_file('../../fns/Admin/get.php')
     .assert_writable_file('../../fns/DomainName/get.php')
     .assert_writable_file('../../fns/InfoEmail/get.php')
     .assert_writable_file('../../fns/Installed/get.php')
