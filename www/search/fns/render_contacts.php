@@ -11,6 +11,7 @@ function render_contacts ($contacts, &$items, $regex, $encodedKeyword) {
 
         $title = htmlspecialchars($contact->full_name);
         $alias = htmlspecialchars($contact->alias);
+        $email = htmlspecialchars($contact->email);
         $phone1 = htmlspecialchars($contact->phone1);
         $phone2 = htmlspecialchars($contact->phone2);
 
@@ -24,6 +25,9 @@ function render_contacts ($contacts, &$items, $regex, $encodedKeyword) {
         $descriptions = [];
         if ($alias !== '') {
             $descriptions[] = preg_replace($regex, $replace, $alias);
+        }
+        if (preg_match($regex, $email)) {
+            $descriptions[] = preg_replace($regex, $replace, $email);
         }
         if (preg_match($regex, $phone1)) {
             $descriptions[] = preg_replace($regex, $replace, $phone1);
