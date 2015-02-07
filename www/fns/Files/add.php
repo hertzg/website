@@ -25,12 +25,15 @@ function add ($mysqli, $id_users, $id_folders, $name, $size, $insertApiKey) {
 
     }
 
+    include_once __DIR__.'/../bytestr.php';
+    $readable_size = bytestr($size);
+
     $sql = 'insert into files'
         .' (id_users, id_folders, content_type, media_type,'
-        .' name, size, insert_time, rename_time,'
+        .' name, size, readable_size, insert_time, rename_time,'
         .' insert_api_key_id, insert_api_key_name)'
         ." value ($id_users, $id_folders, '$content_type', '$media_type',"
-        ." '$name', $size, $insert_time, $rename_time,"
+        ." '$name', $size, '$readable_size', $insert_time, $rename_time,"
         ." $insert_api_key_id, $insert_api_key_name)";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
