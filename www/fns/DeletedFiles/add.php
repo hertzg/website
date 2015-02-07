@@ -14,7 +14,7 @@ function add ($mysqli, $id_deleted_items, $id_files,
     $sql = 'insert into deleted_files'
         .' (id_deleted_items, id_files, id_folders, id_users,'
         .' content_type, media_type, name, size, readable_size,'
-        .', insert_time, rename_time, content_revision, revision)'
+        .' insert_time, rename_time, content_revision, revision)'
         ." values ($id_deleted_items, $id_files, $id_folders, $id_users,"
         ." '$content_type', '$media_type', '$name', $size, '$readable_size',"
         ." $insert_time, $rename_time, $content_revision, $revision)";

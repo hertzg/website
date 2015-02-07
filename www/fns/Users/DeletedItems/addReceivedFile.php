@@ -10,6 +10,7 @@ function addReceivedFile ($mysqli, $receivedFile, $apiKey) {
         'media_type' => $receivedFile->media_type,
         'name' => $receivedFile->name,
         'size' => $receivedFile->size,
+        'readable_size' => $receivedFile->readable_size,
         'insert_time' => $receivedFile->insert_time,
         'sender_id_users' => $receivedFile->sender_id_users,
         'sender_username' => $receivedFile->sender_username,
