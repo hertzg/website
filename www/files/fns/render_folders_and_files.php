@@ -16,12 +16,11 @@ function render_folders_and_files ($folders, $files, &$items) {
         }
 
         if ($files) {
-            include_once "$fnsDir/bytestr.php";
             include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
             foreach ($files as $file) {
                 $id = $file->id_files;
                 $items[] = Page\imageArrowLinkWithDescription(
-                    htmlspecialchars($file->name), bytestr($file->size),
+                    htmlspecialchars($file->name), $file->readable_size,
                     "view-file/?id=$id", "$file->media_type-file",
                     ['id' => "file_$id"]);
             }

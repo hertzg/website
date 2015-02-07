@@ -25,7 +25,6 @@ include_once "$fnsDir/Page/filePreview.php";
 $filePreview = Page\filePreview($receivedFolderFile->media_type,
     $receivedFolderFile->content_type, $id, '../download-file/', $base);
 
-include_once "$fnsDir/bytestr.php";
 include_once "$fnsDir/create_panel.php";
 include_once "$fnsDir/Form/label.php";
 include_once "$fnsDir/Page/tabs.php";
@@ -45,7 +44,7 @@ $content = Page\tabs(
     .'</div>'
     .Form\label('File name', htmlspecialchars($name))
     .'<div class="hr"></div>'
-    .Form\label('Size', bytestr($receivedFolderFile->size))
+    .Form\label('Size', $receivedFolderFile->readable_size)
     .'<div class="hr"></div>'
     .Form\label('Preview', $filePreview)
     .create_panel('File Options', $downloadLink)

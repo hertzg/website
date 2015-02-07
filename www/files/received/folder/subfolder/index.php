@@ -31,12 +31,11 @@ if ($subfolders || $files) {
     }
 
     if ($files) {
-        include_once "$fnsDir/bytestr.php";
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         foreach ($files as $file) {
             $file_id = $file->id;
             $items[] = Page\imageArrowLinkWithDescription(
-                htmlspecialchars($file->name), bytestr($file->size),
+                htmlspecialchars($file->name), $file->readable_size,
                 "file/?id=$file_id", "$file->media_type-file",
                 ['id' => "file_$file_id"]);
         }
@@ -50,7 +49,6 @@ if ($subfolders || $files) {
 $title = "Received Folder #$id_received_folders";
 
 include_once 'fns/create_location_bar.php';
-include_once "$fnsDir/bytestr.php";
 include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
     [

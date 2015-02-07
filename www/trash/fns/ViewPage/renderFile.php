@@ -9,8 +9,7 @@ function renderFile ($id, $file, &$items) {
     include_once "$fnsDir/Form/label.php";
     $items[] = \Form\label('File name', htmlspecialchars($file->name));
 
-    include_once "$fnsDir/bytestr.php";
-    $items[] = \Form\label('Size', bytestr($file->size));
+    $items[] = \Form\label('Size', $file->readable_size);
 
     include_once "$fnsDir/Page/filePreview.php";
     $filePreview = \Page\filePreview($file->media_type,

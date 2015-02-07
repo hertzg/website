@@ -36,7 +36,6 @@ function create_page ($receivedFile, $base = '') {
         $receivedFile->content_type, $id, "{$base}download/",
         "$base../../../");
 
-    include_once "$fnsDir/bytestr.php";
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/date_ago.php";
     include_once "$fnsDir/Form/label.php";
@@ -60,7 +59,7 @@ function create_page ($receivedFile, $base = '') {
             'The File',
             Form\label('File name', htmlspecialchars($name))
             .'<div class="hr"></div>'
-            .Form\label('Size', bytestr($receivedFile->size))
+            .Form\label('Size', $receivedFile->readable_size)
             .'<div class="hr"></div>'
             .Form\label('Preview', $filePreview)
             .Page\infoText(
