@@ -4,6 +4,7 @@
 chdir(__DIR__);
 include_once '../../lib/cli.php';
 include_once '../lib/mysqli.php';
+include_once '../fns/bytestr.php';
 include_once '../fns/detect_content_type.php';
 include_once '../fns/detect_media_type.php';
 include_once '../fns/mysqli_query_object.php';
@@ -15,8 +16,10 @@ foreach ($deletedFiles as $deletedFile) {
     $name = $deletedFile->name;
     $content_type = detect_content_type($name);
     $media_type = detect_media_type($name);
+    $readable_size = bytestr($deletedFile->size);
     $sql = "update deleted_files set content_type = '$content_type',"
-        ." media_type = '$media_type' where id_files = $deletedFile->id_files";
+        ." media_type = '$media_type', readable_size = '$readable_size'"
+        ." where id_files = $deletedFile->id_files";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 }
 
@@ -25,8 +28,10 @@ foreach ($files as $file) {
     $name = $file->name;
     $content_type = detect_content_type($name);
     $media_type = detect_media_type($name);
+    $readable_size = bytestr($file->size);
     $sql = "update files set content_type = '$content_type',"
-        ." media_type = '$media_type' where id_files = $file->id_files";
+        ." media_type = '$media_type', readable_size = '$readable_size'"
+        ." where id_files = $file->id_files";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 }
 
@@ -35,8 +40,10 @@ foreach ($receivedFiles as $receivedFile) {
     $name = $receivedFile->name;
     $content_type = detect_content_type($name);
     $media_type = detect_media_type($name);
+    $readable_size = bytestr($receivedFile->size);
     $sql = "update received_files set content_type = '$content_type',"
-        ." media_type = '$media_type' where id = $receivedFile->id";
+        ." media_type = '$media_type', readable_size = '$readable_size'"
+        ." where id = $receivedFile->id";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 }
 
@@ -46,8 +53,10 @@ foreach ($receivedFolderFiles as $receivedFolderFile) {
     $name = $receivedFolderFile->name;
     $content_type = detect_content_type($name);
     $media_type = detect_media_type($name);
+    $readable_size = bytestr($receivedFolderFile->size);
     $sql = "update received_folder_files set content_type = '$content_type',"
-        ." media_type = '$media_type' where id = $receivedFolderFile->id";
+        ." media_type = '$media_type', readable_size = '$readable_size'"
+        ." where id = $receivedFolderFile->id";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 }
 
@@ -59,6 +68,7 @@ foreach ($deletedItems as $deletedItem) {
     $name = $data->name;
     $data->content_type = detect_content_type($name);
     $data->media_type = detect_media_type($data->name);
+    $data->readable_size = bytestr($data->size);
     $data = json_encode($data);
     $data_json = $mysqli->real_escape_string($data);
     $sql = "update deleted_items set data_json = '$data_json'"
