@@ -40,6 +40,11 @@ function ensure ($mysqli) {
         'parent_id' => [
             'type' => 'bigint(20) unsigned',
         ],
+        'readable_size' => [
+            'type' => 'varchar(20)',
+            'characterSet' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+        ],
         'size' => [
             'type' => 'bigint(20) unsigned',
         ],

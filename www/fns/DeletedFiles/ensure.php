@@ -46,6 +46,11 @@ function ensure ($mysqli) {
             'characterSet' => 'utf8',
             'collation' => 'utf8_unicode_ci',
         ],
+        'readable_size' => [
+            'type' => 'varchar(20)',
+            'characterSet' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+        ],
         'rename_time' => [
             'type' => 'bigint(20) unsigned',
         ],
