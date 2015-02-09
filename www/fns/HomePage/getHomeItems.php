@@ -43,6 +43,15 @@ function getHomeItems ($mysqli, $user) {
     include_once __DIR__.'/renderNotifications.php';
     renderNotifications($user, $items);
 
+    include_once __DIR__.'/renderPlaces.php';
+    renderPlaces($user, $items);
+
+    if ($user->show_new_place) {
+        include_once "$fnsDir/Page/imageArrowLink.php";
+        $items['new-place'] = \Page\imageArrowLink(
+            'New Place', '../places/new/', 'create-place-TODO');
+    }
+
     include_once __DIR__.'/renderSchedules.php';
     renderSchedules($user, $mysqli, $items);
 

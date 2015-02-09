@@ -155,6 +155,9 @@ function ensure ($mysqli) {
         'num_notifications' => [
             'type' => 'bigint(20) unsigned',
         ],
+        'num_places' => [
+            'type' => 'bigint(20) unsigned',
+        ],
         'num_received_bookmarks' => [
             'type' => 'bigint(20) unsigned',
         ],
@@ -244,6 +247,9 @@ function ensure ($mysqli) {
         'show_new_note' => [
             'type' => 'tinyint(3) unsigned',
         ],
+        'show_new_place' => [
+            'type' => 'tinyint(3) unsigned',
+        ],
         'show_new_task' => [
             'type' => 'tinyint(3) unsigned',
         ],
@@ -254,6 +260,9 @@ function ensure ($mysqli) {
             'type' => 'tinyint(3) unsigned',
         ],
         'show_notifications' => [
+            'type' => 'tinyint(3) unsigned',
+        ],
+        'show_places' => [
             'type' => 'tinyint(3) unsigned',
         ],
         'show_schedules' => [
