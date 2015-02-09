@@ -2,8 +2,8 @@
 
 namespace Places;
 
-function edit ($mysqli, $id, $name, $latitude,
-    $longitude, $tags, $tag_names, $updateApiKey) {
+function edit ($mysqli, $id, $latitude, $longitude,
+    $name, $tags, $tag_names, $updateApiKey) {
 
     $name = $mysqli->real_escape_string($name);
     $tags = $mysqli->real_escape_string($tags);
@@ -21,8 +21,8 @@ function edit ($mysqli, $id, $name, $latitude,
 
     }
 
-    $sql = "update places set name = '$name', latitude = $latitude,"
-        ." longitude = $longitude, tags = '$tags', num_tags = $num_tags,"
+    $sql = "update places set latitude = $latitude, longitude = $longitude,"
+        ." name = '$name', tags = '$tags', num_tags = $num_tags,"
         ." tags_json = '$tags_json', update_time = $update_time,"
         ." update_api_key_id = $update_api_key_id,"
         ." update_api_key_name = $update_api_key_name,"

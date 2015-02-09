@@ -2,8 +2,8 @@
 
 namespace Places;
 
-function add ($mysqli, $id_users, $name, $latitude,
-    $longitude, $tags, $tag_names, $insertApiKey) {
+function add ($mysqli, $id_users, $latitude,
+    $longitude, $name, $tags, $tag_names, $insertApiKey) {
 
     $name = $mysqli->real_escape_string($name);
     $tags = $mysqli->real_escape_string($tags);
@@ -22,10 +22,10 @@ function add ($mysqli, $id_users, $name, $latitude,
     }
 
     $sql = 'insert into places'
-        .' (id_users, name, latitude, longitude, tags,'
+        .' (id_users, latitude, longitude, name, tags,'
         .' num_tags, tags_json, insert_time, update_time,'
         .' insert_api_key_id, insert_api_key_name)'
-        ." values ($id_users, '$name', $latitude, $longitude, '$tags',"
+        ." values ($id_users, $latitude, $longitude, '$name', '$tags',"
         ." $num_tags, '$tags_json', $insert_time, $update_time,"
         ." $insert_api_key_id, $insert_api_key_name)";
 

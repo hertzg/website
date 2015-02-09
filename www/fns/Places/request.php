@@ -6,15 +6,16 @@ function request () {
 
     $fnsDir = __DIR__.'/..';
 
-    include_once "$fnsDir/request_text.php";
-    $name = request_text('name');
-
     include_once "$fnsDir/request_strings.php";
-    list($latitude, $longitude) = request_strings('latitude', 'longitude');
+    list($latitude, $longitude, $name) = request_strings(
+        'latitude', 'longitude', 'name');
 
     $latitude = (float)$latitude;
     $longitude = (float)$longitude;
 
-    return [$name];
+    include_once "$fnsDir/str_collapse_spaces.php";
+    $name = str_collapse_spaces($name);
+
+    return [$latitude, $longitude, $name];
 
 }

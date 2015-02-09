@@ -13,9 +13,9 @@ function maxLengths () {
     include_once "$fnsDir/TagsJson/maxLength.php";
     return [
         'insert_api_key_name' => $apiKeyNameMaxLength,
+        'name' => 256,
         'tags' => \Tags\maxLength(),
         'tags_json' => \TagsJson\maxLength(),
-        'name' => 256,
         'update_api_key_name' => $apiKeyNameMaxLength,
     ];
 
