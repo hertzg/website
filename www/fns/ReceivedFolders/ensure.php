@@ -16,7 +16,7 @@ function ensure ($mysqli) {
             'type' => 'tinyint(3) unsigned',
         ],
         'committed' => [
-            'type' => 'tinyint(4)',
+            'type' => 'tinyint(3) unsigned',
         ],
         'id' => [
             'type' => 'bigint(20) unsigned',

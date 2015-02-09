@@ -15,7 +15,7 @@ function ensure ($mysqli) {
             'collation' => 'ascii_general_ci',
         ],
         'channel_public' => [
-            'type' => 'tinyint(4)',
+            'type' => 'tinyint(3) unsigned',
         ],
         'id' => [
             'type' => 'bigint(20) unsigned',
@@ -49,7 +49,7 @@ function ensure ($mysqli) {
             'type' => 'bigint(20) unsigned',
         ],
         'publisher_locked' => [
-            'type' => 'tinyint(4)',
+            'type' => 'tinyint(3) unsigned',
         ],
         'publisher_username' => [
             'type' => "varchar($maxLengths[username])",
@@ -57,7 +57,7 @@ function ensure ($mysqli) {
             'collation' => 'ascii_bin',
         ],
         'receive_notifications' => [
-            'type' => 'tinyint(4)',
+            'type' => 'tinyint(3) unsigned',
         ],
         'revision' => [
             'type' => 'bigint(20) unsigned',
@@ -66,7 +66,7 @@ function ensure ($mysqli) {
             'type' => 'bigint(20) unsigned',
         ],
         'subscriber_locked' => [
-            'type' => 'tinyint(4)',
+            'type' => 'tinyint(3) unsigned',
         ],
         'subscriber_username' => [
             'type' => "varchar($maxLengths[username])",

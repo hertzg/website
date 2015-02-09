@@ -14,64 +14,64 @@ function ensure ($mysqli) {
             'nullable' => true,
         ],
         'can_read_bookmarks' => [
-            'type' => 'tinyint(4)',
+            'type' => 'tinyint(3) unsigned',
         ],
         'can_read_channels' => [
-            'type' => 'tinyint(4)',
+            'type' => 'tinyint(3) unsigned',
         ],
         'can_read_contacts' => [
-            'type' => 'tinyint(4)',
+            'type' => 'tinyint(3) unsigned',
         ],
         'can_read_events' => [
-            'type' => 'tinyint(4)',
+            'type' => 'tinyint(3) unsigned',
         ],
         'can_read_files' => [
-            'type' => 'tinyint(4)',
+            'type' => 'tinyint(3) unsigned',
         ],
         'can_read_notes' => [
-            'type' => 'tinyint(4)',
+            'type' => 'tinyint(3) unsigned',
         ],
         'can_read_notifications' => [
-            'type' => 'tinyint(4)',
+            'type' => 'tinyint(3) unsigned',
         ],
         'can_read_schedules' => [
-            'type' => 'tinyint(4)',
+            'type' => 'tinyint(3) unsigned',
         ],
         'can_read_tasks' => [
-            'type' => 'tinyint(4)',
+            'type' => 'tinyint(3) unsigned',
         ],
         'can_read_wallets' => [
-            'type' => 'tinyint(4)',
+            'type' => 'tinyint(3) unsigned',
         ],
         'can_write_bookmarks' => [
-            'type' => 'tinyint(4)',
+            'type' => 'tinyint(3) unsigned',
         ],
         'can_write_channels' => [
-            'type' => 'tinyint(4)',
+            'type' => 'tinyint(3) unsigned',
         ],
         'can_write_contacts' => [
-            'type' => 'tinyint(4)',
+            'type' => 'tinyint(3) unsigned',
         ],
         'can_write_events' => [
-            'type' => 'tinyint(4)',
+            'type' => 'tinyint(3) unsigned',
         ],
         'can_write_files' => [
-            'type' => 'tinyint(4)',
+            'type' => 'tinyint(3) unsigned',
         ],
         'can_write_notes' => [
-            'type' => 'tinyint(4)',
+            'type' => 'tinyint(3) unsigned',
         ],
         'can_write_notifications' => [
-            'type' => 'tinyint(4)',
+            'type' => 'tinyint(3) unsigned',
         ],
         'can_write_schedules' => [
-            'type' => 'tinyint(4)',
+            'type' => 'tinyint(3) unsigned',
         ],
         'can_write_tasks' => [
-            'type' => 'tinyint(4)',
+            'type' => 'tinyint(3) unsigned',
         ],
         'can_write_wallets' => [
-            'type' => 'tinyint(4)',
+            'type' => 'tinyint(3) unsigned',
         ],
         'expire_time' => [
             'type' => 'bigint(20) unsigned',

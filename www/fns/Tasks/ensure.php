@@ -60,7 +60,7 @@ function ensure ($mysqli) {
             'collation' => 'utf8_unicode_ci',
         ],
         'top_priority' => [
-            'type' => 'tinyint(4) unsigned',
+            'type' => 'tinyint(3) unsigned',
         ],
         'update_api_key_id' => [
             'type' => 'bigint(20) unsigned',

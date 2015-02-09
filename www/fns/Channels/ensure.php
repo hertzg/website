@@ -46,10 +46,10 @@ function ensure ($mysqli) {
             'type' => 'int(10) unsigned',
         ],
         'public' => [
-            'type' => 'tinyint(4)',
+            'type' => 'tinyint(3) unsigned',
         ],
         'receive_notifications' => [
-            'type' => 'tinyint(4)',
+            'type' => 'tinyint(3) unsigned',
         ],
         'revision' => [
             'type' => 'bigint(20) unsigned',

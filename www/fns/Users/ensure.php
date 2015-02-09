@@ -47,7 +47,7 @@ function ensure ($mysqli) {
             'nullable' => true,
         ],
         'email_verified' => [
-            'type' => 'tinyint(4) unsigned',
+            'type' => 'tinyint(3) unsigned',
         ],
         'events_check_day' => [
             'type' => 'bigint(20) unsigned',
@@ -183,7 +183,7 @@ function ensure ($mysqli) {
             'type' => 'bigint(20) unsigned',
         ],
         'num_subscribed_channels' => [
-            'type' => 'tinyint(4)',
+            'type' => 'bigint(20) unsigned',
         ],
         'num_task_deadlines_today' => [
             'type' => 'bigint(20) unsigned',
@@ -263,10 +263,10 @@ function ensure ($mysqli) {
             'type' => 'tinyint(3) unsigned',
         ],
         'show_trash' => [
-            'type' => 'tinyint(4)',
+            'type' => 'tinyint(3) unsigned',
         ],
         'show_wallets' => [
-            'type' => 'tinyint(4)',
+            'type' => 'tinyint(3) unsigned',
         ],
         'storage_used' => [
             'type' => 'bigint(20) unsigned',
