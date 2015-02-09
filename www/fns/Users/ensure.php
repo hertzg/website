@@ -28,6 +28,9 @@ function ensure ($mysqli) {
         'anonymous_can_send_note' => [
             'type' => 'tinyint(3) unsigned',
         ],
+        'anonymous_can_send_place' => [
+            'type' => 'tinyint(3) unsigned',
+        ],
         'anonymous_can_send_task' => [
             'type' => 'tinyint(3) unsigned',
         ],
@@ -75,6 +78,9 @@ function ensure ($mysqli) {
         'home_num_new_received_notes' => [
             'type' => 'bigint(20) unsigned',
         ],
+        'home_num_new_received_places' => [
+            'type' => 'bigint(20) unsigned',
+        ],
         'home_num_new_received_tasks' => [
             'type' => 'bigint(20) unsigned',
         ],
@@ -105,6 +111,9 @@ function ensure ($mysqli) {
             'type' => 'bigint(20) unsigned',
         ],
         'num_archived_received_notes' => [
+            'type' => 'bigint(20) unsigned',
+        ],
+        'num_archived_received_places' => [
             'type' => 'bigint(20) unsigned',
         ],
         'num_archived_received_tasks' => [
@@ -171,6 +180,9 @@ function ensure ($mysqli) {
             'type' => 'bigint(20) unsigned',
         ],
         'num_received_notes' => [
+            'type' => 'bigint(20) unsigned',
+        ],
+        'num_received_places' => [
             'type' => 'bigint(20) unsigned',
         ],
         'num_received_tasks' => [
