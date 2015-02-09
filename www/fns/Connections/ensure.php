@@ -24,6 +24,9 @@ function ensure ($mysqli) {
         'can_send_note' => [
             'type' => 'tinyint(3) unsigned',
         ],
+        'can_send_place' => [
+            'type' => 'tinyint(3) unsigned',
+        ],
         'can_send_task' => [
             'type' => 'tinyint(3) unsigned',
         ],

@@ -14,7 +14,7 @@ include_once '../fns/format_permissions.php';
 $permissions = format_permissions($user->anonymous_can_send_bookmark,
     $user->anonymous_can_send_channel, $user->anonymous_can_send_contact,
     $user->anonymous_can_send_file, $user->anonymous_can_send_note,
-    $user->anonymous_can_send_task);
+    $user->anonymous_can_send_place, $user->anonymous_can_send_task);
 
 include_once '../../../fns/Page/imageArrowLink.php';
 $editLink = Page\imageArrowLink('Edit',

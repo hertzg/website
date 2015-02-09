@@ -19,7 +19,7 @@ function create_view_page ($connection) {
     $permissions = format_permissions($connection->can_send_bookmark,
         $connection->can_send_channel, $connection->can_send_contact,
         $connection->can_send_file, $connection->can_send_note,
-        $connection->can_send_task);
+        $connection->can_send_place, $connection->can_send_task);
 
     include_once "$fnsDir/Page/staticTwoColumns.php";
     $optionsContent = Page\staticTwoColumns($editLink, $deleteLink);

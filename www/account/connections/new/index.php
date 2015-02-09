@@ -21,6 +21,7 @@ else {
         'can_send_contact' => false,
         'can_send_file' => false,
         'can_send_note' => false,
+        'can_send_place' => false,
         'can_send_task' => false,
     ];
 }

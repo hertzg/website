@@ -11,9 +11,10 @@ list($connection, $id, $user) = require_connection($mysqli);
 $id_users = $user->id_users;
 
 include_once __DIR__.'/../fns/request_connection_params.php';
-list($username, $expires, $expire_time, $can_send_bookmark,
-    $can_send_channel, $can_send_contact, $can_send_file,
-    $can_send_note, $can_send_task) = request_connection_params();
+list($username, $expires, $expire_time,
+    $can_send_bookmark, $can_send_channel,
+    $can_send_contact, $can_send_file, $can_send_note,
+    $can_send_place, $can_send_task) = request_connection_params();
 
 $errors = [];
 
@@ -33,6 +34,7 @@ if ($errors) {
         'can_send_contact' => $can_send_contact,
         'can_send_file' => $can_send_file,
         'can_send_note' => $can_send_note,
+        'can_send_place' => $can_send_place,
         'can_send_task' => $can_send_task,
     ];
     redirect("./?id=$id");
@@ -46,7 +48,7 @@ unset(
 include_once "$fnsDir/Users/Connections/edit.php";
 Users\Connections\edit($mysqli, $id, $id_users, $connected_id_users, $username,
     $expire_time, $can_send_bookmark, $can_send_channel, $can_send_contact,
-    $can_send_file, $can_send_note, $can_send_task);
+    $can_send_file, $can_send_note, $can_send_place, $can_send_task);
 
 $_SESSION['account/connections/view/messages'] = ['Changes have been saved.'];
 
