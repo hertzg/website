@@ -11,7 +11,7 @@ function renderPlaces ($user, &$items) {
     $num_places = $user->num_places;
 
     $title = 'Places';
-    $href = '../palces/';
+    $href = '../places/';
     $icon = 'places-TODO';
     $options = ['id' => 'places'];
     if ($num_places) {
