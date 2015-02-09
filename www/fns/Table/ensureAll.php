@@ -64,6 +64,12 @@ function ensureAll ($mysqli) {
     include_once "$fnsDir/Notifications/ensure.php";
     $output .= \Notifications\ensure($mysqli);
 
+    include_once "$fnsDir/Places/ensure.php";
+    $output .= \Places\ensure($mysqli);
+
+    include_once "$fnsDir/PlaceTags/ensure.php";
+    $output .= \PlaceTags\ensure($mysqli);
+
     include_once "$fnsDir/ReceivedBookmarks/ensure.php";
     $output .= \ReceivedBookmarks\ensure($mysqli);
 
@@ -84,6 +90,9 @@ function ensureAll ($mysqli) {
 
     include_once "$fnsDir/ReceivedNotes/ensure.php";
     $output .= \ReceivedNotes\ensure($mysqli);
+
+    include_once "$fnsDir/ReceivedPlaces/ensure.php";
+    $output .= \ReceivedPlaces\ensure($mysqli);
 
     include_once "$fnsDir/ReceivedTasks/ensure.php";
     $output .= \ReceivedTasks\ensure($mysqli);
