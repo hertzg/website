@@ -41,6 +41,9 @@ $contacts = Contacts\search($mysqli, $id_users, $keyword);
 include_once "$fnsDir/Notes/search.php";
 $notes = Notes\search($mysqli, $id_users, $keyword);
 
+include_once "$fnsDir/Places/search.php";
+$places = Places\search($mysqli, $id_users, $keyword);
+
 include_once "$fnsDir/Tasks/search.php";
 $tasks = Tasks\search($mysqli, $id_users, $keyword);
 
@@ -48,11 +51,12 @@ include_once 'fns/search_folders_and_files.php';
 list($folders, $files) = search_folders_and_files($mysqli,
     $searchFiles, $id_users, $keyword);
 
-if ($bookmarks || $contacts || $notes || $tasks || $folders || $files) {
+if ($bookmarks || $contacts || $notes ||
+    $places || $tasks || $folders || $files) {
 
     include_once 'fns/create_items.php';
-    $resultItems = create_items($bookmarks, $contacts,
-        $notes, $tasks, $folders, $files, $keyword, $user);
+    $resultItems = create_items($bookmarks, $contacts, $notes,
+        $places, $tasks, $folders, $files, $keyword, $user);
 
     include_once 'fns/render_search_files_link.php';
     render_search_files_link($searchFiles, $keyword, $offset, $resultItems);

@@ -11,6 +11,7 @@ function unset_session_vars () {
         $_SESSION['files/messages'],
         $_SESSION['home/messages'],
         $_SESSION['notes/view/messages'],
+        $_SESSION['places/view/messages'],
         $_SESSION['tasks/view/messages']
     );
 }
