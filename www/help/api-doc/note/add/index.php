@@ -8,6 +8,10 @@ note_method_page('add', [
         'description' => 'The text of the note.',
     ],
     [
+        'name' => 'encrypt',
+        'description' => 'Whether the note should be encrypted in listings.',
+    ],
+    [
         'name' => 'tags',
         'description' => 'Space-separated list of tags.',
     ],
