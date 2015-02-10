@@ -34,6 +34,10 @@ function get_groups () {
             'title' => 'Notification',
             'description' => 'Methods for sending and receiving notifications',
         ],
+        'place' => [
+            'title' => 'Place',
+            'description' => 'Methods for manipulating places',
+        ],
         'schedule' => [
             'title' => 'Schedule',
             'description' => 'Methods for manipulating schedules',

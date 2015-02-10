@@ -81,6 +81,16 @@ function get_full_groups () {
     include_once "$dir/notification/get_methods.php";
     $groups['notification']['methods'] = notification\get_methods();
 
+    include_once "$dir/place/get_methods.php";
+    $groups['place']['methods'] = place\get_methods();
+
+    include_once "$dir/place/get_subgroups.php";
+    $groups['place']['subgroups'] = place\get_subgroups();
+
+    include_once "$dir/place/received/get_methods.php";
+    $methods = place\received\get_methods();
+    $groups['place']['subgroups']['received']['methods'] = $methods;
+
     include_once "$dir/schedule/get_methods.php";
     $groups['schedule']['methods'] = schedule\get_methods();
 
