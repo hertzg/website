@@ -12,6 +12,10 @@ note_method_page('edit', [
         'description' => 'The new text of the note.',
     ],
     [
+        'name' => 'encrypt',
+        'description' => 'Whether the note should be encrypted in listings.',
+    ],
+    [
         'name' => 'tags',
         'description' => 'Space-separated list of tags.',
     ],
