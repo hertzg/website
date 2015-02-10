@@ -34,6 +34,9 @@ if ($type == 'bookmark') {
 } elseif ($type == 'note') {
     include_once '../fns/Users/Notes/addDeleted.php';
     Users\Notes\addDeleted($mysqli, $id_users, $data);
+} elseif ($type == 'place') {
+    include_once '../fns/Users/Places/addDeleted.php';
+    Users\Places\addDeleted($mysqli, $id_users, $data);
 } elseif ($type == 'receivedBookmark') {
     include_once '../fns/Users/Bookmarks/Received/addDeleted.php';
     Users\Bookmarks\Received\addDeleted($mysqli, $id_users, $data);
@@ -49,6 +52,9 @@ if ($type == 'bookmark') {
 } elseif ($type == 'receivedNote') {
     include_once '../fns/Users/Notes/Received/addDeleted.php';
     Users\Notes\Received\addDeleted($mysqli, $id_users, $data);
+} elseif ($type == 'receivedPlace') {
+    include_once '../fns/Users/Places/Received/addDeleted.php';
+    Users\Places\Received\addDeleted($mysqli, $id_users, $data);
 } elseif ($type == 'receivedTask') {
     include_once '../fns/Users/Tasks/Received/addDeleted.php';
     Users\Tasks\Received\addDeleted($mysqli, $id_users, $data);

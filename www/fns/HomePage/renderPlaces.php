@@ -9,16 +9,24 @@ function renderPlaces ($user, &$items) {
     $fnsDir = __DIR__.'/..';
 
     $num_places = $user->num_places;
+    $num_received_places = $user->num_received_places;
 
     $title = 'Places';
     $href = '../places/';
-    $icon = 'places-TODO';
+    $icon = 'places';
     $options = ['id' => 'places'];
-    if ($num_places) {
+    if ($num_places || $num_received_places) {
+
+        $descriptionItems = [];
+        if ($num_places) $descriptionItems[] = "$num_places total.";
+        if ($num_received_places) {
+            $descriptionItems[] = "$num_received_places received.";
+        }
+        $description = join(' ', $descriptionItems);
 
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         $link = \Page\imageArrowLinkWithDescription($title,
-            "$num_places total.", $href, $icon, $options);
+            $description, $href, $icon, $options);
 
     } else {
         include_once "$fnsDir/Page/imageArrowLink.php";

@@ -20,6 +20,8 @@ function unsetSessionVars () {
         $_SESSION['notifications/in-channel/messages'],
         $_SESSION['notifications/in-subscribed-channel/messages'],
         $_SESSION['notifications/messages'],
+        $_SESSION['places/errors'],
+        $_SESSION['places/messages'],
         $_SESSION['schedules/errors'],
         $_SESSION['schedules/messages'],
         $_SESSION['tasks/errors'],

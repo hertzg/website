@@ -36,6 +36,9 @@ function create_page ($mysqli, $user, $base = '') {
             } elseif ($type == 'note' || $type == 'receivedNote') {
                 include_once __DIR__.'/render_note.php';
                 render_note($data, $description, $href, $options, $items);
+            } elseif ($type == 'place' || $type == 'receivedPlace') {
+                include_once __DIR__.'/render_place.php';
+                render_place($data, $description, $href, $options, $items);
             } elseif ($type == 'file' || $type == 'receivedFile') {
                 include_once __DIR__.'/render_file.php';
                 render_file($data, $description, $href, $options, $items);

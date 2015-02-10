@@ -8,7 +8,7 @@ function addReceivedPlace ($mysqli, $receivedPlace, $apiKey) {
         'id' => $receivedPlace->id,
         'latitude' => $receivedPlace->latitude,
         'longitude' => $receivedPlace->longitude,
-        'name' => $place->name,
+        'name' => $receivedPlace->name,
         'tags' => $receivedPlace->tags,
         'insert_time' => $receivedPlace->insert_time,
         'sender_id_users' => $receivedPlace->sender_id_users,

@@ -10,6 +10,7 @@ function get_users_connection ($mysqli, $user, $connected_id_users) {
             'can_send_contact' => true,
             'can_send_file' => true,
             'can_send_note' => true,
+            'can_send_place' => true,
             'can_send_task' => true,
         ];
     }
@@ -27,6 +28,7 @@ function get_users_connection ($mysqli, $user, $connected_id_users) {
                 'can_send_contact' => $connection->can_send_contact,
                 'can_send_file' => $connection->can_send_file,
                 'can_send_note' => $connection->can_send_note,
+                'can_send_place' => $connection->can_send_place,
                 'can_send_task' => $connection->can_send_task,
             ];
         }
@@ -38,6 +40,7 @@ function get_users_connection ($mysqli, $user, $connected_id_users) {
         'can_send_contact' => $user->anonymous_can_send_contact,
         'can_send_file' => $user->anonymous_can_send_file,
         'can_send_note' => $user->anonymous_can_send_note,
+        'can_send_place' => $user->anonymous_can_send_place,
         'can_send_task' => $user->anonymous_can_send_task,
     ];
 

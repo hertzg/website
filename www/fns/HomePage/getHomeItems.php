@@ -49,7 +49,7 @@ function getHomeItems ($mysqli, $user) {
     if ($user->show_new_place) {
         include_once "$fnsDir/Page/imageArrowLink.php";
         $items['new-place'] = \Page\imageArrowLink(
-            'New Place', '../places/new/', 'create-place-TODO');
+            'New Place', '../places/new/', 'create-place');
     }
 
     include_once __DIR__.'/renderSchedules.php';

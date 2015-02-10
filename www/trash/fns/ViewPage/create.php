@@ -37,6 +37,9 @@ function create ($deletedItem, $user, &$title, &$head) {
     } elseif ($type == 'note' || $type == 'receivedNote') {
         include_once __DIR__.'/renderNote.php';
         renderNote($data, $items);
+    } elseif ($type == 'place' || $type == 'receivedPlace') {
+        include_once __DIR__.'/renderPlace.php';
+        renderPlace($data, $items);
     } elseif ($type == 'file' || $type == 'receivedFile') {
         include_once __DIR__.'/renderFile.php';
         renderFile($id, $data, $items);
@@ -50,7 +53,8 @@ function create ($deletedItem, $user, &$title, &$head) {
 
     if ($type == 'receivedBookmark' || $type == 'receivedContact'
         || $type == 'receivedFile' || $type == 'receivedFolder'
-        || $type == 'receivedNote' || $type == 'receivedTask') {
+        || $type == 'receivedNote' || $type == 'receivedPlace'
+        || $type == 'receivedTask') {
 
         $senderUsername = htmlspecialchars($data->sender_username);
 
