@@ -51,6 +51,9 @@ function close ($mysqli, $user) {
         \Notifications\deleteOnUser($mysqli, $id_users);
     }
 
+    include_once __DIR__.'/deletePlaces.php';
+    deletePlaces($mysqli, $user);
+
     if ($user->num_schedules) {
 
         include_once "$fnsDir/Schedules/deleteOnUser.php";
