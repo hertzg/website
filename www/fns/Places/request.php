@@ -19,8 +19,8 @@ function request () {
     $parsed_latitude = (float)$latitude;
     $parsed_longitude = (float)$longitude;
 
-    $parsed_latitude = ($parsed_latitude + 180) % 360 - 180;
-    $parsed_longitude = ($parsed_longitude + 180) % 360 - 180;
+    $parsed_latitude = fmod($parsed_latitude + 180, 360) - 180;
+    $parsed_longitude = fmod($parsed_longitude + 180, 360) - 180;
 
     return [$latitude, $longitude, $name, $parsed_latitude, $parsed_longitude];
 
