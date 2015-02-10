@@ -20,6 +20,7 @@ include_once "$fnsDir/ItemList/Received/escapedItemQuery.php";
 $escapedItemQuery = ItemList\Received\escapedItemQuery($id);
 
 include_once '../../fns/create_form_items.php';
+include_once '../../fns/create_geolocation_panel.php';
 include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/hidden.php";
@@ -43,6 +44,7 @@ $content =
             .ItemList\Received\itemHiddenInputs($id)
         .'</form>'
     )
+    .create_geolocation_panel($base)
     .compressed_js_script('flexTextarea', $base)
     .compressed_js_script('formCheckbox', $base);
 

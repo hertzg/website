@@ -16,6 +16,7 @@ $maxLengths = Places\maxLengths();
 $base = '../../';
 
 include_once '../fns/create_form_items.php';
+include_once '../fns/create_geolocation_panel.php';
 include_once '../../fns/compressed_js_script.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/hidden.php';
@@ -44,6 +45,7 @@ $content =
             .ItemList\itemHiddenInputs($id)
         .'</form>'
     )
+    .create_geolocation_panel($base)
     .compressed_js_script('flexTextarea', $base)
     .compressed_js_script('formCheckbox', $base);
 
