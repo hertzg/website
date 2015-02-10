@@ -8,7 +8,7 @@ function edit ($mysqli, $wallet, $transaction,
     $id = $transaction->id;
     $id_wallets = $transaction->id_wallets;
     $amount_added = $amount - $transaction->amount;
-    $balance_after = $wallet->balance + $amount_added;
+    $balance_after = $transaction->balance_after + $amount_added;
     $fnsDir = __DIR__.'/../../..';
 
     include_once "$fnsDir/WalletTransactions/edit.php";
