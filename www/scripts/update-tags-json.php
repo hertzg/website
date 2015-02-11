@@ -24,6 +24,7 @@ process($mysqli, 'bookmarks');
 process($mysqli, 'contacts');
 process($mysqli, 'notes');
 process($mysqli, 'places');
+process($mysqli, 'schedules');
 process($mysqli, 'tasks');
 
 $elapsedSeconds = number_format(microtime(true) - $microtime, 3);

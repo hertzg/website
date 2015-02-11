@@ -60,6 +60,19 @@ foreach ($rows as $row) {
     }
 }
 
+$sql = 'select distinct id_schedules id from schedule_tags';
+$rows = mysqli_query_object($mysqli, $sql);
+foreach ($rows as $row) {
+    $sql = "select * from schedules where id = $row->id";
+    $schedule = mysqli_single_object($mysqli, $sql);
+    if ($schedule) {
+        include_once '../fns/ScheduleTags/editSchedule.php';
+        ScheduleTags\editSchedule($mysqli, $schedule->id, $schedule->text,
+            $schedule->interval, $schedule->offset, $schedule->tags,
+            $schedule->insert_time, $schedule->update_time);
+    }
+}
+
 $sql = 'select distinct id_tasks id from task_tags';
 $rows = mysqli_query_object($mysqli, $sql);
 foreach ($rows as $row) {

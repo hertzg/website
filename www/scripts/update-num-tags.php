@@ -22,6 +22,7 @@ update($mysqli, 'bookmarks');
 update($mysqli, 'contacts');
 update($mysqli, 'notes');
 update($mysqli, 'places');
+update($mysqli, 'schedules');
 update($mysqli, 'tasks');
 
 $elapsedSeconds = number_format(microtime(true) - $microtime, 3);
