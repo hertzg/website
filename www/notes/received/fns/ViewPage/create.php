@@ -10,13 +10,8 @@ function create ($receivedNote) {
     include_once "$fnsDir/render_external_links.php";
     include_once "$fnsDir/Page/text.php";
     $text = htmlspecialchars($receivedNote->text);
-    $items = [
-        \Page\text(
-            nl2br(
-                render_external_links($text, '../../../')
-            )
-        )
-    ];
+    $text = render_external_links($text, '../../../');
+    $items = [\Page\text(nl2br($text))];
 
     $tags = $receivedNote->tags;
     if ($tags !== '') $items[] = \Page\text('Tags: '.htmlspecialchars($tags));
