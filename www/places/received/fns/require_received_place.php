@@ -13,7 +13,8 @@ function require_received_place ($mysqli, $base = '') {
     $id = abs((int)$id);
 
     include_once "$fnsDir/ReceivedPlaces/getOnReceiver.php";
-    $receivedPlace = ReceivedPlaces\getOnReceiver($mysqli, $user->id_users, $id);
+    $receivedPlace = ReceivedPlaces\getOnReceiver(
+        $mysqli, $user->id_users, $id);
 
     if (!$receivedPlace) {
         include_once "$fnsDir/redirect.php";

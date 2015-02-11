@@ -85,9 +85,11 @@
         positionElement.appendChild(document.createTextNode('Altitude: '))
         positionElement.appendChild(altitudeNode)
 
+        var accuiringNode = document.createTextNode('Accuiring location... ')
+
         var textElement = document.createElement('div')
         textElement.className = 'page-text'
-        textElement.appendChild(document.createTextNode('Accuiring location... '))
+        textElement.appendChild(accuiringNode)
         textElement.appendChild(percentNode)
         textElement.appendChild(document.createTextNode('%'))
 
