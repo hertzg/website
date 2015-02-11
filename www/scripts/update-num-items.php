@@ -1,22 +1,9 @@
 #!/usr/bin/php
 <?php
 
-function committed_receiver_user_rows ($mysqli, $table, $id_users) {
-    $sql = "$table where committed = 1 and receiver_id_users = $id_users";
-    return count_rows($mysqli, $sql);
-}
-
 function count_rows ($mysqli, $sql) {
     $sql = "select count(*) value from $sql";
     return mysqli_single_object($mysqli, $sql)->value;
-}
-
-function receiver_user_rows ($mysqli, $table, $id_users) {
-    return count_rows($mysqli, "$table where receiver_id_users = $id_users");
-}
-
-function user_rows ($mysqli, $table, $id_users) {
-    return count_rows($mysqli, "$table where id_users = $id_users");
 }
 
 chdir(__DIR__);
@@ -25,6 +12,30 @@ include_once '../fns/mysqli_query_object.php';
 include_once '../fns/mysqli_single_object.php';
 include_once '../lib/mysqli.php';
 
+include_once '../fns/ApiKeys/countOnUser.php';
+include_once '../fns/Bookmarks/countOnUser.php';
+include_once '../fns/Channels/countOnUser.php';
+include_once '../fns/Connections/countOnUser.php';
+include_once '../fns/Contacts/countOnUser.php';
+include_once '../fns/DeletedItems/countOnUser.php';
+include_once '../fns/Events/countOnUser.php';
+include_once '../fns/Folders/countOnUser.php';
+include_once '../fns/Notes/countOnUser.php';
+include_once '../fns/Notifications/countOnUser.php';
+include_once '../fns/Places/countOnUser.php';
+include_once '../fns/ReceivedBookmarks/countOnReceiver.php';
+include_once '../fns/ReceivedContacts/countOnReceiver.php';
+include_once '../fns/ReceivedFiles/Committed/countOnReceiver.php';
+include_once '../fns/ReceivedFolders/Committed/countOnReceiver.php';
+include_once '../fns/ReceivedNotes/countOnReceiver.php';
+include_once '../fns/ReceivedPlaces/countOnReceiver.php';
+include_once '../fns/ReceivedTasks/countOnReceiver.php';
+include_once '../fns/Schedules/countOnUser.php';
+include_once '../fns/SubscribedChannels/countOnSubscriber.php';
+include_once '../fns/Tasks/countOnUser.php';
+include_once '../fns/Tokens/countOnUser.php';
+include_once '../fns/Wallets/countOnUser.php';
+
 $microtime = microtime(true);
 
 $users = mysqli_query_object($mysqli, 'select * from users');
@@ -32,34 +43,34 @@ foreach ($users as $user) {
 
     $id_users = $user->id_users;
 
-    $num_api_keys = user_rows($mysqli, 'api_keys', $id_users);
-    $num_bookmarks = user_rows($mysqli, 'bookmarks', $id_users);
-    $num_channels = user_rows($mysqli, 'channels', $id_users);
-    $num_connections = user_rows($mysqli, 'connections', $id_users);
-    $num_contacts = user_rows($mysqli, 'contacts', $id_users);
-    $num_deleted_items = user_rows($mysqli, 'deleted_items', $id_users);
-    $num_events = user_rows($mysqli, 'events', $id_users);
-    $num_folders = user_rows($mysqli, 'folders', $id_users);
-    $num_notes = user_rows($mysqli, 'notes', $id_users);
-    $num_notifications = user_rows($mysqli, 'notifications', $id_users);
-    $num_places = user_rows($mysqli, 'places', $id_users);
-    $num_received_bookmarks = receiver_user_rows(
-        $mysqli, 'received_bookmarks', $id_users);
-    $num_received_contacts = receiver_user_rows(
-        $mysqli, 'received_contacts', $id_users);
-    $num_received_files = committed_receiver_user_rows(
-        $mysqli, 'received_files', $id_users);
-    $num_received_folders = committed_receiver_user_rows(
-        $mysqli, 'received_folders', $id_users);
-    $num_received_notes = receiver_user_rows(
-        $mysqli, 'received_notes', $id_users);
-    $num_received_places = receiver_user_rows(
-        $mysqli, 'received_places', $id_users);
-    $num_received_tasks = receiver_user_rows(
-        $mysqli, 'received_tasks', $id_users);
-    $num_schedules = user_rows($mysqli, 'schedules', $id_users);
-    $num_tasks = user_rows($mysqli, 'tasks', $id_users);
-    $num_tokens = user_rows($mysqli, 'tokens', $id_users);
+    $num_api_keys = ApiKeys\countOnUser($mysqli, $id_users);
+    $num_bookmarks = Bookmarks\countOnUser($mysqli, $id_users);
+    $num_channels = Channels\countOnUser($mysqli, $id_users);
+    $num_connections = Connections\countOnUser($mysqli, $id_users);
+    $num_contacts = Contacts\countOnUser($mysqli, $id_users);
+    $num_deleted_items = DeletedItems\countOnUser($mysqli, $id_users);
+    $num_events = Events\countOnUser($mysqli, $id_users);
+    $num_folders = Folders\countOnUser($mysqli, $id_users);
+    $num_notes = Notes\countOnUser($mysqli, $id_users);
+    $num_notifications = Notifications\countOnUser($mysqli, $id_users);
+    $num_places = Places\countOnUser($mysqli, $id_users);
+    $num_received_bookmarks = ReceivedBookmarks\countOnReceiver(
+        $mysqli, $id_users);
+    $num_received_contacts = ReceivedContacts\countOnReceiver(
+        $mysqli, $id_users);
+    $num_received_files = ReceivedFiles\Committed\countOnReceiver(
+        $mysqli, $id_users);
+    $num_received_folders = ReceivedFolders\Committed\countOnReceiver(
+        $mysqli, $id_users);
+    $num_received_notes = ReceivedNotes\countOnReceiver($mysqli, $id_users);
+    $num_received_places = ReceivedPlaces\countOnReceiver($mysqli, $id_users);
+    $num_received_tasks = ReceivedTasks\countOnReceiver($mysqli, $id_users);
+    $num_schedules = Schedules\countOnUser($mysqli, $id_users);
+    $num_subscribed_channels = SubscribedChannels\countOnSubscriber(
+        $mysqli, $id_users);
+    $num_tasks = Tasks\countOnUser($mysqli, $id_users);
+    $num_tokens = Tokens\countOnUser($mysqli, $id_users);
+    $num_wallets = Wallets\countOnUser($mysqli, $id_users);
 
     $sql = "update users set num_api_keys = $num_api_keys,"
         ." num_bookmarks = $num_bookmarks, num_channels = $num_channels,"
@@ -73,9 +84,11 @@ foreach ($users as $user) {
         ." num_received_folders = $num_received_folders,"
         ." num_received_notes = $num_received_notes,"
         ." num_received_places = $num_received_places,"
-        ." num_received_tasks = $num_received_tasks,"
-        ." num_tasks = $num_tasks, num_tokens = $num_tokens"
-        ." where id_users = $id_users";
+        ." num_received_tasks = $num_received_tasks, num_places = $num_places,"
+        ." num_subscribed_channels = $num_subscribed_channels,"
+        ." num_tasks = $num_tasks, num_tokens = $num_tokens,"
+        ." num_wallets = $num_wallets where id_users = $id_users";
+
     $mysqli->query($sql) || die($mysqli->error);
 
 }
