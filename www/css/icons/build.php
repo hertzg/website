@@ -57,15 +57,16 @@ render($content, 'note.svg?3', $names);
 $names = ['place', 'create-place', 'edit-place', 'places', 'import-place'];
 render($content, 'place.svg', $names);
 
-$names = ['account', 'edit-profile', 'download', 'upload', 'feedback', 'yes',
-    'no', 'notification', 'create-notification', 'old-notification',
+$names = ['account', 'edit-profile', 'download', 'upload', 'feedback',
+    'yes', 'no', 'notification', 'create-notification', 'old-notification',
     'edit-password', 'new-password', 'reset-password', 'rename',
-    'sign-in', 'sign-ins', 'calendar', 'arrow-right', 'arrow-left', 'search',
-    'search-folder', 'birthday-cake', 'checkbox', 'checked-checkbox',
-    'help', 'run', 'mail', 'sms', 'send', 'send-sms', 'receive',
-    'phone', 'edit-home', 'reorder', 'show-hide', 'restore-defaults',
-    'forbid-notifications', 'receive-notifications', 'generic', 'slideshow'];
-render($content, 'other.svg?12', $names);
+    'sign-in', 'sign-ins', 'calendar', 'arrow-right', 'arrow-left',
+    'search', 'search-folder', 'birthday-cake', 'checkbox',
+    'checked-checkbox', 'help', 'run', 'mail', 'sms', 'send',
+    'send-sms', 'receive', 'phone', 'edit-home', 'reorder',
+    'show-hide', 'restore-defaults', 'forbid-notifications',
+    'receive-notifications', 'generic', 'slideshow', 'locate'];
+render($content, 'other.svg?13', $names);
 
 $names = ['schedule', 'create-schedule', 'edit-schedule', 'schedules'];
 render($content, 'schedule.svg?1', $names);
