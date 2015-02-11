@@ -30,7 +30,7 @@ function create ($place) {
     $author = format_author($place->insert_time, $place->insert_api_key_name);
     $infoText = "Place created $author.";
     if ($place->revision) {
-        $author = format_author($place->update_time,    
+        $author = format_author($place->update_time,
             $place->update_api_key_name);
         $infoText .= "<br />Last modified $author.";
     }
