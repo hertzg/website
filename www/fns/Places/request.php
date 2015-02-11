@@ -17,8 +17,7 @@ function request () {
     include_once "$fnsDir/str_collapse_spaces.php";
     $name = str_collapse_spaces($name);
 
-    $parsed_latitude = (float)$latitude;
-    $parsed_latitude = fmod($parsed_latitude + 180, 360) - 180;
+    $parsed_latitude = max(-90, min(90, (float)$latitude));
 
     $parsed_longitude = (float)$longitude;
     $parsed_longitude = fmod($parsed_longitude + 180, 360) - 180;
