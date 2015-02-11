@@ -166,9 +166,9 @@
                     e.preventDefault()
                     hide()
 
-                    setValue('latitude', latitude)
-                    setValue('longitude', longitude)
-                    setValue('altitude', altitude)
+                    setValue('latitude', formatNumber(latitude, 9))
+                    setValue('longitude', formatNumber(longitude, 9))
+                    setValue('altitude', formatNumber(altitude, 3))
 
                 })
             }
@@ -198,8 +198,8 @@
 
             })
 
-            latitudeNode.nodeValue = formatNumber(latitude, 8)
-            longitudeNode.nodeValue = formatNumber(longitude, 8)
+            latitudeNode.nodeValue = formatNumber(latitude, 9)
+            longitudeNode.nodeValue = formatNumber(longitude, 9)
             altitudeNode.nodeValue = formatNumber(altitude, 3)
 
         }, function () {
