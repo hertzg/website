@@ -14,6 +14,9 @@ function create ($receivedPlace) {
         \Form\label('Longitude', $receivedPlace->longitude),
     ];
 
+    $altitude = $receivedPlace->altitude;
+    if ($altitude !== null) $items[] = \Form\label('Altitude', $altitude);
+
     $name = $receivedPlace->name;
     if ($name !== '') {
         $items[] = \Form\label('Name', htmlspecialchars($name));

@@ -21,6 +21,10 @@ function create_form_items ($values) {
             'required' => true,
         ])
         .'<div class="hr"></div>'
+        .Form\textfield('altitude', 'Altitude', [
+            'value' => $values['altitude'],
+        ])
+        .'<div class="hr"></div>'
         .Form\textfield('name', 'Name', [
             'value' => $values['name'],
             'maxlength' => $maxLengths['name'],

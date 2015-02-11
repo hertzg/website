@@ -8,6 +8,9 @@ function renderPlace ($place, &$items) {
     $items[] = \Form\label('Latitude', $place->latitude);
     $items[] = \Form\label('Longitude', $place->longitude);
 
+    $altitude = $place->altitude;
+    if ($altitude !== null) $items[] = \Form\label('Altitude', $altitude);
+
     $name = $place->name;
     if ($name !== '') $items[] = \Form\label('Name', htmlspecialchars($name));
 

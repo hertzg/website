@@ -12,6 +12,7 @@ function importCopy ($mysqli, $receivedPlace, $insertApiKey = null) {
     include_once __DIR__.'/../add.php';
     return \Users\Places\add($mysqli, $receivedPlace->receiver_id_users,
         $receivedPlace->latitude, $receivedPlace->longitude,
-        $receivedPlace->name, $tags, $tag_names, $insertApiKey);
+        $receivedPlace->altitude, $receivedPlace->name,
+        $tags, $tag_names, $insertApiKey);
 
 }

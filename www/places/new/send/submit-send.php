@@ -23,8 +23,8 @@ $sendFunction = function ($receiver_id_userss) use ($mysqli,
     foreach ($receiver_id_userss as $receiver_id_users) {
         Users\Places\Received\add($mysqli, $user->id_users,
             $user->username, $receiver_id_users, $stageValues['latitude'],
-            $stageValues['longitude'], $stageValues['name'],
-            $stageValues['tags']);
+            $stageValues['longitude'], $stageValues['altitude'],
+            $stageValues['name'], $stageValues['tags']);
     }
 
 };

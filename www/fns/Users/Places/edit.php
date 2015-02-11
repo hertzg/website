@@ -3,14 +3,14 @@
 namespace Users\Places;
 
 function edit ($mysqli, $place, $latitude, $longitude,
-    $name, $tags, $tag_names, $updateApiKey = null) {
+    $altitude, $name, $tags, $tag_names, $updateApiKey = null) {
 
     $id = $place->id;
     $fnsDir = __DIR__.'/../..';
 
     include_once "$fnsDir/Places/edit.php";
     \Places\edit($mysqli, $id, $latitude, $longitude,
-        $name, $tags, $tag_names, $updateApiKey);
+        $altitude, $name, $tags, $tag_names, $updateApiKey);
 
     if ($place->num_tags) {
         include_once "$fnsDir/PlaceTags/deleteOnPlace.php";

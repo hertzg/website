@@ -12,6 +12,7 @@ if (array_key_exists($key, $_SESSION)) {
     $values = [
         'latitude' => '',
         'longitude' => '',
+        'altitude' => '',
         'name' => '',
         'tags' => '',
     ];

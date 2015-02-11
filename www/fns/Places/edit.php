@@ -3,8 +3,9 @@
 namespace Places;
 
 function edit ($mysqli, $id, $latitude, $longitude,
-    $name, $tags, $tag_names, $updateApiKey) {
+    $altitude, $name, $tags, $tag_names, $updateApiKey) {
 
+    if ($altitude === null) $altitude = 'null';
     $name = $mysqli->real_escape_string($name);
     $tags = $mysqli->real_escape_string($tags);
     $num_tags = count($tag_names);
@@ -22,9 +23,9 @@ function edit ($mysqli, $id, $latitude, $longitude,
     }
 
     $sql = "update places set latitude = $latitude, longitude = $longitude,"
-        ." name = '$name', tags = '$tags', num_tags = $num_tags,"
-        ." tags_json = '$tags_json', update_time = $update_time,"
-        ." update_api_key_id = $update_api_key_id,"
+        ." altitude = $altitude, name = '$name', tags = '$tags',"
+        ." num_tags = $num_tags, tags_json = '$tags_json',"
+        ." update_time = $update_time, update_api_key_id = $update_api_key_id,"
         ." update_api_key_name = $update_api_key_name,"
         ." revision = revision + 1 where id = $id";
 

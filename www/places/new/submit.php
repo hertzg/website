@@ -9,12 +9,14 @@ $user = require_user('../../');
 $errors = [];
 
 include_once '../fns/request_place_params.php';
-list($latitude, $longitude, $name, $tags, $tag_names,
-    $parsed_latitude, $parsed_longitude) = request_place_params($errors);
+list($latitude, $longitude, $altitude, $name, $tags,
+    $tag_names, $parsed_latitude, $parsed_longitude,
+    $parsed_altitude) = request_place_params($errors);
 
 $values = [
     'latitude' => $latitude,
     'longitude' => $longitude,
+    'altitude' => $altitude,
     'name' => $name,
     'tags' => $tags,
 ];
@@ -36,6 +38,7 @@ list($sendButton) = request_strings('sendButton');
 if ($sendButton !== '') {
     $values['latitude'] = $parsed_latitude;
     $values['longitude'] = $parsed_longitude;
+    $values['altitude'] = $parsed_altitude;
     $_SESSION['places/new/send/place'] = $values;
     unset(
         $_SESSION['places/new/send/errors'],
@@ -51,7 +54,7 @@ unset($_SESSION['places/new/values']);
 include_once '../../fns/Users/Places/add.php';
 include_once '../../lib/mysqli.php';
 $id = Users\Places\add($mysqli, $user->id_users, $parsed_latitude,
-    $parsed_longitude, $name, $tags, $tag_names);
+    $parsed_longitude, $parsed_altitude, $name, $tags, $tag_names);
 
 $_SESSION['places/view/messages'] = ['Place has been saved.'];
 

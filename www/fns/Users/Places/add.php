@@ -3,13 +3,13 @@
 namespace Users\Places;
 
 function add ($mysqli, $id_users, $latitude, $longitude,
-    $name, $tags, $tag_names, $insertApiKey = null) {
+    $altitude, $name, $tags, $tag_names, $insertApiKey = null) {
 
     $fnsDir = __DIR__.'/../..';
 
     include_once "$fnsDir/Places/add.php";
-    $id = \Places\add($mysqli, $id_users, $latitude,
-        $longitude, $name, $tags, $tag_names, $insertApiKey);
+    $id = \Places\add($mysqli, $id_users, $latitude, $longitude,
+        $altitude, $name, $tags, $tag_names, $insertApiKey);
 
     if ($tag_names) {
         include_once "$fnsDir/PlaceTags/add.php";

@@ -9,6 +9,10 @@ function ensure ($mysqli) {
 
     include_once __DIR__.'/../Table/ensure.php';
     return \Table\ensure($mysqli, 'places', [
+        'altitude' => [
+            'type' => 'double',
+            'nullable' => true,
+        ],
         'id' => [
             'type' => 'bigint(20) unsigned',
             'primary' => true,

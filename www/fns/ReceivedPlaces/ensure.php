@@ -12,6 +12,10 @@ function ensure ($mysqli) {
     include_once "$fnsDir/Table/ensure.php";
     include_once "$fnsDir/Username/maxLength.php";
     return \Table\ensure($mysqli, 'received_places', [
+        'altitude' => [
+            'type' => 'double',
+            'nullable' => true,
+        ],
         'archived' => [
             'type' => 'tinyint(3) unsigned',
         ],

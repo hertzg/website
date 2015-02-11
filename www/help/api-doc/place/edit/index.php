@@ -16,6 +16,10 @@ place_method_page('edit', [
         'description' => 'The new longitude of the place.',
     ],
     [
+        'name' => 'altitude',
+        'description' => 'The new altitude of the place.',
+    ],
+    [
         'name' => 'name',
         'description' => 'The new name of the place.',
     ],

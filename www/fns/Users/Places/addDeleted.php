@@ -16,8 +16,8 @@ function addDeleted ($mysqli, $id_users, $data) {
     $tag_names = \Tags\parse($tags);
 
     include_once "$fnsDir/Places/addDeleted.php";
-    \Places\addDeleted($mysqli, $id, $id_users,
-        $latitude, $longitude, $name, $tags, $tag_names,
+    \Places\addDeleted($mysqli, $id, $id_users, $latitude,
+        $longitude, $data->altitude, $name, $tags, $tag_names,
         $data->insert_time, $data->update_time, $data->revision);
 
     if ($tag_names) {
