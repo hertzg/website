@@ -67,9 +67,9 @@
         var alignerElement = document.createElement('div')
         alignerElement.className = 'confirmDialog-aligner'
 
-        var latitudeNode = document.createTextNode('')
-
-        var longitudeNode = document.createTextNode('')
+        var latitudeNode = document.createTextNode(''),
+            longitudeNode = document.createTextNode(''),
+            altitudeNode = document.createTextNode('')
 
         var positionElement = document.createElement('div')
         positionElement.appendChild(document.createTextNode('Latitude: '))
@@ -77,6 +77,9 @@
         positionElement.appendChild(document.createElement('br'))
         positionElement.appendChild(document.createTextNode('Longitude: '))
         positionElement.appendChild(longitudeNode)
+        positionElement.appendChild(document.createElement('br'))
+        positionElement.appendChild(document.createTextNode('Altitude: '))
+        positionElement.appendChild(altitudeNode)
 
         var textElement = document.createElement('div')
         textElement.className = 'page-text'
@@ -123,8 +126,8 @@
         addEventListener('keydown', keydownListener)
 
         var positions = []
-        var maxPositions = 20,
-            enoughPositions = 5
+        var maxPositions = 40,
+            enoughPositions = 10
 
         var latitude, longitude
 
@@ -157,28 +160,41 @@
                         e.preventDefault()
                         hide()
 
-                        setValue('longitude', longitude)
                         setValue('latitude', latitude)
+                        setValue('longitude', longitude)
+                        setValue('altitude', altitude)
 
                     })
                 }
 
-                var accuracySum = 0
+                var accuracy = 0,
+                    altitudeAccuracy = 9
                 positions.forEach(function (position) {
-                    accuracySum += position.coords.accuracy
+                    var coords = position.coords
+                    accuracy += coords.accuracy
+                    altitudeAccuracy += coords.altitudeAccuracy
                 })
 
                 latitude = 0
                 longitude = 0
+                altitude = 0
                 positions.forEach(function (position) {
-                    var coords = position.coords,
-                        multiplier = coords.accuracy / accuracySum
+
+                    var coords = position.coords
+                    var multiplier
+
+                    multiplier = coords.accuracy / accuracy
                     latitude += coords.latitude * multiplier
                     longitude += coords.longitude * multiplier
+
+                    multiplier = coords.altitudeAccuracy / altitudeAccuracy
+                    altitude += coords.altitude * multiplier
+
                 })
 
                 latitudeNode.nodeValue = latitude
                 longitudeNode.nodeValue = longitude
+                altitudeNode.nodeValue = altitude
 
             }
 
