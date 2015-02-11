@@ -7,14 +7,8 @@
     var geolocationLink = document.getElementById('geolocationLink')
     geolocationLink.addEventListener('click', function (e) {
 
-        function clearWatch () {
-            if (watchId === null) return
-            geolocation.clearWatch(watchId)
-            watchId = null
-        }
-
         function hide () {
-            clearWatch()
+            geolocation.clearWatch(watchId)
             removeEventListener('keydown', keydownListener)
             body.removeChild(element)
             dialogShown = false
@@ -137,7 +131,13 @@
         var watchId = geolocation.watchPosition(function (position) {
 
             positions.push(position)
+
             var numPositions = positions.length
+
+            if (numPositions > maxPositions) {
+                positions.shift()
+                numPositions--
+            }
 
             var percent = numPositions * 100 / maxPositions
             percentNode.nodeValue = Math.floor(percent)
@@ -181,8 +181,6 @@
                 longitudeNode.nodeValue = longitude
 
             }
-
-            if (numPositions == maxPositions) clearWatch()
 
         }, function () {
         }, {
