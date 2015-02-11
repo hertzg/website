@@ -20,7 +20,8 @@ protocol either `'http'` or `'https'`.
 
 Installation
 ------------
-In `www/scripts` folder:
+Zvini comes with an installer and it should work in most environments.
+For manual installation there are scripts in `www/scripts` folder:
 * `./ensure/table/run-all.sh` will create all the tables in the database.
 * `./create-data-dir.sh` will create a data folder
 in which users' files will be stored.
