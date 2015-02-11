@@ -71,5 +71,4 @@ function addDeleted ($mysqli, $id_users, $folder) {
     include_once __DIR__.'/addNumber.php';
     addNumber($mysqli, $id_users, $num_folders);
 
-
 }

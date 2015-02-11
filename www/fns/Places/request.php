@@ -26,7 +26,6 @@ function request () {
     if ($altitude === '') $parsed_altitude = null;
     else $parsed_altitude = (float)$altitude;
 
-
     return [$latitude, $longitude, $altitude, $name,
         $parsed_latitude, $parsed_longitude, $parsed_altitude];
 
