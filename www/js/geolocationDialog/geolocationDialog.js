@@ -2,12 +2,14 @@
 
     var dialogShown = false
 
+    var geolocation = navigator.geolocation
+
     var geolocationLink = document.getElementById('geolocationLink')
     geolocationLink.addEventListener('click', function (e) {
 
         function clearWatch () {
-            if (!watchId) return
-            navigator.geolocation.clearWatch(watchId)
+            if (watchId === null) return
+            geolocation.clearWatch(watchId)
             watchId = null
         }
 
@@ -132,10 +134,14 @@
 
         var latitude, longitude
 
-        function pushPosition (position) {
+        var watchId = geolocation.watchPosition(function (position) {
+
             positions.push(position)
             var numPositions = positions.length
-            percentNode.nodeValue = Math.floor(numPositions * 100 / maxPositions)
+
+            var percent = numPositions * 100 / maxPositions
+            percentNode.nodeValue = Math.floor(percent)
+
             if (numPositions >= enoughPositions) {
 
                 if (numPositions == enoughPositions) {
@@ -157,24 +163,31 @@
                     })
                 }
 
+                var accuracySum = 0
+                positions.forEach(function (position) {
+                    accuracySum += position.coords.accuracy
+                })
+
                 latitude = 0
                 longitude = 0
                 positions.forEach(function (position) {
-                    var coords = position.coords
-                    latitude += coords.latitude
-                    longitude += coords.longitude
+                    var coords = position.coords,
+                        multiplier = coords.accuracy / accuracySum
+                    latitude += coords.latitude * multiplier
+                    longitude += coords.longitude * multiplier
                 })
-                latitude /= numPositions
-                longitude /= numPositions
 
                 latitudeNode.nodeValue = latitude
                 longitudeNode.nodeValue = longitude
 
             }
-            if (numPositions == maxPositions) clearWatch()
-        }
 
-        var watchId = navigator.geolocation.watchPosition(pushPosition)
+            if (numPositions == maxPositions) clearWatch()
+
+        }, function () {
+        }, {
+            enableHighAccuracy: true,
+        })
 
     })
 })()
