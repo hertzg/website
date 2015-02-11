@@ -1,7 +1,11 @@
 Zvini Website
 =============
 
-The website that runs on https://zvini.com/.
+Zvini is a website script where users can store and exchange
+personal information such as files, notes, contacts and more.
+An instance of the script runs on https://zvini.com/.
+The website comes with an installer which should work in most environments.
+For other environments or for manual installation see the sections below:
 
 Configuration
 -------------
@@ -20,8 +24,7 @@ protocol either `'http'` or `'https'`.
 
 Installation
 ------------
-Zvini comes with an installer and it should work in most environments.
-For manual installation there are scripts in `www/scripts` folder:
+In `www/scripts` folder:
 * `./ensure/table/run-all.sh` will create all the tables in the database.
 * `./create-data-dir.sh` will create a data folder
 in which users' files will be stored.
