@@ -25,6 +25,7 @@ foreach ($users as $user) {
     $contacts = count_rows($mysqli, 'contacts', $id_users);
     $files = count_rows($mysqli, 'files', $id_users);
     $notes = count_rows($mysqli, 'notes', $id_users);
+    $places = count_rows($mysqli, 'places', $id_users);
     $tasks = count_rows($mysqli, 'tasks', $id_users);
 
     $sql = 'update users set'
@@ -32,6 +33,7 @@ foreach ($users as $user) {
         ." num_archived_received_contacts = $contacts,"
         ." num_archived_received_files = $files,"
         ." num_archived_received_notes = $notes,"
+        ." num_archived_received_places = $places,"
         ." num_archived_received_tasks = $tasks"
         ." where id_users = $id_users";
     $mysqli->query($sql) || die($mysqli->error);

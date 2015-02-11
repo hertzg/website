@@ -47,6 +47,19 @@ foreach ($rows as $row) {
     }
 }
 
+$sql = 'select distinct id_places id from place_tags';
+$rows = mysqli_query_object($mysqli, $sql);
+foreach ($rows as $row) {
+    $sql = "select * from places where id = $row->id";
+    $place = mysqli_single_object($mysqli, $sql);
+    if ($place) {
+        include_once '../fns/PlaceTags/editPlace.php';
+        PlaceTags\editPlace($mysqli, $place->id, $place->latitude,
+            $place->longitude, $place->name, $place->tags,
+            $place->insert_time, $place->update_time);
+    }
+}
+
 $sql = 'select distinct id_tasks id from task_tags';
 $rows = mysqli_query_object($mysqli, $sql);
 foreach ($rows as $row) {

@@ -42,6 +42,7 @@ foreach ($users as $user) {
     $num_folders = user_rows($mysqli, 'folders', $id_users);
     $num_notes = user_rows($mysqli, 'notes', $id_users);
     $num_notifications = user_rows($mysqli, 'notifications', $id_users);
+    $num_places = user_rows($mysqli, 'places', $id_users);
     $num_received_bookmarks = receiver_user_rows(
         $mysqli, 'received_bookmarks', $id_users);
     $num_received_contacts = receiver_user_rows(
@@ -52,6 +53,8 @@ foreach ($users as $user) {
         $mysqli, 'received_folders', $id_users);
     $num_received_notes = receiver_user_rows(
         $mysqli, 'received_notes', $id_users);
+    $num_received_places = receiver_user_rows(
+        $mysqli, 'received_places', $id_users);
     $num_received_tasks = receiver_user_rows(
         $mysqli, 'received_tasks', $id_users);
     $num_schedules = user_rows($mysqli, 'schedules', $id_users);
@@ -63,12 +66,13 @@ foreach ($users as $user) {
         ." num_connections = $num_connections, num_contacts = $num_contacts,"
         ." num_deleted_items = $num_deleted_items, num_events = $num_events,"
         ." num_folders = $num_folders, num_notes = $num_notes,"
-        ." num_notifications = $num_notifications,"
+        ." num_notifications = $num_notifications, num_places = $num_places,"
         ." num_received_bookmarks = $num_received_bookmarks,"
         ." num_received_contacts = $num_received_contacts,"
         ." num_received_files = $num_received_files,"
         ." num_received_folders = $num_received_folders,"
         ." num_received_notes = $num_received_notes,"
+        ." num_received_places = $num_received_places,"
         ." num_received_tasks = $num_received_tasks,"
         ." num_tasks = $num_tasks, num_tokens = $num_tokens"
         ." where id_users = $id_users";

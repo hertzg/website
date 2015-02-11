@@ -2,12 +2,10 @@
 <?php
 
 function update ($mysqli, $table) {
-    $id_column = "id_$table";
     $items = mysqli_query_object($mysqli, "select * from $table");
     foreach ($items as $item) {
         $num_tags = count(json_decode($item->tags_json));
-        $sql = "update $table set num_tags = $num_tags"
-            ." where $id_column = {$item->$id_column}";
+        $sql = "update $table set num_tags = $num_tags where id = $item->id";
         $mysqli->query($sql) || trigger_error($mysqli->error);
     }
 }
@@ -23,6 +21,7 @@ include_once '../lib/mysqli.php';
 update($mysqli, 'bookmarks');
 update($mysqli, 'contacts');
 update($mysqli, 'notes');
+update($mysqli, 'places');
 update($mysqli, 'tasks');
 
 $elapsedSeconds = number_format(microtime(true) - $microtime, 3);
