@@ -1,5 +1,9 @@
 (function () {
 
+    function formatNumber (number, digits) {
+        return number.toPrecision(digits).replace(/\.?0+$/, '')
+    }
+
     var dialogShown = false
 
     var geolocation = navigator.geolocation
@@ -145,58 +149,56 @@
             var percent = numPositions * 100 / maxPositions
             percentNode.nodeValue = Math.floor(percent)
 
-            if (numPositions >= enoughPositions) {
+            if (numPositions < enoughPositions) return
 
-                if (numPositions == enoughPositions) {
-                    textElement.appendChild(positionElement)
-                    okLink.titleElement.classList.remove('disabled')
-                    okLink.element.addEventListener('click', function (e) {
+            if (numPositions == enoughPositions) {
+                textElement.appendChild(positionElement)
+                okLink.titleElement.classList.remove('disabled')
+                okLink.element.addEventListener('click', function (e) {
 
-                        function setValue (name, value) {
-                            var selector = 'input[name=' + name + ']'
-                            document.querySelector(selector).value = value
-                        }
+                    function setValue (name, value) {
+                        var selector = 'input[name=' + name + ']'
+                        document.querySelector(selector).value = value
+                    }
 
-                        e.preventDefault()
-                        hide()
+                    e.preventDefault()
+                    hide()
 
-                        setValue('latitude', latitude)
-                        setValue('longitude', longitude)
-                        setValue('altitude', altitude)
-
-                    })
-                }
-
-                var accuracy = 0,
-                    altitudeAccuracy = 9
-                positions.forEach(function (position) {
-                    var coords = position.coords
-                    accuracy += coords.accuracy
-                    altitudeAccuracy += coords.altitudeAccuracy
-                })
-
-                latitude = 0
-                longitude = 0
-                altitude = 0
-                positions.forEach(function (position) {
-
-                    var coords = position.coords
-                    var multiplier
-
-                    multiplier = coords.accuracy / accuracy
-                    latitude += coords.latitude * multiplier
-                    longitude += coords.longitude * multiplier
-
-                    multiplier = coords.altitudeAccuracy / altitudeAccuracy
-                    altitude += coords.altitude * multiplier
+                    setValue('latitude', latitude)
+                    setValue('longitude', longitude)
+                    setValue('altitude', altitude)
 
                 })
-
-                latitudeNode.nodeValue = latitude
-                longitudeNode.nodeValue = longitude
-                altitudeNode.nodeValue = altitude
-
             }
+
+            var accuracy = 0,
+                altitudeAccuracy = 9
+            positions.forEach(function (position) {
+                var coords = position.coords
+                accuracy += coords.accuracy
+                altitudeAccuracy += coords.altitudeAccuracy
+            })
+
+            latitude = 0
+            longitude = 0
+            altitude = 0
+            positions.forEach(function (position) {
+
+                var coords = position.coords
+                var multiplier
+
+                multiplier = coords.accuracy / accuracy
+                latitude += coords.latitude * multiplier
+                longitude += coords.longitude * multiplier
+
+                multiplier = coords.altitudeAccuracy / altitudeAccuracy
+                altitude += coords.altitude * multiplier
+
+            })
+
+            latitudeNode.nodeValue = formatNumber(latitude, 8)
+            longitudeNode.nodeValue = formatNumber(longitude, 8)
+            altitudeNode.nodeValue = formatNumber(altitude, 3)
 
         }, function () {
         }, {
