@@ -126,5 +126,15 @@ foreach ($subscribed_channels as $subscribed_channel) {
     SubscribedChannels\editNumbers($mysqli, $id, $num_notifications);
 }
 
+include_once '../fns/WalletTransactions/countOnWallet.php';
+include_once '../fns/Wallets/editNumbers.php';
+
+$wallets = mysqli_query_object($mysqli, 'select * from wallets');
+foreach ($wallets as $wallet) {
+    $id = $wallet->id;
+    $num_transactions = WalletTransactions\countOnWallet($mysqli, $id);
+    Wallets\editNumbers($mysqli, $id, $num_transactions);
+}
+
 $elapsedSeconds = number_format(microtime(true) - $microtime, 3);
 echo "Done in $elapsedSeconds seconds.\n";
