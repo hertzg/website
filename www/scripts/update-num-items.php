@@ -10,8 +10,6 @@ chdir(__DIR__);
 include_once '../../lib/cli.php';
 include_once '../fns/mysqli_query_object.php';
 include_once '../fns/mysqli_single_object.php';
-include_once '../lib/mysqli.php';
-
 include_once '../fns/ApiKeys/countOnUser.php';
 include_once '../fns/Bookmarks/countOnUser.php';
 include_once '../fns/Channels/countOnUser.php';
@@ -34,7 +32,9 @@ include_once '../fns/Schedules/countOnUser.php';
 include_once '../fns/SubscribedChannels/countOnSubscriber.php';
 include_once '../fns/Tasks/countOnUser.php';
 include_once '../fns/Tokens/countOnUser.php';
+include_once '../fns/Users/setNumbers.php';
 include_once '../fns/Wallets/countOnUser.php';
+include_once '../lib/mysqli.php';
 
 $microtime = microtime(true);
 
@@ -72,24 +72,13 @@ foreach ($users as $user) {
     $num_tokens = Tokens\countOnUser($mysqli, $id_users);
     $num_wallets = Wallets\countOnUser($mysqli, $id_users);
 
-    $sql = "update users set num_api_keys = $num_api_keys,"
-        ." num_bookmarks = $num_bookmarks, num_channels = $num_channels,"
-        ." num_connections = $num_connections, num_contacts = $num_contacts,"
-        ." num_deleted_items = $num_deleted_items, num_events = $num_events,"
-        ." num_folders = $num_folders, num_notes = $num_notes,"
-        ." num_notifications = $num_notifications, num_places = $num_places,"
-        ." num_received_bookmarks = $num_received_bookmarks,"
-        ." num_received_contacts = $num_received_contacts,"
-        ." num_received_files = $num_received_files,"
-        ." num_received_folders = $num_received_folders,"
-        ." num_received_notes = $num_received_notes,"
-        ." num_received_places = $num_received_places,"
-        ." num_received_tasks = $num_received_tasks, num_places = $num_places,"
-        ." num_subscribed_channels = $num_subscribed_channels,"
-        ." num_tasks = $num_tasks, num_tokens = $num_tokens,"
-        ." num_wallets = $num_wallets where id_users = $id_users";
-
-    $mysqli->query($sql) || die($mysqli->error);
+    Users\setNumbers($mysqli, $id_users, $num_api_keys, $num_bookmarks,
+        $num_channels, $num_connections, $num_contacts, $num_deleted_items,
+        $num_events, $num_folders, $num_notes, $num_notifications,
+        $num_places, $num_received_bookmarks, $num_received_contacts,
+        $num_received_files, $num_received_folders, $num_received_notes,
+        $num_received_places, $num_received_tasks, $num_schedules,
+        $num_subscribed_channels, $num_tasks, $num_tokens, $num_wallets);
 
 }
 
