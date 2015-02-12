@@ -17,12 +17,12 @@ function renderContacts ($user, &$items) {
     $options = ['id' => 'contacts'];
     if ($num_contacts || $num_received_contacts) {
 
-        $descriptionItems = [];
-        if ($num_contacts) $descriptionItems[] = "$num_contacts total.";
+        $descriptions = [];
+        if ($num_contacts) $descriptions[] = "$num_contacts total.";
         if ($num_received_contacts) {
-            $descriptionItems[] = "$num_received_contacts received.";
+            $descriptions[] = "$num_received_contacts received.";
         }
-        $description = join(' ', $descriptionItems);
+        $description = join(' ', $descriptions);
 
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         $link = \Page\imageArrowLinkWithDescription(

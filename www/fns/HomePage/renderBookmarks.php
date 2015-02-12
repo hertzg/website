@@ -17,12 +17,12 @@ function renderBookmarks ($user, &$items) {
     $options = ['id' => 'bookmarks'];
     if ($num_bookmarks || $num_received_bookmarks) {
 
-        $descriptionItems = [];
-        if ($num_bookmarks) $descriptionItems[] = "$num_bookmarks total.";
+        $descriptions = [];
+        if ($num_bookmarks) $descriptions[] = "$num_bookmarks total.";
         if ($num_received_bookmarks) {
-            $descriptionItems[] = "$num_received_bookmarks received.";
+            $descriptions[] = "$num_received_bookmarks received.";
         }
-        $description = join(' ', $descriptionItems);
+        $description = join(' ', $descriptions);
 
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         $link = \Page\imageArrowLinkWithDescription(

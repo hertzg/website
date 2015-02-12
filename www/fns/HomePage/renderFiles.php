@@ -18,16 +18,16 @@ function renderFiles ($user, &$items) {
     $options = ['id' => 'files'];
     if ($num_received_files || $num_received_folders || $storage_used) {
 
-        $descriptionItems = [];
+        $descriptions = [];
         if ($storage_used) {
             include_once "$fnsDir/bytestr.php";
-            $descriptionItems[] = bytestr($storage_used).' used.';
+            $descriptions[] = bytestr($storage_used).' used.';
         }
         if ($num_received_files || $num_received_folders) {
             $n = $num_received_files + $num_received_folders;
-            $descriptionItems[] = "$n received.";
+            $descriptions[] = "$n received.";
         }
-        $description = join(' ', $descriptionItems);
+        $description = join(' ', $descriptions);
 
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         $link = \Page\imageArrowLinkWithDescription($title,

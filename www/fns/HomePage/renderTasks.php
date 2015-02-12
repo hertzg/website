@@ -17,12 +17,12 @@ function renderTasks ($user, &$items) {
     $options = ['id' => 'tasks'];
     if ($num_tasks || $num_received_tasks) {
 
-        $descriptionItems = [];
-        if ($num_tasks) $descriptionItems[] = "$num_tasks total.";
+        $descriptions = [];
+        if ($num_tasks) $descriptions[] = "$num_tasks total.";
         if ($num_received_tasks) {
-            $descriptionItems[] = "$num_received_tasks received.";
+            $descriptions[] = "$num_received_tasks received.";
         }
-        $description = join(' ', $descriptionItems);
+        $description = join(' ', $descriptions);
 
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         $link = \Page\imageArrowLinkWithDescription($title,

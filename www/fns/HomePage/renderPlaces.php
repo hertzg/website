@@ -17,12 +17,12 @@ function renderPlaces ($user, &$items) {
     $options = ['id' => 'places'];
     if ($num_places || $num_received_places) {
 
-        $descriptionItems = [];
-        if ($num_places) $descriptionItems[] = "$num_places total.";
+        $descriptions = [];
+        if ($num_places) $descriptions[] = "$num_places total.";
         if ($num_received_places) {
-            $descriptionItems[] = "$num_received_places received.";
+            $descriptions[] = "$num_received_places received.";
         }
-        $description = join(' ', $descriptionItems);
+        $description = join(' ', $descriptions);
 
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         $link = \Page\imageArrowLinkWithDescription($title,

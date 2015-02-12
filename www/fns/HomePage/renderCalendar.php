@@ -34,10 +34,10 @@ function renderCalendar ($user, $mysqli, &$items) {
     $options = ['id' => 'calendar'];
     if ($today || $tomorrow) {
 
-        $descriptionItems = [];
-        if ($today) $descriptionItems[] = $n_events($today).' today.';
-        if ($tomorrow) $descriptionItems[] = $n_events($tomorrow).' tomorrow.';
-        $description = join(' ', $descriptionItems);
+        $descriptions = [];
+        if ($today) $descriptions[] = $n_events($today).' today.';
+        if ($tomorrow) $descriptions[] = $n_events($tomorrow).' tomorrow.';
+        $description = join(' ', $descriptions);
 
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         $link = \Page\imageArrowLinkWithDescription(

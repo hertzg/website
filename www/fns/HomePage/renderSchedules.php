@@ -20,10 +20,10 @@ function renderSchedules ($user, $mysqli, &$items) {
 
     if ($today || $tomorrow) {
 
-        $descriptionItems = [];
-        if ($today) $descriptionItems[] = "$today today.";
-        if ($tomorrow) $descriptionItems[] = "$tomorrow tomorrow.";
-        $description = join(' ', $descriptionItems);
+        $descriptions = [];
+        if ($today) $descriptions[] = "$today today.";
+        if ($tomorrow) $descriptions[] = "$tomorrow tomorrow.";
+        $description = join(' ', $descriptions);
 
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         $link = \Page\imageArrowLinkWithDescription(

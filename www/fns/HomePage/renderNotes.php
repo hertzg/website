@@ -17,12 +17,12 @@ function renderNotes ($user, &$items) {
     $options = ['id' => 'notes'];
     if ($num_notes || $num_received_notes) {
 
-        $descriptionItems = [];
-        if ($num_notes) $descriptionItems[] = "$num_notes total.";
+        $descriptions = [];
+        if ($num_notes) $descriptions[] = "$num_notes total.";
         if ($num_received_notes) {
-            $descriptionItems[] = "$num_received_notes received.";
+            $descriptions[] = "$num_received_notes received.";
         }
-        $description = join(' ', $descriptionItems);
+        $description = join(' ', $descriptions);
 
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         $link = \Page\imageArrowLinkWithDescription($title,
