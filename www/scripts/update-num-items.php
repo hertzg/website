@@ -1,15 +1,14 @@
 #!/usr/bin/php
 <?php
 
-function count_rows ($mysqli, $sql) {
-    $sql = "select count(*) value from $sql";
-    return mysqli_single_object($mysqli, $sql)->value;
-}
-
 chdir(__DIR__);
 include_once '../../lib/cli.php';
 include_once '../fns/mysqli_query_object.php';
 include_once '../fns/mysqli_single_object.php';
+include_once '../lib/mysqli.php';
+
+$microtime = microtime(true);
+
 include_once '../fns/ApiKeys/countOnUser.php';
 include_once '../fns/Bookmarks/countOnUser.php';
 include_once '../fns/Channels/countOnUser.php';
@@ -41,9 +40,6 @@ include_once '../fns/Tasks/countOnUser.php';
 include_once '../fns/Tokens/countOnUser.php';
 include_once '../fns/Users/editNumbers.php';
 include_once '../fns/Wallets/countOnUser.php';
-include_once '../lib/mysqli.php';
-
-$microtime = microtime(true);
 
 $users = mysqli_query_object($mysqli, 'select * from users');
 foreach ($users as $user) {
@@ -107,33 +103,27 @@ foreach ($users as $user) {
 
 }
 
+include_once '../fns/Channels/editNumbers.php';
+include_once '../fns/Notifications/countOnChannel.php';
+include_once '../fns/SubscribedChannels/countPublisherLockedOnChannel.php';
+
 $channels = mysqli_query_object($mysqli, 'select * from channels');
 foreach ($channels as $channel) {
-
     $id = $channel->id;
-
-    $sql = "notifications where id_channels = $id";
-    $num_notifications = count_rows($mysqli, $sql);
-
-    $sql = 'update channels set'
-        ." num_notifications = $num_notifications where id = $id";
-    $mysqli->query($sql) || die($mysqli->error);
-
+    $num_notifications = Notifications\countOnChannel($mysqli, $id);
+    $num_users = SubscribedChannels\countPublisherLockedOnChannel($mysqli, $id);
+    Channels\editNumbers($mysqli, $id, $num_notifications, $num_users);
 }
+
+include_once '../fns/Notifications/countOnSubscribedChannel.php';
+include_once '../fns/SubscribedChannels/editNumbers.php';
 
 $sql = 'select * from subscribed_channels';
 $subscribed_channels = mysqli_query_object($mysqli, $sql);
 foreach ($subscribed_channels as $subscribed_channel) {
-
     $id = $subscribed_channel->id;
-
-    $sql = "notifications where id_subscribed_channels = $id";
-    $num_notifications = count_rows($mysqli, $sql);
-
-    $sql = 'update subscribed_channels set'
-        ." num_notifications = $num_notifications where id = $id";
-    $mysqli->query($sql) || die($mysqli->error);
-
+    $num_notifications = Notifications\countOnSubscribedChannel($mysqli, $id);
+    SubscribedChannels\editNumbers($mysqli, $id, $num_notifications);
 }
 
 $elapsedSeconds = number_format(microtime(true) - $microtime, 3);
