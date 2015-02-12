@@ -21,18 +21,25 @@ include_once '../fns/Folders/countOnUser.php';
 include_once '../fns/Notes/countOnUser.php';
 include_once '../fns/Notifications/countOnUser.php';
 include_once '../fns/Places/countOnUser.php';
+include_once '../fns/ReceivedBookmarks/countArchivedOnReceiver.php';
 include_once '../fns/ReceivedBookmarks/countOnReceiver.php';
+include_once '../fns/ReceivedContacts/countArchivedOnReceiver.php';
 include_once '../fns/ReceivedContacts/countOnReceiver.php';
+include_once '../fns/ReceivedFiles/countArchivedOnReceiver.php';
 include_once '../fns/ReceivedFiles/Committed/countOnReceiver.php';
+include_once '../fns/ReceivedFolders/countArchivedOnReceiver.php';
 include_once '../fns/ReceivedFolders/Committed/countOnReceiver.php';
+include_once '../fns/ReceivedNotes/countArchivedOnReceiver.php';
 include_once '../fns/ReceivedNotes/countOnReceiver.php';
+include_once '../fns/ReceivedPlaces/countArchivedOnReceiver.php';
 include_once '../fns/ReceivedPlaces/countOnReceiver.php';
+include_once '../fns/ReceivedTasks/countArchivedOnReceiver.php';
 include_once '../fns/ReceivedTasks/countOnReceiver.php';
 include_once '../fns/Schedules/countOnUser.php';
 include_once '../fns/SubscribedChannels/countOnSubscriber.php';
 include_once '../fns/Tasks/countOnUser.php';
 include_once '../fns/Tokens/countOnUser.php';
-include_once '../fns/Users/setNumbers.php';
+include_once '../fns/Users/editNumbers.php';
 include_once '../fns/Wallets/countOnUser.php';
 include_once '../lib/mysqli.php';
 
@@ -44,6 +51,20 @@ foreach ($users as $user) {
     $id_users = $user->id_users;
 
     $num_api_keys = ApiKeys\countOnUser($mysqli, $id_users);
+    $num_archived_received_bookmarks = ReceivedBookmarks\countArchivedOnReceiver(
+        $mysqli, $id_users);
+    $num_archived_received_contacts = ReceivedContacts\countArchivedOnReceiver(
+        $mysqli, $id_users);
+    $num_archived_received_files = ReceivedFiles\countArchivedOnReceiver(
+        $mysqli, $id_users);
+    $num_archived_received_folders = ReceivedFolders\countArchivedOnReceiver(
+        $mysqli, $id_users);
+    $num_archived_received_notes = ReceivedNotes\countArchivedOnReceiver(
+        $mysqli, $id_users);
+    $num_archived_received_places = ReceivedPlaces\countArchivedOnReceiver(
+        $mysqli, $id_users);
+    $num_archived_received_tasks = ReceivedTasks\countArchivedOnReceiver(
+        $mysqli, $id_users);
     $num_bookmarks = Bookmarks\countOnUser($mysqli, $id_users);
     $num_channels = Channels\countOnUser($mysqli, $id_users);
     $num_connections = Connections\countOnUser($mysqli, $id_users);
@@ -72,13 +93,17 @@ foreach ($users as $user) {
     $num_tokens = Tokens\countOnUser($mysqli, $id_users);
     $num_wallets = Wallets\countOnUser($mysqli, $id_users);
 
-    Users\setNumbers($mysqli, $id_users, $num_api_keys, $num_bookmarks,
-        $num_channels, $num_connections, $num_contacts, $num_deleted_items,
-        $num_events, $num_folders, $num_notes, $num_notifications,
-        $num_places, $num_received_bookmarks, $num_received_contacts,
-        $num_received_files, $num_received_folders, $num_received_notes,
-        $num_received_places, $num_received_tasks, $num_schedules,
-        $num_subscribed_channels, $num_tasks, $num_tokens, $num_wallets);
+    Users\editNumbers($mysqli, $id_users, $num_api_keys,
+        $num_archived_received_bookmarks, $num_archived_received_contacts,
+        $num_archived_received_files, $num_archived_received_folders,
+        $num_archived_received_notes, $num_archived_received_places,
+        $num_archived_received_tasks, $num_bookmarks, $num_channels,
+        $num_connections, $num_contacts, $num_deleted_items, $num_events,
+        $num_folders, $num_notes, $num_notifications, $num_places,
+        $num_received_bookmarks, $num_received_contacts, $num_received_files,
+        $num_received_folders, $num_received_notes, $num_received_places,
+        $num_received_tasks, $num_schedules, $num_subscribed_channels,
+        $num_tasks, $num_tokens, $num_wallets);
 
 }
 

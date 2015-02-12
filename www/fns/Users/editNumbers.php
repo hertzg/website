@@ -2,7 +2,11 @@
 
 namespace Users;
 
-function setNumbers ($mysqli, $id, $num_api_keys, $num_bookmarks, $num_channels,
+function editNumbers ($mysqli, $id, $num_api_keys,
+    $num_archived_received_bookmarks, $num_archived_received_contacts,
+    $num_archived_received_files, $num_archived_received_folders,
+    $num_archived_received_notes, $num_archived_received_places,
+    $num_archived_received_tasks, $num_bookmarks, $num_channels,
     $num_connections, $num_contacts, $num_deleted_items, $num_events,
     $num_folders, $num_notes, $num_notifications, $num_places,
     $num_received_bookmarks, $num_received_contacts, $num_received_files,
@@ -11,6 +15,13 @@ function setNumbers ($mysqli, $id, $num_api_keys, $num_bookmarks, $num_channels,
     $num_tasks, $num_tokens, $num_wallets) {
 
     $sql = "update users set num_api_keys = $num_api_keys,"
+        ." num_archived_received_bookmarks = $num_archived_received_bookmarks,"
+        ." num_archived_received_contacts = $num_archived_received_contacts,"
+        ." num_archived_received_files = $num_archived_received_files,"
+        ." num_archived_received_folders = $num_archived_received_folders,"
+        ." num_archived_received_notes = $num_archived_received_notes,"
+        ." num_archived_received_places = $num_archived_received_places,"
+        ." num_archived_received_tasks = $num_archived_received_tasks,"
         ." num_bookmarks = $num_bookmarks, num_channels = $num_channels,"
         ." num_connections = $num_connections, num_contacts = $num_contacts,"
         ." num_deleted_items = $num_deleted_items, num_events = $num_events,"
