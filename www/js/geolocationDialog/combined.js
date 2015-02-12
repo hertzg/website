@@ -26,7 +26,8 @@ function WakeLock () {
 (function () {
 
     function formatNumber (number, digits) {
-        return number.toPrecision(digits).replace(/\.?0+$/, '')
+        var s = number.toFixed(digits)
+        return s.replace(/(\.\d*?)0+$/, '$1').replace(/\.$/, '')
     }
 
     var wakelock = WakeLock()
