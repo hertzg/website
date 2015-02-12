@@ -33,4 +33,9 @@ echo json_encode([
         128 => '/zvini-icons/128.png',
         256 => '/zvini-icons/256.png',
     ],
+    'permissions' => [
+        'geolocation' => [
+            'description' => 'Required while entering place coordinates.',
+        ],
+    ],
 ]);
