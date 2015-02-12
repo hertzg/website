@@ -1,4 +1,16 @@
-(function () {
+(function (originalLatitude, originalLongitude, originalAltitude) {
+
+    function formatDiff (number, digits, originalNumber) {
+        var s = formatNumber(number, digits)
+        if (originalNumber !== null) {
+            var diff = number - originalNumber
+            var formattedDiff = formatNumber(Math.abs(diff), digits)
+            if (formattedDiff != '0') {
+                s += ' (' + (diff > 0 ? '+' : '-') + formattedDiff + ')'
+            }
+        }
+        return s
+    }
 
     function formatNumber (number, digits) {
         var s = number.toFixed(digits)
@@ -203,9 +215,10 @@
 
             })
 
-            latitudeNode.nodeValue = formatNumber(latitude, 9)
-            longitudeNode.nodeValue = formatNumber(longitude, 9)
-            altitudeNode.nodeValue = formatNumber(altitude, 3)
+            latitudeNode.nodeValue = formatDiff(latitude, 9, originalLatitude)
+            longitudeNode.nodeValue = formatDiff(
+                longitude, 9, originalLongitude)
+            altitudeNode.nodeValue = formatDiff(altitude, 3, originalAltitude)
 
         }, function () {
         }, {
@@ -213,4 +226,4 @@
         })
 
     })
-})()
+})(latitude, longitude, altitude)

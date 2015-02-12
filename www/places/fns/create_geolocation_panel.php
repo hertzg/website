@@ -1,6 +1,7 @@
 <?php
 
-function create_geolocation_panel ($base) {
+function create_geolocation_panel ($base,
+    $latitude = null, $longitude = null, $altitude = null) {
 
     $fnsDir = __DIR__.'/../../fns';
 
@@ -12,6 +13,11 @@ function create_geolocation_panel ($base) {
     include_once "$fnsDir/create_panel.php";
     return
         create_panel('Options', $content)
+        .'<script type="text/javascript">'
+            .'var latitude = '.json_encode($latitude)."\n"
+            .'var longitude = '.json_encode($longitude)."\n"
+            .'var altitude = '.json_encode($altitude)."\n"
+        .'</script>'
         .compressed_js_script('geolocationDialog', $base);
 
 }
