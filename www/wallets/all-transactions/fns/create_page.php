@@ -50,7 +50,7 @@ function create_page ($mysqli, $user, $wallet, $base = '') {
         'All Transactions',
         join('<div class="hr"></div>', $items)
         .create_panel('Options', $deleteLink),
-        Page\newItemButton("../new-transaction/?id=$id", 'Transaction')
+        Page\newItemButton("new/?id=$id", 'Transaction')
     );
 
 }
