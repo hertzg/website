@@ -16,8 +16,8 @@ list($amount, $parsed_amount, $description) = $values;
 include_once "$fnsDir/redirect.php";
 
 if ($errors) {
-    $_SESSION['wallets/all-transaction/new/errors'] = $errors;
-    $_SESSION['wallets/all-transaction/new/values'] = [
+    $_SESSION['wallets/all-transactions/new/errors'] = $errors;
+    $_SESSION['wallets/all-transactions/new/values'] = [
         'amount' => $amount,
         'description' => $description,
     ];
@@ -25,8 +25,8 @@ if ($errors) {
 }
 
 unset(
-    $_SESSION['wallets/all-transaction/new/errors'],
-    $_SESSION['wallets/all-transaction/new/values']
+    $_SESSION['wallets/all-transactions/new/errors'],
+    $_SESSION['wallets/all-transactions/new/values']
 );
 
 $message = 'The transaction has been saved.';

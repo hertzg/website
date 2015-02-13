@@ -6,14 +6,8 @@ list($wallet, $id, $user) = require_wallet($mysqli, '../');
 
 unset($_SESSION['wallets/view/messages']);
 
-$key = 'wallets/all-transaction/new/values';
-if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
-else {
-    $values = [
-        'amount' => '',
-        'description' => '',
-    ];
-}
+include_once '../../fns/request_new_transaction_values.php';
+$values = request_new_transaction_values('wallets/all-transactions/new/values');
 
 $base = '../../../';
 $fnsDir = '../../../fns';
@@ -31,7 +25,7 @@ $content = Page\tabs(
         ]
     ],
     'New Transaction',
-    Page\sessionErrors('wallets/all-transaction/new/errors')
+    Page\sessionErrors('wallets/all-transactions/new/errors')
     .'<form action="submit.php" method="post">'
         .create_transaction_form_items($values)
         .'<div class="hr"></div>'

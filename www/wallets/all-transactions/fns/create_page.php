@@ -28,7 +28,11 @@ function create_page ($mysqli, $user, $wallet, $base = '') {
     include_once __DIR__.'/render_next_button.php';
     render_next_button($offset, $limit, $total, $items, $params);
 
-    unset($_SESSION['wallets/view/messages']);
+    unset(
+        $_SESSION['wallets/all-transactions/new/errors'],
+        $_SESSION['wallets/all-transactions/new/values'],
+        $_SESSION['wallets/view/messages']
+    );
 
     include_once "$fnsDir/Page/imageLink.php";
     $deleteLink =
