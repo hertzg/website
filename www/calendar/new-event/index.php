@@ -6,34 +6,9 @@ $fnsDir = '../../fns';
 include_once "$fnsDir/require_user.php";
 $user = require_user($base);
 
-$key = 'calendar/new-event/values';
-if (array_key_exists($key, $_SESSION)) {
-    $values = $_SESSION[$key];
-} else {
-
-    include_once "$fnsDir/request_strings.php";
-    list($year, $month, $day) = request_strings('year', 'month', 'day');
-
-    $day = abs((int)$day);
-    $month = abs((int)$month);
-    $year = abs((int)$year);
-
-    if ($year === 0) $year = (int)date('Y');
-    if ($month === 0) $month = (int)date('n');
-    if ($day === 0) $day = (int)date('j');
-
-    $values = [
-        'event_day' => $day,
-        'event_month' => $month,
-        'event_year' => $year,
-        'text' => '',
-    ];
-
-}
-
-$event_day = $values['event_day'];
-$event_month = $values['event_month'];
-$event_year = $values['event_year'];
+include_once '../fns/request_new_event_values.php';
+request_new_event_values('calendar/new-event/values',
+    $text, $event_day, $event_month, $event_year);
 
 unset(
     $_SESSION['calendar/errors'],
@@ -76,7 +51,7 @@ $content = Page\tabs(
         ], 'When', true)
         .'<div class="hr"></div>'
         .Form\textfield('text', 'Text', [
-            'value' => $values['text'],
+            'value' => $text,
             'maxlength' => $maxLengths['text'],
             'autofocus' => true,
             'required' => true,
