@@ -34,6 +34,9 @@ function ensure ($mysqli) {
         'can_read_notifications' => [
             'type' => 'tinyint(3) unsigned',
         ],
+        'can_read_places' => [
+            'type' => 'tinyint(3) unsigned',
+        ],
         'can_read_schedules' => [
             'type' => 'tinyint(3) unsigned',
         ],
@@ -62,6 +65,9 @@ function ensure ($mysqli) {
             'type' => 'tinyint(3) unsigned',
         ],
         'can_write_notifications' => [
+            'type' => 'tinyint(3) unsigned',
+        ],
+        'can_write_places' => [
             'type' => 'tinyint(3) unsigned',
         ],
         'can_write_schedules' => [

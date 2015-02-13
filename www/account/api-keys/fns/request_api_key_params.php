@@ -11,11 +11,11 @@ function request_api_key_params () {
     include_once "$fnsDir/request_strings.php";
     list($name, $expires, $bookmark_access,
         $channel_access, $contact_access, $event_access,
-        $file_access, $note_access, $notification_access,
+        $file_access, $note_access, $notification_access, $place_access,
         $schedule_access, $task_access, $wallet_access) = request_strings(
         'name', 'expires', 'bookmark_access',
         'channel_access', 'contact_access', 'event_access',
-        'file_access', 'note_access', 'notification_access',
+        'file_access', 'note_access', 'notification_access', 'place_access',
         'schedule_access', 'task_access', 'wallet_access');
 
     include_once "$fnsDir/str_collapse_spaces.php";
@@ -34,12 +34,14 @@ function request_api_key_params () {
     $parseAccess($file_access);
     $parseAccess($note_access);
     $parseAccess($notification_access);
+    $parseAccess($place_access);
     $parseAccess($schedule_access);
     $parseAccess($task_access);
     $parseAccess($wallet_access);
 
-    return [$name, $expires, $expire_time, $bookmark_access, $channel_access,
-        $contact_access, $event_access, $file_access, $note_access,
-        $notification_access, $schedule_access, $task_access, $wallet_access];
+    return [$name, $expires, $expire_time, $bookmark_access,
+        $channel_access, $contact_access, $event_access, $file_access,
+        $note_access, $notification_access, $place_access,
+        $schedule_access, $task_access, $wallet_access];
 
 }

@@ -18,6 +18,7 @@ else {
         'file_access' => 'none',
         'note_access' => 'none',
         'notification_access' => 'none',
+        'place_access' => 'none',
         'schedule_access' => 'none',
         'task_access' => 'none',
         'wallet_access' => 'none',

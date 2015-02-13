@@ -29,6 +29,7 @@ function create_permission_fields ($values) {
     $add('file_access', 'Files');
     $add('note_access', 'Notes');
     $add('notification_access', 'Notifications');
+    $add('place_access', 'Places');
     $add('schedule_access', 'Schedules');
     $add('task_access', 'Tasks');
     $add('wallet_access', 'Wallets');

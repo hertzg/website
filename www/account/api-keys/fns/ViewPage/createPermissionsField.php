@@ -22,6 +22,7 @@ function createPermissionsField ($apiKey) {
     $add('Files', 'file');
     $add('Notes', 'note');
     $add('Notifications', 'notification');
+    $add('Places', 'place');
     $add('Schedules', 'schedule');
     $add('Tasks', 'task');
     $add('Wallets', 'wallet');
