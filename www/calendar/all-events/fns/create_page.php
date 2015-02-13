@@ -37,6 +37,13 @@ function create_page ($mysqli, $user, $base = '') {
                 "{$base}delete-all/", 'trash-bin')
         .'</div>';
 
+    unset(
+        $_SESSION['calendar/all-events/new/errors'],
+        $_SESSION['calendar/all-events/new/values'],
+        $_SESSION['calendar/errors'],
+        $_SESSION['calendar/messages']
+    );
+
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/tabs.php";
@@ -50,7 +57,7 @@ function create_page ($mysqli, $user, $base = '') {
             ],
             'All Events',
             join('<div class="hr"></div>', $items),
-            Page\newItemButton('../new-event/', 'Event')
+            Page\newItemButton('new/', 'Event')
         )
         .create_panel('Options', $deleteLink);
 

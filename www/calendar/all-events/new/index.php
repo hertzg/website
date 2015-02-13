@@ -1,12 +1,12 @@
 <?php
 
-$base = '../../';
-$fnsDir = '../../fns';
+$base = '../../../';
+$fnsDir = '../../../fns';
 
 include_once "$fnsDir/require_user.php";
 $user = require_user($base);
 
-$key = 'calendar/new-event/values';
+$key = 'calendar/all-events/new/values';
 if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];
 } else {
@@ -43,9 +43,6 @@ unset(
 include_once "$fnsDir/Events/maxLengths.php";
 $maxLengths = Events\maxLengths();
 
-include_once '../fns/calendar_href.php';
-$calendar_href = calendar_href($event_day, $event_month, $event_year);
-
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/datefield.php";
 include_once "$fnsDir/Form/hidden.php";
@@ -55,12 +52,12 @@ include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
     [
         [
-            'title' => 'Calendar',
-            'href' => "$calendar_href#new-event",
+            'title' => 'All Events',
+            'href' => '..',
         ],
     ],
     'New Event',
-    Page\sessionErrors('calendar/new-event/errors')
+    Page\sessionErrors('calendar/all-events/new/errors')
     .'<form action="submit.php" method="post">'
         .Form\datefield([
             'name' => 'event_day',
