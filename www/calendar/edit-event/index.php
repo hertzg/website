@@ -6,18 +6,8 @@ include_once '../fns/require_event.php';
 include_once '../../lib/mysqli.php';
 list($event, $id, $user) = require_event($mysqli);
 
-$key = 'calendar/edit-event/values';
-if (array_key_exists($key, $_SESSION)) {
-    $values = $_SESSION[$key];
-} else {
-    $event_time = $event->event_time;
-    $values = [
-        'event_day' => date('d', $event_time),
-        'event_month' => date('n', $event_time),
-        'event_year' => date('Y', $event_time),
-        'text' => $event->text,
-    ];
-}
+include_once '../fns/request_edit_event_values.php';
+$values = request_edit_event_values($event, 'calendar/edit-event/values');
 
 unset($_SESSION['calendar/view-event/messages']);
 
