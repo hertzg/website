@@ -2,6 +2,8 @@
 
 function unset_session_vars () {
     unset(
+        $_SESSION['calendar/all-events/errors'],
+        $_SESSION['calendar/all-events/messages'],
         $_SESSION['calendar/jump-to/errors'],
         $_SESSION['calendar/new-event/errors'],
         $_SESSION['calendar/new-event/values'],

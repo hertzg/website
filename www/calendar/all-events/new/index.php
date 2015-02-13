@@ -11,8 +11,8 @@ request_new_event_values('calendar/all-events/new/values',
     $text, $event_day, $event_month, $event_year);
 
 unset(
-    $_SESSION['calendar/errors'],
-    $_SESSION['calendar/messages']
+    $_SESSION['calendar/all-events/errors'],
+    $_SESSION['calendar/all-events/messages']
 );
 
 include_once '../../fns/create_form_items.php';

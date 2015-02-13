@@ -36,6 +36,6 @@ include_once "$fnsDir/Users/Events/add.php";
 include_once '../../../lib/mysqli.php';
 $id = Users\Events\add($mysqli, $user, $text, $event_time);
 
-$_SESSION['calendar/view-event/messages'] = ['Event has been saved.'];
+$_SESSION['calendar/all-events/view/messages'] = ['Event has been saved.'];
 
-redirect("../../view-event/?id=$id");
+redirect("../view/?id=$id");
