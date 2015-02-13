@@ -15,13 +15,9 @@ unset(
     $_SESSION['calendar/messages']
 );
 
-include_once "$fnsDir/Events/maxLengths.php";
-$maxLengths = Events\maxLengths();
-
+include_once '../../fns/create_form_items.php';
 include_once "$fnsDir/Form/button.php";
-include_once "$fnsDir/Form/datefield.php";
 include_once "$fnsDir/Form/hidden.php";
-include_once "$fnsDir/Form/textfield.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
@@ -34,25 +30,7 @@ $content = Page\tabs(
     'New Event',
     Page\sessionErrors('calendar/all-events/new/errors')
     .'<form action="submit.php" method="post">'
-        .Form\datefield([
-            'name' => 'event_day',
-            'value' => $event_day,
-        ],
-        [
-            'name' => 'event_month',
-            'value' => $event_month,
-        ],
-        [
-            'name' => 'event_year',
-            'value' => $event_year,
-        ], 'When', true)
-        .'<div class="hr"></div>'
-        .Form\textfield('text', 'Text', [
-            'value' => $text,
-            'maxlength' => $maxLengths['text'],
-            'autofocus' => true,
-            'required' => true,
-        ])
+        .create_form_items($text, $event_day, $event_month, $event_year)
         .'<div class="hr"></div>'
         .Form\button('Save Event')
     .'</form>'

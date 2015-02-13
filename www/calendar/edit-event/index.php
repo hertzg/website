@@ -1,5 +1,7 @@
 <?php
 
+$fnsDir = '../../fns';
+
 include_once '../fns/require_event.php';
 include_once '../../lib/mysqli.php';
 list($event, $id, $user) = require_event($mysqli);
@@ -19,15 +21,16 @@ if (array_key_exists($key, $_SESSION)) {
 
 unset($_SESSION['calendar/view-event/messages']);
 
-include_once '../../fns/Events/maxLengths.php';
+include_once "$fnsDir/Events/maxLengths.php";
 $maxLengths = Events\maxLengths();
 
-include_once '../../fns/Page/tabs.php';
-include_once '../../fns/Form/button.php';
-include_once '../../fns/Form/datefield.php';
-include_once '../../fns/Form/hidden.php';
-include_once '../../fns/Form/textfield.php';
-include_once '../../fns/Page/sessionErrors.php';
+include_once '../fns/create_form_items.php';
+include_once "$fnsDir/Page/tabs.php";
+include_once "$fnsDir/Form/button.php";
+include_once "$fnsDir/Form/datefield.php";
+include_once "$fnsDir/Form/hidden.php";
+include_once "$fnsDir/Form/textfield.php";
+include_once "$fnsDir/Page/sessionErrors.php";
 $content = Page\tabs(
     [
         [
@@ -38,30 +41,13 @@ $content = Page\tabs(
     'Edit',
     Page\sessionErrors('calendar/edit-event/errors')
     .'<form action="submit.php" method="post">'
-        .Form\datefield([
-            'name' => 'event_day',
-            'value' => $values['event_day'],
-        ],
-        [
-            'name' => 'event_month',
-            'value' => $values['event_month'],
-        ],
-        [
-            'name' => 'event_year',
-            'value' => $values['event_year'],
-        ], 'When', true)
-        .'<div class="hr"></div>'
-        .Form\textfield('text', 'Text', [
-            'value' => $values['text'],
-            'maxlength' => $maxLengths['text'],
-            'autofocus' => true,
-            'required' => true,
-        ])
+        .create_form_items($values['text'], $values['event_day'],
+            $values['event_month'], $values['event_year'])
         .'<div class="hr"></div>'
         .Form\button('Save Changes')
         .Form\hidden('id', $id)
     .'</form>'
 );
 
-include_once '../../fns/echo_page.php';
+include_once "$fnsDir/echo_page.php";
 echo_page($user, "Edit Event #$id", $content, '../../');
