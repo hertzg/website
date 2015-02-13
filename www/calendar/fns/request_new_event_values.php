@@ -1,8 +1,6 @@
 <?php
 
-function request_new_event_values ($key, &$text,
-    &$event_day, &$event_month, &$event_year) {
-
+function request_new_event_values ($key) {
     if (array_key_exists($key, $_SESSION)) {
         $values = $_SESSION[$key];
     } else {
@@ -26,10 +24,5 @@ function request_new_event_values ($key, &$text,
         ];
 
     }
-
-    $text = $values['text'];
-    $event_day = $values['event_day'];
-    $event_month = $values['event_month'];
-    $event_year = $values['event_year'];
-
+    return $values;
 }

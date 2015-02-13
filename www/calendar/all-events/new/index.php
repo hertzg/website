@@ -7,8 +7,7 @@ include_once "$fnsDir/require_user.php";
 $user = require_user($base);
 
 include_once '../../fns/request_new_event_values.php';
-request_new_event_values('calendar/all-events/new/values',
-    $text, $event_day, $event_month, $event_year);
+$values = request_new_event_values('calendar/all-events/new/values');
 
 unset(
     $_SESSION['calendar/all-events/errors'],
@@ -30,7 +29,8 @@ $content = Page\tabs(
     'New Event',
     Page\sessionErrors('calendar/all-events/new/errors')
     .'<form action="submit.php" method="post">'
-        .create_form_items($text, $event_day, $event_month, $event_year)
+        .create_form_items($values['text'], $values['event_day'],
+            $values['event_month'], $values['event_year'])
         .'<div class="hr"></div>'
         .Form\button('Save Event')
     .'</form>'
