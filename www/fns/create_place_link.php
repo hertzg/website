@@ -1,10 +1,9 @@
 <?php
 
 function create_place_link ($latitude,
-    $longitude, $name, $tags, $href, $options = []) {
+    $longitude, $title, $tags, $href, $options = []) {
 
-    if ($name === '') $title = "$latitude $longitude";
-    else $title = htmlspecialchars($name);
+    if ($title === '') $title = "$latitude $longitude";
 
     $icon = 'place';
 
