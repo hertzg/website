@@ -23,6 +23,9 @@
     newImg.addEventListener('error', hideOverlayAndProgress)
     newImg.addEventListener('load', hideOverlayAndProgress)
 
+    var className = oldImg.className
+    if (className !== '') newImg.className = className
+
     var progressDiv = document.createElement('div')
     ;(function (style) {
         style.position = 'absolute'

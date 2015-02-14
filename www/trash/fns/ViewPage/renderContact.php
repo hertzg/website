@@ -4,6 +4,7 @@ namespace ViewPage;
 
 function renderContact ($id, $contact, &$items, &$infoText, &$scripts) {
 
+    $base = '../../';
     $fnsDir = __DIR__.'/../../../fns';
 
     include_once "$fnsDir/Form/label.php";
@@ -52,7 +53,7 @@ function renderContact ($id, $contact, &$items, &$infoText, &$scripts) {
         include_once "$fnsDir/Form/timezoneLabel.php";
         $labelItems[] = \Form\timezoneLabel($timezone);
 
-        $scripts .= compressed_js_script('timezoneLabel', '../../');
+        $scripts .= compressed_js_script('timezoneLabel', $base);
 
     }
 
@@ -75,6 +76,6 @@ function renderContact ($id, $contact, &$items, &$infoText, &$scripts) {
     $content = join('<div class="hr"></div>', $labelItems);
 
     include_once "$fnsDir/create_contact_panel.php";
-    $items[] = create_contact_panel($photoSrc, $content);
+    $items[] = create_contact_panel($photoSrc, $content, $base);
 
 }

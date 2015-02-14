@@ -35,7 +35,7 @@ function createContent ($contact, $infoText, $items, $base) {
             ],
             "Contact #$id",
             \Page\sessionMessages('contacts/view/messages')
-            .create_contact_panel($photoSrc, $content)
+            .create_contact_panel($photoSrc, $content, "$base../../")
             .\Page\infoText($infoText),
             create_new_item_button('Contact', "$base../")
         )
