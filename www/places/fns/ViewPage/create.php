@@ -23,7 +23,7 @@ function create ($place) {
 
     if ($place->num_tags) {
         include_once "$fnsDir/Form/tags.php";
-        $items[] = \Form\tags('../', json_decode($place->tags_json));
+        $items[] = \Form\tags('', json_decode($place->tags_json));
     }
 
     include_once "$fnsDir/format_author.php";
