@@ -10,21 +10,19 @@ else $values = (array)$place;
 
 unset($_SESSION['places/view/messages']);
 
-include_once '../../fns/Places/maxLengths.php';
-$maxLengths = Places\maxLengths();
-
 $base = '../../';
+$fnsDir = '../../fns';
 
 include_once '../fns/create_form_items.php';
 include_once '../fns/create_geolocation_panel.php';
-include_once '../../fns/compressed_js_script.php';
-include_once '../../fns/Form/button.php';
-include_once '../../fns/Form/hidden.php';
-include_once '../../fns/ItemList/escapedItemQuery.php';
-include_once '../../fns/ItemList/itemHiddenInputs.php';
-include_once '../../fns/Page/sessionErrors.php';
-include_once '../../fns/Page/staticTwoColumns.php';
-include_once '../../fns/Page/tabs.php';
+include_once "$fnsDir/compressed_js_script.php";
+include_once "$fnsDir/Form/button.php";
+include_once "$fnsDir/Form/hidden.php";
+include_once "$fnsDir/ItemList/escapedItemQuery.php";
+include_once "$fnsDir/ItemList/itemHiddenInputs.php";
+include_once "$fnsDir/Page/sessionErrors.php";
+include_once "$fnsDir/Page/staticTwoColumns.php";
+include_once "$fnsDir/Page/tabs.php";
 $content =
     Page\tabs(
         [
@@ -46,9 +44,7 @@ $content =
         .'</form>'
     )
     .create_geolocation_panel($base, (float)$place->latitude,
-        (float)$place->longitude, (float)$place->altitude)
-    .compressed_js_script('flexTextarea', $base)
-    .compressed_js_script('formCheckbox', $base);
+        (float)$place->longitude, (float)$place->altitude);
 
-include_once '../../fns/echo_page.php';
+include_once "$fnsDir/echo_page.php";
 echo_page($user, "Edit Place #$id", $content, $base);
