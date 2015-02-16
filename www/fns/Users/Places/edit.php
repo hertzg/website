@@ -12,7 +12,7 @@ function edit ($mysqli, $place, $latitude, $longitude,
     \Places\edit($mysqli, $id, $latitude, $longitude,
         $altitude, $name, $tags, $tag_names, $updateApiKey);
 
-    if ($place->num_place_points) {
+    if ($place->num_points) {
         include_once "$fnsDir/PlacePoints/deleteOnPlace.php";
         \PlacePoints\deleteOnPlace($mysqli, $id);
     }

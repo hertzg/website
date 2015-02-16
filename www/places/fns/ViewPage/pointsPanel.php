@@ -4,7 +4,7 @@ namespace ViewPage;
 
 function pointsPanel ($mysqli, $place) {
 
-    if (!$place->num_place_points) return;
+    if (!$place->num_points) return;
 
     $fnsDir = __DIR__.'/../../../fns';
 

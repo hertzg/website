@@ -27,7 +27,7 @@ function edit ($mysqli, $id, $latitude, $longitude,
         ." num_tags = $num_tags, tags_json = '$tags_json',"
         ." update_time = $update_time, update_api_key_id = $update_api_key_id,"
         ." update_api_key_name = $update_api_key_name,"
-        ." num_place_points = 0, revision = revision + 1 where id = $id";
+        ." num_points = 0, revision = revision + 1 where id = $id";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
