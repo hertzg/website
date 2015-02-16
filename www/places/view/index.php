@@ -7,16 +7,6 @@ list($place, $id, $user) = require_place($mysqli);
 $base = '../../';
 $fnsDir = '../../fns';
 
-unset(
-    $_SESSION['places/edit/errors'],
-    $_SESSION['places/edit/values'],
-    $_SESSION['places/errors'],
-    $_SESSION['places/messages'],
-    $_SESSION['places/send/errors'],
-    $_SESSION['places/send/messages'],
-    $_SESSION['places/send/values']
-);
-
 include_once "$fnsDir/ItemList/itemQuery.php";
 $itemQuery = ItemList\itemQuery($id);
 

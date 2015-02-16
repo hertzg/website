@@ -17,7 +17,7 @@ function pointsPanel ($mysqli, $place) {
     foreach ($points as $point) {
         $title = "$point->latitude $point->longitude";
         $altitude = $point->altitude;
-        if ($altitude !== null) $title .= " $place->altitude";
+        if ($altitude !== null) $title .= " $point->altitude";
         $items[] = \Page\removableItem($title, '', 'place');
     }
 

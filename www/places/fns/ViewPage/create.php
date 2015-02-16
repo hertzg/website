@@ -35,6 +35,18 @@ function create ($mysqli, $place) {
         $infoText .= "<br />Last modified $author.";
     }
 
+    unset(
+        $_SESSION['places/add-point/errors'],
+        $_SESSION['places/add-point/values'],
+        $_SESSION['places/edit/errors'],
+        $_SESSION['places/edit/values'],
+        $_SESSION['places/errors'],
+        $_SESSION['places/messages'],
+        $_SESSION['places/send/errors'],
+        $_SESSION['places/send/messages'],
+        $_SESSION['places/send/values']
+    );
+
     include_once __DIR__.'/optionsPanel.php';
     include_once __DIR__.'/pointsPanel.php';
     include_once "$fnsDir/create_new_item_button.php";

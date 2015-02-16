@@ -10,6 +10,11 @@ function optionsPanel ($place) {
     $escapedItemQuery = \ItemList\escapedItemQuery($place->id);
 
     include_once "$fnsDir/Page/imageArrowLink.php";
+    $addPointLink = \Page\imageArrowLink('Add Point',
+        "../add-point/$escapedItemQuery", 'create-place',
+        ['id' => 'add-point']);
+
+    include_once "$fnsDir/Page/imageArrowLink.php";
     $editLink = \Page\imageArrowLink('Edit',
         "../edit/$escapedItemQuery", 'edit-place', ['id' => 'edit']);
 
@@ -32,9 +37,11 @@ function optionsPanel ($place) {
     include_once "$fnsDir/Page/staticTwoColumns.php";
     include_once "$fnsDir/Page/twoColumns.php";
     $content =
-        \Page\staticTwoColumns($editLink, $sendLink)
+        \Page\staticTwoColumns($addPointLink, $editLink)
         .'<div class="hr"></div>'
-        .\Page\twoColumns($sendViaSmsLink, $deleteLink);
+        .\Page\twoColumns($sendLink, $sendViaSmsLink)
+        .'<div class="hr"></div>'
+        .$deleteLink;
 
     include_once "$fnsDir/create_panel.php";
     return create_panel('Place Options', $content);
