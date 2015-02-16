@@ -2,7 +2,7 @@
 
 namespace ViewPage;
 
-function create ($place) {
+function create ($mysqli, $place) {
 
     $id = $place->id;
     $fnsDir = __DIR__.'/../../../fns';
@@ -36,6 +36,7 @@ function create ($place) {
     }
 
     include_once __DIR__.'/optionsPanel.php';
+    include_once __DIR__.'/pointsPanel.php';
     include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/ItemList/listHref.php";
     include_once "$fnsDir/Page/infoText.php";
@@ -55,6 +56,7 @@ function create ($place) {
             .\Page\infoText($infoText),
             create_new_item_button('Place', '../')
         )
+        .pointsPanel($mysqli, $place)
         .optionsPanel($place);
 
 }
