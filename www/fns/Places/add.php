@@ -24,11 +24,11 @@ function add ($mysqli, $id_users, $latitude, $longitude,
 
     $sql = 'insert into places'
         .' (id_users, latitude, longitude, altitude, name,'
-        .' tags, num_tags, tags_json, num_place_points, insert_time,'
-        .' update_time, insert_api_key_id, insert_api_key_name)'
+        .' tags, num_tags, tags_json, insert_time, update_time,'
+        .' insert_api_key_id, insert_api_key_name)'
         ." values ($id_users, $latitude, $longitude, $altitude, '$name',"
-        ." '$tags', $num_tags, '$tags_json', 1, $insert_time,"
-        ." $update_time, $insert_api_key_id, $insert_api_key_name)";
+        ." '$tags', $num_tags, '$tags_json', $insert_time, $update_time,"
+        ." $insert_api_key_id, $insert_api_key_name)";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
