@@ -13,12 +13,23 @@ function pointsPanel ($mysqli, $place) {
 
     $items = [];
 
+    include_once "$fnsDir/ItemList/escapedItemQuery.php";
     include_once "$fnsDir/Page/removableItem.php";
     foreach ($points as $point) {
+
+        $escapedItemQuery = \ItemList\escapedItemQuery($point->id);
+        $delete_url = "../delete-point/submit.php$escapedItemQuery";
+        $href = "../delete-point/$escapedItemQuery";
+
         $title = "$point->latitude $point->longitude";
         $altitude = $point->altitude;
         if ($altitude !== null) $title .= " $point->altitude";
-        $items[] = \Page\removableItem($title, '', 'place');
+
+        $items[] =
+            "<div class=\"deleteLinkWrapper\" data-delete_url=\"$delete_url\">"
+                .\Page\removableItem($title, $href, 'place')
+            .'</div>';
+
     }
 
     include_once "$fnsDir/create_panel.php";
