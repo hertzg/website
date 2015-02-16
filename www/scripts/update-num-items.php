@@ -136,5 +136,15 @@ foreach ($wallets as $wallet) {
     Wallets\editNumbers($mysqli, $id, $num_transactions);
 }
 
+include_once '../fns/PlacePoints/countOnPlace.php';
+include_once '../fns/Places/editNumbers.php';
+
+$places = mysqli_query_object($mysqli, 'select * from places');
+foreach ($places as $place) {
+    $id = $place->id;
+    $num_transactions = PlacePoints\countOnPlace($mysqli, $id);
+    Places\editNumbers($mysqli, $id, $num_transactions);
+}
+
 $elapsedSeconds = number_format(microtime(true) - $microtime, 3);
 echo "Done in $elapsedSeconds seconds.\n";
