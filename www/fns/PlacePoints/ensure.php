@@ -24,5 +24,8 @@ function ensure ($mysqli) {
         ],
         'latitude' => ['type' => 'double'],
         'longitude' => ['type' => 'double'],
+        'update_time' => [
+            'type' => 'bigint(20) unsigned',
+        ],
     ]);
 }

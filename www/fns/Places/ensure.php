@@ -40,6 +40,9 @@ function ensure ($mysqli) {
             'characterSet' => 'utf8',
             'collation' => 'utf8_unicode_ci',
         ],
+        'num_place_points' => [
+            'type' => 'tinyint(3) unsigned',
+        ],
         'num_tags' => [
             'type' => 'tinyint(3) unsigned',
         ],
