@@ -67,6 +67,9 @@ function ensureAll ($mysqli) {
     include_once "$fnsDir/Places/ensure.php";
     $output .= \Places\ensure($mysqli);
 
+    include_once "$fnsDir/PlacePoints/ensure.php";
+    $output .= \PlacePoints\ensure($mysqli);
+
     include_once "$fnsDir/PlaceTags/ensure.php";
     $output .= \PlaceTags\ensure($mysqli);
 
