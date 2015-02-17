@@ -9,7 +9,7 @@ function add ($mysqli, $id_users,
     $insert_time = $update_time = time();
 
     $sql = 'insert into place_points (id_users, id_places, latitude,'
-    .' longitude, altitude, insert_time, update_time)'
+        .' longitude, altitude, insert_time, update_time)'
         ." values ($id_users, $id_places, $latitude,"
         ." $longitude, $altitude, $insert_time, $update_time)";
 
