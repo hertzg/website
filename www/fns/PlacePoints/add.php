@@ -15,4 +15,6 @@ function add ($mysqli, $id_users,
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
+    return $mysqli->insert_id;
+
 }
