@@ -14,7 +14,7 @@ function require_place ($mysqli, $id_users) {
 
     if (!$place) {
         include_once __DIR__.'/../../fns/bad_request.php';
-        bad_request('NOTE_NOT_FOUND');
+        bad_request('PLACE_NOT_FOUND');
     }
 
     return $place;

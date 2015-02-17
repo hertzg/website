@@ -14,7 +14,7 @@ function require_received_place ($mysqli, $id_users) {
 
     if (!$receivedPlace) {
         include_once __DIR__.'/../../../fns/bad_request.php';
-        bad_request('RECEIVED_NOTE_NOT_FOUND');
+        bad_request('RECEIVED_PLACE_NOT_FOUND');
     }
 
     return $receivedPlace;
