@@ -1,11 +1,11 @@
 <?php
 
-namespace Users\Places;
+namespace Users\Places\Points;
 
-function addPoint ($mysqli, $place, $latitude,
+function add ($mysqli, $place, $latitude,
     $longitude, $altitude, $updateApiKey = null) {
 
-    $fnsDir = __DIR__.'/../..';
+    $fnsDir = __DIR__.'/../../..';
     $id = $place->id;
     $id_users = $place->id_users;
 

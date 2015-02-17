@@ -30,8 +30,8 @@ if ($errors) {
     redirect("./$itemQuery");
 }
 
-include_once "$fnsDir/Users/Places/addPoint.php";
-Users\Places\addPoint($mysqli, $place,
+include_once "$fnsDir/Users/Places/Points/add.php";
+Users\Places\Points\add($mysqli, $place,
     $parsed_latitude, $parsed_longitude, $parsed_altitude);
 
 $_SESSION['places/view/messages'] = ['Changes have been saved.'];
