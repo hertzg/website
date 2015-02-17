@@ -87,6 +87,10 @@ function get_full_groups () {
     include_once "$dir/place/get_subgroups.php";
     $groups['place']['subgroups'] = place\get_subgroups();
 
+    include_once "$dir/place/point/get_methods.php";
+    $methods = place\point\get_methods();
+    $groups['place']['subgroups']['point']['methods'] = $methods;
+
     include_once "$dir/place/received/get_methods.php";
     $methods = place\received\get_methods();
     $groups['place']['subgroups']['received']['methods'] = $methods;
