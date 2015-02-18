@@ -3,7 +3,7 @@
 namespace Places;
 
 function edit ($mysqli, $id, $latitude, $longitude,
-    $altitude, $name, $tags, $tag_names, $updateApiKey) {
+    $altitude, $name, $tags, $tag_names, $num_points, $updateApiKey) {
 
     if ($altitude === null) $altitude = 'null';
     $name = $mysqli->real_escape_string($name);
@@ -25,9 +25,10 @@ function edit ($mysqli, $id, $latitude, $longitude,
     $sql = "update places set latitude = $latitude, longitude = $longitude,"
         ." altitude = $altitude, name = '$name', tags = '$tags',"
         ." num_tags = $num_tags, tags_json = '$tags_json',"
-        ." update_time = $update_time, update_api_key_id = $update_api_key_id,"
+        ." update_time = $update_time, num_points = $num_points,"
+        ." update_api_key_id = $update_api_key_id,"
         ." update_api_key_name = $update_api_key_name,"
-        ." num_points = 0, revision = revision + 1 where id = $id";
+        ." revision = revision + 1 where id = $id";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
