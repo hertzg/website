@@ -31,6 +31,7 @@ include_once "$fnsDir/Form/hidden.php";
 include_once "$fnsDir/ItemList/itemHiddenInputs.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/tabs.php";
+include_once "$fnsDir/Page/warnings.php";
 $content =
     Page\tabs(
         [
@@ -41,6 +42,9 @@ $content =
         ],
         'Add Point',
         Page\sessionErrors('places/add-point/errors')
+        .Page\warnings(['Adding a point will update the latitude,'
+            .' the longitude and the altitude of the place'
+            .' to the avarage of all the points.'])
         .'<form action="submit.php" method="post">'
             .Form\textfield('latitude', 'Latitude', [
                 'value' => $values['latitude'],

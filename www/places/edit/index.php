@@ -13,6 +13,15 @@ unset($_SESSION['places/view/messages']);
 $base = '../../';
 $fnsDir = '../../fns';
 
+if ($place->num_points > 1) {
+    $warning = 'Changing the latitude, the longitude or the altitude'
+        .' will delete all the points that has been added to this place.';
+    include_once "$fnsDir/Page/warnings.php";
+    $warnings = Page\warnings([$warning]);
+} else {
+    $warnings = '';
+}
+
 include_once '../fns/create_form_items.php';
 include_once '../fns/create_geolocation_panel.php';
 include_once "$fnsDir/compressed_js_script.php";
@@ -33,6 +42,7 @@ $content =
         ],
         'Edit',
         Page\sessionErrors('places/edit/errors')
+        .$warnings
         .'<form action="submit.php" method="post">'
             .create_form_items($values)
             .'<div class="hr"></div>'
