@@ -1,0 +1,1 @@
+!function(n){var t=document.getElementById("currentDay");n.onClockUpdate(function(n){t.innerHTML=n.getDate()})}(batteryAndClock);

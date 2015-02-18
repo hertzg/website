@@ -2,7 +2,7 @@
 
 namespace HomePage;
 
-function create ($mysqli, $user, &$head) {
+function create ($mysqli, $user, &$head, &$scripts) {
 
     $fnsDir = __DIR__.'/..';
 
@@ -15,7 +15,7 @@ function create ($mysqli, $user, &$head) {
     $items[] = \SearchForm\create('../search/', $formContent);
 
     include_once __DIR__.'/getHomeItems.php';
-    $homeItems = getHomeItems($mysqli, $user);
+    $homeItems = getHomeItems($mysqli, $user, $scripts);
 
     $items = array_merge($items, $homeItems);
 

@@ -9,7 +9,7 @@ unset($_SESSION['home/messages']);
 
 include_once '../fns/HomePage/create.php';
 include_once '../lib/mysqli.php';
-$content = HomePage\create($mysqli, $user, $head);
+$content = HomePage\create($mysqli, $user, $head, $scripts);
 
 include_once '../fns/get_sign_out_timeout.php';
 $timeout = get_sign_out_timeout();
@@ -26,4 +26,7 @@ $head .=
     ."<meta http-equiv=\"Refresh\" content=\"$timeout; url=submit.php\" />";
 
 include_once '../fns/echo_page.php';
-echo_page($user, 'Sign Out?', $content, $base, ['head' => $head]);
+echo_page($user, 'Sign Out?', $content, $base, [
+    'head' => $head,
+    'scripts' => $scripts,
+]);

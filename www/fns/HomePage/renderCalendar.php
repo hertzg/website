@@ -2,11 +2,14 @@
 
 namespace HomePage;
 
-function renderCalendar ($user, $mysqli, &$items) {
+function renderCalendar ($user, $mysqli, &$items, &$scripts) {
 
     if (!$user->show_calendar) return;
 
     $fnsDir = __DIR__.'/..';
+
+    include_once "$fnsDir/compressed_js_script.php";
+    $scripts .= compressed_js_script('calendarIcon', '../');
 
     include_once __DIR__.'/checkEventCheckDay.php';
     checkEventCheckDay($mysqli, $user);
@@ -36,14 +39,14 @@ function renderCalendar ($user, $mysqli, &$items) {
         if ($tomorrow) $descriptions[] = $n_events($tomorrow).' tomorrow.';
         $description = join(' ', $descriptions);
 
-        include_once __DIR__.'/../title_and_description.php';
+        include_once "$fnsDir/title_and_description.php";
         $content = title_and_description($title, $description);
 
     } else {
         $content = $title;
     }
 
-    include_once __DIR__.'/../user_time_today.php';
+    include_once "$fnsDir/user_time_today.php";
     $user_time_today = user_time_today($user);
 
     $items['calendar'] =

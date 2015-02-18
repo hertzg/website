@@ -8,6 +8,7 @@ function get_revision ($key) {
         'css/icons/compressed.css' => 67,
         'css/index/compressed.css' => 1,
         'js/batteryAndClock/compressed.js' => 5,
+        'js/calendarIcon/compressed.js' => 1,
         'js/confirmDialog/compressed.js' => 5,
         'js/flexTextarea/compressed.js' => 1,
         'js/formCheckbox/compressed.js' => 1,
