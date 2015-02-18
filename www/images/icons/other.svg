@@ -723,24 +723,6 @@
        xlink:href="#linearGradient4225"
        gradientUnits="userSpaceOnUse"
        gradientTransform="translate(32,0)" />
-    <linearGradient
-       x1="1408"
-       y1="16"
-       x2="1410"
-       y2="21"
-       id="linearGradient3924"
-       xlink:href="#linearGradient5647-0"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(32.3375,1021.6247)" />
-    <linearGradient
-       x1="1413"
-       y1="14"
-       x2="1415"
-       y2="19"
-       id="linearGradient3926"
-       xlink:href="#linearGradient5655-7"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(32.3375,1021.6247)" />
     <radialGradient
        cx="16"
        cy="27"
@@ -2244,33 +2226,7 @@
          style="fill:url(#linearGradient4680);fill-opacity:1;stroke:url(#linearGradient9531);stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
       <g
          transform="translate(32.25,-0.09375)"
-         id="g3932">
-        <path
-           d="m 1421.7,1031.8622 7.6,-3"
-           inkscape:connector-curvature="0"
-           id="path3915"
-           style="fill:#000000;fill-opacity:1;stroke:#999999;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1, 2;stroke-dashoffset:0" />
-        <path
-           d="m 1422.7,1034.3622 7.6,-3"
-           inkscape:connector-curvature="0"
-           id="path4728"
-           style="fill:#000000;fill-opacity:1;stroke:#999999;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1, 2;stroke-dashoffset:0" />
-        <path
-           d="m 1423.7,1036.8622 7.6,-3"
-           inkscape:connector-curvature="0"
-           id="path3917"
-           style="fill:#000000;fill-opacity:1;stroke:#999999;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1, 2;stroke-dashoffset:0" />
-        <path
-           d="m 1424.7,1039.3622 7.6,-3"
-           inkscape:connector-curvature="0"
-           id="path3930"
-           style="fill:#000000;fill-opacity:1;stroke:#999999;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1, 2;stroke-dashoffset:0" />
-      </g>
-      <path
-         d="m 1448.2375,1037.9247 -0.6,-1.5 c 0.95,-0.625 1.3646,-1.9391 1.2,-2.8 l 2,-0.8 3.2,8 -2,0.8 -1.8,-4.5 -2,0.8"
-         inkscape:connector-curvature="0"
-         id="path3932"
-         style="fill:url(#linearGradient3924);fill-opacity:1;stroke:url(#linearGradient3926);stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+         id="g3932" />
       <path
          d="m 1445.3594,1031.6278 -1.3456,-3.4054 2.4428,-1.0286 1.3603,3.3968 z"
          inkscape:connector-curvature="0"
