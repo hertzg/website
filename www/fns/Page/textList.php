@@ -2,7 +2,7 @@
 
 namespace Page;
 
-function textList (array $texts, $class) {
+function textList ($texts, $class) {
     $html =
         "<div class=\"textList $class\">"
             .'<ul>';

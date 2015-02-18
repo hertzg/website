@@ -2,7 +2,7 @@
 
 namespace Page;
 
-function errors (array $texts) {
+function errors ($texts) {
     include_once __DIR__.'/textList.php';
     return textList($texts, 'errors');
 }
