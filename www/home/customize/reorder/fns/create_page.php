@@ -14,8 +14,21 @@ function create_page ($user, $base = '') {
     $items = [];
     foreach ($userHomeItems as $key => $item) {
         list($title, $icon) = $item;
-        $items[] = Page\imageArrowLink($title,
-            "{$base}move/?key=$key", $icon, ['id' => $key]);
+        $href = "{$base}move/?key=$key";
+        if ($key === 'calendar') {
+            include_once "$fnsDir/create_calendar_icon.php";
+            $items[] =
+                "<a href=\"$href\""
+                ." class=\"clickable link image_link withArrow\">"
+                    .'<div class="image_link-icon">'
+                        .create_calendar_icon($user)
+                    .'</div>'
+                    .'<div class="image_link-content">Calendar</div>'
+                .'</a>';
+        } else {
+            $items[] = Page\imageArrowLink($title,
+                $href, $icon, ['id' => $key]);
+        }
     }
 
     include_once __DIR__.'/create_options_panel.php';

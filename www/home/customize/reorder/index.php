@@ -18,5 +18,6 @@ $content =
 include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";
 echo_page($user, 'Reorder Items', $content, $base, [
-    'head' => compressed_css_link('confirmDialog', $base),
+    'head' => compressed_css_link('confirmDialog', $base)
+        .compressed_css_link('calendarIcon', $base),
 ]);
