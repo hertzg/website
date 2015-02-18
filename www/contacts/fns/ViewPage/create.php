@@ -2,7 +2,7 @@
 
 namespace ViewPage;
 
-function create ($contact, $base = '') {
+function create ($contact, &$head, $base = '') {
 
     $id = $contact->id;
     $fnsDir = __DIR__.'/../../../fns';
@@ -48,7 +48,7 @@ function create ($contact, $base = '') {
     render_phone_number('Phone 2', $contact->phone2, $items, $keyword);
 
     include_once __DIR__.'/../../fns/render_birthday.php';
-    render_birthday($contact->birthday_time, $items, $base);
+    render_birthday($contact->birthday_time, $items, $head, $base);
 
     $username = $contact->username;
     if ($username !== '') {
