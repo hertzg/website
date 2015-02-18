@@ -8,7 +8,7 @@ function create_content ($mysqli, $user,
     $queryString = "?$yearParam&amp;month=$monthSelected&amp;day=$daySelected";
 
     include_once __DIR__.'/create_calendar.php';
-    include_once "$fnsDir/create_calendar_icon.php";
+    include_once "$fnsDir/create_calendar_icon_today.php";
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Page/imageArrowLink.php";
     include_once "$fnsDir/Page/newItemButton.php";
@@ -40,7 +40,7 @@ function create_content ($mysqli, $user,
             .'<div class="hr"></div>'
             .'<a href="./" class="clickable link image_link">'
                 .'<div class="image_link-icon">'
-                    .create_calendar_icon($user)
+                    .create_calendar_icon_today($user)
                 .'</div>'
                 .'<div class="image_link-content">Go to Today</div>'
             .'</a>'

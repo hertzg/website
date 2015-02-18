@@ -1,11 +1,8 @@
 <?php
 
-function create_calendar_icon ($user) {
-    include_once __DIR__.'/user_time_today.php';
+function create_calendar_icon ($day) {
     return
         '<div class="icon calendar">'
-            .'<span class="calendarIcon-day">'
-                .date('j', user_time_today($user))
-            .'</span>'
+            ."<span class=\"calendarIcon-day\">$day</span>"
         .'</div>';
 }

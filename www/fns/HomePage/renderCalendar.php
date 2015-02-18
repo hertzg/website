@@ -46,13 +46,13 @@ function renderCalendar ($user, $mysqli, &$items, &$scripts) {
         $content = $title;
     }
 
-    include_once "$fnsDir/create_calendar_icon.php";
+    include_once "$fnsDir/create_calendar_icon_today.php";
     $items['calendar'] =
         '<a name="calendar"></a>'
         .'<a href="../calendar/" id="calendar"'
         .' class="clickable link image_link withArrow">'
             .'<div class="image_link-icon">'
-                .create_calendar_icon($user)
+                .create_calendar_icon_today($user)
             .'</div>'
             ."<div class=\"image_link-content\">$content</div>"
         .'</a>';
