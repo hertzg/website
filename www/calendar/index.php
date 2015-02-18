@@ -1,7 +1,9 @@
 <?php
 
+$base = '../';
+
 include_once __DIR__.'/../fns/require_user.php';
-$user = require_user('../');
+$user = require_user($base);
 $id_users = $user->id_users;
 
 include_once 'fns/unset_session_vars.php';
@@ -53,13 +55,17 @@ if ($user->num_events) {
 }
 
 include_once 'fns/create_content.php';
-$content = create_content($mysqli, $id_users,
+$content = create_content($mysqli, $user,
     $timeSelected, $monthSelected, $daySelected, $eventItems);
 
+include_once '../fns/compressed_css_link.php';
+include_once '../fns/compressed_js_script.php';
 include_once '../fns/echo_page.php';
-echo_page($user, 'Calendar', $content, '../', [
+echo_page($user, 'Calendar', $content, $base, [
     'head' =>
         '<link rel="stylesheet" type="text/css" href="index.css?10" />'
         .'<link rel="stylesheet" type="text/css"'
         ." href=\"themes/$user->theme/index.css?2\" />"
+        .compressed_css_link('calendarIcon', $base),
+    'scripts' => compressed_js_script('calendarIcon', $base),
 ]);
