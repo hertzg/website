@@ -2,7 +2,7 @@
 
 namespace ViewPage;
 
-function create ($deletedItem, $user, &$title, &$head) {
+function create ($deletedItem, $user, &$title, &$head, &$scripts) {
 
     $id = $deletedItem->id;
     $fnsDir = __DIR__.'/../../../fns';
@@ -21,7 +21,6 @@ function create ($deletedItem, $user, &$title, &$head) {
     $infoText = "$typeName deleted $author.";
 
     $head = '';
-    $scripts = '';
 
     if ($type == 'bookmark' || $type == 'receivedBookmark') {
         include_once __DIR__.'/renderBookmark.php';
@@ -76,18 +75,16 @@ function create ($deletedItem, $user, &$title, &$head) {
     include_once __DIR__.'/optionsPanel.php';
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/tabs.php";
-    return
-        \Page\tabs(
+    return \Page\tabs(
+        [
             [
-                [
-                    'title' => 'Trash',
-                    'href' => "../#$id",
-                ],
+                'title' => 'Trash',
+                'href' => "../#$id",
             ],
-            $title,
-            $content.\Page\infoText($infoText)
-            .optionsPanel($typeName, $id)
-        )
-        .$scripts;
+        ],
+        $title,
+        $content.\Page\infoText($infoText)
+        .optionsPanel($typeName, $id)
+    );
 
 }

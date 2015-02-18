@@ -24,13 +24,13 @@ $content =
     .'<script type="text/javascript" defer="defer"'
     .' src="../../view.js"></script>';
 
-if ($receivedContact->timezone !== null) {
-    $content .= compressed_js_script('timezoneLabel', $base);
-}
+if ($receivedContact->timezone === null) $scripts = '';
+else $scripts = compressed_js_script('timezoneLabel', $base);
 
 include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";
 echo_page($user, "Received Contact #$id", $content, $base, [
     'head' => compressed_css_link('contact', $base)
         .compressed_css_link('confirmDialog', $base),
+    'scripts' => $scripts,
 ]);

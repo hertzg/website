@@ -31,9 +31,8 @@ $content =
     .'</script>'
     .'<script type="text/javascript" defer="defer" src="../view.js"></script>';
 
-if ($contact->timezone !== null) {
-    $content .= compressed_js_script('timezoneLabel', $base);
-}
+if ($contact->timezone === null) $scripts = '';
+else $scripts = compressed_js_script('timezoneLabel', $base);
 
 if ($contact->photo_id) {
     $deletePhotoHref = "../photo/delete/submit.php?id=$id";
@@ -50,4 +49,5 @@ include_once "$fnsDir/echo_page.php";
 echo_page($user, "Contact #$id", $content, $base, [
     'head' => compressed_css_link('contact', $base)
         .compressed_css_link('confirmDialog', $base),
+    'scripts' => $scripts,
 ]);

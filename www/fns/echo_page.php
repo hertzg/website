@@ -11,6 +11,9 @@ function echo_page ($user, $title, $content, $base, $options = []) {
     if (array_key_exists('head', $options)) $head = $options['head'];
     else $head = '';
 
+    if (array_key_exists('scripts', $options)) $scripts = $options['scripts'];
+    else $scripts = '';
+
     if ($user) {
         $signOutLink =
             '<div class="pageTopRightLinks">'
@@ -78,6 +81,8 @@ function echo_page ($user, $title, $content, $base, $options = []) {
         $head .= compressed_css_link('confirmDialog', $base);
 
     }
+
+    $body .= $scripts;
 
     include_once __DIR__.'/../fns/echo_html.php';
     echo_html($title, $head, $body, $theme, $base, ['head' => $head]);

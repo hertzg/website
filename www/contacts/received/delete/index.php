@@ -20,9 +20,10 @@ $content =
         .' It will be moved to Trash.', 'Yes, delete contact',
         "submit.php$escapedItemQuery", "../view/$escapedItemQuery");
 
-if ($receivedContact->timezone !== null) {
+if ($receivedContact->timezone === null) $scripts = '';
+else {
     include_once "$fnsDir/compressed_js_script.php";
-    $content .= compressed_js_script('timezoneLabel', $base);
+    $scripts = compressed_js_script('timezoneLabel', $base);
 }
 
 include_once "$fnsDir/compressed_css_link.php";
@@ -30,4 +31,5 @@ include_once "$fnsDir/echo_page.php";
 echo_page($user, "Delete Received Contact #$id?", $content, $base, [
     'head' => compressed_css_link('contact', $base)
         .compressed_css_link('confirmDialog', $base),
+    'scripts' => $scripts,
 ]);
