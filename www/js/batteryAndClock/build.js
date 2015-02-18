@@ -5,7 +5,7 @@ process.chdir(__dirname)
 var fs = require('fs'),
     uglifyJs = require('uglify-js')
 
-var files = ['battery', 'clock']
+var files = ['Battery', 'Clock', 'main']
 
 var source = '(function () {\n'
 files.forEach(function (file) {

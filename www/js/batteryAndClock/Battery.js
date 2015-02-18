@@ -1,4 +1,4 @@
-(function (base) {
+function Battery (base) {
 
     function ImageDiv (imageName) {
 
@@ -84,4 +84,4 @@
         borderElement.appendChild(ImageDiv('question'))
     }
 
-})(base)
+}

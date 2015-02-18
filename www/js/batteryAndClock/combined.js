@@ -1,5 +1,5 @@
 (function () {
-(function (base) {
+function Battery (base) {
 
     function ImageDiv (imageName) {
 
@@ -85,9 +85,9 @@
         borderElement.appendChild(ImageDiv('question'))
     }
 
-})(base)
+}
 ;
-(function (remoteTime) {
+function Clock (remoteTime) {
 
     function TextNode (text) {
         return document.createTextNode(text)
@@ -105,6 +105,9 @@
             hourNode.nodeValue = pad(date.getUTCHours())
             minuteNode.nodeValue = pad(date.getUTCMinutes())
             secondNode.nodeValue = pad(date.getUTCSeconds())
+            updateListeners.forEach(function (listener) {
+                listener(date)
+            })
             setTimeout(update, Math.max(0, time + 1000 - Date.now()))
         })
 
@@ -144,7 +147,21 @@
 
     update()
 
-})(time)
+    var updateListeners = []
+
+    return {
+        onUpdate: function (listener) {
+            updateListeners.push(listener)
+        },
+    }
+
+}
+;
+(function (base, time) {
+    Battery(base)
+    var clock = Clock(time)
+    window.batteryAndClock = { onClockUpdate: clock.onUpdate}
+})(base, time)
 ;
 
 })()
