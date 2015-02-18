@@ -17,7 +17,7 @@ else {
     if ($deadline_time === null) {
         $deadline_day = $deadline_month = $deadline_year = 0;
     } else {
-        $deadline_day = date('d', $deadline_time);
+        $deadline_day = date('j', $deadline_time);
         $deadline_month = date('n', $deadline_time);
         $deadline_year = date('Y', $deadline_time);
     }
@@ -57,7 +57,7 @@ $content =
         'Edit and Import',
         Page\sessionErrors('tasks/received/edit-and-import/errors')
         .'<form action="submit.php" method="post">'
-            .create_form_items($values)
+            .create_form_items($user, $values)
             .'<div class="hr"></div>'
             .Form\button('Import Task')
             .ItemList\Received\itemHiddenInputs($id)

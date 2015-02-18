@@ -1,15 +1,17 @@
 <?php
 
 $base = '../../';
+$fnsDir = '../../fns';
 
-include_once '../../fns/require_user.php';
+include_once "$fnsDir/require_user.php";
 $user = require_user($base);
 
-include_once '../../fns/Date/request.php';
+include_once "$fnsDir/Date/request.php";
 list($day, $month, $year) = Date\request();
 
-$maxYear = date('Y');
-$minYear = $maxYear - 100;
+include_once "$fnsDir/user_time_today.php";
+$maxYear = date('Y', user_time_today($user));
+$minYear = 1900;
 $year = max($minYear, min($maxYear, (int)$year));
 
 $monthOptions = [
@@ -36,10 +38,10 @@ unset(
 );
 
 include_once '../fns/calendar_href.php';
-include_once '../../fns/Form/button.php';
-include_once '../../fns/Form/datefield.php';
-include_once '../../fns/Page/sessionErrors.php';
-include_once '../../fns/Page/tabs.php';
+include_once "$fnsDir/Form/button.php";
+include_once "$fnsDir/Form/datefield.php";
+include_once "$fnsDir/Page/sessionErrors.php";
+include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
     [
         [
@@ -71,5 +73,5 @@ $content = Page\tabs(
     .'</form>'
 );
 
-include_once '../../fns/echo_page.php';
+include_once "$fnsDir/echo_page.php";
 echo_page($user, 'Jumo To', $content, $base);

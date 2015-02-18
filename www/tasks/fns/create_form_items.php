@@ -1,11 +1,14 @@
 <?php
 
-function create_form_items ($values) {
+function create_form_items ($user, $values) {
 
     $fnsDir = __DIR__.'/../../fns';
 
     include_once "$fnsDir/Tasks/maxLengths.php";
     $maxLengths = Tasks\maxLengths();
+
+    include_once "$fnsDir/user_time_today.php";
+    $yearToday = date('Y', user_time_today($user));
 
     include_once "$fnsDir/Form/checkbox.php";
     include_once "$fnsDir/Form/datefield.php";
@@ -28,8 +31,8 @@ function create_form_items ($values) {
         ], [
             'name' => 'deadline_year',
             'value' => $values['deadline_year'],
-            'min' => date('Y'),
-            'max' => date('Y') + 2,
+            'min' => $yearToday,
+            'max' => $yearToday + 2,
         ], 'Deadline', false, true)
         .'<div class="hr"></div>'
         .Form\textfield('tags', 'Tags', [

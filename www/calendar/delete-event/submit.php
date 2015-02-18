@@ -18,5 +18,5 @@ include_once '../../fns/redirect.php';
 redirect('../?'.http_build_query([
     'year' => date('Y', $event_time),
     'month' => date('n', $event_time),
-    'day' => date('d', $event_time),
+    'day' => date('j', $event_time),
 ]));

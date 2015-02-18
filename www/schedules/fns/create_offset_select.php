@@ -12,12 +12,8 @@ function create_offset_select ($user, $interval, $value) {
         '1' => 'Tomorrow',
     ];
 
-    for ($i = 2; $i < min($interval, 7); $i++) {
-        $options[$i] = date('l', $timeToday + 60 * 60 * 24 * $i);
-    }
-    while ($i < $interval) {
-        $options[$i] = date('j M, l', $timeToday + 60 * 60 * 24 * $i);
-        $i++;
+    for ($i = 2; $i < $interval; $i++) {
+        $options[$i] = date('l, F j', $timeToday + 60 * 60 * 24 * $i);
     }
 
     include_once "$fnsDir/Form/notes.php";

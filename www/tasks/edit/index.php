@@ -12,7 +12,7 @@ else {
     if ($deadline_time === null) {
         $deadline_day = $deadline_month = $deadline_year = 0;
     } else {
-        $deadline_day = date('d', $deadline_time);
+        $deadline_day = date('j', $deadline_time);
         $deadline_month = date('n', $deadline_time);
         $deadline_year = date('Y', $deadline_time);
     }
@@ -31,7 +31,7 @@ else {
 unset($_SESSION['tasks/view/messages']);
 
 include_once 'fns/create_content.php';
-$content = create_content($id, $values);
+$content = create_content($user, $id, $values);
 
 include_once '../../fns/echo_page.php';
 echo_page($user, "Edit Task #$id", $content, '../../');

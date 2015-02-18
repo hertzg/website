@@ -2,8 +2,8 @@
 
 namespace Form;
 
-function datefield (array $day, array $month, array $year, $text, $required,
-    $emptyOption = false) {
+function datefield ($day, $month, $year,
+    $text, $required, $emptyOption = false) {
 
     if ($required) $requiredAttribute = ' required="required"';
     else $requiredAttribute = '';

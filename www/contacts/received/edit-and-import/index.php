@@ -15,7 +15,7 @@ if (array_key_exists($key, $_SESSION)) {
     if ($birthday_time === null) {
         $birthday_day = $birthday_month = $birthday_year = 0;
     } else {
-        $birthday_day = date('d', $birthday_time);
+        $birthday_day = date('j', $birthday_time);
         $birthday_month = date('n', $birthday_time);
         $birthday_year = date('Y', $birthday_time);
     }

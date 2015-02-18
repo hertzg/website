@@ -15,9 +15,9 @@ list($year, $month, $day) = request_strings('year', 'month', 'day');
 include_once '../fns/user_time_today.php';
 $timeToday = user_time_today($user);
 
-$monthToday = (int)date('n', $timeToday);
 $yearToday = (int)date('Y', $timeToday);
-$dayToday = (int)date('d', $timeToday);
+$monthToday = (int)date('n', $timeToday);
+$dayToday = (int)date('j', $timeToday);
 
 if ($year === '') $year = $yearToday;
 else $year = (int)$year;

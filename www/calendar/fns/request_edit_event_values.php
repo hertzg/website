@@ -6,7 +6,7 @@ function request_edit_event_values ($event, $key) {
     } else {
         $event_time = $event->event_time;
         $values = [
-            'event_day' => date('d', $event_time),
+            'event_day' => date('j', $event_time),
             'event_month' => date('n', $event_time),
             'event_year' => date('Y', $event_time),
             'text' => $event->text,

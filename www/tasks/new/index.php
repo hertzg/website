@@ -1,8 +1,9 @@
 <?php
 
 $base = '../../';
+$fnsDir = '../../fns';
 
-include_once '../../fns/require_user.php';
+include_once "$fnsDir/require_user.php";
 $user = require_user($base);
 
 $key = 'tasks/new/values';
@@ -26,13 +27,13 @@ unset(
 );
 
 include_once '../fns/create_form_items.php';
-include_once '../../fns/compressed_js_script.php';
-include_once '../../fns/Form/button.php';
-include_once '../../fns/ItemList/listHref.php';
-include_once '../../fns/ItemList/pageHiddenInputs.php';
-include_once '../../fns/Page/sessionErrors.php';
-include_once '../../fns/Page/staticTwoColumns.php';
-include_once '../../fns/Page/tabs.php';
+include_once "$fnsDir/compressed_js_script.php";
+include_once "$fnsDir/Form/button.php";
+include_once "$fnsDir/ItemList/listHref.php";
+include_once "$fnsDir/ItemList/pageHiddenInputs.php";
+include_once "$fnsDir/Page/sessionErrors.php";
+include_once "$fnsDir/Page/staticTwoColumns.php";
+include_once "$fnsDir/Page/tabs.php";
 $content =
     Page\tabs(
         [
@@ -44,7 +45,7 @@ $content =
         'New',
         Page\sessionErrors('tasks/new/errors')
         .'<form action="submit.php" method="post">'
-            .create_form_items($values)
+            .create_form_items($user, $values)
             .'<div class="hr"></div>'
             .Page\staticTwoColumns(
                 Form\button('Save'),
@@ -56,5 +57,5 @@ $content =
     .compressed_js_script('flexTextarea', $base)
     .compressed_js_script('formCheckbox', $base);
 
-include_once '../../fns/echo_page.php';
+include_once "$fnsDir/echo_page.php";
 echo_page($user, 'New Task', $content, $base);

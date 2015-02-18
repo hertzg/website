@@ -1,6 +1,6 @@
 <?php
 
-function create_content ($id, $values) {
+function create_content ($user, $id, $values) {
 
     $base = '../../';
     $fnsDir = __DIR__.'/../../../fns';
@@ -25,7 +25,7 @@ function create_content ($id, $values) {
             'Edit',
             Page\sessionErrors('tasks/edit/errors')
             .'<form action="submit.php" method="post">'
-                .create_form_items($values)
+                .create_form_items($user, $values)
                 .'<div class="hr"></div>'
                 .Page\staticTwoColumns(
                     Form\button('Save Changes'),
