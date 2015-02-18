@@ -1,1 +1,1 @@
-!function(n){var t=document.getElementById("currentDay");n.onClockUpdate(function(n){t.innerHTML=n.getDate()})}(batteryAndClock);
+!function(n){var e=document.querySelector(".calendarIcon-day");n.onClockUpdate(function(n){e.innerHTML=n.getDate()})}(batteryAndClock);

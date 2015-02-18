@@ -55,7 +55,7 @@ function renderCalendar ($user, $mysqli, &$items, &$scripts) {
         .' class="clickable link image_link withArrow">'
             .'<div class="image_link-icon">'
                 .'<div class="icon calendar">'
-                    .'<span id="currentDay">'
+                    .'<span class="calendarIcon-day">'
                         .date('j', $user_time_today)
                     .'</span>'
                 .'</div>'
