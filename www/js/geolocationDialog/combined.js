@@ -181,6 +181,8 @@ function WakeLock () {
 
         var watchId = geolocation.watchPosition(function (position) {
 
+            if (position.coords.accuracy > 50) return
+
             positions.push(position)
 
             var numPositions = positions.length

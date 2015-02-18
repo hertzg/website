@@ -11,7 +11,7 @@ function get_revision ($key) {
         'js/confirmDialog/compressed.js' => 5,
         'js/flexTextarea/compressed.js' => 1,
         'js/formCheckbox/compressed.js' => 1,
-        'js/geolocationDialog/compressed.js' => 5,
+        'js/geolocationDialog/compressed.js' => 6,
         'js/imageProgress/compressed.js' => 4,
         'js/lineSizeRounding/compressed.js' => 2,
         'js/removeRecipient/compressed.js' => 1,
