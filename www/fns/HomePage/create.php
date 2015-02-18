@@ -2,7 +2,7 @@
 
 namespace HomePage;
 
-function create ($mysqli, $user) {
+function create ($mysqli, $user, &$head) {
 
     $fnsDir = __DIR__.'/..';
 
@@ -28,6 +28,8 @@ function create ($mysqli, $user) {
 
     include_once __DIR__.'/unsetSessionVars.php';
     unsetSessionVars();
+
+    $head = '<link rel="stylesheet" type="text/css" href="../home.css" />';
 
     include_once __DIR__.'/newNotifications.php';
     include_once __DIR__.'/optionsPanel.php';

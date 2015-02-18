@@ -29,9 +29,6 @@ function renderCalendar ($user, $mysqli, &$items) {
     };
 
     $title = 'Calendar';
-    $href = '../calendar/';
-    $icon = 'calendar';
-    $options = ['id' => 'calendar'];
     if ($today || $tomorrow) {
 
         $descriptions = [];
@@ -39,15 +36,28 @@ function renderCalendar ($user, $mysqli, &$items) {
         if ($tomorrow) $descriptions[] = $n_events($tomorrow).' tomorrow.';
         $description = join(' ', $descriptions);
 
-        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
-        $link = \Page\imageArrowLinkWithDescription(
-            $title, $description, $href, $icon, $options);
+        include_once __DIR__.'/../title_and_description.php';
+        $content = title_and_description($title, $description);
 
     } else {
-        include_once "$fnsDir/Page/imageArrowLink.php";
-        $link = \Page\imageArrowLink($title, $href, $icon, $options);
+        $content = $title;
     }
 
-    $items['calendar'] = $link;
+    include_once __DIR__.'/../user_time_today.php';
+    $user_time_today = user_time_today($user);
+
+    $items['calendar'] =
+        '<a name="calendar"></a>'
+        .'<a href="../calendar/" id="calendar"'
+        .' class="clickable link image_link withArrow">'
+            .'<div class="image_link-icon">'
+                .'<div class="icon calendar">'
+                    .'<span id="currentDay">'
+                        .date('j', $user_time_today)
+                    .'</span>'
+                .'</div>'
+            .'</div>'
+            ."<div class=\"image_link-content\">$content</div>"
+        .'</a>';
 
 }
