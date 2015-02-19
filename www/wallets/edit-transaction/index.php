@@ -29,8 +29,8 @@ $content = Page\tabs(
     .'<form action="submit.php" method="post">'
         .create_transaction_form_items($values)
         .'<div class="hr"></div>'
-        .\Form\button('Save Changes')
-        .\Form\hidden('id', $id)
+        .Form\button('Save Changes')
+        .Form\hidden('id', $id)
     .'</form>'
 );
 
