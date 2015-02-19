@@ -14,6 +14,7 @@ $values = request_transaction_params($errors);
 list($amount, $parsed_amount, $description) = $values;
 
 include_once "$fnsDir/redirect.php";
+include_once "$fnsDir/ItemList/itemQuery.php";
 
 if ($errors) {
     $_SESSION['wallets/all-transactions/new/errors'] = $errors;
@@ -21,7 +22,7 @@ if ($errors) {
         'amount' => $amount,
         'description' => $description,
     ];
-    redirect("./?id=$id");
+    redirect('./'.ItemList\itemQuery($id));
 }
 
 unset(
@@ -36,4 +37,4 @@ include_once "$fnsDir/Users/Wallets/Transactions/add.php";
 $id = Users\Wallets\Transactions\add($mysqli,
     $wallet, $parsed_amount, $description);
 
-redirect("../view/?id=$id");
+redirect('../view/'.ItemList\itemQuery($id));

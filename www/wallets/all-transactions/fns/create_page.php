@@ -35,11 +35,14 @@ function create_page ($mysqli, $user, $wallet, $base = '') {
         $_SESSION['wallets/view/messages']
     );
 
+    include_once "$fnsDir/ItemList/escapedItemQuery.php";
+    $escapedItemQuery = ItemList\escapedItemQuery($id);
+
     include_once "$fnsDir/Page/imageLink.php";
     $deleteLink =
         '<div id="deleteAllLink">'
             .Page\imageLink('Delete All Transactions',
-                "{$base}delete-all/?id=$id", 'trash-bin')
+                "{$base}delete-all/$escapedItemQuery", 'trash-bin')
         .'</div>';
 
     include_once "$fnsDir/create_panel.php";
@@ -57,7 +60,7 @@ function create_page ($mysqli, $user, $wallet, $base = '') {
         Page\sessionMessages('wallets/all-transactions/messages')
         .join('<div class="hr"></div>', $items)
         .create_panel('Options', $deleteLink),
-        Page\newItemButton("new/?id=$id", 'Transaction')
+        Page\newItemButton("{$base}new/$escapedItemQuery", 'Transaction')
     );
 
 }

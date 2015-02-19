@@ -12,16 +12,19 @@ $values = request_edit_transaction_values($transaction,
 
 unset($_SESSION['wallets/all-transactions/view/messages']);
 
+
 include_once '../../fns/create_transaction_form_items.php';
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/hidden.php";
+include_once "$fnsDir/ItemList/escapedItemQuery.php";
+include_once "$fnsDir/ItemList/itemHiddenInputs.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
     [
         [
             'title' => "Transaction #$id",
-            'href' => "../view/?id=$id#edit",
+            'href' => '../view/'.ItemList\escapedItemQuery($id).'#edit',
         ],
     ],
     'Edit',
@@ -30,7 +33,7 @@ $content = Page\tabs(
         .create_transaction_form_items($values)
         .'<div class="hr"></div>'
         .\Form\button('Save Changes')
-        .\Form\hidden('id', $id)
+        .ItemList\itemHiddenInputs($id)
     .'</form>'
 );
 

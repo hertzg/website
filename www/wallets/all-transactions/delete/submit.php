@@ -16,4 +16,5 @@ $message = 'The transaction has been deleted.';
 $_SESSION['wallets/all-transactions/messages'] = [$message];
 
 include_once "$fnsDir/redirect.php";
-redirect("../?id=$transaction->id_wallets");
+include_once "$fnsDir/ItemList/itemQuery.php";
+redirect('../'.ItemList\itemQuery($transaction->id_wallets));

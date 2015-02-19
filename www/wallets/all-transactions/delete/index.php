@@ -12,13 +12,17 @@ unset(
     $_SESSION['wallets/all-transactions/view/messages']
 );
 
+include_once "$fnsDir/ItemList/escapedItemQuery.php";
+$escapedItemQuery = ItemList\escapedItemQuery($id);
+
 include_once '../fns/create_view_page.php';
 include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/Page/confirmDialog.php";
 $content =
     create_view_page($transaction)
     .Page\confirmDialog('Are you sure you want to delete the transaction?',
-        'Yes, delete transaction', "submit.php?id=$id", "../view/?id=$id");
+        'Yes, delete transaction', "submit.php$escapedItemQuery",
+        "../view/$escapedItemQuery");
 
 include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";

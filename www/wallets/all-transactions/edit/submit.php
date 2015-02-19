@@ -14,6 +14,9 @@ include_once '../../fns/request_transaction_params.php';
 $values = request_transaction_params($errors);
 list($amount, $parsed_amount, $description) = $values;
 
+include_once "$fnsDir/ItemList/itemQuery.php";
+$itemQuery = ItemList\itemQuery($id);
+
 include_once "$fnsDir/redirect.php";
 
 if ($errors) {
@@ -22,7 +25,7 @@ if ($errors) {
         'amount' => $amount,
         'description' => $description,
     ];
-    redirect("./?id=$id");
+    redirect("./$itemQuery");
 }
 
 unset(
@@ -40,4 +43,4 @@ Users\Wallets\Transactions\edit($mysqli, $wallet,
 $message = 'Changes have been saved.';
 $_SESSION['wallets/all-transactions/view/messages'] = [$message];
 
-redirect("../view/?id=$id");
+redirect("../view/$itemQuery");

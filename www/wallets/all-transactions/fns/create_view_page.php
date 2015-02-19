@@ -6,14 +6,19 @@ function create_view_page ($transaction) {
     $id = $transaction->id;
     $id_wallets = $transaction->id_wallets;
 
+    include_once "$fnsDir/ItemList/escapedItemQuery.php";
+    $escapedItemQuery = ItemList\escapedItemQuery($id);
+    $walletEscapedItemQuery = ItemList\escapedItemQuery($id_wallets);
+
     include_once "$fnsDir/Page/imageArrowLink.php";
     $editLink = Page\imageArrowLink('Edit',
-        "../edit/?id=$id", 'edit-transaction', ['id' => 'edit']);
+        "../edit/$escapedItemQuery", 'edit-transaction', ['id' => 'edit']);
 
     include_once "$fnsDir/Page/imageLink.php";
     $deleteLink =
         '<div id="deleteLink">'
-            .Page\imageLink('Delete', "../delete/?id=$id", 'trash-bin')
+            .Page\imageLink('Delete',
+                "../delete/$escapedItemQuery", 'trash-bin')
         .'</div>';
 
     include_once "$fnsDir/Page/staticTwoColumns.php";
@@ -36,14 +41,14 @@ function create_view_page ($transaction) {
         [
             [
                 'title' => 'All Transactions',
-                'href' => "../?id=$id_wallets#$id",
+                'href' => "../$walletEscapedItemQuery#$id",
             ],
         ],
         "Transaction #$id",
         Page\sessionMessages('wallets/all-transactions/view/messages')
         .ViewTransactionPage\viewContent($transaction)
         .create_panel('Transaction Options', $optionsContent),
-        Page\newItemButton("../new/?id=$id_wallets", 'Transaction')
+        Page\newItemButton("../new/$walletEscapedItemQuery", 'Transaction')
     );
 
 }
