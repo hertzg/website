@@ -19,6 +19,12 @@ function getHomeItems ($mysqli, $user, &$scripts) {
     include_once __DIR__.'/renderCalendar.php';
     renderCalendar($user, $mysqli, $items, $scripts);
 
+    if ($user->show_new_event) {
+        include_once "$fnsDir/Page/imageArrowLink.php";
+        $items['new-event'] = \Page\imageArrowLink(
+            'New Event', '../calendar/new-event/', 'create-event');
+    }
+
     include_once __DIR__.'/renderContacts.php';
     renderContacts($user, $items);
 
