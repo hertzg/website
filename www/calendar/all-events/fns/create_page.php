@@ -63,7 +63,7 @@ function create_page ($mysqli, $user, $base = '') {
             Page\sessionErrors('calendar/all-events/errors')
             .Page\sessionMessages('calendar/all-events/messages')
             .join('<div class="hr"></div>', $items),
-            Page\newItemButton('new/', 'Event')
+            Page\newItemButton("{$base}new/", 'Event')
         )
         .create_panel('Options', $deleteLink);
 
