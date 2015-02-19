@@ -14,10 +14,10 @@ unset(
     $_SESSION['calendar/messages']
 );
 
-include_once '../fns/create_view_page.php';
+include_once '../fns/ViewPage/create.php';
 include_once "$fnsDir/compressed_js_script.php";
 $content =
-    create_view_page($user, $event)
+    ViewPage\create($user, $event)
     .compressed_js_script('confirmDialog', $base)
     .'<script type="text/javascript">'
         .'var deleteHref = '.json_encode("../delete-event/submit.php?id=$id")

@@ -6,15 +6,6 @@ function create_view_page ($user, $event) {
     $event_time = $event->event_time;
     $fnsDir = __DIR__.'/../../../fns';
 
-    include_once "$fnsDir/format_author.php";
-    $author = format_author($event->insert_time, $event->insert_api_key_name);
-    $infoText = "Event created $author.";
-    if ($event->revision) {
-        $api_key_name = $event->update_api_key_name;
-        $author = format_author($event->update_time, $api_key_name);
-        $infoText .= "<br />Last modified $author.";
-    }
-
     include_once "$fnsDir/Page/imageArrowLink.php";
     $editLink = Page\imageArrowLink('Edit',
         "../edit/?id=$id", 'edit-event', ['id' => 'edit']);
@@ -39,6 +30,7 @@ function create_view_page ($user, $event) {
         $queryString = '';
     }
 
+    include_once __DIR__.'/../../fns/ViewPage/viewContent.php';
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/newItemButton.php";
@@ -55,10 +47,7 @@ function create_view_page ($user, $event) {
             ],
             "Event #$id",
             Page\sessionMessages('calendar/all-events/view/messages')
-            .Page\text(htmlspecialchars($event->text))
-            .'<div class="hr"></div>'
-            .Page\text(date('F d, Y', $event_time))
-            .Page\infoText($infoText),
+            .ViewPage\viewContent($event),
             Page\newItemButton("../new/$queryString", 'Event')
         )
         .create_panel('Event Options', $optionsContent);
