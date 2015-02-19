@@ -7,10 +7,10 @@ list($transaction, $id, $user) = require_transaction($mysqli);
 $base = '../../';
 $fnsDir = '../../fns';
 
-include_once '../fns/create_view_transaction_page.php';
+include_once '../fns/ViewTransactionPage/create.php';
 include_once "$fnsDir/compressed_js_script.php";
 $content =
-    create_view_page($transaction)
+    ViewTransactionPage\create($transaction)
     .compressed_js_script('confirmDialog', $base)
     .'<script type="text/javascript">'
         ."var deleteHref = '../delete-transaction/submit.php?id=$id'"
