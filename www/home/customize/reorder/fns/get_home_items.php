@@ -5,6 +5,7 @@ function get_home_items () {
         'bookmarks' => ['Bookmarks', 'bookmarks'],
         'new-bookmark' => ['New Bookmark', 'create-bookmark'],
         'calendar' => ['Calendar', 'calendar'],
+        'new-event' => ['New Event', 'create-event'],
         'contacts' => ['Contacts', 'contacts'],
         'new-contact' => ['New Contact', 'create-contact'],
         'files' => ['Files', 'files'],

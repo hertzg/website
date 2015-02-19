@@ -9,11 +9,11 @@ include_once "$dir/fns/require_user.php";
 $user = require_user('../../../');
 
 include_once "$dir/fns/request_strings.php";
-list($bookmarks, $new_bookmark, $calendar, $contacts,
+list($bookmarks, $new_bookmark, $calendar, $new_event, $contacts,
     $new_contact, $files, $notes, $new_note, $notifications,
     $places, $new_place, $schedules, $tasks, $new_task,
     $wallets, $new_wallet, $trash) = request_strings(
-    'bookmarks', 'new_bookmark', 'calendar', 'contacts',
+    'bookmarks', 'new_bookmark', 'calendar', 'new_event', 'contacts',
     'new_contact', 'files', 'notes', 'new_note', 'notifications',
     'places', 'new_place', 'schedules', 'tasks', 'new_task',
     'wallets', 'new_wallet', 'trash');
@@ -21,6 +21,7 @@ list($bookmarks, $new_bookmark, $calendar, $contacts,
 $bookmarks = (bool)$bookmarks;
 $new_bookmark = (bool)$new_bookmark;
 $calendar = (bool)$calendar;
+$new_event = (bool)$new_event;
 $contacts = (bool)$contacts;
 $new_contact = (bool)$new_contact;
 $files = (bool)$files;
@@ -38,8 +39,8 @@ $trash = (bool)$trash;
 
 include_once "$dir/fns/Users/Home/editVisibilities.php";
 include_once "$dir/lib/mysqli.php";
-Users\Home\editVisibilities($mysqli, $user->id_users,
-    $bookmarks, $new_bookmark, $calendar, $contacts, $new_contact,
+Users\Home\editVisibilities($mysqli, $user->id_users, $bookmarks,
+    $new_bookmark, $calendar, $new_event, $contacts, $new_contact,
     $files, $notes, $new_note, $notifications, $places, $new_place,
     $schedules, $tasks, $new_task, $wallets, $new_wallet, $trash);
 

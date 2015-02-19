@@ -256,6 +256,9 @@ function ensure ($mysqli) {
         'show_new_contact' => [
             'type' => 'tinyint(3) unsigned',
         ],
+        'show_new_event' => [
+            'type' => 'tinyint(3) unsigned',
+        ],
         'show_new_note' => [
             'type' => 'tinyint(3) unsigned',
         ],
