@@ -289,6 +289,9 @@ function ensure ($mysqli) {
         'show_trash' => [
             'type' => 'tinyint(3) unsigned',
         ],
+        'show_upload_files' => [
+            'type' => 'tinyint(3) unsigned',
+        ],
         'show_wallets' => [
             'type' => 'tinyint(3) unsigned',
         ],

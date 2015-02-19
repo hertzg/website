@@ -9,6 +9,7 @@ function get_home_items () {
         'contacts' => ['Contacts', 'contacts'],
         'new-contact' => ['New Contact', 'new_contact'],
         'files' => ['Files', 'files'],
+        'upload-files' => ['Upload Files', 'upload_files'],
         'notes' => ['Notes', 'notes'],
         'new-note' => ['New Note', 'new_note'],
         'notifications' => ['Notifications', 'notifications'],

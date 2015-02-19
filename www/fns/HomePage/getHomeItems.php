@@ -37,6 +37,12 @@ function getHomeItems ($mysqli, $user, &$scripts) {
     include_once __DIR__.'/renderFiles.php';
     renderFiles($user, $items);
 
+    if ($user->show_upload_files) {
+        include_once "$fnsDir/Page/imageArrowLink.php";
+        $items['upload-files'] = \Page\imageArrowLink(
+            'Upload Files', '../files/upload-files/', 'upload');
+    }
+
     include_once __DIR__.'/renderNotes.php';
     renderNotes($user, $items);
 
