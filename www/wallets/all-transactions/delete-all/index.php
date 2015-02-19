@@ -7,6 +7,8 @@ list($wallet, $id, $user) = require_transactions($mysqli, '../');
 $base = '../../../';
 $fnsDir = '../../../fns';
 
+unset($_SESSION['wallets/all-transactions/messages']);
+
 include_once '../fns/create_page.php';
 include_once "$fnsDir/Page/confirmDialog.php";
 $content =

@@ -27,6 +27,7 @@ function create_view_page ($mysqli, $wallet) {
     $optionsContent = Page\staticTwoColumns($editLink, $deleteLink);
 
     unset(
+        $_SESSION['wallets/all-transactions/messages'],
         $_SESSION['wallets/edit/errors'],
         $_SESSION['wallets/edit/values'],
         $_SESSION['wallets/errors'],

@@ -1,10 +1,10 @@
 <?php
 
-function render_transactions ($transactions, &$items) {
+function render_transactions ($transactions, &$items, $base = '') {
 
-    $fnsDir = __DIR__.'/../../fns';
+    $fnsDir = __DIR__.'/../../../fns';
 
-    include_once __DIR__.'/amount_html.php';
+    include_once __DIR__.'/../../fns/amount_html.php';
     include_once "$fnsDir/date_ago.php";
     include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
     foreach ($transactions as $transaction) {
@@ -20,7 +20,7 @@ function render_transactions ($transactions, &$items) {
         $title = amount_html($transaction->amount);
 
         $items[] = Page\imageArrowLinkWithDescription($title, $itemDescription,
-            "../view-transaction/?id=$id", 'transaction', ['id' => $id]);
+            "{$base}view/?id=$id", 'transaction', ['id' => $id]);
 
     }
 

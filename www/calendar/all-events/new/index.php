@@ -26,7 +26,7 @@ $content = Page\tabs(
             'href' => '..',
         ],
     ],
-    'New Event',
+    'New',
     Page\sessionErrors('calendar/all-events/new/errors')
     .'<form action="submit.php" method="post">'
         .create_form_items($values['text'], $values['event_day'],

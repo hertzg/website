@@ -30,10 +30,10 @@ unset(
 );
 
 $message = 'The transaction has been saved.';
-$_SESSION['wallets/view-transaction/messages'] = [$message];
+$_SESSION['wallets/all-transactions/view/messages'] = [$message];
 
 include_once "$fnsDir/Users/Wallets/Transactions/add.php";
 $id = Users\Wallets\Transactions\add($mysqli,
     $wallet, $parsed_amount, $description);
 
-redirect("../../view-transaction/?id=$id");
+redirect("../view/?id=$id");

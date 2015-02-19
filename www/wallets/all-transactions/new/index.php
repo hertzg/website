@@ -4,7 +4,7 @@ include_once '../../fns/require_wallet.php';
 include_once '../../../lib/mysqli.php';
 list($wallet, $id, $user) = require_wallet($mysqli, '../');
 
-unset($_SESSION['wallets/view/messages']);
+unset($_SESSION['wallets/all-transactions/messages']);
 
 include_once '../../fns/request_new_transaction_values.php';
 $values = request_new_transaction_values('wallets/all-transactions/new/values');
@@ -24,7 +24,7 @@ $content = Page\tabs(
             'href' => "../?id=$id",
         ]
     ],
-    'New Transaction',
+    'New',
     Page\sessionErrors('wallets/all-transactions/new/errors')
     .'<form action="submit.php" method="post">'
         .create_transaction_form_items($values)

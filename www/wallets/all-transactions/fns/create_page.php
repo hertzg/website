@@ -22,7 +22,7 @@ function create_page ($mysqli, $user, $wallet, $base = '') {
     include_once __DIR__.'/render_prev_button.php';
     render_prev_button($offset, $limit, $total, $items, $params);
 
-    include_once __DIR__.'/../../fns/render_transactions.php';
+    include_once __DIR__.'/render_transactions.php';
     render_transactions($transactions, $items, $base);
 
     include_once __DIR__.'/render_next_button.php';
@@ -31,6 +31,7 @@ function create_page ($mysqli, $user, $wallet, $base = '') {
     unset(
         $_SESSION['wallets/all-transactions/new/errors'],
         $_SESSION['wallets/all-transactions/new/values'],
+        $_SESSION['wallets/all-transactions/view/messages'],
         $_SESSION['wallets/view/messages']
     );
 
@@ -43,6 +44,7 @@ function create_page ($mysqli, $user, $wallet, $base = '') {
 
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Page/newItemButton.php";
+    include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
     return Page\tabs(
         [
@@ -52,7 +54,8 @@ function create_page ($mysqli, $user, $wallet, $base = '') {
             ],
         ],
         'All Transactions',
-        join('<div class="hr"></div>', $items)
+        Page\sessionMessages('wallets/all-transactions/messages')
+        .join('<div class="hr"></div>', $items)
         .create_panel('Options', $deleteLink),
         Page\newItemButton("new/?id=$id", 'Transaction')
     );
