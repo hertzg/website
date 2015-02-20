@@ -5,8 +5,8 @@ function create_geolocation_panel ($base,
 
     $fnsDir = __DIR__.'/../../fns';
 
-    include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
-    $content = Page\imageArrowLinkWithDescription('Use Geolocation',
+    include_once "$fnsDir/Page/imageLinkWithDescription.php";
+    $content = Page\imageLinkWithDescription('Use Geolocation',
         'Use GPS to detect the current location.', '',
         'locate', ['id' => 'geolocationLink']);
 
