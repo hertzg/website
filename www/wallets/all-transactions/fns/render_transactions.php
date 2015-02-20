@@ -4,7 +4,7 @@ function render_transactions ($transactions, &$items, $base = '') {
 
     $fnsDir = __DIR__.'/../../../fns';
 
-    include_once __DIR__.'/../../fns/amount_html.php';
+    include_once "$fnsDir/amount_html.php";
     include_once "$fnsDir/date_ago.php";
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
     include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";

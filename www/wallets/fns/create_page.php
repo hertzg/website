@@ -17,7 +17,7 @@ function create_page ($mysqli, $user, $base = '') {
         include_once "$fnsDir/Wallets/indexOnUser.php";
         $wallets = Wallets\indexOnUser($mysqli, $user->id_users);
 
-        include_once __DIR__.'/amount_html.php';
+        include_once "$fnsDir/amount_html.php";
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         foreach ($wallets as $wallet) {
             $id = $wallet->id;

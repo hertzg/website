@@ -16,7 +16,7 @@ function viewContent ($transaction) {
         $infoText .= "<br />Last modified $author.";
     }
 
-    include_once __DIR__.'/../amount_html.php';
+    include_once "$fnsDir/amount_html.php";
     include_once "$fnsDir/Form/label.php";
     $content = \Form\label('Amount', amount_html($transaction->amount));
 
