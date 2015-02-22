@@ -8,7 +8,7 @@ function Battery (base) {
         var style = div.style
         style.width = '9px'
         style.height = '11px'
-        style.backgroundRepeat = 'none'
+        style.backgroundRepeat = 'no-repeat'
         style.backgroundImage = 'url(' + base + 'images/' + imageName + '.svg)'
         style.position = 'absolute'
         style.top = '-1px'
