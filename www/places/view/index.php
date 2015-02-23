@@ -20,12 +20,6 @@ $content =
     .'</script>'
     .'<script type="text/javascript" defer="defer" src="../view.js"></script>';
 
-if ($place->num_points) {
-    $content .=
-        '<script type="text/javascript" defer="defer" src="../places.js">'
-        .'</script>';
-}
-
 include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";
 echo_page($user, "Place #$id", $content, $base, [
