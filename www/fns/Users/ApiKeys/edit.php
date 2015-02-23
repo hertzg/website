@@ -56,6 +56,9 @@ function edit ($mysqli, $apiKey, $name, $expire_time, $can_read_bookmarks,
     include_once "$fnsDir/Places/editApiKey.php";
     \Places\editApiKey($mysqli, $id, $name);
 
+    include_once "$fnsDir/PlacePoints/editApiKey.php";
+    \PlacePoints\editApiKey($mysqli, $id, $name);
+
     include_once "$fnsDir/Schedules/editApiKey.php";
     \Schedules\editApiKey($mysqli, $id, $name);
 
