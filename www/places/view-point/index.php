@@ -18,7 +18,7 @@ $content =
     .'<script type="text/javascript">'
         .'var deleteHref = '.json_encode("../delete-point/submit.php$itemQuery")
     .'</script>'
-    .'<script type="text/javascript" defer="defer" src="../view-place.js">'
+    .'<script type="text/javascript" defer="defer" src="index.js">'
     .'</script>';
 
 include_once "$fnsDir/echo_page.php";
