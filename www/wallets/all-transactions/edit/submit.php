@@ -6,9 +6,9 @@ $fnsDir = '../../../fns';
 include_once "$fnsDir/require_same_domain_referer.php";
 require_same_domain_referer('../..');
 
-include_once '../fns/require_transaction.php';
+include_once '../../fns/require_transaction.php';
 include_once '../../../lib/mysqli.php';
-list($transaction, $id, $user) = require_transaction($mysqli);
+list($transaction, $id, $user) = require_transaction($mysqli, '../');
 
 include_once '../../fns/request_transaction_params.php';
 $values = request_transaction_params($errors);

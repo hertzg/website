@@ -1,8 +1,8 @@
 <?php
 
-include_once '../fns/require_transaction.php';
+include_once '../../fns/require_transaction.php';
 include_once '../../../lib/mysqli.php';
-list($transaction, $id, $user) = require_transaction($mysqli);
+list($transaction, $id, $user) = require_transaction($mysqli, '../');
 
 $fnsDir = '../../../fns';
 
