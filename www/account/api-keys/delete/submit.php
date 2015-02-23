@@ -1,17 +1,19 @@
 <?php
 
-include_once '../../../fns/require_same_domain_referer.php';
+$fnsDir = '../../../fns';
+
+include_once "$fnsDir/require_same_domain_referer.php";
 require_same_domain_referer('..');
 
 include_once '../fns/require_api_key.php';
 include_once '../../../lib/mysqli.php';
 list($apiKey, $id, $user) = require_api_key($mysqli);
 
-include_once '../../../fns/Users/ApiKeys/delete.php';
+include_once "$fnsDir/Users/ApiKeys/delete.php";
 Users\ApiKeys\delete($mysqli, $apiKey);
 
 $_SESSION['account/api-keys/messages'] = ['The key has been deleted.'];
 unset($_SESSION['account/api-keys/errors']);
 
-include_once '../../../fns/redirect.php';
+include_once "$fnsDir/redirect.php";
 redirect('..');
