@@ -12,8 +12,8 @@ function add ($mysqli, $id_users, $name, $insertApiKey) {
 
         $insert_api_key_id = $insertApiKey->id;
 
-        $name = $insertApiKey->name;
-        $insert_api_key_name = "'".$mysqli->real_escape_string($name)."'";
+        $escaped_name = $mysqli->real_escape_string($insertApiKey->name);
+        $insert_api_key_name = "'$escaped_name'";
 
     }
 

@@ -12,8 +12,8 @@ function edit ($mysqli, $id, $name, $updateApiKey) {
 
         $update_api_key_id = $updateApiKey->id;
 
-        $name = $updateApiKey->name;
-        $update_api_key_name = "'".$mysqli->real_escape_string($name)."'";
+        $escaped_name = $mysqli->real_escape_string($updateApiKey->name);
+        $update_api_key_name = "'$escaped_name'";
 
     }
 
