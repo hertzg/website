@@ -67,8 +67,8 @@ foreach ($rows as $row) {
     $schedule = mysqli_single_object($mysqli, $sql);
     if ($schedule) {
         include_once '../fns/ScheduleTags/editSchedule.php';
-        ScheduleTags\editSchedule($mysqli, $schedule->id, $schedule->text,
-            $schedule->interval, $schedule->offset, $schedule->tags,
+        ScheduleTags\editSchedule($mysqli, $schedule->id,
+            $schedule->text, $schedule->interval, $schedule->offset,
             $schedule->insert_time, $schedule->update_time);
     }
 }
