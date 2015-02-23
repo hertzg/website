@@ -8,9 +8,9 @@ function edit ($mysqli, $place, $latitude, $longitude, $altitude,
     $id = $place->id;
     $fnsDir = __DIR__.'/../..';
 
-    if ($latitude !== (float)$place->latitude ||
-        $longitude !== (float)$place->longitude ||
-        $altitude !== (float)$place->altitude) {
+    if ((string)$latitude !== $place->latitude ||
+        (string)$longitude !== $place->longitude ||
+        (string)$altitude !== $place->altitude) {
 
         include_once "$fnsDir/PlacePoints/deleteOnPlace.php";
         \PlacePoints\deleteOnPlace($mysqli, $id);
