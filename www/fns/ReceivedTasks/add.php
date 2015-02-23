@@ -17,8 +17,8 @@ function add ($mysqli, $sender_id_users, $sender_username,
         .' (sender_id_users, sender_username,'
         .' receiver_id_users, text, title, deadline_time,'
         .' tags, top_priority, insert_time)'
-        ." values ($sender_id_users, '$sender_username'"
-        .", $receiver_id_users, '$text', '$title', $deadline_time,"
+        ." values ($sender_id_users, '$sender_username',"
+        ." $receiver_id_users, '$text', '$title', $deadline_time,"
         ." '$tags', $top_priority, $insert_time)";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 

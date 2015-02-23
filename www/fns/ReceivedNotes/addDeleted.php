@@ -17,8 +17,8 @@ function addDeleted ($mysqli, $id, $sender_id_users,
         .' (id, sender_id_users, sender_username,'
         .' receiver_id_users, text, title, tags,'
         .' encrypt, archived, insert_time)'
-        ." values ($id, $sender_id_users, '$sender_username'"
-        .", $receiver_id_users, '$text', '$title', '$tags',"
+        ." values ($id, $sender_id_users, '$sender_username',"
+        ." $receiver_id_users, '$text', '$title', '$tags',"
         ." $encrypt, $archived, $insert_time)";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
