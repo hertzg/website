@@ -1,6 +1,8 @@
 <?php
 
-include_once '../../../../fns/require_same_domain_referer.php';
+$fnsDir = '../../../../fns';
+
+include_once "$fnsDir/require_same_domain_referer.php";
 require_same_domain_referer('../../..');
 
 include_once 'fns/require_recipient.php';
@@ -18,5 +20,5 @@ $_SESSION['files/rename-file/send/messages'] = [
     'The recipient has been removed.',
 ];
 
-include_once '../../../../fns/redirect.php';
+include_once "$fnsDir/redirect.php";
 redirect("../?id=$id");
