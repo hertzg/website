@@ -17,7 +17,7 @@ function edit ($mysqli, $place, $latitude, $longitude,
 
         include_once "$fnsDir/PlacePoints/add.php";
         \PlacePoints\add($mysqli, $place->id_users,
-            $id, $latitude, $longitude, $altitude);
+            $id, $latitude, $longitude, $altitude, $updateApiKey);
 
         $num_points = 1;
 

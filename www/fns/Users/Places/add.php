@@ -12,8 +12,8 @@ function add ($mysqli, $id_users, $latitude, $longitude,
         $altitude, $name, $tags, $tag_names, $insertApiKey);
 
     include_once "$fnsDir/PlacePoints/add.php";
-    \PlacePoints\add($mysqli, $id_users,
-        $id, $latitude, $longitude, $altitude);
+    \PlacePoints\add($mysqli, $id_users, $id,
+        $latitude, $longitude, $altitude, $insertApiKey);
 
     if ($tag_names) {
         include_once "$fnsDir/PlaceTags/add.php";
