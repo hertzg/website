@@ -1,8 +1,9 @@
 <?php
 
 $base = '../../';
+$fnsDir = '../../fns';
 
-include_once '../../fns/require_user.php';
+include_once "$fnsDir/require_user.php";
 $user = require_user($base);
 
 $key = 'account/change-password/values';
@@ -17,11 +18,11 @@ else {
 
 unset($_SESSION['account/messages']);
 
-include_once '../../fns/Form/button.php';
-include_once '../../fns/Form/notes.php';
-include_once '../../fns/Form/password.php';
-include_once '../../fns/Page/sessionErrors.php';
-include_once '../../fns/Page/tabs.php';
+include_once "$fnsDir/Form/button.php";
+include_once "$fnsDir/Form/notes.php";
+include_once "$fnsDir/Form/password.php";
+include_once "$fnsDir/Page/sessionErrors.php";
+include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
     [
         [
@@ -53,5 +54,5 @@ $content = Page\tabs(
     .'</form>'
 );
 
-include_once '../../fns/echo_page.php';
+include_once "$fnsDir/echo_page.php";
 echo_page($user, 'Change Password', $content, $base);
