@@ -23,7 +23,6 @@ $calendar_href = calendar_href($event_day, $event_month, $event_year);
 
 include_once '../fns/create_form_items.php';
 include_once "$fnsDir/Form/button.php";
-include_once "$fnsDir/Form/hidden.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
