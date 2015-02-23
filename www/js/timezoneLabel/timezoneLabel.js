@@ -30,7 +30,11 @@
 
         items.push({
             init: function () {
-                while (element.firstChild) element.removeChild(element.firstChild)
+
+                while (element.firstChild) {
+                    element.removeChild(element.firstChild)
+                }
+
                 element.appendChild(hourNode)
                 element.appendChild(TextNode(':'))
                 element.appendChild(minuteNode)
@@ -40,6 +44,7 @@
                 element.appendChild(monthNode)
                 element.appendChild(TextNode(' '))
                 element.appendChild(dayNode)
+
             },
             update: function (date) {
                 date = new Date(date.getTime() - timezoneDiff)

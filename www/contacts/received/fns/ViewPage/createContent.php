@@ -14,7 +14,8 @@ function createContent ($receivedContact, $infoText, $items) {
     $contactContent = join('<div class="hr"></div>', $items);
 
     include_once "$fnsDir/create_contact_panel.php";
-    $contactPanel = create_contact_panel($photoSrc, $contactContent, '../../../');
+    $contactPanel = create_contact_panel(
+        $photoSrc, $contactContent, '../../../');
 
     include_once __DIR__.'/optionsPanel.php';
     include_once "$fnsDir/create_panel.php";
