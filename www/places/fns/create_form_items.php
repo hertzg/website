@@ -8,6 +8,7 @@ function create_form_items ($values) {
     $maxLengths = Places\maxLengths();
 
     include_once "$fnsDir/Form/checkbox.php";
+    include_once "$fnsDir/Form/textarea.php";
     include_once "$fnsDir/Form/textfield.php";
     return
         Form\textfield('latitude', 'Latitude', [
@@ -28,6 +29,11 @@ function create_form_items ($values) {
         .Form\textfield('name', 'Name', [
             'value' => $values['name'],
             'maxlength' => $maxLengths['name'],
+        ])
+        .'<div class="hr"></div>'
+        .Form\textarea('description', 'Description', [
+            'value' => $values['description'],
+            'maxlength' => $maxLengths['description'],
         ])
         .'<div class="hr"></div>'
         .Form\textfield('tags', 'Tags', [

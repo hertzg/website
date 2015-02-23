@@ -12,8 +12,8 @@ list($receivedPlace, $id, $user) = require_received_place($mysqli, '../');
 $errors = [];
 
 include_once '../../fns/request_place_params.php';
-list($latitude, $longitude, $altitude, $name, $tags,
-    $tag_names, $parsed_latitude, $parsed_longitude,
+list($latitude, $longitude, $altitude, $name, $description,
+    $tags, $tag_names, $parsed_latitude, $parsed_longitude,
     $parsed_altitude) = request_place_params($errors);
 
 include_once "$fnsDir/redirect.php";
@@ -25,6 +25,7 @@ if ($errors) {
         'longitude' => $longitude,
         'altitude' => $altitude,
         'name' => $name,
+        'description' => $description,
         'tags' => $tags,
     ];
     include_once "$fnsDir/ItemList/Received/itemQuery.php";
@@ -40,6 +41,7 @@ $receivedPlace->latitude = $parsed_latitude;
 $receivedPlace->longitude = $parsed_longitude;
 $receivedPlace->altitude = $parsed_altitude;
 $receivedPlace->name = $name;
+$receivedPlace->description = $description;
 $receivedPlace->tags = $tags;
 
 include_once "$fnsDir/Users/Places/Received/import.php";

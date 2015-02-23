@@ -21,6 +21,12 @@ function create ($mysqli, $place) {
         $items[] = \Form\label('Name', htmlspecialchars($name));
     }
 
+    $description = $place->description;
+    if ($description !== '') {
+        $description = nl2br(htmlspecialchars($description));
+        $items[] = \Form\label('Description', $description);
+    }
+
     if ($place->num_tags) {
         include_once "$fnsDir/Form/tags.php";
         $items[] = \Form\tags('', json_decode($place->tags_json));

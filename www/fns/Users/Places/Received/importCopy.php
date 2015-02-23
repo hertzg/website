@@ -13,6 +13,6 @@ function importCopy ($mysqli, $receivedPlace, $insertApiKey = null) {
     return \Users\Places\add($mysqli, $receivedPlace->receiver_id_users,
         $receivedPlace->latitude, $receivedPlace->longitude,
         $receivedPlace->altitude, $receivedPlace->name,
-        $tags, $tag_names, $insertApiKey);
+        $receivedPlace->description, $tags, $tag_names, $insertApiKey);
 
 }

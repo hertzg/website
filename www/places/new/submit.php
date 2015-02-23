@@ -9,8 +9,8 @@ $user = require_user('../../');
 $errors = [];
 
 include_once '../fns/request_place_params.php';
-list($latitude, $longitude, $altitude, $name, $tags,
-    $tag_names, $parsed_latitude, $parsed_longitude,
+list($latitude, $longitude, $altitude, $name, $description,
+    $tags, $tag_names, $parsed_latitude, $parsed_longitude,
     $parsed_altitude) = request_place_params($errors);
 
 $values = [
@@ -18,6 +18,7 @@ $values = [
     'longitude' => $longitude,
     'altitude' => $altitude,
     'name' => $name,
+    'description' => $description,
     'tags' => $tags,
 ];
 
@@ -53,8 +54,9 @@ unset($_SESSION['places/new/values']);
 
 include_once '../../fns/Users/Places/add.php';
 include_once '../../lib/mysqli.php';
-$id = Users\Places\add($mysqli, $user->id_users, $parsed_latitude,
-    $parsed_longitude, $parsed_altitude, $name, $tags, $tag_names);
+$id = Users\Places\add($mysqli, $user->id_users,
+    $parsed_latitude, $parsed_longitude, $parsed_altitude,
+    $name, $description, $tags, $tag_names);
 
 $_SESSION['places/view/messages'] = ['Place has been saved.'];
 

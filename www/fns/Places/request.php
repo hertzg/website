@@ -10,6 +10,9 @@ function request () {
     list($latitude, $longitude, $altitude, $name) = request_strings(
         'latitude', 'longitude', 'altitude', 'name');
 
+    include_once "$fnsDir/request_text.php";
+    $description = request_text('description');
+
     $latitude = preg_replace('/\s+/', '', $latitude);
     $longitude = preg_replace('/\s+/', '', $longitude);
     $altitude = preg_replace('/\s+/', '', $altitude);
@@ -25,7 +28,7 @@ function request () {
     if ($altitude === '') $parsed_altitude = null;
     else $parsed_altitude = (float)$altitude;
 
-    return [$latitude, $longitude, $altitude, $name,
+    return [$latitude, $longitude, $altitude, $name, $description,
         $parsed_latitude, $parsed_longitude, $parsed_altitude];
 
 }

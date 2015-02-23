@@ -12,6 +12,11 @@ function ensure ($mysqli) {
     include_once "$fnsDir/Table/ensure.php";
     include_once "$fnsDir/Tag/maxLength.php";
     return \Table\ensure($mysqli, 'place_tags', [
+        'description' => [
+            'type' => "varchar($maxLengths[description])",
+            'characterSet' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+        ],
         'id' => [
             'type' => 'bigint(20) unsigned',
             'primary' => true,

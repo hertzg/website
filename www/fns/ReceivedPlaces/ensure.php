@@ -19,6 +19,11 @@ function ensure ($mysqli) {
         'archived' => [
             'type' => 'tinyint(3) unsigned',
         ],
+        'description' => [
+            'type' => "varchar($maxLengths[description])",
+            'characterSet' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+        ],
         'id' => [
             'type' => 'bigint(20) unsigned',
             'primary' => true,

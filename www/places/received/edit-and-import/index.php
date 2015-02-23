@@ -44,8 +44,8 @@ $content =
             .ItemList\Received\itemHiddenInputs($id)
         .'</form>'
     )
-    .create_geolocation_panel($base, (float)$place->latitude,
-        (float)$place->longitude, (float)$place->altitude)
+    .create_geolocation_panel($base, (float)$receivedPlace->latitude,
+        (float)$receivedPlace->longitude, (float)$receivedPlace->altitude)
     .compressed_js_script('flexTextarea', $base)
     .compressed_js_script('formCheckbox', $base);
 

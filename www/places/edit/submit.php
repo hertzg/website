@@ -10,8 +10,8 @@ list($place, $id, $user) = require_place($mysqli);
 $errors = [];
 
 include_once '../fns/request_place_params.php';
-list($latitude, $longitude, $altitude, $name, $tags,
-    $tag_names, $parsed_latitude, $parsed_longitude,
+list($latitude, $longitude, $altitude, $name, $description,
+    $tags, $tag_names, $parsed_latitude, $parsed_longitude,
     $parsed_altitude) = request_place_params($errors);
 
 include_once '../../fns/ItemList/itemQuery.php';
@@ -22,6 +22,7 @@ $values = [
     'longitude' => $longitude,
     'altitude' => $altitude,
     'name' => $name,
+    'description' => $description,
     'tags' => $tags,
 ];
 
@@ -54,8 +55,8 @@ if ($sendButton) {
 unset($_SESSION['places/edit/values']);
 
 include_once '../../fns/Users/Places/edit.php';
-Users\Places\edit($mysqli, $place, $parsed_latitude,
-    $parsed_longitude, $parsed_altitude, $name, $tags, $tag_names);
+Users\Places\edit($mysqli, $place, $parsed_latitude, $parsed_longitude,
+    $parsed_altitude, $name, $description, $tags, $tag_names);
 
 $_SESSION['places/view/messages'] = ['Changes have been saved.'];
 redirect("../view/$itemQuery");

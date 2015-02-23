@@ -10,6 +10,7 @@ function addPlace ($mysqli, $place, $apiKey) {
         'longitude' => $place->longitude,
         'altitude' => $place->altitude,
         'name' => $place->name,
+        'description' => $place->description,
         'tags' => $place->tags,
         'insert_api_key_id' => $place->insert_api_key_id,
         'insert_time' => $place->insert_time,

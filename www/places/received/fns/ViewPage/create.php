@@ -22,6 +22,12 @@ function create ($receivedPlace) {
         $items[] = \Form\label('Name', htmlspecialchars($name));
     }
 
+    $description = $receivedPlace->description;
+    if ($description !== '') {
+        $description = nl2br(htmlspecialchars($description));
+        $items[] = \Form\label('Description', $description);
+    }
+
     $tags = $receivedPlace->tags;
     if ($tags !== '') $items[] = \Form\label('Tags', htmlspecialchars($tags));
 

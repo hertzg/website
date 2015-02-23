@@ -8,6 +8,7 @@ function to_client_json ($place) {
         'longitude' => (float)$place->longitude,
         'altitude' => $altitude === null ? null : (float)$altitude,
         'name' => $place->name,
+        'description' => $place->description,
         'tags' => $place->tags,
         'insert_time' => (int)$place->insert_time,
         'update_time' => (int)$place->update_time,

@@ -15,6 +15,7 @@ if (array_key_exists($key, $_SESSION)) {
         'longitude' => '',
         'altitude' => '',
         'name' => '',
+        'description' => '',
         'tags' => '',
     ];
 }

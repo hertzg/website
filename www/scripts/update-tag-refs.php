@@ -55,8 +55,8 @@ foreach ($rows as $row) {
     if ($place) {
         include_once '../fns/PlaceTags/editPlace.php';
         PlaceTags\editPlace($mysqli, $place->id, $place->latitude,
-            $place->longitude, $place->name, $place->tags,
-            $place->insert_time, $place->update_time);
+            $place->longitude, $place->name, $place->description,
+            $place->tags, $place->insert_time, $place->update_time);
     }
 }
 

@@ -24,7 +24,8 @@ $sendFunction = function ($receiver_id_userss) use ($mysqli,
         Users\Places\Received\add($mysqli, $user->id_users,
             $user->username, $receiver_id_users, $stageValues['latitude'],
             $stageValues['longitude'], $stageValues['altitude'],
-            $stageValues['name'], $stageValues['tags']);
+            $stageValues['name'], $stageValues['description'],
+            $stageValues['tags']);
     }
 
 };

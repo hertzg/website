@@ -8,6 +8,7 @@ function addDeleted ($mysqli, $id_users, $data) {
     $latitude = $data->latitude;
     $longitude = $data->longitude;
     $name = $data->name;
+    $description = $data->description;
     $tags = $data->tags;
 
     $fnsDir = __DIR__.'/../..';
@@ -17,13 +18,13 @@ function addDeleted ($mysqli, $id_users, $data) {
 
     include_once "$fnsDir/Places/addDeleted.php";
     \Places\addDeleted($mysqli, $id, $id_users, $latitude,
-        $longitude, $data->altitude, $name, $tags, $tag_names,
+        $longitude, $data->altitude, $name, $description, $tags, $tag_names,
         $data->insert_time, $data->update_time, $data->revision);
 
     if ($tag_names) {
         include_once "$fnsDir/PlaceTags/add.php";
-        \PlaceTags\add($mysqli, $id_users, $id,
-            $tag_names, $latitude, $longitude, $name, $tags);
+        \PlaceTags\add($mysqli, $id_users, $id, $tag_names,
+            $latitude, $longitude, $name, $description, $tags);
     }
 
     include_once __DIR__.'/addNumber.php';
