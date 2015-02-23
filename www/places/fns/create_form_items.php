@@ -7,7 +7,6 @@ function create_form_items ($values) {
     include_once "$fnsDir/Places/maxLengths.php";
     $maxLengths = Places\maxLengths();
 
-    include_once "$fnsDir/Form/checkbox.php";
     include_once "$fnsDir/Form/textarea.php";
     include_once "$fnsDir/Form/textfield.php";
     return
