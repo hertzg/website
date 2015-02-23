@@ -3,13 +3,15 @@
 include_once 'fns/require_first_stage.php';
 list($user, $first_stage) = require_first_stage();
 
+$fnsDir = '../../../fns';
+
 include_once '../../fns/create_offset_select.php';
-include_once '../../../fns/Form/button.php';
-include_once '../../../fns/ItemList/escapedPageQuery.php';
-include_once '../../../fns/ItemList/listHref.php';
-include_once '../../../fns/ItemList/pageHiddenInputs.php';
-include_once '../../../fns/Page/imageLink.php';
-include_once '../../../fns/Page/tabs.php';
+include_once "$fnsDir/Form/button.php";
+include_once "$fnsDir/ItemList/escapedPageQuery.php";
+include_once "$fnsDir/ItemList/listHref.php";
+include_once "$fnsDir/ItemList/pageHiddenInputs.php";
+include_once "$fnsDir/Page/imageLink.php";
+include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
     [
         [
@@ -28,5 +30,5 @@ $content = Page\tabs(
     .'</form>'
 );
 
-include_once '../../../fns/echo_page.php';
+include_once "$fnsDir/echo_page.php";
 echo_page($user, 'New Schedule', $content, '../../../');

@@ -3,18 +3,20 @@
 include_once 'fns/require_first_stage.php';
 list($user, $id, $schedule, $first_stage) = require_first_stage();
 
-include_once '../../../fns/days_left_from_today.php';
+$fnsDir = '../../../fns';
+
+include_once "$fnsDir/days_left_from_today.php";
 $days_left = days_left_from_today($user,
     $schedule->interval, $schedule->offset);
 
-include_once '../../../fns/ItemList/escapedItemQuery.php';
+include_once "$fnsDir/ItemList/escapedItemQuery.php";
 $escapedItemQuery = ItemList\escapedItemQuery($id);
 
 include_once '../../fns/create_offset_select.php';
-include_once '../../../fns/Form/button.php';
-include_once '../../../fns/ItemList/itemHiddenInputs.php';
-include_once '../../../fns/Page/imageLink.php';
-include_once '../../../fns/Page/tabs.php';
+include_once "$fnsDir/Form/button.php";
+include_once "$fnsDir/ItemList/itemHiddenInputs.php";
+include_once "$fnsDir/Page/imageLink.php";
+include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
     [
         [
@@ -33,5 +35,5 @@ $content = Page\tabs(
     .'</form>'
 );
 
-include_once '../../../fns/echo_page.php';
+include_once "$fnsDir/echo_page.php";
 echo_page($user, "Edit Schedule #$id", $content, '../../../');
