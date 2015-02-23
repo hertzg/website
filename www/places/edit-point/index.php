@@ -1,27 +1,27 @@
 <?php
 
-include_once '../fns/require_place.php';
+include_once '../fns/require_point.php';
 include_once '../../lib/mysqli.php';
-list($place, $id, $user) = require_place($mysqli);
+list($point, $id, $user, $place) = require_point($mysqli);
 
-$key = 'places/add-point/values';
+$key = 'places/edit-point/values';
 if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];
 } else {
     $values = [
-        'latitude' => '',
-        'longitude' => '',
-        'altitude' => '',
+        'latitude' => $point->latitude,
+        'longitude' => $point->longitude,
+        'altitude' => $point->altitude,
     ];
 }
-
-unset($_SESSION['places/view/messages']);
 
 $base = '../../';
 $fnsDir = '../../fns';
 
 include_once "$fnsDir/ItemList/escapedItemQuery.php";
 $escapedItemQuery = ItemList\escapedItemQuery($id);
+
+unset($_SESSION['places/view-point/messages']);
 
 include_once '../fns/create_geolocation_panel.php';
 include_once '../fns/create_point_form_items.php';
@@ -35,24 +35,24 @@ $content =
     Page\tabs(
         [
             [
-                'title' => "Place #$id",
-                'href' => "../view/$escapedItemQuery#add-point",
+                'title' => "Point #$id",
+                'href' => "../view-point/$escapedItemQuery#edit",
             ],
         ],
-        'Add Point',
-        Page\sessionErrors('places/add-point/errors')
-        .Page\warnings(['Adding a point will update the latitude,'
+        'Edit',
+        Page\sessionErrors('places/edit-point/errors')
+        .Page\warnings(['Editing the point will update the latitude,'
             .' the longitude and the altitude of the place'
             .' to the avarage of all the points.'])
         .'<form action="submit.php" method="post">'
             .create_point_form_items($values)
             .'<div class="hr"></div>'
-            .Form\button('Add Point')
+            .Form\button('Save Changes')
             .ItemList\itemHiddenInputs($id)
         .'</form>'
     )
-    .create_geolocation_panel($base, (float)$place->latitude,
-        (float)$place->longitude, (float)$place->altitude);
+    .create_geolocation_panel($base, (float)$point->latitude,
+        (float)$point->longitude, (float)$point->altitude);
 
 include_once "$fnsDir/echo_page.php";
-echo_page($user, 'Add Point', $content, $base);
+echo_page($user, "Edit Point #$id", $content, $base);

@@ -50,7 +50,8 @@ function create ($mysqli, $place) {
         $_SESSION['places/messages'],
         $_SESSION['places/send/errors'],
         $_SESSION['places/send/messages'],
-        $_SESSION['places/send/values']
+        $_SESSION['places/send/values'],
+        $_SESSION['places/view-point/messages']
     );
 
     include_once __DIR__.'/optionsPanel.php';

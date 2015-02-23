@@ -2,7 +2,7 @@
 
 function request_point_params (&$errors) {
 
-    include_once __DIR__.'/../../../fns/PlacePoints/request.php';
+    include_once __DIR__.'/../../fns/PlacePoints/request.php';
     list($latitude, $longitude, $altitude, $parsed_latitude,
         $parsed_longitude, $parsed_altitude) = PlacePoints\request();
 

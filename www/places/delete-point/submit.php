@@ -9,7 +9,7 @@ include_once '../fns/require_point.php';
 include_once '../../lib/mysqli.php';
 list($point, $id, $user, $place) = require_point($mysqli);
 
-$_SESSION['places/view/messages'] = ['The point has been removed.'];
+$_SESSION['places/view/messages'] = ['The point has been deleted.'];
 
 if ($place->num_points > 1) {
     include_once "$fnsDir/Users/Places/Points/delete.php";

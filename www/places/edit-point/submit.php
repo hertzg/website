@@ -5,9 +5,9 @@ $fnsDir = '../../fns';
 include_once "$fnsDir/require_same_domain_referer.php";
 require_same_domain_referer('..');
 
-include_once '../fns/require_place.php';
+include_once '../fns/require_point.php';
 include_once '../../lib/mysqli.php';
-list($place, $id, $user) = require_place($mysqli);
+list($point, $id, $user, $place) = require_point($mysqli);
 
 $errors = [];
 
@@ -15,23 +15,25 @@ include_once '../fns/request_point_params.php';
 list($latitude, $longitude, $altitude, $parsed_latitude,
     $parsed_longitude, $parsed_altitude) = request_point_params($errors);
 
-include_once "$fnsDir/redirect.php";
 include_once "$fnsDir/ItemList/itemQuery.php";
+$itemQuery = ItemList\itemQuery($id);
+
+include_once "$fnsDir/redirect.php";
 
 if ($errors) {
-    $_SESSION['places/add-point/errors'] = $errors;
-    $_SESSION['places/add-point/values'] = [
+    $_SESSION['places/edit-point/errors'] = $errors;
+    $_SESSION['places/edit-point/values'] = [
         'latitude' => $latitude,
         'longitude' => $longitude,
         'altitude' => $altitude,
     ];
-    redirect('./'.ItemList\itemQuery($id));
+    redirect("./$itemQuery");
 }
 
-include_once "$fnsDir/Users/Places/Points/add.php";
-$id = Users\Places\Points\add($mysqli, $place,
+include_once "$fnsDir/Users/Places/Points/edit.php";
+Users\Places\Points\edit($mysqli, $point,
     $parsed_latitude, $parsed_longitude, $parsed_altitude);
 
-$_SESSION['places/view-point/messages'] = ['The point has been added.'];
+$_SESSION['places/view-point/messages'] = ['Changes have been saved.'];
 
-redirect('../view-point/'.ItemList\itemQuery($id));
+redirect("../view-point/$itemQuery");

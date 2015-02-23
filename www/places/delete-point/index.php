@@ -7,6 +7,8 @@ list($point, $id, $user, $place) = require_point($mysqli);
 $base = '../../';
 $fnsDir = '../../fns';
 
+unset($_SESSION['places/view-point/messages']);
+
 include_once '../fns/create_view_point_page.php';
 include_once "$fnsDir/ItemList/escapedItemQuery.php";
 include_once "$fnsDir/Page/confirmDialog.php";

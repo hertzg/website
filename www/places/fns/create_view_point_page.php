@@ -24,17 +24,30 @@ function create_view_point_page ($point) {
     }
 
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
+    $escapedItemQuery = ItemList\escapedItemQuery($id);
+
     include_once "$fnsDir/Page/imageLink.php";
+    $editLink = Page\imageLink('Edit',
+        "../edit-point/$escapedItemQuery", 'edit-place');
+
     $deleteLink =
         '<div id="deleteLink">'
             .Page\imageLink('Delete',
-                '../delete-point/'.ItemList\escapedItemQuery($id), 'trash-bin')
+                "../delete-point/$escapedItemQuery", 'trash-bin')
         .'</div>';
 
-    unset($_SESSION['places/view/messages']);
+    include_once "$fnsDir/Page/staticTwoColumns.php";
+    $optionsContent = Page\staticTwoColumns($editLink, $deleteLink);
+
+    unset(
+        $_SESSION['places/edit-point/errors'],
+        $_SESSION['places/edit-point/values'],
+        $_SESSION['places/view/messages']
+    );
 
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Page/infoText.php";
+    include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
     return Page\tabs(
         [
@@ -44,9 +57,10 @@ function create_view_point_page ($point) {
             ],
         ],
         "Point #$id",
-        $content
+        Page\sessionMessages('places/view-point/messages')
+        .$content
         .Page\infoText($infoText)
-        .create_panel('Point Options', $deleteLink)
+        .create_panel('Point Options', $optionsContent)
     );
 
 }
