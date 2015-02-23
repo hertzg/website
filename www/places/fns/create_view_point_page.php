@@ -6,6 +6,10 @@ function create_view_point_page ($point) {
     $id_places = $point->id_places;
     $fnsDir = __DIR__.'/../../fns';
 
+    include_once "$fnsDir/format_author.php";
+    $author = format_author($point->insert_time, $point->insert_api_key_name);
+    $infoText = "Point created $author.";
+
     include_once "$fnsDir/Form/label.php";
     $content =
         Form\label('Latitude', $point->latitude)
@@ -30,6 +34,7 @@ function create_view_point_page ($point) {
     unset($_SESSION['places/view/messages']);
 
     include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/tabs.php";
     return Page\tabs(
         [
@@ -39,7 +44,9 @@ function create_view_point_page ($point) {
             ],
         ],
         "Point #$id",
-        $content.create_panel('Point Options', $deleteLink)
+        $content
+        .Page\infoText($infoText)
+        .create_panel('Point Options', $deleteLink)
     );
 
 }
