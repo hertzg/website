@@ -13,11 +13,13 @@ unset(
     $_SESSION['notifications/channels/users/messages']
 );
 
-include_once '../../../../fns/Page/tabs.php';
-include_once '../../../../fns/Form/button.php';
-include_once '../../../../fns/Form/hidden.php';
-include_once '../../../../fns/Form/textfield.php';
-include_once '../../../../fns/Page/sessionErrors.php';
+$fnsDir = '../../../../fns';
+
+include_once "$fnsDir/Form/button.php";
+include_once "$fnsDir/Form/hidden.php";
+include_once "$fnsDir/Form/textfield.php";
+include_once "$fnsDir/Page/sessionErrors.php";
+include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
     [
         [
@@ -39,5 +41,5 @@ $content = Page\tabs(
     .'</form>'
 );
 
-include_once '../../../../fns/echo_page.php';
+include_once "$fnsDir/echo_page.php";
 echo_page($user, 'Add User', $content, '../../../../');
