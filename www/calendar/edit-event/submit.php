@@ -1,6 +1,8 @@
 <?php
 
-include_once '../../fns/require_same_domain_referer.php';
+$fnsDir = '../../fns';
+
+include_once "$fnsDir/require_same_domain_referer.php";
 require_same_domain_referer('..');
 
 include_once '../fns/require_event.php';
@@ -11,7 +13,7 @@ include_once '../fns/request_event_params.php';
 $values = request_event_params($errors);
 list($event_day, $event_month, $event_year, $event_time, $text) = $values;
 
-include_once '../../fns/redirect.php';
+include_once "$fnsDir/redirect.php";
 
 if ($errors) {
     $_SESSION['calendar/edit-event/errors'] = $errors;
@@ -29,7 +31,7 @@ unset(
     $_SESSION['calendar/edit-event/values']
 );
 
-include_once '../../fns/Users/Events/edit.php';
+include_once "$fnsDir/Users/Events/edit.php";
 Users\Events\edit($mysqli, $user, $event, $text, $event_time);
 
 $_SESSION['calendar/view-event/messages'] = ['Changes have been saved.'];
