@@ -38,9 +38,8 @@ $subject = 'PHP default timezone';
 if ($ok) $assertsHtml .= assert_success("$subject is set to UTC.");
 else $assertsHtml .= assert_failure("$subject is NOT set to UTC.");
 
-$ok = function_exists('curl_init');
 $subject = 'PHP Client URL Library "<code>curl</code>"';
-$assertsHtml .= assert_installed($ok, $subject);
+$assertsHtml .= assert_installed(extension_loaded('curl'), $subject);
 
 $subject = 'PHP image processing and GD "<code>gd</code>"';
 $assertsHtml .= assert_installed(extension_loaded('gd'), $subject);
