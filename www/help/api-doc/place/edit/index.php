@@ -24,6 +24,10 @@ place_method_page('edit', [
         'description' => 'The new name of the place.',
     ],
     [
+        'name' => 'description',
+        'description' => 'The new description of the place.',
+    ],
+    [
         'name' => 'tags',
         'description' => 'Space-separated list of tags.',
     ],

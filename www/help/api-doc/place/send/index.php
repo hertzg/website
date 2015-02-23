@@ -24,6 +24,10 @@ place_method_page('send', [
         'description' => 'The name of the place.',
     ],
     [
+        'name' => 'description',
+        'description' => 'The description of the place.',
+    ],
+    [
         'name' => 'tags',
         'description' => 'Space-separated list of tags.',
     ],
