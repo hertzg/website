@@ -4,7 +4,7 @@ include_once '../fns/channel_user_method_page.php';
 channel_user_method_page('remove', [
     [
         'name' => 'id',
-        'description' => 'The ID of the channel.',
+        'description' => 'The ID of the channel remove the user from.',
     ],
     [
         'name' => 'username',

@@ -4,7 +4,7 @@ include_once '../fns/place_point_method_page.php';
 place_point_method_page('list', [
     [
         'name' => 'id',
-        'description' => 'The ID of the place.',
+        'description' => 'The ID of the place to list the points of.',
     ],
 ], [
     'PLACE_NOT_FOUND' => "A place with the ID doesn't exist.",

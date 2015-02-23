@@ -4,7 +4,7 @@ include_once '../fns/channel_user_method_page.php';
 channel_user_method_page('add', [
     [
         'name' => 'id',
-        'description' => 'The ID of the channel.',
+        'description' => 'The ID of the channel to add the user to.',
     ],
     [
         'name' => 'username',

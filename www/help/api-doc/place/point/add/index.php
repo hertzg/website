@@ -4,7 +4,7 @@ include_once '../fns/place_point_method_page.php';
 place_point_method_page('add', [
     [
         'name' => 'id',
-        'description' => 'The ID of the place.',
+        'description' => 'The ID of the place to add the point to.',
     ],
     [
         'name' => 'latitude',
