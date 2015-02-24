@@ -4,6 +4,8 @@ namespace Users\Events;
 
 function deleteAll ($mysqli, $user) {
 
+    if (!$user->num_events) return;
+
     $id_users = $user->id_users;
     $fnsDir = __DIR__.'/../..';
 

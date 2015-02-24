@@ -10,7 +10,7 @@ $user = require_user('../../');
 
 include_once "$fnsDir/Users/Wallets/deleteAll.php";
 include_once '../../lib/mysqli.php';
-Users\Wallets\deleteAll($mysqli, $user->id_users);
+Users\Wallets\deleteAll($mysqli, $user);
 
 unset($_SESSION['wallets/errors']);
 $_SESSION['wallets/messages'] = ['All wallets have been deleted.'];

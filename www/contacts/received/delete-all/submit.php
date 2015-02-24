@@ -10,7 +10,7 @@ $user = require_received_contacts('../');
 
 include_once "$fnsDir/Users/Contacts/Received/deleteAll.php";
 include_once '../../../lib/mysqli.php';
-Users\Contacts\Received\deleteAll($mysqli, $user->id_users);
+Users\Contacts\Received\deleteAll($mysqli, $user);
 
 unset($_SESSION['contacts/errors']);
 $_SESSION['contacts/messages'] = ['All received contacts have been deleted.'];

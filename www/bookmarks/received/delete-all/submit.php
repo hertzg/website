@@ -10,7 +10,7 @@ $user = require_received_bookmarks('../');
 
 include_once "$fnsDir/Users/Bookmarks/Received/deleteAll.php";
 include_once '../../../lib/mysqli.php';
-Users\Bookmarks\Received\deleteAll($mysqli, $user->id_users);
+Users\Bookmarks\Received\deleteAll($mysqli, $user);
 
 unset($_SESSION['bookmarks/errors']);
 $_SESSION['bookmarks/messages'] = ['All received bookmarks have been deleted.'];

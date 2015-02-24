@@ -2,8 +2,11 @@
 
 namespace Users\Bookmarks\Received;
 
-function deleteAll ($mysqli, $id_users, $apiKey = null) {
+function deleteAll ($mysqli, $user, $apiKey = null) {
 
+    if (!$user->num_received_bookmarks) return;
+
+    $id_users = $user->id_users;
     $fnsDir = __DIR__.'/../../..';
 
     include_once "$fnsDir/ReceivedBookmarks/indexOnReceiver.php";

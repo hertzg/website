@@ -2,8 +2,11 @@
 
 namespace Users\Wallets;
 
-function deleteAll ($mysqli, $id_users) {
+function deleteAll ($mysqli, $user) {
 
+    if (!$user->num_wallets) return;
+
+    $id_users = $user->id_users;
     $fnsDir = __DIR__.'/../..';
 
     include_once "$fnsDir/Wallets/deleteOnUser.php";

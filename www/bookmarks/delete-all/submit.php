@@ -8,7 +8,7 @@ $user = require_bookmarks();
 
 include_once '../../fns/Users/Bookmarks/deleteAll.php';
 include_once '../../lib/mysqli.php';
-Users\Bookmarks\deleteAll($mysqli, $user->id_users);
+Users\Bookmarks\deleteAll($mysqli, $user);
 
 unset($_SESSION['bookmarks/errors']);
 $_SESSION['bookmarks/messages'] = ['All bookmarks have been deleted.'];

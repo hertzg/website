@@ -4,6 +4,8 @@ namespace Users\Contacts;
 
 function deleteAll ($mysqli, $user, $apiKey = null) {
 
+    if (!$user->num_contacts) return;
+
     $id_users = $user->id_users;
     $fnsDir = __DIR__.'/../..';
 
