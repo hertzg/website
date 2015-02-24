@@ -3,8 +3,8 @@
 include_once '../fns/require_api_key.php';
 list($apiKey, $user, $mysqli) = require_api_key('can_read_schedules');
 
-include_once '../../fns/Schedules/indexOnUser.php';
-$schedules = Schedules\indexOnUser($mysqli, $user->id_users);
+include_once '../../fns/Users/Schedules/index.php';
+$schedules = Users\Schedules\index($mysqli, $user);
 
 include_once 'fns/to_client_json.php';
 header('Content-Type: application/json');

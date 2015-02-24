@@ -3,8 +3,8 @@
 include_once '../fns/require_api_key.php';
 list($apiKey, $user, $mysqli) = require_api_key('can_read_tasks');
 
-include_once '../../fns/Tasks/indexOnUser.php';
-$tasks = Tasks\indexOnUser($mysqli, $user->id_users);
+include_once '../../fns/Users/Tasks/index.php';
+$tasks = Users\Tasks\index($mysqli, $user);
 
 include_once 'fns/to_client_json.php';
 header('Content-Type: application/json');

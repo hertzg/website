@@ -3,8 +3,8 @@
 include_once '../../fns/require_api_key.php';
 list($apiKey, $user, $mysqli) = require_api_key('can_read_places');
 
-include_once '../../../fns/ReceivedPlaces/indexOnReceiver.php';
-$receivedPlaces = ReceivedPlaces\indexOnReceiver($mysqli, $user->id_users);
+include_once '../../../fns/Users/Places/Received/index.php';
+$receivedPlaces = Users\Places\Received\index($mysqli, $user);
 
 include_once 'fns/to_client_json.php';
 header('Content-Type: application/json');
