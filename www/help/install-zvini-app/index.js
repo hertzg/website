@@ -12,7 +12,7 @@
 
         var protocol = location.protocol,
             host = location.host,
-            pathname = location.pathname.replace(/help\/install\/$/, ''),
+            pathname = location.pathname.replace(/help\/install-zvini-app\/$/, ''),
             manifest = protocol + '//' + host + pathname + 'webapp-manifest/'
 
         var checkRequest = mozApps.checkInstalled(manifest)

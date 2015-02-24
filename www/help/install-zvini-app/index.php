@@ -21,7 +21,7 @@ $content = Page\tabs(
     .'<div id="installingMessage" style="display: none">'
         .Page\text('Please wait...')
     .'</div>'
-    .'<script type="text/javascript" src="index.js?3" async="true"></script>'
+    .'<script type="text/javascript" src="index.js?4" async="true"></script>'
 );
 
 include_once '../../fns/echo_page.php';
