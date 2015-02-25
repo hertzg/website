@@ -2,8 +2,11 @@
 
 namespace Users\Notifications;
 
-function deleteAll ($mysqli, $id_users) {
+function deleteAll ($mysqli, $user) {
 
+    if (!$user->num_notifications) return [];
+
+    $id_users = $user->id_users;
     $fnsDir = __DIR__.'/../..';
 
     include_once "$fnsDir/Notifications/deleteAllOnUser.php";

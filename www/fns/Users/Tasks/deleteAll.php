@@ -4,6 +4,8 @@ namespace Users\Tasks;
 
 function deleteAll ($mysqli, $user, $apiKey = null) {
 
+    if (!$user->num_tasks) return;
+
     $id_users = $user->id_users;
     $fnsDir = __DIR__.'/../..';
 

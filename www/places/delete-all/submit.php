@@ -8,7 +8,7 @@ $user = require_places();
 
 include_once '../../fns/Users/Places/deleteAll.php';
 include_once '../../lib/mysqli.php';
-Users\Places\deleteAll($mysqli, $user->id_users);
+Users\Places\deleteAll($mysqli, $user);
 
 unset($_SESSION['places/errors']);
 $_SESSION['places/messages'] = ['All places have been deleted.'];

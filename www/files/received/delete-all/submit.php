@@ -5,14 +5,13 @@ require_same_domain_referer('./');
 
 include_once '../fns/require_received_files.php';
 $user = require_received_files('../');
-$id_users = $user->id_users;
 
 include_once '../../../fns/Users/Files/Received/deleteAll.php';
 include_once '../../../lib/mysqli.php';
-Users\Files\Received\deleteAll($mysqli, $id_users);
+Users\Files\Received\deleteAll($mysqli, $user);
 
 include_once '../../../fns/Users/Folders/Received/deleteAll.php';
-Users\Folders\Received\deleteAll($mysqli, $id_users);
+Users\Folders\Received\deleteAll($mysqli, $user);
 
 unset($_SESSION['files/errors']);
 $_SESSION['files/messages'] = ['All received files have been deleted.'];

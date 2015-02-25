@@ -10,7 +10,7 @@ $user = require_received_places('../');
 
 include_once "$fnsDir/Users/Places/Received/deleteAll.php";
 include_once '../../../lib/mysqli.php';
-Users\Places\Received\deleteAll($mysqli, $user->id_users);
+Users\Places\Received\deleteAll($mysqli, $user);
 
 unset($_SESSION['places/errors']);
 $_SESSION['places/messages'] = ['All received places have been deleted.'];

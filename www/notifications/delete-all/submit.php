@@ -8,7 +8,7 @@ $user = require_notifications();
 
 include_once '../../fns/Users/Notifications/deleteAll.php';
 include_once '../../lib/mysqli.php';
-Users\Notifications\deleteAll($mysqli, $user->id_users);
+Users\Notifications\deleteAll($mysqli, $user);
 
 unset($_SESSION['notifications/errors']);
 $_SESSION['notifications/messages'] = ['All notifications have been deleted.'];

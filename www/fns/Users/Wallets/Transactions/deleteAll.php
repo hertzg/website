@@ -4,6 +4,8 @@ namespace Users\Wallets\Transactions;
 
 function deleteAll ($mysqli, $wallet) {
 
+    if (!$wallet->num_transactions) return;
+
     $id = $wallet->id;
     $fnsDir = __DIR__.'/../../..';
 

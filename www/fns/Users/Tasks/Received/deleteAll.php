@@ -2,8 +2,11 @@
 
 namespace Users\Tasks\Received;
 
-function deleteAll ($mysqli, $id_users, $apiKey = null) {
+function deleteAll ($mysqli, $user, $apiKey = null) {
 
+    if (!$user->num_received_tasks) return;
+
+    $id_users = $user->id_users;
     $fnsDir = __DIR__.'/../../..';
 
     include_once "$fnsDir/ReceivedTasks/indexOnReceiver.php";

@@ -4,6 +4,8 @@ namespace Users\Schedules;
 
 function deleteAll ($mysqli, $user) {
 
+    if (!$user->num_schedules) return;
+
     $id_users = $user->id_users;
     $fnsDir = __DIR__.'/../..';
 

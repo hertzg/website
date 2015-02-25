@@ -2,8 +2,11 @@
 
 namespace Users\Files\Received;
 
-function deleteAll ($mysqli, $id_users, $apiKey = null) {
+function deleteAll ($mysqli, $user, $apiKey = null) {
 
+    if (!$user->num_received_files) return;
+
+    $id_users = $user->id_users;
     $fnsDir = __DIR__.'/../../..';
 
     include_once "$fnsDir/ReceivedFiles/Committed/indexOnReceiver.php";
@@ -22,8 +25,7 @@ function deleteAll ($mysqli, $id_users, $apiKey = null) {
     \ReceivedFiles\deleteOnReceiver($mysqli, $id_users);
 
     $sql = 'update users set num_received_files = 0,'
-        .' num_archived_received_files = 0'
-        ." where id_users = $id_users";
+        ." num_archived_received_files = 0 where id_users = $id_users";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
 }

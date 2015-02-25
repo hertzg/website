@@ -10,7 +10,7 @@ $user = require_received_tasks('../');
 
 include_once "$fnsDir/Users/Tasks/Received/deleteAll.php";
 include_once '../../../lib/mysqli.php';
-Users\Tasks\Received\deleteAll($mysqli, $user->id_users);
+Users\Tasks\Received\deleteAll($mysqli, $user);
 
 unset($_SESSION['tasks/errors']);
 $_SESSION['tasks/messages'] = ['All received tasks have been deleted.'];

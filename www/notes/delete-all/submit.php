@@ -8,7 +8,7 @@ $user = require_notes();
 
 include_once '../../fns/Users/Notes/deleteAll.php';
 include_once '../../lib/mysqli.php';
-Users\Notes\deleteAll($mysqli, $user->id_users);
+Users\Notes\deleteAll($mysqli, $user);
 
 unset($_SESSION['notes/errors']);
 $_SESSION['notes/messages'] = ['All notes have been deleted.'];
