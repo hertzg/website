@@ -12,9 +12,8 @@ function require_received_bookmark ($mysqli, $base = '') {
 
     $id = abs((int)$id);
 
-    include_once "$fnsDir/ReceivedBookmarks/getOnReceiver.php";
-    $receivedBookmark = ReceivedBookmarks\getOnReceiver(
-        $mysqli, $user->id_users, $id);
+    include_once "$fnsDir/Users/Bookmarks/Received/get.php";
+    $receivedBookmark = Users\Bookmarks\Received\get($mysqli, $user, $id);
 
     if (!$receivedBookmark) {
         include_once "$fnsDir/redirect.php";

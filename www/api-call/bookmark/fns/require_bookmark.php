@@ -1,6 +1,6 @@
 <?php
 
-function require_bookmark ($mysqli, $id_users) {
+function require_bookmark ($mysqli, $user) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
@@ -9,8 +9,8 @@ function require_bookmark ($mysqli, $id_users) {
 
     $id = abs((int)$id);
 
-    include_once "$fnsDir/Bookmarks/getOnUser.php";
-    $bookmark = Bookmarks\getOnUser($mysqli, $id_users, $id);
+    include_once "$fnsDir/Users/Bookmarks/get.php";
+    $bookmark = Users\Bookmarks\get($mysqli, $user, $id);
 
     if (!$bookmark) {
         include_once __DIR__.'/../../fns/bad_request.php';

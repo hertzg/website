@@ -1,6 +1,6 @@
 <?php
 
-function require_received_bookmark ($mysqli, $id_users) {
+function require_received_bookmark ($mysqli, $user) {
 
     $fnsDir = __DIR__.'/../../../../fns';
 
@@ -9,9 +9,8 @@ function require_received_bookmark ($mysqli, $id_users) {
 
     $id = abs((int)$id);
 
-    include_once "$fnsDir/ReceivedBookmarks/getOnReceiver.php";
-    $receivedBookmark = ReceivedBookmarks\getOnReceiver(
-        $mysqli, $id_users, $id);
+    include_once "$fnsDir/Users/Bookmarks/Received/get.php";
+    $receivedBookmark = Users\Bookmarks\Received\get($mysqli, $user, $id);
 
     if (!$receivedBookmark) {
         include_once __DIR__.'/../../../fns/bad_request.php';
