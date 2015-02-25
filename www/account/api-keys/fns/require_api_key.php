@@ -12,8 +12,8 @@ function require_api_key ($mysqli) {
 
     $id = abs((int)$id);
 
-    include_once "$fnsDir/ApiKeys/getOnUser.php";
-    $apiKey = ApiKeys\getOnUser($mysqli, $user->id_users, $id);
+    include_once "$fnsDir/Users/ApiKeys/get.php";
+    $apiKey = Users\ApiKeys\get($mysqli, $user, $id);
 
     if (!$apiKey) {
         unset($_SESSION['accoint/api-keys/messages']);

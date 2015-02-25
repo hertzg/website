@@ -12,8 +12,8 @@ function require_deleted_item ($mysqli, $base = '') {
 
     $id = abs((int)$id);
 
-    include_once "$fnsDir/DeletedItems/getOnUser.php";
-    $deletedItem = DeletedItems\getOnUser($mysqli, $user->id_users, $id);
+    include_once "$fnsDir/Users/DeletedItems/get.php";
+    $deletedItem = Users\DeletedItems\get($mysqli, $user, $id);
 
     if (!$deletedItem) {
         include_once "$fnsDir/redirect.php";

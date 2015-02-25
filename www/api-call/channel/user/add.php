@@ -5,7 +5,7 @@ list($apiKey, $user, $mysqli) = require_api_key('can_write_channels');
 $id_users = $user->id_users;
 
 include_once '../fns/require_channel.php';
-$channel = require_channel($mysqli, $id_users);
+$channel = require_channel($mysqli, $user);
 
 include_once 'fns/require_channel_user_params.php';
 $subscriberUser = require_channel_user_params($mysqli, $user, $channel);

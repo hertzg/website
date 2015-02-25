@@ -4,7 +4,7 @@ include_once '../../fns/require_api_key.php';
 list($apiKey, $user, $mysqli) = require_api_key('can_read_channels');
 
 include_once '../fns/require_channel.php';
-$channel = require_channel($mysqli, $user->id_users);
+$channel = require_channel($mysqli, $user);
 
 include_once '../../../fns/Users/Channels/Users/index.php';
 $subscribedChannels = Users\Channels\Users\index($mysqli, $channel);
