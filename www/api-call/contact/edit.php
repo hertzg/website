@@ -4,7 +4,7 @@ include_once '../fns/require_api_key.php';
 list($apiKey, $user, $mysqli) = require_api_key('can_write_contacts');
 
 include_once 'fns/require_contact.php';
-$contact = require_contact($mysqli, $user->id_users);
+$contact = require_contact($mysqli, $user);
 
 include_once 'fns/request_contact_params.php';
 list($full_name, $alias, $address, $email, $phone1, $phone2,

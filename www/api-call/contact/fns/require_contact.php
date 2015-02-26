@@ -1,6 +1,6 @@
 <?php
 
-function require_contact ($mysqli, $id_users) {
+function require_contact ($mysqli, $user) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
@@ -9,8 +9,8 @@ function require_contact ($mysqli, $id_users) {
 
     $id = abs((int)$id);
 
-    include_once "$fnsDir/Contacts/getOnUser.php";
-    $contact = Contacts\getOnUser($mysqli, $id_users, $id);
+    include_once "$fnsDir/Users/Contacts/get.php";
+    $contact = Users\Contacts\get($mysqli, $user, $id);
 
     if (!$contact) {
         include_once __DIR__.'/../../fns/bad_request.php';
