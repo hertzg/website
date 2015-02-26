@@ -12,8 +12,8 @@ function require_wallet ($mysqli, $base = '') {
 
     $id = abs((int)$id);
 
-    include_once "$fnsDir/Wallets/getOnUser.php";
-    $wallet = Wallets\getOnUser($mysqli, $user->id_users, $id);
+    include_once "$fnsDir/Users/Wallets/get.php";
+    $wallet = Users\Wallets\get($mysqli, $user, $id);
 
     if (!$wallet) {
         $_SESSION['wallets/errors'] = ['The wallet no longer exists.'];

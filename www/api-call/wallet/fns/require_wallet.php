@@ -1,6 +1,6 @@
 <?php
 
-function require_wallet ($mysqli, $id_users) {
+function require_wallet ($mysqli, $user) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
@@ -9,8 +9,8 @@ function require_wallet ($mysqli, $id_users) {
 
     $id = abs((int)$id);
 
-    include_once "$fnsDir/Wallets/getOnUser.php";
-    $wallet = Wallets\getOnUser($mysqli, $id_users, $id);
+    include_once "$fnsDir/Users/Wallets/get.php";
+    $wallet = Users\Wallets\get($mysqli, $user, $id);
 
     if (!$wallet) {
         include_once __DIR__.'/../../fns/bad_request.php';
