@@ -11,14 +11,13 @@ function checkScheduleCheckDay ($mysqli, &$user) {
 
     if ($user->schedules_check_day == $day) return;
 
-    $id_users = $user->id_users;
-
-    include_once "$fnsDir/Schedules/countOnDay.php";
-    $today = \Schedules\countOnDay($mysqli, $id_users, $day);
-    $tomorrow = \Schedules\countOnDay($mysqli, $id_users, $day + 1);
+    include_once "$fnsDir/Users/Schedules/countOnDay.php";
+    $today = \Users\Schedules\countOnDay($mysqli, $user, $day);
+    $tomorrow = \Users\Schedules\countOnDay($mysqli, $user, $day + 1);
 
     include_once "$fnsDir/Users/Schedules/setNumbers.php";
-    \Users\Schedules\setNumbers($mysqli, $id_users, $today, $tomorrow, $day);
+    \Users\Schedules\setNumbers($mysqli,
+        $user->id_users, $today, $tomorrow, $day);
 
     $user->num_schedules_today = $today;
     $user->num_schedules_tomorrow = $tomorrow;
