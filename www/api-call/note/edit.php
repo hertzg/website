@@ -4,7 +4,7 @@ include_once '../fns/require_api_key.php';
 list($apiKey, $user, $mysqli) = require_api_key('can_write_notes');
 
 include_once 'fns/require_note.php';
-$note = require_note($mysqli, $user->id_users);
+$note = require_note($mysqli, $user);
 
 include_once 'fns/request_note_params.php';
 list($text, $tags, $tag_names, $encrypt) = request_note_params();

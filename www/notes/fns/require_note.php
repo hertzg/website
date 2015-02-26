@@ -12,8 +12,8 @@ function require_note ($mysqli, $base = '') {
 
     $id = abs((int)$id);
 
-    include_once "$fnsDir/Notes/getOnUser.php";
-    $note = Notes\getOnUser($mysqli, $user->id_users, $id);
+    include_once "$fnsDir/Users/Notes/get.php";
+    $note = Users\Notes\get($mysqli, $user, $id);
 
     if (!$note) {
         unset($_SESSION['notes/messages']);
