@@ -1,6 +1,6 @@
 <?php
 
-function require_folder ($mysqli, $id_users) {
+function require_folder ($mysqli, $user) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
@@ -9,8 +9,8 @@ function require_folder ($mysqli, $id_users) {
 
     $id = abs((int)$id);
 
-    include_once "$fnsDir/Folders/getOnUser.php";
-    $folder = Folders\getOnUser($mysqli, $id_users, $id);
+    include_once "$fnsDir/Users/Folders/get.php";
+    $folder = Users\Folders\get($mysqli, $user, $id);
 
     if (!$folder) {
         include_once __DIR__.'/../../fns/bad_request.php';
