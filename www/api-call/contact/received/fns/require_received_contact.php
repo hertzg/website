@@ -1,6 +1,6 @@
 <?php
 
-function require_received_contact ($mysqli, $id_users) {
+function require_received_contact ($mysqli, $user) {
 
     $fnsDir = __DIR__.'/../../../../fns';
 
@@ -9,8 +9,8 @@ function require_received_contact ($mysqli, $id_users) {
 
     $id = abs((int)$id);
 
-    include_once "$fnsDir/ReceivedContacts/getOnReceiver.php";
-    $receivedContact = ReceivedContacts\getOnReceiver($mysqli, $id_users, $id);
+    include_once "$fnsDir/Users/Contacts/Received/get.php";
+    $receivedContact = Users\Contacts\Received\get($mysqli, $user, $id);
 
     if (!$receivedContact) {
         include_once __DIR__.'/../../../fns/bad_request.php';

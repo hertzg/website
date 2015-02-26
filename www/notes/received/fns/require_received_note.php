@@ -12,8 +12,8 @@ function require_received_note ($mysqli, $base = '') {
 
     $id = abs((int)$id);
 
-    include_once "$fnsDir/ReceivedNotes/getOnReceiver.php";
-    $receivedNote = ReceivedNotes\getOnReceiver($mysqli, $user->id_users, $id);
+    include_once "$fnsDir/Users/Notes/Received/get.php";
+    $receivedNote = Users\Notes\Received\get($mysqli, $user, $id);
 
     if (!$receivedNote) {
         include_once "$fnsDir/redirect.php";

@@ -12,9 +12,8 @@ function require_received_contact ($mysqli, $base = '') {
 
     $id = abs((int)$id);
 
-    include_once "$fnsDir/ReceivedContacts/getOnReceiver.php";
-    $receivedContact = ReceivedContacts\getOnReceiver(
-        $mysqli, $user->id_users, $id);
+    include_once "$fnsDir/Users/Contacts/Received/get.php";
+    $receivedContact = Users\Contacts\Received\get($mysqli, $user, $id);
 
     if (!$receivedContact) {
         include_once "$fnsDir/redirect.php";

@@ -1,6 +1,6 @@
 <?php
 
-function require_received_place ($mysqli, $id_users) {
+function require_received_place ($mysqli, $user) {
 
     $fnsDir = __DIR__.'/../../../../fns';
 
@@ -9,8 +9,8 @@ function require_received_place ($mysqli, $id_users) {
 
     $id = abs((int)$id);
 
-    include_once "$fnsDir/ReceivedPlaces/getOnReceiver.php";
-    $receivedPlace = ReceivedPlaces\getOnReceiver($mysqli, $id_users, $id);
+    include_once "$fnsDir/Users/Places/Received/get.php";
+    $receivedPlace = Users\Places\Received\get($mysqli, $user, $id);
 
     if (!$receivedPlace) {
         include_once __DIR__.'/../../../fns/bad_request.php';

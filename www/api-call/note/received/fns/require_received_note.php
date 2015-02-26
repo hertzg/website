@@ -1,6 +1,6 @@
 <?php
 
-function require_received_note ($mysqli, $id_users) {
+function require_received_note ($mysqli, $user) {
 
     $fnsDir = __DIR__.'/../../../../fns';
 
@@ -9,8 +9,8 @@ function require_received_note ($mysqli, $id_users) {
 
     $id = abs((int)$id);
 
-    include_once "$fnsDir/ReceivedNotes/getOnReceiver.php";
-    $receivedNote = ReceivedNotes\getOnReceiver($mysqli, $id_users, $id);
+    include_once "$fnsDir/Users/Notes/Received/get.php";
+    $receivedNote = Users\Notes\Received\get($mysqli, $user, $id);
 
     if (!$receivedNote) {
         include_once __DIR__.'/../../../fns/bad_request.php';
