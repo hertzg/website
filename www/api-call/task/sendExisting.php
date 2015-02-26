@@ -2,13 +2,13 @@
 
 include_once '../fns/require_api_key.php';
 list($apiKey, $user, $mysqli) = require_api_key('can_write_tasks');
-$id_users = $user->id_users;
 
 include_once 'fns/require_task.php';
-$task = require_task($mysqli, $id_users);
+$task = require_task($mysqli, $user);
 
 include_once '../fns/require_receiver_user.php';
-$receiver_user = require_receiver_user($mysqli, $id_users, 'can_send_task');
+$receiver_user = require_receiver_user($mysqli,
+    $user->id_users, 'can_send_task');
 
 include_once '../../fns/Users/Tasks/send.php';
 Users\Tasks\send($mysqli, $user, $receiver_user->id_users, $task);

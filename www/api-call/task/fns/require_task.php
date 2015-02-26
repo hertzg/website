@@ -1,6 +1,6 @@
 <?php
 
-function require_task ($mysqli, $id_users) {
+function require_task ($mysqli, $user) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
@@ -9,8 +9,8 @@ function require_task ($mysqli, $id_users) {
 
     $id = abs((int)$id);
 
-    include_once "$fnsDir/Tasks/getOnUser.php";
-    $task = Tasks\getOnUser($mysqli, $id_users, $id);
+    include_once "$fnsDir/Users/Tasks/get.php";
+    $task = Users\Tasks\get($mysqli, $user, $id);
 
     if (!$task) {
         include_once __DIR__.'/../../fns/bad_request.php';
