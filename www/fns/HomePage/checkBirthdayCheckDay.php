@@ -12,21 +12,20 @@ function checkBirthdayCheckDay ($mysqli, &$user) {
     if ($user->birthdays_check_day == $timeToday) return;
 
     $timeTomorrow = $timeToday + 60 * 60 * 24;
-    $id_users = $user->id_users;
 
-    $count = function ($time) use ($mysqli, $id_users) {
+    $count = function ($time) use ($mysqli, $user) {
         $day = date('j', $time);
         $month = date('n', $time);
-        return \Contacts\countBirthdays($mysqli, $id_users, $day, $month);
+        return \Users\Contacts\countBirthdays($mysqli, $user, $day, $month);
     };
 
-    include_once "$fnsDir/Contacts/countBirthdays.php";
+    include_once "$fnsDir/Users/Contacts/countBirthdays.php";
     $today = $count($timeToday);
     $tomorrow = $count($timeTomorrow);
 
     include_once "$fnsDir/Users/Birthdays/setNumbers.php";
     \Users\Birthdays\setNumbers($mysqli,
-        $id_users, $today, $tomorrow, $timeToday);
+        $user->id_users, $today, $tomorrow, $timeToday);
 
     $user->num_birthdays_today = $today;
     $user->num_birthdays_tomorrow = $tomorrow;
