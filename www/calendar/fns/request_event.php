@@ -12,7 +12,7 @@ function request_event ($mysqli, &$user, &$id, &$event) {
 
     $id = abs((int)$id);
 
-    include_once "$fnsDir/Events/getOnUser.php";
-    $event = Events\getOnUser($mysqli, $user->id_users, $id);
+    include_once "$fnsDir/Users/Events/get.php";
+    $event = Users\Events\get($mysqli, $user, $id);
 
 }

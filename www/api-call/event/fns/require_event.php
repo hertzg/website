@@ -1,6 +1,6 @@
 <?php
 
-function require_event ($mysqli, $id_users) {
+function require_event ($mysqli, $user) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
@@ -9,8 +9,8 @@ function require_event ($mysqli, $id_users) {
 
     $id = abs((int)$id);
 
-    include_once "$fnsDir/Events/getOnUser.php";
-    $event = Events\getOnUser($mysqli, $id_users, $id);
+    include_once "$fnsDir/Users/Events/get.php";
+    $event = Users\Events\get($mysqli, $user, $id);
 
     if (!$event) {
         include_once __DIR__.'/../../fns/bad_request.php';
