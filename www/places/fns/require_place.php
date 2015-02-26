@@ -12,8 +12,8 @@ function require_place ($mysqli, $base = '') {
 
     $id = abs((int)$id);
 
-    include_once "$fnsDir/Places/getOnUser.php";
-    $place = Places\getOnUser($mysqli, $user->id_users, $id);
+    include_once "$fnsDir/Users/Places/get.php";
+    $place = Users\Places\get($mysqli, $user, $id);
 
     if (!$place) {
         unset($_SESSION['places/messages']);

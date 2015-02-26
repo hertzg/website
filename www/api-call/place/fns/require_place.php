@@ -1,6 +1,6 @@
 <?php
 
-function require_place ($mysqli, $id_users) {
+function require_place ($mysqli, $user) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
@@ -9,8 +9,8 @@ function require_place ($mysqli, $id_users) {
 
     $id = abs((int)$id);
 
-    include_once "$fnsDir/Places/getOnUser.php";
-    $place = Places\getOnUser($mysqli, $id_users, $id);
+    include_once "$fnsDir/Users/Places/get.php";
+    $place = Users\Places\get($mysqli, $user, $id);
 
     if (!$place) {
         include_once __DIR__.'/../../fns/bad_request.php';
