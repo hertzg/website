@@ -26,8 +26,8 @@ include_once "$fnsDir/redirect.php";
 $parent_id_folders = abs((int)$parent_id_folders);
 if ($parent_id_folders) {
 
-    include_once "$fnsDir/Folders/getOnUser.php";
-    $parentFolder = Folders\getOnUser($mysqli, $id_users, $parent_id_folders);
+    include_once "$fnsDir/Users/Folders/get.php";
+    $parentFolder = Users\Folders\get($mysqli, $user, $parent_id_folders);
 
     if (!$parentFolder) redirect("./?id_folders=$id_folders");
 

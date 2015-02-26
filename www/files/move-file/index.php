@@ -8,7 +8,6 @@ function create_href ($id, $id_folders) {
 include_once '../fns/require_file.php';
 include_once '../../lib/mysqli.php';
 list($file, $id, $user) = require_file($mysqli);
-$id_users = $user->id_users;
 
 $fnsDir = '../../fns';
 
@@ -19,8 +18,8 @@ $parentFolder = null;
 $id_folders = abs((int)$id_folders);
 if ($id_folders) {
 
-    include_once "$fnsDir/Folders/getOnUser.php";
-    $parentFolder = Folders\getOnUser($mysqli, $id_users, $id_folders);
+    include_once "$fnsDir/Users/Folders/get.php";
+    $parentFolder = Users\Folders\get($mysqli, $user, $id_folders);
 
     if (!$parentFolder) {
         include_once "$fnsDir/redirect.php";
@@ -30,7 +29,7 @@ if ($id_folders) {
 }
 
 include_once "$fnsDir/Folders/indexInUserFolder.php";
-$folders = Folders\indexInUserFolder($mysqli, $id_users, $id_folders);
+$folders = Folders\indexInUserFolder($mysqli, $user->id_users, $id_folders);
 
 include_once "$fnsDir/Page/imageArrowLink.php";
 include_once "$fnsDir/Page/imageLink.php";

@@ -8,7 +8,6 @@ require_same_domain_referer('..');
 include_once '../fns/require_file.php';
 include_once '../../lib/mysqli.php';
 list($file, $id, $user) = require_file($mysqli);
-$id_users = $user->id_users;
 
 include_once "$fnsDir/request_strings.php";
 list($id_folders) = request_strings('id_folders');
@@ -18,15 +17,16 @@ include_once "$fnsDir/redirect.php";
 $id_folders = abs((int)$id_folders);
 if ($id_folders) {
 
-    include_once "$fnsDir/Folders/getOnUser.php";
-    $parentFolder = Folders\getOnUser($mysqli, $id_users, $id_folders);
+    include_once "$fnsDir/Users/Folders/get.php";
+    $parentFolder = Users\Folders\get($mysqli, $user, $id_folders);
 
     if (!$parentFolder) redirect("./?id=$id");
 
 }
 
 include_once "$fnsDir/Files/getByName.php";
-$existingFile = Files\getByName($mysqli, $id_users, $id_folders, $file->name);
+$existingFile = Files\getByName($mysqli,
+    $user->id_users, $id_folders, $file->name);
 
 if ($existingFile) {
     $_SESSION['files/move-file/id_folders'] = $id_folders;

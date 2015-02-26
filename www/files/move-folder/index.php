@@ -3,7 +3,6 @@
 include_once '../fns/require_folder.php';
 include_once '../../lib/mysqli.php';
 list($folder, $id_folders, $user) = require_folder($mysqli);
-$id_users = $user->id_users;
 
 $fnsDir = '../../fns';
 
@@ -14,8 +13,8 @@ $parentFolder = null;
 $parent_id_folders = abs((int)$parent_id_folders);
 if ($parent_id_folders) {
 
-    include_once "$fnsDir/Folders/getOnUser.php";
-    $parentFolder = Folders\getOnUser($mysqli, $id_users, $parent_id_folders);
+    include_once "$fnsDir/Users/Folders/get.php";
+    $parentFolder = Users\Folders\get($mysqli, $user, $parent_id_folders);
 
     if (!$parentFolder) {
         include_once "$fnsDir/redirect.php";
@@ -25,7 +24,8 @@ if ($parent_id_folders) {
 }
 
 include_once "$fnsDir/Folders/indexInUserFolder.php";
-$folders = Folders\indexInUserFolder($mysqli, $id_users, $parent_id_folders);
+$folders = Folders\indexInUserFolder($mysqli,
+    $user->id_users, $parent_id_folders);
 
 include_once "$fnsDir/Page/imageArrowLink.php";
 
