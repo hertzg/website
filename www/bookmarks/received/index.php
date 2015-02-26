@@ -3,12 +3,15 @@
 include_once 'fns/require_received_bookmarks.php';
 $user = require_received_bookmarks();
 
-include_once '../../fns/Users/Bookmarks/Received/clearNumberNew.php';
-include_once '../../lib/mysqli.php';
-Users\Bookmarks\Received\clearNumberNew($mysqli, $user->id_users);
-
 $base = '../../';
 $fnsDir = '../../fns';
+
+include_once '../../lib/mysqli.php';
+
+if ($user->home_num_new_received_bookmarks) {
+    include_once "$fnsDir/Users/Bookmarks/Received/clearNumberNew.php";
+    Users\Bookmarks\Received\clearNumberNew($mysqli, $user->id_users);
+}
 
 unset(
     $_SESSION['bookmarks/errors'],

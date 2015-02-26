@@ -6,9 +6,12 @@ $user = require_received_places();
 $base = '../../';
 $fnsDir = '../../fns';
 
-include_once "$fnsDir/Users/Places/Received/clearNumberNew.php";
 include_once '../../lib/mysqli.php';
-Users\Places\Received\clearNumberNew($mysqli, $user->id_users);
+
+if ($user->home_num_new_received_places) {
+    include_once "$fnsDir/Users/Places/Received/clearNumberNew.php";
+    Users\Places\Received\clearNumberNew($mysqli, $user->id_users);
+}
 
 unset(
     $_SESSION['places/errors'],

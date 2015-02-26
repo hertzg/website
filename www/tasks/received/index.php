@@ -6,9 +6,12 @@ $user = require_received_tasks();
 $base = '../../';
 $fnsDir = '../../fns';
 
-include_once "$fnsDir/Users/Tasks/Received/clearNumberNew.php";
 include_once '../../lib/mysqli.php';
-Users\Tasks\Received\clearNumberNew($mysqli, $user->id_users);
+
+if ($user->home_num_new_received_tasks) {
+    include_once "$fnsDir/Users/Tasks/Received/clearNumberNew.php";
+    Users\Tasks\Received\clearNumberNew($mysqli, $user->id_users);
+}
 
 unset(
     $_SESSION['tasks/errors'],
@@ -18,7 +21,6 @@ unset(
 
 include_once 'fns/create_page.php';
 include_once "$fnsDir/compressed_js_script.php";
-include_once '../../lib/mysqli.php';
 $content =
     create_page($mysqli, $user)
     .compressed_js_script('confirmDialog', $base)

@@ -6,9 +6,12 @@ $user = require_received_contacts();
 $base = '../../';
 $fnsDir = '../../fns';
 
-include_once "$fnsDir/Users/Contacts/Received/clearNumberNew.php";
 include_once '../../lib/mysqli.php';
-Users\Contacts\Received\clearNumberNew($mysqli, $user->id_users);
+
+if ($user->home_num_new_received_contacts) {
+    include_once "$fnsDir/Users/Contacts/Received/clearNumberNew.php";
+    Users\Contacts\Received\clearNumberNew($mysqli, $user->id_users);
+}
 
 unset(
     $_SESSION['contacts/errors'],

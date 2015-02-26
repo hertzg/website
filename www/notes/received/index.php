@@ -6,9 +6,12 @@ $user = require_received_notes();
 $base = '../../';
 $fnsDir = '../../fns';
 
-include_once "$fnsDir/Users/Notes/Received/clearNumberNew.php";
 include_once '../../lib/mysqli.php';
-Users\Notes\Received\clearNumberNew($mysqli, $user->id_users);
+
+if ($user->home_num_new_received_notes) {
+    include_once "$fnsDir/Users/Notes/Received/clearNumberNew.php";
+    Users\Notes\Received\clearNumberNew($mysqli, $user->id_users);
+}
 
 unset(
     $_SESSION['notes/errors'],

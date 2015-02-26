@@ -7,12 +7,17 @@ $id_users = $user->id_users;
 $base = '../../';
 $fnsDir = '../../fns';
 
-include_once "$fnsDir/Users/Folders/Received/clearNumberNew.php";
 include_once '../../lib/mysqli.php';
-Users\Folders\Received\clearNumberNew($mysqli, $id_users);
 
-include_once '../../fns/Users/Files/Received/clearNumberNew.php';
-Users\Files\Received\clearNumberNew($mysqli, $id_users);
+if ($user->home_num_new_received_folders) {
+    include_once "$fnsDir/Users/Folders/Received/clearNumberNew.php";
+    Users\Folders\Received\clearNumberNew($mysqli, $id_users);
+}
+
+if ($user->home_num_new_received_files) {
+    include_once "$fnsDir/Users/Files/Received/clearNumberNew.php";
+    Users\Files\Received\clearNumberNew($mysqli, $id_users);
+}
 
 unset(
     $_SESSION['files/errors'],
