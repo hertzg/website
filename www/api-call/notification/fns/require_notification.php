@@ -1,6 +1,6 @@
 <?php
 
-function require_notification ($mysqli, $id_users) {
+function require_notification ($mysqli, $user) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
@@ -9,8 +9,8 @@ function require_notification ($mysqli, $id_users) {
 
     $id = abs((int)$id);
 
-    include_once "$fnsDir/Notifications/getOnUser.php";
-    $notification = Notifications\getOnUser($mysqli, $id_users, $id);
+    include_once "$fnsDir/Users/Notifications/get.php";
+    $notification = Users\Notifications\get($mysqli, $user, $id);
 
     if (!$notification) {
         include_once __DIR__.'/../../fns/bad_request.php';
