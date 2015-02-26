@@ -12,8 +12,8 @@ function require_token ($mysqli) {
 
     $id = abs((int)$id);
 
-    include_once "$fnsDir/Tokens/getOnUser.php";
-    $token = Tokens\getOnUser($mysqli, $user->id_users, $id);
+    include_once "$fnsDir/Users/Tokens/get.php";
+    $token = Users\Tokens\get($mysqli, $user, $id);
 
     if (!$token) {
         unset($_SESSION['account/tokens/messages']);
