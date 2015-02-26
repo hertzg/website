@@ -12,9 +12,8 @@ function require_received_file ($mysqli, $base = '') {
 
     $id = abs((int)$id);
 
-    include_once "$fnsDir/ReceivedFiles/Committed/getOnReceiver.php";
-    $receivedFile = ReceivedFiles\Committed\getOnReceiver(
-        $mysqli, $user->id_users, $id);
+    include_once "$fnsDir/Users/Files/Received/get.php";
+    $receivedFile = Users\Files\Received\get($mysqli, $user, $id);
 
     if (!$receivedFile) {
         include_once "$fnsDir/redirect.php";

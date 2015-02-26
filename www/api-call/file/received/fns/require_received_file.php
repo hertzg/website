@@ -1,6 +1,6 @@
 <?php
 
-function require_received_file ($mysqli, $id_users) {
+function require_received_file ($mysqli, $user) {
 
     $fnsDir = __DIR__.'/../../../../fns';
 
@@ -9,9 +9,8 @@ function require_received_file ($mysqli, $id_users) {
 
     $id = abs((int)$id);
 
-    include_once "$fnsDir/ReceivedFiles/Committed/getOnReceiver.php";
-    $receivedFile = ReceivedFiles\Committed\getOnReceiver(
-        $mysqli, $id_users, $id);
+    include_once "$fnsDir/Users/Files/Received/get.php";
+    $receivedFile = Users\Files\Received\get($mysqli, $user, $id);
 
     if (!$receivedFile) {
         include_once __DIR__.'/../../../fns/bad_request.php';
