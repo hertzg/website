@@ -12,8 +12,8 @@ function require_schedule ($mysqli) {
 
     $id = abs((int)$id);
 
-    include_once "$fnsDir/Schedules/getOnUser.php";
-    $schedule = Schedules\getOnUser($mysqli, $user->id_users, $id);
+    include_once "$fnsDir/Users/Schedules/get.php";
+    $schedule = Users\Schedules\get($mysqli, $user, $id);
 
     if (!$schedule) {
         $_SESSION['schedules/errors'] = ['The schedule no longer exists.'];
