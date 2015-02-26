@@ -4,7 +4,7 @@ include_once '../fns/require_api_key.php';
 list($apiKey, $user, $mysqli) = require_api_key('can_read_files');
 
 include_once '../fns/require_parent_folder.php';
-list($folder, $parent_id) = require_parent_folder($mysqli, $user->id_users);
+list($folder, $parent_id) = require_parent_folder($mysqli, $user);
 
 include_once '../../fns/Users/Folders/index.php';
 $folders = Users\Folders\index($mysqli, $user, $parent_id);
