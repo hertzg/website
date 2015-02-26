@@ -1,6 +1,6 @@
 <?php
 
-function require_file ($mysqli, $id_users) {
+function require_file ($mysqli, $user) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
@@ -9,8 +9,8 @@ function require_file ($mysqli, $id_users) {
 
     $id = abs((int)$id);
 
-    include_once "$fnsDir/Files/getOnUser.php";
-    $file = Files\getOnUser($mysqli, $id_users, $id);
+    include_once "$fnsDir/Users/Files/get.php";
+    $file = Users\Files\get($mysqli, $user, $id);
 
     if (!$file) {
         include_once __DIR__.'/../../fns/bad_request.php';

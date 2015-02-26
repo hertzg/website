@@ -2,13 +2,13 @@
 
 include_once '../fns/require_api_key.php';
 list($apiKey, $user, $mysqli) = require_api_key('can_write_files');
-$id_users = $user->id_users;
 
 include_once 'fns/require_file.php';
-$file = require_file($mysqli, $id_users);
+$file = require_file($mysqli, $user);
 
 include_once '../fns/require_receiver_user.php';
-$receiver_user = require_receiver_user($mysqli, $id_users, 'can_send_file');
+$receiver_user = require_receiver_user($mysqli,
+    $user->id_users, 'can_send_file');
 
 include_once '../../fns/Users/Files/send.php';
 Users\Files\send($mysqli, $user, $receiver_user->id_users, $file);

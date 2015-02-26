@@ -4,7 +4,7 @@ include_once '../fns/require_api_key.php';
 list($apiKey, $user, $mysqli) = require_api_key('can_write_files');
 
 include_once 'fns/require_file.php';
-$file = require_file($mysqli, $user->id_users);
+$file = require_file($mysqli, $user);
 
 include_once '../../fns/Users/Files/delete.php';
 Users\Files\delete($mysqli, $file, $apiKey);

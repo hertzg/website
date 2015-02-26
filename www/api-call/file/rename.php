@@ -5,7 +5,7 @@ list($apiKey, $user, $mysqli) = require_api_key('can_write_files');
 $id_users = $user->id_users;
 
 include_once 'fns/require_file.php';
-$file = require_file($mysqli, $id_users);
+$file = require_file($mysqli, $user);
 $id = $file->id_files;
 
 include_once '../fns/require_parent_folder.php';
