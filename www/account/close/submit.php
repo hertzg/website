@@ -37,6 +37,8 @@ include_once "$fnsDir/Users/Account/Close/close.php";
 include_once '../../lib/mysqli.php';
 Users\Account\Close\close($mysqli, $user);
 
+unset($_SESSION['user']);
+
 $_SESSION['sign-in/messages'] = ['Your account has been closed.'];
 unset($_SESSION['sign-in/errors']);
 
