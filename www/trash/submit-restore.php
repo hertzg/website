@@ -19,11 +19,11 @@ if ($type == 'bookmark') {
     Users\Contacts\addDeleted($mysqli, $user, $data);
 } elseif ($type == 'file') {
     include_once '../fns/Users/Files/addDeleted.php';
-    Users\Files\addDeleted($mysqli, $id_users, $data);
+    Users\Files\addDeleted($mysqli, $user, $data);
 } elseif ($type == 'folder') {
 
     include_once '../fns/Users/Folders/addDeleted.php';
-    Users\Folders\addDeleted($mysqli, $id_users, $data);
+    Users\Folders\addDeleted($mysqli, $user, $data);
 
     include_once '../fns/DeletedFolders/deleteOnDeletedItem.php';
     DeletedFolders\deleteOnDeletedItem($mysqli, $id);

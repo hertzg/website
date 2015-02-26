@@ -2,18 +2,18 @@
 
 namespace Users\Folders;
 
-function addDeleted ($mysqli, $id_users, $folder) {
+function addDeleted ($mysqli, $user, $folder) {
 
     $num_folders = 1;
     $id_folders = $folder->id;
+    $id_users = $user->id_users;
     $parent_id_folders = $folder->parent_id_folders;
     $name = $folder->name;
     $fnsDir = __DIR__.'/../..';
 
     if ($parent_id_folders) {
-        include_once "$fnsDir/Folders/getOnUser.php";
-        $parentFolder = \Folders\getOnUser(
-            $mysqli, $id_users, $parent_id_folders);
+        include_once "$fnsDir/Users/Folders/get.php";
+        $parentFolder = \Users\Folders\get($mysqli, $user, $parent_id_folders);
         if (!$parentFolder) $parent_id_folders = 0;
     }
 
@@ -27,7 +27,9 @@ function addDeleted ($mysqli, $id_users, $folder) {
         $folder->rename_time, $folder->revision);
 
     $restore = function ($parent_id_folders, $restore) use ($mysqli,
-        $id_users, $fnsDir, &$num_folders) {
+        $user, $fnsDir, &$num_folders) {
+
+        $id_users = $user->id_users;
 
         include_once "$fnsDir/DeletedFolders/indexOnParent.php";
         $deletedFolders = \DeletedFolders\indexOnParent(
@@ -50,7 +52,7 @@ function addDeleted ($mysqli, $id_users, $folder) {
         if ($deletedFiles) {
             include_once __DIR__.'/../Files/addDeleted.php';
             foreach ($deletedFiles as $deletedFile) {
-                \Users\Files\addDeleted($mysqli, $id_users, (object)[
+                \Users\Files\addDeleted($mysqli, $user, (object)[
                     'id' => $deletedFile->id_files,
                     'id_folders' => $parent_id_folders,
                     'content_type' => $deletedFile->content_type,

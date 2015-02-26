@@ -2,14 +2,15 @@
 
 namespace Users\Files;
 
-function addDeleted ($mysqli, $id_users, $data) {
+function addDeleted ($mysqli, $user, $data) {
 
     $id_folders = $data->id_folders;
+    $id_users = $user->id_users;
     $size = $data->size;
     $fnsDir = __DIR__.'/../..';
 
-    include_once "$fnsDir/Folders/getOnUser.php";
-    $folder = \Folders\getOnUser($mysqli, $id_users, $id_folders);
+    include_once "$fnsDir/Users/Folders/get.php";
+    $folder = \Users\Folders\get($mysqli, $user, $id_folders);
     if (!$folder) $id_folders = 0;
 
     include_once "$fnsDir/Files/addDeleted.php";
