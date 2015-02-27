@@ -24,9 +24,8 @@ $errors = [];
 
 if ($name === '') $errors[] = 'Enter name.';
 else {
-    include_once "$fnsDir/ApiKeys/getOnUserByName.php";
-    $existingApiKey = ApiKeys\getOnUserByName(
-        $mysqli, $user->id_users, $name, $id);
+    include_once "$fnsDir/Users/ApiKeys/getByName.php";
+    $existingApiKey = Users\ApiKeys\getByName($mysqli, $user, $name, $id);
     if ($existingApiKey) {
         $errors[] = 'An API key with the same name already exists.';
     }

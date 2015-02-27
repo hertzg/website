@@ -7,7 +7,6 @@ require_same_domain_referer('./');
 
 include_once "$fnsDir/require_user.php";
 $user = require_user('../../../');
-$id_users = $user->id_users;
 
 include_once '../fns/request_api_key_params.php';
 list($name, $expires, $expire_time, $bookmark_access,
@@ -19,9 +18,9 @@ $errors = [];
 
 if ($name === '') $errors[] = 'Enter name.';
 else {
-    include_once "$fnsDir/ApiKeys/getOnUserByName.php";
+    include_once "$fnsDir/Users/ApiKeys/getByName.php";
     include_once '../../../lib/mysqli.php';
-    $apiKey = ApiKeys\getOnUserByName($mysqli, $id_users, $name);
+    $apiKey = Users\ApiKeys\getByName($mysqli, $user, $name);
     if ($apiKey) $errors[] = 'An API key with this name already exists.';
 }
 
@@ -67,7 +66,7 @@ parse_read_write($task_access, $can_read_tasks, $can_write_tasks);
 parse_read_write($wallet_access, $can_read_wallets, $can_write_wallets);
 
 include_once "$fnsDir/Users/ApiKeys/add.php";
-$id = Users\ApiKeys\add($mysqli, $id_users, $name, $expire_time,
+$id = Users\ApiKeys\add($mysqli, $user->id_users, $name, $expire_time,
     $can_read_bookmarks, $can_read_channels, $can_read_contacts,
     $can_read_events, $can_read_files, $can_read_notes,
     $can_read_notifications, $can_read_places, $can_read_schedules,
