@@ -25,7 +25,6 @@ $errors = [];
 if ($name === '') $errors[] = 'Enter name.';
 else {
     include_once "$fnsDir/ApiKeys/getOnUserByName.php";
-    include_once '../../../lib/mysqli.php';
     $existingApiKey = ApiKeys\getOnUserByName(
         $mysqli, $user->id_users, $name, $id);
     if ($existingApiKey) {

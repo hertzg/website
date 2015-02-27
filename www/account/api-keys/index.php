@@ -1,21 +1,22 @@
 <?php
 
 $base = '../../';
+$fnsDir = '../../fns';
 
-include_once '../../fns/require_user.php';
+include_once "$fnsDir/require_user.php";
 $user = require_user($base);
 
 $items = [];
 if ($user->num_api_keys) {
 
-    include_once '../../fns/ApiKeys/indexOnUser.php';
+    include_once "$fnsDir/ApiKeys/indexOnUser.php";
     include_once '../../lib/mysqli.php';
     $apiKeys = ApiKeys\indexOnUser($mysqli, $user->id_users);
 
-    include_once '../../fns/user_time_today.php';
+    include_once "$fnsDir/user_time_today.php";
     $time_today = user_time_today($user);
 
-    include_once '../../fns/Page/imageArrowLinkWithDescription.php';
+    include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
     foreach ($apiKeys as $apiKey) {
 
         $access_time = $apiKey->access_time;
@@ -29,7 +30,7 @@ if ($user->num_api_keys) {
         if ($access_time === null) {
             $descriptions[] = 'Never accessed.';
         } else {
-            include_once '../../fns/date_ago.php';
+            include_once "$fnsDir/date_ago.php";
             $descriptions[] = 'Last accessed '.date_ago($access_time).'.';
         }
         $description = join(' ', $descriptions);
@@ -42,7 +43,7 @@ if ($user->num_api_keys) {
     }
 
 } else {
-    include_once '../../fns/Page/info.php';
+    include_once "$fnsDir/Page/info.php";
     $items[] = Page\info('No keys');
 }
 
@@ -53,10 +54,10 @@ unset(
     $_SESSION['account/messages']
 );
 
-include_once '../../fns/Page/newItemButton.php';
-include_once '../../fns/Page/sessionErrors.php';
-include_once '../../fns/Page/sessionMessages.php';
-include_once '../../fns/Page/tabs.php';
+include_once "$fnsDir/Page/newItemButton.php";
+include_once "$fnsDir/Page/sessionErrors.php";
+include_once "$fnsDir/Page/sessionMessages.php";
+include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
     [
         [
@@ -71,5 +72,5 @@ $content = Page\tabs(
     Page\newItemButton('new/', 'API Key')
 );
 
-include_once '../../fns/echo_page.php';
+include_once "$fnsDir/echo_page.php";
 echo_page($user, 'API Keys', $content, $base);
