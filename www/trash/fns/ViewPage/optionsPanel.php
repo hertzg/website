@@ -12,8 +12,8 @@ function optionsPanel ($typeName, $id) {
             .\Page\imageLink('Purge', "../purge/?id=$id", 'purge')
         .'</div>';
 
-    $href = "../submit-restore.php?id=$id";
-    $restoreLink = \Page\imageLink('Restore', $href, 'restore-defaults');
+    $restoreLink = \Page\imageLink('Restore',
+        "../submit-restore.php?id=$id", 'restore-defaults');
 
     include_once "$fnsDir/Page/staticTwoColumns.php";
     $optionsContent = \Page\staticTwoColumns($restoreLink, $purgeLink);

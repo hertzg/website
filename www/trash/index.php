@@ -3,7 +3,7 @@
 $base = '../';
 $fnsDir = '../fns';
 
-include_once '../fns/require_user.php';
+include_once "$fnsDir/require_user.php";
 $user = require_user($base);
 
 unset($_SESSION['home/messages']);
@@ -29,6 +29,4 @@ if ($user->num_deleted_items) {
 
 include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";
-echo_page($user, 'Trash', $content, $base, [
-    'head' => $head,
-]);
+echo_page($user, 'Trash', $content, $base, ['head' => $head]);
