@@ -228,7 +228,7 @@ function ensure ($mysqli) {
             'type' => 'varbinary(32)',
         ],
         'reset_password_key' => [
-            'type' => 'binary(16)',
+            'type' => "binary($maxLengths[reset_password_key])",
             'nullable' => true,
         ],
         'reset_password_key_time' => [
@@ -315,7 +315,7 @@ function ensure ($mysqli) {
             'collation' => 'ascii_bin',
         ],
         'verify_email_key' => [
-            'type' => 'binary(16)',
+            'type' => "binary($maxLengths[verify_email_key])",
             'nullable' => true,
         ],
         'verify_email_key_time' => [

@@ -1,25 +1,27 @@
 <?php
 
-include_once '../fns/require_same_domain_referer.php';
+$fnsDir = '../fns';
+
+include_once "$fnsDir/require_same_domain_referer.php";
 require_same_domain_referer('./');
 
-include_once '../fns/require_guest_user.php';
+include_once "$fnsDir/require_guest_user.php";
 require_guest_user('../');
 
-include_once '../fns/request_strings.php';
+include_once "$fnsDir/request_strings.php";
 list($email) = request_strings('email');
 
-include_once '../fns/str_collapse_spaces.php';
+include_once "$fnsDir/str_collapse_spaces.php";
 $email = str_collapse_spaces($email);
 
 $errors = [];
 
 if ($email === '') $errors[] = 'Enter email.';
 else {
-    include_once '../fns/Email/isValid.php';
+    include_once "$fnsDir/Email/isValid.php";
     if (Email\isValid($email)) {
 
-        include_once '../fns/Users/getByEmail.php';
+        include_once "$fnsDir/Users/getByEmail.php";
         include_once '../lib/mysqli.php';
         $user = Users\getByEmail($mysqli, $email);
 
@@ -32,10 +34,10 @@ else {
     }
 }
 
-include_once '../fns/Captcha/check.php';
+include_once "$fnsDir/Captcha/check.php";
 Captcha\check($errors);
 
-include_once '../fns/redirect.php';
+include_once "$fnsDir/redirect.php";
 
 if ($errors) {
     $_SESSION['email-reset-password/errors'] = $errors;
@@ -48,12 +50,13 @@ unset(
     $_SESSION['email-reset-password/values']
 );
 
-$key = openssl_random_pseudo_bytes(16);
+include_once "$fnsDir/Users/maxLengths.php";
+$key = openssl_random_pseudo_bytes(Users\maxLengths()['reset_password_key']);
 
-include_once '../fns/Users/editResetPasswordKey.php';
+include_once "$fnsDir/Users/editResetPasswordKey.php";
 Users\editResetPasswordKey($mysqli, $user->id_users, $key);
 
-include_once '../fns/Captcha/reset.php';
+include_once "$fnsDir/Captcha/reset.php";
 Captcha\reset();
 
 include_once 'fns/send_email.php';

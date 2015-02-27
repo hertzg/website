@@ -30,7 +30,8 @@ unset($_SESSION['account/verify-email/errors']);
 include_once "$fnsDir/Captcha/reset.php";
 Captcha\reset();
 
-$key = openssl_random_pseudo_bytes(16);
+include_once "$fnsDir/Users/maxLengths.php";
+$key = openssl_random_pseudo_bytes(Users\maxLengths()['verify_email_key']);
 
 include_once "$fnsDir/Users/editVerifyEmailKey.php";
 include_once '../../lib/mysqli.php';
