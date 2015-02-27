@@ -1,20 +1,23 @@
 <?php
 
-include_once '../../fns/require_same_domain_referer.php';
+$fnsDir = '../../fns';
+
+include_once "$fnsDir/require_same_domain_referer.php";
 require_same_domain_referer('./');
 
-include_once '../../fns/require_user.php';
+include_once "$fnsDir/require_user.php";
 $user = require_user('../../');
+$id_users = $user->id_users;
 
-include_once '../../fns/redirect.php';
+include_once "$fnsDir/redirect.php";
 if ($user->email_verified) redirect('..');
 
-include_once '../../fns/request_strings.php';
+include_once "$fnsDir/request_strings.php";
 list($captcha) = request_strings('captcha');
 
 $errors = [];
 
-include_once '../../fns/Captcha/check.php';
+include_once "$fnsDir/Captcha/check.php";
 Captcha\check($errors);
 
 if ($errors) {
@@ -24,24 +27,24 @@ if ($errors) {
 
 unset($_SESSION['account/verify-email/errors']);
 
-include_once '../../fns/Captcha/reset.php';
+include_once "$fnsDir/Captcha/reset.php";
 Captcha\reset();
 
 $key = md5(uniqid(), true);
 
-include_once '../../fns/Users/editVerifyEmailKey.php';
+include_once "$fnsDir/Users/editVerifyEmailKey.php";
 include_once '../../lib/mysqli.php';
-Users\editVerifyEmailKey($mysqli, $user->id_users, $key);
+Users\editVerifyEmailKey($mysqli, $id_users, $key);
 
-include_once '../../fns/DomainName/get.php';
+include_once "$fnsDir/DomainName/get.php";
 $domainName = DomainName\get();
 
-include_once '../../fns/SiteBase/get.php';
+include_once "$fnsDir/SiteBase/get.php";
 $siteBase = SiteBase\get();
 
 $href = htmlspecialchars(
     "http://$domainName{$siteBase}verify-email/?".http_build_query([
-        'id_users' => $user->id_users,
+        'id_users' => $id_users,
         'key' => bin2hex($key),
     ])
 );

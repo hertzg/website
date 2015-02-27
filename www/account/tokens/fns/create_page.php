@@ -9,10 +9,9 @@ function create_page ($mysqli, $user, $base = '') {
 
     $options = [];
     if (!$token) {
-        $title = 'Remember Current Session';
-        $href = "{$base}submit-remember.php";
         include_once "$fnsDir/Page/imageLink.php";
-        $options[] = Page\imageLink($title, $href, 'create-token');
+        $options[] = Page\imageLink('Remember Current Session',
+            "{$base}submit-remember.php", 'create-token');
     }
 
     $items = [];
@@ -22,10 +21,10 @@ function create_page ($mysqli, $user, $base = '') {
         $tokens = Tokens\indexOnUser($mysqli, $user->id_users);
 
         include_once "$fnsDir/Page/imageLink.php";
-        $title = 'Delete All Sessions';
         $options[] =
             '<div id="deleteAllLink">'
-                .Page\imageLink($title, "{$base}delete-all/", 'trash-bin')
+                .Page\imageLink('Delete All Sessions',
+                    "{$base}delete-all/", 'trash-bin')
             .'</div>';
 
         $icon = 'token';

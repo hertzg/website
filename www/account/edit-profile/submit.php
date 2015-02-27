@@ -1,34 +1,36 @@
 <?php
 
-include_once '../../fns/require_same_domain_referer.php';
+$fnsDir = '../../fns';
+
+include_once "$fnsDir/require_same_domain_referer.php";
 require_same_domain_referer('./');
 
-include_once '../../fns/require_user.php';
+include_once "$fnsDir/require_user.php";
 $user = require_user('../../');
 $id_users = $user->id_users;
 
-include_once '../../fns/request_strings.php';
+include_once "$fnsDir/request_strings.php";
 list($username, $email, $full_name, $timezone) = request_strings(
     'username', 'email', 'full_name', 'timezone');
 
-include_once '../../fns/Timezone/isValid.php';
+include_once "$fnsDir/Timezone/isValid.php";
 if (!Timezone\isValid($timezone)) $timezone = 0;
 
-include_once '../../fns/str_collapse_spaces.php';
+include_once "$fnsDir/str_collapse_spaces.php";
 $full_name = str_collapse_spaces($full_name);
 
 $errors = [];
 include_once '../../lib/mysqli.php';
 
-include_once '../../fns/check_username.php';
+include_once "$fnsDir/check_username.php";
 check_username($mysqli, $username, $errors, $id_users);
 
 $email = str_collapse_spaces($email);
 $email = mb_strtolower($email, 'UTF-8');
 if ($email !== '') {
-    include_once '../../fns/Email/isValid.php';
+    include_once "$fnsDir/Email/isValid.php";
     if (Email\isValid($email)) {
-        include_once '../../fns/Users/getByEmail.php';
+        include_once "$fnsDir/Users/getByEmail.php";
         if (Users\getByEmail($mysqli, $email, $id_users)) {
             $errors[] = 'A username with this email is already registered.'
                 .' Try another.';
@@ -38,7 +40,7 @@ if ($email !== '') {
     }
 }
 
-include_once '../../fns/redirect.php';
+include_once "$fnsDir/redirect.php";
 
 if ($errors) {
     $_SESSION['account/edit-profile/errors'] = $errors;
@@ -56,7 +58,7 @@ unset(
     $_SESSION['account/edit-profile/values']
 );
 
-include_once '../../fns/Users/editProfile.php';
+include_once "$fnsDir/Users/editProfile.php";
 Users\editProfile($mysqli, $id_users, $username, $email, $full_name, $timezone);
 
 if ($username !== $user->username) {
@@ -65,7 +67,7 @@ if ($username !== $user->username) {
 }
 
 if ($email !== $user->email) {
-    include_once '../../fns/Users/Email/invalidate.php';
+    include_once "$fnsDir/Users/Email/invalidate.php";
     Users\Email\invalidate($mysqli, $id_users);
 }
 

@@ -21,7 +21,6 @@ foreach ($signins as $signin) {
         .'<div style="color: #777; font-size: 12px; line-height: 14px">'
             .ucfirst(date_ago($signin->insert_time))
         .'</div>';
-
     $items[] = create_image_text($text, 'sign-in');
 }
 

@@ -30,9 +30,8 @@ function create_options_panel ($user) {
     $num_connections = $user->num_connections;
     if ($num_connections) {
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
-        $description = "$num_connections total.";
-        $options[] = Page\imageArrowLinkWithDescription(
-            $title, $description, $href, $icon, $optionsParam);
+        $options[] = Page\imageArrowLinkWithDescription($title,
+            "$num_connections total.", $href, $icon, $optionsParam);
     } else {
         $options[] = Page\imageArrowLink($title, $href, $icon, $optionsParam);
     }
@@ -44,9 +43,8 @@ function create_options_panel ($user) {
     $num_api_keys = $user->num_api_keys;
     if ($num_api_keys) {
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
-        $description = "$num_api_keys total.";
-        $options[] = Page\imageArrowLinkWithDescription(
-            $title, $description, $href, $icon, $optionsParam);
+        $options[] = Page\imageArrowLinkWithDescription($title,
+            "$num_api_keys total.", $href, $icon, $optionsParam);
     } else {
         $options[] = Page\imageArrowLink($title, $href, $icon, $optionsParam);
     }

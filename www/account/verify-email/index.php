@@ -1,16 +1,17 @@
 <?php
 
 $base = '../../';
+$fnsDir = '../../fns';
 
-include_once '../../fns/require_user.php';
+include_once "$fnsDir/require_user.php";
 $user = require_user($base);
 
 unset($_SESSION['account/messages']);
 
-include_once '../../fns/Form/button.php';
-include_once '../../fns/Form/captcha.php';
-include_once '../../fns/Page/sessionErrors.php';
-include_once '../../fns/Page/tabs.php';
+include_once "$fnsDir/Form/button.php";
+include_once "$fnsDir/Form/captcha.php";
+include_once "$fnsDir/Page/sessionErrors.php";
+include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
     [
         [
@@ -26,5 +27,5 @@ $content = Page\tabs(
     .'</form>'
 );
 
-include_once '../../fns/echo_page.php';
+include_once "$fnsDir/echo_page.php";
 echo_page($user, 'Verify Email', $content, $base);

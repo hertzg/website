@@ -4,7 +4,7 @@ $base = '../../';
 $fnsDir = '../../fns';
 
 include_once "$fnsDir/require_user.php";
-$user = require_user('../../');
+$user = require_user($base);
 
 include_once 'fns/create_page.php';
 include_once '../../lib/mysqli.php';
@@ -28,6 +28,4 @@ if ($user->num_tokens) {
 unset($_SESSION['account/messages']);
 
 include_once "$fnsDir/echo_page.php";
-echo_page($user, 'Remembered Sessions', $content, $base, [
-    'head' => $head,
-]);
+echo_page($user, 'Remembered Sessions', $content, $base, ['head' => $head]);

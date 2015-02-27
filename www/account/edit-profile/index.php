@@ -1,8 +1,9 @@
 <?php
 
 $base = '../../';
+$fnsDir = '../../fns';
 
-include_once '../../fns/require_user.php';
+include_once "$fnsDir/require_user.php";
 $user = require_user($base);
 
 $key = 'account/edit-profile/values';
@@ -11,14 +12,14 @@ else $values = (array)$user;
 
 unset($_SESSION['account/messages']);
 
-include_once '../../fns/Users/maxLengths.php';
+include_once "$fnsDir/Users/maxLengths.php";
 $maxLengths = Users\maxLengths();
 
-include_once '../../fns/Form/button.php';
-include_once '../../fns/Form/textfield.php';
-include_once '../../fns/Form/timezoneSelect.php';
-include_once '../../fns/Page/sessionErrors.php';
-include_once '../../fns/Page/tabs.php';
+include_once "$fnsDir/Form/button.php";
+include_once "$fnsDir/Form/textfield.php";
+include_once "$fnsDir/Form/timezoneSelect.php";
+include_once "$fnsDir/Page/sessionErrors.php";
+include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
     [
         [
@@ -52,5 +53,5 @@ $content = Page\tabs(
     .'</form>'
 );
 
-include_once '../../fns/echo_page.php';
+include_once "$fnsDir/echo_page.php";
 echo_page($user, 'Edit Profile', $content, $base);
