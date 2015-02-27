@@ -18,7 +18,7 @@ function check_mysql_config ($host,
         $escapedDb = $mysqli->real_escape_string($db);
         $sql = 'select count(*) total from information_schema.schemata'
             ." where schema_name like '$escapedDb'";
-        include_once '../../fns/mysqli_single_object.php';
+        include_once __DIR__.'/../../fns/mysqli_single_object.php';
         $row = mysqli_single_object($mysqli, $sql);
         if (!$row->total) {
             $ok = $mysqli->query("create database `$escapedDb`");

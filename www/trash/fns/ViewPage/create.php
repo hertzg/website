@@ -69,7 +69,7 @@ function create ($deletedItem, $user, &$title, &$head, &$scripts) {
         $content = join('<div class="hr"></div>', $items);
     }
 
-    include_once '../fns/item_type_title.php';
+    include_once __DIR__.'/../item_type_title.php';
     $title = item_type_title($type)." #$data->id";
 
     include_once __DIR__.'/optionsPanel.php';
