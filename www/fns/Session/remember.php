@@ -4,7 +4,7 @@ namespace Session;
 
 function remember ($mysqli, $user) {
 
-    $token_text = md5(uniqid(), true);
+    $token_text = openssl_random_pseudo_bytes(16);
 
     $key = 'HTTP_USER_AGENT';
     if (array_key_exists($key, $_SERVER)) $user_agent = $_SERVER[$key];

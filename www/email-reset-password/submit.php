@@ -48,7 +48,7 @@ unset(
     $_SESSION['email-reset-password/values']
 );
 
-$key = md5(uniqid(), true);
+$key = openssl_random_pseudo_bytes(16);
 
 include_once '../fns/Users/editResetPasswordKey.php';
 Users\editResetPasswordKey($mysqli, $user->id_users, $key);
