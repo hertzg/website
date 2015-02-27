@@ -2,43 +2,42 @@
 
 function update_username ($mysqli, $id_users, $username) {
 
-    $data = [
-        ['channels', 'id_users', 'username'],
-        ['connections', 'connected_id_users', 'username'],
-        ['received_bookmarks', 'sender_id_users', 'sender_username'],
-        ['received_contacts', 'sender_id_users', 'sender_username'],
-        ['received_files', 'sender_id_users', 'sender_username'],
-        ['received_folders', 'sender_id_users', 'sender_username'],
-        ['received_notes', 'sender_id_users', 'sender_username'],
-        ['received_tasks', 'sender_id_users', 'sender_username'],
-        ['subscribed_channels', 'publisher_id_users', 'publisher_username'],
-        ['subscribed_channels', 'subscriber_id_users', 'subscriber_username'],
-    ];
+    $fnsDir = __DIR__.'/../../../fns';
 
-    $username = $mysqli->real_escape_string($username);
+    include_once "$fnsDir/Channels/editUser.php";
+    Channels\editUser($mysqli, $id_users, $username);
 
-    foreach ($data as $values) {
-        list($table, $id_column, $username_column) = $values;
-        $sql = "update $table set $username_column = '$username'"
-            ." where $id_column = $id_users";
-        $mysqli->query($sql) || trigger_error($mysqli->error);
-    }
+    include_once "$fnsDir/Connections/editConnectedUser.php";
+    Connections\editConnectedUser($mysqli, $id_users, $username);
 
-    $sql = 'select * from deleted_items where data_type in'
-        ." ('receivedBookmark', 'receivedContact', 'receivedFile',"
-        ." 'receivedFolder', 'receivedNote', 'receivedTask')";
-    include_once __DIR__.'/../../../fns/mysqli_query_object.php';
-    $deletedItems = mysqli_query_object($mysqli, $sql);
+    include_once "$fnsDir/ReceivedBookmarks/editSenderUser.php";
+    ReceivedBookmarks\editSenderUser($mysqli, $id_users, $username);
 
-    foreach ($deletedItems as $deletedItem) {
-        $data = json_decode($deletedItem->data_json);
-        if ($data->sender_id_users == $id_users) {
-            $data->sender_username = $username;
-            $data_json = json_encode($data);
-            $sql = "update deleted_items set data_json = '$data_json'"
-                ." where id = $deletedItem->id";
-            $mysqli->query($sql) || trigger_error($mysqli->error);
-        }
-    }
+    include_once "$fnsDir/ReceivedContacts/editSenderUser.php";
+    ReceivedContacts\editSenderUser($mysqli, $id_users, $username);
+
+    include_once "$fnsDir/ReceivedFiles/editSenderUser.php";
+    ReceivedFiles\editSenderUser($mysqli, $id_users, $username);
+
+    include_once "$fnsDir/ReceivedFolders/editSenderUser.php";
+    ReceivedFolders\editSenderUser($mysqli, $id_users, $username);
+
+    include_once "$fnsDir/ReceivedNotes/editSenderUser.php";
+    ReceivedNotes\editSenderUser($mysqli, $id_users, $username);
+
+    include_once "$fnsDir/ReceivedPlaces/editSenderUser.php";
+    ReceivedPlaces\editSenderUser($mysqli, $id_users, $username);
+
+    include_once "$fnsDir/ReceivedTasks/editSenderUser.php";
+    ReceivedTasks\editSenderUser($mysqli, $id_users, $username);
+
+    include_once "$fnsDir/SubscribedChannels/editPublisherUser.php";
+    SubscribedChannels\editPublisherUser($mysqli, $id_users, $username);
+
+    include_once "$fnsDir/SubscribedChannels/editSubscriberUser.php";
+    SubscribedChannels\editSubscriberUser($mysqli, $id_users, $username);
+
+    include_once "$fnsDir/DeletedItems/editSenderUser.php";
+    DeletedItems\editSenderUser($mysqli, $id_users, $username);
 
 }
