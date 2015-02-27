@@ -4,13 +4,16 @@ namespace Session;
 
 function remember ($mysqli, $user) {
 
-    $token_text = openssl_random_pseudo_bytes(16);
+    $fnsDir = __DIR__.'/..';
+
+    include_once "$fnsDir/Tokens/maxLengths.php";
+    $maxLengths = \Tokens\maxLengths();
+
+    $token_text = openssl_random_pseudo_bytes($maxLengths['token_text']);
 
     $key = 'HTTP_USER_AGENT';
     if (array_key_exists($key, $_SERVER)) $user_agent = $_SERVER[$key];
     else $user_agent = null;
-
-    $fnsDir = __DIR__.'/..';
 
     include_once "$fnsDir/Users/Tokens/add.php";
     $id = \Users\Tokens\add($mysqli, $user->id_users,

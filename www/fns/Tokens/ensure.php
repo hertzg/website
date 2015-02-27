@@ -4,10 +4,10 @@ namespace Tokens;
 
 function ensure ($mysqli) {
 
-    $fnsDir = __DIR__.'/..';
+    include_once __DIR__.'/maxLengths.php';
+    $maxLengths = maxLengths();
 
-    include_once "$fnsDir/Table/ensure.php";
-    include_once "$fnsDir/Username/maxLength.php";
+    include_once __DIR__.'/../Table/ensure.php';
     return \Table\ensure($mysqli, 'tokens', [
         'access_time' => [
             'type' => 'bigint(20) unsigned',
@@ -23,10 +23,10 @@ function ensure ($mysqli) {
             'type' => 'bigint(20) unsigned',
         ],
         'token_text' => [
-            'type' => 'binary(16)',
+            'type' => "binary($maxLengths[token_text])",
         ],
         'username' => [
-            'type' => 'varchar('.\Username\maxLength().')',
+            'type' => "varchar($maxLengths[username])",
             'characterSet' => 'ascii',
             'collation' => 'ascii_bin',
         ],
