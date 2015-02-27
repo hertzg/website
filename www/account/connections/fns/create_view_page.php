@@ -15,7 +15,7 @@ function create_view_page ($connection) {
             .Page\imageLink('Delete', "../delete/?id=$id", 'trash-bin')
         .'</div>';
 
-    include_once '../fns/format_permissions.php';
+    include_once __DIR__.'/../fns/format_permissions.php';
     $permissions = format_permissions($connection->can_send_bookmark,
         $connection->can_send_channel, $connection->can_send_contact,
         $connection->can_send_file, $connection->can_send_note,

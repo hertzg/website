@@ -1,19 +1,20 @@
 <?php
 
 $base = '../../';
+$fnsDir = '../../fns';
 
-include_once '../../fns/require_user.php';
+include_once "$fnsDir/require_user.php";
 $user = require_user($base);
 
 $items = [];
 
 if ($user->num_connections) {
 
-    include_once '../../fns/Connections/indexOnUser.php';
+    include_once "$fnsDir/Connections/indexOnUser.php";
     include_once '../../lib/mysqli.php';
     $connections = Connections\indexOnUser($mysqli, $user->id_users);
 
-    include_once '../../fns/Page/imageArrowLink.php';
+    include_once "$fnsDir/Page/imageArrowLink.php";
     foreach ($connections as $connection) {
         $id = $connection->id;
         $items[] = Page\imageArrowLink(htmlspecialchars($connection->username),
@@ -21,15 +22,14 @@ if ($user->num_connections) {
     }
 
 } else {
-    include_once '../../fns/Page/info.php';
+    include_once "$fnsDir/Page/info.php";
     $items[] = Page\info('No connections');
 }
 
-include_once '../../fns/Page/imageArrowLinkWithDescription.php';
-$title = 'Default Connection';
-$description = 'Connection to other users.';
-$items[] = Page\imageArrowLinkWithDescription($title,
-    $description, 'default/', 'connection', ['id' => 'default']);
+include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
+$items[] = Page\imageArrowLinkWithDescription(
+    'Default Connection', 'Connection to other users.',
+    'default/', 'connection', ['id' => 'default']);
 
 unset(
     $_SESSION['account/connections/default/messages'],
@@ -38,10 +38,10 @@ unset(
     $_SESSION['account/connections/view/messages']
 );
 
-include_once '../../fns/Page/newItemButton.php';
-include_once '../../fns/Page/sessionErrors.php';
-include_once '../../fns/Page/sessionMessages.php';
-include_once '../../fns/Page/tabs.php';
+include_once "$fnsDir/Page/newItemButton.php";
+include_once "$fnsDir/Page/sessionErrors.php";
+include_once "$fnsDir/Page/sessionMessages.php";
+include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
     [
         [
@@ -56,5 +56,5 @@ $content = Page\tabs(
     Page\newItemButton('new/', 'Connection')
 );
 
-include_once '../../fns/echo_page.php';
+include_once "$fnsDir/echo_page.php";
 echo echo_page($user, 'Connections', $content, $base);

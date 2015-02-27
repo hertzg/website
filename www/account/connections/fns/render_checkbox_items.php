@@ -4,28 +4,25 @@ function render_checkbox_items ($values, &$items) {
 
     include_once __DIR__.'/../../../fns/Form/checkbox.php';
 
-    $title = 'Can send bookmarks';
-    $checked = $values['can_send_bookmark'];
-    $items[] = Form\checkbox('can_send_bookmark', $title, $checked);
+    $items[] = Form\checkbox('can_send_bookmark',
+        'Can send bookmarks', $values['can_send_bookmark']);
 
-    $title = 'Can send channels';
-    $checked = $values['can_send_channel'];
-    $items[] = Form\checkbox('can_send_channel', $title, $checked);
+    $items[] = Form\checkbox('can_send_channel',
+        'Can send channels', $values['can_send_channel']);
 
-    $title = 'Can send contacts';
-    $checked = $values['can_send_contact'];
-    $items[] = Form\checkbox('can_send_contact', $title, $checked);
+    $items[] = Form\checkbox('can_send_contact',
+        'Can send contacts', $values['can_send_contact']);
 
-    $checked = $values['can_send_file'];
-    $items[] = Form\checkbox('can_send_file', 'Can send files', $checked);
+    $items[] = Form\checkbox('can_send_file',
+        'Can send files', $values['can_send_file']);
 
-    $checked = $values['can_send_note'];
-    $items[] = Form\checkbox('can_send_note', 'Can send notes', $checked);
+    $items[] = Form\checkbox('can_send_note',
+        'Can send notes', $values['can_send_note']);
 
-    $checked = $values['can_send_place'];
-    $items[] = Form\checkbox('can_send_place', 'Can send places', $checked);
+    $items[] = Form\checkbox('can_send_place',
+        'Can send places', $values['can_send_place']);
 
-    $checked = $values['can_send_task'];
-    $items[] = Form\checkbox('can_send_task', 'Can send tasks', $checked);
+    $items[] = Form\checkbox('can_send_task',
+        'Can send tasks', $values['can_send_task']);
 
 }
