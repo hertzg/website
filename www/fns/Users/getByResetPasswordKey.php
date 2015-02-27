@@ -4,15 +4,12 @@ namespace Users;
 
 function getByResetPasswordKey ($mysqli, $id_users, $reset_password_key) {
 
-    $reset_password_key = hex2bin($reset_password_key);
-    $reset_password_key = $mysqli->real_escape_string($reset_password_key);
-    $reset_password_key_time = time() - 24 * 60 * 60;
+    include_once __DIR__.'/get.php';
+    $user = get($mysqli, $id_users);
 
-    $sql = "select * from users where id_users = $id_users"
-        ." and reset_password_key = '$reset_password_key'"
-        ." and reset_password_key_time > $reset_password_key_time";
+    if (!$user || $user->reset_password_key !== hex2bin($reset_password_key) ||
+        $user->reset_password_key_time <= time() - 24 * 60 * 60) return;
 
-    include_once __DIR__.'/../mysqli_single_object.php';
-    return mysqli_single_object($mysqli, $sql);
+    return $user;
 
 }

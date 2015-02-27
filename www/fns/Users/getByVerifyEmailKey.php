@@ -4,15 +4,12 @@ namespace Users;
 
 function getByVerifyEmailKey ($mysqli, $id_users, $verify_email_key) {
 
-    $verify_email_key = hex2bin($verify_email_key);
-    $verify_email_key = $mysqli->real_escape_string($verify_email_key);
-    $verify_email_key_time = time() - 24 * 60 * 60;
+    include_once __DIR__.'/get.php';
+    $user = get($mysqli, $id_users);
 
-    $sql = "select * from users where id_users = $id_users"
-        ." and email != '' and verify_email_key = '$verify_email_key'"
-        ." and verify_email_key_time > $verify_email_key_time";
+    if (!$user || $user->verify_email_key !== hex2bin($verify_email_key) ||
+        $user->verify_email_key_time <= time() - 24 * 60 * 60) return;
 
-    include_once __DIR__.'/../mysqli_single_object.php';
-    return mysqli_single_object($mysqli, $sql);
+    return $user;
 
 }
