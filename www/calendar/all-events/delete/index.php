@@ -13,8 +13,9 @@ include_once '../fns/create_view_page.php';
 include_once "$fnsDir/Page/confirmDialog.php";
 $content =
     create_view_page($user, $event)
-    .Page\confirmDialog('Are you sure you want to delete the event?',
-        'Yes, delete event', "submit.php?id=$id", "../view/?id=$id");
+    .Page\confirmDialog('Are you sure you want to delete the event?'
+        .' It will be moved to Trash.', 'Yes, delete event',
+        "submit.php?id=$id", "../view/?id=$id");
 
 include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";

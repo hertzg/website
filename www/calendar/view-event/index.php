@@ -22,7 +22,8 @@ $content =
     .'<script type="text/javascript">'
         .'var deleteHref = '.json_encode("../delete-event/submit.php?id=$id")
     .'</script>'
-    .'<script type="text/javascript" defer="defer" src="index.js"></script>';
+    .'<script type="text/javascript" defer="defer" src="../view-event.js">'
+    .'</script>';
 
 include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";
