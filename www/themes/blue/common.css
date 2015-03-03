@@ -60,7 +60,7 @@
     background: rgba(51, 158, 224, 0.2);
 }
 .topLink:active {
-    background: rgba(51, 158, 224);
+    background: rgb(51, 158, 224);
 }
 
 mark {
