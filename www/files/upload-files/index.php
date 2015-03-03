@@ -10,43 +10,52 @@ unset(
     $_SESSION['files/messages']
 );
 
-include_once '../../fns/create_folder_link.php';
+$fnsDir = '../../fns';
+
+include_once "$fnsDir/create_folder_link.php";
 $folder_link = create_folder_link($parent_id_folders, '../');
 
-include_once '../../fns/bytestr.php';
-include_once '../../fns/Page/tabs.php';
-include_once '../../fns/ini_get_bytes.php';
-include_once '../../fns/Form/button.php';
-include_once '../../fns/Form/filefield.php';
-include_once '../../fns/Form/hidden.php';
-include_once '../../fns/Page/sessionErrors.php';
-include_once '../../fns/Page/warnings.php';
-$content = Page\tabs(
-    [
+include_once "$fnsDir/bytestr.php";
+include_once "$fnsDir/Page/tabs.php";
+include_once "$fnsDir/ini_get_bytes.php";
+include_once "$fnsDir/Form/button.php";
+include_once "$fnsDir/Form/filefield.php";
+include_once "$fnsDir/Form/hidden.php";
+include_once "$fnsDir/Page/sessionErrors.php";
+include_once "$fnsDir/Page/warnings.php";
+$content =
+    Page\tabs(
         [
-            'title' => 'Files',
-            'href' => "$folder_link#upload-files",
+            [
+                'title' => 'Files',
+                'href' => "$folder_link#upload-files",
+            ],
         ],
-    ],
-    'Upload Files',
-    Page\sessionErrors('files/upload-files/errors')
-    .Page\warnings([
-        'Maximum '.bytestr(ini_get_bytes('upload_max_filesize')).' each file.',
-        'Maximum '.bytestr(ini_get_bytes('post_max_size')).' at once.',
-    ])
-    .'<form action="submit.php" method="post"'
-    .' enctype="multipart/form-data">'
-        .Form\filefield('file1[]', 'File 1', ['multiple' => true])
-        .'<div class="hr"></div>'
-        .Form\filefield('file2[]', 'File 2', ['multiple' => true])
-        .'<div class="hr"></div>'
-        .Form\filefield('file3[]', 'File 3', ['multiple' => true])
-        .'<div class="hr"></div>'
-        .Form\button('Upload')
-        .Form\hidden('posttest', '1')
-        .Form\hidden('parent_id_folders', $parent_id_folders)
-    .'</form>'
-);
+        'Upload Files',
+        Page\sessionErrors('files/upload-files/errors')
+        .Page\warnings([
+            'Maximum '.bytestr(ini_get_bytes('upload_max_filesize')).' each file.',
+            'Maximum '.bytestr(ini_get_bytes('post_max_size')).' at once.',
+        ])
+        .'<form action="submit.php" method="post"'
+        .' enctype="multipart/form-data">'
+            .Form\filefield('file1[]', 'File 1', ['multiple' => true])
+            .'<div class="hr"></div>'
+            .Form\filefield('file2[]', 'File 2', ['multiple' => true])
+            .'<div class="hr"></div>'
+            .Form\filefield('file3[]', 'File 3', ['multiple' => true])
+            .'<div class="hr"></div>'
+            .'<div id="uploadButton">'
+                .Form\button('Upload')
+            .'</div>'
+            .Form\hidden('posttest', '1')
+            .Form\hidden('parent_id_folders', $parent_id_folders)
+        .'</form>'
+    )
+    .'<script type="text/javascript">'
+        .'var parentId = '.($parent_id_folders === null ? '' : $parent_id_folders)
+    .'</script>'
+    .'<script type="text/javascript" src="index.js"></script>';
 
-include_once '../../fns/echo_page.php';
+include_once "$fnsDir/echo_page.php";
 echo_page($user, 'Upload Files', $content, '../../');
