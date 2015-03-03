@@ -33,6 +33,9 @@ function create ($deletedItem, $user, &$title, &$head, &$scripts) {
         include_once "$fnsDir/compressed_css_link.php";
         $head = compressed_css_link('contact', '../../');
 
+    } elseif ($type == 'event') {
+        include_once __DIR__.'/renderEvent.php';
+        renderEvent($data, $items);
     } elseif ($type == 'note' || $type == 'receivedNote') {
         include_once __DIR__.'/renderNote.php';
         renderNote($data, $items);

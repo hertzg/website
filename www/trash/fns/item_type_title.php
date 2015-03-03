@@ -3,6 +3,7 @@
 function item_type_title ($type) {
     if ($type == 'bookmark') return 'Bookmark';
     if ($type == 'contact') return 'Contact';
+    if ($type == 'event') return 'Event';
     if ($type == 'file') return 'File';
     if ($type == 'folder') return 'Folder';
     if ($type == 'note') return 'Note';

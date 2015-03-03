@@ -33,6 +33,9 @@ function create_page ($mysqli, $user, $base = '') {
             } elseif ($type == 'contact' || $type == 'receivedContact') {
                 include_once __DIR__.'/render_contact.php';
                 render_contact($data, $description, $href, $options, $items);
+            } elseif ($type == 'event' || $type == 'receivedEvent') {
+                include_once __DIR__.'/render_event.php';
+                render_event($data, $description, $href, $options, $items);
             } elseif ($type == 'note' || $type == 'receivedNote') {
                 include_once __DIR__.'/render_note.php';
                 render_note($data, $description, $href, $options, $items);

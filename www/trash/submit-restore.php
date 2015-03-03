@@ -34,6 +34,9 @@ if ($type == 'bookmark') {
 } elseif ($type == 'note') {
     include_once '../fns/Users/Notes/addDeleted.php';
     Users\Notes\addDeleted($mysqli, $id_users, $data);
+} elseif ($type == 'event') {
+    include_once '../fns/Users/Events/addDeleted.php';
+    Users\Events\addDeleted($mysqli, $user, $data);
 } elseif ($type == 'place') {
     include_once '../fns/Users/Places/addDeleted.php';
     Users\Places\addDeleted($mysqli, $id_users, $data);
