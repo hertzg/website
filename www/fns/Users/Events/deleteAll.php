@@ -2,12 +2,22 @@
 
 namespace Users\Events;
 
-function deleteAll ($mysqli, $user) {
+function deleteAll ($mysqli, $user, $apiKey = null) {
 
     if (!$user->num_events) return;
 
     $id_users = $user->id_users;
     $fnsDir = __DIR__.'/../..';
+
+    include_once "$fnsDir/Events/indexOnUser.php";
+    $events = \Events\indexOnUser($mysqli, $id_users);
+
+    if ($events) {
+        include_once __DIR__.'/../DeletedItems/addEvent.php';
+        foreach ($events as $event) {
+            \Users\DeletedItems\addEvent($mysqli, $event, $apiKey);
+        }
+    }
 
     include_once "$fnsDir/Events/deleteOnUser.php";
     \Events\deleteOnUser($mysqli, $id_users);
