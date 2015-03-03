@@ -2,12 +2,9 @@
 
 namespace HomePage;
 
-function checkEventCheckDay ($mysqli, &$user) {
+function checkEventCheckDay ($mysqli, &$user, $time_today) {
 
     $fnsDir = __DIR__.'/..';
-
-    include_once "$fnsDir/user_time_today.php";
-    $time_today = user_time_today($user);
 
     if ($user->events_check_day == $time_today) return;
 
