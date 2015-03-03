@@ -24,7 +24,8 @@ function add ($mysqli, $username, $password, $email) {
     $birthdays_check_day = $events_check_day =
         $task_deadlines_check_day = time_today();
 
-    $schedules_check_day = floor(time() / (60 * 60 * 24));
+    include_once "$fnsDir/time_today.php";
+    $schedules_check_day = time_today();
 
     include_once __DIR__.'/../Themes/getDefault.php';
     $theme = \Themes\getDefault();

@@ -23,10 +23,11 @@ function deleteAll ($mysqli, $user, $apiKey = null) {
     \Events\deleteOnUser($mysqli, $id_users);
 
     include_once "$fnsDir/user_time_today.php";
-    $time_today = user_time_today($user);
-    $sql = 'update users set num_events = 0, num_events_today = 0,'
-        ." num_events_tomorrow = 0, events_check_day = $time_today"
-        ." where id_users = $id_users";
+    $events_check_day = user_time_today($user);
+
+    $sql = 'update users set num_events = 0,'
+        .' num_events_today = 0, num_events_tomorrow = 0,'
+        ." events_check_day = $events_check_day where id_users = $id_users";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
 }
