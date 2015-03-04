@@ -13,6 +13,14 @@ function request_file_params ($mysqli,
         bad_request('ENTER_NAME');
     }
 
+    include_once "$fnsDir/request_strings.php";
+    list($auto_rename) = request_strings('auto_rename');
+
+    if ($auto_rename) {
+        include_once "$fnsDir/Files/getUniqueName.php";
+        $name = Files\getUniqueName($mysqli, $id_users, $id_folders, $name);
+    }
+
     include_once "$fnsDir/Files/getByName.php";
     $existingFile = Files\getByName($mysqli,
         $id_users, $id_folders, $name, $exclude_id);
