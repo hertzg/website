@@ -2,10 +2,10 @@
 
 include_once '../fns/require_parent_folder.php';
 include_once '../../lib/mysqli.php';
-list($parentFolder, $parent_id_folders, $user) = require_parent_folder($mysqli);
+list($parentFolder, $parent_id, $user) = require_parent_folder($mysqli);
 
 include_once '../../fns/request_strings.php';
-list($parent_id_folders) = request_strings('parent_id_folders');
+list($parent_id) = request_strings('parent_id');
 
 $key = 'files/new-folder/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
@@ -18,7 +18,7 @@ unset(
 );
 
 include_once '../../fns/create_folder_link.php';
-$folder_link = create_folder_link($parent_id_folders, '../');
+$folder_link = create_folder_link($parent_id, '../');
 
 include_once '../../fns/Folders/maxLengths.php';
 include_once '../../fns/Page/tabs.php';
@@ -44,7 +44,7 @@ $content = Page\tabs(
         ])
         .'<div class="hr"></div>'
         .Form\button('Create')
-        .Form\hidden('parent_id_folders', $parent_id_folders)
+        .Form\hidden('parent_id', $parent_id)
     .'</form>'
 );
 

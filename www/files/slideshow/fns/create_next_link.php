@@ -1,13 +1,11 @@
 <?php
 
-function create_next_link ($files, $index, $parent_id_folders) {
+function create_next_link ($files, $index, $parent_id) {
 
     if ($index >= count($files) - 1) return;
 
     $href = '?id='.$files[$index + 1]->id_files;
-    if ($parent_id_folders) {
-        $href .= "&amp;parent_id_folders=$parent_id_folders";
-    }
+    if ($parent_id) $href .= "&amp;parent_id=$parent_id";
 
     return
         "<a class=\"clickable arrow right\" href=\"$href\">"

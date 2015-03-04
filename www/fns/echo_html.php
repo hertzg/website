@@ -33,8 +33,8 @@ function echo_html ($title, $head, $body, $theme, $base) {
                 .'<script type="text/javascript">'
                     .'var base = '.json_encode($base)
                 .'</script>'
-                .$body
                 .compressed_js_script('unloadProgress', $base)
+                .$body
             .'</body>'
         .'</html>';
     exit;

@@ -13,6 +13,14 @@ function request_folder_params ($mysqli,
         bad_request('ENTER_NAME');
     }
 
+    include_once "$fnsDir/request_strings.php";
+    list($auto_rename) = request_strings('auto_rename');
+
+    if ($auto_rename) {
+        include_once "$fnsDir/Folders/getUniqueName.php";
+        $name = Folders\getUniqueName($mysqli, $id_users, $id_folders, $name);
+    }
+
     include_once "$fnsDir/Folders/getByName.php";
     $existingFolder = Folders\getByName($mysqli,
         $id_users, $id_folders, $name, $exclude_id);

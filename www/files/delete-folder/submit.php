@@ -10,10 +10,12 @@ list($folder, $id_folders, $user) = require_folder($mysqli);
 include_once '../../fns/Users/Folders/delete.php';
 Users\Folders\delete($mysqli, $folder);
 
+$parent_id = $folder->parent_id;
+
 unset($_SESSION['files/errors']);
-$_SESSION['files/id_folders'] = $folder->parent_id_folders;
+$_SESSION['files/id_folders'] = $parent_id;
 $_SESSION['files/messages'] = ['Folder has been deleted.'];
 
 include_once '../../fns/create_folder_link.php';
 include_once '../../fns/redirect.php';
-redirect(create_folder_link($folder->parent_id_folders, '../'));
+redirect(create_folder_link($parent_id, '../'));

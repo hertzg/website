@@ -1,9 +1,6 @@
 (function (base) {
 
-    var body = document.body
-    var overlayDiv, progressDiv
-
-    addEventListener('beforeunload', function () {
+    function show () {
 
         if (!progressDiv) {
 
@@ -45,6 +42,12 @@
 
         }
 
-    })
+    }
+
+    var body = document.body
+    var overlayDiv, progressDiv
+
+    addEventListener('beforeunload', show)
+    window.unloadProgress = { show: show }
 
 })(base)

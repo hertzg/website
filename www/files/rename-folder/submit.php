@@ -18,7 +18,7 @@ if ($name === '') {
 
     include_once '../../fns/Folders/getByName.php';
     $existingFolder = Folders\getByName($mysqli, $user->id_users,
-        $folder->parent_id_folders, $name, $id_folders);
+        $folder->parent_id, $name, $id_folders);
 
     if ($existingFolder) {
         $errors[] = 'Folder with this name already exists.';

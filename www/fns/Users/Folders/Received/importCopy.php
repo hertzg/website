@@ -2,8 +2,8 @@
 
 namespace Users\Folders\Received;
 
-function importCopy ($mysqli,
-    $receivedFolder, $parent_id, $insertApiKey = null) {
+function importCopy ($mysqli, $receivedFolder,
+    $parent_id, $insertApiKey = null) {
 
     $num_folders = 1;
     $id_users = $receivedFolder->receiver_id_users;
@@ -18,23 +18,23 @@ function importCopy ($mysqli,
     $id_folders = \Folders\add($mysqli,
         $id_users, $parent_id, $name, $insertApiKey);
 
-    $import = function ($parent_id, $parent_id_folders, $import) use ($mysqli,
+    $import = function ($received_parent_id, $parent_id, $import) use ($mysqli,
         $receivedFolder, $id_users, $fnsDir, $insertApiKey, &$num_folders) {
 
         include_once "$fnsDir/ReceivedFolderSubfolders/indexOnParent.php";
         $subfolders = \ReceivedFolderSubfolders\indexOnParent(
-            $mysqli, $receivedFolder->id, $parent_id);
+            $mysqli, $receivedFolder->id, $received_parent_id);
 
         foreach ($subfolders as $subfolder) {
             $id_folders = \Folders\add($mysqli, $id_users,
-                $parent_id_folders, $subfolder->name, $insertApiKey);
+                $parent_id, $subfolder->name, $insertApiKey);
             $num_folders++;
             $import($subfolder->id, $id_folders, $import);
         }
 
         include_once "$fnsDir/ReceivedFolderFiles/indexOnParent.php";
         $files = \ReceivedFolderFiles\indexOnParent(
-            $mysqli, $receivedFolder->id, $parent_id);
+            $mysqli, $receivedFolder->id, $received_parent_id);
 
         if ($files) {
             include_once __DIR__.'/../../Files/add.php';
@@ -43,7 +43,7 @@ function importCopy ($mysqli,
                 $filePath = \ReceivedFolderFiles\File\path(
                     $id_users, $file->id);
                 \Users\Files\add($mysqli, $id_users,
-                    $parent_id_folders, $file->name, $filePath, $insertApiKey);
+                    $parent_id, $file->name, $filePath, $insertApiKey);
             }
         }
 

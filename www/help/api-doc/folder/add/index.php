@@ -10,6 +10,11 @@ folder_method_page('add', [
         'name' => 'parent_id',
         'description' => 'The ID of the parent folder.',
     ],
+    [
+        'name' => 'auto_rename',
+        'description' => 'Give the folder a unique name'
+            .' if a folder with the same name already exists.',
+    ],
 ], [
     'PARENT_FOLDER_NOT_FOUND' => "A parent folder with the ID doesn't exist.",
     'ENTER_NAME' => 'The name is empty.',

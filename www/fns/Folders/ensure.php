@@ -34,7 +34,7 @@ function ensure ($mysqli) {
             'characterSet' => 'utf8',
             'collation' => 'utf8_unicode_ci',
         ],
-        'parent_id_folders' => [
+        'parent_id' => [
             'type' => 'bigint(20) unsigned',
         ],
         'rename_api_key_id' => [

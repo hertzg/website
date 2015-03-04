@@ -20,7 +20,7 @@ function get_revision ($key) {
         'js/searchForm/compressed.js' => 2,
         'js/signOutConfirm/compressed.js' => 2,
         'js/timezoneLabel/compressed.js' => 6,
-        'js/unloadProgress/compressed.js' => 5,
+        'js/unloadProgress/compressed.js' => 6,
         'themes/blue/images/zvini.svg' => 2,
         'themes/green/images/zvini.svg' => 2,
         'themes/orange/images/zvini.svg' => 2,
