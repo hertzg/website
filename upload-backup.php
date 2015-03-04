@@ -51,23 +51,37 @@ $folder_id = $callZviniMethod('folder/add', [
     'name' => date('Y-m-d'),
 ]);
 
-$callZviniMethod('file/add', [
-    'parent_id' => $folder_id,
-    'file' => curl_file('backup-code.tgz'),
-    'name' => 'backup-code.tgz',
-]);
+$putFile = function ($name) use ($callZviniMethod, $folder_id) {
+    $f = fopen($name, 'r');
+    $index = 0;
+    while (!feof($f)) {
 
-$callZviniMethod('file/add', [
-    'parent_id' => $folder_id,
-    'file' => curl_file('backup-data.tgz'),
-    'name' => 'backup-data.tgz',
-]);
+        $temp_file = sys_get_temp_dir().'/'.uniqid();
+        file_put_contents($temp_file, fread($f, 1024 * 1024));
 
-$callZviniMethod('file/add', [
-    'parent_id' => $folder_id,
-    'file' => curl_file('backup-sql.tgz'),
-    'name' => 'backup-sql.tgz',
-]);
+        if ($index === 0) {
+            $id = $callZviniMethod('file/add', [
+                'parent_id' => $folder_id,
+                'file' => curl_file($temp_file),
+                'name' => $name,
+            ]);
+        } else {
+            $callZviniMethod('file/appendContent', [
+                'id' => $id,
+                'file' => curl_file($temp_file),
+            ]);
+        }
+
+        unlink($temp_file);
+        $index++;
+
+    }
+    fclose($f);
+};
+
+$putFile('backup-code.tgz');
+$putFile('backup-data.tgz');
+$putFile('backup-sql.tgz');
 
 $files = $callZviniMethod('file/list', ['parent_id' => $folder_id]);
 
