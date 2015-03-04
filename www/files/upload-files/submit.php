@@ -62,11 +62,8 @@ if (!$num_uploaded) {
 
 unset($_SESSION['files/upload-files/errors']);
 
-if ($num_uploaded == 1) {
-    $message = '1 file has been uploaded.';
-} else {
-    $message = "$num_uploaded files have been uploaded.";
-}
+if ($num_uploaded == 1) $message = '1 file has been uploaded.';
+else $message = "$num_uploaded files have been uploaded.";
 
 if ($errors) $_SESSION['files/errors'] = $errors;
 else unset($_SESSION['files/errors']);

@@ -25,8 +25,10 @@
 
             var file = files.shift()
             if (!file) {
-                var url = '../'
-                if (parentId !== null) url += '?id_folders=' + parentId
+                var url = 'submit-finish.php'
+                if (parentId !== null) {
+                    url += '?id_folders=' + parentId + '&num_files=' + numFiles
+                }
                 location = url
                 return
             }
@@ -99,10 +101,12 @@
         unloadProgress.show()
 
         var files = []
+        var numFiles = 0
         var fileInputs = document.querySelectorAll('.form-filefield')
         Array.prototype.forEach.call(fileInputs, function (fileInput) {
             Array.prototype.forEach.call(fileInput.files, function (file) {
                 files.push(file)
+                numFiles++
             })
         })
 
