@@ -14,6 +14,11 @@ file_method_page('add', [
         'name' => 'parent_id',
         'description' => 'The ID of the parent folder.',
     ],
+    [
+        'name' => 'auto_rename',
+        'description' => 'Give the file a unique name'
+            .' if a file with the same name already exists.',
+    ],
 ], [
     'ENTER_NAME' => 'The name is empty.',
     'FILE_ALREADY_EXISTS' => 'A file with the name already exists.',
