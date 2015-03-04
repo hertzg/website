@@ -14,13 +14,13 @@ $name = Folders\request();
 
 $errors = [];
 
-$parent_id_folders = 0;
+$parent_id = 0;
 
 if ($name === '') $errors[] = 'Enter folder name.';
 else {
     include_once "$fnsDir/Folders/getByName.php";
     $existingFolder = Folders\getByName($mysqli,
-        $user->id_users, $parent_id_folders, $name);
+        $user->id_users, $parent_id, $name);
     if ($existingFolder) $errors[] = 'A folder with this name already exists.';
 }
 
@@ -44,7 +44,7 @@ $messages = ['Folder has been imported.'];
 $receivedFolder->name = $name;
 
 include_once "$fnsDir/Users/Folders/Received/import.php";
-Users\Folders\Received\import($mysqli, $receivedFolder, $parent_id_folders);
+Users\Folders\Received\import($mysqli, $receivedFolder, $parent_id);
 
 if (!$user->num_received_files && $user->num_received_folders == 1) {
     $messages[] = 'No more received files.';

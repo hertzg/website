@@ -24,7 +24,7 @@ function create_content ($mysqli, $folder, $parentFolder, $items) {
             'Select a folder to move the folder into.'
         ])
         .create_move_location_bar($mysqli, $id_folders,
-            $parentFolder, 'id_folders', 'parent_id_folders')
+            $parentFolder, 'id_folders', 'parent_id')
         .join('<div class="hr"></div>', $items)
     );
 

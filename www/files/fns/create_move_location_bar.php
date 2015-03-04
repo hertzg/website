@@ -13,20 +13,20 @@ function create_move_location_bar ($mysqli,
             .'</span>';
 
         $hash = $folder->id_folders;
-        $parent_id_folders = $folder->parent_id_folders;
-        if ($parent_id_folders) {
+        $parent_id = $folder->parent_id;
+        if ($parent_id) {
             include_once __DIR__.'/../../fns/Folders/getOnUser.php';
-            while ($parent_id_folders) {
+            while ($parent_id) {
                 $parentFolder = \Folders\getOnUser($mysqli,
-                    $folder->id_users, $parent_id_folders);
+                    $folder->id_users, $parent_id);
                 $href = "./?$item_id=$id&amp;"
                     ."$folder_id=$parentFolder->id_folders";
                 $parentLinks[] =
                     "<a class=\"tag\" href=\"$href#$hash\">"
                         .htmlspecialchars($parentFolder->name)
                     .'</a>';
-                $hash = $parent_id_folders;
-                $parent_id_folders = $parentFolder->parent_id_folders;
+                $hash = $parent_id;
+                $parent_id = $parentFolder->parent_id;
             }
         }
 

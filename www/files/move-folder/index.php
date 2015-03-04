@@ -7,14 +7,14 @@ list($folder, $id_folders, $user) = require_folder($mysqli);
 $fnsDir = '../../fns';
 
 include_once "$fnsDir/request_strings.php";
-list($parent_id_folders) = request_strings('parent_id_folders');
+list($parent_id) = request_strings('parent_id');
 
 $parentFolder = null;
-$parent_id_folders = abs((int)$parent_id_folders);
-if ($parent_id_folders) {
+$parent_id = abs((int)$parent_id);
+if ($parent_id) {
 
     include_once "$fnsDir/Users/Folders/get.php";
-    $parentFolder = Users\Folders\get($mysqli, $user, $parent_id_folders);
+    $parentFolder = Users\Folders\get($mysqli, $user, $parent_id);
 
     if (!$parentFolder) {
         include_once "$fnsDir/redirect.php";
@@ -24,8 +24,7 @@ if ($parent_id_folders) {
 }
 
 include_once "$fnsDir/Folders/indexInUserFolder.php";
-$folders = Folders\indexInUserFolder($mysqli,
-    $user->id_users, $parent_id_folders);
+$folders = Folders\indexInUserFolder($mysqli, $user->id_users, $parent_id);
 
 include_once "$fnsDir/Page/imageArrowLink.php";
 
@@ -38,7 +37,7 @@ if ($folders) {
             include_once "$fnsDir/Page/disabledImageLink.php";
             $items[] = Page\disabledImageLink($escapedName, 'folder');
         } else {
-            $href = "./?id_folders=$id_folders&amp;parent_id_folders=$itemId";
+            $href = "./?id_folders=$id_folders&amp;parent_id=$itemId";
             $items[] = Page\imageArrowLink($escapedName,
                 $href, 'folder', ['id' => $itemId]);
         }
@@ -48,19 +47,15 @@ if ($folders) {
     $items[] = Page\info('No subfolders');
 }
 
-if ($parent_id_folders != $folder->parent_id_folders) {
-    $parentParam = "parent_id_folders=$parent_id_folders";
-    $href = "submit.php?id_folders=$id_folders&amp;$parentParam";
+if ($parent_id != $folder->parent_id) {
+    $href = "submit.php?id_folders=$id_folders&amp;parent_id=$parent_id";
     include_once "$fnsDir/Page/imageLink.php";
     $items[] = Page\imageLink('Move Here', $href, 'move-folder');
 }
 
-$key = 'files/move-folder/parent_id_folders';
-if (array_key_exists($key, $_SESSION) &&
-    $parent_id_folders != $_SESSION[$key]) {
-
+$key = 'files/move-folder/parent_id';
+if (array_key_exists($key, $_SESSION) && $parent_id != $_SESSION[$key]) {
     unset($_SESSION['files/move-folder/errors']);
-
 }
 
 unset(

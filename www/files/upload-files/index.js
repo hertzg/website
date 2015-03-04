@@ -27,7 +27,7 @@
             if (!file) {
                 var url = 'submit-finish.php'
                 if (parentId !== null) {
-                    url += '?parent_id_folders=' + parentId + '&num_files=' + numFiles
+                    url += '?parent_id=' + parentId + '&num_files=' + numFiles
                 }
                 location = url
                 return

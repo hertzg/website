@@ -2,7 +2,7 @@
 
 namespace Folders;
 
-function add ($mysqli, $id_users, $parent_id_folders, $name, $insertApiKey) {
+function add ($mysqli, $id_users, $parent_id, $name, $insertApiKey) {
 
     $name = $mysqli->real_escape_string($name);
     $insert_time = $rename_time = time();
@@ -18,9 +18,9 @@ function add ($mysqli, $id_users, $parent_id_folders, $name, $insertApiKey) {
     }
 
     $sql = 'insert into folders'
-        .' (id_users, parent_id_folders, name, insert_time,'
+        .' (id_users, parent_id, name, insert_time,'
         .' rename_time, insert_api_key_id, insert_api_key_name)'
-        ." values ($id_users, $parent_id_folders, '$name', $insert_time,"
+        ." values ($id_users, $parent_id, '$name', $insert_time,"
         ." $rename_time, $insert_api_key_id, $insert_api_key_name)";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);

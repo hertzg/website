@@ -2,7 +2,7 @@
 
 namespace Folders;
 
-function searchInFolder ($mysqli, $id_users, $parent_id_folders, $keyword) {
+function searchInFolder ($mysqli, $id_users, $parent_id, $keyword) {
 
     include_once __DIR__.'/../escape_like.php';
     $keyword = escape_like($keyword);
@@ -10,10 +10,8 @@ function searchInFolder ($mysqli, $id_users, $parent_id_folders, $keyword) {
     $keyword = $mysqli->real_escape_string($keyword);
 
     $sql = 'select * from folders'
-        ." where id_users = $id_users"
-        ." and parent_id_folders = $parent_id_folders"
-        ." and name like '%$keyword%'"
-        .' order by name';
+        ." where id_users = $id_users and parent_id = $parent_id"
+        ." and name like '%$keyword%' order by name";
 
     include_once __DIR__.'/../mysqli_query_object.php';
     return mysqli_query_object($mysqli, $sql);

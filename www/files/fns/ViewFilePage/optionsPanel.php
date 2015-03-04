@@ -13,7 +13,7 @@ function optionsPanel ($file) {
     $id_folders = $file->id_folders;
 
     $href = "../slideshow/?id=$id";
-    if ($id_folders) $href .= "&amp;parent_id_folders=$id_folders";
+    if ($id_folders) $href .= "&amp;parent_id=$id_folders";
     $slideshowLink = \Page\imageArrowLink('Slideshow', $href, 'slideshow');
 
     $namePart = rawurlencode(str_replace('/', '_', $file->name));
