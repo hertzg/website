@@ -39,7 +39,7 @@ echo
                 .'<div class="backgroundGradient-gradient"></div>'
             .'</div>'
             .'<div class="centerWrapper">'
-                .'<img class="logoImage" src="images/zvini-large.svg" />'
+                .'<img class="logoImage" src="images/zvini-large.svg?1" />'
                 .'<div class="siteInfo">'
                     .'<h1>Save Your Data in Zvini</h1>'
                     .'<div class="description">'
