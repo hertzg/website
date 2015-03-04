@@ -1,5 +1,16 @@
 (function (parentId) {
 
+    function post (method, formData, loadListener) {
+        var request = new XMLHttpRequest
+        request.open('post', '../../api-call/' + method)
+        request.send(formData)
+        request.onerror = function () {
+            // TODO handle error
+        }
+        request.onload = loadListener
+        return request
+    }
+
     var chunkSize = 1024 * 1024
 
     var uploading = false
@@ -50,16 +61,11 @@
                 var formData = new FormData
                 formData.append('session_auth', '1')
                 formData.append('name', name)
+                formData.append('auto_rename', '1')
                 if (parentId !== null) formData.append('parent_id', parentId)
                 appendFile(formData, chunk)
 
-                var request = new XMLHttpRequest
-                request.open('post', '../../api-call/file/add')
-                request.send(formData)
-                request.onerror = function () {
-                    // TODO handle error
-                }
-                request.onload = function () {
+                var request = post('file/add', formData, function () {
 
                     function nextChunk (offset) {
 
@@ -70,24 +76,18 @@
                         formData.append('id', id)
                         appendFile(formData, chunk)
 
-                        var request = new XMLHttpRequest
-                        request.open('post', '../../api-call/file/appendContent')
-                        request.send(formData)
-                        request.onerror = function () {
-                            // TODO handle error
-                        }
-                        request.onload = function () {
+                        post('file/appendContent', formData, function () {
                             var nextOffset = offset + chunkSize
                             if (size > nextOffset) nextChunk(nextOffset)
                             else nextFile()
-                        }
+                        })
 
                     }
 
                     var id = JSON.parse(request.response)
                     if (size > chunkSize) nextChunk(chunkSize)
                     else nextFile()
-                }
+                })
 
             }
 
