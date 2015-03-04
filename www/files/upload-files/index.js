@@ -1,6 +1,6 @@
 (function (parentId) {
 
-    var chunkSize = 256
+    var chunkSize = 1024 * 1024
 
     var uploading = false
 
@@ -63,8 +63,7 @@
 
                     function nextChunk (offset) {
 
-                        var nextOffset = offset + chunkSize
-                        var chunk = sliceChunk(offset, nextOffset)
+                        var chunk = sliceChunk(offset, chunkSize)
 
                         var formData = new FormData
                         formData.append('session_auth', '1')
@@ -78,6 +77,7 @@
                             // TODO handle error
                         }
                         request.onload = function () {
+                            var nextOffset = offset + chunkSize
                             if (size > nextOffset) nextChunk(nextOffset)
                             else nextFile()
                         }
