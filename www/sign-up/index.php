@@ -26,6 +26,7 @@ include_once '../fns/Users/maxLengths.php';
 $maxLengths = Users\maxLengths();
 
 include_once '../fns/create_panel.php';
+include_once '../fns/example_password.php';
 include_once '../fns/Form/button.php';
 include_once '../fns/Form/captcha.php';
 include_once '../fns/Form/notes.php';
@@ -54,7 +55,10 @@ $content = Page\tabs(
             'value' => $values['password1'],
             'required' => true,
         ])
-        .Form\notes(['Minimum 6 characters.'])
+        .Form\notes([
+            'Minimum 6 characters.',
+            'Example: '.htmlspecialchars(example_password(9)),
+        ])
         .'<div class="hr"></div>'
         .Form\password('password2', 'Repeat password', [
             'value' => $values['password2'],

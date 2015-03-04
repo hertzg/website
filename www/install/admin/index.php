@@ -30,6 +30,7 @@ include_once '../fns/echo_page.php';
 include_once '../fns/field_columns.php';
 include_once '../fns/steps.php';
 include_once '../fns/wizard_layout.php';
+include_once '../../fns/example_password.php';
 include_once '../../fns/Password/minLength.php';
 include_once '../../fns/Username/minLength.php';
 echo_page(
@@ -65,6 +66,10 @@ echo_page(
                 .'<div class="notes">'
                     .'<div class="notes-note">'
                         .'&bull; Minimum '.Password\minLength().' charactes.'
+                    .'</div>'
+                    .'<div class="notes-note">'
+                        .'&bull; Example: '
+                        .htmlspecialchars(example_password(15))
                     .'</div>'
                 .'</div>',
                 '<label for="password2Input">Repeat password:</label>'

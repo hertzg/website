@@ -111,7 +111,8 @@ $channels = mysqli_query_object($mysqli, 'select * from channels');
 foreach ($channels as $channel) {
     $id = $channel->id;
     $num_notifications = Notifications\countOnChannel($mysqli, $id);
-    $num_users = SubscribedChannels\countPublisherLockedOnChannel($mysqli, $id);
+    $num_users = SubscribedChannels\countPublisherLockedOnChannel(
+        $mysqli, $id);
     Channels\editNumbers($mysqli, $id, $num_notifications, $num_users);
 }
 

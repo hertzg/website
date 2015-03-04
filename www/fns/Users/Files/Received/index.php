@@ -12,5 +12,4 @@ function index ($mysqli, $user) {
     return \ReceivedFiles\Committed\indexOnReceiver(
         $mysqli, $user->id_users);
 
-
 }
