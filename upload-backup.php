@@ -6,8 +6,15 @@ function curl_file ($file) {
     return "@$file";
 }
 
-if (count($argv) != 4) {
-    echo "Usage: ./upload-backup.php <zvini_location> <api_key> <parent_id>\n";
+$num_args = count($argv);
+
+if ($num_args == 3) {
+    $argv[] = '0';
+    $num_args++;
+}
+
+if ($num_args != 4) {
+    echo "Usage: ./upload-backup.php <zvini_location> <api_key> [<parent_id>]\n";
     exit(1);
 }
 
