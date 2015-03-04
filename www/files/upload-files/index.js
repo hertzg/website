@@ -1,4 +1,4 @@
-(function (parentId) {
+(function (parentId, unloadProgress) {
 
     function post (method, formData, loadListener) {
         var request = new XMLHttpRequest
@@ -96,6 +96,7 @@
         e.preventDefault()
         if (uploading) return
         uploading = true
+        unloadProgress.show()
 
         var files = []
         var fileInputs = document.querySelectorAll('.form-filefield')
@@ -109,4 +110,4 @@
 
     })
 
-})(parentId)
+})(parentId, unloadProgress)
