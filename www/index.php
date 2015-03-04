@@ -17,6 +17,7 @@ unset_session_vars();
 
 header('Content-Type: text/html; charset=UTF-8');
 
+include_once 'fns/get_revision.php';
 include_once 'fns/compressed_css_link.php';
 include_once 'fns/compressed_js_script.php';
 echo
@@ -30,9 +31,10 @@ echo
             .' content="width=device-width, user-scalable=no" />'
             .compressed_css_link('common')
             .compressed_css_link('index')
-            .'<link rel="icon" type="image/png" href="zvini-icons/16.png" />'
+            .'<link rel="icon" type="image/png"'
+            .' href="zvini-icons/16.png?'.get_revision('zvini-icons/16.png').'" />'
             .'<link rel="icon" type="image/png" sizes="32x32"'
-            .' href="zvini-icons/32.png" />'
+            .' href="zvini-icons/32.png?'.get_revision('zvini-icon/32.png').'" />'
         .'</head>'
         .'<body>'
             .'<div class="backgroundGradient">'

@@ -25,6 +25,8 @@ function get_revision ($key) {
         'themes/green/images/zvini.svg' => 2,
         'themes/orange/images/zvini.svg' => 2,
         'themes/pink/images/zvini.svg' => 2,
+        'zvini-icons/16.png' => 1,
+        'zvini-icons/32.png' => 1,
     ];
     return $revisions[$key];
 }

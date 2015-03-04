@@ -16,9 +16,9 @@ function echo_html ($title, $head, $body, $theme, $base) {
             .'<head>'
                 ."<title>$title</title>"
                 .'<link rel="icon" type="image/png"'
-                ." href=\"{$base}themes/$theme/images/icon16.png\" />"
+                ." href=\"{$base}themes/$theme/images/icon16.png?1\" />"
                 .'<link rel="icon" type="image/png" sizes="32x32"'
-                ." href=\"{$base}themes/$theme/images/icon32.png\" />"
+                ." href=\"{$base}themes/$theme/images/icon32.png?1\" />"
                 .'<meta http-equiv="Content-Type"'
                 .' content="text/html; charset=UTF-8" />'
                 .'<meta name="viewport"'
