@@ -1,6 +1,8 @@
 <?php
 
-function detect_media_type ($name) {
+namespace MediaType;
+
+function detect ($name) {
 
     $extension = pathinfo($name, PATHINFO_EXTENSION);
     $extension = strtolower($extension);

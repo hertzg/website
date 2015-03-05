@@ -9,8 +9,8 @@ function add ($mysqli, $id_users, $id_folders, $name, $size, $insertApiKey) {
     include_once "$fnsDir/detect_content_type.php";
     $content_type = \detect_content_type($name);
 
-    include_once "$fnsDir/detect_media_type.php";
-    $media_type = \detect_media_type($name);
+    include_once "$fnsDir/MediaType/detect.php";
+    $media_type = \MediaType\detect($name);
 
     $name = $mysqli->real_escape_string($name);
     $insert_time = $rename_time = time();
