@@ -9,6 +9,7 @@ function ensure ($mysqli) {
     include_once "$fnsDir/Files/maxLengths.php";
     $maxLengths = \Files\maxLengths();
 
+    include_once "$fnsDir/MediaType/column.php";
     include_once "$fnsDir/Table/ensure.php";
     include_once "$fnsDir/Username/maxLength.php";
     return \Table\ensure($mysqli, 'received_files', [
@@ -30,12 +31,7 @@ function ensure ($mysqli) {
         'insert_time' => [
             'type' => 'bigint(20) unsigned',
         ],
-        'media_type' => [
-            'type' => "enum('archive','audio',"
-                ."'image','text','unknown','video')",
-            'characterSet' => 'utf8',
-            'collation' => 'utf8_general_ci',
-        ],
+        'media_type' => \MediaType\column(),
         'name' => [
             'type' => "varchar($maxLengths[name])",
             'characterSet' => 'utf8',
