@@ -8,7 +8,6 @@ function maxLengths () {
     $apiKeyNameMaxLength = \ApiKeyName\maxLength();
 
     return [
-        'content_type' => 32,
         'insert_api_key_name' => $apiKeyNameMaxLength,
         'name' => 256,
         'rename_api_key_name' => $apiKeyNameMaxLength,

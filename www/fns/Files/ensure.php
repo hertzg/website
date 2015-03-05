@@ -9,17 +9,14 @@ function ensure ($mysqli) {
 
     $fnsDir = __DIR__.'/..';
 
+    include_once "$fnsDir/ContentType/column.php";
     include_once "$fnsDir/MediaType/column.php";
     include_once "$fnsDir/Table/ensure.php";
     return \Table\ensure($mysqli, 'files', [
         'content_revision' => [
             'type' => 'bigint(20) unsigned',
         ],
-        'content_type' => [
-            'type' => "varchar($maxLengths[content_type])",
-            'characterSet' => 'ascii',
-            'collation' => 'ascii_bin',
-        ],
+        'content_type' => \ContentType\column(),
         'id_files' => [
             'type' => 'bigint(20) unsigned',
             'primary' => true,

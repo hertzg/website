@@ -9,14 +9,11 @@ function ensure ($mysqli) {
     include_once "$fnsDir/Files/maxLengths.php";
     $maxLengths = \Files\maxLengths();
 
+    include_once "$fnsDir/ContentType/column.php";
     include_once "$fnsDir/MediaType/column.php";
     include_once "$fnsDir/Table/ensure.php";
     return \Table\ensure($mysqli, 'received_folder_files', [
-        'content_type' => [
-            'type' => "varchar($maxLengths[content_type])",
-            'characterSet' => 'ascii',
-            'collation' => 'ascii_bin',
-        ],
+        'content_type' => \ContentType\column(),
         'id' => [
             'type' => 'bigint(20) unsigned',
             'primary' => true,
