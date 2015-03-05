@@ -4,9 +4,6 @@ include_once '../fns/require_parent_folder.php';
 include_once '../../lib/mysqli.php';
 list($parentFolder, $parent_id, $user) = require_parent_folder($mysqli);
 
-include_once '../../fns/request_strings.php';
-list($parent_id) = request_strings('parent_id');
-
 $key = 'files/new-folder/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else $values = ['name' => ''];
