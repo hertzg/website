@@ -10,7 +10,7 @@ function ensure ($mysqli) {
     $maxLengths = \Folders\maxLengths();
 
     include_once "$fnsDir/Table/ensure.php";
-    include_once "$fnsDir/Username/maxLength.php";
+    include_once "$fnsDir/Username/column.php";
     return \Table\ensure($mysqli, 'received_folders', [
         'archived' => [
             'type' => 'tinyint(3) unsigned',
@@ -36,11 +36,7 @@ function ensure ($mysqli) {
         'sender_id_users' => [
             'type' => 'bigint(20) unsigned',
         ],
-        'sender_username' => [
-            'type' => 'varchar('.\Username\maxLength().')',
-            'characterSet' => 'ascii',
-            'collation' => 'ascii_bin',
-        ],
+        'sender_username' => \Username\column(),
     ]);
 
 }

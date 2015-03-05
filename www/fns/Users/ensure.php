@@ -7,12 +7,15 @@ function ensure ($mysqli) {
     include_once __DIR__.'/maxLengths.php';
     $maxLengths = maxLengths();
 
-    include_once __DIR__.'/../Themes/index.php';
+    $fnsDir = __DIR__.'/..';
+
+    include_once "$fnsDir/Themes/index.php";
     $theme_type = 'enum('.join(',', array_map(function ($theme) {
         return "'$theme'";
     }, array_keys(\Themes\index()))).')';
 
-    include_once __DIR__.'/../Table/ensure.php';
+    include_once "$fnsDir/Username/column.php";
+    include_once "$fnsDir/Table/ensure.php";
     return \Table\ensure($mysqli, 'users', [
         'access_time' => [
             'type' => 'bigint(21) unsigned',
@@ -314,11 +317,7 @@ function ensure ($mysqli) {
         'timezone' => [
             'type' => 'int(11)',
         ],
-        'username' => [
-            'type' => "varchar($maxLengths[username])",
-            'characterSet' => 'ascii',
-            'collation' => 'ascii_bin',
-        ],
+        'username' => \Username\column(),
         'verify_email_key' => [
             'type' => "binary($maxLengths[verify_email_key])",
             'nullable' => true,

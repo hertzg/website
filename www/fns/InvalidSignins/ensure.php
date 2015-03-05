@@ -7,7 +7,7 @@ function ensure ($mysqli) {
     $fnsDir = __DIR__.'/..';
 
     include_once "$fnsDir/Table/ensure.php";
-    include_once "$fnsDir/Username/maxLength.php";
+    include_once "$fnsDir/Username/column.php";
     return \Table\ensure($mysqli, 'invalid_signins', [
         'id' => [
             'type' => 'bigint(20) unsigned',
@@ -16,11 +16,7 @@ function ensure ($mysqli) {
         'insert_time' => [
             'type' => 'bigint(20) unsigned',
         ],
-        'username' => [
-            'type' => 'varchar('.\Username\maxLength().')',
-            'characterSet' => 'ascii',
-            'collation' => 'ascii_bin',
-        ],
+        'username' => \Username\column(),
         'remote_address' => [
             'type' => 'varchar(128)',
             'characterSet' => 'ascii',

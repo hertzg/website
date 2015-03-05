@@ -7,7 +7,7 @@ function ensure ($mysqli) {
     $fnsDir = __DIR__.'/..';
 
     include_once "$fnsDir/Table/ensure.php";
-    include_once "$fnsDir/Username/maxLength.php";
+    include_once "$fnsDir/Username/column.php";
     return \Table\ensure($mysqli, 'connections', [
         'can_send_bookmark' => [
             'type' => 'tinyint(3) unsigned',
@@ -53,11 +53,7 @@ function ensure ($mysqli) {
         'update_time' => [
             'type' => 'bigint(20) unsigned',
         ],
-        'username' => [
-            'type' => 'varchar('.\Username\maxLength().')',
-            'characterSet' => 'ascii',
-            'collation' => 'ascii_bin',
-        ],
+        'username' => \Username\column(),
     ]);
 
 }

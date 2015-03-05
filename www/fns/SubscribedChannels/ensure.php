@@ -7,7 +7,10 @@ function ensure ($mysqli) {
     include_once __DIR__.'/maxLengths.php';
     $maxLengths = maxLengths();
 
-    include_once __DIR__.'/../Table/ensure.php';
+    $fnsDir = __DIR__.'/..';
+
+    include_once "$fnsDir/Username/column.php";
+    include_once "$fnsDir/Table/ensure.php";
     return \Table\ensure($mysqli, 'subscribed_channels', [
         'channel_name' => [
             'type' => "varchar($maxLengths[channel_name])",
@@ -51,11 +54,7 @@ function ensure ($mysqli) {
         'publisher_locked' => [
             'type' => 'tinyint(3) unsigned',
         ],
-        'publisher_username' => [
-            'type' => "varchar($maxLengths[username])",
-            'characterSet' => 'ascii',
-            'collation' => 'ascii_bin',
-        ],
+        'publisher_username' => \Username\column(),
         'receive_notifications' => [
             'type' => 'tinyint(3) unsigned',
         ],
@@ -68,11 +67,7 @@ function ensure ($mysqli) {
         'subscriber_locked' => [
             'type' => 'tinyint(3) unsigned',
         ],
-        'subscriber_username' => [
-            'type' => "varchar($maxLengths[username])",
-            'characterSet' => 'ascii',
-            'collation' => 'ascii_bin',
-        ],
+        'subscriber_username' => \Username\column(),
         'update_api_key_id' => [
             'type' => 'bigint(20) unsigned',
             'nullable' => true,

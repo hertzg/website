@@ -7,7 +7,10 @@ function ensure ($mysqli) {
     include_once __DIR__.'/maxLengths.php';
     $maxLengths = maxLengths();
 
-    include_once __DIR__.'/../Table/ensure.php';
+    $fnsDir = __DIR__.'/..';
+
+    include_once "$fnsDir/Username/column.php";
+    include_once "$fnsDir/Table/ensure.php";
     return \Table\ensure($mysqli, 'tokens', [
         'access_time' => [
             'type' => 'bigint(20) unsigned',
@@ -25,11 +28,7 @@ function ensure ($mysqli) {
         'token_text' => [
             'type' => "binary($maxLengths[token_text])",
         ],
-        'username' => [
-            'type' => "varchar($maxLengths[username])",
-            'characterSet' => 'ascii',
-            'collation' => 'ascii_bin',
-        ],
+        'username' => \Username\column(),
         'user_agent' => [
             'type' => 'varchar(1024)',
             'nullable' => true,
