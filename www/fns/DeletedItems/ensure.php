@@ -23,9 +23,7 @@ function ensure ($mysqli) {
             'type' => 'bigint(20) unsigned',
             'primary' => true,
         ],
-        'id_users' => [
-            'type' => 'bigint(20) unsigned',
-        ],
+        'id_users' => ['type' => 'bigint(20) unsigned'],
         'insert_api_key_id' => [
             'type' => 'bigint(20) unsigned',
             'nullable' => true,
@@ -36,9 +34,7 @@ function ensure ($mysqli) {
             'characterSet' => 'utf8',
             'collation' => 'utf8_general_ci',
         ],
-        'insert_time' => [
-            'type' => 'bigint(20) unsigned',
-        ],
+        'insert_time' => ['type' => 'bigint(20) unsigned'],
     ]);
 
 }

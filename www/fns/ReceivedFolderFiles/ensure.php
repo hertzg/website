@@ -18,29 +18,21 @@ function ensure ($mysqli) {
             'type' => 'bigint(20) unsigned',
             'primary' => true,
         ],
-        'id_received_folders' => [
-            'type' => 'bigint(20) unsigned',
-        ],
-        'id_users' => [
-            'type' => 'bigint(20) unsigned',
-        ],
+        'id_received_folders' => ['type' => 'bigint(20) unsigned'],
+        'id_users' => ['type' => 'bigint(20) unsigned'],
         'media_type' => \MediaType\column(),
         'name' => [
             'type' => "varchar($maxLengths[name])",
             'characterSet' => 'utf8',
             'collation' => 'utf8_unicode_ci',
         ],
-        'parent_id' => [
-            'type' => 'bigint(20) unsigned',
-        ],
+        'parent_id' => ['type' => 'bigint(20) unsigned'],
         'readable_size' => [
             'type' => 'varchar(20)',
             'characterSet' => 'utf8',
             'collation' => 'utf8_unicode_ci',
         ],
-        'size' => [
-            'type' => 'bigint(20) unsigned',
-        ],
+        'size' => ['type' => 'bigint(20) unsigned'],
     ]);
 
 }

@@ -9,12 +9,8 @@ function ensure ($mysqli) {
             'type' => 'bigint(20) unsigned',
             'primary' => true,
         ],
-        'id_users' => [
-            'type' => 'bigint(20) unsigned',
-        ],
-        'insert_time' => [
-            'type' => 'bigint(20) unsigned',
-        ],
+        'id_users' => ['type' => 'bigint(20) unsigned'],
+        'insert_time' => ['type' => 'bigint(20) unsigned'],
         'remote_address' => [
             'type' => 'varchar(128)',
             'characterSet' => 'ascii',

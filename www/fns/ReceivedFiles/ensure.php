@@ -14,20 +14,14 @@ function ensure ($mysqli) {
     include_once "$fnsDir/Table/ensure.php";
     include_once "$fnsDir/Username/column.php";
     return \Table\ensure($mysqli, 'received_files', [
-        'archived' => [
-            'type' => 'tinyint(3) unsigned',
-        ],
-        'committed' => [
-            'type' => 'tinyint(3) unsigned',
-        ],
+        'archived' => ['type' => 'tinyint(3) unsigned'],
+        'committed' => ['type' => 'tinyint(3) unsigned'],
         'content_type' => \ContentType\column(),
         'id' => [
             'type' => 'bigint(20) unsigned',
             'primary' => true,
         ],
-        'insert_time' => [
-            'type' => 'bigint(20) unsigned',
-        ],
+        'insert_time' => ['type' => 'bigint(20) unsigned'],
         'media_type' => \MediaType\column(),
         'name' => [
             'type' => "varchar($maxLengths[name])",
@@ -39,16 +33,10 @@ function ensure ($mysqli) {
             'characterSet' => 'utf8',
             'collation' => 'utf8_unicode_ci',
         ],
-        'receiver_id_users' => [
-            'type' => 'bigint(20) unsigned',
-        ],
-        'sender_id_users' => [
-            'type' => 'bigint(20) unsigned',
-        ],
+        'receiver_id_users' => ['type' => 'bigint(20) unsigned'],
+        'sender_id_users' => ['type' => 'bigint(20) unsigned'],
         'sender_username' => \Username\column(),
-        'size' => [
-            'type' => 'bigint(20) unsigned',
-        ],
+        'size' => ['type' => 'bigint(20) unsigned'],
     ]);
 
 }

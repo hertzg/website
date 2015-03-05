@@ -36,9 +36,7 @@ function ensure ($mysqli) {
             'characterSet' => 'utf8',
             'collation' => 'utf8_general_ci',
         ],
-        'favorite' => [
-            'type' => 'tinyint(3) unsigned',
-        ],
+        'favorite' => ['type' => 'tinyint(3) unsigned'],
         'full_name' => [
             'type' => "varchar($maxLengths[full_name])",
             'characterSet' => 'utf8',
@@ -48,9 +46,7 @@ function ensure ($mysqli) {
             'type' => 'bigint(20) unsigned',
             'primary' => true,
         ],
-        'id_users' => [
-            'type' => 'bigint(20) unsigned',
-        ],
+        'id_users' => ['type' => 'bigint(20) unsigned'],
         'insert_api_key_id' => [
             'type' => 'bigint(20) unsigned',
             'nullable' => true,
@@ -61,17 +57,13 @@ function ensure ($mysqli) {
             'characterSet' => 'utf8',
             'collation' => 'utf8_general_ci',
         ],
-        'insert_time' => [
-            'type' => 'bigint(20) unsigned',
-        ],
+        'insert_time' => ['type' => 'bigint(20) unsigned'],
         'notes' => [
             'type' => "varchar($maxLengths[notes])",
             'characterSet' => 'utf8',
             'collation' => 'utf8_general_ci',
         ],
-        'num_tags' => [
-            'type' => 'tinyint(3) unsigned',
-        ],
+        'num_tags' => ['type' => 'tinyint(3) unsigned'],
         'phone1' => [
             'type' => "varchar($maxLengths[phone1])",
             'characterSet' => 'utf8',
@@ -86,9 +78,7 @@ function ensure ($mysqli) {
             'type' => 'bigint(20) unsigned',
             'nullable' => true,
         ],
-        'revision' => [
-            'type' => 'bigint(20) unsigned',
-        ],
+        'revision' => ['type' => 'bigint(20) unsigned'],
         'tags' => [
             'type' => "varchar($maxLengths[tags])",
             'characterSet' => 'utf8',
@@ -113,9 +103,7 @@ function ensure ($mysqli) {
             'characterSet' => 'utf8',
             'collation' => 'utf8_general_ci',
         ],
-        'update_time' => [
-            'type' => 'bigint(20) unsigned',
-        ],
+        'update_time' => ['type' => 'bigint(20) unsigned'],
         'username' => [
             'type' => "varchar($maxLengths[username])",
             'characterSet' => 'ascii',

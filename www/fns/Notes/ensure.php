@@ -9,16 +9,12 @@ function ensure ($mysqli) {
 
     include_once __DIR__.'/../Table/ensure.php';
     return \Table\ensure($mysqli, 'notes', [
-        'encrypt' => [
-            'type' => 'tinyint(3) unsigned',
-        ],
+        'encrypt' => ['type' => 'tinyint(3) unsigned'],
         'id' => [
             'type' => 'bigint(20) unsigned',
             'primary' => true,
         ],
-        'id_users' => [
-            'type' => 'bigint(20) unsigned',
-        ],
+        'id_users' => ['type' => 'bigint(20) unsigned'],
         'insert_api_key_id' => [
             'type' => 'bigint(20) unsigned',
             'nullable' => true,
@@ -29,15 +25,9 @@ function ensure ($mysqli) {
             'characterSet' => 'utf8',
             'collation' => 'utf8_general_ci',
         ],
-        'insert_time' => [
-            'type' => 'bigint(20) unsigned',
-        ],
-        'num_tags' => [
-            'type' => 'tinyint(3) unsigned',
-        ],
-        'revision' => [
-            'type' => 'bigint(20) unsigned',
-        ],
+        'insert_time' => ['type' => 'bigint(20) unsigned'],
+        'num_tags' => ['type' => 'tinyint(3) unsigned'],
+        'revision' => ['type' => 'bigint(20) unsigned'],
         'tags' => [
             'type' => "varchar($maxLengths[tags])",
             'characterSet' => 'utf8',
@@ -68,9 +58,7 @@ function ensure ($mysqli) {
             'characterSet' => 'utf8',
             'collation' => 'utf8_general_ci',
         ],
-        'update_time' => [
-            'type' => 'bigint(20) unsigned',
-        ],
+        'update_time' => ['type' => 'bigint(20) unsigned'],
     ]);
 
 }

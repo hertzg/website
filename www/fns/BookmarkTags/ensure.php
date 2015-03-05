@@ -16,15 +16,9 @@ function ensure ($mysqli) {
             'type' => 'bigint(20) unsigned',
             'primary' => true,
         ],
-        'id_bookmarks' => [
-            'type' => 'bigint(20) unsigned',
-        ],
-        'id_users' => [
-            'type' => 'bigint(20) unsigned',
-        ],
-        'insert_time' => [
-            'type' => 'bigint(20) unsigned',
-        ],
+        'id_bookmarks' => ['type' => 'bigint(20) unsigned'],
+        'id_users' => ['type' => 'bigint(20) unsigned'],
+        'insert_time' => ['type' => 'bigint(20) unsigned'],
         'tag_name' => [
             'type' => 'varchar('.\Tag\maxLength().')',
             'characterSet' => 'utf8',
@@ -35,9 +29,7 @@ function ensure ($mysqli) {
             'characterSet' => 'utf8',
             'collation' => 'utf8_unicode_ci',
         ],
-        'update_time' => [
-            'type' => 'bigint(20) unsigned',
-        ],
+        'update_time' => ['type' => 'bigint(20) unsigned'],
         'url' => [
             'type' => "varchar($maxLengths[url])",
             'characterSet' => 'utf8',

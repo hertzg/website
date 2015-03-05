@@ -17,16 +17,12 @@ function ensure ($mysqli) {
             'characterSet' => 'ascii',
             'collation' => 'ascii_general_ci',
         ],
-        'channel_public' => [
-            'type' => 'tinyint(3) unsigned',
-        ],
+        'channel_public' => ['type' => 'tinyint(3) unsigned'],
         'id' => [
             'type' => 'bigint(20) unsigned',
             'primary' => true,
         ],
-        'id_channels' => [
-            'type' => 'bigint(20) unsigned',
-        ],
+        'id_channels' => ['type' => 'bigint(20) unsigned'],
         'insert_api_key_id' => [
             'type' => 'bigint(20) unsigned',
             'nullable' => true,
@@ -37,36 +33,20 @@ function ensure ($mysqli) {
             'characterSet' => 'utf8',
             'collation' => 'utf8_general_ci',
         ],
-        'insert_time' => [
-            'type' => 'bigint(20) unsigned',
-        ],
+        'insert_time' => ['type' => 'bigint(20) unsigned'],
         'lowercase_name' => [
             'type' => "varchar($maxLengths[lowercase_name])",
             'characterSet' => 'ascii',
             'collation' => 'ascii_general_ci',
         ],
-        'num_notifications' => [
-            'type' => 'bigint(20) unsigned',
-        ],
-        'publisher_id_users' => [
-            'type' => 'bigint(20) unsigned',
-        ],
-        'publisher_locked' => [
-            'type' => 'tinyint(3) unsigned',
-        ],
+        'num_notifications' => ['type' => 'bigint(20) unsigned'],
+        'publisher_id_users' => ['type' => 'bigint(20) unsigned'],
+        'publisher_locked' => ['type' => 'tinyint(3) unsigned'],
         'publisher_username' => \Username\column(),
-        'receive_notifications' => [
-            'type' => 'tinyint(3) unsigned',
-        ],
-        'revision' => [
-            'type' => 'bigint(20) unsigned',
-        ],
-        'subscriber_id_users' => [
-            'type' => 'bigint(20) unsigned',
-        ],
-        'subscriber_locked' => [
-            'type' => 'tinyint(3) unsigned',
-        ],
+        'receive_notifications' => ['type' => 'tinyint(3) unsigned'],
+        'revision' => ['type' => 'bigint(20) unsigned'],
+        'subscriber_id_users' => ['type' => 'bigint(20) unsigned'],
+        'subscriber_locked' => ['type' => 'tinyint(3) unsigned'],
         'subscriber_username' => \Username\column(),
         'update_api_key_id' => [
             'type' => 'bigint(20) unsigned',
@@ -78,9 +58,7 @@ function ensure ($mysqli) {
             'characterSet' => 'utf8',
             'collation' => 'utf8_general_ci',
         ],
-        'update_time' => [
-            'type' => 'bigint(20) unsigned',
-        ],
+        'update_time' => ['type' => 'bigint(20) unsigned'],
     ]);
 
 }

@@ -17,9 +17,7 @@ function ensure ($mysqli) {
             'type' => 'bigint(20) unsigned',
             'nullable' => true,
         ],
-        'insert_time' => [
-            'type' => 'bigint(20) unsigned',
-        ],
+        'insert_time' => ['type' => 'bigint(20) unsigned'],
         'text' => [
             'type' => "varchar($maxLengths[text])",
             'characterSet' => 'utf8',

@@ -22,9 +22,7 @@ function ensure ($mysqli) {
             'characterSet' => 'utf8',
             'collation' => 'utf8_unicode_ci',
         ],
-        'archived' => [
-            'type' => 'tinyint(3) unsigned',
-        ],
+        'archived' => ['type' => 'tinyint(3) unsigned'],
         'birthday_time' => [
             'type' => 'bigint(20) unsigned',
             'nullable' => true,
@@ -34,9 +32,7 @@ function ensure ($mysqli) {
             'characterSet' => 'utf8',
             'collation' => 'utf8_general_ci',
         ],
-        'favorite' => [
-            'type' => 'tinyint(3) unsigned',
-        ],
+        'favorite' => ['type' => 'tinyint(3) unsigned'],
         'full_name' => [
             'type' => "varchar($maxLengths[full_name])",
             'characterSet' => 'utf8',
@@ -46,9 +42,7 @@ function ensure ($mysqli) {
             'type' => 'bigint(20) unsigned',
             'primary' => true,
         ],
-        'insert_time' => [
-            'type' => 'bigint(20) unsigned',
-        ],
+        'insert_time' => ['type' => 'bigint(20) unsigned'],
         'notes' => [
             'type' => "varchar($maxLengths[notes])",
             'characterSet' => 'utf8',
@@ -68,12 +62,8 @@ function ensure ($mysqli) {
             'type' => 'bigint(20) unsigned',
             'nullable' => true,
         ],
-        'receiver_id_users' => [
-            'type' => 'bigint(20) unsigned',
-        ],
-        'sender_id_users' => [
-            'type' => 'bigint(20) unsigned',
-        ],
+        'receiver_id_users' => ['type' => 'bigint(20) unsigned'],
+        'sender_id_users' => ['type' => 'bigint(20) unsigned'],
         'sender_username' => \Username\column(),
         'tags' => [
             'type' => "varchar($maxLengths[tags])",

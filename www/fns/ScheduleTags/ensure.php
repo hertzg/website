@@ -16,21 +16,11 @@ function ensure ($mysqli) {
             'type' => 'bigint(20) unsigned',
             'primary' => true,
         ],
-        'id_schedules' => [
-            'type' => 'bigint(20) unsigned',
-        ],
-        'id_users' => [
-            'type' => 'bigint(20) unsigned',
-        ],
-        'insert_time' => [
-            'type' => 'bigint(20) unsigned',
-        ],
-        'interval' => [
-            'type' => 'bigint(20) unsigned',
-        ],
-        'offset' => [
-            'type' => 'bigint(20) unsigned',
-        ],
+        'id_schedules' => ['type' => 'bigint(20) unsigned'],
+        'id_users' => ['type' => 'bigint(20) unsigned'],
+        'insert_time' => ['type' => 'bigint(20) unsigned'],
+        'interval' => ['type' => 'bigint(20) unsigned'],
+        'offset' => ['type' => 'bigint(20) unsigned'],
         'tag_name' => [
             'type' => 'varchar('.\Tag\maxLength().')',
             'characterSet' => 'utf8',
@@ -41,9 +31,7 @@ function ensure ($mysqli) {
             'characterSet' => 'utf8',
             'collation' => 'utf8_unicode_ci',
         ],
-        'update_time' => [
-            'type' => 'bigint(20) unsigned',
-        ],
+        'update_time' => ['type' => 'bigint(20) unsigned'],
     ]);
 
 }

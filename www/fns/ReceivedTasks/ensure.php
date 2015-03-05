@@ -12,9 +12,7 @@ function ensure ($mysqli) {
     include_once "$fnsDir/Table/ensure.php";
     include_once "$fnsDir/Username/column.php";
     return \Table\ensure($mysqli, 'received_tasks', [
-        'archived' => [
-            'type' => 'tinyint(3) unsigned',
-        ],
+        'archived' => ['type' => 'tinyint(3) unsigned'],
         'deadline_time' => [
             'type' => 'bigint(20) unsigned',
             'nullable' => true,
@@ -23,15 +21,9 @@ function ensure ($mysqli) {
             'type' => 'bigint(20) unsigned',
             'primary' => true,
         ],
-        'insert_time' => [
-            'type' => 'bigint(20) unsigned',
-        ],
-        'receiver_id_users' => [
-            'type' => 'bigint(20) unsigned',
-        ],
-        'sender_id_users' => [
-            'type' => 'bigint(20) unsigned',
-        ],
+        'insert_time' => ['type' => 'bigint(20) unsigned'],
+        'receiver_id_users' => ['type' => 'bigint(20) unsigned'],
+        'sender_id_users' => ['type' => 'bigint(20) unsigned'],
         'sender_username' => \Username\column(),
         'tags' => [
             'type' => "varchar($maxLengths[tags])",
@@ -48,9 +40,7 @@ function ensure ($mysqli) {
             'characterSet' => 'utf8',
             'collation' => 'utf8_unicode_ci',
         ],
-        'top_priority' => [
-            'type' => 'tinyint(3) unsigned',
-        ],
+        'top_priority' => ['type' => 'tinyint(3) unsigned'],
     ]);
 
 }

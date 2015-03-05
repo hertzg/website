@@ -12,22 +12,14 @@ function ensure ($mysqli) {
     include_once "$fnsDir/Table/ensure.php";
     include_once "$fnsDir/Username/column.php";
     return \Table\ensure($mysqli, 'received_bookmarks', [
-        'archived' => [
-            'type' => 'tinyint(3) unsigned',
-        ],
+        'archived' => ['type' => 'tinyint(3) unsigned'],
         'id' => [
             'type' => 'bigint(20) unsigned',
             'primary' => true,
         ],
-        'insert_time' => [
-            'type' => 'bigint(20) unsigned',
-        ],
-        'receiver_id_users' => [
-            'type' => 'bigint(20) unsigned',
-        ],
-        'sender_id_users' => [
-            'type' => 'bigint(20) unsigned',
-        ],
+        'insert_time' => ['type' => 'bigint(20) unsigned'],
+        'receiver_id_users' => ['type' => 'bigint(20) unsigned'],
+        'sender_id_users' => ['type' => 'bigint(20) unsigned'],
         'sender_username' => \Username\column(),
         'tags' => [
             'type' => "varchar($maxLengths[tags])",

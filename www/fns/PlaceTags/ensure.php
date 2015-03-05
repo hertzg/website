@@ -21,15 +21,9 @@ function ensure ($mysqli) {
             'type' => 'bigint(20) unsigned',
             'primary' => true,
         ],
-        'id_places' => [
-            'type' => 'bigint(20) unsigned',
-        ],
-        'id_users' => [
-            'type' => 'bigint(20) unsigned',
-        ],
-        'insert_time' => [
-            'type' => 'bigint(20) unsigned',
-        ],
+        'id_places' => ['type' => 'bigint(20) unsigned'],
+        'id_users' => ['type' => 'bigint(20) unsigned'],
+        'insert_time' => ['type' => 'bigint(20) unsigned'],
         'latitude' => ['type' => 'double'],
         'longitude' => ['type' => 'double'],
         'name' => [
@@ -47,9 +41,7 @@ function ensure ($mysqli) {
             'characterSet' => 'utf8',
             'collation' => 'utf8_unicode_ci',
         ],
-        'update_time' => [
-            'type' => 'bigint(20) unsigned',
-        ],
+        'update_time' => ['type' => 'bigint(20) unsigned'],
     ]);
 
 }
