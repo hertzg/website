@@ -14,7 +14,8 @@ if ($num_args == 3) {
 }
 
 if ($num_args != 4) {
-    echo "Usage: ./upload-backup.php <zvini_location> <api_key> [<parent_id>]\n";
+    echo 'Usage: ./upload-backup.php'
+        ." <zvini_location> <api_key> [<parent_id>]\n";
     exit(1);
 }
 

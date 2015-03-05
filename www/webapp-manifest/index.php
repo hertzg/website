@@ -24,8 +24,10 @@ echo json_encode([
         'url' => "http://$domainName/",
     ],
     'icons' => [
-        16 => "{$siteBase}zvini-icons/16.png?".get_revision('zvini-icons/16.png'),
-        32 => "{$siteBase}zvini-icons/32.png?".get_revision('zvini-icons/32.png'),
+        16 => "{$siteBase}zvini-icons/16.png?"
+            .get_revision('zvini-icons/16.png'),
+        32 => "{$siteBase}zvini-icons/32.png?"
+            .get_revision('zvini-icons/32.png'),
         48 => "{$siteBase}zvini-icons/48.png?1",
         60 => "{$siteBase}zvini-icons/60.png?1",
         64 => "{$siteBase}zvini-icons/64.png?1",
