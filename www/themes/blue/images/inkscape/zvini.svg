@@ -5,16 +5,17 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    version="1.1"
    width="68"
    height="32"
-   id="svg3055"
+   id="svg2991"
    inkscape:version="0.48.5 r10040"
    sodipodi:docname="zvini.svg">
   <metadata
-     id="metadata3079">
+     id="metadata3015">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
@@ -25,7 +26,55 @@
     </rdf:RDF>
   </metadata>
   <defs
-     id="defs3077" />
+     id="defs3013">
+    <linearGradient
+       id="linearGradient3754">
+      <stop
+         style="stop-color:#45a2ef;stop-opacity:1;"
+         offset="0"
+         id="stop3756" />
+      <stop
+         id="stop3760"
+         offset="0.5"
+         style="stop-color:#3299ee;stop-opacity:1;" />
+      <stop
+         style="stop-color:#208fec;stop-opacity:1;"
+         offset="1"
+         id="stop3758" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3754"
+       id="linearGradient4184"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.7090854,0,0,1.7090854,-4.4692838,6.9984908)"
+       x1="24.46484"
+       y1="4.2924876"
+       x2="17.75495"
+       y2="21.772348" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3754"
+       id="linearGradient4292"
+       x1="40"
+       y1="-100"
+       x2="40"
+       y2="-68"
+       gradientUnits="userSpaceOnUse" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath4306">
+      <rect
+         transform="matrix(0.93358043,-0.35836794,0.35836794,0.93358043,0,0)"
+         ry="5.715004"
+         y="-86.35955"
+         x="31.367512"
+         height="27.345366"
+         width="27.345366"
+         id="rect4308"
+         style="fill:#ee1aa4;fill-opacity:0.4257028;stroke:none" />
+    </clipPath>
+  </defs>
   <sodipodi:namedview
      pagecolor="#ffffff"
      bordercolor="#666666"
@@ -37,51 +86,74 @@
      inkscape:pageshadow="2"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
-     id="namedview3075"
-     showgrid="false"
-     inkscape:zoom="6.2156863"
-     inkscape:cx="54.378549"
-     inkscape:cy="5.5646688"
+     id="namedview3011"
+     showgrid="true"
+     inkscape:zoom="11.116072"
+     inkscape:cx="19.733725"
+     inkscape:cy="9.931334"
      inkscape:window-x="0"
      inkscape:window-y="27"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg3055" />
-  <path
-     d="m 0,2.666666 v 26.666666 a 2.6666666,2.6666666 0 0 0 2.6666666,2.666667 H 29.333333 a 2.6666666,2.6666666 0 0 0 2.666666,-2.666667 V 2.666666 A 2.6666666,2.6666666 0 0 0 29.333333,-6e-7 H 2.6666666 A 2.6666666,2.6666666 0 0 0 0,2.666666"
-     id="path3057"
-     style="fill:#3399ee;fill-opacity:1"
-     inkscape:connector-curvature="0" />
+     inkscape:current-layer="svg2991"
+     inkscape:snap-bbox="true"
+     inkscape:snap-global="true">
+    <inkscape:grid
+       type="xygrid"
+       id="grid3048"
+       empspacing="5"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true" />
+  </sodipodi:namedview>
+  <rect
+     style="fill:url(#linearGradient4184);fill-opacity:1;stroke:none"
+     id="rect3762"
+     width="27.345366"
+     height="27.345366"
+     x="-4.4692831"
+     y="6.9984918"
+     ry="5.715004"
+     transform="matrix(0.93358043,-0.35836794,0.35836794,0.93358043,0,0)" />
   <g
-     transform="translate(6.3114078e-5,0)"
-     id="g3871">
+     transform="translate(6.3114078e-5,4)"
+     id="g3871"
+     style="fill:#ffffff;fill-opacity:1">
     <path
        d="M 8.6666665,12 H 23.333333 v 4 L 14,24 h 9.333333 v 4 H 8.6666665 V 24 L 18,16 H 8.6666665 z M 16,10.666667 c 7.999999,-12 -8.0000002,-12 0,0 m -1.333334,0 c -5.3333328,-12 -13.3333327,0 0,0 m 2.666667,0 c 5.333333,-12 13.333333,0 0,0"
        id="path3035"
        inkscape:connector-curvature="0"
-       style="fill:#ffffff" />
+       style="fill:#ffffff;fill-opacity:1" />
     <path
        sodipodi:nodetypes="cccccccc"
        inkscape:connector-curvature="0"
        id="path3037"
        d="M 24.65625,17.989584 30,28 l 4,0 5.34375,-10.010416 -4.6875,0 L 32,23.34375 29.34375,17.989584 z"
-       style="fill:#ffffff" />
+       style="fill:#ffffff;fill-opacity:1" />
     <path
        sodipodi:nodetypes="ccccccc"
        d="m 41.333332,18 0,10 4,0 0,-10 z m 2,-2.666666 c 6.666666,-9.3333333 -6.666667,-9.3333333 0,0 z"
        id="path3043"
        inkscape:connector-curvature="0"
-       style="fill:#ffffff" />
+       style="fill:#ffffff;fill-opacity:1" />
     <path
        sodipodi:nodetypes="ccccccssccssc"
        d="m 47.999999,18 0,10 4,0 0,-10 z m 4,6.666667 c 0,-1.396264 1.270403,-2.666665 2.666666,-2.666665 1.396264,0 2.666667,1.270401 2.666667,2.666665 l 0,3.333333 4,0 0,-4.666666 c 0,-2.792527 -2.540807,-5.333331 -5.333333,-5.333331 -2.792527,0 -5.333333,2.540804 -5.333333,5.333331"
        id="path3045"
        inkscape:connector-curvature="0"
-       style="fill:#ffffff" />
+       style="fill:#ffffff;fill-opacity:1" />
     <path
        sodipodi:nodetypes="ccccccc"
        d="m 63.999998,18 0,10 4,0 0,-10 z m 2,-2.666666 c 6.666666,-9.3333333 -6.666667,-9.3333333 0,0 z"
        id="path3047"
        inkscape:connector-curvature="0"
-       style="fill:#ffffff" />
+       style="fill:#ffffff;fill-opacity:1" />
   </g>
+  <path
+     style="fill:url(#linearGradient4292);fill-opacity:1;stroke:none;opacity:0.3"
+     d="m 0,-100 0,32 8.65625,0 0,-3.875 9.34375,-7.75 -9.34375,0 0,-3.875 14.6875,0 0,3.875 -9.34375,7.75 9.34375,0 0,3.875 6.65625,0 -5.34375,-9.6875 4.6875,0 L 32,-72.510742 32,-100 z m 16,6.479492 c 2,0 4,2.90625 0,8.71875 -4,-5.8125 -2,-8.71875 0,-8.71875 z m -6.8125,3.572266 c 1.488688,-0.08195 3.635417,1.15039 5.46875,5.146484 -8.7499995,0 -8.3107909,-4.990032 -5.46875,-5.146484 z m 13.1875,0 c 3.201172,-0.343414 4.135416,5.146484 -5.03125,5.146484 1.666667,-3.632812 3.576172,-4.990387 5.03125,-5.146484 z"
+     id="rect4279"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccccccccccccccccccscsscsscs"
+     clip-path="url(#clipPath4306)"
+     transform="translate(0,100)" />
 </svg>
