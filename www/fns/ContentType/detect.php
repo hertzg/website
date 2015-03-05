@@ -1,6 +1,8 @@
 <?php
 
-function detect_content_type ($name) {
+namespace ContentType;
+
+function detect ($name) {
     static $contentTypes = [
         'bmp' => 'image/bmp',
         'gif' => 'image/gif',

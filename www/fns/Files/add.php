@@ -6,8 +6,8 @@ function add ($mysqli, $id_users, $id_folders, $name, $size, $insertApiKey) {
 
     $fnsDir = __DIR__.'/..';
 
-    include_once "$fnsDir/detect_content_type.php";
-    $content_type = \detect_content_type($name);
+    include_once "$fnsDir/ContentType/detect.php";
+    $content_type = \ContentType\detect($name);
 
     include_once "$fnsDir/MediaType/detect.php";
     $media_type = \MediaType\detect($name);
