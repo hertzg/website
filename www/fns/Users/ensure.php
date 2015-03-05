@@ -7,6 +7,11 @@ function ensure ($mysqli) {
     include_once __DIR__.'/maxLengths.php';
     $maxLengths = maxLengths();
 
+    include_once __DIR__.'/../Themes/index.php';
+    $theme_type = 'enum('.join(',', array_map(function ($theme) {
+        return "'$theme'";
+    }, array_keys(\Themes\index()))).')';
+
     include_once __DIR__.'/../Table/ensure.php';
     return \Table\ensure($mysqli, 'users', [
         'access_time' => [
@@ -302,7 +307,7 @@ function ensure ($mysqli) {
             'type' => 'bigint(20) unsigned',
         ],
         'theme' => [
-            'type' => 'varchar(10)',
+            'type' => $theme_type,
             'characterSet' => 'ascii',
             'collation' => 'ascii_bin',
         ],
