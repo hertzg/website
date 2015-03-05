@@ -50,8 +50,8 @@ function create_page ($mysqli, $user, $base = '') {
 
     } else {
 
-        include_once "$fnsDir/BookmarkTags/indexOnTagName.php";
-        $bookmarks = BookmarkTags\indexOnTagName($mysqli,
+        include_once "$fnsDir/BookmarkTags/indexPageOnUserTagName.php";
+        $bookmarks = BookmarkTags\indexPageOnUserTagName($mysqli,
             $id_users, $tag, $offset, $limit, $total);
 
         if ($total > 1) {

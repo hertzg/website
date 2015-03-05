@@ -1,15 +1,15 @@
 <?php
 
-namespace ContactTags;
+namespace TaskTags;
 
-function indexOnTagName ($mysqli, $id_users,
+function indexPageOnUserTagName ($mysqli, $id_users,
     $tag_name, $offset, $limit, &$total) {
 
     $fnsDir = __DIR__.'/..';
 
     $tag_name = $mysqli->real_escape_string($tag_name);
 
-    $fromWhere = "from contact_tags where id_users = $id_users"
+    $fromWhere = "from task_tags where id_users = $id_users"
         ." and tag_name = '$tag_name'";
 
     $sql = "select count(*) total $fromWhere";
@@ -18,8 +18,9 @@ function indexOnTagName ($mysqli, $id_users,
 
     if ($offset >= $total) return [];
 
-    $sql = "select *, id_contacts id $fromWhere"
-        ." order by favorite desc, full_name limit $limit offset $offset";
+    $sql = "select *, id_tasks id $fromWhere"
+        .' order by top_priority desc, update_time desc'
+        ." limit $limit offset $offset";
     include_once "$fnsDir/mysqli_query_object.php";
     return mysqli_query_object($mysqli, $sql);
 

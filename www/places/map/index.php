@@ -20,8 +20,8 @@ if ($keyword === '') {
         $places = Places\indexPageOnUser($mysqli,
             $id_users, $offset, $limit, $total);
     } else {
-        include_once "$fnsDir/PlaceTags/indexOnTagName.php";
-        $places = PlaceTags\indexOnTagName($mysqli,
+        include_once "$fnsDir/PlaceTags/indexPageOnUserTagName.php";
+        $places = PlaceTags\indexPageOnUserTagName($mysqli,
             $id_users, $tag, $offset, $limit, $total);
     }
 } else {
