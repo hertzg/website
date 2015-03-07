@@ -46,18 +46,21 @@ function signed_user () {
 
             $time = time();
 
+            include_once __DIR__.'/get_client_address.php';
+            $client_address = get_client_address();
+
             if (array_key_exists('token', $_SESSION)) {
                 $token = $_SESSION['token'];
                 $access_time = $token->access_time;
-                if ($access_time === null || $access_time + 30 < $time) {
+                if ($access_time === null || $access_time + 30 < $time ||
+                    $token->access_remote_address !== $client_address) {
 
                     $value = bin2hex($token->token_text);
                     Cookie\set('token', $value);
 
-                    include_once __DIR__.'/get_client_address.php';
                     include_once __DIR__.'/Tokens/editAccess.php';
-                    Tokens\editAccess($mysqli, $token->id,
-                        $time, get_client_address());
+                    Tokens\editAccess($mysqli,
+                        $token->id, $time, $client_address);
 
                     $token->access_time = $time;
 
@@ -65,11 +68,12 @@ function signed_user () {
             }
 
             $access_time = $user->access_time;
-            if ($access_time === null || $access_time + 30 < $time) {
-                include_once __DIR__.'/get_client_address.php';
+            if ($access_time === null || $access_time + 30 < $time ||
+                $user->access_remote_address !== $client_address) {
+
                 include_once __DIR__.'/Users/editAccess.php';
-                Users\editAccess($mysqli, $id_users,
-                    $time, get_client_address());
+                Users\editAccess($mysqli, $id_users, $time, $client_address);
+
             }
 
         }

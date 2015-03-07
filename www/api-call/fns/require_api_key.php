@@ -56,12 +56,16 @@ function require_api_key ($permission_field) {
             die('"API_KEY_EXPIRED"');
         }
 
+        include_once "$fnsDir/get_client_address.php";
+        $client_address = get_client_address();
+
         $access_time = $apiKey->access_time;
-        if ($access_time === null || $access_time + 30 < $time) {
-            include_once "$fnsDir/get_client_address.php";
+        if ($access_time === null || $access_time + 30 < $time ||
+            $apiKey->access_remote_address !== $client_address) {
+
             include_once "$fnsDir/ApiKeys/editAccess.php";
-            ApiKeys\editAccess($mysqli, $apiKey->id,
-                $time, get_client_address());
+            ApiKeys\editAccess($mysqli, $apiKey->id, $time, $client_address);
+
         }
 
         include_once "$fnsDir/Users/get.php";
