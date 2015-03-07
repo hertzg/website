@@ -54,8 +54,10 @@ function signed_user () {
                     $value = bin2hex($token->token_text);
                     Cookie\set('token', $value);
 
-                    include_once __DIR__.'/Tokens/editAccessTime.php';
-                    Tokens\editAccessTime($mysqli, $token->id, $time);
+                    include_once __DIR__.'/get_client_address.php';
+                    include_once __DIR__.'/Tokens/editAccess.php';
+                    Tokens\editAccess($mysqli, $token->id,
+                        $time, get_client_address());
 
                     $token->access_time = $time;
 
@@ -64,8 +66,10 @@ function signed_user () {
 
             $access_time = $user->access_time;
             if ($access_time === null || $access_time + 30 < $time) {
-                include_once __DIR__.'/Users/editAccessTime.php';
-                Users\editAccessTime($mysqli, $id_users, $time);
+                include_once __DIR__.'/get_client_address.php';
+                include_once __DIR__.'/Users/editAccess.php';
+                Users\editAccess($mysqli, $id_users,
+                    $time, get_client_address());
             }
 
         }

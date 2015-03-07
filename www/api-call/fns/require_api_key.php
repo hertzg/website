@@ -58,8 +58,10 @@ function require_api_key ($permission_field) {
 
         $access_time = $apiKey->access_time;
         if ($access_time === null || $access_time + 30 < $time) {
-            include_once "$fnsDir/ApiKeys/editAccessTime.php";
-            ApiKeys\editAccessTime($mysqli, $apiKey->id, $time);
+            include_once "$fnsDir/get_client_address.php";
+            include_once "$fnsDir/ApiKeys/editAccess.php";
+            ApiKeys\editAccess($mysqli, $apiKey->id,
+                $time, get_client_address());
         }
 
         include_once "$fnsDir/Users/get.php";
