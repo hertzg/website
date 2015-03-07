@@ -7,8 +7,12 @@ function ensure ($mysqli) {
     include_once __DIR__.'/maxLengths.php';
     $maxLengths = maxLengths();
 
-    include_once __DIR__.'/../Table/ensure.php';
+    $fnsDir = __DIR__.'/..';
+
+    include_once "$fnsDir/IPAddress/column.php";
+    include_once "$fnsDir/Table/ensure.php";
     return \Table\ensure($mysqli, 'api_keys', [
+        'access_remote_address' => \IPAddress\column(true),
         'access_time' => [
             'type' => 'bigint(20) unsigned',
             'nullable' => true,

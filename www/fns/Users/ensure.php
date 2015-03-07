@@ -14,9 +14,11 @@ function ensure ($mysqli) {
         return "'$theme'";
     }, array_keys(\Themes\index()))).')';
 
-    include_once "$fnsDir/Username/column.php";
+    include_once "$fnsDir/IPAddress/column.php";
     include_once "$fnsDir/Table/ensure.php";
+    include_once "$fnsDir/Username/column.php";
     return \Table\ensure($mysqli, 'users', [
+        'access_remote_address' => \IPAddress\column(true),
         'access_time' => [
             'type' => 'bigint(21) unsigned',
             'nullable' => true,
