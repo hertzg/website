@@ -2,12 +2,12 @@
 
 namespace ItemList;
 
-function listUrl () {
+function listUrl ($base = '../') {
 
     include_once __DIR__.'/../request_keyword_tag_offset.php';
     list($keyword, $tag, $offset) = request_keyword_tag_offset();
 
-    $href = '../';
+    $href = $base;
     $params = [];
     if ($keyword !== '') {
         $href .= 'search/';

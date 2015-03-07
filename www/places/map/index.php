@@ -6,32 +6,24 @@ $id_users = $user->id_users;
 
 $fnsDir = '../../fns';
 
-include_once "$fnsDir/request_keyword_tag_offset.php";
-list($keyword, $tag, $offset) = request_keyword_tag_offset();
+include_once "$fnsDir/request_strings.php";
+list($tag) = request_strings('tag');
+
+include_once "$fnsDir/Paging/requestOffset.php";
+$offset = Paging\requestOffset();
 
 include_once "$fnsDir/Paging/limit.php";
 $limit = \Paging\limit();
 
 include_once '../../lib/mysqli.php';
 
-if ($keyword === '') {
-    if ($tag === '') {
-        include_once "$fnsDir/Places/indexOnUser.php";
-        $places = Places\indexOnUser($mysqli, $id_users);
-    } else {
-        include_once "$fnsDir/PlaceTags/indexPageOnUserTagName.php";
-        $places = PlaceTags\indexPageOnUserTagName($mysqli,
-            $id_users, $tag, $offset, $limit, $total);
-    }
+if ($tag === '') {
+    include_once "$fnsDir/Places/indexOnUser.php";
+    $places = Places\indexOnUser($mysqli, $id_users);
 } else {
-    if ($tag === '') {
-        include_once "$fnsDir/Places/search.php";
-        $places = \Places\search($mysqli, $id_users, $keyword);
-    } else {
-        include_once "$fnsDir/PlaceTags/searchOnTagName.php";
-        $places = \PlaceTags\searchOnTagName($mysqli,
-            $id_users, $keyword, $tag, $offset, $limit, $total);
-    }
+    include_once "$fnsDir/PlaceTags/indexPageOnUserTagName.php";
+    $places = PlaceTags\indexPageOnUserTagName($mysqli,
+        $id_users, $tag, $offset, $limit, $total);
 }
 
 if ($places) {
