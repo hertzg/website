@@ -15,7 +15,8 @@ if ($tag === '') {
     include_once "$fnsDir/Places/indexOnUser.php";
     $places = Places\indexOnUser($mysqli, $id_users);
 } else {
-    // TODO
+    include_once "$fnsDir/PlaceTags/indexOnUserTagName.php";
+    $places = PlaceTags\indexOnUserTagName($mysqli, $id_users, $tag);
 }
 
 include_once 'fns/create_map.php';
