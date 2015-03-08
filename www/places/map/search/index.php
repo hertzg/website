@@ -31,7 +31,7 @@ $content = \Page\tabs(
         ],
     ],
     'Map',
-    create_map($places),
+    create_map($places, '../'),
     create_new_item_button('Place', '../../')
 );
 

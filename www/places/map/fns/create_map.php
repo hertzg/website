@@ -1,6 +1,6 @@
 <?php
 
-function create_map ($places) {
+function create_map ($places, $base = '') {
 
     $radius = 2;
 
@@ -30,18 +30,21 @@ function create_map ($places) {
     }
 
     return
-        '<svg viewBox="-180 -90 360 180" style="vertical-align: top">'
-            ."<g transform=\"scale($scale)\">"
-                .'<g fill="rgba(0, 0, 0, 0.5)"'
-                ." transform=\"translate(-$median_x, $median_y)\">"
-                    .join('', array_map(function ($place) use ($radius) {
-                        $cx = $place->longitude;
-                        $cy = -$place->latitude;
-                        return
-                            "<circle cx=\"$cx\" cy=\"$cy\" r=\"0.0005\">"
-                            ."</circle>";
-                    }, $places))
+        '<div style="height: 400px; overflow: auto">'
+            .'<svg class="map" viewBox="-180 -90 360 180" style="vertical-align: top; width: 100%; height: 100%">'
+                ."<g class=\"map-zoom\" transform=\"scale($scale)\">"
+                    .'<g fill="hsla(7, 100%, 57%, 0.8)"'
+                    ." transform=\"translate(-$median_x, $median_y)\">"
+                        .join('', array_map(function ($place) use ($radius) {
+                            $cx = $place->longitude;
+                            $cy = -$place->latitude;
+                            return
+                                "<circle cx=\"$cx\" cy=\"$cy\" r=\"0.0005\">"
+                                ."</circle>";
+                        }, $places))
+                    .'</g>'
                 .'</g>'
-            .'</g>'
-        .'</svg>';
+            .'</svg>'
+        .'</div>'
+        ."<script type=\"text/javascript\" src=\"{$base}index.js\"></script>";
 }
