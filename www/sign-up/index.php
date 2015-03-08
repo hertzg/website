@@ -27,6 +27,7 @@ $maxLengths = Users\maxLengths();
 
 include_once '../fns/create_panel.php';
 include_once '../fns/example_password.php';
+include_once '../fns/Email/maxLength.php';
 include_once '../fns/Form/button.php';
 include_once '../fns/Form/captcha.php';
 include_once '../fns/Form/notes.php';
@@ -67,7 +68,7 @@ $content = Page\tabs(
         .'<div class="hr"></div>'
         .Form\textfield('email', 'Email', [
             'value' => $values['email'],
-            'maxlength' => $maxLengths['email'],
+            'maxlength' => Email\maxLength(),
         ])
         .Form\notes(['Optional. Used for password recovery.'])
         .'<div class="hr"></div>'

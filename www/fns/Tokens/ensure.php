@@ -9,9 +9,11 @@ function ensure ($mysqli) {
 
     $fnsDir = __DIR__.'/..';
 
+    include_once "$fnsDir/IPAddress/column.php";
     include_once "$fnsDir/Username/column.php";
     include_once "$fnsDir/Table/ensure.php";
     return \Table\ensure($mysqli, 'tokens', [
+        'access_remote_address' => \IPAddress\column(true),
         'access_time' => ['type' => 'bigint(20) unsigned'],
         'id' => [
             'type' => 'bigint(20) unsigned',

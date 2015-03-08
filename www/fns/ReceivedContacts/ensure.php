@@ -9,6 +9,8 @@ function ensure ($mysqli) {
     include_once "$fnsDir/Contacts/maxLengths.php";
     $maxLengths = \Contacts\maxLengths();
 
+    include_once "$fnsDir/Email/column.php";
+    include_once "$fnsDir/FullName/column.php";
     include_once "$fnsDir/Table/ensure.php";
     include_once "$fnsDir/Username/column.php";
     return \Table\ensure($mysqli, 'received_contacts', [
@@ -27,17 +29,9 @@ function ensure ($mysqli) {
             'type' => 'bigint(20) unsigned',
             'nullable' => true,
         ],
-        'email' => [
-            'type' => "varchar($maxLengths[email])",
-            'characterSet' => 'utf8',
-            'collation' => 'utf8_general_ci',
-        ],
+        'email' => \Email\column(),
         'favorite' => ['type' => 'tinyint(3) unsigned'],
-        'full_name' => [
-            'type' => "varchar($maxLengths[full_name])",
-            'characterSet' => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-        ],
+        'full_name' => \FullName\column(),
         'id' => [
             'type' => 'bigint(20) unsigned',
             'primary' => true,

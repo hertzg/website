@@ -3,7 +3,11 @@
 namespace Signins;
 
 function ensure ($mysqli) {
-    include_once __DIR__.'/../Table/ensure.php';
+
+    $fnsDir = __DIR__.'/..';
+
+    include_once "$fnsDir/IPAddress/column.php";
+    include_once "$fnsDir/Table/ensure.php";
     return \Table\ensure($mysqli, 'signins', [
         'id' => [
             'type' => 'bigint(20) unsigned',
@@ -11,10 +15,7 @@ function ensure ($mysqli) {
         ],
         'id_users' => ['type' => 'bigint(20) unsigned'],
         'insert_time' => ['type' => 'bigint(20) unsigned'],
-        'remote_address' => [
-            'type' => 'varchar(128)',
-            'characterSet' => 'ascii',
-            'collation' => 'ascii_bin',
-        ],
+        'remote_address' => \IPAddress\column(),
     ]);
+
 }

@@ -7,15 +7,17 @@ function create_form_items ($values) {
     include_once "$fnsDir/Contacts/maxLengths.php";
     $maxLengths = Contacts\maxLengths();
 
+    include_once "$fnsDir/Email/maxLength.php";
     include_once "$fnsDir/Form/checkbox.php";
     include_once "$fnsDir/Form/datefield.php";
     include_once "$fnsDir/Form/textarea.php";
     include_once "$fnsDir/Form/textfield.php";
     include_once "$fnsDir/Form/timezoneSelect.php";
+    include_once "$fnsDir/FullName/maxLength.php";
     return
         Form\textfield('full_name', 'Full name', [
             'value' => $values['full_name'],
-            'maxlength' => $maxLengths['full_name'],
+            'maxlength' => FullName\maxLength(),
             'autofocus' => true,
             'required' => true,
         ])
@@ -32,7 +34,7 @@ function create_form_items ($values) {
         .'<div class="hr"></div>'
         .Form\textfield('email', 'Email', [
             'value' => $values['email'],
-            'maxlength' => $maxLengths['email'],
+            'maxlength' => Email\maxLength(),
         ])
         .'<div class="hr"></div>'
         .Form\textfield('phone1', 'Phone 1', [

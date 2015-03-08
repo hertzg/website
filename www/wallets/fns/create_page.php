@@ -44,6 +44,7 @@ function create_page ($mysqli, $user, $base = '') {
     }
 
     unset(
+        $_SESSION['home/messages'],
         $_SESSION['wallets/new/errors'],
         $_SESSION['wallets/new/values'],
         $_SESSION['wallets/view/messages']

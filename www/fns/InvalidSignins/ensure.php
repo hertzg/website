@@ -6,6 +6,7 @@ function ensure ($mysqli) {
 
     $fnsDir = __DIR__.'/..';
 
+    include_once "$fnsDir/IPAddress/column.php";
     include_once "$fnsDir/Table/ensure.php";
     include_once "$fnsDir/Username/column.php";
     return \Table\ensure($mysqli, 'invalid_signins', [
@@ -15,11 +16,7 @@ function ensure ($mysqli) {
         ],
         'insert_time' => ['type' => 'bigint(20) unsigned'],
         'username' => \Username\column(),
-        'remote_address' => [
-            'type' => 'varchar(128)',
-            'characterSet' => 'ascii',
-            'collation' => 'ascii_bin',
-        ],
+        'remote_address' => \IPAddress\column(),
     ]);
 
 }

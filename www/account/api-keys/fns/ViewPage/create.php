@@ -23,8 +23,15 @@ function create ($apiKey) {
     $access_time = $apiKey->access_time;
     if ($access_time === null) $accessed = 'Never';
     else {
+
         include_once "$fnsDir/date_ago.php";
         $accessed = ucfirst(date_ago($access_time));
+
+        $access_remote_address = $apiKey->access_remote_address;
+        if ($access_remote_address !== null) {
+            $accessed .= ' from '.htmlspecialchars($access_remote_address);
+        }
+
     }
 
     include_once __DIR__.'/createPermissionsField.php';

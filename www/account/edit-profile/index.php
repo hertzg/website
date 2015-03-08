@@ -15,9 +15,11 @@ unset($_SESSION['account/messages']);
 include_once "$fnsDir/Users/maxLengths.php";
 $maxLengths = Users\maxLengths();
 
+include_once "$fnsDir/Email/maxLength.php";
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/textfield.php";
 include_once "$fnsDir/Form/timezoneSelect.php";
+include_once "$fnsDir/FullName/maxLength.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
@@ -39,12 +41,12 @@ $content = Page\tabs(
         .'<div class="hr"></div>'
         .Form\textfield('email', 'Email', [
             'value' => $values['email'],
-            'maxlength' => $maxLengths['email'],
+            'maxlength' => Email\maxLength(),
         ])
         .'<div class="hr"></div>'
         .Form\textfield('full_name', 'Full name', [
             'value' => $values['full_name'],
-            'maxlength' => $maxLengths['full_name'],
+            'maxlength' => FullName\maxLength(),
         ])
         .'<div class="hr"></div>'
         .Form\timezoneSelect('timezone', 'Timezone', $values['timezone'])

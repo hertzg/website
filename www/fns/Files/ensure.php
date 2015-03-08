@@ -9,6 +9,9 @@ function ensure ($mysqli) {
 
     $fnsDir = __DIR__.'/..';
 
+    include_once "$fnsDir/ApiKeyName/column.php";
+    $apiKeyNameColumn = \ApiKeyName\column(true);
+
     include_once "$fnsDir/ContentType/column.php";
     include_once "$fnsDir/MediaType/column.php";
     include_once "$fnsDir/Table/ensure.php";
@@ -25,12 +28,7 @@ function ensure ($mysqli) {
             'type' => 'bigint(20) unsigned',
             'nullable' => true,
         ],
-        'insert_api_key_name' => [
-            'type' => "varchar($maxLengths[insert_api_key_name])",
-            'nullable' => true,
-            'characterSet' => 'utf8',
-            'collation' => 'utf8_general_ci',
-        ],
+        'insert_api_key_name' => $apiKeyNameColumn,
         'insert_time' => ['type' => 'bigint(20) unsigned'],
         'media_type' => \MediaType\column(),
         'name' => [
@@ -47,12 +45,7 @@ function ensure ($mysqli) {
             'type' => 'bigint(20) unsigned',
             'nullable' => true,
         ],
-        'rename_api_key_name' => [
-            'type' => "varchar($maxLengths[rename_api_key_name])",
-            'nullable' => true,
-            'characterSet' => 'utf8',
-            'collation' => 'utf8_general_ci',
-        ],
+        'rename_api_key_name' => $apiKeyNameColumn,
         'rename_time' => ['type' => 'bigint(20) unsigned'],
         'revision' => ['type' => 'bigint(20) unsigned'],
         'size' => ['type' => 'bigint(20) unsigned'],

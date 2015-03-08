@@ -14,9 +14,13 @@ function ensure ($mysqli) {
         return "'$theme'";
     }, array_keys(\Themes\index()))).')';
 
-    include_once "$fnsDir/Username/column.php";
+    include_once "$fnsDir/Email/column.php";
+    include_once "$fnsDir/FullName/column.php";
+    include_once "$fnsDir/IPAddress/column.php";
     include_once "$fnsDir/Table/ensure.php";
+    include_once "$fnsDir/Username/column.php";
     return \Table\ensure($mysqli, 'users', [
+        'access_remote_address' => \IPAddress\column(true),
         'access_time' => [
             'type' => 'bigint(21) unsigned',
             'nullable' => true,
@@ -30,22 +34,14 @@ function ensure ($mysqli) {
         'anonymous_can_send_task' => ['type' => 'tinyint(3) unsigned'],
         'balance_total' => ['type' => 'bigint(20)'],
         'birthdays_check_day' => ['type' => 'bigint(20) unsigned'],
-        'email' => [
-            'type' => "varchar($maxLengths[email])",
-            'characterSet' => 'ascii',
-            'collation' => 'ascii_bin',
-        ],
+        'email' => \Email\column(),
         'email_expire_time' => [
             'type' => 'bigint(20) unsigned',
             'nullable' => true,
         ],
         'email_verified' => ['type' => 'tinyint(3) unsigned'],
         'events_check_day' => ['type' => 'bigint(20) unsigned'],
-        'full_name' => [
-            'type' => "varchar($maxLengths[full_name])",
-            'characterSet' => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-        ],
+        'full_name' => \FullName\column(),
         'home_num_new_notifications' => ['type' => 'bigint(20) unsigned'],
         'home_num_new_received_bookmarks' => ['type' => 'bigint(20) unsigned'],
         'home_num_new_received_contacts' => ['type' => 'bigint(20) unsigned'],

@@ -7,7 +7,12 @@ function ensure ($mysqli) {
     include_once __DIR__.'/maxLengths.php';
     $maxLengths = maxLengths();
 
-    include_once __DIR__.'/../Table/ensure.php';
+    $fnsDir = __DIR__.'/..';
+
+    include_once "$fnsDir/ApiKeyName/column.php";
+    $apiKeyNameColumn = \ApiKeyName\column(true);
+
+    include_once "$fnsDir/Table/ensure.php";
     return \Table\ensure($mysqli, 'schedules', [
         'id' => [
             'type' => 'bigint(20) unsigned',
@@ -18,12 +23,7 @@ function ensure ($mysqli) {
             'type' => 'bigint(20) unsigned',
             'nullable' => true,
         ],
-        'insert_api_key_name' => [
-            'type' => "varchar($maxLengths[insert_api_key_name])",
-            'nullable' => true,
-            'characterSet' => 'utf8',
-            'collation' => 'utf8_general_ci',
-        ],
+        'insert_api_key_name' => $apiKeyNameColumn,
         'insert_time' => ['type' => 'bigint(20) unsigned'],
         'interval' => ['type' => 'bigint(20) unsigned'],
         'num_tags' => ['type' => 'tinyint(3) unsigned'],
@@ -48,12 +48,7 @@ function ensure ($mysqli) {
             'type' => 'bigint(20) unsigned',
             'nullable' => true,
         ],
-        'update_api_key_name' => [
-            'type' => "varchar($maxLengths[update_api_key_name])",
-            'nullable' => true,
-            'characterSet' => 'utf8',
-            'collation' => 'utf8_general_ci',
-        ],
+        'update_api_key_name' => $apiKeyNameColumn,
         'update_time' => ['type' => 'bigint(20) unsigned'],
     ]);
 
