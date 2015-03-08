@@ -9,6 +9,7 @@ function ensure ($mysqli) {
 
     $fnsDir = __DIR__.'/..';
 
+    include_once "$fnsDir/ApiKeyName/column.php";
     include_once "$fnsDir/IPAddress/column.php";
     include_once "$fnsDir/Table/ensure.php";
     return \Table\ensure($mysqli, 'api_keys', [
@@ -50,11 +51,7 @@ function ensure ($mysqli) {
         'id_users' => ['type' => 'bigint(20) unsigned'],
         'insert_time' => ['type' => 'bigint(20) unsigned'],
         'key' => ['type' => "binary($maxLengths[key])"],
-        'name' => [
-            'type' => "varchar($maxLengths[name])",
-            'characterSet' => 'utf8',
-            'collation' => 'utf8_general_ci',
-        ],
+        'name' => \ApiKeyName\column(),
         'revision' => ['type' => 'bigint(20) unsigned'],
     ]);
 

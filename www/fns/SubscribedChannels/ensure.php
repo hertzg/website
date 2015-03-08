@@ -9,6 +9,9 @@ function ensure ($mysqli) {
 
     $fnsDir = __DIR__.'/..';
 
+    include_once "$fnsDir/ApiKeyName/column.php";
+    $apiKeyNameColumn = \ApiKeyName\column(true);
+
     include_once "$fnsDir/Username/column.php";
     include_once "$fnsDir/Table/ensure.php";
     return \Table\ensure($mysqli, 'subscribed_channels', [
@@ -27,12 +30,7 @@ function ensure ($mysqli) {
             'type' => 'bigint(20) unsigned',
             'nullable' => true,
         ],
-        'insert_api_key_name' => [
-            'type' => "varchar($maxLengths[insert_api_key_name])",
-            'nullable' => true,
-            'characterSet' => 'utf8',
-            'collation' => 'utf8_general_ci',
-        ],
+        'insert_api_key_name' => $apiKeyNameColumn,
         'insert_time' => ['type' => 'bigint(20) unsigned'],
         'lowercase_name' => [
             'type' => "varchar($maxLengths[lowercase_name])",
@@ -52,12 +50,7 @@ function ensure ($mysqli) {
             'type' => 'bigint(20) unsigned',
             'nullable' => true,
         ],
-        'update_api_key_name' => [
-            'type' => "varchar($maxLengths[update_api_key_name])",
-            'nullable' => true,
-            'characterSet' => 'utf8',
-            'collation' => 'utf8_general_ci',
-        ],
+        'update_api_key_name' => $apiKeyNameColumn,
         'update_time' => ['type' => 'bigint(20) unsigned'],
     ]);
 

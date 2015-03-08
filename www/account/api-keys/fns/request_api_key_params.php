@@ -21,8 +21,8 @@ function request_api_key_params () {
     include_once "$fnsDir/str_collapse_spaces.php";
     $name = str_collapse_spaces($name);
 
-    include_once "$fnsDir/ApiKeys/maxLengths.php";
-    $name = mb_substr($name, 0, ApiKeys\maxLengths()['name'], 'UTF-8');
+    include_once "$fnsDir/ApiKeyName/maxLength.php";
+    $name = mb_substr($name, 0, ApiKeyName\maxLength(), 'UTF-8');
 
     include_once __DIR__.'/../../fns/parse_expire_time.php';
     parse_expire_time($expires, $expire_time);
