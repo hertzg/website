@@ -14,6 +14,7 @@ function ensure ($mysqli) {
         return "'$theme'";
     }, array_keys(\Themes\index()))).')';
 
+    include_once "$fnsDir/Email/column.php";
     include_once "$fnsDir/IPAddress/column.php";
     include_once "$fnsDir/Table/ensure.php";
     include_once "$fnsDir/Username/column.php";
@@ -32,11 +33,7 @@ function ensure ($mysqli) {
         'anonymous_can_send_task' => ['type' => 'tinyint(3) unsigned'],
         'balance_total' => ['type' => 'bigint(20)'],
         'birthdays_check_day' => ['type' => 'bigint(20) unsigned'],
-        'email' => [
-            'type' => "varchar($maxLengths[email])",
-            'characterSet' => 'ascii',
-            'collation' => 'ascii_bin',
-        ],
+        'email' => \Email\column(),
         'email_expire_time' => [
             'type' => 'bigint(20) unsigned',
             'nullable' => true,

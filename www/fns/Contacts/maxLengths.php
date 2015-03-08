@@ -6,7 +6,6 @@ function maxLengths () {
 
     $fnsDir = __DIR__.'/..';
 
-    include_once "$fnsDir/Email/maxLength.php";
     include_once "$fnsDir/FullName/maxLength.php";
     include_once "$fnsDir/Tags/maxLength.php";
     include_once "$fnsDir/TagsJson/maxLength.php";
@@ -14,7 +13,6 @@ function maxLengths () {
     return [
         'address' => 128,
         'alias' => 32,
-        'email' => \Email\maxLength(),
         'full_name' => \FullName\maxLength(),
         'notes' => 1024 * 2,
         'phone1' => 32,
