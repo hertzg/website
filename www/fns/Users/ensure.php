@@ -15,6 +15,7 @@ function ensure ($mysqli) {
     }, array_keys(\Themes\index()))).')';
 
     include_once "$fnsDir/Email/column.php";
+    include_once "$fnsDir/FullName/column.php";
     include_once "$fnsDir/IPAddress/column.php";
     include_once "$fnsDir/Table/ensure.php";
     include_once "$fnsDir/Username/column.php";
@@ -40,11 +41,7 @@ function ensure ($mysqli) {
         ],
         'email_verified' => ['type' => 'tinyint(3) unsigned'],
         'events_check_day' => ['type' => 'bigint(20) unsigned'],
-        'full_name' => [
-            'type' => "varchar($maxLengths[full_name])",
-            'characterSet' => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-        ],
+        'full_name' => \FullName\column(),
         'home_num_new_notifications' => ['type' => 'bigint(20) unsigned'],
         'home_num_new_received_bookmarks' => ['type' => 'bigint(20) unsigned'],
         'home_num_new_received_contacts' => ['type' => 'bigint(20) unsigned'],

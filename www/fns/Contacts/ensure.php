@@ -13,6 +13,7 @@ function ensure ($mysqli) {
     $apiKeyNameColumn = \ApiKeyName\column(true);
 
     include_once "$fnsDir/Email/column.php";
+    include_once "$fnsDir/FullName/column.php";
     include_once "$fnsDir/Table/ensure.php";
     return \Table\ensure($mysqli, 'contacts', [
         'address' => [
@@ -39,11 +40,7 @@ function ensure ($mysqli) {
         ],
         'email' => \Email\column(),
         'favorite' => ['type' => 'tinyint(3) unsigned'],
-        'full_name' => [
-            'type' => "varchar($maxLengths[full_name])",
-            'characterSet' => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-        ],
+        'full_name' => \FullName\column(),
         'id' => [
             'type' => 'bigint(20) unsigned',
             'primary' => true,

@@ -13,10 +13,11 @@ function create_form_items ($values) {
     include_once "$fnsDir/Form/textarea.php";
     include_once "$fnsDir/Form/textfield.php";
     include_once "$fnsDir/Form/timezoneSelect.php";
+    include_once "$fnsDir/FullName/maxLength.php";
     return
         Form\textfield('full_name', 'Full name', [
             'value' => $values['full_name'],
-            'maxlength' => $maxLengths['full_name'],
+            'maxlength' => FullName\maxLength(),
             'autofocus' => true,
             'required' => true,
         ])
