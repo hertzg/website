@@ -7,43 +7,38 @@ function create_map ($places) {
     $num_places = count($places);
     if ($places) {
         $firstPlace = $places[0];
-        $max_latitude = $min_latitude = $firstPlace->latitude;
-        $max_longitude = $min_longitude = $firstPlace->longitude;
+        $max_x = $min_x = $firstPlace->longitude;
+        $max_y = $min_y = $firstPlace->latitude;
         if ($num_places > 1) {
             foreach ($places as $place) {
-                $max_latitude = max($max_latitude, $place->latitude);
-                $max_longitude = max($max_longitude, $place->longitude);
-                $min_latitude = min($min_latitude, $place->latitude);
-                $min_longitude = min($min_longitude, $place->longitude);
+                $min_x = min($min_x, $place->longitude);
+                $min_y = min($min_y, $place->latitude);
+                $max_x = max($max_x, $place->longitude);
+                $max_y = max($max_y, $place->latitude);
             }
-            $scale = 180 / max($max_latitude - $min_latitude, $max_longitude - $min_longitude);
+            $scale = 180 / max($max_y - $min_y, $max_x - $min_x);
             $scale = min(100000, $scale);
         } else {
             $scale = 180;
         }
-        $median_latitude = ($max_latitude + $min_latitude) / 2;
-        $median_longitude = ($max_longitude + $min_longitude) / 2;
+        $median_x = ($max_x + $min_x) / 2;
+        $median_y = ($max_y + $min_y) / 2;
         $radius *= 1 / $scale;
     } else {
-        $median_latitude = $median_longitude = 0;
+        $median_x = $median_y = 0;
         $scale = 1;
     }
-
-    $opacity = $num_places ? (0.3 + 0.3 / $num_places) : 1;
 
     return
         '<svg viewBox="-180 -90 360 180" style="vertical-align: top">'
             ."<g transform=\"scale($scale)\">"
-                .'<g class="Clickable"'
-                ." transform=\"translate(-$median_longitude, $median_latitude)\""
-                ." fill=\"rgba(0, 0, 0, $opacity)\">"
+                .'<g fill="rgba(0, 0, 0, 0.5)"'
+                ." transform=\"translate(-$median_x, $median_y)\">"
                     .join('', array_map(function ($place) use ($radius) {
                         $cx = $place->longitude;
                         $cy = -$place->latitude;
                         return
-                            "<circle cx=\"$cx\" cy=\"$cy\" r=\"$radius\">"
-                            ."</circle>"
-                            ."<circle cx=\"$cx\" cy=\"$cy\" r=\"".($radius / 4)."\">"
+                            "<circle cx=\"$cx\" cy=\"$cy\" r=\"0.0005\">"
                             ."</circle>";
                     }, $places))
                 .'</g>'
