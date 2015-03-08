@@ -10,13 +10,10 @@ function ensure ($mysqli) {
     $fnsDir = __DIR__.'/..';
 
     include_once "$fnsDir/ApiKeyName/column.php";
+    include_once "$fnsDir/ChannelName/column.php";
     include_once "$fnsDir/Table/ensure.php";
     return \Table\ensure($mysqli, 'notifications', [
-        'channel_name' => [
-            'type' => "varchar($maxLengths[channel_name])",
-            'characterSet' => 'ascii',
-            'collation' => 'ascii_general_ci',
-        ],
+        'channel_name' => \ChannelName\column(),
         'id' => [
             'type' => 'bigint(20) unsigned',
             'primary' => true,

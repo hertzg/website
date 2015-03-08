@@ -4,22 +4,18 @@ namespace SubscribedChannels;
 
 function ensure ($mysqli) {
 
-    include_once __DIR__.'/maxLengths.php';
-    $maxLengths = maxLengths();
-
     $fnsDir = __DIR__.'/..';
 
     include_once "$fnsDir/ApiKeyName/column.php";
     $apiKeyNameColumn = \ApiKeyName\column(true);
 
+    include_once "$fnsDir/ChannelName/column.php";
+    $channelNameColumn = \ChannelName\column();
+
     include_once "$fnsDir/Username/column.php";
     include_once "$fnsDir/Table/ensure.php";
     return \Table\ensure($mysqli, 'subscribed_channels', [
-        'channel_name' => [
-            'type' => "varchar($maxLengths[channel_name])",
-            'characterSet' => 'ascii',
-            'collation' => 'ascii_general_ci',
-        ],
+        'channel_name' => $channelNameColumn,
         'channel_public' => ['type' => 'tinyint(3) unsigned'],
         'id' => [
             'type' => 'bigint(20) unsigned',
@@ -32,11 +28,7 @@ function ensure ($mysqli) {
         ],
         'insert_api_key_name' => $apiKeyNameColumn,
         'insert_time' => ['type' => 'bigint(20) unsigned'],
-        'lowercase_name' => [
-            'type' => "varchar($maxLengths[lowercase_name])",
-            'characterSet' => 'ascii',
-            'collation' => 'ascii_general_ci',
-        ],
+        'lowercase_name' => $channelNameColumn,
         'num_notifications' => ['type' => 'bigint(20) unsigned'],
         'publisher_id_users' => ['type' => 'bigint(20) unsigned'],
         'publisher_locked' => ['type' => 'tinyint(3) unsigned'],
