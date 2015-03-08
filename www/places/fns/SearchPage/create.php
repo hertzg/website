@@ -48,8 +48,8 @@ function create ($mysqli, $user) {
 
     } else {
 
-        include_once "$fnsDir/PlaceTags/searchOnTagName.php";
-        $places = \PlaceTags\searchOnTagName($mysqli,
+        include_once "$fnsDir/PlaceTags/searchPageOnUserTagName.php";
+        $places = \PlaceTags\searchPageOnUserTagName($mysqli,
             $id_users, $keyword, $tag, $offset, $limit, $total);
 
         include_once "$fnsDir/Form/hidden.php";
