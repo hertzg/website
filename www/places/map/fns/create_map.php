@@ -30,9 +30,10 @@ function create_map ($places, $base = '') {
     }
 
     return
-        '<div style="height: 400px; overflow: auto">'
-            .'<svg class="map" viewBox="-180 -90 360 180" style="vertical-align: top; width: 100%; height: 100%">'
-                ."<g class=\"map-zoom\" transform=\"scale($scale)\">"
+        '<div style="width: 360px; height: 180px; overflow: auto">'
+            .'<svg class="map" viewBox="-180 -90 360 180"'
+            .' style="vertical-align: top; width: 100%; height: 100%">'
+                ."<g class=\"map-scale\" transform=\"scale($scale)\">"
                     .'<g class="map-translate" fill="hsla(7, 100%, 57%, 0.8)"'
                     ." transform=\"translate(-$median_x, $median_y)\">"
                         .join('', array_map(function ($place) use ($radius) {
@@ -48,7 +49,7 @@ function create_map ($places, $base = '') {
         .'</div>'
         .'<script type="text/javascript">'
             ."var scale = $scale\n"
-            .'var x = '.(-$median_x)."\n"
+            ."var x = $median_x\n"
             ."var y = $median_y"
         .'</script>'
         ."<script type=\"text/javascript\" src=\"{$base}index.js\"></script>";
