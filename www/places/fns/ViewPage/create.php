@@ -54,6 +54,7 @@ function create ($mysqli, $place) {
         $_SESSION['places/view-point/messages']
     );
 
+    include_once __DIR__.'/nearPlaces.php';
     include_once __DIR__.'/optionsPanel.php';
     include_once __DIR__.'/pointsPanel.php';
     include_once "$fnsDir/create_new_item_button.php";
@@ -72,7 +73,8 @@ function create ($mysqli, $place) {
             "Place #$id",
             \Page\sessionMessages('places/view/messages')
             .join('<div class="hr"></div>', $items)
-            .\Page\infoText($infoText),
+            .\Page\infoText($infoText)
+            .nearPlaces($mysqli, $place),
             create_new_item_button('Place', '../')
         )
         .pointsPanel($mysqli, $place)
