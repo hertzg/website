@@ -29,10 +29,16 @@ function create_map ($places, $base = '') {
         $scale = 1;
     }
 
+    $viewBoxWidth = 360;
+    $viewBoxHeight = 180;
+    $viewBoxMinX = -$viewBoxWidth / 2;
+    $viewBoxMinY = -$viewBoxHeight / 2;
+
     return
-        '<div style="width: 360px; height: 180px; overflow: auto">'
-            .'<svg class="map" viewBox="-180 -90 360 180"'
-            .' style="vertical-align: top; width: 100%; height: 100%">'
+        '<div style="height: 400px; text-align: center">'
+            .'<svg class="map"'
+            .' style="vertical-align: top; width: 100%; height: 100%"'
+            ." viewBox=\"$viewBoxMinX $viewBoxMinY $viewBoxWidth $viewBoxHeight\">"
                 ."<g class=\"map-scale\" transform=\"scale($scale)\">"
                     .'<g class="map-translate" fill="hsla(7, 100%, 57%, 0.8)"'
                     ." transform=\"translate(-$median_x, $median_y)\">"
@@ -50,7 +56,9 @@ function create_map ($places, $base = '') {
         .'<script type="text/javascript">'
             ."var scale = $scale\n"
             ."var x = $median_x\n"
-            ."var y = $median_y"
+            ."var y = $median_y\n"
+            ."var viewBoxWidth = $viewBoxWidth\n"
+            ."var viewBoxHeight = $viewBoxHeight"
         .'</script>'
         ."<script type=\"text/javascript\" src=\"{$base}index.js\"></script>";
 }
