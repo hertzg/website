@@ -13,7 +13,7 @@
 
     }
 
-    function getMapXY (e) {
+    function getMapXY (e, scale) {
 
         var rect = svgElement.getBoundingClientRect()
         var scalingFactor = getScalingFactor()
@@ -21,11 +21,8 @@
         var mapX = (e.clientX - rect.left - rect.width / 2) / scale,
             mapY = -((e.clientY - rect.top - rect.height / 2)) / scale
 
-        mapX *= scalingFactor
-        mapY *= scalingFactor
-
-        mapX += x
-        mapY += y
+        mapX = mapX * scalingFactor + x
+        mapY = mapY * scalingFactor + y
 
         return {
             x: mapX,
@@ -45,7 +42,7 @@
         else if (deltaY < 0) newScale = scale * 1.3
         newScale = Math.min(maxScale, newScale)
 
-        var mapXY = getMapXY(e)
+        var mapXY = getMapXY(e, newScale)
         x -= (mapXY.x - x) * (1 - newScale / scale)
         y -= (mapXY.y - y) * (1 - newScale / scale)
 
