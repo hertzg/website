@@ -1,4 +1,4 @@
-(function (scale, x, y, viewBoxWidth, viewBoxHeight) {
+(function (scale, x, y, viewBoxWidth, viewBoxHeight, maxScale) {
 
     function getScalingFactor () {
 
@@ -43,6 +43,7 @@
         var deltaY = e.deltaY
         if (deltaY > 0) newScale = scale / 1.3
         else if (deltaY < 0) newScale = scale * 1.3
+        newScale = Math.min(maxScale, newScale)
 
         var mapXY = getMapXY(e)
         x -= (mapXY.x - x) * (1 - newScale / scale)
@@ -91,4 +92,4 @@
     var translateElement = map.querySelector('.map-translate')
     translateElement.classList.add('transition')
 
-})(scale, x, y, viewBoxWidth, viewBoxHeight)
+})(scale, x, y, viewBoxWidth, viewBoxHeight, maxScale)

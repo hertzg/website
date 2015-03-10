@@ -2,7 +2,7 @@
 
 function create_map ($places, $base = '') {
 
-    $radius = 2;
+    $maxScale = 20000;
 
     $num_places = count($places);
     if ($places) {
@@ -18,15 +18,15 @@ function create_map ($places, $base = '') {
             }
             $scale = 180 / max($max_y - $min_y, $max_x - $min_x);
             $scale = min(100000, $scale);
+            $scale = min($maxScale, $scale);
         } else {
-            $scale = 180;
+            $scale = $maxScale;
         }
         $median_x = ($max_x + $min_x) / 2;
         $median_y = ($max_y + $min_y) / 2;
-        $radius *= 1 / $scale;
     } else {
         $median_x = $median_y = 0;
-        $scale = 1;
+        $scale = $maxScale;
     }
 
     $viewBoxWidth = 360;
@@ -45,12 +45,12 @@ function create_map ($places, $base = '') {
                 ."<g class=\"map-scale\" style=\"transform: scale($scale)\">"
                     .'<g class="map-translate"'
                     ." style=\"transform: translate(-{$median_x}px, {$median_y}px)\">"
-                        .join('', array_map(function ($place) use ($radius) {
+                        .join('', array_map(function ($place) {
                             $x = $place->longitude;
                             $y = -$place->latitude;
                             return
                                 "<path transform=\"translate($x, $y) scale(0.0001)\""
-                                .' d="m 0,0 c -2.571056 0 -4.285,1.7141 -4.285,4.2851 0,2.5711 4.285,9.4272 4.285,9.4272 0,0 4.285094,-6.8561 4.285094,-9.4272 0,-2.571 -1.714037,-4.2851 -4.285094,-4.2851 z" />';
+                                .' d="m 0,-13.7 c -2.6,0 -4.3,1.7 -4.3,4.3 0,2.6 4.3,9.4 4.3,9.4 0,0 4.3,-6.9 4.3,-9.4 0,-2.6 -1.7,-4.3 -4.3,-4.3 z" />';
                         }, $places))
                     .'</g>'
                 .'</g>'
@@ -61,7 +61,8 @@ function create_map ($places, $base = '') {
             ."var x = $median_x\n"
             ."var y = $median_y\n"
             ."var viewBoxWidth = $viewBoxWidth\n"
-            ."var viewBoxHeight = $viewBoxHeight"
+            ."var viewBoxHeight = $viewBoxHeight\n"
+            ."var maxScale = $maxScale"
         .'</script>'
         ."<script type=\"text/javascript\" src=\"{$base}index.js\"></script>";
 }
