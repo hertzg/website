@@ -16,12 +16,13 @@
     function getMapXY (e) {
 
         var rect = svgElement.getBoundingClientRect()
+        var scalingFactor = getScalingFactor()
 
         var mapX = (e.clientX - rect.left - rect.width / 2) / scale,
             mapY = -((e.clientY - rect.top - rect.height / 2)) / scale
 
-        mapX *= rect.width / viewBoxWidth
-        mapY *= rect.height / viewBoxHeight
+        mapX *= scalingFactor
+        mapY *= scalingFactor
 
         mapX += x
         mapY += y
@@ -40,8 +41,8 @@
 
         var newScale
         var deltaY = e.deltaY
-        if (deltaY > 0) newScale = scale / 1.1
-        else if (deltaY < 0) newScale = scale * 1.1
+        if (deltaY > 0) newScale = scale / 1.3
+        else if (deltaY < 0) newScale = scale * 1.3
 
         var mapXY = getMapXY(e)
         x -= (mapXY.x - x) * (1 - newScale / scale)
@@ -49,8 +50,8 @@
 
         scale = newScale
 
-        scaleElement.setAttribute('transform', 'scale(' + scale + ')')
-        translateElement.setAttribute('transform', 'translate(' + -x + ', ' + y + ')')
+        scaleElement.style.transform = 'scale(' + scale + ')'
+        translateElement.style.transform = 'translate(' + -x + 'px, ' + y + 'px)'
 
     })
     map.addEventListener('mousedown', function (e) {
@@ -64,27 +65,30 @@
             y += (newClientY - clientY) / scale * scalingFactor
             clientX = newClientX
             clientY = newClientY
-            translateElement.setAttribute('transform', 'translate(' + -x + ', ' + y + ')')
+            translateElement.classList.remove('transition')
+            translateElement.style.transform = 'translate(' + -x + 'px, ' + y + 'px)'
         }
 
         function mouseUp () {
             removeEventListener('mousemove', mouseMove)
             removeEventListener('mouseup', mouseUp)
+            translateElement.classList.add('transition')
         }
 
         var clientX = e.clientX,
             clientY = e.clientY
 
+        e.preventDefault()
         addEventListener('mousemove', mouseMove)
         addEventListener('mouseup', mouseUp)
 
     })
 
     var svgElement = document.querySelector('svg')
-    console.log(viewBoxHeight / svgElement.getBoundingClientRect().height)
 
     var scaleElement = map.querySelector('.map-scale')
 
     var translateElement = map.querySelector('.map-translate')
+    translateElement.classList.add('transition')
 
 })(scale, x, y, viewBoxWidth, viewBoxHeight)

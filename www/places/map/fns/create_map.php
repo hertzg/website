@@ -34,20 +34,23 @@ function create_map ($places, $base = '') {
     $viewBoxMinX = -$viewBoxWidth / 2;
     $viewBoxMinY = -$viewBoxHeight / 2;
 
+    usort($places, function ($a, $b) {
+        return $a->latitude > $b->latitude ? -1 : 1;
+    });
+
     return
         '<div style="height: 400px; text-align: center">'
             .'<svg class="map"'
-            .' style="vertical-align: top; width: 100%; height: 100%"'
             ." viewBox=\"$viewBoxMinX $viewBoxMinY $viewBoxWidth $viewBoxHeight\">"
-                ."<g class=\"map-scale\" transform=\"scale($scale)\">"
-                    .'<g class="map-translate" fill="hsla(7, 100%, 57%, 0.8)"'
-                    ." transform=\"translate(-$median_x, $median_y)\">"
+                ."<g class=\"map-scale\" style=\"transform: scale($scale)\">"
+                    .'<g class="map-translate"'
+                    ." style=\"transform: translate(-{$median_x}px, {$median_y}px)\">"
                         .join('', array_map(function ($place) use ($radius) {
-                            $cx = $place->longitude;
-                            $cy = -$place->latitude;
+                            $x = $place->longitude;
+                            $y = -$place->latitude;
                             return
-                                "<circle cx=\"$cx\" cy=\"$cy\" r=\"0.0005\">"
-                                ."</circle>";
+                                "<path transform=\"translate($x, $y) scale(0.0001)\""
+                                .' d="m 0,0 c -2.571056 0 -4.285,1.7141 -4.285,4.2851 0,2.5711 4.285,9.4272 4.285,9.4272 0,0 4.285094,-6.8561 4.285094,-9.4272 0,-2.571 -1.714037,-4.2851 -4.285094,-4.2851 z" />';
                         }, $places))
                     .'</g>'
                 .'</g>'

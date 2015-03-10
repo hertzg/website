@@ -36,4 +36,6 @@ $content = \Page\tabs(
 );
 
 include_once "$fnsDir/echo_page.php";
-echo_page($user, 'Places Map', $content, '../../../');
+echo_page($user, 'Places Map', $content, '../../../', [
+    'head' => '<link rel="stylesheet" type="text/css" href="../index.css?1" />',
+]);
