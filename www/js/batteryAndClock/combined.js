@@ -129,6 +129,12 @@ function Clock (remoteTime) {
         requestAnimationFrame = window.mozRequestAnimationFrame
     }
 
+    if (!requestAnimationFrame) {
+        requestAnimationFrame = function (callback) {
+            setTimeout(callback, 0)
+        }
+    }
+
     var hourNode = TextNode('')
 
     var minuteNode = TextNode('')
