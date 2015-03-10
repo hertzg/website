@@ -12,7 +12,6 @@ function nearPlaces ($mysqli, $place) {
 
     if (!$nearPlaces) return;
 
-    include_once "$fnsDir/Page/imageArrowLink.php";
     include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
     $items = [];
     foreach ($nearPlaces as $place) {
@@ -21,16 +20,9 @@ function nearPlaces ($mysqli, $place) {
         if ($name === '') $title = "$place->latitude $place->longitude";
         else $title = htmlspecialchars($name);
 
-        $href = "../view/?id=$place->id";
-        $icon = 'place';
-
-        $description = $place->description;
-        if ($description === '') {
-            $link = \Page\imageArrowLink($title, $href, $icon);
-        } else {
-            $link = \Page\imageArrowLinkWithDescription(
-                $title, $description, $href, $icon);
-        }
+        $link = \Page\imageArrowLinkWithDescription($title,
+            'In '.round($place->distance).' metres', "../view/?id=$place->id",
+            'place');
 
         $items[] = $link;
 
