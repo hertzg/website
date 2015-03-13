@@ -55,7 +55,7 @@ function create_map ($places, $base = '') {
                 ."transform: scale($value)"
             ."}"
             .".scale$i .map-gridline {"
-                ."stroke-width: $value;"
+                .'stroke-width: '.($value / 3).';'
             ."}";
         $thisScale /= 2;
     }
