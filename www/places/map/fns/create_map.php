@@ -38,31 +38,41 @@ function create_map ($places, $base = '') {
         return $a->latitude > $b->latitude ? -1 : 1;
     });
 
-    $lines = '';
-    for ($i = -180; $i <= 180; $i++) {
-        $lines .= '<line class="map-gridline"'
-            ." x1=\"$i\" y1=\"-90\" x2=\"$i\" y2=\"90\" />";
+    $classIndex = 0;
+    $thisScale = $scale;
+    while ($thisScale > 2) {
+        $thisScale /= 2;
+        $classIndex++;
     }
-    for ($i = -90; $i <= 90; $i++) {
-        $lines .= '<line class="map-gridline"'
-            ." x1=\"-180\" y1=\"$i\" x2=\"180\" y2=\"$i\" />";
-    }
+    $scaleClass = "scale$classIndex";
 
+    $style = '<style type="text/css">';
+    $thisScale = 1;
+    for ($i = 0; $i < 15; $i++) {
+        $value = preg_replace('/\.?0+$/', '', number_format($thisScale, 30));
+        $style .=
+            ".scale$i .map-place {"
+                ."transform: scale($value)"
+            ."}"
+            .".scale$i .map-gridline {"
+                ."stroke-width: $value;"
+            ."}";
+        $thisScale /= 2;
+    }
+    $style .= '</style>';
+
+    include_once __DIR__.'/create_map_grid_lines.php';
+    include_once __DIR__.'/create_map_places.php';
     return
-        '<div style="height: 400px; text-align: center">'
-            .'<svg class="map"'
+        $style
+        .'<div style="height: 400px; text-align: center">'
+            ."<svg class=\"map $scaleClass\""
             ." viewBox=\"$viewBoxMinX $viewBoxMinY $viewBoxWidth $viewBoxHeight\">"
                 ."<g class=\"map-scale\" style=\"transform: scale($scale)\">"
                     .'<g class="map-translate"'
                     ." style=\"transform: translate(-{$median_x}px, {$median_y}px)\">"
-                        .$lines
-                        .join('', array_map(function ($place) {
-                            $x = $place->longitude;
-                            $y = -$place->latitude;
-                            return
-                                "<path class=\"map-place\" transform=\"translate($x, $y)\""
-                                .' d="m 0,-13.7 c -2.6,0 -4.3,1.7 -4.3,4.3 0,2.6 4.3,9.4 4.3,9.4 0,0 4.3,-6.9 4.3,-9.4 0,-2.6 -1.7,-4.3 -4.3,-4.3 z" />';
-                        }, $places))
+                        .create_map_grid_lines()
+                        .create_map_places($places)
                     .'</g>'
                 .'</g>'
             .'</svg>'

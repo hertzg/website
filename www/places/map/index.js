@@ -1,5 +1,14 @@
 (function (scale, x, y, viewBoxWidth, viewBoxHeight, maxScale) {
 
+    function getScaleClass (scale) {
+        var index = 0
+        while (scale > 2) {
+            scale /= 2
+            index++
+        }
+        return 'scale' + index
+    }
+
     function getScalingFactor () {
 
         var rect = svgElement.getBoundingClientRect(),
@@ -40,13 +49,17 @@
         var deltaY = e.deltaY
         if (deltaY > 0) newScale = scale / 1.3
         else if (deltaY < 0) newScale = scale * 1.3
-        newScale = Math.min(maxScale, newScale)
+        newScale = Math.max(0.5, Math.min(maxScale, newScale))
 
         var mapXY = getMapXY(e, newScale)
         x -= (mapXY.x - x) * (1 - newScale / scale)
         y -= (mapXY.y - y) * (1 - newScale / scale)
 
         scale = newScale
+
+        svgElement.classList.remove(scaleClass)
+        scaleClass = getScaleClass(scale)
+        svgElement.classList.add(scaleClass)
 
         scaleElement.style.transform = 'scale(' + scale + ')'
         translateElement.style.transform = 'translate(' + -x + 'px, ' + y + 'px)'
@@ -73,6 +86,8 @@
             translateElement.classList.add('transition')
         }
 
+        if (e.button !== 0) return
+
         var clientX = e.clientX,
             clientY = e.clientY
 
@@ -81,6 +96,8 @@
         addEventListener('mouseup', mouseUp)
 
     })
+
+    var scaleClass = getScaleClass(scale)
 
     var svgElement = document.querySelector('svg')
 

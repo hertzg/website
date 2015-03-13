@@ -19,9 +19,9 @@
 
 .map-gridline {
     stroke-width: 0.1;
-    stroke: #eee;
+    stroke: #444;
 }
 
 .map-place {
-    transform: scale(0.0001);
+    transition: transform 0.2s linear;
 }
