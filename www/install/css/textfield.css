@@ -3,6 +3,7 @@
     height: 32px;
     padding: 4px 8px;
     background: #222;
+    cursor: text;
 }
 .textfield:focus {
     border-color: #aaa;
