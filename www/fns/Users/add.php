@@ -6,7 +6,9 @@ function add ($mysqli, $username, $password, $email) {
 
     // TODO separate folder creation from this function
 
-    include_once __DIR__.'/../Password/hash.php';
+    $fnsDir = __DIR__.'/..';
+
+    include_once "$fnsDir/Password/hash.php";
     list($password_hash, $password_salt) = \Password\hash($password);
 
     include_once __DIR__.'/Home/defaultOrder.php';
@@ -20,14 +22,14 @@ function add ($mysqli, $username, $password, $email) {
     $email = $mysqli->real_escape_string($email);
     $insert_time = time();
 
-    include_once __DIR__.'/../time_today.php';
+    include_once "$fnsDir/time_today.php";
     $birthdays_check_day = $events_check_day =
         $task_deadlines_check_day = time_today();
 
     include_once "$fnsDir/time_today.php";
     $schedules_check_day = time_today();
 
-    include_once __DIR__.'/../Themes/getDefault.php';
+    include_once "$fnsDir/Themes/getDefault.php";
     $theme = \Themes\getDefault();
 
     $sql = 'insert into users (username, password_hash,'
