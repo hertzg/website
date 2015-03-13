@@ -38,14 +38,15 @@ function create_map ($places, $base = '') {
         return $a->latitude > $b->latitude ? -1 : 1;
     });
 
-    $lines = '<g stroke-width="0.1" stroke="#eee">';
+    $lines = '';
     for ($i = -180; $i <= 180; $i++) {
-        $lines .= "<line x1=\"$i\" y1=\"-90\" x2=\"$i\" y2=\"90\" />";
+        $lines .= '<line class="map-gridline"'
+            ." x1=\"$i\" y1=\"-90\" x2=\"$i\" y2=\"90\" />";
     }
     for ($i = -90; $i <= 90; $i++) {
-        $lines .= "<line x1=\"-180\" y1=\"$i\" x2=\"180\" y2=\"$i\" />";
+        $lines .= '<line class="map-gridline"'
+            ." x1=\"-180\" y1=\"$i\" x2=\"180\" y2=\"$i\" />";
     }
-    $lines .= '</g>';
 
     return
         '<div style="height: 400px; text-align: center">'
@@ -59,7 +60,7 @@ function create_map ($places, $base = '') {
                             $x = $place->longitude;
                             $y = -$place->latitude;
                             return
-                                "<path transform=\"translate($x, $y) scale(0.0001)\""
+                                "<path class=\"map-place\" transform=\"translate($x, $y)\""
                                 .' d="m 0,-13.7 c -2.6,0 -4.3,1.7 -4.3,4.3 0,2.6 4.3,9.4 4.3,9.4 0,0 4.3,-6.9 4.3,-9.4 0,-2.6 -1.7,-4.3 -4.3,-4.3 z" />';
                         }, $places))
                     .'</g>'

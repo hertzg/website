@@ -16,3 +16,12 @@
 .map-translate.transition {
     transition: transform 0.2s linear;
 }
+
+.map-gridline {
+    stroke-width: 0.1;
+    stroke: #eee;
+}
+
+.map-place {
+    transform: scale(0.0001);
+}
