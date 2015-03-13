@@ -38,6 +38,15 @@ function create_map ($places, $base = '') {
         return $a->latitude > $b->latitude ? -1 : 1;
     });
 
+    $lines = '<g stroke-width="0.1" stroke="#eee">';
+    for ($i = -180; $i <= 180; $i++) {
+        $lines .= "<line x1=\"$i\" y1=\"-90\" x2=\"$i\" y2=\"90\" />";
+    }
+    for ($i = -90; $i <= 90; $i++) {
+        $lines .= "<line x1=\"-180\" y1=\"$i\" x2=\"180\" y2=\"$i\" />";
+    }
+    $lines .= '</g>';
+
     return
         '<div style="height: 400px; text-align: center">'
             .'<svg class="map"'
@@ -45,6 +54,7 @@ function create_map ($places, $base = '') {
                 ."<g class=\"map-scale\" style=\"transform: scale($scale)\">"
                     .'<g class="map-translate"'
                     ." style=\"transform: translate(-{$median_x}px, {$median_y}px)\">"
+                        .$lines
                         .join('', array_map(function ($place) {
                             $x = $place->longitude;
                             $y = -$place->latitude;
