@@ -49,7 +49,8 @@
         var deltaY = e.deltaY
         if (deltaY > 0) newScale = scale / 1.3
         else if (deltaY < 0) newScale = scale * 1.3
-        newScale = Math.max(0.5, Math.min(maxScale, newScale))
+        else return
+        newScale = Math.max(1, Math.min(maxScale, newScale))
 
         var mapXY = getMapXY(e, newScale)
         x -= (mapXY.x - x) * (1 - newScale / scale)
