@@ -68,6 +68,10 @@ function create_map ($places, $base = '') {
         .'<div style="height: 400px; text-align: center">'
             ."<svg class=\"map $scaleClass\""
             ." viewBox=\"$viewBoxMinX $viewBoxMinY $viewBoxWidth $viewBoxHeight\">"
+                .'<defs>'
+                    .'<path id="placePath"'
+                    .' d="m 0,-13.7 c -2.6,0 -4.3,1.7 -4.3,4.3 0,2.6 4.3,9.4 4.3,9.4 0,0 4.3,-6.9 4.3,-9.4 0,-2.6 -1.7,-4.3 -4.3,-4.3 z" />'
+                .'</defs>'
                 ."<g class=\"map-scale\" style=\"transform: scale($scale)\">"
                     .'<g class="map-translate"'
                     ." style=\"transform: translate(-{$median_x}px, {$median_y}px)\">"
