@@ -46,25 +46,11 @@ function create_map ($places, $base = '') {
     }
     $scaleClass = "scale$classIndex";
 
-    $style = '<style type="text/css">';
-    $thisScale = 1;
-    for ($i = 0; $i < 15; $i++) {
-        $value = preg_replace('/\.?0+$/', '', number_format($thisScale, 30));
-        $style .=
-            ".scale$i .map-place {"
-                ."transform: scale($value)"
-            ."}"
-            .".scale$i .map-gridline {"
-                .'stroke-width: '.($value / 3).';'
-            ."}";
-        $thisScale /= 2;
-    }
-    $style .= '</style>';
-
     include_once __DIR__.'/create_map_grid_lines.php';
     include_once __DIR__.'/create_map_places.php';
+    include_once __DIR__.'/create_map_style.php';
     return
-        $style
+        create_map_style()
         .'<div style="height: 400px; text-align: center">'
             ."<svg class=\"map $scaleClass\""
             ." viewBox=\"$viewBoxMinX $viewBoxMinY $viewBoxWidth $viewBoxHeight\">"
