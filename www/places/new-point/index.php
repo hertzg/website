@@ -4,16 +4,8 @@ include_once '../fns/require_place.php';
 include_once '../../lib/mysqli.php';
 list($place, $id, $user) = require_place($mysqli);
 
-$key = 'places/add-point/values';
-if (array_key_exists($key, $_SESSION)) {
-    $values = $_SESSION[$key];
-} else {
-    $values = [
-        'latitude' => '',
-        'longitude' => '',
-        'altitude' => '',
-    ];
-}
+include_once '../fns/request_new_point_values.php';
+$values = request_new_point_values('places/new-point/values');
 
 unset($_SESSION['places/view/messages']);
 
@@ -36,18 +28,18 @@ $content =
         [
             [
                 'title' => "Place #$id",
-                'href' => "../view/$escapedItemQuery#add-point",
+                'href' => "../view/$escapedItemQuery#new-point",
             ],
         ],
-        'Add Point',
-        Page\sessionErrors('places/add-point/errors')
-        .Page\warnings(['Adding a point will update the latitude,'
+        'Add New Point',
+        Page\sessionErrors('places/new-point/errors')
+        .Page\warnings(['Adding a new point will update the latitude,'
             .' the longitude and the altitude of the place'
             .' to the avarage of all the points.'])
         .'<form action="submit.php" method="post">'
             .create_point_form_items($values)
             .'<div class="hr"></div>'
-            .Form\button('Add Point')
+            .Form\button('Save Point')
             .ItemList\itemHiddenInputs($id)
         .'</form>'
     )

@@ -19,14 +19,19 @@ include_once "$fnsDir/redirect.php";
 include_once "$fnsDir/ItemList/itemQuery.php";
 
 if ($errors) {
-    $_SESSION['places/add-point/errors'] = $errors;
-    $_SESSION['places/add-point/values'] = [
+    $_SESSION['places/new-point/errors'] = $errors;
+    $_SESSION['places/new-point/values'] = [
         'latitude' => $latitude,
         'longitude' => $longitude,
         'altitude' => $altitude,
     ];
     redirect('./'.ItemList\itemQuery($id));
 }
+
+unset(
+    $_SESSION['places/new-point/errors'],
+    $_SESSION['places/new-point/values']
+);
 
 include_once "$fnsDir/Users/Places/Points/add.php";
 $id = Users\Places\Points\add($mysqli, $place,

@@ -42,8 +42,8 @@ function create ($mysqli, $place) {
     }
 
     unset(
-        $_SESSION['places/add-point/errors'],
-        $_SESSION['places/add-point/values'],
+        $_SESSION['places/new-point/errors'],
+        $_SESSION['places/new-point/values'],
         $_SESSION['places/edit/errors'],
         $_SESSION['places/edit/values'],
         $_SESSION['places/errors'],

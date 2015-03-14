@@ -4,16 +4,8 @@ include_once '../fns/require_point.php';
 include_once '../../lib/mysqli.php';
 list($point, $id, $user, $place) = require_point($mysqli);
 
-$key = 'places/edit-point/values';
-if (array_key_exists($key, $_SESSION)) {
-    $values = $_SESSION[$key];
-} else {
-    $values = [
-        'latitude' => $point->latitude,
-        'longitude' => $point->longitude,
-        'altitude' => $point->altitude,
-    ];
-}
+include_once '../fns/request_edit_point_values.php';
+$values = request_edit_point_values($point, 'places/edit-point/values');
 
 $base = '../../';
 $fnsDir = '../../fns';
