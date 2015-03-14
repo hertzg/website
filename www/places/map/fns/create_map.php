@@ -71,8 +71,6 @@ function create_map ($places, $base = '') {
             ."var scale = $scale\n"
             ."var x = $median_x\n"
             ."var y = $median_y\n"
-            ."var viewBoxWidth = $viewBoxWidth\n"
-            ."var viewBoxHeight = $viewBoxHeight\n"
             ."var maxScale = $maxScale"
         .'</script>'
         ."<script type=\"text/javascript\" src=\"{$base}index.js\"></script>";

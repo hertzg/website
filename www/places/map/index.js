@@ -1,4 +1,9 @@
-(function (scale, x, y, viewBoxWidth, viewBoxHeight, maxScale) {
+(function (scale, x, y, maxScale) {
+
+    function limitXY () {
+        x = Math.max(-180, Math.min(180, x))
+        y = Math.max(-90, Math.min(90, y))
+    }
 
     function getScaleClass (scale) {
         var index = 0
@@ -15,10 +20,10 @@
             width = rect.width,
             height = rect.height
 
-        if (width / height > viewBoxWidth / viewBoxHeight) {
-            return viewBoxHeight / height
+        if (width / height > 360 / 180) {
+            return 180 / height
         }
-        return viewBoxWidth / width
+        return 360 / width
 
     }
 
@@ -55,6 +60,7 @@
         var mapXY = getMapXY(e, newScale)
         x -= (mapXY.x - x) * (1 - newScale / scale)
         y -= (mapXY.y - y) * (1 - newScale / scale)
+        limitXY()
 
         scale = newScale
 
@@ -69,16 +75,22 @@
     map.addEventListener('mousedown', function (e) {
 
         function mouseMove (e) {
+
             var rect = svgElement.getBoundingClientRect()
             var newClientX = e.clientX,
                 newClientY = e.clientY
             var scalingFactor = getScalingFactor()
+
             x -= (newClientX - clientX) / scale * scalingFactor
             y += (newClientY - clientY) / scale * scalingFactor
+
+            limitXY()
+
             clientX = newClientX
             clientY = newClientY
             translateElement.classList.remove('transition')
             translateElement.style.transform = 'translate(' + -x + 'px, ' + y + 'px)'
+
         }
 
         function mouseUp () {
@@ -107,4 +119,4 @@
     var translateElement = map.querySelector('.map-translate')
     translateElement.classList.add('transition')
 
-})(scale, x, y, viewBoxWidth, viewBoxHeight, maxScale)
+})(scale, x, y, maxScale)
