@@ -7,10 +7,7 @@ function require_transactions ($mysqli, $base = '') {
     list($wallet, $id, $user) = $values;
 
     if (!$wallet->num_transactions) {
-        unset(
-            $_SESSION['calendar/errors'],
-            $_SESSION['calendar/messages']
-        );
+        unset($_SESSION['wallets/view/messages']);
         include_once __DIR__.'/../../../fns/redirect.php';
         redirect("$base../view/?id=$id");
     }
