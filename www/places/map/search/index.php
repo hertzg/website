@@ -1,7 +1,7 @@
 <?php
 
 include_once '../../fns/require_places.php';
-$user = require_places();
+$user = require_places('../');
 $id_users = $user->id_users;
 
 $fnsDir = '../../../fns';

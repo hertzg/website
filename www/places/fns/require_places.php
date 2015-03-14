@@ -1,11 +1,11 @@
 <?php
 
-function require_places () {
+function require_places ($base = '') {
 
     $fnsDir = __DIR__.'/../../fns';
 
     include_once "$fnsDir/require_user.php";
-    $user = require_user('../../');
+    $user = require_user("$base../../");
 
     if (!$user->num_places) {
         unset(
@@ -13,7 +13,7 @@ function require_places () {
             $_SESSION['places/messages']
         );
         include_once "$fnsDir/redirect.php";
-        redirect('..');
+        redirect("$base..");
     }
 
     return $user;
