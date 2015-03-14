@@ -4,12 +4,16 @@ namespace ViewPage;
 
 function pointsPanel ($mysqli, $place) {
 
-    if ($place->num_points < 2) return;
+    $num_points = $place->num_points;
+    if ($num_points < 2) return;
 
+    $id = $place->id;
     $fnsDir = __DIR__.'/../../../fns';
 
-    include_once "$fnsDir/PlacePoints/indexOnPlace.php";
-    $points = \PlacePoints\indexOnPlace($mysqli, $place->id);
+    $limit = 5;
+
+    include_once "$fnsDir/PlacePoints/indexLimitOnPlace.php";
+    $points = \PlacePoints\indexLimitOnPlace($mysqli, $id, $limit);
 
     $items = [];
 
@@ -26,6 +30,13 @@ function pointsPanel ($mysqli, $place) {
                     "../view-point/$escapedItemQuery", 'place')
             .'</div>';
 
+    }
+
+    if ($num_points > $limit) {
+        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
+        $items[] = \Page\imageArrowLinkWithDescription('All Points',
+            "$num_points total.", "../all-points/?id=$id", 'TODO',
+            ['id' => 'all-points']);
     }
 
     include_once "$fnsDir/create_panel.php";
