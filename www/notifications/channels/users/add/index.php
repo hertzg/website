@@ -42,4 +42,4 @@ $content = Page\tabs(
 );
 
 include_once "$fnsDir/echo_page.php";
-echo_page($user, 'Add User', $content, '../../../../');
+echo_page($user, "Add User to Channel #$channel->id", $content, '../../../../');

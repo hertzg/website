@@ -47,4 +47,4 @@ $content =
         (float)$place->longitude, (float)$place->altitude);
 
 include_once "$fnsDir/echo_page.php";
-echo_page($user, 'Add Point', $content, $base);
+echo_page($user, "Add New Point to Place #$place->id", $content, $base);

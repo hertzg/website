@@ -35,4 +35,4 @@ $content = Page\tabs(
 );
 
 include_once "$fnsDir/echo_page.php";
-echo_page($user, 'Add New Transaction', $content, $base);
+echo_page($user, "Add New Transaction to Wallet #$wallet->id", $content, $base);
