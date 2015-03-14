@@ -62,7 +62,7 @@ function create_map ($places, $base = '') {
                     .'<g class="map-translate"'
                     ." style=\"transform: translate(-{$median_x}px, {$median_y}px)\">"
                         .create_map_grid_lines()
-                        .create_map_places($places)
+                        .create_map_places($places, $base)
                     .'</g>'
                 .'</g>'
             .'</svg>'

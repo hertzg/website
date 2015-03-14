@@ -18,10 +18,14 @@
 }
 
 .map-gridline {
-    stroke-width: 0.1;
     stroke: #ddd;
 }
 
 .map-place {
+    cursor: pointer;
     transition: transform 0.2s linear;
+}
+.map-place:hover {
+    fill: hsl(7, 100%, 76%);
+    stroke: hsl(7, 100%, 67%);
 }
