@@ -14,12 +14,19 @@ function create_options_panel ($user, $base = '') {
     }
 
     if ($user->num_places) {
+
+        include_once "$fnsDir/ItemList/listHref.php";
+        include_once "$fnsDir/Page/imageArrowLink.php";
+        $options[] = Page\imageArrowLink('Map',
+            "{$base}map/".ItemList\listHref(''), 'TODO');
+
         include_once "$fnsDir/ItemList/escapedPageQuery.php";
         include_once "$fnsDir/Page/imageLink.php";
-        $href = "{$base}delete-all/".ItemList\escapedPageQuery();
         $options[] =
             '<div id="deleteAllLink">'
-                .Page\imageLink('Delete All Places', $href, 'trash-bin')
+                .Page\imageLink('Delete All Places',
+                    "{$base}delete-all/".ItemList\escapedPageQuery(),
+                    'trash-bin')
             .'</div>';
     }
 

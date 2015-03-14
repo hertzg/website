@@ -2,7 +2,7 @@
 
 namespace BookmarkTags;
 
-function indexOnTagName ($mysqli, $id_users,
+function indexPageOnUserTagName ($mysqli, $id_users,
     $tag_name, $offset, $limit, &$total) {
 
     $fnsDir = __DIR__.'/..';

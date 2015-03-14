@@ -2,7 +2,7 @@
 
 namespace ScheduleTags;
 
-function searchOnTagName ($mysqli, $id_users, $keyword, $tag_name) {
+function searchPageOnUserTagName ($mysqli, $id_users, $keyword, $tag_name) {
 
     $fnsDir = __DIR__.'/..';
 

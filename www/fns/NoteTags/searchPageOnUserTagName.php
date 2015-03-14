@@ -2,7 +2,7 @@
 
 namespace NoteTags;
 
-function searchOnTagName ($mysqli, $id_users,
+function searchPageOnUserTagName ($mysqli, $id_users,
     $keyword, $tag_name, $offset, $limit, &$total) {
 
     $fnsDir = __DIR__.'/..';

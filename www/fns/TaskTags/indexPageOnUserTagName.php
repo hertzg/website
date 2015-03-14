@@ -2,18 +2,15 @@
 
 namespace TaskTags;
 
-function searchOnTagName ($mysqli, $id_users,
-    $keyword, $tag_name, $offset, $limit, &$total) {
+function indexPageOnUserTagName ($mysqli, $id_users,
+    $tag_name, $offset, $limit, &$total) {
 
     $fnsDir = __DIR__.'/..';
 
-    include_once "$fnsDir/escape_like.php";
-    $keyword = escape_like($keyword);
-    $keyword = $mysqli->real_escape_string($keyword);
     $tag_name = $mysqli->real_escape_string($tag_name);
 
     $fromWhere = "from task_tags where id_users = $id_users"
-        ." and text like '%$keyword%' and tag_name = '$tag_name'";
+        ." and tag_name = '$tag_name'";
 
     $sql = "select count(*) total $fromWhere";
     include_once "$fnsDir/mysqli_single_object.php";

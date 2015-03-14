@@ -50,8 +50,8 @@ function create_page ($mysqli, $user, $base = '') {
 
     } else {
 
-        include_once "$fnsDir/ContactTags/indexOnTagName.php";
-        $contacts = ContactTags\indexOnTagName($mysqli,
+        include_once "$fnsDir/ContactTags/indexPageOnUserTagName.php";
+        $contacts = ContactTags\indexPageOnUserTagName($mysqli,
             $id_users, $tag, $offset, $limit, $total);
 
         if ($total > 1) {

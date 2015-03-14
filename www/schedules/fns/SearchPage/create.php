@@ -48,9 +48,9 @@ function create ($mysqli, $user) {
 
     } else {
 
-        include_once "$fnsDir/ScheduleTags/searchOnTagName.php";
-        $schedules = \ScheduleTags\searchOnTagName($mysqli,
-            $id_users, $keyword, $tag);
+        include_once "$fnsDir/ScheduleTags/searchPageOnUserTagName.php";
+        $schedules = \ScheduleTags\searchPageOnUserTagName(
+            $mysqli, $id_users, $keyword, $tag);
         $total = count($schedules);
 
         include_once "$fnsDir/Form/hidden.php";
