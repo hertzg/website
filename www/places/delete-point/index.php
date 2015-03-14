@@ -9,11 +9,11 @@ $fnsDir = '../../fns';
 
 unset($_SESSION['places/view-point/messages']);
 
-include_once '../fns/create_view_point_page.php';
+include_once '../fns/ViewPointPage/create.php';
 include_once "$fnsDir/ItemList/escapedItemQuery.php";
 include_once "$fnsDir/Page/confirmDialog.php";
 $content =
-    create_view_point_page($point)
+    ViewPointPage\create($point)
     .Page\confirmDialog(
         'Are you sure you want to delete the point?'
         .' The latitude, the longitude and the altitude of the place'

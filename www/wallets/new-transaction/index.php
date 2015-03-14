@@ -24,7 +24,7 @@ $content = Page\tabs(
             'href' => "../view/?id=$id",
         ]
     ],
-    'New Transaction',
+    'Add New Transaction',
     Page\sessionErrors('wallets/new-transaction/errors')
     .'<form action="submit.php" method="post">'
         .create_transaction_form_items($values)
@@ -35,4 +35,4 @@ $content = Page\tabs(
 );
 
 include_once "$fnsDir/echo_page.php";
-echo_page($user, 'New Transaction', $content, $base);
+echo_page($user, 'Add New Transaction', $content, $base);

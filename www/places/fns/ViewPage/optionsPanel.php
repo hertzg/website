@@ -10,9 +10,9 @@ function optionsPanel ($place) {
     $escapedItemQuery = \ItemList\escapedItemQuery($place->id);
 
     include_once "$fnsDir/Page/imageArrowLink.php";
-    $addPointLink = \Page\imageArrowLink('Add Point',
-        "../add-point/$escapedItemQuery", 'create-place',
-        ['id' => 'add-point']);
+    $addPointLink = \Page\imageArrowLink('Add New Point',
+        "../new-point/$escapedItemQuery", 'create-place',
+        ['id' => 'new-point']);
 
     include_once "$fnsDir/Page/imageArrowLink.php";
     $editLink = \Page\imageArrowLink('Edit',

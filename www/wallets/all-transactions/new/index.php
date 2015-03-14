@@ -26,7 +26,7 @@ $content = Page\tabs(
             'href' => '../'.ItemList\escapedItemQuery($id),
         ]
     ],
-    'New',
+    'Add New',
     Page\sessionErrors('wallets/all-transactions/new/errors')
     .'<form action="submit.php" method="post">'
         .create_transaction_form_items($values)
@@ -37,4 +37,4 @@ $content = Page\tabs(
 );
 
 include_once "$fnsDir/echo_page.php";
-echo_page($user, 'New Transaction', $content, $base);
+echo_page($user, 'Add New Transaction', $content, $base);
