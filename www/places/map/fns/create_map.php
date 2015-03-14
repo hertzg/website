@@ -10,14 +10,14 @@ function create_map ($places, $base = '') {
         $max_x = $min_x = $firstPlace->longitude;
         $max_y = $min_y = $firstPlace->latitude;
         if ($num_places > 1) {
-            foreach ($places as $place) {
+            for ($i = 1; $i < $num_places; $i++) {
+                $place = $places[$i];
                 $min_x = min($min_x, $place->longitude);
                 $min_y = min($min_y, $place->latitude);
                 $max_x = max($max_x, $place->longitude);
                 $max_y = max($max_y, $place->latitude);
             }
             $scale = 180 / max($max_y - $min_y, $max_x - $min_x);
-            $scale = min(100000, $scale);
             $scale = min($maxScale, $scale);
         } else {
             $scale = $maxScale;
