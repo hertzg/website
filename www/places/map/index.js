@@ -1,8 +1,25 @@
 (function (scale, x, y, maxScale) {
 
-    function limitXY () {
-        x = Math.max(-180, Math.min(180, x))
-        y = Math.max(-90, Math.min(90, y))
+    function endShift () {
+        translateElement.classList.add('transition')
+    }
+
+    function getMapXY (e, scale) {
+
+        var rect = svgElement.getBoundingClientRect()
+        var scalingFactor = getScalingFactor()
+
+        var mapX = (e.clientX - rect.left - rect.width / 2) / scale,
+            mapY = -((e.clientY - rect.top - rect.height / 2)) / scale
+
+        mapX = mapX * scalingFactor + x
+        mapY = mapY * scalingFactor + y
+
+        return {
+            x: mapX,
+            y: mapY,
+        }
+
     }
 
     function getScaleClass (scale) {
@@ -27,23 +44,27 @@
 
     }
 
-    function getMapXY (e, scale) {
+    function limitXY () {
+        x = Math.max(-180, Math.min(180, x))
+        y = Math.max(-90, Math.min(90, y))
+    }
 
-        var rect = svgElement.getBoundingClientRect()
+    function shiftMap (dx, dy) {
+
         var scalingFactor = getScalingFactor()
 
-        var mapX = (e.clientX - rect.left - rect.width / 2) / scale,
-            mapY = -((e.clientY - rect.top - rect.height / 2)) / scale
+        x -= dx / scale * scalingFactor
+        y += dy / scale * scalingFactor
 
-        mapX = mapX * scalingFactor + x
-        mapY = mapY * scalingFactor + y
+        limitXY()
 
-        return {
-            x: mapX,
-            y: mapY,
-        }
+        translateElement.classList.remove('transition')
+        translateElement.style.transform = 'translate(' + -x + 'px, ' + y + 'px)'
 
     }
+
+    var identifier = null,
+        touchX, touchY
 
     var map = document.querySelector('.map')
     map.addEventListener('wheel', function (e) {
@@ -79,12 +100,8 @@
             var rect = svgElement.getBoundingClientRect()
             var newClientX = e.clientX,
                 newClientY = e.clientY
-            var scalingFactor = getScalingFactor()
 
-            x -= (newClientX - clientX) / scale * scalingFactor
-            y += (newClientY - clientY) / scale * scalingFactor
-
-            limitXY()
+            shiftMap(newClientX - clientX, newClientY - clientY)
 
             clientX = newClientX
             clientY = newClientY
@@ -96,7 +113,7 @@
         function mouseUp () {
             removeEventListener('mousemove', mouseMove)
             removeEventListener('mouseup', mouseUp)
-            translateElement.classList.add('transition')
+            endShift()
         }
 
         if (e.button !== 0) return
@@ -108,6 +125,37 @@
         addEventListener('mousemove', mouseMove)
         addEventListener('mouseup', mouseUp)
 
+    })
+    map.addEventListener('touchstart', function (e) {
+        if (identifier !== null) return
+        var touch = e.changedTouches[0]
+        identifier = touch.identifier
+        touchX = touch.clientX
+        touchY = touch.clientY
+    })
+    map.addEventListener('touchmove', function (e) {
+        var touches = e.changedTouches
+        for (var i = 0; i < touches.length; i++) {
+            var touch = touches[i]
+            if (touch.identifier === identifier) {
+                var newTouchX = touch.clientX,
+                    newTouchY = touch.clientY
+                shiftMap(newTouchX - touchX, newTouchY - touchY)
+                touchX = newTouchX
+                touchY = newTouchY
+                break
+            }
+        }
+    })
+    map.addEventListener('touchend', function (e) {
+        var touches = e.changedTouches
+        for (var i = 0; i < touches.length; i++) {
+            if (touches[i].identifier === identifier) {
+                identifier = null
+                endShift()
+                break
+            }
+        }
     })
 
     var scaleClass = getScaleClass(scale)
