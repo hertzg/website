@@ -12,7 +12,7 @@ function create_view_page ($point) {
 
     include_once "$fnsDir/Page/imageArrowLink.php";
     $editLink = Page\imageArrowLink('Edit',
-        "../edit/$escapedItemQuery", 'edit-place', ['id' => 'edit']);
+        "../edit/$escapedItemQuery", 'edit-point', ['id' => 'edit']);
 
     include_once "$fnsDir/Page/imageLink.php";
     $deleteLink =

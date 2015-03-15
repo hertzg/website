@@ -57,6 +57,9 @@ render($content, 'note.svg?3', $names);
 $names = ['place', 'create-place', 'edit-place', 'places', 'import-place'];
 render($content, 'place.svg', $names);
 
+$names = ['point', 'create-point', 'edit-point', 'points'];
+render($content, 'point.svg', $names);
+
 $names = ['account', 'edit-profile', 'download', 'upload', 'feedback',
     'yes', 'no', 'notification', 'create-notification', 'old-notification',
     'edit-password', 'new-password', 'reset-password', 'rename',

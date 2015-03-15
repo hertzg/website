@@ -11,7 +11,7 @@ function optionsPanel ($place) {
 
     include_once "$fnsDir/Page/imageArrowLink.php";
     $addPointLink = \Page\imageArrowLink('Add New Point',
-        "../new-point/$escapedItemQuery", 'create-place',
+        "../new-point/$escapedItemQuery", 'create-point',
         ['id' => 'new-point']);
 
     include_once "$fnsDir/Page/imageArrowLink.php";

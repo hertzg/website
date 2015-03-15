@@ -12,7 +12,7 @@ function render_points ($points, &$items, $base = '') {
         $escapedItemQuery = ItemList\escapedItemQuery($id);
 
         $items[]= Page\imageArrowLink("$point->latitude $point->longitude",
-            "view/$escapedItemQuery", 'place', ['id' => $id]);
+            "view/$escapedItemQuery", 'point', ['id' => $id]);
 
     }
 
