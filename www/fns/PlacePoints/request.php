@@ -6,8 +6,8 @@ function request () {
 
     $fnsDir = __DIR__.'/..';
 
-    include_once "$fnsDir/request_latitude.php";
-    request_latitude($latitude, $parsed_latitude);
+    include_once "$fnsDir/Latitude/request.php";
+    \Latitude\request($latitude, $parsed_latitude);
 
     include_once "$fnsDir/request_longitude.php";
     request_longitude($longitude, $parsed_longitude);
