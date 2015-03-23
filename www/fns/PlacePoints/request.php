@@ -9,8 +9,8 @@ function request () {
     include_once "$fnsDir/Latitude/request.php";
     \Latitude\request($latitude, $parsed_latitude);
 
-    include_once "$fnsDir/request_longitude.php";
-    request_longitude($longitude, $parsed_longitude);
+    include_once "$fnsDir/Longitude/request.php";
+    \Longitude\request($longitude, $parsed_longitude);
 
     include_once "$fnsDir/request_altitude.php";
     request_altitude($altitude, $parsed_altitude);

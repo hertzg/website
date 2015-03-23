@@ -8,7 +8,7 @@ function visual_assert ($input, $correctValue) {
 
     $exportInput = var_export($input, true);
     $exportOutput = var_export($output, true);
-    $expression = "parse_latitude($exportInput) returned $exportOutput";
+    $expression = "Latitude\parse($exportInput) returned $exportOutput";
 
     if ($output === $correctValue) {
         echo "OK $expression";
