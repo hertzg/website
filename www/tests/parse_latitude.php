@@ -21,9 +21,11 @@ function visual_assert ($input, $correctValue) {
 
 chdir(__DIR__);
 
+// TODO make better tests
 visual_assert('41.34425', 41.34425);
 visual_assert('-411', -90);
 visual_assert('2332', 90);
+visual_assert('43°N', 43);
 visual_assert('41°43′N', 41.716666666666669);
 visual_assert('17°55′28″S', -17.924444444444447);
 visual_assert('51°30′2.72″n', 51.500755555555557);
