@@ -38,6 +38,9 @@ visual_assert('-100', -90);
 visual_assert('12.345678', 12.345678);
 visual_assert('-12.345678', -12.345678);
 
+visual_assert('1 n', 1);
+visual_assert('1 s', -1);
+
 visual_assert('1 N', 1);
 visual_assert('1 S', -1);
 

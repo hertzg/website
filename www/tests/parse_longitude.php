@@ -10,7 +10,7 @@ function visual_assert ($input, $correctValue) {
     $exportOutput = var_export($output, true);
     $expression = "Longitude\parse($exportInput) returned $exportOutput";
 
-    if ($output === $correctValue) {
+    if (number_format($output, 6) === number_format($correctValue, 6)) {
         echo "OK $expression";
     } else {
         echo "FAIL $expression instead of ".var_export($correctValue, true);
@@ -21,9 +21,88 @@ function visual_assert ($input, $correctValue) {
 
 chdir(__DIR__);
 
-// TODO make better tests
-visual_assert('-411', -180);
-visual_assert('2332', -180);
-visual_assert('41.34425', 41.344249999999988);
-visual_assert('75°W', -75);
-visual_assert('0°7′28.78″W', -0.12466111111112355);
+visual_assert('0', 0);
+
+visual_assert('1', 1);
+visual_assert('-1', -1);
+
+visual_assert('1.5', 1.5);
+visual_assert('-1.5', -1.5);
+
+visual_assert('90', 90);
+visual_assert('-90', -90);
+
+visual_assert('200', -180);
+visual_assert('-200', -180);
+
+visual_assert('12.345678', 12.345678);
+visual_assert('-12.345678', -12.345678);
+
+visual_assert('1 e', 1);
+visual_assert('1 w', -1);
+
+visual_assert('1 E', 1);
+visual_assert('1 W', -1);
+
+visual_assert('1°E', 1);
+visual_assert('1°W', -1);
+
+visual_assert('1 1 E', 1.016667);
+visual_assert('1 1 W', -1.016667);
+
+visual_assert('1°1 E', 1.016667);
+visual_assert('1°1 W', -1.016667);
+
+visual_assert('1 1′E', 1.016667);
+visual_assert('1 1′W', -1.016667);
+
+visual_assert('1°1′E', 1.016667);
+visual_assert('1°1′W', -1.016667);
+
+visual_assert('1 1 1 E', 1.016944);
+visual_assert('1 1 1 W', -1.016944);
+
+visual_assert('1°1 1 E', 1.016944);
+visual_assert('1°1 1 W', -1.016944);
+
+visual_assert('1 1′1 E', 1.016944);
+visual_assert('1 1′1 W', -1.016944);
+
+visual_assert('1°1′1 E', 1.016944);
+visual_assert('1°1′1 W', -1.016944);
+
+visual_assert('1 1 1″E', 1.016944);
+visual_assert('1 1 1″W', -1.016944);
+
+visual_assert('1°1 1″E', 1.016944);
+visual_assert('1°1 1″W', -1.016944);
+
+visual_assert('1 1′1″E', 1.016944);
+visual_assert('1 1′1″W', -1.016944);
+
+visual_assert('1°1′1″E', 1.016944);
+visual_assert('1°1′1″W', -1.016944);
+
+visual_assert('1 1 1.1 E', 1.016947);
+visual_assert('1 1 1.1 W', -1.016947);
+
+visual_assert('1°1 1.1 E', 1.016947);
+visual_assert('1°1 1.1 W', -1.016947);
+
+visual_assert('1 1′1.1 E', 1.016947);
+visual_assert('1 1′1.1 W', -1.016947);
+
+visual_assert('1°1′1.1 E', 1.016947);
+visual_assert('1°1′1.1 W', -1.016947);
+
+visual_assert('1 1 1.1″E', 1.016947);
+visual_assert('1 1 1.1″W', -1.016947);
+
+visual_assert('1°1 1.1″E', 1.016947);
+visual_assert('1°1 1.1″W', -1.016947);
+
+visual_assert('1 1′1.1″E', 1.016947);
+visual_assert('1 1′1.1″W', -1.016947);
+
+visual_assert('1°1′1.1″E', 1.016947);
+visual_assert('1°1′1.1″W', -1.016947);
