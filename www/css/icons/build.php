@@ -54,8 +54,9 @@ $names = ['note', 'create-note',
     'edit-note', 'encrypted-note', 'notes', 'import-note'];
 render($content, 'note.svg?3', $names);
 
-$names = ['place', 'create-place', 'edit-place', 'places', 'import-place'];
-render($content, 'place.svg', $names);
+$names = ['place', 'create-place', 'edit-place',
+    'places', 'import-place', 'place-on-earth'];
+render($content, 'place.svg?1', $names);
 
 $names = ['point', 'create-point', 'edit-point', 'points'];
 render($content, 'point.svg', $names);

@@ -18,7 +18,7 @@ function create_options_panel ($user, $base = '') {
         include_once "$fnsDir/ItemList/listHref.php";
         include_once "$fnsDir/Page/imageArrowLink.php";
         $options[] = Page\imageArrowLink('Map',
-            "{$base}map/".ItemList\listHref(''), 'TODO');
+            "{$base}map/".ItemList\listHref(''), 'place-on-earth');
 
         include_once "$fnsDir/ItemList/escapedPageQuery.php";
         include_once "$fnsDir/Page/imageLink.php";
