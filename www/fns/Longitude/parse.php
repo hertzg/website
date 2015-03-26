@@ -3,8 +3,12 @@
 namespace Longitude;
 
 function parse ($input) {
-    $input = preg_replace('/\s+/', '', $input);
-    $regex = '/^(\d+)°(?:(\d+)′(?:(\d+)(?:\.(\d+))?″)?)?([WE])$/ui';
+    $separator1 = '(?:° ?| )';
+    $separator2 = '(?:′ ?| )';
+    $separator3 = '(?:″ ?| )';
+    $secondPart = '(?:(\d+)(?:\.(\d+))?'.$separator3.')?';
+    $minutePart = '(?:(\d+)'.$separator2.$secondPart.')?';
+    $regex = '/^(\d+)'.$separator1.$minutePart.'([we])$/ui';
     if (preg_match($regex, $input, $match)) {
         $input = $match[1] + $match[2] / 60 +
             $match[3] / (60 * 60) + $match[4] / (60 * 60 * 100);
