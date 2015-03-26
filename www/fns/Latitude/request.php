@@ -10,6 +10,6 @@ function request (&$latitude, &$parsed_latitude) {
     $latitude = preg_replace('/\s+/', '', $latitude);
 
     include_once __DIR__.'/parse.php';
-    $parse_latitude = parse($latitude);
+    $parsed_latitude = parse($latitude);
 
 }
