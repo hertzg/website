@@ -1,21 +1,25 @@
 (function () {
 function Battery (base) {
 
-    function ImageDiv (imageName) {
+    function ImageDiv (imageName, alt) {
 
-        var div = document.createElement('div')
+        var img = document.createElement('img')
+        img.alt = alt
+        img.src = base + 'images/' + imageName + '.svg'
 
-        var style = div.style
+        var style = img.style
         style.width = '9px'
-        style.height = '11px'
+        style.height = style.lineHeight = '11px'
         style.backgroundRepeat = 'no-repeat'
-        style.backgroundImage = 'url(' + base + 'images/' + imageName + '.svg)'
         style.position = 'absolute'
         style.top = '-1px'
         style.right = style.left = '0'
         style.margin = 'auto'
+        style.color = '#444'
+        style.textAlign = 'center'
+        style.fontSize = '11px'
 
-        return div
+        return img
     }
 
     function updateLevel () {
@@ -75,14 +79,14 @@ function Battery (base) {
         battery.addEventListener('chargingchange', updateCharging)
         battery.addEventListener('levelchange', updateLevel)
 
-        var chargingElement = ImageDiv('charging')
+        var chargingElement = ImageDiv('charging', '\u26a1')
         borderElement.appendChild(chargingElement)
 
         updateCharging()
         updateLevel()
 
     } else {
-        borderElement.appendChild(ImageDiv('question'))
+        borderElement.appendChild(ImageDiv('question', '?'))
     }
 
 }
@@ -128,7 +132,6 @@ function Clock (remoteTime) {
     if (!requestAnimationFrame) {
         requestAnimationFrame = window.mozRequestAnimationFrame
     }
-
     if (!requestAnimationFrame) {
         requestAnimationFrame = function (callback) {
             setTimeout(callback, 0)
