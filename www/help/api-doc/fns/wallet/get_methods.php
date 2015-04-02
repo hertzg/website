@@ -10,5 +10,6 @@ function get_methods () {
         'edit' => 'Edits an existing wallet.',
         'get' => 'Returns a single existing wallet.',
         'list' => 'Returns a list of all wallets.',
+        'transferAmount' => 'Transfer an amount to another wallet.',
     ];
 }
