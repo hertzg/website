@@ -6,7 +6,7 @@ list($apiKey, $user, $mysqli) = require_api_key('can_write_wallets');
 include_once 'fns/require_transaction.php';
 $transaction = require_transaction($mysqli, $user->id_users);
 
-include_once 'fns/request_transaction_params.php';
+include_once '../fns/request_transaction_params.php';
 list($amount, $description) = request_transaction_params($user);
 
 $fnsDir = '../../../fns';
