@@ -12,7 +12,7 @@ $fnsDir = '../../fns';
 include_once '../fns/create_view_page.php';
 include_once "$fnsDir/Page/confirmDialog.php";
 $content =
-    create_view_page($mysqli, $wallet)
+    create_view_page($mysqli, $user, $wallet)
     .Page\confirmDialog('Are you sure you want to delete the wallet?',
         'Yes, delete wallet', "submit.php?id=$id", "../view/?id=$id");
 

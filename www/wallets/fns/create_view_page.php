@@ -1,6 +1,6 @@
 <?php
 
-function create_view_page ($mysqli, $wallet) {
+function create_view_page ($mysqli, $user, $wallet) {
 
     $fnsDir = __DIR__.'/../../fns';
     $id = $wallet->id;
@@ -28,10 +28,14 @@ function create_view_page ($mysqli, $wallet) {
         .'</div>';
 
     include_once "$fnsDir/Page/staticTwoColumns.php";
-    $optionsContent =
-        Page\staticTwoColumns($editLink, $transferAmountLink)
-        .'<div class="hr"></div>'
-        .$deleteLink;
+    if ($user->num_wallets > 1) {
+        $optionsContent =
+            Page\staticTwoColumns($editLink, $transferAmountLink)
+            .'<div class="hr"></div>'
+            .$deleteLink;
+    } else {
+        $optionsContent = Page\staticTwoColumns($editLink, $deleteLink);
+    }
 
     unset(
         $_SESSION['wallets/all-transactions/messages'],
@@ -41,6 +45,8 @@ function create_view_page ($mysqli, $wallet) {
         $_SESSION['wallets/messages'],
         $_SESSION['wallets/new-transaction/errors'],
         $_SESSION['wallets/new-transaction/values'],
+        $_SESSION['wallets/transfer-amount/errors'],
+        $_SESSION['wallets/transfer-amount/values'],
         $_SESSION['wallets/view-transaction/messages']
     );
 
