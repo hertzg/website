@@ -18,13 +18,20 @@ function create_view_page ($mysqli, $wallet) {
     $editLink = Page\imageArrowLink('Edit',
         "../edit/?id=$id", 'edit-wallet', ['id' => 'edit']);
 
+    include_once "$fnsDir/Page/imageArrowLink.php";
+    $transferAmountLink = Page\imageArrowLink('Transfer Amount',
+        "../transfer-amount/?id=$id", 'TODO', ['id' => 'transfer-amount']);
+
     $deleteLink =
         '<div id="deleteLink">'
             .Page\imageArrowLink('Delete', "../delete/?id=$id", 'trash-bin')
         .'</div>';
 
     include_once "$fnsDir/Page/staticTwoColumns.php";
-    $optionsContent = Page\staticTwoColumns($editLink, $deleteLink);
+    $optionsContent =
+        Page\staticTwoColumns($editLink, $transferAmountLink)
+        .'<div class="hr"></div>'
+        .$deleteLink;
 
     unset(
         $_SESSION['wallets/all-transactions/messages'],
