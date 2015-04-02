@@ -47,4 +47,8 @@ unset(
 
 $_SESSION['wallets/view/messages'] = ['The amount has been transferred.'];
 
+include_once "$fnsDir/Users/Wallets/transferAmount.php";
+Users\Wallets\transferAmount($mysqli,
+    $wallet, $toWallet, $parsed_amount, $description);
+
 redirect("../view/?id=$id");
