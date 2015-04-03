@@ -20,7 +20,8 @@ function create_view_page ($mysqli, $user, $wallet) {
 
     include_once "$fnsDir/Page/imageArrowLink.php";
     $transferAmountLink = Page\imageArrowLink('Transfer Amount',
-        "../transfer-amount/?id=$id", 'transfer-amount', ['id' => 'transfer-amount']);
+        "../transfer-amount/?id=$id", 'transfer-amount',
+            ['id' => 'transfer-amount']);
 
     $deleteLink =
         '<div id="deleteLink">'

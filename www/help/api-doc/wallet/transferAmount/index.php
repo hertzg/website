@@ -19,8 +19,11 @@ wallet_method_page('transferAmount', [
         'description' => 'The description of the transaction.',
     ],
 ], [
-    'WALLET_NOT_FOUND' => "A wallet with the ID to transfer the amount from doesn't exist.",
-    'TO_WALLET_NOT_FOUND' => "A wallet with the ID to transfer the amount to doesn't exist.",
-    'TO_WALLET_SAME' => 'The wallet to transfer from and the wallet to transfer to are the same.',
+    'WALLET_NOT_FOUND' =>
+        "A wallet with the ID to transfer the amount from doesn't exist.",
+    'TO_WALLET_NOT_FOUND' =>
+        "A wallet with the ID to transfer the amount to doesn't exist.",
+    'TO_WALLET_SAME' => 'The wallet to transfer from'
+        .' and the wallet to transfer to are the same.',
     'ENTER_AMOUNT' => 'The amount is zero.',
 ]);

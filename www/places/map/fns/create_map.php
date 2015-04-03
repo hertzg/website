@@ -46,21 +46,23 @@ function create_map ($places, $base = '') {
     }
     $scaleClass = "scale$classIndex";
 
+    $viewBox = "$viewBoxMinX $viewBoxMinY $viewBoxWidth $viewBoxHeight";
+    $placePathData = 'm 0,-13.7 c -2.6,0 -4.3,1.7 -4.3,4.3 0,2.6 4.3,9.4'
+        .' 4.3,9.4 0,0 4.3,-6.9 4.3,-9.4 0,-2.6 -1.7,-4.3 -4.3,-4.3 z';
+    $translateStyle = "transform: translate(-{$median_x}px, {$median_y}px)";
+
     include_once __DIR__.'/create_map_grid_lines.php';
     include_once __DIR__.'/create_map_places.php';
     include_once __DIR__.'/create_map_style.php';
     return
         create_map_style()
         .'<div style="height: 400px; text-align: center">'
-            ."<svg class=\"map $scaleClass\""
-            ." viewBox=\"$viewBoxMinX $viewBoxMinY $viewBoxWidth $viewBoxHeight\">"
+            ."<svg class=\"map $scaleClass\" viewBox=\"$viewBox\">"
                 .'<defs>'
-                    .'<path id="placePath"'
-                    .' d="m 0,-13.7 c -2.6,0 -4.3,1.7 -4.3,4.3 0,2.6 4.3,9.4 4.3,9.4 0,0 4.3,-6.9 4.3,-9.4 0,-2.6 -1.7,-4.3 -4.3,-4.3 z" />'
+                    ."<path id=\"placePath\" d=\"$placePathData\" />"
                 .'</defs>'
                 ."<g class=\"map-scale\" style=\"transform: scale($scale)\">"
-                    .'<g class="map-translate"'
-                    ." style=\"transform: translate(-{$median_x}px, {$median_y}px)\">"
+                    ."<g class=\"map-translate\" style=\"$translateStyle\">"
                         .create_map_grid_lines()
                         .create_map_places($places, $base)
                     .'</g>'
@@ -73,5 +75,5 @@ function create_map ($places, $base = '') {
             ."var y = $median_y\n"
             ."var maxScale = $maxScale"
         .'</script>'
-        ."<script type=\"text/javascript\" src=\"{$base}index.js\"></script>";
+        ."<script type=\"text/javascript\" src=\"{$base}index.js?1\"></script>";
 }

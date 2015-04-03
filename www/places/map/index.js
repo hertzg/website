@@ -59,8 +59,13 @@
         limitXY()
 
         translateElement.classList.remove('transition')
-        translateElement.style.transform = 'translate(' + -x + 'px, ' + y + 'px)'
+        updateTranslate()
 
+    }
+
+    function updateTranslate () {
+        var transform = 'translate(' + -x + 'px, ' + y + 'px)'
+        translateElement.style.transform = transform
     }
 
     var identifier = null,
@@ -90,7 +95,7 @@
         svgElement.classList.add(scaleClass)
 
         scaleElement.style.transform = 'scale(' + scale + ')'
-        translateElement.style.transform = 'translate(' + -x + 'px, ' + y + 'px)'
+        updateTranslate()
 
     })
     map.addEventListener('mousedown', function (e) {
@@ -106,7 +111,7 @@
             clientX = newClientX
             clientY = newClientY
             translateElement.classList.remove('transition')
-            translateElement.style.transform = 'translate(' + -x + 'px, ' + y + 'px)'
+            updateTranslate()
 
         }
 
