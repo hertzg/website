@@ -76,8 +76,8 @@ function create ($mysqli, $user, $wallet) {
         .\Form\label('Balance', amount_html($wallet->balance))
         .\Page\infoText($infoText)
         .create_panel('Transactions', $transactionsContent)
-        .optionsPanel($id, $user)
-        .\Page\newItemButton("../new-transaction/?id=$id", 'Transaction')
+        .optionsPanel($id, $user),
+        \Page\newItemButton("../new-transaction/?id=$id", 'Transaction')
     );
 
 }
