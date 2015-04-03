@@ -1,8 +1,10 @@
 <?php
 
-function create_view_page ($mysqli, $user, $wallet) {
+namespace ViewPage;
 
-    $fnsDir = __DIR__.'/../../fns';
+function create ($mysqli, $user, $wallet) {
+
+    $fnsDir = __DIR__.'/../../../fns';
     $id = $wallet->id;
 
     include_once "$fnsDir/format_author.php";
@@ -12,30 +14,6 @@ function create_view_page ($mysqli, $user, $wallet) {
         $author = format_author($wallet->update_time,
             $wallet->update_api_key_name);
         $infoText .= "<br />Last modified $author.";
-    }
-
-    include_once "$fnsDir/Page/imageArrowLink.php";
-    $editLink = Page\imageArrowLink('Edit',
-        "../edit/?id=$id", 'edit-wallet', ['id' => 'edit']);
-
-    include_once "$fnsDir/Page/imageArrowLink.php";
-    $transferAmountLink = Page\imageArrowLink('Transfer Amount',
-        "../transfer-amount/?id=$id", 'transfer-amount',
-            ['id' => 'transfer-amount']);
-
-    $deleteLink =
-        '<div id="deleteLink">'
-            .Page\imageArrowLink('Delete', "../delete/?id=$id", 'trash-bin')
-        .'</div>';
-
-    include_once "$fnsDir/Page/staticTwoColumns.php";
-    if ($user->num_wallets > 1) {
-        $optionsContent =
-            Page\staticTwoColumns($editLink, $transferAmountLink)
-            .'<div class="hr"></div>'
-            .$deleteLink;
-    } else {
-        $optionsContent = Page\staticTwoColumns($editLink, $deleteLink);
     }
 
     unset(
@@ -57,14 +35,14 @@ function create_view_page ($mysqli, $user, $wallet) {
         $limit = 5;
 
         include_once "$fnsDir/WalletTransactions/indexLimitOnWallet.php";
-        $transactions = WalletTransactions\indexLimitOnWallet(
+        $transactions = \WalletTransactions\indexLimitOnWallet(
             $mysqli, $id, $limit);
 
-        include_once __DIR__.'/render_transactions.php';
+        include_once __DIR__.'/../render_transactions.php';
         render_transactions($transactions, $items);
 
         if ($num_transactions > $limit) {
-            $items[] = Page\imageArrowLinkWithDescription('All Transactions',
+            $items[] = \Page\imageArrowLinkWithDescription('All Transactions',
                 "$num_transactions total.", "../all-transactions/?id=$id",
                 'transactions', ['id' => 'all-transactions']);
         }
@@ -73,9 +51,10 @@ function create_view_page ($mysqli, $user, $wallet) {
 
     } else {
         include_once "$fnsDir/Page/info.php";
-        $transactionsContent = Page\info('No transactions');
+        $transactionsContent = \Page\info('No transactions');
     }
 
+    include_once __DIR__.'/optionsPanel.php';
     include_once "$fnsDir/amount_html.php";
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Form/label.php";
@@ -83,7 +62,7 @@ function create_view_page ($mysqli, $user, $wallet) {
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
-    return Page\tabs(
+    return \Page\tabs(
         [
             [
                 'title' => 'Wallets',
@@ -91,14 +70,14 @@ function create_view_page ($mysqli, $user, $wallet) {
             ],
         ],
         "Wallet #$id",
-        Page\sessionMessages('wallets/view/messages')
-        .Form\label('Name', htmlspecialchars($wallet->name))
+        \Page\sessionMessages('wallets/view/messages')
+        .\Form\label('Name', htmlspecialchars($wallet->name))
         .'<div class="hr"></div>'
-        .Form\label('Balance', amount_html($wallet->balance))
-        .Page\infoText($infoText)
+        .\Form\label('Balance', amount_html($wallet->balance))
+        .\Page\infoText($infoText)
         .create_panel('Transactions', $transactionsContent)
-        .create_panel('Wallet Options', $optionsContent),
-        Page\newItemButton("../new-transaction/?id=$id", 'Transaction')
+        .optionsPanel($id, $user)
+        .\Page\newItemButton("../new-transaction/?id=$id", 'Transaction')
     );
 
 }

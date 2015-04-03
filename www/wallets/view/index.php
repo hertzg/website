@@ -7,10 +7,10 @@ list($wallet, $id, $user) = require_wallet($mysqli);
 $base = '../../';
 $fnsDir = '../../fns';
 
-include_once '../fns/create_view_page.php';
+include_once '../fns/ViewPage/create.php';
 include_once "$fnsDir/compressed_js_script.php";
 $content =
-    create_view_page($mysqli, $user, $wallet)
+    ViewPage\create($mysqli, $user, $wallet)
     .compressed_js_script('confirmDialog', $base)
     .'<script type="text/javascript">'
         .'var deleteHref = '.json_encode("../delete/submit.php?id=$id")
