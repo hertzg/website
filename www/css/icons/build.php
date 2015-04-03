@@ -106,8 +106,9 @@ render($content, 'contact-photo.svg', $names);
 $names = ['rotate-image-cw', 'rotate-image-ccw'];
 render($content, 'edit-image.svg', $names);
 
-$names = ['wallet', 'create-wallet', 'edit-wallet', 'wallets'];
-render($content, 'wallet.svg', $names);
+$names = ['wallet', 'create-wallet',
+    'edit-wallet', 'wallets', 'transfer-amount'];
+render($content, 'wallet.svg?1', $names);
 
 $names = ['transaction', 'create-transaction',
     'edit-transaction', 'transactions'];
