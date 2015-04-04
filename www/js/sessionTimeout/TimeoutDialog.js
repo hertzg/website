@@ -48,7 +48,7 @@ function TimeoutDialog (noHref, yesListener, noListener) {
     var alignerElement = document.createElement('div')
     alignerElement.className = 'confirmDialog-aligner'
 
-    var seconds = 60
+    var seconds = 30
 
     var questionText = 'Your session is about to expire.' +
         ' Whould you like to extend your session?' +
@@ -71,7 +71,7 @@ function TimeoutDialog (noHref, yesListener, noListener) {
     noLink.href = noHref
     noLink.addEventListener('click', function (e) {
         e.preventDefault()
-        noListener()
+        noListener(noHref)
     })
 
     var column1Element = document.createElement('div')
@@ -103,7 +103,9 @@ function TimeoutDialog (noHref, yesListener, noListener) {
 
     addEventListener('keydown', keydownListener)
 
-    var timeout = setTimeout(noListener, seconds * 1000)
+    var timeout = setTimeout(function () {
+        noListener(noHref + '?auto=1')
+    }, seconds * 1000)
 
     return { hide: hide }
 

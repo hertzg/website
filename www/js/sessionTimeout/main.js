@@ -8,14 +8,15 @@
                 time = storedTime
                 setTimeout(check, interval)
             } else {
-                var signOutHref = base + 'sign-out/submit.php'
-                var dialog = TimeoutDialog(signOutHref, schedule, function () {
+                var noHref = base + 'sign-out/submit.php'
+                var noListener = function (signOutHref) {
                     if (time == localStorage.sessionStartTime) {
                         location = signOutHref
                     } else {
                         dialog.hide()
                     }
-                })
+                }
+                var dialog = TimeoutDialog(noHref, schedule, noListener)
             }
         }
 
@@ -25,7 +26,7 @@
 
     }
 
-    var interval = 30 * 1000
+    var interval = 30 * 60 * 1000
     schedule()
 
     ExtendSession(base)
