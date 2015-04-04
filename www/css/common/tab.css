@@ -13,18 +13,20 @@
 .tab-active {
     display: inline-block;
     vertical-align: top;
-    padding: 16px 10px;
+    line-height: 44px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 2px;
     color: #fff;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
     font-weight: bold;
     background-color: #555;
     box-shadow: 0 -16px 16px #444 inset, 0 0 6px rgba(34, 34, 34, 0.6);
     border-radius: 2px 2px 0 0;
-}
-.tab-normal:focus {
     border: 2px solid transparent;
     border-bottom: 0;
-    padding: 14px 8px 16px 8px;
+}
+.tab-normal:focus {
     box-shadow: 0 0 6px rgba(34, 34, 34, 0.6);
 }
 .tab-spacer {
