@@ -5,7 +5,7 @@ process.chdir(__dirname)
 var fs = require('fs'),
     uglifyJs = require('uglify-js')
 
-var files = ['ExtendSession', 'main']
+var files = ['ExtendSession', 'TimeoutDialog', 'main']
 
 var source = '(function () {\n'
 files.forEach(function (file) {

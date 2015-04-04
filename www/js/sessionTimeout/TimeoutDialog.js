@@ -1,33 +1,3 @@
-(function () {
-function ExtendSession (base) {
-
-    function schedule () {
-
-        function check () {
-            var storedTime = localStorage.sessionExtendTime
-            if (storedTime > time) {
-                time = storedTime
-                setTimeout(check, interval)
-            } else {
-                var url = base + 'api-call/session/extend?session_auth=1'
-                var request = new XMLHttpRequest
-                request.open('get', url)
-                request.send()
-                request.onload = schedule
-            }
-        }
-
-        var time = Date.now()
-        localStorage.sessionExtendTime = time
-        setTimeout(check, interval)
-
-    }
-
-    var interval = 5 * 60 * 1000
-    schedule()
-
-}
-;
 function TimeoutDialog (yesListener) {
 
     function hr () {
@@ -134,33 +104,3 @@ function TimeoutDialog (yesListener) {
     var timeout = setTimeout(signOut, seconds * 1000)
 
 }
-;
-(function (base) {
-
-    function schedule () {
-
-        function check () {
-            var storedTime = localStorage.sessionStartTime
-            if (storedTime > time) {
-                time = storedTime
-                setTimeout(check, interval)
-            } else {
-                TimeoutDialog(schedule)
-            }
-        }
-
-        var time = Date.now()
-        localStorage.sessionStartTime = time
-        setTimeout(check, interval)
-
-    }
-
-    var interval = 5 * 1000
-    schedule()
-
-    ExtendSession(base)
-
-})(base)
-;
-
-})()
