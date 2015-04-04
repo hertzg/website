@@ -73,7 +73,6 @@ function echo_page ($user, $title, $content, $base, $options = []) {
             compressed_js_script('confirmDialog', $base)
             .'<script type="text/javascript">'
                 .'var signOutTimeout = '.get_sign_out_timeout().';'
-                .'var signOutHref = '.json_encode("{$base}sign-out/submit.php")
             .'</script>'
             .compressed_js_script('signOutConfirm', $base)
             .compressed_js_script('sessionTimeout', $base);

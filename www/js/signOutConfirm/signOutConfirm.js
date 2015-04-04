@@ -1,4 +1,4 @@
-(function (yesHref, timeoutSeconds) {
+(function (base, timeoutSeconds) {
 
     var timeout
     var dialogShown = false
@@ -11,14 +11,15 @@
         var yesText = 'Yes, sign out'
         var questionText = 'Are you sure you want to sign out?' +
             ' It will automatically sign out in ' + timeoutSeconds + ' seconds.'
-        confirmDialog(questionText, yesText, yesHref, function () {
+        var signOutHref = base + 'sign-out/submit.php'
+        confirmDialog(questionText, yesText, signOutHref, function () {
             dialogShown = false
             clearTimeout(timeout)
         })
         dialogShown = true
         timeout = setTimeout(function () {
-            location = yesHref
+            location = signOutHref + '?auto=1'
         }, timeoutSeconds * 1000)
     })
 
-})(signOutHref, signOutTimeout)
+})(base, signOutTimeout)

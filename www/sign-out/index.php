@@ -23,7 +23,8 @@ $content .= Page\confirmDialog(
 include_once '../fns/compressed_css_link.php';
 $head .=
     compressed_css_link('confirmDialog', $base)
-    ."<meta http-equiv=\"Refresh\" content=\"$timeout; url=submit.php\" />";
+    .'<meta http-equiv="Refresh"'
+    ." content=\"$timeout; url=submit.php?auto=1\" />";
 
 include_once '../fns/echo_page.php';
 echo_page($user, 'Sign Out?', $content, $base, [

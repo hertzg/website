@@ -3,6 +3,9 @@
 include_once '../fns/require_same_domain_referer.php';
 require_same_domain_referer('./');
 
+include_once '../fns/request_strings.php';
+list($auto) = request_strings('auto');
+
 include_once '../fns/session_start_custom.php';
 session_start_custom();
 
@@ -32,7 +35,10 @@ if (array_key_exists('token', $_SESSION)) {
 session_destroy();
 session_start_custom();
 
-$_SESSION['sign-in/messages'] = ['You have been signed out.'];
+if ($auto) $message = 'You have automatically been signed out.';
+else $message = 'You have been signed out.';
+
+$_SESSION['sign-in/messages'] = [$message];
 unset($_SESSION['sign-in/errors']);
 
 include_once '../fns/redirect.php';
