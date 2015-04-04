@@ -49,6 +49,26 @@
         y = Math.max(-90, Math.min(90, y))
     }
 
+    function scaleAt (e, newScale) {
+
+        newScale = Math.max(1, Math.min(maxScale, newScale))
+
+        var mapXY = getMapXY(e, newScale)
+        x -= (mapXY.x - x) * (1 - newScale / scale)
+        y -= (mapXY.y - y) * (1 - newScale / scale)
+        limitXY()
+
+        scale = newScale
+
+        svgElement.classList.remove(scaleClass)
+        scaleClass = getScaleClass(scale)
+        svgElement.classList.add(scaleClass)
+
+        scaleElement.style.transform = 'scale(' + scale + ')'
+        updateTranslate()
+
+    }
+
     function shiftMap (dx, dy) {
 
         var scalingFactor = getScalingFactor()
@@ -71,6 +91,9 @@
     var identifier = null,
         touchX, touchY
 
+    var secondIdentifier = null,
+        secondTouchX, secondTouchY
+
     var map = document.querySelector('.map')
     map.addEventListener('wheel', function (e) {
 
@@ -81,21 +104,8 @@
         if (deltaY > 0) newScale = scale / 1.3
         else if (deltaY < 0) newScale = scale * 1.3
         else return
-        newScale = Math.max(1, Math.min(maxScale, newScale))
 
-        var mapXY = getMapXY(e, newScale)
-        x -= (mapXY.x - x) * (1 - newScale / scale)
-        y -= (mapXY.y - y) * (1 - newScale / scale)
-        limitXY()
-
-        scale = newScale
-
-        svgElement.classList.remove(scaleClass)
-        scaleClass = getScaleClass(scale)
-        svgElement.classList.add(scaleClass)
-
-        scaleElement.style.transform = 'scale(' + scale + ')'
-        updateTranslate()
+        scaleAt(e, newScale)
 
     })
     map.addEventListener('mousedown', function (e) {
@@ -132,33 +142,89 @@
 
     })
     map.addEventListener('touchstart', function (e) {
-        if (identifier !== null) return
-        var touch = e.changedTouches[0]
-        identifier = touch.identifier
-        touchX = touch.clientX
-        touchY = touch.clientY
+        var changedTouches = e.changedTouches
+        var touch
+        if (identifier === null) {
+
+            touch = changedTouches[0]
+            identifier = touch.identifier
+            touchX = touch.clientX
+            touchY = touch.clientY
+
+            if (changedTouches.length > 1) {
+                touch = changedTouches[1]
+                secondIdentifier = touch.identifier
+                secondTouchX = touch.clientX
+                secondTouchY = touch.clientY
+            }
+
+        } else if (secondIdentifier === null) {
+            touch = changedTouches[0]
+            secondIdentifier = touch.identifier
+            secondTouchX = touch.clientX
+            secondTouchY = touch.clientY
+        }
     })
     map.addEventListener('touchmove', function (e) {
         var touches = e.changedTouches
         for (var i = 0; i < touches.length; i++) {
             var touch = touches[i]
-            if (touch.identifier === identifier) {
+            var thisIdentifier = touch.identifier
+            if (thisIdentifier === identifier) {
                 var newTouchX = touch.clientX,
                     newTouchY = touch.clientY
-                shiftMap(newTouchX - touchX, newTouchY - touchY)
+                if (secondIdentifier === null) {
+                    shiftMap(newTouchX - touchX, newTouchY - touchY)
+                } else {
+
+                    var scaleX = (newTouchX - secondTouchX) / (touchX - secondTouchX),
+                        scaleY = (newTouchY - secondTouchY) / (touchY - secondTouchY),
+                        scaleMax = Math.max(scaleX, scaleY)
+
+                    scaleAt({
+                        clientX: (secondTouchX + newTouchX) / 2,
+                        clientY: (secondTouchY + newTouchY) / 2,
+                    }, scale * scaleMax)
+
+                }
                 touchX = newTouchX
                 touchY = newTouchY
-                break
+            } else if (thisIdentifier === secondIdentifier) {
+
+                var newSecondTouchX = touch.clientX,
+                    newSecondTouchY = touch.clientY
+
+                var scaleX = (newSecondTouchX - touchX) / (secondTouchX - touchX),
+                    scaleY = (newSecondTouchY - touchY) / (secondTouchY - touchY),
+                    scaleMax = Math.max(scaleX, scaleY)
+
+                scaleAt({
+                    clientX: (newSecondTouchX + touchX) / 2,
+                    clientY: (newSecondTouchY + touchY) / 2,
+                }, scale * scaleMax)
+
+                secondTouchX = newSecondTouchX
+                secondTouchY = newSecondTouchY
+
             }
         }
     })
     map.addEventListener('touchend', function (e) {
         var touches = e.changedTouches
         for (var i = 0; i < touches.length; i++) {
-            if (touches[i].identifier === identifier) {
-                identifier = null
-                endShift()
-                break
+            var thisIdentifier = touches[i].identifier
+            if (thisIdentifier === identifier) {
+                if (secondIdentifier === null) {
+                    identifier = null
+                    endShift()
+                } else {
+                    identifier = secondIdentifier
+                    touchX = secondTouchX
+                    touchY = secondTouchY
+                    secondIdentifier = null
+                }
+            } else if (thisIdentifier === secondIdentifier) {
+                secondIdentifier = null
             }
         }
     })
