@@ -28,7 +28,12 @@ function ExtendSession (base) {
 
 }
 ;
-function TimeoutDialog (yesListener) {
+function TimeoutDialog (noHref, yesListener, noListener) {
+
+    function hide () {
+        removeEventListener('keydown', keydownListener)
+        body.removeChild(element)
+    }
 
     function hr () {
         var element = document.createElement('div')
@@ -66,20 +71,14 @@ function TimeoutDialog (yesListener) {
         if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return
         if (e.keyCode == 27) {
             e.preventDefault()
-            signOut()
+            noListener()
         }
     }
-
-    function signOut () {
-        location = noHref
-    }
-
-    var noHref = base + 'sign-out/submit.php'
 
     var alignerElement = document.createElement('div')
     alignerElement.className = 'confirmDialog-aligner'
 
-    var seconds = 10
+    var seconds = 60
 
     var questionText = 'Your session is about to expire.' +
         ' Whould you like to extend your session?' +
@@ -93,14 +92,17 @@ function TimeoutDialog (yesListener) {
     yesLink.href = location.href
     yesLink.addEventListener('click', function (e) {
         e.preventDefault()
-        removeEventListener('keydown', keydownListener)
-        body.removeChild(element)
+        hide()
         clearTimeout(timeout)
         yesListener()
     })
 
     var noLink = imageLink('No, sign out', 'no')
     noLink.href = noHref
+    noLink.addEventListener('click', function (e) {
+        e.preventDefault()
+        noListener()
+    })
 
     var column1Element = document.createElement('div')
     column1Element.className = 'twoColumns-column1'
@@ -131,7 +133,9 @@ function TimeoutDialog (yesListener) {
 
     addEventListener('keydown', keydownListener)
 
-    var timeout = setTimeout(signOut, seconds * 1000)
+    var timeout = setTimeout(noListener, seconds * 1000)
+
+    return { hide: hide }
 
 }
 ;
@@ -145,7 +149,14 @@ function TimeoutDialog (yesListener) {
                 time = storedTime
                 setTimeout(check, interval)
             } else {
-                TimeoutDialog(schedule)
+                var signOutHref = base + 'sign-out/submit.php'
+                var dialog = TimeoutDialog(signOutHref, schedule, function () {
+                    if (time == localStorage.sessionStartTime) {
+                        location = signOutHref
+                    } else {
+                        dialog.hide()
+                    }
+                })
             }
         }
 
@@ -155,7 +166,7 @@ function TimeoutDialog (yesListener) {
 
     }
 
-    var interval = 5 * 1000
+    var interval = 30 * 1000
     schedule()
 
     ExtendSession(base)
