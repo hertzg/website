@@ -1,0 +1,1 @@
+!function(){function e(e){function t(){function o(){var a=s;try{a=localStorage.sessionExtendTime}catch(i){}if(a>s)s=a,setTimeout(o,n);else{var c=new XMLHttpRequest;c.open("get",e+"api-call/session/extend?session_auth=1"),c.send(),c.onload=t}}var s=Date.now();try{localStorage.sessionExtendTime=s}catch(a){}setTimeout(o,n)}var n=3e5;t()}!function(t){e(t)}(base)}();

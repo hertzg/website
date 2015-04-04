@@ -18,6 +18,7 @@ function get_revision ($key) {
         'js/lineSizeRounding/compressed.js' => 2,
         'js/removeRecipient/compressed.js' => 1,
         'js/searchForm/compressed.js' => 2,
+        'js/sessionTimeout/compressed.js' => 1,
         'js/signOutConfirm/compressed.js' => 2,
         'js/timezoneLabel/compressed.js' => 6,
         'js/unloadProgress/compressed.js' => 6,

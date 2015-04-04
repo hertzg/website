@@ -75,7 +75,8 @@ function echo_page ($user, $title, $content, $base, $options = []) {
                 .'var signOutTimeout = '.get_sign_out_timeout().';'
                 .'var signOutHref = '.json_encode("{$base}sign-out/submit.php")
             .'</script>'
-            .compressed_js_script('signOutConfirm', $base);
+            .compressed_js_script('signOutConfirm', $base)
+            .compressed_js_script('sessionTimeout', $base);
 
         include_once __DIR__.'/compressed_css_link.php';
         $head .= compressed_css_link('confirmDialog', $base);
