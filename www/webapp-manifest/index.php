@@ -35,6 +35,7 @@ echo json_encode([
         120 => "{$siteBase}zvini-icons/120.png?1",
         128 => "{$siteBase}zvini-icons/128.png?1",
         256 => "{$siteBase}zvini-icons/256.png?1",
+        512 => "{$siteBase}zvini-icons/512.png",
     ],
     'permissions' => [
         'geolocation' => [

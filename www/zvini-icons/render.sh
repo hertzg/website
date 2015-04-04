@@ -13,3 +13,4 @@ render 90
 render 120
 render 128
 render 256
+render 512
