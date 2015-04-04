@@ -16,5 +16,7 @@ unset($_SESSION['account/tokens/errors']);
 $message = 'All remembered sessions have been deleted.';
 $_SESSION['account/tokens/messages'] = [$message];
 
+unset($_SESSION['token']);
+
 include_once "$fnsDir/redirect.php";
 redirect('..');

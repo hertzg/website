@@ -12,6 +12,9 @@ list($token, $id, $user) = require_token($mysqli);
 include_once "$fnsDir/Users/Tokens/delete.php";
 Users\Tokens\delete($mysqli, $token);
 
+if (array_key_exists('token', $_SESSION) &&
+    $_SESSION['token']->id == $id) unset($_SESSION['token']);
+
 unset($_SESSION['account/tokens/errors']);
 $_SESSION['account/tokens/messages'] = ['Remembered session has been deleted.'];
 
