@@ -74,8 +74,11 @@ function echo_page ($user, $title, $content, $base, $options = []) {
             .'<script type="text/javascript">'
                 .'var signOutTimeout = '.get_sign_out_timeout().';'
             .'</script>'
-            .compressed_js_script('signOutConfirm', $base)
-            .compressed_js_script('sessionTimeout', $base);
+            .compressed_js_script('signOutConfirm', $base);
+
+        if (!array_key_exists('token', $_SESSION)) {
+            $body .= compressed_js_script('sessionTimeout', $base);
+        }
 
         include_once __DIR__.'/compressed_css_link.php';
         $head .= compressed_css_link('confirmDialog', $base);
