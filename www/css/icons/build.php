@@ -50,9 +50,9 @@ render($content, 'folder.svg?5', $names);
 $names = ['move-up', 'move-to-top', 'move-down', 'move-to-bottom'];
 render($content, 'move.svg?1', $names);
 
-$names = ['note', 'create-note',
-    'edit-note', 'encrypted-note', 'notes', 'import-note'];
-render($content, 'note.svg?3', $names);
+$names = ['note', 'create-note', 'edit-note',
+    'encrypted-note', 'notes', 'import-note', 'duplicate-note'];
+render($content, 'note.svg?4', $names);
 
 $names = ['place', 'create-place', 'edit-place',
     'places', 'import-place', 'place-on-earth'];

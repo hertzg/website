@@ -13,6 +13,13 @@ function optionsPanel ($note) {
     $editLink = \Page\imageArrowLink('Edit',
         "../edit/$escapedItemQuery", 'edit-note', ['id' => 'edit']);
 
+    $params = ['text' => $note->text];
+    $tags = $note->tags;
+    if ($tags !== '') $params['tags'] = $tags;
+    if ($note->encrypt) $params['encrypt'] = '1';
+    $href = '../new/?'.htmlspecialchars(http_build_query($params));
+    $duplicateLink = \Page\imageArrowLink('Duplicate', $href, 'duplicate-note');
+
     $sendLink = \Page\imageArrowLink('Send',
         "../send/$escapedItemQuery", 'send', ['id' => 'send']);
 
@@ -29,9 +36,11 @@ function optionsPanel ($note) {
     include_once "$fnsDir/Page/staticTwoColumns.php";
     include_once "$fnsDir/Page/twoColumns.php";
     $content =
-        \Page\staticTwoColumns($editLink, $sendLink)
+        \Page\staticTwoColumns($editLink, $duplicateLink)
         .'<div class="hr"></div>'
-        .\Page\twoColumns($sendViaSmsLink, $deleteLink);
+        .\Page\twoColumns($sendLink, $sendViaSmsLink)
+        .'<div class="hr"></div>'
+        .$deleteLink;
 
     include_once "$fnsDir/create_panel.php";
     return create_panel('Note Options', $content);
