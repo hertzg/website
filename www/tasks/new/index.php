@@ -10,14 +10,19 @@ $key = 'tasks/new/values';
 if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];
 } else {
+
+    include_once '../../fns/Tasks/request.php';
+    list($text, $top_priority) = Tasks\request();
+
     $values = [
-        'text' => '',
+        'text' => $text,
         'deadline_day' => 0,
         'deadline_month' => 0,
         'deadline_year' => 0,
         'tags' => '',
-        'top_priority' => false,
+        'top_priority' => $top_priority,
     ];
+
 }
 
 unset(

@@ -20,9 +20,9 @@ include_once '../../../lib/cli.php';
 $names = ['api-key', 'create-api-key', 'edit-api-key', 'api-keys'];
 render($content, 'api-key.svg?1', $names);
 
-$names = ['bookmark', 'create-bookmark',
-    'edit-bookmark', 'bookmarks', 'import-bookmark'];
-render($content, 'bookmark.svg?2', $names);
+$names = ['bookmark', 'create-bookmark', 'edit-bookmark',
+    'bookmarks', 'import-bookmark', 'duplicate-bookmark'];
+render($content, 'bookmark.svg?3', $names);
 
 $names = ['channel', 'create-channel', 'edit-channel', 'locked-channel',
     'inactive-channel', 'create-inactive-channel', 'edit-inactive-channel',
@@ -33,8 +33,8 @@ $names = ['connection', 'create-connection', 'edit-connection', 'connections'];
 render($content, 'connection.svg?1', $names);
 
 $names = ['contact', 'create-contact', 'edit-contact',
-    'favorite-contact', 'contacts', 'import-contact'];
-render($content, 'contact.svg?2', $names);
+    'favorite-contact', 'contacts', 'import-contact', 'duplicate-contact'];
+render($content, 'contact.svg?3', $names);
 
 $names = ['event', 'create-event', 'edit-event', 'events'];
 render($content, 'event.svg?1', $names);
@@ -79,9 +79,9 @@ $names = ['subscribed-channel', 'create-subscribed-channel',
     'inactive-subscribed-channel', 'subscribed-channels'];
 render($content, 'subscribed-channel.svg?1', $names);
 
-$names = ['task', 'create-task',
-    'edit-task', 'task-top-priority', 'tasks', 'import-task'];
-render($content, 'task.svg?2', $names);
+$names = ['task', 'create-task', 'edit-task',
+    'task-top-priority', 'tasks', 'import-task', 'duplicate-task'];
+render($content, 'task.svg?3', $names);
 
 $names = ['blue-theme', 'green-theme', 'orange-theme', 'pink-theme',
     'edit-blue-theme', 'edit-green-theme', 'edit-orange-theme',

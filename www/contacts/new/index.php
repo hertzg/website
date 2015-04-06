@@ -11,24 +11,25 @@ if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];
 } else {
 
-    include_once "$fnsDir/request_strings.php";
-    list($email, $phone1) = request_strings('email', 'phone1');
+    include_once "$fnsDir/Contacts/request.php";
+    list($full_name, $alias, $address, $email, $phone1,
+        $phone2, $username, $timezone, $notes, $favorite) = Contacts\request();
 
     $values = [
-        'full_name' => '',
-        'alias' => '',
-        'address' => '',
+        'full_name' => $full_name,
+        'alias' => $alias,
+        'address' => $address,
         'email' => $email,
         'phone1' => $phone1,
-        'phone2' => '',
+        'phone2' => $phone2,
         'birthday_day' => 0,
         'birthday_month' => 0,
         'birthday_year' => 0,
-        'username' => '',
-        'timezone' => null,
+        'username' => $username,
+        'timezone' => $timezone,
         'tags' => '',
-        'notes' => '',
-        'favorite' => false,
+        'notes' => $notes,
+        'favorite' => $favorite,
     ];
 }
 
