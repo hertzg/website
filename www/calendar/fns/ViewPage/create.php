@@ -12,6 +12,12 @@ function create ($user, $event) {
     $editLink = \Page\imageArrowLink('Edit',
         "../edit-event/?id=$id", 'edit-event', ['id' => 'edit']);
 
+    $href = '../new-event/?'.htmlspecialchars(http_build_query([
+        'event_time' => $event_time,
+        'text' => $event->text,
+    ]));
+    $duplicateLink = \Page\imageArrowLink('Duplicate', $href, 'duplicate-event');
+
     include_once "$fnsDir/Page/imageLink.php";
     $deleteLink =
         '<div id="deleteLink">'
@@ -19,7 +25,10 @@ function create ($user, $event) {
         .'</div>';
 
     include_once "$fnsDir/Page/staticTwoColumns.php";
-    $optionsContent = \Page\staticTwoColumns($editLink, $deleteLink);
+    $optionsContent =
+        \Page\staticTwoColumns($editLink, $duplicateLink)
+        .'<div class="hr"></div>'
+        .$deleteLink;
 
     include_once "$fnsDir/user_time_today.php";
     $user_time_today = user_time_today($user);
