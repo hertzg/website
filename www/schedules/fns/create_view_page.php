@@ -3,18 +3,20 @@
 function create_view_page ($user, $schedule) {
 
     $id = $schedule->id;
+    $text = $schedule->text;
+    $interval = $schedule->interval;
+    $offset = $schedule->offset;
     $fnsDir = __DIR__.'/../../fns';
 
     include_once "$fnsDir/create_text_item.php";
     include_once "$fnsDir/Form/label.php";
     $items = [
-        create_text_item($schedule->text, '../../'),
-        Form\label('Repeats in every', "$schedule->interval days"),
+        create_text_item($text, '../../'),
+        Form\label('Repeats in every', "$interval days"),
     ];
 
     include_once "$fnsDir/days_left_from_today.php";
-    $days_left = days_left_from_today($user,
-        $schedule->interval, $schedule->offset);
+    $days_left = days_left_from_today($user, $interval, $offset);
 
     include_once __DIR__.'/format_days_left.php';
     $next = format_days_left($user, $days_left);
@@ -32,6 +34,17 @@ function create_view_page ($user, $schedule) {
     include_once "$fnsDir/Page/imageArrowLink.php";
     $editLink = Page\imageArrowLink('Edit',
         "../edit/$escapedItemQuery", 'edit-schedule', ['id' => 'edit']);
+
+    $params = [
+        'text' => $text,
+        'interval' => $interval,
+        'offset' => $offset,
+    ];
+    $tags = $schedule->tags;
+    if ($tags !== '') $params['tags'] = $tags;
+    $href = '../new/?'.htmlspecialchars(http_build_query($params));
+    $duplicateLink = Page\imageArrowLink(
+        'Duplicate', $href, 'duplicate-schedule');
 
     include_once "$fnsDir/Page/imageLink.php";
     $href = "../delete/$escapedItemQuery";
@@ -71,7 +84,9 @@ function create_view_page ($user, $schedule) {
         .Page\infoText($infoText)
         .create_panel(
             'Schedule Options',
-            Page\staticTwoColumns($editLink, $deleteLink)
+            Page\staticTwoColumns($editLink, $duplicateLink)
+            .'<div class="hr"></div>'
+            .$deleteLink
         ),
         create_new_item_button('Schedule', '../')
     );
