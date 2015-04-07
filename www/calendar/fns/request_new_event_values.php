@@ -5,7 +5,12 @@ function request_new_event_values ($key) {
         $values = $_SESSION[$key];
     } else {
 
-        include_once __DIR__.'/../../fns/request_strings.php';
+        $fnsDir = __DIR__.'/../../fns';
+
+        include_once "$fnsDir/Events/request.php";
+        list($event_time, $text) = Events\request();
+
+        include_once "$fnsDir/request_strings.php";
         list($year, $month, $day) = request_strings('year', 'month', 'day');
 
         $day = abs((int)$day);
@@ -20,7 +25,7 @@ function request_new_event_values ($key) {
             'event_day' => $day,
             'event_month' => $month,
             'event_year' => $year,
-            'text' => '',
+            'text' => $text,
         ];
 
     }
