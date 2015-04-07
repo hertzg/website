@@ -7,7 +7,7 @@ include_once 'fns/require_event.php';
 $event = require_event($mysqli, $user);
 
 include_once 'fns/request_event_params.php';
-list($text, $event_time) = request_event_params();
+list($event_time, $text) = request_event_params();
 
 include_once '../../fns/Users/Events/edit.php';
 Users\Events\edit($mysqli, $user, $event, $text, $event_time, $apiKey);

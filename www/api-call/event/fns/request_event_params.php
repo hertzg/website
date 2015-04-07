@@ -12,6 +12,6 @@ function request_event_params () {
         bad_request('ENTER_TEXT');
     }
 
-    return [$text, $event_time];
+    return [$event_time, $text];
 
 }
