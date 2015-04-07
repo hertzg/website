@@ -11,12 +11,12 @@ if (array_key_exists($key, $_SESSION)) {
 } else {
 
     include_once '../../fns/Bookmarks/request.php';
-    list($url, $title) = Bookmarks\request();
+    list($url, $title, $tags) = Bookmarks\request();
 
     $values = [
         'url' => $url,
         'title' => $title,
-        'tags' => '',
+        'tags' => $tags,
     ];
 
 }
