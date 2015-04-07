@@ -4,8 +4,8 @@ function create_content ($mysqli, $user,
     $timeSelected, $monthSelected, $daySelected, $eventItems) {
 
     $fnsDir = __DIR__.'/../../fns';
-    $yearParam = 'year='.date('Y', $timeSelected);
-    $queryString = "?$yearParam&amp;month=$monthSelected&amp;day=$daySelected";
+    $jumpHref = 'jump-to/?year='.date('Y', $timeSelected)
+        ."&amp;month=$monthSelected&amp;day=$daySelected";
 
     include_once __DIR__.'/create_calendar.php';
     include_once "$fnsDir/create_calendar_icon_today.php";
@@ -27,7 +27,7 @@ function create_content ($mysqli, $user,
             Page\sessionErrors('calendar/errors')
             .Page\sessionMessages('calendar/messages')
             .create_calendar($mysqli, $user->id_users, $timeSelected),
-            Page\newItemButton("new-event/$queryString", 'Event')
+            Page\newItemButton("new-event/?event_time=$timeSelected", 'Event')
         )
         .create_panel(
             'Events on '.date('F d, Y', $timeSelected),
@@ -35,8 +35,8 @@ function create_content ($mysqli, $user,
         )
         .create_panel(
             'Options',
-            Page\imageArrowLink('Jump To',
-                "jump-to/$queryString", 'calendar', ['id' => 'jump-to'])
+            Page\imageArrowLink('Jump To', $jumpHref,
+                'calendar', ['id' => 'jump-to'])
             .'<div class="hr"></div>'
             .'<a href="./" class="clickable link image_link">'
                 .'<div class="image_link-icon">'

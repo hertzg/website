@@ -31,13 +31,8 @@ function create_view_page ($user, $event) {
     include_once "$fnsDir/user_time_today.php";
     $user_time_today = user_time_today($user);
 
-    if ($event_time != $user_time_today) {
-        $queryString = '?year='.date('Y', $event_time)
-            .'&amp;month='.date('n', $event_time)
-            .'&amp;day='.date('j', $event_time);
-    } else {
-        $queryString = '';
-    }
+    if ($event_time == $user_time_today) $newEventQuery = '';
+    else $newEventQuery = "?event_time=$event_time";
 
     include_once __DIR__.'/../../fns/ViewPage/viewContent.php';
     include_once "$fnsDir/create_panel.php";
@@ -55,7 +50,7 @@ function create_view_page ($user, $event) {
             "Event #$id",
             Page\sessionMessages('calendar/all-events/view/messages')
             .ViewPage\viewContent($event),
-            Page\newItemButton("../new/$queryString", 'Event')
+            Page\newItemButton("../new/$newEventQuery", 'Event')
         )
         .create_panel('Event Options', $optionsContent);
 
