@@ -1,6 +1,6 @@
 <?php
 
-function create_image_link ($content, $href, $iconName, array $options = []) {
+function create_image_link ($content, $href, $iconName, $options = []) {
 
     if (array_key_exists('id', $options)) {
         $idAttribute = " id=\"$options[id]\"";

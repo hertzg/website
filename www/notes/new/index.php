@@ -9,11 +9,16 @@ $key = 'notes/new/values';
 if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];
 } else {
+
+    include_once '../../fns/Notes/request.php';
+    list($text, $tags, $encrypt) = Notes\request();
+
     $values = [
-        'text' => '',
-        'tags' => '',
-        'encrypt' => false,
+        'text' => $text,
+        'tags' => $tags,
+        'encrypt' => $encrypt,
     ];
+
 }
 
 unset(

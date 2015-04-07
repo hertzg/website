@@ -11,24 +11,34 @@ if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];
 } else {
 
-    include_once "$fnsDir/request_strings.php";
-    list($email, $phone1) = request_strings('email', 'phone1');
+    include_once "$fnsDir/Contacts/request.php";
+    list($full_name, $alias, $address, $email,
+        $phone1, $phone2, $birthday_time, $username,
+        $timezone, $tags, $notes, $favorite) = Contacts\request();
+
+    if ($birthday_time === null) {
+        $birthday_day = $birthday_month = $birthday_year = 0;
+    } else {
+        $birthday_day = date('j', $birthday_time);
+        $birthday_month = date('n', $birthday_time);
+        $birthday_year = date('Y', $birthday_time);
+    }
 
     $values = [
-        'full_name' => '',
-        'alias' => '',
-        'address' => '',
+        'full_name' => $full_name,
+        'alias' => $alias,
+        'address' => $address,
         'email' => $email,
         'phone1' => $phone1,
-        'phone2' => '',
-        'birthday_day' => 0,
-        'birthday_month' => 0,
-        'birthday_year' => 0,
-        'username' => '',
-        'timezone' => null,
-        'tags' => '',
-        'notes' => '',
-        'favorite' => false,
+        'phone2' => $phone2,
+        'birthday_day' => $birthday_day,
+        'birthday_month' => $birthday_month,
+        'birthday_year' => $birthday_year,
+        'username' => $username,
+        'timezone' => $timezone,
+        'tags' => $tags,
+        'notes' => $notes,
+        'favorite' => $favorite,
     ];
 }
 

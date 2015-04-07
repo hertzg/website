@@ -2,7 +2,7 @@
 
 namespace Form;
 
-function notes (array $notes) {
+function notes ($notes) {
     $ul = '<ul class="form-notes">';
     foreach ($notes as $note) {
         $ul .= "<li>$note</li>";

@@ -3,7 +3,7 @@
 function require_bookmark_params () {
 
     include_once __DIR__.'/../../../fns/Bookmarks/request.php';
-    list($url, $title) = Bookmarks\request();
+    list($url, $title, $tags) = Bookmarks\request();
 
     if ($url === '') {
         include_once __DIR__.'/../../fns/bad_request.php';

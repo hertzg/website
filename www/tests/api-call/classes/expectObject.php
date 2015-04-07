@@ -1,7 +1,7 @@
 <?php
 
 trait expectObject {
-    function expectObject ($variableName, array $properties, $object) {
+    function expectObject ($variableName, $properties, $object) {
         $this->expectType($variableName, 'object', $object);
         foreach ($properties as $property) {
             if (!property_exists($object, $property)) {

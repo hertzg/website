@@ -2,7 +2,7 @@
 
 namespace Notifications;
 
-function editSubscribedChannels ($mysqli, array $ids, $channel_name) {
+function editSubscribedChannels ($mysqli, $ids, $channel_name) {
     $ids = join(', ', $ids);
     $channel_name = $mysqli->real_escape_string($channel_name);
     $sql = "update notifications set channel_name = '$channel_name'"

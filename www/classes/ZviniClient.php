@@ -10,7 +10,7 @@ class ZviniClient {
         $this->base = "$siteProtocol://$domainName{$siteBase}api-call/";
     }
 
-    function call ($method, array $params) {
+    function call ($method, $params) {
         $params['api_key'] = $this->api_key;
         $ch = curl_init();
         curl_setopt_array($ch, [

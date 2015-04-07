@@ -12,6 +12,12 @@ function create ($user, $event) {
     $editLink = \Page\imageArrowLink('Edit',
         "../edit-event/?id=$id", 'edit-event', ['id' => 'edit']);
 
+    $href = '../new-event/?'.htmlspecialchars(http_build_query([
+        'event_time' => $event_time,
+        'text' => $event->text,
+    ]));
+    $duplicateLink = \Page\imageArrowLink('Duplicate', $href, 'duplicate-event');
+
     include_once "$fnsDir/Page/imageLink.php";
     $deleteLink =
         '<div id="deleteLink">'
@@ -19,17 +25,21 @@ function create ($user, $event) {
         .'</div>';
 
     include_once "$fnsDir/Page/staticTwoColumns.php";
-    $optionsContent = \Page\staticTwoColumns($editLink, $deleteLink);
+    $optionsContent =
+        \Page\staticTwoColumns($editLink, $duplicateLink)
+        .'<div class="hr"></div>'
+        .$deleteLink;
 
     include_once "$fnsDir/user_time_today.php";
     $user_time_today = user_time_today($user);
 
-    if ($event_time != $user_time_today) {
-        $queryString = '?year='.date('Y', $event_time)
+    if ($event_time == $user_time_today) {
+        $calendarQuery = $newEventQuery = '';
+    } else {
+        $calendarQuery = '?year='.date('Y', $event_time)
             .'&amp;month='.date('n', $event_time)
             .'&amp;day='.date('j', $event_time);
-    } else {
-        $queryString = '';
+        $newEventQuery = "?event_time=$event_time";
     }
 
     include_once __DIR__.'/viewContent.php';
@@ -42,13 +52,13 @@ function create ($user, $event) {
             [
                 [
                     'title' => 'Calendar',
-                    'href' => "../$queryString#$id",
+                    'href' => "../$calendarQuery#$id",
                 ],
             ],
             "Event #$id",
             \Page\sessionMessages('calendar/view-event/messages')
             .viewContent($event),
-            \Page\newItemButton("../new-event/$queryString", 'Event')
+            \Page\newItemButton("../new-event/$newEventQuery", 'Event')
         )
         .create_panel('Event Options', $optionsContent);
 

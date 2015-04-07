@@ -12,6 +12,16 @@ function create ($transaction) {
     $editLink = \Page\imageArrowLink('Edit',
         "../edit-transaction/?id=$id", 'edit-transaction', ['id' => 'edit']);
 
+    $params = [
+        'id' => $id_wallets,
+        'amount' => $transaction->amount,
+    ];
+    $description = $transaction->description;
+    if ($description !== '') $params['description'] = $description;
+    $href = '../new-transaction/?'.htmlspecialchars(http_build_query($params));
+    $duplicateLink = \Page\imageArrowLink(
+        'Duplicate', $href, 'duplicate-transaction');
+
     include_once "$fnsDir/Page/imageLink.php";
     $deleteLink =
         '<div id="deleteLink">'
@@ -20,7 +30,10 @@ function create ($transaction) {
         .'</div>';
 
     include_once "$fnsDir/Page/staticTwoColumns.php";
-    $optionsContent = \Page\staticTwoColumns($editLink, $deleteLink);
+    $optionsContent =
+        \Page\staticTwoColumns($editLink, $duplicateLink)
+        .'<div class="hr"></div>'
+        .$deleteLink;
 
     unset(
         $_SESSION['wallets/edit-transaction/errors'],

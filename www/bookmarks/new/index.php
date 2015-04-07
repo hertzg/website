@@ -9,11 +9,16 @@ $key = 'bookmarks/new/values';
 if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];
 } else {
+
+    include_once '../../fns/Bookmarks/request.php';
+    list($url, $title, $tags) = Bookmarks\request();
+
     $values = [
-        'url' => '',
-        'title' => '',
-        'tags' => '',
+        'url' => $url,
+        'title' => $title,
+        'tags' => $tags,
     ];
+
 }
 
 unset(

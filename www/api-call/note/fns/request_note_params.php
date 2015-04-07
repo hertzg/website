@@ -3,7 +3,7 @@
 function request_note_params () {
 
     include_once __DIR__.'/../../../fns/Notes/request.php';
-    list($text, $encrypt) = Notes\request();
+    list($text, $tags, $encrypt) = Notes\request();
 
     if ($text === '') {
         include_once __DIR__.'/../../fns/bad_request.php';

@@ -13,6 +13,15 @@ function optionsPanel ($task) {
     $editLink = \Page\imageArrowLink('Edit',
         "../edit/$escapedItemQuery", 'edit-task', ['id' => 'edit']);
 
+    $params = ['text' => $task->text];
+    $tags = $task->tags;
+    if ($tags !== '') $params['tags'] = $tags;
+    $deadline_time= $task->deadline_time;
+    if ($deadline_time !== null) $params['deadline_time'] = $deadline_time;
+    if ($task->top_priority) $params['top_priority'] = '1';
+    $href = '../new/?'.htmlspecialchars(http_build_query($params));
+    $duplicateLink = \Page\imageArrowLink('Duplicate', $href, 'duplicate-task');
+
     $sendLink = \Page\imageArrowLink('Send',
         "../send/$escapedItemQuery", 'send', ['id' => 'send']);
 
@@ -29,9 +38,11 @@ function optionsPanel ($task) {
     include_once "$fnsDir/Page/staticTwoColumns.php";
     include_once "$fnsDir/Page/twoColumns.php";
     $content =
-        \Page\staticTwoColumns($editLink, $sendLink)
+        \Page\staticTwoColumns($editLink, $duplicateLink)
         .'<div class="hr"></div>'
-        .\Page\twoColumns($sendViaSmsLink, $deleteLink);
+        .\Page\twoColumns($sendLink, $sendViaSmsLink)
+        .'<div class="hr"></div>'
+        .$deleteLink;
 
     include_once "$fnsDir/create_panel.php";
     return create_panel('Task Options', $content);

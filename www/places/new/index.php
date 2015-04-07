@@ -10,13 +10,19 @@ $key = 'places/new/values';
 if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];
 } else {
+
+    include_once "$fnsDir/Places/request.php";
+    list($latitude, $longitude, $altitude, $name,
+        $description, $tags, $parsed_latitude, $parsed_longitude,
+        $parsed_altitude) = Places\request();
+
     $values = [
-        'latitude' => '',
-        'longitude' => '',
-        'altitude' => '',
-        'name' => '',
-        'description' => '',
-        'tags' => '',
+        'latitude' => $latitude,
+        'longitude' => $longitude,
+        'altitude' => $altitude,
+        'name' => $name,
+        'description' => $description,
+        'tags' => $tags,
     ];
 }
 

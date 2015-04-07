@@ -7,7 +7,7 @@ include_once "$fnsDir/require_user.php";
 $user = require_user($base);
 
 include_once '../../fns/request_new_event_values.php';
-$values = request_new_event_values('calendar/all-events/new/values');
+$values = request_new_event_values('calendar/all-events/new/values', $user);
 
 unset(
     $_SESSION['calendar/all-events/errors'],

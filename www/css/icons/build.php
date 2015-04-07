@@ -20,9 +20,9 @@ include_once '../../../lib/cli.php';
 $names = ['api-key', 'create-api-key', 'edit-api-key', 'api-keys'];
 render($content, 'api-key.svg?1', $names);
 
-$names = ['bookmark', 'create-bookmark',
-    'edit-bookmark', 'bookmarks', 'import-bookmark'];
-render($content, 'bookmark.svg?2', $names);
+$names = ['bookmark', 'create-bookmark', 'edit-bookmark',
+    'bookmarks', 'import-bookmark', 'duplicate-bookmark'];
+render($content, 'bookmark.svg?3', $names);
 
 $names = ['channel', 'create-channel', 'edit-channel', 'locked-channel',
     'inactive-channel', 'create-inactive-channel', 'edit-inactive-channel',
@@ -33,11 +33,11 @@ $names = ['connection', 'create-connection', 'edit-connection', 'connections'];
 render($content, 'connection.svg?1', $names);
 
 $names = ['contact', 'create-contact', 'edit-contact',
-    'favorite-contact', 'contacts', 'import-contact'];
-render($content, 'contact.svg?2', $names);
+    'favorite-contact', 'contacts', 'import-contact', 'duplicate-contact'];
+render($content, 'contact.svg?3', $names);
 
-$names = ['event', 'create-event', 'edit-event', 'events'];
-render($content, 'event.svg?1', $names);
+$names = ['event', 'create-event', 'edit-event', 'events', 'duplicate-event'];
+render($content, 'event.svg?2', $names);
 
 $names = ['unknown-file', 'audio-file', 'image-file', 'video-file',
     'text-file', 'files', 'copy-file', 'move-file', 'import-file'];
@@ -50,13 +50,13 @@ render($content, 'folder.svg?5', $names);
 $names = ['move-up', 'move-to-top', 'move-down', 'move-to-bottom'];
 render($content, 'move.svg?1', $names);
 
-$names = ['note', 'create-note',
-    'edit-note', 'encrypted-note', 'notes', 'import-note'];
-render($content, 'note.svg?3', $names);
+$names = ['note', 'create-note', 'edit-note',
+    'encrypted-note', 'notes', 'import-note', 'duplicate-note'];
+render($content, 'note.svg?4', $names);
 
 $names = ['place', 'create-place', 'edit-place',
-    'places', 'import-place', 'place-on-earth'];
-render($content, 'place.svg?1', $names);
+    'places', 'import-place', 'duplicate-place', 'place-on-earth'];
+render($content, 'place.svg?2', $names);
 
 $names = ['point', 'create-point', 'edit-point', 'points'];
 render($content, 'point.svg', $names);
@@ -72,16 +72,17 @@ $names = ['account', 'edit-profile', 'download', 'upload', 'feedback',
     'receive-notifications', 'generic', 'slideshow', 'locate'];
 render($content, 'other.svg?14', $names);
 
-$names = ['schedule', 'create-schedule', 'edit-schedule', 'schedules'];
-render($content, 'schedule.svg?1', $names);
+$names = ['schedule', 'create-schedule',
+    'edit-schedule', 'schedules', 'duplicate-schedule'];
+render($content, 'schedule.svg?2', $names);
 
 $names = ['subscribed-channel', 'create-subscribed-channel',
     'inactive-subscribed-channel', 'subscribed-channels'];
 render($content, 'subscribed-channel.svg?1', $names);
 
-$names = ['task', 'create-task',
-    'edit-task', 'task-top-priority', 'tasks', 'import-task'];
-render($content, 'task.svg?2', $names);
+$names = ['task', 'create-task', 'edit-task',
+    'task-top-priority', 'tasks', 'import-task', 'duplicate-task'];
+render($content, 'task.svg?3', $names);
 
 $names = ['blue-theme', 'green-theme', 'orange-theme', 'pink-theme',
     'edit-blue-theme', 'edit-green-theme', 'edit-orange-theme',
@@ -111,8 +112,8 @@ $names = ['wallet', 'create-wallet',
 render($content, 'wallet.svg?1', $names);
 
 $names = ['transaction', 'create-transaction',
-    'edit-transaction', 'transactions'];
-render($content, 'transaction.svg', $names);
+    'edit-transaction', 'transactions', 'duplicate-transaction'];
+render($content, 'transaction.svg?1', $names);
 
 render($content, 'protocol.svg', ['protocol']);
 
