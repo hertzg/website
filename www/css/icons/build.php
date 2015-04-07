@@ -112,8 +112,8 @@ $names = ['wallet', 'create-wallet',
 render($content, 'wallet.svg?1', $names);
 
 $names = ['transaction', 'create-transaction',
-    'edit-transaction', 'transactions'];
-render($content, 'transaction.svg', $names);
+    'edit-transaction', 'transactions', 'duplicate-transaction'];
+render($content, 'transaction.svg?1', $names);
 
 render($content, 'protocol.svg', ['protocol']);
 
