@@ -12,13 +12,21 @@ if (array_key_exists($key, $_SESSION)) {
 } else {
 
     include_once '../../fns/Tasks/request.php';
-    list($text, $tags, $top_priority) = Tasks\request();
+    list($text, $deadline_time, $tags, $top_priority) = Tasks\request();
+
+    if ($deadline_time === null) {
+        $deadline_day = $deadline_month = $deadline_year = 0;
+    } else {
+        $deadline_day = date('j', $deadline_time);
+        $deadline_month = date('n', $deadline_time);
+        $deadline_year = date('Y', $deadline_time);
+    }
 
     $values = [
         'text' => $text,
-        'deadline_day' => 0,
-        'deadline_month' => 0,
-        'deadline_year' => 0,
+        'deadline_day' => $deadline_day,
+        'deadline_month' => $deadline_month,
+        'deadline_year' => $deadline_year,
         'tags' => $tags,
         'top_priority' => $top_priority,
     ];

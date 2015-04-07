@@ -5,18 +5,16 @@ function request_task_params ($user) {
     $fnsDir = __DIR__.'/../../../fns';
 
     include_once "$fnsDir/Tasks/request.php";
-    list($text, $tags, $top_priority) = Tasks\request();
+    list($text, $deadline_time, $tags, $top_priority) = Tasks\request();
 
-    include_once "$fnsDir/request_strings.php";
-    list($deadline_time) = request_strings('deadline_time');
+    if ($deadline_time !== null) {
 
-    if ($deadline_time === '') {
-        $deadline_time = null;
-    } else {
         include_once "$fnsDir/daytime.php";
         $deadline_time = daytime($deadline_time);
+
         include_once "$fnsDir/user_time_today.php";
         $deadline_time = max($deadline_time, user_time_today($user));
+
     }
 
     if ($text === '') {
