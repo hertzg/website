@@ -8,18 +8,26 @@ function request_new_event_values ($key) {
         $fnsDir = __DIR__.'/../../fns';
 
         include_once "$fnsDir/Events/request.php";
-        list($event_time, $text) = Events\request();
+        list($event_time, $text, $raw_event_time) = Events\request();
 
-        include_once "$fnsDir/request_strings.php";
-        list($year, $month, $day) = request_strings('year', 'month', 'day');
+        if ($raw_event_time === '') {
 
-        $day = abs((int)$day);
-        $month = abs((int)$month);
-        $year = abs((int)$year);
+            include_once "$fnsDir/request_strings.php";
+            list($year, $month, $day) = request_strings('year', 'month', 'day');
 
-        if ($year === 0) $year = (int)date('Y');
-        if ($month === 0) $month = (int)date('n');
-        if ($day === 0) $day = (int)date('j');
+            $day = abs((int)$day);
+            $month = abs((int)$month);
+            $year = abs((int)$year);
+
+            if ($year === 0) $year = (int)date('Y');
+            if ($month === 0) $month = (int)date('n');
+            if ($day === 0) $day = (int)date('j');
+
+        } else {
+            $year = (int)date('Y', $event_time);
+            $month = (int)date('n', $event_time);
+            $day = (int)date('j', $event_time);
+        }
 
         $values = [
             'event_day' => $day,
