@@ -11,11 +11,11 @@ if (array_key_exists($key, $_SESSION)) {
 } else {
 
     include_once '../../fns/Notes/request.php';
-    list($text, $encrypt) = Notes\request();
+    list($text, $tags, $encrypt) = Notes\request();
 
     $values = [
         'text' => $text,
-        'tags' => '',
+        'tags' => $tags,
         'encrypt' => $encrypt,
     ];
 
