@@ -7,10 +7,12 @@ function request () {
     $fnsDir = __DIR__.'/..';
 
     include_once "$fnsDir/request_strings.php";
-    list($full_name, $alias, $address, $email, $phone1,
-        $phone2, $username, $timezone, $tags, $favorite) = request_strings(
-        'full_name', 'alias', 'address', 'email', 'phone1',
-        'phone2', 'username', 'timezone', 'tags', 'favorite');
+    list($full_name, $alias, $address, $email,
+        $phone1, $phone2, $birthday_time, $username,
+        $timezone, $tags, $favorite) = request_strings(
+        'full_name', 'alias', 'address', 'email',
+        'phone1', 'phone2', 'birthday_time', 'username',
+        'timezone', 'tags', 'favorite');
 
     include_once "$fnsDir/str_collapse_spaces.php";
     $full_name = str_collapse_spaces($full_name);
@@ -19,6 +21,7 @@ function request () {
     $email = str_collapse_spaces($email);
     $phone1 = str_collapse_spaces($phone1);
     $phone2 = str_collapse_spaces($phone2);
+    if ($birthday_time === '') $birthday_time = null;
     $username = str_collapse_spaces($username);
     $tags = str_collapse_spaces($tags);
 
@@ -33,7 +36,7 @@ function request () {
 
     $favorite = (bool)$favorite;
 
-    return [$full_name, $alias, $address, $email, $phone1,
-        $phone2, $username, $timezone, $tags, $notes, $favorite];
+    return [$full_name, $alias, $address, $email, $phone1, $phone2,
+        $birthday_time, $username, $timezone, $tags, $notes, $favorite];
 
 }
