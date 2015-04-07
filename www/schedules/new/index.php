@@ -15,11 +15,16 @@ $key = 'schedules/new/values';
 if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];
 } else {
+
+    include_once '../../fns/Schedules/request.php';
+    list($text, $interval, $tags, $offset) = Schedules\request();
+
     $values = [
-        'text' => '',
-        'interval' => '',
-        'tags' => '',
+        'text' => $text,
+        'interval' => $interval,
+        'tags' => $tags,
     ];
+
 }
 
 include_once '../../fns/Schedules/maxLengths.php';
