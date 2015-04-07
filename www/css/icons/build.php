@@ -72,8 +72,9 @@ $names = ['account', 'edit-profile', 'download', 'upload', 'feedback',
     'receive-notifications', 'generic', 'slideshow', 'locate'];
 render($content, 'other.svg?14', $names);
 
-$names = ['schedule', 'create-schedule', 'edit-schedule', 'schedules'];
-render($content, 'schedule.svg?1', $names);
+$names = ['schedule', 'create-schedule',
+    'edit-schedule', 'schedules', 'duplicate-schedule'];
+render($content, 'schedule.svg?2', $names);
 
 $names = ['subscribed-channel', 'create-subscribed-channel',
     'inactive-subscribed-channel', 'subscribed-channels'];
