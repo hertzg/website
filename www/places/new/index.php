@@ -13,7 +13,7 @@ if (array_key_exists($key, $_SESSION)) {
 
     include_once "$fnsDir/Places/request.php";
     list($latitude, $longitude, $altitude, $name,
-        $description, $parsed_latitude, $parsed_longitude,
+        $description, $tags, $parsed_latitude, $parsed_longitude,
         $parsed_altitude) = Places\request();
 
     $values = [
@@ -22,7 +22,7 @@ if (array_key_exists($key, $_SESSION)) {
         'altitude' => $altitude,
         'name' => $name,
         'description' => $description,
-        'tags' => '',
+        'tags' => $tags,
     ];
 }
 

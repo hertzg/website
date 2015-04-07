@@ -6,7 +6,7 @@ function request_place_params (&$errors) {
 
     include_once "$fnsDir/Places/request.php";
     list($latitude, $longitude, $altitude, $name,
-        $description, $parsed_latitude, $parsed_longitude,
+        $description, $tags, $parsed_latitude, $parsed_longitude,
         $parsed_altitude) = Places\request();
 
     if ($latitude === '') $errors[] = 'Enter latitude.';

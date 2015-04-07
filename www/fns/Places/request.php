@@ -16,15 +16,16 @@ function request () {
     request_altitude($altitude, $parsed_altitude);
 
     include_once "$fnsDir/request_strings.php";
-    list($name) = request_strings('name');
+    list($name, $tags) = request_strings('name', 'tags');
 
     include_once "$fnsDir/request_text.php";
     $description = request_text('description');
 
     include_once "$fnsDir/str_collapse_spaces.php";
     $name = str_collapse_spaces($name);
+    $tags = str_collapse_spaces($tags);
 
-    return [$latitude, $longitude, $altitude, $name, $description,
+    return [$latitude, $longitude, $altitude, $name, $description, $tags,
         $parsed_latitude, $parsed_longitude, $parsed_altitude];
 
 }
