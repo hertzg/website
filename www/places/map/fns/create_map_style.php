@@ -7,10 +7,10 @@ function create_map_style () {
         $value = preg_replace('/\.?0+$/', '', number_format($scale, 30));
         $html .=
             ".scale$i .map-place {"
-                ."transform: scale($value)"
+                .'transform: scale('.($value * 0.7).')'
             ."}"
             .".scale$i .map-gridline {"
-                .'stroke-width: '.($value / 3).';'
+                .'stroke-width: '.($value * 0.2).';'
             ."}";
         $scale /= 2;
     }
