@@ -4,12 +4,16 @@ namespace Events;
 
 function request () {
 
-    include_once __DIR__.'/../request_strings.php';
-    list($text) = request_strings('text');
+    $fnsDir = __DIR__.'/..';
 
-    include_once __DIR__.'/../str_collapse_spaces.php';
+    include_once "$fnsDir/request_strings.php";
+    list($event_time, $text) = request_strings('event_time', 'text');
+
+    $event_time = (int)$event_time;
+
+    include_once "$fnsDir/str_collapse_spaces.php";
     $text = str_collapse_spaces($text);
 
-    return $text;
+    return [$event_time, $text];
 
 }

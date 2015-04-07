@@ -2,7 +2,9 @@
 
 function request_event_params (&$errors) {
 
-    include_once __DIR__.'/../../fns/request_strings.php';
+    $fnsDir = __DIR__.'/../../fns';
+
+    include_once "$fnsDir/request_strings.php";
     list($event_day, $event_month, $event_year) = request_strings(
         'event_day', 'event_month', 'event_year');
 
@@ -14,8 +16,8 @@ function request_event_params (&$errors) {
     parse_event_time($event_day, $event_month,
         $event_year, $errors, $event_time);
 
-    include_once __DIR__.'/../../fns/Events/request.php';
-    $text = Events\request();
+    include_once "$fnsDir/Events/request.php";
+    list($event_time, $text) = Events\request();
 
     if ($text === '') $errors[] = 'Enter text.';
 
