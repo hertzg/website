@@ -5,7 +5,7 @@ function request_task_params ($user) {
     $fnsDir = __DIR__.'/../../../fns';
 
     include_once "$fnsDir/Tasks/request.php";
-    list($text, $top_priority) = Tasks\request();
+    list($text, $tags, $top_priority) = Tasks\request();
 
     include_once "$fnsDir/request_strings.php";
     list($deadline_time) = request_strings('deadline_time');

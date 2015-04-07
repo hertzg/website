@@ -10,9 +10,13 @@ function request () {
     $text = request_text('text');
 
     include_once "$fnsDir/request_strings.php";
-    list($top_priority) = request_strings('top_priority');
+    list($tags, $top_priority) = request_strings('tags', 'top_priority');
+
+    include_once "$fnsDir/str_collapse_spaces.php";
+    $tags = str_collapse_spaces($tags);
+
     $top_priority = (bool)$top_priority;
 
-    return [$text, $top_priority];
+    return [$text, $tags, $top_priority];
 
 }

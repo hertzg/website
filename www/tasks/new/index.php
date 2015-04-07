@@ -12,14 +12,14 @@ if (array_key_exists($key, $_SESSION)) {
 } else {
 
     include_once '../../fns/Tasks/request.php';
-    list($text, $top_priority) = Tasks\request();
+    list($text, $tags, $top_priority) = Tasks\request();
 
     $values = [
         'text' => $text,
         'deadline_day' => 0,
         'deadline_month' => 0,
         'deadline_year' => 0,
-        'tags' => '',
+        'tags' => $tags,
         'top_priority' => $top_priority,
     ];
 
