@@ -36,8 +36,8 @@ $names = ['contact', 'create-contact', 'edit-contact',
     'favorite-contact', 'contacts', 'import-contact', 'duplicate-contact'];
 render($content, 'contact.svg?3', $names);
 
-$names = ['event', 'create-event', 'edit-event', 'events'];
-render($content, 'event.svg?1', $names);
+$names = ['event', 'create-event', 'edit-event', 'events', 'duplicate-event'];
+render($content, 'event.svg?2', $names);
 
 $names = ['unknown-file', 'audio-file', 'image-file', 'video-file',
     'text-file', 'files', 'copy-file', 'move-file', 'import-file'];
