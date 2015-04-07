@@ -2,7 +2,7 @@
 
 namespace SendForm\NewItem;
 
-function renderRecipientsPanel (array $recipients, array $params) {
+function renderRecipientsPanel ($recipients, $params) {
 
     $sendHref = 'submit-send.php';
     if ($params) $sendHref .= '?'.htmlspecialchars(http_build_query($params));

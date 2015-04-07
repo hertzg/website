@@ -2,7 +2,7 @@
 
 namespace SubscribedChannels;
 
-function deleteArray ($mysqli, array $subscribedChannels) {
+function deleteArray ($mysqli, $subscribedChannels) {
     if ($subscribedChannels) {
         include_once __DIR__.'/delete.php';
         include_once __DIR__.'/../Notifications/deleteOnSubscribedChannel.php';

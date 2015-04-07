@@ -49,7 +49,7 @@ class Engine {
 
     }
 
-    function download ($method, array $params = []) {
+    function download ($method, $params = []) {
 
         $this->method = $method;
         $this->params = $params;

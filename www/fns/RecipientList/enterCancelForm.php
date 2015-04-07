@@ -2,7 +2,7 @@
 
 namespace RecipientList;
 
-function enterCancelForm ($username, array $params) {
+function enterCancelForm ($username, $params) {
 
     include_once __DIR__.'/../Form/hidden.php';
     $hiddens = '';
