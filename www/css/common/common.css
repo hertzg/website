@@ -63,3 +63,7 @@ b.author {
     font-weight: normal;
     border-bottom: 1px dotted;
 }
+
+.displayNone {
+    display: none;
+}
