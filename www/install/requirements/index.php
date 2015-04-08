@@ -80,7 +80,7 @@ echo_page(
         ."<ol>$assertsHtml</ol>"
         .'<h3>Optionally</h3>'
         ."<ol>$optionalAssertsHtml</ol>",
-        '<a href="submit.php" class="button nextButton" />Next</a>'
+        '<a href="submit.php" class="button nextButton">Next</a>'
         .'<a class="button" href="../agreement/">Back</a>'
     )
 );
