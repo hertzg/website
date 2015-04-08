@@ -52,6 +52,7 @@ echo
                     .'</div>'
                 .'</div>'
             .'</div>'
+            .'<br class="zeroHeight" />'
             .'<div class="buttonsWrapper">'
                 .'<div class="buttonsWrapper-half left">'
                     .'<div class="buttonsWrapper-limit left">'

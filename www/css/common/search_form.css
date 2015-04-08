@@ -9,6 +9,7 @@
 }
 
 .search_form-content {
+    display: block;
     position: absolute;
     top: 0;
     right: 96px;

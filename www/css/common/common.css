@@ -67,3 +67,17 @@ b.author {
 .displayNone {
     display: none;
 }
+
+.zeroSize {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.zeroHeight {
+    display: block;
+    height: 0;
+    line-height: 0;
+    overflow: hidden;
+}

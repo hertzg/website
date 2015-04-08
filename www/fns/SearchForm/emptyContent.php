@@ -4,12 +4,13 @@ namespace SearchForm;
 
 function emptyContent ($placeholder) {
     return
-        '<div class="search_form-content empty">'
+        '<span class="search_form-content empty">'
             .'<input class="form-textfield" type="text" name="keyword"'
             ." required=\"required\" placeholder=\"$placeholder\" />"
-        .'</div>'
+        .'</span>'
         .'<button title="Search"'
         .' class="search_form-button rightButton clickable">'
             .'<span class="rightButton-icon icon search"></span>'
+            .'<span class="displayNone">Search</span>'
         .'</button>';
 }

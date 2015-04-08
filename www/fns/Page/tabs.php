@@ -11,14 +11,19 @@ function tabs ($tabs, $activeTabTitle, $content, $newItemButton = '') {
                 ."&laquo;<span class=\"secondary\"> $tab[title]</span>"
             .'</a>';
     }
-    $itemsHtml .= "<span class=\"tab-active\">$activeTabTitle</span>";
+    $itemsHtml .=
+        '<span class="tab-active">'
+            ."<span class=\"zeroSize\"> &raquo; </span>$activeTabTitle"
+        .'</span>';
 
     return
-        '<div class="tab">'
+        '<br class="zeroHeight" />'
+        .'<div class="tab">'
             ."<div class=\"tab-bar\">$itemsHtml</div>"
             .$newItemButton
         .'</div>'
         .'<div class="tab-spacer"></div>'
+        .'<br class="zeroHeight" />'
         ."<div class=\"tab-content\">$content</div>";
 
 }
