@@ -1,15 +1,18 @@
 .title_and_description {
+    display: block;
     line-height: 20px;
     padding: 4px 0;
 }
 
 .title_and_description-title {
+    display: block;
     overflow: hidden;
     text-overflow: ellipsis;
     margin-right: 8px;
 }
 
 .title_and_description-description {
+    display: block;
     color: #555;
     overflow: hidden;
     text-overflow: ellipsis;

@@ -25,10 +25,10 @@ function create_image_link ($content, $href, $iconName, $options = []) {
         $nameLink
         ."<a class=\"clickable link image_link$additionalClass\""
         ." href=\"$href\"$idAttribute$targetAttribute>"
-            .'<div class="image_link-icon">'
-                ."<div class=\"icon $iconName\"></div>"
-            .'</div>'
-            ."<div class=\"image_link-content\">$content</div>"
+            .'<span class="image_link-icon">'
+                ."<span class=\"icon $iconName\"></span>"
+            .'</span>'
+            ."<span class=\"image_link-content\">$content</span>"
         .'</a>';
 
 }

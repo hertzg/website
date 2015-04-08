@@ -20,10 +20,10 @@ function create_page ($user, $base = '') {
             $items[] =
                 "<a href=\"$href\""
                 ." class=\"clickable link image_link withArrow\">"
-                    .'<div class="image_link-icon">'
+                    .'<span class="image_link-icon">'
                         .create_calendar_icon_today($user)
-                    .'</div>'
-                    .'<div class="image_link-content">Calendar</div>'
+                    .'</span>'
+                    .'<span class="image_link-content">Calendar</span>'
                 .'</a>';
         } else {
             $items[] = Page\imageArrowLink($title,

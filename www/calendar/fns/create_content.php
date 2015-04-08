@@ -39,10 +39,10 @@ function create_content ($mysqli, $user,
                 'calendar', ['id' => 'jump-to'])
             .'<div class="hr"></div>'
             .'<a href="./" class="clickable link image_link">'
-                .'<div class="image_link-icon">'
+                .'<span class="image_link-icon">'
                     .create_calendar_icon_today($user)
-                .'</div>'
-                .'<div class="image_link-content">Go to Today</div>'
+                .'</span>'
+                .'<span class="image_link-content">Go to Today</span>'
             .'</a>'
         );
 }

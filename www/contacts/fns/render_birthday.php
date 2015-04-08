@@ -18,12 +18,12 @@ function render_birthday ($birthday_time, &$items, &$head, $base) {
     include_once "$fnsDir/create_calendar_icon.php";
     $items[] = Form\association(
         "<a href=\"$href\" class=\"clickable link image_link\">"
-            .'<div class="image_link-icon">'
+            .'<span class="image_link-icon">'
                 .create_calendar_icon($day)
-            .'</div>'
-            .'<div class="image_link-content">'
+            .'</span>'
+            .'<span class="image_link-content">'
                 .date('F d, Y', $birthday_time)
-            .'</div>'
+            .'</span>'
         .'</a>',
         '<label>Birth date:</label>'
     );
