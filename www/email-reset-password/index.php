@@ -7,7 +7,22 @@ require_guest_user($base);
 
 $key = 'email-reset-password/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
-else $values = ['email' => ''];
+else {
+
+    include_once '../fns/request_strings.php';
+    list($return) = request_strings('return');
+
+    $values = [
+        'email' => '',
+        'return' => $return,
+    ];
+
+}
+
+$return = $values['return'];
+
+if ($return === '') $queryString = '';
+else $queryString = '?return='.rawurlencode($return);
 
 unset(
     $_SESSION['sign-in/errors'],
@@ -18,6 +33,7 @@ unset(
 include_once '../fns/Email/maxLength.php';
 include_once '../fns/Form/button.php';
 include_once '../fns/Form/captcha.php';
+include_once '../fns/Form/hidden.php';
 include_once '../fns/Form/textfield.php';
 include_once '../fns/Page/sessionErrors.php';
 include_once '../fns/Page/tabs.php';
@@ -25,7 +41,7 @@ $content = Page\tabs(
     [
         [
             'title' => 'Sign In',
-            'href' => '../sign-in/#email-reset-password',
+            'href' => "../sign-in/$queryString#email-reset-password",
         ],
     ],
     'Reset Password',
@@ -40,6 +56,7 @@ $content = Page\tabs(
         .'<div class="hr"></div>'
         .Form\captcha($base)
         .Form\button('Send Recovery Email')
+        .Form\hidden('return', $return)
     .'</form>'
 );
 

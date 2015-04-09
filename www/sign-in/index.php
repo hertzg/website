@@ -39,6 +39,7 @@ unset(
 );
 
 $username = $values['username'];
+$return = $values['return'];
 
 include_once 'fns/create_options_panel.php';
 include_once '../fns/compressed_js_script.php';
@@ -74,9 +75,9 @@ $content =
             .Form\checkbox('remember', 'Stay signed in', $values['remember'])
             .'<div class="hr"></div>'
             .Form\button('Sign In')
-            .Form\hidden('return', $values['return'])
+            .Form\hidden('return', $return)
         .'</form>'
-        .create_options_panel()
+        .create_options_panel($return)
     )
     .compressed_js_script('formCheckbox', $base);
 

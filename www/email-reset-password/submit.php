@@ -9,7 +9,7 @@ include_once "$fnsDir/require_guest_user.php";
 require_guest_user('../');
 
 include_once "$fnsDir/request_strings.php";
-list($email) = request_strings('email');
+list($email, $return) = request_strings('email', 'return');
 
 include_once "$fnsDir/str_collapse_spaces.php";
 $email = str_collapse_spaces($email);
@@ -41,7 +41,10 @@ include_once "$fnsDir/redirect.php";
 
 if ($errors) {
     $_SESSION['email-reset-password/errors'] = $errors;
-    $_SESSION['email-reset-password/values'] = ['email' => $email];
+    $_SESSION['email-reset-password/values'] = [
+        'email' => $email,
+        'return' => $return,
+    ];
     redirect();
 }
 
@@ -67,4 +70,7 @@ $_SESSION['sign-in/messages'] = [
     'Instructions to reset password have been sent to your email address.',
 ];
 
-redirect('../sign-in/');
+if ($return === '') $queryString = '';
+else $queryString = '?return='.rawurlencode($return);
+
+redirect("../sign-in/$queryString");

@@ -7,8 +7,10 @@ include_once '../fns/require_guest_user.php';
 require_guest_user('../');
 
 include_once '../fns/request_strings.php';
-list($username, $password1, $password2, $email, $captcha) = request_strings(
-    'username', 'password1', 'password2', 'email', 'captcha');
+list($username, $password1, $password2,
+    $email, $captcha, $return) = request_strings(
+    'username', 'password1', 'password2',
+    'email', 'captcha', 'return');
 
 include_once '../fns/str_collapse_spaces.php';
 $username = str_collapse_spaces($username);
@@ -41,6 +43,7 @@ if ($errors) {
         'password1' => $password1,
         'password2' => $password2,
         'email' => $email,
+        'return' => $return,
     ];
     redirect();
 }
@@ -78,4 +81,7 @@ get_zvini_client()->call('notification/post', [
     'text' => $text,
 ]);
 
-redirect('../sign-in/');
+if ($return === '') $queryString = '';
+else $queryString = '?return='.rawurlencode($return);
+
+redirect("../sign-in/$queryString");

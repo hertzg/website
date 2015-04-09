@@ -8,13 +8,24 @@ require_guest_user($base);
 $key = 'sign-up/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
+
+    include_once '../fns/request_strings.php';
+    list($return) = request_strings('return');
+
     $values = [
         'username' => '',
         'password1' => '',
         'password2' => '',
         'email' => '',
+        'return' => $return,
     ];
+
 }
+
+$return = $values['return'];
+
+if ($return === '') $queryString = '';
+else $queryString = '?return='.rawurlencode($return);
 
 unset(
     $_SESSION['sign-in/errors'],
@@ -30,6 +41,7 @@ include_once '../fns/example_password.php';
 include_once '../fns/Email/maxLength.php';
 include_once '../fns/Form/button.php';
 include_once '../fns/Form/captcha.php';
+include_once '../fns/Form/hidden.php';
 include_once '../fns/Form/notes.php';
 include_once '../fns/Form/password.php';
 include_once '../fns/Form/textfield.php';
@@ -74,11 +86,12 @@ $content = Page\tabs(
         .'<div class="hr"></div>'
         .Form\captcha($base)
         .Form\button('Sign Up')
+        .Form\hidden('return', $return)
     .'</form>'
     .create_panel(
         'Options',
         Page\imageLinkWithDescription('Already have an account?',
-            'Sign in here.', '../sign-in/', 'sign-in')
+            'Sign in here.', "../sign-in/$queryString", 'sign-in')
     )
 );
 
