@@ -115,6 +115,11 @@ function ensure ($mysqli) {
             'type' => 'bigint(20) unsigned',
             'nullable' => true,
         ],
+        'reset_password_return' => [
+            'type' => 'varchar(2048)',
+            'characterSet' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+        ],
         'schedules_check_day' => ['type' => 'bigint(20) unsigned'],
         'show_bookmarks' => ['type' => 'tinyint(3) unsigned'],
         'show_calendar' => ['type' => 'tinyint(3) unsigned'],

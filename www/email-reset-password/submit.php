@@ -57,7 +57,7 @@ include_once "$fnsDir/Users/maxLengths.php";
 $key = openssl_random_pseudo_bytes(Users\maxLengths()['reset_password_key']);
 
 include_once "$fnsDir/Users/editResetPasswordKey.php";
-Users\editResetPasswordKey($mysqli, $user->id_users, $key);
+Users\editResetPasswordKey($mysqli, $user->id_users, $key, $return);
 
 include_once "$fnsDir/Captcha/reset.php";
 Captcha\reset();
