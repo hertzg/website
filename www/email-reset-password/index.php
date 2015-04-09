@@ -26,8 +26,8 @@ else $queryString = '?return='.rawurlencode($return);
 
 unset(
     $_SESSION['sign-in/errors'],
-    $_SESSION['sign-in/values'],
-    $_SESSION['sign-in/messages']
+    $_SESSION['sign-in/messages'],
+    $_SESSION['sign-in/values']
 );
 
 include_once '../fns/Email/maxLength.php';
