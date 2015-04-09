@@ -14,8 +14,14 @@ $items = [Form\label('Username', $user->username)];
 
 $email = $user->email;
 if ($email !== '') {
-    $verifiedHtml = $user->email_verified ? 'Verified' : 'Not verified';
-    $value = "$email ($verifiedHtml)";
+    if ($user->email_verified) {
+        $emailStatus = 'Verified';
+    } else {
+        include_once "$fnsDir/Users/isVerifyEmailPending.php";
+        if (Users\isVerifyEmailPending($user)) $emailStatus = 'Pending';
+        else $emailStatus = 'Not verified';
+    }
+    $value = "$email ($emailStatus)";
     $items[] = Form\label('Email', $value);
 }
 
