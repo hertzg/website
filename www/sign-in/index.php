@@ -41,6 +41,13 @@ unset(
 $username = $values['username'];
 $return = $values['return'];
 
+if ($return === '') $pageWarnings = '';
+else {
+    $warning = 'You need to be signed in to access the page.';
+    include_once '../fns/Page/warnings.php';
+    $pageWarnings = Page\warnings([$warning]);
+}
+
 include_once 'fns/create_options_panel.php';
 include_once '../fns/compressed_js_script.php';
 include_once '../fns/Form/button.php';
@@ -58,6 +65,7 @@ $content =
         'Sign In',
         Page\sessionMessages('sign-in/messages')
         .Page\sessionErrors('sign-in/errors')
+        .$pageWarnings
         .'<form action="submit.php" method="post">'
             .Form\textfield('username', 'Username', [
                 'value' => $username,
