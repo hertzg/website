@@ -24,6 +24,11 @@ if (!$user->email_verified) {
 include_once 'fns/get_values.php';
 $values = get_values();
 
+$return = $user->reset_password_return;
+
+if ($return === '') $queryString = '';
+else $queryString = '?return='.rawurlencode($return);
+
 unset(
     $_SESSION['sign-in/errors'],
     $_SESSION['sign-in/messages'],
@@ -41,7 +46,7 @@ $content = Page\tabs(
     [
         [
             'title' => 'Sign In',
-            'href' => '../sign-in/#email-reset-password',
+            'href' => "../sign-in/$queryString#email-reset-password",
         ],
     ],
     'Reset Password',

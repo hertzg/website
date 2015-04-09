@@ -68,4 +68,9 @@ $_SESSION['sign-in/messages'] = [
 ];
 unset($_SESSION['sign-in/errors']);
 
-redirect('../sign-in/');
+$return = $user->reset_password_return;
+
+if ($return === '') $queryString = '';
+else $queryString = '?return='.rawurlencode($return);
+
+redirect("../sign-in/$queryString");
