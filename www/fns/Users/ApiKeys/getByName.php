@@ -2,7 +2,7 @@
 
 namespace Users\ApiKeys;
 
-function getByName ($mysqli, $user, $name, $exclude_id = null) {
+function getByName ($mysqli, $user, $name, $exclude_id = 0) {
 
     if (!$user->num_api_keys) return;
 
