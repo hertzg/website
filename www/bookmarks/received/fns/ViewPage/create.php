@@ -2,10 +2,13 @@
 
 namespace ViewPage;
 
-function create ($receivedBookmark) {
+function create ($receivedBookmark, &$scripts) {
 
     $id = $receivedBookmark->id;
     $fnsDir = __DIR__.'/../../../../fns';
+
+    include_once "$fnsDir/compressed_js_script.php";
+    $scripts = compressed_js_script('dateAgo', '../../../');
 
     $items = [];
 
@@ -19,8 +22,8 @@ function create ($receivedBookmark) {
     $tags = $receivedBookmark->tags;
     if ($tags !== '') $items[] = \Page\text('Tags: '.htmlspecialchars($tags));
 
-    include_once "$fnsDir/date_ago.php";
-    $text = 'Bookmark received '.date_ago($receivedBookmark->insert_time).'.';
+    include_once "$fnsDir/export_date_ago.php";
+    $text = 'Bookmark received '.export_date_ago($receivedBookmark->insert_time).'.';
     include_once "$fnsDir/Page/infoText.php";
     $infoText = \Page\infoText($text);
 

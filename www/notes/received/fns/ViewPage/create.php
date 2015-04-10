@@ -2,22 +2,26 @@
 
 namespace ViewPage;
 
-function create ($receivedNote) {
+function create ($receivedNote, &$scripts) {
 
     $id = $receivedNote->id;
+    $base = '../../../';
     $fnsDir = __DIR__.'/../../../../fns';
+
+    include_once "$fnsDir/compressed_js_script.php";
+    $scripts = compressed_js_script('dateAgo', $base);
 
     include_once "$fnsDir/render_external_links.php";
     include_once "$fnsDir/Page/text.php";
     $text = htmlspecialchars($receivedNote->text);
-    $text = render_external_links($text, '../../../');
+    $text = render_external_links($text, $base);
     $items = [\Page\text(nl2br($text))];
 
     $tags = $receivedNote->tags;
     if ($tags !== '') $items[] = \Page\text('Tags: '.htmlspecialchars($tags));
 
-    include_once "$fnsDir/date_ago.php";
-    $text = 'Note received '.date_ago($receivedNote->insert_time).'.';
+    include_once "$fnsDir/export_date_ago.php";
+    $text = 'Note received '.export_date_ago($receivedNote->insert_time).'.';
     include_once "$fnsDir/Page/infoText.php";
     $infoText = \Page\infoText($text);
 

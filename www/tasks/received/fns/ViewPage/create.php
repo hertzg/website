@@ -2,15 +2,19 @@
 
 namespace ViewPage;
 
-function create ($receivedTask, $user) {
+function create ($receivedTask, $user, &$scripts) {
 
     $id = $receivedTask->id;
+    $base = '../../../';
     $fnsDir = __DIR__.'/../../../../fns';
+
+    include_once "$fnsDir/compressed_js_script.php";
+    $scripts = compressed_js_script('dateAgo', $base);
 
     include_once "$fnsDir/render_external_links.php";
     include_once "$fnsDir/Page/text.php";
     $text = htmlspecialchars($receivedTask->text);
-    $text = render_external_links($text, '../../../');
+    $text = render_external_links($text, $base);
     $items = [\Page\text(nl2br($text))];
 
     $deadline_time = $receivedTask->deadline_time;
@@ -28,13 +32,15 @@ function create ($receivedTask, $user) {
     $tags = $receivedTask->tags;
     if ($tags !== '') $items[] = \Page\text('Tags: '.htmlspecialchars($tags));
 
-    include_once "$fnsDir/date_ago.php";
+    include_once "$fnsDir/export_date_ago.php";
     include_once "$fnsDir/Page/infoText.php";
     $infoText = \Page\infoText(
         '<div>'
             .($receivedTask->top_priority ? 'Top' : 'Normal').' priority task.'
         .'</div>'
-        .'<div>Task received '.date_ago($receivedTask->insert_time).'.</div>'
+        .'<div>'
+            .'Task received '.export_date_ago($receivedTask->insert_time).'.'
+        .'</div>'
     );
 
     include_once __DIR__.'/optionsPanel.php';

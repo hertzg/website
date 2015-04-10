@@ -16,7 +16,7 @@ unset(
 include_once '../fns/ViewPage/create.php';
 include_once "$fnsDir/compressed_js_script.php";
 $content =
-    ViewPage\create($receivedContact, $head)
+    ViewPage\create($receivedContact, $head, $scripts)
     .compressed_js_script('confirmDialog', $base)
     .'<script type="text/javascript">'
         .'var deleteHref = '.json_encode("../delete/submit.php?id=$id")
@@ -24,8 +24,9 @@ $content =
     .'<script type="text/javascript" defer="defer"'
     .' src="../../view.js"></script>';
 
-if ($receivedContact->timezone === null) $scripts = '';
-else $scripts = compressed_js_script('timezoneLabel', $base);
+if ($receivedContact->timezone !== null) {
+    $scripts .= compressed_js_script('timezoneLabel', $base);
+}
 
 include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";

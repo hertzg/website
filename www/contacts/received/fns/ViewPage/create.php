@@ -2,10 +2,13 @@
 
 namespace ViewPage;
 
-function create ($receivedContact, &$head) {
+function create ($receivedContact, &$head, &$scripts) {
 
     $id = $receivedContact->id;
     $fnsDir = __DIR__.'/../../../../fns';
+
+    include_once "$fnsDir/compressed_js_script.php";
+    $scripts = compressed_js_script('dateAgo', '../../../');
 
     include_once "$fnsDir/Form/label.php";
     $items = [
@@ -56,14 +59,15 @@ function create ($receivedContact, &$head) {
         $items[] = \Form\label('Notes', nl2br(htmlspecialchars($notes)));
     }
 
-    include_once "$fnsDir/date_ago.php";
+    include_once "$fnsDir/export_date_ago.php";
     include_once "$fnsDir/Page/infoText.php";
     $infoText = \Page\infoText(
         '<div>'
             .($receivedContact->favorite ? 'Favorite' : 'Regular').' contact.'
         .'</div>'
         .'<div>'
-            .'Contact received '.date_ago($receivedContact->insert_time).'.'
+            .'Contact received '
+            .export_date_ago($receivedContact->insert_time).'.'
         .'</div>'
     );
 

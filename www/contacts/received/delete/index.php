@@ -15,15 +15,14 @@ $escapedItemQuery = ItemList\Received\escapedItemQuery($id);
 include_once '../fns/ViewPage/create.php';
 include_once "$fnsDir/Page/confirmDialog.php";
 $content =
-    ViewPage\create($receivedContact, $head)
+    ViewPage\create($receivedContact, $head, $scripts)
     .Page\confirmDialog('Are you sure you want to delete the contact?'
         .' It will be moved to Trash.', 'Yes, delete contact',
         "submit.php$escapedItemQuery", "../view/$escapedItemQuery");
 
-if ($receivedContact->timezone === null) $scripts = '';
-else {
+if ($receivedContact->timezone !== null) {
     include_once "$fnsDir/compressed_js_script.php";
-    $scripts = compressed_js_script('timezoneLabel', $base);
+    $scripts .= compressed_js_script('timezoneLabel', $base);
 }
 
 include_once "$fnsDir/compressed_css_link.php";

@@ -2,10 +2,13 @@
 
 namespace ViewPage;
 
-function create ($receivedPlace) {
+function create ($receivedPlace, &$scripts) {
 
     $id = $receivedPlace->id;
     $fnsDir = __DIR__.'/../../../../fns';
+
+    include_once "$fnsDir/compressed_js_script.php";
+    $scripts = compressed_js_script('dateAgo', '../../../');
 
     include_once "$fnsDir/Form/label.php";
     $name = htmlspecialchars($receivedPlace->name);
@@ -31,8 +34,8 @@ function create ($receivedPlace) {
     $tags = $receivedPlace->tags;
     if ($tags !== '') $items[] = \Form\label('Tags', htmlspecialchars($tags));
 
-    include_once "$fnsDir/date_ago.php";
-    $text = 'Place received '.date_ago($receivedPlace->insert_time).'.';
+    include_once "$fnsDir/export_date_ago.php";
+    $text = 'Place received '.export_date_ago($receivedPlace->insert_time).'.';
     include_once "$fnsDir/Page/infoText.php";
     $infoText = \Page\infoText($text);
 

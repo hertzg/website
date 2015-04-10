@@ -1,11 +1,14 @@
 <?php
 
-function create_page ($receivedFile, $base = '') {
+function create_page ($receivedFile, &$scripts, $base = '') {
 
     $id = $receivedFile->id;
     $queryString = "?id=$id";
     $fnsDir = __DIR__.'/../../../../fns';
     $name = $receivedFile->name;
+
+    include_once "$fnsDir/compressed_js_script.php";
+    $scripts = compressed_js_script('dateAgo', "$base../../../");
 
     include_once "$fnsDir/Page/imageLink.php";
     $namePart = rawurlencode(str_replace('/', '_', $name));
@@ -37,7 +40,7 @@ function create_page ($receivedFile, $base = '') {
         "$base../../../");
 
     include_once "$fnsDir/create_panel.php";
-    include_once "$fnsDir/date_ago.php";
+    include_once "$fnsDir/export_date_ago.php";
     include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionMessages.php";
@@ -63,7 +66,7 @@ function create_page ($receivedFile, $base = '') {
             .'<div class="hr"></div>'
             .Form\label('Preview', $filePreview)
             .Page\infoText(
-                'File received '.date_ago($receivedFile->insert_time).'.')
+                'File received '.export_date_ago($receivedFile->insert_time).'.')
         )
         .create_panel(
             'File Options',
