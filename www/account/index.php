@@ -21,8 +21,7 @@ if ($email !== '') {
         if (Users\isVerifyEmailPending($user)) $emailStatus = 'Pending';
         else $emailStatus = 'Not verified';
     }
-    $value = "$email ($emailStatus)";
-    $items[] = Form\label('Email', $value);
+    $items[] = Form\label('Email', "$email ($emailStatus)");
 }
 
 $full_name = $user->full_name;
@@ -37,8 +36,9 @@ if ($timezone) {
 include_once "$fnsDir/Themes/index.php";
 $items[] = Form\label('Theme', Themes\index()[$user->theme]);
 
-include_once "$fnsDir/date_ago.php";
-$items[] = Form\label('Account created', date_ago($user->insert_time, true));
+include_once "$fnsDir/export_date_ago.php";
+$value = export_date_ago($user->insert_time, true);
+$items[] = Form\label('Account created', $value);
 
 include_once "$fnsDir/bytestr.php";
 $items[] = Form\label('Using storage', bytestr($user->storage_used));
@@ -63,5 +63,8 @@ $content =
     )
     .create_options_panel($user);
 
+include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/echo_page.php";
-echo_page($user, 'Account', $content, $base);
+echo_page($user, 'Account', $content, $base, [
+    'scripts' => compressed_js_script('dateAgo', $base),
+]);
