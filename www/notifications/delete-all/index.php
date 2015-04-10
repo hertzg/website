@@ -18,7 +18,7 @@ include_once '../fns/create_page.php';
 include_once "$fnsDir/Page/confirmDialog.php";
 include_once '../../lib/mysqli.php';
 $content =
-    create_page($mysqli, $user, '../')
+    create_page($mysqli, $user, $scripts, '../')
     .Page\confirmDialog('Are you sure you want to delete'
         .' all the notifications?', 'Yes, delete all notifications',
         'submit.php', "../$escapedPageQuery");
@@ -27,4 +27,5 @@ include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";
 echo_page($user, 'Delete All Notifications?', $content, $base, [
     'head' => compressed_css_link('confirmDialog', $base),
+    'scripts' => $scripts,
 ]);

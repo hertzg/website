@@ -10,7 +10,7 @@ $fnsDir = '../../fns';
 include_once '../fns/create_page.php';
 include_once "$fnsDir/Page/confirmDialog.php";
 $content =
-    create_page($mysqli, $user, $folder, '../')
+    create_page($mysqli, $user, $folder, $scripts, '../')
     .Page\confirmDialog('Are you sure you want to delete the folder?'
         .' It will be moved to Trash.', 'Yes, delete folder',
         "submit.php?id_folders=$id_folders", "../?id_folders=$id_folders");
@@ -25,4 +25,5 @@ include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";
 echo_page($user, "Delete Folder #$id_folders?", $content, $base, [
     'head' => compressed_css_link('confirmDialog', $base),
+    'scripts' => $scripts,
 ]);

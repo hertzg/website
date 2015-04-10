@@ -2,12 +2,16 @@
 
 namespace ViewFilePage;
 
-function create ($mysqli, &$user, &$file) {
+function create ($mysqli, &$user, &$file, &$scripts) {
 
     include_once __DIR__.'/../require_file.php';
     list($file, $id, $user) = require_file($mysqli);
 
+    $base = '../../';
     $fnsDir = __DIR__.'/../../../fns';
+
+    include_once "$fnsDir/compressed_js_script.php";
+    $scripts = compressed_js_script('dateAgo', $base);
 
     include_once "$fnsDir/format_author.php";
     $author = format_author($file->insert_time, $file->insert_api_key_name);
@@ -21,7 +25,7 @@ function create ($mysqli, &$user, &$file) {
 
     include_once "$fnsDir/Page/filePreview.php";
     $filePreview = \Page\filePreview($media_type, $file->content_type,
-        $id, '../download-file/', '../../', $file->content_revision);
+        $id, '../download-file/', $base, $file->content_revision);
 
     if ($media_type == 'image') {
         include_once __DIR__.'/imageOptionsPanel.php';

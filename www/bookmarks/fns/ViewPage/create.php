@@ -2,11 +2,14 @@
 
 namespace ViewPage;
 
-function create ($bookmark) {
+function create ($bookmark, &$scripts) {
 
     $id = $bookmark->id;
     $url = $bookmark->url;
     $fnsDir = __DIR__.'/../../../fns';
+
+    include_once "$fnsDir/compressed_js_script.php";
+    $scripts = compressed_js_script('dateAgo', '../../');
 
     $items = [];
 

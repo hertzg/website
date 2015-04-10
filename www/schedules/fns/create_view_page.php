@@ -1,17 +1,21 @@
 <?php
 
-function create_view_page ($user, $schedule) {
+function create_view_page ($user, $schedule, &$scripts) {
 
     $id = $schedule->id;
     $text = $schedule->text;
     $interval = $schedule->interval;
     $offset = $schedule->offset;
+    $base = '../../';
     $fnsDir = __DIR__.'/../../fns';
+
+    include_once "$fnsDir/compressed_js_script.php";
+    $scripts = compressed_js_script('dateAgo', $base);
 
     include_once "$fnsDir/create_text_item.php";
     include_once "$fnsDir/Form/label.php";
     $items = [
-        create_text_item($text, '../../'),
+        create_text_item($text, $base),
         Form\label('Repeats in every', "$interval days"),
     ];
 

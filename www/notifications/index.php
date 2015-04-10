@@ -17,7 +17,7 @@ unset(
 
 include_once 'fns/create_page.php';
 include_once '../lib/mysqli.php';
-$content = create_page($mysqli, $user);
+$content = create_page($mysqli, $user, $scripts);
 
 if ($user->num_notifications) {
 
@@ -35,4 +35,7 @@ if ($user->num_notifications) {
 
 include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";
-echo_page($user, 'Notifications', $content, $base, ['head' => $head]);
+echo_page($user, 'Notifications', $content, $base, [
+    'head' => $head,
+    'scripts' => $scripts,
+]);

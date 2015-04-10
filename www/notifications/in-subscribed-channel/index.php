@@ -8,7 +8,7 @@ $base = '../../';
 $fnsDir = '../../fns';
 
 include_once 'fns/create_page.php';
-$content = create_page($mysqli, $user, $subscribedChannel);
+$content = create_page($mysqli, $user, $subscribedChannel, $scripts);
 
 include_once "$fnsDir/compressed_js_script.php";
 $content .=
@@ -30,4 +30,5 @@ include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";
 echo_page($user, 'Notifications', $content, $base, [
     'head' => compressed_css_link('confirmDialog', $base),
+    'scripts' => $scripts,
 ]);

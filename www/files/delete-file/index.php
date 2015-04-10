@@ -2,7 +2,7 @@
 
 include_once '../fns/ViewFilePage/create.php';
 include_once '../../lib/mysqli.php';
-$content = ViewFilePage\create($mysqli, $user, $file);
+$content = ViewFilePage\create($mysqli, $user, $file, $scripts);
 $id = $file->id_files;
 
 $base = '../../';
@@ -22,4 +22,5 @@ include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";
 echo_page($user, "Delete File #$id?", $content, $base, [
     'head' => compressed_css_link('confirmDialog', $base),
+    'scripts' => $scripts,
 ]);

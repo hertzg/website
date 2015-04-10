@@ -1,6 +1,6 @@
 <?php
 
-function create_view_page ($user, $event) {
+function create_view_page ($user, $event, &$scripts) {
 
     $id = $event->id;
     $event_time = $event->event_time;
@@ -49,7 +49,7 @@ function create_view_page ($user, $event) {
             ],
             "Event #$id",
             Page\sessionMessages('calendar/all-events/view/messages')
-            .ViewPage\viewContent($event),
+            .ViewPage\viewContent($event, $scripts, '../'),
             Page\newItemButton("../new/$newEventQuery", 'Event')
         )
         .create_panel('Event Options', $optionsContent);

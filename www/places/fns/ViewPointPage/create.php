@@ -2,15 +2,11 @@
 
 namespace ViewPointPage;
 
-function create ($point) {
+function create ($point, &$scripts) {
 
     $id = $point->id;
     $id_places = $point->id_places;
     $fnsDir = __DIR__.'/../../../fns';
-
-    include_once "$fnsDir/format_author.php";
-    $author = format_author($point->insert_time, $point->insert_api_key_name);
-    $infoText = "Point created $author.";
 
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
     $escapedItemQuery = \ItemList\escapedItemQuery($id);
@@ -47,7 +43,7 @@ function create ($point) {
         ],
         "Point #$id",
         \Page\sessionMessages('places/view-point/messages')
-        .viewContent($point)
+        .viewContent($point, $scripts)
         .create_panel('Point Options', $optionsContent)
     );
 

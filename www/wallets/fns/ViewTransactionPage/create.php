@@ -2,7 +2,7 @@
 
 namespace ViewTransactionPage;
 
-function create ($transaction) {
+function create ($transaction, &$scripts) {
 
     $fnsDir = __DIR__.'/../../../fns';
     $id = $transaction->id;
@@ -55,7 +55,7 @@ function create ($transaction) {
         ],
         "Transaction #$id",
         \Page\sessionMessages('wallets/view-transaction/messages')
-        .viewContent($transaction)
+        .viewContent($transaction, $scripts)
         .create_panel('Transaction Options', $optionsContent),
         \Page\newItemButton("../new-transaction/?id=$id_wallets", 'Transaction')
     );

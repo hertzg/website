@@ -2,13 +2,17 @@
 
 namespace ViewPage;
 
-function create ($task, $user) {
+function create ($task, $user, &$scripts) {
 
     $id = $task->id;
+    $base = '../../';
     $fnsDir = __DIR__.'/../../../fns';
 
+    include_once "$fnsDir/compressed_js_script.php";
+    $scripts = compressed_js_script('dateAgo', $base);
+
     include_once "$fnsDir/create_text_item.php";
-    $items = [create_text_item($task->text, '../../')];
+    $items = [create_text_item($task->text, $base)];
 
     $deadline_time = $task->deadline_time;
     if ($deadline_time !== null) {

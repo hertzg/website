@@ -15,7 +15,7 @@ $escapedItemQuery = ItemList\escapedItemQuery($id);
 include_once '../../fns/ViewPage/create.php';
 include_once "$fnsDir/Page/confirmDialog.php";
 $content =
-    ViewPage\create($contact, $head, '../')
+    ViewPage\create($contact, $head, $scripts, '../')
     .Page\confirmDialog(
         'Are you sure you want to delete the photo of the contact?',
         'Yes, delete photo', "submit.php$escapedItemQuery",
@@ -27,4 +27,5 @@ echo_page($user, 'Delete Contact Photo?', $content, $base, [
     'head' => $head
         .compressed_css_link('contact', $base)
         .compressed_css_link('confirmDialog', $base),
+    'scripts' => $scripts,
 ]);

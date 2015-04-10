@@ -2,7 +2,7 @@
 
 namespace ViewPage;
 
-function create ($user, $event) {
+function create ($user, $event, &$scripts) {
 
     $id = $event->id;
     $event_time = $event->event_time;
@@ -57,7 +57,7 @@ function create ($user, $event) {
             ],
             "Event #$id",
             \Page\sessionMessages('calendar/view-event/messages')
-            .viewContent($event),
+            .viewContent($event, $scripts),
             \Page\newItemButton("../new-event/$newEventQuery", 'Event')
         )
         .create_panel('Event Options', $optionsContent);

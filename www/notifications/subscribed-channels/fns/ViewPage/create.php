@@ -2,11 +2,14 @@
 
 namespace ViewPage;
 
-function create ($subscribedChannel) {
+function create ($subscribedChannel, &$scripts) {
 
     $id = $subscribedChannel->id;
     $fnsDir = __DIR__.'/../../../../fns';
     $items = [];
+
+    include_once "$fnsDir/compressed_js_script.php";
+    $scripts = compressed_js_script('dateAgo', '../../../');
 
     include_once "$fnsDir/Form/label.php";
     $value = htmlspecialchars($subscribedChannel->channel_name);

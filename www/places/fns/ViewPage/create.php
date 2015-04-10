@@ -2,10 +2,13 @@
 
 namespace ViewPage;
 
-function create ($mysqli, $place) {
+function create ($mysqli, $place, &$scripts) {
 
     $id = $place->id;
     $fnsDir = __DIR__.'/../../../fns';
+
+    include_once "$fnsDir/compressed_js_script.php";
+    $scripts = compressed_js_script('dateAgo', '../../');
 
     include_once "$fnsDir/Form/label.php";
     $items = [

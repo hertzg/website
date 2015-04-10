@@ -5,7 +5,11 @@ namespace ViewPage;
 function create ($deletedItem, $user, &$title, &$head, &$scripts) {
 
     $id = $deletedItem->id;
+    $base = '../../';
     $fnsDir = __DIR__.'/../../../fns';
+
+    include_once "$fnsDir/compressed_js_script.php";
+    $scripts .= compressed_js_script('dateAgo', $base);
 
     $items = [];
 
@@ -31,7 +35,7 @@ function create ($deletedItem, $user, &$title, &$head, &$scripts) {
         renderContact($id, $data, $items, $infoText, $scripts);
 
         include_once "$fnsDir/compressed_css_link.php";
-        $head = compressed_css_link('contact', '../../');
+        $head = compressed_css_link('contact', $base);
 
     } elseif ($type == 'event') {
         include_once __DIR__.'/renderEvent.php';

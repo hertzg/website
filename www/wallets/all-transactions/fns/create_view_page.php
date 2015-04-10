@@ -1,6 +1,6 @@
 <?php
 
-function create_view_page ($transaction) {
+function create_view_page ($transaction, &$scripts) {
 
     $fnsDir = __DIR__.'/../../../fns';
     $id = $transaction->id;
@@ -58,7 +58,7 @@ function create_view_page ($transaction) {
         ],
         "Transaction #$id",
         Page\sessionMessages('wallets/all-transactions/view/messages')
-        .ViewTransactionPage\viewContent($transaction)
+        .ViewTransactionPage\viewContent($transaction, $scripts, '../')
         .create_panel('Transaction Options', $optionsContent),
         Page\newItemButton("../new/$walletEscapedItemQuery", 'Transaction')
     );

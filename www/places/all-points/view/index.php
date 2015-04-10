@@ -13,7 +13,7 @@ $itemQuery = ItemList\itemQuery($id);
 include_once '../fns/create_view_page.php';
 include_once "$fnsDir/compressed_js_script.php";
 $content =
-    create_view_page($point)
+    create_view_page($point, $scripts)
     .compressed_js_script('confirmDialog', $base)
     .'<script type="text/javascript">'
         ."var deleteHref = '../delete/submit.php$itemQuery'"
@@ -26,4 +26,5 @@ include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";
 echo_page($user, "Point #$id", $content, $base, [
     'head' => compressed_css_link('confirmDialog', $base),
+    'scripts' => $scripts,
 ]);

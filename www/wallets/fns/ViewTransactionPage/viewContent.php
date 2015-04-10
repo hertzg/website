@@ -2,9 +2,12 @@
 
 namespace ViewTransactionPage;
 
-function viewContent ($transaction) {
+function viewContent ($transaction, &$scripts, $base = '') {
 
     $fnsDir = __DIR__.'/../../../fns';
+
+    include_once "$fnsDir/compressed_js_script.php";
+    $scripts = compressed_js_script('dateAgo', "$base../../");
 
     include_once "$fnsDir/format_author.php";
     $author = format_author($transaction->insert_time,

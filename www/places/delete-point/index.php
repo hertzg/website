@@ -13,7 +13,7 @@ include_once '../fns/ViewPointPage/create.php';
 include_once "$fnsDir/ItemList/escapedItemQuery.php";
 include_once "$fnsDir/Page/confirmDialog.php";
 $content =
-    ViewPointPage\create($point)
+    ViewPointPage\create($point, $scripts)
     .Page\confirmDialog(
         'Are you sure you want to delete the point?'
         .' The latitude, the longitude and the altitude of the place'
@@ -25,4 +25,5 @@ include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";
 echo_page($user, "Delete Point #$id?", $content, $base, [
     'head' => compressed_css_link('confirmDialog', $base),
+    'scripts' => $scripts,
 ]);

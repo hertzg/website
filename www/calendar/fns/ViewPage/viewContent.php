@@ -2,9 +2,12 @@
 
 namespace ViewPage;
 
-function viewContent ($event) {
+function viewContent ($event, &$scripts, $base = '') {
 
     $fnsDir = __DIR__.'/../../../fns';
+
+    include_once "$fnsDir/compressed_js_script.php";
+    $scripts = compressed_js_script('dateAgo', "$base../../");
 
     include_once "$fnsDir/format_author.php";
     $author = format_author($event->insert_time, $event->insert_api_key_name);

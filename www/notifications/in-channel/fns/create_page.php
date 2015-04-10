@@ -1,6 +1,6 @@
 <?php
 
-function create_page ($mysqli, $user, $channel, $base = '') {
+function create_page ($mysqli, $user, $channel, &$scripts, $base = '') {
 
     $id = $channel->id;
     $fnsDir = __DIR__.'/../../../fns';
@@ -30,7 +30,7 @@ function create_page ($mysqli, $user, $channel, $base = '') {
 
     include_once __DIR__.'/../../fns/render_filtered_notifications.php';
     render_filtered_notifications($base, $id, $offset,
-        $limit, $total, $notifications, $items, $options);
+        $limit, $total, $notifications, $items, $options, $scripts);
 
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Page/sessionMessages.php";

@@ -1,6 +1,6 @@
 <?php
 
-function create_page ($mysqli, $user, $base = '') {
+function create_page ($mysqli, $user, &$scripts, $base = '') {
 
     $id_users = $user->id_users;
     $fnsDir = __DIR__.'/../../fns';
@@ -27,6 +27,9 @@ function create_page ($mysqli, $user, $base = '') {
     $items = [];
 
     if ($user->num_notifications) {
+
+        include_once "$fnsDir/compressed_js_script.php";
+        $scripts = compressed_js_script('dateAgo', "$base../");
 
         include_once "$fnsDir/Notifications/indexPageOnUser.php";
         $notifications = Notifications\indexPageOnUser($mysqli,

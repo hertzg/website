@@ -1,11 +1,14 @@
 <?php
 
 function render_filtered_notifications ($base, $id, $offset,
-    $limit, $total, $notifications, &$items, &$options) {
+    $limit, $total, $notifications, &$items, &$options, &$scripts) {
 
     $fnsDir = __DIR__.'/../../fns';
 
     if ($notifications) {
+
+        include_once "$fnsDir/compressed_js_script.php";
+        $scripts = compressed_js_script('dateAgo', "$base../../");
 
         include_once "$fnsDir/ItemList/escapedItemQuery.php";
         $escapedItemQuery = ItemList\escapedItemQuery($id);

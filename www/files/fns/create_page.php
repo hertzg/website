@@ -1,6 +1,6 @@
 <?php
 
-function create_page ($mysqli, $user, $folder) {
+function create_page ($mysqli, $user, $folder, &$scripts, $base = '') {
 
     $fnsDir = __DIR__.'/../../fns';
     $id = $folder ? $folder->id_folders : 0;
@@ -29,7 +29,7 @@ function create_page ($mysqli, $user, $folder) {
         $items[] = SearchForm\create('search/', $formContent);
 
         include_once "$fnsDir/compressed_js_script.php";
-        $scripts = compressed_js_script('searchForm', '../');
+        $scripts = compressed_js_script('searchForm', "$base../");
 
     }
 
@@ -45,6 +45,9 @@ function create_page ($mysqli, $user, $folder) {
     }
 
     if ($id) {
+
+        include_once "$fnsDir/compressed_js_script.php";
+        $scripts .= compressed_js_script('dateAgo', "$base../");
 
         include_once "$fnsDir/format_author.php";
         $author = format_author($folder->insert_time,

@@ -2,13 +2,17 @@
 
 namespace ViewPage;
 
-function create ($note) {
+function create ($note, &$scripts) {
 
     $id = $note->id;
+    $base = '../../';
     $fnsDir = __DIR__.'/../../../fns';
 
+    include_once "$fnsDir/compressed_js_script.php";
+    $scripts = compressed_js_script('dateAgo', $base);
+
     include_once "$fnsDir/create_text_item.php";
-    $items = [create_text_item($note->text, '../../')];
+    $items = [create_text_item($note->text, $base)];
 
     if ($note->num_tags) {
         include_once "$fnsDir/Page/tags.php";

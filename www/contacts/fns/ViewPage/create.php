@@ -2,10 +2,13 @@
 
 namespace ViewPage;
 
-function create ($contact, &$head, $base = '') {
+function create ($contact, &$head, &$scripts, $base = '') {
 
     $id = $contact->id;
     $fnsDir = __DIR__.'/../../../fns';
+
+    include_once "$fnsDir/compressed_js_script.php";
+    $scripts = compressed_js_script('dateAgo', "$base../../");
 
     include_once "$fnsDir/request_strings.php";
     list($keyword) = request_strings('keyword');
@@ -57,8 +60,12 @@ function create ($contact, &$head, $base = '') {
 
     $timezone = $contact->timezone;
     if ($timezone !== null) {
+
         include_once "$fnsDir/Form/timezoneLabel.php";
         $items[] = \Form\timezoneLabel($timezone);
+
+        $scripts .= compressed_js_script('timezoneLabel', "$base../../");
+
     }
 
     if ($contact->num_tags) {

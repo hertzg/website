@@ -1,6 +1,6 @@
 <?php
 
-function create_view_page ($point) {
+function create_view_page ($point, &$scripts) {
 
     $fnsDir = __DIR__.'/../../../fns';
     $id = $point->id;
@@ -45,7 +45,7 @@ function create_view_page ($point) {
         ],
         "Point #$id",
         Page\sessionMessages('places/all-points/view/messages')
-        .ViewPointPage\viewContent($point)
+        .ViewPointPage\viewContent($point, $scripts, '../')
         .create_panel('Point Options', $optionsContent),
         Page\newItemButton("../new/$placeEscapedItemQuery", 'point')
     );
