@@ -94,7 +94,7 @@ function Battery (base) {
 
 }
 ;
-function Clock (remoteTime) {
+function Clock (remoteTime, timezone) {
 
     function TextNode (text) {
         return document.createTextNode(text)
@@ -113,7 +113,7 @@ function Clock (remoteTime) {
             minuteNode.nodeValue = pad(date.getUTCMinutes())
             secondNode.nodeValue = pad(date.getUTCSeconds())
             updateListeners.forEach(function (listener) {
-                listener(date)
+                listener(date, date.getTime() - timezone * 60 * 1000)
             })
             setTimeout(update, Math.max(0, time + 1000 - Date.now()))
         })
@@ -169,11 +169,11 @@ function Clock (remoteTime) {
 
 }
 ;
-(function (base, time) {
+(function (base, time, timezone) {
     Battery(base)
-    var clock = Clock(time)
+    var clock = Clock(time, timezone)
     window.batteryAndClock = { onClockUpdate: clock.onUpdate }
-})(base, time)
+})(base, time, timezone)
 ;
 
 })()

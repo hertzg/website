@@ -1,4 +1,4 @@
-function Clock (remoteTime) {
+function Clock (remoteTime, timezone) {
 
     function TextNode (text) {
         return document.createTextNode(text)
@@ -17,7 +17,7 @@ function Clock (remoteTime) {
             minuteNode.nodeValue = pad(date.getUTCMinutes())
             secondNode.nodeValue = pad(date.getUTCSeconds())
             updateListeners.forEach(function (listener) {
-                listener(date)
+                listener(date, date.getTime() - timezone * 60 * 1000)
             })
             setTimeout(update, Math.max(0, time + 1000 - Date.now()))
         })

@@ -1,5 +1,5 @@
-(function (base, time) {
+(function (base, time, timezone) {
     Battery(base)
-    var clock = Clock(time)
+    var clock = Clock(time, timezone)
     window.batteryAndClock = { onClockUpdate: clock.onUpdate }
-})(base, time)
+})(base, time, timezone)
