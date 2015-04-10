@@ -12,7 +12,7 @@ unset($_SESSION['account/connections/view/messages']);
 include_once '../fns/create_view_page.php';
 include_once "$fnsDir/Page/confirmDialog.php";
 $content =
-    create_view_page($connection)
+    create_view_page($connection, $scripts)
     .Page\confirmDialog('Are you sure you want to delete the connection?',
         'Yes, delete connection', "submit.php?id=$id", "../view/?id=$id");
 
@@ -22,4 +22,5 @@ echo_page($user, "Delete Connection #$id?", $content, $base, [
     'head' =>
         '<link rel="stylesheet" type="text/css" href="../view.css" />'
         .compressed_css_link('confirmDialog', $base),
+    'scripts' => $scripts,
 ]);

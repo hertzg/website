@@ -17,7 +17,7 @@ unset(
 include_once '../fns/create_view_page.php';
 include_once "$fnsDir/compressed_js_script.php";
 $content =
-    create_view_page($connection)
+    create_view_page($connection, $scripts)
     .compressed_js_script('confirmDialog', $base)
     .'<script type="text/javascript">'
         .'var deleteHref = '.json_encode("../delete/submit.php?id=$id")
@@ -30,4 +30,5 @@ echo_page($user, "Connection #$id", $content, $base, [
     'head' =>
         '<link rel="stylesheet" type="text/css" href="../view.css" />'
         .compressed_css_link('confirmDialog', $base),
+    'scripts' => $scripts,
 ]);

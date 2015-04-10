@@ -1,6 +1,6 @@
 <?php
 
-function create_view_page ($connection) {
+function create_view_page ($connection, &$scripts) {
 
     $id = $connection->id;
     $fnsDir = __DIR__.'/../../../fns';
@@ -25,6 +25,14 @@ function create_view_page ($connection) {
     $optionsContent = Page\staticTwoColumns($editLink, $deleteLink);
 
     include_once __DIR__.'/../../fns/create_expires_label.php';
+    $expiresLabel = create_expires_label(
+        $connection->expire_time, $dateAgoScript);
+
+    if ($dateAgoScript) {
+        include_once "$fnsDir/compressed_js_script.php";
+        $scripts = compressed_js_script('dateAgo', '../../../');
+    }
+
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/Page/newItemButton.php";
@@ -41,7 +49,7 @@ function create_view_page ($connection) {
         Page\sessionMessages('account/connections/view/messages')
         .Form\label('Username', htmlspecialchars($connection->username))
         .'<div class="hr"></div>'
-        .create_expires_label($connection->expire_time)
+        .$expiresLabel
         .'<div class="hr"></div>'
         .Form\label('This user', $permissions)
         .create_panel('Conneciton Options', $optionsContent),

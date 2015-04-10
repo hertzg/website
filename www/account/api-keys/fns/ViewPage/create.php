@@ -2,7 +2,7 @@
 
 namespace ViewPage;
 
-function create ($apiKey) {
+function create ($apiKey, &$scripts) {
 
     $id = $apiKey->id;
     $fnsDir = __DIR__.'/../../../../fns';
@@ -34,8 +34,15 @@ function create ($apiKey) {
 
     }
 
-    include_once __DIR__.'/createPermissionsField.php';
     include_once __DIR__.'/../../../fns/create_expires_label.php';
+    $expiresLabel = create_expires_label($apiKey->expire_time, $dateAgoScript);
+
+    if ($dateAgoScript) {
+        include_once "$fnsDir/compressed_js_script.php";
+        $scripts = compressed_js_script('dateAgo', '../../../');
+    }
+
+    include_once __DIR__.'/createPermissionsField.php';
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/Form/textarea.php";
@@ -53,7 +60,7 @@ function create ($apiKey) {
         \Page\sessionMessages('account/api-keys/view/messages')
         .\Form\label('Name', htmlspecialchars($apiKey->name))
         .'<div class="hr"></div>'
-        .create_expires_label($apiKey->expire_time)
+        .$expiresLabel
         .'<div class="hr"></div>'
         .\Form\textarea('key', 'Key', [
             'value' => $apiKey->key,
