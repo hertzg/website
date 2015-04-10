@@ -1,6 +1,6 @@
 <?php
 
-function create_page ($mysqli, $user, $base = '') {
+function create_page ($mysqli, $user, &$scripts, $base = '') {
 
     $id_users = $user->id_users;
     $fnsDir = __DIR__.'/../../../fns';
@@ -38,6 +38,9 @@ function create_page ($mysqli, $user, $base = '') {
     include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
 
     if ($receivedFolders || $receivedFiles) {
+
+        include_once "$fnsDir/compressed_js_script.php";
+        $scripts = compressed_js_script('dateAgo', "$base../../");
 
         foreach ($receivedFolders as $receivedFolder) {
             $title = htmlspecialchars($receivedFolder->name);

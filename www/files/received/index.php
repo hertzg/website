@@ -30,7 +30,7 @@ unset(
 include_once 'fns/create_page.php';
 include_once "$fnsDir/compressed_js_script.php";
 $content =
-    create_page($mysqli, $user)
+    create_page($mysqli, $user, $scripts)
     .compressed_js_script('confirmDialog', $base)
     .'<script type="text/javascript" src="index.js"></script>';
 
@@ -38,4 +38,5 @@ include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";
 echo_page($user, 'Received Files', $content, $base, [
     'head' => compressed_css_link('confirmDialog', $base),
+    'scripts' => $scripts,
 ]);
