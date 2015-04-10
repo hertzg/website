@@ -11,6 +11,7 @@ function get_revision ($key) {
         'js/batteryAndClock/compressed.js' => 9,
         'js/calendarIcon/compressed.js' => 2,
         'js/confirmDialog/compressed.js' => 5,
+        'js/dateAgo/compressed.js' => 1,
         'js/flexTextarea/compressed.js' => 1,
         'js/formCheckbox/compressed.js' => 1,
         'js/geolocationDialog/compressed.js' => 6,

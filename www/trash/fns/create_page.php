@@ -1,6 +1,6 @@
 <?php
 
-function create_page ($mysqli, $user, $base = '') {
+function create_page ($mysqli, $user, &$scripts, $base = '') {
 
     $fnsDir = __DIR__.'/../../fns';
 
@@ -11,17 +11,21 @@ function create_page ($mysqli, $user, $base = '') {
 
     if ($user->num_deleted_items) {
 
+        include_once "$fnsDir/compressed_js_script.php";
+        $scripts = compressed_js_script('dateAgo', "$base../");
+
         include_once "$fnsDir/DeletedItems/indexOnUser.php";
         $deletedItems = DeletedItems\indexOnUser($mysqli, $user->id_users);
 
-        include_once "$fnsDir/date_ago.php";
+        include_once "$fnsDir/export_date_ago.php";
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         foreach ($deletedItems as $deletedItem) {
 
             $type = $deletedItem->data_type;
             $data = json_decode($deletedItem->data_json);
 
-            $description = 'Deleted '.date_ago($deletedItem->insert_time);
+            $description = 'Deleted '.export_date_ago(
+                $deletedItem->insert_time);
 
             $id = $deletedItem->id;
             $href = "{$base}view/?id=$id";

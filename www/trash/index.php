@@ -10,7 +10,7 @@ unset($_SESSION['home/messages']);
 
 include_once 'fns/create_page.php';
 include_once '../lib/mysqli.php';
-$content = create_page($mysqli, $user);
+$content = create_page($mysqli, $user, $scripts);
 
 if ($user->num_deleted_items) {
 
@@ -29,4 +29,7 @@ if ($user->num_deleted_items) {
 
 include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";
-echo_page($user, 'Trash', $content, $base, ['head' => $head]);
+echo_page($user, 'Trash', $content, $base, [
+    'head' => $head,
+    'scripts' => $scripts,
+]);
