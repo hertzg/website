@@ -1,9 +1,12 @@
 <?php
 
-function create_page ($mysqli, $user, $wallet, $base = '') {
+function create_page ($mysqli, $user, $wallet, &$scripts, $base = '') {
 
     $id = $wallet->id;
     $fnsDir = __DIR__.'/../../../fns';
+
+    include_once "$fnsDir/compressed_js_script.php";
+    $scripts = compressed_js_script('dateAgo', "$base../../");
 
     include_once "$fnsDir/Paging/requestOffset.php";
     $offset = Paging\requestOffset("./?id=$id");

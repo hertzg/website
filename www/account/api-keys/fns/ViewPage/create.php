@@ -24,8 +24,10 @@ function create ($apiKey, &$scripts) {
     if ($access_time === null) $accessed = 'Never';
     else {
 
-        include_once "$fnsDir/date_ago.php";
-        $accessed = date_ago($access_time, true);
+        include_once "$fnsDir/export_date_ago.php";
+        $accessed = export_date_ago($access_time, true);
+
+        $dateAgoScript = true;
 
         $access_remote_address = $apiKey->access_remote_address;
         if ($access_remote_address !== null) {

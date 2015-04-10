@@ -24,22 +24,31 @@ check_offset_overflow($offset, $limit, $total, []);
 
 $items = [];
 
-include_once 'fns/render_prev_button.php';
-render_prev_button($offset, $limit, $total, $items);
+if ($signins) {
 
-include_once "$fnsDir/create_image_text.php";
-include_once "$fnsDir/date_ago.php";
-foreach ($signins as $signin) {
-    $text =
-        htmlspecialchars($signin->remote_address)
-        .'<div style="color: #777; font-size: 12px; line-height: 14px">'
-            .date_ago($signin->insert_time, true)
-        .'</div>';
-    $items[] = create_image_text($text, 'sign-in');
+    include_once "$fnsDir/compressed_js_script.php";
+    $scripts = compressed_js_script('dateAgo', $base);
+
+    include_once 'fns/render_prev_button.php';
+    render_prev_button($offset, $limit, $total, $items);
+
+    include_once "$fnsDir/create_image_text.php";
+    include_once "$fnsDir/export_date_ago.php";
+    foreach ($signins as $signin) {
+        $text =
+            htmlspecialchars($signin->remote_address)
+            .'<div style="color: #777; font-size: 12px; line-height: 14px">'
+                .export_date_ago($signin->insert_time, true)
+            .'</div>';
+        $items[] = create_image_text($text, 'sign-in');
+    }
+
+    include_once 'fns/render_next_button.php';
+    render_next_button($offset, $limit, $total, $items);
+
+} else {
+    $scripts = '';
 }
-
-include_once 'fns/render_next_button.php';
-render_next_button($offset, $limit, $total, $items);
 
 if ($offset + $limit >= $total) {
     include_once "$fnsDir/Page/info.php";
@@ -59,4 +68,6 @@ $content = Page\tabs(
 );
 
 include_once "$fnsDir/echo_page.php";
-echo_page($user, 'Successful Signins', $content, $base);
+echo_page($user, 'Successful Signins', $content, $base, [
+    'scripts' => $scripts,
+]);

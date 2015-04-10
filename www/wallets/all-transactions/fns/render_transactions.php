@@ -5,12 +5,12 @@ function render_transactions ($transactions, &$items, $base = '') {
     $fnsDir = __DIR__.'/../../../fns';
 
     include_once "$fnsDir/amount_html.php";
-    include_once "$fnsDir/date_ago.php";
+    include_once "$fnsDir/export_date_ago.php";
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
     include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
     foreach ($transactions as $transaction) {
 
-        $itemDescription = date_ago($transaction->insert_time, true);
+        $itemDescription = export_date_ago($transaction->insert_time, true);
 
         $description = $transaction->description;
         if ($description !== '') {

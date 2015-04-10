@@ -2,10 +2,13 @@
 
 namespace ViewPage;
 
-function create ($mysqli, $user, $wallet) {
+function create ($mysqli, $user, $wallet, &$scripts) {
 
     $fnsDir = __DIR__.'/../../../fns';
     $id = $wallet->id;
+
+    include_once "$fnsDir/compressed_js_script.php";
+    $scripts = compressed_js_script('dateAgo', '../../');
 
     include_once "$fnsDir/format_author.php";
     $author = format_author($wallet->insert_time, $wallet->insert_api_key_name);

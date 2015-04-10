@@ -1,6 +1,6 @@
 <?php
 
-function create_view_page ($token) {
+function create_view_page ($token, &$scripts) {
 
     $id = $token->id;
     $fnsDir = __DIR__.'/../../../fns';
@@ -11,8 +11,11 @@ function create_view_page ($token) {
             .Page\imageLink('Delete', "../delete/?id=$id", 'trash-bin')
         .'</div>';
 
-    include_once "$fnsDir/date_ago.php";
-    $accessed = date_ago($token->access_time, true);
+    include_once "$fnsDir/export_date_ago.php";
+    $accessed = export_date_ago($token->access_time, true);
+
+    include_once "$fnsDir/compressed_js_script.php";
+    $scripts = compressed_js_script('dateAgo', '../../../');
 
     $access_remote_address = $token->access_remote_address;
     if ($access_remote_address !== null) {

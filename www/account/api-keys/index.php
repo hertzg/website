@@ -6,6 +6,8 @@ $fnsDir = '../../fns';
 include_once "$fnsDir/require_user.php";
 $user = require_user($base);
 
+$dateAgoScript = true;
+
 $items = [];
 if ($user->num_api_keys) {
 
@@ -30,8 +32,10 @@ if ($user->num_api_keys) {
         if ($access_time === null) {
             $descriptions[] = 'Never accessed.';
         } else {
-            include_once "$fnsDir/date_ago.php";
-            $descriptions[] = 'Last accessed '.date_ago($access_time).'.';
+            include_once "$fnsDir/export_date_ago.php";
+            $descriptions[] = 'Last accessed '
+                .export_date_ago($access_time).'.';
+            $dateAgoScript = true;
         }
         $description = join(' ', $descriptions);
 
@@ -72,5 +76,14 @@ $content = Page\tabs(
     Page\newItemButton('new/', 'API Key')
 );
 
+if ($dateAgoScript) {
+    include_once "$fnsDir/compressed_js_script.php";
+    $scripts = compressed_js_script('dateAgo', $base);
+} else {
+    $scripts = '';
+}
+
 include_once "$fnsDir/echo_page.php";
-echo_page($user, 'API Keys', $content, $base);
+echo_page($user, 'API Keys', $content, $base, [
+    'scripts' => $scripts,
+]);
