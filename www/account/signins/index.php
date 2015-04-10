@@ -33,7 +33,7 @@ foreach ($signins as $signin) {
     $text =
         htmlspecialchars($signin->remote_address)
         .'<div style="color: #777; font-size: 12px; line-height: 14px">'
-            .ucfirst(date_ago($signin->insert_time))
+            .date_ago($signin->insert_time, true)
         .'</div>';
     $items[] = create_image_text($text, 'sign-in');
 }

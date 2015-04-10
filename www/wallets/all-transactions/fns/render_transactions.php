@@ -10,7 +10,7 @@ function render_transactions ($transactions, &$items, $base = '') {
     include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
     foreach ($transactions as $transaction) {
 
-        $itemDescription = ucfirst(date_ago($transaction->insert_time));
+        $itemDescription = date_ago($transaction->insert_time, true);
 
         $description = $transaction->description;
         if ($description !== '') {

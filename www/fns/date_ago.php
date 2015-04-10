@@ -1,30 +1,39 @@
 <?php
 
-function date_ago ($time) {
+function date_ago ($time, $uppercase = false) {
 
-    $seconds = time() - $time;
+    $date_ago = function ($time) {
 
-    $minutes = floor($seconds / 60);
-    if (!$minutes) return 'just now';
-    if ($minutes <= 1) return 'a minute ago';
-    if ($minutes == 30) return 'half an hour ago';
+        $seconds = time() - $time;
 
-    $hours = floor($minutes / 60);
-    if (!$hours) return "$minutes minutes ago";
-    if ($hours == 1) return 'an hour ago';
+        $minutes = floor($seconds / 60);
+        if (!$minutes) return 'just now';
+        if ($minutes <= 1) return 'a minute ago';
+        if ($minutes == 30) return 'half an hour ago';
 
-    $days = floor($hours / 24);
-    if (!$days) return "$hours hours ago";
-    if ($days == 1) return "yesterday";
+        $hours = floor($minutes / 60);
+        if (!$hours) return "$minutes minutes ago";
+        if ($hours == 1) return 'an hour ago';
 
-    $months = floor($days / 30);
-    if (!$months) return "$days days ago";
-    if ($months == 1) return 'a month ago';
+        $days = floor($hours / 24);
+        if (!$days) return "$hours hours ago";
+        if ($days == 1) return "yesterday";
 
-    $years = floor($months / 12);
-    if (!$years) return "$months months ago";
-    if ($years == 1) return 'a year ago';
+        $months = floor($days / 30);
+        if (!$months) return "$days days ago";
+        if ($months == 1) return 'a month ago';
 
-    return "$years years ago";
+        $years = floor($months / 12);
+        if (!$years) return "$months months ago";
+        if ($years == 1) return 'a year ago';
+
+        return "$years years ago";
+
+    };
+
+    $value = $date_ago($time);
+    if ($uppercase) $value = ucfirst($value);
+
+    return $value;
 
 }

@@ -12,7 +12,7 @@ function create_view_page ($token) {
         .'</div>';
 
     include_once "$fnsDir/date_ago.php";
-    $accessed = ucfirst(date_ago($token->access_time));
+    $accessed = date_ago($token->access_time, true);
 
     $access_remote_address = $token->access_remote_address;
     if ($access_remote_address !== null) {

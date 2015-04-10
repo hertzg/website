@@ -25,7 +25,7 @@ function create ($apiKey) {
     else {
 
         include_once "$fnsDir/date_ago.php";
-        $accessed = ucfirst(date_ago($access_time));
+        $accessed = date_ago($access_time, true);
 
         $access_remote_address = $apiKey->access_remote_address;
         if ($access_remote_address !== null) {

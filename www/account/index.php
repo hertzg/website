@@ -38,7 +38,7 @@ include_once "$fnsDir/Themes/index.php";
 $items[] = Form\label('Theme', Themes\index()[$user->theme]);
 
 include_once "$fnsDir/date_ago.php";
-$items[] = Form\label('Account created', ucfirst(date_ago($user->insert_time)));
+$items[] = Form\label('Account created', date_ago($user->insert_time, true));
 
 include_once "$fnsDir/bytestr.php";
 $items[] = Form\label('Using storage', bytestr($user->storage_used));

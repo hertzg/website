@@ -13,7 +13,7 @@ function create_expires_label ($expire_time) {
     } else {
         $label = 'Expired';
         include_once "$fnsDir/date_ago.php";
-        $content = ucfirst(date_ago($expire_time));
+        $content = date_ago($expire_time, true);
     }
 
     include_once "$fnsDir/Form/label.php";
