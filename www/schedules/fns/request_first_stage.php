@@ -2,7 +2,6 @@
 
 function request_first_stage (&$errors) {
 
-    $errors = [];
     $fnsDir = __DIR__.'/../../fns';
 
     include_once "$fnsDir/Schedules/requestFirstStage.php";

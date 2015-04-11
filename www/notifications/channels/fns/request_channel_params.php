@@ -3,7 +3,6 @@
 function request_channel_params ($mysqli, &$errors, $exclude_id = 0) {
 
     $fnsDir = __DIR__.'/../../../fns';
-    $errors = [];
 
     include_once "$fnsDir/Channels/request.php";
     list($channel_name, $public, $receive_notifications) = Channels\request();
