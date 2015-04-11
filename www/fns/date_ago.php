@@ -19,8 +19,12 @@ function date_ago ($time, $uppercase = false) {
         if (!$days) return "$hours hours ago";
         if ($days == 1) return "yesterday";
 
+        $weeks = floor($days / 7);
+        if (!$weeks) return "$days days ago";
+        if ($weeks == 1) return 'a week ago';
+
         $months = floor($days / 30);
-        if (!$months) return "$days days ago";
+        if (!$months) return "$weeks weeks ago";
         if ($months == 1) return 'a month ago';
 
         $years = floor($months / 12);
