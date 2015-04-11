@@ -2,8 +2,13 @@
 
 namespace Form;
 
-function select ($name, $text, $options, $value) {
-    $selectHtml = "<select class=\"form-select\" name=\"$name\" id=\"$name\">";
+function select ($name, $text, $options, $value, $autofocus = false) {
+
+    if ($autofocus) $autofocusAttribute = ' autofocus="autofocus"';
+    else $autofocusAttribute = '';
+
+    $selectHtml = '<select class="form-select"'
+        ." name=\"$name\" id=\"$name\"$autofocusAttribute>";
     foreach ($options as $itemValue => $itemText) {
         if (strcmp($itemValue, $value) === 0) {
             $selectHtml .=
@@ -15,6 +20,8 @@ function select ($name, $text, $options, $value) {
         }
     }
     $selectHtml .= '</select>';
+
     include_once __DIR__.'/association.php';
     return association($selectHtml, "<label for=\"$name\">$text:</label>");
+
 }

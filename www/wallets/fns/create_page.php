@@ -26,9 +26,13 @@ function create_page ($mysqli, $user, $base = '') {
                 "{$base}view/?id=$id", 'wallet', ['id' => $id]);
         }
 
+        include_once "$fnsDir/Page/imageArrowLink.php";
         include_once "$fnsDir/Page/imageLink.php";
         $optionsContent =
-            '<div id="deleteAllLink">'
+            Page\imageArrowLink('New Transaction', 'quick-new-transaction/',
+                'create-transaction', ['id' => 'new-transaction'])
+            .'<div class="hr"></div>'
+            .'<div id="deleteAllLink">'
                 .Page\imageLink('Delete All Wallets',
                     "{$base}delete-all/", 'trash-bin')
             .'</div>';
@@ -47,7 +51,9 @@ function create_page ($mysqli, $user, $base = '') {
         $_SESSION['home/messages'],
         $_SESSION['wallets/new/errors'],
         $_SESSION['wallets/new/values'],
-        $_SESSION['wallets/view/messages']
+        $_SESSION['wallets/view/messages'],
+        $_SESSION['wallets/quick-new-transaction/errors'],
+        $_SESSION['wallets/quick-new-transaction/values']
     );
 
     include_once "$fnsDir/create_new_item_button.php";

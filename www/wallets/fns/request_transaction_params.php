@@ -6,7 +6,6 @@ function request_transaction_params (&$errors) {
     $values = WalletTransactions\request();
     list($amount, $parsed_amount, $description) = $values;
 
-    $errors = [];
     if ($amount === '') $errors[] = 'Enter amount.';
     elseif ($parsed_amount === 0) $errors[] = 'The amount is invalid.';
 
