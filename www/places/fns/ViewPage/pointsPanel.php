@@ -20,16 +20,10 @@ function pointsPanel ($mysqli, $place) {
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
     include_once "$fnsDir/Page/imageArrowLink.php";
     foreach ($points as $point) {
-
         $escapedItemQuery = \ItemList\escapedItemQuery($point->id);
-        $delete_url = "../delete-point/submit.php$escapedItemQuery";
-
         $items[] =
-            "<div class=\"deleteLinkWrapper\" data-delete_url=\"$delete_url\">"
-                .\Page\imageArrowLink("$point->latitude $point->longitude",
-                    "../view-point/$escapedItemQuery", 'point')
-            .'</div>';
-
+            \Page\imageArrowLink("$point->latitude $point->longitude",
+                "../view-point/$escapedItemQuery", 'point');
     }
 
     if ($num_points > $limit) {
