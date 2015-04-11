@@ -3,9 +3,10 @@
 namespace Users\Home;
 
 function editVisibilities ($mysqli, $id_users, $bookmarks,
-    $new_bookmark, $calendar, $new_event, $contacts, $new_contact, $files,
-    $upload_files, $notes, $new_note, $notifications, $places, $new_place,
-    $schedules, $tasks, $new_task, $wallets, $new_wallet, $trash) {
+    $new_bookmark, $calendar, $new_event, $contacts, $new_contact,
+    $files, $upload_files, $notes, $new_note, $notifications,
+    $places, $new_place, $schedules, $tasks, $new_task,
+    $wallets, $new_wallet, $new_transaction, $trash) {
 
     $bookmarks = $bookmarks ? '1' : '0';
     $new_bookmark = $new_bookmark ? '1' : '0';
@@ -25,6 +26,7 @@ function editVisibilities ($mysqli, $id_users, $bookmarks,
     $new_task = $new_task ? '1' : '0';
     $wallets = $wallets ? '1' : '0';
     $new_wallet = $new_wallet ? '1' : '0';
+    $new_transaction = $new_transaction ? '1' : '0';
     $trash = $trash ? '1' : '0';
 
     $sql = "update users set show_bookmarks = $bookmarks,"
@@ -36,8 +38,9 @@ function editVisibilities ($mysqli, $id_users, $bookmarks,
         ." show_places = $places, show_new_place = $new_place,"
         ." show_schedules = $schedules, show_tasks = $tasks,"
         ." show_new_task = $new_task, show_wallets = $wallets,"
-        ." show_new_wallet = $new_wallet, show_trash = $trash"
-        ." where id_users = $id_users";
+        ." show_new_wallet = $new_wallet,"
+        ." show_new_transaction = $new_transaction,"
+        ." show_trash = $trash where id_users = $id_users";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 

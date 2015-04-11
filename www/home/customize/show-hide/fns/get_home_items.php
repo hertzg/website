@@ -20,6 +20,7 @@ function get_home_items () {
         'new-task' => ['New Task', 'new_task'],
         'wallets' => ['Wallets', 'wallets'],
         'new-wallet' => ['New Wallet', 'new_wallet'],
+        'new-transaction' => ['New Transaction', 'new_transaction'],
         'trash' => ['Trash', 'trash'],
     ];
 }

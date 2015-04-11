@@ -88,6 +88,12 @@ function getHomeItems ($mysqli, $user, &$scripts) {
             'New Wallet', '../wallets/new/', 'create-wallet');
     }
 
+    if ($user->show_new_transaction) {
+        include_once "$fnsDir/Page/imageArrowLink.php";
+        $items['new-transaction'] = \Page\imageArrowLink('New Transaction',
+            '../wallets/quick-new-transaction/', 'create-transaction');
+    }
+
     $sortedItems = [];
     $order_home_items = json_decode($user->order_home_items);
     foreach ($order_home_items as $key) {
