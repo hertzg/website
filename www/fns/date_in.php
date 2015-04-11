@@ -17,8 +17,12 @@ function date_in ($time) {
     if (!$days) return "in $hours hours";
     if ($days == 1) return "tomorrow";
 
+    $weeks = floor($days / 7);
+    if (!$weeks) return "in $days days";
+    if ($weeks == 1) return 'in a week';
+
     $months = floor($days / 30);
-    if (!$months) return "in $days days";
+    if (!$months) return "in $weeks weeks";
     if ($months == 1) return 'in a month';
 
     $years = floor($months / 12);
