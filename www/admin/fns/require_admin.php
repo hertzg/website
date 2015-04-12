@@ -21,6 +21,6 @@ function require_admin () {
     if (!Password\match($hash, $salt, $_SERVER['PHP_AUTH_PW'])) $invalid();
 
     include_once "$fnsDir/session_start_custom.php";
-    session_start_custom();
+    session_start_custom($new);
 
 }

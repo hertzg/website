@@ -3,7 +3,7 @@
 function signed_user () {
 
     include_once __DIR__.'/session_start_custom.php';
-    session_start_custom();
+    session_start_custom($new);
 
     $user = null;
 

@@ -7,7 +7,7 @@ include_once '../fns/request_strings.php';
 list($auto) = request_strings('auto');
 
 include_once '../fns/session_start_custom.php';
-session_start_custom();
+session_start_custom($new);
 
 if (array_key_exists('token', $_SESSION)) {
 
@@ -33,7 +33,7 @@ if (array_key_exists('token', $_SESSION)) {
 }
 
 session_destroy();
-session_start_custom();
+session_start_custom($new);
 
 if ($auto) $message = 'You have automatically been signed out.';
 else $message = 'You have been signed out.';

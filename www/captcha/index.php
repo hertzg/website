@@ -5,7 +5,7 @@ $chars = str_shuffle($chars);
 $captcha = substr($chars, -5);
 
 include_once '../fns/session_start_custom.php';
-session_start_custom();
+session_start_custom($new);
 
 $_SESSION['captcha'] = $captcha;
 session_commit();

@@ -11,6 +11,6 @@ function require_not_installed ($base = '') {
     }
 
     include_once "$fnsDir/session_start_custom.php";
-    session_start_custom();
+    session_start_custom($new);
 
 }

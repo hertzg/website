@@ -15,7 +15,7 @@ if ($password === '') {
 }
 
 include_once '../../fns/session_start_custom.php';
-session_start_custom();
+session_start_custom($new);
 
 include_once '../../fns/Session/authenticate.php';
 include_once '../../lib/mysqli.php';
