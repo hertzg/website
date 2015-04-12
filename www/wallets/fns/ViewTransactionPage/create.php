@@ -12,9 +12,10 @@ function create ($transaction, &$scripts) {
     $editLink = \Page\imageArrowLink('Edit',
         "../edit-transaction/?id=$id", 'edit-transaction', ['id' => 'edit']);
 
+    include_once "$fnsDir/amount_text.php";
     $params = [
         'id' => $id_wallets,
-        'amount' => $transaction->amount,
+        'amount' => amount_text($transaction->amount),
     ];
     $description = $transaction->description;
     if ($description !== '') $params['description'] = $description;
