@@ -9,11 +9,22 @@ function ExtendSession (base) {
                 time = storedTime
                 setTimeout(check, interval)
             } else {
-                var url = base + 'api-call/session/extend?session_auth=1'
                 var request = new XMLHttpRequest
-                request.open('get', url)
+                request.open('get', base + 'api-call/session/extend')
                 request.send()
-                request.onload = schedule
+                request.onload = function () {
+                    var status = request.status
+                    if (status == 400) {
+                        var response = JSON.parse(request.responseText)
+                        if (response == 'SESSION_INVALID') {
+                            location.reload()
+                        } else {
+                            // TODO handle other error
+                        }
+                    } else {
+                        schedule()
+                    }
+                }
             }
         }
 
