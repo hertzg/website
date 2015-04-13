@@ -44,7 +44,16 @@ $escapedDomainName = htmlspecialchars($values['domainName']);
 $escapedInfoEmail = htmlspecialchars($values['infoEmail']);
 $escapedSiteBase = htmlspecialchars($values['siteBase']);
 
-$doneSteps = ['Agreement', 'Requirements'];
+$doneSteps = [
+    [
+        'title' => 'Agreement',
+        'href' => '../agreement/',
+    ],
+    [
+        'title' => 'Requirements',
+        'href' => '../requirements/',
+    ],
+];
 $nextSteps = ['MySQL Configuration', 'Administrator', 'Finalize Installation'];
 
 include_once '../fns/echo_page.php';

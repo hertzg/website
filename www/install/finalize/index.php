@@ -22,8 +22,28 @@ $assertsHtml .=
     .assert_success('Data folder is ready.')
     .assert_success('Ready to finish the installation.');
 
-$doneSteps = ['Agreement', 'Requirements',
-    'General Information', 'MySQL Configuration', 'Administrator'];
+$doneSteps = [
+    [
+        'title' => 'Agreement',
+        'href' => '../agreement/',
+    ],
+    [
+        'title' => 'Requirements',
+        'href' => '../requirements/',
+    ],
+    [
+        'title' => 'General Information',
+        'href' => '../general-info/',
+    ],
+    [
+        'title' => 'MySQL Configuration',
+        'href' => '../mysql-config/',
+    ],
+    [
+        'title' => 'Administrator',
+        'href' => '../admin/',
+    ],
+];
 
 include_once '../fns/echo_page.php';
 include_once '../fns/steps.php';

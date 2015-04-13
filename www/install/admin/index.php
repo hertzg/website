@@ -23,8 +23,24 @@ if (array_key_exists($key, $_SESSION)) {
     $errorHtml = '';
 }
 
-$doneSteps = ['Agreement', 'Requirements',
-    'General Information', 'MySQL Configuration'];
+$doneSteps = [
+    [
+        'title' => 'Agreement',
+        'href' => '../agreement/',
+    ],
+    [
+        'title' => 'Requirements',
+        'href' => '../requirements/',
+    ],
+    [
+        'title' => 'General Information',
+        'href' => '../general-info/',
+    ],
+    [
+        'title' => 'MySQL Configuration',
+        'href' => '../mysql-config/',
+    ],
+];
 
 include_once '../fns/echo_page.php';
 include_once '../fns/field_columns.php';

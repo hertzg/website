@@ -27,7 +27,20 @@ if (array_key_exists($key, $_SESSION)) {
     $errorHtml = '';
 }
 
-$doneSteps = ['Agreement', 'Requirements', 'General Information'];
+$doneSteps = [
+    [
+        'title' => 'Agreement',
+        'href' => '../agreement/',
+    ],
+    [
+        'title' => 'Requirements',
+        'href' => '../requirements/',
+    ],
+    [
+        'title' => 'General Information',
+        'href' => '../general-info/',
+    ],
+];
 $nextSteps = ['Administrator', 'Finalize Installation'];
 
 include_once '../fns/echo_page.php';

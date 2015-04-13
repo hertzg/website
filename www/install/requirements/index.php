@@ -75,7 +75,12 @@ include_once '../fns/wizard_layout.php';
 echo_page(
     'Step 2 - Requirements',
     wizard_layout(
-        steps(['Agreement'], 'Requirements', $nextSteps),
+        steps([
+            [
+                'title' => 'Agreement',
+                'href' => '../agreement/',
+            ],
+        ], 'Requirements', $nextSteps),
         '<span class="title-step">Step 2</span>'
         .'<h2>Requirements</h2>'
         ."<ol>$assertsHtml</ol>"
