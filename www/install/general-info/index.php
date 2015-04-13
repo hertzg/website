@@ -64,8 +64,8 @@ echo_page(
                 .'</label>'
                 .'<br />'
                 .'<input type="text" name="siteTitle" required="required"'
-                .' autofocus="autofocus" id="siteTitleInput" class="textfield"'
-                ." value=\"$escapedSiteTitle\" required=\"required\" />",
+                ." class=\"textfield\" value=\"$escapedSiteTitle\""
+                .' autofocus="autofocus" id="siteTitleInput" />',
                 '<label for="domainNameInput">Domain name:</label>'
                 .'<br />'
                 .'<input class="textfield" type="text"'
@@ -84,7 +84,7 @@ echo_page(
                 .'<br />'
                 .'<input type="text" name="siteBase" required="required"'
                 .' id="siteBaseInput" class="textfield"'
-                ." value=\"$escapedSiteBase\" required=\"required\" />"
+                ." value=\"$escapedSiteBase\" />"
             )
             .'<div>'
                 .'<input type="checkbox" name="https" id="httpsInput"'

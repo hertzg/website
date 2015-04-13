@@ -11,8 +11,8 @@ function echo_html ($title, $content) {
                 .'<link rel="icon" type="image/png" href="../icons/16.png" />'
                 .'<meta name="viewport"'
                 .' content="width=device-width, user-scalable=no" />'
-                .'<link rel="icon" type="image/png"
-                href="../icons/32.png" sizes="32x32" />'
+                .'<link rel="icon" type="image/png"'
+                .' href="../icons/32.png" sizes="32x32" />'
                 .'<link rel="stylesheet" type="text/css"'
                 .' href="../css/compressed.css?6" />'
             .'</head>'
