@@ -5,12 +5,22 @@ require_admin();
 
 $fnsDir = '../../fns';
 
-include_once "$fnsDir/SiteProtocol/get.php";
-$httpsProtocol = SiteProtocol\get() === 'https' ? 'Yes' : 'No';
+include_once "$fnsDir/Page/imageArrowLink.php";
+$editLink = Page\imageArrowLink('Edit', 'edit/', 'none', ['id' => 'edit']);
 
+include_once "$fnsDir/SiteProtocol/get.php";
+$https = SiteProtocol\get() === 'https' ? 'Yes' : 'No';
+
+unset(
+    $_SESSION['admin/general-info/edit/errors'],
+    $_SESSION['admin/general-info/edit/values']
+);
+
+include_once "$fnsDir/create_panel.php";
 include_once "$fnsDir/DomainName/get.php";
 include_once "$fnsDir/Form/label.php";
 include_once "$fnsDir/InfoEmail/get.php";
+include_once "$fnsDir/Page/sessionMessages.php";
 include_once "$fnsDir/Page/tabs.php";
 include_once "$fnsDir/SiteTitle/get.php";
 $content = Page\tabs(
@@ -21,7 +31,8 @@ $content = Page\tabs(
         ],
     ],
     'General Information',
-    Form\label('Site title', htmlspecialchars(SiteTitle\get()))
+    Page\sessionMessages('admin/general-info/messages')
+    .Form\label('Site title', htmlspecialchars(SiteTitle\get()))
     .'<div class="hr"></div>'
     .Form\label('Domain name', DomainName\get())
     .'<div class="hr"></div>'
@@ -29,7 +40,8 @@ $content = Page\tabs(
     .'<div class="hr"></div>'
     .Form\label('Path to "www" folder', htmlspecialchars(SiteBase\get()))
     .'<div class="hr"></div>'
-    .Form\label('HTTPS protocol', $httpsProtocol)
+    .Form\label('Uses HTTPS', $https)
+    .create_panel('Options', $editLink)
 );
 
 include_once "$fnsDir/echo_guest_page.php";
