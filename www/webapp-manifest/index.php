@@ -13,8 +13,9 @@ $description =
 header('Content-Type: application/x-web-app-manifest+json');
 
 include_once '../fns/get_revision.php';
+include_once '../fns/SiteTitle/get.php';
 echo json_encode([
-    'name' => 'Zvini',
+    'name' => SiteTitle\get(),
     'version' => '1.1',
     'description' => $description,
     'fullscreen' => 'true',

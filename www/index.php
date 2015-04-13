@@ -23,11 +23,12 @@ header('Content-Type: text/html; charset=UTF-8');
 
 include_once 'fns/compressed_css_link.php';
 include_once 'fns/compressed_js_script.php';
+include_once 'fns/SiteTitle/get.php';
 echo
     '<!DOCTYPE html>'
     .'<html>'
         .'<head>'
-            .'<title>Zvini</title>'
+            .'<title>'.htmlspecialchars(SiteTitle\get()).'</title>'
             .'<meta http-equiv="Content-Type"'
             .' content="text/html; charset=UTF-8" />'
             .'<meta name="viewport"'
