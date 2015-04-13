@@ -2,7 +2,7 @@
 
 function check_general_info ($siteTitle, $domainName, $infoEmail, $siteBase) {
 
-    if ($siteTitle === '') return 'Enter title.';
+    if ($siteTitle === '') return 'Enter site title.';
 
     if ($domainName === '') return 'Enter domain name.';
 

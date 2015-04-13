@@ -59,9 +59,7 @@ echo_page(
             '<span class="title-step">Step 3</span>'
             .'<h2>General Information</h2>'
             .field_columns(
-                '<label for="siteTitleInput">'
-                    .'Title:'
-                .'</label>'
+                '<label for="siteTitleInput">Site title:</label>'
                 .'<br />'
                 .'<input type="text" name="siteTitle" required="required"'
                 ." class=\"textfield\" value=\"$escapedSiteTitle\""
