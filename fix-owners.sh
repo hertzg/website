@@ -11,3 +11,4 @@ chown $owner www/fns/Installed/get.php
 chown $owner www/fns/MysqlConfig/get.php
 chown $owner www/fns/SiteBase/get.php
 chown $owner www/fns/SiteProtocol/get.php
+chown $owner www/fns/SiteTitle/get.php

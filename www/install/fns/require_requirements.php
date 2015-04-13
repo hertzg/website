@@ -22,7 +22,8 @@ function require_requirements () {
         !is_writable("$rootDir/fns/Installed/get.php") ||
         !is_writable("$rootDir/fns/MysqlConfig/get.php") ||
         !is_writable("$rootDir/fns/SiteBase/get.php") ||
-        !is_writable("$rootDir/fns/SiteProtocol/get.php")) {
+        !is_writable("$rootDir/fns/SiteProtocol/get.php") ||
+        !is_writable("$rootDir/fns/SiteTitle/get.php")) {
 
         include_once "$rootDir/fns/redirect.php";
         redirect('../requirements/');

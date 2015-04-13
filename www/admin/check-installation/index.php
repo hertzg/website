@@ -42,6 +42,7 @@ $content .=
     .assert_writable_file('../../fns/MysqlConfig/get.php')
     .assert_writable_file('../../fns/SiteBase/get.php')
     .assert_writable_file('../../fns/SiteProtocol/get.php')
+    .assert_writable_file('../../fns/SiteTitle/get.php')
     .assert_writable_folder(ContactPhotos\dir())
     .assert_writable_folder(Users\Directory\dir());
 

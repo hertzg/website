@@ -60,7 +60,8 @@ $assertsHtml .=
     .assert_writable('fns/Installed/get.php')
     .assert_writable('fns/MysqlConfig/get.php')
     .assert_writable('fns/SiteBase/get.php')
-    .assert_writable('fns/SiteProtocol/get.php');
+    .assert_writable('fns/SiteProtocol/get.php')
+    .assert_writable('fns/SiteTitle/get.php');
 
 $subject = 'Image Processing (ImageMagick) "<code>imagick</code>"';
 $optionalAssertsHtml = assert_installed(extension_loaded('imagick'), $subject);
