@@ -4,6 +4,7 @@ include_once 'fns/require_admin.php';
 require_admin();
 
 unset(
+    $_SESSION['admin/general-info/messages'],
     $_SESSION['admin/mysql-settings/messages'],
     $_SESSION['admin/username-password/errors'],
     $_SESSION['admin/username-password/values']
