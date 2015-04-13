@@ -16,23 +16,26 @@ $content = Page\tabs(
     [],
     'Administration',
     Page\sessionMessages('admin/messages')
+    .Page\imageArrowLink('General Information',
+        'general-info/', 'generic', ['id' => 'general-info'])
+    .'<div class="hr"></div>'
     .Page\imageArrowLink('MySQL Settings',
-        'mysql-settings/', 'none', ['id' => 'mysql-settings'])
+        'mysql-settings/', 'generic', ['id' => 'mysql-settings'])
     .'<div class="hr"></div>'
     .Page\imageArrowLink('Ensure Crontab',
-        'ensure-crontab/', 'none', ['id' => 'ensure-crontab'])
+        'ensure-crontab/', 'generic', ['id' => 'ensure-crontab'])
     .'<div class="hr"></div>'
     .Page\imageArrowLink('Ensure Tables',
-        'ensure-tables/', 'none', ['id' => 'ensure-tables'])
+        'ensure-tables/', 'generic', ['id' => 'ensure-tables'])
     .'<div class="hr"></div>'
     .Page\imageArrowLink('Ensure Data Folder',
-        'ensure-data-dir/', 'none', ['id' => 'ensure-data-dir'])
+        'ensure-data-dir/', 'generic', ['id' => 'ensure-data-dir'])
     .'<div class="hr"></div>'
     .Page\imageArrowLink('Check Installation',
-        'check-installation/', 'none', ['id' => 'check-installation'])
+        'check-installation/', 'generic', ['id' => 'check-installation'])
     .'<div class="hr"></div>'
     .Page\imageArrowLink('Set New Username/Password',
-        'username-password/', 'none', ['id' => 'username-password'])
+        'username-password/', 'generic', ['id' => 'username-password'])
 );
 
 include_once '../fns/echo_guest_page.php';
