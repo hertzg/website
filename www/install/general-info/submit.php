@@ -4,26 +4,27 @@ include_once '../fns/require_requirements.php';
 require_requirements();
 
 include_once '../../fns/request_strings.php';
-list($domainName, $infoEmail, $siteBase, $siteTitle, $https) = request_strings(
-    'domainName', 'infoEmail', 'siteBase', 'siteTitle', 'https');
+list($siteTitle, $domainName, $infoEmail, $siteBase, $https) = request_strings(
+    'siteTitle', 'domainName', 'infoEmail', 'siteBase', 'https');
 
 include_once '../../fns/str_collapse_spaces.php';
-$domainName = str_collapse_spaces($domainName);
+$siteTitle = str_collapse_spaces($siteTitle);
 $infoEmail = str_collapse_spaces($infoEmail);
 $siteBase = str_collapse_spaces($siteBase);
-$siteTitle = str_collapse_spaces($siteTitle);
+
+$domainName = preg_replace('/\s+/', '', $domainName);
 
 $https = (bool)$https;
 $error = null;
 
 include_once '../fns/check_general_info.php';
-$error = check_general_info($domainName, $infoEmail, $siteBase, $siteTitle);
+$error = check_general_info($siteTitle, $domainName, $infoEmail, $siteBase);
 
 $_SESSION['install/general-info/values'] = [
+    'siteTitle' => $siteTitle,
     'domainName' => $domainName,
     'infoEmail' => $infoEmail,
     'siteBase' => $siteBase,
-    'siteTitle' => $siteTitle,
     'https' => $https,
 ];
 
