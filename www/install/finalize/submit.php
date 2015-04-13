@@ -11,6 +11,9 @@ list($hash, $salt) = Password\hash($adminValues['password1']);
 include_once "$fnsDir/Admin/set.php";
 Admin\set($adminValues['username'], $hash, $salt);
 
+include_once "$fnsDir/SiteTitle/set.php";
+SiteTitle\set($generalInfoValues['siteTitle']);
+
 include_once "$fnsDir/DomainName/set.php";
 DomainName\set($generalInfoValues['domainName']);
 

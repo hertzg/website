@@ -1,6 +1,8 @@
 <?php
 
-function check_general_info ($domainName, $infoEmail, $siteBase) {
+function check_general_info ($siteTitle, $domainName, $infoEmail, $siteBase) {
+
+    if ($siteTitle === '') return 'Enter title.';
 
     if ($domainName === '') return 'Enter domain name.';
 

@@ -16,8 +16,9 @@ function require_general_info () {
     $generalInfoValues = $_SESSION[$key];
 
     include_once __DIR__.'/check_general_info.php';
-    $error = check_general_info($generalInfoValues['domainName'],
-        $generalInfoValues['infoEmail'], $generalInfoValues['siteBase']);
+    $error = check_general_info($generalInfoValues['siteTitle'],
+        $generalInfoValues['domainName'], $generalInfoValues['infoEmail'],
+        $generalInfoValues['siteBase']);
 
     if ($error) {
         $_SESSION['install/general-info/error'] = $error;
