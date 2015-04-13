@@ -34,8 +34,8 @@ else {
 
 if ($infoEmail === '') $errors[] = 'Enter informational email.';
 else {
-    $regex = "/^[a-z0-9][a-z0-9._-]*@[a-z0-9][a-z0-9.-]*$/";
-    if (!preg_match($regex, $infoEmail)) {
+    include_once "$fnsDir/InfoEmail/isValid.php";
+    if (!InfoEmail\isValid($infoEmail)) {
         $errors[] = 'The informational email is invalid.';
     }
 }
