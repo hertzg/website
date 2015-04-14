@@ -74,7 +74,6 @@ function create_view_page ($user, $schedule, &$scripts) {
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/staticTwoColumns.php";
     include_once "$fnsDir/Page/tabs.php";
-    include_once "$fnsDir/Page/text.php";
     return Page\tabs(
         [
             [

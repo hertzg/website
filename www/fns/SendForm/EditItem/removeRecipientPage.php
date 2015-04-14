@@ -24,7 +24,6 @@ function removeRecipientPage ($mysqli,
     include_once __DIR__.'/../recipientsPanels.php';
     include_once "$fnsDir/Page/confirmDialog.php";
     include_once "$fnsDir/Page/tabs.php";
-    include_once "$fnsDir/Page/text.php";
     include_once "$fnsDir/Page/warnings.php";
     $content =
         \Page\tabs(

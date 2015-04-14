@@ -6,7 +6,6 @@ $user = signed_user();
 include_once '../../fns/Page/errors.php';
 include_once '../../fns/Page/imageLink.php';
 include_once '../../fns/Page/tabs.php';
-include_once '../../fns/Page/text.php';
 $content = Page\tabs(
     [
         [
