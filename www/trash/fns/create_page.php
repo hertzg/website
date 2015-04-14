@@ -66,7 +66,6 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
             .'</div>';
 
         include_once "$fnsDir/create_panel.php";
-        include_once "$fnsDir/Page/text.php";
         $optionsPanel = create_panel('Options', $emptyLink);
 
     } else {
