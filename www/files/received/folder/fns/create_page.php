@@ -1,9 +1,12 @@
 <?php
 
-function create_page ($mysqli, $receivedFolder, $base = '') {
+function create_page ($mysqli, $receivedFolder, &$scripts, $base = '') {
 
     $id = $receivedFolder->id;
     $fnsDir = __DIR__.'/../../../../fns';
+
+    include_once "$fnsDir/compressed_js_script.php";
+    $scripts = compressed_js_script('dateAgo', "$base../../../");
 
     include_once "$fnsDir/ReceivedFolderFiles/indexOnParent.php";
     $files = ReceivedFolderFiles\indexOnParent($mysqli, $id, 0);
@@ -44,7 +47,9 @@ function create_page ($mysqli, $receivedFolder, $base = '') {
 
     include_once __DIR__.'/create_options_panel.php';
     include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/export_date_ago.php";
     include_once "$fnsDir/Form/label.php";
+    include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
     return Page\tabs(
@@ -60,7 +65,12 @@ function create_page ($mysqli, $receivedFolder, $base = '') {
             htmlspecialchars($receivedFolder->sender_username))
         .'<div class="hr"></div>'
         .Form\label('Folder name', htmlspecialchars($receivedFolder->name))
-        .create_panel('The Folder', join('<div class="hr"></div>', $items))
+        .create_panel(
+            'The Folder',
+            join('<div class="hr"></div>', $items)
+            .Page\infoText('Folder received '.export_date_ago($receivedFolder->insert_time).'.')
+
+        )
         .create_options_panel($receivedFolder, $base)
     );
 

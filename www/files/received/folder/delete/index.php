@@ -12,7 +12,7 @@ unset($_SESSION['files/received/folder/messages']);
 include_once '../fns/create_page.php';
 include_once "$fnsDir/Page/confirmDialog.php";
 $content =
-    create_page($mysqli, $receivedFolder, '../')
+    create_page($mysqli, $receivedFolder, $scripts, '../')
     .Page\confirmDialog('Are you sure you want to delete the folder?'
         .' It will be moved to Trash.', 'Yes, delete folder',
         "submit.php?id=$id", "../?id=$id");
@@ -21,4 +21,5 @@ include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";
 echo_page($user, "Delete Received Folder #$id?", $content, $base, [
     'head' => compressed_css_link('confirmDialog', $base),
+    'scripts' => $scripts,
 ]);
