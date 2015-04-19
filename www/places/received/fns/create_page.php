@@ -66,6 +66,7 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
 
     include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
     return Page\tabs(
@@ -76,7 +77,8 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
             ],
         ],
         'Received',
-        Page\sessionMessages('places/received/messages')
+        Page\sessionErrors('places/received/errors')
+        .Page\sessionMessages('places/received/messages')
         .join('<div class="hr"></div>', $items)
         .create_panel('Options', $deleteAllLink),
         create_new_item_button('Place', "$base../")

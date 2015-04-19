@@ -22,6 +22,7 @@ if ($user->num_received_places == 1) {
     redirect('..');
 }
 
+unset($_SESSION['places/received/errors']);
 $_SESSION['places/received/messages'] = $messages;
 
 include_once "$fnsDir/ItemList/Received/listUrl.php";

@@ -3,7 +3,10 @@
 include_once '../fns/require_received_places.php';
 $user = require_received_places('../');
 
-unset($_SESSION['places/received/messages']);
+unset(
+    $_SESSION['places/received/errors'],
+    $_SESSION['places/received/messages']
+);
 
 $base = '../../../';
 $fnsDir = '../../../fns';
