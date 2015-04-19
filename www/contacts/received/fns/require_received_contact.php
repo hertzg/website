@@ -16,6 +16,9 @@ function require_received_contact ($mysqli, $base = '') {
     $receivedContact = Users\Contacts\Received\get($mysqli, $user, $id);
 
     if (!$receivedContact) {
+        unset($_SESSION['contacts/received/messages']);
+        $error = 'The received contact no longer exists.';
+        $_SESSION['contacts/received/errors'] = [$error];
         include_once "$fnsDir/redirect.php";
         redirect("$base./");
     }

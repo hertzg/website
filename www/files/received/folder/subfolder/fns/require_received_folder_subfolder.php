@@ -17,6 +17,9 @@ function require_received_folder_subfolder ($mysqli) {
         $mysqli, $user->id_users, $id);
 
     if (!$receivedFolderSubfolder || $receivedFolderSubfolder->deleted) {
+        unset($_SESSION['files/received/messages']);
+        $error = 'The received folder no longer exists.';
+        $_SESSION['files/received/errors'] = [$error];
         include_once "$fnsDir/redirect.php";
         redirect('../..');
     }

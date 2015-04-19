@@ -12,10 +12,13 @@ function require_received_folder ($mysqli, $base = '') {
 
     $id = abs((int)$id);
 
-    include_once "$fnsDir/Users/Folders/Received/get.php";
+    include_once "$fnsDir/Users/files/received/get.php";
     $receivedFolder = Users\Folders\Received\get($mysqli, $user, $id);
 
     if (!$receivedFolder) {
+        unset($_SESSION['files/received/messages']);
+        $error = 'The received folder no longer exists.';
+        $_SESSION['files/received/errors'] = [$error];
         include_once "$fnsDir/redirect.php";
         redirect("$base..");
     }

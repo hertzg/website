@@ -16,6 +16,9 @@ function require_received_bookmark ($mysqli, $base = '') {
     $receivedBookmark = Users\Bookmarks\Received\get($mysqli, $user, $id);
 
     if (!$receivedBookmark) {
+        unset($_SESSION['bookmarks/received/messages']);
+        $error = 'The received bookmark no longer exists.';
+        $_SESSION['bookmarks/received/errors'] = [$error];
         include_once "$fnsDir/redirect.php";
         redirect("$base./");
     }

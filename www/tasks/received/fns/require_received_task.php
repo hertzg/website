@@ -16,6 +16,9 @@ function require_received_task ($mysqli, $base = '') {
     $receivedTask = Users\Tasks\Received\get($mysqli, $user, $id);
 
     if (!$receivedTask) {
+        unset($_SESSION['tasks/received/messages']);
+        $error = 'The received task no longer exists.';
+        $_SESSION['tasks/received/errors'] = [$error];
         include_once "$fnsDir/redirect.php";
         redirect("$base./");
     }

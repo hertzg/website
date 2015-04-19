@@ -16,6 +16,9 @@ function require_received_place ($mysqli, $base = '') {
     $receivedPlace = Users\Places\Received\get($mysqli, $user, $id);
 
     if (!$receivedPlace) {
+        unset($_SESSION['places/received/messages']);
+        $error = 'The received place no longer exists.';
+        $_SESSION['places/received/errors'] = [$error];
         include_once "$fnsDir/redirect.php";
         redirect("$base./");
     }

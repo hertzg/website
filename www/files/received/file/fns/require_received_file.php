@@ -16,6 +16,9 @@ function require_received_file ($mysqli, $base = '') {
     $receivedFile = Users\Files\Received\get($mysqli, $user, $id);
 
     if (!$receivedFile) {
+        unset($_SESSION['files/received/messages']);
+        $error = 'The received file no longer exists.';
+        $_SESSION['files/received/errors'] = [$error];
         include_once "$fnsDir/redirect.php";
         redirect("$base..");
     }
