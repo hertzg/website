@@ -16,7 +16,7 @@ function require_received_folder_file ($mysqli, $base = '') {
     $receivedFolderFile = ReceivedFolderFiles\getOnUser(
         $mysqli, $user->id_users, $id);
 
-    if (!$receivedFolderFile) {
+    if (!$receivedFolderFile || $receivedFolderFile->deleted) {
         include_once "$fnsDir/redirect.php";
         redirect("$base../..");
     }

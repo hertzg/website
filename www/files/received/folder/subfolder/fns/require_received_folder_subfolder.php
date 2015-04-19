@@ -16,7 +16,7 @@ function require_received_folder_subfolder ($mysqli) {
     $receivedFolderSubfolder = ReceivedFolderSubfolders\getOnUser(
         $mysqli, $user->id_users, $id);
 
-    if (!$receivedFolderSubfolder) {
+    if (!$receivedFolderSubfolder || $receivedFolderSubfolder->deleted) {
         include_once "$fnsDir/redirect.php";
         redirect('../..');
     }
