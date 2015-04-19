@@ -14,6 +14,7 @@ function ensure ($mysqli) {
     include_once "$fnsDir/Table/ensure.php";
     return \Table\ensure($mysqli, 'received_folder_files', [
         'content_type' => \ContentType\column(),
+        'deleted' => ['type' => 'tinyint(3) unsigned'],
         'id' => [
             'type' => 'bigint(20) unsigned',
             'primary' => true,

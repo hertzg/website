@@ -11,6 +11,7 @@ function ensure ($mysqli) {
 
     include_once "$fnsDir/Table/ensure.php";
     return \Table\ensure($mysqli, 'received_folder_subfolders', [
+        'deleted' => ['type' => 'tinyint(3) unsigned'],
         'id' => [
             'type' => 'bigint(20) unsigned',
             'primary' => true,
