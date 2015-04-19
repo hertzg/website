@@ -12,8 +12,8 @@ function require_point ($mysqli, $base = '') {
 
     $id = abs((int)$id);
 
-    include_once "$fnsDir/PlacePoints/getOnUser.php";
-    $point = PlacePoints\getOnUser($mysqli, $user->id_users, $id);
+    include_once "$fnsDir/PlacePoints/getNotDeletedOnUser.php";
+    $point = PlacePoints\getNotDeletedOnUser($mysqli, $user->id_users, $id);
 
     if (!$point) {
         unset($_SESSION['places/messages']);
