@@ -48,6 +48,7 @@ if ($user->num_received_notes == 1) {
     redirect('../..');
 }
 
+unset($_SESSION['notes/received/errors']);
 $_SESSION['notes/received/messages'] = $messages;
 
 include_once "$fnsDir/ItemList/Received/listUrl.php";

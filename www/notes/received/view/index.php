@@ -10,6 +10,7 @@ $fnsDir = '../../../fns';
 unset(
     $_SESSION['notes/received/edit-and-import/errors'],
     $_SESSION['notes/received/edit-and-import/values'],
+    $_SESSION['notes/received/errors'],
     $_SESSION['notes/received/messages']
 );
 

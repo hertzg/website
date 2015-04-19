@@ -3,7 +3,10 @@
 include_once '../fns/require_received_notes.php';
 $user = require_received_notes('../');
 
-unset($_SESSION['notes/received/messages']);
+unset(
+    $_SESSION['notes/received/errors'],
+    $_SESSION['notes/received/messages']
+);
 
 $base = '../../../';
 $fnsDir = '../../../fns';
