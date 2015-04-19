@@ -6,7 +6,7 @@ function require_points ($mysqli, $base = '') {
     $values = require_place($mysqli, $base);
     list($place, $id, $user) = $values;
 
-    if ($place->num_points <= 1) {
+    if ($place->num_points < 2) {
         unset($_SESSION['places/view/messages']);
         include_once __DIR__.'/../../../fns/redirect.php';
         redirect("$base../view/?id=$id");

@@ -10,10 +10,8 @@ function delete ($mysqli, $place, $apiKey = null) {
     include_once "$fnsDir/Places/delete.php";
     \Places\delete($mysqli, $id);
 
-    if ($place->num_points) {
-        include_once "$fnsDir/PlacePoints/deleteOnPlace.php";
-        \PlacePoints\deleteOnPlace($mysqli, $id);
-    }
+    include_once "$fnsDir/PlacePoints/deleteOnPlace.php";
+    \PlacePoints\deleteOnPlace($mysqli, $id);
 
     if ($place->num_tags) {
         include_once "$fnsDir/PlaceTags/deleteOnPlace.php";

@@ -9,7 +9,7 @@ $point = require_point($mysqli, $user->id_users);
 include_once '../../../fns/Places/get.php';
 $place = Places\get($mysqli, $point->id_places);
 
-if ($place->num_points == 1) {
+if ($place->num_points < 2) {
     include_once '../../fns/bad_request.php';
     bad_request('LAST_POINT');
 }
