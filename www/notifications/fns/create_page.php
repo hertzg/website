@@ -14,7 +14,7 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
     $limit = Paging\limit();
 
     include_once "$fnsDir/Paging/requestOffset.php";
-    $offset = Paging\requestOffset("$base./");
+    $offset = Paging\requestOffset();
 
     $options = [];
 
