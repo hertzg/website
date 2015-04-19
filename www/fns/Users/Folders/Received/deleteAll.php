@@ -24,6 +24,12 @@ function deleteAll ($mysqli, $user, $apiKey = null) {
     include_once "$fnsDir/ReceivedFolders/deleteOnReceiver.php";
     \ReceivedFolders\deleteOnReceiver($mysqli, $id_users);
 
+    include_once "$fnsDir/ReceivedFolderFiles/setDeletedOnUser.php";
+    \ReceivedFolderFiles\setDeletedOnUser($mysqli, $id_users);
+
+    include_once "$fnsDir/ReceivedFolderSubfolders/setDeletedOnUser.php";
+    \ReceivedFolderSubfolders\setDeletedOnUser($mysqli, $id_users);
+
     $sql = 'update users set num_received_folders = 0,'
         ." num_archived_received_folders = 0 where id_users = $id_users";
     $mysqli->query($sql) || trigger_error($mysqli->error);
