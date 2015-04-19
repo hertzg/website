@@ -13,6 +13,7 @@ function create_content ($items, $base) {
 
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Page/tabs.php";
+    include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     return Page\tabs(
         [
@@ -22,7 +23,8 @@ function create_content ($items, $base) {
             ],
         ],
         'Received',
-        Page\sessionMessages('files/received/messages')
+        Page\sessionErrors('files/received/errors')
+        .Page\sessionMessages('files/received/messages')
         .join('<div class="hr"></div>', $items)
         .create_panel('Options', $deleteAllLink)
     );

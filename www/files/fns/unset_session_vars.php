@@ -4,6 +4,7 @@ function unset_session_vars () {
     unset(
         $_SESSION['files/new-folder/errors'],
         $_SESSION['files/new-folder/values'],
+        $_SESSION['files/received/errors'],
         $_SESSION['files/received/messages'],
         $_SESSION['files/rename-folder/errors'],
         $_SESSION['files/rename-folder/values'],

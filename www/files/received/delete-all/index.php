@@ -6,7 +6,10 @@ $user = require_received_files('../');
 $base = '../../../';
 $fnsDir = '../../../fns';
 
-unset($_SESSION['files/received/messages']);
+unset(
+    $_SESSION['files/received/errors'],
+    $_SESSION['files/received/messages']
+);
 
 include_once '../fns/create_page.php';
 include_once "$fnsDir/Page/confirmDialog.php";

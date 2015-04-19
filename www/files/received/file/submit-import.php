@@ -22,6 +22,7 @@ if (!$user->num_received_folders && $user->num_received_files == 1) {
     redirect('../..');
 }
 
+unset($_SESSION['files/received/errors']);
 $_SESSION['files/received/messages'] = $messages;
 
 redirect('..');

@@ -10,6 +10,7 @@ $fnsDir = '../../../fns';
 unset(
     $_SESSION['files/received/file/rename-and-import/errors'],
     $_SESSION['files/received/file/rename-and-import/values'],
+    $_SESSION['files/received/errors'],
     $_SESSION['files/received/messages']
 );
 
