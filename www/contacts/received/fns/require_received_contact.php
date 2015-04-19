@@ -20,7 +20,7 @@ function require_received_contact ($mysqli, $base = '') {
         $error = 'The received contact no longer exists.';
         $_SESSION['contacts/received/errors'] = [$error];
         include_once "$fnsDir/redirect.php";
-        redirect("$base./");
+        redirect($base === '' ? './' : $base);
     }
 
     return [$receivedContact, $id, $user];

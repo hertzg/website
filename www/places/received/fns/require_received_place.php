@@ -20,7 +20,7 @@ function require_received_place ($mysqli, $base = '') {
         $error = 'The received place no longer exists.';
         $_SESSION['places/received/errors'] = [$error];
         include_once "$fnsDir/redirect.php";
-        redirect("$base./");
+        redirect($base === '' ? './' : $base);
     }
 
     return [$receivedPlace, $id, $user];

@@ -20,7 +20,7 @@ function require_received_task ($mysqli, $base = '') {
         $error = 'The received task no longer exists.';
         $_SESSION['tasks/received/errors'] = [$error];
         include_once "$fnsDir/redirect.php";
-        redirect("$base./");
+        redirect($base === '' ? './' : $base);
     }
 
     return [$receivedTask, $id, $user];
