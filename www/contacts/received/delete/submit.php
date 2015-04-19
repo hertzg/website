@@ -22,6 +22,7 @@ if ($user->num_received_contacts == 1) {
     redirect('../..');
 }
 
+unset($_SESSION['contacts/received/errors']);
 $_SESSION['contacts/received/messages'] = $messages;
 
 include_once "$fnsDir/ItemList/Received/listUrl.php";

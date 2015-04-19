@@ -3,7 +3,10 @@
 include_once '../fns/require_received_contacts.php';
 $user = require_received_contacts('../');
 
-unset($_SESSION['contacts/received/messages']);
+unset(
+    $_SESSION['contacts/received/errors'],
+    $_SESSION['contacts/received/messages']
+);
 
 $base = '../../../';
 $fnsDir = '../../../fns';
