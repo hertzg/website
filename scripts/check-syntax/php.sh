@@ -4,5 +4,5 @@ cd ../..
 for i in `find -type f -name "*.php"`
 do
     echo $i | cut -c 3-
-    php -l $i > /dev/null
+    php -l $i > /dev/null || exit 1
 done

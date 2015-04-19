@@ -6,8 +6,8 @@ do
     echo $i | cut -c 3-
     if [ -x $i ]
     then
-        tail -n +2 $i | uglifyjs --lint > /dev/null
+        tail -n +2 $i | uglifyjs --lint > /dev/null || exit 1
     else
-        uglifyjs --lint $i > /dev/null
+        uglifyjs --lint $i > /dev/null || exit 1
     fi
 done
