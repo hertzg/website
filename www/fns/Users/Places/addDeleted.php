@@ -21,6 +21,9 @@ function addDeleted ($mysqli, $id_users, $data) {
         $longitude, $data->altitude, $name, $description, $tags, $tag_names,
         $data->insert_time, $data->update_time, $data->revision);
 
+    include_once "$fnsDir/PlacePoints/setDeletedOnPlace.php";
+    \PlacePoints\setDeletedOnPlace($mysqli, $id, false);
+
     if ($tag_names) {
         include_once "$fnsDir/PlaceTags/add.php";
         \PlaceTags\add($mysqli, $id_users, $id, $tag_names,

@@ -15,6 +15,7 @@ function ensure ($mysqli) {
             'type' => 'double',
             'nullable' => true,
         ],
+        'deleted' => ['type' => 'tinyint(3) unsigned'],
         'id' => [
             'type' => 'bigint(20) unsigned',
             'primary' => true,

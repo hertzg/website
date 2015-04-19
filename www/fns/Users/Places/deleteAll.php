@@ -22,8 +22,8 @@ function deleteAll ($mysqli, $user, $apiKey = null) {
     include_once "$fnsDir/Places/deleteOnUser.php";
     \Places\deleteOnUser($mysqli, $id_users);
 
-    include_once "$fnsDir/PlacePoints/deleteOnUser.php";
-    \PlacePoints\deleteOnUser($mysqli, $id_users);
+    include_once "$fnsDir/PlacePoints/setDeletedOnUser.php";
+    \PlacePoints\setDeletedOnUser($mysqli, $id_users);
 
     include_once "$fnsDir/PlaceTags/deleteOnUser.php";
     \PlaceTags\deleteOnUser($mysqli, $id_users);

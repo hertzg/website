@@ -35,6 +35,15 @@ function purgeOnUser ($mysqli, $id_users) {
     }
 
     $deletedItems = \DeletedItems\indexOnUserOfType(
+        $mysqli, $id_users, 'place');
+    if ($deletedItems) {
+        include_once __DIR__.'/purgePlace.php';
+        foreach ($deletedItems as $deletedItem) {
+            purgePlace($mysqli, $deletedItem);
+        }
+    }
+
+    $deletedItems = \DeletedItems\indexOnUserOfType(
         $mysqli, $id_users, 'receivedFile');
     if ($deletedItems) {
         include_once __DIR__.'/purgeReceivedFile.php';
