@@ -22,6 +22,7 @@ if ($user->num_received_bookmarks == 1) {
     redirect('..');
 }
 
+unset($_SESSION['bookmarks/received/errors']);
 $_SESSION['bookmarks/received/messages'] = $messages;
 
 include_once "$fnsDir/ItemList/Received/listUrl.php";

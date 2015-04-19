@@ -3,7 +3,10 @@
 include_once '../fns/require_received_bookmarks.php';
 $user = require_received_bookmarks('../');
 
-unset($_SESSION['bookmarks/received/messages']);
+unset(
+    $_SESSION['bookmarks/received/errors'],
+    $_SESSION['bookmarks/received/messages']
+);
 
 $base = '../../../';
 $fnsDir = '../../../fns';
