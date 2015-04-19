@@ -54,6 +54,7 @@ if ($user->num_received_tasks == 1) {
     redirect('../..');
 }
 
+unset($_SESSION['tasks/received/errors']);
 $_SESSION['tasks/received/messages'] = $messages;
 
 include_once "$fnsDir/ItemList/Received/listUrl.php";

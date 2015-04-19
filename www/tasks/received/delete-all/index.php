@@ -3,7 +3,10 @@
 include_once '../fns/require_received_tasks.php';
 $user = require_received_tasks('../');
 
-unset($_SESSION['tasks/received/messages']);
+unset(
+    $_SESSION['tasks/received/errors'],
+    $_SESSION['tasks/received/messages']
+);
 
 $base = '../../../';
 $fnsDir = '../../../fns';
