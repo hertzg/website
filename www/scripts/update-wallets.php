@@ -18,6 +18,8 @@ foreach ($wallets as $wallet) {
         ." from wallet_transactions where id_wallets = $id";
     $balance = mysqli_single_object($mysqli, $sql)->balance;
 
+    if ($balance === null) $balance = 0;
+
     $sql = "update wallets set balance = $balance where id = $id";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
