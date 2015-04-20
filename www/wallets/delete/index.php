@@ -13,8 +13,9 @@ include_once '../fns/ViewPage/create.php';
 include_once "$fnsDir/Page/confirmDialog.php";
 $content =
     ViewPage\create($mysqli, $user, $wallet, $scripts)
-    .Page\confirmDialog('Are you sure you want to delete the wallet?',
-        'Yes, delete wallet', "submit.php?id=$id", "../view/?id=$id");
+    .Page\confirmDialog('Are you sure you want to delete the wallet?'
+        .' It will be moved to Trash.', 'Yes, delete wallet',
+        "submit.php?id=$id", "../view/?id=$id");
 
 include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";

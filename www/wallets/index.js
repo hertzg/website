@@ -9,6 +9,7 @@
         if (dialogShown) return
         var yesText = 'Yes, delete all wallets'
         var questionText = 'Are you sure you want to delete all the wallets?'
+            + ' They will be moved to Trash.'
         var yesHref = 'delete-all/submit.php'
         confirmDialog(questionText, yesText, yesHref, function () {
             dialogShown = false

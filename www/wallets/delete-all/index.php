@@ -17,7 +17,8 @@ include_once '../../lib/mysqli.php';
 $content =
     create_page($mysqli, $user, '../')
     .Page\confirmDialog(
-        'Are you sure you want to delete all the wallets?',
+        'Are you sure you want to delete all the wallets?'
+        .' They will be moved to Trash.',
         'Yes, delete all wallets', 'submit.php', '../');
 
 include_once "$fnsDir/compressed_css_link.php";
