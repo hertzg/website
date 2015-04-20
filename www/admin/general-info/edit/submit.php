@@ -84,4 +84,4 @@ SiteBase\set($siteBase);
 include_once "$fnsDir/SiteProtocol/set.php";
 SiteProtocol\set($https ? 'https' : 'http');
 
-redirect('../');
+redirect('..');

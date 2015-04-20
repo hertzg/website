@@ -16,4 +16,4 @@ unset($_SESSION['wallets/errors']);
 $_SESSION['wallets/messages'] = ['All wallets have been deleted.'];
 
 include_once "$fnsDir/redirect.php";
-redirect('../');
+redirect('..');
