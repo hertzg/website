@@ -12,7 +12,8 @@ function editPassword ($mysqli, $id, $password) {
 
     $sql = "update users set password_hash = '$password_hash',"
         ." password_salt = '$password_salt', reset_password_key = null,"
-        ." reset_password_key_time = null where id_users = $id";
+        ." reset_password_key_time = null, reset_password_return = ''"
+        ." where id_users = $id";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
 }
