@@ -2,9 +2,9 @@
 
 namespace Places;
 
-function addDeleted ($mysqli, $id, $id_users,
-    $latitude, $longitude, $altitude, $name, $description,
-    $tags, $tag_names, $insert_time, $update_time, $revision) {
+function addDeleted ($mysqli, $id, $id_users, $latitude,
+    $longitude, $altitude, $name, $description, $tags, $tag_names,
+    $num_points, $insert_time, $update_time, $revision) {
 
     if ($altitude === null) $altitude = 'null';
     $name = $mysqli->real_escape_string($name);
@@ -16,10 +16,10 @@ function addDeleted ($mysqli, $id, $id_users,
     $sql = 'insert into places'
         .' (id, id_users, latitude, longitude, altitude,'
         .' name, description, tags, num_tags, tags_json,'
-        .' insert_time, update_time, revision)'
+        .' num_points, insert_time, update_time, revision)'
         ." values ($id, $id_users, $latitude, $longitude, $altitude,"
         ." '$name', '$description', '$tags', $num_tags, '$tags_json',"
-        ." $insert_time, $update_time, $revision)";
+        ." $num_points, $insert_time, $update_time, $revision)";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 

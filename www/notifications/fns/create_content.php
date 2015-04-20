@@ -14,7 +14,12 @@ function create_content ($mysqli, $user, $items, $options, $base) {
         foreach ($channels as $channel) {
             $channel->html =
                 "<a class=\"tag\" href=\"in-channel/?id=$channel->id\">"
-                    .htmlspecialchars($channel->channel_name)
+                    .'<span class="tag-text">'
+                        .htmlspecialchars($channel->channel_name)
+                    .'</span>'
+                    .' <span class="tag-number">'
+                        ."($channel->num_notifications)"
+                    .'</span>'
                 .'</a>';
         }
 
@@ -25,7 +30,12 @@ function create_content ($mysqli, $user, $items, $options, $base) {
             $href = "in-subscribed-channel/?id=$subscribedChannel->id";
             $subscribedChannel->html =
                 "<a class=\"tag\" href=\"$href\">"
-                    .htmlspecialchars($subscribedChannel->channel_name)
+                    .'<span class="tag-text">'
+                        .htmlspecialchars($subscribedChannel->channel_name)
+                    .'</span>'
+                    .' <span class="tag-number">'
+                        ."($subscribedChannel->num_notifications)"
+                    .'</span>'
                 .'</a>';
         }
 
@@ -41,7 +51,9 @@ function create_content ($mysqli, $user, $items, $options, $base) {
                         .'Filter by a channel:'
                     .'</span>';
             foreach ($allChannels as $channel) {
-                $filterBar .= $channel->html;
+                $filterBar .=
+                    '<span class="zeroSize"> </span>'
+                    .$channel->html;
             }
             $filterBar .= '</div>';
         }
