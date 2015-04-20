@@ -12,8 +12,8 @@ function request_transaction ($mysqli, $base = '') {
 
     $id = abs((int)$id);
 
-    include_once "$fnsDir/WalletTransactions/getOnUser.php";
-    $transaction = WalletTransactions\getOnUser(
+    include_once "$fnsDir/WalletTransactions/getNotDeletedOnUser.php";
+    $transaction = WalletTransactions\getNotDeletedOnUser(
         $mysqli, $user->id_users, $id);
 
     return [$transaction, $id, $user];

@@ -9,8 +9,9 @@ function require_transaction ($mysqli, $id_users) {
 
     $id = abs((int)$id);
 
-    include_once "$fnsDir/WalletTransactions/getOnUser.php";
-    $transaction = WalletTransactions\getOnUser($mysqli, $id_users, $id);
+    include_once "$fnsDir/WalletTransactions/getNotDeletedOnUser.php";
+    $transaction = WalletTransactions\getNotDeletedOnUser(
+        $mysqli, $id_users, $id);
 
     if (!$transaction) {
         include_once __DIR__.'/../../../fns/bad_request.php';
