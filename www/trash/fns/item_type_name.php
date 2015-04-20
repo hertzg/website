@@ -9,4 +9,5 @@ function item_type_name ($type) {
     if ($type == 'note' || $type == 'receivedNote') return 'Note';
     if ($type == 'place' || $type == 'receivedPlace') return 'Place';
     if ($type == 'task' || $type == 'receivedTask') return 'Task';
+    if ($type == 'wallet') return 'Wallet';
 }

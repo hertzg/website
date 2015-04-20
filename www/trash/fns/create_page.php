@@ -55,6 +55,9 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
             } elseif ($type == 'task' || $type == 'receivedTask') {
                 include_once __DIR__.'/render_task.php';
                 render_task($data, $description, $href, $options, $items);
+            } elseif ($type == 'wallet') {
+                include_once __DIR__.'/render_wallet.php';
+                render_wallet($data, $description, $href, $options, $items);
             }
 
         }

@@ -64,6 +64,9 @@ if ($type == 'bookmark') {
 } elseif ($type == 'task') {
     include_once '../fns/Users/Tasks/addDeleted.php';
     Users\Tasks\addDeleted($mysqli, $user, $data);
+} elseif ($type == 'wallet') {
+    include_once '../fns/Users/Wallets/addDeleted.php';
+    Users\Wallets\addDeleted($mysqli, $id_users, $data);
 }
 
 include_once '../fns/Users/DeletedItems/delete.php';

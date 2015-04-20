@@ -55,6 +55,9 @@ function create ($deletedItem, $user, &$title, &$head, &$scripts) {
     } elseif ($type == 'task' || $type == 'receivedTask') {
         include_once __DIR__.'/renderTask.php';
         renderTask($data, $user, $items, $infoText);
+    } elseif ($type == 'wallet') {
+        include_once __DIR__.'/renderWallet.php';
+        renderWallet($data, $items, $infoText);
     }
 
     if ($type == 'receivedBookmark' || $type == 'receivedContact'

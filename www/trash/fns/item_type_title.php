@@ -16,4 +16,5 @@ function item_type_title ($type) {
     if ($type == 'receivedPlace') return 'Received Place';
     if ($type == 'receivedTask') return 'Received Task';
     if ($type == 'task') return 'Task';
+    if ($type == 'wallet') return 'Wallet';
 }
