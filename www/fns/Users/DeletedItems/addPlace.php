@@ -12,6 +12,7 @@ function addPlace ($mysqli, $place, $apiKey) {
         'name' => $place->name,
         'description' => $place->description,
         'tags' => $place->tags,
+        'num_points' => $place->num_points,
         'insert_api_key_id' => $place->insert_api_key_id,
         'insert_time' => $place->insert_time,
         'update_api_key_id' => $place->update_api_key_id,
