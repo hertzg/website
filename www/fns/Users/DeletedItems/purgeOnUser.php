@@ -61,6 +61,15 @@ function purgeOnUser ($mysqli, $id_users) {
         }
     }
 
+    $deletedItems = \DeletedItems\indexOnUserOfType(
+        $mysqli, $id_users, 'wallet');
+    if ($deletedItems) {
+        include_once __DIR__.'/purgeWallet.php';
+        foreach ($deletedItems as $deletedItem) {
+            purgeWallet($mysqli, $deletedItem);
+        }
+    }
+
     include_once __DIR__.'/../../DeletedItems/deleteOnUser.php';
     \DeletedItems\deleteOnUser($mysqli, $id_users);
 
