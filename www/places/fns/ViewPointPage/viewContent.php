@@ -11,7 +11,6 @@ function viewContent ($point, &$scripts, $base = '') {
 
     include_once "$fnsDir/format_author.php";
     $author = format_author($point->insert_time, $point->insert_api_key_name);
-    $infoText = "Point created $author.";
 
     include_once "$fnsDir/Form/label.php";
     $content =
@@ -27,7 +26,7 @@ function viewContent ($point, &$scripts, $base = '') {
     }
 
     include_once "$fnsDir/Page/infoText.php";
-    $content .= \Page\infoText($infoText);
+    $content .= \Page\infoText("Point created $author.");
 
     return $content;
 

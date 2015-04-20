@@ -5,7 +5,8 @@ function steps ($doneSteps, $activeStep, $nextSteps) {
     foreach ($doneSteps as $step) {
         $html .=
             '<li class="steps-done">'
-                ."<code>&#x2713;</code> <a href=\"$step[href]\">$step[title]</a>"
+                .'<code>&#x2713;</code>'
+                ." <a href=\"$step[href]\">$step[title]</a>"
             .'</li>';
     }
     $html .=

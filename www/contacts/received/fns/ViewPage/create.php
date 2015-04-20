@@ -62,13 +62,9 @@ function create ($receivedContact, &$head, &$scripts) {
     include_once "$fnsDir/export_date_ago.php";
     include_once "$fnsDir/Page/infoText.php";
     $infoText = \Page\infoText(
-        '<div>'
-            .($receivedContact->favorite ? 'Favorite' : 'Regular').' contact.'
-        .'</div>'
-        .'<div>'
-            .'Contact received '
-            .export_date_ago($receivedContact->insert_time).'.'
-        .'</div>'
+        ($receivedContact->favorite ? 'Favorite' : 'Regular').' contact.'
+        .'<br />'
+        .'Contact received '.export_date_ago($receivedContact->insert_time).'.'
     );
 
     include_once __DIR__.'/createContent.php';

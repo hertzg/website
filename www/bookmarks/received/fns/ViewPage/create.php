@@ -23,14 +23,13 @@ function create ($receivedBookmark, &$scripts) {
     if ($tags !== '') $items[] = \Page\text('Tags: '.htmlspecialchars($tags));
 
     include_once "$fnsDir/export_date_ago.php";
-    $text = 'Bookmark received '.export_date_ago($receivedBookmark->insert_time).'.';
-    include_once "$fnsDir/Page/infoText.php";
-    $infoText = \Page\infoText($text);
+    $date_ago = export_date_ago($receivedBookmark->insert_time);
 
     include_once __DIR__.'/optionsPanel.php';
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/ItemList/Received/listHref.php";
+    include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
     return \Page\tabs(
@@ -45,7 +44,7 @@ function create ($receivedBookmark, &$scripts) {
         .\Form\label('Received from',
             htmlspecialchars($receivedBookmark->sender_username))
         .create_panel('The Bookmark', join('<div class="hr"></div>', $items))
-        .$infoText
+        .\Page\infoText("Bookmark received $date_ago.")
         .optionsPanel($receivedBookmark)
     );
 

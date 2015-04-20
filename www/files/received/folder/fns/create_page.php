@@ -45,9 +45,11 @@ function create_page ($mysqli, $receivedFolder, &$scripts, $base = '') {
         $items[] = Page\info('Folder is empty');
     }
 
+    include_once "$fnsDir/export_date_ago.php";
+    $date_ago = export_date_ago($receivedFolder->insert_time);
+
     include_once __DIR__.'/create_options_panel.php';
     include_once "$fnsDir/create_panel.php";
-    include_once "$fnsDir/export_date_ago.php";
     include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionMessages.php";
@@ -68,7 +70,7 @@ function create_page ($mysqli, $receivedFolder, &$scripts, $base = '') {
         .create_panel(
             'The Folder',
             join('<div class="hr"></div>', $items)
-            .Page\infoText('Folder received '.export_date_ago($receivedFolder->insert_time).'.')
+            .Page\infoText("Folder received $date_ago.")
 
         )
         .create_options_panel($receivedFolder, $base)

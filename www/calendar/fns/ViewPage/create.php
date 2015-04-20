@@ -16,7 +16,8 @@ function create ($user, $event, &$scripts) {
         'event_time' => $event_time,
         'text' => $event->text,
     ]));
-    $duplicateLink = \Page\imageArrowLink('Duplicate', $href, 'duplicate-event');
+    $duplicateLink = \Page\imageArrowLink(
+        'Duplicate', $href, 'duplicate-event');
 
     include_once "$fnsDir/Page/imageLink.php";
     $deleteLink =

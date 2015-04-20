@@ -35,12 +35,9 @@ function create ($receivedTask, $user, &$scripts) {
     include_once "$fnsDir/export_date_ago.php";
     include_once "$fnsDir/Page/infoText.php";
     $infoText = \Page\infoText(
-        '<div>'
-            .($receivedTask->top_priority ? 'Top' : 'Normal').' priority task.'
-        .'</div>'
-        .'<div>'
-            .'Task received '.export_date_ago($receivedTask->insert_time).'.'
-        .'</div>'
+        ($receivedTask->top_priority ? 'Top' : 'Normal').' priority task.'
+        .'<br />'
+        .'Task received '.export_date_ago($receivedTask->insert_time).'.'
     );
 
     include_once __DIR__.'/optionsPanel.php';

@@ -39,8 +39,10 @@ function create_page ($receivedFile, &$scripts, $base = '') {
         $receivedFile->content_type, $id, "{$base}download/",
         "$base../../../");
 
-    include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/export_date_ago.php";
+    $date_ago = export_date_ago($receivedFile->insert_time);
+
+    include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionMessages.php";
@@ -65,8 +67,7 @@ function create_page ($receivedFile, &$scripts, $base = '') {
             .Form\label('Size', $receivedFile->readable_size)
             .'<div class="hr"></div>'
             .Form\label('Preview', $filePreview)
-            .Page\infoText(
-                'File received '.export_date_ago($receivedFile->insert_time).'.')
+            .Page\infoText("File received $date_ago.")
         )
         .create_panel(
             'File Options',
