@@ -41,7 +41,9 @@ function create_content ($mysqli, $user, $items, $options, $base) {
                         .'Filter by a channel:'
                     .'</span>';
             foreach ($allChannels as $channel) {
-                $filterBar .= $channel->html;
+                $filterBar .=
+                    '<span class="zeroSize"> </span>'
+                    .$channel->html;
             }
             $filterBar .= '</div>';
         }
