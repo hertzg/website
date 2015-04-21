@@ -12,7 +12,7 @@ function sendRenamed ($mysqli, $user, $receiver_id_users, $folder, $name) {
         $user->username, $receiver_id_users, $name);
 
     $copy = function ($id, $parent_id, $copy) use ($mysqli,
-        $id_received_folders, $id_users, $receiver_id_users, $fnsDir) {
+        $id_received_folders, $name, $id_users, $receiver_id_users, $fnsDir) {
 
         include_once "$fnsDir/Files/indexInFolder.php";
         $files = \Files\indexInFolder($mysqli, $id);
@@ -23,7 +23,7 @@ function sendRenamed ($mysqli, $user, $receiver_id_users, $folder, $name) {
             foreach ($files as $file) {
                 $path = \Files\File\path($id_users, $file->id_files);
                 \Users\Folders\Received\Files\add($mysqli, $id_received_folders,
-                    $receiver_id_users, $parent_id, $file->name,
+                    $name, $receiver_id_users, $parent_id, $file->name,
                     $file->size, $path);
             }
         }
@@ -35,7 +35,7 @@ function sendRenamed ($mysqli, $user, $receiver_id_users, $folder, $name) {
             include_once "$fnsDir/ReceivedFolderSubfolders/add.php";
             foreach ($folders as $folder) {
                 $id = \ReceivedFolderSubfolders\add($mysqli,
-                    $id_received_folders, $receiver_id_users,
+                    $id_received_folders, $name, $receiver_id_users,
                     $parent_id, $folder->name);
                 $copy($folder->id_folders, $id, $copy);
             }
