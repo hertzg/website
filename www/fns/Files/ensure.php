@@ -4,15 +4,13 @@ namespace Files;
 
 function ensure ($mysqli) {
 
-    include_once __DIR__.'/maxLengths.php';
-    $maxLengths = maxLengths();
-
     $fnsDir = __DIR__.'/..';
 
     include_once "$fnsDir/ApiKeyName/column.php";
     $apiKeyNameColumn = \ApiKeyName\column(true);
 
     include_once "$fnsDir/ContentType/column.php";
+    include_once "$fnsDir/FileName/column.php";
     include_once "$fnsDir/MediaType/column.php";
     include_once "$fnsDir/Table/ensure.php";
     return \Table\ensure($mysqli, 'files', [
@@ -31,11 +29,7 @@ function ensure ($mysqli) {
         'insert_api_key_name' => $apiKeyNameColumn,
         'insert_time' => ['type' => 'bigint(20) unsigned'],
         'media_type' => \MediaType\column(),
-        'name' => [
-            'type' => "varchar($maxLengths[name])",
-            'characterSet' => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-        ],
+        'name' => \FileName\column(),
         'readable_size' => [
             'type' => 'varchar(20)',
             'characterSet' => 'utf8',

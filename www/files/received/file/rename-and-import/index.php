@@ -12,7 +12,7 @@ else $values = (array)$receivedFile;
 
 $fnsDir = '../../../../fns';
 
-include_once "$fnsDir/Files/maxLengths.php";
+include_once "$fnsDir/FileName/maxLength.php";
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/hidden.php";
 include_once "$fnsDir/Form/textfield.php";
@@ -30,7 +30,7 @@ $content = Page\tabs(
     .'<form action="submit.php" method="post">'
         .Form\textfield('name', 'File name', [
             'value' => $values['name'],
-            'maxlength' => Files\maxLengths()['name'],
+            'maxlength' => FileName\maxLength(),
             'required' => true,
             'autofocus' => true,
         ])

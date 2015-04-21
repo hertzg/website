@@ -17,7 +17,7 @@ unset(
 include_once '../../fns/create_folder_link.php';
 $folder_link = create_folder_link($parent_id, '../');
 
-include_once '../../fns/Folders/maxLengths.php';
+include_once '../../fns/FileName/maxLength.php';
 include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/hidden.php';
@@ -35,7 +35,7 @@ $content = Page\tabs(
     .'<form action="submit.php" method="post">'
         .Form\textfield('name', 'Folder name', [
             'value' => $values['name'],
-            'maxlength' => Folders\maxLengths()['name'],
+            'maxlength' => FileName\maxLength(),
             'autofocus' => true,
             'required' => true,
         ])

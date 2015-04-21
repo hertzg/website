@@ -6,9 +6,7 @@ function ensure ($mysqli) {
 
     $fnsDir = __DIR__.'/..';
 
-    include_once "$fnsDir/Folders/maxLengths.php";
-    $maxLengths = \Folders\maxLengths();
-
+    include_once "$fnsDir/FileName/column.php";
     include_once "$fnsDir/Table/ensure.php";
     include_once "$fnsDir/Username/column.php";
     return \Table\ensure($mysqli, 'received_folders', [
@@ -19,11 +17,7 @@ function ensure ($mysqli) {
             'primary' => true,
         ],
         'insert_time' => ['type' => 'bigint(20) unsigned'],
-        'name' => [
-            'type' => "varchar($maxLengths[name])",
-            'characterSet' => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-        ],
+        'name' => \FileName\column(),
         'receiver_id_users' => ['type' => 'bigint(20) unsigned'],
         'sender_id_users' => ['type' => 'bigint(20) unsigned'],
         'sender_username' => \Username\column(),
