@@ -39,7 +39,7 @@ $content = Page\tabs(
     '<div class="greyBar textAndButtons">'
         .'<span class="textAndButtons-text">Location:</span>'
         ."<a class=\"tag\" href=\"../?id=$id_received_folders#file_$id\">"
-            .'root'
+            .htmlspecialchars($receivedFolderFile->received_folder_name)
         .'</a>'
     .'</div>'
     .Form\label('File name', htmlspecialchars($name))

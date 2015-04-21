@@ -22,7 +22,10 @@ function create_location_bar ($mysqli, $folder) {
     }
 
     $href = "../?id=$folder->id_received_folders#$hash";
-    $parentLinks[] = "<a class=\"tag\" href=\"$href\">root</a>";
+    $parentLinks[] =
+        "<a class=\"tag\" href=\"$href\">"
+            .htmlspecialchars($folder->received_folder_name)
+        .'</a>';
 
     return
         '<div class="greyBar textAndButtons">'
