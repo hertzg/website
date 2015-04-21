@@ -65,11 +65,15 @@ function create_page ($mysqli, $receivedFolder, &$scripts, $base = '') {
         Page\sessionMessages('files/received/folder/messages')
         .Form\label('Received from',
             htmlspecialchars($receivedFolder->sender_username))
-        .'<div class="hr"></div>'
-        .Form\label('Folder name', htmlspecialchars($receivedFolder->name))
         .create_panel(
             'The Folder',
-            join('<div class="hr"></div>', $items)
+            '<div class="greyBar textAndButtons">'
+                .'<span class="textAndButtons-text">Location:</span>'
+                .'<span class="tag active">'
+                    .htmlspecialchars($receivedFolder->name)
+                .'</span>'
+            .'</div>'
+            .join('<div class="hr"></div>', $items)
             .Page\infoText("Folder received $date_ago.")
 
         )
