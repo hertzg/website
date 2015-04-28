@@ -19,6 +19,7 @@
     left: 46px;
 }
 .image_link-title {
+    display: block;
     line-height: 48px;
     overflow: hidden;
     text-overflow: ellipsis;
