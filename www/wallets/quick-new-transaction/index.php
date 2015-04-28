@@ -15,9 +15,11 @@ include_once "$fnsDir/Wallets/indexOnUser.php";
 include_once '../../lib/mysqli.php';
 $wallets = Wallets\indexOnUser($mysqli, $user->id_users);
 
+include_once "$fnsDir/amount_text.php";
 $walletOptions = [];
 foreach ($wallets as $wallet) {
-    $walletOptions[$wallet->id] = htmlspecialchars($wallet->name);
+    $walletOptions[$wallet->id] = htmlspecialchars($wallet->name)
+        .' &middot; '.amount_text($wallet->balance);
 }
 
 $key = 'wallets/quick-new-transaction/values';
