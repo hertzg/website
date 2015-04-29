@@ -20,4 +20,5 @@
 .imageText-text {
     padding: 15px 16px 15px 54px;
     min-height: 48px;
+    word-wrap: break-word;
 }
