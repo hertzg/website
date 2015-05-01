@@ -6,7 +6,7 @@ require_admin();
 $fnsDir = '../../fns';
 
 include_once "$fnsDir/Page/imageArrowLink.php";
-$editLink = Page\imageArrowLink('Edit', 'edit/', 'none', ['id' => 'edit']);
+$editLink = Page\imageArrowLink('Edit', 'edit/', 'generic', ['id' => 'edit']);
 
 include_once "$fnsDir/SiteProtocol/get.php";
 $https = SiteProtocol\get() === 'https' ? 'Yes' : 'No';
