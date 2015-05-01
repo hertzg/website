@@ -24,6 +24,8 @@ $names = ['bookmark', 'create-bookmark', 'edit-bookmark',
     'bookmarks', 'import-bookmark', 'duplicate-bookmark'];
 render($content, 'bookmark.svg?3', $names);
 
+render($content, 'calendar.svg', ['calendar', 'calendar-jump']);
+
 $names = ['channel', 'create-channel', 'edit-channel', 'locked-channel',
     'inactive-channel', 'create-inactive-channel', 'edit-inactive-channel',
     'locked-inactive-channel', 'channels'];
@@ -64,7 +66,7 @@ render($content, 'point.svg', $names);
 $names = ['account', 'edit-profile', 'download', 'upload', 'feedback',
     'yes', 'no', 'notification', 'create-notification', 'old-notification',
     'edit-password', 'new-password', 'reset-password', 'rename',
-    'sign-in', 'sign-ins', 'calendar', 'arrow-right', 'arrow-left',
+    'sign-in', 'sign-ins', 'arrow-right', 'arrow-left',
     'search', 'search-folder', 'birthday-cake', 'checkbox',
     'checked-checkbox', 'help', 'run', 'mail', 'sms', 'send',
     'send-sms', 'receive', 'phone', 'edit-home', 'reorder',

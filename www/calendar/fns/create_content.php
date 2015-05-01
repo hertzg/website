@@ -36,7 +36,7 @@ function create_content ($mysqli, $user,
         .create_panel(
             'Options',
             Page\imageArrowLink('Jump To', $jumpHref,
-                'calendar', ['id' => 'jump-to'])
+                'calendar-jump', ['id' => 'jump-to'])
             .'<div class="hr"></div>'
             .'<a href="./" class="clickable link image_link">'
                 .'<span class="image_link-icon">'
