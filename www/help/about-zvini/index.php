@@ -7,6 +7,8 @@ $user = signed_user();
 
 unset($_SESSION['help/messages']);
 
+$version = file_get_contents('../../../.git/refs/heads/master');
+
 include_once "$fnsDir/Form/label.php";
 include_once "$fnsDir/Page/imageLink.php";
 include_once "$fnsDir/Page/tabs.php";
@@ -30,9 +32,10 @@ $content = Page\tabs(
         .' GNU Affero General Public License for more details.<br /><br />'
     )
     .'<div class="hr"></div>'
-    .Page\imageLink('GNU Affero General Public License', 'license/', 'generic', ['id' => 'license'])
+    .Page\imageLink('GNU Affero General Public License',
+        'license/', 'generic', ['id' => 'license'])
     .'<div class="hr"></div>'
-    .\Form\label('Git version', file_get_contents('../../../.git/refs/heads/master'))
+    .\Form\label('Git version', $version)
 );
 
 include_once "$fnsDir/echo_page.php";

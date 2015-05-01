@@ -25,4 +25,4 @@ $content = Page\tabs(
 );
 
 include_once "$fnsDir/echo_page.php";
-echo_page($user, 'About Zvini', $content, '../../../');
+echo_page($user, 'GNU Affero General Public License', $content, '../../../');
