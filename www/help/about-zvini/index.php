@@ -30,7 +30,7 @@ $content = Page\tabs(
         .' GNU Affero General Public License for more details.<br /><br />'
     )
     .'<div class="hr"></div>'
-    .Page\imageLink('GNU Affero General Public License', 'agpl/', 'generic', [])
+    .Page\imageLink('GNU Affero General Public License', 'license/', 'generic', ['id' => 'license'])
     .'<div class="hr"></div>'
     .\Form\label('Git version', file_get_contents('../../../.git/refs/heads/master'))
 );
