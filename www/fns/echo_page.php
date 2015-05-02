@@ -27,9 +27,22 @@ function echo_page ($user, $title, $content, $base, $options = []) {
     }
 
     $time = floor(microtime(true) * 1000);
+    $notifications = '';
     if ($user) {
+
         $timezone = $user->timezone;
         $time += $timezone * 60 * 1000;
+
+        $home_num_new_notifications = $user->home_num_new_notifications;
+        if ($home_num_new_notifications) {
+            $notifications =
+                '<span class="logoLink-notifications">'
+                    .'<span class="zeroSize"> (</span>'
+                    .$home_num_new_notifications
+                    .'<span class="zeroSize">)</span>'
+                .'</span>';
+        }
+
     } else {
         $timezone = 0;
     }
@@ -46,6 +59,7 @@ function echo_page ($user, $title, $content, $base, $options = []) {
             ."<a class=\"topLink logoLink\" href=\"$topLinkHref\">"
                 ."<img src=\"$logoSrc\" alt=\"Zvini\""
                 .' width="68" height="32" class="logoImg" />'
+                .$notifications
             .'</a>'
             .'<div class="page-clockWrapper">'
                 .'<div id="staticClockWrapper">'
