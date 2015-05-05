@@ -11,8 +11,8 @@ function addDeleted ($mysqli, $id_users, $data) {
     $fnsDir = __DIR__.'/../..';
 
     include_once "$fnsDir/Wallets/addDeleted.php";
-    \Wallets\addDeleted($mysqli, $id, $id_users, $data->name,
-        $balance, $num_transactions, $data->insert_time,
+    \Wallets\addDeleted($mysqli, $id, $id_users, $data->name, $data->income,
+        $data->expense, $balance, $num_transactions, $data->insert_time,
         $data->update_time, $data->revision);
 
     if ($num_transactions) {
