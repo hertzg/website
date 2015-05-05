@@ -2,9 +2,9 @@
 
 namespace Wallets;
 
-function addAmounts ($mysqli, $id, $balance, $income, $expense) {
-    $sql = "update wallets set balance = balance + $balance,"
-        ." income = income + $income, expense = expense + $expense"
+function addAmounts ($mysqli, $id, $income, $expense, $balance) {
+    $sql = "update wallets set income = income + $income,"
+        ." expense = expense + $expense, balance = balance + $balance"
         ." where id = $id";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 }

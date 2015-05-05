@@ -42,7 +42,7 @@ function edit ($mysqli, $wallet, $transaction,
 
         include_once "$fnsDir/Wallets/addAmounts.php";
         \Wallets\addAmounts($mysqli, $id_wallets,
-            $amount_added, $income, $expense);
+            $income, $expense, $amount_added);
 
         include_once __DIR__.'/../../addBalanceTotal.php';
         \Users\addBalanceTotal($mysqli, $transaction->id_users, $amount_added);
