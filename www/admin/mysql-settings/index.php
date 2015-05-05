@@ -78,7 +78,7 @@ $content = Page\tabs(
     .Form\label('Database', htmlspecialchars($db))
     .create_panel(
         'Options',
-        Page\imageArrowLink('Edit', 'edit/', 'none', ['id' => 'edit'])
+        Page\imageArrowLink('Edit', 'edit/', 'generic', ['id' => 'edit'])
     )
 );
 
