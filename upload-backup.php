@@ -91,10 +91,10 @@ $putFile('backup-code.tgz');
 $putFile('backup-data.tgz');
 $putFile('backup-sql.tgz');
 
-$files = $callZviniMethod('file/list', ['parent_id' => $folder_id]);
+$files = $callZviniMethod('folder/list', ['parent_id' => $folder_id]);
 
 foreach ($files as $file) {
     if ($file->insert_time < time() - 30 * 24 * 60 * 60) {
-        $callZviniMethod('file/delete', ['id' => $file->id]);
+        $callZviniMethod('folder/delete', ['id' => $file->id]);
     }
 }
