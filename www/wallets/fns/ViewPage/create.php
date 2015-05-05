@@ -76,6 +76,10 @@ function create ($mysqli, $user, $wallet, &$scripts) {
         \Page\sessionMessages('wallets/view/messages')
         .\Form\label('Name', htmlspecialchars($wallet->name))
         .'<div class="hr"></div>'
+        .\Form\label('Income', amount_html($wallet->income))
+        .'<div class="hr"></div>'
+        .\Form\label('Expense', amount_html($wallet->expense))
+        .'<div class="hr"></div>'
         .\Form\label('Balance', amount_html($wallet->balance))
         .\Page\infoText($infoText)
         .create_panel('Transactions', $transactionsContent)

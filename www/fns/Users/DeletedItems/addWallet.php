@@ -7,6 +7,8 @@ function addWallet ($mysqli, $wallet, $apiKey) {
     add($mysqli, $wallet->id_users, 'wallet', [
         'id' => $wallet->id,
         'name' => $wallet->name,
+        'income' => $wallet->income,
+        'expense' => $wallet->expense,
         'balance' => $wallet->balance,
         'num_transactions' => $wallet->num_transactions,
         'insert_api_key_id' => $wallet->insert_api_key_id,

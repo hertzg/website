@@ -15,11 +15,13 @@ function ensure ($mysqli) {
     include_once "$fnsDir/Table/ensure.php";
     return \Table\ensure($mysqli, 'wallets', [
         'balance' => ['type' => 'bigint(20)'],
+        'expense' => ['type' => 'bigint(20) unsigned'],
         'id' => [
             'type' => 'bigint(20) unsigned',
             'primary' => true,
         ],
         'id_users' => ['type' => 'bigint(20) unsigned'],
+        'income' => ['type' => 'bigint(20) unsigned'],
         'insert_api_key_id' => [
             'type' => 'bigint(20) unsigned',
             'nullable' => true,
