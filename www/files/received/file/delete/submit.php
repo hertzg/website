@@ -19,10 +19,10 @@ if (!$user->num_received_folders && $user->num_received_files == 1) {
     $messages[] = 'No more received files.';
     $_SESSION['files/messages'] = $messages;
     unset($_SESSION['files/errors']);
-    redirect('../..');
+    redirect('../../..');
 }
 
 unset($_SESSION['files/received/errors']);
 $_SESSION['files/received/messages'] = $messages;
 
-redirect('..');
+redirect('../..');
