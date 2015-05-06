@@ -21,18 +21,6 @@ $maxLengths = Wallets\maxLengths();
 
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/textfield.php";
-$content =
-    '<form action="submit.php" method="post">'
-        .Form\textfield('name', 'Name', [
-            'value' => $values['name'],
-            'maxlength' => $maxLengths['name'],
-            'autofocus' => true,
-            'required' => true,
-        ])
-        .'<div class="hr"></div>'
-        .Form\button('Save Wallet')
-    .'</form>';
-
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
@@ -44,7 +32,16 @@ $content = Page\tabs(
     ],
     'New',
     Page\sessionErrors('wallets/new/errors')
-    .$content
+    .'<form action="submit.php" method="post">'
+        .Form\textfield('name', 'Name', [
+            'value' => $values['name'],
+            'maxlength' => $maxLengths['name'],
+            'autofocus' => true,
+            'required' => true,
+        ])
+        .'<div class="hr"></div>'
+        .Form\button('Save Wallet')
+    .'</form>'
 );
 
 include_once "$fnsDir/echo_page.php";
