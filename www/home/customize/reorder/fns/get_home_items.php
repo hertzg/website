@@ -2,6 +2,8 @@
 
 function get_home_items () {
     return [
+        'bar-charts' => ['Bar Charts', 'bar-charts'],
+        'new-bar-chart' => ['New Bar Chart', 'create-bar-chart'],
         'bookmarks' => ['Bookmarks', 'bookmarks'],
         'new-bookmark' => ['New Bookmark', 'create-bookmark'],
         'calendar' => ['Calendar', 'calendar'],

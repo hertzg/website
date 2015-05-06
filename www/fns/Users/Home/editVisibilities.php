@@ -2,12 +2,14 @@
 
 namespace Users\Home;
 
-function editVisibilities ($mysqli, $id_users, $bookmarks,
-    $new_bookmark, $calendar, $new_event, $contacts, $new_contact,
+function editVisibilities ($mysqli, $id_users, $bar_charts, $new_bar_chart,
+    $bookmarks, $new_bookmark, $calendar, $new_event, $contacts, $new_contact,
     $files, $upload_files, $notes, $new_note, $notifications,
     $places, $new_place, $schedules, $tasks, $new_task,
     $wallets, $new_wallet, $new_transaction, $trash) {
 
+    $bar_charts = $bar_charts ? '1' : '0';
+    $new_bar_chart = $new_bar_chart ? '1' : '0';
     $bookmarks = $bookmarks ? '1' : '0';
     $new_bookmark = $new_bookmark ? '1' : '0';
     $calendar = $calendar ? '1' : '0';
@@ -29,7 +31,8 @@ function editVisibilities ($mysqli, $id_users, $bookmarks,
     $new_transaction = $new_transaction ? '1' : '0';
     $trash = $trash ? '1' : '0';
 
-    $sql = "update users set show_bookmarks = $bookmarks,"
+    $sql = "update users set show_bar_charts = $bar_charts,"
+        ." show_new_bar_chart = $new_bar_chart, show_bookmarks = $bookmarks,"
         ." show_new_bookmark = $new_bookmark, show_calendar = $calendar,"
         ." show_new_event = $new_event, show_contacts = $contacts,"
         ." show_new_contact = $new_contact, show_files = $files,"

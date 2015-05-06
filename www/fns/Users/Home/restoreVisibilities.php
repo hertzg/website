@@ -3,7 +3,7 @@
 namespace Users\Home;
 
 function restoreVisibilities ($mysqli, $id_users) {
-    $sql = 'update users set'
+    $sql = 'update users set show_bar_charts = 1, show_new_bar_chart = 0,'
         .' show_bookmarks = 1, show_new_bookmark = 0, show_calendar = 1,'
         .' show_new_event = 0, show_contacts = 1, show_new_contact = 0,'
         .' show_files = 1, show_upload_files = 0, show_notes = 1,'
