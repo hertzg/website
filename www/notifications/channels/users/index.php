@@ -10,7 +10,6 @@ $fnsDir = '../../../fns';
 unset(
     $_SESSION['notifications/channels/users/add/errors'],
     $_SESSION['notifications/channels/users/add/values'],
-    $_SESSION['notifications/channels/users/messages'],
     $_SESSION['notifications/channels/view/messages']
 );
 

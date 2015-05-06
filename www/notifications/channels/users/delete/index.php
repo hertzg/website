@@ -7,6 +7,8 @@ list($subscribedChannel, $id, $user) = require_subscribed_channel($mysqli);
 $base = '../../../../';
 $fnsDir = '../../../../fns';
 
+unset($_SESSION['notifications/channels/users/messages']);
+
 $id_channels = $subscribedChannel->id_channels;
 
 include_once "$fnsDir/Page/confirmDialog.php";
