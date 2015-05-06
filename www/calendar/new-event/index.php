@@ -15,7 +15,8 @@ $event_year = $values['event_year'];
 
 unset(
     $_SESSION['calendar/errors'],
-    $_SESSION['calendar/messages']
+    $_SESSION['calendar/messages'],
+    $_SESSION['home/messages']
 );
 
 include_once '../fns/calendar_href.php';
