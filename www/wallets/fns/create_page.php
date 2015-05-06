@@ -4,12 +4,6 @@ function create_page ($mysqli, $user, $base = '') {
 
     $fnsDir = __DIR__.'/../../fns';
 
-    include_once "$fnsDir/Page/sessionErrors.php";
-    include_once "$fnsDir/Page/sessionMessages.php";
-    $content =
-        Page\sessionErrors('wallets/errors')
-        .Page\sessionMessages('wallets/messages');
-
     if ($user->num_wallets) {
 
         $items = [];
@@ -38,13 +32,13 @@ function create_page ($mysqli, $user, $base = '') {
             .'</div>';
 
         include_once "$fnsDir/create_panel.php";
-        $content .=
+        $content =
             join('<div class="hr"></div>', $items)
             .create_panel('Options', $optionsContent);
 
     } else {
         include_once "$fnsDir/Page/info.php";
-        $content .= Page\info('No wallets');
+        $content = Page\info('No wallets');
     }
 
     unset(
@@ -57,6 +51,8 @@ function create_page ($mysqli, $user, $base = '') {
     );
 
     include_once "$fnsDir/create_new_item_button.php";
+    include_once "$fnsDir/Page/sessionErrors.php";
+    include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
     return Page\tabs(
         [
@@ -66,7 +62,9 @@ function create_page ($mysqli, $user, $base = '') {
             ],
         ],
         'Wallets',
-        $content,
+        Page\sessionErrors('wallets/errors')
+        .Page\sessionMessages('wallets/messages')
+        .$content,
         create_new_item_button('Wallet', $base)
     );
 

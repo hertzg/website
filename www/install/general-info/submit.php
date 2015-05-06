@@ -1,13 +1,18 @@
 <?php
 
+$fnsDir = '../../fns';
+
+include_once "$fnsDir/require_same_domain_referer.php";
+require_same_domain_referer('./');
+
 include_once '../fns/require_requirements.php';
 require_requirements();
 
-include_once '../../fns/request_strings.php';
+include_once "$fnsDir/request_strings.php";
 list($siteTitle, $domainName, $infoEmail, $siteBase, $https) = request_strings(
     'siteTitle', 'domainName', 'infoEmail', 'siteBase', 'https');
 
-include_once '../../fns/str_collapse_spaces.php';
+include_once "$fnsDir/str_collapse_spaces.php";
 $siteTitle = str_collapse_spaces($siteTitle);
 $infoEmail = str_collapse_spaces($infoEmail);
 $siteBase = str_collapse_spaces($siteBase);
@@ -28,7 +33,7 @@ $_SESSION['install/general-info/values'] = [
     'https' => $https,
 ];
 
-include_once '../../fns/redirect.php';
+include_once "$fnsDir/redirect.php";
 
 if ($error) {
     $_SESSION['install/general-info/error'] = $error;
