@@ -13,11 +13,14 @@ foreach ($users as $user) {
 
     $order_home_items = json_decode($user->order_home_items);
 
-    $index = array_search('new-transaction', $order_home_items);
+    $index = array_search('new-bar-chart', $order_home_items);
     if ($index !== false) array_splice($order_home_items, $index, 1);
 
-    $index = array_search('new-wallet', $order_home_items);
-    array_splice($order_home_items, $index + 1, 0, 'new-transaction');
+    $index = array_search('bar-charts', $order_home_items);
+    if ($index !== false) array_splice($order_home_items, $index, 1);
+
+    array_splice($order_home_items, 0, 0, 'new-bar-chart');
+    array_splice($order_home_items, 0, 0, 'bar-charts');
 
     $order_home_items = json_encode($order_home_items);
     $order_home_items = $mysqli->real_escape_string($order_home_items);
