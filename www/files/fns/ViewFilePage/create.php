@@ -2,13 +2,11 @@
 
 namespace ViewFilePage;
 
-function create ($mysqli, &$user, &$file, &$scripts) {
-
-    include_once __DIR__.'/../require_file.php';
-    list($file, $id, $user) = require_file($mysqli);
+function create ($mysqli, $file, &$scripts) {
 
     $base = '../../';
     $fnsDir = __DIR__.'/../../../fns';
+    $id = $file->id_files;
 
     include_once "$fnsDir/compressed_js_script.php";
     $scripts = compressed_js_script('dateAgo', $base);
