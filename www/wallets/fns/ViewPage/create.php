@@ -58,13 +58,13 @@ function create ($mysqli, $user, $wallet, &$scripts) {
     }
 
     $days = ceil((time() - $wallet->insert_time) / (60 * 60 * 24));
+    include_once "$fnsDir/amount_html.php";
     $income = amount_html($wallet->income)
         .' ('.amount_html($wallet->income / $days).' daily)';
     $expense = amount_html($wallet->expense)
         .' ('.amount_html($wallet->expense / $days).' daily)';
 
     include_once __DIR__.'/optionsPanel.php';
-    include_once "$fnsDir/amount_html.php";
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/Page/infoText.php";
