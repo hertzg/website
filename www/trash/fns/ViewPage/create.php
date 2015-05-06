@@ -16,17 +16,18 @@ function create ($deletedItem, $user, &$title, &$head, &$scripts) {
     $type = $deletedItem->data_type;
     $data = json_decode($deletedItem->data_json);
 
-    include_once __DIR__.'/../item_type_name.php';
-    $typeName = item_type_name($type);
-
     include_once "$fnsDir/format_author.php";
     $author = format_author($deletedItem->insert_time,
         $deletedItem->insert_api_key_name);
-    $infoText = "$typeName deleted $author.";
+    include_once __DIR__.'/../item_type_lowercase_name.php';
+    $infoText = item_type_lowercase_name($type)." deleted $author.";
 
     $head = '';
 
-    if ($type == 'bookmark' || $type == 'receivedBookmark') {
+    if ($type == 'barChart') {
+        include_once __DIR__.'/renderBarChart.php';
+        renderBarChart($data, $items);
+    } elseif ($type == 'bookmark' || $type == 'receivedBookmark') {
         include_once __DIR__.'/renderBookmark.php';
         renderBookmark($data, $items);
     } elseif ($type == 'contact' || $type == 'receivedContact') {
@@ -59,6 +60,9 @@ function create ($deletedItem, $user, &$title, &$head, &$scripts) {
         include_once __DIR__.'/renderWallet.php';
         renderWallet($data, $items, $infoText);
     }
+
+    include_once __DIR__.'/../item_type_name.php';
+    $typeName = item_type_name($type);
 
     if ($type == 'receivedBookmark' || $type == 'receivedContact'
         || $type == 'receivedFile' || $type == 'receivedFolder'

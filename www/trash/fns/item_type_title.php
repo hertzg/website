@@ -1,6 +1,7 @@
 <?php
 
 function item_type_title ($type) {
+    if ($type == 'barChart') return 'Bar Chart';
     if ($type == 'bookmark') return 'Bookmark';
     if ($type == 'contact') return 'Contact';
     if ($type == 'event') return 'Event';

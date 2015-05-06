@@ -11,7 +11,10 @@ $id_users = $user->id_users;
 $type = $deletedItem->data_type;
 $data = json_decode($deletedItem->data_json);
 
-if ($type == 'bookmark') {
+if ($type == 'barChart') {
+    include_once '../fns/Users/BarCharts/addDeleted.php';
+    Users\BarCharts\addDeleted($mysqli, $id_users, $data);
+} elseif ($type == 'bookmark') {
     include_once '../fns/Users/Bookmarks/addDeleted.php';
     Users\Bookmarks\addDeleted($mysqli, $id_users, $data);
 } elseif ($type == 'contact') {

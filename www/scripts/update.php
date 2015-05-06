@@ -30,5 +30,8 @@ foreach ($users as $user) {
 
 }
 
+$sql = 'update users set show_bar_charts = 1';
+$mysqli->query($sql) || trigger_error($mysqli->error);
+
 $elapsedSeconds = number_format(microtime(true) - $microtime, 3);
 echo "Done in $elapsedSeconds seconds.\n";

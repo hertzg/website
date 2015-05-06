@@ -5,6 +5,8 @@ namespace HomePage;
 function unsetSessionVars () {
     unset(
         $_SESSION['account/messages'],
+        $_SESSION['bar-charts/errors'],
+        $_SESSION['bar-charts/messages'],
         $_SESSION['bookmarks/errors'],
         $_SESSION['bookmarks/messages'],
         $_SESSION['calendar/messages'],

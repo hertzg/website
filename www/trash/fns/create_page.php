@@ -31,7 +31,10 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
             $href = "{$base}view/?id=$id";
             $options = ['id' => $id];
 
-            if ($type == 'bookmark' || $type == 'receivedBookmark') {
+            if ($type == 'barChart') {
+                include_once __DIR__.'/render_bar_chart.php';
+                render_bar_chart($data, $description, $href, $options, $items);
+            } elseif ($type == 'bookmark' || $type == 'receivedBookmark') {
                 include_once __DIR__.'/render_bookmark.php';
                 render_bookmark($data, $description, $href, $options, $items);
             } elseif ($type == 'contact' || $type == 'receivedContact') {
