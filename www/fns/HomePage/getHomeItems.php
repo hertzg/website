@@ -7,6 +7,15 @@ function getHomeItems ($mysqli, $user, &$scripts) {
     $fnsDir = __DIR__.'/..';
     $items = [];
 
+    include_once __DIR__.'/renderBarCharts.php';
+    renderBarCharts($user, $items);
+
+    if ($user->show_new_bar_chart) {
+        include_once "$fnsDir/Page/imageArrowLink.php";
+        $items['new-bar-chart'] = \Page\imageArrowLink(
+            'New Bar Chart', '../bar-charts/new/', 'create-bar-chart');
+    }
+
     include_once __DIR__.'/renderBookmarks.php';
     renderBookmarks($user, $items);
 

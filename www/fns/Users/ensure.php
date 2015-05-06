@@ -67,6 +67,7 @@ function ensure ($mysqli) {
         'num_archived_received_notes' => ['type' => 'bigint(20) unsigned'],
         'num_archived_received_places' => ['type' => 'bigint(20) unsigned'],
         'num_archived_received_tasks' => ['type' => 'bigint(20) unsigned'],
+        'num_bar_charts' => ['type' => 'bigint(20) unsigned'],
         'num_birthdays_today' => ['type' => 'bigint(20) unsigned'],
         'num_birthdays_tomorrow' => ['type' => 'bigint(20) unsigned'],
         'num_bookmarks' => ['type' => 'bigint(20) unsigned'],
