@@ -7,10 +7,10 @@ function addDeleted ($mysqli, $id, $id_users, $name, $income, $expense,
 
     $name = $mysqli->real_escape_string($name);
 
-    $sql = 'insert into wallets (id, id_users, name, income, expense,'
-        .' balance, num_transactions, insert_time, update_time)'
-        ." values ($id, $id_users, '$name', $income, $expense,"
-        ." $balance, $num_transactions, $insert_time, $update_time)";
+    $sql = 'insert into wallets (id, id_users, name, income, expense, balance,'
+        .' num_transactions, insert_time, update_time, revision)'
+        ." values ($id, $id_users, '$name', $income, $expense, $balance,"
+        ." $num_transactions, $insert_time, $update_time, $revision)";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
