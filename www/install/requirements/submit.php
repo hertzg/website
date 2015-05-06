@@ -1,9 +1,14 @@
 <?php
 
+$fnsDir = '../../fns';
+
+include_once "$fnsDir/require_same_domain_referer.php";
+require_same_domain_referer('./');
+
 include_once '../fns/require_requirements.php';
 require_requirements();
 
 unset($_SESSION['install/general-info/error']);
 
-include_once '../../fns/redirect.php';
+include_once "$fnsDir/redirect.php";
 redirect('../general-info/');

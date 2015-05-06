@@ -1,9 +1,12 @@
 <?php
 
+$fnsDir = '../../fns';
+
+include_once "$fnsDir/require_same_domain_referer.php";
+require_same_domain_referer('./');
+
 include_once '../fns/require_admin.php';
 list($generalInfoValues, $mysqlConfigValues, $adminValues) = require_admin();
-
-$fnsDir = '../../fns';
 
 include_once "$fnsDir/Password/hash.php";
 list($hash, $salt) = Password\hash($adminValues['password1']);
