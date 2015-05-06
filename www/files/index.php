@@ -22,9 +22,6 @@ if ($id) {
         .'</script>';
 }
 
-include_once 'fns/unset_session_vars.php';
-unset_session_vars();
-
 include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";
 echo_page($user, 'Files', $content, $base, [
