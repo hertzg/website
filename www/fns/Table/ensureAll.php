@@ -10,6 +10,9 @@ function ensureAll ($mysqli) {
     include_once "$fnsDir/ApiKeys/ensure.php";
     $output .= \ApiKeys\ensure($mysqli);
 
+    include_once "$fnsDir/BarCharts/ensure.php";
+    $output .= \BarCharts\ensure($mysqli);
+
     include_once "$fnsDir/Bookmarks/ensure.php";
     $output .= \Bookmarks\ensure($mysqli);
 
