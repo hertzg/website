@@ -6,6 +6,11 @@ $user = require_events('../');
 $base = '../../../';
 $fnsDir = '../../../fns';
 
+unset(
+    $_SESSION['calendar/all-events/errors'],
+    $_SESSION['calendar/all-events/messages']
+);
+
 include_once '../fns/create_page.php';
 include_once "$fnsDir/Page/confirmDialog.php";
 include_once '../../../lib/mysqli.php';

@@ -2,13 +2,11 @@
 
 namespace ViewFilePage;
 
-function create ($mysqli, &$user, &$file, &$scripts) {
-
-    include_once __DIR__.'/../require_file.php';
-    list($file, $id, $user) = require_file($mysqli);
+function create ($mysqli, $file, &$scripts) {
 
     $base = '../../';
     $fnsDir = __DIR__.'/../../../fns';
+    $id = $file->id_files;
 
     include_once "$fnsDir/compressed_js_script.php";
     $scripts = compressed_js_script('dateAgo', $base);
@@ -36,6 +34,17 @@ function create ($mysqli, &$user, &$file, &$scripts) {
 
     include_once "$fnsDir/create_folder_link.php";
     $folder_link = create_folder_link($file->id_folders, '../');
+
+    unset(
+        $_SESSION['files/errors'],
+        $_SESSION['files/id_folders'],
+        $_SESSION['files/messages'],
+        $_SESSION['files/rename-file/errors'],
+        $_SESSION['files/rename-file/values'],
+        $_SESSION['files/send-file/errors'],
+        $_SESSION['files/send-file/messages'],
+        $_SESSION['files/send-file/values']
+    );
 
     include_once __DIR__.'/locationBar.php';
     include_once __DIR__.'/optionsPanel.php';

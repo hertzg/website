@@ -7,6 +7,7 @@ include_once "$fnsDir/require_user.php";
 $user = require_user($base);
 
 unset(
+    $_SESSION['home/messages'],
     $_SESSION['wallets/errors'],
     $_SESSION['wallets/messages']
 );

@@ -66,6 +66,9 @@ function create_page ($mysqli, $user, $folder, &$scripts, $base = '') {
         $infoText = '';
     }
 
+    include_once __DIR__.'/unset_session_vars.php';
+    unset_session_vars();
+
     include_once __DIR__.'/create_options_panel.php';
     include_once __DIR__.'/create_location_bar.php';
     include_once "$fnsDir/Page/sessionErrors.php";

@@ -11,6 +11,7 @@ if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else $values = ['name' => ''];
 
 unset(
+    $_SESSION['home/messages'],
     $_SESSION['wallets/errors'],
     $_SESSION['wallets/messages']
 );

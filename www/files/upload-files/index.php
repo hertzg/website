@@ -7,7 +7,8 @@ list($parentFolder, $parent_id, $user) = require_parent_folder($mysqli);
 unset(
     $_SESSION['files/errors'],
     $_SESSION['files/id_folders'],
-    $_SESSION['files/messages']
+    $_SESSION['files/messages'],
+    $_SESSION['home/messages']
 );
 
 $fnsDir = '../../fns';
