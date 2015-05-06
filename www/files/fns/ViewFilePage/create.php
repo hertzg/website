@@ -37,6 +37,17 @@ function create ($mysqli, &$user, &$file, &$scripts) {
     include_once "$fnsDir/create_folder_link.php";
     $folder_link = create_folder_link($file->id_folders, '../');
 
+    unset(
+        $_SESSION['files/errors'],
+        $_SESSION['files/id_folders'],
+        $_SESSION['files/messages'],
+        $_SESSION['files/rename-file/errors'],
+        $_SESSION['files/rename-file/values'],
+        $_SESSION['files/send-file/errors'],
+        $_SESSION['files/send-file/messages'],
+        $_SESSION['files/send-file/values']
+    );
+
     include_once __DIR__.'/locationBar.php';
     include_once __DIR__.'/optionsPanel.php';
     include_once "$fnsDir/Form/label.php";
