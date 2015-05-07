@@ -1,6 +1,6 @@
 <?php
 
-namespace Users\Wallets;
+namespace Wallets;
 
 function addTransaction ($mysqli, $id, $amount) {
 
