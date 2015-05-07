@@ -14,7 +14,7 @@ function add ($mysqli, $wallet, $amount, $description, $insertApiKey = null) {
         $amount, $balance_after, $description, $insertApiKey);
 
     include_once "$fnsDir/Wallets/addTransaction.php";
-    \Users\Wallets\addTransaction($mysqli, $id_wallets, $amount);
+    \Wallets\addTransaction($mysqli, $id_wallets, $amount);
 
     include_once __DIR__.'/../../addBalanceTotal.php';
     \Users\addBalanceTotal($mysqli, $id_users, $amount);

@@ -9,11 +9,11 @@ function request () {
     include_once "$fnsDir/request_strings.php";
     list($amount, $description) = request_strings('amount', 'description');
 
-    include_once "$fnsDir/str_collapse_spaces.php";
     $amount = preg_replace('/\s+/', '', $amount);
-    $description = str_collapse_spaces($description);
-
     $parsed_amount = (int)round($amount * 100);
+
+    include_once "$fnsDir/str_collapse_spaces.php";
+    $description = str_collapse_spaces($description);
 
     return [$amount, $parsed_amount, $description];
 
