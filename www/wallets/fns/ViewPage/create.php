@@ -6,6 +6,8 @@ function create ($mysqli, $user, $wallet, &$scripts) {
 
     $fnsDir = __DIR__.'/../../../fns';
     $id = $wallet->id;
+    $income = $wallet->income;
+    $expense = $wallet->expense;
 
     include_once "$fnsDir/compressed_js_script.php";
     $scripts = compressed_js_script('dateAgo', '../../');
@@ -61,10 +63,9 @@ function create ($mysqli, $user, $wallet, &$scripts) {
     if ($days < 1) $days = 1;
 
     include_once "$fnsDir/amount_html.php";
-    $income = amount_html($wallet->income)
-        .' ('.amount_html($wallet->income / $days).' daily)';
-    $expense = amount_html($wallet->expense)
-        .' ('.amount_html($wallet->expense / $days).' daily)';
+    $income = amount_html($income).' ('.amount_html($income / $days).' daily)';
+    $expense = amount_html($expense)
+        .' ('.amount_html($expense / $days).' daily)';
 
     include_once __DIR__.'/optionsPanel.php';
     include_once "$fnsDir/create_panel.php";
