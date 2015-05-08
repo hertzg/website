@@ -1,0 +1,18 @@
+<?php
+
+$fnsDir = '../../fns';
+
+include_once "$fnsDir/require_same_domain_referer.php";
+require_same_domain_referer('..');
+
+include_once '../fns/require_bar.php';
+include_once '../../lib/mysqli.php';
+list($bar, $id, $user) = require_bar($mysqli);
+
+include_once "$fnsDir/Users/BarCharts/Bars/delete.php";
+Users\BarCharts\Bars\delete($mysqli, $bar);
+
+$_SESSION['bar-charts/view/messages'] = ['The bar has been deleted.'];
+
+include_once "$fnsDir/redirect.php";
+redirect("../view/?id=$bar->id_bar_charts");
