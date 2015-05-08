@@ -10,6 +10,7 @@ include_once '../lib/mysqli.php';
 $microtime = microtime(true);
 
 include_once '../fns/ApiKeys/countOnUser.php';
+include_once '../fns/BarCharts/countOnUser.php';
 include_once '../fns/Bookmarks/countOnUser.php';
 include_once '../fns/Channels/countOnUser.php';
 include_once '../fns/Connections/countOnUser.php';
@@ -61,6 +62,7 @@ foreach ($users as $user) {
         $mysqli, $id_users);
     $num_archived_received_tasks = ReceivedTasks\countArchivedOnReceiver(
         $mysqli, $id_users);
+    $num_bar_charts = BarCharts\countOnUser($mysqli, $id_users);
     $num_bookmarks = Bookmarks\countOnUser($mysqli, $id_users);
     $num_channels = Channels\countOnUser($mysqli, $id_users);
     $num_connections = Connections\countOnUser($mysqli, $id_users);
@@ -93,9 +95,9 @@ foreach ($users as $user) {
         $num_archived_received_bookmarks, $num_archived_received_contacts,
         $num_archived_received_files, $num_archived_received_folders,
         $num_archived_received_notes, $num_archived_received_places,
-        $num_archived_received_tasks, $num_bookmarks, $num_channels,
-        $num_connections, $num_contacts, $num_deleted_items, $num_events,
-        $num_folders, $num_notes, $num_notifications, $num_places,
+        $num_archived_received_tasks, $num_bar_charts, $num_bookmarks,
+        $num_channels, $num_connections, $num_contacts, $num_deleted_items,
+        $num_events, $num_folders, $num_notes, $num_notifications, $num_places,
         $num_received_bookmarks, $num_received_contacts, $num_received_files,
         $num_received_folders, $num_received_notes, $num_received_places,
         $num_received_tasks, $num_schedules, $num_subscribed_channels,
