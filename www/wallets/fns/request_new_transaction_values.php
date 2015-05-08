@@ -1,18 +1,15 @@
 <?php
 
 function request_new_transaction_values ($key) {
-    if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
-    else {
 
-        include_once __DIR__.'/../../fns/WalletTransactions/request.php';
-        $values = WalletTransactions\request();
-        list($amount, $parsed_amount, $description) = $values;
+    if (array_key_exists($key, $_SESSION)) return $_SESSION[$key];
 
-        $values = [
-            'amount' => $amount,
-            'description' => $description,
-        ];
+    include_once __DIR__.'/../../fns/WalletTransactions/request.php';
+    list($amount, $parsed_amount, $description) = WalletTransactions\request();
 
-    }
-    return $values;
+    return [
+        'amount' => $amount,
+        'description' => $description,
+    ];
+
 }
