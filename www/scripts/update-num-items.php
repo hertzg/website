@@ -129,6 +129,16 @@ foreach ($subscribed_channels as $subscribed_channel) {
     SubscribedChannels\editNumbers($mysqli, $id, $num_notifications);
 }
 
+include_once '../fns/BarChartBars/countOnBarChart.php';
+include_once '../fns/BarCharts/editNumbers.php';
+
+$bar_charts = mysqli_query_object($mysqli, 'select * from bar_charts');
+foreach ($bar_charts as $bar_chart) {
+    $id = $bar_chart->id;
+    $num_bars = BarChartBars\countOnBarChart($mysqli, $id);
+    BarCharts\editNumbers($mysqli, $id, $num_bars);
+}
+
 include_once '../fns/WalletTransactions/countOnWallet.php';
 include_once '../fns/Wallets/editNumbers.php';
 

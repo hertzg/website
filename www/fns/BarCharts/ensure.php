@@ -30,6 +30,7 @@ function ensure ($mysqli) {
             'characterSet' => 'utf8',
             'collation' => 'utf8_unicode_ci',
         ],
+        'num_bars' => ['type' => 'bigint(20) unsigned'],
         'revision' => ['type' => 'bigint(20) unsigned'],
         'update_api_key_id' => [
             'type' => 'bigint(20) unsigned',
