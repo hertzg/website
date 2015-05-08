@@ -27,6 +27,30 @@ function create ($mysqli, $user, $bar_chart, &$scripts) {
         $_SESSION['bar-charts/messages']
     );
 
+    $num_bars = $bar_chart->num_bars;
+    if ($num_bars) {
+
+        $limit = 5;
+
+        include_once "$fnsDir/BarChartBars/indexLimitOnBarChart.php";
+        $bars = \BarChartBars\indexLimitOnBarChart($mysqli, $id, $limit);
+
+        include_once __DIR__.'/../render_bars.php';
+        render_bars($bars, $items);
+
+        if ($num_bars > $limit) {
+            $items[] = \Page\imageArrowLinkWithDescription('All Bars',
+                "$num_bars total.", "../all-bars/?id=$id",
+                'bars', ['id' => 'all-bars']);
+        }
+
+        $barsContent = join('<div class="hr"></div>', $items);
+
+    } else {
+        include_once "$fnsDir/Page/info.php";
+        $barsContent = \Page\info('No bars');
+    }
+
     include_once __DIR__.'/optionsPanel.php';
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Form/label.php";
@@ -45,8 +69,9 @@ function create ($mysqli, $user, $bar_chart, &$scripts) {
         \Page\sessionMessages('bar-charts/view/messages')
         .\Form\label('Name', htmlspecialchars($bar_chart->name))
         .\Page\infoText($infoText)
+        .create_panel('Bars', $barsContent)
         .optionsPanel($id, $user),
-        \Page\newItemButton("../new/?id=$id", 'Bar Chart')
+        \Page\newItemButton("../new-bar/?id=$id", 'Bar')
     );
 
 }
