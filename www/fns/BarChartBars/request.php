@@ -10,7 +10,7 @@ function request () {
     list($value, $label) = request_strings('value', 'label');
 
     $value = preg_replace('/\s+/', '', $value);
-    $parsed_value = (int)round($value * 100);
+    $parsed_value = (float)$value;
 
     include_once "$fnsDir/str_collapse_spaces.php";
     $label = str_collapse_spaces($label);

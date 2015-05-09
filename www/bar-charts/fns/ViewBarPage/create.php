@@ -49,7 +49,7 @@ function create ($bar, &$scripts) {
     return \Page\tabs(
         [
             [
-                'title' => "Wallet #$id_bar_charts",
+                'title' => "Bar Chart #$id_bar_charts",
                 'href' => "../view/?id=$id_bar_charts#$id",
             ],
         ],
