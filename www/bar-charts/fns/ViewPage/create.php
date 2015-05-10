@@ -2,13 +2,17 @@
 
 namespace ViewPage;
 
-function create ($mysqli, $user, $bar_chart, &$scripts) {
+function create ($mysqli, $user, $bar_chart, &$scripts, &$head) {
 
+    $base = '../../';
     $fnsDir = __DIR__.'/../../../fns';
     $id = $bar_chart->id;
 
     include_once "$fnsDir/compressed_js_script.php";
-    $scripts = compressed_js_script('dateAgo', '../../');
+    $scripts = compressed_js_script('dateAgo', $base);
+
+    include_once "$fnsDir/compressed_css_link.php";
+    $head = compressed_css_link('barChart', $base);
 
     include_once "$fnsDir/format_author.php";
     $author = format_author($bar_chart->insert_time,
@@ -56,6 +60,7 @@ function create ($mysqli, $user, $bar_chart, &$scripts) {
         $barsContent = \Page\info('No bars');
     }
 
+    include_once __DIR__.'/chart.php';
     include_once __DIR__.'/optionsPanel.php';
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Form/label.php";
@@ -72,6 +77,7 @@ function create ($mysqli, $user, $bar_chart, &$scripts) {
         ],
         "Bar Chart #$id",
         \Page\sessionMessages('bar-charts/view/messages')
+        .chart($mysqli, $bar_chart)
         .\Form\label('Name', htmlspecialchars($bar_chart->name))
         .\Page\infoText($infoText)
         .create_panel('Bars', $barsContent)
