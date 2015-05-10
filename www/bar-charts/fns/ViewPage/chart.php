@@ -33,9 +33,15 @@ function chart ($mysqli, $bar_chart) {
             return $createBar($value, 'negative', $min);
         };
 
-        if ($min >= 0 && $max >= 0) $renderBar = $createPositive;
-        elseif ($min < 0 && $max < 0) $renderBar = $createNegative;
-        else {
+        if ($min >= 0 && $max >= 0) {
+            $class = 'positive';
+            $renderBar = $createPositive;
+        } elseif ($min < 0 && $max < 0) {
+            $class = 'negative';
+            $renderBar = $createNegative;
+        } else {
+
+            $class = 'positive negative';
 
             $totalPercent = (abs($min) + abs($max)) / 100;
             $positiveHeight = $max / $totalPercent;
@@ -71,9 +77,7 @@ function chart ($mysqli, $bar_chart) {
         }
 
         return
-            '<div class="barChart">'
-                .$barsHtml
-            .'</div>'
+            "<div class=\"barChart $class\">$barsHtml</div>"
             .'<div class="hr"></div>';
 
     }

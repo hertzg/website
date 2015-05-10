@@ -1,7 +1,15 @@
 .barChart {
-    padding: 31px 13px 13px 13px;
+    padding: 13px;
     text-align: center;
     font-size: 10px;
+    white-space: nowrap;
+    overflow-x: auto;
+}
+.barChart.positive {
+    padding-top: 31px;
+}
+.barChart.negative {
+    padding-bottom: 31px;
 }
 
 .barChart-barWrapper {
@@ -9,7 +17,7 @@
     vertical-align: top;
     width: 40px;
     height: 200px;
-    background: #eee;
+    background: #f7f7f7;
     margin: 2px;
     position: relative;
 }
