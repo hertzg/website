@@ -43,6 +43,7 @@ function create ($mysqli, $user, $bar_chart, &$scripts) {
         render_bars($bars, $items);
 
         if ($num_bars > $limit) {
+            include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
             $items[] = \Page\imageArrowLinkWithDescription('All Bars',
                 "$num_bars total.", "../all-bars/?id=$id",
                 'bars', ['id' => 'all-bars']);
