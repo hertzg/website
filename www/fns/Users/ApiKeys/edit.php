@@ -28,6 +28,9 @@ function edit ($mysqli, $apiKey, $name, $expire_time,
 
     if ($name === $apiKey->name) return;
 
+    include_once "$fnsDir/BarCharts/editApiKey.php";
+    \BarCharts\editApiKey($mysqli, $id, $name);
+
     include_once "$fnsDir/Bookmarks/editApiKey.php";
     \Bookmarks\editApiKey($mysqli, $id, $name);
 
