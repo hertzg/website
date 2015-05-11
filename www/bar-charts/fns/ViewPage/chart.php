@@ -17,6 +17,8 @@ function chart ($mysqli, $bar_chart) {
             else if ($value < $min) $min = $value;
         }
 
+        if (!$min && !$max) $max = 1;
+
         $createBar = function ($value, $class, $scale) {
             return
                 "<div class=\"barChart-bar $class\""
