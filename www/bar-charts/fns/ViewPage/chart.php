@@ -17,7 +17,7 @@ function chart ($mysqli, $bar_chart) {
             else if ($value < $min) $min = $value;
         }
 
-        $step = 10;
+        $step = 100;
         $n = 0;
         while ($max > $step || $min < -$step) {
             $max /= $step;
