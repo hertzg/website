@@ -12,7 +12,8 @@ function create ($mysqli, $user, $bar_chart, &$scripts, &$head) {
     $scripts = compressed_js_script('dateAgo', $base);
 
     include_once "$fnsDir/compressed_css_link.php";
-    $head = compressed_css_link('barChart', $base);
+    $head = compressed_css_link('barChart', $base)
+        .compressed_css_link('newItemMenu', $base);
 
     include_once "$fnsDir/format_author.php";
     $author = format_author($bar_chart->insert_time,
@@ -65,7 +66,7 @@ function create ($mysqli, $user, $bar_chart, &$scripts, &$head) {
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/Page/infoText.php";
-    include_once "$fnsDir/Page/newItemButton.php";
+    include_once "$fnsDir/Page/newItemMenu.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
     return \Page\tabs(
@@ -82,7 +83,11 @@ function create ($mysqli, $user, $bar_chart, &$scripts, &$head) {
         .\Page\infoText($infoText)
         .create_panel('Bars', $barsContent)
         .optionsPanel($id, $user),
-        \Page\newItemButton("../new-bar/?id=$id", 'Bar')
+        \Page\newItemMenu(
+            \Page\imageArrowLink('Bar', "../new-bar/?id=$id", 'create-bar')
+            .'<div class="hr"></div>'
+            .\Page\imageArrowLink('Bar Chart', '../new/', 'create-bar-chart')
+        )
     );
 
 }
