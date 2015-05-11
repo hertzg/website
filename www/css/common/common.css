@@ -101,4 +101,5 @@ b.author {
     height: 0;
     line-height: 0;
     overflow: hidden;
+    content: '';
 }

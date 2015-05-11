@@ -2,15 +2,19 @@
 
 namespace ViewPage;
 
-function create ($mysqli, $user, $wallet, &$scripts) {
+function create ($mysqli, $user, $wallet, &$scripts, &$head) {
 
+    $base = '../../';
     $fnsDir = __DIR__.'/../../../fns';
     $id = $wallet->id;
     $income = $wallet->income;
     $expense = $wallet->expense;
 
     include_once "$fnsDir/compressed_js_script.php";
-    $scripts = compressed_js_script('dateAgo', '../../');
+    $scripts = compressed_js_script('dateAgo', $base);
+
+    include_once "$fnsDir/compressed_css_link.php";
+    $head = compressed_css_link('newItemMenu', $base);
 
     include_once "$fnsDir/format_author.php";
     $author = format_author($wallet->insert_time, $wallet->insert_api_key_name);
@@ -71,7 +75,7 @@ function create ($mysqli, $user, $wallet, &$scripts) {
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/Page/infoText.php";
-    include_once "$fnsDir/Page/newItemButton.php";
+    include_once "$fnsDir/Page/newItemMenu.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
     return \Page\tabs(
@@ -93,7 +97,12 @@ function create ($mysqli, $user, $wallet, &$scripts) {
         .\Page\infoText($infoText)
         .create_panel('Transactions', $transactionsContent)
         .optionsPanel($id, $user),
-        \Page\newItemButton("../new-transaction/?id=$id", 'Transaction')
+        \Page\newItemMenu(
+            \Page\imageArrowLink('Transaction',
+                "../new-transaction/?id=$id", 'create-transaction')
+            .'<div class="hr"></div>'
+            .\Page\imageArrowLink('Wallet', '../new/', 'create-wallet')
+        )
     );
 
 }

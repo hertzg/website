@@ -52,11 +52,11 @@ function optionsPanel ($place) {
     include_once "$fnsDir/Page/staticTwoColumns.php";
     include_once "$fnsDir/Page/twoColumns.php";
     $content =
-        \Page\staticTwoColumns($addPointLink, $editLink)
+        \Page\staticTwoColumns($editLink, $duplicateLink)
         .'<div class="hr"></div>'
-        .\Page\staticTwoColumns($duplicateLink, $sendLink)
+        .\Page\staticTwoColumns($sendLink, $sendViaSmsLink)
         .'<div class="hr"></div>'
-        .\Page\twoColumns($sendViaSmsLink, $deleteLink);
+        .$deleteLink;
 
     include_once "$fnsDir/create_panel.php";
     return create_panel('Place Options', $content);

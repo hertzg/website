@@ -35,6 +35,7 @@
 
             var style = overlayDiv.style
             style.position = 'fixed'
+            style.zIndex = '1'
             style.top = style.right = style.bottom = style.left = '0'
             style.background = 'rgba(0, 0, 0, 0.5)'
 
