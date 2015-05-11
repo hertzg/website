@@ -2,6 +2,10 @@
 
 function get_groups () {
     return [
+        'barChart' => [
+            'title' => 'Bar Charts',
+            'description' => 'Methods for manipulating bar charts',
+        ],
         'bookmark' => [
             'title' => 'Bookmark',
             'description' => 'Methods for manipulating bookmarks',

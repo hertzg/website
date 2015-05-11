@@ -7,6 +7,16 @@ function get_full_groups () {
     include_once "$dir/get_groups.php";
     $groups = get_groups();
 
+    include_once "$dir/barChart/get_methods.php";
+    $groups['barChart']['methods'] = barChart\get_methods();
+
+    include_once "$dir/barChart/get_subgroups.php";
+    $groups['barChart']['subgroups'] = barChart\get_subgroups();
+
+    include_once "$dir/barChart/bar/get_methods.php";
+    $methods = barChart\bar\get_methods();
+    $groups['barChart']['subgroups']['bar']['methods'] = $methods;
+
     include_once "$dir/bookmark/get_methods.php";
     $groups['bookmark']['methods'] = bookmark\get_methods();
 
