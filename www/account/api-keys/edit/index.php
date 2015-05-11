@@ -18,8 +18,8 @@ if (array_key_exists($key, $_SESSION)) {
         'randomizeKey' => false,
     ];
 
-    $permissions = ['bookmark', 'channel', 'contact', 'event', 'file',
-        'note', 'notification', 'place', 'schedule', 'task', 'wallet'];
+    $permissions = ['bar_chart', 'bookmark', 'channel', 'contact', 'event',
+        'file', 'note', 'notification', 'place', 'schedule', 'task', 'wallet'];
     foreach ($permissions as $key) {
         $property = "can_read_{$key}s";
         if ($apiKey->$property) {

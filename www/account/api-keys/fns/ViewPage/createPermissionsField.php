@@ -15,6 +15,7 @@ function createPermissionsField ($apiKey) {
         }
     };
 
+    $add('Bar Charts', 'bar_chart');
     $add('Bookmarks', 'bookmark');
     $add('Channels', 'channel');
     $add('Contacts', 'contact');

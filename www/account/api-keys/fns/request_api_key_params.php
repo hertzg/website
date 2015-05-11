@@ -9,11 +9,11 @@ function request_api_key_params () {
     $fnsDir = __DIR__.'/../../../fns';
 
     include_once "$fnsDir/request_strings.php";
-    list($name, $expires, $bookmark_access,
+    list($name, $expires, $bar_chart_access, $bookmark_access,
         $channel_access, $contact_access, $event_access,
         $file_access, $note_access, $notification_access, $place_access,
         $schedule_access, $task_access, $wallet_access) = request_strings(
-        'name', 'expires', 'bookmark_access',
+        'name', 'expires', 'bar_chart_access', 'bookmark_access',
         'channel_access', 'contact_access', 'event_access',
         'file_access', 'note_access', 'notification_access', 'place_access',
         'schedule_access', 'task_access', 'wallet_access');
@@ -27,6 +27,7 @@ function request_api_key_params () {
     include_once __DIR__.'/../../fns/parse_expire_time.php';
     parse_expire_time($expires, $expire_time);
 
+    $parseAccess($bar_chart_access);
     $parseAccess($bookmark_access);
     $parseAccess($channel_access);
     $parseAccess($contact_access);
@@ -39,9 +40,9 @@ function request_api_key_params () {
     $parseAccess($task_access);
     $parseAccess($wallet_access);
 
-    return [$name, $expires, $expire_time, $bookmark_access,
-        $channel_access, $contact_access, $event_access, $file_access,
-        $note_access, $notification_access, $place_access,
+    return [$name, $expires, $expire_time, $bar_chart_access,
+        $bookmark_access, $channel_access, $contact_access, $event_access,
+        $file_access, $note_access, $notification_access, $place_access,
         $schedule_access, $task_access, $wallet_access];
 
 }

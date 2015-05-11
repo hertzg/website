@@ -12,6 +12,7 @@ else {
     $values = [
         'name' => '',
         'expires' => 'never',
+        'bar_chart_access' => 'none',
         'bookmark_access' => 'none',
         'channel_access' => 'none',
         'contact_access' => 'none',
