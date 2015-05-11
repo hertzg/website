@@ -12,6 +12,15 @@
     padding-bottom: 31px;
 }
 
+.barChart-rulers {
+    display: inline-block;
+    vertical-align: top;
+    width: 40px;
+    height: 200px;
+    margin: 2px;
+    position: relative;
+}
+
 .barChart-barWrapper {
     display: inline-block;
     vertical-align: top;

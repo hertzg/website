@@ -17,7 +17,24 @@ function chart ($mysqli, $bar_chart) {
             else if ($value < $min) $min = $value;
         }
 
-        if (!$min && !$max) $max = 1;
+        $step = 10;
+        $n = 0;
+        while ($max > $step || $min < -$step) {
+            $max /= $step;
+            $min /= $step;
+            $n++;
+        }
+        $max = ceil($max);
+        $min = floor($min);
+        for ($i = 0; $i < $n; $i++) {
+            $max *= $step;
+            $min *= $step;
+        }
+
+        if (!$min && !$max) {
+            $max = 1;
+            $min = -1;
+        }
 
         $createBar = function ($value, $class, $scale) {
             return
@@ -36,13 +53,18 @@ function chart ($mysqli, $bar_chart) {
         };
 
         if ($min >= 0 && $max >= 0) {
+            $positive = true;
+            $negative = false;
             $class = 'positive';
             $renderBar = $createPositive;
         } elseif ($min < 0 && $max < 0) {
+            $negative = true;
+            $positive = false;
             $class = 'negative';
             $renderBar = $createNegative;
         } else {
 
+            $positive = $negative = true;
             $class = 'positive negative';
 
             $totalPercent = (abs($min) + abs($max)) / 100;
@@ -69,6 +91,15 @@ function chart ($mysqli, $bar_chart) {
             };
         }
 
+        $rulersHtml = '<div class="barChart-rulers">';
+        if ($positive) {
+            $rulersHtml .= "<div class=\"barChart-value positive\">$max</div>";
+        }
+        if ($negative) {
+            $rulersHtml .= "<div class=\"barChart-value negative\">$min</div>";
+        }
+        $rulersHtml .= '</div>';
+
         $barsHtml = '';
         foreach ($bars as $bar) {
             $value = $bar->value;
@@ -79,7 +110,7 @@ function chart ($mysqli, $bar_chart) {
         }
 
         return
-            "<div class=\"barChart $class\">$barsHtml</div>"
+            "<div class=\"barChart $class\">$rulersHtml$barsHtml</div>"
             .'<div class="hr"></div>';
 
     }
