@@ -7,7 +7,6 @@ function request_bar_params (&$errors) {
     list($value, $parsed_value, $label) = $values;
 
     if ($value === '') $errors[] = 'Enter value.';
-    elseif ($parsed_value === 0) $errors[] = 'The value is invalid.';
 
     return $values;
 
