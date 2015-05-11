@@ -2,13 +2,17 @@
 
 namespace ViewPage;
 
-function create ($mysqli, $place, &$scripts) {
+function create ($mysqli, $place, &$scripts, &$head) {
 
     $id = $place->id;
+    $base = '../../';
     $fnsDir = __DIR__.'/../../../fns';
 
     include_once "$fnsDir/compressed_js_script.php";
-    $scripts = compressed_js_script('dateAgo', '../../');
+    $scripts = compressed_js_script('dateAgo', $base);
+
+    include_once "$fnsDir/compressed_css_link.php";
+    $head = compressed_css_link('newItemMenu', $base);
 
     include_once "$fnsDir/Form/label.php";
     $items = [
@@ -60,9 +64,12 @@ function create ($mysqli, $place, &$scripts) {
     include_once __DIR__.'/nearPlaces.php';
     include_once __DIR__.'/optionsPanel.php';
     include_once __DIR__.'/pointsPanel.php';
-    include_once "$fnsDir/create_new_item_button.php";
+    include_once "$fnsDir/ItemList/escapedItemQuery.php";
+    include_once "$fnsDir/ItemList/escapedPageQuery.php";
     include_once "$fnsDir/ItemList/listHref.php";
+    include_once "$fnsDir/Page/imageArrowLink.php";
     include_once "$fnsDir/Page/infoText.php";
+    include_once "$fnsDir/Page/newItemMenu.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
     return
@@ -78,7 +85,14 @@ function create ($mysqli, $place, &$scripts) {
             .join('<div class="hr"></div>', $items)
             .\Page\infoText($infoText)
             .nearPlaces($mysqli, $place),
-            create_new_item_button('Place', '../')
+            \Page\newItemMenu(
+                \Page\imageArrowLink('Place',
+                    '../new/'.\ItemList\escapedPageQuery(), 'create-place')
+                .'<div class="hr"></div>'
+                .\Page\imageArrowLink('Point',
+                    '../new-point/'.\ItemList\escapedItemQuery($id),
+                    'create-point')
+            )
         )
         .pointsPanel($mysqli, $place)
         .optionsPanel($place);
