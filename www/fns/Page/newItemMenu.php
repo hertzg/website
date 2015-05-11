@@ -11,7 +11,7 @@ function newItemMenu ($content) {
                 .'<div class="foreground horizontal"></div>'
                 .'<div class="foreground vertical"></div>'
             .'</div>'
-            .'<div class="newItemMenu-text">New</div>'
+            .'<button class="newItemMenu-text">New</button>'
             .'<div class="newItemMenu-menu">'
                 .'<div class="newItemMenu-arrow"></div>'
                 .'<div class="newItemMenu-frame">'
