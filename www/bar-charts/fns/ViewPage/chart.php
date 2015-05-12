@@ -63,22 +63,24 @@ function chart ($mysqli, $bar_chart) {
         $positiveHeight = $max / $totalPercent;
         $negativeHeight = -$min / $totalPercent;
 
+        $createSizer = function ($height, $createBar, $value, $class) {
+            return
+                "<div class=\"barChart-sizer $class\""
+                ." style=\"height: $height%\">"
+                    .$createBar($value)
+                .'</div>';
+        };
+
         $renderBar = function ($value) use ($positiveHeight,
-            $negativeHeight, $createPositive, $createNegative) {
+            $negativeHeight, $createPositive, $createNegative, $createSizer) {
 
             if ($value >= 0) {
-                return
-                    '<div class="barChart-sizer positive"'
-                    ." style=\"height: $positiveHeight%\">"
-                        .$createPositive($value)
-                    .'</div>';
+                return $createSizer($positiveHeight,
+                    $createPositive, $value, 'positive');
             }
 
-            return
-                '<div class="barChart-sizer negative"'
-                ." style=\"height: $negativeHeight%\">"
-                    .$createNegative($value)
-                .'</div>';
+            return $createSizer($negativeHeight,
+                $createNegative, $value, 'negative');
 
         };
     }
