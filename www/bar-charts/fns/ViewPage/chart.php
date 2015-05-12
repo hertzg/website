@@ -20,57 +20,70 @@ function chart ($mysqli, $bar_chart) {
         return chartBar($value, 'negative', $min);
     };
 
-    if ($min >= 0 && $max >= 0) {
+    $range = abs($min) + abs($max);
+
+    if ($max > 0) {
         $positive = true;
-        $negative = false;
-        $class = 'positive';
-        $renderBar = $createPositive;
-    } elseif ($min < 0 && $max < 0) {
-        $negative = true;
-        $positive = false;
-        $class = 'negative';
-        $renderBar = $createNegative;
+        if ($min < 0) {
+
+            $negative = true;
+
+            $totalPercent = $range / 100;
+            $positiveHeight = $max / $totalPercent;
+            $negativeHeight = -$min / $totalPercent;
+
+            $createSizer = function ($height, $createBar, $value, $class) {
+                return
+                    "<div class=\"barChart-sizer $class\""
+                    ." style=\"height: $height%\">"
+                        .$createBar($value)
+                    .'</div>';
+            };
+
+            $renderBar = function ($value) use ($positiveHeight,
+                $negativeHeight, $createPositive, $createNegative, $createSizer) {
+
+                if ($value >= 0) {
+                    return $createSizer($positiveHeight,
+                        $createPositive, $value, 'positive');
+                }
+
+                return $createSizer($negativeHeight,
+                    $createNegative, $value, 'negative');
+
+            };
+
+        } else {
+            $negative = false;
+            $renderBar = $createPositive;
+        }
     } else {
-
-        $positive = $negative = true;
-        $class = 'positive negative';
-
-        $totalPercent = (abs($min) + abs($max)) / 100;
-        $positiveHeight = $max / $totalPercent;
-        $negativeHeight = -$min / $totalPercent;
-
-        $createSizer = function ($height, $createBar, $value, $class) {
-            return
-                "<div class=\"barChart-sizer $class\""
-                ." style=\"height: $height%\">"
-                    .$createBar($value)
-                .'</div>';
-        };
-
-        $renderBar = function ($value) use ($positiveHeight,
-            $negativeHeight, $createPositive, $createNegative, $createSizer) {
-
-            if ($value >= 0) {
-                return $createSizer($positiveHeight,
-                    $createPositive, $value, 'positive');
-            }
-
-            return $createSizer($negativeHeight,
-                $createNegative, $value, 'negative');
-
-        };
+        $positive = false;
+        $negative = true;
+        $renderBar = $createNegative;
     }
 
-    $rulersHtml = '<div class="barChart-rulers">';
-    include_once __DIR__.'/chartValue.php';
-    if ($positive) $rulersHtml .= chartValue($max, 'positive');
-    if ($negative) $rulersHtml .= chartValue($min, 'negative');
-    $rulersHtml .= '</div>';
-
-    if ($positive) $minEdge = 0;
-    else $minEdge = $min;
-    if ($negative) $maxEdge = 0;
-    else $maxEdge = $max;
+    $createLine = function ($value, $class) use ($max, $range) {
+        $top = (($max - $value) * 100 / $range).'%';
+        include_once __DIR__.'/../../../fns/short_number.php';
+        return
+            "<div class=\"barChart-line\" style=\"top: $top\">"
+                ."<div class=\"barChart-lineValue $class\">"
+                    .'<span class="barChart-number">'
+                        .short_number($value)
+                    .'</span>'
+                .'</div>'
+            .'</div>';
+    };
+    $step = floor($range / 4);
+    $linesHtml = $createLine(0, 'positive');
+    for ($i = $step; $i < $max; $i += $step) {
+        $linesHtml .= $createLine($i, 'positive');
+    }
+    for ($i = -$step; $i > $min; $i -= $step) {
+        $linesHtml .= $createLine($i, 'negative');
+    }
+    $linesHtml .= $createLine($min, 'negative').$createLine($max, 'positive');
 
     $barsHtml = '';
     foreach ($bars as $bar) {
@@ -82,7 +95,11 @@ function chart ($mysqli, $bar_chart) {
     }
 
     return
-        "<div class=\"barChart $class\">$rulersHtml$barsHtml</div>"
+        "<div class=\"barChart\">"
+            .'<div class="barChart-content">'
+                .$linesHtml.$barsHtml
+            .'</div>'
+        .'</div>'
         .'<div class="hr"></div>';
 
 }
