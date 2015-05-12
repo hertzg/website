@@ -63,6 +63,22 @@ function chart ($mysqli, $bar_chart) {
         $renderBar = $createNegative;
     }
 
+    $step = 1;
+    $a = 2.5;
+    $b = 2;
+    while (true) {
+
+        $c = $a;
+        $a = $b;
+        $b = $c;
+
+        $numLines = $range / $step;
+        if ($numLines > 5) $step *= $a;
+        elseif ($numLines < 2) $step /= $a;
+        else break;
+
+    }
+
     $createLine = function ($value, $class) use ($max, $range) {
         $top = (($max - $value) * 100 / $range).'%';
         include_once __DIR__.'/../../../fns/short_number.php';
@@ -73,7 +89,6 @@ function chart ($mysqli, $bar_chart) {
                 .'</div>'
             .'</div>';
     };
-    $step = floor($range / 4);
     $linesHtml = $createLine(0, 'positive');
     for ($i = $step; $i < $max; $i += $step) {
         $linesHtml .= $createLine($i, 'positive');
