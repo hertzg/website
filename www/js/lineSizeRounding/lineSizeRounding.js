@@ -8,7 +8,8 @@
             '.twoColumns-column2 {' +
                 ' border-left-width:' + lineWidth +
             ' }' +
-            '.panel > .title { border-bottom-width:' + lineWidth + ' }'
+            '.panel > .title { border-bottom-width:' + lineWidth + ' }' +
+            '.barChart-line { height: ' + lineWidth + ' }'
     }
 
     var style = document.createElement('style')
