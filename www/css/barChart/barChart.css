@@ -11,7 +11,7 @@
     position: relative;
     display: inline-block;
     vertical-align: top;
-    padding-left: 44px;
+    padding-left: 40px;
     padding-right: 4px;
 }
 
@@ -24,7 +24,7 @@
 }
 
 .barChart-bar {
-    background: #ccc;
+    background: #aaa;
     position: absolute;
     right: 0;
     left: 0;
@@ -65,14 +65,14 @@
 .barChart-line {
     position: absolute;
     right: 0;
-    left: 0;
+    left: 36px;
     height: 1px;
-    background: #ddd;
+    background: #ccc;
 }
 
 .barChart-lineValue {
     position: absolute;
-    left: 0;
+    left: -40px;
     width: 36px;
     top: -7px;
     text-align: right;

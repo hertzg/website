@@ -69,9 +69,7 @@ function chart ($mysqli, $bar_chart) {
         return
             "<div class=\"barChart-line\" style=\"top: $top\">"
                 ."<div class=\"barChart-lineValue $class\">"
-                    .'<span class="barChart-number">'
-                        .short_number($value)
-                    .'</span>'
+                    .short_number($value)
                 .'</div>'
             .'</div>';
     };
