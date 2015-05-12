@@ -9,7 +9,9 @@
 .barChart-padding {
     display: inline-block;
     vertical-align: top;
-    padding: 27px 16px;
+    padding-top: 27px;
+    padding-bottom: 27px;
+    padding-right: 16px;
 }
 
 .barChart-content {
