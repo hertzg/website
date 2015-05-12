@@ -52,6 +52,9 @@ function renderLines ($range, $min, $max) {
     $html .= $renderLine($min, 'negative').$renderLine($max, 'positive');
 
     return $linesHtml
-        ."<div class=\"barChart-lineLabels\">$lineLabelsHtml</div>";
+        .'<div class="barChart-lineLabels">'
+            .$lineLabelsHtml
+            .'<div class="barChart-lineLabels-gradient"></div>'
+        .'</div>';
 
 }
