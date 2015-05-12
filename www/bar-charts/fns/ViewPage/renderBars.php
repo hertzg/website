@@ -3,7 +3,7 @@
 namespace ViewPage;
 
 function renderBars ($bars, $renderBar) {
-    $html = '<div class="barChart-bars">';
+    $html = '<div class="barChart-bars barChart-verticalPadding">';
     foreach ($bars as $bar) {
         $value = $bar->value;
         $html .=
