@@ -9,32 +9,8 @@ function chart ($mysqli, $bar_chart) {
 
     if (!$bars) return;
 
-    $first_bar = $bars[0];
-    $min = $max = $first_bar->value;
-    foreach ($bars as $bar) {
-        $value = $bar->value;
-        if ($value > $max) $max = $value;
-        else if ($value < $min) $min = $value;
-    }
-
-    $step = 100;
-    $n = 0;
-    while ($max > $step || $min < -$step) {
-        $max /= $step;
-        $min /= $step;
-        $n++;
-    }
-    $max = ceil($max);
-    $min = floor($min);
-    for ($i = 0; $i < $n; $i++) {
-        $max *= $step;
-        $min *= $step;
-    }
-
-    if (!$min && !$max) {
-        $max = 1;
-        $min = -1;
-    }
+    include_once __DIR__.'/getMinMax.php';
+    getMinMax($bars, $min, $max);
 
     include_once __DIR__.'/chartBar.php';
     $createPositive = function ($value) use ($max) {
@@ -90,6 +66,11 @@ function chart ($mysqli, $bar_chart) {
     if ($positive) $rulersHtml .= chartValue($max, 'positive');
     if ($negative) $rulersHtml .= chartValue($min, 'negative');
     $rulersHtml .= '</div>';
+
+    if ($positive) $minEdge = 0;
+    else $minEdge = $min;
+    if ($negative) $maxEdge = 0;
+    else $maxEdge = $max;
 
     $barsHtml = '';
     foreach ($bars as $bar) {
