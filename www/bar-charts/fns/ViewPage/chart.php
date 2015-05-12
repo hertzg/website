@@ -63,20 +63,13 @@ function chart ($mysqli, $bar_chart) {
         $renderBar = $createNegative;
     }
 
-    $barsHtml = '';
-    foreach ($bars as $bar) {
-        $value = $bar->value;
-        $barsHtml .=
-            '<div class="barChart-barWrapper">'
-                .$renderBar($value)
-            .'</div>';
-    }
-
+    include_once __DIR__.'/renderBars.php';
     include_once __DIR__.'/renderLines.php';
     return
         "<div class=\"barChart\">"
             .'<div class="barChart-content">'
-                .renderLines($range, $min, $max).$barsHtml
+                .renderLines($range, $min, $max)
+                .renderBars($bars, $renderBar)
             .'</div>'
         .'</div>'
         .'<div class="hr"></div>';
