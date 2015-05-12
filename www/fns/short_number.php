@@ -15,6 +15,15 @@ function short_number ($number) {
     if (round($number * 10) % 10) $decimals = 1;
     else $decimals = 0;
 
-    return number_format($number, $decimals).$ending;
+    $ten = abs($number) * 10;
+    $floor_ten = floor($ten);
+    if ($ten > $floor_ten) {
+        if ($number < 0) $inequality = '<';
+        else $inequality = '>';
+    } else {
+        $inequality = '';
+    }
+
+    return $inequality.number_format($number, $decimals).$ending;
 
 }
