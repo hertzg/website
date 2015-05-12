@@ -37,13 +37,12 @@ function chart ($mysqli, $bar_chart) {
     }
 
     include_once __DIR__.'/../../../fns/short_number.php';
+    include_once __DIR__.'/chartValue.php';
     $createBar = function ($value, $class, $scale) {
         return
             "<div class=\"barChart-bar $class\""
             .' style="height: '.($value * 100 / $scale).'%">'
-                ."<div class=\"barChart-value $class\">"
-                    .short_number($value)
-                .'</div>'
+                .chartValue($value, $class)
             .'</div>';
     };
 
@@ -95,18 +94,8 @@ function chart ($mysqli, $bar_chart) {
     }
 
     $rulersHtml = '<div class="barChart-rulers">';
-    if ($positive) {
-        $rulersHtml .=
-            "<div class=\"barChart-value positive\">"
-                .short_number($max)
-            .'</div>';
-    }
-    if ($negative) {
-        $rulersHtml .=
-            "<div class=\"barChart-value negative\">"
-                .short_number($min)
-            .'</div>';
-    }
+    if ($positive) $rulersHtml .= chartValue($max, 'positive');
+    if ($negative) $rulersHtml .= chartValue($min, 'negative');
     $rulersHtml .= '</div>';
 
     $barsHtml = '';
