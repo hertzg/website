@@ -20,6 +20,9 @@ function renderLines ($range, $min, $max) {
 
     }
 
+    $round = pow(10, floor(log($step, 10)));
+    $step = floor($step / $round) * $round;
+
     $createLine = function ($value, $class) use ($max, $range) {
         $top = (($max - $value) * 100 / $range).'%';
         include_once __DIR__.'/../../../fns/short_number.php';
