@@ -1,5 +1,4 @@
 .barChart {
-    padding: 27px 16px;
     text-align: center;
     font-size: 11px;
     line-height: 13px;
@@ -7,11 +6,22 @@
     overflow-x: auto;
 }
 
+.barChart-padding {
+    display: inline-block;
+    vertical-align: top;
+    padding: 27px 16px;
+}
+
 .barChart-content {
     position: relative;
     display: inline-block;
     vertical-align: top;
-    padding-left: 40px;
+}
+
+.barChart-bars {
+    display: inline-block;
+    vertical-align: top;
+    padding-left: 4px;
     padding-right: 4px;
 }
 
@@ -21,6 +31,17 @@
     width: 48px;
     height: 200px;
     position: relative;
+}
+
+.barChart-lineLabels {
+    display: inline-block;
+    vertical-align: top;
+    width: 48px;
+    height: 200px;
+    position: sticky;
+    left: 0;
+    background: rgba(255, 255, 255, 0.5);
+    z-index: 1;
 }
 
 .barChart-bar {
@@ -65,15 +86,22 @@
 .barChart-line {
     position: absolute;
     right: 0;
-    left: 36px;
+    left: 48px;
     height: 1px;
     background: #ccc;
 }
 
-.barChart-lineValue {
+.barChart-lineLabel {
     position: absolute;
-    left: -40px;
-    width: 36px;
+    right: 0;
+    left: 0;
+    height: 1px;
+}
+
+.barChart-lineLabel-value {
+    position: absolute;
+    left: 0;
+    width: 40px;
     top: -7px;
     text-align: right;
 }

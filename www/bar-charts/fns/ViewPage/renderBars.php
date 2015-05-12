@@ -3,7 +3,7 @@
 namespace ViewPage;
 
 function renderBars ($bars, $renderBar) {
-    $html = '';
+    $html = '<div class="barChart-bars">';
     foreach ($bars as $bar) {
         $value = $bar->value;
         $html .=
@@ -11,5 +11,6 @@ function renderBars ($bars, $renderBar) {
                 .$renderBar($value)
             .'</div>';
     }
+    $html .= '</div>';
     return $html;
 }

@@ -41,7 +41,8 @@ function chart ($mysqli, $bar_chart) {
             };
 
             $renderBar = function ($value) use ($positiveHeight,
-                $negativeHeight, $createPositive, $createNegative, $createSizer) {
+                $negativeHeight, $createPositive, $createNegative,
+                $createSizer) {
 
                 if ($value >= 0) {
                     return $createSizer($positiveHeight,
@@ -67,9 +68,11 @@ function chart ($mysqli, $bar_chart) {
     include_once __DIR__.'/renderLines.php';
     return
         "<div class=\"barChart\">"
-            .'<div class="barChart-content">'
-                .renderLines($range, $min, $max)
-                .renderBars($bars, $renderBar)
+            .'<div class="barChart-padding">'
+                .'<div class="barChart-content">'
+                    .renderLines($range, $min, $max)
+                    .renderBars($bars, $renderBar)
+                .'</div>'
             .'</div>'
         .'</div>'
         .'<div class="hr"></div>';

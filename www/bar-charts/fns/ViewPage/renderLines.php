@@ -23,25 +23,35 @@ function renderLines ($range, $min, $max) {
     $round = pow(10, floor(log($step, 10)));
     $step = floor($step / $round) * $round;
 
-    $createLine = function ($value, $class) use ($max, $range) {
+    $linesHtml = '';
+    $lineLabelsHtml = '';
+
+    $renderLine = function ($value, $class) use ($max,
+        $range, &$linesHtml, &$lineLabelsHtml) {
+
         $top = (($max - $value) * 100 / $range).'%';
         include_once __DIR__.'/../../../fns/short_number.php';
-        return
-            "<div class=\"barChart-line\" style=\"top: $top\">"
-                ."<div class=\"barChart-lineValue $class\">"
+        $linesHtml .= "<div class=\"barChart-line\" style=\"top: $top\"></div>";
+
+        $lineLabelsHtml .=
+            "<div class=\"barChart-lineLabel\" style=\"top: $top\">"
+                ."<div class=\"barChart-lineLabel-value $class\">"
                     .short_number($value)
                 .'</div>'
             .'</div>';
+
     };
 
-    $html = $createLine(0, 'positive');
+    $html = $renderLine(0, 'positive');
     for ($i = $step; $i < $max; $i += $step) {
-        $html .= $createLine($i, 'positive');
+        $html .= $renderLine($i, 'positive');
     }
     for ($i = -$step; $i > $min; $i -= $step) {
-        $html .= $createLine($i, 'negative');
+        $html .= $renderLine($i, 'negative');
     }
-    $html .= $createLine($min, 'negative').$createLine($max, 'positive');
-    return $html;
+    $html .= $renderLine($min, 'negative').$renderLine($max, 'positive');
+
+    return $linesHtml
+        ."<div class=\"barChart-lineLabels\">$lineLabelsHtml</div>";
 
 }
