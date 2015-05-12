@@ -17,6 +17,8 @@ function create ($code, $text, $description) {
                 ."<title>$code $text</title>"
                 .'<meta http-equiv="Content-Type"'
                 .' content="text/html; charset=UTF-8" />'
+                .'<meta name="viewport"'
+                .' content="width=device-width, user-scalable=no" />'
                 .'<style>'
                     .'* {'
                         .'margin: 0;'
