@@ -20,7 +20,7 @@
 
 .barChart-verticalPadding {
     padding-top: 27px;
-    padding-bottom: 27px;
+    padding-bottom: 40px;
 }
 
 .barChart-bars {
@@ -135,4 +135,11 @@
     padding-right: 2px;
     display: inline-block;
     vertical-align: top;
+}
+
+.barChart-label {
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: -26px;
 }
