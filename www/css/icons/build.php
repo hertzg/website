@@ -20,8 +20,8 @@ include_once '../../../lib/cli.php';
 $names = ['api-key', 'create-api-key', 'edit-api-key', 'api-keys'];
 render($content, 'api-key.svg?1', $names);
 
-$names = ['bar', 'create-bar', 'edit-bar', 'bars'];
-render($content, 'bar.svg', $names);
+$names = ['bar', 'create-bar', 'edit-bar', 'bars', 'duplicate-bar'];
+render($content, 'bar.svg?1', $names);
 
 $names = ['bar-chart', 'create-bar-chart', 'edit-bar-chart', 'bar-charts'];
 render($content, 'bar-chart.svg', $names);
