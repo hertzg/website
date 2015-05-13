@@ -60,8 +60,8 @@ function renderLines ($range, $min, $max) {
         .'<div class="barChart-lineLabels barChart-verticalPadding">'
             .'<div class="barChart-content">'
                 .$lineLabelsHtml
-                .'<div class="barChart-lineLabels-gradient"></div>'
             .'</div>'
+            .'<div class="barChart-lineLabels-gradient"></div>'
         .'</div>';
 
 }
