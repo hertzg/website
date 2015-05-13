@@ -13,7 +13,7 @@ function chart ($mysqli, $bar_chart) {
         $aLabel = $a->label;
         $bLabel = $b->label;
         if ($aLabel === $bLabel) {
-            return $a->update_time > $b->update_time ? 1 : -1;
+            return $a->insert_time > $b->insert_time ? 1 : -1;
         }
         return strcmp($aLabel, $bLabel);
     });
