@@ -15,8 +15,7 @@ $content =
     .'<script type="text/javascript">'
         ."var deleteHref = '../delete-bar/submit.php?id=$id'"
     .'</script>'
-    .'<script type="text/javascript"'
-    .' defer="defer" src="../view-bar.js">'
+    .'<script type="text/javascript" defer="defer" src="../view-bar.js">'
     .'</script>';
 
 include_once "$fnsDir/compressed_css_link.php";

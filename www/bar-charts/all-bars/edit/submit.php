@@ -11,8 +11,7 @@ include_once '../../../lib/mysqli.php';
 list($bar, $id, $user) = require_bar($mysqli, '../');
 
 include_once '../../fns/request_bar_params.php';
-$values = request_bar_params($errors);
-list($value, $parsed_value, $label) = $values;
+list($value, $parsed_value, $label) = request_bar_params($errors);
 
 include_once "$fnsDir/ItemList/itemQuery.php";
 $itemQuery = ItemList\itemQuery($id);
@@ -36,7 +35,6 @@ unset(
 include_once "$fnsDir/Users/BarCharts/Bars/edit.php";
 Users\BarCharts\Bars\edit($mysqli, $id, $parsed_value, $label);
 
-$message = 'Changes have been saved.';
-$_SESSION['bar-charts/all-bars/view/messages'] = [$message];
+$_SESSION['bar-charts/all-bars/view/messages'] = ['Changes have been saved.'];
 
 redirect("../view/$itemQuery");

@@ -31,7 +31,6 @@ unset(
 $_SESSION['bar-charts/view-bar/messages'] = ['The bar has been saved.'];
 
 include_once "$fnsDir/Users/BarCharts/Bars/add.php";
-$id = Users\BarCharts\Bars\add($mysqli,
-    $bar_chart, $parsed_value, $label);
+$id = Users\BarCharts\Bars\add($mysqli, $bar_chart, $parsed_value, $label);
 
 redirect("../view-bar/?id=$id");

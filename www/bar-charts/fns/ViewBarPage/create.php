@@ -19,8 +19,7 @@ function create ($bar, &$scripts) {
     $label = $bar->label;
     if ($label !== '') $params['label'] = $label;
     $href = '../new-bar/?'.htmlspecialchars(http_build_query($params));
-    $duplicateLink = \Page\imageArrowLink(
-        'Duplicate', $href, 'duplicate-bar');
+    $duplicateLink = \Page\imageArrowLink('Duplicate', $href, 'duplicate-bar');
 
     include_once "$fnsDir/Page/imageLink.php";
     $deleteLink =

@@ -10,8 +10,7 @@ include_once '../../../lib/mysqli.php';
 list($bar_chart, $id, $user) = require_bar_chart($mysqli, '../');
 
 include_once '../../fns/request_bar_params.php';
-$values = request_bar_params($errors);
-list($value, $parsed_value, $label) = $values;
+list($value, $parsed_value, $label) = request_bar_params($errors);
 
 include_once "$fnsDir/redirect.php";
 include_once "$fnsDir/ItemList/itemQuery.php";
