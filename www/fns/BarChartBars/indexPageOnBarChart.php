@@ -15,7 +15,7 @@ function indexPageOnBarChart ($mysqli,
 
     if ($offset >= $total) return [];
 
-    $sql = "select * $fromWhere order by insert_time desc"
+    $sql = "select * $fromWhere order by label, insert_time"
         ." limit $limit offset $offset";
     include_once "$fnsDir/mysqli_query_object.php";
     return mysqli_query_object($mysqli, $sql);

@@ -9,15 +9,6 @@ function chart ($mysqli, $bar_chart) {
 
     if (!$bars) return;
 
-    usort($bars, function ($a, $b) {
-        $aLabel = $a->label;
-        $bLabel = $b->label;
-        if ($aLabel === $bLabel) {
-            return $a->insert_time > $b->insert_time ? 1 : -1;
-        }
-        return strcmp($aLabel, $bLabel);
-    });
-
     include_once __DIR__.'/getMinMax.php';
     getMinMax($bars, $min, $max);
 
