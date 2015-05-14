@@ -14,6 +14,4 @@ function addDeleted ($mysqli, $id, $id_users, $name, $income, $expense,
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
-    return $mysqli->insert_id;
-
 }
