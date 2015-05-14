@@ -72,6 +72,9 @@ function close ($mysqli, $user) {
     include_once __DIR__.'/deleteTasks.php';
     deleteTasks($mysqli, $user);
 
+    include_once "$fnsDir/Signins/deleteOnUser.php";
+    \Signins\deleteOnUser($mysqli, $id_users);
+
     if ($user->num_tokens) {
         include_once "$fnsDir/Tokens/deleteOnUser.php";
         \Tokens\deleteOnUser($mysqli, $id_users);

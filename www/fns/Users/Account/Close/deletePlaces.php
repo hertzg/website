@@ -15,6 +15,9 @@ function deletePlaces ($mysqli, $user) {
         include_once "$fnsDir/PlaceTags/deleteOnUser.php";
         \PlaceTags\deleteOnUser($mysqli, $id_users);
 
+        include_once "$fnsDir/PlacePoints/deleteOnUser.php";
+        \PlacePoints\deleteOnUser($mysqli, $id_users);
+
     }
 
     if ($user->num_received_places) {
