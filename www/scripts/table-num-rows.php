@@ -20,7 +20,8 @@ foreach ($tables as $table) {
 
     $name = $table->TABLE_NAME;
 
-    $sql = 'select count(*) num_rows from `'.$mysqli->real_escape_string($name).'`';
+    $sql = 'select count(*) num_rows'
+        .' from `'.$mysqli->real_escape_string($name).'`';
     $num_rows = mysqli_single_object($mysqli, $sql)->num_rows;
 
     echo str_pad($name, 30, ' ')." $num_rows\n";
