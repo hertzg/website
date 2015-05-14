@@ -9,7 +9,7 @@ function render_bars ($bars, &$items, $base = '') {
     include_once "$fnsDir/Page/imageArrowLink.php";
     include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
     foreach ($bars as $bar) {
- 
+
         $id = $bar->id;
         $title = $bar->value;
         $label = $bar->label;

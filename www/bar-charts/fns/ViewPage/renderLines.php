@@ -51,7 +51,7 @@ function renderLines ($range, $min, $max) {
     }
     $html .= $renderLine($min, 'negative').$renderLine($max, 'positive');
 
-    return 
+    return
         '<div class="barChart-lines barChart-verticalPadding">'
             .'<div class="barChart-content">'
                 .$linesHtml
