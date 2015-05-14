@@ -2,31 +2,39 @@
 
 namespace SearchPage;
 
-function renderTransactions ($transactions, &$items) {
+function renderTransactions ($transactions, &$items, $keyword) {
 
     $fnsDir = __DIR__.'/../../../../fns';
 
-    include_once "$fnsDir/amount_html.php";
-    include_once "$fnsDir/export_date_ago.php";
-    include_once "$fnsDir/ItemList/escapedItemQuery.php";
-    include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
-    foreach ($transactions as $transaction) {
+    if ($transactions) {
 
-        $itemDescription = export_date_ago($transaction->insert_time, true);
+        $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
 
-        $description = $transaction->description;
-        if ($description !== '') {
-            $itemDescription .= ' &middot; '.htmlspecialchars($description);
+        include_once "$fnsDir/amount_html.php";
+        include_once "$fnsDir/export_date_ago.php";
+        include_once "$fnsDir/ItemList/escapedItemQuery.php";
+        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
+        foreach ($transactions as $transaction) {
+
+            $description = htmlspecialchars($transaction->description);
+            $description = preg_replace($regex,
+                '<mark>$0</mark>', $description);
+            $description = export_date_ago($transaction->insert_time, true)
+                ." &middot; $description";
+
+            $id = $transaction->id;
+            $title = amount_html($transaction->amount);
+
+            $escapedItemQuery = \ItemList\escapedItemQuery($id);
+
+            $items[] = \Page\imageArrowLinkWithDescription($title, $description,
+                "../view/$escapedItemQuery", 'transaction', ['id' => $id]);
+
         }
 
-        $id = $transaction->id;
-        $title = amount_html($transaction->amount);
-
-        $escapedItemQuery = \ItemList\escapedItemQuery($id);
-
-        $items[] = \Page\imageArrowLinkWithDescription($title, $itemDescription,
-            "../view/$escapedItemQuery", 'transaction', ['id' => $id]);
-
+    } else {
+        include_once "$fnsDir/Page/info.php";
+        $items[] = \Page\info('No transactions found');
     }
 
 }

@@ -16,9 +16,9 @@ function create ($mysqli, $user, $wallet, &$scripts) {
     include_once "$fnsDir/Paging/limit.php";
     $limit = \Paging\limit();
 
-    include_once "$fnsDir/WalletTransactions/indexPageOnWallet.php";
-    $transactions = \WalletTransactions\indexPageOnWallet(
-        $mysqli, $id, $offset, $limit, $total);
+    include_once "$fnsDir/WalletTransactions/searchPageOnWallet.php";
+    $transactions = \WalletTransactions\searchPageOnWallet(
+        $mysqli, $id, $keyword, $offset, $limit, $total);
 
     include_once "$fnsDir/Form/hidden.php";
     include_once "$fnsDir/SearchForm/content.php";
@@ -37,7 +37,7 @@ function create ($mysqli, $user, $wallet, &$scripts) {
     render_prev_button($offset, $limit, $total, $items, $params);
 
     include_once __DIR__.'/renderTransactions.php';
-    renderTransactions($transactions, $items);
+    renderTransactions($transactions, $items, $keyword);
 
     include_once __DIR__.'/../render_next_button.php';
     render_next_button($offset, $limit, $total, $items, $params);
