@@ -7,7 +7,6 @@ include_once '../../../lib/mysqli.php';
 include_once '../../../fns/mysqli_query_object.php';
 
 $microtime = microtime(true);
-$deleted = 0;
 
 $sql = 'delete from received_folder_files'
     .' where id_users not in (select id_users from users)'
