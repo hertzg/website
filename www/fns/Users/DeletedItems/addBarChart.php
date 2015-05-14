@@ -7,6 +7,7 @@ function addBarChart ($mysqli, $bar_chart, $apiKey) {
     add($mysqli, $bar_chart->id_users, 'barChart', [
         'id' => $bar_chart->id,
         'name' => $bar_chart->name,
+        'num_bars' => $bar_chart->num_bars,
         'insert_api_key_id' => $bar_chart->insert_api_key_id,
         'insert_time' => $bar_chart->insert_time,
         'update_api_key_id' => $bar_chart->update_api_key_id,
