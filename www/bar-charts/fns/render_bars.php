@@ -14,7 +14,7 @@ function render_bars ($bars, &$items) {
         $label = $bar->label;
         $href = "../view-bar/?id=$id";
         $icon = 'bar';
-        $options =  ['id' => $id];
+        $options = ['id' => $id];
 
         if ($label === '') {
             $link = Page\imageArrowLink($title, $href, $icon, $options);

@@ -15,7 +15,7 @@ function render_bars ($bars, &$items, $base = '') {
         $label = $bar->label;
         $href = "{$base}view/".ItemList\escapedItemQuery($id);
         $icon = 'bar';
-        $options =  ['id' => $id];
+        $options = ['id' => $id];
 
         if ($label === '') {
             $link = Page\imageArrowLink($title, $href, $icon, $options);
