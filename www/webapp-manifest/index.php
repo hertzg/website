@@ -16,7 +16,7 @@ include_once '../fns/get_revision.php';
 include_once '../fns/SiteTitle/get.php';
 echo json_encode([
     'name' => SiteTitle\get(),
-    'version' => '1.1',
+    'version' => '2.0',
     'description' => $description,
     'fullscreen' => 'true',
     'launch_path' => $siteBase,
