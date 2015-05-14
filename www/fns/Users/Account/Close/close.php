@@ -12,6 +12,9 @@ function close ($mysqli, $user) {
         \ApiKeys\deleteOnUser($mysqli, $id_users);
     }
 
+    include_once __DIR__.'/deleteBarCharts.php';
+    deleteBarCharts($mysqli, $user);
+
     include_once __DIR__.'/deleteBookmarks.php';
     deleteBookmarks($mysqli, $user);
 
