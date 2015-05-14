@@ -5,7 +5,10 @@ namespace Users\DeletedItems;
 function purge ($mysqli, $deletedItem) {
 
     $type = $deletedItem->data_type;
-    if ($type == 'contact' || $type == 'receivedContact') {
+    if ($type == 'barChart') {
+        include_once __DIR__.'/purgeBarChart.php';
+        purgeBarChart($mysqli, $deletedItem);
+    } elseif ($type == 'contact' || $type == 'receivedContact') {
         include_once __DIR__.'/purgeContact.php';
         purgeContact($mysqli, $deletedItem);
     } elseif ($type == 'file') {
