@@ -18,7 +18,13 @@ function create_page ($mysqli, $user, $wallet, &$scripts, $base = '') {
     $transactions = WalletTransactions\indexPageOnWallet(
         $mysqli, $id, $offset, $limit, $total);
 
-    $items = [];
+    include_once "$fnsDir/Form/hidden.php";
+    include_once "$fnsDir/SearchForm/emptyContent.php";
+    $formContent = Form\hidden('id', $id)
+        .SearchForm\emptyContent("Search transactions...");
+
+    include_once "$fnsDir/SearchForm/create.php";
+    $items = [SearchForm\create('search/', $formContent)];
 
     $params = ['id' => $id];
 

@@ -15,7 +15,7 @@ $fnsDir = '../../../fns';
 include_once '../../fns/create_transaction_form_items.php';
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/hidden.php";
-include_once "$fnsDir/ItemList/escapedItemQuery.php";
+include_once "$fnsDir/ItemList/listHref.php";
 include_once "$fnsDir/ItemList/itemHiddenInputs.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/tabs.php";
@@ -23,7 +23,7 @@ $content = Page\tabs(
     [
         [
             'title' => 'All Transactions',
-            'href' => '../'.ItemList\escapedItemQuery($id),
+            'href' => '../'.ItemList\listHref('', ['id' => $id]),
         ]
     ],
     'Add New',

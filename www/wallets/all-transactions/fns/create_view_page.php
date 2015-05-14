@@ -8,7 +8,6 @@ function create_view_page ($transaction, &$scripts) {
 
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
     $escapedItemQuery = ItemList\escapedItemQuery($id);
-    $walletEscapedItemQuery = ItemList\escapedItemQuery($id_wallets);
 
     include_once "$fnsDir/Page/imageArrowLink.php";
     $editLink = Page\imageArrowLink('Edit',
@@ -46,6 +45,7 @@ function create_view_page ($transaction, &$scripts) {
 
     include_once __DIR__.'/../../fns/ViewTransactionPage/viewContent.php';
     include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/ItemList/listHref.php";
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
@@ -53,14 +53,15 @@ function create_view_page ($transaction, &$scripts) {
         [
             [
                 'title' => 'All Transactions',
-                'href' => "../$walletEscapedItemQuery#$id",
+                'href' => '../'.ItemList\listHref('', ['id' => $id_wallets])."#$id",
             ],
         ],
         "Transaction #$id",
         Page\sessionMessages('wallets/all-transactions/view/messages')
         .ViewTransactionPage\viewContent($transaction, $scripts, '../')
         .create_panel('Transaction Options', $optionsContent),
-        Page\newItemButton("../new/$walletEscapedItemQuery", 'Transaction')
+        Page\newItemButton(
+            '../new/'.ItemList\escapedItemQuery($id_wallets), 'Transaction')
     );
 
 }
