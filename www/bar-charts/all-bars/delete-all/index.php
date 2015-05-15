@@ -9,15 +9,24 @@ $fnsDir = '../../../fns';
 
 unset($_SESSION['bar-charts/all-bars/messages']);
 
+include_once "$fnsDir/ItemList/pageParams.php";
+$pageParams = ItemList\pageParams();
+
+if (array_key_exists('keyword', $pageParams)) {
+    include_once '../fns/SearchPage/create.php';
+    $content = SearchPage\create($mysqli, $user, $bar_chart, $scripts, '../');
+} else {
+    include_once '../fns/create_page.php';
+    $content = create_page($mysqli, $user, $bar_chart, $scripts, '../');
+}
+
 include_once '../fns/create_page.php';
-include_once "$fnsDir/ItemList/escapedItemQuery.php";
+include_once "$fnsDir/ItemList/listHref.php";
 include_once "$fnsDir/Page/confirmDialog.php";
-$content =
-    create_page($mysqli, $user, $bar_chart, $scripts, '../')
-    .Page\confirmDialog(
-        'Are you sure you want to delete all the bars?',
-        'Yes, delete all bars', "submit.php?id=$id",
-        '../'.ItemList\escapedItemQuery($id));
+$content .= Page\confirmDialog(
+    'Are you sure you want to delete all the bars?',
+    'Yes, delete all bars', "submit.php?id=$id",
+    '../'.ItemList\listHref('', ['id' => $id]));
 
 include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";

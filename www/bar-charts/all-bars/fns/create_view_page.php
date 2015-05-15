@@ -8,7 +8,6 @@ function create_view_page ($bar, &$scripts) {
 
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
     $escapedItemQuery = ItemList\escapedItemQuery($id);
-    $barChartEscapedItemQuery = ItemList\escapedItemQuery($id_bar_charts);
 
     include_once "$fnsDir/Page/imageArrowLink.php";
     $editLink = Page\imageArrowLink('Edit',
@@ -45,6 +44,7 @@ function create_view_page ($bar, &$scripts) {
 
     include_once __DIR__.'/../../fns/ViewBarPage/viewContent.php';
     include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/ItemList/listHref.php";
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
@@ -52,14 +52,15 @@ function create_view_page ($bar, &$scripts) {
         [
             [
                 'title' => 'All Bars',
-                'href' => "../$barChartEscapedItemQuery#$id",
+                'href' => '../'.ItemList\listHref('', ['id' => $id_bar_charts])."#$id",
             ],
         ],
         "Bar #$id",
         Page\sessionMessages('bar-charts/all-bars/view/messages')
         .ViewBarPage\viewContent($bar, $scripts, '../')
         .create_panel('Bar Options', $optionsContent),
-        Page\newItemButton("../new/$barChartEscapedItemQuery", 'Bar')
+        Page\newItemButton(
+            '../new/'.ItemList\escapedItemQuery($id_bar_charts), 'Bar')
     );
 
 }
