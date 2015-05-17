@@ -144,4 +144,6 @@
     right: 0;
     left: 0;
     bottom: -26px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
