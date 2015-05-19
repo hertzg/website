@@ -11,9 +11,7 @@ function newNotifications ($mysqli, $user) {
     if ($n) {
 
         include_once "$fnsDir/Users/Notifications/clearNumberNewForHome.php";
-        \Users\Notifications\clearNumberNewForHome($mysqli, $user->id_users);
-
-        $user->home_num_new_notifications = 0;
+        \Users\Notifications\clearNumberNewForHome($mysqli, $user);
 
         if ($n == 1) $warnings[] = '<b>1</b> new notification.';
         else $warnings[] = "<b>$n</b> new notifications.";

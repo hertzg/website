@@ -2,12 +2,11 @@
 
 function create_page ($mysqli, $user, &$scripts, $base = '') {
 
-    $id_users = $user->id_users;
     $fnsDir = __DIR__.'/../../fns';
 
     if ($user->num_new_notifications || $user->home_num_new_notifications) {
         include_once "$fnsDir/Users/Notifications/clearNumberNew.php";
-        Users\Notifications\clearNumberNew($mysqli, $id_users);
+        Users\Notifications\clearNumberNew($mysqli, $user);
     }
 
     include_once "$fnsDir/Paging/limit.php";
@@ -33,7 +32,7 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
 
         include_once "$fnsDir/Notifications/indexPageOnUser.php";
         $notifications = Notifications\indexPageOnUser($mysqli,
-            $id_users, $offset, $limit, $total);
+            $user->id_users, $offset, $limit, $total);
 
         include_once "$fnsDir/check_offset_overflow.php";
         check_offset_overflow($offset, $limit, $total, []);
