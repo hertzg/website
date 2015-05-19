@@ -59,14 +59,8 @@ function create_page ($mysqli, $user, $base = '') {
         $content = Page\info('No wallets');
     }
 
-    unset(
-        $_SESSION['home/messages'],
-        $_SESSION['wallets/new/errors'],
-        $_SESSION['wallets/new/values'],
-        $_SESSION['wallets/view/messages'],
-        $_SESSION['wallets/quick-new-transaction/errors'],
-        $_SESSION['wallets/quick-new-transaction/values']
-    );
+    include_once __DIR__.'/unset_session_vars.php';
+    unset_session_vars();
 
     include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/Page/sessionErrors.php";
