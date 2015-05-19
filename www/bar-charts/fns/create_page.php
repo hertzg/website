@@ -4,13 +4,6 @@ function create_page ($mysqli, $user, $base = '') {
 
     $fnsDir = __DIR__.'/../../fns';
 
-    unset(
-        $_SESSION['bar-charts/new/errors'],
-        $_SESSION['bar-charts/new/values'],
-        $_SESSION['bar-charts/view/messages'],
-        $_SESSION['home/messages']
-    );
-
     if ($user->num_bar_charts) {
 
         $items = [];
@@ -41,6 +34,9 @@ function create_page ($mysqli, $user, $base = '') {
         include_once "$fnsDir/Page/info.php";
         $content = Page\info('No bar charts');
     }
+
+    include_once __DIR__.'/unset_session_vars.php';
+    unset_session_vars();
 
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionErrors.php";
