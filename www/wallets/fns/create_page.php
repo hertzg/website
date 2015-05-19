@@ -4,12 +4,27 @@ function create_page ($mysqli, $user, $base = '') {
 
     $fnsDir = __DIR__.'/../../fns';
 
-    if ($user->num_wallets) {
+    $total = $user->num_wallets;
+
+    if ($total) {
 
         $items = [];
 
-        include_once "$fnsDir/Wallets/indexOnUser.php";
-        $wallets = Wallets\indexOnUser($mysqli, $user->id_users);
+        include_once "$fnsDir/Paging/requestOffset.php";
+        $offset = Paging\requestOffset();
+
+        include_once "$fnsDir/Paging/limit.php";
+        $limit = Paging\limit();
+
+        include_once "$fnsDir/check_offset_overflow.php";
+        check_offset_overflow($offset, $limit, $total);
+
+        include_once "$fnsDir/Wallets/indexPageOnUser.php";
+        $wallets = Wallets\indexPageOnUser($mysqli,
+            $user->id_users, $offset, $limit, $total);
+
+        include_once __DIR__.'/render_prev_button.php';
+        render_prev_button($offset, $limit, $total, $items);
 
         include_once "$fnsDir/amount_html.php";
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
@@ -19,6 +34,9 @@ function create_page ($mysqli, $user, $base = '') {
                 htmlspecialchars($wallet->name), amount_html($wallet->balance),
                 "{$base}view/?id=$id", 'wallet', ['id' => $id]);
         }
+
+        include_once __DIR__.'/render_next_button.php';
+        render_next_button($offset, $limit, $total, $items);
 
         include_once "$fnsDir/Page/imageArrowLink.php";
         include_once "$fnsDir/Page/imageLink.php";
