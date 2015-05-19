@@ -1,15 +1,15 @@
 <?php
 
-$base = '../../';
-$fnsDir = '../../fns';
-
-include_once "$fnsDir/require_user.php";
-$user = require_user($base);
+include_once '../fns/require_wallets.php';
+$user = require_wallets();
 
 unset(
     $_SESSION['wallets/errors'],
     $_SESSION['wallets/messages']
 );
+
+$base = '../../';
+$fnsDir = '../../fns';
 
 include_once '../fns/create_page.php';
 include_once "$fnsDir/Page/confirmDialog.php";
