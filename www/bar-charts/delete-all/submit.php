@@ -5,8 +5,8 @@ $fnsDir = '../../fns';
 include_once "$fnsDir/require_same_domain_referer.php";
 require_same_domain_referer('./');
 
-include_once "$fnsDir/require_user.php";
-$user = require_user('../../');
+include_once '../fns/require_bar_charts.php';
+$user = require_bar_charts();
 
 include_once "$fnsDir/Users/BarCharts/deleteAll.php";
 include_once '../../lib/mysqli.php';
