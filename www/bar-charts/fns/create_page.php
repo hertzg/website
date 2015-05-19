@@ -4,12 +4,27 @@ function create_page ($mysqli, $user, $base = '') {
 
     $fnsDir = __DIR__.'/../../fns';
 
-    if ($user->num_bar_charts) {
+    $total = $user->num_bar_charts;
+
+    if ($total) {
 
         $items = [];
 
-        include_once "$fnsDir/BarCharts/indexOnUser.php";
-        $barCharts = BarCharts\indexOnUser($mysqli, $user->id_users);
+        include_once "$fnsDir/Paging/requestOffset.php";
+        $offset = Paging\requestOffset();
+
+        include_once "$fnsDir/Paging/limit.php";
+        $limit = Paging\limit();
+
+        include_once "$fnsDir/check_offset_overflow.php";
+        check_offset_overflow($offset, $limit, $total);
+
+        include_once "$fnsDir/BarCharts/indexPageOnUser.php";
+        $barCharts = BarCharts\indexPageOnUser($mysqli,
+            $user->id_users, $offset, $limit, $total);
+
+        include_once __DIR__.'/render_prev_button.php';
+        render_prev_button($offset, $limit, $total, $items);
 
         include_once "$fnsDir/Page/imageArrowLink.php";
         foreach ($barCharts as $barChart) {
@@ -17,6 +32,9 @@ function create_page ($mysqli, $user, $base = '') {
             $items[] = Page\imageArrowLink(htmlspecialchars($barChart->name),
                 "{$base}view/?id=$id", 'bar-chart', ['id' => $id]);
         }
+
+        include_once __DIR__.'/render_next_button.php';
+        render_next_button($offset, $limit, $total, $items);
 
         include_once "$fnsDir/Page/imageLink.php";
         $optionsContent =

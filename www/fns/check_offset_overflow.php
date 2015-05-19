@@ -1,6 +1,6 @@
 <?php
 
-function check_offset_overflow ($offset, $limit, $total, $params) {
+function check_offset_overflow ($offset, $limit, $total, $params = []) {
 
     if (!$offset || $offset < $total) return;
 
