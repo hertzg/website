@@ -86,6 +86,11 @@ function create ($deletedItem, $user, &$title, &$head, &$scripts) {
     include_once __DIR__.'/../item_type_title.php';
     $title = item_type_title($type)." #$data->id";
 
+    unset(
+        $_SESSION['trash/errors'],
+        $_SESSION['trash/messages']
+    );
+
     include_once __DIR__.'/optionsPanel.php';
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/tabs.php";

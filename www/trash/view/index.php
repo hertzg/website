@@ -7,11 +7,6 @@ list($deletedItem, $id, $user) = require_deleted_item($mysqli, '../');
 $base = '../../';
 $fnsDir = '../../fns';
 
-unset(
-    $_SESSION['trash/errors'],
-    $_SESSION['trash/messages']
-);
-
 include_once '../fns/ViewPage/create.php';
 include_once "$fnsDir/compressed_js_script.php";
 $content =

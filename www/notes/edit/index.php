@@ -6,7 +6,13 @@ list($note, $id, $user) = require_note($mysqli);
 
 $key = 'notes/edit/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
-else $values = (array)$note;
+else {
+    $values = [
+        'text' => $note->text,
+        'tags' => $note->tags,
+        'encrypt' => $note->encrypt,
+    ];
+}
 
 unset($_SESSION['notes/view/messages']);
 

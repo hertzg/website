@@ -1,20 +1,20 @@
 <?php
 
-include_once '../../fns/require_same_domain_referer.php';
+$fnsDir = '../../fns';
+
+include_once "$fnsDir/require_same_domain_referer.php";
 require_same_domain_referer('..');
 
 include_once '../fns/require_place.php';
 include_once '../../lib/mysqli.php';
 list($place, $id, $user) = require_place($mysqli);
 
-$errors = [];
-
 include_once '../fns/request_place_params.php';
 list($latitude, $longitude, $altitude, $name, $description,
     $tags, $tag_names, $parsed_latitude, $parsed_longitude,
     $parsed_altitude) = request_place_params($errors);
 
-include_once '../../fns/ItemList/itemQuery.php';
+include_once "$fnsDir/ItemList/itemQuery.php";
 $itemQuery = ItemList\itemQuery($id);
 
 $values = [
@@ -28,7 +28,7 @@ $values = [
 
 $_SESSION['places/edit/values'] = $values;
 
-include_once '../../fns/redirect.php';
+include_once "$fnsDir/redirect.php";
 
 if ($errors) {
     $_SESSION['places/edit/errors'] = $errors;
@@ -37,7 +37,7 @@ if ($errors) {
 
 unset($_SESSION['places/edit/errors']);
 
-include_once '../../fns/request_strings.php';
+include_once "$fnsDir/request_strings.php";
 list($sendButton) = request_strings('sendButton');
 if ($sendButton) {
     unset(
@@ -54,7 +54,7 @@ if ($sendButton) {
 
 unset($_SESSION['places/edit/values']);
 
-include_once '../../fns/Users/Places/edit.php';
+include_once "$fnsDir/Users/Places/edit.php";
 Users\Places\edit($mysqli, $place, $parsed_latitude, $parsed_longitude,
     $parsed_altitude, $name, $description, $tags, $tag_names);
 

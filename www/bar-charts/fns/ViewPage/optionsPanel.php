@@ -4,7 +4,6 @@ namespace ViewPage;
 
 function optionsPanel ($bar_chart) {
 
-    $id = $bar_chart->id;
     $fnsDir = __DIR__.'/../../../fns';
 
     include_once "$fnsDir/ItemList/escapedItemQuery.php";

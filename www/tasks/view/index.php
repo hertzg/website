@@ -7,16 +7,6 @@ list($task, $id, $user) = require_task($mysqli);
 $base = '../../';
 $fnsDir = '../../fns';
 
-unset(
-    $_SESSION['tasks/edit/errors'],
-    $_SESSION['tasks/edit/values'],
-    $_SESSION['tasks/errors'],
-    $_SESSION['tasks/messages'],
-    $_SESSION['tasks/send/errors'],
-    $_SESSION['tasks/send/messages'],
-    $_SESSION['tasks/send/values']
-);
-
 include_once "$fnsDir/ItemList/itemQuery.php";
 $itemQuery = ItemList\itemQuery($id);
 

@@ -7,13 +7,6 @@ list($schedule, $id, $user) = require_schedule($mysqli);
 $base = '../../';
 $fnsDir = '../../fns';
 
-unset(
-    $_SESSION['schedules/edit/errors'],
-    $_SESSION['schedules/edit/values'],
-    $_SESSION['schedules/errors'],
-    $_SESSION['schedules/messages']
-);
-
 include_once "$fnsDir/ItemList/itemQuery.php";
 $itemQuery = ItemList\itemQuery($id);
 

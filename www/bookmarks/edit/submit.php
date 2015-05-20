@@ -1,18 +1,18 @@
 <?php
 
-include_once '../../fns/require_same_domain_referer.php';
+$fnsDir = '../../fns';
+
+include_once "$fnsDir/require_same_domain_referer.php";
 require_same_domain_referer('..');
 
 include_once '../fns/require_bookmark.php';
 include_once '../../lib/mysqli.php';
 list($bookmark, $id, $user) = require_bookmark($mysqli);
 
-$errors = [];
-
 include_once '../fns/request_bookmark_params.php';
 list($url, $title, $tags, $tag_names) = request_bookmark_params($errors);
 
-include_once '../../fns/ItemList/itemQuery.php';
+include_once "$fnsDir/ItemList/itemQuery.php";
 $itemQuery = ItemList\itemQuery($id);
 
 $values = [
@@ -23,7 +23,7 @@ $values = [
 
 $_SESSION['bookmarks/edit/values'] = $values;
 
-include_once '../../fns/redirect.php';
+include_once "$fnsDir/redirect.php";
 
 if ($errors) {
     $_SESSION['bookmarks/edit/errors'] = $errors;
@@ -32,7 +32,7 @@ if ($errors) {
 
 unset($_SESSION['bookmarks/edit/errors']);
 
-include_once '../../fns/request_strings.php';
+include_once "$fnsDir/request_strings.php";
 list($sendButton) = request_strings('sendButton');
 if ($sendButton) {
     unset(
@@ -46,7 +46,7 @@ if ($sendButton) {
 
 unset($_SESSION['bookmarks/edit/values']);
 
-include_once '../../fns/Users/Bookmarks/edit.php';
+include_once "$fnsDir/Users/Bookmarks/edit.php";
 Users\Bookmarks\edit($mysqli, $bookmark, $title, $url, $tags, $tag_names);
 
 $_SESSION['bookmarks/view/messages'] = ['Changes have been saved.'];

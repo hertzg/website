@@ -6,7 +6,13 @@ list($bookmark, $id, $user) = require_bookmark($mysqli);
 
 $key = 'bookmarks/edit/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
-else $values = (array)$bookmark;
+else {
+    $values = [
+        'url' => $bookmark->url,
+        'title' => $bookmark->title,
+        'tags' => $bookmark->tags,
+    ];
+}
 
 unset($_SESSION['bookmarks/view/messages']);
 

@@ -6,7 +6,16 @@ list($place, $id, $user) = require_place($mysqli);
 
 $key = 'places/edit/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
-else $values = (array)$place;
+else {
+    $values = [
+        'latitude' => $place->latitude,
+        'longitude' => $place->longitude,
+        'altitude' => $place->altitude,
+        'name' => $place->name,
+        'description' => $place->description,
+        'tags' => $place->tags,
+    ];
+}
 
 unset($_SESSION['places/view/messages']);
 

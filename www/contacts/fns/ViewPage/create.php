@@ -91,6 +91,17 @@ function create ($contact, &$head, &$scripts, $base = '') {
         $infoText .= "<br />Last modified $author.";
     }
 
+    unset(
+        $_SESSION['contacts/edit/errors'],
+        $_SESSION['contacts/edit/values'],
+        $_SESSION['contacts/errors'],
+        $_SESSION['contacts/messages'],
+        $_SESSION['contacts/photo/edit/errors'],
+        $_SESSION['contacts/send/errors'],
+        $_SESSION['contacts/send/messages'],
+        $_SESSION['contacts/send/values']
+    );
+
     include_once __DIR__.'/createContent.php';
     return createContent($contact, $infoText, $items, $base);
 

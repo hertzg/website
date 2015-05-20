@@ -4,10 +4,10 @@ include_once '../fns/require_task.php';
 include_once '../../lib/mysqli.php';
 list($task, $id, $user) = require_task($mysqli);
 
+unset($_SESSION['tasks/view/messages']);
+
 $base = '../../';
 $fnsDir = '../../fns';
-
-unset($_SESSION['tasks/view/messages']);
 
 include_once "$fnsDir/ItemList/escapedItemQuery.php";
 $escapedItemQuery = ItemList\escapedItemQuery($id);

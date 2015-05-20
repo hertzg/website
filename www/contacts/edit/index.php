@@ -5,9 +5,8 @@ include_once '../../lib/mysqli.php';
 list($contact, $id, $user) = require_contact($mysqli);
 
 $key = 'contacts/edit/values';
-if (array_key_exists($key, $_SESSION)) {
-    $values = $_SESSION[$key];
-} else {
+if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
+else {
 
     $birthday_time = $contact->birthday_time;
     if ($birthday_time === null) {

@@ -27,6 +27,16 @@ function create ($note, &$scripts) {
         $infoText .= "<br />Last modified $author.";
     }
 
+    unset(
+        $_SESSION['notes/edit/errors'],
+        $_SESSION['notes/edit/values'],
+        $_SESSION['notes/errors'],
+        $_SESSION['notes/messages'],
+        $_SESSION['notes/send/errors'],
+        $_SESSION['notes/send/messages'],
+        $_SESSION['notes/send/values']
+    );
+
     include_once __DIR__.'/optionsPanel.php';
     include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/ItemList/listHref.php";

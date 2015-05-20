@@ -4,10 +4,10 @@ include_once '../fns/require_contact.php';
 include_once '../../lib/mysqli.php';
 list($contact, $id, $user) = require_contact($mysqli);
 
+unset($_SESSION['contacts/view/messages']);
+
 $base = '../../';
 $fnsDir = '../../fns';
-
-unset($_SESSION['contacts/view/messages']);
 
 include_once "$fnsDir/ItemList/escapedItemQuery.php";
 $escapedItemQuery = ItemList\escapedItemQuery($id);

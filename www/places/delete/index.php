@@ -4,10 +4,10 @@ include_once '../fns/require_place.php';
 include_once '../../lib/mysqli.php';
 list($place, $id, $user) = require_place($mysqli);
 
+unset($_SESSION['places/view/messages']);
+
 $base = '../../';
 $fnsDir = '../../fns';
-
-unset($_SESSION['places/view/messages']);
 
 include_once "$fnsDir/ItemList/escapedItemQuery.php";
 $escapedItemQuery = ItemList\escapedItemQuery($id);

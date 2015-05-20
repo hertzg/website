@@ -4,10 +4,10 @@ include_once '../fns/require_note.php';
 include_once '../../lib/mysqli.php';
 list($note, $id, $user) = require_note($mysqli);
 
+unset($_SESSION['notes/view/messages']);
+
 $base = '../../';
 $fnsDir = '../../fns';
-
-unset($_SESSION['notes/view/messages']);
 
 include_once "$fnsDir/ItemList/escapedItemQuery.php";
 $escapedItemQuery = ItemList\escapedItemQuery($id);

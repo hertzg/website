@@ -4,10 +4,10 @@ include_once '../fns/require_schedule.php';
 include_once '../../lib/mysqli.php';
 list($schedule, $id, $user) = require_schedule($mysqli);
 
+unset($_SESSION['schedules/view/messages']);
+
 $base = '../../';
 $fnsDir = '../../fns';
-
-unset($_SESSION['schedules/view/messages']);
 
 include_once "$fnsDir/ItemList/escapedItemQuery.php";
 $escapedItemQuery = ItemList\escapedItemQuery($id);

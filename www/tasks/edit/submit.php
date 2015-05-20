@@ -1,20 +1,19 @@
 <?php
 
-include_once '../../fns/require_same_domain_referer.php';
+$fnsDir = '../../fns';
+
+include_once "$fnsDir/require_same_domain_referer.php";
 require_same_domain_referer('..');
 
 include_once '../fns/require_task.php';
 include_once '../../lib/mysqli.php';
 list($task, $id, $user) = require_task($mysqli);
 
-$errors = [];
-
 include_once '../fns/request_task_params.php';
-$values = request_task_params($user, $errors);
-list($text, $deadline_day, $deadline_month, $deadline_year,
-    $deadline_time, $tags, $tag_names, $top_priority) = $values;
+list($text, $deadline_day, $deadline_month, $deadline_year, $deadline_time,
+    $tags, $tag_names, $top_priority) = request_task_params($user, $errors);
 
-include_once '../../fns/ItemList/itemQuery.php';
+include_once "$fnsDir/ItemList/itemQuery.php";
 $itemQuery = ItemList\itemQuery($id);
 
 $values = [
@@ -29,7 +28,7 @@ $values = [
 
 $_SESSION['tasks/edit/values'] = $values;
 
-include_once '../../fns/redirect.php';
+include_once "$fnsDir/redirect.php";
 
 if ($errors) {
     $_SESSION['tasks/edit/errors'] = $errors;
@@ -38,7 +37,7 @@ if ($errors) {
 
 unset($_SESSION['tasks/edit/errors']);
 
-include_once '../../fns/request_strings.php';
+include_once "$fnsDir/request_strings.php";
 list($sendButton) = request_strings('sendButton');
 if ($sendButton) {
     unset(
@@ -52,7 +51,7 @@ if ($sendButton) {
 
 unset($_SESSION['tasks/edit/values']);
 
-include_once '../../fns/Users/Tasks/edit.php';
+include_once "$fnsDir/Users/Tasks/edit.php";
 Users\Tasks\edit($mysqli, $user, $task, $text,
     $deadline_time, $tags, $tag_names, $top_priority);
 

@@ -67,6 +67,13 @@ function create_view_page ($user, $schedule, &$scripts) {
         $infoText .= "<br />Last modified $author.";
     }
 
+    unset(
+        $_SESSION['schedules/edit/errors'],
+        $_SESSION['schedules/edit/values'],
+        $_SESSION['schedules/errors'],
+        $_SESSION['schedules/messages']
+    );
+
     include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/ItemList/listHref.php";

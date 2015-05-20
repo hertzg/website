@@ -7,16 +7,6 @@ list($note, $id, $user) = require_note($mysqli);
 $base = '../../';
 $fnsDir = '../../fns';
 
-unset(
-    $_SESSION['notes/edit/errors'],
-    $_SESSION['notes/edit/values'],
-    $_SESSION['notes/errors'],
-    $_SESSION['notes/messages'],
-    $_SESSION['notes/send/errors'],
-    $_SESSION['notes/send/messages'],
-    $_SESSION['notes/send/values']
-);
-
 include_once "$fnsDir/ItemList/itemQuery.php";
 $itemQuery = ItemList\itemQuery($id);
 

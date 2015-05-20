@@ -52,6 +52,16 @@ function create ($bookmark, &$scripts) {
         $infoText .= "<br />Last modified $author.";
     }
 
+    unset(
+        $_SESSION['bookmarks/edit/errors'],
+        $_SESSION['bookmarks/edit/values'],
+        $_SESSION['bookmarks/errors'],
+        $_SESSION['bookmarks/messages'],
+        $_SESSION['bookmarks/send/errors'],
+        $_SESSION['bookmarks/send/messages'],
+        $_SESSION['bookmarks/send/values']
+    );
+
     include_once __DIR__.'/optionsPanel.php';
     include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/ItemList/listHref.php";

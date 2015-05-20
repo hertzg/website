@@ -7,16 +7,6 @@ list($bookmark, $id, $user) = require_bookmark($mysqli);
 $base = '../../';
 $fnsDir = '../../fns';
 
-unset(
-    $_SESSION['bookmarks/edit/errors'],
-    $_SESSION['bookmarks/edit/values'],
-    $_SESSION['bookmarks/errors'],
-    $_SESSION['bookmarks/messages'],
-    $_SESSION['bookmarks/send/errors'],
-    $_SESSION['bookmarks/send/messages'],
-    $_SESSION['bookmarks/send/values']
-);
-
 include_once "$fnsDir/ItemList/itemQuery.php";
 $itemQuery = ItemList\itemQuery($id);
 

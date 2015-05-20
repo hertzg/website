@@ -7,17 +7,6 @@ list($contact, $id, $user) = require_contact($mysqli);
 $base = '../../';
 $fnsDir = '../../fns';
 
-unset(
-    $_SESSION['contacts/edit/errors'],
-    $_SESSION['contacts/edit/values'],
-    $_SESSION['contacts/errors'],
-    $_SESSION['contacts/messages'],
-    $_SESSION['contacts/photo/edit/errors'],
-    $_SESSION['contacts/send/errors'],
-    $_SESSION['contacts/send/messages'],
-    $_SESSION['contacts/send/values']
-);
-
 include_once "$fnsDir/ItemList/itemQuery.php";
 $itemQuery = ItemList\itemQuery($id);
 

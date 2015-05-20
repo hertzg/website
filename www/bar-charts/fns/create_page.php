@@ -36,8 +36,10 @@ function create_page ($mysqli, $user, $base = '') {
 
         }
 
+        $params = [];
+
         include_once __DIR__.'/render_prev_button.php';
-        render_prev_button($offset, $limit, $total, $items);
+        render_prev_button($offset, $limit, $total, $items, $params);
 
         include_once "$fnsDir/Page/imageArrowLink.php";
         foreach ($barCharts as $barChart) {
@@ -47,9 +49,8 @@ function create_page ($mysqli, $user, $base = '') {
         }
 
         include_once __DIR__.'/render_next_button.php';
-        render_next_button($offset, $limit, $total, $items);
+        render_next_button($offset, $limit, $total, $items, $params);
 
-        include_once "$fnsDir/create_panel.php";
         $content = join('<div class="hr"></div>', $items);
 
     } else {
