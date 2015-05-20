@@ -72,8 +72,8 @@ function create ($mysqli, $user) {
     include_once "$fnsDir/check_offset_overflow.php";
     check_offset_overflow($offset, $limit, $total, $params);
 
-    include_once __DIR__.'/renderPrevButton.php';
-    renderPrevButton($offset, $limit, $total, $items, $keyword, $tag);
+    include_once __DIR__.'/../render_prev_button.php';
+    render_prev_button($offset, $limit, $total, $items, $params);
 
     include_once __DIR__.'/renderTasks.php';
     renderTasks($tasks, $items, $params, $keyword, $user);
