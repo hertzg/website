@@ -1,13 +1,10 @@
 <?php
 
-function render_next_button ($offset, $limit, $total, &$items, $tag) {
+function render_next_button ($offset, $limit, $total, &$items, $params) {
 
     if ($offset + $limit >= $total) return;
 
-    $args = [];
-    if ($tag !== '') $args['tag'] = $tag;
-
     include_once __DIR__.'/../../fns/Paging/nextButton.php';
-    $items[] = Paging\nextButton($offset, $limit, 'Places', $args);
+    $items[] = Paging\nextButton($offset, $limit, 'Places', $params);
 
 }
