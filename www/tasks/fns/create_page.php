@@ -81,7 +81,7 @@ function create_page ($mysqli, $user, $base = '') {
     check_offset_overflow($offset, $limit, $total, $params);
 
     include_once __DIR__.'/render_prev_button.php';
-    render_prev_button($offset, $limit, $total, $items, $tag);
+    render_prev_button($offset, $limit, $total, $items, $params);
 
     include_once __DIR__.'/render_tasks.php';
     render_tasks($tasks, $items, $params, $user, $base);
