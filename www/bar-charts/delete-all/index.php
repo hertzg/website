@@ -3,13 +3,13 @@
 include_once '../fns/require_bar_charts.php';
 $user = require_bar_charts();
 
+$base = '../../';
+$fnsDir = '../../fns';
+
 unset(
     $_SESSION['bar-charts/errors'],
     $_SESSION['bar-charts/messages']
 );
-
-$base = '../../';
-$fnsDir = '../../fns';
 
 include_once '../../lib/mysqli.php';
 

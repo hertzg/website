@@ -3,13 +3,13 @@
 include_once '../fns/require_wallets.php';
 $user = require_wallets();
 
+$base = '../../';
+$fnsDir = '../../fns';
+
 unset(
     $_SESSION['wallets/errors'],
     $_SESSION['wallets/messages']
 );
-
-$base = '../../';
-$fnsDir = '../../fns';
 
 include_once '../fns/create_page.php';
 include_once "$fnsDir/Page/confirmDialog.php";

@@ -11,17 +11,15 @@ unset(
     $_SESSION['notifications/messages']
 );
 
-include_once "$fnsDir/ItemList/escapedPageQuery.php";
-$escapedPageQuery = ItemList\escapedPageQuery();
-
 include_once '../fns/create_page.php';
+include_once "$fnsDir/ItemList/escapedPageQuery.php";
 include_once "$fnsDir/Page/confirmDialog.php";
 include_once '../../lib/mysqli.php';
 $content =
     create_page($mysqli, $user, $scripts, '../')
     .Page\confirmDialog('Are you sure you want to delete'
         .' all the notifications?', 'Yes, delete all notifications',
-        'submit.php', "../$escapedPageQuery");
+        'submit.php', '../'.ItemList\escapedPageQuery());
 
 include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";

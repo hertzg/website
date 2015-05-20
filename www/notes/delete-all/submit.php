@@ -1,18 +1,19 @@
 <?php
 
-include_once '../../fns/require_same_domain_referer.php';
+$fnsDir = '../../fns';
+
+include_once "$fnsDir/require_same_domain_referer.php";
 require_same_domain_referer('./');
 
 include_once '../fns/require_notes.php';
 $user = require_notes();
 
-include_once '../../fns/Users/Notes/deleteAll.php';
+include_once "$fnsDir/Users/Notes/deleteAll.php";
 include_once '../../lib/mysqli.php';
 Users\Notes\deleteAll($mysqli, $user);
 
 unset($_SESSION['notes/errors']);
 $_SESSION['notes/messages'] = ['All notes have been deleted.'];
 
-include_once '../../fns/redirect.php';
-include_once '../../fns/ItemList/listUrl.php';
-redirect(ItemList\listUrl());
+include_once "$fnsDir/redirect.php";
+redirect('..');

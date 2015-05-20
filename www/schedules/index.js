@@ -1,4 +1,4 @@
-(function (yesHref) {
+(function () {
 
     var dialogShown = false
 
@@ -8,6 +8,7 @@
         deleteAllLink.blur()
         if (dialogShown) return
         var yesText = 'Yes, delete all schedules'
+        var yesHref = 'delete-all/submit.php'
         var questionText = 'Are you sure you want to delete all the schedules?'
         confirmDialog(questionText, yesText, yesHref, function () {
             dialogShown = false
@@ -15,4 +16,4 @@
         dialogShown = true
     })
 
-})(deleteAllHref)
+})()
