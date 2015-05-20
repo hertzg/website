@@ -18,13 +18,14 @@ unset(
 
 include_once '../fns/create_form_items.php';
 include_once "$fnsDir/Form/button.php";
+include_once "$fnsDir/ItemList/listHref.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
     [
         [
             'title' => 'Bar Charts',
-            'href' => '../',
+            'href' => ItemList\listHref(),
         ],
     ],
     'New',
