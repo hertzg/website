@@ -2,25 +2,29 @@
 
 namespace ViewPage;
 
-function optionsPanel ($id, $user) {
+function optionsPanel ($wallet, $user) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
+    include_once "$fnsDir/ItemList/escapedItemQuery.php";
+    $escapedItemQuery = \ItemList\escapedItemQuery($wallet->id);
+
     include_once "$fnsDir/Page/imageArrowLink.php";
     $editLink = \Page\imageArrowLink('Edit',
-        "../edit/?id=$id", 'edit-wallet', ['id' => 'edit']);
+        "../edit/$escapedItemQuery", 'edit-wallet', ['id' => 'edit']);
 
     $deleteLink =
         '<div id="deleteLink">'
-            .\Page\imageArrowLink('Delete', "../delete/?id=$id", 'trash-bin')
+            .\Page\imageArrowLink('Delete',
+                "../delete/$escapedItemQuery", 'trash-bin')
         .'</div>';
 
     include_once "$fnsDir/Page/staticTwoColumns.php";
     if ($user->num_wallets > 1) {
 
-        $transferAmountLink = \Page\imageArrowLink('Transfer Amount',
-            "../transfer-amount/?id=$id", 'transfer-amount',
-            ['id' => 'transfer-amount']);
+        $transferAmountLink = \Page\imageArrowLink(
+            'Transfer Amount', "../transfer-amount/$escapedItemQuery",
+            'transfer-amount', ['id' => 'transfer-amount']);
 
         $content =
             \Page\staticTwoColumns($editLink, $transferAmountLink)

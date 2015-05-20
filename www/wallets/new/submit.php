@@ -31,4 +31,5 @@ $id = Users\Wallets\add($mysqli, $user->id_users, $name);
 
 $_SESSION['wallets/view/messages'] = ['Wallet has been saved.'];
 
-redirect("../view/?id=$id");
+include_once "$fnsDir/ItemList/itemQuery.php";
+redirect('../view/'.ItemList\itemQuery($id));

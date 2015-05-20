@@ -8,9 +8,13 @@ function create ($transaction, &$scripts) {
     $id = $transaction->id;
     $id_wallets = $transaction->id_wallets;
 
+    include_once "$fnsDir/ItemList/escapedItemQuery.php";
+    $escapedItemQuery = \ItemList\escapedItemQuery($id);
+    $walletEscapedItemQuery = \ItemList\escapedItemQuery($id_wallets);
+
     include_once "$fnsDir/Page/imageArrowLink.php";
     $editLink = \Page\imageArrowLink('Edit',
-        "../edit-transaction/?id=$id", 'edit-transaction', ['id' => 'edit']);
+        "../edit-transaction/$escapedItemQuery", 'edit-transaction', ['id' => 'edit']);
 
     include_once "$fnsDir/amount_text.php";
     $params = [
@@ -27,7 +31,7 @@ function create ($transaction, &$scripts) {
     $deleteLink =
         '<div id="deleteLink">'
             .\Page\imageLink('Delete',
-                "../delete-transaction/?id=$id", 'trash-bin')
+                "../delete-transaction/$escapedItemQuery", 'trash-bin')
         .'</div>';
 
     include_once "$fnsDir/Page/staticTwoColumns.php";
@@ -51,14 +55,15 @@ function create ($transaction, &$scripts) {
         [
             [
                 'title' => "Wallet #$id_wallets",
-                'href' => "../view/?id=$id_wallets#$id",
+                'href' => "../view/$walletEscapedItemQuery#$id",
             ],
         ],
         "Transaction #$id",
         \Page\sessionMessages('wallets/view-transaction/messages')
         .viewContent($transaction, $scripts)
         .create_panel('Transaction Options', $optionsContent),
-        \Page\newItemButton("../new-transaction/?id=$id_wallets", 'Transaction')
+        \Page\newItemButton(
+            "../new-transaction/$walletEscapedItemQuery", 'Transaction')
     );
 
 }

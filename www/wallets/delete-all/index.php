@@ -11,15 +11,26 @@ unset(
     $_SESSION['wallets/messages']
 );
 
-include_once '../fns/create_page.php';
-include_once "$fnsDir/Page/confirmDialog.php";
 include_once '../../lib/mysqli.php';
-$content =
-    create_page($mysqli, $user, '../')
-    .Page\confirmDialog(
-        'Are you sure you want to delete all the wallets?'
-        .' They will be moved to Trash.',
-        'Yes, delete all wallets', 'submit.php', '../');
+
+include_once "$fnsDir/ItemList/pageParams.php";
+$pageParams = ItemList\pageParams();
+
+if (array_key_exists('keyword', $pageParams)) {
+    include_once '../fns/SearchPage/create.php';
+    $content = SearchPage\create($mysqli, $user);
+} else {
+    include_once '../fns/create_page.php';
+    $content = create_page($mysqli, $user, '../');
+}
+
+include_once '../fns/create_page.php';
+include_once "$fnsDir/ItemList/listHref.php";
+include_once "$fnsDir/Page/confirmDialog.php";
+$content .= Page\confirmDialog(
+    'Are you sure you want to delete all the wallets?'
+    .' They will be moved to Trash.',
+    'Yes, delete all wallets', 'submit.php', ItemList\listHref());
 
 include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";

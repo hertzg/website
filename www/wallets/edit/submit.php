@@ -12,12 +12,15 @@ list($wallet, $id, $user) = require_wallet($mysqli);
 include_once '../fns/request_wallet_params.php';
 $name = request_wallet_params($errors);
 
+include_once "$fnsDir/ItemList/itemQuery.php";
+$itemQuery = ItemList\itemQuery($id);
+
 include_once "$fnsDir/redirect.php";
 
 if ($errors) {
     $_SESSION['wallets/edit/errors'] = $errors;
     $_SESSION['wallets/edit/values'] = ['name' => $name];
-    redirect("./?id=$id");
+    redirect("./$itemQuery");
 }
 
 unset(
@@ -29,4 +32,4 @@ include_once "$fnsDir/Users/Wallets/edit.php";
 Users\Wallets\edit($mysqli, $id, $name);
 
 $_SESSION['wallets/view/messages'] = ['Changes have been saved.'];
-redirect("../view/?id=$id");
+redirect("../view/$itemQuery");

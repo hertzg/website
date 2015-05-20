@@ -34,7 +34,8 @@ if ($errors) {
         'amount' => $amount,
         'description' => $description,
     ];
-    redirect();
+    include_once "$fnsDir/ItemList/pageQuery.php";
+    redirect('./'.ItemList\pageQuery());
 }
 
 unset(
@@ -49,4 +50,5 @@ $id = Users\Wallets\Transactions\add($mysqli,
 $message = 'The transaction has been saved.';
 $_SESSION['wallets/view-transaction/messages'] = [$message];
 
-redirect("../view-transaction/?id=$id");
+include_once "$fnsDir/ItemList/itemQuery.php";
+redirect('../view-transaction/'.ItemList\itemQuery($id));

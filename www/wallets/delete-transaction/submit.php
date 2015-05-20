@@ -15,4 +15,5 @@ Users\Wallets\Transactions\delete($mysqli, $transaction);
 $_SESSION['wallets/view/messages'] = ['The transaction has been deleted.'];
 
 include_once "$fnsDir/redirect.php";
-redirect("../view/?id=$transaction->id_wallets");
+include_once "$fnsDir/ItemList/itemQuery.php";
+redirect('../view/'.ItemList\itemQuery($transaction->id_wallets));

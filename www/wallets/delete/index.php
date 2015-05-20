@@ -9,13 +9,16 @@ unset($_SESSION['wallets/view/messages']);
 $base = '../../';
 $fnsDir = '../../fns';
 
+include_once "$fnsDir/ItemList/escapedItemQuery.php";
+$escapedItemQuery = ItemList\escapedItemQuery($id);
+
 include_once '../fns/ViewPage/create.php';
 include_once "$fnsDir/Page/confirmDialog.php";
 $content =
     ViewPage\create($mysqli, $user, $wallet, $scripts, $head)
     .Page\confirmDialog('Are you sure you want to delete the wallet?'
         .' It will be moved to Trash.', 'Yes, delete wallet',
-        "submit.php?id=$id", "../view/?id=$id");
+        "submit.php$escapedItemQuery", "../view/$escapedItemQuery");
 
 include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";

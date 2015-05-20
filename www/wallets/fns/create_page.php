@@ -4,6 +4,7 @@ function create_page ($mysqli, $user, $base = '') {
 
     $fnsDir = __DIR__.'/../../fns';
 
+    $searchForm = false;
     $total = $user->num_wallets;
 
     if ($total) {
@@ -23,8 +24,22 @@ function create_page ($mysqli, $user, $base = '') {
         $wallets = Wallets\indexPageOnUser($mysqli,
             $user->id_users, $offset, $limit, $total);
 
+        if ($total > 1) {
+
+            include_once "$fnsDir/SearchForm/emptyContent.php";
+            $formContent = SearchForm\emptyContent('Search wallets...');
+
+            include_once "$fnsDir/SearchForm/create.php";
+            $items[] = SearchForm\create("{$base}search/", $formContent);
+
+            $searchForm = true;
+
+        }
+
+        $params = [];
+
         include_once __DIR__.'/render_prev_button.php';
-        render_prev_button($offset, $limit, $total, $items);
+        render_prev_button($offset, $limit, $total, $items, $params);
 
         include_once "$fnsDir/amount_html.php";
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
@@ -36,23 +51,9 @@ function create_page ($mysqli, $user, $base = '') {
         }
 
         include_once __DIR__.'/render_next_button.php';
-        render_next_button($offset, $limit, $total, $items);
+        render_next_button($offset, $limit, $total, $items, $params);
 
-        include_once "$fnsDir/Page/imageArrowLink.php";
-        include_once "$fnsDir/Page/imageLink.php";
-        $optionsContent =
-            Page\imageArrowLink('New Transaction', 'quick-new-transaction/',
-                'create-transaction', ['id' => 'new-transaction'])
-            .'<div class="hr"></div>'
-            .'<div id="deleteAllLink">'
-                .Page\imageLink('Delete All Wallets',
-                    "{$base}delete-all/", 'trash-bin')
-            .'</div>';
-
-        include_once "$fnsDir/create_panel.php";
-        $content =
-            join('<div class="hr"></div>', $items)
-            .create_panel('Options', $optionsContent);
+        $content = join('<div class="hr"></div>', $items);
 
     } else {
         include_once "$fnsDir/Page/info.php";
@@ -62,6 +63,7 @@ function create_page ($mysqli, $user, $base = '') {
     include_once __DIR__.'/unset_session_vars.php';
     unset_session_vars();
 
+    include_once __DIR__.'/create_options_panel.php';
     include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
@@ -76,7 +78,8 @@ function create_page ($mysqli, $user, $base = '') {
         'Wallets',
         Page\sessionErrors('wallets/errors')
         .Page\sessionMessages('wallets/messages')
-        .$content,
+        .$content
+        .create_options_panel($user),
         create_new_item_button('Wallet', $base)
     );
 

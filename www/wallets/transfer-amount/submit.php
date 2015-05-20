@@ -18,9 +18,12 @@ $to_id = abs((int)$to_id);
 include_once "$fnsDir/Users/Wallets/get.php";
 $toWallet = Users\Wallets\get($mysqli, $user, $to_id);
 
+include_once "$fnsDir/ItemList/itemQuery.php";
+$itemQuery = ItemList\itemQuery($id);
+
 include_once "$fnsDir/redirect.php";
 
-if (!$toWallet || $toWallet->id == $id) redirect("./?id=$id");
+if (!$toWallet || $toWallet->id == $id) redirect("./$itemQuery");
 
 include_once "$fnsDir/WalletTransactions/request.php";
 list($amount, $parsed_amount, $description) = WalletTransactions\request();
@@ -37,7 +40,7 @@ if ($errors) {
         'amount' => $amount,
         'description' => $description,
     ];
-    redirect("./?id=$id");
+    redirect("./$itemQuery");
 }
 
 unset(
@@ -51,4 +54,4 @@ include_once "$fnsDir/Users/Wallets/transferAmount.php";
 Users\Wallets\transferAmount($mysqli,
     $wallet, $toWallet, $parsed_amount, $description);
 
-redirect("../view/?id=$id");
+redirect("../view/$itemQuery");

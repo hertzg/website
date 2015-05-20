@@ -40,13 +40,15 @@ include_once '../fns/create_transaction_form_items.php';
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/select.php";
 include_once "$fnsDir/Form/textfield.php";
+include_once "$fnsDir/ItemList/listHref.php";
+include_once "$fnsDir/ItemList/pageHiddenInputs.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
     [
         [
             'title' => 'Wallets',
-            'href' => '../#new-transaction',
+            'href' => ItemList\listHref().'#new-transaction',
         ],
     ],
     'New Transaction',
@@ -66,6 +68,7 @@ $content = Page\tabs(
         ])
         .'<div class="hr"></div>'
         .Form\button('Save Transaction')
+        .ItemList\pageHiddenInputs()
     .'</form>'
 );
 

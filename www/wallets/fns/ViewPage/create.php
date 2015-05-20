@@ -74,6 +74,9 @@ function create ($mysqli, $user, $wallet, &$scripts, &$head) {
     include_once __DIR__.'/optionsPanel.php';
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Form/label.php";
+    include_once "$fnsDir/ItemList/escapedItemQuery.php";
+    include_once "$fnsDir/ItemList/escapedPageQuery.php";
+    include_once "$fnsDir/ItemList/listHref.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/newItemMenu.php";
     include_once "$fnsDir/Page/sessionMessages.php";
@@ -82,7 +85,7 @@ function create ($mysqli, $user, $wallet, &$scripts, &$head) {
         [
             [
                 'title' => 'Wallets',
-                'href' => "../#$id",
+                'href' => \ItemList\listHref()."#$id",
             ],
         ],
         "Wallet #$id",
@@ -96,12 +99,14 @@ function create ($mysqli, $user, $wallet, &$scripts, &$head) {
         .\Form\label('Balance', amount_html($wallet->balance))
         .\Page\infoText($infoText)
         .create_panel('Transactions', $transactionsContent)
-        .optionsPanel($id, $user),
+        .optionsPanel($wallet, $user),
         \Page\newItemMenu(
             \Page\imageArrowLink('Transaction',
-                "../new-transaction/?id=$id", 'create-transaction')
+                '../new-transaction/'.\ItemList\escapedItemQuery($id),
+                'create-transaction')
             .'<div class="hr"></div>'
-            .\Page\imageArrowLink('Wallet', '../new/', 'create-wallet')
+            .\Page\imageArrowLink('Wallet',
+                '../new/'.\ItemList\escapedPageQuery(), 'create-wallet')
         )
     );
 

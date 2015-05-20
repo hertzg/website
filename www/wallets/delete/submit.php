@@ -12,8 +12,9 @@ list($wallet, $id, $user) = require_wallet($mysqli);
 include_once "$fnsDir/Users/Wallets/delete.php";
 Users\Wallets\delete($mysqli, $wallet);
 
-$_SESSION['wallets/messages'] = ['The wallet has been deleted.'];
 unset($_SESSION['wallets/errors']);
+$_SESSION['wallets/messages'] = ['The wallet has been deleted.'];
 
 include_once "$fnsDir/redirect.php";
-redirect('..');
+include_once "$fnsDir/ItemList/listUrl.php";
+redirect(ItemList\listUrl());
