@@ -52,7 +52,7 @@ function create ($mysqli, $user) {
             [
                 [
                     'title' => 'Home',
-                    'href' => '../../home/',
+                    'href' => '../../home/#bar-charts',
                 ],
             ],
             'Bar Charts',
