@@ -8,9 +8,9 @@
         deleteAllLink.blur()
         if (dialogShown) return
         var yesText = 'Yes, delete all bar charts'
+        var yesHref = 'delete-all/submit.php'
         var questionText = 'Are you sure you want to delete all the bar charts?'
             + ' They will be moved to Trash.'
-        var yesHref = 'delete-all/submit.php'
         confirmDialog(questionText, yesText, yesHref, function () {
             dialogShown = false
         })

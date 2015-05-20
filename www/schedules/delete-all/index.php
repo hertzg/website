@@ -11,10 +11,11 @@ unset(
     $_SESSION['schedules/messages']
 );
 
+include_once '../../lib/mysqli.php';
+
 include_once "$fnsDir/ItemList/pageParams.php";
 $pageParams = ItemList\pageParams();
 
-include_once '../../lib/mysqli.php';
 if (array_key_exists('keyword', $pageParams)) {
     include_once '../fns/SearchPage/create.php';
     $content = SearchPage\create($mysqli, $user);
@@ -23,16 +24,11 @@ if (array_key_exists('keyword', $pageParams)) {
     $content = create_page($mysqli, $user, '../');
 }
 
-include_once "$fnsDir/ItemList/escapedPageQuery.php";
-$yesHref = 'submit.php'.ItemList\escapedPageQuery();
-
 include_once "$fnsDir/ItemList/listHref.php";
-$noHref = ItemList\listHref();
-
 include_once "$fnsDir/Page/confirmDialog.php";
 $content .= Page\confirmDialog(
     'Are you sure you want to delete all the schedules?',
-    'Yes, delete all schedules', $yesHref, $noHref);
+    'Yes, delete all schedules', 'submit.php', ItemList\listHref());
 
 include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";
