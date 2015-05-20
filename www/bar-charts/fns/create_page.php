@@ -4,6 +4,7 @@ function create_page ($mysqli, $user, $base = '') {
 
     $fnsDir = __DIR__.'/../../fns';
 
+    $searchForm = false;
     $total = $user->num_bar_charts;
 
     if ($total) {
@@ -22,6 +23,18 @@ function create_page ($mysqli, $user, $base = '') {
         include_once "$fnsDir/BarCharts/indexPageOnUser.php";
         $barCharts = BarCharts\indexPageOnUser($mysqli,
             $user->id_users, $offset, $limit, $total);
+
+        if ($total > 1) {
+
+            include_once "$fnsDir/SearchForm/emptyContent.php";
+            $formContent = SearchForm\emptyContent('Search bar charts...');
+
+            include_once "$fnsDir/SearchForm/create.php";
+            $items[] = SearchForm\create("{$base}search/", $formContent);
+
+            $searchForm = true;
+
+        }
 
         include_once __DIR__.'/render_prev_button.php';
         render_prev_button($offset, $limit, $total, $items);
