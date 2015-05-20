@@ -13,7 +13,7 @@ function create_content ($mysqli, $user, $items, $options, $base) {
         $channels = Channels\indexWithNotificationsOnUser($mysqli, $id_users);
         foreach ($channels as $channel) {
             $channel->html =
-                "<a class=\"tag\" href=\"in-channel/?id=$channel->id\">"
+                "<a class=\"tag\" href=\"{$base}in-channel/?id=$channel->id\">"
                     .'<span class="tag-text">'
                         .htmlspecialchars($channel->channel_name)
                     .'</span>'
@@ -27,7 +27,7 @@ function create_content ($mysqli, $user, $items, $options, $base) {
         $subscribedChannels = SubscribedChannels\indexWithNotificationsOnSubscriber(
             $mysqli, $id_users);
         foreach ($subscribedChannels as $subscribedChannel) {
-            $href = "in-subscribed-channel/?id=$subscribedChannel->id";
+            $href = "{$base}in-subscribed-channel/?id=$subscribedChannel->id";
             $subscribedChannel->html =
                 "<a class=\"tag\" href=\"$href\">"
                     .'<span class="tag-text">'
