@@ -12,12 +12,15 @@ list($bar_chart, $id, $user) = require_bar_chart($mysqli);
 include_once '../fns/request_bar_chart_params.php';
 $name = request_bar_chart_params($errors);
 
+include_once '../../fns/ItemList/itemQuery.php';
+$itemQuery = ItemList\itemQuery($id);
+
 include_once "$fnsDir/redirect.php";
 
 if ($errors) {
     $_SESSION['bar-charts/edit/errors'] = $errors;
     $_SESSION['bar-charts/edit/values'] = ['name' => $name];
-    redirect("./?id=$id");
+    redirect("./$itemQuery");
 }
 
 unset(
@@ -29,4 +32,4 @@ include_once "$fnsDir/Users/BarCharts/edit.php";
 Users\BarCharts\edit($mysqli, $id, $name);
 
 $_SESSION['bar-charts/view/messages'] = ['Changes have been saved.'];
-redirect("../view/?id=$id");
+redirect("../view/$itemQuery");

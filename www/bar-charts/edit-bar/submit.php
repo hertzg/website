@@ -13,6 +13,9 @@ list($bar, $id, $user) = require_bar($mysqli);
 include_once '../fns/request_bar_params.php';
 list($value, $parsed_value, $label) = request_bar_params($errors);
 
+include_once "$fnsDir/ItemList/itemQuery.php";
+$itemQuery = ItemList\itemQuery($id);
+
 include_once "$fnsDir/redirect.php";
 
 if ($errors) {
@@ -21,7 +24,7 @@ if ($errors) {
         'value' => $value,
         'label' => $label,
     ];
-    redirect("./?id=$id");
+    redirect("./$itemQuery");
 }
 
 unset(
@@ -34,4 +37,4 @@ Users\BarCharts\Bars\edit($mysqli, $id, $parsed_value, $label);
 
 $_SESSION['bar-charts/view-bar/messages'] = ['Changes have been saved.'];
 
-redirect("../view-bar/?id=$id");
+redirect("../view-bar/$itemQuery");

@@ -8,9 +8,13 @@ function create ($bar, &$scripts) {
     $id = $bar->id;
     $id_bar_charts = $bar->id_bar_charts;
 
+    include_once "$fnsDir/ItemList/escapedItemQuery.php";
+    $escapedItemQuery = \ItemList\escapedItemQuery($id);
+    $barChartEscapedItemQuery = \ItemList\escapedItemQuery($id_bar_charts);
+
     include_once "$fnsDir/Page/imageArrowLink.php";
     $editLink = \Page\imageArrowLink('Edit',
-        "../edit-bar/?id=$id", 'edit-bar', ['id' => 'edit']);
+        "../edit-bar/$escapedItemQuery", 'edit-bar', ['id' => 'edit']);
 
     $params = [
         'id' => $id_bar_charts,
@@ -25,7 +29,7 @@ function create ($bar, &$scripts) {
     $deleteLink =
         '<div id="deleteLink">'
             .\Page\imageLink('Delete',
-                "../delete-bar/?id=$id", 'trash-bin')
+                "../delete-bar/$escapedItemQuery", 'trash-bin')
         .'</div>';
 
     include_once "$fnsDir/Page/staticTwoColumns.php";
@@ -49,14 +53,14 @@ function create ($bar, &$scripts) {
         [
             [
                 'title' => "Bar Chart #$id_bar_charts",
-                'href' => "../view/?id=$id_bar_charts#$id",
+                'href' => "../view/$barChartEscapedItemQuery#$id",
             ],
         ],
         "Bar #$id",
         \Page\sessionMessages('bar-charts/view-bar/messages')
         .viewContent($bar, $scripts)
         .create_panel('Bar Options', $optionsContent),
-        \Page\newItemButton("../new-bar/?id=$id_bar_charts", 'Bar')
+        \Page\newItemButton("../new-bar/$barChartEscapedItemQuery", 'Bar')
     );
 
 }

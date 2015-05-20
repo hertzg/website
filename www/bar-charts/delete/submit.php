@@ -12,8 +12,9 @@ list($bar_chart, $id, $user) = require_bar_chart($mysqli);
 include_once "$fnsDir/Users/BarCharts/delete.php";
 Users\BarCharts\delete($mysqli, $bar_chart);
 
-$_SESSION['bar-charts/messages'] = ['The bar chart has been deleted.'];
 unset($_SESSION['bar-charts/errors']);
+$_SESSION['bar-charts/messages'] = ['The bar chart has been deleted.'];
 
 include_once "$fnsDir/redirect.php";
-redirect('..');
+include_once "$fnsDir/ItemList/listUrl.php";
+redirect(ItemList\listUrl());

@@ -2,17 +2,22 @@
 
 namespace ViewPage;
 
-function optionsPanel ($id, $user) {
+function optionsPanel ($bar_chart) {
 
+    $id = $bar_chart->id;
     $fnsDir = __DIR__.'/../../../fns';
+
+    include_once "$fnsDir/ItemList/escapedItemQuery.php";
+    $escapedItemQuery = \ItemList\escapedItemQuery($bar_chart->id);
 
     include_once "$fnsDir/Page/imageArrowLink.php";
     $editLink = \Page\imageArrowLink('Edit',
-        "../edit/?id=$id", 'edit-bar-chart', ['id' => 'edit']);
+        "../edit/$escapedItemQuery", 'edit-bar-chart', ['id' => 'edit']);
 
     $deleteLink =
         '<div id="deleteLink">'
-            .\Page\imageArrowLink('Delete', "../delete/?id=$id", 'trash-bin')
+            .\Page\imageArrowLink('Delete',
+                "../delete/$escapedItemQuery", 'trash-bin')
         .'</div>';
 
     include_once "$fnsDir/Page/staticTwoColumns.php";

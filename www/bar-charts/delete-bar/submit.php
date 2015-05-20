@@ -15,4 +15,5 @@ Users\BarCharts\Bars\delete($mysqli, $bar);
 $_SESSION['bar-charts/view/messages'] = ['The bar has been deleted.'];
 
 include_once "$fnsDir/redirect.php";
-redirect("../view/?id=$bar->id_bar_charts");
+include_once "$fnsDir/ItemList/itemQuery.php";
+redirect('../view/'.ItemList\itemQuery($bar->id_bar_charts));

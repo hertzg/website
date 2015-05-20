@@ -13,6 +13,7 @@ include_once '../fns/request_bar_params.php';
 list($value, $parsed_value, $label) = request_bar_params($errors);
 
 include_once "$fnsDir/redirect.php";
+include_once "$fnsDir/ItemList/itemQuery.php";
 
 if ($errors) {
     $_SESSION['bar-charts/new-bar/errors'] = $errors;
@@ -20,7 +21,7 @@ if ($errors) {
         'value' => $value,
         'label' => $label,
     ];
-    redirect("./?id=$id");
+    redirect('./'.ItemList\itemQuery($id));
 }
 
 unset(
@@ -33,4 +34,4 @@ $_SESSION['bar-charts/view-bar/messages'] = ['The bar has been saved.'];
 include_once "$fnsDir/Users/BarCharts/Bars/add.php";
 $id = Users\BarCharts\Bars\add($mysqli, $bar_chart, $parsed_value, $label);
 
-redirect("../view-bar/?id=$id");
+redirect('../view-bar/'.ItemList\itemQuery($id));

@@ -65,6 +65,9 @@ function create ($mysqli, $user, $bar_chart, &$scripts, &$head) {
     include_once __DIR__.'/optionsPanel.php';
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Form/label.php";
+    include_once "$fnsDir/ItemList/escapedItemQuery.php";
+    include_once "$fnsDir/ItemList/escapedPageQuery.php";
+    include_once "$fnsDir/ItemList/listHref.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/newItemMenu.php";
     include_once "$fnsDir/Page/sessionMessages.php";
@@ -73,7 +76,7 @@ function create ($mysqli, $user, $bar_chart, &$scripts, &$head) {
         [
             [
                 'title' => 'Bar Charts',
-                'href' => "../#$id",
+                'href' => \ItemList\listHref()."#$id",
             ],
         ],
         "Bar Chart #$id",
@@ -82,11 +85,13 @@ function create ($mysqli, $user, $bar_chart, &$scripts, &$head) {
         .\Form\label('Name', htmlspecialchars($bar_chart->name))
         .\Page\infoText($infoText)
         .create_panel('Bars', $barsContent)
-        .optionsPanel($id, $user),
+        .optionsPanel($bar_chart),
         \Page\newItemMenu(
-            \Page\imageArrowLink('Bar', "../new-bar/?id=$id", 'create-bar')
+            \Page\imageArrowLink('Bar',
+                '../new-bar/'.\ItemList\escapedItemQuery($id), 'create-bar')
             .'<div class="hr"></div>'
-            .\Page\imageArrowLink('Bar Chart', '../new/', 'create-bar-chart')
+            .\Page\imageArrowLink('Bar Chart',
+                '../new/'.\ItemList\escapedPageQuery(), 'create-bar-chart')
         )
     );
 

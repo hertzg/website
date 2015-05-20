@@ -31,4 +31,5 @@ $id = Users\BarCharts\add($mysqli, $user->id_users, $name);
 
 $_SESSION['bar-charts/view/messages'] = ['Bar chart has been saved.'];
 
-redirect("../view/?id=$id");
+include_once "$fnsDir/ItemList/itemQuery.php";
+redirect('../view/'.ItemList\itemQuery($id));
