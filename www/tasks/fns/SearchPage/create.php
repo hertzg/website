@@ -78,8 +78,8 @@ function create ($mysqli, $user) {
     include_once __DIR__.'/renderTasks.php';
     renderTasks($tasks, $items, $params, $keyword, $user);
 
-    include_once __DIR__.'/renderNextButton.php';
-    renderNextButton($offset, $limit, $total, $items, $keyword, $tag);
+    include_once __DIR__.'/../render_next_button.php';
+    render_next_button($offset, $limit, $total, $items, $params);
 
     include_once __DIR__.'/../unset_session_vars.php';
     unset_session_vars();
