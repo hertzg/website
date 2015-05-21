@@ -32,6 +32,9 @@ $formContent = SearchForm\content($keyword, 'Search...', '..');
 include_once "$fnsDir/SearchForm/create.php";
 $items = [SearchForm\create('./', $formContent)];
 
+include_once "$fnsDir/BarCharts/search.php";
+$bar_charts = BarCharts\search($mysqli, $id_users, $keyword);
+
 include_once "$fnsDir/Bookmarks/search.php";
 $bookmarks = Bookmarks\search($mysqli, $id_users, $keyword);
 
@@ -54,11 +57,11 @@ include_once 'fns/search_folders_and_files.php';
 list($folders, $files) = search_folders_and_files($mysqli,
     $searchFiles, $id_users, $keyword);
 
-if ($bookmarks || $contacts || $notes || $places ||
-    $tasks || $wallets || $folders || $files) {
+if ($bar_charts || $bookmarks || $contacts || $notes ||
+    $places || $tasks || $wallets || $folders || $files) {
 
     include_once 'fns/create_items.php';
-    $resultItems = create_items($bookmarks, $contacts, $notes,
+    $resultItems = create_items($bar_charts, $bookmarks, $contacts, $notes,
         $places, $tasks, $wallets, $folders, $files, $keyword, $user);
 
     include_once 'fns/render_search_files_link.php';

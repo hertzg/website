@@ -1,11 +1,8 @@
 <?php
 
-function render_wallets ($wallets, &$items, $regex, $encodedKeyword, $user) {
+function render_wallets ($wallets, &$items, $regex, $encodedKeyword) {
 
     $fnsDir = __DIR__.'/../../fns';
-
-    include_once "$fnsDir/user_time_today.php";
-    $time_today = user_time_today($user);
 
     include_once "$fnsDir/amount_html.php";
     include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";

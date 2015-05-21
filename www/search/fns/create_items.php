@@ -1,12 +1,17 @@
 <?php
 
-function create_items ($bookmarks, $contacts, $notes,
+function create_items ($bar_charts, $bookmarks, $contacts, $notes,
     $places, $tasks, $wallets, $folders, $files, $keyword, $user) {
 
     $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
     $encodedKeyword = rawurlencode($keyword);
 
     $items = [];
+
+    if ($bar_charts) {
+        include_once __DIR__.'/render_bar_charts.php';
+        render_bar_charts($bar_charts, $items, $regex, $encodedKeyword);
+    }
 
     if ($bookmarks) {
         include_once __DIR__.'/render_bookmarks.php';
@@ -35,7 +40,7 @@ function create_items ($bookmarks, $contacts, $notes,
 
     if ($wallets) {
         include_once __DIR__.'/render_wallets.php';
-        render_wallets($wallets, $items, $regex, $encodedKeyword, $user);
+        render_wallets($wallets, $items, $regex, $encodedKeyword);
     }
 
     if ($folders) {
