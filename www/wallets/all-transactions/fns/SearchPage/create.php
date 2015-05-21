@@ -11,7 +11,9 @@ function create ($mysqli, $user, $wallet, &$scripts) {
     $scripts = compressed_js_script('dateAgo', '../../');
 
     include_once "$fnsDir/request_valid_keyword_tag_offset.php";
-    list($keyword, $tag, $offset) = request_valid_keyword_tag_offset();
+    list($keyword, $tag, $offset) = request_valid_keyword_tag_offset([
+        'id' => $id,
+    ]);
 
     include_once "$fnsDir/Paging/limit.php";
     $limit = \Paging\limit();

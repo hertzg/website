@@ -1,18 +1,18 @@
 <?php
 
-function request_valid_keyword_tag_offset () {
+function request_valid_keyword_tag_offset ($params = []) {
 
     include_once __DIR__.'/request_keyword_tag_offset.php';
     $values = request_keyword_tag_offset();
 
-    $keyword = $values[0];
+    list($keyword, $tag, $offset) = $values;
 
     if ($keyword === '') {
 
         $url = '../';
-
-        $tag = $values[1];
-        if ($tag !== '') $url .= '?tag='.rawurlencode($tag);
+        if ($tag !== '') $params['tag'] = $tag;
+        if ($offset !== 0) $params['offset'] = $offset;
+        if ($params) $url .= '?'.http_build_query($params);
 
         include_once __DIR__.'/redirect.php';
         redirect($url);
@@ -22,9 +22,14 @@ function request_valid_keyword_tag_offset () {
     include_once __DIR__.'/Paging/limit.php';
     $limit = Paging\limit();
 
-    if ($values[2] % $limit) {
+    if ($offset % $limit) {
+
+        $params['keyword'] = $keyword;
+        if ($tag !== '') $params['tag'] = $tag;
+
         include_once __DIR__.'/redirect.php';
-        redirect('./?keyword='.rawurlencode($keyword));
+        redirect('./?'.http_build_query($params));
+
     }
 
     return $values;
