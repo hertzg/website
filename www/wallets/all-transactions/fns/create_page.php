@@ -28,7 +28,8 @@ function create_page ($mysqli, $user, $wallet, &$scripts, $base = '') {
 
     $params = ['id' => $id];
 
-    // TODO check offset overflow
+    include_once "$fnsDir/check_offset_overflow.php";
+    check_offset_overflow($offset, $limit, $total, $params);
 
     include_once __DIR__.'/render_prev_button.php';
     render_prev_button($offset, $limit, $total, $items, $params);
