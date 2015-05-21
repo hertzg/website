@@ -58,7 +58,7 @@ function echo_page ($user, $title, $content, $base, $options = []) {
         '<div id="tbar">'
             ."<a class=\"topLink logoLink\" href=\"$topLinkHref\">"
                 ."<img src=\"$logoSrc\" alt=\"Zvini\""
-                .' width="68" height="32" class="logoImg" />'
+                .' width="68" height="32" class="logoLink-img" />'
                 .$notifications
             .'</a>'
             .'<div class="page-clockWrapper">'

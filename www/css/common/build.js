@@ -6,8 +6,8 @@ var fs = require('fs'),
     uglifyCss = require('uglifycss')
 
 var files = [
-    'defaults', 'common', 'page', 'page-tags', 'textList', 'form',
-    'form-select', 'form-property', 'form-value', 'form-captcha',
+    'defaults', 'common', 'logoLink', 'page', 'page-tags', 'textList',
+    'form', 'form-select', 'form-property', 'form-value', 'form-captcha',
     'form-checkbox', 'clickable', 'tab', 'topLink', 'filterBar', 'imageText',
     'image_link', 'panel', 'title_and_description', 'tag', 'twoColumns',
     'php-code', 'preview', 'navigation', 'rightButton', 'removableItem',
