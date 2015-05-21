@@ -47,18 +47,6 @@
     left: 0;
 }
 
-.barChart-value {
-    position: absolute;
-    right: 0;
-    left: 0;
-}
-.barChart-value.positive {
-    bottom: 100%;
-}
-.barChart-value.negative {
-    top: 100%;
-}
-
 .barChart-line {
     position: absolute;
     right: 0;

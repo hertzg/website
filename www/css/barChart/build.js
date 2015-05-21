@@ -6,7 +6,7 @@ var fs = require('fs'),
     uglifyCss = require('uglifycss')
 
 var files = ['barChart', 'barChart-bar',
-    'barChart-sizer', 'barChart-lineLabels']
+    'barChart-sizer', 'barChart-lineLabels', 'barChart-value']
 
 var source = ''
 files.forEach(function (file) {
