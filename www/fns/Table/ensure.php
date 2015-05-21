@@ -93,18 +93,8 @@ function ensure ($mysqli, $tableName, $columns) {
         }
 
     } else {
-        $sql = "create table `$escapedTableName` (";
-        $first = true;
-        foreach ($columns as $name => $column) {
-            if ($first) $first = false;
-            else $sql .= ', ';
-            $escapedName = $mysqli->real_escape_string($name);
-            $definition = columnDefinition($column);
-            $sql .= "`$escapedName` $definition";
-        }
-        $sql .= ')';
-        $output .= "SQL: $sql\n";
-        $mysqli->query($sql) || trigger_error($mysqli->error);
+        include_once __DIR__.'/create.php';
+        $output .= create($mysqli, $tableName, $columns);
     }
 
     if ($output === '') {
