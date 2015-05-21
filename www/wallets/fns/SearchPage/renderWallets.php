@@ -10,7 +10,8 @@ function renderWallets ($wallets, &$items, $params, $keyword) {
 
         $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
 
-        include_once "$fnsDir/Page/imageArrowLink.php";
+        include_once "$fnsDir/amount_html.php";
+        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         foreach ($wallets as $wallet) {
 
             $id = $wallet->id;
@@ -25,8 +26,9 @@ function renderWallets ($wallets, &$items, $params, $keyword) {
             $escapedName = htmlspecialchars($name);
             $title = preg_replace($regex, '<mark>$0</mark>', $escapedName);
 
-            $items[] = \Page\imageArrowLink($title,
-                "../view/?$queryString", 'wallet');
+            $items[] = \Page\imageArrowLinkWithDescription(
+                $title, amount_html($wallet->balance),
+                "../view/?$queryString",'wallet');
 
         }
 
