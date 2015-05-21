@@ -38,16 +38,8 @@ function create ($mysqli, $user, $bar_chart, &$scripts, &$head) {
         $infoText .= "<br />Last modified $author.";
     }
 
-    unset(
-        $_SESSION['bar-charts/all-bars/messages'],
-        $_SESSION['bar-charts/edit/errors'],
-        $_SESSION['bar-charts/edit/values'],
-        $_SESSION['bar-charts/errors'],
-        $_SESSION['bar-charts/messages'],
-        $_SESSION['bar-charts/new-bar/errors'],
-        $_SESSION['bar-charts/new-bar/values'],
-        $_SESSION['bar-charts/view-bar/messages']
-    );
+    include_once __DIR__.'/unsetSessionVars.php';
+    unsetSessionVars();
 
     $num_bars = $bar_chart->num_bars;
     if ($num_bars) {
