@@ -41,34 +41,9 @@ function create ($mysqli, $user, $bar_chart, &$scripts, &$head) {
     include_once __DIR__.'/unsetSessionVars.php';
     unsetSessionVars();
 
-    $num_bars = $bar_chart->num_bars;
-    if ($num_bars) {
-
-        $limit = 5;
-
-        include_once "$fnsDir/BarChartBars/indexLimitOnBarChart.php";
-        $bars = \BarChartBars\indexLimitOnBarChart($mysqli, $id, $limit);
-
-        include_once __DIR__.'/../render_bars.php';
-        render_bars($bars, $items);
-
-        if ($num_bars > $limit) {
-            include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
-            $items[] = \Page\imageArrowLinkWithDescription('All Bars',
-                "$num_bars total.", "../all-bars/?id=$id",
-                'bars', ['id' => 'all-bars']);
-        }
-
-        $barsContent = join('<div class="hr"></div>', $items);
-
-    } else {
-        include_once "$fnsDir/Page/info.php";
-        $barsContent = \Page\info('No bars');
-    }
-
     include_once __DIR__.'/chart.php';
+    include_once __DIR__.'/barsPanel.php';
     include_once __DIR__.'/optionsPanel.php';
-    include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
     include_once "$fnsDir/ItemList/escapedPageQuery.php";
@@ -89,7 +64,7 @@ function create ($mysqli, $user, $bar_chart, &$scripts, &$head) {
         .chart($mysqli, $bar_chart)
         .\Form\label('Name', $name)
         .\Page\infoText($infoText)
-        .create_panel('Bars', $barsContent)
+        .barsPanel($mysqli, $bar_chart)
         .optionsPanel($bar_chart),
         \Page\newItemMenu(
             \Page\imageArrowLink('Bar',
