@@ -5,7 +5,13 @@ process.chdir(__dirname)
 var fs = require('fs'),
     uglifyCss = require('uglifycss')
 
-var source = fs.readFileSync('barChart.css', 'utf-8')
+var files = ['barChart', 'barChart-bar',
+    'barChart-sizer', 'barChart-lineLabels']
+
+var source = ''
+files.forEach(function (file) {
+    source += fs.readFileSync(file + '.css', 'utf-8') + '\n'
+})
 
 var compressCss = uglifyCss.processString(source)
 fs.writeFileSync('compressed.css', compressCss)

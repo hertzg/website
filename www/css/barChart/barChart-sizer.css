@@ -1,0 +1,11 @@
+.barChart-sizer {
+    position: absolute;
+    right: 0;
+    left: 0;
+}
+.barChart-sizer.positive {
+    top: 0;
+}
+.barChart-sizer.negative {
+    bottom: 0;
+}

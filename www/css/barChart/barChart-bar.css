@@ -1,0 +1,15 @@
+.barChart-bar {
+    background: #aaa;
+    position: absolute;
+    right: 0;
+    left: 0;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+.barChart-bar.positive {
+    bottom: 0;
+}
+.barChart-bar.negative {
+    top: 0;
+}
+
