@@ -16,6 +16,19 @@ function create ($mysqli, $user, $wallet, &$scripts, &$head) {
     include_once "$fnsDir/compressed_css_link.php";
     $head = compressed_css_link('newItemMenu', $base);
 
+    include_once "$fnsDir/request_strings.php";
+    list($keyword) = request_strings('keyword');
+
+    include_once "$fnsDir/str_collapse_spaces.php";
+    $keyword = str_collapse_spaces($keyword);
+
+    $name = htmlspecialchars($wallet->name);
+    if ($keyword !== '') {
+        $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
+        $replace = '<mark>$0</mark>';
+        $name = preg_replace($regex, $replace, $name);
+    }
+
     include_once "$fnsDir/format_author.php";
     $author = format_author($wallet->insert_time, $wallet->insert_api_key_name);
     $infoText = "Wallet created $author.";
@@ -90,7 +103,7 @@ function create ($mysqli, $user, $wallet, &$scripts, &$head) {
         ],
         "Wallet #$id",
         \Page\sessionMessages('wallets/view/messages')
-        .\Form\label('Name', htmlspecialchars($wallet->name))
+        .\Form\label('Name', $name)
         .'<div class="hr"></div>'
         .\Form\label('Income', $income)
         .'<div class="hr"></div>'

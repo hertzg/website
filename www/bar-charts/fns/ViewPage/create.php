@@ -15,6 +15,19 @@ function create ($mysqli, $user, $bar_chart, &$scripts, &$head) {
     $head = compressed_css_link('barChart', $base)
         .compressed_css_link('newItemMenu', $base);
 
+    include_once "$fnsDir/request_strings.php";
+    list($keyword) = request_strings('keyword');
+
+    include_once "$fnsDir/str_collapse_spaces.php";
+    $keyword = str_collapse_spaces($keyword);
+
+    $name = htmlspecialchars($bar_chart->name);
+    if ($keyword !== '') {
+        $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
+        $replace = '<mark>$0</mark>';
+        $name = preg_replace($regex, $replace, $name);
+    }
+
     include_once "$fnsDir/format_author.php";
     $author = format_author($bar_chart->insert_time,
         $bar_chart->insert_api_key_name);
@@ -82,7 +95,7 @@ function create ($mysqli, $user, $bar_chart, &$scripts, &$head) {
         "Bar Chart #$id",
         \Page\sessionMessages('bar-charts/view/messages')
         .chart($mysqli, $bar_chart)
-        .\Form\label('Name', htmlspecialchars($bar_chart->name))
+        .\Form\label('Name', $name)
         .\Page\infoText($infoText)
         .create_panel('Bars', $barsContent)
         .optionsPanel($bar_chart),
