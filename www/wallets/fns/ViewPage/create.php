@@ -41,31 +41,6 @@ function create ($mysqli, $user, $wallet, &$scripts, &$head) {
     include_once __DIR__.'/unsetSessionVars.php';
     unsetSessionVars();
 
-    $num_transactions = $wallet->num_transactions;
-    if ($num_transactions) {
-
-        $limit = 5;
-
-        include_once "$fnsDir/WalletTransactions/indexLimitOnWallet.php";
-        $transactions = \WalletTransactions\indexLimitOnWallet(
-            $mysqli, $id, $limit);
-
-        include_once __DIR__.'/../render_transactions.php';
-        render_transactions($transactions, $items);
-
-        if ($num_transactions > $limit) {
-            $items[] = \Page\imageArrowLinkWithDescription('All Transactions',
-                "$num_transactions total.", "../all-transactions/?id=$id",
-                'transactions', ['id' => 'all-transactions']);
-        }
-
-        $transactionsContent = join('<div class="hr"></div>', $items);
-
-    } else {
-        include_once "$fnsDir/Page/info.php";
-        $transactionsContent = \Page\info('No transactions');
-    }
-
     $days = (time() - $wallet->insert_time) / (60 * 60 * 24);
     if ($days < 1) $days = 1;
 
@@ -75,7 +50,7 @@ function create ($mysqli, $user, $wallet, &$scripts, &$head) {
         .' ('.amount_html($expense / $days).' daily)';
 
     include_once __DIR__.'/optionsPanel.php';
-    include_once "$fnsDir/create_panel.php";
+    include_once __DIR__.'/transactionsPanel.php';
     include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
     include_once "$fnsDir/ItemList/escapedPageQuery.php";
@@ -101,7 +76,7 @@ function create ($mysqli, $user, $wallet, &$scripts, &$head) {
         .'<div class="hr"></div>'
         .\Form\label('Balance', amount_html($wallet->balance))
         .\Page\infoText($infoText)
-        .create_panel('Transactions', $transactionsContent)
+        .transactionsPanel($mysqli, $wallet)
         .optionsPanel($wallet, $user),
         \Page\newItemMenu(
             \Page\imageArrowLink('Transaction',
