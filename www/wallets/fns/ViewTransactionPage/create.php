@@ -14,7 +14,8 @@ function create ($transaction, &$scripts) {
 
     include_once "$fnsDir/Page/imageArrowLink.php";
     $editLink = \Page\imageArrowLink('Edit',
-        "../edit-transaction/$escapedItemQuery", 'edit-transaction', ['id' => 'edit']);
+        "../edit-transaction/$escapedItemQuery",
+        'edit-transaction', ['id' => 'edit']);
 
     include_once "$fnsDir/amount_text.php";
     $params = [

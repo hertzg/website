@@ -43,9 +43,11 @@ function create_view_page ($transaction, &$scripts) {
         $_SESSION['wallets/view/messages']
     );
 
+    include_once "$fnsDir/ItemList/listHref.php";
+    $listHref = ItemList\listHref('', ['id' => $id_wallets]);
+
     include_once __DIR__.'/../../fns/ViewTransactionPage/viewContent.php';
     include_once "$fnsDir/create_panel.php";
-    include_once "$fnsDir/ItemList/listHref.php";
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
@@ -53,7 +55,7 @@ function create_view_page ($transaction, &$scripts) {
         [
             [
                 'title' => 'All Transactions',
-                'href' => '../'.ItemList\listHref('', ['id' => $id_wallets])."#$id",
+                'href' => "../$listHref#$id",
             ],
         ],
         "Transaction #$id",
