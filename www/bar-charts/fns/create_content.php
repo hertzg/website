@@ -5,7 +5,7 @@ function create_content ($content, $user, $base, $searchForm) {
     $fnsDir = __DIR__.'/../../fns';
 
     include_once __DIR__.'/create_options_panel.php';
-    include_once "$fnsDir/Page/newItemButton.php";
+    include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
@@ -21,7 +21,7 @@ function create_content ($content, $user, $base, $searchForm) {
         .Page\sessionMessages('bar-charts/messages')
         .$content
         .create_options_panel($user),
-        Page\newItemButton("{$base}new/", 'Bar Chart')
+        create_new_item_button('Bar Chart', $base)
     );
 
     if ($searchForm) {
