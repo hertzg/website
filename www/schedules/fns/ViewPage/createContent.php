@@ -1,36 +1,10 @@
 <?php
 
-function create_view_page ($user, $schedule, &$scripts) {
+namespace ViewPage;
 
-    $id = $schedule->id;
-    $text = $schedule->text;
-    $interval = $schedule->interval;
-    $offset = $schedule->offset;
-    $base = '../../';
+function createContent ($id) {
+
     $fnsDir = __DIR__.'/../../fns';
-
-    include_once "$fnsDir/compressed_js_script.php";
-    $scripts = compressed_js_script('dateAgo', $base);
-
-    include_once "$fnsDir/create_text_item.php";
-    include_once "$fnsDir/Form/label.php";
-    $items = [
-        create_text_item($text, $base),
-        Form\label('Repeats in every', "$interval days"),
-    ];
-
-    include_once "$fnsDir/days_left_from_today.php";
-    $days_left = days_left_from_today($user, $interval, $offset);
-
-    include_once __DIR__.'/format_days_left.php';
-    $next = format_days_left($user, $days_left);
-
-    $items[] = Form\label('Next', $next);
-
-    if ($schedule->num_tags) {
-        include_once "$fnsDir/Form/tags.php";
-        $items[] = Form\tags('', json_decode($schedule->tags_json));
-    }
 
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
     $escapedItemQuery = ItemList\escapedItemQuery($id);
@@ -56,23 +30,6 @@ function create_view_page ($user, $schedule, &$scripts) {
         '<div id="deleteLink">'
             .Page\imageLink('Delete', $href, 'trash-bin')
         .'</div>';
-
-    include_once "$fnsDir/format_author.php";
-    $api_key_name = $schedule->insert_api_key_name;
-    $author = format_author($schedule->insert_time, $api_key_name);
-    $infoText = "Schedule created $author.";
-    if ($schedule->revision) {
-        $api_key_name = $schedule->update_api_key_name;
-        $author = format_author($schedule->update_time, $api_key_name);
-        $infoText .= "<br />Last modified $author.";
-    }
-
-    unset(
-        $_SESSION['schedules/edit/errors'],
-        $_SESSION['schedules/edit/values'],
-        $_SESSION['schedules/errors'],
-        $_SESSION['schedules/messages']
-    );
 
     include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/create_panel.php";
