@@ -19,7 +19,6 @@ if (!Timezone\isValid($timezone)) $timezone = 0;
 include_once "$fnsDir/str_collapse_spaces.php";
 $full_name = str_collapse_spaces($full_name);
 
-$errors = [];
 include_once '../../lib/mysqli.php';
 
 include_once "$fnsDir/check_username.php";

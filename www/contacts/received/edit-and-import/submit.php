@@ -9,8 +9,6 @@ include_once '../fns/require_received_contact.php';
 include_once '../../../lib/mysqli.php';
 list($receivedContact, $id, $user) = require_received_contact($mysqli, '../');
 
-$errors = [];
-
 include_once '../../fns/request_contact_params.php';
 list($full_name, $alias, $address, $email, $phone1, $phone2,
     $birthday_day, $birthday_month, $birthday_year, $birthday_time,

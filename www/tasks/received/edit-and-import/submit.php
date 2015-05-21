@@ -9,8 +9,6 @@ include_once '../fns/require_received_task.php';
 include_once '../../../lib/mysqli.php';
 list($receivedTask, $id, $user) = require_received_task($mysqli, '../');
 
-$errors = [];
-
 include_once '../../fns/request_task_params.php';
 $values = request_task_params($user, $errors);
 list($text, $deadline_day, $deadline_month, $deadline_year,

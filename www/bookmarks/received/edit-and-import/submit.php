@@ -9,8 +9,6 @@ include_once '../fns/require_received_bookmark.php';
 include_once '../../../lib/mysqli.php';
 list($receivedBookmark, $id, $user) = require_received_bookmark($mysqli, '../');
 
-$errors = [];
-
 include_once '../../fns/request_bookmark_params.php';
 list($url, $title, $tags, $tag_names) = request_bookmark_params($errors);
 

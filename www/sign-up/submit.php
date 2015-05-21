@@ -16,8 +16,6 @@ include_once '../fns/str_collapse_spaces.php';
 $username = str_collapse_spaces($username);
 $email = str_collapse_spaces($email);
 
-$errors = [];
-
 include_once '../lib/mysqli.php';
 
 include_once '../fns/check_username.php';

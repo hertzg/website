@@ -15,8 +15,6 @@ list($subscriber_username) = request_strings('subscriber_username');
 include_once "$fnsDir/str_collapse_spaces.php";
 $subscriber_username = str_collapse_spaces($subscriber_username);
 
-$errors = [];
-
 include_once 'fns/check_username.php';
 check_username($mysqli, $id, $user->id_users,
     $subscriber_username, $subscribedChannel, $subscriberUser, $errors);

@@ -9,8 +9,6 @@ include_once '../../fns/require_place.php';
 include_once '../../../lib/mysqli.php';
 list($place, $id, $user) = require_place($mysqli, '../');
 
-$errors = [];
-
 include_once '../../fns/request_point_params.php';
 list($latitude, $longitude, $altitude, $parsed_latitude,
     $parsed_longitude, $parsed_altitude) = request_point_params($errors);

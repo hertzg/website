@@ -8,8 +8,6 @@ require_same_domain_referer('./');
 include_once "$fnsDir/require_user.php";
 $user = require_user('../../../');
 
-$errors = [];
-
 include_once '../../fns/request_event_params.php';
 $values = request_event_params($errors);
 list($event_day, $event_month, $event_year, $event_time, $text) = $values;

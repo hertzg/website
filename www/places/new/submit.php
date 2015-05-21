@@ -6,8 +6,6 @@ require_same_domain_referer('./');
 include_once '../../fns/require_user.php';
 $user = require_user('../../');
 
-$errors = [];
-
 include_once '../fns/request_place_params.php';
 list($latitude, $longitude, $altitude, $name, $description,
     $tags, $tag_names, $parsed_latitude, $parsed_longitude,

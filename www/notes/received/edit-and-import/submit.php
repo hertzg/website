@@ -9,8 +9,6 @@ include_once '../fns/require_received_note.php';
 include_once '../../../lib/mysqli.php';
 list($receivedNote, $id, $user) = require_received_note($mysqli, '../');
 
-$errors = [];
-
 include_once '../../fns/request_note_params.php';
 list($text, $tags, $tag_names, $encrypt) = request_note_params($errors);
 

@@ -15,8 +15,6 @@ if ($user->email_verified) redirect('..');
 include_once "$fnsDir/request_strings.php";
 list($captcha) = request_strings('captcha');
 
-$errors = [];
-
 include_once "$fnsDir/Captcha/check.php";
 Captcha\check($errors);
 

@@ -15,8 +15,6 @@ list($username, $password1, $password2) = request_strings(
 include_once "$fnsDir/str_collapse_spaces.php";
 $username = str_collapse_spaces($username);
 
-$errors = [];
-
 include_once 'fns/check_username.php';
 check_username($username, $errors);
 

@@ -6,8 +6,6 @@ require_same_domain_referer('./');
 include_once '../../fns/require_user.php';
 $user = require_user('../../');
 
-$errors = [];
-
 include_once '../fns/request_task_params.php';
 $values = request_task_params($user, $errors);
 list($text, $deadline_day, $deadline_month, $deadline_year,

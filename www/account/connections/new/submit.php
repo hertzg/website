@@ -15,8 +15,6 @@ list($username, $expires, $expire_time,
     $can_send_contact, $can_send_file, $can_send_note,
     $can_send_place, $can_send_task) = request_connection_params();
 
-$errors = [];
-
 include_once '../fns/check_username.php';
 include_once '../../../lib/mysqli.php';
 check_username($mysqli, $id_users, $username, $connected_id_users, $errors);

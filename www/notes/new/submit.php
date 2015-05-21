@@ -6,8 +6,6 @@ require_same_domain_referer('./');
 include_once '../../fns/require_user.php';
 $user = require_user('../../');
 
-$errors = [];
-
 include_once '../fns/request_note_params.php';
 list($text, $tags, $tag_names, $encrypt) = request_note_params($errors);
 
