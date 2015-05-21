@@ -10,8 +10,8 @@ include_once '../../../lib/mysqli.php';
 list($event, $id, $user) = require_event($mysqli);
 
 include_once '../../fns/request_event_params.php';
-$values = request_event_params($errors);
-list($event_day, $event_month, $event_year, $event_time, $text) = $values;
+list($event_day, $event_month,
+    $event_year, $event_time, $text) = request_event_params($errors);
 
 include_once "$fnsDir/redirect.php";
 

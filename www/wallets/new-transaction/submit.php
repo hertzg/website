@@ -10,8 +10,8 @@ include_once '../../lib/mysqli.php';
 list($wallet, $id, $user) = require_wallet($mysqli);
 
 include_once '../fns/request_transaction_params.php';
-$values = request_transaction_params($errors);
-list($amount, $parsed_amount, $description) = $values;
+list($amount, $parsed_amount,
+    $description) = request_transaction_params($errors);
 
 include_once "$fnsDir/redirect.php";
 include_once "$fnsDir/ItemList/itemQuery.php";

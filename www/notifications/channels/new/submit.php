@@ -10,8 +10,8 @@ $user = require_user('../../../');
 
 include_once '../fns/request_channel_params.php';
 include_once '../../../lib/mysqli.php';
-$values = request_channel_params($mysqli, $errors);
-list($channel_name, $public, $receive_notifications) = $values;
+list($channel_name, $public,
+    $receive_notifications) = request_channel_params($mysqli, $errors);
 
 include_once "$fnsDir/redirect.php";
 

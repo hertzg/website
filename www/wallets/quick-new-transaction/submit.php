@@ -22,8 +22,8 @@ $errors = [];
 if (!$wallet) $errors[] = 'The wallet no longer exists.';
 
 include_once '../fns/request_transaction_params.php';
-$values = request_transaction_params($errors);
-list($amount, $parsed_amount, $description) = $values;
+list($amount, $parsed_amount,
+    $description) = request_transaction_params($errors);
 
 include_once "$fnsDir/redirect.php";
 

@@ -10,8 +10,9 @@ include_once '../../lib/mysqli.php';
 list($task, $id, $user) = require_task($mysqli);
 
 include_once '../fns/request_task_params.php';
-list($text, $deadline_day, $deadline_month, $deadline_year, $deadline_time,
-    $tags, $tag_names, $top_priority) = request_task_params($user, $errors);
+list($text, $deadline_day, $deadline_month,
+    $deadline_year, $deadline_time, $tags,
+    $tag_names, $top_priority) = request_task_params($user, $errors);
 
 include_once "$fnsDir/ItemList/itemQuery.php";
 $itemQuery = ItemList\itemQuery($id);

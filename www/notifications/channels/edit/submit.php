@@ -10,8 +10,8 @@ include_once '../../../lib/mysqli.php';
 list($channel, $id, $user) = require_channel($mysqli);
 
 include_once '../fns/request_channel_params.php';
-$values = request_channel_params($mysqli, $errors, $channel->id);
-list($channel_name, $public, $receive_notifications) = $values;
+list($channel_name, $public,
+    $receive_notifications) = request_channel_params($mysqli, $errors, $id);
 
 include_once "$fnsDir/redirect.php";
 

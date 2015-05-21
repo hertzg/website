@@ -7,9 +7,9 @@ include_once '../../fns/require_user.php';
 $user = require_user('../../');
 
 include_once '../fns/request_task_params.php';
-$values = request_task_params($user, $errors);
-list($text, $deadline_day, $deadline_month, $deadline_year,
-    $deadline_time, $tags, $tag_names, $top_priority) = $values;
+list($text, $deadline_day, $deadline_month,
+    $deadline_year, $deadline_time, $tags,
+    $tag_names, $top_priority) = request_task_params($user, $errors);
 
 $values = [
     'text' => $text,
