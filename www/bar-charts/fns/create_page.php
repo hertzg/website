@@ -61,24 +61,7 @@ function create_page ($mysqli, $user, $base = '') {
     include_once __DIR__.'/unset_session_vars.php';
     unset_session_vars();
 
-    include_once __DIR__.'/create_options_panel.php';
-    include_once "$fnsDir/Page/newItemButton.php";
-    include_once "$fnsDir/Page/sessionErrors.php";
-    include_once "$fnsDir/Page/sessionMessages.php";
-    include_once "$fnsDir/Page/tabs.php";
-    return Page\tabs(
-        [
-            [
-                'title' => 'Home',
-                'href' => "$base../home/#bar-charts",
-            ],
-        ],
-        'Bar Charts',
-        Page\sessionErrors('bar-charts/errors')
-        .Page\sessionMessages('bar-charts/messages')
-        .$content
-        .create_options_panel($user),
-        Page\newItemButton("{$base}new/", 'Bar Chart')
-    );
+    include_once __DIR__.'/create_content.php';
+    return create_content($content, $user, $base, $searchForm);
 
 }
