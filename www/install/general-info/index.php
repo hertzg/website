@@ -3,31 +3,8 @@
 include_once '../fns/require_requirements.php';
 require_requirements();
 
-$key = 'install/general-info/values';
-if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
-else {
-
-    $key = 'HTTP_HOST';
-    if (array_key_exists($key, $_SERVER)) $domainName = $_SERVER[$key];
-    else $domainName = $_SERVER['REMOTE_ADDR'];
-
-    include_once '../../fns/SiteTitle/get.php';
-    $siteTitle = SiteTitle\get();
-
-    $documentRoot = $_SERVER['DOCUMENT_ROOT'];
-    $file = substr($_SERVER['SCRIPT_FILENAME'], strlen($documentRoot));
-    $remainingLength = strlen('install/general-info/index.php');
-    $siteBase = substr($file, 0, strlen($file) - $remainingLength);
-
-    $values = [
-        'siteTitle' => $siteTitle,
-        'domainName' => $domainName,
-        'infoEmail' => "info@$domainName",
-        'siteBase' => $siteBase,
-        'https' => array_key_exists('HTTPS', $_SERVER),
-    ];
-
-}
+include_once 'fns/get_values.php';
+$values = get_values();
 
 $key = 'install/general-info/error';
 if (array_key_exists($key, $_SESSION)) {

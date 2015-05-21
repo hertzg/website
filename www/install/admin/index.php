@@ -3,15 +3,8 @@
 include_once '../fns/require_mysql_config.php';
 require_mysql_config();
 
-$key = 'install/admin/values';
-if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
-else {
-    $values = [
-        'username' => 'adminadmin',
-        'password1' => '',
-        'password2' => '',
-    ];
-}
+include_once 'fns/get_values.php';
+$values = get_values();
 
 $key = 'install/admin/error';
 if (array_key_exists($key, $_SESSION)) {
