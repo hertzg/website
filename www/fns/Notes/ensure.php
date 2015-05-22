@@ -14,6 +14,7 @@ function ensure ($mysqli) {
 
     include_once "$fnsDir/Table/ensure.php";
     include_once "$fnsDir/Tags/column.php";
+    include_once "$fnsDir/TagsJson/column.php";
     return \Table\ensure($mysqli, 'notes', [
         'encrypt' => ['type' => 'tinyint(3) unsigned'],
         'id' => [
@@ -30,11 +31,7 @@ function ensure ($mysqli) {
         'num_tags' => ['type' => 'tinyint(3) unsigned'],
         'revision' => ['type' => 'bigint(20) unsigned'],
         'tags' => \Tags\column(),
-        'tags_json' => [
-            'type' => "varchar($maxLengths[tags_json])",
-            'characterSet' => 'ascii',
-            'collation' => 'ascii_bin',
-        ],
+        'tags_json' => \TagsJson\column(),
         'text' => [
             'type' => "varchar($maxLengths[text])",
             'characterSet' => 'utf8',
