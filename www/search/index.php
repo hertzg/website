@@ -32,26 +32,26 @@ $formContent = SearchForm\content($keyword, 'Search...', '..');
 include_once "$fnsDir/SearchForm/create.php";
 $items = [SearchForm\create('./', $formContent)];
 
-include_once "$fnsDir/BarCharts/search.php";
-$bar_charts = BarCharts\search($mysqli, $id_users, $keyword);
+include_once "$fnsDir/Users/BarCharts/search.php";
+$bar_charts = Users\BarCharts\search($mysqli, $user, $keyword);
 
-include_once "$fnsDir/Bookmarks/search.php";
-$bookmarks = Bookmarks\search($mysqli, $id_users, $keyword);
+include_once "$fnsDir/Users/Bookmarks/search.php";
+$bookmarks = Users\Bookmarks\search($mysqli, $user, $keyword);
 
-include_once "$fnsDir/Contacts/search.php";
-$contacts = Contacts\search($mysqli, $id_users, $keyword);
+include_once "$fnsDir/Users/Contacts/search.php";
+$contacts = Users\Contacts\search($mysqli, $user, $keyword);
 
-include_once "$fnsDir/Notes/search.php";
-$notes = Notes\search($mysqli, $id_users, $keyword);
+include_once "$fnsDir/Users/Notes/search.php";
+$notes = Users\Notes\search($mysqli, $user, $keyword);
 
-include_once "$fnsDir/Places/search.php";
-$places = Places\search($mysqli, $id_users, $keyword);
+include_once "$fnsDir/Users/Places/search.php";
+$places = Users\Places\search($mysqli, $user, $keyword);
 
-include_once "$fnsDir/Tasks/search.php";
-$tasks = Tasks\search($mysqli, $id_users, $keyword);
+include_once "$fnsDir/Users/Tasks/search.php";
+$tasks = Users\Tasks\search($mysqli, $user, $keyword);
 
-include_once "$fnsDir/Wallets/search.php";
-$wallets = Wallets\search($mysqli, $id_users, $keyword);
+include_once "$fnsDir/Users/Wallets/search.php";
+$wallets = Users\Wallets\search($mysqli, $user, $keyword);
 
 include_once 'fns/search_folders_and_files.php';
 list($folders, $files) = search_folders_and_files($mysqli,
