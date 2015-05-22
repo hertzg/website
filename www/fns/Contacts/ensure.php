@@ -15,6 +15,7 @@ function ensure ($mysqli) {
     include_once "$fnsDir/Email/column.php";
     include_once "$fnsDir/FullName/column.php";
     include_once "$fnsDir/Table/ensure.php";
+    include_once "$fnsDir/Tags/column.php";
     return \Table\ensure($mysqli, 'contacts', [
         'address' => [
             'type' => "varchar($maxLengths[address])",
@@ -73,11 +74,7 @@ function ensure ($mysqli) {
             'nullable' => true,
         ],
         'revision' => ['type' => 'bigint(20) unsigned'],
-        'tags' => [
-            'type' => "varchar($maxLengths[tags])",
-            'characterSet' => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-        ],
+        'tags' => \Tags\column(),
         'tags_json' => [
             'type' => "varchar($maxLengths[tags_json])",
             'characterSet' => 'ascii',

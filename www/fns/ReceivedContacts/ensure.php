@@ -12,6 +12,7 @@ function ensure ($mysqli) {
     include_once "$fnsDir/Email/column.php";
     include_once "$fnsDir/FullName/column.php";
     include_once "$fnsDir/Table/ensure.php";
+    include_once "$fnsDir/Tags/column.php";
     include_once "$fnsDir/Username/column.php";
     return \Table\ensure($mysqli, 'received_contacts', [
         'address' => [
@@ -59,11 +60,7 @@ function ensure ($mysqli) {
         'receiver_id_users' => ['type' => 'bigint(20) unsigned'],
         'sender_id_users' => ['type' => 'bigint(20) unsigned'],
         'sender_username' => \Username\column(),
-        'tags' => [
-            'type' => "varchar($maxLengths[tags])",
-            'characterSet' => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-        ],
+        'tags' => \Tags\column(),
         'timezone' => [
             'type' => 'int(11)',
             'nullable' => true,

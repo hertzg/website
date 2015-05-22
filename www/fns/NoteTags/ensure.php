@@ -11,6 +11,7 @@ function ensure ($mysqli) {
 
     include_once "$fnsDir/Table/ensure.php";
     include_once "$fnsDir/Tag/maxLength.php";
+    include_once "$fnsDir/Tags/column.php";
     return \Table\ensure($mysqli, 'note_tags', [
         'encrypt' => ['type' => 'tinyint(3) unsigned'],
         'id' => [
@@ -20,11 +21,7 @@ function ensure ($mysqli) {
         'id_notes' => ['type' => 'bigint(20) unsigned'],
         'id_users' => ['type' => 'bigint(20) unsigned'],
         'insert_time' => ['type' => 'bigint(20) unsigned'],
-        'tags' => [
-            'type' => "varchar($maxLengths[tags])",
-            'characterSet' => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-        ],
+        'tags' => \Tags\column(),
         'tag_name' => [
             'type' => 'varchar('.\Tag\maxLength().')',
             'characterSet' => 'utf8',

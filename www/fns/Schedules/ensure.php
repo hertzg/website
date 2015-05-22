@@ -13,6 +13,7 @@ function ensure ($mysqli) {
     $apiKeyNameColumn = \ApiKeyName\column(true);
 
     include_once "$fnsDir/Table/ensure.php";
+    include_once "$fnsDir/Tags/column.php";
     return \Table\ensure($mysqli, 'schedules', [
         'id' => [
             'type' => 'bigint(20) unsigned',
@@ -29,11 +30,7 @@ function ensure ($mysqli) {
         'num_tags' => ['type' => 'tinyint(3) unsigned'],
         'offset' => ['type' => 'bigint(20) unsigned'],
         'revision' => ['type' => 'bigint(20) unsigned'],
-        'tags' => [
-            'type' => "varchar($maxLengths[tags])",
-            'characterSet' => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-        ],
+        'tags' => \Tags\column(),
         'tags_json' => [
             'type' => "varchar($maxLengths[tags_json])",
             'characterSet' => 'ascii',
