@@ -54,8 +54,8 @@ include_once "$fnsDir/Users/Wallets/search.php";
 $wallets = Users\Wallets\search($mysqli, $user, $keyword);
 
 include_once 'fns/search_folders_and_files.php';
-list($folders, $files) = search_folders_and_files($mysqli,
-    $searchFiles, $id_users, $keyword);
+list($folders, $files) = search_folders_and_files(
+    $mysqli, $searchFiles, $user, $keyword);
 
 if ($bar_charts || $bookmarks || $contacts || $notes ||
     $places || $tasks || $wallets || $folders || $files) {
