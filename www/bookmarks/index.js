@@ -1,4 +1,4 @@
-(function () {
+(function (yesHref) {
 
     var dialogShown = false
 
@@ -8,7 +8,6 @@
         deleteAllLink.blur()
         if (dialogShown) return
         var yesText = 'Yes, delete all bookmarks'
-        var yesHref = 'delete-all/submit.php'
         var questionText = 'Are you sure you want to delete' +
             ' all the bookmarks? They will be moved to Trash.'
         confirmDialog(questionText, yesText, yesHref, function () {
@@ -17,4 +16,4 @@
         dialogShown = true
     })
 
-})()
+})(deleteAllHref)
