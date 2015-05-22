@@ -10,7 +10,7 @@ function ensure ($mysqli) {
     $maxLengths = \Schedules\maxLengths();
 
     include_once "$fnsDir/Table/ensure.php";
-    include_once "$fnsDir/Tag/maxLength.php";
+    include_once "$fnsDir/TagName/column.php";
     return \Table\ensure($mysqli, 'schedule_tags', [
         'id' => [
             'type' => 'bigint(20) unsigned',
@@ -21,11 +21,7 @@ function ensure ($mysqli) {
         'insert_time' => ['type' => 'bigint(20) unsigned'],
         'interval' => ['type' => 'bigint(20) unsigned'],
         'offset' => ['type' => 'bigint(20) unsigned'],
-        'tag_name' => [
-            'type' => 'varchar('.\Tag\maxLength().')',
-            'characterSet' => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-        ],
+        'tag_name' => \TagName\column(),
         'text' => [
             'type' => "varchar($maxLengths[text])",
             'characterSet' => 'utf8',

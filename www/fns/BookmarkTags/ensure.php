@@ -10,7 +10,7 @@ function ensure ($mysqli) {
     $maxLengths = \Bookmarks\maxLengths();
 
     include_once "$fnsDir/Table/ensure.php";
-    include_once "$fnsDir/Tag/maxLength.php";
+    include_once "$fnsDir/TagName/column.php";
     return \Table\ensure($mysqli, 'bookmark_tags', [
         'id' => [
             'type' => 'bigint(20) unsigned',
@@ -19,11 +19,7 @@ function ensure ($mysqli) {
         'id_bookmarks' => ['type' => 'bigint(20) unsigned'],
         'id_users' => ['type' => 'bigint(20) unsigned'],
         'insert_time' => ['type' => 'bigint(20) unsigned'],
-        'tag_name' => [
-            'type' => 'varchar('.\Tag\maxLength().')',
-            'characterSet' => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-        ],
+        'tag_name' => \TagName\column(),
         'title' => [
             'type' => "varchar($maxLengths[title])",
             'characterSet' => 'utf8',

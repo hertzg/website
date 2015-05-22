@@ -12,7 +12,7 @@ function ensure ($mysqli) {
     include_once "$fnsDir/Email/column.php";
     include_once "$fnsDir/FullName/column.php";
     include_once "$fnsDir/Table/ensure.php";
-    include_once "$fnsDir/Tag/maxLength.php";
+    include_once "$fnsDir/TagName/column.php";
     return \Table\ensure($mysqli, 'contact_tags', [
         'alias' => [
             'type' => "varchar($maxLengths[alias])",
@@ -39,11 +39,7 @@ function ensure ($mysqli) {
             'characterSet' => 'utf8',
             'collation' => 'utf8_general_ci',
         ],
-        'tag_name' => [
-            'type' => 'varchar('.\Tag\maxLength().')',
-            'characterSet' => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-        ],
+        'tag_name' => \TagName\column(),
         'update_time' => ['type' => 'bigint(20) unsigned'],
     ]);
 
