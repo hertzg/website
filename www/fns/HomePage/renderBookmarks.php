@@ -4,9 +4,15 @@ namespace HomePage;
 
 function renderBookmarks ($user, &$items) {
 
-    if (!$user->show_bookmarks) return;
-
     $fnsDir = __DIR__.'/..';
+
+    if ($user->show_new_bookmark) {
+        include_once "$fnsDir/Page/imageArrowLink.php";
+        $items['new-bookmark'] = \Page\imageArrowLink(
+            'New Bookmark', '../bookmarks/new/', 'create-bookmark');
+    }
+
+    if (!$user->show_bookmarks) return;
 
     $num_bookmarks = $user->num_bookmarks;
     $num_received_bookmarks = $user->num_received_bookmarks;

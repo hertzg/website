@@ -4,9 +4,15 @@ namespace HomePage;
 
 function renderBarCharts ($user, &$items) {
 
-    if (!$user->show_bar_charts) return;
-
     $fnsDir = __DIR__.'/..';
+
+    if ($user->show_new_bar_chart) {
+        include_once "$fnsDir/Page/imageArrowLink.php";
+        $items['new-bar-chart'] = \Page\imageArrowLink(
+            'New Bar Chart', '../bar-charts/new/', 'create-bar-chart');
+    }
+
+    if (!$user->show_bar_charts) return;
 
     $num_bar_charts = $user->num_bar_charts;
 

@@ -4,9 +4,15 @@ namespace HomePage;
 
 function renderFiles ($user, &$items) {
 
-    if (!$user->show_files) return;
-
     $fnsDir = __DIR__.'/..';
+
+    if ($user->show_upload_files) {
+        include_once "$fnsDir/Page/imageArrowLink.php";
+        $items['upload-files'] = \Page\imageArrowLink(
+            'Upload Files', '../files/upload-files/', 'upload');
+    }
+
+    if (!$user->show_files) return;
 
     $storage_used = $user->storage_used;
     $num_received_files = $user->num_received_files;

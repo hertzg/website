@@ -4,9 +4,15 @@ namespace HomePage;
 
 function renderTasks ($user, &$items) {
 
-    if (!$user->show_tasks) return;
-
     $fnsDir = __DIR__.'/..';
+
+    if ($user->show_new_task) {
+        include_once "$fnsDir/Page/imageArrowLink.php";
+        $items['new-task'] = \Page\imageArrowLink(
+            'New Task', '../tasks/new/', 'create-task');
+    }
+
+    if (!$user->show_tasks) return;
 
     $num_tasks = $user->num_tasks;
     $num_received_tasks = $user->num_received_tasks;

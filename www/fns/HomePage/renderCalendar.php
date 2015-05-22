@@ -4,9 +4,15 @@ namespace HomePage;
 
 function renderCalendar ($user, $mysqli, &$items, &$scripts) {
 
-    if (!$user->show_calendar) return;
-
     $fnsDir = __DIR__.'/..';
+
+    if ($user->show_new_event) {
+        include_once "$fnsDir/Page/imageArrowLink.php";
+        $items['new-event'] = \Page\imageArrowLink(
+            'New Event', '../calendar/new-event/', 'create-event');
+    }
+
+    if (!$user->show_calendar) return;
 
     include_once "$fnsDir/compressed_js_script.php";
     $scripts .= compressed_js_script('calendarIcon', '../');

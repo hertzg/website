@@ -4,9 +4,15 @@ namespace HomePage;
 
 function renderContacts ($user, &$items) {
 
-    if (!$user->show_contacts) return;
-
     $fnsDir = __DIR__.'/..';
+
+    if ($user->show_new_contact) {
+        include_once "$fnsDir/Page/imageArrowLink.php";
+        $items['new-contact'] = \Page\imageArrowLink(
+            'New Contact', '../contacts/new/', 'create-contact');
+    }
+
+    if (!$user->show_contacts) return;
 
     $num_contacts = $user->num_contacts;
     $num_received_contacts = $user->num_received_contacts;

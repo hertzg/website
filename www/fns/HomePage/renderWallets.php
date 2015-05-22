@@ -4,9 +4,21 @@ namespace HomePage;
 
 function renderWallets ($user, &$items) {
 
-    if (!$user->show_wallets) return;
-
     $fnsDir = __DIR__.'/..';
+
+    if ($user->show_new_wallet) {
+        include_once "$fnsDir/Page/imageArrowLink.php";
+        $items['new-wallet'] = \Page\imageArrowLink(
+            'New Wallet', '../wallets/new/', 'create-wallet');
+    }
+
+    if ($user->show_new_transaction) {
+        include_once "$fnsDir/Page/imageArrowLink.php";
+        $items['new-transaction'] = \Page\imageArrowLink('New Transaction',
+            '../wallets/quick-new-transaction/', 'create-transaction');
+    }
+
+    if (!$user->show_wallets) return;
 
     $balance_total = $user->balance_total;
 

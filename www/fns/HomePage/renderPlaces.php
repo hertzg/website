@@ -4,9 +4,15 @@ namespace HomePage;
 
 function renderPlaces ($user, &$items) {
 
-    if (!$user->show_places) return;
-
     $fnsDir = __DIR__.'/..';
+
+    if ($user->show_new_place) {
+        include_once "$fnsDir/Page/imageArrowLink.php";
+        $items['new-place'] = \Page\imageArrowLink(
+            'New Place', '../places/new/', 'create-place');
+    }
+
+    if (!$user->show_places) return;
 
     $num_places = $user->num_places;
     $num_received_places = $user->num_received_places;
