@@ -22,6 +22,6 @@ include_once "$fnsDir/Users/editTheme.php";
 include_once '../../lib/mysqli.php';
 Users\editTheme($mysqli, $user->id_users, $theme);
 
-$_SESSION['account/messages'] = ['Theme has changed.'];
+$_SESSION['account/edit-theme/messages'] = ['Theme color has been changed.'];
 
-redirect('..');
+redirect();

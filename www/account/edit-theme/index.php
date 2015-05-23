@@ -19,6 +19,7 @@ foreach ($themes as $id => $theme) {
     $items[] = Page\imageLink($theme, $href, "$id-theme");
 }
 
+include_once "$fnsDir/Page/sessionMessages.php";
 include_once "$fnsDir/Page/tabs.php";
 include_once "$fnsDir/Page/warnings.php";
 $content = Page\tabs(
@@ -29,7 +30,8 @@ $content = Page\tabs(
         ],
     ],
     'Edit Theme',
-    Page\warnings(['Select theme color:'])
+    Page\sessionMessages('account/edit-theme/messages')
+    .Page\warnings(['Select theme color:'])
     .join('<div class="hr"></div>', $items)
 );
 
