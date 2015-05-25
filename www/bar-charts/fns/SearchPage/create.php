@@ -5,9 +5,13 @@ namespace SearchPage;
 function create ($mysqli, $user) {
 
     $fnsDir = __DIR__.'/../../../fns';
+    $id_users = $user->id_users;
 
     include_once "$fnsDir/request_valid_keyword_tag_offset.php";
     list($keyword, $tag, $offset) = request_valid_keyword_tag_offset();
+
+    $searchAction = './';
+    $searchPlaceholder = 'Search bar charts...';
 
     $items = [];
 
@@ -17,14 +21,52 @@ function create ($mysqli, $user) {
     include_once "$fnsDir/SearchForm/content.php";
     include_once "$fnsDir/SearchForm/create.php";
 
-    include_once "$fnsDir/BarCharts/searchPage.php";
-    $bar_charts = \BarCharts\searchPage($mysqli,
-        $user->id_users, $keyword, $offset, $limit, $total);
+    if ($tag === '') {
 
-    $formContent = \SearchForm\content($keyword, 'Search bar charts...', '..');
-    $items[] = \SearchForm\create('./', $formContent);
+        $filterMessage = '';
+
+        include_once "$fnsDir/BarCharts/searchPage.php";
+        $bar_charts = \BarCharts\searchPage($mysqli,
+            $user->id_users, $keyword, $offset, $limit, $total);
+
+        $formContent = \SearchForm\content($keyword, $searchPlaceholder, '..');
+        $items[] = \SearchForm\create($searchAction, $formContent);
+
+        if ($total > 1) {
+
+            include_once "$fnsDir/BarChartTags/indexOnUser.php";
+            $tags = \BarChartTags\indexOnUser($mysqli, $id_users);
+
+            if ($tags) {
+                include_once "$fnsDir/create_tag_filter_bar.php";
+                $filterMessage = create_tag_filter_bar($tags, [
+                    'keyword' => $keyword,
+                ]);
+            }
+
+        }
+
+    } else {
+
+        include_once "$fnsDir/BarChartTags/searchPageOnUserTagName.php";
+        $bar_charts = \BarChartTags\searchPageOnUserTagName($mysqli,
+            $id_users, $keyword, $tag, $offset, $limit, $total);
+
+        include_once "$fnsDir/Form/hidden.php";
+        $clearHref = '../?tag='.rawurlencode($tag);
+        $formContent =
+            \SearchForm\content($keyword, $searchPlaceholder, $clearHref)
+            .\Form\hidden('tag', $tag);
+        $items[] = \SearchForm\create($searchAction, $formContent);
+
+        $clearHref = '?keyword='.rawurlencode($keyword);
+        include_once "$fnsDir/create_clear_filter_bar.php";
+        $filterMessage = create_clear_filter_bar($tag, $clearHref);
+
+    }
 
     $params = ['keyword' => $keyword];
+    if ($tag !== '') $params['tag'] = $tag;
     if ($offset) $params['offset'] = $offset;
 
     include_once "$fnsDir/check_offset_overflow.php";
@@ -57,6 +99,7 @@ function create ($mysqli, $user) {
             ],
             'Bar Charts',
             \Page\sessionMessages('bar-charts/messages')
+            .$filterMessage
             .join('<div class="hr"></div>', $items),
             create_new_item_button('Bar Chart', '../')
         )

@@ -1,6 +1,6 @@
 <?php
 
-function create_content ($content, $user, $base, $searchForm) {
+function create_content ($user, $filterMessage, $items, $base, $searchForm) {
 
     $fnsDir = __DIR__.'/../../fns';
 
@@ -19,7 +19,8 @@ function create_content ($content, $user, $base, $searchForm) {
         'Bar Charts',
         Page\sessionErrors('bar-charts/errors')
         .Page\sessionMessages('bar-charts/messages')
-        .$content
+        .$filterMessage
+        .join('<div class="hr"></div>', $items)
         .create_options_panel($user),
         create_new_item_button('Bar Chart', $base)
     );
