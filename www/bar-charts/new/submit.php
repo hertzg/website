@@ -16,7 +16,10 @@ include_once "$fnsDir/redirect.php";
 
 if ($errors) {
     $_SESSION['bar-charts/new/errors'] = $errors;
-    $_SESSION['bar-charts/new/values'] = ['name' => $name];
+    $_SESSION['bar-charts/new/values'] = [
+        'name' => $name,
+        'tags' => $tags,
+    ];
     redirect();
 }
 

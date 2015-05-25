@@ -8,7 +8,12 @@ $fnsDir = '../../fns';
 
 $key = 'bar-charts/edit/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
-else $values = ['name' => $bar_chart->name];
+else {
+    $values = [
+        'name' => $bar_chart->name,
+        'tags' => $bar_chart->tags,
+    ];
+}
 
 unset($_SESSION['bar-charts/view/messages']);
 

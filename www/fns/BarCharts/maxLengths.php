@@ -3,5 +3,15 @@
 namespace BarCharts;
 
 function maxLengths () {
-    return ['name' => 64];
+
+    $fnsDir = __DIR__.'/..';
+
+    include_once "$fnsDir/Tags/maxLength.php";
+    include_once "$fnsDir/TagsJson/maxLength.php";
+    return [
+        'tags' => \Tags\maxLength(),
+        'tags_json' => \TagsJson\maxLength(),
+        'name' => 64,
+    ];
+
 }

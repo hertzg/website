@@ -19,7 +19,10 @@ include_once "$fnsDir/redirect.php";
 
 if ($errors) {
     $_SESSION['bar-charts/edit/errors'] = $errors;
-    $_SESSION['bar-charts/edit/values'] = ['name' => $name];
+    $_SESSION['bar-charts/edit/values'] = [
+        'name' => $name,
+        'tags' => $tags,
+    ];
     redirect("./$itemQuery");
 }
 

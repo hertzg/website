@@ -8,7 +8,12 @@ $user = require_user($base);
 
 $key = 'bar-charts/new/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
-else $values = ['name' => ''];
+else {
+    $values = [
+        'name' => '',
+        'tags' => '',
+    ];
+}
 
 unset(
     $_SESSION['bar-charts/errors'],
