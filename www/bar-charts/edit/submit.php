@@ -10,7 +10,7 @@ include_once '../../lib/mysqli.php';
 list($bar_chart, $id, $user) = require_bar_chart($mysqli);
 
 include_once '../fns/request_bar_chart_params.php';
-$name = request_bar_chart_params($errors);
+list($name, $tags, $tag_names) = request_bar_chart_params($errors);
 
 include_once "$fnsDir/ItemList/itemQuery.php";
 $itemQuery = ItemList\itemQuery($id);

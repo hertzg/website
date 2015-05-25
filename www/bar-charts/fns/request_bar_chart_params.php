@@ -2,11 +2,16 @@
 
 function request_bar_chart_params (&$errors) {
 
-    include_once __DIR__.'/../../fns/BarCharts/request.php';
-    $name = BarCharts\request();
+    $fnsDir = __DIR__.'/../../fns';
+
+    include_once "$fnsDir/BarCharts/request.php";
+    list($name, $tags) = BarCharts\request();
 
     if ($name === '') $errors[] = 'Enter name.';
 
-    return $name;
+    include_once "$fnsDir/request_tags.php";
+    request_tags($tags, $tag_names, $errors);
+
+    return [$name, $tags, $tag_names];
 
 }

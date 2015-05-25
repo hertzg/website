@@ -10,7 +10,7 @@ include_once "$fnsDir/require_user.php";
 $user = require_user($base);
 
 include_once '../fns/request_bar_chart_params.php';
-$name = request_bar_chart_params($errors);
+list($name, $tags, $tag_names) = request_bar_chart_params($errors);
 
 include_once "$fnsDir/redirect.php";
 
