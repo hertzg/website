@@ -9,3 +9,7 @@
 .steps-next {
     color: #aaa;
 }
+
+.steps-link:focus {
+    box-shadow: 0 0 1px 2px #f80;
+}
