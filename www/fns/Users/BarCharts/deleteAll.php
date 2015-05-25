@@ -25,6 +25,9 @@ function deleteAll ($mysqli, $user, $apiKey = null) {
     include_once "$fnsDir/BarChartBars/setDeletedOnUser.php";
     \BarChartBars\setDeletedOnUser($mysqli, $id_users);
 
+    include_once "$fnsDir/BarChartTags/deleteOnUser.php";
+    \BarChartTags\deleteOnUser($mysqli, $id_users);
+
     $sql = 'update users set num_bar_charts = 0, balance_total = 0'
         ." where id_users = $id_users";
     $mysqli->query($sql) || trigger_error($mysqli->error);

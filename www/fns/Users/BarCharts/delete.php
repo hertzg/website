@@ -16,6 +16,11 @@ function delete ($mysqli, $bar_chart, $apiKey = null) {
         \BarChartBars\setDeletedOnBarChart($mysqli, $bar_chart->id, true);
     }
 
+    if ($bar_chart->num_tags) {
+        include_once "$fnsDir/BarChartTags/deleteOnBarChart.php";
+        \BarChartTags\deleteOnBarChart($mysqli, $id);
+    }
+
     include_once __DIR__.'/addNumber.php';
     addNumber($mysqli, $id_users, -1);
 

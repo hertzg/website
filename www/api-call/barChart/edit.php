@@ -10,8 +10,7 @@ include_once 'fns/request_bar_chart_params.php';
 list($name, $tags, $tag_names) = request_bar_chart_params($user);
 
 include_once '../../fns/Users/BarCharts/edit.php';
-Users\BarCharts\edit($mysqli,
-    $bar_chart->id, $name, $tags, $tag_names, $apiKey);
+Users\BarCharts\edit($mysqli, $bar_chart, $name, $tags, $tag_names, $apiKey);
 
 header('Content-Type: application/json');
 echo 'true';
