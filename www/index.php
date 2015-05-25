@@ -16,8 +16,8 @@ include_once 'fns/unset_session_vars.php';
 unset_session_vars();
 
 include_once 'fns/get_revision.php';
-$icon16href = 'zvini-icons/16.png?'.get_revision('zvini-icons/16.png');
-$icon32href = 'zvini-icons/32.png?'.get_revision('zvini-icons/32.png');
+$icon16href = 'images/icons/16.png?'.get_revision('images/icons/16.png');
+$icon32href = 'images/icons/32.png?'.get_revision('images/icons/32.png');
 
 header('Content-Type: text/html; charset=UTF-8');
 

@@ -10,6 +10,8 @@ function get_revision ($key) {
         'css/iconsets/compressed.css' => 78,
         'css/index/compressed.css' => 1,
         'css/newItemMenu/compressed.css' => 2,
+        'images/icons/16.png' => 1,
+        'images/icons/32.png' => 1,
         'js/batteryAndClock/compressed.js' => 9,
         'js/calendarIcon/compressed.js' => 3,
         'js/confirmDialog/compressed.js' => 5,
@@ -29,8 +31,6 @@ function get_revision ($key) {
         'themes/green/images/zvini.svg' => 3,
         'themes/orange/images/zvini.svg' => 3,
         'themes/pink/images/zvini.svg' => 3,
-        'zvini-icons/16.png' => 1,
-        'zvini-icons/32.png' => 1,
     ];
     return $revisions[$key];
 }
