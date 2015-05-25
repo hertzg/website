@@ -9,6 +9,18 @@ include_once '../lib/mysqli.php';
 
 $microtime = microtime(true);
 
+$sql = 'select distinct id_bar_charts id from bar_chart_tags';
+$rows = mysqli_query_object($mysqli, $sql);
+foreach ($rows as $row) {
+    $sql = "select * from bar_charts where id = $row->id";
+    $bar_chart = mysqli_single_object($mysqli, $sql);
+    if ($bar_chart) {
+        include_once '../fns/BarChartTags/editBarChart.php';
+        BarChartTags\editBarChart($mysqli, $bar_chart->id, $bar_chart->name,
+            $bar_chart->tags, $bar_chart->insert_time, $bar_chart->update_time);
+    }
+}
+
 $sql = 'select distinct id_bookmarks id from bookmark_tags';
 $rows = mysqli_query_object($mysqli, $sql);
 foreach ($rows as $row) {
