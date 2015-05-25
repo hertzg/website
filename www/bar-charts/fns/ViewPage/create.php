@@ -28,6 +28,14 @@ function create ($mysqli, $user, $bar_chart, &$scripts, &$head) {
         $name = preg_replace($regex, $replace, $name);
     }
 
+    include_once "$fnsDir/Form/label.php";
+    $items = [\Form\label('Name', $name)];
+
+    if ($bar_chart->num_tags) {
+        include_once "$fnsDir/Form/tags.php";
+        $items[] = \Form\tags('../', json_decode($bar_chart->tags_json));
+    }
+
     include_once "$fnsDir/format_author.php";
     $author = format_author($bar_chart->insert_time,
         $bar_chart->insert_api_key_name);
@@ -44,7 +52,6 @@ function create ($mysqli, $user, $bar_chart, &$scripts, &$head) {
     include_once __DIR__.'/chart.php';
     include_once __DIR__.'/barsPanel.php';
     include_once __DIR__.'/optionsPanel.php';
-    include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
     include_once "$fnsDir/ItemList/escapedPageQuery.php";
     include_once "$fnsDir/ItemList/listHref.php";
@@ -62,7 +69,7 @@ function create ($mysqli, $user, $bar_chart, &$scripts, &$head) {
         "Bar Chart #$id",
         \Page\sessionMessages('bar-charts/view/messages')
         .chart($mysqli, $bar_chart)
-        .\Form\label('Name', $name)
+        .join('<div class="hr"></div>', $items)
         .\Page\infoText($infoText)
         .barsPanel($mysqli, $bar_chart)
         .optionsPanel($bar_chart),
