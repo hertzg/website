@@ -23,7 +23,8 @@ $https = (bool)$https;
 $error = null;
 
 include_once '../fns/check_general_info.php';
-$error = check_general_info($siteTitle, $domainName, $infoEmail, $siteBase);
+$error = check_general_info($siteTitle,
+    $domainName, $infoEmail, $siteBase, $focus);
 
 $_SESSION['install/general-info/values'] = [
     'siteTitle' => $siteTitle,
@@ -35,14 +36,8 @@ $_SESSION['install/general-info/values'] = [
 
 include_once "$fnsDir/redirect.php";
 
-if ($error) {
-    $_SESSION['install/general-info/error'] = $error;
-    redirect();
-}
+if ($error) redirect();
 
-unset(
-    $_SESSION['install/general-info/error'],
-    $_SESSION['install/mysql-config/error']
-);
+unset($_SESSION['install/mysql-config/error']);
 
 redirect('../mysql-config/');

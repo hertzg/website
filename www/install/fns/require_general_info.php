@@ -18,10 +18,9 @@ function require_general_info () {
     include_once __DIR__.'/check_general_info.php';
     $error = check_general_info($generalInfoValues['siteTitle'],
         $generalInfoValues['domainName'], $generalInfoValues['infoEmail'],
-        $generalInfoValues['siteBase']);
+        $generalInfoValues['siteBase'], $focus);
 
     if ($error) {
-        $_SESSION['install/general-info/error'] = $error;
         include_once "$fnsDir/redirect.php";
         redirect('../general-info/');
     }

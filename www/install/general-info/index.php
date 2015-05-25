@@ -6,20 +6,23 @@ require_requirements();
 include_once 'fns/get_values.php';
 $values = get_values();
 
-$key = 'install/general-info/error';
-if (array_key_exists($key, $_SESSION)) {
-    $errorHtml =
-        '<div class="error formError">'
-            ."&times; {$_SESSION[$key]}"
-        .'</div>';
-} else {
-    $errorHtml = '';
-}
+$siteTitle = $values['siteTitle'];
+$domainName = $values['domainName'];
+$infoEmail = $values['infoEmail'];
+$siteBase = $values['siteBase'];
 
-$escapedSiteTitle = htmlspecialchars($values['siteTitle']);
-$escapedDomainName = htmlspecialchars($values['domainName']);
-$escapedInfoEmail = htmlspecialchars($values['infoEmail']);
-$escapedSiteBase = htmlspecialchars($values['siteBase']);
+include_once '../fns/check_general_info.php';
+$error = check_general_info($siteTitle,
+    $domainName, $infoEmail, $siteBase, $focus);
+if ($focus === null) $focus = 'siteTitle';
+
+if ($error === null) $errorHtml = '';
+else $errorHtml = "<div class=\"error formError\">&times; $error</div>";
+
+$escapedSiteTitle = htmlspecialchars($siteTitle);
+$escapedDomainName = htmlspecialchars($domainName);
+$escapedInfoEmail = htmlspecialchars($infoEmail);
+$escapedSiteBase = htmlspecialchars($siteBase);
 
 $doneSteps = [
     [
@@ -47,28 +50,32 @@ echo_page(
             .field_columns(
                 '<label for="siteTitleInput">Site title:</label>'
                 .'<br />'
-                .'<input type="text" name="siteTitle" required="required"'
-                ." class=\"textfield\" value=\"$escapedSiteTitle\""
-                .' autofocus="autofocus" id="siteTitleInput" />',
+                .'<input type="text" name="siteTitle"'
+                .' required="required" class="textfield"'
+                ." value=\"$escapedSiteTitle\" id=\"siteTitleInput\""
+                .($focus == 'siteTitle' ? ' autofocus="autofocus"' : '').' />',
                 '<label for="domainNameInput">Domain name:</label>'
                 .'<br />'
                 .'<input class="textfield" type="text"'
                 .' required="required" id="domainNameInput"'
-                ." value=\"$escapedDomainName\" name=\"domainName\" />"
+                ." value=\"$escapedDomainName\" name=\"domainName\""
+                .($focus == 'domainName' ? ' autofocus="autofocus"' : '').' />'
             )
             .field_columns(
                 '<label for="infoEmailInput">Informational email:</label>'
                 .'<br />'
                 .'<input class="textfield" type="text"'
                 .' required="required" id="infoEmailInput"'
-                ." value=\"$escapedInfoEmail\" name=\"infoEmail\" />",
+                ." value=\"$escapedInfoEmail\" name=\"infoEmail\""
+                .($focus == 'infoEmail' ? ' autofocus="autofocus"' : '').' />',
                 '<label for="siteBaseInput">'
                     .'Path to "<code>www</code>" folder:'
                 .'</label>'
                 .'<br />'
                 .'<input type="text" name="siteBase" required="required"'
                 .' id="siteBaseInput" class="textfield"'
-                ." value=\"$escapedSiteBase\" />"
+                ." value=\"$escapedSiteBase\""
+                .($focus == 'siteBase' ? ' autofocus="autofocus"' : '').' />'
             )
             .'<div>'
                 .'<input type="checkbox" name="https" id="httpsInput"'
