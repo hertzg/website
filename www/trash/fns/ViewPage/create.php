@@ -64,6 +64,8 @@ function create ($deletedItem, $user, &$title, &$head, &$scripts) {
     include_once __DIR__.'/../item_type_name.php';
     $typeName = item_type_name($type);
 
+    $content = join('<div class="hr"></div>', $items);
+
     if ($type == 'receivedBookmark' || $type == 'receivedContact'
         || $type == 'receivedFile' || $type == 'receivedFolder'
         || $type == 'receivedNote' || $type == 'receivedPlace'
@@ -71,16 +73,12 @@ function create ($deletedItem, $user, &$title, &$head, &$scripts) {
 
         $senderUsername = htmlspecialchars($data->sender_username);
 
-        $panelContent = join('<div class="hr"></div>', $items);
-
         include_once "$fnsDir/create_panel.php";
         include_once "$fnsDir/Form/label.php";
         $content =
             \Form\label('Received from', $senderUsername)
-            .create_panel("The $typeName", $panelContent);
+            .create_panel("The $typeName", $content);
 
-    } else {
-        $content = join('<div class="hr"></div>', $items);
     }
 
     include_once __DIR__.'/../item_type_title.php';
