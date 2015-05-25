@@ -9,6 +9,7 @@ function ensureAll ($mysqli) {
     include_once "$fnsDir/ApiKeys/ensure.php";
     include_once "$fnsDir/BarChartBars/ensure.php";
     include_once "$fnsDir/BarCharts/ensure.php";
+    include_once "$fnsDir/BarChartTags/ensure.php";
     include_once "$fnsDir/Bookmarks/ensure.php";
     include_once "$fnsDir/BookmarkTags/ensure.php";
     include_once "$fnsDir/Channels/ensure.php";
@@ -52,6 +53,7 @@ function ensureAll ($mysqli) {
     return \ApiKeys\ensure($mysqli)
         .\BarChartBars\ensure($mysqli)
         .\BarCharts\ensure($mysqli)
+        .\BarChartTags\ensure($mysqli)
         .\Bookmarks\ensure($mysqli)
         .\BookmarkTags\ensure($mysqli)
         .\Channels\ensure($mysqli)
