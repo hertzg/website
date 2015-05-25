@@ -9,7 +9,6 @@ function render_places ($places, &$items, $params, $base = '') {
         foreach ($places as $place) {
 
             $id = $place->id;
-            $options = ['id' => $id];
             $queryString = htmlspecialchars(
                 http_build_query(
                     array_merge(['id' => $id], $params)
@@ -17,8 +16,9 @@ function render_places ($places, &$items, $params, $base = '') {
             );
             $href = "{$base}view/?$queryString";
 
-            $items[] = create_place_link($place->latitude, $place->longitude,
-                htmlspecialchars($place->name), $place->tags, $href, $options);
+            $items[] = create_place_link($place->latitude,
+                $place->longitude, htmlspecialchars($place->name),
+                $place->tags, $href, ['id' => $id]);
 
         }
     } else {
