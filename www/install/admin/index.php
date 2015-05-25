@@ -6,15 +6,16 @@ require_mysql_config();
 include_once 'fns/get_values.php';
 $values = get_values();
 
-$key = 'install/admin/error';
-if (array_key_exists($key, $_SESSION)) {
-    $errorHtml =
-        '<div class="error formError">'
-            ."&times; {$_SESSION[$key]}"
-        .'</div>';
-} else {
-    $errorHtml = '';
-}
+$username = $values['username'];
+$password1 = $values['password1'];
+$password2 = $values['password2'];
+
+include_once '../fns/check_admin.php';
+$error = check_admin($username, $password1, $password2, $focus);
+if ($focus === null) $focus = 'username';
+
+if ($error === null) $errorHtml = '';
+else $errorHtml = "<div class=\"error formError\">&times; $error</div>";
 
 $doneSteps = [
     [
@@ -53,8 +54,9 @@ echo_page(
                 .'<label for="usernameInput">Username:</label>'
                 .'<br />'
                 .'<input class="textfield" type="text" required="required"'
-                .' name="username" id="usernameInput" autofocus="autofocus"'
-                .' value="'.htmlspecialchars($values['username']).'" />'
+                .' name="username" id="usernameInput"'
+                .' value="'.htmlspecialchars($username).'"'
+                .($focus == 'username' ? ' autofocus="autofocus"' : '').' />'
                 .'<div class="notes">'
                     .'<div class="notes-note">'
                         .'&bull; Characters a-z,'
@@ -70,7 +72,8 @@ echo_page(
                 .'<br />'
                 .'<input class="textfield" type="password"'
                 .' name="password1" id="password1Input" required="required"'
-                .' value="'.htmlspecialchars($values['password1']).'" />'
+                .' value="'.htmlspecialchars($password1).'"'
+                .($focus == 'password1' ? ' autofocus="autofocus"' : '').' />'
                 .'<br />'
                 .'<div class="notes">'
                     .'<div class="notes-note">'
@@ -85,7 +88,8 @@ echo_page(
                 .'<br />'
                 .'<input class="textfield" type="password"'
                 .' name="password2" id="password2Input" required="required"'
-                .' value="'.htmlspecialchars($values['password2']).'" />'
+                .' value="'.htmlspecialchars($password2).'"'
+                .($focus == 'password2' ? ' autofocus="autofocus"' : '').' />'
             )
             .$errorHtml,
             '<input type="submit" class="button nextButton" value="Next" />'

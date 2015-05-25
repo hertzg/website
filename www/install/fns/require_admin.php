@@ -18,10 +18,9 @@ function require_admin () {
 
     include_once __DIR__.'/check_admin.php';
     $error = check_admin($adminValues['username'],
-        $adminValues['password1'], $adminValues['password2']);
+        $adminValues['password1'], $adminValues['password2'], $focus);
 
     if ($error) {
-        $_SESSION['install/admin/error'] = $error;
         include_once "$fnsDir/redirect.php";
         redirect('../admin/');
     };
