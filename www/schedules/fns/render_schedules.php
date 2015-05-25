@@ -10,7 +10,6 @@ function render_schedules ($user, $schedules, &$items, $params, $base = '') {
         foreach ($schedules as $schedule) {
 
             $id = $schedule->id;
-            $options = ['id' => $id];
             $queryString = htmlspecialchars(
                 http_build_query(
                     array_merge(['id' => $id], $params)

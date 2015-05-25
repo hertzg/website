@@ -9,7 +9,6 @@ function render_notes ($notes, &$items, $params, $base = '') {
         foreach ($notes as $note) {
 
             $id = $note->id;
-            $options = ['id' => $id];
             $queryString = htmlspecialchars(
                 http_build_query(
                     array_merge(['id' => $id], $params)
@@ -27,7 +26,7 @@ function render_notes ($notes, &$items, $params, $base = '') {
             $title = htmlspecialchars($title);
 
             $items[] = create_note_link($title,
-                $note->tags, $encrypt, $href, $options);
+                $note->tags, $encrypt, $href, ['id' => $id]);
 
         }
     } else {
