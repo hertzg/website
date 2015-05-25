@@ -33,7 +33,7 @@ function create ($mysqli, $user, $bar_chart, &$scripts, &$head) {
 
     if ($bar_chart->num_tags) {
         include_once "$fnsDir/Form/tags.php";
-        $items[] = \Form\tags('../', json_decode($bar_chart->tags_json));
+        $items[] = \Form\tags('', json_decode($bar_chart->tags_json));
     }
 
     include_once "$fnsDir/format_author.php";
