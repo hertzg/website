@@ -1,14 +1,26 @@
 <?php
 
-function check_mysql_config ($host,
-    $username, $password, $db, $create, &$mysqli) {
+function check_mysql_config ($host, $username,
+    $password, $db, $create, &$mysqli, &$focus) {
 
-    if ($host === '') return 'Enter host.';
-    if ($db === '') return 'Enter database.';
-    if ($username === '') return 'Enter username.';
+    if ($host === '') {
+        $focus = 'host';
+        return 'Enter host.';
+    }
+
+    if ($db === '') {
+        $focus = 'db';
+        return 'Enter database.';
+    }
+
+    if ($username === '') {
+        $focus = 'username';
+        return 'Enter username.';
+    }
 
     $mysqli = @new mysqli($host, $username, $password);
     if ($mysqli->connect_errno) {
+        $focus = 'host';
         return htmlspecialchars($mysqli->connect_error);
     }
 
@@ -22,11 +34,17 @@ function check_mysql_config ($host,
         $row = mysqli_single_object($mysqli, $sql);
         if (!$row->total) {
             $ok = $mysqli->query("create database `$escapedDb`");
-            if (!$ok) return htmlspecialchars($mysqli->error);
+            if (!$ok) {
+                $focus = 'host';
+                return htmlspecialchars($mysqli->error);
+            }
         }
     }
 
     $ok = $mysqli->select_db($db);
-    if (!$ok) return htmlspecialchars($mysqli->error);
+    if (!$ok) {
+        $focus = 'host';
+        return htmlspecialchars($mysqli->error);
+    }
 
 }

@@ -21,7 +21,8 @@ $create = (bool)$create;
 $error = null;
 
 include_once '../fns/check_mysql_config.php';
-$error = check_mysql_config($host, $username, $password, $db, $create, $mysqli);
+$error = check_mysql_config($host, $username,
+    $password, $db, $create, $mysqli, $focus);
 
 $_SESSION['install/mysql-config/values'] = [
     'host' => $host,
@@ -33,11 +34,6 @@ $_SESSION['install/mysql-config/values'] = [
 
 include_once "$fnsDir/redirect.php";
 
-if ($error) {
-    $_SESSION['install/mysql-config/error'] = $error;
-    redirect();
-}
-
-unset($_SESSION['install/mysql-config/error']);
+if ($error) redirect();
 
 redirect('../admin/');

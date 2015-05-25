@@ -18,10 +18,10 @@ function require_mysql_config () {
     include_once __DIR__.'/check_mysql_config.php';
     $error = check_mysql_config($mysqlConfigValues['host'],
         $mysqlConfigValues['username'], $mysqlConfigValues['password'],
-        $mysqlConfigValues['db'], $mysqlConfigValues['create'], $mysqli);
+        $mysqlConfigValues['db'], $mysqlConfigValues['create'],
+        $mysqli, $focus);
 
     if ($error) {
-        $_SESSION['install/mysql-config/error'] = $error;
         include_once "$fnsDir/redirect.php";
         redirect('../mysql-config/');
     }

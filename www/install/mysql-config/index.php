@@ -17,15 +17,19 @@ else {
 
 }
 
-$key = 'install/mysql-config/error';
-if (array_key_exists($key, $_SESSION)) {
-    $errorHtml =
-        '<div class="error formError">'
-            ."&times; {$_SESSION[$key]}"
-        .'</div>';
-} else {
-    $errorHtml = '';
-}
+$host = $values['host'];
+$username = $values['username'];
+$password = $values['password'];
+$db = $values['db'];
+$create = $values['create'];
+
+include_once '../fns/check_mysql_config.php';
+$error = check_mysql_config($host, $username,
+    $password, $db, $create, $mysqli, $focus);
+if ($focus === null) $focus = 'host';
+
+if ($error === null) $errorHtml = '';
+else $errorHtml = "<div class=\"error formError\">&times; $error</div>";
 
 $doneSteps = [
     [
@@ -57,30 +61,34 @@ echo_page(
             .field_columns(
                 '<label for="hostInput">Host:</label>'
                 .'<br />'
-                .'<input class="textfield" type="text" required="required"'
-                .' name="host" id="hostInput" autofocus="autofocus"'
-                .' value="'.htmlspecialchars($values['host']).'" />',
+                .'<input class="textfield" type="text"'
+                .' required="required" name="host" id="hostInput"'
+                .' value="'.htmlspecialchars($host).'"'
+                .($focus == 'host' ? ' autofocus="autofocus"' : '').' />',
                 '<label for="dbInput">Database:</label>'
                 .'<br />'
                 .'<input class="textfield" type="text"'
                 .' name="db" id="dbInput" required="required"'
-                .' value="'.htmlspecialchars($values['db']).'" />'
+                .' value="'.htmlspecialchars($db).'"'
+                .($focus == 'db' ? ' autofocus="autofocus"' : '').' />'
             )
             .field_columns(
                 '<label for="usernameInput">Username:</label>'
                 .'<br />'
                 .'<input class="textfield" type="text"'
                 .' name="username" id="usernameInput" required="required"'
-                .' value="'.htmlspecialchars($values['username']).'" />',
+                .' value="'.htmlspecialchars($username).'"'
+                .($focus == 'username' ? ' autofocus="autofocus"' : '').' />',
                 '<label for="passwordInput">Password:</label>'
                 .'<br />'
                 .'<input class="textfield" type="password"'
                 .' name="password" id="passwordInput"'
-                .' value="'.htmlspecialchars($values['password']).'" />'
+                .' value="'.htmlspecialchars($password).'"'
+                .($focus == 'password' ? ' autofocus="autofocus"' : '').' />'
             )
             .'<div>'
                 .'<input type="checkbox" name="create" id="createInput"'
-                .($values['create'] ? ' checked="checked"' : '').' />'
+                .($create ? ' checked="checked"' : '').' />'
                 .' <label for="createInput">'
                     .'Create database if it doesn\'t exist.'
                 .'</label>'

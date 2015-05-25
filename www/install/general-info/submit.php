@@ -38,6 +38,4 @@ include_once "$fnsDir/redirect.php";
 
 if ($error) redirect();
 
-unset($_SESSION['install/mysql-config/error']);
-
 redirect('../mysql-config/');
