@@ -3,18 +3,8 @@
 include_once '../fns/require_general_info.php';
 require_general_info();
 
-$key = 'install/mysql-config/values';
-if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
-else {
-    $username = exec('whoami', $username);
-    $values = [
-        'host' => 'localhost',
-        'username' => $username,
-        'password' => '',
-        'db' => 'zvini',
-        'create' => true,
-    ];
-}
+include_once 'fns/get_values.php';
+$values = get_values();
 
 $host = $values['host'];
 $username = $values['username'];
