@@ -6,7 +6,7 @@ function render (&$content, $file, $names) {
         join(',', array_map(function ($name) {
             return ".icon.$name";
         }, $names))
-        ."{background-image:url(../../images/icons/$file)}";
+        ."{background-image:url(../../images/iconsets/$file)}";
     $x = 0;
     foreach ($names as $name) {
         $content .= ".icon.$name{background-position:${x}px 0}";

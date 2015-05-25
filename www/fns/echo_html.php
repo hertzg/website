@@ -48,7 +48,7 @@ function echo_html ($title, $head, $body, $theme, $base) {
                 .'<meta name="viewport"'
                 .' content="width=device-width, user-scalable=no" />'
                 .compressed_css_link('common', $base)
-                .compressed_css_link('icons', $base)
+                .compressed_css_link('iconsets', $base)
                 .'<link rel="stylesheet" type="text/css"'
                 ." href=\"{$base}themes/$theme/common.css?17\" />"
                 .$head
