@@ -29,7 +29,7 @@ unset(
 );
 
 include_once "$fnsDir/Users/BarCharts/edit.php";
-Users\BarCharts\edit($mysqli, $id, $name);
+Users\BarCharts\edit($mysqli, $id, $name, $tags, $tag_names);
 
 $_SESSION['bar-charts/view/messages'] = ['Changes have been saved.'];
 redirect("../view/$itemQuery");

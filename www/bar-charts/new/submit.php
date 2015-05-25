@@ -27,7 +27,7 @@ unset(
 
 include_once "$fnsDir/Users/BarCharts/add.php";
 include_once '../../lib/mysqli.php';
-$id = Users\BarCharts\add($mysqli, $user->id_users, $name);
+$id = Users\BarCharts\add($mysqli, $user->id_users, $name, $tags, $tag_names);
 
 $_SESSION['bar-charts/view/messages'] = ['Bar chart has been saved.'];
 

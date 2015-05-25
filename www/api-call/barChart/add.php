@@ -7,7 +7,8 @@ include_once 'fns/request_bar_chart_params.php';
 list($name, $tags, $tag_names) = request_bar_chart_params();
 
 include_once '../../fns/Users/BarCharts/add.php';
-$id = Users\BarCharts\add($mysqli, $user->id_users, $name, $apiKey);
+$id = Users\BarCharts\add($mysqli,
+    $user->id_users, $name, $tags, $tag_names, $apiKey);
 
 header('Content-Type: application/json');
 echo $id;

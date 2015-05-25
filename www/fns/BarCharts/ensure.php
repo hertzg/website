@@ -13,6 +13,8 @@ function ensure ($mysqli) {
     $apiKeyNameColumn = \ApiKeyName\column(true);
 
     include_once "$fnsDir/Table/ensure.php";
+    include_once "$fnsDir/Tags/column.php";
+    include_once "$fnsDir/TagsJson/column.php";
     return \Table\ensure($mysqli, 'bar_charts', [
         'id' => [
             'type' => 'bigint(20) unsigned',
@@ -31,7 +33,10 @@ function ensure ($mysqli) {
             'collation' => 'utf8_unicode_ci',
         ],
         'num_bars' => ['type' => 'bigint(20) unsigned'],
+        'num_tags' => ['type' => 'tinyint(3) unsigned'],
         'revision' => ['type' => 'bigint(20) unsigned'],
+        'tags' => \Tags\column(),
+        'tags_json' => \TagsJson\column(),
         'update_api_key_id' => [
             'type' => 'bigint(20) unsigned',
             'nullable' => true,
