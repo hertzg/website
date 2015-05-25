@@ -14,7 +14,6 @@ else {
         'db' => 'zvini',
         'create' => true,
     ];
-
 }
 
 $host = $values['host'];
