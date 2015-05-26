@@ -2,7 +2,8 @@
 
 function create_options_panel ($user, $base = '') {
 
-    if (!$user->num_wallets) return;
+    $num_wallets = $user->num_wallets;
+    if (!$num_wallets) return;
 
     $fnsDir = __DIR__.'/../../fns';
 
@@ -10,12 +11,28 @@ function create_options_panel ($user, $base = '') {
     $escapedPageQuery = ItemList\escapedPageQuery();
 
     include_once "$fnsDir/Page/imageArrowLink.php";
-    include_once "$fnsDir/Page/imageLink.php";
-    $content =
+    $newTransactionLink =
         Page\imageArrowLink('New Transaction',
             "{$base}quick-new-transaction/$escapedPageQuery",
-            'create-transaction', ['id' => 'new-transaction'])
-        .'<div class="hr"></div>'
+            'create-transaction', ['id' => 'new-transaction']);
+
+    if ($num_wallets > 1) {
+
+        $transferAmountLink = Page\imageArrowLink('Transfer Amount',
+            "{$base}quick-transfer-amount/$escapedPageQuery",
+            'transfer-amount', ['id' => 'transfer-amount']);
+
+        include_once "$fnsDir/Page/staticTwoColumns.php";
+        $content = Page\staticTwoColumns(
+            $newTransactionLink, $transferAmountLink);
+
+    } else {
+        $content = $newTransactionLink;
+    }
+
+    include_once "$fnsDir/Page/imageLink.php";
+    $content .=
+        '<div class="hr"></div>'
         .'<div id="deleteAllLink">'
             .Page\imageLink('Delete All Wallets',
                 "{$base}delete-all/$escapedPageQuery", 'trash-bin')
