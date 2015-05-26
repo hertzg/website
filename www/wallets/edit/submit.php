@@ -31,5 +31,7 @@ unset(
 include_once "$fnsDir/Users/Wallets/edit.php";
 Users\Wallets\edit($mysqli, $id, $name);
 
+unset($_SESSION['wallets/view/errors']);
 $_SESSION['wallets/view/messages'] = ['Changes have been saved.'];
+
 redirect("../view/$itemQuery");

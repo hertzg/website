@@ -29,6 +29,7 @@ include_once "$fnsDir/Users/Wallets/add.php";
 include_once '../../lib/mysqli.php';
 $id = Users\Wallets\add($mysqli, $user->id_users, $name);
 
+unset($_SESSION['wallets/view/errors']);
 $_SESSION['wallets/view/messages'] = ['Wallet has been saved.'];
 
 include_once "$fnsDir/ItemList/itemQuery.php";

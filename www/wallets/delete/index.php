@@ -4,7 +4,10 @@ include_once '../fns/require_wallet.php';
 include_once '../../lib/mysqli.php';
 list($wallet, $id, $user) = require_wallet($mysqli);
 
-unset($_SESSION['wallets/view/messages']);
+unset(
+    $_SESSION['wallets/view/errors'],
+    $_SESSION['wallets/view/messages']
+);
 
 $base = '../../';
 $fnsDir = '../../fns';

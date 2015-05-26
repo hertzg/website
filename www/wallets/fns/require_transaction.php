@@ -6,8 +6,7 @@ function require_transaction ($mysqli, $base = '') {
     list($transaction, $id, $user) = request_transaction($mysqli, $base);
 
     if (!$transaction) {
-        $errors = ['The transaction no longer exists.'];
-        $_SESSION['wallets/errors'] = $errors;
+        $_SESSION['wallets/errors'] = ['The transaction no longer exists.'];
         unset($_SESSION['wallets/messages']);
         include_once __DIR__.'/../../fns/redirect.php';
         redirect("$base..");

@@ -44,6 +44,7 @@ function create_page ($mysqli, $user, $wallet, &$scripts, $base = '') {
         $_SESSION['wallets/all-transactions/new/errors'],
         $_SESSION['wallets/all-transactions/new/values'],
         $_SESSION['wallets/all-transactions/view/messages'],
+        $_SESSION['wallets/view/errors'],
         $_SESSION['wallets/view/messages']
     );
 

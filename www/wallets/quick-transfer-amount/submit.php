@@ -60,6 +60,7 @@ include_once "$fnsDir/Users/Wallets/transferAmount.php";
 Users\Wallets\transferAmount($mysqli,
     $fromWallet, $toWallet, $parsed_amount, $description);
 
+unset($_SESSION['wallets/view/errors']);
 $_SESSION['wallets/view/messages'] = ['The amount has been transferred.'];
 
 include_once "$fnsDir/ItemList/itemQuery.php";

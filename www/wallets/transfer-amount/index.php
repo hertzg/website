@@ -30,7 +30,10 @@ foreach ($wallets as $wallet) {
 include_once "$fnsDir/WalletTransactions/maxLengths.php";
 $maxLengths = WalletTransactions\maxLengths();
 
-unset($_SESSION['wallets/view/messages']);
+unset(
+    $_SESSION['wallets/view/errors'],
+    $_SESSION['wallets/view/messages']
+);
 
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/select.php";

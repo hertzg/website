@@ -57,6 +57,7 @@ function create ($mysqli, $user, $wallet, &$scripts, &$head) {
     include_once "$fnsDir/ItemList/listHref.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/newItemMenu.php";
+    include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
     return \Page\tabs(
@@ -67,7 +68,8 @@ function create ($mysqli, $user, $wallet, &$scripts, &$head) {
             ],
         ],
         "Wallet #$id",
-        \Page\sessionMessages('wallets/view/messages')
+        \Page\sessionErrors('wallets/view/errors')
+        .\Page\sessionMessages('wallets/view/messages')
         .\Form\label('Name', $name)
         .'<div class="hr"></div>'
         .\Form\label('Income', $income)

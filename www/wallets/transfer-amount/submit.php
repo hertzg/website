@@ -48,6 +48,7 @@ unset(
     $_SESSION['wallets/transfer-amount/values']
 );
 
+unset($_SESSION['wallets/view/errors']);
 $_SESSION['wallets/view/messages'] = ['The amount has been transferred.'];
 
 include_once "$fnsDir/Users/Wallets/transferAmount.php";

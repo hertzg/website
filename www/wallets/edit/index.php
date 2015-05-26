@@ -10,7 +10,10 @@ $key = 'wallets/edit/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else $values = ['name' => $wallet->name];
 
-unset($_SESSION['wallets/view/messages']);
+unset(
+    $_SESSION['wallets/view/errors'],
+    $_SESSION['wallets/view/messages']
+);
 
 include_once '../fns/create_form_items.php';
 include_once "$fnsDir/Form/button.php";

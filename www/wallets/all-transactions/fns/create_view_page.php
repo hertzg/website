@@ -39,8 +39,7 @@ function create_view_page ($transaction, &$scripts) {
     unset(
         $_SESSION['wallets/all-transactions/edit/errors'],
         $_SESSION['wallets/all-transactions/edit/values'],
-        $_SESSION['wallets/all-transactions/messages'],
-        $_SESSION['wallets/view/messages']
+        $_SESSION['wallets/all-transactions/messages']
     );
 
     include_once "$fnsDir/ItemList/listHref.php";

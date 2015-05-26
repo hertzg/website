@@ -51,6 +51,7 @@ function create ($mysqli, $user, $wallet, &$scripts) {
         $_SESSION['wallets/all-transactions/new/errors'],
         $_SESSION['wallets/all-transactions/new/values'],
         $_SESSION['wallets/all-transactions/view/messages'],
+        $_SESSION['wallets/view/errors'],
         $_SESSION['wallets/view/messages']
     );
 

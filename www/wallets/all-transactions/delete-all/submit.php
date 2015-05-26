@@ -13,6 +13,7 @@ list($wallet, $id, $user) = require_transactions($mysqli, '../');
 include_once "$fnsDir/Users/Wallets/Transactions/deleteAll.php";
 Users\Wallets\Transactions\deleteAll($mysqli, $wallet);
 
+unset($_SESSION['wallets/view/errors']);
 $_SESSION['wallets/view/messages'] = ['All transactions have been deleted.'];
 
 include_once "$fnsDir/redirect.php";
