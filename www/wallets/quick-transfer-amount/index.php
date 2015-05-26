@@ -1,10 +1,10 @@
 <?php
 
+include_once 'fns/require_multiple_wallets.php';
+$user = require_multiple_wallets();
+
 $base = '../../';
 $fnsDir = '../../fns';
-
-include_once "$fnsDir/require_user.php";
-$user = require_user($base);
 
 unset(
     $_SESSION['home/messages'],
