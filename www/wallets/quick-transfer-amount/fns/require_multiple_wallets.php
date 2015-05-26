@@ -9,9 +9,8 @@ function require_multiple_wallets () {
 
     if ($user->num_wallets < 2) {
         unset($_SESSION['wallets/messages']);
-        $_SESSION['wallets/errors'] = [
-            'You no longer have multiple wallets to transfer amount between.',
-        ];
+        $error = 'You need at least two wallets to transfer amount between.';
+        $_SESSION['wallets/errors'] = [$error];
         include_once "$fnsDir/redirect.php";
         redirect('..');
     }
