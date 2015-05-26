@@ -18,6 +18,12 @@ function renderWallets ($user, &$items) {
             '../wallets/quick-new-transaction/', 'create-transaction');
     }
 
+    if ($user->show_transfer_amount) {
+        include_once "$fnsDir/Page/imageArrowLink.php";
+        $items['transfer-amount'] = \Page\imageArrowLink('Transfer Amount',
+            '../wallets/quick-transfer-amount/', 'transfer-amount');
+    }
+
     if (!$user->show_wallets) return;
 
     $balance_total = $user->balance_total;
