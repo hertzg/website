@@ -27,8 +27,8 @@ $key = 'wallets/quick-transfer-amount/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
     $values = [
-        'from_id_wallets' => '',
-        'to_id_wallets' => '',
+        'from_id_wallets' => $wallets[0]->id,
+        'to_id_wallets' => $wallets[1]->id,
         'amount' => '',
         'description' => '',
     ];
