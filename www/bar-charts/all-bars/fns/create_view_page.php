@@ -38,8 +38,7 @@ function create_view_page ($bar, &$scripts) {
     unset(
         $_SESSION['bar-charts/all-bars/edit/errors'],
         $_SESSION['bar-charts/all-bars/edit/values'],
-        $_SESSION['bar-charts/all-bars/messages'],
-        $_SESSION['bar-charts/view/messages']
+        $_SESSION['bar-charts/all-bars/messages']
     );
 
     include_once "$fnsDir/ItemList/listHref.php";

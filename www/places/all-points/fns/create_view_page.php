@@ -27,8 +27,7 @@ function create_view_page ($point, &$scripts) {
     unset(
         $_SESSION['places/all-points/edit/errors'],
         $_SESSION['places/all-points/edit/values'],
-        $_SESSION['places/all-points/messages'],
-        $_SESSION['places/view/messages']
+        $_SESSION['places/all-points/messages']
     );
 
     include_once __DIR__.'/../../fns/ViewPointPage/viewContent.php';
