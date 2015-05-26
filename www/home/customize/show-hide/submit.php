@@ -12,13 +12,13 @@ include_once "$dir/fns/request_strings.php";
 list($bar_charts, $new_bar_chart, $bookmarks, $new_bookmark,
     $calendar, $new_event, $contacts, $new_contact, $files,
     $upload_files, $notes, $new_note, $notifications, $places,
-    $new_place, $schedules, $tasks, $new_task, $wallets,
-    $new_wallet, $new_transaction, $trash) = request_strings(
+    $new_place, $schedules, $tasks, $new_task, $wallets, $new_wallet,
+    $new_transaction, $transfer_amount, $trash) = request_strings(
     'bar_charts', 'new_bar_chart', 'bookmarks', 'new_bookmark',
     'calendar', 'new_event', 'contacts', 'new_contact', 'files',
     'upload_files', 'notes', 'new_note', 'notifications', 'places',
-    'new_place', 'schedules', 'tasks', 'new_task', 'wallets',
-    'new_wallet', 'new_transaction', 'trash');
+    'new_place', 'schedules', 'tasks', 'new_task', 'wallets','new_wallet',
+    'new_transaction', 'transfer_amount', 'trash');
 
 $bar_charts = (bool)$bar_charts;
 $new_bar_chart = (bool)$new_bar_chart;
@@ -41,6 +41,7 @@ $new_task = (bool)$new_task;
 $wallets = (bool)$wallets;
 $new_wallet = (bool)$new_wallet;
 $new_transaction = (bool)$new_transaction;
+$transfer_amount = (bool)$transfer_amount;
 $trash = (bool)$trash;
 
 include_once "$dir/fns/Users/Home/editVisibilities.php";
@@ -49,7 +50,7 @@ Users\Home\editVisibilities($mysqli, $user->id_users, $bar_charts,
     $new_bar_chart, $bookmarks, $new_bookmark, $calendar, $new_event,
     $contacts, $new_contact, $files, $upload_files, $notes, $new_note,
     $notifications, $places, $new_place, $schedules, $tasks, $new_task,
-    $wallets, $new_wallet, $new_transaction, $trash);
+    $wallets, $new_wallet, $new_transaction, $transfer_amount, $trash);
 
 $_SESSION['home/customize/show-hide/messages'] = ['Changes have been saved.'];
 

@@ -23,6 +23,7 @@ function get_home_items () {
         'wallets' => ['Wallets', 'wallets'],
         'new-wallet' => ['New Wallet', 'create-wallet'],
         'new-transaction' => ['New Transaction', 'create-transaction'],
+        'transfer-amount' => ['Transfer Amount', 'transfer-amount'],
         'trash' => ['Trash', 'trash-bin'],
     ];
 }

@@ -4,9 +4,9 @@ namespace Users\Home;
 
 function editVisibilities ($mysqli, $id_users, $bar_charts, $new_bar_chart,
     $bookmarks, $new_bookmark, $calendar, $new_event, $contacts, $new_contact,
-    $files, $upload_files, $notes, $new_note, $notifications,
-    $places, $new_place, $schedules, $tasks, $new_task,
-    $wallets, $new_wallet, $new_transaction, $trash) {
+    $files, $upload_files, $notes, $new_note, $notifications, $places,
+    $new_place, $schedules, $tasks, $new_task, $wallets, $new_wallet,
+    $new_transaction, $transfer_amount, $trash) {
 
     $bar_charts = $bar_charts ? '1' : '0';
     $new_bar_chart = $new_bar_chart ? '1' : '0';
@@ -29,6 +29,7 @@ function editVisibilities ($mysqli, $id_users, $bar_charts, $new_bar_chart,
     $wallets = $wallets ? '1' : '0';
     $new_wallet = $new_wallet ? '1' : '0';
     $new_transaction = $new_transaction ? '1' : '0';
+    $transfer_amount = $transfer_amount ? '1' : '0';
     $trash = $trash ? '1' : '0';
 
     $sql = "update users set show_bar_charts = $bar_charts,"
@@ -43,6 +44,7 @@ function editVisibilities ($mysqli, $id_users, $bar_charts, $new_bar_chart,
         ." show_new_task = $new_task, show_wallets = $wallets,"
         ." show_new_wallet = $new_wallet,"
         ." show_new_transaction = $new_transaction,"
+        ." show_transfer_amount = $transfer_amount,"
         ." show_trash = $trash where id_users = $id_users";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
