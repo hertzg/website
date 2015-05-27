@@ -23,10 +23,7 @@ function chart ($mysqli, $bar_chart) {
     $range = abs($min) + abs($max);
 
     if ($max > 0) {
-        $positive = true;
         if ($min < 0) {
-
-            $negative = true;
 
             $totalPercent = $range / 100;
             $positiveHeight = $max / $totalPercent;
@@ -55,12 +52,9 @@ function chart ($mysqli, $bar_chart) {
             };
 
         } else {
-            $negative = false;
             $renderBar = $createPositive;
         }
     } else {
-        $positive = false;
-        $negative = true;
         $renderBar = $createNegative;
     }
 
