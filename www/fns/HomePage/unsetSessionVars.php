@@ -39,6 +39,8 @@ function unsetSessionVars () {
         $_SESSION['places/new/values'],
         $_SESSION['schedules/errors'],
         $_SESSION['schedules/messages'],
+        $_SESSION['schedules/new/errors'],
+        $_SESSION['schedules/new/values'],
         $_SESSION['tasks/errors'],
         $_SESSION['tasks/messages'],
         $_SESSION['tasks/new/errors'],

@@ -13,12 +13,12 @@ foreach ($users as $user) {
 
     $order_home_items = json_decode($user->order_home_items);
 
-    $index = array_search('transfer-amount', $order_home_items);
+    $index = array_search('new-schedule', $order_home_items);
     if ($index !== false) array_splice($order_home_items, $index, 1);
 
-    $index = array_search('trash', $order_home_items);
+    $index = array_search('schedules', $order_home_items);
 
-    array_splice($order_home_items, $index, 0, 'transfer-amount');
+    array_splice($order_home_items, $index + 1, 0, 'new-schedule');
 
     $order_home_items = json_encode($order_home_items);
     $order_home_items = $mysqli->real_escape_string($order_home_items);

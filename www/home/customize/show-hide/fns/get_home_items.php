@@ -18,6 +18,7 @@ function get_home_items () {
         'places' => ['Places', 'places'],
         'new-place' => ['New Place', 'new_place'],
         'schedules' => ['Schedules', 'schedules'],
+        'new-schedule' => ['New Schedule', 'new_schedule'],
         'tasks' => ['Tasks', 'tasks'],
         'new-task' => ['New Task', 'new_task'],
         'wallets' => ['Wallets', 'wallets'],

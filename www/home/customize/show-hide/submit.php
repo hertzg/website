@@ -12,13 +12,13 @@ include_once "$dir/fns/request_strings.php";
 list($bar_charts, $new_bar_chart, $bookmarks, $new_bookmark,
     $calendar, $new_event, $contacts, $new_contact, $files,
     $upload_files, $notes, $new_note, $notifications, $places,
-    $new_place, $schedules, $tasks, $new_task, $wallets, $new_wallet,
-    $new_transaction, $transfer_amount, $trash) = request_strings(
+    $new_place, $schedules, $new_schedule, $tasks, $new_task, $wallets,
+    $new_wallet, $new_transaction, $transfer_amount, $trash) = request_strings(
     'bar_charts', 'new_bar_chart', 'bookmarks', 'new_bookmark',
     'calendar', 'new_event', 'contacts', 'new_contact', 'files',
     'upload_files', 'notes', 'new_note', 'notifications', 'places',
-    'new_place', 'schedules', 'tasks', 'new_task', 'wallets','new_wallet',
-    'new_transaction', 'transfer_amount', 'trash');
+    'new_place', 'schedules', 'new_schedule', 'tasks', 'new_task', 'wallets',
+    'new_wallet', 'new_transaction', 'transfer_amount', 'trash');
 
 $bar_charts = (bool)$bar_charts;
 $new_bar_chart = (bool)$new_bar_chart;
@@ -36,6 +36,7 @@ $notifications = (bool)$notifications;
 $places = (bool)$places;
 $new_place = (bool)$new_place;
 $schedules = (bool)$schedules;
+$new_schedule = (bool)$new_schedule;
 $tasks = (bool)$tasks;
 $new_task = (bool)$new_task;
 $wallets = (bool)$wallets;
@@ -46,10 +47,11 @@ $trash = (bool)$trash;
 
 include_once "$dir/fns/Users/Home/editVisibilities.php";
 include_once "$dir/lib/mysqli.php";
-Users\Home\editVisibilities($mysqli, $user->id_users, $bar_charts,
-    $new_bar_chart, $bookmarks, $new_bookmark, $calendar, $new_event,
-    $contacts, $new_contact, $files, $upload_files, $notes, $new_note,
-    $notifications, $places, $new_place, $schedules, $tasks, $new_task,
+Users\Home\editVisibilities($mysqli, $user->id_users,
+    $bar_charts, $new_bar_chart, $bookmarks, $new_bookmark,
+    $calendar, $new_event, $contacts, $new_contact, $files,
+    $upload_files, $notes, $new_note, $notifications, $places,
+    $new_place, $schedules, $new_schedule, $tasks, $new_task,
     $wallets, $new_wallet, $new_transaction, $transfer_amount, $trash);
 
 $_SESSION['home/customize/show-hide/messages'] = ['Changes have been saved.'];

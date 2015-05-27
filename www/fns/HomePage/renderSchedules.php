@@ -4,9 +4,15 @@ namespace HomePage;
 
 function renderSchedules ($user, $mysqli, &$items) {
 
-    if (!$user->show_schedules) return;
-
     $fnsDir = __DIR__.'/..';
+
+    if ($user->show_new_schedule) {
+        include_once "$fnsDir/Page/imageArrowLink.php";
+        $items['new-schedule'] = \Page\imageArrowLink(
+            'New Schedule', '../schedules/new/', 'create-schedule');
+    }
+
+    if (!$user->show_schedules) return;
 
     include_once __DIR__.'/checkScheduleCheckDay.php';
     checkScheduleCheckDay($mysqli, $user);

@@ -5,8 +5,8 @@ namespace Users\Home;
 function editVisibilities ($mysqli, $id_users, $bar_charts, $new_bar_chart,
     $bookmarks, $new_bookmark, $calendar, $new_event, $contacts, $new_contact,
     $files, $upload_files, $notes, $new_note, $notifications, $places,
-    $new_place, $schedules, $tasks, $new_task, $wallets, $new_wallet,
-    $new_transaction, $transfer_amount, $trash) {
+    $new_place, $schedules, $new_schedule, $tasks, $new_task, $wallets,
+    $new_wallet, $new_transaction, $transfer_amount, $trash) {
 
     $bar_charts = $bar_charts ? '1' : '0';
     $new_bar_chart = $new_bar_chart ? '1' : '0';
@@ -24,6 +24,7 @@ function editVisibilities ($mysqli, $id_users, $bar_charts, $new_bar_chart,
     $places = $places ? '1' : '0';
     $new_place = $new_place ? '1' : '0';
     $schedules = $schedules ? '1' : '0';
+    $new_schedule = $new_schedule ? '1' : '0';
     $tasks = $tasks ? '1' : '0';
     $new_task = $new_task ? '1' : '0';
     $wallets = $wallets ? '1' : '0';
@@ -40,9 +41,9 @@ function editVisibilities ($mysqli, $id_users, $bar_charts, $new_bar_chart,
         ." show_upload_files = $upload_files, show_notes = $notes,"
         ." show_new_note = $new_note, show_notifications = $notifications,"
         ." show_places = $places, show_new_place = $new_place,"
-        ." show_schedules = $schedules, show_tasks = $tasks,"
-        ." show_new_task = $new_task, show_wallets = $wallets,"
-        ." show_new_wallet = $new_wallet,"
+        ." show_schedules = $schedules, show_new_schedule = $new_schedule,"
+        ." show_tasks = $tasks, show_new_task = $new_task,"
+        ." show_wallets = $wallets, show_new_wallet = $new_wallet,"
         ." show_new_transaction = $new_transaction,"
         ." show_transfer_amount = $transfer_amount,"
         ." show_trash = $trash where id_users = $id_users";

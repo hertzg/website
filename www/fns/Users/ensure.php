@@ -140,6 +140,7 @@ function ensure ($mysqli) {
         'show_notifications' => ['type' => 'tinyint(3) unsigned'],
         'show_places' => ['type' => 'tinyint(3) unsigned'],
         'show_schedules' => ['type' => 'tinyint(3) unsigned'],
+        'show_new_schedule' => ['type' => 'tinyint(3) unsigned'],
         'show_tasks' => ['type' => 'tinyint(3) unsigned'],
         'show_transfer_amount' => ['type' => 'tinyint(3) unsigned'],
         'show_trash' => ['type' => 'tinyint(3) unsigned'],
