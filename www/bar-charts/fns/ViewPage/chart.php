@@ -13,10 +13,10 @@ function chart ($mysqli, $bar_chart) {
     getMinMax($bars, $min, $max);
 
     include_once __DIR__.'/chartBar.php';
-    $createPositive = function ($value) use ($max) {
+    $createPositiveBar = function ($value) use ($max) {
         return chartBar($value, 'positive', $max);
     };
-    $createNegative = function ($value) use ($min) {
+    $createNegativeBar = function ($value) use ($min) {
         return chartBar($value, 'negative', $min);
     };
 
@@ -37,25 +37,25 @@ function chart ($mysqli, $bar_chart) {
                     .'</div>';
             };
 
-            $renderBar = function ($value) use ($positiveHeight,
-                $negativeHeight, $createPositive, $createNegative,
+            $createBar = function ($value) use ($positiveHeight,
+                $negativeHeight, $createPositiveBar, $createNegativeBar,
                 $createSizer) {
 
                 if ($value >= 0) {
                     return $createSizer($positiveHeight,
-                        $createPositive, $value, 'positive');
+                        $createPositiveBar, $value, 'positive');
                 }
 
                 return $createSizer($negativeHeight,
-                    $createNegative, $value, 'negative');
+                    $createNegativeBar, $value, 'negative');
 
             };
 
         } else {
-            $renderBar = $createPositive;
+            $createBar = $createPositiveBar;
         }
     } else {
-        $renderBar = $createNegative;
+        $createBar = $createNegativeBar;
     }
 
     include_once __DIR__.'/renderBars.php';
@@ -65,7 +65,7 @@ function chart ($mysqli, $bar_chart) {
             .'<div class="barChart-padding">'
                 .'<div class="barChart-content">'
                     .renderLines($range, $min, $max)
-                    .renderBars($bars, $renderBar)
+                    .renderBars($bars, $createBar)
                 .'</div>'
             .'</div>'
         .'</div>'
