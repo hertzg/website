@@ -2,26 +2,7 @@
 
 namespace ViewPage;
 
-function renderLines ($range, $min, $max) {
-
-    $step = 1;
-    $a = 2.5;
-    $b = 2;
-    while (true) {
-
-        $c = $a;
-        $a = $b;
-        $b = $c;
-
-        $numLines = $range / $step;
-        if ($numLines > 8) $step *= $a;
-        elseif ($numLines < 2) $step /= $a;
-        else break;
-
-    }
-
-    $round = pow(10, floor(log($step, 10)));
-    $step = floor($step / $round) * $round;
+function renderLines ($range, $min, $max, $step) {
 
     $linesHtml = '';
     $lineLabelsHtml = '';

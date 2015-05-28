@@ -9,8 +9,8 @@ function chart ($mysqli, $bar_chart) {
 
     if (!$bars) return;
 
-    include_once __DIR__.'/getMinMax.php';
-    getMinMax($bars, $min, $max);
+    include_once __DIR__.'/getRange.php';
+    getRange($bars, $min, $max, $step);
 
     include_once __DIR__.'/chartBar.php';
     $createPositiveBar = function ($value) use ($max) {
@@ -64,7 +64,7 @@ function chart ($mysqli, $bar_chart) {
         "<div class=\"barChart\">"
             .'<div class="barChart-padding">'
                 .'<div class="barChart-content">'
-                    .renderLines($range, $min, $max)
+                    .renderLines($range, $min, $max, $step)
                     .renderBars($bars, $createBar)
                 .'</div>'
             .'</div>'
