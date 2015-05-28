@@ -41,7 +41,7 @@ function getRange ($bars, &$min, &$max, &$step) {
             $value = 8;
             $steps = 4;
         } else {
-            $value = 1;
+            $value = 10;
             $steps = 5;
         }
 
