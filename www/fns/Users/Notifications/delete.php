@@ -19,9 +19,7 @@ function delete ($mysqli, $notification) {
             $notification->id_subscribed_channels, -1);
     }
 
-    $sql = 'update users set num_new_notifications = 0,'
-        .' home_num_new_notifications = 0'
-        ." where id_users = $notification->id_users";
-    $mysqli->query($sql) || trigger_error($mysqli->error);
+    include_once __DIR__.'/addNumber.php';
+    addNumber($mysqli, $notification->id_users, -1);
 
 }
