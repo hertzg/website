@@ -2,7 +2,7 @@
 
 function get_revision ($key) {
     static $revisions = [
-        'css/barChart/compressed.css' => 3,
+        'css/barChart/compressed.css' => 4,
         'css/calendarIcon/compressed.css' => 2,
         'css/common/compressed.css' => 91,
         'css/confirmDialog/compressed.css' => 2,
