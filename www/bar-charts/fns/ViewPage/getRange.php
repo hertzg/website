@@ -13,32 +13,32 @@ function getRange ($bars, &$min, &$max, &$step) {
 
     $snap = function ($value, &$step) {
 
-        $round = pow(10, ceil(log($value, 10)));
+        $round = pow(10, ceil(log($value, 10)) - 1);
         $value /= $round;
 
-        if ($value <= 0.15) {
-            $value = 0.15;
+        if ($value <= 1.5) {
+            $value = 1.5;
             $steps = 3;
-        } elseif ($value <= 0.2) {
-            $value = 0.2;
+        } elseif ($value <= 2) {
+            $value = 2;
             $steps = 4;
-        } elseif ($value <= 0.25) {
-            $value = 0.25;
+        } elseif ($value <= 2.5) {
+            $value = 2.5;
             $steps = 5;
-        } elseif ($value <= 0.3) {
-            $value = 0.3;
+        } elseif ($value <= 3) {
+            $value = 3;
             $steps = 3;
-        } elseif ($value <= 0.4) {
-            $value = 0.4;
+        } elseif ($value <= 4) {
+            $value = 4;
             $steps = 4;
-        } elseif ($value <= 0.5) {
-            $value = 0.5;
+        } elseif ($value <= 5) {
+            $value = 5;
             $steps = 5;
-        } elseif ($value <= 0.6) {
-            $value = 0.6;
+        } elseif ($value <= 6) {
+            $value = 6;
             $steps = 3;
-        } elseif ($value <= 0.8) {
-            $value = 0.8;
+        } elseif ($value <= 8) {
+            $value = 8;
             $steps = 4;
         } else {
             $value = 1;
