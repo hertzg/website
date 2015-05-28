@@ -22,6 +22,9 @@ function getRange ($bars, &$min, &$max, &$step) {
         } elseif ($value <= 0.2) {
             $value = 0.2;
             $steps = 4;
+        } elseif ($value <= 0.25) {
+            $value = 0.25;
+            $steps = 5;
         } elseif ($value <= 0.3) {
             $value = 0.3;
             $steps = 3;
