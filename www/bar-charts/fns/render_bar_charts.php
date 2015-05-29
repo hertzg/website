@@ -5,7 +5,7 @@ function render_bar_charts ($bar_charts, &$items, $params, $base) {
     $fnsDir = __DIR__.'/../../fns';
 
     if ($bar_charts) {
-        include_once "$fnsDir/Page/imageArrowLink.php";
+        include_once "$fnsDir/create_bar_chart_link.php";
         foreach ($bar_charts as $bar_chart) {
 
             $id = $bar_chart->id;
@@ -16,8 +16,9 @@ function render_bar_charts ($bar_charts, &$items, $params, $base) {
             );
             $href = "{$base}view/?$queryString";
 
-            $items[] = Page\imageArrowLink(htmlspecialchars($bar_chart->name),
-                $href, 'bar-chart', ['id' => $id]);
+            $title = htmlspecialchars($bar_chart->name);
+            $items[] = create_bar_chart_link($title,
+                $bar_chart->tags, $href, ['id' => $id]);
 
         }
     } else {
