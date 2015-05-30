@@ -75,5 +75,5 @@ function create_map ($places, $base = '') {
             ."var y = $median_y\n"
             ."var maxScale = $maxScale"
         .'</script>'
-        ."<script type=\"text/javascript\" src=\"{$base}index.js?2\"></script>";
+        ."<script type=\"text/javascript\" src=\"{$base}index.js?3\"></script>";
 }

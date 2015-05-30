@@ -177,14 +177,20 @@
                     shiftMap(newTouchX - touchX, newTouchY - touchY)
                 } else {
 
-                    var scaleX = (newTouchX - secondTouchX) / (touchX - secondTouchX),
-                        scaleY = (newTouchY - secondTouchY) / (touchY - secondTouchY),
-                        scaleMax = Math.max(scaleX, scaleY)
+                    var oldSpaceX = touchX - secondTouchX,
+                        oldSpaceY = touchY - secondTouchY,
+                        oldDistance = Math.sqrt(oldSpaceX * oldSpaceX + oldSpaceY * oldSpaceY)
+
+                    var newSpaceX = newTouchX - secondTouchX,
+                        newSpaceY = newTouchY - secondTouchY,
+                        newDistance = Math.sqrt(newSpaceX * newSpaceX + newSpaceY * newSpaceY)
+
+                    shiftMap((newTouchX - touchX) / 2, (newTouchY - touchY) / 2)
 
                     scaleAt({
                         clientX: (secondTouchX + newTouchX) / 2,
                         clientY: (secondTouchY + newTouchY) / 2,
-                    }, scale * scaleMax)
+                    }, scale * newDistance / oldDistance)
 
                 }
                 touchX = newTouchX
@@ -194,14 +200,20 @@
                 var newSecondTouchX = touch.clientX,
                     newSecondTouchY = touch.clientY
 
-                var scaleX = (newSecondTouchX - touchX) / (secondTouchX - touchX),
-                    scaleY = (newSecondTouchY - touchY) / (secondTouchY - touchY),
-                    scaleMax = Math.max(scaleX, scaleY)
+                var oldSpaceX = touchX - secondTouchX,
+                    oldSpaceY = touchY - secondTouchY,
+                    oldDistance = Math.sqrt(oldSpaceX * oldSpaceX + oldSpaceY * oldSpaceY)
+
+                var newSpaceX = touchX - newSecondTouchX,
+                    newSpaceY = touchY - newSecondTouchY,
+                    newDistance = Math.sqrt(newSpaceX * newSpaceX + newSpaceY * newSpaceY)
+
+                shiftMap((newSecondTouchX - secondTouchX) / 2, (newSecondTouchY - secondTouchY) / 2)
 
                 scaleAt({
                     clientX: (newSecondTouchX + touchX) / 2,
                     clientY: (newSecondTouchY + touchY) / 2,
-                }, scale * scaleMax)
+                }, scale * newDistance / oldDistance)
 
                 secondTouchX = newSecondTouchX
                 secondTouchY = newSecondTouchY
