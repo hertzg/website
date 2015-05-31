@@ -41,7 +41,7 @@ function datefield ($day, $month, $year,
         else $selectedAttribute = '';
         $monthSelect .=
             "<option value=\"$i\"$selectedAttribute>"
-                .date('F', mktime(0, 0, 0, $i))
+                .date('F', mktime(0, 0, 0, $i, 1))
             .'</option>';
     }
     $monthSelect .= '</select>';
