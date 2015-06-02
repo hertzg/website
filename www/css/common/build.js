@@ -11,7 +11,7 @@ var files = [
     'form-checkbox', 'clickable', 'tab', 'topLink', 'filterBar', 'imageText',
     'image_link', 'panel', 'title_and_description', 'tag', 'twoColumns',
     'php-code', 'preview', 'navigation', 'rightButton', 'removableItem',
-    'newItemButton', 'search_form', 'textAndButtons',
+    'removableTextItem', 'newItemButton', 'search_form', 'textAndButtons',
 ]
 
 var source = ''

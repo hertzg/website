@@ -50,9 +50,10 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
         include_once __DIR__.'/render_prev_button.php';
         render_prev_button($offset, $limit, $total, $items, []);
 
-        include_once "$fnsDir/create_image_text.php";
         include_once "$fnsDir/format_author.php";
         include_once "$fnsDir/render_external_links.php";
+        include_once "$fnsDir/ItemList/escapedItemQuery.php";
+        include_once "$fnsDir/Page/removableTextItem.php";
         foreach ($notifications as $i => $notification) {
 
             if ($i < $user->num_new_notifications) $icon = 'notification';
@@ -64,13 +65,13 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
             $author = format_author($notification->insert_time,
                 $notification->insert_api_key_name);
 
-            $content =
-                $text
+            $content = $text
                 .'<div style="color: #555; font-size: 12px; line-height: 14px">'
                     ."$notification->channel_name $author."
                 .'</div>';
 
-            $items[] = create_image_text($content, $icon);
+            $items[] = Page\removableTextItem($content,
+                'delete/'.ItemList\escapedItemQuery($notification->id), $icon);
 
         }
 

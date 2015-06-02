@@ -23,9 +23,10 @@ function render_filtered_notifications ($base, $id, $offset,
         include_once __DIR__.'/render_prev_button.php';
         render_prev_button($offset, $limit, $total, $items, ['id' => $id]);
 
-        include_once "$fnsDir/create_image_text.php";
         include_once "$fnsDir/format_author.php";
         include_once "$fnsDir/render_external_links.php";
+        include_once "$fnsDir/ItemList/escapedItemQuery.php";
+        include_once "$fnsDir/Page/removableTextItem.php";
         foreach ($notifications as $notification) {
 
             $text = htmlspecialchars($notification->text);
@@ -36,7 +37,10 @@ function render_filtered_notifications ($base, $id, $offset,
                     .format_author($notification->insert_time,
                         $notification->insert_api_key_name)
                 .'</div>';
-            $items[] = create_image_text($content, 'old-notification');
+
+            $items[] = Page\removableTextItem($content,
+                'delete/'.ItemList\escapedItemQuery($notification->id),
+                'old-notification');
 
         }
 
