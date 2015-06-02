@@ -8,7 +8,7 @@ require_same_domain_referer('../..');
 
 include_once '../../fns/require_notification.php';
 include_once '../../../lib/mysqli.php';
-list($notification, $id, $user) = require_notification($mysqli);
+list($notification, $id, $user) = require_notification($mysqli, '../');
 
 include_once "$fnsDir/Users/Notifications/delete.php";
 Users\Notifications\delete($mysqli, $notification);

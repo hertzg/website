@@ -2,7 +2,7 @@
 
 include_once '../../fns/require_notification.php';
 include_once '../../../lib/mysqli.php';
-list($notification, $id, $user) = require_notification($mysqli);
+list($notification, $id, $user) = require_notification($mysqli, '../');
 
 $base = '../../../';
 $fnsDir = '../../../fns';
