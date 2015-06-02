@@ -14,9 +14,9 @@ include_once "$fnsDir/compressed_js_script.php";
 $content .=
     compressed_js_script('confirmDialog', $base)
     .'<script type="text/javascript">'
-        .'var deleteHref = '.json_encode("delete/submit.php?id=$channel->id")
+        .'var deleteAllHref = '.json_encode("delete-all/submit.php?id=$id")
     .'</script>'
-    .'<script type="text/javascript" defer="defer" src="../in-channel.js">'
+    .'<script type="text/javascript" defer="defer" src="../in-channel.js?1">'
     .'</script>';
 
 unset(

@@ -2,10 +2,10 @@
 
     var dialogShown = false
 
-    var deleteLink = document.getElementById('deleteLink').firstChild
-    deleteLink.addEventListener('click', function (e) {
+    var deleteAllLink = document.getElementById('deleteAllLink').firstChild
+    deleteAllLink.addEventListener('click', function (e) {
         e.preventDefault()
-        deleteLink.blur()
+        deleteAllLink.blur()
         if (dialogShown) return
         var yesText = 'Yes, delete notifications'
         var questionText = 'Are you sure you want to delete' +
@@ -16,4 +16,4 @@
         dialogShown = true
     })
 
-})(deleteHref)
+})(deleteAllHref)

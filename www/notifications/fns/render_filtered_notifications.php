@@ -14,10 +14,10 @@ function render_filtered_notifications ($base, $id, $offset,
         $escapedItemQuery = ItemList\escapedItemQuery($id);
 
         include_once "$fnsDir/Page/imageLink.php";
-        $href = "{$base}delete/$escapedItemQuery";
         $options[] =
-            '<div id="deleteLink">'
-                .Page\imageLink('Delete Notifications', $href, 'trash-bin')
+            '<div id="deleteAllLink">'
+                .Page\imageLink('Delete Notifications',
+                    "{$base}delete-all/$escapedItemQuery", 'trash-bin')
             .'</div>';
 
         include_once __DIR__.'/render_prev_button.php';
