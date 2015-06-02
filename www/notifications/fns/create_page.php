@@ -79,8 +79,10 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
                     ."$notification->channel_name $author."
                 .'</div>';
 
+            $escapedItemQuery = ItemList\escapedItemQuery($notification->id);
+
             $items[] = Page\removableTextItem($content,
-                'delete/'.ItemList\escapedItemQuery($notification->id), $icon);
+                "{$base}delete/$escapedItemQuery", $icon);
 
         }
 
