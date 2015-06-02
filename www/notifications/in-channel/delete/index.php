@@ -15,7 +15,8 @@ $channel = Users\Channels\get($mysqli, $user, $id_channels);
 include_once '../fns/create_page.php';
 include_once "$fnsDir/ItemList/escapedItemQuery.php";
 include_once "$fnsDir/Page/confirmDialog.php";
-$content = create_page($mysqli, $user, $channel, $scripts, '../')
+$content =
+    create_page($mysqli, $user, $channel, $scripts, $notifications, '../')
     .Page\confirmDialog('Are you sure you want to delete the notification?',
         'Yes, delete notification', 'submit.php'.ItemList\escapedItemQuery($id),
         '../'.ItemList\escapedItemQuery($id_channels));

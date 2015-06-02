@@ -1,6 +1,7 @@
 <?php
 
-function create_page ($mysqli, $user, $channel, &$scripts, $base = '') {
+function create_page ($mysqli, $user,
+    $channel, &$scripts, &$notifications, $base = '') {
 
     $id = $channel->id;
     $fnsDir = __DIR__.'/../../../fns';

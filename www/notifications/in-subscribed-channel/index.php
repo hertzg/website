@@ -8,16 +8,20 @@ $base = '../../';
 $fnsDir = '../../fns';
 
 include_once 'fns/create_page.php';
-$content = create_page($mysqli, $user, $subscribedChannel, $scripts);
+$content = create_page($mysqli, $user,
+    $subscribedChannel, $scripts, $notifications);
 
-include_once "$fnsDir/compressed_js_script.php";
-$content .=
-    compressed_js_script('confirmDialog', $base)
-    .'<script type="text/javascript">'
-        .'var deleteAllHref = '.json_encode("delete-all/submit.php?id=$id")
-    .'</script>'
-    .'<script type="text/javascript" defer="defer" src="../in-channel.js?2">'
-    .'</script>';
+if ($notifications) {
+    include_once "$fnsDir/compressed_js_script.php";
+    $content .=
+        compressed_js_script('confirmDialog', $base)
+        .'<script type="text/javascript">'
+            .'var deleteAllHref = '.json_encode("delete-all/submit.php?id=$id")
+        .'</script>'
+        .'<script type="text/javascript"'
+        .' defer="defer" src="../in-channel.js?2">'
+        .'</script>';
+}
 
 include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";

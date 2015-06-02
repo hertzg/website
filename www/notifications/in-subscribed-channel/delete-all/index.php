@@ -11,7 +11,8 @@ $fnsDir = '../../../fns';
 unset($_SESSION['notifications/in-subscribed-channel/messages']);
 
 include_once '../fns/create_page.php';
-$content = create_page($mysqli, $user, $subscribedChannel, $scripts, '../');
+$content = create_page($mysqli, $user,
+    $subscribedChannel, $scripts, $notifications, '../');
 
 include_once "$fnsDir/ItemList/escapedItemQuery.php";
 $escapedItemQuery = ItemList\escapedItemQuery($id);
