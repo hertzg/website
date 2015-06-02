@@ -39,7 +39,7 @@ function render_filtered_notifications ($base, $id, $offset,
                 .'</div>';
 
             $items[] = Page\removableTextItem($content,
-                'delete/'.ItemList\escapedItemQuery($notification->id),
+                "{$base}delete/".ItemList\escapedItemQuery($notification->id),
                 'old-notification');
 
         }
