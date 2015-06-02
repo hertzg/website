@@ -1,6 +1,7 @@
 .removableTextItem {
     position: relative;
     padding: 15px 48px;
+    word-wrap: break-word;
 }
 
 .removableTextItem-icon {
