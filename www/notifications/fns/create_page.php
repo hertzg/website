@@ -80,9 +80,14 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
                 .'</div>';
 
             $escapedItemQuery = ItemList\escapedItemQuery($notification->id);
+            $delete_href = "{$base}delete/submit.php$escapedItemQuery";
 
-            $items[] = Page\removableTextItem($content,
-                "{$base}delete/$escapedItemQuery", $icon);
+            $items[] =
+                '<div class="deleteLinkWrapper"'
+                ." data-delete_href=\"$delete_href\">"
+                    .Page\removableTextItem($content,
+                        "{$base}delete/$escapedItemQuery", $icon)
+                .'</div>';
 
         }
 

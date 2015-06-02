@@ -16,7 +16,7 @@ $content .=
     .'<script type="text/javascript">'
         .'var deleteAllHref = '.json_encode("delete-all/submit.php?id=$id")
     .'</script>'
-    .'<script type="text/javascript" defer="defer" src="../in-channel.js?1">'
+    .'<script type="text/javascript" defer="defer" src="../in-channel.js?2">'
     .'</script>';
 
 include_once "$fnsDir/compressed_css_link.php";

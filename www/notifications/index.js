@@ -17,4 +17,24 @@
         dialogShown = true
     })
 
+    var wrappers = document.querySelectorAll('.deleteLinkWrapper')
+    Array.prototype.forEach.call(wrappers, function (wrapper) {
+
+        var questionHtml = 'Are you sure you want to delete the notification?'
+        var yesText = 'Yes, delete notification'
+        var yesHref = wrapper.dataset.delete_href
+
+        var deleteLink = wrapper.querySelector('.removableTextItem-removeButton')
+        deleteLink.addEventListener('click', function (e) {
+            e.preventDefault()
+            deleteLink.blur()
+            if (dialogShown) return
+            dialogShown = true
+            confirmDialog(questionHtml, yesText, yesHref, function () {
+                dialogShown = false
+            })
+        })
+
+    })
+
 })()

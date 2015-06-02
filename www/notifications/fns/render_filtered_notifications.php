@@ -38,9 +38,15 @@ function render_filtered_notifications ($base, $id, $offset,
                         $notification->insert_api_key_name)
                 .'</div>';
 
-            $items[] = Page\removableTextItem($content,
-                "{$base}delete/".ItemList\escapedItemQuery($notification->id),
-                'old-notification');
+            $escapedItemQuery = ItemList\escapedItemQuery($notification->id);
+            $delete_href = "{$base}delete/submit.php$escapedItemQuery";
+
+            $items[] =
+                '<div class="deleteLinkWrapper"'
+                ." data-delete_href=\"$delete_href\">"
+                    .Page\removableTextItem($content,
+                        "{$base}delete/$escapedItemQuery", 'old-notification')
+                .'</div>';
 
         }
 
