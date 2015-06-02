@@ -21,13 +21,6 @@ $content = create_page($mysqli, $user, $subscribedChannel, $scripts, '../')
         'Yes, delete notification', 'submit.php'.ItemList\escapedItemQuery($id),
         '../'.ItemList\escapedItemQuery($id_subscribed_channels));
 
-unset(
-    $_SESSION['home/messages'],
-    $_SESSION['notifications/channels/messages'],
-    $_SESSION['notifications/errors'],
-    $_SESSION['notifications/messages']
-);
-
 include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";
 echo_page($user, 'Notifications', $content, $base, [

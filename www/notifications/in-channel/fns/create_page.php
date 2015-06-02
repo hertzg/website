@@ -32,6 +32,13 @@ function create_page ($mysqli, $user, $channel, &$scripts, $base = '') {
     render_filtered_notifications($base, $id, $offset,
         $limit, $total, $notifications, $items, $options, $scripts);
 
+    unset(
+        $_SESSION['home/messages'],
+        $_SESSION['notifications/channels/messages'],
+        $_SESSION['notifications/errors'],
+        $_SESSION['notifications/messages']
+    );
+
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";

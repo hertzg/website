@@ -19,13 +19,6 @@ $content .=
     .'<script type="text/javascript" defer="defer" src="../in-channel.js?1">'
     .'</script>';
 
-unset(
-    $_SESSION['home/messages'],
-    $_SESSION['notifications/channels/messages'],
-    $_SESSION['notifications/errors'],
-    $_SESSION['notifications/messages']
-);
-
 include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";
 echo_page($user, 'Notifications', $content, $base, [
