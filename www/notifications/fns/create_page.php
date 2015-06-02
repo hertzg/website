@@ -2,6 +2,15 @@
 
 function create_page ($mysqli, $user, &$scripts, $base = '') {
 
+    unset(
+        $_SESSION['home/messages'],
+        $_SESSION['notifications/channels/errors'],
+        $_SESSION['notifications/channels/messages'],
+        $_SESSION['notifications/in-channel/messages'],
+        $_SESSION['notifications/in-subscribed-channel/messages'],
+        $_SESSION['notifications/subscribed-channels/messages']
+    );
+
     $fnsDir = __DIR__.'/../../fns';
 
     if ($user->num_new_notifications || $user->home_num_new_notifications) {
