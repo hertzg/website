@@ -33,7 +33,6 @@ if ($user->num_notifications) {
     $head = '';
 }
 
-include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";
 echo_page($user, 'Notifications', $content, $base, [
     'head' => $head,
