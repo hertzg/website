@@ -8,6 +8,7 @@
 
             var style = progressDiv.style
             style.position = 'fixed'
+            style.zIndex = '1'
             style.right = style.bottom = style.left = '0'
             style.height = '4px'
             style.backgroundColor = '#fff'

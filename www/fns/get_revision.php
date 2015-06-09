@@ -26,7 +26,7 @@ function get_revision ($key) {
         'js/sessionTimeout/compressed.js' => 2,
         'js/signOutConfirm/compressed.js' => 3,
         'js/timezoneLabel/compressed.js' => 6,
-        'js/unloadProgress/compressed.js' => 7,
+        'js/unloadProgress/compressed.js' => 8,
         'themes/blue/images/zvini.svg' => 3,
         'themes/green/images/zvini.svg' => 3,
         'themes/orange/images/zvini.svg' => 3,
