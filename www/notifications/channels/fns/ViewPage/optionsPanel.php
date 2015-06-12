@@ -9,8 +9,8 @@ function optionsPanel ($channel) {
     $id = $channel->id;
 
     include_once "$fnsDir/Page/imageArrowLink.php";
-    $notifyLink = \Page\imageArrowLink('Post a Notification',
-        "../notify/?id=$id", 'create-notification', ['id' => 'notify']);
+    $postLink = \Page\imageArrowLink('Post a Notification',
+        "../post/?id=$id", 'create-notification', ['id' => 'post']);
 
     $title = 'Users';
     $href = "../users/?id=$id";
@@ -39,7 +39,7 @@ function optionsPanel ($channel) {
     include_once "$fnsDir/Page/staticTwoColumns.php";
     include_once "$fnsDir/Page/twoColumns.php";
     $content =
-        \Page\twoColumns($notifyLink, $usersLink)
+        \Page\twoColumns($postLink, $usersLink)
         .'<div class="hr"></div>'
         .\Page\staticTwoColumns($editLink, $deleteLink);
 

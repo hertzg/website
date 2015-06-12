@@ -17,11 +17,11 @@ if ($text === '') $errors[] = 'Enter text.';
 include_once '../../../fns/redirect.php';
 
 if ($errors) {
-    $_SESSION['notifications/channels/notify/errors'] = $errors;
+    $_SESSION['notifications/channels/post/errors'] = $errors;
     redirect("./?id=$id");
 }
 
-unset($_SESSION['notifications/channels/notify/errors']);
+unset($_SESSION['notifications/channels/post/errors']);
 
 include_once '../../../fns/Users/Notifications/post.php';
 Users\Notifications\post($mysqli, $channel, $text);

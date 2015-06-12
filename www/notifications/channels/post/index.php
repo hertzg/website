@@ -21,11 +21,11 @@ $content =
         [
             [
                 'title' => "Channel #$id",
-                'href' => "../view/?id=$id#notify",
+                'href' => "../view/?id=$id#post",
             ],
         ],
         'Post',
-        Page\sessionErrors('notifications/channels/notify/errors')
+        Page\sessionErrors('notifications/channels/post/errors')
         .'<form action="submit.php" method="post">'
             .Form\textarea('text', 'Text', [
                 'maxlength' => Notifications\maxLengths()['text'],
