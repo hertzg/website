@@ -26,6 +26,12 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
 
     $options = [];
 
+    if ($user->num_channels) {
+        include_once "$fnsDir/Page/imageArrowLink.php";
+        $options[] = Page\imageArrowLink('Post a Notification',
+            "{$base}post/", 'create-notification');
+    }
+
     include_once __DIR__.'/create_channels_link.php';
     $options[] = create_channels_link($user, $base);
 
