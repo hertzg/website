@@ -22,7 +22,7 @@ function render_bar_charts ($bar_charts, $total,
 
     if ($num_bar_charts < $total) {
         include_once "$fnsDir/Page/imageArrowLink.php";
-        $items[] = Page\imageArrowLink("All $total Bar Charts",
+        $items[] = Page\imageArrowLink("Show All $total Bar Charts",
             "../bar-charts/search/?keyword=$encodedKeyword", 'bar-charts');
     }
 

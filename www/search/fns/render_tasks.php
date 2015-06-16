@@ -26,7 +26,7 @@ function render_tasks ($tasks, $total, $groupLimit,
 
     if ($num_tasks < $total) {
         include_once "$fnsDir/Page/imageArrowLink.php";
-        $items[] = Page\imageArrowLink("All $total Tasks",
+        $items[] = Page\imageArrowLink("Show All $total Tasks",
             "../tasks/search/?keyword=$encodedKeyword", 'tasks');
     }
 

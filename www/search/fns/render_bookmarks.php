@@ -21,7 +21,7 @@ function render_bookmarks ($bookmarks, $total,
 
     if ($num_bookmarks < $total) {
         include_once "$fnsDir/Page/imageArrowLink.php";
-        $items[] = Page\imageArrowLink("All $total Bookmarks",
+        $items[] = Page\imageArrowLink("Show All $total Bookmarks",
             "../bookmarks/search/?keyword=$encodedKeyword", 'bookmarks');
     }
 

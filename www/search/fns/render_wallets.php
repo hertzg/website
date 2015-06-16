@@ -24,7 +24,7 @@ function render_wallets ($wallets, $total,
 
     if ($num_wallets < $total) {
         include_once "$fnsDir/Page/imageArrowLink.php";
-        $items[] = Page\imageArrowLink("All $total Wallets",
+        $items[] = Page\imageArrowLink("Show All $total Wallets",
             "../wallets/search/?keyword=$encodedKeyword", 'wallets');
     }
 

@@ -52,7 +52,7 @@ function render_contacts ($contacts, $total,
 
     if ($num_contacts < $total) {
         include_once "$fnsDir/Page/imageArrowLink.php";
-        $items[] = Page\imageArrowLink("All $total Contacts",
+        $items[] = Page\imageArrowLink("Show All $total Contacts",
             "../contacts/search/?keyword=$encodedKeyword", 'contacts');
     }
 

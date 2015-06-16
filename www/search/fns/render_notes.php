@@ -30,7 +30,7 @@ function render_notes ($notes, $total,
 
     if ($num_notes < $total) {
         include_once "$fnsDir/Page/imageArrowLink.php";
-        $items[] = Page\imageArrowLink("All $total Notes",
+        $items[] = Page\imageArrowLink("Show All $total Notes",
             "../notes/search/?keyword=$encodedKeyword", 'notes');
     }
 

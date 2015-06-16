@@ -23,7 +23,7 @@ function render_places ($places, $total,
 
     if ($num_places < $total) {
         include_once "$fnsDir/Page/imageArrowLink.php";
-        $items[] = Page\imageArrowLink("All $total Places",
+        $items[] = Page\imageArrowLink("Show All $total Places",
             "../places/search/?keyword=$encodedKeyword", 'places');
     }
 
