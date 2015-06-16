@@ -1,7 +1,14 @@
 <?php
 
-function render_bookmarks ($bookmarks, &$items, $regex, $encodedKeyword) {
-    include_once __DIR__.'/../../fns/Page/imageArrowLinkWithDescription.php';
+function render_bookmarks ($bookmarks, $total,
+    $groupLimit, &$items, $regex, $encodedKeyword) {
+
+    $fnsDir = __DIR__.'/../../fns';
+
+    $num_bookmarks = count($bookmarks);
+    if ($total > $groupLimit) array_pop($bookmarks);
+
+    include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
     foreach ($bookmarks as $bookmark) {
         $title = htmlspecialchars($bookmark->title);
         $title = preg_replace($regex, '<mark>$0</mark>', $title);
@@ -11,4 +18,11 @@ function render_bookmarks ($bookmarks, &$items, $regex, $encodedKeyword) {
         $items[] = Page\imageArrowLinkWithDescription($title,
             $description, $href, 'bookmark');
     }
+
+    if ($num_bookmarks < $total) {
+        include_once "$fnsDir/Page/imageArrowLink.php";
+        $items[] = Page\imageArrowLink("All $total Bookmarks",
+            "../bookmarks/search/?keyword=$encodedKeyword", 'bookmarks');
+    }
+
 }

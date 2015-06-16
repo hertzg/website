@@ -1,7 +1,13 @@
 <?php
 
-function render_notes ($notes, &$items, $regex, $encodedKeyword) {
+function render_notes ($notes, $total,
+    $groupLimit, &$items, $regex, $encodedKeyword) {
+
     $fnsDir = __DIR__.'/../../fns';
+
+    $num_notes = count($notes);
+    if ($total > $groupLimit) array_pop($notes);
+
     include_once "$fnsDir/create_note_link.php";
     foreach ($notes as $note) {
 
@@ -21,4 +27,11 @@ function render_notes ($notes, &$items, $regex, $encodedKeyword) {
         $items[] = create_note_link($title, $note->tags, $encrypt, $href);
 
     }
+
+    if ($num_notes < $total) {
+        include_once "$fnsDir/Page/imageArrowLink.php";
+        $items[] = Page\imageArrowLink("All $total Notes",
+            "../notes/search/?keyword=$encodedKeyword", 'notes');
+    }
+
 }

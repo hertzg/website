@@ -1,9 +1,13 @@
 <?php
 
-function render_contacts ($contacts, &$items, $regex, $encodedKeyword) {
+function render_contacts ($contacts, $total,
+    $groupLimit, &$items, $regex, $encodedKeyword) {
 
     $replace = '<mark>$0</mark>';
     $fnsDir = __DIR__.'/../../fns';
+
+    $num_contacts = count($contacts);
+    if ($total > $groupLimit) array_pop($contacts);
 
     include_once "$fnsDir/Page/imageArrowLink.php";
     include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
@@ -45,4 +49,11 @@ function render_contacts ($contacts, &$items, $regex, $encodedKeyword) {
         }
 
     }
+
+    if ($num_contacts < $total) {
+        include_once "$fnsDir/Page/imageArrowLink.php";
+        $items[] = Page\imageArrowLink("All $total Contacts",
+            "../contacts/search/?keyword=$encodedKeyword", 'contacts');
+    }
+
 }

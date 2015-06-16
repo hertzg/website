@@ -32,37 +32,48 @@ $formContent = SearchForm\content($keyword, 'Search...', '..');
 include_once "$fnsDir/SearchForm/create.php";
 $items = [SearchForm\create('./', $formContent)];
 
-include_once "$fnsDir/Users/BarCharts/search.php";
-$bar_charts = Users\BarCharts\search($mysqli, $user, $keyword);
+$groupLimit = 4;
 
-include_once "$fnsDir/Users/Bookmarks/search.php";
-$bookmarks = Users\Bookmarks\search($mysqli, $user, $keyword);
+include_once "$fnsDir/Users/BarCharts/searchPage.php";
+$bar_charts = Users\BarCharts\searchPage($mysqli,
+    $user, $keyword, 0, $groupLimit, $num_bar_charts);
 
-include_once "$fnsDir/Users/Contacts/search.php";
-$contacts = Users\Contacts\search($mysqli, $user, $keyword);
+include_once "$fnsDir/Users/Bookmarks/searchPage.php";
+$bookmarks = Users\Bookmarks\searchPage($mysqli,
+    $user, $keyword, 0, $groupLimit, $num_bookmarks);
 
-include_once "$fnsDir/Users/Notes/search.php";
-$notes = Users\Notes\search($mysqli, $user, $keyword);
+include_once "$fnsDir/Users/Contacts/searchPage.php";
+$contacts = Users\Contacts\searchPage($mysqli,
+    $user, $keyword, 0, $groupLimit, $num_contacts);
 
-include_once "$fnsDir/Users/Places/search.php";
-$places = Users\Places\search($mysqli, $user, $keyword);
+include_once "$fnsDir/Users/Notes/searchPage.php";
+$notes = Users\Notes\searchPage($mysqli,
+    $user, $keyword, 0, $groupLimit, $num_notes);
 
-include_once "$fnsDir/Users/Tasks/search.php";
-$tasks = Users\Tasks\search($mysqli, $user, $keyword);
+include_once "$fnsDir/Users/Places/searchPage.php";
+$places = Users\Places\searchPage($mysqli,
+    $user, $keyword, 0, $groupLimit, $num_places);
 
-include_once "$fnsDir/Users/Wallets/search.php";
-$wallets = Users\Wallets\search($mysqli, $user, $keyword);
+include_once "$fnsDir/Users/Tasks/searchPage.php";
+$tasks = Users\Tasks\searchPage($mysqli,
+    $user, $keyword, 0, $groupLimit, $num_tasks);
+
+include_once "$fnsDir/Users/Wallets/searchPage.php";
+$wallets = Users\Wallets\searchPage($mysqli,
+    $user, $keyword, 0, $groupLimit, $num_wallets);
 
 include_once 'fns/search_folders_and_files.php';
 list($folders, $files) = search_folders_and_files(
     $mysqli, $searchFiles, $user, $keyword);
 
-if ($bar_charts || $bookmarks || $contacts || $notes ||
-    $places || $tasks || $wallets || $folders || $files) {
+if ($num_bar_charts || $num_bookmarks || $num_contacts || $num_notes ||
+    $num_places || $num_tasks || $num_wallets || $folders || $files) {
 
     include_once 'fns/create_items.php';
-    $resultItems = create_items($bar_charts, $bookmarks, $contacts, $notes,
-        $places, $tasks, $wallets, $folders, $files, $keyword, $user);
+    $resultItems = create_items($bar_charts, $num_bar_charts,
+        $bookmarks, $num_bookmarks, $contacts, $num_contacts,
+        $notes, $num_notes, $places, $num_places, $tasks, $num_tasks,
+        $wallets, $num_wallets, $folders, $files, $keyword, $user, $groupLimit);
 
     include_once 'fns/render_search_files_link.php';
     render_search_files_link($searchFiles, $keyword, $offset, $resultItems);

@@ -1,8 +1,12 @@
 <?php
 
-function render_tasks ($tasks, &$items, $regex, $encodedKeyword, $user) {
+function render_tasks ($tasks, $total, $groupLimit,
+    &$items, $regex, $encodedKeyword, $user) {
 
     $fnsDir = __DIR__.'/../../fns';
+
+    $num_tasks = count($tasks);
+    if ($total > $groupLimit) array_pop($tasks);
 
     include_once "$fnsDir/user_time_today.php";
     $time_today = user_time_today($user);
@@ -18,6 +22,12 @@ function render_tasks ($tasks, &$items, $regex, $encodedKeyword, $user) {
         $items[] = create_task_link($title, $task->deadline_time,
             $task->tags, $task->top_priority, $href, $time_today);
 
+    }
+
+    if ($num_tasks < $total) {
+        include_once "$fnsDir/Page/imageArrowLink.php";
+        $items[] = Page\imageArrowLink("All $total Tasks",
+            "../tasks/search/?keyword=$encodedKeyword", 'tasks');
     }
 
 }

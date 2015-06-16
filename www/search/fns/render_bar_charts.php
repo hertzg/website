@@ -1,7 +1,14 @@
 <?php
 
-function render_bar_charts ($bar_charts, &$items, $regex, $encodedKeyword) {
-    include_once __DIR__.'/../../fns/create_bar_chart_link.php';
+function render_bar_charts ($bar_charts, $total,
+    $groupLimit, &$items, $regex, $encodedKeyword) {
+
+    $fnsDir = __DIR__.'/../../fns';
+
+    $num_bar_charts = count($bar_charts);
+    if ($total > $groupLimit) array_pop($bar_charts);
+
+    include_once "$fnsDir/create_bar_chart_link.php";
     foreach ($bar_charts as $bar_chart) {
 
         $title = htmlspecialchars($bar_chart->name);
@@ -12,4 +19,11 @@ function render_bar_charts ($bar_charts, &$items, $regex, $encodedKeyword) {
         $items[] = create_bar_chart_link($title, $bar_chart->tags, $href);
 
     }
+
+    if ($num_bar_charts < $total) {
+        include_once "$fnsDir/Page/imageArrowLink.php";
+        $items[] = Page\imageArrowLink("All $total Bar Charts",
+            "../bar-charts/search/?keyword=$encodedKeyword", 'bar-charts');
+    }
+
 }
