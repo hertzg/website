@@ -2,7 +2,7 @@
 
 namespace SearchPage;
 
-function createContent ($filterMessage, $items, $user) {
+function createContent ($user, $filterMessage, $items, $keyword) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
@@ -17,7 +17,7 @@ function createContent ($filterMessage, $items, $user) {
             [
                 [
                     'title' => 'Home',
-                    'href' => '../../home/#schedules',
+                    'href' => '../../search/?keyword='.rawurlencode($keyword),
                 ],
             ],
             'Schedules',

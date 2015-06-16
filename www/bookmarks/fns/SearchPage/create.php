@@ -85,6 +85,6 @@ function create ($mysqli, $user) {
     unset_session_vars();
 
     include_once __DIR__.'/createContent.php';
-    return createContent($user, $filterMessage, $items);
+    return createContent($user, $filterMessage, $items, $keyword);
 
 }

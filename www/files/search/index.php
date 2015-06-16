@@ -68,7 +68,7 @@ $content =
         [
             [
                 'title' => 'Home',
-                'href' => '../../home/#files',
+                'href' => '../../search/?keyword='.rawurlencode($keyword),
             ],
         ],
         'Files',

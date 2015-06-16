@@ -52,7 +52,7 @@ function create ($mysqli, $user) {
             [
                 [
                     'title' => 'Home',
-                    'href' => '../../home/#wallets',
+                    'href' => '../../search/?keyword='.rawurlencode($keyword),
                 ],
             ],
             'Wallets',
