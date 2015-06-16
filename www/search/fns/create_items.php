@@ -54,12 +54,12 @@ function create_items ($bar_charts, $num_bar_charts,
 
     if ($folders) {
         include_once __DIR__.'/render_folders.php';
-        render_folders($folders, $items, $groupLimit, $regex, $encodedKeyword);
+        render_folders($folders, $items, $regex, $encodedKeyword);
     }
 
     if ($files) {
         include_once __DIR__.'/render_files.php';
-        render_files($files, $items, $groupLimit, $regex, $encodedKeyword);
+        render_files($files, $items, $regex, $encodedKeyword);
     }
 
     return $items;
