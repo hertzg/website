@@ -25,7 +25,7 @@ function create_page ($mysqli, $user, $bar_chart, &$scripts, $base = '') {
         include_once "$fnsDir/Form/hidden.php";
         include_once "$fnsDir/SearchForm/emptyContent.php";
         $formContent = Form\hidden('id', $id)
-            .SearchForm\emptyContent("Search bars...");
+            .SearchForm\emptyContent('Search bars...');
 
         include_once "$fnsDir/SearchForm/create.php";
         $items[] = SearchForm\create('search/', $formContent);
