@@ -21,7 +21,7 @@ function create_content ($user, $filterMessage, $items, $base, $searchForm) {
         .Page\sessionMessages('bar-charts/messages')
         .$filterMessage
         .join('<div class="hr"></div>', $items)
-        .create_options_panel($user),
+        .create_options_panel($user, $base),
         create_new_item_button('Bar Chart', $base)
     );
 

@@ -20,7 +20,7 @@ function create_content ($content, $user, $base, $searchForm) {
         Page\sessionErrors('wallets/errors')
         .Page\sessionMessages('wallets/messages')
         .$content
-        .create_options_panel($user),
+        .create_options_panel($user, $base),
         create_new_item_button('Wallet', $base)
     );
 
