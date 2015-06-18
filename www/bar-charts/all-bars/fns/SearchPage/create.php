@@ -8,7 +8,7 @@ function create ($mysqli, $user, $bar_chart, &$scripts) {
     $fnsDir = __DIR__.'/../../../../fns';
 
     include_once "$fnsDir/compressed_js_script.php";
-    $scripts = compressed_js_script('dateAgo', '../../');
+    $scripts = compressed_js_script('searchForm', '../../../');
 
     include_once "$fnsDir/request_valid_keyword_tag_offset.php";
     list($keyword, $tag, $offset) = request_valid_keyword_tag_offset([

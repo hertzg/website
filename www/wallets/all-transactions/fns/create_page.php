@@ -30,6 +30,8 @@ function create_page ($mysqli, $user, $wallet, &$scripts, $base = '') {
         include_once "$fnsDir/SearchForm/create.php";
         $items[] = SearchForm\create('search/', $formContent);
 
+        $scripts .= compressed_js_script('searchForm', "$base../../");
+
     }
 
     $params = ['id' => $id];

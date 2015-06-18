@@ -5,9 +5,6 @@ function create_page ($mysqli, $user, $bar_chart, &$scripts, $base = '') {
     $id = $bar_chart->id;
     $fnsDir = __DIR__.'/../../../fns';
 
-    include_once "$fnsDir/compressed_js_script.php";
-    $scripts = compressed_js_script('dateAgo', "$base../../");
-
     include_once "$fnsDir/Paging/requestOffset.php";
     $offset = Paging\requestOffset("./?id=$id");
 
@@ -29,6 +26,9 @@ function create_page ($mysqli, $user, $bar_chart, &$scripts, $base = '') {
 
         include_once "$fnsDir/SearchForm/create.php";
         $items[] = SearchForm\create('search/', $formContent);
+
+        include_once "$fnsDir/compressed_js_script.php";
+        $scripts = compressed_js_script('searchForm', "$base../../");
 
     }
 
