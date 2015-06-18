@@ -1,6 +1,6 @@
 <?php
 
-function create_page ($mysqli, $user, $base = '') {
+function create_page ($mysqli, $user, &$scripts, $base = '') {
 
     $fnsDir = __DIR__.'/../../../fns';
 
@@ -11,6 +11,19 @@ function create_page ($mysqli, $user, $base = '') {
     $limit = Paging\limit();
 
     $items = [];
+
+    if ($user->num_events) {
+
+        include_once "$fnsDir/SearchForm/emptyContent.php";
+        $formContent = SearchForm\emptyContent('Search events...');
+
+        include_once "$fnsDir/SearchForm/create.php";
+        $items[] = SearchForm\create('search/', $formContent);
+
+        include_once "$fnsDir/compressed_js_script.php";
+        $scripts = compressed_js_script('searchForm', "$base../../");
+
+    }
 
     include_once "$fnsDir/Events/indexPageOnUser.php";
     $events = Events\indexPageOnUser($mysqli,
