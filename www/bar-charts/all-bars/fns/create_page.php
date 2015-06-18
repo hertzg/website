@@ -18,13 +18,19 @@ function create_page ($mysqli, $user, $bar_chart, &$scripts, $base = '') {
     $bars = BarChartBars\indexPageOnBarChart(
         $mysqli, $id, $offset, $limit, $total);
 
-    include_once "$fnsDir/Form/hidden.php";
-    include_once "$fnsDir/SearchForm/emptyContent.php";
-    $formContent = Form\hidden('id', $id)
-        .SearchForm\emptyContent("Search bars...");
+    $items = [];
 
-    include_once "$fnsDir/SearchForm/create.php";
-    $items = [SearchForm\create('search/', $formContent)];
+    if ($bar_chart->num_bars > 1) {
+
+        include_once "$fnsDir/Form/hidden.php";
+        include_once "$fnsDir/SearchForm/emptyContent.php";
+        $formContent = Form\hidden('id', $id)
+            .SearchForm\emptyContent("Search bars...");
+
+        include_once "$fnsDir/SearchForm/create.php";
+        $items[] = SearchForm\create('search/', $formContent);
+
+    }
 
     $params = ['id' => $id];
 
