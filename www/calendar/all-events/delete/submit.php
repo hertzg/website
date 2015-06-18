@@ -15,6 +15,6 @@ Users\Events\delete($mysqli, $user, $event);
 unset($_SESSION['calendar/all-events/errors']);
 $_SESSION['calendar/all-events/messages'] = ['Event has been deleted.'];
 
-$event_time = $event->event_time;
 include_once "$fnsDir/redirect.php";
-redirect('..');
+include_once "$fnsDir/ItemList/listUrl.php";
+redirect(ItemList\listUrl());
