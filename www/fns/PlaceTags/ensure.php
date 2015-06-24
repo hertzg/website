@@ -12,6 +12,7 @@ function ensure ($mysqli) {
     include_once "$fnsDir/Table/ensure.php";
     include_once "$fnsDir/TagName/column.php";
     include_once "$fnsDir/Tags/column.php";
+    include_once "$fnsDir/TagsJson/column.php";
     return \Table\ensure($mysqli, 'place_tags', [
         'description' => [
             'type' => "varchar($maxLengths[description])",
@@ -33,6 +34,7 @@ function ensure ($mysqli) {
             'collation' => 'utf8_unicode_ci',
         ],
         'tags' => \Tags\column(),
+        'tags_json' => \TagsJson\column(),
         'tag_name' => \TagName\column(),
         'update_time' => ['type' => 'bigint(20) unsigned'],
     ]);
