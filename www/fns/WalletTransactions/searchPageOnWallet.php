@@ -20,7 +20,7 @@ function searchPageOnWallet ($mysqli, $id_wallets,
 
     if ($offset >= $total) return [];
 
-    $sql = "select * $fromWhere order by update_time desc"
+    $sql = "select * $fromWhere order by insert_time desc"
         ." limit $limit offset $offset";
     include_once __DIR__.'/../mysqli_query_object.php';
     return mysqli_query_object($mysqli, $sql);
