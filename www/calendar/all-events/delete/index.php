@@ -12,10 +12,10 @@ unset($_SESSION['calendar/all-events/view/messages']);
 include_once "$fnsDir/ItemList/escapedItemQuery.php";
 $escapedItemQuery = ItemList\escapedItemQuery($id);
 
-include_once '../fns/create_view_page.php';
+include_once '../fns/ViewPage/create.php';
 include_once "$fnsDir/Page/confirmDialog.php";
 $content =
-    create_view_page($user, $event, $scripts)
+    ViewPage\create($user, $event, $scripts)
     .Page\confirmDialog('Are you sure you want to delete the event?'
         .' It will be moved to Trash.', 'Yes, delete event',
         "submit.php$escapedItemQuery", "../view/$escapedItemQuery");
