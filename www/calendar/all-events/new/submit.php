@@ -22,7 +22,8 @@ if ($errors) {
         'event_year' => $event_year,
         'text' => $text,
     ];
-    redirect();
+    include_once "$fnsDir/ItemList/pageQuery.php";
+    redirect('./'.ItemList\pageQuery());
 }
 
 unset(
@@ -36,4 +37,5 @@ $id = Users\Events\add($mysqli, $user, $text, $event_time);
 
 $_SESSION['calendar/all-events/view/messages'] = ['Event has been saved.'];
 
-redirect("../view/?id=$id");
+include_once "$fnsDir/ItemList/itemQuery.php";
+redirect('../view/'.ItemList\itemQuery($id));

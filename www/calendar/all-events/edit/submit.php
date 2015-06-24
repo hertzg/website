@@ -13,6 +13,9 @@ include_once '../../fns/request_event_params.php';
 list($event_day, $event_month,
     $event_year, $event_time, $text) = request_event_params($errors);
 
+include_once "$fnsDir/ItemList/itemQuery.php";
+$itemQuery = ItemList\itemQuery($id);
+
 include_once "$fnsDir/redirect.php";
 
 if ($errors) {
@@ -23,7 +26,7 @@ if ($errors) {
         'event_year' => $event_year,
         'text' => $text,
     ];
-    redirect("./?id=$id");
+    redirect("./$itemQuery");
 }
 
 unset(
@@ -36,4 +39,4 @@ Users\Events\edit($mysqli, $user, $event, $text, $event_time);
 
 $_SESSION['calendar/all-events/view/messages'] = ['Changes have been saved.'];
 
-redirect("../view/?id=$id");
+redirect("../view/$itemQuery");
