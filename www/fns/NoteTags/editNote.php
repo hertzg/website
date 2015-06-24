@@ -3,15 +3,17 @@
 namespace NoteTags;
 
 function editNote ($mysqli, $id_notes, $text,
-    $tags, $encrypt, $insert_time, $update_time) {
+    $tags, $tag_names, $encrypt, $insert_time, $update_time) {
 
     $text = $mysqli->real_escape_string($text);
     $tags = $mysqli->real_escape_string($tags);
+    $tags_json = $mysqli->real_escape_string(json_encode($tag_names));
     $encrypt = $encrypt ? '1' : '0';
 
     $sql = "update note_tags set text = '$text', tags = '$tags',"
-        ." encrypt = $encrypt, insert_time = $insert_time,"
-        ." update_time = $update_time where id_notes = $id_notes";
+        ." tags_json = '$tags_json', encrypt = $encrypt,"
+        ." insert_time = $insert_time, update_time = $update_time"
+        ." where id_notes = $id_notes";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 

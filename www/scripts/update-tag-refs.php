@@ -55,7 +55,8 @@ foreach ($rows as $row) {
     if ($note) {
         include_once '../fns/NoteTags/editNote.php';
         NoteTags\editNote($mysqli, $note->id, $note->text, $note->tags,
-            $note->encrypt, $note->insert_time, $note->update_time);
+            json_decode($note->tags_json), $note->encrypt,
+            $note->insert_time, $note->update_time);
     }
 }
 
@@ -68,7 +69,8 @@ foreach ($rows as $row) {
         include_once '../fns/PlaceTags/editPlace.php';
         PlaceTags\editPlace($mysqli, $place->id, $place->latitude,
             $place->longitude, $place->name, $place->description,
-            $place->tags, $place->insert_time, $place->update_time);
+            $place->tags, json_decode($place->tags_json),
+            $place->insert_time, $place->update_time);
     }
 }
 
@@ -93,7 +95,8 @@ foreach ($rows as $row) {
     if ($task) {
         include_once '../fns/TaskTags/editTask.php';
         TaskTags\editTask($mysqli, $task->id, $task->text, $task->tags,
-            $task->top_priority, $task->insert_time, $task->update_time);
+            json_decode($task->tags_json), $task->top_priority,
+            $task->insert_time, $task->update_time);
     }
 }
 
