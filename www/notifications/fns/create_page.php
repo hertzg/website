@@ -8,6 +8,8 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
         $_SESSION['notifications/channels/messages'],
         $_SESSION['notifications/in-channel/messages'],
         $_SESSION['notifications/in-subscribed-channel/messages'],
+        $_SESSION['notifications/post/errors'],
+        $_SESSION['notifications/post/messages'],
         $_SESSION['notifications/subscribed-channels/messages']
     );
 
