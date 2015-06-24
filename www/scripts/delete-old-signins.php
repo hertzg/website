@@ -10,11 +10,11 @@ $microtime = microtime(true);
 
 $insert_time = time() - 2 * 30 * 24 * 60 * 60;
 
-$sql = "delete from signins where insert_time < $insert_time";
-$mysqli->query($sql) || trigger_error($mysqli->error);
+include_once '../fns/Signins/deleteOlder.php';
+Signins\deleteOlder($mysqli, $insert_time);
 
-$sql = "delete from invalid_signins where insert_time < $insert_time";
-$mysqli->query($sql) || trigger_error($mysqli->error);
+include_once '../fns/InvalidSignins/deleteOlder.php';
+InvalidSignins\deleteOlder($mysqli, $insert_time);
 
 $elapsedSeconds = number_format(microtime(true) - $microtime, 3);
 echo "Done in $elapsedSeconds seconds.\n";
