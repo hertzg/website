@@ -28,7 +28,7 @@ include_once "$fnsDir/ItemList/listHref.php";
 include_once "$fnsDir/Page/confirmDialog.php";
 include_once '../../../lib/mysqli.php';
 $content .= Page\confirmDialog('Are you sure you want to delete all the events?'
-    .' They will be moved to Trash.','Yes, delete all events',
+    .' They will be moved to Trash.', 'Yes, delete all events',
     'submit.php', ItemList\listHref());
 
 include_once "$fnsDir/compressed_css_link.php";
