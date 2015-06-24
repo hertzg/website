@@ -26,7 +26,7 @@ function render_notes ($notes, &$items, $params, $base = '') {
             $title = htmlspecialchars($title);
 
             $items[] = create_note_link($title,
-                $note->tags, $encrypt, $href, ['id' => $id]);
+                $note->tags_json, $encrypt, $href, ['id' => $id], true);
 
         }
     } else {

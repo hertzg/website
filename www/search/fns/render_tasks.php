@@ -20,7 +20,7 @@ function render_tasks ($tasks, $total, $groupLimit,
         $href = "../tasks/view/$query";
 
         $items[] = create_task_link($title, $task->deadline_time,
-            $task->tags, $task->top_priority, $href, $time_today);
+            $task->tags_json, $task->top_priority, $href, $time_today);
 
     }
 

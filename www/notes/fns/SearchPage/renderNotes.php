@@ -34,7 +34,7 @@ function renderNotes ($notes, &$items, $params, $keyword) {
             }
 
             $items[] = create_note_link($title,
-                $note->tags, $encrypt, $href, $options);
+                $note->tags_json, $encrypt, $href, $options);
 
         }
 

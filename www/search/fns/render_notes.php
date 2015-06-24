@@ -24,7 +24,7 @@ function render_notes ($notes, $total,
 
         $query = "?id=$note->id&amp;keyword=$encodedKeyword";
         $href = "../notes/view/$query";
-        $items[] = create_note_link($title, $note->tags, $encrypt, $href);
+        $items[] = create_note_link($title, $note->tags_json, $encrypt, $href);
 
     }
 

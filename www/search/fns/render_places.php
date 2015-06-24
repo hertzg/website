@@ -17,7 +17,7 @@ function render_places ($places, $total,
         $query = "?id=$place->id&amp;keyword=$encodedKeyword";
         $href = "../places/view/$query";
         $items[] = create_place_link($place->latitude,
-            $place->longitude, $title, $place->tags, $href);
+            $place->longitude, $title, $place->tags_json, $href);
 
     }
 
