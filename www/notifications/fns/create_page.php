@@ -8,6 +8,8 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
         $_SESSION['notifications/channels/messages'],
         $_SESSION['notifications/in-channel/messages'],
         $_SESSION['notifications/in-subscribed-channel/messages'],
+        $_SESSION['notifications/post/errors'],
+        $_SESSION['notifications/post/messages'],
         $_SESSION['notifications/subscribed-channels/messages']
     );
 
@@ -25,6 +27,12 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
     $offset = Paging\requestOffset();
 
     $options = [];
+
+    if ($user->num_channels) {
+        include_once "$fnsDir/Page/imageArrowLink.php";
+        $options[] = Page\imageArrowLink('Post a Notification',
+            "{$base}post/", 'create-notification');
+    }
 
     include_once __DIR__.'/create_channels_link.php';
     $options[] = create_channels_link($user, $base);

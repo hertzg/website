@@ -11,13 +11,14 @@ else $values = (array)$channel;
 unset($_SESSION['notifications/channels/view/messages']);
 
 $base = '../../../';
+$fnsDir = '../../../fns';
 
 include_once '../fns/create_form_items.php';
-include_once '../../../fns/compressed_js_script.php';
-include_once '../../../fns/Form/button.php';
-include_once '../../../fns/Form/hidden.php';
-include_once '../../../fns/Page/sessionErrors.php';
-include_once '../../../fns/Page/tabs.php';
+include_once "$fnsDir/compressed_js_script.php";
+include_once "$fnsDir/Form/button.php";
+include_once "$fnsDir/Form/hidden.php";
+include_once "$fnsDir/Page/sessionErrors.php";
+include_once "$fnsDir/Page/tabs.php";
 $content =
     Page\tabs(
         [
@@ -37,5 +38,5 @@ $content =
     )
     .compressed_js_script('formCheckbox', $base);
 
-include_once '../../../fns/echo_page.php';
+include_once "$fnsDir/echo_page.php";
 echo_page($user, "Edit Channel #$id", $content, $base);

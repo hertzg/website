@@ -30,7 +30,7 @@ function render_filtered_notifications ($base, $id, $offset,
         foreach ($notifications as $notification) {
 
             $text = htmlspecialchars($notification->text);
-            $text = nl2br(render_external_links($text, $base));
+            $text = nl2br(render_external_links($text, "$base../../"));
 
             $content = $text
                 .'<div style="color: #777; font-size: 12px; line-height: 14px">'
