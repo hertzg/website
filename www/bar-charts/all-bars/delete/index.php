@@ -15,11 +15,11 @@ unset(
 include_once "$fnsDir/ItemList/escapedItemQuery.php";
 $escapedItemQuery = ItemList\escapedItemQuery($id);
 
-include_once '../fns/create_view_page.php';
+include_once '../fns/ViewPage/create.php';
 include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/Page/confirmDialog.php";
 $content =
-    create_view_page($bar, $scripts)
+    ViewPage\create($bar, $scripts)
     .Page\confirmDialog('Are you sure you want to delete the bar?',
         'Yes, delete bar', "submit.php$escapedItemQuery",
         "../view/$escapedItemQuery");
