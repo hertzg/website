@@ -18,12 +18,10 @@ function render ($tags, $paint = false) {
             $hue = floor(hexdec(substr($hash, 0, 4)) / 1024 * 360);
             $saturation = 15 + floor(hexdec(substr($hash, 4, 2)) / 255 * 70);
             $luminance = 15 + floor(hexdec(substr($hash, 6, 2)) / 255 * 70);
-            $background = "hsla($hue, $saturation%, $luminance%, 0.7)";
+            $background = "hsla($hue, $saturation%, $luminance%, 0.5)";
             $borderColor = "hsl($hue, $saturation%, $luminance%)";
 
-            if ($luminance > 40) $luminance = 10;
-            else $luminance = 90;
-            $color = "hsl($hue, $saturation%, $luminance%)";
+            $color = "hsl($hue, $saturation%, 10%)";
 
             $background = "background: $background";
             $color = "color: $color";
