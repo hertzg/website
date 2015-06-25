@@ -22,9 +22,9 @@ function render_notes ($notes, $total,
             $title = preg_replace($regex, '<mark>$0</mark>', $escapedText);
         }
 
-        $query = "?id=$note->id&amp;keyword=$encodedKeyword";
-        $href = "../notes/view/$query";
-        $items[] = create_note_link($title, $note->tags_json, $encrypt, $href);
+        $items[] = create_note_link($title,
+            $note->num_tags, $note->tags_json, $encrypt,
+            "../notes/view/?id=$note->id&amp;keyword=$encodedKeyword");
 
     }
 

@@ -33,7 +33,7 @@ function renderNotes ($notes, &$items, $params, $keyword) {
                 $title = preg_replace($regex, '<mark>$0</mark>', $escapedText);
             }
 
-            $items[] = create_note_link($title,
+            $items[] = create_note_link($title, $note->num_tags,
                 $note->tags_json, $encrypt, $href, $options);
 
         }
