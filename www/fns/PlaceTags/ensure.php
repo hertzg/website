@@ -33,6 +33,7 @@ function ensure ($mysqli) {
             'characterSet' => 'utf8',
             'collation' => 'utf8_unicode_ci',
         ],
+        'num_tags' => ['type' => 'tinyint(3) unsigned'],
         'tags' => \Tags\column(),
         'tags_json' => \TagsJson\column(),
         'tag_name' => \TagName\column(),
