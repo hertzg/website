@@ -1,6 +1,6 @@
 <?php
 
-function create_task_link ($title, $deadline_time, $tags_json,
+function create_task_link ($title, $deadline_time, $num_tags, $tags_json,
     $top_priority, $href, $time_today, $options = [], $paint = false) {
 
     $icon = $top_priority ? 'task-top-priority' : 'task';
@@ -12,10 +12,9 @@ function create_task_link ($title, $deadline_time, $tags_json,
             $deadline_time, $time_today);
     }
 
-    $tags = json_decode($tags_json);
-    if ($tags) {
+    if ($num_tags) {
         include_once __DIR__.'/ColorTag/render.php';
-        $descriptions[] = ColorTag\render($tags, $paint);
+        $descriptions[] = ColorTag\render(json_decode($tags_json), $paint);
     }
 
     if ($descriptions) {

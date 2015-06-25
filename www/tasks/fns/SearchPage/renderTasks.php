@@ -28,7 +28,7 @@ function renderTasks ($tasks, &$items, $params, $keyword, $user) {
             $title = preg_replace($regex, '<mark>$0</mark>', $title);
 
             $items[] = create_task_link($title,
-                $task->deadline_time, $task->tags_json,
+                $task->deadline_time, $task->num_tags, $task->tags_json,
                 $task->top_priority, $href, $time_today, ['id' => $id]);
 
         }

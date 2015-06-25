@@ -16,11 +16,11 @@ function render_tasks ($tasks, $total, $groupLimit,
 
         $title = htmlspecialchars($task->text);
         $title = preg_replace($regex, '<mark>$0</mark>', $title);
-        $query = "?id=$task->id&amp;keyword=$encodedKeyword";
-        $href = "../tasks/view/$query";
 
         $items[] = create_task_link($title, $task->deadline_time,
-            $task->tags_json, $task->top_priority, $href, $time_today);
+            $task->num_tags, $task->tags_json, $task->top_priority,
+            "../tasks/view/?id=$task->id&amp;keyword=$encodedKeyword",
+            $time_today);
 
     }
 

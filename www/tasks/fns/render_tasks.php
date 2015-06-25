@@ -22,7 +22,7 @@ function render_tasks ($tasks, &$items, $params, $user, $base = '') {
 
             $title = htmlspecialchars($task->title);
             $items[] = create_task_link($title,
-                $task->deadline_time, $task->tags_json,
+                $task->deadline_time, $task->num_tags, $task->tags_json,
                 $task->top_priority, $href, $time_today, ['id' => $id], true);
 
         }
