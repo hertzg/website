@@ -18,7 +18,8 @@ function render_places ($places, &$items, $params, $base = '') {
 
             $items[] = create_place_link($place->latitude,
                 $place->longitude, htmlspecialchars($place->name),
-                $place->tags_json, $href, ['id' => $id], true);
+                $place->num_tags, $place->tags_json,
+                $href, ['id' => $id], true);
 
         }
     } else {

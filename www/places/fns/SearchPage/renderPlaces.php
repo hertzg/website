@@ -26,7 +26,8 @@ function renderPlaces ($places, &$items, $params, $keyword) {
             $title = preg_replace($regex, '<mark>$0</mark>', $escapedName);
 
             $items[] = create_place_link($place->latitude,
-                $place->longitude, $title, $place->tags_json, $href, $options);
+                $place->longitude, $title, $place->num_tags,
+                $place->tags_json, $href, $options);
 
         }
 
