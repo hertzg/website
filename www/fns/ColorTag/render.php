@@ -16,7 +16,7 @@ function render ($tags, $paint = false) {
         if ($paint) {
 
             $hue = floor(hexdec(substr($hash, 0, 4)) / 1024 * 360);
-            $saturation = 20 + floor(hexdec(substr($hash, 4, 2)) / 255 * 80);
+            $saturation = 40 + floor(hexdec(substr($hash, 4, 2)) / 255 * 60);
             $luminance = 10 + floor(hexdec(substr($hash, 6, 2)) / 255 * 70);
             $borderColor = "hsl($hue, $saturation%, $luminance%)";
             $saturation -= 20;
