@@ -18,7 +18,7 @@ function render_bar_charts ($bar_charts, &$items, $params, $base) {
 
             $title = htmlspecialchars($bar_chart->name);
             $items[] = create_bar_chart_link($title,
-                $bar_chart->tags, $href, ['id' => $id]);
+                $bar_chart->tags_json, $href, ['id' => $id], true);
 
         }
     } else {

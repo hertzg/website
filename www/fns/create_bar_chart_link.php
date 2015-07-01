@@ -1,6 +1,7 @@
 <?php
 
-function create_bar_chart_link ($title, $tags_json, $href, $options = []) {
+function create_bar_chart_link ($title,
+    $tags_json, $href, $options = [], $paint = false) {
 
     $icon = 'bar-chart';
 

@@ -25,7 +25,7 @@ function renderBarCharts ($bar_charts, &$items, $params, $keyword) {
             $title = preg_replace($regex, '<mark>$0</mark>', $name);
 
             $items[] = create_bar_chart_link($title,
-                $bar_chart->tags, "../view/?$queryString", ['id' => $id]);
+                $bar_chart->tags_json, "../view/?$queryString", ['id' => $id]);
 
         }
 
