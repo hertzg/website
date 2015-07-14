@@ -57,10 +57,8 @@ include_once "$fnsDir/echo_page.php";
 echo_page($user, 'Upload Files', $content, '../../', [
     'scripts' =>
         '<script type="text/javascript">'
-            .'var parentId = '.($parent_id === null ? '' : $parent_id)
+            .'var parentId = '.($parent_id === 0 ? 'null' : $parent_id)
         .'</script>'
-        .'<script type="text/javascript" src="js/ChunkedReader.js" defer="defer">'
+        .'<script type="text/javascript" src="js/compressed.js" defer="defer">'
         .'</script>'
-        .'<script type="text/javascript" src="index.js" defer="defer">'
-        .'</script>',
 ]);

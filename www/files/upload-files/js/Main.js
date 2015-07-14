@@ -1,16 +1,5 @@
 (function (parentId, unloadProgress) {
 
-    function post (method, formData, loadListener) {
-        var request = new XMLHttpRequest
-        request.open('post', '../../api-call/' + method)
-        request.send(formData)
-        request.onerror = function () {
-            // TODO handle error
-        }
-        request.onload = loadListener
-        return request
-    }
-
     var chunkSize = 1024 * 1024
 
     var uploading = false
@@ -32,16 +21,13 @@
 
             var file = files.shift()
             if (!file) {
-                var url = 'submit-finish.php'
-                if (parentId !== null) {
-                    url += '?parent_id=' + parentId + '&num_files=' + numFiles
-                }
+                var url = 'submit-finish.php?num_files=' + numFiles
+                if (parentId !== null) url += '&parent_id=' + parentId
                 location = url
                 return
             }
 
-            var name = file.name,
-                size = file.size
+            var name = file.name
 
             var reader = ChunkedReader(file, chunkSize)
             reader.readNextChunk(function (chunk) {
@@ -53,7 +39,7 @@
                 if (parentId !== null) formData.append('parent_id', parentId)
                 appendFile(formData, chunk)
 
-                var request = post('file/add', formData, function () {
+                var request = Post('file/add', formData, function () {
 
                     function nextChunk () {
                         if (reader.hasNextChunk()) {
@@ -64,7 +50,7 @@
                                 formData.append('id', id)
                                 appendFile(formData, chunk)
 
-                                post('file/appendContent', formData, nextChunk)
+                                Post('file/appendContent', formData, nextChunk)
 
                             })
                         } else {
