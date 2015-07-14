@@ -23,6 +23,13 @@
 
         function nextFile () {
 
+            function appendFile (formData, chunk) {
+                var blob = new Blob([new Uint8Array(chunk)], {
+                    type: 'application/octet-binary',
+                })
+                formData.append('file', blob, name)
+            }
+
             var file = files.shift()
             if (!file) {
                 var url = 'submit-finish.php'
@@ -36,29 +43,8 @@
             var name = file.name,
                 size = file.size
 
-            var reader = new FileReader
-            reader.readAsArrayBuffer(file)
-            reader.onabort = function () {
-                // TODO handle abort
-            }
-            reader.onerror = function () {
-                // TODO handle error
-            }
-            reader.onload = function () {
-
-                function appendFile (formData, chunk) {
-                    var blob = new Blob([chunk], {
-                        type: 'application/octet-binary',
-                    })
-                    formData.append('file', blob, name)
-                }
-
-                function sliceChunk (offset, length) {
-                    if (offset + length > size) length = size - offset
-                    return new Uint8Array(reader.result, offset, length)
-                }
-
-                var chunk = sliceChunk(0, chunkSize)
+            var reader = ChunkedReader(file, chunkSize)
+            reader.readNextChunk(function (chunk) {
 
                 var formData = new FormData
                 formData.append('session_auth', '1')
@@ -69,29 +55,29 @@
 
                 var request = post('file/add', formData, function () {
 
-                    function nextChunk (offset) {
+                    function nextChunk () {
+                        if (reader.hasNextChunk()) {
+                            reader.readNextChunk(function (chunk) {
 
-                        var chunk = sliceChunk(offset, chunkSize)
+                                var formData = new FormData
+                                formData.append('session_auth', '1')
+                                formData.append('id', id)
+                                appendFile(formData, chunk)
 
-                        var formData = new FormData
-                        formData.append('session_auth', '1')
-                        formData.append('id', id)
-                        appendFile(formData, chunk)
+                                post('file/appendContent', formData, nextChunk)
 
-                        post('file/appendContent', formData, function () {
-                            var nextOffset = offset + chunkSize
-                            if (size > nextOffset) nextChunk(nextOffset)
-                            else nextFile()
-                        })
-
+                            })
+                        } else {
+                            nextFile()
+                        }
                     }
 
                     var id = JSON.parse(request.response)
-                    if (size > chunkSize) nextChunk(chunkSize)
-                    else nextFile()
+                    nextChunk()
+
                 })
 
-            }
+            })
 
         }
 

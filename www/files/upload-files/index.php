@@ -59,6 +59,8 @@ echo_page($user, 'Upload Files', $content, '../../', [
         '<script type="text/javascript">'
             .'var parentId = '.($parent_id === null ? '' : $parent_id)
         .'</script>'
+        .'<script type="text/javascript" src="js/ChunkedReader.js" defer="defer">'
+        .'</script>'
         .'<script type="text/javascript" src="index.js" defer="defer">'
         .'</script>',
 ]);
