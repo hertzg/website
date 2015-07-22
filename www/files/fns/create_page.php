@@ -70,7 +70,6 @@ function create_page ($mysqli, $user, $folder, &$scripts, $base = '') {
     unset_session_vars();
 
     include_once __DIR__.'/create_content.php';
-    return create_content($mysqli, $folder,
-        $user, $files, $items, $infoText, $scripts);
+    return create_content($mysqli, $folder, $user, $files, $items, $infoText);
 
 }
