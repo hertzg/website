@@ -19,6 +19,19 @@ unset(
     $_SESSION['admin/general-info/edit/values']
 );
 
+include_once "$fnsDir/ClientAddress/get.php";
+$client_address = ClientAddress\get();
+
+if ($client_address === false) {
+    include_once "$fnsDir/Page/errors.php";
+    $error = 'With this settings a client IP address cannot be detected.';
+    $errors = Page\errors([$error]);
+    $yourAddress = 'Cannot be detected';
+} else {
+    $errors = '';
+    $yourAddress = htmlspecialchars($client_address);
+}
+
 include_once "$fnsDir/create_panel.php";
 include_once "$fnsDir/DomainName/get.php";
 include_once "$fnsDir/Form/label.php";
@@ -35,6 +48,7 @@ $content = Page\tabs(
     ],
     'General Information',
     Page\sessionMessages('admin/general-info/messages')
+    .$errors
     .Form\label('Site title', htmlspecialchars(SiteTitle\get()))
     .'<div class="hr"></div>'
     .Form\label('Domain name', DomainName\get())
@@ -46,6 +60,8 @@ $content = Page\tabs(
     .Form\label('Uses HTTPS', $https)
     .'<div class="hr"></div>'
     .Form\label('Behind reverse proxy', $behindProxy)
+    .'<div class="hr"></div>'
+    .Form\label('Your IP address', $yourAddress)
     .create_panel('Options', $editLink)
 );
 
