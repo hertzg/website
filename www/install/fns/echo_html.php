@@ -8,11 +8,11 @@ function echo_html ($title, $content) {
                 ."<title>$title</title>"
                 .'<meta http-equiv="Content-Type"'
                 .' content="text/html; charset=UTF-8" />'
-                .'<link rel="icon" type="image/png" href="../icons/16.png" />'
                 .'<meta name="viewport"'
                 .' content="width=device-width, user-scalable=no" />'
+                .'<link rel="icon" type="image/png" href="../icons/16.png?1" />'
                 .'<link rel="icon" type="image/png"'
-                .' href="../icons/32.png" sizes="32x32" />'
+                .' href="../icons/32.png?1" sizes="32x32" />'
                 .'<link rel="stylesheet" type="text/css"'
                 .' href="../css/compressed.css?7" />'
             .'</head>'
