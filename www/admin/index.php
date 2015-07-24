@@ -10,18 +10,58 @@ unset(
     $_SESSION['admin/username-password/values']
 );
 
+include_once '../fns/ClientAddress/get.php';
+$client_address = ClientAddress\get();
+
 include_once '../fns/Page/imageArrowLink.php';
+
+$title = 'General Information';
+$href = 'general-info/';
+$icon = 'generic';
+$options = ['id' => 'general-info'];
+if ($client_address === false) {
+    $description =
+        '<span class="invalid">'
+            .'With this settings a client IP address cannot be detected.'
+        .'</span>';
+    include_once '../fns/Page/imageArrowLinkWithDescription.php';
+    $generalLink = Page\imageArrowLinkWithDescription(
+        $title, $description, $href, $icon, $options);
+} else {
+    $generalLink = Page\imageArrowLink($title, $href, $icon, $options);
+}
+
+include_once '../fns/MysqlConfig/get.php';
+MysqlConfig\get($host, $username, $password, $db);
+
+$mysqli = @new mysqli($host, $username, $password, $db);
+
+$title = 'MySQL Settings';
+$href = 'mysql-settings/';
+$icon = 'generic';
+$options = ['id' => 'mysql-settings'];
+if ($mysqli->connect_errno) {
+    $description =
+        '<span class="invalid">'
+            ."The settings doesn't work. "
+            .htmlspecialchars($mysqli->connect_error)
+        .'</span>';
+    include_once '../fns/Page/imageArrowLinkWithDescription.php';
+    $mysqlLink = Page\imageArrowLinkWithDescription(
+        $title, $description, $href, $icon, $options);
+} else {
+    $mysqlLink = Page\imageArrowLink($title, $href, $icon, $options);
+}
+
 include_once '../fns/Page/sessionMessages.php';
 include_once '../fns/Page/tabs.php';
 $content = Page\tabs(
     [],
     'Administration',
     Page\sessionMessages('admin/messages')
-    .Page\imageArrowLink('General Information',
-        'general-info/', 'generic', ['id' => 'general-info'])
+    .$generalLink
     .'<div class="hr"></div>'
-    .Page\imageArrowLink('MySQL Settings',
-        'mysql-settings/', 'generic', ['id' => 'mysql-settings'])
+    .$mysqlLink
     .'<div class="hr"></div>'
     .Page\imageArrowLink('Ensure Crontab',
         'ensure-crontab/', 'generic', ['id' => 'ensure-crontab'])
@@ -40,4 +80,6 @@ $content = Page\tabs(
 );
 
 include_once '../fns/echo_guest_page.php';
-echo_guest_page('Administration', $content, '../');
+echo_guest_page('Administration', $content, '../', [
+    'head' => '<link rel="stylesheet" type="text/css" href="index.css" />',
+]);
