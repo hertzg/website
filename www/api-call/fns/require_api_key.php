@@ -56,8 +56,8 @@ function require_api_key ($permission_field) {
             die('"API_KEY_EXPIRED"');
         }
 
-        include_once "$fnsDir/get_client_address.php";
-        $client_address = get_client_address();
+        include_once "$fnsDir/ClientAddress/get.php";
+        $client_address = ClientAddress\get();
 
         $access_time = $apiKey->access_time;
         if ($access_time === null || $access_time + 30 < $time ||

@@ -9,8 +9,8 @@ function authenticate ($mysqli, $username, $password, $remember) {
     include_once "$fnsDir/Users/getByUsernameAndPassword.php";
     $user = \Users\getByUsernameAndPassword($mysqli, $username, $password);
 
-    include_once "$fnsDir/get_client_address.php";
-    $client_address = get_client_address();
+    include_once "$fnsDir/ClientAddress/get.php";
+    $client_address = ClientAddress\get();
 
     if ($user) {
 
