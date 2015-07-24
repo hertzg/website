@@ -84,6 +84,13 @@ echo_page(
                     .'The site uses HTTPS protocol.'
                 .'</label>'
             .'</div>'
+            .'<div>'
+                .'<input type="checkbox" name="behindProxy" id="behindProxyInput"'
+                .($values['behindProxy'] ? ' checked="checked"' : '').' />'
+                .' <label for="behindProxyInput">'
+                    .'The site is behind a reverse proxy server.'
+                .'</label>'
+            .'</div>'
             .$errorHtml,
             '<input type="submit" class="button nextButton" value="Next" />'
             .'<a href="../requirements/" class="button">Back</a>'

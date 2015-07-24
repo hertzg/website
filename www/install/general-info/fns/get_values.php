@@ -23,6 +23,7 @@ function get_values () {
         'infoEmail' => "info@$domainName",
         'siteBase' => $siteBase,
         'https' => array_key_exists('HTTPS', $_SERVER),
+        'behindProxy' => false,
     ];
 
 }

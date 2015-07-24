@@ -55,6 +55,8 @@ $assertsHtml .=
     .assert_writable('data/users')
     .assert_writable('.htaccess')
     .assert_writable('fns/Admin/get.php')
+    .assert_writable('fns/ClientAddress/get.php')
+    .assert_writable('fns/ClientAddress/GetMethod/get.php')
     .assert_writable('fns/DomainName/get.php')
     .assert_writable('fns/InfoEmail/get.php')
     .assert_writable('fns/Installed/get.php')
