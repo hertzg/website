@@ -18,7 +18,7 @@ function remember ($mysqli, $user) {
     include_once "$fnsDir/ClientAddress/get.php";
     include_once "$fnsDir/Users/Tokens/add.php";
     $id = \Users\Tokens\add($mysqli, $user->id_users,
-        $user->username, $token_text, ClientAddress\get(), $user_agent);
+        $user->username, $token_text, \ClientAddress\get(), $user_agent);
 
     include_once "$fnsDir/Tokens/get.php";
     $token = \Tokens\get($mysqli, $id);

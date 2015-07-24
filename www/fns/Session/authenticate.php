@@ -10,7 +10,7 @@ function authenticate ($mysqli, $username, $password, $remember) {
     $user = \Users\getByUsernameAndPassword($mysqli, $username, $password);
 
     include_once "$fnsDir/ClientAddress/get.php";
-    $client_address = ClientAddress\get();
+    $client_address = \ClientAddress\get();
 
     if ($user) {
 
