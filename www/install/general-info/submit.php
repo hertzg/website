@@ -26,8 +26,8 @@ $behindProxy = (bool)$behindProxy;
 $error = null;
 
 include_once '../fns/check_general_info.php';
-$error = check_general_info($siteTitle,
-    $domainName, $infoEmail, $siteBase, $focus);
+$error = check_general_info($siteTitle, $domainName,
+    $infoEmail, $siteBase, $behindProxy, $focus);
 
 $_SESSION['install/general-info/values'] = [
     'siteTitle' => $siteTitle,

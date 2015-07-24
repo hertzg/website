@@ -10,10 +10,11 @@ $siteTitle = $values['siteTitle'];
 $domainName = $values['domainName'];
 $infoEmail = $values['infoEmail'];
 $siteBase = $values['siteBase'];
+$behindProxy = $values['behindProxy'];
 
 include_once '../fns/check_general_info.php';
-$error = check_general_info($siteTitle,
-    $domainName, $infoEmail, $siteBase, $focus);
+$error = check_general_info($siteTitle, $domainName,
+    $infoEmail, $siteBase, $behindProxy, $focus);
 if ($focus === null) $focus = 'siteTitle';
 
 if ($error === null) $errorHtml = '';
@@ -86,7 +87,7 @@ echo_page(
             .'</div>'
             .'<div>'
                 .'<input type="checkbox" name="behindProxy" id="behindProxyInput"'
-                .($values['behindProxy'] ? ' checked="checked"' : '').' />'
+                .($behindProxy ? ' checked="checked"' : '').' />'
                 .' <label for="behindProxyInput">'
                     .'The site is behind a reverse proxy server.'
                 .'</label>'
