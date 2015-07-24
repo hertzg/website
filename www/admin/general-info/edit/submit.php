@@ -9,8 +9,10 @@ include_once '../../fns/require_admin.php';
 require_admin();
 
 include_once "$fnsDir/request_strings.php";
-list($siteTitle, $domainName, $infoEmail, $siteBase, $https) = request_strings(
-    'siteTitle', 'domainName', 'infoEmail', 'siteBase', 'https');
+list($siteTitle, $domainName, $infoEmail,
+    $siteBase, $https, $behindProxy) = request_strings(
+    'siteTitle', 'domainName', 'infoEmail',
+    'siteBase', 'https', 'behindProxy');
 
 include_once "$fnsDir/str_collapse_spaces.php";
 $siteTitle = str_collapse_spaces($siteTitle);
@@ -19,6 +21,7 @@ $siteBase = str_collapse_spaces($siteBase);
 
 $domainName = preg_replace('/\s+/', '', $domainName);
 $https = (bool)$https;
+$behindProxy = (bool)$behindProxy;
 
 $errors = [];
 
@@ -58,6 +61,7 @@ if ($errors) {
         'infoEmail' => $infoEmail,
         'siteBase' => $siteBase,
         'https' => $https,
+        'behindProxy' => $behindProxy,
     ];
     redirect();
 }
@@ -83,5 +87,13 @@ SiteBase\set($siteBase);
 
 include_once "$fnsDir/SiteProtocol/set.php";
 SiteProtocol\set($https ? 'https' : 'http');
+
+if ($behindProxy) {
+    include_once "$fnsDir/ClientAddress/GetMethod/setBehindProxy.php";
+    ClientAddress\GetMethod\setBehindProxy();
+} else {
+    include_once "$fnsDir/ClientAddress/GetMethod/setDirect.php";
+    ClientAddress\GetMethod\setDirect();
+}
 
 redirect('..');

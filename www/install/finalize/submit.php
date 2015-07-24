@@ -36,6 +36,9 @@ SiteProtocol\set($generalInfoValues['https'] ? 'https' : 'http');
 if ($generalInfoValues['behindProxy']) {
     include_once "$fnsDir/ClientAddress/GetMethod/setBehindProxy.php";
     ClientAddress\GetMethod\setBehindProxy();
+} else {
+    include_once "$fnsDir/ClientAddress/GetMethod/setDirect.php";
+    ClientAddress\GetMethod\setDirect();
 }
 
 include_once "$fnsDir/write_crontab.php";
