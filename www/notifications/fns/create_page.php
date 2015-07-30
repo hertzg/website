@@ -67,13 +67,14 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
         include_once __DIR__.'/render_prev_button.php';
         render_prev_button($offset, $limit, $total, $items, []);
 
+        $index = $offset;
         include_once "$fnsDir/format_author.php";
         include_once "$fnsDir/render_external_links.php";
         include_once "$fnsDir/ItemList/escapedItemQuery.php";
         include_once "$fnsDir/Page/removableTextItem.php";
-        foreach ($notifications as $i => $notification) {
+        foreach ($notifications as $notification) {
 
-            if ($i < $user->num_new_notifications) $icon = 'notification';
+            if ($index < $user->num_new_notifications) $icon = 'notification';
             else $icon = 'old-notification';
 
             $text = htmlspecialchars($notification->text);
@@ -96,6 +97,8 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
                     .Page\removableTextItem($content,
                         "{$base}delete/$escapedItemQuery", $icon)
                 .'</div>';
+
+            $index++;
 
         }
 
