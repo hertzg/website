@@ -23,10 +23,13 @@ function create_view_page ($token, &$scripts) {
     }
 
     include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/DomainName/get.php";
     include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/Form/textarea.php";
     include_once "$fnsDir/Form/textfield.php";
     include_once "$fnsDir/Page/tabs.php";
+    include_once "$fnsDir/SiteBase/get.php";
+    include_once "$fnsDir/SiteProtocol/get.php";
     return
         Page\tabs(
             [
@@ -43,6 +46,14 @@ function create_view_page ($token, &$scripts) {
             .'<div class="hr"></div>'
             .Form\textarea('user_agent', 'User agent', [
                 'value' => $token->user_agent,
+                'readonly' => true,
+            ])
+            .'<div class="hr"></div>'
+            .Form\textarea('link', 'Link to restore', [
+                'value' => SiteProtocol\get().'://'.DomainName\get()
+                    .SiteBase\get().'restore-session/'
+                    .'?username='.rawurlencode($token->username)
+                    .'&token='.bin2hex($token->token_text),
                 'readonly' => true,
             ])
             .'<div class="hr"></div>'
