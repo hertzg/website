@@ -16,4 +16,5 @@ if ($token) {
 }
 
 include_once '../fns/echo_alert_page.php';
-echo_alert_page('Link Invalid', 'The link is no longer valid.', '..', '../');
+echo_alert_page('Link Invalid', 'The link is no longer valid.'
+    .' You should sign in and remember the session to obtain a new link.', '..', '../');
