@@ -4,8 +4,6 @@ namespace Users;
 
 function add ($mysqli, $username, $password, $email) {
 
-    // TODO separate folder creation from this function
-
     $fnsDir = __DIR__.'/..';
 
     include_once "$fnsDir/Password/hash.php";
@@ -43,14 +41,6 @@ function add ($mysqli, $username, $password, $email) {
         ." 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
-    $id = $mysqli->insert_id;
-
-    include_once __DIR__.'/Directory/path.php';
-    $userDir = Directory\path($id);
-
-    mkdir($userDir);
-    mkdir("$userDir/files");
-    mkdir("$userDir/received-files");
-    mkdir("$userDir/received-folder-files");
+    return $mysqli->insert_id;
 
 }

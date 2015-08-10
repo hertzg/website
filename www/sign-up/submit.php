@@ -51,8 +51,8 @@ unset(
     $_SESSION['sign-up/values']
 );
 
-include_once '../fns/Users/add.php';
-Users\add($mysqli, $username, $password1, $email);
+include_once '../fns/Users/Account/create.php';
+Users\Account\create($mysqli, $username, $password1, $email);
 
 include_once '../fns/Captcha/reset.php';
 Captcha\reset();
