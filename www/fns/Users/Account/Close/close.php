@@ -96,4 +96,7 @@ function close ($mysqli, $user) {
     include_once __DIR__.'/../../delete.php';
     \Users\delete($mysqli, $id_users);
 
+    include_once __DIR__.'/../../Directory/rmdirs.php';
+    \Users\Directory\rmdirs($id_users);
+
 }
