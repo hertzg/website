@@ -104,9 +104,9 @@ if ($num_bar_charts || $num_bookmarks || $num_contacts || $num_notes ||
 }
 
 include_once "$fnsDir/compressed_js_script.php";
-include_once "$fnsDir/Page/tabs.php";
+include_once "$fnsDir/Page/emptyTabs.php";
 $content =
-    Page\tabs([], 'Home', join('<div class="hr"></div>', $items))
+    Page\emptyTabs(join('<div class="hr"></div>', $items))
     .compressed_js_script('searchForm', $base);
 
 include_once "$fnsDir/echo_page.php";

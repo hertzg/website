@@ -35,15 +35,14 @@ function create ($mysqli, $user, &$head, &$scripts) {
     include_once __DIR__.'/newNotifications.php';
     include_once __DIR__.'/optionsPanel.php';
     include_once "$fnsDir/compressed_js_script.php";
+    include_once "$fnsDir/Page/emptyTabs.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    include_once "$fnsDir/Page/tabs.php";
     return
-        '<div class="tab-spacer"></div>'
-        .'<div class="tab-content">'
-            .\Page\sessionMessages('home/messages')
+        \Page\emptyTabs(
+            \Page\sessionMessages('home/messages')
             .newNotifications($mysqli, $user)
             .join('<div class="hr"></div>', $groupedItems)
-        .'</div>'
+        )
         .optionsPanel()
         .compressed_js_script('searchForm', '../');
 
