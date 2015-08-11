@@ -15,9 +15,12 @@ function create_options_panel ($return) {
         "../email-reset-password/$queryString", 'reset-password',
         ['id' => 'email-reset-password']);
 
-    include_once "$fnsDir/Page/imageLinkWithDescription.php";
-    $options[] = Page\imageLinkWithDescription('Don\'t have an account?',
-        'Sign up here.', "../sign-up/$queryString", 'new-password');
+    include_once "$fnsDir/SignUpEnabled/get.php";
+    if (SignUpEnabled\get()) {
+        include_once "$fnsDir/Page/imageLinkWithDescription.php";
+        $options[] = Page\imageLinkWithDescription('Don\'t have an account?',
+            'Sign up here.', "../sign-up/$queryString", 'new-password');
+    }
 
     include_once __DIR__.'/../../fns/create_panel.php';
     return create_panel('Options', join('<div class="hr"></div>', $options));
