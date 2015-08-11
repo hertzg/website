@@ -11,7 +11,6 @@
     border: 2px solid #ccc;
     border-radius: 2px;
     font-weight: bold;
-    color: #777;
 }
 .newItemButton:active {
     color: #fff;
@@ -34,7 +33,7 @@
     position: absolute;
 }
 .newItemButton-icon > .background {
-    background: #777;
+    background-color: #000;
 }
 .newItemButton-icon > .horizontal {
     top: 6px;

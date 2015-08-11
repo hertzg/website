@@ -9,7 +9,7 @@ function create_content ($mysqli, $folder, $parentFolder, $items) {
     include_once "$fnsDir/create_folder_link.php";
     include_once "$fnsDir/Page/tabs.php";
     include_once "$fnsDir/Page/sessionErrors.php";
-    include_once "$fnsDir/Page/warnings.php";
+    include_once "$fnsDir/Page/text.php";
     return Page\tabs(
         [
             [
@@ -19,10 +19,10 @@ function create_content ($mysqli, $folder, $parentFolder, $items) {
         ],
         "Move Folder #$id_folders",
         Page\sessionErrors('files/move-folder/errors')
-        .Page\warnings([
-            'Moving the folder "<b>'.htmlspecialchars($folder->name).'</b>".',
-            'Select a folder to move the folder into.'
-        ])
+        .Page\text(
+            'Moving the folder "<b>'.htmlspecialchars($folder->name).'</b>".<br />'
+            .'Select a folder to move the folder into:'
+        )
         .create_move_location_bar($mysqli, $id_folders,
             $parentFolder, 'id_folders', 'parent_id')
         .join('<div class="hr"></div>', $items)

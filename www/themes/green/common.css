@@ -13,7 +13,6 @@
     color: #281;
 }
 
-.tab-active,
 .tab-spacer {
     background-color: #2a1;
 }
@@ -36,7 +35,6 @@
     border-bottom-color: #2a1;
 }
 
-.tab-normal:focus,
 .topLink:focus {
     border-color: #2a1;
     background: rgba(34, 170, 17, 0.2);

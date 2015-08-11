@@ -22,7 +22,7 @@ function removeRecipientPage ($mysqli, $user,
     include_once __DIR__.'/recipientsPanels.php';
     include_once "$fnsDir/Page/confirmDialog.php";
     include_once "$fnsDir/Page/tabs.php";
-    include_once "$fnsDir/Page/warnings.php";
+    include_once "$fnsDir/Page/text.php";
     $content =
         \Page\tabs(
             [
@@ -32,7 +32,7 @@ function removeRecipientPage ($mysqli, $user,
                 ],
             ],
             'Send',
-            \Page\warnings(["Send the $text to:"])
+            \Page\text("Send the $text to:")
             .recipientsPanels($recipients, $contacts, $itemParams, '../')
         )
         .\Page\confirmDialog('Are you sure you want to remove the recipient'

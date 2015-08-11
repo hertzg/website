@@ -60,7 +60,7 @@ if ($values['usernameError']) {
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/sessionMessages.php";
 include_once "$fnsDir/Page/tabs.php";
-include_once "$fnsDir/Page/warnings.php";
+include_once "$fnsDir/Page/text.php";
 $content = Page\tabs(
     [
         [
@@ -71,7 +71,7 @@ $content = Page\tabs(
     'Send',
     Page\sessionErrors('files/send-file/errors')
     .Page\sessionMessages('files/send-file/messages')
-    .Page\warnings(['Send the file to:'])
+    .Page\text('Send the file to:')
     .$content
 );
 

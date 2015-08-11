@@ -34,7 +34,7 @@ function create_page ($user, $base = '') {
     include_once __DIR__.'/create_options_panel.php';
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
-    include_once "$fnsDir/Page/warnings.php";
+    include_once "$fnsDir/Page/text.php";
     return Page\tabs(
         [
             [
@@ -44,7 +44,7 @@ function create_page ($user, $base = '') {
         ],
         'Reorder Items',
         Page\sessionMessages('home/customize/reorder/messages')
-        .Page\warnings(['Select an item to move up or down.'])
+        .Page\text('Select an item to move up or down:')
         .join('<div class="hr"></div>', $items)
         .create_options_panel($base)
     );

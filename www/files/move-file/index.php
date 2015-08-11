@@ -65,7 +65,7 @@ unset(
 include_once '../fns/create_move_location_bar.php';
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/tabs.php";
-include_once "$fnsDir/Page/warnings.php";
+include_once "$fnsDir/Page/text.php";
 $content = Page\tabs(
     [
         [
@@ -75,10 +75,10 @@ $content = Page\tabs(
     ],
     'Move',
     Page\sessionErrors('files/move-file/errors')
-    .Page\warnings([
-        'Moving the file "<b>'.htmlspecialchars($file->name).'</b>".',
-        'Select a folder to move the file into.',
-    ])
+    .Page\text(
+        'Moving the file "<b>'.htmlspecialchars($file->name).'</b>".<br />'
+        .'Select a folder to move the file into:'
+    )
     .create_move_location_bar($mysqli, $id, $parentFolder, 'id', 'id_folders')
     .join('<div class="hr"></div>', $items)
 );

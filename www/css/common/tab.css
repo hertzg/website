@@ -1,10 +1,17 @@
 .tab {
     position: relative;
-    background-color: #eee;
+    background-color: #fff;
 }
 .tab-bar {
-    display: inline-block;
+    text-align: center;
     white-space: nowrap;
+}
+.tab-normal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: auto;
+    font-weight: bold;
 }
 .tab-normal,
 .tab-active {
@@ -13,12 +20,7 @@
     line-height: 44px;
     padding-left: 8px;
     padding-right: 8px;
-    color: #777;
-    font-weight: bold;
     border: 2px solid transparent;
-}
-.tab-active {
-    color: #fff;
 }
 .tab-spacer {
     height: 6px;

@@ -18,25 +18,25 @@
 }
 
 .textList.errors {
-    background: #fbb;
+    background-color: #fbb;
     color: #911;
 }
 .textList.errors .bullet {
-    background: #911;
+    background-color: #911;
 }
 
 .textList.messages {
-    background: #9e9;
+    background-color: #9e9;
     color: #191;
 }
 .textList.messages .bullet {
-    background: #191;
+    background-color: #191;
 }
 
 .textList.warnings {
-    background: #eee;
-    color: #444;
+    background-color: #ffc;
+    color: #c71;
 }
 .textList.warnings .bullet {
-    background: #444;
+    background-color: #c71;
 }

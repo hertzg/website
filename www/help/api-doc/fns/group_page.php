@@ -20,7 +20,7 @@ function group_page ($groupKey, $methods, $subgroups = null) {
     }
 
     include_once "$fnsDir/Page/tabs.php";
-    include_once "$fnsDir/Page/warnings.php";
+    include_once "$fnsDir/Page/text.php";
     $content = Page\tabs(
         [
             [
@@ -29,7 +29,7 @@ function group_page ($groupKey, $methods, $subgroups = null) {
             ],
         ],
         $group['title'],
-        Page\warnings(["$group[description]:"])
+        Page\text("$group[description]:")
         .join('<div class="hr"></div>', $items)
     );
 

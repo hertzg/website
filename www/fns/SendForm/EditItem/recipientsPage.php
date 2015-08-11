@@ -58,7 +58,7 @@ function recipientsPage ($mysqli, $user, $id, $pageTitle,
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
-    include_once "$fnsDir/Page/warnings.php";
+    include_once "$fnsDir/Page/text.php";
     $content = \Page\tabs(
         [
             [
@@ -69,7 +69,7 @@ function recipientsPage ($mysqli, $user, $id, $pageTitle,
         'Send',
         \Page\sessionErrors($errorsKey)
         .\Page\sessionMessages($messagesKey)
-        .\Page\warnings(["Send the edited $text to:"])
+        .\Page\text("Send the edited $text to:")
         .$content
     );
 

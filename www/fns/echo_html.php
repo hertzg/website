@@ -50,7 +50,7 @@ function echo_html ($title, $head, $body, $theme, $base) {
                 .compressed_css_link('common', $base)
                 .compressed_css_link('iconsets', $base)
                 .'<link rel="stylesheet" type="text/css"'
-                ." href=\"{$base}themes/$theme/common.css?18\" />"
+                ." href=\"{$base}themes/$theme/common.css?19\" />"
                 .$head
             .'</head>'
             .'<body>'

@@ -7,7 +7,7 @@ function tabs ($tabs, $activeTabTitle, $content, $newItemButton = '') {
     $itemsHtml = '';
     foreach ($tabs as $tab) {
         $itemsHtml .=
-            "<a class=\"tab-normal\" href=\"$tab[href]\">"
+            "<a class=\"clickable tab-normal\" href=\"$tab[href]\">"
                 ."&laquo;<span class=\"secondary\"> $tab[title]</span>"
             .'</a>';
     }

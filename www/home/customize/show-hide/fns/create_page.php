@@ -28,7 +28,7 @@ function create_page ($user, $base = '') {
     include_once "$fnsDir/Page/imageLinkWithDescription.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
-    include_once "$fnsDir/Page/warnings.php";
+    include_once "$fnsDir/Page/text.php";
     return
         Page\tabs(
             [
@@ -39,7 +39,7 @@ function create_page ($user, $base = '') {
             ],
             'Show / Hide Items',
             Page\sessionMessages('home/customize/show-hide/messages')
-            .Page\warnings(['Select items to see them on your home page.'])
+            .Page\text('Select items to see them on your home page:')
             ."<form action=\"{$base}submit.php\" method=\"post\">"
                 .join('<div class="hr"></div>', $items)
             .'</form>'
