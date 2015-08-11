@@ -12,7 +12,7 @@ list($value) = request_strings('value');
 $boldValue = '"<b>'.htmlspecialchars($value).'</b>"';
 $items = [];
 $errors = [];
-$warnings = [];
+$text_html = '';
 
 $url = parse_url($value);
 
@@ -25,7 +25,10 @@ if (array_key_exists('scheme', $url) && array_key_exists('path', $url)) {
 
         $escapedPath = htmlspecialchars($path);
         $pathParam = rawurlencode($path);
-        $warnings[] = "What would you like to do with \"<b>$escapedPath</b>\"?";
+
+        include_once "$fnsDir/Page/text.php";
+        $text_html = Page\text(
+            "What would you like to do with \"<b>$escapedPath</b>\"?");
 
         if ($scheme === 'mailto') {
             $type = 'email';
@@ -60,13 +63,6 @@ if ($errors) {
     $errorsHtml = '';
 }
 
-if ($warnings) {
-    include_once "$fnsDir/Page/warnings.php";
-    $warningsHtml = Page\warnings($warnings);
-} else {
-    $warningsHtml = '';
-}
-
 include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
     [
@@ -76,7 +72,7 @@ $content = Page\tabs(
         ],
     ],
     'Handle Link',
-    $errorsHtml.$warningsHtml.join('<div class="hr"></div>', $items)
+    $errorsHtml.$text_html.join('<div class="hr"></div>', $items)
 );
 
 include_once "$fnsDir/echo_page.php";
