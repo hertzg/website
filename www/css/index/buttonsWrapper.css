@@ -32,3 +32,8 @@
 .buttonsWrapper-limit.right {
     right: 0;
 }
+.buttonsWrapper-limit.center {
+    right: 0;
+    left: 0;
+    margin: auto;
+}

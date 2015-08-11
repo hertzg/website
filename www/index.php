@@ -19,6 +19,32 @@ include_once 'fns/get_revision.php';
 $icon16href = 'images/icons/16.png?'.get_revision('images/icons/16.png');
 $icon32href = 'images/icons/32.png?'.get_revision('images/icons/32.png');
 
+include_once 'fns/SignUpEnabled/get.php';
+if (SignUpEnabled\get()) {
+    $buttons =
+        '<div class="buttonsWrapper-half left">'
+            .'<div class="buttonsWrapper-limit left">'
+                .'<div class="buttonWrapper left">'
+                    .'<a class="button" href="sign-in/">Sign In</a>'
+                .'</div>'
+            .'</div>'
+        .'</div>'
+        .'<div class="buttonsWrapper-half right">'
+            .'<div class="buttonsWrapper-limit right">'
+                .'<div class="buttonWrapper right">'
+                    .'<a class="button" href="sign-up/">Sign Up</a>'
+                .'</div>'
+            .'</div>'
+        .'</div>';
+} else {
+    $buttons =
+        '<div class="buttonsWrapper-limit center">'
+            .'<div class="buttonWrapper center">'
+                .'<a class="button" href="sign-in/">Sign In</a>'
+            .'</div>'
+        .'</div>';
+}
+
 header('Content-Type: text/html; charset=UTF-8');
 
 include_once 'fns/compressed_css_link.php';
@@ -55,20 +81,7 @@ echo
             .'</div>'
             .'<br class="zeroHeight" />'
             .'<div class="buttonsWrapper">'
-                .'<div class="buttonsWrapper-half left">'
-                    .'<div class="buttonsWrapper-limit left">'
-                        .'<div class="buttonWrapper left">'
-                            .'<a class="button" href="sign-in/">Sign In</a>'
-                        .'</div>'
-                    .'</div>'
-                .'</div>'
-                .'<div class="buttonsWrapper-half right">'
-                    .'<div class="buttonsWrapper-limit right">'
-                        .'<div class="buttonWrapper right">'
-                            .'<a class="button" href="sign-up/">Sign Up</a>'
-                        .'</div>'
-                    .'</div>'
-                .'</div>'
+                .$buttons
             .'</div>'
             .'<script type="text/javascript">'
                 ."var base = ''"
