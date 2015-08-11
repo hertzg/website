@@ -27,7 +27,6 @@
 .tab-spacer {
     height: 6px;
     position: relative;
-    border-bottom: 1px solid transparent;
 }
 .tab-content {
     background: #fff;

@@ -13,12 +13,9 @@
     color: #d70;
 }
 
-.tab-active {
-    background-color: #f80;
-}
+.tab-active,
 .tab-spacer {
-    background-color: #d70;
-    border-bottom-color: #b60;
+    background-color: #f80;
 }
 
 .tag:focus,
