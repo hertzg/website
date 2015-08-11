@@ -2,7 +2,7 @@
 
 function create_tag_filter_bar ($tags, $params) {
     $html =
-        '<div class="greyBar textAndButtons">'
+        '<div class="textAndButtons">'
             .'<span class="textAndButtons-text">Filter by a tag:</span>';
     foreach ($tags as $tag) {
         $tag_name = $tag->tag_name;

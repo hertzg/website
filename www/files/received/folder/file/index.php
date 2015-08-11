@@ -36,7 +36,7 @@ $content = Page\tabs(
         ],
     ],
     $title,
-    '<div class="greyBar textAndButtons">'
+    '<div class="textAndButtons">'
         .'<span class="textAndButtons-text">Location:</span>'
         ."<a class=\"tag\" href=\"../?id=$id_received_folders#file_$id\">"
             .htmlspecialchars($receivedFolderFile->received_folder_name)

@@ -26,7 +26,7 @@ function locationBar ($mysqli, $file) {
     $parentLinks[] = "<a class=\"tag\" href=\"../#$hash\">root</a>";
 
     return
-        '<div class="greyBar textAndButtons">'
+        '<div class="textAndButtons">'
             .'<span class="textAndButtons-text">Location:</span>'
             .join('', array_reverse($parentLinks))
         .'</div>';

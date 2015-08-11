@@ -67,7 +67,7 @@ function create_page ($mysqli, $receivedFolder, &$scripts, $base = '') {
             htmlspecialchars($receivedFolder->sender_username))
         .create_panel(
             'The Folder',
-            '<div class="greyBar textAndButtons">'
+            '<div class="textAndButtons">'
                 .'<span class="textAndButtons-text">Location:</span>'
                 .'<span class="tag active">'
                     .htmlspecialchars($receivedFolder->name)

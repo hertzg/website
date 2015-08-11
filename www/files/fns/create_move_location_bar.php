@@ -38,7 +38,7 @@ function create_move_location_bar ($mysqli,
     }
 
     return
-        '<div class="greyBar textAndButtons">'
+        '<div class="textAndButtons">'
             .'<span class="textAndButtons-text">Location:</span>'
             .join('', array_reverse($parentLinks))
         .'</div>';

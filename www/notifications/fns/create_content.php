@@ -46,7 +46,7 @@ function create_content ($mysqli, $user, $items, $options, $base) {
 
         if (count($channels) + count($subscribedChannels) > 1) {
             $filterBar =
-                '<div class="greyBar textAndButtons">'
+                '<div class="textAndButtons">'
                     .'<span class="textAndButtons-text">'
                         .'Filter by a channel:'
                     .'</span>';
