@@ -38,13 +38,12 @@ function create ($mysqli, $user, &$head, &$scripts) {
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
     return
-        \Page\tabs(
-            [],
-            'Home',
-            \Page\sessionMessages('home/messages')
+        '<div class="tab-spacer"></div>'
+        .'<div class="tab-content">'
+            .\Page\sessionMessages('home/messages')
             .newNotifications($mysqli, $user)
             .join('<div class="hr"></div>', $groupedItems)
-        )
+        .'</div>'
         .optionsPanel()
         .compressed_js_script('searchForm', '../');
 
