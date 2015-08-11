@@ -38,6 +38,7 @@ include_once "$fnsDir/Form/label.php";
 include_once "$fnsDir/InfoEmail/get.php";
 include_once "$fnsDir/Page/sessionMessages.php";
 include_once "$fnsDir/Page/tabs.php";
+include_once "$fnsDir/SignUpEnabled/get.php";
 include_once "$fnsDir/SiteTitle/get.php";
 $content = Page\tabs(
     [
@@ -60,6 +61,8 @@ $content = Page\tabs(
     .Form\label('Uses HTTPS', $https)
     .'<div class="hr"></div>'
     .Form\label('Behind reverse proxy', $behindProxy)
+    .'<div class="hr"></div>'
+    .Form\label('Anyone can sign up', SignUpEnabled\get() ? 'Yes' : 'No')
     .'<div class="hr"></div>'
     .Form\label('Your IP address', $yourAddress)
     .create_panel('Options', $editLink)

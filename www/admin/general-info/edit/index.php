@@ -14,6 +14,7 @@ else {
     include_once "$fnsDir/ClientAddress/GetMethod/get.php";
     include_once "$fnsDir/DomainName/get.php";
     include_once "$fnsDir/InfoEmail/get.php";
+    include_once "$fnsDir/SignUpEnabled/get.php";
     include_once "$fnsDir/SiteBase/get.php";
     include_once "$fnsDir/SiteProtocol/get.php";
     include_once "$fnsDir/SiteTitle/get.php";
@@ -23,6 +24,7 @@ else {
         'infoEmail' => InfoEmail\get(),
         'siteBase' => SiteBase\get(),
         'https' => SiteProtocol\get() === 'https',
+        'signupEnabled' => SignUpEnabled\get(),
         'behindProxy' => ClientAddress\GetMethod\get() === 'behind_proxy',
     ];
 }
@@ -69,6 +71,9 @@ $content =
             .'<div class="hr"></div>'
             .Form\checkbox('behindProxy',
                 'Behind reverse proxy', $values['behindProxy'])
+            .'<div class="hr"></div>'
+            .Form\checkbox('signupEnabled',
+                'Anyone can sign up', $values['signupEnabled'])
             .'<div class="hr"></div>'
             .Form\button('Save Changes')
         .'</form>'

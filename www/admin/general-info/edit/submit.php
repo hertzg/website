@@ -10,9 +10,9 @@ require_admin();
 
 include_once "$fnsDir/request_strings.php";
 list($siteTitle, $domainName, $infoEmail,
-    $siteBase, $https, $behindProxy) = request_strings(
+    $siteBase, $https, $behindProxy, $signupEnabled) = request_strings(
     'siteTitle', 'domainName', 'infoEmail',
-    'siteBase', 'https', 'behindProxy');
+    'siteBase', 'https', 'behindProxy', 'signupEnabled');
 
 include_once "$fnsDir/str_collapse_spaces.php";
 $siteTitle = str_collapse_spaces($siteTitle);
@@ -22,6 +22,7 @@ $siteBase = str_collapse_spaces($siteBase);
 $domainName = preg_replace('/\s+/', '', $domainName);
 $https = (bool)$https;
 $behindProxy = (bool)$behindProxy;
+$signupEnabled = (bool)$signupEnabled;
 
 $errors = [];
 
@@ -62,6 +63,7 @@ if ($errors) {
         'siteBase' => $siteBase,
         'https' => $https,
         'behindProxy' => $behindProxy,
+        'signupEnabled' => $signupEnabled,
     ];
     redirect();
 }
@@ -95,5 +97,8 @@ if ($behindProxy) {
     include_once "$fnsDir/ClientAddress/GetMethod/setDirect.php";
     ClientAddress\GetMethod\setDirect();
 }
+
+include_once "$fnsDir/SignUpEnabled/set.php";
+SignUpEnabled\set($signupEnabled);
 
 redirect('..');
