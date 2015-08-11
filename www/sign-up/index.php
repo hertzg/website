@@ -5,6 +5,16 @@ $base = '../';
 include_once '../fns/require_guest_user.php';
 require_guest_user($base);
 
+include_once '../fns/SignUpEnabled/get.php';
+if (SignUpEnabled\get()) {
+    include_once '../fns/Page/sessionErrors.php';
+    $pageErrors = Page\sessionErrors('sign-up/errors');
+} else {
+    $error = 'This form has been disabled. You no longer can sign up.';
+    include_once '../fns/Page/errors.php';
+    $pageErrors = Page\errors([$error]);
+}
+
 $key = 'sign-up/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
@@ -46,12 +56,11 @@ include_once '../fns/Form/notes.php';
 include_once '../fns/Form/password.php';
 include_once '../fns/Form/textfield.php';
 include_once '../fns/Page/imageLinkWithDescription.php';
-include_once '../fns/Page/sessionErrors.php';
 include_once '../fns/Page/tabs.php';
 $content = Page\tabs(
     [],
     'Sign Up',
-    Page\sessionErrors('sign-up/errors')
+    $pageErrors
     .'<form action="submit.php" method="post">'
         .Form\textfield('username', 'Username', [
             'value' => $values['username'],

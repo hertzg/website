@@ -6,6 +6,11 @@ require_same_domain_referer('./');
 include_once '../fns/require_guest_user.php';
 require_guest_user('../');
 
+include_once '../fns/redirect.php';
+
+include_once '../fns/SignUpEnabled/get.php';
+if (!SignUpEnabled\get()) redirect();
+
 include_once '../fns/request_strings.php';
 list($username, $password1, $password2,
     $email, $captcha, $return) = request_strings(
@@ -31,8 +36,6 @@ if ($email !== '') {
 
 include_once '../fns/Captcha/check.php';
 Captcha\check($errors);
-
-include_once '../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['sign-up/errors'] = $errors;
