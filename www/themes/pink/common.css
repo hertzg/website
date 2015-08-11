@@ -32,19 +32,13 @@
 }
 
 .panel-title {
+    color: #f6a;
     border-bottom-color: #f6a;
 }
 
-.tab-normal:focus {
-    border-color: #e59;
-    background-color: #694a58;
-}
-
+.tab-normal:focus,
 .topLink:focus {
     border-color: #f6a;
-}
-
-.topLink:focus {
     background: rgba(255, 102, 170, 0.2);
 }
 .topLink:active {
