@@ -15,7 +15,6 @@
 
 .tab-active {
     background-color: #2a1;
-    box-shadow: 0 -16px 16px #281 inset, 0 0 6px rgba(0, 0, 0, 0.4);
 }
 .tab-spacer {
     background-color: #281;
@@ -24,13 +23,7 @@
 
 .tag:focus,
 .newItemButton:focus {
-    box-shadow: 0 -16px 16px #ecffe7 inset;
     border-color: #2a1;
-}
-.tag.active,
-.tag:active,
-.newItemButton:active {
-    box-shadow: none;
 }
 
 .tag.active,

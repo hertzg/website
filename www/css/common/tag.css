@@ -2,7 +2,6 @@
     display: inline-block;
     vertical-align: top;
     min-width: 48px;
-    box-shadow: 0 -16px 16px #eee inset;
     text-align: center;
     font-weight: bold;
     background: #fff;
@@ -18,7 +17,6 @@
 }
 .tag.active,
 .tag:active {
-    box-shadow: none;
     color: #fff;
     border: 0;
     padding: 2px 9px;

@@ -20,13 +20,9 @@
     color: #fff;
     font-weight: bold;
     background-color: #555;
-    box-shadow: 0 -16px 16px #444 inset, 0 0 6px rgba(34, 34, 34, 0.6);
     border-radius: 2px 2px 0 0;
     border: 2px solid transparent;
     border-bottom: 0;
-}
-.tab-normal:focus {
-    box-shadow: 0 0 6px rgba(34, 34, 34, 0.6);
 }
 .tab-spacer {
     height: 6px;

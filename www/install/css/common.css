@@ -54,7 +54,7 @@ p {
     color: #f80;
 }
 .link:focus {
-    box-shadow: 0 0 1px 2px #f80;
+    outline: 2px solid #f80;
 }
 
 .error {
