@@ -1,13 +1,11 @@
 .panel {
-    background: #444 repeat-x 50% 0%;
-    background-image: linear-gradient(#333, #444 25px);
+    background-color: #fff;
 }
 .panel-title {
-    color: #fff;
-    padding: 8px;
+    height: 32px;
+    line-height: 30px;
+    padding-right: 12px;
+    padding-left: 12px;
+    border-bottom: 2px solid transparent;
     font-weight: bold;
-    border-bottom: 1px solid transparent;
-}
-.panel-content {
-    background: #fff;
 }

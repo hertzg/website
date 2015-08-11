@@ -35,9 +35,7 @@
 }
 
 .panel-title {
-    background-color: #2a1;
-    background-image: linear-gradient(#2a1, #281);
-    border-bottom-color: #261;
+    border-bottom-color: #2a1;
 }
 
 .tab-normal:focus {
