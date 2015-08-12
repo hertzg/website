@@ -32,7 +32,7 @@
 
 .panel-title {
     color: #f80;
-    border-bottom-color: #f80;
+    border-top-color: #f80;
 }
 
 .topLink:focus {
