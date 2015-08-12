@@ -1,8 +1,6 @@
 .navigation {
-    background: #eee;
     text-align: center;
     line-height: 48px;
-    color: #444;
     position: relative;
 }
 .navigation > .center {

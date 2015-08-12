@@ -64,7 +64,7 @@ include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/echo_page.php";
 echo_page($user, 'Calendar', $content, $base, [
     'head' =>
-        '<link rel="stylesheet" type="text/css" href="index.css?10" />'
+        '<link rel="stylesheet" type="text/css" href="index.css?11" />'
         .'<link rel="stylesheet" type="text/css"'
         ." href=\"themes/$user->theme/index.css?2\" />"
         .compressed_css_link('calendarIcon', $base),
