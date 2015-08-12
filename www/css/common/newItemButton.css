@@ -20,6 +20,9 @@
     padding-right: 7px;
     color: #777;
 }
+:active .newItemButton-text {
+    color: #fff;
+}
 
 .newItemButton-icon {
     position: absolute;
