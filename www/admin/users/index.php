@@ -41,4 +41,4 @@ $content = Page\tabs(
 );
 
 include_once "$fnsDir/echo_guest_page.php";
-echo_guest_page('Set New Username/Password', $content, '../../');
+echo_guest_page('Users', $content, '../../');
