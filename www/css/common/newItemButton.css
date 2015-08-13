@@ -20,7 +20,7 @@
     padding-right: 7px;
     color: #777;
 }
-:active .newItemButton-text {
+.newItemButton:active > .newItemButton-text {
     color: #fff;
 }
 
@@ -51,10 +51,10 @@
     width: 4px;
     height: 16px;
 }
-:active > .newItemButton-icon > .background {
+.newItemButton:active > .newItemButton-icon > .background {
     background: transparent;
 }
-:active > .newItemButton-icon > .foreground {
+.newItemButton:active > .newItemButton-icon > .foreground {
     background: #fff;
 }
 
