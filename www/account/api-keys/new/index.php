@@ -39,7 +39,7 @@ $content = Page\tabs(
             'href' => '..',
         ],
     ],
-    'New',
+    'New API Key',
     Page\sessionErrors('account/api-keys/new/errors')
     .'<form action="submit.php" method="post">'
         .create_general_fields($values)

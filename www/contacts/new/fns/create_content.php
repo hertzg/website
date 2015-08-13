@@ -21,7 +21,7 @@ function create_content ($values) {
                     'href' => ItemList\listHref(),
                 ],
             ],
-            'New',
+            'New Contact',
             Page\sessionErrors('contacts/new/errors')
             .'<form action="submit.php" method="post">'
                 .create_form_items($values)

@@ -40,7 +40,7 @@ $content =
                 'href' => '..',
             ],
         ],
-        'New',
+        'New Connection',
         Page\sessionErrors('account/connections/new/errors')
         .'<form action="submit.php" method="post">'
             .create_form_items($values)

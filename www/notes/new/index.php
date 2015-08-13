@@ -43,7 +43,7 @@ $content =
                 'href' => ItemList\listHref(),
             ],
         ],
-        'New',
+        'New Note',
         Page\sessionErrors('notes/new/errors')
         .'<form action="submit.php" method="post">'
             .create_form_items($values)

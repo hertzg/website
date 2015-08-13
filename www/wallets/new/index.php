@@ -29,7 +29,7 @@ $content = Page\tabs(
             'href' => ItemList\listHref(),
         ],
     ],
-    'New',
+    'New Wallet',
     Page\sessionErrors('wallets/new/errors')
     .'<form action="submit.php" method="post">'
         .create_form_items($values)

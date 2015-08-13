@@ -35,7 +35,7 @@ $content =
                 'href' => '..',
             ],
         ],
-        'New',
+        'New Channel',
         Page\sessionErrors('notifications/channels/add/errors')
         .'<form action="submit.php" method="post">'
             .create_form_items($values)
