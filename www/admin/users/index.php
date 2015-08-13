@@ -5,22 +5,27 @@ require_admin();
 
 unset($_SESSION['admin/messages']);
 
-include_once '../../fns/Users/index.php';
+$fnsDir = '../../fns';
+
+include_once "$fnsDir/Users/index.php";
 include_once '../../lib/mysqli.php';
 $users = Users\index($mysqli);
 
 $items = [];
 if ($users) {
-    include_once '../../fns/Page/imageArrowLink.php';
+    include_once "$fnsDir/Page/imageArrowLink.php";
     foreach ($users as $user) {
+        $id = $user->id_users;
         $items[] = Page\imageArrowLink(htmlspecialchars($user->username),
-            "view/?id=$user->id_users", 'user');
+            "view/?id=$id", 'user', ['id' => $id]);
     }
 } else {
     $items[] = Page\info('No users');
 }
 
-include_once '../../fns/Page/tabs.php';
+include_once "$fnsDir/Page/sessionErrors.php";
+include_once "$fnsDir/Page/sessionMessages.php";
+include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
     [
         [
@@ -29,8 +34,10 @@ $content = Page\tabs(
         ],
     ],
     'Users',
-    join('<div class="hr"></div>', $items)
+    Page\sessionErrors('admin/users/errors')
+    .Page\sessionMessages('admin/users/messages')
+    .join('<div class="hr"></div>', $items)
 );
 
-include_once '../../fns/echo_guest_page.php';
+include_once "$fnsDir/echo_guest_page.php";
 echo_guest_page('Set New Username/Password', $content, '../../');
