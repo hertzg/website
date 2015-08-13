@@ -9,4 +9,5 @@
 }
 .topLink:active {
     color: #fff;
+    border-radius: 0;
 }
