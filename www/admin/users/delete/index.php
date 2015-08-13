@@ -8,17 +8,15 @@ $base = '../../../';
 $fnsDir = '../../../fns';
 
 include_once '../fns/create_view_page.php';
-include_once "$fnsDir/compressed_js_script.php";
-$content = create_view_page($user, $scripts)
-    .compressed_js_script('confirmDialog', $base)
-    .'<script type="text/javascript">'
-        .'var deleteHref = '.json_encode("../delete/submit.php?id=$id")
-    .'</script>'
-    .'<script type="text/javascript" src="index.js"></script>';
+include_once "$fnsDir/Page/confirmDialog.php";
+$content =
+    create_view_page($user, $scripts)
+    .Page\confirmDialog('Are you sure you want to delete the user?',
+        'Yes, delete user', "submit.php?id=$id", "../view/?id=$id");
 
 include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_guest_page.php";
-echo_guest_page("User #$user->id_users", $content, $base, [
+echo_guest_page("Delete User #$id", $content, $base, [
     'head' => compressed_css_link('confirmDialog', $base),
     'scripts' => $scripts,
 ]);

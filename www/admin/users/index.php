@@ -3,9 +3,9 @@
 include_once '../fns/require_admin.php';
 require_admin();
 
-unset($_SESSION['admin/messages']);
-
 $fnsDir = '../../fns';
+
+unset($_SESSION['admin/messages']);
 
 include_once "$fnsDir/Users/index.php";
 include_once '../../lib/mysqli.php';
@@ -20,6 +20,7 @@ if ($users) {
             "view/?id=$id", 'user', ['id' => $id]);
     }
 } else {
+    include_once "$fnsDir/Page/info.php";
     $items[] = Page\info('No users');
 }
 
