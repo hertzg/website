@@ -3,7 +3,7 @@
 namespace SendForm\NewItem;
 
 function recipientsPage ($mysqli, $user,
-    $pageTitle, $text, $errorsKey, $messagesKey, $valuesKey) {
+    $what_upper, $what_lower, $errorsKey, $messagesKey, $valuesKey) {
 
     $base = '../../../';
     $fnsDir = __DIR__.'/../..';
@@ -62,14 +62,14 @@ function recipientsPage ($mysqli, $user,
     $content = \Page\tabs(
         [
             [
-                'title' => 'New',
+                'title' => "New $what_upper",
                 'href' => '../'.\ItemList\escapedPageQuery(),
             ],
         ],
         'Send',
         \Page\sessionErrors($errorsKey)
         .\Page\sessionMessages($messagesKey)
-        .\Page\text("Send the new $text to:")
+        .\Page\text("Send the new $what_lower to:")
         .$content
     );
 
@@ -77,6 +77,7 @@ function recipientsPage ($mysqli, $user,
     \SendForm\removeDialog($recipients, $base, $content, $head);
 
     include_once "$fnsDir/echo_page.php";
-    echo_page($user, $pageTitle, $content, $base, ['head' => $head]);
+    echo_page($user, "Send New $what_upper",
+        $content, $base, ['head' => $head]);
 
 }

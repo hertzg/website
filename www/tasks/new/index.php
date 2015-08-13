@@ -55,7 +55,7 @@ $content =
                 'href' => ItemList\listHref(),
             ],
         ],
-        'New',
+        'New Task',
         Page\sessionErrors('tasks/new/errors')
         .'<form action="submit.php" method="post">'
             .create_form_items($user, $values)

@@ -44,7 +44,7 @@ $content = Page\tabs(
             'href' => ItemList\listHref(),
         ],
     ],
-    'New',
+    'New Schedule',
     Page\sessionErrors('schedules/new/errors')
     .'<form action="submit.php" method="post">'
         .Form\textfield('text', 'Text', [

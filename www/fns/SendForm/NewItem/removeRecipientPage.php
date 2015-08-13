@@ -2,7 +2,8 @@
 
 namespace SendForm\NewItem;
 
-function removeRecipientPage ($mysqli, $user, $username, $text, $recipients) {
+function removeRecipientPage ($mysqli, $user,
+    $username, $what_upper, $what_lower, $recipients) {
 
     $base = '../../../../';
     $fnsDir = __DIR__.'/../..';
@@ -27,12 +28,12 @@ function removeRecipientPage ($mysqli, $user, $username, $text, $recipients) {
         \Page\tabs(
             [
                 [
-                    'title' => 'New',
+                    'title' => "New $what_upper",
                     'href' => "../../$escapedPageQuery",
                 ],
             ],
             'Send',
-            \Page\text("Send the new $text to:")
+            \Page\text("Send the new $what_lower to:")
             .\SendForm\recipientsPanels($recipients,
                 $contacts, $pageParams, '../')
         )

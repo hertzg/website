@@ -19,7 +19,7 @@ $content = Page\tabs(
             'href' => '../'.ItemList\listHref(),
         ],
     ],
-    'New',
+    'New Schedule',
     Page\imageLink('Back', '../'.ItemList\escapedPageQuery(), 'arrow-left')
     .'<div class="hr"></div>'
     .'<form action="submit.php" method="post">'

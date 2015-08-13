@@ -6,5 +6,5 @@ list($user) = require_stage();
 include_once '../../../fns/SendForm/NewItem/recipientsPage.php';
 include_once '../../../lib/mysqli.php';
 SendForm\NewItem\recipientsPage($mysqli, $user,
-    'Send New Task', 'task', 'tasks/new/send/errors',
+    'Task', 'task', 'tasks/new/send/errors',
     'tasks/new/send/messages', 'tasks/new/send/values');

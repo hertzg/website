@@ -41,7 +41,7 @@ $content = Page\tabs(
             'href' => ItemList\listHref(),
         ],
     ],
-    'New',
+    'New Bookmark',
     Page\sessionErrors('bookmarks/new/errors')
     .'<form action="submit.php" method="post">'
         .create_form_items($values)

@@ -34,7 +34,7 @@ $content = Page\tabs(
             'href' => ItemList\listHref(),
         ],
     ],
-    'New',
+    'New Bar Chart',
     Page\sessionErrors('bar-charts/new/errors')
     .'<form action="submit.php" method="post">'
         .create_form_items($values)
