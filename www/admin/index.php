@@ -77,6 +77,8 @@ $content = Page\tabs(
     .'<div class="hr"></div>'
     .Page\imageArrowLink('Set New Username/Password',
         'username-password/', 'generic', ['id' => 'username-password'])
+    .'<div class="hr"></div>'
+    .Page\imageArrowLink('Users', 'users/', 'users', ['id' => 'users'])
 );
 
 include_once '../fns/echo_guest_page.php';
