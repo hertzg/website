@@ -1,12 +1,11 @@
 # auto-generated
-RewriteEngine On
-
-RewriteCond %{HTTP_HOST} ^www\.localhost$
-RewriteRule (.*) http://localhost/$1 [R=301,L]
-
 <FilesMatch "\.(css|js|png|svg|ttf)$">
     Header set Cache-Control "public, max-age=31536000"
 </FilesMatch>
+
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www\.localhost$
+RewriteRule (.*) http://localhost/$1 [R=301,L]
 
 DirectoryIndex index.php
 

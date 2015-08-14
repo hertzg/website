@@ -14,14 +14,13 @@ function write_htaccess () {
 
     $content =
         "# auto-generated\n"
-        ."RewriteEngine On\n"
-        ."\n"
-        ."RewriteCond %{HTTP_HOST} ^www\.$escapedDomainName$\n"
-        ."RewriteRule (.*) $siteProtocol://$domainName/$1 [R=301,L]\n"
-        ."\n"
         ."<FilesMatch \"\.(css|js|png|svg|ttf)$\">\n"
         ."    Header set Cache-Control \"public, max-age=31536000\"\n"
         ."</FilesMatch>\n"
+        ."\n"
+        ."RewriteEngine On\n"
+        ."RewriteCond %{HTTP_HOST} ^www\.$escapedDomainName$\n"
+        ."RewriteRule (.*) $siteProtocol://$domainName/$1 [R=301,L]\n"
         ."\n"
         ."DirectoryIndex index.php\n"
         ."\n"
