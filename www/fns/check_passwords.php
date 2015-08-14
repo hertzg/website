@@ -7,11 +7,9 @@ function check_passwords ($username, $password1, $password2, &$errors) {
         return;
     }
 
-    $fnsDir = __DIR__.'/../../fns';
-
-    include_once "$fnsDir/Password/isShort.php";
+    include_once __DIR__.'/Password/isShort.php';
     if (Password\isShort($password1)) {
-        include_once "$fnsDir/Password/minLength.php";
+        include_once __DIR__.'/Password/minLength.php';
         $minLength = Password\minLength();
         $errors[] = 'Password too short.'
             ." At least $minLength characters required.";

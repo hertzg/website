@@ -26,7 +26,7 @@ include_once '../lib/mysqli.php';
 include_once '../fns/check_username.php';
 check_username($mysqli, $username, $errors);
 
-include_once 'fns/check_passwords.php';
+include_once '../fns/check_passwords.php';
 check_passwords($username, $password1, $password2, $errors);
 
 if ($email !== '') {

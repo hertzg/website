@@ -10,4 +10,6 @@ function create ($mysqli, $username, $password, $email) {
     include_once __DIR__.'/../Directory/mkdirs.php';
     \Users\Directory\mkdirs($id);
 
+    return $id;
+
 }

@@ -5,7 +5,11 @@ require_admin();
 
 $fnsDir = '../../fns';
 
-unset($_SESSION['admin/messages']);
+unset(
+    $_SESSION['admin/messages'],
+    $_SESSION['admin/users/new/errors'],
+    $_SESSION['admin/users/new/values']
+);
 
 include_once "$fnsDir/Users/index.php";
 include_once '../../lib/mysqli.php';
@@ -24,6 +28,7 @@ if ($users) {
     $items[] = Page\info('No users');
 }
 
+include_once "$fnsDir/Page/newItemButton.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/sessionMessages.php";
 include_once "$fnsDir/Page/tabs.php";
@@ -37,7 +42,8 @@ $content = Page\tabs(
     'Users',
     Page\sessionErrors('admin/users/errors')
     .Page\sessionMessages('admin/users/messages')
-    .join('<div class="hr"></div>', $items)
+    .join('<div class="hr"></div>', $items),
+    Page\newItemButton('new/', 'User')
 );
 
 include_once "$fnsDir/echo_guest_page.php";
