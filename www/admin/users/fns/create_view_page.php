@@ -10,6 +10,9 @@ function create_view_page ($user, &$scripts) {
 
     include_once "$fnsDir/export_date_ago.php";
 
+    include_once "$fnsDir/Form/label.php";
+    $items = [Form\label('Username', htmlspecialchars($user->username))];
+
     $access_time = $user->access_time;
     if ($access_time === null) $accessed = 'Never';
     else {
@@ -23,14 +26,26 @@ function create_view_page ($user, &$scripts) {
 
     }
 
+    $items[] = Form\label('Signed up',
+        export_date_ago($user->insert_time, true));
+
+    $items[] = Form\label('Last accessed', $accessed);
+
+    include_once "$fnsDir/bytestr.php";
+    $items[] = Form\label('Using storage', bytestr($user->storage_used));
+
+    $timezone = $user->timezone;
+    if ($timezone) {
+        include_once "$fnsDir/Timezone/format.php";
+        $items[] = Form\label('Timezone', Timezone\format($timezone));
+    }
+
     unset(
         $_SESSION['admin/users/errors'],
         $_SESSION['admin/users/messages']
     );
 
-    include_once "$fnsDir/bytestr.php";
     include_once "$fnsDir/create_panel.php";
-    include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/Page/imageLink.php";
     include_once "$fnsDir/Page/tabs.php";
     return
@@ -42,13 +57,7 @@ function create_view_page ($user, &$scripts) {
                 ],
             ],
             "User #$id",
-            Form\label('Username', htmlspecialchars($user->username))
-            .'<div class="hr"></div>'
-            .Form\label('Signed up', export_date_ago($user->insert_time, true))
-            .'<div class="hr"></div>'
-            .Form\label('Last accessed', $accessed)
-            .'<div class="hr"></div>'
-            .Form\label('Using storage', bytestr($user->storage_used))
+            join('<div class="hr"></div>', $items)
         )
         .create_panel(
             'User Options',
