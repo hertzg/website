@@ -28,6 +28,7 @@ function create_view_page ($user, &$scripts) {
         $_SESSION['admin/users/messages']
     );
 
+    include_once "$fnsDir/bytestr.php";
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/Page/imageLink.php";
@@ -46,6 +47,8 @@ function create_view_page ($user, &$scripts) {
             .Form\label('Signed up', export_date_ago($user->insert_time, true))
             .'<div class="hr"></div>'
             .Form\label('Last accessed', $accessed)
+            .'<div class="hr"></div>'
+            .Form\label('Using storage', bytestr($user->storage_used))
         )
         .create_panel(
             'User Options',
