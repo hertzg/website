@@ -4,9 +4,9 @@ RewriteEngine On
 RewriteCond %{HTTP_HOST} ^www\.localhost$
 RewriteRule (.*) http://localhost/$1 [R=301,L]
 
-<filesMatch "\.(css|js|png|svg|ttf)$">
-    Header set Cache-Control "public, max-age=2592000"
-</filesMatch>
+<FilesMatch "\.(css|js|png|svg|ttf)$">
+    Header set Cache-Control "public, max-age=31536000"
+</FilesMatch>
 
 DirectoryIndex index.php
 
