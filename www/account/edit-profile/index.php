@@ -12,9 +12,6 @@ else $values = (array)$user;
 
 unset($_SESSION['account/messages']);
 
-include_once "$fnsDir/Users/maxLengths.php";
-$maxLengths = Users\maxLengths();
-
 include_once "$fnsDir/Email/maxLength.php";
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/textfield.php";
@@ -22,6 +19,7 @@ include_once "$fnsDir/Form/timezoneSelect.php";
 include_once "$fnsDir/FullName/maxLength.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/tabs.php";
+include_once "$fnsDir/Username/maxLength.php";
 $content = Page\tabs(
     [
         [
@@ -34,7 +32,7 @@ $content = Page\tabs(
     .'<form action="submit.php" method="post">'
         .Form\textfield('username', 'Username', [
             'value' => $values['username'],
-            'maxlength' => $maxLengths['username'],
+            'maxlength' => Username\maxLength(),
             'autofocus' => true,
             'required' => true,
         ])

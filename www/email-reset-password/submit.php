@@ -53,8 +53,8 @@ unset(
     $_SESSION['email-reset-password/values']
 );
 
-include_once "$fnsDir/Users/maxLengths.php";
-$key = openssl_random_pseudo_bytes(Users\maxLengths()['reset_password_key']);
+include_once "$fnsDir/LinkKey/random.php";
+$key = LinkKey\random();
 
 include_once "$fnsDir/Users/editResetPasswordKey.php";
 Users\editResetPasswordKey($mysqli, $user->id_users, $key, $return);

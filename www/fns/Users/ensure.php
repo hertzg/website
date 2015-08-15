@@ -17,6 +17,7 @@ function ensure ($mysqli) {
     include_once "$fnsDir/Email/column.php";
     include_once "$fnsDir/FullName/column.php";
     include_once "$fnsDir/IPAddress/column.php";
+    include_once "$fnsDir/LinkKey/column.php";
     include_once "$fnsDir/Table/ensure.php";
     include_once "$fnsDir/Username/column.php";
     return \Table\ensure($mysqli, 'users', [
@@ -108,10 +109,7 @@ function ensure ($mysqli) {
         ],
         'password_hash' => ['type' => 'binary(16)'],
         'password_salt' => ['type' => 'varbinary(32)'],
-        'reset_password_key' => [
-            'type' => "binary($maxLengths[reset_password_key])",
-            'nullable' => true,
-        ],
+        'reset_password_key' => \LinkKey\column(true),
         'reset_password_key_time' => [
             'type' => 'bigint(20) unsigned',
             'nullable' => true,
@@ -155,10 +153,7 @@ function ensure ($mysqli) {
         ],
         'timezone' => ['type' => 'int(11)'],
         'username' => \Username\column(),
-        'verify_email_key' => [
-            'type' => "binary($maxLengths[verify_email_key])",
-            'nullable' => true,
-        ],
+        'verify_email_key' => \LinkKey\column(true),
         'verify_email_key_time' => [
             'type' => 'bigint(20) unsigned',
             'nullable' => true,
