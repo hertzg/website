@@ -78,7 +78,7 @@ $names = ['account', 'edit-profile', 'download', 'upload', 'feedback',
     'send-sms', 'receive', 'phone', 'edit-home', 'reorder',
     'show-hide', 'restore-defaults', 'forbid-notifications',
     'receive-notifications', 'generic', 'slideshow', 'locate'];
-render($content, 'other.svg?15', $names);
+render($content, 'other.svg?16', $names);
 
 $names = ['schedule', 'create-schedule',
     'edit-schedule', 'schedules', 'duplicate-schedule'];
