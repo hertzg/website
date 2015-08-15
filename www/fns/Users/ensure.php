@@ -4,9 +4,6 @@ namespace Users;
 
 function ensure ($mysqli) {
 
-    include_once __DIR__.'/maxLengths.php';
-    $maxLengths = maxLengths();
-
     $fnsDir = __DIR__.'/..';
 
     include_once "$fnsDir/Themes/index.php";
