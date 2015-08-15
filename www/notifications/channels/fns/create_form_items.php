@@ -4,25 +4,23 @@ function create_form_items ($values) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
-    include_once "$fnsDir/ChannelName/maxLength.php";
-    $maxLength = ChannelName\maxLength();
-
     include_once "$fnsDir/ChannelName/minLength.php";
     $minLength = ChannelName\minLength();
 
+    include_once "$fnsDir/ChannelName/maxLength.php";
     include_once "$fnsDir/Form/checkbox.php";
     include_once "$fnsDir/Form/notes.php";
     include_once "$fnsDir/Form/textfield.php";
     return
         Form\textfield('channel_name', 'Channel name', [
             'value' => $values['channel_name'],
-            'maxlength' => $maxLength,
+            'maxlength' => ChannelName\maxLength(),
             'autofocus' => true,
             'required' => true,
         ])
         .Form\notes([
             'Characters a-z, A-Z, 0-9, dash, dot and underscore only.',
-            "Minimum $minLength maximum $maxLength characters.",
+            "Minimum $minLength characters.",
         ])
         .'<div class="hr"></div>'
         .Form\checkbox('public', 'Mark as public', $values['public'])
