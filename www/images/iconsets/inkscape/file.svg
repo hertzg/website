@@ -280,15 +280,15 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.8284271"
-     inkscape:cx="127.60868"
-     inkscape:cy="82.812923"
+     inkscape:zoom="2"
+     inkscape:cx="92.940567"
+     inkscape:cy="69.703037"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:snap-bbox="true"
-     inkscape:window-width="1920"
-     inkscape:window-height="1017"
+     inkscape:window-width="1366"
+     inkscape:window-height="705"
      inkscape:window-x="0"
      inkscape:window-y="27"
      inkscape:window-maximized="1"
@@ -441,22 +441,6 @@
            height="32" />
       </g>
     </g>
-    <use
-       x="0"
-       y="0"
-       xlink:href="#g5596"
-       id="use4522"
-       transform="translate(-1664,1.7382813e-5)"
-       width="3008"
-       height="32" />
-    <use
-       x="0"
-       y="0"
-       xlink:href="#use4565"
-       id="use4567"
-       transform="translate(-1664,1.7382813e-5)"
-       width="3008"
-       height="32" />
     <g
        id="g4719"
        transform="translate(96,0)">
