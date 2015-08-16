@@ -33,7 +33,8 @@ function create ($user, $event, &$scripts) {
         'event_time' => $event_time,
         'text' => $event->text,
     ]));
-    $duplicateLink = \Page\imageArrowLink('Duplicate', $href, 'duplicate-event');
+    $duplicateLink = \Page\imageArrowLink(
+        'Duplicate', $href, 'duplicate-event');
 
     include_once "$fnsDir/Page/imageLink.php";
     $deleteLink =
@@ -56,8 +57,10 @@ function create ($user, $event, &$scripts) {
         $newEventParams['event_time'] = $event_time;
     }
 
-    include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/ItemList/escapedPageQuery.php";
+    $escapedPageQuery = \ItemList\escapedPageQuery($newEventParams);
+
+    include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/ItemList/listHref.php";
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionMessages.php";
@@ -73,7 +76,7 @@ function create ($user, $event, &$scripts) {
             "Event #$id",
             \Page\sessionMessages('calendar/all-events/view/messages')
             .$viewContent,
-            \Page\newItemButton('../new/'.\ItemList\escapedPageQuery($newEventParams), 'Event')
+            \Page\newItemButton("../new/$escapedPageQuery", 'Event')
         )
         .create_panel('Event Options', $optionsContent);
 

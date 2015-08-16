@@ -47,11 +47,13 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
     render_next_button($offset, $limit, $total, $items);
 
     include_once "$fnsDir/ItemList/escapedPageQuery.php";
+    $escapedPageQuery = ItemList\escapedPageQuery();
+
     include_once "$fnsDir/Page/imageLink.php";
     $deleteLink =
         '<div id="deleteAllLink">'
             .Page\imageLink('Delete All Events',
-                "{$base}delete-all/".ItemList\escapedPageQuery(), 'trash-bin')
+                "{$base}delete-all/$escapedPageQuery", 'trash-bin')
         .'</div>';
 
     unset(
@@ -63,7 +65,6 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
     );
 
     include_once "$fnsDir/create_panel.php";
-    include_once "$fnsDir/ItemList/escapedPageQuery.php";
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
@@ -80,7 +81,7 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
             Page\sessionErrors('calendar/all-events/errors')
             .Page\sessionMessages('calendar/all-events/messages')
             .join('<div class="hr"></div>', $items),
-            Page\newItemButton("{$base}new/".ItemList\escapedPageQuery(), 'Event')
+            Page\newItemButton("{$base}new/$escapedPageQuery", 'Event')
         )
         .create_panel('Options', $deleteLink);
 

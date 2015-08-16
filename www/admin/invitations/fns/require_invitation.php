@@ -16,7 +16,8 @@ function require_invitation ($mysqli) {
     $invitation = Invitations\get($mysqli, $id);
 
     if (!$invitation) {
-        $_SESSION['admin/invitations/errors'] = ['The invitation no longer exists.'];
+        $error = 'The invitation no longer exists.';
+        $_SESSION['admin/invitations/errors'] = [$error];
         unset($_SESSION['admin/invitations/messages']);
         include_once "$fnsDir/redirect.php";
         redirect('..');

@@ -76,8 +76,8 @@ $content = Page\tabs(
     'Move',
     Page\sessionErrors('files/move-file/errors')
     .Page\text(
-        'Moving the file "<b>'.htmlspecialchars($file->name).'</b>".<br />'
-        .'Select a folder to move the file into:'
+        'Moving the file "<b>'.htmlspecialchars($file->name).'</b>".'
+        .'<br />Select a folder to move the file into:'
     )
     .create_move_location_bar($mysqli, $id, $parentFolder, 'id', 'id_folders')
     .join('<div class="hr"></div>', $items)
