@@ -4,6 +4,8 @@ include_once '../fns/require_user.php';
 include_once '../../../lib/mysqli.php';
 list($user, $id) = require_user($mysqli);
 
+unset($_SESSION['admin/users/view/messages']);
+
 $base = '../../../';
 $fnsDir = '../../../fns';
 

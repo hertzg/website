@@ -8,7 +8,8 @@ $fnsDir = '../../fns';
 unset(
     $_SESSION['admin/messages'],
     $_SESSION['admin/users/new/errors'],
-    $_SESSION['admin/users/new/values']
+    $_SESSION['admin/users/new/values'],
+    $_SESSION['admin/users/view/messages']
 );
 
 include_once "$fnsDir/Users/index.php";
