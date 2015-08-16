@@ -18,7 +18,7 @@ $content = create_view_page($user, $scripts)
 
 include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_guest_page.php";
-echo_guest_page("User #$user->id_users", $content, $base, [
+echo_guest_page("User #$id", $content, $base, [
     'head' => compressed_css_link('confirmDialog', $base),
     'scripts' => $scripts,
 ]);
