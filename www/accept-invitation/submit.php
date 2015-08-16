@@ -51,7 +51,7 @@ Invitations\delete($mysqli, $id);
 include_once '../fns/Cookie/set.php';
 Cookie\set('username', $username);
 
-$text = "$username has signed up.";
+$text = "$username has accepted an invitation.";
 
 include_once 'fns/send_email.php';
 send_email($username);
