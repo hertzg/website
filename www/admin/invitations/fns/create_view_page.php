@@ -65,8 +65,8 @@ function create_view_page ($invitation, &$scripts) {
         .create_panel(
             'Invitation Options',
             Page\staticTwoColumns(
-                Page\imageLink('Edit',
-                    "../edit/?id=$id", 'TODO', ['id' => 'edit']),
+                Page\imageLink('Edit', "../edit/?id=$id",
+                    'edit-invitation', ['id' => 'edit']),
                 '<div id="deleteLink">'
                     .Page\imageLink('Delete', "../delete/?id=$id", 'trash-bin')
                 .'</div>'

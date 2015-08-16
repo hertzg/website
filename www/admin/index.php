@@ -83,7 +83,7 @@ $content = Page\tabs(
         'username-password/', 'generic', ['id' => 'username-password'])
     .'<div class="hr"></div>'
     .Page\imageArrowLink('Invitations', 'invitations/',
-        'generic', ['id' => 'invitations'])
+        'invitations', ['id' => 'invitations'])
     .'<div class="hr"></div>'
     .Page\imageArrowLink('Users', 'users/', 'users', ['id' => 'users'])
 );

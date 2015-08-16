@@ -22,7 +22,7 @@ if ($invitations) {
         $id = $invitation->id;
         $note = $invitation->note;
         $href = "view/?id=$id";
-        $icon = 'generic';
+        $icon = 'invitation';
         $options = ['id' => $id];
         $key = bin2hex($invitation->key);
         if ($note === '') {

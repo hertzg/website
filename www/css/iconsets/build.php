@@ -55,6 +55,9 @@ $names = ['folder', 'create-folder',
     'copy-folder', 'move-folder', 'import-folder'];
 render($content, 'folder.svg?5', $names);
 
+$names = ['invitation', 'create-invitation', 'edit-invitation', 'invitations'];
+render($content, 'invitation.svg', $names);
+
 $names = ['move-up', 'move-to-top', 'move-down', 'move-to-bottom'];
 render($content, 'move.svg?1', $names);
 
