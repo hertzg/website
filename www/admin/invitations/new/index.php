@@ -3,13 +3,12 @@
 include_once '../../fns/require_admin.php';
 require_admin();
 
-$fnsDir = '../../../fns';
-
 unset($_SESSION['admin/invitations/messages']);
 
+$fnsDir = '../../../fns';
+
+include_once '../fns/create_form_items.php';
 include_once "$fnsDir/Form/button.php";
-include_once "$fnsDir/Form/notes.php";
-include_once "$fnsDir/Form/textfield.php";
 include_once "$fnsDir/Invitations/maxLengths.php";
 include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
@@ -21,11 +20,7 @@ $content = Page\tabs(
     ],
     'New Invitation',
     '<form action="submit.php" method="post">'
-        .Form\textfield('note', 'Note', [
-            'maxlength' => Invitations\maxLengths()['note'],
-            'autofocus' => true,
-        ])
-        .Form\notes(['Optional.'])
+        .create_form_items(['note' => ''])
         .'<div class="hr"></div>'
         .Form\button('Save Invitation')
     .'</form>'

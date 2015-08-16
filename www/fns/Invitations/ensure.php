@@ -21,6 +21,8 @@ function ensure ($mysqli) {
         ],
         'insert_time' => ['type' => 'bigint(20) unsigned'],
         'key' => \LinkKey\column(),
+        'revision' => ['type' => 'bigint(20) unsigned'],
+        'update_time' => ['type' => 'bigint(20) unsigned'],
     ]);
 
 }

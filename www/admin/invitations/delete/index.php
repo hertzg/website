@@ -4,6 +4,8 @@ include_once '../fns/require_invitation.php';
 include_once '../../../lib/mysqli.php';
 list($invitation, $id) = require_invitation($mysqli);
 
+unset($_SESSION['admin/invitations/view/messages']);
+
 $base = '../../../';
 $fnsDir = '../../../fns';
 

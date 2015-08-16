@@ -1,0 +1,32 @@
+<?php
+
+include_once '../fns/require_invitation.php';
+include_once '../../../lib/mysqli.php';
+list($invitation, $id) = require_invitation($mysqli);
+
+unset($_SESSION['admin/invitations/view/messages']);
+
+$fnsDir = '../../../fns';
+
+include_once '../fns/create_form_items.php';
+include_once "$fnsDir/Form/button.php";
+include_once "$fnsDir/Invitations/maxLengths.php";
+include_once "$fnsDir/Page/tabs.php";
+$content = Page\tabs(
+    [
+        [
+            'title' => "Invitation #$id",
+            'href' => "../view/?id=$id#edit",
+        ],
+    ],
+    'Edit',
+    '<form action="submit.php" method="post">'
+        .create_form_items(['note' => $invitation->note])
+        .'<div class="hr"></div>'
+        .Form\button('Save Changes')
+        ."<input type=\"hidden\" name=\"id\" value=\"$id\" />"
+    .'</form>'
+);
+
+include_once "$fnsDir/echo_guest_page.php";
+echo_guest_page("Edit Invitation #$id", $content, '../../../');

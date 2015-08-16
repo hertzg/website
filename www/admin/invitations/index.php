@@ -5,7 +5,10 @@ require_admin();
 
 $fnsDir = '../../fns';
 
-unset($_SESSION['admin/messages']);
+unset(
+    $_SESSION['admin/invitations/view/messages'],
+    $_SESSION['admin/messages']
+);
 
 include_once "$fnsDir/Invitations/index.php";
 include_once '../../lib/mysqli.php';
