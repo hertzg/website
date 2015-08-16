@@ -54,7 +54,9 @@ include_once '../fns/Form/password.php';
 include_once '../fns/Form/textfield.php';
 include_once '../fns/Page/imageLinkWithDescription.php';
 include_once '../fns/Page/tabs.php';
+include_once '../fns/Password/minLength.php';
 include_once '../fns/Username/maxLength.php';
+include_once '../fns/Username/minLength.php';
 $content = Page\tabs(
     [],
     'Sign Up',
@@ -68,7 +70,7 @@ $content = Page\tabs(
         ])
         .Form\notes([
             'Characters a-z, A-Z, 0-9, dash, dot and underscore only.',
-            'Minimum 6 characters.',
+            'Minimum '.Username\minLength().' characters.',
         ])
         .'<div class="hr"></div>'
         .Form\password('password1', 'Password', [
@@ -76,7 +78,7 @@ $content = Page\tabs(
             'required' => true,
         ])
         .Form\notes([
-            'Minimum 6 characters.',
+            'Minimum '.Password\minLength().' characters.',
             'Example: '.htmlspecialchars(example_password(9)),
         ])
         .'<div class="hr"></div>'

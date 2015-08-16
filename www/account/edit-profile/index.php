@@ -14,12 +14,14 @@ unset($_SESSION['account/messages']);
 
 include_once "$fnsDir/Email/maxLength.php";
 include_once "$fnsDir/Form/button.php";
+include_once "$fnsDir/Form/notes.php";
 include_once "$fnsDir/Form/textfield.php";
 include_once "$fnsDir/Form/timezoneSelect.php";
 include_once "$fnsDir/FullName/maxLength.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/tabs.php";
 include_once "$fnsDir/Username/maxLength.php";
+include_once "$fnsDir/Username/minLength.php";
 $content = Page\tabs(
     [
         [
@@ -35,6 +37,10 @@ $content = Page\tabs(
             'maxlength' => Username\maxLength(),
             'autofocus' => true,
             'required' => true,
+        ])
+        .Form\notes([
+            'Characters a-z, A-Z, 0-9, dash, dot and underscore only.',
+            'Minimum '.Username\minLength().' characters.',
         ])
         .'<div class="hr"></div>'
         .Form\textfield('email', 'Email', [
