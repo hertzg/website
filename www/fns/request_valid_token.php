@@ -12,10 +12,8 @@ function request_valid_token ($mysqli, $array = null) {
 
     if (!is_string($username) && !is_string($token_text)) return;
 
-    include_once __DIR__.'/is_md5.php';
-    if (!is_md5($token_text)) return;
-
-    $token_text = hex2bin($token_text);
+    $token_text = @hex2bin($token_text);
+    if ($token_text === false) return;
 
     include_once __DIR__.'/Tokens/getByUsernameTokenText.php';
     $token = Tokens\getByUsernameTokenText($mysqli, $username, $token_text);

@@ -3,16 +3,13 @@
 include_once '../fns/require_same_domain_referer.php';
 require_same_domain_referer('..');
 
-include_once '../fns/require_guest_user.php';
-require_guest_user('../');
-
 include_once 'fns/require_valid_key.php';
 include_once '../lib/mysqli.php';
 list($user, $key, $id_users) = require_valid_key($mysqli);
 
 if (!$user) {
     include_once '../fns/redirect.php';
-    redirect("./?id_users=$id_users&key=$key");
+    redirect("./?id_users=$id_users&key=".bin2hex($key));
 }
 
 include_once '../fns/request_strings.php';
@@ -48,7 +45,7 @@ if ($errors) {
         'password1' => $password1,
         'password2' => $password2,
     ];
-    redirect("./?id_users=$id_users&key=$key");
+    redirect("./?id_users=$id_users&key=".bin2hex($key));
 }
 
 unset(
