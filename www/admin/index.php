@@ -5,6 +5,8 @@ require_admin();
 
 unset(
     $_SESSION['admin/general-info/messages'],
+    $_SESSION['admin/invitations/errors'],
+    $_SESSION['admin/invitations/messages'],
     $_SESSION['admin/mysql-settings/messages'],
     $_SESSION['admin/username-password/errors'],
     $_SESSION['admin/username-password/values'],
@@ -79,6 +81,9 @@ $content = Page\tabs(
     .'<div class="hr"></div>'
     .Page\imageArrowLink('Set New Username/Password',
         'username-password/', 'generic', ['id' => 'username-password'])
+    .'<div class="hr"></div>'
+    .Page\imageArrowLink('Invitations', 'invitations/',
+        'generic', ['id' => 'invitations'])
     .'<div class="hr"></div>'
     .Page\imageArrowLink('Users', 'users/', 'users', ['id' => 'users'])
 );

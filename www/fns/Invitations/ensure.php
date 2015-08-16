@@ -6,11 +6,15 @@ function ensure ($mysqli) {
 
     $fnsDir = __DIR__.'/..';
 
-    include_once "$fnsDir/Email/column.php";
+    include_once __DIR__.'/maxLengths.php';
     include_once "$fnsDir/LinkKey/column.php";
     include_once "$fnsDir/Table/ensure.php";
-    return \Table\ensure($mysqli, 'invalid_signins', [
-        'email' => \Email\column(),
+    return \Table\ensure($mysqli, 'invitations', [
+        'note' => [
+            'type' => 'varchar('.maxLengths()['note'].')',
+            'characterSet' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+        ],
         'id' => [
             'type' => 'bigint(20) unsigned',
             'primary' => true,
