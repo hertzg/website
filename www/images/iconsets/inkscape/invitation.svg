@@ -45,11 +45,11 @@
       <stop
          id="stop3594-6-5-3"
          offset="0"
-         style="stop-color:#000000;stop-opacity:0.2;" />
+         style="stop-color:#777777;stop-opacity:0.46666667;" />
       <stop
          id="stop3596-3-6-0"
          offset="1"
-         style="stop-color:#000000;stop-opacity:0;" />
+         style="stop-color:#777777;stop-opacity:0;" />
     </linearGradient>
     <radialGradient
        r="16"
@@ -185,14 +185,14 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1"
-     inkscape:cx="112.28997"
-     inkscape:cy="18.245617"
+     inkscape:zoom="8"
+     inkscape:cx="80.923449"
+     inkscape:cy="7.7776538"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1366"
-     inkscape:window-height="705"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
      inkscape:window-x="0"
      inkscape:window-y="27"
      inkscape:window-maximized="1">

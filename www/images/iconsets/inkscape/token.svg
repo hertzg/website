@@ -30,7 +30,7 @@
      id="namedview6348"
      showgrid="false"
      inkscape:zoom="3.4583333"
-     inkscape:cx="48.578313"
+     inkscape:cx="-6.7951814"
      inkscape:cy="16"
      inkscape:window-x="0"
      inkscape:window-y="27"
@@ -42,11 +42,11 @@
        id="linearGradient3592-1">
       <stop
          id="stop3594-7"
-         style="stop-color:#000000;stop-opacity:0.2"
+         style="stop-color:#777777;stop-opacity:0.46666667;"
          offset="0" />
       <stop
          id="stop3596-5"
-         style="stop-color:#000000;stop-opacity:0"
+         style="stop-color:#777777;stop-opacity:0;"
          offset="1" />
     </linearGradient>
     <linearGradient

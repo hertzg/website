@@ -22,11 +22,11 @@
        id="linearGradient3592-9-6">
       <stop
          id="stop3594-6-5"
-         style="stop-color:#000000;stop-opacity:0.2"
+         style="stop-color:#777777;stop-opacity:0.46666667;"
          offset="0" />
       <stop
          id="stop3596-3-6"
-         style="stop-color:#000000;stop-opacity:0"
+         style="stop-color:#777777;stop-opacity:0;"
          offset="1" />
     </linearGradient>
     <radialGradient
@@ -48,9 +48,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1"
-     inkscape:cx="18.116721"
-     inkscape:cy="-19.86893"
+     inkscape:zoom="4"
+     inkscape:cx="25.354974"
+     inkscape:cy="-21.76496"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"

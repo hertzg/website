@@ -1,6 +1,6 @@
 .calendar-days > :focus {
     border-color: #2a1;
-    background-color: #f8fff6;
+    background-color: rgba(34, 170, 17, 0.2);
 }
 .calendar-days > :active,
 .calendar-days > .calendar-today {

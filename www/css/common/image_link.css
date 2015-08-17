@@ -29,7 +29,7 @@
     color: #999;
 }
 .image_link.withArrow {
-    background-image: url(../../images/arrow.svg);
+    background-image: url(../../images/arrow.svg?23);
     background-repeat: no-repeat;
     background-position: 100% 50%;
 }

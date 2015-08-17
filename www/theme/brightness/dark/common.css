@@ -1,0 +1,77 @@
+::-webkit-input-placeholder {
+    color: #fff;
+}
+/* firefox 4 to 18 */
+*:-moz-placeholder {
+    color: #fff;
+}
+/* firefox 19 to ~ */
+::-moz-placeholder {
+    color: #fff;
+}
+
+.tab-bar,
+.tab-content,
+.panel {
+    background-color: #000;
+    color: #fff;
+}
+
+.barChart-number {
+    background: rgba(0, 0, 0, 0.6);
+}
+.barChart-lineLabels {
+    background-color: #000;
+}
+.barChart-lineLabels-gradient {
+    background-image: linear-gradient(to right, #000, rgba(0, 0, 0, 0));
+}
+
+.newItemMenu-frame,
+.newItemMenu-arrow {
+    background-color: #fff;
+    color: #000;
+}
+
+.tag,
+.newItemButton,
+.newItemMenu-button {
+    border-color: hsl(0, 0%, 40%);
+}
+.newItemButton-text,
+.newItemMenu-text {
+    color: #ccc;
+}
+.newItemButton-icon > .background,
+.newItemMenu-icon > .background {
+    background-color: #ccc;
+}
+
+.textList.errors {
+    background-color: hsl(0, 90%, 15%);
+    color: hsl(0, 80%, 60%);
+}
+.textList.errors .bullet {
+    background-color: hsl(0, 80%, 60%);
+}
+
+.textList.messages {
+    background-color: hsl(120, 70%, 15%);
+    color: hsl(120, 80%, 50%);
+}
+.textList.messages .bullet {
+    background-color: hsl(120, 80%, 50%);
+}
+
+.textList.warnings {
+    background-color: hsl(50, 90%, 15%);
+    color: hsl(50, 80%, 50%);
+}
+.textList.warnings .bullet {
+    background-color: hsl(50, 80%, 50%);
+}
+
+.filterBar {
+    background-color: hsl(50, 90%, 15%);
+    color: hsl(50, 80%, 50%);
+}

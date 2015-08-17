@@ -10,8 +10,8 @@
 
 .newItemMenu-button {
     position: relative;
-    background: #fff;
-    border: 2px solid #ccc;
+    border-width: 2px;
+    border-style: solid;
     border-radius: 2px;
     padding-left: 32px;
     width: 100%;
@@ -21,7 +21,6 @@
 
 .newItemMenu-text {
     padding-right: 7px;
-    color: #777;
 }
 
 .newItemMenu-icon {
@@ -35,9 +34,6 @@
 
 .newItemMenu-icon > * {
     position: absolute;
-}
-.newItemMenu-icon > .background {
-    background: #777;
 }
 .newItemMenu-icon > .horizontal {
     top: 6px;
@@ -71,8 +67,6 @@
     top: 12px;
     right: 0;
     width: 200px;
-    background: #fff;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     text-align: left;
 }
 
@@ -87,7 +81,6 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 6px;
-    background: #fff;
     position: relative;
     z-index: 1;
     transform: rotate(45deg);

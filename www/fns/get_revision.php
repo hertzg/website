@@ -2,14 +2,14 @@
 
 function get_revision ($key) {
     static $revisions = [
-        'css/barChart/compressed.css' => 4,
+        'css/barChart/compressed.css' => 6,
         'css/calendarIcon/compressed.css' => 2,
-        'css/common/compressed.css' => 103,
+        'css/common/compressed.css' => 104,
         'css/confirmDialog/compressed.css' => 2,
-        'css/contact/compressed.css' => 3,
-        'css/iconsets/compressed.css' => 80,
+        'css/contact/compressed.css' => 4,
+        'css/iconsets/compressed.css' => 81,
         'css/index/compressed.css' => 2,
-        'css/newItemMenu/compressed.css' => 2,
+        'css/newItemMenu/compressed.css' => 3,
         'images/icons/16.png' => 1,
         'images/icons/32.png' => 1,
         'js/batteryAndClock/compressed.js' => 9,

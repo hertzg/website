@@ -18,7 +18,7 @@
 }
 
 .map-gridline {
-    stroke: #ddd;
+    stroke: rgba(136, 136, 136, 0.5);
 }
 
 .map-place {

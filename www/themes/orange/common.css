@@ -5,7 +5,7 @@
 .form-textfield:focus,
 .form-textarea:focus {
     border-color: #f80;
-    background-color: #fff7f0;
+    background-color: rgba(255, 136, 0, 0.2);
 }
 
 .a,

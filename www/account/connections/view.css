@@ -1,6 +1,6 @@
 .granted {
-    color: #191;
+    color: hsl(120, 80%, 45%);
 }
 .denied {
-    color: #911;
+    color: hsl(0, 80%, 50%);
 }

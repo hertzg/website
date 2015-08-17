@@ -51,6 +51,8 @@ function echo_html ($title, $head, $body, $theme, $base) {
                 .compressed_css_link('iconsets', $base)
                 .'<link rel="stylesheet" type="text/css"'
                 ." href=\"{$base}themes/$theme/common.css?20\" />"
+                .'<link rel="stylesheet" type="text/css"'
+                ." href=\"{$base}theme/brightness/".(rand(0, 100) < 50 ? 'light' : 'dark')."/common.css\" />"
                 .$head
             .'</head>'
             .'<body>'

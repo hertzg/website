@@ -52,7 +52,7 @@
     right: 0;
     left: 32px;
     height: 1px;
-    background: #ccc;
+    background-color: rgba(136, 136, 136, 0.5);
 }
 
 .barChart-lineLabel {
@@ -71,7 +71,6 @@
 }
 
 .barChart-number {
-    background: rgba(255, 255, 255, 0.6);
     padding-left: 2px;
     padding-right: 2px;
     display: inline-block;

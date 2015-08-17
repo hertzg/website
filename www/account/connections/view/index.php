@@ -28,7 +28,7 @@ include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_page.php";
 echo_page($user, "Connection #$id", $content, $base, [
     'head' =>
-        '<link rel="stylesheet" type="text/css" href="../view.css" />'
+        '<link rel="stylesheet" type="text/css" href="../view.css?1" />'
         .compressed_css_link('confirmDialog', $base),
     'scripts' => $scripts,
 ]);
