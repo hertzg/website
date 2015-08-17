@@ -1,6 +1,6 @@
 <?php
 
-function echo_html ($title, $head, $body, $theme, $base) {
+function echo_html ($title, $head, $body, $theme, $theme_brightness, $base) {
 
     header_remove('Expires');
     header_remove('Pragma');
@@ -52,7 +52,7 @@ function echo_html ($title, $head, $body, $theme, $base) {
                 .'<link rel="stylesheet" type="text/css"'
                 ." href=\"{$base}themes/$theme/common.css?20\" />"
                 .'<link rel="stylesheet" type="text/css"'
-                ." href=\"{$base}theme/brightness/".(rand(0, 100) < 50 ? 'light' : 'dark')."/common.css\" />"
+                ." href=\"{$base}theme/brightness/$theme_brightness/common.css\" />"
                 .$head
             .'</head>'
             .'<body>'

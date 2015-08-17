@@ -2,10 +2,17 @@
 
 function echo_page ($user, $title, $content, $base, $options = []) {
 
-    if ($user) $theme = $user->theme;
-    else {
+    if ($user) {
+        $theme = $user->theme;
+        $theme_brightness = $user->theme_brightness;
+    } else {
+
         include_once __DIR__.'/Themes/getDefault.php';
         $theme = Themes\getDefault();
+
+        include_once __DIR__.'/Theme/Brightness/getDefault.php';
+        $theme_brightness = Theme\Brightness\getDefault();
+
     }
 
     if (array_key_exists('head', $options)) $head = $options['head'];
@@ -101,6 +108,7 @@ function echo_page ($user, $title, $content, $base, $options = []) {
     $body .= $scripts;
 
     include_once __DIR__.'/../fns/echo_html.php';
-    echo_html($title, $head, $body, $theme, $base, ['head' => $head]);
+    echo_html($title, $head, $body, $theme,
+        $theme_brightness, $base, ['head' => $head]);
 
 }

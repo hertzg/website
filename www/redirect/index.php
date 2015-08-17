@@ -28,11 +28,18 @@ $body =
     .'}, 0)'
     .'</script>';
 
-if ($user) $theme = $user->theme;
-else {
+if ($user) {
+    $theme = $user->theme;
+    $theme_brightness = $user->theme_brightness;
+} else {
+
     include_once '../fns/Themes/getDefault.php';
     $theme = Themes\getDefault();
+
+    include_once '../fns/Theme/Brightness/getDefault.php';
+    $theme_brightness = Theme\Brightness\getDefault();
+
 };
 
 include_once '../fns/echo_html.php';
-echo_html('Redirecting', '', $body, $theme, $base);
+echo_html('Redirecting', '', $body, $theme, $theme_brightness, $base);
