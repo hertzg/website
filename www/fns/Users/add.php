@@ -27,17 +27,20 @@ function add ($mysqli, $username, $password, $email) {
     include_once "$fnsDir/Themes/getDefault.php";
     $theme = \Themes\getDefault();
 
+    include_once "$fnsDir/Theme/Brightness/getDefault.php";
+    $theme_brightness = \Theme\Brightness\getDefault();
+
     $sql = 'insert into users (username, password_hash,'
         .' password_salt, email, order_home_items, insert_time,'
-        .' theme, birthdays_check_day, events_check_day,'
-        .' schedules_check_day, task_deadlines_check_day,'
+        .' theme, theme_brightness, birthdays_check_day,'
+        .' events_check_day, schedules_check_day, task_deadlines_check_day,'
         .' show_bar_charts, show_bookmarks, show_calendar, show_contacts,'
         .' show_files, show_notes, show_notifications, show_places,'
         .' show_schedules, show_tasks, show_trash, show_wallets)'
         ." values ('$username', '$password_hash',"
         ." '$password_salt', '$email', '$order_home_items', $insert_time,"
-        ." '$theme', $birthdays_check_day, $events_check_day,"
-        ." $schedules_check_day, $task_deadlines_check_day,"
+        ." '$theme', '$theme_brightness', $birthdays_check_day,"
+        ." $events_check_day, $schedules_check_day, $task_deadlines_check_day,"
         ." 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 

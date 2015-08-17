@@ -16,6 +16,7 @@ function ensure ($mysqli) {
     include_once "$fnsDir/IPAddress/column.php";
     include_once "$fnsDir/LinkKey/column.php";
     include_once "$fnsDir/Table/ensure.php";
+    include_once "$fnsDir/Theme/Brightness/column.php";
     include_once "$fnsDir/Username/column.php";
     return \Table\ensure($mysqli, 'users', [
         'access_remote_address' => \IPAddress\column(true),
@@ -148,6 +149,7 @@ function ensure ($mysqli) {
             'characterSet' => 'ascii',
             'collation' => 'ascii_bin',
         ],
+        'theme_brightness' => \Theme\Brightness\column(),
         'timezone' => ['type' => 'int(11)'],
         'username' => \Username\column(),
         'verify_email_key' => \LinkKey\column(true),
