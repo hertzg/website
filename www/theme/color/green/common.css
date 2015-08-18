@@ -1,22 +1,20 @@
-#tbar {
-    border-color: #2a1;
-}
-
 .tag:focus,
 .clickable:focus,
 .clickable.focus,
 .form-select:focus,
 .form-textfield:focus,
-.form-textarea:focus {
+.form-textarea:focus,
+.topLink:focus {
     border-color: #2a1;
     background-color: rgba(34, 170, 17, 0.2);
 }
 
 .a,
 .tag {
-    color: #281;
+    color: #2a1;
 }
 
+#tbar,
 .tag:focus,
 .newItemButton:focus {
     border-color: #2a1;
@@ -25,7 +23,8 @@
 .tag.active,
 .tag:active,
 .clickable:active,
-.newItemButton:active {
+.newItemButton:active,
+.topLink:active {
     background-color: #2a1;
     border-color: #2a1;
 }
@@ -33,14 +32,6 @@
 .panel-title {
     color: #2a1;
     border-top-color: #2a1;
-}
-
-.topLink:focus {
-    border-color: #2a1;
-    background: rgba(34, 170, 17, 0.2);
-}
-.topLink:active {
-    background: rgb(34, 170, 17);
 }
 
 mark {
