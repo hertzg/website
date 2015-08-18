@@ -8,7 +8,7 @@ function create_note_link ($title, $num_tags, $tags_json,
     if ($num_tags) {
 
         include_once __DIR__.'/ColorTag/render.php';
-        $description = ColorTag\render(json_decode($tags_json), $paint);
+        $description = ColorTag\render(json_decode($tags_json), 10, $paint);
 
         include_once __DIR__.'/Page/imageArrowLinkWithDescription.php';
         return Page\imageArrowLinkWithDescription(

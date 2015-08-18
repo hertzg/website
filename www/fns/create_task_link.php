@@ -14,7 +14,7 @@ function create_task_link ($title, $deadline_time, $num_tags, $tags_json,
 
     if ($num_tags) {
         include_once __DIR__.'/ColorTag/render.php';
-        $descriptions[] = ColorTag\render(json_decode($tags_json), $paint);
+        $descriptions[] = ColorTag\render(json_decode($tags_json), 10, $paint);
     }
 
     if ($descriptions) {

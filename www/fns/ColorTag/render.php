@@ -2,7 +2,7 @@
 
 namespace ColorTag;
 
-function render ($tags, $paint = false) {
+function render ($tags, $text_luminance, $paint) {
     $html = '';
     if (!$paint) {
         $styleAttribute = ' style="background-color: #eee; color: #555"';
@@ -17,10 +17,10 @@ function render ($tags, $paint = false) {
 
             $hue = floor(hexdec(substr($hash, 0, 4)) / 1024 * 360);
             $saturation = 40 + floor(hexdec(substr($hash, 4, 2)) / 255 * 60);
-            $luminance = 10 + floor(hexdec(substr($hash, 6, 2)) / 255 * 70);
+            $luminance = 10 + floor(hexdec(substr($hash, 6, 2)) / 255 * 80);
             $borderColor = "hsl($hue, $saturation%, $luminance%)";
             $saturation -= 20;
-            $color = "hsl($hue, $saturation%, 10%)";
+            $color = "hsl($hue, $saturation%, $text_luminance%)";
             $luminance += 10;
             $background = "hsla($hue, $saturation%, $luminance%, 0.5)";
 

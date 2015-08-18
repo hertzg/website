@@ -9,7 +9,7 @@ function create_bar_chart_link ($title,
     if ($tags) {
 
         include_once __DIR__.'/ColorTag/render.php';
-        $description = ColorTag\render($tags, $paint);
+        $description = ColorTag\render($tags, 10, $paint);
 
         include_once __DIR__.'/Page/imageArrowLinkWithDescription.php';
         return Page\imageArrowLinkWithDescription(
