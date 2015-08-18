@@ -57,8 +57,8 @@ function echo_page ($user, $title, $content, $base, $options = []) {
     $topLinkHref = $base === '' ? './' : $base;
 
     include_once __DIR__.'/get_revision.php';
-    $logoSrc = "{$base}themes/$theme_color/images/zvini.svg?"
-        .get_revision("themes/$theme_color/images/zvini.svg");
+    $logoSrc = "{$base}theme/color/$theme_color/images/zvini.svg?"
+        .get_revision("theme/color/$theme_color/images/zvini.svg");
 
     include_once __DIR__.'/compressed_js_script.php';
     $body =

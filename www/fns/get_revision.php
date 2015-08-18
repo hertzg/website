@@ -27,10 +27,10 @@ function get_revision ($key) {
         'js/signOutConfirm/compressed.js' => 3,
         'js/timezoneLabel/compressed.js' => 6,
         'js/unloadProgress/compressed.js' => 8,
-        'themes/blue/images/zvini.svg' => 3,
-        'themes/green/images/zvini.svg' => 3,
-        'themes/orange/images/zvini.svg' => 3,
-        'themes/pink/images/zvini.svg' => 3,
+        'theme/color/blue/images/zvini.svg' => 3,
+        'theme/color/green/images/zvini.svg' => 3,
+        'theme/color/orange/images/zvini.svg' => 3,
+        'theme/color/pink/images/zvini.svg' => 3,
     ];
     return $revisions[$key];
 }

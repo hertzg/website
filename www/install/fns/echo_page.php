@@ -3,8 +3,8 @@
 function echo_page ($title, $content, $head = '') {
 
     include_once __DIR__.'/../../fns/get_revision.php';
-    $logoSrc = '../../themes/orange/images/zvini.svg?'
-        .get_revision('themes/orange/images/zvini.svg');
+    $logoSrc = '../../theme/color/orange/images/zvini.svg?'
+        .get_revision('theme/color/orange/images/zvini.svg');
 
     $content =
         '<div class="page-title">'
