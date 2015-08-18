@@ -14,7 +14,8 @@ include_once "$fnsDir/Theme/Color/index.php";
 foreach (Theme\Color\index() as $id => $color) {
     $href = "submit-color.php?color=$id";
     if ($id == $user->theme_color) $color .= ' (Current)';
-    $color_items[] = Page\imageLink($color, $href, "$id-theme");
+    $color_items[] = Page\imageLink($color,
+        $href, "$id-$user->theme_brightness-theme");
 }
 
 $brightness_items = [];
@@ -22,7 +23,8 @@ include_once "$fnsDir/Theme/Brightness/index.php";
 foreach (Theme\Brightness\index() as $id => $brightness) {
     $href = "submit-brightness.php?brightness=$id";
     if ($id == $user->theme_brightness) $brightness .= ' (Current)';
-    $brightness_items[] = Page\imageLink($brightness, $href, 'generic');
+    $brightness_items[] = Page\imageLink($brightness,
+        $href, "$user->theme_color-$id-theme");
 }
 
 include_once "$fnsDir/Page/sessionMessages.php";

@@ -95,10 +95,13 @@ $names = ['task', 'create-task', 'edit-task',
     'task-top-priority', 'tasks', 'import-task', 'duplicate-task'];
 render($content, 'task.svg?4', $names);
 
-$names = ['blue-theme', 'green-theme', 'orange-theme', 'pink-theme',
-    'edit-blue-theme', 'edit-green-theme', 'edit-orange-theme',
-    'edit-pink-theme'];
-render($content, 'theme.svg?2', $names);
+$names = ['blue-light-theme', 'green-light-theme', 'orange-light-theme',
+    'pink-light-theme', 'blue-dark-theme', 'green-dark-theme',
+    'orange-dark-theme', 'pink-dark-theme', 'edit-blue-light-theme',
+    'edit-green-light-theme', 'edit-orange-light-theme',
+    'edit-pink-light-theme', 'edit-blue-dark-theme',
+    'edit-green-dark-theme', 'edit-orange-dark-theme', 'edit-pink-dark-theme'];
+render($content, 'theme.svg?3', $names);
 
 $names = ['token', 'create-token', 'tokens'];
 render($content, 'token.svg?2', $names);
