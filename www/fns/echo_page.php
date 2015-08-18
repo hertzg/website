@@ -3,7 +3,7 @@
 function echo_page ($user, $title, $content, $base, $options = []) {
 
     if ($user) {
-        $theme_color = $user->theme;
+        $theme_color = $user->theme_color;
         $theme_brightness = $user->theme_brightness;
     } else {
 

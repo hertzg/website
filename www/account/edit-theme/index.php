@@ -13,7 +13,7 @@ include_once "$fnsDir/Page/imageLink.php";
 include_once "$fnsDir/Theme/Color/index.php";
 foreach (Theme\Color\index() as $id => $color) {
     $href = "submit-color.php?color=$id";
-    if ($id == $user->theme) $color .= ' (Current)';
+    if ($id == $user->theme_color) $color .= ' (Current)';
     $color_items[] = Page\imageLink($color, $href, "$id-theme");
 }
 

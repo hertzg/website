@@ -34,7 +34,7 @@ if ($timezone) {
 }
 
 include_once "$fnsDir/Theme/Color/index.php";
-$items[] = Form\label('Theme', Theme\Color\index()[$user->theme]);
+$items[] = Form\label('Theme', Theme\Color\index()[$user->theme_color]);
 
 include_once "$fnsDir/export_date_ago.php";
 $value = export_date_ago($user->insert_time, true);

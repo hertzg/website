@@ -66,7 +66,7 @@ echo_page($user, 'Calendar', $content, $base, [
     'head' =>
         '<link rel="stylesheet" type="text/css" href="index.css?11" />'
         .'<link rel="stylesheet" type="text/css"'
-        ." href=\"themes/$user->theme/index.css?3\" />"
+        ." href=\"themes/$user->theme_color/index.css?3\" />"
         .compressed_css_link('calendarIcon', $base),
     'scripts' => compressed_js_script('calendarIcon', $base),
 ]);
