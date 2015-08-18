@@ -2,7 +2,7 @@
 
 namespace SearchPage;
 
-function renderBarCharts ($bar_charts, &$items, $params, $keyword) {
+function renderBarCharts ($user, $bar_charts, &$items, $params, $keyword) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
@@ -24,7 +24,7 @@ function renderBarCharts ($bar_charts, &$items, $params, $keyword) {
             $name = htmlspecialchars($bar_chart->name);
             $title = preg_replace($regex, '<mark>$0</mark>', $name);
 
-            $items[] = create_bar_chart_link($title,
+            $items[] = create_bar_chart_link($user->theme_brightness, $title,
                 $bar_chart->tags_json, "../view/?$queryString", ['id' => $id]);
 
         }

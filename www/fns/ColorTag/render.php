@@ -4,9 +4,7 @@ namespace ColorTag;
 
 function render ($tags, $text_luminance, $paint) {
     $html = '';
-    if (!$paint) {
-        $styleAttribute = ' style="background-color: #eee; color: #555"';
-    }
+    if (!$paint) $style = "color: hsl(0, 0%, $text_luminance%)";
     foreach ($tags as $i => $tag) {
 
         if ($i) $html .= ' ';
@@ -17,22 +15,20 @@ function render ($tags, $text_luminance, $paint) {
 
             $hue = floor(hexdec(substr($hash, 0, 4)) / 1024 * 360);
             $saturation = 40 + floor(hexdec(substr($hash, 4, 2)) / 255 * 60);
-            $luminance = 10 + floor(hexdec(substr($hash, 6, 2)) / 255 * 80);
+            $luminance = 30 + floor(hexdec(substr($hash, 6, 2)) / 255 * 40);
             $borderColor = "hsl($hue, $saturation%, $luminance%)";
             $saturation -= 20;
             $color = "hsl($hue, $saturation%, $text_luminance%)";
             $luminance += 10;
-            $background = "hsla($hue, $saturation%, $luminance%, 0.5)";
+            $backgroundColor = "hsla($hue, $saturation%, $luminance%, 0.5)";
 
-            $background = "background: $background";
-            $color = "color: $color";
-            $borderColor = "border-color: $borderColor";
-            $styleAttribute = " style=\"$background;$color;$borderColor\"";
+            $style = "background-color: $backgroundColor;\n"
+                ." color: $color; border-color: $borderColor";
 
         }
 
         $html .=
-            "<span class=\"colorTag\"$styleAttribute>"
+            "<span class=\"colorTag\" style=\"$style\">"
                 .htmlspecialchars($tag)
             .'</span>';
 

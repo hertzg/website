@@ -1,6 +1,6 @@
 <?php
 
-function render_bar_charts ($bar_charts, &$items, $params, $base) {
+function render_bar_charts ($user, $bar_charts, &$items, $params, $base) {
 
     $fnsDir = __DIR__.'/../../fns';
 
@@ -17,8 +17,8 @@ function render_bar_charts ($bar_charts, &$items, $params, $base) {
             $href = "{$base}view/?$queryString";
 
             $title = htmlspecialchars($bar_chart->name);
-            $items[] = create_bar_chart_link($title,
-                $bar_chart->tags_json, $href, ['id' => $id], true);
+            $items[] = create_bar_chart_link($user->theme_brightness,
+                $title, $bar_chart->tags_json, $href, ['id' => $id], true);
 
         }
     } else {

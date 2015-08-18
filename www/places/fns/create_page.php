@@ -84,7 +84,7 @@ function create_page ($mysqli, $user, $base = '') {
     render_prev_button($offset, $limit, $total, $items, $params);
 
     include_once __DIR__.'/render_places.php';
-    render_places($places, $items, $params, $base);
+    render_places($user, $places, $items, $params, $base);
 
     include_once __DIR__.'/render_next_button.php';
     render_next_button($offset, $limit, $total, $items, $params);

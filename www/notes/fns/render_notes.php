@@ -1,6 +1,6 @@
 <?php
 
-function render_notes ($notes, &$items, $params, $base = '') {
+function render_notes ($user, $notes, &$items, $params, $base = '') {
 
     $fnsDir = __DIR__.'/../../fns';
 
@@ -25,8 +25,9 @@ function render_notes ($notes, &$items, $params, $base = '') {
             }
             $title = htmlspecialchars($title);
 
-            $items[] = create_note_link($title, $note->num_tags,
-                $note->tags_json, $encrypt, $href, ['id' => $id], true);
+            $items[] = create_note_link($user->theme_brightness,
+                $title, $note->num_tags, $note->tags_json,
+                $encrypt, $href, ['id' => $id], true);
 
         }
     } else {

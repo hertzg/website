@@ -1,6 +1,6 @@
 <?php
 
-function render_places ($places, &$items, $params, $base = '') {
+function render_places ($user, $places, &$items, $params, $base = '') {
 
     $fnsDir = __DIR__.'/../../fns';
 
@@ -16,10 +16,10 @@ function render_places ($places, &$items, $params, $base = '') {
             );
             $href = "{$base}view/?$queryString";
 
-            $items[] = create_place_link($place->latitude,
-                $place->longitude, htmlspecialchars($place->name),
-                $place->num_tags, $place->tags_json,
-                $href, ['id' => $id], true);
+            $items[] = create_place_link($user->theme_brightness,
+                $place->latitude, $place->longitude,
+                htmlspecialchars($place->name), $place->num_tags,
+                $place->tags_json, $href, ['id' => $id], true);
 
         }
     } else {

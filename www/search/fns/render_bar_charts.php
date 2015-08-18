@@ -1,6 +1,6 @@
 <?php
 
-function render_bar_charts ($bar_charts, $total,
+function render_bar_charts ($user, $bar_charts, $total,
     $groupLimit, &$items, $regex, $encodedKeyword) {
 
     $fnsDir = __DIR__.'/../../fns';
@@ -16,7 +16,8 @@ function render_bar_charts ($bar_charts, $total,
         $query = "?id=$bar_chart->id&amp;keyword=$encodedKeyword";
         $href = "../bar-charts/view/$query";
 
-        $items[] = create_bar_chart_link($title, $bar_chart->tags_json, $href);
+        $items[] = create_bar_chart_link($user->theme_brightness,
+            $title, $bar_chart->tags_json, $href);
 
     }
 

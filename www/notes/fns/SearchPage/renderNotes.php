@@ -2,7 +2,7 @@
 
 namespace SearchPage;
 
-function renderNotes ($notes, &$items, $params, $keyword) {
+function renderNotes ($user, $notes, &$items, $params, $keyword) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
@@ -33,8 +33,8 @@ function renderNotes ($notes, &$items, $params, $keyword) {
                 $title = preg_replace($regex, '<mark>$0</mark>', $escapedText);
             }
 
-            $items[] = create_note_link($title, $note->num_tags,
-                $note->tags_json, $encrypt, $href, $options);
+            $items[] = create_note_link($user->theme_brightness, $title,
+                $note->num_tags, $note->tags_json, $encrypt, $href, $options);
 
         }
 

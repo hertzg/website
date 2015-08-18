@@ -12,8 +12,8 @@ function create_items ($bar_charts, $num_bar_charts,
 
     if ($num_bar_charts) {
         include_once __DIR__.'/render_bar_charts.php';
-        render_bar_charts($bar_charts, $num_bar_charts,
-            $groupLimit, $items, $regex, $encodedKeyword);
+        render_bar_charts($user, $bar_charts,
+            $num_bar_charts, $groupLimit, $items, $regex, $encodedKeyword);
     }
 
     if ($num_bookmarks) {
@@ -30,13 +30,13 @@ function create_items ($bar_charts, $num_bar_charts,
 
     if ($num_notes) {
         include_once __DIR__.'/render_notes.php';
-        render_notes($notes, $num_notes,
+        render_notes($user, $notes, $num_notes,
             $groupLimit, $items, $regex, $encodedKeyword);
     }
 
     if ($num_places) {
         include_once __DIR__.'/render_places.php';
-        render_places($places, $num_places,
+        render_places($user, $places, $num_places,
             $groupLimit, $items, $regex, $encodedKeyword);
     }
 
