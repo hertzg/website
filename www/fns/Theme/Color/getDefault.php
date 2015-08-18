@@ -1,6 +1,6 @@
 <?php
 
-namespace Themes;
+namespace Theme\Color;
 
 function getDefault () {
     return 'orange';

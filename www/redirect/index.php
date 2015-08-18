@@ -33,8 +33,8 @@ if ($user) {
     $theme_brightness = $user->theme_brightness;
 } else {
 
-    include_once '../fns/Themes/getDefault.php';
-    $theme_color = Themes\getDefault();
+    include_once '../fns/Theme/Color/getDefault.php';
+    $theme_color = Theme\Color\getDefault();
 
     include_once '../fns/Theme/Brightness/getDefault.php';
     $theme_brightness = Theme\Brightness\getDefault();

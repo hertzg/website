@@ -6,17 +6,13 @@ function ensure ($mysqli) {
 
     $fnsDir = __DIR__.'/..';
 
-    include_once "$fnsDir/Themes/index.php";
-    $theme_type = 'enum('.join(',', array_map(function ($key) {
-        return "'$key'";
-    }, array_keys(\Themes\index()))).')';
-
     include_once "$fnsDir/Email/column.php";
     include_once "$fnsDir/FullName/column.php";
     include_once "$fnsDir/IPAddress/column.php";
     include_once "$fnsDir/LinkKey/column.php";
     include_once "$fnsDir/Table/ensure.php";
     include_once "$fnsDir/Theme/Brightness/column.php";
+    include_once "$fnsDir/Theme/Color/column.php";
     include_once "$fnsDir/Username/column.php";
     return \Table\ensure($mysqli, 'users', [
         'access_remote_address' => \IPAddress\column(true),
@@ -144,11 +140,7 @@ function ensure ($mysqli) {
         'show_wallets' => ['type' => 'tinyint(3) unsigned'],
         'storage_used' => ['type' => 'bigint(20) unsigned'],
         'task_deadlines_check_day' => ['type' => 'bigint(20) unsigned'],
-        'theme' => [
-            'type' => $theme_type,
-            'characterSet' => 'ascii',
-            'collation' => 'ascii_bin',
-        ],
+        'theme' => \Theme\Color\column(),
         'theme_brightness' => \Theme\Brightness\column(),
         'timezone' => ['type' => 'int(11)'],
         'username' => \Username\column(),

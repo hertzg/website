@@ -5,8 +5,8 @@ function echo_alert_page ($title, $text, $href, $base) {
     include_once __DIR__.'/compressed_css_link.php';
     $head = compressed_css_link('confirmDialog', $base);
 
-    include_once __DIR__.'/Themes/getDefault.php';
-    $theme_color = Themes\getDefault();
+    include_once __DIR__.'/Theme/Color/getDefault.php';
+    $theme_color = Theme\Color\getDefault();
 
     include_once __DIR__.'/Theme/Brightness/getDefault.php';
     $theme_brightness = Theme\Brightness\getDefault();

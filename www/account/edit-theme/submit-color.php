@@ -11,8 +11,8 @@ $user = require_user('../../');
 include_once "$fnsDir/request_strings.php";
 list($color) = request_strings('color');
 
-include_once "$fnsDir/Themes/index.php";
-$colors = Themes\index();
+include_once "$fnsDir/Theme/Color/index.php";
+$colors = Theme\Color\index();
 
 include_once "$fnsDir/redirect.php";
 

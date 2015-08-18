@@ -7,8 +7,8 @@ function echo_page ($user, $title, $content, $base, $options = []) {
         $theme_brightness = $user->theme_brightness;
     } else {
 
-        include_once __DIR__.'/Themes/getDefault.php';
-        $theme_color = Themes\getDefault();
+        include_once __DIR__.'/Theme/Color/getDefault.php';
+        $theme_color = Theme\Color\getDefault();
 
         include_once __DIR__.'/Theme/Brightness/getDefault.php';
         $theme_brightness = Theme\Brightness\getDefault();

@@ -24,8 +24,8 @@ function add ($mysqli, $username, $password, $email) {
     $birthdays_check_day = $events_check_day =
         $task_deadlines_check_day = $schedules_check_day = time_today();
 
-    include_once "$fnsDir/Themes/getDefault.php";
-    $theme_color = \Themes\getDefault();
+    include_once "$fnsDir/Theme/Color/getDefault.php";
+    $theme_color = \Theme\Color\getDefault();
 
     include_once "$fnsDir/Theme/Brightness/getDefault.php";
     $theme_brightness = \Theme\Brightness\getDefault();

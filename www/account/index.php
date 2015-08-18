@@ -33,8 +33,8 @@ if ($timezone) {
     $items[] = Form\label('Timezone', Timezone\format($timezone));
 }
 
-include_once "$fnsDir/Themes/index.php";
-$items[] = Form\label('Theme', Themes\index()[$user->theme]);
+include_once "$fnsDir/Theme/Color/index.php";
+$items[] = Form\label('Theme', Theme\Color\index()[$user->theme]);
 
 include_once "$fnsDir/export_date_ago.php";
 $value = export_date_ago($user->insert_time, true);
