@@ -18,7 +18,6 @@ function tabs ($tabs, $activeTabTitle, $content, $newItemButton = '') {
 
     return
         '<br class="zeroHeight" />'
-        .'<div class="tab-spacer"></div>'
         .'<div class="tab">'
             ."<div class=\"tab-bar\">$itemsHtml</div>"
             .$newItemButton

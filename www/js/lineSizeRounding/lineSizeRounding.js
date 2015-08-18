@@ -4,7 +4,6 @@
         var lineWidth = Math.floor(devicePixelRatio) / devicePixelRatio + 'px'
         style.innerHTML =
             '.hr { height: ' + lineWidth + ' }' +
-            '.tab-spacer { border-bottom-width: ' + lineWidth + ' }' +
             '.twoColumns-column2 {' +
                 ' border-left-width:' + lineWidth +
             ' }' +

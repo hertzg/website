@@ -1,3 +1,7 @@
+#tbar {
+    border-color: #f6a;
+}
+
 .tag:focus,
 .clickable:focus,
 .clickable.focus,
@@ -11,10 +15,6 @@
 .a,
 .tag {
     color: #e59;
-}
-
-.tab-spacer {
-    background-color: #f6a;
 }
 
 .tag:focus,
