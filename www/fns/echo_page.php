@@ -3,12 +3,12 @@
 function echo_page ($user, $title, $content, $base, $options = []) {
 
     if ($user) {
-        $theme = $user->theme;
+        $theme_color = $user->theme;
         $theme_brightness = $user->theme_brightness;
     } else {
 
         include_once __DIR__.'/Themes/getDefault.php';
-        $theme = Themes\getDefault();
+        $theme_color = Themes\getDefault();
 
         include_once __DIR__.'/Theme/Brightness/getDefault.php';
         $theme_brightness = Theme\Brightness\getDefault();
@@ -57,8 +57,8 @@ function echo_page ($user, $title, $content, $base, $options = []) {
     $topLinkHref = $base === '' ? './' : $base;
 
     include_once __DIR__.'/get_revision.php';
-    $logoSrc = "{$base}themes/$theme/images/zvini.svg?"
-        .get_revision("themes/$theme/images/zvini.svg");
+    $logoSrc = "{$base}themes/$theme_color/images/zvini.svg?"
+        .get_revision("themes/$theme_color/images/zvini.svg");
 
     include_once __DIR__.'/compressed_js_script.php';
     $body =
@@ -108,7 +108,7 @@ function echo_page ($user, $title, $content, $base, $options = []) {
     $body .= $scripts;
 
     include_once __DIR__.'/../fns/echo_html.php';
-    echo_html($title, $head, $body, $theme,
+    echo_html($title, $head, $body, $theme_color,
         $theme_brightness, $base, ['head' => $head]);
 
 }

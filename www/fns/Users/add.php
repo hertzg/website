@@ -25,7 +25,7 @@ function add ($mysqli, $username, $password, $email) {
         $task_deadlines_check_day = $schedules_check_day = time_today();
 
     include_once "$fnsDir/Themes/getDefault.php";
-    $theme = \Themes\getDefault();
+    $theme_color = \Themes\getDefault();
 
     include_once "$fnsDir/Theme/Brightness/getDefault.php";
     $theme_brightness = \Theme\Brightness\getDefault();
@@ -39,7 +39,7 @@ function add ($mysqli, $username, $password, $email) {
         .' show_schedules, show_tasks, show_trash, show_wallets)'
         ." values ('$username', '$password_hash',"
         ." '$password_salt', '$email', '$order_home_items', $insert_time,"
-        ." '$theme', '$theme_brightness', $birthdays_check_day,"
+        ." '$theme_color', '$theme_brightness', $birthdays_check_day,"
         ." $events_check_day, $schedules_check_day, $task_deadlines_check_day,"
         ." 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)";
     $mysqli->query($sql) || trigger_error($mysqli->error);

@@ -9,18 +9,18 @@ include_once "$fnsDir/require_user.php";
 $user = require_user('../../');
 
 include_once "$fnsDir/request_strings.php";
-list($theme) = request_strings('theme');
+list($color) = request_strings('color');
 
 include_once "$fnsDir/Themes/index.php";
-$themes = Themes\index();
+$colors = Themes\index();
 
 include_once "$fnsDir/redirect.php";
 
-if (!array_key_exists($theme, $themes)) redirect();
+if (!array_key_exists($color, $colors)) redirect();
 
-include_once "$fnsDir/Users/editTheme.php";
+include_once "$fnsDir/Users/editThemeColor.php";
 include_once '../../lib/mysqli.php';
-Users\editTheme($mysqli, $user->id_users, $theme);
+Users\editThemeColor($mysqli, $user->id_users, $color);
 
 $_SESSION['account/edit-theme/messages'] = ['Theme color has been changed.'];
 

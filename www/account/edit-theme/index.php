@@ -8,15 +8,13 @@ $user = require_user($base);
 
 unset($_SESSION['account/messages']);
 
-include_once "$fnsDir/Themes/index.php";
-$themes = Themes\index();
-
-include_once "$fnsDir/Page/imageLink.php";
 $color_items = [];
-foreach ($themes as $id => $theme) {
-    $href = "submit.php?theme=$id";
-    if ($id == $user->theme) $theme .= ' (Current)';
-    $color_items[] = Page\imageLink($theme, $href, "$id-theme");
+include_once "$fnsDir/Page/imageLink.php";
+include_once "$fnsDir/Themes/index.php";
+foreach (Themes\index() as $id => $color) {
+    $href = "submit-color.php?color=$id";
+    if ($id == $user->theme) $color .= ' (Current)';
+    $color_items[] = Page\imageLink($color, $href, "$id-theme");
 }
 
 $brightness_items = [];

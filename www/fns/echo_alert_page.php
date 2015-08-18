@@ -6,7 +6,7 @@ function echo_alert_page ($title, $text, $href, $base) {
     $head = compressed_css_link('confirmDialog', $base);
 
     include_once __DIR__.'/Themes/getDefault.php';
-    $theme = Themes\getDefault();
+    $theme_color = Themes\getDefault();
 
     include_once __DIR__.'/Theme/Brightness/getDefault.php';
     $theme_brightness = Theme\Brightness\getDefault();
@@ -24,6 +24,6 @@ function echo_alert_page ($title, $text, $href, $base) {
         .'</div>';
 
     include_once __DIR__.'/echo_html.php';
-    echo_html($title, $head, $body, $theme, $theme_brightness, $base);
+    echo_html($title, $head, $body, $theme_color, $theme_brightness, $base);
 
 }

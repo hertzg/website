@@ -29,12 +29,12 @@ $body =
     .'</script>';
 
 if ($user) {
-    $theme = $user->theme;
+    $theme_color = $user->theme;
     $theme_brightness = $user->theme_brightness;
 } else {
 
     include_once '../fns/Themes/getDefault.php';
-    $theme = Themes\getDefault();
+    $theme_color = Themes\getDefault();
 
     include_once '../fns/Theme/Brightness/getDefault.php';
     $theme_brightness = Theme\Brightness\getDefault();
@@ -42,4 +42,4 @@ if ($user) {
 };
 
 include_once '../fns/echo_html.php';
-echo_html('Redirecting', '', $body, $theme, $theme_brightness, $base);
+echo_html('Redirecting', '', $body, $theme_color, $theme_brightness, $base);

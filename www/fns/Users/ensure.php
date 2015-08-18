@@ -7,8 +7,8 @@ function ensure ($mysqli) {
     $fnsDir = __DIR__.'/..';
 
     include_once "$fnsDir/Themes/index.php";
-    $theme_type = 'enum('.join(',', array_map(function ($theme) {
-        return "'$theme'";
+    $theme_type = 'enum('.join(',', array_map(function ($key) {
+        return "'$key'";
     }, array_keys(\Themes\index()))).')';
 
     include_once "$fnsDir/Email/column.php";
