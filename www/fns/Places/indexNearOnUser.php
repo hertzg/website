@@ -2,11 +2,13 @@
 
 namespace Places;
 
-function indexNear ($mysqli, $latitude, $longitude, $exclude_id, $limit) {
+function indexNearOnUser ($mysqli, $id_users,
+    $latitude, $longitude, $exclude_id, $limit) {
 
     $fnsDir = __DIR__.'/..';
 
-    $sql = "select * from places where id != $exclude_id";
+    $sql = 'select * from places'
+        ." where id_users = $id_users and id != $exclude_id";
     include_once "$fnsDir/mysqli_query_object.php";
     $places = mysqli_query_object($mysqli, $sql);
 

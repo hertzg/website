@@ -6,8 +6,8 @@ function nearPlaces ($mysqli, $place) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
-    include_once "$fnsDir/Places/indexNear.php";
-    $nearPlaces = \Places\indexNear($mysqli,
+    include_once "$fnsDir/Places/indexNearOnUser.php";
+    $nearPlaces = \Places\indexNearOnUser($mysqli, $place->id_users,
         $place->latitude, $place->longitude, $place->id, 5);
 
     if (!$nearPlaces) return;
