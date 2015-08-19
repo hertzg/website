@@ -3,13 +3,13 @@
 function get_revision ($key) {
     static $revisions = [
         'css/barChart/compressed.css' => 6,
-        'css/calendarIcon/compressed.css' => 2,
-        'css/common/compressed.css' => 105,
+        'css/calendarIcon/compressed.css' => 3,
+        'css/common/compressed.css' => 106,
         'css/confirmDialog/compressed.css' => 2,
         'css/contact/compressed.css' => 4,
         'css/iconsets/compressed.css' => 82,
         'css/index/compressed.css' => 2,
-        'css/newItemMenu/compressed.css' => 3,
+        'css/newItemMenu/compressed.css' => 4,
         'images/icons/16.png' => 1,
         'images/icons/32.png' => 1,
         'js/batteryAndClock/compressed.js' => 9,

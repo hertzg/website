@@ -30,6 +30,7 @@
     width: 16px;
     height: 16px;
     transform: rotate(-21deg);
+    -webkit-transform: rotate(-21deg);
 }
 
 .newItemButton-icon > * {
