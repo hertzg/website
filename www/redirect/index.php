@@ -28,18 +28,8 @@ $body =
     .'}, 0)'
     .'</script>';
 
-if ($user) {
-    $theme_color = $user->theme_color;
-    $theme_brightness = $user->theme_brightness;
-} else {
-
-    include_once '../fns/Theme/Color/getDefault.php';
-    $theme_color = Theme\Color\getDefault();
-
-    include_once '../fns/Theme/Brightness/getDefault.php';
-    $theme_brightness = Theme\Brightness\getDefault();
-
-};
+include_once '../fns/resolve_theme.php';
+resolve_theme($user, $theme_color, $theme_brightness);
 
 include_once '../fns/echo_html.php';
 echo_html('Redirecting', '', $body, $theme_color, $theme_brightness, $base);

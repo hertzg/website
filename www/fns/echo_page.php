@@ -2,18 +2,8 @@
 
 function echo_page ($user, $title, $content, $base, $options = []) {
 
-    if ($user) {
-        $theme_color = $user->theme_color;
-        $theme_brightness = $user->theme_brightness;
-    } else {
-
-        include_once __DIR__.'/Theme/Color/getDefault.php';
-        $theme_color = Theme\Color\getDefault();
-
-        include_once __DIR__.'/Theme/Brightness/getDefault.php';
-        $theme_brightness = Theme\Brightness\getDefault();
-
-    }
+    include_once __DIR__.'/resolve_theme.php';
+    resolve_theme($user, $theme_color, $theme_brightness);
 
     if (array_key_exists('head', $options)) $head = $options['head'];
     else $head = '';
