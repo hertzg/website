@@ -8,6 +8,9 @@ function renderNotes ($user, $notes, &$items, $params, $keyword) {
 
     if ($notes) {
 
+        include_once "$fnsDir/resolve_theme.php";
+        resolve_theme($user, $theme_color, $theme_brightness);
+
         $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
 
         include_once "$fnsDir/create_note_link.php";
@@ -33,7 +36,7 @@ function renderNotes ($user, $notes, &$items, $params, $keyword) {
                 $title = preg_replace($regex, '<mark>$0</mark>', $escapedText);
             }
 
-            $items[] = create_note_link($user->theme_brightness, $title,
+            $items[] = create_note_link($theme_brightness, $title,
                 $note->num_tags, $note->tags_json, $encrypt, $href, $options);
 
         }

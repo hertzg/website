@@ -5,6 +5,10 @@ function render_places ($user, $places, &$items, $params, $base = '') {
     $fnsDir = __DIR__.'/../../fns';
 
     if ($places) {
+
+        include_once "$fnsDir/resolve_theme.php";
+        resolve_theme($user, $theme_color, $theme_brightness);
+
         include_once "$fnsDir/create_place_link.php";
         foreach ($places as $place) {
 
@@ -16,12 +20,13 @@ function render_places ($user, $places, &$items, $params, $base = '') {
             );
             $href = "{$base}view/?$queryString";
 
-            $items[] = create_place_link($user->theme_brightness,
+            $items[] = create_place_link($theme_brightness,
                 $place->latitude, $place->longitude,
                 htmlspecialchars($place->name), $place->num_tags,
                 $place->tags_json, $href, ['id' => $id], true);
 
         }
+
     } else {
         include_once "$fnsDir/Page/info.php";
         $items[] = Page\info('No places');

@@ -8,6 +8,9 @@ function renderTasks ($tasks, &$items, $params, $keyword, $user) {
 
     if ($tasks) {
 
+        include_once "$fnsDir/resolve_theme.php";
+        resolve_theme($user, $theme_color, $theme_brightness);
+
         $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
 
         include_once "$fnsDir/user_time_today.php";
@@ -27,7 +30,7 @@ function renderTasks ($tasks, &$items, $params, $keyword, $user) {
             $title = htmlspecialchars($task->text);
             $title = preg_replace($regex, '<mark>$0</mark>', $title);
 
-            $items[] = create_task_link($user->theme_brightness, $title,
+            $items[] = create_task_link($theme_brightness, $title,
                 $task->deadline_time, $task->num_tags, $task->tags_json,
                 $task->top_priority, $href, $time_today, ['id' => $id]);
 

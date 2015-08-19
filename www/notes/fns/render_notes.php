@@ -5,6 +5,10 @@ function render_notes ($user, $notes, &$items, $params, $base = '') {
     $fnsDir = __DIR__.'/../../fns';
 
     if ($notes) {
+
+        include_once "$fnsDir/resolve_theme.php";
+        resolve_theme($user, $theme_color, $theme_brightness);
+
         include_once "$fnsDir/create_note_link.php";
         foreach ($notes as $note) {
 
@@ -25,11 +29,12 @@ function render_notes ($user, $notes, &$items, $params, $base = '') {
             }
             $title = htmlspecialchars($title);
 
-            $items[] = create_note_link($user->theme_brightness,
+            $items[] = create_note_link($theme_brightness,
                 $title, $note->num_tags, $note->tags_json,
                 $encrypt, $href, ['id' => $id], true);
 
         }
+
     } else {
         include_once "$fnsDir/Page/info.php";
         $items[] = Page\info('No notes');

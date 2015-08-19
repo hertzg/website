@@ -8,6 +8,9 @@ function renderPlaces ($user, $places, &$items, $params, $keyword) {
 
     if ($places) {
 
+        include_once "$fnsDir/resolve_theme.php";
+        resolve_theme($user, $theme_color, $theme_brightness);
+
         $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
 
         include_once "$fnsDir/create_place_link.php";
@@ -25,7 +28,7 @@ function renderPlaces ($user, $places, &$items, $params, $keyword) {
             $escapedName = htmlspecialchars($place->name);
             $title = preg_replace($regex, '<mark>$0</mark>', $escapedName);
 
-            $items[] = create_place_link($user->theme_brightness,
+            $items[] = create_place_link($theme_brightness,
                 $place->latitude, $place->longitude, $title,
                 $place->num_tags, $place->tags_json, $href, $options);
 

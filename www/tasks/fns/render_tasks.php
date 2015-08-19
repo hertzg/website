@@ -6,6 +6,9 @@ function render_tasks ($tasks, &$items, $params, $user, $base = '') {
 
     if ($tasks) {
 
+        include_once "$fnsDir/resolve_theme.php";
+        resolve_theme($user, $theme_color, $theme_brightness);
+
         include_once "$fnsDir/user_time_today.php";
         $time_today = user_time_today($user);
 
@@ -21,7 +24,7 @@ function render_tasks ($tasks, &$items, $params, $user, $base = '') {
             $href = "{$base}view/?$queryString";
 
             $title = htmlspecialchars($task->title);
-            $items[] = create_task_link($user->theme_brightness, $title,
+            $items[] = create_task_link($theme_brightness, $title,
                 $task->deadline_time, $task->num_tags, $task->tags_json,
                 $task->top_priority, $href, $time_today, ['id' => $id], true);
 
