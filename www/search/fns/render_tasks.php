@@ -1,7 +1,7 @@
 <?php
 
-function render_tasks ($tasks, $total, $groupLimit,
-    &$items, $regex, $encodedKeyword, $user) {
+function render_tasks ($theme_brightness, $tasks, $total,
+    $groupLimit, &$items, $regex, $encodedKeyword, $user) {
 
     $fnsDir = __DIR__.'/../../fns';
 
@@ -17,7 +17,7 @@ function render_tasks ($tasks, $total, $groupLimit,
         $title = htmlspecialchars($task->text);
         $title = preg_replace($regex, '<mark>$0</mark>', $title);
 
-        $items[] = create_task_link($user->theme_brightness,
+        $items[] = create_task_link($theme_brightness,
             $title, $task->deadline_time, $task->num_tags,
             $task->tags_json, $task->top_priority,
             "../tasks/view/?id=$task->id&amp;keyword=$encodedKeyword",
