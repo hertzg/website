@@ -19,12 +19,24 @@ foreach (Theme\Color\index() as $id => $color) {
 }
 
 $brightness_items = [];
+include_once "$fnsDir/Page/imageLinkWithDescription.php";
 include_once "$fnsDir/Theme/Brightness/index.php";
 foreach (Theme\Brightness\index() as $id => $brightness) {
+
+    $title = $brightness['title'];
+    if ($id == $user->theme_brightness) $title .= ' (Current)';
+
     $href = "submit-brightness.php?brightness=$id";
-    if ($id == $user->theme_brightness) $brightness .= ' (Current)';
-    $brightness_items[] = Page\imageLink($brightness,
-        $href, "$user->theme_color-$id-theme");
+    $icon = "$user->theme_color-$id-theme";
+
+    if (array_key_exists('description', $brightness)) {
+        $link = Page\imageLinkWithDescription($title,
+            $brightness['description'], $href, $icon);
+    } else {
+        $link = Page\imageLink($title, $href, $icon);
+    }
+    $brightness_items[] = $link;
+
 }
 
 include_once "$fnsDir/Page/sessionMessages.php";

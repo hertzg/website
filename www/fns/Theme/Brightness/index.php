@@ -4,8 +4,11 @@ namespace Theme\Brightness;
 
 function index () {
     return [
-        'light' => 'Light',
-        'dark' => 'Dark',
-        'auto' => 'Automatic',
+        'light' => ['title' => 'Light'],
+        'dark' => ['title' => 'Dark'],
+        'auto' => [
+            'title' => 'Automatic',
+            'description' => 'Light at daytime. Otherwise dark.',
+        ],
     ];
 }
