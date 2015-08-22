@@ -1,7 +1,7 @@
 <?php
 
 function submethod_page ($groupKey, $subgroupName,
-    $subgroupKey, $methodName, $description, $params, $errors) {
+    $subgroupKey, $methodName, $description, $params, $returns, $errors) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
@@ -22,6 +22,9 @@ function submethod_page ($groupKey, $subgroupName,
     } else {
         $items[] = Page\text('The method has no parameters.');
     }
+
+    include_once __DIR__.'/format_result.php';
+    $items[] = Page\text('Returns: '.format_result($returns));
 
     if ($errors) {
         $text = 'Expected errors:';
