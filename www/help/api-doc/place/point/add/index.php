@@ -19,5 +19,8 @@ place_point_method_page('add', [
         'description' => 'The altitude of the point.',
     ],
 ], [
+    'type' => 'number',
+    'description' => 'The ID of the newly added point.',
+], [
     'PLACE_NOT_FOUND' => "A place with the ID doesn't exist.",
 ]);

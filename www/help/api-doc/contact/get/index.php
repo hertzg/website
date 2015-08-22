@@ -52,7 +52,7 @@ contact_method_page('get', [
         ],
         'tags' => [
             'type' => 'string',
-            'description' => 'A space-separated list of tags.',
+            'description' => 'The space-separated list of tags.',
         ],
         'notes' => [
             'type' => 'string',

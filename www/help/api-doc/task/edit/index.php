@@ -1,6 +1,7 @@
 <?php
 
 include_once '../fns/task_method_page.php';
+include_once '../../fns/true_result.php';
 include_once '../../../../fns/Tags/maxNumber.php';
 task_method_page('edit', [
     [
@@ -17,13 +18,13 @@ task_method_page('edit', [
     ],
     [
         'name' => 'tags',
-        'description' => 'Space-separated list of tags.',
+        'description' => 'A space-separated list of tags.',
     ],
     [
         'name' => 'top_priority',
         'description' => 'Whether the task should be marked as top priority.',
     ],
-], [
+], true_result(), [
     'TASK_NOT_FOUND' => "A task with the ID doesn't exist.",
     'ENTER_TEXT' => 'The new text is empty.',
     'TOO_MANY_TAGS' => 'More than '.Tags\maxNumber().' tags given.',

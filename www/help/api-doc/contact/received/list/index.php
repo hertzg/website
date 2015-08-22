@@ -12,8 +12,7 @@ received_contact_method_page('list', [], [
             ],
             'sender_username' => [
                 'type' => 'string',
-                'description' =>
-                    'The username of who the contact was received from.',
+                'description' => 'The username of who sent the contact.',
             ],
             'full_name' => [
                 'type' => 'string',
@@ -55,7 +54,7 @@ received_contact_method_page('list', [], [
             ],
             'tags' => [
                 'type' => 'string',
-                'description' => 'A space-separated list of tags.',
+                'description' => 'The space-separated list of tags.',
             ],
             'notes' => [
                 'type' => 'string',

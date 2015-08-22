@@ -21,7 +21,7 @@ file_method_page('list', [
             ],
             'size' => [
                 'type' => 'number',
-                'description' => 'The content size of the file in bytes.',
+                'description' => 'The size of the content of the file in bytes.',
             ],
             'insert_time' => [
                 'type' => 'number',

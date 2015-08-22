@@ -7,5 +7,37 @@ schedule_method_page('get', [
         'description' => 'The ID of the schedule to get.',
     ],
 ], [
+    'type' => 'object',
+    'object' => [
+        'id' => [
+            'type' => 'number',
+            'description' => 'The ID of the schedule.',
+        ],
+        'text' => [
+            'type' => 'string',
+            'description' => 'The text of the schedule.',
+        ],
+        'interval' => [
+            'type' => 'number',
+            'description' =>
+                'The number of days in which the schedule repeats.',
+        ],
+        'offset' => [
+            'type' => 'number',
+            'description' => 'The number of days from January 1st 1970'
+                .' to the next day on which the schedule is effective.',
+        ],
+        'insert_time' => [
+            'type' => 'number',
+            'description' =>
+                'The Unix timestamp of when the schedule was created.',
+        ],
+        'update_time' => [
+            'type' => 'number',
+            'description' =>
+                'The Unix timestamp of when the schedule was last modified.',
+        ],
+    ],
+], [
     'SCHEDULE_NOT_FOUND' => "A schedule with the ID doesn't exist.",
 ]);

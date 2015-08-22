@@ -12,8 +12,7 @@ received_bookmark_method_page('list', [], [
             ],
             'sender_username' => [
                 'type' => 'string',
-                'description' =>
-                    'The username of who the bookmark was received from.',
+                'description' => 'The username of who sent the bookmark.',
             ],
             'url' => [
                 'type' => 'string',

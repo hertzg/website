@@ -10,7 +10,7 @@ channel_user_method_page('list', [
     'type' => 'array',
     'item' => [
         'type' => 'string',
-        'description' => 'The username of the user.',
+        'description' => 'The username of one of the users.',
     ],
 ], [
     'CHANNEL_NOT_FOUND' => "A channel with the ID doesn't exist.",

@@ -1,6 +1,7 @@
 <?php
 
 include_once '../fns/place_point_method_page.php';
+include_once '../../../fns/true_result.php';
 place_point_method_page('edit', [
     [
         'name' => 'id',
@@ -18,6 +19,6 @@ place_point_method_page('edit', [
         'name' => 'altitude',
         'description' => 'The new altitude of the point.',
     ],
-], [
+], true_result(), [
     'POINT_NOT_FOUND' => "A point with the ID doesn't exist.",
 ]);

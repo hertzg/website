@@ -15,7 +15,7 @@ received_file_method_page('get', [
         ],
         'sender_username' => [
             'type' => 'string',
-            'description' => 'The username of who the file was received from.',
+            'description' => 'The username of who sent the file.',
         ],
         'name' => [
             'type' => 'string',
@@ -23,7 +23,7 @@ received_file_method_page('get', [
         ],
         'size' => [
             'type' => 'number',
-            'description' => 'The content size of the received file in bytes.',
+            'description' => 'The size of the content of the received file in bytes.',
         ],
         'insert_time' => [
             'type' => 'number',

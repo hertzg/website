@@ -11,6 +11,9 @@ received_folder_method_page('importCopy', [
         'description' => 'The ID of the parent folder.',
     ],
 ], [
+    'type' => 'number',
+    'description' => 'The ID of the imported folder.',
+], [
     'RECEIVED_FOLDER_NOT_FOUND' =>
         "A received folder with the ID doesn't exist.",
     'PARENT_FOLDER_NOT_FOUND' => "A parent folder with the ID doesn't exist.",

@@ -1,6 +1,7 @@
 <?php
 
 include_once '../fns/place_method_page.php';
+include_once '../../fns/true_result.php';
 include_once '../../../../fns/Tags/maxNumber.php';
 place_method_page('edit', [
     [
@@ -29,9 +30,9 @@ place_method_page('edit', [
     ],
     [
         'name' => 'tags',
-        'description' => 'Space-separated list of tags.',
+        'description' => 'A space-separated list of tags.',
     ],
-], [
+], true_result(), [
     'PLACE_NOT_FOUND' => "A place with the ID doesn't exist.",
     'TOO_MANY_TAGS' => 'More than '.Tags\maxNumber().' tags given.',
 ]);

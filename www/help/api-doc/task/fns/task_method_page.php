@@ -1,6 +1,6 @@
 <?php
 
-function task_method_page ($methodName, $params, $errors) {
+function task_method_page ($methodName, $params, $returns, $errors) {
 
     $dir = __DIR__.'/../../fns';
 
@@ -8,6 +8,7 @@ function task_method_page ($methodName, $params, $errors) {
     $description = task\get_methods()[$methodName];
 
     include_once "$dir/method_page.php";
-    method_page('Task', 'task', $methodName, $description, $params, $errors);
+    method_page('Task', 'task', $methodName,
+        $description, $params, $returns, $errors);
 
 }
