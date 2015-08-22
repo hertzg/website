@@ -3,7 +3,7 @@
 function get_groups () {
     return [
         'barChart' => [
-            'title' => 'Bar Charts',
+            'title' => 'Bar Chart',
             'description' => 'Methods for manipulating bar charts',
         ],
         'bookmark' => [
