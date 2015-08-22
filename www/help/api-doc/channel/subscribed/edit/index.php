@@ -1,6 +1,7 @@
 <?php
 
 include_once '../fns/subscribed_channel_method_page.php';
+include_once '../../../fns/true_result.php';
 subscribed_channel_method_page('edit', [
     [
         'name' => 'id',
@@ -11,7 +12,7 @@ subscribed_channel_method_page('edit', [
         'description' => 'Whether the subscriber'
             .' should receive notifications.',
     ],
-], [
+], true_result(), [
     'SUBSCRIBED_CHANNEL_NOT_FOUND' =>
         "A subscribed channel with the ID doesn't exist.",
 ]);

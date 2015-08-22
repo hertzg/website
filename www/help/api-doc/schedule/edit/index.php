@@ -1,6 +1,7 @@
 <?php
 
 include_once '../fns/schedule_method_page.php';
+include_once '../../fns/true_result.php';
 schedule_method_page('edit', [
     [
         'name' => 'id',
@@ -20,7 +21,7 @@ schedule_method_page('edit', [
         'description' => 'The number of days from January 1st 1970'
             .' to the next day on which the schedule is effective.',
     ],
-], [
+], true_result(), [
     'SCHEDULE_NOT_FOUND' => "A schedule with the ID doesn't exist.",
     'ENTER_TEXT' => 'The text is empty.',
 ]);

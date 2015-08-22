@@ -7,5 +7,8 @@ wallet_method_page('add', [
         'description' => 'The name of the wallet.',
     ],
 ], [
+    'type' => 'number',
+    'description' => 'The ID of the newly created wallet.',
+], [
     'ENTER_NAME' => 'The name is empty.',
 ]);

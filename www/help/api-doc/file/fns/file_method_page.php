@@ -1,6 +1,6 @@
 <?php
 
-function file_method_page ($methodName, $params, $errors) {
+function file_method_page ($methodName, $params, $returns, $errors) {
 
     $dir = __DIR__.'/../../fns';
 
@@ -8,6 +8,7 @@ function file_method_page ($methodName, $params, $errors) {
     $description = file\get_methods()[$methodName];
 
     include_once "$dir/method_page.php";
-    method_page('File', 'file', $methodName, $description, $params, $errors);
+    method_page('File', 'file', $methodName,
+        $description, $params, $returns, $errors);
 
 }

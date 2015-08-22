@@ -7,6 +7,9 @@ received_bookmark_method_page('importCopy', [
         'description' => 'The ID of the received bookmark to copy.',
     ],
 ], [
+    'type' => 'number',
+    'description' => 'The ID of the imported bookmark.',
+], [
     'RECEIVED_BOOKMARK_NOT_FOUND' =>
         "A received bookmark with the ID doesn't exist.",
 ]);

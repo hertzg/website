@@ -12,6 +12,9 @@ bar_chart_method_page('add', [
         'description' => 'A space-separated list of tags.',
     ],
 ], [
+    'type' => 'number',
+    'description' => 'The ID of the newly created bar chart.',
+], [
     'ENTER_NAME' => 'The name is empty.',
     'TOO_MANY_TAGS' => 'More than '.Tags\maxNumber().' tags given.',
 ]);

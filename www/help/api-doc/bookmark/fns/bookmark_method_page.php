@@ -1,6 +1,6 @@
 <?php
 
-function bookmark_method_page ($methodName, $params, $errors) {
+function bookmark_method_page ($methodName, $params, $returns, $errors) {
 
     $dir = __DIR__.'/../../fns';
 
@@ -9,6 +9,6 @@ function bookmark_method_page ($methodName, $params, $errors) {
 
     include_once "$dir/method_page.php";
     method_page('Bookmark', 'bookmark', $methodName,
-        $description, $params, $errors);
+        $description, $params, $returns, $errors);
 
 }

@@ -13,12 +13,15 @@ task_method_page('add', [
     ],
     [
         'name' => 'tags',
-        'description' => 'Space-separated list of tags.',
+        'description' => 'A space-separated list of tags.',
     ],
     [
         'name' => 'top_priority',
         'description' => 'Whether the task should be marked as top priority.',
     ],
+], [
+    'type' => 'number',
+    'description' => 'The ID of the newly created task.',
 ], [
     'ENTER_TEXT' => 'The text is empty.',
     'TOO_MANY_TAGS' => 'More than '.Tags\maxNumber().' tags given.',

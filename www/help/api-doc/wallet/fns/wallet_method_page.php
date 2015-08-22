@@ -1,6 +1,6 @@
 <?php
 
-function wallet_method_page ($methodName, $params, $errors) {
+function wallet_method_page ($methodName, $params, $returns, $errors) {
 
     $dir = __DIR__.'/../../fns';
 
@@ -9,6 +9,6 @@ function wallet_method_page ($methodName, $params, $errors) {
 
     include_once "$dir/method_page.php";
     method_page('Wallet', 'wallet', $methodName,
-        $description, $params, $errors);
+        $description, $params, $returns, $errors);
 
 }

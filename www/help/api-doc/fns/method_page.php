@@ -1,7 +1,7 @@
 <?php
 
 function method_page ($groupName, $prefix,
-    $methodName, $description, $params, $errors) {
+    $methodName, $description, $params, $returns, $errors) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
@@ -20,6 +20,9 @@ function method_page ($groupName, $prefix,
     } else {
         $items[] = Page\text('The method has no parameters.');
     }
+
+    include_once __DIR__.'/format_result.php';
+    $items[] = \Page\text('Returns: '.format_result($returns));
 
     if ($errors) {
         $text = 'Expected errors:';

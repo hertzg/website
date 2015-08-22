@@ -1,6 +1,6 @@
 <?php
 
-function notification_method_page ($methodName, $params, $errors) {
+function notification_method_page ($methodName, $params, $returns, $errors) {
 
     $dir = __DIR__.'/../../fns';
 
@@ -9,6 +9,6 @@ function notification_method_page ($methodName, $params, $errors) {
 
     include_once "$dir/method_page.php";
     method_page('Notification', 'notification',
-        $methodName, $description, $params, $errors);
+        $methodName, $description, $params, $returns, $errors);
 
 }

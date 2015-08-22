@@ -1,6 +1,6 @@
 <?php
 
-function channel_user_method_page ($methodName, $params, $errors) {
+function channel_user_method_page ($methodName, $params, $returns, $errors) {
 
     $dir = __DIR__.'/../../../fns';
 
@@ -9,6 +9,6 @@ function channel_user_method_page ($methodName, $params, $errors) {
 
     include_once "$dir/submethod_page.php";
     submethod_page('channel', 'User', 'user',
-        $methodName, $description, $params, $errors);
+        $methodName, $description, $params, $returns, $errors);
 
 }

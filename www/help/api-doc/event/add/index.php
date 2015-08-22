@@ -11,5 +11,8 @@ event_method_page('add', [
         'description' => 'The Unix timestamp of the day of the event.',
     ],
 ], [
+    'type' => 'number',
+    'description' => 'The ID of the newly created event.',
+], [
     'ENTER_TEXT' => 'The event text is empty.',
 ]);

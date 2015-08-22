@@ -1,6 +1,7 @@
 <?php
 
 include_once '../fns/contact_photo_method_page.php';
+include_once '../../../fns/true_result.php';
 contact_photo_method_page('set', [
     [
         'name' => 'id',
@@ -10,7 +11,7 @@ contact_photo_method_page('set', [
         'name' => 'file',
         'description' => 'The photo file to upload.',
     ],
-], [
+], true_result(), [
     'CONTACT_NOT_FOUND' => "A contact with the ID doesn't exist.",
     'SELECT_FILE' => 'The photo file is empty.',
     'INVALID_PHOTO' => "The photo couldn't be opened.",

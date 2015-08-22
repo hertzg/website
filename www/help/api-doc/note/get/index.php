@@ -7,5 +7,35 @@ note_method_page('get', [
         'description' => 'The ID of the note to get.',
     ],
 ], [
+    'type' => 'object',
+    'object' => [
+        'id' => [
+            'type' => 'number',
+            'description' => 'The ID of the note.',
+        ],
+        'text' => [
+            'type' => 'string',
+            'description' => 'The text of the note.',
+        ],
+        'encrypt' => [
+            'type' => 'boolean',
+            'description' => 'Whether the note is encrypted in listings.',
+        ],
+        'tags' => [
+            'type' => 'string',
+            'description' => 'The space-separated list of tags.',
+        ],
+        'insert_time' => [
+            'type' => 'number',
+            'description' =>
+                'The Unix timestamp of when the note was created.',
+        ],
+        'update_time' => [
+            'type' => 'number',
+            'description' =>
+                'The Unix timestamp of when the note was last modified.',
+        ],
+    ],
+], [
     'NOTE_NOT_FOUND' => "A note with the ID doesn't exist.",
 ]);

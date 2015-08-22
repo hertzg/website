@@ -1,6 +1,7 @@
 <?php
 
 include_once '../fns/bar_chart_method_page.php';
+include_once '../../fns/true_result.php';
 include_once '../../../../fns/Tags/maxNumber.php';
 bar_chart_method_page('edit', [
     [
@@ -15,7 +16,7 @@ bar_chart_method_page('edit', [
         'name' => 'tags',
         'description' => 'A space-separated list of tags.',
     ],
-], [
+], true_result(), [
     'BAR_CHART_NOT_FOUND' => "A bar chart with the ID doesn't exist.",
     'ENTER_NAME' => 'The new name is empty.',
     'TOO_MANY_TAGS' => 'More than '.Tags\maxNumber().' tags given.',

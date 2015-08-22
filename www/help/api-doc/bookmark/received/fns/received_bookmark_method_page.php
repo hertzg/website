@@ -1,6 +1,7 @@
 <?php
 
-function received_bookmark_method_page ($methodName, $params, $errors) {
+function received_bookmark_method_page (
+    $methodName, $params, $returns, $errors) {
 
     $fns = __DIR__.'/../../../fns';
 
@@ -9,6 +10,6 @@ function received_bookmark_method_page ($methodName, $params, $errors) {
 
     include_once "$fns/submethod_page.php";
     submethod_page('bookmark', 'Received', 'received',
-        $methodName, $description, $params, $errors);
+        $methodName, $description, $params, $returns, $errors);
 
 }

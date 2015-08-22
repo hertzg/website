@@ -17,5 +17,8 @@ schedule_method_page('add', [
             .' to the next day on which the schedule is effective.',
     ],
 ], [
+    'type' => 'number',
+    'description' => 'The ID of the newly created schedule.',
+], [
     'ENTER_TEXT' => 'The text is empty.',
 ]);

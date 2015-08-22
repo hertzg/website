@@ -13,8 +13,11 @@ note_method_page('add', [
     ],
     [
         'name' => 'tags',
-        'description' => 'Space-separated list of tags.',
+        'description' => 'A space-separated list of tags.',
     ],
+], [
+    'type' => 'number',
+    'description' => 'The ID of the newly created note.',
 ], [
     'ENTER_TEXT' => 'The text is empty.',
     'TOO_MANY_TAGS' => 'More than '.Tags\maxNumber().' tags given.',
