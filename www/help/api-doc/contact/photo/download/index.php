@@ -7,6 +7,8 @@ contact_photo_method_page('download', [
         'description' => 'The ID of the contact to download the photo of.',
     ],
 ], [
+    'type' => 'binary',
+], [
     'CONTACT_NOT_FOUND' => "A contact with the ID doesn't exist.",
     'NO_PHOTO' => "The contact doesn't have a photo.",
 ]);

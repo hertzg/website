@@ -16,6 +16,10 @@ contact_method_page('add', [
         'description' => 'The address of the contact.',
     ],
     [
+        'name' => 'email',
+        'description' => 'The email of the contact.',
+    ],
+    [
         'name' => 'phone1',
         'description' => 'The primary phone number of the contact.',
     ],
@@ -37,7 +41,7 @@ contact_method_page('add', [
     ],
     [
         'name' => 'tags',
-        'description' => 'Space-separated list of tags.',
+        'description' => 'A space-separated list of tags.',
     ],
     [
         'name' => 'notes',
@@ -47,6 +51,9 @@ contact_method_page('add', [
         'name' => 'favorite',
         'description' => 'Whether the contact should be marked as favorite.',
     ],
+], [
+    'type' => 'number',
+    'description' => 'The ID of the newly created contact.',
 ], [
     'ENTER_FULL_NAME' => 'The full name is empty.',
     'TOO_MANY_TAGS' => 'More than '.Tags\maxNumber().' tags given.',

@@ -7,6 +7,9 @@ received_contact_method_page('import', [
         'description' => 'The ID of the received contact to move.',
     ],
 ], [
+    'type' => 'number',
+    'description' => 'The ID of the imported contact.',
+], [
     'RECEIVED_CONTACT_NOT_FOUND' =>
         "A received contact with the ID doesn't exist.",
 ]);

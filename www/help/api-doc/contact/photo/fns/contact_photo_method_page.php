@@ -1,6 +1,6 @@
 <?php
 
-function contact_photo_method_page ($methodName, $params, $errors) {
+function contact_photo_method_page ($methodName, $params, $returns, $errors) {
 
     $dir = __DIR__.'/../../../fns';
 
@@ -9,6 +9,6 @@ function contact_photo_method_page ($methodName, $params, $errors) {
 
     include_once "$dir/submethod_page.php";
     submethod_page('contact', 'Photo', 'photo',
-        $methodName, $description, $params, $errors);
+        $methodName, $description, $params, $returns, $errors);
 
 }
