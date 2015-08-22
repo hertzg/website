@@ -7,5 +7,8 @@ bar_chart_method_page('add', [
         'description' => 'The name of the bar chart.',
     ],
 ], [
+    'type' => 'number',
+    'description' => 'The ID of the newly created bar chart.',
+], [
     'ENTER_NAME' => 'The name is empty.',
 ]);

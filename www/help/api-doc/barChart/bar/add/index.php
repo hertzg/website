@@ -15,5 +15,8 @@ bar_method_page('add', [
         'description' => 'The label of the bar.',
     ],
 ], [
+    'type' => 'number',
+    'description' => 'The ID of the newly added bar.',
+], [
     'BAR_CHART_NOT_FOUND' => "A bar chart with the ID doesn't exist.",
 ]);

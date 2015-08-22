@@ -7,5 +7,27 @@ bar_chart_method_page('get', [
         'description' => 'The ID of the bar chart to get.',
     ],
 ], [
+    'type' => 'object',
+    'object' => [
+        'id' => [
+            'type' => 'number',
+            'description' => 'The ID of the bar chart.',
+        ],
+        'name' => [
+            'type' => 'string',
+            'description' => 'The name of the bar chart.',
+        ],
+        'insert_time' => [
+            'type' => 'number',
+            'description' =>
+                'The Unix timestamp of when the bar chart was created.',
+        ],
+        'update_time' => [
+            'type' => 'number',
+            'description' =>
+                'The Unix timestamp of when the bar chart was last modified.',
+        ],
+    ],
+], [
     'BAR_CHART_NOT_FOUND' => "A bar chart with the ID doesn't exist.",
 ]);

@@ -1,6 +1,6 @@
 <?php
 
-function bar_chart_method_page ($methodName, $params, $errors) {
+function bar_chart_method_page ($methodName, $params, $returns, $errors) {
 
     $dir = __DIR__.'/../../fns';
 
@@ -9,6 +9,6 @@ function bar_chart_method_page ($methodName, $params, $errors) {
 
     include_once "$dir/method_page.php";
     method_page('Bar Chart', 'barChart', $methodName,
-        $description, $params, $errors);
+        $description, $params, $returns, $errors);
 
 }
