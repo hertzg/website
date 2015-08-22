@@ -17,7 +17,10 @@ function renderNotifications ($user, &$items) {
         $num_new_notifications = $user->num_new_notifications;
         if ($num_new_notifications) {
 
-            $description = "$num_new_notifications new.";
+            $description =
+                '<span class="redText">'
+                    ."$num_new_notifications new."
+                .'</span>';
             if ($num_new_notifications != $num_notifications) {
                 $description .= " $num_notifications total.";
             }
