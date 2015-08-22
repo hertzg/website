@@ -1,6 +1,7 @@
 <?php
 
-function subscribed_channel_method_page ($methodName, $params, $errors) {
+function subscribed_channel_method_page (
+    $methodName, $params, $returns, $errors) {
 
     $dir = __DIR__.'/../../../fns';
 
@@ -9,6 +10,6 @@ function subscribed_channel_method_page ($methodName, $params, $errors) {
 
     include_once "$dir/submethod_page.php";
     submethod_page('channel', 'Subscribed', 'subscribed',
-        $methodName, $description, $params, $errors);
+        $methodName, $description, $params, $returns, $errors);
 
 }

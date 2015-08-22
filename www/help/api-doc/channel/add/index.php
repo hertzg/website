@@ -18,6 +18,9 @@ channel_method_page('add', [
             .' should receive notifications.',
     ],
 ], [
+    'type' => 'number',
+    'description' => 'The ID of the newly created channel.',
+], [
     'ENTER_CHANNEL_NAME' => 'The name is empty.',
     'INVALID_CHANNEL_NAME' => 'The name is invalid.',
     'CHANNEL_NAME_TOO_SHORT' =>

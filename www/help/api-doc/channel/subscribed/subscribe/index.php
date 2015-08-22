@@ -12,6 +12,9 @@ subscribed_channel_method_page('subscribe', [
             .' should receive notifications.',
     ],
 ], [
+    'type' => 'number',
+    'description' => 'The ID of the newly subscribed subscribed channel.',
+], [
     'ENTER_CHANNEL_NAME' => 'The channel name is empty.',
     'INVALID_CHANNEL_NAME' => 'The channel name is invalid.',
     'CHANNEL_NOT_FOUND' => "A channel with the name doesn't exist.",
