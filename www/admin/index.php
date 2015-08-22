@@ -25,7 +25,7 @@ $icon = 'generic';
 $options = ['id' => 'general-info'];
 if ($client_address === false) {
     $description =
-        '<span class="invalid">'
+        '<span class="redText">'
             .'With this settings a client IP address cannot be detected.'
         .'</span>';
     include_once '../fns/Page/imageArrowLinkWithDescription.php';
@@ -46,7 +46,7 @@ $icon = 'generic';
 $options = ['id' => 'mysql-settings'];
 if ($mysqli->connect_errno) {
     $description =
-        '<span class="invalid">'
+        '<span class="redText">'
             ."The settings doesn't work. "
             .htmlspecialchars($mysqli->connect_error)
         .'</span>';
@@ -89,6 +89,4 @@ $content = Page\tabs(
 );
 
 include_once '../fns/echo_guest_page.php';
-echo_guest_page('Administration', $content, '../', [
-    'head' => '<link rel="stylesheet" type="text/css" href="index.css" />',
-]);
+echo_guest_page('Administration', $content, '../');

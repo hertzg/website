@@ -44,7 +44,12 @@ function renderCalendar ($user, $mysqli, &$items, &$scripts) {
     if ($today || $tomorrow) {
 
         $descriptions = [];
-        if ($today) $descriptions[] = $n_events($today).' today.';
+        if ($today) {
+            $descriptions[] =
+                '<span class="redText">'
+                    .$n_events($today).' today.'
+                .'</span>';
+        }
         if ($tomorrow) $descriptions[] = $n_events($tomorrow).' tomorrow.';
         $description = join(' ', $descriptions);
 
