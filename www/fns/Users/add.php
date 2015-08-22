@@ -32,7 +32,7 @@ function add ($mysqli, $username, $password, $email) {
 
     $sql = 'insert into users (username, password_hash,'
         .' password_salt, email, order_home_items, insert_time,'
-        .' theme, theme_brightness, birthdays_check_day,'
+        .' theme_color, theme_brightness, birthdays_check_day,'
         .' events_check_day, schedules_check_day, task_deadlines_check_day,'
         .' show_bar_charts, show_bookmarks, show_calendar, show_contacts,'
         .' show_files, show_notes, show_notifications, show_places,'
