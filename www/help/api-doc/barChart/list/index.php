@@ -14,6 +14,10 @@ bar_chart_method_page('list', [], [
                 'type' => 'string',
                 'description' => 'The name of the bar chart.',
             ],
+            'tags' => [
+                'type' => 'string',
+                'description' => 'The space-separated list of tags.',
+            ],
             'insert_time' => [
                 'type' => 'number',
                 'description' =>
