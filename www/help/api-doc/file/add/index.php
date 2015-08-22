@@ -20,6 +20,9 @@ file_method_page('add', [
             .' if a file with the same name already exists.',
     ],
 ], [
+    'type' => 'number',
+    'description' => 'The ID of the newly created file.',
+], [
     'ENTER_NAME' => 'The name is empty.',
     'FILE_ALREADY_EXISTS' => 'A file with the name already exists.',
     'PARENT_FOLDER_NOT_FOUND' => "A parent folder with the ID doesn't exist.",

@@ -1,4 +1,34 @@
 <?php
 
 include_once '../fns/received_file_method_page.php';
-received_file_method_page('list', [], []);
+received_file_method_page('list', [], [
+    'type' => 'array',
+    'item' => [
+        'type' => 'object',
+        'object' => [
+            'id' => [
+                'type' => 'number',
+                'description' => 'The ID of one of the received files.',
+            ],
+            'sender_username' => [
+                'type' => 'string',
+                'description' =>
+                    'The username of who the file was received from.',
+            ],
+            'name' => [
+                'type' => 'string',
+                'description' => 'The name of the received file.',
+            ],
+            'size' => [
+                'type' => 'number',
+                'description' =>
+                    'The content size of the received file in bytes.',
+            ],
+            'insert_time' => [
+                'type' => 'number',
+                'description' =>
+                    'The Unix timestamp of when the file was received.',
+            ],
+        ],
+    ],
+], []);
