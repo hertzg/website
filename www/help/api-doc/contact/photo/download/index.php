@@ -8,6 +8,7 @@ contact_photo_method_page('download', [
     ],
 ], [
     'type' => 'binary',
+    'description' => 'the photo in PNG format.',
 ], [
     'CONTACT_NOT_FOUND' => "A contact with the ID doesn't exist.",
     'NO_PHOTO' => "The contact doesn't have a photo.",

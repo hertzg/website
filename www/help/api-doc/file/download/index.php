@@ -8,6 +8,7 @@ file_method_page('download', [
     ],
 ], [
     'type' => 'binary',
+    'description' => 'the content of the file.',
 ], [
     'FILE_NOT_FOUND' => "A file with the ID doesn't exist.",
 ]);

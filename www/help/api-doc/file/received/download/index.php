@@ -8,6 +8,7 @@ received_file_method_page('download', [
     ],
 ], [
     'type' => 'binary',
+    'description' => 'the content of the received file.',
 ], [
     'RECEIVED_FILE_NOT_FOUND' => "A received file with the ID doesn't exist.",
 ]);

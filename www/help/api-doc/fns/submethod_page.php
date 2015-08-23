@@ -23,8 +23,8 @@ function submethod_page ($groupKey, $subgroupName,
         $items[] = Page\text('The method has no parameters.');
     }
 
-    include_once __DIR__.'/format_result.php';
-    $items[] = Page\text('Returns: '.format_result($returns));
+    include_once __DIR__.'/method_result.php';
+    $items[] = method_result($returns);
 
     if ($errors) {
         $text = 'Expected errors:';

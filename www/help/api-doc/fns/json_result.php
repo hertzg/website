@@ -1,6 +1,6 @@
 <?php
 
-function format_result ($object) {
+function json_result ($object) {
 
     $type = $object['type'];
 
@@ -23,7 +23,7 @@ function format_result ($object) {
         foreach ($object['object'] as $key => $item) {
             $html .=
                 '<div style="margin-left: 20px">'
-                    ."<code>$key</code>: ".format_result($item)
+                    ."<code>$key</code>: ".json_result($item)
                 .'</div>';
         }
         $html .=
@@ -37,7 +37,7 @@ function format_result ($object) {
             '<div>'
                 .'<code>[</code>'
                 .'<div style="margin-left: 20px">'
-                    .format_result($object['item'])
+                    .json_result($object['item'])
                     .'...'
                 .'</div>'
                 .'<code>]</code>'
