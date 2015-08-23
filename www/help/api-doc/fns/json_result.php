@@ -4,16 +4,8 @@ function json_result ($object) {
 
     $type = $object['type'];
 
-    if ($type === 'boolean') {
-        return "<code>&lt;boolean&gt;</code> - $object[description]";
-    }
-
-    if ($type === 'number') {
-        return "<code>&lt;number&gt;</code> - $object[description]";
-    }
-
-    if ($type === 'string') {
-        return "<code>&lt;string&gt;</code> - $object[description]";
+    if ($type === 'boolean' || $type === 'number' || $type === 'string') {
+        return "&lt;$type&gt; - $object[description]";
     }
 
     if ($type === 'object') {
