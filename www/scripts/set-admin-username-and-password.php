@@ -14,4 +14,4 @@ include_once '../fns/Password/hash.php';
 list($hash, $salt, $sha512_hash, $sha512_key) = Password\hash($argv[2]);
 
 include_once '../fns/Admin/set.php';
-Admin\set($argv[1], $hash, $salt, $sha512_hash, $sha512_key);
+Admin\set($argv[1], $sha512_hash, $sha512_key);

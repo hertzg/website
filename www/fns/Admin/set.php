@@ -2,7 +2,7 @@
 
 namespace Admin;
 
-function set ($username, $hash, $salt, $sha512_hash, $sha512_key) {
+function set ($username, $sha512_hash, $sha512_key) {
 
     $varExportHex = function ($s) {
         return '"'.preg_replace_callback('/../', function ($s) {
@@ -15,10 +15,8 @@ function set ($username, $hash, $salt, $sha512_hash, $sha512_key) {
         ."namespace Admin;\n\n"
         ."function get (&\$username, &\$hash, &\$salt, &\$sha512_hash, &\$sha512_key) {\n"
         .'    $username = '.var_export($username, true).";\n"
-        .'    $hash = '.$varExportHex($hash).";\n"
-        ."    \$salt =\n"
-        .'        '.$varExportHex(substr($salt, 0, 16))."\n"
-        .'        .'.$varExportHex(substr($salt, 16)).";\n"
+        ."    \$hash = null;\n"
+        ."    \$salt = null;\n"
         ."    \$sha512_hash =\n"
         .'        '.$varExportHex(substr($sha512_hash, 0, 16))."\n"
         .'        .'.$varExportHex(substr($sha512_hash, 16, 16))."\n"

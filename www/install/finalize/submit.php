@@ -13,7 +13,7 @@ list($hash, $salt, $sha512_hash, $sha512_key) = Password\hash(
     $adminValues['password1']);
 
 include_once "$fnsDir/Admin/set.php";
-Admin\set($adminValues['username'], $hash, $salt, $sha512_hash, $sha512_key);
+Admin\set($adminValues['username'], $sha512_hash, $sha512_key);
 
 include_once "$fnsDir/SiteTitle/set.php";
 SiteTitle\set($generalInfoValues['siteTitle']);
