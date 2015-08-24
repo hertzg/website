@@ -30,8 +30,34 @@ else {
 
 unset($_SESSION['tasks/view/messages']);
 
-include_once 'fns/create_content.php';
-$content = create_content($user, $id, $values);
+$fnsDir = '../../fns';
+
+include_once '../fns/create_form_items.php';
+include_once "$fnsDir/Form/button.php";
+include_once "$fnsDir/ItemList/escapedItemQuery.php";
+include_once "$fnsDir/ItemList/itemHiddenInputs.php";
+include_once "$fnsDir/Page/sessionErrors.php";
+include_once "$fnsDir/Page/staticTwoColumns.php";
+include_once "$fnsDir/Page/tabs.php";
+$content = Page\tabs(
+    [
+        [
+            'title' => "Task #$id",
+            'href' => '../view/'.ItemList\escapedItemQuery($id).'#edit',
+        ],
+    ],
+    'Edit',
+    Page\sessionErrors('tasks/edit/errors')
+    .'<form action="submit.php" method="post">'
+        .create_form_items($user, $values, $scripts)
+        .'<div class="hr"></div>'
+        .Page\staticTwoColumns(
+            Form\button('Save Changes'),
+            Form\button('Send', 'sendButton')
+        )
+        .ItemList\itemHiddenInputs($id)
+    .'</form>'
+);
 
 include_once '../../fns/echo_page.php';
-echo_page($user, "Edit Task #$id", $content, '../../');
+echo_page($user, "Edit Task #$id", $content, '../../', ['scripts' => $scripts]);

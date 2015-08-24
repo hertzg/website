@@ -40,32 +40,28 @@ include_once "$fnsDir/ItemList/Received/escapedItemQuery.php";
 $escapedItemQuery = ItemList\Received\escapedItemQuery($id);
 
 include_once '../../fns/create_form_items.php';
-include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/hidden.php";
 include_once "$fnsDir/ItemList/Received/itemHiddenInputs.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/tabs.php";
-$content =
-    Page\tabs(
+$content = Page\tabs(
+    [
         [
-            [
-                'title' => "Received Task #$id",
-                'href' => "../view/$escapedItemQuery#edit-and-import",
-            ],
+            'title' => "Received Task #$id",
+            'href' => "../view/$escapedItemQuery#edit-and-import",
         ],
-        'Edit and Import',
-        Page\sessionErrors('tasks/received/edit-and-import/errors')
-        .'<form action="submit.php" method="post">'
-            .create_form_items($user, $values)
-            .'<div class="hr"></div>'
-            .Form\button('Import Task')
-            .ItemList\Received\itemHiddenInputs($id)
-        .'</form>'
-    )
-    .compressed_js_script('flexTextarea', $base)
-    .compressed_js_script('formCheckbox', $base);
+    ],
+    'Edit and Import',
+    Page\sessionErrors('tasks/received/edit-and-import/errors')
+    .'<form action="submit.php" method="post">'
+        .create_form_items($user, $values, $scripts, '../')
+        .'<div class="hr"></div>'
+        .Form\button('Import Task')
+        .ItemList\Received\itemHiddenInputs($id)
+    .'</form>'
+);
 
 include_once "$fnsDir/echo_page.php";
 $title = "Edit and Import Received Task #$id";
-echo_page($user, $title, $content, $base);
+echo_page($user, $title, $content, $base, ['scripts' => $scripts]);
