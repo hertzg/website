@@ -73,5 +73,8 @@ $content = Page\tabs(
     .'</form>'
 );
 
+include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/echo_page.php";
-echo_page($user, 'Jumo To', $content, $base);
+echo_page($user, 'Jumo To', $content, $base, [
+    'scripts' => compressed_js_script('dateField', $base),
+]);

@@ -31,7 +31,7 @@ $content = Page\tabs(
     Page\sessionErrors('calendar/all-events/new/errors')
     .'<form action="submit.php" method="post">'
         .create_form_items($values['text'], $values['event_day'],
-            $values['event_month'], $values['event_year'])
+            $values['event_month'], $values['event_year'], $scripts, '../')
         .'<div class="hr"></div>'
         .Form\button('Save Event')
         .ItemList\pageHiddenInputs()
@@ -39,4 +39,4 @@ $content = Page\tabs(
 );
 
 include_once "$fnsDir/echo_page.php";
-echo_page($user, 'New Event', $content, $base);
+echo_page($user, 'New Event', $content, $base, ['scripts' => $scripts]);

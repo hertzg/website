@@ -37,11 +37,11 @@ $content = Page\tabs(
     Page\sessionErrors('calendar/new-event/errors')
     .'<form action="submit.php" method="post">'
         .create_form_items($values['text'],
-            $event_day, $event_month, $event_year)
+            $event_day, $event_month, $event_year, $scripts)
         .'<div class="hr"></div>'
         .Form\button('Save Event')
     .'</form>'
 );
 
 include_once "$fnsDir/echo_page.php";
-echo_page($user, 'New Event', $content, $base);
+echo_page($user, 'New Event', $content, $base, ['scripts' => $scripts]);
