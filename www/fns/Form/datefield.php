@@ -56,7 +56,10 @@ function datefield ($day, $month, $year,
     }
     $yearSelect .= '</select>';
 
-    $html = $daySelect.$monthSelect.$yearSelect;
+    $html =
+        '<div class="datefield">'
+            .$daySelect.$monthSelect.$yearSelect
+        .'</div>';
 
     include_once __DIR__.'/association.php';
     return association($html, "<label for=\"$dayName\">$text:</label>");
