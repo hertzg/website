@@ -3,5 +3,5 @@
 namespace ClientAddress\GetMethod;
 
 function get () {
-   return 'direct';
+    return 'direct';
 }
