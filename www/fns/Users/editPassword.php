@@ -5,7 +5,7 @@ namespace Users;
 function editPassword ($mysqli, $id, $password) {
 
     include_once __DIR__.'/../Password/hash.php';
-    list($password_hash, $password_salt, $password_sha512_hash,
+    list($password_sha512_hash,
         $password_sha512_key) = \Password\hash($password);
 
     $password_sha512_hash = $mysqli->real_escape_string($password_sha512_hash);

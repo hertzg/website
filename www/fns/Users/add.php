@@ -7,7 +7,7 @@ function add ($mysqli, $username, $password, $email) {
     $fnsDir = __DIR__.'/..';
 
     include_once "$fnsDir/Password/hash.php";
-    list($password_hash, $password_salt, $password_sha512_hash,
+    list($password_sha512_hash,
         $password_sha512_key) = \Password\hash($password);
 
     include_once __DIR__.'/Home/defaultOrder.php';
