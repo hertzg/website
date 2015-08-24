@@ -25,6 +25,7 @@ function ensureAll ($mysqli) {
     include_once "$fnsDir/Files/ensure.php";
     include_once "$fnsDir/Folders/ensure.php";
     include_once "$fnsDir/InvalidSignins/ensure.php";
+    include_once "$fnsDir/Invitations/ensure.php";
     include_once "$fnsDir/Notes/ensure.php";
     include_once "$fnsDir/NoteTags/ensure.php";
     include_once "$fnsDir/Notifications/ensure.php";
@@ -69,6 +70,7 @@ function ensureAll ($mysqli) {
         .\Files\ensure($mysqli)
         .\Folders\ensure($mysqli)
         .\InvalidSignins\ensure($mysqli)
+        .\Invitations\ensure($mysqli)
         .\Notes\ensure($mysqli)
         .\NoteTags\ensure($mysqli)
         .\Notifications\ensure($mysqli)
