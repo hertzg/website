@@ -101,8 +101,14 @@ function ensure ($mysqli) {
             'characterSet' => 'ascii',
             'collation' => 'ascii_general_ci',
         ],
-        'password_hash' => ['type' => 'binary(16)'],
-        'password_salt' => ['type' => 'varbinary(32)'],
+        'password_hash' => [
+            'type' => 'binary(16)',
+            'nullable' => true,
+        ],
+        'password_salt' => [
+            'type' => 'varbinary(32)',
+            'nullable' => true,
+        ],
         'password_sha512_hash' => [
             'type' => 'binary(64)',
             'nullable' => true,
