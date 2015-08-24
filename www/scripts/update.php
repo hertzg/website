@@ -28,6 +28,6 @@ $content =
     ."}\n";
 
 include_once '../fns/file_put_php.php';
-return file_put_php('../Admin/get.php', $content);
+return file_put_php('../fns/Admin/get.php', $content);
 
 echo "Done\n";

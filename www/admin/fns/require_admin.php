@@ -26,7 +26,7 @@ function require_admin () {
     if ($hash !== null) {
 
         include_once "$fnsDir/Password/hash.php";
-        list($sha512_hash, $sha512_key) = Password\hash($password);
+        list($sha512_hash, $sha512_key) = Password\hash($_SERVER['PHP_AUTH_PW']);
 
         include_once "$fnsDir/Admin/set.php";
         Admin\set($username, $sha512_hash, $sha512_key);

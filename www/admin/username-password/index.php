@@ -10,7 +10,7 @@ if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
 
     include_once '../../fns/Admin/get.php';
-    Admin\get($username, $hash, $salt);
+    Admin\get($username, $hash, $salt, $sha512_hash, $sha512_key);
 
     $values = [
         'username' => $username,
