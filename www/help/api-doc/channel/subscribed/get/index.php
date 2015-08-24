@@ -20,7 +20,7 @@ subscribed_channel_method_page('get', [
         'channel_public' => [
             'type' => 'boolean',
             'description' => 'Whether the subscribed channel is public.',
-        ], 
+        ],
         'receive_notifications' => [
             'type' => 'boolean',
             'description' => 'Whether the subscriber receives notifications.',
