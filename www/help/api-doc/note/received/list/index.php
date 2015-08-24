@@ -20,7 +20,8 @@ received_note_method_page('list', [], [
             ],
             'encrypt' => [
                 'type' => 'boolean',
-                'description' => 'Whether the received note is encrypted in listings.',
+                'description' =>
+                    'Whether the received note is encrypted in listings.',
             ],
             'tags' => [
                 'type' => 'string',

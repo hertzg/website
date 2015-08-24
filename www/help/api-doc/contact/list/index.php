@@ -45,7 +45,8 @@ contact_method_page('list', [], [
             ],
             'timezone' => [
                 'type' => 'number',
-                'description' => 'The timezone offset of the contact in minutes.',
+                'description' =>
+                    'The timezone offset of the contact in minutes.',
             ],
             'tags' => [
                 'type' => 'string',

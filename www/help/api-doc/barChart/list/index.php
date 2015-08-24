@@ -25,8 +25,8 @@ bar_chart_method_page('list', [], [
             ],
             'update_time' => [
                 'type' => 'number',
-                'description' =>
-                    'The Unix timestamp of when the bar chart was last modified.',
+                'description' => 'The Unix timestamp of'
+                    .' when the bar chart was last modified.',
             ],
         ],
     ],

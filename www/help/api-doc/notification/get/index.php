@@ -24,7 +24,8 @@ notification_method_page('get', [
         ],
         'insert_time' => [
             'type' => 'number',
-            'description' => 'The Unix timestamp of when the notification was posted.',
+            'description' =>
+                'The Unix timestamp of when the notification was posted.',
         ],
     ],
 ], [

@@ -29,8 +29,8 @@ bookmark_method_page('list', [], [
             ],
             'update_time' => [
                 'type' => 'number',
-                'description' =>
-                    'The Unix timestamp of when the bookmark was last modified.',
+                'description' => 'The Unix timestamp of'
+                    .' when the bookmark was last modified.',
             ],
         ],
     ],

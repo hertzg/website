@@ -40,8 +40,8 @@ received_contact_method_page('list', [], [
             ],
             'birthday_time' => [
                 'type' => 'number',
-                'description' =>
-                    'The Unix timestamp of the birthday of the received contact.',
+                'description' => 'The Unix timestamp of'
+                    .' the birthday of the received contact.',
             ],
             'username' => [
                 'type' => 'string',

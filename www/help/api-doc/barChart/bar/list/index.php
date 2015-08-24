@@ -21,7 +21,8 @@ bar_method_page('list', [
             ],
             'insert_time' => [
                 'type' => 'number',
-                'description' => 'The Unix timestamp of when the bar was added.',
+                'description' =>
+                    'The Unix timestamp of when the bar was added.',
             ],
             'update_time' => [
                 'type' => 'number',

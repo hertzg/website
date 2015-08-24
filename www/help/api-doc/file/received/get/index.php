@@ -23,7 +23,8 @@ received_file_method_page('get', [
         ],
         'size' => [
             'type' => 'number',
-            'description' => 'The size of the content of the received file in bytes.',
+            'description' =>
+                'The size of the content of the received file in bytes.',
         ],
         'insert_time' => [
             'type' => 'number',
