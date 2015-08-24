@@ -1,8 +1,14 @@
 <?php
 
-function create_form_items ($values) {
+function create_form_items ($values, &$scripts, $base = '') {
 
     $fnsDir = __DIR__.'/../../fns';
+
+    include_once "$fnsDir/compressed_js_script.php";
+    $scripts =
+        compressed_js_script('dateField', "$base../../")
+        .compressed_js_script('flexTextarea', "$base../../")
+        .compressed_js_script('formCheckbox', "$base../../");
 
     include_once "$fnsDir/Contacts/maxLengths.php";
     $maxLengths = Contacts\maxLengths();

@@ -40,6 +40,7 @@ if (array_key_exists($key, $_SESSION)) {
         'notes' => $notes,
         'favorite' => $favorite,
     ];
+
 }
 
 unset(
@@ -49,7 +50,7 @@ unset(
 );
 
 include_once 'fns/create_content.php';
-$content = create_content($values);
+$content = create_content($values, $scripts);
 
 include_once "$fnsDir/echo_page.php";
-echo_page($user, 'New Contact', $content, $base);
+echo_page($user, 'New Contact', $content, $base, ['scripts' => $scripts]);

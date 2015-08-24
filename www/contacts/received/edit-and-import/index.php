@@ -40,8 +40,8 @@ if (array_key_exists($key, $_SESSION)) {
 }
 
 include_once 'fns/create_content.php';
-$content = create_content($id, $values);
+$content = create_content($id, $values, $scripts);
 
 include_once '../../../fns/echo_page.php';
 $title = "Edit and Import Received Contact #$id";
-echo_page($user, $title, $content, '../../../');
+echo_page($user, $title, $content, '../../../', ['scripts' => $scripts]);
