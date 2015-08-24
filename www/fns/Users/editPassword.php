@@ -8,13 +8,10 @@ function editPassword ($mysqli, $id, $password) {
     list($password_hash, $password_salt, $password_sha512_hash,
         $password_sha512_key) = \Password\hash($password);
 
-    $password_hash = $mysqli->real_escape_string($password_hash);
-    $password_salt = $mysqli->real_escape_string($password_salt);
     $password_sha512_hash = $mysqli->real_escape_string($password_sha512_hash);
     $password_sha512_key = $mysqli->real_escape_string($password_sha512_key);
 
-    $sql = "update users set password_hash = '$password_hash',"
-        ." password_salt = '$password_salt',"
+    $sql = 'update users set password_hash = null, password_salt = null,'
         ." password_sha512_hash = '$password_sha512_hash',"
         ." password_sha512_key = '$password_sha512_key',"
         ." reset_password_key = null, reset_password_key_time = null,"
