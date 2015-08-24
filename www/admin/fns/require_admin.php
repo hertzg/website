@@ -23,6 +23,16 @@ function require_admin () {
 
     if (!$match) $invalid();
 
+    if ($hash !== null) {
+
+        include_once "$fnsDir/Password/hash.php";
+        list($sha512_hash, $sha512_key) = Password\hash($password);
+
+        include_once "$fnsDir/Admin/set.php";
+        Admin\set($username, $sha512_hash, $sha512_key);
+
+    }
+
     include_once "$fnsDir/session_start_custom.php";
     session_start_custom($new);
 
