@@ -16,12 +16,13 @@ $errors = [];
 if ($password === '') {
     $errors[] = 'Enter password.';
 } else {
+
     include_once "$fnsDir/Password/match.php";
-    $hash = $user->password_hash;
-    $salt = $user->password_salt;
-    if (!Password\match($hash, $salt, $password)) {
-        $errors[] = 'Invalid password.';
-    }
+    $match = Password\match($user->password_hash, $user->password_salt,
+        $user->password_sha512_hash, $user->password_sha512_key, $password);
+
+    if (!$match) $errors[] = 'Invalid password.';
+
 }
 
 include_once "$fnsDir/redirect.php";

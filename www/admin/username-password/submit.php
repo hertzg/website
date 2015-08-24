@@ -37,10 +37,10 @@ else {
 if (!$errors) {
 
     include_once "$fnsDir/Password/hash.php";
-    list($hash, $salt) = Password\hash($password1);
+    list($hash, $salt, $sha512_hash, $sha512_key) = Password\hash($password1);
 
     include_once "$fnsDir/Admin/set.php";
-    $ok = Admin\set($username, $hash, $salt);
+    $ok = Admin\set($username, $hash, $salt, $sha512_hash, $sha512_key);
     if (!$ok) $errors[] = 'Failed to save the data.';
 
 }

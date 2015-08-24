@@ -7,7 +7,8 @@ function add ($mysqli, $username, $password, $email) {
     $fnsDir = __DIR__.'/..';
 
     include_once "$fnsDir/Password/hash.php";
-    list($password_hash, $password_salt) = \Password\hash($password);
+    list($password_hash, $password_salt, $password_sha512_hash,
+        $password_sha512_key) = \Password\hash($password);
 
     include_once __DIR__.'/Home/defaultOrder.php';
     $order_home_items = Home\defaultOrder();
@@ -17,6 +18,8 @@ function add ($mysqli, $username, $password, $email) {
     $username = $mysqli->real_escape_string($username);
     $password_hash = $mysqli->real_escape_string($password_hash);
     $password_salt = $mysqli->real_escape_string($password_salt);
+    $password_sha512_hash = $mysqli->real_escape_string($password_sha512_hash);
+    $password_sha512_key = $mysqli->real_escape_string($password_sha512_key);
     $email = $mysqli->real_escape_string($email);
     $insert_time = time();
 
@@ -31,14 +34,16 @@ function add ($mysqli, $username, $password, $email) {
     $theme_brightness = \Theme\Brightness\getDefault();
 
     $sql = 'insert into users (username, password_hash,'
-        .' password_salt, email, order_home_items, insert_time,'
+        .' password_salt, password_sha512_hash, password_sha512_key,'
+        .' email, order_home_items, insert_time,'
         .' theme_color, theme_brightness, birthdays_check_day,'
         .' events_check_day, schedules_check_day, task_deadlines_check_day,'
         .' show_bar_charts, show_bookmarks, show_calendar, show_contacts,'
         .' show_files, show_notes, show_notifications, show_places,'
         .' show_schedules, show_tasks, show_trash, show_wallets)'
         ." values ('$username', '$password_hash',"
-        ." '$password_salt', '$email', '$order_home_items', $insert_time,"
+        ." '$password_salt', '$password_sha512_hash', '$password_sha512_key',"
+        ." '$email', '$order_home_items', $insert_time,"
         ." '$theme_color', '$theme_brightness', $birthdays_check_day,"
         ." $events_check_day, $schedules_check_day, $task_deadlines_check_day,"
         ." 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)";

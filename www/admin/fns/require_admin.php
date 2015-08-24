@@ -13,12 +13,15 @@ function require_admin () {
     $fnsDir = __DIR__.'/../../fns';
 
     include_once "$fnsDir/Admin/get.php";
-    Admin\get($username, $hash, $salt);
+    Admin\get($username, $hash, $salt, $sha512_hash, $sha512_key);
 
     if ($username !== $_SERVER['PHP_AUTH_USER']) $invalid();
 
     include_once "$fnsDir/Password/match.php";
-    if (!Password\match($hash, $salt, $_SERVER['PHP_AUTH_PW'])) $invalid();
+    $match = Password\match($hash, $salt,
+        $sha512_hash, $sha512_key, $_SERVER['PHP_AUTH_PW']);
+
+    if (!$match) $invalid();
 
     include_once "$fnsDir/session_start_custom.php";
     session_start_custom($new);

@@ -9,10 +9,11 @@ include_once '../fns/require_admin.php';
 list($generalInfoValues, $mysqlConfigValues, $adminValues) = require_admin();
 
 include_once "$fnsDir/Password/hash.php";
-list($hash, $salt) = Password\hash($adminValues['password1']);
+list($hash, $salt, $sha512_hash, $sha512_key) = Password\hash(
+    $adminValues['password1']);
 
 include_once "$fnsDir/Admin/set.php";
-Admin\set($adminValues['username'], $hash, $salt);
+Admin\set($adminValues['username'], $hash, $salt, $sha512_hash, $sha512_key);
 
 include_once "$fnsDir/SiteTitle/set.php";
 SiteTitle\set($generalInfoValues['siteTitle']);

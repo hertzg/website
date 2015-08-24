@@ -103,6 +103,14 @@ function ensure ($mysqli) {
         ],
         'password_hash' => ['type' => 'binary(16)'],
         'password_salt' => ['type' => 'varbinary(32)'],
+        'password_sha512_hash' => [
+            'type' => 'binary(64)',
+            'nullable' => true,
+        ],
+        'password_sha512_key' => [
+            'type' => 'binary(64)',
+            'nullable' => true,
+        ],
         'reset_password_key' => \LinkKey\column(true),
         'reset_password_key_time' => [
             'type' => 'bigint(20) unsigned',

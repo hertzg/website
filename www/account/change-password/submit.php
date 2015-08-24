@@ -17,12 +17,14 @@ $errors = [];
 if ($currentPassword === '') {
     $errors[] = 'Enter current password.';
 } else {
+
     include_once "$fnsDir/Password/match.php";
-    $hash = $user->password_hash;
-    $salt = $user->password_salt;
-    if (!Password\match($hash, $salt, $currentPassword)) {
-        $errors[] = 'Invalid current password.';
-    }
+    $match = Password\match($user->password_hash,
+        $user->password_salt, $user->password_sha512_hash,
+        $user->password_sha512_key, $currentPassword);
+
+    if (!$match) $errors[] = 'Invalid current password.';
+
 }
 
 if ($password1 === '') {
