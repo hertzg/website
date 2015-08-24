@@ -20,7 +20,6 @@ function create ($mysqli, $user, &$scripts) {
     $events = \Users\Events\searchPage(
         $mysqli, $user, $keyword, $offset, $limit, $total);
 
-    include_once "$fnsDir/Form/hidden.php";
     include_once "$fnsDir/SearchForm/content.php";
     $formContent = \SearchForm\content($keyword, 'Search events...', '../');
 

@@ -14,7 +14,6 @@ unset($_SESSION['wallets/all-transactions/view/messages']);
 
 include_once '../../fns/create_transaction_form_items.php';
 include_once "$fnsDir/Form/button.php";
-include_once "$fnsDir/Form/hidden.php";
 include_once "$fnsDir/ItemList/escapedItemQuery.php";
 include_once "$fnsDir/ItemList/itemHiddenInputs.php";
 include_once "$fnsDir/Page/sessionErrors.php";

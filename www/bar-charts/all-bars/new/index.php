@@ -14,7 +14,6 @@ $fnsDir = '../../../fns';
 
 include_once '../../fns/create_bar_form_items.php';
 include_once "$fnsDir/Form/button.php";
-include_once "$fnsDir/Form/hidden.php";
 include_once "$fnsDir/ItemList/listHref.php";
 include_once "$fnsDir/ItemList/itemHiddenInputs.php";
 include_once "$fnsDir/Page/sessionErrors.php";

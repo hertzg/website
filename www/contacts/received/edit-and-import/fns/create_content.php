@@ -9,7 +9,6 @@ function create_content ($id, $values, &$scripts) {
 
     include_once __DIR__.'/../../../fns/create_form_items.php';
     include_once "$fnsDir/Form/button.php";
-    include_once "$fnsDir/Form/hidden.php";
     include_once "$fnsDir/ItemList/Received/itemHiddenInputs.php";
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/tabs.php";

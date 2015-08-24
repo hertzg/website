@@ -18,7 +18,6 @@ unset($_SESSION['bookmarks/view/messages']);
 
 include_once '../fns/create_form_items.php';
 include_once '../../fns/Form/button.php';
-include_once '../../fns/Form/hidden.php';
 include_once '../../fns/ItemList/escapedItemQuery.php';
 include_once '../../fns/ItemList/itemHiddenInputs.php';
 include_once '../../fns/Page/sessionErrors.php';
