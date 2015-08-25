@@ -24,6 +24,9 @@ function create_form_items ($values) {
         ])
         .'<div class="hr"></div>'
         .Form\checkbox('encrypt_in_listings',
-            'Encrypt in listings', $values['encrypt_in_listings']);
+            'Encrypt in listings', $values['encrypt_in_listings'])
+        .'<div class="hr"></div>'
+        .Form\checkbox('password_protect',
+            'Password protect', $values['password_protect']);
 
 }

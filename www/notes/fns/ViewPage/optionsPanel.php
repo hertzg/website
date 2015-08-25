@@ -17,6 +17,7 @@ function optionsPanel ($note) {
     $tags = $note->tags;
     if ($tags !== '') $params['tags'] = $tags;
     if ($note->encrypt_in_listings) $params['encrypt_in_listings'] = '1';
+    if ($note->password_protect) $params['password_protect'] = '1';
     $href = '../new/?'.htmlspecialchars(http_build_query($params));
     $duplicateLink = \Page\imageArrowLink('Duplicate', $href, 'duplicate-note');
 

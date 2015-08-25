@@ -10,8 +10,8 @@ include_once '../../lib/mysqli.php';
 list($note, $id, $user) = require_note($mysqli);
 
 include_once '../fns/request_note_params.php';
-list($text, $tags, $tag_names,
-    $encrypt_in_listings) = request_note_params($errors);
+list($text, $tags, $tag_names, $encrypt_in_listings,
+    $password_protect) = request_note_params($errors);
 
 include_once "$fnsDir/ItemList/itemQuery.php";
 $itemQuery = ItemList\itemQuery($id);
@@ -20,6 +20,7 @@ $values = [
     'text' => $text,
     'tags' => $tags,
     'encrypt_in_listings' => $encrypt_in_listings,
+    'password_protect' => $password_protect,
 ];
 
 $_SESSION['notes/edit/values'] = $values;
@@ -48,8 +49,8 @@ if ($sendButton) {
 unset($_SESSION['notes/edit/values']);
 
 include_once "$fnsDir/Users/Notes/edit.php";
-Users\Notes\edit($mysqli, $note, $text,
-    $tags, $tag_names, $encrypt_in_listings);
+Users\Notes\edit($mysqli, $note, $text, $tags,
+    $tag_names, $encrypt_in_listings, $password_protect);
 
 $_SESSION['notes/view/messages'] = ['Changes have been saved.'];
 redirect("../view/$itemQuery");

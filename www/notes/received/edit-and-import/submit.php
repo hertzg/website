@@ -10,8 +10,8 @@ include_once '../../../lib/mysqli.php';
 list($receivedNote, $id, $user) = require_received_note($mysqli, '../');
 
 include_once '../../fns/request_note_params.php';
-list($text, $tags, $tag_names,
-    $encrypt_in_listings) = request_note_params($errors);
+list($text, $tags, $tag_names, $encrypt_in_listings,
+    $password_protect) = request_note_params($errors);
 
 include_once "$fnsDir/redirect.php";
 
@@ -21,6 +21,7 @@ if ($errors) {
         'text' => $text,
         'tags' => $tags,
         'encrypt_in_listings' => $encrypt_in_listings,
+        'password_protect' => $password_protect,
     ];
     include_once "$fnsDir/ItemList/Received/itemQuery.php";
     redirect('./'.ItemList\Received\itemQuery($id));
@@ -36,7 +37,7 @@ $receivedNote->tags = $tags;
 $receivedNote->encrypt_in_listings = $encrypt_in_listings;
 
 include_once "$fnsDir/Users/Notes/Received/import.php";
-Users\Notes\Received\import($mysqli, $receivedNote);
+Users\Notes\Received\import($mysqli, $receivedNote, $password_protect);
 
 $messages = ['Note has been imported.'];
 

@@ -11,6 +11,7 @@ else {
         'text' => $note->text,
         'tags' => $note->tags,
         'encrypt_in_listings' => $note->encrypt_in_listings,
+        'password_protect' => $note->password_protect,
     ];
 }
 

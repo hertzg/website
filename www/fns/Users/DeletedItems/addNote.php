@@ -10,6 +10,7 @@ function addNote ($mysqli, $note, $apiKey) {
         'title' => $note->title,
         'tags' => $note->tags,
         'encrypt_in_listings' => $note->encrypt_in_listings,
+        'password_protect' => $note->password_protect,
         'insert_api_key_id' => $note->insert_api_key_id,
         'insert_time' => $note->insert_time,
         'update_api_key_id' => $note->update_api_key_id,

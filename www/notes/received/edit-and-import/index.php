@@ -11,7 +11,14 @@ unset($_SESSION['notes/received/view/messages']);
 
 $key = 'notes/received/edit-and-import/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
-else $values = (array)$receivedNote;
+else {
+    $values = [
+        'text' => $receivedNote->text,
+        'tags' => $receivedNote->tags,
+        'encrypt_in_listings' => $receivedNote->encrypt_in_listings,
+        'password_protect' => false,
+    ];
+}
 
 include_once "$fnsDir/Notes/maxLengths.php";
 $maxLengths = Notes\maxLengths();

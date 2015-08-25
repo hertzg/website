@@ -1,8 +1,8 @@
 <?php
 
 function expect_received_note_object ($engine, $variableName, $receivedNote) {
-    $properties = ['id', 'sender_username',
-        'text', 'tags', 'encrypt_in_listings', 'insert_time'];
+    $properties = ['id', 'sender_username', 'text',
+        'tags', 'encrypt_in_listings', 'insert_time'];
     $engine->expectObject($variableName, $properties, $receivedNote);
     $engine->expectNatural("$variableName.id", $receivedNote->id);
     $engine->expectType("$variableName.sender_username",

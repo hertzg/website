@@ -18,6 +18,10 @@ note_method_page('list', [], [
                 'type' => 'boolean',
                 'description' => 'Whether the note is encrypted in listings.',
             ],
+            'password_protect' => [
+                'type' => 'boolean',
+                'description' => 'Whether the note is password-protected.',
+            ],
             'tags' => [
                 'type' => 'string',
                 'description' => 'The space-separated list of tags.',
