@@ -10,14 +10,15 @@ function update ($mysqli, $table) {
     }
 }
 
-$microtime = microtime(true);
-
 chdir(__DIR__);
 include_once '../../lib/cli.php';
 include_once '../fns/mysqli_query_object.php';
 include_once '../fns/mysqli_single_object.php';
 include_once '../lib/mysqli.php';
 
+$microtime = microtime(true);
+
+update($mysqli, 'bar_charts');
 update($mysqli, 'bookmarks');
 update($mysqli, 'contacts');
 update($mysqli, 'notes');
