@@ -23,11 +23,6 @@ function authenticate ($mysqli, $username, $password, $remember) {
         include_once "$fnsDir/Signins/add.php";
         \Signins\add($mysqli, $id_users, $client_address);
 
-        if ($user->password_salt === '') {
-            include_once "$fnsDir/Users/editPassword.php";
-            \Users\editPassword($mysqli, $id_users, $password);
-        }
-
         if ($remember) {
             include_once __DIR__.'/remember.php';
             remember($mysqli, $user);
