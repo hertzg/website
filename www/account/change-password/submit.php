@@ -61,9 +61,9 @@ unset(
     $_SESSION['account/change-password/values']
 );
 
-include_once "$fnsDir/Users/editPassword.php";
+include_once "$fnsDir/Users/changePassword.php";
 include_once '../../lib/mysqli.php';
-Users\editPassword($mysqli, $user->id_users, $password1);
+Users\changePassword($mysqli, $user, $currentPassword, $password1);
 
 $_SESSION['account/messages'] = ['Password has been changed.'];
 redirect('..');

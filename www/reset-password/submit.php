@@ -53,8 +53,8 @@ unset(
     $_SESSION['reset-password/values']
 );
 
-include_once '../fns/Users/editPassword.php';
-Users\editPassword($mysqli, $id_users, $password1);
+include_once '../fns/Users/resetPassword.php';
+Users\resetPassword($mysqli, $id_users, $password1);
 
 include_once '../fns/Cookie/set.php';
 Cookie\set('username', $user->username);

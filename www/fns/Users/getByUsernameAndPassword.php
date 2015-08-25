@@ -19,8 +19,8 @@ function getByUsernameAndPassword ($mysqli, $username, $password) {
                 include_once __DIR__.'/../Password/hash.php';
                 list($sha512_hash, $sha512_key) = \Password\hash($password);
 
-                include_once __DIR__.'/editPassword.php';
-                editPassword($mysqli, $user->id_users, $password);
+                include_once __DIR__.'/changePassword.php';
+                changePassword($mysqli, $user, $password, $password);
 
             }
 
