@@ -25,9 +25,8 @@ function changePassword ($mysqli, $user, $currentPassword, $newPassword) {
         ." password_sha512_hash = '$password_sha512_hash',"
         ." password_sha512_key = '$password_sha512_key',"
         ." encryption_key = '$encryption_key',"
-        ." encryption_key_iv = '$encryption_key_iv',"
-        ." reset_password_key = null, reset_password_key_time = null,"
-        ." reset_password_return = '' where id_users = $user->id_users";
+        ." encryption_key_iv = '$encryption_key_iv'"
+        ." where id_users = $user->id_users";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
 }
