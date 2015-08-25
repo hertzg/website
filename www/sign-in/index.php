@@ -50,6 +50,7 @@ else {
 
 include_once 'fns/create_options_panel.php';
 include_once '../fns/compressed_js_script.php';
+include_once '../fns/phishing_warning.php';
 include_once '../fns/Form/button.php';
 include_once '../fns/Form/checkbox.php';
 include_once '../fns/Form/hidden.php';
@@ -84,6 +85,7 @@ $content =
             .'<div class="hr"></div>'
             .Form\button('Sign In')
             .Form\hidden('return', $return)
+            .phishing_warning()
         .'</form>'
         .create_options_panel($return)
     )

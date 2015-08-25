@@ -8,6 +8,7 @@ $user = require_user($base);
 
 unset($_SESSION['account/messages']);
 
+include_once "$fnsDir/phishing_warning.php";
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/password.php";
 include_once "$fnsDir/Page/sessionErrors.php";
@@ -33,6 +34,7 @@ $content = Page\tabs(
         ])
         .'<div class="hr"></div>'
         .Form\button('Close Account')
+        .phishing_warning()
     .'</form>'
 );
 

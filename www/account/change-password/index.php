@@ -18,6 +18,7 @@ else {
 
 unset($_SESSION['account/messages']);
 
+include_once "$fnsDir/phishing_warning.php";
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/notes.php";
 include_once "$fnsDir/Form/password.php";
@@ -51,6 +52,7 @@ $content = Page\tabs(
         ])
         .'<div class="hr"></div>'
         .Form\button('Set Password')
+        .phishing_warning()
     .'</form>'
 );
 
