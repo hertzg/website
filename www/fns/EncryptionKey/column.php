@@ -4,8 +4,9 @@ namespace EncryptionKey;
 
 function column () {
     include_once __DIR__.'/length.php';
+    include_once __DIR__.'/../Crypto/encryptedLength.php';
     return [
-        'type' => 'binary('.(ceil((length() + 1) / 8) * 8).')',
+        'type' => 'binary('.\Crypto\encryptedLength(length()).')',
         'nullable' => true,
     ];
 }

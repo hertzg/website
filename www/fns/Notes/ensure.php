@@ -12,11 +12,18 @@ function ensure ($mysqli) {
     include_once "$fnsDir/ApiKeyName/column.php";
     $apiKeyNameColumn = \ApiKeyName\column(true);
 
+    include_once "$fnsDir/Crypto/encryptedLength.php";
+    $encrypted_text_length = \Crypto\encryptedLength($maxLengths['text']);
+
     include_once "$fnsDir/Table/ensure.php";
     include_once "$fnsDir/Tags/column.php";
     include_once "$fnsDir/TagsJson/column.php";
     return \Table\ensure($mysqli, 'notes', [
         'encrypt_in_listings' => ['type' => 'tinyint(3) unsigned'],
+        'encrypted_text' => [
+            'type' => "varbinary($encrypted_text_length)",
+            'nullable' => true,
+        ],
         'id' => [
             'type' => 'bigint(20) unsigned',
             'primary' => true,
