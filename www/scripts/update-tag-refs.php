@@ -16,8 +16,10 @@ foreach ($rows as $row) {
     $bar_chart = mysqli_single_object($mysqli, $sql);
     if ($bar_chart) {
         include_once '../fns/BarChartTags/editBarChart.php';
-        BarChartTags\editBarChart($mysqli, $bar_chart->id, $bar_chart->name,
-            $bar_chart->tags, $bar_chart->insert_time, $bar_chart->update_time);
+        BarChartTags\editBarChart($mysqli,
+            $bar_chart->id, $bar_chart->name, $bar_chart->tags,
+            json_decode($bar_chart->tags_json), $bar_chart->insert_time,
+            $bar_chart->update_time);
     }
 }
 

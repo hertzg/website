@@ -12,6 +12,7 @@ function ensure ($mysqli) {
     include_once "$fnsDir/Table/ensure.php";
     include_once "$fnsDir/TagName/column.php";
     include_once "$fnsDir/Tags/column.php";
+    include_once "$fnsDir/TagsJson/column.php";
     return \Table\ensure($mysqli, 'bar_chart_tags', [
         'id' => [
             'type' => 'bigint(20) unsigned',
@@ -25,7 +26,9 @@ function ensure ($mysqli) {
             'characterSet' => 'utf8',
             'collation' => 'utf8_unicode_ci',
         ],
+        'num_tags' => ['type' => 'tinyint(3) unsigned'],
         'tags' => \Tags\column(),
+        'tags_json' => \TagsJson\column(),
         'tag_name' => \TagName\column(),
         'update_time' => ['type' => 'bigint(20) unsigned'],
     ]);

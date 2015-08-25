@@ -20,6 +20,7 @@ include_once '../lib/mysqli.php';
 
 $microtime = microtime(true);
 
+process($mysqli, 'bar_charts');
 process($mysqli, 'bookmarks');
 process($mysqli, 'contacts');
 process($mysqli, 'notes');
