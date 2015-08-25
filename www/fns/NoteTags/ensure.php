@@ -23,6 +23,7 @@ function ensure ($mysqli) {
         'id_users' => ['type' => 'bigint(20) unsigned'],
         'insert_time' => ['type' => 'bigint(20) unsigned'],
         'num_tags' => ['type' => 'tinyint(3) unsigned'],
+        'password_protect' => ['type' => 'tinyint(3) unsigned'],
         'tags' => \Tags\column(),
         'tags_json' => \TagsJson\column(),
         'tag_name' => \TagName\column(),
