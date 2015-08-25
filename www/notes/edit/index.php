@@ -10,7 +10,7 @@ else {
     $values = [
         'text' => $note->text,
         'tags' => $note->tags,
-        'encrypt' => $note->encrypt,
+        'encrypt_in_listings' => $note->encrypt_in_listings,
     ];
 }
 

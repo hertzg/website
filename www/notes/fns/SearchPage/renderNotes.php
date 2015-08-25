@@ -25,10 +25,10 @@ function renderNotes ($user, $notes, &$items, $params, $keyword) {
             );
             $href = "../view/?$queryString";
 
-            $encrypt = $note->encrypt;
+            $encrypt_in_listings = $note->encrypt_in_listings;
 
             $text = $note->text;
-            if ($encrypt) {
+            if ($encrypt_in_listings) {
                 include_once "$fnsDir/encrypt_text.php";
                 $title = htmlspecialchars(encrypt_text($text));
             } else {
@@ -36,8 +36,9 @@ function renderNotes ($user, $notes, &$items, $params, $keyword) {
                 $title = preg_replace($regex, '<mark>$0</mark>', $escapedText);
             }
 
-            $items[] = create_note_link($theme_brightness, $title,
-                $note->num_tags, $note->tags_json, $encrypt, $href, $options);
+            $items[] = create_note_link($theme_brightness,
+                $title, $note->num_tags, $note->tags_json,
+                $encrypt_in_listings, $href, $options);
 
         }
 

@@ -23,7 +23,7 @@ $sendFunction = function ($receiver_id_userss) use ($mysqli,
     foreach ($receiver_id_userss as $receiver_id_users) {
         Users\Notes\Received\add($mysqli, $user->id_users, $user->username,
             $receiver_id_users, $stageValues['text'], $stageValues['tags'],
-            $stageValues['encrypt']);
+            $stageValues['encrypt_in_listings']);
     }
 
 };

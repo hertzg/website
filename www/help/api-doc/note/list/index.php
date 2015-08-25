@@ -14,7 +14,7 @@ note_method_page('list', [], [
                 'type' => 'string',
                 'description' => 'The text of the note.',
             ],
-            'encrypt' => [
+            'encrypt_in_listings' => [
                 'type' => 'boolean',
                 'description' => 'Whether the note is encrypted in listings.',
             ],

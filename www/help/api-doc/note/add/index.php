@@ -8,7 +8,7 @@ note_method_page('add', [
         'description' => 'The text of the note.',
     ],
     [
-        'name' => 'encrypt',
+        'name' => 'encrypt_in_listings',
         'description' => 'Whether the note should be encrypted in listings.',
     ],
     [

@@ -9,7 +9,7 @@ function addReceivedNote ($mysqli, $receivedNote, $apiKey) {
         'text' => $receivedNote->text,
         'title' => $receivedNote->title,
         'tags' => $receivedNote->tags,
-        'encrypt' => $receivedNote->encrypt,
+        'encrypt_in_listings' => $receivedNote->encrypt_in_listings,
         'insert_time' => $receivedNote->insert_time,
         'sender_id_users' => $receivedNote->sender_id_users,
         'sender_username' => $receivedNote->sender_username,

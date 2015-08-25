@@ -13,7 +13,7 @@ note_method_page('edit', [
         'description' => 'The new text of the note.',
     ],
     [
-        'name' => 'encrypt',
+        'name' => 'encrypt_in_listings',
         'description' => 'Whether the note should be encrypted in listings.',
     ],
     [

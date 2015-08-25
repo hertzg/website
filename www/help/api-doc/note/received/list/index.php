@@ -18,7 +18,7 @@ received_note_method_page('list', [], [
                 'type' => 'string',
                 'description' => 'The text of the received note.',
             ],
-            'encrypt' => [
+            'encrypt_in_listings' => [
                 'type' => 'boolean',
                 'description' =>
                     'Whether the received note is encrypted in listings.',

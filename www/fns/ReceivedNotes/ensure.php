@@ -14,7 +14,7 @@ function ensure ($mysqli) {
     include_once "$fnsDir/Username/column.php";
     return \Table\ensure($mysqli, 'received_notes', [
         'archived' => ['type' => 'tinyint(3) unsigned'],
-        'encrypt' => ['type' => 'tinyint(3) unsigned'],
+        'encrypt_in_listings' => ['type' => 'tinyint(3) unsigned'],
         'id' => [
             'type' => 'bigint(20) unsigned',
             'primary' => true,

@@ -11,10 +11,10 @@ function render_notes ($theme_brightness, $notes,
     include_once "$fnsDir/create_note_link.php";
     foreach ($notes as $note) {
 
-        $encrypt = $note->encrypt;
+        $encrypt_in_listings = $note->encrypt_in_listings;
 
         $text = $note->text;
-        if ($encrypt) {
+        if ($encrypt_in_listings) {
             include_once "$fnsDir/encrypt_text.php";
             $title = htmlspecialchars(encrypt_text($text));
         } else {
@@ -23,7 +23,7 @@ function render_notes ($theme_brightness, $notes,
         }
 
         $items[] = create_note_link($theme_brightness,
-            $title, $note->num_tags, $note->tags_json, $encrypt,
+            $title, $note->num_tags, $note->tags_json, $encrypt_in_listings,
             "../notes/view/?id=$note->id&amp;keyword=$encodedKeyword");
 
     }

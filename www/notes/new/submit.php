@@ -7,12 +7,13 @@ include_once '../../fns/require_user.php';
 $user = require_user('../../');
 
 include_once '../fns/request_note_params.php';
-list($text, $tags, $tag_names, $encrypt) = request_note_params($errors);
+list($text, $tags, $tag_names,
+    $encrypt_in_listings) = request_note_params($errors);
 
 $values = [
     'text' => $text,
     'tags' => $tags,
-    'encrypt' => $encrypt,
+    'encrypt_in_listings' => $encrypt_in_listings,
 ];
 
 $_SESSION['notes/new/values'] = $values;
@@ -45,7 +46,7 @@ unset($_SESSION['notes/new/values']);
 include_once '../../fns/Users/Notes/add.php';
 include_once '../../lib/mysqli.php';
 $id = Users\Notes\add($mysqli, $user->id_users,
-    $text, $tags, $tag_names, $encrypt);
+    $text, $tags, $tag_names, $encrypt_in_listings);
 
 $_SESSION['notes/view/messages'] = ['Note has been saved.'];
 

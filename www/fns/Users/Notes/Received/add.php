@@ -3,7 +3,7 @@
 namespace Users\Notes\Received;
 
 function add ($mysqli, $sender_id_users, $sender_username,
-    $receiver_id_users, $text, $tags, $encrypt) {
+    $receiver_id_users, $text, $tags, $encrypt_in_listings) {
 
     $fnsDir = __DIR__.'/../../..';
 
@@ -13,7 +13,7 @@ function add ($mysqli, $sender_id_users, $sender_username,
 
     include_once "$fnsDir/ReceivedNotes/add.php";
     \ReceivedNotes\add($mysqli, $sender_id_users, $sender_username,
-        $receiver_id_users, $text, $title, $tags, $encrypt);
+        $receiver_id_users, $text, $title, $tags, $encrypt_in_listings);
 
     include_once __DIR__.'/addNumberNew.php';
     addNumberNew($mysqli, $receiver_id_users, 1);

@@ -10,13 +10,14 @@ function request () {
     $text = request_text('text');
 
     include_once "$fnsDir/request_strings.php";
-    list($tags, $encrypt) = request_strings('tags', 'encrypt');
+    list($tags, $encrypt_in_listings) = request_strings(
+        'tags', 'encrypt_in_listings');
 
     include_once "$fnsDir/str_collapse_spaces.php";
     $tags = str_collapse_spaces($tags);
 
-    $encrypt = (bool)$encrypt;
+    $encrypt_in_listings = (bool)$encrypt_in_listings;
 
-    return [$text, $tags, $encrypt];
+    return [$text, $tags, $encrypt_in_listings];
 
 }

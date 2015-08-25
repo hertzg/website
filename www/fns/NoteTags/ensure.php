@@ -14,7 +14,7 @@ function ensure ($mysqli) {
     include_once "$fnsDir/Tags/column.php";
     include_once "$fnsDir/TagsJson/column.php";
     return \Table\ensure($mysqli, 'note_tags', [
-        'encrypt' => ['type' => 'tinyint(3) unsigned'],
+        'encrypt_in_listings' => ['type' => 'tinyint(3) unsigned'],
         'id' => [
             'type' => 'bigint(20) unsigned',
             'primary' => true,

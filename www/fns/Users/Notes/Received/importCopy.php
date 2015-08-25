@@ -12,6 +12,6 @@ function importCopy ($mysqli, $receivedNote, $insertApiKey = null) {
     include_once __DIR__.'/../add.php';
     return \Users\Notes\add($mysqli,
         $receivedNote->receiver_id_users, $receivedNote->text,
-        $tags, $tag_names, $receivedNote->encrypt, $insertApiKey);
+        $tags, $tag_names, $receivedNote->encrypt_in_listings, $insertApiKey);
 
 }

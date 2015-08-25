@@ -20,10 +20,10 @@ function render_notes ($user, $notes, &$items, $params, $base = '') {
             );
             $href = "{$base}view/?$queryString";
 
-            $encrypt = $note->encrypt;
+            $encrypt_in_listings = $note->encrypt_in_listings;
 
             $title = $note->title;
-            if ($encrypt) {
+            if ($encrypt_in_listings) {
                 include_once "$fnsDir/encrypt_text.php";
                 $title = encrypt_text($title);
             }
@@ -31,7 +31,7 @@ function render_notes ($user, $notes, &$items, $params, $base = '') {
 
             $items[] = create_note_link($theme_brightness,
                 $title, $note->num_tags, $note->tags_json,
-                $encrypt, $href, ['id' => $id], true);
+                $encrypt_in_listings, $href, ['id' => $id], true);
 
         }
 

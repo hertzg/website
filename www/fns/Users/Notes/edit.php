@@ -3,7 +3,7 @@
 namespace Users\Notes;
 
 function edit ($mysqli, $note, $text, $tags,
-    $tag_names, $encrypt, $updateApiKey = null) {
+    $tag_names, $encrypt_in_listings, $updateApiKey = null) {
 
     $id = $note->id;
     $fnsDir = __DIR__.'/../..';
@@ -14,7 +14,7 @@ function edit ($mysqli, $note, $text, $tags,
 
     include_once "$fnsDir/Notes/edit.php";
     \Notes\edit($mysqli, $id, $text, $title,
-        $tags, $tag_names, $encrypt, $updateApiKey);
+        $tags, $tag_names, $encrypt_in_listings, $updateApiKey);
 
     if ($note->num_tags) {
         include_once "$fnsDir/NoteTags/deleteOnNote.php";
@@ -24,7 +24,7 @@ function edit ($mysqli, $note, $text, $tags,
     if ($tag_names) {
         include_once "$fnsDir/NoteTags/add.php";
         \NoteTags\add($mysqli, $note->id_users, $id,
-            $tag_names, $text, $title, $tags, $encrypt);
+            $tag_names, $text, $title, $tags, $encrypt_in_listings);
     }
 
 }

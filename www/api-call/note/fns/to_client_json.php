@@ -5,7 +5,7 @@ function to_client_json ($note) {
         'id' => (int)$note->id,
         'text' => $note->text,
         'tags' => $note->tags,
-        'encrypt' => (bool)$note->encrypt,
+        'encrypt_in_listings' => (bool)$note->encrypt_in_listings,
         'insert_time' => (int)$note->insert_time,
         'update_time' => (int)$note->update_time,
     ];

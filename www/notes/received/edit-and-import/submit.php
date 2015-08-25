@@ -10,7 +10,8 @@ include_once '../../../lib/mysqli.php';
 list($receivedNote, $id, $user) = require_received_note($mysqli, '../');
 
 include_once '../../fns/request_note_params.php';
-list($text, $tags, $tag_names, $encrypt) = request_note_params($errors);
+list($text, $tags, $tag_names,
+    $encrypt_in_listings) = request_note_params($errors);
 
 include_once "$fnsDir/redirect.php";
 
@@ -19,7 +20,7 @@ if ($errors) {
     $_SESSION['notes/received/edit-and-import/values'] = [
         'text' => $text,
         'tags' => $tags,
-        'encrypt' => $encrypt,
+        'encrypt_in_listings' => $encrypt_in_listings,
     ];
     include_once "$fnsDir/ItemList/Received/itemQuery.php";
     redirect('./'.ItemList\Received\itemQuery($id));
@@ -32,7 +33,7 @@ unset(
 
 $receivedNote->text = $text;
 $receivedNote->tags = $tags;
-$receivedNote->encrypt = $encrypt;
+$receivedNote->encrypt_in_listings = $encrypt_in_listings;
 
 include_once "$fnsDir/Users/Notes/Received/import.php";
 Users\Notes\Received\import($mysqli, $receivedNote);

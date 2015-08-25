@@ -1,9 +1,9 @@
 <?php
 
 function create_note_link ($theme_brightness, $title, $num_tags,
-    $tags_json, $encrypt, $href, $options = [], $paint = false) {
+    $tags_json, $encrypt_in_listings, $href, $options = [], $paint = false) {
 
-    $icon = $encrypt ? 'encrypted-note' : 'note';
+    $icon = $encrypt_in_listings ? 'encrypted-note' : 'note';
     $text_luminance = $theme_brightness === 'light' ? 10 : 90;
 
     if ($num_tags) {

@@ -57,7 +57,7 @@ foreach ($rows as $row) {
     if ($note) {
         include_once '../fns/NoteTags/editNote.php';
         NoteTags\editNote($mysqli, $note->id, $note->text, $note->tags,
-            json_decode($note->tags_json), $note->encrypt,
+            json_decode($note->tags_json), $note->encrypt_in_listings,
             $note->insert_time, $note->update_time);
     }
 }
