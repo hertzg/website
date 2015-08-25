@@ -7,5 +7,5 @@ function phishing_warning () {
     include_once __DIR__.'/SiteProtocol/get.php';
     return Page\infoText('The data will be sent to "<code>'
         .SiteProtocol\get() .'://'.DomainName\get().SiteBase\get().'</code>".'
-        .' The same address should appear in your browser\'s address bar.');
+        .' The address in your browser\'s address bar should start with it.');
 }
