@@ -5,11 +5,13 @@ namespace EncryptionKey;
 function recreate ($currentPassword, $newPassword,
     &$encryption_key, &$encryption_key_iv) {
 
-    include_once __DIR__.'/../Crypto/decrypt.php';
+    $fnsDir = __DIR__.'/..';
+
+    include_once "$fnsDir/Crypto/decrypt.php";
     $key = \Crypto\decrypt($currentPassword,
         $encryption_key, $encryption_key_iv);
 
-    include_once __DIR__.'/../Crypto/encrypt.php';
+    include_once "$fnsDir/Crypto/encrypt.php";
     \Crypto\encrypt($newPassword, $key, $encryption_key, $encryption_key_iv);
 
 }
