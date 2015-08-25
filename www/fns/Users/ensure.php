@@ -7,6 +7,8 @@ function ensure ($mysqli) {
     $fnsDir = __DIR__.'/..';
 
     include_once "$fnsDir/Email/column.php";
+    include_once "$fnsDir/EncryptionKey/column.php";
+    include_once "$fnsDir/EncryptionKey/ivColumn.php";
     include_once "$fnsDir/FullName/column.php";
     include_once "$fnsDir/IPAddress/column.php";
     include_once "$fnsDir/LinkKey/column.php";
@@ -35,6 +37,8 @@ function ensure ($mysqli) {
             'nullable' => true,
         ],
         'email_verified' => ['type' => 'tinyint(3) unsigned'],
+        'encryption_key' => \EncryptionKey\column(),
+        'encryption_key_iv' => \EncryptionKey\ivColumn(),
         'events_check_day' => ['type' => 'bigint(20) unsigned'],
         'full_name' => \FullName\column(),
         'home_num_new_notifications' => ['type' => 'bigint(20) unsigned'],

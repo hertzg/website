@@ -21,6 +21,11 @@ function add ($mysqli, $username, $password, $email) {
     $email = $mysqli->real_escape_string($email);
     $insert_time = time();
 
+    include_once "$fnsDir/EncryptionKey/random.php";
+    \EncryptionKey\random($password, $encryption_key, $encryption_key_iv);
+    $encryption_key = $mysqli->real_escape_string($encryption_key);
+    $encryption_key_iv = $mysqli->real_escape_string($encryption_key_iv);
+
     include_once "$fnsDir/time_today.php";
     $birthdays_check_day = $events_check_day =
         $task_deadlines_check_day = $schedules_check_day = time_today();
@@ -32,16 +37,18 @@ function add ($mysqli, $username, $password, $email) {
     $theme_brightness = \Theme\Brightness\getDefault();
 
     $sql = 'insert into users (username, password_sha512_hash,'
-        .' password_sha512_key, email, order_home_items, insert_time,'
-        .' theme_color, theme_brightness, birthdays_check_day,'
-        .' events_check_day, schedules_check_day, task_deadlines_check_day,'
+        .' password_sha512_key, encryption_key, encryption_key_iv,'
+        .' email, order_home_items, insert_time, theme_color,'
+        .' theme_brightness, birthdays_check_day, events_check_day,'
+        .' schedules_check_day, task_deadlines_check_day,'
         .' show_bar_charts, show_bookmarks, show_calendar, show_contacts,'
         .' show_files, show_notes, show_notifications, show_places,'
         .' show_schedules, show_tasks, show_trash, show_wallets)'
         ." values ('$username', '$password_sha512_hash',"
-        ." '$password_sha512_key', '$email', '$order_home_items', $insert_time,"
-        ." '$theme_color', '$theme_brightness', $birthdays_check_day,"
-        ." $events_check_day, $schedules_check_day, $task_deadlines_check_day,"
+        ." '$password_sha512_key', '$encryption_key', '$encryption_key_iv',"
+        ." '$email', '$order_home_items', $insert_time, '$theme_color',"
+        ." '$theme_brightness', $birthdays_check_day, $events_check_day,"
+        ." $schedules_check_day, $task_deadlines_check_day,"
         ." 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
