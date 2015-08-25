@@ -35,7 +35,7 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
             $title = $receivedNote->title;
             if ($receivedNote->encrypt) {
                 include_once "$fnsDir/encrypt_text.php";
-                $title = encrypt_title($text);
+                $title = encrypt_text($title);
                 $icon = 'encrypted-note';
             } else {
                 $icon = 'note';
