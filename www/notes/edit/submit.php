@@ -46,6 +46,18 @@ if ($sendButton) {
     redirect("send/$itemQuery");
 }
 
+if ($password_protect) {
+    include_once "$fnsDir/Session/EncryptionKey/present.php";
+    if (!Session\EncryptionKey\present()) {
+        $_SESSION['notes/edit/encrypt/note'] = $values;
+        unset(
+            $_SESSION['notes/edit/encrypt/errors'],
+            $_SESSION['notes/edit/encrypt/values']
+        );
+        redirect("encrypt/$itemQuery");
+    }
+}
+
 unset($_SESSION['notes/edit/values']);
 
 include_once "$fnsDir/Users/Notes/edit.php";
