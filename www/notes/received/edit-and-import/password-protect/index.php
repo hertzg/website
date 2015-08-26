@@ -4,7 +4,7 @@ include_once 'fns/require_stage.php';
 include_once '../../../../lib/mysqli.php';
 list($user, $stageValues, $id) = require_stage($mysqli);
 
-$key = 'notes/received/edit-and-import/encrypt/values';
+$key = 'notes/received/edit-and-import/password-protect/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else $values = ['password' => ''];
 
@@ -24,8 +24,8 @@ $content = Page\tabs(
             'href' => '../'.ItemList\Received\itemQuery($id),
         ],
     ],
-    'Encrypt',
-    Page\sessionErrors('notes/received/edit-and-import/encrypt/errors')
+    'Password-protect',
+    Page\sessionErrors('notes/received/edit-and-import/password-protect/errors')
     .Page\warnings([
         'To password-protect the note you should enter your account password.',
     ])
@@ -42,4 +42,4 @@ $content = Page\tabs(
 );
 
 include_once "$fnsDir/echo_page.php";
-echo_page($user, 'Password-protect Note', $content, '../../../../');
+echo_page($user, 'Password-protect Imported Note', $content, '../../../../');

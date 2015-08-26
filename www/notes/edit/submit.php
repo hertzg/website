@@ -49,12 +49,12 @@ if ($sendButton) {
 if ($password_protect) {
     include_once "$fnsDir/Session/EncryptionKey/present.php";
     if (!Session\EncryptionKey\present()) {
-        $_SESSION['notes/edit/encrypt/note'] = $values;
+        $_SESSION['notes/edit/password-protect/note'] = $values;
         unset(
-            $_SESSION['notes/edit/encrypt/errors'],
-            $_SESSION['notes/edit/encrypt/values']
+            $_SESSION['notes/edit/password-protect/errors'],
+            $_SESSION['notes/edit/password-protect/values']
         );
-        redirect("encrypt/$itemQuery");
+        redirect("password-protect/$itemQuery");
     }
 }
 

@@ -1,10 +1,9 @@
 <?php
 
 include_once 'fns/require_stage.php';
-include_once '../../../lib/mysqli.php';
-list($user, $stageValues, $id) = require_stage($mysqli);
+list($user, $stageValues) = require_stage();
 
-$key = 'notes/edit/encrypt/values';
+$key = 'notes/new/password-protect/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else $values = ['password' => ''];
 
@@ -12,20 +11,20 @@ $fnsDir = '../../../fns';
 
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/password.php";
-include_once "$fnsDir/ItemList/escapedItemQuery.php";
-include_once "$fnsDir/ItemList/itemHiddenInputs.php";
+include_once "$fnsDir/ItemList/escapedPageQuery.php";
+include_once "$fnsDir/ItemList/pageHiddenInputs.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/tabs.php";
 include_once "$fnsDir/Page/warnings.php";
 $content = Page\tabs(
     [
         [
-            'title' => 'Edit',
-            'href' => '../'.ItemList\escapedItemQuery($id),
+            'title' => 'New Note',
+            'href' => '../'.ItemList\escapedPageQuery(),
         ],
     ],
-    'Encrypt',
-    Page\sessionErrors('notes/edit/encrypt/errors')
+    'Password-protect',
+    Page\sessionErrors('notes/new/password-protect/errors')
     .Page\warnings([
         'To password-protect the note you should enter your account password.',
     ])
@@ -37,9 +36,9 @@ $content = Page\tabs(
         ])
         .'<div class="hr"></div>'
         .Form\button('Password-protect Note')
-        .ItemList\itemHiddenInputs($id)
+        .ItemList\pageHiddenInputs()
     .'</form>'
 );
 
 include_once "$fnsDir/echo_page.php";
-echo_page($user, "Encrypt Note #$id", $content, '../../../');
+echo_page($user, 'Password-protect New Note', $content, '../../../');

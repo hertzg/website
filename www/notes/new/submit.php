@@ -47,13 +47,13 @@ if ($sendButton !== '') {
 if ($password_protect) {
     include_once "$fnsDir/Session/EncryptionKey/present.php";
     if (!Session\EncryptionKey\present()) {
-        $_SESSION['notes/new/encrypt/note'] = $values;
+        $_SESSION['notes/new/password-protect/note'] = $values;
         unset(
-            $_SESSION['notes/new/encrypt/errors'],
-            $_SESSION['notes/new/encrypt/values']
+            $_SESSION['notes/new/password-protect/errors'],
+            $_SESSION['notes/new/password-protect/values']
         );
         include_once "$fnsDir/ItemList/pageQuery.php";
-        redirect('encrypt/'.ItemList\pageQuery());
+        redirect('password-protect/'.ItemList\pageQuery());
     }
 }
 

@@ -29,8 +29,8 @@ else {
 include_once "$fnsDir/redirect.php";
 
 if ($errors) {
-    $_SESSION['notes/received/edit-and-import/encrypt/errors'] = $errors;
-    $_SESSION['notes/received/edit-and-import/encrypt/values'] = [
+    $_SESSION['notes/received/edit-and-import/password-protect/errors'] = $errors;
+    $_SESSION['notes/received/edit-and-import/password-protect/values'] = [
         'password' => $password,
     ];
     include_once "$fnsDir/ItemList/Received/itemQuery.php";
@@ -38,8 +38,8 @@ if ($errors) {
 }
 
 unset(
-    $_SESSION['notes/received/edit-and-import/encrypt/errors'],
-    $_SESSION['notes/received/edit-and-import/encrypt/values'],
+    $_SESSION['notes/received/edit-and-import/password-protect/errors'],
+    $_SESSION['notes/received/edit-and-import/password-protect/values'],
     $_SESSION['notes/received/edit-and-import/errors'],
     $_SESSION['notes/received/edit-and-import/values']
 );
