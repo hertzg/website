@@ -6,6 +6,9 @@ function addDeleted ($mysqli, $id_users, $data) {
 
     $id = $data->id;
     $text = $data->text;
+    $encrypted_text = $data->encrypted_text;
+    if ($encrypted_text !== null) $encrypted_text = hex2bin($encrypted_text);
+    $encrypted_text_iv = $data->encrypted_text_iv;
     $title = $data->title;
     $tags = $data->tags;
     $encrypt_in_listings = $data->encrypt_in_listings;
@@ -17,14 +20,16 @@ function addDeleted ($mysqli, $id_users, $data) {
     $tag_names = \Tags\parse($tags);
 
     include_once "$fnsDir/Notes/addDeleted.php";
-    \Notes\addDeleted($mysqli, $id, $id_users, $text, $title,
+    \Notes\addDeleted($mysqli, $id, $id_users,
+        $text, $encrypted_text, $encrypted_text_iv, $title,
         $tags, $tag_names, $encrypt_in_listings, $password_protect,
         $data->insert_time, $data->update_time, $data->revision);
 
     if ($tag_names) {
         include_once "$fnsDir/NoteTags/add.php";
-        \NoteTags\add($mysqli, $id_users, $id, $tag_names, $text,
-            $title, $tags, $encrypt_in_listings, $password_protect);
+        \NoteTags\add($mysqli, $id_users, $id, $tag_names,
+            $text, $encrypted_text, $encrypted_text_iv, $title,
+            $tags, $encrypt_in_listings, $password_protect);
     }
 
     include_once __DIR__.'/addNumber.php';
