@@ -2,10 +2,16 @@
 
 namespace Notes;
 
-function add ($mysqli, $id_users, $text, $title, $tags,
-    $tag_names, $encrypt_in_listings, $password_protect, $insertApiKey) {
+function add ($mysqli, $id_users, $text,
+    $encrypted_text, $encrypted_text_iv,$title, $tags, $tag_names,
+    $encrypt_in_listings, $password_protect, $insertApiKey) {
 
     $text = $mysqli->real_escape_string($text);
+    if ($encrypted_text === null) {
+        $encrypted_text = $encrypted_text_iv = 'null';
+    } else {
+        $encrypted_text = "'".$mysqli->real_escape_string($encrypted_text)."'";
+    }
     $title = $mysqli->real_escape_string($title);
     $tags = $mysqli->real_escape_string($tags);
     $num_tags = count($tag_names);
@@ -25,11 +31,13 @@ function add ($mysqli, $id_users, $text, $title, $tags,
     }
 
     $sql = 'insert into notes'
-        .' (id_users, text, title, tags, num_tags,'
+        .' (id_users, text, encrypted_text,'
+        .' encrypted_text_iv, title, tags, num_tags,'
         .' tags_json, encrypt_in_listings, password_protect,'
         .' insert_time, update_time, insert_api_key_id,'
         .' insert_api_key_name)'
-        ." values ($id_users, '$text', '$title', '$tags', $num_tags,"
+        ." values ($id_users, '$text', $encrypted_text,"
+        ." $encrypted_text_iv, '$title', '$tags', $num_tags,"
         ." '$tags_json', $encrypt_in_listings, $password_protect,"
         ." $insert_time, $update_time, $insert_api_key_id,"
         ." $insert_api_key_name)";

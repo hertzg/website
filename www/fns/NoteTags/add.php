@@ -2,10 +2,16 @@
 
 namespace NoteTags;
 
-function add ($mysqli, $id_users, $id_notes, $tag_names, $text,
+function add ($mysqli, $id_users, $id_notes,
+    $tag_names, $text, $encrypted_text, $encrypted_text_iv,
     $title, $tags, $encrypt_in_listings, $password_protect) {
 
     $text = $mysqli->real_escape_string($text);
+    if ($encrypted_text === null) {
+        $encrypted_text = $encrypted_text_iv = 'null';
+    } else {
+        $encrypted_text = "'".$mysqli->real_escape_string($encrypted_text)."'";
+    }
     $title = $mysqli->real_escape_string($title);
     $tags = $mysqli->real_escape_string($tags);
     $num_tags = count($tag_names);
@@ -15,13 +21,15 @@ function add ($mysqli, $id_users, $id_notes, $tag_names, $text,
     $insert_time = $update_time = time();
 
     $sql = 'insert into note_tags'
-        .' (id_users, id_notes, tag_name, text, title,'
+        .' (id_users, id_notes, tag_name, text,'
+        .' encrypted_text, encrypted_text_iv, title,'
         .' tags, num_tags, tags_json, encrypt_in_listings,'
         .' password_protect, insert_time, update_time) values';
     foreach ($tag_names as $i => $tag_name) {
         if ($i) $sql .= ', ';
         $tag_name = $mysqli->real_escape_string($tag_name);
-        $sql .= "($id_users, $id_notes, '$tag_name', '$text', '$title',"
+        $sql .= "($id_users, $id_notes, '$tag_name', '$text',"
+            ." $encrypted_text, $encrypted_text_iv, '$title',"
             ." '$tags', $num_tags, '$tags_json', $encrypt_in_listings,"
             ." $password_protect, $insert_time, $update_time)";
     }
