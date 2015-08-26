@@ -60,9 +60,12 @@ if ($password_protect) {
 
 unset($_SESSION['notes/edit/values']);
 
+include_once "$fnsDir/Session/EncryptionKey/get.php";
+$encryption_key = Session\EncryptionKey\get();
+
 include_once "$fnsDir/Users/Notes/edit.php";
-Users\Notes\edit($mysqli, $note, $text, $tags,
-    $tag_names, $encrypt_in_listings, $password_protect);
+Users\Notes\edit($mysqli, $note, $text, $tags, $tag_names,
+    $encrypt_in_listings, $password_protect, $encryption_key);
 
 $_SESSION['notes/view/messages'] = ['Changes have been saved.'];
 redirect("../view/$itemQuery");

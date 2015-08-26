@@ -51,8 +51,12 @@ $receivedNote->text = $text;
 $receivedNote->tags = $tags;
 $receivedNote->encrypt_in_listings = $encrypt_in_listings;
 
+include_once "$fnsDir/Session/EncryptionKey/get.php";
+$encryption_key = Session\EncryptionKey\get();
+
 include_once "$fnsDir/Users/Notes/Received/import.php";
-Users\Notes\Received\import($mysqli, $receivedNote, $password_protect);
+Users\Notes\Received\import($mysqli,
+    $receivedNote, $password_protect, $encryption_key);
 
 $messages = ['Note has been imported.'];
 

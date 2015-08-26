@@ -46,10 +46,15 @@ $tags = $stageValues['tags'];
 include_once "$fnsDir/Tags/parse.php";
 $tag_names = Tags\parse($tags);
 
+include_once "$fnsDir/Crypto/decrypt.php";
+$encryption_key = Crypto\decrypt($password,
+    $user->encryption_key, $user->encryption_key_iv);
+
 include_once "$fnsDir/Users/Notes/add.php";
 include_once '../../../lib/mysqli.php';
-$id = Users\Notes\add($mysqli, $user->id_users, $stageValues['text'],
-    $tags, $tag_names, $stageValues['encrypt_in_listings'], true);
+$id = Users\Notes\add($mysqli,
+    $user->id_users, $stageValues['text'], $tags, $tag_names,
+    $stageValues['encrypt_in_listings'], true, $encryption_key);
 
 include_once "$fnsDir/ItemList/itemQuery.php";
 redirect('../../view/'.ItemList\itemQuery($id));

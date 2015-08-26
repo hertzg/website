@@ -3,7 +3,7 @@
 namespace Users\Notes\Received;
 
 function importCopy ($mysqli, $receivedNote,
-    $password_protect, $insertApiKey = null) {
+    $password_protect, $encryption_key, $insertApiKey = null) {
 
     $tags = $receivedNote->tags;
 
@@ -14,6 +14,6 @@ function importCopy ($mysqli, $receivedNote,
     return \Users\Notes\add($mysqli,
         $receivedNote->receiver_id_users, $receivedNote->text,
         $tags, $tag_names, $receivedNote->encrypt_in_listings,
-        $password_protect, $insertApiKey);
+        $password_protect, $encryption_key, $insertApiKey);
 
 }

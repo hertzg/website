@@ -10,7 +10,7 @@ include_once '../../lib/mysqli.php';
 list($receivedNote, $id, $user) = require_received_note($mysqli);
 
 include_once "$fnsDir/Users/Notes/Received/import.php";
-Users\Notes\Received\import($mysqli, $receivedNote, false);
+Users\Notes\Received\import($mysqli, $receivedNote, false, null);
 
 $messages = ['Note has been imported.'];
 include_once "$fnsDir/redirect.php";

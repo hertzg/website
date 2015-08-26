@@ -59,10 +59,13 @@ if ($password_protect) {
 
 unset($_SESSION['notes/new/values']);
 
+include_once "$fnsDir/Session/EncryptionKey/get.php";
+$encryption_key = Session\EncryptionKey\get();
+
 include_once "$fnsDir/Users/Notes/add.php";
 include_once '../../lib/mysqli.php';
-$id = Users\Notes\add($mysqli, $user->id_users, $text,
-    $tags, $tag_names, $encrypt_in_listings, $password_protect);
+$id = Users\Notes\add($mysqli, $user->id_users, $text, $tags,
+    $tag_names, $encrypt_in_listings, $password_protect, $encryption_key);
 
 $_SESSION['notes/view/messages'] = ['Note has been saved.'];
 

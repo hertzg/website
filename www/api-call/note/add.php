@@ -8,7 +8,7 @@ list($text, $tags, $tag_names, $encrypt_in_listings) = request_note_params();
 
 include_once '../../fns/Users/Notes/add.php';
 $id = Users\Notes\add($mysqli, $user->id_users, $text, $tags,
-    $tag_names, $encrypt_in_listings, false, $apiKey);
+    $tag_names, $encrypt_in_listings, false, null, $apiKey);
 
 header('Content-Type: application/json');
 echo $id;

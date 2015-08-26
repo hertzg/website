@@ -48,8 +48,12 @@ $receivedNote->text = $stageValues['text'];
 $receivedNote->tags = $stageValues['tags'];
 $receivedNote->encrypt_in_listings = $stageValues['encrypt_in_listings'];
 
+include_once "$fnsDir/Crypto/decrypt.php";
+$encryption_key = Crypto\decrypt($password,
+    $user->encryption_key, $user->encryption_key_iv);
+
 include_once "$fnsDir/Users/Notes/Received/import.php";
-Users\Notes\Received\import($mysqli, $receivedNote, true);
+Users\Notes\Received\import($mysqli, $receivedNote, true, $encryption_key);
 
 $messages = ['Note has been imported.'];
 
