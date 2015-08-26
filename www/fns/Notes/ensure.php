@@ -24,6 +24,10 @@ function ensure ($mysqli) {
             'type' => "varbinary($encrypted_text_length)",
             'nullable' => true,
         ],
+        'encrypted_text_iv' => [
+            'type' => 'bigint(20) unsigned',
+            'nullable' => true,
+        ],
         'id' => [
             'type' => 'bigint(20) unsigned',
             'primary' => true,
