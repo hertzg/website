@@ -13,6 +13,6 @@ function require_stage ($mysqli) {
         redirect('../'.ItemList\Received\itemQuery($id));
     }
 
-    return [$user, $_SESSION[$key], $id];
+    return [$user, $_SESSION[$key], $id, $receivedNote];
 
 }

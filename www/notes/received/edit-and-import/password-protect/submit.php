@@ -7,7 +7,7 @@ require_same_domain_referer('../..');
 
 include_once 'fns/require_stage.php';
 include_once '../../../../lib/mysqli.php';
-list($user, $stageValues, $id) = require_stage($mysqli);
+list($user, $stageValues, $id, $receivedNote) = require_stage($mysqli);
 
 include_once "$fnsDir/request_strings.php";
 list($password) = request_strings('password');
@@ -43,11 +43,6 @@ unset(
     $_SESSION['notes/received/edit-and-import/errors'],
     $_SESSION['notes/received/edit-and-import/values']
 );
-
-$tags = $stageValues['tags'];
-
-include_once "$fnsDir/Tags/parse.php";
-$tag_names = Tags\parse($tags);
 
 $receivedNote->text = $stageValues['text'];
 $receivedNote->tags = $stageValues['tags'];

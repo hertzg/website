@@ -49,8 +49,7 @@ $tag_names = Tags\parse($tags);
 include_once "$fnsDir/Users/Notes/add.php";
 include_once '../../../lib/mysqli.php';
 $id = Users\Notes\add($mysqli, $user->id_users, $stageValues['text'],
-    $tags, $tag_names, $stageValues['encrypt_in_listings'],
-    $stageValues['password_protect']);
+    $tags, $tag_names, $stageValues['encrypt_in_listings'], true);
 
 include_once "$fnsDir/ItemList/itemQuery.php";
 redirect('../../view/'.ItemList\itemQuery($id));

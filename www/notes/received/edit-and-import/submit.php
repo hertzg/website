@@ -13,34 +13,29 @@ include_once '../../fns/request_note_params.php';
 list($text, $tags, $tag_names, $encrypt_in_listings,
     $password_protect) = request_note_params($errors);
 
+$values = [
+    'text' => $text,
+    'tags' => $tags,
+    'encrypt_in_listings' => $encrypt_in_listings,
+    'password_protect' => $password_protect,
+];
+
+$_SESSION['notes/received/edit-and-import/values'] = $values;
+
 include_once "$fnsDir/redirect.php";
 
 if ($errors) {
     $_SESSION['notes/received/edit-and-import/errors'] = $errors;
-    $_SESSION['notes/received/edit-and-import/values'] = [
-        'text' => $text,
-        'tags' => $tags,
-        'encrypt_in_listings' => $encrypt_in_listings,
-        'password_protect' => $password_protect,
-    ];
     include_once "$fnsDir/ItemList/Received/itemQuery.php";
     redirect('./'.ItemList\Received\itemQuery($id));
 }
 
-unset(
-    $_SESSION['notes/received/edit-and-import/errors'],
-    $_SESSION['notes/received/edit-and-import/values']
-);
+unset($_SESSION['notes/received/edit-and-import/errors']);
 
 if ($password_protect) {
     include_once "$fnsDir/Session/EncryptionKey/present.php";
     if (!Session\EncryptionKey\present()) {
-        $_SESSION['notes/received/edit-and-import/password-protect/note'] = [
-            'text' => $text,
-            'tags' => $tags,
-            'encrypt_in_listings' => $encrypt_in_listings,
-            'password_protect' => $password_protect,
-        ];
+        $_SESSION['notes/received/edit-and-import/password-protect/note'] = $values;
         unset(
             $_SESSION['notes/received/edit-and-import/password-protect/errors'],
             $_SESSION['notes/received/edit-and-import/password-protect/values']
@@ -49,6 +44,8 @@ if ($password_protect) {
         redirect('password-protect/'.ItemList\Received\itemQuery($id));
     }
 }
+
+unset($_SESSION['notes/received/edit-and-import/values']);
 
 $receivedNote->text = $text;
 $receivedNote->tags = $tags;

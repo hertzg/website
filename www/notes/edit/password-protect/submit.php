@@ -51,8 +51,7 @@ $tag_names = Tags\parse($tags);
 
 include_once "$fnsDir/Users/Notes/edit.php";
 Users\Notes\edit($mysqli, $note, $stageValues['text'],
-    $tags, $tag_names, $stageValues['encrypt_in_listings'],
-    $stageValues['password_protect']);
+    $tags, $tag_names, $stageValues['encrypt_in_listings'], true);
 
 $_SESSION['notes/view/messages'] = ['Changes have been saved.'];
 redirect("../../view/$itemQuery");
