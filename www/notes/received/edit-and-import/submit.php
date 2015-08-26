@@ -32,6 +32,24 @@ unset(
     $_SESSION['notes/received/edit-and-import/values']
 );
 
+if ($password_protect) {
+    include_once "$fnsDir/Session/EncryptionKey/present.php";
+    if (!Session\EncryptionKey\present()) {
+        $_SESSION['notes/received/edit-and-import/encrypt/note'] = [
+            'text' => $text,
+            'tags' => $tags,
+            'encrypt_in_listings' => $encrypt_in_listings,
+            'password_protect' => $password_protect,
+        ];
+        unset(
+            $_SESSION['notes/received/edit-and-import/encrypt/errors'],
+            $_SESSION['notes/received/edit-and-import/encrypt/values']
+        );
+        include_once "$fnsDir/ItemList/Received/itemQuery.php";
+        redirect('encrypt/'.ItemList\Received\itemQuery($id));
+    }
+}
+
 $receivedNote->text = $text;
 $receivedNote->tags = $tags;
 $receivedNote->encrypt_in_listings = $encrypt_in_listings;
