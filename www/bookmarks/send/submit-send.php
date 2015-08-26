@@ -1,6 +1,8 @@
 <?php
 
-include_once '../../fns/require_same_domain_referer.php';
+$fnsDir = '../../fns';
+
+include_once "$fnsDir/require_same_domain_referer.php";
 require_same_domain_referer('..');
 
 include_once '../fns/require_bookmark.php';
@@ -16,14 +18,17 @@ $checkFunction = function ($recipients,
 
 };
 
-$sendFunction = function ($receiver_id_userss) use ($mysqli, $bookmark, $user) {
-    include_once '../../fns/Users/Bookmarks/send.php';
+$sendFunction = function ($receiver_id_userss) use (
+    $mysqli, $bookmark, $user, $fnsDir) {
+
+    include_once "$fnsDir/Users/Bookmarks/send.php";
     foreach ($receiver_id_userss as $receiver_id_users) {
         Users\Bookmarks\send($mysqli, $user, $receiver_id_users, $bookmark);
     }
+
 };
 
-include_once '../../fns/SendForm/submitSendPage.php';
+include_once "$fnsDir/SendForm/submitSendPage.php";
 SendForm\submitSendPage($user, $id, 'bookmarks/send/errors',
     'bookmarks/send/messages', 'bookmarks/send/values',
     'bookmarks/view/messages', $checkFunction, $sendFunction);

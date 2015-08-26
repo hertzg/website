@@ -1,6 +1,8 @@
 <?php
 
-include_once '../../../fns/require_same_domain_referer.php';
+$fnsDir = '../../../fns';
+
+include_once "$fnsDir/require_same_domain_referer.php";
 require_same_domain_referer('./');
 
 include_once 'fns/require_stage.php';
@@ -16,13 +18,13 @@ $checkFunction = function ($recipients,
 
 };
 
-$sendFunction = function ($receiver_id_userss) use ($mysqli,
-    $stageValues, $user) {
+$sendFunction = function ($receiver_id_userss) use (
+    $mysqli, $stageValues, $user, $fnsDir) {
 
-    include_once '../../../fns/Users/Contacts/Received/add.php';
+    include_once "$fnsDir/Users/Contacts/Received/add.php";
     foreach ($receiver_id_userss as $receiver_id_users) {
-        Users\Contacts\Received\add($mysqli, $user->id_users, $user->username,
-            $receiver_id_users, $stageValues['full_name'],
+        Users\Contacts\Received\add($mysqli, $user->id_users,
+            $user->username, $receiver_id_users, $stageValues['full_name'],
             $stageValues['alias'], $stageValues['address'],
             $stageValues['email'], $stageValues['phone1'],
             $stageValues['phone2'], $stageValues['birthday_time'],
@@ -33,7 +35,7 @@ $sendFunction = function ($receiver_id_userss) use ($mysqli,
 
 };
 
-include_once '../../../fns/SendForm/NewItem/submitSendPage.php';
+include_once "$fnsDir/SendForm/NewItem/submitSendPage.php";
 SendForm\NewItem\submitSendPage($user, 'contacts/new/send/errors',
     'contacts/new/send/messages', 'contacts/new/send/values',
     'contacts/messages', $checkFunction, $sendFunction);

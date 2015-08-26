@@ -1,6 +1,8 @@
 <?php
 
-include_once '../../fns/require_same_domain_referer.php';
+$fnsDir = '../../fns';
+
+include_once "$fnsDir/require_same_domain_referer.php";
 require_same_domain_referer('..');
 
 include_once '../fns/require_contact.php';
@@ -16,14 +18,17 @@ $checkFunction = function ($recipients,
 
 };
 
-$sendFunction = function ($receiver_id_userss) use ($mysqli, $contact, $user) {
-    include_once '../../fns/Users/Contacts/send.php';
+$sendFunction = function ($receiver_id_userss) use (
+    $mysqli, $contact, $user, $fnsDir) {
+
+    include_once "$fnsDir/Users/Contacts/send.php";
     foreach ($receiver_id_userss as $receiver_id_users) {
         Users\Contacts\send($mysqli, $user, $receiver_id_users, $contact);
     }
+
 };
 
-include_once '../../fns/SendForm/submitSendPage.php';
+include_once "$fnsDir/SendForm/submitSendPage.php";
 SendForm\submitSendPage($user, $id, 'contacts/send/errors',
     'contacts/send/messages', 'contacts/send/values',
     'contacts/view/messages', $checkFunction, $sendFunction);

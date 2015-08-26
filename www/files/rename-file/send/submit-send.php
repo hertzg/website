@@ -1,6 +1,8 @@
 <?php
 
-include_once '../../../fns/require_same_domain_referer.php';
+$fnsDir = '../../../fns';
+
+include_once "$fnsDir/require_same_domain_referer.php";
 require_same_domain_referer('../..');
 
 include_once 'fns/require_stage.php';
@@ -12,7 +14,7 @@ $errorsKey = 'files/rename-file/send/errors';
 $valuesKey = 'files/rename-file/send/values';
 
 $url = "./?id=$id";
-include_once '../../../fns/redirect.php';
+include_once "$fnsDir/redirect.php";
 
 if (!array_key_exists($valuesKey, $_SESSION)) redirect($url);
 
@@ -29,7 +31,7 @@ if ($errors) {
     redirect($url);
 }
 
-include_once '../../../fns/Users/Files/sendRenamed.php';
+include_once "$fnsDir/Users/Files/sendRenamed.php";
 foreach ($receiver_id_userss as $receiver_id_users) {
     Users\Files\sendRenamed($mysqli, $user,
         $receiver_id_users, $file, $stageValues['name']);

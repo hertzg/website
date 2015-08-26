@@ -1,6 +1,8 @@
 <?php
 
-include_once '../../fns/require_same_domain_referer.php';
+$fnsDir = '../../fns';
+
+include_once "$fnsDir/require_same_domain_referer.php";
 require_same_domain_referer('./');
 
 include_once '../fns/require_folder.php';
@@ -11,7 +13,7 @@ $errorsKey = 'files/send-folder/errors';
 $valuesKey = 'files/send-folder/values';
 
 $url = "./?id_folders=$id";
-include_once '../../fns/redirect.php';
+include_once "$fnsDir/redirect.php";
 
 if (!array_key_exists($valuesKey, $_SESSION)) redirect($url);
 
@@ -28,7 +30,7 @@ if ($errors) {
     redirect($url);
 }
 
-include_once '../../fns/Users/Folders/send.php';
+include_once "$fnsDir/Users/Folders/send.php";
 foreach ($receiver_id_userss as $receiver_id_users) {
     Users\Folders\send($mysqli, $user, $receiver_id_users, $folder);
 }

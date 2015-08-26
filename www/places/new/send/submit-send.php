@@ -1,6 +1,8 @@
 <?php
 
-include_once '../../../fns/require_same_domain_referer.php';
+$fnsDir = '../../../fns';
+
+include_once "$fnsDir/require_same_domain_referer.php";
 require_same_domain_referer('./');
 
 include_once 'fns/require_stage.php';
@@ -16,10 +18,10 @@ $checkFunction = function ($recipients,
 
 };
 
-$sendFunction = function ($receiver_id_userss) use ($mysqli,
-    $stageValues, $user) {
+$sendFunction = function ($receiver_id_userss) use (
+    $mysqli, $stageValues, $user, $fnsDir) {
 
-    include_once '../../../fns/Users/Places/Received/add.php';
+    include_once "$fnsDir/Users/Places/Received/add.php";
     foreach ($receiver_id_userss as $receiver_id_users) {
         Users\Places\Received\add($mysqli, $user->id_users,
             $user->username, $receiver_id_users, $stageValues['latitude'],
@@ -30,7 +32,7 @@ $sendFunction = function ($receiver_id_userss) use ($mysqli,
 
 };
 
-include_once '../../../fns/SendForm/NewItem/submitSendPage.php';
+include_once "$fnsDir/SendForm/NewItem/submitSendPage.php";
 SendForm\NewItem\submitSendPage($user, 'places/new/send/errors',
     'places/new/send/messages', 'places/new/send/values',
     'places/messages', $checkFunction, $sendFunction);
