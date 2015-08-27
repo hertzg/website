@@ -40,7 +40,7 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
             } elseif ($type == 'event' || $type == 'receivedEvent') {
                 include_once __DIR__.'/render_event.php';
                 render_event($data, $description, $href, $options, $items);
-            } elseif ($type == 'note' || $type == 'receivedNote') {
+            } elseif ($type == 'note') {
                 include_once __DIR__.'/render_note.php';
                 render_note($data, $description, $href, $options, $items);
             } elseif ($type == 'place' || $type == 'receivedPlace') {
@@ -52,6 +52,9 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
             } elseif ($type == 'folder' || $type == 'receivedFolder') {
                 include_once __DIR__.'/render_folder.php';
                 render_folder($data, $description, $href, $options, $items);
+            } elseif ($type == 'receivedNote') {
+                include_once __DIR__.'/render_received_note.php';
+                render_received_note($data, $description, $href, $options, $items);
             } elseif ($type == 'task' || $type == 'receivedTask') {
                 include_once __DIR__.'/render_task.php';
                 render_task($data, $description, $href, $options, $items);

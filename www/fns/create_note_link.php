@@ -5,11 +5,13 @@ function create_note_link ($theme_brightness, $title, $num_tags,
 
     $icon = $encrypt_in_listings ? 'encrypted-note' : 'note';
     $text_luminance = $theme_brightness === 'light' ? 10 : 90;
+    if ($title === '') $title = '****';
 
     if ($num_tags) {
 
         include_once __DIR__.'/ColorTag/render.php';
-        $description = ColorTag\render(json_decode($tags_json), $text_luminance, $paint);
+        $description = ColorTag\render(
+            json_decode($tags_json), $text_luminance, $paint);
 
         include_once __DIR__.'/Page/imageArrowLinkWithDescription.php';
         return Page\imageArrowLinkWithDescription(

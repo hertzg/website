@@ -23,6 +23,7 @@ function create ($note, &$scripts) {
     $author = format_author($note->insert_time, $note->insert_api_key_name);
     $infoText =
         ($note->encrypt_in_listings ? 'Encrypted in listings.<br />' : '')
+        .($note->password_protect ? 'Password-protected.<br />' : '')
         ."Note created $author.";
     if ($note->revision) {
         $author = format_author($note->update_time, $note->update_api_key_name);
