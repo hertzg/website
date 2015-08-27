@@ -10,6 +10,8 @@ function renderNote ($note, &$items, &$infoText) {
     $tags = $note->tags;
     if ($tags !== '') $items[] = \Page\text('Tags: '.htmlspecialchars($tags));
 
-    $infoText = ($note->encrypt ? 'Encrypted in listings.<br />' : '').$infoText;
+    if ($note->encrypt_in_listings) {
+        $infoText = "Encrypted in listings.<br />.$infoText";
+    }
 
 }
