@@ -11,8 +11,30 @@ function create ($note, &$scripts) {
     include_once "$fnsDir/compressed_js_script.php";
     $scripts = compressed_js_script('dateAgo', $base);
 
-    include_once "$fnsDir/create_text_item.php";
-    $items = [create_text_item($note->text, $base)];
+    if ($note->password_protect) {
+        include_once "$fnsDir/Session/EncryptionKey/present.php";
+        if (\Session\EncryptionKey\present()) {
+
+            include_once "$fnsDir/Session/EncryptionKey/get.php";
+            $encryption_key = \Session\EncryptionKey\get();
+
+            include_once "$fnsDir/Crypto/decrypt.php";
+            $text = \Crypto\decrypt($encryption_key,
+                $note->encrypted_text, $note->encrypted_text_iv);
+
+            if ($text === false) $text = '****';
+
+        } else {
+            $text = '****';
+        }
+
+        include_once "$fnsDir/Page/text.php";
+        $items = [\Page\text($text)];
+
+    } else {
+        include_once "$fnsDir/create_text_item.php";
+        $items = [create_text_item($note->text, $base)];
+    }
 
     if ($note->num_tags) {
         include_once "$fnsDir/Page/tags.php";
