@@ -4,7 +4,8 @@ namespace Notes;
 
 function addDeleted ($mysqli, $id, $id_users,
     $text, $encrypted_text, $encrypted_text_iv,
-    $title, $tags, $tag_names, $encrypt_in_listings,
+    $title, $encrypted_title, $encrypted_title_iv,
+    $tags, $tag_names, $encrypt_in_listings,
     $password_protect, $insert_time, $update_time, $revision) {
 
     $text = $mysqli->real_escape_string($text);
@@ -14,6 +15,11 @@ function addDeleted ($mysqli, $id, $id_users,
         $encrypted_text = "'".$mysqli->real_escape_string($encrypted_text)."'";
     }
     $title = $mysqli->real_escape_string($title);
+    if ($encrypted_title === null) {
+        $encrypted_title = $encrypted_title_iv = 'null';
+    } else {
+        $encrypted_title = "'".$mysqli->real_escape_string($encrypted_title)."'";
+    }
     $tags = $mysqli->real_escape_string($tags);
     $num_tags = count($tag_names);
     $tags_json = $mysqli->real_escape_string(json_encode($tag_names));
@@ -22,12 +28,14 @@ function addDeleted ($mysqli, $id, $id_users,
 
     $sql = 'insert into notes'
         .' (id, id_users, text, encrypted_text,'
-        .' encrypted_text_iv, title, tags, num_tags,'
-        .' tags_json, encrypt_in_listings, password_protect,'
+        .' encrypted_text_iv, title, encrypted_title,'
+        .' encrypted_title_iv, tags, num_tags, tags_json,'
+        .' encrypt_in_listings, password_protect,'
         .' insert_time, update_time, revision)'
         ." values ($id, $id_users, '$text', $encrypted_text,"
-        ." $encrypted_text_iv, '$title', '$tags', $num_tags,"
-        ." '$tags_json', $encrypt_in_listings, $password_protect,"
+        ." $encrypted_text_iv, '$title', $encrypted_title,"
+        ." $encrypted_title_iv, '$tags', $num_tags, '$tags_json',"
+        ." $encrypt_in_listings, $password_protect,"
         ." $insert_time, $update_time, $revision)";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
