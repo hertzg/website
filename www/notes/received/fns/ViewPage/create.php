@@ -42,7 +42,10 @@ function create ($receivedNote, &$scripts) {
         .\Form\label('Received from',
             htmlspecialchars($receivedNote->sender_username))
         .create_panel('The Note', join('<div class="hr"></div>', $items))
-        .\Page\infoText("Note received $date_ago.")
+        .\Page\infoText(
+            ($receivedNote->encrypt ? 'Encrypted in listings.<br />' : '')
+            ."Note received $date_ago."
+        )
         .optionsPanel($receivedNote)
     );
 
