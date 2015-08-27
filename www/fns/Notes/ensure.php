@@ -12,8 +12,12 @@ function ensure ($mysqli) {
     include_once "$fnsDir/ApiKeyName/column.php";
     $apiKeyNameColumn = \ApiKeyName\column(true);
 
+    $textLength = $maxLengths['text'];
+    $titleLength = $maxLengths['title'];
+
     include_once "$fnsDir/Crypto/encryptedLength.php";
-    $encrypted_text_length = \Crypto\encryptedLength($maxLengths['text']);
+    $encrypted_text_length = \Crypto\encryptedLength($textLength);
+    $encrypted_title_length = \Crypto\encryptedLength($titleLength);
 
     include_once "$fnsDir/Table/ensure.php";
     include_once "$fnsDir/Tags/column.php";
@@ -25,6 +29,14 @@ function ensure ($mysqli) {
             'nullable' => true,
         ],
         'encrypted_text_iv' => [
+            'type' => 'bigint(20) unsigned',
+            'nullable' => true,
+        ],
+        'encrypted_title' => [
+            'type' => "varbinary($encrypted_title_length)",
+            'nullable' => true,
+        ],
+        'encrypted_title_iv' => [
             'type' => 'bigint(20) unsigned',
             'nullable' => true,
         ],
@@ -45,12 +57,12 @@ function ensure ($mysqli) {
         'tags' => \Tags\column(),
         'tags_json' => \TagsJson\column(),
         'text' => [
-            'type' => "varchar($maxLengths[text])",
+            'type' => "varchar($textLength)",
             'characterSet' => 'utf8',
             'collation' => 'utf8_unicode_ci',
         ],
         'title' => [
-            'type' => "varchar($maxLengths[title])",
+            'type' => "varchar($titleLength)",
             'characterSet' => 'utf8',
             'collation' => 'utf8_unicode_ci',
         ],

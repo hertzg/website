@@ -13,18 +13,21 @@ function edit ($mysqli, $note, $text, $tags,
         include_once "$fnsDir/Crypto/encrypt.php";
         \Crypto\encrypt($encryption_key, $text,
             $encrypted_text, $encrypted_text_iv);
-        $text = '';
+        \Crypto\encrypt($encryption_key, $title,
+            $encrypted_title, $encrypted_title_iv);
+        $text = $title = '';
     } else {
-        $encrypted_text = $encrypted_text_iv = null;
+        $encrypted_text = $encrypted_text_iv =
+            $encrypted_title = $encrypted_title_iv = null;
+        include_once "$fnsDir/Notes/maxLengths.php";
+        include_once "$fnsDir/text_title.php";
+        $title = text_title($text, \Notes\maxLengths()['title']);
     }
 
-    include_once "$fnsDir/Notes/maxLengths.php";
-    include_once "$fnsDir/text_title.php";
-    $title = text_title($text, \Notes\maxLengths()['title']);
-
     include_once "$fnsDir/Notes/edit.php";
-    \Notes\edit($mysqli, $id, $text, $encrypted_text,
-        $encrypted_text_iv, $title, $tags, $tag_names,
+    \Notes\edit($mysqli, $id, $text,
+        $encrypted_text, $encrypted_text_iv, $title,
+        $encrypted_title, $encrypted_title_iv, $tags, $tag_names,
         $encrypt_in_listings, $password_protect, $updateApiKey);
 
     if ($note->num_tags) {
@@ -36,7 +39,8 @@ function edit ($mysqli, $note, $text, $tags,
         include_once "$fnsDir/NoteTags/add.php";
         \NoteTags\add($mysqli, $note->id_users, $id, $tag_names,
             $text, $encrypted_text, $encrypted_text_iv, $title,
-            $title, $tags, $encrypt_in_listings, $password_protect);
+            $encrypted_title, $encrypted_title_iv, $tags,
+            $encrypt_in_listings, $password_protect);
     }
 
 }
