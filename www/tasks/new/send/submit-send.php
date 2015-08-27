@@ -1,6 +1,8 @@
 <?php
 
-include_once '../../../fns/require_same_domain_referer.php';
+$fnsDir = '../../../fns';
+
+include_once "$fnsDir/require_same_domain_referer.php";
 require_same_domain_referer('./');
 
 include_once 'fns/require_stage.php';
@@ -16,20 +18,20 @@ $checkFunction = function ($recipients,
 
 };
 
-$sendFunction = function ($receiver_id_userss) use ($mysqli,
-    $stageValues, $user) {
+$sendFunction = function ($receiver_id_userss) use (
+    $mysqli, $stageValues, $user, $fnsDir) {
 
-    include_once '../../../fns/Users/Tasks/Received/add.php';
+    include_once "$fnsDir/Users/Tasks/Received/add.php";
     foreach ($receiver_id_userss as $receiver_id_users) {
-        Users\Tasks\Received\add($mysqli, $user->id_users, $user->username,
-            $receiver_id_users, $stageValues['text'],
+        Users\Tasks\Received\add($mysqli, $user->id_users,
+            $user->username, $receiver_id_users, $stageValues['text'],
             $stageValues['deadline_time'], $stageValues['tags'],
             $stageValues['top_priority']);
     }
 
 };
 
-include_once '../../../fns/SendForm/NewItem/submitSendPage.php';
+include_once "$fnsDir/SendForm/NewItem/submitSendPage.php";
 SendForm\NewItem\submitSendPage($user, 'tasks/new/send/errors',
     'tasks/new/send/messages', 'tasks/new/send/values',
     'tasks/messages', $checkFunction, $sendFunction);
