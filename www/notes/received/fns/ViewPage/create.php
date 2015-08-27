@@ -43,7 +43,7 @@ function create ($receivedNote, &$scripts) {
             htmlspecialchars($receivedNote->sender_username))
         .create_panel('The Note', join('<div class="hr"></div>', $items))
         .\Page\infoText(
-            ($receivedNote->encrypt ? 'Encrypted in listings.<br />' : '')
+            ($receivedNote->encrypt_in_listings ? 'Encrypted in listings.<br />' : '')
             ."Note received $date_ago."
         )
         .optionsPanel($receivedNote)

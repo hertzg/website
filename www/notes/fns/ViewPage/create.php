@@ -22,7 +22,7 @@ function create ($note, &$scripts) {
     include_once "$fnsDir/format_author.php";
     $author = format_author($note->insert_time, $note->insert_api_key_name);
     $infoText =
-        ($note->encrypt ? 'Encrypted in listings.<br />' : '')
+        ($note->encrypt_in_listings ? 'Encrypted in listings.<br />' : '')
         ."Note created $author.";
     if ($note->revision) {
         $author = format_author($note->update_time, $note->update_api_key_name);
