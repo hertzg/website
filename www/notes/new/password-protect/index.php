@@ -26,7 +26,7 @@ $content = Page\tabs(
     'Password-protect',
     Page\sessionErrors('notes/new/password-protect/errors')
     .Page\warnings([
-        'To password-protect the note you should enter your account password.',
+        'To password-protect the note your account password is needed.',
     ])
     .'<form action="submit.php" method="post">'
         .Form\password('password', 'Password', [
