@@ -53,6 +53,9 @@ include_once "$fnsDir/Crypto/decrypt.php";
 $encryption_key = Crypto\decrypt($password,
     $user->encryption_key, $user->encryption_key_iv);
 
+include_once "$fnsDir/Session/EncryptionKey/set.php";
+Session\EncryptionKey\set($encryption_key);
+
 include_once "$fnsDir/Users/Notes/edit.php";
 Users\Notes\edit($mysqli, $note, $stageValues['text'], $tags,
     $tag_names, $stageValues['encrypt_in_listings'], true, $encryption_key);

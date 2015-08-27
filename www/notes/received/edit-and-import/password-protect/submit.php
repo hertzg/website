@@ -52,6 +52,9 @@ include_once "$fnsDir/Crypto/decrypt.php";
 $encryption_key = Crypto\decrypt($password,
     $user->encryption_key, $user->encryption_key_iv);
 
+include_once "$fnsDir/Session/EncryptionKey/set.php";
+Session\EncryptionKey\set($encryption_key);
+
 include_once "$fnsDir/Users/Notes/Received/import.php";
 Users\Notes\Received\import($mysqli, $receivedNote, true, $encryption_key);
 
