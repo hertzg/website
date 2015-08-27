@@ -2,9 +2,10 @@
 
 namespace Notes;
 
-function edit ($mysqli, $id, $text, $encrypted_text,
-    $encrypted_text_iv, $title, $tags, $tag_names,
-    $encrypt_in_listings, $password_protect, $updateApiKey) {
+function edit ($mysqli, $id, $text,
+    $encrypted_text, $encrypted_text_iv, $title, $encrypted_title,
+    $encrypted_title_iv, $tags, $tag_names, $encrypt_in_listings,
+    $password_protect, $updateApiKey) {
 
     $text = $mysqli->real_escape_string($text);
     if ($encrypted_text === null) {
@@ -13,6 +14,11 @@ function edit ($mysqli, $id, $text, $encrypted_text,
         $encrypted_text = "'".$mysqli->real_escape_string($encrypted_text)."'";
     }
     $title = $mysqli->real_escape_string($title);
+    if ($encrypted_title === null) {
+        $encrypted_title = $encrypted_title_iv = 'null';
+    } else {
+        $encrypted_title = "'".$mysqli->real_escape_string($encrypted_title)."'";
+    }
     $tags = $mysqli->real_escape_string($tags);
     $num_tags = count($tag_names);
     $tags_json = $mysqli->real_escape_string(json_encode($tag_names));
@@ -32,6 +38,8 @@ function edit ($mysqli, $id, $text, $encrypted_text,
 
     $sql = "update notes set text = '$text', encrypted_text = $encrypted_text,"
         ." encrypted_text_iv = $encrypted_text_iv, title = '$title',"
+        ." encrypted_title = $encrypted_title,"
+        ." encrypted_title_iv = $encrypted_title_iv,"
         ." tags = '$tags', num_tags = $num_tags, tags_json = '$tags_json',"
         ." encrypt_in_listings = $encrypt_in_listings,"
         ." password_protect = $password_protect, update_time = $update_time,"

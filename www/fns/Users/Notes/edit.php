@@ -9,6 +9,10 @@ function edit ($mysqli, $note, $text, $tags,
     $id = $note->id;
     $fnsDir = __DIR__.'/../..';
 
+    include_once "$fnsDir/Notes/maxLengths.php";
+    include_once "$fnsDir/text_title.php";
+    $title = text_title($text, \Notes\maxLengths()['title']);
+
     if ($password_protect) {
         include_once "$fnsDir/Crypto/encrypt.php";
         \Crypto\encrypt($encryption_key, $text,
@@ -19,9 +23,6 @@ function edit ($mysqli, $note, $text, $tags,
     } else {
         $encrypted_text = $encrypted_text_iv =
             $encrypted_title = $encrypted_title_iv = null;
-        include_once "$fnsDir/Notes/maxLengths.php";
-        include_once "$fnsDir/text_title.php";
-        $title = text_title($text, \Notes\maxLengths()['title']);
     }
 
     include_once "$fnsDir/Notes/edit.php";

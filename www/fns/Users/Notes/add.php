@@ -8,25 +8,20 @@ function add ($mysqli, $id_users, $text, $tags,
 
     $fnsDir = __DIR__.'/../..';
 
+    include_once "$fnsDir/Notes/maxLengths.php";
+    include_once "$fnsDir/text_title.php";
+    $title = text_title($text, \Notes\maxLengths()['title']);
+
     if ($password_protect) {
-
-        include_once "$fnsDir/Notes/maxLengths.php";
-        include_once "$fnsDir/text_title.php";
-        $title = text_title($text, \Notes\maxLengths()['title']);
-
         include_once "$fnsDir/Crypto/encrypt.php";
         \Crypto\encrypt($encryption_key, $text,
             $encrypted_text, $encrypted_text_iv);
         \Crypto\encrypt($encryption_key, $title,
             $encrypted_title, $encrypted_title_iv);
         $text = $title = '';
-
     } else {
         $encrypted_text = $encrypted_text_iv =
             $encrypted_title = $encrypted_title_iv = null;
-        include_once "$fnsDir/Notes/maxLengths.php";
-        include_once "$fnsDir/text_title.php";
-        $title = text_title($text, \Notes\maxLengths()['title']);
     }
 
     include_once "$fnsDir/Notes/add.php";

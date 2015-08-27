@@ -14,6 +14,9 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
         include_once "$fnsDir/DeletedItems/indexOnUser.php";
         $deletedItems = DeletedItems\indexOnUser($mysqli, $user->id_users);
 
+        include_once "$fnsDir/Session/EncryptionKey/get.php";
+        $encryption_key = Session\EncryptionKey\get();
+
         include_once "$fnsDir/export_date_ago.php";
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         foreach ($deletedItems as $deletedItem) {
@@ -42,7 +45,8 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
                 render_event($data, $description, $href, $options, $items);
             } elseif ($type == 'note') {
                 include_once __DIR__.'/render_note.php';
-                render_note($data, $description, $href, $options, $items);
+                render_note($data, $description, $href,
+                    $options, $encryption_key, $items);
             } elseif ($type == 'place' || $type == 'receivedPlace') {
                 include_once __DIR__.'/render_place.php';
                 render_place($data, $description, $href, $options, $items);

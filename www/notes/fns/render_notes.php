@@ -9,6 +9,9 @@ function render_notes ($user, $notes, &$items, $params, $base = '') {
         include_once "$fnsDir/resolve_theme.php";
         resolve_theme($user, $theme_color, $theme_brightness);
 
+        include_once "$fnsDir/Session/EncryptionKey/get.php";
+        $encryption_key = Session\EncryptionKey\get();
+
         include_once "$fnsDir/create_note_link.php";
         foreach ($notes as $note) {
 
@@ -20,9 +23,18 @@ function render_notes ($user, $notes, &$items, $params, $base = '') {
             );
             $href = "{$base}view/?$queryString";
 
-            $encrypt_in_listings = $note->encrypt_in_listings;
+            if ($note->password_protect) {
+                if ($encryption_key === null) $title = '****';
+                else {
+                    include_once "$fnsDir/Crypto/decrypt.php";
+                    $title = Crypto\decrypt($encryption_key,
+                        $note->encrypted_title, $note->encrypted_title_iv);
+                }
+            } else {
+                $title = $note->title;
+            }
 
-            $title = $note->title;
+            $encrypt_in_listings = $note->encrypt_in_listings;
             if ($encrypt_in_listings) {
                 include_once "$fnsDir/encrypt_text.php";
                 $title = encrypt_text($title);
