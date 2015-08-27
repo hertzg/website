@@ -43,7 +43,7 @@ function create ($deletedItem, $user, &$title, &$head, &$scripts) {
         renderEvent($data, $items);
     } elseif ($type == 'note' || $type == 'receivedNote') {
         include_once __DIR__.'/renderNote.php';
-        renderNote($data, $items);
+        renderNote($data, $items, $infoText);
     } elseif ($type == 'place' || $type == 'receivedPlace') {
         include_once __DIR__.'/renderPlace.php';
         renderPlace($data, $items);
