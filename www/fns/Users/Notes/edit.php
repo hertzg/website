@@ -13,6 +13,7 @@ function edit ($mysqli, $note, $text, $tags,
         include_once "$fnsDir/Crypto/encrypt.php";
         \Crypto\encrypt($encryption_key, $text,
             $encrypted_text, $encrypted_text_iv);
+        $text = '';
     } else {
         $encrypted_text = $encrypted_text_iv = null;
     }
