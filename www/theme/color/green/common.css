@@ -10,7 +10,8 @@
 }
 
 .a,
-.tag {
+.tag,
+.tab-active {
     color: #2a1;
 }
 
