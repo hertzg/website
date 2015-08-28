@@ -42,7 +42,6 @@ function create ($note, &$scripts) {
         $text = $note->text;
         include_once __DIR__.'/optionsPanel.php';
         $optionsPanel = optionsPanel($note, $text);
-        $text_item = Page\text();
     }
 
     if ($text_encrypted) {
