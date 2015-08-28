@@ -1,14 +1,14 @@
 <?php
 
-include_once '../fns/require_note.php';
+include_once '../fns/require_decrypted_note.php';
 include_once '../../lib/mysqli.php';
-list($note, $id, $user) = require_note($mysqli);
+list($note, $id, $user, $text) = require_decrypted_note($mysqli);
 
 $key = 'notes/edit/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
     $values = [
-        'text' => $note->text,
+        'text' => $text,
         'tags' => $note->tags,
         'encrypt_in_listings' => $note->encrypt_in_listings,
         'password_protect' => $note->password_protect,
