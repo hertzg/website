@@ -12,6 +12,7 @@ function create ($note, &$scripts) {
     $scripts = compressed_js_script('dateAgo', $base);
 
     $text_encrypted = false;
+    $errors = '';
     if ($note->password_protect) {
 
         include_once "$fnsDir/Session/EncryptionKey/get.php";
@@ -28,9 +29,18 @@ function create ($note, &$scripts) {
                 $note->encrypted_text, $note->encrypted_text_iv);
 
             if ($text === false) {
+
                 $text_encrypted = true;
+
                 include_once __DIR__.'/stuckOptionsPanel.php';
                 $optionsPanel = stuckOptionsPanel($note);
+
+                include_once "$fnsDir/Page/errors.php";
+                $errors = \Page\errors([
+                    'The note can no longer be unlocked'
+                    .' as your account password has been reset.',
+                ]);
+
             } else {
                 include_once __DIR__.'/optionsPanel.php';
                 $optionsPanel = optionsPanel($note, $text);
@@ -87,7 +97,7 @@ function create ($note, &$scripts) {
                 ],
             ],
             "Note #$id",
-            \Page\sessionMessages('notes/view/messages')
+            $errors.\Page\sessionMessages('notes/view/messages')
             .join('<div class="hr"></div>', $items)
             .\Page\infoText($infoText),
             create_new_item_button('Note', '../')
