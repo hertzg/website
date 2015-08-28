@@ -11,30 +11,49 @@ function create ($note, &$scripts) {
     include_once "$fnsDir/compressed_js_script.php";
     $scripts = compressed_js_script('dateAgo', $base);
 
+    $text_encrypted = false;
     if ($note->password_protect) {
 
         include_once "$fnsDir/Session/EncryptionKey/get.php";
         $encryption_key = \Session\EncryptionKey\get();
 
-        if ($encryption_key === null) $text = '****';
-        else {
+        if ($encryption_key === null) {
+            $text_encrypted = true;
+            include_once __DIR__.'/unlockableOptionsPanel.php';
+            $optionsPanel = unlockableOptionsPanel($note);
+        } else {
 
             include_once "$fnsDir/Crypto/decrypt.php";
             $text = \Crypto\decrypt($encryption_key,
                 $note->encrypted_text, $note->encrypted_text_iv);
 
-            if ($text === false) $text = '****';
+            if ($text === false) {
+                $text_encrypted = true;
+                include_once __DIR__.'/stuckOptionsPanel.php';
+                $optionsPanel = stuckOptionsPanel($note);
+            } else {
+                include_once __DIR__.'/optionsPanel.php';
+                $optionsPanel = optionsPanel($note, $text);
+            }
 
         }
 
-        include_once "$fnsDir/Page/text.php";
-        $items = [\Page\text($text)];
-
     } else {
         $text = $note->text;
-        include_once "$fnsDir/create_text_item.php";
-        $items = [create_text_item($text, $base)];
+        include_once __DIR__.'/optionsPanel.php';
+        $optionsPanel = optionsPanel($note, $text);
+        $text_item = Page\text();
     }
+
+    if ($text_encrypted) {
+        include_once "$fnsDir/Page/text.php";
+        $item = \Page\text('****');
+    } else {
+        include_once "$fnsDir/create_text_item.php";
+        $item = create_text_item($text, $base);
+    }
+
+    $items = [$item];
 
     if ($note->num_tags) {
         include_once "$fnsDir/Page/tags.php";
@@ -52,19 +71,9 @@ function create ($note, &$scripts) {
         $infoText .= "<br />Last modified $author.";
     }
 
-    unset(
-        $_SESSION['notes/edit/errors'],
-        $_SESSION['notes/edit/values'],
-        $_SESSION['notes/errors'],
-        $_SESSION['notes/messages'],
-        $_SESSION['notes/send/errors'],
-        $_SESSION['notes/send/messages'],
-        $_SESSION['notes/send/values'],
-        $_SESSION['notes/unlock/errors'],
-        $_SESSION['notes/unlock/values']
-    );
+    include_once __DIR__.'/unsetSessionVars.php';
+    unsetSessionVars();
 
-    include_once __DIR__.'/optionsPanel.php';
     include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/ItemList/listHref.php";
     include_once "$fnsDir/Page/infoText.php";
@@ -84,6 +93,6 @@ function create ($note, &$scripts) {
             .\Page\infoText($infoText),
             create_new_item_button('Note', '../')
         )
-        .optionsPanel($note, $text);
+        .$optionsPanel;
 
 }
