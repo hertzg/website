@@ -3,6 +3,7 @@
 namespace Session\EncryptionKey;
 
 function get () {
-    include_once __DIR__.'/present.php';
-    if (present()) return $_SESSION['encryption_key'];
+    if (array_key_exists('encryption_key', $_SESSION)) {
+        return $_SESSION['encryption_key'];
+    }
 }

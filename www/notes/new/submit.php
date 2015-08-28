@@ -44,23 +44,20 @@ if ($sendButton !== '') {
     redirect('send/'.ItemList\pageQuery());
 }
 
-if ($password_protect) {
-    include_once "$fnsDir/Session/EncryptionKey/present.php";
-    if (!Session\EncryptionKey\present()) {
-        $_SESSION['notes/new/password-protect/note'] = $values;
-        unset(
-            $_SESSION['notes/new/password-protect/errors'],
-            $_SESSION['notes/new/password-protect/values']
-        );
-        include_once "$fnsDir/ItemList/pageQuery.php";
-        redirect('password-protect/'.ItemList\pageQuery());
-    }
+include_once "$fnsDir/Session/EncryptionKey/get.php";
+$encryption_key = Session\EncryptionKey\get();
+
+if ($password_protect && $encryption_key === null) {
+    $_SESSION['notes/new/password-protect/note'] = $values;
+    unset(
+        $_SESSION['notes/new/password-protect/errors'],
+        $_SESSION['notes/new/password-protect/values']
+    );
+    include_once "$fnsDir/ItemList/pageQuery.php";
+    redirect('password-protect/'.ItemList\pageQuery());
 }
 
 unset($_SESSION['notes/new/values']);
-
-include_once "$fnsDir/Session/EncryptionKey/get.php";
-$encryption_key = Session\EncryptionKey\get();
 
 include_once "$fnsDir/Users/Notes/add.php";
 include_once '../../lib/mysqli.php';

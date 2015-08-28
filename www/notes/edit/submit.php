@@ -46,22 +46,19 @@ if ($sendButton) {
     redirect("send/$itemQuery");
 }
 
-if ($password_protect) {
-    include_once "$fnsDir/Session/EncryptionKey/present.php";
-    if (!Session\EncryptionKey\present()) {
-        $_SESSION['notes/edit/password-protect/note'] = $values;
-        unset(
-            $_SESSION['notes/edit/password-protect/errors'],
-            $_SESSION['notes/edit/password-protect/values']
-        );
-        redirect("password-protect/$itemQuery");
-    }
+include_once "$fnsDir/Session/EncryptionKey/get.php";
+$encryption_key = Session\EncryptionKey\get();
+
+if ($password_protect && $encryption_key === null) {
+    $_SESSION['notes/edit/password-protect/note'] = $values;
+    unset(
+        $_SESSION['notes/edit/password-protect/errors'],
+        $_SESSION['notes/edit/password-protect/values']
+    );
+    redirect("password-protect/$itemQuery");
 }
 
 unset($_SESSION['notes/edit/values']);
-
-include_once "$fnsDir/Session/EncryptionKey/get.php";
-$encryption_key = Session\EncryptionKey\get();
 
 include_once "$fnsDir/Users/Notes/edit.php";
 Users\Notes\edit($mysqli, $note, $text, $tags, $tag_names,

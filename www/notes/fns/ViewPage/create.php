@@ -12,11 +12,12 @@ function create ($note, &$scripts) {
     $scripts = compressed_js_script('dateAgo', $base);
 
     if ($note->password_protect) {
-        include_once "$fnsDir/Session/EncryptionKey/present.php";
-        if (\Session\EncryptionKey\present()) {
 
-            include_once "$fnsDir/Session/EncryptionKey/get.php";
-            $encryption_key = \Session\EncryptionKey\get();
+        include_once "$fnsDir/Session/EncryptionKey/get.php";
+        $encryption_key = \Session\EncryptionKey\get();
+
+        if ($encryption_key === null) $text = '****';
+        else {
 
             include_once "$fnsDir/Crypto/decrypt.php";
             $text = \Crypto\decrypt($encryption_key,
@@ -24,8 +25,6 @@ function create ($note, &$scripts) {
 
             if ($text === false) $text = '****';
 
-        } else {
-            $text = '****';
         }
 
         include_once "$fnsDir/Page/text.php";

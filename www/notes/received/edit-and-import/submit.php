@@ -32,17 +32,17 @@ if ($errors) {
 
 unset($_SESSION['notes/received/edit-and-import/errors']);
 
-if ($password_protect) {
-    include_once "$fnsDir/Session/EncryptionKey/present.php";
-    if (!Session\EncryptionKey\present()) {
-        $_SESSION['notes/received/edit-and-import/password-protect/note'] = $values;
-        unset(
-            $_SESSION['notes/received/edit-and-import/password-protect/errors'],
-            $_SESSION['notes/received/edit-and-import/password-protect/values']
-        );
-        include_once "$fnsDir/ItemList/Received/itemQuery.php";
-        redirect('password-protect/'.ItemList\Received\itemQuery($id));
-    }
+include_once "$fnsDir/Session/EncryptionKey/get.php";
+$encryption_key = Session\EncryptionKey\get();
+
+if ($password_protect && $encryption_key === null) {
+    $_SESSION['notes/received/edit-and-import/password-protect/note'] = $values;
+    unset(
+        $_SESSION['notes/received/edit-and-import/password-protect/errors'],
+        $_SESSION['notes/received/edit-and-import/password-protect/values']
+    );
+    include_once "$fnsDir/ItemList/Received/itemQuery.php";
+    redirect('password-protect/'.ItemList\Received\itemQuery($id));
 }
 
 unset($_SESSION['notes/received/edit-and-import/values']);
@@ -50,9 +50,6 @@ unset($_SESSION['notes/received/edit-and-import/values']);
 $receivedNote->text = $text;
 $receivedNote->tags = $tags;
 $receivedNote->encrypt_in_listings = $encrypt_in_listings;
-
-include_once "$fnsDir/Session/EncryptionKey/get.php";
-$encryption_key = Session\EncryptionKey\get();
 
 include_once "$fnsDir/Users/Notes/Received/import.php";
 Users\Notes\Received\import($mysqli,
