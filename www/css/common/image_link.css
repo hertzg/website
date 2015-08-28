@@ -33,6 +33,9 @@
     background-repeat: no-repeat;
     background-position: 100% 50%;
 }
+.image_link.withArrow:active {
+    background-image: url(../../images/arrow-active.svg?1);
+}
 .image_link.withArrow .image_link-content {
     right: 24px;
 }
