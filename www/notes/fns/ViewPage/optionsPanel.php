@@ -2,7 +2,7 @@
 
 namespace ViewPage;
 
-function optionsPanel ($note) {
+function optionsPanel ($note, $text) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
@@ -13,7 +13,7 @@ function optionsPanel ($note) {
     $editLink = \Page\imageArrowLink('Edit',
         "../edit/$escapedItemQuery", 'edit-note', ['id' => 'edit']);
 
-    $params = ['text' => $note->text];
+    $params = ['text' => $text];
     $tags = $note->tags;
     if ($tags !== '') $params['tags'] = $tags;
     if ($note->encrypt_in_listings) $params['encrypt_in_listings'] = '1';
@@ -25,7 +25,7 @@ function optionsPanel ($note) {
         "../send/$escapedItemQuery", 'send', ['id' => 'send']);
 
     include_once "$fnsDir/Page/imageLink.php";
-    $href = 'sms:?body='.rawurlencode($note->text);
+    $href = 'sms:?body='.rawurlencode($text);
     $sendViaSmsLink = \Page\imageLink('Send via SMS', $href, 'send-sms');
 
     $href = "../delete/$escapedItemQuery";

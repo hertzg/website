@@ -31,8 +31,9 @@ function create ($note, &$scripts) {
         $items = [\Page\text($text)];
 
     } else {
+        $text = $note->text;
         include_once "$fnsDir/create_text_item.php";
-        $items = [create_text_item($note->text, $base)];
+        $items = [create_text_item($text, $base)];
     }
 
     if ($note->num_tags) {
@@ -81,6 +82,6 @@ function create ($note, &$scripts) {
             .\Page\infoText($infoText),
             create_new_item_button('Note', '../')
         )
-        .optionsPanel($note);
+        .optionsPanel($note, $text);
 
 }
