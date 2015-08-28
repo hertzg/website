@@ -59,7 +59,9 @@ function create ($note, &$scripts) {
         $_SESSION['notes/messages'],
         $_SESSION['notes/send/errors'],
         $_SESSION['notes/send/messages'],
-        $_SESSION['notes/send/values']
+        $_SESSION['notes/send/values'],
+        $_SESSION['notes/unlock/errors'],
+        $_SESSION['notes/unlock/values']
     );
 
     include_once __DIR__.'/optionsPanel.php';
