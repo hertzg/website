@@ -58,6 +58,9 @@ render($content, 'folder.svg?6', $names);
 $names = ['invitation', 'create-invitation', 'edit-invitation', 'invitations'];
 render($content, 'invitation.svg?1', $names);
 
+$names = ['password', 'edit-password', 'new-password', 'reset-password'];
+render($content, 'key.svg?1', $names);
+
 $names = ['move-up', 'move-to-top', 'move-down', 'move-to-bottom'];
 render($content, 'move.svg?2', $names);
 
@@ -74,14 +77,13 @@ render($content, 'point.svg?1', $names);
 
 $names = ['account', 'edit-profile', 'download', 'upload', 'feedback',
     'yes', 'no', 'notification', 'create-notification', 'old-notification',
-    'edit-password', 'new-password', 'reset-password', 'rename',
-    'sign-in', 'sign-ins', 'arrow-right', 'arrow-left',
+    'rename', 'sign-in', 'sign-ins', 'arrow-right', 'arrow-left',
     'search', 'search-folder', 'birthday-cake', 'checkbox',
     'checked-checkbox', 'help', 'run', 'mail', 'sms', 'send',
     'send-sms', 'receive', 'phone', 'edit-home', 'reorder',
     'show-hide', 'restore-defaults', 'forbid-notifications',
     'receive-notifications', 'generic', 'slideshow', 'locate'];
-render($content, 'other.svg?17', $names);
+render($content, 'other.svg?18', $names);
 
 $names = ['schedule', 'create-schedule',
     'edit-schedule', 'schedules', 'duplicate-schedule'];

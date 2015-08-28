@@ -11,7 +11,7 @@ function unlockableOptionsPanel ($note) {
 
     include_once "$fnsDir/Page/imageArrowLink.php";
     $unlockLink = \Page\imageArrowLink('Unlock',
-        "../unlock/$escapedItemQuery", 'generic', []);
+        "../unlock/$escapedItemQuery", 'password', []);
 
     include_once "$fnsDir/Page/imageLink.php";
     $deleteLink =
