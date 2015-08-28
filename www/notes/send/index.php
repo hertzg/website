@@ -1,8 +1,8 @@
 <?php
 
-include_once '../fns/require_decrypted_note.php';
+include_once '../fns/require_unlocked_note.php';
 include_once '../../lib/mysqli.php';
-list($note, $id, $user) = require_decrypted_note($mysqli);
+list($note, $id, $user) = require_unlocked_note($mysqli);
 
 unset($_SESSION['notes/view/messages']);
 

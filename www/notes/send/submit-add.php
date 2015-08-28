@@ -3,9 +3,9 @@
 include_once '../../fns/require_same_domain_referer.php';
 require_same_domain_referer('..');
 
-include_once '../fns/require_decrypted_note.php';
+include_once '../fns/require_unlocked_note.php';
 include_once '../../lib/mysqli.php';
-list($note, $id, $user) = require_decrypted_note($mysqli);
+list($note, $id, $user) = require_unlocked_note($mysqli);
 
 $checkFunction = function ($username, &$errors) use ($mysqli, $user) {
     include_once '../fns/check_receiver.php';

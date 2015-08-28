@@ -1,8 +1,8 @@
 <?php
 
-include_once 'fns/require_undecrypted_note.php';
+include_once 'fns/require_locked_note.php';
 include_once '../../lib/mysqli.php';
-list($note, $id, $user) = require_undecrypted_note($mysqli);
+list($note, $id, $user) = require_locked_note($mysqli);
 
 $key = 'notes/unlock/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];

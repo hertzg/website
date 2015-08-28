@@ -5,9 +5,9 @@ $fnsDir = '../../fns';
 include_once "$fnsDir/require_same_domain_referer.php";
 require_same_domain_referer('..');
 
-include_once '../fns/require_decrypted_note.php';
+include_once '../fns/require_unlocked_note.php';
 include_once '../../lib/mysqli.php';
-list($note, $id, $user, $text) = require_decrypted_note($mysqli);
+list($note, $id, $user, $text) = require_unlocked_note($mysqli);
 
 $note->text = $text;
 

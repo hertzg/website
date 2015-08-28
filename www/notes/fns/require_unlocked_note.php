@@ -1,6 +1,6 @@
 <?php
 
-function require_decrypted_note ($mysqli, $base = '') {
+function require_unlocked_note ($mysqli, $base = '') {
 
     include_once __DIR__.'/require_note.php';
     list($note, $id, $user) = require_note($mysqli, $base);
