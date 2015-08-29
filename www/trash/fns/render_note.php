@@ -11,6 +11,7 @@ function render_note ($note, $description,
             include_once "$fnsDir/Crypto/decrypt.php";
             $title = Crypto\decrypt($encryption_key,
                 hex2bin($note->encrypted_title), $note->encrypted_title_iv);
+            if ($title === false) $title = '****';
         }
     } else {
         $title = $note->title;

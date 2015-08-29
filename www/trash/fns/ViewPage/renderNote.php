@@ -4,8 +4,30 @@ namespace ViewPage;
 
 function renderNote ($note, &$items, &$infoText) {
 
-    include_once __DIR__.'/../../../fns/Page/text.php';
-    $items[] = \Page\text(nl2br(htmlspecialchars($note->text)));
+    $fnsDir = __DIR__.'/../../../fns';
+
+    if ($note->password_protect) {
+
+        include_once "$fnsDir/Session/EncryptionKey/get.php";
+        $encryption_key = \Session\EncryptionKey\get();
+
+        if ($encryption_key === null) $text = '****';
+        else {
+
+            include_once "$fnsDir/Crypto/decrypt.php";
+            $text = \Crypto\decrypt($encryption_key,
+                hex2bin($note->encrypted_text), $note->encrypted_text_iv);
+
+            if ($text === false) $text = '****';
+
+        }
+
+    } else {
+        $text = $note->text;
+    }
+
+    include_once "$fnsDir/Page/text.php";
+    $items[] = \Page\text(nl2br(htmlspecialchars($text)));
 
     $tags = $note->tags;
     if ($tags !== '') $items[] = \Page\text('Tags: '.htmlspecialchars($tags));
