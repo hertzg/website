@@ -28,9 +28,21 @@ function authenticate ($mysqli, $username, $password, $remember) {
             remember($mysqli, $user);
         }
 
-        include_once "$fnsDir/Crypto/decrypt.php";
-        $encryption_key = \Crypto\decrypt($password,
-            $user->encryption_key, $user->encryption_key_iv);
+        if ($user->encryption_key === null) {
+
+            include_once "$fnsDir/EncryptionKey/random.php";
+            \EncryptionKey\random($password,
+                $encryption_key, $encryption_key_iv);
+
+            include_once "$fnsDir/Users/editEncryptionKey.php";
+            \Users\editEncryptionKey($mysqli, $id_users,
+                $encryption_key, $encryption_key_iv);
+
+        } else {
+            include_once "$fnsDir/Crypto/decrypt.php";
+            $encryption_key = \Crypto\decrypt($password,
+                $user->encryption_key, $user->encryption_key_iv);
+        }
 
         include_once __DIR__.'/EncryptionKey/set.php';
         EncryptionKey\set($encryption_key);
