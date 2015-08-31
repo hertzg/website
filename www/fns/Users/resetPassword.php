@@ -12,7 +12,9 @@ function resetPassword ($mysqli, $id, $password) {
     $password_sha512_key = $mysqli->real_escape_string($password_sha512_key);
 
     include_once __DIR__.'/../EncryptionKey/random.php';
-    \EncryptionKey\random($password, $encryption_key, $encryption_key_iv);
+    \EncryptionKey\random($password, $random_key,
+        $encryption_key, $encryption_key_iv);
+
     $encryption_key = $mysqli->real_escape_string($encryption_key);
 
     $sql = 'update users set password_hash = null, password_salt = null,'

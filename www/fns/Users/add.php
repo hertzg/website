@@ -22,9 +22,9 @@ function add ($mysqli, $username, $password, $email) {
     $insert_time = time();
 
     include_once "$fnsDir/EncryptionKey/random.php";
-    \EncryptionKey\random($password, $encryption_key, $encryption_key_iv);
+    \EncryptionKey\random($password, $random_key,
+        $encryption_key, $encryption_key_iv);
     $encryption_key = $mysqli->real_escape_string($encryption_key);
-    $encryption_key_iv = $mysqli->real_escape_string($encryption_key_iv);
 
     include_once "$fnsDir/time_today.php";
     $birthdays_check_day = $events_check_day =

@@ -31,12 +31,14 @@ function authenticate ($mysqli, $username, $password, $remember) {
         if ($user->encryption_key === null) {
 
             include_once "$fnsDir/EncryptionKey/random.php";
-            \EncryptionKey\random($password,
+            \EncryptionKey\random($password, $random_key,
                 $encryption_key, $encryption_key_iv);
 
             include_once "$fnsDir/Users/editEncryptionKey.php";
             \Users\editEncryptionKey($mysqli, $id_users,
                 $encryption_key, $encryption_key_iv);
+
+            $encryption_key = $random_key;
 
         } else {
             include_once "$fnsDir/Crypto/decrypt.php";
