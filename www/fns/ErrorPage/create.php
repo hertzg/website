@@ -2,13 +2,15 @@
 
 namespace ErrorPage;
 
-function create ($code, $text, $description) {
+function create ($code, $text, $description, $send_headers = null) {
 
     include_once __DIR__.'/../SiteBase/get.php';
     $siteBase = \SiteBase\get();
 
     http_response_code($code);
     header('Content-Type: text/html; charset=UTF-8');
+
+    if ($send_headers !== null) $send_headers();
 
     echo
         '<!DOCTYPE html>'
