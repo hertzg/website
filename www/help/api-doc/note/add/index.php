@@ -12,6 +12,12 @@ note_method_page('add', [
         'description' => 'Whether the note should be encrypted in listings.',
     ],
     [
+        'name' => 'password_protect',
+        'description' => 'Whether the note should be'
+            .' password-protected. This option is available'
+            .' with a password-authenticated session only.',
+    ],
+    [
         'name' => 'tags',
         'description' => 'A space-separated list of tags.',
     ],
@@ -21,4 +27,6 @@ note_method_page('add', [
 ], [
     'ENTER_TEXT' => 'The text is empty.',
     'TOO_MANY_TAGS' => 'More than '.Tags\maxNumber().' tags given.',
+    'CANNOT_PASSWORD_PROTECT' => 'A password-authenticated'
+        .' session is required to password-protect the note.',
 ]);
