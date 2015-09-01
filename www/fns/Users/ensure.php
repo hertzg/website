@@ -82,6 +82,7 @@ function ensure ($mysqli) {
         'num_new_notifications' => ['type' => 'bigint(20) unsigned'],
         'num_notes' => ['type' => 'bigint(20) unsigned'],
         'num_notifications' => ['type' => 'bigint(20) unsigned'],
+        'num_password_protected_notes' => ['type' => 'bigint(20) unsigned'],
         'num_places' => ['type' => 'bigint(20) unsigned'],
         'num_received_bookmarks' => ['type' => 'bigint(20) unsigned'],
         'num_received_contacts' => ['type' => 'bigint(20) unsigned'],

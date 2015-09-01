@@ -19,6 +19,7 @@ include_once '../fns/DeletedItems/countOnUser.php';
 include_once '../fns/Events/countOnUser.php';
 include_once '../fns/Folders/countOnUser.php';
 include_once '../fns/Notes/countOnUser.php';
+include_once '../fns/Notes/countPasswordProtectedOnUser.php';
 include_once '../fns/Notifications/countOnUser.php';
 include_once '../fns/Places/countOnUser.php';
 include_once '../fns/ReceivedBookmarks/countArchivedOnReceiver.php';
@@ -72,6 +73,8 @@ foreach ($users as $user) {
     $num_folders = Folders\countOnUser($mysqli, $id_users);
     $num_notes = Notes\countOnUser($mysqli, $id_users);
     $num_notifications = Notifications\countOnUser($mysqli, $id_users);
+    $num_password_protected_notes = Notes\countPasswordProtectedOnUser(
+        $mysqli, $id_users);
     $num_places = Places\countOnUser($mysqli, $id_users);
     $num_received_bookmarks = ReceivedBookmarks\countOnReceiver(
         $mysqli, $id_users);
@@ -97,10 +100,11 @@ foreach ($users as $user) {
         $num_archived_received_notes, $num_archived_received_places,
         $num_archived_received_tasks, $num_bar_charts, $num_bookmarks,
         $num_channels, $num_connections, $num_contacts, $num_deleted_items,
-        $num_events, $num_folders, $num_notes, $num_notifications, $num_places,
-        $num_received_bookmarks, $num_received_contacts, $num_received_files,
-        $num_received_folders, $num_received_notes, $num_received_places,
-        $num_received_tasks, $num_schedules, $num_subscribed_channels,
+        $num_events, $num_folders, $num_notes, $num_notifications,
+        $num_password_protected_notes, $num_places, $num_received_bookmarks,
+        $num_received_contacts, $num_received_files, $num_received_folders,
+        $num_received_notes, $num_received_places, $num_received_tasks,
+        $num_schedules, $num_subscribed_channels,
         $num_tasks, $num_tokens, $num_wallets);
 
 }

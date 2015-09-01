@@ -7,6 +7,7 @@ function edit ($mysqli, $note, $text, $tags,
     $encryption_key, $updateApiKey = null) {
 
     $id = $note->id;
+    $id_users = $note->id_users;
     $fnsDir = __DIR__.'/../..';
 
     include_once "$fnsDir/Notes/maxLengths.php";
@@ -38,10 +39,18 @@ function edit ($mysqli, $note, $text, $tags,
 
     if ($tag_names) {
         include_once "$fnsDir/NoteTags/add.php";
-        \NoteTags\add($mysqli, $note->id_users, $id, $tag_names,
+        \NoteTags\add($mysqli, $id_users, $id, $tag_names,
             $text, $encrypted_text, $encrypted_text_iv, $title,
             $encrypted_title, $encrypted_title_iv, $tags,
             $encrypt_in_listings, $password_protect);
+    }
+
+    if ($note->password_protect && !$password_protect) {
+        include_once __DIR__.'/addNumber.php';
+        addNumber($mysqli, $id_users, 0, -1);
+    } else if (!$note->password_protect && $password_protect) {
+        include_once __DIR__.'/addNumber.php';
+        addNumber($mysqli, $id_users, 0, 1);
     }
 
 }

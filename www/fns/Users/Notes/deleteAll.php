@@ -25,7 +25,8 @@ function deleteAll ($mysqli, $user, $apiKey = null) {
     include_once "$fnsDir/NoteTags/deleteOnUser.php";
     \NoteTags\deleteOnUser($mysqli, $id_users);
 
-    $sql = "update users set num_notes = 0 where id_users = $id_users";
+    $sql = 'update users set num_notes = 0,'
+        ." num_password_protected_notes = 0 where id_users = $id_users";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
 }
