@@ -32,6 +32,16 @@ unset(
     $_SESSION['sign-in/values']
 );
 
+if ($user->num_password_protected_notes) {
+    include_once '../fns/Page/warnings.php';
+    $warnings = Page\warnings([
+        'Your password-protected notes will'
+        .' no longer be accessible with the new password.',
+    ]);
+} else {
+    $warnings = '';
+}
+
 include_once '../fns/Form/button.php';
 include_once '../fns/Form/hidden.php';
 include_once '../fns/Form/label.php';
@@ -39,7 +49,6 @@ include_once '../fns/Form/notes.php';
 include_once '../fns/Form/password.php';
 include_once '../fns/Page/sessionErrors.php';
 include_once '../fns/Page/tabs.php';
-include_once '../fns/Page/warnings.php';
 $content = Page\tabs(
     [
         [
@@ -49,10 +58,7 @@ $content = Page\tabs(
     ],
     'Reset Password',
     Page\sessionErrors('reset-password/errors')
-    .Page\warnings([
-        'If you have password-protected notes they will'
-        .' no longer be accessible with the new password.',
-    ])
+    .$warnings
     .'<form action="submit.php" method="post">'
         .Form\label('Username', $user->username)
         .'<div class="hr"></div>'
