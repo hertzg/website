@@ -9,6 +9,7 @@ else $values = ['password' => ''];
 
 $fnsDir = '../../../fns';
 
+include_once "$fnsDir/phishing_warning.php";
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/password.php";
 include_once "$fnsDir/ItemList/escapedPageQuery.php";
@@ -36,6 +37,7 @@ $content = Page\tabs(
         ])
         .'<div class="hr"></div>'
         .Form\button('Password-protect Note')
+        .phishing_warning()
         .ItemList\pageHiddenInputs()
     .'</form>'
 );
