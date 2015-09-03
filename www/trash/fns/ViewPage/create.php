@@ -41,7 +41,7 @@ function create ($deletedItem, $user, &$title, &$head, &$scripts) {
     } elseif ($type == 'event') {
         include_once __DIR__.'/renderEvent.php';
         renderEvent($data, $items);
-    } elseif ($type == 'note' || $type == 'receivedNote') {
+    } elseif ($type == 'note') {
         include_once __DIR__.'/renderNote.php';
         renderNote($data, $items, $infoText);
     } elseif ($type == 'place' || $type == 'receivedPlace') {
@@ -53,6 +53,9 @@ function create ($deletedItem, $user, &$title, &$head, &$scripts) {
     } elseif ($type == 'folder' || $type == 'receivedFolder') {
         include_once __DIR__.'/renderFolder.php';
         renderFolder($data, $items);
+    } elseif ($type == 'receivedNote') {
+        include_once __DIR__.'/renderReceivedNote.php';
+        renderReceivedNote($data, $items, $infoText);
     } elseif ($type == 'task' || $type == 'receivedTask') {
         include_once __DIR__.'/renderTask.php';
         renderTask($data, $user, $items, $infoText);
