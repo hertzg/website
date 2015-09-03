@@ -12,11 +12,13 @@ $fnsDir = '../../fns';
 
 include_once "$fnsDir/phishing_warning.php";
 include_once "$fnsDir/Form/button.php";
+include_once "$fnsDir/Form/notes.php";
 include_once "$fnsDir/Form/password.php";
 include_once "$fnsDir/ItemList/itemHiddenInputs.php";
 include_once "$fnsDir/ItemList/itemQuery.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/tabs.php";
+include_once "$fnsDir/Session/EncryptionKey/minutes.php";
 $content = Page\tabs(
     [
         [
@@ -32,6 +34,8 @@ $content = Page\tabs(
             'required' => true,
             'autofocus' => true,
         ])
+        .Form\notes(['The authentication will last for '
+            .Session\EncryptionKey\minutes().' minutes.'])
         .'<div class="hr"></div>'
         .Form\button('Unlock Note')
         .phishing_warning()
