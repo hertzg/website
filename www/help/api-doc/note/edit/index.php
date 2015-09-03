@@ -17,6 +17,12 @@ note_method_page('edit', [
         'description' => 'Whether the note should be encrypted in listings.',
     ],
     [
+        'name' => 'password_protect',
+        'description' => 'Whether the note should be'
+            .' password-protected. This option is available'
+            .' with a password-authenticated session only.',
+    ],
+    [
         'name' => 'tags',
         'description' => 'A space-separated list of tags.',
     ],
@@ -24,4 +30,6 @@ note_method_page('edit', [
     'NOTE_NOT_FOUND' => "A note with the ID doesn't exist.",
     'ENTER_TEXT' => 'The new text is empty.',
     'TOO_MANY_TAGS' => 'More than '.Tags\maxNumber().' tags given.',
+    'CANNOT_PASSWORD_PROTECT' => 'A password-authenticated'
+        .' session is required to password-protect the note.',
 ]);

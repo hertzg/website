@@ -16,7 +16,7 @@ function delete ($mysqli, $note, $apiKey = null) {
     }
 
     include_once __DIR__.'/addNumber.php';
-    addNumber($mysqli, $note->id_users, -1);
+    addNumber($mysqli, $note->id_users, -1, $note->password_protect ? -1 : 0);
 
     include_once __DIR__.'/../DeletedItems/addNote.php';
     \Users\DeletedItems\addNote($mysqli, $note, $apiKey);

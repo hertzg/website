@@ -3,9 +3,8 @@
 function require_admin () {
 
     $invalid = function () {
-        header('HTTP/1.0 401 Unauthorized');
-        header('WWW-Authenticate: Basic realm="Zvini Admin"');
-        exit;
+        include_once __DIR__.'/../../fns/ErrorPage/unauthorized.php';
+        ErrorPage\unauthorized('Basic realm="Zvini Admin"');
     };
 
     if (!array_key_exists('PHP_AUTH_USER', $_SERVER)) $invalid();

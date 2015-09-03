@@ -38,6 +38,6 @@ function addDeleted ($mysqli, $id_users, $data) {
     }
 
     include_once __DIR__.'/addNumber.php';
-    addNumber($mysqli, $id_users, 1);
+    addNumber($mysqli, $id_users, 1, $password_protect ? 1 : 0);
 
 }
