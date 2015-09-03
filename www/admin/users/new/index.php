@@ -69,5 +69,5 @@ $content = Page\tabs(
     .'</form>'
 );
 
-include_once "$fnsDir/echo_guest_page.php";
-echo_guest_page('New User', $content, '../../../');
+include_once '../../fns/echo_admin_page.php';
+echo_admin_page('New User', $content, '../../');

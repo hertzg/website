@@ -6,7 +6,6 @@ list($user, $id) = require_user($mysqli);
 
 unset($_SESSION['admin/users/view/messages']);
 
-$base = '../../../';
 $fnsDir = '../../../fns';
 
 include_once '../fns/create_view_page.php';
@@ -16,9 +15,9 @@ $content =
     .Page\confirmDialog('Are you sure you want to delete the user?',
         'Yes, delete user', "submit.php?id=$id", "../view/?id=$id");
 
+include_once '../../fns/echo_admin_page.php';
 include_once "$fnsDir/compressed_css_link.php";
-include_once "$fnsDir/echo_guest_page.php";
-echo_guest_page("Delete User #$id?", $content, $base, [
-    'head' => compressed_css_link('confirmDialog', $base),
+echo_admin_page("Delete User #$id?", $content, '../../', [
+    'head' => compressed_css_link('confirmDialog', '../../../'),
     'scripts' => $scripts,
 ]);

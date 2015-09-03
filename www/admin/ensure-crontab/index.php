@@ -30,5 +30,5 @@ $content = Page\tabs(
     $status.Page\phpCode(join("\n", get_crontab_lines()))
 );
 
-include_once "$fnsDir/echo_guest_page.php";
-echo_guest_page('Administration', $content, '../../');
+include_once '../fns/echo_admin_page.php';
+echo_admin_page('Administration', $content, '../');

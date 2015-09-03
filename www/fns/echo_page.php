@@ -44,7 +44,11 @@ function echo_page ($user, $title, $content, $base, $options = []) {
         $timezone = 0;
     }
 
-    $topLinkHref = $base === '' ? './' : $base;
+    if (array_key_exists('logo_href', $options)) {
+        $logo_href = $options['logo_href'];
+    } else {
+        $logo_href = $base === '' ? './' : $base;
+    }
 
     include_once __DIR__.'/get_revision.php';
     $logoSrc = "{$base}theme/color/$theme_color/images/zvini.svg?"
@@ -53,7 +57,7 @@ function echo_page ($user, $title, $content, $base, $options = []) {
     include_once __DIR__.'/compressed_js_script.php';
     $body =
         '<div id="tbar">'
-            ."<a class=\"topLink logoLink\" href=\"$topLinkHref\">"
+            ."<a class=\"topLink logoLink\" href=\"$logo_href\">"
                 ."<img src=\"$logoSrc\" alt=\"Zvini\""
                 .' width="68" height="32" class="logoLink-img" />'
                 .$notifications

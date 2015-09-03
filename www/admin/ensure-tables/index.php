@@ -20,5 +20,5 @@ $content = Page\tabs(
     Page\phpCode($output)
 );
 
-include_once '../../fns/echo_guest_page.php';
-echo_guest_page('Ensure Tables', $content, '../../');
+include_once '../fns/echo_admin_page.php';
+echo_admin_page('Ensure Tables', $content, '../');

@@ -68,5 +68,5 @@ $content = Page\tabs(
     .create_panel('Options', $editLink)
 );
 
-include_once "$fnsDir/echo_guest_page.php";
-echo_guest_page('General Information', $content, '../../');
+include_once '../fns/echo_admin_page.php';
+echo_admin_page('General Information', $content, '../');

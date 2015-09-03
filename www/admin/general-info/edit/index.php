@@ -3,7 +3,6 @@
 include_once '../../fns/require_admin.php';
 require_admin();
 
-$base = '../../../';
 $fnsDir = '../../../fns';
 
 unset($_SESSION['admin/general-info/messages']);
@@ -78,7 +77,7 @@ $content =
             .Form\button('Save Changes')
         .'</form>'
     )
-    .compressed_js_script('formCheckbox', $base);
+    .compressed_js_script('formCheckbox', '../../../');
 
-include_once "$fnsDir/echo_guest_page.php";
-echo_guest_page('Edit General Information', $content, $base);
+include_once '../../fns/echo_admin_page.php';
+echo_admin_page('Edit General Information', $content, '../../');

@@ -75,7 +75,7 @@ $content = Page\tabs(
     Page\phpCode($content)
 );
 
-include_once '../../fns/echo_guest_page.php';
-echo_guest_page('Check Installation', $content, '../../', [
+include_once '../fns/echo_admin_page.php';
+echo_admin_page('Check Installation', $content, '../', [
     'head' => '<link rel="stylesheet" type="text/css" href="index.css" />',
 ]);

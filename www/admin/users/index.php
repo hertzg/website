@@ -47,5 +47,5 @@ $content = Page\tabs(
     Page\newItemButton('new/', 'User')
 );
 
-include_once "$fnsDir/echo_guest_page.php";
-echo_guest_page('Users', $content, '../../');
+include_once '../fns/echo_admin_page.php';
+echo_admin_page('Users', $content, '../');

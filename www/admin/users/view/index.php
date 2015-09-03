@@ -16,9 +16,9 @@ $content = create_view_page($user, $scripts)
     .'</script>'
     .'<script type="text/javascript" src="index.js"></script>';
 
+include_once '../../fns/echo_admin_page.php';
 include_once "$fnsDir/compressed_css_link.php";
-include_once "$fnsDir/echo_guest_page.php";
-echo_guest_page("User #$id", $content, $base, [
+echo_admin_page("User #$id", $content, '../../', [
     'head' => compressed_css_link('confirmDialog', $base),
     'scripts' => $scripts,
 ]);

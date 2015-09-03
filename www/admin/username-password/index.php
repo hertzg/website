@@ -55,5 +55,5 @@ $content = Page\tabs(
     .'</form>'
 );
 
-include_once '../../fns/echo_guest_page.php';
-echo_guest_page('Set New Username/Password', $content, '../../');
+include_once '../fns/echo_admin_page.php';
+echo_admin_page('Set New Username/Password', $content, '../');

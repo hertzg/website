@@ -56,5 +56,5 @@ $content = Page\tabs(
     Page\newItemButton('new/', 'Invitation')
 );
 
-include_once "$fnsDir/echo_guest_page.php";
-echo_guest_page('Invitations', $content, '../../');
+include_once '../fns/echo_admin_page.php';
+echo_admin_page('Invitations', $content, '../');
