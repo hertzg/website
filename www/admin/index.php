@@ -88,5 +88,7 @@ $content = Page\tabs(
     .Page\imageArrowLink('Users', 'users/', 'users', ['id' => 'users'])
 );
 
-include_once 'fns/echo_admin_page.php';
-echo_admin_page('Administration', $content, '');
+include_once '../fns/echo_page.php';
+echo_page(null, 'Administration', $content, '../', [
+    'logo_href' => './',
+]);
