@@ -23,7 +23,7 @@ function create_page ($mysqli, $user, $place, $base = '') {
     render_prev_button($offset, $limit, $total, $items, $params);
 
     include_once __DIR__.'/render_points.php';
-    render_points($points, $items, $base);
+    render_points($points, $items, $base, $base);
 
     include_once __DIR__.'/render_next_button.php';
     render_next_button($offset, $limit, $total, $items, $params);

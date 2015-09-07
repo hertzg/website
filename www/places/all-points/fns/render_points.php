@@ -1,6 +1,6 @@
 <?php
 
-function render_points ($points, &$items, $base = '') {
+function render_points ($points, &$items, $base) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
@@ -12,7 +12,7 @@ function render_points ($points, &$items, $base = '') {
         $escapedItemQuery = ItemList\escapedItemQuery($id);
 
         $items[]= Page\imageArrowLink("$point->latitude $point->longitude",
-            "view/$escapedItemQuery", 'point', ['id' => $id]);
+            "{$base}view/$escapedItemQuery", 'point', ['id' => $id]);
 
     }
 
