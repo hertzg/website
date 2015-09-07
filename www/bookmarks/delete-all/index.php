@@ -32,7 +32,7 @@ $content .= Page\confirmDialog(
     'submit.php', ItemList\listHref());
 
 include_once "$fnsDir/compressed_css_link.php";
-include_once "$fnsDir/echo_page.php";
-echo_page($user, 'Delete All Bookmarks?', $content, $base, [
+include_once "$fnsDir/echo_user_page.php";
+echo_user_page($user, 'Delete All Bookmarks?', $content, $base, [
     'head' => compressed_css_link('confirmDialog', $base),
 ]);

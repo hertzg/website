@@ -27,5 +27,6 @@ if ($user->num_tokens) {
 
 unset($_SESSION['account/messages']);
 
-include_once "$fnsDir/echo_page.php";
-echo_page($user, 'Remembered Sessions', $content, $base, ['head' => $head]);
+include_once "$fnsDir/echo_user_page.php";
+echo_user_page($user, 'Remembered Sessions',
+    $content, $base, ['head' => $head]);

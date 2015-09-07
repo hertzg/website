@@ -59,5 +59,5 @@ $content = Page\tabs(
     .create_options_panel()
 );
 
-include_once "$fnsDir/echo_page.php";
-echo_page($user, 'Other Channels', $content, $base);
+include_once "$fnsDir/echo_user_page.php";
+echo_user_page($user, 'Other Channels', $content, $base);

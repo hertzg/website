@@ -34,5 +34,5 @@ $content = Page\tabs(
     .Page\imageLink('Move to the Bottom', $bottomHref, 'move-to-bottom')
 );
 
-include_once "$fnsDir/echo_page.php";
-echo_page($user, "Move \"$title\"", $content, '../../../../');
+include_once "$fnsDir/echo_user_page.php";
+echo_user_page($user, "Move \"$title\"", $content, '../../../../');

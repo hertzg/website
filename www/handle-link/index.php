@@ -75,5 +75,5 @@ $content = Page\tabs(
     $errorsHtml.$text_html.join('<div class="hr"></div>', $items)
 );
 
-include_once "$fnsDir/echo_page.php";
-echo_page($user, 'Handle Link', $content, $base);
+include_once "$fnsDir/echo_user_page.php";
+echo_user_page($user, 'Handle Link', $content, $base);

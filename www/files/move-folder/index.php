@@ -67,5 +67,5 @@ unset(
 include_once 'fns/create_content.php';
 $content = create_content($mysqli, $folder, $parentFolder, $items);
 
-include_once "$fnsDir/echo_page.php";
-echo_page($user, "Move Folder #$id_folders", $content, '../../');
+include_once "$fnsDir/echo_user_page.php";
+echo_user_page($user, "Move Folder #$id_folders", $content, '../../');

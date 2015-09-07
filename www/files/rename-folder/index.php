@@ -47,5 +47,5 @@ $content = Page\tabs(
     .'</form>'
 );
 
-include_once '../../fns/echo_page.php';
-echo_page($user, "Rename Folder #$id_folders", $content, '../../');
+include_once '../../fns/echo_user_page.php';
+echo_user_page($user, "Rename Folder #$id_folders", $content, '../../');

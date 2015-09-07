@@ -25,8 +25,8 @@ $content =
     .'<script type="text/javascript" defer="defer" src="index.js?1"></script>';
 
 include_once "$fnsDir/compressed_css_link.php";
-include_once "$fnsDir/echo_page.php";
-echo_page($user, "API Key #$id", $content, $base, [
+include_once "$fnsDir/echo_user_page.php";
+echo_user_page($user, "API Key #$id", $content, $base, [
     'head' => compressed_css_link('confirmDialog', $base),
     'scripts' => $scripts,
 ]);

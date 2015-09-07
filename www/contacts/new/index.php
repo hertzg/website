@@ -52,5 +52,5 @@ unset(
 include_once 'fns/create_content.php';
 $content = create_content($values, $scripts);
 
-include_once "$fnsDir/echo_page.php";
-echo_page($user, 'New Contact', $content, $base, ['scripts' => $scripts]);
+include_once "$fnsDir/echo_user_page.php";
+echo_user_page($user, 'New Contact', $content, $base, ['scripts' => $scripts]);

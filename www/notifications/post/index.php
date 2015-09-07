@@ -57,5 +57,5 @@ $content = Page\tabs(
     .'</form>'
 );
 
-include_once "$fnsDir/echo_page.php";
-echo_page($user, 'Post a Notification', $content, '../../');
+include_once "$fnsDir/echo_user_page.php";
+echo_user_page($user, 'Post a Notification', $content, '../../');

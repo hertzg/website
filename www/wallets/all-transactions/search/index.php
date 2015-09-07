@@ -18,7 +18,7 @@ $content =
     .'<script type="text/javascript" defer="defer" src="../index.js?1">'
     .'</script>';
 
-include_once "$fnsDir/echo_page.php";
-echo_page($user, "All Transactions in Wallet #$id", $content, $base, [
+include_once "$fnsDir/echo_user_page.php";
+echo_user_page($user, "All Transactions in Wallet #$id", $content, $base, [
     'scripts' => $scripts,
 ]);

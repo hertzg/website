@@ -53,5 +53,5 @@ $content =
     .compressed_js_script('flexTextarea', $base)
     .compressed_js_script('formCheckbox', $base);
 
-include_once '../../fns/echo_page.php';
-echo_page($user, "Edit Note #$id", $content, $base);
+include_once '../../fns/echo_user_page.php';
+echo_user_page($user, "Edit Note #$id", $content, $base);

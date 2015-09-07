@@ -50,5 +50,5 @@ $content = Page\tabs(
     .create_panel('File Options', $downloadLink)
 );
 
-include_once "$fnsDir/echo_page.php";
-echo_page($user, $title, $content, $base);
+include_once "$fnsDir/echo_user_page.php";
+echo_user_page($user, $title, $content, $base);

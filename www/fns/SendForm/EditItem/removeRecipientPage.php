@@ -24,7 +24,7 @@ function removeRecipientPage ($mysqli,
     include_once __DIR__.'/../recipientsPanels.php';
     include_once "$fnsDir/Page/confirmDialog.php";
     include_once "$fnsDir/Page/tabs.php";
-    include_once "$fnsDir/Page/warnings.php";
+    include_once "$fnsDir/Page/text.php";
     $content =
         \Page\tabs(
             [
@@ -34,7 +34,7 @@ function removeRecipientPage ($mysqli,
                 ],
             ],
             'Send',
-            \Page\warnings(["Send the edited $text to:"])
+            \Page\text("Send the edited $text to:")
             .\SendForm\recipientsPanels($recipients,
                 $contacts, $itemParams, '../')
         )
@@ -43,8 +43,8 @@ function removeRecipientPage ($mysqli,
             'Yes, remove recipient', $yesHref, "../$escapedItemQuery");
 
     include_once "$fnsDir/compressed_css_link.php";
-    include_once "$fnsDir/echo_page.php";
-    echo_page($user, 'Remove Recipient?', $content, $base, [
+    include_once "$fnsDir/echo_user_page.php";
+    echo_user_page($user, 'Remove Recipient?', $content, $base, [
         'head' => compressed_css_link('confirmDialog', $base),
     ]);
 

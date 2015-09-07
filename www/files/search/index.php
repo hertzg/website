@@ -76,5 +76,5 @@ $content =
     )
     .compressed_js_script('searchForm', $base);
 
-include_once "$fnsDir/echo_page.php";
-echo_page($user, 'Files', $content, $base);
+include_once "$fnsDir/echo_user_page.php";
+echo_user_page($user, 'Files', $content, $base);

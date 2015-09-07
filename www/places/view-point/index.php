@@ -21,7 +21,7 @@ $content =
     .'<script type="text/javascript" defer="defer" src="../view-point.js">'
     .'</script>';
 
-include_once "$fnsDir/echo_page.php";
-echo_page($user, "Point #$id", $content, $base, [
+include_once "$fnsDir/echo_user_page.php";
+echo_user_page($user, "Point #$id", $content, $base, [
     'scripts' => $scripts,
 ]);

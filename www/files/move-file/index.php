@@ -83,5 +83,5 @@ $content = Page\tabs(
     .join('<div class="hr"></div>', $items)
 );
 
-include_once "$fnsDir/echo_page.php";
-echo_page($user, "Move File #$id", $content, '../../');
+include_once "$fnsDir/echo_user_page.php";
+echo_user_page($user, "Move File #$id", $content, '../../');

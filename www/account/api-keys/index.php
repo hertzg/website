@@ -83,7 +83,7 @@ if ($dateAgoScript) {
     $scripts = '';
 }
 
-include_once "$fnsDir/echo_page.php";
-echo_page($user, 'API Keys', $content, $base, [
+include_once "$fnsDir/echo_user_page.php";
+echo_user_page($user, 'API Keys', $content, $base, [
     'scripts' => $scripts,
 ]);

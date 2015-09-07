@@ -61,6 +61,6 @@ $content = Page\tabs(
     .'</form>'
 );
 
-include_once "$fnsDir/echo_page.php";
-$title = "Edit and Import Received Task #$id";
-echo_page($user, $title, $content, $base, ['scripts' => $scripts]);
+include_once "$fnsDir/echo_user_page.php";
+echo_user_page($user, "Edit and Import Received Task #$id",
+    $content, $base, ['scripts' => $scripts]);

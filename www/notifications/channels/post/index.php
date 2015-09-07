@@ -39,5 +39,5 @@ $content =
     )
     .compressed_js_script('flexTextarea', $base);
 
-include_once "$fnsDir/echo_page.php";
-echo_page($user, "Channel #$id", $content, $base);
+include_once "$fnsDir/echo_user_page.php";
+echo_user_page($user, "Channel #$id", $content, $base);

@@ -46,5 +46,5 @@ $content =
     .create_geolocation_panel($base, (float)$place->latitude,
         (float)$place->longitude, (float)$place->altitude);
 
-include_once "$fnsDir/echo_page.php";
-echo_page($user, "Add New Point to Place #$place->id", $content, $base);
+include_once "$fnsDir/echo_user_page.php";
+echo_user_page($user, "Add New Point to Place #$place->id", $content, $base);

@@ -73,7 +73,7 @@ $content = Page\tabs(
 include_once "$fnsDir/SendForm/removeDialog.php";
 SendForm\removeDialog($recipients, $base, $content, $head);
 
-include_once "$fnsDir/echo_page.php";
-echo_page($user, 'Send Renamed File', $content, $base, [
+include_once "$fnsDir/echo_user_page.php";
+echo_user_page($user, 'Send Renamed File', $content, $base, [
     'head' => $head,
 ]);

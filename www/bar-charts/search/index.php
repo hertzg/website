@@ -16,5 +16,5 @@ if ($user->num_bar_charts) {
     $head = '';
 }
 
-include_once "$fnsDir/echo_page.php";
-echo_page($user, 'Bar Charts', $content, '../../', ['head' => $head]);
+include_once "$fnsDir/echo_user_page.php";
+echo_user_page($user, 'Bar Charts', $content, '../../', ['head' => $head]);

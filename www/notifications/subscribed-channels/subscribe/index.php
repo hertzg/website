@@ -1,8 +1,9 @@
 <?php
 
 $base = '../../../';
+$fnsDir = '../../../fns';
 
-include_once '../../../fns/require_user.php';
+include_once "$fnsDir/require_user.php";
 $user = require_user($base);
 
 unset($_SESSION['notifications/subscribed-channels/messages']);
@@ -11,11 +12,11 @@ $key = 'notifications/subscribed-channels/subscribe/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else $values = ['channel_name' => ''];
 
-include_once '../../../fns/ChannelName/maxLength.php';
-include_once '../../../fns/Form/button.php';
-include_once '../../../fns/Form/textfield.php';
-include_once '../../../fns/Page/sessionErrors.php';
-include_once '../../../fns/Page/tabs.php';
+include_once "$fnsDir/ChannelName/maxLength.php";
+include_once "$fnsDir/Form/button.php";
+include_once "$fnsDir/Form/textfield.php";
+include_once "$fnsDir/Page/sessionErrors.php";
+include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
     [
         [
@@ -37,5 +38,5 @@ $content = Page\tabs(
     .'</form>'
 );
 
-include_once '../../../fns/echo_page.php';
-echo_page($user, 'Other Channels', $content, $base);
+include_once "$fnsDir/echo_user_page.php";
+echo_user_page($user, 'Other Channels', $content, $base);

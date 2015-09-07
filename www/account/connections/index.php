@@ -56,5 +56,5 @@ $content = Page\tabs(
     Page\newItemButton('new/', 'Connection')
 );
 
-include_once "$fnsDir/echo_page.php";
-echo echo_page($user, 'Connections', $content, $base);
+include_once "$fnsDir/echo_user_page.php";
+echo echo_user_page($user, 'Connections', $content, $base);

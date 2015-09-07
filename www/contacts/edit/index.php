@@ -42,7 +42,7 @@ unset($_SESSION['contacts/view/messages']);
 include_once 'fns/create_content.php';
 $content = create_content($id, $values, $scripts);
 
-include_once '../../fns/echo_page.php';
-echo_page($user, "Edit Contact #$id", $content, '../../', [
+include_once '../../fns/echo_user_page.php';
+echo_user_page($user, "Edit Contact #$id", $content, '../../', [
     'scripts' => $scripts,
 ]);

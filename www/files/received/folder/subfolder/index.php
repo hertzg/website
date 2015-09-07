@@ -62,5 +62,5 @@ $content = Page\tabs(
     .join('<div class="hr"></div>', $items)
 );
 
-include_once "$fnsDir/echo_page.php";
-echo_page($user, $title, $content, '../../../../');
+include_once "$fnsDir/echo_user_page.php";
+echo_user_page($user, $title, $content, '../../../../');

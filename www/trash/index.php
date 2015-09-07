@@ -28,8 +28,8 @@ if ($user->num_deleted_items) {
 }
 
 include_once "$fnsDir/compressed_css_link.php";
-include_once "$fnsDir/echo_page.php";
-echo_page($user, 'Trash', $content, $base, [
+include_once "$fnsDir/echo_user_page.php";
+echo_user_page($user, 'Trash', $content, $base, [
     'head' => $head,
     'scripts' => $scripts,
 ]);

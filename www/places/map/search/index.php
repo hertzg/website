@@ -35,7 +35,7 @@ $content = \Page\tabs(
     create_new_item_button('Place', '../../')
 );
 
-include_once "$fnsDir/echo_page.php";
-echo_page($user, 'Places Map', $content, '../../../', [
+include_once "$fnsDir/echo_user_page.php";
+echo_user_page($user, 'Places Map', $content, '../../../', [
     'head' => '<link rel="stylesheet" type="text/css" href="../index.css?1" />',
 ]);

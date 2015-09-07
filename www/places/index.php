@@ -17,5 +17,5 @@ if ($user->num_places) {
     $head = '';
 }
 
-include_once "$fnsDir/echo_page.php";
-echo_page($user, 'Places', $content, $base, ['head' => $head]);
+include_once "$fnsDir/echo_user_page.php";
+echo_user_page($user, 'Places', $content, $base, ['head' => $head]);

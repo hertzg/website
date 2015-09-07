@@ -26,8 +26,8 @@ $head .=
     .'<meta http-equiv="Refresh"'
     ." content=\"$timeout; url=submit.php?auto=1\" />";
 
-include_once '../fns/echo_page.php';
-echo_page($user, 'Sign Out?', $content, $base, [
+include_once '../fns/echo_user_page.php';
+echo_user_page($user, 'Sign Out?', $content, $base, [
     'head' => $head,
     'scripts' => $scripts,
 ]);

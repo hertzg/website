@@ -32,8 +32,8 @@ $content .= Page\confirmDialog('Are you sure you want to delete all the events?'
     'submit.php', ItemList\listHref());
 
 include_once "$fnsDir/compressed_css_link.php";
-include_once "$fnsDir/echo_page.php";
-echo_page($user, 'Delete All Events?', $content, $base, [
+include_once "$fnsDir/echo_user_page.php";
+echo_user_page($user, 'Delete All Events?', $content, $base, [
     'head' => compressed_css_link('confirmDialog', $base),
     'scripts' => $scripts,
 ]);

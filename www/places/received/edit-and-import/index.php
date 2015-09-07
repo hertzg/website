@@ -48,6 +48,6 @@ $content =
     .compressed_js_script('flexTextarea', $base)
     .compressed_js_script('formCheckbox', $base);
 
-include_once "$fnsDir/echo_page.php";
-$title = "Edit and Import Received Place #$id";
-echo_page($user, $title, $content, $base);
+include_once "$fnsDir/echo_user_page.php";
+echo_user_page($user, "Edit and Import Received Place #$id",
+    $content, $base);

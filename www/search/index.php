@@ -109,5 +109,6 @@ $content =
     Page\emptyTabs(join('<div class="hr"></div>', $items))
     .compressed_js_script('searchForm', $base);
 
-include_once "$fnsDir/echo_page.php";
-echo_page($user, 'Search: '.htmlspecialchars($keyword), $content, $base);
+include_once "$fnsDir/echo_user_page.php";
+echo_user_page($user, 'Search: '.htmlspecialchars($keyword),
+    $content, $base);

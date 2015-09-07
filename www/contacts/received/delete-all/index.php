@@ -24,8 +24,8 @@ $content =
         'Yes, delete all contacts', 'submit.php', $noHref);
 
 include_once "$fnsDir/compressed_css_link.php";
-include_once "$fnsDir/echo_page.php";
-echo_page($user, 'Delete All Received Contacts?', $content, $base, [
+include_once "$fnsDir/echo_user_page.php";
+echo_user_page($user, 'Delete All Received Contacts?', $content, $base, [
     'head' => compressed_css_link('confirmDialog', $base),
     'scripts' => $scripts,
 ]);

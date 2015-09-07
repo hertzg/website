@@ -24,8 +24,8 @@ if ($user->num_notifications) {
     $head = '';
 }
 
-include_once "$fnsDir/echo_page.php";
-echo_page($user, 'Notifications', $content, $base, [
+include_once "$fnsDir/echo_user_page.php";
+echo_user_page($user, 'Notifications', $content, $base, [
     'head' => $head,
     'scripts' => $scripts,
 ]);

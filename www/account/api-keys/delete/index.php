@@ -17,8 +17,8 @@ $content =
         'Yes, delete API key', "submit.php?id=$id", "../view/?id=$id");
 
 include_once "$fnsDir/compressed_css_link.php";
-include_once "$fnsDir/echo_page.php";
-echo_page($user, "Delete API Key #$id?", $content, $base, [
+include_once "$fnsDir/echo_user_page.php";
+echo_user_page($user, "Delete API Key #$id?", $content, $base, [
     'head' => compressed_css_link('confirmDialog', $base),
     'scripts' => $scripts,
 ]);

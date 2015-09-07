@@ -67,7 +67,7 @@ $content = Page\tabs(
     join('<div class="hr"></div>', $items)
 );
 
-include_once "$fnsDir/echo_page.php";
-echo_page($user, 'Successful Signins', $content, $base, [
+include_once "$fnsDir/echo_user_page.php";
+echo_user_page($user, 'Successful Signins', $content, $base, [
     'scripts' => $scripts,
 ]);

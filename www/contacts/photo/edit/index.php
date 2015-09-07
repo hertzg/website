@@ -36,5 +36,5 @@ $content = Page\tabs(
     .'</form>'
 );
 
-include_once "$fnsDir/echo_page.php";
-echo_page($user, 'Edit Contact Photo', $content, '../../../');
+include_once "$fnsDir/echo_user_page.php";
+echo_user_page($user, 'Edit Contact Photo', $content, '../../../');

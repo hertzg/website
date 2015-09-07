@@ -17,5 +17,5 @@ if ($user->num_tasks) {
     $head = '';
 }
 
-include_once "$fnsDir/echo_page.php";
-echo_page($user, 'Tasks', $content, $base, ['head' => $head]);
+include_once "$fnsDir/echo_user_page.php";
+echo_user_page($user, 'Tasks', $content, $base, ['head' => $head]);

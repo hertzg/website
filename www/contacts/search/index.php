@@ -16,5 +16,5 @@ if ($user->num_contacts) {
     $head = '';
 }
 
-include_once "$fnsDir/echo_page.php";
-echo_page($user, 'Contacts', $content, '../../', ['head' => $head]);
+include_once "$fnsDir/echo_user_page.php";
+echo_user_page($user, 'Contacts', $content, '../../', ['head' => $head]);

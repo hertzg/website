@@ -35,5 +35,5 @@ $content = Page\tabs(
     .'</form>'
 );
 
-include_once "$fnsDir/echo_page.php";
-echo_page($user, "Edit Schedule #$id", $content, '../../../');
+include_once "$fnsDir/echo_user_page.php";
+echo_user_page($user, "Edit Schedule #$id", $content, '../../../');

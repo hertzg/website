@@ -37,6 +37,6 @@ $content = Page\tabs(
     .'</form>'
 );
 
-include_once "$fnsDir/echo_page.php";
-$title = "Edit and Import Received Bookmark #$id";
-echo_page($user, $title, $content, '../../../');
+include_once "$fnsDir/echo_user_page.php";
+echo_user_page($user, "Edit and Import Received Bookmark #$id",
+    $content, '../../../');

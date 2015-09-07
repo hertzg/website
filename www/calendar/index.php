@@ -61,8 +61,8 @@ $content = create_content($mysqli, $user,
 
 include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/compressed_js_script.php";
-include_once "$fnsDir/echo_page.php";
-echo_page($user, 'Calendar', $content, $base, [
+include_once "$fnsDir/echo_user_page.php";
+echo_user_page($user, 'Calendar', $content, $base, [
     'head' =>
         '<link rel="stylesheet" type="text/css" href="index.css?11" />'
         .'<link rel="stylesheet" type="text/css"'
