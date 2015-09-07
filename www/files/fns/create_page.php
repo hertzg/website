@@ -26,7 +26,7 @@ function create_page ($mysqli, $user, $folder, &$scripts, $base = '') {
         }
 
         include_once "$fnsDir/SearchForm/create.php";
-        $items[] = SearchForm\create('search/', $formContent);
+        $items[] = SearchForm\create("{$base}search/", $formContent);
 
         include_once "$fnsDir/compressed_js_script.php";
         $scripts = compressed_js_script('searchForm', "$base../");
