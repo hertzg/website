@@ -28,9 +28,7 @@ function viewContent ($bar, &$scripts, $base = '') {
     }
 
     include_once "$fnsDir/Page/infoText.php";
-    $content .=
-        '<div class="hr"></div>'
-        .\Page\infoText($infoText);
+    $content .= \Page\infoText($infoText);
 
     return $content;
 
