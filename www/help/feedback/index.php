@@ -45,5 +45,5 @@ $content =
     )
     .compressed_js_script('flexTextarea', $base);
 
-include_once "$fnsDir/echo_page.php";
-echo_page($user, 'Leave Feedback', $content, $base);
+include_once "$fnsDir/echo_public_page.php";
+echo_public_page($user, 'Leave Feedback', $content, $base);

@@ -58,5 +58,5 @@ $content =
     )
     .compressed_js_script('searchForm', $base);
 
-include_once "$fnsDir/echo_page.php";
-echo_page($user, 'API Documentation', $content, $base);
+include_once "$fnsDir/echo_public_page.php";
+echo_public_page($user, 'API Documentation', $content, $base);

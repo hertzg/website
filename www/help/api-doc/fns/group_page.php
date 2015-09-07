@@ -47,7 +47,7 @@ function group_page ($groupKey, $methods, $subgroups = null) {
 
     }
 
-    include_once "$fnsDir/echo_page.php";
-    echo_page($user, "$groupKey Namespace", $content, '../../../');
+    include_once "$fnsDir/echo_public_page.php";
+    echo_public_page($user, "$groupKey Namespace", $content, '../../../');
 
 }

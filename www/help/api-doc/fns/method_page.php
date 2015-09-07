@@ -46,7 +46,8 @@ function method_page ($groupName, $prefix,
         join('<div class="hr"></div>', $items)
     );
 
-    include_once "$fnsDir/echo_page.php";
-    echo_page($user, "$prefix/$methodName Method", $content, '../../../../');
+    include_once "$fnsDir/echo_public_page.php";
+    echo_public_page($user, "$prefix/$methodName Method",
+        $content, '../../../../');
 
 }

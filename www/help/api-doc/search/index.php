@@ -92,5 +92,5 @@ $content =
     create_content($items)
     .compressed_js_script('searchForm', $base);
 
-include_once "$fnsDir/echo_page.php";
-echo_page($user, 'Search API Documentation', $content, $base);
+include_once "$fnsDir/echo_public_page.php";
+echo_public_page($user, 'Search API Documentation', $content, $base);

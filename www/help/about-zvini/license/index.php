@@ -24,5 +24,6 @@ $content = Page\tabs(
     )
 );
 
-include_once "$fnsDir/echo_page.php";
-echo_page($user, 'GNU Affero General Public License', $content, '../../../');
+include_once "$fnsDir/echo_public_page.php";
+echo_public_page($user, 'GNU Affero General Public License',
+    $content, '../../../');

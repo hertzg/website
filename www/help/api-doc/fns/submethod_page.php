@@ -48,7 +48,8 @@ function submethod_page ($groupKey, $subgroupName,
         join('<div class="hr"></div>', $items)
     );
 
-    include_once "$fnsDir/echo_page.php";
-    echo_page($user, "$methodFullName Method", $content, '../../../../../');
+    include_once "$fnsDir/echo_public_page.php";
+    echo_public_page($user, "$methodFullName Method", $content,
+        '../../../../../');
 
 }

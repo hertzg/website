@@ -33,8 +33,8 @@ function subgroup_page ($groupKey, $subgroup, $subgroupKey, $methods) {
         .join('<div class="hr"></div>', $items)
     );
 
-    $title = "$groupKey/$subgroupKey Namespace";
-    include_once "$fnsDir/echo_page.php";
-    echo_page($user, $title, $content, '../../../../');
+    include_once "$fnsDir/echo_public_page.php";
+    echo_public_page($user, "$groupKey/$subgroupKey Namespace",
+        $content, '../../../../');
 
 }

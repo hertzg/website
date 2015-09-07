@@ -24,5 +24,5 @@ $content = Page\tabs(
     .'<script type="text/javascript" src="index.js?4" async="true"></script>'
 );
 
-include_once '../../fns/echo_page.php';
-echo_page($user, 'Help', $content, '../../');
+include_once '../../fns/echo_public_page.php';
+echo_public_page($user, 'Help', $content, '../../');

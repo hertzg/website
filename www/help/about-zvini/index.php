@@ -38,5 +38,5 @@ $content = Page\tabs(
     .\Form\label('Git version', $version)
 );
 
-include_once "$fnsDir/echo_page.php";
-echo_page($user, 'About Zvini', $content, '../../');
+include_once "$fnsDir/echo_public_page.php";
+echo_public_page($user, 'About Zvini', $content, '../../');

@@ -22,5 +22,5 @@ $content = Page\tabs(
     .Page\phpCode(get_code())
 );
 
-include_once "$fnsDir/echo_page.php";
-echo_page($user, 'PHP Example', $content, '../../../');
+include_once "$fnsDir/echo_public_page.php";
+echo_public_page($user, 'PHP Example', $content, '../../../');
