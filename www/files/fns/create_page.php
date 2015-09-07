@@ -34,7 +34,7 @@ function create_page ($mysqli, $user, $folder, &$scripts, $base = '') {
     }
 
     include_once __DIR__.'/render_folders_and_files.php';
-    render_folders_and_files($folders, $files, $items);
+    render_folders_and_files($folders, $files, $items, $base);
 
     $key = 'files/id_folders';
     if (array_key_exists($key, $_SESSION) && $id != $_SESSION[$key]) {
@@ -70,6 +70,7 @@ function create_page ($mysqli, $user, $folder, &$scripts, $base = '') {
     unset_session_vars();
 
     include_once __DIR__.'/create_content.php';
-    return create_content($mysqli, $folder, $user, $files, $items, $infoText);
+    return create_content($mysqli, $folder,
+        $user, $files, $items, $infoText, $base);
 
 }

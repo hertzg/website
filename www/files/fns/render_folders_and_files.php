@@ -1,6 +1,6 @@
 <?php
 
-function render_folders_and_files ($folders, $files, &$items) {
+function render_folders_and_files ($folders, $files, &$items, $base) {
 
     $fnsDir = __DIR__.'/../../fns';
 
@@ -21,7 +21,7 @@ function render_folders_and_files ($folders, $files, &$items) {
                 $id = $file->id_files;
                 $items[] = Page\imageArrowLinkWithDescription(
                     htmlspecialchars($file->name), $file->readable_size,
-                    "view-file/?id=$id", "$file->media_type-file",
+                    "{$base}view-file/?id=$id", "$file->media_type-file",
                     ['id' => "file_$id"]);
             }
         }

@@ -1,24 +1,27 @@
 <?php
 
-function create_folder_options_panel ($id_folders) {
+function create_folder_options_panel ($id_folders, $base) {
 
     $fnsDir = __DIR__.'/../../fns';
 
     include_once "$fnsDir/Page/imageArrowLink.php";
     $renameLink = Page\imageArrowLink('Rename',
-        "rename-folder/?id_folders=$id_folders", 'rename', ['id' => 'rename']);
+        "{$base}rename-folder/?id_folders=$id_folders",
+        'rename', ['id' => 'rename']);
 
     $moveLink = Page\imageArrowLink('Move',
-        "move-folder/?id_folders=$id_folders", 'move-folder', ['id' => 'move']);
+        "{$base}move-folder/?id_folders=$id_folders",
+        'move-folder', ['id' => 'move']);
 
     $sendLink = Page\imageArrowLink('Send',
-        "send-folder/?id_folders=$id_folders", 'send', ['id' => 'send']);
+        "{$base}send-folder/?id_folders=$id_folders",
+        'send', ['id' => 'send']);
 
     include_once "$fnsDir/Page/imageLink.php";
-    $href = "delete-folder/?id_folders=$id_folders";
     $deleteLink =
         '<div id="deleteLink">'
-            .Page\imageLink('Delete', $href, 'trash-bin')
+            .Page\imageLink('Delete',
+                "{$base}delete-folder/?id_folders=$id_folders", 'trash-bin')
         .'</div>';
 
     include_once "$fnsDir/Page/staticTwoColumns.php";

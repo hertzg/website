@@ -1,6 +1,7 @@
 <?php
 
-function create_content ($mysqli, $folder, $user, $files, $items, $infoText) {
+function create_content ($mysqli, $folder,
+    $user, $files, $items, $infoText, $base) {
 
     $fnsDir = __DIR__.'/../../fns';
     $id = $folder ? $folder->id_folders : 0;
@@ -25,11 +26,11 @@ function create_content ($mysqli, $folder, $user, $files, $items, $infoText) {
             .join('<div class="hr"></div>', $items)
             .$infoText
         )
-        .create_options_panel($user, $id, $files);
+        .create_options_panel($user, $id, $files, $base);
 
     if ($id) {
         include_once __DIR__.'/create_folder_options_panel.php';
-        $content .= create_folder_options_panel($id);
+        $content .= create_folder_options_panel($id, $base);
     }
 
     return $content;

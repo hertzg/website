@@ -1,6 +1,6 @@
 <?php
 
-function create_options_panel ($user, $id_folders, $files) {
+function create_options_panel ($user, $id_folders, $files, $base) {
 
     $previewableFiles = array_filter($files, function ($file) {
         $media_type = $file->media_type;
@@ -19,15 +19,15 @@ function create_options_panel ($user, $id_folders, $files) {
     else $parentQuery = '';
 
     $newFolderLink = Page\imageArrowLink('New Folder',
-        "new-folder/$parentQuery", 'create-folder', ['id' => 'new-folder']);
+        "{$base}new-folder/$parentQuery", 'create-folder', ['id' => 'new-folder']);
 
     $uploadLink = Page\imageArrowLink('Upload Files',
-        "upload-files/$parentQuery", 'upload', ['id' => 'upload-files']);
+        "{$base}upload-files/$parentQuery", 'upload', ['id' => 'upload-files']);
 
     if ($previewableFiles) {
 
         $slideshowLink = Page\imageArrowLink('Sldieshow',
-            "slideshow/$parentQuery", 'slideshow', ['id' => 'slideshow']);
+            "{$base}slideshow/$parentQuery", 'slideshow', ['id' => 'slideshow']);
 
         $options[] = Page\twoColumns($slideshowLink, $newFolderLink);
 
@@ -43,8 +43,9 @@ function create_options_panel ($user, $id_folders, $files) {
         if ($num_received_files || $num_received_folders) {
             $n = $num_received_files + $num_received_folders;
             include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
-            $options[] = Page\imageArrowLinkWithDescription('Received Files',
-                "$n total.", 'received/', 'receive', ['id' => 'received']);
+            $options[] = Page\imageArrowLinkWithDescription(
+                'Received Files', "$n total.", 'received/',
+                'receive', ['id' => 'received']);
         }
     }
 
