@@ -1,11 +1,13 @@
 <?php
 
-include_once '../../fns/signed_user.php';
+$fnsDir = '../../fns';
+
+include_once "$fnsDir/signed_user.php";
 $user = signed_user();
 
-include_once '../../fns/Page/errors.php';
-include_once '../../fns/Page/tabs.php';
-include_once '../../fns/Page/text.php';
+include_once "$fnsDir/Page/errors.php";
+include_once "$fnsDir/Page/tabs.php";
+include_once "$fnsDir/Page/text.php";
 $content = Page\tabs(
     [
         [
@@ -24,5 +26,5 @@ $content = Page\tabs(
     .'<script type="text/javascript" src="index.js?4" async="true"></script>'
 );
 
-include_once '../../fns/echo_public_page.php';
+include_once "$fnsDir/echo_public_page.php";
 echo_public_page($user, 'Help', $content, '../../');

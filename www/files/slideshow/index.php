@@ -13,17 +13,18 @@ unset(
 );
 
 $base = '../../';
+$fnsDir = '../../fns';
 
-include_once '../../fns/Files/indexPreviewableInUserFolder.php';
+include_once "$fnsDir/Files/indexPreviewableInUserFolder.php";
 $files = Files\indexPreviewableInUserFolder(
     $mysqli, $user->id_users, $parent_id);
 
-include_once '../../fns/request_strings.php';
+include_once "$fnsDir/request_strings.php";
 list($id) = request_strings('id');
 
 if (!$files) {
-    include_once '../../fns/create_folder_link.php';
-    include_once '../../fns/redirect.php';
+    include_once "$fnsDir/create_folder_link.php";
+    include_once "$fnsDir/redirect.php";
     redirect('../'.create_folder_link($parent_id));
 }
 
@@ -45,7 +46,7 @@ $media_type = $file->media_type;
 if ($media_type == 'audio') {
     $previewHtml = "<audio src=\"$src\" controls=\"controls\" />";
 } elseif ($media_type == 'image') {
-    include_once '../../fns/compressed_js_script.php';
+    include_once "$fnsDir/compressed_js_script.php";
     $previewHtml =
         '<div class="imageProgress">'
             ."<img src=\"$src\" />"
@@ -62,11 +63,11 @@ include_once 'fns/create_next_link.php';
 $nextLink = create_next_link($files, $index, $parent_id);
 
 $title = htmlspecialchars($file->name);
-include_once '../../fns/Page/buttonLink.php';
+include_once "$fnsDir/Page/buttonLink.php";
 $fileLink = Page\buttonLink($title, "../view-file/?id=$id");
 
-include_once '../../fns/create_folder_link.php';
-include_once '../../fns/Page/tabs.php';
+include_once "$fnsDir/create_folder_link.php";
+include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
     [
         [
@@ -86,7 +87,7 @@ $content = Page\tabs(
     .'</div>'
 );
 
-include_once '../../fns/echo_user_page.php';
+include_once "$fnsDir/echo_user_page.php";
 echo_user_page($user, 'Slideshow', $content, $base, [
     'head' => '<link rel="stylesheet" type="text/css" href="index.css?1" />',
 ]);

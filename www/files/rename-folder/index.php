@@ -14,14 +14,16 @@ unset(
     $_SESSION['files/messages']
 );
 
-include_once '../../fns/create_folder_link.php';
-include_once '../../fns/FileName/maxLength.php';
-include_once '../../fns/Form/button.php';
-include_once '../../fns/Form/hidden.php';
-include_once '../../fns/Form/textfield.php';
-include_once '../../fns/Page/sessionErrors.php';
-include_once '../../fns/Page/staticTwoColumns.php';
-include_once '../../fns/Page/tabs.php';
+$fnsDir = '../../fns';
+
+include_once "$fnsDir/create_folder_link.php";
+include_once "$fnsDir/FileName/maxLength.php";
+include_once "$fnsDir/Form/button.php";
+include_once "$fnsDir/Form/hidden.php";
+include_once "$fnsDir/Form/textfield.php";
+include_once "$fnsDir/Page/sessionErrors.php";
+include_once "$fnsDir/Page/staticTwoColumns.php";
+include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
     [
         [
@@ -47,5 +49,5 @@ $content = Page\tabs(
     .'</form>'
 );
 
-include_once '../../fns/echo_user_page.php';
+include_once "$fnsDir/echo_user_page.php";
 echo_user_page($user, "Rename Folder #$id_folders", $content, '../../');
