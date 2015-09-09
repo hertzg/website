@@ -6,19 +6,18 @@ function optionsPanel ($file) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
-    include_once "$fnsDir/Page/imageArrowLink.php";
-    include_once "$fnsDir/Page/imageLink.php";
-
     $id = $file->id_files;
     $id_folders = $file->id_folders;
 
     $href = "../slideshow/?id=$id";
     if ($id_folders) $href .= "&amp;parent_id=$id_folders";
+    include_once "$fnsDir/Page/imageArrowLink.php";
     $slideshowLink = \Page\imageArrowLink('Slideshow', $href, 'slideshow');
 
-    $namePart = $file->name;
-    if ($namePart === '..') $namePart = '_.';
-    $namePart = rawurlencode(str_replace('/', '_', $namePart));
+    include_once "$fnsDir/FileName/rawurlencode.php";
+    $namePart = \FileName\rawurlencode($file->name);
+
+    include_once "$fnsDir/Page/imageLink.php";
     $downloadLink = \Page\imageLink('Download',
         "../download-file/$id/$namePart?$file->content_revision", 'download');
 

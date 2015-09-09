@@ -16,8 +16,9 @@ $id_received_folders = $receivedFolderFile->id_received_folders;
 $title = "Received Folder #$id_received_folders";
 $name = $receivedFolderFile->name;
 
-$namePart = $name === '..' ? '_.' : $name;
-$namePart = rawurlencode(str_replace('/', '_', $namePart));
+include_once "$fnsDir/FileName/rawurlencode.php";
+$namePart = FileName\rawurlencode($name);
+
 include_once "$fnsDir/Page/imageLink.php";
 $downloadLink = Page\imageLink('Download',
     "../download-file/$id/$namePart", 'download');

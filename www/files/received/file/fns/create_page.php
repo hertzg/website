@@ -10,8 +10,9 @@ function create_page ($receivedFile, &$scripts, $base = '') {
     include_once "$fnsDir/compressed_js_script.php";
     $scripts = compressed_js_script('dateAgo', "$base../../../");
 
-    $namePart = $name === '..' ? '_.' : $name;
-    $namePart = rawurlencode(str_replace('/', '_', $namePart));
+    include_once "$fnsDir/FileName/rawurlencode.php";
+    $namePart = FileName\rawurlencode($name);
+
     include_once "$fnsDir/Page/imageLink.php";
     $downloadLink = Page\imageLink('Download',
         "{$base}download/$id/$namePart", 'download');
