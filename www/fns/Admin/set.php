@@ -13,7 +13,8 @@ function set ($username, $sha512_hash, $sha512_key) {
     $content =
         "<?php\n\n"
         ."namespace Admin;\n\n"
-        ."function get (&\$username, &\$hash, &\$salt, &\$sha512_hash, &\$sha512_key) {\n"
+        ."function get (&\$username, &\$hash,"
+        ." &\$salt, &\$sha512_hash, &\$sha512_key) {\n"
         .'    $username = '.var_export($username, true).";\n"
         ."    \$hash = null;\n"
         ."    \$salt = null;\n"

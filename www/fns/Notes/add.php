@@ -16,7 +16,8 @@ function add ($mysqli, $id_users, $text, $encrypted_text,
     if ($encrypted_title === null) {
         $encrypted_title = $encrypted_title_iv = 'null';
     } else {
-        $encrypted_title = "'".$mysqli->real_escape_string($encrypted_title)."'";
+        $encrypted_title = $mysqli->real_escape_string($encrypted_title);
+        $encrypted_title = "'$encrypted_title'";
     }
     $tags = $mysqli->real_escape_string($tags);
     $num_tags = count($tag_names);

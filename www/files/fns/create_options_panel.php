@@ -18,16 +18,19 @@ function create_options_panel ($user, $id_folders, $files, $base) {
     if ($id_folders) $parentQuery = "?parent_id=$id_folders";
     else $parentQuery = '';
 
-    $newFolderLink = Page\imageArrowLink('New Folder',
-        "{$base}new-folder/$parentQuery", 'create-folder', ['id' => 'new-folder']);
+    $newFolderLink = Page\imageArrowLink(
+        'New Folder', "{$base}new-folder/$parentQuery",
+        'create-folder', ['id' => 'new-folder']);
 
-    $uploadLink = Page\imageArrowLink('Upload Files',
-        "{$base}upload-files/$parentQuery", 'upload', ['id' => 'upload-files']);
+    $uploadLink = Page\imageArrowLink(
+        'Upload Files', "{$base}upload-files/$parentQuery",
+        'upload', ['id' => 'upload-files']);
 
     if ($previewableFiles) {
 
-        $slideshowLink = Page\imageArrowLink('Sldieshow',
-            "{$base}slideshow/$parentQuery", 'slideshow', ['id' => 'slideshow']);
+        $slideshowLink = Page\imageArrowLink(
+            'Sldieshow', "{$base}slideshow/$parentQuery",
+            'slideshow', ['id' => 'slideshow']);
 
         $options[] = Page\twoColumns($slideshowLink, $newFolderLink);
 

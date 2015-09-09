@@ -23,6 +23,13 @@ function create ($receivedNote, &$scripts) {
     include_once "$fnsDir/export_date_ago.php";
     $date_ago = export_date_ago($receivedNote->insert_time);
 
+    if ($receivedNote->encrypt_in_listings) {
+        $infoText = 'Encrypted in listings.<br />';
+    } else {
+        $infoText = '';
+    }
+    $infoText .= "Note received $date_ago.";
+
     include_once __DIR__.'/optionsPanel.php';
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Form/label.php";
@@ -42,10 +49,7 @@ function create ($receivedNote, &$scripts) {
         .\Form\label('Received from',
             htmlspecialchars($receivedNote->sender_username))
         .create_panel('The Note', join('<div class="hr"></div>', $items))
-        .\Page\infoText(
-            ($receivedNote->encrypt_in_listings ? 'Encrypted in listings.<br />' : '')
-            ."Note received $date_ago."
-        )
+        .\Page\infoText($infoText)
         .optionsPanel($receivedNote)
     );
 

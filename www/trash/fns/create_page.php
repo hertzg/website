@@ -58,7 +58,8 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
                 render_folder($data, $description, $href, $options, $items);
             } elseif ($type == 'receivedNote') {
                 include_once __DIR__.'/render_received_note.php';
-                render_received_note($data, $description, $href, $options, $items);
+                render_received_note($data,
+                    $description, $href, $options, $items);
             } elseif ($type == 'task' || $type == 'receivedTask') {
                 include_once __DIR__.'/render_task.php';
                 render_task($data, $description, $href, $options, $items);

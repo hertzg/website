@@ -16,16 +16,18 @@ function require_admin () {
 
     if ($username !== $_SERVER['PHP_AUTH_USER']) $invalid();
 
+    $password = $_SERVER['PHP_AUTH_PW'];
+
     include_once "$fnsDir/Password/match.php";
     $match = Password\match($hash, $salt,
-        $sha512_hash, $sha512_key, $_SERVER['PHP_AUTH_PW']);
+        $sha512_hash, $sha512_key, $password);
 
     if (!$match) $invalid();
 
     if ($hash !== null) {
 
         include_once "$fnsDir/Password/hash.php";
-        list($sha512_hash, $sha512_key) = Password\hash($_SERVER['PHP_AUTH_PW']);
+        list($sha512_hash, $sha512_key) = Password\hash($password);
 
         include_once "$fnsDir/Admin/set.php";
         Admin\set($username, $sha512_hash, $sha512_key);

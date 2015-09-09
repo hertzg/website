@@ -60,4 +60,6 @@ $content = Page\tabs(
 );
 
 include_once "$fnsDir/echo_user_page.php";
-echo_user_page($user, "Edit Task #$id", $content, '../../', ['scripts' => $scripts]);
+echo_user_page($user, "Edit Task #$id", $content, '../../', [
+    'scripts' => $scripts,
+]);
