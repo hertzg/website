@@ -16,9 +16,11 @@ function optionsPanel ($file) {
     if ($id_folders) $href .= "&amp;parent_id=$id_folders";
     $slideshowLink = \Page\imageArrowLink('Slideshow', $href, 'slideshow');
 
-    $namePart = rawurlencode(str_replace('/', '_', $file->name));
-    $href = "../download-file/$id/$namePart?$file->content_revision";
-    $downloadLink = \Page\imageLink('Download', $href, 'download');
+    $namePart = $file->name;
+    if ($namePart === '..') $namePart = '_.';
+    $namePart = rawurlencode(str_replace('/', '_', $namePart));
+    $downloadLink = \Page\imageLink('Download',
+        "../download-file/$id/$namePart?$file->content_revision", 'download');
 
     $renameLink = \Page\imageArrowLink('Rename',
         "../rename-file/?id=$id", 'rename', ['id' => 'rename']);

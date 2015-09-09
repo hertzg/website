@@ -17,10 +17,11 @@ $id_received_folders = $receivedFolderFile->id_received_folders;
 $title = "Received Folder #$id_received_folders";
 $name = $receivedFolderFile->name;
 
+$namePart = $name === '..' ? '_.' : $name;
+$namePart = urlencode(str_replace('/', '_', $namePart));
 include_once "$fnsDir/Page/imageLink.php";
-$namePart = urlencode(str_replace('/', '_', $name));
-$href = "../../download-file/$id/$namePart?0";
-$downloadLink = Page\imageLink('Download', $href, 'download');
+$downloadLink = Page\imageLink('Download',
+    "../../download-file/$id/$namePart", 'download');
 
 include_once "$fnsDir/Page/filePreview.php";
 $filePreview = Page\filePreview($receivedFolderFile->media_type,

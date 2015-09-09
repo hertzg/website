@@ -3,17 +3,18 @@
 function create_page ($receivedFile, &$scripts, $base = '') {
 
     $id = $receivedFile->id;
+    $name = $receivedFile->name;
     $queryString = "?id=$id";
     $fnsDir = __DIR__.'/../../../../fns';
-    $name = $receivedFile->name;
 
     include_once "$fnsDir/compressed_js_script.php";
     $scripts = compressed_js_script('dateAgo', "$base../../../");
 
+    $namePart = $name === '..' ? '_.' : $name;
+    $namePart = rawurlencode(str_replace('/', '_', $namePart));
     include_once "$fnsDir/Page/imageLink.php";
-    $namePart = rawurlencode(str_replace('/', '_', $name));
-    $href = "{$base}download/$id/$namePart";
-    $downloadLink = Page\imageLink('Download', $href, 'download');
+    $downloadLink = Page\imageLink('Download',
+        "{$base}download/$id/$namePart", 'download');
 
     $href = "{$base}submit-import.php$queryString";
     $importLink = Page\imageLink('Import', $href, 'import-file');
