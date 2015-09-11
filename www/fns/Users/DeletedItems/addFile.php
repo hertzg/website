@@ -12,6 +12,8 @@ function addFile ($mysqli, $file, $apiKey) {
         'name' => $file->name,
         'size' => $file->size,
         'readable_size' => $file->readable_size,
+        'md5_sum' => $file->md5_sum,
+        'sha256_sum' => $file->sha256_sum,
         'insert_api_key_id' => $file->insert_api_key_id,
         'insert_time' => $file->insert_time,
         'rename_api_key_id' => $file->rename_api_key_id,

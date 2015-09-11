@@ -2,7 +2,8 @@
 
 namespace Files;
 
-function add ($mysqli, $id_users, $id_folders, $name, $size, $insertApiKey) {
+function add ($mysqli, $id_users, $id_folders,
+    $name, $size, $md5_sum, $sha256_sum, $insertApiKey) {
 
     $fnsDir = __DIR__.'/..';
 
@@ -29,11 +30,13 @@ function add ($mysqli, $id_users, $id_folders, $name, $size, $insertApiKey) {
     $readable_size = bytestr($size);
 
     $sql = 'insert into files'
-        .' (id_users, id_folders, content_type, media_type,'
-        .' name, size, readable_size, insert_time, rename_time,'
+        .' (id_users, id_folders, content_type,'
+        .' media_type, name, size, readable_size, md5_sum,'
+        .' sha256_sum, insert_time, rename_time,'
         .' insert_api_key_id, insert_api_key_name)'
-        ." value ($id_users, $id_folders, '$content_type', '$media_type',"
-        ." '$name', $size, '$readable_size', $insert_time, $rename_time,"
+        ." value ($id_users, $id_folders, '$content_type',"
+        ." '$media_type', '$name', $size, '$readable_size', '$md5_sum',"
+        ." '$sha256_sum', $insert_time, $rename_time,"
         ." $insert_api_key_id, $insert_api_key_name)";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);

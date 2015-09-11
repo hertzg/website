@@ -20,8 +20,8 @@ function addDeleted ($mysqli, $user, $data) {
     include_once "$fnsDir/Files/addDeleted.php";
     \Files\addDeleted($mysqli, $data->id, $id_users,
         $id_folders, $data->content_type, $data->media_type, $name,
-        $size, $data->insert_time, $data->rename_time,
-        $data->content_revision, $data->revision);
+        $size, $data->md5_sum, $data->sha256_sum, $data->insert_time,
+        $data->rename_time, $data->content_revision, $data->revision);
 
     include_once __DIR__.'/../addStorageUsed.php';
     \Users\addStorageUsed($mysqli, $id_users, $size);
