@@ -21,6 +21,7 @@ function ensure ($mysqli) {
         ],
         'id_received_folders' => ['type' => 'bigint(20) unsigned'],
         'id_users' => ['type' => 'bigint(20) unsigned'],
+        'md5_sum' => ['type' => 'binary(32)'],
         'media_type' => \MediaType\column(),
         'name' => $nameColumn,
         'parent_id' => ['type' => 'bigint(20) unsigned'],
@@ -30,6 +31,7 @@ function ensure ($mysqli) {
             'collation' => 'utf8_unicode_ci',
         ],
         'received_folder_name' => $nameColumn,
+        'sha256_sum' => ['type' => 'binary(64)'],
         'size' => ['type' => 'bigint(20) unsigned'],
     ]);
 

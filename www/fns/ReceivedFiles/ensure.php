@@ -20,6 +20,7 @@ function ensure ($mysqli) {
             'primary' => true,
         ],
         'insert_time' => ['type' => 'bigint(20) unsigned'],
+        'md5_sum' => ['type' => 'binary(32)'],
         'media_type' => \MediaType\column(),
         'name' => \FileName\column(),
         'readable_size' => [
@@ -30,6 +31,7 @@ function ensure ($mysqli) {
         'receiver_id_users' => ['type' => 'bigint(20) unsigned'],
         'sender_id_users' => ['type' => 'bigint(20) unsigned'],
         'sender_username' => \Username\column(),
+        'sha256_sum' => ['type' => 'binary(64)'],
         'size' => ['type' => 'bigint(20) unsigned'],
     ]);
 

@@ -28,6 +28,7 @@ function ensure ($mysqli) {
         ],
         'insert_api_key_name' => $apiKeyNameColumn,
         'insert_time' => ['type' => 'bigint(20) unsigned'],
+        'md5_sum' => ['type' => 'binary(32)'],
         'media_type' => \MediaType\column(),
         'name' => \FileName\column(),
         'readable_size' => [
@@ -42,6 +43,7 @@ function ensure ($mysqli) {
         'rename_api_key_name' => $apiKeyNameColumn,
         'rename_time' => ['type' => 'bigint(20) unsigned'],
         'revision' => ['type' => 'bigint(20) unsigned'],
+        'sha256_sum' => ['type' => 'binary(64)'],
         'size' => ['type' => 'bigint(20) unsigned'],
     ]);
 
