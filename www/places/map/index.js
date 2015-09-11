@@ -185,7 +185,10 @@
                         newSpaceY = newTouchY - secondTouchY,
                         newDistance = Math.sqrt(newSpaceX * newSpaceX + newSpaceY * newSpaceY)
 
-                    shiftMap((newTouchX - touchX) / 2, (newTouchY - touchY) / 2)
+                    var dx = (newTouchX - touchX) / 2,
+                        dy = (newTouchY - touchY) / 2
+
+                    shiftMap(dx, dy)
 
                     scaleAt({
                         clientX: (secondTouchX + newTouchX) / 2,
@@ -208,7 +211,10 @@
                     newSpaceY = touchY - newSecondTouchY,
                     newDistance = Math.sqrt(newSpaceX * newSpaceX + newSpaceY * newSpaceY)
 
-                shiftMap((newSecondTouchX - secondTouchX) / 2, (newSecondTouchY - secondTouchY) / 2)
+                var dx = (newSecondTouchX - secondTouchX) / 2,
+                    dy = (newSecondTouchY - secondTouchY) / 2
+
+                shiftMap(dx, dy)
 
                 scaleAt({
                     clientX: (newSecondTouchX + touchX) / 2,

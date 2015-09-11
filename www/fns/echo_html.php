@@ -9,6 +9,8 @@ function echo_html ($title, $head, $body,
     header('Cache-Control: private');
     header('Content-Type: text/html; charset=UTF-8');
 
+    $theme_images = "{$base}theme/color/$theme_color/images";
+
     include_once __DIR__.'/compressed_css_link.php';
     include_once __DIR__.'/compressed_js_script.php';
     echo
@@ -17,33 +19,33 @@ function echo_html ($title, $head, $body,
             .'<head>'
                 ."<title>$title</title>"
                 .'<link rel="icon" type="image/png"'
-                ." href=\"{$base}theme/color/$theme_color/images/icon16.png?1\" />"
+                ." href=\"$theme_images/icon16.png?1\" />"
                 .'<link rel="icon" type="image/png" sizes="32x32"'
-                ." href=\"{$base}theme/color/$theme_color/images/icon32.png?1\" />"
+                ." href=\"$theme_images/icon32.png?1\" />"
                 .'<link rel="icon" type="image/png" sizes="48x48"'
-                ." href=\"{$base}theme/color/$theme_color/images/icon48.png\" />"
+                ." href=\"$theme_images/icon48.png\" />"
                 .'<link rel="icon" type="image/png" sizes="60x60"'
-                ." href=\"{$base}theme/color/$theme_color/images/icon60.png\" />"
+                ." href=\"$theme_images/icon60.png\" />"
                 .'<link rel="icon" type="image/png" sizes="64x64"'
-                ." href=\"{$base}theme/color/$theme_color/images/icon64.png\" />"
+                ." href=\"$theme_images/icon64.png\" />"
                 .'<link rel="icon" type="image/png" sizes="84x84"'
-                ." href=\"{$base}theme/color/$theme_color/images/icon84.png\" />"
+                ." href=\"$theme_images/icon84.png\" />"
                 .'<link rel="icon" type="image/png" sizes="90x90"'
-                ." href=\"{$base}theme/color/$theme_color/images/icon90.png\" />"
+                ." href=\"$theme_images/icon90.png\" />"
                 .'<link rel="icon" type="image/png" sizes="120x120"'
-                ." href=\"{$base}theme/color/$theme_color/images/icon120.png\" />"
+                ." href=\"$theme_images/icon120.png\" />"
                 .'<link rel="icon" type="image/png" sizes="126x126"'
-                ." href=\"{$base}theme/color/$theme_color/images/icon126.png\" />"
+                ." href=\"$theme_images/icon126.png\" />"
                 .'<link rel="icon" type="image/png" sizes="128x128"'
-                ." href=\"{$base}theme/color/$theme_color/images/icon128.png\" />"
+                ." href=\"$theme_images/icon128.png\" />"
                 .'<link rel="icon" type="image/png" sizes="142x142"'
-                ." href=\"{$base}theme/color/$theme_color/images/icon142.png\" />"
+                ." href=\"$theme_images/icon142.png\" />"
                 .'<link rel="icon" type="image/png" sizes="189x189"'
-                ." href=\"{$base}theme/color/$theme_color/images/icon189.png\" />"
+                ." href=\"$theme_images/icon189.png\" />"
                 .'<link rel="icon" type="image/png" sizes="256x256"'
-                ." href=\"{$base}theme/color/$theme_color/images/icon256.png\" />"
+                ." href=\"$theme_images/icon256.png\" />"
                 .'<link rel="icon" type="image/png" sizes="512x512"'
-                ." href=\"{$base}theme/color/$theme_color/images/icon512.png\" />"
+                ." href=\"$theme_images/icon512.png\" />"
                 .'<meta http-equiv="Content-Type"'
                 .' content="text/html; charset=UTF-8" />'
                 .'<meta name="viewport"'
