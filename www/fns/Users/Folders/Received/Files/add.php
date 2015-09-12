@@ -7,12 +7,15 @@ function add ($mysqli, $id_received_folders,
 
     $fnsDir = __DIR__.'/../../../..';
 
+    include_once "$fnsDir/file_sums.php";
+    file_sums($filePath, $md5_sum, $sha256_sum);
+
     include_once "$fnsDir/ReceivedFolderFiles/add.php";
-    $id = \ReceivedFolderFiles\add($mysqli, $id_received_folders,
-        $received_folder_name, $id_users, $parent_id, $name, $size);
+    $id = \ReceivedFolderFiles\add($mysqli,
+        $id_received_folders, $received_folder_name, $id_users,
+        $parent_id, $name, $size, $md5_sum, $sha256_sum);
 
     include_once "$fnsDir/ReceivedFolderFiles/File/path.php";
-    $storagePath = \ReceivedFolderFiles\File\path($id_users, $id);
-    copy($filePath, $storagePath);
+    copy($filePath, \ReceivedFolderFiles\File\path($id_users, $id));
 
 }

@@ -3,7 +3,8 @@
 namespace ReceivedFolderFiles;
 
 function add ($mysqli, $id_received_folders,
-    $received_folder_name, $id_users, $parent_id, $name, $size) {
+    $received_folder_name, $id_users, $parent_id,
+    $name, $size, $md5_sum, $sha256_sum) {
 
     $fnsDir = __DIR__.'/..';
 
@@ -22,10 +23,10 @@ function add ($mysqli, $id_received_folders,
     $sql = 'insert into received_folder_files'
         .' (id_received_folders, received_folder_name,'
         .' id_users, parent_id, content_type, media_type,'
-        .' name, size, readable_size)'
+        .' name, size, readable_size, md5_sum, sha256_sum)'
         ." values ($id_received_folders, '$received_folder_name',"
         ." $id_users, $parent_id, '$content_type', '$media_type',"
-        ." '$name', $size, '$readable_size')";
+        ." '$name', $size, '$readable_size', '$md5_sum', '$sha256_sum')";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
     return $mysqli->insert_id;
