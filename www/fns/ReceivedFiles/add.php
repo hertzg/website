@@ -2,8 +2,8 @@
 
 namespace ReceivedFiles;
 
-function add ($mysqli, $sender_id_users,
-    $sender_username, $receiver_id_users, $name, $size) {
+function add ($mysqli, $sender_id_users, $sender_username,
+    $receiver_id_users, $name, $size, $md5_sum, $sha256_sum) {
 
     $fnsDir = __DIR__.'/..';
 
@@ -21,11 +21,11 @@ function add ($mysqli, $sender_id_users,
 
     $sql = 'insert into received_files'
         .' (sender_id_users, sender_username,'
-        .' receiver_id_users, content_type,'
-        .' media_type, name, size, readable_size)'
+        .' receiver_id_users, content_type, media_type,'
+        .' name, size, readable_size, md5_sum, sha256_sum)'
         ." values ($sender_id_users, '$sender_username',"
-        ." $receiver_id_users, '$content_type',"
-        ." '$media_type', '$name', '$size', '$readable_size')";
+        ." $receiver_id_users, '$content_type', '$media_type',"
+        ." '$name', '$size', '$readable_size', '$md5_sum', '$sha256_sum')";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
     return $mysqli->insert_id;
