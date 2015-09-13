@@ -86,6 +86,9 @@ $content = Page\tabs(
         'invitations', ['id' => 'invitations'])
     .'<div class="hr"></div>'
     .Page\imageArrowLink('Users', 'users/', 'users', ['id' => 'users'])
+    .'<div class="hr"></div>'
+    .Page\imageArrowLink('Invalid Signins', 'invalid-signins/',
+        'generic', ['id' => 'invalid-signins'])
 );
 
 include_once '../fns/echo_page.php';
