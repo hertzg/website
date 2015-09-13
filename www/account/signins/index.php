@@ -20,7 +20,7 @@ $signins = Signins\indexPageOnUser($mysqli,
     $user->id_users, $offset, $limit, $total);
 
 include_once "$fnsDir/check_offset_overflow.php";
-check_offset_overflow($offset, $limit, $total, []);
+check_offset_overflow($offset, $limit, $total);
 
 $items = [];
 
