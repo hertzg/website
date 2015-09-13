@@ -21,7 +21,7 @@ $content = Page\tabs(
         ],
     ],
     'About Zvini',
-    \Page\text(
+    Page\text(
         'Zvini is free software: you can redistribute it and/or modify'
         .' it under the terms of the GNU Affero General Public License as'
         .' published by the Free Software Foundation, either version 3 of the'
@@ -35,7 +35,7 @@ $content = Page\tabs(
     .Page\imageLink('GNU Affero General Public License',
         'license/', 'generic', ['id' => 'license'])
     .'<div class="hr"></div>'
-    .\Form\label('Git version', $version)
+    .Form\label('Git version', $version)
 );
 
 include_once "$fnsDir/echo_public_page.php";
