@@ -41,6 +41,7 @@
     padding: 15px 16px;
     line-height: 18px;
     white-space: normal;
+    word-wrap: break-word;
 }
 .form-label-default {
     font-style: italic;
