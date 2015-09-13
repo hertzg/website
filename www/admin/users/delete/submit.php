@@ -16,4 +16,5 @@ unset($_SESSION['admin/users/errors']);
 $_SESSION['admin/users/messages'] = ['The user has been deleted.'];
 
 include_once "$fnsDir/redirect.php";
-redirect('..');
+include_once "$fnsDir/ItemList/listUrl.php";
+redirect(ItemList\listUrl());

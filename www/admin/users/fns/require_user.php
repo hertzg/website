@@ -19,7 +19,8 @@ function require_user ($mysqli) {
         $_SESSION['admin/users/errors'] = ['The user no longer exists.'];
         unset($_SESSION['admin/users/messages']);
         include_once "$fnsDir/redirect.php";
-        redirect('..');
+        include_once "$fnsDir/ItemList/listUrl.php";
+        redirect(ItemList\listUrl());
     }
 
     return [$user, $id];

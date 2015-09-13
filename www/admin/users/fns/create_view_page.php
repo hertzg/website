@@ -45,7 +45,11 @@ function create_view_page ($user, &$scripts) {
         $_SESSION['admin/users/messages']
     );
 
+    include_once "$fnsDir/ItemList/escapedItemQuery.php";
+    $escapedItemQuery = ItemList\escapedItemQuery($id);
+
     include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/ItemList/listHref.php";
     include_once "$fnsDir/Page/imageLink.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
@@ -54,7 +58,7 @@ function create_view_page ($user, &$scripts) {
             [
                 [
                     'title' => 'Users',
-                    'href' => "../#$id",
+                    'href' => ItemList\listHref()."#$id",
                 ],
             ],
             "User #$id",
@@ -64,7 +68,7 @@ function create_view_page ($user, &$scripts) {
         .create_panel(
             'User Options',
             '<div id="deleteLink">'
-                .Page\imageLink('Delete', "../delete/?id=$id", 'trash-bin')
+                .Page\imageLink('Delete', "../delete/$escapedItemQuery", 'trash-bin')
             .'</div>'
         );
 

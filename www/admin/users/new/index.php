@@ -25,6 +25,8 @@ include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/notes.php";
 include_once "$fnsDir/Form/password.php";
 include_once "$fnsDir/Form/textfield.php";
+include_once "$fnsDir/ItemList/listHref.php";
+include_once "$fnsDir/ItemList/pageHiddenInputs.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/tabs.php";
 include_once "$fnsDir/Password/minLength.php";
@@ -34,7 +36,7 @@ $content = Page\tabs(
     [
         [
             'title' => 'Users',
-            'href' => '..',
+            'href' => ItemList\listHref(),
         ],
     ],
     'New User',
@@ -66,6 +68,7 @@ $content = Page\tabs(
         ])
         .'<div class="hr"></div>'
         .Form\button('Save User')
+        .ItemList\pageHiddenInputs()
     .'</form>'
 );
 

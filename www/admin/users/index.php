@@ -32,11 +32,12 @@ if ($users) {
     include_once 'fns/render_prev_button.php';
     render_prev_button($offset, $limit, $total, $items);
 
+    include_once "$fnsDir/ItemList/escapedItemQuery.php";
     include_once "$fnsDir/Page/imageArrowLink.php";
     foreach ($users as $user) {
         $id = $user->id_users;
         $items[] = Page\imageArrowLink(htmlspecialchars($user->username),
-            "view/?id=$id", 'user', ['id' => $id]);
+            'view/'.ItemList\escapedItemQuery($id), 'user', ['id' => $id]);
     }
 
     include_once 'fns/render_next_button.php';
@@ -47,6 +48,7 @@ if ($users) {
     $items[] = Page\info('No users');
 }
 
+include_once "$fnsDir/ItemList/escapedPageQuery.php";
 include_once "$fnsDir/Page/newItemButton.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/sessionMessages.php";
@@ -62,7 +64,7 @@ $content = Page\tabs(
     Page\sessionErrors('admin/users/errors')
     .Page\sessionMessages('admin/users/messages')
     .join('<div class="hr"></div>', $items),
-    Page\newItemButton('new/', 'User')
+    Page\newItemButton('new/'.ItemList\escapedPageQuery(), 'User')
 );
 
 include_once '../fns/echo_admin_page.php';

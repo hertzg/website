@@ -29,7 +29,8 @@ if ($errors) {
         'password' => $password,
         'repeatPassword' => $repeatPassword,
     ];
-    redirect();
+    include_once "$fnsDir/ItemList/pageQuery.php";
+    redirect('./'.ItemList\pageQuery());
 }
 
 unset(
@@ -42,4 +43,5 @@ $id = Users\Account\create($mysqli, $username, $password, '');
 
 $_SESSION['admin/users/view/messages'] = ['The user has been saved.'];
 
-redirect("../view/?id=$id");
+include_once "$fnsDir/ItemList/itemQuery.php";
+redirect('../view'.ItemList\itemQuery($id));
