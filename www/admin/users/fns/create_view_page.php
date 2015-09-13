@@ -48,6 +48,7 @@ function create_view_page ($user, &$scripts) {
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
     $escapedItemQuery = ItemList\escapedItemQuery($id);
 
+    include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/ItemList/listHref.php";
     include_once "$fnsDir/Page/imageLink.php";
@@ -63,7 +64,8 @@ function create_view_page ($user, &$scripts) {
             ],
             "User #$id",
             Page\sessionMessages('admin/users/view/messages')
-            .join('<div class="hr"></div>', $items)
+            .join('<div class="hr"></div>', $items),
+            create_new_item_button('User', '../')
         )
         .create_panel(
             'User Options',
