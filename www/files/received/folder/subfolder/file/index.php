@@ -46,6 +46,10 @@ $content = Page\tabs(
     .Form\label('Size', $receivedFolderFile->readable_size)
     .'<div class="hr"></div>'
     .Form\label('Preview', $filePreview)
+    .'<div class="hr"></div>'
+    .Form\label('MD5 sum', $receivedFolderFile->md5_sum)
+    .'<div class="hr"></div>'
+    .Form\label('SHA-256 sum', $receivedFolderFile->sha256_sum)
     .create_panel('File Options', $downloadLink)
 );
 

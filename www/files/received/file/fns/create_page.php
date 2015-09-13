@@ -69,6 +69,10 @@ function create_page ($receivedFile, &$scripts, $base = '') {
             .Form\label('Size', $receivedFile->readable_size)
             .'<div class="hr"></div>'
             .Form\label('Preview', $filePreview)
+            .'<div class="hr"></div>'
+            .Form\label('MD5 sum', $receivedFile->md5_sum)
+            .'<div class="hr"></div>'
+            .Form\label('SHA-256 sum', $receivedFile->sha256_sum)
             .Page\infoText("File received $date_ago.")
         )
         .create_panel(

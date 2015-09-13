@@ -16,4 +16,7 @@ function renderFile ($id, $file, &$items) {
         $file->content_type, $id, '../download-file/', '../../');
     $items[] = \Form\label('Preview', $filePreview);
 
+    $items[] = \Form\label('MD5 sum', $file->md5_sum);
+    $items[] = \Form\label('SHA-256 sum', $file->sha256_sum);
+
 }

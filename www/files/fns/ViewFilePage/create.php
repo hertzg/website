@@ -70,6 +70,10 @@ function create ($mysqli, $file, &$scripts) {
             .\Form\label('Size', $file->readable_size)
             .'<div class="hr"></div>'
             .\Form\label('Preview', $filePreview)
+            .'<div class="hr"></div>'
+            .\Form\label('MD5 sum', $file->md5_sum)
+            .'<div class="hr"></div>'
+            .\Form\label('SHA-256 sum', $file->sha256_sum)
             .\Page\infoText($infoText)
         )
         .optionsPanel($file)
