@@ -39,7 +39,7 @@ function createContent ($contact, $infoText, $items, $base) {
             .\Page\infoText($infoText),
             create_new_item_button('Contact', "$base../")
         )
-        .optionsPanel($contact, $base)
-        .photoOptionsPanel($contact, $base);
+        .photoOptionsPanel($contact, $base)
+        .optionsPanel($contact, $base);
 
 }

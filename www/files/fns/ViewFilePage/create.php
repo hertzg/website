@@ -76,7 +76,7 @@ function create ($mysqli, $file, &$scripts) {
             .\Form\label('SHA-256 sum', $file->sha256_sum)
             .\Page\infoText($infoText)
         )
-        .optionsPanel($file)
-        .$imageOptionsPanel;
+        .$imageOptionsPanel
+        .optionsPanel($file);
 
 }
