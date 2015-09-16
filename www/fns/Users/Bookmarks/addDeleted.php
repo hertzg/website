@@ -8,6 +8,8 @@ function addDeleted ($mysqli, $id_users, $data) {
     $url = $data->url;
     $title = $data->title;
     $tags = $data->tags;
+    $insert_time = $data->insert_time;
+    $update_time = $data->update_time;
 
     $fnsDir = __DIR__.'/../..';
 
@@ -15,12 +17,13 @@ function addDeleted ($mysqli, $id_users, $data) {
     $tag_names = \Tags\parse($tags);
 
     include_once "$fnsDir/Bookmarks/addDeleted.php";
-    \Bookmarks\addDeleted($mysqli, $id, $id_users, $url, $title, $tags,
-        $tag_names, $data->insert_time, $data->update_time, $data->revision);
+    \Bookmarks\addDeleted($mysqli, $id, $id_users, $url, $title,
+        $tags, $tag_names, $insert_time, $update_time, $data->revision);
 
     if ($tag_names) {
         include_once "$fnsDir/BookmarkTags/add.php";
-        \BookmarkTags\add($mysqli, $id_users, $id, $tag_names, $url, $title);
+        \BookmarkTags\add($mysqli, $id_users, $id,
+            $tag_names, $url, $title, $insert_time, $update_time);
     }
 
     include_once __DIR__.'/addNumber.php';

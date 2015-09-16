@@ -15,7 +15,8 @@ function add ($mysqli, $id_users, $url,
 
     if ($tag_names) {
         include_once "$fnsDir/BookmarkTags/add.php";
-        \BookmarkTags\add($mysqli, $id_users, $id, $tag_names, $url, $title);
+        \BookmarkTags\add($mysqli, $id_users, $id,
+            $tag_names, $url, $title, $insert_time, $update_time);
     }
 
     include_once __DIR__.'/addNumber.php';
