@@ -8,8 +8,11 @@ function edit ($mysqli, $bar_chart, $name,
     $id = $bar_chart->id;
     $fnsDir = __DIR__.'/../..';
 
+    $update_time = time();
+
     include_once "$fnsDir/BarCharts/edit.php";
-    \BarCharts\edit($mysqli, $id, $name, $tags, $tag_names, $updateApiKey);
+    \BarCharts\edit($mysqli, $id, $name, $tags,
+        $tag_names, $update_time, $updateApiKey);
 
     if ($bar_chart->num_tags) {
         include_once "$fnsDir/BarChartTags/deleteOnBarChart.php";

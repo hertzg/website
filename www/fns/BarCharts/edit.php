@@ -2,13 +2,13 @@
 
 namespace BarCharts;
 
-function edit ($mysqli, $id, $name, $tags, $tag_names, $updateApiKey) {
+function edit ($mysqli, $id, $name, $tags,
+    $tag_names, $update_time, $updateApiKey) {
 
     $name = $mysqli->real_escape_string($name);
     $tags = $mysqli->real_escape_string($tags);
     $num_tags = count($tag_names);
     $tags_json = $mysqli->real_escape_string(json_encode($tag_names));
-    $update_time = time();
     if ($updateApiKey === null) {
         $update_api_key_id = $update_api_key_name = 'null';
     } else {

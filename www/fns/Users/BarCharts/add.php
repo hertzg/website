@@ -7,9 +7,11 @@ function add ($mysqli, $id_users, $name,
 
     $fnsDir = __DIR__.'/../..';
 
+    $insert_time = $update_time = time();
+
     include_once "$fnsDir/BarCharts/add.php";
-    $id = \BarCharts\add($mysqli, $id_users,
-        $name, $tags, $tag_names, $insertApiKey);
+    $id = \BarCharts\add($mysqli, $id_users, $name, $tags,
+        $tag_names, $insert_time, $update_time, $insertApiKey);
 
     if ($tag_names) {
         include_once "$fnsDir/BarChartTags/add.php";
