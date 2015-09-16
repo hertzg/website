@@ -41,7 +41,7 @@ function add ($mysqli, $username, $password, $email) {
         .' email, order_home_items, insert_time, theme_color,'
         .' theme_brightness, birthdays_check_day, events_check_day,'
         .' schedules_check_day, task_deadlines_check_day,'
-        .' notes_order_by,'
+        .' notes_order_by, tasks_order_by,'
         .' show_bar_charts, show_bookmarks, show_calendar, show_contacts,'
         .' show_files, show_notes, show_notifications, show_places,'
         .' show_schedules, show_tasks, show_trash, show_wallets)'
@@ -50,7 +50,7 @@ function add ($mysqli, $username, $password, $email) {
         ." '$email', '$order_home_items', $insert_time, '$theme_color',"
         ." '$theme_brightness', $birthdays_check_day, $events_check_day,"
         ." $schedules_check_day, $task_deadlines_check_day,"
-        ." 'update_time desc',"
+        ." 'update_time desc', 'update_time desc',"
         ." 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 

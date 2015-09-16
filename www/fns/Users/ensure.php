@@ -164,6 +164,11 @@ function ensure ($mysqli) {
         'show_wallets' => ['type' => 'tinyint(3) unsigned'],
         'storage_used' => ['type' => 'bigint(20) unsigned'],
         'task_deadlines_check_day' => ['type' => 'bigint(20) unsigned'],
+        'tasks_order_by' => [
+            'type' => 'varchar(50)',
+            'characterSet' => 'ascii',
+            'collation' => 'ascii_general_ci',
+        ],
         'theme_brightness' => \Theme\Brightness\column(),
         'theme_color' => \Theme\Color\column(),
         'timezone' => ['type' => 'int(11)'],
