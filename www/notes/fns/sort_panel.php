@@ -16,8 +16,8 @@ function sort_panel ($user, $base = '') {
     $updateTimeLink = Page\imageLink('Last modified time',
         "{$base}submit-sort-last-modified.php$escapedPageQuery", 'sort-time');
 
-    include_once "$fnsDir/Page/staticTwoColumns.php";
-    $content = Page\staticTwoColumns($updateTimeLink, $insertTimeLink);
+    include_once "$fnsDir/Page/twoColumns.php";
+    $content = Page\twoColumns($updateTimeLink, $insertTimeLink);
 
     include_once "$fnsDir/create_panel.php";
     return create_panel('Sort Notes By', $content);
