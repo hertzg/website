@@ -23,8 +23,9 @@ function edit ($mysqli, $user, $contact, $full_name, $alias,
 
     if ($tag_names) {
         include_once "$fnsDir/ContactTags/add.php";
-        \ContactTags\add($mysqli, $contact->id_users, $id, $tag_names,
-            $full_name, $alias, $email, $phone1, $phone2, $favorite);
+        \ContactTags\add($mysqli, $contact->id_users, $id,
+            $tag_names, $full_name, $alias, $email, $phone1,
+            $phone2, $favorite, $contact->insert_time, $update_time);
     }
 
     if ($contact->birthday_time !== null) {

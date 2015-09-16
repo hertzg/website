@@ -2,8 +2,9 @@
 
 namespace ContactTags;
 
-function add ($mysqli, $id_users, $id_contacts, $tag_names,
-    $full_name, $alias, $email, $phone1, $phone2, $favorite) {
+function add ($mysqli, $id_users, $id_contacts,
+    $tag_names, $full_name, $alias, $email, $phone1,
+    $phone2, $favorite, $insert_time, $update_time) {
 
     $full_name = $mysqli->real_escape_string($full_name);
     $alias = $mysqli->real_escape_string($alias);
@@ -11,7 +12,6 @@ function add ($mysqli, $id_users, $id_contacts, $tag_names,
     $phone1 = $mysqli->real_escape_string($phone1);
     $phone2 = $mysqli->real_escape_string($phone2);
     $favorite = $favorite ? '1' : '0';
-    $insert_time = $update_time = time();
 
     $sql = 'insert into contact_tags'
         .' (id_users, id_contacts, tag_name, full_name,'
