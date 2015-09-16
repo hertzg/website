@@ -10,6 +10,9 @@ include_once '../fns/Users/Notes/editOrderBy.php';
 include_once '../lib/mysqli.php';
 Users\Notes\editOrderBy($mysqli, $user->id_users, 'update_time desc');
 
+unset($_SESSION['notes/errors']);
+$_SESSION['notes/messages'] = ['The list is now sorted by last modified time.'];
+
 include_once '../fns/redirect.php';
 include_once '../fns/ItemList/listUrl.php';
 redirect(ItemList\listUrl('./'));
