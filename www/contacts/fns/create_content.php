@@ -5,6 +5,7 @@ function create_content ($user, $filterMessage, $items, $base, $searchForm) {
     $fnsDir = __DIR__.'/../../fns';
 
     include_once __DIR__.'/create_options_panel.php';
+    include_once __DIR__.'/sort_panel.php';
     include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
@@ -23,6 +24,7 @@ function create_content ($user, $filterMessage, $items, $base, $searchForm) {
             .$filterMessage.join('<div class="hr"></div>', $items),
             create_new_item_button('Contact', $base)
         )
+        .sort_panel($user, $base)
         .create_options_panel($user, $base);
 
     if ($searchForm) {
