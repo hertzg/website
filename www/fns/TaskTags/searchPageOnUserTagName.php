@@ -3,7 +3,7 @@
 namespace TaskTags;
 
 function searchPageOnUserTagName ($mysqli, $id_users,
-    $keyword, $tag_name, $offset, $limit, &$total) {
+    $keyword, $tag_name, $offset, $limit, &$total, $order_by) {
 
     $fnsDir = __DIR__.'/..';
 
@@ -22,7 +22,7 @@ function searchPageOnUserTagName ($mysqli, $id_users,
     if ($offset >= $total) return [];
 
     $sql = "select *, id_tasks id $fromWhere"
-        .' order by top_priority desc, update_time desc'
+        ." order by top_priority desc, $order_by"
         ." limit $limit offset $offset";
     include_once "$fnsDir/mysqli_query_object.php";
     return mysqli_query_object($mysqli, $sql);
