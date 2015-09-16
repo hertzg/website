@@ -21,8 +21,8 @@ function edit ($mysqli, $user, $schedule, $text,
 
     if ($tag_names) {
         include_once "$fnsDir/ScheduleTags/add.php";
-        \ScheduleTags\add($mysqli, $schedule->id_users,
-            $id, $tag_names, $text, $interval, $offset);
+        \ScheduleTags\add($mysqli, $schedule->id_users, $id, $tag_names,
+            $text, $interval, $offset, $schedule->insert_time, $update_time);
     }
 
     include_once "$fnsDir/days_left_from_today.php";

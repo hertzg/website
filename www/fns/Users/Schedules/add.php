@@ -17,8 +17,8 @@ function add ($mysqli, $user, $text, $interval,
 
     if ($tag_names) {
         include_once "$fnsDir/ScheduleTags/add.php";
-        \ScheduleTags\add($mysqli, $id_users, $id,
-            $tag_names, $text, $interval, $offset);
+        \ScheduleTags\add($mysqli, $id_users, $id, $tag_names,
+            $text, $interval, $offset, $insert_time, $update_time);
     }
 
     include_once __DIR__.'/addNumber.php';
