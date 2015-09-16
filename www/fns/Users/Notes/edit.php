@@ -41,10 +41,11 @@ function edit ($mysqli, $note, $text, $tags,
 
     if ($tag_names) {
         include_once "$fnsDir/NoteTags/add.php";
-        \NoteTags\add($mysqli, $id_users, $id, $tag_names,
-            $text, $encrypted_text, $encrypted_text_iv, $title,
-            $encrypted_title, $encrypted_title_iv, $tags,
-            $encrypt_in_listings, $password_protect);
+        \NoteTags\add($mysqli, $id_users, $id,
+            $tag_names, $text, $encrypted_text,
+            $encrypted_text_iv, $title, $encrypted_title,
+            $encrypted_title_iv, $tags, $encrypt_in_listings,
+            $password_protect, $note->insert_time, $update_time);
     }
 
     if ($note->password_protect && !$password_protect) {
