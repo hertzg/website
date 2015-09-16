@@ -15,7 +15,8 @@ function add ($mysqli, $id_users, $name,
 
     if ($tag_names) {
         include_once "$fnsDir/BarChartTags/add.php";
-        \BarChartTags\add($mysqli, $id_users, $id, $tag_names, $name, $tags);
+        \BarChartTags\add($mysqli, $id_users, $id,
+            $tag_names, $name, $tags, $insert_time, $update_time);
     }
 
     include_once __DIR__.'/addNumber.php';

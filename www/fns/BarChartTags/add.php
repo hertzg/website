@@ -2,13 +2,13 @@
 
 namespace BarChartTags;
 
-function add ($mysqli, $id_users, $id_bar_charts, $tag_names, $name, $tags) {
+function add ($mysqli, $id_users, $id_bar_charts,
+    $tag_names, $name, $tags, $insert_time, $update_time) {
 
     $name = $mysqli->real_escape_string($name);
     $tags = $mysqli->real_escape_string($tags);
     $num_tags = count($tag_names);
     $tags_json = $mysqli->real_escape_string(json_encode($tag_names));
-    $insert_time = $update_time = time();
 
     $sql = 'insert into bar_chart_tags'
         .' (id_users, id_bar_charts, tag_name, name,'

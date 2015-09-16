@@ -21,8 +21,8 @@ function edit ($mysqli, $bar_chart, $name,
 
     if ($tag_names) {
         include_once "$fnsDir/BarChartTags/add.php";
-        \BarChartTags\add($mysqli, $bar_chart->id_users,
-            $id, $tag_names, $name, $tags);
+        \BarChartTags\add($mysqli, $bar_chart->id_users, $id,
+            $tag_names, $name, $tags, $bar_chart->insert_time, $update_time);
     }
 
 }
