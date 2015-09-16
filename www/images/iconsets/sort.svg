@@ -77,10 +77,10 @@
        y1="1077.3622"
        x2="27"
        y2="1055.3622"
-       id="linearGradient5822"
+       id="linearGradient3115"
        xlink:href="#linearGradient5154"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.93358043,-0.35836795,0.35836795,0.93358043,-382.39273,46.485238)" />
+       gradientTransform="matrix(-0.93358043,0.35836795,-0.35836795,-0.93358043,414.44494,2022.4158)" />
   </defs>
   <metadata
      id="metadata7">
@@ -105,10 +105,10 @@
        id="use5574"
        style="fill:url(#radialGradient3383);fill-opacity:1;fill-rule:evenodd;stroke:none" />
     <path
-       d="M 17.537552,1025.5546 17,1024.1542 l 2.800742,-1.0751 0.537552,1.4004 z m 1.325962,3.4543 -0.716736,-1.8672 2.800741,-1.0751 0.716736,1.8672 z m 3.409966,0.5119 2.186045,5.6949 3.734322,-1.4335 0.358368,0.9336 -2.626117,8.5061 -7.643268,-4.5641 -0.358368,-0.9335 3.734322,-1.4335 -2.186045,-5.6948 z"
+       d="m 14.514663,1043.3464 0.537552,1.4004 -2.800742,1.0751 -0.537552,-1.4004 z m -1.325962,-3.4543 0.716736,1.8672 -2.800741,1.0751 -0.716736,-1.8672 z m -3.409966,-0.5119 -2.186045,-5.6949 -3.734322,1.4335 -0.358368,-0.9336 2.626117,-8.5061 7.643268,4.5641 0.358368,0.9335 -3.734322,1.4335 2.186045,5.6948 z"
        inkscape:connector-curvature="0"
        id="path5287"
-       style="fill:url(#linearGradient5822);fill-opacity:1;stroke:#228811;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1" />
+       style="fill:url(#linearGradient3115);fill-opacity:1;stroke:#228811;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1" />
     <use
        transform="translate(32,0)"
        id="use5331"
@@ -126,7 +126,7 @@
        height="32"
        xlink:href="#path5287" />
     <g
-       transform="translate(0.818129,-0.2659845)"
+       transform="translate(13.818029,4.8340155)"
        id="g5725">
       <path
          d="m 46.315978,1029.9196 a 6.0000002,6.0000002 0 0 1 -11.178004,4.3648 6.0000002,6.0000002 0 1 1 11.178004,-4.3648 z"
@@ -165,7 +165,7 @@
          y="40.25"
          id="tspan5736" /></text>
     <g
-       transform="matrix(0.93358043,-0.35836795,0.35836795,0.93358043,-390.97928,37.347173)"
+       transform="matrix(0.93358043,-0.35836795,0.35836795,0.93358043,-378.57928,38.947173)"
        id="g5758">
       <g
          transform="translate(0,1019.8782)"

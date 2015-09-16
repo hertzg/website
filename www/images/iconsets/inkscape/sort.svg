@@ -80,9 +80,9 @@
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient5154"
-       id="linearGradient5822"
+       id="linearGradient3115"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.93358043,-0.35836795,0.35836795,0.93358043,-382.39273,46.485238)"
+       gradientTransform="matrix(-0.93358043,0.35836795,-0.35836795,-0.93358043,414.44494,2022.4158)"
        x1="27"
        y1="1077.3622"
        x2="27"
@@ -95,9 +95,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="4"
-     inkscape:cx="7.9220017"
-     inkscape:cy="6.695334"
+     inkscape:zoom="16"
+     inkscape:cx="35.422316"
+     inkscape:cy="16.033373"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -142,8 +142,8 @@
        sodipodi:nodetypes="cccccccccccccccccccc"
        inkscape:connector-curvature="0"
        id="path5287"
-       d="M 17.537552,1025.5546 17,1024.1542 l 2.800742,-1.0751 0.537552,1.4004 z m 1.325962,3.4543 -0.716736,-1.8672 2.800741,-1.0751 0.716736,1.8672 z m 3.409966,0.5119 2.186045,5.6949 3.734322,-1.4335 0.358368,0.9336 -2.626117,8.5061 -7.643268,-4.5641 -0.358368,-0.9335 3.734322,-1.4335 -2.186045,-5.6948 z"
-       style="fill:url(#linearGradient5822);fill-opacity:1;stroke:#228811;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1" />
+       d="m 14.514663,1043.3464 0.537552,1.4004 -2.800742,1.0751 -0.537552,-1.4004 z m -1.325962,-3.4543 0.716736,1.8672 -2.800741,1.0751 -0.716736,-1.8672 z m -3.409966,-0.5119 -2.186045,-5.6949 -3.734322,1.4335 -0.358368,-0.9336 2.626117,-8.5061 7.643268,4.5641 0.358368,0.9335 -3.734322,1.4335 2.186045,5.6948 z"
+       style="fill:url(#linearGradient3115);fill-opacity:1;stroke:#228811;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1" />
     <use
        x="0"
        y="0"
@@ -162,7 +162,7 @@
        height="32" />
     <g
        id="g5725"
-       transform="translate(0.818129,-0.2659845)">
+       transform="translate(13.818029,4.8340155)">
       <path
          inkscape:connector-curvature="0"
          style="fill:url(#radialGradient5732);fill-opacity:1;stroke:#2a5945;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
@@ -203,7 +203,7 @@
          y="40.25" /></text>
     <g
        id="g5758"
-       transform="matrix(0.93358043,-0.35836795,0.35836795,0.93358043,-390.97928,37.347173)">
+       transform="matrix(0.93358043,-0.35836795,0.35836795,0.93358043,-378.57928,38.947173)">
       <g
          id="text5738"
          style="font-size:10px;font-style:normal;font-weight:bold;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans Bold"
