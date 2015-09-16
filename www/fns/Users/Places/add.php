@@ -20,8 +20,9 @@ function add ($mysqli, $id_users, $latitude, $longitude,
 
     if ($tag_names) {
         include_once "$fnsDir/PlaceTags/add.php";
-        \PlaceTags\add($mysqli, $id_users, $id, $tag_names,
-            $latitude, $longitude, $name, $description, $tags);
+        \PlaceTags\add($mysqli, $id_users, $id,
+            $tag_names, $latitude, $longitude, $name,
+            $description, $tags, $insert_time, $update_time);
     }
 
     include_once __DIR__.'/addNumber.php';

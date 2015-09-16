@@ -39,8 +39,9 @@ function edit ($mysqli, $place, $latitude, $longitude, $altitude,
 
     if ($tag_names) {
         include_once "$fnsDir/PlaceTags/add.php";
-        \PlaceTags\add($mysqli, $place->id_users, $id, $tag_names,
-            $latitude, $longitude, $name, $description, $tags);
+        \PlaceTags\add($mysqli, $place->id_users, $id,
+            $tag_names, $latitude, $longitude, $name,
+            $description, $tags, $place->insert_time, $update_time);
     }
 
 }
