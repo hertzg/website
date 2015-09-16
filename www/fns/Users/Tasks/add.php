@@ -12,9 +12,12 @@ function add ($mysqli, $user, $text, $deadline_time,
     include_once "$fnsDir/text_title.php";
     $title = text_title($text, \Tasks\maxLengths()['title']);
 
+    $insert_time = $update_time = time();
+
     include_once "$fnsDir/Tasks/add.php";
     $id = \Tasks\add($mysqli, $id_users, $text, $title,
-        $deadline_time, $tags, $tag_names, $top_priority, $insertApiKey);
+        $deadline_time, $tags, $tag_names, $top_priority,
+        $insert_time, $update_time, $insertApiKey);
 
     if ($tag_names) {
         include_once "$fnsDir/TaskTags/add.php";

@@ -2,8 +2,9 @@
 
 namespace Tasks;
 
-function add ($mysqli, $id_users, $text, $title, $deadline_time,
-    $tags, $tag_names, $top_priority, $insertApiKey) {
+function add ($mysqli, $id_users, $text, $title,
+    $deadline_time, $tags, $tag_names, $top_priority,
+    $insert_time, $update_time, $insertApiKey) {
 
     $text = $mysqli->real_escape_string($text);
     $title = $mysqli->real_escape_string($title);
@@ -12,7 +13,6 @@ function add ($mysqli, $id_users, $text, $title, $deadline_time,
     $num_tags = count($tag_names);
     $tags_json = $mysqli->real_escape_string(json_encode($tag_names));
     $top_priority = $top_priority ? '1' : '0';
-    $insert_time = $update_time = time();
     if ($insertApiKey === null) {
         $insert_api_key_id = $insert_api_key_name = 'null';
     } else {
