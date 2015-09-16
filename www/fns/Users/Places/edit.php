@@ -25,9 +25,12 @@ function edit ($mysqli, $place, $latitude, $longitude, $altitude,
         $num_points = $place->num_points;
     }
 
+    $update_time = time();
+
     include_once "$fnsDir/Places/edit.php";
-    \Places\edit($mysqli, $id, $latitude, $longitude, $altitude,
-        $name, $description, $tags, $tag_names, $num_points, $updateApiKey);
+    \Places\edit($mysqli, $id, $latitude,
+        $longitude, $altitude, $name, $description, $tags,
+        $tag_names, $num_points, $update_time, $updateApiKey);
 
     if ($place->num_tags) {
         include_once "$fnsDir/PlaceTags/deleteOnPlace.php";
