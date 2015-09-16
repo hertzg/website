@@ -138,6 +138,9 @@ $names = ['transaction', 'create-transaction',
     'edit-transaction', 'transactions', 'duplicate-transaction'];
 render($content, 'transaction.svg?2', $names);
 
+$names = ['sort-alphabetic', 'sort-time'];
+render($content, 'sort.svg', $names);
+
 render($content, 'protocol.svg?1', ['protocol']);
 
 file_put_contents(__DIR__.'/compressed.css', $content);

@@ -11,10 +11,10 @@ function sort_panel ($user, $base = '') {
 
     include_once "$fnsDir/Page/imageLink.php";
     $insertTimeLink = Page\imageLink('Created time',
-        "{$base}submit-sort-created.php$escapedPageQuery", 'generic');
+        "{$base}submit-sort-created.php$escapedPageQuery", 'sort-time');
 
     $updateTimeLink = Page\imageLink('Last modified time',
-        "{$base}submit-sort-last-modified.php$escapedPageQuery", 'generic');
+        "{$base}submit-sort-last-modified.php$escapedPageQuery", 'sort-time');
 
     include_once "$fnsDir/Page/staticTwoColumns.php";
     $content = Page\staticTwoColumns($updateTimeLink, $insertTimeLink);
