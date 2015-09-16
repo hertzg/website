@@ -2,8 +2,9 @@
 
 namespace TaskTags;
 
-function add ($mysqli, $id_users, $id_tasks, $tag_names,
-    $text, $title, $deadline_time, $tags, $top_priority) {
+function add ($mysqli, $id_users, $id_tasks,
+    $tag_names, $text, $title, $deadline_time,
+    $tags, $top_priority, $insert_time, $update_time) {
 
     $text = $mysqli->real_escape_string($text);
     $title = $mysqli->real_escape_string($title);
@@ -12,7 +13,6 @@ function add ($mysqli, $id_users, $id_tasks, $tag_names,
     $num_tags = count($tag_names);
     $tags_json = $mysqli->real_escape_string(json_encode($tag_names));
     $top_priority = $top_priority ? '1' : '0';
-    $insert_time = $update_time = time();
 
     $sql = 'insert into task_tags'
         .' (id_users, id_tasks, tag_name, text, title,'

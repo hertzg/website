@@ -2,14 +2,14 @@
 
 namespace Bookmarks;
 
-function edit ($mysqli, $id, $title, $url, $tags, $tag_names, $updateApiKey) {
+function edit ($mysqli, $id, $title, $url,
+    $tags, $tag_names, $update_time, $updateApiKey) {
 
     $title = $mysqli->real_escape_string($title);
     $url = $mysqli->real_escape_string($url);
     $tags = $mysqli->real_escape_string($tags);
     $num_tags = count($tag_names);
     $tags_json = $mysqli->real_escape_string(json_encode($tag_names));
-    $update_time = time();
     if ($updateApiKey) {
 
         $update_api_key_id = $updateApiKey->id;

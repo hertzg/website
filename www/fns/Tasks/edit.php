@@ -3,7 +3,7 @@
 namespace Tasks;
 
 function edit ($mysqli, $id, $text, $title, $deadline_time,
-    $tags, $tag_names, $top_priority, $updateApiKey) {
+    $tags, $tag_names, $top_priority, $update_time, $updateApiKey) {
 
     $text = $mysqli->real_escape_string($text);
     $title = $mysqli->real_escape_string($title);
@@ -12,7 +12,6 @@ function edit ($mysqli, $id, $text, $title, $deadline_time,
     $num_tags = count($tag_names);
     $tags_json = $mysqli->real_escape_string(json_encode($tag_names));
     $top_priority = $top_priority ? '1' : '0';
-    $update_time = time();
     if ($updateApiKey === null) {
         $update_api_key_id = $update_api_key_name = 'null';
     } else {

@@ -2,9 +2,10 @@
 
 namespace NoteTags;
 
-function add ($mysqli, $id_users, $id_notes, $tag_names,
-    $text, $encrypted_text, $encrypted_text_iv, $title, $encrypted_title,
-    $encrypted_title_iv, $tags, $encrypt_in_listings, $password_protect) {
+function add ($mysqli, $id_users, $id_notes,
+    $tag_names, $text, $encrypted_text, $encrypted_text_iv,
+    $title, $encrypted_title, $encrypted_title_iv, $tags,
+    $encrypt_in_listings, $password_protect, $insert_time, $update_time) {
 
     $text = $mysqli->real_escape_string($text);
     if ($encrypted_text === null) {
@@ -24,7 +25,6 @@ function add ($mysqli, $id_users, $id_notes, $tag_names,
     $tags_json = $mysqli->real_escape_string(json_encode($tag_names));
     $encrypt_in_listings = $encrypt_in_listings ? '1' : '0';
     $password_protect = $password_protect ? '1' : '0';
-    $insert_time = $update_time = time();
 
     $sql = 'insert into note_tags'
         .' (id_users, id_notes, tag_name, text,'

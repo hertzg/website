@@ -2,9 +2,11 @@
 
 namespace Notes;
 
-function add ($mysqli, $id_users, $text, $encrypted_text,
-    $encrypted_text_iv, $title, $encrypted_title, $encrypted_title_iv, $tags,
-    $tag_names, $encrypt_in_listings, $password_protect, $insertApiKey) {
+function add ($mysqli, $id_users, $text,
+    $encrypted_text, $encrypted_text_iv, $title,
+    $encrypted_title, $encrypted_title_iv, $tags,
+    $tag_names, $encrypt_in_listings, $password_protect,
+    $insert_time, $update_time, $insertApiKey) {
 
     $text = $mysqli->real_escape_string($text);
     if ($encrypted_text === null) {
@@ -24,7 +26,6 @@ function add ($mysqli, $id_users, $text, $encrypted_text,
     $tags_json = $mysqli->real_escape_string(json_encode($tag_names));
     $encrypt_in_listings = $encrypt_in_listings ? '1' : '0';
     $password_protect = $password_protect ? '1' : '0';
-    $insert_time = $update_time = time();
     if ($insertApiKey === null) {
         $insert_api_key_id = $insert_api_key_name = 'null';
     } else {

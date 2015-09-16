@@ -3,13 +3,12 @@
 namespace Schedules;
 
 function edit ($mysqli, $id, $text, $interval,
-    $offset, $tags, $tag_names, $updateApiKey) {
+    $offset, $tags, $tag_names, $update_time, $updateApiKey) {
 
     $text = $mysqli->real_escape_string($text);
     $tags = $mysqli->real_escape_string($tags);
     $num_tags = count($tag_names);
     $tags_json = $mysqli->real_escape_string(json_encode($tag_names));
-    $update_time = time();
     if ($updateApiKey === null) {
         $update_api_key_id = $update_api_key_name = 'null';
     } else {

@@ -8,9 +8,11 @@ function edit ($mysqli, $user, $schedule, $text,
     $id = $schedule->id;
     $fnsDir = __DIR__.'/../..';
 
+    $update_time = time();
+
     include_once "$fnsDir/Schedules/edit.php";
-    \Schedules\edit($mysqli, $id, $text,
-        $interval, $offset, $tags, $tag_names, $updateApiKey);
+    \Schedules\edit($mysqli, $id, $text, $interval,
+        $offset, $tags, $tag_names, $update_time, $updateApiKey);
 
     if ($schedule->num_tags) {
         include_once "$fnsDir/ScheduleTags/deleteOnSchedule.php";
@@ -19,8 +21,8 @@ function edit ($mysqli, $user, $schedule, $text,
 
     if ($tag_names) {
         include_once "$fnsDir/ScheduleTags/add.php";
-        \ScheduleTags\add($mysqli, $schedule->id_users,
-            $id, $tag_names, $text, $interval, $offset);
+        \ScheduleTags\add($mysqli, $schedule->id_users, $id, $tag_names,
+            $text, $interval, $offset, $schedule->insert_time, $update_time);
     }
 
     include_once "$fnsDir/days_left_from_today.php";

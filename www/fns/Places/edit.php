@@ -2,8 +2,9 @@
 
 namespace Places;
 
-function edit ($mysqli, $id, $latitude, $longitude, $altitude,
-    $name, $description, $tags, $tag_names, $num_points, $updateApiKey) {
+function edit ($mysqli, $id, $latitude,
+    $longitude, $altitude, $name, $description, $tags,
+    $tag_names, $num_points, $update_time, $updateApiKey) {
 
     if ($altitude === null) $altitude = 'null';
     $name = $mysqli->real_escape_string($name);
@@ -11,7 +12,6 @@ function edit ($mysqli, $id, $latitude, $longitude, $altitude,
     $tags = $mysqli->real_escape_string($tags);
     $num_tags = count($tag_names);
     $tags_json = $mysqli->real_escape_string(json_encode($tag_names));
-    $update_time = time();
     if ($updateApiKey === null) {
         $update_api_key_id = $update_api_key_name = 'null';
     } else {

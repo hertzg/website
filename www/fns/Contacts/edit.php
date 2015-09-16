@@ -4,7 +4,7 @@ namespace Contacts;
 
 function edit ($mysqli, $id, $full_name, $alias, $address,
     $email, $phone1, $phone2, $birthday_time, $username, $timezone,
-    $tags, $tag_names, $notes, $favorite, $updateApiKey) {
+    $tags, $tag_names, $notes, $favorite, $update_time, $updateApiKey) {
 
     $full_name = $mysqli->real_escape_string($full_name);
     $alias = $mysqli->real_escape_string($alias);
@@ -25,7 +25,6 @@ function edit ($mysqli, $id, $full_name, $alias, $address,
     $tags_json = $mysqli->real_escape_string(json_encode($tag_names));
     $notes = $mysqli->real_escape_string($notes);
     $favorite = $favorite ? '1' : '0';
-    $update_time = time();
     if ($updateApiKey === null) {
         $update_api_key_id = $update_api_key_name = 'null';
     } else {

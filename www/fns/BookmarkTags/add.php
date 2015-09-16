@@ -2,11 +2,11 @@
 
 namespace BookmarkTags;
 
-function add ($mysqli, $id_users, $id_bookmarks, $tag_names, $url, $title) {
+function add ($mysqli, $id_users, $id_bookmarks,
+    $tag_names, $url, $title, $insert_time, $update_time) {
 
     $url = $mysqli->real_escape_string($url);
     $title = $mysqli->real_escape_string($title);
-    $insert_time = $update_time = time();
 
     $sql = 'insert into bookmark_tags (id_users, id_bookmarks, tag_name,'
         .' url, title, insert_time, update_time) values ';

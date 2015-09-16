@@ -24,18 +24,22 @@ function add ($mysqli, $id_users, $text, $tags,
             $encrypted_title = $encrypted_title_iv = null;
     }
 
+    $insert_time = $update_time = time();
+
     include_once "$fnsDir/Notes/add.php";
     $id = \Notes\add($mysqli, $id_users, $text,
         $encrypted_text, $encrypted_text_iv, $title,
-        $encrypted_title, $encrypted_title_iv, $tags, $tag_names,
-        $encrypt_in_listings, $password_protect, $insertApiKey);
+        $encrypted_title, $encrypted_title_iv, $tags,
+        $tag_names, $encrypt_in_listings, $password_protect,
+        $insert_time, $update_time, $insertApiKey);
 
     if ($tag_names) {
         include_once "$fnsDir/NoteTags/add.php";
-        \NoteTags\add($mysqli, $id_users, $id, $tag_names,
-            $text, $encrypted_text, $encrypted_text_iv, $title,
-            $encrypted_title, $encrypted_title_iv, $tags,
-            $encrypt_in_listings, $password_protect);
+        \NoteTags\add($mysqli, $id_users, $id,
+            $tag_names, $text, $encrypted_text,
+            $encrypted_text_iv, $title, $encrypted_title,
+            $encrypted_title_iv, $tags, $encrypt_in_listings,
+            $password_protect, $insert_time, $update_time);
     }
 
     include_once __DIR__.'/addNumber.php';

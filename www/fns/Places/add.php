@@ -2,8 +2,9 @@
 
 namespace Places;
 
-function add ($mysqli, $id_users, $latitude, $longitude,
-    $altitude, $name, $description, $tags, $tag_names, $insertApiKey) {
+function add ($mysqli, $id_users, $latitude,
+    $longitude, $altitude, $name, $description, $tags,
+    $tag_names, $insert_time, $update_time, $insertApiKey) {
 
     if ($altitude === null) $altitude = 'null';
     $name = $mysqli->real_escape_string($name);
@@ -11,7 +12,6 @@ function add ($mysqli, $id_users, $latitude, $longitude,
     $tags = $mysqli->real_escape_string($tags);
     $num_tags = count($tag_names);
     $tags_json = $mysqli->real_escape_string(json_encode($tag_names));
-    $insert_time = $update_time = time();
     if ($insertApiKey === null) {
         $insert_api_key_id = $insert_api_key_name = 'null';
     } else {

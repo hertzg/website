@@ -11,6 +11,8 @@ function addDeleted ($mysqli, $user, $data) {
     $deadline_time = $data->deadline_time;
     $tags = $data->tags;
     $top_priority = $data->top_priority;
+    $insert_time = $data->insert_time;
+    $update_time = $data->update_time;
 
     $fnsDir = __DIR__.'/../..';
 
@@ -20,12 +22,13 @@ function addDeleted ($mysqli, $user, $data) {
     include_once "$fnsDir/Tasks/addDeleted.php";
     \Tasks\addDeleted($mysqli, $id, $id_users, $text,
         $title, $deadline_time, $tags, $tag_names, $top_priority,
-        $data->insert_time, $data->update_time, $data->revision);
+        $insert_time, $update_time, $data->revision);
 
     if ($tag_names) {
         include_once "$fnsDir/TaskTags/add.php";
-        \TaskTags\add($mysqli, $id_users, $id, $tag_names,
-            $text, $title, $deadline_time, $tags, $top_priority);
+        \TaskTags\add($mysqli, $id_users, $id,
+            $tag_names, $text, $title, $deadline_time,
+            $tags, $top_priority, $insert_time, $update_time);
     }
 
     include_once __DIR__.'/addNumber.php';
