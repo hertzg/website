@@ -21,8 +21,9 @@ function add ($mysqli, $user, $text, $deadline_time,
 
     if ($tag_names) {
         include_once "$fnsDir/TaskTags/add.php";
-        \TaskTags\add($mysqli, $id_users, $id, $tag_names,
-            $text, $title, $deadline_time, $tags, $top_priority);
+        \TaskTags\add($mysqli, $id_users, $id,
+            $tag_names, $text, $title, $deadline_time,
+            $tags, $top_priority, $insert_time, $update_time);
     }
 
     include_once __DIR__.'/addNumber.php';

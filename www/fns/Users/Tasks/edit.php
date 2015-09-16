@@ -25,8 +25,9 @@ function edit ($mysqli, $user, $task, $text, $deadline_time,
 
     if ($tag_names) {
         include_once "$fnsDir/TaskTags/add.php";
-        \TaskTags\add($mysqli, $task->id_users, $id, $tag_names,
-            $text, $title, $deadline_time, $tags, $top_priority);
+        \TaskTags\add($mysqli, $task->id_users, $id,
+            $tag_names, $text, $title, $deadline_time,
+            $tags, $top_priority, $task->insert_time, $update_time);
     }
 
     if ($task->deadline_time) {
