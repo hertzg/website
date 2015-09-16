@@ -5,7 +5,7 @@ namespace Notes;
 function edit ($mysqli, $id, $text,
     $encrypted_text, $encrypted_text_iv, $title, $encrypted_title,
     $encrypted_title_iv, $tags, $tag_names, $encrypt_in_listings,
-    $password_protect, $updateApiKey) {
+    $password_protect, $update_time, $updateApiKey) {
 
     $text = $mysqli->real_escape_string($text);
     if ($encrypted_text === null) {
@@ -25,7 +25,6 @@ function edit ($mysqli, $id, $text,
     $tags_json = $mysqli->real_escape_string(json_encode($tag_names));
     $encrypt_in_listings = $encrypt_in_listings ? '1' : '0';
     $password_protect = $password_protect ? '1' : '0';
-    $update_time = time();
     if ($updateApiKey === null) {
         $update_api_key_id = $update_api_key_name = 'null';
     } else {
