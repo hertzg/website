@@ -58,6 +58,11 @@ function ensure ($mysqli) {
             'type' => 'bigint(20) unsigned',
             'nullable' => true,
         ],
+        'notes_order_by' => [
+            'type' => 'varchar(50)',
+            'characterSet' => 'ascii',
+            'collation' => 'ascii_general_ci',
+        ],
         'num_api_keys' => ['type' => 'bigint(20) unsigned'],
         'num_archived_received_bookmarks' => ['type' => 'bigint(20) unsigned'],
         'num_archived_received_contacts' => ['type' => 'bigint(20) unsigned'],

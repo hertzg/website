@@ -6,6 +6,7 @@ function create ($mysqli, $user) {
 
     $fnsDir = __DIR__.'/../../../fns';
     $id_users = $user->id_users;
+    $order_by = $user->notes_order_by;
 
     include_once "$fnsDir/request_valid_keyword_tag_offset.php";
     list($keyword, $tag, $offset) = request_valid_keyword_tag_offset();
@@ -26,8 +27,8 @@ function create ($mysqli, $user) {
         $filterMessage = '';
 
         include_once "$fnsDir/Notes/searchPage.php";
-        $notes = \Notes\searchPage($mysqli,
-            $id_users, $keyword, $offset, $limit, $total);
+        $notes = \Notes\searchPage($mysqli, $id_users,
+            $keyword, $offset, $limit, $total, $order_by);
 
         $formContent = \SearchForm\content($keyword, $searchPlaceholder, '..');
         $items[] = \SearchForm\create($searchAction, $formContent);
@@ -50,7 +51,7 @@ function create ($mysqli, $user) {
 
         include_once "$fnsDir/NoteTags/searchPageOnUserTagName.php";
         $notes = \NoteTags\searchPageOnUserTagName($mysqli,
-            $id_users, $keyword, $tag, $offset, $limit, $total);
+            $id_users, $keyword, $tag, $offset, $limit, $total, $order_by);
 
         include_once "$fnsDir/Form/hidden.php";
         $clearHref = '../?tag='.rawurlencode($tag);
