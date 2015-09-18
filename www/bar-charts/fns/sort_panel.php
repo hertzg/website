@@ -16,8 +16,14 @@ function sort_panel ($user, $base = '') {
     $updateTimeLink = Page\imageLink('Last modified time',
         "{$base}submit-sort-last-modified.php$escapedPageQuery", 'sort-time');
 
+    $nameLink = Page\imageLink('Name',
+        "{$base}submit-sort-name.php$escapedPageQuery", 'sort-alphabetic');
+
     include_once "$fnsDir/Page/twoColumns.php";
-    $content = Page\twoColumns($updateTimeLink, $insertTimeLink);
+    $content =
+        Page\twoColumns($nameLink, $updateTimeLink)
+        .'<div class="hr"></div>'
+        .$insertTimeLink;
 
     include_once "$fnsDir/create_panel.php";
     return create_panel('Sort Bar Charts By', $content);
