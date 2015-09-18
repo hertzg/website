@@ -5,6 +5,7 @@ function create_content ($content, $user, $base, $searchForm) {
     $fnsDir = __DIR__.'/../../fns';
 
     include_once __DIR__.'/create_options_panel.php';
+    include_once __DIR__.'/sort_panel.php';
     include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
@@ -20,6 +21,7 @@ function create_content ($content, $user, $base, $searchForm) {
         Page\sessionErrors('wallets/errors')
         .Page\sessionMessages('wallets/messages')
         .$content
+        .sort_panel($user, $base)
         .create_options_panel($user, $base),
         create_new_item_button('Wallet', $base)
     );

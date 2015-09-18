@@ -2,7 +2,8 @@
 
 namespace Wallets;
 
-function indexPageOnUser ($mysqli, $id_users, $offset, $limit, &$total) {
+function indexPageOnUser ($mysqli, $id_users,
+    $offset, $limit, &$total, $order_by) {
 
     $fnsDir = __DIR__.'/..';
 
@@ -14,7 +15,7 @@ function indexPageOnUser ($mysqli, $id_users, $offset, $limit, &$total) {
 
     if ($offset >= $total) return [];
 
-    $sql = "select * $fromWhere order by update_time desc"
+    $sql = "select * $fromWhere order by $order_by"
         ." limit $limit offset $offset";
     include_once "$fnsDir/mysqli_query_object.php";
     return mysqli_query_object($mysqli, $sql);

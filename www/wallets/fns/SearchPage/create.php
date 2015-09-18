@@ -18,8 +18,8 @@ function create ($mysqli, $user) {
     include_once "$fnsDir/SearchForm/create.php";
 
     include_once "$fnsDir/Wallets/searchPage.php";
-    $wallets = \Wallets\searchPage($mysqli,
-        $user->id_users, $keyword, $offset, $limit, $total);
+    $wallets = \Wallets\searchPage($mysqli, $user->id_users,
+        $keyword, $offset, $limit, $total, $user->wallets_order_by);
 
     $formContent = \SearchForm\content($keyword, 'Search wallet...', '..');
     $items[] = \SearchForm\create('./', $formContent);
@@ -43,6 +43,7 @@ function create ($mysqli, $user) {
     unset_session_vars();
 
     include_once __DIR__.'/../create_options_panel.php';
+    include_once __DIR__.'/../sort_panel.php';
     include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/compressed_js_script.php";
     include_once "$fnsDir/Page/sessionMessages.php";
@@ -60,6 +61,7 @@ function create ($mysqli, $user) {
             .join('<div class="hr"></div>', $items),
             create_new_item_button('Wallet', '../')
         )
+        .sort_panel($user, '../')
         .create_options_panel($user, '../')
         .compressed_js_script('searchForm', '../../');
 

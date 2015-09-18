@@ -203,6 +203,11 @@ function ensure ($mysqli) {
             'type' => 'bigint(20) unsigned',
             'nullable' => true,
         ],
+        'wallets_order_by' => [
+            'type' => 'varchar(50)',
+            'characterSet' => 'ascii',
+            'collation' => 'ascii_general_ci',
+        ],
     ]);
 
 }
