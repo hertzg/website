@@ -33,16 +33,16 @@
     -webkit-transform: rotate(-21deg);
 }
 
-.newItemMenu-icon > * {
+.newItemMenu-icon-line {
     position: absolute;
 }
-.newItemMenu-icon > .horizontal {
+.newItemMenu-icon-line.horizontal {
     top: 6px;
     left: 0;
     width: 16px;
     height: 4px;
 }
-.newItemMenu-icon > .vertical {
+.newItemMenu-icon-line.vertical {
     top: 0;
     left: 6px;
     width: 4px;

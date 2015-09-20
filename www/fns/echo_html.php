@@ -53,9 +53,9 @@ function echo_html ($title, $head, $body,
                 .compressed_css_link('common', $base)
                 .compressed_css_link('iconsets', $base)
                 .'<link rel="stylesheet" type="text/css"'
-                ." href=\"{$base}theme/color/$theme_color/common.css?24\" />"
+                ." href=\"{$base}theme/color/$theme_color/common.css?25\" />"
                 .'<link rel="stylesheet" type="text/css"'
-                ." href=\"{$base}theme/brightness/$theme_brightness/common.css\" />"
+                ." href=\"{$base}theme/brightness/$theme_brightness/common.css?1\" />"
                 .$head
             .'</head>'
             .'<body>'
