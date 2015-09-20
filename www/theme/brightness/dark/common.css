@@ -42,8 +42,8 @@
 .newItemMenu-text {
     color: #ccc;
 }
-.newItemButton-icon > .background,
-.newItemMenu-icon > .background {
+.newItemButton-icon-line,
+.newItemMenu-icon-line {
     background-color: #ccc;
 }
 

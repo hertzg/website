@@ -33,25 +33,24 @@
     -webkit-transform: rotate(-21deg);
 }
 
-.newItemButton-icon > * {
+.newItemButton-icon-line {
     position: absolute;
 }
-.newItemButton-icon > .horizontal {
+
+.newItemButton-icon-line.horizontal {
     top: 6px;
     left: 0;
     width: 16px;
     height: 4px;
 }
-.newItemButton-icon > .vertical {
+.newItemButton-icon-line.vertical {
+    position: absolute;
     top: 0;
     left: 6px;
     width: 4px;
     height: 16px;
 }
-.newItemButton:active > .newItemButton-icon > .background {
-    background: transparent;
-}
-.newItemButton:active > .newItemButton-icon > .foreground {
+.newItemButton:active > .newItemButton-icon > .newItemButton-icon-line {
     background: #fff;
 }
 
