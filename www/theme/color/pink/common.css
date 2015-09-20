@@ -4,7 +4,9 @@
 .form-select:focus,
 .form-textfield:focus,
 .form-textarea:focus,
-.topLink:focus {
+.topLink:focus,
+.newItemButton:focus,
+.newItemMenu-button:focus {
     border-color: #f6a;
     background-color: rgba(255, 102, 170, 0.2);
 }
