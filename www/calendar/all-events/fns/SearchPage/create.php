@@ -17,8 +17,8 @@ function create ($mysqli, $user, &$scripts) {
     $limit = \Paging\limit();
 
     include_once "$fnsDir/Users/Events/searchPage.php";
-    $events = \Users\Events\searchPage(
-        $mysqli, $user, $keyword, $offset, $limit, $total);
+    $events = \Users\Events\searchPage($mysqli, $user,
+        $keyword, $offset, $limit, $total, $user->events_order_by);
 
     include_once "$fnsDir/SearchForm/content.php";
     $formContent = \SearchForm\content($keyword, 'Search events...', '../');
@@ -58,6 +58,7 @@ function create ($mysqli, $user, &$scripts) {
                 "../delete-all/$escapedPageQuery", 'trash-bin')
         .'</div>';
 
+    include_once __DIR__.'/../sort_panel.php';
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionMessages.php";
@@ -72,6 +73,7 @@ function create ($mysqli, $user, &$scripts) {
         'All Events',
         \Page\sessionMessages('calendar/all-events/messages')
         .join('<div class="hr"></div>', $items)
+        .sort_panel($user, '../')
         .create_panel('Options', $deleteLink),
         \Page\newItemButton("../new/$escapedPageQuery", 'Event')
     );

@@ -55,6 +55,11 @@ function ensure ($mysqli) {
         'encryption_key' => \EncryptionKey\column(),
         'encryption_key_iv' => \EncryptionKey\ivColumn(),
         'events_check_day' => ['type' => 'bigint(20) unsigned'],
+        'events_order_by' => [
+            'type' => 'varchar(50)',
+            'characterSet' => 'ascii',
+            'collation' => 'ascii_general_ci',
+        ],
         'full_name' => \FullName\column(),
         'home_num_new_notifications' => ['type' => 'bigint(20) unsigned'],
         'home_num_new_received_bookmarks' => ['type' => 'bigint(20) unsigned'],
