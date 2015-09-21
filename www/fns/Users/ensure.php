@@ -30,7 +30,22 @@ function ensure ($mysqli) {
         'anonymous_can_send_place' => ['type' => 'tinyint(3) unsigned'],
         'anonymous_can_send_task' => ['type' => 'tinyint(3) unsigned'],
         'balance_total' => ['type' => 'bigint(20)'],
+        'bar_charts_order_by' => [
+            'type' => 'varchar(50)',
+            'characterSet' => 'ascii',
+            'collation' => 'ascii_general_ci',
+        ],
+        'bookmarks_order_by' => [
+            'type' => 'varchar(50)',
+            'characterSet' => 'ascii',
+            'collation' => 'ascii_general_ci',
+        ],
         'birthdays_check_day' => ['type' => 'bigint(20) unsigned'],
+        'contacts_order_by' => [
+            'type' => 'varchar(50)',
+            'characterSet' => 'ascii',
+            'collation' => 'ascii_general_ci',
+        ],
         'email' => \Email\column(),
         'email_expire_time' => [
             'type' => 'bigint(20) unsigned',
@@ -40,6 +55,11 @@ function ensure ($mysqli) {
         'encryption_key' => \EncryptionKey\column(),
         'encryption_key_iv' => \EncryptionKey\ivColumn(),
         'events_check_day' => ['type' => 'bigint(20) unsigned'],
+        'events_order_by' => [
+            'type' => 'varchar(50)',
+            'characterSet' => 'ascii',
+            'collation' => 'ascii_general_ci',
+        ],
         'full_name' => \FullName\column(),
         'home_num_new_notifications' => ['type' => 'bigint(20) unsigned'],
         'home_num_new_received_bookmarks' => ['type' => 'bigint(20) unsigned'],
@@ -57,6 +77,11 @@ function ensure ($mysqli) {
         'last_login_time' => [
             'type' => 'bigint(20) unsigned',
             'nullable' => true,
+        ],
+        'notes_order_by' => [
+            'type' => 'varchar(50)',
+            'characterSet' => 'ascii',
+            'collation' => 'ascii_general_ci',
         ],
         'num_api_keys' => ['type' => 'bigint(20) unsigned'],
         'num_archived_received_bookmarks' => ['type' => 'bigint(20) unsigned'],
@@ -122,6 +147,11 @@ function ensure ($mysqli) {
             'type' => 'binary(64)',
             'nullable' => true,
         ],
+        'places_order_by' => [
+            'type' => 'varchar(50)',
+            'characterSet' => 'ascii',
+            'collation' => 'ascii_general_ci',
+        ],
         'reset_password_key' => \LinkKey\column(true),
         'reset_password_key_time' => [
             'type' => 'bigint(20) unsigned',
@@ -133,6 +163,11 @@ function ensure ($mysqli) {
             'collation' => 'utf8_unicode_ci',
         ],
         'schedules_check_day' => ['type' => 'bigint(20) unsigned'],
+        'schedules_order_by' => [
+            'type' => 'varchar(50)',
+            'characterSet' => 'ascii',
+            'collation' => 'ascii_general_ci',
+        ],
         'show_bar_charts' => ['type' => 'tinyint(3) unsigned'],
         'show_bookmarks' => ['type' => 'tinyint(3) unsigned'],
         'show_calendar' => ['type' => 'tinyint(3) unsigned'],
@@ -159,6 +194,11 @@ function ensure ($mysqli) {
         'show_wallets' => ['type' => 'tinyint(3) unsigned'],
         'storage_used' => ['type' => 'bigint(20) unsigned'],
         'task_deadlines_check_day' => ['type' => 'bigint(20) unsigned'],
+        'tasks_order_by' => [
+            'type' => 'varchar(50)',
+            'characterSet' => 'ascii',
+            'collation' => 'ascii_general_ci',
+        ],
         'theme_brightness' => \Theme\Brightness\column(),
         'theme_color' => \Theme\Color\column(),
         'timezone' => ['type' => 'int(11)'],
@@ -167,6 +207,11 @@ function ensure ($mysqli) {
         'verify_email_key_time' => [
             'type' => 'bigint(20) unsigned',
             'nullable' => true,
+        ],
+        'wallets_order_by' => [
+            'type' => 'varchar(50)',
+            'characterSet' => 'ascii',
+            'collation' => 'ascii_general_ci',
         ],
     ]);
 

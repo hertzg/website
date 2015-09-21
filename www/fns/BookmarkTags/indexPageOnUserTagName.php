@@ -3,7 +3,7 @@
 namespace BookmarkTags;
 
 function indexPageOnUserTagName ($mysqli, $id_users,
-    $tag_name, $offset, $limit, &$total) {
+    $tag_name, $offset, $limit, &$total, $order_by) {
 
     $fnsDir = __DIR__.'/..';
 
@@ -18,8 +18,8 @@ function indexPageOnUserTagName ($mysqli, $id_users,
 
     if ($offset >= $total) return [];
 
-    $sql = "select *, id_bookmarks id $fromWhere order by update_time desc"
-        ." limit $limit offset $offset";
+    $sql = "select *, id_bookmarks id $fromWhere"
+        ." order by $order_by limit $limit offset $offset";
     include_once "$fnsDir/mysqli_query_object.php";
     return mysqli_query_object($mysqli, $sql);
 

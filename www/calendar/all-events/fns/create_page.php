@@ -26,8 +26,8 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
     }
 
     include_once "$fnsDir/Events/indexPageOnUser.php";
-    $events = Events\indexPageOnUser($mysqli,
-        $user->id_users, $offset, $limit, $total);
+    $events = Events\indexPageOnUser($mysqli, $user->id_users,
+        $offset, $limit, $total, $user->events_order_by);
 
     include_once __DIR__.'/render_prev_button.php';
     render_prev_button($offset, $limit, $total, $items);
@@ -64,6 +64,7 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
         $_SESSION['calendar/messages']
     );
 
+    include_once __DIR__.'/sort_panel.php';
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionErrors.php";
@@ -83,6 +84,7 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
             .join('<div class="hr"></div>', $items),
             Page\newItemButton("{$base}new/$escapedPageQuery", 'Event')
         )
+        .sort_panel($user, $base)
         .create_panel('Options', $deleteLink);
 
 }

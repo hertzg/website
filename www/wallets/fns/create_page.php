@@ -21,8 +21,8 @@ function create_page ($mysqli, $user, $base = '') {
         check_offset_overflow($offset, $limit, $total);
 
         include_once "$fnsDir/Wallets/indexPageOnUser.php";
-        $wallets = Wallets\indexPageOnUser($mysqli,
-            $user->id_users, $offset, $limit, $total);
+        $wallets = Wallets\indexPageOnUser($mysqli, $user->id_users,
+            $offset, $limit, $total, $user->wallets_order_by);
 
         if ($total > 1) {
 

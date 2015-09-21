@@ -2,7 +2,8 @@
 
 namespace Contacts;
 
-function searchPage ($mysqli, $id_users, $keyword, $offset, $limit, &$total) {
+function searchPage ($mysqli, $id_users,
+    $keyword, $offset, $limit, &$total, $order_by) {
 
     $fnsDir = __DIR__.'/..';
 
@@ -21,7 +22,7 @@ function searchPage ($mysqli, $id_users, $keyword, $offset, $limit, &$total) {
 
     if ($offset >= $total) return [];
 
-    $sql = "select * $fromWhere order by favorite desc, full_name"
+    $sql = "select * $fromWhere order by favorite desc, $order_by"
         ." limit $limit offset $offset";
     include_once "$fnsDir/mysqli_query_object.php";
     return mysqli_query_object($mysqli, $sql);

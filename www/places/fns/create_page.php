@@ -4,6 +4,7 @@ function create_page ($mysqli, $user, $base = '') {
 
     $fnsDir = __DIR__.'/../../fns';
     $id_users = $user->id_users;
+    $order_by = $user->places_order_by;
 
     include_once "$fnsDir/request_strings.php";
     list($tag) = request_strings('tag');
@@ -27,7 +28,7 @@ function create_page ($mysqli, $user, $base = '') {
 
         include_once "$fnsDir/Places/indexPageOnUser.php";
         $places = Places\indexPageOnUser($mysqli,
-            $id_users, $offset, $limit, $total);
+            $id_users, $offset, $limit, $total, $order_by);
 
         if ($total > 1) {
 
@@ -52,7 +53,7 @@ function create_page ($mysqli, $user, $base = '') {
 
         include_once "$fnsDir/PlaceTags/indexPageOnUserTagName.php";
         $places = PlaceTags\indexPageOnUserTagName($mysqli,
-            $id_users, $tag, $offset, $limit, $total);
+            $id_users, $tag, $offset, $limit, $total, $order_by);
 
         if ($total > 1) {
 

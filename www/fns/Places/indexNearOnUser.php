@@ -21,7 +21,7 @@ function indexNearOnUser ($mysqli, $id_users,
     }
 
     usort($places, function ($a, $b) {
-        return $a->distance > $b->distance ? 1 : -1;
+        return $a->distance - $b->distance;
     });
 
     $places = array_slice($places, 0, $limit);
