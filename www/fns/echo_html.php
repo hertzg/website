@@ -55,7 +55,7 @@ function echo_html ($title, $head, $body,
                 .'<link rel="stylesheet" type="text/css"'
                 ." href=\"{$base}theme/color/$theme_color/common.css?25\" />"
                 .'<link rel="stylesheet" type="text/css"'
-                ." href=\"{$base}theme/brightness/$theme_brightness/common.css?1\" />"
+                ." href=\"{$base}theme/brightness/$theme_brightness/common.css?2\" />"
                 .$head
             .'</head>'
             .'<body>'
