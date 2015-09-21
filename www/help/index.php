@@ -35,7 +35,7 @@ $content = Page\tabs(
         'api-doc/', 'generic', ['id' => 'api-doc'])
     .'<div class="hr"></div>'
     .Page\imageArrowLink('About Zvini',
-        'about-zvini/', 'generic', ['id' => 'about-zvini'])
+        'about-zvini/', 'zvini', ['id' => 'about-zvini'])
 );
 
 include_once '../fns/echo_public_page.php';
