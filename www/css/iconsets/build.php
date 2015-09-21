@@ -20,6 +20,9 @@ include_once '../../../lib/cli.php';
 $names = ['api-key', 'create-api-key', 'edit-api-key', 'api-keys'];
 render($content, 'api-key.svg?2', $names);
 
+$names = ['archive', 'unarchive', 'archive-file'];
+render($content, 'archive.svg?3', $names);
+
 $names = ['bar', 'create-bar', 'edit-bar', 'bars', 'duplicate-bar'];
 render($content, 'bar.svg?2', $names);
 
@@ -43,6 +46,12 @@ render($content, 'connection.svg?2', $names);
 $names = ['contact', 'create-contact', 'edit-contact',
     'favorite-contact', 'contacts', 'import-contact', 'duplicate-contact'];
 render($content, 'contact.svg?4', $names);
+
+$names = ['edit-contact-photo', 'clear-contact-photo'];
+render($content, 'contact-photo.svg?1', $names);
+
+$names = ['rotate-image-cw', 'rotate-image-ccw'];
+render($content, 'edit-image.svg?1', $names);
 
 $names = ['event', 'create-event', 'edit-event', 'events', 'duplicate-event'];
 render($content, 'event.svg?3', $names);
@@ -68,6 +77,18 @@ $names = ['note', 'create-note', 'edit-note',
     'encrypted-note', 'notes', 'import-note', 'duplicate-note'];
 render($content, 'note.svg?5', $names);
 
+$names = ['notification', 'create-notification', 'old-notification'];
+render($content, 'notification.svg', $names);
+
+$names = ['account', 'edit-profile', 'download', 'upload', 'feedback',
+    'yes', 'no', 'rename', 'sign-in', 'sign-ins', 'arrow-right', 'arrow-left',
+    'search', 'search-folder', 'birthday-cake', 'checkbox',
+    'checked-checkbox', 'help', 'run', 'mail', 'sms', 'send',
+    'send-sms', 'receive', 'phone', 'edit-home', 'reorder',
+    'show-hide', 'restore-defaults', 'forbid-notifications',
+    'receive-notifications', 'generic', 'slideshow', 'locate'];
+render($content, 'other.svg?19', $names);
+
 $names = ['place', 'create-place', 'edit-place',
     'places', 'import-place', 'duplicate-place', 'place-on-earth'];
 render($content, 'place.svg?3', $names);
@@ -75,19 +96,14 @@ render($content, 'place.svg?3', $names);
 $names = ['point', 'create-point', 'edit-point', 'points'];
 render($content, 'point.svg?1', $names);
 
-$names = ['account', 'edit-profile', 'download', 'upload', 'feedback',
-    'yes', 'no', 'notification', 'create-notification', 'old-notification',
-    'rename', 'sign-in', 'sign-ins', 'arrow-right', 'arrow-left',
-    'search', 'search-folder', 'birthday-cake', 'checkbox',
-    'checked-checkbox', 'help', 'run', 'mail', 'sms', 'send',
-    'send-sms', 'receive', 'phone', 'edit-home', 'reorder',
-    'show-hide', 'restore-defaults', 'forbid-notifications',
-    'receive-notifications', 'generic', 'slideshow', 'locate'];
-render($content, 'other.svg?18', $names);
+render($content, 'protocol.svg?1', ['protocol']);
 
 $names = ['schedule', 'create-schedule',
     'edit-schedule', 'schedules', 'duplicate-schedule'];
 render($content, 'schedule.svg?3', $names);
+
+$names = ['sort-alphabetic', 'sort-time'];
+render($content, 'sort.svg', $names);
 
 $names = ['subscribed-channel', 'create-subscribed-channel',
     'inactive-subscribed-channel', 'subscribed-channels'];
@@ -115,32 +131,18 @@ render($content, 'theme.svg?4', $names);
 $names = ['token', 'create-token', 'tokens'];
 render($content, 'token.svg?2', $names);
 
-$names = ['user', 'add-user', 'remove-user', 'users'];
-render($content, 'user.svg?2', $names);
-
-$names = ['archive', 'unarchive', 'archive-file'];
-render($content, 'archive.svg?3', $names);
-
-$names = ['trash-bin', 'empty-trash', 'purge'];
-render($content, 'trash.svg?1', $names);
-
-$names = ['edit-contact-photo', 'clear-contact-photo'];
-render($content, 'contact-photo.svg?1', $names);
-
-$names = ['rotate-image-cw', 'rotate-image-ccw'];
-render($content, 'edit-image.svg?1', $names);
-
-$names = ['wallet', 'create-wallet',
-    'edit-wallet', 'wallets', 'transfer-amount'];
-render($content, 'wallet.svg?2', $names);
-
 $names = ['transaction', 'create-transaction',
     'edit-transaction', 'transactions', 'duplicate-transaction'];
 render($content, 'transaction.svg?2', $names);
 
-$names = ['sort-alphabetic', 'sort-time'];
-render($content, 'sort.svg', $names);
+$names = ['trash-bin', 'empty-trash', 'purge'];
+render($content, 'trash.svg?1', $names);
 
-render($content, 'protocol.svg?1', ['protocol']);
+$names = ['user', 'add-user', 'remove-user', 'users'];
+render($content, 'user.svg?2', $names);
+
+$names = ['wallet', 'create-wallet',
+    'edit-wallet', 'wallets', 'transfer-amount'];
+render($content, 'wallet.svg?2', $names);
 
 file_put_contents(__DIR__.'/compressed.css', $content);
