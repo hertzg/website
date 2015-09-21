@@ -26,7 +26,8 @@ function require_requirements () {
         !is_writable("$rootDir/fns/SignUpEnabled/get.php") ||
         !is_writable("$rootDir/fns/SiteBase/get.php") ||
         !is_writable("$rootDir/fns/SiteProtocol/get.php") ||
-        !is_writable("$rootDir/fns/SiteTitle/get.php")) {
+        !is_writable("$rootDir/fns/SiteTitle/get.php") ||
+        !is_writable("$rootDir/fns/Users/OrderBy/get.php")) {
 
         include_once "$rootDir/fns/redirect.php";
         redirect('../requirements/');

@@ -18,9 +18,12 @@ $offset = Paging\requestOffset();
 include_once "$fnsDir/Paging/limit.php";
 $limit = Paging\limit();
 
+include_once "$fnsDir/Users/OrderBy/get.php";
+$order_by = Users\OrderBy\get();
+
 include_once "$fnsDir/Users/indexPage.php";
 include_once '../../lib/mysqli.php';
-$users = Users\indexPage($mysqli, $offset, $limit, $total);
+$users = Users\indexPage($mysqli, $offset, $limit, $total, $order_by);
 
 include_once "$fnsDir/check_offset_overflow.php";
 check_offset_overflow($offset, $limit, $total);

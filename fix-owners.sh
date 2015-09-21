@@ -15,3 +15,4 @@ chown $owner www/fns/SignUpEnabled/get.php
 chown $owner www/fns/SiteBase/get.php
 chown $owner www/fns/SiteProtocol/get.php
 chown $owner www/fns/SiteTitle/get.php
+chown $owner www/fns/Users/OrderBy/get.php
