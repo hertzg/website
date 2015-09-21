@@ -33,7 +33,7 @@ $content = Page\tabs(
     )
     .'<div class="hr"></div>'
     .Page\imageLink('GNU Affero General Public License',
-        'license/', 'generic', ['id' => 'license'])
+        'license/', 'license', ['id' => 'license'])
     .'<div class="hr"></div>'
     .Form\label('Git version', $version)
 );
