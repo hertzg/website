@@ -51,6 +51,7 @@ if ($users) {
     $items[] = Page\info('No users');
 }
 
+include_once 'fns/sort_panel.php';
 include_once "$fnsDir/ItemList/escapedPageQuery.php";
 include_once "$fnsDir/Page/newItemButton.php";
 include_once "$fnsDir/Page/sessionErrors.php";
@@ -66,7 +67,8 @@ $content = Page\tabs(
     'Users',
     Page\sessionErrors('admin/users/errors')
     .Page\sessionMessages('admin/users/messages')
-    .join('<div class="hr"></div>', $items),
+    .join('<div class="hr"></div>', $items)
+    .sort_panel($order_by),
     Page\newItemButton('new/'.ItemList\escapedPageQuery(), 'User')
 );
 
