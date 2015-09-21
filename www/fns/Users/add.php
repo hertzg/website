@@ -53,10 +53,10 @@ function add ($mysqli, $username, $password, $email) {
         ." '$email', '$order_home_items', $insert_time, '$theme_color',"
         ." '$theme_brightness', $birthdays_check_day, $events_check_day,"
         ." $schedules_check_day, $task_deadlines_check_day,"
-        ." 'update_time desc', 'update_time desc',"
+        ." 'name', 'update_time desc',"
         ." 'full_name', 'event_time desc', 'update_time desc',"
-        ." 'update_time desc', 'update_time desc',"
-        ." 'update_time desc', 'update_time desc',"
+        ." 'update_time desc', 'next_time',"
+        ." 'update_time desc', 'name',"
         ." 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 

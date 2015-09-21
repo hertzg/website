@@ -11,7 +11,7 @@ $sql = "update users set bar_charts_order_by = 'update_time desc',"
     ." events_order_by = 'event_time desc',"
     ." notes_order_by = 'update_time desc',"
     ." places_order_by = 'update_time desc',"
-    ." schedules_order_by = 'update_time desc',"
+    ." schedules_order_by = 'next_time',"
     ." tasks_order_by = 'update_time desc',"
     ." wallets_order_by = 'update_time desc'";
 $mysqli->query($sql) || trigger_error($mysqli->error);
