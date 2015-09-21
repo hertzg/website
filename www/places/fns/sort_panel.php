@@ -21,8 +21,16 @@ function sort_panel ($user, $base = '') {
     $updateTimeLink = Page\imageLink($title,
         "{$base}submit-sort-last-modified.php$escapedPageQuery", 'sort-time');
 
+    $title = 'Name';
+    if ($order_by === 'name') $title .= ' (Current)';
+    $nameLink = Page\imageLink($title,
+        "{$base}submit-sort-name.php$escapedPageQuery", 'sort-time');
+
     include_once "$fnsDir/Page/twoColumns.php";
-    $content = Page\twoColumns($updateTimeLink, $insertTimeLink);
+    $content =
+        Page\twoColumns($nameLink, $updateTimeLink)
+        .'<div class="hr"></div>'
+        . $insertTimeLink;
 
     include_once "$fnsDir/create_panel.php";
     return create_panel('Sort Places By', $content);
