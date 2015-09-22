@@ -103,8 +103,8 @@ $names = ['schedule', 'create-schedule',
     'edit-schedule', 'schedules', 'duplicate-schedule'];
 render($content, 'schedule.svg?3', $names);
 
-$names = ['sort-alphabetic', 'sort-time'];
-render($content, 'sort.svg', $names);
+$names = ['sort-alphabetic', 'sort-time', 'sort-numeric'];
+render($content, 'sort.svg?1', $names);
 
 $names = ['subscribed-channel', 'create-subscribed-channel',
     'inactive-subscribed-channel', 'subscribed-channels'];
