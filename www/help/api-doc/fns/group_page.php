@@ -16,7 +16,7 @@ function group_page ($groupKey, $methods, $subgroups = null) {
     $items = [];
     foreach ($methods as $name => $description) {
         $items[] = Page\imageArrowLinkWithDescription(
-            $name, $description, "$name/", 'generic', ['id' => $name]);
+            $name, $description, "$name/", 'api-method', ['id' => $name]);
     }
 
     include_once "$fnsDir/Page/tabs.php";
@@ -37,8 +37,9 @@ function group_page ($groupKey, $methods, $subgroups = null) {
 
         $items = [];
         foreach ($subgroups as $key => $subgroup) {
-            $items[] = Page\imageArrowLinkWithDescription($subgroup['title'],
-                "$subgroup[description].", "$key/", 'generic', ['id' => $key]);
+            $items[] = Page\imageArrowLinkWithDescription(
+                $subgroup['title'], "$subgroup[description].",
+                "$key/", 'api-namespace', ['id' => $key]);
         }
         $items = join('<div class="hr"></div>', $items);
 

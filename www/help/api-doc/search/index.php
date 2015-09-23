@@ -39,7 +39,7 @@ foreach ($groups as $groupKey => $group) {
         $found = true;
         $title = preg_replace($regex, $replace, $groupKey);
         $items[] = Page\imageLinkWithDescription($title,
-            $group['description'], "../$groupKey/", 'generic');
+            $group['description'], "../$groupKey/", 'api-namespace');
     }
 
     foreach ($group['methods'] as $name => $description) {
@@ -49,7 +49,7 @@ foreach ($groups as $groupKey => $group) {
             $title = preg_replace($regex, $replace, $title);
             $href = "../$groupKey/$name/";
             $items[] = Page\imageLinkWithDescription($title,
-                $description, $href, 'generic');
+                $description, $href, 'api-method');
         }
     }
 
@@ -62,7 +62,7 @@ foreach ($groups as $groupKey => $group) {
                 $title = preg_replace($regex, $replace, $title);
                 $href = "../$groupKey/$subgroupKey/";
                 $items[] = Page\imageLinkWithDescription($title,
-                    $subgroup['description'], $href, 'generic');
+                    $subgroup['description'], $href, 'api-namespace');
             }
 
             foreach ($subgroup['methods'] as $name => $description) {
@@ -72,7 +72,7 @@ foreach ($groups as $groupKey => $group) {
                     $title = preg_replace($regex, $replace, $title);
                     $href = "../$groupKey/$subgroupKey/$name/";
                     $items[] = Page\imageLinkWithDescription($title,
-                        $description, $href, 'generic');
+                        $description, $href, 'api-method');
                 }
             }
 

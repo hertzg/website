@@ -87,8 +87,8 @@ $names = ['account', 'edit-profile', 'download', 'upload', 'feedback',
     'send-sms', 'receive', 'phone', 'edit-home', 'reorder',
     'show-hide', 'restore-defaults', 'forbid-notifications',
     'receive-notifications', 'generic', 'zvini',
-    'slideshow', 'locate', 'license'];
-render($content, 'other.svg?21', $names);
+    'slideshow', 'locate', 'license', 'api-namespace', 'api-method'];
+render($content, 'other.svg?23', $names);
 
 $names = ['place', 'create-place', 'edit-place',
     'places', 'import-place', 'duplicate-place', 'place-on-earth'];

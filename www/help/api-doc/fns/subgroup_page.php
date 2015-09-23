@@ -16,7 +16,7 @@ function subgroup_page ($groupKey, $subgroup, $subgroupKey, $methods) {
     $items = [];
     foreach ($methods as $name => $description) {
         $items[] = Page\imageArrowLinkWithDescription($name,
-            $description, "$name/", 'generic', ['id' => $name]);
+            $description, "$name/", 'api-method', ['id' => $name]);
     }
 
     include_once "$fnsDir/Page/tabs.php";
