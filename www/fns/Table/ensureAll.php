@@ -6,6 +6,7 @@ function ensureAll ($mysqli) {
 
     $fnsDir = __DIR__.'/..';
 
+    include_once "$fnsDir/AdminApiKeys/ensure.php";
     include_once "$fnsDir/ApiKeys/ensure.php";
     include_once "$fnsDir/BarChartBars/ensure.php";
     include_once "$fnsDir/BarCharts/ensure.php";
@@ -51,7 +52,8 @@ function ensureAll ($mysqli) {
     include_once "$fnsDir/Users/ensure.php";
     include_once "$fnsDir/Wallets/ensure.php";
     include_once "$fnsDir/WalletTransactions/ensure.php";
-    return \ApiKeys\ensure($mysqli)
+    return \AdminApiKeys\ensure($mysqli)
+        .\ApiKeys\ensure($mysqli)
         .\BarChartBars\ensure($mysqli)
         .\BarCharts\ensure($mysqli)
         .\BarChartTags\ensure($mysqli)
