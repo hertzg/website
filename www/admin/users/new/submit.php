@@ -1,9 +1,12 @@
 <?php
 
+$fnsDir = '../../../fns';
+
+include_once "$fnsDir/require_same_domain_referer.php";
+require_same_domain_referer('..');
+
 include_once '../../fns/require_admin.php';
 require_admin();
-
-$fnsDir = '../../../fns';
 
 include_once "$fnsDir/request_strings.php";
 list($username, $password, $repeatPassword) = request_strings(
