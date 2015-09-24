@@ -23,7 +23,7 @@ if ($db === '') $errors[] = 'Enter database.';
 if (!$errors) {
     include_once "$fnsDir/MysqlConfig/set.php";
     $ok = MysqlConfig\set($host, $username, $password, $db);
-    if (!$ok) $errors[] = 'Failed to save the data.';
+    if ($ok === false) $errors[] = 'Failed to save the data.';
 }
 
 include_once "$fnsDir/redirect.php";

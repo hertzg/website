@@ -41,7 +41,7 @@ if (!$errors) {
 
     include_once "$fnsDir/Admin/set.php";
     $ok = Admin\set($username, $sha512_hash, $sha512_key);
-    if (!$ok) $errors[] = 'Failed to save the data.';
+    if ($ok === false) $errors[] = 'Failed to save the data.';
 
 }
 
