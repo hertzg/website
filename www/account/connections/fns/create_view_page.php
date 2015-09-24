@@ -5,6 +5,13 @@ function create_view_page ($connection, &$scripts) {
     $id = $connection->id;
     $fnsDir = __DIR__.'/../../../fns';
 
+    include_once "$fnsDir/compressed_js_script.php";
+    $scripts = compressed_js_script('dateAgo', '../../../');
+
+    include_once "$fnsDir/export_date_ago.php";
+    $infoText = 'Connection created '
+        .export_date_ago($connection->insert_time).'.';
+
     include_once "$fnsDir/Page/imageArrowLink.php";
     $editLink = Page\imageArrowLink('Edit',
         "../edit/?id=$id", 'edit-connection', ['id' => 'edit']);
@@ -28,13 +35,9 @@ function create_view_page ($connection, &$scripts) {
     $expiresLabel = create_expires_label(
         $connection->expire_time, $dateAgoScript);
 
-    if ($dateAgoScript) {
-        include_once "$fnsDir/compressed_js_script.php";
-        $scripts = compressed_js_script('dateAgo', '../../../');
-    }
-
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Form/label.php";
+    include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
@@ -52,6 +55,7 @@ function create_view_page ($connection, &$scripts) {
         .$expiresLabel
         .'<div class="hr"></div>'
         .Form\label('This user', $permissions)
+        .Page\infoText($infoText)
         .create_panel('Conneciton Options', $optionsContent),
         Page\newItemButton('../new/', 'Connection')
     );
