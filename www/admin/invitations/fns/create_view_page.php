@@ -46,6 +46,7 @@ function create_view_page ($invitation, &$scripts) {
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Page/imageLink.php";
     include_once "$fnsDir/Page/infoText.php";
+    include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/staticTwoColumns.php";
     include_once "$fnsDir/Page/tabs.php";
@@ -60,7 +61,8 @@ function create_view_page ($invitation, &$scripts) {
             "Invitation #$id",
             Page\sessionMessages('admin/invitations/view/messages')
             .join('<div class="hr"></div>', $items)
-            .Page\infoText($infoText)
+            .Page\infoText($infoText),
+            Page\newItemButton('../new/', 'Invitation')
         )
         .create_panel(
             'Invitation Options',
