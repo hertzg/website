@@ -44,6 +44,7 @@ function create_view_page ($invitation, &$scripts) {
     }
 
     include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Page/imageArrowLink.php";
     include_once "$fnsDir/Page/imageLink.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/newItemButton.php";
@@ -67,7 +68,7 @@ function create_view_page ($invitation, &$scripts) {
         .create_panel(
             'Invitation Options',
             Page\staticTwoColumns(
-                Page\imageLink('Edit', "../edit/?id=$id",
+                Page\imageArrowLink('Edit', "../edit/?id=$id",
                     'edit-invitation', ['id' => 'edit']),
                 '<div id="deleteLink">'
                     .Page\imageLink('Delete', "../delete/?id=$id", 'trash-bin')
