@@ -11,6 +11,10 @@ function create_view_page ($connection, &$scripts) {
     include_once "$fnsDir/export_date_ago.php";
     $infoText = 'Connection created '
         .export_date_ago($connection->insert_time).'.';
+    if ($connection->revision) {
+        $infoText .= '<br />Last modified '
+            .export_date_ago($connection->update_time).'.';
+    }
 
     include_once "$fnsDir/Page/imageArrowLink.php";
     $editLink = Page\imageArrowLink('Edit',
