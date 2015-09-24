@@ -53,6 +53,7 @@ function ensure ($mysqli) {
         'key' => \ApiKey\column(),
         'name' => \ApiKeyName\column(),
         'revision' => ['type' => 'bigint(20) unsigned'],
+        'update_time' => ['type' => 'bigint(20) unsigned'],
     ]);
 
 }

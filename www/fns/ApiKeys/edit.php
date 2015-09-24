@@ -38,6 +38,7 @@ function edit ($mysqli, $id, $name, $expire_time,
     $can_write_schedules = $can_write_schedules ? '1' : '0';
     $can_write_tasks = $can_write_tasks ? '1' : '0';
     $can_write_wallets = $can_write_wallets ? '1' : '0';
+    $update_time = time();
 
     $sql = "update api_keys set name = '$name', expire_time = $expire_time,"
         ." can_read_bar_charts = $can_read_bar_charts,"
@@ -64,6 +65,7 @@ function edit ($mysqli, $id, $name, $expire_time,
         ." can_write_schedules = $can_write_schedules,"
         ." can_write_tasks = $can_write_tasks,"
         ." can_write_wallets = $can_write_wallets,"
+        ." update_time = $update_time,"
         ." revision = revision + 1 where id = $id";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);

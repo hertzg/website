@@ -25,6 +25,10 @@ function create ($apiKey, &$scripts) {
 
     include_once "$fnsDir/export_date_ago.php";
     $infoText = 'API key created '.export_date_ago($apiKey->insert_time).'.';
+    if ($apiKey->revision) {
+        $infoText .= '<br />Last modified '
+            .export_date_ago($apiKey->update_time).'.';
+    }
 
     $access_time = $apiKey->access_time;
     if ($access_time === null) $accessed = 'Never';
