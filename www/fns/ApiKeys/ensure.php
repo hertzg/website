@@ -4,11 +4,9 @@ namespace ApiKeys;
 
 function ensure ($mysqli) {
 
-    include_once __DIR__.'/maxLengths.php';
-    $maxLengths = maxLengths();
-
     $fnsDir = __DIR__.'/..';
 
+    include_once "$fnsDir/ApiKey/column.php";
     include_once "$fnsDir/ApiKeyName/column.php";
     include_once "$fnsDir/IPAddress/column.php";
     include_once "$fnsDir/Table/ensure.php";
@@ -52,7 +50,7 @@ function ensure ($mysqli) {
         ],
         'id_users' => ['type' => 'bigint(20) unsigned'],
         'insert_time' => ['type' => 'bigint(20) unsigned'],
-        'key' => ['type' => "binary($maxLengths[key])"],
+        'key' => \ApiKey\column(),
         'name' => \ApiKeyName\column(),
         'revision' => ['type' => 'bigint(20) unsigned'],
     ]);

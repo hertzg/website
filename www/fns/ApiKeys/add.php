@@ -12,12 +12,8 @@ function add ($mysqli, $id_users, $name, $expire_time,
     $can_write_notes, $can_write_notifications, $can_write_places,
     $can_write_schedules, $can_write_tasks, $can_write_wallets) {
 
-    include_once __DIR__.'/maxLengths.php';
-    $maxLengths = maxLengths();
-
-    $key = openssl_random_pseudo_bytes($maxLengths['key']);
-    include_once __DIR__.'/../base62_encode.php';
-    $key = substr(base62_encode($key), 0, $maxLengths['key']);
+    include_once __DIR__.'/../ApiKey/random.php';
+    $key = \ApiKey\random();
 
     $name = $mysqli->real_escape_string($name);
     if ($expire_time === null) $expire_time = 'null';
