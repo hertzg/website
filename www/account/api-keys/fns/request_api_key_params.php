@@ -8,21 +8,18 @@ function request_api_key_params () {
 
     $fnsDir = __DIR__.'/../../../fns';
 
+    include_once "$fnsDir/ApiKeyName/request.php";
+    $name = ApiKeyName\request();
+
     include_once "$fnsDir/request_strings.php";
-    list($name, $expires, $bar_chart_access, $bookmark_access,
+    list($expires, $bar_chart_access, $bookmark_access,
         $channel_access, $contact_access, $event_access,
         $file_access, $note_access, $notification_access, $place_access,
         $schedule_access, $task_access, $wallet_access) = request_strings(
-        'name', 'expires', 'bar_chart_access', 'bookmark_access',
+        'expires', 'bar_chart_access', 'bookmark_access',
         'channel_access', 'contact_access', 'event_access',
         'file_access', 'note_access', 'notification_access', 'place_access',
         'schedule_access', 'task_access', 'wallet_access');
-
-    include_once "$fnsDir/str_collapse_spaces.php";
-    $name = str_collapse_spaces($name);
-
-    include_once "$fnsDir/ApiKeyName/maxLength.php";
-    $name = mb_substr($name, 0, ApiKeyName\maxLength(), 'UTF-8');
 
     include_once __DIR__.'/../../fns/parse_expire_time.php';
     parse_expire_time($expires, $expire_time);
