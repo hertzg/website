@@ -10,7 +10,6 @@ $fnsDir = '../../../fns';
 
 include_once '../fns/create_form_items.php';
 include_once "$fnsDir/Form/button.php";
-include_once "$fnsDir/Invitations/maxLengths.php";
 include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
     [
