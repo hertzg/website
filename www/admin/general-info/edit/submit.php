@@ -10,34 +10,57 @@ require_admin();
 
 include_once 'fns/request_general_info_params.php';
 list($siteTitle, $domainName, $infoEmail, $siteBase, $https,
-    $behindProxy, $signupEnabled) = request_general_info_params();
+    $behindProxy, $signupEnabled) = request_general_info_params($errors);
 
-$errors = [];
+if (!$errors) {
+    include_once "$fnsDir/SiteTitle/set.php";
+    $ok = SiteTitle\set($siteTitle);
+    if ($ok === false) $errors[] = 'Failed to save site title.';
+}
 
-if ($siteTitle === '') $errors[] = 'Enter site title.';
+if (!$errors) {
+    include_once "$fnsDir/DomainName/set.php";
+    $ok = DomainName\set($domainName);
+    if ($ok === false) $errors[] = 'Failed to save domain name.';
+}
 
-if ($domainName === '') $errors[] = 'Enter domain name.';
-else {
-    include_once "$fnsDir/DomainName/isValid.php";
-    if (!DomainName\isValid($domainName)) {
-        $errors[] = 'The domain name is invalid';
+if (!$errors) {
+    include_once "$fnsDir/InfoEmail/set.php";
+    $ok = InfoEmail\set($infoEmail);
+    if ($ok === false) $errors[] = 'Failed to save informational email.';
+}
+
+if (!$errors) {
+    include_once "$fnsDir/SiteBase/set.php";
+    $ok = SiteBase\set($siteBase);
+    if ($ok === false) $errors[] = 'Failed to save path to "www" folder.';
+}
+
+if (!$errors) {
+    include_once "$fnsDir/SiteProtocol/set.php";
+    $ok = SiteProtocol\set($https ? 'https' : 'http');
+    if ($ok === false) $errors[] = 'Failed to save whether uses HTTPS or not.';
+}
+
+if (!$errors) {
+    if ($behindProxy) {
+        include_once "$fnsDir/ClientAddress/GetMethod/setBehindProxy.php";
+        $ok = ClientAddress\GetMethod\setBehindProxy();
+    } else {
+        include_once "$fnsDir/ClientAddress/GetMethod/setDirect.php";
+        $ok = ClientAddress\GetMethod\setDirect();
+    }
+    if ($ok === false) {
+        $errors[] = 'Failed to save whether behind reverse proxy or not.';
     }
 }
 
-if ($infoEmail === '') $errors[] = 'Enter informational email.';
-else {
-    include_once "$fnsDir/InfoEmail/isValid.php";
-    if (!InfoEmail\isValid($infoEmail)) {
-        $errors[] = 'The informational email is invalid.';
+if (!$errors) {
+    include_once "$fnsDir/SignUpEnabled/set.php";
+    $ok = SignUpEnabled\set($signupEnabled);
+    if ($ok === false) {
+        $errors[] = 'Failed to save whether anyone can sign up or not.';
     }
-}
-
-if ($siteBase === '') {
-    $errors[] = 'Enter path to "www" folder.';
-} elseif (substr($siteBase, 0, 1) !== '/') {
-    $errors[] = 'The path to "www" folder should start with slash (/).';
-} elseif (substr($siteBase, -1) !== '/') {
-    $errors[] = 'The path to "www" folder should end with slash (/).';
 }
 
 include_once "$fnsDir/redirect.php";
@@ -62,31 +85,5 @@ unset(
 );
 
 $_SESSION['admin/general-info/messages'] = ['Changed have been saved.'];
-
-include_once "$fnsDir/SiteTitle/set.php";
-SiteTitle\set($siteTitle);
-
-include_once "$fnsDir/DomainName/set.php";
-DomainName\set($domainName);
-
-include_once "$fnsDir/InfoEmail/set.php";
-InfoEmail\set($infoEmail);
-
-include_once "$fnsDir/SiteBase/set.php";
-SiteBase\set($siteBase);
-
-include_once "$fnsDir/SiteProtocol/set.php";
-SiteProtocol\set($https ? 'https' : 'http');
-
-if ($behindProxy) {
-    include_once "$fnsDir/ClientAddress/GetMethod/setBehindProxy.php";
-    ClientAddress\GetMethod\setBehindProxy();
-} else {
-    include_once "$fnsDir/ClientAddress/GetMethod/setDirect.php";
-    ClientAddress\GetMethod\setDirect();
-}
-
-include_once "$fnsDir/SignUpEnabled/set.php";
-SignUpEnabled\set($signupEnabled);
 
 redirect('..');
