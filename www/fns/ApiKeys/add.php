@@ -41,7 +41,7 @@ function add ($mysqli, $id_users, $name, $expire_time,
     $can_write_schedules = $can_write_schedules ? '1' : '0';
     $can_write_tasks = $can_write_tasks ? '1' : '0';
     $can_write_wallets = $can_write_wallets ? '1' : '0';
-    $insert_time = time();
+    $insert_time = $update_time = time();
 
     $sql = 'insert into api_keys (id_users, `key`, name, expire_time,'
         .' can_read_bar_charts, can_read_bookmarks, can_read_channels,'
@@ -52,7 +52,7 @@ function add ($mysqli, $id_users, $name, $expire_time,
         .' can_write_contacts, can_write_events, can_write_files,'
         .' can_write_notes, can_write_notifications, can_write_places,'
         .' can_write_schedules, can_write_tasks,'
-        .' can_write_wallets, insert_time)'
+        .' can_write_wallets, insert_time, update_time)'
         ." values ($id_users, '$key', '$name', $expire_time,"
         ." $can_read_bar_charts, $can_read_bookmarks, $can_read_channels,"
         ." $can_read_contacts, $can_read_events, $can_read_files,"
@@ -62,7 +62,7 @@ function add ($mysqli, $id_users, $name, $expire_time,
         ." $can_write_contacts, $can_write_events, $can_write_files,"
         ." $can_write_notes, $can_write_notifications, $can_write_places,"
         ." $can_write_schedules, $can_write_tasks,"
-        ." $can_write_wallets, $insert_time)";
+        ." $can_write_wallets, $insert_time, $update_time)";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
