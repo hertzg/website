@@ -1,8 +1,11 @@
 <?php
 
 function redirect ($url = './') {
+
     header("Location: $url");
+    header('Cache-Control: private, max-age=0');
     header('Content-Type: text/html; charset=UTF-8');
+
     echo '<!DOCTYPE html>'
         .'<html>'
             .'<head>'
@@ -59,5 +62,7 @@ function redirect ($url = './') {
                 .'</div>'
             .'</body>'
         .'</html>';
+
     exit;
+
 }

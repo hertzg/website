@@ -63,6 +63,7 @@ function echo_html ($title, $head, $body,
                 .$body
             .'</body>'
         .'</html>';
+
     exit;
 
 }

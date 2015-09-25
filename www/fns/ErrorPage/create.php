@@ -8,6 +8,7 @@ function create ($code, $text, $description, $send_headers = null) {
     $siteBase = \SiteBase\get();
 
     http_response_code($code);
+    header('Cache-Control: private, max-age=0');
     header('Content-Type: text/html; charset=UTF-8');
 
     if ($send_headers !== null) $send_headers();
@@ -74,6 +75,7 @@ function create ($code, $text, $description, $send_headers = null) {
                 .'</div>'
             .'</body>'
         .'</html>';
+
     exit;
 
 }
