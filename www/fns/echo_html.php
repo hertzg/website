@@ -3,7 +3,7 @@
 function echo_html ($title, $head, $body,
     $theme_color, $theme_brightness, $base) {
 
-    header('Cache-Control: private');
+    header('Cache-Control: private, max-age=0');
     header('Content-Type: text/html; charset=UTF-8');
 
     $theme_images = "{$base}theme/color/$theme_color/images";
