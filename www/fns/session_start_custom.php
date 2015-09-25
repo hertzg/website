@@ -4,6 +4,7 @@ function session_start_custom (&$new) {
     $lifetime = session_get_cookie_params()['lifetime'];
     include_once __DIR__.'/SiteBase/get.php';
     session_set_cookie_params($lifetime, SiteBase\get());
+    session_cache_limiter('private_no_expire');
     session_name('zsid');
     session_start();
     $new = !array_key_exists('restored', $_SESSION);

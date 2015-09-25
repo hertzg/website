@@ -3,9 +3,6 @@
 function echo_html ($title, $head, $body,
     $theme_color, $theme_brightness, $base) {
 
-    header_remove('Expires');
-    header_remove('Pragma');
-    header_remove('X-Powered-By');
     header('Cache-Control: private');
     header('Content-Type: text/html; charset=UTF-8');
 
