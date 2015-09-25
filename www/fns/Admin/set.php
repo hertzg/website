@@ -16,8 +16,6 @@ function set ($username, $sha512_hash, $sha512_key) {
         ."function get (&\$username, &\$hash,"
         ." &\$salt, &\$sha512_hash, &\$sha512_key) {\n"
         .'    $username = '.var_export($username, true).";\n"
-        ."    \$hash = null;\n"
-        ."    \$salt = null;\n"
         ."    \$sha512_hash =\n"
         .'        '.$varExportHex(substr($sha512_hash, 0, 16))."\n"
         .'        .'.$varExportHex(substr($sha512_hash, 16, 16))."\n"
