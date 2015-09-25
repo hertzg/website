@@ -6,6 +6,6 @@ function check ($interval, $offset, $day, $expectedValue) {
     $expression = "days_left($interval, $offset, $day)";
     if ($value !== $expectedValue) {
         echo "$expression returned $value instead of $expectedValue.\n";
-        die;
+        exit;
     }
 }

@@ -16,7 +16,8 @@ function require_api_key ($permission_field) {
         if (!is_same_domain_referer()) {
             http_response_code(403);
             header('Content-Type: application/json');
-            die('"CROSS_DOMAIN_REQUEST"');
+            echo '"CROSS_DOMAIN_REQUEST"';
+            exit;
         }
 
         include_once "$fnsDir/signed_user.php";
@@ -25,7 +26,8 @@ function require_api_key ($permission_field) {
         if (!$user) {
             http_response_code(403);
             header('Content-Type: application/json');
-            die('"NOT_SIGNED_IN"');
+            echo '"NOT_SIGNED_IN"';
+            exit;
         }
 
         $apiKey = null;
@@ -38,13 +40,15 @@ function require_api_key ($permission_field) {
         if (!$apiKey) {
             http_response_code(403);
             header('Content-Type: application/json');
-            die('"INVALID_API_KEY"');
+            echo '"INVALID_API_KEY"';
+            exit;
         }
 
         if (!$apiKey->$permission_field) {
             http_response_code(403);
             header('Content-Type: application/json');
-            die('"ACCESS_DENIED"');
+            echo '"ACCESS_DENIED"';
+            exit;
         }
 
         $time = time();
@@ -53,7 +57,8 @@ function require_api_key ($permission_field) {
         if ($expire_time !== null && $expire_time < $time) {
             http_response_code(403);
             header('Content-Type: application/json');
-            die('"API_KEY_EXPIRED"');
+            echo '"API_KEY_EXPIRED"';
+            exit;
         }
 
         include_once "$fnsDir/ClientAddress/get.php";
