@@ -3,7 +3,9 @@
 include_once '../../fns/require_admin.php';
 require_admin();
 
-$values = ['name' => ''];
+$key = 'admin/api-keys/new/values';
+if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
+else $values = ['name' => ''];
 
 unset($_SESSION['admin/api-keys/messages']);
 

@@ -10,7 +10,7 @@ include_once '../../../lib/mysqli.php';
 list($apiKey, $id) = require_admin_api_key($mysqli);
 
 include_once '../fns/request_admin_api_key_params.php';
-list($name) = request_admin_api_key_params($errors);
+list($name) = request_admin_api_key_params($mysqli, $errors, $id);
 
 include_once "$fnsDir/redirect.php";
 

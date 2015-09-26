@@ -9,7 +9,8 @@ include_once '../../fns/require_admin.php';
 require_admin();
 
 include_once '../fns/request_admin_api_key_params.php';
-list($name) = request_admin_api_key_params($errors);
+include_once '../../../lib/mysqli.php';
+list($name) = request_admin_api_key_params($mysqli, $errors);
 
 include_once "$fnsDir/redirect.php";
 
@@ -25,7 +26,6 @@ unset(
 );
 
 include_once "$fnsDir/AdminApiKeys/add.php";
-include_once '../../../lib/mysqli.php';
 $id = AdminApiKeys\add($mysqli, $name);
 
 $message = 'The admin API key has been generated.';
