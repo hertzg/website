@@ -10,26 +10,19 @@ include_once '../../../lib/mysqli.php';
 list($apiKey, $id, $user) = require_api_key($mysqli);
 
 include_once '../fns/request_api_key_params.php';
+include_once '../../../lib/mysqli.php';
+$values = request_api_key_params(
+    $mysqli, $user, $errors, $apiKey->id);
 list($name, $expires, $expire_time, $bar_chart_access,
-    $bookmark_access, $channel_access, $contact_access, $event_access,
-    $file_access, $note_access, $notification_access, $place_access,
-    $schedule_access, $task_access, $wallet_access) = request_api_key_params();
+    $bookmark_access, $channel_access, $contact_access,
+    $event_access, $file_access, $note_access, $notification_access,
+    $place_access, $schedule_access, $task_access,
+    $wallet_access) = $values;
 
 include_once "$fnsDir/request_strings.php";
 list($randomizeKey) = request_strings('randomizeKey');
 
 $randomizeKey = (bool)$randomizeKey;
-
-$errors = [];
-
-if ($name === '') $errors[] = 'Enter name.';
-else {
-    include_once "$fnsDir/Users/ApiKeys/getByName.php";
-    $existingApiKey = Users\ApiKeys\getByName($mysqli, $user, $name, $id);
-    if ($existingApiKey) {
-        $errors[] = 'An API key with this name already exists.';
-    }
-}
 
 include_once "$fnsDir/redirect.php";
 

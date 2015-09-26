@@ -1,6 +1,6 @@
 <?php
 
-function request_api_key_params () {
+function request_api_key_params ($mysqli, $user, &$errors, $exclude_id = 0) {
 
     $parseAccess = function (&$access) {
         if ($access != 'readonly' && $access != 'readwrite') $access = 'none';
@@ -36,6 +36,13 @@ function request_api_key_params () {
     $parseAccess($schedule_access);
     $parseAccess($task_access);
     $parseAccess($wallet_access);
+
+    if ($name === '') $errors[] = 'Enter name.';
+    else {
+        include_once "$fnsDir/Users/ApiKeys/getByName.php";
+        $apiKey = Users\ApiKeys\getByName($mysqli, $user, $name, $exclude_id);
+        if ($apiKey) $errors[] = 'An API key with this name already exists.';
+    }
 
     return [$name, $expires, $expire_time, $bar_chart_access,
         $bookmark_access, $channel_access, $contact_access, $event_access,
