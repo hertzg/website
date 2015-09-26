@@ -22,7 +22,7 @@ else {
     $existingFile = Files\getByName($mysqli,
         $user->id_users, $id_folders, $name);
 
-    if ($existingFile) $errors[] = 'A file with the same name already exists.';
+    if ($existingFile) $errors[] = 'A file with this name already exists.';
 
 }
 

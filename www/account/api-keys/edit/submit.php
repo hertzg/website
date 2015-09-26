@@ -27,7 +27,7 @@ else {
     include_once "$fnsDir/Users/ApiKeys/getByName.php";
     $existingApiKey = Users\ApiKeys\getByName($mysqli, $user, $name, $id);
     if ($existingApiKey) {
-        $errors[] = 'An API key with the same name already exists.';
+        $errors[] = 'An API key with this name already exists.';
     }
 }
 
