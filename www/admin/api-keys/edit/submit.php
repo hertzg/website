@@ -12,11 +12,19 @@ list($apiKey, $id) = require_admin_api_key($mysqli);
 include_once '../fns/request_admin_api_key_params.php';
 list($name) = request_admin_api_key_params($mysqli, $errors, $id);
 
+include_once "$fnsDir/request_strings.php";
+list($randomizeKey) = request_strings('randomizeKey');
+
+$randomizeKey = (bool)$randomizeKey;
+
 include_once "$fnsDir/redirect.php";
 
 if ($errors) {
     $_SESSION['admin/api-keys/edit/errors'] = $errors;
-    $_SESSION['admin/api-keys/edit/values'] = ['name' => $name];
+    $_SESSION['admin/api-keys/edit/values'] = [
+        'name' => $name,
+        'randomizeKey' => $randomizeKey,
+    ];
     redirect("./?id=$id");
 }
 
@@ -27,6 +35,11 @@ unset(
 
 include_once "$fnsDir/AdminApiKeys/edit.php";
 AdminApiKeys\edit($mysqli, $id, $name);
+
+if ($randomizeKey) {
+    include_once "$fnsDir/AdminApiKeys/randomizeKey.php";
+    AdminApiKeys\randomizeKey($mysqli, $id);
+}
 
 $_SESSION['admin/api-keys/view/messages'] = ['Changes have been saved.'];
 

@@ -7,7 +7,10 @@ list($apiKey, $id) = require_admin_api_key($mysqli);
 $key = 'admin/api-keys/edit/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
-    $values = ['name' => $apiKey->name];
+    $values = [
+        'name' => $apiKey->name,
+        'randomizeKey' => false,
+    ];
 }
 
 unset($_SESSION['admin/api-keys/view/messages']);
@@ -16,6 +19,7 @@ $fnsDir = '../../../fns';
 
 include_once "$fnsDir/ApiKeyName/maxLength.php";
 include_once "$fnsDir/Form/button.php";
+include_once "$fnsDir/Form/checkbox.php";
 include_once "$fnsDir/Form/textfield.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/tabs.php";
@@ -36,10 +40,16 @@ $content = Page\tabs(
             'autofocus' => true,
         ])
         .'<div class="hr"></div>'
+        .Form\checkbox('randomizeKey',
+            'Randomize key', $values['randomizeKey'])
+        .'<div class="hr"></div>'
         .Form\button('Save Changes')
         ."<input type=\"hidden\" name=\"id\" value=\"$id\" />"
     .'</form>'
 );
 
 include_once '../../fns/echo_admin_page.php';
-echo_admin_page("Edit Admin API Key #$id", $content, '../../');
+include_once "$fnsDir/compressed_js_script.php";
+echo_admin_page("Edit Admin API Key #$id", $content, '../../', [
+    'scripts' => compressed_js_script('formCheckbox', '../../../'),
+]);
