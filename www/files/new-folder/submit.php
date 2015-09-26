@@ -18,7 +18,7 @@ if ($name === '') {
 } else {
     include_once '../../fns/Folders/getByName.php';
     $folder = Folders\getByName($mysqli, $id_users, $parent_id, $name);
-    if ($folder) $errors[] = 'Folder with this name already exists.';
+    if ($folder) $errors[] = 'A folder with this name already exists.';
 }
 
 include_once '../../fns/redirect.php';

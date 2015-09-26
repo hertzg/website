@@ -9,20 +9,12 @@ include_once "$fnsDir/require_user.php";
 $user = require_user('../../../');
 
 include_once '../fns/request_api_key_params.php';
+include_once '../../../lib/mysqli.php';
 list($name, $expires, $expire_time, $bar_chart_access,
-    $bookmark_access, $channel_access, $contact_access, $event_access,
-    $file_access, $note_access, $notification_access, $place_access,
-    $schedule_access, $task_access, $wallet_access) = request_api_key_params();
-
-$errors = [];
-
-if ($name === '') $errors[] = 'Enter name.';
-else {
-    include_once "$fnsDir/Users/ApiKeys/getByName.php";
-    include_once '../../../lib/mysqli.php';
-    $apiKey = Users\ApiKeys\getByName($mysqli, $user, $name);
-    if ($apiKey) $errors[] = 'An API key with this name already exists.';
-}
+    $bookmark_access, $channel_access, $contact_access,
+    $event_access, $file_access, $note_access, $notification_access,
+    $place_access, $schedule_access, $task_access,
+    $wallet_access) = request_api_key_params($mysqli, $user, $errors);
 
 include_once "$fnsDir/redirect.php";
 

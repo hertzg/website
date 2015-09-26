@@ -21,7 +21,7 @@ if ($name === '') {
         $folder->parent_id, $name, $id_folders);
 
     if ($existingFolder) {
-        $errors[] = 'Folder with this name already exists.';
+        $errors[] = 'A folder with this name already exists.';
     }
 
 }
