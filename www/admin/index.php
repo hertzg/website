@@ -89,6 +89,9 @@ $content = Page\tabs(
     .'<div class="hr"></div>'
     .Page\imageArrowLink('Invalid Signins', 'invalid-signins/',
         'generic', ['id' => 'invalid-signins'])
+    .'<div class="hr"></div>'
+    .Page\imageArrowLink('Admin API Keys', 'api-keys/',
+        'api-keys', ['id' => 'api-keys'])
 );
 
 include_once '../fns/echo_page.php';
