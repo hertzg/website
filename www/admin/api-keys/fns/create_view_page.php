@@ -25,6 +25,7 @@ function create_view_page ($apiKey, &$scripts) {
 
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Form/label.php";
+    include_once "$fnsDir/Form/textarea.php";
     include_once "$fnsDir/Page/imageArrowLink.php";
     include_once "$fnsDir/Page/imageLink.php";
     include_once "$fnsDir/Page/infoText.php";
@@ -43,6 +44,11 @@ function create_view_page ($apiKey, &$scripts) {
             "Admin API Key #$id",
             Page\sessionMessages('admin/api-keys/view/messages')
             .Form\label('Name', htmlspecialchars($apiKey->name))
+            .'<div class="hr"></div>'
+            .\Form\textarea('key', 'Key', [
+                'value' => $apiKey->key,
+                'readonly' => true,
+            ])
             .Page\infoText($infoText),
             Page\newItemButton('../new/', 'Admin API Key')
         )
