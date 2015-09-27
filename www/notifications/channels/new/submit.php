@@ -16,8 +16,8 @@ list($channel_name, $public,
 include_once "$fnsDir/redirect.php";
 
 if ($errors) {
-    $_SESSION['notifications/channels/add/errors'] = $errors;
-    $_SESSION['notifications/channels/add/values'] = [
+    $_SESSION['notifications/channels/new/errors'] = $errors;
+    $_SESSION['notifications/channels/new/values'] = [
         'channel_name' => $channel_name,
         'public' => $public,
         'receive_notifications' => $receive_notifications,
@@ -26,8 +26,8 @@ if ($errors) {
 }
 
 unset(
-    $_SESSION['notifications/channels/add/errors'],
-    $_SESSION['notifications/channels/add/values']
+    $_SESSION['notifications/channels/new/errors'],
+    $_SESSION['notifications/channels/new/values']
 );
 
 include_once "$fnsDir/Users/Channels/add.php";

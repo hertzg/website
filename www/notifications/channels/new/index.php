@@ -6,7 +6,7 @@ $fnsDir = '../../../fns';
 include_once "$fnsDir/require_user.php";
 $user = require_user($base);
 
-$key = 'notifications/channels/add/values';
+$key = 'notifications/channels/new/values';
 if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];
 } else {
@@ -36,7 +36,7 @@ $content =
             ],
         ],
         'New Channel',
-        Page\sessionErrors('notifications/channels/add/errors')
+        Page\sessionErrors('notifications/channels/new/errors')
         .'<form action="submit.php" method="post">'
             .create_form_items($values)
             .'<div class="hr"></div>'
