@@ -31,4 +31,12 @@
 
     ExtendSession(base)
 
+    window.sessionTimeout = {
+        extend: function () {
+            var time = Date.now()
+            localStorage.sessionStartTime = time
+            localStorage.sessionExtendTime = time
+        },
+    }
+
 })(base)

@@ -1,4 +1,4 @@
-(function (parentId, unloadProgress) {
+(function (parentId, unloadProgress, sessionTimeout) {
 
     var chunkSize = 1024 * 1024
 
@@ -84,6 +84,8 @@
 
         nextFile()
 
+        setInterval(sessionTimeout.extend, 30 * 1000)
+
     })
 
-})(parentId, unloadProgress)
+})(parentId, unloadProgress, sessionTimeout)
