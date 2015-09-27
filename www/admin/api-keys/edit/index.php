@@ -32,11 +32,10 @@ unset($_SESSION['admin/api-keys/view/messages']);
 
 $fnsDir = '../../../fns';
 
+include_once '../fns/create_general_fields.php';
 include_once '../fns/create_permission_fields.php';
-include_once "$fnsDir/ApiKeyName/maxLength.php";
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/checkbox.php";
-include_once "$fnsDir/Form/textfield.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
@@ -49,12 +48,7 @@ $content = Page\tabs(
     'Edit',
     Page\sessionErrors('admin/api-keys/edit/errors')
     .'<form action="submit.php" method="post">'
-        .Form\textfield('name', 'Name', [
-            'value' => $values['name'],
-            'maxlength' => ApiKeyName\maxLength(),
-            'required' => true,
-            'autofocus' => true,
-        ])
+        .create_general_fields($values)
         .'<div class="hr"></div>'
         .Form\checkbox('randomizeKey',
             'Randomize key', $values['randomizeKey'])
