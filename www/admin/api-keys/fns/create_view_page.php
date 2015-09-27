@@ -12,7 +12,9 @@ function create_view_page ($apiKey, &$scripts) {
         $_SESSION['admin/api-keys/edit/errors'],
         $_SESSION['admin/api-keys/edit/values'],
         $_SESSION['admin/api-keys/errors'],
-        $_SESSION['admin/api-keys/messages']
+        $_SESSION['admin/api-keys/messages'],
+        $_SESSION['admin/api-keys/new/errors'],
+        $_SESSION['admin/api-keys/new/values']
     );
 
     include_once "$fnsDir/export_date_ago.php";

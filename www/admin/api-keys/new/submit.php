@@ -10,23 +10,34 @@ require_admin();
 
 include_once '../fns/request_admin_api_key_params.php';
 include_once '../../../lib/mysqli.php';
-list($name) = request_admin_api_key_params($mysqli, $errors);
+list($name, $invitation_access,
+    $user_access) = request_admin_api_key_params($mysqli, $errors);
 
 include_once "$fnsDir/redirect.php";
 
 if ($errors) {
     $_SESSION['admin/api-keys/new/errors'] = $errors;
-    $_SESSION['admin/api-keys/new/values'] = ['name' => $name];
+    $_SESSION['admin/api-keys/new/values'] = [
+        'name' => $name,
+        'invitation_access' => $invitation_access,
+        'user_access' => $user_access,
+    ];
     redirect();
 }
+
+include_once '../fns/parse_read_write.php';
+parse_read_write($invitation_access,
+    $can_read_invitations, $can_write_invitations);
+parse_read_write($user_access, $can_read_users, $can_write_users);
+
+include_once "$fnsDir/AdminApiKeys/add.php";
+$id = AdminApiKeys\add($mysqli, $name, $can_read_invitations,
+    $can_read_users, $can_write_invitations, $can_write_users);
 
 unset(
     $_SESSION['admin/api-keys/new/errors'],
     $_SESSION['admin/api-keys/new/values']
 );
-
-include_once "$fnsDir/AdminApiKeys/add.php";
-$id = AdminApiKeys\add($mysqli, $name);
 
 $message = 'The admin API key has been generated.';
 $_SESSION['admin/api-keys/view/messages'] = [$message];

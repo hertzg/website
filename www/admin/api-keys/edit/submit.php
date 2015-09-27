@@ -10,7 +10,8 @@ include_once '../../../lib/mysqli.php';
 list($apiKey, $id) = require_admin_api_key($mysqli);
 
 include_once '../fns/request_admin_api_key_params.php';
-list($name) = request_admin_api_key_params($mysqli, $errors, $id);
+list($name, $invitation_access,
+    $user_access) = request_admin_api_key_params($mysqli, $errors, $id);
 
 include_once "$fnsDir/request_strings.php";
 list($randomizeKey) = request_strings('randomizeKey');
@@ -24,22 +25,30 @@ if ($errors) {
     $_SESSION['admin/api-keys/edit/values'] = [
         'name' => $name,
         'randomizeKey' => $randomizeKey,
+        'invitation_access' => $invitation_access,
+        'user_access' => $user_access,
     ];
     redirect("./?id=$id");
+}
+
+include_once '../fns/parse_read_write.php';
+parse_read_write($invitation_access,
+    $can_read_invitations, $can_write_invitations);
+parse_read_write($user_access, $can_read_users, $can_write_users);
+
+include_once "$fnsDir/AdminApiKeys/edit.php";
+AdminApiKeys\edit($mysqli, $id, $name, $can_read_invitations,
+    $can_read_users, $can_write_invitations, $can_write_users);
+
+if ($randomizeKey) {
+    include_once "$fnsDir/AdminApiKeys/randomizeKey.php";
+    AdminApiKeys\randomizeKey($mysqli, $id);
 }
 
 unset(
     $_SESSION['admin/api-keys/edit/errors'],
     $_SESSION['admin/api-keys/edit/values']
 );
-
-include_once "$fnsDir/AdminApiKeys/edit.php";
-AdminApiKeys\edit($mysqli, $id, $name);
-
-if ($randomizeKey) {
-    include_once "$fnsDir/AdminApiKeys/randomizeKey.php";
-    AdminApiKeys\randomizeKey($mysqli, $id);
-}
 
 $_SESSION['admin/api-keys/view/messages'] = ['Changes have been saved.'];
 

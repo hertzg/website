@@ -5,12 +5,19 @@ require_admin();
 
 $key = 'admin/api-keys/new/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
-else $values = ['name' => ''];
+else {
+    $values = [
+        'name' => '',
+        'invitation_access' => 'none',
+        'user_access' => 'none',
+    ];
+}
 
 unset($_SESSION['admin/api-keys/messages']);
 
 $fnsDir = '../../../fns';
 
+include_once '../fns/create_permission_fields.php';
 include_once "$fnsDir/ApiKeyName/maxLength.php";
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/textfield.php";
@@ -32,6 +39,7 @@ $content = Page\tabs(
             'required' => true,
             'autofocus' => true,
         ])
+        .create_permission_fields($values)
         .'<div class="hr"></div>'
         .Form\button('Generate Admin API Key')
     .'</form>'

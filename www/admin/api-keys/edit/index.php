@@ -7,16 +7,32 @@ list($apiKey, $id) = require_admin_api_key($mysqli);
 $key = 'admin/api-keys/edit/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
+
     $values = [
         'name' => $apiKey->name,
         'randomizeKey' => false,
     ];
+
+    $permissions = ['invitation', 'user'];
+    foreach ($permissions as $key) {
+        $property = "can_read_{$key}s";
+        if ($apiKey->$property) {
+            $property = "can_write_{$key}s";
+            if ($apiKey->$property) $access = 'readwrite';
+            else $access = 'readonly';
+        } else {
+            $access = 'none';
+        }
+        $values["{$key}_access"] = $access;
+    }
+
 }
 
 unset($_SESSION['admin/api-keys/view/messages']);
 
 $fnsDir = '../../../fns';
 
+include_once '../fns/create_permission_fields.php';
 include_once "$fnsDir/ApiKeyName/maxLength.php";
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/checkbox.php";
@@ -42,6 +58,7 @@ $content = Page\tabs(
         .'<div class="hr"></div>'
         .Form\checkbox('randomizeKey',
             'Randomize key', $values['randomizeKey'])
+        .create_permission_fields($values)
         .'<div class="hr"></div>'
         .Form\button('Save Changes')
         ."<input type=\"hidden\" name=\"id\" value=\"$id\" />"

@@ -2,10 +2,21 @@
 
 function request_admin_api_key_params ($mysqli, &$errors, $exclude_id = 0) {
 
+    $parseAccess = function (&$access) {
+        if ($access != 'readonly' && $access != 'readwrite') $access = 'none';
+    };
+
     $fnsDir = __DIR__.'/../../../fns';
 
     include_once "$fnsDir/AdminApiKeys/request.php";
     list($name) = AdminApiKeys\request();
+
+    include_once "$fnsDir/request_strings.php";
+    list($invitation_access, $user_access) = request_strings(
+        'invitation_access', 'user_access');
+
+    $parseAccess($invitation_access);
+    $parseAccess($user_access);
 
     if ($name === '') $errors[] = 'Enter name.';
     else {
@@ -16,6 +27,6 @@ function request_admin_api_key_params ($mysqli, &$errors, $exclude_id = 0) {
         }
     }
 
-    return [$name];
+    return [$name, $invitation_access, $user_access];
 
 }
