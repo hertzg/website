@@ -24,6 +24,14 @@ file_method_page('list', [
                 'description' =>
                     'The size of the content of the file in bytes.',
             ],
+            'md5_sum' => [
+                'type' => 'string',
+                'description' => 'The MD5 hash of the content of the file.',
+            ],
+            'sha256_sum' => [
+                'type' => 'string',
+                'description' => 'The SHA-256 hash of the content of the file.',
+            ],
             'insert_time' => [
                 'type' => 'number',
                 'description' =>
