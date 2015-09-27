@@ -28,7 +28,7 @@ function Post (method, formData, loadListener) {
     return request
 }
 ;
-(function (parentId, unloadProgress) {
+(function (parentId, unloadProgress, sessionTimeout) {
 
     var chunkSize = 1024 * 1024
 
@@ -114,9 +114,11 @@ function Post (method, formData, loadListener) {
 
         nextFile()
 
+        setInterval(sessionTimeout.extend, 30 * 1000)
+
     })
 
-})(parentId, unloadProgress)
+})(parentId, unloadProgress, sessionTimeout)
 ;
 
 })()

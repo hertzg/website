@@ -59,6 +59,7 @@ echo_user_page($user, 'Upload Files', $content, '../../', [
         '<script type="text/javascript">'
             .'var parentId = '.($parent_id === 0 ? 'null' : $parent_id)
         .'</script>'
-        .'<script type="text/javascript" src="js/compressed.js" defer="defer">'
+        .'<script type="text/javascript"'
+        .' src="js/compressed.js?1" defer="defer">'
         .'</script>'
 ]);
