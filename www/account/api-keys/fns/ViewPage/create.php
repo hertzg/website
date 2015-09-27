@@ -46,6 +46,15 @@ function create ($apiKey, &$scripts) {
     include_once __DIR__.'/../../../fns/create_expires_label.php';
     $expiresLabel = create_expires_label($apiKey->expire_time, $dateAgoScript);
 
+    unset(
+        $_SESSION['account/api-keys/edit/errors'],
+        $_SESSION['account/api-keys/edit/values'],
+        $_SESSION['account/api-keys/errors'],
+        $_SESSION['account/api-keys/messages'],
+        $_SESSION['account/api-keys/new/errors'],
+        $_SESSION['account/api-keys/new/values']
+    );
+
     include_once __DIR__.'/createPermissionsField.php';
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Form/label.php";

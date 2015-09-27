@@ -7,15 +7,6 @@ list($channel, $id, $user) = require_channel($mysqli);
 $base = '../../../';
 $fnsDir = '../../../fns';
 
-unset(
-    $_SESSION['notifications/channels/edit/errors'],
-    $_SESSION['notifications/channels/edit/values'],
-    $_SESSION['notifications/channels/errors'],
-    $_SESSION['notifications/channels/messages'],
-    $_SESSION['notifications/channels/post/errors'],
-    $_SESSION['notifications/channels/users/messages']
-);
-
 include_once '../fns/ViewPage/create.php';
 include_once "$fnsDir/compressed_js_script.php";
 $content =

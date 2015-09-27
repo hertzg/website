@@ -7,11 +7,6 @@ list($token, $id, $user) = require_token($mysqli);
 $base = '../../../';
 $fnsDir = '../../../fns';
 
-unset(
-    $_SESSION['account/tokens/errors'],
-    $_SESSION['account/tokens/messages']
-);
-
 include_once '../fns/create_view_page.php';
 include_once "$fnsDir/compressed_js_script.php";
 $content =

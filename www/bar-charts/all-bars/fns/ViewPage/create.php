@@ -54,7 +54,9 @@ function create ($bar, &$scripts) {
     unset(
         $_SESSION['bar-charts/all-bars/edit/errors'],
         $_SESSION['bar-charts/all-bars/edit/values'],
-        $_SESSION['bar-charts/all-bars/messages']
+        $_SESSION['bar-charts/all-bars/messages'],
+        $_SESSION['bar-charts/all-bars/new/errors'],
+        $_SESSION['bar-charts/all-bars/new/values']
     );
 
     include_once "$fnsDir/ItemList/listHref.php";

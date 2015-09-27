@@ -7,13 +7,6 @@ list($event, $id, $user) = require_event($mysqli);
 $base = '../../../';
 $fnsDir = '../../../fns';
 
-unset(
-    $_SESSION['calendar/all-events/edit/errors'],
-    $_SESSION['calendar/all-events/edit/values'],
-    $_SESSION['calendar/all-events/errors'],
-    $_SESSION['calendar/all-events/messages']
-);
-
 include_once '../fns/ViewPage/create.php';
 include_once "$fnsDir/compressed_js_script.php";
 $content =

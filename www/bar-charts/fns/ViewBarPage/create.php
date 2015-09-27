@@ -41,6 +41,8 @@ function create ($bar, &$scripts) {
     unset(
         $_SESSION['bar-charts/edit-bar/errors'],
         $_SESSION['bar-charts/edit-bar/values'],
+        $_SESSION['bar-charts/new-bar/errors'],
+        $_SESSION['bar-charts/new-bar/values'],
         $_SESSION['bar-charts/view/messages']
     );
 

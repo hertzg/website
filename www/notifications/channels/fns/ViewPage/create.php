@@ -25,6 +25,17 @@ function create ($channel, &$scripts) {
 
     $id = $channel->id;
 
+    unset(
+        $_SESSION['notifications/channels/edit/errors'],
+        $_SESSION['notifications/channels/edit/values'],
+        $_SESSION['notifications/channels/errors'],
+        $_SESSION['notifications/channels/messages'],
+        $_SESSION['notifications/channels/new/errors'],
+        $_SESSION['notifications/channels/new/values'],
+        $_SESSION['notifications/channels/post/errors'],
+        $_SESSION['notifications/channels/users/messages']
+    );
+
     include_once __DIR__.'/optionsPanel.php';
     include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/Form/textfield.php";

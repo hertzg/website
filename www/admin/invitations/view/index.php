@@ -9,7 +9,8 @@ $fnsDir = '../../../fns';
 
 include_once '../fns/create_view_page.php';
 include_once "$fnsDir/compressed_js_script.php";
-$content = create_view_page($invitation, $scripts)
+$content =
+    create_view_page($invitation, $scripts)
     .compressed_js_script('confirmDialog', $base)
     .'<script type="text/javascript">'
         .'var deleteHref = '.json_encode("../delete/submit.php?id=$id")

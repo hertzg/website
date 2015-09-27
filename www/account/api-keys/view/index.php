@@ -7,13 +7,6 @@ list($apiKey, $id, $user) = require_api_key($mysqli);
 $base = '../../../';
 $fnsDir = '../../../fns';
 
-unset(
-    $_SESSION['account/api-keys/edit/errors'],
-    $_SESSION['account/api-keys/edit/values'],
-    $_SESSION['account/api-keys/errors'],
-    $_SESSION['account/api-keys/messages']
-);
-
 include_once '../fns/ViewPage/create.php';
 include_once "$fnsDir/compressed_js_script.php";
 $content =
