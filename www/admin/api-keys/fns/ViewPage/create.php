@@ -1,9 +1,11 @@
 <?php
 
-function create_view_page ($apiKey, &$scripts) {
+namespace ViewPage;
+
+function create ($apiKey, &$scripts) {
 
     $id = $apiKey->id;
-    $fnsDir = __DIR__.'/../../../fns';
+    $fnsDir = __DIR__.'/../../../../fns';
 
     include_once "$fnsDir/compressed_js_script.php";
     $scripts = compressed_js_script('dateAgo', '../../../');
@@ -25,6 +27,7 @@ function create_view_page ($apiKey, &$scripts) {
             .export_date_ago($apiKey->update_time).'.';
     }
 
+    include_once __DIR__.'/createPermissionsField.php';
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/Form/textarea.php";
@@ -36,7 +39,7 @@ function create_view_page ($apiKey, &$scripts) {
     include_once "$fnsDir/Page/staticTwoColumns.php";
     include_once "$fnsDir/Page/tabs.php";
     return
-        Page\tabs(
+        \Page\tabs(
             [
                 [
                     'title' => 'Admin API Keys',
@@ -44,23 +47,25 @@ function create_view_page ($apiKey, &$scripts) {
                 ],
             ],
             "Admin API Key #$id",
-            Page\sessionMessages('admin/api-keys/view/messages')
-            .Form\label('Name', htmlspecialchars($apiKey->name))
+            \Page\sessionMessages('admin/api-keys/view/messages')
+            .\Form\label('Name', htmlspecialchars($apiKey->name))
             .'<div class="hr"></div>'
             .\Form\textarea('key', 'Key', [
                 'value' => $apiKey->key,
                 'readonly' => true,
             ])
-            .Page\infoText($infoText),
-            Page\newItemButton('../new/', 'Admin API Key')
+            .'<div class="hr"></div>'
+            .createPermissionsField($apiKey)
+            .\Page\infoText($infoText),
+            \Page\newItemButton('../new/', 'Admin API Key')
         )
         .create_panel(
             'Admin API Key Options',
-            Page\staticTwoColumns(
-                Page\imageArrowLink('Edit', "../edit/?id=$id",
+            \Page\staticTwoColumns(
+                \Page\imageArrowLink('Edit', "../edit/?id=$id",
                     'edit-api-key', ['id' => 'edit']),
                 '<div id="deleteLink">'
-                    .Page\imageLink('Delete', "../delete/?id=$id", 'trash-bin')
+                    .\Page\imageLink('Delete', "../delete/?id=$id", 'trash-bin')
                 .'</div>'
             )
         );
