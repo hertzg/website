@@ -22,6 +22,11 @@ function create_view_page ($token, &$scripts) {
         $accessed .= ' from '.htmlspecialchars($access_remote_address);
     }
 
+    unset(
+        $_SESSION['account/tokens/errors'],
+        $_SESSION['account/tokens/messages']
+    );
+
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/DomainName/get.php";
     include_once "$fnsDir/Form/label.php";

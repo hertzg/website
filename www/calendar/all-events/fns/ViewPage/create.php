@@ -60,6 +60,15 @@ function create ($user, $event, &$scripts) {
     include_once "$fnsDir/ItemList/escapedPageQuery.php";
     $escapedPageQuery = \ItemList\escapedPageQuery($newEventParams);
 
+    unset(
+        $_SESSION['calendar/all-events/edit/errors'],
+        $_SESSION['calendar/all-events/edit/values'],
+        $_SESSION['calendar/all-events/errors'],
+        $_SESSION['calendar/all-events/messages'],
+        $_SESSION['calendar/all-events/new/errors'],
+        $_SESSION['calendar/all-events/new/values']
+    );
+
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/ItemList/listHref.php";
     include_once "$fnsDir/Page/newItemButton.php";

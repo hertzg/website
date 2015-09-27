@@ -44,6 +44,8 @@ function create ($transaction, &$scripts) {
     unset(
         $_SESSION['wallets/edit-transaction/errors'],
         $_SESSION['wallets/edit-transaction/values'],
+        $_SESSION['wallets/new-transaction/errors'],
+        $_SESSION['wallets/new-transaction/values'],
         $_SESSION['wallets/view/errors'],
         $_SESSION['wallets/view/messages']
     );

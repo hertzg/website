@@ -57,6 +57,8 @@ function create ($bookmark, &$scripts) {
         $_SESSION['bookmarks/edit/values'],
         $_SESSION['bookmarks/errors'],
         $_SESSION['bookmarks/messages'],
+        $_SESSION['bookmarks/new/errors'],
+        $_SESSION['bookmarks/new/values'],
         $_SESSION['bookmarks/send/errors'],
         $_SESSION['bookmarks/send/messages'],
         $_SESSION['bookmarks/send/values']

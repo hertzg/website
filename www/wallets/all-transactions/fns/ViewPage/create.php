@@ -57,7 +57,9 @@ function create ($transaction, &$scripts) {
     unset(
         $_SESSION['wallets/all-transactions/edit/errors'],
         $_SESSION['wallets/all-transactions/edit/values'],
-        $_SESSION['wallets/all-transactions/messages']
+        $_SESSION['wallets/all-transactions/messages'],
+        $_SESSION['wallets/all-transactions/new/errors'],
+        $_SESSION['wallets/all-transactions/new/values']
     );
 
     include_once "$fnsDir/ItemList/listHref.php";

@@ -7,13 +7,6 @@ list($connection, $id, $user) = require_connection($mysqli);
 $base = '../../../';
 $fnsDir = '../../../fns';
 
-unset(
-    $_SESSION['account/connections/edit/errors'],
-    $_SESSION['account/connections/edit/values'],
-    $_SESSION['account/connections/errors'],
-    $_SESSION['account/connections/messages']
-);
-
 include_once '../fns/create_view_page.php';
 include_once "$fnsDir/compressed_js_script.php";
 $content =

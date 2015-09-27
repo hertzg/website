@@ -43,6 +43,15 @@ function create ($user, $event, &$scripts) {
         $newEventQuery = "?event_time=$event_time";
     }
 
+    unset(
+        $_SESSION['calendar/edit-event/errors'],
+        $_SESSION['calendar/edit-event/values'],
+        $_SESSION['calendar/errors'],
+        $_SESSION['calendar/messages'],
+        $_SESSION['calendar/new-event/errors'],
+        $_SESSION['calendar/new-event/values']
+    );
+
     include_once __DIR__.'/viewContent.php';
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Page/newItemButton.php";

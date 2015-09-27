@@ -46,6 +46,8 @@ function create ($task, $user, &$scripts) {
         $_SESSION['tasks/edit/values'],
         $_SESSION['tasks/errors'],
         $_SESSION['tasks/messages'],
+        $_SESSION['tasks/new/errors'],
+        $_SESSION['tasks/new/values'],
         $_SESSION['tasks/send/errors'],
         $_SESSION['tasks/send/messages'],
         $_SESSION['tasks/send/values']

@@ -42,7 +42,9 @@ function create_view_page ($user, &$scripts) {
 
     unset(
         $_SESSION['admin/users/errors'],
-        $_SESSION['admin/users/messages']
+        $_SESSION['admin/users/messages'],
+        $_SESSION['admin/users/new/errors'],
+        $_SESSION['admin/users/new/values']
     );
 
     include_once "$fnsDir/ItemList/escapedItemQuery.php";

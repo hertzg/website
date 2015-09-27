@@ -27,6 +27,8 @@ function create ($point, &$scripts) {
     unset(
         $_SESSION['places/edit-point/errors'],
         $_SESSION['places/edit-point/values'],
+        $_SESSION['places/new-point/errors'],
+        $_SESSION['places/new-point/values'],
         $_SESSION['places/view/messages']
     );
 
