@@ -58,6 +58,7 @@ function create ($apiKey, &$scripts) {
     include_once __DIR__.'/createPermissionsField.php';
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Form/label.php";
+    include_once "$fnsDir/Form/notes.php";
     include_once "$fnsDir/Form/textarea.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/newItemButton.php";
@@ -79,6 +80,10 @@ function create ($apiKey, &$scripts) {
         .\Form\textarea('key', 'Key', [
             'value' => $apiKey->key,
             'readonly' => true,
+        ])
+        .\Form\notes([
+            'This should be the value of <code>api_key</code>'
+            .' parameter when calling an API method.',
         ])
         .'<div class="hr"></div>'
         .createPermissionsField($apiKey)
