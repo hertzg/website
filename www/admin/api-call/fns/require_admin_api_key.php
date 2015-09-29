@@ -14,17 +14,13 @@ function require_admin_api_key ($permission_field, &$apiKey, &$mysqli) {
     $apiKey = AdminApiKeys\getByKey($mysqli, $admin_api_key);
 
     if (!$apiKey) {
-        http_response_code(403);
-        header('Content-Type: application/json');
-        echo '"INVALID_ADMIN_API_KEY"';
-        exit;
+        include_once "$fnsDir/ErrorJson/forbidden.php";
+        ErrorJson\forbidden('"INVALID_ADMIN_API_KEY"');
     }
 
     if (!$apiKey->$permission_field) {
-        http_response_code(403);
-        header('Content-Type: application/json');
-        echo '"ACCESS_DENIED"';
-        exit;
+        include_once "$fnsDir/ErrorJson/forbidden.php";
+        ErrorJson\forbidden('"ACCESS_DENIED"');
     }
 
 }
