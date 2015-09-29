@@ -11,32 +11,20 @@
     left: 0;
     width: auto;
     font-weight: bold;
+    max-width: 30%;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+.tab-active {
+    max-width: 40%;
+    direction: rtl;
 }
 .tab-normal,
 .tab-active {
     display: inline-block;
     vertical-align: top;
     line-height: 44px;
-    padding-left: 12px;
-    padding-right: 12px;
     border: 2px solid transparent;
-}
-
-@media (max-width: 440px) {
-
-    .tab-active {
-        max-width: 170px;
-        direction: rtl;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .tab-normal {
-        text-align: center;
-        width: 40px;
-    }
-    .tab-normal > .secondary {
-        display: none;
-    }
-
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
