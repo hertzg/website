@@ -13,7 +13,7 @@ include_once "$fnsDir/Invitations/request.php";
 $note = Invitations\request();
 
 include_once "$fnsDir/Invitations/edit.php";
-Invitations\edit($mysqli, $id, $note);
+Invitations\edit($mysqli, $id, $note, null);
 
 $_SESSION['admin/invitations/view/messages'] = ['Changes have been saved.'];
 

@@ -10,7 +10,7 @@ include_once '../../../fns/Invitations/request.php';
 $note = Invitations\request();
 
 include_once '../../../fns/Invitations/edit.php';
-Invitations\edit($mysqli, $invitation->id, $note);
+Invitations\edit($mysqli, $invitation->id, $note, $apiKey);
 
 header('Content-Type: application/json');
 echo 'true';

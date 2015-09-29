@@ -7,7 +7,7 @@ include_once '../../../fns/Invitations/request.php';
 $note = Invitations\request();
 
 include_once '../../../fns/Invitations/add.php';
-$id = Invitations\add($mysqli, $note);
+$id = Invitations\add($mysqli, $note, $apiKey);
 
 header('Content-Type: application/json');
 echo $id;
