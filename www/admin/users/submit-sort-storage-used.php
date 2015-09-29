@@ -7,12 +7,17 @@ include_once '../fns/require_admin.php';
 require_admin();
 
 include_once '../../fns/Users/OrderBy/set.php';
-Users\OrderBy\set('storage_used desc');
+$ok = Users\OrderBy\set('storage_used desc');
 
-unset($_SESSION['admin/users/errors']);
-$_SESSION['admin/users/messages'] = [
-    'The list is now sorted by storage used.',
-];
+if ($ok === false) {
+    unset($_SESSION['admin/users/messages']);
+    $_SESSION['admin/users/errors'] = ['Failed to save the sort field.'];
+} else {
+    unset($_SESSION['admin/users/errors']);
+    $_SESSION['admin/users/messages'] = [
+        'The list is now sorted by storage used.',
+    ];
+}
 
 include_once '../../fns/redirect.php';
 include_once '../../fns/ItemList/listUrl.php';
