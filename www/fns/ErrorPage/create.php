@@ -13,6 +13,13 @@ function create ($code, $text, $description, $send_headers = null) {
 
     if ($send_headers !== null) $send_headers();
 
+    if (array_key_exists('HTTP_REFERER', $_SERVER)) {
+        $href = htmlspecialchars($_SERVER['HTTP_REFERER']);
+        $returnBackLink = "<a href=\"$href\">Return Back</a> or ";
+    } else {
+        $returnBackLink = '';
+    }
+
     echo
         '<!DOCTYPE html>'
         .'<html style="height: 100%">'
@@ -70,6 +77,7 @@ function create ($code, $text, $description, $send_headers = null) {
                     ."<div>$description</div>"
                     .'<br />'
                     .'<div>'
+                        .$returnBackLink
                         ."<a href=\"$siteBase\">Return to Zvini</a>"
                     .'</div>'
                 .'</div>'
