@@ -3,6 +3,7 @@
 namespace Session\EncryptionKey;
 
 function get () {
+    if (session_id() === '') return;
     if (array_key_exists('encryption_key', $_SESSION)) {
         $object = $_SESSION['encryption_key'];
         include_once __DIR__.'/minutes.php';
