@@ -40,6 +40,11 @@ include_once "$fnsDir/AdminApiKeys/edit.php";
 AdminApiKeys\edit($mysqli, $id, $name, $can_read_invitations,
     $can_read_users, $can_write_invitations, $can_write_users);
 
+if ($name !== $apiKey->name) {
+    include_once "$fnsDir/Invitations/editApiKey.php";
+    \Invitations\editApiKey($mysqli, $id, $name);
+}
+
 if ($randomizeKey) {
     include_once "$fnsDir/AdminApiKeys/randomizeKey.php";
     AdminApiKeys\randomizeKey($mysqli, $id);
