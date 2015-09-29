@@ -13,8 +13,8 @@ function require_bar ($mysqli, $id_users) {
     $bar = BarChartBars\getNotDeletedOnUser($mysqli, $id_users, $id);
 
     if (!$bar) {
-        include_once __DIR__.'/../../../fns/bad_request.php';
-        bad_request('BAR_NOT_FOUND');
+        include_once "$fnsDir/ErrorJson/badRequest.php";
+        ErrorJson\badRequest('"BAR_NOT_FOUND"');
     }
 
     return $bar;

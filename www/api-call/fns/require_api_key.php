@@ -14,20 +14,16 @@ function require_api_key ($permission_field) {
 
         include_once "$fnsDir/is_same_domain_referer.php";
         if (!is_same_domain_referer()) {
-            http_response_code(403);
-            header('Content-Type: application/json');
-            echo '"CROSS_DOMAIN_REQUEST"';
-            exit;
+            include_once "$fnsDir/ErrorJson/forbidden.php";
+            ErrorJson\forbidden('"CROSS_DOMAIN_REQUEST"');
         }
 
         include_once "$fnsDir/signed_user.php";
         $user = signed_user();
 
         if (!$user) {
-            http_response_code(403);
-            header('Content-Type: application/json');
-            echo '"NOT_SIGNED_IN"';
-            exit;
+            include_once "$fnsDir/ErrorJson/forbidden.php";
+            ErrorJson\forbidden('"NOT_SIGNED_IN"');
         }
 
         $apiKey = null;
@@ -38,27 +34,21 @@ function require_api_key ($permission_field) {
         $apiKey = ApiKeys\getByKey($mysqli, $api_key);
 
         if (!$apiKey) {
-            http_response_code(403);
-            header('Content-Type: application/json');
-            echo '"INVALID_API_KEY"';
-            exit;
+            include_once "$fnsDir/ErrorJson/forbidden.php";
+            ErrorJson\forbidden('"INVALID_API_KEY"');
         }
 
         if (!$apiKey->$permission_field) {
-            http_response_code(403);
-            header('Content-Type: application/json');
-            echo '"ACCESS_DENIED"';
-            exit;
+            include_once "$fnsDir/ErrorJson/forbidden.php";
+            ErrorJson\forbidden('"ACCESS_DENIED"');
         }
 
         $time = time();
 
         $expire_time = $apiKey->expire_time;
         if ($expire_time !== null && $expire_time < $time) {
-            http_response_code(403);
-            header('Content-Type: application/json');
-            echo '"API_KEY_EXPIRED"';
-            exit;
+            include_once "$fnsDir/ErrorJson/forbidden.php";
+            ErrorJson\forbidden('"API_KEY_EXPIRED"');
         }
 
         include_once "$fnsDir/ClientAddress/get.php";

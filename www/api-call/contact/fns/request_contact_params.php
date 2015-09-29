@@ -20,8 +20,8 @@ function request_contact_params ($user) {
     }
 
     if ($full_name === '') {
-        include_once __DIR__.'/../../fns/bad_request.php';
-        bad_request('ENTER_FULL_NAME');
+        include_once "$fnsDir/ErrorJson/badRequest.php";
+        ErrorJson\badRequest('"ENTER_FULL_NAME"');
     }
 
     include_once __DIR__.'/../../fns/require_tags.php';

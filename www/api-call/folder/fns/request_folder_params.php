@@ -9,8 +9,8 @@ function request_folder_params ($mysqli,
     $name = Folders\request();
 
     if ($name === '') {
-        include_once __DIR__.'/../../fns/bad_request.php';
-        bad_request('ENTER_NAME');
+        include_once "$fnsDir/ErrorJson/badRequest.php";
+        ErrorJson\badRequest('"ENTER_NAME"');
     }
 
     include_once "$fnsDir/request_strings.php";
@@ -26,8 +26,8 @@ function request_folder_params ($mysqli,
         $id_users, $id_folders, $name, $exclude_id);
 
     if ($existingFolder) {
-        include_once __DIR__.'/../../fns/bad_request.php';
-        bad_request('FOLDER_ALREADY_EXISTS');
+        include_once "$fnsDir/ErrorJson/badRequest.php";
+        ErrorJson\badRequest('"FOLDER_ALREADY_EXISTS"');
     }
 
     return $name;
