@@ -35,12 +35,14 @@ function create_view_page ($invitation, &$scripts) {
         $items[] = Form\label('Note', htmlspecialchars($invitation->note));
     }
 
-    include_once "$fnsDir/export_date_ago.php";
-    $infoText = 'Invitation created '
-        .export_date_ago($invitation->insert_time).'.';
+    include_once __DIR__.'/../../fns/format_author.php';
+    $author = format_author($invitation->insert_time,
+        $invitation->insert_api_key_name);
+    $infoText = "Invitation created $author.";
     if ($invitation->revision) {
-        $infoText .= '<br />Last modified '
-            .export_date_ago($invitation->update_time).'.';
+        $author = format_author($invitation->update_time,
+            $invitation->update_api_key_name);
+        $infoText .= "<br />Last modified $author.";
     }
 
     include_once "$fnsDir/create_panel.php";
