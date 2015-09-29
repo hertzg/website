@@ -13,8 +13,8 @@ function require_received_note ($mysqli, $user) {
     $receivedNote = Users\Notes\Received\get($mysqli, $user, $id);
 
     if (!$receivedNote) {
-        include_once __DIR__.'/../../../fns/bad_request.php';
-        bad_request('RECEIVED_NOTE_NOT_FOUND');
+        include_once "$fnsDir/ErrorJson/badRequest.php";
+        ErrorJson\badRequest('"RECEIVED_NOTE_NOT_FOUND"');
     }
 
     return $receivedNote;

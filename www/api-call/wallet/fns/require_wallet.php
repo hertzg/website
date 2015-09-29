@@ -13,8 +13,8 @@ function require_wallet ($mysqli, $user) {
     $wallet = Users\Wallets\get($mysqli, $user, $id);
 
     if (!$wallet) {
-        include_once __DIR__.'/../../fns/bad_request.php';
-        bad_request('WALLET_NOT_FOUND');
+        include_once "$fnsDir/ErrorJson/badRequest.php";
+        ErrorJson\badRequest('"WALLET_NOT_FOUND"');
     }
 
     return $wallet;

@@ -13,8 +13,8 @@ function require_received_contact ($mysqli, $user) {
     $receivedContact = Users\Contacts\Received\get($mysqli, $user, $id);
 
     if (!$receivedContact) {
-        include_once __DIR__.'/../../../fns/bad_request.php';
-        bad_request('RECEIVED_CONTACT_NOT_FOUND');
+        include_once "$fnsDir/ErrorJson/badRequest.php";
+        ErrorJson\badRequest('"RECEIVED_CONTACT_NOT_FOUND"');
     }
 
     return $receivedContact;

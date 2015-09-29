@@ -1,8 +1,10 @@
 <?php
 
-function bad_request ($error) {
+namespace ErrorJson;
+
+function badRequest ($error) {
     http_response_code(400);
     header('Content-Type: application/json');
-    echo json_encode($error);
+    echo $error;
     exit;
 }

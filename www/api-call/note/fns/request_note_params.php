@@ -9,8 +9,8 @@ function request_note_params () {
         $password_protect) = Notes\request();
 
     if ($text === '') {
-        include_once __DIR__.'/../../fns/bad_request.php';
-        bad_request('ENTER_TEXT');
+        include_once "$fnsDir/ErrorJson/badRequest.php";
+        ErrorJson\badRequest('"ENTER_TEXT"');
     }
 
     include_once __DIR__.'/../../fns/require_tags.php';
@@ -20,8 +20,8 @@ function request_note_params () {
         include_once "$fnsDir/Session/EncryptionKey/get.php";
         $encryption_key = Session\EncryptionKey\get();
         if ($encryption_key === null) {
-            include_once __DIR__.'/../../fns/bad_request.php';
-            bad_request('CANNOT_PASSWORD_PROTECT');
+            include_once "$fnsDir/ErrorJson/badRequest.php";
+            ErrorJson\badRequest('"CANNOT_PASSWORD_PROTECT"');
         }
     } else {
         $encryption_key = null;

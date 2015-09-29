@@ -13,8 +13,8 @@ function require_task ($mysqli, $user) {
     $task = Users\Tasks\get($mysqli, $user, $id);
 
     if (!$task) {
-        include_once __DIR__.'/../../fns/bad_request.php';
-        bad_request('TASK_NOT_FOUND');
+        include_once "$fnsDir/ErrorJson/badRequest.php";
+        ErrorJson\badRequest('"TASK_NOT_FOUND"');
     }
 
     return $task;

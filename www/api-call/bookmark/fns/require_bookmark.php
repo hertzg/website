@@ -13,8 +13,8 @@ function require_bookmark ($mysqli, $user) {
     $bookmark = Users\Bookmarks\get($mysqli, $user, $id);
 
     if (!$bookmark) {
-        include_once __DIR__.'/../../fns/bad_request.php';
-        bad_request('BOOKMARK_NOT_FOUND');
+        include_once "$fnsDir/ErrorJson/badRequest.php";
+        ErrorJson\badRequest('"BOOKMARK_NOT_FOUND"');
     }
 
     return $bookmark;

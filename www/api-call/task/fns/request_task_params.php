@@ -18,8 +18,8 @@ function request_task_params ($user) {
     }
 
     if ($text === '') {
-        include_once __DIR__.'/../../fns/bad_request.php';
-        bad_request('ENTER_TEXT');
+        include_once "$fnsDir/ErrorJson/badRequest.php";
+        ErrorJson\badRequest('"ENTER_TEXT"');
     }
 
     include_once __DIR__.'/../../fns/require_tags.php';
