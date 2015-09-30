@@ -33,7 +33,7 @@ function group_page ($groupKey, $methods, $subgroups = null) {
         .join('<div class="hr"></div>', $items)
     );
 
-    if ($subgroups) {
+    if ($subgroups !== null) {
 
         $items = [];
         foreach ($subgroups as $key => $subgroup) {
