@@ -26,7 +26,9 @@ function create_view_page ($user, &$scripts) {
 
     }
 
-    $infoText = 'User created '.export_date_ago($user->insert_time).'.';
+    include_once __DIR__.'/../../fns/format_author.php';
+    $author = format_author($user->insert_time, $user->insert_api_key_name);
+    $infoText = "User created $author.";
 
     $items[] = Form\label('Last accessed', $accessed);
 
