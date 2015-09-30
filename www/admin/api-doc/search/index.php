@@ -1,7 +1,7 @@
 <?php
 
-include_once '../../fns/require_admin.php';
-require_admin();
+include_once '../fns/unset_session_vars.php';
+unset_session_vars();
 
 $fnsDir = '../../../fns';
 

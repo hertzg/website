@@ -1,14 +1,7 @@
 <?php
 
-include_once '../fns/require_admin.php';
-require_admin();
-
-unset(
-    $_SESSION['admin/messages'],
-    $_SESSION['admin/api-keys/new/errors'],
-    $_SESSION['admin/api-keys/new/values'],
-    $_SESSION['admin/api-keys/view/messages']
-);
+include_once 'fns/unset_session_vars.php';
+unset_session_vars();
 
 $fnsDir = '../../fns';
 
