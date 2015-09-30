@@ -15,7 +15,7 @@ if ($ok === false) {
 } else {
     unset($_SESSION['admin/users/errors']);
     $_SESSION['admin/users/messages'] = [
-        'The list is now sorted by signed up time.',
+        'The list is now sorted by created time.',
     ];
 }
 

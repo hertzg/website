@@ -10,10 +10,10 @@ function sort_panel ($order_by) {
     $lastAccessedTimeLink = Page\imageLink($title,
         'submit-sort-last-accessed.php', 'sort-time');
 
-    $title = 'Signed up time';
+    $title = 'Created time';
     if ($order_by === 'insert_time desc') $title .= ' (Current)';
-    $signedUpTimeLink = Page\imageLink($title,
-        'submit-sort-signed-up.php', 'sort-time');
+    $insertTimeLink = Page\imageLink($title,
+        'submit-sort-created.php', 'sort-time');
 
     $title = 'Username';
     if ($order_by === 'username') $title .= ' (Current)';
@@ -29,7 +29,7 @@ function sort_panel ($order_by) {
     $content =
         Page\twoColumns($usernameLink, $storageUsedLink)
         .'<div class="ht"></div>'
-        .Page\twoColumns($signedUpTimeLink, $lastAccessedTimeLink);
+        .Page\twoColumns($insertTimeLink, $lastAccessedTimeLink);
 
     include_once "$fnsDir/create_panel.php";
     return create_panel('Sort Users By', $content);
