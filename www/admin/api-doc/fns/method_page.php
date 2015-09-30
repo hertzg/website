@@ -1,0 +1,49 @@
+<?php
+
+function method_page ($groupName, $prefix,
+    $methodName, $description, $params, $returns, $errors) {
+
+    $fnsDir = __DIR__.'/../../../fns';
+
+    include_once "$fnsDir/Page/text.php";
+    $items = [Page\text("<code>$prefix/$methodName</code> - $description")];
+
+    if ($params) {
+        $text = 'Method parameters:';
+        foreach ($params as $param) {
+            $text .= "<br /><code>$param[name]</code> - $param[description]";
+        }
+        $items[] = Page\text($text);
+    } else {
+        $items[] = Page\text('The method has no parameters.');
+    }
+
+    include_once __DIR__.'/method_result.php';
+    $items[] = method_result($returns);
+
+    if ($errors) {
+        $text = 'Expected errors:';
+        foreach ($errors as $error => $description) {
+            $text .= "<br /><code>$error</code> - $description";
+        }
+    } else {
+        $text = 'No errors expected.';
+    }
+    $items[] = Page\text($text);
+
+    include_once "$fnsDir/Page/tabs.php";
+    $content = Page\tabs(
+        [
+            [
+                'title' => $groupName,
+                'href' => "../#$methodName",
+            ],
+        ],
+        $methodName,
+        join('<div class="hr"></div>', $items)
+    );
+
+    include_once __DIR__.'/../../fns/echo_admin_page.php';
+    echo_admin_page("$prefix/$methodName Method", $content, '../../../');
+
+}

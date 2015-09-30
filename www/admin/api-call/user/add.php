@@ -40,6 +40,11 @@ if (Password\isShort($password)) {
     ErrorJson\badRequest('"PASSWORD_TOO_SHORT"');
 }
 
+if ($password === $username) {
+    include_once "$fnsDir/ErrorJson/badRequest.php";
+    ErrorJson\badRequest('"PASSWORD_SAME"');
+}
+
 include_once "$fnsDir/Users/Account/create.php";
 $id = Users\Account\create($mysqli, $username, $password, '', $apiKey);
 

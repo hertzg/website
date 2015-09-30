@@ -92,6 +92,9 @@ $content = Page\tabs(
     .'<div class="hr"></div>'
     .Page\imageArrowLink('Admin API Keys', 'api-keys/',
         'api-keys', ['id' => 'api-keys'])
+    .'<div class="hr"></div>'
+    .Page\imageArrowLink('Admin API Documentation', 'api-doc/',
+        'generic', ['id' => 'api-doc'])
 );
 
 include_once '../fns/echo_page.php';
