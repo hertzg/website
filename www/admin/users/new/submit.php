@@ -47,4 +47,4 @@ $id = Users\Account\create($mysqli, $username, $password, '');
 $_SESSION['admin/users/view/messages'] = ['The user has been saved.'];
 
 include_once "$fnsDir/ItemList/itemQuery.php";
-redirect('../view'.ItemList\itemQuery($id));
+redirect('../view/'.ItemList\itemQuery($id));
