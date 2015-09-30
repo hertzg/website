@@ -27,7 +27,7 @@ function get_article_text () {
         .'<br />'
         .' To access an API method a program will require an admin API key.'
         .' It\'s a random password. Administrators can generate'
-        .' multiples of them from "Administration > Admin API Keys" page.'
+        .' multiples of them from "Administration" &gt; "Admin API Keys" page.'
         .' To call a method an <code>admin_api_key</code>'
         .' parameter should be present and its value'
         .' should be the generated random password.'
