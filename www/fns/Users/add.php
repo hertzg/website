@@ -2,7 +2,7 @@
 
 namespace Users;
 
-function add ($mysqli, $username, $password, $email) {
+function add ($mysqli, $username, $password, $email, $insertApiKey) {
 
     $fnsDir = __DIR__.'/..';
 
@@ -20,6 +20,16 @@ function add ($mysqli, $username, $password, $email) {
     $password_sha512_key = $mysqli->real_escape_string($password_sha512_key);
     $email = $mysqli->real_escape_string($email);
     $insert_time = time();
+    if ($insertApiKey === null) {
+        $insert_api_key_id = $insert_api_key_name = 'null';
+    } else {
+
+        $insert_api_key_id = $insertApiKey->id;
+
+        $name = $insertApiKey->name;
+        $insert_api_key_name = "'".$mysqli->real_escape_string($name)."'";
+
+    }
 
     include_once "$fnsDir/EncryptionKey/random.php";
     \EncryptionKey\random($password, $random_key,
@@ -45,6 +55,7 @@ function add ($mysqli, $username, $password, $email) {
         .' contacts_order_by, events_order_by, notes_order_by,'
         .' places_order_by, schedules_order_by,'
         .' tasks_order_by, wallets_order_by,'
+        .' insert_api_key_id, insert_api_key_name,'
         .' show_bar_charts, show_bookmarks, show_calendar, show_contacts,'
         .' show_files, show_notes, show_notifications, show_places,'
         .' show_schedules, show_tasks, show_trash, show_wallets)'
@@ -57,6 +68,7 @@ function add ($mysqli, $username, $password, $email) {
         ." 'full_name', 'event_time desc', 'update_time desc',"
         ." 'update_time desc', 'next_time',"
         ." 'update_time desc', 'update_time desc',"
+        ." $insert_api_key_id, $insert_api_key_name,"
         ." 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 

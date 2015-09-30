@@ -40,8 +40,8 @@ if (Password\isShort($password)) {
     ErrorJson\badRequest('"PASSWORD_TOO_SHORT"');
 }
 
-include_once '../../../fns/Users/Account/create.php';
-$id = Users\Account\create($mysqli, $username, $password, '');
+include_once "$fnsDir/Users/Account/create.php";
+$id = Users\Account\create($mysqli, $username, $password, '', $apiKey);
 
 header('Content-Type: application/json');
 echo $id;

@@ -6,6 +6,7 @@ function ensure ($mysqli) {
 
     $fnsDir = __DIR__.'/..';
 
+    include_once "$fnsDir/ApiKeyName/column.php";
     include_once "$fnsDir/Email/column.php";
     include_once "$fnsDir/EncryptionKey/column.php";
     include_once "$fnsDir/EncryptionKey/ivColumn.php";
@@ -73,6 +74,11 @@ function ensure ($mysqli) {
             'type' => 'bigint(20) unsigned',
             'primary' => true,
         ],
+        'insert_api_key_id' => [
+            'type' => 'bigint(20) unsigned',
+            'nullable' => true,
+        ],
+        'insert_api_key_name' => \ApiKeyName\column(true),
         'insert_time' => ['type' => 'bigint(20) unsigned'],
         'last_login_time' => [
             'type' => 'bigint(20) unsigned',
