@@ -82,19 +82,19 @@ $content = Page\tabs(
     .Page\imageArrowLink('Set New Username/Password',
         'username-password/', 'generic', ['id' => 'username-password'])
     .'<div class="hr"></div>'
-    .Page\imageArrowLink('Invitations', 'invitations/',
-        'invitations', ['id' => 'invitations'])
-    .'<div class="hr"></div>'
-    .Page\imageArrowLink('Users', 'users/', 'users', ['id' => 'users'])
-    .'<div class="hr"></div>'
-    .Page\imageArrowLink('Invalid Signins', 'invalid-signins/',
-        'generic', ['id' => 'invalid-signins'])
-    .'<div class="hr"></div>'
     .Page\imageArrowLink('Admin API Keys', 'api-keys/',
         'api-keys', ['id' => 'api-keys'])
     .'<div class="hr"></div>'
     .Page\imageArrowLink('Admin API Documentation', 'api-doc/',
         'generic', ['id' => 'api-doc'])
+    .Page\imageArrowLink('Invalid Signins', 'invalid-signins/',
+        'generic', ['id' => 'invalid-signins'])
+    .'<div class="hr"></div>'
+    .Page\imageArrowLink('Invitations', 'invitations/',
+        'invitations', ['id' => 'invitations'])
+    .'<div class="hr"></div>'
+    .Page\imageArrowLink('Users', 'users/', 'users', ['id' => 'users'])
+    .'<div class="hr"></div>'
 );
 
 include_once '../fns/echo_page.php';
