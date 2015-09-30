@@ -41,8 +41,14 @@ AdminApiKeys\edit($mysqli, $id, $name, $can_read_invitations,
     $can_read_users, $can_write_invitations, $can_write_users);
 
 if ($name !== $apiKey->name) {
+
     include_once "$fnsDir/Invitations/editApiKey.php";
     \Invitations\editApiKey($mysqli, $id, $name);
+
+
+    include_once "$fnsDir/Users/editApiKey.php";
+    \Users\editApiKey($mysqli, $id, $name);
+
 }
 
 if ($randomizeKey) {
