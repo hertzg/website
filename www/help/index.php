@@ -32,7 +32,7 @@ $content = Page\tabs(
         'feedback/', 'feedback', ['id' => 'feedback'])
     .'<div class="hr"></div>'
     .Page\imageArrowLink('API Documentation',
-        'api-doc/', 'generic', ['id' => 'api-doc'])
+        'api-doc/', 'api-doc', ['id' => 'api-doc'])
     .'<div class="hr"></div>'
     .Page\imageArrowLink('About Zvini',
         'about-zvini/', 'zvini', ['id' => 'about-zvini'])

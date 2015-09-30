@@ -17,11 +17,12 @@ function render (&$content, $file, $names) {
 chdir(__DIR__);
 include_once '../../../lib/cli.php';
 
+render($content, 'api-doc.svg', ['api-namespace', 'api-method', 'api-doc']);
+
 $names = ['api-key', 'create-api-key', 'edit-api-key', 'api-keys'];
 render($content, 'api-key.svg?2', $names);
 
-$names = ['archive', 'unarchive', 'archive-file'];
-render($content, 'archive.svg?3', $names);
+render($content, 'archive.svg?3', ['archive', 'unarchive', 'archive-file']);
 
 $names = ['bar', 'create-bar', 'edit-bar', 'bars', 'duplicate-bar'];
 render($content, 'bar.svg?2', $names);
@@ -87,8 +88,8 @@ $names = ['account', 'edit-profile', 'download', 'upload', 'feedback',
     'send-sms', 'receive', 'phone', 'edit-home', 'reorder',
     'show-hide', 'restore-defaults', 'forbid-notifications',
     'receive-notifications', 'generic', 'zvini',
-    'slideshow', 'locate', 'license', 'api-namespace', 'api-method'];
-render($content, 'other.svg?23', $names);
+    'slideshow', 'locate', 'license'];
+render($content, 'other.svg?24', $names);
 
 $names = ['place', 'create-place', 'edit-place',
     'places', 'import-place', 'duplicate-place', 'place-on-earth'];
