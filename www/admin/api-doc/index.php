@@ -20,8 +20,11 @@ foreach ($groups as $key => $group) {
         "$group[description].", "$key/", 'api-namespace', ['id' => $key]);
 }
 
+include_once 'fns/get_article_text.php';
 include_once "$fnsDir/create_panel.php";
+include_once "$fnsDir/Page/imageArrowLink.php";
 include_once "$fnsDir/Page/tabs.php";
+include_once "$fnsDir/Page/text.php";
 $content = Page\tabs(
     [
         [
@@ -30,7 +33,18 @@ $content = Page\tabs(
         ],
     ],
     'Admin API Documentation',
-    join('<div class="hr"></div>', $items)
+    Page\text(get_article_text())
+    .'<div class="hr"></div>'
+    .Page\imageArrowLink('PHP Example',
+        'php-example', 'generic', ['id' => 'php-example'])
+    .'<div class="hr"></div>'
+    .Page\text(
+        'Below is a list of errors that are expected from any admin API method:'
+        .'<br /><code>INVALID_API_KEY</code> - The admin API key is invalid.'
+        .'<br /><code>ACCESS_DENIED</code> - '
+        .'The admin API key doesn\'t have a permission to perform the action.'
+    )
+    .create_panel('Root Namespaces', join('<div class="hr"></div>', $items))
 );
 
 include_once '../fns/echo_admin_page.php';

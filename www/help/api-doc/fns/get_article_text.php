@@ -16,7 +16,7 @@ function get_article_text () {
     $api_base = "$siteProtocol://$domainName{$siteBase}api-call/";
 
     return
-        'Zvini API allows programs to access, modify'
+        '<em class="term">Zvini API</em> allows programs to access, modify'
         .' and delete user data by calling API methods with HTTP requests.'
         .' The API methods can be called with either GET or POST methods.'
         .' The method parameters can be passed'

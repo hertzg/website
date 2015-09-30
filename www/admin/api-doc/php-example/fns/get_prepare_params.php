@@ -13,20 +13,20 @@ function get_prepare_params () {
     include_once "$fnsDir/SiteProtocol/get.php";
     $siteProtocol = SiteProtocol\get();
 
-    $api_base = "$siteProtocol://$domainName{$siteBase}api-call/";
+    $admin_api_base = "$siteProtocol://$domainName{$siteBase}admin/api-call/";
 
     include_once __DIR__.'/phpCode.php';
     return
         phpCode\comment('prepare parameters')
         .phpCode\statement(
             phpCode\assignment(
-                phpCode\variable('api_base'),
-                phpCode\stringLiteral($api_base)
+                phpCode\variable('admin_api_base'),
+                phpCode\stringLiteral($admin_api_base)
             )
         )
         .phpCode\statement(
             phpCode\assignment(
-                phpCode\variable('api_key'),
+                phpCode\variable('admin_api_key'),
                 phpCode\stringLiteral('DPFvTPfRvNPLfVvR4...')
             )
         )
@@ -43,8 +43,8 @@ function get_prepare_params () {
                     "\n"
                     .phpCode\indent(
                         phpCode\arrayKeyValue(
-                            phpCode\stringLiteral('api_key'),
-                            phpCode\variable('api_key')
+                            phpCode\stringLiteral('admin_api_key'),
+                            phpCode\variable('admin_api_key')
                         )."\n",
                         phpCode\arrayKeyValue(
                             phpCode\stringLiteral('param1'),

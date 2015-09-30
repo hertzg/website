@@ -82,3 +82,7 @@ b.author {
 .clickable:active .redText {
     color: #fff;
 }
+
+.term {
+    border-bottom: 1px dotted;
+}

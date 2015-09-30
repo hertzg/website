@@ -45,10 +45,10 @@ $content =
         .'<div class="hr"></div>'
         .Page\text(
             'Below is a list of errors that are expected from any API method:'
-            .'<br /><code>INVALID_API_KEY</code> - The API Key is invalid.'
-            .'<br /><code>API_KEY_EXPIRED</code> - The API Key is expired.'
+            .'<br /><code>INVALID_API_KEY</code> - The API key is invalid.'
+            .'<br /><code>API_KEY_EXPIRED</code> - The API key is expired.'
             .'<br /><code>ACCESS_DENIED</code> - '
-            .'The API Key doesn\'t have a permission to perform the action.'
+            .'The API key doesn\'t have a permission to perform the action.'
             .'<br /><code>NOT_SIGNED_IN</code>'
             .' - The user has already signed out.'
             .'<br /><code>CROSS_DOMAIN_REQUEST</code>'
