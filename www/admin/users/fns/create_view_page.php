@@ -26,8 +26,7 @@ function create_view_page ($user, &$scripts) {
 
     }
 
-    $items[] = Form\label('Signed up',
-        export_date_ago($user->insert_time, true));
+    $infoText = 'User created '.export_date_ago($user->insert_time).'.';
 
     $items[] = Form\label('Last accessed', $accessed);
 
@@ -54,6 +53,7 @@ function create_view_page ($user, &$scripts) {
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/ItemList/listHref.php";
     include_once "$fnsDir/Page/imageLink.php";
+    include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
     return
@@ -66,7 +66,8 @@ function create_view_page ($user, &$scripts) {
             ],
             "User #$id",
             Page\sessionMessages('admin/users/view/messages')
-            .join('<div class="hr"></div>', $items),
+            .join('<div class="hr"></div>', $items)
+            .Page\infoText($infoText),
             create_new_item_button('User', '../')
         )
         .create_panel(
