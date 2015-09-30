@@ -32,7 +32,7 @@ function get_send_request () {
                             phpCode\arrayKeyValue(
                                 phpCode\constant('CURLOPT_URL'),
                                 phpCode\concat(
-                                    phpCode\variable('api_base'),
+                                    phpCode\variable('admin_api_base'),
                                     phpCode\variable('method')
                                 )
                             )."\n"
