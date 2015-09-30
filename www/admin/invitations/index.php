@@ -5,56 +5,34 @@ require_admin();
 
 $fnsDir = '../../fns';
 
-unset(
-    $_SESSION['admin/invitations/view/messages'],
-    $_SESSION['admin/messages']
-);
-
 include_once "$fnsDir/Invitations/index.php";
 include_once '../../lib/mysqli.php';
 $invitations = Invitations\index($mysqli);
 
 $items = [];
 if ($invitations) {
-    include_once "$fnsDir/Page/imageArrowLink.php";
-    include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
-    foreach ($invitations as $invitation) {
-        $id = $invitation->id;
-        $note = $invitation->note;
-        $href = "view/?id=$id";
-        $icon = 'invitation';
-        $options = ['id' => $id];
-        $key = bin2hex($invitation->key);
-        if ($note === '') {
-            $link = Page\imageArrowLink($key, $href, $icon, $options);
-        } else {
-            $link = Page\imageArrowLinkWithDescription(
-                htmlspecialchars($note), $key, $href, $icon, $options);
-        }
-        $items[] = $link;
-    }
+
+    include_once 'fns/render_invitations.php';
+    render_invitations($invitations, $items);
+
+    include_once "$fnsDir/Page/imageLink.php";
+    $deleteAllLink = Page\imageLink(
+        'Delete All Invitations', 'delete-all/', 'trash-bin');
+
+    include_once "$fnsDir/create_panel.php";
+    $optionsPanel = create_panel('Options', $deleteAllLink);
+
 } else {
     include_once "$fnsDir/Page/info.php";
     $items[] = Page\info('No invitations');
+    $optionsPanel = '';
 }
 
-include_once "$fnsDir/Page/newItemButton.php";
-include_once "$fnsDir/Page/sessionErrors.php";
-include_once "$fnsDir/Page/sessionMessages.php";
-include_once "$fnsDir/Page/tabs.php";
-$content = Page\tabs(
-    [
-        [
-            'title' => 'Administration',
-            'href' => '../#invitations',
-        ],
-    ],
-    'Invitations',
-    Page\sessionErrors('admin/invitations/errors')
-    .Page\sessionMessages('admin/invitations/messages')
-    .join('<div class="hr"></div>', $items),
-    Page\newItemButton('new/', 'Invitation')
-);
+include_once 'fns/unset_session_vars.php';
+unset_session_vars();
+
+include_once 'fns/create_content.php';
+$content = create_content($items, $optionsPanel);
 
 include_once '../fns/echo_admin_page.php';
 echo_admin_page('Invitations', $content, '../');
