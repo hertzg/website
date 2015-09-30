@@ -9,7 +9,7 @@ function render_invitations ($invitations, &$items, $base = '') {
     foreach ($invitations as $invitation) {
         $id = $invitation->id;
         $note = $invitation->note;
-        $href = "../view/?id=$id";
+        $href = "{$base}view/?id=$id";
         $icon = 'invitation';
         $options = ['id' => $id];
         $key = bin2hex($invitation->key);
