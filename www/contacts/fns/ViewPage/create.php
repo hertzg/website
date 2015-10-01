@@ -42,6 +42,9 @@ function create ($contact, &$head, &$scripts, $base = '') {
     if ($email !== '') {
         $escapedEmail = htmlspecialchars($email);
         $href = "mailto:$escapedEmail";
+        if ($keyword !== '') {
+            $escapedEmail = preg_replace($regex, $replace, $escapedEmail);
+        }
         include_once "$fnsDir/Form/link.php";
         $items[] = \Form\link('Email', $escapedEmail, $href, 'mail');
     }
