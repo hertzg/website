@@ -1,10 +1,15 @@
 .tab {
     position: relative;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
 }
+
 .tab-bar {
     text-align: center;
     white-space: nowrap;
 }
+
 .tab-normal {
     position: absolute;
     top: 0;
@@ -27,4 +32,10 @@
     border: 2px solid transparent;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.tab-content {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
 }

@@ -57,19 +57,21 @@ function echo_page ($user, $title, $content, $base, $options = []) {
     include_once __DIR__.'/compressed_js_script.php';
     $body =
         '<div id="tbar">'
-            ."<a class=\"topLink logoLink\" href=\"$logo_href\">"
-                ."<img src=\"$logoSrc\" alt=\"Zvini\""
-                .' width="68" height="32" class="logoLink-img" />'
-                .$notifications
-            .'</a>'
-            .'<div class="page-clockWrapper">'
-                .'<div id="staticClockWrapper">'
-                    .date('H:i:s', $time / 1000)
+            .'<div id="tbar-limit">'
+                ."<a class=\"topLink logoLink\" href=\"$logo_href\">"
+                    ."<img src=\"$logoSrc\" alt=\"Zvini\""
+                    .' width="68" height="32" class="logoLink-img" />'
+                    .$notifications
+                .'</a>'
+                .'<div class="page-clockWrapper">'
+                    .'<div id="staticClockWrapper">'
+                        .date('H:i:s', $time / 1000)
+                    .'</div>'
+                    .'<div id="dynamicClockWrapper"></div>'
+                    .'<div id="batteryWrapper"></div>'
                 .'</div>'
-                .'<div id="dynamicClockWrapper"></div>'
-                .'<div id="batteryWrapper"></div>'
+                .$signOutLink
             .'</div>'
-            .$signOutLink
         .'</div>'
         .$content
         .'<script type="text/javascript">'
