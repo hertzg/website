@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/file_method_page.php';
-include_once '../../fns/true_result.php';
+include_once '../../../../fns/ApiDoc/trueResult.php';
 file_method_page('rename', [
     [
         'name' => 'id',
@@ -11,7 +11,7 @@ file_method_page('rename', [
         'name' => 'name',
         'description' => 'The new name of the file.',
     ],
-], true_result(), [
+], ApiDoc\trueResult(), [
     'FILE_NOT_FOUND' => "A file with the ID doesn't exist.",
     'ENTER_NAME' => 'The new name is empty.',
     'FILE_ALREADY_EXISTS' => 'A file with the name already exists.',

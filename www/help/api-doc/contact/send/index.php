@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/contact_method_page.php';
-include_once '../../fns/true_result.php';
+include_once '../../../../fns/ApiDoc/trueResult.php';
 include_once '../../../../fns/Tags/maxNumber.php';
 contact_method_page('send', [
     [
@@ -56,7 +56,7 @@ contact_method_page('send', [
         'name' => 'favorite',
         'description' => 'Whether the contact should be marked as favorite.',
     ],
-], true_result(), [
+], ApiDoc\trueResult(), [
     'ENTER_RECEIVER_USERNAME' => 'The receiver username is empty.',
     'INVALID_RECEIVER_USERNAME' => 'The receiver username is invalid.',
     'RECEIVER_NOT_FOUND' => 'No such receiver with the username.',

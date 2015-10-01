@@ -1,12 +1,12 @@
 <?php
 
 include_once '../fns/invitation_method_page.php';
-include_once '../../fns/true_result.php';
+include_once '../../../../fns/ApiDoc/trueResult.php';
 invitation_method_page('delete', [
     [
         'name' => 'id',
         'description' => 'The ID of the invitation to delete.',
     ],
-], true_result(), [
+], ApiDoc\trueResult(), [
     'INVITATION_NOT_FOUND' => "An invitation with the ID doesn't exist.",
 ]);

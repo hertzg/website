@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/channel_method_page.php';
-include_once '../../fns/true_result.php';
+include_once '../../../../fns/ApiDoc/trueResult.php';
 include_once '../../../../fns/ChannelName/maxLength.php';
 include_once '../../../../fns/ChannelName/minLength.php';
 channel_method_page('edit', [
@@ -22,7 +22,7 @@ channel_method_page('edit', [
         'description' => 'Whether the channel owner'
             .' should receive notifications.',
     ],
-], true_result(), [
+], ApiDoc\trueResult(), [
     'CHANNEL_NOT_FOUND' => "A channel with the ID doesn't exist.",
     'ENTER_CHANNEL_NAME' => 'The new name is empty.',
     'INVALID_CHANNEL_NAME' => 'The new name is invalid.',

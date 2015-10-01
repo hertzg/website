@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/file_method_page.php';
-include_once '../../fns/true_result.php';
+include_once '../../../../fns/ApiDoc/trueResult.php';
 file_method_page('send', [
     [
         'name' => 'receiver_username',
@@ -15,7 +15,7 @@ file_method_page('send', [
         'name' => 'file',
         'description' => 'The content file to upload.',
     ],
-], true_result(), [
+], ApiDoc\trueResult(), [
     'ENTER_RECEIVER_USERNAME' => 'The receiver username is empty.',
     'INVALID_RECEIVER_USERNAME' => 'The receiver username is invalid.',
     'RECEIVER_NOT_FOUND' => 'No such receiver with the username.',

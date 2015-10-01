@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/place_method_page.php';
-include_once '../../fns/true_result.php';
+include_once '../../../../fns/ApiDoc/trueResult.php';
 include_once '../../../../fns/Tags/maxNumber.php';
 place_method_page('send', [
     [
@@ -32,7 +32,7 @@ place_method_page('send', [
         'name' => 'tags',
         'description' => 'A space-separated list of tags.',
     ],
-], true_result(), [
+], ApiDoc\trueResult(), [
     'ENTER_RECEIVER_USERNAME' => 'The receiver username is empty.',
     'INVALID_RECEIVER_USERNAME' => 'The receiver username is invalid.',
     'RECEIVER_NOT_FOUND' => 'No such receiver with the username.',

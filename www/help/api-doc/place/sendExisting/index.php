@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/place_method_page.php';
-include_once '../../fns/true_result.php';
+include_once '../../../../fns/ApiDoc/trueResult.php';
 place_method_page('sendExisting', [
     [
         'name' => 'id',
@@ -11,7 +11,7 @@ place_method_page('sendExisting', [
         'name' => 'receiver_username',
         'description' => 'The Zvini username of the receiver.',
     ],
-], true_result(), [
+], ApiDoc\trueResult(), [
     'PLACE_NOT_FOUND' => "A place with the ID doesn't exist.",
     'ENTER_RECEIVER_USERNAME' => 'The receiver username is empty.',
     'INVALID_RECEIVER_USERNAME' => 'The receiver username is invalid.',

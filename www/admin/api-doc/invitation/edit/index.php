@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/invitation_method_page.php';
-include_once '../../fns/true_result.php';
+include_once '../../../../fns/ApiDoc/trueResult.php';
 include_once '../../../../fns/Tags/maxNumber.php';
 invitation_method_page('edit', [
     [
@@ -12,6 +12,6 @@ invitation_method_page('edit', [
         'name' => 'note',
         'description' => 'The new note of the invitation.',
     ],
-], true_result(), [
+], ApiDoc\trueResult(), [
     'INVITATION_NOT_FOUND' => "An invitation with the ID doesn't exist.",
 ]);

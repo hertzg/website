@@ -8,8 +8,8 @@ function session_method_page ($methodName, $params, $errors) {
     $description = session\get_methods()[$methodName];
 
     include_once "$dir/method_page.php";
-    include_once "$dir/true_result.php";
+    include_once __DIR__.'/../../../../fns/ApiDoc/trueResult.php';
     method_page('Session', 'session', $methodName,
-        $description, $params, true_result(), $errors);
+        $description, $params, ApiDoc\trueResult(), $errors);
 
 }

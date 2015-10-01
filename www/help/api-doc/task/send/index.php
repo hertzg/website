@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/task_method_page.php';
-include_once '../../fns/true_result.php';
+include_once '../../../../fns/ApiDoc/trueResult.php';
 include_once '../../../../fns/Tags/maxNumber.php';
 task_method_page('send', [
     [
@@ -20,7 +20,7 @@ task_method_page('send', [
         'name' => 'top_priority',
         'description' => 'Whether the task should be marked as top priority.',
     ],
-], true_result(), [
+], ApiDoc\trueResult(), [
     'ENTER_RECEIVER_USERNAME' => 'The receiver username is empty.',
     'INVALID_RECEIVER_USERNAME' => 'The receiver username is invalid.',
     'RECEIVER_NOT_FOUND' => 'No such receiver with the username.',

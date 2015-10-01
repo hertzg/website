@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/contact_method_page.php';
-include_once '../../fns/true_result.php';
+include_once '../../../../fns/ApiDoc/trueResult.php';
 include_once '../../../../fns/Tags/maxNumber.php';
 contact_method_page('edit', [
     [
@@ -57,7 +57,7 @@ contact_method_page('edit', [
         'name' => 'favorite',
         'description' => 'Whether the contact should be marked as favorite.',
     ],
-], true_result(), [
+], ApiDoc\trueResult(), [
     'CONTACT_NOT_FOUND' => "A contact with the ID doesn't exist.",
     'ENTER_FULL_NAME' => 'The new full name is empty.',
     'TOO_MANY_TAGS' => 'More than '.Tags\maxNumber().' tags given.',

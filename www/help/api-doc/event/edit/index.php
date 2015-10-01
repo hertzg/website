@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/event_method_page.php';
-include_once '../../fns/true_result.php';
+include_once '../../../../fns/ApiDoc/trueResult.php';
 event_method_page('edit', [
     [
         'name' => 'id',
@@ -15,7 +15,7 @@ event_method_page('edit', [
         'name' => 'event_time',
         'description' => 'The Unix timestamp of the day of the event.',
     ],
-], true_result(), [
+], ApiDoc\trueResult(), [
     'EVENT_NOT_FOUND' => "An event with the ID doesn't exist.",
     'ENTER_TEXT' => 'The new event text is empty.',
 ]);

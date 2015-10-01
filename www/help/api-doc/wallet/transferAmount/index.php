@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/wallet_method_page.php';
-include_once '../../fns/true_result.php';
+include_once '../../../../fns/ApiDoc/trueResult.php';
 wallet_method_page('transferAmount', [
     [
         'name' => 'id',
@@ -19,7 +19,7 @@ wallet_method_page('transferAmount', [
         'name' => 'description',
         'description' => 'The description of the transaction.',
     ],
-], true_result(), [
+], ApiDoc\trueResult(), [
     'WALLET_NOT_FOUND' =>
         "A wallet with the ID to transfer the amount from doesn't exist.",
     'TO_WALLET_NOT_FOUND' =>
