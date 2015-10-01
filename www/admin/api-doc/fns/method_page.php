@@ -18,8 +18,8 @@ function method_page ($groupName, $prefix,
         $items[] = Page\text('The method has no parameters.');
     }
 
-    include_once __DIR__.'/method_result.php';
-    $items[] = method_result($returns);
+    include_once "$fnsDir/ApiDoc/methodResult.php";
+    $items[] = ApiDoc\methodResult($returns);
 
     if ($errors) {
         $text = 'Expected errors:';

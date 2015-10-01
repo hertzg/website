@@ -1,6 +1,8 @@
 <?php
 
-function json_result ($object) {
+namespace ApiDoc;
+
+function jsonResult ($object) {
 
     $type = $object['type'];
 
@@ -15,7 +17,7 @@ function json_result ($object) {
         foreach ($object['object'] as $key => $item) {
             $html .=
                 '<div style="margin-left: 20px">'
-                    ."<code>$key</code>: ".json_result($item)
+                    ."<code>$key</code>: ".jsonResult($item)
                 .'</div>';
         }
         $html .=
@@ -29,7 +31,7 @@ function json_result ($object) {
             '<div>'
                 .'<code>[</code>'
                 .'<div style="margin-left: 20px">'
-                    .json_result($object['item'])
+                    .jsonResult($object['item'])
                     .'...'
                 .'</div>'
                 .'<code>]</code>'
