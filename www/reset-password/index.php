@@ -35,8 +35,9 @@ unset(
 if ($user->num_password_protected_notes) {
     include_once '../fns/Page/warnings.php';
     $warnings = Page\warnings([
-        'Your password-protected notes will'
-        .' no longer be accessible with the new password.',
+        'You have password-protected notes.',
+        'If you reset your password you will'
+        .' no longer be able to access them.',
     ]);
 } else {
     $warnings = '';
