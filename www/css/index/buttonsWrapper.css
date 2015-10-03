@@ -4,6 +4,9 @@
     bottom: 24px;
     left: 24px;
     height: 48px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .buttonsWrapper-half {
