@@ -45,7 +45,9 @@ function create_view_page ($user, &$scripts) {
         $_SESSION['admin/users/errors'],
         $_SESSION['admin/users/messages'],
         $_SESSION['admin/users/new/errors'],
-        $_SESSION['admin/users/new/values']
+        $_SESSION['admin/users/new/values'],
+        $_SESSION['admin/users/reset-password/errors'],
+        $_SESSION['admin/users/reset-password/values']
     );
 
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
@@ -54,10 +56,12 @@ function create_view_page ($user, &$scripts) {
     include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/ItemList/listHref.php";
+    include_once "$fnsDir/Page/imageArrowLink.php";
     include_once "$fnsDir/Page/imageLink.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
+    include_once "$fnsDir/Page/twoColumns.php";
     return
         Page\tabs(
             [
@@ -74,9 +78,15 @@ function create_view_page ($user, &$scripts) {
         )
         .create_panel(
             'User Options',
-            '<div id="deleteLink">'
-                .Page\imageLink('Delete', "../delete/$escapedItemQuery", 'trash-bin')
-            .'</div>'
+            Page\twoColumns(
+                Page\imageArrowLink('Reset Password',
+                    "../reset-password/$escapedItemQuery",
+                    'reset-password', ['id' => 'reset-password']),
+                '<div id="deleteLink">'
+                    .Page\imageLink('Delete',
+                        "../delete/$escapedItemQuery", 'trash-bin')
+                .'</div>'
+            )
         );
 
 }
