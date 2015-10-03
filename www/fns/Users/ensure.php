@@ -42,6 +42,7 @@ function ensure ($mysqli) {
             'collation' => 'ascii_general_ci',
         ],
         'birthdays_check_day' => ['type' => 'bigint(20) unsigned'],
+        'blocked' => ['type' => 'tinyint(3) unsigned'],
         'contacts_order_by' => [
             'type' => 'varchar(50)',
             'characterSet' => 'ascii',

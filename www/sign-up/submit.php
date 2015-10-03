@@ -55,7 +55,7 @@ unset(
 );
 
 include_once '../fns/Users/Account/create.php';
-Users\Account\create($mysqli, $username, $password, $email);
+Users\Account\create($mysqli, $username, $password, $email, false);
 
 include_once '../fns/Captcha/reset.php';
 Captcha\reset();

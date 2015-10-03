@@ -2,7 +2,7 @@
 
 namespace Users;
 
-function add ($mysqli, $username, $password, $email, $insertApiKey) {
+function add ($mysqli, $username, $password, $email, $blocked, $insertApiKey) {
 
     $fnsDir = __DIR__.'/..';
 
@@ -19,6 +19,7 @@ function add ($mysqli, $username, $password, $email, $insertApiKey) {
     $password_sha512_hash = $mysqli->real_escape_string($password_sha512_hash);
     $password_sha512_key = $mysqli->real_escape_string($password_sha512_key);
     $email = $mysqli->real_escape_string($email);
+    $blocked = $blocked ? '1' : '0';
     $insert_time = time();
     if ($insertApiKey === null) {
         $insert_api_key_id = $insert_api_key_name = 'null';
@@ -48,8 +49,9 @@ function add ($mysqli, $username, $password, $email, $insertApiKey) {
 
     $sql = 'insert into users (username, password_sha512_hash,'
         .' password_sha512_key, encryption_key, encryption_key_iv,'
-        .' email, order_home_items, insert_time, theme_color,'
-        .' theme_brightness, birthdays_check_day, events_check_day,'
+        .' email, blocked, order_home_items,'
+        .' insert_time, theme_color, theme_brightness,'
+        .' birthdays_check_day, events_check_day,'
         .' schedules_check_day, task_deadlines_check_day,'
         .' bar_charts_order_by, bookmarks_order_by,'
         .' contacts_order_by, events_order_by, notes_order_by,'
@@ -61,8 +63,9 @@ function add ($mysqli, $username, $password, $email, $insertApiKey) {
         .' show_schedules, show_tasks, show_trash, show_wallets)'
         ." values ('$username', '$password_sha512_hash',"
         ." '$password_sha512_key', '$encryption_key', '$encryption_key_iv',"
-        ." '$email', '$order_home_items', $insert_time, '$theme_color',"
-        ." '$theme_brightness', $birthdays_check_day, $events_check_day,"
+        ." '$email', $blocked, '$order_home_items',"
+        ." $insert_time, '$theme_color', '$theme_brightness',"
+        ." $birthdays_check_day, $events_check_day,"
         ." $schedules_check_day, $task_deadlines_check_day,"
         ." 'update_time desc', 'update_time desc',"
         ." 'full_name', 'event_time desc', 'update_time desc',"
