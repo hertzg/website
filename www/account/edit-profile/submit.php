@@ -24,6 +24,16 @@ include_once '../../lib/mysqli.php';
 include_once "$fnsDir/check_username.php";
 check_username($mysqli, $username, $errors, $id_users);
 
+if (!$errors) {
+    include_once "$fnsDir/Password/match.php";
+    $match = Password\match($user->password_hash, $user->password_salt,
+        $user->password_sha512_hash, $user->password_sha512_key, $username);
+    if ($match) {
+        $errors[] = 'Please, choose a username'
+            .' that is different from your password.';
+    }
+}
+
 $email = str_collapse_spaces($email);
 $email = mb_strtolower($email, 'UTF-8');
 if ($email !== '') {
