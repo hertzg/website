@@ -57,18 +57,9 @@ unset(
     $_SESSION['account/edit-profile/values']
 );
 
-include_once "$fnsDir/Users/editProfile.php";
-Users\editProfile($mysqli, $id_users, $username, $email, $full_name, $timezone);
-
-if ($username !== $user->username) {
-    include_once 'fns/update_username.php';
-    update_username($mysqli, $id_users, $username);
-}
-
-if ($email !== $user->email) {
-    include_once "$fnsDir/Users/Email/invalidate.php";
-    Users\Email\invalidate($mysqli, $id_users);
-}
+include_once "$fnsDir/Users/Account/editProfile.php";
+Users\Account\editProfile($mysqli, $user,
+    $username, $email, $full_name, $timezone);
 
 $_SESSION['account/messages'] = ['Changes have been saved.'];
 
