@@ -12,7 +12,7 @@ function get_revision ($key) {
         'css/newItemMenu/compressed.css' => 4,
         'images/icons/16.png' => 1,
         'images/icons/32.png' => 1,
-        'js/batteryAndClock/compressed.js' => 9,
+        'js/batteryAndClock/compressed.js' => 10,
         'js/calendarIcon/compressed.js' => 3,
         'js/confirmDialog/compressed.js' => 5,
         'js/dateAgo/compressed.js' => 2,

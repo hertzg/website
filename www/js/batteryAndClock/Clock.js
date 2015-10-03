@@ -25,14 +25,18 @@ function Clock (remoteTime, timezone) {
     }
 
     var difference
-    var lastRemoteTime = parseInt(localStorage.lastRemoteTime, 10)
-    if (lastRemoteTime >= remoteTime) {
-        difference = parseInt(localStorage.lastLocalTime, 10) - lastRemoteTime
+    if (window.localStorage) {
+        var lastRemoteTime = parseInt(localStorage.lastRemoteTime, 10)
+        if (lastRemoteTime >= remoteTime) {
+            difference = parseInt(localStorage.lastLocalTime, 10) - lastRemoteTime
+        } else {
+            var localTime = Date.now()
+            difference = localTime - remoteTime
+            localStorage.lastLocalTime = localTime
+            localStorage.lastRemoteTime = remoteTime
+        }
     } else {
-        var localTime = Date.now()
-        difference = localTime - remoteTime
-        localStorage.lastLocalTime = localTime
-        localStorage.lastRemoteTime = remoteTime
+        difference = 0
     }
 
     var requestAnimationFrame = window.requestAnimationFrame
