@@ -42,6 +42,8 @@ function create_view_page ($user, &$scripts) {
     }
 
     unset(
+        $_SESSION['admin/users/edit-profile/errors'],
+        $_SESSION['admin/users/edit-profile/values'],
         $_SESSION['admin/users/errors'],
         $_SESSION['admin/users/messages'],
         $_SESSION['admin/users/new/errors'],
@@ -82,11 +84,15 @@ function create_view_page ($user, &$scripts) {
                 Page\imageArrowLink('Reset Password',
                     "../reset-password/$escapedItemQuery",
                     'reset-password', ['id' => 'reset-password']),
-                '<div id="deleteLink">'
-                    .Page\imageLink('Delete',
-                        "../delete/$escapedItemQuery", 'trash-bin')
-                .'</div>'
+                Page\imageArrowLink('Edit Profile',
+                    "../edit-profile/$escapedItemQuery",
+                    'edit-profile', ['id' => 'edit-profile'])
             )
+            .'<div class="hr"></div>'
+            .'<div id="deleteLink">'
+                .Page\imageLink('Delete',
+                    "../delete/$escapedItemQuery", 'trash-bin')
+            .'</div>'
         );
 
 }

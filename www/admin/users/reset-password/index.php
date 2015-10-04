@@ -15,7 +15,6 @@ else {
     ];
 }
 
-$base = '../../../';
 $fnsDir = '../../../fns';
 
 include_once "$fnsDir/ItemList/escapedItemQuery.php";
