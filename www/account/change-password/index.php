@@ -11,8 +11,8 @@ if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
     $values = [
         'currentPassword' => '',
-        'password1' => '',
-        'password2' => '',
+        'password' => '',
+        'repeatPassword' => '',
     ];
 }
 
@@ -42,8 +42,8 @@ $content = Page\tabs(
             'required' => true,
         ])
         .'<div class="hr"></div>'
-        .Form\password('password1', 'New password', [
-            'value' => $values['password1'],
+        .Form\password('password', 'New password', [
+            'value' => $values['password'],
             'required' => true,
         ])
         .Form\notes([
@@ -51,8 +51,8 @@ $content = Page\tabs(
             'Exaple: '.example_password(9),
         ])
         .'<div class="hr"></div>'
-        .Form\password('password2', 'Repeat new password', [
-            'value' => $values['password2'],
+        .Form\password('repeatPassword', 'Repeat new password', [
+            'value' => $values['repeatPassword'],
             'required' => true,
         ])
         .'<div class="hr"></div>'

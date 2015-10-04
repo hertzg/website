@@ -1,6 +1,6 @@
 <?php
 
-function check_admin ($username, $password1, $password2, &$focus) {
+function check_admin ($username, $password, $repeatPassword, &$focus) {
 
     include_once __DIR__.'/check_admin_username.php';
     $error = check_admin_username($username);
@@ -11,6 +11,7 @@ function check_admin ($username, $password1, $password2, &$focus) {
     }
 
     include_once __DIR__.'/check_admin_passwords.php';
-    return check_admin_passwords($username, $password1, $password2, $focus);
+    return check_admin_passwords($username,
+        $password, $repeatPassword, $focus);
 
 }

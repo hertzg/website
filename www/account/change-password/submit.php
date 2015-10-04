@@ -9,8 +9,8 @@ include_once "$fnsDir/require_user.php";
 $user = require_user('../../');
 
 include_once "$fnsDir/request_strings.php";
-list($currentPassword, $password1, $password2) = request_strings(
-    'currentPassword', 'password1', 'password2');
+list($currentPassword, $password, $repeatPassword) = request_strings(
+    'currentPassword', 'password', 'repeatPassword');
 
 $errors = [];
 
@@ -27,19 +27,19 @@ if ($currentPassword === '') {
 
 }
 
-if ($password1 === '') {
+if ($password === '') {
     $errors[] = 'Enter new password.';
 } else {
     include_once "$fnsDir/Password/isShort.php";
-    if (Password\isShort($password1)) {
+    if (Password\isShort($password)) {
         include_once "$fnsDir/Password/minLength.php";
         $errors[] =
             'New password too short.'
             .' At least '.Password\minLength().' characters required.';
-    } elseif ($password1 === $user->username) {
+    } elseif ($password === $user->username) {
         $errors[] = 'Please, choose a password'
             .' that is different from your username.';
-    } elseif ($password1 !== $password2) {
+    } elseif ($password !== $repeatPassword) {
         $errors[] = 'New passwords does not match.';
     }
 }
@@ -50,8 +50,8 @@ if ($errors) {
     $_SESSION['account/change-password/errors'] = $errors;
     $_SESSION['account/change-password/values'] = [
         'currentPassword' => $currentPassword,
-        'password1' => $password1,
-        'password2' => $password2,
+        'password' => $password,
+        'repeatPassword' => $repeatPassword,
     ];
     redirect();
 }
@@ -63,7 +63,7 @@ unset(
 
 include_once "$fnsDir/Users/changePassword.php";
 include_once '../../lib/mysqli.php';
-Users\changePassword($mysqli, $user, $currentPassword, $password1);
+Users\changePassword($mysqli, $user, $currentPassword, $password);
 
 $_SESSION['account/messages'] = ['Password has been changed.'];
 redirect('..');

@@ -14,8 +14,8 @@ else {
 
     $values = [
         'username' => $username,
-        'password1' => '',
-        'password2' => '',
+        'password' => '',
+        'repeatPassword' => '',
     ];
 
 }
@@ -41,13 +41,13 @@ $content = Page\tabs(
             'autofocus' => true,
         ])
         .'<div class="hr"></div>'
-        .Form\password('password1', 'New password', [
-            'value' => $values['password1'],
+        .Form\password('password', 'New password', [
+            'value' => $values['password'],
             'required' => true,
         ])
         .'<div class="hr"></div>'
-        .Form\password('password2', 'Repeat new password', [
-            'value' => $values['password2'],
+        .Form\password('repeatPassword', 'Repeat new password', [
+            'value' => $values['repeatPassword'],
             'required' => true,
         ])
         .'<div class="hr"></div>'

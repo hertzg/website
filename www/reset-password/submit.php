@@ -13,18 +13,19 @@ if (!$user) {
 }
 
 include_once '../fns/request_strings.php';
-list($password1, $password2) = request_strings('password1', 'password2');
+list($password, $repeatPassword) = request_strings(
+    'password', 'repeatPassword');
 
 include_once '../fns/check_reset_passwords.php';
-check_reset_passwords($user->username, $password1, $password2, $errors);
+check_reset_passwords($user->username, $password, $repeatPassword, $errors);
 
 include_once '../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['reset-password/errors'] = $errors;
     $_SESSION['reset-password/values'] = [
-        'password1' => $password1,
-        'password2' => $password2,
+        'password' => $password,
+        'repeatPassword' => $repeatPassword,
     ];
     redirect("./?id_users=$id_users&key=".bin2hex($key));
 }
@@ -35,7 +36,7 @@ unset(
 );
 
 include_once '../fns/Users/resetPassword.php';
-Users\resetPassword($mysqli, $id_users, $password1);
+Users\resetPassword($mysqli, $id_users, $password);
 
 include_once '../fns/Cookie/set.php';
 Cookie\set('username', $user->username);

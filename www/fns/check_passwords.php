@@ -1,14 +1,14 @@
 <?php
 
-function check_passwords ($username, $password1, $password2, &$errors) {
+function check_passwords ($username, $password, $repeatPassword, &$errors) {
 
-    if ($password1 === '') {
+    if ($password === '') {
         $errors[] = 'Enter password.';
         return;
     }
 
     include_once __DIR__.'/Password/isShort.php';
-    if (Password\isShort($password1)) {
+    if (Password\isShort($password)) {
         include_once __DIR__.'/Password/minLength.php';
         $minLength = Password\minLength();
         $errors[] = 'Password too short.'
@@ -16,12 +16,12 @@ function check_passwords ($username, $password1, $password2, &$errors) {
         return;
     }
 
-    if ($password1 === $username) {
+    if ($password === $username) {
         $errors[] = 'Please, choose a password'
             .' that is different from the username.';
         return;
     }
 
-    if ($password1 !== $password2) $errors[] = 'Passwords does not match.';
+    if ($password !== $repeatPassword) $errors[] = 'Passwords does not match.';
 
 }

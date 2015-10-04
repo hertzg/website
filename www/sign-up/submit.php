@@ -12,9 +12,9 @@ include_once '../fns/SignUpEnabled/get.php';
 if (!SignUpEnabled\get()) redirect();
 
 include_once '../fns/request_strings.php';
-list($username, $password1, $password2,
+list($username, $password, $repeatPassword,
     $email, $captcha, $return) = request_strings(
-    'username', 'password1', 'password2',
+    'username', 'password', 'repeatPassword',
     'email', 'captcha', 'return');
 
 include_once '../fns/str_collapse_spaces.php';
@@ -27,7 +27,7 @@ include_once '../fns/check_username.php';
 check_username($mysqli, $username, $errors);
 
 include_once '../fns/check_passwords.php';
-check_passwords($username, $password1, $password2, $errors);
+check_passwords($username, $password, $repeatPassword, $errors);
 
 if ($email !== '') {
     include_once '../fns/Email/isValid.php';
@@ -41,8 +41,8 @@ if ($errors) {
     $_SESSION['sign-up/errors'] = $errors;
     $_SESSION['sign-up/values'] = [
         'username' => $username,
-        'password1' => $password1,
-        'password2' => $password2,
+        'password' => $password,
+        'repeatPassword' => $repeatPassword,
         'email' => $email,
         'return' => $return,
     ];
@@ -55,7 +55,7 @@ unset(
 );
 
 include_once '../fns/Users/Account/create.php';
-Users\Account\create($mysqli, $username, $password1, $email);
+Users\Account\create($mysqli, $username, $password, $email);
 
 include_once '../fns/Captcha/reset.php';
 Captcha\reset();

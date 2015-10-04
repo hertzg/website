@@ -24,8 +24,8 @@ else {
 
     $values = [
         'username' => '',
-        'password1' => '',
-        'password2' => '',
+        'password' => '',
+        'repeatPassword' => '',
         'email' => '',
         'return' => $return,
     ];
@@ -73,8 +73,8 @@ $content = Page\tabs(
             'Minimum '.Username\minLength().' characters.',
         ])
         .'<div class="hr"></div>'
-        .Form\password('password1', 'Password', [
-            'value' => $values['password1'],
+        .Form\password('password', 'Password', [
+            'value' => $values['password'],
             'required' => true,
         ])
         .Form\notes([
@@ -82,8 +82,8 @@ $content = Page\tabs(
             'Example: '.htmlspecialchars(example_password(9)),
         ])
         .'<div class="hr"></div>'
-        .Form\password('password2', 'Repeat password', [
-            'value' => $values['password2'],
+        .Form\password('repeatPassword', 'Repeat password', [
+            'value' => $values['repeatPassword'],
             'required' => true,
         ])
         .'<div class="hr"></div>'

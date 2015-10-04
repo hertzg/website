@@ -9,8 +9,8 @@ include_once '../fns/require_admin.php';
 require_admin();
 
 include_once "$fnsDir/request_strings.php";
-list($username, $password1, $password2) = request_strings(
-    'username', 'password1', 'password2');
+list($username, $password, $repeatPassword) = request_strings(
+    'username', 'password', 'repeatPassword');
 
 include_once "$fnsDir/str_collapse_spaces.php";
 $username = str_collapse_spaces($username);
@@ -18,18 +18,18 @@ $username = str_collapse_spaces($username);
 include_once 'fns/check_username.php';
 check_username($username, $errors);
 
-if ($password1 === '') $errors[] = 'Enter new password.';
+if ($password === '') $errors[] = 'Enter new password.';
 else {
     include_once "$fnsDir/Password/isShort.php";
-    if (Password\isShort($password1)) {
+    if (Password\isShort($password)) {
         include_once "$fnsDir/Password/minLength.php";
         $minLength = Password\minLength();
         $errors[] = 'Password too short.'
             ." At least $minLength characters required.";
-    } elseif ($password1 === $username) {
+    } elseif ($password === $username) {
         $errors[] = 'Please, choose a password'
             .' that is different from the username.';
-    } elseif ($password1 !== $password2) {
+    } elseif ($password !== $repeatPassword) {
         $errors[] = 'New passwords does not match.';
     }
 }
@@ -37,7 +37,7 @@ else {
 if (!$errors) {
 
     include_once "$fnsDir/Password/hash.php";
-    list($sha512_hash, $sha512_key) = Password\hash($password1);
+    list($sha512_hash, $sha512_key) = Password\hash($password);
 
     include_once "$fnsDir/Admin/set.php";
     $ok = Admin\set($username, $sha512_hash, $sha512_key);
@@ -50,8 +50,8 @@ include_once "$fnsDir/redirect.php";
 if ($errors) {
     $_SESSION['admin/username-password/values'] = [
         'username' => $username,
-        'password1' => $password1,
-        'password2' => $password2,
+        'password' => $password,
+        'repeatPassword' => $repeatPassword,
     ];
     $_SESSION['admin/username-password/errors'] = $errors;
     redirect();

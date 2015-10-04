@@ -65,8 +65,8 @@ $content = Page\tabs(
     .'<form action="submit.php" method="post">'
         .Form\label('Username', $user->username)
         .'<div class="hr"></div>'
-        .Form\password('password1', 'New password', [
-            'value' => $values['password1'],
+        .Form\password('password', 'New password', [
+            'value' => $values['password'],
             'autofocus' => true,
             'required' => true,
         ])
@@ -75,8 +75,8 @@ $content = Page\tabs(
             'Example: '.example_password(9),
         ])
         .'<div class="hr"></div>'
-        .Form\password('password2', 'Repeat new password', [
-            'value' => $values['password2'],
+        .Form\password('repeatPassword', 'Repeat new password', [
+            'value' => $values['repeatPassword'],
             'required' => true,
         ])
         .'<div class="hr"></div>'

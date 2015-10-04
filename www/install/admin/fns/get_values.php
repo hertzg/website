@@ -7,8 +7,8 @@ function get_values () {
 
     return [
         'username' => 'adminadmin',
-        'password1' => '',
-        'password2' => '',
+        'password' => '',
+        'repeatPassword' => '',
     ];
 
 }

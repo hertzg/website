@@ -7,11 +7,11 @@ include_once 'fns/get_values.php';
 $values = get_values();
 
 $username = $values['username'];
-$password1 = $values['password1'];
-$password2 = $values['password2'];
+$password = $values['password'];
+$repeatPassword = $values['repeatPassword'];
 
 include_once '../fns/check_admin.php';
-$error = check_admin($username, $password1, $password2, $focus);
+$error = check_admin($username, $password, $repeatPassword, $focus);
 if ($focus === null) $focus = 'username';
 
 if ($error === null) $errorHtml = '';
@@ -68,12 +68,12 @@ echo_page(
                 .'</div>'
             .'</div>'
             .field_columns(
-                '<label for="password1Input">Password:</label>'
+                '<label for="passwordInput">Password:</label>'
                 .'<br />'
                 .'<input class="textfield" type="password"'
-                .' name="password1" id="password1Input" required="required"'
-                .' value="'.htmlspecialchars($password1).'"'
-                .($focus == 'password1' ? ' autofocus="autofocus"' : '').' />'
+                .' name="password" id="passwordInput" required="required"'
+                .' value="'.htmlspecialchars($password).'"'
+                .($focus == 'password' ? ' autofocus="autofocus"' : '').' />'
                 .'<br />'
                 .'<div class="notes">'
                     .'<div class="notes-note">'
@@ -84,12 +84,13 @@ echo_page(
                         .htmlspecialchars(example_password(15))
                     .'</div>'
                 .'</div>',
-                '<label for="password2Input">Repeat password:</label>'
+                '<label for="repeatPasswordInput">Repeat password:</label>'
                 .'<br />'
-                .'<input class="textfield" type="password"'
-                .' name="password2" id="password2Input" required="required"'
-                .' value="'.htmlspecialchars($password2).'"'
-                .($focus == 'password2' ? ' autofocus="autofocus"' : '').' />'
+                .'<input class="textfield"'
+                .($focus == 'repeatPassword' ? ' autofocus="autofocus"' : '')
+                .' type="password" name="repeatPassword"'
+                .' id="repeatPasswordInput" required="required"'
+                .' value="'.htmlspecialchars($repeatPassword).'" />'
             )
             .$errorHtml,
             '<input type="submit" class="button nextButton" value="Next" />'
