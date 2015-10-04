@@ -43,6 +43,7 @@ if ($user->num_password_protected_notes) {
     $warnings = '';
 }
 
+include_once '../fns/example_password.php';
 include_once '../fns/Form/button.php';
 include_once '../fns/Form/hidden.php';
 include_once '../fns/Form/label.php';
@@ -50,6 +51,7 @@ include_once '../fns/Form/notes.php';
 include_once '../fns/Form/password.php';
 include_once '../fns/Page/sessionErrors.php';
 include_once '../fns/Page/tabs.php';
+include_once '../fns/Password/minLength.php';
 $content = Page\tabs(
     [
         [
@@ -68,7 +70,10 @@ $content = Page\tabs(
             'autofocus' => true,
             'required' => true,
         ])
-        .Form\notes(['Minimum 6 characters.'])
+        .Form\notes([
+            'Minimum '.Password\minLength().' characters.',
+            'Example: '.example_password(9),
+        ])
         .'<div class="hr"></div>'
         .Form\password('password2', 'Repeat new password', [
             'value' => $values['password2'],
