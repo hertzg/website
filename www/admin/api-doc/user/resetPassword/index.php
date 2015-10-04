@@ -6,7 +6,7 @@ include_once '../../../../fns/Password/minLength.php';
 user_method_page('resetPassword', [
     [
         'name' => 'id',
-        'description' => 'The ID of the user to reset password of.',
+        'description' => 'The ID of the user to reset the password of.',
     ],
     [
         'name' => 'password',
