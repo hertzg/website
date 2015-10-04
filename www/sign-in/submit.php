@@ -34,8 +34,13 @@ if ($password === '') $errors[] = 'Enter password.';
 if (!$errors) {
     include_once '../fns/Session/authenticate.php';
     include_once '../lib/mysqli.php';
-    $user = Session\authenticate($mysqli, $username, $password, $remember);
-    if (!$user) $errors[] = 'Invalid username or password.';
+    $user = Session\authenticate($mysqli,
+        $username, $password, $remember, $blocked);
+    if (!$user) {
+        if ($blocked) $error = 'Your account is blocked.';
+        else $error = 'Invalid username or password.';
+        $errors[] = $error;
+    }
 }
 
 if ($errors) {
