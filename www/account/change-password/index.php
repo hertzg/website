@@ -18,12 +18,14 @@ else {
 
 unset($_SESSION['account/messages']);
 
+include_once "$fnsDir/example_password.php";
 include_once "$fnsDir/phishing_warning.php";
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/notes.php";
 include_once "$fnsDir/Form/password.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/tabs.php";
+include_once "$fnsDir/Password/minLength.php";
 $content = Page\tabs(
     [
         [
@@ -44,7 +46,10 @@ $content = Page\tabs(
             'value' => $values['password1'],
             'required' => true,
         ])
-        .Form\notes(['Minimum 6 characters.'])
+        .Form\notes([
+            'Minimum '.Password\minLength().' characters.',
+            'Exaple: '.example_password(9),
+        ])
         .'<div class="hr"></div>'
         .Form\password('password2', 'Repeat new password', [
             'value' => $values['password2'],
