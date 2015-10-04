@@ -30,7 +30,9 @@ function create ($user, &$scripts) {
 
     include_once __DIR__.'/../../../fns/format_author.php';
     $author = format_author($user->insert_time, $user->insert_api_key_name);
-    $infoText = "User created $author.";
+    $infoText =
+        ($user->blocked ? 'Blocked.<br />' : 'Normal')
+        ."User created $author.";
 
     $items[] = \Form\label('Last accessed', $accessed);
 
