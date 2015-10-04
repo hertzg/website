@@ -15,27 +15,8 @@ if (!$user) {
 include_once '../fns/request_strings.php';
 list($password1, $password2) = request_strings('password1', 'password2');
 
-$errors = [];
-
-if ($password1 === '') {
-    $errors[] = 'Enter new password.';
-} else {
-    include_once '../fns/Password/isShort.php';
-    if (Password\isShort($password1)) {
-
-        include_once '../fns/Password/minLength.php';
-        $minLength = Password\minLength();
-
-        $errors[] = 'New password should be'
-            ." at least $minLength characters long.";
-
-    } elseif ($password1 === $user->username) {
-        $errors[] = 'Please, choose a password'
-            .' that is different from your username.';
-    } elseif ($password1 !== $password2) {
-        $errors[] = 'New passwords does not match.';
-    }
-}
+include_once '../fns/check_reset_passwords.php';
+check_reset_passwords($user->username, $password1, $password2, $errors);
 
 include_once '../fns/redirect.php';
 

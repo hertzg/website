@@ -13,8 +13,8 @@ include_once "$fnsDir/request_strings.php";
 list($password, $repeatPassword) = request_strings(
     'password', 'repeatPassword');
 
-include_once "$fnsDir/check_passwords.php";
-check_passwords($user->username, $password, $repeatPassword, $errors);
+include_once "$fnsDir/check_reset_passwords.php";
+check_reset_passwords($user->username, $password, $repeatPassword, $errors);
 
 include_once "$fnsDir/ItemList/itemQuery.php";
 $itemQuery = ItemList\itemQuery($id);

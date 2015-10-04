@@ -50,7 +50,7 @@ $content = Page\tabs(
     Page\sessionErrors('admin/users/reset-password/errors')
     .$warnings
     .'<form action="submit.php" method="post">'
-        .Form\password('password', 'Password', [
+        .Form\password('password', 'New password', [
             'value' => $values['password'],
             'required' => true,
             'autofocus' => true,
@@ -60,7 +60,7 @@ $content = Page\tabs(
             'Example: '.htmlspecialchars(example_password(9)),
         ])
         .'<div class="hr"></div>'
-        .Form\password('repeatPassword', 'Repeat password', [
+        .Form\password('repeatPassword', 'Repeat new password', [
             'value' => $values['repeatPassword'],
             'required' => true,
         ])
