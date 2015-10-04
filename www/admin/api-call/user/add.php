@@ -23,7 +23,6 @@ if (!Username\isValid($username)) {
 }
 
 include_once "$fnsDir/Users/getByUsername.php";
-include_once '../../../lib/mysqli.php';
 if (Users\getByUsername($mysqli, $username)) {
     include_once "$fnsDir/ErrorJson/badRequest.php";
     ErrorJson\badRequest('"USERNAME_UNAVAILABLE"');
