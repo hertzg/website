@@ -2,13 +2,14 @@
 
 namespace Users\Account;
 
-function editProfile ($mysqli, $user, $username, $email, $full_name, $timezone) {
+function editProfile ($mysqli, $user, $username,
+    $email, $full_name, $timezone, $blocked) {
 
     $id_users = $user->id_users;
 
     include_once __DIR__.'/../editProfile.php';
     \Users\editProfile($mysqli, $id_users,
-        $username, $email, $full_name, $timezone);
+        $username, $email, $full_name, $timezone, $blocked);
 
     if ($username !== $user->username) {
 

@@ -8,7 +8,12 @@ unset($_SESSION['admin/users/view/messages']);
 
 $key = 'admin/users/edit-profile/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
-else $values = ['username' => $user->username];
+else {
+    $values = [
+        'username' => $user->username,
+        'blocked' => $user->blocked,
+    ];
+}
 
 $fnsDir = '../../../fns';
 
@@ -16,6 +21,7 @@ include_once "$fnsDir/ItemList/escapedItemQuery.php";
 $escapedItemQuery = ItemList\escapedItemQuery($id);
 
 include_once "$fnsDir/Form/button.php";
+include_once "$fnsDir/Form/checkbox.php";
 include_once "$fnsDir/Form/notes.php";
 include_once "$fnsDir/Form/textfield.php";
 include_once "$fnsDir/Page/sessionErrors.php";
@@ -43,10 +49,15 @@ $content = Page\tabs(
             'Minimum '.Username\minLength().' characters.',
         ])
         .'<div class="hr"></div>'
+        .Form\checkbox('blocked', 'Blocked', $values['blocked'])
+        .'<div class="hr"></div>'
         .Form\button('Save Changes')
         ."<input type=\"hidden\" name=\"id\" value=\"$id\" />"
     .'</form>'
 );
 
 include_once '../../fns/echo_admin_page.php';
-echo_admin_page("Edit User #$id Profile", $content, '../../');
+include_once "$fnsDir/compressed_js_script.php";
+echo_admin_page("Edit User #$id Profile", $content, '../../', [
+    'scripts' => compressed_js_script('formCheckbox', '../../../'),
+]);
