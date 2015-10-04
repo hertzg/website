@@ -8,5 +8,6 @@ function get_methods () {
         'delete' => 'Deletes an existing user.',
         'get' => 'Returns a single existing user.',
         'list' => 'Returns a list of all users.',
+        'resetPassword' => 'Reset password of an existing user.',
    ];
 }
