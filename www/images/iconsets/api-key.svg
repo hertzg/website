@@ -139,51 +139,6 @@
        id="linearGradient12237"
        xlink:href="#linearGradient4584-6"
        gradientUnits="userSpaceOnUse" />
-    <radialGradient
-       cx="2873.21"
-       cy="11.073713"
-       r="6.2500243"
-       fx="2873.21"
-       fy="11.073713"
-       id="radialGradient4629"
-       xlink:href="#linearGradient5195-0"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.84472205,-1.3923892e-6,1.3343892e-6,0.8814524,446.14615,1.2397114)" />
-    <linearGradient
-       id="linearGradient5195-0">
-      <stop
-         id="stop5197-6"
-         style="stop-color:#9bff7e;stop-opacity:1"
-         offset="0" />
-      <stop
-         id="stop5199-2-2"
-         style="stop-color:#2fba18;stop-opacity:1"
-         offset="1" />
-    </linearGradient>
-    <radialGradient
-       cx="2889"
-       cy="5.5"
-       r="5.5000229"
-       fx="2889"
-       fy="5.5"
-       id="radialGradient4631"
-       xlink:href="#linearGradient4073"
-       gradientUnits="userSpaceOnUse" />
-    <linearGradient
-       id="linearGradient4073">
-      <stop
-         id="stop4075"
-         style="stop-color:#9bff7e;stop-opacity:0"
-         offset="0" />
-      <stop
-         id="stop4081"
-         style="stop-color:#9bff7e;stop-opacity:0.22352941"
-         offset="0.67647058" />
-      <stop
-         id="stop4077"
-         style="stop-color:#9bff7e;stop-opacity:0.67716533"
-         offset="1" />
-    </linearGradient>
   </defs>
   <metadata
      id="metadata11869">
@@ -314,23 +269,18 @@
          style="fill:#ff8800;fill-opacity:1;stroke:#995500;stroke-width:1px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1" />
     </g>
     <g
-       transform="translate(-2827.5,19.499945)"
-       id="g5344">
+       transform="translate(-19.999873,1.0001129)"
+       id="g6634">
       <path
-         d="m 2877.9988,12.878415 a 5.75,6 0 1 1 -5e-4,-0.02272"
-         transform="matrix(1.0417505,0,0,0.99834845,-108.66787,1000.8837)"
-         id="path5322"
-         style="fill:url(#radialGradient4629);fill-opacity:1;stroke:#19640c;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+         d="m 2878.4882,12.868066 a 6.2394724,6.5106826 0 1 1 -5e-4,-0.02466"
+         transform="matrix(1.0417505,0,0,0.99834845,-2916.168,1020.3836)"
+         id="path6624"
+         style="fill:#33ce00;fill-opacity:1;stroke:#2ba115;stroke-width:0.9805665;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
       <path
-         d="m 2894.4989,5.3885468 a 5.5,5.5 0 1 1 -5e-4,-0.020829"
-         transform="translate(-5.5,1008.3622)"
-         id="path5334"
-         style="fill:url(#radialGradient4631);fill-opacity:1;stroke:none" />
-      <path
-         d="m 2880,1014.8622 0,-2 2.5,0 0,-2.5 2,0 0,2.5 2.5,0 0,2 -2.5,0 0,2.5 -2,0 0,-2.5 z"
+         d="m 72,1034.3621 0,-2 3.000026,0 0,-3 2,0 0,3 2.999974,0 0,2 -2.999974,0 0,3.0001 -2,0 0,-3.0001 z"
          inkscape:connector-curvature="0"
-         id="path5290"
-         style="fill:#ffffff;fill-opacity:0.94117647;stroke:#19640c;stroke-width:1px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.25098039" />
+         id="path6628"
+         style="fill:#ffffff;fill-opacity:0.94117647;stroke:none" />
     </g>
   </g>
 </svg>

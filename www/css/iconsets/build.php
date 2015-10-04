@@ -20,33 +20,33 @@ include_once '../../../lib/cli.php';
 render($content, 'api-doc.svg', ['api-namespace', 'api-method', 'api-doc']);
 
 $names = ['api-key', 'create-api-key', 'edit-api-key', 'api-keys'];
-render($content, 'api-key.svg?2', $names);
+render($content, 'api-key.svg?3', $names);
 
 render($content, 'archive.svg?3', ['archive', 'unarchive', 'archive-file']);
 
 $names = ['bar', 'create-bar', 'edit-bar', 'bars', 'duplicate-bar'];
-render($content, 'bar.svg?2', $names);
+render($content, 'bar.svg?3', $names);
 
 $names = ['bar-chart', 'create-bar-chart', 'edit-bar-chart', 'bar-charts'];
-render($content, 'bar-chart.svg?1', $names);
+render($content, 'bar-chart.svg?2', $names);
 
 $names = ['bookmark', 'create-bookmark', 'edit-bookmark',
     'bookmarks', 'import-bookmark', 'duplicate-bookmark'];
-render($content, 'bookmark.svg?4', $names);
+render($content, 'bookmark.svg?5', $names);
 
 render($content, 'calendar.svg?1', ['calendar', 'calendar-jump']);
 
 $names = ['channel', 'create-channel', 'edit-channel', 'locked-channel',
     'inactive-channel', 'create-inactive-channel', 'edit-inactive-channel',
     'locked-inactive-channel', 'channels'];
-render($content, 'channel.svg?2', $names);
+render($content, 'channel.svg?3', $names);
 
 $names = ['connection', 'create-connection', 'edit-connection', 'connections'];
-render($content, 'connection.svg?2', $names);
+render($content, 'connection.svg?3', $names);
 
 $names = ['contact', 'create-contact', 'edit-contact',
     'favorite-contact', 'contacts', 'import-contact', 'duplicate-contact'];
-render($content, 'contact.svg?4', $names);
+render($content, 'contact.svg?5', $names);
 
 $names = ['edit-contact-photo', 'clear-contact-photo'];
 render($content, 'contact-photo.svg?1', $names);
@@ -55,7 +55,7 @@ $names = ['rotate-image-cw', 'rotate-image-ccw'];
 render($content, 'edit-image.svg?1', $names);
 
 $names = ['event', 'create-event', 'edit-event', 'events', 'duplicate-event'];
-render($content, 'event.svg?3', $names);
+render($content, 'event.svg?4', $names);
 
 $names = ['unknown-file', 'audio-file', 'image-file', 'video-file',
     'text-file', 'files', 'copy-file', 'move-file', 'import-file'];
@@ -63,23 +63,23 @@ render($content, 'file.svg?7', $names);
 
 $names = ['folder', 'create-folder',
     'copy-folder', 'move-folder', 'import-folder'];
-render($content, 'folder.svg?6', $names);
+render($content, 'folder.svg?7', $names);
 
 $names = ['invitation', 'create-invitation', 'edit-invitation', 'invitations'];
-render($content, 'invitation.svg?1', $names);
+render($content, 'invitation.svg?2', $names);
 
 $names = ['password', 'edit-password', 'new-password', 'reset-password'];
-render($content, 'key.svg?1', $names);
+render($content, 'key.svg?3', $names);
 
 $names = ['move-up', 'move-to-top', 'move-down', 'move-to-bottom'];
 render($content, 'move.svg?2', $names);
 
 $names = ['note', 'create-note', 'edit-note',
     'encrypted-note', 'notes', 'import-note', 'duplicate-note'];
-render($content, 'note.svg?5', $names);
+render($content, 'note.svg?6', $names);
 
 $names = ['notification', 'create-notification', 'old-notification'];
-render($content, 'notification.svg', $names);
+render($content, 'notification.svg?1', $names);
 
 $names = ['account', 'edit-profile', 'download', 'upload', 'feedback',
     'yes', 'no', 'rename', 'sign-in', 'sign-ins', 'arrow-right', 'arrow-left',
@@ -93,27 +93,27 @@ render($content, 'other.svg?24', $names);
 
 $names = ['place', 'create-place', 'edit-place',
     'places', 'import-place', 'duplicate-place', 'place-on-earth'];
-render($content, 'place.svg?3', $names);
+render($content, 'place.svg?4', $names);
 
 $names = ['point', 'create-point', 'edit-point', 'points'];
-render($content, 'point.svg?1', $names);
+render($content, 'point.svg?2', $names);
 
 render($content, 'protocol.svg?1', ['protocol']);
 
 $names = ['schedule', 'create-schedule',
     'edit-schedule', 'schedules', 'duplicate-schedule'];
-render($content, 'schedule.svg?3', $names);
+render($content, 'schedule.svg?4', $names);
 
 $names = ['sort-alphabetic', 'sort-time', 'sort-numeric'];
 render($content, 'sort.svg?1', $names);
 
 $names = ['subscribed-channel', 'create-subscribed-channel',
     'inactive-subscribed-channel', 'subscribed-channels'];
-render($content, 'subscribed-channel.svg?2', $names);
+render($content, 'subscribed-channel.svg?3', $names);
 
 $names = ['task', 'create-task', 'edit-task',
     'task-top-priority', 'tasks', 'import-task', 'duplicate-task'];
-render($content, 'task.svg?4', $names);
+render($content, 'task.svg?5', $names);
 
 $names = [
     'blue-light-theme', 'green-light-theme',
@@ -131,20 +131,20 @@ $names = [
 render($content, 'theme.svg?4', $names);
 
 $names = ['token', 'create-token', 'tokens'];
-render($content, 'token.svg?2', $names);
+render($content, 'token.svg?3', $names);
 
 $names = ['transaction', 'create-transaction',
     'edit-transaction', 'transactions', 'duplicate-transaction'];
-render($content, 'transaction.svg?2', $names);
+render($content, 'transaction.svg?3', $names);
 
 $names = ['trash-bin', 'empty-trash', 'purge'];
 render($content, 'trash.svg?1', $names);
 
 $names = ['user', 'add-user', 'remove-user', 'users'];
-render($content, 'user.svg?2', $names);
+render($content, 'user.svg?3', $names);
 
 $names = ['wallet', 'create-wallet',
     'edit-wallet', 'wallets', 'transfer-amount'];
-render($content, 'wallet.svg?2', $names);
+render($content, 'wallet.svg?3', $names);
 
 file_put_contents(__DIR__.'/compressed.css', $content);
