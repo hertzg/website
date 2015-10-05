@@ -28,8 +28,8 @@ if ($id_folders) {
 
 }
 
-include_once "$fnsDir/Folders/indexInUserFolder.php";
-$folders = Folders\indexInUserFolder($mysqli, $user->id_users, $id_folders);
+include_once "$fnsDir/Users/Folders/index.php";
+$folders = Users\Folders\index($mysqli, $user, $id_folders);
 
 include_once "$fnsDir/Page/imageArrowLink.php";
 include_once "$fnsDir/Page/imageLink.php";

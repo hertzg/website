@@ -4,12 +4,11 @@ function create_page ($mysqli, $user, $folder, &$scripts, $base = '') {
 
     $fnsDir = __DIR__.'/../../fns';
     $id = $folder ? $folder->id_folders : 0;
-    $id_users = $user->id_users;
 
     $items = [];
 
-    include_once "$fnsDir/Folders/indexInUserFolder.php";
-    $folders = Folders\indexInUserFolder($mysqli, $id_users, $id);
+    include_once "$fnsDir/Users/Folders/index.php";
+    $folders = Users\Folders\index($mysqli, $user, $id);
 
     include_once "$fnsDir/Users/Files/index.php";
     $files = Users\Files\index($mysqli, $user, $id);
