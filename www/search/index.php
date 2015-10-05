@@ -76,7 +76,8 @@ if ($num_bar_charts || $num_bookmarks || $num_contacts || $num_notes ||
         $wallets, $num_wallets, $folders, $files, $keyword, $user, $groupLimit);
 
     include_once 'fns/render_search_files_link.php';
-    render_search_files_link($searchFiles, $keyword, $offset, $resultItems);
+    render_search_files_link($user,
+        $searchFiles, $keyword, $offset, $resultItems);
 
     $offset = abs((int)$offset);
     $total = count($resultItems);
@@ -99,7 +100,7 @@ if ($num_bar_charts || $num_bookmarks || $num_contacts || $num_notes ||
     $items[] = Page\info('Nothing found');
 
     include_once 'fns/render_search_files_link.php';
-    render_search_files_link($searchFiles, $keyword, 0, $items);
+    render_search_files_link($user, $searchFiles, $keyword, 0, $items);
 
 }
 
