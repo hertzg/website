@@ -15,9 +15,8 @@ unset(
 $base = '../../';
 $fnsDir = '../../fns';
 
-include_once "$fnsDir/Files/indexPreviewableInUserFolder.php";
-$files = Files\indexPreviewableInUserFolder(
-    $mysqli, $user->id_users, $parent_id);
+include_once "$fnsDir/Users/Files/indexPreviewableInFolder.php";
+$files = Users\Files\indexPreviewableInFolder($mysqli, $user, $parent_id);
 
 include_once "$fnsDir/request_strings.php";
 list($id) = request_strings('id');
