@@ -11,7 +11,7 @@ function editContent ($mysqli, $file, $filesize, $md5_sum, $sha256_sum) {
     $storageIncrement = $filesize - $file->size;
     if ($storageIncrement) {
         include_once __DIR__.'/../addStorageUsed.php';
-        \Users\addStorageUsed($mysqli, $file->id_users, $storageIncrement);
+        \Users\addStorageUsed($mysqli, $file->id_users, $storageIncrement, 0);
     }
 
 }

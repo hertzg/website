@@ -2,8 +2,8 @@
 
 namespace Users;
 
-function addStorageUsed ($mysqli, $id, $storage_used) {
-    $sql = "update users set storage_used = storage_used + $storage_used"
-        ." where id_users = $id";
+function addStorageUsed ($mysqli, $id, $storage_used, $num_files) {
+    $sql = "update users set storage_used = storage_used + $storage_used,"
+        ." num_files = num_files + $num_files where id_users = $id";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 }

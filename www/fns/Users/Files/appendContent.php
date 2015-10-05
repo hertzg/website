@@ -23,7 +23,7 @@ function appendContent ($mysqli, $file, $filePath) {
         $file->size + $size, $md5_sum, $sha256_sum);
 
     include_once __DIR__.'/../addStorageUsed.php';
-    \Users\addStorageUsed($mysqli, $id_users, $size);
+    \Users\addStorageUsed($mysqli, $id_users, $size, 0);
 
     return $id;
 

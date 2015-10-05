@@ -24,6 +24,6 @@ function addDeleted ($mysqli, $user, $data) {
         $data->rename_time, $data->content_revision, $data->revision);
 
     include_once __DIR__.'/../addStorageUsed.php';
-    \Users\addStorageUsed($mysqli, $id_users, $size);
+    \Users\addStorageUsed($mysqli, $id_users, $size, 1);
 
 }

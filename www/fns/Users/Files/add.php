@@ -19,7 +19,7 @@ function add ($mysqli, $id_users, $id_folders,
     copy($filePath, \Files\File\path($id_users, $id));
 
     include_once __DIR__.'/../addStorageUsed.php';
-    \Users\addStorageUsed($mysqli, $id_users, $size);
+    \Users\addStorageUsed($mysqli, $id_users, $size, 1);
 
     return $id;
 

@@ -109,6 +109,7 @@ function ensure ($mysqli) {
         'num_events' => ['type' => 'bigint(20) unsigned'],
         'num_events_today' => ['type' => 'bigint(20) unsigned'],
         'num_events_tomorrow' => ['type' => 'bigint(20) unsigned'],
+        'num_files' => ['type' => 'bigint(20) unsigned'],
         'num_folders' => ['type' => 'bigint(20) unsigned'],
         'num_logins' => ['type' => 'bigint(20) unsigned'],
         'num_new_notifications' => ['type' => 'bigint(20) unsigned'],
