@@ -26,9 +26,9 @@ function require_api_key ($permission_field) {
             ErrorJson\forbidden('"NOT_SIGNED_IN"');
         }
 
-        if ($user->blocked) {
+        if ($user->disabled) {
             include_once "$fnsDir/ErrorJson/forbidden.php";
-            ErrorJson\forbidden('"USER_BLOCKED"');
+            ErrorJson\forbidden('"USER_DISABLED"');
         }
 
         $apiKey = null;
@@ -59,9 +59,9 @@ function require_api_key ($permission_field) {
         include_once "$fnsDir/Users/get.php";
         $user = Users\get($mysqli, $apiKey->id_users);
 
-        if ($user->blocked) {
+        if ($user->disabled) {
             include_once "$fnsDir/ErrorJson/forbidden.php";
-            ErrorJson\forbidden('"USER_BLOCKED"');
+            ErrorJson\forbidden('"USER_DISABLED"');
         }
 
         include_once "$fnsDir/ClientAddress/get.php";

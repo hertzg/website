@@ -18,9 +18,9 @@ function require_user ($base = '') {
 
     }
 
-    if ($user->blocked) {
+    if ($user->disabled) {
         include_once __DIR__.'/redirect.php';
-        redirect("{$base}account-blocked/");
+        redirect("{$base}account-disabled/");
     }
 
     return $user;

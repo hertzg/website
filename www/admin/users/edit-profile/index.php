@@ -11,7 +11,7 @@ if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
     $values = [
         'username' => $user->username,
-        'blocked' => $user->blocked,
+        'disabled' => $user->disabled,
     ];
 }
 
@@ -49,7 +49,7 @@ $content = Page\tabs(
             'Minimum '.Username\minLength().' characters.',
         ])
         .'<div class="hr"></div>'
-        .Form\checkbox('blocked', 'Blocked', $values['blocked'])
+        .Form\checkbox('disabled', 'Disable', $values['disabled'])
         .'<div class="hr"></div>'
         .Form\button('Save Changes')
         ."<input type=\"hidden\" name=\"id\" value=\"$id\" />"

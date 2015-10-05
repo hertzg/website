@@ -35,9 +35,9 @@ if (!$errors) {
     include_once '../fns/Session/authenticate.php';
     include_once '../lib/mysqli.php';
     $user = Session\authenticate($mysqli,
-        $username, $password, $remember, $blocked);
+        $username, $password, $remember, $disabled);
     if (!$user) {
-        if ($blocked) $error = 'Your account is blocked.';
+        if ($disabled) $error = 'Your account is disabled.';
         else $error = 'Invalid username or password.';
         $errors[] = $error;
     }

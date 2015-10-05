@@ -2,7 +2,7 @@
 
 namespace Users;
 
-function add ($mysqli, $username, $password, $email, $blocked, $insertApiKey) {
+function add ($mysqli, $username, $password, $email, $disabled, $insertApiKey) {
 
     $fnsDir = __DIR__.'/..';
 
@@ -19,7 +19,7 @@ function add ($mysqli, $username, $password, $email, $blocked, $insertApiKey) {
     $password_sha512_hash = $mysqli->real_escape_string($password_sha512_hash);
     $password_sha512_key = $mysqli->real_escape_string($password_sha512_key);
     $email = $mysqli->real_escape_string($email);
-    $blocked = $blocked ? '1' : '0';
+    $disabled = $disabled ? '1' : '0';
     $insert_time = time();
     if ($insertApiKey === null) {
         $insert_api_key_id = $insert_api_key_name = 'null';
@@ -49,7 +49,7 @@ function add ($mysqli, $username, $password, $email, $blocked, $insertApiKey) {
 
     $sql = 'insert into users (username, password_sha512_hash,'
         .' password_sha512_key, encryption_key, encryption_key_iv,'
-        .' email, blocked, order_home_items,'
+        .' email, disabled, order_home_items,'
         .' insert_time, theme_color, theme_brightness,'
         .' birthdays_check_day, events_check_day,'
         .' schedules_check_day, task_deadlines_check_day,'
@@ -63,7 +63,7 @@ function add ($mysqli, $username, $password, $email, $blocked, $insertApiKey) {
         .' show_schedules, show_tasks, show_trash, show_wallets)'
         ." values ('$username', '$password_sha512_hash',"
         ." '$password_sha512_key', '$encryption_key', '$encryption_key_iv',"
-        ." '$email', $blocked, '$order_home_items',"
+        ." '$email', $disabled, '$order_home_items',"
         ." $insert_time, '$theme_color', '$theme_brightness',"
         ." $birthdays_check_day, $events_check_day,"
         ." $schedules_check_day, $task_deadlines_check_day,"

@@ -2,7 +2,7 @@
 
 namespace Session;
 
-function authenticate ($mysqli, $username, $password, $remember, &$blocked) {
+function authenticate ($mysqli, $username, $password, $remember, &$disabled) {
 
     $fnsDir = __DIR__.'/..';
 
@@ -13,8 +13,8 @@ function authenticate ($mysqli, $username, $password, $remember, &$blocked) {
     $client_address = \ClientAddress\get();
 
     if ($user) {
-        if ($user->blocked) {
-            $blocked = true;
+        if ($user->disabled) {
+            $disabled = true;
             $user = null;
         } else {
 

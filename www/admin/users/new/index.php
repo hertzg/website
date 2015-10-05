@@ -10,7 +10,7 @@ else {
         'username' => '',
         'password' => '',
         'repeatPassword' => '',
-        'blocked' => false,
+        'disabled' => false,
     ];
 }
 
@@ -69,7 +69,7 @@ $content = Page\tabs(
             'required' => true,
         ])
         .'<div class="hr"></div>'
-        .Form\checkbox('blocked', 'Blocked', $values['blocked'])
+        .Form\checkbox('disabled', 'Disable', $values['disabled'])
         .'<div class="hr"></div>'
         .Form\button('Save User')
         .ItemList\pageHiddenInputs()

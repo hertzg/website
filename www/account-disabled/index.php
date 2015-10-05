@@ -8,11 +8,11 @@ if (!$user) {
     redirect('..');
 }
 
-if (!$user->blocked) {
+if (!$user->disabled) {
     include_once '../fns/redirect.php';
     redirect('../home/');
 }
 
 include_once '../fns/echo_alert_page.php';
-echo_alert_page('Account Blocked',
-    'Your account has been blocked.', '../sign-out/submit.php', '../');
+echo_alert_page('Account Disabled',
+    'Your account has been disabled.', '../sign-out/submit.php', '../');

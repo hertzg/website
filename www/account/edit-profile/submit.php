@@ -69,7 +69,7 @@ unset(
 
 include_once "$fnsDir/Users/Account/editProfile.php";
 Users\Account\editProfile($mysqli, $user,
-    $username, $email, $full_name, $timezone, $user->blocked);
+    $username, $email, $full_name, $timezone, $user->disabled);
 
 $_SESSION['account/messages'] = ['Changes have been saved.'];
 

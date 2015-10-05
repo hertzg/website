@@ -10,9 +10,9 @@ include_once '../../../lib/mysqli.php';
 list($user, $id) = require_user($mysqli);
 
 include_once "$fnsDir/request_strings.php";
-list($username, $blocked) = request_strings('username', 'blocked');
+list($username, $disabled) = request_strings('username', 'disabled');
 
-$blocked = (bool)$blocked;
+$disabled = (bool)$disabled;
 
 include_once '../../../lib/mysqli.php';
 
@@ -38,7 +38,7 @@ if ($errors) {
     $_SESSION['admin/users/edit-profile/errors'] = $errors;
     $_SESSION['admin/users/edit-profile/values'] = [
         'username' => $username,
-        'blocked' => $blocked,
+        'disabled' => $disabled,
     ];
     redirect("./$itemQuery");
 }
@@ -50,7 +50,7 @@ unset(
 
 include_once "$fnsDir/Users/Account/editProfile.php";
 Users\Account\editProfile($mysqli, $user, $username,
-    $user->email, $user->full_name, $user->timezone, $blocked);
+    $user->email, $user->full_name, $user->timezone, $disabled);
 
 $_SESSION['admin/users/view/messages'] = ['Changes have been saved.'];
 

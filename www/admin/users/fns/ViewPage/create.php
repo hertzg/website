@@ -31,7 +31,7 @@ function create ($user, &$scripts) {
     include_once __DIR__.'/../../../fns/format_author.php';
     $author = format_author($user->insert_time, $user->insert_api_key_name);
     $infoText =
-        ($user->blocked ? 'Blocked.<br />' : '')
+        ($user->disabled ? 'Disabled.<br />' : '')
         ."User created $author.";
 
     $items[] = \Form\label('Last accessed', $accessed);
