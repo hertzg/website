@@ -26,6 +26,11 @@ function require_api_key ($permission_field) {
             ErrorJson\forbidden('"NOT_SIGNED_IN"');
         }
 
+        if ($user->blocked) {
+            include_once "$fnsDir/ErrorJson/forbidden.php";
+            ErrorJson\forbidden('"USER_BLOCKED"');
+        }
+
         $apiKey = null;
 
     } else {
