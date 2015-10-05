@@ -20,7 +20,7 @@ function signed_user () {
             include_once __DIR__.'/Users/get.php';
             $user = Users\get($mysqli, $token->id_users);
 
-            if ($user) {
+            if ($user && !$user->blocked) {
                 $_SESSION['user'] = $user;
                 $_SESSION['token'] = $token;
             }
