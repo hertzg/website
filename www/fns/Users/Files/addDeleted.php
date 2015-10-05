@@ -10,8 +10,8 @@ function addDeleted ($mysqli, $user, $data) {
     $size = $data->size;
     $fnsDir = __DIR__.'/../..';
 
-    include_once "$fnsDir/Users/Folders/get.php";
-    $folder = \Users\Folders\get($mysqli, $user, $id_folders);
+    include_once "$fnsDir/Folders/getOnUser.php";
+    $folder = \Folders\getOnUser($mysqli, $id_users, $id_folders);
     if (!$folder) $id_folders = 0;
 
     include_once "$fnsDir/Files/getUniqueName.php";

@@ -12,8 +12,8 @@ function addDeleted ($mysqli, $user, $folder) {
     $fnsDir = __DIR__.'/../..';
 
     if ($parent_id) {
-        include_once "$fnsDir/Users/Folders/get.php";
-        $parentFolder = \Users\Folders\get($mysqli, $user, $parent_id);
+        include_once "$fnsDir/Folders/getOnUser.php";
+        $parentFolder = \Folders\getOnUser($mysqli, $id_users, $parent_id);
         if (!$parentFolder) $parent_id = 0;
     }
 
