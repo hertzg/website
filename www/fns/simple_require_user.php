@@ -1,8 +1,10 @@
 <?php
 
 function simple_require_user ($base = '') {
+
     include_once __DIR__.'/signed_user.php';
     $user = signed_user();
+
     if (!$user) {
 
         unset(
@@ -14,5 +16,12 @@ function simple_require_user ($base = '') {
         redirect("{$base}sign-in/");
 
     }
+
+    if ($user->blocked) {
+        include_once __DIR__.'/redirect.php';
+        redirect("{$base}account-blocked/");
+    }
+
     return $user;
+
 }
