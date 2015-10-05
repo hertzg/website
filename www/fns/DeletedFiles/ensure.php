@@ -21,6 +21,7 @@ function ensure ($mysqli) {
         'id_folders' => ['type' => 'bigint(20) unsigned'],
         'id_users' => ['type' => 'bigint(20) unsigned'],
         'insert_time' => ['type' => 'bigint(20) unsigned'],
+        'md5_sum' => ['type' => 'binary(32)'],
         'media_type' => \MediaType\column(),
         'name' => \FileName\column(),
         'readable_size' => [
@@ -30,6 +31,7 @@ function ensure ($mysqli) {
         ],
         'rename_time' => ['type' => 'bigint(20) unsigned'],
         'revision' => ['type' => 'bigint(20) unsigned'],
+        'sha256_sum' => ['type' => 'binary(64)'],
         'size' => ['type' => 'bigint(20) unsigned'],
     ]);
 

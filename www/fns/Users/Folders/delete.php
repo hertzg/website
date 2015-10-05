@@ -45,9 +45,10 @@ function delete ($mysqli, $user, $folder, $apiKey = null) {
             foreach ($files as $file) {
                 $id_files = $file->id_files;
                 \Users\Files\purge($mysqli, $file);
-                \DeletedFiles\add($mysqli, $id_deleted_items, $id_files, $id,
-                    $id_users, $file->content_type, $file->media_type,
-                    $file->name, $file->size, $file->insert_time,
+                \DeletedFiles\add($mysqli, $id_deleted_items, $id_files,
+                    $id, $id_users, $file->content_type, $file->media_type,
+                    $file->name, $file->size, $file->md5_sum,
+                    $file->sha256_sum, $file->insert_time,
                     $file->rename_time, $file->content_revision,
                     $file->revision);
             }

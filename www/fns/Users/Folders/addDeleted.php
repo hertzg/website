@@ -56,6 +56,8 @@ function addDeleted ($mysqli, $user, $folder) {
                     'media_type' => $deletedFile->media_type,
                     'name' => $deletedFile->name,
                     'size' => $deletedFile->size,
+                    'md5_sum' => $deletedFile->md5_sum,
+                    'sha256_sum' => $deletedFile->sha256_sum,
                     'insert_time' => $deletedFile->insert_time,
                     'rename_time' => $deletedFile->rename_time,
                     'content_revision' => $deletedFile->content_revision,
