@@ -10,6 +10,13 @@
     var uploadButton = document.getElementById('uploadButton')
     uploadButton.addEventListener('click', function (e) {
 
+        function finish () {
+            var url = 'submit-finish.php?num_uploaded=' + numFiles +
+                '&num_failed=' + files.length
+            if (parentId !== null) url += '&parent_id=' + parentId
+            location = url
+        }
+
         function nextFile () {
 
             function appendFile (formData, chunk) {
@@ -21,9 +28,7 @@
 
             var file = files.shift()
             if (!file) {
-                var url = 'submit-finish.php?num_files=' + numFiles
-                if (parentId !== null) url += '&parent_id=' + parentId
-                location = url
+                finish()
                 return
             }
 
@@ -50,7 +55,7 @@
                                 formData.append('id', id)
                                 appendFile(formData, chunk)
 
-                                Post('file/appendContent', formData, nextChunk)
+                                Post('file/appendContent', formData, nextChunk, finish)
 
                             })
                         } else {
@@ -61,7 +66,7 @@
                     var id = JSON.parse(request.response)
                     nextChunk()
 
-                })
+                }, finish)
 
             })
 

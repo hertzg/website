@@ -10,17 +10,40 @@ include_once '../../lib/mysqli.php';
 list($parentFolder, $parent_id, $user) = require_parent_folder($mysqli);
 
 include_once "$fnsDir/request_strings.php";
-list($num_files) = request_strings('num_files');
+list($num_uploaded, $num_failed) = request_strings(
+    'num_uploaded', 'num_failed');
 
-$num_files = abs((int)$num_files);
+$num_uploaded = abs((int)$num_uploaded);
+$num_failed = abs((int)$num_failed);
 
-if ($num_files == 1) $message = '1 file has been uploaded.';
-else $message = "$num_files files have been uploaded.";
+$errors = [];
+if ($num_failed) {
+    if ($num_failed == 1) $error = '1 file has failed to upload.';
+    else $error = "$num_failed files have failed to upload.";
+    $errors[] = $error;
+}
 
-unset($_SESSION['files/errors']);
-$_SESSION['files/id_folders'] = $parent_id;
-$_SESSION['files/messages'] = [$message];
-
-include_once "$fnsDir/create_folder_link.php";
 include_once "$fnsDir/redirect.php";
-redirect(create_folder_link($parent_id, '../'));
+
+if ($num_uploaded) {
+
+    if ($num_uploaded == 1) $message = '1 file has been uploaded.';
+    else $message = "$num_uploaded files have been uploaded.";
+
+    if ($errors) $_SESSION['files/errors'] = $errors;
+    else unset($_SESSION['files/errors']);
+
+    $_SESSION['files/id_folders'] = $parent_id;
+    $_SESSION['files/messages'] = [$message];
+
+    include_once "$fnsDir/create_folder_link.php";
+    redirect(create_folder_link($parent_id, '../'));
+
+}
+
+if ($errors) $_SESSION['files/upload-files/errors'] = $errors;
+else unset($_SESSION['files/upload-files/errors']);
+
+$url = './';
+if ($parent_id) $url .= "?parent_id=$parent_id";
+redirect($url);

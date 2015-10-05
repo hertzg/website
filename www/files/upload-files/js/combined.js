@@ -17,14 +17,15 @@ function ChunkedReader (file, chunkSize) {
     }
 }
 ;
-function Post (method, formData, loadListener) {
+function Post (method, formData, loadListener, errorListener) {
     var request = new XMLHttpRequest
     request.open('post', '../../api-call/' + method)
     request.send(formData)
-    request.onerror = function () {
-        // TODO handle error
+    request.onerror = errorListener
+    request.onload = function () {
+        if (request.status == 200) loadListener()
+        else errorListener()
     }
-    request.onload = loadListener
     return request
 }
 ;
@@ -40,6 +41,13 @@ function Post (method, formData, loadListener) {
     var uploadButton = document.getElementById('uploadButton')
     uploadButton.addEventListener('click', function (e) {
 
+        function finish () {
+            var url = 'submit-finish.php?num_uploaded=' + numFiles +
+                '&num_failed=' + files.length
+            if (parentId !== null) url += '&parent_id=' + parentId
+            location = url
+        }
+
         function nextFile () {
 
             function appendFile (formData, chunk) {
@@ -51,9 +59,7 @@ function Post (method, formData, loadListener) {
 
             var file = files.shift()
             if (!file) {
-                var url = 'submit-finish.php?num_files=' + numFiles
-                if (parentId !== null) url += '&parent_id=' + parentId
-                location = url
+                finish()
                 return
             }
 
@@ -80,7 +86,7 @@ function Post (method, formData, loadListener) {
                                 formData.append('id', id)
                                 appendFile(formData, chunk)
 
-                                Post('file/appendContent', formData, nextChunk)
+                                Post('file/appendContent', formData, nextChunk, finish)
 
                             })
                         } else {
@@ -91,7 +97,7 @@ function Post (method, formData, loadListener) {
                     var id = JSON.parse(request.response)
                     nextChunk()
 
-                })
+                }, finish)
 
             })
 
