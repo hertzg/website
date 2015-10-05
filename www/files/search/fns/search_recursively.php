@@ -3,20 +3,20 @@
 function search_recursively ($mysqli, $user, $parent_id, $keyword) {
 
     $fnsDir = __DIR__.'/../../../fns';
-    $id_users = $user->id_users;
 
-    include_once "$fnsDir/Files/searchInFolder.php";
-    $files = Files\searchInFolder($mysqli, $id_users, $parent_id, $keyword);
+    include_once "$fnsDir/Users/Files/searchInFolder.php";
+    $files = Users\Files\searchInFolder($mysqli, $user, $parent_id, $keyword);
 
-    include_once "$fnsDir/Folders/searchInFolder.php";
-    $folders = Folders\searchInFolder($mysqli, $id_users, $parent_id, $keyword);
+    include_once "$fnsDir/Users/Folders/searchInFolder.php";
+    $folders = Users\Folders\searchInFolder(
+        $mysqli, $user, $parent_id, $keyword);
 
     include_once "$fnsDir/Users/Folders/index.php";
     $subfolders = Users\Folders\index($mysqli, $user, $parent_id);
 
     foreach ($subfolders as $folder) {
-        list($foundFolders, $foundFile) = search_recursively($mysqli,
-            $id_users, $folder->id_folders, $keyword);
+        list($foundFolders, $foundFile) = search_recursively(
+            $mysqli, $user, $folder->id_folders, $keyword);
         $folders = array_merge($folders, $foundFolders);
         $files = array_merge($files, $foundFile);
     }

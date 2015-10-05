@@ -6,7 +6,6 @@ $fnsDir = '../../fns';
 include_once '../fns/require_optional_folder.php';
 include_once '../../lib/mysqli.php';
 list($user, $folder, $id_folders) = require_optional_folder($mysqli, '../');
-$id_users = $user->id_users;
 
 include_once "$fnsDir/request_strings.php";
 list($keyword, $deep) = request_strings('keyword', 'deep');
@@ -30,12 +29,12 @@ if ($deep) {
         $mysqli, $user, $id_folders, $keyword);
 } else {
 
-    include_once "$fnsDir/Folders/searchInFolder.php";
-    $folders = Folders\searchInFolder($mysqli,
-        $id_users, $id_folders, $keyword);
+    include_once "$fnsDir/Users/Folders/searchInFolder.php";
+    $folders = Users\Folders\searchInFolder(
+        $mysqli, $user, $id_folders, $keyword);
 
-    include_once "$fnsDir/Files/searchInFolder.php";
-    $files = Files\searchInFolder($mysqli, $id_users, $id_folders, $keyword);
+    include_once "$fnsDir/Users/Files/searchInFolder.php";
+    $files = Users\Files\searchInFolder($mysqli, $user, $id_folders, $keyword);
 
 }
 
