@@ -13,17 +13,8 @@ function ExtendSession (base) {
                 request.open('get', base + 'api-call/session/extend')
                 request.send()
                 request.onload = function () {
-                    var status = request.status
-                    if (status == 400) {
-                        var response = JSON.parse(request.responseText)
-                        if (response == 'SESSION_INVALID') {
-                            location.reload()
-                        } else {
-                            // TODO handle other error
-                        }
-                    } else {
-                        schedule()
-                    }
+                    if (request.status == 400) location.reload()
+                    else schedule()
                 }
             }
         }
