@@ -25,9 +25,9 @@ if ($keyword === '') {
 }
 
 if ($deep) {
-    include_once '../fns/search_recursively.php';
-    list($folders, $files) = search_recursively($mysqli, $id_users,
-        $id_folders, $keyword);
+    include_once 'fns/search_recursively.php';
+    list($folders, $files) = search_recursively(
+        $mysqli, $user, $id_folders, $keyword);
 } else {
 
     include_once "$fnsDir/Folders/searchInFolder.php";
