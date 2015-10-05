@@ -2,7 +2,7 @@
 
 namespace Users\Folders;
 
-function delete ($mysqli, $folder, $apiKey = null) {
+function delete ($mysqli, $user, $folder, $apiKey = null) {
 
     $num_folders = 0;
     $id_users = $folder->id_users;
@@ -36,8 +36,8 @@ function delete ($mysqli, $folder, $apiKey = null) {
             }
         }
 
-        include_once "$fnsDir/Files/indexInFolder.php";
-        $files = \Files\indexInFolder($mysqli, $id);
+        include_once "$fnsDir/Users/Files/index.php";
+        $files = \Users\Files\index($mysqli, $user, $id);
 
         if ($files) {
             include_once __DIR__.'/../Files/purge.php';
