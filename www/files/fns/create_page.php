@@ -11,8 +11,8 @@ function create_page ($mysqli, $user, $folder, &$scripts, $base = '') {
     include_once "$fnsDir/Folders/indexInUserFolder.php";
     $folders = Folders\indexInUserFolder($mysqli, $id_users, $id);
 
-    include_once "$fnsDir/Files/indexInUserFolder.php";
-    $files = Files\indexInUserFolder($mysqli, $id_users, $id);
+    include_once "$fnsDir/Users/Files/index.php";
+    $files = Users\Files\index($mysqli, $user, $id);
 
     $scripts = '';
 
