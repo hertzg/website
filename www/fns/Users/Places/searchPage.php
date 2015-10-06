@@ -8,6 +8,6 @@ function searchPage ($mysqli, $user, $keyword, $offset, $limit, &$total) {
 
     include_once __DIR__.'/../../Places/searchPage.php';
     return \Places\searchPage($mysqli, $user->id_users,
-        $keyword, $offset, $limit, $total, $user->contacts_order_by);
+        $keyword, $offset, $limit, $total, $user->places_order_by);
 
 }
