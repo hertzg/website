@@ -57,6 +57,8 @@ if ($mysqli->connect_errno) {
     $mysqlLink = Page\imageArrowLink($title, $href, $icon, $options);
 }
 
+include_once 'fns/create_admin_api_keys_link.php';
+include_once 'fns/create_invitations_link.php';
 include_once 'fns/create_users_link.php';
 include_once '../fns/Page/sessionMessages.php';
 include_once '../fns/Page/tabs.php';
@@ -83,16 +85,22 @@ $content = Page\tabs(
     .Page\imageArrowLink('Set New Username/Password',
         'username-password/', 'generic', ['id' => 'username-password'])
     .'<div class="hr"></div>'
+    .create_admin_api_keys_link($mysqli)
+/*
     .Page\imageArrowLink('Admin API Keys', 'api-keys/',
         'api-keys', ['id' => 'api-keys'])
+*/
     .'<div class="hr"></div>'
     .Page\imageArrowLink('Admin API Documentation',
         'api-doc/', 'api-doc', ['id' => 'api-doc'])
     .Page\imageArrowLink('Invalid Signins', 'invalid-signins/',
         'generic', ['id' => 'invalid-signins'])
     .'<div class="hr"></div>'
+    .create_invitations_link($mysqli)
+/*
     .Page\imageArrowLink('Invitations', 'invitations/',
         'invitations', ['id' => 'invitations'])
+*/
     .'<div class="hr"></div>'
     .create_users_link($mysqli)
     .'<div class="hr"></div>'
