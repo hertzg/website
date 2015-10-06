@@ -17,7 +17,7 @@ function render (&$content, $file, $names) {
 chdir(__DIR__);
 include_once '../../../lib/cli.php';
 
-render($content, 'api-doc.svg', ['api-namespace', 'api-method', 'api-doc']);
+render($content, 'api-doc.svg?1', ['api-namespace', 'api-method', 'api-doc']);
 
 $names = ['api-key', 'create-api-key', 'edit-api-key', 'api-keys'];
 render($content, 'api-key.svg?3', $names);

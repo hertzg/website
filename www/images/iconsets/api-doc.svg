@@ -122,6 +122,14 @@
      transform="translate(0,-1020.3622)"
      id="layer1">
     <use
+       transform="translate(64,0)"
+       id="use4475"
+       x="0"
+       y="0"
+       width="96"
+       height="32"
+       xlink:href="#use9699" />
+    <use
        transform="translate(32,0)"
        id="use3707"
        x="0"
@@ -169,13 +177,5 @@
          id="use11727-9"
          style="fill:url(#linearGradient4479);fill-opacity:1;stroke:#8a8a8a;stroke-width:0.55887747;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
     </g>
-    <use
-       transform="translate(64,0)"
-       id="use4475"
-       x="0"
-       y="0"
-       width="96"
-       height="32"
-       xlink:href="#use9699" />
   </g>
 </svg>

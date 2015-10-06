@@ -121,9 +121,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="8"
-     inkscape:cx="71.94497"
-     inkscape:cy="-1.346497"
+     inkscape:zoom="22.627417"
+     inkscape:cx="80.405643"
+     inkscape:cy="-0.055024578"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -157,6 +157,14 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0,-1020.3622)">
+    <use
+       x="0"
+       y="0"
+       xlink:href="#use9699"
+       id="use4475"
+       transform="translate(64,0)"
+       width="96"
+       height="32" />
     <use
        x="0"
        y="0"
@@ -208,13 +216,5 @@
          inkscape:connector-curvature="0"
          sodipodi:nodetypes="cccccccccccccccccccc" />
     </g>
-    <use
-       x="0"
-       y="0"
-       xlink:href="#use9699"
-       id="use4475"
-       transform="translate(64,0)"
-       width="96"
-       height="32" />
   </g>
 </svg>
