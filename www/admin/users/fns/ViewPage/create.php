@@ -42,7 +42,7 @@ function create ($user, &$scripts) {
     $timezone = $user->timezone;
     if ($timezone) {
         include_once "$fnsDir/Timezone/format.php";
-        $items[] = \Form\label('Timezone', Timezone\format($timezone));
+        $items[] = \Form\label('Timezone', \Timezone\format($timezone));
     }
 
     include_once __DIR__.'/unsetSessionVars.php';
