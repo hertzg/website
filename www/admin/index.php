@@ -57,6 +57,7 @@ if ($mysqli->connect_errno) {
     $mysqlLink = Page\imageArrowLink($title, $href, $icon, $options);
 }
 
+include_once 'fns/create_users_link.php';
 include_once '../fns/Page/sessionMessages.php';
 include_once '../fns/Page/tabs.php';
 $content = Page\tabs(
@@ -93,7 +94,7 @@ $content = Page\tabs(
     .Page\imageArrowLink('Invitations', 'invitations/',
         'invitations', ['id' => 'invitations'])
     .'<div class="hr"></div>'
-    .Page\imageArrowLink('Users', 'users/', 'users', ['id' => 'users'])
+    .create_users_link($mysqli)
     .'<div class="hr"></div>'
 );
 
