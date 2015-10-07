@@ -6,6 +6,9 @@ include_once '../../lib/cli.php';
 include_once '../fns/mysqli_query_object.php';
 include_once '../lib/mysqli.php';
 
+include_once '../fns/Table/ensureAll.php';
+Table\ensureAll($mysqli);
+
 $sql = 'select * from deleted_items'
     ." where data_type in ('contact', 'receivedContact')";
 $items = mysqli_query_object($mysqli, $sql);
