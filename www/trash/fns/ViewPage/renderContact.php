@@ -29,12 +29,18 @@ function renderContact ($id, $contact, &$items, &$infoText, &$scripts) {
 
     $phone1 = $contact->phone1;
     if ($phone1 !== '') {
-        $labelItems[] = \Form\label('Phone 1', htmlspecialchars($phone1));
+        $value = htmlspecialchars($phone1);
+        $label = $contact->phone1_label;
+        if ($label !== '') $value .= ' ('.htmlspecialchars($value).')';
+        $labelItems[] = \Form\label('Phone 1', $value);
     }
 
     $phone2 = $contact->phone2;
     if ($phone2 !== '') {
-        $labelItems[] = \Form\label('Phone 2', htmlspecialchars($phone2));
+        $value = htmlspecialchars($phone2);
+        $label = $contact->phone2_label;
+        if ($label !== '') $value .= ' ('.htmlspecialchars($value).')';
+        $labelItems[] = \Form\label('Phone 2', $value);
     }
 
     $birthday_time = $contact->birthday_time;

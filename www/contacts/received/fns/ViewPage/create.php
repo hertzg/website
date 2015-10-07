@@ -34,8 +34,10 @@ function create ($receivedContact, &$head, &$scripts) {
     }
 
     include_once __DIR__.'/../../../fns/render_phone_number.php';
-    render_phone_number('Phone 1', $receivedContact->phone1, $items);
-    render_phone_number('Phone 2', $receivedContact->phone2, $items);
+    render_phone_number('Phone 1', $receivedContact->phone1,
+        $receivedContact->phone1_label, $items);
+    render_phone_number('Phone 2', $receivedContact->phone2,
+        $receivedContact->phone2_label, $items);
 
     include_once __DIR__.'/../../../fns/render_birthday.php';
     render_birthday($receivedContact->birthday_time, $items, $head, '../');
