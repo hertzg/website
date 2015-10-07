@@ -49,7 +49,7 @@ function create_form_items ($values, &$scripts, $base = '') {
             'maxlength' => $maxLengths['phone1'],
         ], [
             'value' => $values['phone1_label'],
-            'placeholder' => 'Home',
+            'placeholder' => 'e.g. Home',
             'maxlength' => $maxLengths['phone1_label'],
         ])
         .'<div class="hr"></div>'
@@ -59,7 +59,7 @@ function create_form_items ($values, &$scripts, $base = '') {
         ], [
             'value' => $values['phone2_label'],
             'maxlength' => $maxLengths['phone2_label'],
-            'placeholder' => 'Work',
+            'placeholder' => 'e.g. Work',
         ])
         .'<div class="hr"></div>'
         .Form\datefield([

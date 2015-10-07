@@ -6,12 +6,14 @@ var fs = require('fs'),
     uglifyCss = require('uglifycss')
 
 var files = [
-    'defaults', 'common', 'logoLink', 'page', 'page-tags', 'textList',
-    'form', 'form-select', 'form-property', 'form-value', 'form-captcha',
-    'form-checkbox', 'clickable', 'tab', 'topLink', 'filterBar', 'imageText',
-    'image_link', 'panel', 'title_and_description', 'tag', 'twoColumns',
-    'php-code', 'preview', 'navigation', 'rightButton', 'removableItem',
-    'removableTextItem', 'newItemButton', 'search_form', 'textAndButtons',
+    'defaults', 'common', 'logoLink', 'page', 'page-tags',
+    'textList', 'form', 'form-textfield', 'form-select',
+    'form-property', 'form-value', 'form-captcha', 'form-checkbox',
+    'clickable', 'tab', 'topLink', 'filterBar', 'imageText',
+    'image_link', 'panel', 'title_and_description', 'tag',
+    'twoColumns', 'php-code', 'preview', 'navigation',
+    'rightButton', 'removableItem', 'removableTextItem',
+    'newItemButton', 'search_form', 'textAndButtons',
 ]
 
 var source = ''

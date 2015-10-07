@@ -1,0 +1,36 @@
+.form-textfield {
+    width: 100%;
+    font-weight: bold;
+    cursor: text;
+    height: 48px;
+    line-height: 48px;
+    padding: 0 14px;
+}
+.form-textfield.withLabel {
+    width: 65%;
+}
+
+.form-textfield-label {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    width: 35%;
+    height: 48px;
+}
+
+.form-textfield-label-separator {
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: 0;
+    width: 1px;
+    background-color: rgba(136, 136, 136, 0.2);
+}
+
+.form-textfield-label-input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 1px;
+}

@@ -18,13 +18,18 @@ function textfieldWithLabel ($name, $text, $config = [], $labelConfig = []) {
 
     include_once __DIR__.'/association.php';
     return association(
-        '<input class="form-textfield" style="width: 70%"'
+        '<input class="form-textfield withLabel"'
         .$maxlengthAttribute.$valueAttribute
         ." id=\"$name\" name=\"$name\" type=\"text\" />"
-        .'<input class="form-textfield" style="width: 30%" type="text"'
-        ." name=\"{$name}_label\" maxlength=\"$labelConfig[maxlength]\""
-        ." placeholder=\"$labelConfig[placeholder]\""
-        .' value="'.htmlspecialchars($labelConfig['value']).'" />',
+        .'<div class="form-textfield-label">'
+            .'<div class="form-textfield-label-separator"></div>'
+            .'<div class="form-textfield-label-input">'
+                .'<input class="form-textfield" type="text"'
+                ." placeholder=\"$labelConfig[placeholder]\""
+                ." name=\"{$name}_label\" maxlength=\"$labelConfig[maxlength]\""
+                .' value="'.htmlspecialchars($labelConfig['value']).'" />'
+            .'</div>'
+        .'</div>',
         "<label for=\"$name\">$text:</label>"
     );
 
