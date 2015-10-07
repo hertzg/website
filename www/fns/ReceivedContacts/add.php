@@ -2,8 +2,9 @@
 
 namespace ReceivedContacts;
 
-function add ($mysqli, $sender_id_users, $sender_username, $receiver_id_users,
-    $full_name, $alias, $address, $email, $phone1, $phone2, $birthday_time,
+function add ($mysqli, $sender_id_users, $sender_username,
+    $receiver_id_users, $full_name, $alias, $address, $email,
+    $phone1, $phone1_label, $phone2, $phone2_label, $birthday_time,
     $username, $timezone, $tags, $notes, $favorite, $photo_id) {
 
     $sender_username = $mysqli->real_escape_string($sender_username);
@@ -12,7 +13,9 @@ function add ($mysqli, $sender_id_users, $sender_username, $receiver_id_users,
     $address = $mysqli->real_escape_string($address);
     $email = $mysqli->real_escape_string($email);
     $phone1 = $mysqli->real_escape_string($phone1);
+    $phone1_label = $mysqli->real_escape_string($phone1_label);
     $phone2 = $mysqli->real_escape_string($phone2);
+    $phone2_label = $mysqli->real_escape_string($phone2_label);
     if ($birthday_time === null) $birthday_time = 'null';
     $username = $mysqli->real_escape_string($username);
     if ($timezone === null) $timezone = 'null';
@@ -24,11 +27,13 @@ function add ($mysqli, $sender_id_users, $sender_username, $receiver_id_users,
 
     $sql = 'insert into received_contacts'
         .' (sender_id_users, sender_username, receiver_id_users,'
-        .' full_name, alias, address, email, phone1, phone2,'
+        .' full_name, alias, address, email, phone1,'
+        .' phone1_label, phone2, phone2_label,'
         .' birthday_time, username, timezone, tags,'
         .' notes, favorite, photo_id, insert_time)'
         ." values ($sender_id_users, '$sender_username', $receiver_id_users,"
-        ." '$full_name', '$alias', '$address', '$email', '$phone1', '$phone2',"
+        ." '$full_name', '$alias', '$address', '$email', '$phone1',"
+        ." '$phone1_label', '$phone2', '$phone2_label',"
         ." $birthday_time, '$username', $timezone, '$tags',"
         ." '$notes', $favorite, $photo_id, $insert_time)";
     $mysqli->query($sql) || trigger_error($mysqli->error);

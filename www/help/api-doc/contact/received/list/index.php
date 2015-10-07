@@ -34,9 +34,19 @@ received_contact_method_page('list', [], [
                 'type' => 'string',
                 'description' => 'The primary phone of the received contact.',
             ],
+            'phone1_label' => [
+                'type' => 'string',
+                'description' =>
+                    'The label of the primary phone of the received contact.',
+            ],
             'phone2' => [
                 'type' => 'string',
                 'description' => 'The secondary phone of the received contact.',
+            ],
+            'phone2_label' => [
+                'type' => 'string',
+                'description' =>
+                    'The label of the secondary phone of the received contact.',
             ],
             'birthday_time' => [
                 'type' => 'number',

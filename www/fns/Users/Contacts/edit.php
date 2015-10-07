@@ -2,9 +2,10 @@
 
 namespace Users\Contacts;
 
-function edit ($mysqli, $user, $contact, $full_name, $alias,
-    $address, $email, $phone1, $phone2, $birthday_time, $username,
-    $timezone, $tags, $tag_names, $notes, $favorite, $updateApiKey = null) {
+function edit ($mysqli, $user, $contact, $full_name,
+    $alias, $address, $email, $phone1, $phone1_label,
+    $phone2, $phone2_label, $birthday_time, $username, $timezone,
+    $tags, $tag_names, $notes, $favorite, $updateApiKey = null) {
 
     $id = $contact->id;
     $fnsDir = __DIR__.'/../..';
@@ -13,8 +14,9 @@ function edit ($mysqli, $user, $contact, $full_name, $alias,
 
     include_once "$fnsDir/Contacts/edit.php";
     \Contacts\edit($mysqli, $id, $full_name, $alias, $address,
-        $email, $phone1, $phone2, $birthday_time, $username, $timezone,
-        $tags, $tag_names, $notes, $favorite, $update_time, $updateApiKey);
+        $email, $phone1, $phone1_label, $phone2, $phone2_label,
+        $birthday_time, $username, $timezone, $tags, $tag_names,
+        $notes, $favorite, $update_time, $updateApiKey);
 
     if ($contact->num_tags) {
         include_once "$fnsDir/ContactTags/deleteOnContact.php";
@@ -25,7 +27,8 @@ function edit ($mysqli, $user, $contact, $full_name, $alias,
         include_once "$fnsDir/ContactTags/add.php";
         \ContactTags\add($mysqli, $contact->id_users, $id,
             $tag_names, $full_name, $alias, $email, $phone1,
-            $phone2, $favorite, $contact->insert_time, $update_time);
+            $phone1_label, $phone2, $phone2_label, $favorite,
+            $contact->insert_time, $update_time);
     }
 
     if ($contact->birthday_time !== null) {

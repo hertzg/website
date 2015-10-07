@@ -30,9 +30,19 @@ contact_method_page('list', [], [
                 'type' => 'string',
                 'description' => 'The primary phone of the contact.',
             ],
+            'phone1_label' => [
+                'type' => 'string',
+                'description' =>
+                    'The label of the primary phone of the contact.',
+            ],
             'phone2' => [
                 'type' => 'string',
                 'description' => 'The secondary phone of the contact.',
+            ],
+            'phone2_label' => [
+                'type' => 'string',
+                'description' =>
+                    'The label of the  secondary phone of the contact.',
             ],
             'birthday_time' => [
                 'type' => 'number',

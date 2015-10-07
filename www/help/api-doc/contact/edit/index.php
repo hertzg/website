@@ -29,8 +29,18 @@ contact_method_page('edit', [
         'description' => 'The new primary phone number of the contact.',
     ],
     [
+        'name' => 'phone1_label',
+        'description' =>
+            'The new label of the primary phone number of the contact.',
+    ],
+    [
         'name' => 'phone2',
         'description' => 'The new secondary phone number of the contact.',
+    ],
+    [
+        'name' => 'phone2_label',
+        'description' =>
+            'The new label of the secondary phone number of the contact.',
     ],
     [
         'name' => 'birthday_time',

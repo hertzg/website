@@ -3,8 +3,9 @@
 function expect_received_contact_object ($engine,
     $variableName, $receivedContact) {
 
-    $properties = ['id', 'sender_username', 'full_name', 'alias', 'address',
-        'email', 'phone1', 'phone2', 'birthday_time', 'username', 'timezone',
+    $properties = ['id', 'sender_username', 'full_name', 'alias',
+        'address', 'email', 'phone1', 'phone1_label', 'phone2',
+        'phone2_label', 'birthday_time', 'username', 'timezone',
         'tags', 'notes', 'favorite', 'tags', 'insert_time'];
     $engine->expectObject($variableName, $properties, $receivedContact);
 
@@ -21,8 +22,12 @@ function expect_received_contact_object ($engine,
         'string', $receivedContact->email);
     $engine->expectType("$variableName.phone1",
         'string', $receivedContact->phone1);
+    $engine->expectType("$variableName.phone1_label",
+        'string', $receivedContact->phone1_label);
     $engine->expectType("$variableName.phone2",
         'string', $receivedContact->phone2);
+    $engine->expectType("$variableName.phone2_label",
+        'string', $receivedContact->phone2_label);
     $engine->expectType("$variableName.birthday_time",
         'integer', $receivedContact->birthday_time);
     $engine->expectType("$variableName.username",

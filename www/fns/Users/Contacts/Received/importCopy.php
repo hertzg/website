@@ -13,7 +13,8 @@ function importCopy ($mysqli, $user, $receivedContact, $insertApiKey = null) {
     return \Users\Contacts\add($mysqli, $user, $receivedContact->full_name,
         $receivedContact->alias, $receivedContact->address,
         $receivedContact->email, $receivedContact->phone1,
-        $receivedContact->phone2, $receivedContact->birthday_time,
+        $receivedContact->phone1_label, $receivedContact->phone2,
+        $receivedContact->phone2_label, $receivedContact->birthday_time,
         $receivedContact->username, $receivedContact->timezone, $tags,
         $tag_names, $receivedContact->notes, $receivedContact->favorite,
         $receivedContact->photo_id, $insertApiKey);

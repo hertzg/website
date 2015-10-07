@@ -10,9 +10,9 @@ include_once '../../lib/mysqli.php';
 list($contact, $id, $user) = require_contact($mysqli);
 
 include_once '../fns/request_contact_params.php';
-list($full_name, $alias, $address, $email, $phone1,$phone2,
-    $birthday_day, $birthday_month, $birthday_year,
-    $birthday_time, $username, $timezone, $tags,
+list($full_name, $alias, $address, $email, $phone1, $phone1_label,
+    $phone2, $phone2_label, $birthday_day, $birthday_month,
+    $birthday_year, $birthday_time, $username, $timezone, $tags,
     $tag_names, $notes, $favorite) = request_contact_params($user, $errors);
 
 include_once "$fnsDir/ItemList/itemQuery.php";
@@ -24,7 +24,9 @@ $values = [
     'address' => $address,
     'email' => $email,
     'phone1' => $phone1,
+    'phone1_label' => $phone1_label,
     'phone2' => $phone2,
+    'phone2_label' => $phone2_label,
     'birthday_day' => $birthday_day,
     'birthday_month' => $birthday_month,
     'birthday_year' => $birthday_year,
@@ -62,8 +64,9 @@ if ($sendButton) {
 unset($_SESSION['contacts/edit/values']);
 
 include_once "$fnsDir/Users/Contacts/edit.php";
-Users\Contacts\edit($mysqli, $user, $contact, $full_name,
-    $alias, $address, $email, $phone1, $phone2, $birthday_time,
+Users\Contacts\edit($mysqli, $user, $contact,
+    $full_name, $alias, $address, $email, $phone1,
+    $phone1_label, $phone2, $phone2_label, $birthday_time,
     $username, $timezone, $tags, $tag_names, $notes, $favorite);
 
 $_SESSION['contacts/view/messages'] = ['Changes have been saved.'];

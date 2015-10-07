@@ -2,10 +2,10 @@
 
 namespace Contacts;
 
-function add ($mysqli, $id_users, $full_name,
-    $alias, $address, $email, $phone1, $phone2,
-    $birthday_time, $username, $timezone, $tags,
-    $tag_names, $notes, $favorite, $photo_id,
+function add ($mysqli, $id_users, $full_name, $alias,
+    $address, $email, $phone1, $phone1_label, $phone2,
+    $phone2_label, $birthday_time, $username, $timezone,
+    $tags, $tag_names, $notes, $favorite, $photo_id,
     $insert_time, $update_time, $insertApiKey) {
 
     $full_name = $mysqli->real_escape_string($full_name);
@@ -13,7 +13,9 @@ function add ($mysqli, $id_users, $full_name,
     $address = $mysqli->real_escape_string($address);
     $email = $mysqli->real_escape_string($email);
     $phone1 = $mysqli->real_escape_string($phone1);
+    $phone1_label = $mysqli->real_escape_string($phone1_label);
     $phone2 = $mysqli->real_escape_string($phone2);
+    $phone2_label = $mysqli->real_escape_string($phone2_label);
     if ($birthday_time === null) {
         $birthday_time = $birthday_day = $birthday_month = 'null';
     } else {
@@ -41,13 +43,15 @@ function add ($mysqli, $id_users, $full_name,
 
     $sql = 'insert into contacts'
         .' (id_users, full_name, alias, address, email,'
-        .' phone1, phone2, birthday_time, birthday_day,'
-        .' birthday_month, username, timezone, tags, num_tags,'
+        .' phone1, phone1_label, phone2, phone2_label,'
+        .' birthday_time, birthday_day, birthday_month,'
+        .' username, timezone, tags, num_tags,'
         .' tags_json, notes, favorite, photo_id, insert_time,'
         .' update_time, insert_api_key_id, insert_api_key_name)'
         ." values ($id_users, '$full_name', '$alias', '$address', '$email',"
-        ." '$phone1', '$phone2', $birthday_time, $birthday_day,"
-        ." $birthday_month, '$username', $timezone, '$tags', $num_tags,"
+        ." '$phone1', '$phone1_label', '$phone2', '$phone2_label',"
+        ." $birthday_time, $birthday_day, $birthday_month,"
+        ." '$username', $timezone, '$tags', $num_tags,"
         ." '$tags_json', '$notes', $favorite, $photo_id, $insert_time,"
         ." $update_time, $insert_api_key_id, $insert_api_key_name)";
 

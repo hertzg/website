@@ -29,8 +29,18 @@ contact_method_page('send', [
         'description' => 'The primary phone number of the contact.',
     ],
     [
+        'name' => 'phone1_label',
+        'description' =>
+            'The label of the primary phone number of the contact.',
+    ],
+    [
         'name' => 'phone2',
         'description' => 'The secondary phone number of the contact.',
+    ],
+    [
+        'name' => 'phone2_label',
+        'description' =>
+            'The label of the secondary phone number of the contact.',
     ],
     [
         'name' => 'birthday_time',

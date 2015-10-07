@@ -12,8 +12,12 @@ function expect_imported ($engine, $receivedContact, $response) {
     $engine->expectValue('.email', $receivedContact->email, $response->email);
     $engine->expectValue('.phone1',
         $receivedContact->phone1, $response->phone1);
+    $engine->expectValue('.phone1_label',
+        $receivedContact->phone1_label, $response->phone1_label);
     $engine->expectValue('.phone2',
         $receivedContact->phone2, $response->phone2);
+    $engine->expectValue('.phone2_label',
+        $receivedContact->phone2_label, $response->phone2_label);
     $engine->expectValue('.birthday_time',
         $receivedContact->birthday_time, $response->birthday_time);
     $engine->expectValue('.username',

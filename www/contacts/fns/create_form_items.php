@@ -18,6 +18,7 @@ function create_form_items ($values, &$scripts, $base = '') {
     include_once "$fnsDir/Form/datefield.php";
     include_once "$fnsDir/Form/textarea.php";
     include_once "$fnsDir/Form/textfield.php";
+    include_once "$fnsDir/Form/textfieldWithLabel.php";
     include_once "$fnsDir/Form/timezoneSelect.php";
     include_once "$fnsDir/FullName/maxLength.php";
     return
@@ -43,14 +44,22 @@ function create_form_items ($values, &$scripts, $base = '') {
             'maxlength' => Email\maxLength(),
         ])
         .'<div class="hr"></div>'
-        .Form\textfield('phone1', 'Phone 1', [
+        .Form\textfieldWithLabel('phone1', 'Phone 1', [
             'value' => $values['phone1'],
             'maxlength' => $maxLengths['phone1'],
+        ], [
+            'value' => $values['phone1_label'],
+            'placeholder' => 'Home',
+            'maxlength' => $maxLengths['phone1_label'],
         ])
         .'<div class="hr"></div>'
-        .Form\textfield('phone2', 'Phone 2', [
+        .Form\textfieldWithLabel('phone2', 'Phone 2', [
             'value' => $values['phone2'],
             'maxlength' => $maxLengths['phone2'],
+        ], [
+            'value' => $values['phone2_label'],
+            'maxlength' => $maxLengths['phone2_label'],
+            'placeholder' => 'Work',
         ])
         .'<div class="hr"></div>'
         .Form\datefield([

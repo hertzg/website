@@ -27,7 +27,8 @@ $sendFunction = function ($receiver_id_userss) use (
             $user->username, $receiver_id_users, $stageValues['full_name'],
             $stageValues['alias'], $stageValues['address'],
             $stageValues['email'], $stageValues['phone1'],
-            $stageValues['phone2'], $stageValues['birthday_time'],
+            $stageValues['phone1_label'], $stageValues['phone2'],
+            $stageValues['phone2_label'], $stageValues['birthday_time'],
             $stageValues['username'], $stageValues['timezone'],
             $stageValues['tags'], $stageValues['notes'],
             $stageValues['favorite'], null);

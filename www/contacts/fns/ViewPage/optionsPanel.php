@@ -29,8 +29,12 @@ function optionsPanel ($contact, $base) {
     if ($email !== '') $params['email'] = $email;
     $phone1 = $contact->phone1;
     if ($phone1 !== '') $params['phone1'] = $phone1;
+    $phone1_label = $contact->phone1;
+    if ($phone1_label !== '') $params['phone1_label'] = $phone1_label;
     $phone2 = $contact->phone2;
     if ($phone2 !== '') $params['phone2'] = $phone2;
+    $phone2_label = $contact->phone2_label;
+    if ($phone2_label !== '') $params['phone2_label'] = $phone2_label;
     $birthday_time = $contact->birthday_time;
     if ($birthday_time !== null) $params['birthday_time'] = $birthday_time;
     $username = $contact->username;

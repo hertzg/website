@@ -12,9 +12,9 @@ if (array_key_exists($key, $_SESSION)) {
 } else {
 
     include_once "$fnsDir/Contacts/request.php";
-    list($full_name, $alias, $address, $email,
-        $phone1, $phone2, $birthday_time, $username,
-        $timezone, $tags, $notes, $favorite) = Contacts\request();
+    list($full_name, $alias, $address, $email, $phone1,
+        $phone1_label, $phone2, $phone2_label, $birthday_time,
+        $username, $timezone, $tags, $notes, $favorite) = Contacts\request();
 
     if ($birthday_time === null) {
         $birthday_day = $birthday_month = $birthday_year = 0;
@@ -30,7 +30,9 @@ if (array_key_exists($key, $_SESSION)) {
         'address' => $address,
         'email' => $email,
         'phone1' => $phone1,
+        'phone1_label' => $phone1_label,
         'phone2' => $phone2,
+        'phone2_label' => $phone2_label,
         'birthday_day' => $birthday_day,
         'birthday_month' => $birthday_month,
         'birthday_year' => $birthday_year,

@@ -12,7 +12,9 @@ $response = $engine->request('contact/add', [
     'address' => 'sample address',
     'email' => 'sample email',
     'phone1' => 'sample phone1',
+    'phone1_label' => 'sample phone1_label',
     'phone2' => 'sample phone2',
+    'phone2_label' => 'sample phone2_label',
     'birthday_time' => null,
     'username' => 'sample username',
     'tags' => 'sample tags',
@@ -32,7 +34,9 @@ $alias = 'edited alias';
 $address = 'edited address';
 $email = 'edited email';
 $phone1 = 'edited phone1';
+$phone1_label = 'edited phone1_label';
 $phone2 = 'edited phone2';
+$phone2_label = 'edited phone2_label';
 $birthday_time = 24 * 60 * 60;
 $username = 'edited username';
 $timezone = 60;
@@ -54,7 +58,9 @@ $response = $engine->request('contact/edit', [
     'address' => $address,
     'email' => $email,
     'phone1' => $phone1,
+    'phone1_label' => $phone1_label,
     'phone2' => $phone2,
+    'phone2_label' => $phone2_label,
     'birthday_time' => $birthday_time,
     'username' => $username,
     'timezone' => $timezone,
@@ -73,7 +79,9 @@ $engine->expectValue('.alias', $alias, $response->alias);
 $engine->expectValue('.address', $address, $response->address);
 $engine->expectValue('.email', $email, $response->email);
 $engine->expectValue('.phone1', $phone1, $response->phone1);
+$engine->expectValue('.phone1_label', $phone1_label, $response->phone1_label);
 $engine->expectValue('.phone2', $phone2, $response->phone2);
+$engine->expectValue('.phone2_label', $phone2_label, $response->phone2_label);
 $engine->expectValue('.birthday_time',
     $birthday_time, $response->birthday_time);
 $engine->expectValue('.username', $username, $response->username);

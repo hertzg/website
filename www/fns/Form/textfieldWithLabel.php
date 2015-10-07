@@ -2,13 +2,7 @@
 
 namespace Form;
 
-function textfield ($name, $text, $config = []) {
-
-    if (array_key_exists('type', $config)) {
-        $type = $config['type'];
-    } else {
-        $type = 'text';
-    }
+function textfieldWithLabel ($name, $text, $config = [], $labelConfig = []) {
 
     if (array_key_exists('value', $config)) {
         $valueAttribute = ' value="'.htmlspecialchars($config['value']).'"';
@@ -23,14 +17,14 @@ function textfield ($name, $text, $config = []) {
     }
 
     include_once __DIR__.'/association.php';
-    include_once __DIR__.'/getBoolAttribute.php';
     return association(
-        '<input class="form-textfield"'
+        '<input class="form-textfield" style="width: 70%"'
         .$maxlengthAttribute.$valueAttribute
-        .getBoolAttribute('autofocus', $config)
-        .getBoolAttribute('readonly', $config)
-        .getBoolAttribute('required', $config)
-        ." id=\"$name\" name=\"$name\" type=\"$type\" />",
+        ." id=\"$name\" name=\"$name\" type=\"text\" />"
+        .'<input class="form-textfield" style="width: 30%" type="text"'
+        ." name=\"{$name}_label\" maxlength=\"$labelConfig[maxlength]\""
+        ." placeholder=\"$labelConfig[placeholder]\""
+        .' value="'.htmlspecialchars($labelConfig['value']).'" />',
         "<label for=\"$name\">$text:</label>"
     );
 
