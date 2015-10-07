@@ -34,8 +34,18 @@ function ensure ($mysqli) {
             'characterSet' => 'utf8',
             'collation' => 'utf8_general_ci',
         ],
+        'phone1_label' => [
+            'type' => "varchar($maxLengths[phone1_label])",
+            'characterSet' => 'utf8',
+            'collation' => 'utf8_general_ci',
+        ],
         'phone2' => [
             'type' => "varchar($maxLengths[phone2])",
+            'characterSet' => 'utf8',
+            'collation' => 'utf8_general_ci',
+        ],
+        'phone2_label' => [
+            'type' => "varchar($maxLengths[phone2_label])",
             'characterSet' => 'utf8',
             'collation' => 'utf8_general_ci',
         ],
