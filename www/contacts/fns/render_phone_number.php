@@ -10,7 +10,7 @@ function render_phone_number ($label, $number, &$items, $keyword = '') {
         $title = preg_replace($regex, '<mark>$0</mark>', $title);
     }
 
-    $number = preg_replace('/\s+/', '', $number);
+    $number = preg_replace('/[^+0-9]+/', '', $number);
 
     include_once __DIR__.'/../../fns/Form/phoneNumber.php';
     $items[] = Form\phoneNumber($label, $number, $title);
