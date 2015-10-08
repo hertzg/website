@@ -5,7 +5,7 @@ function sort_panel ($order_by) {
     $fnsDir = __DIR__.'/../../../fns';
 
     $title = 'Last accessed time';
-    if ($order_by === 'last_access_time desc') $title .= ' (Current)';
+    if ($order_by === 'access_time desc') $title .= ' (Current)';
     include_once "$fnsDir/Page/imageLink.php";
     $lastAccessedTimeLink = Page\imageLink($title,
         'submit-sort-last-accessed.php', 'sort-time');
