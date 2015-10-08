@@ -10,27 +10,14 @@ if (SignUpEnabled\get()) {
     include_once '../fns/Page/sessionErrors.php';
     $pageErrors = Page\sessionErrors('sign-up/errors');
 } else {
-    $error = 'This form has been disabled. You no longer can sign up.';
     include_once '../fns/Page/errors.php';
-    $pageErrors = Page\errors([$error]);
+    $pageErrors = Page\errors([
+        'This form has been disabled. You no longer can sign up.',
+    ]);
 }
 
-$key = 'sign-up/values';
-if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
-else {
-
-    include_once '../fns/request_strings.php';
-    list($return) = request_strings('return');
-
-    $values = [
-        'username' => '',
-        'password' => '',
-        'repeatPassword' => '',
-        'email' => '',
-        'return' => $return,
-    ];
-
-}
+include_once 'fns/get_values.php';
+$values = get_values();
 
 $return = $values['return'];
 
