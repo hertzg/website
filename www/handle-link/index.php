@@ -32,7 +32,7 @@ if (array_key_exists('scheme', $url) && array_key_exists('path', $url)) {
 
         if ($scheme === 'mailto') {
             $type = 'email';
-            $property = 'email';
+            $property = 'email1';
         } else {
             $type = 'phone';
             $property = 'phone1';

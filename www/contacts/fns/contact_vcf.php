@@ -21,8 +21,11 @@ function contact_vcf ($contact) {
     $address = $contact->address;
     if ($address !== '') $text .= 'ADR;VALUE=text:'.$vcard_text($address)."\n";
 
-    $email = $contact->email;
-    if ($email !== '') $text .= 'EMAIL:'.$vcard_text($email)."\n";
+    $email1 = $contact->email1;
+    if ($email1 !== '') $text .= 'EMAIL:'.$vcard_text($email1)."\n";
+
+    $email2 = $contact->email2;
+    if ($email2 !== '') $text .= 'EMAIL:'.$vcard_text($email2)."\n";
 
     $phone1 = $contact->phone1;
     if ($phone1 !== '') $text .= 'TEL;VALUE=text:'.$vcard_text($phone1)."\n";

@@ -16,8 +16,12 @@ contact_method_page('add', [
         'description' => 'The address of the contact.',
     ],
     [
-        'name' => 'email',
-        'description' => 'The email of the contact.',
+        'name' => 'email1',
+        'description' => 'The primary email of the contact.',
+    ],
+    [
+        'name' => 'email2',
+        'description' => 'The secondary email of the contact.',
     ],
     [
         'name' => 'phone1',

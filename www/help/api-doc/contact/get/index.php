@@ -25,9 +25,13 @@ contact_method_page('get', [
             'type' => 'string',
             'description' => 'The address of the contact.',
         ],
-        'email' => [
+        'email1' => [
             'type' => 'string',
-            'description' => 'The email of the contact.',
+            'description' => 'The primary email of the contact.',
+        ],
+        'email2' => [
+            'type' => 'string',
+            'description' => 'The secondary email of the contact.',
         ],
         'phone1' => [
             'type' => 'string',

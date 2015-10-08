@@ -2,16 +2,18 @@
 
 namespace ReceivedContacts;
 
-function addDeleted ($mysqli, $id, $sender_id_users, $sender_username,
-    $receiver_id_users, $full_name, $alias, $address, $email, $phone1,
-    $phone1_label, $phone2, $phone2_label, $birthday_time, $username,
-    $timezone, $tags, $notes, $favorite, $archived, $insert_time, $photo_id) {
+function addDeleted ($mysqli, $id, $sender_id_users,
+    $sender_username, $receiver_id_users, $full_name, $alias,
+    $address, $email1, $email2, $phone1, $phone1_label, $phone2,
+    $phone2_label, $birthday_time, $username, $timezone, $tags,
+    $notes, $favorite, $archived, $insert_time, $photo_id) {
 
     $sender_username = $mysqli->real_escape_string($sender_username);
     $full_name = $mysqli->real_escape_string($full_name);
     $alias = $mysqli->real_escape_string($alias);
     $address = $mysqli->real_escape_string($address);
-    $email = $mysqli->real_escape_string($email);
+    $email1 = $mysqli->real_escape_string($email1);
+    $email2 = $mysqli->real_escape_string($email2);
     $phone1 = $mysqli->real_escape_string($phone1);
     $phone1_label = $mysqli->real_escape_string($phone1_label);
     $phone2 = $mysqli->real_escape_string($phone2);
@@ -27,13 +29,13 @@ function addDeleted ($mysqli, $id, $sender_id_users, $sender_username,
 
     $sql = 'insert into received_contacts'
         .' (id, sender_id_users, sender_username,'
-        .' receiver_id_users, full_name, alias, address, email,'
-        .' phone1, phone1_label, phone2, phone2_label,'
+        .' receiver_id_users, full_name, alias, address, email1,'
+        .' email2, phone1, phone1_label, phone2, phone2_label,'
         .' birthday_time, username, timezone, tags,'
         .' notes, favorite, archived, insert_time, photo_id)'
         ." values ($id, $sender_id_users, '$sender_username',"
-        ." $receiver_id_users, '$full_name', '$alias', '$address', '$email',"
-        ." '$phone1', '$phone1_label', '$phone2', '$phone2_label',"
+        ." $receiver_id_users, '$full_name', '$alias', '$address', '$email1',"
+        ." '$email2', '$phone1', '$phone1_label', '$phone2', '$phone2_label',"
         ." $birthday_time, '$username', $timezone, '$tags',"
         ." '$notes', $favorite, $archived, $insert_time, $photo_id)";
     $mysqli->query($sql) || trigger_error($mysqli->error);

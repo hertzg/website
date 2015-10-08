@@ -25,12 +25,20 @@ function create ($receivedContact, &$head, &$scripts) {
         $items[] = \Form\label('Address', htmlspecialchars($address));
     }
 
-    $email = $receivedContact->email;
-    if ($email !== '') {
-        $escapedEmail = htmlspecialchars($email);
+    $email1 = $receivedContact->email1;
+    if ($email1 !== '') {
+        $escapedEmail = htmlspecialchars($email1);
         $href = "mailto:$escapedEmail";
         include_once "$fnsDir/Form/link.php";
-        $items[] = \Form\link('Email', $escapedEmail, $href, 'mail');
+        $items[] = \Form\link('Email 1', $escapedEmail, $href, 'mail');
+    }
+
+    $email2 = $receivedContact->email2;
+    if ($email2 !== '') {
+        $escapedEmail = htmlspecialchars($email2);
+        $href = "mailto:$escapedEmail";
+        include_once "$fnsDir/Form/link.php";
+        $items[] = \Form\link('Email 2', $escapedEmail, $href, 'mail');
     }
 
     include_once __DIR__.'/../../../fns/render_phone_number.php';

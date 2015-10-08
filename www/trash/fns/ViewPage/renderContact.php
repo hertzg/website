@@ -22,9 +22,14 @@ function renderContact ($id, $contact, &$items, &$infoText, &$scripts) {
         $labelItems[] = \Form\label('Address', htmlspecialchars($address));
     }
 
-    $email = $contact->email;
-    if ($email !== '') {
-        $labelItems[] = \Form\label('Email', htmlspecialchars($email));
+    $email1 = $contact->email1;
+    if ($email1 !== '') {
+        $labelItems[] = \Form\label('Email 1', htmlspecialchars($email1));
+    }
+
+    $email2 = $contact->email2;
+    if ($email2 !== '') {
+        $labelItems[] = \Form\label('Email 2', htmlspecialchars($email2));
     }
 
     $phone1 = $contact->phone1;

@@ -10,8 +10,11 @@ function contact_sms_text ($contact) {
     $address = $contact->address;
     if ($address !== '') $text .= "\n$address";
 
-    $email = $contact->email;
-    if ($email !== '') $text .= "\n$email";
+    $email1 = $contact->email1;
+    if ($email1 !== '') $text .= "\n$email1";
+
+    $email2 = $contact->email2;
+    if ($email2 !== '') $text .= "\n$email2";
 
     $phone1 = $contact->phone1;
     if ($phone1 !== '') $text .= "\n$phone1";

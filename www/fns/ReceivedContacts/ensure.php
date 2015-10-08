@@ -10,6 +10,8 @@ function ensure ($mysqli) {
     $maxLengths = \Contacts\maxLengths();
 
     include_once "$fnsDir/Email/column.php";
+    $emailColumn = \Email\column();
+
     include_once "$fnsDir/FullName/column.php";
     include_once "$fnsDir/Table/ensure.php";
     include_once "$fnsDir/Tags/column.php";
@@ -30,7 +32,8 @@ function ensure ($mysqli) {
             'type' => 'bigint(20) unsigned',
             'nullable' => true,
         ],
-        'email' => \Email\column(),
+        'email1' => $emailColumn,
+        'email2' => $emailColumn,
         'favorite' => ['type' => 'tinyint(3) unsigned'],
         'full_name' => \FullName\column(),
         'id' => [

@@ -3,14 +3,15 @@
 namespace Contacts;
 
 function edit ($mysqli, $id, $full_name, $alias, $address,
-    $email, $phone1, $phone1_label, $phone2, $phone2_label,
+    $email1, $email2, $phone1, $phone1_label, $phone2, $phone2_label,
     $birthday_time, $username, $timezone, $tags, $tag_names,
     $notes, $favorite, $update_time, $updateApiKey) {
 
     $full_name = $mysqli->real_escape_string($full_name);
     $alias = $mysqli->real_escape_string($alias);
     $address = $mysqli->real_escape_string($address);
-    $email = $mysqli->real_escape_string($email);
+    $email1 = $mysqli->real_escape_string($email1);
+    $email2 = $mysqli->real_escape_string($email2);
     $phone1 = $mysqli->real_escape_string($phone1);
     $phone1_label = $mysqli->real_escape_string($phone1_label);
     $phone2 = $mysqli->real_escape_string($phone2);
@@ -40,12 +41,12 @@ function edit ($mysqli, $id, $full_name, $alias, $address,
     }
 
     $sql = "update contacts set full_name = '$full_name',"
-        ." alias = '$alias', address = '$address', email = '$email',"
-        ." phone1 = '$phone1', phone1_label = '$phone1_label',"
-        ." phone2 = '$phone2', phone2_label = '$phone2_label',"
-        ." birthday_time = $birthday_time, birthday_day = $birthday_day,"
-        ." birthday_month = $birthday_month, username = '$username',"
-        ." timezone = $timezone, tags = '$tags',"
+        ." alias = '$alias', address = '$address', email1 = '$email1',"
+        ." email2 = '$email2', phone1 = '$phone1',"
+        ." phone1_label = '$phone1_label', phone2 = '$phone2',"
+        ." phone2_label = '$phone2_label', birthday_time = $birthday_time,"
+        ." birthday_day = $birthday_day, birthday_month = $birthday_month,"
+        ." username = '$username', timezone = $timezone, tags = '$tags',"
         ." num_tags = $num_tags, tags_json = '$tags_json',"
         ." notes = '$notes', favorite = $favorite, update_time = $update_time,"
         ." update_api_key_id = $update_api_key_id,"

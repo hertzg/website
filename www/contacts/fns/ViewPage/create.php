@@ -38,15 +38,26 @@ function create ($contact, &$head, &$scripts, $base = '') {
         $items[] = \Form\label('Address', htmlspecialchars($address));
     }
 
-    $email = $contact->email;
-    if ($email !== '') {
-        $escapedEmail = htmlspecialchars($email);
+    $email1 = $contact->email1;
+    if ($email1 !== '') {
+        $escapedEmail = htmlspecialchars($email1);
         $href = "mailto:$escapedEmail";
         if ($keyword !== '') {
             $escapedEmail = preg_replace($regex, $replace, $escapedEmail);
         }
         include_once "$fnsDir/Form/link.php";
-        $items[] = \Form\link('Email', $escapedEmail, $href, 'mail');
+        $items[] = \Form\link('Email 1', $escapedEmail, $href, 'mail');
+    }
+
+    $email2 = $contact->email2;
+    if ($email2 !== '') {
+        $escapedEmail = htmlspecialchars($email2);
+        $href = "mailto:$escapedEmail";
+        if ($keyword !== '') {
+            $escapedEmail = preg_replace($regex, $replace, $escapedEmail);
+        }
+        include_once "$fnsDir/Form/link.php";
+        $items[] = \Form\link('Email 2', $escapedEmail, $href, 'mail');
     }
 
     include_once __DIR__.'/../render_phone_number.php';

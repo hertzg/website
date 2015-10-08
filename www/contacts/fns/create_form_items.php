@@ -14,6 +14,8 @@ function create_form_items ($values, &$scripts, $base = '') {
     $maxLengths = Contacts\maxLengths();
 
     include_once "$fnsDir/Email/maxLength.php";
+    $emailMaxLength = Email\maxLength();
+
     include_once "$fnsDir/Form/checkbox.php";
     include_once "$fnsDir/Form/datefield.php";
     include_once "$fnsDir/Form/textarea.php";
@@ -39,9 +41,14 @@ function create_form_items ($values, &$scripts, $base = '') {
             'maxlength' => $maxLengths['address'],
         ])
         .'<div class="hr"></div>'
-        .Form\textfield('email', 'Email', [
-            'value' => $values['email'],
-            'maxlength' => Email\maxLength(),
+        .Form\textfield('email1', 'Email 1', [
+            'value' => $values['email1'],
+            'maxlength' => $emailMaxLength,
+        ])
+        .'<div class="hr"></div>'
+        .Form\textfield('email2', 'Email 2', [
+            'value' => $values['email2'],
+            'maxlength' => $emailMaxLength,
         ])
         .'<div class="hr"></div>'
         .Form\textfieldWithLabel('phone1', 'Phone 1', [

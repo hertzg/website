@@ -2,13 +2,14 @@
 
 namespace ContactTags;
 
-function add ($mysqli, $id_users, $id_contacts,
-    $tag_names, $full_name, $alias, $email, $phone1, $phone1_label,
+function add ($mysqli, $id_users, $id_contacts, $tag_names,
+    $full_name, $alias, $email1, $email2, $phone1, $phone1_label,
     $phone2, $phone2_label, $favorite, $insert_time, $update_time) {
 
     $full_name = $mysqli->real_escape_string($full_name);
     $alias = $mysqli->real_escape_string($alias);
-    $email = $mysqli->real_escape_string($email);
+    $email1 = $mysqli->real_escape_string($email1);
+    $email2 = $mysqli->real_escape_string($email2);
     $phone1 = $mysqli->real_escape_string($phone1);
     $phone1_label = $mysqli->real_escape_string($phone1_label);
     $phone2 = $mysqli->real_escape_string($phone2);
@@ -17,14 +18,16 @@ function add ($mysqli, $id_users, $id_contacts,
 
     $sql = 'insert into contact_tags'
         .' (id_users, id_contacts, tag_name, full_name,'
-        .' alias, email, phone1, phone1_label, phone2,'
-        .' phone2_label, favorite, insert_time, update_time) values';
+        .' alias, email1, email2, phone1, phone1_label,'
+        .' phone2, phone2_label, favorite,'
+        .' insert_time, update_time) values';
     foreach ($tag_names as $i => $tag_name) {
         if ($i) $sql .= ', ';
         $tag_name = $mysqli->real_escape_string($tag_name);
         $sql .= "($id_users, $id_contacts, '$tag_name', '$full_name',"
-            ." '$alias', '$email', '$phone1', '$phone1_label', '$phone2',"
-            ." '$phone2_label', $favorite, $insert_time, $update_time)";
+            ." '$alias', '$email1', '$email2', '$phone1', '$phone1_label',"
+            ." '$phone2', '$phone2_label', $favorite,"
+            ." $insert_time, $update_time)";
     }
     $mysqli->query($sql) || trigger_error($mysqli->error);
 

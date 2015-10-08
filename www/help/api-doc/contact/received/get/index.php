@@ -29,9 +29,13 @@ received_contact_method_page('get', [
             'type' => 'string',
             'description' => 'The address of the received contact.',
         ],
-        'email' => [
+        'email1' => [
             'type' => 'string',
-            'description' => 'The email of the received contact.',
+            'description' => 'The primary email of the received contact.',
+        ],
+        'email2' => [
+            'type' => 'string',
+            'description' => 'The secondary email of the received contact.',
         ],
         'phone1' => [
             'type' => 'string',

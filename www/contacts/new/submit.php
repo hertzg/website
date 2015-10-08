@@ -9,7 +9,7 @@ $user = require_user('../../');
 include_once '../../lib/mysqli.php';
 
 include_once '../fns/request_contact_params.php';
-list($full_name, $alias, $address, $email, $phone1, $phone1_label,
+list($full_name, $alias, $address, $email1, $email2, $phone1, $phone1_label,
     $phone2, $phone2_label, $birthday_day, $birthday_month, $birthday_year,
     $birthday_time, $username, $timezone, $tags, $tag_names,
     $notes, $favorite) = request_contact_params($user, $errors);
@@ -18,7 +18,8 @@ $values = [
     'full_name' => $full_name,
     'alias' => $alias,
     'address' => $address,
-    'email' => $email,
+    'email1' => $email1,
+    'email2' => $email2,
     'phone1' => $phone1,
     'phone1_label' => $phone1_label,
     'phone2' => $phone2,
@@ -63,7 +64,7 @@ unset($_SESSION['contacts/new/values']);
 
 include_once '../../fns/Users/Contacts/add.php';
 $id = Users\Contacts\add($mysqli, $user, $full_name,
-    $alias, $address, $email, $phone1, $phone1_label,
+    $alias, $address, $email1, $email2, $phone1, $phone1_label,
     $phone2, $phone2_label, $birthday_time, $username,
     $timezone, $tags, $tag_names, $notes, $favorite, null);
 

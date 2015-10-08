@@ -25,8 +25,10 @@ function optionsPanel ($contact, $base) {
     if ($alias !== '') $params['alias'] = $alias;
     $address = $contact->address;
     if ($address !== '') $params['address'] = $address;
-    $email = $contact->email;
-    if ($email !== '') $params['email'] = $email;
+    $email1 = $contact->email1;
+    if ($email1 !== '') $params['email1'] = $email1;
+    $email2 = $contact->email2;
+    if ($email2 !== '') $params['email2'] = $email2;
     $phone1 = $contact->phone1;
     if ($phone1 !== '') $params['phone1'] = $phone1;
     $phone1_label = $contact->phone1;

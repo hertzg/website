@@ -12,11 +12,12 @@ function importCopy ($mysqli, $user, $receivedContact, $insertApiKey = null) {
     include_once __DIR__.'/../add.php';
     return \Users\Contacts\add($mysqli, $user, $receivedContact->full_name,
         $receivedContact->alias, $receivedContact->address,
-        $receivedContact->email, $receivedContact->phone1,
-        $receivedContact->phone1_label, $receivedContact->phone2,
-        $receivedContact->phone2_label, $receivedContact->birthday_time,
-        $receivedContact->username, $receivedContact->timezone, $tags,
-        $tag_names, $receivedContact->notes, $receivedContact->favorite,
+        $receivedContact->email1, $receivedContact->email2,
+        $receivedContact->phone1, $receivedContact->phone1_label,
+        $receivedContact->phone2, $receivedContact->phone2_label,
+        $receivedContact->birthday_time, $receivedContact->username,
+        $receivedContact->timezone, $tags, $tag_names,
+        $receivedContact->notes, $receivedContact->favorite,
         $receivedContact->photo_id, $insertApiKey);
 
 }

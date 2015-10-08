@@ -13,8 +13,8 @@ function searchPage ($mysqli, $id_users,
 
     $fromWhere = "from contacts where id_users = $id_users"
         ." and (full_name like '%$keyword%' or alias like '%$keyword%'"
-        ." or email like '%$keyword%' or phone1 like '%$keyword%'"
-        ." or phone2 like '%$keyword%')";
+        ." or email1 like '%$keyword%' or email2 like '%$keyword%'"
+        ." or phone1 like '%$keyword%' or phone2 like '%$keyword%')";
 
     $sql = "select count(*) total $fromWhere";
     include_once "$fnsDir/mysqli_single_object.php";

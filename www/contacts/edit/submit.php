@@ -10,8 +10,8 @@ include_once '../../lib/mysqli.php';
 list($contact, $id, $user) = require_contact($mysqli);
 
 include_once '../fns/request_contact_params.php';
-list($full_name, $alias, $address, $email, $phone1, $phone1_label,
-    $phone2, $phone2_label, $birthday_day, $birthday_month,
+list($full_name, $alias, $address, $email1, $email2, $phone1,
+    $phone1_label, $phone2, $phone2_label, $birthday_day, $birthday_month,
     $birthday_year, $birthday_time, $username, $timezone, $tags,
     $tag_names, $notes, $favorite) = request_contact_params($user, $errors);
 
@@ -22,7 +22,8 @@ $values = [
     'full_name' => $full_name,
     'alias' => $alias,
     'address' => $address,
-    'email' => $email,
+    'email1' => $email1,
+    'email2' => $email2,
     'phone1' => $phone1,
     'phone1_label' => $phone1_label,
     'phone2' => $phone2,
@@ -65,7 +66,7 @@ unset($_SESSION['contacts/edit/values']);
 
 include_once "$fnsDir/Users/Contacts/edit.php";
 Users\Contacts\edit($mysqli, $user, $contact,
-    $full_name, $alias, $address, $email, $phone1,
+    $full_name, $alias, $address, $email1, $email2, $phone1,
     $phone1_label, $phone2, $phone2_label, $birthday_time,
     $username, $timezone, $tags, $tag_names, $notes, $favorite);
 

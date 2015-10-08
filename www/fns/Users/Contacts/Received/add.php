@@ -3,7 +3,7 @@
 namespace Users\Contacts\Received;
 
 function add ($mysqli, $sender_id_users, $sender_username,
-    $receiver_id_users, $full_name, $alias, $address, $email,
+    $receiver_id_users, $full_name, $alias, $address, $email1, $email2,
     $phone1, $phone1_label, $phone2, $phone2_label, $birthday_time,
     $username, $timezone, $tags, $notes, $favorite, $photo_id) {
 
@@ -11,7 +11,7 @@ function add ($mysqli, $sender_id_users, $sender_username,
 
     include_once "$fnsDir/ReceivedContacts/add.php";
     \ReceivedContacts\add($mysqli, $sender_id_users, $sender_username,
-        $receiver_id_users, $full_name, $alias, $address, $email,
+        $receiver_id_users, $full_name, $alias, $address, $email1, $email2,
         $phone1, $phone1_label, $phone2, $phone2_label, $birthday_time,
         $username, $timezone, $tags, $notes, $favorite, $photo_id);
 

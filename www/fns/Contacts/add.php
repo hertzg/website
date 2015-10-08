@@ -3,7 +3,7 @@
 namespace Contacts;
 
 function add ($mysqli, $id_users, $full_name, $alias,
-    $address, $email, $phone1, $phone1_label, $phone2,
+    $address, $email1, $email2, $phone1, $phone1_label, $phone2,
     $phone2_label, $birthday_time, $username, $timezone,
     $tags, $tag_names, $notes, $favorite, $photo_id,
     $insert_time, $update_time, $insertApiKey) {
@@ -11,7 +11,8 @@ function add ($mysqli, $id_users, $full_name, $alias,
     $full_name = $mysqli->real_escape_string($full_name);
     $alias = $mysqli->real_escape_string($alias);
     $address = $mysqli->real_escape_string($address);
-    $email = $mysqli->real_escape_string($email);
+    $email1 = $mysqli->real_escape_string($email1);
+    $email2 = $mysqli->real_escape_string($email2);
     $phone1 = $mysqli->real_escape_string($phone1);
     $phone1_label = $mysqli->real_escape_string($phone1_label);
     $phone2 = $mysqli->real_escape_string($phone2);
@@ -42,14 +43,14 @@ function add ($mysqli, $id_users, $full_name, $alias,
     }
 
     $sql = 'insert into contacts'
-        .' (id_users, full_name, alias, address, email,'
-        .' phone1, phone1_label, phone2, phone2_label,'
+        .' (id_users, full_name, alias, address, email1,'
+        .' email2, phone1, phone1_label, phone2, phone2_label,'
         .' birthday_time, birthday_day, birthday_month,'
         .' username, timezone, tags, num_tags,'
         .' tags_json, notes, favorite, photo_id, insert_time,'
         .' update_time, insert_api_key_id, insert_api_key_name)'
-        ." values ($id_users, '$full_name', '$alias', '$address', '$email',"
-        ." '$phone1', '$phone1_label', '$phone2', '$phone2_label',"
+        ." values ($id_users, '$full_name', '$alias', '$address', '$email1',"
+        ." '$email2', '$phone1', '$phone1_label', '$phone2', '$phone2_label',"
         ." $birthday_time, $birthday_day, $birthday_month,"
         ." '$username', $timezone, '$tags', $num_tags,"
         ." '$tags_json', '$notes', $favorite, $photo_id, $insert_time,"

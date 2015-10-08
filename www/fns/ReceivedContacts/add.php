@@ -3,7 +3,7 @@
 namespace ReceivedContacts;
 
 function add ($mysqli, $sender_id_users, $sender_username,
-    $receiver_id_users, $full_name, $alias, $address, $email,
+    $receiver_id_users, $full_name, $alias, $address, $email1, $email2,
     $phone1, $phone1_label, $phone2, $phone2_label, $birthday_time,
     $username, $timezone, $tags, $notes, $favorite, $photo_id) {
 
@@ -11,7 +11,8 @@ function add ($mysqli, $sender_id_users, $sender_username,
     $full_name = $mysqli->real_escape_string($full_name);
     $alias = $mysqli->real_escape_string($alias);
     $address = $mysqli->real_escape_string($address);
-    $email = $mysqli->real_escape_string($email);
+    $email1 = $mysqli->real_escape_string($email1);
+    $email2 = $mysqli->real_escape_string($email2);
     $phone1 = $mysqli->real_escape_string($phone1);
     $phone1_label = $mysqli->real_escape_string($phone1_label);
     $phone2 = $mysqli->real_escape_string($phone2);
@@ -27,13 +28,13 @@ function add ($mysqli, $sender_id_users, $sender_username,
 
     $sql = 'insert into received_contacts'
         .' (sender_id_users, sender_username, receiver_id_users,'
-        .' full_name, alias, address, email, phone1,'
-        .' phone1_label, phone2, phone2_label,'
+        .' full_name, alias, address, email1, email2,'
+        .' phone1, phone1_label, phone2, phone2_label,'
         .' birthday_time, username, timezone, tags,'
         .' notes, favorite, photo_id, insert_time)'
         ." values ($sender_id_users, '$sender_username', $receiver_id_users,"
-        ." '$full_name', '$alias', '$address', '$email', '$phone1',"
-        ." '$phone1_label', '$phone2', '$phone2_label',"
+        ." '$full_name', '$alias', '$address', '$email1', '$email2',"
+        ." '$phone1', '$phone1_label', '$phone2', '$phone2_label',"
         ." $birthday_time, '$username', $timezone, '$tags',"
         ." '$notes', $favorite, $photo_id, $insert_time)";
     $mysqli->query($sql) || trigger_error($mysqli->error);

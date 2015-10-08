@@ -43,9 +43,9 @@ foreach ($rows as $row) {
     if ($contact) {
         include_once '../fns/ContactTags/editContact.php';
         ContactTags\editContact($mysqli, $contact->id,
-            $contact->full_name, $contact->alias, $contact->email,
-            $contact->phone1, $contact->phone1_label, $contact->phone2,
-            $contact->phone2_label, $contact->favorite,
+            $contact->full_name, $contact->alias, $contact->email1,
+            $contact->email2, $contact->phone1, $contact->phone1_label,
+            $contact->phone2, $contact->phone2_label, $contact->favorite,
             $contact->insert_time, $contact->update_time);
     }
 }
