@@ -50,3 +50,10 @@
 #dynamicClockWrapper {
     width: 68px;
 }
+
+.telLink {
+    position: relative;
+}
+.telLink-tel {
+    margin-right: 48px;
+}

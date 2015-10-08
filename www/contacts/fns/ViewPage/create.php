@@ -60,11 +60,8 @@ function create ($contact, &$head, &$scripts, $base = '') {
         $items[] = \Form\link('Email 2', $escapedEmail, $href, 'mail');
     }
 
-    include_once __DIR__.'/../render_phone_number.php';
-    render_phone_number('Phone 1', $contact->phone1,
-        $contact->phone1_label, $items, $keyword);
-    render_phone_number('Phone 2', $contact->phone2,
-        $contact->phone2_label, $items, $keyword);
+    include_once __DIR__.'/../render_phone_numbers.php';
+    render_phone_numbers($contact, $items, $keyword);
 
     include_once __DIR__.'/../../fns/render_birthday.php';
     render_birthday($contact->birthday_time, $items, $head, $base);

@@ -41,11 +41,8 @@ function create ($receivedContact, &$head, &$scripts) {
         $items[] = \Form\link('Email 2', $escapedEmail, $href, 'mail');
     }
 
-    include_once __DIR__.'/../../../fns/render_phone_number.php';
-    render_phone_number('Phone 1', $receivedContact->phone1,
-        $receivedContact->phone1_label, $items);
-    render_phone_number('Phone 2', $receivedContact->phone2,
-        $receivedContact->phone2_label, $items);
+    include_once __DIR__.'/../../../fns/render_phone_numbers.php';
+    render_phone_numbers($receivedContact, $items);
 
     include_once __DIR__.'/../../../fns/render_birthday.php';
     render_birthday($receivedContact->birthday_time, $items, $head, '../');
