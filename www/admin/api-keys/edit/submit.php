@@ -45,7 +45,6 @@ if ($name !== $apiKey->name) {
     include_once "$fnsDir/Invitations/editApiKey.php";
     \Invitations\editApiKey($mysqli, $id, $name);
 
-
     include_once "$fnsDir/Users/editApiKey.php";
     \Users\editApiKey($mysqli, $id, $name);
 
