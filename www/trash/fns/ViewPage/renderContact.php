@@ -22,31 +22,11 @@ function renderContact ($id, $contact, &$items, &$infoText, &$scripts) {
         $labelItems[] = \Form\label('Address', htmlspecialchars($address));
     }
 
-    $email1 = $contact->email1;
-    if ($email1 !== '') {
-        $labelItems[] = \Form\label('Email 1', htmlspecialchars($email1));
-    }
+    include_once __DIR__.'/renderContactEmails.php';
+    renderContactEmails($contact, $labelItems);
 
-    $email2 = $contact->email2;
-    if ($email2 !== '') {
-        $labelItems[] = \Form\label('Email 2', htmlspecialchars($email2));
-    }
-
-    $phone1 = $contact->phone1;
-    if ($phone1 !== '') {
-        $value = htmlspecialchars($phone1);
-        $label = $contact->phone1_label;
-        if ($label !== '') $value .= ' ('.htmlspecialchars($value).')';
-        $labelItems[] = \Form\label('Phone 1', $value);
-    }
-
-    $phone2 = $contact->phone2;
-    if ($phone2 !== '') {
-        $value = htmlspecialchars($phone2);
-        $label = $contact->phone2_label;
-        if ($label !== '') $value .= ' ('.htmlspecialchars($value).')';
-        $labelItems[] = \Form\label('Phone 2', $value);
-    }
+    include_once __DIR__.'/renderContactPhones.php';
+    renderContactPhones($contact, $labelItems);
 
     $birthday_time = $contact->birthday_time;
     if ($birthday_time !== null) {
