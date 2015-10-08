@@ -42,7 +42,7 @@ contact_method_page('list', [], [
             'phone2_label' => [
                 'type' => 'string',
                 'description' =>
-                    'The label of the  secondary phone of the contact.',
+                    'The label of the secondary phone of the contact.',
             ],
             'birthday_time' => [
                 'type' => 'number',
