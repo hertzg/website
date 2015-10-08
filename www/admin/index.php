@@ -3,16 +3,8 @@
 include_once 'fns/require_admin.php';
 require_admin();
 
-unset(
-    $_SESSION['admin/general-info/messages'],
-    $_SESSION['admin/invitations/errors'],
-    $_SESSION['admin/invitations/messages'],
-    $_SESSION['admin/mysql-settings/messages'],
-    $_SESSION['admin/username-password/errors'],
-    $_SESSION['admin/username-password/values'],
-    $_SESSION['admin/users/errors'],
-    $_SESSION['admin/users/messages']
-);
+include_once 'fns/unset_session_vars.php';
+unset_session_vars();
 
 include_once '../fns/ClientAddress/get.php';
 $client_address = ClientAddress\get();
@@ -86,10 +78,6 @@ $content = Page\tabs(
         'username-password/', 'generic', ['id' => 'username-password'])
     .'<div class="hr"></div>'
     .create_admin_api_keys_link($mysqli)
-/*
-    .Page\imageArrowLink('Admin API Keys', 'api-keys/',
-        'api-keys', ['id' => 'api-keys'])
-*/
     .'<div class="hr"></div>'
     .Page\imageArrowLink('Admin API Documentation',
         'api-doc/', 'api-doc', ['id' => 'api-doc'])
@@ -97,10 +85,6 @@ $content = Page\tabs(
         'generic', ['id' => 'invalid-signins'])
     .'<div class="hr"></div>'
     .create_invitations_link($mysqli)
-/*
-    .Page\imageArrowLink('Invitations', 'invitations/',
-        'invitations', ['id' => 'invitations'])
-*/
     .'<div class="hr"></div>'
     .create_users_link($mysqli)
     .'<div class="hr"></div>'
