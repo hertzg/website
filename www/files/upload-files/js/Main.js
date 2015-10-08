@@ -55,7 +55,8 @@
                                 formData.append('id', id)
                                 appendFile(formData, chunk)
 
-                                Post('file/appendContent', formData, nextChunk, finish)
+                                Post('file/appendContent',
+                                    formData, nextChunk, finish)
 
                             })
                         } else {

@@ -1,6 +1,7 @@
 <?php
 
-function render_search_files_link ($user, $searchFiles, $keyword, $offset, &$items) {
+function render_search_files_link ($user,
+    $searchFiles, $keyword, $offset, &$items) {
 
     if (!$user->num_files && !$user->num_folders) return;
 

@@ -16,8 +16,8 @@ function get_article_text () {
     $api_base = "$siteProtocol://$domainName{$siteBase}admin/api-call/";
 
     return
-        '<em class="term">Zvini Admin API</em> allows programs to manage an instance'
-        .' of Zvini by calling API methods with HTTP requests.'
+        '<em class="term">Zvini Admin API</em> allows programs to manage an'
+        .' instance of Zvini by calling API methods with HTTP requests.'
         .' The API methods can be called with either GET or POST methods.'
         .' The method parameters can be passed either as a'
         .' query string or as a URL-encoded form data.'
@@ -33,6 +33,7 @@ function get_article_text () {
         .' should be the generated random password.'
         .'<br />'
         .'<br />'
-        .' Click below to see a PHP example code that calls an admin API method:';
+        .' Click below to see a PHP example code'
+        .' that calls an admin API method:';
 
 }
