@@ -12,6 +12,7 @@ else {
     $values = [
         'username' => $user->username,
         'disabled' => $user->disabled,
+        'expires' => $user->expires,
     ];
 }
 
@@ -50,6 +51,8 @@ $content = Page\tabs(
         ])
         .'<div class="hr"></div>'
         .Form\checkbox('disabled', 'Disable', $values['disabled'])
+        .'<div class="hr"></div>'
+        .Form\checkbox('expires', 'Expire when inactive', $values['expires'])
         .'<div class="hr"></div>'
         .Form\button('Save Changes')
         ."<input type=\"hidden\" name=\"id\" value=\"$id\" />"

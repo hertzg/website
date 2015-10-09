@@ -9,9 +9,11 @@ $user = require_user($mysqli);
 $fnsDir = '../../../fns';
 
 include_once "$fnsDir/request_strings.php";
-list($username, $disabled) = request_strings('username', 'disabled');
+list($username, $disabled, $expires) = request_strings(
+    'username', 'disabled', 'expires');
 
 $disabled = (bool)$disabled;
+$expires = (bool)$expires;
 
 include_once "$fnsDir/str_collapse_spaces.php";
 $username = str_collapse_spaces($username);
@@ -43,7 +45,7 @@ if ($match) {
 
 include_once "$fnsDir/Users/Account/editProfile.php";
 Users\Account\editProfile($mysqli, $user, $username,
-    $user->email, $user->full_name, $user->timezone, $disabled);
+    $user->email, $user->full_name, $user->timezone, $disabled, $expires);
 
 header('Content-Type: application/json');
 echo 'true';

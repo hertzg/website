@@ -62,6 +62,7 @@ function ensure ($mysqli) {
             'characterSet' => 'ascii',
             'collation' => 'ascii_general_ci',
         ],
+        'expires' => ['type' => 'tinyint(3) unsigned'],
         'full_name' => \FullName\column(),
         'home_num_new_notifications' => ['type' => 'bigint(20) unsigned'],
         'home_num_new_received_bookmarks' => ['type' => 'bigint(20) unsigned'],

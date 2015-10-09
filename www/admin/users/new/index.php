@@ -11,6 +11,7 @@ else {
         'password' => '',
         'repeatPassword' => '',
         'disabled' => false,
+        'expires' => false,
     ];
 }
 
@@ -70,6 +71,8 @@ $content = Page\tabs(
         ])
         .'<div class="hr"></div>'
         .Form\checkbox('disabled', 'Disable', $values['disabled'])
+        .'<div class="hr"></div>'
+        .Form\checkbox('expires', 'Expire when inactive', $values['expires'])
         .'<div class="hr"></div>'
         .Form\button('Save User')
         .ItemList\pageHiddenInputs()

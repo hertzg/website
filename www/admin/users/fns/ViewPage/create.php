@@ -32,6 +32,7 @@ function create ($user, &$scripts) {
     $author = format_author($user->insert_time, $user->insert_api_key_name);
     $infoText =
         ($user->disabled ? 'Disabled.<br />' : '')
+        .($user->expires ? 'Expires when inactive.<br />' : '')
         ."User created $author.";
 
     $items[] = \Form\label('Last accessed', $accessed);

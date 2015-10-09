@@ -6,10 +6,11 @@ require_admin_api_key('can_write_users', $apiKey, $mysqli);
 $fnsDir = '../../../fns';
 
 include_once "$fnsDir/request_strings.php";
-list($username, $password, $disabled) = request_strings(
-    'username', 'password', 'disabled');
+list($username, $password, $disabled, $expires) = request_strings(
+    'username', 'password', 'disabled', 'expires');
 
 $disabled = (bool)$disabled;
+$expires = (bool)$expires;
 
 include_once "$fnsDir/str_collapse_spaces.php";
 $username = str_collapse_spaces($username);
@@ -48,8 +49,8 @@ if ($password === $username) {
 }
 
 include_once "$fnsDir/Users/Account/create.php";
-$id = Users\Account\create($mysqli,
-    $username, $password, '', $disabled, $apiKey);
+$id = Users\Account\create($mysqli, $username,
+    $password, '', $disabled, $expires, $apiKey);
 
 header('Content-Type: application/json');
 echo $id;

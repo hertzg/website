@@ -9,8 +9,13 @@ include_once '../../fns/require_admin.php';
 require_admin();
 
 include_once "$fnsDir/request_strings.php";
-list($username, $password, $repeatPassword, $disabled) = request_strings(
-    'username', 'password', 'repeatPassword', 'disabled');
+list($username, $password, $repeatPassword,
+    $disabled, $expires) = request_strings(
+    'username', 'password', 'repeatPassword',
+    'disabled', 'expires');
+
+$disabled = (bool)$disabled;
+$expires = (bool)$expires;
 
 include_once "$fnsDir/str_collapse_spaces.php";
 $username = str_collapse_spaces($username);
@@ -32,6 +37,7 @@ if ($errors) {
         'password' => $password,
         'repeatPassword' => $repeatPassword,
         'disabled' => $disabled,
+        'expires' => $expires,
     ];
     include_once "$fnsDir/ItemList/pageQuery.php";
     redirect('./'.ItemList\pageQuery());
@@ -43,7 +49,8 @@ unset(
 );
 
 include_once "$fnsDir/Users/Account/create.php";
-$id = Users\Account\create($mysqli, $username, $password, '', $disabled);
+$id = Users\Account\create($mysqli,
+    $username, $password, '', $disabled, $expires);
 
 $_SESSION['admin/users/view/messages'] = ['The user has been saved.'];
 
