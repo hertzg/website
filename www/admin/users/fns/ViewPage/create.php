@@ -30,10 +30,18 @@ function create ($user, &$scripts) {
 
     include_once __DIR__.'/../../../fns/format_author.php';
     $author = format_author($user->insert_time, $user->insert_api_key_name);
-    $infoText =
-        ($user->disabled ? 'Disabled.<br />' : '')
-        .($user->expires ? 'Expires when inactive.<br />' : '')
-        ."User created $author.";
+    $infoText = '';
+    if ($user->disabled) $infoText .= 'Disabled.<br />';
+    if ($user->expires) {
+
+        include_once "$fnsDir/Users/emailExpireDays.php";
+        include_once "$fnsDir/Users/expireDays.php";
+        $expireDays = \Users\emailExpireDays() + \Users\expireDays();
+
+        $infoText .= "Will expires when inactive for $expireDays days.<br />";
+
+    }
+    $infoText .= "User created $author.";
 
     $items[] = \Form\label('Last accessed', $accessed);
 

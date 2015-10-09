@@ -21,6 +21,10 @@ $fnsDir = '../../../fns';
 include_once "$fnsDir/ItemList/escapedItemQuery.php";
 $escapedItemQuery = ItemList\escapedItemQuery($id);
 
+include_once "$fnsDir/Users/emailExpireDays.php";
+include_once "$fnsDir/Users/expireDays.php";
+$expireDays = Users\emailExpireDays() + Users\expireDays();
+
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/checkbox.php";
 include_once "$fnsDir/Form/notes.php";
@@ -53,6 +57,10 @@ $content = Page\tabs(
         .Form\checkbox('disabled', 'Disable', $values['disabled'])
         .'<div class="hr"></div>'
         .Form\checkbox('expires', 'Expire when inactive', $values['expires'])
+        .Form\notes([
+            'If checked the user will expire'
+            ." after $expireDays days of inactivity.",
+        ])
         .'<div class="hr"></div>'
         .Form\button('Save Changes')
         ."<input type=\"hidden\" name=\"id\" value=\"$id\" />"

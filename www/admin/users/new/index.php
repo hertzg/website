@@ -22,6 +22,10 @@ unset(
     $_SESSION['admin/users/messages']
 );
 
+include_once "$fnsDir/Users/emailExpireDays.php";
+include_once "$fnsDir/Users/expireDays.php";
+$expireDays = Users\emailExpireDays() + Users\expireDays();
+
 include_once "$fnsDir/example_password.php";
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/checkbox.php";
@@ -73,6 +77,10 @@ $content = Page\tabs(
         .Form\checkbox('disabled', 'Disable', $values['disabled'])
         .'<div class="hr"></div>'
         .Form\checkbox('expires', 'Expire when inactive', $values['expires'])
+        .Form\notes([
+            'If checked the user will expire'
+            ." after $expireDays days of inactivity.",
+        ])
         .'<div class="hr"></div>'
         .Form\button('Save User')
         .ItemList\pageHiddenInputs()
