@@ -56,6 +56,7 @@ $content = Page\tabs(
             'autofocus' => true,
         ])
         .Form\notes([
+            'Case-sensitive.',
             'Characters a-z, A-Z, 0-9, dash, dot and underscore only.',
             'Minimum '.Username\minLength().' characters.',
         ])

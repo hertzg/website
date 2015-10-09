@@ -19,6 +19,7 @@ function create_form_items ($values) {
             'required' => true,
         ])
         .Form\notes([
+            'Case-sensitive.',
             'Characters a-z, A-Z, 0-9, dash, dot and underscore only.',
             "Minimum $minLength characters.",
         ])
