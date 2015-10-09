@@ -13,7 +13,7 @@ $time = time();
 include_once '../fns/Users/emailExpireDays.php';
 $access_time = $time - Users\emailExpireDays() * 24 * 60 * 60;
 
-$sql = 'select * from users where email_expire_time is null'
+$sql = 'select * from users where expires = 1 and email_expire_time is null'
     ." and access_time < $access_time limit 10";
 $users = mysqli_query_object($mysqli, $sql);
 
