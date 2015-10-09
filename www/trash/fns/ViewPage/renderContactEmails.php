@@ -8,18 +8,25 @@ function renderContactEmails ($contact, &$items) {
     $email1 = $contact->email1;
     $email2 = $contact->email2;
 
+    $render = function ($email, $label) {
+        $value = htmlspecialchars($email);
+        if ($label !== '') $value .= ' ('.htmlspecialchars($value).')';
+        return $value;
+    };
+
     if ($email1 === '') {
         if ($email2 !== '') {
+            $value = $render($email2, $contact->email2_label);
             include_once "$fnsDir/Form/label.php";
-            $items[] = \Form\label('Email', htmlspecialchars($email2));
+            $items[] = \Form\label('Email', $value);
         }
     } else {
-        $escapedEmail1 = htmlspecialchars($email1);
+        $value = $render($email1, $contact->email1_label);
         include_once "$fnsDir/Form/label.php";
         if ($email2 === '') {
-            $item = \Form\label('Email', $escapedEmail1);
+            $item = \Form\label('Email', $value);
         } else {
-            $value = "$escapedEmail1<br />".htmlspecialchars($email2);
+            $value .= '<br />'.$render($email2, $contact->email2_label);
             $item = \Form\label('Email', $value);
         }
         $items[] = $item;

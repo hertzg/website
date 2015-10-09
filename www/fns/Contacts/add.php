@@ -2,8 +2,9 @@
 
 namespace Contacts;
 
-function add ($mysqli, $id_users, $full_name, $alias,
-    $address, $email1, $email2, $phone1, $phone1_label, $phone2,
+function add ($mysqli, $id_users, $full_name,
+    $alias, $address, $email1, $email1_label, $email2,
+    $email2_label, $phone1, $phone1_label, $phone2,
     $phone2_label, $birthday_time, $username, $timezone,
     $tags, $tag_names, $notes, $favorite, $photo_id,
     $insert_time, $update_time, $insertApiKey) {
@@ -12,7 +13,9 @@ function add ($mysqli, $id_users, $full_name, $alias,
     $alias = $mysqli->real_escape_string($alias);
     $address = $mysqli->real_escape_string($address);
     $email1 = $mysqli->real_escape_string($email1);
+    $email1_label = $mysqli->real_escape_string($email1_label);
     $email2 = $mysqli->real_escape_string($email2);
+    $email2_label = $mysqli->real_escape_string($email2_label);
     $phone1 = $mysqli->real_escape_string($phone1);
     $phone1_label = $mysqli->real_escape_string($phone1_label);
     $phone2 = $mysqli->real_escape_string($phone2);
@@ -43,14 +46,16 @@ function add ($mysqli, $id_users, $full_name, $alias,
     }
 
     $sql = 'insert into contacts'
-        .' (id_users, full_name, alias, address, email1,'
-        .' email2, phone1, phone1_label, phone2, phone2_label,'
+        .' (id_users, full_name, alias, address,'
+        .' email1, email1_label, email2, email2_label,'
+        .' phone1, phone1_label, phone2, phone2_label,'
         .' birthday_time, birthday_day, birthday_month,'
         .' username, timezone, tags, num_tags,'
         .' tags_json, notes, favorite, photo_id, insert_time,'
         .' update_time, insert_api_key_id, insert_api_key_name)'
-        ." values ($id_users, '$full_name', '$alias', '$address', '$email1',"
-        ." '$email2', '$phone1', '$phone1_label', '$phone2', '$phone2_label',"
+        ." values ($id_users, '$full_name', '$alias', '$address',"
+        ." '$email1', '$email1_label', '$email2', '$email2_label',"
+        ." '$phone1', '$phone1_label', '$phone2', '$phone2_label',"
         ." $birthday_time, $birthday_day, $birthday_month,"
         ." '$username', $timezone, '$tags', $num_tags,"
         ." '$tags_json', '$notes', $favorite, $photo_id, $insert_time,"

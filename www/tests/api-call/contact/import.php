@@ -9,7 +9,14 @@ function expect_imported ($engine, $receivedContact, $response) {
     $engine->expectValue('.alias', $receivedContact->alias, $response->alias);
     $engine->expectValue('.address',
         $receivedContact->address, $response->address);
-    $engine->expectValue('.email', $receivedContact->email, $response->email);
+    $engine->expectValue('.email1',
+        $receivedContact->email1, $response->email1);
+    $engine->expectValue('.email1_label',
+        $receivedContact->email1_label, $response->email1_label);
+    $engine->expectValue('.email2',
+        $receivedContact->email2, $response->email2);
+    $engine->expectValue('.email2_label',
+        $receivedContact->email2_label, $response->email2_label);
     $engine->expectValue('.phone1',
         $receivedContact->phone1, $response->phone1);
     $engine->expectValue('.phone1_label',

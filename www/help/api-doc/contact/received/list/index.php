@@ -30,9 +30,19 @@ received_contact_method_page('list', [], [
                 'type' => 'string',
                 'description' => 'The primary email of the received contact.',
             ],
+            'email1_label' => [
+                'type' => 'string',
+                'description' =>
+                    'The label of the primary email of the received contact.',
+            ],
             'email2' => [
                 'type' => 'string',
                 'description' => 'The secondary email of the received contact.',
+            ],
+            'email2_label' => [
+                'type' => 'string',
+                'description' =>
+                    'The label of the secondary email of the received contact.',
             ],
             'phone1' => [
                 'type' => 'string',

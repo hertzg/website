@@ -22,7 +22,17 @@ function ensure ($mysqli) {
             'collation' => 'utf8_unicode_ci',
         ],
         'email1' => $emailColumn,
+        'email1_label' => [
+            'type' => "varchar($maxLengths[email1_label])",
+            'characterSet' => 'utf8',
+            'collation' => 'utf8_general_ci',
+        ],
         'email2' => $emailColumn,
+        'email2_label' => [
+            'type' => "varchar($maxLengths[email2_label])",
+            'characterSet' => 'utf8',
+            'collation' => 'utf8_general_ci',
+        ],
         'favorite' => ['type' => 'tinyint(3) unsigned'],
         'full_name' => \FullName\column(),
         'id' => [

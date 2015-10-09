@@ -25,8 +25,16 @@ contact_method_page('edit', [
         'description' => 'The new primary email of the contact.',
     ],
     [
+        'name' => 'email1_label',
+        'description' => 'The new label of the primary email of the contact.',
+    ],
+    [
         'name' => 'email2',
         'description' => 'The new secondary email of the contact.',
+    ],
+    [
+        'name' => 'email2_label',
+        'description' => 'The new label of the secondary email of the contact.',
     ],
     [
         'name' => 'phone1',

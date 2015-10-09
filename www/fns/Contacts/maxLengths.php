@@ -12,6 +12,8 @@ function maxLengths () {
     return [
         'address' => 128,
         'alias' => 32,
+        'email1_label' => 10,
+        'email2_label' => 10,
         'notes' => 1024 * 2,
         'phone1' => 32,
         'phone1_label' => 10,

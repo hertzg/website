@@ -41,14 +41,22 @@ function create_form_items ($values, &$scripts, $base = '') {
             'maxlength' => $maxLengths['address'],
         ])
         .'<div class="hr"></div>'
-        .Form\textfield('email1', 'Email 1', [
+        .Form\textfieldWithLabel('email1', 'Email 1', [
             'value' => $values['email1'],
             'maxlength' => $emailMaxLength,
+        ], [
+            'value' => $values['email1_label'],
+            'placeholder' => 'Note',
+            'maxlength' => $maxLengths['email1_label'],
         ])
         .'<div class="hr"></div>'
-        .Form\textfield('email2', 'Email 2', [
+        .Form\textfieldWithLabel('email2', 'Email 2', [
             'value' => $values['email2'],
             'maxlength' => $emailMaxLength,
+        ], [
+            'value' => $values['email2_label'],
+            'placeholder' => 'Note',
+            'maxlength' => $maxLengths['email2_label'],
         ])
         .'<div class="hr"></div>'
         .Form\textfieldWithLabel('phone1', 'Phone 1', [

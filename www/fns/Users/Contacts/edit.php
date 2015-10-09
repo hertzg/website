@@ -3,8 +3,9 @@
 namespace Users\Contacts;
 
 function edit ($mysqli, $user, $contact, $full_name,
-    $alias, $address, $email1, $email2, $phone1, $phone1_label,
-    $phone2, $phone2_label, $birthday_time, $username, $timezone,
+    $alias, $address, $email1, $email1_label, $email2,
+    $email2_label, $phone1, $phone1_label, $phone2,
+    $phone2_label, $birthday_time, $username, $timezone,
     $tags, $tag_names, $notes, $favorite, $updateApiKey = null) {
 
     $id = $contact->id;
@@ -14,7 +15,8 @@ function edit ($mysqli, $user, $contact, $full_name,
 
     include_once "$fnsDir/Contacts/edit.php";
     \Contacts\edit($mysqli, $id, $full_name, $alias, $address,
-        $email1, $email2, $phone1, $phone1_label, $phone2, $phone2_label,
+        $email1, $email1_label, $email2, $email2_label,
+        $phone1, $phone1_label, $phone2, $phone2_label,
         $birthday_time, $username, $timezone, $tags, $tag_names,
         $notes, $favorite, $update_time, $updateApiKey);
 
@@ -26,7 +28,8 @@ function edit ($mysqli, $user, $contact, $full_name,
     if ($tag_names) {
         include_once "$fnsDir/ContactTags/add.php";
         \ContactTags\add($mysqli, $contact->id_users, $id,
-            $tag_names, $full_name, $alias, $email1, $email2,
+            $tag_names, $full_name, $alias, $email1,
+            $email1_label, $email2, $email2_label,
             $phone1, $phone1_label, $phone2, $phone2_label,
             $favorite, $contact->insert_time, $update_time);
     }

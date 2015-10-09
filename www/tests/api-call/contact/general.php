@@ -12,7 +12,10 @@ $birthday_time = time_today();
 $full_name = 'sample full_name';
 $alias = 'sample alias';
 $address = 'sample address';
-$email = 'sample email';
+$email1 = 'sample email1';
+$email1_label = 'sample email1_label';
+$email2 = 'sample email2';
+$email2_label = 'sample email2_label';
 $phone1 = 'sample phone1';
 $phone1_label = 'sample phone1_label';
 $phone2 = 'sample phone2';
@@ -33,7 +36,10 @@ $response = $engine->request('contact/add', [
     'full_name' => $full_name,
     'alias' => $alias,
     'address' => $address,
-    'email' => $email,
+    'email1' => $email1,
+    'email1_label' => $email1_label,
+    'email2' => $email2,
+    'email2_label' => $email2_label,
     'phone1' => $phone1,
     'phone1_label' => $phone1_label,
     'phone2' => $phone2,
@@ -57,7 +63,10 @@ expect_contact_object($engine, '', $response);
 $engine->expectValue('.full_name', $full_name, $response->full_name);
 $engine->expectValue('.alias', $alias, $response->alias);
 $engine->expectValue('.address', $address, $response->address);
-$engine->expectValue('.email', $email, $response->email);
+$engine->expectValue('.email1', $email1, $response->email1);
+$engine->expectValue('.email1_label', $email1_label, $response->email1_label);
+$engine->expectValue('.email2', $email2, $response->email2);
+$engine->expectValue('.email2_label', $email2_label, $response->email2_label);
 $engine->expectValue('.phone1', $phone1, $response->phone1);
 $engine->expectValue('.phone1_label', $phone1_label, $response->phone1_label);
 $engine->expectValue('.phone2', $phone2, $response->phone2);

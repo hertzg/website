@@ -25,8 +25,16 @@ contact_method_page('send', [
         'description' => 'The primary email of the contact.',
     ],
     [
+        'name' => 'email1_label',
+        'description' => 'The label of the primary email of the contact.',
+    ],
+    [
         'name' => 'email2',
         'description' => 'The secondary email of the contact.',
+    ],
+    [
+        'name' => 'email2_label',
+        'description' => 'The label of the secondary email of the contact.',
     ],
     [
         'name' => 'phone1',

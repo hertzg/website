@@ -10,8 +10,9 @@ include_once '../../../lib/mysqli.php';
 list($receivedContact, $id, $user) = require_received_contact($mysqli, '../');
 
 include_once '../../fns/request_contact_params.php';
-list($full_name, $alias, $address, $email1, $email2, $phone1, $phone1_label,
-    $phone2, $phone2_label, $birthday_day, $birthday_month, $birthday_year,
+list($full_name, $alias, $address, $email1, $email1_label,
+    $email2, $email2_label, $phone1, $phone1_label, $phone2,
+    $phone2_label, $birthday_day, $birthday_month, $birthday_year,
     $birthday_time, $username, $timezone, $tags, $tag_names,
     $notes, $favorite) = request_contact_params($user, $errors);
 
@@ -24,7 +25,9 @@ if ($errors) {
         'alias' => $alias,
         'address' => $address,
         'email1' => $email1,
+        'email1_label' => $email1_label,
         'email2' => $email2,
+        'email2_label' => $email2_label,
         'phone1' => $phone1,
         'phone1_label' => $phone1_label,
         'phone2' => $phone2,
@@ -51,7 +54,9 @@ $receivedContact->full_name = $full_name;
 $receivedContact->alias = $alias;
 $receivedContact->address = $address;
 $receivedContact->email1 = $email1;
+$receivedContact->email1_label = $email1_label;
 $receivedContact->email2 = $email2;
+$receivedContact->email2_label = $email2_label;
 $receivedContact->phone1 = $phone1;
 $receivedContact->phone1_label = $phone1_label;
 $receivedContact->phone2 = $phone2;

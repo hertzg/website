@@ -26,9 +26,19 @@ contact_method_page('list', [], [
                 'type' => 'string',
                 'description' => 'The primary email of the contact.',
             ],
+            'email1_label' => [
+                'type' => 'string',
+                'description' =>
+                    'The label of the primary email of the contact.',
+            ],
             'email2' => [
                 'type' => 'string',
                 'description' => 'The secondary email of the contact.',
+            ],
+            'email2_label' => [
+                'type' => 'string',
+                'description' =>
+                    'The label of the secondary email of the contact.',
             ],
             'phone1' => [
                 'type' => 'string',

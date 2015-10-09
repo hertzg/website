@@ -3,8 +3,9 @@
 namespace ReceivedContacts;
 
 function add ($mysqli, $sender_id_users, $sender_username,
-    $receiver_id_users, $full_name, $alias, $address, $email1, $email2,
-    $phone1, $phone1_label, $phone2, $phone2_label, $birthday_time,
+    $receiver_id_users, $full_name, $alias, $address,
+    $email1, $email1_label, $email2, $email2_label, $phone1,
+    $phone1_label, $phone2, $phone2_label, $birthday_time,
     $username, $timezone, $tags, $notes, $favorite, $photo_id) {
 
     $sender_username = $mysqli->real_escape_string($sender_username);
@@ -12,7 +13,9 @@ function add ($mysqli, $sender_id_users, $sender_username,
     $alias = $mysqli->real_escape_string($alias);
     $address = $mysqli->real_escape_string($address);
     $email1 = $mysqli->real_escape_string($email1);
+    $email1_label = $mysqli->real_escape_string($email1_label);
     $email2 = $mysqli->real_escape_string($email2);
+    $email2_label = $mysqli->real_escape_string($email2_label);
     $phone1 = $mysqli->real_escape_string($phone1);
     $phone1_label = $mysqli->real_escape_string($phone1_label);
     $phone2 = $mysqli->real_escape_string($phone2);
@@ -28,12 +31,14 @@ function add ($mysqli, $sender_id_users, $sender_username,
 
     $sql = 'insert into received_contacts'
         .' (sender_id_users, sender_username, receiver_id_users,'
-        .' full_name, alias, address, email1, email2,'
+        .' full_name, alias, address, email1,'
+        .' email1_label, email2, email2_label,'
         .' phone1, phone1_label, phone2, phone2_label,'
         .' birthday_time, username, timezone, tags,'
         .' notes, favorite, photo_id, insert_time)'
         ." values ($sender_id_users, '$sender_username', $receiver_id_users,"
-        ." '$full_name', '$alias', '$address', '$email1', '$email2',"
+        ." '$full_name', '$alias', '$address', '$email1',"
+        ." '$email1_label', '$email2', '$email2_label',"
         ." '$phone1', '$phone1_label', '$phone2', '$phone2_label',"
         ." $birthday_time, '$username', $timezone, '$tags',"
         ." '$notes', $favorite, $photo_id, $insert_time)";

@@ -5,7 +5,8 @@ function request_contact_params ($user, &$errors) {
     $fnsDir = __DIR__.'/../../fns';
 
     include_once "$fnsDir/Contacts/request.php";
-    list($full_name, $alias, $address, $email1, $email2, $phone1,
+    list($full_name, $alias, $address, $email1,
+        $email1_label, $email2, $email2_label, $phone1,
         $phone1_label, $phone2, $phone2_label, $birthday_time,
         $username, $timezone, $tags, $notes, $favorite) = Contacts\request();
 
@@ -26,7 +27,8 @@ function request_contact_params ($user, &$errors) {
     include_once "$fnsDir/request_tags.php";
     request_tags($tags, $tag_names, $errors);
 
-    return [$full_name, $alias, $address, $email1, $email2, $phone1,
+    return [$full_name, $alias, $address, $email1,
+        $email1_label, $email2, $email2_label, $phone1,
         $phone1_label, $phone2, $phone2_label, $birthday_day,
         $birthday_month, $birthday_year, $birthday_time, $username,
         $timezone, $tags, $tag_names, $notes, $favorite];

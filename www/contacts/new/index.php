@@ -12,7 +12,8 @@ if (array_key_exists($key, $_SESSION)) {
 } else {
 
     include_once "$fnsDir/Contacts/request.php";
-    list($full_name, $alias, $address, $email1, $email2, $phone1,
+    list($full_name, $alias, $address, $email1,
+        $email1_label, $email2, $email2_label, $phone1,
         $phone1_label, $phone2, $phone2_label, $birthday_time,
         $username, $timezone, $tags, $notes, $favorite) = Contacts\request();
 
@@ -29,7 +30,9 @@ if (array_key_exists($key, $_SESSION)) {
         'alias' => $alias,
         'address' => $address,
         'email1' => $email1,
+        'email1_label' => $email1_label,
         'email2' => $email2,
+        'email2_label' => $email2_label,
         'phone1' => $phone1,
         'phone1_label' => $phone1_label,
         'phone2' => $phone2,

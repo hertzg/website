@@ -7,10 +7,12 @@ function request () {
     $fnsDir = __DIR__.'/..';
 
     include_once "$fnsDir/request_strings.php";
-    list($full_name, $alias, $address, $email1, $email2, $phone1,
+    list($full_name, $alias, $address, $email1,
+        $email1_label, $email2, $email2_label, $phone1,
         $phone1_label, $phone2, $phone2_label, $birthday_time,
         $username, $timezone, $tags, $favorite) = request_strings(
-        'full_name', 'alias', 'address', 'email1', 'email2', 'phone1',
+        'full_name', 'alias', 'address', 'email1',
+        'email1_label', 'email2', 'email2_label', 'phone1',
         'phone1_label', 'phone2', 'phone2_label', 'birthday_time',
         'username', 'timezone', 'tags', 'favorite');
 
@@ -19,7 +21,9 @@ function request () {
     $alias = str_collapse_spaces($alias);
     $address = str_collapse_spaces($address);
     $email1 = str_collapse_spaces($email1);
+    $email1_label = str_collapse_spaces($email1_label);
     $email2 = str_collapse_spaces($email2);
+    $email2_label = str_collapse_spaces($email2_label);
     $phone1 = str_collapse_spaces($phone1);
     $phone1_label = str_collapse_spaces($phone1_label);
     $phone2 = str_collapse_spaces($phone2);
@@ -39,8 +43,8 @@ function request () {
 
     $favorite = (bool)$favorite;
 
-    return [$full_name, $alias, $address, $email1,
-        $email2, $phone1, $phone1_label, $phone2, $phone2_label,
+    return [$full_name, $alias, $address, $email1, $email1_label,
+        $email2, $email2_label, $phone1, $phone1_label, $phone2, $phone2_label,
         $birthday_time, $username, $timezone, $tags, $notes, $favorite];
 
 }
