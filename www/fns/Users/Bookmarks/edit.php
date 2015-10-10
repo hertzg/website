@@ -2,8 +2,11 @@
 
 namespace Users\Bookmarks;
 
-function edit ($mysqli, $bookmark, $title,
-    $url, $tags, $tag_names, $updateApiKey = null) {
+function edit ($mysqli, $bookmark, $title, $url,
+    $tags, $tag_names, &$changed, $updateApiKey = null) {
+
+    if ($bookmark->title === $title &&
+        $bookmark->url === $url && $bookmark->tags === $tags) return;
 
     $id = $bookmark->id;
     $fnsDir = __DIR__.'/../..';

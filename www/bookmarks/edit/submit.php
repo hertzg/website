@@ -47,7 +47,11 @@ if ($sendButton) {
 unset($_SESSION['bookmarks/edit/values']);
 
 include_once "$fnsDir/Users/Bookmarks/edit.php";
-Users\Bookmarks\edit($mysqli, $bookmark, $title, $url, $tags, $tag_names);
+Users\Bookmarks\edit($mysqli, $bookmark,
+    $title, $url, $tags, $tag_names, $changed);
 
-$_SESSION['bookmarks/view/messages'] = ['Changes have been saved.'];
+if ($changed) $message = 'Changes have been saved.';
+else $message = 'No changes to be saved.';
+$_SESSION['bookmarks/view/messages'] = [$message];
+
 redirect("../view/$itemQuery");
