@@ -12,6 +12,9 @@
     border-radius: 2px;
     font-weight: bold;
 }
+.newItemButton:focus {
+    background-color: rgba(127, 127, 127, 0.2);
+}
 .newItemButton:active {
     color: #fff;
 }

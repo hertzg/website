@@ -18,6 +18,9 @@
     height: 100%;
     line-height: 32px;
 }
+.newItemMenu-button:focus {
+    background-color: rgba(127, 127, 127, 0.2);
+}
 
 .newItemMenu-text {
     padding-right: 7px;

@@ -7,6 +7,9 @@
     border: 2px solid transparent;
     border-radius: 2px;
 }
+.topLink:focus {
+    background-color: rgba(127, 127, 127, 0.2);
+}
 .topLink:active {
     color: #fff;
     border-radius: 0;

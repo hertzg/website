@@ -6,6 +6,9 @@
     border: 2px solid transparent;
     border-radius: 2px;
 }
+.form-select:focus {
+    background-color: rgba(127, 127, 127, 0.2);
+}
 .form-select.invalid {
     border-color: #f44;
     background-color: #fff4f4;

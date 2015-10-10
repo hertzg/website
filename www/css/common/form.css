@@ -13,6 +13,9 @@
     padding: 12px 14px;
     resize: vertical;
 }
+.form-textarea:focus {
+    background-color: rgba(127, 127, 127, 0.2);
+}
 
 .form-filefield {
     height: 48px;

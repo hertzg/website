@@ -24,10 +24,10 @@
     font-weight: bold;
 }
 .calendar-days > :focus {
-    border-width: 2px;
-    border-style: solid;
+    border: 2px solid transparent;
     border-radius: 2px;
     line-height: 44px;
+    background-color: rgba(127, 127, 127, 0.2);
 }
 .calendar-days > :active,
 .calendar-today {
