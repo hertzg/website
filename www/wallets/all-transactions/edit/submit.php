@@ -38,9 +38,10 @@ $wallet = Wallets\get($mysqli, $transaction->id_wallets);
 
 include_once "$fnsDir/Users/Wallets/Transactions/edit.php";
 Users\Wallets\Transactions\edit($mysqli, $wallet,
-    $transaction, $parsed_amount, $description);
+    $transaction, $parsed_amount, $description, $changed);
 
-$message = 'Changes have been saved.';
+if ($changed) $message = 'Changes have been saved.';
+else $message = 'No changes to be saved.';
 $_SESSION['wallets/all-transactions/view/messages'] = [$message];
 
 redirect("../view/$itemQuery");

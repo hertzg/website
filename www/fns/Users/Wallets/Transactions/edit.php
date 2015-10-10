@@ -3,8 +3,12 @@
 namespace Users\Wallets\Transactions;
 
 function edit ($mysqli, $wallet, $transaction,
-    $amount, $description, $updateApiKey = null) {
+    $amount, $description, &$changed, $updateApiKey = null) {
 
+    if ((int)$transaction->amount === $amount &&
+        $transaction->description === $description) return;
+
+    $changed = true;
     $id = $transaction->id;
     $id_wallets = $transaction->id_wallets;
     $old_amount = $transaction->amount;

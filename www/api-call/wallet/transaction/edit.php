@@ -16,7 +16,7 @@ $wallet = Wallets\get($mysqli, $transaction->id_wallets);
 
 include_once "$fnsDir/Users/Wallets/Transactions/edit.php";
 Users\Wallets\Transactions\edit($mysqli, $wallet,
-    $transaction, $amount, $description, $apiKey);
+    $transaction, $amount, $description, $changed, $apiKey);
 
 header('Content-Type: application/json');
 echo 'true';
