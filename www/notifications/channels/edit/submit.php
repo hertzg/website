@@ -31,10 +31,11 @@ unset(
 );
 
 include_once "$fnsDir/Users/Channels/edit.php";
-Users\Channels\edit($mysqli, $id, $channel_name,
-    $public, $receive_notifications);
+Users\Channels\edit($mysqli, $channel, $channel_name,
+    $public, $receive_notifications, $changed);
 
-$message = 'Changes have been saved.';
+if ($changed) $message = 'Changes have been saved.';
+else $message = 'No changes to be saved.';
 $_SESSION['notifications/channels/view/messages'] = [$message];
 
 redirect("../view/?id=$id");
