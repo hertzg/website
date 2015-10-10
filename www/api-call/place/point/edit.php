@@ -10,7 +10,8 @@ include_once 'fns/require_point_params.php';
 list($latitude, $longitude, $altitude) = require_point_params();
 
 include_once '../../../fns/Users/Places/Points/edit.php';
-Users\Places\Points\edit($mysqli, $point, $latitude, $longitude, $altitude);
+Users\Places\Points\edit($mysqli, $point,
+    $latitude, $longitude, $altitude, $changes);
 
 header('Content-Type: application/json');
 echo 'true';

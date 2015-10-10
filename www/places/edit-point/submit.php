@@ -30,8 +30,10 @@ if ($errors) {
 
 include_once "$fnsDir/Users/Places/Points/edit.php";
 Users\Places\Points\edit($mysqli, $point,
-    $parsed_latitude, $parsed_longitude, $parsed_altitude);
+    $parsed_latitude, $parsed_longitude, $parsed_altitude, $changed);
 
-$_SESSION['places/view-point/messages'] = ['Changes have been saved.'];
+if ($changed) $message = 'Changes have been saved.';
+else $message = 'No changes to be saved.';
+$_SESSION['places/view-point/messages'] = [$message];
 
 redirect("../view-point/$itemQuery");
