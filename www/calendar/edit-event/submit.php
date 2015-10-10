@@ -32,8 +32,10 @@ unset(
 );
 
 include_once "$fnsDir/Users/Events/edit.php";
-Users\Events\edit($mysqli, $user, $event, $text, $event_time);
+Users\Events\edit($mysqli, $user, $event, $text, $event_time, $changed);
 
-$_SESSION['calendar/view-event/messages'] = ['Changes have been saved.'];
+if ($changed) $message = 'Changes have been saved.';
+else $message = 'No changes to be saved.';
+$_SESSION['calendar/view-event/messages'] = [$message];
 
 redirect("../view-event/?id=$id");
