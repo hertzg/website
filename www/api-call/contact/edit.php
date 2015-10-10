@@ -18,7 +18,7 @@ Users\Contacts\edit($mysqli, $user, $contact, $full_name,
     $alias, $address, $email1, $email1_label, $email2,
     $email2_label, $phone1, $phone1_label, $phone2,
     $phone2_label, $birthday_time, $username, $timezone,
-    $tags, $tag_names, $notes, $favorite, $apiKey);
+    $tags, $tag_names, $notes, $favorite, $changed, $apiKey);
 
 header('Content-Type: application/json');
 echo 'true';

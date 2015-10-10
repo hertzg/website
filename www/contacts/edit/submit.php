@@ -68,11 +68,14 @@ if ($sendButton) {
 unset($_SESSION['contacts/edit/values']);
 
 include_once "$fnsDir/Users/Contacts/edit.php";
-Users\Contacts\edit($mysqli, $user, $contact,
-    $full_name, $alias, $address, $email1, $email1_label,
-    $email2, $email2_label, $phone1, $phone1_label,
-    $phone2, $phone2_label, $birthday_time, $username,
-    $timezone, $tags, $tag_names, $notes, $favorite);
+Users\Contacts\edit($mysqli, $user, $contact, $full_name,
+    $alias, $address, $email1, $email1_label, $email2,
+    $email2_label, $phone1, $phone1_label, $phone2,
+    $phone2_label, $birthday_time, $username, $timezone,
+    $tags, $tag_names, $notes, $favorite, $changed);
 
-$_SESSION['contacts/view/messages'] = ['Changes have been saved.'];
+if ($changed) $message = 'Changes have been saved.';
+else $message = 'No changes to be saved.';
+$_SESSION['contacts/view/messages'] = [$message];
+
 redirect("../view/$itemQuery");
