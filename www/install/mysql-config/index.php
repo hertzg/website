@@ -12,13 +12,20 @@ $password = $values['password'];
 $db = $values['db'];
 $create = $values['create'];
 
-include_once '../fns/check_mysql_config.php';
-$error = check_mysql_config($host, $username,
-    $password, $db, $create, $mysqli, $focus);
-if ($focus === null) $focus = 'host';
+if ($values['check']) {
 
-if ($error === null) $errorHtml = '';
-else $errorHtml = "<div class=\"error formError\">&times; $error</div>";
+    include_once '../fns/check_mysql_config.php';
+    $error = check_mysql_config($host, $username,
+        $password, $db, $create, $mysqli, $focus);
+    if ($focus === null) $focus = 'host';
+
+    if ($error === null) $errorHtml = '';
+    else $errorHtml = "<div class=\"error formError\">&times; $error</div>";
+
+} else {
+    $focus = 'host';
+    $errorHtml = '';
+}
 
 $doneSteps = [
     [

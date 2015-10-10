@@ -9,6 +9,7 @@ function get_values () {
         'username' => 'adminadmin',
         'password' => '',
         'repeatPassword' => '',
+        'check' => false,
     ];
 
 }

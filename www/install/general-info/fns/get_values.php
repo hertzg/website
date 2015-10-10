@@ -24,6 +24,7 @@ function get_values () {
         'siteBase' => $siteBase,
         'https' => array_key_exists('HTTPS', $_SERVER),
         'behindProxy' => false,
+        'check' => false,
     ];
 
 }

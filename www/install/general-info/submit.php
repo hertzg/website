@@ -36,6 +36,7 @@ $_SESSION['install/general-info/values'] = [
     'siteBase' => $siteBase,
     'https' => $https,
     'behindProxy' => $behindProxy,
+    'check' => true,
 ];
 
 include_once "$fnsDir/redirect.php";

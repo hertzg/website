@@ -30,6 +30,7 @@ $_SESSION['install/mysql-config/values'] = [
     'password' => $password,
     'db' => $db,
     'create' => $create,
+    'check' => true,
 ];
 
 include_once "$fnsDir/redirect.php";

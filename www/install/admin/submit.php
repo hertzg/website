@@ -22,6 +22,7 @@ $_SESSION['install/admin/values'] = [
     'username' => $username,
     'password' => $password,
     'repeatPassword' => $repeatPassword,
+    'check' => true,
 ];
 
 include_once "$fnsDir/redirect.php";

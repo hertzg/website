@@ -10,12 +10,19 @@ $username = $values['username'];
 $password = $values['password'];
 $repeatPassword = $values['repeatPassword'];
 
-include_once '../fns/check_admin.php';
-$error = check_admin($username, $password, $repeatPassword, $focus);
-if ($focus === null) $focus = 'username';
+if ($values['check']) {
 
-if ($error === null) $errorHtml = '';
-else $errorHtml = "<div class=\"error formError\">&times; $error</div>";
+    include_once '../fns/check_admin.php';
+    $error = check_admin($username, $password, $repeatPassword, $focus);
+    if ($focus === null) $focus = 'username';
+
+    if ($error === null) $errorHtml = '';
+    else $errorHtml = "<div class=\"error formError\">&times; $error</div>";
+
+} else {
+    $focus = 'username';
+    $errorHtml = '';
+}
 
 $doneSteps = [
     [

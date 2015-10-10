@@ -12,13 +12,20 @@ $infoEmail = $values['infoEmail'];
 $siteBase = $values['siteBase'];
 $behindProxy = $values['behindProxy'];
 
-include_once '../fns/check_general_info.php';
-$error = check_general_info($siteTitle, $domainName,
-    $infoEmail, $siteBase, $behindProxy, $focus);
-if ($focus === null) $focus = 'siteTitle';
+if ($values['check']) {
 
-if ($error === null) $errorHtml = '';
-else $errorHtml = "<div class=\"error formError\">&times; $error</div>";
+    include_once '../fns/check_general_info.php';
+    $error = check_general_info($siteTitle, $domainName,
+        $infoEmail, $siteBase, $behindProxy, $focus);
+    if ($focus === null) $focus = 'siteTitle';
+
+    if ($error === null) $errorHtml = '';
+    else $errorHtml = "<div class=\"error formError\">&times; $error</div>";
+
+} else {
+    $focus = 'siteTitle';
+    $errorHtml = '';
+}
 
 $escapedSiteTitle = htmlspecialchars($siteTitle);
 $escapedDomainName = htmlspecialchars($domainName);

@@ -12,6 +12,7 @@ function get_values () {
         'password' => '',
         'db' => 'zvini',
         'create' => true,
+        'check' => false,
     ];
 
 }
