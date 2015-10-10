@@ -2,9 +2,11 @@
 
 namespace Users\BarCharts\Bars;
 
-function edit ($mysqli, $id, $value, $label, $updateApiKey = null) {
+function edit ($mysqli, $bar, $value, $label, &$changed, $updateApiKey = null) {
+
+    $changed = true;
 
     include_once __DIR__.'/../../../BarChartBars/edit.php';
-    \BarChartBars\edit($mysqli, $id, $value, $label, $updateApiKey);
+    \BarChartBars\edit($mysqli, $bar->id, $value, $label, $updateApiKey);
 
 }

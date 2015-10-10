@@ -14,7 +14,7 @@ include_once '../../fns/request_bar_params.php';
 list($value, $parsed_value, $label) = request_bar_params($errors);
 
 include_once "$fnsDir/ItemList/itemQuery.php";
-$itemQuery = ItemList\itemQuery($id);
+$itemQuery = ItemList\itemQuery($bar->id);
 
 include_once "$fnsDir/redirect.php";
 
@@ -33,8 +33,10 @@ unset(
 );
 
 include_once "$fnsDir/Users/BarCharts/Bars/edit.php";
-Users\BarCharts\Bars\edit($mysqli, $id, $parsed_value, $label);
+Users\BarCharts\Bars\edit($mysqli, $bar, $parsed_value, $label, $changed);
 
-$_SESSION['bar-charts/all-bars/view/messages'] = ['Changes have been saved.'];
+if ($changed) $message = 'Changes have been saved.';
+else $message = 'No changes to be saved.';
+$_SESSION['bar-charts/all-bars/view/messages'] = [$message];
 
 redirect("../view/$itemQuery");

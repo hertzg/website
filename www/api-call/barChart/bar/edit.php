@@ -10,7 +10,7 @@ include_once 'fns/request_bar_params.php';
 list($value, $label) = request_bar_params($user);
 
 include_once '../../../fns/Users/BarCharts/Bars/edit.php';
-Users\BarCharts\Bars\edit($mysqli, $bar->id, $value, $label, $apiKey);
+Users\BarCharts\Bars\edit($mysqli, $bar, $value, $label, $changed, $apiKey);
 
 header('Content-Type: application/json');
 echo 'true';
