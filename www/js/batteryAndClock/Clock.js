@@ -36,7 +36,7 @@ function Clock (remoteTime, timezone) {
             localStorage.lastRemoteTime = remoteTime
         }
     } else {
-        difference = 0
+        difference = Date.now() - remoteTime
     }
 
     var requestAnimationFrame = window.requestAnimationFrame
