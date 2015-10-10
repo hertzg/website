@@ -12,6 +12,6 @@ echo_html(
         .'The installation has finished.<br />Zvini is ready to be used.'
     .'</h2>'
     .'<div style="text-align: center; margin-top: 32px">'
-        .'<a class="button" href="../..">Go to Zvini</a>'
+        .'<a class="button" href="../.." style="width: 110px">Go to Zvini</a>'
     .'</div>'
 );
