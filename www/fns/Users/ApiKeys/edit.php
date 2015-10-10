@@ -10,8 +10,40 @@ function edit ($mysqli, $apiKey, $name, $expire_time,
     $can_write_bar_charts, $can_write_bookmarks, $can_write_channels,
     $can_write_contacts, $can_write_events, $can_write_files, $can_write_notes,
     $can_write_notifications, $can_write_places, $can_write_schedules,
-    $can_write_tasks, $can_write_wallets) {
+    $can_write_tasks, $can_write_wallets, &$changed) {
 
+    $expire_time_null = $apiKey->expire_time === null &&
+        $expire_time === null;
+    $expire_time_same = $expire_time_null ||
+        (int)$apiKey->expire_time === $expire_time;
+
+    if ($apiKey->name === $name && $expire_time_same &&
+        (bool)$apiKey->can_read_bar_charts === $can_read_bar_charts &&
+        (bool)$apiKey->can_read_bookmarks === $can_read_bookmarks &&
+        (bool)$apiKey->can_read_channels === $can_read_channels &&
+        (bool)$apiKey->can_read_contacts === $can_read_contacts &&
+        (bool)$apiKey->can_read_events === $can_read_events &&
+        (bool)$apiKey->can_read_files === $can_read_files &&
+        (bool)$apiKey->can_read_notes === $can_read_notes &&
+        (bool)$apiKey->can_read_notifications === $can_read_notifications &&
+        (bool)$apiKey->can_read_places === $can_read_places &&
+        (bool)$apiKey->can_read_schedules === $can_read_schedules &&
+        (bool)$apiKey->can_read_tasks === $can_read_tasks &&
+        (bool)$apiKey->can_read_wallets === $can_read_wallets &&
+        (bool)$apiKey->can_write_bar_charts === $can_write_bar_charts &&
+        (bool)$apiKey->can_write_bookmarks === $can_write_bookmarks &&
+        (bool)$apiKey->can_write_channels === $can_write_channels &&
+        (bool)$apiKey->can_write_contacts === $can_write_contacts &&
+        (bool)$apiKey->can_write_events === $can_write_events &&
+        (bool)$apiKey->can_write_files === $can_write_files &&
+        (bool)$apiKey->can_write_notes === $can_write_notes &&
+        (bool)$apiKey->can_write_notifications === $can_write_notifications &&
+        (bool)$apiKey->can_write_places === $can_write_places &&
+        (bool)$apiKey->can_write_schedules === $can_write_schedules &&
+        (bool)$apiKey->can_write_tasks === $can_write_tasks &&
+        (bool)$apiKey->can_write_wallets === $can_write_wallets) return;
+
+    $changed = true;
     $id = $apiKey->id;
     $fnsDir = __DIR__.'/../..';
 

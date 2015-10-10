@@ -78,13 +78,15 @@ Users\ApiKeys\edit($mysqli, $apiKey, $name, $expire_time,
     $can_write_bar_charts, $can_write_bookmarks, $can_write_channels,
     $can_write_contacts, $can_write_events, $can_write_files, $can_write_notes,
     $can_write_notifications, $can_write_places, $can_write_schedules,
-    $can_write_tasks, $can_write_wallets);
+    $can_write_tasks, $can_write_wallets, $changed);
 
 if ($randomizeKey) {
     include_once "$fnsDir/ApiKeys/randomizeKey.php";
     ApiKeys\randomizeKey($mysqli, $id);
 }
 
-$_SESSION['account/api-keys/view/messages'] = ['Changes have been saved.'];
+if ($changed || $randomizeKey) $message = 'Changes have been saved.';
+else $message = 'No changes to be saved.';
+$_SESSION['account/api-keys/view/messages'] = [$message];
 
 redirect("../view/?id=$id");
