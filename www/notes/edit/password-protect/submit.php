@@ -57,8 +57,12 @@ include_once "$fnsDir/Session/EncryptionKey/set.php";
 Session\EncryptionKey\set($encryption_key);
 
 include_once "$fnsDir/Users/Notes/edit.php";
-Users\Notes\edit($mysqli, $note, $stageValues['text'], $tags,
-    $tag_names, $stageValues['encrypt_in_listings'], true, $encryption_key);
+Users\Notes\edit($mysqli, $note, $stageValues['text'],
+    $tags, $tag_names, $stageValues['encrypt_in_listings'],
+    true, $encryption_key, $changed);
 
-$_SESSION['notes/view/messages'] = ['Changes have been saved.'];
+if ($changed) $message = 'Changes have been saved.';
+else $message = 'No changes to be saved.';
+$_SESSION['notes/view/messages'] = [$message];
+
 redirect("../../view/$itemQuery");

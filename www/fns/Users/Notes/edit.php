@@ -4,8 +4,9 @@ namespace Users\Notes;
 
 function edit ($mysqli, $note, $text, $tags,
     $tag_names, $encrypt_in_listings, $password_protect,
-    $encryption_key, $updateApiKey = null) {
+    $encryption_key, &$changed, $updateApiKey = null) {
 
+    $changed = true;
     $id = $note->id;
     $id_users = $note->id_users;
     $fnsDir = __DIR__.'/../..';

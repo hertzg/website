@@ -62,7 +62,10 @@ unset($_SESSION['notes/edit/values']);
 
 include_once "$fnsDir/Users/Notes/edit.php";
 Users\Notes\edit($mysqli, $note, $text, $tags, $tag_names,
-    $encrypt_in_listings, $password_protect, $encryption_key);
+    $encrypt_in_listings, $password_protect, $encryption_key, $changed);
 
-$_SESSION['notes/view/messages'] = ['Changes have been saved.'];
+if ($changed) $message = 'Changes have been saved.';
+else $message = 'No changes to be saved.';
+$_SESSION['notes/view/messages'] = [$message];
+
 redirect("../view/$itemQuery");

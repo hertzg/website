@@ -11,8 +11,9 @@ list($text, $tags, $tag_names, $encrypt_in_listings,
     $password_protect, $encryption_key) = request_note_params();
 
 include_once '../../fns/Users/Notes/edit.php';
-Users\Notes\edit($mysqli, $note, $text, $tags, $tag_names,
-    $encrypt_in_listings, $password_protect, $encryption_key, $apiKey);
+Users\Notes\edit($mysqli, $note, $text, $tags,
+    $tag_names, $encrypt_in_listings, $password_protect,
+    $encryption_key, $changed, $apiKey);
 
 header('Content-Type: application/json');
 echo 'true';
