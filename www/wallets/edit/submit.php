@@ -13,7 +13,7 @@ include_once '../fns/request_wallet_params.php';
 $name = request_wallet_params($errors);
 
 include_once "$fnsDir/ItemList/itemQuery.php";
-$itemQuery = ItemList\itemQuery($id);
+$itemQuery = ItemList\itemQuery($wallet->id);
 
 include_once "$fnsDir/redirect.php";
 
@@ -29,9 +29,11 @@ unset(
 );
 
 include_once "$fnsDir/Users/Wallets/edit.php";
-Users\Wallets\edit($mysqli, $id, $name);
+Users\Wallets\edit($mysqli, $wallet, $name, $changed);
 
 unset($_SESSION['wallets/view/errors']);
-$_SESSION['wallets/view/messages'] = ['Changes have been saved.'];
+if ($changed) $message = 'Changes have been saved.';
+else $message = 'No changes to be saved.';
+$_SESSION['wallets/view/messages'] = [$message];
 
 redirect("../view/$itemQuery");
