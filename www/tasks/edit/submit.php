@@ -54,7 +54,10 @@ unset($_SESSION['tasks/edit/values']);
 
 include_once "$fnsDir/Users/Tasks/edit.php";
 Users\Tasks\edit($mysqli, $user, $task, $text,
-    $deadline_time, $tags, $tag_names, $top_priority);
+    $deadline_time, $tags, $tag_names, $top_priority, $changed);
 
-$_SESSION['tasks/view/messages'] = ['Changes have been saved.'];
+if ($changed) $message = 'Changes have been saved.';
+else $message = 'No changes to be saved.';
+$_SESSION['tasks/view/messages'] = [$message];
+
 redirect("../view/$itemQuery");
