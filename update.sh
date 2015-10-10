@@ -1,18 +1,18 @@
 #!/bin/bash
 cd `dirname $BASH_SOURCE`
 git fetch
+git checkout -q `git describe --tags --abbrev=0`
 while true
 do
 
-    current=`git describe --tags --abbrev=0`
-    next=`git tag | sort -V | grep -A 1 $current | tail -1`
+    current=`git tag --contains | grep ^v | sort -V | head -1`
+    next=`git tag --contains | grep ^v | sort -V | head -2 | tail -1`
 
     if [ $current = $next ]
     then
         exit
     fi
 
-    git checkout -q $current
     echo "Upgrading from $current to $next..."
     git checkout -q $next
 
