@@ -18,15 +18,18 @@ $offset = (user_day($user) + $days_left) % $interval;
 
 include_once "$fnsDir/Users/Schedules/edit.php";
 include_once '../../../lib/mysqli.php';
-Users\Schedules\edit($mysqli, $user, $schedule, $first_stage['text'],
-    $interval, $offset, $first_stage['tags'], $first_stage['tag_names']);
+Users\Schedules\edit($mysqli, $user,
+    $schedule, $first_stage['text'], $interval, $offset,
+    $first_stage['tags'], $first_stage['tag_names'], $changed);
 
 unset(
     $_SESSION['schedules/edit/values'],
     $_SESSION['schedules/edit/next/first_stage']
 );
 
-$_SESSION['schedules/view/messages'] = ['Changes have been saved.'];
+if ($changed) $message = 'Changes have been saved.';
+else $message = 'No changes to be saved.';
+$_SESSION['schedules/view/messages'] = [$message];
 
 include_once "$fnsDir/redirect.php";
 include_once "$fnsDir/ItemList/itemQuery.php";

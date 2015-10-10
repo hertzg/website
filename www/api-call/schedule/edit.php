@@ -10,8 +10,8 @@ include_once 'fns/request_schedule_params.php';
 list($text, $interval, $offset, $tags, $tag_names) = request_schedule_params();
 
 include_once '../../fns/Users/Schedules/edit.php';
-Users\Schedules\edit($mysqli, $user, $schedule,
-    $text, $interval, $offset, $tags, $tag_names, $apiKey);
+Users\Schedules\edit($mysqli, $user, $schedule, $text,
+    $interval, $offset, $tags, $tag_names, $changed, $apiKey);
 
 header('Content-Type: application/json');
 echo 'true';
