@@ -2,9 +2,12 @@
 
 namespace Users\BarCharts;
 
-function edit ($mysqli, $bar_chart, $name,
-    $tags, $tag_names, $updateApiKey = null) {
+function edit ($mysqli, $bar_chart, $name, $tags,
+    $tag_names, &$changed, $updateApiKey = null) {
 
+    if ($bar_chart->name === $name && $bar_chart->tags === $tags) return;
+
+    $changed = true;
     $id = $bar_chart->id;
     $fnsDir = __DIR__.'/../..';
 
