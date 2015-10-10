@@ -56,7 +56,11 @@ unset($_SESSION['places/edit/values']);
 
 include_once "$fnsDir/Users/Places/edit.php";
 Users\Places\edit($mysqli, $place, $parsed_latitude, $parsed_longitude,
-    $parsed_altitude, $name, $description, $tags, $tag_names);
+    $parsed_altitude, $name, $description, $tags, $tag_names, $changed);
 
-$_SESSION['places/view/messages'] = ['Changes have been saved.'];
+if ($changed) $message = 'Changes have been saved.';
+else $message = 'No changes to be saved.';
+
+$_SESSION['places/view/messages'] = [$message];
+
 redirect("../view/$itemQuery");

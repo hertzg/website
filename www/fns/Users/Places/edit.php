@@ -3,8 +3,9 @@
 namespace Users\Places;
 
 function edit ($mysqli, $place, $latitude, $longitude, $altitude,
-    $name, $description, $tags, $tag_names, $updateApiKey = null) {
+    $name, $description, $tags, $tag_names, &$changed, $updateApiKey = null) {
 
+    $changed = true;
     $id = $place->id;
     $fnsDir = __DIR__.'/../..';
 
