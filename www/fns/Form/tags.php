@@ -13,6 +13,6 @@ function tags ($base, $tags) {
     $value .= '</div>';
 
     include_once __DIR__.'/association.php';
-    return association($value, '<label>Tags:</label>');
+    return association($value, 'Tags:');
 
 }

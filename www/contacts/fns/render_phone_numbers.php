@@ -29,6 +29,6 @@ function render_phone_numbers ($contact, &$items, $keyword = '') {
     $content = join('<div class="hr"></div>', $link_items);
 
     include_once __DIR__.'/../../fns/Form/association.php';
-    $items[] = Form\association($content, '<label>Phone:</label>');
+    $items[] = Form\association($content, 'Phone:');
 
 }

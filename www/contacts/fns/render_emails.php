@@ -28,6 +28,6 @@ function render_emails ($contact, &$items, $keyword = '') {
     $content = join('<div class="hr"></div>', $link_items);
 
     include_once __DIR__.'/../../fns/Form/association.php';
-    $items[] = Form\association($content, '<label>Email:</label>');
+    $items[] = Form\association($content, 'Email:');
 
 }

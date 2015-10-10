@@ -26,7 +26,7 @@ function textarea ($name, $text, $config = []) {
         .getBoolAttribute('readonly', $config)
         .getBoolAttribute('required', $config)
         ." id=\"$name\" name=\"$name\">$content</textarea>",
-        "<label for=\"$name\">$text:</label>"
+        "<label class=\"form-property-label\" for=\"$name\">$text:</label>"
     );
 
 }

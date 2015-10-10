@@ -62,6 +62,7 @@ function datefield ($day, $month, $year,
         .'</div>';
 
     include_once __DIR__.'/association.php';
-    return association($html, "<label for=\"$dayName\">$text:</label>");
+    return association($html,
+        "<label class=\"form-property-label\" for=\"$dayName\">$text:</label>");
 
 }

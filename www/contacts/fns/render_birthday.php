@@ -25,7 +25,7 @@ function render_birthday ($birthday_time, &$items, &$head, $base) {
                 .date('F d, Y', $birthday_time)
             .'</span>'
         .'</a>',
-        '<label>Birth date:</label>'
+        'Birth date:'
     );
 
 }

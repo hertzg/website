@@ -30,7 +30,7 @@ function textfieldWithLabel ($name, $text, $config = [], $labelConfig = []) {
                 .' value="'.htmlspecialchars($labelConfig['value']).'" />'
             .'</div>'
         .'</div>',
-        "<label for=\"$name\">$text:</label>"
+        "<label class=\"form-property-label\" for=\"$name\">$text:</label>"
     );
 
 }

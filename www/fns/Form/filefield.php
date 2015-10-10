@@ -24,6 +24,6 @@ function filefield ($name, $text, $options) {
         '<input class="form-filefield" type="file"'
         ."$multipleAttribute$requiredAttribute$acceptAttribute"
         ." id=\"$name\" name=\"$name\" />",
-        "<label for=\"$name\">$text:</label>"
+        "<label class=\"form-property-label\" for=\"$name\">$text:</label>"
     );
 }
