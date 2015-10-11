@@ -6,10 +6,26 @@ function edit ($mysqli, $note, $text, $tags,
     $tag_names, $encrypt_in_listings, $password_protect,
     $encryption_key, &$changed, $updateApiKey = null) {
 
+    $fnsDir = __DIR__.'/../..';
+
+    if (($password_protect || $note->text === $text) &&
+        $note->tags === $tags &&
+        (bool)$note->encrypt_in_listings === $encrypt_in_listings &&
+        (bool)$note->password_protect === $password_protect) {
+
+        if (!$password_protect) return;
+
+        include_once "$fnsDir/Crypto/decrypt.php";
+        $decrypted_text = \Crypto\decrypt($encryption_key,
+            $note->encrypted_text, $note->encrypted_text_iv);
+
+        if ($decrypted_text === $text) return;
+
+    }
+
     $changed = true;
     $id = $note->id;
     $id_users = $note->id_users;
-    $fnsDir = __DIR__.'/../..';
 
     include_once "$fnsDir/Notes/maxLengths.php";
     include_once "$fnsDir/text_title.php";
