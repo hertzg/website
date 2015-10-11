@@ -5,6 +5,15 @@ namespace Users\Places;
 function edit ($mysqli, $place, $latitude, $longitude, $altitude,
     $name, $description, $tags, $tag_names, &$changed, $updateApiKey = null) {
 
+    $altitude_null = $place->altitude === null && $altitude === null;
+    $altitude_same = $altitude_null ||
+        (string)$place->altitude === (string)$altitude;
+
+    if ($place->name === $name &&
+        (string)$place->latitude === (string)$latitude &&
+        (string)$place->longitude === (string)$longitude && $altitude_same &&
+        $place->description === $description && $place->tags === $tags) return;
+
     $changed = true;
     $id = $place->id;
     $fnsDir = __DIR__.'/../..';
