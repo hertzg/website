@@ -7,12 +7,18 @@ list($connection, $id, $user) = require_connection($mysqli);
 $key = 'account/connections/edit/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
-
-    $values = (array)$connection;
-
     include_once '../../fns/restore_expires.php';
-    $values['expires'] = restore_expires($connection->expire_time);
-
+    $values = [
+        'username' => $connection->username,
+        'expires' => restore_expires($connection->expire_time),
+        'can_send_bookmark' => $connection->can_send_bookmark,
+        'can_send_channel' => $connection->can_send_channel,
+        'can_send_contact' => $connection->can_send_contact,
+        'can_send_file' => $connection->can_send_file,
+        'can_send_note' => $connection->can_send_note,
+        'can_send_place' => $connection->can_send_place,
+        'can_send_task' => $connection->can_send_task,
+    ];
 }
 
 unset($_SESSION['account/connections/view/messages']);

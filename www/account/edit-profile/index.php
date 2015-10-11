@@ -8,7 +8,14 @@ $user = require_user($base);
 
 $key = 'account/edit-profile/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
-else $values = (array)$user;
+else {
+    $values = [
+        'username' => $user->username,
+        'email' => $user->email,
+        'full_name' => $user->full_name,
+        'timezone' => $user->timezone,
+    ];
+}
 
 unset($_SESSION['account/messages']);
 

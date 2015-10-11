@@ -6,7 +6,13 @@ list($channel, $id, $user) = require_channel($mysqli);
 
 $key = 'notifications/channels/edit/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
-else $values = (array)$channel;
+else {
+    $values = [
+        'channel_name' => $channel->channel_name,
+        'public' => $channel->public,
+        'receive_notifications' => $channel->receive_notifications,
+    ];
+}
 
 unset($_SESSION['notifications/channels/view/messages']);
 

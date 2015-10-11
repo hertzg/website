@@ -6,7 +6,7 @@ list($file, $id, $user) = require_file($mysqli);
 
 $key = 'files/rename-file/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
-else $values = (array)$file;
+else $values = ['name' => $file->name];
 
 unset(
     $_SESSION['files/view-file/errors'],

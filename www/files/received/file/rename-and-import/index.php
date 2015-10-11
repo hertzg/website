@@ -8,7 +8,7 @@ unset($_SESSION['files/received/file/messages']);
 
 $key = 'files/received/file/rename-and-import/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
-else $values = (array)$receivedFile;
+else $values = ['name' => $receivedFile->name];
 
 $fnsDir = '../../../../fns';
 

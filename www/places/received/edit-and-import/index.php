@@ -11,7 +11,16 @@ unset($_SESSION['places/received/view/messages']);
 
 $key = 'places/received/edit-and-import/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
-else $values = (array)$receivedPlace;
+else {
+    $values = [
+        'latitude' => $receivedPlace->latitude,
+        'longitude' => $receivedPlace->longitude,
+        'altitude' => $receivedPlace->altitude,
+        'name' => $receivedPlace->name,
+        'description' => $receivedPlace->description,
+        'tags' => $receivedPlace->tags,
+    ];
+}
 
 include_once "$fnsDir/Places/maxLengths.php";
 $maxLengths = Places\maxLengths();

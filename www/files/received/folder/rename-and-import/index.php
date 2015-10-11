@@ -4,11 +4,11 @@ include_once '../fns/require_received_folder.php';
 include_once '../../../../lib/mysqli.php';
 list($receivedFolder, $id, $user) = require_received_folder($mysqli, '../');
 
+unset($_SESSION['files/received/folder/messages']);
+
 $key = 'files/received/folder/rename-and-import/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
-else $values = (array)$receivedFolder;
-
-unset($_SESSION['files/received/folder/messages']);
+else $values = ['name' => $receivedFolder->name];
 
 $fnsDir = '../../../../fns';
 

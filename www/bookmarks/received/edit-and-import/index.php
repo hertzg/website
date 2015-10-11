@@ -10,7 +10,13 @@ unset($_SESSION['bookmarks/received/view/messages']);
 
 $key = 'bookmarks/received/edit-and-import/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
-else $values = (array)$receivedBookmark;
+else {
+    $values = [
+        'url' => $receivedBookmark->url,
+        'title' => $receivedBookmark->title,
+        'tags' => $receivedBookmark->tags,
+    ];
+}
 
 include_once "$fnsDir/ItemList/Received/escapedItemQuery.php";
 $escapedItemQuery = ItemList\Received\escapedItemQuery($id);
