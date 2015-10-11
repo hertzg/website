@@ -5,14 +5,15 @@ namespace Users\Tasks;
 function edit ($mysqli, $user, $task, $text, $deadline_time,
     $tags, $tag_names, $top_priority, &$changed, $updateApiKey = null) {
 
-    $deadline_time_null = $task->deadline_time === null &&
-        $deadline_time === null;
-    $deadline_time_same = $deadline_time_null ||
-        (int)$task->deadline_time === $deadline_time;
+    if ($task->text === $text) {
+        if (($task->deadline_time === null && $deadline_time === null) ||
+            (int)$task->deadline_time === $deadline_time) {
 
-    if ($task->text === $text &&
-        $deadline_time_same && $task->tags === $tags &&
-        (bool)$task->top_priority === $top_priority) return;
+            if ($task->tags === $tags &&
+                (bool)$task->top_priority === $top_priority) return;
+
+        }
+    }
 
     $changed = true;
     $id = $task->id;

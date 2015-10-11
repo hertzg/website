@@ -8,14 +8,6 @@ function edit ($mysqli, $user, $contact, $full_name, $alias,
     $username, $timezone, $tags, $tag_names, $notes,
     $favorite, &$changed, $updateApiKey = null) {
 
-    $birthday_time_null = $contact->birthday_time === null &&
-        $birthday_time === null;
-    $birthday_time_same = $birthday_time_null ||
-        (int)$contact->birthday_time === $birthday_time;
-
-    $timezone_null = $contact->timezone === null && $timezone === null;
-    $timezone_same = $timezone_null || (int)$contact->timezone === $timezone;
-
     if ($contact->full_name === $full_name &&
         $contact->alias === $alias &&
         $contact->address === $address &&
@@ -26,11 +18,25 @@ function edit ($mysqli, $user, $contact, $full_name, $alias,
         $contact->phone1 === $phone1 &&
         $contact->phone1_label === $phone1_label &&
         $contact->phone2 === $phone2 &&
-        $contact->phone2_label === $phone2_label &&
-        $birthday_time_same && $contact->username === $username &&
-        $timezone_same && $contact->tags === $tags &&
-        $contact->notes === $notes &&
-        (bool)$contact->favorite === $favorite) return;
+        $contact->phone2_label === $phone2_label) {
+
+        if (($contact->birthday_time === null && $birthday_time === null) ||
+            (int)$contact->birthday_time === $birthday_time) {
+
+            if ($contact->username === $username) {
+                if (($contact->timezone === null && $timezone === null) ||
+                    (int)$contact->timezone === $timezone) {
+
+                    if ($contact->tags === $tags &&
+                        $contact->notes === $notes &&
+                        (bool)$contact->favorite === $favorite) return;
+
+                }
+            }
+
+        }
+
+    }
 
     $changed = true;
     $id = $contact->id;

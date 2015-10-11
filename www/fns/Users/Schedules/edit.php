@@ -5,8 +5,10 @@ namespace Users\Schedules;
 function edit ($mysqli, $user, $schedule, $text, $interval,
     $offset, $tags, $tag_names, &$changed, $updateApiKey = null) {
 
-    if ($schedule->text === $text && (int)$schedule->interval === $interval &&
-        (int)$schedule->offset === $offset && $schedule->tags === $tags) return;
+    if ($schedule->text === $text &&
+        (int)$schedule->interval === $interval &&
+        (int)$schedule->offset === $offset &&
+        $schedule->tags === $tags) return;
 
     $changed = true;
     $id = $schedule->id;

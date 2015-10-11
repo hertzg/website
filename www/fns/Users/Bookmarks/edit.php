@@ -8,6 +8,7 @@ function edit ($mysqli, $bookmark, $title, $url,
     if ($bookmark->title === $title &&
         $bookmark->url === $url && $bookmark->tags === $tags) return;
 
+    $changed = true;
     $id = $bookmark->id;
     $fnsDir = __DIR__.'/../..';
 
