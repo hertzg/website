@@ -26,9 +26,9 @@ function create_page ($mysqli, $user, $base = '') {
 
         $filterMessage = '';
 
-        include_once "$fnsDir/Contacts/indexPageOnUser.php";
-        $contacts = Contacts\indexPageOnUser($mysqli,
-            $id_users, $offset, $limit, $total, $order_by);
+        include_once "$fnsDir/Users/Contacts/indexPage.php";
+        $contacts = Users\Contacts\indexPage($mysqli,
+            $user, $offset, $limit, $total, $order_by);
 
         if ($total > 1) {
 

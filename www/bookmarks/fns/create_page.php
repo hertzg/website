@@ -26,9 +26,9 @@ function create_page ($mysqli, $user, $base = '') {
 
         $filterMessage = '';
 
-        include_once "$fnsDir/Bookmarks/indexPageOnUser.php";
-        $bookmarks = Bookmarks\indexPageOnUser($mysqli,
-            $id_users, $offset, $limit, $total, $order_by);
+        include_once "$fnsDir/Users/Bookmarks/indexPage.php";
+        $bookmarks = Users\Bookmarks\indexPage($mysqli,
+            $user, $offset, $limit, $total, $order_by);
 
         if ($total > 1) {
 

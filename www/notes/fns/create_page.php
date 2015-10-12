@@ -26,9 +26,9 @@ function create_page ($mysqli, $user, $base = '') {
 
         $filterMessage = '';
 
-        include_once "$fnsDir/Notes/indexPageOnUser.php";
-        $notes = Notes\indexPageOnUser($mysqli,
-            $id_users, $offset, $limit, $total, $order_by);
+        include_once "$fnsDir/Users/Notes/indexPage.php";
+        $notes = Users\Notes\indexPage($mysqli,
+            $user, $offset, $limit, $total, $order_by);
 
         if ($total > 1) {
 

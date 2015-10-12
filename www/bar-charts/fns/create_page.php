@@ -26,9 +26,9 @@ function create_page ($mysqli, $user, $base = '') {
 
         $filterMessage = '';
 
-        include_once "$fnsDir/BarCharts/indexPageOnUser.php";
-        $bar_charts = BarCharts\indexPageOnUser($mysqli,
-            $user->id_users, $offset, $limit, $total, $order_by);
+        include_once "$fnsDir/Users/BarCharts/indexPage.php";
+        $bar_charts = Users\BarCharts\indexPage($mysqli,
+            $user, $offset, $limit, $total, $order_by);
 
         if ($total > 1) {
 
