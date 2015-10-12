@@ -81,15 +81,16 @@ render($content, 'note.svg?6', $names);
 $names = ['notification', 'create-notification', 'old-notification'];
 render($content, 'notification.svg?1', $names);
 
-$names = ['account', 'edit-profile', 'download', 'upload', 'feedback',
-    'yes', 'no', 'rename', 'sign-in', 'sign-ins', 'arrow-right', 'arrow-left',
+$names = ['account', 'edit-profile', 'download', 'upload',
+    'feedback', 'yes', 'no', 'rename', 'sign-in', 'sign-ins',
+    'invalid-sign-in', 'invalid-sign-ins', 'arrow-right', 'arrow-left',
     'search', 'search-folder', 'birthday-cake', 'checkbox',
     'checked-checkbox', 'help', 'run', 'mail', 'sms', 'send',
     'send-sms', 'receive', 'phone', 'edit-home', 'reorder',
     'show-hide', 'restore-defaults', 'forbid-notifications',
     'receive-notifications', 'generic', 'zvini',
     'slideshow', 'locate', 'license'];
-render($content, 'other.svg?24', $names);
+render($content, 'other.svg?25', $names);
 
 $names = ['place', 'create-place', 'edit-place',
     'places', 'import-place', 'duplicate-place', 'place-on-earth'];

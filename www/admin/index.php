@@ -82,7 +82,7 @@ $content = Page\tabs(
     .Page\imageArrowLink('Admin API Documentation',
         'api-doc/', 'api-doc', ['id' => 'api-doc'])
     .Page\imageArrowLink('Invalid Signins', 'invalid-signins/',
-        'generic', ['id' => 'invalid-signins'])
+        'invalid-sign-ins', ['id' => 'invalid-signins'])
     .'<div class="hr"></div>'
     .create_invitations_link($mysqli)
     .'<div class="hr"></div>'

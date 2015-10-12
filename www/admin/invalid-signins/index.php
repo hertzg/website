@@ -39,7 +39,7 @@ if ($invalidSignins) {
             .'<div style="color: #777; font-size: 12px; line-height: 14px">'
                 .export_date_ago($invalidSignin->insert_time, true)
             .'</div>';
-        $items[] = create_image_text($text, 'generic');
+        $items[] = create_image_text($text, 'invalid-sign-in');
     }
 
     include_once 'fns/render_next_button.php';
