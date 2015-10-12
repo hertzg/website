@@ -55,6 +55,7 @@ $content = Page\tabs(
             'value' => $values['email'],
             'maxlength' => Email\maxLength(),
         ])
+        .Form\notes(['Optional. Used for password recovery.'])
         .'<div class="hr"></div>'
         .Form\textfield('full_name', 'Full name', [
             'value' => $values['full_name'],
