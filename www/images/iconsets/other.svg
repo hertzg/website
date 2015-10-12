@@ -1617,10 +1617,10 @@
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(1,0,0,0.3125,320.00001,1038.9246)" />
     <linearGradient
-       x1="1437.9"
-       y1="5.8000002"
-       x2="1457.9"
-       y2="-2.2"
+       x1="1460.8936"
+       y1="-3.6249175"
+       x2="1441.2439"
+       y2="3.4062009"
        id="linearGradient4488"
        xlink:href="#linearGradient5647-0"
        gradientUnits="userSpaceOnUse"
@@ -1660,15 +1660,6 @@
        id="linearGradient4520"
        xlink:href="#linearGradient5655-7"
        gradientUnits="userSpaceOnUse" />
-    <linearGradient
-       x1="1437.9"
-       y1="5.8000002"
-       x2="1457.9"
-       y2="-2.2"
-       id="linearGradient4532"
-       xlink:href="#linearGradient5647-0"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(-0.39530372,0,0,-0.39530372,952.7389,1041.1096)" />
     <radialGradient
        cx="20.055803"
        cy="11.305552"
@@ -1679,6 +1670,15 @@
        xlink:href="#linearGradient3975-4"
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(1.0142829,-1.1134377e-7,8.7820296e-8,0.79999654,-0.29761761,2.5984567)" />
+    <linearGradient
+       x1="1460.9304"
+       y1="-3.2556396"
+       x2="1442.1365"
+       y2="4.2842851"
+       id="linearGradient3845"
+       xlink:href="#linearGradient5647-0"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-0.39530372,0,0,-0.39530372,952.7389,1041.1096)" />
   </defs>
   <metadata
      id="metadata3012">
@@ -3353,7 +3353,7 @@
        d="m 380.18093,1032.8873 -3.9531,1.5812 -0.79056,-1.9765 -0.62477,0.2498 -2.02373,5.166 5.02811,2.3448 0.6247,-0.2498 -0.79061,-1.9765 3.953,-1.5812 z"
        inkscape:connector-curvature="0"
        id="path4500"
-       style="fill:url(#linearGradient4532);fill-opacity:1;stroke:url(#linearGradient4520);stroke-width:1;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+       style="fill:url(#linearGradient3845);fill-opacity:1;stroke:url(#linearGradient4520);stroke-width:1;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
     <use
        transform="translate(-3.83977,-9.3974)"
        id="use4522"
