@@ -13,7 +13,8 @@ if ($user->num_api_keys) {
 
     include_once "$fnsDir/ApiKeys/indexOnUser.php";
     include_once '../../lib/mysqli.php';
-    $apiKeys = ApiKeys\indexOnUser($mysqli, $user->id_users);
+    $apiKeys = ApiKeys\indexOnUser($mysqli,
+        $user->id_users, $user->api_keys_order_by);
 
     include_once "$fnsDir/user_time_today.php";
     $time_today = user_time_today($user);

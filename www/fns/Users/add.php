@@ -55,8 +55,9 @@ function add ($mysqli, $username, $password,
         .' insert_time, theme_color, theme_brightness,'
         .' birthdays_check_day, events_check_day,'
         .' schedules_check_day, task_deadlines_check_day,'
-        .' bar_charts_order_by, bookmarks_order_by,'
-        .' contacts_order_by, events_order_by, notes_order_by,'
+        .' api_keys_order_by, bar_charts_order_by,'
+        .' bookmarks_order_by, contacts_order_by,'
+        .' events_order_by, notes_order_by,'
         .' places_order_by, schedules_order_by,'
         .' tasks_order_by, wallets_order_by,'
         .' insert_api_key_id, insert_api_key_name,'
@@ -69,8 +70,9 @@ function add ($mysqli, $username, $password,
         ." $insert_time, '$theme_color', '$theme_brightness',"
         ." $birthdays_check_day, $events_check_day,"
         ." $schedules_check_day, $task_deadlines_check_day,"
-        ." 'update_time desc', 'update_time desc',"
-        ." 'full_name', 'event_time desc', 'update_time desc',"
+        ." 'name', 'update_time desc',"
+        ." 'update_time desc', 'full_name',"
+        ." 'event_time desc', 'update_time desc',"
         ." 'update_time desc', 'next_time',"
         ." 'update_time desc', 'update_time desc',"
         ." $insert_api_key_id, $insert_api_key_name,"

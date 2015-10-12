@@ -30,6 +30,11 @@ function ensure ($mysqli) {
         'anonymous_can_send_note' => ['type' => 'tinyint(3) unsigned'],
         'anonymous_can_send_place' => ['type' => 'tinyint(3) unsigned'],
         'anonymous_can_send_task' => ['type' => 'tinyint(3) unsigned'],
+        'api_keys_order_by' => [
+            'type' => 'varchar(50)',
+            'characterSet' => 'ascii',
+            'collation' => 'ascii_general_ci',
+        ],
         'balance_total' => ['type' => 'bigint(20)'],
         'bar_charts_order_by' => [
             'type' => 'varchar(50)',
