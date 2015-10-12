@@ -59,23 +59,26 @@ unset(
     $_SESSION['account/messages']
 );
 
+include_once 'fns/sort_panel.php';
 include_once "$fnsDir/Page/newItemButton.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/sessionMessages.php";
 include_once "$fnsDir/Page/tabs.php";
-$content = Page\tabs(
-    [
+$content =
+    Page\tabs(
         [
-            'title' => 'Account',
-            'href' => '../#api-keys',
+            [
+                'title' => 'Account',
+                'href' => '../#api-keys',
+            ],
         ],
-    ],
-    'API Keys',
-    Page\sessionErrors('account/api-keys/errors')
-    .Page\sessionMessages('account/api-keys/messages')
-    .join('<div class="hr"></div>', $items),
-    Page\newItemButton('new/', 'API Key')
-);
+        'API Keys',
+        Page\sessionErrors('account/api-keys/errors')
+        .Page\sessionMessages('account/api-keys/messages')
+        .join('<div class="hr"></div>', $items),
+        Page\newItemButton('new/', 'API Key')
+    )
+    .sort_panel($user);
 
 if ($dateAgoScript) {
     include_once "$fnsDir/compressed_js_script.php";
