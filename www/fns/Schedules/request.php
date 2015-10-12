@@ -13,7 +13,7 @@ function request () {
     include_once __DIR__.'/../str_collapse_spaces.php';
     $tags = str_collapse_spaces($tags);
 
-    $offset = max(0, min($interval - 1, abs((int)$offset)));
+    $offset = min($interval - 1, abs((int)$offset));
 
     return [$text, $interval, $tags, $offset];
 
