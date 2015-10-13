@@ -7,7 +7,13 @@ $user = signed_user();
 
 unset($_SESSION['help/messages']);
 
-$version = file_get_contents('../../../.git/refs/heads/master');
+exec('git rev-parse HEAD', $lines);
+$version = htmlspecialchars($lines[0]);
+unset($lines);
+
+exec('git describe --tags', $lines);
+if (count($lines) === 1) $tag = htmlspecialchars($lines[0]);
+else $tag = 'Not available';
 
 include_once "$fnsDir/Form/label.php";
 include_once "$fnsDir/Page/imageLink.php";
@@ -36,6 +42,8 @@ $content = Page\tabs(
         'license/', 'license', ['id' => 'license'])
     .'<div class="hr"></div>'
     .Form\label('Git version', $version)
+    .'<div class="hr"></div>'
+    .Form\label('Git tag', $tag)
 );
 
 include_once "$fnsDir/echo_public_page.php";
