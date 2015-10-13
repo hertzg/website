@@ -52,9 +52,11 @@ unset(
 );
 
 include_once "$fnsDir/Users/Account/editProfile.php";
-Users\Account\editProfile($mysqli, $user, $username,
-    $user->email, $user->full_name, $user->timezone, $disabled, $expires);
+Users\Account\editProfile($mysqli, $user, $username, $user->email,
+    $user->full_name, $user->timezone, $disabled, $expires, $changed);
 
-$_SESSION['admin/users/view/messages'] = ['Changes have been saved.'];
+if ($changed) $message = 'Changes have been saved.';
+else $message = 'No changes to be saved.';
+$_SESSION['admin/users/view/messages'] = [$message];
 
 redirect("../view/$itemQuery");

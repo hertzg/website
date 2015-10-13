@@ -44,8 +44,8 @@ if ($match) {
 }
 
 include_once "$fnsDir/Users/Account/editProfile.php";
-Users\Account\editProfile($mysqli, $user, $username,
-    $user->email, $user->full_name, $user->timezone, $disabled, $expires);
+Users\Account\editProfile($mysqli, $user, $username, $user->email,
+    $user->full_name, $user->timezone, $disabled, $expires, $changed);
 
 header('Content-Type: application/json');
 echo 'true';

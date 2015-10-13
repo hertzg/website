@@ -2,9 +2,15 @@
 
 namespace Users\Account;
 
-function editProfile ($mysqli, $user, $username,
-    $email, $full_name, $timezone, $disabled, $expires) {
+function editProfile ($mysqli, $user, $username, $email,
+    $full_name, $timezone, $disabled, $expires, &$changed) {
 
+    if ($user->username === $username && $user->email === $email &&
+        $user->full_name === $full_name && $user->timezone === $timezone &&
+        (bool)$user->disabled === $disabled &&
+        (bool)$user->expires === $expires) return;
+
+    $changed = true;
     $id_users = $user->id_users;
 
     include_once __DIR__.'/../editProfile.php';

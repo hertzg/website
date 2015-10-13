@@ -68,9 +68,11 @@ unset(
 );
 
 include_once "$fnsDir/Users/Account/editProfile.php";
-Users\Account\editProfile($mysqli, $user, $username,
-    $email, $full_name, $timezone, $user->disabled, $user->expires);
+Users\Account\editProfile($mysqli, $user, $username, $email, $full_name,
+    $timezone, (bool)$user->disabled, (bool)$user->expires, $changed);
 
-$_SESSION['account/messages'] = ['Changes have been saved.'];
+if ($changed) $message = 'Changes have been saved.';
+else $message = 'No changes to be saved.';
+$_SESSION['account/messages'] = [$message];
 
 redirect('..');
