@@ -7,25 +7,23 @@ function request () {
     $fnsDir = __DIR__.'/..';
 
     include_once "$fnsDir/request_strings.php";
-    list($full_name, $alias, $address, $email1,
+    list($alias, $address, $email1,
         $email1_label, $email2, $email2_label, $phone1,
         $phone1_label, $phone2, $phone2_label, $birthday_time,
         $username, $timezone, $tags, $favorite) = request_strings(
-        'full_name', 'alias', 'address', 'email1',
+        'alias', 'address', 'email1',
         'email1_label', 'email2', 'email2_label', 'phone1',
         'phone1_label', 'phone2', 'phone2_label', 'birthday_time',
         'username', 'timezone', 'tags', 'favorite');
+
+    include_once "$fnsDir/FullName/request.php";
+    $full_name = \FullName\request();
 
     include_once __DIR__.'/maxLengths.php';
     $maxLengths = maxLengths();
 
     include_once "$fnsDir/Email/maxLength.php";
     $emailMaxLength = \Email\maxLength();
-
-    include_once "$fnsDir/str_collapse_spaces.php";
-    $full_name = str_collapse_spaces($full_name);
-    include_once "$fnsDir/FullName/maxLength.php";
-    $full_name = mb_substr($full_name, 0, \FullName\maxLength(), 'UTF-8');
 
     $alias = str_collapse_spaces($alias);
     $alias = mb_substr($alias, 0, $maxLengths['alias'], 'UTF-8');

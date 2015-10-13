@@ -10,14 +10,14 @@ $user = require_user('../../');
 $id_users = $user->id_users;
 
 include_once "$fnsDir/request_strings.php";
-list($username, $email, $full_name, $timezone) = request_strings(
-    'username', 'email', 'full_name', 'timezone');
+list($username, $email, $timezone) = request_strings(
+    'username', 'email', 'timezone');
 
 include_once "$fnsDir/Timezone/isValid.php";
 if (!Timezone\isValid($timezone)) $timezone = 0;
 
-include_once "$fnsDir/str_collapse_spaces.php";
-$full_name = str_collapse_spaces($full_name);
+include_once "$fnsDir/FullName/request.php";
+$full_name = FullName\request();
 
 include_once '../../lib/mysqli.php';
 
@@ -34,6 +34,7 @@ if (!$errors) {
     }
 }
 
+include_once "$fnsDir/str_collapse_spaces.php";
 $email = str_collapse_spaces($email);
 $email = mb_strtolower($email, 'UTF-8');
 if ($email !== '') {
