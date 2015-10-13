@@ -18,14 +18,22 @@ function request () {
     include_once "$fnsDir/request_strings.php";
     list($name, $tags) = request_strings('name', 'tags');
 
+    include_once __DIR__.'/maxLengths.php';
+    $maxLengths = maxLengths();
+
     include_once "$fnsDir/request_text.php";
     $description = request_text('description');
+    $description = mb_substr($description, 0,
+        $maxLengths['description'], 'UTF-8');
 
     include_once "$fnsDir/str_collapse_spaces.php";
     $name = str_collapse_spaces($name);
-    $tags = str_collapse_spaces($tags);
+    $name = mb_substr($name, 0, $maxLengths['name'], 'UTF-8');
 
-    return [$latitude, $longitude, $altitude, $name, $description, $tags,
-        $parsed_latitude, $parsed_longitude, $parsed_altitude];
+    $tags = str_collapse_spaces($tags);
+    $tags = mb_substr($tags, 0, $maxLengths['tags'], 'UTF-8');
+
+    return [$latitude, $longitude, $altitude, $name, $description,
+        $tags, $parsed_latitude, $parsed_longitude, $parsed_altitude];
 
 }

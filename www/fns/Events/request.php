@@ -11,8 +11,12 @@ function request () {
 
     $parsed_event_time = (int)$event_time;
 
+    include_once "$fnsDir/Events/maxLengths.php";
+    $maxLengths = maxLengths();
+
     include_once "$fnsDir/str_collapse_spaces.php";
     $text = str_collapse_spaces($text);
+    $text = mb_substr($text, 0, $maxLengths['text'], 'UTF-8');
 
     return [$parsed_event_time, $text, $event_time];
 
