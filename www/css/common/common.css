@@ -75,6 +75,11 @@ b.author {
 }
 
 .colorTag {
+    display: inline-block;
+    vertical-align: top;
+    max-width: 230px;
+    overflow: hidden;
+    text-overflow: ellipsis;
     border-radius: 1px;
     padding-left: 1px;
     padding-right: 2px;
