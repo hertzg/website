@@ -13,13 +13,15 @@ if (!SignUpEnabled\get()) redirect();
 
 include_once '../fns/request_strings.php';
 list($username, $password, $repeatPassword,
-    $email, $captcha, $return) = request_strings(
+    $captcha, $return) = request_strings(
     'username', 'password', 'repeatPassword',
-    'email', 'captcha', 'return');
+    'captcha', 'return');
 
 include_once '../fns/str_collapse_spaces.php';
 $username = str_collapse_spaces($username);
-$email = str_collapse_spaces($email);
+
+include_once '../fns/Email/request.php';
+$email = Email\request();
 
 include_once '../lib/mysqli.php';
 

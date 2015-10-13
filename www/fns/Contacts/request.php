@@ -7,12 +7,10 @@ function request () {
     $fnsDir = __DIR__.'/..';
 
     include_once "$fnsDir/request_strings.php";
-    list($alias, $address, $email1,
-        $email1_label, $email2, $email2_label, $phone1,
+    list($alias, $address, $email1_label, $email2_label, $phone1,
         $phone1_label, $phone2, $phone2_label, $birthday_time,
         $username, $timezone, $tags, $favorite) = request_strings(
-        'alias', 'address', 'email1',
-        'email1_label', 'email2', 'email2_label', 'phone1',
+        'alias', 'address', 'email1_label', 'email2_label', 'phone1',
         'phone1_label', 'phone2', 'phone2_label', 'birthday_time',
         'username', 'timezone', 'tags', 'favorite');
 
@@ -31,15 +29,14 @@ function request () {
     $address = str_collapse_spaces($address);
     $address = mb_substr($address, 0, $maxLengths['address'], 'UTF-8');
 
-    $email1 = str_collapse_spaces($email1);
-    $email1 = mb_substr($email1, 0, $emailMaxLength, 'UTF-8');
+    include_once "$fnsDir/Email/request.php";
+    $email1 = \Email\request('email1');
 
     $email1_label = str_collapse_spaces($email1_label);
     $email1_label = mb_substr($email1_label, 0,
         $maxLengths['email1_label'], 'UTF-8');
 
-    $email2 = str_collapse_spaces($email2);
-    $email2 = mb_substr($email2, 0, $emailMaxLength, 'UTF-8');
+    $email2 = \Email\request('email2');
 
     $email2_label = str_collapse_spaces($email2_label);
     $email2_label = mb_substr($email2_label, 0,

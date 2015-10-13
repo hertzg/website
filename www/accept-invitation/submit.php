@@ -8,11 +8,14 @@ include_once '../lib/mysqli.php';
 list($invitation, $key, $id) = require_invitation($mysqli);
 
 include_once '../fns/request_strings.php';
-list($username, $password, $repeatPassword, $email) = request_strings(
-    'username', 'password', 'repeatPassword', 'email');
+list($username, $password, $repeatPassword) = request_strings(
+    'username', 'password', 'repeatPassword');
 
 include_once '../fns/str_collapse_spaces.php';
 $username = str_collapse_spaces($username);
+
+include_once '../fns/Email/request.php';
+$email = Email\request();
 
 $errors = [];
 
