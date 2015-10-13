@@ -12,10 +12,15 @@ list($invitation, $id) = require_invitation($mysqli);
 include_once "$fnsDir/Invitations/request.php";
 $note = Invitations\request();
 
-include_once "$fnsDir/Invitations/edit.php";
-Invitations\edit($mysqli, $id, $note, null);
+if ($invitation->note === $note) {
+    $message = 'No changes to be saved.';
+} else {
+    $message = 'Changes have been saved.';
+    include_once "$fnsDir/Invitations/edit.php";
+    Invitations\edit($mysqli, $id, $note, null);
+}
 
-$_SESSION['admin/invitations/view/messages'] = ['Changes have been saved.'];
+$_SESSION['admin/invitations/view/messages'] = [$message];
 
 include_once "$fnsDir/redirect.php";
 redirect("../view/?id=$id");
