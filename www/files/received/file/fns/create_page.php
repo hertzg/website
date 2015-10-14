@@ -36,10 +36,13 @@ function create_page ($receivedFile, &$scripts, $base = '') {
     $href = "{$base}delete/$queryString";
     $deleteLink = Page\imageLink('Delete', $href, 'trash-bin');
 
+    include_once "$fnsDir/ReceivedFiles/File/path.php";
+    $path = ReceivedFiles\File\path($receivedFile->receiver_id_users, $id);
+
     include_once "$fnsDir/Page/filePreview.php";
     $filePreview = Page\filePreview($receivedFile->media_type,
-        $receivedFile->content_type, $id, "{$base}download/",
-        "$base../../../");
+        $receivedFile->content_type, $id, $path,
+        "{$base}download/", "$base../../../");
 
     include_once "$fnsDir/export_date_ago.php";
     $date_ago = export_date_ago($receivedFile->insert_time);

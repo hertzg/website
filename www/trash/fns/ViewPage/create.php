@@ -47,9 +47,22 @@ function create ($deletedItem, $user, &$title, &$head, &$scripts) {
     } elseif ($type == 'place' || $type == 'receivedPlace') {
         include_once __DIR__.'/renderPlace.php';
         renderPlace($data, $items);
-    } elseif ($type == 'file' || $type == 'receivedFile') {
+    } elseif ($type == 'file') {
+
+        include_once "$fnsDir/Files/File/path.php";
+        $path = \Files\File\path($deletedItem->id_users, $data->id);
+
         include_once __DIR__.'/renderFile.php';
-        renderFile($id, $data, $items);
+        renderFile($id, $data, $path, $items);
+
+    } elseif ($type == 'receivedFile') {
+
+        include_once "$fnsDir/ReceivedFiles/File/path.php";
+        $path = \ReceivedFiles\File\path($deletedItem->id_users, $data->id);
+
+        include_once __DIR__.'/renderFile.php';
+        renderFile($id, $data, $path, $items);
+
     } elseif ($type == 'folder' || $type == 'receivedFolder') {
         include_once __DIR__.'/renderFolder.php';
         renderFolder($data, $items);

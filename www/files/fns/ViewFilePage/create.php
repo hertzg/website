@@ -21,9 +21,12 @@ function create ($mysqli, $file, &$scripts) {
 
     $media_type = $file->media_type;
 
+    include_once "$fnsDir/Files/File/path.php";
+    $path = \Files\File\path($file->id_users, $id);
+
     include_once "$fnsDir/Page/filePreview.php";
     $filePreview = \Page\filePreview($media_type, $file->content_type,
-        $id, '../download-file/', $base, $file->content_revision);
+        $id, $path, '../download-file/', $base, $file->content_revision);
 
     if ($media_type == 'image') {
         include_once __DIR__.'/imageOptionsPanel.php';

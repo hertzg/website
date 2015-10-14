@@ -23,9 +23,12 @@ include_once "$fnsDir/Page/imageLink.php";
 $downloadLink = Page\imageLink('Download',
     "../download-file/$id/$namePart", 'download');
 
+include_once "$fnsDir/ReceivedFolderFiles/File/path.php";
+$path = ReceivedFolderFiles\File\path($receivedFolderFile->id_users, $id);
+
 include_once "$fnsDir/Page/filePreview.php";
 $filePreview = Page\filePreview($receivedFolderFile->media_type,
-    $receivedFolderFile->content_type, $id, '../download-file/', $base);
+    $receivedFolderFile->content_type, $id, $path, '../download-file/', $base);
 
 include_once "$fnsDir/create_panel.php";
 include_once "$fnsDir/Form/label.php";
