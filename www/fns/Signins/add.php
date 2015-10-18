@@ -11,5 +11,5 @@ function add ($mysqli, $id_users, $remote_address) {
         ." values ($id_users, $insert_time, '$remote_address')";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
-}
 
+}
