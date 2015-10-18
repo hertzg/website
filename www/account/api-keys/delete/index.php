@@ -12,7 +12,7 @@ unset($_SESSION['account/api-keys/view/messages']);
 include_once '../fns/ViewPage/create.php';
 include_once "$fnsDir/Page/confirmDialog.php";
 $content =
-    ViewPage\create($apiKey, $scripts)
+    ViewPage\create($mysqli, $apiKey, $scripts)
     .Page\confirmDialog('Are you sure you want to delete the API key?',
         'Yes, delete API key', "submit.php?id=$id", "../view/?id=$id");
 

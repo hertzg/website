@@ -2,7 +2,7 @@
 
 namespace ViewPage;
 
-function create ($apiKey, &$scripts) {
+function create ($mysqli, $apiKey, &$scripts) {
 
     $id = $apiKey->id;
     $fnsDir = __DIR__.'/../../../../fns';
@@ -55,6 +55,7 @@ function create ($apiKey, &$scripts) {
         $_SESSION['account/api-keys/new/values']
     );
 
+    include_once __DIR__.'/authsPanel.php';
     include_once __DIR__.'/createPermissionsField.php';
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Form/label.php";
@@ -90,6 +91,7 @@ function create ($apiKey, &$scripts) {
         .'<div class="hr"></div>'
         .\Form\label('Last accessed', $accessed)
         .\Page\infoText($infoText)
+        .authsPanel($mysqli, $id)
         .create_panel('API Key Options', $optionsContent),
         \Page\newItemButton('../new/', 'API Key')
     );
