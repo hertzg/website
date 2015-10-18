@@ -23,4 +23,10 @@ function require_admin_api_key ($permission_field, &$apiKey, &$mysqli) {
         ErrorJson\forbidden('"ACCESS_DENIED"');
     }
 
+    include_once "$fnsDir/ClientAddress/get.php";
+    $client_address = ClientAddress\get();
+
+    include_once "$fnsDir/AdminApiKeyAuths/add.php";
+    AdminApiKeyAuths\add($mysqli, $apiKey->id, $client_address);
+
 }

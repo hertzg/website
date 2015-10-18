@@ -56,8 +56,10 @@ function require_api_key ($permission_field) {
             ErrorJson\forbidden('"API_KEY_EXPIRED"');
         }
 
+        $id_users = $apiKey->id_users;
+
         include_once "$fnsDir/Users/get.php";
-        $user = Users\get($mysqli, $apiKey->id_users);
+        $user = Users\get($mysqli, $id_users);
 
         if ($user->disabled) {
             include_once "$fnsDir/ErrorJson/forbidden.php";
@@ -75,6 +77,9 @@ function require_api_key ($permission_field) {
             ApiKeys\editAccess($mysqli, $apiKey->id, $time, $client_address);
 
         }
+
+        include_once "$fnsDir/ApiKeyAuths/add.php";
+        ApiKeyAuths\add($mysqli, $apiKey->id, $id_users, $client_address);
 
     }
 
