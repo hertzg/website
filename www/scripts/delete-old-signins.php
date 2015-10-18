@@ -16,5 +16,11 @@ Signins\deleteOlder($mysqli, $insert_time);
 include_once '../fns/InvalidSignins/deleteOlder.php';
 InvalidSignins\deleteOlder($mysqli, $insert_time);
 
+include_once '../fns/AdminApiKeyAuths/deleteOlder.php';
+AdminApiKeyAuths\deleteOlder($mysqli, $insert_time);
+
+include_once '../fns/ApiKeyAuths/deleteOlder.php';
+ApiKeyAuths\deleteOlder($mysqli, $insert_time);
+
 $elapsedSeconds = number_format(microtime(true) - $microtime, 3);
 echo "Done in $elapsedSeconds seconds.\n";
