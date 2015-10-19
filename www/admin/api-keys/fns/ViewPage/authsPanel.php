@@ -35,7 +35,7 @@ function authsPanel ($mysqli, $id) {
     if ($hasMore) {
         include_once "$fnsDir/Page/imageArrowLink.php";
         $items[] = \Page\imageArrowLink('All Successful Authentications',
-            "../all-auths/?id=$id", 'generic');
+            "../all-auths/?id=$id", 'generic', ['id' => 'all-auths']);
     } else {
         include_once "$fnsDir/Page/info.php";
         $items[] = \Page\info('Older data not available');
