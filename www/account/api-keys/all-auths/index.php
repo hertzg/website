@@ -6,6 +6,7 @@ list($apiKey, $id, $user) = require_api_key($mysqli);
 
 unset($_SESSION['account/api-keys/view/messages']);
 
+$base = '../../../';
 $fnsDir = '../../../fns';
 
 include_once "$fnsDir/Paging/requestOffset.php";
@@ -62,5 +63,10 @@ $content = Page\tabs(
     join('<div class="hr"></div>', $items)
 );
 
+$title = "All Successful Authentications with API Key #$id";
+
+include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/echo_user_page.php";
-echo_user_page($user, 'All Successful Authentications', $content, '../../../');
+echo_user_page($user, $title, $content, $base, [
+    'scripts' => compressed_js_script('dateAgo', $base),
+]);

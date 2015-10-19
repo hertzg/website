@@ -63,5 +63,10 @@ $content = Page\tabs(
     join('<div class="hr"></div>', $items)
 );
 
+$title = "All Successful Authentications with Admin API Key #$id";
+
 include_once '../../fns/echo_admin_page.php';
-echo_admin_page('All Successful Authentications', $content, '../../');
+include_once "$fnsDir/compressed_js_script.php";
+echo_admin_page($title, $content, '../../', [
+    'scripts' => compressed_js_script('dateAgo', '../../../'),
+]);
