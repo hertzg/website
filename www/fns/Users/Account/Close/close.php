@@ -7,6 +7,9 @@ function close ($mysqli, $user) {
     $id_users = $user->id_users;
     $fnsDir = __DIR__.'/../../..';
 
+    include_once "$fnsDir/ApiKeyAuths/deleteOnUser.php";
+    \ApiKeyAuths\deleteOnUser($mysqli, $id_users);
+
     if ($user->num_api_keys) {
         include_once "$fnsDir/ApiKeys/deleteOnUser.php";
         \ApiKeys\deleteOnUser($mysqli, $id_users);
