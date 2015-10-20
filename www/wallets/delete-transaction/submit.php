@@ -13,7 +13,7 @@ include_once "$fnsDir/Users/Wallets/Transactions/delete.php";
 Users\Wallets\Transactions\delete($mysqli, $transaction);
 
 unset($_SESSION['wallets/view/errors']);
-$_SESSION['wallets/view/messages'] = ['The transaction has been deleted.'];
+$_SESSION['wallets/view/messages'] = ["Transaction #$id has been deleted."];
 
 include_once "$fnsDir/redirect.php";
 include_once "$fnsDir/ItemList/itemQuery.php";

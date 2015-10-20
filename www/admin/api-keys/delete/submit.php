@@ -16,7 +16,9 @@ include_once "$fnsDir/AdminApiKeyAuths/deleteOnAdminApiKey.php";
 AdminApiKeyAuths\deleteOnAdminApiKey($mysqli, $id);
 
 unset($_SESSION['admin/api-keys/errors']);
-$_SESSION['admin/api-keys/messages'] = ['The admin API key has been deleted.'];
+$_SESSION['admin/api-keys/messages'] = [
+    "Admin API key #$id has been deleted.",
+];
 
 include_once "$fnsDir/redirect.php";
 redirect('..');

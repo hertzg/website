@@ -13,7 +13,7 @@ include_once "$fnsDir/Users/Events/delete.php";
 Users\Events\delete($mysqli, $user, $event);
 
 unset($_SESSION['calendar/errors']);
-$_SESSION['calendar/messages'] = ['Event has been deleted.'];
+$_SESSION['calendar/messages'] = ["Event #$id has been deleted."];
 
 $event_time = $event->event_time;
 include_once "$fnsDir/redirect.php";

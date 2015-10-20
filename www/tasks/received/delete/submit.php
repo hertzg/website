@@ -12,7 +12,7 @@ list($receivedTask, $id, $user) = require_received_task($mysqli, '../');
 include_once "$fnsDir/Users/Tasks/Received/delete.php";
 Users\Tasks\Received\delete($mysqli, $receivedTask);
 
-$messages = ['Task has been deleted.'];
+$messages = ["Received task #$id has been deleted."];
 include_once "$fnsDir/redirect.php";
 
 if ($user->num_received_tasks == 1) {

@@ -13,7 +13,7 @@ include_once "$fnsDir/Users/Notes/delete.php";
 Users\Notes\delete($mysqli, $note);
 
 unset($_SESSION['notes/errors']);
-$_SESSION['notes/messages'] = ['Note has been deleted.'];
+$_SESSION['notes/messages'] = ["Note #$id has been deleted."];
 
 include_once "$fnsDir/redirect.php";
 include_once "$fnsDir/ItemList/listUrl.php";

@@ -12,7 +12,7 @@ list($apiKey, $id, $user) = require_api_key($mysqli);
 include_once "$fnsDir/Users/ApiKeys/delete.php";
 Users\ApiKeys\delete($mysqli, $apiKey);
 
-$_SESSION['account/api-keys/messages'] = ['The key has been deleted.'];
+$_SESSION['account/api-keys/messages'] = ["API key #$id has been deleted."];
 unset($_SESSION['account/api-keys/errors']);
 
 include_once "$fnsDir/redirect.php";

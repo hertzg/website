@@ -13,7 +13,7 @@ include_once "$fnsDir/Users/Tasks/delete.php";
 Users\Tasks\delete($mysqli, $user, $task);
 
 unset($_SESSION['tasks/errors']);
-$_SESSION['tasks/messages'] = ['Task has been deleted.'];
+$_SESSION['tasks/messages'] = ["Task #$id has been deleted."];
 
 include_once "$fnsDir/redirect.php";
 include_once "$fnsDir/ItemList/listUrl.php";

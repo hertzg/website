@@ -13,7 +13,7 @@ include_once "$fnsDir/Users/Contacts/delete.php";
 Users\Contacts\delete($mysqli, $contact, $user);
 
 unset($_SESSION['contacts/errors']);
-$_SESSION['contacts/messages'] = ['Contact has been deleted.'];
+$_SESSION['contacts/messages'] = ["Contact #$id has been deleted."];
 
 include_once "$fnsDir/redirect.php";
 include_once "$fnsDir/ItemList/listUrl.php";

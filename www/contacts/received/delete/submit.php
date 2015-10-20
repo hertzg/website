@@ -12,7 +12,7 @@ list($receivedContact, $id, $user) = require_received_contact($mysqli, '../');
 include_once "$fnsDir/Users/Contacts/Received/delete.php";
 Users\Contacts\Received\delete($mysqli, $receivedContact);
 
-$messages = ['Contact has been deleted.'];
+$messages = ["Received contact #$id has been deleted."];
 include_once "$fnsDir/redirect.php";
 
 if ($user->num_received_contacts == 1) {

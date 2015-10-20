@@ -13,7 +13,7 @@ include_once "$fnsDir/Users/BarCharts/delete.php";
 Users\BarCharts\delete($mysqli, $bar_chart);
 
 unset($_SESSION['bar-charts/errors']);
-$_SESSION['bar-charts/messages'] = ['The bar chart has been deleted.'];
+$_SESSION['bar-charts/messages'] = ["Bar chart #$id has been deleted."];
 
 include_once "$fnsDir/redirect.php";
 include_once "$fnsDir/ItemList/listUrl.php";

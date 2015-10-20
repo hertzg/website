@@ -13,8 +13,9 @@ list($notification, $id, $user) = require_notification($mysqli, '../');
 include_once "$fnsDir/Users/Notifications/delete.php";
 Users\Notifications\delete($mysqli, $notification);
 
-$message = 'The notification has been deleted.';
-$_SESSION['notifications/in-subscribed-channel/messages'] = [$message];
+$_SESSION['notifications/in-subscribed-channel/messages'] = [
+    'The notification has been deleted.',
+];
 
 include_once "$fnsDir/redirect.php";
 include_once "$fnsDir/ItemList/itemQuery.php";

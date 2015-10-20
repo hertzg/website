@@ -14,7 +14,7 @@ if ($place->num_points > 1) {
     Users\Places\Points\delete($mysqli, $point);
 }
 
-$_SESSION['places/view/messages'] = ['The point has been deleted.'];
+$_SESSION['places/view/messages'] = ["Point #$id has been deleted."];
 
 include_once "$fnsDir/redirect.php";
 include_once "$fnsDir/ItemList/itemQuery.php";

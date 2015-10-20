@@ -12,7 +12,7 @@ list($bar, $id, $user) = require_bar($mysqli);
 include_once "$fnsDir/Users/BarCharts/Bars/delete.php";
 Users\BarCharts\Bars\delete($mysqli, $bar);
 
-$_SESSION['bar-charts/view/messages'] = ['The bar has been deleted.'];
+$_SESSION['bar-charts/view/messages'] = ["Bar #$id has been deleted."];
 
 include_once "$fnsDir/redirect.php";
 include_once "$fnsDir/ItemList/itemQuery.php";

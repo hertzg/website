@@ -13,7 +13,7 @@ include_once "$fnsDir/Users/Schedules/delete.php";
 Users\Schedules\delete($mysqli, $user, $schedule);
 
 unset($_SESSION['schedules/errors']);
-$_SESSION['schedules/messages'] = ['Schedule has been deleted.'];
+$_SESSION['schedules/messages'] = ["Schedule #$id has been deleted."];
 
 include_once "$fnsDir/redirect.php";
 include_once "$fnsDir/ItemList/listUrl.php";

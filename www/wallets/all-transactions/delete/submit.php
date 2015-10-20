@@ -12,8 +12,9 @@ list($transaction, $id, $user) = require_transaction($mysqli, '../');
 include_once "$fnsDir/Users/Wallets/Transactions/delete.php";
 Users\Wallets\Transactions\delete($mysqli, $transaction);
 
-$message = 'The transaction has been deleted.';
-$_SESSION['wallets/all-transactions/messages'] = [$message];
+$_SESSION['wallets/all-transactions/messages'] = [
+    "Transaction #$id has been deleted.",
+];
 
 include_once "$fnsDir/redirect.php";
 include_once "$fnsDir/ItemList/itemQuery.php";

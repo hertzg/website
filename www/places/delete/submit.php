@@ -13,7 +13,7 @@ include_once "$fnsDir/Users/Places/delete.php";
 Users\Places\delete($mysqli, $place);
 
 unset($_SESSION['places/errors']);
-$_SESSION['places/messages'] = ['Place has been deleted.'];
+$_SESSION['places/messages'] = ["Place #$id has been deleted."];
 
 include_once "$fnsDir/redirect.php";
 include_once "$fnsDir/ItemList/listUrl.php";

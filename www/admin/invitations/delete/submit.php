@@ -13,7 +13,9 @@ include_once "$fnsDir/Invitations/delete.php";
 Invitations\delete($mysqli, $id);
 
 unset($_SESSION['admin/invitations/errors']);
-$_SESSION['admin/invitations/messages'] = ['The invitation has been deleted.'];
+$_SESSION['admin/invitations/messages'] = [
+    "Invitation #$id has been deleted.",
+];
 
 include_once "$fnsDir/redirect.php";
 redirect('..');

@@ -12,7 +12,7 @@ list($receivedNote, $id, $user) = require_received_note($mysqli, '../');
 include_once "$fnsDir/Users/Notes/Received/delete.php";
 Users\Notes\Received\delete($mysqli, $receivedNote);
 
-$messages = ['Note has been deleted.'];
+$messages = ["Received note #$id has been deleted."];
 include_once "$fnsDir/redirect.php";
 
 if ($user->num_received_notes == 1) {

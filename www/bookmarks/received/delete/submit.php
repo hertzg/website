@@ -12,7 +12,7 @@ list($receivedBookmark, $id, $user) = require_received_bookmark($mysqli, '../');
 include_once "$fnsDir/Users/Bookmarks/Received/delete.php";
 Users\Bookmarks\Received\delete($mysqli, $receivedBookmark);
 
-$messages = ['Bookmark has been deleted.'];
+$messages = ["Received bookmark #$id has been deleted."];
 include_once "$fnsDir/redirect.php";
 
 if ($user->num_received_bookmarks == 1) {

@@ -13,7 +13,7 @@ include_once "$fnsDir/Users/Bookmarks/delete.php";
 Users\Bookmarks\delete($mysqli, $bookmark);
 
 unset($_SESSION['bookmarks/errors']);
-$_SESSION['bookmarks/messages'] = ['Bookmark has been deleted.'];
+$_SESSION['bookmarks/messages'] = ["Bookmark #$id has been deleted."];
 
 include_once "$fnsDir/redirect.php";
 include_once "$fnsDir/ItemList/listUrl.php";

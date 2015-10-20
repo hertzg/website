@@ -13,7 +13,7 @@ include_once "$fnsDir/Users/Account/Close/close.php";
 Users\Account\Close\close($mysqli, $user);
 
 unset($_SESSION['admin/users/errors']);
-$_SESSION['admin/users/messages'] = ['The user has been deleted.'];
+$_SESSION['admin/users/messages'] = ["User #$id has been deleted."];
 
 include_once "$fnsDir/redirect.php";
 include_once "$fnsDir/ItemList/listUrl.php";

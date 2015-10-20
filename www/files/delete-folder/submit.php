@@ -14,7 +14,7 @@ $parent_id = $folder->parent_id;
 
 unset($_SESSION['files/errors']);
 $_SESSION['files/id_folders'] = $parent_id;
-$_SESSION['files/messages'] = ['Folder has been deleted.'];
+$_SESSION['files/messages'] = ['The folder has been deleted.'];
 
 include_once '../../fns/create_folder_link.php';
 include_once '../../fns/redirect.php';

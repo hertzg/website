@@ -16,7 +16,9 @@ if (array_key_exists('token', $_SESSION) &&
     $_SESSION['token']->id == $id) unset($_SESSION['token']);
 
 unset($_SESSION['account/tokens/errors']);
-$_SESSION['account/tokens/messages'] = ['Remembered session has been deleted.'];
+$_SESSION['account/tokens/messages'] = [
+    "Remembered session #$id has been deleted.",
+];
 
 include_once "$fnsDir/redirect.php";
 redirect('..');

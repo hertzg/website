@@ -12,7 +12,7 @@ Users\Files\delete($mysqli, $file);
 
 unset($_SESSION['files/errors']);
 $_SESSION['files/id_folders'] = $file->id_folders;
-$_SESSION['files/messages'] = ['File has been deleted.'];
+$_SESSION['files/messages'] = ["File #$id has been deleted."];
 
 include_once '../../fns/create_folder_link.php';
 include_once '../../fns/redirect.php';

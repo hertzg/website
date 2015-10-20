@@ -12,7 +12,7 @@ list($receivedPlace, $id, $user) = require_received_place($mysqli, '../');
 include_once "$fnsDir/Users/Places/Received/delete.php";
 Users\Places\Received\delete($mysqli, $receivedPlace);
 
-$messages = ['Place has been deleted.'];
+$messages = ["Received place #$id has been deleted."];
 include_once "$fnsDir/redirect.php";
 
 if ($user->num_received_places == 1) {

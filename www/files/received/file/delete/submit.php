@@ -12,7 +12,7 @@ list($receivedFile, $id, $user) = require_received_file($mysqli, '../');
 include_once "$fnsDir/Users/Files/Received/delete.php";
 Users\Files\Received\delete($mysqli, $receivedFile);
 
-$messages = ['File has been deleted.'];
+$messages = ["Received file #$id has been deleted."];
 include_once "$fnsDir/redirect.php";
 
 if (!$user->num_received_folders && $user->num_received_files == 1) {
