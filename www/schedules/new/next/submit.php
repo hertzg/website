@@ -26,7 +26,7 @@ unset(
     $_SESSION['schedules/new/next/first_stage']
 );
 
-$_SESSION['schedules/view/messages'] = ['Schedule has been created.'];
+$_SESSION['schedules/view/messages'] = ['Schedule has been saved.'];
 
 include_once "$fnsDir/redirect.php";
 include_once "$fnsDir/ItemList/itemQuery.php";

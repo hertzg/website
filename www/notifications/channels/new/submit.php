@@ -34,7 +34,8 @@ include_once "$fnsDir/Users/Channels/add.php";
 $id = Users\Channels\add($mysqli, $user,
     $channel_name, $public, $receive_notifications);
 
-$message = 'Channel has been created.';
-$_SESSION['notifications/channels/view/messages'] = [$message];
+$_SESSION['notifications/channels/view/messages'] = [
+    'Channel has been saved.',
+];
 
 redirect("../view/?id=$id");
