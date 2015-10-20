@@ -12,10 +12,20 @@ list($transaction, $id, $user) = require_transaction($mysqli, '../');
 include_once "$fnsDir/Users/Wallets/Transactions/delete.php";
 Users\Wallets\Transactions\delete($mysqli, $transaction);
 
-$_SESSION['wallets/all-transactions/messages'] = [
-    "Transaction #$id has been deleted.",
-];
+$id_wallets = $transaction->id_wallets;
+
+include_once "$fnsDir/Wallets/getOnUser.php";
+$wallet = Wallets\getOnUser($mysqli, $user->id_users, $id_wallets);
 
 include_once "$fnsDir/redirect.php";
-include_once "$fnsDir/ItemList/itemQuery.php";
-redirect('../'.ItemList\itemQuery($transaction->id_wallets));
+
+$messages = ["Transaction #$id has been deleted."];
+if ($wallet->num_transactions) {
+    $_SESSION['wallets/all-transactions/messages'] = $messages;
+    include_once "$fnsDir/ItemList/itemQuery.php";
+    redirect('../'.ItemList\itemQuery($transaction->id_wallets));
+}
+
+$messages[] = 'No more transactions.';
+$_SESSION['wallets/view/messages'] = $messages;
+redirect("../../view/?id=$id_wallets");
