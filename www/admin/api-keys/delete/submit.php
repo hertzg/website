@@ -12,6 +12,9 @@ list($apiKey, $id) = require_admin_api_key($mysqli);
 include_once "$fnsDir/AdminApiKeys/delete.php";
 AdminApiKeys\delete($mysqli, $id);
 
+include_once "$fnsDir/AdminApiKeyAuths/deleteOnAdminApiKey.php";
+AdminApiKeyAuths\deleteOnAdminApiKey($mysqli, $id);
+
 unset($_SESSION['admin/api-keys/errors']);
 $_SESSION['admin/api-keys/messages'] = ['The admin API key has been deleted.'];
 

@@ -7,6 +7,9 @@ function delete ($mysqli, $apiKey) {
     include_once __DIR__.'/../../ApiKeys/delete.php';
     \ApiKeys\delete($mysqli, $apiKey->id);
 
+    include_once __DIR__.'/../../ApiKeyAuths/deleteOnApiKey.php';
+    \ApiKeyAuths\deleteOnApiKey($mysqli, $apiKey->id);
+
     include_once __DIR__.'/addNumber.php';
     addNumber($mysqli, $apiKey->id_users, -1);
 
