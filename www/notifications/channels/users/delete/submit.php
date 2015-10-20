@@ -12,8 +12,9 @@ list($subscribedChannel, $id, $user) = require_subscribed_channel($mysqli);
 include_once "$fnsDir/Users/Channels/Users/delete.php";
 Users\Channels\Users\delete($mysqli, $subscribedChannel);
 
-$message = 'The user has been removed.';
-$_SESSION['notifications/channels/users/messages'] = [$message];
+$_SESSION['notifications/channels/users/messages'] = [
+    'The user has been removed.',
+];
 
 include_once "$fnsDir/redirect.php";
 redirect("..?id=$subscribedChannel->id_channels");

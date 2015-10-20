@@ -39,7 +39,8 @@ unset(
     $_SESSION['admin/api-keys/new/values']
 );
 
-$message = 'The admin API key has been generated.';
-$_SESSION['admin/api-keys/view/messages'] = [$message];
+$_SESSION['admin/api-keys/view/messages'] = [
+    'Admin API key has been generated.',
+];
 
 redirect("../view/?id=$id");
