@@ -35,6 +35,6 @@ include_once "$fnsDir/Users/Places/Points/add.php";
 $id = Users\Places\Points\add($mysqli, $place,
     $parsed_latitude, $parsed_longitude, $parsed_altitude);
 
-$_SESSION['places/view-point/messages'] = ['The point has been added.'];
+$_SESSION['places/view-point/messages'] = ['Point has been saved.'];
 
 redirect('../view-point/'.ItemList\itemQuery($id));

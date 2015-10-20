@@ -38,7 +38,8 @@ include_once "$fnsDir/Users/Channels/Users/add.php";
 Users\Channels\Users\add($mysqli, $user,
     $channel, $subscribedChannel, $subscriberUser);
 
-$message = 'The user has been added.';
-$_SESSION['notifications/channels/users/messages'] = [$message];
+$_SESSION['notifications/channels/users/messages'] = [
+    'The user has been added.',
+];
 
 redirect("../?id=$id");

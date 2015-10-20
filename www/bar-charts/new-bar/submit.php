@@ -29,7 +29,7 @@ unset(
     $_SESSION['bar-charts/new-bar/values']
 );
 
-$_SESSION['bar-charts/view-bar/messages'] = ['The bar has been saved.'];
+$_SESSION['bar-charts/view-bar/messages'] = ['Bar has been saved.'];
 
 include_once "$fnsDir/Users/BarCharts/Bars/add.php";
 $id = Users\BarCharts\Bars\add($mysqli, $bar_chart, $parsed_value, $label);

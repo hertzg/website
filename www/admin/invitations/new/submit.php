@@ -15,8 +15,7 @@ include_once "$fnsDir/Invitations/add.php";
 include_once '../../../lib/mysqli.php';
 $id = Invitations\add($mysqli, $note, null);
 
-$message = 'The invitation has been saved.';
-$_SESSION['admin/invitations/view/messages'] = [$message];
+$_SESSION['admin/invitations/view/messages'] = ['Invitation has been saved.'];
 
 include_once "$fnsDir/redirect.php";
 redirect("../view/?id=$id");

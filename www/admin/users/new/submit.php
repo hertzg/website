@@ -52,7 +52,7 @@ include_once "$fnsDir/Users/Account/create.php";
 $id = Users\Account\create($mysqli,
     $username, $password, '', $disabled, $expires);
 
-$_SESSION['admin/users/view/messages'] = ['The user has been saved.'];
+$_SESSION['admin/users/view/messages'] = ['User has been saved.'];
 
 include_once "$fnsDir/ItemList/itemQuery.php";
 redirect('../view/'.ItemList\itemQuery($id));
