@@ -8,7 +8,7 @@ $base = '../';
 $fnsDir = '../fns';
 
 include_once 'fns/create_page.php';
-$content = create_page($mysqli, $user, $folder, $scripts);
+$content = create_page($mysqli, $user, $folder, $scripts, $title);
 
 if ($id) {
     $deleteHref = "delete-folder/submit.php?id_folders=$id";
@@ -24,7 +24,7 @@ if ($id) {
 
 include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_user_page.php";
-echo_user_page($user, 'Files', $content, $base, [
+echo_user_page($user, $title, $content, $base, [
     'head' => compressed_css_link('confirmDialog', $base),
     'scripts' => $scripts,
 ]);

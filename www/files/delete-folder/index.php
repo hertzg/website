@@ -16,7 +16,7 @@ unset(
 include_once '../fns/create_page.php';
 include_once "$fnsDir/Page/confirmDialog.php";
 $content =
-    create_page($mysqli, $user, $folder, $scripts, '../')
+    create_page($mysqli, $user, $folder, $scripts, $title, '../')
     .Page\confirmDialog('Are you sure you want to delete the folder?'
         .' It will be moved to Trash.', 'Yes, delete folder',
         "submit.php?id_folders=$id_folders", "../?id_folders=$id_folders");

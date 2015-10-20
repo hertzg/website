@@ -1,6 +1,7 @@
 <?php
 
-function create_page ($mysqli, $user, $folder, &$scripts, $base = '') {
+function create_page ($mysqli, $user,
+    $folder, &$scripts, &$title, $base = '') {
 
     $fnsDir = __DIR__.'/../../fns';
     $id = $folder ? $folder->id_folders : 0;
@@ -70,6 +71,6 @@ function create_page ($mysqli, $user, $folder, &$scripts, $base = '') {
 
     include_once __DIR__.'/create_content.php';
     return create_content($mysqli, $folder,
-        $user, $files, $items, $infoText, $base);
+        $user, $files, $items, $infoText, $title, $base);
 
 }

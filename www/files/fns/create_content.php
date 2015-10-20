@@ -1,10 +1,17 @@
 <?php
 
 function create_content ($mysqli, $folder,
-    $user, $files, $items, $infoText, $base) {
+    $user, $files, $items, $infoText, &$title, $base) {
 
     $fnsDir = __DIR__.'/../../fns';
     $id = $folder ? $folder->id_folders : 0;
+    if ($folder) {
+        $id = $folder->id_folders;
+        $title = "Folder #$id";
+    } else {
+        $id = 0;
+        $title = 'Files';
+    }
 
     include_once __DIR__.'/create_options_panel.php';
     include_once __DIR__.'/create_location_bar.php';
@@ -19,7 +26,7 @@ function create_content ($mysqli, $folder,
                     'href' => '../home/#files',
                 ],
             ],
-            'Files',
+            $title,
             Page\sessionErrors('files/errors')
             .Page\sessionMessages('files/messages')
             .create_location_bar($mysqli, $folder)
