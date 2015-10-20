@@ -7,8 +7,8 @@ An instance of the script runs on https://zvini.com/.
 The website comes with an installer which should work in most environments.
 For other environments or for manual installation see the sections below:
 
-Configuration
--------------
+Configuration Files
+-------------------
 In `www/fns` folder:
 
 * `MysqlConfig/get.php` contains MySQL server address,
@@ -23,8 +23,8 @@ root to `www` folder. Examples: `'/'`, `'/www/'`, `'/zvini/'`.
 protocol either `'http'` or `'https'`.
 * `ClientAddress/get.php` contains a way to detect a client IP address.
 
-Installation
-------------
+Installation Scripts
+--------------------
 In `www/scripts` folder:
 * `./ensure/table/run-all.sh` will create all the tables in the database.
 * `./create-data-dir.sh` will create a data folder
