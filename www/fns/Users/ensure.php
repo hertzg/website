@@ -6,19 +6,21 @@ function ensure ($mysqli) {
 
     $fnsDir = __DIR__.'/..';
 
+    include_once "$fnsDir/IPAddress/column.php";
+    $ipAddressColumn = \IPAddress\column(true);
+
     include_once "$fnsDir/ApiKeyName/column.php";
     include_once "$fnsDir/Email/column.php";
     include_once "$fnsDir/EncryptionKey/column.php";
     include_once "$fnsDir/EncryptionKey/ivColumn.php";
     include_once "$fnsDir/FullName/column.php";
-    include_once "$fnsDir/IPAddress/column.php";
     include_once "$fnsDir/LinkKey/column.php";
     include_once "$fnsDir/Table/ensure.php";
     include_once "$fnsDir/Theme/Brightness/column.php";
     include_once "$fnsDir/Theme/Color/column.php";
     include_once "$fnsDir/Username/column.php";
     return \Table\ensure($mysqli, 'users', [
-        'access_remote_address' => \IPAddress\column(true),
+        'access_remote_address' => $ipAddressColumn,
         'access_time' => [
             'type' => 'bigint(21) unsigned',
             'nullable' => true,
@@ -87,6 +89,7 @@ function ensure ($mysqli) {
         ],
         'insert_api_key_name' => \ApiKeyName\column(true),
         'insert_time' => ['type' => 'bigint(20) unsigned'],
+        'last_signin_remote_address' => $ipAddressColumn,
         'last_signin_time' => [
             'type' => 'bigint(20) unsigned',
             'nullable' => true,

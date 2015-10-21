@@ -22,7 +22,7 @@ function authenticate ($mysqli, $username, $password, $remember, &$disabled) {
             $id_users = $user->id_users;
 
             include_once "$fnsDir/Users/signIn.php";
-            \Users\signIn($mysqli, $id_users);
+            \Users\signIn($mysqli, $id_users, $client_address);
 
             include_once "$fnsDir/Signins/add.php";
             \Signins\add($mysqli, $id_users, $client_address);
