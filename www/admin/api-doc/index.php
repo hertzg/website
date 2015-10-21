@@ -40,7 +40,10 @@ $content = Page\tabs(
     .'<div class="hr"></div>'
     .Page\text(
         'Below is a list of errors that are expected from any admin API method:'
-        .'<br /><code>INVALID_API_KEY</code> - The admin API key is invalid.'
+        .'<br /><code>INVALID_ADMIN_API_KEY</code> - '
+        .'The admin API key is invalid.'
+        .'<br /><code>ADMIN_API_KEY_EXPIRED</code> - '
+        .'The admin API key is expired.'
         .'<br /><code>ACCESS_DENIED</code> - '
         .'The admin API key doesn\'t have a permission to perform the action.'
     )

@@ -25,6 +25,12 @@ function require_admin_api_key ($permission_field, &$apiKey, &$mysqli) {
 
     $time = time();
 
+    $expire_time = $apiKey->expire_time;
+    if ($expire_time !== null && $expire_time < $time) {
+        include_once "$fnsDir/ErrorJson/forbidden.php";
+        ErrorJson\forbidden('"ADMIN_API_KEY_EXPIRED"');
+    }
+
     include_once "$fnsDir/ClientAddress/get.php";
     $client_address = ClientAddress\get();
 
