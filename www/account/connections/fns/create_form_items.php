@@ -4,7 +4,7 @@ function create_form_items ($values) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
-    include_once __DIR__.'/../../fns/create_expires_field.php';
+    include_once "$fnsDir/create_expires_field.php";
     include_once "$fnsDir/Form/textfield.php";
     include_once "$fnsDir/Username/maxLength.php";
     $items = [

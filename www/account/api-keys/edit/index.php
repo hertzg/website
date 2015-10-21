@@ -6,12 +6,15 @@ list($apiKey, $id, $user) = require_api_key($mysqli);
 
 unset($_SESSION['account/api-keys/view/messages']);
 
+$base = '../../../';
+$fnsDir = '../../../fns';
+
 $key = 'account/api-keys/edit/values';
 if (array_key_exists($key, $_SESSION)) {
     $values = $_SESSION[$key];
 } else {
 
-    include_once '../../fns/restore_expires.php';
+    include_once "$fnsDir/restore_expires.php";
     $values = [
         'name' => $apiKey->name,
         'expires' => restore_expires($apiKey->expire_time),
@@ -33,9 +36,6 @@ if (array_key_exists($key, $_SESSION)) {
     }
 
 }
-
-$base = '../../../';
-$fnsDir = '../../../fns';
 
 include_once '../fns/create_general_fields.php';
 include_once '../fns/create_permission_fields.php';

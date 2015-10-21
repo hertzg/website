@@ -12,8 +12,11 @@ function request_admin_api_key_params ($mysqli, &$errors, $exclude_id = 0) {
     list($name) = AdminApiKeys\request();
 
     include_once "$fnsDir/request_strings.php";
-    list($invitation_access, $user_access) = request_strings(
-        'invitation_access', 'user_access');
+    list($expires, $invitation_access, $user_access) = request_strings(
+        'expires', 'invitation_access', 'user_access');
+
+    include_once "$fnsDir/parse_expire_time.php";
+    parse_expire_time($expires, $expire_time);
 
     $parseAccess($invitation_access);
     $parseAccess($user_access);
@@ -27,6 +30,6 @@ function request_admin_api_key_params ($mysqli, &$errors, $exclude_id = 0) {
         }
     }
 
-    return [$name, $invitation_access, $user_access];
+    return [$name, $expires, $expire_time, $invitation_access, $user_access];
 
 }

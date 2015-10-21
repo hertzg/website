@@ -10,7 +10,7 @@ require_admin();
 
 include_once '../fns/request_admin_api_key_params.php';
 include_once '../../../lib/mysqli.php';
-list($name, $invitation_access,
+list($name, $expires, $expire_time, $invitation_access,
     $user_access) = request_admin_api_key_params($mysqli, $errors);
 
 include_once "$fnsDir/redirect.php";
@@ -19,6 +19,7 @@ if ($errors) {
     $_SESSION['admin/api-keys/new/errors'] = $errors;
     $_SESSION['admin/api-keys/new/values'] = [
         'name' => $name,
+        'expires' => $expires,
         'invitation_access' => $invitation_access,
         'user_access' => $user_access,
     ];
@@ -31,7 +32,7 @@ parse_read_write($invitation_access,
 parse_read_write($user_access, $can_read_users, $can_write_users);
 
 include_once "$fnsDir/AdminApiKeys/add.php";
-$id = AdminApiKeys\add($mysqli, $name, $can_read_invitations,
+$id = AdminApiKeys\add($mysqli, $name, $expire_time, $can_read_invitations,
     $can_read_users, $can_write_invitations, $can_write_users);
 
 unset(

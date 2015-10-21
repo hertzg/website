@@ -20,6 +20,10 @@ function ensure ($mysqli) {
         'can_read_users' => ['type' => 'tinyint(3) unsigned'],
         'can_write_invitations' => ['type' => 'tinyint(3) unsigned'],
         'can_write_users' => ['type' => 'tinyint(3) unsigned'],
+        'expire_time' => [
+            'type' => 'bigint(20) unsigned',
+            'nullable' => true,
+        ],
         'id' => [
             'type' => 'bigint(20) unsigned',
             'primary' => true,

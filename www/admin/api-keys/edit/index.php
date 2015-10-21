@@ -4,12 +4,16 @@ include_once '../fns/require_admin_api_key.php';
 include_once '../../../lib/mysqli.php';
 list($apiKey, $id) = require_admin_api_key($mysqli);
 
+$fnsDir = '../../../fns';
+
 $key = 'admin/api-keys/edit/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
 
+    include_once "$fnsDir/restore_expires.php";
     $values = [
         'name' => $apiKey->name,
+        'expires' => restore_expires($apiKey->expire_time),
         'randomizeKey' => false,
     ];
 
@@ -29,8 +33,6 @@ else {
 }
 
 unset($_SESSION['admin/api-keys/view/messages']);
-
-$fnsDir = '../../../fns';
 
 include_once '../fns/create_general_fields.php';
 include_once '../fns/create_permission_fields.php';

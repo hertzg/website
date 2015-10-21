@@ -21,7 +21,7 @@ function request_api_key_params ($mysqli, $user, &$errors, $exclude_id = 0) {
         'file_access', 'note_access', 'notification_access', 'place_access',
         'schedule_access', 'task_access', 'wallet_access');
 
-    include_once __DIR__.'/../../fns/parse_expire_time.php';
+    include_once "$fnsDir/parse_expire_time.php";
     parse_expire_time($expires, $expire_time);
 
     $parseAccess($bar_chart_access);

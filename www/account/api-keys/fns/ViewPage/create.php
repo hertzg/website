@@ -43,7 +43,7 @@ function create ($mysqli, $apiKey, &$scripts) {
 
     }
 
-    include_once __DIR__.'/../../../fns/create_expires_label.php';
+    include_once "$fnsDir/create_expires_label.php";
     $expiresLabel = create_expires_label($apiKey->expire_time, $dateAgoScript);
 
     unset(

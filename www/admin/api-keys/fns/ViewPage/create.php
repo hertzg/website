@@ -44,6 +44,9 @@ function create ($mysqli, $apiKey, &$scripts) {
 
     }
 
+    include_once "$fnsDir/create_expires_label.php";
+    $expiresLabel = create_expires_label($apiKey->expire_time, $dateAgoScript);
+
     unset(
         $_SESSION['admin/api-keys/edit/errors'],
         $_SESSION['admin/api-keys/edit/values'],
@@ -74,6 +77,8 @@ function create ($mysqli, $apiKey, &$scripts) {
             "Admin API Key #$id",
             \Page\sessionMessages('admin/api-keys/view/messages')
             .\Form\label('Name', htmlspecialchars($apiKey->name))
+            .'<div class="hr"></div>'
+            .$expiresLabel
             .'<div class="hr"></div>'
             .\Form\textarea('key', 'Key', [
                 'value' => $apiKey->key,

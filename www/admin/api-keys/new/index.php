@@ -8,6 +8,7 @@ if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
     $values = [
         'name' => '',
+        'expires' => 'never',
         'invitation_access' => 'none',
         'user_access' => 'none',
     ];

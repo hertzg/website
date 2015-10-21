@@ -4,10 +4,15 @@ include_once '../fns/require_connection.php';
 include_once '../../../lib/mysqli.php';
 list($connection, $id, $user) = require_connection($mysqli);
 
+unset($_SESSION['account/connections/view/messages']);
+
+$base = '../../../';
+$fnsDir = '../../../fns';
+
 $key = 'account/connections/edit/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
-    include_once '../../fns/restore_expires.php';
+    include_once "$fnsDir/restore_expires.php";
     $values = [
         'username' => $connection->username,
         'expires' => restore_expires($connection->expire_time),
@@ -20,11 +25,6 @@ else {
         'can_send_task' => $connection->can_send_task,
     ];
 }
-
-unset($_SESSION['account/connections/view/messages']);
-
-$base = '../../../';
-$fnsDir = '../../../fns';
 
 include_once '../fns/create_form_items.php';
 include_once "$fnsDir/compressed_js_script.php";

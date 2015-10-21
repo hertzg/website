@@ -35,7 +35,7 @@ function create_view_page ($connection, &$scripts) {
     include_once "$fnsDir/Page/staticTwoColumns.php";
     $optionsContent = Page\staticTwoColumns($editLink, $deleteLink);
 
-    include_once __DIR__.'/../../fns/create_expires_label.php';
+    include_once "$fnsDir/create_expires_label.php";
     $expiresLabel = create_expires_label(
         $connection->expire_time, $dateAgoScript);
 

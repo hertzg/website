@@ -12,7 +12,7 @@ function request_connection_params () {
     include_once "$fnsDir/request_strings.php";
     list($expires) = request_strings('expires');
 
-    include_once __DIR__.'/../../fns/parse_expire_time.php';
+    include_once "$fnsDir/parse_expire_time.php";
     parse_expire_time($expires, $expire_time);
 
     return [$username, $expires, $expire_time, $can_send_bookmark,
