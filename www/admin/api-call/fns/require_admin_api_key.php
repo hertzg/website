@@ -23,8 +23,19 @@ function require_admin_api_key ($permission_field, &$apiKey, &$mysqli) {
         ErrorJson\forbidden('"ACCESS_DENIED"');
     }
 
+    $time = time();
+
     include_once "$fnsDir/ClientAddress/get.php";
     $client_address = ClientAddress\get();
+
+    $access_time = $apiKey->access_time;
+    if ($access_time === null || $access_time + 30 < $time ||
+        $apiKey->access_remote_address !== $client_address) {
+
+        include_once "$fnsDir/AdminApiKeys/editAccess.php";
+        AdminApiKeys\editAccess($mysqli, $apiKey->id, $time, $client_address);
+
+    }
 
     include_once "$fnsDir/AdminApiKeyAuths/add.php";
     AdminApiKeyAuths\add($mysqli, $apiKey->id, $client_address);
