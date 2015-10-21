@@ -15,7 +15,7 @@ function create_expires_field ($expires) {
 
     $options['never'] = 'Never';
     $options['1'] = 'Tomorrow';
-    $options['7'] = 'In 7 days';
+    $options['7'] = 'In a week';
     $options['30'] = 'In 30 days';
     $options['360'] = 'In 360 days';
 
