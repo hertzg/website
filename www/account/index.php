@@ -46,7 +46,7 @@ include_once "$fnsDir/bytestr.php";
 $items[] = Form\label('Using storage', bytestr($user->storage_used));
 
 include_once "$fnsDir/n_times.php";
-$items[] = Form\label('Signed in', ucfirst(n_times($user->num_logins)));
+$items[] = Form\label('Signed in', ucfirst(n_times($user->num_signins)));
 
 include_once 'fns/create_options_panel.php';
 include_once "$fnsDir/Page/sessionMessages.php";

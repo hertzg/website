@@ -7,11 +7,11 @@ function redirect_back ($user, $return) {
     if (parse_url($return, PHP_URL_HOST) !== null) $return = '';
 
     if ($return == '') {
-        $num_logins = $user->num_logins;
-        if ($num_logins) {
+        $num_signins = $user->num_signins;
+        if ($num_signins) {
             include_once "$fnsDir/nth_order.php";
-            $order = nth_order($user->num_logins + 1);
-            $message = "Welcome back! This is your $order login.";
+            $order = nth_order($user->num_signins + 1);
+            $message = "Welcome back! This is your $order signin.";
         } else {
             $message = 'Welcome to Zvini!';
         }

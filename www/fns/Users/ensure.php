@@ -87,7 +87,7 @@ function ensure ($mysqli) {
         ],
         'insert_api_key_name' => \ApiKeyName\column(true),
         'insert_time' => ['type' => 'bigint(20) unsigned'],
-        'last_login_time' => [
+        'last_signin_time' => [
             'type' => 'bigint(20) unsigned',
             'nullable' => true,
         ],
@@ -117,7 +117,6 @@ function ensure ($mysqli) {
         'num_events_tomorrow' => ['type' => 'bigint(20) unsigned'],
         'num_files' => ['type' => 'bigint(20) unsigned'],
         'num_folders' => ['type' => 'bigint(20) unsigned'],
-        'num_logins' => ['type' => 'bigint(20) unsigned'],
         'num_new_notifications' => ['type' => 'bigint(20) unsigned'],
         'num_notes' => ['type' => 'bigint(20) unsigned'],
         'num_notifications' => ['type' => 'bigint(20) unsigned'],
@@ -133,6 +132,7 @@ function ensure ($mysqli) {
         'num_schedules' => ['type' => 'bigint(20) unsigned'],
         'num_schedules_today' => ['type' => 'bigint(20) unsigned'],
         'num_schedules_tomorrow' => ['type' => 'bigint(20) unsigned'],
+        'num_signins' => ['type' => 'bigint(20) unsigned'],
         'num_subscribed_channels' => ['type' => 'bigint(20) unsigned'],
         'num_task_deadlines_today' => ['type' => 'bigint(20) unsigned'],
         'num_task_deadlines_tomorrow' => ['type' => 'bigint(20) unsigned'],

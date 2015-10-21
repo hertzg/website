@@ -10,7 +10,7 @@ $microtime = microtime(true);
 
 $insert_time = time() - 7 * 24 * 60 * 60;
 
-$sql = 'select * from users where num_logins = 0'
+$sql = 'select * from users where num_signins = 0'
     ." and insert_time < $insert_time limit 10";
 $users = mysqli_query_object($mysqli, $sql);
 
