@@ -22,8 +22,8 @@ function create_options_panel ($user, $base = '') {
             "{$base}quick-transfer-amount/$escapedPageQuery",
             'transfer-amount', ['id' => 'transfer-amount']);
 
-        include_once "$fnsDir/Page/staticTwoColumns.php";
-        $content = Page\staticTwoColumns(
+        include_once "$fnsDir/Page/twoColumns.php";
+        $content = Page\twoColumns(
             $newTransactionLink, $transferAmountLink);
 
     } else {
