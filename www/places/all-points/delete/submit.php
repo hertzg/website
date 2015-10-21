@@ -14,8 +14,17 @@ if ($place->num_points > 1) {
     Users\Places\Points\delete($mysqli, $point);
 }
 
-$_SESSION['places/all-points/messages'] = ["Point #$id has been deleted."];
+$id_places = $point->id_places;
 
 include_once "$fnsDir/redirect.php";
-include_once "$fnsDir/ItemList/itemQuery.php";
-redirect('../'.ItemList\itemQuery($point->id_places));
+
+$messages = ["Point #$id has been deleted."];
+if ($place->num_points > 2) {
+    $_SESSION['places/all-points/messages'] = $messages;
+    include_once "$fnsDir/ItemList/itemQuery.php";
+    redirect('../'.ItemList\itemQuery($id_places));
+}
+
+$messages[] = 'No more points.';
+$_SESSION['places/view/messages'] = $messages;
+redirect("../../view/?id=$id_places");
