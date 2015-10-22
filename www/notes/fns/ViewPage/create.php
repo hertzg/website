@@ -69,23 +69,12 @@ function create ($note, &$scripts) {
         $items[] = \Page\tags('../', json_decode($note->tags_json));
     }
 
-    include_once "$fnsDir/format_author.php";
-    $author = format_author($note->insert_time, $note->insert_api_key_name);
-    $infoText =
-        ($note->encrypt_in_listings ? 'Encrypted in listings.<br />' : '')
-        .($note->password_protect ? 'Password-protected.<br />' : '')
-        ."Note created $author.";
-    if ($note->revision) {
-        $author = format_author($note->update_time, $note->update_api_key_name);
-        $infoText .= "<br />Last modified $author.";
-    }
-
     include_once __DIR__.'/unsetSessionVars.php';
     unsetSessionVars();
 
+    include_once __DIR__.'/infoText.php';
     include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/ItemList/listHref.php";
-    include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
     return
@@ -99,7 +88,7 @@ function create ($note, &$scripts) {
             "Note #$id",
             $errors.\Page\sessionMessages('notes/view/messages')
             .join('<div class="hr"></div>', $items)
-            .\Page\infoText($infoText),
+            .infoText($note),
             create_new_item_button('Note', '../')
         )
         .$optionsPanel;
