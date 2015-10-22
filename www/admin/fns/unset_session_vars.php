@@ -2,6 +2,8 @@
 
 function unset_session_vars () {
     unset(
+        $_SESSION['admin/api-keys/errors'],
+        $_SESSION['admin/api-keys/messages'],
         $_SESSION['admin/general-info/messages'],
         $_SESSION['admin/invitations/errors'],
         $_SESSION['admin/invitations/messages'],
