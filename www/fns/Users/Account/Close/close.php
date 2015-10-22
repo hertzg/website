@@ -82,8 +82,13 @@ function close ($mysqli, $user) {
     \Signins\deleteOnUser($mysqli, $id_users);
 
     if ($user->num_tokens) {
+
         include_once "$fnsDir/Tokens/deleteOnUser.php";
         \Tokens\deleteOnUser($mysqli, $id_users);
+
+        include_once "$fnsDir/TokenAuths/deleteOnUser.php";
+        \TokenAuths\deleteOnUser($mysqli, $id_users);
+
     }
 
     if ($user->num_wallets) {
