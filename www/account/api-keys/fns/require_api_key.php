@@ -16,7 +16,7 @@ function require_api_key ($mysqli) {
     $apiKey = Users\ApiKeys\get($mysqli, $user, $id);
 
     if (!$apiKey) {
-        unset($_SESSION['accoint/api-keys/messages']);
+        unset($_SESSION['account/api-keys/messages']);
         $_SESSION['account/api-keys/errors'] = [
             'The API key no longer exists.',
         ];
