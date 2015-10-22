@@ -84,7 +84,7 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
                 $notification->insert_api_key_name);
 
             $content = $text
-                .'<div style="color: #555; font-size: 12px; line-height: 14px">'
+                .'<div class="imageText-description">'
                     ."$notification->channel_name $author."
                 .'</div>';
 

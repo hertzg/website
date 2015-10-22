@@ -37,7 +37,7 @@ include_once "$fnsDir/export_date_ago.php";
 foreach ($auths as $auth) {
     $text =
         htmlspecialchars($auth->remote_address)
-        .'<div style="color: #777; font-size: 12px; line-height: 14px">'
+        .'<div class="imageText-description">'
             .export_date_ago($auth->insert_time, true)
         .'</div>';
     $items[] = create_image_text($text, 'generic');

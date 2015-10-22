@@ -36,7 +36,7 @@ if ($invalidSignins) {
         $text =
             htmlspecialchars($invalidSignin->username).'<br />'
             .'From '.htmlspecialchars($invalidSignin->remote_address)
-            .'<div style="color: #777; font-size: 12px; line-height: 14px">'
+            .'<div class="imageText-description">'
                 .export_date_ago($invalidSignin->insert_time, true)
             .'</div>';
         $items[] = create_image_text($text, 'invalid-sign-in');

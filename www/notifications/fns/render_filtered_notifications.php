@@ -33,7 +33,7 @@ function render_filtered_notifications ($base, $id, $offset,
             $text = nl2br(render_external_links($text, "$base../../"));
 
             $content = $text
-                .'<div style="color: #777; font-size: 12px; line-height: 14px">'
+                .'<div class="imageText-description">'
                     .format_author($notification->insert_time,
                         $notification->insert_api_key_name)
                 .'</div>';

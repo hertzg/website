@@ -1,6 +1,7 @@
 .imageText {
     position: relative;
 }
+
 .imageText-icon {
     position: absolute;
     top: 0;
@@ -8,6 +9,7 @@
     bottom: 0;
     width: 48px;
 }
+
 .imageText-icon .icon {
     position: absolute;
     top: 0;
@@ -16,8 +18,15 @@
     left: 0;
     margin: auto;
 }
+
 .imageText-text {
     padding: 15px 16px 15px 54px;
     min-height: 48px;
     word-wrap: break-word;
+}
+
+.imageText-description {
+    color: #7f7f7f;
+    font-size: 12px;
+    line-height: 14px;
 }
