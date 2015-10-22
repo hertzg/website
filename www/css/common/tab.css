@@ -22,7 +22,6 @@
 }
 .tab-active {
     max-width: 40%;
-    direction: rtl;
 }
 .tab-normal,
 .tab-active {
