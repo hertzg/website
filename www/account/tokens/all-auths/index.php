@@ -55,7 +55,7 @@ include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
     [
         [
-            'title' => "Remembered Session #$id",
+            'title' => "Session #$id",
             'href' => "../view/?id=$id#all-auths",
         ],
     ],
