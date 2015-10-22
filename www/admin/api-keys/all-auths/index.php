@@ -59,11 +59,11 @@ $content = Page\tabs(
             'href' => "../view/?id=$id#all-auths",
         ],
     ],
-    'All Successful Authentications',
+    'Authentication History',
     join('<div class="hr"></div>', $items)
 );
 
-$title = "All Successful Authentications with Admin API Key #$id";
+$title = "Admin API Key #$id Authentication History";
 
 include_once '../../fns/echo_admin_page.php';
 include_once "$fnsDir/compressed_js_script.php";

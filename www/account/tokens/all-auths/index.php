@@ -55,15 +55,15 @@ include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
     [
         [
-            'title' => "Token #$id",
+            'title' => "Remembered Session #$id",
             'href' => "../view/?id=$id#all-auths",
         ],
     ],
-    'All Successful Authentications',
+    'Authentication History',
     join('<div class="hr"></div>', $items)
 );
 
-$title = "All Successful Authentications with Remembered Session #$id";
+$title = "Remembered Session #$id Authentication History";
 
 include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/echo_user_page.php";

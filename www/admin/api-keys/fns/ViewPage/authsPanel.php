@@ -37,7 +37,7 @@ function authsPanel ($mysqli, $apiKey) {
 
     if ($hasMore) {
         include_once "$fnsDir/Page/imageArrowLink.php";
-        $items[] = \Page\imageArrowLink('All Successful Authentications',
+        $items[] = \Page\imageArrowLink('Full Authentication History',
             "../all-auths/?id=$id", 'generic', ['id' => 'all-auths']);
     } else {
         include_once "$fnsDir/Page/info.php";
@@ -47,6 +47,6 @@ function authsPanel ($mysqli, $apiKey) {
     $content = join('<div class="hr"></div>', $items);
 
     include_once "$fnsDir/create_panel.php";
-    return create_panel('Successful Authentications', $content);
+    return create_panel('Authentication History', $content);
 
 }
