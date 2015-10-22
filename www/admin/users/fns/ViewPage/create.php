@@ -57,18 +57,12 @@ function create ($user, &$scripts) {
     include_once __DIR__.'/unsetSessionVars.php';
     unsetSessionVars();
 
-    include_once "$fnsDir/ItemList/escapedItemQuery.php";
-    $escapedItemQuery = \ItemList\escapedItemQuery($id);
-
+    include_once __DIR__.'/optionsPanel.php';
     include_once "$fnsDir/create_new_item_button.php";
-    include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/ItemList/listHref.php";
-    include_once "$fnsDir/Page/imageArrowLink.php";
-    include_once "$fnsDir/Page/imageLink.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
-    include_once "$fnsDir/Page/twoColumns.php";
     return
         \Page\tabs(
             [
@@ -83,21 +77,6 @@ function create ($user, &$scripts) {
             .\Page\infoText($infoText),
             create_new_item_button('User', '../')
         )
-        .create_panel(
-            'User Options',
-            \Page\twoColumns(
-                \Page\imageArrowLink('Reset Password',
-                    "../reset-password/$escapedItemQuery",
-                    'reset-password', ['id' => 'reset-password']),
-                \Page\imageArrowLink('Edit Profile',
-                    "../edit-profile/$escapedItemQuery",
-                    'edit-profile', ['id' => 'edit-profile'])
-            )
-            .'<div class="hr"></div>'
-            .'<div id="deleteLink">'
-                .\Page\imageLink('Delete',
-                    "../delete/$escapedItemQuery", 'trash-bin')
-            .'</div>'
-        );
+        .optionsPanel($id);
 
 }

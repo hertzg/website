@@ -81,25 +81,11 @@ function close ($mysqli, $user) {
     include_once "$fnsDir/Signins/deleteOnUser.php";
     \Signins\deleteOnUser($mysqli, $id_users);
 
-    if ($user->num_tokens) {
+    include_once __DIR__.'/deleteTokens.php';
+    deleteTokens($mysqli, $user);
 
-        include_once "$fnsDir/Tokens/deleteOnUser.php";
-        \Tokens\deleteOnUser($mysqli, $id_users);
-
-        include_once "$fnsDir/TokenAuths/deleteOnUser.php";
-        \TokenAuths\deleteOnUser($mysqli, $id_users);
-
-    }
-
-    if ($user->num_wallets) {
-
-        include_once "$fnsDir/Wallets/deleteOnUser.php";
-        \Wallets\deleteOnUser($mysqli, $id_users);
-
-        include_once "$fnsDir/WalletTransactions/deleteOnUser.php";
-        \WalletTransactions\deleteOnUser($mysqli, $id_users);
-
-    }
+    include_once __DIR__.'/deleteWallets.php';
+    deleteWallets($mysqli, $user);
 
     include_once __DIR__.'/../../delete.php';
     \Users\delete($mysqli, $id_users);
