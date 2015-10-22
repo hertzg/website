@@ -9,10 +9,9 @@ function render ($tags, $text_luminance, $paint) {
 
         if ($i) $html .= ' ';
 
-        $hash = md5($tag);
-
         if ($paint) {
 
+            $hash = md5($tag);
             $hue = floor(hexdec(substr($hash, 0, 4)) / 1024 * 360);
             $saturation = 40 + floor(hexdec(substr($hash, 4, 2)) / 255 * 60);
             $luminance = 30 + floor(hexdec(substr($hash, 6, 2)) / 255 * 40);
