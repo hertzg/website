@@ -63,11 +63,11 @@ $content = Page\tabs(
             'href' => '../#signins',
         ],
     ],
-    'Successful Signins',
+    'Authentication History',
     join('<div class="hr"></div>', $items)
 );
 
 include_once "$fnsDir/echo_user_page.php";
-echo_user_page($user, 'Successful Signins', $content, $base, [
+echo_user_page($user, 'Authentication History', $content, $base, [
     'scripts' => $scripts,
 ]);

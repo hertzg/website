@@ -50,7 +50,7 @@ function create_options_panel ($user) {
         $options[] = Page\imageArrowLink($title, $href, $icon, $optionsParam);
     }
 
-    $options[] = Page\imageArrowLink('Successful Signins',
+    $options[] = Page\imageArrowLink('Authentication History',
         'signins/', 'sign-ins', ['id' => 'signins']);
 
     $options[] = Page\imageArrowLink('Close Account',
