@@ -24,6 +24,7 @@ if (array_key_exists($key, $_SESSION)) {
 unset(
     $_SESSION['bookmarks/errors'],
     $_SESSION['bookmarks/messages'],
+    $_SESSION['bookmarks/view/messages'],
     $_SESSION['home/messages']
 );
 

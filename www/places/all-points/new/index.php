@@ -4,7 +4,10 @@ include_once '../../fns/require_place.php';
 include_once '../../../lib/mysqli.php';
 list($place, $id, $user) = require_place($mysqli, '../');
 
-unset($_SESSION['places/all-points/messages']);
+unset(
+    $_SESSION['places/all-points/messages'],
+    $_SESSION['places/all-points/view/messages']
+);
 
 include_once '../../fns/request_new_point_values.php';
 $values = request_new_point_values('places/all-points/new/values');

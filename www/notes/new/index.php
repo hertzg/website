@@ -26,7 +26,8 @@ if (array_key_exists($key, $_SESSION)) {
 unset(
     $_SESSION['home/messages'],
     $_SESSION['notes/errors'],
-    $_SESSION['notes/messages']
+    $_SESSION['notes/messages'],
+    $_SESSION['notes/view/messages']
 );
 
 include_once '../fns/create_form_items.php';

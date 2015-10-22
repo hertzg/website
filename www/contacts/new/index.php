@@ -52,6 +52,7 @@ if (array_key_exists($key, $_SESSION)) {
 unset(
     $_SESSION['contacts/errors'],
     $_SESSION['contacts/messages'],
+    $_SESSION['contacts/view/messages'],
     $_SESSION['home/messages']
 );
 

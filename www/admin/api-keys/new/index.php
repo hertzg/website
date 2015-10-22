@@ -14,7 +14,11 @@ else {
     ];
 }
 
-unset($_SESSION['admin/api-keys/messages']);
+unset(
+    $_SESSION['admin/api-keys/errors'],
+    $_SESSION['admin/api-keys/messages'],
+    $_SESSION['admin/api-keys/view/messages']
+);
 
 $fnsDir = '../../../fns';
 

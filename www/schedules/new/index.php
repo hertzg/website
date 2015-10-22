@@ -8,7 +8,8 @@ $user = require_user($base);
 unset(
     $_SESSION['schedules/errors'],
     $_SESSION['schedules/messages'],
-    $_SESSION['schedules/new/next/first_stage']
+    $_SESSION['schedules/new/next/first_stage'],
+    $_SESSION['schedules/view/messages']
 );
 
 $key = 'schedules/new/values';

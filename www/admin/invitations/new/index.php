@@ -3,7 +3,11 @@
 include_once '../../fns/require_admin.php';
 require_admin();
 
-unset($_SESSION['admin/invitations/messages']);
+unset(
+    $_SESSION['admin/invitations/errors'],
+    $_SESSION['admin/invitations/messages'],
+    $_SESSION['admin/invitations/view/messages']
+);
 
 $fnsDir = '../../../fns';
 

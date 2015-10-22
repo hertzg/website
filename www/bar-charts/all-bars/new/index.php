@@ -4,7 +4,10 @@ include_once '../../fns/require_bar_chart.php';
 include_once '../../../lib/mysqli.php';
 list($bar_chart, $id, $user) = require_bar_chart($mysqli, '../');
 
-unset($_SESSION['bar-charts/all-bars/messages']);
+unset(
+    $_SESSION['bar-charts/all-bars/messages'],
+    $_SESSION['bar-charts/all-bars/view/messages']
+);
 
 include_once '../../fns/request_new_bar_values.php';
 $values = request_new_bar_values('bar-charts/all-bars/new/values');

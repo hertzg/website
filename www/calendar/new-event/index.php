@@ -16,6 +16,7 @@ $event_year = $values['event_year'];
 unset(
     $_SESSION['calendar/errors'],
     $_SESSION['calendar/messages'],
+    $_SESSION['calendar/view-event/messages'],
     $_SESSION['home/messages']
 );
 

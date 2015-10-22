@@ -11,7 +11,8 @@ $values = request_new_event_values('calendar/all-events/new/values', $user);
 
 unset(
     $_SESSION['calendar/all-events/errors'],
-    $_SESSION['calendar/all-events/messages']
+    $_SESSION['calendar/all-events/messages'],
+    $_SESSION['calendar/all-events/view/messages']
 );
 
 include_once '../../fns/create_form_items.php';

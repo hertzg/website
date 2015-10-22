@@ -19,7 +19,8 @@ if (array_key_exists($key, $_SESSION)) {
 
 unset(
     $_SESSION['notifications/channels/errors'],
-    $_SESSION['notifications/channels/messages']
+    $_SESSION['notifications/channels/messages'],
+    $_SESSION['notifications/channels/view/messages']
 );
 
 include_once '../fns/create_form_items.php';

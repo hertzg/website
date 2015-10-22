@@ -18,6 +18,7 @@ else {
 unset(
     $_SESSION['bar-charts/errors'],
     $_SESSION['bar-charts/messages'],
+    $_SESSION['bar-charts/view/messages'],
     $_SESSION['home/messages']
 );
 

@@ -6,6 +6,12 @@ $fnsDir = '../../../fns';
 include_once "$fnsDir/require_user.php";
 $user = require_user($base);
 
+unset(
+    $_SESSION['account/api-keys/errors'],
+    $_SESSION['account/api-keys/messages'],
+    $_SESSION['account/api-keys/view/messages']
+);
+
 $key = 'account/api-keys/new/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {

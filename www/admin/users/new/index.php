@@ -19,7 +19,8 @@ $fnsDir = '../../../fns';
 
 unset(
     $_SESSION['admin/users/errors'],
-    $_SESSION['admin/users/messages']
+    $_SESSION['admin/users/messages'],
+    $_SESSION['admin/users/view/messages']
 );
 
 include_once "$fnsDir/Users/emailExpireDays.php";

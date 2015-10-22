@@ -13,7 +13,8 @@ else $values = ['name' => ''];
 unset(
     $_SESSION['home/messages'],
     $_SESSION['wallets/errors'],
-    $_SESSION['wallets/messages']
+    $_SESSION['wallets/messages'],
+    $_SESSION['wallets/view/messages']
 );
 
 include_once '../fns/create_form_items.php';

@@ -8,7 +8,8 @@ $user = require_user($base);
 
 unset(
     $_SESSION['account/connections/errors'],
-    $_SESSION['account/connections/messages']
+    $_SESSION['account/connections/messages'],
+    $_SESSION['account/connections/view/messages']
 );
 
 $key = 'account/connections/new/values';

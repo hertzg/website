@@ -6,7 +6,8 @@ list($wallet, $id, $user) = require_wallet($mysqli);
 
 unset(
     $_SESSION['wallets/view/errors'],
-    $_SESSION['wallets/view/messages']
+    $_SESSION['wallets/view/messages'],
+    $_SESSION['wallets/view-transaction/messages']
 );
 
 include_once '../fns/request_new_transaction_values.php';
