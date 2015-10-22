@@ -2,9 +2,12 @@
 
 namespace ViewPage;
 
-function authsPanel ($mysqli, $id) {
+function authsPanel ($mysqli, $apiKey) {
+
+    if ($apiKey->access_time === null) return;
 
     $limit = 6;
+    $id = $apiKey->id;
     $fnsDir = __DIR__.'/../../../../fns';
 
     include_once "$fnsDir/AdminApiKeyAuths/indexOnAdminApiKey.php";

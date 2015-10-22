@@ -91,7 +91,7 @@ function create ($mysqli, $apiKey, &$scripts) {
         .'<div class="hr"></div>'
         .\Form\label('Last accessed', $accessed)
         .\Page\infoText($infoText)
-        .authsPanel($mysqli, $id)
+        .authsPanel($mysqli, $apiKey)
         .create_panel('API Key Options', $optionsContent),
         \Page\newItemButton('../new/', 'API Key')
     );

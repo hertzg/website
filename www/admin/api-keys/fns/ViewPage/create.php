@@ -95,7 +95,7 @@ function create ($mysqli, $apiKey, &$scripts) {
             .\Page\infoText($infoText),
             \Page\newItemButton('../new/', 'Admin API Key')
         )
-        .authsPanel($mysqli, $id)
+        .authsPanel($mysqli, $apiKey)
         .create_panel('Admin API Key Options', $optionsContent);
 
 }
