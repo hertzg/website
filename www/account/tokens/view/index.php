@@ -7,10 +7,10 @@ list($token, $id, $user) = require_token($mysqli);
 $base = '../../../';
 $fnsDir = '../../../fns';
 
-include_once '../fns/create_view_page.php';
+include_once '../fns/ViewPage/create.php';
 include_once "$fnsDir/compressed_js_script.php";
 $content =
-    create_view_page($token, $scripts)
+    ViewPage\create($mysqli, $token, $scripts)
     .compressed_js_script('confirmDialog', $base)
     .'<script type="text/javascript">'
         .'var deleteHref = '.json_encode("../delete/submit.php?id=$id")

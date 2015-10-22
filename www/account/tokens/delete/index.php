@@ -7,10 +7,10 @@ list($token, $id, $user) = require_token($mysqli);
 $base = '../../../';
 $fnsDir = '../../../fns';
 
-include_once '../fns/create_view_page.php';
+include_once '../fns/ViewPage/create.php';
 include_once "$fnsDir/Page/confirmDialog.php";
 $content =
-    create_view_page($token, $scripts)
+    ViewPage\create($mysqli, $token, $scripts)
     .Page\confirmDialog(
         'Are you sure you want to delete the remembered session?',
         'Yes, delete remembered session', "submit.php?id=$id",

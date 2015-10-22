@@ -1,14 +1,16 @@
 <?php
 
-function create_view_page ($token, &$scripts) {
+namespace ViewPage;
+
+function create ($mysqli, $token, &$scripts) {
 
     $id = $token->id;
-    $fnsDir = __DIR__.'/../../../fns';
+    $fnsDir = __DIR__.'/../../../../fns';
 
     include_once "$fnsDir/Page/imageLink.php";
     $deleteLink =
         '<div id="deleteLink">'
-            .Page\imageLink('Delete', "../delete/?id=$id", 'trash-bin')
+            .\Page\imageLink('Delete', "../delete/?id=$id", 'trash-bin')
         .'</div>';
 
     include_once "$fnsDir/export_date_ago.php";
@@ -27,6 +29,7 @@ function create_view_page ($token, &$scripts) {
         $_SESSION['account/tokens/messages']
     );
 
+    include_once __DIR__.'/authsPanel.php';
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/DomainName/get.php";
     include_once "$fnsDir/Form/label.php";
@@ -36,7 +39,7 @@ function create_view_page ($token, &$scripts) {
     include_once "$fnsDir/SiteBase/get.php";
     include_once "$fnsDir/SiteProtocol/get.php";
     return
-        Page\tabs(
+        \Page\tabs(
             [
                 [
                     'title' => 'Sessions',
@@ -44,26 +47,27 @@ function create_view_page ($token, &$scripts) {
                 ],
             ],
             "Session #$id",
-            Form\textfield('token_text', 'Identifier', [
+            \Form\textfield('token_text', 'Identifier', [
                 'value' => bin2hex($token->token_text),
                 'readonly' => true,
             ])
             .'<div class="hr"></div>'
-            .Form\textarea('user_agent', 'User agent', [
+            .\Form\textarea('user_agent', 'User agent', [
                 'value' => $token->user_agent,
                 'readonly' => true,
             ])
             .'<div class="hr"></div>'
-            .Form\textarea('link', 'Link to restore', [
-                'value' => SiteProtocol\get().'://'.DomainName\get()
-                    .SiteBase\get().'restore-session/'
+            .\Form\textarea('link', 'Link to restore', [
+                'value' => \SiteProtocol\get().'://'.\DomainName\get()
+                    .\SiteBase\get().'restore-session/'
                     .'?username='.rawurlencode($token->username)
                     .'&token='.bin2hex($token->token_text),
                 'readonly' => true,
             ])
             .'<div class="hr"></div>'
-            .Form\label('Last accessed', $accessed)
+            .\Form\label('Last accessed', $accessed)
         )
+        .authsPanel($mysqli, $id)
         .create_panel('Session Options', $deleteLink);
 
 }
