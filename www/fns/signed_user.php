@@ -17,12 +17,22 @@ function signed_user () {
 
         if ($token) {
 
+            $id_users = $token->id_users;
+
             include_once __DIR__.'/Users/get.php';
-            $user = Users\get($mysqli, $token->id_users);
+            $user = Users\get($mysqli, $id_users);
 
             if ($user && !$user->disabled) {
+
                 $_SESSION['user'] = $user;
                 $_SESSION['token'] = $token;
+
+                include_once __DIR__.'/ClientAddress/get.php';
+                $client_address = ClientAddress\get();
+
+                include_once __DIR__.'/TokenAuths/add.php';
+                TokenAuths\add($mysqli, $token->id, $id_users, $client_address);
+
             }
 
         }

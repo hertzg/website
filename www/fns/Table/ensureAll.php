@@ -50,6 +50,7 @@ function ensureAll ($mysqli) {
     include_once "$fnsDir/SubscribedChannels/ensure.php";
     include_once "$fnsDir/Tasks/ensure.php";
     include_once "$fnsDir/TaskTags/ensure.php";
+    include_once "$fnsDir/TokenAuths/ensure.php";
     include_once "$fnsDir/Tokens/ensure.php";
     include_once "$fnsDir/Users/ensure.php";
     include_once "$fnsDir/Wallets/ensure.php";
@@ -98,6 +99,7 @@ function ensureAll ($mysqli) {
         .\SubscribedChannels\ensure($mysqli)
         .\Tasks\ensure($mysqli)
         .\TaskTags\ensure($mysqli)
+        .\TokenAuths\ensure($mysqli)
         .\Tokens\ensure($mysqli)
         .\Users\ensure($mysqli)
         .\Wallets\ensure($mysqli)
