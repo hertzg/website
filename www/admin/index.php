@@ -81,6 +81,7 @@ $content = Page\tabs(
     .'<div class="hr"></div>'
     .Page\imageArrowLink('Admin API Documentation',
         'api-doc/', 'api-doc', ['id' => 'api-doc'])
+    .'<div class="hr"></div>'
     .Page\imageArrowLink('Invalid Signins', 'invalid-signins/',
         'invalid-sign-ins', ['id' => 'invalid-signins'])
     .'<div class="hr"></div>'
