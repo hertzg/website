@@ -1,6 +1,7 @@
 <?php
 
-function render_prev_button ($offset, $limit, $total, &$items, $params) {
+function render_prev_button ($offset,
+    $limit, $total, &$items, $params = []) {
 
     if (!$offset) return;
 

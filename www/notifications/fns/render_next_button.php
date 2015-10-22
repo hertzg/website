@@ -1,6 +1,7 @@
 <?php
 
-function render_next_button ($offset, $limit, $total, &$items, $params) {
+function render_next_button ($offset,
+    $limit, $total, &$items, $params = []) {
 
     if ($offset + $limit >= $total) return;
 
