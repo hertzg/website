@@ -31,11 +31,11 @@ function add ($mysqli, $id_users, $id_folders,
 
     $sql = 'insert into files'
         .' (id_users, id_folders, content_type,'
-        .' media_type, name, size, readable_size, md5_sum,'
+        .' media_type, name, size, readable_size, hashes_computed, md5_sum,'
         .' sha256_sum, insert_time, rename_time,'
         .' insert_api_key_id, insert_api_key_name)'
         ." value ($id_users, $id_folders, '$content_type',"
-        ." '$media_type', '$name', $size, '$readable_size', '$md5_sum',"
+        ." '$media_type', '$name', $size, '$readable_size', 1, '$md5_sum',"
         ." '$sha256_sum', $insert_time, $rename_time,"
         ." $insert_api_key_id, $insert_api_key_name)";
 

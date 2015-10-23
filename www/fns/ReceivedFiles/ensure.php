@@ -15,6 +15,7 @@ function ensure ($mysqli) {
         'archived' => ['type' => 'tinyint(3) unsigned'],
         'committed' => ['type' => 'tinyint(3) unsigned'],
         'content_type' => \ContentType\column(),
+        'hashes_computed' => ['type' => 'tinyint(3) unsigned'],
         'id' => [
             'type' => 'bigint(20) unsigned',
             'primary' => true,
