@@ -24,8 +24,7 @@ function create ($mysqli, $user, $bar_chart, &$scripts, &$head) {
     $name = htmlspecialchars($bar_chart->name);
     if ($keyword !== '') {
         $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
-        $replace = '<mark>$0</mark>';
-        $name = preg_replace($regex, $replace, $name);
+        $name = preg_replace($regex, '<mark>$0</mark>', $name);
     }
 
     include_once "$fnsDir/Form/label.php";

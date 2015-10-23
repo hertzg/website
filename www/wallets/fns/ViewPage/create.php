@@ -25,8 +25,7 @@ function create ($mysqli, $user, $wallet, &$scripts, &$head) {
     $name = htmlspecialchars($wallet->name);
     if ($keyword !== '') {
         $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
-        $replace = '<mark>$0</mark>';
-        $name = preg_replace($regex, $replace, $name);
+        $name = preg_replace($regex, '<mark>$0</mark>', $name);
     }
 
     include_once "$fnsDir/format_author.php";
