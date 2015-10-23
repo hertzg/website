@@ -17,6 +17,7 @@ function add ($mysqli, $username, $password,
     $order_home_items = $mysqli->real_escape_string($order_home_items);
 
     $username = $mysqli->real_escape_string($username);
+    $lowercase_username = $mysqli->real_escape_string(strtolower($username));
     $password_sha512_hash = $mysqli->real_escape_string($password_sha512_hash);
     $password_sha512_key = $mysqli->real_escape_string($password_sha512_key);
     $email = $mysqli->real_escape_string($email);
@@ -49,8 +50,9 @@ function add ($mysqli, $username, $password,
     include_once "$fnsDir/Theme/Brightness/getDefault.php";
     $theme_brightness = \Theme\Brightness\getDefault();
 
-    $sql = 'insert into users (username, password_sha512_hash,'
-        .' password_sha512_key, encryption_key, encryption_key_iv,'
+    $sql = 'insert into users (username, lowercase_username,'
+        .' password_sha512_hash, password_sha512_key,'
+        .' encryption_key, encryption_key_iv,'
         .' email, disabled, expires, order_home_items,'
         .' insert_time, theme_color, theme_brightness,'
         .' birthdays_check_day, events_check_day,'
@@ -64,8 +66,9 @@ function add ($mysqli, $username, $password,
         .' show_bar_charts, show_bookmarks, show_calendar, show_contacts,'
         .' show_files, show_notes, show_notifications, show_places,'
         .' show_schedules, show_tasks, show_trash, show_wallets)'
-        ." values ('$username', '$password_sha512_hash',"
-        ." '$password_sha512_key', '$encryption_key', '$encryption_key_iv',"
+        ." values ('$username', '$lowercase_username',"
+        ." '$password_sha512_hash', '$password_sha512_key',"
+        ." '$encryption_key', '$encryption_key_iv',"
         ." '$email', $disabled, $expires, '$order_home_items',"
         ." $insert_time, '$theme_color', '$theme_brightness',"
         ." $birthdays_check_day, $events_check_day,"
