@@ -11,7 +11,7 @@ function searchPage ($mysqli, $keyword,
     $keyword = escape_like($keyword);
     $keyword = $mysqli->real_escape_string($keyword);
 
-    $fromWhere = "from users where username like '%$keyword%'";
+    $fromWhere = "from users where lowercase_username like '%$keyword%'";
 
     $sql = "select count(*) total $fromWhere";
     include_once "$fnsDir/mysqli_single_object.php";

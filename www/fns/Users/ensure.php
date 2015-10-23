@@ -9,9 +9,6 @@ function ensure ($mysqli) {
     include_once "$fnsDir/IPAddress/column.php";
     $ipAddressColumn = \IPAddress\column(true);
 
-    include_once "$fnsDir/Username/column.php";
-    $usernameColumn = \Username\column();
-
     include_once "$fnsDir/ApiKeyName/column.php";
     include_once "$fnsDir/Email/column.php";
     include_once "$fnsDir/EncryptionKey/column.php";
@@ -21,6 +18,8 @@ function ensure ($mysqli) {
     include_once "$fnsDir/Table/ensure.php";
     include_once "$fnsDir/Theme/Brightness/column.php";
     include_once "$fnsDir/Theme/Color/column.php";
+    include_once "$fnsDir/Username/column.php";
+    include_once "$fnsDir/Username/lowercaseColumn.php";
     return \Table\ensure($mysqli, 'users', [
         'access_remote_address' => $ipAddressColumn,
         'access_time' => [
@@ -96,7 +95,7 @@ function ensure ($mysqli) {
             'type' => 'bigint(20) unsigned',
             'nullable' => true,
         ],
-        'lowercase_username' => $usernameColumn,
+        'lowercase_username' => \Username\lowercaseColumn(),
         'notes_order_by' => [
             'type' => 'varchar(50)',
             'characterSet' => 'ascii',
@@ -222,7 +221,7 @@ function ensure ($mysqli) {
         'theme_brightness' => \Theme\Brightness\column(),
         'theme_color' => \Theme\Color\column(),
         'timezone' => ['type' => 'int(11)'],
-        'username' => $usernameColumn,
+        'username' => \Username\column(),
         'verify_email_key' => \LinkKey\column(true),
         'verify_email_key_time' => [
             'type' => 'bigint(20) unsigned',
