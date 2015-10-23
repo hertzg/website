@@ -12,8 +12,20 @@ function create ($user, &$scripts) {
 
     include_once "$fnsDir/export_date_ago.php";
 
+    include_once "$fnsDir/request_strings.php";
+    list($keyword) = request_strings('keyword');
+
+    include_once "$fnsDir/str_collapse_spaces.php";
+    $keyword = str_collapse_spaces($keyword);
+
+    $username = htmlspecialchars($user->username);
+    if ($keyword !== '') {
+        $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
+        $username = preg_replace($regex, '<mark>$0</mark>', $username);
+    }
+
     include_once "$fnsDir/Form/label.php";
-    $items = [\Form\label('Username', htmlspecialchars($user->username))];
+    $items = [\Form\label('Username', $username)];
 
     $access_time = $user->access_time;
     if ($access_time === null) $accessed = 'Never';
