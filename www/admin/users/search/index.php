@@ -22,8 +22,10 @@ include_once '../../../lib/mysqli.php';
 $users = Users\searchPage($mysqli,
     $keyword, $offset, $limit, $total, $order_by);
 
+$params = ['keyword' => $keyword];
+
 include_once "$fnsDir/check_offset_overflow.php";
-check_offset_overflow($offset, $limit, $total, ['keyword' => $keyword]);
+check_offset_overflow($offset, $limit, $total, $params);
 
 include_once "$fnsDir/SearchForm/content.php";
 $formContent = SearchForm\content($keyword, 'Search users...', '../');
@@ -36,7 +38,7 @@ if ($users) {
     $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
 
     include_once '../fns/render_prev_button.php';
-    render_prev_button($offset, $limit, $total, $items);
+    render_prev_button($offset, $limit, $total, $items, $params);
 
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
     include_once "$fnsDir/Page/imageArrowLink.php";
@@ -52,7 +54,7 @@ if ($users) {
     }
 
     include_once '../fns/render_next_button.php';
-    render_next_button($offset, $limit, $total, $items);
+    render_next_button($offset, $limit, $total, $items, $params);
 
 } else {
     include_once "$fnsDir/Page/info.php";
