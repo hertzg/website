@@ -30,7 +30,7 @@ function authsPanel ($mysqli, $apiKey) {
                 .'<div class="imageText-description">'
                     .export_date_ago($auth->insert_time, true)
                 .'</div>';
-            $items[] = create_image_text($text, 'generic');
+            $items[] = create_image_text($text, 'sign-in');
 
         }
     }
@@ -38,7 +38,7 @@ function authsPanel ($mysqli, $apiKey) {
     if ($hasMore) {
         include_once "$fnsDir/Page/imageArrowLink.php";
         $items[] = \Page\imageArrowLink('Full Authentication History',
-            "../all-auths/?id=$id", 'generic', ['id' => 'all-auths']);
+            "../all-auths/?id=$id", 'sign-ins', ['id' => 'all-auths']);
     } else {
         include_once "$fnsDir/Page/info.php";
         $items[] = \Page\info('Older data not available');

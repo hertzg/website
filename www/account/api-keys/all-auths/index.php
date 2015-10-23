@@ -40,7 +40,7 @@ foreach ($auths as $auth) {
         .'<div class="imageText-description">'
             .export_date_ago($auth->insert_time, true)
         .'</div>';
-    $items[] = create_image_text($text, 'generic');
+    $items[] = create_image_text($text, 'sign-in');
 }
 
 include_once 'fns/render_next_button.php';
