@@ -1,29 +1,32 @@
 <?php
 
-function sort_panel ($order_by) {
+function sort_panel ($order_by, $base = '') {
 
     $fnsDir = __DIR__.'/../../../fns';
+
+    include_once "$fnsDir/ItemList/escapedPageQuery.php";
+    $escapedPageQuery = ItemList\escapedPageQuery();
 
     $title = 'Last accessed time';
     if ($order_by === 'access_time desc') $title .= ' (Current)';
     include_once "$fnsDir/Page/imageLink.php";
     $accessTimeLink = Page\imageLink($title,
-        'submit-sort-last-accessed.php', 'sort-time');
+        "{$base}submit-sort-last-accessed.php$escapedPageQuery", 'sort-time');
 
     $title = 'Created time';
     if ($order_by === 'insert_time desc') $title .= ' (Current)';
     $insertTimeLink = Page\imageLink($title,
-        'submit-sort-created.php', 'sort-time');
+        "{$base}submit-sort-created.php$escapedPageQuery", 'sort-time');
 
     $title = 'Username';
     if ($order_by === 'username') $title .= ' (Current)';
     $usernameLink = Page\imageLink($title,
-        'submit-sort-username.php', 'sort-alphabetic');
+        "{$base}submit-sort-username.php$escapedPageQuery", 'sort-alphabetic');
 
     $title = 'Storage used';
     if ($order_by === 'storage_used desc') $title .= ' (Current)';
     $storageUsedLink = Page\imageLink($title,
-        'submit-sort-storage-used.php', 'sort-numeric');
+        "{$base}submit-sort-storage-used.php$escapedPageQuery", 'sort-numeric');
 
     include_once "$fnsDir/Page/twoColumns.php";
     $content =
