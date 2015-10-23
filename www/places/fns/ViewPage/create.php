@@ -25,7 +25,21 @@ function create ($mysqli, $place, &$scripts, &$head) {
 
     $name = $place->name;
     if ($name !== '') {
-        $items[] = \Form\label('Name', htmlspecialchars($name));
+
+        include_once "$fnsDir/request_strings.php";
+        list($keyword) = request_strings('keyword');
+
+        include_once "$fnsDir/str_collapse_spaces.php";
+        $keyword = str_collapse_spaces($keyword);
+
+        $name = htmlspecialchars($name);
+        if ($keyword !== '') {
+            $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
+            $name = preg_replace($regex, '<mark>$0</mark>', $name);
+        }
+
+        $items[] = \Form\label('Name', $name);
+
     }
 
     $description = $place->description;
