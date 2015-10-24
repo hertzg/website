@@ -9,6 +9,8 @@ function add ($mysqli, $id_deleted_items, $id_files,
 
     $name = $mysqli->real_escape_string($name);
     $hashes_computed = $hashes_computed ? '1' : '0';
+    if ($md5_sum === null) $md5_sum = 'null';
+    if ($sha256_sum === null) $sha256_sum = 'null';
 
     include_once __DIR__.'/../bytestr.php';
     $readable_size = bytestr($size);

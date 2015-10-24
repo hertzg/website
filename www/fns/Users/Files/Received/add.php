@@ -7,12 +7,9 @@ function add ($mysqli, $user,
 
     $fnsDir = __DIR__.'/../../..';
 
-    include_once "$fnsDir/file_sums.php";
-    file_sums($filePath, $md5_sum, $sha256_sum);
-
     include_once "$fnsDir/ReceivedFiles/add.php";
-    $id = \ReceivedFiles\add($mysqli, $user->id_users, $user->username,
-        $receiver_id_users, $name, $size, $md5_sum, $sha256_sum);
+    $id = \ReceivedFiles\add($mysqli, $user->id_users,
+        $user->username, $receiver_id_users, $name, $size);
 
     include_once "$fnsDir/ReceivedFiles/File/path.php";
     copy($filePath, \ReceivedFiles\File\path($receiver_id_users, $id));
