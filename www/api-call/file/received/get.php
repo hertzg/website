@@ -8,4 +8,4 @@ $receivedFile = require_received_file($mysqli, $user);
 
 include_once 'fns/to_client_json.php';
 header('Content-Type: application/json');
-echo json_encode(to_client_json($receivedFile));
+echo json_encode(to_client_json($mysqli, $receivedFile));

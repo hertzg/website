@@ -2,12 +2,12 @@
 
 namespace ViewPage;
 
-function renderFile ($mysqli, $deletedItem, &$items) {
+function renderReceivedFile ($mysqli, $deletedItem, &$items) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
-    include_once "$fnsDir/DeletedItems/ensureFileSums.php";
-    \DeletedItems\ensureFileSums($mysqli, $deletedItem);
+    include_once "$fnsDir/DeletedItems/ensureReceivedFileSums.php";
+    \DeletedItems\ensureReceivedFileSums($mysqli, $deletedItem);
 
     $file = json_decode($deletedItem->data_json);
 
@@ -16,13 +16,13 @@ function renderFile ($mysqli, $deletedItem, &$items) {
 
     $items[] = \Form\label('Size', $file->readable_size);
 
-    include_once "$fnsDir/Files/File/path.php";
-    $path = \Files\File\path($deletedItem->id_users, $file->id);
+    include_once "$fnsDir/ReceivedFiles/File/path.php";
+    $path = \ReceivedFiles\File\path($deletedItem->id_users, $file->id);
 
     include_once "$fnsDir/Page/filePreview.php";
     $filePreview = \Page\filePreview($file->media_type,
-        $file->content_type, $deletedItem->id, $path,
-        '../download-file/', '../../');
+        $file->content_type, $deletedItem->id,
+        $path, '../download-file/', '../../');
     $items[] = \Form\label('Preview', $filePreview);
 
     $items[] = \Form\label('MD5 sum', $file->md5_sum);

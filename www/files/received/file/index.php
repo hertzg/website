@@ -17,7 +17,7 @@ unset(
 include_once 'fns/create_page.php';
 include_once "$fnsDir/compressed_js_script.php";
 $content =
-    create_page($receivedFile, $scripts)
+    create_page($mysqli, $receivedFile, $scripts)
     .compressed_js_script('confirmDialog', $base)
     .'<script type="text/javascript">'
         .'var deleteHref = '.json_encode("delete/submit.php?id=$id")

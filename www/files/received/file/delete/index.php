@@ -12,7 +12,7 @@ $fnsDir = '../../../../fns';
 include_once '../fns/create_page.php';
 include_once "$fnsDir/Page/confirmDialog.php";
 $content =
-    create_page($receivedFile, $scripts, '../')
+    create_page($mysqli, $receivedFile, $scripts, '../')
     .Page\confirmDialog('Are you sure you want to delete the file?'
         .' It will be moved to Trash.', 'Yes, delete file',
         "submit.php?id=$id", "../?id=$id");

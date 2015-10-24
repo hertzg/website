@@ -11,4 +11,6 @@ $files = Users\Files\index($mysqli, $user, $parent_id);
 
 include_once 'fns/to_client_json.php';
 header('Content-Type: application/json');
-echo json_encode(array_map('to_client_json', $files));
+echo json_encode(array_map(function ($file) use ($mysqli) {
+    return to_client_json($mysqli, $file);
+}, $files));

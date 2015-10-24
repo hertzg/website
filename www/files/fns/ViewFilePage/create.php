@@ -8,6 +8,9 @@ function create ($mysqli, $file, &$scripts) {
     $fnsDir = __DIR__.'/../../../fns';
     $id = $file->id_files;
 
+    include_once "$fnsDir/Files/ensureSums.php";
+    \Files\ensureSums($mysqli, $file);
+
     include_once "$fnsDir/compressed_js_script.php";
     $scripts = compressed_js_script('dateAgo', $base);
 

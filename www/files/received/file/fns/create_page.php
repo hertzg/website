@@ -1,11 +1,14 @@
 <?php
 
-function create_page ($receivedFile, &$scripts, $base = '') {
+function create_page ($mysqli, $receivedFile, &$scripts, $base = '') {
 
     $id = $receivedFile->id;
     $name = $receivedFile->name;
     $queryString = "?id=$id";
     $fnsDir = __DIR__.'/../../../../fns';
+
+    include_once "$fnsDir/ReceivedFiles/ensureSums.php";
+    ReceivedFiles\ensureSums($mysqli, $receivedFile);
 
     include_once "$fnsDir/compressed_js_script.php";
     $scripts = compressed_js_script('dateAgo', "$base../../../");

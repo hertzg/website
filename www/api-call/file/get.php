@@ -8,4 +8,4 @@ $file = require_file($mysqli, $user);
 
 include_once 'fns/to_client_json.php';
 header('Content-Type: application/json');
-echo json_encode(to_client_json($file));
+echo json_encode(to_client_json($mysqli, $file));

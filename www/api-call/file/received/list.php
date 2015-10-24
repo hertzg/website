@@ -8,4 +8,6 @@ $receivedFiles = Users\Files\Received\index($mysqli, $user);
 
 include_once 'fns/to_client_json.php';
 header('Content-Type: application/json');
-echo json_encode(array_map('to_client_json', $receivedFiles));
+echo json_encode(array_map(function ($file) use ($mysqli) {
+    return to_client_json($mysqli, $file);
+}, $receivedFiles));

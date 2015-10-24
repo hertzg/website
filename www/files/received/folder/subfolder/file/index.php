@@ -13,6 +13,9 @@ if (!$receivedFolderFile->parent_id) {
     redirect("../../file/?id=$id");
 }
 
+include_once "$fnsDir/ReceivedFolderFiles/ensureSums.php";
+ReceivedFolderFiles\ensureSums($mysqli, $receivedFolderFile);
+
 $id_received_folders = $receivedFolderFile->id_received_folders;
 $title = "Received Folder #$id_received_folders";
 $name = $receivedFolderFile->name;

@@ -2,7 +2,7 @@
 
 namespace ViewPage;
 
-function create ($deletedItem, $user, &$title, &$head, &$scripts) {
+function create ($mysqli, $deletedItem, $user, &$title, &$head, &$scripts) {
 
     $id = $deletedItem->id;
     $base = '../../';
@@ -48,24 +48,14 @@ function create ($deletedItem, $user, &$title, &$head, &$scripts) {
         include_once __DIR__.'/renderPlace.php';
         renderPlace($data, $items);
     } elseif ($type == 'file') {
-
-        include_once "$fnsDir/Files/File/path.php";
-        $path = \Files\File\path($deletedItem->id_users, $data->id);
-
         include_once __DIR__.'/renderFile.php';
-        renderFile($id, $data, $path, $items);
-
-    } elseif ($type == 'receivedFile') {
-
-        include_once "$fnsDir/ReceivedFiles/File/path.php";
-        $path = \ReceivedFiles\File\path($deletedItem->id_users, $data->id);
-
-        include_once __DIR__.'/renderFile.php';
-        renderFile($id, $data, $path, $items);
-
+        renderFile($mysqli, $deletedItem, $items);
     } elseif ($type == 'folder' || $type == 'receivedFolder') {
         include_once __DIR__.'/renderFolder.php';
         renderFolder($data, $items);
+    } elseif ($type == 'receivedFile') {
+        include_once __DIR__.'/renderReceivedFile.php';
+        renderReceivedFile($mysqli, $deletedItem, $items);
     } elseif ($type == 'receivedNote') {
         include_once __DIR__.'/renderReceivedNote.php';
         renderReceivedNote($data, $items, $infoText);

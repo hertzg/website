@@ -1,6 +1,10 @@
 <?php
 
-function to_client_json ($file) {
+function to_client_json ($mysqli, $file) {
+
+    include_once __DIR__.'/../../../fns/Files/ensureSums.php';
+    Files\ensureSums($mysqli, $file);
+
     return [
         'id' => (int)$file->id_files,
         'name' => $file->name,
@@ -10,4 +14,5 @@ function to_client_json ($file) {
         'insert_time' => (int)$file->insert_time,
         'rename_time' => (int)$file->rename_time,
     ];
+
 }
