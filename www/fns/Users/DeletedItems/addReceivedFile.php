@@ -11,6 +11,7 @@ function addReceivedFile ($mysqli, $receivedFile, $apiKey) {
         'name' => $receivedFile->name,
         'size' => $receivedFile->size,
         'readable_size' => $receivedFile->readable_size,
+        'hashes_computed' => $receivedFile->hashes_computed,
         'md5_sum' => $receivedFile->md5_sum,
         'sha256_sum' => $receivedFile->sha256_sum,
         'insert_time' => $receivedFile->insert_time,
