@@ -14,6 +14,7 @@ function ensureSums ($mysqli, $deletedFile) {
     include_once __DIR__.'/../file_sums.php';
     file_sums($path, $md5_sum, $sha256_sum);
 
+    $deletedFile->hashes_computed = '1';
     $deletedFile->md5_sum = $md5_sum;
     $deletedFile->sha256_sum = $sha256_sum;
 

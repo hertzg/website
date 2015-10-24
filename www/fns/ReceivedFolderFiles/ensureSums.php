@@ -14,6 +14,7 @@ function ensureSums ($mysqli, $receivedFolderFile) {
     include_once __DIR__.'/../file_sums.php';
     file_sums($path, $md5_sum, $sha256_sum);
 
+    $receivedFolderFile->hashes_computed = '1';
     $receivedFolderFile->md5_sum = $md5_sum;
     $receivedFolderFile->sha256_sum = $sha256_sum;
 

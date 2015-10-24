@@ -14,6 +14,7 @@ function ensureSums ($mysqli, $file) {
     include_once __DIR__.'/../file_sums.php';
     file_sums($path, $md5_sum, $sha256_sum);
 
+    $file->hashes_computed = '1';
     $file->md5_sum = $md5_sum;
     $file->sha256_sum = $sha256_sum;
 
