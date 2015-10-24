@@ -13,6 +13,7 @@ function ensure ($mysqli) {
     return \Table\ensure($mysqli, 'deleted_files', [
         'content_revision' => ['type' => 'bigint(20) unsigned'],
         'content_type' => \ContentType\column(),
+        'hashes_computed' => ['type' => 'tinyint(3) unsigned'],
         'id_deleted_items' => ['type' => 'bigint(20) unsigned'],
         'id_files' => [
             'type' => 'bigint(20) unsigned',

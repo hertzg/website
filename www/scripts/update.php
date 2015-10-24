@@ -8,6 +8,9 @@ include_once '../lib/mysqli.php';
 include_once '../fns/Table/ensureAll.php';
 echo Table\ensureAll($mysqli);
 
+$sql = 'update deleted_files set hashes_computed = 1';
+$mysqli->query($sql) || trigger_error($mysqli->error);
+
 $sql = 'update files set hashes_computed = 1';
 $mysqli->query($sql) || trigger_error($mysqli->error);
 
