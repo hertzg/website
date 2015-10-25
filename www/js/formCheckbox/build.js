@@ -1,4 +1,4 @@
 #!/usr/bin/env node
 process.chdir(__dirname)
-var BuildFile = require('../js/BuildFile.js')
-BuildFile('formCheckbox')
+var CompressJsFile = require('../CompressJsFile.js')
+CompressJsFile('formCheckbox')

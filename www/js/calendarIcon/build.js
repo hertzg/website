@@ -1,4 +1,4 @@
 #!/usr/bin/env node
 process.chdir(__dirname)
-var BuildFile = require('../js/BuildFile.js')
-BuildFile('calendarIcon')
+var CompressJsFile = require('../CompressJsFile.js')
+CompressJsFile('calendarIcon')

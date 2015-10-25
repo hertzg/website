@@ -1,10 +1,6 @@
-var fs = require('fs'),
-    uglifyJs = require('uglify-js')
+var uglifyJs = require('uglify-js')
 
-module.exports = function (file) {
-
-    var source = fs.readFileSync(file + '.js', 'utf8')
-
+module.exports = function (source) {
     var ast = uglifyJs.parse(source)
     ast.figure_out_scope()
     var compressor = uglifyJs.Compressor({})
@@ -12,8 +8,5 @@ module.exports = function (file) {
     compressedAst.figure_out_scope()
     compressedAst.compute_char_frequency()
     compressedAst.mangle_names()
-    var compressedSource = compressedAst.print_to_string()
-
-    fs.writeFileSync('compressed.js', compressedSource)
-
+    return compressedAst.print_to_string()
 }

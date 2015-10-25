@@ -1,4 +1,4 @@
 #!/usr/bin/env node
 process.chdir(__dirname)
-var BuildFiles = require('../js/BuildFiles.js')
-BuildFiles(['Battery', 'Clock', 'main'])
+var CompressJsFiles = require('../CompressJsFiles.js')
+CompressJsFiles(['Battery', 'Clock', 'main'])
