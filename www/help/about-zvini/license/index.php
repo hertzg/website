@@ -6,7 +6,7 @@ include_once "$fnsDir/signed_user.php";
 $user = signed_user();
 
 include_once "$fnsDir/Form/label.php";
-include_once "$fnsDir/Page/phpCode.php";
+include_once "$fnsDir/Page/sourceCode.php";
 include_once "$fnsDir/Page/tabs.php";
 include_once "$fnsDir/Page/text.php";
 $content = Page\tabs(
@@ -17,7 +17,7 @@ $content = Page\tabs(
         ],
     ],
     'GNU Affero General Public License',
-    \Page\phpCode(
+    \Page\sourceCode(
         htmlspecialchars(
             file_get_contents('../../../../LICENSE')
         )

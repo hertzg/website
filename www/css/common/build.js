@@ -7,7 +7,7 @@ CompressCssFiles([
     'form-property', 'form-value', 'form-captcha', 'form-checkbox',
     'clickable', 'tab', 'topLink', 'filterBar', 'imageText',
     'image_link', 'panel', 'title_and_description', 'tag',
-    'twoColumns', 'php-code', 'preview', 'navigation',
+    'twoColumns', 'source_code', 'preview', 'navigation',
     'rightButton', 'removableItem', 'removableTextItem',
     'newItemButton', 'search_form', 'textAndButtons',
 ])

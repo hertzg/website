@@ -7,7 +7,7 @@ include_once '../../fns/Table/ensureAll.php';
 include_once '../../lib/mysqli.php';
 $output = Table\ensureAll($mysqli);
 
-include_once '../../fns/Page/phpCode.php';
+include_once '../../fns/Page/sourceCode.php';
 include_once '../../fns/Page/tabs.php';
 $content = Page\tabs(
     [
@@ -17,7 +17,7 @@ $content = Page\tabs(
         ],
     ],
     'Ensure Tables',
-    Page\phpCode($output)
+    Page\sourceCode($output)
 );
 
 include_once '../fns/echo_admin_page.php';

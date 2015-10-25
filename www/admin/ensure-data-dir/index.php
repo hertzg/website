@@ -7,7 +7,7 @@ include_once '../../fns/ensure_data_dir.php';
 include_once '../../lib/mysqli.php';
 ensure_data_dir($mysqli);
 
-include_once '../../fns/Page/phpCode.php';
+include_once '../../fns/Page/sourceCode.php';
 include_once '../../fns/Page/tabs.php';
 $content = Page\tabs(
     [
@@ -17,7 +17,7 @@ $content = Page\tabs(
         ],
     ],
     'Ensure Data Dir',
-    Page\phpCode('Done.')
+    Page\sourceCode('Done.')
 );
 
 include_once '../fns/echo_admin_page.php';

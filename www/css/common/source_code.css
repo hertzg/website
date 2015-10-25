@@ -1,25 +1,25 @@
-.php-code {
+.source_code {
     background-color: rgba(127, 127, 127, 0.2);
     padding: 7px 8px;
     margin: -7px -8px;
     overflow: auto;
 }
 
-.php-code .comment {
+.source_code .comment {
     color: #999;
 }
-.php-code .string {
+.source_code .string {
     color: #f50;
 }
-.php-code .keyword {
+.source_code .keyword {
     font-weight: bold;
 }
-.php-code .variable {
+.source_code .variable {
     color: #05c;
 }
-.php-code .constant {
+.source_code .constant {
     color: #50a;
 }
-.php-code .number {
+.source_code .number {
     color: #f50;
 }

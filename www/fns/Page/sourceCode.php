@@ -2,9 +2,9 @@
 
 namespace Page;
 
-function phpCode ($content) {
+function sourceCode ($content) {
     return
         '<div class="page-text">'
-            ."<pre class=\"php-code\">$content</pre>"
+            ."<pre class=\"source_code\">$content</pre>"
         .'</div>';
 }

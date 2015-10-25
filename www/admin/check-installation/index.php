@@ -63,7 +63,7 @@ if ($mysqliOk) {
         .' Further checks have been aborted.');
 }
 
-include_once '../../fns/Page/phpCode.php';
+include_once '../../fns/Page/sourceCode.php';
 include_once '../../fns/Page/tabs.php';
 $content = Page\tabs(
     [
@@ -73,7 +73,7 @@ $content = Page\tabs(
         ],
     ],
     'Check Installation',
-    Page\phpCode($content)
+    Page\sourceCode($content)
 );
 
 include_once '../fns/echo_admin_page.php';

@@ -49,7 +49,7 @@ function filePreview ($media_type, $content_type,
         }
         fclose($f);
 
-        if ($available) return "<pre class=\"php-code\">$lines</pre>";
+        if ($available) return "<pre class=\"source_code\">$lines</pre>";
 
     }
 

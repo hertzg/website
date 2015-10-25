@@ -17,7 +17,7 @@ if ($ok) {
 }
 
 include_once "$fnsDir/get_crontab_lines.php";
-include_once "$fnsDir/Page/phpCode.php";
+include_once "$fnsDir/Page/sourceCode.php";
 include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
     [
@@ -27,7 +27,7 @@ $content = Page\tabs(
         ],
     ],
     'Ensure Crontab',
-    $status.Page\phpCode(join("\n", get_crontab_lines()))
+    $status.Page\sourceCode(join("\n", get_crontab_lines()))
 );
 
 include_once '../fns/echo_admin_page.php';
