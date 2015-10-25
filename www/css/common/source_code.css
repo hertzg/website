@@ -5,21 +5,21 @@
     overflow: auto;
 }
 
-.source_code .comment {
+.source_code > .comment {
     color: #999;
 }
-.source_code .string {
+.source_code > .string {
     color: #f50;
 }
-.source_code .keyword {
+.source_code > .keyword {
     font-weight: bold;
 }
-.source_code .variable {
+.source_code > .variable {
     color: #05c;
 }
-.source_code .constant {
+.source_code > .constant {
     color: #50a;
 }
-.source_code .number {
+.source_code > .number {
     color: #f50;
 }
