@@ -23,7 +23,6 @@ $domainName = preg_replace('/\s+/', '', $domainName);
 
 $https = (bool)$https;
 $behindProxy = (bool)$behindProxy;
-$error = null;
 
 include_once '../fns/check_general_info.php';
 $error = check_general_info($siteTitle, $domainName,

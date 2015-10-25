@@ -18,7 +18,6 @@ $db = str_collapse_spaces($db);
 $username = str_collapse_spaces($username);
 
 $create = (bool)$create;
-$error = null;
 
 include_once '../fns/check_mysql_config.php';
 $error = check_mysql_config($host, $username,
