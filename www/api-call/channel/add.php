@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/require_api_key.php';
-list($apiKey, $user, $mysqli) = require_api_key('can_write_channels');
+require_api_key('can_write_channels', $apiKey, $user, $mysqli);
 
 include_once 'fns/request_channel_params.php';
 list($channel_name, $public,

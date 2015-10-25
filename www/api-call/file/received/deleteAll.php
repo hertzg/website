@@ -1,7 +1,7 @@
 <?php
 
 include_once '../../fns/require_api_key.php';
-list($apiKey, $user, $mysqli) = require_api_key('can_write_files');
+require_api_key('can_write_files', $apiKey, $user, $mysqli);
 
 include_once '../../../fns/Users/Files/Received/deleteAll.php';
 Users\Files\Received\deleteAll($mysqli, $user, $apiKey);

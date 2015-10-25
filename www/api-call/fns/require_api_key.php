@@ -1,6 +1,6 @@
 <?php
 
-function require_api_key ($permission_field) {
+function require_api_key ($permission_field, &$apiKey, &$user, &$mysqli) {
 
     $fnsDir = __DIR__.'/../../fns';
 
@@ -82,7 +82,5 @@ function require_api_key ($permission_field) {
         ApiKeyAuths\add($mysqli, $apiKey->id, $id_users, $client_address);
 
     }
-
-    return [$apiKey, $user, $mysqli];
 
 }

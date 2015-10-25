@@ -1,7 +1,7 @@
 <?php
 
 include_once '../../fns/require_api_key.php';
-list($apiKey, $user, $mysqli) = require_api_key('can_read_bar_charts');
+require_api_key('can_read_bar_charts', $apiKey, $user, $mysqli);
 
 include_once '../fns/require_bar_chart.php';
 $bar_chart = require_bar_chart($mysqli, $user);

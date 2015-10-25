@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/require_api_key.php';
-list($apiKey, $user, $mysqli) = require_api_key('can_write_notifications');
+require_api_key('can_write_notifications', $apiKey, $user, $mysqli);
 
 include_once '../../fns/Users/Notifications/deleteAll.php';
 Users\Notifications\deleteAll($mysqli, $user);

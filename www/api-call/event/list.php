@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/require_api_key.php';
-list($apiKey, $user, $mysqli) = require_api_key('can_read_events');
+require_api_key('can_read_events', $apiKey, $user, $mysqli);
 
 include_once '../../fns/Users/Events/index.php';
 $events = Users\Events\index($mysqli, $user);

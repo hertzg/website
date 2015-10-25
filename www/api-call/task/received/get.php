@@ -1,7 +1,7 @@
 <?php
 
 include_once '../../fns/require_api_key.php';
-list($apiKey, $user, $mysqli) = require_api_key('can_read_tasks');
+require_api_key('can_read_tasks', $apiKey, $user, $mysqli);
 
 include_once 'fns/require_received_task.php';
 $receivedTask = require_received_task($mysqli, $user);

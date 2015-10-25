@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/require_api_key.php';
-list($apiKey, $user, $mysqli) = require_api_key('can_read_schedules');
+require_api_key('can_read_schedules', $apiKey, $user, $mysqli);
 
 include_once 'fns/require_schedule.php';
 $schedule = require_schedule($mysqli, $user);

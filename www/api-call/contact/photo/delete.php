@@ -1,7 +1,7 @@
 <?php
 
 include_once '../../fns/require_api_key.php';
-list($apiKey, $user, $mysqli) = require_api_key('can_write_contacts');
+require_api_key('can_write_contacts', $apiKey, $user, $mysqli);
 
 include_once 'fns/require_contact_with_photo.php';
 $contact = require_contact_with_photo($mysqli, $user);

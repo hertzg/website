@@ -1,7 +1,7 @@
 <?php
 
 include_once '../../fns/require_api_key.php';
-list($apiKey, $user, $mysqli) = require_api_key('can_read_wallets');
+require_api_key('can_read_wallets', $apiKey, $user, $mysqli);
 
 include_once '../fns/require_wallet.php';
 $wallet = require_wallet($mysqli, $user);

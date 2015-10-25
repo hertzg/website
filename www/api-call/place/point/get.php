@@ -1,7 +1,7 @@
 <?php
 
 include_once '../../fns/require_api_key.php';
-list($apiKey, $user, $mysqli) = require_api_key('can_read_places');
+require_api_key('can_read_places', $apiKey, $user, $mysqli);
 
 include_once 'fns/require_point.php';
 $point = require_point($mysqli, $user->id_users);
