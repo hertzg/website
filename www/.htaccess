@@ -1,5 +1,5 @@
 # auto-generated
-RewriteEngine On
+RewriteEngine on
 
 RewriteCond %{HTTP_HOST} ^www\.localhost$
 RewriteRule (.*) http://localhost/$1 [R=301,L]

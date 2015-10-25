@@ -1,2 +1,2 @@
-RewriteEngine On
+RewriteEngine on
 RewriteRule ^(\d+)/.*$ index.php?id=$1 [L]

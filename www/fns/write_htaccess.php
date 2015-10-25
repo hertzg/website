@@ -14,7 +14,7 @@ function write_htaccess () {
 
     $content =
         "# auto-generated\n"
-        ."RewriteEngine On\n"
+        ."RewriteEngine on\n"
         ."\n"
         ."RewriteCond %{HTTP_HOST} ^www\.$escapedDomainName$\n"
         ."RewriteRule (.*) $siteProtocol://$domainName/$1 [R=301,L]\n"
