@@ -13,7 +13,6 @@ function add ($mysqli, $id_users, $id_folders, $name, $size, $insertApiKey) {
     $media_type = \MediaType\detect($name);
 
     $name = $mysqli->real_escape_string($name);
-    $insert_time = $rename_time = time();
     if ($insertApiKey === null) {
         $insert_api_key_id = $insert_api_key_name = 'null';
     } else {
@@ -30,11 +29,11 @@ function add ($mysqli, $id_users, $id_folders, $name, $size, $insertApiKey) {
 
     $sql = 'insert into files'
         .' (id_users, id_folders, content_type,'
-        .' media_type, name, size, readable_size, insert_time,'
-        .' rename_time, insert_api_key_id, insert_api_key_name)'
+        .' media_type, name, size, readable_size,'
+        .' insert_api_key_id, insert_api_key_name)'
         ." value ($id_users, $id_folders, '$content_type',"
-        ." '$media_type', '$name', $size, '$readable_size', $insert_time,"
-        ." $rename_time, $insert_api_key_id, $insert_api_key_name)";
+        ." '$media_type', '$name', $size, '$readable_size',"
+        ." $insert_api_key_id, $insert_api_key_name)";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 

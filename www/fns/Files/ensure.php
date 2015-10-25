@@ -14,6 +14,7 @@ function ensure ($mysqli) {
     include_once "$fnsDir/MediaType/column.php";
     include_once "$fnsDir/Table/ensure.php";
     return \Table\ensure($mysqli, 'files', [
+        'committed' => ['type' => 'tinyint(3) unsigned'],
         'content_revision' => ['type' => 'bigint(20) unsigned'],
         'content_type' => \ContentType\column(),
         'hashes_computed' => ['type' => 'tinyint(3) unsigned'],
