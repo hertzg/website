@@ -1,6 +1,8 @@
 <?php
 
-function sort_panel ($order_by, $base = '') {
+function sort_panel ($order_by, $total, $base = '') {
+
+    if ($total < 2) return;
 
     $fnsDir = __DIR__.'/../../../fns';
 

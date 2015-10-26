@@ -1,8 +1,8 @@
 <?php
 
-function sort_panel ($user, $base = '') {
+function sort_panel ($user, $total, $base = '') {
 
-    if ($user->num_bar_charts < 2) return;
+    if ($total < 2) return;
 
     $order_by = $user->bar_charts_order_by;
     $fnsDir = __DIR__.'/../../fns';

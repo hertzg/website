@@ -1,6 +1,8 @@
 <?php
 
-function sort_panel ($user, $base = '') {
+function sort_panel ($user, $total, $base = '') {
+
+    if ($total < 2) return;
 
     $order_by = $user->events_order_by;
     $fnsDir = __DIR__.'/../../../fns';

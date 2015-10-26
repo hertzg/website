@@ -2,7 +2,7 @@
 
 namespace SearchPage;
 
-function createContent ($user, $filterMessage, $items, $keyword) {
+function createContent ($user, $total, $filterMessage, $items, $keyword) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
@@ -26,7 +26,7 @@ function createContent ($user, $filterMessage, $items, $keyword) {
             .join('<div class="hr"></div>', $items),
             create_new_item_button('Bar Chart', '../')
         )
-        .sort_panel($user, '../')
+        .sort_panel($user, $total, '../')
         .create_options_panel($user, '../')
         .compressed_js_script('searchForm', '../../');
 

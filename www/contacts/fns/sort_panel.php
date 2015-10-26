@@ -1,8 +1,8 @@
 <?php
 
-function sort_panel ($user, $base = '') {
+function sort_panel ($user, $total, $base = '') {
 
-    if ($user->num_contacts < 2) return;
+    if ($total < 2) return;
 
     $order_by = $user->contacts_order_by;
     $fnsDir = __DIR__.'/../../fns';

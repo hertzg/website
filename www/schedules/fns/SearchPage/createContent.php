@@ -2,7 +2,7 @@
 
 namespace SearchPage;
 
-function createContent ($user, $filterMessage, $items, $keyword) {
+function createContent ($user, $total, $filterMessage, $items, $keyword) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
@@ -25,7 +25,7 @@ function createContent ($user, $filterMessage, $items, $keyword) {
             \Page\sessionErrors('schedules/errors')
             .\Page\sessionMessages('schedules/messages')
             .$filterMessage.join('<div class="hr"></div>', $items)
-            .sort_panel($user, '../')
+            .sort_panel($user, $total, '../')
             .create_options_panel($user, '../'),
             create_new_item_button('Schedule', '../')
         )

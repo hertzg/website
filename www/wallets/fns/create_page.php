@@ -64,6 +64,6 @@ function create_page ($mysqli, $user, $base = '') {
     unset_session_vars();
 
     include_once __DIR__.'/create_content.php';
-    return create_content($content, $user, $base, $searchForm);
+    return create_content($content, $user, $total, $base, $searchForm);
 
 }

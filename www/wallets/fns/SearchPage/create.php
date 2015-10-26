@@ -61,7 +61,7 @@ function create ($mysqli, $user) {
             .join('<div class="hr"></div>', $items),
             create_new_item_button('Wallet', '../')
         )
-        .sort_panel($user, '../')
+        .sort_panel($user, $total, '../')
         .create_options_panel($user, '../')
         .compressed_js_script('searchForm', '../../');
 

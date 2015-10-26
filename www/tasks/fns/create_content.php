@@ -1,6 +1,7 @@
 <?php
 
-function create_content ($user, $filterMessage, $items, $base, $searchForm) {
+function create_content ($user, $total,
+    $filterMessage, $items, $base, $searchForm) {
 
     $fnsDir = __DIR__.'/../../fns';
 
@@ -24,7 +25,7 @@ function create_content ($user, $filterMessage, $items, $base, $searchForm) {
             .$filterMessage.join('<div class="hr"></div>', $items),
             create_new_item_button('Task', $base)
         )
-        .sort_panel($user, $base)
+        .sort_panel($user, $total, $base)
         .create_options_panel($user, $base);
 
     if ($searchForm) {

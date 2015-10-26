@@ -1,6 +1,6 @@
 <?php
 
-function create_content ($content, $user, $base, $searchForm) {
+function create_content ($content, $user, $total, $base, $searchForm) {
 
     $fnsDir = __DIR__.'/../../fns';
 
@@ -21,7 +21,7 @@ function create_content ($content, $user, $base, $searchForm) {
         Page\sessionErrors('wallets/errors')
         .Page\sessionMessages('wallets/messages')
         .$content
-        .sort_panel($user, $base)
+        .sort_panel($user, $total, $base)
         .create_options_panel($user, $base),
         create_new_item_button('Wallet', $base)
     );

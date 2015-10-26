@@ -84,7 +84,7 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
             .join('<div class="hr"></div>', $items),
             Page\newItemButton("{$base}new/$escapedPageQuery", 'Event')
         )
-        .sort_panel($user, $base)
+        .sort_panel($user, $total, $base)
         .create_panel('Options', $deleteLink);
 
 }

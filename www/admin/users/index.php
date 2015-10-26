@@ -78,7 +78,7 @@ $content = Page\tabs(
     Page\sessionErrors('admin/users/errors')
     .Page\sessionMessages('admin/users/messages')
     .join('<div class="hr"></div>', $items)
-    .sort_panel($order_by),
+    .sort_panel($order_by, $total),
     Page\newItemButton('new/'.ItemList\escapedPageQuery(), 'User')
 );
 

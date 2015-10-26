@@ -73,7 +73,7 @@ function create ($mysqli, $user, &$scripts) {
         'All Events',
         \Page\sessionMessages('calendar/all-events/messages')
         .join('<div class="hr"></div>', $items)
-        .sort_panel($user, '../')
+        .sort_panel($user, $total, '../')
         .create_panel('Options', $deleteLink),
         \Page\newItemButton("../new/$escapedPageQuery", 'Event')
     );
