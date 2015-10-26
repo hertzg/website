@@ -17,7 +17,7 @@ include_once '../fns/Connections/countOnUser.php';
 include_once '../fns/Contacts/countOnUser.php';
 include_once '../fns/DeletedItems/countOnUser.php';
 include_once '../fns/Events/countOnUser.php';
-include_once '../fns/Files/countOnUser.php';
+include_once '../fns/Files/Committed/countOnUser.php';
 include_once '../fns/Folders/countOnUser.php';
 include_once '../fns/Notes/countOnUser.php';
 include_once '../fns/Notes/countPasswordProtectedOnUser.php';
@@ -71,7 +71,7 @@ foreach ($users as $user) {
     $num_contacts = Contacts\countOnUser($mysqli, $id_users);
     $num_deleted_items = DeletedItems\countOnUser($mysqli, $id_users);
     $num_events = Events\countOnUser($mysqli, $id_users);
-    $num_files = Files\countOnUser($mysqli, $id_users);
+    $num_files = Files\Committed\countOnUser($mysqli, $id_users);
     $num_folders = Folders\countOnUser($mysqli, $id_users);
     $num_notes = Notes\countOnUser($mysqli, $id_users);
     $num_notifications = Notifications\countOnUser($mysqli, $id_users);
