@@ -19,6 +19,7 @@ $fnsDir = '../../fns';
 include_once "$fnsDir/create_folder_link.php";
 $folder_link = create_folder_link($parent_id, '../');
 
+include_once '../fns/create_file_location_bar.php';
 include_once "$fnsDir/FileName/maxLength.php";
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/hidden.php";
@@ -33,7 +34,9 @@ $content = Page\tabs(
         ],
     ],
     'New Folder',
-    Page\sessionErrors('files/new-folder/errors')
+    create_file_location_bar($mysqli,
+        'new-folder', $parent_id, $user->id_users)
+    .Page\sessionErrors('files/new-folder/errors')
     .'<form action="submit.php" method="post">'
         .Form\textfield('name', 'Folder name', [
             'value' => $values['name'],

@@ -7,6 +7,8 @@ function create ($mysqli, $file, &$scripts) {
     $base = '../../';
     $fnsDir = __DIR__.'/../../../fns';
     $id = $file->id_files;
+    $id_folders = $file->id_folders;
+    $id_users = $file->id_users;
 
     include_once "$fnsDir/Files/ensureSums.php";
     \Files\ensureSums($mysqli, $file);
@@ -25,7 +27,7 @@ function create ($mysqli, $file, &$scripts) {
     $media_type = $file->media_type;
 
     include_once "$fnsDir/Files/File/path.php";
-    $path = \Files\File\path($file->id_users, $id);
+    $path = \Files\File\path($id_users, $id);
 
     include_once "$fnsDir/Page/filePreview.php";
     $filePreview = \Page\filePreview($media_type, $file->content_type,
@@ -39,7 +41,7 @@ function create ($mysqli, $file, &$scripts) {
     }
 
     include_once "$fnsDir/create_folder_link.php";
-    $folder_link = create_folder_link($file->id_folders, '../');
+    $folder_link = create_folder_link($id_folders, '../');
 
     unset(
         $_SESSION['files/errors'],
@@ -52,7 +54,7 @@ function create ($mysqli, $file, &$scripts) {
         $_SESSION['files/send-file/values']
     );
 
-    include_once __DIR__.'/locationBar.php';
+    include_once __DIR__.'/../create_file_location_bar.php';
     include_once __DIR__.'/optionsPanel.php';
     include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/Page/infoText.php";
@@ -70,7 +72,8 @@ function create ($mysqli, $file, &$scripts) {
             "File #$id",
             \Page\sessionErrors('files/view-file/errors')
             .\Page\sessionMessages('files/view-file/messages')
-            .locationBar($mysqli, $file)
+            .create_file_location_bar($mysqli,
+                "file_$id", $id_folders, $id_users)
             .\Form\label('File name', htmlspecialchars($file->name))
             .'<div class="hr"></div>'
             .\Form\label('Size', $file->readable_size)

@@ -1,18 +1,13 @@
 <?php
 
-namespace ViewFilePage;
-
-function locationBar ($mysqli, $file) {
+function create_file_location_bar ($mysqli, $hash, $parent_id, $id_users) {
 
     $parentLinks = [];
-    $hash = "file_$file->id_files";
 
-    $parent_id = $file->id_folders;
     if ($parent_id) {
-        include_once __DIR__.'/../../../fns/Folders/getOnUser.php';
+        include_once __DIR__.'/../../fns/Folders/getOnUser.php';
         while ($parent_id) {
-            $parentFolder = \Folders\getOnUser($mysqli,
-                $file->id_users, $parent_id);
+            $parentFolder = \Folders\getOnUser($mysqli, $id_users, $parent_id);
             $href = "../?id_folders=$parent_id#$hash";
             $parentLinks[] =
                 "<a class=\"tag\" href=\"$href\">"

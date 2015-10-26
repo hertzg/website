@@ -16,6 +16,7 @@ $fnsDir = '../../fns';
 include_once "$fnsDir/create_folder_link.php";
 $folder_link = create_folder_link($parent_id, '../');
 
+include_once '../fns/create_file_location_bar.php';
 include_once "$fnsDir/bytestr.php";
 include_once "$fnsDir/Page/tabs.php";
 include_once "$fnsDir/ini_get_bytes.php";
@@ -32,7 +33,9 @@ $content = Page\tabs(
         ],
     ],
     'Upload Files',
-    Page\sessionErrors('files/upload-files/errors')
+    create_file_location_bar($mysqli,
+        'upload-files', $parent_id, $user->id_users)
+    .Page\sessionErrors('files/upload-files/errors')
     .Page\warnings([
         'Maximum '.bytestr(ini_get_bytes('upload_max_filesize')).' each file.',
         'Maximum '.bytestr(ini_get_bytes('post_max_size')).' at once.',
