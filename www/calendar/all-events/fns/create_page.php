@@ -12,7 +12,7 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
 
     $items = [];
 
-    if ($user->num_events) {
+    if ($user->num_events > 1) {
 
         include_once "$fnsDir/SearchForm/emptyContent.php";
         $formContent = SearchForm\emptyContent('Search events...');
