@@ -88,5 +88,5 @@ $content = Page\tabs(
 
 include_once "$fnsDir/echo_user_page.php";
 echo_user_page($user, 'Slideshow', $content, $base, [
-    'head' => '<link rel="stylesheet" type="text/css" href="index.css?1" />',
+    'head' => '<link rel="stylesheet" type="text/css" href="index.css?2" />',
 ]);
