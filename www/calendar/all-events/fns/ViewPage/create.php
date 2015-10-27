@@ -29,10 +29,16 @@ function create ($user, $event, &$scripts) {
     $editLink = \Page\imageArrowLink('Edit',
         "../edit/$escapedItemQuery", 'edit-event', ['id' => 'edit']);
 
-    $href = '../new/?'.htmlspecialchars(http_build_query([
+    $params = [
         'event_time' => $event_time,
         'text' => $event->text,
-    ]));
+    ];
+    $start_hour = $event->start_hour;
+    if ($start_hour !== null) {
+        $params['start_hour'] = $start_hour;
+        $params['start_minute'] = $event->start_minute;
+    }
+    $href = '../new/?'.htmlspecialchars(http_build_query($params));
     $duplicateLink = \Page\imageArrowLink(
         'Duplicate', $href, 'duplicate-event');
 
