@@ -7,9 +7,16 @@ function request () {
     $fnsDir = __DIR__.'/..';
 
     include_once "$fnsDir/request_strings.php";
-    list($event_time, $text) = request_strings('event_time', 'text');
+    list($event_time, $start_hour, $start_minute, $text) = request_strings(
+        'event_time', 'start_hour', 'start_minute', 'text');
 
     $parsed_event_time = (int)$event_time;
+
+    if ($start_hour === '') $start_hour = null;
+    else $start_hour = abs((int)$start_hour);
+
+    if ($start_minute === '') $start_minute = null;
+    else $start_minute = abs((int)$start_minute);
 
     include_once "$fnsDir/Events/maxLengths.php";
     $maxLengths = maxLengths();
@@ -18,6 +25,6 @@ function request () {
     $text = str_collapse_spaces($text);
     $text = mb_substr($text, 0, $maxLengths['text'], 'UTF-8');
 
-    return [$parsed_event_time, $text, $event_time];
+    return [$parsed_event_time, $start_hour, $start_minute, $text, $event_time];
 
 }

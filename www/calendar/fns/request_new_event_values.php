@@ -7,7 +7,8 @@ function request_new_event_values ($key, $user) {
     $fnsDir = __DIR__.'/../../fns';
 
     include_once "$fnsDir/Events/request.php";
-    list($event_time, $text, $raw_event_time) = Events\request();
+    list($event_time, $start_hour, $start_minute,
+        $text, $raw_event_time) = Events\request();
 
     if ($raw_event_time === '') {
         include_once "$fnsDir/user_time_today.php";
@@ -18,6 +19,8 @@ function request_new_event_values ($key, $user) {
         'event_day' => (int)date('j', $event_time),
         'event_month' => (int)date('n', $event_time),
         'event_year' => (int)date('Y', $event_time),
+        'start_hour' => $start_hour,
+        'start_minute' => $start_minute,
         'text' => $text,
     ];
 

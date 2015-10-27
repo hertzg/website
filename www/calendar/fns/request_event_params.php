@@ -5,7 +5,7 @@ function request_event_params (&$errors) {
     $fnsDir = __DIR__.'/../../fns';
 
     include_once "$fnsDir/Events/request.php";
-    list($event_time, $text) = Events\request();
+    list($event_time, $start_hour, $start_minute, $text) = Events\request();
 
     include_once "$fnsDir/request_strings.php";
     list($event_day, $event_month, $event_year) = request_strings(
@@ -21,6 +21,13 @@ function request_event_params (&$errors) {
 
     if ($text === '') $errors[] = 'Enter text.';
 
-    return [$event_day, $event_month, $event_year, $event_time, $text];
+    if ($start_hour === null) {
+        if ($start_minute !== null) $errors[] = 'Enter start minute.';
+    } elseif ($start_minute !== null) {
+        $errors[] = 'Enter start hour.';
+    }
+
+    return [$event_day, $event_month, $event_year,
+        $event_time, $start_hour, $start_minute, $text];
 
 }

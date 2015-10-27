@@ -9,8 +9,8 @@ include_once "$fnsDir/require_user.php";
 $user = require_user('../../../');
 
 include_once '../../fns/request_event_params.php';
-list($event_day, $event_month,
-    $event_year, $event_time, $text) = request_event_params($errors);
+list($event_day, $event_month, $event_year, $event_time,
+    $start_hour, $start_minute, $text) = request_event_params($errors);
 
 include_once "$fnsDir/redirect.php";
 
@@ -33,7 +33,8 @@ unset(
 
 include_once "$fnsDir/Users/Events/add.php";
 include_once '../../../lib/mysqli.php';
-$id = Users\Events\add($mysqli, $user, $text, $event_time, null, null);
+$id = Users\Events\add($mysqli, $user, $text,
+    $event_time, $start_hour, $start_minute);
 
 $_SESSION['calendar/all-events/view/messages'] = ['Event has been saved.'];
 

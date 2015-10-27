@@ -10,8 +10,8 @@ include_once '../../../lib/mysqli.php';
 list($event, $id, $user) = require_event($mysqli);
 
 include_once '../../fns/request_event_params.php';
-list($event_day, $event_month,
-    $event_year, $event_time, $text) = request_event_params($errors);
+list($event_day, $event_month, $event_year, $event_time,
+    $start_hour, $start_minute, $text) = request_event_params($errors);
 
 include_once "$fnsDir/ItemList/itemQuery.php";
 $itemQuery = ItemList\itemQuery($id);
@@ -35,8 +35,8 @@ unset(
 );
 
 include_once "$fnsDir/Users/Events/edit.php";
-Users\Events\edit($mysqli, $user, $event,
-    $text, $event_time, null, null, $changed);
+Users\Events\edit($mysqli, $user, $event, $text,
+    $event_time, $start_hour, $start_minute, $changed);
 
 if ($changed) $message = 'Changes have been saved.';
 else $message = 'No changes to be saved.';
