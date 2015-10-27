@@ -2,12 +2,14 @@
 
 namespace Users\Events;
 
-function add ($mysqli, $user, $text, $event_time, $insertApiKey = null) {
+function add ($mysqli, $user, $text, $event_time,
+    $start_hour, $start_minute, $insertApiKey = null) {
 
     $id_users = $user->id_users;
 
     include_once __DIR__.'/../../Events/add.php';
-    $id = \Events\add($mysqli, $id_users, $text, $event_time, $insertApiKey);
+    $id = \Events\add($mysqli, $id_users, $text,
+        $event_time, $start_hour, $start_minute, $insertApiKey);
 
     include_once __DIR__.'/addNumber.php';
     addNumber($mysqli, $id_users, 1);

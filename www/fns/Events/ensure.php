@@ -27,6 +27,14 @@ function ensure ($mysqli) {
         'insert_api_key_name' => $apiKeyNameColumn,
         'insert_time' => ['type' => 'bigint(20) unsigned'],
         'revision' => ['type' => 'bigint(20) unsigned'],
+        'start_hour' => [
+            'type' => 'tinyint(3) unsigned',
+            'nullable' => true,
+        ],
+        'start_minute' => [
+            'type' => 'tinyint(3) unsigned',
+            'nullable' => true,
+        ],
         'text' => [
             'type' => "varchar($maxLengths[text])",
             'characterSet' => 'utf8',

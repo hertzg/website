@@ -33,7 +33,7 @@ unset(
 
 include_once "$fnsDir/Users/Events/add.php";
 include_once '../../../lib/mysqli.php';
-$id = Users\Events\add($mysqli, $user, $text, $event_time);
+$id = Users\Events\add($mysqli, $user, $text, $event_time, null, null);
 
 $_SESSION['calendar/all-events/view/messages'] = ['Event has been saved.'];
 

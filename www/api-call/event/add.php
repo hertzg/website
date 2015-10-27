@@ -7,7 +7,8 @@ include_once 'fns/request_event_params.php';
 list($event_time, $text) = request_event_params();
 
 include_once '../../fns/Users/Events/add.php';
-$id = Users\Events\add($mysqli, $user, $text, $event_time, $apiKey);
+$id = Users\Events\add($mysqli, $user,
+    $text, $event_time, null, null, $apiKey);
 
 header('Content-Type: application/json');
 echo $id;
