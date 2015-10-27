@@ -10,10 +10,14 @@ include_once '../../../fns/time_today.php';
 $event_time = time_today();
 
 $text = 'sample text';
+$start_hour = 10;
+$start_minute = 15;
 
 $response = $engine->request('event/add', [
     'text' => $text,
     'event_time' => $event_time,
+    'start_hour' => $start_hour,
+    'start_minute' => $start_minute,
 ]);
 $engine->expectSuccess();
 $engine->expectNatural('', $response);
@@ -26,6 +30,8 @@ $engine->expectSuccess();
 expect_event_object($engine, '', $response);
 $engine->expectValue('.text', $text, $response->text);
 $engine->expectValue('.event_time', $event_time, $response->event_time);
+$engine->expectValue('.start_hour', $start_hour, $response->start_hour);
+$engine->expectValue('.start_minute', $start_minute, $response->start_minute);
 $engine->expectEquals('.insert_time', '.update_time',
     $response->insert_time, $response->update_time);
 
@@ -46,6 +52,8 @@ $engine->expectError('EVENT_NOT_FOUND');
 $response = $engine->request('event/add', [
     'text' => $text,
     'event_time' => $event_time,
+    'start_hour' => $start_hour,
+    'start_minute' => $start_minute,
 ]);
 $engine->expectSuccess();
 $engine->expectNatural('', $response);
