@@ -18,12 +18,19 @@ function viewContent ($event, &$scripts, $base = '') {
         $infoText .= "<br />Last modified $author.";
     }
 
+    $dateText = 'On '.date('F d, Y', $event->event_time);
+    $start_hour = $event->start_hour;
+    if ($start_hour !== null) {
+        $dateText .= ' at '.str_pad($start_hour, 2, '0', STR_PAD_LEFT)
+            .':'.str_pad($event->start_minute, 2, '0', STR_PAD_LEFT);
+    }
+
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/text.php";
     return
         \Page\text(htmlspecialchars($event->text))
         .'<div class="hr"></div>'
-        .\Page\text(date('F d, Y', $event->event_time))
+        .\Page\text($dateText)
         .\Page\infoText($infoText);
 
 }
