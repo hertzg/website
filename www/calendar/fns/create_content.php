@@ -14,6 +14,7 @@ function create_content ($mysqli, $user,
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
+    include_once "$fnsDir/Page/staticTwoColumns.php";
     include_once "$fnsDir/Page/tabs.php";
     return
         Page\tabs(
@@ -35,14 +36,15 @@ function create_content ($mysqli, $user,
         )
         .create_panel(
             'Options',
-            Page\imageArrowLink('Jump To', $jumpHref,
-                'calendar-jump', ['id' => 'jump-to'])
-            .'<div class="hr"></div>'
-            .'<a href="./" class="clickable link image_link">'
-                .'<span class="image_link-icon">'
-                    .create_calendar_icon_today($user)
-                .'</span>'
-                .'<span class="image_link-content">Go to Today</span>'
-            .'</a>'
+            Page\staticTwoColumns(
+                Page\imageArrowLink('Jump To', $jumpHref,
+                    'calendar-jump', ['id' => 'jump-to']),
+                '<a href="./" class="clickable link image_link">'
+                    .'<span class="image_link-icon">'
+                        .create_calendar_icon_today($user)
+                    .'</span>'
+                    .'<span class="image_link-content">Go to Today</span>'
+                .'</a>'
+            )
         );
 }
