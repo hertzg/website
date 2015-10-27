@@ -18,6 +18,14 @@ event_method_page('list', [], [
                 'type' => 'number',
                 'description' => 'The Unix timestamp of the day of the event.',
             ],
+            'start_hour' => [
+                'type' => 'number',
+                'description' => 'The hour when the event starts.',
+            ],
+            'start_minute' => [
+                'type' => 'number',
+                'description' => 'The minute when the event starts.',
+            ],
             'insert_time' => [
                 'type' => 'number',
                 'description' =>
