@@ -7,6 +7,8 @@ function addEvent ($mysqli, $event, $apiKey) {
     add($mysqli, $event->id_users, 'event', [
         'id' => $event->id,
         'event_time' => $event->event_time,
+        'start_hour' => $event->event_hour,
+        'start_minute' => $event->event_minute,
         'text' => $event->text,
         'insert_api_key_id' => $event->insert_api_key_id,
         'insert_time' => $event->insert_time,
