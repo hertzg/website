@@ -35,7 +35,8 @@ unset(
 );
 
 include_once "$fnsDir/Users/Events/edit.php";
-Users\Events\edit($mysqli, $user, $event, $text, $event_time, $changed);
+Users\Events\edit($mysqli, $user, $event,
+    $text, $event_time, null, null, $changed);
 
 if ($changed) $message = 'Changes have been saved.';
 else $message = 'No changes to be saved.';

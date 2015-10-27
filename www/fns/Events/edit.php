@@ -2,9 +2,12 @@
 
 namespace Events;
 
-function edit ($mysqli, $id, $event_time, $text, $updateApiKey) {
+function edit ($mysqli, $id, $event_time,
+    $start_hour, $start_minute, $text, $updateApiKey) {
 
     $text = $mysqli->real_escape_string($text);
+    if ($start_hour === null) $start_hour = 'null';
+    if ($start_minute === null) $start_minute = 'null';
     $update_time = time();
     if ($updateApiKey === null) {
         $update_api_key_id = $update_api_key_name = 'null';
@@ -18,6 +21,7 @@ function edit ($mysqli, $id, $event_time, $text, $updateApiKey) {
     }
 
     $sql = "update events set event_time = $event_time,"
+        ." start_hour = $start_hour, start_minute = $start_minute,"
         ." text = '$text', update_time = $update_time,"
         ." update_api_key_id = $update_api_key_id,"
         ." update_api_key_name = $update_api_key_name,"
