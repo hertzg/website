@@ -15,7 +15,14 @@ function create_form_items ($text, $event_day, $event_month,
     include_once "$fnsDir/Form/textfield.php";
     include_once "$fnsDir/Form/timefield.php";
     return
-        Form\datefield([
+        Form\textfield('text', 'Text', [
+            'value' => $text,
+            'maxlength' => $maxLengths['text'],
+            'autofocus' => true,
+            'required' => true,
+        ])
+        .'<div class="hr"></div>'
+        .Form\datefield([
             'name' => 'event_day',
             'value' => $event_day,
         ],
@@ -35,13 +42,6 @@ function create_form_items ($text, $event_day, $event_month,
         [
             'name' => 'start_minute',
             'value' => $start_minute,
-        ], 'Start time', true)
-        .'<div class="hr"></div>'
-        .Form\textfield('text', 'Text', [
-            'value' => $text,
-            'maxlength' => $maxLengths['text'],
-            'autofocus' => true,
-            'required' => true,
-        ]);
+        ], 'Start time', true);
 
 }
