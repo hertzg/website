@@ -6,8 +6,7 @@ function edit ($mysqli, $id, $event_time,
     $start_hour, $start_minute, $text, $updateApiKey) {
 
     $text = $mysqli->real_escape_string($text);
-    if ($start_hour === null) $start_hour = 'null';
-    if ($start_minute === null) $start_minute = 'null';
+    if ($start_hour === null) $start_hour = $start_minute = 'null';
     $update_time = time();
     if ($updateApiKey === null) {
         $update_api_key_id = $update_api_key_name = 'null';

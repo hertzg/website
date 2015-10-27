@@ -6,8 +6,7 @@ function add ($mysqli, $id_users, $text, $event_time,
     $start_hour, $start_minute, $insertApiKey) {
 
     $text = $mysqli->real_escape_string($text);
-    if ($start_hour === null) $start_hour = 'null';
-    if ($start_minute === null) $start_minute = 'null';
+    if ($start_hour === null) $start_hour = $start_minute = 'null';
     $insert_time = $update_time = time();
     if ($insertApiKey === null) {
         $insert_api_key_id = $insert_api_key_name = 'null';
