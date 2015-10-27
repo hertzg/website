@@ -21,6 +21,8 @@ if ($errors) {
         'event_day' => $event_day,
         'event_month' => $event_month,
         'event_year' => $event_year,
+        'start_hour' => $start_hour,
+        'start_minute' => $start_minute,
         'text' => $text,
     ];
     redirect("./?id=$id");

@@ -13,7 +13,6 @@ function request_event_params () {
     }
 
     if ($start_hour === null) $start_minute = null;
-    elseif ($start_minute === null) $start_minute = 0;
 
     return [$event_time, $start_hour, $start_minute, $text];
 

@@ -1,7 +1,7 @@
 <?php
 
-function create_form_items ($text, $event_day,
-    $event_month, $event_year, &$scripts, $base = '') {
+function create_form_items ($text, $event_day, $event_month,
+    $event_year, $start_hour, $start_minute, &$scripts, $base = '') {
 
     $fnsDir = __DIR__.'/../../fns';
 
@@ -13,6 +13,7 @@ function create_form_items ($text, $event_day,
 
     include_once "$fnsDir/Form/datefield.php";
     include_once "$fnsDir/Form/textfield.php";
+    include_once "$fnsDir/Form/timefield.php";
     return
         Form\datefield([
             'name' => 'event_day',
@@ -26,6 +27,15 @@ function create_form_items ($text, $event_day,
             'name' => 'event_year',
             'value' => $event_year,
         ], 'When', true)
+        .'<div class="hr"></div>'
+        .Form\timefield([
+            'name' => 'start_hour',
+            'value' => $start_hour,
+        ],
+        [
+            'name' => 'start_minute',
+            'value' => $start_minute,
+        ], 'Start time', true)
         .'<div class="hr"></div>'
         .Form\textfield('text', 'Text', [
             'value' => $text,

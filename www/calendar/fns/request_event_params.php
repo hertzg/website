@@ -21,9 +21,7 @@ function request_event_params (&$errors) {
 
     if ($text === '') $errors[] = 'Enter text.';
 
-    if ($start_hour === null) {
-        if ($start_minute !== null) $errors[] = 'Enter start minute.';
-    } elseif ($start_minute !== null) {
+    if ($start_hour === null && $start_minute !== null) {
         $errors[] = 'Enter start hour.';
     }
 

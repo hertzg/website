@@ -18,6 +18,8 @@ function request () {
     if ($start_minute === '') $start_minute = null;
     else $start_minute = abs((int)$start_minute);
 
+    if ($start_hour !== null && $start_minute === null) $start_minute = 0;
+
     include_once "$fnsDir/Events/maxLengths.php";
     $maxLengths = maxLengths();
 

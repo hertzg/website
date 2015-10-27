@@ -21,11 +21,14 @@
 .form-select.year {
     width: 30%;
 }
-
 .form-select.month {
     width: 45%;
 }
-
 .form-select.day {
     width: 25%;
+}
+
+.form-select.hour,
+.form-select.minute {
+    width: 50%;
 }
