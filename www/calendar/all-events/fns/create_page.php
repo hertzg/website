@@ -32,13 +32,13 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
     include_once __DIR__.'/render_prev_button.php';
     render_prev_button($offset, $limit, $total, $items);
 
+    include_once "$fnsDir/format_event_time.php";
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
     include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
     foreach ($events as $event) {
         $id = $event->id;
-        $description = date('F d, Y', $event->event_time);
         $items[] = Page\imageArrowLinkWithDescription(
-            htmlspecialchars($event->text), $description,
+            htmlspecialchars($event->text), format_event_time($event),
             "{$base}view/".ItemList\escapedItemQuery($id),
             'event', ['id' => $id]);
     }

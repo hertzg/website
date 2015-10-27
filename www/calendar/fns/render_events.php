@@ -31,10 +31,28 @@ function render_events ($contacts, $tasks, $events, &$items) {
         }
         if ($events) {
             include_once "$fnsDir/Page/imageArrowLink.php";
+            include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
             foreach ($events as $event) {
+
                 $id = $event->id;
-                $items[] = Page\imageArrowLink(htmlspecialchars($event->text),
-                    "view-event/?id=$id", 'event', ['id' => $id]);
+                $title = htmlspecialchars($event->text);
+                $href = "view-event/?id=$id";
+                $icon = 'event';
+                $options = ['id' => $id];
+
+                $start_hour = $event->start_hour;
+                if ($start_hour === null) {
+                    $item = Page\imageArrowLink($title, $href, $icon, $options);
+                } else {
+                    $description =
+                        'At '.str_pad($start_hour, 2, '0', STR_PAD_LEFT).':'
+                        .str_pad($event->start_minute, 2, '0', STR_PAD_LEFT);
+                    $item = Page\imageArrowLinkWithDescription(
+                        $title, $description, $href, $icon, $options);
+                }
+
+                $items[] = $item;
+
             }
         }
     } else {
