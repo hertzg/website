@@ -32,6 +32,12 @@ function create_items ($bar_charts, $num_bar_charts,
             $groupLimit, $items, $regex, $encodedKeyword);
     }
 
+    if ($num_folders + $num_files) {
+        include_once __DIR__.'/render_folders_and_files.php';
+        render_folders_and_files($folders, $num_folders, $files,
+            $num_files, $groupLimit, $items, $regex, $encodedKeyword);
+    }
+
     if ($num_notes) {
         include_once __DIR__.'/render_notes.php';
         render_notes($theme_brightness, $notes, $num_notes,
@@ -54,12 +60,6 @@ function create_items ($bar_charts, $num_bar_charts,
         include_once __DIR__.'/render_wallets.php';
         render_wallets($wallets, $num_wallets,
             $groupLimit, $items, $regex, $encodedKeyword);
-    }
-
-    if ($num_folders + $num_files) {
-        include_once __DIR__.'/render_folders_and_files.php';
-        render_folders_and_files($folders, $num_folders, $files,
-            $num_files, $groupLimit, $items, $regex, $encodedKeyword);
     }
 
     return $items;
