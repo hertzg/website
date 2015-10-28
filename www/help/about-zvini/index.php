@@ -8,7 +8,7 @@ $user = signed_user();
 unset($_SESSION['help/messages']);
 
 exec('git rev-parse HEAD', $lines);
-$version = htmlspecialchars($lines[0]);
+$commit = htmlspecialchars($lines[0]);
 unset($lines);
 
 exec('git describe --tags', $lines);
@@ -41,7 +41,7 @@ $content = Page\tabs(
     .Page\imageLink('GNU Affero General Public License',
         'license/', 'license', ['id' => 'license'])
     .'<div class="hr"></div>'
-    .Form\label('Git version', $version)
+    .Form\label('Git commit', $commit)
     .'<div class="hr"></div>'
     .Form\label('Git tag', $tag)
 );
