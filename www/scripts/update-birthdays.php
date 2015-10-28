@@ -14,8 +14,10 @@ foreach ($contacts as $contact) {
     $birthday_time = $contact->birthday_time;
     $birthday_day = date('j', $birthday_time);
     $birthday_month = date('n', $birthday_time);
+    $birthday_year = date('Y', $birthday_time);
     $sql = "update contacts set birthday_day = $birthday_day,"
-        ." birthday_month = $birthday_month where id = $contact->id";
+        ." birthday_month = $birthday_month, birthday_year = $birthday_year"
+        ." where id = $contact->id";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 }
 

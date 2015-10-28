@@ -21,10 +21,12 @@ function add ($mysqli, $id_users, $full_name,
     $phone2 = $mysqli->real_escape_string($phone2);
     $phone2_label = $mysqli->real_escape_string($phone2_label);
     if ($birthday_time === null) {
-        $birthday_time = $birthday_day = $birthday_month = 'null';
+        $birthday_time = $birthday_day =
+            $birthday_month = $birthday_year = 'null';
     } else {
         $birthday_day = date('j', $birthday_time);
         $birthday_month = date('n', $birthday_time);
+        $birthday_year = date('Y', $birthday_time);
     }
     $username = $mysqli->real_escape_string($username);
     if ($timezone === null) $timezone = 'null';
@@ -50,14 +52,14 @@ function add ($mysqli, $id_users, $full_name,
         .' email1, email1_label, email2, email2_label,'
         .' phone1, phone1_label, phone2, phone2_label,'
         .' birthday_time, birthday_day, birthday_month,'
-        .' username, timezone, tags, num_tags,'
+        .' birthday_year, username, timezone, tags, num_tags,'
         .' tags_json, notes, favorite, photo_id, insert_time,'
         .' update_time, insert_api_key_id, insert_api_key_name)'
         ." values ($id_users, '$full_name', '$alias', '$address',"
         ." '$email1', '$email1_label', '$email2', '$email2_label',"
         ." '$phone1', '$phone1_label', '$phone2', '$phone2_label',"
         ." $birthday_time, $birthday_day, $birthday_month,"
-        ." '$username', $timezone, '$tags', $num_tags,"
+        ." $birthday_year, '$username', $timezone, '$tags', $num_tags,"
         ." '$tags_json', '$notes', $favorite, $photo_id, $insert_time,"
         ." $update_time, $insert_api_key_id, $insert_api_key_name)";
 

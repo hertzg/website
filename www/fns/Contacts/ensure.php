@@ -42,6 +42,10 @@ function ensure ($mysqli) {
             'type' => 'bigint(20)',
             'nullable' => true,
         ],
+        'birthday_year' => [
+            'type' => 'bigint(20) unsigned',
+            'nullable' => true,
+        ],
         'email1' => $emailColumn,
         'email1_label' => [
             'type' => "varchar($maxLengths[email1_label])",

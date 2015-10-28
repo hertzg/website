@@ -20,10 +20,12 @@ function edit ($mysqli, $id, $full_name, $alias, $address,
     $phone2 = $mysqli->real_escape_string($phone2);
     $phone2_label = $mysqli->real_escape_string($phone2_label);
     if ($birthday_time === null) {
-        $birthday_time = $birthday_day = $birthday_month = 'null';
+        $birthday_time = $birthday_day =
+            $birthday_month = $birthday_year = 'null';
     } else {
         $birthday_day = date('j', $birthday_time);
         $birthday_month = date('n', $birthday_time);
+        $birthday_year = date('Y', $birthday_time);
     }
     $username = $mysqli->real_escape_string($username);
     if ($timezone === null) $timezone = 'null';
@@ -50,7 +52,8 @@ function edit ($mysqli, $id, $full_name, $alias, $address,
         ." phone1_label = '$phone1_label', phone2 = '$phone2',"
         ." phone2_label = '$phone2_label', birthday_time = $birthday_time,"
         ." birthday_day = $birthday_day, birthday_month = $birthday_month,"
-        ." username = '$username', timezone = $timezone, tags = '$tags',"
+        ." birthday_year = $birthday_year, username = '$username',"
+        ." timezone = $timezone, tags = '$tags',"
         ." num_tags = $num_tags, tags_json = '$tags_json',"
         ." notes = '$notes', favorite = $favorite, update_time = $update_time,"
         ." update_api_key_id = $update_api_key_id,"
