@@ -30,6 +30,7 @@ if ($day === '') $day = $dayToday;
 else $day = (int)$day;
 
 $timeSelected = mktime(0, 0, 0, $month, $day, $year);
+$yearSelected = date('Y', $timeSelected);
 $monthSelected = date('n', $timeSelected);
 $daySelected = date('j', $timeSelected);
 
@@ -37,7 +38,7 @@ include_once '../lib/mysqli.php';
 
 include_once "$fnsDir/Contacts/indexBirthdays.php";
 $contacts = Contacts\indexBirthdays($mysqli,
-    $id_users, $daySelected, $monthSelected);
+    $id_users, $daySelected, $monthSelected, $yearSelected);
 
 include_once "$fnsDir/Tasks/indexOnUserAndDeadline.php";
 $tasks = Tasks\indexOnUserAndDeadline($mysqli, $id_users, $timeSelected);
@@ -46,7 +47,7 @@ include_once "$fnsDir/Events/indexOnUserAndTime.php";
 $events = Events\indexOnUserAndTime($mysqli, $id_users, $timeSelected);
 
 include_once 'fns/render_events.php';
-render_events($contacts, $tasks, $events, $eventItems);
+render_events($contacts, $tasks, $events, $yearSelected, $eventItems);
 
 if ($user->num_events) {
     include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";

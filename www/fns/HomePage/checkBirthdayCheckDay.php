@@ -11,7 +11,9 @@ function checkBirthdayCheckDay ($mysqli, &$user, $time_today) {
     $count = function ($time) use ($mysqli, $user) {
         $day = date('j', $time);
         $month = date('n', $time);
-        return \Users\Contacts\countBirthdays($mysqli, $user, $day, $month);
+        $year = date('Y', $time);
+        return \Users\Contacts\countBirthdays(
+            $mysqli, $user, $day, $month, $year);
     };
 
     include_once "$fnsDir/Users/Contacts/countBirthdays.php";

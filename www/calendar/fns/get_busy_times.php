@@ -23,7 +23,7 @@ function get_busy_times ($mysqli, $id_users, $calendarStartTime,
 
     include_once "$fnsDir/Contacts/indexOnUserInBirthdayRanges.php";
     $contacts = Contacts\indexOnUserInBirthdayRanges(
-        $mysqli, $id_users, $ranges);
+        $mysqli, $id_users, $ranges, $yearSelected);
     foreach ($contacts as $contact) {
         $month = $contact->birthday_month;
         $day = $contact->birthday_day;

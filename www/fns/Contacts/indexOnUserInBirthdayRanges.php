@@ -2,7 +2,7 @@
 
 namespace Contacts;
 
-function indexOnUserInBirthdayRanges ($mysqli, $id_users, $ranges) {
+function indexOnUserInBirthdayRanges ($mysqli, $id_users, $ranges, $year) {
 
     $sql = "select * from contacts where id_users = $id_users and (1";
     foreach ($ranges as $range) {
@@ -11,7 +11,7 @@ function indexOnUserInBirthdayRanges ($mysqli, $id_users, $ranges) {
         $sql .= " or (birthday_day between $from[day] and $to[day]"
             ." and birthday_month between $from[month] and $to[month])";
     }
-    $sql .= ')';
+    $sql .= ") and birthday_year <= $year";
 
     include_once __DIR__.'/../mysqli_query_object.php';
     return mysqli_query_object($mysqli, $sql);
