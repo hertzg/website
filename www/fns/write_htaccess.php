@@ -1,16 +1,8 @@
 <?php
 
-function write_htaccess () {
+function write_htaccess ($siteBase, $domainName, $siteProtocol) {
 
-    include_once __DIR__.'/SiteBase/get.php';
-    $siteBase = SiteBase\get();
-
-    include_once __DIR__.'/DomainName/get.php';
-    $domainName = DomainName\get();
     $escapedDomainName = preg_quote($domainName);
-
-    include_once __DIR__.'/SiteProtocol/get.php';
-    $siteProtocol = SiteProtocol\get();
 
     $content =
         "# auto-generated\n"

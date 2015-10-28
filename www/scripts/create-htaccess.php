@@ -4,5 +4,5 @@
 chdir(__DIR__);
 include_once '../../lib/cli.php';
 
-include_once '../fns/write_htaccess.php';
-write_htaccess();
+include_once '../fns/write_current_htaccess.php';
+write_current_htaccess();

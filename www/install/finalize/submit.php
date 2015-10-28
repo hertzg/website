@@ -17,8 +17,12 @@ Admin\set($adminValues['username'], $sha512_hash, $sha512_key);
 include_once "$fnsDir/SiteTitle/set.php";
 SiteTitle\set($generalInfoValues['siteTitle']);
 
+$domainName = $generalInfoValues['domainName'];
+$siteBase = $generalInfoValues['siteBase'];
+$siteProtocol = $generalInfoValues['https'] ? 'https' : 'http';
+
 include_once "$fnsDir/DomainName/set.php";
-DomainName\set($generalInfoValues['domainName']);
+DomainName\set($domainName);
 
 include_once "$fnsDir/InfoEmail/set.php";
 InfoEmail\set($generalInfoValues['infoEmail']);
@@ -28,10 +32,10 @@ MysqlConfig\set($mysqlConfigValues['host'], $mysqlConfigValues['username'],
     $mysqlConfigValues['password'], $mysqlConfigValues['db']);
 
 include_once "$fnsDir/SiteBase/set.php";
-SiteBase\set($generalInfoValues['siteBase']);
+SiteBase\set($siteBase);
 
 include_once "$fnsDir/SiteProtocol/set.php";
-SiteProtocol\set($generalInfoValues['https'] ? 'https' : 'http');
+SiteProtocol\set($siteProtocol);
 
 if ($generalInfoValues['behindProxy']) {
     include_once "$fnsDir/ClientAddress/GetMethod/setBehindProxy.php";
@@ -45,7 +49,7 @@ include_once "$fnsDir/write_crontab.php";
 write_crontab();
 
 include_once "$fnsDir/write_htaccess.php";
-write_htaccess();
+write_htaccess($siteBase, $domainName, $siteProtocol);
 
 include_once "$fnsDir/Installed/set.php";
 Installed\set(true);
