@@ -13,7 +13,7 @@ unset_session_vars();
 include_once '../lib/mysqli.php';
 
 include_once "$fnsDir/request_strings.php";
-list($keyword, $searchFiles) = request_strings('keyword', 'files');
+list($keyword) = request_strings('keyword');
 
 include_once "$fnsDir/Paging/requestOffset.php";
 $offset = Paging\requestOffset('../home/');
@@ -46,6 +46,12 @@ include_once "$fnsDir/Users/Contacts/searchPage.php";
 $contacts = Users\Contacts\searchPage($mysqli,
     $user, $keyword, 0, $groupLimit, $num_contacts);
 
+include_once "$fnsDir/Users/Files/search.php";
+$files = Users\Files\search($mysqli, $user, $keyword);
+
+include_once "$fnsDir/Users/Folders/search.php";
+$folders = Users\Folders\search($mysqli, $user, $keyword);
+
 include_once "$fnsDir/Users/Notes/searchPage.php";
 $notes = Users\Notes\searchPage($mysqli,
     $user, $keyword, 0, $groupLimit, $num_notes);
@@ -62,9 +68,9 @@ include_once "$fnsDir/Users/Wallets/searchPage.php";
 $wallets = Users\Wallets\searchPage($mysqli,
     $user, $keyword, 0, $groupLimit, $num_wallets);
 
-include_once 'fns/search_folders_and_files.php';
-list($folders, $files) = search_folders_and_files(
-    $mysqli, $searchFiles, $user, $keyword);
+include_once "$fnsDir/Users/Wallets/searchPage.php";
+$wallets = Users\Wallets\searchPage($mysqli,
+    $user, $keyword, 0, $groupLimit, $num_wallets);
 
 if ($num_bar_charts || $num_bookmarks || $num_contacts || $num_notes ||
     $num_places || $num_tasks || $num_wallets || $folders || $files) {
@@ -75,10 +81,6 @@ if ($num_bar_charts || $num_bookmarks || $num_contacts || $num_notes ||
         $notes, $num_notes, $places, $num_places, $tasks, $num_tasks,
         $wallets, $num_wallets, $folders, $files, $keyword, $user, $groupLimit);
 
-    include_once 'fns/render_search_files_link.php';
-    render_search_files_link($user,
-        $searchFiles, $keyword, $offset, $resultItems);
-
     $offset = abs((int)$offset);
     $total = count($resultItems);
 
@@ -86,22 +88,17 @@ if ($num_bar_charts || $num_bookmarks || $num_contacts || $num_notes ||
     $limit = Paging\limit();
 
     include_once 'fns/render_prev_button.php';
-    render_prev_button($offset, $limit, $total, $items, $keyword, $searchFiles);
+    render_prev_button($offset, $limit, $total, $items, $keyword);
 
     $resultItems = array_slice($resultItems, $offset, $limit);
     $items = array_merge($items, $resultItems);
 
     include_once 'fns/render_next_button.php';
-    render_next_button($offset, $limit, $total, $items, $keyword, $searchFiles);
+    render_next_button($offset, $limit, $total, $items, $keyword);
 
 } else {
-
     include_once "$fnsDir/Page/info.php";
     $items[] = Page\info('Nothing found');
-
-    include_once 'fns/render_search_files_link.php';
-    render_search_files_link($user, $searchFiles, $keyword, 0, $items);
-
 }
 
 include_once "$fnsDir/compressed_js_script.php";
