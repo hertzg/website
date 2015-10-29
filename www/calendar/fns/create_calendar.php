@@ -24,14 +24,18 @@ function create_calendar ($mysqli, $id_users,
     $busyTimes = get_busy_times($mysqli, $id_users, $calendarStartTime,
         $monthStartTime, $nextMonthStartTime, $monthSelected, $yearSelected);
 
+    $calendarText = date('F', $timeSelected);
+    if ($day_is_selected) $calendarText .= ' '.date('d', $timeSelected);
+    if ($yearSelected != date('Y', $timeToday)) {
+        $calendarText .= ', '.date('Y', $timeSelected);
+    }
+
     $html =
         '<div class="navigation">'
             ."<a href=\"$prevMonthHref\" class=\"clickable arrow left\">"
                 .'<span class="icon arrow-left"></span>'
             .'</a>'
-            .'<div class="center">'
-                .date('F d, Y', $timeSelected)
-            .'</div>'
+            ."<div class=\"center\">$calendarText</div>"
             ."<a href=\"$nextMonthHref\" class=\"clickable arrow right\">"
                 .'<span class="icon arrow-right"></span>'
             .'</a>'

@@ -37,7 +37,12 @@ function events_panel ($mysqli, $user, $day, $month, $year, $timeToday) {
 
     $content = join('<div class="hr"></div>', $items);
 
+    $dayText = date('F d', $timeSelected);
+    if ($yearSelected != date('Y', $timeToday)) {
+        $dayText .= ', '.date('Y', $timeSelected);
+    }
+
     include_once "$fnsDir/create_panel.php";
-    return create_panel('Events on '.date('F d, Y', $timeSelected), $content);
+    return create_panel("Events on $dayText", $content);
 
 }
