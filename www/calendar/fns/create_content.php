@@ -1,11 +1,24 @@
 <?php
 
-function create_content ($mysqli, $user, $timeToday,
-    $timeSelected, $monthSelected, $daySelected, $eventItems) {
+function create_content ($mysqli, $user,
+    $timeToday, $year, $month, $day, $events_panel) {
+
+    if ($day === null) {
+        $day = 1;
+        $day_is_selected = false;
+    } else {
+        $day_is_selected = true;
+    }
 
     $fnsDir = __DIR__.'/../../fns';
-    $jumpHref = 'jump-to/?year='.date('Y', $timeSelected)
-        ."&amp;month=$monthSelected&amp;day=$daySelected";
+
+    $timeSelected = mktime(0, 0, 0, $month, $day, $year);
+    $yearSelected = date('Y', $timeSelected);
+    $monthSelected = date('n', $timeSelected);
+    $daySelected = date('j', $timeSelected);
+
+    $jumpHref = "jump-to/?year=$yearSelected&amp;month=$monthSelected";
+    if ($day_is_selected) $jumpHref .= "&amp;day=$daySelected";
 
     include_once __DIR__.'/create_calendar.php';
     include_once "$fnsDir/create_calendar_icon_today.php";
@@ -28,13 +41,10 @@ function create_content ($mysqli, $user, $timeToday,
             Page\sessionErrors('calendar/errors')
             .Page\sessionMessages('calendar/messages')
             .create_calendar($mysqli, $user->id_users,
-                $timeSelected, $timeToday),
+                $timeSelected, $timeToday, $day_is_selected),
             Page\newItemButton("new-event/?event_time=$timeSelected", 'Event')
         )
-        .create_panel(
-            'Events on '.date('F d, Y', $timeSelected),
-            join('<div class="hr"></div>', $eventItems)
-        )
+        .$events_panel
         .create_panel(
             'Options',
             Page\staticTwoColumns(
@@ -48,4 +58,5 @@ function create_content ($mysqli, $user, $timeToday,
                 .'</a>'
             )
         );
+
 }

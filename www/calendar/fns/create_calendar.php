@@ -1,6 +1,7 @@
 <?php
 
-function create_calendar ($mysqli, $id_users, $timeSelected, $timeToday) {
+function create_calendar ($mysqli, $id_users,
+    $timeSelected, $timeToday, $day_is_selected) {
 
     $monthSelected = date('n', $timeSelected);
     $yearSelected = date('Y', $timeSelected);
@@ -78,7 +79,9 @@ function create_calendar ($mysqli, $id_users, $timeSelected, $timeToday) {
                     .'</span>';
             }
             $class = "clickable calendar-day calendar-column column$j";
-            if ($time == $timeSelected) $class .= ' active';
+            if ($day_is_selected && $time == $timeSelected) {
+                $class .= ' active';
+            }
 
             $href = "?year=$year&amp;month=$month&amp;day=$day";
             $html .= "<a class=\"$class\" href=\"$href\">$dayHtml</a>";
