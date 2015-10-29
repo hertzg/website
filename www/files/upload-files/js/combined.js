@@ -42,8 +42,8 @@ function Post (method, formData, loadListener, errorListener) {
     uploadButton.addEventListener('click', function (e) {
 
         function finish () {
-            var url = 'submit-finish.php?num_uploaded=' + numFiles +
-                '&num_failed=' + files.length
+            var url = 'submit-finish.php?num_uploaded=' + numUploaded +
+                '&num_failed=' + (files.length + 1)
             if (parentId !== null) url += '&parent_id=' + parentId
             location = url
         }
@@ -91,6 +91,7 @@ function Post (method, formData, loadListener, errorListener) {
 
                             })
                         } else {
+                            numUploaded++
                             nextFile()
                         }
                     }
@@ -109,13 +110,13 @@ function Post (method, formData, loadListener, errorListener) {
         uploading = true
         unloadProgress.show()
 
+        var numUploaded = 0
+
         var files = []
-        var numFiles = 0
         var fileInputs = document.querySelectorAll('.form-filefield')
         Array.prototype.forEach.call(fileInputs, function (fileInput) {
             Array.prototype.forEach.call(fileInput.files, function (file) {
                 files.push(file)
-                numFiles++
             })
         })
 
