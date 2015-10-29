@@ -1,10 +1,13 @@
 <?php
 
-function render_birthday ($birthday_time, &$items, &$head, $base) {
+function render_birthday ($user, $birthday_time, &$items, &$head, $base) {
 
     if ($birthday_time === null) return;
 
     $fnsDir = __DIR__.'/../../fns';
+
+    include_once "$fnsDir/user_time_today.php";
+    $timeToday = user_time_today($user);
 
     include_once "$fnsDir/compressed_css_link.php";
     $head .= compressed_css_link('calendarIcon', "$base../../");
@@ -23,6 +26,7 @@ function render_birthday ($birthday_time, &$items, &$head, $base) {
             .'</span>'
             .'<span class="image_link-content">'
                 .date('F d, Y', $birthday_time)
+                .' (Age '.(date('Y', $timeToday) - $year).')'
             .'</span>'
         .'</a>',
         'Birth date:'
