@@ -1,6 +1,7 @@
 <?php
 
-function render_events ($contacts, $tasks, $events, $year, &$items) {
+function render_events ($contacts, $tasks,
+    $events, $year, $timeSelected, $timeToday, &$items) {
 
     $fnsDir = __DIR__.'/../../fns';
 
@@ -10,10 +11,16 @@ function render_events ($contacts, $tasks, $events, $year, &$items) {
             include_once "$fnsDir/Page/imageArrowLink.php";
             foreach ($contacts as $contact) {
 
+                $birthday_time = $contact->birthday_time;
                 $title = htmlspecialchars($contact->full_name).' ';
-                $age = $year - date('Y', $contact->birthday_time);
+                $age = $year - date('Y', $birthday_time);
                 if ($age > 0) {
-                    $title .= "<span class=\"event-grey\">turned</span> $age";
+                    $past = $timeSelected <= $timeToday;
+                    $title .=
+                        '<span class="event-grey">'
+                            .($past ? 'turned' : 'trurns')
+                        .'</span>'
+                        ." $age";
                 } else {
                     $title .= '<span class="event-grey">was born</span>';
                 }

@@ -47,7 +47,8 @@ include_once "$fnsDir/Events/indexOnUserAndTime.php";
 $events = Events\indexOnUserAndTime($mysqli, $id_users, $timeSelected);
 
 include_once 'fns/render_events.php';
-render_events($contacts, $tasks, $events, $yearSelected, $eventItems);
+render_events($contacts, $tasks, $events,
+    $yearSelected, $timeSelected, $timeToday, $eventItems);
 
 if ($user->num_events) {
     include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
