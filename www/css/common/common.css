@@ -90,6 +90,7 @@ b.author {
 .redText {
     color: hsl(0, 80%, 50%);
 }
+.clickable.active .redText,
 .clickable:active .redText {
     color: #fff;
 }

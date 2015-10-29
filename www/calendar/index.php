@@ -58,7 +58,7 @@ if ($user->num_events) {
 }
 
 include_once 'fns/create_content.php';
-$content = create_content($mysqli, $user,
+$content = create_content($mysqli, $user, $timeToday,
     $timeSelected, $monthSelected, $daySelected, $eventItems);
 
 include_once "$fnsDir/compressed_css_link.php";

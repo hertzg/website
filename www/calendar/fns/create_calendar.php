@@ -1,6 +1,6 @@
 <?php
 
-function create_calendar ($mysqli, $id_users, $timeSelected) {
+function create_calendar ($mysqli, $id_users, $timeSelected, $timeToday) {
 
     $monthSelected = date('n', $timeSelected);
     $yearSelected = date('Y', $timeSelected);
@@ -62,6 +62,9 @@ function create_calendar ($mysqli, $id_users, $timeSelected) {
             else $offmonthClass = '';
 
             $dayHtml = $day;
+            if ($time == $timeToday) {
+                $dayHtml = "<span class=\"redText\">$dayHtml</span>";
+            }
             if ($offmonth) {
                 $dayHtml =
                     '<span class="calendar-day-offmonth">'
@@ -74,7 +77,6 @@ function create_calendar ($mysqli, $id_users, $timeSelected) {
                         .$dayHtml
                     .'</span>';
             }
-
             $class = "clickable calendar-day calendar-column column$j";
             if ($time == $timeSelected) $class .= ' active';
 

@@ -1,6 +1,6 @@
 <?php
 
-function create_content ($mysqli, $user,
+function create_content ($mysqli, $user, $timeToday,
     $timeSelected, $monthSelected, $daySelected, $eventItems) {
 
     $fnsDir = __DIR__.'/../../fns';
@@ -27,7 +27,8 @@ function create_content ($mysqli, $user,
             'Calendar',
             Page\sessionErrors('calendar/errors')
             .Page\sessionMessages('calendar/messages')
-            .create_calendar($mysqli, $user->id_users, $timeSelected),
+            .create_calendar($mysqli, $user->id_users,
+                $timeSelected, $timeToday),
             Page\newItemButton("new-event/?event_time=$timeSelected", 'Event')
         )
         .create_panel(
