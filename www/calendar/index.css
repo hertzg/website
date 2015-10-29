@@ -31,7 +31,8 @@
 
 .calendar-day-busyRing {
     display: inline-block;
-    vertical-align: middle;
+    vertical-align: top;
+    margin-top: 6px;
     height: 32px;
     width: 32px;
     border: 2px solid #aaa;
