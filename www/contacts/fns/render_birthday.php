@@ -25,7 +25,7 @@ function render_birthday ($user, $birthday_time, &$items, &$head, $base) {
                 .create_calendar_icon($day)
             .'</span>'
             .'<span class="image_link-content">'
-                .date('F d, Y', $birthday_time)
+                .date('F', $birthday_time)." $day, $year"
                 .' (Age '.(date('Y', $timeToday) - $year).')'
             .'</span>'
         .'</a>',

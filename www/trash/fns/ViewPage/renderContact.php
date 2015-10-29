@@ -30,7 +30,7 @@ function renderContact ($id, $contact, &$items, &$infoText, &$scripts) {
 
     $birthday_time = $contact->birthday_time;
     if ($birthday_time !== null) {
-        $labelItems[] = \Form\label('Birthday', date('F d, Y', $birthday_time));
+        $labelItems[] = \Form\label('Birthday', date('F j, Y', $birthday_time));
     }
 
     $username = $contact->username;

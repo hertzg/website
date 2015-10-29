@@ -24,7 +24,7 @@ function create ($receivedTask, $user, &$scripts) {
         $timeToday = user_time_today($user);
 
         include_once "$fnsDir/format_deadline.php";
-        $items[] = \Page\text('Deadline '.date('F d, Y', $deadline_time)
+        $items[] = \Page\text('Deadline '.date('F j, Y', $deadline_time)
             .' ('.format_deadline($deadline_time, $timeToday).')');
 
     }

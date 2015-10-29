@@ -27,7 +27,7 @@ function markedViewContent ($event, &$scripts, $keyword) {
     return
         \Page\text($text)
         .'<div class="hr"></div>'
-        .\Page\text(date('F d, Y', $event->event_time))
+        .\Page\text(date('F j, Y', $event->event_time))
         .\Page\infoText($infoText);
 
 }

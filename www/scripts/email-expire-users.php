@@ -43,7 +43,7 @@ if ($users) {
         $email = $user->email;
         if ($email === '') continue;
 
-        $expireDate = date('F d, Y', $time + $expireDays * 24 * 60 * 60);
+        $expireDate = date('F j, Y', $time + $expireDays * 24 * 60 * 60);
 
         $subject = 'Your Zvini Account is Expiring';
         $href = "$siteProtocol://$domainName{$siteBase}sign-in/?username="
