@@ -6,6 +6,8 @@ function write_htaccess ($siteBase, $domainName, $siteProtocol) {
 
     $content =
         "# auto-generated\n"
+        ."SetEnv HTACCESS_WORKING 1\n"
+        ."\n"
         ."RewriteEngine on\n"
         ."\n"
         ."RewriteCond %{HTTP_HOST} ^www\.$escapedDomainName$\n"

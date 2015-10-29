@@ -10,6 +10,7 @@ function require_requirements () {
 
     if (!in_array('mod_rewrite', $apacheModules) ||
         !in_array('mod_headers', $apacheModules) ||
+        !array_key_exists('HTACCESS_WORKING', $_SERVER) ||
         date_default_timezone_get() !== 'UTC' ||
         !extension_loaded('curl') || !extension_loaded('gd') ||
         !extension_loaded('gmp') || !extension_loaded('mysql') ||

@@ -13,6 +13,9 @@ $content = assert_enabled($ok, 'Apache module "mod_rewrite"');
 $ok = in_array('mod_headers', $apacheModules);
 $content .= assert_enabled($ok, 'Apache module "mod_headers"');
 
+$ok = array_key_exists('HTACCESS_WORKING', $_SERVER);
+$content .= assert_enabled($ok, '".htaccess"');
+
 $ok = date_default_timezone_get() === 'UTC';
 $subject = 'PHP default timezone';
 if ($ok) $content .= assert_success("$subject is set to UTC.");
