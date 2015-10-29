@@ -50,7 +50,7 @@ function echo_html ($title, $head, $body,
                 .compressed_css_link('common', $base)
                 .compressed_css_link('iconsets', $base)
                 .'<link rel="stylesheet" type="text/css"'
-                ." href=\"{$base}theme/color/$theme_color/common.css?26\" />"
+                ." href=\"{$base}theme/color/$theme_color/common.css?27\" />"
                 .'<link rel="stylesheet" type="text/css"'
                 ." href=\"{$base}theme/brightness/$theme_brightness/common.css?3\" />"
                 .$head

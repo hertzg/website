@@ -1,54 +1,35 @@
 .calendar-columns {
     white-space: nowrap;
 }
-.calendar-columns > * {
-    height: 48px;
+
+.calendar-column {
     text-align: center;
-    line-height: 48px;
     display: inline-block;
     vertical-align: top;
+    height: 48px;
 }
-.calendar-columns > :first-child,
-.calendar-columns > :nth-child(3),
-.calendar-columns > :nth-child(4),
-.calendar-columns > :nth-child(5),
-.calendar-columns > :nth-child(7) {
+.calendar-column.column0,
+.calendar-column.column2,
+.calendar-column.column3,
+.calendar-column.column4,
+.calendar-column.column6 {
     width: 14%;
 }
-.calendar-columns > :nth-child(2),
-.calendar-columns > :nth-child(6) {
+.calendar-column.column1,
+.calendar-column.column5 {
     width: 15%;
 }
 
-.calendar-days {
+.calendar-week {
+    line-height: 48px;
+}
+
+.calendar-day {
+    line-height: 44px;
     font-weight: bold;
 }
-.calendar-days > :focus {
-    border: 2px solid transparent;
-    border-radius: 2px;
-    line-height: 44px;
-    background-color: rgba(127, 127, 127, 0.2);
-}
-.calendar-days > :active,
-.calendar-today {
-    border: 0;
-    line-height: 48px;
-    border-radius: 0;
-    color: #fff;
-}
 
-.calendar-offmonth {
-    color: #aaa;
-}
-
-.event-grey {
-    color: #777;
-}
-.clickable:active .event-grey {
-    color: white;
-}
-
-.busy {
+.calendar-day-busyRing {
     display: inline-block;
     vertical-align: middle;
     height: 32px;
@@ -57,10 +38,25 @@
     line-height: 28px;
     border-radius: 16px;
 }
-.calendar-offmonth > .busy {
-    border-color: #eee;
+.calendar-day-busyRing.offmonth {
+    border-color: rgba(127, 127, 127, 0.3);
 }
-.calendar-days > :active > .busy,
-.calendar-today > .busy {
+.clickable.active .calendar-day-busyRing,
+.clickable:active .calendar-day-busyRing {
     border-color: rgba(255, 255, 255, 0.5);
+}
+
+.calendar-day-offmonth {
+    color: rgba(127, 127, 127, 0.7);
+}
+.clickable.active .calendar-day-offmonth,
+.clickable:active .calendar-day-offmonth {
+    color: white;
+}
+
+.event-grey {
+    color: #7f7f7f;
+}
+.clickable:active .event-grey {
+    color: white;
 }

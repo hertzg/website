@@ -35,14 +35,14 @@ function create_calendar ($mysqli, $id_users, $timeSelected) {
                 .'<span class="icon arrow-right"></span>'
             .'</a>'
         .'</div>'
-        .'<div class="calendar-columns calendar-weeks">'
-            .'<div>Sun</div>'
-            .'<div>Mon</div>'
-            .'<div>Tue</div>'
-            .'<div>Wed</div>'
-            .'<div>Thu</div>'
-            .'<div>Fri</div>'
-            .'<div>Sat</div>'
+        .'<div class="calendar-columns">'
+            .'<span class="calendar-week calendar-column column0">Sun</span>'
+            .'<span class="calendar-week calendar-column column1">Mon</span>'
+            .'<span class="calendar-week calendar-column column2">Tue</span>'
+            .'<span class="calendar-week calendar-column column3">Wed</span>'
+            .'<span class="calendar-week calendar-column column4">Thu</span>'
+            .'<span class="calendar-week calendar-column column5">Fri</span>'
+            .'<span class="calendar-week calendar-column column6">Sat</span>'
         .'</div>'
         .'<div>';
 
@@ -50,26 +50,39 @@ function create_calendar ($mysqli, $id_users, $timeSelected) {
     for ($i = 0; $i < 6; $i++) {
         $html .=
             '<div class="hr"></div>'
-            .'<div class="calendar-columns calendar-days">';
+            .'<div class="calendar-columns">';
         for ($j = 0; $j < 7; $j++) {
+
             $year = date('Y', $time);
             $month = date('n', $time);
             $day = date('j', $time);
-            $html .= "<a href=\"?year=$year&amp;month=$month&amp;day=$day\"";
-            if ($time == $timeSelected) {
-                $html .= ' class="calendar-today">';
-            } elseif ($time < $monthStartTime || $time >= $nextMonthStartTime) {
-                $html .= ' class="calendar-offmonth">';
-            } else {
-                $html .= '>';
+
+            $offmonth = $time < $monthStartTime || $time >= $nextMonthStartTime;
+            if ($offmonth) $offmonthClass = ' offmonth';
+            else $offmonthClass = '';
+
+            $dayHtml = $day;
+            if ($offmonth) {
+                $dayHtml =
+                    '<span class="calendar-day-offmonth">'
+                        .$dayHtml
+                    .'</span>';
             }
             if (array_key_exists($time, $busyTimes)) {
-                $html .= "<span class=\"busy\">$day</span>";
-            } else {
-                $html .= $day;
+                $dayHtml =
+                    "<span class=\"calendar-day-busyRing$offmonthClass\">"
+                        .$dayHtml
+                    .'</span>';
             }
-            $html .= '</a>';
+
+            $class = "clickable calendar-day calendar-column column$j";
+            if ($time == $timeSelected) $class .= ' active';
+
+            $href = "?year=$year&amp;month=$month&amp;day=$day";
+            $html .= "<a class=\"$class\" href=\"$href\">$dayHtml</a>";
+
             $time += 60 * 60 * 24;
+
         }
         $html .= '</div>';
     }

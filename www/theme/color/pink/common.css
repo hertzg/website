@@ -26,6 +26,7 @@
 
 .tag.active,
 .tag:active,
+.clickable.active,
 .clickable:active,
 .newItemButton:active,
 .topLink:active {
