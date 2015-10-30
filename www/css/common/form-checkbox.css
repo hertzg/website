@@ -1,23 +1,35 @@
 .form-checkbox {
     padding-left: 180px;
-    padding-right: 16px;
-    line-height: 48px;
-}
-.form-checkbox label {
-    display: inline-block;
-    vertical-align: top;
-}
-.form-checkbox .clickable {
-    display: inline-block;
-    vertical-align: top;
-    text-align: center;
-    width: 48px;
-    height: 48px;
 }
 @media (max-width: 440px) {
     .form-checkbox {
         padding-left: 0;
     }
+}
+
+.form-checkbox-label {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    padding: 13px 13px 13px 46px;
+    line-height: 18px;
+    white-space: normal;
+}
+
+.form-checkbox-inputWrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 44px;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+}
+
+.form-checkbox-input {
+    vertical-align: middle;
 }
 
 .form-checkbox.item {
