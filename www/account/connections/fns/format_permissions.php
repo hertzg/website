@@ -13,7 +13,8 @@ function format_permissions ($can_send_bookmark,
     };
 
     $add($can_send_bookmark, 'Can send bookmarks.', 'Cannot send bookmarks.');
-    $add($can_send_channel, 'Can send channels.', 'Cannot send channels.');
+    $add($can_send_channel, 'Can subscribe me to his/her channels.',
+        'Cannot subscribe me to his/her channels.');
     $add($can_send_contact, 'Can send contacts.', 'Cannot send contacts.');
     $add($can_send_file, 'Can send files.', 'Cannot send files.');
     $add($can_send_note, 'Can send notes.', 'Cannot send notes.');

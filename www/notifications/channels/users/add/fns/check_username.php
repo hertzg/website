@@ -43,7 +43,8 @@ function check_username ($mysqli, $id, $id_users,
     $connection = get_users_connection($mysqli, $subscriberUser, $id_users);
 
     if (!$connection['can_send_channel']) {
-        $errors[] = "The user isn't receiving channels from you.";
+        $errors[] = "The user isn't letting you to"
+            ." subscribe him/her to your channels.";
     }
 
 }
