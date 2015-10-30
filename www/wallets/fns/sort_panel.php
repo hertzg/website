@@ -21,6 +21,11 @@ function sort_panel ($user, $total, $base = '') {
     $updateTimeLink = Page\imageLink($title,
         "{$base}submit-sort-last-modified.php$escapedPageQuery", 'sort-time');
 
+    $title = 'Balance';
+    if ($order_by === 'balance desc') $title .= ' (Current)';
+    $balanceLink = Page\imageLink($title,
+        "{$base}submit-sort-balance.php$escapedPageQuery", 'sort-numeric');
+
     $title = 'Name';
     if ($order_by === 'name') $title .= ' (Current)';
     $nameLink = Page\imageLink($title,
@@ -28,9 +33,9 @@ function sort_panel ($user, $total, $base = '') {
 
     include_once "$fnsDir/Page/twoColumns.php";
     $content =
-        Page\twoColumns($nameLink, $updateTimeLink)
+        Page\twoColumns($nameLink, $balanceLink)
         .'<div class="hr"></div>'
-        .$insertTimeLink;
+        .Page\twoColumns($updateTimeLink, $insertTimeLink);
 
     include_once "$fnsDir/create_panel.php";
     return create_panel('Sort Wallets By', $content);
