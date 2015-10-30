@@ -4,5 +4,5 @@ for i in icon*.svg
 do
     name=`basename $i .svg`
     inkscape --export-png=$name.png $name.svg > /dev/null
-    optipng -q -o 7 -strip all $name.png
+    optipng -quiet -o 7 -strip all $name.png
 done
