@@ -1,8 +1,8 @@
 #!/bin/bash
 cd `dirname $BASH_SOURCE`
 owner=www-data:www-data
-chown -R $owner www/data/contact-photos
-chown -R $owner www/data/users
+chown --recursive $owner www/data/contact-photos
+chown --recursive $owner www/data/users
 chown $owner www/.htaccess
 chown $owner www/fns/Admin/get.php
 chown $owner www/fns/ClientAddress/get.php
