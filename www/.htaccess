@@ -1,4 +1,6 @@
 # auto-generated
+SetEnv HTACCESS_WORKING 1
+
 RewriteEngine on
 
 RewriteCond %{HTTP_HOST} ^www\.localhost$
