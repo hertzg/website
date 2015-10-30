@@ -13,5 +13,5 @@ $command = 'mysqldump --host='.escapeshellarg($host)
     .' --databases '.escapeshellarg($db)
     .' --hex-blob > backup-sql.sql';
 system($command);
-system("tar czf backup-sql.tgz backup-sql.sql");
+system("tar --create --gzip --file=backup-sql.tgz backup-sql.sql");
 unlink('backup-sql.sql');
