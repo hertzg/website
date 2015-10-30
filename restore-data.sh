@@ -1,3 +1,3 @@
 #!/bin/bash
 cd `dirname $BASH_SOURCE`
-tar xmf backup-data.tgz
+tar --extract --touch --file=backup-data.tgz

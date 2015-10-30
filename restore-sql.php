@@ -4,7 +4,7 @@
 chdir(__DIR__);
 include_once 'lib/cli.php';
 
-system('tar xf backup-sql.tgz');
+system('tar --extract --file=backup-sql.tgz');
 
 include_once 'www/fns/MysqlConfig/get.php';
 MysqlConfig\get($host, $username, $password, $db);
