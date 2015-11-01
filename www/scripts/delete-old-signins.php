@@ -19,6 +19,9 @@ InvalidSignins\deleteOlder($mysqli, $insert_time);
 include_once '../fns/AdminApiKeyAuths/deleteOlder.php';
 AdminApiKeyAuths\deleteOlder($mysqli, $insert_time);
 
+include_once '../fns/AdminConnectionAuths/deleteOlder.php';
+AdminConnectionAuths\deleteOlder($mysqli, $insert_time);
+
 include_once '../fns/ApiKeyAuths/deleteOlder.php';
 ApiKeyAuths\deleteOlder($mysqli, $insert_time);
 

@@ -50,6 +50,7 @@ if ($mysqli->connect_errno) {
 }
 
 include_once 'fns/create_admin_api_keys_link.php';
+include_once 'fns/create_connections_link.php';
 include_once 'fns/create_invitations_link.php';
 include_once 'fns/create_users_link.php';
 include_once '../fns/Page/sessionMessages.php';
@@ -86,6 +87,8 @@ $content = Page\tabs(
         'invalid-sign-ins', ['id' => 'invalid-signins'])
     .'<div class="hr"></div>'
     .create_invitations_link($mysqli)
+    .'<div class="hr"></div>'
+    .create_connections_link($mysqli)
     .'<div class="hr"></div>'
     .create_users_link($mysqli)
     .'<div class="hr"></div>'

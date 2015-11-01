@@ -8,6 +8,7 @@ function ensureAll ($mysqli) {
 
     include_once "$fnsDir/AdminApiKeyAuths/ensure.php";
     include_once "$fnsDir/AdminApiKeys/ensure.php";
+    include_once "$fnsDir/AdminConnections/ensure.php";
     include_once "$fnsDir/ApiKeyAuths/ensure.php";
     include_once "$fnsDir/ApiKeys/ensure.php";
     include_once "$fnsDir/BarChartBars/ensure.php";
@@ -57,6 +58,7 @@ function ensureAll ($mysqli) {
     include_once "$fnsDir/WalletTransactions/ensure.php";
     return \AdminApiKeyAuths\ensure($mysqli)
         .\AdminApiKeys\ensure($mysqli)
+        .\AdminConnections\ensure($mysqli)
         .\ApiKeyAuths\ensure($mysqli)
         .\ApiKeys\ensure($mysqli)
         .\BarChartBars\ensure($mysqli)
