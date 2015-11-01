@@ -5,6 +5,7 @@ namespace ViewPage;
 function create ($mysqli, $token, &$scripts) {
 
     $id = $token->id;
+    $base = '../../../';
     $fnsDir = __DIR__.'/../../../../fns';
 
     include_once "$fnsDir/Page/imageLink.php";
@@ -17,7 +18,8 @@ function create ($mysqli, $token, &$scripts) {
     $accessed = export_date_ago($token->access_time, true);
 
     include_once "$fnsDir/compressed_js_script.php";
-    $scripts = compressed_js_script('dateAgo', '../../../');
+    $scripts = compressed_js_script('dateAgo', $base)
+        .compressed_js_script('flexTextarea', $base);
 
     $access_remote_address = $token->access_remote_address;
     if ($access_remote_address !== null) {

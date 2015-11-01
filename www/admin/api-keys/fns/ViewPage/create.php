@@ -5,10 +5,12 @@ namespace ViewPage;
 function create ($mysqli, $apiKey, &$scripts) {
 
     $id = $apiKey->id;
+    $base = '../../../';
     $fnsDir = __DIR__.'/../../../../fns';
 
     include_once "$fnsDir/compressed_js_script.php";
-    $scripts = compressed_js_script('dateAgo', '../../../');
+    $scripts = compressed_js_script('dateAgo', $base)
+        .compressed_js_script('flexTextarea', $base);
 
     include_once "$fnsDir/Page/imageArrowLink.php";
     $editLink = \Page\imageArrowLink('Edit',
