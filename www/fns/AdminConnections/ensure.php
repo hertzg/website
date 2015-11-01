@@ -6,8 +6,8 @@ function ensure ($mysqli) {
 
     $fnsDir = __DIR__.'/..';
 
-    include_once __DIR__.'/maxLengths.php';
     include_once "$fnsDir/ApiKey/column.php";
+    include_once "$fnsDir/ConnectionAddress/column.php";
     include_once "$fnsDir/IPAddress/column.php";
     include_once "$fnsDir/Table/ensure.php";
     return \Table\ensure($mysqli, 'admin_connections', [
@@ -16,11 +16,7 @@ function ensure ($mysqli) {
             'type' => 'bigint(20) unsigned',
             'nullable' => true,
         ],
-        'address' => [
-            'type' => 'varchar('.maxLengths()['address'].')',
-            'characterSet' => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-        ],
+        'address' => \ConnectionAddress\column(),
         'expire_time' => [
             'type' => 'bigint(20) unsigned',
             'nullable' => true,
