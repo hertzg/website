@@ -18,6 +18,7 @@ else {
     ];
 }
 
+$base = '../../';
 $fnsDir = '../../fns';
 
 include_once "$fnsDir/Users/Channels/index.php";
@@ -57,5 +58,8 @@ $content = Page\tabs(
     .'</form>'
 );
 
+include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/echo_user_page.php";
-echo_user_page($user, 'Post a Notification', $content, '../../');
+echo_user_page($user, 'Post a Notification', $content, $base, [
+    'scripts' => compressed_js_script('flexTextarea', $base),
+]);
