@@ -19,6 +19,7 @@ function createContent ($receivedContact, $infoText, $items) {
 
     include_once __DIR__.'/optionsPanel.php';
     include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/create_received_from_item.php";
     include_once "$fnsDir/ItemList/Received/listHref.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
@@ -31,8 +32,7 @@ function createContent ($receivedContact, $infoText, $items) {
         ],
         "Received Contact #$id",
         \Page\sessionMessages('contacts/received/view/messages')
-        .\Form\label('Received from',
-            htmlspecialchars($receivedContact->sender_username))
+        .create_received_from_item($receivedContact)
         .create_panel('The Contact', $contactPanel)
         .$infoText
         .optionsPanel($receivedContact)

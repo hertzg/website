@@ -9,6 +9,7 @@ function ensure ($mysqli) {
     include_once "$fnsDir/Notes/maxLengths.php";
     $maxLengths = \Notes\maxLengths();
 
+    include_once "$fnsDir/ConnectionAddress/column.php";
     include_once "$fnsDir/Table/ensure.php";
     include_once "$fnsDir/Tags/column.php";
     include_once "$fnsDir/Username/column.php";
@@ -21,7 +22,11 @@ function ensure ($mysqli) {
         ],
         'insert_time' => ['type' => 'bigint(20) unsigned'],
         'receiver_id_users' => ['type' => 'bigint(20) unsigned'],
-        'sender_id_users' => ['type' => 'bigint(20) unsigned'],
+        'sender_address' => \ConnectionAddress\column(true),
+        'sender_id_users' => [
+            'type' => 'bigint(20) unsigned',
+            'nullable' => true,
+        ],
         'sender_username' => \Username\column(),
         'tags' => \Tags\column(),
         'text' => [

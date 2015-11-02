@@ -77,12 +77,9 @@ function create ($mysqli, $deletedItem, $user, &$title, &$head, &$scripts) {
         || $type == 'receivedNote' || $type == 'receivedPlace'
         || $type == 'receivedTask') {
 
-        $senderUsername = htmlspecialchars($data->sender_username);
-
         include_once "$fnsDir/create_panel.php";
-        include_once "$fnsDir/Form/label.php";
-        $content =
-            \Form\label('Received from', $senderUsername)
+        include_once "$fnsDir/create_received_from_item.php";
+        $content = create_received_from_item($data)
             .create_panel("The $typeName", $content);
 
     }

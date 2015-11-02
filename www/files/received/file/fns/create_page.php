@@ -51,6 +51,7 @@ function create_page ($mysqli, $receivedFile, &$scripts, $base = '') {
     $date_ago = export_date_ago($receivedFile->insert_time);
 
     include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/create_received_from_item.php";
     include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionMessages.php";
@@ -66,8 +67,7 @@ function create_page ($mysqli, $receivedFile, &$scripts, $base = '') {
         ],
         "Received File #$id",
         Page\sessionMessages('files/received/file/messages')
-        .Form\label('Received from',
-            htmlspecialchars($receivedFile->sender_username))
+        .create_received_from_item($receivedFile)
         .create_panel(
             'The File',
             Form\label('File name', htmlspecialchars($name))

@@ -50,7 +50,7 @@ function create_page ($mysqli, $receivedFolder, &$scripts, $base = '') {
 
     include_once __DIR__.'/create_options_panel.php';
     include_once "$fnsDir/create_panel.php";
-    include_once "$fnsDir/Form/label.php";
+    include_once "$fnsDir/create_received_from_item.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
@@ -63,8 +63,7 @@ function create_page ($mysqli, $receivedFolder, &$scripts, $base = '') {
         ],
         "Received Folder #$id",
         Page\sessionMessages('files/received/folder/messages')
-        .Form\label('Received from',
-            htmlspecialchars($receivedFolder->sender_username))
+        .create_received_from_item($receivedFolder)
         .create_panel(
             'The Folder',
             '<div class="textAndButtons">'

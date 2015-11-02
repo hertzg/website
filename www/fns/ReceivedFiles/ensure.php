@@ -6,6 +6,7 @@ function ensure ($mysqli) {
 
     $fnsDir = __DIR__.'/..';
 
+    include_once "$fnsDir/ConnectionAddress/column.php";
     include_once "$fnsDir/ContentType/column.php";
     include_once "$fnsDir/FileName/column.php";
     include_once "$fnsDir/MediaType/column.php";
@@ -33,7 +34,11 @@ function ensure ($mysqli) {
             'collation' => 'utf8_unicode_ci',
         ],
         'receiver_id_users' => ['type' => 'bigint(20) unsigned'],
-        'sender_id_users' => ['type' => 'bigint(20) unsigned'],
+        'sender_address' => \ConnectionAddress\column(true),
+        'sender_id_users' => [
+            'type' => 'bigint(20) unsigned',
+            'nullable' => true,
+        ],
         'sender_username' => \Username\column(),
         'sha256_sum' => [
             'type' => 'binary(64)',

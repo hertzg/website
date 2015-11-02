@@ -27,7 +27,7 @@ function create ($receivedBookmark, &$scripts) {
 
     include_once __DIR__.'/optionsPanel.php';
     include_once "$fnsDir/create_panel.php";
-    include_once "$fnsDir/Form/label.php";
+    include_once "$fnsDir/create_received_from_item.php";
     include_once "$fnsDir/ItemList/Received/listHref.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionMessages.php";
@@ -41,8 +41,7 @@ function create ($receivedBookmark, &$scripts) {
         ],
         "Received Bookmark #$id",
         \Page\sessionMessages('bookmarks/received/view/messages')
-        .\Form\label('Received from',
-            htmlspecialchars($receivedBookmark->sender_username))
+        .create_received_from_item($receivedBookmark)
         .create_panel('The Bookmark', join('<div class="hr"></div>', $items))
         .\Page\infoText("Bookmark received $date_ago.")
         .optionsPanel($receivedBookmark)
