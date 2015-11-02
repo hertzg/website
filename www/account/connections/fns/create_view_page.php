@@ -48,6 +48,10 @@ function create_view_page ($connection, &$scripts) {
         $_SESSION['account/connections/new/values']
     );
 
+    $username = htmlspecialchars($connection->username);
+    $address = $connection->address;
+    if ($address !== null) $username .= '@'.htmlspecialchars($address);
+
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/Page/infoText.php";
@@ -63,7 +67,7 @@ function create_view_page ($connection, &$scripts) {
         ],
         "Connection #$id",
         Page\sessionMessages('account/connections/view/messages')
-        .Form\label('Username', htmlspecialchars($connection->username))
+        .Form\label('Username', $username)
         .'<div class="hr"></div>'
         .$expiresLabel
         .'<div class="hr"></div>'

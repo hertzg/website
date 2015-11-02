@@ -17,6 +17,7 @@ if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
     $values = [
         'username' => '',
+        'address' => null,
         'expires' => 'never',
         'can_send_bookmark' => false,
         'can_send_channel' => false,

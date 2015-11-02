@@ -15,6 +15,7 @@ else {
     include_once "$fnsDir/restore_expires.php";
     $values = [
         'username' => $connection->username,
+        'address' => $connection->address,
         'expires' => restore_expires($connection->expire_time),
         'can_send_bookmark' => $connection->can_send_bookmark,
         'can_send_channel' => $connection->can_send_channel,

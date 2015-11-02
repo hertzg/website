@@ -2,11 +2,14 @@
 
 namespace Connections;
 
-function add ($mysqli, $id_users, $connected_id_users, $username,
+function add ($mysqli, $id_users, $connected_id_users, $username, $address,
     $expire_time, $can_send_bookmark, $can_send_channel, $can_send_contact,
     $can_send_file, $can_send_note, $can_send_place, $can_send_task) {
 
+    if ($connected_id_users === null) $connected_id_users = 'null';
     $username = $mysqli->real_escape_string($username);
+    if ($address === null) $address = 'null';
+    else $address = "'".$mysqli->real_escape_string($address)."'";
     if ($expire_time === null) $expire_time = 'null';
     $can_send_bookmark = $can_send_bookmark ? '1' : '0';
     $can_send_channel = $can_send_channel ? '1' : '0';
@@ -18,11 +21,13 @@ function add ($mysqli, $id_users, $connected_id_users, $username,
     $insert_time = $update_time = time();
 
     $sql = 'insert into connections'
-        .' (id_users, connected_id_users, username, expire_time,'
+        .' (id_users, connected_id_users,'
+        .' username, address, expire_time,'
         .' can_send_bookmark, can_send_channel, can_send_contact,'
         .' can_send_file, can_send_note, can_send_place,'
         .' can_send_task, insert_time, update_time)'
-        ." value ($id_users, $connected_id_users, '$username', $expire_time,"
+        ." value ($id_users, $connected_id_users,"
+        ." '$username', $address, $expire_time,"
         ." $can_send_bookmark, $can_send_channel, $can_send_contact,"
         ." $can_send_file, $can_send_note, $can_send_place,"
         ." $can_send_task, $insert_time, $update_time)";

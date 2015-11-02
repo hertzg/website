@@ -3,7 +3,7 @@
 namespace Users\Connections;
 
 function edit ($mysqli, $connection, $connected_id_users,
-    $username, $expire_time, $can_send_bookmark, $can_send_channel,
+    $username, $address, $expire_time, $can_send_bookmark, $can_send_channel,
     $can_send_contact, $can_send_file, $can_send_note,
     $can_send_place, $can_send_task, &$changed) {
 
@@ -25,9 +25,10 @@ function edit ($mysqli, $connection, $connected_id_users,
     $changed = true;
 
     include_once __DIR__.'/../../Connections/edit.php';
-    \Connections\edit($mysqli, $connection->id, $connected_id_users, $username,
-        $expire_time, $can_send_bookmark, $can_send_channel, $can_send_contact,
-        $can_send_file, $can_send_note, $can_send_place, $can_send_task);
+    \Connections\edit($mysqli, $connection->id, $connected_id_users,
+        $username, $address, $expire_time, $can_send_bookmark,
+        $can_send_channel, $can_send_contact, $can_send_file,
+        $can_send_note, $can_send_place, $can_send_task);
 
     include_once __DIR__.'/../SubscribedChannels/deleteDisconnected.php';
     \Users\SubscribedChannels\deleteDisconnected(
