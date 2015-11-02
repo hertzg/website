@@ -1,6 +1,7 @@
 <?php
 
-function request_channel_params ($mysqli, $exclude_id = 0) {
+function require_channel_params ($mysqli, &$channel_name,
+    &$public, &$receive_notifications, $exclude_id = 0) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
@@ -35,7 +36,5 @@ function request_channel_params ($mysqli, $exclude_id = 0) {
         include_once "$fnsDir/ErrorJson/badRequest.php";
         ErrorJson\badRequest('"CHANNEL_ALREADY_EXISTS"');
     }
-
-    return [$channel_name, $public, $receive_notifications];
 
 }

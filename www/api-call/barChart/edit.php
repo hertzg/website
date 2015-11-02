@@ -6,8 +6,8 @@ require_api_key('can_write_bar_charts', $apiKey, $user, $mysqli);
 include_once 'fns/require_bar_chart.php';
 $bar_chart = require_bar_chart($mysqli, $user);
 
-include_once 'fns/request_bar_chart_params.php';
-list($name, $tags, $tag_names) = request_bar_chart_params($user);
+include_once 'fns/require_bar_chart_params.php';
+require_bar_chart_params($name, $tags, $tag_names);
 
 include_once '../../fns/Users/BarCharts/edit.php';
 Users\BarCharts\edit($mysqli, $bar_chart,

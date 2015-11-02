@@ -1,6 +1,6 @@
 <?php
 
-function request_bar_chart_params () {
+function require_bar_chart_params (&$name, &$tags, &$tag_names) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
@@ -14,7 +14,5 @@ function request_bar_chart_params () {
 
     include_once "$fnsDir/ApiCall/requireTags.php";
     ApiCall\requireTags($tags, $tag_names);
-
-    return [$name, $tags, $tag_names];
 
 }

@@ -1,6 +1,7 @@
 <?php
 
-function request_schedule_params () {
+function require_schedule_params (&$text,
+    &$interval, &$offset, &$tags, &$tag_names) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
@@ -14,7 +15,5 @@ function request_schedule_params () {
 
     include_once "$fnsDir/ApiCall/requireTags.php";
     ApiCall\requireTags($tags, $tag_names);
-
-    return [$text, $interval, $offset, $tags, $tag_names];
 
 }

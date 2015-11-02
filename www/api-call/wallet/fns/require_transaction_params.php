@@ -1,6 +1,6 @@
 <?php
 
-function request_transaction_params () {
+function require_transaction_params (&$parsed_amount, &$description) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
@@ -11,7 +11,5 @@ function request_transaction_params () {
         include_once "$fnsDir/ErrorJson/badRequest.php";
         ErrorJson\badRequest('"ENTER_AMOUNT"');
     }
-
-    return [$parsed_amount, $description];
 
 }

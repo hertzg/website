@@ -6,8 +6,8 @@ require_api_key('can_write_wallets', $apiKey, $user, $mysqli);
 include_once 'fns/require_wallet.php';
 $wallet = require_wallet($mysqli, $user);
 
-include_once 'fns/request_transaction_params.php';
-list($amount, $description) = request_transaction_params();
+include_once 'fns/require_transaction_params.php';
+require_transaction_params($amount, $description);
 
 $fnsDir = '../../fns';
 

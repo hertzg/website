@@ -10,8 +10,8 @@ $id = $file->id_files;
 include_once '../fns/require_parent_folder.php';
 list($folder, $parent_id) = require_parent_folder($mysqli, $user);
 
-include_once 'fns/request_file_params.php';
-$name = request_file_params($mysqli, $user->id_users, $parent_id, $id);
+include_once 'fns/require_file_params.php';
+require_file_params($mysqli, $user->id_users, $parent_id, $name, $id);
 
 include_once '../../fns/Files/rename.php';
 Files\rename($mysqli, $id, $name, $apiKey);

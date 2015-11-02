@@ -8,7 +8,7 @@ include_once '../fns/require_receiver_user.php';
 $receiver_user = require_receiver_user($mysqli, $id_users, 'can_send_bookmark');
 
 include_once 'fns/require_bookmark_params.php';
-list($url, $title, $tags, $tag_names) = require_bookmark_params();
+require_bookmark_params($url, $title, $tags, $tag_names);
 
 include_once '../../fns/Users/Bookmarks/Received/add.php';
 Users\Bookmarks\Received\add($mysqli, $id_users, $user->username,

@@ -1,7 +1,7 @@
 <?php
 
-function request_folder_params ($mysqli,
-    $id_users, $id_folders, $exclude_id = 0) {
+function require_folder_params ($mysqli,
+    $id_users, $id_folders, &$name, $exclude_id = 0) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
@@ -29,7 +29,5 @@ function request_folder_params ($mysqli,
         include_once "$fnsDir/ErrorJson/badRequest.php";
         ErrorJson\badRequest('"FOLDER_ALREADY_EXISTS"');
     }
-
-    return $name;
 
 }

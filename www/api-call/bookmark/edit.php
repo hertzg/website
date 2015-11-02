@@ -7,7 +7,7 @@ include_once 'fns/require_bookmark.php';
 $bookmark = require_bookmark($mysqli, $user);
 
 include_once 'fns/require_bookmark_params.php';
-list($url, $title, $tags, $tag_names) = require_bookmark_params();
+require_bookmark_params($url, $title, $tags, $tag_names);
 
 include_once '../../fns/Users/Bookmarks/edit.php';
 Users\Bookmarks\edit($mysqli, $bookmark, $title,

@@ -1,8 +1,9 @@
 <?php
 
-function request_task_params ($user) {
+function require_task_params ($user, &$text,
+    &$deadline_time, &$tags, &$tag_names, &$top_priority) {
 
-    $fnsDir = __DIR__.'/../../fns';
+    $fnsDir = __DIR__.'/../../../fns';
 
     include_once "$fnsDir/Tasks/request.php";
     list($text, $deadline_time, $tags, $top_priority) = Tasks\request();
@@ -24,7 +25,5 @@ function request_task_params ($user) {
 
     include_once "$fnsDir/ApiCall/requireTags.php";
     ApiCall\requireTags($tags, $tag_names);
-
-    return [$text, $deadline_time, $tags, $tag_names, $top_priority];
 
 }

@@ -1,6 +1,7 @@
 <?php
 
-function request_event_params () {
+function require_event_params (&$event_time,
+    &$start_hour, &$start_minute, &$text) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
@@ -13,7 +14,5 @@ function request_event_params () {
     }
 
     if ($start_hour === null) $start_minute = null;
-
-    return [$event_time, $start_hour, $start_minute, $text];
 
 }

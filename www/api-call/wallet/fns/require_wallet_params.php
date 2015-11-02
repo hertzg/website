@@ -1,6 +1,6 @@
 <?php
 
-function request_wallet_params () {
+function require_wallet_params (&$name) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
@@ -11,7 +11,5 @@ function request_wallet_params () {
         include_once "$fnsDir/ErrorJson/badRequest.php";
         ErrorJson\badRequest('"ENTER_NAME"');
     }
-
-    return $name;
 
 }

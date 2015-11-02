@@ -1,6 +1,7 @@
 <?php
 
-function request_note_params () {
+function require_note_params (&$text, &$tags, &$tag_names,
+    &$encrypt_in_listings, &$password_protect, &$encryption_key) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
@@ -26,8 +27,5 @@ function request_note_params () {
     } else {
         $encryption_key = null;
     }
-
-    return [$text, $tags, $tag_names,
-        $encrypt_in_listings, $password_protect, $encryption_key];
 
 }

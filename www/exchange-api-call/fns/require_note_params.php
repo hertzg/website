@@ -1,6 +1,7 @@
 <?php
 
-function request_note_params () {
+function require_note_params (&$text,
+    &$tags, &$tag_names, &$encrypt_in_listings) {
 
     $fnsDir = __DIR__.'/../../fns';
 
@@ -14,7 +15,5 @@ function request_note_params () {
 
     include_once "$fnsDir/ApiCall/requireTags.php";
     ApiCall\requireTags($tags, $tag_names);
-
-    return [$text, $tags, $tag_names, $encrypt_in_listings, false, null];
 
 }

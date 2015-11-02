@@ -1,8 +1,11 @@
 <?php
 
-function request_contact_params ($user) {
+function require_contact_params ($user, &$full_name, &$alias,
+    &$address, &$email1, &$email1_label, &$email2, &$email2_label,
+    &$phone1, &$phone1_label, &$phone2, &$phone2_label, &$birthday_time,
+    &$username, &$timezone, &$tags, &$tag_names, &$notes, &$favorite) {
 
-    $fnsDir = __DIR__.'/../../fns';
+    $fnsDir = __DIR__.'/../../../fns';
 
     include_once "$fnsDir/Contacts/request.php";
     list($full_name, $alias, $address, $email1,
@@ -27,10 +30,5 @@ function request_contact_params ($user) {
 
     include_once "$fnsDir/ApiCall/requireTags.php";
     ApiCall\requireTags($tags, $tag_names);
-
-    return [$full_name, $alias, $address, $email1,
-        $email1_label, $email2, $email2_label, $phone1,
-        $phone1_label, $phone2, $phone2_label, $birthday_time,
-        $username, $timezone, $tags, $tag_names, $notes, $favorite];
 
 }

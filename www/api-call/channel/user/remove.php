@@ -7,7 +7,7 @@ include_once '../fns/require_channel.php';
 $channel = require_channel($mysqli, $user);
 
 include_once 'fns/require_channel_user_params.php';
-$subscriberUser = require_channel_user_params($mysqli, $user, $channel);
+require_channel_user_params($mysqli, $user, $channel, $subscriberUser);
 
 include_once '../../../fns/SubscribedChannels/getExistingSubscriber.php';
 $subscribedChannel = SubscribedChannels\getExistingSubscriber(

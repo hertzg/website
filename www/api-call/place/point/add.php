@@ -7,7 +7,7 @@ include_once '../fns/require_place.php';
 $place = require_place($mysqli, $user);
 
 include_once 'fns/require_point_params.php';
-list($latitude, $longitude, $altitude) = require_point_params();
+require_point_params($latitude, $longitude, $altitude);
 
 include_once '../../../fns/Users/Places/Points/add.php';
 $id = Users\Places\Points\add($mysqli,

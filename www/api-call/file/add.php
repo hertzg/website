@@ -7,8 +7,8 @@ $id_users = $user->id_users;
 include_once '../fns/require_parent_folder.php';
 list($folder, $parent_id) = require_parent_folder($mysqli, $user);
 
-include_once 'fns/request_file_params.php';
-$name = request_file_params($mysqli, $id_users, $parent_id);
+include_once 'fns/require_file_params.php';
+require_file_params($mysqli, $id_users, $parent_id, $name);
 
 include_once '../fns/require_file_param.php';
 $file = require_file_param();

@@ -1,6 +1,7 @@
 <?php
 
-function require_channel_user_params ($mysqli, $user, $channel) {
+function require_channel_user_params ($mysqli,
+    $user, $channel, &$subscriberUser) {
 
     $fnsDir = __DIR__.'/../../../../fns';
 
@@ -25,7 +26,5 @@ function require_channel_user_params ($mysqli, $user, $channel) {
         include_once "$fnsDir/ErrorJson/badRequest.php";
         ErrorJson\badRequest('"USER_NOT_FOUND"');
     }
-
-    return $subscriberUser;
 
 }
