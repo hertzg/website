@@ -32,7 +32,8 @@ function create ($user, $receivedContact, &$head, &$scripts) {
     render_phone_numbers($receivedContact, $items);
 
     include_once __DIR__.'/../../../fns/render_birthday.php';
-    render_birthday($user, $receivedContact->birthday_time, $items, $head, '../');
+    render_birthday($user,
+        $receivedContact->birthday_time, $items, $head, '../');
 
     $username = $receivedContact->username;
     if ($username !== '') {

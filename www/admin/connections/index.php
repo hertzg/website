@@ -36,8 +36,10 @@ if ($connections) {
     include_once "$fnsDir/Page/imageArrowLink.php";
     foreach ($connections as $connection) {
         $id = $connection->id;
-        $items[] = Page\imageArrowLink(htmlspecialchars($connection->address),
-            'view/'.ItemList\escapedItemQuery($id), 'connection', ['id' => $id]);
+        $title = htmlspecialchars($connection->address);
+        $href = 'view/'.ItemList\escapedItemQuery($id);
+        $items[] = Page\imageArrowLink($title,
+            $href, 'connection', ['id' => $id]);
     }
 
     include_once 'fns/render_next_button.php';
