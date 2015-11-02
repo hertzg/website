@@ -25,8 +25,8 @@ function request_contact_params ($user) {
         ErrorJson\badRequest('"ENTER_FULL_NAME"');
     }
 
-    include_once __DIR__.'/../../fns/require_tags.php';
-    list($tags, $tag_names) = require_tags();
+    include_once "$fnsDir/ApiCall/requireTags.php";
+    ApiCall\requireTags($tags, $tag_names);
 
     return [$full_name, $alias, $address, $email1,
         $email1_label, $email2, $email2_label, $phone1,

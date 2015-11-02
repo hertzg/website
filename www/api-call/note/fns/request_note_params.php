@@ -13,8 +13,8 @@ function request_note_params () {
         ErrorJson\badRequest('"ENTER_TEXT"');
     }
 
-    include_once __DIR__.'/../../fns/require_tags.php';
-    list($tags, $tag_names) = require_tags();
+    include_once "$fnsDir/ApiCall/requireTags.php";
+    ApiCall\requireTags($tags, $tag_names);
 
     if ($password_protect) {
         include_once "$fnsDir/Session/EncryptionKey/get.php";

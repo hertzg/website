@@ -12,8 +12,8 @@ function request_bar_chart_params () {
         ErrorJson\badRequest('"ENTER_NAME"');
     }
 
-    include_once __DIR__.'/../../fns/require_tags.php';
-    list($tags, $tag_names) = require_tags();
+    include_once "$fnsDir/ApiCall/requireTags.php";
+    ApiCall\requireTags($tags, $tag_names);
 
     return [$name, $tags, $tag_names];
 

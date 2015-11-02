@@ -12,8 +12,8 @@ function require_bookmark_params () {
         ErrorJson\badRequest('"ENTER_URL"');
     }
 
-    include_once __DIR__.'/../../api-call/fns/require_tags.php';
-    list($tags, $tag_names) = require_tags();
+    include_once "$fnsDir/ApiCall/requireTags.php";
+    ApiCall\requireTags($tags, $tag_names);
 
     return [$url, $title, $tags, $tag_names];
 

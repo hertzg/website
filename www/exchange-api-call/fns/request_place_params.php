@@ -2,13 +2,15 @@
 
 function request_place_params () {
 
-    include_once __DIR__.'/../../fns/Places/request.php';
+    $fnsDir = __DIR__.'/../../fns';
+
+    include_once "$fnsDir/Places/request.php";
     list($latitude, $longitude, $altitude, $name,
         $description, $tags, $parsed_latitude, $parsed_longitude,
         $parsed_altitude) = Places\request();
 
-    include_once __DIR__.'/../../api-call/fns/require_tags.php';
-    list($tags, $tag_names) = require_tags();
+    include_once "$fnsDir/ApiCall/requireTags.php";
+    ApiCall\requireTags($tags, $tag_names);
 
     return [$parsed_latitude, $parsed_longitude,
         $parsed_altitude, $name, $description, $tags, $tag_names];
