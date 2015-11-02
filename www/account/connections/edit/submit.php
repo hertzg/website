@@ -16,8 +16,8 @@ list($username, $address, $expires, $expire_time,
     $can_send_place, $can_send_task) = request_connection_params();
 
 include_once '../fns/check_username.php';
-check_username($mysqli, $user->id_users, $username, $address,
-    $connected_id_users, $errors, $connection->connected_id_users);
+check_username($mysqli, $user->id_users, $username,
+    $address, $connected_id_users, $errors, $id);
 
 include_once "$fnsDir/redirect.php";
 

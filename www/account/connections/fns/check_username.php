@@ -36,10 +36,16 @@ function check_username ($mysqli, $id_users, $username,
         $connectedUser = Connections\getByConnectedUser(
             $mysqli, $id_users, $connected_id_users, $exclude_id);
 
-        if ($connectedUser) {
-            $errors[] = 'A connection to this user already exists.';
-        }
+    } else {
 
+        include_once "$fnsDir/Connections/getByUsernameAddress.php";
+        $connectedUser = Connections\getByUsernameAddress(
+            $mysqli, $id_users, $username, $address, $exclude_id);
+
+    }
+
+    if ($connectedUser) {
+        $errors[] = 'A connection to this user already exists.';
     }
 
 }

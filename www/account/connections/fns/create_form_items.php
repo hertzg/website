@@ -4,12 +4,16 @@ function create_form_items ($values) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
+    $username = $values['username'];
+    $address = $values['address'];
+    if ($address !== null) $username .= "@$address";
+
     include_once "$fnsDir/create_expires_field.php";
     include_once "$fnsDir/Form/textfield.php";
     include_once "$fnsDir/Username/maxLength.php";
     $items = [
         Form\textfield('username', 'Username', [
-            'value' => $values['username'],
+            'value' => $username,
             'maxlength' => Username\maxLength(),
             'required' => true,
             'autofocus' => true,
