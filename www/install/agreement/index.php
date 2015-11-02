@@ -37,7 +37,9 @@ echo_page(
                 .' General Public License along with this program. If not, see'
                 ." <a class=\"link\" target=\"_blank\" href=\"$href\">$href</a>"
             .'</p>',
-            '<a class="button nextButton" href="submit.php">I Agree</a>'
+            '<a class="button nextButton" href="submit.php" tabindex="1">'
+                .'I Agree'
+            .'</a>'
             .'<span class="button disabled">Back</span>'
         )
     .'</form>'

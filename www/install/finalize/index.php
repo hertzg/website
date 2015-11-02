@@ -55,7 +55,9 @@ echo_page(
         '<span class="title-step">Final step</span>'
         .'<h2>Finalize Installation</h2>'
         .$assertsHtml,
-        '<a href="submit.php" class="button nextButton">Finish</a>'
+        '<a href="submit.php" class="button nextButton" tabindex="1">'
+            .'Finish'
+        .'</a>'
         .'<a href="../admin/" class="button" />Back</a>'
     )
 );
