@@ -12,7 +12,9 @@ function edit ($mysqli, $connection, $connected_id_users,
     $connected_id_users_same = $connected_id_users_same ||
         (int)$connection->connected_id_users === (int)$connected_id_users;
 
-    if ($connected_id_users_same && $connection->address === $address) {
+    if ($connected_id_users_same && $connection->username === $username &&
+        $connection->address === $address) {
+
         if (($connection->expire_time === null && $expire_time === null) ||
             (int)$connection->expire_time === $expire_time) {
 
@@ -25,6 +27,7 @@ function edit ($mysqli, $connection, $connected_id_users,
                 (bool)$connection->can_send_task === $can_send_task) return;
 
         }
+
     }
 
     $changed = true;
