@@ -45,8 +45,12 @@ function timefield ($hour, $minute, $text) {
             .$hourSelect.$minuteSelect
         .'</div>';
 
+    $label =
+        "<label class=\"form-property-label\" for=\"$hourName\">"
+            ."$text:"
+        .'</label>';
+
     include_once __DIR__.'/association.php';
-    return association($html,
-        "<label class=\"form-property-label\" for=\"$hourName\">$text:</label>");
+    return association($html, $label);
 
 }
