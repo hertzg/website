@@ -7,7 +7,12 @@ function edit ($mysqli, $connection, $connected_id_users,
     $can_send_contact, $can_send_file, $can_send_note,
     $can_send_place, $can_send_task, &$changed) {
 
-    if ((int)$connection->connected_id_users === (int)$connected_id_users) {
+    $connected_id_users_same = $connection->connected_id_users === null &&
+        $connected_id_users === null;
+    $connected_id_users_same = $connected_id_users_same ||
+        (int)$connection->connected_id_users === (int)$connected_id_users;
+
+    if ($connected_id_users_same && $connection->address === $address) {
         if (($connection->expire_time === null && $expire_time === null) ||
             (int)$connection->expire_time === $expire_time) {
 
