@@ -3,10 +3,10 @@
 namespace Users\Bookmarks\Received;
 
 function add ($mysqli, $sender_id_users, $sender_username,
-    $receiver_id_users, $url, $title, $tags) {
+    $receiver_id_users, $url, $title, $tags, $sender_address = null) {
 
     include_once __DIR__.'/../../../ReceivedBookmarks/add.php';
-    \ReceivedBookmarks\add($mysqli, $sender_id_users,
+    \ReceivedBookmarks\add($mysqli, $sender_address, $sender_id_users,
         $sender_username, $receiver_id_users, $url, $title, $tags);
 
     include_once __DIR__.'/addNumberNew.php';

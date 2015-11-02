@@ -8,7 +8,7 @@ function add ($mysqli, $user,
     $fnsDir = __DIR__.'/../../..';
 
     include_once "$fnsDir/ReceivedFiles/add.php";
-    $id = \ReceivedFiles\add($mysqli, $user->id_users,
+    $id = \ReceivedFiles\add($mysqli, null, $user->id_users,
         $user->username, $receiver_id_users, $name, $size);
 
     include_once "$fnsDir/ReceivedFiles/File/path.php";

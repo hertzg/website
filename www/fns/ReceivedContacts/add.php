@@ -2,12 +2,15 @@
 
 namespace ReceivedContacts;
 
-function add ($mysqli, $sender_id_users, $sender_username,
-    $receiver_id_users, $full_name, $alias, $address,
-    $email1, $email1_label, $email2, $email2_label, $phone1,
-    $phone1_label, $phone2, $phone2_label, $birthday_time,
+function add ($mysqli, $sender_address, $sender_id_users,
+    $sender_username, $receiver_id_users, $full_name, $alias,
+    $address, $email1, $email1_label, $email2, $email2_label,
+    $phone1, $phone1_label, $phone2, $phone2_label, $birthday_time,
     $username, $timezone, $tags, $notes, $favorite, $photo_id) {
 
+    if ($sender_address === null) $sender_address = 'null';
+    else $sender_address = "'".$mysqli->real_escape_string($sender_address)."'";
+    if ($sender_id_users === null) $sender_id_users = 'null';
     $sender_username = $mysqli->real_escape_string($sender_username);
     $full_name = $mysqli->real_escape_string($full_name);
     $alias = $mysqli->real_escape_string($alias);
@@ -30,15 +33,15 @@ function add ($mysqli, $sender_id_users, $sender_username,
     $insert_time = time();
 
     $sql = 'insert into received_contacts'
-        .' (sender_id_users, sender_username, receiver_id_users,'
-        .' full_name, alias, address, email1,'
-        .' email1_label, email2, email2_label,'
+        .' (sender_address, sender_id_users, sender_username,'
+        .' receiver_id_users, full_name, alias, address,'
+        .' email1, email1_label, email2, email2_label,'
         .' phone1, phone1_label, phone2, phone2_label,'
         .' birthday_time, username, timezone, tags,'
         .' notes, favorite, photo_id, insert_time)'
-        ." values ($sender_id_users, '$sender_username', $receiver_id_users,"
-        ." '$full_name', '$alias', '$address', '$email1',"
-        ." '$email1_label', '$email2', '$email2_label',"
+        ." values ($sender_address, $sender_id_users, '$sender_username',"
+        ." $receiver_id_users, '$full_name', '$alias', '$address',"
+        ." '$email1', '$email1_label', '$email2', '$email2_label',"
         ." '$phone1', '$phone1_label', '$phone2', '$phone2_label',"
         ." $birthday_time, '$username', $timezone, '$tags',"
         ." '$notes', $favorite, $photo_id, $insert_time)";

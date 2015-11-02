@@ -2,9 +2,12 @@
 
 namespace ReceivedTasks;
 
-function add ($mysqli, $sender_id_users, $sender_username,
+function add ($mysqli, $sender_address, $sender_id_users, $sender_username,
     $receiver_id_users, $text, $title, $deadline_time, $tags, $top_priority) {
 
+    if ($sender_address === null) $sender_address = 'null';
+    else $sender_address = "'".$mysqli->real_escape_string($sender_address)."'";
+    if ($sender_id_users === null) $sender_id_users = 'null';
     $sender_username = $mysqli->real_escape_string($sender_username);
     $text = $mysqli->real_escape_string($text);
     $title = $mysqli->real_escape_string($title);
@@ -14,10 +17,10 @@ function add ($mysqli, $sender_id_users, $sender_username,
     $insert_time = time();
 
     $sql = 'insert into received_tasks'
-        .' (sender_id_users, sender_username,'
+        .' (sender_address, sender_id_users, sender_username,'
         .' receiver_id_users, text, title, deadline_time,'
         .' tags, top_priority, insert_time)'
-        ." values ($sender_id_users, '$sender_username',"
+        ." values ($sender_address, $sender_id_users, '$sender_username',"
         ." $receiver_id_users, '$text', '$title', $deadline_time,"
         ." '$tags', $top_priority, $insert_time)";
     $mysqli->query($sql) || trigger_error($mysqli->error);

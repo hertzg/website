@@ -7,7 +7,7 @@ function sendRenamed ($mysqli, $user, $receiver_id_users, $folder, $name) {
     $fnsDir = __DIR__.'/../..';
 
     include_once "$fnsDir/ReceivedFolders/add.php";
-    $id_received_folders = \ReceivedFolders\add($mysqli,
+    $id_received_folders = \ReceivedFolders\add($mysqli, null,
         $user->id_users, $user->username, $receiver_id_users, $name);
 
     $copy = function ($id, $parent_id, $copy) use ($mysqli,
