@@ -14,8 +14,7 @@ function request () {
         'can_send_contact', 'can_send_file', 'can_send_note',
         'can_send_place', 'can_send_task');
 
-    include_once "$fnsDir/str_collapse_spaces.php";
-    $username = str_collapse_spaces($username);
+    $username = preg_replace('/\s+/', '', $username);
 
     if (preg_match('/^(.*?)@(.*)$/', $username, $match)) {
         $username = $match[1];
