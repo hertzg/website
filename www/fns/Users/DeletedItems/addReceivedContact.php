@@ -24,6 +24,7 @@ function addReceivedContact ($mysqli, $receivedContact, $apiKey) {
         'notes' => $receivedContact->notes,
         'favorite' => $receivedContact->favorite,
         'insert_time' => $receivedContact->insert_time,
+        'sender_address' => $receivedContact->sender_address,
         'sender_id_users' => $receivedContact->sender_id_users,
         'sender_username' => $receivedContact->sender_username,
         'archived' => $receivedContact->archived,

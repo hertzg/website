@@ -2,10 +2,13 @@
 
 namespace ReceivedNotes;
 
-function addDeleted ($mysqli, $id, $sender_id_users,
-    $sender_username, $receiver_id_users, $text, $title,
-    $tags, $encrypt_in_listings, $archived, $insert_time) {
+function addDeleted ($mysqli, $id, $sender_address,
+    $sender_id_users, $sender_username, $receiver_id_users, $text,
+    $title, $tags, $encrypt_in_listings, $archived, $insert_time) {
 
+    if ($sender_address === null) $sender_address = 'null';
+    else $sender_address = "'".$mysqli->real_escape_string($sender_address)."'";
+    if ($sender_id_users === null) $sender_id_users = 'null';
     $sender_username = $mysqli->real_escape_string($sender_username);
     $text = $mysqli->real_escape_string($text);
     $title = $mysqli->real_escape_string($title);
@@ -14,12 +17,12 @@ function addDeleted ($mysqli, $id, $sender_id_users,
     $archived = $archived ? '1' : '0';
 
     $sql = 'insert into received_notes'
-        .' (id, sender_id_users, sender_username,'
-        .' receiver_id_users, text, title, tags,'
-        .' encrypt_in_listings, archived, insert_time)'
-        ." values ($id, $sender_id_users, '$sender_username',"
-        ." $receiver_id_users, '$text', '$title', '$tags',"
-        ." $encrypt_in_listings, $archived, $insert_time)";
+        .' (id, sender_address, sender_id_users,'
+        .' sender_username, receiver_id_users, text, title,'
+        .' tags, encrypt_in_listings, archived, insert_time)'
+        ." values ($id, $sender_address, $sender_id_users,"
+        ." '$sender_username', $receiver_id_users, '$text', '$title',"
+        ." '$tags', $encrypt_in_listings, $archived, $insert_time)";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
 }

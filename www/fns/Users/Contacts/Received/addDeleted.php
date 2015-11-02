@@ -8,7 +8,8 @@ function addDeleted ($mysqli, $receiver_id_users, $data) {
 
     include_once __DIR__.'/../../../ReceivedContacts/addDeleted.php';
     \ReceivedContacts\addDeleted($mysqli, $data->id,
-        $data->sender_id_users, $data->sender_username, $receiver_id_users,
+        $data->sender_address, $data->sender_id_users,
+        $data->sender_username, $receiver_id_users,
         $data->full_name, $data->alias, $data->address, $data->email1,
         $data->email1_label, $data->email2, $data->email2_label,
         $data->phone1, $data->phone1_label, $data->phone2,

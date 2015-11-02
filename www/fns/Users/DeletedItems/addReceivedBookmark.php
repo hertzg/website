@@ -10,6 +10,7 @@ function addReceivedBookmark ($mysqli, $receivedBookmark, $apiKey) {
         'title' => $receivedBookmark->title,
         'tags' => $receivedBookmark->tags,
         'insert_time' => $receivedBookmark->insert_time,
+        'sender_address' => $receivedBookmark->sender_address,
         'sender_id_users' => $receivedBookmark->sender_id_users,
         'sender_username' => $receivedBookmark->sender_username,
         'archived' => $receivedBookmark->archived,

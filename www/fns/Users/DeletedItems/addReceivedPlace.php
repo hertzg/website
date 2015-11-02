@@ -13,6 +13,7 @@ function addReceivedPlace ($mysqli, $receivedPlace, $apiKey) {
         'description' => $receivedPlace->description,
         'tags' => $receivedPlace->tags,
         'insert_time' => $receivedPlace->insert_time,
+        'sender_address' => $receivedPlace->sender_address,
         'sender_id_users' => $receivedPlace->sender_id_users,
         'sender_username' => $receivedPlace->sender_username,
         'archived' => $receivedPlace->archived,

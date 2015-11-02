@@ -9,9 +9,9 @@ function addDeleted ($mysqli, $receiver_id_users, $data) {
     $fnsDir = __DIR__.'/../../..';
 
     include_once "$fnsDir/ReceivedFolders/addDeleted.php";
-    \ReceivedFolders\addDeleted($mysqli, $id, $data->sender_id_users,
-        $data->sender_username, $receiver_id_users, $data->name,
-        $archived, $data->insert_time);
+    \ReceivedFolders\addDeleted($mysqli, $id, $data->sender_address,
+        $data->sender_id_users, $data->sender_username, $receiver_id_users,
+        $data->name, $archived, $data->insert_time);
 
     include_once "$fnsDir/ReceivedFolderFiles/setDeletedOnFolder.php";
     \ReceivedFolderFiles\setDeletedOnFolder($mysqli, $id, false);

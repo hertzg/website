@@ -2,13 +2,16 @@
 
 namespace ReceivedContacts;
 
-function addDeleted ($mysqli, $id, $sender_id_users,
-    $sender_username, $receiver_id_users, $full_name, $alias,
-    $address, $email1, $email1_label, $email2, $email2_label,
-    $phone1, $phone1_label, $phone2, $phone2_label,
+function addDeleted ($mysqli, $id, $sender_address,
+    $sender_id_users, $sender_username, $receiver_id_users,
+    $full_name, $alias, $address, $email1, $email1_label, $email2,
+    $email2_label, $phone1, $phone1_label, $phone2, $phone2_label,
     $birthday_time, $username, $timezone, $tags, $notes,
     $favorite, $archived, $insert_time, $photo_id) {
 
+    if ($sender_address === null) $sender_address = 'null';
+    else $sender_address = "'".$mysqli->real_escape_string($sender_address)."'";
+    if ($sender_id_users === null) $sender_id_users = 'null';
     $sender_username = $mysqli->real_escape_string($sender_username);
     $full_name = $mysqli->real_escape_string($full_name);
     $alias = $mysqli->real_escape_string($alias);
@@ -31,13 +34,13 @@ function addDeleted ($mysqli, $id, $sender_id_users,
     if ($photo_id === null) $photo_id = 'null';
 
     $sql = 'insert into received_contacts'
-        .' (id, sender_id_users, sender_username,'
+        .' (id, sender_address, sender_id_users, sender_username,'
         .' receiver_id_users, full_name, alias, address,'
         .' email1, email1_label, email2, email2_label,'
         .' phone1, phone1_label, phone2, phone2_label,'
         .' birthday_time, username, timezone, tags,'
         .' notes, favorite, archived, insert_time, photo_id)'
-        ." values ($id, $sender_id_users, '$sender_username',"
+        ." values ($id, $sender_address, $sender_id_users, '$sender_username',"
         ." $receiver_id_users, '$full_name', '$alias', '$address',"
         ." '$email1', '$email1_label', '$email2', '$email2_label',"
         ." '$phone1', '$phone1_label', '$phone2', '$phone2_label',"
