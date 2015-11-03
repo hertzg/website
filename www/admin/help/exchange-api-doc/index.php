@@ -42,5 +42,4 @@ $content = Page\tabs(
 );
 
 include_once '../../fns/echo_admin_page.php';
-include_once "$fnsDir/compressed_js_script.php";
 echo_admin_page('Exchange API Documentation', $content, '../../');
