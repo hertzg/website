@@ -17,9 +17,16 @@ $searchContent = SearchForm\emptyContent('Search page...');
 include_once "$fnsDir/SearchForm/create.php";
 $items = [SearchForm\create('search/', $searchContent)];
 
+include_once 'fns/get_methods.php';
 include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
+foreach (get_methods() as $name => $description) {
+    $items[] = Page\imageArrowLinkWithDescription(
+        $name, $description, "$name/", 'api-method', ['id' => $name]);
+}
+
+$group_items = [];
 foreach ($groups as $key => $group) {
-    $items[] = Page\imageArrowLinkWithDescription($group['title'],
+    $group_items[] = Page\imageArrowLinkWithDescription($group['title'],
         "$group[description].", "$key/", 'api-namespace', ['id' => $key]);
 }
 
@@ -54,7 +61,9 @@ $content =
             .'<br /><code>CROSS_DOMAIN_REQUEST</code>'
             .' - The request was referred by a different domain.'
         )
-        .create_panel('Root Namespaces', join('<div class="hr"></div>', $items))
+        .create_panel('Methods', join('<div class="hr"></div>', $items))
+        .create_panel('Namespaces',
+            join('<div class="hr"></div>', $group_items))
     )
     .compressed_js_script('searchForm', $base);
 

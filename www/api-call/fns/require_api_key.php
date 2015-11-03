@@ -43,7 +43,7 @@ function require_api_key ($permission_field, &$apiKey, &$user, &$mysqli) {
             ErrorJson\forbidden('"INVALID_API_KEY"');
         }
 
-        if (!$apiKey->$permission_field) {
+        if ($permission_field !== null && !$apiKey->$permission_field) {
             include_once "$fnsDir/ErrorJson/forbidden.php";
             ErrorJson\forbidden('"ACCESS_DENIED"');
         }
