@@ -95,10 +95,10 @@ if (!$found) {
 }
 
 include_once 'fns/create_content.php';
-include_once "$fnsDir/compressed_js_script.php";
-$content =
-    create_content($items)
-    .compressed_js_script('searchForm', $base);
+$content = create_content($items);
 
+include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/echo_public_page.php";
-echo_public_page($user, 'Search API Documentation', $content, $base);
+echo_public_page($user, 'Search API Documentation', $content, $base, [
+    'scripts' => compressed_js_script('searchForm', $base),
+]);

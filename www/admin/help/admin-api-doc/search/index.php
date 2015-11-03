@@ -66,10 +66,10 @@ if (!$found) {
 }
 
 include_once 'fns/create_content.php';
-include_once "$fnsDir/compressed_js_script.php";
-$content =
-    create_content($items)
-    .compressed_js_script('searchForm', '../../../');
+$content = create_content($items);
 
 include_once '../../../fns/echo_admin_page.php';
-echo_admin_page('Search Admin API Documentation', $content, '../../../');
+include_once "$fnsDir/compressed_js_script.php";
+echo_admin_page('Search Admin API Documentation', $content, '../../../', [
+    'scripts' => compressed_js_script('searchForm', '../../../../'),
+]);

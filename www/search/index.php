@@ -104,12 +104,11 @@ if ($num_bar_charts || $num_bookmarks || $num_contacts || $num_files ||
     $items[] = Page\info('Nothing found');
 }
 
-include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/Page/emptyTabs.php";
-$content =
-    Page\emptyTabs(join('<div class="hr"></div>', $items))
-    .compressed_js_script('searchForm', $base);
+$content = Page\emptyTabs(join('<div class="hr"></div>', $items));
 
+include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/echo_user_page.php";
-echo_user_page($user, 'Search: '.htmlspecialchars($keyword),
-    $content, $base);
+echo_user_page($user, 'Search: '.htmlspecialchars($keyword), $content, $base, [
+    'scripts' => compressed_js_script('searchForm', $base),
+]);

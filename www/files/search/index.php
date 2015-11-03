@@ -60,20 +60,20 @@ if (!$deep) {
 include_once '../fns/unset_session_vars.php';
 unset_session_vars();
 
-include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/Page/tabs.php";
-$content =
-    Page\tabs(
+$content = Page\tabs(
+    [
         [
-            [
-                'title' => 'Home',
-                'href' => '../../search/?keyword='.rawurlencode($keyword),
-            ],
+            'title' => 'Home',
+            'href' => '../../search/?keyword='.rawurlencode($keyword),
         ],
-        'Files',
-        join('<div class="hr"></div>', $items)
-    )
-    .compressed_js_script('searchForm', $base);
+    ],
+    'Files',
+    join('<div class="hr"></div>', $items)
+);
 
+include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/echo_user_page.php";
-echo_user_page($user, 'Files', $content, $base);
+echo_user_page($user, 'Files', $content, $base, [
+    'scripts' => compressed_js_script('searchForm', $base),
+]);
