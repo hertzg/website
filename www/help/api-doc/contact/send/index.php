@@ -84,6 +84,6 @@ contact_method_page('send', [
     'RECEIVER_NOT_FOUND' => 'No such receiver with the username.',
     'RECEIVER_NOT_RECEIVING' =>
         "The receiver hasn't opened a connection to receive contacts from you.",
-    'ENTER_URL' => 'The URL is empty.',
+    'ENTER_FULL_NAME' => 'The full name is empty.',
     'TOO_MANY_TAGS' => 'More than '.Tags\maxNumber().' tags given.',
 ]);
