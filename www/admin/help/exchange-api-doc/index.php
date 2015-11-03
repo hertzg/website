@@ -31,7 +31,8 @@ $content = Page\tabs(
         'php-example', 'generic', ['id' => 'php-example'])
     .'<div class="hr"></div>'
     .Page\text(
-        'Below is a list of errors that are expected from any exchange API method:'
+        'Below is a list of errors that'
+        .' are expected from any exchange API method:'
         .'<br /><code>INVALID_EXCHANGE_API_KEY</code> - '
         .'The exchange API key is invalid.'
         .'<br /><code>EXCHANGE_API_KEY_EXPIRED</code> - '
