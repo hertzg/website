@@ -5,11 +5,16 @@ namespace SendForm\NewItem;
 function submitAddPage ($user, $errorsKey,
     $messagesKey, $valuesKey, $checkFunction) {
 
-    include_once __DIR__.'/../../request_strings.php';
+    $fnsDir = __DIR__.'/../..';
+
+    include_once "$fnsDir/request_strings.php";
     list($username) = request_strings('username');
     $username = preg_replace('/\s+/', '', $username);
 
-    include_once __DIR__.'/../../ItemList/pageQuery.php';
+    include_once "$fnsDir/parse_username_address.php";
+    parse_username_address($username, $parsed_username, $address);
+
+    include_once "$fnsDir/ItemList/pageQuery.php";
     $url = './'.\ItemList\pageQuery();
 
     if (!array_key_exists($valuesKey, $_SESSION)) {
@@ -20,7 +25,7 @@ function submitAddPage ($user, $errorsKey,
         ];
     }
 
-    include_once __DIR__.'/../../redirect.php';
+    include_once "$fnsDir/redirect.php";
 
     if (array_key_exists($username, $_SESSION[$valuesKey]['recipients'])) {
         unset($_SESSION[$errorsKey]);
@@ -30,14 +35,15 @@ function submitAddPage ($user, $errorsKey,
         redirect($url);
     }
 
-    $checkFunction($username, $errors);
-
-    if ($errors) {
-        unset($_SESSION[$messagesKey]);
-        $_SESSION[$errorsKey] = $errors;
-        $_SESSION[$valuesKey]['username'] = $username;
-        $_SESSION[$valuesKey]['usernameError'] = true;
-        redirect($url);
+    if ($address === null) {
+        $checkFunction($username, $errors);
+        if ($errors) {
+            unset($_SESSION[$messagesKey]);
+            $_SESSION[$errorsKey] = $errors;
+            $_SESSION[$valuesKey]['username'] = $username;
+            $_SESSION[$valuesKey]['usernameError'] = true;
+            redirect($url);
+        }
     }
 
     unset($_SESSION[$errorsKey]);

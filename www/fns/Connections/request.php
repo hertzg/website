@@ -16,12 +16,8 @@ function request () {
 
     $username = preg_replace('/\s+/', '', $username);
 
-    if (preg_match('/^(.*?)@(.*)$/', $username, $match)) {
-        $username = $match[1];
-        $address = $match[2];
-    } else {
-        $address = null;
-    }
+    include_once "$fnsDir/parse_username_address.php";
+    parse_username_address($username, $username, $address);
 
     $can_send_bookmark = (bool)$can_send_bookmark;
     $can_send_channel = (bool)$can_send_channel;
