@@ -2,10 +2,10 @@
 
 function get_methods () {
     return [
-        'receiveBookmark' => 'Handle a bookmark',
-        'receiveContact' => 'Handle a contact',
-        'receiveNote' => 'Handle a note',
-        'receivePlace' => 'Handle a place',
-        'receiveTask' => 'Handle a task',
+        'receiveBookmark' => 'Handle a bookmark sent to a user.',
+        'receiveContact' => 'Handle a contact sent to a user.',
+        'receiveNote' => 'Handle a note sent to a user.',
+        'receivePlace' => 'Handle a place sent to a user.',
+        'receiveTask' => 'Handle a task sent to a user.',
     ];
 }

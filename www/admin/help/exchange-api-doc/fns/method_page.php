@@ -1,12 +1,14 @@
 <?php
 
-function method_page ($groupName, $prefix,
-    $methodName, $description, $params, $returns, $errors) {
+function method_page ($methodName, $params, $returns, $errors) {
 
-    $fnsDir = __DIR__.'/../../../fns';
+    include_once __DIR__.'/get_methods.php';
+    $description = get_methods()[$methodName];
+
+    $fnsDir = __DIR__.'/../../../../fns';
 
     include_once "$fnsDir/Page/text.php";
-    $items = [Page\text("<code>$prefix/$methodName</code> - $description")];
+    $items = [Page\text("<code>$methodName</code> - $description")];
 
     if ($params) {
         $text = 'Method parameters:';
@@ -35,7 +37,7 @@ function method_page ($groupName, $prefix,
     $content = Page\tabs(
         [
             [
-                'title' => $groupName,
+                'title' => 'Exchange API Documentation',
                 'href' => "../#$methodName",
             ],
         ],
@@ -43,7 +45,7 @@ function method_page ($groupName, $prefix,
         join('<div class="hr"></div>', $items)
     );
 
-    include_once __DIR__.'/../../fns/echo_admin_page.php';
-    echo_admin_page("$prefix/$methodName Method", $content, '../../../');
+    include_once __DIR__.'/../../../fns/echo_admin_page.php';
+    echo_admin_page("$methodName Method", $content, '../../../');
 
 }

@@ -9,7 +9,7 @@ $items = [];
 include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
 foreach ($methods as $name => $description) {
     $items[] = Page\imageArrowLinkWithDescription($name,
-        "$description.", "$name/", 'api-method', ['id' => $name]);
+        $description, "$name/", 'api-method', ['id' => $name]);
 }
 
 include_once 'fns/get_article_text.php';

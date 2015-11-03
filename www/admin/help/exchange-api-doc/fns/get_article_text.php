@@ -17,7 +17,7 @@ function get_article_text () {
 
     return
         '<em class="term">Zvini Exchange API</em> allows programs'
-        .' and other Zvini instances to transport user data to each other'
+        .' such as other Zvini instances to transport user data to each other'
         .' by calling API methods with HTTP requests.'
         .' The API methods can be called with either GET or POST methods.'
         .' The method parameters can be passed either as a'
