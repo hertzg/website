@@ -17,7 +17,10 @@ $content = Page\tabs(
         ],
     ],
     'Help',
-    Page\imageArrowLink('Exchange API Documentation',
+    Page\imageArrowLink('Admin API Documentation',
+        'admin-api-doc/', 'api-doc', ['id' => 'admin-api-doc'])
+    .'<div class="hr"></div>'
+    .Page\imageArrowLink('Exchange API Documentation',
         'exchange-api-doc', 'api-doc', ['id' => 'exchange-api-doc'])
 );
 
