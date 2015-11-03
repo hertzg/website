@@ -23,13 +23,22 @@ $searchContent = SearchForm\content($keyword, 'Search page...', '..');
 include_once "$fnsDir/SearchForm/create.php";
 $items = [SearchForm\create('./', $searchContent)];
 
-include_once 'fns/get_full_groups.php';
-$groups = get_full_groups();
-
 $found = false;
 
+include_once '../fns/get_methods.php';
 include_once "$fnsDir/Page/imageLinkWithDescription.php";
-foreach ($groups as $groupKey => $group) {
+foreach (get_methods() as $name => $description) {
+    if (strpos($name, $lowerKeyword) !== false) {
+        $found = true;
+        $title = preg_replace($regex, $replace, $name);
+        $items[] = Page\imageLinkWithDescription($title,
+            $description, "../$name/", 'api-method');
+    }
+}
+
+include_once 'fns/get_full_groups.php';
+include_once "$fnsDir/Page/imageLinkWithDescription.php";
+foreach (get_full_groups() as $groupKey => $group) {
 
     if (strpos($groupKey, $lowerKeyword) !== false) {
         $found = true;
