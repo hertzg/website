@@ -49,48 +49,51 @@ if ($mysqli->connect_errno) {
     $mysqlLink = Page\imageArrowLink($title, $href, $icon, $options);
 }
 
+$helpLink = Page\imageArrowLink('Help', 'help/', 'help', ['id' => 'help']);
+
 include_once 'fns/create_admin_api_keys_link.php';
 include_once 'fns/create_connections_link.php';
 include_once 'fns/create_invitations_link.php';
 include_once 'fns/create_users_link.php';
+include_once '../fns/create_panel.php';
 include_once '../fns/Page/sessionMessages.php';
 include_once '../fns/Page/tabs.php';
-$content = Page\tabs(
-    [],
-    'Administration',
-    Page\sessionMessages('admin/messages')
-    .$generalLink
-    .'<div class="hr"></div>'
-    .$mysqlLink
-    .'<div class="hr"></div>'
-    .Page\imageArrowLink('Ensure Crontab',
-        'ensure-crontab/', 'generic', ['id' => 'ensure-crontab'])
-    .'<div class="hr"></div>'
-    .Page\imageArrowLink('Ensure Tables',
-        'ensure-tables/', 'generic', ['id' => 'ensure-tables'])
-    .'<div class="hr"></div>'
-    .Page\imageArrowLink('Ensure Data Folder',
-        'ensure-data-dir/', 'generic', ['id' => 'ensure-data-dir'])
-    .'<div class="hr"></div>'
-    .Page\imageArrowLink('Check Installation',
-        'check-installation/', 'generic', ['id' => 'check-installation'])
-    .'<div class="hr"></div>'
-    .Page\imageArrowLink('Set New Username/Password',
-        'username-password/', 'generic', ['id' => 'username-password'])
-    .'<div class="hr"></div>'
-    .create_admin_api_keys_link($mysqli)
-    .'<div class="hr"></div>'
-    .Page\imageArrowLink('Invalid Signins', 'invalid-signins/',
-        'invalid-sign-ins', ['id' => 'invalid-signins'])
-    .'<div class="hr"></div>'
-    .create_invitations_link($mysqli)
-    .'<div class="hr"></div>'
-    .create_connections_link($mysqli)
-    .'<div class="hr"></div>'
-    .create_users_link($mysqli)
-    .'<div class="hr"></div>'
-    .Page\imageArrowLink('Help', 'help/', 'help', ['id' => 'help'])
-);
+$content =
+    Page\tabs(
+        [],
+        'Administration',
+        Page\sessionMessages('admin/messages')
+        .$generalLink
+        .'<div class="hr"></div>'
+        .$mysqlLink
+        .'<div class="hr"></div>'
+        .Page\imageArrowLink('Ensure Crontab',
+            'ensure-crontab/', 'generic', ['id' => 'ensure-crontab'])
+        .'<div class="hr"></div>'
+        .Page\imageArrowLink('Ensure Tables',
+            'ensure-tables/', 'generic', ['id' => 'ensure-tables'])
+        .'<div class="hr"></div>'
+        .Page\imageArrowLink('Ensure Data Folder',
+            'ensure-data-dir/', 'generic', ['id' => 'ensure-data-dir'])
+        .'<div class="hr"></div>'
+        .Page\imageArrowLink('Check Installation',
+            'check-installation/', 'generic', ['id' => 'check-installation'])
+        .'<div class="hr"></div>'
+        .Page\imageArrowLink('Set New Username/Password',
+            'username-password/', 'generic', ['id' => 'username-password'])
+        .'<div class="hr"></div>'
+        .create_admin_api_keys_link($mysqli)
+        .'<div class="hr"></div>'
+        .Page\imageArrowLink('Invalid Signins', 'invalid-signins/',
+            'invalid-sign-ins', ['id' => 'invalid-signins'])
+        .'<div class="hr"></div>'
+        .create_invitations_link($mysqli)
+        .'<div class="hr"></div>'
+        .create_connections_link($mysqli)
+        .'<div class="hr"></div>'
+        .create_users_link($mysqli)
+    )
+    .create_panel('Options', $helpLink);
 
 include_once '../fns/echo_page.php';
 echo_page(null, 'Administration', $content, '../', [
