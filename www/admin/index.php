@@ -92,6 +92,7 @@ $content = Page\tabs(
     .'<div class="hr"></div>'
     .create_users_link($mysqli)
     .'<div class="hr"></div>'
+    .Page\imageArrowLink('Help', 'help/', 'help', ['id' => 'help'])
 );
 
 include_once '../fns/echo_page.php';
