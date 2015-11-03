@@ -14,8 +14,7 @@ include_once "$fnsDir/ItemList/escapedItemQuery.php";
 include_once "$fnsDir/Page/confirmDialog.php";
 $content =
     ViewPointPage\create($point, $scripts)
-    .Page\confirmDialog(
-        'Are you sure you want to delete the point?'
+    .Page\confirmDialog('Are you sure you want to delete the point?'
         .' The latitude, the longitude and the altitude of the place'
         .' will be updated to the avarage of all the remaining points.',
         'Yes, delete point', 'submit.php'.ItemList\escapedItemQuery($id),
