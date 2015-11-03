@@ -1,8 +1,11 @@
 <?php
 
-function create_page ($user, $base = '') {
+function create_page ($user, &$scripts, $base = '') {
 
     $fnsDir = __DIR__.'/../../../../fns';
+
+    include_once "$fnsDir/compressed_js_script.php";
+    $scripts = compressed_js_script('formCheckbox', "$base../../../");
 
     include_once __DIR__.'/get_home_items.php';
     $homeItems = get_home_items();
@@ -22,39 +25,36 @@ function create_page ($user, $base = '') {
     include_once "$fnsDir/Form/button.php";
     $items[] = Form\button('Save Changes');
 
-    include_once "$fnsDir/compressed_js_script.php";
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Page/imageLink.php";
     include_once "$fnsDir/Page/imageLinkWithDescription.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
     include_once "$fnsDir/Page/text.php";
-    return
-        Page\tabs(
+    return Page\tabs(
+        [
             [
-                [
-                    'title' => 'Customize',
-                    'href' => "$base../#show-hide",
-                ],
+                'title' => 'Customize',
+                'href' => "$base../#show-hide",
             ],
-            'Show / Hide Items',
-            Page\sessionMessages('home/customize/show-hide/messages')
-            .Page\text('Select items to see them on your home page:')
-            ."<form action=\"{$base}submit.php\" method=\"post\">"
-                .join('<div class="hr"></div>', $items)
-            .'</form>'
-            .create_panel(
-                'Options',
-                Page\imageLinkWithDescription('Reorder Items',
-                    'Change the order in which the items appear.',
-                    "$base../reorder/", 'reorder')
-                .'<div class="hr"></div>'
-                .'<div id="restoreLink">'
-                    .Page\imageLink('Restore Defaults',
-                        "{$base}restore-defaults/", 'restore-defaults')
-                .'</div>'
-            )
+        ],
+        'Show / Hide Items',
+        Page\sessionMessages('home/customize/show-hide/messages')
+        .Page\text('Select items to see them on your home page:')
+        ."<form action=\"{$base}submit.php\" method=\"post\">"
+            .join('<div class="hr"></div>', $items)
+        .'</form>'
+        .create_panel(
+            'Options',
+            Page\imageLinkWithDescription('Reorder Items',
+                'Change the order in which the items appear.',
+                "$base../reorder/", 'reorder')
+            .'<div class="hr"></div>'
+            .'<div id="restoreLink">'
+                .Page\imageLink('Restore Defaults',
+                    "{$base}restore-defaults/", 'restore-defaults')
+            .'</div>'
         )
-        .compressed_js_script('formCheckbox', "$base../../../");
+    );
 
 }

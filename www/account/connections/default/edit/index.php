@@ -25,22 +25,22 @@ render_checkbox_items([
 include_once "$fnsDir/Form/button.php";
 $items[] = Form\button('Save Changes');
 
-include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/Page/tabs.php";
-$content =
-    Page\tabs(
+$content = Page\tabs(
+    [
         [
-            [
-                'title' => 'Default Connection',
-                'href' => '../#edit',
-            ],
+            'title' => 'Default Connection',
+            'href' => '../#edit',
         ],
-        'Edit',
-        '<form action="submit.php" method="post">'
-            .join('<div class="hr"></div>', $items)
-        .'</form>'
-    )
-    .compressed_js_script('formCheckbox', $base);
+    ],
+    'Edit',
+    '<form action="submit.php" method="post">'
+        .join('<div class="hr"></div>', $items)
+    .'</form>'
+);
 
+include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/echo_user_page.php";
-echo_user_page($user, 'Edit Default Connection', $content, $base);
+echo_user_page($user, 'Edit Default Connection', $content, $base, [
+    'scripts' => compressed_js_script('formCheckbox', $base),
+]);

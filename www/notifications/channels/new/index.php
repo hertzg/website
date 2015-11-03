@@ -24,27 +24,24 @@ unset(
 );
 
 include_once '../fns/create_form_items.php';
-include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/tabs.php";
-$content =
-    Page\tabs(
+$content = Page\tabs(
+    [
         [
-            [
-                'title' => 'Channels',
-                'href' => '..',
-            ],
+            'title' => 'Channels',
+            'href' => '..',
         ],
-        'New Channel',
-        Page\sessionErrors('notifications/channels/new/errors')
-        .'<form action="submit.php" method="post">'
-            .create_form_items($values)
-            .'<div class="hr"></div>'
-            .Form\button('Create')
-        .'</form>'
-    )
-    .compressed_js_script('formCheckbox', $base);
+    ],
+    'New Channel',
+    Page\sessionErrors('notifications/channels/new/errors')
+    .'<form action="submit.php" method="post">'
+        .create_form_items($values, $scripts)
+        .'<div class="hr"></div>'
+        .Form\button('Create')
+    .'</form>'
+);
 
 include_once "$fnsDir/echo_user_page.php";
-echo_user_page($user, 'New Channel', $content, $base);
+echo_user_page($user, 'New Channel', $content, $base, ['scripts' => $scripts]);

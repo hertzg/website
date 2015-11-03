@@ -31,35 +31,31 @@ unset(
 );
 
 include_once '../fns/create_form_items.php';
-include_once '../../fns/compressed_js_script.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/ItemList/listHref.php';
 include_once '../../fns/ItemList/pageHiddenInputs.php';
 include_once '../../fns/Page/sessionErrors.php';
 include_once '../../fns/Page/staticTwoColumns.php';
 include_once '../../fns/Page/tabs.php';
-$content =
-    Page\tabs(
+$content = Page\tabs(
+    [
         [
-            [
-                'title' => 'Notes',
-                'href' => ItemList\listHref(),
-            ],
+            'title' => 'Notes',
+            'href' => ItemList\listHref(),
         ],
-        'New Note',
-        Page\sessionErrors('notes/new/errors')
-        .'<form action="submit.php" method="post">'
-            .create_form_items($values)
-            .'<div class="hr"></div>'
-            .Page\staticTwoColumns(
-                Form\button('Save'),
-                Form\button('Send', 'sendButton')
-            )
-            .ItemList\pageHiddenInputs()
-        .'</form>'
-    )
-    .compressed_js_script('flexTextarea', $base)
-    .compressed_js_script('formCheckbox', $base);
+    ],
+    'New Note',
+    Page\sessionErrors('notes/new/errors')
+    .'<form action="submit.php" method="post">'
+        .create_form_items($values, $scripts)
+        .'<div class="hr"></div>'
+        .Page\staticTwoColumns(
+            Form\button('Save'),
+            Form\button('Send', 'sendButton')
+        )
+        .ItemList\pageHiddenInputs()
+    .'</form>'
+);
 
 include_once '../../fns/echo_user_page.php';
-echo_user_page($user, 'New Note', $content, $base);
+echo_user_page($user, 'New Note', $content, $base, ['scripts' => $scripts]);

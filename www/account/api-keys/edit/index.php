@@ -39,34 +39,34 @@ if (array_key_exists($key, $_SESSION)) {
 
 include_once '../fns/create_general_fields.php';
 include_once '../fns/create_permission_fields.php';
-include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/checkbox.php";
 include_once "$fnsDir/Form/hidden.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/tabs.php";
-$content =
-    Page\tabs(
+$content = Page\tabs(
+    [
         [
-            [
-                'title' => "API Key #$id",
-                'href' => "../view/?id=$id#edit",
-            ],
+            'title' => "API Key #$id",
+            'href' => "../view/?id=$id#edit",
         ],
-        'Edit',
-        Page\sessionErrors('account/api-keys/edit/errors')
-        .'<form action="submit.php" method="post">'
-            .create_general_fields($values)
-            .'<div class="hr"></div>'
-            .Form\checkbox('randomizeKey',
-                'Randomize key', $values['randomizeKey'])
-            .create_permission_fields($values)
-            .'<div class="hr"></div>'
-            .Form\button('Save Changes')
-            .Form\hidden('id', $id)
-        .'</form>'
-    )
-    .compressed_js_script('formCheckbox', $base);
+    ],
+    'Edit',
+    Page\sessionErrors('account/api-keys/edit/errors')
+    .'<form action="submit.php" method="post">'
+        .create_general_fields($values)
+        .'<div class="hr"></div>'
+        .Form\checkbox('randomizeKey',
+            'Randomize key', $values['randomizeKey'])
+        .create_permission_fields($values)
+        .'<div class="hr"></div>'
+        .Form\button('Save Changes')
+        .Form\hidden('id', $id)
+    .'</form>'
+);
 
+include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/echo_user_page.php";
-echo_user_page($user, "Edit API Key #$id", $content, $base);
+echo_user_page($user, "Edit API Key #$id", $content, $base, [
+    'scripts' => compressed_js_script('formCheckbox', $base),
+]);

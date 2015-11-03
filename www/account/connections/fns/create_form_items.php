@@ -1,8 +1,11 @@
 <?php
 
-function create_form_items ($values) {
+function create_form_items ($values, &$scripts) {
 
     $fnsDir = __DIR__.'/../../../fns';
+
+    include_once "$fnsDir/compressed_js_script.php";
+    $scripts = compressed_js_script('formCheckbox', '../../../');
 
     $username = $values['username'];
     $address = $values['address'];

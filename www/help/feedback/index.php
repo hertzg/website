@@ -15,35 +15,35 @@ unset($_SESSION['help/messages']);
 include_once "$fnsDir/Feedbacks/maxLengths.php";
 $maxLengths = Feedbacks\maxLengths();
 
-include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/notes.php";
 include_once "$fnsDir/Form/textarea.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/tabs.php";
-$content =
-    Page\tabs(
+$content = Page\tabs(
+    [
         [
-            [
-                'title' => 'Help',
-                'href' => '../#feedback',
-            ],
+            'title' => 'Help',
+            'href' => '../#feedback',
         ],
-        'Feedback',
-        Page\sessionErrors('help/feedback/errors')
-        .'<form action="submit.php" method="post">'
-            .Form\textarea('text', 'Text', [
-                'value' => $values['text'],
-                'maxlength' => $maxLengths['text'],
-                'autofocus' => true,
-                'required' => true,
-            ])
-            .Form\notes(['Minimum 6 words.'])
-            .'<div class="hr"></div>'
-            .Form\button('Submit Feedback')
-        .'</form>'
-    )
-    .compressed_js_script('flexTextarea', $base);
+    ],
+    'Feedback',
+    Page\sessionErrors('help/feedback/errors')
+    .'<form action="submit.php" method="post">'
+        .Form\textarea('text', 'Text', [
+            'value' => $values['text'],
+            'maxlength' => $maxLengths['text'],
+            'autofocus' => true,
+            'required' => true,
+        ])
+        .Form\notes(['Minimum 6 words.'])
+        .'<div class="hr"></div>'
+        .Form\button('Submit Feedback')
+    .'</form>'
+);
 
+include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/echo_public_page.php";
-echo_public_page($user, 'Leave Feedback', $content, $base);
+echo_public_page($user, 'Leave Feedback', $content, $base, [
+    'scripts' => compressed_js_script('flexTextarea', $base),
+]);

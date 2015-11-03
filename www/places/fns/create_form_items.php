@@ -1,8 +1,11 @@
 <?php
 
-function create_form_items ($values) {
+function create_form_items ($values, &$scripts, $base = '') {
 
     $fnsDir = __DIR__.'/../../fns';
+
+    include_once "$fnsDir/compressed_js_script.php";
+    $scripts = compressed_js_script('flexTextarea', "$base../../");
 
     include_once "$fnsDir/Places/maxLengths.php";
     $maxLengths = Places\maxLengths();

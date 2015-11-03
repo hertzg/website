@@ -28,56 +28,56 @@ else {
     ];
 }
 
-include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/checkbox.php";
 include_once "$fnsDir/Form/textfield.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/tabs.php";
-$content =
-    Page\tabs(
+$content = Page\tabs(
+    [
         [
-            [
-                'title' => 'General Information',
-                'href' => '../#edit',
-            ],
+            'title' => 'General Information',
+            'href' => '../#edit',
         ],
-        'Edit',
-        Page\sessionErrors('admin/general-info/edit/errors')
-        .'<form action="submit.php" method="post">'
-            .Form\textfield('siteTitle', 'Site title', [
-                'value' => $values['siteTitle'],
-                'autofocus' => true,
-                'required' => true,
-            ])
-            .'<div class="hr"></div>'
-            .Form\textfield('domainName', 'Domain name', [
-                'value' => $values['domainName'],
-                'required' => true,
-            ])
-            .'<div class="hr"></div>'
-            .Form\textfield('infoEmail', 'Informational email', [
-                'value' => $values['infoEmail'],
-                'required' => true,
-            ])
-            .'<div class="hr"></div>'
-            .Form\textfield('siteBase', 'Path to "www" folder', [
-                'value' => $values['siteBase'],
-                'required' => true,
-            ])
-            .'<div class="hr"></div>'
-            .Form\checkbox('https', 'Uses HTTPS', $values['https'])
-            .'<div class="hr"></div>'
-            .Form\checkbox('behindProxy',
-                'Behind reverse proxy', $values['behindProxy'])
-            .'<div class="hr"></div>'
-            .Form\checkbox('signupEnabled',
-                'Anyone can sign up', $values['signupEnabled'])
-            .'<div class="hr"></div>'
-            .Form\button('Save Changes')
-        .'</form>'
-    )
-    .compressed_js_script('formCheckbox', '../../../');
+    ],
+    'Edit',
+    Page\sessionErrors('admin/general-info/edit/errors')
+    .'<form action="submit.php" method="post">'
+        .Form\textfield('siteTitle', 'Site title', [
+            'value' => $values['siteTitle'],
+            'autofocus' => true,
+            'required' => true,
+        ])
+        .'<div class="hr"></div>'
+        .Form\textfield('domainName', 'Domain name', [
+            'value' => $values['domainName'],
+            'required' => true,
+        ])
+        .'<div class="hr"></div>'
+        .Form\textfield('infoEmail', 'Informational email', [
+            'value' => $values['infoEmail'],
+            'required' => true,
+        ])
+        .'<div class="hr"></div>'
+        .Form\textfield('siteBase', 'Path to "www" folder', [
+            'value' => $values['siteBase'],
+            'required' => true,
+        ])
+        .'<div class="hr"></div>'
+        .Form\checkbox('https', 'Uses HTTPS', $values['https'])
+        .'<div class="hr"></div>'
+        .Form\checkbox('behindProxy',
+            'Behind reverse proxy', $values['behindProxy'])
+        .'<div class="hr"></div>'
+        .Form\checkbox('signupEnabled',
+            'Anyone can sign up', $values['signupEnabled'])
+        .'<div class="hr"></div>'
+        .Form\button('Save Changes')
+    .'</form>'
+);
 
 include_once '../../fns/echo_admin_page.php';
-echo_admin_page('Edit General Information', $content, '../../');
+include_once "$fnsDir/compressed_js_script.php";
+echo_admin_page('Edit General Information', $content, '../../', [
+    'scripts' => compressed_js_script('formCheckbox', '../../../'),
+]);

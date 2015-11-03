@@ -1,6 +1,5 @@
 <?php
 
-$base = '../../../';
 $fnsDir = '../../../fns';
 
 include_once '../fns/require_received_note.php';
@@ -27,30 +26,27 @@ include_once "$fnsDir/ItemList/Received/escapedItemQuery.php";
 $escapedItemQuery = ItemList\Received\escapedItemQuery($id);
 
 include_once '../../fns/create_form_items.php';
-include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/ItemList/Received/itemHiddenInputs.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/tabs.php";
-$content =
-    Page\tabs(
+$content = Page\tabs(
+    [
         [
-            [
-                'title' => "Received Note #$id",
-                'href' => "../view/$escapedItemQuery#edit-and-import",
-            ],
+            'title' => "Received Note #$id",
+            'href' => "../view/$escapedItemQuery#edit-and-import",
         ],
-        'Edit and Import',
-        Page\sessionErrors('notes/received/edit-and-import/errors')
-        .'<form action="submit.php" method="post">'
-            .create_form_items($values)
-            .'<div class="hr"></div>'
-            .Form\button('Import Note')
-            .ItemList\Received\itemHiddenInputs($id)
-        .'</form>'
-    )
-    .compressed_js_script('flexTextarea', $base)
-    .compressed_js_script('formCheckbox', $base);
+    ],
+    'Edit and Import',
+    Page\sessionErrors('notes/received/edit-and-import/errors')
+    .'<form action="submit.php" method="post">'
+        .create_form_items($values, $scripts, '../')
+        .'<div class="hr"></div>'
+        .Form\button('Import Note')
+        .ItemList\Received\itemHiddenInputs($id)
+    .'</form>'
+);
 
 include_once "$fnsDir/echo_user_page.php";
-echo_user_page($user, "Edit and Import Received Note #$id", $content, $base);
+echo_user_page($user, "Edit and Import Received Note #$id",
+    $content, '../../../', ['scripts' => $scripts]);

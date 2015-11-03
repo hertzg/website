@@ -30,7 +30,6 @@ $escapedItemQuery = ItemList\Received\escapedItemQuery($id);
 
 include_once '../../fns/create_form_items.php';
 include_once '../../fns/create_geolocation_panel.php';
-include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/ItemList/Received/itemHiddenInputs.php";
 include_once "$fnsDir/Page/sessionErrors.php";
@@ -46,17 +45,16 @@ $content =
         'Edit and Import',
         Page\sessionErrors('places/received/edit-and-import/errors')
         .'<form action="submit.php" method="post">'
-            .create_form_items($values)
+            .create_form_items($values, $scripts, '../')
             .'<div class="hr"></div>'
             .Form\button('Import Place')
             .ItemList\Received\itemHiddenInputs($id)
         .'</form>'
     )
     .create_geolocation_panel($base, (float)$receivedPlace->latitude,
-        (float)$receivedPlace->longitude, (float)$receivedPlace->altitude)
-    .compressed_js_script('flexTextarea', $base)
-    .compressed_js_script('formCheckbox', $base);
+        (float)$receivedPlace->longitude, (float)$receivedPlace->altitude);
 
+include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/echo_user_page.php";
 echo_user_page($user, "Edit and Import Received Place #$id",
-    $content, $base);
+    $content, $base, ['scripts' => $scripts]);

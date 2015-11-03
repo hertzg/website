@@ -52,7 +52,7 @@ $content =
         Page\sessionErrors('places/edit/errors')
         .$warnings
         .'<form action="submit.php" method="post">'
-            .create_form_items($values)
+            .create_form_items($values, $scripts)
             .'<div class="hr"></div>'
             .Page\staticTwoColumns(
                 Form\button('Save Changes'),
@@ -65,4 +65,5 @@ $content =
         (float)$place->longitude, (float)$place->altitude);
 
 include_once "$fnsDir/echo_user_page.php";
-echo_user_page($user, "Edit Place #$id", $content, $base);
+echo_user_page($user, "Edit Place #$id",
+    $content, $base, ['scripts' => $scripts]);

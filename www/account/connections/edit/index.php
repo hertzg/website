@@ -6,7 +6,6 @@ list($connection, $id, $user) = require_connection($mysqli);
 
 unset($_SESSION['account/connections/view/messages']);
 
-$base = '../../../';
 $fnsDir = '../../../fns';
 
 $key = 'account/connections/edit/values';
@@ -28,29 +27,27 @@ else {
 }
 
 include_once '../fns/create_form_items.php';
-include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/hidden.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/tabs.php";
-$content =
-    Page\tabs(
+$content = Page\tabs(
+    [
         [
-            [
-                'title' => "Connection #$id",
-                'href' => "../view/?id=$id#edit",
-            ],
+            'title' => "Connection #$id",
+            'href' => "../view/?id=$id#edit",
         ],
-        'Edit',
-        Page\sessionErrors('account/connections/edit/errors')
-        .'<form action="submit.php" method="post">'
-            .create_form_items($values)
-            .'<div class="hr"></div>'
-            .Form\button('Save Changes')
-            .Form\hidden('id', $id)
-        .'</form>'
-    )
-    .compressed_js_script('formCheckbox', $base);
+    ],
+    'Edit',
+    Page\sessionErrors('account/connections/edit/errors')
+    .'<form action="submit.php" method="post">'
+        .create_form_items($values, $scripts)
+        .'<div class="hr"></div>'
+        .Form\button('Save Changes')
+        .Form\hidden('id', $id)
+    .'</form>'
+);
 
 include_once "$fnsDir/echo_user_page.php";
-echo_user_page($user, "Edit Connection #$id", $content, $base);
+echo_user_page($user, "Edit Connection #$id",
+    $content, '../../../', ['scripts' => $scripts]);

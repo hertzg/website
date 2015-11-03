@@ -53,7 +53,7 @@ $content =
         'New Place',
         Page\sessionErrors('places/new/errors')
         .'<form action="submit.php" method="post">'
-            .create_form_items($values)
+            .create_form_items($values, $scripts)
             .'<div class="hr"></div>'
             .Page\staticTwoColumns(
                 Form\button('Save'),
@@ -65,4 +65,4 @@ $content =
     .create_geolocation_panel($base);
 
 include_once "$fnsDir/echo_user_page.php";
-echo_user_page($user, 'New Place', $content, $base);
+echo_user_page($user, 'New Place', $content, $base, ['scripts' => $scripts]);
