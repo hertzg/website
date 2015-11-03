@@ -3,7 +3,7 @@
 include_once '../fns/method_page.php';
 include_once '../../../../fns/ApiDoc/trueResult.php';
 include_once '../../../../fns/Tags/maxNumber.php';
-method_page('receiveBookmark', [
+method_page('receiveContact', [
     [
         'name' => 'sender_username',
         'description' => 'The Zvini username of the sender.',
@@ -90,7 +90,7 @@ method_page('receiveBookmark', [
     'RECEIVER_NOT_FOUND' => 'No such receiver with the username.',
     'RECEIVER_NOT_RECEIVING' =>
         "The receiver hasn't opened a connection"
-        .' to receive bookmarks from the sender.',
+        .' to receive contacts from the sender.',
     'ENTER_FULL_NAME' => 'The full name is empty.',
     'TOO_MANY_TAGS' => 'More than '.Tags\maxNumber().' tags given.',
 ]);
