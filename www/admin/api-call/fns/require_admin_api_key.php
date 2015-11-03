@@ -18,7 +18,7 @@ function require_admin_api_key ($permission_field, &$apiKey, &$mysqli) {
         ErrorJson\forbidden('"INVALID_ADMIN_API_KEY"');
     }
 
-    if (!$apiKey->$permission_field) {
+    if ($permission_field !== null && !$apiKey->$permission_field) {
         include_once "$fnsDir/ErrorJson/forbidden.php";
         ErrorJson\forbidden('"ACCESS_DENIED"');
     }
