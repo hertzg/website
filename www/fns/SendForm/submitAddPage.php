@@ -2,8 +2,8 @@
 
 namespace SendForm;
 
-function submitAddPage ($user, $id, $errorsKey,
-    $messagesKey, $valuesKey, $checkFunction) {
+function submitAddPage ($mysqli, $user, $id,
+    $errorsKey, $messagesKey, $valuesKey, $checkFunction) {
 
     $fnsDir = __DIR__.'/..';
 
@@ -35,15 +35,23 @@ function submitAddPage ($user, $id, $errorsKey,
         redirect($url);
     }
 
-    if ($address === null) {
-        $checkFunction($username, $errors);
-        if ($errors) {
-            unset($_SESSION[$messagesKey]);
-            $_SESSION[$errorsKey] = $errors;
-            $_SESSION[$valuesKey]['username'] = $username;
-            $_SESSION[$valuesKey]['usernameError'] = true;
-            redirect($url);
+    if ($address === null) $checkFunction($username, $errors);
+    else {
+        include_once "$fnsDir/AdminConnections/getByAddress.php";
+        $adminConnection = \AdminConnections\getByAddress($mysqli, $address);
+        if ($adminConnection) $errors = [];
+        else {
+            $errors[] = 'Sending to anyone at "'
+                .htmlspecialchars($address).'" is unavailable.';
         }
+    }
+
+    if ($errors) {
+        unset($_SESSION[$messagesKey]);
+        $_SESSION[$errorsKey] = $errors;
+        $_SESSION[$valuesKey]['username'] = $username;
+        $_SESSION[$valuesKey]['usernameError'] = true;
+        redirect($url);
     }
 
     unset($_SESSION[$errorsKey]);

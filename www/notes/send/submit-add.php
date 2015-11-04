@@ -14,5 +14,5 @@ $checkFunction = function ($username, &$errors) use ($mysqli, $user) {
 };
 
 include_once '../../fns/SendForm/submitAddPage.php';
-SendForm\submitAddPage($user, $id, 'notes/send/errors',
+SendForm\submitAddPage($mysqli, $user, $id, 'notes/send/errors',
     'notes/send/messages', 'notes/send/values', $checkFunction);
