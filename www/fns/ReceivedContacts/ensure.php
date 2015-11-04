@@ -17,6 +17,7 @@ function ensure ($mysqli) {
     include_once "$fnsDir/Table/ensure.php";
     include_once "$fnsDir/Tags/column.php";
     include_once "$fnsDir/Username/column.php";
+    include_once "$fnsDir/UsernameAddress/column.php";
     return \Table\ensure($mysqli, 'received_contacts', [
         'address' => [
             'type' => "varchar($maxLengths[address])",
@@ -93,11 +94,7 @@ function ensure ($mysqli) {
             'type' => 'int(11)',
             'nullable' => true,
         ],
-        'username' => [
-            'type' => "varchar($maxLengths[username])",
-            'characterSet' => 'ascii',
-            'collation' => 'ascii_bin',
-        ],
+        'username' => \UsernameAddress\column(),
     ]);
 
 }

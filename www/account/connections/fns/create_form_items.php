@@ -13,11 +13,11 @@ function create_form_items ($values, &$scripts) {
 
     include_once "$fnsDir/create_expires_field.php";
     include_once "$fnsDir/Form/textfield.php";
-    include_once "$fnsDir/Username/maxLength.php";
+    include_once "$fnsDir/UsernameAddress/maxLength.php";
     $items = [
         Form\textfield('username', 'Username', [
             'value' => $username,
-            'maxlength' => Username\maxLength(),
+            'maxlength' => UsernameAddress\maxLength(),
             'required' => true,
             'autofocus' => true,
         ]),

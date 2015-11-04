@@ -17,12 +17,12 @@ function enterCancelForm ($username, $params) {
     include_once __DIR__.'/../Form/textfield.php';
     include_once __DIR__.'/../Page/buttonLink.php';
     include_once __DIR__.'/../Page/staticTwoColumns.php';
-    include_once __DIR__.'/../Username/maxLength.php';
+    include_once __DIR__.'/../UsernameAddress/maxLength.php';
     return
         '<form action="submit-add.php" method="post">'
             .\Form\textfield('username', 'Zvini username', [
                 'value' => $username,
-                'maxlength' => \Username\maxLength(),
+                'maxlength' => \UsernameAddress\maxLength(),
                 'required' => true,
                 'autofocus' => true,
             ])
