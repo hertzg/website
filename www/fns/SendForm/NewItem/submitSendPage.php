@@ -2,8 +2,8 @@
 
 namespace SendForm\NewItem;
 
-function submitSendPage ($user, $errorsKey, $messagesKey,
-    $valuesKey, $viewMessagesKey, $checkFunction, $sendFunction) {
+function submitSendPage ($user, $errorsKey, $messagesKey, $valuesKey,
+    $viewMessagesKey, $checkFunction, $sendFunction, $sendExternalFunction) {
 
     $fnsDir = __DIR__.'/../..';
 
@@ -44,7 +44,8 @@ function submitSendPage ($user, $errorsKey, $messagesKey,
         redirect('./'.\ItemList\pageQuery());
     }
 
-    $sendFunction($receiver_id_userss);
+    if ($local_recipients) $sendFunction($receiver_id_userss);
+    if ($external_recipients) $sendExternalFunction($external_recipients);
 
     unset(
         $_SESSION[$errorsKey],

@@ -30,7 +30,20 @@ $sendFunction = function ($receiver_id_userss) use (
 
 };
 
+$sendExternalFunction = function ($recipients) use (
+    $mysqli, $stageValues, $user, $fnsDir) {
+
+    include_once "$fnsDir/SendingNotes/add.php";
+    foreach ($recipients as $recipient) {
+        SendingNotes\add($mysqli, $user->id_users, $user->username,
+            $recipient['username'], $recipient['address'],
+            $stageValues['text'], $stageValues['tags'],
+            $stageValues['encrypt_in_listings']);
+    }
+
+};
+
 include_once "$fnsDir/SendForm/NewItem/submitSendPage.php";
 SendForm\NewItem\submitSendPage($user, 'notes/new/send/errors',
-    'notes/new/send/messages', 'notes/new/send/values',
-    'notes/messages', $checkFunction, $sendFunction);
+    'notes/new/send/messages', 'notes/new/send/values', 'notes/messages',
+    $checkFunction, $sendFunction, $sendExternalFunction);

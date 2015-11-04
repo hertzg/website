@@ -2,8 +2,8 @@
 
 namespace SendForm;
 
-function submitSendPage ($user, $id, $errorsKey, $messagesKey,
-    $valuesKey, $viewMessagesKey, $checkFunction, $sendFunction) {
+function submitSendPage ($user, $id, $errorsKey, $messagesKey, $valuesKey,
+    $viewMessagesKey, $checkFunction, $sendFunction, $sendExternalFunction) {
 
     $fnsDir = __DIR__.'/..';
 
@@ -37,11 +37,11 @@ function submitSendPage ($user, $id, $errorsKey, $messagesKey,
     if ($errors) {
         $_SESSION[$errorsKey] = $errors;
         unset($_SESSION[$messagesKey]);
-        include_once "$fnsDir/ItemList/itemQuery.php";
         redirect("./$itemQuery");
     }
 
-    $sendFunction($receiver_id_userss);
+    if ($local_recipients) $sendFunction($receiver_id_userss);
+    if ($external_recipients) $sendExternalFunction($external_recipients);
 
     unset(
         $_SESSION[$errorsKey],

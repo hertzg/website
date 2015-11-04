@@ -32,7 +32,21 @@ $sendFunction = function ($receiver_id_userss) use (
 
 };
 
+$sendExternalFunction = function ($recipients) use (
+    $mysqli, $stageValues, $user, $fnsDir) {
+
+    include_once "$fnsDir/SendingPlaces/add.php";
+    foreach ($recipients as $recipient) {
+        SendingPlaces\add($mysqli, $user->id_users, $user->username,
+            $recipient['username'], $recipient['address'],
+            $stageValues['latitude'], $stageValues['longitude'],
+            $stageValues['altitude'], $stageValues['name'],
+            $stageValues['description'], $stageValues['tags']);
+    }
+
+};
+
 include_once "$fnsDir/SendForm/NewItem/submitSendPage.php";
 SendForm\NewItem\submitSendPage($user, 'places/new/send/errors',
-    'places/new/send/messages', 'places/new/send/values',
-    'places/messages', $checkFunction, $sendFunction);
+    'places/new/send/messages', 'places/new/send/values', 'places/messages',
+    $checkFunction, $sendFunction, $sendExternalFunction);

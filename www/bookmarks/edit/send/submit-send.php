@@ -30,7 +30,20 @@ $sendFunction = function ($receiver_id_userss) use (
 
 };
 
+$sendExternalFunction = function ($recipients) use (
+    $mysqli, $stageValues, $user, $fnsDir) {
+
+    include_once "$fnsDir/SendingBookmarks/add.php";
+    foreach ($recipients as $recipient) {
+        SendingBookmarks\add($mysqli, $user->id_users,
+            $user->username, $recipient['username'], $recipient['address'],
+            $stageValues['url'], $stageValues['title'], $stageValues['tags']);
+    }
+
+};
+
 include_once "$fnsDir/SendForm/EditItem/submitSendPage.php";
-SendForm\EditItem\submitSendPage($user, $id, 'bookmarks/edit/send/errors',
-    'bookmarks/edit/send/messages', 'bookmarks/edit/send/values',
-    'bookmarks/view/messages', $checkFunction, $sendFunction);
+SendForm\EditItem\submitSendPage($user, $id,
+    'bookmarks/edit/send/errors', 'bookmarks/edit/send/messages',
+    'bookmarks/edit/send/values', 'bookmarks/view/messages',
+    $checkFunction, $sendFunction, $sendExternalFunction);

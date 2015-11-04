@@ -28,7 +28,19 @@ $sendFunction = function ($receiver_id_userss) use (
 
 };
 
+$sendExternalFunction = function ($recipients) use (
+    $mysqli, $task, $user, $fnsDir) {
+
+    include_once "$fnsDir/SendingTasks/add.php";
+    foreach ($recipients as $recipient) {
+        SendingTasks\add($mysqli, $user->id_users, $user->username,
+            $recipient['username'], $recipient['address'], $task->text,
+            $task->deadline_time, $task->tags, $task->top_priority);
+    }
+
+};
+
 include_once "$fnsDir/SendForm/submitSendPage.php";
 SendForm\submitSendPage($user, $id, 'tasks/send/errors',
-    'tasks/send/messages', 'tasks/send/values',
-    'tasks/view/messages', $checkFunction, $sendFunction);
+    'tasks/send/messages', 'tasks/send/values', 'tasks/view/messages',
+    $checkFunction, $sendFunction, $sendExternalFunction);
