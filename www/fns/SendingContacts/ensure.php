@@ -56,6 +56,7 @@ function ensure ($mysqli) {
             'primary' => true,
         ],
         'id_users' => ['type' => 'bigint(20) unsigned'],
+        'insert_time' => ['type' => 'bigint(20) unsigned'],
         'notes' => [
             'type' => "varchar($maxLengths[notes])",
             'characterSet' => 'utf8',

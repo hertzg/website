@@ -31,6 +31,7 @@ function ensure ($mysqli) {
             'primary' => true,
         ],
         'id_users' => ['type' => 'bigint(20) unsigned'],
+        'insert_time' => ['type' => 'bigint(20) unsigned'],
         'latitude' => ['type' => 'double'],
         'longitude' => ['type' => 'double'],
         'name' => [
