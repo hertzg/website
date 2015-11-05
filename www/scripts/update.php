@@ -17,4 +17,9 @@ $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_exec($ch);
 
+include_once '../fns/Crontab/removeLines.php';
+Crontab\removeLines([
+    '  0 0 *   *   *   '.__DIR__.'/send-sending-items/index.php',
+]);
+
 echo "Done\n";
