@@ -1,5 +1,7 @@
 <?php
 
+chdir(__DIR__);
+
 include_once '../fns/write_crontab.php';
 write_crontab();
 
