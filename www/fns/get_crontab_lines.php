@@ -9,6 +9,6 @@ function get_crontab_lines () {
         "  0 0 *   *   *   $scriptsDir/expire-deleted-items.php",
         "  0 0 *   *   *   $scriptsDir/expire-unused-users.php",
         "  0 0 *   *   *   $scriptsDir/expire-users.php",
-        "  0 0 *   *   *   $scriptsDir/send-sending-items/index.php",
+        "  * * *   *   *   $scriptsDir/send-sending-items/index.php",
     ];
 }
