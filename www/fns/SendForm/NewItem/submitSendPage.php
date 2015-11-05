@@ -37,7 +37,7 @@ function submitSendPage ($mysqli, $user, $errorsKey, $messagesKey, $valuesKey,
     $checkFunction($local_recipients, $receiver_id_userss, $errors);
 
     include_once __DIR__.'/../checkExternalRecipients.php';
-    checkExternalRecipients($mysqli, $external_recipients, $errors);
+    \SendForm\checkExternalRecipients($mysqli, $external_recipients, $errors);
 
     if ($errors) {
         $_SESSION[$errorsKey] = $errors;
@@ -49,10 +49,7 @@ function submitSendPage ($mysqli, $user, $errorsKey, $messagesKey, $valuesKey,
     if ($local_recipients) $sendFunction($receiver_id_userss);
     if ($external_recipients) $sendExternalFunction($external_recipients);
 
-    unset(
-        $_SESSION[$errorsKey],
-        $_SESSION[$valuesKey]
-    );
+    unset($_SESSION[$errorsKey], $_SESSION[$valuesKey]);
 
     $_SESSION[$viewMessagesKey] = ['Sent.'];
 

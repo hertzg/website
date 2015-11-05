@@ -37,7 +37,8 @@ $sendExternalFunction = function ($recipients) use (
     foreach ($recipients as $recipient) {
         SendingNotes\add($mysqli, $user->id_users, $user->username,
             $recipient['username'], $recipient['address'],
-            $note->text, $note->tags, $note->encrypt_in_listings);
+            $recipient['their_exchange_api_key'], $note->text,
+            $note->tags, $note->encrypt_in_listings);
     }
 
 };

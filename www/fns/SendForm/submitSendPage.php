@@ -46,10 +46,7 @@ function submitSendPage ($mysqli, $user, $id,
     if ($local_recipients) $sendFunction($receiver_id_userss);
     if ($external_recipients) $sendExternalFunction($external_recipients);
 
-    unset(
-        $_SESSION[$errorsKey],
-        $_SESSION[$valuesKey]
-    );
+    unset($_SESSION[$errorsKey], $_SESSION[$valuesKey]);
 
     $_SESSION[$viewMessagesKey] = ['Sent.'];
 

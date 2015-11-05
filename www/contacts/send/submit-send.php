@@ -33,8 +33,9 @@ $sendExternalFunction = function ($recipients) use (
 
     include_once "$fnsDir/SendingContacts/add.php";
     foreach ($recipients as $recipient) {
-        SendingContacts\add($mysqli, $user->id_users, $user->username,
-            $recipient['username'], $recipient['address'], $contact->full_name,
+        SendingContacts\add($mysqli, $user->id_users,
+            $user->username, $recipient['username'], $recipient['address'],
+            $recipient['their_exchange_api_key'], $contact->full_name,
             $contact->alias, $contact->address, $contact->email1,
             $contact->email1_label, $contact->email2, $contact->email2_label,
             $contact->phone1, $contact->phone1_label, $contact->phone2,

@@ -37,11 +37,12 @@ $sendExternalFunction = function ($recipients) use (
 
     include_once "$fnsDir/SendingPlaces/add.php";
     foreach ($recipients as $recipient) {
-        SendingPlaces\add($mysqli, $user->id_users, $user->username,
-            $recipient['username'], $recipient['address'],
-            $stageValues['latitude'], $stageValues['longitude'],
-            $stageValues['altitude'], $stageValues['name'],
-            $stageValues['description'], $stageValues['tags']);
+        SendingPlaces\add($mysqli, $user->id_users,
+            $user->username, $recipient['username'], $recipient['address'],
+            $recipient['their_exchange_api_key'], $stageValues['latitude'],
+            $stageValues['longitude'], $stageValues['altitude'],
+            $stageValues['name'], $stageValues['description'],
+            $stageValues['tags']);
     }
 
 };

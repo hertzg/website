@@ -3,9 +3,10 @@
 namespace SendingContacts;
 
 function add ($mysqli, $id_users, $sender_username, $receiver_username,
-    $receiver_address, $full_name, $alias, $address, $email1, $email1_label,
-    $email2, $email2_label, $phone1, $phone1_label, $phone2, $phone2_label,
-    $birthday_time, $username, $timezone, $tags, $notes, $favorite) {
+    $receiver_address, $their_exchange_api_key, $full_name, $alias,
+    $address, $email1, $email1_label, $email2, $email2_label, $phone1,
+    $phone1_label, $phone2, $phone2_label, $birthday_time,
+    $username, $timezone, $tags, $notes, $favorite) {
 
     $sender_username = $mysqli->real_escape_string($sender_username);
     $receiver_username = $mysqli->real_escape_string($receiver_username);
@@ -31,17 +32,17 @@ function add ($mysqli, $id_users, $sender_username, $receiver_username,
 
     $sql = 'insert into sending_contacts'
         .' (id_users, sender_username, receiver_username,'
-        .' receiver_address, full_name, alias, address,'
-        .' email1, email1_label, email2, email2_label,'
-        .' phone1, phone1_label, phone2, phone2_label,'
-        .' birthday_time, username, timezone, tags,'
-        .' notes, favorite, insert_time)'
+        .' receiver_address, their_exchange_api_key, full_name,'
+        .' alias, address, email1, email1_label, email2,'
+        .' email2_label, phone1, phone1_label, phone2,'
+        .' phone2_label, birthday_time, username, timezone,'
+        .' tags, notes, favorite, insert_time)'
         ." values ($id_users, '$sender_username', '$receiver_username',"
-        ." '$receiver_address', '$full_name', '$alias', '$address',"
-        ." '$email1', '$email1_label', '$email2', '$email2_label',"
-        ." '$phone1', '$phone1_label', '$phone2', '$phone2_label',"
-        ." $birthday_time, '$username', $timezone, '$tags',"
-        ." '$notes', $favorite, $insert_time)";
+        ." '$receiver_address', '$their_exchange_api_key', '$full_name',"
+        ." '$alias', '$address', '$email1', '$email1_label', '$email2',"
+        ." '$email2_label', '$phone1', '$phone1_label', '$phone2',"
+        ." '$phone2_label', $birthday_time, '$username', $timezone,"
+        ." '$tags', '$notes', $favorite, $insert_time)";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 

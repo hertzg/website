@@ -37,7 +37,8 @@ $sendExternalFunction = function ($recipients) use (
     foreach ($recipients as $recipient) {
         SendingBookmarks\add($mysqli, $user->id_users,
             $user->username, $recipient['username'], $recipient['address'],
-            $stageValues['url'], $stageValues['title'], $stageValues['tags']);
+            $recipient['their_exchange_api_key'], $stageValues['url'],
+            $stageValues['title'], $stageValues['tags']);
     }
 
 };
