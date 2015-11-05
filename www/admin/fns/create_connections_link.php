@@ -3,7 +3,7 @@
 function create_connections_link ($mysqli) {
 
     $fnsDir = __DIR__.'/../../fns';
-    $title = 'Manage Connections';
+    $title = 'Connections';
     $href = 'connections/';
     $icon = 'connections';
     $options = ['id' => 'connections'];

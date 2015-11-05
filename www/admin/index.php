@@ -84,12 +84,12 @@ $content =
         .'<div class="hr"></div>'
         .create_admin_api_keys_link($mysqli)
         .'<div class="hr"></div>'
+        .create_connections_link($mysqli)
+        .'<div class="hr"></div>'
         .Page\imageArrowLink('Invalid Signins', 'invalid-signins/',
             'invalid-sign-ins', ['id' => 'invalid-signins'])
         .'<div class="hr"></div>'
         .create_invitations_link($mysqli)
-        .'<div class="hr"></div>'
-        .create_connections_link($mysqli)
         .'<div class="hr"></div>'
         .create_users_link($mysqli)
     )

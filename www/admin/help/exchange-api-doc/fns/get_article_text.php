@@ -28,7 +28,7 @@ function get_article_text () {
         .'<br />'
         .' To access an API method a program will require an exchange API key.'
         .' It\'s a random password. Administrators can generate multiples'
-        .' of them from "Administration" &gt; "Manage Connections" page.'
+        .' of them from "Administration" &gt; "Connections" page.'
         .' To call a method an <code>exchange_api_key</code>'
         .' parameter should be present and its value'
         .' should be the generated random password.'
