@@ -2,8 +2,9 @@
 
 namespace SendForm;
 
-function submitSendPage ($user, $id, $errorsKey, $messagesKey, $valuesKey,
-    $viewMessagesKey, $checkFunction, $sendFunction, $sendExternalFunction) {
+function submitSendPage ($mysqli, $user, $id,
+    $errorsKey, $messagesKey, $valuesKey, $viewMessagesKey,
+    $checkFunction, $sendFunction, $sendExternalFunction) {
 
     $fnsDir = __DIR__.'/..';
 
@@ -22,9 +23,8 @@ function submitSendPage ($user, $id, $errorsKey, $messagesKey, $valuesKey,
     include_once "$fnsDir/parse_username_address.php";
     foreach ($recipients as $recipient) {
         parse_username_address($recipient, $username, $address);
-        if ($address === null) {
-            $local_recipients[] = $recipient;
-        } else {
+        if ($address === null) $local_recipients[] = $recipient;
+        else {
             $external_recipients[] = [
                 'username' => $username,
                 'address' => $address,
@@ -33,6 +33,9 @@ function submitSendPage ($user, $id, $errorsKey, $messagesKey, $valuesKey,
     }
 
     $checkFunction($local_recipients, $receiver_id_userss, $errors);
+
+    include_once __DIR__.'/checkExternalRecipients.php';
+    checkExternalRecipients($mysqli, $external_recipients, $errors);
 
     if ($errors) {
         $_SESSION[$errorsKey] = $errors;

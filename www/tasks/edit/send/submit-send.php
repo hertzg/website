@@ -45,7 +45,7 @@ $sendExternalFunction = function ($recipients) use (
 };
 
 include_once "$fnsDir/SendForm/EditItem/submitSendPage.php";
-SendForm\EditItem\submitSendPage($user, $id,
+SendForm\EditItem\submitSendPage($mysqli, $user, $id,
     'tasks/edit/send/errors', 'tasks/edit/send/messages',
     'tasks/edit/send/values', 'tasks/view/messages',
     $checkFunction, $sendFunction, $sendExternalFunction);

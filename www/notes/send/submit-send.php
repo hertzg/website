@@ -43,6 +43,6 @@ $sendExternalFunction = function ($recipients) use (
 };
 
 include_once "$fnsDir/SendForm/submitSendPage.php";
-SendForm\submitSendPage($user, $id, 'notes/send/errors',
+SendForm\submitSendPage($mysqli, $user, $id, 'notes/send/errors',
     'notes/send/messages', 'notes/send/values', 'notes/view/messages',
     $checkFunction, $sendFunction, $sendExternalFunction);

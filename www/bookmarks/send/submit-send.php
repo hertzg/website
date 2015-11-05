@@ -41,7 +41,7 @@ $sendExternalFunction = function ($recipients) use (
 };
 
 include_once "$fnsDir/SendForm/submitSendPage.php";
-SendForm\submitSendPage($user, $id, 'bookmarks/send/errors',
-    'bookmarks/send/messages', 'bookmarks/send/values',
-    'bookmarks/view/messages', $checkFunction,
-    $sendFunction, $sendExternalFunction);
+SendForm\submitSendPage($mysqli, $user, $id,
+    'bookmarks/send/errors', 'bookmarks/send/messages',
+    'bookmarks/send/values', 'bookmarks/view/messages',
+    $checkFunction, $sendFunction, $sendExternalFunction);

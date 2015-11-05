@@ -1,0 +1,36 @@
+<?php
+
+namespace SendForm;
+
+function checkExternalRecipients ($mysqli, &$recipients, &$errors) {
+
+    $addresses = [];
+    foreach ($recipients as $recipient) {
+        $addresses[$recipient['address']] = true;
+    }
+    $addresses = array_keys($addresses);
+
+    include_once __DIR__.'/../AdminConnections/getByAddresses.php';
+    $adminConnections = \AdminConnections\getByAddresses($mysqli, $addresses);
+
+    $addresses = [];
+    foreach ($adminConnections as $adminConnection) {
+        $addresses[$adminConnection->address] = $adminConnection;
+    }
+
+    $unavailable_address = [];
+    foreach ($recipients as $recipient) {
+        $address = $recipient['address'];
+        if (!array_key_exists($address, $addresses)) {
+            $unavailable_address[$address] = true;
+        } else {
+            $recipient['their_exchange_api_key'] = $a
+        }
+    }
+
+    foreach ($unavailable_address as $address => $value) {
+        $errors[] = 'Sending to anyone at "'
+            .htmlspecialchars($address).'" is no longer available.';
+    }
+
+}
