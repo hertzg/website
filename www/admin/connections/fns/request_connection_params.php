@@ -15,11 +15,16 @@ function request_connection_params ($mysqli, &$errors, $exclude_id = 0) {
 
     if ($address === '') $errors[] = 'Enter address.';
     else {
-        include_once "$fnsDir/AdminConnections/getByAddress.php";
-        $connection = AdminConnections\getByAddress(
-            $mysqli, $address, $exclude_id);
-        if ($connection) {
-            $errors[] = 'A connection with this address already exists.';
+        include_once "$fnsDir/ConnectionAddress/isValid.php";
+        if (ConnectionAddress\isValid($address)) {
+            include_once "$fnsDir/AdminConnections/getByAddress.php";
+            $connection = AdminConnections\getByAddress(
+                $mysqli, $address, $exclude_id);
+            if ($connection) {
+                $errors[] = 'A connection with this address already exists.';
+            }
+        } else {
+            $errors[] = 'The address is invalid.';
         }
     }
 
