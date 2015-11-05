@@ -5,14 +5,10 @@ namespace SendForm;
 function submitAddPage ($mysqli, $user, $id,
     $errorsKey, $messagesKey, $valuesKey, $checkFunction) {
 
+    include_once __DIR__.'/requestUsernameAddress.php';
+    requestUsernameAddress($username, $address);
+
     $fnsDir = __DIR__.'/..';
-
-    include_once "$fnsDir/request_strings.php";
-    list($username) = request_strings('username');
-    $username = preg_replace('/\s+/', '', $username);
-
-    include_once "$fnsDir/parse_username_address.php";
-    parse_username_address($username, $parsed_username, $address);
 
     include_once "$fnsDir/ItemList/itemQuery.php";
     $url = './'.\ItemList\itemQuery($id);
