@@ -10,8 +10,9 @@ function checkExternalRecipients ($mysqli, &$recipients, &$errors) {
     }
     $addresses = array_keys($addresses);
 
-    include_once __DIR__.'/../AdminConnections/getByAddresses.php';
-    $adminConnections = \AdminConnections\getByAddresses($mysqli, $addresses);
+    include_once __DIR__.'/../AdminConnections/getAvailableByAddresses.php';
+    $adminConnections = \AdminConnections\getAvailableByAddresses(
+        $mysqli, $addresses);
 
     $addresses = [];
     foreach ($adminConnections as $adminConnection) {
