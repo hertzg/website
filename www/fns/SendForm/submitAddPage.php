@@ -37,13 +37,18 @@ function submitAddPage ($mysqli, $user, $id,
 
     if ($address === null) $checkFunction($username, $errors);
     else {
-        include_once "$fnsDir/AdminConnections/getAvailableByAddress.php";
-        $adminConnection = \AdminConnections\getAvailableByAddress(
-            $mysqli, $address);
-        if ($adminConnection) $errors = [];
-        else {
-            $errors[] = 'Sending to anyone at "'
-                .htmlspecialchars($address).'" is unavailable.';
+        include_once "$fnsDir/ConnectionAddress/isValid.php";
+        if (\ConnectionAddress\isValid($address)) {
+            include_once "$fnsDir/AdminConnections/getAvailableByAddress.php";
+            $adminConnection = \AdminConnections\getAvailableByAddress(
+                $mysqli, $address);
+            if ($adminConnection) $errors = [];
+            else {
+                $errors[] = 'Sending to anyone at "'
+                    .htmlspecialchars($address).'" is unavailable.';
+            }
+        } else {
+            $errors[] = 'The username is invalid.';
         }
     }
 
