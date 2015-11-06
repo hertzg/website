@@ -23,9 +23,9 @@ function request_contact_params ($user, &$errors, &$focus) {
         $focus = 'full_name';
     }
 
-    include_once __DIR__.'/../fns/parse_birthday.php';
+    include_once __DIR__.'/parse_birthday.php';
     parse_birthday($birthday_day, $birthday_month,
-        $birthday_year, $user, $errors, $birthday_time);
+        $birthday_year, $user, $errors, $birthday_time, $focus);
 
     include_once "$fnsDir/request_tags.php";
     request_tags($tags, $tag_names, $errors, $focus);

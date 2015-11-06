@@ -80,12 +80,15 @@ function create_form_items ($values, &$scripts, $base = '') {
         .Form\datefield([
             'name' => 'birthday_day',
             'value' => $values['birthday_day'],
+            'autofocus' => $focus === 'birthday_day',
         ], [
             'name' => 'birthday_month',
             'value' => $values['birthday_month'],
+            'autofocus' => $focus === 'birthday_month',
         ], [
             'name' => 'birthday_year',
             'value' => $values['birthday_year'],
+            'autofocus' => $focus === 'birthday_year',
         ], 'Birth date', false, true)
         .'<div class="hr"></div>'
         .Form\textfield('username', 'Zvini username', [
