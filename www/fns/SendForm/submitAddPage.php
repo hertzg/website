@@ -31,22 +31,8 @@ function submitAddPage ($mysqli, $user, $id,
         redirect($url);
     }
 
-    if ($address === null) $checkFunction($username, $errors);
-    else {
-        include_once "$fnsDir/ConnectionAddress/isValid.php";
-        if (\ConnectionAddress\isValid($address)) {
-            include_once "$fnsDir/AdminConnections/getAvailableByAddress.php";
-            $adminConnection = \AdminConnections\getAvailableByAddress(
-                $mysqli, $address);
-            if ($adminConnection) $errors = [];
-            else {
-                $errors[] = 'Sending to anyone at "'
-                    .htmlspecialchars($address).'" is unavailable.';
-            }
-        } else {
-            $errors[] = 'The username is invalid.';
-        }
-    }
+    include_once __DIR__.'/checkUsernameAddress.php';
+    checkUsernameAddress($mysqli, $username, $address, $checkFunction, $errors);
 
     if ($errors) {
         unset($_SESSION[$messagesKey]);
