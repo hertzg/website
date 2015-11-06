@@ -4,3 +4,5 @@ cd `dirname $BASH_SOURCE`
 ./days_left/run.php
 ./date_ago.php
 ./date_in.php
+./parse_latitude/index.php
+./parse_longitude/index.php
