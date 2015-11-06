@@ -15,7 +15,7 @@ function get_prepare_params () {
 
     $admin_api_base = "$siteProtocol://$domainName{$siteBase}admin/api-call/";
 
-    include_once __DIR__.'/phpCode.php';
+    include_once "$fnsDir/phpCode.php";
     return
         phpCode\comment('prepare parameters')
         .phpCode\statement(

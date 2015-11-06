@@ -15,7 +15,7 @@ function get_prepare_params () {
 
     $exchange_api_base = "$siteProtocol://$domainName{$siteBase}exchange-api-call/";
 
-    include_once __DIR__.'/phpCode.php';
+    include_once "$fnsDir/phpCode.php";
     return
         phpCode\comment('prepare parameters')
         .phpCode\statement(
