@@ -32,27 +32,15 @@ $escapedDomainName = htmlspecialchars($domainName);
 $escapedInfoEmail = htmlspecialchars($infoEmail);
 $escapedSiteBase = htmlspecialchars($siteBase);
 
-$doneSteps = [
-    [
-        'title' => 'Agreement',
-        'href' => '../agreement/',
-    ],
-    [
-        'title' => 'Requirements',
-        'href' => '../requirements/',
-    ],
-];
-$nextSteps = ['MySQL Configuration', 'Administrator', 'Finalize Installation'];
-
+include_once 'fns/create_steps.php';
 include_once '../fns/echo_page.php';
 include_once '../fns/field_columns.php';
-include_once '../fns/steps.php';
 include_once '../fns/wizard_layout.php';
 echo_page(
     'Step 3 - General Information',
     '<form action="submit.php" method="post">'
         .wizard_layout(
-            steps($doneSteps, 'General Information', $nextSteps),
+            create_steps(),
             '<span class="title-step">Step 3</span>'
             .'<h2>General Information</h2>'
             .field_columns(

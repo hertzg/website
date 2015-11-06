@@ -24,25 +24,7 @@ if ($values['check']) {
     $errorHtml = '';
 }
 
-$doneSteps = [
-    [
-        'title' => 'Agreement',
-        'href' => '../agreement/',
-    ],
-    [
-        'title' => 'Requirements',
-        'href' => '../requirements/',
-    ],
-    [
-        'title' => 'General Information',
-        'href' => '../general-info/',
-    ],
-    [
-        'title' => 'MySQL Configuration',
-        'href' => '../mysql-config/',
-    ],
-];
-
+include_once 'fns/create_steps.php';
 include_once '../fns/echo_page.php';
 include_once '../fns/field_columns.php';
 include_once '../fns/steps.php';
@@ -54,7 +36,7 @@ echo_page(
     'Step 5 - Administrator',
     '<form action="submit.php" method="post">'
         .wizard_layout(
-            steps($doneSteps, 'Administrator', ['Finalize Installation']),
+            create_steps(),
             '<span class="title-step">Step 5</span>'
             .'<h2>Administrator</h2>'
             .'<div style="margin-bottom: 8px">'
