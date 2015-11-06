@@ -17,3 +17,4 @@ assert(ConnectionAddress\isValid('http://localh..ost/') === false);
 assert(ConnectionAddress\isValid('ftp://example.com/') === false);
 assert(ConnectionAddress\isValid('http://example.com/?key=value') === false);
 assert(ConnectionAddress\isValid('http://example.com/#fragment') === false);
+assert(ConnectionAddress\isValid('http://example.com/sub') === false);

@@ -17,6 +17,8 @@ function isValid ($address) {
     include_once __DIR__.'/../DomainName/isValid.php';
     if (!\DomainName\isValid($parsed_url['host'])) return false;
 
+    if (substr($parsed_url['path'], -1) !== '/') return false;
+
     return true;
 
 }
