@@ -45,6 +45,7 @@ function submitAddPage ($mysqli, $user,
 
     unset($_SESSION[$errorsKey]);
     $_SESSION[$valuesKey]['recipients'][$username] = $username;
+    ksort($_SESSION[$valuesKey]['recipients']);
     $_SESSION[$valuesKey]['username'] = '';
     $_SESSION[$valuesKey]['usernameError'] = false;
     $_SESSION[$messagesKey] = ['The recipient has been added.'];
