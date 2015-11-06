@@ -7,9 +7,8 @@ list($receivedContact, $id, $user) = require_received_contact($mysqli, '../');
 unset($_SESSION['contacts/received/view/messages']);
 
 $key = 'contacts/received/edit-and-import/values';
-if (array_key_exists($key, $_SESSION)) {
-    $values = $_SESSION[$key];
-} else {
+if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
+else {
 
     $birthday_time = $receivedContact->birthday_time;
     if ($birthday_time === null) {
@@ -21,6 +20,7 @@ if (array_key_exists($key, $_SESSION)) {
     }
 
     $values = [
+        'focus' => 'full_name',
         'full_name' => $receivedContact->full_name,
         'alias' => $receivedContact->alias,
         'address' => $receivedContact->address,

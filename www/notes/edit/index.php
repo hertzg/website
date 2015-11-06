@@ -8,6 +8,7 @@ $key = 'notes/edit/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
     $values = [
+        'focus' => 'text',
         'text' => $text,
         'tags' => $note->tags,
         'encrypt_in_listings' => $note->encrypt_in_listings,

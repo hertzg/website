@@ -4,20 +4,23 @@ include_once '../fns/require_schedule.php';
 include_once '../../lib/mysqli.php';
 list($schedule, $id, $user) = require_schedule($mysqli);
 
+unset(
+    $_SESSION['schedules/edit/next/first_stage'],
+    $_SESSION['schedules/view/messages']
+);
+
 $key = 'schedules/edit/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
     $values = [
+        'focus' => 'text',
         'text' => $schedule->text,
         'interval' => $schedule->interval,
         'tags' => $schedule->tags,
     ];
 }
 
-unset(
-    $_SESSION['schedules/edit/next/first_stage'],
-    $_SESSION['schedules/view/messages']
-);
+$focus = $values['focus'];
 
 include_once '../../fns/Schedules/maxLengths.php';
 $maxLengths = Schedules\maxLengths();
@@ -43,7 +46,7 @@ $content = Page\tabs(
             'value' => $values['text'],
             'maxlength' => $maxLengths['text'],
             'required' => true,
-            'autofocus' => true,
+            'autofocus' => $focus === 'text',
         ])
         .'<div class="hr"></div>'
         .create_interval_select($values['interval'])
@@ -51,6 +54,7 @@ $content = Page\tabs(
         .Form\textfield('tags', 'Tags', [
             'value' => $values['tags'],
             'maxlength' => $maxLengths['tags'],
+            'autofocus' => $focus === 'tags',
         ])
         .'<div class="hr"></div>'
         .Form\button('Next')

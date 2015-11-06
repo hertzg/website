@@ -7,9 +7,8 @@ include_once "$fnsDir/require_user.php";
 $user = require_user($base);
 
 $key = 'contacts/new/values';
-if (array_key_exists($key, $_SESSION)) {
-    $values = $_SESSION[$key];
-} else {
+if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
+else {
 
     include_once "$fnsDir/Contacts/request.php";
     list($full_name, $alias, $address, $email1,
@@ -26,6 +25,7 @@ if (array_key_exists($key, $_SESSION)) {
     }
 
     $values = [
+        'focus' => 'full_name',
         'full_name' => $full_name,
         'alias' => $alias,
         'address' => $address,

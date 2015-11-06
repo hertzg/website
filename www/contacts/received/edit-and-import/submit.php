@@ -14,13 +14,14 @@ list($full_name, $alias, $address, $email1, $email1_label,
     $email2, $email2_label, $phone1, $phone1_label, $phone2,
     $phone2_label, $birthday_day, $birthday_month, $birthday_year,
     $birthday_time, $username, $timezone, $tags, $tag_names,
-    $notes, $favorite) = request_contact_params($user, $errors);
+    $notes, $favorite) = request_contact_params($user, $errors, $focus);
 
 include_once "$fnsDir/redirect.php";
 
 if ($errors) {
     $_SESSION['contacts/received/edit-and-import/errors'] = $errors;
     $_SESSION['contacts/received/edit-and-import/values'] = [
+        'focus' => $focus,
         'full_name' => $full_name,
         'alias' => $alias,
         'address' => $address,

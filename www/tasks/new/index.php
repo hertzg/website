@@ -7,9 +7,8 @@ include_once "$fnsDir/require_user.php";
 $user = require_user($base);
 
 $key = 'tasks/new/values';
-if (array_key_exists($key, $_SESSION)) {
-    $values = $_SESSION[$key];
-} else {
+if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
+else {
 
     include_once '../../fns/Tasks/request.php';
     list($text, $deadline_time, $tags, $top_priority) = Tasks\request();
@@ -23,6 +22,7 @@ if (array_key_exists($key, $_SESSION)) {
     }
 
     $values = [
+        'focus' => 'text',
         'text' => $text,
         'deadline_day' => $deadline_day,
         'deadline_month' => $deadline_month,

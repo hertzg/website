@@ -1,6 +1,6 @@
 <?php
 
-function request_contact_params ($user, &$errors) {
+function request_contact_params ($user, &$errors, &$focus) {
 
     $fnsDir = __DIR__.'/../../fns';
 
@@ -18,14 +18,17 @@ function request_contact_params ($user, &$errors) {
     $birthday_month = abs((int)$birthday_month);
     $birthday_year = abs((int)$birthday_year);
 
-    if ($full_name === '') $errors[] = 'Enter full name.';
+    if ($full_name === '') {
+        $errors[] = 'Enter full name.';
+        $focus = 'full_name';
+    }
 
     include_once __DIR__.'/../fns/parse_birthday.php';
     parse_birthday($birthday_day, $birthday_month,
         $birthday_year, $user, $errors, $birthday_time);
 
     include_once "$fnsDir/request_tags.php";
-    request_tags($tags, $tag_names, $errors);
+    request_tags($tags, $tag_names, $errors, $focus);
 
     return [$full_name, $alias, $address, $email1,
         $email1_label, $email2, $email2_label, $phone1,

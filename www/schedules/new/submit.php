@@ -7,11 +7,13 @@ include_once '../../fns/require_user.php';
 $user = require_user('../../');
 
 include_once '../fns/request_first_stage.php';
-list($text, $interval, $tags, $tag_names) = request_first_stage($errors);
+list($text, $interval, $tags,
+    $tag_names) = request_first_stage($errors, $focus);
 
 include_once '../../fns/redirect.php';
 
 $_SESSION['schedules/new/values'] = [
+    'focus' => $focus,
     'text' => $text,
     'interval' => $interval,
     'tags' => $tags,

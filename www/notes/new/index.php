@@ -6,15 +6,15 @@ include_once '../../fns/require_user.php';
 $user = require_user($base);
 
 $key = 'notes/new/values';
-if (array_key_exists($key, $_SESSION)) {
-    $values = $_SESSION[$key];
-} else {
+if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
+else {
 
     include_once '../../fns/Notes/request.php';
     list($text, $tags, $encrypt_in_listings,
         $password_protect) = Notes\request();
 
     $values = [
+        'focus' => 'text',
         'text' => $text,
         'tags' => $tags,
         'encrypt_in_listings' => $encrypt_in_listings,

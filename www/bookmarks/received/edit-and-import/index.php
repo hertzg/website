@@ -12,6 +12,7 @@ $key = 'bookmarks/received/edit-and-import/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
     $values = [
+        'focus' => 'url',
         'url' => $receivedBookmark->url,
         'title' => $receivedBookmark->title,
         'tags' => $receivedBookmark->tags,

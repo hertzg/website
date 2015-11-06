@@ -11,9 +11,10 @@ list($receivedNote, $id, $user) = require_received_note($mysqli, '../');
 
 include_once '../../fns/request_note_params.php';
 list($text, $tags, $tag_names, $encrypt_in_listings,
-    $password_protect) = request_note_params($errors);
+    $password_protect) = request_note_params($errors, $focus);
 
 $values = [
+    'focus' => $focus,
     'text' => $text,
     'tags' => $tags,
     'encrypt_in_listings' => $encrypt_in_listings,

@@ -12,6 +12,7 @@ $key = 'notes/received/edit-and-import/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
     $values = [
+        'focus' => 'text',
         'text' => $receivedNote->text,
         'tags' => $receivedNote->tags,
         'encrypt_in_listings' => $receivedNote->encrypt_in_listings,

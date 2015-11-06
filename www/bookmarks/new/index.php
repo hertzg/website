@@ -6,14 +6,14 @@ include_once '../../fns/require_user.php';
 $user = require_user($base);
 
 $key = 'bookmarks/new/values';
-if (array_key_exists($key, $_SESSION)) {
-    $values = $_SESSION[$key];
-} else {
+if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
+else {
 
     include_once '../../fns/Bookmarks/request.php';
     list($url, $title, $tags) = Bookmarks\request();
 
     $values = [
+        'focus' => 'url',
         'url' => $url,
         'title' => $title,
         'tags' => $tags,

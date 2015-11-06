@@ -20,7 +20,7 @@ function request_place_params (&$errors, &$focus) {
     }
 
     include_once "$fnsDir/request_tags.php";
-    request_tags($tags, $tag_names, $errors);
+    request_tags($tags, $tag_names, $errors, $focus);
 
     return [$latitude, $longitude, $altitude, $name, $description, $tags,
         $tag_names, $parsed_latitude, $parsed_longitude, $parsed_altitude];

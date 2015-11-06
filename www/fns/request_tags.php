@@ -1,6 +1,6 @@
 <?php
 
-function request_tags (&$tags, &$tag_names, &$errors) {
+function request_tags (&$tags, &$tag_names, &$errors, &$focus) {
 
     include_once __DIR__.'/Tags/request.php';
     Tags\request($tags, $tag_names, $tooManyTags);
@@ -11,6 +11,7 @@ function request_tags (&$tags, &$tag_names, &$errors) {
         $maxNumber = Tags\maxNumber();
 
         $errors[] = "Please, enter maximum $maxNumber tags.";
+        if ($focus === null) $focus = 'tags';
 
     }
 

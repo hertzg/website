@@ -11,14 +11,15 @@ list($receivedTask, $id, $user) = require_received_task($mysqli, '../');
 
 include_once '../../fns/request_task_params.php';
 list($text, $deadline_day, $deadline_month,
-    $deadline_year, $deadline_time, $tags,
-    $tag_names, $top_priority) = request_task_params($user, $errors);
+    $deadline_year, $deadline_time, $tags, $tag_names,
+    $top_priority) = request_task_params($user, $errors, $focus);
 
 include_once "$fnsDir/redirect.php";
 
 if ($errors) {
     $_SESSION['tasks/received/edit-and-import/errors'] = $errors;
     $_SESSION['tasks/received/edit-and-import/values'] = [
+        'focus' => $focus,
         'text' => $text,
         'deadline_day' => $deadline_day,
         'deadline_month' => $deadline_month,

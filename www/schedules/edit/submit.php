@@ -10,11 +10,13 @@ include_once '../../lib/mysqli.php';
 list($schedule, $id, $user) = require_schedule($mysqli);
 
 include_once '../fns/request_first_stage.php';
-list($text, $interval, $tags, $tag_names) = request_first_stage($errors);
+list($text, $interval, $tags,
+    $tag_names) = request_first_stage($errors, $focus);
 
 include_once "$fnsDir/redirect.php";
 
 $_SESSION['schedules/edit/values'] = [
+    'focus' => $focus,
     'text' => $text,
     'interval' => $interval,
     'tags' => $tags,

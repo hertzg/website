@@ -2,6 +2,7 @@
 
 function create_form_items ($values) {
 
+    $focus = $values['focus'];
     $fnsDir = __DIR__.'/../../fns';
 
     include_once "$fnsDir/Bookmarks/maxLengths.php";
@@ -12,7 +13,7 @@ function create_form_items ($values) {
         Form\textfield('url', 'URL', [
             'value' => $values['url'],
             'maxlength' => $maxLengths['url'],
-            'autofocus' => true,
+            'autofocus' => $focus === 'url',
             'required' => true,
         ])
         .'<div class="hr"></div>'
@@ -24,6 +25,7 @@ function create_form_items ($values) {
         .Form\textfield('tags', 'Tags', [
             'value' => $values['tags'],
             'maxlength' => $maxLengths['tags'],
+            'autofocus' => $focus === 'tags',
         ]);
 
 }

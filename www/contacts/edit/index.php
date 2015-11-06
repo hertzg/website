@@ -18,6 +18,7 @@ else {
     }
 
     $values = [
+        'focus' => 'full_name',
         'full_name' => $contact->full_name,
         'alias' => $contact->alias,
         'address' => $contact->address,

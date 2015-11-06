@@ -2,6 +2,7 @@
 
 function create_form_items ($values, &$scripts, $base = '') {
 
+    $focus = $values['focus'];
     $fnsDir = __DIR__.'/../../fns';
 
     include_once "$fnsDir/compressed_js_script.php";
@@ -18,13 +19,14 @@ function create_form_items ($values, &$scripts, $base = '') {
         Form\textarea('text', 'Text', [
             'value' => $values['text'],
             'maxlength' => $maxLengths['text'],
-            'autofocus' => true,
+            'autofocus' => $focus === 'text',
             'required' => true,
         ])
         .'<div class="hr"></div>'
         .Form\textfield('tags', 'Tags', [
             'value' => $values['tags'],
             'maxlength' => $maxLengths['tags'],
+            'autofocus' => $focus === 'tags',
         ])
         .'<div class="hr"></div>'
         .Form\checkbox('encrypt_in_listings',

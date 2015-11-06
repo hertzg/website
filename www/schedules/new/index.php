@@ -13,20 +13,22 @@ unset(
 );
 
 $key = 'schedules/new/values';
-if (array_key_exists($key, $_SESSION)) {
-    $values = $_SESSION[$key];
-} else {
+if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
+else {
 
     include_once '../../fns/Schedules/request.php';
     list($text, $interval, $tags, $offset) = Schedules\request();
 
     $values = [
+        'focus' => 'text',
         'text' => $text,
         'interval' => $interval,
         'tags' => $tags,
     ];
 
 }
+
+$focus = $values['focus'];
 
 include_once '../../fns/Schedules/maxLengths.php';
 $maxLengths = Schedules\maxLengths();
@@ -52,7 +54,7 @@ $content = Page\tabs(
             'value' => $values['text'],
             'maxlength' => $maxLengths['text'],
             'required' => true,
-            'autofocus' => true,
+            'autofocus' => $focus === 'text',
         ])
         .'<div class="hr"></div>'
         .create_interval_select($values['interval'])
@@ -60,6 +62,7 @@ $content = Page\tabs(
         .Form\textfield('tags', 'Tags', [
             'value' => $values['tags'],
             'maxlength' => $maxLengths['tags'],
+            'autofocus' => $focus === 'tags',
         ])
         .'<div class="hr"></div>'
         .Form\button('Next')

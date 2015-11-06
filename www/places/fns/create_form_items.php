@@ -43,6 +43,7 @@ function create_form_items ($values, &$scripts, $base = '') {
         .Form\textfield('tags', 'Tags', [
             'value' => $values['tags'],
             'maxlength' => $maxLengths['tags'],
+            'autofocus' => $focus === 'tags',
         ]);
 
 }

@@ -10,12 +10,14 @@ include_once '../../lib/mysqli.php';
 list($bookmark, $id, $user) = require_bookmark($mysqli);
 
 include_once '../fns/request_bookmark_params.php';
-list($url, $title, $tags, $tag_names) = request_bookmark_params($errors);
+list($url, $title, $tags,
+    $tag_names) = request_bookmark_params($errors, $focus);
 
 include_once "$fnsDir/ItemList/itemQuery.php";
 $itemQuery = ItemList\itemQuery($id);
 
 $values = [
+    'focus' => $focus,
     'title' => $title,
     'url' => $url,
     'tags' => $tags,

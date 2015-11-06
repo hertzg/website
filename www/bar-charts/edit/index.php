@@ -10,6 +10,7 @@ $key = 'bar-charts/edit/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
     $values = [
+        'focus' => 'name',
         'name' => $bar_chart->name,
         'tags' => $bar_chart->tags,
     ];

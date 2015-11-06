@@ -7,9 +7,11 @@ include_once '../../fns/require_user.php';
 $user = require_user('../../');
 
 include_once '../fns/request_bookmark_params.php';
-list($url, $title, $tags, $tag_names) = request_bookmark_params($errors);
+list($url, $title, $tags,
+    $tag_names) = request_bookmark_params($errors, $focus);
 
 $values = [
+    'focus' => $focus,
     'title' => $title,
     'url' => $url,
     'tags' => $tags,

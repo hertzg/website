@@ -23,6 +23,7 @@ else {
     }
 
     $values = [
+        'focus' => 'text',
         'text' => $receivedTask->text,
         'deadline_day' => $deadline_day,
         'deadline_month' => $deadline_month,
