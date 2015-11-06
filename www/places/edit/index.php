@@ -8,6 +8,7 @@ $key = 'places/edit/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
     $values = [
+        'focus' => 'latitude',
         'latitude' => $place->latitude,
         'longitude' => $place->longitude,
         'altitude' => $place->altitude,

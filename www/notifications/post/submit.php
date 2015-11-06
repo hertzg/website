@@ -18,19 +18,27 @@ include_once "$fnsDir/request_text.php";
 $text = request_text('text');
 
 $errors = [];
+$focus = null;
 
 include_once "$fnsDir/Users/Channels/get.php";
 $channel = Users\Channels\get($mysqli, $user, $id_channels);
 
-if (!$channel) $errors[] = 'The channel no longer exists.';
+if (!$channel) {
+    $errors[] = 'The channel no longer exists.';
+    $focus = 'id_channels';
+}
 
-if ($text === '') $errors[] = 'Enter text.';
+if ($text === '') {
+    $errors[] = 'Enter text.';
+    if ($focus === null) $focus = 'text';
+}
 
 include_once "$fnsDir/redirect.php";
 
 if ($errors) {
     $_SESSION['notifications/post/errors'] = $errors;
     $_SESSION['notifications/post/values'] = [
+        'focus' => $focus,
         'id_channels' => $id_channels,
         'text' => $text,
     ];

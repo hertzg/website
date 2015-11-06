@@ -1,10 +1,11 @@
 <?php
 
 function check_reset_passwords ($username,
-    $password, $repeatPassword, &$errors) {
+    $password, $repeatPassword, &$errors, &$focus) {
 
     if ($password === '') {
         $errors[] = 'Enter new password.';
+        $focus = 'password';
         return;
     }
 
@@ -16,6 +17,7 @@ function check_reset_passwords ($username,
 
         $errors[] = 'New password should be'
             ." at least $minLength characters long.";
+        $focus = 'password';
         return;
 
     }
@@ -23,11 +25,13 @@ function check_reset_passwords ($username,
     if ($password === $username) {
         $errors[] = 'Please, choose a password'
             .' that is different from the username.';
+        $focus = 'password';
         return;
     }
 
     if ($password !== $repeatPassword) {
         $errors[] = 'New passwords does not match.';
+        $focus = 'repeatPassword';
     }
 
 }

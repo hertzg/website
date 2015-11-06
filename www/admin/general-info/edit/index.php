@@ -18,6 +18,7 @@ else {
     include_once "$fnsDir/SiteProtocol/get.php";
     include_once "$fnsDir/SiteTitle/get.php";
     $values = [
+        'focus' => 'siteTitle',
         'siteTitle' => SiteTitle\get(),
         'domainName' => DomainName\get(),
         'infoEmail' => InfoEmail\get(),
@@ -27,6 +28,8 @@ else {
         'behindProxy' => ClientAddress\GetMethod\get() === 'behind_proxy',
     ];
 }
+
+$focus = $values['focus'];
 
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/checkbox.php";
@@ -45,22 +48,25 @@ $content = Page\tabs(
     .'<form action="submit.php" method="post">'
         .Form\textfield('siteTitle', 'Site title', [
             'value' => $values['siteTitle'],
-            'autofocus' => true,
+            'autofocus' => $focus === 'siteTitle',
             'required' => true,
         ])
         .'<div class="hr"></div>'
         .Form\textfield('domainName', 'Domain name', [
             'value' => $values['domainName'],
+            'autofocus' => $focus === 'domainName',
             'required' => true,
         ])
         .'<div class="hr"></div>'
         .Form\textfield('infoEmail', 'Informational email', [
             'value' => $values['infoEmail'],
+            'autofocus' => $focus === 'infoEmail',
             'required' => true,
         ])
         .'<div class="hr"></div>'
         .Form\textfield('siteBase', 'Path to "www" folder', [
             'value' => $values['siteBase'],
+            'autofocus' => $focus === 'siteBase',
             'required' => true,
         ])
         .'<div class="hr"></div>'

@@ -19,7 +19,7 @@ $expires = (bool)$expires;
 include_once '../../../lib/mysqli.php';
 
 include_once "$fnsDir/check_username.php";
-check_username($mysqli, $username, $errors, $id);
+check_username($mysqli, $username, $errors, $focus, $id);
 
 if (!$errors) {
     include_once "$fnsDir/Password/match.php";

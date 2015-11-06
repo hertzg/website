@@ -20,14 +20,17 @@ $email = Email\request();
 $errors = [];
 
 include_once '../fns/check_username.php';
-check_username($mysqli, $username, $errors);
+check_username($mysqli, $username, $errors, $focus);
 
 include_once '../fns/check_passwords.php';
-check_passwords($username, $password, $repeatPassword, $errors);
+check_passwords($username, $password, $repeatPassword, $errors, $focus);
 
 if ($email !== '') {
     include_once '../fns/Email/isValid.php';
-    if (!Email\isValid($email)) $errors[] = 'The email is invalid.';
+    if (!Email\isValid($email)) {
+        $errors[] = 'The email is invalid.';
+        if ($focus === null) $focus = 'email';
+    }
 }
 
 include_once '../fns/redirect.php';
@@ -35,6 +38,7 @@ include_once '../fns/redirect.php';
 if ($errors) {
     $_SESSION['accept-invitation/errors'] = $errors;
     $_SESSION['accept-invitation/values'] = [
+        'focus' => $focus,
         'username' => $username,
         'password' => $password,
         'repeatPassword' => $repeatPassword,

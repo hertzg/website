@@ -11,7 +11,7 @@ list($wallet, $id, $user) = require_wallet($mysqli);
 
 include_once '../fns/request_transaction_params.php';
 list($amount, $parsed_amount,
-    $description) = request_transaction_params($errors);
+    $description) = request_transaction_params($errors, $focus);
 
 include_once "$fnsDir/redirect.php";
 include_once "$fnsDir/ItemList/itemQuery.php";

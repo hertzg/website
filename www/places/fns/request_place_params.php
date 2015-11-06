@@ -1,6 +1,6 @@
 <?php
 
-function request_place_params (&$errors) {
+function request_place_params (&$errors, &$focus) {
 
     $fnsDir = __DIR__.'/../../fns';
 
@@ -9,9 +9,15 @@ function request_place_params (&$errors) {
         $description, $tags, $parsed_latitude, $parsed_longitude,
         $parsed_altitude) = Places\request();
 
-    if ($latitude === '') $errors[] = 'Enter latitude.';
+    if ($latitude === '') {
+        $errors[] = 'Enter latitude.';
+        $focus = 'latitude';
+    }
 
-    if ($longitude === '') $errors[] = 'Enter longitude.';
+    if ($longitude === '') {
+        $errors[] = 'Enter longitude.';
+        if ($focus === null) $focus = 'longitude';
+    }
 
     include_once "$fnsDir/request_tags.php";
     request_tags($tags, $tag_names, $errors);

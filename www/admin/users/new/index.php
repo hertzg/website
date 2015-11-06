@@ -7,6 +7,7 @@ $key = 'admin/users/new/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
     $values = [
+        'focus' => 'username',
         'username' => '',
         'password' => '',
         'repeatPassword' => '',
@@ -16,6 +17,7 @@ else {
 }
 
 $fnsDir = '../../../fns';
+$focus = $values['focus'];
 
 unset(
     $_SESSION['admin/users/errors'],
@@ -54,7 +56,7 @@ $content = Page\tabs(
             'value' => $values['username'],
             'maxlength' => Username\maxLength(),
             'required' => true,
-            'autofocus' => true,
+            'autofocus' => $focus === 'username',
         ])
         .Form\notes([
             'Case-sensitive.',
@@ -65,6 +67,7 @@ $content = Page\tabs(
         .Form\password('password', 'Password', [
             'value' => $values['password'],
             'required' => true,
+            'autofocus' => $focus === 'password',
         ])
         .Form\notes([
             'Minimum '.Password\minLength().' characters.',
@@ -74,6 +77,7 @@ $content = Page\tabs(
         .Form\password('repeatPassword', 'Repeat password', [
             'value' => $values['repeatPassword'],
             'required' => true,
+            'autofocus' => $focus === 'repeatPassword',
         ])
         .'<div class="hr"></div>'
         .Form\checkbox('disabled', 'Disable', $values['disabled'])

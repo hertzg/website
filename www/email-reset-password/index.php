@@ -13,12 +13,14 @@ else {
     list($return) = request_strings('return');
 
     $values = [
+        'focus' => 'email',
         'email' => '',
         'return' => $return,
     ];
 
 }
 
+$focus = $values['focus'];
 $return = $values['return'];
 
 if ($return === '') $queryString = '';
@@ -50,11 +52,11 @@ $content = Page\tabs(
         .Form\textfield('email', 'Email', [
             'value' => $values['email'],
             'maxlength' => Email\maxLength(),
-            'autofocus' => true,
+            'autofocus' => $focus === 'email',
             'required' => true,
         ])
         .'<div class="hr"></div>'
-        .Form\captcha($base)
+        .Form\captcha($base, $focus === 'captcha')
         .Form\button('Send Recovery Email')
         .Form\hidden('return', $return)
     .'</form>'

@@ -7,9 +7,8 @@ include_once "$fnsDir/require_user.php";
 $user = require_user($base);
 
 $key = 'places/new/values';
-if (array_key_exists($key, $_SESSION)) {
-    $values = $_SESSION[$key];
-} else {
+if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
+else {
 
     include_once "$fnsDir/Places/request.php";
     list($latitude, $longitude, $altitude, $name,
@@ -17,6 +16,7 @@ if (array_key_exists($key, $_SESSION)) {
         $parsed_altitude) = Places\request();
 
     $values = [
+        'focus' => 'latitude',
         'latitude' => $latitude,
         'longitude' => $longitude,
         'altitude' => $altitude,
@@ -24,6 +24,7 @@ if (array_key_exists($key, $_SESSION)) {
         'description' => $description,
         'tags' => $tags,
     ];
+
 }
 
 unset(

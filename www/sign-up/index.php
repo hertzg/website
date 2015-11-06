@@ -19,6 +19,7 @@ if (SignUpEnabled\get()) {
 include_once 'fns/get_values.php';
 $values = get_values();
 
+$focus = $values['focus'];
 $return = $values['return'];
 
 if ($return === '') $queryString = '';
@@ -52,7 +53,7 @@ $content = Page\tabs(
         .Form\textfield('username', 'Username', [
             'value' => $values['username'],
             'maxlength' => Username\maxLength(),
-            'autofocus' => true,
+            'autofocus' => $focus === 'username',
             'required' => true,
         ])
         .Form\notes([
@@ -63,6 +64,7 @@ $content = Page\tabs(
         .'<div class="hr"></div>'
         .Form\password('password', 'Password', [
             'value' => $values['password'],
+            'autofocus' => $focus === 'password',
             'required' => true,
         ])
         .Form\notes([
@@ -72,16 +74,18 @@ $content = Page\tabs(
         .'<div class="hr"></div>'
         .Form\password('repeatPassword', 'Repeat password', [
             'value' => $values['repeatPassword'],
+            'autofocus' => $focus === 'repeatPassword',
             'required' => true,
         ])
         .'<div class="hr"></div>'
         .Form\textfield('email', 'Email', [
             'value' => $values['email'],
             'maxlength' => Email\maxLength(),
+            'autofocus' => $focus === 'email',
         ])
         .Form\notes(['Optional. Used for password recovery.'])
         .'<div class="hr"></div>'
-        .Form\captcha($base)
+        .Form\captcha($base, $focus === 'captcha')
         .Form\button('Sign Up')
         .Form\hidden('return', $return)
     .'</form>'

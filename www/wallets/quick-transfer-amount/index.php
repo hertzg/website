@@ -27,12 +27,15 @@ $key = 'wallets/quick-transfer-amount/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
     $values = [
+        'focus' => 'from_id_wallets',
         'from_id_wallets' => $wallets[0]->id,
         'to_id_wallets' => $wallets[1]->id,
         'amount' => '',
         'description' => '',
     ];
 }
+
+$focus = $values['focus'];
 
 include_once "$fnsDir/WalletTransactions/maxLengths.php";
 $maxLengths = WalletTransactions\maxLengths();
@@ -56,14 +59,15 @@ $content = Page\tabs(
     Page\sessionErrors('wallets/quick-transfer-amount/errors')
     .'<form action="submit.php" method="post">'
         .Form\select('from_id_wallets', 'From', $walletOptions,
-            $values['from_id_wallets'], ['autofocus' => true])
+            $values['from_id_wallets'], $focus === 'from_id_wallets')
         .'<div class="hr"></div>'
         .Form\select('to_id_wallets', 'To', $walletOptions,
-            $values['to_id_wallets'])
+            $values['to_id_wallets'], $focus === 'to_id_wallets')
         .'<div class="hr"></div>'
         .Form\textfield('amount', 'Amount', [
             'value' => $values['amount'],
             'required' => true,
+            'autofocus' => $focus === 'amount',
         ])
         .'<div class="hr"></div>'
         .Form\textfield('description', 'Description', [

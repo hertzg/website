@@ -1,6 +1,6 @@
 <?php
 
-function request_general_info_params (&$errors) {
+function request_general_info_params (&$errors, &$focus) {
 
     $fnsDir = __DIR__.'/../../../../fns';
 
@@ -20,30 +20,43 @@ function request_general_info_params (&$errors) {
     $behindProxy = (bool)$behindProxy;
     $signupEnabled = (bool)$signupEnabled;
 
-    if ($siteTitle === '') $errors[] = 'Enter site title.';
+    if ($siteTitle === '') {
+        $errors[] = 'Enter site title.';
+        $focus = 'siteTitle';
+    }
 
-    if ($domainName === '') $errors[] = 'Enter domain name.';
-    else {
+    if ($domainName === '') {
+        
+        $errors[] = 'Enter domain name.';
+        if ($focus === null) $focus = 'domainName';
+    } else {
         include_once "$fnsDir/DomainName/isValid.php";
         if (!DomainName\isValid($domainName)) {
             $errors[] = 'The domain name is invalid';
+            if ($focus === null) $focus = 'domainName';
         }
     }
 
-    if ($infoEmail === '') $errors[] = 'Enter informational email.';
-    else {
+    if ($infoEmail === '') {
+        $errors[] = 'Enter informational email.';
+        if ($focus === null) $focus = 'infoEmail';
+    } else {
         include_once "$fnsDir/InfoEmail/isValid.php";
         if (!InfoEmail\isValid($infoEmail)) {
             $errors[] = 'The informational email is invalid.';
+            if ($focus === null) $focus = 'infoEmail';
         }
     }
 
     if ($siteBase === '') {
         $errors[] = 'Enter path to "www" folder.';
+        if ($focus === null) $focus = 'siteBase';
     } elseif (substr($siteBase, 0, 1) !== '/') {
         $errors[] = 'The path to "www" folder should start with slash (/).';
+        if ($focus === null) $focus = 'siteBase';
     } elseif (substr($siteBase, -1) !== '/') {
         $errors[] = 'The path to "www" folder should end with slash (/).';
+        if ($focus === null) $focus = 'siteBase';
     }
 
     return [$siteTitle, $domainName, $infoEmail,

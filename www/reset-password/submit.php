@@ -17,13 +17,15 @@ list($password, $repeatPassword) = request_strings(
     'password', 'repeatPassword');
 
 include_once '../fns/check_reset_passwords.php';
-check_reset_passwords($user->username, $password, $repeatPassword, $errors);
+check_reset_passwords($user->username,
+    $password, $repeatPassword, $errors, $focus);
 
 include_once '../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['reset-password/errors'] = $errors;
     $_SESSION['reset-password/values'] = [
+        'focus' => $focus,
         'password' => $password,
         'repeatPassword' => $repeatPassword,
     ];

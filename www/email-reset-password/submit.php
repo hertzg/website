@@ -16,8 +16,10 @@ $email = str_collapse_spaces($email);
 
 $errors = [];
 
-if ($email === '') $errors[] = 'Enter email.';
-else {
+if ($email === '') {
+    $errors[] = 'Enter email.';
+    $focus = 'email';
+} else {
     include_once "$fnsDir/Email/isValid.php";
     if (Email\isValid($email)) {
 
@@ -27,21 +29,24 @@ else {
 
         if (!$user) {
             $errors[] = 'User with this email was not found.';
+            $focus = 'email';
         }
 
     } else {
         $errors[] = 'The email address is invalid.';
+        $focus = 'email';
     }
 }
 
 include_once "$fnsDir/Captcha/check.php";
-Captcha\check($errors);
+Captcha\check($errors, $focus);
 
 include_once "$fnsDir/redirect.php";
 
 if ($errors) {
     $_SESSION['email-reset-password/errors'] = $errors;
     $_SESSION['email-reset-password/values'] = [
+        'focus' => $focus,
         'email' => $email,
         'return' => $return,
     ];

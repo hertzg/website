@@ -13,6 +13,7 @@ $key = 'places/received/edit-and-import/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
     $values = [
+        'focus' => 'latitude',
         'latitude' => $receivedPlace->latitude,
         'longitude' => $receivedPlace->longitude,
         'altitude' => $receivedPlace->altitude,

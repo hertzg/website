@@ -10,11 +10,13 @@ $key = 'admin/users/reset-password/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
     $values = [
+        'focus' => 'password',
         'password' => '',
         'repeatPassword' => '',
     ];
 }
 
+$focus = $values['focus'];
 $fnsDir = '../../../fns';
 
 include_once "$fnsDir/ItemList/escapedItemQuery.php";
@@ -52,7 +54,7 @@ $content = Page\tabs(
         .Form\password('password', 'New password', [
             'value' => $values['password'],
             'required' => true,
-            'autofocus' => true,
+            'autofocus' => $focus === 'password',
         ])
         .Form\notes([
             'Minimum '.Password\minLength().' characters.',
@@ -62,6 +64,7 @@ $content = Page\tabs(
         .Form\password('repeatPassword', 'Repeat new password', [
             'value' => $values['repeatPassword'],
             'required' => true,
+            'autofocus' => $focus === 'repeatPassword',
         ])
         .'<div class="hr"></div>'
         .Form\button('Reset Password')

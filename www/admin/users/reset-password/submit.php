@@ -14,7 +14,8 @@ list($password, $repeatPassword) = request_strings(
     'password', 'repeatPassword');
 
 include_once "$fnsDir/check_reset_passwords.php";
-check_reset_passwords($user->username, $password, $repeatPassword, $errors);
+check_reset_passwords($user->username,
+    $password, $repeatPassword, $errors, $focus);
 
 include_once "$fnsDir/ItemList/itemQuery.php";
 $itemQuery = ItemList\itemQuery($id);
@@ -24,6 +25,7 @@ include_once "$fnsDir/redirect.php";
 if ($errors) {
     $_SESSION['admin/users/reset-password/errors'] = $errors;
     $_SESSION['admin/users/reset-password/values'] = [
+        'focus' => $focus,
         'password' => $password,
         'repeatPassword' => $repeatPassword,
     ];

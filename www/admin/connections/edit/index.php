@@ -11,6 +11,7 @@ if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
     include_once "$fnsDir/restore_expires.php";
     $values = [
+        'focus' => 'address',
         'address' => $connection->address,
         'their_exchange_api_key' => $connection->their_exchange_api_key,
         'expires' => restore_expires($connection->expire_time),

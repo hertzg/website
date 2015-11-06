@@ -1,9 +1,10 @@
 <?php
 
-function check_username ($username, &$errors) {
+function check_username ($username, &$errors, &$focus) {
 
     if ($username === '') {
         $errors[] = 'Enter new username.';
+        $focus = 'username';
         return;
     }
 
@@ -14,6 +15,7 @@ function check_username ($username, &$errors) {
         include_once "$fnsDir/Username/minLength.php";
         $errors[] = 'New username too short. At least '
             .Username\minLength().' characters required.';
+        $focus = 'username';
         return;
     }
 
@@ -22,12 +24,14 @@ function check_username ($username, &$errors) {
         include_once "$fnsDir/Username/maxLength.php";
         $errors[] = 'New username too long. Maximum '
             .Username\maxLength().' characters allowed.';
+        $focus = 'username';
         return;
     }
 
     include_once "$fnsDir/Username/containsIllegalChars.php";
     if (Username\containsIllegalChars($username)) {
         $errors[] = 'The new username contains illegal characters.';
+        $focus = 'username';
         return;
     }
 
@@ -35,6 +39,7 @@ function check_username ($username, &$errors) {
     if (Username\containsOnlyDigits($username)) {
         $errors[] = 'New username should contain at least'
             .' one alphabetic character.';
+        $focus = 'username';
     }
 
 }

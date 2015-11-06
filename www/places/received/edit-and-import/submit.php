@@ -12,13 +12,14 @@ list($receivedPlace, $id, $user) = require_received_place($mysqli, '../');
 include_once '../../fns/request_place_params.php';
 list($latitude, $longitude, $altitude, $name, $description,
     $tags, $tag_names, $parsed_latitude, $parsed_longitude,
-    $parsed_altitude) = request_place_params($errors);
+    $parsed_altitude) = request_place_params($errors, $focus);
 
 include_once "$fnsDir/redirect.php";
 
 if ($errors) {
     $_SESSION['places/received/edit-and-import/errors'] = $errors;
     $_SESSION['places/received/edit-and-import/values'] = [
+        'focus' => $focus,
         'latitude' => $latitude,
         'longitude' => $longitude,
         'altitude' => $altitude,

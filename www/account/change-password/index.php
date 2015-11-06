@@ -10,11 +10,14 @@ $key = 'account/change-password/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
     $values = [
+        'focus' => 'currentPassword',
         'currentPassword' => '',
         'password' => '',
         'repeatPassword' => '',
     ];
 }
+
+$focus = $values['focus'];
 
 unset($_SESSION['account/messages']);
 
@@ -38,12 +41,13 @@ $content = Page\tabs(
     .'<form action="submit.php" method="post">'
         .Form\password('currentPassword', 'Current password', [
             'value' => $values['currentPassword'],
-            'autofocus' => true,
+            'autofocus' => $focus === 'currentPassword',
             'required' => true,
         ])
         .'<div class="hr"></div>'
         .Form\password('password', 'New password', [
             'value' => $values['password'],
+            'autofocus' => $focus === 'password',
             'required' => true,
         ])
         .Form\notes([
@@ -53,6 +57,7 @@ $content = Page\tabs(
         .'<div class="hr"></div>'
         .Form\password('repeatPassword', 'Repeat new password', [
             'value' => $values['repeatPassword'],
+            'autofocus' => $focus === 'repeatPassword',
             'required' => true,
         ])
         .'<div class="hr"></div>'

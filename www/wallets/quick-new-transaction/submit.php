@@ -19,17 +19,21 @@ $wallet = Users\Wallets\get($mysqli, $user, $id_wallets);
 
 $errors = [];
 
-if (!$wallet) $errors[] = 'The wallet no longer exists.';
+if (!$wallet) {
+    $errors[] = 'The wallet no longer exists.';
+    $focus = 'id_wallets';
+}
 
 include_once '../fns/request_transaction_params.php';
 list($amount, $parsed_amount,
-    $description) = request_transaction_params($errors);
+    $description) = request_transaction_params($errors, $focus);
 
 include_once "$fnsDir/redirect.php";
 
 if ($errors) {
     $_SESSION['wallets/quick-new-transaction/errors'] = $errors;
     $_SESSION['wallets/quick-new-transaction/values'] = [
+        'focus' => $focus,
         'id_wallets' => $id_wallets,
         'amount' => $amount,
         'description' => $description,

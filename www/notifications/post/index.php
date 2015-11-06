@@ -9,10 +9,11 @@ unset(
     $_SESSION['notifications/messages']
 );
 
-$key = 'notifications/post';
+$key = 'notifications/post/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
     $values = [
+        'focus' => 'id_channels',
         'id_channels' => '',
         'text' => '',
     ];
@@ -20,6 +21,7 @@ else {
 
 $base = '../../';
 $fnsDir = '../../fns';
+$focus = $values['focus'];
 
 include_once "$fnsDir/Users/Channels/index.php";
 $channels = Users\Channels\index($mysqli, $user);
@@ -45,13 +47,14 @@ $content = Page\tabs(
     'Post a Notification',
     Page\sessionErrors('notifications/post/errors')
     .'<form method="post" action="submit.php">'
-        .Form\select('id_channels', 'Channel',
-            $options, $values['id_channels'], true)
+        .Form\select('id_channels', 'Channel', $options,
+            $values['id_channels'], $focus === 'id_channels')
         .'<div class="hr"></div>'
         .Form\textarea('text', 'Text', [
             'value' => $values['text'],
             'maxlength' => Notifications\maxLengths()['text'],
             'required' => true,
+            'autofocus' => $focus === 'text',
         ])
         .'<div class="hr"></div>'
         .Form\button('Post a Notification')

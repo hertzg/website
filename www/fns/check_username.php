@@ -1,9 +1,11 @@
 <?php
 
-function check_username ($mysqli, $username, &$errors, $exclude_id = 0) {
+function check_username ($mysqli,
+    $username, &$errors, &$focus, $exclude_id = 0) {
 
     if ($username === '') {
         $errors[] = 'Enter username.';
+        if ($focus === null) $focus = 'username';
         return;
     }
 
@@ -13,6 +15,7 @@ function check_username ($mysqli, $username, &$errors, $exclude_id = 0) {
         $minLength = Username\minLength();
         $errors[] = 'Username too short.'
             ." At least $minLength characters required.";
+        if ($focus === null) $focus = 'username';
         return;
     }
 
@@ -21,12 +24,14 @@ function check_username ($mysqli, $username, &$errors, $exclude_id = 0) {
         include_once __DIR__.'/Username/maxLength.php';
         $maxLength = Username\maxLength();
         $errors[] = "Username too long. Maximum $maxLength characters allowed.";
+        if ($focus === null) $focus = 'username';
         return;
     }
 
     include_once __DIR__.'/Username/containsIllegalChars.php';
     if (Username\containsIllegalChars($username)) {
         $errors[] = 'The username contains illegal characters.';
+        if ($focus === null) $focus = 'username';
         return;
     }
 
@@ -34,12 +39,14 @@ function check_username ($mysqli, $username, &$errors, $exclude_id = 0) {
     if (Username\containsOnlyDigits($username)) {
         $errors[] = 'Username should contain at least'
             .' one alphabetic character.';
+        if ($focus === null) $focus = 'username';
         return;
     }
 
     include_once __DIR__.'/Users/getByUsername.php';
     if (Users\getByUsername($mysqli, $username, $exclude_id)) {
         $errors[] = 'The username is unavailable. Try another.';
+        if ($focus === null) $focus = 'username';
     }
 
 }

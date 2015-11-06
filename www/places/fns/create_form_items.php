@@ -2,6 +2,7 @@
 
 function create_form_items ($values, &$scripts, $base = '') {
 
+    $focus = $values['focus'];
     $fnsDir = __DIR__.'/../../fns';
 
     include_once "$fnsDir/compressed_js_script.php";
@@ -15,12 +16,13 @@ function create_form_items ($values, &$scripts, $base = '') {
     return
         Form\textfield('latitude', 'Latitude', [
             'value' => $values['latitude'],
-            'autofocus' => true,
+            'autofocus' => $focus === 'latitude',
             'required' => true,
         ])
         .'<div class="hr"></div>'
         .Form\textfield('longitude', 'Longitude', [
             'value' => $values['longitude'],
+            'autofocus' => $focus === 'longitude',
             'required' => true,
         ])
         .'<div class="hr"></div>'

@@ -9,9 +9,10 @@ $user = require_user('../../');
 include_once '../fns/request_place_params.php';
 list($latitude, $longitude, $altitude, $name, $description,
     $tags, $tag_names, $parsed_latitude, $parsed_longitude,
-    $parsed_altitude) = request_place_params($errors);
+    $parsed_altitude) = request_place_params($errors, $focus);
 
 $values = [
+    'focus' => $focus,
     'latitude' => $latitude,
     'longitude' => $longitude,
     'altitude' => $altitude,

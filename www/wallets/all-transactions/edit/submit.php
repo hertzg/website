@@ -12,7 +12,7 @@ list($transaction, $id, $user) = require_transaction($mysqli, '../');
 
 include_once '../../fns/request_transaction_params.php';
 list($amount, $parsed_amount,
-    $description) = request_transaction_params($errors);
+    $description) = request_transaction_params($errors, $focus);
 
 include_once "$fnsDir/ItemList/itemQuery.php";
 $itemQuery = ItemList\itemQuery($id);

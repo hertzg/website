@@ -2,7 +2,7 @@
 
 namespace Captcha;
 
-function check (&$errors) {
+function check (&$errors, &$focus) {
     include_once __DIR__.'/required.php';
     if (required()) {
 
@@ -14,6 +14,7 @@ function check (&$errors) {
 
         if ($captcha === '') {
             $errors[] = 'Please, enter verification.';
+            if ($focus === null) $focus = 'captcha';
         } elseif (array_key_exists('captcha', $_SESSION) &&
             $captcha == $_SESSION['captcha']) {
 
@@ -21,6 +22,7 @@ function check (&$errors) {
 
         } else {
             $errors[] = 'Invalid verification. Try again.';
+            if ($focus === null) $focus = 'captcha';
         }
 
         unset($_SESSION['captcha']);

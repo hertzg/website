@@ -16,21 +16,26 @@ include_once "$fnsDir/str_collapse_spaces.php";
 $username = str_collapse_spaces($username);
 
 include_once 'fns/check_username.php';
-check_username($username, $errors);
+check_username($username, $errors, $focus);
 
-if ($password === '') $errors[] = 'Enter new password.';
-else {
+if ($password === '') {
+    $errors[] = 'Enter new password.';
+    if ($focus === null) $focus = 'password';
+} else {
     include_once "$fnsDir/Password/isShort.php";
     if (Password\isShort($password)) {
         include_once "$fnsDir/Password/minLength.php";
         $minLength = Password\minLength();
         $errors[] = 'Password too short.'
             ." At least $minLength characters required.";
+        if ($focus === null) $focus = 'password';
     } elseif ($password === $username) {
         $errors[] = 'Please, choose a password'
             .' that is different from the username.';
+        if ($focus === null) $focus = 'password';
     } elseif ($password !== $repeatPassword) {
         $errors[] = 'New passwords does not match.';
+        if ($focus === null) $focus = 'repeatPassword';
     }
 }
 
@@ -41,14 +46,17 @@ if (!$errors) {
 
     include_once "$fnsDir/Admin/set.php";
     $ok = Admin\set($username, $sha512_hash, $sha512_key);
-    if ($ok === false) $errors[] = 'Failed to save the data.';
-
+    if ($ok === false) {
+        $errors[] = 'Failed to save the data.';
+        $focus = 'button';
+    }
 }
 
 include_once "$fnsDir/redirect.php";
 
 if ($errors) {
     $_SESSION['admin/username-password/values'] = [
+        'focus' => $focus,
         'username' => $username,
         'password' => $password,
         'repeatPassword' => $repeatPassword,

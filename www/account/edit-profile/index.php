@@ -10,12 +10,15 @@ $key = 'account/edit-profile/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
     $values = [
+        'focus' => 'username',
         'username' => $user->username,
         'email' => $user->email,
         'full_name' => $user->full_name,
         'timezone' => $user->timezone,
     ];
 }
+
+$focus = $values['focus'];
 
 unset($_SESSION['account/messages']);
 
@@ -42,7 +45,7 @@ $content = Page\tabs(
         .Form\textfield('username', 'Username', [
             'value' => $values['username'],
             'maxlength' => Username\maxLength(),
-            'autofocus' => true,
+            'autofocus' => $focus === 'username',
             'required' => true,
         ])
         .Form\notes([
@@ -54,6 +57,7 @@ $content = Page\tabs(
         .Form\textfield('email', 'Email', [
             'value' => $values['email'],
             'maxlength' => Email\maxLength(),
+            'autofocus' => $focus === 'email',
         ])
         .Form\notes(['Optional. Used for password recovery.'])
         .'<div class="hr"></div>'

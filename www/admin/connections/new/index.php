@@ -7,6 +7,7 @@ $key = 'admin/connections/new/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
     $values = [
+        'focus' => 'address',
         'address' => '',
         'their_exchange_api_key' => '',
         'expires' => 'never',

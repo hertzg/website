@@ -16,7 +16,7 @@ include_once "$fnsDir/request_strings.php";
 list($captcha) = request_strings('captcha');
 
 include_once "$fnsDir/Captcha/check.php";
-Captcha\check($errors);
+Captcha\check($errors, $focus);
 
 if ($errors) {
     $_SESSION['account/verify-email/errors'] = $errors;

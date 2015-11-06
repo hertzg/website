@@ -10,14 +10,15 @@ require_admin();
 
 include_once '../fns/request_connection_params.php';
 include_once '../../../lib/mysqli.php';
-list($address, $their_exchange_api_key,
-    $expires, $expire_time) = request_connection_params($mysqli, $errors);
+list($address, $their_exchange_api_key, $expires,
+    $expire_time) = request_connection_params($mysqli, $errors, $focus);
 
 include_once "$fnsDir/redirect.php";
 
 if ($errors) {
     $_SESSION['admin/connections/new/errors'] = $errors;
     $_SESSION['admin/connections/new/values'] = [
+        'focus' => $focus,
         'address' => $address,
         'their_exchange_api_key' => $their_exchange_api_key,
         'expires' => $expires,

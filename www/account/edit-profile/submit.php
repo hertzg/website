@@ -24,7 +24,7 @@ if (!Timezone\isValid($timezone)) $timezone = 0;
 include_once '../../lib/mysqli.php';
 
 include_once "$fnsDir/check_username.php";
-check_username($mysqli, $username, $errors, $id_users);
+check_username($mysqli, $username, $errors, $focus, $id_users);
 
 if (!$errors) {
     include_once "$fnsDir/Password/match.php";
@@ -33,6 +33,7 @@ if (!$errors) {
     if ($match) {
         $errors[] = 'Please, choose a username'
             .' that is different from your password.';
+        $focus = 'username';
     }
 }
 
@@ -43,9 +44,11 @@ if ($email !== '') {
         if (Users\getByEmail($mysqli, $email, $id_users)) {
             $errors[] = 'A username with this email is already registered.'
                 .' Try another.';
+            if ($focus === null) $focus = 'email';
         }
     } else {
         $errors[] = 'The email address is invalid.';
+        if ($focus === null) $focus = 'email';
     }
 }
 
@@ -54,6 +57,7 @@ include_once "$fnsDir/redirect.php";
 if ($errors) {
     $_SESSION['account/edit-profile/errors'] = $errors;
     $_SESSION['account/edit-profile/values'] = [
+        'focus' => $focus,
         'username' => $username,
         'email' => $email,
         'full_name' => $full_name,

@@ -21,6 +21,7 @@ if (!$user->email_verified) {
 include_once 'fns/get_values.php';
 $values = get_values();
 
+$focus = $values['focus'];
 $return = $user->reset_password_return;
 
 if ($return === '') $queryString = '';
@@ -67,7 +68,7 @@ $content = Page\tabs(
         .'<div class="hr"></div>'
         .Form\password('password', 'New password', [
             'value' => $values['password'],
-            'autofocus' => true,
+            'autofocus' => $focus === 'password',
             'required' => true,
         ])
         .Form\notes([
@@ -77,6 +78,7 @@ $content = Page\tabs(
         .'<div class="hr"></div>'
         .Form\password('repeatPassword', 'Repeat new password', [
             'value' => $values['repeatPassword'],
+            'autofocus' => $focus === 'repeatPassword',
             'required' => true,
         ])
         .'<div class="hr"></div>'

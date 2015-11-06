@@ -10,8 +10,8 @@ include_once '../../../lib/mysqli.php';
 list($connection, $id) = require_connection($mysqli);
 
 include_once '../fns/request_connection_params.php';
-list($address, $their_exchange_api_key,
-    $expires, $expire_time) = request_connection_params($mysqli, $errors, $id);
+list($address, $their_exchange_api_key, $expires,
+    $expire_time) = request_connection_params($mysqli, $errors, $focus, $id);
 
 include_once "$fnsDir/request_strings.php";
 list($randomizeKey) = request_strings('randomizeKey');
@@ -23,6 +23,7 @@ include_once "$fnsDir/redirect.php";
 if ($errors) {
     $_SESSION['admin/connections/edit/errors'] = $errors;
     $_SESSION['admin/connections/edit/values'] = [
+        'focus' => $focus,
         'address' => $address,
         'their_exchange_api_key' => $their_exchange_api_key,
         'expires' => $expires,

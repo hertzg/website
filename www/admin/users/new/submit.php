@@ -23,16 +23,17 @@ $username = str_collapse_spaces($username);
 include_once '../../../lib/mysqli.php';
 
 include_once "$fnsDir/check_username.php";
-check_username($mysqli, $username, $errors);
+check_username($mysqli, $username, $errors, $focus);
 
 include_once "$fnsDir/check_passwords.php";
-check_passwords($username, $password, $repeatPassword, $errors);
+check_passwords($username, $password, $repeatPassword, $errors, $focus);
 
 include_once "$fnsDir/redirect.php";
 
 if ($errors) {
     $_SESSION['admin/users/new/errors'] = $errors;
     $_SESSION['admin/users/new/values'] = [
+        'focus' => $focus,
         'username' => $username,
         'password' => $password,
         'repeatPassword' => $repeatPassword,

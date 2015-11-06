@@ -10,8 +10,9 @@ include_once '../../lib/mysqli.php';
 list($point, $id, $user, $place) = require_point($mysqli);
 
 include_once '../fns/request_point_params.php';
-list($latitude, $longitude, $altitude, $parsed_latitude,
-    $parsed_longitude, $parsed_altitude) = request_point_params($errors);
+list($latitude, $longitude, $altitude,
+    $parsed_latitude, $parsed_longitude,
+    $parsed_altitude) = request_point_params($errors, $focus);
 
 include_once "$fnsDir/ItemList/itemQuery.php";
 $itemQuery = ItemList\itemQuery($id);
@@ -21,6 +22,7 @@ include_once "$fnsDir/redirect.php";
 if ($errors) {
     $_SESSION['places/edit-point/errors'] = $errors;
     $_SESSION['places/edit-point/values'] = [
+        'focus' => $focus,
         'latitude' => $latitude,
         'longitude' => $longitude,
         'altitude' => $altitude,

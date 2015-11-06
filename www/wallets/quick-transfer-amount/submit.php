@@ -19,29 +19,38 @@ include_once "$fnsDir/Users/Wallets/get.php";
 include_once '../../lib/mysqli.php';
 $fromWallet = Users\Wallets\get($mysqli, $user, $from_id_wallets);
 
+$focus = null;
 $errors = [];
 
-if (!$fromWallet) $errors[] = 'The "From" wallet no longer exists.';
+if (!$fromWallet) {
+    $errors[] = 'The "From" wallet no longer exists.';
+    $focus = 'from_id_wallets';
+}
 
 $toWallet = Users\Wallets\get($mysqli, $user, $to_id_wallets);
 
-if (!$toWallet) $errors[] = 'The "To" wallet no longer exists.';
+if (!$toWallet) {
+    $errors[] = 'The "To" wallet no longer exists.';
+    if ($focus === null) $focus = 'to_id_wallets';
+}
 
 if (!$errors) {
     if ($from_id_wallets == $to_id_wallets) {
         $errors[] = 'The "From" wallet and the "To" wallet cannot be the same.';
+        if ($focus === null) $focus = 'to_id_wallets';
     }
 }
 
 include_once '../fns/request_transaction_params.php';
 list($amount, $parsed_amount,
-    $description) = request_transaction_params($errors);
+    $description) = request_transaction_params($errors, $focus);
 
 include_once "$fnsDir/redirect.php";
 
 if ($errors) {
     $_SESSION['wallets/quick-transfer-amount/errors'] = $errors;
     $_SESSION['wallets/quick-transfer-amount/values'] = [
+        'focus' => $focus,
         'from_id_wallets' => $from_id_wallets,
         'to_id_wallets' => $to_id_wallets,
         'amount' => $amount,

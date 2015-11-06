@@ -13,12 +13,15 @@ else {
     Admin\get($username, $hash, $salt, $sha512_hash, $sha512_key);
 
     $values = [
+        'focus' => 'username',
         'username' => $username,
         'password' => '',
         'repeatPassword' => '',
     ];
 
 }
+
+$focus = $values['focus'];
 
 include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/password.php';
@@ -38,17 +41,19 @@ $content = Page\tabs(
         .Form\textfield('username', 'New username', [
             'value' => $values['username'],
             'required' => true,
-            'autofocus' => true,
+            'autofocus' => $focus === 'username',
         ])
         .'<div class="hr"></div>'
         .Form\password('password', 'New password', [
             'value' => $values['password'],
             'required' => true,
+            'autofocus' => $focus === 'password',
         ])
         .'<div class="hr"></div>'
         .Form\password('repeatPassword', 'Repeat new password', [
             'value' => $values['repeatPassword'],
             'required' => true,
+            'autofocus' => $focus === 'repeatPassword',
         ])
         .'<div class="hr"></div>'
         .Form\button('Set Username/Password')

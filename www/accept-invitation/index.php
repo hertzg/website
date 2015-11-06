@@ -8,6 +8,7 @@ include_once 'fns/get_values.php';
 $values = get_values();
 
 $base = '../';
+$focus = $values['focus'];
 
 if (!$invitation) {
     include_once '../fns/echo_alert_page.php';
@@ -41,7 +42,7 @@ $content = Page\tabs(
             'value' => $values['username'],
             'maxlength' => Username\maxLength(),
             'required' => true,
-            'autofocus' => true,
+            'autofocus' => $focus === 'username',
         ])
         .Form\notes([
             'Case-sensitive.',
@@ -52,6 +53,7 @@ $content = Page\tabs(
         .Form\password('password', 'Password', [
             'value' => $values['password'],
             'required' => true,
+            'autofocus' => $focus === 'password',
         ])
         .Form\notes([
             'Minimum '.Password\minLength().' characters.',
@@ -61,11 +63,13 @@ $content = Page\tabs(
         .Form\password('repeatPassword', 'Repeat password', [
             'value' => $values['repeatPassword'],
             'required' => true,
+            'autofocus' => $focus === 'repeatPassword',
         ])
         .'<div class="hr"></div>'
         .Form\textfield('email', 'Email', [
             'value' => $values['email'],
             'maxlength' => Email\maxLength(),
+            'autofocus' => $focus === 'email',
         ])
         .Form\notes(['Optional. Used for password recovery.'])
         .'<div class="hr"></div>'

@@ -2,6 +2,7 @@
 
 function create_form_items ($values) {
 
+    $focus = $values['focus'];
     $fnsDir = __DIR__.'/../../../fns';
 
     include_once "$fnsDir/create_expires_field.php";
@@ -14,7 +15,7 @@ function create_form_items ($values) {
             'value' => $values['address'],
             'maxlength' => ConnectionAddress\maxLength(),
             'required' => true,
-            'autofocus' => true,
+            'autofocus' => $focus === 'address',
         ])
         .'<div class="hr"></div>'
         .create_expires_field($values['expires'])
@@ -22,6 +23,7 @@ function create_form_items ($values) {
         .Form\textarea('their_exchange_api_key', 'Their exchange API key', [
             'value' => $values['their_exchange_api_key'],
             'maxlength' => ApiKey\length(),
+            'autofocus' => $focus === 'their_exchange_api_key',
         ]);
 
 }

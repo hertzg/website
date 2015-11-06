@@ -9,6 +9,7 @@ function get_values () {
     list($return) = request_strings('return');
 
     return [
+        'focus' => 'username',
         'username' => '',
         'password' => '',
         'repeatPassword' => '',
