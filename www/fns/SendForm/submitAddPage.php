@@ -6,7 +6,7 @@ function submitAddPage ($mysqli, $user, $id,
     $errorsKey, $messagesKey, $valuesKey, $checkFunction) {
 
     include_once __DIR__.'/requestUsernameAddress.php';
-    requestUsernameAddress($username, $address);
+    requestUsernameAddress($username, $parsed_username, $address);
 
     $fnsDir = __DIR__.'/..';
 
@@ -32,7 +32,8 @@ function submitAddPage ($mysqli, $user, $id,
     }
 
     include_once __DIR__.'/checkUsernameAddress.php';
-    checkUsernameAddress($mysqli, $username, $address, $checkFunction, $errors);
+    checkUsernameAddress($mysqli, $username,
+        $parsed_username, $address, $checkFunction, $errors);
 
     if ($errors) {
         unset($_SESSION[$messagesKey]);

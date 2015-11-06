@@ -2,7 +2,7 @@
 
 namespace SendForm;
 
-function requestUsernameAddress (&$username, &$address) {
+function requestUsernameAddress (&$username, &$parsed_username, &$address) {
 
     $fnsDir = __DIR__.'/..';
 

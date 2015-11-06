@@ -2,8 +2,8 @@
 
 namespace SendForm;
 
-function checkUsernameAddress ($mysqli,
-    $username, $address, $checkFunction, &$errors) {
+function checkUsernameAddress ($mysqli, $username,
+    $parsed_username, $address, $checkFunction, &$errors) {
 
     if ($address === null) {
         $checkFunction($username, $errors);
@@ -11,6 +11,13 @@ function checkUsernameAddress ($mysqli,
     }
 
     $fnsDir = __DIR__.'/..';
+
+    include_once "$fnsDir/Username/isValid.php";
+    if (!\Username\isValid($parsed_username)) {
+        $errors[] = 'The username is invalid.';
+        return;
+    }
+
 
     include_once "$fnsDir/ConnectionAddress/isValid.php";
     if (!\ConnectionAddress\isValid($address)) {
