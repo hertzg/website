@@ -39,6 +39,7 @@ function create_form_items ($values, &$scripts, $base = '') {
         .Form\timefield([
             'name' => 'start_hour',
             'value' => $values['start_hour'],
+            'autofocus' => $focus === 'start_hour',
         ],
         [
             'name' => 'start_minute',

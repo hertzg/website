@@ -8,8 +8,10 @@ function timefield ($hour, $minute, $text) {
 
     $hourName = $hour['name'];
 
+    include_once __DIR__.'/getBoolAttribute.php';
     $hourSelect =
         '<select class="form-select hour"'
+        .getBoolAttribute('autofocus', $hour)
         ." name=\"$hourName\" id=\"$hourName\">$emptyOption";
     for ($i = 0; $i < 24; $i++) {
         if ($i === $hour['value']) {
@@ -26,6 +28,7 @@ function timefield ($hour, $minute, $text) {
 
     $minuteSelect =
         '<select class="form-select minute"'
+        .getBoolAttribute('autofocus', $minute)
         ." name=\"$minute[name]\">$emptyOption";
     for ($i = 0; $i < 60; $i += 5) {
         if ($i === $minute['value']) {
