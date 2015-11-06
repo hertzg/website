@@ -14,7 +14,11 @@ function get_values () {
 
     $documentRoot = $_SERVER['DOCUMENT_ROOT'];
     $file = substr($_SERVER['SCRIPT_FILENAME'], strlen($documentRoot));
-    $remainingLength = strlen('install/general-info/index.php');
+    if (array_key_exists('REWRITE_ROOT_TO_WWW', $_SERVER)) {
+        $remainingLength = strlen('www/install/general-info/index.php');
+    } else {
+        $remainingLength = strlen('install/general-info/index.php');
+    }
     $siteBase = substr($file, 0, strlen($file) - $remainingLength);
 
     return [
