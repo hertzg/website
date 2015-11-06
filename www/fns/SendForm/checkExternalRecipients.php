@@ -4,6 +4,8 @@ namespace SendForm;
 
 function checkExternalRecipients ($mysqli, &$recipients, &$errors) {
 
+    if (!$recipients) return;
+
     $addresses = [];
     foreach ($recipients as $recipient) {
         $addresses[$recipient['address']] = true;
