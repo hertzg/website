@@ -11,13 +11,14 @@ list($event, $id, $user) = require_event($mysqli);
 
 include_once '../fns/request_event_params.php';
 list($event_day, $event_month, $event_year, $event_time,
-    $start_hour, $start_minute, $text) = request_event_params($errors);
+    $start_hour, $start_minute, $text) = request_event_params($errors, $focus);
 
 include_once "$fnsDir/redirect.php";
 
 if ($errors) {
     $_SESSION['calendar/edit-event/errors'] = $errors;
     $_SESSION['calendar/edit-event/values'] = [
+        'focus' => $focus,
         'event_day' => $event_day,
         'event_month' => $event_month,
         'event_year' => $event_year,

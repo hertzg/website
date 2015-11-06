@@ -1,8 +1,8 @@
 <?php
 
-function create_form_items ($text, $event_day, $event_month,
-    $event_year, $start_hour, $start_minute, &$scripts, $base = '') {
+function create_form_items ($values, &$scripts, $base = '') {
 
+    $focus = $values['focus'];
     $fnsDir = __DIR__.'/../../fns';
 
     include_once "$fnsDir/compressed_js_script.php";
@@ -16,32 +16,33 @@ function create_form_items ($text, $event_day, $event_month,
     include_once "$fnsDir/Form/timefield.php";
     return
         Form\textfield('text', 'Text', [
-            'value' => $text,
+            'value' => $values['text'],
             'maxlength' => $maxLengths['text'],
-            'autofocus' => true,
+            'autofocus' => $focus === 'text',
             'required' => true,
         ])
         .'<div class="hr"></div>'
         .Form\datefield([
             'name' => 'event_day',
-            'value' => $event_day,
+            'value' => $values['event_day'],
+            'autofocus' => $focus === 'event_day',
         ],
         [
             'name' => 'event_month',
-            'value' => $event_month,
+            'value' => $values['event_month'],
         ],
         [
             'name' => 'event_year',
-            'value' => $event_year,
+            'value' => $values['event_year'],
         ], 'When', true)
         .'<div class="hr"></div>'
         .Form\timefield([
             'name' => 'start_hour',
-            'value' => $start_hour,
+            'value' => $values['start_hour'],
         ],
         [
             'name' => 'start_minute',
-            'value' => $start_minute,
+            'value' => $values['start_minute'],
         ], 'Start time', true);
 
 }

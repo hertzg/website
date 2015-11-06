@@ -56,6 +56,7 @@ $content = Page\tabs(
             [
                 'name' => 'day',
                 'value' => $day,
+                'autofocus' => true,
             ],
             [
                 'name' => 'month',

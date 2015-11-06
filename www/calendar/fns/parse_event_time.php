@@ -1,6 +1,6 @@
 <?php
 
-function parse_event_time ($day, $month, $year, &$errors, &$time) {
+function parse_event_time ($day, $month, $year, &$errors, &$time, &$focus) {
 
     if ($day === 0) {
         $errors[] = 'Enter day.';
@@ -20,6 +20,7 @@ function parse_event_time ($day, $month, $year, &$errors, &$time) {
     include_once __DIR__.'/../../fns/Date/isValid.php';
     if (!Date\isValid($day, $month, $year)) {
         $errors[] = 'The date is invalid.';
+        if ($focus === null) $focus = 'event_day';
     }
 
     $time = mktime(0, 0, 0, $month, $day, $year);

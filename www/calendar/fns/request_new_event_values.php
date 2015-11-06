@@ -16,6 +16,7 @@ function request_new_event_values ($key, $user) {
     }
 
     return [
+        'focus' => 'text',
         'event_day' => (int)date('j', $event_time),
         'event_month' => (int)date('n', $event_time),
         'event_year' => (int)date('Y', $event_time),

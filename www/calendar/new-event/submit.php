@@ -10,13 +10,14 @@ $user = require_user('../../');
 
 include_once '../fns/request_event_params.php';
 list($event_day, $event_month, $event_year, $event_time,
-    $start_hour, $start_minute, $text) = request_event_params($errors);
+    $start_hour, $start_minute, $text) = request_event_params($errors, $focus);
 
 include_once "$fnsDir/redirect.php";
 
 if ($errors) {
     $_SESSION['calendar/new-event/errors'] = $errors;
     $_SESSION['calendar/new-event/values'] = [
+        'focus' => $focus,
         'event_day' => $event_day,
         'event_month' => $event_month,
         'event_year' => $event_year,

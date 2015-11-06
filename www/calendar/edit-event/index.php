@@ -29,9 +29,7 @@ $content = Page\tabs(
     'Edit',
     Page\sessionErrors('calendar/edit-event/errors')
     .'<form action="submit.php" method="post">'
-        .create_form_items($values['text'], $values['event_day'],
-            $values['event_month'], $values['event_year'],
-            $values['start_hour'], $values['start_minute'], $scripts)
+        .create_form_items($values, $scripts)
         .'<div class="hr"></div>'
         .Form\button('Save Changes')
         .Form\hidden('id', $id)

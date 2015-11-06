@@ -9,10 +9,6 @@ $user = require_user($base);
 include_once '../fns/request_new_event_values.php';
 $values = request_new_event_values('calendar/new-event/values', $user);
 
-$event_day = $values['event_day'];
-$event_month = $values['event_month'];
-$event_year = $values['event_year'];
-
 unset(
     $_SESSION['calendar/errors'],
     $_SESSION['calendar/messages'],
@@ -21,7 +17,8 @@ unset(
 );
 
 include_once '../fns/calendar_href.php';
-$calendar_href = calendar_href($event_day, $event_month, $event_year);
+$calendar_href = calendar_href($values['event_day'],
+    $values['event_month'], $values['event_year']);
 
 include_once '../fns/create_form_items.php';
 include_once "$fnsDir/Form/button.php";
@@ -37,9 +34,7 @@ $content = Page\tabs(
     'New Event',
     Page\sessionErrors('calendar/new-event/errors')
     .'<form action="submit.php" method="post">'
-        .create_form_items($values['text'], $event_day,
-            $event_month, $event_year, $values['start_hour'],
-            $values['start_minute'], $scripts)
+        .create_form_items($values, $scripts)
         .'<div class="hr"></div>'
         .Form\button('Save Event')
     .'</form>'

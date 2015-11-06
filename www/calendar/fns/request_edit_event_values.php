@@ -13,6 +13,7 @@ function request_edit_event_values ($event, $key) {
     if ($start_minute !== null) $start_minute = (int)$start_minute;
 
     return [
+        'focus' => 'text',
         'event_day' => date('j', $event_time),
         'event_month' => date('n', $event_time),
         'event_year' => date('Y', $event_time),
