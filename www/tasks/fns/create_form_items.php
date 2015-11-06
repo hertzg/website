@@ -31,14 +31,17 @@ function create_form_items ($user, $values, &$scripts, $base = '') {
         .Form\datefield([
             'name' => 'deadline_day',
             'value' => $values['deadline_day'],
+            'autofocus' => $focus === 'deadline_day',
         ], [
             'name' => 'deadline_month',
             'value' => $values['deadline_month'],
+            'autofocus' => $focus === 'deadline_month',
         ], [
             'name' => 'deadline_year',
             'value' => $values['deadline_year'],
             'min' => $yearToday,
             'max' => $yearToday + 2,
+            'autofocus' => $focus === 'deadline_year',
         ], 'Deadline', false, true)
         .'<div class="hr"></div>'
         .Form\textfield('tags', 'Tags', [

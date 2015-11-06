@@ -20,9 +20,9 @@ function request_task_params ($user, &$errors, &$focus) {
         $focus = 'text';
     }
 
-    include_once __DIR__.'/../fns/parse_deadline.php';
+    include_once __DIR__.'/parse_deadline.php';
     parse_deadline($deadline_day, $deadline_month,
-        $deadline_year, $user, $errors, $deadline_time);
+        $deadline_year, $user, $errors, $deadline_time, $focus);
 
     include_once "$fnsDir/request_tags.php";
     request_tags($tags, $tag_names, $errors, $focus);

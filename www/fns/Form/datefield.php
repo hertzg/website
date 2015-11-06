@@ -23,8 +23,10 @@ function datefield ($day, $month, $year,
 
     $dayName = $day['name'];
 
+    include_once __DIR__.'/getBoolAttribute.php';
     $daySelect =
         '<select class="form-select day"'
+        .getBoolAttribute('autofocus', $day)
         ." name=\"$dayName\" id=\"$dayName\"$requiredAttribute>$emptyOption";
     for ($i = 1; $i <= 31; $i++) {
         if ($i == $selectedDay) $selectedAttribute = ' selected="selected"';
@@ -35,6 +37,7 @@ function datefield ($day, $month, $year,
 
     $monthSelect =
         '<select class="form-select month"'
+        .getBoolAttribute('autofocus', $month)
         ." name=\"$month[name]\"$requiredAttribute>$emptyOption";
     for ($i = 1; $i <= 12; $i++) {
         if ($i == $selectedMonth) $selectedAttribute = ' selected="selected"';
@@ -48,6 +51,7 @@ function datefield ($day, $month, $year,
 
     $yearSelect =
         '<select class="form-select year"'
+        .getBoolAttribute('autofocus', $year)
         ." name=\"$year[name]\"$requiredAttribute>$emptyOption";
     for ($i = $maxYear; $i >= $minYear; $i--) {
         if ($i == $selectedYear) $selectedAttribute = ' selected="selected"';
