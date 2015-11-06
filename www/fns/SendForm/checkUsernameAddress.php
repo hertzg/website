@@ -18,7 +18,6 @@ function checkUsernameAddress ($mysqli, $username,
         return;
     }
 
-
     include_once "$fnsDir/ConnectionAddress/isValid.php";
     if (!\ConnectionAddress\isValid($address)) {
         $errors[] = 'The username is invalid.';
