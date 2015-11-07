@@ -76,7 +76,7 @@ if (!$errors) {
     include_once "$fnsDir/SignUpEnabled/set.php";
     $ok = SignUpEnabled\set($signupEnabled);
     if ($ok === false) {
-        $errors[] = 'Failed to save whether anyone can sign up or not.';
+        $errors[] = 'Failed to save whether anyone can create an account or not.';
         $focus = 'button';
     }
 }

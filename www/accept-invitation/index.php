@@ -13,7 +13,7 @@ $focus = $values['focus'];
 if (!$invitation) {
     include_once '../fns/echo_alert_page.php';
     echo_alert_page('Link Expired',
-        'You cannot sign up with this link. The link has expired.',
+        'You cannot create an account with this link. The link has expired.',
         '..', $base);
 }
 
@@ -73,7 +73,7 @@ $content = Page\tabs(
         ])
         .Form\notes(['Optional. Used for password recovery.'])
         .'<div class="hr"></div>'
-        .Form\button('Sign Up')
+        .Form\button('Create an Account')
         ."<input type=\"hidden\" name=\"id\" value=\"$id\" />"
         .'<input type="hidden" name="key" value="'.bin2hex($key).'" />'
     .'</form>'

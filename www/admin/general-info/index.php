@@ -62,7 +62,8 @@ $content = Page\tabs(
     .'<div class="hr"></div>'
     .Form\label('Behind reverse proxy', $behindProxy)
     .'<div class="hr"></div>'
-    .Form\label('Anyone can sign up', SignUpEnabled\get() ? 'Yes' : 'No')
+    .Form\label('Anyone can create an account',
+        SignUpEnabled\get() ? 'Yes' : 'No')
     .'<div class="hr"></div>'
     .Form\label('Your IP address', $yourAddress)
     .create_panel('Options', $editLink)

@@ -22,11 +22,13 @@ function create_view_page ($invitation, &$scripts) {
     include_once "$fnsDir/Form/notes.php";
     include_once "$fnsDir/Form/textfield.php";
     $items = [
-        Form\textfield('link', 'Link to sign up', [
+        Form\textfield('link', 'Link to create an account', [
             'value' => $signUpLink,
             'readonly' => true,
         ])
-        .Form\notes(['Send the link to the person you want to sign up.'])
+        .Form\notes([
+            'Send the link to the person you want to create an account.',
+        ])
     ];
 
     $note = $invitation->note;

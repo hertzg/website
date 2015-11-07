@@ -13,13 +13,14 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 50%;
 }
 .buttonsWrapper-half.left {
     left: 0;
+    width: 35%;
 }
 .buttonsWrapper-half.right {
     right: 0;
+    width: 65%;
 }
 
 .buttonsWrapper-limit {

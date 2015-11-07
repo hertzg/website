@@ -32,7 +32,7 @@ if (SignUpEnabled\get()) {
         .'<div class="buttonsWrapper-half right">'
             .'<div class="buttonsWrapper-limit right">'
                 .'<div class="buttonWrapper right">'
-                    .'<a class="button" href="sign-up/">Sign Up</a>'
+                    .'<a class="button" href="sign-up/">Create an Account</a>'
                 .'</div>'
             .'</div>'
         .'</div>';

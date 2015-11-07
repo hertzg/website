@@ -69,13 +69,13 @@ Captcha\reset();
 include_once '../fns/Cookie/set.php';
 Cookie\set('username', $username);
 
-$text = "$username has signed up.";
+$text = "$username has created an account.";
 
 include_once 'fns/send_email.php';
 send_email($username);
 
 $_SESSION['sign-in/messages'] = [
-    'Thank you for signing up.',
+    'Thank you for creating an account.',
     'Sign in to proceed.'
 ];
 unset($_SESSION['sign-in/errors']);

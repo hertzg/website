@@ -12,7 +12,7 @@ if (SignUpEnabled\get()) {
 } else {
     include_once '../fns/Page/errors.php';
     $pageErrors = Page\errors([
-        'This form has been disabled. You no longer can sign up.',
+        'This form has been disabled. You no longer can create an account.',
     ]);
 }
 
@@ -47,7 +47,7 @@ include_once '../fns/Username/maxLength.php';
 include_once '../fns/Username/minLength.php';
 $content = Page\tabs(
     [],
-    'Sign Up',
+    'Create an Account',
     $pageErrors
     .'<form action="submit.php" method="post">'
         .Form\textfield('username', 'Username', [
@@ -86,7 +86,7 @@ $content = Page\tabs(
         .Form\notes(['Optional. Used for password recovery.'])
         .'<div class="hr"></div>'
         .Form\captcha($base, $focus === 'captcha')
-        .Form\button('Sign Up')
+        .Form\button('Create an Account')
         .Form\hidden('return', $return)
     .'</form>'
     .create_panel(
@@ -97,4 +97,4 @@ $content = Page\tabs(
 );
 
 include_once '../fns/echo_guest_page.php';
-echo_guest_page('Sign Up', $content, $base);
+echo_guest_page('Create an Account', $content, $base);

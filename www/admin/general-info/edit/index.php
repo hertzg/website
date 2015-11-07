@@ -76,7 +76,7 @@ $content = Page\tabs(
             'Behind reverse proxy', $values['behindProxy'])
         .'<div class="hr"></div>'
         .Form\checkbox('signupEnabled',
-            'Anyone can sign up', $values['signupEnabled'])
+            'Anyone can create an account', $values['signupEnabled'])
         .'<div class="hr"></div>'
         .Form\button('Save Changes', null, $focus === 'button')
     .'</form>'
