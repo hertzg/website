@@ -46,7 +46,6 @@ if ($user->num_password_protected_notes) {
 
 include_once '../fns/example_password.php';
 include_once '../fns/Form/button.php';
-include_once '../fns/Form/hidden.php';
 include_once '../fns/Form/label.php';
 include_once '../fns/Form/notes.php';
 include_once '../fns/Form/password.php';
@@ -83,7 +82,7 @@ $content = Page\tabs(
         ])
         .'<div class="hr"></div>'
         .Form\button('Reset Password')
-        .Form\hidden('id_users', $id_users)
+        ."<input type=\"hidden\" name=\"id_users\" value=\"$id_users\" />"
         .'<input type="hidden" name="key" value="'.bin2hex($key).'" />'
     .'</form>'
 );

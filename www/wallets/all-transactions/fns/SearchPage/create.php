@@ -24,9 +24,8 @@ function create ($mysqli, $user, $wallet, &$scripts) {
     $transactions = \WalletTransactions\searchPageOnWallet(
         $mysqli, $id, $keyword, $offset, $limit, $total);
 
-    include_once "$fnsDir/Form/hidden.php";
     include_once "$fnsDir/SearchForm/content.php";
-    $formContent = \Form\hidden('id', $id)
+    $formContent = "<input type=\"hidden\" name=\"id\" value=\"$id\" />"
         .\SearchForm\content($keyword, 'Search transactions...', "../?id=$id");
 
     include_once "$fnsDir/SearchForm/create.php";

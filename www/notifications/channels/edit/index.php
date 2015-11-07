@@ -20,7 +20,6 @@ $fnsDir = '../../../fns';
 
 include_once '../fns/create_form_items.php';
 include_once "$fnsDir/Form/button.php";
-include_once "$fnsDir/Form/hidden.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
@@ -36,7 +35,7 @@ $content = Page\tabs(
         .create_form_items($values, $scripts)
         .'<div class="hr"></div>'
         .Form\button('Save Channel')
-        .Form\hidden('id', $id)
+        ."<input type=\"hidden\" name=\"id\" value=\"$id\" />"
     .'</form>'
 );
 

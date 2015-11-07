@@ -22,9 +22,8 @@ function create ($mysqli, $user, $bar_chart, &$scripts) {
     $bars = \BarChartBars\searchPageOnBarChart(
         $mysqli, $id, $keyword, $offset, $limit, $total);
 
-    include_once "$fnsDir/Form/hidden.php";
     include_once "$fnsDir/SearchForm/content.php";
-    $formContent = \Form\hidden('id', $id)
+    $formContent = "<input type=\"hidden\" name=\"id\" value=\"$id\" />"
         .\SearchForm\content($keyword, 'Search bars...', "../?id=$id");
 
     include_once "$fnsDir/SearchForm/create.php";

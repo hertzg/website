@@ -10,7 +10,6 @@ $fnsDir = '../../../fns';
 unset($_SESSION['notifications/channels/view/messages']);
 
 include_once "$fnsDir/Form/button.php";
-include_once "$fnsDir/Form/hidden.php";
 include_once "$fnsDir/Form/textarea.php";
 include_once "$fnsDir/Notifications/maxLengths.php";
 include_once "$fnsDir/Page/tabs.php";
@@ -32,7 +31,7 @@ $content = Page\tabs(
         ])
         .'<div class="hr"></div>'
         .Form\button('Post a Notification')
-        .Form\hidden('id', $id)
+        ."<input type=\"hidden\" name=\"id\" value=\"$id\" />"
     .'</form>'
 );
 

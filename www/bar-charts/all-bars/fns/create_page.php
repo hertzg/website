@@ -19,9 +19,8 @@ function create_page ($mysqli, $user, $bar_chart, &$scripts, $base = '') {
 
     if ($bar_chart->num_bars > 1) {
 
-        include_once "$fnsDir/Form/hidden.php";
         include_once "$fnsDir/SearchForm/emptyContent.php";
-        $formContent = Form\hidden('id', $id)
+        $formContent = "<input type=\"hidden\" name=\"id\" value=\"$id\" />"
             .SearchForm\emptyContent('Search bars...');
 
         include_once "$fnsDir/SearchForm/create.php";

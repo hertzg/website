@@ -14,7 +14,6 @@ $fnsDir = '../../../../fns';
 
 include_once "$fnsDir/FileName/maxLength.php";
 include_once "$fnsDir/Form/button.php";
-include_once "$fnsDir/Form/hidden.php";
 include_once "$fnsDir/Form/textfield.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/tabs.php";
@@ -36,7 +35,7 @@ $content = Page\tabs(
         ])
         .'<div class="hr"></div>'
         .Form\button('Import File')
-        .Form\hidden('id', $id)
+        ."<input type=\"hidden\" name=\"id\" value=\"$id\" />"
     .'</form>'
 );
 

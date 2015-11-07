@@ -41,7 +41,6 @@ include_once '../fns/create_general_fields.php';
 include_once '../fns/create_permission_fields.php';
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/checkbox.php";
-include_once "$fnsDir/Form/hidden.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
@@ -61,7 +60,7 @@ $content = Page\tabs(
         .create_permission_fields($values)
         .'<div class="hr"></div>'
         .Form\button('Save Changes')
-        .Form\hidden('id', $id)
+        ."<input type=\"hidden\" name=\"id\" value=\"$id\" />"
     .'</form>'
 );
 

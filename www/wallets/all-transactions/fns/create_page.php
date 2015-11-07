@@ -22,9 +22,8 @@ function create_page ($mysqli, $user, $wallet, &$scripts, $base = '') {
 
     if ($wallet->num_transactions > 1) {
 
-        include_once "$fnsDir/Form/hidden.php";
         include_once "$fnsDir/SearchForm/emptyContent.php";
-        $formContent = Form\hidden('id', $id)
+        $formContent = "<input type=\"hidden\" name=\"id\" value=\"$id\" />"
             .SearchForm\emptyContent('Search transactions...');
 
         include_once "$fnsDir/SearchForm/create.php";

@@ -19,7 +19,6 @@ $fnsDir = '../../fns';
 include_once "$fnsDir/create_folder_link.php";
 include_once "$fnsDir/FileName/maxLength.php";
 include_once "$fnsDir/Form/button.php";
-include_once "$fnsDir/Form/hidden.php";
 include_once "$fnsDir/Form/textfield.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/staticTwoColumns.php";
@@ -45,7 +44,7 @@ $content = Page\tabs(
             Form\button('Rename'),
             Form\button('Send', 'sendButton')
         )
-        .Form\hidden('id_folders', $id_folders)
+        ."<input type=\"hidden\" name=\"id_folders\" value=\"$id_folders\" />"
     .'</form>'
 );
 
