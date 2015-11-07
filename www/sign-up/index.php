@@ -41,12 +41,11 @@ include_once '../fns/Form/notes.php';
 include_once '../fns/Form/password.php';
 include_once '../fns/Form/textfield.php';
 include_once '../fns/Page/imageLinkWithDescription.php';
-include_once '../fns/Page/tabs.php';
+include_once '../fns/Page/title.php';
 include_once '../fns/Password/minLength.php';
 include_once '../fns/Username/maxLength.php';
 include_once '../fns/Username/minLength.php';
-$content = Page\tabs(
-    [],
+$content = Page\title(
     'Create an Account',
     $pageErrors
     .'<form action="submit.php" method="post">'

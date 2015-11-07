@@ -12,7 +12,7 @@ function tabs ($tabs, $activeTabTitle, $content, $newItemButton = '') {
             .'</a>';
     }
     $itemsHtml .=
-        '<span class="tab-active">'
+        '<span class="tab-active limited">'
             ."<span class=\"zeroSize\"> &raquo; </span>$activeTabTitle"
         .'</span>';
 

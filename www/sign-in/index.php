@@ -57,10 +57,9 @@ include_once '../fns/Form/password.php';
 include_once '../fns/Form/textfield.php';
 include_once '../fns/Page/sessionErrors.php';
 include_once '../fns/Page/sessionMessages.php';
-include_once '../fns/Page/tabs.php';
+include_once '../fns/Page/title.php';
 include_once '../fns/Username/maxLength.php';
-$content = Page\tabs(
-    [],
+$content = Page\title(
     'Sign In',
     Page\sessionMessages('sign-in/messages')
     .Page\sessionErrors('sign-in/errors')

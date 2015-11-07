@@ -57,10 +57,9 @@ include_once 'fns/create_invitations_link.php';
 include_once 'fns/create_users_link.php';
 include_once '../fns/create_panel.php';
 include_once '../fns/Page/sessionMessages.php';
-include_once '../fns/Page/tabs.php';
+include_once '../fns/Page/title.php';
 $content =
-    Page\tabs(
-        [],
+    Page\title(
         'Administration',
         Page\sessionMessages('admin/messages')
         .$generalLink
