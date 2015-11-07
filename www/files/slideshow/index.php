@@ -81,12 +81,12 @@ $content = Page\tabs(
         .$nextLink
     .'</div>'
     .'<div class="slideshow">'
-        .'<span class="aligner"></span>'
+        .'<span class="slideshow-aligner"></span>'
         .$previewHtml
     .'</div>'
 );
 
 include_once "$fnsDir/echo_user_page.php";
 echo_user_page($user, 'Slideshow', $content, $base, [
-    'head' => '<link rel="stylesheet" type="text/css" href="index.css?2" />',
+    'head' => '<link rel="stylesheet" type="text/css" href="index.css?3" />',
 ]);

@@ -4,7 +4,8 @@
     height: 400px;
     color: #fff;
 }
-.slideshow > .aligner {
+
+.slideshow-aligner {
     display: inline-block;
     vertical-align: middle;
     height: 100%;
