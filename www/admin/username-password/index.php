@@ -56,7 +56,7 @@ $content = Page\tabs(
             'autofocus' => $focus === 'repeatPassword',
         ])
         .'<div class="hr"></div>'
-        .Form\button('Set Username/Password')
+        .Form\button('Set Username/Password', null, $focus === 'button')
     .'</form>'
 );
 

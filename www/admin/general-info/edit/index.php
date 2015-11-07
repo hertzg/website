@@ -78,7 +78,7 @@ $content = Page\tabs(
         .Form\checkbox('signupEnabled',
             'Anyone can sign up', $values['signupEnabled'])
         .'<div class="hr"></div>'
-        .Form\button('Save Changes')
+        .Form\button('Save Changes', null, $focus === 'button')
     .'</form>'
 );
 
