@@ -1,12 +1,14 @@
-.textList ul {
+.textList-list {
     display: block;
     padding: 13px 14px;
 }
-.textList li {
+
+.textList-list-item {
     padding: 2px;
     display: block;
 }
-.textList .bullet {
+
+.textList-list-item-bullet {
     display: inline-block;
     vertical-align: middle;
     width: 5px;

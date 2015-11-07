@@ -56,7 +56,7 @@ body {
     background-color: hsl(0, 90%, 90%);
     color: hsl(0, 80%, 30%);
 }
-.textList.errors .bullet {
+.textList-list-item-bullet.errors {
     background-color: hsl(0, 80%, 30%);
 }
 
@@ -64,7 +64,7 @@ body {
     background-color: hsl(120, 70%, 80%);
     color: hsl(120, 80%, 30%);
 }
-.textList.messages .bullet {
+.textList-list-item-bullet.messages {
     background-color: hsl(120, 80%, 30%);
 }
 
@@ -72,7 +72,7 @@ body {
     background-color: hsl(50, 90%, 90%);
     color: hsl(50, 80%, 40%);
 }
-.textList.warnings .bullet {
+.textList-list-item-bullet.warnings {
     background-color: hsl(50, 80%, 40%);
 }
 
