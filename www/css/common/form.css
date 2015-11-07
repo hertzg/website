@@ -45,10 +45,22 @@
 .form-notes {
     font-size: 12px;
     line-height: 14px;
-    margin-left: 26px;
     color: #7f7f7f;
-    padding: 2px 2px 2px 0;
+    padding: 2px 16px 15px 16px;
     white-space: normal;
+}
+.form-notes-item {
+    display: block;
+}
+.form-notes-item-bullet {
+    display: inline-block;
+    vertical-align: middle;
+    width: 4px;
+    height: 4px;
+    margin-right: 6px;
+    background-color: #7f7f7f;
+    transform: rotate(-21deg);
+    -webkit-transform: rotate(-21deg);
 }
 
 .form-textfield,
