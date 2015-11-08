@@ -28,19 +28,18 @@ if ($user->num_api_keys) {
             $descriptions[] = 'Expired.';
         }
 
-        if ($access_time === null) {
-            $descriptions[] = 'Never accessed.';
-        } else {
+        if ($access_time === null) $descriptions[] = 'Never accessed.';
+        else {
             include_once "$fnsDir/export_date_ago.php";
             $descriptions[] = 'Last accessed '
                 .export_date_ago($access_time).'.';
         }
         $description = join(' ', $descriptions);
 
-        $title = htmlspecialchars($apiKey->name);
         $id = $apiKey->id;
-        $items[] = Page\imageArrowLinkWithDescription($title,
-            $description, "view/?id=$id", 'api-key', ['id' => $id]);
+        $items[] = Page\imageArrowLinkWithDescription(
+            htmlspecialchars($apiKey->name), $description,
+            "view/?id=$id", 'api-key', ['id' => $id]);
 
     }
 

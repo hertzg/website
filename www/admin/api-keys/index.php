@@ -32,12 +32,34 @@ if ($apiKeys) {
     include_once 'fns/render_prev_button.php';
     render_prev_button($offset, $limit, $total, $items);
 
+    include_once "$fnsDir/time_today.php";
+    $time_today = time_today();
+
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
-    include_once "$fnsDir/Page/imageArrowLink.php";
+    include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
     foreach ($apiKeys as $apiKey) {
+
+        $access_time = $apiKey->access_time;
+        $descriptions = [];
+
+        $expire_time = $apiKey->expire_time;
+        if ($expire_time !== null && $expire_time < $time_today) {
+            $descriptions[] = 'Expired.';
+        }
+
+        if ($access_time === null) $descriptions[] = 'Never accessed.';
+        else {
+            include_once "$fnsDir/export_date_ago.php";
+            $descriptions[] = 'Last accessed '
+                .export_date_ago($access_time).'.';
+        }
+        $description = join(' ', $descriptions);
+
         $id = $apiKey->id;
-        $items[] = Page\imageArrowLink(htmlspecialchars($apiKey->name),
+        $items[] = Page\imageArrowLinkWithDescription(
+            htmlspecialchars($apiKey->name), $description,
             'view/'.ItemList\escapedItemQuery($id), 'api-key', ['id' => $id]);
+
     }
 
     include_once 'fns/render_next_button.php';
@@ -68,4 +90,7 @@ $content = Page\tabs(
 );
 
 include_once '../fns/echo_admin_page.php';
-echo_admin_page('Admin API Keys', $content, '../');
+include_once '../../fns/compressed_js_script.php';
+echo_admin_page('Admin API Keys', $content, '../', [
+    'scripts' => compressed_js_script('dateAgo', '../../'),
+]);
