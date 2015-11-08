@@ -8,8 +8,8 @@ function create_prev_link ($files, $index, $parent_id) {
     if ($parent_id) $href .= "&amp;parent_id=$parent_id";
 
     return
-        "<a class=\"clickable arrow left\" href=\"$href\">"
-            .'<span class="icon arrow-left"></span>'
+        "<a class=\"clickable navigation-arrow left\" href=\"$href\">"
+            .'<span class="navigation-arrow-icon icon arrow-left"></span>'
         .'</a>';
 
 }

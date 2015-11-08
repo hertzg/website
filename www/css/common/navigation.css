@@ -3,26 +3,29 @@
     line-height: 48px;
     position: relative;
 }
-.navigation > .center {
+
+.navigation-center {
     margin: 0 48px;
 }
-.navigation > .arrow {
+
+.navigation-arrow {
     position: absolute;
     top: 0;
     bottom: 0;
     width: 48px;
 }
-.navigation > .arrow > .icon {
+.navigation-arrow.left {
+    left: 0;
+}
+.navigation-arrow.right {
+    right: 0;
+}
+
+.navigation-arrow-icon {
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     margin: auto;
-}
-.navigation > .arrow.left {
-    left: 0;
-}
-.navigation > .arrow.right {
-    right: 0;
 }

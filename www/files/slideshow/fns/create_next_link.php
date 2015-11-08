@@ -8,8 +8,8 @@ function create_next_link ($files, $index, $parent_id) {
     if ($parent_id) $href .= "&amp;parent_id=$parent_id";
 
     return
-        "<a class=\"clickable arrow right\" href=\"$href\">"
-            .'<span class="icon arrow-right"></span>'
+        "<a class=\"clickable navigation-arrow right\" href=\"$href\">"
+            .'<span class="navigation-arrow-icon icon arrow-right"></span>'
         .'</a>';
 
 }

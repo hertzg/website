@@ -77,7 +77,7 @@ $content = Page\tabs(
     'Slideshow',
     '<div class="navigation">'
         .$prevLink
-        ."<div class=\"center\">$fileLink</div>"
+        ."<div class=\"navigation-center\">$fileLink</div>"
         .$nextLink
     .'</div>'
     .'<div class="slideshow">'

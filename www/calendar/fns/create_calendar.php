@@ -32,12 +32,14 @@ function create_calendar ($mysqli, $id_users,
 
     $html =
         '<div class="navigation">'
-            ."<a href=\"$prevMonthHref\" class=\"clickable arrow left\">"
-                .'<span class="icon arrow-left"></span>'
+            ."<a href=\"$prevMonthHref\""
+            .' class="clickable navigation-arrow left">'
+                .'<span class="navigation-arrow-icon icon arrow-left"></span>'
             .'</a>'
-            ."<div class=\"center\">$calendarText</div>"
-            ."<a href=\"$nextMonthHref\" class=\"clickable arrow right\">"
-                .'<span class="icon arrow-right"></span>'
+            ."<div class=\"navigation-center\">$calendarText</div>"
+            ."<a href=\"$nextMonthHref\""
+            .' class="clickable navigation-arrow right">'
+                .'<span class="navigation-arrow-icon icon arrow-right"></span>'
             .'</a>'
         .'</div>'
         .'<div class="calendar-columns">'
