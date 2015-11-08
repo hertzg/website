@@ -6,8 +6,6 @@ $fnsDir = '../../fns';
 include_once "$fnsDir/require_user.php";
 $user = require_user($base);
 
-$dateAgoScript = true;
-
 $items = [];
 if ($user->num_api_keys) {
 
@@ -36,7 +34,6 @@ if ($user->num_api_keys) {
             include_once "$fnsDir/export_date_ago.php";
             $descriptions[] = 'Last accessed '
                 .export_date_ago($access_time).'.';
-            $dateAgoScript = true;
         }
         $description = join(' ', $descriptions);
 
@@ -80,14 +77,8 @@ $content =
     )
     .sort_panel($user);
 
-if ($dateAgoScript) {
-    include_once "$fnsDir/compressed_js_script.php";
-    $scripts = compressed_js_script('dateAgo', $base);
-} else {
-    $scripts = '';
-}
-
+include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/echo_user_page.php";
 echo_user_page($user, 'API Keys', $content, $base, [
-    'scripts' => $scripts,
+    'scripts' => compressed_js_script('dateAgo', $base),
 ]);

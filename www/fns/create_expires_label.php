@@ -1,6 +1,6 @@
 <?php
 
-function create_expires_label ($expire_time, &$dateAgoScript) {
+function create_expires_label ($expire_time) {
 
     $label = 'Expires';
 
@@ -11,7 +11,6 @@ function create_expires_label ($expire_time, &$dateAgoScript) {
         $content = ucfirst(date_in($expire_time));
     } else {
         $label = 'Expired';
-        $dateAgoScript = true;
         include_once __DIR__.'/export_date_ago.php';
         $content = export_date_ago($expire_time, true);
     }

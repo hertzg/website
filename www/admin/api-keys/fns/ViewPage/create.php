@@ -46,14 +46,12 @@ function create ($mysqli, $apiKey, &$scripts) {
 
     }
 
-    include_once "$fnsDir/create_expires_label.php";
-    $expiresLabel = create_expires_label($apiKey->expire_time, $dateAgoScript);
-
     include_once __DIR__.'/unsetSessionVars.php';
     unsetSessionVars();
 
     include_once __DIR__.'/authsPanel.php';
     include_once __DIR__.'/createPermissionsField.php';
+    include_once "$fnsDir/create_expires_label.php";
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/Form/notes.php";
@@ -74,7 +72,7 @@ function create ($mysqli, $apiKey, &$scripts) {
             \Page\sessionMessages('admin/api-keys/view/messages')
             .\Form\label('Name', htmlspecialchars($apiKey->name))
             .'<div class="hr"></div>'
-            .$expiresLabel
+            .create_expires_label($apiKey->expire_time)
             .'<div class="hr"></div>'
             .\Form\textarea('key', 'Key', [
                 'value' => $apiKey->key,

@@ -46,10 +46,6 @@ function create ($mysqli, $connection, &$scripts) {
 
     }
 
-    include_once "$fnsDir/create_expires_label.php";
-    $expiresLabel = create_expires_label(
-        $connection->expire_time, $dateAgoScript);
-
     include_once __DIR__.'/unsetSessionVars.php';
     unsetSessionVars();
 
@@ -74,6 +70,7 @@ function create ($mysqli, $connection, &$scripts) {
     }
 
     include_once __DIR__.'/authsPanel.php';
+    include_once "$fnsDir/create_expires_label.php";
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/newItemButton.php";
@@ -91,7 +88,7 @@ function create ($mysqli, $connection, &$scripts) {
             \Page\sessionMessages('admin/connections/view/messages')
             .\Form\label('Address', htmlspecialchars($connection->address))
             .'<div class="hr"></div>'
-            .$expiresLabel
+            .create_expires_label($connection->expire_time)
             .'<div class="hr"></div>'
             .$theirKeyItem
             .'<div class="hr"></div>'

@@ -35,10 +35,6 @@ function create_view_page ($connection, &$scripts) {
     include_once "$fnsDir/Page/staticTwoColumns.php";
     $optionsContent = Page\staticTwoColumns($editLink, $deleteLink);
 
-    include_once "$fnsDir/create_expires_label.php";
-    $expiresLabel = create_expires_label(
-        $connection->expire_time, $dateAgoScript);
-
     unset(
         $_SESSION['account/connections/edit/errors'],
         $_SESSION['account/connections/edit/values'],
@@ -52,6 +48,7 @@ function create_view_page ($connection, &$scripts) {
     $address = $connection->address;
     if ($address !== null) $username .= '@'.htmlspecialchars($address);
 
+    include_once "$fnsDir/create_expires_label.php";
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/Page/infoText.php";
@@ -69,7 +66,7 @@ function create_view_page ($connection, &$scripts) {
         Page\sessionMessages('account/connections/view/messages')
         .Form\label('Username', $username)
         .'<div class="hr"></div>'
-        .$expiresLabel
+        .create_expires_label($connection->expire_time)
         .'<div class="hr"></div>'
         .Form\label('This user', $permissions)
         .Page\infoText($infoText)
