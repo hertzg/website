@@ -59,7 +59,7 @@ $content = Page\tabs(
     [
         [
             'title' => 'Administration',
-            'href' => '..#invalid-signins',
+            'href' => '../#invalid-signins',
         ],
     ],
     'Invalid Signins',
