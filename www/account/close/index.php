@@ -6,6 +6,10 @@ $fnsDir = '../../fns';
 include_once "$fnsDir/require_user.php";
 $user = require_user($base);
 
+$key = 'account/close/values';
+if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
+else $values = ['password' => ''];
+
 unset($_SESSION['account/messages']);
 
 include_once "$fnsDir/phishing_warning.php";
@@ -29,6 +33,7 @@ $content = Page\tabs(
     ])
     .'<form action="submit.php" method="post">'
         .Form\password('password', 'Password', [
+            'value' => $values['password'],
             'autofocus' => true,
             'required' => true,
         ])

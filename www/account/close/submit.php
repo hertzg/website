@@ -29,10 +29,14 @@ include_once "$fnsDir/redirect.php";
 
 if ($errors) {
     $_SESSION['account/close/errors'] = $errors;
+    $_SESSION['account/close/values'] = ['password' => $password];
     redirect();
 }
 
-unset($_SESSION['account/close/errors']);
+unset(
+    $_SESSION['account/close/errors'],
+    $_SESSION['account/close/values']
+);
 
 include_once "$fnsDir/Users/Account/Close/close.php";
 include_once '../../lib/mysqli.php';

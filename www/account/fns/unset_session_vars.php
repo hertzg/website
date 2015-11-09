@@ -7,6 +7,7 @@ function unset_session_vars () {
         $_SESSION['account/change-password/errors'],
         $_SESSION['account/change-password/values'],
         $_SESSION['account/close/errors'],
+        $_SESSION['account/close/values'],
         $_SESSION['account/connections/errors'],
         $_SESSION['account/connections/messages'],
         $_SESSION['account/edit-profile/errors'],
