@@ -12,7 +12,8 @@ $offset = Paging\requestOffset();
 include_once "$fnsDir/Paging/limit.php";
 $limit = Paging\limit();
 
-unset($_SESSION['account/messages']);
+include_once 'fns/unset_session_vars.php';
+unset_session_vars();
 
 include_once "$fnsDir/Signins/indexPageOnUser.php";
 include_once '../../lib/mysqli.php';
@@ -28,6 +29,18 @@ if ($signins) {
 
     include_once "$fnsDir/compressed_js_script.php";
     $scripts = compressed_js_script('dateAgo', $base);
+
+    if ($total > 1) {
+
+        include_once "$fnsDir/SearchForm/emptyContent.php";
+        $content = SearchForm\emptyContent('Search authentications...');
+
+        include_once "$fnsDir/SearchForm/create.php";
+        $items[] = SearchForm\create('search/', $content);
+
+        $scripts .= compressed_js_script('searchForm', $base);
+
+    }
 
     include_once 'fns/render_prev_button.php';
     render_prev_button($offset, $limit, $total, $items);
