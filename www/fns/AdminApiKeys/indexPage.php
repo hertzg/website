@@ -2,7 +2,7 @@
 
 namespace AdminApiKeys;
 
-function indexPage ($mysqli, $offset, $limit, &$total) {
+function indexPage ($mysqli, $offset, $limit, &$total, $order_by) {
 
     $fnsDir = __DIR__.'/..';
 
@@ -14,7 +14,7 @@ function indexPage ($mysqli, $offset, $limit, &$total) {
 
     if ($offset >= $total) return [];
 
-    $sql = "select * $from order by name, insert_time"
+    $sql = "select * $from order by $order_by, insert_time"
         ." limit $limit offset $offset";
     include_once "$fnsDir/mysqli_query_object.php";
     return mysqli_query_object($mysqli, $sql);

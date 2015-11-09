@@ -18,15 +18,17 @@ $offset = Paging\requestOffset();
 include_once "$fnsDir/Paging/limit.php";
 $limit = Paging\limit();
 
+include_once "$fnsDir/AdminApiKeys/OrderBy/get.php";
+$order_by = AdminApiKeys\OrderBy\get();
+
 include_once "$fnsDir/AdminApiKeys/indexPage.php";
 include_once '../../lib/mysqli.php';
-$apiKeys = AdminApiKeys\indexPage($mysqli, $offset, $limit, $total);
+$apiKeys = AdminApiKeys\indexPage($mysqli, $offset, $limit, $total, $order_by);
 
 include_once "$fnsDir/check_offset_overflow.php";
 check_offset_overflow($offset, $limit, $total);
 
 $items = [];
-
 if ($apiKeys) {
 
     include_once 'fns/render_prev_button.php';
@@ -70,6 +72,7 @@ if ($apiKeys) {
     $items[] = Page\info('No admin API keys');
 }
 
+include_once 'fns/sort_panel.php';
 include_once "$fnsDir/ItemList/escapedPageQuery.php";
 include_once "$fnsDir/Page/newItemButton.php";
 include_once "$fnsDir/Page/sessionErrors.php";
@@ -85,7 +88,8 @@ $content = Page\tabs(
     'Admin API Keys',
     Page\sessionErrors('admin/api-keys/errors')
     .Page\sessionMessages('admin/api-keys/messages')
-    .join('<div class="hr"></div>', $items),
+    .join('<div class="hr"></div>', $items)
+    .sort_panel($order_by, $total),
     Page\newItemButton('new/'.ItemList\escapedPageQuery(), 'Admin API Key')
 );
 

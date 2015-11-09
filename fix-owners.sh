@@ -5,6 +5,7 @@ chown --recursive $owner www/data/contact-photos
 chown --recursive $owner www/data/users
 chown $owner www/.htaccess
 chown $owner www/fns/Admin/get.php
+chown $owner www/fns/AdminApiKeys/OrderBy/get.php
 chown $owner www/fns/ClientAddress/get.php
 chown $owner www/fns/ClientAddress/GetMethod/get.php
 chown $owner www/fns/DomainName/get.php
