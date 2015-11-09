@@ -6,6 +6,9 @@ $fnsDir = '../../fns';
 include_once "$fnsDir/require_user.php";
 $user = require_user($base);
 
+include_once 'fns/unset_session_vars.php';
+unset_session_vars();
+
 include_once "$fnsDir/Paging/requestOffset.php";
 $offset = Paging\requestOffset();
 
@@ -63,13 +66,6 @@ if ($apiKeys) {
     include_once "$fnsDir/Page/info.php";
     $items[] = Page\info('No keys');
 }
-
-unset(
-    $_SESSION['account/api-keys/new/errors'],
-    $_SESSION['account/api-keys/new/values'],
-    $_SESSION['account/api-keys/view/messages'],
-    $_SESSION['account/messages']
-);
 
 include_once 'fns/sort_panel.php';
 include_once "$fnsDir/ItemList/escapedPageQuery.php";
