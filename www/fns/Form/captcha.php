@@ -3,18 +3,25 @@
 namespace Form;
 
 function captcha ($base, $autofocus = false) {
+
     include_once __DIR__.'/../Captcha/required.php';
-    if (\Captcha\required()) {
-        include_once __DIR__.'/textfield.php';
-        return
-            '<div class="form-captcha">'
-                ."<img class=\"form-captcha-image\" src=\"{$base}captcha/\""
-                .' alt="CAPTCHA" width="102" height="40" />'
-            .'</div>'
-            .textfield('captcha', 'Verification', [
-                'required' => true,
-                'autofocus' => $autofocus,
-            ])
-            .'<div class="hr"></div>';
-    }
+    if (!\Captcha\required()) return;
+
+    include_once __DIR__.'/notes.php';
+    include_once __DIR__.'/textfield.php';
+    return
+        '<div class="form-captcha">'
+            ."<img class=\"form-captcha-image\" src=\"{$base}captcha/\""
+            .' alt="CAPTCHA" width="102" height="40" />'
+        .'</div>'
+        .textfield('captcha', 'Verification', [
+            'required' => true,
+            'autofocus' => $autofocus,
+        ])
+        .notes([
+            'Enter the characters shown on the image above.',
+            'This proves that you are a human and not a robot.',
+        ])
+        .'<div class="hr"></div>';
+
 }
