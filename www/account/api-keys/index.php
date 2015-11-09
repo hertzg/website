@@ -6,17 +6,30 @@ $fnsDir = '../../fns';
 include_once "$fnsDir/require_user.php";
 $user = require_user($base);
 
-$items = [];
-if ($user->num_api_keys) {
+include_once "$fnsDir/Paging/requestOffset.php";
+$offset = Paging\requestOffset();
 
-    include_once "$fnsDir/ApiKeys/indexOnUser.php";
-    include_once '../../lib/mysqli.php';
-    $apiKeys = ApiKeys\indexOnUser($mysqli,
-        $user->id_users, $user->api_keys_order_by);
+include_once "$fnsDir/Paging/limit.php";
+$limit = Paging\limit();
+
+include_once "$fnsDir/ApiKeys/indexPageOnUser.php";
+include_once '../../lib/mysqli.php';
+$apiKeys = ApiKeys\indexPageOnUser($mysqli,
+    $user->id_users, $offset, $limit, $total, $user->api_keys_order_by);
+
+include_once "$fnsDir/check_offset_overflow.php";
+check_offset_overflow($offset, $limit, $total);
+
+$items = [];
+if ($apiKeys) {
+
+    include_once 'fns/render_prev_button.php';
+    render_prev_button($offset, $limit, $total, $items);
 
     include_once "$fnsDir/user_time_today.php";
     $time_today = user_time_today($user);
 
+    include_once "$fnsDir/ItemList/escapedItemQuery.php";
     include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
     foreach ($apiKeys as $apiKey) {
 
@@ -39,9 +52,12 @@ if ($user->num_api_keys) {
         $id = $apiKey->id;
         $items[] = Page\imageArrowLinkWithDescription(
             htmlspecialchars($apiKey->name), $description,
-            "view/?id=$id", 'api-key', ['id' => $id]);
+            'view/'.ItemList\escapedItemQuery($id), 'api-key', ['id' => $id]);
 
     }
+
+    include_once 'fns/render_next_button.php';
+    render_next_button($offset, $limit, $total, $items);
 
 } else {
     include_once "$fnsDir/Page/info.php";
@@ -56,6 +72,7 @@ unset(
 );
 
 include_once 'fns/sort_panel.php';
+include_once "$fnsDir/ItemList/escapedPageQuery.php";
 include_once "$fnsDir/Page/newItemButton.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/sessionMessages.php";
@@ -72,7 +89,7 @@ $content =
         Page\sessionErrors('account/api-keys/errors')
         .Page\sessionMessages('account/api-keys/messages')
         .join('<div class="hr"></div>', $items),
-        Page\newItemButton('new/', 'API Key')
+        Page\newItemButton('new/'.ItemList\escapedPageQuery(), 'API Key')
     )
     .sort_panel($user);
 

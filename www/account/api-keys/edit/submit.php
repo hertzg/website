@@ -24,6 +24,9 @@ list($randomizeKey) = request_strings('randomizeKey');
 
 $randomizeKey = (bool)$randomizeKey;
 
+include_once "$fnsDir/ItemList/itemQuery.php";
+$itemQuery = ItemList\itemQuery($id);
+
 include_once "$fnsDir/redirect.php";
 
 if ($errors) {
@@ -45,7 +48,7 @@ if ($errors) {
         'task_access' => $task_access,
         'wallet_access' => $wallet_access,
     ];
-    redirect("./?id=$id");
+    redirect("./$itemQuery");
 }
 
 unset(
@@ -89,4 +92,4 @@ if ($changed || $randomizeKey) $message = 'Changes have been saved.';
 else $message = 'No changes to be saved.';
 $_SESSION['account/api-keys/view/messages'] = [$message];
 
-redirect("../view/?id=$id");
+redirect("../view/$itemQuery");

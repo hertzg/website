@@ -12,14 +12,18 @@ function create ($mysqli, $apiKey, &$scripts) {
     $scripts = compressed_js_script('dateAgo', $base)
         .compressed_js_script('flexTextarea', $base);
 
+    include_once "$fnsDir/ItemList/escapedItemQuery.php";
+    $escapedItemQuery = \ItemList\escapedItemQuery($id);
+
     include_once "$fnsDir/Page/imageArrowLink.php";
     $editLink = \Page\imageArrowLink('Edit',
-        "../edit/?id=$id", 'edit-api-key', ['id' => 'edit']);
+        "../edit/$escapedItemQuery", 'edit-api-key', ['id' => 'edit']);
 
     include_once "$fnsDir/Page/imageLink.php";
     $deleteLink =
         '<div id="deleteLink">'
-            .\Page\imageLink('Delete', "../delete/?id=$id", 'trash-bin')
+            .\Page\imageLink('Delete',
+                "../delete/$escapedItemQuery", 'trash-bin')
         .'</div>';
 
     include_once "$fnsDir/Page/staticTwoColumns.php";
@@ -61,6 +65,8 @@ function create ($mysqli, $apiKey, &$scripts) {
     include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/Form/notes.php";
     include_once "$fnsDir/Form/textarea.php";
+    include_once "$fnsDir/ItemList/escapedPageQuery.php";
+    include_once "$fnsDir/ItemList/listHref.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionMessages.php";
@@ -69,7 +75,7 @@ function create ($mysqli, $apiKey, &$scripts) {
         [
             [
                 'title' => 'API Keys',
-                'href' => "../#$id",
+                'href' => \ItemList\listHref()."#$id",
             ],
         ],
         "API Key #$id",
@@ -93,7 +99,7 @@ function create ($mysqli, $apiKey, &$scripts) {
         .\Page\infoText($infoText)
         .authsPanel($mysqli, $apiKey)
         .create_panel('API Key Options', $optionsContent),
-        \Page\newItemButton('../new/', 'API Key')
+        \Page\newItemButton('../new/'.\ItemList\escapedPageQuery(), 'API Key')
     );
 
 }

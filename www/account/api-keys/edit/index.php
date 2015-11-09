@@ -41,13 +41,15 @@ include_once '../fns/create_general_fields.php';
 include_once '../fns/create_permission_fields.php';
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/checkbox.php";
+include_once "$fnsDir/ItemList/escapedItemQuery.php";
+include_once "$fnsDir/ItemList/itemHiddenInputs.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
     [
         [
             'title' => "API Key #$id",
-            'href' => "../view/?id=$id#edit",
+            'href' => '../view/'.ItemList\escapedItemQuery($id).'#edit',
         ],
     ],
     'Edit',
@@ -60,7 +62,7 @@ $content = Page\tabs(
         .create_permission_fields($values)
         .'<div class="hr"></div>'
         .Form\button('Save Changes')
-        ."<input type=\"hidden\" name=\"id\" value=\"$id\" />"
+        .ItemList\itemHiddenInputs($id)
     .'</form>'
 );
 

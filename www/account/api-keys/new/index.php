@@ -36,13 +36,15 @@ else {
 include_once '../fns/create_general_fields.php';
 include_once '../fns/create_permission_fields.php';
 include_once "$fnsDir/Form/button.php";
+include_once "$fnsDir/ItemList/listHref.php";
+include_once "$fnsDir/ItemList/pageHiddenInputs.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
     [
         [
             'title' => 'API Keys',
-            'href' => '..',
+            'href' => ItemList\listHref(),
         ],
     ],
     'New API Key',
@@ -52,6 +54,7 @@ $content = Page\tabs(
         .create_permission_fields($values)
         .'<div class="hr"></div>'
         .Form\button('Generate Key')
+        .ItemList\pageHiddenInputs()
     .'</form>'
 );
 

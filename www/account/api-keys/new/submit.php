@@ -36,7 +36,8 @@ if ($errors) {
         'task_access' => $task_access,
         'wallet_access' => $wallet_access,
     ];
-    redirect();
+    include_once "$fnsDir/ItemList/pageQuery.php";
+    redirect('./'.ItemList\pageQuery());
 }
 
 unset(
@@ -73,4 +74,5 @@ $id = Users\ApiKeys\add($mysqli, $user->id_users, $name, $expire_time,
 
 $_SESSION['account/api-keys/view/messages'] = ['API key has been generated.'];
 
-redirect("../view/?id=$id");
+include_once "$fnsDir/ItemList/itemQuery.php";
+redirect('../view/'.ItemList\itemQuery($id));

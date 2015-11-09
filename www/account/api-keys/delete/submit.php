@@ -16,4 +16,5 @@ $_SESSION['account/api-keys/messages'] = ["API key #$id has been deleted."];
 unset($_SESSION['account/api-keys/errors']);
 
 include_once "$fnsDir/redirect.php";
-redirect('..');
+include_once "$fnsDir/ItemList/listUrl.php";
+redirect(ItemList\listUrl());
