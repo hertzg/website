@@ -36,19 +36,16 @@
     line-height: 48px;
 }
 
-#batteryWrapper,
-#dynamicClockWrapper {
-    display: inline-block;
-    vertical-align: top;
-    position: relative;
-}
 #batteryWrapper {
+    position: relative;
     width: 30px;
     height: 17px;
-    margin-top: 15px;
+    margin-top: 8px;
+    margin-right: auto;
+    margin-left: auto;
 }
 #dynamicClockWrapper {
-    width: 68px;
+    line-height: 16px;
 }
 
 .telLink {
