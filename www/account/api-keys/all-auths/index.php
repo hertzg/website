@@ -4,7 +4,8 @@ include_once '../fns/require_api_key.php';
 include_once '../../../lib/mysqli.php';
 list($apiKey, $id, $user) = require_api_key($mysqli);
 
-unset($_SESSION['account/api-keys/view/messages']);
+include_once 'fns/unset_session_vars.php';
+unset_session_vars();
 
 $base = '../../../';
 $fnsDir = '../../../fns';
@@ -28,6 +29,17 @@ check_offset_overflow($offset, $limit, $total, ['id' => $id]);
 
 $items = [];
 $params = ['id' => $id];
+
+if ($total > 1) {
+
+    include_once "$fnsDir/SearchForm/emptyContent.php";
+    $content = "<input type=\"hidden\" name=\"id\" value=\"$id\" />"
+        .SearchForm\emptyContent('Search authentications...');
+
+    include_once "$fnsDir/SearchForm/create.php";
+    $items[] = SearchForm\create('search/', $content);
+
+}
 
 include_once 'fns/render_prev_button.php';
 render_prev_button($offset, $limit, $total, $items, $params);

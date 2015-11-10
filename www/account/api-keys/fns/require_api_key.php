@@ -1,6 +1,6 @@
 <?php
 
-function require_api_key ($mysqli) {
+function require_api_key ($mysqli, $base = '') {
 
     $fnsDir = __DIR__.'/../../../fns';
 
@@ -21,7 +21,7 @@ function require_api_key ($mysqli) {
             'The API key no longer exists.',
         ];
         include_once "$fnsDir/redirect.php";
-        redirect('..');
+        redirect("$base..");
     }
 
     return [$apiKey, $id, $user];
