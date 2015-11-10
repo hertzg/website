@@ -24,11 +24,11 @@ if (!$total) {
     redirect("../view/?id=$id");
 }
 
-include_once "$fnsDir/check_offset_overflow.php";
-check_offset_overflow($offset, $limit, $total, ['id' => $id]);
-
 $items = [];
 $params = ['id' => $id];
+
+include_once "$fnsDir/check_offset_overflow.php";
+check_offset_overflow($offset, $limit, $total, $params);
 
 include_once "$fnsDir/compressed_js_script.php";
 $scripts = compressed_js_script('dateAgo', $base);
