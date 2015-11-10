@@ -12,22 +12,17 @@ function create ($mysqli, $apiKey, &$scripts) {
     $scripts = compressed_js_script('dateAgo', $base)
         .compressed_js_script('flexTextarea', $base);
 
-    include_once "$fnsDir/ItemList/escapedItemQuery.php";
-    $escapedItemQuery = \ItemList\escapedItemQuery($id);
+    include_once "$fnsDir/request_strings.php";
+    list($keyword) = request_strings('keyword');
 
-    include_once "$fnsDir/Page/imageArrowLink.php";
-    $editLink = \Page\imageArrowLink('Edit',
-        "../edit/$escapedItemQuery", 'edit-api-key', ['id' => 'edit']);
+    include_once "$fnsDir/str_collapse_spaces.php";
+    $keyword = str_collapse_spaces($keyword);
 
-    include_once "$fnsDir/Page/imageLink.php";
-    $deleteLink =
-        '<div id="deleteLink">'
-            .\Page\imageLink('Delete',
-                "../delete/$escapedItemQuery", 'trash-bin')
-        .'</div>';
-
-    include_once "$fnsDir/Page/staticTwoColumns.php";
-    $optionsContent = \Page\staticTwoColumns($editLink, $deleteLink);
+    $name = htmlspecialchars($apiKey->name);
+    if ($keyword !== '') {
+        $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
+        $name = preg_replace($regex, '<mark>$0</mark>', $name);
+    }
 
     include_once "$fnsDir/export_date_ago.php";
     $infoText = 'API key created '.export_date_ago($apiKey->insert_time).'.';
@@ -49,19 +44,13 @@ function create ($mysqli, $apiKey, &$scripts) {
 
     }
 
-    unset(
-        $_SESSION['account/api-keys/edit/errors'],
-        $_SESSION['account/api-keys/edit/values'],
-        $_SESSION['account/api-keys/errors'],
-        $_SESSION['account/api-keys/messages'],
-        $_SESSION['account/api-keys/new/errors'],
-        $_SESSION['account/api-keys/new/values']
-    );
+    include_once __DIR__.'/unsetSessionVars.php';
+    unsetSessionVars();
 
     include_once __DIR__.'/authsPanel.php';
     include_once __DIR__.'/createPermissionsField.php';
+    include_once __DIR__.'/optionsPanel.php';
     include_once "$fnsDir/create_expires_label.php";
-    include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/Form/notes.php";
     include_once "$fnsDir/Form/textarea.php";
@@ -80,7 +69,7 @@ function create ($mysqli, $apiKey, &$scripts) {
         ],
         "API Key #$id",
         \Page\sessionMessages('account/api-keys/view/messages')
-        .\Form\label('Name', htmlspecialchars($apiKey->name))
+        .\Form\label('Name', $name)
         .'<div class="hr"></div>'
         .create_expires_label($apiKey->expire_time)
         .'<div class="hr"></div>'
@@ -98,7 +87,7 @@ function create ($mysqli, $apiKey, &$scripts) {
         .\Form\label('Last accessed', $accessed)
         .\Page\infoText($infoText)
         .authsPanel($mysqli, $apiKey)
-        .create_panel('API Key Options', $optionsContent),
+        .optionsPanel($id),
         \Page\newItemButton('../new/'.\ItemList\escapedPageQuery(), 'API Key')
     );
 
