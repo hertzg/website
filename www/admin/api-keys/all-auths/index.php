@@ -4,8 +4,10 @@ include_once '../fns/require_admin_api_key.php';
 include_once '../../../lib/mysqli.php';
 list($apiKey, $id) = require_admin_api_key($mysqli);
 
-unset($_SESSION['admin/api-keys/view/messages']);
+include_once 'fns/unset_session_vars.php';
+unset_session_vars();
 
+$base = '../../../';
 $fnsDir = '../../../fns';
 
 include_once "$fnsDir/Paging/requestOffset.php";
@@ -28,6 +30,22 @@ check_offset_overflow($offset, $limit, $total, ['id' => $id]);
 
 $items = [];
 $params = ['id' => $id];
+
+include_once "$fnsDir/compressed_js_script.php";
+$scripts = compressed_js_script('dateAgo', $base);
+
+if ($total > 1) {
+
+    include_once "$fnsDir/SearchForm/emptyContent.php";
+    $content = "<input type=\"hidden\" name=\"id\" value=\"$id\" />"
+        .SearchForm\emptyContent('Search authentications...');
+
+    include_once "$fnsDir/SearchForm/create.php";
+    $items[] = SearchForm\create('search/', $content);
+
+    $scripts .= compressed_js_script('searchForm', $base);
+
+}
 
 include_once 'fns/render_prev_button.php';
 render_prev_button($offset, $limit, $total, $items, $params);
@@ -63,10 +81,6 @@ $content = Page\tabs(
     join('<div class="hr"></div>', $items)
 );
 
-$title = "Admin API Key #$id Authentication History";
-
 include_once '../../fns/echo_admin_page.php';
-include_once "$fnsDir/compressed_js_script.php";
-echo_admin_page($title, $content, '../../', [
-    'scripts' => compressed_js_script('dateAgo', '../../../'),
-]);
+echo_admin_page("Admin API Key #$id Authentication History",
+    $content, '../../', ['scripts' => $scripts]);

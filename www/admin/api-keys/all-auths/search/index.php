@@ -1,8 +1,8 @@
 <?php
 
-include_once '../../fns/require_api_key.php';
+include_once '../../fns/require_admin_api_key.php';
 include_once '../../../../lib/mysqli.php';
-list($apiKey, $id, $user) = require_api_key($mysqli, '../');
+list($apiKey, $id) = require_admin_api_key($mysqli, '../');
 
 include_once '../fns/unset_session_vars.php';
 unset_session_vars();
@@ -16,9 +16,9 @@ list($keyword, $tag, $offset) = request_valid_keyword_tag_offset(['id' => $id]);
 include_once "$fnsDir/Paging/limit.php";
 $limit = Paging\limit();
 
-include_once "$fnsDir/ApiKeyAuths/searchPageOnApiKey.php";
-$auths = \ApiKeyAuths\searchPageOnApiKey($mysqli,
-    $id, $keyword, $offset, $limit, $total);
+include_once "$fnsDir/AdminApiKeyAuths/searchPageOnAdminApiKey.php";
+$auths = \AdminApiKeyAuths\searchPageOnAdminApiKey(
+    $mysqli, $id, $keyword, $offset, $limit, $total);
 
 if (!$total) {
     include_once "$fnsDir/redirect.php";
@@ -69,7 +69,7 @@ include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
     [
         [
-            'title' => "API Key #$id",
+            'title' => "Admin API Key #$id",
             'href' => "../../view/?id=$id#all-auths",
         ],
     ],
@@ -77,9 +77,11 @@ $content = Page\tabs(
     join('<div class="hr"></div>', $items)
 );
 
+$title = "Admin API Key #$id Authentication History";
+
+include_once '../../../fns/echo_admin_page.php';
 include_once "$fnsDir/compressed_js_script.php";
-include_once "$fnsDir/echo_user_page.php";
-echo_user_page($user, "API Key #$id Authentication History", $content, $base, [
+echo_admin_page($title, $content, '../../../', [
     'scripts' => compressed_js_script('dateAgo', $base)
         .compressed_js_script('searchForm', $base),
 ]);

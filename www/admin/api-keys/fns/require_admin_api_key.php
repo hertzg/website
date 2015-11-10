@@ -1,11 +1,11 @@
 <?php
 
-function require_admin_api_key ($mysqli) {
-
-    $fnsDir = __DIR__.'/../../../fns';
+function require_admin_api_key ($mysqli, $base = '') {
 
     include_once __DIR__.'/../../fns/require_admin.php';
     require_admin();
+
+    $fnsDir = __DIR__.'/../../../fns';
 
     include_once "$fnsDir/request_strings.php";
     list($id) = request_strings('id');
@@ -16,11 +16,12 @@ function require_admin_api_key ($mysqli) {
     $apiKey = AdminApiKeys\get($mysqli, $id);
 
     if (!$apiKey) {
-        $error = 'The admin API key no longer exists.';
-        $_SESSION['admin/api-keys/errors'] = [$error];
         unset($_SESSION['admin/api-keys/messages']);
+        $_SESSION['admin/api-keys/errors'] = [
+            'The admin API key no longer exists.',
+        ];
         include_once "$fnsDir/redirect.php";
-        redirect('..');
+        redirect("$base..");
     }
 
     return [$apiKey, $id];
