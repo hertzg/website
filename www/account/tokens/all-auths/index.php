@@ -4,7 +4,8 @@ include_once '../fns/require_token.php';
 include_once '../../../lib/mysqli.php';
 list($token, $id, $user) = require_token($mysqli);
 
-unset($_SESSION['account/tokens/view/messages']);
+include_once 'fns/unset_session_vars.php';
+unset_session_vars();
 
 $base = '../../../';
 $fnsDir = '../../../fns';
@@ -28,6 +29,22 @@ $params = ['id' => $id];
 
 include_once "$fnsDir/check_offset_overflow.php";
 check_offset_overflow($offset, $limit, $total, $params);
+
+include_once "$fnsDir/compressed_js_script.php";
+$scripts = compressed_js_script('dateAgo', $base);
+
+if ($total > 1) {
+
+    include_once "$fnsDir/SearchForm/emptyContent.php";
+    $content = "<input type=\"hidden\" name=\"id\" value=\"$id\" />"
+        .SearchForm\emptyContent('Search authentications...');
+
+    include_once "$fnsDir/SearchForm/create.php";
+    $items[] = SearchForm\create('search/', $content);
+
+    $scripts .= compressed_js_script('searchForm', $base);
+
+}
 
 include_once 'fns/render_prev_button.php';
 render_prev_button($offset, $limit, $total, $items, $params);
@@ -63,10 +80,6 @@ $content = Page\tabs(
     join('<div class="hr"></div>', $items)
 );
 
-$title = "Remembered Session #$id Authentication History";
-
-include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/echo_user_page.php";
-echo_user_page($user, $title, $content, $base, [
-    'scripts' => compressed_js_script('dateAgo', $base),
-]);
+echo_user_page($user, "Remembered Session #$id Authentication History",
+    $content, $base, ['scripts' => $scripts]);
