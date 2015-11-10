@@ -40,7 +40,7 @@ function create_page ($user, &$scripts, $base = '') {
         ],
         'Show / Hide Items',
         Page\sessionMessages('home/customize/show-hide/messages')
-        .Page\text('Select items to see them on your home page:')
+        .Page\text('Select the items you want to see on your home page:')
         ."<form action=\"{$base}submit.php\" method=\"post\">"
             .join('<div class="hr"></div>', $items)
         .'</form>'
