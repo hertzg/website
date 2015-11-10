@@ -26,7 +26,6 @@ function request_general_info_params (&$errors, &$focus) {
     }
 
     if ($domainName === '') {
-        
         $errors[] = 'Enter domain name.';
         if ($focus === null) $focus = 'domainName';
     } else {
