@@ -6,7 +6,7 @@ function create_page ($mysqli, $user, $bar_chart, &$scripts, $base = '') {
     $fnsDir = __DIR__.'/../../../fns';
 
     include_once "$fnsDir/Paging/requestOffset.php";
-    $offset = Paging\requestOffset("./?id=$id");
+    $offset = Paging\requestOffset("?id=$id");
 
     include_once "$fnsDir/Paging/limit.php";
     $limit = Paging\limit();

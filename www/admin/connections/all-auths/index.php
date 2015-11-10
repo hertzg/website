@@ -9,7 +9,7 @@ unset($_SESSION['admin/connections/view/messages']);
 $fnsDir = '../../../fns';
 
 include_once "$fnsDir/Paging/requestOffset.php";
-$offset = Paging\requestOffset();
+$offset = Paging\requestOffset("?id=$id");
 
 include_once "$fnsDir/Paging/limit.php";
 $limit = Paging\limit();
@@ -27,7 +27,7 @@ $items = [];
 $params = ['id' => $id];
 
 include_once "$fnsDir/check_offset_overflow.php";
-check_offset_overflow($offset, $limit, $total, $params;
+check_offset_overflow($offset, $limit, $total, $params);
 
 include_once 'fns/render_prev_button.php';
 render_prev_button($offset, $limit, $total, $items, $params);

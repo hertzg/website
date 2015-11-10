@@ -10,7 +10,7 @@ $base = '../../../';
 $fnsDir = '../../../fns';
 
 include_once "$fnsDir/Paging/requestOffset.php";
-$offset = Paging\requestOffset();
+$offset = Paging\requestOffset("?id=$id");
 
 include_once "$fnsDir/Paging/limit.php";
 $limit = Paging\limit();

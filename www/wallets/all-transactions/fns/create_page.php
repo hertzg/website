@@ -9,7 +9,7 @@ function create_page ($mysqli, $user, $wallet, &$scripts, $base = '') {
     $scripts = compressed_js_script('dateAgo', "$base../../");
 
     include_once "$fnsDir/Paging/requestOffset.php";
-    $offset = Paging\requestOffset("./?id=$id");
+    $offset = Paging\requestOffset("?id=$id");
 
     include_once "$fnsDir/Paging/limit.php";
     $limit = Paging\limit();
