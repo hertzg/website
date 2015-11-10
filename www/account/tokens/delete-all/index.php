@@ -13,7 +13,7 @@ unset(
 
 include_once '../fns/create_page.php';
 include_once '../../../lib/mysqli.php';
-$content = create_page($mysqli, $user, '../');
+$content = create_page($mysqli, $user, $scripts, '../');
 
 include_once "$fnsDir/Page/confirmDialog.php";
 $content .= Page\confirmDialog(
@@ -24,4 +24,5 @@ include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_user_page.php";
 echo_user_page($user, 'Delete All Remembered Sessions?', $content, $base, [
     'head' => compressed_css_link('confirmDialog', $base),
+    'scripts' => $scripts,
 ]);

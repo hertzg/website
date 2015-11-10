@@ -1,8 +1,11 @@
 <?php
 
-function create_page ($mysqli, $user, $base = '') {
+function create_page ($mysqli, $user, &$scripts, $base = '') {
 
     $fnsDir = __DIR__.'/../../../fns';
+
+    include_once "$fnsDir/compressed_js_script.php";
+    $scripts = compressed_js_script('dateAgo', "$base../../");
 
     include_once "$fnsDir/request_valid_token.php";
     $token = request_valid_token($mysqli);
@@ -29,27 +32,30 @@ function create_page ($mysqli, $user, $base = '') {
 
         $icon = 'token';
 
-        include_once "$fnsDir/Page/imageArrowLink.php";
+        include_once "$fnsDir/export_date_ago.php";
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
-
         foreach ($tokens as $itemToken) {
 
             $id = $itemToken->id;
-            $optionsParam = ['id' => $id];
-            $text = bin2hex($itemToken->token_text);
-            if ($token && $id == $token->id) $text .= ' (Current)';
-
             $href = "{$base}view/?id=$itemToken->id";
+            $optionsParam = ['id' => $id];
+            $escapedTokenText = bin2hex($itemToken->token_text);
+
+            $description = 'Last accessed '
+                .export_date_ago($itemToken->access_time).'.';
 
             $user_agent = $itemToken->user_agent;
             if ($user_agent === null) {
-                $items[] = Page\imageArrowLink($text,
-                    $href, $icon, $optionsParam);
+                $title = $escapedTokenText;
             } else {
-                $description = htmlspecialchars($user_agent);
-                $items[] = Page\imageArrowLinkWithDescription($text,
-                    $description, $href, $icon, $optionsParam);
+                $title = htmlspecialchars($user_agent);
+                $description .= " &middot; $escapedTokenText";
             }
+
+            if ($token && $id == $token->id) $title .= ' (Current)';
+
+            $items[] = Page\imageArrowLinkWithDescription($title,
+                $description, $href, $icon, $optionsParam);
 
         }
 
