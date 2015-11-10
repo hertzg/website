@@ -18,6 +18,9 @@ list($randomizeKey) = request_strings('randomizeKey');
 
 $randomizeKey = (bool)$randomizeKey;
 
+include_once "$fnsDir/ItemList/itemQuery.php";
+$itemQuery = ItemList\itemQuery($id);
+
 include_once "$fnsDir/redirect.php";
 
 if ($errors) {
@@ -29,7 +32,7 @@ if ($errors) {
         'invitation_access' => $invitation_access,
         'user_access' => $user_access,
     ];
-    redirect("./?id=$id");
+    redirect("./$itemQuery");
 }
 
 include_once '../fns/parse_read_write.php';
@@ -63,4 +66,4 @@ unset(
 
 $_SESSION['admin/api-keys/view/messages'] = ['Changes have been saved.'];
 
-redirect("../view/?id=$id");
+redirect("../view/$itemQuery");

@@ -44,4 +44,5 @@ $_SESSION['admin/api-keys/view/messages'] = [
     'Admin API key has been generated.',
 ];
 
-redirect("../view/?id=$id");
+include_once "$fnsDir/ItemList/itemQuery.php";
+redirect('../view/'.ItemList\itemQuery($id));
