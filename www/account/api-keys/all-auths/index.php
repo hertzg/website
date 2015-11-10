@@ -30,6 +30,9 @@ check_offset_overflow($offset, $limit, $total, ['id' => $id]);
 $items = [];
 $params = ['id' => $id];
 
+include_once "$fnsDir/compressed_js_script.php";
+$scripts = compressed_js_script('dateAgo', $base);
+
 if ($total > 1) {
 
     include_once "$fnsDir/SearchForm/emptyContent.php";
@@ -38,6 +41,8 @@ if ($total > 1) {
 
     include_once "$fnsDir/SearchForm/create.php";
     $items[] = SearchForm\create('search/', $content);
+
+    $scripts .= compressed_js_script('searchForm', $base);
 
 }
 
@@ -75,8 +80,6 @@ $content = Page\tabs(
     join('<div class="hr"></div>', $items)
 );
 
-include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/echo_user_page.php";
-echo_user_page($user, "API Key #$id Authentication History", $content, $base, [
-    'scripts' => compressed_js_script('dateAgo', $base),
-]);
+echo_user_page($user, "API Key #$id Authentication History",
+    $content, $base, ['scripts' => $scripts]);

@@ -81,5 +81,6 @@ $content = Page\tabs(
 include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/echo_user_page.php";
 echo_user_page($user, "API Key #$id Authentication History", $content, $base, [
-    'scripts' => compressed_js_script('dateAgo', $base),
+    'scripts' => compressed_js_script('dateAgo', $base)
+        .compressed_js_script('searchForm', $base),
 ]);
