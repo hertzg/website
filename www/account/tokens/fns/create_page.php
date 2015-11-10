@@ -4,9 +4,6 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
 
     $fnsDir = __DIR__.'/../../../fns';
 
-    include_once "$fnsDir/compressed_js_script.php";
-    $scripts = compressed_js_script('dateAgo', "$base../../");
-
     include_once "$fnsDir/request_valid_token.php";
     $token = request_valid_token($mysqli);
 
@@ -19,6 +16,9 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
 
     $items = [];
     if ($user->num_tokens) {
+
+        include_once "$fnsDir/compressed_js_script.php";
+        $scripts = compressed_js_script('dateAgo', "$base../../");
 
         include_once "$fnsDir/Tokens/indexOnUser.php";
         $tokens = Tokens\indexOnUser($mysqli, $user->id_users);
