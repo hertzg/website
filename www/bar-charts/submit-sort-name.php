@@ -8,7 +8,7 @@ $user = require_user('../');
 
 include_once '../fns/Users/BarCharts/editOrderBy.php';
 include_once '../lib/mysqli.php';
-Users\BarCharts\editOrderBy($mysqli, $user->id_users, 'name');
+Users\BarCharts\editOrderBy($mysqli, $user->id_users, 'name, insert_time desc');
 
 unset($_SESSION['bar-charts/errors']);
 $_SESSION['bar-charts/messages'] = ['The list is now sorted by name.'];

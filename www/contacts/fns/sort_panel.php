@@ -22,7 +22,7 @@ function sort_panel ($user, $total, $base = '') {
         "{$base}submit-sort-last-modified.php$escapedPageQuery", 'sort-time');
 
     $title = 'Full name';
-    if ($order_by === 'full_name') $title .= ' (Current)';
+    if ($order_by === 'full_name, insert_time desc') $title .= ' (Current)';
     $fullNameLink = Page\imageLink($title,
         "{$base}submit-sort-full-name.php$escapedPageQuery", 'sort-alphabetic');
 

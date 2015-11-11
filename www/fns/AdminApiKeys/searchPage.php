@@ -19,7 +19,7 @@ function searchPage ($mysqli, $keyword,
 
     if ($offset >= $total) return [];
 
-    $sql = "select * $fromWhere order by $order_by, insert_time"
+    $sql = "select * $fromWhere order by $order_by"
         ." limit $limit offset $offset";
     include_once "$fnsDir/mysqli_query_object.php";
     return mysqli_query_object($mysqli, $sql);

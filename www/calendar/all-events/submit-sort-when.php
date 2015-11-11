@@ -8,7 +8,8 @@ $user = require_user('../../');
 
 include_once '../../fns/Users/Events/editOrderBy.php';
 include_once '../../lib/mysqli.php';
-Users\Events\editOrderBy($mysqli, $user->id_users, 'event_time desc');
+Users\Events\editOrderBy($mysqli, $user->id_users,
+    'event_time desc, start_hour, start_minute, insert_time desc');
 
 unset($_SESSION['calendar/all-events/errors']);
 $_SESSION['calendar/all-events/messages'] = [

@@ -8,7 +8,8 @@ $user = require_user('../');
 
 include_once '../fns/Users/Contacts/editOrderBy.php';
 include_once '../lib/mysqli.php';
-Users\Contacts\editOrderBy($mysqli, $user->id_users, 'full_name');
+Users\Contacts\editOrderBy($mysqli,
+    $user->id_users, 'full_name, insert_time desc');
 
 unset($_SESSION['contacts/errors']);
 $_SESSION['contacts/messages'] = ['The list is now sorted by full name.'];

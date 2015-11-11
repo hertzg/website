@@ -8,7 +8,7 @@ $user = require_user('../');
 
 include_once '../fns/Users/Places/editOrderBy.php';
 include_once '../lib/mysqli.php';
-Users\Places\editOrderBy($mysqli, $user->id_users, 'name');
+Users\Places\editOrderBy($mysqli, $user->id_users, 'name, insert_time desc');
 
 unset($_SESSION['places/errors']);
 $_SESSION['places/messages'] = ['The list is now sorted by name.'];

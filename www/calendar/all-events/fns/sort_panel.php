@@ -22,7 +22,9 @@ function sort_panel ($user, $total, $base = '') {
         "{$base}submit-sort-last-modified.php$escapedPageQuery", 'sort-time');
 
     $title = 'Event time';
-    if ($order_by === 'event_time desc') $title .= ' (Current)';
+    if ($order_by === 'event_time desc, start_hour, start_minute, insert_time desc') {
+        $title .= ' (Current)';
+    }
     $eventTimeLink = Page\imageLink($title,
         "{$base}submit-sort-when.php$escapedPageQuery", 'sort-time');
 

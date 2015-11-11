@@ -22,7 +22,7 @@ function sort_panel ($user, $total, $base = '') {
         "{$base}submit-sort-last-modified.php$escapedPageQuery", 'sort-time');
 
     $title = 'Title';
-    if ($order_by === 'title') $title .= ' (Current)';
+    if ($order_by === 'title, insert_time desc') $title .= ' (Current)';
     $titleLink = Page\imageLink($title,
         "{$base}submit-sort-title.php$escapedPageQuery", 'sort-alphabetic');
 

@@ -34,24 +34,24 @@ function ensure ($mysqli) {
         'anonymous_can_send_place' => ['type' => 'tinyint(3) unsigned'],
         'anonymous_can_send_task' => ['type' => 'tinyint(3) unsigned'],
         'api_keys_order_by' => [
-            'type' => 'varchar(50)',
+            'type' => 'varchar(100)',
             'characterSet' => 'ascii',
             'collation' => 'ascii_general_ci',
         ],
         'balance_total' => ['type' => 'bigint(20)'],
         'bar_charts_order_by' => [
-            'type' => 'varchar(50)',
+            'type' => 'varchar(100)',
             'characterSet' => 'ascii',
             'collation' => 'ascii_general_ci',
         ],
         'bookmarks_order_by' => [
-            'type' => 'varchar(50)',
+            'type' => 'varchar(100)',
             'characterSet' => 'ascii',
             'collation' => 'ascii_general_ci',
         ],
         'birthdays_check_day' => ['type' => 'bigint(20) unsigned'],
         'contacts_order_by' => [
-            'type' => 'varchar(50)',
+            'type' => 'varchar(100)',
             'characterSet' => 'ascii',
             'collation' => 'ascii_general_ci',
         ],
@@ -66,7 +66,7 @@ function ensure ($mysqli) {
         'encryption_key_iv' => \EncryptionKey\ivColumn(),
         'events_check_day' => ['type' => 'bigint(20) unsigned'],
         'events_order_by' => [
-            'type' => 'varchar(50)',
+            'type' => 'varchar(100)',
             'characterSet' => 'ascii',
             'collation' => 'ascii_general_ci',
         ],
@@ -97,7 +97,7 @@ function ensure ($mysqli) {
         ],
         'lowercase_username' => \Username\lowercaseColumn(),
         'notes_order_by' => [
-            'type' => 'varchar(50)',
+            'type' => 'varchar(100)',
             'characterSet' => 'ascii',
             'collation' => 'ascii_general_ci',
         ],
@@ -167,7 +167,7 @@ function ensure ($mysqli) {
             'nullable' => true,
         ],
         'places_order_by' => [
-            'type' => 'varchar(50)',
+            'type' => 'varchar(100)',
             'characterSet' => 'ascii',
             'collation' => 'ascii_general_ci',
         ],
@@ -183,7 +183,7 @@ function ensure ($mysqli) {
         ],
         'schedules_check_day' => ['type' => 'bigint(20) unsigned'],
         'schedules_order_by' => [
-            'type' => 'varchar(50)',
+            'type' => 'varchar(100)',
             'characterSet' => 'ascii',
             'collation' => 'ascii_general_ci',
         ],
@@ -214,7 +214,7 @@ function ensure ($mysqli) {
         'storage_used' => ['type' => 'bigint(20) unsigned'],
         'task_deadlines_check_day' => ['type' => 'bigint(20) unsigned'],
         'tasks_order_by' => [
-            'type' => 'varchar(50)',
+            'type' => 'varchar(100)',
             'characterSet' => 'ascii',
             'collation' => 'ascii_general_ci',
         ],
@@ -228,7 +228,7 @@ function ensure ($mysqli) {
             'nullable' => true,
         ],
         'wallets_order_by' => [
-            'type' => 'varchar(50)',
+            'type' => 'varchar(100)',
             'characterSet' => 'ascii',
             'collation' => 'ascii_general_ci',
         ],

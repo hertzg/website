@@ -8,7 +8,7 @@ $user = require_user('../');
 
 include_once '../fns/Users/Wallets/editOrderBy.php';
 include_once '../lib/mysqli.php';
-Users\Wallets\editOrderBy($mysqli, $user->id_users, 'name');
+Users\Wallets\editOrderBy($mysqli, $user->id_users, 'name, insert_time desc');
 
 unset($_SESSION['wallets/errors']);
 $_SESSION['wallets/messages'] = ['The list is now sorted by name.'];

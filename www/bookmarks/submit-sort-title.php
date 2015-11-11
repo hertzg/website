@@ -8,7 +8,8 @@ $user = require_user('../');
 
 include_once '../fns/Users/Bookmarks/editOrderBy.php';
 include_once '../lib/mysqli.php';
-Users\Bookmarks\editOrderBy($mysqli, $user->id_users, 'title');
+Users\Bookmarks\editOrderBy($mysqli,
+    $user->id_users, 'title, insert_time desc');
 
 unset($_SESSION['bookmarks/errors']);
 $_SESSION['bookmarks/messages'] = ['The list is now sorted by title.'];
