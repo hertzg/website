@@ -12,22 +12,17 @@ function create ($mysqli, $connection, &$scripts) {
     $scripts = compressed_js_script('dateAgo', $base)
         .compressed_js_script('flexTextarea', $base);
 
-    include_once "$fnsDir/ItemList/escapedItemQuery.php";
-    $escapedItemQuery = \ItemList\escapedItemQuery($id);
+    include_once "$fnsDir/request_strings.php";
+    list($keyword) = request_strings('keyword');
 
-    include_once "$fnsDir/Page/imageArrowLink.php";
-    $editLink = \Page\imageArrowLink('Edit',
-        "../edit/$escapedItemQuery", 'edit-connection', ['id' => 'edit']);
+    include_once "$fnsDir/str_collapse_spaces.php";
+    $keyword = str_collapse_spaces($keyword);
 
-    include_once "$fnsDir/Page/imageLink.php";
-    $deleteLink =
-        '<div id="deleteLink">'
-            .\Page\imageLink('Delete',
-                "../delete/$escapedItemQuery", 'trash-bin')
-        .'</div>';
-
-    include_once "$fnsDir/Page/staticTwoColumns.php";
-    $optionsContent = \Page\staticTwoColumns($editLink, $deleteLink);
+    $address = htmlspecialchars($connection->address);
+    if ($keyword !== '') {
+        $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
+        $address = preg_replace($regex, '<mark>$0</mark>', $address);
+    }
 
     include_once "$fnsDir/export_date_ago.php";
     $infoText = 'Connection created '
@@ -74,8 +69,8 @@ function create ($mysqli, $connection, &$scripts) {
     }
 
     include_once __DIR__.'/authsPanel.php';
+    include_once __DIR__.'/optionsPanel.php';
     include_once "$fnsDir/create_expires_label.php";
-    include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/ItemList/escapedPageQuery.php";
     include_once "$fnsDir/ItemList/listHref.php";
     include_once "$fnsDir/Page/infoText.php";
@@ -92,7 +87,7 @@ function create ($mysqli, $connection, &$scripts) {
             ],
             "Connection #$id",
             \Page\sessionMessages('admin/connections/view/messages')
-            .\Form\label('Address', htmlspecialchars($connection->address))
+            .\Form\label('Address', $address)
             .'<div class="hr"></div>'
             .create_expires_label($connection->expire_time)
             .'<div class="hr"></div>'
@@ -113,6 +108,6 @@ function create ($mysqli, $connection, &$scripts) {
                 '../new/'.\ItemList\escapedPageQuery(), 'Connection')
         )
         .authsPanel($mysqli, $connection)
-        .create_panel('Connection Options', $optionsContent);
+        .optionsPanel($id);
 
 }
