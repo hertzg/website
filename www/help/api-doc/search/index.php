@@ -90,7 +90,7 @@ foreach (get_full_groups() as $groupKey => $group) {
 
 if (!$found) {
     include_once "$fnsDir/Page/info.php";
-    $items[] = Page\info('Nothing found');
+    $items[] = Page\info('No pages found');
 }
 
 include_once 'fns/create_content.php';

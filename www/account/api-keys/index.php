@@ -52,7 +52,7 @@ if ($apiKeys) {
 
 } else {
     include_once "$fnsDir/Page/info.php";
-    $items[] = Page\info('No keys');
+    $items[] = Page\info('No API keys');
 }
 
 include_once 'fns/sort_panel.php';

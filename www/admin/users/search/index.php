@@ -58,7 +58,7 @@ if ($users) {
 
 } else {
     include_once "$fnsDir/Page/info.php";
-    $items[] = Page\info('Nothing found');
+    $items[] = Page\info('No users found');
 }
 
 include_once '../fns/sort_panel.php';
