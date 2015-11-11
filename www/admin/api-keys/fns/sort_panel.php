@@ -1,6 +1,6 @@
 <?php
 
-function sort_panel ($order_by, $total) {
+function sort_panel ($order_by, $total, $base = '') {
 
     if ($total < 2) return;
 
@@ -13,22 +13,22 @@ function sort_panel ($order_by, $total) {
     if ($order_by === 'access_time desc') $title .= ' (Current)';
     include_once "$fnsDir/Page/imageLink.php";
     $accessTimeLink = Page\imageLink($title,
-        "submit-sort-last-accessed.php$escapedPageQuery", 'sort-time');
+        "{$base}submit-sort-last-accessed.php$escapedPageQuery", 'sort-time');
 
     $title = 'Last modified time';
     if ($order_by === 'update_time desc') $title .= ' (Current)';
     $updateTimeLink = Page\imageLink($title,
-        "submit-sort-last-modified.php$escapedPageQuery", 'sort-time');
+        "{$base}submit-sort-last-modified.php$escapedPageQuery", 'sort-time');
 
     $title = 'Created time';
     if ($order_by === 'insert_time desc') $title .= ' (Current)';
     $insertTimeLink = Page\imageLink($title,
-        "submit-sort-created.php$escapedPageQuery", 'sort-time');
+        "{$base}submit-sort-created.php$escapedPageQuery", 'sort-time');
 
     $title = 'Name';
     if ($order_by === 'name') $title .= ' (Current)';
     $nameLink = Page\imageLink($title,
-        "submit-sort-name.php$escapedPageQuery", 'sort-alphabetic');
+        "{$base}submit-sort-name.php$escapedPageQuery", 'sort-alphabetic');
 
     include_once "$fnsDir/Page/twoColumns.php";
     $content =

@@ -3,13 +3,10 @@
 include_once '../fns/require_admin.php';
 require_admin();
 
-unset(
-    $_SESSION['admin/messages'],
-    $_SESSION['admin/api-keys/new/errors'],
-    $_SESSION['admin/api-keys/new/values'],
-    $_SESSION['admin/api-keys/view/messages']
-);
+include_once 'fns/unset_session_vars.php';
+unset_session_vars();
 
+$base = '../../';
 $fnsDir = '../../fns';
 
 include_once "$fnsDir/Paging/requestOffset.php";
@@ -28,41 +25,29 @@ $apiKeys = AdminApiKeys\indexPage($mysqli, $offset, $limit, $total, $order_by);
 include_once "$fnsDir/check_offset_overflow.php";
 check_offset_overflow($offset, $limit, $total);
 
+include_once '../../fns/compressed_js_script.php';
+$scripts = compressed_js_script('dateAgo', $base);
+
 $items = [];
 if ($apiKeys) {
+
+    if ($total > 1) {
+
+        include_once "$fnsDir/SearchForm/emptyContent.php";
+        $content = SearchForm\emptyContent('Search admin API keys...');
+
+        include_once "$fnsDir/SearchForm/create.php";
+        $items[] = SearchForm\create('search/', $content);
+
+        $scripts .= compressed_js_script('searchForm', $base);
+
+    }
 
     include_once 'fns/render_prev_button.php';
     render_prev_button($offset, $limit, $total, $items);
 
-    include_once "$fnsDir/time_today.php";
-    $time_today = time_today();
-
-    include_once "$fnsDir/ItemList/escapedItemQuery.php";
-    include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
-    foreach ($apiKeys as $apiKey) {
-
-        $access_time = $apiKey->access_time;
-        $descriptions = [];
-
-        $expire_time = $apiKey->expire_time;
-        if ($expire_time !== null && $expire_time < $time_today) {
-            $descriptions[] = 'Expired.';
-        }
-
-        if ($access_time === null) $descriptions[] = 'Never accessed.';
-        else {
-            include_once "$fnsDir/export_date_ago.php";
-            $descriptions[] = 'Last accessed '
-                .export_date_ago($access_time).'.';
-        }
-        $description = join(' ', $descriptions);
-
-        $id = $apiKey->id;
-        $items[] = Page\imageArrowLinkWithDescription(
-            htmlspecialchars($apiKey->name), $description,
-            'view/'.ItemList\escapedItemQuery($id), 'api-key', ['id' => $id]);
-
-    }
+    include_once 'fns/render_admin_api_keys.php';
+    render_admin_api_keys($apiKeys, $items);
 
     include_once 'fns/render_next_button.php';
     render_next_button($offset, $limit, $total, $items);
@@ -94,7 +79,4 @@ $content = Page\tabs(
 );
 
 include_once '../fns/echo_admin_page.php';
-include_once '../../fns/compressed_js_script.php';
-echo_admin_page('Admin API Keys', $content, '../', [
-    'scripts' => compressed_js_script('dateAgo', '../../'),
-]);
+echo_admin_page('Admin API Keys', $content, '../', ['scripts' => $scripts]);
