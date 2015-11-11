@@ -64,6 +64,11 @@
 }
 
 .form-textfield,
+.form-textarea {
+    -webkit-appearance: none;
+}
+
+.form-textfield,
 .form-textarea,
 .form-button {
     border: 2px solid transparent;
