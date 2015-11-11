@@ -8,9 +8,9 @@ function add ($mysqli, $id_channels, $channel_name,
     $subscriber_locked, $receive_notifications, $insertApiKey) {
 
     $lowercase_name = strtolower($channel_name);
-    $lowercase_name = $mysqli->real_escape_string($lowercase_name);
 
     $channel_name = $mysqli->real_escape_string($channel_name);
+    $lowercase_name = $mysqli->real_escape_string($lowercase_name);
     $channel_public = $channel_public ? '1' : '0';
     $publisher_username = $mysqli->real_escape_string($publisher_username);
     $publisher_locked = $publisher_locked ? '1' : '0';

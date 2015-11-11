@@ -6,10 +6,9 @@ function edit ($mysqli, $id, $channel_name,
     $public, $receive_notifications, $updateApiKey) {
 
     $lowercase_name = strtolower($channel_name);
-    $lowercase_name = $mysqli->real_escape_string($lowercase_name);
 
     $channel_name = $mysqli->real_escape_string($channel_name);
-    $lowercase_name = strtolower($channel_name);
+    $lowercase_name = $mysqli->real_escape_string($lowercase_name);
     $public = $public ? '1' : '0';
     $receive_notifications = $receive_notifications ? '1' : '0';
     $update_time = time();
