@@ -52,24 +52,9 @@ function create ($mysqli, $connection, &$scripts) {
     include_once "$fnsDir/Form/notes.php";
     include_once "$fnsDir/Form/textarea.php";
 
-    $label = 'Their exchange API key';
-    $their_exchange_api_key = $connection->their_exchange_api_key;
-    if ($their_exchange_api_key === null) {
-        $theirKeyItem = \Form\label($label, 'Not set');
-    } else {
-        $theirKeyItem =
-            \Form\textarea('their_exchange_api_key', $label, [
-                'value' => $their_exchange_api_key,
-                'readonly' => true,
-            ])
-            .\Form\notes([
-                'This should be the value of <code>exchange_api_key</code>'
-                .' parameter when we call their exchange API method.',
-            ]);
-    }
-
     include_once __DIR__.'/authsPanel.php';
     include_once __DIR__.'/optionsPanel.php';
+    include_once __DIR__.'/theirExchangeApiKeyField.php';
     include_once "$fnsDir/create_expires_label.php";
     include_once "$fnsDir/ItemList/escapedPageQuery.php";
     include_once "$fnsDir/ItemList/listHref.php";
@@ -91,7 +76,7 @@ function create ($mysqli, $connection, &$scripts) {
             .'<div class="hr"></div>'
             .create_expires_label($connection->expire_time)
             .'<div class="hr"></div>'
-            .$theirKeyItem
+            .theirExchangeApiKeyField($connection)
             .'<div class="hr"></div>'
             .\Form\textarea('our_exchange_api_key', 'Our exchange API key', [
                 'value' => $connection->our_exchange_api_key,

@@ -13,9 +13,8 @@ function create_form_items ($values, &$scripts, $base = '') {
     include_once "$fnsDir/Contacts/maxLengths.php";
     $maxLengths = Contacts\maxLengths();
 
-    include_once "$fnsDir/Email/maxLength.php";
-    $emailMaxLength = Email\maxLength();
-
+    include_once __DIR__.'/create_email_form_items.php';
+    include_once __DIR__.'/create_phone_form_items.php';
     include_once "$fnsDir/Form/checkbox.php";
     include_once "$fnsDir/Form/datefield.php";
     include_once "$fnsDir/Form/textarea.php";
@@ -41,41 +40,9 @@ function create_form_items ($values, &$scripts, $base = '') {
             'maxlength' => $maxLengths['address'],
         ])
         .'<div class="hr"></div>'
-        .Form\textfieldWithLabel('email1', 'Email 1', [
-            'value' => $values['email1'],
-            'maxlength' => $emailMaxLength,
-        ], [
-            'value' => $values['email1_label'],
-            'placeholder' => 'Note',
-            'maxlength' => $maxLengths['email1_label'],
-        ])
+        .create_email_form_items($values, $maxLengths)
         .'<div class="hr"></div>'
-        .Form\textfieldWithLabel('email2', 'Email 2', [
-            'value' => $values['email2'],
-            'maxlength' => $emailMaxLength,
-        ], [
-            'value' => $values['email2_label'],
-            'placeholder' => 'Note',
-            'maxlength' => $maxLengths['email2_label'],
-        ])
-        .'<div class="hr"></div>'
-        .Form\textfieldWithLabel('phone1', 'Phone 1', [
-            'value' => $values['phone1'],
-            'maxlength' => $maxLengths['phone1'],
-        ], [
-            'value' => $values['phone1_label'],
-            'placeholder' => 'Note',
-            'maxlength' => $maxLengths['phone1_label'],
-        ])
-        .'<div class="hr"></div>'
-        .Form\textfieldWithLabel('phone2', 'Phone 2', [
-            'value' => $values['phone2'],
-            'maxlength' => $maxLengths['phone2'],
-        ], [
-            'value' => $values['phone2_label'],
-            'maxlength' => $maxLengths['phone2_label'],
-            'placeholder' => 'Note',
-        ])
+        .create_phone_form_items($values, $maxLengths)
         .'<div class="hr"></div>'
         .Form\datefield([
             'name' => 'birthday_day',

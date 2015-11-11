@@ -6,32 +6,12 @@ require_admin();
 include_once 'fns/unset_session_vars.php';
 unset_session_vars();
 
-include_once '../fns/ClientAddress/get.php';
-$client_address = ClientAddress\get();
-
-include_once '../fns/Page/imageArrowLink.php';
-
-$title = 'General Information';
-$href = 'general-info/';
-$icon = 'generic';
-$options = ['id' => 'general-info'];
-if ($client_address === false) {
-    $description =
-        '<span class="redText">'
-            .'With this settings a client IP address cannot be detected.'
-        .'</span>';
-    include_once '../fns/Page/imageArrowLinkWithDescription.php';
-    $generalLink = Page\imageArrowLinkWithDescription(
-        $title, $description, $href, $icon, $options);
-} else {
-    $generalLink = Page\imageArrowLink($title, $href, $icon, $options);
-}
-
 include_once '../fns/MysqlConfig/get.php';
 MysqlConfig\get($host, $username, $password, $db);
 
 $mysqli = @new mysqli($host, $username, $password, $db);
 
+include_once '../fns/Page/imageArrowLink.php';
 $title = 'MySQL Settings';
 $href = 'mysql-settings/';
 $icon = 'generic';
@@ -53,6 +33,7 @@ $helpLink = Page\imageArrowLink('Help', 'help/', 'help', ['id' => 'help']);
 
 include_once 'fns/create_admin_api_keys_link.php';
 include_once 'fns/create_connections_link.php';
+include_once 'fns/create_general_info_link.php';
 include_once 'fns/create_invitations_link.php';
 include_once 'fns/create_users_link.php';
 include_once '../fns/create_panel.php';
@@ -62,7 +43,7 @@ $content =
     Page\title(
         'Administration',
         Page\sessionMessages('admin/messages')
-        .$generalLink
+        .create_general_info_link()
         .'<div class="hr"></div>'
         .$mysqlLink
         .'<div class="hr"></div>'

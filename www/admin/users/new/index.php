@@ -3,18 +3,8 @@
 include_once '../../fns/require_admin.php';
 require_admin();
 
-$key = 'admin/users/new/values';
-if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
-else {
-    $values = [
-        'focus' => 'username',
-        'username' => '',
-        'password' => '',
-        'repeatPassword' => '',
-        'disabled' => false,
-        'expires' => false,
-    ];
-}
+include_once 'fns/get_values.php';
+$values = get_values();
 
 $fnsDir = '../../../fns';
 $focus = $values['focus'];

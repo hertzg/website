@@ -74,21 +74,13 @@ $assertsHtml .=
 $subject = 'Image Processing (ImageMagick) "<code>imagick</code>"';
 $optionalAssertsHtml = assert_installed(extension_loaded('imagick'), $subject);
 
-$nextSteps = ['General Information', 'MySQL Configuration',
-    'Administrator', 'Finalize Installation'];
-
+include_once 'fns/create_steps.php';
 include_once '../fns/echo_page.php';
-include_once '../fns/steps.php';
 include_once '../fns/wizard_layout.php';
 echo_page(
     'Step 2 - Requirements',
     wizard_layout(
-        steps([
-            [
-                'title' => 'Agreement',
-                'href' => '../agreement/',
-            ],
-        ], 'Requirements', $nextSteps),
+        create_steps(),
         '<span class="title-step">Step 2</span>'
         .'<h2>Requirements</h2>'
         ."<ol>$assertsHtml</ol>"
