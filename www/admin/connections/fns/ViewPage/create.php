@@ -12,14 +12,18 @@ function create ($mysqli, $connection, &$scripts) {
     $scripts = compressed_js_script('dateAgo', $base)
         .compressed_js_script('flexTextarea', $base);
 
+    include_once "$fnsDir/ItemList/escapedItemQuery.php";
+    $escapedItemQuery = \ItemList\escapedItemQuery($id);
+
     include_once "$fnsDir/Page/imageArrowLink.php";
     $editLink = \Page\imageArrowLink('Edit',
-        "../edit/?id=$id", 'edit-connection', ['id' => 'edit']);
+        "../edit/$escapedItemQuery", 'edit-connection', ['id' => 'edit']);
 
     include_once "$fnsDir/Page/imageLink.php";
     $deleteLink =
         '<div id="deleteLink">'
-            .\Page\imageLink('Delete', "../delete/?id=$id", 'trash-bin')
+            .\Page\imageLink('Delete',
+                "../delete/$escapedItemQuery", 'trash-bin')
         .'</div>';
 
     include_once "$fnsDir/Page/staticTwoColumns.php";
@@ -72,6 +76,8 @@ function create ($mysqli, $connection, &$scripts) {
     include_once __DIR__.'/authsPanel.php';
     include_once "$fnsDir/create_expires_label.php";
     include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/ItemList/escapedPageQuery.php";
+    include_once "$fnsDir/ItemList/listHref.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionMessages.php";
@@ -81,7 +87,7 @@ function create ($mysqli, $connection, &$scripts) {
             [
                 [
                     'title' => 'Connections',
-                    'href' => "../#$id",
+                    'href' => \ItemList\listHref()."#$id",
                 ],
             ],
             "Connection #$id",
@@ -103,7 +109,8 @@ function create ($mysqli, $connection, &$scripts) {
             .'<div class="hr"></div>'
             .\Form\label('Last accessed', $accessed)
             .\Page\infoText($infoText),
-            \Page\newItemButton('../new/', 'Connection')
+            \Page\newItemButton(
+                '../new/'.\ItemList\escapedPageQuery(), 'Connection')
         )
         .authsPanel($mysqli, $connection)
         .create_panel('Connection Options', $optionsContent);

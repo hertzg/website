@@ -8,12 +8,16 @@ unset($_SESSION['admin/connections/view/messages']);
 
 $fnsDir = '../../../fns';
 
+include_once "$fnsDir/ItemList/escapedItemQuery.php";
+$escapedItemQuery = ItemList\escapedItemQuery($id);
+
 include_once '../fns/ViewPage/create.php';
 include_once "$fnsDir/Page/confirmDialog.php";
 $content =
     ViewPage\create($mysqli, $connection, $scripts)
     .Page\confirmDialog('Are you sure you want to delete the connection?',
-        'Yes, delete connection', "submit.php?id=$id", "../view/?id=$id");
+        'Yes, delete connection', "submit.php$escapedItemQuery",
+        "../view/$escapedItemQuery");
 
 include_once '../../fns/echo_admin_page.php';
 include_once "$fnsDir/compressed_css_link.php";

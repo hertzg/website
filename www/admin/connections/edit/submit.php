@@ -18,6 +18,9 @@ list($randomizeKey) = request_strings('randomizeKey');
 
 $randomizeKey = (bool)$randomizeKey;
 
+include_once "$fnsDir/ItemList/itemQuery.php";
+$itemQuery = ItemList\itemQuery($id);
+
 include_once "$fnsDir/redirect.php";
 
 if ($errors) {
@@ -29,7 +32,7 @@ if ($errors) {
         'expires' => $expires,
         'randomizeKey' => $randomizeKey,
     ];
-    redirect("./?id=$id");
+    redirect("./$itemQuery");
 }
 
 include_once "$fnsDir/AdminConnections/edit.php";
@@ -48,4 +51,4 @@ unset(
 
 $_SESSION['admin/connections/view/messages'] = ['Changes have been saved.'];
 
-redirect("../view/?id=$id");
+redirect("../view/$itemQuery");

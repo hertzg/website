@@ -23,7 +23,8 @@ if ($errors) {
         'their_exchange_api_key' => $their_exchange_api_key,
         'expires' => $expires,
     ];
-    redirect();
+    include_once "$fnsDir/ItemList/pageQuery.php";
+    redirect('./'.ItemList\pageQuery());
 }
 
 include_once "$fnsDir/AdminConnections/add.php";
@@ -39,4 +40,5 @@ $_SESSION['admin/connections/view/messages'] = [
     'Connection has been saved.',
 ];
 
-redirect("../view/?id=$id");
+include_once "$fnsDir/ItemList/itemQuery.php";
+redirect('../view/'.ItemList\itemQuery($id));

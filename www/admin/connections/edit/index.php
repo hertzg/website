@@ -24,13 +24,15 @@ unset($_SESSION['admin/connections/view/messages']);
 include_once '../fns/create_form_items.php';
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/checkbox.php";
+include_once "$fnsDir/ItemList/escapedItemQuery.php";
+include_once "$fnsDir/ItemList/itemHiddenInputs.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
     [
         [
             'title' => "Connection #$id",
-            'href' => "../view/?id=$id#edit",
+            'href' => '../view/'.ItemList\escapedItemQuery($id).'#edit',
         ],
     ],
     'Edit',
@@ -42,7 +44,7 @@ $content = Page\tabs(
             'Randomize our exchange API key', $values['randomizeKey'])
         .'<div class="hr"></div>'
         .Form\button('Save Changes')
-        ."<input type=\"hidden\" name=\"id\" value=\"$id\" />"
+        .ItemList\itemHiddenInputs($id)
     .'</form>'
 );
 
