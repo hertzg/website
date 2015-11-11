@@ -17,8 +17,7 @@ if ($keyword === '') {
     redirect('..');
 }
 
-$lowerKeyword = mb_strtolower($keyword, 'UTF-8');
-$regex = '/('.preg_quote($lowerKeyword, '/').')+/i';
+$regex = '/('.preg_quote($keyword, '/').')+/i';
 $replace = '<mark>$1</mark>';
 
 include_once "$fnsDir/SearchForm/content.php";
@@ -32,7 +31,7 @@ $found = false;
 include_once '../fns/get_methods.php';
 include_once "$fnsDir/Page/imageLinkWithDescription.php";
 foreach (get_methods() as $name => $description) {
-    if (strpos($name, $lowerKeyword) !== false) {
+    if (strpos($name, $keyword) !== false) {
         $found = true;
         $title = preg_replace($regex, $replace, $name);
         $items[] = Page\imageLinkWithDescription($title,
@@ -43,7 +42,7 @@ foreach (get_methods() as $name => $description) {
 include_once 'fns/get_full_groups.php';
 foreach (get_full_groups() as $groupKey => $group) {
 
-    if (strpos($groupKey, $lowerKeyword) !== false) {
+    if (strpos($groupKey, $keyword) !== false) {
         $found = true;
         $title = preg_replace($regex, $replace, $groupKey);
         $items[] = Page\imageLinkWithDescription($title,
@@ -52,7 +51,7 @@ foreach (get_full_groups() as $groupKey => $group) {
 
     foreach ($group['methods'] as $name => $description) {
         $title = "$groupKey/$name";
-        if (strpos($title, $lowerKeyword) !== false) {
+        if (strpos($title, $keyword) !== false) {
             $found = true;
             $title = preg_replace($regex, $replace, $title);
             $href = "../$groupKey/$name/";
@@ -65,7 +64,7 @@ foreach (get_full_groups() as $groupKey => $group) {
         foreach ($group['subgroups'] as $subgroupKey => $subgroup) {
 
             $title = "$groupKey/$subgroupKey";
-            if (strpos($title, $lowerKeyword) !== false) {
+            if (strpos($title, $keyword) !== false) {
                 $found = true;
                 $title = preg_replace($regex, $replace, $title);
                 $href = "../$groupKey/$subgroupKey/";
@@ -75,7 +74,7 @@ foreach (get_full_groups() as $groupKey => $group) {
 
             foreach ($subgroup['methods'] as $name => $description) {
                 $title = "$groupKey/$subgroupKey/$name";
-                if (strpos($title, $lowerKeyword) !== false) {
+                if (strpos($title, $keyword) !== false) {
                     $found = true;
                     $title = preg_replace($regex, $replace, $title);
                     $href = "../$groupKey/$subgroupKey/$name/";
