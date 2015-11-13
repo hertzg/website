@@ -14,7 +14,8 @@ function create ($mysqli, $user, $wallet, &$scripts, &$head) {
     $scripts = compressed_js_script('dateAgo', $base);
 
     include_once "$fnsDir/compressed_css_link.php";
-    $head = compressed_css_link('newItemMenu', $base);
+    $head = compressed_css_link('newItemMenu', $base)
+        .'<link rel="stylesheet" type="text/css" href="../view.css" />';
 
     include_once "$fnsDir/request_strings.php";
     list($keyword) = request_strings('keyword');
@@ -48,6 +49,7 @@ function create ($mysqli, $user, $wallet, &$scripts, &$head) {
     $expense = amount_html($expense)
         .' ('.amount_html($expense / $days).' daily)';
 
+    include_once __DIR__.'/cashflowPanel.php';
     include_once __DIR__.'/optionsPanel.php';
     include_once __DIR__.'/transactionsPanel.php';
     include_once "$fnsDir/Form/label.php";
@@ -77,6 +79,7 @@ function create ($mysqli, $user, $wallet, &$scripts, &$head) {
         .'<div class="hr"></div>'
         .\Form\label('Balance', amount_html($wallet->balance))
         .\Page\infoText($infoText)
+        .cashflowPanel($mysqli, $user, $wallet)
         .transactionsPanel($mysqli, $wallet)
         .optionsPanel($wallet, $user),
         \Page\newItemMenu(

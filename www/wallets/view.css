@@ -1,0 +1,43 @@
+.cashflow-numbers {
+    font-size: 12px;
+    line-height: 13px;
+}
+
+.cashflow-numbers-left {
+    float: left;
+}
+
+.cashflow-numbers-right {
+    float: right;
+}
+
+.cashflow-numbers-center {
+    text-align: center;
+}
+
+.cashflow-bars {
+    position: relative;
+    height: 5px;
+    background-color: rgba(136, 136, 136, 0.2);
+    border-radius: 2px;
+}
+
+.cashflow-bars-red {
+    position: absolute;
+    top: 0;
+    right: 50%;
+    bottom: 0;
+    border-radius: 2.5px 0 0 2.5px;
+    background-color: hsl(0, 90%, 50%);
+    border-bottom: 2px solid hsl(0, 90%, 45%);
+}
+
+.cashflow-bars-green {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    border-radius: 0 2.5px 2.5px 0;
+    background-color: hsl(120, 90%, 45%);
+    border-bottom: 2px solid hsl(120, 90%, 40%); 
+}
