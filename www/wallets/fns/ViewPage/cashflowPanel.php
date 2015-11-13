@@ -33,7 +33,7 @@ function cashflowPanel ($mysqli, $user, $wallet) {
 
     $max_income = $max_expense = 0;
     foreach ($transactions as $transaction) {
-        $key = date('Ym', $transaction->insert_time);
+        $key = date('Ym', $transaction->insert_time + $user->timezone * 60);
         $amount = $transaction->amount;
         if ($amount < 0) {
             $expense = &$months[$key]['expense'];
