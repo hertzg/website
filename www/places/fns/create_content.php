@@ -1,7 +1,6 @@
 <?php
 
-function create_content ($user, $total,
-    $filterMessage, $items, $base, $searchForm) {
+function create_content ($user, $total, $filterMessage, $items, $base) {
 
     $fnsDir = __DIR__.'/../../fns';
 
@@ -11,7 +10,7 @@ function create_content ($user, $total,
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
-    $content =
+    return
         Page\tabs(
             [
                 [
@@ -27,12 +26,5 @@ function create_content ($user, $total,
         )
         .sort_panel($user, $total, $base)
         .create_options_panel($user, $base);
-
-    if ($searchForm) {
-        include_once "$fnsDir/compressed_js_script.php";
-        $content .= compressed_js_script('searchForm', "$base../");
-    }
-
-    return $content;
 
 }

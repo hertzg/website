@@ -18,10 +18,10 @@ $pageParams = ItemList\pageParams();
 
 if (array_key_exists('keyword', $pageParams)) {
     include_once '../fns/SearchPage/create.php';
-    $content = SearchPage\create($mysqli, $user);
+    $content = SearchPage\create($mysqli, $user, $scripts);
 } else {
     include_once '../fns/create_page.php';
-    $content = create_page($mysqli, $user, '../');
+    $content = create_page($mysqli, $user, $scripts, '../');
 }
 
 include_once "$fnsDir/ItemList/listHref.php";
@@ -35,4 +35,5 @@ include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_user_page.php";
 echo_user_page($user, 'Delete All Contacts?', $content, $base, [
     'head' => compressed_css_link('confirmDialog', $base),
+    'scripts' => $scripts,
 ]);

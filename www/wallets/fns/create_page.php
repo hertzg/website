@@ -1,10 +1,9 @@
 <?php
 
-function create_page ($mysqli, $user, $base = '') {
+function create_page ($mysqli, $user, &$scripts, $base = '') {
 
     $fnsDir = __DIR__.'/../../fns';
 
-    $searchForm = false;
     $total = $user->num_wallets;
 
     if ($total) {
@@ -32,7 +31,8 @@ function create_page ($mysqli, $user, $base = '') {
             include_once "$fnsDir/SearchForm/create.php";
             $items[] = SearchForm\create("{$base}search/", $formContent);
 
-            $searchForm = true;
+            include_once "$fnsDir/compressed_js_script.php";
+            $scripts = compressed_js_script('searchForm', "$base../");
 
         }
 
@@ -64,6 +64,6 @@ function create_page ($mysqli, $user, $base = '') {
     unset_session_vars();
 
     include_once __DIR__.'/create_content.php';
-    return create_content($content, $user, $total, $base, $searchForm);
+    return create_content($content, $user, $total, $base);
 
 }

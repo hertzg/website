@@ -63,19 +63,20 @@ function create_content ($mysqli, $user, $items, $options, $base) {
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
-    return Page\tabs(
-        [
+    return
+        Page\tabs(
             [
-                'title' => 'Home',
-                'href' => "$base../home/#notifications",
+                [
+                    'title' => 'Home',
+                    'href' => "$base../home/#notifications",
+                ],
             ],
-        ],
-        'Notifications',
-        Page\sessionErrors('notifications/errors')
-        .Page\sessionMessages('notifications/messages')
-        .$filterBar
-        .join('<div class="hr"></div>', $items)
-        .create_panel('Options', join('<div class="hr"></div>', $options))
-    );
+            'Notifications',
+            Page\sessionErrors('notifications/errors')
+            .Page\sessionMessages('notifications/messages')
+            .$filterBar
+            .join('<div class="hr"></div>', $items)
+        )
+        .create_panel('Options', join('<div class="hr"></div>', $options));
 
 }

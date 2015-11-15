@@ -1,7 +1,6 @@
 <?php
 
-function create_content ($user, $total,
-    $filterMessage, $items, $base, $searchForm) {
+function create_content ($user, $total, $filterMessage, $items, $base) {
 
     $fnsDir = __DIR__.'/../../fns';
 
@@ -11,28 +10,22 @@ function create_content ($user, $total,
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
-    $content = Page\tabs(
-        [
+    return
+        Page\tabs(
             [
-                'title' => 'Home',
-                'href' => "$base../home/#bar-charts",
+                [
+                    'title' => 'Home',
+                    'href' => "$base../home/#bar-charts",
+                ],
             ],
-        ],
-        'Bar Charts',
-        Page\sessionErrors('bar-charts/errors')
-        .Page\sessionMessages('bar-charts/messages')
-        .$filterMessage
-        .join('<div class="hr"></div>', $items)
+            'Bar Charts',
+            Page\sessionErrors('bar-charts/errors')
+            .Page\sessionMessages('bar-charts/messages')
+            .$filterMessage
+            .join('<div class="hr"></div>', $items),
+            create_new_item_button('Bar Chart', $base)
+        )
         .sort_panel($user, $total, $base)
-        .create_options_panel($user, $base),
-        create_new_item_button('Bar Chart', $base)
-    );
-
-    if ($searchForm) {
-        include_once "$fnsDir/compressed_js_script.php";
-        $content .= compressed_js_script('searchForm', "$base../");
-    }
-
-    return $content;
+        .create_options_panel($user, $base);
 
 }

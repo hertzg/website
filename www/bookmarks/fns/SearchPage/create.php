@@ -2,7 +2,7 @@
 
 namespace SearchPage;
 
-function create ($mysqli, $user) {
+function create ($mysqli, $user, &$scripts) {
 
     $fnsDir = __DIR__.'/../../../fns';
     $id_users = $user->id_users;
@@ -10,6 +10,9 @@ function create ($mysqli, $user) {
 
     include_once "$fnsDir/request_valid_keyword_tag_offset.php";
     list($keyword, $tag, $offset) = request_valid_keyword_tag_offset();
+
+    include_once "$fnsDir/compressed_js_script.php";
+    $scripts = compressed_js_script('searchForm', '../../');
 
     $searchAction = './';
     $searchPlaceholder = 'Search bookmarks...';

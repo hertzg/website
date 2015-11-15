@@ -1,6 +1,6 @@
 <?php
 
-function create_page ($mysqli, $user, $base = '') {
+function create_page ($mysqli, $user, &$scripts, $base = '') {
 
     $fnsDir = __DIR__.'/../../fns';
     $id_users = $user->id_users;
@@ -13,14 +13,13 @@ function create_page ($mysqli, $user, $base = '') {
     $offset = Paging\requestOffset();
 
     $items = [];
+    $searchForm = false;
 
     $searchAction = "{$base}search/";
     $searchPlaceholder = 'Search places...';
 
     include_once "$fnsDir/Paging/limit.php";
     $limit = Paging\limit();
-
-    $searchForm = false;
 
     if ($tag === '') {
 
@@ -93,8 +92,12 @@ function create_page ($mysqli, $user, $base = '') {
     include_once __DIR__.'/unset_session_vars.php';
     unset_session_vars();
 
+    if ($searchForm) {
+        include_once "$fnsDir/compressed_js_script.php";
+        $scripts = compressed_js_script('searchForm', "$base../");
+    }
+
     include_once __DIR__.'/create_content.php';
-    return create_content($user, $total,
-        $filterMessage, $items, $base, $searchForm);
+    return create_content($user, $total, $filterMessage, $items, $base);
 
 }

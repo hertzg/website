@@ -11,7 +11,7 @@ $deleteAllHref = 'delete-all/'.ItemList\escapedPageQuery();
 
 include_once 'fns/create_page.php';
 include_once '../lib/mysqli.php';
-$content = create_page($mysqli, $user);
+$content = create_page($mysqli, $user, $scripts);
 
 if ($user->num_schedules) {
     include_once "$fnsDir/delete_all_confirm_dialog.php";
@@ -21,4 +21,7 @@ if ($user->num_schedules) {
 }
 
 include_once "$fnsDir/echo_user_page.php";
-echo_user_page($user, 'Schedules', $content, $base, ['head' => $head]);
+echo_user_page($user, 'Schedules', $content, $base, [
+    'head' => $head,
+    'scripts' => $scripts,
+]);

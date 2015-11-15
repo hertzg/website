@@ -1,6 +1,6 @@
 <?php
 
-function create_content ($content, $user, $total, $base, $searchForm) {
+function create_content ($content, $user, $total, $base) {
 
     $fnsDir = __DIR__.'/../../fns';
 
@@ -10,27 +10,21 @@ function create_content ($content, $user, $total, $base, $searchForm) {
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
-    $content = Page\tabs(
-        [
+    return
+        Page\tabs(
             [
-                'title' => 'Home',
-                'href' => "$base../home/#wallets",
+                [
+                    'title' => 'Home',
+                    'href' => "$base../home/#wallets",
+                ],
             ],
-        ],
-        'Wallets',
-        Page\sessionErrors('wallets/errors')
-        .Page\sessionMessages('wallets/messages')
-        .$content
+            'Wallets',
+            Page\sessionErrors('wallets/errors')
+            .Page\sessionMessages('wallets/messages')
+            .$content,
+            create_new_item_button('Wallet', $base)
+        )
         .sort_panel($user, $total, $base)
-        .create_options_panel($user, $base),
-        create_new_item_button('Wallet', $base)
-    );
-
-    if ($searchForm) {
-        include_once "$fnsDir/compressed_js_script.php";
-        $content .= compressed_js_script('searchForm', "$base../");
-    }
-
-    return $content;
+        .create_options_panel($user, $base);
 
 }

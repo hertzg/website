@@ -7,7 +7,7 @@ $fnsDir = '../../fns';
 
 include_once '../fns/SearchPage/create.php';
 include_once '../../lib/mysqli.php';
-$content = SearchPage\create($mysqli, $user);
+$content = SearchPage\create($mysqli, $user, $scripts);
 
 if ($user->num_schedules) {
     include_once "$fnsDir/delete_all_confirm_dialog.php";
@@ -17,4 +17,7 @@ if ($user->num_schedules) {
 }
 
 include_once "$fnsDir/echo_user_page.php";
-echo_user_page($user, 'Schedules', $content, '../../', ['head' => $head]);
+echo_user_page($user, 'Schedules', $content, '../../', [
+    'head' => $head,
+    'scripts' => $scripts,
+]);
