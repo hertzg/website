@@ -3,8 +3,10 @@
 include_once '../fns/require_admin.php';
 require_admin();
 
-unset($_SESSION['admin/messages']);
+include_once 'fns/unset_session_vars.php';
+unset_session_vars();
 
+$base = '../../';
 $fnsDir = '../../fns';
 
 include_once "$fnsDir/Paging/requestOffset.php";
@@ -25,7 +27,19 @@ $items = [];
 if ($invalidSignins) {
 
     include_once "$fnsDir/compressed_js_script.php";
-    $scripts = compressed_js_script('dateAgo', '../../');
+    $scripts = compressed_js_script('dateAgo', $base);
+
+    if ($total > 1) {
+
+        include_once "$fnsDir/SearchForm/emptyContent.php";
+        $content = SearchForm\emptyContent('Search signins...');
+
+        include_once "$fnsDir/SearchForm/create.php";
+        $items[] = SearchForm\create('search/', $content);
+
+        $scripts .= compressed_js_script('searchForm', $base);
+
+    }
 
     include_once 'fns/render_prev_button.php';
     render_prev_button($offset, $limit, $total, $items);
