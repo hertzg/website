@@ -22,6 +22,7 @@ function ensureAll ($mysqli) {
     include_once "$fnsDir/ContactPhotos/ensure.php";
     include_once "$fnsDir/Contacts/ensure.php";
     include_once "$fnsDir/ContactTags/ensure.php";
+    include_once "$fnsDir/CrossSiteApiKeys/ensure.php";
     include_once "$fnsDir/DeletedFiles/ensure.php";
     include_once "$fnsDir/DeletedFolders/ensure.php";
     include_once "$fnsDir/DeletedItems/ensure.php";
@@ -78,6 +79,7 @@ function ensureAll ($mysqli) {
         .\ContactPhotos\ensure($mysqli)
         .\Contacts\ensure($mysqli)
         .\ContactTags\ensure($mysqli)
+        .\CrossSiteApiKeys\ensure($mysqli)
         .\DeletedFiles\ensure($mysqli)
         .\DeletedFolders\ensure($mysqli)
         .\DeletedItems\ensure($mysqli)
