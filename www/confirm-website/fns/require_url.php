@@ -1,11 +1,11 @@
 <?php
 
-function require_url () {
+function require_url (&$user, &$url) {
 
     $fnsDir = __DIR__.'/../../fns';
 
     include_once "$fnsDir/require_user.php";
-    require_user('../');
+    $user = require_user('../');
 
     include_once "$fnsDir/request_strings.php";
     list($url) = request_strings('url');
@@ -21,7 +21,5 @@ function require_url () {
         redirect('../home/');
 
     }
-
-    return $url;
 
 }
