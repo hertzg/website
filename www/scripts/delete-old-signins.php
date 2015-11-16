@@ -8,7 +8,8 @@ include_once '../lib/mysqli.php';
 
 $microtime = microtime(true);
 
-$insert_time = time() - 2 * 30 * 24 * 60 * 60;
+$time = time();
+$insert_time = $time - 2 * 30 * 24 * 60 * 60;
 
 include_once '../fns/Signins/deleteOlder.php';
 Signins\deleteOlder($mysqli, $insert_time);
@@ -21,6 +22,9 @@ AdminApiKeyAuths\deleteOlder($mysqli, $insert_time);
 
 include_once '../fns/AdminConnectionAuths/deleteOlder.php';
 AdminConnectionAuths\deleteOlder($mysqli, $insert_time);
+
+include_once '../fns/CrossSiteApiKeys/deleteOlder.php';
+CrossSiteApiKeys\deleteOlder($mysqli, $time - 30 * 60);
 
 include_once '../fns/ApiKeyAuths/deleteOlder.php';
 ApiKeyAuths\deleteOlder($mysqli, $insert_time);
