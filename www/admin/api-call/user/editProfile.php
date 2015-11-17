@@ -6,34 +6,11 @@ require_admin_api_key('can_write_users', $apiKey, $mysqli);
 include_once 'fns/require_user.php';
 $user = require_user($mysqli);
 
+include_once 'fns/require_profile_params.php';
+require_profile_params($mysqli, $username,
+    $disabled, $expires, $user->id_users);
+
 $fnsDir = '../../../fns';
-
-include_once "$fnsDir/request_strings.php";
-list($username, $disabled, $expires) = request_strings(
-    'username', 'disabled', 'expires');
-
-$disabled = (bool)$disabled;
-$expires = (bool)$expires;
-
-include_once "$fnsDir/str_collapse_spaces.php";
-$username = str_collapse_spaces($username);
-
-if ($username === '') {
-    include_once "$fnsDir/ErrorJson/badRequest.php";
-    ErrorJson\badRequest('"ENTER_USERNAME"');
-}
-
-include_once "$fnsDir/Username/isValid.php";
-if (!Username\isValid($username)) {
-    include_once "$fnsDir/ErrorJson/badRequest.php";
-    ErrorJson\badRequest('"INVALID_USERNAME"');
-}
-
-include_once "$fnsDir/Users/getByUsername.php";
-if (Users\getByUsername($mysqli, $username, $user->id_users)) {
-    include_once "$fnsDir/ErrorJson/badRequest.php";
-    ErrorJson\badRequest('"USERNAME_UNAVAILABLE"');
-}
 
 include_once "$fnsDir/Password/match.php";
 $match = Password\match($user->password_hash, $user->password_salt,
