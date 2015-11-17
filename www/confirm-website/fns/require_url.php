@@ -1,6 +1,6 @@
 <?php
 
-function require_url (&$user, &$url) {
+function require_url (&$user, &$url, &$parsed_url) {
 
     $fnsDir = __DIR__.'/../../fns';
 

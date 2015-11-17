@@ -1,7 +1,7 @@
 <?php
 
 include_once 'fns/require_url.php';
-require_url($user, $url);
+require_url($user, $url, $parsed_url);
 
 $text = 'Allow the website at'
     .' "<b>'.htmlspecialchars($url).'</b>" to identify you?';
