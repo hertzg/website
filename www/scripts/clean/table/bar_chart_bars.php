@@ -13,7 +13,6 @@ $sql = 'delete from bar_chart_bars'
     .' or (!deleted and id_bar_charts not in (select id from bar_charts))';
 $mysqli->query($sql) || trigger_error($mysqli->error);
 $deleted = $mysqli->affected_rows;
-var_dump($deleted);
 
 $ids = [];
 $sql = "select data_json from deleted_items where data_type = 'barChart'";
