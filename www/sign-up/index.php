@@ -45,55 +45,56 @@ include_once '../fns/Page/title.php';
 include_once '../fns/Password/minLength.php';
 include_once '../fns/Username/maxLength.php';
 include_once '../fns/Username/minLength.php';
-$content = Page\title(
-    'Create an Account',
-    $pageErrors
-    .'<form action="submit.php" method="post">'
-        .Form\textfield('username', 'Username', [
-            'value' => $values['username'],
-            'maxlength' => Username\maxLength(),
-            'autofocus' => $focus === 'username',
-            'required' => true,
-        ])
-        .Form\notes([
-            'Case-sensitive.',
-            'Characters a-z, A-Z, 0-9, dash, dot and underscore only.',
-            'Minimum '.Username\minLength().' characters.',
-        ])
-        .'<div class="hr"></div>'
-        .Form\password('password', 'Password', [
-            'value' => $values['password'],
-            'autofocus' => $focus === 'password',
-            'required' => true,
-        ])
-        .Form\notes([
-            'Minimum '.Password\minLength().' characters.',
-            'Example: '.htmlspecialchars(example_password(9)),
-        ])
-        .'<div class="hr"></div>'
-        .Form\password('repeatPassword', 'Repeat password', [
-            'value' => $values['repeatPassword'],
-            'autofocus' => $focus === 'repeatPassword',
-            'required' => true,
-        ])
-        .'<div class="hr"></div>'
-        .Form\textfield('email', 'Email', [
-            'value' => $values['email'],
-            'maxlength' => Email\maxLength(),
-            'autofocus' => $focus === 'email',
-        ])
-        .Form\notes(['Optional. Used for password recovery.'])
-        .'<div class="hr"></div>'
-        .Form\captcha($base, $focus === 'captcha')
-        .Form\button('Create an Account')
-        .Form\hidden('return', $return)
-    .'</form>'
+$content =
+    Page\title(
+        'Create an Account',
+        $pageErrors
+        .'<form action="submit.php" method="post">'
+            .Form\textfield('username', 'Username', [
+                'value' => $values['username'],
+                'maxlength' => Username\maxLength(),
+                'autofocus' => $focus === 'username',
+                'required' => true,
+            ])
+            .Form\notes([
+                'Case-sensitive.',
+                'Characters a-z, A-Z, 0-9, dash, dot and underscore only.',
+                'Minimum '.Username\minLength().' characters.',
+            ])
+            .'<div class="hr"></div>'
+            .Form\password('password', 'Password', [
+                'value' => $values['password'],
+                'autofocus' => $focus === 'password',
+                'required' => true,
+            ])
+            .Form\notes([
+                'Minimum '.Password\minLength().' characters.',
+                'Example: '.htmlspecialchars(example_password(9)),
+            ])
+            .'<div class="hr"></div>'
+            .Form\password('repeatPassword', 'Repeat password', [
+                'value' => $values['repeatPassword'],
+                'autofocus' => $focus === 'repeatPassword',
+                'required' => true,
+            ])
+            .'<div class="hr"></div>'
+            .Form\textfield('email', 'Email', [
+                'value' => $values['email'],
+                'maxlength' => Email\maxLength(),
+                'autofocus' => $focus === 'email',
+            ])
+            .Form\notes(['Optional. Used for password recovery.'])
+            .'<div class="hr"></div>'
+            .Form\captcha($base, $focus === 'captcha')
+            .Form\button('Create an Account')
+            .Form\hidden('return', $return)
+        .'</form>'
+    )
     .create_panel(
         'Options',
         Page\imageLinkWithDescription('Already have an account?',
             'Sign in here.', "../sign-in/$queryString", 'sign-in')
-    )
-);
+    );
 
 include_once '../fns/echo_guest_page.php';
 echo_guest_page('Create an Account', $content, $base);
