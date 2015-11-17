@@ -4,9 +4,21 @@ function redirect_back ($user, $return) {
 
     $fnsDir = __DIR__.'/../../fns';
 
-    if (parse_url($return, PHP_URL_HOST) !== null) $return = '';
+    if ($return !== '') {
+        $parsed_url = parse_url($return);
+        if ($parsed_url === false || array_key_exists('scheme', $parsed_url) ||
+            array_key_exists('host', $parsed_url)) {
 
-    if ($return == '') {
+            $return = '';
+
+        } else {
+            if (array_key_exists('query', $parsed_url)) $return .= '&';
+            else $return .= '?';
+            $return .= 'just_signed_in=1';
+        }
+    }
+
+    if ($return === '') {
         $num_signins = $user->num_signins;
         if ($num_signins) {
 
