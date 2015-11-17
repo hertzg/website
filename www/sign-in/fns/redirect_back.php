@@ -8,7 +8,8 @@ function redirect_back ($user, $return) {
         $parsed_url = parse_url($return);
         if ($parsed_url === false ||
             array_key_exists('scheme', $parsed_url) ||
-            array_key_exists('host', $parsed_url)) {
+            array_key_exists('host', $parsed_url) ||
+            array_key_exists('fragment', $parsed_url)) {
 
             $return = '';
 
