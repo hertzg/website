@@ -22,9 +22,12 @@ $_SESSION['schedules/edit/values'] = [
     'tags' => $tags,
 ];
 
+include_once "$fnsDir/ItemList/itemQuery.php";
+$itemQuery = ItemList\itemQuery($id);
+
 if ($errors) {
     $_SESSION['schedules/edit/errors'] = $errors;
-    redirect("./?id=$id");
+    redirect("./$itemQuery");
 }
 
 unset($_SESSION['schedules/edit/errors']);
@@ -37,5 +40,4 @@ $_SESSION['schedules/edit/next/first_stage'] = [
     'tag_names' => $tag_names,
 ];
 
-include_once "$fnsDir/ItemList/itemQuery.php";
-redirect('next/'.ItemList\itemQuery($id));
+redirect("next/$itemQuery");
