@@ -1,10 +1,16 @@
 <?php
 
 function to_client_json ($receivedContact) {
+
+    $sender_username = $receivedContact->sender_username;
+    $sender_address = $receivedContact->sender_address;
+    if ($sender_address !== null) $sender_username .= "@$sender_address";
+
     $timezone = $receivedContact->timezone;
+
     return [
         'id' => (int)$receivedContact->id,
-        'sender_username' => $receivedContact->sender_username,
+        'sender_username' => $sender_username,
         'full_name' => $receivedContact->full_name,
         'alias' => $receivedContact->alias,
         'address' => $receivedContact->address,
@@ -24,4 +30,5 @@ function to_client_json ($receivedContact) {
         'favorite' => (bool)$receivedContact->favorite,
         'insert_time' => (int)$receivedContact->insert_time,
     ];
+
 }
