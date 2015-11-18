@@ -24,6 +24,10 @@ schedule_method_page('list', [], [
                 'description' => 'The number of days from January 1st 1970'
                     .' to the next day on which the schedule is effective.',
             ],
+            'tags' => [
+                'type' => 'string',
+                'description' => 'The space-separated list of tags.',
+            ],
             'insert_time' => [
                 'type' => 'number',
                 'description' =>
