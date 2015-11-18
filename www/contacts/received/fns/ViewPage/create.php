@@ -42,8 +42,12 @@ function create ($user, $receivedContact, &$head, &$scripts) {
 
     $timezone = $receivedContact->timezone;
     if ($timezone !== null) {
+
         include_once "$fnsDir/Form/timezoneLabel.php";
         $items[] = \Form\timezoneLabel($timezone);
+
+        $scripts .= compressed_js_script('timezoneLabel', '../../../');
+
     }
 
     $tags = $receivedContact->tags;

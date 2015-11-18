@@ -28,10 +28,6 @@ $content =
     .'<script type="text/javascript" defer="defer" src="../../view.js">'
     .'</script>';
 
-if ($receivedContact->timezone !== null) {
-    $scripts .= compressed_js_script('timezoneLabel', $base);
-}
-
 include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_user_page.php";
 echo_user_page($user, "Received Contact #$id", $content, $base, [
