@@ -22,6 +22,9 @@ function render_checkbox_items ($values, &$items) {
     $items[] = Form\checkbox('can_send_place',
         'Can send places', $values['can_send_place']);
 
+    $items[] = Form\checkbox('can_send_schedule',
+        'Can send schedules', $values['can_send_schedule']);
+
     $items[] = Form\checkbox('can_send_task',
         'Can send tasks', $values['can_send_task']);
 

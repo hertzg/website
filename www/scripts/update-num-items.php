@@ -35,6 +35,8 @@ include_once '../fns/ReceivedNotes/countArchivedOnReceiver.php';
 include_once '../fns/ReceivedNotes/countOnReceiver.php';
 include_once '../fns/ReceivedPlaces/countArchivedOnReceiver.php';
 include_once '../fns/ReceivedPlaces/countOnReceiver.php';
+include_once '../fns/ReceivedSchedules/countArchivedOnReceiver.php';
+include_once '../fns/ReceivedSchedules/countOnReceiver.php';
 include_once '../fns/ReceivedTasks/countArchivedOnReceiver.php';
 include_once '../fns/ReceivedTasks/countOnReceiver.php';
 include_once '../fns/Schedules/countOnUser.php';
@@ -62,6 +64,8 @@ foreach ($users as $user) {
         $mysqli, $id_users);
     $num_archived_received_places = ReceivedPlaces\countArchivedOnReceiver(
         $mysqli, $id_users);
+    $num_archived_received_schedules = ReceivedSchedules\countArchivedOnReceiver(
+        $mysqli, $id_users);
     $num_archived_received_tasks = ReceivedTasks\countArchivedOnReceiver(
         $mysqli, $id_users);
     $num_bar_charts = BarCharts\countOnUser($mysqli, $id_users);
@@ -88,6 +92,8 @@ foreach ($users as $user) {
         $mysqli, $id_users);
     $num_received_notes = ReceivedNotes\countOnReceiver($mysqli, $id_users);
     $num_received_places = ReceivedPlaces\countOnReceiver($mysqli, $id_users);
+    $num_received_schedules = ReceivedSchedules\countOnReceiver(
+        $mysqli, $id_users);
     $num_received_tasks = ReceivedTasks\countOnReceiver($mysqli, $id_users);
     $num_schedules = Schedules\countOnUser($mysqli, $id_users);
     $num_subscribed_channels = SubscribedChannels\countOnSubscriber(
@@ -100,12 +106,14 @@ foreach ($users as $user) {
         $num_archived_received_bookmarks, $num_archived_received_contacts,
         $num_archived_received_files, $num_archived_received_folders,
         $num_archived_received_notes, $num_archived_received_places,
-        $num_archived_received_tasks, $num_bar_charts, $num_bookmarks,
-        $num_channels, $num_connections, $num_contacts, $num_deleted_items,
+        $num_archived_received_schedules, $num_archived_received_tasks,
+        $num_bar_charts, $num_bookmarks, $num_channels,
+        $num_connections, $num_contacts, $num_deleted_items,
         $num_events, $num_files, $num_folders, $num_notes, $num_notifications,
         $num_password_protected_notes, $num_places, $num_received_bookmarks,
         $num_received_contacts, $num_received_files, $num_received_folders,
-        $num_received_notes, $num_received_places, $num_received_tasks,
+        $num_received_notes, $num_received_places,
+        $num_received_schedules, $num_received_tasks,
         $num_schedules, $num_subscribed_channels,
         $num_tasks, $num_tokens, $num_wallets);
 

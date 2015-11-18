@@ -59,6 +59,9 @@ function create ($mysqli, $deletedItem, $user, &$title, &$head, &$scripts) {
     } elseif ($type == 'receivedNote') {
         include_once __DIR__.'/renderReceivedNote.php';
         renderReceivedNote($data, $items, $infoText);
+    } elseif ($type == 'schedule' || $type == 'receivedSchedule') {
+        include_once __DIR__.'/renderSchedule.php';
+        renderSchedule($data, $user, $items);
     } elseif ($type == 'task' || $type == 'receivedTask') {
         include_once __DIR__.'/renderTask.php';
         renderTask($data, $user, $items, $infoText);
@@ -75,7 +78,7 @@ function create ($mysqli, $deletedItem, $user, &$title, &$head, &$scripts) {
     if ($type == 'receivedBookmark' || $type == 'receivedContact'
         || $type == 'receivedFile' || $type == 'receivedFolder'
         || $type == 'receivedNote' || $type == 'receivedPlace'
-        || $type == 'receivedTask') {
+        || $type == 'receivedSchedule' || $type == 'receivedTask') {
 
         include_once "$fnsDir/create_panel.php";
         include_once "$fnsDir/create_received_from_item.php";

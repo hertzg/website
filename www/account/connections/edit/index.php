@@ -22,6 +22,7 @@ else {
         'can_send_file' => $connection->can_send_file,
         'can_send_note' => $connection->can_send_note,
         'can_send_place' => $connection->can_send_place,
+        'can_send_schedule' => $connection->can_send_schedule,
         'can_send_task' => $connection->can_send_task,
     ];
 }

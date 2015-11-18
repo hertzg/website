@@ -10,5 +10,7 @@ function get_methods () {
         'edit' => 'Edits an existing schedule.',
         'get' => 'Returns a single existing schedule.',
         'list' => 'Returns a list of all schedules.',
+        'send' => 'Sends a new schedule.',
+        'sendExisting' => 'Sends an existing schedule.',
    ];
 }

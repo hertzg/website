@@ -15,7 +15,9 @@ function item_type_title ($type) {
     if ($type == 'receivedFolder') return 'Received Folder';
     if ($type == 'receivedNote') return 'Received Note';
     if ($type == 'receivedPlace') return 'Received Place';
+    if ($type == 'receivedSchedule') return 'Received Schedule';
     if ($type == 'receivedTask') return 'Received Task';
+    if ($type == 'schedule') return 'Schedule';
     if ($type == 'task') return 'Task';
     if ($type == 'wallet') return 'Wallet';
 }

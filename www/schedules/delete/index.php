@@ -16,9 +16,9 @@ include_once '../fns/ViewPage/create.php';
 include_once "$fnsDir/Page/confirmDialog.php";
 $content =
     ViewPage\create($user, $schedule, $scripts)
-    .Page\confirmDialog('Are you sure you want to delete the schedule?',
-        'Yes, delete schedule', "submit.php$escapedItemQuery",
-        "../view/$escapedItemQuery");
+    .Page\confirmDialog('Are you sure you want to delete the schedule?'
+        .' It will be moved to Trash.', 'Yes, delete schedule',
+        "submit.php$escapedItemQuery", "../view/$escapedItemQuery");
 
 include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_user_page.php";

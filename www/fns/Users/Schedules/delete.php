@@ -2,7 +2,7 @@
 
 namespace Users\Schedules;
 
-function delete ($mysqli, $user, $schedule) {
+function delete ($mysqli, $user, $schedule, $apiKey = null) {
 
     $id = $schedule->id;
     $fnsDir = __DIR__.'/../..';
@@ -24,5 +24,8 @@ function delete ($mysqli, $user, $schedule) {
 
     include_once __DIR__.'/invalidateIfNeeded.php';
     invalidateIfNeeded($mysqli, $user, $days_left);
+
+    include_once __DIR__.'/../DeletedItems/addSchedule.php';
+    \Users\DeletedItems\addSchedule($mysqli, $schedule, $apiKey);
 
 }

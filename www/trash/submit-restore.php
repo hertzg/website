@@ -61,9 +61,15 @@ if ($type == 'barChart') {
 } elseif ($type == 'receivedPlace') {
     include_once '../fns/Users/Places/Received/addDeleted.php';
     Users\Places\Received\addDeleted($mysqli, $id_users, $data);
+} elseif ($type == 'receivedSchedule') {
+    include_once '../fns/Users/Schedules/Received/addDeleted.php';
+    Users\Schedules\Received\addDeleted($mysqli, $id_users, $data);
 } elseif ($type == 'receivedTask') {
     include_once '../fns/Users/Tasks/Received/addDeleted.php';
     Users\Tasks\Received\addDeleted($mysqli, $id_users, $data);
+} elseif ($type == 'schedule') {
+    include_once '../fns/Users/Schedules/addDeleted.php';
+    Users\Schedules\addDeleted($mysqli, $user, $data);
 } elseif ($type == 'task') {
     include_once '../fns/Users/Tasks/addDeleted.php';
     Users\Tasks\addDeleted($mysqli, $user, $data);

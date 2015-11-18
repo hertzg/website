@@ -27,8 +27,9 @@ if (array_key_exists('keyword', $pageParams)) {
 include_once "$fnsDir/ItemList/listHref.php";
 include_once "$fnsDir/Page/confirmDialog.php";
 $content .= Page\confirmDialog(
-    'Are you sure you want to delete all the schedules?',
-    'Yes, delete all schedules', 'submit.php', ItemList\listHref());
+    'Are you sure you want to delete all the schedules?'
+    .' They will be moved to Trash.', 'Yes, delete all schedules',
+    'submit.php', ItemList\listHref());
 
 include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_user_page.php";

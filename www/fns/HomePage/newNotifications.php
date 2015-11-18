@@ -39,6 +39,12 @@ function newNotifications ($mysqli, $user) {
     $n = $user->home_num_new_received_notes;
     if ($n) $items[] = $n == 1 ? '<b>1</b> new note' : "<b>$n</b> new notes";
 
+    $n = $user->home_num_new_received_schedules;
+    if ($n) {
+        if ($n == 1) $items[] = '<b>1</b> new schedule';
+        else $items[] = "<b>$n</b> new schedules";
+    }
+
     $n = $user->home_num_new_received_tasks;
     if ($n) $items[] = $n == 1 ? '<b>1</b> new task' : "<b>$n</b> new tasks";
 

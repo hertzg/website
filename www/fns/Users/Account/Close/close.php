@@ -60,15 +60,8 @@ function close ($mysqli, $user) {
     include_once __DIR__.'/deletePlaces.php';
     deletePlaces($mysqli, $user);
 
-    if ($user->num_schedules) {
-
-        include_once "$fnsDir/Schedules/deleteOnUser.php";
-        \Schedules\deleteOnUser($mysqli, $id_users);
-
-        include_once "$fnsDir/ScheduleTags/deleteOnUser.php";
-        \ScheduleTags\deleteOnUser($mysqli, $id_users);
-
-    }
+    include_once __DIR__.'/deleteSchedules.php';
+    deleteSchedules($mysqli, $user);
 
     if ($user->num_subscribed_channels) {
         include_once "$fnsDir/SubscribedChannels/deleteContainingUser.php";

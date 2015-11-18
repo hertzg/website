@@ -23,9 +23,7 @@ function create ($user, $schedule, &$scripts) {
     $days_left = days_left_from_today($user, $interval, $schedule->offset);
 
     include_once __DIR__.'/../format_days_left.php';
-    $next = format_days_left($user, $days_left);
-
-    $items[] = \Form\label('Next', $next);
+    $items[] = \Form\label('Next', format_days_left($user, $days_left));
 
     if ($schedule->num_tags) {
         include_once "$fnsDir/Form/tags.php";

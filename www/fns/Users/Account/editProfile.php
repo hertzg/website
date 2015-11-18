@@ -45,6 +45,9 @@ function editProfile ($mysqli, $user, $username, $email,
         include_once "$fnsDir/ReceivedPlaces/editSenderUser.php";
         \ReceivedPlaces\editSenderUser($mysqli, $id_users, $username);
 
+        include_once "$fnsDir/ReceivedSchedules/editSenderUser.php";
+        \ReceivedSchedules\editSenderUser($mysqli, $id_users, $username);
+
         include_once "$fnsDir/ReceivedTasks/editSenderUser.php";
         \ReceivedTasks\editSenderUser($mysqli, $id_users, $username);
 

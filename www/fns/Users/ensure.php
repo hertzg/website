@@ -32,6 +32,7 @@ function ensure ($mysqli) {
         'anonymous_can_send_file' => ['type' => 'tinyint(3) unsigned'],
         'anonymous_can_send_note' => ['type' => 'tinyint(3) unsigned'],
         'anonymous_can_send_place' => ['type' => 'tinyint(3) unsigned'],
+        'anonymous_can_send_schedule' => ['type' => 'tinyint(3) unsigned'],
         'anonymous_can_send_task' => ['type' => 'tinyint(3) unsigned'],
         'api_keys_order_by' => [
             'type' => 'varchar(100)',
@@ -79,6 +80,7 @@ function ensure ($mysqli) {
         'home_num_new_received_folders' => ['type' => 'bigint(20) unsigned'],
         'home_num_new_received_notes' => ['type' => 'bigint(20) unsigned'],
         'home_num_new_received_places' => ['type' => 'bigint(20) unsigned'],
+        'home_num_new_received_schedules' => ['type' => 'bigint(20) unsigned'],
         'home_num_new_received_tasks' => ['type' => 'bigint(20) unsigned'],
         'id_users' => [
             'type' => 'bigint(20) unsigned',
@@ -108,6 +110,7 @@ function ensure ($mysqli) {
         'num_archived_received_folders' => ['type' => 'bigint(20) unsigned'],
         'num_archived_received_notes' => ['type' => 'bigint(20) unsigned'],
         'num_archived_received_places' => ['type' => 'bigint(20) unsigned'],
+        'num_archived_received_schedules' => ['type' => 'bigint(20) unsigned'],
         'num_archived_received_tasks' => ['type' => 'bigint(20) unsigned'],
         'num_bar_charts' => ['type' => 'bigint(20) unsigned'],
         'num_birthdays_today' => ['type' => 'bigint(20) unsigned'],
@@ -133,6 +136,7 @@ function ensure ($mysqli) {
         'num_received_folders' => ['type' => 'bigint(20) unsigned'],
         'num_received_notes' => ['type' => 'bigint(20) unsigned'],
         'num_received_places' => ['type' => 'bigint(20) unsigned'],
+        'num_received_schedules' => ['type' => 'bigint(20) unsigned'],
         'num_received_tasks' => ['type' => 'bigint(20) unsigned'],
         'num_schedules' => ['type' => 'bigint(20) unsigned'],
         'num_schedules_today' => ['type' => 'bigint(20) unsigned'],

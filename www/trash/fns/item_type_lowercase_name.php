@@ -9,6 +9,7 @@ function item_type_lowercase_name ($type) {
     if ($type == 'folder' || $type == 'receivedFolder') return 'Folder';
     if ($type == 'note' || $type == 'receivedNote') return 'Note';
     if ($type == 'place' || $type == 'receivedPlace') return 'Place';
+    if ($type == 'schedule' || $type == 'receivedSchedule') return 'Schedule';
     if ($type == 'task' || $type == 'receivedTask') return 'Task';
     if ($type == 'wallet') return 'Wallet';
 }

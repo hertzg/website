@@ -17,6 +17,7 @@ function ensure ($mysqli) {
         'can_send_file' => ['type' => 'tinyint(3) unsigned'],
         'can_send_note' => ['type' => 'tinyint(3) unsigned'],
         'can_send_place' => ['type' => 'tinyint(3) unsigned'],
+        'can_send_schedule' => ['type' => 'tinyint(3) unsigned'],
         'can_send_task' => ['type' => 'tinyint(3) unsigned'],
         'connected_id_users' => [
             'type' => 'bigint(20) unsigned',

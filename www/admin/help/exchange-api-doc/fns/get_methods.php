@@ -7,6 +7,7 @@ function get_methods () {
         'receiveContact' => 'Handle a contact sent to a user.',
         'receiveNote' => 'Handle a note sent to a user.',
         'receivePlace' => 'Handle a place sent to a user.',
+        'receiveSchedule' => 'Handle a schedule sent to a user.',
         'receiveTask' => 'Handle a task sent to a user.',
     ];
 }

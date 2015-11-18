@@ -2,6 +2,7 @@
 
 include_once '../fns/schedule_method_page.php';
 include_once '../../../../fns/ApiDoc/trueResult.php';
+include_once '../../../../fns/Tags/maxNumber.php';
 schedule_method_page('edit', [
     [
         'name' => 'id',
@@ -21,7 +22,12 @@ schedule_method_page('edit', [
         'description' => 'The number of days from January 1st 1970'
             .' to the next day on which the schedule is effective.',
     ],
+    [
+        'name' => 'tags',
+        'description' => 'A space-separated list of tags.',
+    ],
 ], ApiDoc\trueResult(), [
     'SCHEDULE_NOT_FOUND' => "A schedule with the ID doesn't exist.",
     'ENTER_TEXT' => 'The text is empty.',
+    'TOO_MANY_TAGS' => 'More than '.Tags\maxNumber().' tags given.',
 ]);

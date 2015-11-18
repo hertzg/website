@@ -1,6 +1,7 @@
 <?php
 
 include_once '../fns/schedule_method_page.php';
+include_once '../../../../fns/Tags/maxNumber.php';
 schedule_method_page('add', [
     [
         'name' => 'text',
@@ -16,9 +17,14 @@ schedule_method_page('add', [
         'description' => 'The number of days from January 1st 1970'
             .' to the next day on which the schedule is effective.',
     ],
+    [
+        'name' => 'tags',
+        'description' => 'A space-separated list of tags.',
+    ],
 ], [
     'type' => 'number',
     'description' => 'The ID of the newly created schedule.',
 ], [
     'ENTER_TEXT' => 'The text is empty.',
+    'TOO_MANY_TAGS' => 'More than '.Tags\maxNumber().' tags given.',
 ]);

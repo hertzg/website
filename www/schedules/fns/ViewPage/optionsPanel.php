@@ -24,6 +24,9 @@ function optionsPanel ($schedule) {
     $duplicateLink = \Page\imageArrowLink(
         'Duplicate', $href, 'duplicate-schedule');
 
+    $sendLink = \Page\imageArrowLink('Send',
+        "../send/$escapedItemQuery", 'send', ['id' => 'send']);
+
     include_once "$fnsDir/Page/imageLink.php";
     $href = "../delete/$escapedItemQuery";
     $deleteLink =
@@ -34,7 +37,7 @@ function optionsPanel ($schedule) {
     $content =
         \Page\staticTwoColumns($editLink, $duplicateLink)
         .'<div class="hr"></div>'
-        .$deleteLink;
+        .\Page\staticTwoColumns($sendLink, $deleteLink);
 
     include_once "$fnsDir/create_panel.php";
     return create_panel('Schedule Options', $content);

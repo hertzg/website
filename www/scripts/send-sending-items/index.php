@@ -105,6 +105,27 @@ if ($sending_places) {
     }
 }
 
+$sql = 'select * from sending_schedules order by insert_time';
+$sending_schedules = mysqli_query_object($mysqli, $sql);
+
+if ($sending_schedules) {
+    include_once '../../fns/SendingSchedules/delete.php';
+    foreach ($sending_schedules as $sending_schedule) {
+        $params = [
+            'exchange_api_key' => $sending_schedule->their_exchange_api_key,
+            'sender_username' => $sending_schedule->sender_username,
+            'receiver_username' => $sending_schedule->receiver_username,
+            'text' => $sending_schedule->text,
+            'interval' => $sending_schedule->interval,
+            'offset' => $sending_schedule->offset,
+            'tags' => $sending_schedule->tags,
+        ];
+        call_exchange_api_method('receiveSchedule',
+            $sending_schedule->receiver_address, $params);
+        SendingSchedules\delete($mysqli, $sending_schedule->id);
+    }
+}
+
 $sql = 'select * from sending_tasks order by insert_time';
 $sending_tasks = mysqli_query_object($mysqli, $sql);
 

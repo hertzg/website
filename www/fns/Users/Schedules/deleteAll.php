@@ -2,12 +2,22 @@
 
 namespace Users\Schedules;
 
-function deleteAll ($mysqli, $user) {
+function deleteAll ($mysqli, $user, $apiKey = null) {
 
     if (!$user->num_schedules) return;
 
     $id_users = $user->id_users;
     $fnsDir = __DIR__.'/../..';
+
+    include_once "$fnsDir/Schedules/indexOnUser.php";
+    $schedules = \Schedules\indexOnUser($mysqli, $id_users);
+
+    if ($schedules) {
+        include_once __DIR__.'/../DeletedItems/addSchedule.php';
+        foreach ($schedules as $schedule) {
+            \Users\DeletedItems\addSchedule($mysqli, $schedule, $apiKey);
+        }
+    }
 
     include_once "$fnsDir/Schedules/deleteOnUser.php";
     \Schedules\deleteOnUser($mysqli, $id_users);

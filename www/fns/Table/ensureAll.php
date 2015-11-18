@@ -46,6 +46,7 @@ function ensureAll ($mysqli) {
     include_once "$fnsDir/ReceivedFolderSubfolders/ensure.php";
     include_once "$fnsDir/ReceivedNotes/ensure.php";
     include_once "$fnsDir/ReceivedPlaces/ensure.php";
+    include_once "$fnsDir/ReceivedSchedules/ensure.php";
     include_once "$fnsDir/ReceivedTasks/ensure.php";
     include_once "$fnsDir/Schedules/ensure.php";
     include_once "$fnsDir/ScheduleTags/ensure.php";
@@ -53,6 +54,7 @@ function ensureAll ($mysqli) {
     include_once "$fnsDir/SendingContacts/ensure.php";
     include_once "$fnsDir/SendingNotes/ensure.php";
     include_once "$fnsDir/SendingPlaces/ensure.php";
+    include_once "$fnsDir/SendingSchedules/ensure.php";
     include_once "$fnsDir/SendingTasks/ensure.php";
     include_once "$fnsDir/Signins/ensure.php";
     include_once "$fnsDir/SubscribedChannels/ensure.php";
@@ -103,6 +105,7 @@ function ensureAll ($mysqli) {
         .\ReceivedFolderSubfolders\ensure($mysqli)
         .\ReceivedNotes\ensure($mysqli)
         .\ReceivedPlaces\ensure($mysqli)
+        .\ReceivedSchedules\ensure($mysqli)
         .\ReceivedTasks\ensure($mysqli)
         .\Schedules\ensure($mysqli)
         .\ScheduleTags\ensure($mysqli)
@@ -110,6 +113,7 @@ function ensureAll ($mysqli) {
         .\SendingContacts\ensure($mysqli)
         .\SendingNotes\ensure($mysqli)
         .\SendingPlaces\ensure($mysqli)
+        .\SendingSchedules\ensure($mysqli)
         .\SendingTasks\ensure($mysqli)
         .\Signins\ensure($mysqli)
         .\SubscribedChannels\ensure($mysqli)

@@ -16,6 +16,7 @@ function get_users_external_connection ($mysqli, $user, $username, $address) {
                 'can_send_file' => $connection->can_send_file,
                 'can_send_note' => $connection->can_send_note,
                 'can_send_place' => $connection->can_send_place,
+                'can_send_schedule' => $connection->can_send_schedule,
                 'can_send_task' => $connection->can_send_task,
             ];
         }
@@ -28,6 +29,7 @@ function get_users_external_connection ($mysqli, $user, $username, $address) {
         'can_send_file' => $user->anonymous_can_send_file,
         'can_send_note' => $user->anonymous_can_send_note,
         'can_send_place' => $user->anonymous_can_send_place,
+        'can_send_schedule' => $user->anonymous_can_send_schedule,
         'can_send_task' => $user->anonymous_can_send_task,
     ];
 

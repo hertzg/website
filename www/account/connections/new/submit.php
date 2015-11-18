@@ -11,9 +11,9 @@ $id_users = $user->id_users;
 
 include_once '../fns/request_connection_params.php';
 list($username, $address, $expires, $expire_time,
-    $can_send_bookmark, $can_send_channel,
-    $can_send_contact, $can_send_file, $can_send_note,
-    $can_send_place, $can_send_task) = request_connection_params();
+    $can_send_bookmark, $can_send_channel, $can_send_contact,
+    $can_send_file, $can_send_note, $can_send_place,
+    $can_send_schedule, $can_send_task) = request_connection_params();
 
 include_once '../fns/check_username.php';
 include_once '../../../lib/mysqli.php';
@@ -34,6 +34,7 @@ if ($errors) {
         'can_send_file' => $can_send_file,
         'can_send_note' => $can_send_note,
         'can_send_place' => $can_send_place,
+        'can_send_schedule' => $can_send_schedule,
         'can_send_task' => $can_send_task,
     ];
     redirect();
@@ -48,7 +49,8 @@ include_once "$fnsDir/Users/Connections/add.php";
 $id = Users\Connections\add($mysqli, $id_users,
     $connected_id_users, $username, $address, $expire_time,
     $can_send_bookmark, $can_send_channel, $can_send_contact,
-    $can_send_file, $can_send_note, $can_send_place, $can_send_task);
+    $can_send_file, $can_send_note, $can_send_place,
+    $can_send_schedule, $can_send_task);
 
 $_SESSION['account/connections/view/messages'] = ['Connection has been saved.'];
 

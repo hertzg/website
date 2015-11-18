@@ -2,7 +2,7 @@
 
 function format_permissions ($can_send_bookmark,
     $can_send_channel, $can_send_contact, $can_send_file,
-    $can_send_note, $can_send_place, $can_send_task) {
+    $can_send_note, $can_send_place, $can_send_schedule, $can_send_task) {
 
     $html = '';
 
@@ -19,6 +19,7 @@ function format_permissions ($can_send_bookmark,
     $add($can_send_file, 'Can send files.', 'Cannot send files.');
     $add($can_send_note, 'Can send notes.', 'Cannot send notes.');
     $add($can_send_place, 'Can send places.', 'Cannot send places.');
+    $add($can_send_schedule, 'Can send schedules.', 'Cannot send schedules.');
     $add($can_send_task, 'Can send tasks.', 'Cannot send tasks.');
 
     return $html;
