@@ -101,9 +101,9 @@ render($content, 'point.svg?2', $names);
 
 render($content, 'protocol.svg?1', ['protocol']);
 
-$names = ['schedule', 'create-schedule',
-    'edit-schedule', 'schedules', 'duplicate-schedule'];
-render($content, 'schedule.svg?4', $names);
+$names = ['schedule', 'create-schedule', 'edit-schedule',
+    'schedules', 'import-schedule', 'duplicate-schedule'];
+render($content, 'schedule.svg?5', $names);
 
 $names = ['sort-alphabetic', 'sort-time', 'sort-numeric'];
 render($content, 'sort.svg?1', $names);
