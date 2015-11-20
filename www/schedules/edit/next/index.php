@@ -16,6 +16,7 @@ include_once '../../fns/create_offset_select.php';
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/ItemList/itemHiddenInputs.php";
 include_once "$fnsDir/Page/imageLink.php";
+include_once "$fnsDir/Page/staticTwoColumns.php";
 include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
     [
@@ -30,7 +31,10 @@ $content = Page\tabs(
     .'<form action="submit.php" method="post">'
         .create_offset_select($user, $first_stage['interval'], $days_left)
         .'<div class="hr"></div>'
-        .Form\button('Save Changes')
+        .Page\staticTwoColumns(
+            Form\button('Save'),
+            Form\button('Send', 'sendButton')
+        )
         .ItemList\itemHiddenInputs($id)
     .'</form>'
 );

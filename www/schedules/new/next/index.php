@@ -12,6 +12,7 @@ include_once "$fnsDir/ItemList/listHref.php";
 include_once "$fnsDir/ItemList/pageHiddenInputs.php";
 include_once "$fnsDir/Page/imageLink.php";
 include_once "$fnsDir/Page/tabs.php";
+include_once "$fnsDir/Page/staticTwoColumns.php";
 $content = Page\tabs(
     [
         [
@@ -25,7 +26,10 @@ $content = Page\tabs(
     .'<form action="submit.php" method="post">'
         .create_offset_select($user, $first_stage['interval'], 0)
         .'<div class="hr"></div>'
-        .Form\button('Save Schedule')
+        .Page\staticTwoColumns(
+            Form\button('Save'),
+            Form\button('Send', 'sendButton')
+        )
         .ItemList\pageHiddenInputs()
     .'</form>'
 );

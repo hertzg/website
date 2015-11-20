@@ -16,6 +16,28 @@ $interval = $first_stage['interval'];
 include_once "$fnsDir/user_day.php";
 $offset = (user_day($user) + $days_left) % $interval;
 
+include_once "$fnsDir/ItemList/itemQuery.php";
+$itemQuery = ItemList\itemQuery($id);
+
+include_once "$fnsDir/redirect.php";
+
+include_once "$fnsDir/request_strings.php";
+list($sendButton) = request_strings('sendButton');
+if ($sendButton !== '') {
+    $_SESSION['schedules/edit/send/schedule'] = [
+        'text' => $first_stage['text'],
+        'interval' => $first_stage['interval'],
+        'tags' => $first_stage['tags'],
+        'offset' => $offset,
+    ];
+    unset(
+        $_SESSION['schedules/edit/send/errors'],
+        $_SESSION['schedules/edit/send/messages'],
+        $_SESSION['schedules/edit/send/values']
+    );
+    redirect("../send/$itemQuery");
+}
+
 include_once "$fnsDir/Users/Schedules/edit.php";
 include_once '../../../lib/mysqli.php';
 Users\Schedules\edit($mysqli, $user,
@@ -31,6 +53,4 @@ if ($changed) $message = 'Changes have been saved.';
 else $message = 'No changes to be saved.';
 $_SESSION['schedules/view/messages'] = [$message];
 
-include_once "$fnsDir/redirect.php";
-include_once "$fnsDir/ItemList/itemQuery.php";
-redirect('../../view/'.ItemList\itemQuery($id));
+redirect("../../view/$itemQuery");
