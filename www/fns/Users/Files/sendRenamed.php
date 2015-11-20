@@ -8,7 +8,7 @@ function sendRenamed ($mysqli, $user, $receiver_id_users, $file, $name) {
     $filePath = \Files\File\path($user->id_users, $file->id_files);
 
     include_once __DIR__.'/Received/add.php';
-    \Users\Files\Received\add($mysqli, $user, $receiver_id_users,
+    Received\add($mysqli, $user, $receiver_id_users,
         $name, $file->size, $filePath);
 
 }
