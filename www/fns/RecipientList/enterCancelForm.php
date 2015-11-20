@@ -4,20 +4,23 @@ namespace RecipientList;
 
 function enterCancelForm ($username, $params) {
 
-    include_once __DIR__.'/../Form/hidden.php';
+    $fnsDir = __DIR__.'/..';
+
     $hiddens = '';
-    foreach ($params as $key => $value) {
-        $hiddens .= \Form\hidden($key, $value);
+    $cancelHref = 'submit-cancel.php';
+    if ($params) {
+        include_once "$fnsDir/Form/hidden.php";
+        foreach ($params as $key => $value) {
+            $hiddens .= \Form\hidden($key, $value);
+        }
+        $cancelHref .= '?'.htmlspecialchars(http_build_query($params));
     }
 
-    $query = http_build_query($params);
-    $cancelHref = 'submit-cancel.php?'.htmlspecialchars($query);
-
-    include_once __DIR__.'/../Form/button.php';
-    include_once __DIR__.'/../Form/textfield.php';
-    include_once __DIR__.'/../Page/buttonLink.php';
-    include_once __DIR__.'/../Page/staticTwoColumns.php';
-    include_once __DIR__.'/../UsernameAddress/maxLength.php';
+    include_once "$fnsDir/Form/button.php";
+    include_once "$fnsDir/Form/textfield.php";
+    include_once "$fnsDir/Page/buttonLink.php";
+    include_once "$fnsDir/Page/staticTwoColumns.php";
+    include_once "$fnsDir/UsernameAddress/maxLength.php";
     return
         '<form action="submit-add.php" method="post">'
             .\Form\textfield('username', 'Zvini username', [
