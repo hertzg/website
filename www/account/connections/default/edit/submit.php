@@ -25,13 +25,15 @@ $can_send_place = (bool)$can_send_place;
 $can_send_schedule = (bool)$can_send_schedule;
 $can_send_task = (bool)$can_send_task;
 
-include_once "$fnsDir/Users/editAnonymousConnection.php";
+include_once "$fnsDir/Users/Account/editAnonymousConnection.php";
 include_once '../../../../lib/mysqli.php';
-Users\editAnonymousConnection($mysqli, $user->id_users, $can_send_bookmark,
-    $can_send_channel, $can_send_contact, $can_send_file, $can_send_note,
-    $can_send_place, $can_send_schedule, $can_send_task);
+Users\Account\editAnonymousConnection($mysqli, $user,
+    $can_send_bookmark, $can_send_channel, $can_send_contact,
+    $can_send_file, $can_send_note, $can_send_place,
+    $can_send_schedule, $can_send_task, $changed);
 
-$message = 'Changes have been saved.';
+if ($changed) $message = 'Changes have been saved.';
+else $message = 'No changes to be saved.';
 $_SESSION['account/connections/default/messages'] = [$message];
 
 include_once "$fnsDir/redirect.php";
