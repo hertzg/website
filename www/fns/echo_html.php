@@ -21,24 +21,14 @@ function echo_html ($title, $head, $body,
                 ." href=\"$theme_images/icon32.png?1\" />"
                 .'<link rel="icon" type="image/png" sizes="48x48"'
                 ." href=\"$theme_images/icon48.png\" />"
-                .'<link rel="icon" type="image/png" sizes="60x60"'
-                ." href=\"$theme_images/icon60.png\" />"
                 .'<link rel="icon" type="image/png" sizes="64x64"'
                 ." href=\"$theme_images/icon64.png\" />"
-                .'<link rel="icon" type="image/png" sizes="84x84"'
-                ." href=\"$theme_images/icon84.png\" />"
                 .'<link rel="icon" type="image/png" sizes="90x90"'
                 ." href=\"$theme_images/icon90.png\" />"
                 .'<link rel="icon" type="image/png" sizes="120x120"'
                 ." href=\"$theme_images/icon120.png\" />"
-                .'<link rel="icon" type="image/png" sizes="126x126"'
-                ." href=\"$theme_images/icon126.png\" />"
                 .'<link rel="icon" type="image/png" sizes="128x128"'
                 ." href=\"$theme_images/icon128.png\" />"
-                .'<link rel="icon" type="image/png" sizes="142x142"'
-                ." href=\"$theme_images/icon142.png\" />"
-                .'<link rel="icon" type="image/png" sizes="189x189"'
-                ." href=\"$theme_images/icon189.png\" />"
                 .'<link rel="icon" type="image/png" sizes="256x256"'
                 ." href=\"$theme_images/icon256.png\" />"
                 .'<link rel="icon" type="image/png" sizes="512x512"'
