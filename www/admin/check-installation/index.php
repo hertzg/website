@@ -27,9 +27,6 @@ $content .= assert_installed($ok, 'PHP Client URL Library "curl"');
 $ok = extension_loaded('gd');
 $content .= assert_installed($ok, 'PHP image processing and GD "gd"');
 
-$ok = extension_loaded('gmp');
-$content .= assert_installed($ok, 'GNU Multiple Precision "gmp"');
-
 $mysqliOk = extension_loaded('mysql');
 $text = 'PHP MySQL improved extension "mysqli"';
 $content .= assert_installed($mysqliOk, $text);

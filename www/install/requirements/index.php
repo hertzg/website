@@ -47,9 +47,6 @@ $assertsHtml .= assert_installed(extension_loaded('curl'), $subject);
 $subject = 'PHP image processing and GD "<code>gd</code>"';
 $assertsHtml .= assert_installed(extension_loaded('gd'), $subject);
 
-$subject = 'GNU Multiple Precision "<code>gmp</code>"';
-$assertsHtml .= assert_installed(extension_loaded('gmp'), $subject);
-
 $subject = 'PHP MySQL improved extension "<code>mysqli</code>"';
 $assertsHtml .= assert_installed(function_exists('mysql'), $subject);
 

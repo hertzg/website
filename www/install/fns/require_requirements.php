@@ -13,7 +13,7 @@ function require_requirements () {
         !array_key_exists('HTACCESS_WORKING', $_SERVER) ||
         date_default_timezone_get() !== 'UTC' ||
         !extension_loaded('curl') || !extension_loaded('gd') ||
-        !extension_loaded('gmp') || !extension_loaded('mysql') ||
+        !extension_loaded('mysql') ||
         !is_writable("$rootDir/data/contact-photos") ||
         !is_writable("$rootDir/data/users") ||
         !is_writable("$rootDir/.htaccess") ||
