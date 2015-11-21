@@ -4,11 +4,8 @@ function require_channel ($mysqli) {
 
     $fnsDir = __DIR__.'/../../fns';
 
-    include_once "$fnsDir/request_strings.php";
-    list($channel_name) = request_strings('channel_name');
-
-    include_once "$fnsDir/str_collapse_spaces.php";
-    $channel_name = str_collapse_spaces($channel_name);
+    include_once "$fnsDir/ChannelName/request.php";
+    $channel_name = ChannelName\request();
 
     if ($channel_name === '') {
         include_once "$fnsDir/ErrorJson/badRequest.php";

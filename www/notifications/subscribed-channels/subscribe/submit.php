@@ -9,11 +9,8 @@ include_once "$fnsDir/require_user.php";
 $user = require_user('../../../');
 $id_users = $user->id_users;
 
-include_once "$fnsDir/request_strings.php";
-list($channel_name) = request_strings('channel_name');
-
-include_once "$fnsDir/str_collapse_spaces.php";
-$channel_name = str_collapse_spaces($channel_name);
+include_once "$fnsDir/ChannelName/request.php";
+$channel_name = ChannelName\request();
 
 $errors = [];
 
