@@ -1,7 +1,6 @@
 <?php
 
 include_once '../fns/channel_method_page.php';
-include_once '../../../../fns/ChannelName/maxLength.php';
 include_once '../../../../fns/ChannelName/minLength.php';
 channel_method_page('add', [
     [
@@ -26,8 +25,5 @@ channel_method_page('add', [
     'CHANNEL_NAME_TOO_SHORT' =>
         'The channel name is shorter'
         .' than '.ChannelName\minLength().' characters.',
-    'CHANNEL_NAME_TOO_LONG' =>
-        'The channel name is longer'
-        .' than '.ChannelName\maxLength().' characters.',
     'CHANNEL_ALREADY_EXISTS' => 'A channel with the same name already exists.',
 ]);

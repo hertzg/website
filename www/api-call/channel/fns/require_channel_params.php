@@ -25,12 +25,6 @@ function require_channel_params ($mysqli, &$channel_name,
         ErrorJson\badRequest('"CHANNEL_NAME_TOO_SHORT"');
     }
 
-    include_once "$fnsDir/ChannelName/isLong.php";
-    if (ChannelName\isLong($channel_name)) {
-        include_once "$fnsDir/ErrorJson/badRequest.php";
-        ErrorJson\badRequest('"CHANNEL_NAME_TOO_LONG"');
-    }
-
     include_once "$fnsDir/Channels/getByName.php";
     if (Channels\getByName($mysqli, $channel_name, $exclude_id)) {
         include_once "$fnsDir/ErrorJson/badRequest.php";
