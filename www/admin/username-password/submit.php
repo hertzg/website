@@ -8,12 +8,12 @@ require_same_domain_referer('./');
 include_once '../fns/require_admin.php';
 require_admin();
 
-include_once "$fnsDir/request_strings.php";
-list($username, $password, $repeatPassword) = request_strings(
-    'username', 'password', 'repeatPassword');
+include_once "$fnsDir/Username/request.php";
+$username = Username\request();
 
-include_once "$fnsDir/str_collapse_spaces.php";
-$username = str_collapse_spaces($username);
+include_once "$fnsDir/request_strings.php";
+list($password, $repeatPassword) = request_strings(
+    'password', 'repeatPassword');
 
 include_once 'fns/check_username.php';
 check_username($username, $errors, $focus);

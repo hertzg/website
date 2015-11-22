@@ -9,9 +9,11 @@ include_once '../fns/require_user.php';
 include_once '../../../lib/mysqli.php';
 list($user, $id) = require_user($mysqli);
 
+include_once "$fnsDir/Username/request.php";
+$username = Username\request();
+
 include_once "$fnsDir/request_strings.php";
-list($username, $disabled, $expires) = request_strings(
-    'username', 'disabled', 'expires');
+list($disabled, $expires) = request_strings('disabled', 'expires');
 
 $disabled = (bool)$disabled;
 $expires = (bool)$expires;

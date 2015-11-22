@@ -2,9 +2,11 @@
 
 $fnsDir = '../../fns';
 
+include_once "$fnsDir/Username/request.php";
+$username = Username\request();
+
 include_once "$fnsDir/request_strings.php";
-list($username, $password, $remember) = request_strings(
-    'username', 'password', 'remember');
+list($password, $remember) = request_strings('password', 'remember');
 
 if ($username === '') {
     include_once "$fnsDir/ErrorJson/badRequest.php";

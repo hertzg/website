@@ -8,9 +8,12 @@ require_guest_user('../');
 
 unset($_SESSION['sign-in/messages']);
 
+include_once '../fns/Username/request.php';
+$username = Username\request();
+
 include_once '../fns/request_strings.php';
-list($username, $password, $remember, $return) = request_strings(
-    'username', 'password', 'remember', 'return');
+list($password, $remember, $return) = request_strings(
+    'password', 'remember', 'return');
 
 $remember = (bool)$remember;
 $errors = [];

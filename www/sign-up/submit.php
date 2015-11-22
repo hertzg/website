@@ -11,14 +11,12 @@ include_once '../fns/redirect.php';
 include_once '../fns/SignUpEnabled/get.php';
 if (!SignUpEnabled\get()) redirect();
 
-include_once '../fns/request_strings.php';
-list($username, $password, $repeatPassword,
-    $captcha, $return) = request_strings(
-    'username', 'password', 'repeatPassword',
-    'captcha', 'return');
+include_once '../fns/Username/request.php';
+$username = Username\request();
 
-include_once '../fns/str_collapse_spaces.php';
-$username = str_collapse_spaces($username);
+include_once '../fns/request_strings.php';
+list($password, $repeatPassword, $captcha, $return) = request_strings(
+    'password', 'repeatPassword', 'captcha', 'return');
 
 include_once '../fns/Email/request.php';
 $email = Email\request();
@@ -69,8 +67,6 @@ Captcha\reset();
 include_once '../fns/Cookie/set.php';
 Cookie\set('username', $username);
 
-$text = "$username has created an account.";
-
 include_once 'fns/send_email.php';
 send_email($username);
 
@@ -85,7 +81,7 @@ session_commit();
 include_once '../fns/get_zvini_client.php';
 get_zvini_client()->call('notification/post', [
     'channel_name' => 'zvini-signups',
-    'text' => $text,
+    'text' => "$username has created an account.",
 ]);
 
 if ($return === '') $queryString = '';

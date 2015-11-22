@@ -5,15 +5,14 @@ function require_profile_params ($mysqli,
 
     $fnsDir = __DIR__.'/../../../../fns';
 
+    include_once "$fnsDir/Username/request.php";
+    $username = Username\request();
+
     include_once "$fnsDir/request_strings.php";
-    list($username, $disabled, $expires) = request_strings(
-        'username', 'disabled', 'expires');
+    list($disabled, $expires) = request_strings('disabled', 'expires');
 
     $disabled = (bool)$disabled;
     $expires = (bool)$expires;
-
-    include_once "$fnsDir/str_collapse_spaces.php";
-    $username = str_collapse_spaces($username);
 
     if ($username === '') {
         include_once "$fnsDir/ErrorJson/badRequest.php";

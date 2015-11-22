@@ -9,8 +9,11 @@ include_once "$fnsDir/require_user.php";
 $user = require_user('../../');
 $id_users = $user->id_users;
 
+include_once "$fnsDir/Username/request.php";
+$username = Username\request();
+
 include_once "$fnsDir/request_strings.php";
-list($username, $timezone) = request_strings('username', 'timezone');
+list($timezone) = request_strings('timezone');
 
 include_once "$fnsDir/Email/request.php";
 $email = Email\request();
