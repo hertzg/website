@@ -28,6 +28,7 @@ include_once '../../fns/Form/password.php';
 include_once '../../fns/Form/textfield.php';
 include_once '../../fns/Page/sessionErrors.php';
 include_once '../../fns/Page/tabs.php';
+include_once '../../fns/Username/maxLength.php';
 $content = Page\tabs(
     [
         [
@@ -40,6 +41,7 @@ $content = Page\tabs(
     .'<form action="submit.php" method="post">'
         .Form\textfield('username', 'New username', [
             'value' => $values['username'],
+            'maxlength' => Username\maxLength(),
             'required' => true,
             'autofocus' => $focus === 'username',
         ])

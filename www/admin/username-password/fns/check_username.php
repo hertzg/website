@@ -19,15 +19,6 @@ function check_username ($username, &$errors, &$focus) {
         return;
     }
 
-    include_once "$fnsDir/Username/isLong.php";
-    if (Username\isLong($username)) {
-        include_once "$fnsDir/Username/maxLength.php";
-        $errors[] = 'New username too long. Maximum '
-            .Username\maxLength().' characters allowed.';
-        $focus = 'username';
-        return;
-    }
-
     include_once "$fnsDir/Username/containsIllegalChars.php";
     if (Username\containsIllegalChars($username)) {
         $errors[] = 'The new username contains illegal characters.';

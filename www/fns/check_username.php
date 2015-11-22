@@ -19,15 +19,6 @@ function check_username ($mysqli,
         return;
     }
 
-    include_once __DIR__.'/Username/isLong.php';
-    if (Username\isLong($username)) {
-        include_once __DIR__.'/Username/maxLength.php';
-        $maxLength = Username\maxLength();
-        $errors[] = "Username too long. Maximum $maxLength characters allowed.";
-        if ($focus === null) $focus = 'username';
-        return;
-    }
-
     include_once __DIR__.'/Username/containsIllegalChars.php';
     if (Username\containsIllegalChars($username)) {
         $errors[] = 'The username contains illegal characters.';

@@ -31,6 +31,7 @@ include_once '../fns/steps.php';
 include_once '../fns/wizard_layout.php';
 include_once '../../fns/example_password.php';
 include_once '../../fns/Password/minLength.php';
+include_once '../../fns/Username/maxLength.php';
 include_once '../../fns/Username/minLength.php';
 echo_page(
     'Step 5 - Administrator',
@@ -44,6 +45,7 @@ echo_page(
                 .'<br />'
                 .'<input class="textfield" type="text" required="required"'
                 .' name="username" id="usernameInput"'
+                .' maxlength="'.Username\maxLength().'"'
                 .' value="'.htmlspecialchars($username).'"'
                 .($focus == 'username' ? ' autofocus="autofocus"' : '').' />'
                 .'<div class="notes">'

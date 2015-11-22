@@ -13,13 +13,6 @@ function check_admin_username ($username) {
             .Username\minLength().' characters required.';
     }
 
-    include_once "$fnsDir/Username/isLong.php";
-    if (Username\isLong($username)) {
-        include_once "$fnsDir/Username/maxLength.php";
-        return 'Username too long. Maximum '
-            .Username\maxLength().' characters allowed.';
-    }
-
     include_once "$fnsDir/Username/containsIllegalChars.php";
     if (Username\containsIllegalChars($username)) {
         return 'The username contains illegal characters.';
