@@ -23,12 +23,16 @@ else {
 
 $focus = $values['focus'];
 
+include_once '../../fns/example_password.php';
 include_once '../../fns/Form/button.php';
+include_once '../../fns/Form/notes.php';
 include_once '../../fns/Form/password.php';
 include_once '../../fns/Form/textfield.php';
 include_once '../../fns/Page/sessionErrors.php';
 include_once '../../fns/Page/tabs.php';
+include_once '../../fns/Password/minLength.php';
 include_once '../../fns/Username/maxLength.php';
+include_once '../../fns/Username/minLength.php';
 $content = Page\tabs(
     [
         [
@@ -45,11 +49,20 @@ $content = Page\tabs(
             'required' => true,
             'autofocus' => $focus === 'username',
         ])
+        .Form\notes([
+            'Case-sensitive.',
+            'Characters a-z, A-Z, 0-9, dash, dot and underscore only.',
+            'Minimum '.Username\minLength().' characters.',
+        ])
         .'<div class="hr"></div>'
         .Form\password('password', 'New password', [
             'value' => $values['password'],
             'required' => true,
             'autofocus' => $focus === 'password',
+        ])
+        .Form\notes([
+            'Minimum '.Password\minLength().' characters.',
+            'Example: '.htmlspecialchars(example_password(15)),
         ])
         .'<div class="hr"></div>'
         .Form\password('repeatPassword', 'Repeat new password', [
