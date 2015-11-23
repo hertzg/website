@@ -51,6 +51,8 @@ if ($offset + $limit >= $total) {
     $items[] = Page\info('Older data not available');
 }
 
+include_once "$fnsDir/auth_expire_days.php";
+include_once "$fnsDir/Page/infoText.php";
 include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
     [
@@ -61,6 +63,10 @@ $content = Page\tabs(
     ],
     'Authentication History',
     join('<div class="hr"></div>', $items)
+    .Page\infoText(
+        'Authentications older than '.auth_expire_days()
+        .' days are automatically deleted.'
+    )
 );
 
 $title = "Connection #$id Authentication History";

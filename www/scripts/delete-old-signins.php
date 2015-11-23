@@ -9,7 +9,8 @@ include_once '../lib/mysqli.php';
 $microtime = microtime(true);
 
 $time = time();
-$insert_time = $time - 2 * 30 * 24 * 60 * 60;
+include_once '../fns/auth_expire_days.php';
+$insert_time = $time - auth_expire_days() * 24 * 60 * 60;
 
 include_once '../fns/Signins/deleteOlder.php';
 Signins\deleteOlder($mysqli, $insert_time);
