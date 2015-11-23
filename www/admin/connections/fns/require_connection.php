@@ -1,6 +1,6 @@
 <?php
 
-function require_connection ($mysqli) {
+function require_connection ($mysqli, $base = '') {
 
     $fnsDir = __DIR__.'/../../../fns';
 
@@ -20,7 +20,7 @@ function require_connection ($mysqli) {
         $_SESSION['admin/connections/errors'] = [$error];
         unset($_SESSION['admin/connections/messages']);
         include_once "$fnsDir/redirect.php";
-        redirect('..');
+        redirect("$base..");
     }
 
     return [$connection, $id];
