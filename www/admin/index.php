@@ -12,30 +12,11 @@ MysqlConfig\get($host, $username, $password, $db);
 $mysqli = @new mysqli($host, $username, $password, $db);
 
 include_once '../fns/Page/imageArrowLink.php';
-$title = 'MySQL Settings';
-$href = 'mysql-settings/';
-$icon = 'generic';
-$options = ['id' => 'mysql-settings'];
-if ($mysqli->connect_errno) {
-    $description =
-        '<span class="redText">'
-            ."The settings doesn't work. "
-            .htmlspecialchars($mysqli->connect_error)
-        .'</span>';
-    include_once '../fns/Page/imageArrowLinkWithDescription.php';
-    $mysqlLink = Page\imageArrowLinkWithDescription(
-        $title, $description, $href, $icon, $options);
-} else {
-    $mysqlLink = Page\imageArrowLink($title, $href, $icon, $options);
-}
-
 $helpLink = Page\imageArrowLink('Help', 'help/', 'help', ['id' => 'help']);
 
-include_once 'fns/create_admin_api_keys_link.php';
-include_once 'fns/create_connections_link.php';
+include_once 'fns/create_database_links.php';
 include_once 'fns/create_general_info_link.php';
-include_once 'fns/create_invitations_link.php';
-include_once 'fns/create_users_link.php';
+include_once 'fns/create_mysql_link.php';
 include_once '../fns/create_panel.php';
 include_once '../fns/Page/sessionMessages.php';
 include_once '../fns/Page/title.php';
@@ -45,7 +26,7 @@ $content =
         Page\sessionMessages('admin/messages')
         .create_general_info_link()
         .'<div class="hr"></div>'
-        .$mysqlLink
+        .create_mysql_link($mysqli)
         .'<div class="hr"></div>'
         .Page\imageArrowLink('Ensure Crontab',
             'ensure-crontab/', 'generic', ['id' => 'ensure-crontab'])
@@ -61,17 +42,7 @@ $content =
         .'<div class="hr"></div>'
         .Page\imageArrowLink('Set New Username/Password',
             'username-password/', 'generic', ['id' => 'username-password'])
-        .'<div class="hr"></div>'
-        .create_admin_api_keys_link($mysqli)
-        .'<div class="hr"></div>'
-        .create_connections_link($mysqli)
-        .'<div class="hr"></div>'
-        .Page\imageArrowLink('Invalid Signins', 'invalid-signins/',
-            'invalid-sign-ins', ['id' => 'invalid-signins'])
-        .'<div class="hr"></div>'
-        .create_invitations_link($mysqli)
-        .'<div class="hr"></div>'
-        .create_users_link($mysqli)
+        .create_database_links($mysqli)
     )
     .create_panel('Options', $helpLink);
 
