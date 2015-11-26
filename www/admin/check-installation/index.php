@@ -55,9 +55,20 @@ $subject = 'Optionally Image Processing (ImageMagick) "imagick"';
 $content .= assert_installed(extension_loaded('imagick'), $subject);
 
 if ($mysqliOk) {
-    include_once 'fns/check_user_data.php';
-    include_once '../../lib/mysqli.php';
-    $content .= check_user_data($mysqli);
+
+    include_once '../../fns/MysqlConfig/get.php';
+    MysqlConfig\get($host, $username, $password, $db);
+
+    $mysqli = @new mysqli($host, $username, $password, $db);
+
+    if ($mysqli->connect_errno) {
+        $content .= assert_failure(
+            'Failed to connect to MySQL server. Cannot continue.');
+    } else {
+        include_once 'fns/check_user_data.php';
+        $content .= check_user_data($mysqli);
+    }
+
 } else {
     $content .= assert_failure(
         'MySQL improved extension is required to continue.'
