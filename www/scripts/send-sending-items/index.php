@@ -14,6 +14,7 @@ $sending_bookmarks = SendingBookmarks\index($mysqli);
 
 if ($sending_bookmarks) {
     include_once '../../fns/SendingBookmarks/delete.php';
+    include_once '../../fns/SendingBookmarks/increaseNumFails.php';
     foreach ($sending_bookmarks as $sending_bookmark) {
         $params = [
             'exchange_api_key' => $sending_bookmark->their_exchange_api_key,
@@ -23,9 +24,13 @@ if ($sending_bookmarks) {
             'title' => $sending_bookmark->title,
             'tags' => $sending_bookmark->tags,
         ];
-        call_exchange_api_method('receiveBookmark',
+        $ok = call_exchange_api_method('receiveBookmark',
             $sending_bookmark->receiver_address, $params);
-        SendingBookmarks\delete($mysqli, $sending_bookmark->id);
+        if ($ok === false) {
+            SendingBookmarks\increaseNumFails($mysqli, $sending_bookmark->id);
+        } else {
+            SendingBookmarks\delete($mysqli, $sending_bookmark->id);
+        }
     }
 }
 
@@ -34,6 +39,7 @@ $sending_contacts = SendingContacts\index($mysqli);
 
 if ($sending_contacts) {
     include_once '../../fns/SendingContacts/delete.php';
+    include_once '../../fns/SendingContacts/increaseNumFails.php';
     foreach ($sending_contacts as $sending_contact) {
         $params = [
             'exchange_api_key' => $sending_contact->their_exchange_api_key,
@@ -56,9 +62,13 @@ if ($sending_contacts) {
             'notes' => $sending_contact->notes,
             'favorite' => $sending_contact->favorite,
         ];
-        call_exchange_api_method('receiveContact',
+        $ok = call_exchange_api_method('receiveContact',
             $sending_contact->receiver_address, $params);
-        SendingContacts\delete($mysqli, $sending_contact->id);
+        if ($ok === false) {
+            SendingContacts\increaseNumFails($mysqli, $sending_contact->id);
+        } else {
+            SendingContacts\delete($mysqli, $sending_contact->id);
+        }
     }
 }
 
@@ -67,6 +77,7 @@ $sending_notes = SendingNotes\index($mysqli);
 
 if ($sending_notes) {
     include_once '../../fns/SendingNotes/delete.php';
+    include_once '../../fns/SendingNotes/increaseNumFails.php';
     foreach ($sending_notes as $sending_note) {
         $params = [
             'exchange_api_key' => $sending_note->their_exchange_api_key,
@@ -76,9 +87,13 @@ if ($sending_notes) {
             'tags' => $sending_note->tags,
             'encrypt_in_listings' => $sending_note->encrypt_in_listings,
         ];
-        call_exchange_api_method('receiveNote',
+        $ok = call_exchange_api_method('receiveNote',
             $sending_note->receiver_address, $params);
-        SendingNotes\delete($mysqli, $sending_note->id);
+        if ($ok === false) {
+            SendingNotes\increaseNumFails($mysqli, $sending_note->id);
+        } else {
+            SendingNotes\delete($mysqli, $sending_note->id);
+        }
     }
 }
 
@@ -87,6 +102,7 @@ $sending_places = SendingPlaces\index($mysqli);
 
 if ($sending_places) {
     include_once '../../fns/SendingPlaces/delete.php';
+    include_once '../../fns/SendingPlaces/increaseNumFails.php';
     foreach ($sending_places as $sending_place) {
         $params = [
             'exchange_api_key' => $sending_place->their_exchange_api_key,
@@ -99,9 +115,13 @@ if ($sending_places) {
             'description' => $sending_place->description,
             'tags' => $sending_place->tags,
         ];
-        call_exchange_api_method('receivePlace',
+        $ok = call_exchange_api_method('receivePlace',
             $sending_place->receiver_address, $params);
-        SendingPlaces\delete($mysqli, $sending_place->id);
+        if ($ok === false) {
+            SendingPlaces\increaseNumFails($mysqli, $sending_place->id);
+        } else {
+            SendingPlaces\delete($mysqli, $sending_place->id);
+        }
     }
 }
 
@@ -110,6 +130,7 @@ $sending_schedules = SendingSchedules\index($mysqli);
 
 if ($sending_schedules) {
     include_once '../../fns/SendingSchedules/delete.php';
+    include_once '../../fns/SendingSchedules/increaseNumFails.php';
     foreach ($sending_schedules as $sending_schedule) {
         $params = [
             'exchange_api_key' => $sending_schedule->their_exchange_api_key,
@@ -120,9 +141,13 @@ if ($sending_schedules) {
             'offset' => $sending_schedule->offset,
             'tags' => $sending_schedule->tags,
         ];
-        call_exchange_api_method('receiveSchedule',
+        $ok = call_exchange_api_method('receiveSchedule',
             $sending_schedule->receiver_address, $params);
-        SendingSchedules\delete($mysqli, $sending_schedule->id);
+        if ($ok === false) {
+            SendingSchedules\increaseNumFails($mysqli, $sending_schedule->id);
+        } else {
+            SendingSchedules\delete($mysqli, $sending_schedule->id);
+        }
     }
 }
 
@@ -131,6 +156,7 @@ $sending_tasks = mysqli_query_object($mysqli, $sql);
 
 if ($sending_tasks) {
     include_once '../../fns/SendingTasks/delete.php';
+    include_once '../../fns/SendingTasks/increaseNumFails.php';
     foreach ($sending_tasks as $sending_task) {
         $params = [
             'exchange_api_key' => $sending_task->their_exchange_api_key,
@@ -141,9 +167,13 @@ if ($sending_tasks) {
             'tags' => $sending_task->tags,
             'top_priority' => $sending_task->top_priority,
         ];
-        call_exchange_api_method('receiveTask',
+        $ok = call_exchange_api_method('receiveTask',
             $sending_task->receiver_address, $params);
-        SendingTasks\delete($mysqli, $sending_task->id);
+        if ($ok === false) {
+            SendingTasks\increaseNumFails($mysqli, $sending_task->id);
+        } else {
+            SendingTasks\delete($mysqli, $sending_task->id);
+        }
     }
 }
 

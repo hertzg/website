@@ -12,30 +12,31 @@ function call_exchange_api_method ($method, $receiver_address, $params) {
 
     if ($response === false) {
         echo 'ERROR: '.curl_error($ch)."\n";
-        exit(1);
+        return false;
     }
 
     if (curl_getinfo($ch, CURLINFO_HTTP_CODE) !== 200) {
         $object = json_decode($response);
         if ($object === 'RECEIVER_NOT_RECEIVING') {
             // TODO do not ignore this event
-            return;
+            return false;
         } else {
             echo "ERROR: $response\n";
-            exit(1);
+            return false;
         }
     }
 
     $contentType = curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
     if ($contentType !== 'application/json') {
         echo "ERROR: $response\n";
-        exit(1);
+        return false;
     }
 
     $object = json_decode($response);
     if ($object !== true) {
         echo "ERROR: $response\n";
-        exit(1);
+        return false;
     }
 
+    return true;
 }
