@@ -19,7 +19,7 @@ function add ($mysqli, $id_users,
         .' text, `interval`, offset, tags, insert_time)'
         ." values ($id_users, '$sender_username', '$receiver_username',"
         ." '$receiver_address', '$their_exchange_api_key',"
-        ." '$text', $interval, $offset, $tags, $insert_time)";
+        ." '$text', $interval, $offset, '$tags', $insert_time)";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
