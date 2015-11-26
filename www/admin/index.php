@@ -10,6 +10,10 @@ include_once '../fns/MysqlConfig/get.php';
 MysqlConfig\get($host, $username, $password, $db);
 
 $mysqli = @new mysqli($host, $username, $password, $db);
+if (!$mysqli->connect_errno) {
+    include_once '../fns/Table/ensureAll.php';
+    \Table\ensureAll($mysqli);
+}
 
 include_once '../fns/Page/imageArrowLink.php';
 $helpLink = Page\imageArrowLink('Help', 'help/', 'help', ['id' => 'help']);
@@ -30,9 +34,6 @@ $content =
         .'<div class="hr"></div>'
         .Page\imageArrowLink('Ensure Crontab',
             'ensure-crontab/', 'generic', ['id' => 'ensure-crontab'])
-        .'<div class="hr"></div>'
-        .Page\imageArrowLink('Ensure Tables',
-            'ensure-tables/', 'generic', ['id' => 'ensure-tables'])
         .'<div class="hr"></div>'
         .Page\imageArrowLink('Ensure Data Folder',
             'ensure-data-dir/', 'generic', ['id' => 'ensure-data-dir'])

@@ -45,8 +45,13 @@ if ($mysqli->connect_errno) {
         htmlspecialchars($mysqli->connect_error),
     ]);
 } else {
+
     $errors = '';
     $messages[] = 'The settings work.';
+
+    include_once "$fnsDir/Table/ensureAll.php";
+    \Table\ensureAll($mysqli);
+
 }
 
 if ($messages) {
