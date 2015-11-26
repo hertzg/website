@@ -24,6 +24,7 @@ function ensure ($mysqli) {
         'id_users' => ['type' => 'bigint(20) unsigned'],
         'insert_time' => ['type' => 'bigint(20) unsigned'],
         'interval' => ['type' => 'bigint(20) unsigned'],
+        'num_fails' => ['type' => 'bigint(20) unsigned'],
         'offset' => ['type' => 'bigint(20) unsigned'],
         'receiver_address' => \ConnectionAddress\column(),
         'receiver_username' => $usernameColumn,

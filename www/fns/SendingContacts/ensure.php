@@ -63,6 +63,7 @@ function ensure ($mysqli) {
             'characterSet' => 'utf8',
             'collation' => 'utf8_general_ci',
         ],
+        'num_fails' => ['type' => 'bigint(20) unsigned'],
         'phone1' => [
             'type' => "varchar($maxLengths[phone1])",
             'characterSet' => 'utf8',

@@ -39,6 +39,7 @@ function ensure ($mysqli) {
             'characterSet' => 'utf8',
             'collation' => 'utf8_unicode_ci',
         ],
+        'num_fails' => ['type' => 'bigint(20) unsigned'],
         'receiver_address' => \ConnectionAddress\column(),
         'receiver_username' => $usernameColumn,
         'sender_username' => $usernameColumn,
