@@ -9,8 +9,8 @@ include_once 'fns/call_exchange_api_method.php';
 
 $microtime = microtime(true);
 
-$sql = 'select * from sending_bookmarks order by insert_time';
-$sending_bookmarks = mysqli_query_object($mysqli, $sql);
+include_once '../../fns/SendingBookmarks/index.php';
+$sending_bookmarks = SendingBookmarks\index($mysqli);
 
 if ($sending_bookmarks) {
     include_once '../../fns/SendingBookmarks/delete.php';
@@ -29,8 +29,8 @@ if ($sending_bookmarks) {
     }
 }
 
-$sql = 'select * from sending_contacts order by insert_time';
-$sending_contacts = mysqli_query_object($mysqli, $sql);
+include_once '../../fns/SendingContacts/index.php';
+$sending_contacts = SendingContacts\index($mysqli);
 
 if ($sending_contacts) {
     include_once '../../fns/SendingContacts/delete.php';
@@ -62,8 +62,8 @@ if ($sending_contacts) {
     }
 }
 
-$sql = 'select * from sending_notes order by insert_time';
-$sending_notes = mysqli_query_object($mysqli, $sql);
+include_once '../../fns/SendingNotes/index.php';
+$sending_notes = SendingNotes\index($mysqli);
 
 if ($sending_notes) {
     include_once '../../fns/SendingNotes/delete.php';
@@ -82,8 +82,8 @@ if ($sending_notes) {
     }
 }
 
-$sql = 'select * from sending_places order by insert_time';
-$sending_places = mysqli_query_object($mysqli, $sql);
+include_once '../../fns/SendingPlaces/index.php';
+$sending_places = SendingPlaces\index($mysqli);
 
 if ($sending_places) {
     include_once '../../fns/SendingPlaces/delete.php';
@@ -105,8 +105,8 @@ if ($sending_places) {
     }
 }
 
-$sql = 'select * from sending_schedules order by insert_time';
-$sending_schedules = mysqli_query_object($mysqli, $sql);
+include_once '../../fns/SendingSchedules/index.php';
+$sending_schedules = SendingSchedules\index($mysqli);
 
 if ($sending_schedules) {
     include_once '../../fns/SendingSchedules/delete.php';
