@@ -48,6 +48,6 @@ function getHomeItems ($mysqli, $user, &$scripts) {
     foreach ($order_home_items as $key) {
         if (array_key_exists($key, $items)) $sortedItems[] = $items[$key];
     }
-    return $sortedItems;
+    return join('<div class="hr"></div>', $sortedItems);
 
 }
