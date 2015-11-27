@@ -48,6 +48,23 @@ function getHomeItems ($mysqli, $user, &$scripts) {
     foreach ($order_home_items as $key) {
         if (array_key_exists($key, $items)) $sortedItems[] = $items[$key];
     }
-    return join('<div class="hr"></div>', $sortedItems);
+
+    $html = '<div class="thumbnails">';
+    foreach ($sortedItems as $i => $item) {
+
+        $additionalClass = '';
+        if ($i % 3 === 1) $additionalClass = ' wide_of_three';
+        if ($i % 7 === 1 || $i % 7 === 4) $additionalClass = ' wide_of_seven';
+
+        $html .= "<div class=\"thumbnails-item$additionalClass\">$item</div>";
+        if ($i % 3 === 2) $html .= '<span class="hr thumbnails-br n3"></span>';
+        if ($i % 4 === 3) $html .= '<span class="hr thumbnails-br n4"></span>';
+        if ($i % 5 === 4) $html .= '<span class="hr thumbnails-br n5"></span>';
+        if ($i % 6 === 5) $html .= '<span class="hr thumbnails-br n6"></span>';
+        if ($i % 7 === 6) $html .= '<span class="hr thumbnails-br n7"></span>';
+
+    }
+    $html .= '</div>';
+    return $html;
 
 }

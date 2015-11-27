@@ -25,19 +25,19 @@ function renderNotifications ($user, &$items) {
                 $description .= " $num_notifications total.";
             }
 
-            include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
-            $link = \Page\imageArrowLinkWithDescription($title,
+            include_once "$fnsDir/Page/thumbnailLinkWithDescription.php";
+            $link = \Page\thumbnailLinkWithDescription($title,
                 $description, $href, 'notification', $options);
 
         } else {
             $description = "$num_notifications total.";
-            include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
-            $link = \Page\imageArrowLinkWithDescription($title,
+            include_once "$fnsDir/Page/thumbnailLinkWithDescription.php";
+            $link = \Page\thumbnailLinkWithDescription($title,
                 $description, $href, 'old-notification', $options);
         }
     } else {
-        include_once "$fnsDir/Page/imageArrowLink.php";
-        $link = \Page\imageArrowLink($title,
+        include_once "$fnsDir/Page/thumbnailLink.php";
+        $link = \Page\thumbnailLink($title,
             $href, 'old-notification', $options);
     }
 

@@ -7,8 +7,8 @@ function renderContacts ($user, &$items) {
     $fnsDir = __DIR__.'/..';
 
     if ($user->show_new_contact) {
-        include_once "$fnsDir/Page/imageArrowLink.php";
-        $items['new-contact'] = \Page\imageArrowLink(
+        include_once "$fnsDir/Page/thumbnailLink.php";
+        $items['new-contact'] = \Page\thumbnailLink(
             'New Contact', '../contacts/new/', 'create-contact');
     }
 
@@ -30,13 +30,13 @@ function renderContacts ($user, &$items) {
         }
         $description = join(' ', $descriptions);
 
-        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
-        $link = \Page\imageArrowLinkWithDescription(
+        include_once "$fnsDir/Page/thumbnailLinkWithDescription.php";
+        $link = \Page\thumbnailLinkWithDescription(
             $title, $description, $href, $icon, $options);
 
     } else {
-        include_once "$fnsDir/Page/imageArrowLink.php";
-        $link = \Page\imageArrowLink($title, $href, $icon, $options);
+        include_once "$fnsDir/Page/thumbnailLink.php";
+        $link = \Page\thumbnailLink($title, $href, $icon, $options);
     }
 
     $items['contacts'] = $link;

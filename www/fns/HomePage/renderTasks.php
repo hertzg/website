@@ -7,8 +7,8 @@ function renderTasks ($user, &$items) {
     $fnsDir = __DIR__.'/..';
 
     if ($user->show_new_task) {
-        include_once "$fnsDir/Page/imageArrowLink.php";
-        $items['new-task'] = \Page\imageArrowLink(
+        include_once "$fnsDir/Page/thumbnailLink.php";
+        $items['new-task'] = \Page\thumbnailLink(
             'New Task', '../tasks/new/', 'create-task');
     }
 
@@ -30,13 +30,13 @@ function renderTasks ($user, &$items) {
         }
         $description = join(' ', $descriptions);
 
-        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
-        $link = \Page\imageArrowLinkWithDescription($title,
+        include_once "$fnsDir/Page/thumbnailLinkWithDescription.php";
+        $link = \Page\thumbnailLinkWithDescription($title,
             $description, $href, $icon, $options);
 
     } else {
-        include_once "$fnsDir/Page/imageArrowLink.php";
-        $link = \Page\imageArrowLink($title, $href, $icon, $options);
+        include_once "$fnsDir/Page/thumbnailLink.php";
+        $link = \Page\thumbnailLink($title, $href, $icon, $options);
     }
 
     $items['tasks'] = $link;

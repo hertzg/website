@@ -7,8 +7,8 @@ function renderNotes ($user, &$items) {
     $fnsDir = __DIR__.'/..';
 
     if ($user->show_new_note) {
-        include_once "$fnsDir/Page/imageArrowLink.php";
-        $items['new-note'] = \Page\imageArrowLink(
+        include_once "$fnsDir/Page/thumbnailLink.php";
+        $items['new-note'] = \Page\thumbnailLink(
             'New Note', '../notes/new/', 'create-note');
     }
 
@@ -30,13 +30,13 @@ function renderNotes ($user, &$items) {
         }
         $description = join(' ', $descriptions);
 
-        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
-        $link = \Page\imageArrowLinkWithDescription($title,
+        include_once "$fnsDir/Page/thumbnailLinkWithDescription.php";
+        $link = \Page\thumbnailLinkWithDescription($title,
             $description, $href, $icon, $options);
 
     } else {
-        include_once "$fnsDir/Page/imageArrowLink.php";
-        $link = \Page\imageArrowLink($title, $href, $icon, $options);
+        include_once "$fnsDir/Page/thumbnailLink.php";
+        $link = \Page\thumbnailLink($title, $href, $icon, $options);
     }
 
     $items['notes'] = $link;

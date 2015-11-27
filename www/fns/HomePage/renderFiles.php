@@ -7,8 +7,8 @@ function renderFiles ($user, &$items) {
     $fnsDir = __DIR__.'/..';
 
     if ($user->show_upload_files) {
-        include_once "$fnsDir/Page/imageArrowLink.php";
-        $items['upload-files'] = \Page\imageArrowLink(
+        include_once "$fnsDir/Page/thumbnailLink.php";
+        $items['upload-files'] = \Page\thumbnailLink(
             'Upload Files', '../files/upload-files/', 'upload');
     }
 
@@ -35,13 +35,13 @@ function renderFiles ($user, &$items) {
         }
         $description = join(' ', $descriptions);
 
-        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
-        $link = \Page\imageArrowLinkWithDescription($title,
+        include_once "$fnsDir/Page/thumbnailLinkWithDescription.php";
+        $link = \Page\thumbnailLinkWithDescription($title,
             $description, $href, $icon, $options);
 
     } else {
-        include_once "$fnsDir/Page/imageArrowLink.php";
-        $link = \Page\imageArrowLink($title, $href, $icon, $options);
+        include_once "$fnsDir/Page/thumbnailLink.php";
+        $link = \Page\thumbnailLink($title, $href, $icon, $options);
     }
 
     $items['files'] = $link;

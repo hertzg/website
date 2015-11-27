@@ -7,8 +7,8 @@ function renderCalendar ($user, $mysqli, &$items, &$scripts) {
     $fnsDir = __DIR__.'/..';
 
     if ($user->show_new_event) {
-        include_once "$fnsDir/Page/imageArrowLink.php";
-        $items['new-event'] = \Page\imageArrowLink(
+        include_once "$fnsDir/Page/thumbnailLink.php";
+        $items['new-event'] = \Page\thumbnailLink(
             'New Event', '../calendar/new-event/', 'create-event');
     }
 
@@ -64,11 +64,11 @@ function renderCalendar ($user, $mysqli, &$items, &$scripts) {
     $items['calendar'] =
         '<a name="calendar"></a>'
         .'<a href="../calendar/" id="calendar"'
-        .' class="clickable link image_link withArrow">'
-            .'<span class="image_link-icon">'
+        .' class="clickable link thumbnail_link">'
+            .'<span class="thumbnail_link-icon">'
                 .create_calendar_icon_today($user)
             .'</span>'
-            ."<span class=\"image_link-content\">$content</span>"
+            ."<span class=\"thumbnail_link-content\">$content</span>"
         .'</a>';
 
 }

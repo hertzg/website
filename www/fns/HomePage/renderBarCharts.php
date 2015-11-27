@@ -7,8 +7,8 @@ function renderBarCharts ($user, &$items) {
     $fnsDir = __DIR__.'/..';
 
     if ($user->show_new_bar_chart) {
-        include_once "$fnsDir/Page/imageArrowLink.php";
-        $items['new-bar-chart'] = \Page\imageArrowLink(
+        include_once "$fnsDir/Page/thumbnailLink.php";
+        $items['new-bar-chart'] = \Page\thumbnailLink(
             'New Bar Chart', '../bar-charts/new/', 'create-bar-chart');
     }
 
@@ -22,13 +22,13 @@ function renderBarCharts ($user, &$items) {
     $options = ['id' => 'bar-charts'];
     if ($num_bar_charts) {
 
-        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
-        $link = \Page\imageArrowLinkWithDescription($title,
+        include_once "$fnsDir/Page/thumbnailLinkWithDescription.php";
+        $link = \Page\thumbnailLinkWithDescription($title,
             "$num_bar_charts total.", $href, $icon, $options);
 
     } else {
-        include_once "$fnsDir/Page/imageArrowLink.php";
-        $link = \Page\imageArrowLink($title, $href, $icon, $options);
+        include_once "$fnsDir/Page/thumbnailLink.php";
+        $link = \Page\thumbnailLink($title, $href, $icon, $options);
     }
 
     $items['bar-charts'] = $link;

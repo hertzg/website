@@ -6,8 +6,8 @@ CompressCssFiles([
     'textList', 'form', 'form-textfield', 'form-select',
     'form-property', 'form-value', 'form-captcha', 'clickable',
     'form-checkbox', 'tab', 'topLink', 'filterBar', 'imageText',
-    'image_link', 'panel', 'title_and_description', 'tag',
-    'twoColumns', 'source_code', 'preview', 'navigation',
+    'thumbnail_link', 'image_link', 'panel', 'title_and_description',
+    'tag', 'twoColumns', 'source_code', 'preview', 'navigation',
     'rightButton', 'removableItem', 'removableTextItem',
-    'newItemButton', 'search_form', 'textAndButtons',
+    'newItemButton', 'search_form', 'textAndButtons',, 'thumbnails'
 ])
