@@ -18,6 +18,10 @@
     color: #39e;
 }
 
+.a:focus {
+    background-color: rgba(51, 153, 238, 0.2);
+}
+
 #tbar,
 .tag:focus,
 .newItemButton:focus {
