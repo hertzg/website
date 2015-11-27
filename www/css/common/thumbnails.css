@@ -36,10 +36,10 @@
 
 @media (min-width: 751px) {
     .thumbnails-item {
-        width: 16%;
-    }
-    .thumbnails-item.wide_of_seven {
         width: 17%;
+    }
+    .thumbnails-item.narrow_of_six {
+        width: 16%;
     }
     .thumbnails-br.n6 {
         display: block;

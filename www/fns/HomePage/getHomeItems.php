@@ -53,8 +53,8 @@ function getHomeItems ($mysqli, $user, &$scripts) {
     foreach ($sortedItems as $i => $item) {
 
         $additionalClass = '';
-        if ($i % 3 === 1) $additionalClass = ' wide_of_three';
-        if ($i % 7 === 1 || $i % 7 === 4) $additionalClass = ' wide_of_seven';
+        if ($i % 3 === 1) $additionalClass .= ' wide_of_three';
+        if ($i % 6 === 1 || $i % 6 === 4) $additionalClass .= ' narrow_of_six';
 
         $html .= "<div class=\"thumbnails-item$additionalClass\">$item</div>";
         if ($i % 3 === 2) $html .= '<span class="hr thumbnails-br n3"></span>';
