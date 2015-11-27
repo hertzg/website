@@ -8,8 +8,6 @@
     display: block;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-.title_and_description-title.left_align {
     margin-right: 8px;
 }
 
@@ -20,8 +18,6 @@
     text-overflow: ellipsis;
     font-size: 12px;
     font-weight: normal;
-}
-.title_and_description-description.left_align {
     margin-right: 8px;
 }
 .clickable:active .title_and_description-description {

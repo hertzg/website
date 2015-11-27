@@ -40,7 +40,6 @@ function renderCalendar ($user, $mysqli, &$items, &$scripts) {
         return "$n events";
     };
 
-    $title = 'Calendar';
     if ($today || $tomorrow) {
 
         $descriptions = [];
@@ -53,11 +52,11 @@ function renderCalendar ($user, $mysqli, &$items, &$scripts) {
         if ($tomorrow) $descriptions[] = $n_events($tomorrow).' tomorrow.';
         $description = join(' ', $descriptions);
 
-        include_once "$fnsDir/title_and_description.php";
-        $content = title_and_description($title, $description);
+        $description =
+            "<span class=\"thumbnail_link-description\">$description</span>";
 
     } else {
-        $content = $title;
+        $description = '';
     }
 
     include_once "$fnsDir/create_calendar_icon_today.php";
@@ -68,7 +67,12 @@ function renderCalendar ($user, $mysqli, &$items, &$scripts) {
             .'<span class="thumbnail_link-icon">'
                 .create_calendar_icon_today($user)
             .'</span>'
-            ."<span class=\"thumbnail_link-content\">$content</span>"
+            .'<span class="thumbnail_link-content">'
+                .'<span class="thumbnail_link-title">Calendar</span>'
+                .'<span class="thumbnail_link-description">'
+                    .$description
+                .'</span>'
+            .'</span>'
         .'</a>';
 
 }
