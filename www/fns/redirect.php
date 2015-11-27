@@ -49,7 +49,7 @@ function redirect ($url = './') {
                         .'color: #f80;'
                     .'}'
                     .'a:focus {'
-                        .'outline: 2px solid #f80;'
+                        .'background-color: rgba(255, 136, 0, 0.2);'
                     .'}'
                 .'</style>'
             .'</head>'
