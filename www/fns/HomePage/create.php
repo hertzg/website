@@ -4,7 +4,11 @@ namespace HomePage;
 
 function create ($mysqli, $user, &$head, &$scripts) {
 
+    $base = '../';
     $fnsDir = __DIR__.'/..';
+
+    include_once "$fnsDir/compressed_js_script.php";
+    $scripts .= compressed_js_script('searchForm', '../');
 
     $items = [];
 
@@ -30,11 +34,10 @@ function create ($mysqli, $user, &$head, &$scripts) {
     unsetSessionVars();
 
     include_once "$fnsDir/compressed_css_link.php";
-    $head = compressed_css_link('calendarIcon', '../');
+    $head = compressed_css_link('calendarIcon', $base);
 
     include_once __DIR__.'/newNotifications.php';
     include_once __DIR__.'/optionsPanel.php';
-    include_once "$fnsDir/compressed_js_script.php";
     include_once "$fnsDir/Page/emptyTabs.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     return
@@ -43,7 +46,6 @@ function create ($mysqli, $user, &$head, &$scripts) {
             .newNotifications($mysqli, $user)
             .join('<div class="hr"></div>', $groupedItems)
         )
-        .optionsPanel()
-        .compressed_js_script('searchForm', '../');
+        .optionsPanel();
 
 }
