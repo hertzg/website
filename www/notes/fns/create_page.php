@@ -43,7 +43,7 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
 
             if ($tags) {
                 include_once "$fnsDir/create_tag_filter_bar.php";
-                $filterMessage = create_tag_filter_bar($tags, []);
+                $filterMessage = create_tag_filter_bar($tags);
             }
 
         }

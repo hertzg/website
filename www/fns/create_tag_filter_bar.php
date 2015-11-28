@@ -1,6 +1,6 @@
 <?php
 
-function create_tag_filter_bar ($tags, $params) {
+function create_tag_filter_bar ($tags, $params = []) {
     $html =
         '<div class="textAndButtons">'
             .'<span class="textAndButtons-text">Filter by a tag:</span>';
