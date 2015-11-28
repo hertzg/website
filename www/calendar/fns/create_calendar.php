@@ -70,13 +70,10 @@ function create_calendar ($mysqli, $id_users,
 
             $dayHtml = $day;
             if ($time == $timeToday) {
-                $dayHtml = "<span class=\"redText\">$dayHtml</span>";
+                $dayHtml = "<span class=\"colorText red\">$dayHtml</span>";
             }
             if ($offmonth) {
-                $dayHtml =
-                    '<span class="calendar-day-offmonth">'
-                        .$dayHtml
-                    .'</span>';
+                $dayHtml = "<span class=\"colorText grey\">$dayHtml</span>";
             }
             if (array_key_exists($time, $busyTimes)) {
                 $dayHtml =

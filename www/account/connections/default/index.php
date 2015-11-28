@@ -42,6 +42,4 @@ $content = Page\tabs(
 );
 
 include_once "$fnsDir/echo_user_page.php";
-echo_user_page($user, 'Default Connection', $content, $base, [
-    'head' => '<link rel="stylesheet" type="text/css" href="../view.css?1" />',
-]);
+echo_user_page($user, 'Default Connection', $content, $base);

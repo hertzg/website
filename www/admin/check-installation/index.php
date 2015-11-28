@@ -90,5 +90,5 @@ $content = Page\tabs(
 
 include_once '../fns/echo_admin_page.php';
 echo_admin_page('Check Installation', $content, '../', [
-    'head' => '<link rel="stylesheet" type="text/css" href="index.css" />',
+    'head' => '<style type="text/css">.not_ok { font-weight: bold }</style>',
 ]);

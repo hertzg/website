@@ -46,18 +46,3 @@
 .clickable:active .calendar-day-busyRing {
     border-color: rgba(255, 255, 255, 0.5);
 }
-
-.calendar-day-offmonth {
-    color: rgba(127, 127, 127, 0.7);
-}
-.clickable.active .calendar-day-offmonth,
-.clickable:active .calendar-day-offmonth {
-    color: white;
-}
-
-.event-grey {
-    color: #7f7f7f;
-}
-.clickable:active .event-grey {
-    color: white;
-}

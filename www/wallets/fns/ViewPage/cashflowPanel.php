@@ -66,11 +66,11 @@ function cashflowPanel ($mysqli, $user, $wallet) {
         }
 
         $centerClass = 'cashflow-numbers-center';
-        if ($sum < 0) $centerClass .= ' redText';
+        if ($sum < 0) $centerClass .= ' colorText red';
 
         $content =
             '<div class="cashflow-numbers">'
-                .'<div class="cashflow-numbers-left redText">'
+                .'<div class="cashflow-numbers-left colorText red">'
                     .number_format($expense / 100, 2)
                 .'</div>'
                 .'<div class="cashflow-numbers-right">'

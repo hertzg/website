@@ -17,12 +17,12 @@ function render_events ($contacts, $tasks,
                 if ($age > 0) {
                     $past = $timeSelected <= $timeToday;
                     $title .=
-                        '<span class="event-grey">'
+                        '<span class="colorText grey">'
                             .($past ? 'turned' : 'trurns')
                         .'</span>'
                         ." $age";
                 } else {
-                    $title .= '<span class="event-grey">was born</span>';
+                    $title .= '<span class="colorText grey">was born</span>';
                 }
 
                 $href = "../contacts/view/?id=$contact->id";
@@ -37,7 +37,7 @@ function render_events ($contacts, $tasks,
                 if ($task->top_priority) $icon = 'task-top-priority';
                 else $icon = 'task';
 
-                $title = '<span class="event-grey">Deadline of </span>'
+                $title = '<span class="colorText grey">Deadline of </span>'
                     .htmlspecialchars($task->text);
                 $href = "../tasks/view/?id=$task->id";
                 $items[] = Page\imageArrowLink($title, $href, $icon);

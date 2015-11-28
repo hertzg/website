@@ -29,7 +29,8 @@ function renderSchedules ($user, $mysqli, &$items) {
 
         $descriptions = [];
         if ($today) {
-            $descriptions[] = "<span class=\"redText\">$today today.</span>";
+            $descriptions[] =
+                "<span class=\"colorText red\">$today today.</span>";
         }
         if ($tomorrow) $descriptions[] = "$tomorrow tomorrow.";
         if ($num_received_schedules) {

@@ -7,8 +7,8 @@ function format_permissions ($can_send_bookmark,
     $html = '';
 
     $add = function ($condition, $grantedText, $deniedText) use (&$html) {
-        if ($condition) $tag = "<span class=\"granted\">$grantedText";
-        else $tag = "<span class=\"denied\">$deniedText";
+        if ($condition) $tag = "<span class=\"colorText green\">$grantedText";
+        else $tag = "<span class=\"colorText red\">$deniedText";
         $html .= "$tag</span><br />";
     };
 

@@ -45,7 +45,7 @@ function renderCalendar ($user, $mysqli, &$items, &$scripts) {
         $descriptions = [];
         if ($today) {
             $descriptions[] =
-                '<span class="redText">'
+                '<span class="colorText red">'
                     .$n_events($today).' today.'
                 .'</span>';
         }

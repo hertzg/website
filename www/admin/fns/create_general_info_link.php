@@ -14,7 +14,7 @@ function create_general_info_link () {
 
     if ($client_address === false) {
         $description =
-            '<span class="redText">'
+            '<span class="colorText red">'
                 .'With this settings a client IP address cannot be detected.'
             .'</span>';
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";

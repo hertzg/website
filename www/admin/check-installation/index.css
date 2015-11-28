@@ -1,9 +1,3 @@
-.status {
-    display: block;
-}
-.status.ok {
-    color: #080;
-}
 .status.not_ok {
     font-weight: bold;
     color: #c00;

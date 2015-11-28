@@ -11,7 +11,7 @@ function create_mysql_link ($mysqli) {
     if ($mysqli->connect_errno) {
 
         $description =
-            '<span class="redText">'
+            '<span class="colorText red">'
                 ."The settings doesn't work. "
                 .htmlspecialchars($mysqli->connect_error)
             .'</span>';

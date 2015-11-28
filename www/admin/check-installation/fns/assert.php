@@ -1,7 +1,7 @@
 <?php
 
 function assert_success ($text) {
-    return "<div class=\"status ok\">$text</div>";
+    return "<div>$text</div>";
 }
 
 function assert_enabled ($ok, $subject) {
@@ -10,7 +10,7 @@ function assert_enabled ($ok, $subject) {
 }
 
 function assert_failure ($text) {
-    return "<div class=\"status not_ok\">$text</div>";
+    return "<div class=\"not_ok colorText red\">$text</div>";
 }
 
 function assert_file ($path) {

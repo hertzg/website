@@ -1,0 +1,13 @@
+.colorText.red {
+    color: #e61919;
+}
+.colorText.green {
+    color: #17d317;
+}
+.colorText.grey {
+    color: #7f7f7f;
+}
+.clickable.active .colorText,
+.clickable:active .colorText {
+    color: #fff;
+}

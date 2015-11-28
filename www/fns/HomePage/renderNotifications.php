@@ -18,7 +18,7 @@ function renderNotifications ($user, &$items) {
         if ($num_new_notifications) {
 
             $description =
-                '<span class="redText">'
+                '<span class="colorText red">'
                     ."$num_new_notifications new."
                 .'</span>';
             if ($num_new_notifications != $num_notifications) {
