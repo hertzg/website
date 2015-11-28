@@ -36,4 +36,5 @@ $content = Page\tabs(
 );
 
 include_once "$fnsDir/echo_user_page.php";
-echo_user_page($user, "Edit and Import Received Schedule #$id", $content, '../../../../');
+echo_user_page($user, "Edit and Import Received Schedule #$id",
+    $content, '../../../../');

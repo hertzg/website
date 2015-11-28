@@ -18,11 +18,12 @@ function create_options_panel ($return) {
     include_once "$fnsDir/SignUpEnabled/get.php";
     if (SignUpEnabled\get()) {
         include_once "$fnsDir/Page/imageLinkWithDescription.php";
-        $options[] = Page\imageLinkWithDescription('Don\'t have an account?',
-            'Create an account here.', "../sign-up/$queryString", 'new-password');
+        $options[] = Page\imageLinkWithDescription(
+            'Don\'t have an account?', 'Create an account here.',
+            "../sign-up/$queryString", 'new-password');
     }
 
-    include_once __DIR__.'/../../fns/create_panel.php';
+    include_once "$fnsDir/create_panel.php";
     return create_panel('Options', join('<div class="hr"></div>', $options));
 
 }

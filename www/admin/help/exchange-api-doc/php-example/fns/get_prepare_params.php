@@ -5,15 +5,10 @@ function get_prepare_params () {
     $fnsDir = __DIR__.'/../../../../../fns';
 
     include_once "$fnsDir/DomainName/get.php";
-    $domainName = DomainName\get();
-
     include_once "$fnsDir/SiteBase/get.php";
-    $siteBase = SiteBase\get();
-
     include_once "$fnsDir/SiteProtocol/get.php";
-    $siteProtocol = SiteProtocol\get();
-
-    $exchange_api_base = "$siteProtocol://$domainName{$siteBase}exchange-api-call/";
+    $exchange_api_base = SiteProtocol\get().'://'
+        .DomainName\get().SiteBase\get().'exchange-api-call/';
 
     include_once "$fnsDir/phpCode.php";
     return

@@ -33,8 +33,9 @@ function render_api_keys ($user, $keyword, $apiKeys, &$items) {
         $title = preg_replace($regex, '<mark>$0</mark>', $title);
 
         $id = $apiKey->id;
-        $items[] = Page\imageArrowLinkWithDescription($title, $description,
-            '../view/'.ItemList\escapedItemQuery($id), 'api-key', ['id' => $id]);
+        $items[] = Page\imageArrowLinkWithDescription($title,
+            $description, '../view/'.ItemList\escapedItemQuery($id),
+            'api-key', ['id' => $id]);
 
     }
 
