@@ -43,7 +43,7 @@ function Post (method, formData, loadListener, errorListener) {
 
         function finish () {
             var url = 'submit-finish.php?num_uploaded=' + numUploaded +
-                '&num_failed=' + (files.length + 1)
+                '&num_failed=' + numLeft
             if (parentId !== null) url += '&parent_id=' + parentId
             location = url
         }
@@ -92,6 +92,7 @@ function Post (method, formData, loadListener, errorListener) {
                             })
                         } else {
                             numUploaded++
+                            numLeft--
                             nextFile()
                         }
                     }
@@ -119,6 +120,8 @@ function Post (method, formData, loadListener, errorListener) {
                 files.push(file)
             })
         })
+
+        var numLeft = files.length
 
         nextFile()
 
