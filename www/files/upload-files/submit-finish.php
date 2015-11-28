@@ -41,8 +41,8 @@ if ($num_uploaded) {
 
 }
 
-if ($errors) $_SESSION['files/upload-files/errors'] = $errors;
-else unset($_SESSION['files/upload-files/errors']);
+if (!$num_failed) $errors[] = 'Select files to upload.';
+$_SESSION['files/upload-files/errors'] = $errors;
 
 $url = './';
 if ($parent_id) $url .= "?parent_id=$parent_id";
