@@ -2,18 +2,8 @@
 
 function get_article_text () {
 
-    $fnsDir = __DIR__.'/../../../../fns';
-
-    include_once "$fnsDir/DomainName/get.php";
-    $domainName = DomainName\get();
-
-    include_once "$fnsDir/SiteBase/get.php";
-    $siteBase = SiteBase\get();
-
-    include_once "$fnsDir/SiteProtocol/get.php";
-    $siteProtocol = SiteProtocol\get();
-
-    $api_base = "$siteProtocol://$domainName{$siteBase}admin/api-call/";
+    include_once __DIR__.'/../../../../fns/get_absolute_base.php';
+    $api_base = get_absolute_base().'admin/api-call/';
 
     return
         '<em class="term">Zvini Admin API</em> allows programs to manage an'

@@ -1,8 +1,5 @@
 <?php
 
-include_once '../fns/DomainName/get.php';
-$domainName = DomainName\get();
-
 include_once '../fns/SiteBase/get.php';
 $siteBase = SiteBase\get();
 
@@ -12,6 +9,7 @@ $description =
 
 header('Content-Type: application/x-web-app-manifest+json');
 
+include_once '../fns/get_absolute_base.php';
 include_once '../fns/get_revision.php';
 include_once '../fns/SiteTitle/get.php';
 echo json_encode([
@@ -22,7 +20,7 @@ echo json_encode([
     'launch_path' => $siteBase,
     'developer' => [
         'name' => 'Zvini Developers',
-        'url' => "http://$domainName/",
+        'url' => get_absolute_base(),
     ],
     'icons' => [
         '16' => "{$siteBase}images/icons/16.png?"

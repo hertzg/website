@@ -39,14 +39,9 @@ class Engine {
     private $rawResponse;
 
     function __construct ($api_key) {
-
-        include_once __DIR__.'/../../../fns/DomainName/get.php';
-        $domainName = DomainName\get();
-
-        $this->api_base =
-            "http://localhost/sites/$domainName/website/www/api-call/";
+        include_once __DIR__.'/../../../fns/get_absolute_base.php';
+        $this->api_base = get_absolute_base().'api-call/';
         $this->api_key = $api_key;
-
     }
 
     function download ($method, $params = []) {

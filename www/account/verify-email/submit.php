@@ -35,14 +35,9 @@ include_once "$fnsDir/Users/editVerifyEmailKey.php";
 include_once '../../lib/mysqli.php';
 Users\editVerifyEmailKey($mysqli, $id_users, $key);
 
-include_once "$fnsDir/DomainName/get.php";
-$domainName = DomainName\get();
-
-include_once "$fnsDir/SiteBase/get.php";
-$siteBase = SiteBase\get();
-
+include_once "$fnsDir/get_absolute_base.php";
 $href = htmlspecialchars(
-    "http://$domainName{$siteBase}verify-email/?".http_build_query([
+    get_absolute_base().'verify-email/?'.http_build_query([
         'id_users' => $id_users,
         'key' => bin2hex($key),
     ])
@@ -72,8 +67,9 @@ $html =
 
 $subject = mb_encode_mimeheader($title, 'UTF-8');
 
+include_once "$fnsDir/DomainName/get.php";
 $headers =
-    "From: no-reply@$domainName\r\n"
+    'From: no-reply@'.DomainName\get()."\r\n"
     .'Content-Type: text/html; charset=UTF-8';
 
 mail($user->email, $subject, $html, $headers);

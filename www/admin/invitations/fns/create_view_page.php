@@ -13,10 +13,8 @@ function create_view_page ($invitation, &$scripts) {
         $_SESSION['admin/invitations/messages']
     );
 
-    include_once "$fnsDir/DomainName/get.php";
-    include_once "$fnsDir/SiteBase/get.php";
-    include_once "$fnsDir/SiteProtocol/get.php";
-    $signUpLink = SiteProtocol\get().'://'.DomainName\get().SiteBase\get()
+    include_once "$fnsDir/get_absolute_base.php";
+    $signUpLink = get_absolute_base()
         ."accept-invitation/?id=$id&key=".bin2hex($invitation->key);
 
     include_once "$fnsDir/Form/notes.php";

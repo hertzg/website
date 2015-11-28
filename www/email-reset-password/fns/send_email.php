@@ -4,14 +4,9 @@ function send_email ($user, $key) {
 
     $fnsDir = __DIR__.'/../../fns';
 
-    include_once "$fnsDir/SiteBase/get.php";
-    $siteBase = SiteBase\get();
-
-    include_once "$fnsDir/DomainName/get.php";
-    $domainName = DomainName\get();
-
+    include_once "$fnsDir/get_absolute_base.php";
     $href = htmlspecialchars(
-        "http://$domainName{$siteBase}reset-password/?".http_build_query([
+        get_absolute_base().'reset-password/?'.http_build_query([
             'id_users' => $user->id_users,
             'key' => bin2hex($key)
         ])
@@ -39,8 +34,9 @@ function send_email ($user, $key) {
 
     $subject = mb_encode_mimeheader($title, 'UTF-8');
 
+    include_once "$fnsDir/DomainName/get.php";
     $headers =
-        "From: no-reply@$domainName\r\n"
+        'From: no-reply@'.DomainName\get()."\r\n"
         .'Content-Type: text/html; charset=UTF-8';
 
     mail($user->email, $subject, $html, $headers);

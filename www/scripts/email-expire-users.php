@@ -22,19 +22,12 @@ if ($users) {
     include_once '../fns/Users/expireDays.php';
     $expireDays = Users\expireDays();
 
-    include_once '../fns/SiteProtocol/get.php';
-    $siteProtocol = SiteProtocol\get();
-
     include_once '../fns/DomainName/get.php';
-    $domainName = DomainName\get();
-
-    include_once '../fns/SiteBase/get.php';
-    $siteBase = SiteBase\get();
-
     $headers =
-        "From: no-reply@$domainName\r\n"
+        'From: no-reply@'.DomainName\get()."\r\n"
         .'Content-Type: text/html; charset=UTF-8';
 
+    include_once '../fns/get_absolute_base.php';
     include_once '../fns/Users/editEmailExpireTime.php';
     foreach ($users as $user) {
 
@@ -46,8 +39,8 @@ if ($users) {
         $expireDate = date('F j, Y', $time + $expireDays * 24 * 60 * 60);
 
         $subject = 'Your Zvini Account is Expiring';
-        $href = "$siteProtocol://$domainName{$siteBase}sign-in/?username="
-            .rawurlencode($user->username);
+        $href = get_absolute_base().'sign-in/'
+            .'?username='.rawurlencode($user->username);
 
         $html =
             '<!DOCTYPE html>'

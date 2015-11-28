@@ -14,21 +14,11 @@ function requestUsernameAddress (&$username, &$parsed_username, &$address) {
     parse_username_address($username, $parsed_username, $address);
 
     if ($address !== null) {
-
-        include_once "$fnsDir/SiteProtocol/get.php";
-        $siteProtocol = \SiteProtocol\get();
-
-        include_once "$fnsDir/DomainName/get.php";
-        $domainName = \DomainName\get();
-
-        include_once "$fnsDir/SiteBase/get.php";
-        $siteBase = \SiteBase\get();
-
-        if ($address === "$siteProtocol://$domainName$siteBase") {
+        include_once "$fnsDir/get_absolute_base.php";
+        if ($address === get_absolute_base()) {
             $username = $parsed_username;
             $address = null;
         }
-
     }
 
 }

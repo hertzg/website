@@ -9,10 +9,8 @@ include_once '../fns/Table/ensureAll.php';
 echo Table\ensureAll($mysqli);
 
 /*
-include_once '../fns/DomainName/get.php';
-include_once '../fns/SiteBase/get.php';
-include_once '../fns/SiteProtocol/get.php';
-$url = SiteProtocol\get().'://'.DomainName\get().SiteBase\get().'scripts/ensure-crontab.php';
+include_once '../fns/get_absolute_base.php';
+$url = get_absolute_base().'scripts/ensure-crontab.php';
 
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
