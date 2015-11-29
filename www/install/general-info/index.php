@@ -64,9 +64,7 @@ echo_page(
                 .' required="required" id="infoEmailInput"'
                 ." value=\"$escapedInfoEmail\" name=\"infoEmail\""
                 .($focus == 'infoEmail' ? ' autofocus="autofocus"' : '').' />',
-                '<label for="siteBaseInput">'
-                    .'Path to "<code>www</code>" folder:'
-                .'</label>'
+                '<label for="siteBaseInput">Website path:</label>'
                 .'<br />'
                 .'<input type="text" name="siteBase" required="required"'
                 .' id="siteBaseInput" class="textfield"'

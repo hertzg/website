@@ -56,7 +56,7 @@ $content = Page\tabs(
     .'<div class="hr"></div>'
     .Form\label('Informational email', InfoEmail\get())
     .'<div class="hr"></div>'
-    .Form\label('Path to "www" folder', htmlspecialchars(SiteBase\get()))
+    .Form\label('Website path', htmlspecialchars(SiteBase\get()))
     .'<div class="hr"></div>'
     .Form\label('Uses HTTPS', $https)
     .'<div class="hr"></div>'

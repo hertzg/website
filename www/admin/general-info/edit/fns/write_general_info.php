@@ -32,7 +32,7 @@ function write_general_info ($siteTitle, $domainName,
     include_once "$fnsDir/SiteBase/set.php";
     $ok = SiteBase\set($siteBase);
     if ($ok === false) {
-        $errors[] = 'Failed to save path to "www" folder.';
+        $errors[] = 'Failed to save website path.';
         $focus = 'button';
         return;
     }

@@ -64,7 +64,7 @@ $content = Page\tabs(
             'required' => true,
         ])
         .'<div class="hr"></div>'
-        .Form\textfield('siteBase', 'Path to "www" folder', [
+        .Form\textfield('siteBase', 'Website path', [
             'value' => $values['siteBase'],
             'autofocus' => $focus === 'siteBase',
             'required' => true,

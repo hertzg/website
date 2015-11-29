@@ -48,13 +48,13 @@ function request_general_info_params (&$errors, &$focus) {
     }
 
     if ($siteBase === '') {
-        $errors[] = 'Enter path to "www" folder.';
+        $errors[] = 'Enter website path.';
         if ($focus === null) $focus = 'siteBase';
     } elseif (substr($siteBase, 0, 1) !== '/') {
-        $errors[] = 'The path to "www" folder should start with slash (/).';
+        $errors[] = 'The website path should start with slash (/).';
         if ($focus === null) $focus = 'siteBase';
     } elseif (substr($siteBase, -1) !== '/') {
-        $errors[] = 'The path to "www" folder should end with slash (/).';
+        $errors[] = 'The website path should end with slash (/).';
         if ($focus === null) $focus = 'siteBase';
     }
 

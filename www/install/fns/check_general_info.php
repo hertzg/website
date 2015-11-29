@@ -34,19 +34,17 @@ function check_general_info ($siteTitle, $domainName,
 
     if ($siteBase === '') {
         $focus = 'siteBase';
-        return 'Enter path to "<code>www</code>" folder.';
+        return 'Enter website path.';
     }
 
     if (substr($siteBase, 0, 1) !== '/') {
         $focus = 'siteBase';
-        return 'The path to "<code>www</code>" folder'
-            .' should start with slash (<code>/</code>).';
+        return 'The website path should start with slash (<code>/</code>).';
     }
 
     if (substr($siteBase, -1) !== '/') {
         $focus = 'siteBase';
-        return 'The path to "<code>www</code>" folder'
-            .' should end with slash (<code>/</code>).';
+        return 'The website path should end with slash (<code>/</code>).';
     }
 
     if ($behindProxy && !array_key_exists('HTTP_X_FORWARDED_FOR', $_SERVER)) {
