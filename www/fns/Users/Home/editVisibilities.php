@@ -2,9 +2,10 @@
 
 namespace Users\Home;
 
-function editVisibilities ($mysqli, $user, $bar_charts, $new_bar_chart,
-    $bookmarks, $new_bookmark, $calendar, $new_event, $contacts, $new_contact,
-    $files, $upload_files, $notes, $new_note, $notifications, $places,
+function editVisibilities ($mysqli, $user, $bar_charts,
+    $new_bar_chart, $bookmarks, $new_bookmark, $calendar,
+    $new_event, $contacts, $new_contact, $files, $upload_files,
+    $notes, $new_note, $notifications, $post_notification, $places,
     $new_place, $schedules, $new_schedule, $tasks, $new_task, $wallets,
     $new_wallet, $new_transaction, $transfer_amount, $trash, &$changed) {
 
@@ -21,6 +22,7 @@ function editVisibilities ($mysqli, $user, $bar_charts, $new_bar_chart,
         (bool)$user->show_notes === $notes &&
         (bool)$user->show_new_note === $new_note &&
         (bool)$user->show_notifications === $notifications &&
+        (bool)$user->show_post_notification === $post_notification &&
         (bool)$user->show_places === $places &&
         (bool)$user->show_new_place === $new_place &&
         (bool)$user->show_schedules === $schedules &&
@@ -47,6 +49,7 @@ function editVisibilities ($mysqli, $user, $bar_charts, $new_bar_chart,
     $notes = $notes ? '1' : '0';
     $new_note = $new_note ? '1' : '0';
     $notifications = $notifications ? '1' : '0';
+    $post_notification = $post_notification ? '1' : '0';
     $places = $places ? '1' : '0';
     $new_place = $new_place ? '1' : '0';
     $schedules = $schedules ? '1' : '0';
@@ -66,6 +69,7 @@ function editVisibilities ($mysqli, $user, $bar_charts, $new_bar_chart,
         ." show_new_contact = $new_contact, show_files = $files,"
         ." show_upload_files = $upload_files, show_notes = $notes,"
         ." show_new_note = $new_note, show_notifications = $notifications,"
+        ." show_post_notification = $post_notification,"
         ." show_places = $places, show_new_place = $new_place,"
         ." show_schedules = $schedules, show_new_schedule = $new_schedule,"
         ." show_tasks = $tasks, show_new_task = $new_task,"

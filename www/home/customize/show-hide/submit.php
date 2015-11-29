@@ -11,14 +11,16 @@ $user = require_user('../../../');
 include_once "$dir/fns/request_strings.php";
 list($bar_charts, $new_bar_chart, $bookmarks, $new_bookmark,
     $calendar, $new_event, $contacts, $new_contact, $files,
-    $upload_files, $notes, $new_note, $notifications, $places,
-    $new_place, $schedules, $new_schedule, $tasks, $new_task, $wallets,
-    $new_wallet, $new_transaction, $transfer_amount, $trash) = request_strings(
+    $upload_files, $notes, $new_note, $notifications,
+    $post_notification, $places, $new_place, $schedules,
+    $new_schedule, $tasks, $new_task, $wallets, $new_wallet,
+    $new_transaction, $transfer_amount, $trash) = request_strings(
     'bar_charts', 'new_bar_chart', 'bookmarks', 'new_bookmark',
     'calendar', 'new_event', 'contacts', 'new_contact', 'files',
-    'upload_files', 'notes', 'new_note', 'notifications', 'places',
-    'new_place', 'schedules', 'new_schedule', 'tasks', 'new_task', 'wallets',
-    'new_wallet', 'new_transaction', 'transfer_amount', 'trash');
+    'upload_files', 'notes', 'new_note', 'notifications',
+    'post_notification', 'places', 'new_place', 'schedules',
+    'new_schedule', 'tasks', 'new_task', 'wallets', 'new_wallet',
+    'new_transaction', 'transfer_amount', 'trash');
 
 $bar_charts = (bool)$bar_charts;
 $new_bar_chart = (bool)$new_bar_chart;
@@ -33,6 +35,7 @@ $upload_files = (bool)$upload_files;
 $notes = (bool)$notes;
 $new_note = (bool)$new_note;
 $notifications = (bool)$notifications;
+$post_notification = (bool)$post_notification;
 $places = (bool)$places;
 $new_place = (bool)$new_place;
 $schedules = (bool)$schedules;
@@ -50,9 +53,10 @@ include_once "$dir/lib/mysqli.php";
 Users\Home\editVisibilities($mysqli, $user,
     $bar_charts, $new_bar_chart, $bookmarks, $new_bookmark,
     $calendar, $new_event, $contacts, $new_contact, $files,
-    $upload_files, $notes, $new_note, $notifications, $places,
-    $new_place, $schedules, $new_schedule, $tasks, $new_task, $wallets,
-    $new_wallet, $new_transaction, $transfer_amount, $trash, $changed);
+    $upload_files, $notes, $new_note, $notifications,
+    $post_notification, $places, $new_place, $schedules,
+    $new_schedule, $tasks, $new_task, $wallets, $new_wallet,
+    $new_transaction, $transfer_amount, $trash, $changed);
 
 if ($changed) $message = 'Changes have been saved.';
 else $message = 'No changes to be saved.';

@@ -4,9 +4,16 @@ namespace HomePage;
 
 function renderNotifications ($user, &$items) {
 
-    if (!$user->show_notifications) return;
-
     $fnsDir = __DIR__.'/..';
+
+    if ($user->show_post_notification) {
+        include_once "$fnsDir/Page/thumbnailLink.php";
+        $items['post-notification'] = \Page\thumbnailLink(
+            'Post a Notification', '../notifications/post/',
+            'create-notification');
+    }
+
+    if (!$user->show_notifications) return;
 
     $num_notifications = $user->num_notifications;
     $title = 'Notifications';
