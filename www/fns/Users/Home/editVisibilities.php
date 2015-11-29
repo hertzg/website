@@ -2,12 +2,38 @@
 
 namespace Users\Home;
 
-function editVisibilities ($mysqli, $id_users, $bar_charts, $new_bar_chart,
+function editVisibilities ($mysqli, $user, $bar_charts, $new_bar_chart,
     $bookmarks, $new_bookmark, $calendar, $new_event, $contacts, $new_contact,
     $files, $upload_files, $notes, $new_note, $notifications, $places,
     $new_place, $schedules, $new_schedule, $tasks, $new_task, $wallets,
-    $new_wallet, $new_transaction, $transfer_amount, $trash) {
+    $new_wallet, $new_transaction, $transfer_amount, $trash, &$changed) {
 
+    if ((bool)$user->show_bar_charts === $bar_charts &&
+        (bool)$user->show_new_bar_chart === $new_bar_chart &&
+        (bool)$user->show_bookmarks === $bookmarks &&
+        (bool)$user->show_new_bookmark === $new_bookmark &&
+        (bool)$user->show_calendar === $calendar &&
+        (bool)$user->show_new_event === $new_event &&
+        (bool)$user->show_contacts === $contacts &&
+        (bool)$user->show_new_contact === $new_contact &&
+        (bool)$user->show_files === $files &&
+        (bool)$user->show_upload_files === $upload_files &&
+        (bool)$user->show_notes === $notes &&
+        (bool)$user->show_new_note === $new_note &&
+        (bool)$user->show_notifications === $notifications &&
+        (bool)$user->show_places === $places &&
+        (bool)$user->show_new_place === $new_place &&
+        (bool)$user->show_schedules === $schedules &&
+        (bool)$user->show_new_schedule === $new_schedule &&
+        (bool)$user->show_tasks === $tasks &&
+        (bool)$user->show_new_task === $new_task &&
+        (bool)$user->show_wallets === $wallets &&
+        (bool)$user->show_new_wallet === $new_wallet &&
+        (bool)$user->show_new_transaction === $new_transaction &&
+        (bool)$user->show_transfer_amount === $transfer_amount &&
+        (bool)$user->show_trash === $trash) return;
+
+    $changed = true;
     $bar_charts = $bar_charts ? '1' : '0';
     $new_bar_chart = $new_bar_chart ? '1' : '0';
     $bookmarks = $bookmarks ? '1' : '0';
@@ -46,7 +72,7 @@ function editVisibilities ($mysqli, $id_users, $bar_charts, $new_bar_chart,
         ." show_wallets = $wallets, show_new_wallet = $new_wallet,"
         ." show_new_transaction = $new_transaction,"
         ." show_transfer_amount = $transfer_amount,"
-        ." show_trash = $trash where id_users = $id_users";
+        ." show_trash = $trash where id_users = $user->id_users";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 

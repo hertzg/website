@@ -47,14 +47,16 @@ $trash = (bool)$trash;
 
 include_once "$dir/fns/Users/Home/editVisibilities.php";
 include_once "$dir/lib/mysqli.php";
-Users\Home\editVisibilities($mysqli, $user->id_users,
+Users\Home\editVisibilities($mysqli, $user,
     $bar_charts, $new_bar_chart, $bookmarks, $new_bookmark,
     $calendar, $new_event, $contacts, $new_contact, $files,
     $upload_files, $notes, $new_note, $notifications, $places,
-    $new_place, $schedules, $new_schedule, $tasks, $new_task,
-    $wallets, $new_wallet, $new_transaction, $transfer_amount, $trash);
+    $new_place, $schedules, $new_schedule, $tasks, $new_task, $wallets,
+    $new_wallet, $new_transaction, $transfer_amount, $trash, $changed);
 
-$_SESSION['home/customize/show-hide/messages'] = ['Changes have been saved.'];
+if ($changed) $message = 'Changes have been saved.';
+else $message = 'No changes to be saved.';
+$_SESSION['home/customize/show-hide/messages'] = [$message];
 
 include_once "$dir/fns/redirect.php";
 redirect();
