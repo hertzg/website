@@ -10,7 +10,7 @@ function require_one_wallet () {
     if (!$user->num_wallets) {
         unset($_SESSION['wallets/messages']);
         $_SESSION['wallets/errors'] = [
-            'You need to create a wallet to add a transaction in.',
+            'You need to create a wallet to add a transaction to.',
         ];
         include_once "$fnsDir/redirect.php";
         redirect('..');

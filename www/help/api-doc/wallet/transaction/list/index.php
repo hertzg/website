@@ -4,7 +4,7 @@ include_once '../fns/transaction_method_page.php';
 transaction_method_page('list', [
     [
         'name' => 'id',
-        'description' => 'The ID of the wallet to list the transactions in.',
+        'description' => 'The ID of the wallet to list the transactions of.',
     ],
 ], [
     'type' => 'array',

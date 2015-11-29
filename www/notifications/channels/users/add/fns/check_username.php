@@ -26,7 +26,7 @@ function check_username ($mysqli, $id, $id_users,
 
     $subscriber_id_users = $subscriberUser->id_users;
     if ($subscriber_id_users == $id_users) {
-        $errors[] = "You don't have to add yourself in the list.";
+        $errors[] = "You don't have to add yourself to the list.";
         return;
     }
 

@@ -4,7 +4,7 @@ include_once '../fns/transaction_method_page.php';
 transaction_method_page('add', [
     [
         'name' => 'id',
-        'description' => 'The ID of the wallet to create the transaction in.',
+        'description' => 'The ID of the wallet to add the transaction to.',
     ],
     [
         'name' => 'amount',
