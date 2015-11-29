@@ -5,8 +5,8 @@ $fnsDir = '../../fns';
 include_once "$fnsDir/require_same_domain_referer.php";
 require_same_domain_referer('./');
 
-include_once '../fns/require_wallets.php';
-$user = require_wallets();
+include_once 'fns/require_one_wallet.php';
+$user = require_one_wallet();
 
 include_once "$fnsDir/request_strings.php";
 list($id_wallets) = request_strings('id_wallets');

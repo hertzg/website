@@ -1,7 +1,7 @@
 <?php
 
-include_once '../fns/require_wallets.php';
-$user = require_wallets();
+include_once 'fns/require_one_wallet.php';
+$user = require_one_wallet();
 
 $base = '../../';
 $fnsDir = '../../fns';
