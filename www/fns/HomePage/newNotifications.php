@@ -26,6 +26,12 @@ function newNotifications ($mysqli, $user) {
         else $items[] = "<b>$n</b> new bookmarks";
     }
 
+    $n = $user->home_num_new_received_calculations;
+    if ($n) {
+        if ($n == 1) $items[] = '<b>1</b> new calculation';
+        else $items[] = "<b>$n</b> new calculations";
+    }
+
     $n = $user->home_num_new_received_contacts;
     if ($n) {
         if ($n == 1) $items[] = '<b>1</b> new contact';

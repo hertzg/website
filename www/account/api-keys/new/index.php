@@ -20,6 +20,7 @@ else {
         'expires' => 'never',
         'bar_chart_access' => 'none',
         'bookmark_access' => 'none',
+        'calculation_access' => 'none',
         'channel_access' => 'none',
         'contact_access' => 'none',
         'event_access' => 'none',

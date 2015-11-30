@@ -1,10 +1,10 @@
 <?php
 
 function create_items ($bar_charts, $num_bar_charts,
-    $bookmarks, $num_bookmarks, $contacts, $num_contacts,
-    $files, $num_files, $folders, $num_folders, $notes,
-    $num_notes, $places, $num_places, $tasks, $num_tasks,
-    $wallets, $num_wallets, $keyword, $user, $groupLimit) {
+    $bookmarks, $num_bookmarks, $calculations, $num_calculations,
+    $contacts, $num_contacts, $files, $num_files, $folders,
+    $num_folders, $notes, $num_notes, $places, $num_places, $tasks,
+    $num_tasks, $wallets, $num_wallets, $keyword, $user, $groupLimit) {
 
     include_once __DIR__.'/../../fns/resolve_theme.php';
     resolve_theme($user, $theme_color, $theme_brightness);
@@ -23,6 +23,12 @@ function create_items ($bar_charts, $num_bar_charts,
     if ($num_bookmarks) {
         include_once __DIR__.'/render_bookmarks.php';
         render_bookmarks($bookmarks, $num_bookmarks,
+            $groupLimit, $items, $regex, $encodedKeyword);
+    }
+
+    if ($num_calculations) {
+        include_once __DIR__.'/render_calculations.php';
+        render_calculations($calculations, $num_calculations,
             $groupLimit, $items, $regex, $encodedKeyword);
     }
 

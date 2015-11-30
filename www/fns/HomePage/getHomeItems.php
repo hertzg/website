@@ -13,6 +13,9 @@ function getHomeItems ($mysqli, $user, &$scripts) {
     include_once __DIR__.'/renderBookmarks.php';
     renderBookmarks($user, $items);
 
+    include_once __DIR__.'/renderCalculations.php';
+    renderCalculations($user, $items);
+
     include_once __DIR__.'/renderCalendar.php';
     renderCalendar($user, $mysqli, $items, $scripts);
 

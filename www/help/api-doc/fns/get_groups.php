@@ -10,6 +10,10 @@ function get_groups () {
             'title' => 'Bookmark',
             'description' => 'Methods for manipulating bookmarks',
         ],
+        'calculation' => [
+            'title' => 'Calculation',
+            'description' => 'Methods for manipulating calculations',
+        ],
         'channel' => [
             'title' => 'Channel',
             'description' => 'Methods for manipulating channels',

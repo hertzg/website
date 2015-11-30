@@ -1,6 +1,6 @@
 <?php
 
-function format_permissions ($can_send_bookmark,
+function format_permissions ($can_send_bookmark, $can_send_calculation,
     $can_send_channel, $can_send_contact, $can_send_file,
     $can_send_note, $can_send_place, $can_send_schedule, $can_send_task) {
 
@@ -13,6 +13,8 @@ function format_permissions ($can_send_bookmark,
     };
 
     $add($can_send_bookmark, 'Can send bookmarks.', 'Cannot send bookmarks.');
+    $add($can_send_calculation,
+        'Can send calculations.', 'Cannot send calculations.');
     $add($can_send_channel, 'Can subscribe me to his/her channels.',
         'Cannot subscribe me to his/her channels.');
     $add($can_send_contact, 'Can send contacts.', 'Cannot send contacts.');

@@ -15,6 +15,7 @@ function updateNumbers ($mysqli) {
     include_once "$fnsDir/ApiKeys/countOnUser.php";
     include_once "$fnsDir/BarCharts/countOnUser.php";
     include_once "$fnsDir/Bookmarks/countOnUser.php";
+    include_once "$fnsDir/Calculations/countOnUser.php";
     include_once "$fnsDir/Channels/countOnUser.php";
     include_once "$fnsDir/Connections/countOnUser.php";
     include_once "$fnsDir/Contacts/countOnUser.php";
@@ -28,6 +29,8 @@ function updateNumbers ($mysqli) {
     include_once "$fnsDir/Places/countOnUser.php";
     include_once "$fnsDir/ReceivedBookmarks/countArchivedOnReceiver.php";
     include_once "$fnsDir/ReceivedBookmarks/countOnReceiver.php";
+    include_once "$fnsDir/ReceivedCalculations/countArchivedOnReceiver.php";
+    include_once "$fnsDir/ReceivedCalculations/countOnReceiver.php";
     include_once "$fnsDir/ReceivedContacts/countArchivedOnReceiver.php";
     include_once "$fnsDir/ReceivedContacts/countOnReceiver.php";
     include_once "$fnsDir/ReceivedFiles/countArchivedOnReceiver.php";
@@ -55,6 +58,8 @@ function updateNumbers ($mysqli) {
         $num_api_keys = \ApiKeys\countOnUser($mysqli, $id_users);
         $num_archived_received_bookmarks =
             \ReceivedBookmarks\countArchivedOnReceiver($mysqli, $id_users);
+        $num_archived_received_calculations =
+            \ReceivedCalculations\countArchivedOnReceiver($mysqli, $id_users);
         $num_archived_received_contacts =
             \ReceivedContacts\countArchivedOnReceiver($mysqli, $id_users);
         $num_archived_received_files =
@@ -71,6 +76,7 @@ function updateNumbers ($mysqli) {
             \ReceivedTasks\countArchivedOnReceiver($mysqli, $id_users);
         $num_bar_charts = \BarCharts\countOnUser($mysqli, $id_users);
         $num_bookmarks = \Bookmarks\countOnUser($mysqli, $id_users);
+        $num_calculations = \Calculations\countOnUser($mysqli, $id_users);
         $num_channels = \Channels\countOnUser($mysqli, $id_users);
         $num_connections = \Connections\countOnUser($mysqli, $id_users);
         $num_contacts = \Contacts\countOnUser($mysqli, $id_users);
@@ -85,6 +91,8 @@ function updateNumbers ($mysqli) {
         $num_places = \Places\countOnUser($mysqli, $id_users);
         $num_received_bookmarks =
             \ReceivedBookmarks\countOnReceiver($mysqli, $id_users);
+        $num_received_calculations =
+            \ReceivedCalculations\countOnReceiver($mysqli, $id_users);
         $num_received_contacts =
             \ReceivedContacts\countOnReceiver($mysqli, $id_users);
         $num_received_files =
@@ -108,15 +116,16 @@ function updateNumbers ($mysqli) {
 
         editNumbers($mysqli, $id_users, $num_api_keys,
             $num_archived_received_bookmarks,
+            $num_archived_received_calculations,
             $num_archived_received_contacts,
             $num_archived_received_files, $num_archived_received_folders,
             $num_archived_received_notes, $num_archived_received_places,
             $num_archived_received_schedules, $num_archived_received_tasks,
-            $num_bar_charts, $num_bookmarks, $num_channels,
+            $num_bar_charts, $num_bookmarks, $num_calculations, $num_channels,
             $num_connections, $num_contacts, $num_deleted_items,
             $num_events, $num_files, $num_folders, $num_notes,
             $num_notifications, $num_password_protected_notes,
-            $num_places, $num_received_bookmarks,
+            $num_places, $num_received_bookmarks, $num_received_calculations,
             $num_received_contacts, $num_received_files,
             $num_received_folders, $num_received_notes,
             $num_received_places, $num_received_schedules,

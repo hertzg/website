@@ -24,6 +24,7 @@ function create_permission_fields ($values) {
     };
 
     $add('bookmark_access', 'Bookmarks');
+    $add('calculation_access', 'Calculations');
     $add('channel_access', 'Channels');
     $add('contact_access', 'Contacts');
     $add('event_access', 'Events');

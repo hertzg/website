@@ -37,6 +37,10 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
             } elseif ($type == 'bookmark' || $type == 'receivedBookmark') {
                 include_once __DIR__.'/render_bookmark.php';
                 render_bookmark($data, $description, $href, $options, $items);
+            } elseif ($type == 'calculation' || $type == 'receivedCalculation') {
+                include_once __DIR__.'/render_calculation.php';
+                render_calculation($data,
+                    $description, $href, $options, $items);
             } elseif ($type == 'contact' || $type == 'receivedContact') {
                 include_once __DIR__.'/render_contact.php';
                 render_contact($data, $description, $href, $options, $items);

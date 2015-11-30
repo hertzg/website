@@ -20,6 +20,7 @@ else {
         'address' => null,
         'expires' => 'never',
         'can_send_bookmark' => false,
+        'can_send_calculation' => false,
         'can_send_channel' => false,
         'can_send_contact' => false,
         'can_send_file' => false,

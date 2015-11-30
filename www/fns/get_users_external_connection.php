@@ -11,6 +11,7 @@ function get_users_external_connection ($mysqli, $user, $username, $address) {
         if ($expire_time === null || $expire_time >= time()) {
             return [
                 'can_send_bookmark' => $connection->can_send_bookmark,
+                'can_send_calculation' => $connection->can_send_calculation,
                 'can_send_channel' => $connection->can_send_channel,
                 'can_send_contact' => $connection->can_send_contact,
                 'can_send_file' => $connection->can_send_file,
@@ -24,6 +25,7 @@ function get_users_external_connection ($mysqli, $user, $username, $address) {
 
     return [
         'can_send_bookmark' => $user->anonymous_can_send_bookmark,
+        'can_send_calculation' => $user->anonymous_can_send_calculation,
         'can_send_channel' => $user->anonymous_can_send_channel,
         'can_send_contact' => $user->anonymous_can_send_contact,
         'can_send_file' => $user->anonymous_can_send_file,

@@ -34,6 +34,31 @@ if ($sending_bookmarks) {
     }
 }
 
+include_once '../../fns/SendingCalculations/index.php';
+$sending_calculations = SendingCalculations\index($mysqli);
+
+if ($sending_calculations) {
+    include_once '../../fns/SendingCalculations/delete.php';
+    include_once '../../fns/SendingCalculations/increaseNumFails.php';
+    foreach ($sending_calculations as $sending_calculation) {
+        $params = [
+            'exchange_api_key' => $sending_calculation->their_exchange_api_key,
+            'sender_username' => $sending_calculation->sender_username,
+            'receiver_username' => $sending_calculation->receiver_username,
+            'url' => $sending_calculation->url,
+            'title' => $sending_calculation->title,
+            'tags' => $sending_calculation->tags,
+        ];
+        $ok = call_exchange_api_method('receiveCalculation',
+            $sending_calculation->receiver_address, $params);
+        if ($ok === false) {
+            SendingCalculations\increaseNumFails($mysqli, $sending_calculation->id);
+        } else {
+            SendingCalculations\delete($mysqli, $sending_calculation->id);
+        }
+    }
+}
+
 include_once '../../fns/SendingContacts/index.php';
 $sending_contacts = SendingContacts\index($mysqli);
 

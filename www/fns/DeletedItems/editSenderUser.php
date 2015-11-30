@@ -5,8 +5,9 @@ namespace DeletedItems;
 function editSenderUser ($mysqli, $sender_id_users, $username) {
 
     $sql = 'select * from deleted_items where data_type in'
-        ." ('receivedBookmark', 'receivedContact', 'receivedFile',"
-        ." 'receivedFolder', 'receivedNote', 'receivedPlace', 'receivedTask')";
+        ." ('receivedBookmark', 'receivedCalculation',"
+        ." 'receivedContact', 'receivedFile', 'receivedFolder'"
+        .", 'receivedNote', 'receivedPlace', 'receivedTask')";
     include_once __DIR__.'/../mysqli_query_object.php';
     $deletedItems = mysqli_query_object($mysqli, $sql);
 

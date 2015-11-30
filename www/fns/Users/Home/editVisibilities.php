@@ -3,16 +3,19 @@
 namespace Users\Home;
 
 function editVisibilities ($mysqli, $user, $bar_charts,
-    $new_bar_chart, $bookmarks, $new_bookmark, $calendar,
-    $new_event, $contacts, $new_contact, $files, $upload_files,
-    $notes, $new_note, $notifications, $post_notification, $places,
-    $new_place, $schedules, $new_schedule, $tasks, $new_task, $wallets,
-    $new_wallet, $new_transaction, $transfer_amount, $trash, &$changed) {
+    $new_bar_chart, $bookmarks, $new_bookmark, $calculations,
+    $new_calculation, $calendar, $new_event, $contacts, $new_contact,
+    $files, $upload_files, $notes, $new_note, $notifications,
+    $post_notification, $places, $new_place, $schedules,
+    $new_schedule, $tasks, $new_task, $wallets, $new_wallet,
+    $new_transaction, $transfer_amount, $trash, &$changed) {
 
     if ((bool)$user->show_bar_charts === $bar_charts &&
         (bool)$user->show_new_bar_chart === $new_bar_chart &&
         (bool)$user->show_bookmarks === $bookmarks &&
         (bool)$user->show_new_bookmark === $new_bookmark &&
+        (bool)$user->show_calculations === $calculations &&
+        (bool)$user->show_new_calculation === $new_calculation &&
         (bool)$user->show_calendar === $calendar &&
         (bool)$user->show_new_event === $new_event &&
         (bool)$user->show_contacts === $contacts &&
@@ -40,6 +43,8 @@ function editVisibilities ($mysqli, $user, $bar_charts,
     $new_bar_chart = $new_bar_chart ? '1' : '0';
     $bookmarks = $bookmarks ? '1' : '0';
     $new_bookmark = $new_bookmark ? '1' : '0';
+    $calculations = $calculations ? '1' : '0';
+    $new_calculation = $new_calculation ? '1' : '0';
     $calendar = $calendar ? '1' : '0';
     $new_event = $new_event ? '1' : '0';
     $contacts = $contacts ? '1' : '0';
@@ -64,7 +69,9 @@ function editVisibilities ($mysqli, $user, $bar_charts,
 
     $sql = "update users set show_bar_charts = $bar_charts,"
         ." show_new_bar_chart = $new_bar_chart, show_bookmarks = $bookmarks,"
-        ." show_new_bookmark = $new_bookmark, show_calendar = $calendar,"
+        ." show_new_bookmark = $new_bookmark,"
+        ." show_calculations = $calculations,"
+        ." show_new_calculation = $new_calculation, show_calendar = $calendar,"
         ." show_new_event = $new_event, show_contacts = $contacts,"
         ." show_new_contact = $new_contact, show_files = $files,"
         ." show_upload_files = $upload_files, show_notes = $notes,"

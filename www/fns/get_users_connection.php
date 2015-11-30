@@ -6,6 +6,7 @@ function get_users_connection ($mysqli, $user, $connected_id_users) {
     if ($id_users == $connected_id_users) {
         return [
             'can_send_bookmark' => true,
+            'can_send_calculation' => true,
             'can_send_channel' => true,
             'can_send_contact' => true,
             'can_send_file' => true,
@@ -25,6 +26,7 @@ function get_users_connection ($mysqli, $user, $connected_id_users) {
         if ($expire_time === null || $expire_time >= time()) {
             return [
                 'can_send_bookmark' => $connection->can_send_bookmark,
+                'can_send_calculation' => $connection->can_send_calculation,
                 'can_send_channel' => $connection->can_send_channel,
                 'can_send_contact' => $connection->can_send_contact,
                 'can_send_file' => $connection->can_send_file,
@@ -38,6 +40,7 @@ function get_users_connection ($mysqli, $user, $connected_id_users) {
 
     return [
         'can_send_bookmark' => $user->anonymous_can_send_bookmark,
+        'can_send_calculation' => $user->anonymous_can_send_calculation,
         'can_send_channel' => $user->anonymous_can_send_channel,
         'can_send_contact' => $user->anonymous_can_send_contact,
         'can_send_file' => $user->anonymous_can_send_file,

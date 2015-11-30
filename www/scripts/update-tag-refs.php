@@ -35,6 +35,19 @@ foreach ($rows as $row) {
     }
 }
 
+$sql = 'select distinct id_calculations id from calculation_tags';
+$rows = mysqli_query_object($mysqli, $sql);
+foreach ($rows as $row) {
+    $sql = "select * from calculations where id = $row->id";
+    $calculation = mysqli_single_object($mysqli, $sql);
+    if ($calculation) {
+        include_once '../fns/CalculationTags/editCalculation.php';
+        CalculationTags\editCalculation($mysqli,
+            $calculation->id, $calculation->url, $calculation->title,
+            $calculation->insert_time, $calculation->update_time);
+    }
+}
+
 $sql = 'select distinct id_contacts id from contact_tags';
 $rows = mysqli_query_object($mysqli, $sql);
 foreach ($rows as $row) {
