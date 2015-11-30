@@ -38,6 +38,6 @@ method_page('receiveSchedule', [
     'RECEIVER_NOT_FOUND' => 'No such receiver with the username.',
     'RECEIVER_NOT_RECEIVING' =>
         "The receiver hasn't opened a connection"
-        .' to receive bookmarks from the sender.',
+        .' to receive schedules from the sender.',
     'TOO_MANY_TAGS' => 'More than '.Tags\maxNumber().' tags given.',
 ]);
