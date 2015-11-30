@@ -6,7 +6,10 @@ $fnsDir = '../../../fns';
 include_once "$fnsDir/require_user.php";
 $user = require_user($base);
 
-unset($_SESSION['home/customize/messages']);
+unset(
+    $_SESSION['home/customize/messages'],
+    $_SESSION['home/customize/show-hide/messages']
+);
 
 include_once 'fns/create_page.php';
 include_once "$fnsDir/compressed_js_script.php";

@@ -40,4 +40,5 @@ function renderContacts ($user, &$items) {
     }
 
     $items['contacts'] = $link;
+
 }
