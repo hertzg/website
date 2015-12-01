@@ -15,18 +15,19 @@ function renderBookmarks ($user, &$items) {
     if (!$user->show_bookmarks) return;
 
     $num_bookmarks = $user->num_bookmarks;
-    $num_received_bookmarks = $user->num_received_bookmarks;
+    $num_new_received = $user->num_received_bookmarks -
+        $user->num_archived_received_bookmarks;
 
     $title = 'Bookmarks';
     $href = '../bookmarks/';
     $icon = 'bookmarks';
     $options = ['id' => 'bookmarks'];
-    if ($num_bookmarks || $num_received_bookmarks) {
+    if ($num_bookmarks || $num_new_received) {
 
         $descriptions = [];
         if ($num_bookmarks) $descriptions[] = "$num_bookmarks total.";
-        if ($num_received_bookmarks) {
-            $descriptions[] = "$num_received_bookmarks received.";
+        if ($num_new_received) {
+            $descriptions[] = "$num_new_received new received.";
         }
         $description = join(' ', $descriptions);
 

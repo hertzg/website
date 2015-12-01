@@ -15,18 +15,19 @@ function renderPlaces ($user, &$items) {
     if (!$user->show_places) return;
 
     $num_places = $user->num_places;
-    $num_received_places = $user->num_received_places;
+    $num_new_received = $user->num_received_places -
+        $user->num_archived_received_places;
 
     $title = 'Places';
     $href = '../places/';
     $icon = 'places';
     $options = ['id' => 'places'];
-    if ($num_places || $num_received_places) {
+    if ($num_places || $num_new_received) {
 
         $descriptions = [];
         if ($num_places) $descriptions[] = "$num_places total.";
-        if ($num_received_places) {
-            $descriptions[] = "$num_received_places received.";
+        if ($num_new_received) {
+            $descriptions[] = "$num_new_received new received.";
         }
         $description = join(' ', $descriptions);
 

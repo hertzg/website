@@ -15,18 +15,19 @@ function renderContacts ($user, &$items) {
     if (!$user->show_contacts) return;
 
     $num_contacts = $user->num_contacts;
-    $num_received_contacts = $user->num_received_contacts;
+    $num_new_received = $user->num_received_contacts -
+        $user->num_archived_received_contacts;
 
     $title = 'Contacts';
     $href = '../contacts/';
     $icon = 'contacts';
     $options = ['id' => 'contacts'];
-    if ($num_contacts || $num_received_contacts) {
+    if ($num_contacts || $num_new_received) {
 
         $descriptions = [];
         if ($num_contacts) $descriptions[] = "$num_contacts total.";
-        if ($num_received_contacts) {
-            $descriptions[] = "$num_received_contacts received.";
+        if ($num_new_received) {
+            $descriptions[] = "$num_new_received new received.";
         }
         $description = join(' ', $descriptions);
 

@@ -15,18 +15,19 @@ function renderNotes ($user, &$items) {
     if (!$user->show_notes) return;
 
     $num_notes = $user->num_notes;
-    $num_received_notes = $user->num_received_notes;
+    $num_new_received = $user->num_received_notes -
+        $user->num_archived_received_notes;
 
     $title = 'Notes';
     $href = '../notes/';
     $icon = 'notes';
     $options = ['id' => 'notes'];
-    if ($num_notes || $num_received_notes) {
+    if ($num_notes || $num_new_received) {
 
         $descriptions = [];
         if ($num_notes) $descriptions[] = "$num_notes total.";
-        if ($num_received_notes) {
-            $descriptions[] = "$num_received_notes received.";
+        if ($num_new_received) {
+            $descriptions[] = "$num_new_received new received.";
         }
         $description = join(' ', $descriptions);
 
