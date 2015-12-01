@@ -29,8 +29,8 @@ foreach ($users as $user) {
     $include('new-calculation', 'calendar');
     $order_home_items = json_encode($order_home_items);
     $order_home_items = $mysqli->real_escape_string($order_home_items);
-    $sql = "update users set order_home_items = '$order_home_items'"
-        ." where id_users = $user->id_users";
+    $sql = "update users set order_home_items = '$order_home_items',"
+        ." show_calculations = 1 where id_users = $user->id_users";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 }
 
