@@ -41,14 +41,21 @@ function create_options_panel ($user, $id_folders, $files, $base) {
     }
 
     if (!$id_folders) {
-        $num_received_files = $user->num_received_files;
-        $num_received_folders = $user->num_received_folders;
-        if ($num_received_files || $num_received_folders) {
-            $n = $num_received_files + $num_received_folders;
+        $num_received = $user->num_received_files + $user->num_received_folders;
+        if ($num_received) {
+
+            $num_new = $num_received - $user->num_archived_received_files -
+                $user->num_archived_received_folders;
+
+            if ($num_new > 0) {
+                if ($num_new == $num_received) $description = "$num_new new.";
+                else $description = "$num_new new. $num_received total.";
+            } else $description = "$num_received total.";
+
             include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
-            $options[] = Page\imageArrowLinkWithDescription(
-                'Received Files', "$n total.", 'received/',
-                'receive', ['id' => 'received']);
+            $options[] = Page\imageArrowLinkWithDescription('Received Files',
+                $description, 'received/', 'receive', ['id' => 'received']);
+
         }
     }
 

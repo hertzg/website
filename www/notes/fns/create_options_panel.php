@@ -5,18 +5,25 @@ function create_options_panel ($user, $base = '') {
     $fnsDir = __DIR__.'/../../fns';
     $options = [];
 
-    $num_received_notes = $user->num_received_notes;
-    if ($num_received_notes) {
+    $num_received = $user->num_received_notes;
+    if ($num_received) {
+
+        $num_new = $num_received - $user->num_archived_received_notes;
+        if ($num_new > 0) {
+            if ($num_new == $num_received) $description = "$num_new new.";
+            else $description = "$num_new new. $num_received total.";
+        } else $description = "$num_received total.";
+
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         $options[] = Page\imageArrowLinkWithDescription('Received Notes',
-            "$num_received_notes total.", "{$base}received/",
-            'receive', ['id' => 'received']);
+            $description, "{$base}received/", 'receive', ['id' => 'received']);
+
     }
 
     if ($user->num_notes) {
         include_once "$fnsDir/ItemList/escapedPageQuery.php";
-        include_once "$fnsDir/Page/imageLink.php";
         $href = "{$base}delete-all/".ItemList\escapedPageQuery();
+        include_once "$fnsDir/Page/imageLink.php";
         $options[] =
             '<div id="deleteAllLink">'
                 .Page\imageLink('Delete All Notes', $href, 'trash-bin')
