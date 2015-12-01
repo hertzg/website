@@ -25,9 +25,11 @@ function renderCalculations ($user, &$items) {
     if ($num_calculations || $num_new_received) {
 
         $descriptions = [];
-        if ($num_calculations) $descriptions[] = "$num_calculations total.";
+        if ($num_calculations) {
+            $descriptions[] = "$num_calculations&nbsp;total.";
+        }
         if ($num_new_received) {
-            $descriptions[] = "$num_new_received new received.";
+            $descriptions[] = "$num_new_received&nbsp;new&nbsp;received.";
         }
         $description = join(' ', $descriptions);
 
