@@ -28,7 +28,7 @@ function renderFiles ($user, &$items) {
         $descriptions = [];
         if ($storage_used) {
             include_once "$fnsDir/bytestr.php";
-            $descriptions[] = bytestr($storage_used).'&nbsp;used.';
+            $descriptions[] = bytestr($storage_used, '&nbsp;').'&nbsp;used.';
         }
         if ($num_new_received) {
             $descriptions[] = "$num_new_received&nbsp;new&nbsp;received.";
