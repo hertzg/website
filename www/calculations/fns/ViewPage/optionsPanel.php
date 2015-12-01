@@ -8,10 +8,6 @@ function optionsPanel ($calculation) {
     $fnsDir = "$calculationsDir/../fns";
     $url = $calculation->url;
 
-    include_once "$calculationsDir/fns/create_open_links.php";
-    $values = create_open_links($url, '../../');
-    list($openLink, $openInNewTabLink) = $values;
-
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
     $escapedItemQuery = \ItemList\escapedItemQuery($calculation->id);
 
@@ -44,9 +40,7 @@ function optionsPanel ($calculation) {
     include_once "$fnsDir/Page/staticTwoColumns.php";
     include_once "$fnsDir/Page/twoColumns.php";
     $content =
-        \Page\twoColumns($openLink, $openInNewTabLink)
-        .'<div class="hr"></div>'
-        .\Page\staticTwoColumns($editLink, $duplicateLink)
+        \Page\staticTwoColumns($editLink, $duplicateLink)
         .'<div class="hr"></div>'
         .\Page\twoColumns($sendLink, $sendViaSmsLink)
         .'<div class="hr"></div>'

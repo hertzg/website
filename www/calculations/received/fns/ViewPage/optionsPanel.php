@@ -10,10 +10,6 @@ function optionsPanel ($receivedCalculation) {
     include_once "$fnsDir/ItemList/Received/escapedItemQuery.php";
     $itemQuery = \ItemList\Received\escapedItemQuery($receivedCalculation->id);
 
-    include_once "$calculationsDir/fns/create_open_links.php";
-    $values = create_open_links($receivedCalculation->url, '../../../');
-    list($openLink, $openInNewTabLink) = $values;
-
     include_once "$fnsDir/Page/imageLink.php";
     $importLink = \Page\imageLink('Import',
         "../submit-import.php$itemQuery", 'import-calculation');
@@ -43,9 +39,7 @@ function optionsPanel ($receivedCalculation) {
     include_once "$fnsDir/Page/staticTwoColumns.php";
     include_once "$fnsDir/Page/twoColumns.php";
     $content =
-        \Page\twoColumns($openLink, $openInNewTabLink)
-        .'<div class="hr"></div>'
-        .\Page\twoColumns($importLink, $editAndImportLink)
+        \Page\twoColumns($importLink, $editAndImportLink)
         .'<div class="hr"></div>'
         .$sendViaSmsLink
         .'<div class="hr"></div>'
