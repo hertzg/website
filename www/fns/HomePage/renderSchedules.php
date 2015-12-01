@@ -34,8 +34,8 @@ function renderSchedules ($user, $mysqli, &$items) {
                 "<span class=\"colorText red\">$today&nbsp;today.</span>";
         }
         if ($tomorrow) $descriptions[] = "$tomorrow&nbsp;tomorrow.";
-        if ($descriptions) $descriptions = [join('&nbsp;', $descriptions)];
         if ($num_new_received) {
+            if ($descriptions) $descriptions = [join('&nbsp;', $descriptions)];
             $descriptions[] = "$num_new_received&nbsp;new&nbsp;received.";
         }
         $description = join(' ', $descriptions);
