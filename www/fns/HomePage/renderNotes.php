@@ -25,9 +25,9 @@ function renderNotes ($user, &$items) {
     if ($num_notes || $num_new_received) {
 
         $descriptions = [];
-        if ($num_notes) $descriptions[] = "$num_notes total.";
+        if ($num_notes) $descriptions[] = "$num_notes&nbsp;total.";
         if ($num_new_received) {
-            $descriptions[] = "$num_new_received new received.";
+            $descriptions[] = "$num_new_received&nbsp;new&nbsp;received.";
         }
         $description = join(' ', $descriptions);
 

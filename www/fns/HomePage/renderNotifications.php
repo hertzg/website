@@ -26,10 +26,10 @@ function renderNotifications ($user, &$items) {
 
             $description =
                 '<span class="colorText red">'
-                    ."$num_new_notifications new."
+                    ."$num_new_notifications&nbsp;new."
                 .'</span>';
             if ($num_new_notifications != $num_notifications) {
-                $description .= " $num_notifications total.";
+                $description .= " $num_notifications&nbsp;total.";
             }
 
             include_once "$fnsDir/Page/thumbnailLinkWithDescription.php";
