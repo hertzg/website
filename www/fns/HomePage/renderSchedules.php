@@ -31,11 +31,12 @@ function renderSchedules ($user, $mysqli, &$items) {
         $descriptions = [];
         if ($today) {
             $descriptions[] =
-                "<span class=\"colorText red\">$today today.</span>";
+                "<span class=\"colorText red\">$today&nbsp;today.</span>";
         }
-        if ($tomorrow) $descriptions[] = "$tomorrow tomorrow.";
+        if ($tomorrow) $descriptions[] = "$tomorrow&nbsp;tomorrow.";
         if ($num_new_received) {
-            $descriptions[] = "$num_new_received new received.";
+            if ($descriptions) $descriptions = [join('&nbsp;', $descriptions)];
+            $descriptions[] = "$num_new_received&nbsp;new&nbsp;received.";
         }
         $description = join(' ', $descriptions);
 

@@ -25,9 +25,9 @@ function renderTasks ($user, &$items) {
     if ($num_tasks || $num_new_received) {
 
         $descriptions = [];
-        if ($num_tasks) $descriptions[] = "$num_tasks total.";
+        if ($num_tasks) $descriptions[] = "$num_tasks&nbsp;total.";
         if ($num_new_received) {
-            $descriptions[] = "$num_new_received new received.";
+            $descriptions[] = "$num_new_received&nbsp;new&nbsp;received.";
         }
         $description = join(' ', $descriptions);
 

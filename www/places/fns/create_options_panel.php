@@ -8,15 +8,19 @@ function create_options_panel ($user, $base = '') {
     $num_received = $user->num_received_places;
     if ($num_received) {
 
+        $href = "{$base}received/";
         $num_new = $num_received - $user->num_archived_received_places;
         if ($num_new > 0) {
             if ($num_new == $num_received) $description = "$num_new new.";
             else $description = "$num_new new. $num_received total.";
-        } else $description = "$num_received total.";
+        } else {
+            $href .= '?all=1';
+            $description = "$num_received total.";
+        }
 
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         $options[] = Page\imageArrowLinkWithDescription('Received Places',
-            $description, "{$base}received/", 'receive', ['id' => 'received']);
+            $description, $href, 'receive', ['id' => 'received']);
 
     }
 

@@ -36,8 +36,8 @@ function renderCalendar ($user, $mysqli, &$items, &$scripts) {
     $tomorrow += $user->num_birthdays_tomorrow;
 
     $n_events = function ($n) {
-        if ($n == 1) return '1 event';
-        return "$n events";
+        if ($n == 1) return '1&nbsp;event';
+        return "$n&nbsp;events";
     };
 
     if ($today || $tomorrow) {
@@ -46,10 +46,10 @@ function renderCalendar ($user, $mysqli, &$items, &$scripts) {
         if ($today) {
             $descriptions[] =
                 '<span class="colorText red">'
-                    .$n_events($today).' today.'
+                    .$n_events($today).'&nbsp;today.'
                 .'</span>';
         }
-        if ($tomorrow) $descriptions[] = $n_events($tomorrow).' tomorrow.';
+        if ($tomorrow) $descriptions[] = $n_events($tomorrow).'&nbsp;tomorrow.';
         $description = join(' ', $descriptions);
 
         $description =

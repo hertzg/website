@@ -25,9 +25,9 @@ function renderPlaces ($user, &$items) {
     if ($num_places || $num_new_received) {
 
         $descriptions = [];
-        if ($num_places) $descriptions[] = "$num_places total.";
+        if ($num_places) $descriptions[] = "$num_places&nbsp;total.";
         if ($num_new_received) {
-            $descriptions[] = "$num_new_received new received.";
+            $descriptions[] = "$num_new_received&nbsp;new&nbsp;received.";
         }
         $description = join(' ', $descriptions);
 
