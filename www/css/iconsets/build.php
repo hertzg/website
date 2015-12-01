@@ -34,8 +34,8 @@ $names = ['bookmark', 'create-bookmark', 'edit-bookmark',
     'bookmarks', 'import-bookmark', 'duplicate-bookmark'];
 render($content, 'bookmark.svg?5', $names);
 
-$names = ['calculation', 'create-calculation',
-    'edit-calculation', 'calculations'];
+$names = ['calculation', 'create-calculation', 'edit-calculation',
+    'calculations', 'import-calculation', 'duplicate-calculation'];
 render($content, 'calculation.svg', $names);
 
 render($content, 'calendar.svg?1', ['calendar', 'calendar-jump']);

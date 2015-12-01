@@ -7,7 +7,7 @@ function get_revision ($key) {
         'css/common/compressed.css' => 141,
         'css/confirmDialog/compressed.css' => 3,
         'css/contact/compressed.css' => 4,
-        'css/iconsets/compressed.css' => 95,
+        'css/iconsets/compressed.css' => 96,
         'css/index/compressed.css' => 5,
         'css/newItemMenu/compressed.css' => 4,
         'images/icons/16.png' => 1,
