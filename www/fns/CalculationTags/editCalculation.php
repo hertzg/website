@@ -3,12 +3,13 @@
 namespace CalculationTags;
 
 function editCalculation ($mysqli, $id_calculations,
-    $url, $title, $insert_time, $update_time) {
+    $expression, $title, $insert_time, $update_time) {
 
     $title = $mysqli->real_escape_string($title);
-    $url = $mysqli->real_escape_string($url);
+    $expression = $mysqli->real_escape_string($expression);
 
-    $sql = "update calculation_tags set title = '$title', url = '$url',"
+    $sql = 'update calculation_tags set'
+        ." title = '$title', expression = '$expression',"
         ." insert_time = $insert_time, update_time = $update_time"
         ." where id_calculations = $id_calculations";
 

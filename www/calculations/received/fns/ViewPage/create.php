@@ -17,7 +17,7 @@ function create ($receivedCalculation, &$scripts) {
     $title = $receivedCalculation->title;
     if ($title !== '') $items[] = \Page\text(htmlspecialchars($title));
 
-    $items[] = \Page\text(htmlspecialchars($receivedCalculation->url));
+    $items[] = \Page\text(htmlspecialchars($receivedCalculation->expression));
 
     $tags = $receivedCalculation->tags;
     if ($tags !== '') $items[] = \Page\text('Tags: '.htmlspecialchars($tags));

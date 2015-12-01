@@ -2,10 +2,10 @@
 
 namespace Calculations;
 
-function add ($mysqli, $id_users, $url, $title, $tags,
+function add ($mysqli, $id_users, $expression, $title, $tags,
     $tag_names, $insert_time, $update_time, $insertApiKey) {
 
-    $url = $mysqli->real_escape_string($url);
+    $expression = $mysqli->real_escape_string($expression);
     $title = $mysqli->real_escape_string($title);
     $tags = $mysqli->real_escape_string($tags);
     $num_tags = count($tag_names);
@@ -22,10 +22,10 @@ function add ($mysqli, $id_users, $url, $title, $tags,
     }
 
     $sql = 'insert into calculations'
-        .' (id_users, url, title, tags, num_tags,'
+        .' (id_users, expression, title, tags, num_tags,'
         .' tags_json, insert_time, update_time,'
         .' insert_api_key_id, insert_api_key_name)'
-        ." values ($id_users, '$url', '$title', '$tags', $num_tags,"
+        ." values ($id_users, '$expression', '$title', '$tags', $num_tags,"
         ." '$tags_json', $insert_time, $update_time,"
         ." $insert_api_key_id, $insert_api_key_name)";
 

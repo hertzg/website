@@ -22,11 +22,11 @@ function renderCalculations ($calculations, &$items, $params, $keyword) {
             );
             $href = "../view/?$queryString";
 
-            $url = htmlspecialchars($calculation->url);
+            $expression = htmlspecialchars($calculation->expression);
             $title = htmlspecialchars($calculation->title);
             $title = preg_replace($regex, '<mark>$0</mark>', $title);
             $items[] = \Page\imageArrowLinkWithDescription(
-                $title, $url, $href, 'calculation', $options);
+                $title, $expression, $href, 'calculation', $options);
 
         }
 

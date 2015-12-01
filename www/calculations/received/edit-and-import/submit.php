@@ -10,7 +10,7 @@ include_once '../../../lib/mysqli.php';
 list($receivedCalculation, $id, $user) = require_received_calculation($mysqli, '../');
 
 include_once '../../fns/request_calculation_params.php';
-list($url, $title, $tags,
+list($expression, $title, $tags,
     $tag_names) = request_calculation_params($errors, $focus);
 
 include_once "$fnsDir/redirect.php";
@@ -19,7 +19,7 @@ if ($errors) {
     $_SESSION['calculations/received/edit-and-import/errors'] = $errors;
     $_SESSION['calculations/received/edit-and-import/values'] = [
         'focus' => $focus,
-        'url' => $url,
+        'expression' => $expression,
         'title' => $title,
         'tags' => $tags,
     ];
@@ -32,7 +32,7 @@ unset(
     $_SESSION['calculations/received/edit-and-import/values']
 );
 
-$receivedCalculation->url = $url;
+$receivedCalculation->expression = $expression;
 $receivedCalculation->title = $title;
 $receivedCalculation->tags = $tags;
 

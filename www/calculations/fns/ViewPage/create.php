@@ -5,7 +5,6 @@ namespace ViewPage;
 function create ($calculation, &$scripts) {
 
     $id = $calculation->id;
-    $url = $calculation->url;
     $fnsDir = __DIR__.'/../../../fns';
 
     include_once "$fnsDir/compressed_js_script.php";
@@ -35,7 +34,7 @@ function create ($calculation, &$scripts) {
 
     }
 
-    $items[] = \Page\text(htmlspecialchars($url));
+    $items[] = \Page\text(htmlspecialchars($calculation->expression));
 
     if ($calculation->num_tags) {
         include_once "$fnsDir/Page/tags.php";

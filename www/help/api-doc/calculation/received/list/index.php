@@ -14,9 +14,9 @@ received_calculation_method_page('list', [], [
                 'type' => 'string',
                 'description' => 'The username of who sent the calculation.',
             ],
-            'url' => [
+            'expression' => [
                 'type' => 'string',
-                'description' => 'The URL of the received calculation.',
+                'description' => 'The expression of the received calculation.',
             ],
             'title' => [
                 'type' => 'string',

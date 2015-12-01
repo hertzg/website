@@ -34,7 +34,7 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
             $options = ['id' => $id];
 
             $title = $receivedCalculation->title;
-            if ($title === '') $title = $receivedCalculation->url;
+            if ($title === '') $title = $receivedCalculation->expression;
             $title = htmlspecialchars($title);
 
             $description = create_sender_description($receivedCalculation);

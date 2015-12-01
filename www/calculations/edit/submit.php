@@ -10,7 +10,7 @@ include_once '../../lib/mysqli.php';
 list($calculation, $id, $user) = require_calculation($mysqli);
 
 include_once '../fns/request_calculation_params.php';
-list($url, $title, $tags,
+list($expression, $title, $tags,
     $tag_names) = request_calculation_params($errors, $focus);
 
 include_once "$fnsDir/ItemList/itemQuery.php";
@@ -19,7 +19,7 @@ $itemQuery = ItemList\itemQuery($id);
 $values = [
     'focus' => $focus,
     'title' => $title,
-    'url' => $url,
+    'expression' => $expression,
     'tags' => $tags,
 ];
 
@@ -50,7 +50,7 @@ unset($_SESSION['calculations/edit/values']);
 
 include_once "$fnsDir/Users/Calculations/edit.php";
 Users\Calculations\edit($mysqli, $calculation,
-    $title, $url, $tags, $tag_names, $changed);
+    $title, $expression, $tags, $tag_names, $changed);
 
 if ($changed) $message = 'Changes have been saved.';
 else $message = 'No changes to be saved.';

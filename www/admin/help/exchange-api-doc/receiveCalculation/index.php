@@ -13,8 +13,8 @@ method_page('receiveCalculation', [
         'description' => 'The Zvini username of the receiver.',
     ],
     [
-        'name' => 'url',
-        'description' => 'The URL of the calculation.',
+        'name' => 'expression',
+        'description' => 'The expression of the calculation.',
     ],
     [
         'name' => 'title',
@@ -33,6 +33,6 @@ method_page('receiveCalculation', [
     'RECEIVER_NOT_RECEIVING' =>
         "The receiver hasn't opened a connection"
         .' to receive calculations from the sender.',
-    'ENTER_URL' => 'The URL is empty.',
+    'ENTER_EXPRESSION' => 'The expression is empty.',
     'TOO_MANY_TAGS' => 'More than '.Tags\maxNumber().' tags given.',
 ]);

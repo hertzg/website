@@ -1,15 +1,15 @@
 <?php
 
-function require_calculation_params (&$url, &$title, &$tags, &$tag_names) {
+function require_calculation_params (&$expression, &$title, &$tags, &$tag_names) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
     include_once "$fnsDir/Calculations/request.php";
-    list($url, $title, $tags) = Calculations\request();
+    list($expression, $title, $tags) = Calculations\request();
 
-    if ($url === '') {
+    if ($expression === '') {
         include_once "$fnsDir/ErrorJson/badRequest.php";
-        ErrorJson\badRequest('"ENTER_URL"');
+        ErrorJson\badRequest('"ENTER_EXPRESSION"');
     }
 
     include_once "$fnsDir/ApiCall/requireTags.php";

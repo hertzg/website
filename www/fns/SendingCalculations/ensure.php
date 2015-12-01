@@ -17,6 +17,11 @@ function ensure ($mysqli) {
     include_once "$fnsDir/Table/ensure.php";
     include_once "$fnsDir/Tags/column.php";
     return \Table\ensure($mysqli, 'sending_calculations', [
+        'expression' => [
+            'type' => "varchar($maxLengths[expression])",
+            'characterSet' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+        ],
         'id' => [
             'type' => 'bigint(20) unsigned',
             'primary' => true,
@@ -31,11 +36,6 @@ function ensure ($mysqli) {
         'their_exchange_api_key' => \ApiKey\column(),
         'title' => [
             'type' => "varchar($maxLengths[title])",
-            'characterSet' => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-        ],
-        'url' => [
-            'type' => "varchar($maxLengths[url])",
             'characterSet' => 'utf8',
             'collation' => 'utf8_unicode_ci',
         ],

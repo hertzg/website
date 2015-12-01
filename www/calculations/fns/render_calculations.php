@@ -21,15 +21,15 @@ function render_calculations ($calculations, &$items, $params, $base = '') {
             );
             $href = "{$base}view/?$queryString";
 
-            $escapedUrl = htmlspecialchars($calculation->url);
+            $escapedExpression = htmlspecialchars($calculation->expression);
             $title = $calculation->title;
             if ($title === '') {
                 $items[] = Page\imageArrowLink(
-                    $escapedUrl, $href, $icon, $options);
+                    $escapedExpression, $href, $icon, $options);
             } else {
                 $title = htmlspecialchars($title);
                 $items[] = Page\imageArrowLinkWithDescription($title,
-                    $escapedUrl, $href, $icon, $options);
+                    $escapedExpression, $href, $icon, $options);
             }
 
         }

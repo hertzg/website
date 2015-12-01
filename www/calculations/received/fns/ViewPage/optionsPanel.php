@@ -20,7 +20,7 @@ function optionsPanel ($receivedCalculation) {
         ['id' => 'edit-and-import']);
 
     include_once "$fnsDir/Page/imageLink.php";
-    $href = 'sms:?body='.rawurlencode($receivedCalculation->url);
+    $href = 'sms:?body='.rawurlencode($receivedCalculation->expression);
     $sendViaSmsLink = \Page\imageLink('Send via SMS', $href, 'send-sms');
 
     if ($receivedCalculation->archived) {

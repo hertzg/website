@@ -12,7 +12,7 @@ function render_calculations ($calculations, $total,
     foreach ($calculations as $calculation) {
         $title = htmlspecialchars($calculation->title);
         $title = preg_replace($regex, '<mark>$0</mark>', $title);
-        $description = htmlspecialchars($calculation->url);
+        $description = htmlspecialchars($calculation->expression);
         $query = "?id=$calculation->id&amp;keyword=$encodedKeyword";
         $href = "../calculations/view/$query";
         $items[] = Page\imageArrowLinkWithDescription($title,

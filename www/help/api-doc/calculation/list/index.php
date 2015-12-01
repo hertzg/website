@@ -10,9 +10,9 @@ calculation_method_page('list', [], [
                 'type' => 'number',
                 'description' => 'The ID of one of the calculations.',
             ],
-            'url' => [
+            'expression' => [
                 'type' => 'string',
-                'description' => 'The URL of the calculation.',
+                'description' => 'The expression of the calculation.',
             ],
             'title' => [
                 'type' => 'string',

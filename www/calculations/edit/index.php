@@ -8,8 +8,8 @@ $key = 'calculations/edit/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
     $values = [
-        'focus' => 'url',
-        'url' => $calculation->url,
+        'focus' => 'expression',
+        'expression' => $calculation->expression,
         'title' => $calculation->title,
         'tags' => $calculation->tags,
     ];

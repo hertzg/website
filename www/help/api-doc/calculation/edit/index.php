@@ -9,8 +9,8 @@ calculation_method_page('edit', [
         'description' => 'The ID of the calculation to edit.',
     ],
     [
-        'name' => 'url',
-        'description' => 'The new URL of the calculation.',
+        'name' => 'expression',
+        'description' => 'The new expression of the calculation.',
     ],
     [
         'name' => 'title',
@@ -22,6 +22,6 @@ calculation_method_page('edit', [
     ],
 ], ApiDoc\trueResult(), [
     'CALCULATION_NOT_FOUND' => "A calculation with the ID doesn't exist.",
-    'ENTER_URL' => 'The new URL is empty.',
+    'ENTER_EXPRESSION' => 'The new expression is empty.',
     'TOO_MANY_TAGS' => 'More than '.Tags\maxNumber().' tags given.',
 ]);

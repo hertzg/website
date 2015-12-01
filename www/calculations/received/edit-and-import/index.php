@@ -12,8 +12,8 @@ $key = 'calculations/received/edit-and-import/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
     $values = [
-        'focus' => 'url',
-        'url' => $receivedCalculation->url,
+        'focus' => 'expression',
+        'expression' => $receivedCalculation->expression,
         'title' => $receivedCalculation->title,
         'tags' => $receivedCalculation->tags,
     ];

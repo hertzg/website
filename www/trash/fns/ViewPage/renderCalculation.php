@@ -8,7 +8,7 @@ function renderCalculation ($calculation, &$items) {
 
     $title = $calculation->title;
     if ($title !== '') $items[] = \Page\text(htmlspecialchars($title));
-    $items[] = \Page\text(htmlspecialchars($calculation->url));
+    $items[] = \Page\text(htmlspecialchars($calculation->expression));
 
     $tags = $calculation->tags;
     if ($tags !== '') $items[] = \Page\text('Tags: '.htmlspecialchars($tags));

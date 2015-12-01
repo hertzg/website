@@ -4,8 +4,8 @@ include_once '../fns/calculation_method_page.php';
 include_once '../../../../fns/Tags/maxNumber.php';
 calculation_method_page('add', [
     [
-        'name' => 'url',
-        'description' => 'The URL of the calculation.',
+        'name' => 'expression',
+        'description' => 'The expression of the calculation.',
     ],
     [
         'name' => 'title',
@@ -19,6 +19,6 @@ calculation_method_page('add', [
     'type' => 'number',
     'description' => 'The ID of the newly created calculation.',
 ], [
-    'ENTER_URL' => 'The URL is empty.',
+    'ENTER_EXPRESSION' => 'The expression is empty.',
     'TOO_MANY_TAGS' => 'More than '.Tags\maxNumber().' tags given.',
 ]);

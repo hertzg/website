@@ -10,10 +10,10 @@ function create_form_items ($values) {
 
     include_once "$fnsDir/Form/textfield.php";
     return
-        Form\textfield('url', 'URL', [
-            'value' => $values['url'],
-            'maxlength' => $maxLengths['url'],
-            'autofocus' => $focus === 'url',
+        Form\textfield('expression', 'Expression', [
+            'value' => $values['expression'],
+            'maxlength' => $maxLengths['expression'],
+            'autofocus' => $focus === 'expression',
             'required' => true,
         ])
         .'<div class="hr"></div>'

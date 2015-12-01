@@ -2,11 +2,12 @@
 
 namespace Users\Calculations;
 
-function edit ($mysqli, $calculation, $title, $url,
+function edit ($mysqli, $calculation, $title, $expression,
     $tags, $tag_names, &$changed, $updateApiKey = null) {
 
     if ($calculation->title === $title &&
-        $calculation->url === $url && $calculation->tags === $tags) return;
+        $calculation->expression === $expression &&
+        $calculation->tags === $tags) return;
 
     $changed = true;
     $id = $calculation->id;
@@ -15,7 +16,7 @@ function edit ($mysqli, $calculation, $title, $url,
     $update_time = time();
 
     include_once "$fnsDir/Calculations/edit.php";
-    \Calculations\edit($mysqli, $id, $title, $url,
+    \Calculations\edit($mysqli, $id, $title, $expression,
         $tags, $tag_names, $update_time, $updateApiKey);
 
     if ($calculation->num_tags) {
@@ -25,8 +26,9 @@ function edit ($mysqli, $calculation, $title, $url,
 
     if ($tag_names) {
         include_once "$fnsDir/CalculationTags/add.php";
-        \CalculationTags\add($mysqli, $calculation->id_users, $id,
-            $tag_names, $url, $title, $calculation->insert_time, $update_time);
+        \CalculationTags\add($mysqli, $calculation->id_users,
+            $id, $tag_names, $expression, $title,
+            $calculation->insert_time, $update_time);
     }
 
 }

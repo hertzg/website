@@ -3,7 +3,7 @@
 function to_client_json ($calculation) {
     return [
         'id' => (int)$calculation->id,
-        'url' => $calculation->url,
+        'expression' => $calculation->expression,
         'title' => $calculation->title,
         'tags' => $calculation->tags,
         'insert_time' => (int)$calculation->insert_time,

@@ -6,7 +6,7 @@ function optionsPanel ($calculation) {
 
     $calculationsDir = __DIR__.'/../..';
     $fnsDir = "$calculationsDir/../fns";
-    $url = $calculation->url;
+    $expression = $calculation->expression;
 
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
     $escapedItemQuery = \ItemList\escapedItemQuery($calculation->id);
@@ -15,7 +15,7 @@ function optionsPanel ($calculation) {
     $editLink = \Page\imageArrowLink('Edit',
         "../edit/$escapedItemQuery", 'edit-calculation', ['id' => 'edit']);
 
-    $params = ['url' => $url];
+    $params = ['expression' => $expression];
     $title = $calculation->title;
     if ($title !== '') $params['title'] = $title;
     $tags = $calculation->tags;
@@ -28,7 +28,7 @@ function optionsPanel ($calculation) {
         "../send/$escapedItemQuery", 'send', ['id' => 'send']);
 
     include_once "$fnsDir/Page/imageLink.php";
-    $href = 'sms:?body='.rawurlencode($url);
+    $href = 'sms:?body='.rawurlencode($expression);
     $sendViaSmsLink = \Page\imageLink('Send via SMS', $href, 'send-sms');
 
     $href = "../delete/$escapedItemQuery";

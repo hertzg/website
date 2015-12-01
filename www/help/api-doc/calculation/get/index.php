@@ -13,9 +13,9 @@ calculation_method_page('get', [
             'type' => 'number',
             'description' => 'The ID of the calculation.',
         ],
-        'url' => [
+        'expression' => [
             'type' => 'string',
-            'description' => 'The URL of the calculation.',
+            'description' => 'The expression of the calculation.',
         ],
         'title' => [
             'type' => 'string',

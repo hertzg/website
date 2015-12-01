@@ -16,6 +16,11 @@ function ensure ($mysqli) {
     include_once "$fnsDir/Tags/column.php";
     include_once "$fnsDir/TagsJson/column.php";
     return \Table\ensure($mysqli, 'calculations', [
+        'expression' => [
+            'type' => "varchar($maxLengths[expression])",
+            'characterSet' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+        ],
         'id' => [
             'type' => 'bigint(20) unsigned',
             'primary' => true,
@@ -42,11 +47,6 @@ function ensure ($mysqli) {
         ],
         'update_api_key_name' => $apiKeyNameColumn,
         'update_time' => ['type' => 'bigint(20) unsigned'],
-        'url' => [
-            'type' => "varchar($maxLengths[url])",
-            'characterSet' => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-        ],
     ]);
 
 }

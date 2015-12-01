@@ -6,7 +6,7 @@ function addReceivedCalculation ($mysqli, $receivedCalculation, $apiKey) {
     include_once __DIR__.'/add.php';
     add($mysqli, $receivedCalculation->receiver_id_users, 'receivedCalculation', [
         'id' => $receivedCalculation->id,
-        'url' => $receivedCalculation->url,
+        'expression' => $receivedCalculation->expression,
         'title' => $receivedCalculation->title,
         'tags' => $receivedCalculation->tags,
         'insert_time' => $receivedCalculation->insert_time,

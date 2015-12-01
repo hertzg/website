@@ -15,6 +15,11 @@ function ensure ($mysqli) {
     include_once "$fnsDir/Username/column.php";
     return \Table\ensure($mysqli, 'received_calculations', [
         'archived' => ['type' => 'tinyint(3) unsigned'],
+        'expression' => [
+            'type' => "varchar($maxLengths[expression])",
+            'characterSet' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+        ],
         'id' => [
             'type' => 'bigint(20) unsigned',
             'primary' => true,
@@ -30,11 +35,6 @@ function ensure ($mysqli) {
         'tags' => \Tags\column(),
         'title' => [
             'type' => "varchar($maxLengths[title])",
-            'characterSet' => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-        ],
-        'url' => [
-            'type' => "varchar($maxLengths[url])",
             'characterSet' => 'utf8',
             'collation' => 'utf8_unicode_ci',
         ],

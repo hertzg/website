@@ -11,7 +11,8 @@ function importCopy ($mysqli, $receivedCalculation, $insertApiKey = null) {
 
     include_once __DIR__.'/../add.php';
     return \Users\Calculations\add($mysqli,
-        $receivedCalculation->receiver_id_users, $receivedCalculation->url,
+        $receivedCalculation->receiver_id_users,
+        $receivedCalculation->expression,
         $receivedCalculation->title, $tags, $tag_names, $insertApiKey);
 
 }

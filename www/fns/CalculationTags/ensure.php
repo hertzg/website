@@ -12,6 +12,11 @@ function ensure ($mysqli) {
     include_once "$fnsDir/Table/ensure.php";
     include_once "$fnsDir/TagName/column.php";
     return \Table\ensure($mysqli, 'calculation_tags', [
+        'expression' => [
+            'type' => "varchar($maxLengths[expression])",
+            'characterSet' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+        ],
         'id' => [
             'type' => 'bigint(20) unsigned',
             'primary' => true,
@@ -26,11 +31,6 @@ function ensure ($mysqli) {
             'collation' => 'utf8_unicode_ci',
         ],
         'update_time' => ['type' => 'bigint(20) unsigned'],
-        'url' => [
-            'type' => "varchar($maxLengths[url])",
-            'characterSet' => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-        ],
     ]);
 
 }

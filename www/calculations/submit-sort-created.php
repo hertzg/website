@@ -11,7 +11,9 @@ include_once '../lib/mysqli.php';
 Users\Calculations\editOrderBy($mysqli, $user->id_users, 'insert_time desc');
 
 unset($_SESSION['calculations/errors']);
-$_SESSION['calculations/messages'] = ['The list is now sorted by created time.'];
+$_SESSION['calculations/messages'] = [
+    'The list is now sorted by created time.',
+];
 
 include_once '../fns/redirect.php';
 include_once '../fns/ItemList/listUrl.php';

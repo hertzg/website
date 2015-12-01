@@ -10,11 +10,11 @@ if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
 
     include_once '../../fns/Calculations/request.php';
-    list($url, $title, $tags) = Calculations\request();
+    list($expression, $title, $tags) = Calculations\request();
 
     $values = [
-        'focus' => 'url',
-        'url' => $url,
+        'focus' => 'expression',
+        'expression' => $expression,
         'title' => $title,
         'tags' => $tags,
     ];

@@ -7,13 +7,13 @@ include_once '../../fns/require_user.php';
 $user = require_user('../../');
 
 include_once '../fns/request_calculation_params.php';
-list($url, $title, $tags,
+list($expression, $title, $tags,
     $tag_names) = request_calculation_params($errors, $focus);
 
 $values = [
     'focus' => $focus,
     'title' => $title,
-    'url' => $url,
+    'expression' => $expression,
     'tags' => $tags,
 ];
 
@@ -47,7 +47,7 @@ unset($_SESSION['calculations/new/values']);
 include_once '../../fns/Users/Calculations/add.php';
 include_once '../../lib/mysqli.php';
 $id = Users\Calculations\add($mysqli,
-    $user->id_users, $url, $title, $tags, $tag_names);
+    $user->id_users, $expression, $title, $tags, $tag_names);
 
 $_SESSION['calculations/view/messages'] = ['Calculation has been saved.'];
 

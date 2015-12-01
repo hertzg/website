@@ -9,7 +9,7 @@ function to_client_json ($receivedCalculation) {
     return [
         'id' => (int)$receivedCalculation->id,
         'sender_username' => $sender_username,
-        'url' => $receivedCalculation->url,
+        'expression' => $receivedCalculation->expression,
         'title' => $receivedCalculation->title,
         'tags' => $receivedCalculation->tags,
         'insert_time' => (int)$receivedCalculation->insert_time,

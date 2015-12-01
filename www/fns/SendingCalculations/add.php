@@ -3,12 +3,12 @@
 namespace SendingCalculations;
 
 function add ($mysqli, $id_users, $sender_username, $receiver_username,
-    $receiver_address, $their_exchange_api_key, $url, $title, $tags) {
+    $receiver_address, $their_exchange_api_key, $expression, $title, $tags) {
 
     $sender_username = $mysqli->real_escape_string($sender_username);
     $receiver_username = $mysqli->real_escape_string($receiver_username);
     $receiver_address = $mysqli->real_escape_string($receiver_address);
-    $url = $mysqli->real_escape_string($url);
+    $expression = $mysqli->real_escape_string($expression);
     $title = $mysqli->real_escape_string($title);
     $tags = $mysqli->real_escape_string($tags);
     $insert_time = time();
@@ -16,10 +16,10 @@ function add ($mysqli, $id_users, $sender_username, $receiver_username,
     $sql = 'insert into sending_calculations'
         .' (id_users, sender_username, receiver_username,'
         .' receiver_address, their_exchange_api_key,'
-        .' url, title, tags, insert_time)'
+        .' expression, title, tags, insert_time)'
         ." values ($id_users, '$sender_username', '$receiver_username',"
         ." '$receiver_address', '$their_exchange_api_key',"
-        ." '$url', '$title', $tags, $insert_time)";
+        ." '$expression', '$title', $tags, $insert_time)";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
