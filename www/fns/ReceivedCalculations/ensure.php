@@ -38,6 +38,7 @@ function ensure ($mysqli) {
             'characterSet' => 'utf8',
             'collation' => 'utf8_unicode_ci',
         ],
+        'value' => ['type' => 'bigint(20) unsigned'],
     ]);
 
 }

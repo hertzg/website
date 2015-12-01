@@ -31,6 +31,7 @@ function ensure ($mysqli) {
             'collation' => 'utf8_unicode_ci',
         ],
         'update_time' => ['type' => 'bigint(20) unsigned'],
+        'value' => ['type' => 'bigint(20) unsigned'],
     ]);
 
 }

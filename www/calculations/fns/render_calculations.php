@@ -5,10 +5,7 @@ function render_calculations ($calculations, &$items, $params, $base = '') {
     $fnsDir = __DIR__.'/../../fns';
 
     if ($calculations) {
-
-        include_once "$fnsDir/Page/imageArrowLink.php";
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
-
         $icon = 'calculation';
         foreach ($calculations as $calculation) {
 
@@ -21,19 +18,14 @@ function render_calculations ($calculations, &$items, $params, $base = '') {
             );
             $href = "{$base}view/?$queryString";
 
-            $escapedExpression = htmlspecialchars($calculation->expression);
             $title = $calculation->title;
-            if ($title === '') {
-                $items[] = Page\imageArrowLink(
-                    $escapedExpression, $href, $icon, $options);
-            } else {
-                $title = htmlspecialchars($title);
-                $items[] = Page\imageArrowLinkWithDescription($title,
-                    $escapedExpression, $href, $icon, $options);
-            }
+            if ($title === '') $title = $calculation->expression;
+            $title = htmlspecialchars($title);
+
+            $items[] = Page\imageArrowLinkWithDescription($title,
+                number_format($calculation->value, 2), $href, $icon, $options);
 
         }
-
     } else {
         include_once "$fnsDir/Page/info.php";
         $items[] = Page\info('No calculations');
