@@ -15,18 +15,19 @@ function renderCalculations ($user, &$items) {
     if (!$user->show_calculations) return;
 
     $num_calculations = $user->num_calculations;
-    $num_received_calculations = $user->num_received_calculations;
+    $num_new_received = $user->num_received_calculations -
+        $user->num_archived_received_calculations;
 
     $title = 'Calculations';
     $href = '../calculations/';
     $icon = 'calculations';
     $options = ['id' => 'calculations'];
-    if ($num_calculations || $num_received_calculations) {
+    if ($num_calculations || $num_new_received) {
 
         $descriptions = [];
         if ($num_calculations) $descriptions[] = "$num_calculations total.";
-        if ($num_received_calculations) {
-            $descriptions[] = "$num_received_calculations received.";
+        if ($num_new_received) {
+            $descriptions[] = "$num_new_received new received.";
         }
         $description = join(' ', $descriptions);
 
