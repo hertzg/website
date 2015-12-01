@@ -4,7 +4,8 @@ $fnsDir = '../../../fns';
 
 include_once '../fns/require_received_calculation.php';
 include_once '../../../lib/mysqli.php';
-list($receivedCalculation, $id, $user) = require_received_calculation($mysqli, '../');
+list($receivedCalculation, $id, $user) = require_received_calculation(
+    $mysqli, '../');
 
 unset($_SESSION['calculations/received/view/messages']);
 

@@ -7,7 +7,8 @@ require_same_domain_referer('..');
 
 include_once '../fns/require_received_calculation.php';
 include_once '../../../lib/mysqli.php';
-list($receivedCalculation, $id, $user) = require_received_calculation($mysqli, '../');
+list($receivedCalculation, $id, $user) = require_received_calculation(
+    $mysqli, '../');
 
 include_once '../../fns/request_calculation_params.php';
 list($expression, $title, $tags,

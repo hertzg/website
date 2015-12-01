@@ -17,7 +17,9 @@ function require_calculation ($mysqli, $base = '') {
 
     if (!$calculation) {
         unset($_SESSION['calculations/messages']);
-        $_SESSION['calculations/errors'] = ['The calculation no longer exists.'];
+        $_SESSION['calculations/errors'] = [
+            'The calculation no longer exists.',
+        ];
         include_once "$fnsDir/redirect.php";
         redirect("$base..");
     }

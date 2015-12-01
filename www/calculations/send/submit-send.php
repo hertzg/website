@@ -23,7 +23,8 @@ $sendFunction = function ($receiver_id_userss) use (
 
     include_once "$fnsDir/Users/Calculations/send.php";
     foreach ($receiver_id_userss as $receiver_id_users) {
-        Users\Calculations\send($mysqli, $user, $receiver_id_users, $calculation);
+        Users\Calculations\send($mysqli,
+            $user, $receiver_id_users, $calculation);
     }
 
 };

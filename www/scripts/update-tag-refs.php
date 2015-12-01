@@ -43,7 +43,7 @@ foreach ($rows as $row) {
     if ($calculation) {
         include_once '../fns/CalculationTags/editCalculation.php';
         CalculationTags\editCalculation($mysqli,
-            $calculation->id, $calculation->url, $calculation->title,
+            $calculation->id, $calculation->expression, $calculation->title,
             $calculation->insert_time, $calculation->update_time);
     }
 }

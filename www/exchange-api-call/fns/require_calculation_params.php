@@ -1,6 +1,7 @@
 <?php
 
-function require_calculation_params (&$expression, &$title, &$tags, &$tag_names) {
+function require_calculation_params (
+    &$expression, &$title, &$tags, &$tag_names) {
 
     $fnsDir = __DIR__.'/../../fns';
 

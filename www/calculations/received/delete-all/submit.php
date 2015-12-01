@@ -13,7 +13,9 @@ include_once '../../../lib/mysqli.php';
 Users\Calculations\Received\deleteAll($mysqli, $user);
 
 unset($_SESSION['calculations/errors']);
-$_SESSION['calculations/messages'] = ['All received calculations have been deleted.'];
+$_SESSION['calculations/messages'] = [
+    'All received calculations have been deleted.',
+];
 
 include_once "$fnsDir/redirect.php";
 redirect('../..');

@@ -45,7 +45,7 @@ if ($sending_calculations) {
             'exchange_api_key' => $sending_calculation->their_exchange_api_key,
             'sender_username' => $sending_calculation->sender_username,
             'receiver_username' => $sending_calculation->receiver_username,
-            'url' => $sending_calculation->url,
+            'expression' => $sending_calculation->expression,
             'title' => $sending_calculation->title,
             'tags' => $sending_calculation->tags,
         ];

@@ -12,7 +12,9 @@ list($receivedCalculation, $id, $user) = require_received_calculation($mysqli);
 include_once "$fnsDir/Users/Calculations/Received/archive.php";
 Users\Calculations\Received\archive($mysqli, $receivedCalculation);
 
-$_SESSION['calculations/received/view/messages'] = ['Calculation has been archived.'];
+$_SESSION['calculations/received/view/messages'] = [
+    'Calculation has been archived.',
+];
 
 include_once "$fnsDir/redirect.php";
 include_once "$fnsDir/ItemList/Received/itemQuery.php";

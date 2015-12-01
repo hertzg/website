@@ -10,7 +10,8 @@ function deleteAll ($mysqli, $user, $apiKey = null) {
     $fnsDir = __DIR__.'/../../..';
 
     include_once "$fnsDir/ReceivedCalculations/indexOnReceiver.php";
-    $receivedCalculations = \ReceivedCalculations\indexOnReceiver($mysqli, $id_users);
+    $receivedCalculations = \ReceivedCalculations\indexOnReceiver(
+        $mysqli, $id_users);
 
     if ($receivedCalculations) {
         include_once __DIR__.'/../../DeletedItems/addReceivedCalculation.php';
