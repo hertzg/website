@@ -15,23 +15,23 @@ function renderFiles ($user, &$items) {
     if (!$user->show_files) return;
 
     $storage_used = $user->storage_used;
-    $num_received_files = $user->num_received_files;
-    $num_received_folders = $user->num_received_folders;
+    $num_new_received = $user->num_received_files +
+        $user->num_received_folders - $user->num_archived_received_files -
+        $user->num_archived_received_folders;
 
     $title = 'Files';
     $href = '../files/';
     $icon = 'files';
     $options = ['id' => 'files'];
-    if ($num_received_files || $num_received_folders || $storage_used) {
+    if ($num_new_received || $storage_used) {
 
         $descriptions = [];
         if ($storage_used) {
             include_once "$fnsDir/bytestr.php";
             $descriptions[] = bytestr($storage_used).' used.';
         }
-        if ($num_received_files || $num_received_folders) {
-            $n = $num_received_files + $num_received_folders;
-            $descriptions[] = "$n received.";
+        if ($num_new_received) {
+            $descriptions[] = "$num_new_received new received.";
         }
         $description = join(' ', $descriptions);
 

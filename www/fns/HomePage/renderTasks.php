@@ -15,18 +15,19 @@ function renderTasks ($user, &$items) {
     if (!$user->show_tasks) return;
 
     $num_tasks = $user->num_tasks;
-    $num_received_tasks = $user->num_received_tasks;
+    $num_new_received = $user->num_received_tasks -
+        $user->num_archived_received_tasks;
 
     $title = 'Tasks';
     $href = '../tasks/';
     $icon = 'tasks';
     $options = ['id' => 'tasks'];
-    if ($num_tasks || $num_received_tasks) {
+    if ($num_tasks || $num_new_received) {
 
         $descriptions = [];
         if ($num_tasks) $descriptions[] = "$num_tasks total.";
-        if ($num_received_tasks) {
-            $descriptions[] = "$num_received_tasks received.";
+        if ($num_new_received) {
+            $descriptions[] = "$num_new_received new received.";
         }
         $description = join(' ', $descriptions);
 

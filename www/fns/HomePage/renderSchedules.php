@@ -18,14 +18,15 @@ function renderSchedules ($user, $mysqli, &$items) {
     checkScheduleCheckDay($mysqli, $user);
     $today = $user->num_schedules_today;
     $tomorrow = $user->num_schedules_tomorrow;
-    $num_received_schedules = $user->num_received_schedules;
+    $num_new_received = $user->num_received_schedules -
+        $user->num_archived_received_schedules;
 
     $title = 'Schedules';
     $href = '../schedules/';
     $icon = 'schedules';
     $options = ['id' => 'schedules'];
 
-    if ($today || $tomorrow || $num_received_schedules) {
+    if ($today || $tomorrow || $num_new_received) {
 
         $descriptions = [];
         if ($today) {
@@ -33,8 +34,8 @@ function renderSchedules ($user, $mysqli, &$items) {
                 "<span class=\"colorText red\">$today today.</span>";
         }
         if ($tomorrow) $descriptions[] = "$tomorrow tomorrow.";
-        if ($num_received_schedules) {
-            $descriptions[] = "$num_received_schedules received.";
+        if ($num_new_received) {
+            $descriptions[] = "$num_new_received new received.";
         }
         $description = join(' ', $descriptions);
 
