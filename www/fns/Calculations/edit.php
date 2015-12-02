@@ -3,7 +3,7 @@
 namespace Calculations;
 
 function edit ($mysqli, $id, $title, $expression,
-    $tags, $tag_names, $update_time, $updateApiKey) {
+    $tags, $tag_names, $value, $update_time, $updateApiKey) {
 
     $title = $mysqli->real_escape_string($title);
     $expression = $mysqli->real_escape_string($expression);
@@ -24,7 +24,8 @@ function edit ($mysqli, $id, $title, $expression,
     $sql = "update calculations set title = '$title',"
         ." expression = '$expression', tags = '$tags',"
         ." num_tags = $num_tags, tags_json = '$tags_json',"
-        ." update_time = $update_time, update_api_key_id = $update_api_key_id,"
+        ." value = $value, update_time = $update_time,"
+        ." update_api_key_id = $update_api_key_id,"
         ." update_api_key_name = $update_api_key_name,"
         ." revision = revision + 1 where id = $id";
 

@@ -12,12 +12,14 @@ function edit ($mysqli, $calculation, $title, $expression,
     $changed = true;
     $id = $calculation->id;
     $fnsDir = __DIR__.'/../..';
-
     $update_time = time();
+
+    include_once __DIR__.'/resolve.php';
+    resolve($expression, $value);
 
     include_once "$fnsDir/Calculations/edit.php";
     \Calculations\edit($mysqli, $id, $title, $expression,
-        $tags, $tag_names, $update_time, $updateApiKey);
+        $tags, $tag_names, $value, $update_time, $updateApiKey);
 
     if ($calculation->num_tags) {
         include_once "$fnsDir/CalculationTags/deleteOnCalculation.php";

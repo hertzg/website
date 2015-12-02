@@ -3,7 +3,7 @@
 namespace Calculations;
 
 function add ($mysqli, $id_users, $expression, $title, $tags,
-    $tag_names, $insert_time, $update_time, $insertApiKey) {
+    $tag_names, $value, $insert_time, $update_time, $insertApiKey) {
 
     $expression = $mysqli->real_escape_string($expression);
     $title = $mysqli->real_escape_string($title);
@@ -23,10 +23,10 @@ function add ($mysqli, $id_users, $expression, $title, $tags,
 
     $sql = 'insert into calculations'
         .' (id_users, expression, title, tags, num_tags,'
-        .' tags_json, insert_time, update_time,'
+        .' tags_json, value, insert_time, update_time,'
         .' insert_api_key_id, insert_api_key_name)'
         ." values ($id_users, '$expression', '$title', '$tags', $num_tags,"
-        ." '$tags_json', $insert_time, $update_time,"
+        ." '$tags_json', $value, $insert_time, $update_time,"
         ." $insert_api_key_id, $insert_api_key_name)";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);

@@ -6,12 +6,14 @@ function add ($mysqli, $id_users, $expression,
     $title, $tags, $tag_names, $insertApiKey = null) {
 
     $fnsDir = __DIR__.'/../..';
-
     $insert_time = $update_time = time();
+
+    include_once __DIR__.'/resolve.php';
+    resolve($expression, $value);
 
     include_once "$fnsDir/Calculations/add.php";
     $id = \Calculations\add($mysqli, $id_users, $expression, $title,
-        $tags, $tag_names, $insert_time, $update_time, $insertApiKey);
+        $tags, $tag_names, $value, $insert_time, $update_time, $insertApiKey);
 
     if ($tag_names) {
         include_once "$fnsDir/CalculationTags/add.php";
