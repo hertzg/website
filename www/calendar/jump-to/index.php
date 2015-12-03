@@ -14,24 +14,6 @@ $maxYear = date('Y', user_time_today($user));
 $minYear = 1900;
 $year = max($minYear, min($maxYear, (int)$year));
 
-$monthOptions = [
-    1 => 'January',
-    2 => 'February',
-    3 => 'March',
-    4 => 'April',
-    5 => 'May',
-    6 => 'June',
-    7 => 'July',
-    8 => 'August',
-    9 => 'September',
-    10 => 'October',
-    11 => 'November',
-    12 => 'December',
-];
-
-$yearOptions = [];
-for ($i = $maxYear; $i >= $minYear; $i--) $yearOptions[$i] = $i;
-
 unset(
     $_SESSION['calendar/errors'],
     $_SESSION['calendar/messages']
