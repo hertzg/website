@@ -15,7 +15,7 @@ function create ($mysqli, $user, $wallet, &$scripts, &$head) {
 
     include_once "$fnsDir/compressed_css_link.php";
     $head = compressed_css_link('newItemMenu', $base)
-        .'<link rel="stylesheet" type="text/css" href="../view.css" />';
+        .'<link rel="stylesheet" type="text/css" href="../view.css?1" />';
 
     include_once "$fnsDir/request_strings.php";
     list($keyword) = request_strings('keyword');
