@@ -17,10 +17,6 @@
     transition: transform 0.2s linear;
 }
 
-.map-gridline {
-    stroke: rgba(136, 136, 136, 0.5);
-}
-
 .map-place {
     cursor: pointer;
     transition: transform 0.2s linear;

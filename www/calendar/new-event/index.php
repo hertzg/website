@@ -34,7 +34,7 @@ $content = Page\tabs(
     'New Event',
     Page\sessionErrors('calendar/new-event/errors')
     .'<form action="submit.php" method="post">'
-        .create_form_items($values, $scripts)
+        .create_form_items($user, $values, $scripts)
         .'<div class="hr"></div>'
         .Form\button('Save Event')
     .'</form>'

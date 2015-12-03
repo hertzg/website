@@ -42,7 +42,7 @@ function echo_html ($title, $head, $body,
                 .'<link rel="stylesheet" type="text/css"'
                 ." href=\"{$base}theme/color/$theme_color/common.css?28\" />"
                 .'<link rel="stylesheet" type="text/css"'
-                ." href=\"{$base}theme/brightness/$theme_brightness/common.css?4\" />"
+                ." href=\"{$base}theme/brightness/$theme_brightness/common.css?5\" />"
                 .$head
             .'</head>'
             .'<body>'

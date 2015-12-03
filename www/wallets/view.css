@@ -18,7 +18,6 @@
 .cashflow-bars {
     position: relative;
     height: 5px;
-    background-color: rgba(136, 136, 136, 0.2);
     border-radius: 2px;
 }
 

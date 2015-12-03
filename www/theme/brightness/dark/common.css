@@ -15,6 +15,22 @@ body {
     color: white;
 }
 
+.hr,
+.form-textfield-label-separator,
+.cashflow-bars,
+.barChart-line {
+    background-color: #1c1c1c;
+}
+
+.contactPanel-info,
+.twoColumns-column2 {
+    border-color: #1c1c1c;
+}
+
+.map-gridline {
+    stroke: #1c1c1c;
+}
+
 .tab-bar,
 .tab-content,
 .panel {

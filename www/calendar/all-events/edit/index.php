@@ -30,7 +30,7 @@ $content = Page\tabs(
     'Edit',
     Page\sessionErrors('calendar/all-events/edit/errors')
     .'<form action="submit.php" method="post">'
-        .create_form_items($values, $scripts, '../')
+        .create_form_items($user, $values, $scripts, '../')
         .'<div class="hr"></div>'
         .Form\button('Save Changes')
         .ItemList\itemHiddenInputs($id)

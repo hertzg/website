@@ -6,31 +6,16 @@ $fnsDir = '../../fns';
 include_once "$fnsDir/require_user.php";
 $user = require_user($base);
 
+include_once "$fnsDir/user_time_today.php";
+$yearToday = date('Y', user_time_today($user));
+
+$maxYear = $yearToday + 100;
+$minYear = $yearToday - 100;
+
 include_once "$fnsDir/Date/request.php";
 list($day, $month, $year) = Date\request();
 
-include_once "$fnsDir/user_time_today.php";
-$maxYear = date('Y', user_time_today($user));
-$minYear = 1900;
 $year = max($minYear, min($maxYear, (int)$year));
-
-$monthOptions = [
-    1 => 'January',
-    2 => 'February',
-    3 => 'March',
-    4 => 'April',
-    5 => 'May',
-    6 => 'June',
-    7 => 'July',
-    8 => 'August',
-    9 => 'September',
-    10 => 'October',
-    11 => 'November',
-    12 => 'December',
-];
-
-$yearOptions = [];
-for ($i = $maxYear; $i >= $minYear; $i--) $yearOptions[$i] = $i;
 
 unset(
     $_SESSION['calendar/errors'],
@@ -65,6 +50,8 @@ $content = Page\tabs(
             [
                 'name' => 'year',
                 'value' => $year,
+                'min' => $minYear,
+                'max' => $maxYear,
             ],
             'Select a day',
             true
