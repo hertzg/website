@@ -52,8 +52,7 @@ function renderCalendar ($user, $mysqli, &$items, &$scripts) {
         if ($tomorrow) $descriptions[] = $n_events($tomorrow).'&nbsp;tomorrow.';
         $description = join(' ', $descriptions);
 
-        $description =
-            "<span class=\"thumbnail_link-description\">$description</span>";
+        $description = "<span class=\"colorText grey\">$description</span>";
 
     } else {
         $description = '';
