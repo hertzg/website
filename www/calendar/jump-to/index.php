@@ -6,12 +6,15 @@ $fnsDir = '../../fns';
 include_once "$fnsDir/require_user.php";
 $user = require_user($base);
 
+include_once "$fnsDir/user_time_today.php";
+$yearToday = date('Y', user_time_today($user));
+
+$maxYear = $yearToday + 100;
+$minYear = $yearToday - 100;
+
 include_once "$fnsDir/Date/request.php";
 list($day, $month, $year) = Date\request();
 
-include_once "$fnsDir/user_time_today.php";
-$maxYear = date('Y', user_time_today($user));
-$minYear = 1900;
 $year = max($minYear, min($maxYear, (int)$year));
 
 unset(
@@ -47,6 +50,8 @@ $content = Page\tabs(
             [
                 'name' => 'year',
                 'value' => $year,
+                'min' => $minYear,
+                'max' => $maxYear,
             ],
             'Select a day',
             true
