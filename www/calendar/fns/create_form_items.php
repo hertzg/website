@@ -1,9 +1,12 @@
 <?php
 
-function create_form_items ($values, &$scripts, $base = '') {
+function create_form_items ($user, $values, &$scripts, $base = '') {
 
     $focus = $values['focus'];
     $fnsDir = __DIR__.'/../../fns';
+
+    include_once "$fnsDir/user_time_today.php";
+    $yearToday = date('Y', user_time_today($user));
 
     include_once "$fnsDir/compressed_js_script.php";
     $scripts = compressed_js_script('dateField', "$base../../");
@@ -34,6 +37,8 @@ function create_form_items ($values, &$scripts, $base = '') {
         [
             'name' => 'event_year',
             'value' => $values['event_year'],
+            'min' => $yearToday - 100,
+            'max' => $yearToday + 100,
         ], 'When', true)
         .'<div class="hr"></div>'
         .Form\timefield([
