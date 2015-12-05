@@ -12,12 +12,12 @@ function create_admin_api_keys_link ($mysqli) {
     $num_api_keys = AdminApiKeys\count($mysqli);
 
     if ($num_api_keys) {
-        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
-        return Page\imageArrowLinkWithDescription($title,
+        include_once "$fnsDir/Page/thumbnailLinkWithDescription.php";
+        return Page\thumbnailLinkWithDescription($title,
             "$num_api_keys total.", $href, $icon, $options);
     }
 
-    include_once "$fnsDir/Page/imageArrowLink.php";
-    return Page\imageArrowLink($title, $href, $icon, $options);
+    include_once "$fnsDir/Page/thumbnailLink.php";
+    return Page\thumbnailLink($title, $href, $icon, $options);
 
 }
