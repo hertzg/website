@@ -86,7 +86,7 @@ function create ($mysqli, $apiKey, &$scripts) {
         .'<div class="hr"></div>'
         .\Form\label('Last accessed', $accessed)
         .\Page\infoText($infoText)
-        .authsPanel($mysqli, $apiKey)
+        .authsPanel($mysqli, $apiKey, $scripts)
         .optionsPanel($id),
         \Page\newItemButton('../new/'.\ItemList\escapedPageQuery(), 'API Key')
     );
