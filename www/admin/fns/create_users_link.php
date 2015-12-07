@@ -12,12 +12,12 @@ function create_users_link ($mysqli) {
     $num_users = Users\count($mysqli);
 
     if ($num_users) {
-        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
-        return Page\imageArrowLinkWithDescription($title,
+        include_once "$fnsDir/Page/thumbnailLinkWithDescription.php";
+        return Page\thumbnailLinkWithDescription($title,
             "$num_users total.", $href, $icon, $options);
     }
 
-    include_once "$fnsDir/Page/imageArrowLink.php";
-    return Page\imageArrowLink($title, $href, $icon, $options);
+    include_once "$fnsDir/Page/thumbnailLink.php";
+    return Page\thumbnailLink($title, $href, $icon, $options);
 
 }

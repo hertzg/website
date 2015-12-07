@@ -12,12 +12,12 @@ function create_connections_link ($mysqli) {
     $num_admin_connections = AdminConnections\count($mysqli);
 
     if ($num_admin_connections) {
-        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
-        return Page\imageArrowLinkWithDescription($title,
+        include_once "$fnsDir/Page/thumbnailLinkWithDescription.php";
+        return Page\thumbnailLinkWithDescription($title,
             "$num_admin_connections total.", $href, $icon, $options);
     }
 
-    include_once "$fnsDir/Page/imageArrowLink.php";
-    return Page\imageArrowLink($title, $href, $icon, $options);
+    include_once "$fnsDir/Page/thumbnailLink.php";
+    return Page\thumbnailLink($title, $href, $icon, $options);
 
 }

@@ -28,6 +28,7 @@ $content =
     Page\title(
         'Administration',
         Page\sessionMessages('admin/messages')
+        .create_database_links($mysqli)
         .create_general_info_link()
         .'<div class="hr"></div>'
         .create_mysql_link($mysqli)
@@ -43,7 +44,6 @@ $content =
         .'<div class="hr"></div>'
         .Page\imageArrowLink('Set New Username/Password',
             'username-password/', 'generic', ['id' => 'username-password'])
-        .create_database_links($mysqli)
     )
     .create_panel('Options', $helpLink);
 
