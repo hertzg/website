@@ -54,8 +54,11 @@ function authsPanel ($mysqli, $connection, &$scripts) {
             "../all-auths/?id=$id", 'sign-ins', ['id' => 'all-auths']);
 
     } else {
-        include_once "$fnsDir/Page/info.php";
-        $items[] = \Page\info('Older data not available');
+        include_once "$fnsDir/auth_expire_days.php";
+        if ($connection->insert_time < time() - auth_expire_days() * 24 * 60 * 60) {
+            include_once "$fnsDir/Page/info.php";
+            $items[] = \Page\info('Older data not available');
+        }
     }
 
     $content = join('<div class="hr"></div>', $items);
