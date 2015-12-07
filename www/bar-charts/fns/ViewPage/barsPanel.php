@@ -2,7 +2,7 @@
 
 namespace ViewPage;
 
-function barsPanel ($mysqli, $bar_chart) {
+function barsPanel ($mysqli, $bar_chart, &$scripts) {
 
     $id = $bar_chart->id;
     $fnsDir = __DIR__.'/../../../fns';
@@ -11,6 +11,21 @@ function barsPanel ($mysqli, $bar_chart) {
     if ($num_bars) {
 
         $limit = 5;
+
+        if ($num_bars > $limit) {
+
+            include_once "$fnsDir/SearchForm/emptyContent.php";
+            $content = "<input type=\"hidden\" name=\"id\" value=\"$id\" />"
+                .\SearchForm\emptyContent('Search bars...');
+
+            include_once "$fnsDir/SearchForm/create.php";
+            $items[] = \SearchForm\create(
+                '../all-bars/search/', $content);
+
+            include_once "$fnsDir/compressed_js_script.php";
+            $scripts .= compressed_js_script('searchForm', '../../');
+
+        }
 
         include_once "$fnsDir/BarChartBars/indexLimitOnBarChart.php";
         $bars = \BarChartBars\indexLimitOnBarChart($mysqli, $id, $limit);
