@@ -80,7 +80,7 @@ function create ($mysqli, $user, $wallet, &$scripts, &$head) {
         .\Form\label('Balance', amount_html($wallet->balance))
         .\Page\infoText($infoText)
         .cashflowPanel($mysqli, $user, $wallet)
-        .transactionsPanel($mysqli, $wallet)
+        .transactionsPanel($mysqli, $wallet, $scripts)
         .optionsPanel($wallet, $user),
         \Page\newItemMenu(
             \Page\imageArrowLink('Transaction',

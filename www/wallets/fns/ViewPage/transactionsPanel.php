@@ -2,7 +2,7 @@
 
 namespace ViewPage;
 
-function transactionsPanel ($mysqli, $wallet) {
+function transactionsPanel ($mysqli, $wallet, &$scripts) {
 
     $id = $wallet->id;
     $fnsDir = __DIR__.'/../../../fns';
@@ -11,6 +11,21 @@ function transactionsPanel ($mysqli, $wallet) {
     if ($num_transactions) {
 
         $limit = 5;
+
+        if ($num_transactions > $limit) {
+
+            include_once "$fnsDir/SearchForm/emptyContent.php";
+            $content = "<input type=\"hidden\" name=\"id\" value=\"$id\" />"
+                .\SearchForm\emptyContent('Search transactions...');
+
+            include_once "$fnsDir/SearchForm/create.php";
+            $items[] = \SearchForm\create(
+                '../all-transactions/search/', $content);
+
+            include_once "$fnsDir/compressed_js_script.php";
+            $scripts .= compressed_js_script('searchForm', '../../');
+
+        }
 
         include_once "$fnsDir/WalletTransactions/indexLimitOnWallet.php";
         $transactions = \WalletTransactions\indexLimitOnWallet(
