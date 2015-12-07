@@ -35,6 +35,7 @@ function transactionsPanel ($mysqli, $wallet, &$scripts) {
         render_transactions($transactions, $items);
 
         if ($num_transactions > $limit) {
+            include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
             $items[] = \Page\imageArrowLinkWithDescription('All Transactions',
                 "$num_transactions total.", "../all-transactions/?id=$id",
                 'transactions', ['id' => 'all-transactions']);
