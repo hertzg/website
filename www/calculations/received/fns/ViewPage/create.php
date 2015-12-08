@@ -21,7 +21,10 @@ function create ($receivedCalculation, &$scripts) {
 
     $value = $receivedCalculation->value;
     if ($value === null) {
-        $text = '<span class="colorText red">Uncomputable expression.</span>';
+        $text =
+            '<span class="colorText red">'
+                ."Uncomputable expression. $receivedCalculation->error"
+            .'</span>';
     } else {
         $text = number_format($value, 2);
     }

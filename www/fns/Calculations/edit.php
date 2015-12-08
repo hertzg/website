@@ -2,8 +2,8 @@
 
 namespace Calculations;
 
-function edit ($mysqli, $id, $title, $expression,
-    $tags, $tag_names, $value, $update_time, $updateApiKey) {
+function edit ($mysqli, $id, $title, $expression, $tags,
+    $tag_names, $value, $error, $error_char, $update_time, $updateApiKey) {
 
     $title = $mysqli->real_escape_string($title);
     $expression = $mysqli->real_escape_string($expression);
@@ -11,6 +11,9 @@ function edit ($mysqli, $id, $title, $expression,
     $num_tags = count($tag_names);
     $tags_json = $mysqli->real_escape_string(json_encode($tag_names));
     if ($value === null) $value = 'null';
+    if ($error === null) $error = 'null';
+    else $error = "'".$mysqli->real_escape_string($error)."'";
+    if ($error_char === null) $error_char = 'null';
     if ($updateApiKey) {
 
         $update_api_key_id = $updateApiKey->id;
@@ -25,8 +28,8 @@ function edit ($mysqli, $id, $title, $expression,
     $sql = "update calculations set title = '$title',"
         ." expression = '$expression', tags = '$tags',"
         ." num_tags = $num_tags, tags_json = '$tags_json',"
-        ." value = $value, update_time = $update_time,"
-        ." update_api_key_id = $update_api_key_id,"
+        ." value = $value, error = $error, error_char = $error_char,"
+        ." update_time = $update_time, update_api_key_id = $update_api_key_id,"
         ." update_api_key_name = $update_api_key_name,"
         ." revision = revision + 1 where id = $id";
 

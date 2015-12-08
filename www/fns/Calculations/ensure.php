@@ -16,6 +16,16 @@ function ensure ($mysqli) {
     include_once "$fnsDir/Tags/column.php";
     include_once "$fnsDir/TagsJson/column.php";
     return \Table\ensure($mysqli, 'calculations', [
+        'error' => [
+            'type' => "varchar($maxLengths[error])",
+            'characterSet' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'nullable' => true,
+        ],
+        'error_char' => [
+            'type' => 'bigint(20) unsigned',
+            'nullable' => true,
+        ],
         'expression' => [
             'type' => "varchar($maxLengths[expression])",
             'characterSet' => 'utf8',

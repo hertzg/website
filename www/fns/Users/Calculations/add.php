@@ -2,15 +2,16 @@
 
 namespace Users\Calculations;
 
-function add ($mysqli, $id_users, $expression,
-    $title, $tags, $tag_names, $value, $insertApiKey = null) {
+function add ($mysqli, $id_users, $expression, $title, $tags,
+    $tag_names, $value, $error, $error_char, $insertApiKey = null) {
 
     $fnsDir = __DIR__.'/../..';
     $insert_time = $update_time = time();
 
     include_once "$fnsDir/Calculations/add.php";
-    $id = \Calculations\add($mysqli, $id_users, $expression, $title,
-        $tags, $tag_names, $value, $insert_time, $update_time, $insertApiKey);
+    $id = \Calculations\add($mysqli, $id_users,
+        $expression, $title, $tags, $tag_names, $value,
+        $error, $error_char, $insert_time, $update_time, $insertApiKey);
 
     if ($tag_names) {
         include_once "$fnsDir/CalculationTags/add.php";

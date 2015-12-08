@@ -10,8 +10,8 @@ include_once '../../lib/mysqli.php';
 list($calculation, $id, $user) = require_calculation($mysqli);
 
 include_once '../fns/request_calculation_params.php';
-list($expression, $title, $tags,
-    $tag_names, $value) = request_calculation_params($errors, $focus);
+list($expression, $title, $tags, $tag_names, $value,
+    $error, $error_char) = request_calculation_params($errors, $focus);
 
 include_once "$fnsDir/ItemList/itemQuery.php";
 $itemQuery = ItemList\itemQuery($id);
@@ -42,6 +42,9 @@ if ($sendButton) {
         $_SESSION['calculations/edit/send/messages'],
         $_SESSION['calculations/edit/send/values']
     );
+    $values['value'] = $value;
+    $values['error'] = $error;
+    $values['error_char'] = $error_char;
     $_SESSION['calculations/edit/send/calculation'] = $values;
     redirect("send/$itemQuery");
 }
@@ -49,8 +52,8 @@ if ($sendButton) {
 unset($_SESSION['calculations/edit/values']);
 
 include_once "$fnsDir/Users/Calculations/edit.php";
-Users\Calculations\edit($mysqli, $calculation,
-    $title, $expression, $tags, $tag_names, $value, $changed);
+Users\Calculations\edit($mysqli, $calculation, $title,
+    $expression, $tags, $tag_names, $value, $error, $error_char, $changed);
 
 if ($changed) $message = 'Changes have been saved.';
 else $message = 'No changes to be saved.';

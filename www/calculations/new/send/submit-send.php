@@ -25,7 +25,8 @@ $sendFunction = function ($receiver_id_userss) use (
     foreach ($receiver_id_userss as $receiver_id_users) {
         Users\Calculations\Received\add($mysqli, $user->id_users,
             $user->username, $receiver_id_users, $stageValues['expression'],
-            $stageValues['title'], $stageValues['tags']);
+            $stageValues['title'], $stageValues['tags'], $stageValues['value'],
+            $stageValues['error'], $stageValues['error_char']);
     }
 
 };

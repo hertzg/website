@@ -13,6 +13,8 @@ function importCopy ($mysqli, $receivedCalculation, $insertApiKey = null) {
     return \Users\Calculations\add($mysqli,
         $receivedCalculation->receiver_id_users,
         $receivedCalculation->expression,
-        $receivedCalculation->title, $tags, $tag_names, $insertApiKey);
+        $receivedCalculation->title, $tags, $tag_names,
+        $receivedCalculation->value, $receivedCalculation->error,
+        $receivedCalculation->error_char, $insertApiKey);
 
 }

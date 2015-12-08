@@ -13,7 +13,10 @@ function renderCalculation ($calculation, &$items) {
 
     $value = $calculation->value;
     if ($value === null) {
-        $text = '<span class="colorText red">Uncomputable expression.</span>';
+        $text =
+            '<span class="colorText red">'
+                ."Uncomputable expression. $calculation->error"
+            .'</span>';
     } else {
         $text = number_format($value, 2);
     }

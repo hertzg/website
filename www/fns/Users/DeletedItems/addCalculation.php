@@ -10,6 +10,8 @@ function addCalculation ($mysqli, $calculation, $apiKey) {
         'title' => $calculation->title,
         'tags' => $calculation->tags,
         'value' => $calculation->value,
+        'error' => $calculation->error,
+        'error_char' => $calculation->error_char,
         'insert_api_key_id' => $calculation->insert_api_key_id,
         'insert_time' => $calculation->insert_time,
         'update_api_key_id' => $calculation->update_api_key_id,
