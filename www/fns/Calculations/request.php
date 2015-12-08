@@ -23,6 +23,10 @@ function request () {
     $tags = str_collapse_spaces($tags);
     $tags = mb_substr($tags, 0, $maxLengths['tags'], 'UTF-8');
 
-    return [$expression, $title, $tags];
+    include_once "$fnsDir/evaluate.php";
+    $value = evaluate($expression);
+    if ($value === false) $value = null;
+
+    return [$expression, $title, $tags, $value];
 
 }

@@ -10,6 +10,7 @@ function addDeleted ($mysqli, $id, $id_users, $expression, $title,
     $tags = $mysqli->real_escape_string($tags);
     $num_tags = count($tag_names);
     $tags_json = $mysqli->real_escape_string(json_encode($tag_names));
+    if ($value === null) $value = 'null';
 
     $sql = 'insert into calculations'
         .' (id, id_users, expression, title,'

@@ -10,6 +10,7 @@ function add ($mysqli, $id_users, $expression, $title, $tags,
     $tags = $mysqli->real_escape_string($tags);
     $num_tags = count($tag_names);
     $tags_json = $mysqli->real_escape_string(json_encode($tag_names));
+    if ($value === null) $value = 'null';
     if ($insertApiKey === null) {
         $insert_api_key_id = $insert_api_key_name = 'null';
     } else {

@@ -8,6 +8,7 @@ function addDeleted ($mysqli, $id_users, $data) {
     $expression = $data->expression;
     $title = $data->title;
     $tags = $data->tags;
+    $value = $data->value;
     $insert_time = $data->insert_time;
     $update_time = $data->update_time;
 
@@ -16,17 +17,14 @@ function addDeleted ($mysqli, $id_users, $data) {
     include_once "$fnsDir/Tags/parse.php";
     $tag_names = \Tags\parse($tags);
 
-    include_once __DIR__.'/resolve.php';
-    resolve($expression, $value);
-
     include_once "$fnsDir/Calculations/addDeleted.php";
     \Calculations\addDeleted($mysqli, $id, $id_users, $expression, $title,
         $tags, $tag_names, $value, $insert_time, $update_time, $data->revision);
 
     if ($tag_names) {
         include_once "$fnsDir/CalculationTags/add.php";
-        \CalculationTags\add($mysqli, $id_users, $id,
-            $tag_names, $expression, $title, $insert_time, $update_time);
+        \CalculationTags\add($mysqli, $id_users, $id, $tag_names,
+            $expression, $title, $value, $insert_time, $update_time);
     }
 
     include_once __DIR__.'/addNumber.php';

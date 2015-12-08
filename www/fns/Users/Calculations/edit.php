@@ -3,7 +3,7 @@
 namespace Users\Calculations;
 
 function edit ($mysqli, $calculation, $title, $expression,
-    $tags, $tag_names, &$changed, $updateApiKey = null) {
+    $tags, $tag_names, $value, &$changed, $updateApiKey = null) {
 
     if ($calculation->title === $title &&
         $calculation->expression === $expression &&
@@ -13,9 +13,6 @@ function edit ($mysqli, $calculation, $title, $expression,
     $id = $calculation->id;
     $fnsDir = __DIR__.'/../..';
     $update_time = time();
-
-    include_once __DIR__.'/resolve.php';
-    resolve($expression, $value);
 
     include_once "$fnsDir/Calculations/edit.php";
     \Calculations\edit($mysqli, $id, $title, $expression,
@@ -29,7 +26,7 @@ function edit ($mysqli, $calculation, $title, $expression,
     if ($tag_names) {
         include_once "$fnsDir/CalculationTags/add.php";
         \CalculationTags\add($mysqli, $calculation->id_users,
-            $id, $tag_names, $expression, $title,
+            $id, $tag_names, $expression, $title, $value,
             $calculation->insert_time, $update_time);
     }
 

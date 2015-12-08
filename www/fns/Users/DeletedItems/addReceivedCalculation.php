@@ -9,6 +9,7 @@ function addReceivedCalculation ($mysqli, $receivedCalculation, $apiKey) {
         'expression' => $receivedCalculation->expression,
         'title' => $receivedCalculation->title,
         'tags' => $receivedCalculation->tags,
+        'value' => $receivedCalculation->value,
         'insert_time' => $receivedCalculation->insert_time,
         'sender_address' => $receivedCalculation->sender_address,
         'sender_id_users' => $receivedCalculation->sender_id_users,

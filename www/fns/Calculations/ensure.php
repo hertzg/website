@@ -47,7 +47,10 @@ function ensure ($mysqli) {
         ],
         'update_api_key_name' => $apiKeyNameColumn,
         'update_time' => ['type' => 'bigint(20) unsigned'],
-        'value' => ['type' => 'bigint(20) unsigned'],
+        'value' => [
+            'type' => 'double',
+            'nullable' => true,
+        ],
     ]);
 
 }

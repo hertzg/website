@@ -12,7 +12,7 @@ list($receivedCalculation, $id, $user) = require_received_calculation(
 
 include_once '../../fns/request_calculation_params.php';
 list($expression, $title, $tags,
-    $tag_names) = request_calculation_params($errors, $focus);
+    $tag_names, $value) = request_calculation_params($errors, $focus);
 
 include_once "$fnsDir/redirect.php";
 
@@ -36,6 +36,7 @@ unset(
 $receivedCalculation->expression = $expression;
 $receivedCalculation->title = $title;
 $receivedCalculation->tags = $tags;
+$receivedCalculation->value = $value;
 
 include_once "$fnsDir/Users/Calculations/Received/import.php";
 Users\Calculations\Received\import($mysqli, $receivedCalculation);

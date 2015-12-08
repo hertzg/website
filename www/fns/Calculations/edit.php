@@ -10,6 +10,7 @@ function edit ($mysqli, $id, $title, $expression,
     $tags = $mysqli->real_escape_string($tags);
     $num_tags = count($tag_names);
     $tags_json = $mysqli->real_escape_string(json_encode($tag_names));
+    if ($value === null) $value = 'null';
     if ($updateApiKey) {
 
         $update_api_key_id = $updateApiKey->id;

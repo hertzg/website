@@ -9,6 +9,7 @@ function addCalculation ($mysqli, $calculation, $apiKey) {
         'expression' => $calculation->expression,
         'title' => $calculation->title,
         'tags' => $calculation->tags,
+        'value' => $calculation->value,
         'insert_api_key_id' => $calculation->insert_api_key_id,
         'insert_time' => $calculation->insert_time,
         'update_api_key_id' => $calculation->update_api_key_id,

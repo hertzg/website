@@ -8,7 +8,7 @@ $user = require_user('../../');
 
 include_once '../fns/request_calculation_params.php';
 list($expression, $title, $tags,
-    $tag_names) = request_calculation_params($errors, $focus);
+    $tag_names, $value) = request_calculation_params($errors, $focus);
 
 $values = [
     'focus' => $focus,
@@ -46,8 +46,8 @@ unset($_SESSION['calculations/new/values']);
 
 include_once '../../fns/Users/Calculations/add.php';
 include_once '../../lib/mysqli.php';
-$id = Users\Calculations\add($mysqli,
-    $user->id_users, $expression, $title, $tags, $tag_names);
+$id = Users\Calculations\add($mysqli, $user->id_users,
+    $expression, $title, $tags, $tag_names, $value);
 
 $_SESSION['calculations/view/messages'] = ['Calculation has been saved.'];
 
