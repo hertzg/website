@@ -24,9 +24,17 @@ function renderCalculations ($calculations, &$items, $params, $keyword) {
 
             $title = htmlspecialchars($calculation->title);
             $title = preg_replace($regex, '<mark>$0</mark>', $title);
+
+            $value = $calculation->value;
+            if ($value === null) {
+                $description =
+                    '<span class="colorText red">Uncomputable.</span>';
+            } else {
+                $description = number_format($value, 2);
+            }
+
             $items[] = \Page\imageArrowLinkWithDescription(
-                $title, number_format($calculation->value, 2),
-                $href, 'calculation', $options);
+                $title, $description, $href, 'calculation', $options);
 
         }
 

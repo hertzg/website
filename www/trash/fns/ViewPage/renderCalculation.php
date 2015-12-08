@@ -11,7 +11,13 @@ function renderCalculation ($calculation, &$items) {
 
     $items[] = \Page\text(htmlspecialchars($calculation->expression));
 
-    $items[] = \Page\text(number_format($calculation->value, 2));
+    $value = $calculation->value;
+    if ($value === null) {
+        $text = '<span class="colorText red">Uncomputable expression.</span>';
+    } else {
+        $text = number_format($value, 2);
+    }
+    $items[] = \Page\text($text);
 
     $tags = $calculation->tags;
     if ($tags !== '') $items[] = \Page\text('Tags: '.htmlspecialchars($tags));

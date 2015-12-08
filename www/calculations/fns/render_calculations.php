@@ -22,8 +22,15 @@ function render_calculations ($calculations, &$items, $params, $base = '') {
             if ($title === '') $title = $calculation->expression;
             $title = htmlspecialchars($title);
 
-            $items[] = Page\imageArrowLinkWithDescription($title,
-                number_format($calculation->value, 2), $href, $icon, $options);
+            $value = $calculation->value;
+            if ($value === null) {
+                $description =
+                    '<span class="colorText red">Uncomputable.</span>';
+            } else {
+                $description = number_format($value, 2);
+            }
+            $items[] = Page\imageArrowLinkWithDescription(
+                $title, $description, $href, $icon, $options);
 
         }
     } else {

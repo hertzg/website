@@ -19,7 +19,13 @@ function create ($receivedCalculation, &$scripts) {
 
     $items[] = \Page\text(htmlspecialchars($receivedCalculation->expression));
 
-    $items[] = \Page\text(number_format($receivedCalculation->value, 2));
+    $value = $receivedCalculation->value;
+    if ($value === null) {
+        $text = '<span class="colorText red">Uncomputable expression.</span>';
+    } else {
+        $text = number_format($value, 2);
+    }
+    $items[] = \Page\text($text);
 
     $tags = $receivedCalculation->tags;
     if ($tags !== '') $items[] = \Page\text('Tags: '.htmlspecialchars($tags));
