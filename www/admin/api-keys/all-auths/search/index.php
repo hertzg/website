@@ -20,11 +20,6 @@ include_once "$fnsDir/AdminApiKeyAuths/searchPageOnAdminApiKey.php";
 $auths = \AdminApiKeyAuths\searchPageOnAdminApiKey(
     $mysqli, $id, $keyword, $offset, $limit, $total);
 
-if (!$total) {
-    include_once "$fnsDir/redirect.php";
-    redirect("../../view/?id=$id");
-}
-
 $params = [
     'id' => $id,
     'keyword' => $keyword,
@@ -40,32 +35,44 @@ $content = "<input type=\"hidden\" name=\"id\" value=\"$id\" />"
 include_once "$fnsDir/SearchForm/create.php";
 $items = [SearchForm\create('./', $content)];
 
-include_once '../fns/render_prev_button.php';
-render_prev_button($offset, $limit, $total, $items, $params);
+if ($total) {
 
-$regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
+    include_once '../fns/render_prev_button.php';
+    render_prev_button($offset, $limit, $total, $items, $params);
 
-include_once "$fnsDir/create_image_text.php";
-include_once "$fnsDir/export_date_ago.php";
-foreach ($auths as $auth) {
-    $address = htmlspecialchars($auth->remote_address);
-    $text =
-        preg_replace($regex, '<mark>$0</mark>', $address)
-        .'<div class="imageText-description">'
-            .export_date_ago($auth->insert_time, true)
-        .'</div>';
-    $items[] = create_image_text($text, 'sign-in');
-}
+    $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
 
-include_once '../fns/render_next_button.php';
-render_next_button($offset, $limit, $total, $items, $params);
+    include_once "$fnsDir/create_image_text.php";
+    include_once "$fnsDir/export_date_ago.php";
+    foreach ($auths as $auth) {
+        $address = htmlspecialchars($auth->remote_address);
+        $text =
+            preg_replace($regex, '<mark>$0</mark>', $address)
+            .'<div class="imageText-description">'
+                .export_date_ago($auth->insert_time, true)
+            .'</div>';
+        $items[] = create_image_text($text, 'sign-in');
+    }
 
-if ($offset + $limit >= $total) {
+    include_once '../fns/render_next_button.php';
+    render_next_button($offset, $limit, $total, $items, $params);
+
+} else {
     include_once "$fnsDir/Page/info.php";
-    $items[] = Page\info('Older data not available');
+    $items[] = Page\info('No authentications found');
 }
 
 include_once "$fnsDir/auth_expire_days.php";
+$auth_expire_days = auth_expire_days();
+
+if ($offset + $limit >= $total &&
+    $apiKey->insert_time < time() - $auth_expire_days * 24 * 60 * 60) {
+
+    include_once "$fnsDir/Page/info.php";
+    $items[] = Page\info('Older data not available');
+
+}
+
 include_once "$fnsDir/Page/infoText.php";
 include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
@@ -78,7 +85,7 @@ $content = Page\tabs(
     'Authentication History',
     join('<div class="hr"></div>', $items)
     .Page\infoText(
-        'Authentications older than '.auth_expire_days()
+        "Authentications older than $auth_expire_days"
         .' days are automatically deleted.'
     )
 );

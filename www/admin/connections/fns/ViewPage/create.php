@@ -92,7 +92,7 @@ function create ($mysqli, $connection, &$scripts) {
             \Page\newItemButton(
                 '../new/'.\ItemList\escapedPageQuery(), 'Connection')
         )
-        .authsPanel($mysqli, $connection)
+        .authsPanel($mysqli, $connection, $scripts)
         .optionsPanel($id);
 
 }

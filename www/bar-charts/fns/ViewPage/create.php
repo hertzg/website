@@ -70,7 +70,7 @@ function create ($mysqli, $user, $bar_chart, &$scripts, &$head) {
         .chart($mysqli, $bar_chart)
         .join('<div class="hr"></div>', $items)
         .\Page\infoText($infoText)
-        .barsPanel($mysqli, $bar_chart)
+        .barsPanel($mysqli, $bar_chart, $scripts)
         .optionsPanel($bar_chart),
         \Page\newItemMenu(
             \Page\imageArrowLink('Bar',

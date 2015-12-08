@@ -2,9 +2,10 @@
 
 namespace ViewPage;
 
-function authsPanel ($mysqli, $id) {
+function authsPanel ($mysqli, $token, &$scripts) {
 
     $limit = 6;
+    $id = $token->id;
     $fnsDir = __DIR__.'/../../../../fns';
 
     include_once "$fnsDir/TokenAuths/indexOnToken.php";
@@ -33,12 +34,29 @@ function authsPanel ($mysqli, $id) {
     }
 
     if ($hasMore) {
+
+        include_once "$fnsDir/SearchForm/emptyContent.php";
+        $content = "<input type=\"hidden\" name=\"id\" value=\"$id\" />"
+            .\SearchForm\emptyContent('Search authentications...');
+
+        include_once "$fnsDir/SearchForm/create.php";
+        $content = \SearchForm\create('../all-auths/search/', $content);
+
+        array_unshift($items, $content);
+
+        include_once "$fnsDir/compressed_js_script.php";
+        $scripts .= compressed_js_script('searchForm', '../../../');
+
         include_once "$fnsDir/Page/imageArrowLink.php";
         $items[] = \Page\imageArrowLink('Full Authentication History',
             "../all-auths/?id=$id", 'sign-ins', ['id' => 'all-auths']);
+
     } else {
-        include_once "$fnsDir/Page/info.php";
-        $items[] = \Page\info('Older data not available');
+        include_once "$fnsDir/auth_expire_days.php";
+        if ($token->insert_time < time() - auth_expire_days() * 24 * 60 * 60) {
+            include_once "$fnsDir/Page/info.php";
+            $items[] = \Page\info('Older data not available');
+        }
     }
 
     $content = join('<div class="hr"></div>', $items);

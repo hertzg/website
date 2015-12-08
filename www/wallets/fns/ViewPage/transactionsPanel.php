@@ -2,7 +2,7 @@
 
 namespace ViewPage;
 
-function transactionsPanel ($mysqli, $wallet) {
+function transactionsPanel ($mysqli, $wallet, &$scripts) {
 
     $id = $wallet->id;
     $fnsDir = __DIR__.'/../../../fns';
@@ -12,6 +12,21 @@ function transactionsPanel ($mysqli, $wallet) {
 
         $limit = 5;
 
+        if ($num_transactions > $limit) {
+
+            include_once "$fnsDir/SearchForm/emptyContent.php";
+            $content = "<input type=\"hidden\" name=\"id\" value=\"$id\" />"
+                .\SearchForm\emptyContent('Search transactions...');
+
+            include_once "$fnsDir/SearchForm/create.php";
+            $items[] = \SearchForm\create(
+                '../all-transactions/search/', $content);
+
+            include_once "$fnsDir/compressed_js_script.php";
+            $scripts .= compressed_js_script('searchForm', '../../');
+
+        }
+
         include_once "$fnsDir/WalletTransactions/indexLimitOnWallet.php";
         $transactions = \WalletTransactions\indexLimitOnWallet(
             $mysqli, $id, $limit);
@@ -20,6 +35,7 @@ function transactionsPanel ($mysqli, $wallet) {
         render_transactions($transactions, $items);
 
         if ($num_transactions > $limit) {
+            include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
             $items[] = \Page\imageArrowLinkWithDescription('All Transactions',
                 "$num_transactions total.", "../all-transactions/?id=$id",
                 'transactions', ['id' => 'all-transactions']);

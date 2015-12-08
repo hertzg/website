@@ -64,12 +64,17 @@ foreach ($auths as $auth) {
 include_once 'fns/render_next_button.php';
 render_next_button($offset, $limit, $total, $items, $params);
 
-if ($offset + $limit >= $total) {
+include_once "$fnsDir/auth_expire_days.php";
+$auth_expire_days = auth_expire_days();
+
+if ($offset + $limit >= $total &&
+    $apiKey->insert_time < time() - $auth_expire_days * 24 * 60 * 60) {
+
     include_once "$fnsDir/Page/info.php";
     $items[] = Page\info('Older data not available');
+
 }
 
-include_once "$fnsDir/auth_expire_days.php";
 include_once "$fnsDir/Page/infoText.php";
 include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
@@ -82,7 +87,7 @@ $content = Page\tabs(
     'Authentication History',
     join('<div class="hr"></div>', $items)
     .Page\infoText(
-        'Authentications older than '.auth_expire_days()
+        "Authentications older than $auth_expire_days"
         .' days are automatically deleted.'
     )
 );

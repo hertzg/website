@@ -91,7 +91,7 @@ function create ($mysqli, $apiKey, &$scripts) {
             \Page\newItemButton(
                 '../new/'.\ItemList\escapedPageQuery(), 'Admin API Key')
         )
-        .authsPanel($mysqli, $apiKey)
+        .authsPanel($mysqli, $apiKey, $scripts)
         .optionsPanel($id);
 
 }

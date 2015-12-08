@@ -66,7 +66,7 @@ function create ($mysqli, $token, &$scripts) {
             .'<div class="hr"></div>'
             .\Form\label('Last accessed', $accessed)
         )
-        .authsPanel($mysqli, $id)
+        .authsPanel($mysqli, $token, $scripts)
         .create_panel('Session Options', $deleteLink);
 
 }
