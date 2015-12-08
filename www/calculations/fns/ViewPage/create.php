@@ -36,6 +36,8 @@ function create ($calculation, &$scripts) {
 
     $items[] = \Page\text(htmlspecialchars($calculation->expression));
 
+    $items[] = \Page\text(number_format($calculation->value, 2));
+
     if ($calculation->num_tags) {
         include_once "$fnsDir/Page/tags.php";
         $items[] = \Page\tags('../', json_decode($calculation->tags_json));

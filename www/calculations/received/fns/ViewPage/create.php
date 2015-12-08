@@ -19,6 +19,8 @@ function create ($receivedCalculation, &$scripts) {
 
     $items[] = \Page\text(htmlspecialchars($receivedCalculation->expression));
 
+    $items[] = \Page\text(number_format($receivedCalculation->value, 2));
+
     $tags = $receivedCalculation->tags;
     if ($tags !== '') $items[] = \Page\text('Tags: '.htmlspecialchars($tags));
 
