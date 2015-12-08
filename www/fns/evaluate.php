@@ -15,6 +15,8 @@ function evaluate ($expression, &$error = null, &$error_char = 0) {
     $values = [];
     $num_values = 0;
 
+    $divisions = [];
+
     $value_expected = true;
     $negative_expected = true;
     $operation_expected = false;
@@ -42,19 +44,33 @@ function evaluate ($expression, &$error = null, &$error_char = 0) {
         $values[] = $value;
     };
 
-    $apply = function () use ($pop_operation, $pop_value, $push_value) {
+    $apply = function () use ($pop_operation, $pop_value,
+        $push_value, &$divisions, &$error, &$error_char) {
 
         $operation = $pop_operation();
         $b = $pop_value();
         $a = $pop_value();
 
-        if ($operation === '+') $value = $a + $b;
-        elseif ($operation === '-') $value = $a - $b;
-        elseif ($operation === '*') $value = $a * $b;
-        elseif ($operation === '/') $value = $a / $b;
-        else assert(false);
+        if ($operation === '+') {
+            $value = $a + $b;
+        } elseif ($operation === '-') {
+            $value = $a - $b;
+        } elseif ($operation === '*') {
+            $value = $a * $b;
+        } elseif ($operation === '/') {
+            $division = array_pop($divisions);
+            if ($b === 0) {
+                $error = 'Division by zero.';
+                $error_char = $division;
+                return false;
+            }
+            $value = $a / $b;
+        } else {
+            assert(false);
+        }
 
         $push_value($value);
+        return true;
 
     };
 
@@ -93,7 +109,7 @@ function evaluate ($expression, &$error = null, &$error_char = 0) {
                     $operation = $operations[$num_operations - 1];
                     if ($operation !== '+' && $operation !== '-' &&
                         $operation !== '*' && $operation !== '/') break;
-                    $apply();
+                    if ($apply() == false) return false;
                 }
 
                 $push_operation($char);
@@ -124,10 +140,11 @@ function evaluate ($expression, &$error = null, &$error_char = 0) {
             while ($operations) {
                 $operation = $operations[$num_operations - 1];
                 if ($operation !== '*' && $operation !== '/') break;
-                $apply();
+                if ($apply() == false) return false;
             }
 
             $push_operation($char);
+            if ($char === '/') $divisions[] = $index;
             $index++;
 
             $value_expected = true;
@@ -156,7 +173,7 @@ function evaluate ($expression, &$error = null, &$error_char = 0) {
                     $found = true;
                     break;
                 }
-                $apply();
+                if ($apply() == false) return false;
             }
             if (!$found) {
                 $error_char = $index;
@@ -178,7 +195,7 @@ function evaluate ($expression, &$error = null, &$error_char = 0) {
             $error = 'Expected closing bracket.';
             return false;
         }
-        $apply();
+        if ($apply() == false) return false;
     }
 
     if ($num_values === 0) {
