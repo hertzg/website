@@ -39,10 +39,6 @@ function ensure ($mysqli) {
             'characterSet' => 'utf8',
             'collation' => 'utf8_unicode_ci',
         ],
-        'value' => [
-            'type' => 'double',
-            'nullable' => true,
-        ],
     ]);
 
 }
