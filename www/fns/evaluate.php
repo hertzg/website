@@ -22,6 +22,7 @@ function evaluate ($expression, &$error = null, &$error_char = 0) {
     $operation_expected = false;
     $next_value_sign = 1;
     $empty_brackets = false;
+    $opening_bracket_expected = false;
 
     $pop_operation = function () use (&$operations, &$num_operations) {
         assert($num_operations > 0);
@@ -103,6 +104,7 @@ function evaluate ($expression, &$error = null, &$error_char = 0) {
             $value_expected = $negative_expected = false;
             $operation_expected = true;
             $empty_brackets = false;
+            $opening_bracket_expected = false;
 
         } elseif ($char === '+' || $char === '-') {
             if ($operation_expected) {
@@ -122,11 +124,13 @@ function evaluate ($expression, &$error = null, &$error_char = 0) {
                 $operation_expected = false;
                 $next_value_sign = 1;
                 $empty_brackets = false;
+                $opening_bracket_expected = true;
 
             } elseif ($char === '-' && $negative_expected) {
                 $negative_expected = false;
                 $next_value_sign = -1;
                 $empty_brackets = false;
+                $opening_bracket_expected = true;
                 $index++;
             } else {
                 $error_char = $index;
@@ -156,8 +160,15 @@ function evaluate ($expression, &$error = null, &$error_char = 0) {
             $operation_expected = false;
             $next_value_sign = 1;
             $empty_brackets = false;
+            $opening_bracket_expected = true;
 
         } elseif ($char === '(') {
+
+            if (!$opening_bracket_expected) {
+                $error_char = $index;
+                $error = 'Unexpected opening bracket.';
+                return false;
+            }
 
             $empty_brackets = true;
             $push_operation('(');
@@ -169,11 +180,13 @@ function evaluate ($expression, &$error = null, &$error_char = 0) {
             $next_value_sign = 1;
 
         } elseif ($char === ')') {
+
             if ($empty_brackets) {
                 $error_char = $index;
                 $error = 'Empty brackets.';
                 return false;
             }
+
             $found = false;
             while ($operations) {
                 $operation = $operations[$num_operations - 1];
@@ -192,6 +205,7 @@ function evaluate ($expression, &$error = null, &$error_char = 0) {
                 return false;
             }
             $index++;
+
         } else {
             $error_char = $index;
             $error = "Unexpected character \"$char\".";
