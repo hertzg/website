@@ -128,9 +128,14 @@ function evaluate ($expression, &$error = null,
                 $error = 'Expected variable.';
                 return false;
             }
-            $value = $value_of($id) * $next_value_sign;
+            $value = $value_of($id);
+            if ($value === null) {
+                $error_char = $index;
+                $error = "Unresolvable variable \"#$id\".";
+                return false;
+            }
 
-            $push_value($value);
+            $push_value($value * $next_value_sign);
 
             $value_expected = $negative_expected = false;
             $operation_expected = true;

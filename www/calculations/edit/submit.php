@@ -10,8 +10,9 @@ include_once '../../lib/mysqli.php';
 list($calculation, $id, $user) = require_calculation($mysqli);
 
 include_once '../fns/request_calculation_params.php';
-list($expression, $title, $tags, $tag_names, $value,
-    $error, $error_char) = request_calculation_params($errors, $focus);
+list($expression, $title, $tags, $tag_names, $value, $error,
+    $error_char) = request_calculation_params($mysqli,
+    $user, $errors, $focus, $id);
 
 include_once "$fnsDir/ItemList/itemQuery.php";
 $itemQuery = ItemList\itemQuery($id);

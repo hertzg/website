@@ -11,8 +11,8 @@ list($receivedCalculation, $id, $user) = require_received_calculation(
     $mysqli, '../');
 
 include_once '../../fns/request_calculation_params.php';
-list($expression, $title, $tags, $tag_names, $value,
-    $error, $error_char) = request_calculation_params($errors, $focus);
+list($expression, $title, $tags, $tag_names, $value, $error,
+    $error_char) = request_calculation_params($mysqli, $user, $errors, $focus);
 
 include_once "$fnsDir/redirect.php";
 
