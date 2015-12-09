@@ -21,6 +21,7 @@ function evaluate ($expression, &$error = null, &$error_char = 0) {
     $negative_expected = true;
     $operation_expected = false;
     $next_value_sign = 1;
+    $empty_brackets = false;
 
     $pop_operation = function () use (&$operations, &$num_operations) {
         assert($num_operations > 0);
@@ -101,6 +102,7 @@ function evaluate ($expression, &$error = null, &$error_char = 0) {
 
             $value_expected = $negative_expected = false;
             $operation_expected = true;
+            $empty_brackets = false;
 
         } elseif ($char === '+' || $char === '-') {
             if ($operation_expected) {
@@ -119,10 +121,12 @@ function evaluate ($expression, &$error = null, &$error_char = 0) {
                 $negative_expected = false;
                 $operation_expected = false;
                 $next_value_sign = 1;
+                $empty_brackets = false;
 
             } elseif ($char === '-' && $negative_expected) {
                 $negative_expected = false;
                 $next_value_sign = -1;
+                $empty_brackets = false;
                 $index++;
             } else {
                 $error_char = $index;
@@ -151,9 +155,11 @@ function evaluate ($expression, &$error = null, &$error_char = 0) {
             $negative_expected = true;
             $operation_expected = false;
             $next_value_sign = 1;
+            $empty_brackets = false;
 
         } elseif ($char === '(') {
 
+            $empty_brackets = true;
             $push_operation('(');
             $index++;
 
@@ -163,6 +169,11 @@ function evaluate ($expression, &$error = null, &$error_char = 0) {
             $next_value_sign = 1;
 
         } elseif ($char === ')') {
+            if ($empty_brackets) {
+                $error_char = $index;
+                $error = 'Empty brackets.';
+                return false;
+            }
             $found = false;
             while ($operations) {
                 $operation = $operations[$num_operations - 1];
