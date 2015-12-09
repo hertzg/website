@@ -1,8 +1,8 @@
 #!/usr/bin/php
 <?php
 
-function visual_assert ($expression, $expected_result) {
-    $result = evaluate($expression, $error, $error_char);
+function visual_assert ($expression, $expected_result, $value_of = null) {
+    $result = evaluate($expression, $error, $error_char, $value_of);
     $failed = $result !== $expected_result;
     echo 'evaluate('.var_export($expression, true).') returned '.var_export($result, true);
     if ($failed) echo ' instead of '.var_export($expected_result, true);
@@ -68,3 +68,7 @@ visual_assert('40 / ((7 - 3) * 2)', 5);
 visual_assert('40 / (4 * (5 - 3))', 5);
 visual_assert('2 + 1 / 0 - 5', false);
 visual_assert('2 / (4 - 4)', false);
+visual_assert('2 + #', false);
+visual_assert('2 + #123', 5, function ($id) {
+    if ($id === '123') return 3;
+});

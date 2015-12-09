@@ -1,6 +1,7 @@
 <?php
 
-function evaluate ($expression, &$error = null, &$error_char = 0) {
+function evaluate ($expression, &$error = null,
+    &$error_char = 0, $value_of = null) {
 
     $chars = preg_split('/(?<!^)(?!$)/u', $expression);
     $num_chars = count($chars);
@@ -97,9 +98,39 @@ function evaluate ($expression, &$error = null, &$error_char = 0) {
                 $char = $chars[$index];
                 if ($char < '0' || $char > '9') break;
             }
-            $digits = intval($digits) * $next_value_sign;
+            $value = intval($digits) * $next_value_sign;
 
-            $push_value($digits);
+            $push_value($value);
+
+            $value_expected = $negative_expected = false;
+            $operation_expected = true;
+            $empty_brackets = false;
+            $opening_bracket_expected = false;
+
+        } elseif ($char === '#' && $value_of !== null) {
+
+            if (!$value_expected) {
+                $error_char = $index;
+                $error = 'Unexpected variable.';
+                return false;
+            }
+
+            $id = '';
+            while (true) {
+                $index++;
+                if ($index === $num_chars) break;
+                $char = $chars[$index];
+                if ($char < '0' || $char > '9') break;
+                $id .= $char;
+            }
+            if ($id === '') {
+                $error_char = $index;
+                $error = 'Expected variable.';
+                return false;
+            }
+            $value = $value_of($id) * $next_value_sign;
+
+            $push_value($value);
 
             $value_expected = $negative_expected = false;
             $operation_expected = true;
