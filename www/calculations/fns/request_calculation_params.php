@@ -11,6 +11,10 @@ function request_calculation_params (&$errors, &$focus) {
     if ($expression === '') {
         $errors[] = 'Enter expression.';
         $focus = 'expression';
+    } elseif ($value === null) {
+        $errors[] = 'The expression is invalid.';
+        $errors[] = "$error At char $error_char.";
+        $focus = 'expression';
     }
 
     include_once "$fnsDir/request_tags.php";
