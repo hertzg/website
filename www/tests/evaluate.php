@@ -28,6 +28,8 @@ visual_assert('(2', false);
 visual_assert(')', false);
 visual_assert('2)', false);
 visual_assert('2 3', false);
+visual_assert('2 +', false);
+visual_assert('2 + 3 +', false);
 visual_assert('0', 0);
 visual_assert('2', 2);
 visual_assert('23', 23);

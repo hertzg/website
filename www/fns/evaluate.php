@@ -195,12 +195,17 @@ function evaluate ($expression, &$error = null, &$error_char = 0) {
             $error = 'Expected closing bracket.';
             return false;
         }
+        if ($num_values === 1) {
+            $error_char = $index;
+            $error = 'Expected operand.';
+            return false;
+        }
         if ($apply() == false) return false;
     }
 
     if ($num_values === 0) {
         $error_char = $index;
-        $error = 'Expected expression.';
+        $error = 'Expected operand.';
         return false;
     }
 
