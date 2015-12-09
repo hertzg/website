@@ -42,4 +42,7 @@ function edit ($mysqli, $calculation, $title,
         }
     }
 
+    include_once __DIR__.'/updateReferences.php';
+    updateReferences($mysqli, $id);
+
 }
