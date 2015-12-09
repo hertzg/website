@@ -113,7 +113,7 @@ function evaluate ($expression, &$error = null, &$error_char = 0) {
                     $operation = $operations[$num_operations - 1];
                     if ($operation !== '+' && $operation !== '-' &&
                         $operation !== '*' && $operation !== '/') break;
-                    if ($apply() == false) return false;
+                    if ($apply() === false) return false;
                 }
 
                 $push_operation($char);
@@ -148,7 +148,7 @@ function evaluate ($expression, &$error = null, &$error_char = 0) {
             while ($operations) {
                 $operation = $operations[$num_operations - 1];
                 if ($operation !== '*' && $operation !== '/') break;
-                if ($apply() == false) return false;
+                if ($apply() === false) return false;
             }
 
             $push_operation($char);
@@ -197,7 +197,7 @@ function evaluate ($expression, &$error = null, &$error_char = 0) {
                     $found = true;
                     break;
                 }
-                if ($apply() == false) return false;
+                if ($apply() === false) return false;
             }
             if (!$found) {
                 $error_char = $index;
@@ -225,7 +225,7 @@ function evaluate ($expression, &$error = null, &$error_char = 0) {
             $error = 'Expected operand.';
             return false;
         }
-        if ($apply() == false) return false;
+        if ($apply() === false) return false;
     }
 
     if ($num_values === 0) {
