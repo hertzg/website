@@ -2,7 +2,7 @@
 
 function evaluate ($expression, &$error = null, &$error_char = 0) {
 
-    $chars = str_split($expression);
+    $chars = preg_split('/(?<!^)(?!$)/u', $expression);
     $num_chars = count($chars);
     if ($num_chars === 1 && $chars[0] === '') {
         $chars = [];
