@@ -13,7 +13,7 @@ function request_calculation_params (&$errors, &$focus) {
         $focus = 'expression';
     } elseif ($value === null) {
         $errors[] = 'The expression is invalid.';
-        $errors[] = "$error At char $error_char.";
+        $errors[] = "$error At char ".($error_char + 1).'.';
         $focus = 'expression';
     }
 
