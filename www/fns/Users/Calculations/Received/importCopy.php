@@ -15,6 +15,6 @@ function importCopy ($mysqli, $receivedCalculation, $insertApiKey = null) {
         $receivedCalculation->expression,
         $receivedCalculation->title, $tags, $tag_names,
         $receivedCalculation->value, $receivedCalculation->error,
-        $receivedCalculation->error_char, $insertApiKey);
+        $receivedCalculation->error_char, [], $insertApiKey);
 
 }

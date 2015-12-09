@@ -11,8 +11,8 @@ list($calculation, $id, $user) = require_calculation($mysqli);
 
 include_once '../fns/request_calculation_params.php';
 list($expression, $title, $tags, $tag_names, $value, $error,
-    $error_char) = request_calculation_params($mysqli,
-    $user, $errors, $focus, $id);
+    $error_char, $referenced_calculations) = request_calculation_params(
+    $mysqli, $user, $errors, $focus, $id);
 
 include_once "$fnsDir/ItemList/itemQuery.php";
 $itemQuery = ItemList\itemQuery($id);
@@ -53,8 +53,9 @@ if ($sendButton) {
 unset($_SESSION['calculations/edit/values']);
 
 include_once "$fnsDir/Users/Calculations/edit.php";
-Users\Calculations\edit($mysqli, $calculation, $title,
-    $expression, $tags, $tag_names, $value, $error, $error_char, $changed);
+Users\Calculations\edit($mysqli, $calculation,
+    $title, $expression, $tags, $tag_names, $value,
+    $error, $error_char, $referenced_calculations, $changed);
 
 if ($changed) $message = 'Changes have been saved.';
 else $message = 'No changes to be saved.';

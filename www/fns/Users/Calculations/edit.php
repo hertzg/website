@@ -2,8 +2,9 @@
 
 namespace Users\Calculations;
 
-function edit ($mysqli, $calculation, $title, $expression, $tags,
-    $tag_names, $value, $error, $error_char, &$changed, $updateApiKey = null) {
+function edit ($mysqli, $calculation, $title,
+    $expression, $tags, $tag_names, $value, $error, $error_char,
+    $referenced_calculations, &$changed, $updateApiKey = null) {
 
     if ($calculation->title === $title &&
         $calculation->expression === $expression &&
@@ -28,6 +29,17 @@ function edit ($mysqli, $calculation, $title, $expression, $tags,
         \CalculationTags\add($mysqli, $calculation->id_users,
             $id, $tag_names, $expression, $title, $value, $error,
             $error_char, $calculation->insert_time, $update_time);
+    }
+
+    include_once "$fnsDir/ReferencedCalculations/deleteOnCalculation.php";
+    \ReferencedCalculations\deleteOnCalculation($mysqli, $id);
+
+    if ($referenced_calculations) {
+        include_once "$fnsDir/ReferencedCalculations/add.php";
+        foreach ($referenced_calculations as $referenced_calculation) {
+            \ReferencedCalculations\add($mysqli,
+                $id, $referenced_calculation->id);
+        }
     }
 
 }
