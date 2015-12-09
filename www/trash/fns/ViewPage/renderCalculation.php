@@ -4,23 +4,17 @@ namespace ViewPage;
 
 function renderCalculation ($calculation, &$items) {
 
-    include_once __DIR__.'/../../../fns/Page/text.php';
+    $fnsDir = __DIR__.'/../../../fns';
+
+    include_once "$fnsDir/Page/text.php";
 
     $title = $calculation->title;
     if ($title !== '') $items[] = \Page\text(htmlspecialchars($title));
 
     $items[] = \Page\text(htmlspecialchars($calculation->expression));
 
-    $value = $calculation->value;
-    if ($value === null) {
-        $text =
-            '<span class="colorText red">'
-                ."Uncomputable expression. $calculation->error"
-            .'</span>';
-    } else {
-        $text = number_format($value, 2);
-    }
-    $items[] = \Page\text($text);
+    include_once "$fnsDir/calculation_value.php";
+    $items[] = \Page\text(calculation_value($calculation));
 
     $tags = $calculation->tags;
     if ($tags !== '') $items[] = \Page\text('Tags: '.htmlspecialchars($tags));

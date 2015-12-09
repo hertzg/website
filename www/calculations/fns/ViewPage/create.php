@@ -36,16 +36,8 @@ function create ($calculation, &$scripts) {
 
     $items[] = \Page\text(htmlspecialchars($calculation->expression));
 
-    $value = $calculation->value;
-    if ($value === null) {
-        $text =
-            '<span class="colorText red">'
-                ."Uncomputable expression. $calculation->error"
-            .'</span>';
-    } else {
-        $text = number_format($value, 2);
-    }
-    $items[] = \Page\text($text);
+    include_once "$fnsDir/calculation_value.php";
+    $items[] = \Page\text(calculation_value($calculation));
 
     if ($calculation->num_tags) {
         include_once "$fnsDir/Page/tags.php";

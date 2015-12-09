@@ -19,16 +19,8 @@ function create ($receivedCalculation, &$scripts) {
 
     $items[] = \Page\text(htmlspecialchars($receivedCalculation->expression));
 
-    $value = $receivedCalculation->value;
-    if ($value === null) {
-        $text =
-            '<span class="colorText red">'
-                ."Uncomputable expression. $receivedCalculation->error"
-            .'</span>';
-    } else {
-        $text = number_format($value, 2);
-    }
-    $items[] = \Page\text($text);
+    include_once "$fnsDir/calculation_value.php";
+    $items[] = \Page\text(calculation_value($receivedCalculation));
 
     $tags = $receivedCalculation->tags;
     if ($tags !== '') $items[] = \Page\text('Tags: '.htmlspecialchars($tags));
