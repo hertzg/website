@@ -5,6 +5,7 @@ function render_calculations ($calculations, &$items, $params, $base = '') {
     $fnsDir = __DIR__.'/../../fns';
 
     if ($calculations) {
+        include_once __DIR__.'/create_description.php';
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         $icon = 'calculation';
         foreach ($calculations as $calculation) {
@@ -22,13 +23,8 @@ function render_calculations ($calculations, &$items, $params, $base = '') {
             if ($title === '') $title = $calculation->expression;
             $title = htmlspecialchars($title);
 
-            $value = $calculation->value;
-            if ($value === null) {
-                $description =
-                    '<span class="colorText red">Uncomputable.</span>';
-            } else {
-                $description = number_format($value, 2);
-            }
+            $description = create_description($calculation);
+
             $items[] = Page\imageArrowLinkWithDescription(
                 $title, $description, $href, $icon, $options);
 
