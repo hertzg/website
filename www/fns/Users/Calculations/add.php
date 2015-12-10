@@ -7,13 +7,15 @@ function add ($mysqli, $id_users, $expression,
     $referenced_calculations, $insertApiKey = null) {
 
     $fnsDir = __DIR__.'/../..';
+    $referenced_ids = array_map(function ($calculation) {
+        return $calculation->id;
+    }, $referenced_calculations);
     $insert_time = $update_time = time();
 
     include_once "$fnsDir/Calculations/add.php";
-    $id = \Calculations\add($mysqli, $id_users,
-        $expression, $title, $tags, $tag_names, $value,
-        $error, $error_char, count($referenced_calculations),
-        $insert_time, $update_time, $insertApiKey);
+    $id = \Calculations\add($mysqli, $id_users, $expression,
+        $title, $tags, $tag_names, $value, $error, $error_char,
+        $referenced_ids, $insert_time, $update_time, $insertApiKey);
 
     if ($tag_names) {
         include_once "$fnsDir/CalculationTags/add.php";

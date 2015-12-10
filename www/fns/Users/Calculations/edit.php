@@ -14,12 +14,15 @@ function edit ($mysqli, $calculation, $title,
     $fnsDir = __DIR__.'/../..';
     $id = $calculation->id;
     $id_users = $calculation->id_users;
+    $referenced_ids = array_map(function ($calculation) {
+        return $calculation->id;
+    }, $referenced_calculations);
     $update_time = time();
 
     include_once "$fnsDir/Calculations/edit.php";
     \Calculations\edit($mysqli, $id, $title, $expression,
         $tags, $tag_names, $value, $error, $error_char,
-        count($referenced_calculations), $update_time, $updateApiKey);
+        $referenced_ids, $update_time, $updateApiKey);
 
     if ($calculation->num_tags) {
         include_once "$fnsDir/CalculationTags/deleteOnCalculation.php";

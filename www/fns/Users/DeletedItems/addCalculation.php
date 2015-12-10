@@ -12,7 +12,7 @@ function addCalculation ($mysqli, $calculation, $apiKey) {
         'value' => $calculation->value,
         'error' => $calculation->error,
         'error_char' => $calculation->error_char,
-        'num_referenced' => $calculation->num_referenced,
+        'referenced_ids' => json_decode($calculation->referenced_json),
         'insert_api_key_id' => $calculation->insert_api_key_id,
         'insert_time' => $calculation->insert_time,
         'update_api_key_id' => $calculation->update_api_key_id,
