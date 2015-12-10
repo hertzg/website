@@ -12,18 +12,21 @@ function create ($receivedCalculation, &$scripts) {
 
     $items = [];
 
-    include_once "$fnsDir/Page/text.php";
-
     $title = $receivedCalculation->title;
-    if ($title !== '') $items[] = \Page\text(htmlspecialchars($title));
+    if ($title !== '') {
+        include_once "$fnsDir/Page/text.php";
+        $items[] = \Page\text(htmlspecialchars($title));
+    }
 
-    $items[] = \Page\text(htmlspecialchars($receivedCalculation->expression));
-
-    include_once "$fnsDir/calculation_value.php";
-    $items[] = \Page\text(calculation_value($receivedCalculation));
+    include_once "$fnsDir/Form/label.php";
+    $items[] = \Form\label('Expression',
+        htmlspecialchars($receivedCalculation->expression));
 
     $tags = $receivedCalculation->tags;
-    if ($tags !== '') $items[] = \Page\text('Tags: '.htmlspecialchars($tags));
+    if ($tags !== '') $items[] = \Form\label('Tags', htmlspecialchars($tags));
+
+    include_once "$fnsDir/calculation_value.php";
+    $items[] = calculation_value($receivedCalculation);
 
     include_once "$fnsDir/export_date_ago.php";
     $date_ago = export_date_ago($receivedCalculation->insert_time);

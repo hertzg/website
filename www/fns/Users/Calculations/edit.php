@@ -31,9 +31,8 @@ function edit ($mysqli, $calculation, $title,
 
     if ($tag_names) {
         include_once "$fnsDir/CalculationTags/add.php";
-        \CalculationTags\add($mysqli, $id_users, $id,
-            $tag_names, $expression, $title, $value, $error,
-            $error_char, $calculation->insert_time, $update_time);
+        \CalculationTags\add($mysqli, $id_users, $id, $tag_names, $expression,
+            $title, $value, $calculation->insert_time, $update_time);
     }
 
     include_once __DIR__.'/updateReferences.php';

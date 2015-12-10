@@ -1,12 +1,18 @@
 <?php
 
 function calculation_value ($calculation) {
+
     $value = $calculation->value;
     if ($value === null) {
-        return
+        include_once __DIR__.'/Page/text.php';
+        return Page\text(
             '<span class="colorText red">'
                 ."Uncomputable expression. $calculation->error"
-            .'</span>';
+            .'</span>'
+        );
     }
-    return number_format($value, 2);
+
+    include_once __DIR__.'/Form/label.php';
+    return Form\label('Value', number_format($value, 2));
+
 }

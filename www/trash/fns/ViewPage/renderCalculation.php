@@ -6,17 +6,20 @@ function renderCalculation ($calculation, &$items) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
-    include_once "$fnsDir/Page/text.php";
-
     $title = $calculation->title;
-    if ($title !== '') $items[] = \Page\text(htmlspecialchars($title));
+    if ($title !== '') {
+        include_once "$fnsDir/Page/text.php";
+        $items[] = \Page\text(htmlspecialchars($title));
+    }
 
-    $items[] = \Page\text(htmlspecialchars($calculation->expression));
-
-    include_once "$fnsDir/calculation_value.php";
-    $items[] = \Page\text(calculation_value($calculation));
+    include_once "$fnsDir/Form/label.php";
+    $items[] = \Form\label('Expression',
+        htmlspecialchars($calculation->expression));
 
     $tags = $calculation->tags;
-    if ($tags !== '') $items[] = \Page\text('Tags: '.htmlspecialchars($tags));
+    if ($tags !== '') $items[] = \Form\label('Tags', htmlspecialchars($tags));
+
+    include_once "$fnsDir/calculation_value.php";
+    $items[] = calculation_value($calculation);
 
 }

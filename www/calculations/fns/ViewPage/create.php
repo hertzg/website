@@ -12,8 +12,6 @@ function create ($calculation, &$scripts) {
 
     $items = [];
 
-    include_once "$fnsDir/Page/text.php";
-
     $title = $calculation->title;
     if ($title !== '') {
 
@@ -30,19 +28,22 @@ function create ($calculation, &$scripts) {
             $title = preg_replace($regex, '<mark>$0</mark>', $title);
         }
 
+        include_once "$fnsDir/Page/text.php";
         $items[] = \Page\text($title);
 
     }
 
-    $items[] = \Page\text(htmlspecialchars($calculation->expression));
-
-    include_once "$fnsDir/calculation_value.php";
-    $items[] = \Page\text(calculation_value($calculation));
+    include_once "$fnsDir/Form/label.php";
+    $items[] = \Form\label('Expression',
+        htmlspecialchars($calculation->expression));
 
     if ($calculation->num_tags) {
-        include_once "$fnsDir/Page/tags.php";
-        $items[] = \Page\tags('../', json_decode($calculation->tags_json));
+        include_once "$fnsDir/Form/tags.php";
+        $items[] = \Form\tags('../', json_decode($calculation->tags_json));
     }
+
+    include_once "$fnsDir/calculation_value.php";
+    $items[] = calculation_value($calculation);
 
     include_once "$fnsDir/format_author.php";
     $api_key_name = $calculation->insert_api_key_name;
