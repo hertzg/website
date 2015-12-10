@@ -4,31 +4,23 @@ namespace Users\Calculations;
 
 function add ($mysqli, $id_users, $expression,
     $title, $tags, $tag_names, $value, $error, $error_char,
-    $referenced_calculations, $insertApiKey = null) {
+    $referenced, $insertApiKey = null) {
 
     $fnsDir = __DIR__.'/../..';
-    $referenced_ids = array_map(function ($calculation) {
+    $referenced = array_map(function ($calculation) {
         return $calculation->id;
-    }, $referenced_calculations);
+    }, $referenced);
     $insert_time = $update_time = time();
 
     include_once "$fnsDir/Calculations/add.php";
     $id = \Calculations\add($mysqli, $id_users, $expression,
         $title, $tags, $tag_names, $value, $error, $error_char,
-        $referenced_ids, $insert_time, $update_time, $insertApiKey);
+        $referenced, $insert_time, $update_time, $insertApiKey);
 
     if ($tag_names) {
         include_once "$fnsDir/CalculationTags/add.php";
         \CalculationTags\add($mysqli, $id_users, $id, $tag_names,
             $expression, $title, $value, $insert_time, $update_time);
-    }
-
-    if ($referenced_calculations) {
-        include_once "$fnsDir/ReferencedCalculations/add.php";
-        foreach ($referenced_calculations as $referenced_calculation) {
-            \ReferencedCalculations\add($mysqli,
-                $id_users, $id, $referenced_calculation->id);
-        }
     }
 
     include_once __DIR__.'/addNumber.php';

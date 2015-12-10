@@ -4,18 +4,15 @@ namespace Users\Calculations;
 
 function updateReferences ($mysqli, $id) {
 
+/*
     $exclude_id = $id;
     $fnsDir = __DIR__.'/../..';
-
-    include_once "$fnsDir/ReferencedCalculations/indexOnReferencedCalculation.php";
-    $referenced_calculations = \ReferencedCalculations\indexOnReferencedCalculation(
-        $mysqli, $id);
 
     $loaded_calculations = [];
 
     include_once "$fnsDir/Calculations/editValue.php";
     include_once "$fnsDir/Calculations/get.php";
-    foreach ($referenced_calculations as $referenced_calculation) {
+    foreach ($referenced as $referenced_calculation) {
 
         $referenced_id_calculations = $referenced_calculation->id_calculations;
 
@@ -46,5 +43,6 @@ function updateReferences ($mysqli, $id) {
             $referenced_id_calculations, $value, $error, $error_char);
 
     }
+*/
 
 }

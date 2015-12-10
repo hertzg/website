@@ -5,18 +5,18 @@ function request_calculation_params ($mysqli,
 
     $fnsDir = __DIR__.'/../../fns';
 
-    $referenced_calculations = [];
+    $referenced = [];
 
     include_once "$fnsDir/Users/Calculations/get.php";
     $value_of = function ($id) use ($mysqli,
-        $user, $exclude_id, &$referenced_calculations) {
+        $user, $exclude_id, &$referenced) {
 
         if ($id == $exclude_id) return;
 
         $calculation = Users\Calculations\get($mysqli, $user, $id);
         if (!$calculation) return;
 
-        $referenced_calculations[$calculation->id] = $calculation;
+        $referenced[$calculation->id] = $calculation;
         return $calculation->value;
 
     };
@@ -37,9 +37,7 @@ function request_calculation_params ($mysqli,
     include_once "$fnsDir/request_tags.php";
     request_tags($tags, $tag_names, $errors, $focus);
 
-    $referenced_calculations = array_values($referenced_calculations);
-
     return [$expression, $title, $tags, $tag_names,
-        $value, $error, $error_char, $referenced_calculations];
+        $value, $error, $error_char, $referenced];
 
 }

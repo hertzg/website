@@ -1,23 +1,23 @@
 <?php
 
-function require_user_calculation_params ($mysqli, $user,
-    &$expression, &$title, &$tags, &$tag_names, &$value, &$error,
-    &$error_char, &$referenced_calculations, $exclude_id = null) {
+function require_user_calculation_params ($mysqli,
+    $user, &$expression, &$title, &$tags, &$tag_names, &$value,
+    &$error, &$error_char, &$referenced, $exclude_id = null) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
-    $referenced_calculations = [];
+    $referenced = [];
 
     include_once "$fnsDir/Users/Calculations/get.php";
     $value_of = function ($id) use ($mysqli,
-        $user, $exclude_id, &$referenced_calculations) {
+        $user, $exclude_id, &$referenced) {
 
         if ($id == $exclude_id) return;
 
         $calculation = Users\Calculations\get($mysqli, $user, $id);
         if (!$calculation) return;
 
-        $referenced_calculations[$calculation->id] = $calculation;
+        $referenced[$calculation->id] = $calculation;
         return $calculation->value;
 
     };
