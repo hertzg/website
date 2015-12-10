@@ -15,6 +15,15 @@ function purgeOnUser ($mysqli, $id_users) {
         }
     }
 
+    $deletedItems = \DeletedItems\indexOnUserOfType(
+        $mysqli, $id_users, 'calculation');
+    if ($deletedItems) {
+        include_once __DIR__.'/purgeCalculation.php';
+        foreach ($deletedItems as $deletedItem) {
+            purgeCalculation($mysqli, $deletedItem);
+        }
+    }
+
     $deletedItems = array_merge(
         \DeletedItems\indexOnUserOfType($mysqli, $id_users, 'contact'),
         \DeletedItems\indexOnUserOfType($mysqli, $id_users, 'receivedContact')

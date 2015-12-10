@@ -35,6 +35,8 @@ function updateReferences ($mysqli, $id) {
         include_once "$fnsDir/Calculations/get.php";
         $calculation = \Calculations\get($mysqli, $referenced_id_calculations);
 
+        if (!$calculation) return;
+
         include_once "$fnsDir/evaluate.php";
         $value = evaluate($calculation->expression,
             $error, $error_char, $value_of);
