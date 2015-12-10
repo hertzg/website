@@ -13,9 +13,12 @@ function add ($mysqli, $sender_address, $sender_id_users,
     $expression = $mysqli->real_escape_string($expression);
     $title = $mysqli->real_escape_string($title);
     $tags = $mysqli->real_escape_string($tags);
-    if ($value === null) $value = 'null';
-    if ($error === null) $error = $error_char = 'null';
-    else $error = "'".$mysqli->real_escape_string($error)."'";
+    if ($value === null) {
+        $value = 'null';
+        $error = "'".$mysqli->real_escape_string($error)."'";
+    } else {
+        $error = $error_char = 'null';
+    }
     $insert_time = time();
 
     $sql = 'insert into received_calculations'

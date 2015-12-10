@@ -11,9 +11,12 @@ function addDeleted ($mysqli, $id, $id_users, $expression,
     $tags = $mysqli->real_escape_string($tags);
     $num_tags = count($tag_names);
     $tags_json = $mysqli->real_escape_string(json_encode($tag_names));
-    if ($value === null) $value = 'null';
-    if ($error === null) $error = $error_char = 'null';
-    else $error = "'".$mysqli->real_escape_string($error)."'";
+    if ($value === null) {
+        $value = 'null';
+        $error = "'".$mysqli->real_escape_string($error)."'";
+    } else {
+        $error = $error_char = 'null';
+    }
 
     $sql = 'insert into calculations'
         .' (id, id_users, expression, title, tags,'
