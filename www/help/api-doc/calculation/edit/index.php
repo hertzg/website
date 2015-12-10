@@ -23,5 +23,6 @@ calculation_method_page('edit', [
 ], ApiDoc\trueResult(), [
     'CALCULATION_NOT_FOUND' => "A calculation with the ID doesn't exist.",
     'ENTER_EXPRESSION' => 'The new expression is empty.',
+    'INVALID_EXPRESSION' => 'The new expression is invalid.',
     'TOO_MANY_TAGS' => 'More than '.Tags\maxNumber().' tags given.',
 ]);

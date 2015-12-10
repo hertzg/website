@@ -20,5 +20,6 @@ calculation_method_page('add', [
     'description' => 'The ID of the newly created calculation.',
 ], [
     'ENTER_EXPRESSION' => 'The expression is empty.',
+    'INVALID_EXPRESSION' => 'The expression is invalid.',
     'TOO_MANY_TAGS' => 'More than '.Tags\maxNumber().' tags given.',
 ]);

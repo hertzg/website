@@ -34,5 +34,6 @@ method_page('receiveCalculation', [
         "The receiver hasn't opened a connection"
         .' to receive calculations from the sender.',
     'ENTER_EXPRESSION' => 'The expression is empty.',
+    'INVALID_EXPRESSION' => 'The expression is invalid.',
     'TOO_MANY_TAGS' => 'More than '.Tags\maxNumber().' tags given.',
 ]);

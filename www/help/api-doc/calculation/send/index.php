@@ -28,5 +28,6 @@ calculation_method_page('send', [
         "The receiver hasn't opened a connection"
         .' to receive calculations from you.',
     'ENTER_EXPRESSION' => 'The expression is empty.',
+    'INVALID_EXPRESSION' => 'The expression is invalid.',
     'TOO_MANY_TAGS' => 'More than '.Tags\maxNumber().' tags given.',
 ]);
