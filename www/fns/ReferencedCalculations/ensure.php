@@ -12,6 +12,9 @@ function ensure ($mysqli) {
         'id_calculations' => [
             'type' => 'bigint(20) unsigned',
         ],
+        'id_users' => [
+            'type' => 'bigint(20) unsigned',
+        ],
         'referenced_id_calculations' => [
             'type' => 'bigint(20) unsigned',
         ],

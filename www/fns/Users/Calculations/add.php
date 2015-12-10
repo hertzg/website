@@ -24,7 +24,7 @@ function add ($mysqli, $id_users, $expression,
         include_once "$fnsDir/ReferencedCalculations/add.php";
         foreach ($referenced_calculations as $referenced_calculation) {
             \ReferencedCalculations\add($mysqli,
-                $id, $referenced_calculation->id);
+                $id_users, $id, $referenced_calculation->id);
         }
     }
 

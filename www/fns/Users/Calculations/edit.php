@@ -11,8 +11,9 @@ function edit ($mysqli, $calculation, $title,
         $calculation->tags === $tags) return;
 
     $changed = true;
-    $id = $calculation->id;
     $fnsDir = __DIR__.'/../..';
+    $id = $calculation->id;
+    $id_users = $calculation->id_users;
     $update_time = time();
 
     include_once "$fnsDir/Calculations/edit.php";
@@ -26,8 +27,8 @@ function edit ($mysqli, $calculation, $title,
 
     if ($tag_names) {
         include_once "$fnsDir/CalculationTags/add.php";
-        \CalculationTags\add($mysqli, $calculation->id_users,
-            $id, $tag_names, $expression, $title, $value, $error,
+        \CalculationTags\add($mysqli, $id_users, $id,
+            $tag_names, $expression, $title, $value, $error,
             $error_char, $calculation->insert_time, $update_time);
     }
 
@@ -38,7 +39,7 @@ function edit ($mysqli, $calculation, $title,
         include_once "$fnsDir/ReferencedCalculations/add.php";
         foreach ($referenced_calculations as $referenced_calculation) {
             \ReferencedCalculations\add($mysqli,
-                $id, $referenced_calculation->id);
+                $id_users, $id, $referenced_calculation->id);
         }
     }
 
