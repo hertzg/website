@@ -9,8 +9,11 @@
                 textarea.offsetHeight - textarea.clientHeight + 'px'
         }
 
+        var className = textarea.className
+        if (textarea.readOnly) className += ' small'
+
         var invisibleTextarea = document.createElement('textarea')
-        invisibleTextarea.className = textarea.className
+        invisibleTextarea.className = className
         invisibleTextarea.style.overflow = 'hidden'
         invisibleTextarea.value = textarea.value
 
@@ -20,6 +23,7 @@
         wrapperElement.style.visibility = 'hidden'
         wrapperElement.appendChild(invisibleTextarea)
 
+        textarea.className = className
         textarea.style.resize = 'none'
         textarea.addEventListener('input', update)
         document.body.appendChild(wrapperElement)
