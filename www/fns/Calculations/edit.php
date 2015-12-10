@@ -11,9 +11,8 @@ function edit ($mysqli, $id, $title, $expression, $tags, $tag_names, $value,
     $num_tags = count($tag_names);
     $tags_json = $mysqli->real_escape_string(json_encode($tag_names));
     if ($value === null) $value = 'null';
-    if ($error === null) $error = 'null';
+    if ($error === null) $error = $error_char = 'null';
     else $error = "'".$mysqli->real_escape_string($error)."'";
-    if ($error_char === null) $error_char = 'null';
     if ($updateApiKey) {
 
         $update_api_key_id = $updateApiKey->id;

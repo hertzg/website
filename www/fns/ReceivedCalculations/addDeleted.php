@@ -15,9 +15,8 @@ function addDeleted ($mysqli, $id, $sender_address,
     $title = $mysqli->real_escape_string($title);
     $tags = $mysqli->real_escape_string($tags);
     if ($value === null) $value = 'null';
-    if ($error === null) $error = 'null';
+    if ($error === null) $error = $error_char = 'null';
     else $error = "'".$mysqli->real_escape_string($error)."'";
-    if ($error_char === null) $error_char = 'null';
     $archived = $archived ? '1' : '0';
 
     $sql = 'insert into received_calculations'
