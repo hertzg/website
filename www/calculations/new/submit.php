@@ -8,9 +8,8 @@ $user = require_user('../../');
 
 include_once '../fns/request_calculation_params.php';
 include_once '../../lib/mysqli.php';
-list($expression, $title, $tags, $tag_names, $value,
-    $error, $error_char, $referenced) = request_calculation_params(
-    $mysqli, $user, $errors, $focus);
+list($expression, $title, $tags, $tag_names, $value, $error,
+    $error_char) = request_calculation_params($mysqli, $user, $errors, $focus);
 
 $values = [
     'focus' => $focus,
@@ -50,9 +49,8 @@ if ($sendButton !== '') {
 unset($_SESSION['calculations/new/values']);
 
 include_once '../../fns/Users/Calculations/add.php';
-$id = Users\Calculations\add($mysqli, $user->id_users,
-    $expression, $title, $tags, $tag_names, $value,
-    $error, $error_char, $referenced);
+$id = Users\Calculations\add($mysqli, $user->id_users, $expression,
+    $title, $tags, $tag_names, $value, $error, $error_char);
 
 $_SESSION['calculations/view/messages'] = ['Calculation has been saved.'];
 

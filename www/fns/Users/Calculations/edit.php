@@ -2,9 +2,8 @@
 
 namespace Users\Calculations;
 
-function edit ($mysqli, $calculation, $title,
-    $expression, $tags, $tag_names, $value, $error,
-    $error_char, $referenced, &$changed, $updateApiKey = null) {
+function edit ($mysqli, $calculation, $title, $expression, $tags,
+    $tag_names, $value, $error, $error_char, &$changed, $updateApiKey = null) {
 
     if ($calculation->title === $title &&
         $calculation->expression === $expression &&
@@ -14,15 +13,11 @@ function edit ($mysqli, $calculation, $title,
     $fnsDir = __DIR__.'/../..';
     $id = $calculation->id;
     $id_users = $calculation->id_users;
-    $referenced = array_map(function ($calculation) {
-        return $calculation->id;
-    }, $referenced);
     $update_time = time();
 
     include_once "$fnsDir/Calculations/edit.php";
-    \Calculations\edit($mysqli, $id, $title, $expression,
-        $tags, $tag_names, $value, $error, $error_char,
-        $referenced, $update_time, $updateApiKey);
+    \Calculations\edit($mysqli, $id, $title, $expression, $tags, $tag_names,
+        $value, $error, $error_char, $update_time, $updateApiKey);
 
     if ($calculation->num_tags) {
         include_once "$fnsDir/CalculationTags/deleteOnCalculation.php";
@@ -34,8 +29,5 @@ function edit ($mysqli, $calculation, $title,
         \CalculationTags\add($mysqli, $id_users, $id, $tag_names, $expression,
             $title, $value, $calculation->insert_time, $update_time);
     }
-
-    include_once __DIR__.'/updateReferences.php';
-    updateReferences($mysqli, $id);
 
 }

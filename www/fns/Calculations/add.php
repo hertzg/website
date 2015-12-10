@@ -2,16 +2,14 @@
 
 namespace Calculations;
 
-function add ($mysqli, $id_users, $expression,
-    $title, $tags, $tag_names, $value, $error, $error_char,
-    $referenced, $insert_time, $update_time, $insertApiKey) {
+function add ($mysqli, $id_users, $expression, $title, $tags, $tag_names,
+    $value, $error, $error_char, $insert_time, $update_time, $insertApiKey) {
 
     $expression = $mysqli->real_escape_string($expression);
     $title = $mysqli->real_escape_string($title);
     $tags = $mysqli->real_escape_string($tags);
     $num_tags = count($tag_names);
     $tags_json = $mysqli->real_escape_string(json_encode($tag_names));
-    $referenced = $mysqli->real_escape_string(json_encode($referenced));
     if ($value === null) {
         $value = 'null';
         $error = "'".$mysqli->real_escape_string($error)."'";
@@ -31,13 +29,11 @@ function add ($mysqli, $id_users, $expression,
 
     $sql = 'insert into calculations'
         .' (id_users, expression, title, tags,'
-        .' num_tags, tags_json, value, error, error_char,'
-        .' referenced, insert_time, update_time,'
-        .' insert_api_key_id, insert_api_key_name)'
+        .' num_tags, tags_json, value, error, error_char, insert_time,'
+        .' update_time, insert_api_key_id, insert_api_key_name)'
         ." values ($id_users, '$expression', '$title', '$tags',"
-        ." $num_tags, '$tags_json', $value, $error, $error_char,"
-        ." '$referenced', $insert_time, $update_time,"
-        ." $insert_api_key_id, $insert_api_key_name)";
+        ." $num_tags, '$tags_json', $value, $error, $error_char, $insert_time,"
+        ." $update_time, $insert_api_key_id, $insert_api_key_name)";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 

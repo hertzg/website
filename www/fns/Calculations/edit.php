@@ -2,15 +2,14 @@
 
 namespace Calculations;
 
-function edit ($mysqli, $id, $title, $expression, $tags, $tag_names,
-    $value, $error, $error_char, $referenced, $update_time, $updateApiKey) {
+function edit ($mysqli, $id, $title, $expression, $tags,
+    $tag_names, $value, $error, $error_char, $update_time, $updateApiKey) {
 
     $title = $mysqli->real_escape_string($title);
     $expression = $mysqli->real_escape_string($expression);
     $tags = $mysqli->real_escape_string($tags);
     $num_tags = count($tag_names);
     $tags_json = $mysqli->real_escape_string(json_encode($tag_names));
-    $referenced = $mysqli->real_escape_string(json_encode($referenced));
     if ($value === null) {
         $value = 'null';
         $error = "'".$mysqli->real_escape_string($error)."'";
@@ -32,8 +31,7 @@ function edit ($mysqli, $id, $title, $expression, $tags, $tag_names,
         ." expression = '$expression', tags = '$tags',"
         ." num_tags = $num_tags, tags_json = '$tags_json',"
         ." value = $value, error = $error, error_char = $error_char,"
-        ." referenced = '$referenced', update_time = $update_time,"
-        ." update_api_key_id = $update_api_key_id,"
+        ." update_time = $update_time, update_api_key_id = $update_api_key_id,"
         ." update_api_key_name = $update_api_key_name,"
         ." revision = revision + 1 where id = $id";
 

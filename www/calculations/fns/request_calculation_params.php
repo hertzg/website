@@ -5,25 +5,9 @@ function request_calculation_params ($mysqli,
 
     $fnsDir = __DIR__.'/../../fns';
 
-    $referenced = [];
-
-    include_once "$fnsDir/Users/Calculations/get.php";
-    $value_of = function ($id) use ($mysqli,
-        $user, $exclude_id, &$referenced) {
-
-        if ($id == $exclude_id) return;
-
-        $calculation = Users\Calculations\get($mysqli, $user, $id);
-        if (!$calculation) return;
-
-        $referenced[$calculation->id] = $calculation;
-        return $calculation->value;
-
-    };
-
     include_once "$fnsDir/Calculations/request.php";
     list($expression, $title, $tags,
-        $value, $error, $error_char) = Calculations\request($value_of);
+        $value, $error, $error_char) = Calculations\request();
 
     if ($expression === '') {
         $errors[] = 'Enter expression.';
@@ -37,7 +21,7 @@ function request_calculation_params ($mysqli,
     include_once "$fnsDir/request_tags.php";
     request_tags($tags, $tag_names, $errors, $focus);
 
-    return [$expression, $title, $tags, $tag_names,
-        $value, $error, $error_char, $referenced];
+    return [$expression, $title, $tags,
+        $tag_names, $value, $error, $error_char];
 
 }

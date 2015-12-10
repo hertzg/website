@@ -2,7 +2,7 @@
 
 namespace Calculations;
 
-function request ($value_of = null) {
+function request () {
 
     $fnsDir = __DIR__.'/..';
 
@@ -24,7 +24,7 @@ function request ($value_of = null) {
     $tags = mb_substr($tags, 0, $maxLengths['tags'], 'UTF-8');
 
     include_once "$fnsDir/evaluate.php";
-    $value = evaluate($expression, $error, $error_char, $value_of);
+    $value = evaluate($expression, $error, $error_char);
     if ($value === false) $value = null;
 
     return [$expression, $title, $tags, $value, $error, $error_char];
