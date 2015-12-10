@@ -16,7 +16,6 @@ function edit ($mysqli, $id, $title, $expression, $tags, $tag_names, $value,
     } else {
         $error = $error_char = 'null';
     }
-    else $error = "'".$mysqli->real_escape_string($error)."'";
     if ($updateApiKey) {
 
         $update_api_key_id = $updateApiKey->id;

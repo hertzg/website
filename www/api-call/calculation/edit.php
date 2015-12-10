@@ -6,9 +6,10 @@ require_api_key('can_write_calculations', $apiKey, $user, $mysqli);
 include_once 'fns/require_calculation.php';
 $calculation = require_calculation($mysqli, $user);
 
-include_once 'fns/require_calculation_params.php';
-require_calculation_params($expression, $title, $tags, $tag_names,
-    $value, $error, $error_char, $referenced_calculations);
+include_once 'fns/require_user_calculation_params.php';
+require_user_calculation_params($mysqli, $user,
+    $expression, $title, $tags, $tag_names, $value, $error,
+    $error_char, $referenced_calculations, $calculation->id);
 
 include_once '../../fns/Users/Calculations/edit.php';
 Users\Calculations\edit($mysqli, $calculation,
