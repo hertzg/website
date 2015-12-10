@@ -42,6 +42,7 @@ function ensure ($mysqli) {
         ],
         'insert_api_key_name' => $apiKeyNameColumn,
         'insert_time' => ['type' => 'bigint(20) unsigned'],
+        'num_referenced' => ['type' => 'bigint(3) unsigned'],
         'num_tags' => ['type' => 'tinyint(3) unsigned'],
         'revision' => ['type' => 'bigint(20) unsigned'],
         'tags' => \Tags\column(),

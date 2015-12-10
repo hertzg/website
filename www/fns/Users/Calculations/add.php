@@ -12,7 +12,8 @@ function add ($mysqli, $id_users, $expression,
     include_once "$fnsDir/Calculations/add.php";
     $id = \Calculations\add($mysqli, $id_users,
         $expression, $title, $tags, $tag_names, $value,
-        $error, $error_char, $insert_time, $update_time, $insertApiKey);
+        $error, $error_char, count($referenced_calculations),
+        $insert_time, $update_time, $insertApiKey);
 
     if ($tag_names) {
         include_once "$fnsDir/CalculationTags/add.php";
