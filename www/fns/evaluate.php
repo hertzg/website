@@ -62,7 +62,7 @@ function evaluate ($expression, &$error = null,
             $value = $a * $b;
         } elseif ($operation === '/') {
             $division = array_pop($divisions);
-            if ($b === 0) {
+            if ($b === 0.0) {
                 $error = 'Division by zero.';
                 $error_char = $division;
                 return false;
@@ -98,7 +98,16 @@ function evaluate ($expression, &$error = null,
                 $char = $chars[$index];
                 if ($char < '0' || $char > '9') break;
             }
-            $value = intval($digits) * $next_value_sign;
+            if ($char === '.') {
+                while (true) {
+                    $digits .= $char;
+                    $index++;
+                    if ($index === $num_chars) break;
+                    $char = $chars[$index];
+                    if ($char < '0' || $char > '9') break;
+                }
+            }
+            $value = floatval($digits) * $next_value_sign;
 
             $push_value($value);
 
