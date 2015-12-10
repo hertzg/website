@@ -39,7 +39,7 @@ function create ($calculation, &$scripts) {
 
     if ($calculation->num_tags) {
         include_once "$fnsDir/Form/tags.php";
-        $items[] = \Form\tags('../', json_decode($calculation->tags_json));
+        $items[] = \Form\tags('', json_decode($calculation->tags_json));
     }
 
     include_once "$fnsDir/calculation_value.php";
