@@ -21,4 +21,7 @@ function delete ($mysqli, $calculation, $apiKey = null) {
     include_once __DIR__.'/../DeletedItems/addCalculation.php';
     \Users\DeletedItems\addCalculation($mysqli, $calculation, $apiKey);
 
+    include_once __DIR__.'/updateReferences.php';
+    updateReferences($mysqli, $id);
+
 }
