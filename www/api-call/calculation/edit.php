@@ -7,12 +7,14 @@ include_once 'fns/require_calculation.php';
 $calculation = require_calculation($mysqli, $user);
 
 include_once 'fns/require_calculation_params.php';
-require_calculation_params($mysqli, $user, $expression, $title,
-    $tags, $tag_names, $value, $error, $error_char, $calculation->id);
+require_calculation_params($mysqli, $user, $expression,
+    $title, $tags, $tag_names, $value, $error, $error_char,
+    $resolved_expression, $calculation->id);
 
 include_once '../../fns/Users/Calculations/edit.php';
-Users\Calculations\edit($mysqli, $calculation, $title, $expression,
-    $tags, $tag_names, $value, $error, $error_char, $changed, $apiKey);
+Users\Calculations\edit($mysqli, $calculation,
+    $title, $expression, $tags, $tag_names, $value, $error,
+    $error_char, $resolved_expression, $changed, $apiKey);
 
 header('Content-Type: application/json');
 echo 'true';

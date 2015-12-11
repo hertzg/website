@@ -30,6 +30,7 @@ function request ($value_of = null) {
     if ($value === false) $value = null;
     else $expression = $pretty_expression;
 
-    return [$expression, $title, $tags, $value, $error, $error_char];
+    return [$expression, $title, $tags, $value,
+        $error, $error_char, $resolved_expression];
 
 }

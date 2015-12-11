@@ -43,6 +43,11 @@ function ensure ($mysqli) {
         'insert_api_key_name' => $apiKeyNameColumn,
         'insert_time' => ['type' => 'bigint(20) unsigned'],
         'num_tags' => ['type' => 'tinyint(3) unsigned'],
+        'resolved_expression' => [
+            'type' => "varchar($maxLengths[expression])",
+            'characterSet' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+        ],
         'revision' => ['type' => 'bigint(20) unsigned'],
         'tags' => \Tags\column(),
         'tags_json' => \TagsJson\column(),

@@ -24,7 +24,8 @@ $sendFunction = function ($receiver_id_userss) use (
     include_once "$fnsDir/Users/Calculations/Received/add.php";
     foreach ($receiver_id_userss as $receiver_id_users) {
         Users\Calculations\Received\add($mysqli, $user->id_users,
-            $user->username, $receiver_id_users, $stageValues['expression'],
+            $user->username, $receiver_id_users,
+            $stageValues['resolved_expression'],
             $stageValues['title'], $stageValues['tags'], $stageValues['value'],
             $stageValues['error'], $stageValues['error_char']);
     }
@@ -38,7 +39,8 @@ $sendExternalFunction = function ($recipients) use (
     foreach ($recipients as $recipient) {
         SendingCalculations\add($mysqli, $user->id_users,
             $user->username, $recipient['username'], $recipient['address'],
-            $recipient['their_exchange_api_key'], $stageValues['expression'],
+            $recipient['their_exchange_api_key'],
+            $stageValues['resolved_expression'],
             $stageValues['title'], $stageValues['tags']);
     }
 

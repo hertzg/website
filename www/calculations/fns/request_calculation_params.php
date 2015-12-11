@@ -9,8 +9,8 @@ function request_calculation_params ($mysqli,
     $value_of = user_calculation_resolver($mysqli, $user, $exclude_id);
 
     include_once "$fnsDir/Calculations/request.php";
-    list($expression, $title, $tags,
-        $value, $error, $error_char) = Calculations\request($value_of);
+    list($expression, $title, $tags, $value, $error,
+        $error_char, $resolved_expression) = Calculations\request($value_of);
 
     if ($expression === '') {
         $errors[] = 'Enter expression.';
@@ -24,7 +24,7 @@ function request_calculation_params ($mysqli,
     include_once "$fnsDir/request_tags.php";
     request_tags($tags, $tag_names, $errors, $focus);
 
-    return [$expression, $title, $tags,
-        $tag_names, $value, $error, $error_char];
+    return [$expression, $title, $tags, $tag_names,
+        $value, $error, $error_char, $resolved_expression];
 
 }

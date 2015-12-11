@@ -2,8 +2,9 @@
 
 namespace Calculations;
 
-function add ($mysqli, $id_users, $expression, $title, $tags, $tag_names,
-    $value, $error, $error_char, $insert_time, $update_time, $insertApiKey) {
+function add ($mysqli, $id_users, $expression,
+    $title, $tags, $tag_names, $value, $error, $error_char,
+    $resolved_expression, $insert_time, $update_time, $insertApiKey) {
 
     $expression = $mysqli->real_escape_string($expression);
     $title = $mysqli->real_escape_string($title);
@@ -16,6 +17,7 @@ function add ($mysqli, $id_users, $expression, $title, $tags, $tag_names,
     } else {
         $error = $error_char = 'null';
     }
+    $resolved_expression = $mysqli->real_escape_string($resolved_expression);
     if ($insertApiKey === null) {
         $insert_api_key_id = $insert_api_key_name = 'null';
     } else {
@@ -29,10 +31,12 @@ function add ($mysqli, $id_users, $expression, $title, $tags, $tag_names,
 
     $sql = 'insert into calculations'
         .' (id_users, expression, title, tags,'
-        .' num_tags, tags_json, value, error, error_char, insert_time,'
+        .' num_tags, tags_json, value, error,'
+        .' error_char, resolved_expression, insert_time,'
         .' update_time, insert_api_key_id, insert_api_key_name)'
         ." values ($id_users, '$expression', '$title', '$tags',"
-        ." $num_tags, '$tags_json', $value, $error, $error_char, $insert_time,"
+        ." $num_tags, '$tags_json', $value, $error,"
+        ." $error_char, '$resolved_expression', $insert_time,"
         ." $update_time, $insert_api_key_id, $insert_api_key_name)";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
