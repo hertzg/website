@@ -1,7 +1,7 @@
 <?php
 
 function evaluate ($expression, &$error = null,
-    &$error_char = 0, $value_of = null) {
+    &$error_char = null, &$pretty_expression = null, $value_of = null) {
 
     $chars = preg_split('/(?<!^)(?!$)/u', $expression);
     $num_chars = count($chars);
@@ -77,6 +77,8 @@ function evaluate ($expression, &$error = null,
 
     };
 
+    $raw_pretty_expression = '';
+
     $index = 0;
     while ($index < $num_chars) {
         $char = $chars[$index];
@@ -110,6 +112,7 @@ function evaluate ($expression, &$error = null,
             $value = floatval($digits) * $next_value_sign;
 
             $push_value($value);
+            $raw_pretty_expression .= $value;
 
             $value_expected = $negative_expected = false;
             $operation_expected = true;
@@ -145,6 +148,7 @@ function evaluate ($expression, &$error = null,
             }
 
             $push_value($value * $next_value_sign);
+            $raw_pretty_expression .= "#$id";
 
             $value_expected = $negative_expected = false;
             $operation_expected = true;
@@ -162,6 +166,7 @@ function evaluate ($expression, &$error = null,
                 }
 
                 $push_operation($char);
+                $raw_pretty_expression .= " $char ";
                 $index++;
 
                 $value_expected = true;
@@ -197,6 +202,7 @@ function evaluate ($expression, &$error = null,
             }
 
             $push_operation($char);
+            $raw_pretty_expression .= " $char ";
             if ($char === '/') $divisions[] = $index;
             $index++;
 
@@ -217,6 +223,7 @@ function evaluate ($expression, &$error = null,
 
             $empty_brackets = true;
             $push_operation('(');
+            $raw_pretty_expression .= '(';
             $index++;
 
             $value_expected = true;
@@ -249,6 +256,8 @@ function evaluate ($expression, &$error = null,
                 $error = 'Unbalanced closing bracket.';
                 return false;
             }
+
+            $raw_pretty_expression .= ')';
             $index++;
 
         } else {
@@ -278,6 +287,8 @@ function evaluate ($expression, &$error = null,
         $error = 'Expected operand.';
         return false;
     }
+
+    $pretty_expression = $raw_pretty_expression;
 
     return $pop_value();
 
