@@ -53,7 +53,7 @@ if ($sendButton) {
 unset($_SESSION['calculations/edit/values']);
 
 include_once "$fnsDir/Users/Calculations/edit.php";
-Users\Calculations\edit($mysqli, $calculation,
+Users\Calculations\edit($mysqli, $user, $calculation,
     $title, $expression, $tags, $tag_names, $value,
     $error, $error_char, $resolved_expression, $depends, $changed);
 

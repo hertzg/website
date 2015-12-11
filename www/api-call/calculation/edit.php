@@ -12,7 +12,7 @@ require_calculation_params($mysqli, $user, $expression,
     $resolved_expression, $depends, $calculation->id);
 
 include_once '../../fns/Users/Calculations/edit.php';
-Users\Calculations\edit($mysqli, $calculation, $title,
+Users\Calculations\edit($mysqli, $user, $calculation, $title,
     $expression, $tags, $tag_names, $value, $error, $error_char,
     $resolved_expression, $depends, $changed, $apiKey);
 

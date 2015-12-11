@@ -10,7 +10,7 @@ include_once '../../lib/mysqli.php';
 list($calculation, $id, $user) = require_calculation($mysqli);
 
 include_once "$fnsDir/Users/Calculations/delete.php";
-Users\Calculations\delete($mysqli, $calculation);
+Users\Calculations\delete($mysqli, $user, $calculation);
 
 unset($_SESSION['calculations/errors']);
 $_SESSION['calculations/messages'] = ["Calculation #$id has been deleted."];

@@ -2,13 +2,15 @@
 
 namespace Users\Calculations;
 
-function edit ($mysqli, $calculation, $title,
+function edit ($mysqli, $user, $calculation, $title,
     $expression, $tags, $tag_names, $value, $error, $error_char,
     $resolved_expression, $depends, &$changed, $updateApiKey = null) {
 
+/*
     if ($calculation->title === $title &&
         $calculation->expression === $expression &&
         $calculation->tags === $tags) return;
+*/
 
     $changed = true;
     $fnsDir = __DIR__.'/../..';
@@ -41,5 +43,8 @@ function edit ($mysqli, $calculation, $title,
         include_once "$fnsDir/CalculationDepends/add.php";
         \CalculationDepends\add($mysqli, $id_users, $id, $depends);
     }
+
+    include_once __DIR__.'/updateDepends.php';
+    updateDepends($mysqli, $user, $id);
 
 }
