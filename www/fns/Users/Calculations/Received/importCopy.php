@@ -2,7 +2,8 @@
 
 namespace Users\Calculations\Received;
 
-function importCopy ($mysqli, $receivedCalculation, $insertApiKey = null) {
+function importCopy ($mysqli,
+    $receivedCalculation, $depends, $insertApiKey = null) {
 
     $tags = $receivedCalculation->tags;
     $expression = $receivedCalculation->expression;
@@ -15,6 +16,6 @@ function importCopy ($mysqli, $receivedCalculation, $insertApiKey = null) {
         $receivedCalculation->receiver_id_users,
         $expression, $receivedCalculation->title, $tags, $tag_names,
         $receivedCalculation->value, $receivedCalculation->error,
-        $receivedCalculation->error_char, $expression, $insertApiKey);
+        $receivedCalculation->error_char, $expression, $depends, $insertApiKey);
 
 }

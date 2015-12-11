@@ -17,6 +17,7 @@ function ensureAll ($mysqli) {
     include_once "$fnsDir/BarChartTags/ensure.php";
     include_once "$fnsDir/Bookmarks/ensure.php";
     include_once "$fnsDir/BookmarkTags/ensure.php";
+    include_once "$fnsDir/CalculationDepends/ensure.php";
     include_once "$fnsDir/Calculations/ensure.php";
     include_once "$fnsDir/CalculationTags/ensure.php";
     include_once "$fnsDir/Channels/ensure.php";
@@ -80,6 +81,7 @@ function ensureAll ($mysqli) {
         .\BarChartTags\ensure($mysqli)
         .\Bookmarks\ensure($mysqli)
         .\BookmarkTags\ensure($mysqli)
+        .\CalculationDepends\ensure($mysqli)
         .\Calculations\ensure($mysqli)
         .\CalculationTags\ensure($mysqli)
         .\Channels\ensure($mysqli)

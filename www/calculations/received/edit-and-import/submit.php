@@ -12,7 +12,7 @@ list($receivedCalculation, $id, $user) = require_received_calculation(
 
 include_once '../../fns/request_calculation_params.php';
 list($expression, $title, $tags, $tag_names, $value, $error,
-    $error_char, $resolved_expression) = request_calculation_params(
+    $error_char, $resolved_expression, $depends) = request_calculation_params(
     $mysqli, $user, $errors, $focus);
 
 include_once "$fnsDir/redirect.php";
@@ -42,7 +42,7 @@ $receivedCalculation->error = $error;
 $receivedCalculation->error_char = $error_char;
 
 include_once "$fnsDir/Users/Calculations/Received/import.php";
-Users\Calculations\Received\import($mysqli, $receivedCalculation);
+Users\Calculations\Received\import($mysqli, $receivedCalculation, $depends);
 
 $messages = ['Calculation has been imported.'];
 

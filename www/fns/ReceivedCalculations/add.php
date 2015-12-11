@@ -3,8 +3,7 @@
 namespace ReceivedCalculations;
 
 function add ($mysqli, $sender_address, $sender_id_users,
-    $sender_username, $receiver_id_users, $expression,
-    $title, $tags, $value, $error, $error_char) {
+    $sender_username, $receiver_id_users, $expression, $title, $tags, $value) {
 
     if ($sender_address === null) $sender_address = 'null';
     else $sender_address = "'".$mysqli->real_escape_string($sender_address)."'";
@@ -13,21 +12,15 @@ function add ($mysqli, $sender_address, $sender_id_users,
     $expression = $mysqli->real_escape_string($expression);
     $title = $mysqli->real_escape_string($title);
     $tags = $mysqli->real_escape_string($tags);
-    if ($value === null) {
-        $value = 'null';
-        $error = "'".$mysqli->real_escape_string($error)."'";
-    } else {
-        $error = $error_char = 'null';
-    }
     $insert_time = time();
 
     $sql = 'insert into received_calculations'
         .' (sender_address, sender_id_users,'
         .' sender_username, receiver_id_users, expression,'
-        .' title, tags, value, error, error_char, insert_time)'
+        .' title, tags, value, insert_time)'
         ." values ($sender_address, $sender_id_users,"
         ." '$sender_username', $receiver_id_users, '$expression',"
-        ." '$title', '$tags', $value, $error, $error_char, $insert_time)";
+        ." '$title', '$tags', $value, $insert_time)";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
 }

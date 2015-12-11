@@ -10,7 +10,7 @@ $receiver_user = require_receiver_user(
 
 include_once 'fns/require_calculation_params.php';
 require_calculation_params($mysqli, $user, $expression, $title, $tags,
-    $tag_names, $value, $error, $error_char, $resolved_expression);
+    $tag_names, $value, $error, $error_char, $resolved_expression, $depends);
 
 include_once '../../fns/Users/Calculations/Received/add.php';
 Users\Calculations\Received\add($mysqli,

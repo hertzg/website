@@ -19,7 +19,4 @@ function renderCalculation ($calculation, &$items) {
     $tags = $calculation->tags;
     if ($tags !== '') $items[] = \Form\label('Tags', htmlspecialchars($tags));
 
-    include_once "$fnsDir/calculation_value.php";
-    $items[] = calculation_value($calculation);
-
 }

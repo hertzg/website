@@ -25,6 +25,9 @@ function deleteAll ($mysqli, $user, $apiKey = null) {
     include_once "$fnsDir/CalculationTags/deleteOnUser.php";
     \CalculationTags\deleteOnUser($mysqli, $id_users);
 
+    include_once "$fnsDir/CalculationDepends/deleteOnUser.php";
+    \CalculationDepends\deleteOnUser($mysqli, $id_users);
+
     $sql = "update users set num_calculations = 0 where id_users = $id_users";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 

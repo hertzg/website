@@ -15,16 +15,6 @@ function ensure ($mysqli) {
     include_once "$fnsDir/Username/column.php";
     return \Table\ensure($mysqli, 'received_calculations', [
         'archived' => ['type' => 'tinyint(3) unsigned'],
-        'error' => [
-            'type' => "varchar($maxLengths[error])",
-            'characterSet' => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-            'nullable' => true,
-        ],
-        'error_char' => [
-            'type' => 'bigint(20) unsigned',
-            'nullable' => true,
-        ],
         'expression' => [
             'type' => "varchar($maxLengths[expression])",
             'characterSet' => 'utf8',
@@ -48,10 +38,7 @@ function ensure ($mysqli) {
             'characterSet' => 'utf8',
             'collation' => 'utf8_unicode_ci',
         ],
-        'value' => [
-            'type' => 'double',
-            'nullable' => true,
-        ],
+        'value' => ['type' => 'double'],
     ]);
 
 }

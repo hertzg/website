@@ -15,6 +15,9 @@ function deleteCalculations ($mysqli, $user) {
         include_once "$fnsDir/CalculationTags/deleteOnUser.php";
         \CalculationTags\deleteOnUser($mysqli, $id_users);
 
+        include_once "$fnsDir/CalculationDepends/deleteOnUser.php";
+        \CalculationDepends\deleteOnUser($mysqli, $id_users);
+
     }
 
     if ($user->num_received_calculations) {

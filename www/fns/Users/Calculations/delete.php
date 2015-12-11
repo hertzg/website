@@ -15,6 +15,11 @@ function delete ($mysqli, $calculation, $apiKey = null) {
         \CalculationTags\deleteOnCalculation($mysqli, $id);
     }
 
+    if ($calculation->num_depends) {
+        include_once "$fnsDir/CalculationDepends/deleteOnCalculation.php";
+        \CalculationDepends\deleteOnCalculation($mysqli, $id);
+    }
+
     include_once __DIR__.'/addNumber.php';
     addNumber($mysqli, $calculation->id_users, -1);
 

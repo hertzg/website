@@ -19,7 +19,7 @@ if ($type == 'barChart') {
     Users\Bookmarks\addDeleted($mysqli, $id_users, $data);
 } elseif ($type == 'calculation') {
     include_once '../fns/Users/Calculations/addDeleted.php';
-    Users\Calculations\addDeleted($mysqli, $id_users, $data);
+    Users\Calculations\addDeleted($mysqli, $user, $data);
 } elseif ($type == 'contact') {
     include_once '../fns/Users/Contacts/addDeleted.php';
     Users\Contacts\addDeleted($mysqli, $user, $data);

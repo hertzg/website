@@ -10,7 +10,7 @@ include_once '../../lib/mysqli.php';
 list($receivedCalculation, $id, $user) = require_received_calculation($mysqli);
 
 include_once "$fnsDir/Users/Calculations/Received/import.php";
-Users\Calculations\Received\import($mysqli, $receivedCalculation);
+Users\Calculations\Received\import($mysqli, $receivedCalculation, []);
 
 $messages = ['Calculation has been imported.'];
 include_once "$fnsDir/redirect.php";

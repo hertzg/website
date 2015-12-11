@@ -8,7 +8,7 @@ $receivedCalculation = require_received_calculation($mysqli, $user);
 
 include_once '../../../fns/Users/Calculations/Received/importCopy.php';
 $id = Users\Calculations\Received\importCopy(
-    $mysqli, $receivedCalculation, $apiKey);
+    $mysqli, $receivedCalculation, [], $apiKey);
 
 header('Content-Type: application/json');
 echo $id;
