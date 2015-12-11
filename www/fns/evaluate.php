@@ -1,7 +1,8 @@
 <?php
 
 function evaluate ($expression, &$error = null,
-    &$error_char = null, &$pretty_expression = null, $value_of = null) {
+    &$error_char = null, &$pretty_expression = null,
+    &$resolved_expression = null, $value_of = null) {
 
     $chars = preg_split('/(?<!^)(?!$)/u', $expression);
     $num_chars = count($chars);
@@ -78,6 +79,7 @@ function evaluate ($expression, &$error = null,
     };
 
     $raw_pretty_expression = '';
+    $raw_resolved_expression = '';
 
     $index = 0;
     while ($index < $num_chars) {
@@ -113,6 +115,7 @@ function evaluate ($expression, &$error = null,
 
             $push_value($value);
             $raw_pretty_expression .= $value;
+            $raw_resolved_expression .= $value;
 
             $value_expected = $negative_expected = false;
             $operation_expected = true;
@@ -147,8 +150,10 @@ function evaluate ($expression, &$error = null,
                 return false;
             }
 
-            $push_value($value * $next_value_sign);
+            $value *= $next_value_sign;
+            $push_value($value);
             $raw_pretty_expression .= "#$id";
+            $raw_resolved_expression .= $value;
 
             $value_expected = $negative_expected = false;
             $operation_expected = true;
@@ -167,6 +172,7 @@ function evaluate ($expression, &$error = null,
 
                 $push_operation($char);
                 $raw_pretty_expression .= " $char ";
+                $raw_resolved_expression .= " $char ";
                 $index++;
 
                 $value_expected = true;
@@ -203,6 +209,7 @@ function evaluate ($expression, &$error = null,
 
             $push_operation($char);
             $raw_pretty_expression .= " $char ";
+            $raw_resolved_expression .= " $char ";
             if ($char === '/') $divisions[] = $index;
             $index++;
 
@@ -224,6 +231,7 @@ function evaluate ($expression, &$error = null,
             $empty_brackets = true;
             $push_operation('(');
             $raw_pretty_expression .= '(';
+            $raw_resolved_expression .= '(';
             $index++;
 
             $value_expected = true;
@@ -258,6 +266,7 @@ function evaluate ($expression, &$error = null,
             }
 
             $raw_pretty_expression .= ')';
+            $raw_resolved_expression .= ')';
             $index++;
 
         } else {
@@ -289,6 +298,7 @@ function evaluate ($expression, &$error = null,
     }
 
     $pretty_expression = $raw_pretty_expression;
+    $resolved_expression = $raw_resolved_expression;
 
     return $pop_value();
 

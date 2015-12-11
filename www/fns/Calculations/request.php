@@ -24,8 +24,8 @@ function request ($value_of = null) {
     $tags = mb_substr($tags, 0, $maxLengths['tags'], 'UTF-8');
 
     include_once "$fnsDir/evaluate.php";
-    $value = evaluate($expression, $error,
-        $error_char, $pretty_expression, $value_of);
+    $value = evaluate($expression, $error, $error_char,
+        $pretty_expression, $resolved_expression, $value_of);
 
     if ($value === false) $value = null;
     else $expression = $pretty_expression;

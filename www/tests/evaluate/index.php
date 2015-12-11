@@ -298,6 +298,7 @@ visual_assert([
     'expression' => '2 + #123',
     'expected_value' => 5.0,
     'expected_pretty_expression' => '2 + #123',
+    'expected_resolved_expression' => '2 + 3',
     'value_of' => function ($id) {
         if ($id === '123') return 3;
     },
