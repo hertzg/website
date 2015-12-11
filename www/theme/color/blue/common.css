@@ -23,8 +23,7 @@
 }
 
 #tbar,
-.tag:focus,
-.newItemButton:focus {
+.tag:focus {
     border-color: #39e;
 }
 
