@@ -39,11 +39,11 @@ function echo_html ($title, $head, $body,
                 .' content="width=device-width, user-scalable=no" />'
                 .compressed_css_link('common', $base)
                 .compressed_css_link('iconsets', $base)
+                .$head
                 .'<link rel="stylesheet" type="text/css"'
                 ." href=\"{$base}theme/color/$theme_color/common.css?28\" />"
                 .'<link rel="stylesheet" type="text/css"'
                 ." href=\"{$base}theme/brightness/$theme_brightness/common.css?5\" />"
-                .$head
             .'</head>'
             .'<body>'
                 .'<script type="text/javascript">'

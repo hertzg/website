@@ -13,6 +13,10 @@
     padding: 12px 14px;
     resize: vertical;
 }
+.form-textarea.small {
+    height: 48px;
+    min-height: 48px;
+}
 .form-textarea:focus {
     background-color: rgba(127, 127, 127, 0.2);
 }
