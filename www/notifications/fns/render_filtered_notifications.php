@@ -26,7 +26,7 @@ function render_filtered_notifications ($base, $id, $offset,
         include_once "$fnsDir/format_author.php";
         include_once "$fnsDir/render_external_links.php";
         include_once "$fnsDir/ItemList/escapedItemQuery.php";
-        include_once "$fnsDir/Page/removableTextItem.php";
+        include_once "$fnsDir/Page/removableItem.php";
         foreach ($notifications as $notification) {
 
             $text = htmlspecialchars($notification->text);
@@ -44,7 +44,7 @@ function render_filtered_notifications ($base, $id, $offset,
             $items[] =
                 '<div class="deleteLinkWrapper"'
                 ." data-delete_href=\"$delete_href\">"
-                    .Page\removableTextItem($content,
+                    .Page\removableItem($content,
                         "{$base}delete/$escapedItemQuery", 'old-notification')
                 .'</div>';
 

@@ -18,7 +18,7 @@ if ($notifications) {
             .'var deleteAllHref = '.json_encode("delete-all/submit.php?id=$id")
         .'</script>'
         .'<script type="text/javascript"'
-        .' defer="defer" src="../in-channel.js?2">'
+        .' defer="defer" src="../in-channel.js?3">'
         .'</script>';
 }
 
