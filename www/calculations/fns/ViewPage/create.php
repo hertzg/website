@@ -37,6 +37,11 @@ function create ($calculation, &$scripts) {
     $items[] = \Form\label('Expression',
         htmlspecialchars($calculation->expression));
 
+    if ($calculation->num_depends) {
+        $items[] = \Form\label('Which resolves to',
+            htmlspecialchars($calculation->resolved_expression));
+    }
+
     if ($calculation->num_tags) {
         include_once "$fnsDir/Form/tags.php";
         $items[] = \Form\tags('', json_decode($calculation->tags_json));
