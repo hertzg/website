@@ -37,7 +37,7 @@ function create ($calculation, &$scripts) {
     $items[] = \Form\label('Expression',
         htmlspecialchars($calculation->expression));
 
-    if ($calculation->num_depends) {
+    if ($calculation->value !== null && $calculation->num_depends) {
         $items[] = \Form\label('Which resolves to',
             htmlspecialchars($calculation->resolved_expression));
     }
