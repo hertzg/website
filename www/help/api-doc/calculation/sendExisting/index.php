@@ -13,6 +13,7 @@ calculation_method_page('sendExisting', [
     ],
 ], ApiDoc\trueResult(), [
     'CALCULATION_NOT_FOUND' => "A calculation with the ID doesn't exist.",
+    'UNCOMPUTABLE_EXPRESSION' => 'The calculation expression is uncomputable.',
     'ENTER_RECEIVER_USERNAME' => 'The receiver username is empty.',
     'INVALID_RECEIVER_USERNAME' => 'The receiver username is invalid.',
     'RECEIVER_NOT_FOUND' => 'No such receiver with the username.',
