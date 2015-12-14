@@ -8,6 +8,7 @@ function create_form_items ($values) {
     include_once "$fnsDir/Calculations/maxLengths.php";
     $maxLengths = Calculations\maxLengths();
 
+    include_once "$fnsDir/Form/notes.php";
     include_once "$fnsDir/Form/textfield.php";
     return
         Form\textfield('expression', 'Expression', [
@@ -15,6 +16,10 @@ function create_form_items ($values) {
             'maxlength' => $maxLengths['expression'],
             'autofocus' => $focus === 'expression',
             'required' => true,
+        ])
+        .Form\notes([
+            'Example: 3 + 5 - 2 * (4 + 6 / 3.5)',
+            'Reference other calculations with #id syntax.',
         ])
         .'<div class="hr"></div>'
         .Form\textfield('title', 'Title', [
