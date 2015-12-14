@@ -24,7 +24,7 @@
         var yesText = 'Yes, delete notification'
         var yesHref = wrapper.dataset.delete_href
 
-        var deleteLink = wrapper.querySelector('.removableTextItem-removeButton')
+        var deleteLink = wrapper.querySelector('.removableItem-removeButton')
         deleteLink.addEventListener('click', function (e) {
             e.preventDefault()
             deleteLink.blur()

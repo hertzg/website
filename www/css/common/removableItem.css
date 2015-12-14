@@ -1,12 +1,30 @@
 .removableItem {
     position: relative;
-    line-height: 48px;
-    padding-left: 48px;
-    padding-right: 48px;
+    padding: 15px 48px;
+    word-wrap: break-word;
 }
 
 .removableItem-icon {
     position: absolute;
-    top: 8px;
+    top: 0;
     left: 8px;
+    bottom: 0;
+    margin: auto;
+}
+
+.removableItem-removeButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 48px;
+    text-align: center;
+}
+
+.removableItem-removeButton-icon {
+    position: absolute;
+    top: 0;
+    left: 6px;
+    bottom: 0;
+    margin: auto;
 }

@@ -8,7 +8,7 @@ function render_notifications ($user, $notifications, $offset, $base, &$items) {
     include_once "$fnsDir/format_author.php";
     include_once "$fnsDir/render_external_links.php";
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
-    include_once "$fnsDir/Page/removableTextItem.php";
+    include_once "$fnsDir/Page/removableItem.php";
     foreach ($notifications as $notification) {
 
         if ($index < $user->num_new_notifications) $icon = 'notification';
@@ -31,7 +31,7 @@ function render_notifications ($user, $notifications, $offset, $base, &$items) {
         $items[] =
             '<div class="deleteLinkWrapper"'
             ." data-delete_href=\"$delete_href\">"
-                .Page\removableTextItem($content,
+                .Page\removableItem($content,
                     "{$base}delete/$escapedItemQuery", $icon)
             .'</div>';
 
