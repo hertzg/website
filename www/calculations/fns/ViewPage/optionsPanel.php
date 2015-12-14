@@ -6,7 +6,7 @@ function optionsPanel ($calculation) {
 
     $calculationsDir = __DIR__.'/../..';
     $fnsDir = "$calculationsDir/../fns";
-    $expression = $calculation->expression;
+    $value = $calculation->value;
 
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
     $escapedItemQuery = \ItemList\escapedItemQuery($calculation->id);
@@ -15,7 +15,7 @@ function optionsPanel ($calculation) {
     $editLink = \Page\imageArrowLink('Edit',
         "../edit/$escapedItemQuery", 'edit-calculation', ['id' => 'edit']);
 
-    $params = ['expression' => $expression];
+    $params = ['expression' => $calculation->expression];
     $title = $calculation->title;
     if ($title !== '') $params['title'] = $title;
     $tags = $calculation->tags;
@@ -24,12 +24,18 @@ function optionsPanel ($calculation) {
     $duplicateLink = \Page\imageArrowLink('Duplicate',
         $href, 'duplicate-calculation');
 
-    $sendLink = \Page\imageArrowLink('Send',
-        "../send/$escapedItemQuery", 'send', ['id' => 'send']);
+    if ($value !== null) {
 
-    include_once "$fnsDir/Page/imageLink.php";
-    $href = 'sms:?body='.rawurlencode($expression);
-    $sendViaSmsLink = \Page\imageLink('Send via SMS', $href, 'send-sms');
+        $sendLink = \Page\imageArrowLink('Send',
+            "../send/$escapedItemQuery", 'send', ['id' => 'send']);
+
+        $body = "$calculation->resolved_expression = $value";
+        if ($title !== '') $body = "$title\n$body";
+        $href = 'sms:?body='.rawurlencode($body);
+        include_once "$fnsDir/Page/imageLink.php";
+        $sendViaSmsLink = \Page\imageLink('Send via SMS', $href, 'send-sms');
+
+    }
 
     $href = "../delete/$escapedItemQuery";
     $deleteLink =
@@ -41,10 +47,12 @@ function optionsPanel ($calculation) {
     include_once "$fnsDir/Page/twoColumns.php";
     $content =
         \Page\staticTwoColumns($editLink, $duplicateLink)
-        .'<div class="hr"></div>'
-        .\Page\twoColumns($sendLink, $sendViaSmsLink)
-        .'<div class="hr"></div>'
-        .$deleteLink;
+        .'<div class="hr"></div>';
+    if ($value !== null) {
+        $content .= \Page\twoColumns($sendLink, $sendViaSmsLink)
+            .'<div class="hr"></div>';
+    }
+    $content .= $deleteLink;
 
     include_once "$fnsDir/create_panel.php";
     return create_panel('Calculation Options', $content);
