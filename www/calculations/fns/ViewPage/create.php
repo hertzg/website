@@ -76,6 +76,7 @@ function create ($calculation, &$scripts) {
     include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/ItemList/listHref.php";
     include_once "$fnsDir/Page/infoText.php";
+    include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
     return
@@ -87,7 +88,8 @@ function create ($calculation, &$scripts) {
                 ],
             ],
             "Calculation #$id",
-            \Page\sessionMessages('calculations/view/messages')
+            \Page\sessionErrors('calculations/view/errors')
+            .\Page\sessionMessages('calculations/view/messages')
             .join('<div class="hr"></div>', $items)
             .\Page\infoText($infoText),
             create_new_item_button('Calculation', '../')

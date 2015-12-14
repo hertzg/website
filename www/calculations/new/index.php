@@ -24,6 +24,7 @@ else {
 unset(
     $_SESSION['calculations/errors'],
     $_SESSION['calculations/messages'],
+    $_SESSION['calculations/view/errors'],
     $_SESSION['calculations/view/messages'],
     $_SESSION['home/messages']
 );

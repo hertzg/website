@@ -46,6 +46,7 @@ if ($sendButton) {
     $values['value'] = $value;
     $values['error'] = $error;
     $values['error_char'] = $error_char;
+    $values['resolved_expression'] = $resolved_expression;
     $_SESSION['calculations/edit/send/calculation'] = $values;
     redirect("send/$itemQuery");
 }
@@ -60,5 +61,6 @@ Users\Calculations\edit($mysqli, $user, $calculation,
 if ($changed) $message = 'Changes have been saved.';
 else $message = 'No changes to be saved.';
 $_SESSION['calculations/view/messages'] = [$message];
+unset($_SESSION['calculations/view/errors']);
 
 redirect("../view/$itemQuery");

@@ -7,6 +7,11 @@ $id_users = $user->id_users;
 include_once 'fns/require_calculation.php';
 $calculation = require_calculation($mysqli, $user);
 
+if ($calculation->value === null) {
+    include_once '../../fns/ErrorJson/badRequest.php';
+    ErrorJson\badRequest('"UNCOMPUTABLE_EXPRESSION"');
+}
+
 include_once '../fns/require_receiver_user.php';
 $receiver_user = require_receiver_user($mysqli,
     $id_users, 'can_send_calculation');

@@ -4,7 +4,10 @@ include_once '../fns/require_calculation.php';
 include_once '../../lib/mysqli.php';
 list($calculation, $id, $user) = require_calculation($mysqli);
 
-unset($_SESSION['calculations/view/messages']);
+unset(
+    $_SESSION['calculations/view/errors'],
+    $_SESSION['calculations/view/messages']
+);
 
 $base = '../../';
 $fnsDir = '../../fns';

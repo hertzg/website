@@ -3,6 +3,7 @@
 function unset_session_vars () {
     unset(
         $_SESSION['bookmarks/view/messages'],
+        $_SESSION['calculations/view/errors'],
         $_SESSION['calculations/view/messages'],
         $_SESSION['contacts/view/messages'],
         $_SESSION['files/view-file/errors'],

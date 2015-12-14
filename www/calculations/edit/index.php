@@ -15,7 +15,10 @@ else {
     ];
 }
 
-unset($_SESSION['calculations/view/messages']);
+unset(
+    $_SESSION['calculations/view/errors'],
+    $_SESSION['calculations/view/messages']
+);
 
 include_once '../fns/create_form_items.php';
 include_once '../../fns/Form/button.php';

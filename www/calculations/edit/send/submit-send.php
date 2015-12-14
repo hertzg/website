@@ -40,7 +40,6 @@ $sendExternalFunction = function ($recipients) use (
         SendingCalculations\add($mysqli, $user->id_users,
             $user->username, $recipient['username'], $recipient['address'],
             $recipient['their_exchange_api_key'],
-            
             $stageValues['resolved_expression'],
             $stageValues['title'], $stageValues['tags']);
     }
@@ -51,4 +50,5 @@ include_once "$fnsDir/SendForm/EditItem/submitSendPage.php";
 SendForm\EditItem\submitSendPage($mysqli, $user, $id,
     'calculations/edit/send/errors', 'calculations/edit/send/messages',
     'calculations/edit/send/values', 'calculations/view/messages',
-    $checkFunction, $sendFunction, $sendExternalFunction);
+    $checkFunction, $sendFunction, $sendExternalFunction,
+    'calculations/view/errors');

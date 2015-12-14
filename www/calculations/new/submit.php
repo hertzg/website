@@ -34,15 +34,16 @@ unset($_SESSION['calculations/new/errors']);
 include_once '../../fns/request_strings.php';
 list($sendButton) = request_strings('sendButton');
 if ($sendButton !== '') {
-    $values['value'] = $value;
-    $values['error'] = $error;
-    $values['error_char'] = $error_char;
-    $_SESSION['calculations/new/send/calculation'] = $values;
     unset(
         $_SESSION['calculations/new/send/errors'],
         $_SESSION['calculations/new/send/messages'],
         $_SESSION['calculations/new/send/values']
     );
+    $values['value'] = $value;
+    $values['error'] = $error;
+    $values['error_char'] = $error_char;
+    $values['resolved_expression'] = $resolved_expression;
+    $_SESSION['calculations/new/send/calculation'] = $values;
     include_once '../../fns/ItemList/pageQuery.php';
     redirect('send/'.ItemList\pageQuery());
 }
@@ -54,6 +55,7 @@ $id = Users\Calculations\add($mysqli, $user->id_users,
     $expression, $title, $tags, $tag_names, $value,
     $error, $error_char, $resolved_expression, $depends);
 
+unset($_SESSION['calculations/view/errors']);
 $_SESSION['calculations/view/messages'] = ['Calculation has been saved.'];
 
 include_once '../../fns/ItemList/itemQuery.php';

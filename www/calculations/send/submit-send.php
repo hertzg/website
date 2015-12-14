@@ -5,9 +5,9 @@ $fnsDir = '../../fns';
 include_once "$fnsDir/require_same_domain_referer.php";
 require_same_domain_referer('..');
 
-include_once '../fns/require_calculation.php';
+include_once 'fns/require_computable_calculation.php';
 include_once '../../lib/mysqli.php';
-list($calculation, $id, $user) = require_calculation($mysqli);
+list($calculation, $id, $user) = require_computable_calculation($mysqli);
 
 $checkFunction = function ($recipients,
     &$receiver_id_userss, &$errors) use ($mysqli, $user) {
@@ -46,4 +46,5 @@ include_once "$fnsDir/SendForm/submitSendPage.php";
 SendForm\submitSendPage($mysqli, $user, $id,
     'calculations/send/errors', 'calculations/send/messages',
     'calculations/send/values', 'calculations/view/messages',
-    $checkFunction, $sendFunction, $sendExternalFunction);
+    $checkFunction, $sendFunction, $sendExternalFunction,
+    'calculations/view/errors');
