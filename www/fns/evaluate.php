@@ -150,6 +150,7 @@ function evaluate ($expression, &$error = null,
                 return false;
             }
 
+            $value = (float)$value;
             $value *= $next_value_sign;
             $push_value($value);
             $raw_pretty_expression .= "#$id";
