@@ -38,9 +38,12 @@ function evaluate ($expression, &$error = null,
         return array_pop($values);
     };
 
-    $push_operation = function ($operation) use (&$operations, &$num_operations) {
+    $push_operation = function ($operation) use (
+        &$operations, &$num_operations) {
+
         $num_operations++;
         $operations[] = $operation;
+
     };
 
     $push_value = function ($value) use (&$values, &$num_values) {

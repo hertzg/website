@@ -40,7 +40,8 @@ function updateDepends ($mysqli, $user, $id) {
             } else {
                 $error = $error_char = 'null';
             }
-            $resolved_expression = $mysqli->real_escape_string($resolved_expression);
+            $resolved_expression = $mysqli->real_escape_string(
+                $resolved_expression);
 
             $sql = "update calculations set value = $value,"
                 ." error = $error, error_char = $error_char,"

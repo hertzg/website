@@ -52,7 +52,8 @@ if ($sending_calculations) {
         $ok = call_exchange_api_method('receiveCalculation',
             $sending_calculation->receiver_address, $params);
         if ($ok === false) {
-            SendingCalculations\increaseNumFails($mysqli, $sending_calculation->id);
+            SendingCalculations\increaseNumFails(
+                $mysqli, $sending_calculation->id);
         } else {
             SendingCalculations\delete($mysqli, $sending_calculation->id);
         }
