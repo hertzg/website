@@ -14,6 +14,11 @@ function require_calculation_params (&$expression,
         ErrorJson\badRequest('"ENTER_EXPRESSION"');
     }
 
+    if ($value === null) {
+        include_once "$fnsDir/ErrorJson/badRequest.php";
+        ErrorJson\badRequest('"INVALID_EXPRESSION"');
+    }
+
     include_once "$fnsDir/ApiCall/requireTags.php";
     ApiCall\requireTags($tags, $tag_names);
 
