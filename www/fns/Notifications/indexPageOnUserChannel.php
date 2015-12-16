@@ -16,7 +16,7 @@ function indexPageOnUserChannel ($mysqli, $id_users,
 
     if ($offset >= $total) return [];
 
-    $sql = "select * $fromWhere order by insert_time"
+    $sql = "select * $fromWhere order by insert_time desc"
         ." limit $limit offset $offset";
     include_once "$fnsDir/mysqli_query_object.php";
     return mysqli_query_object($mysqli, $sql);
