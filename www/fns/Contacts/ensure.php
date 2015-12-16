@@ -15,6 +15,11 @@ function ensure ($mysqli) {
     include_once "$fnsDir/Email/column.php";
     $emailColumn = \Email\column();
 
+    $nullable_unsigned_bigint = [
+        'type' => 'bigint(20) unsigned',
+        'nullable' => true,
+    ];
+
     include_once "$fnsDir/FullName/column.php";
     include_once "$fnsDir/Table/ensure.php";
     include_once "$fnsDir/Tags/column.php";
@@ -31,22 +36,13 @@ function ensure ($mysqli) {
             'characterSet' => 'utf8',
             'collation' => 'utf8_unicode_ci',
         ],
-        'birthday_day' => [
-            'type' => 'bigint(20) unsigned',
-            'nullable' => true,
-        ],
-        'birthday_month' => [
-            'type' => 'bigint(20) unsigned',
-            'nullable' => true,
-        ],
+        'birthday_day' => $nullable_unsigned_bigint,
+        'birthday_month' => $nullable_unsigned_bigint,
         'birthday_time' => [
             'type' => 'bigint(20)',
             'nullable' => true,
         ],
-        'birthday_year' => [
-            'type' => 'bigint(20) unsigned',
-            'nullable' => true,
-        ],
+        'birthday_year' => $nullable_unsigned_bigint,
         'email1' => $emailColumn,
         'email1_label' => [
             'type' => "varchar($maxLengths[email1_label])",
@@ -66,10 +62,7 @@ function ensure ($mysqli) {
             'primary' => true,
         ],
         'id_users' => ['type' => 'bigint(20) unsigned'],
-        'insert_api_key_id' => [
-            'type' => 'bigint(20) unsigned',
-            'nullable' => true,
-        ],
+        'insert_api_key_id' => $nullable_unsigned_bigint,
         'insert_api_key_name' => $apiKeyNameColumn,
         'insert_time' => ['type' => 'bigint(20) unsigned'],
         'notes' => [
@@ -98,10 +91,7 @@ function ensure ($mysqli) {
             'characterSet' => 'utf8',
             'collation' => 'utf8_general_ci',
         ],
-        'photo_id' => [
-            'type' => 'bigint(20) unsigned',
-            'nullable' => true,
-        ],
+        'photo_id' => $nullable_unsigned_bigint,
         'revision' => ['type' => 'bigint(20) unsigned'],
         'tags' => \Tags\column(),
         'tags_json' => \TagsJson\column(),
@@ -109,10 +99,7 @@ function ensure ($mysqli) {
             'type' => 'int(11)',
             'nullable' => true,
         ],
-        'update_api_key_id' => [
-            'type' => 'bigint(20) unsigned',
-            'nullable' => true,
-        ],
+        'update_api_key_id' => $nullable_unsigned_bigint,
         'update_api_key_name' => $apiKeyNameColumn,
         'update_time' => ['type' => 'bigint(20) unsigned'],
         'username' => \UsernameAddress\column(),

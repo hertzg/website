@@ -12,6 +12,11 @@ function ensure ($mysqli) {
     include_once "$fnsDir/Email/column.php";
     $emailColumn = \Email\column();
 
+    $nullable_unsigned_bigint = [
+        'type' => 'bigint(20) unsigned',
+        'nullable' => true,
+    ];
+
     include_once "$fnsDir/ConnectionAddress/column.php";
     include_once "$fnsDir/FullName/column.php";
     include_once "$fnsDir/Table/ensure.php";
@@ -30,10 +35,7 @@ function ensure ($mysqli) {
             'collation' => 'utf8_unicode_ci',
         ],
         'archived' => ['type' => 'tinyint(3) unsigned'],
-        'birthday_time' => [
-            'type' => 'bigint(20) unsigned',
-            'nullable' => true,
-        ],
+        'birthday_time' => $nullable_unsigned_bigint,
         'email1' => $emailColumn,
         'email1_label' => [
             'type' => "varchar($maxLengths[email1_label])",
@@ -78,16 +80,10 @@ function ensure ($mysqli) {
             'characterSet' => 'utf8',
             'collation' => 'utf8_general_ci',
         ],
-        'photo_id' => [
-            'type' => 'bigint(20) unsigned',
-            'nullable' => true,
-        ],
+        'photo_id' => $nullable_unsigned_bigint,
         'receiver_id_users' => ['type' => 'bigint(20) unsigned'],
         'sender_address' => \ConnectionAddress\column(true),
-        'sender_id_users' => [
-            'type' => 'bigint(20) unsigned',
-            'nullable' => true,
-        ],
+        'sender_id_users' => $nullable_unsigned_bigint,
         'sender_username' => \Username\column(),
         'tags' => \Tags\column(),
         'timezone' => [
