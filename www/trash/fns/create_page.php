@@ -18,7 +18,7 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
         $encryption_key = Session\EncryptionKey\get();
 
         include_once __DIR__.'/render_items.php';
-        render_items($deletedItems, $items, $base);
+        render_items($deletedItems, $items, $base, $encryption_key);
 
         include_once "$fnsDir/Page/imageLink.php";
         $emptyLink =

@@ -1,7 +1,6 @@
 <?php
 
-function render_wallet ($wallet, $description, $href, $options, &$items) {
-    $items[] = Page\imageArrowLinkWithDescription(
-        htmlspecialchars($wallet->name), $description,
-        $href, 'wallet', $options);
+function render_wallet ($wallet, &$title, &$icon) {
+    $title = htmlspecialchars($wallet->name);
+    $icon = 'wallet';
 }

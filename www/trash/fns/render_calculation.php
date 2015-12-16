@@ -1,13 +1,11 @@
 <?php
 
-function render_calculation ($calculation,
-    $description, $href, $options, &$items) {
+function render_calculation ($calculation, &$title, &$icon) {
 
     $title = $calculation->title;
     if ($title === '') $title = $calculation->expression;
     $title = htmlspecialchars($title);
 
-    $items[] = Page\imageArrowLinkWithDescription(
-        $title, $description, $href, 'calculation', $options);
+    $icon = 'calculation';
 
 }

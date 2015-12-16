@@ -1,7 +1,6 @@
 <?php
 
-function render_schedule ($schedule, $description, $href, $options, &$items) {
+function render_schedule ($schedule, &$title, &$icon) {
     $title = htmlspecialchars($schedule->text);
-    $items[] = Page\imageArrowLinkWithDescription(
-        $title, $description, $href, 'schedule', $options);
+    $icon = 'schedule';
 }
