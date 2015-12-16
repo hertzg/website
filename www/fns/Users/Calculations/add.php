@@ -10,7 +10,7 @@ function add ($mysqli, $id_users, $expression, $title,
     $insert_time = $update_time = time();
 
     include_once "$fnsDir/Calculations/add.php";
-    $id = \Calculations\add($mysqli, $id_users,  $expression, $title, $tags,
+    $id = \Calculations\add($mysqli, $id_users, $expression, $title, $tags,
         $tag_names, $value, $error, $error_char, $resolved_expression,
         count($depends), $insert_time, $update_time, $insertApiKey);
 
