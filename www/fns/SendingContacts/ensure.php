@@ -9,17 +9,31 @@ function ensure ($mysqli) {
     include_once "$fnsDir/Contacts/maxLengths.php";
     $maxLengths = \Contacts\maxLengths();
 
-    include_once "$fnsDir/FullName/column.php";
-    $emailColumn = \FullName\column();
-
     include_once "$fnsDir/Email/column.php";
     $emailColumn = \Email\column();
 
     include_once "$fnsDir/Username/column.php";
     $usernameColumn = \Username\column();
 
+    $email_label_column = [
+        'type' => "varchar($maxLengths[email_label])",
+        'characterSet' => 'utf8',
+        'collation' => 'utf8_general_ci',
+    ];
+    $phone_column = [
+        'type' => "varchar($maxLengths[phone])",
+        'characterSet' => 'utf8',
+        'collation' => 'utf8_general_ci',
+    ];
+    $phone_label_column = [
+        'type' => "varchar($maxLengths[phone_label])",
+        'characterSet' => 'utf8',
+        'collation' => 'utf8_general_ci',
+    ];
+
     include_once "$fnsDir/ApiKey/column.php";
     include_once "$fnsDir/ConnectionAddress/column.php";
+    include_once "$fnsDir/FullName/column.php";
     include_once "$fnsDir/Table/ensure.php";
     include_once "$fnsDir/Tags/column.php";
     include_once "$fnsDir/UsernameAddress/column.php";
@@ -39,17 +53,9 @@ function ensure ($mysqli) {
             'nullable' => true,
         ],
         'email1' => $emailColumn,
-        'email1_label' => [
-            'type' => "varchar($maxLengths[email1_label])",
-            'characterSet' => 'utf8',
-            'collation' => 'utf8_general_ci',
-        ],
+        'email1_label' => $email_label_column,
         'email2' => $emailColumn,
-        'email2_label' => [
-            'type' => "varchar($maxLengths[email2_label])",
-            'characterSet' => 'utf8',
-            'collation' => 'utf8_general_ci',
-        ],
+        'email2_label' => $email_label_column,
         'favorite' => ['type' => 'tinyint(3) unsigned'],
         'full_name' => \FullName\column(),
         'id' => [
@@ -64,26 +70,10 @@ function ensure ($mysqli) {
             'collation' => 'utf8_general_ci',
         ],
         'num_fails' => ['type' => 'bigint(20) unsigned'],
-        'phone1' => [
-            'type' => "varchar($maxLengths[phone1])",
-            'characterSet' => 'utf8',
-            'collation' => 'utf8_general_ci',
-        ],
-        'phone1_label' => [
-            'type' => "varchar($maxLengths[phone1_label])",
-            'characterSet' => 'utf8',
-            'collation' => 'utf8_general_ci',
-        ],
-        'phone2' => [
-            'type' => "varchar($maxLengths[phone2])",
-            'characterSet' => 'utf8',
-            'collation' => 'utf8_general_ci',
-        ],
-        'phone2_label' => [
-            'type' => "varchar($maxLengths[phone2_label])",
-            'characterSet' => 'utf8',
-            'collation' => 'utf8_general_ci',
-        ],
+        'phone1' => $phone_column,
+        'phone1_label' => $phone_label_column,
+        'phone2' => $phone_column,
+        'phone2_label' => $phone_label_column,
         'receiver_address' => \ConnectionAddress\column(),
         'receiver_username' => $usernameColumn,
         'sender_username' => $usernameColumn,

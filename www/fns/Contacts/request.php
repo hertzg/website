@@ -34,27 +34,27 @@ function request () {
 
     $email1_label = str_collapse_spaces($email1_label);
     $email1_label = mb_substr($email1_label, 0,
-        $maxLengths['email1_label'], 'UTF-8');
+        $maxLengths['email_label'], 'UTF-8');
 
     $email2 = \Email\request('email2');
 
     $email2_label = str_collapse_spaces($email2_label);
     $email2_label = mb_substr($email2_label, 0,
-        $maxLengths['email2_label'], 'UTF-8');
+        $maxLengths['email_label'], 'UTF-8');
 
     $phone1 = str_collapse_spaces($phone1);
-    $phone1 = mb_substr($phone1, 0, $maxLengths['phone1'], 'UTF-8');
+    $phone1 = mb_substr($phone1, 0, $maxLengths['phone'], 'UTF-8');
 
     $phone1_label = str_collapse_spaces($phone1_label);
     $phone1_label = mb_substr($phone1_label, 0,
-        $maxLengths['phone1_label'], 'UTF-8');
+        $maxLengths['phone_label'], 'UTF-8');
 
     $phone2 = str_collapse_spaces($phone2);
-    $phone2 = mb_substr($phone2, 0, $maxLengths['phone2'], 'UTF-8');
+    $phone2 = mb_substr($phone2, 0, $maxLengths['phone'], 'UTF-8');
 
     $phone2_label = str_collapse_spaces($phone2_label);
     $phone2_label = mb_substr($phone2_label, 0,
-        $maxLengths['phone2_label'], 'UTF-8');
+        $maxLengths['phone_label'], 'UTF-8');
 
     if ($birthday_time === '') $birthday_time = null;
 
