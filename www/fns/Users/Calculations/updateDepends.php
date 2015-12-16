@@ -25,7 +25,7 @@ function updateDepends ($mysqli, $user, $id) {
             include_once "$fnsDir/Calculations/get.php";
             $calculation = \Calculations\get($mysqli, $depend->id_calculations);
 
-            $value_of = user_calculation_resolver($mysqli,  
+            $value_of = user_calculation_resolver($mysqli,
                 $user, $this_depends, $calculation->id);
 
             $value = evaluate($calculation->expression, $error, $error_char,
