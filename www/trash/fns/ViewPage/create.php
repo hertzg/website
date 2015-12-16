@@ -22,8 +22,6 @@ function create ($mysqli, $deletedItem, $user, &$title, &$head, &$scripts) {
     include_once __DIR__.'/../item_type_lowercase_name.php';
     $infoText = item_type_lowercase_name($type)." deleted $author.";
 
-    $head = '';
-
     if ($type == 'barChart') {
         include_once __DIR__.'/renderBarChart.php';
         renderBarChart($data, $items);

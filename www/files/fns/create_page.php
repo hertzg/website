@@ -14,8 +14,6 @@ function create_page ($mysqli, $user,
     include_once "$fnsDir/Users/Files/index.php";
     $files = Users\Files\index($mysqli, $user, $id);
 
-    $scripts = '';
-
     if (count($files) + count($folders) > 1) {
 
         include_once "$fnsDir/SearchForm/emptyContent.php";
