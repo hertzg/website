@@ -3,6 +3,9 @@
 function item_type_lowercase_name ($type) {
     if ($type == 'barChart') return 'Bar chart';
     if ($type == 'bookmark' || $type == 'receivedBookmark') return 'Bookmark';
+    if ($type == 'calculation' || $type == 'receivedCalculation') {
+        return 'Calculation';
+    }
     if ($type == 'contact' || $type == 'receivedContact') return 'Contact';
     if ($type == 'event') return 'Event';
     if ($type == 'file' || $type == 'receivedFile') return 'File';

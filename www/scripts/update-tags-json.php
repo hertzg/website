@@ -22,6 +22,7 @@ $microtime = microtime(true);
 
 process($mysqli, 'bar_charts');
 process($mysqli, 'bookmarks');
+process($mysqli, 'calculations');
 process($mysqli, 'contacts');
 process($mysqli, 'notes');
 process($mysqli, 'places');

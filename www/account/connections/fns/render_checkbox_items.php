@@ -7,6 +7,9 @@ function render_checkbox_items ($values, &$items) {
     $items[] = Form\checkbox('can_send_bookmark',
         'Can send bookmarks', $values['can_send_bookmark']);
 
+    $items[] = Form\checkbox('can_send_calculation',
+        'Can send calculations', $values['can_send_calculation']);
+
     $items[] = Form\checkbox('can_send_channel',
         'Can subscribe me to his/her channels', $values['can_send_channel']);
 

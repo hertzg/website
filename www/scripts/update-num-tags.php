@@ -20,6 +20,7 @@ $microtime = microtime(true);
 
 update($mysqli, 'bar_charts');
 update($mysqli, 'bookmarks');
+update($mysqli, 'calculations');
 update($mysqli, 'contacts');
 update($mysqli, 'notes');
 update($mysqli, 'places');

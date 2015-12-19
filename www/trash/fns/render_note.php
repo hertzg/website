@@ -1,7 +1,6 @@
 <?php
 
-function render_note ($note, $description,
-    $href, $options, $encryption_key, &$items) {
+function render_note ($note, $encryption_key, &$title, &$icon) {
 
     $fnsDir = __DIR__.'/../../fns';
 
@@ -26,8 +25,5 @@ function render_note ($note, $description,
     else $icon = 'note';
 
     $title = htmlspecialchars($title);
-
-    $items[] = Page\imageArrowLinkWithDescription(
-        $title, $description, $href, $icon, $options);
 
 }

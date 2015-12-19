@@ -13,12 +13,14 @@ function request_api_key_params ($mysqli, $user, &$errors, $exclude_id = 0) {
 
     include_once "$fnsDir/request_strings.php";
     list($expires, $bar_chart_access, $bookmark_access,
-        $channel_access, $contact_access, $event_access,
-        $file_access, $note_access, $notification_access, $place_access,
+        $calculation_access, $channel_access, $contact_access,
+        $event_access, $file_access, $note_access,
+        $notification_access, $place_access,
         $schedule_access, $task_access, $wallet_access) = request_strings(
         'expires', 'bar_chart_access', 'bookmark_access',
-        'channel_access', 'contact_access', 'event_access',
-        'file_access', 'note_access', 'notification_access', 'place_access',
+        'calculation_access', 'channel_access', 'contact_access',
+        'event_access', 'file_access', 'note_access',
+        'notification_access', 'place_access',
         'schedule_access', 'task_access', 'wallet_access');
 
     include_once "$fnsDir/parse_expire_time.php";
@@ -26,6 +28,7 @@ function request_api_key_params ($mysqli, $user, &$errors, $exclude_id = 0) {
 
     $parseAccess($bar_chart_access);
     $parseAccess($bookmark_access);
+    $parseAccess($calculation_access);
     $parseAccess($channel_access);
     $parseAccess($contact_access);
     $parseAccess($event_access);
@@ -45,8 +48,9 @@ function request_api_key_params ($mysqli, $user, &$errors, $exclude_id = 0) {
     }
 
     return [$name, $expires, $expire_time, $bar_chart_access,
-        $bookmark_access, $channel_access, $contact_access, $event_access,
-        $file_access, $note_access, $notification_access, $place_access,
-        $schedule_access, $task_access, $wallet_access];
+        $bookmark_access, $calculation_access, $channel_access,
+        $contact_access, $event_access, $file_access, $note_access,
+        $notification_access, $place_access, $schedule_access,
+        $task_access, $wallet_access];
 
 }

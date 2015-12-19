@@ -2,9 +2,9 @@
 
 namespace SendForm\EditItem;
 
-function submitSendPage ($mysqli, $user, $id,
-    $errorsKey, $messagesKey, $valuesKey, $viewMessagesKey,
-    $checkFunction, $sendFunction, $sendExternalFunction) {
+function submitSendPage ($mysqli, $user, $id, $errorsKey,
+    $messagesKey, $valuesKey, $viewMessagesKey, $checkFunction,
+    $sendFunction, $sendExternalFunction, $viewErrorsKey = null) {
 
     $fnsDir = __DIR__.'/../..';
 
@@ -47,6 +47,7 @@ function submitSendPage ($mysqli, $user, $id,
     if ($external_recipients) $sendExternalFunction($external_recipients);
 
     unset($_SESSION[$errorsKey], $_SESSION[$valuesKey]);
+    if ($viewErrorsKey !== null) unset($_SESSION[$viewErrorsKey]);
 
     $_SESSION[$viewMessagesKey] = ['Sent.'];
 

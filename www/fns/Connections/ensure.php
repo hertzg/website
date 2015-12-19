@@ -12,6 +12,7 @@ function ensure ($mysqli) {
     return \Table\ensure($mysqli, 'connections', [
         'address' => \ConnectionAddress\column(true),
         'can_send_bookmark' => ['type' => 'tinyint(3) unsigned'],
+        'can_send_calculation' => ['type' => 'tinyint(3) unsigned'],
         'can_send_channel' => ['type' => 'tinyint(3) unsigned'],
         'can_send_contact' => ['type' => 'tinyint(3) unsigned'],
         'can_send_file' => ['type' => 'tinyint(3) unsigned'],

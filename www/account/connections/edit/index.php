@@ -17,6 +17,7 @@ else {
         'address' => $connection->address,
         'expires' => restore_expires($connection->expire_time),
         'can_send_bookmark' => $connection->can_send_bookmark,
+        'can_send_calculation' => $connection->can_send_calculation,
         'can_send_channel' => $connection->can_send_channel,
         'can_send_contact' => $connection->can_send_contact,
         'can_send_file' => $connection->can_send_file,

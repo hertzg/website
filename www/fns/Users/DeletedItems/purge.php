@@ -8,6 +8,9 @@ function purge ($mysqli, $deletedItem) {
     if ($type == 'barChart') {
         include_once __DIR__.'/purgeBarChart.php';
         purgeBarChart($mysqli, $deletedItem);
+    } elseif ($type == 'calculation') {
+        include_once __DIR__.'/purgeCalculation.php';
+        purgeCalculation($mysqli, $deletedItem);
     } elseif ($type == 'contact' || $type == 'receivedContact') {
         include_once __DIR__.'/purgeContact.php';
         purgeContact($mysqli, $deletedItem);

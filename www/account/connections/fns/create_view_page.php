@@ -28,10 +28,10 @@ function create_view_page ($connection, &$scripts) {
 
     include_once __DIR__.'/../fns/format_permissions.php';
     $permissions = format_permissions($connection->can_send_bookmark,
-        $connection->can_send_channel, $connection->can_send_contact,
-        $connection->can_send_file, $connection->can_send_note,
-        $connection->can_send_place, $connection->can_send_schedule,
-        $connection->can_send_task);
+        $connection->can_send_calculation, $connection->can_send_channel,
+        $connection->can_send_contact, $connection->can_send_file,
+        $connection->can_send_note, $connection->can_send_place,
+        $connection->can_send_schedule, $connection->can_send_task);
 
     include_once "$fnsDir/Page/staticTwoColumns.php";
     $optionsContent = Page\staticTwoColumns($editLink, $deleteLink);

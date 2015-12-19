@@ -30,6 +30,9 @@ function editProfile ($mysqli, $user, $username, $email,
         include_once "$fnsDir/ReceivedBookmarks/editSenderUser.php";
         \ReceivedBookmarks\editSenderUser($mysqli, $id_users, $username);
 
+        include_once "$fnsDir/ReceivedCalculations/editSenderUser.php";
+        \ReceivedCalculations\editSenderUser($mysqli, $id_users, $username);
+
         include_once "$fnsDir/ReceivedContacts/editSenderUser.php";
         \ReceivedContacts\editSenderUser($mysqli, $id_users, $username);
 

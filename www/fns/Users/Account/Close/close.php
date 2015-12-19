@@ -21,6 +21,9 @@ function close ($mysqli, $user) {
     include_once __DIR__.'/deleteBookmarks.php';
     deleteBookmarks($mysqli, $user);
 
+    include_once __DIR__.'/deleteCalculations.php';
+    deleteCalculations($mysqli, $user);
+
     if ($user->num_channels) {
         include_once "$fnsDir/Channels/deleteOnUser.php";
         \Channels\deleteOnUser($mysqli, $id_users);

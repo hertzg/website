@@ -27,6 +27,16 @@ function get_full_groups () {
     $methods = bookmark\received\get_methods();
     $groups['bookmark']['subgroups']['received']['methods'] = $methods;
 
+    include_once "$dir/calculation/get_methods.php";
+    $groups['calculation']['methods'] = calculation\get_methods();
+
+    include_once "$dir/calculation/get_subgroups.php";
+    $groups['calculation']['subgroups'] = calculation\get_subgroups();
+
+    include_once "$dir/calculation/received/get_methods.php";
+    $methods = calculation\received\get_methods();
+    $groups['calculation']['subgroups']['received']['methods'] = $methods;
+
     include_once "$dir/channel/get_methods.php";
     $groups['channel']['methods'] = channel\get_methods();
 

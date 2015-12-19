@@ -1,12 +1,11 @@
 <?php
 
-function render_place ($place, $description, $href, $options, &$items) {
+function render_place ($place, &$title, &$icon) {
 
     $name = $place->name;
     if ($name === '') $title = "$place->latitude $place->longitude";
     else $title = htmlspecialchars($name);
 
-    $items[] = Page\imageArrowLinkWithDescription(
-        $title, $description, $href, 'place', $options);
+    $icon = 'place';
 
 }

@@ -22,14 +22,15 @@ function create ($mysqli, $deletedItem, $user, &$title, &$head, &$scripts) {
     include_once __DIR__.'/../item_type_lowercase_name.php';
     $infoText = item_type_lowercase_name($type)." deleted $author.";
 
-    $head = '';
-
     if ($type == 'barChart') {
         include_once __DIR__.'/renderBarChart.php';
         renderBarChart($data, $items);
     } elseif ($type == 'bookmark' || $type == 'receivedBookmark') {
         include_once __DIR__.'/renderBookmark.php';
         renderBookmark($data, $items);
+    } elseif ($type == 'calculation' || $type == 'receivedCalculation') {
+        include_once __DIR__.'/renderCalculation.php';
+        renderCalculation($data, $items);
     } elseif ($type == 'contact' || $type == 'receivedContact') {
 
         include_once __DIR__.'/renderContact.php';
@@ -75,10 +76,11 @@ function create ($mysqli, $deletedItem, $user, &$title, &$head, &$scripts) {
 
     $content = join('<div class="hr"></div>', $items);
 
-    if ($type == 'receivedBookmark' || $type == 'receivedContact'
-        || $type == 'receivedFile' || $type == 'receivedFolder'
-        || $type == 'receivedNote' || $type == 'receivedPlace'
-        || $type == 'receivedSchedule' || $type == 'receivedTask') {
+    if ($type == 'receivedBookmark' || $type == 'receivedCalculation' ||
+        $type == 'receivedContact' || $type == 'receivedFile' ||
+        $type == 'receivedFolder' || $type == 'receivedNote' ||
+        $type == 'receivedPlace' || $type == 'receivedSchedule' ||
+        $type == 'receivedTask') {
 
         include_once "$fnsDir/create_panel.php";
         include_once "$fnsDir/create_received_from_item.php";

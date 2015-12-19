@@ -1,6 +1,6 @@
 <?php
 
-function render_received_note ($note, $description, $href, $options, &$items) {
+function render_received_note ($note, &$title, &$icon) {
 
     $title = $note->title;
 
@@ -13,8 +13,5 @@ function render_received_note ($note, $description, $href, $options, &$items) {
     }
 
     $title = htmlspecialchars($title);
-
-    $items[] = Page\imageArrowLinkWithDescription(
-        $title, $description, $href, $icon, $options);
 
 }

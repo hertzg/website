@@ -58,13 +58,14 @@ function add ($mysqli, $username, $password,
         .' birthdays_check_day, events_check_day,'
         .' schedules_check_day, task_deadlines_check_day,'
         .' api_keys_order_by, bar_charts_order_by,'
-        .' bookmarks_order_by, contacts_order_by,'
-        .' events_order_by, notes_order_by,'
+        .' bookmarks_order_by, calculations_order_by,'
+        .' contacts_order_by, events_order_by, notes_order_by,'
         .' places_order_by, schedules_order_by,'
         .' tasks_order_by, wallets_order_by,'
         .' insert_api_key_id, insert_api_key_name,'
-        .' show_bar_charts, show_bookmarks, show_calendar, show_contacts,'
-        .' show_files, show_notes, show_notifications, show_places,'
+        .' show_bar_charts, show_bookmarks, show_calculations,'
+        .' show_calendar, show_contacts, show_files,'
+        .' show_notes, show_notifications, show_places,'
         .' show_schedules, show_tasks, show_trash, show_wallets)'
         ." values ('$username', '$lowercase_username',"
         ." '$password_sha512_hash', '$password_sha512_key',"
@@ -74,12 +75,12 @@ function add ($mysqli, $username, $password,
         ." $birthdays_check_day, $events_check_day,"
         ." $schedules_check_day, $task_deadlines_check_day,"
         ." 'name', 'update_time desc',"
-        ." 'update_time desc', 'full_name',"
-        ." 'event_time desc', 'update_time desc',"
+        ." 'update_time desc', 'update_time desc',"
+        ." 'full_name', 'event_time desc', 'update_time desc',"
         ." 'update_time desc', 'next_time',"
         ." 'update_time desc', 'update_time desc',"
         ." $insert_api_key_id, $insert_api_key_name,"
-        ." 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)";
+        ." 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
     return $mysqli->insert_id;

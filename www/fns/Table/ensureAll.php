@@ -17,6 +17,9 @@ function ensureAll ($mysqli) {
     include_once "$fnsDir/BarChartTags/ensure.php";
     include_once "$fnsDir/Bookmarks/ensure.php";
     include_once "$fnsDir/BookmarkTags/ensure.php";
+    include_once "$fnsDir/CalculationDepends/ensure.php";
+    include_once "$fnsDir/Calculations/ensure.php";
+    include_once "$fnsDir/CalculationTags/ensure.php";
     include_once "$fnsDir/Channels/ensure.php";
     include_once "$fnsDir/Connections/ensure.php";
     include_once "$fnsDir/ContactPhotos/ensure.php";
@@ -39,6 +42,7 @@ function ensureAll ($mysqli) {
     include_once "$fnsDir/PlacePoints/ensure.php";
     include_once "$fnsDir/PlaceTags/ensure.php";
     include_once "$fnsDir/ReceivedBookmarks/ensure.php";
+    include_once "$fnsDir/ReceivedCalculations/ensure.php";
     include_once "$fnsDir/ReceivedContacts/ensure.php";
     include_once "$fnsDir/ReceivedFiles/ensure.php";
     include_once "$fnsDir/ReceivedFolderFiles/ensure.php";
@@ -51,6 +55,7 @@ function ensureAll ($mysqli) {
     include_once "$fnsDir/Schedules/ensure.php";
     include_once "$fnsDir/ScheduleTags/ensure.php";
     include_once "$fnsDir/SendingBookmarks/ensure.php";
+    include_once "$fnsDir/SendingCalculations/ensure.php";
     include_once "$fnsDir/SendingContacts/ensure.php";
     include_once "$fnsDir/SendingNotes/ensure.php";
     include_once "$fnsDir/SendingPlaces/ensure.php";
@@ -76,6 +81,9 @@ function ensureAll ($mysqli) {
         .\BarChartTags\ensure($mysqli)
         .\Bookmarks\ensure($mysqli)
         .\BookmarkTags\ensure($mysqli)
+        .\CalculationDepends\ensure($mysqli)
+        .\Calculations\ensure($mysqli)
+        .\CalculationTags\ensure($mysqli)
         .\Channels\ensure($mysqli)
         .\Connections\ensure($mysqli)
         .\ContactPhotos\ensure($mysqli)
@@ -98,6 +106,7 @@ function ensureAll ($mysqli) {
         .\PlacePoints\ensure($mysqli)
         .\PlaceTags\ensure($mysqli)
         .\ReceivedBookmarks\ensure($mysqli)
+        .\ReceivedCalculations\ensure($mysqli)
         .\ReceivedContacts\ensure($mysqli)
         .\ReceivedFiles\ensure($mysqli)
         .\ReceivedFolderFiles\ensure($mysqli)
@@ -110,6 +119,7 @@ function ensureAll ($mysqli) {
         .\Schedules\ensure($mysqli)
         .\ScheduleTags\ensure($mysqli)
         .\SendingBookmarks\ensure($mysqli)
+        .\SendingCalculations\ensure($mysqli)
         .\SendingContacts\ensure($mysqli)
         .\SendingNotes\ensure($mysqli)
         .\SendingPlaces\ensure($mysqli)

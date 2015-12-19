@@ -15,7 +15,7 @@ function create_email_form_items ($values, $maxLengths) {
         ], [
             'value' => $values['email1_label'],
             'placeholder' => 'Note',
-            'maxlength' => $maxLengths['email1_label'],
+            'maxlength' => $maxLengths['email_label'],
         ])
         .'<div class="hr"></div>'
         .Form\textfieldWithLabel('email2', 'Email 2', [
@@ -24,7 +24,7 @@ function create_email_form_items ($values, $maxLengths) {
         ], [
             'value' => $values['email2_label'],
             'placeholder' => 'Note',
-            'maxlength' => $maxLengths['email2_label'],
+            'maxlength' => $maxLengths['email_label'],
         ]);
 
 }

@@ -42,6 +42,10 @@ include_once "$fnsDir/Users/Bookmarks/searchPage.php";
 $bookmarks = Users\Bookmarks\searchPage($mysqli,
     $user, $keyword, 0, $groupLimit, $num_bookmarks);
 
+include_once "$fnsDir/Users/Calculations/searchPage.php";
+$calculations = Users\Calculations\searchPage($mysqli,
+    $user, $keyword, 0, $groupLimit, $num_calculations);
+
 include_once "$fnsDir/Users/Contacts/searchPage.php";
 $contacts = Users\Contacts\searchPage($mysqli,
     $user, $keyword, 0, $groupLimit, $num_contacts);
@@ -74,15 +78,16 @@ include_once "$fnsDir/Users/Wallets/searchPage.php";
 $wallets = Users\Wallets\searchPage($mysqli,
     $user, $keyword, 0, $groupLimit, $num_wallets);
 
-if ($num_bar_charts || $num_bookmarks || $num_contacts || $num_files ||
-    $num_folders || $num_notes || $num_places || $num_tasks || $num_wallets) {
+if ($num_bar_charts || $num_bookmarks || $num_calculations ||
+    $num_contacts || $num_files || $num_folders ||
+    $num_notes || $num_places || $num_tasks || $num_wallets) {
 
     include_once 'fns/create_items.php';
     $resultItems = create_items($bar_charts, $num_bar_charts,
-        $bookmarks, $num_bookmarks, $contacts, $num_contacts,
-        $files, $num_files, $folders, $num_folders, $notes,
-        $num_notes, $places, $num_places, $tasks, $num_tasks,
-        $wallets, $num_wallets, $keyword, $user, $groupLimit);
+        $bookmarks, $num_bookmarks, $calculations, $num_calculations,
+        $contacts, $num_contacts, $files, $num_files, $folders,
+        $num_folders, $notes, $num_notes, $places, $num_places, $tasks,
+        $num_tasks, $wallets, $num_wallets, $keyword, $user, $groupLimit);
 
     $offset = abs((int)$offset);
     $total = count($resultItems);

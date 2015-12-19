@@ -6,6 +6,8 @@ function get_home_items () {
         'new-bar-chart' => ['New Bar Chart', 'new_bar_chart'],
         'bookmarks' => ['Bookmarks', 'bookmarks'],
         'new-bookmark' => ['New Bookmark', 'new_bookmark'],
+        'calculations' => ['Calculations', 'calculations'],
+        'new-calculation' => ['New Calculation', 'new_calculation'],
         'calendar' => ['Calendar', 'calendar'],
         'new-event' => ['New Event', 'new_event'],
         'contacts' => ['Contacts', 'contacts'],
