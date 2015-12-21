@@ -19,10 +19,6 @@ function optionsPanel ($receivedCalculation) {
         "../edit-and-import/$itemQuery", 'import-calculation',
         ['id' => 'edit-and-import']);
 
-    include_once "$fnsDir/Page/imageLink.php";
-    $href = 'sms:?body='.rawurlencode($receivedCalculation->expression);
-    $sendViaSmsLink = \Page\imageLink('Send via SMS', $href, 'send-sms');
-
     if ($receivedCalculation->archived) {
         $href = "../submit-unarchive.php$itemQuery";
         $archiveLink = \Page\imageLink('Unarchive', $href, 'unarchive');
@@ -36,12 +32,14 @@ function optionsPanel ($receivedCalculation) {
             .\Page\imageLink('Delete', "../delete/$itemQuery", 'trash-bin')
         .'</div>';
 
+    include_once __DIR__.'/../../../fns/send_via_sms_link.php';
     include_once "$fnsDir/Page/staticTwoColumns.php";
     include_once "$fnsDir/Page/twoColumns.php";
     $content =
         \Page\twoColumns($importLink, $editAndImportLink)
         .'<div class="hr"></div>'
-        .$sendViaSmsLink
+        .send_via_sms_link($receivedCalculation,
+            $receivedCalculation->expression)
         .'<div class="hr"></div>'
         .\Page\staticTwoColumns($archiveLink, $deleteLink);
 

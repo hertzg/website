@@ -29,11 +29,9 @@ function optionsPanel ($calculation) {
         $sendLink = \Page\imageArrowLink('Send',
             "../send/$escapedItemQuery", 'send', ['id' => 'send']);
 
-        $body = "$calculation->resolved_expression = $value";
-        if ($title !== '') $body = "$title\n$body";
-        $href = 'sms:?body='.rawurlencode($body);
-        include_once "$fnsDir/Page/imageLink.php";
-        $sendViaSmsLink = \Page\imageLink('Send via SMS', $href, 'send-sms');
+        include_once __DIR__.'/../send_via_sms_link.php';
+        $sendViaSmsLink = send_via_sms_link($calculation,
+            $calculation->resolved_expression);
 
     }
 
