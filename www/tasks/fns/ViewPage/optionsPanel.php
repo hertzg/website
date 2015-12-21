@@ -25,22 +25,19 @@ function optionsPanel ($task) {
     $sendLink = \Page\imageArrowLink('Send',
         "../send/$escapedItemQuery", 'send', ['id' => 'send']);
 
-    include_once "$fnsDir/Page/imageLink.php";
-    $href = 'sms:?body='.rawurlencode($task->text);
-    $sendViaSmsLink = \Page\imageLink('Send via SMS', $href, 'send-sms');
-
     $href = "../delete/$escapedItemQuery";
     $deleteLink =
         '<div id="deleteLink">'
             .\Page\imageLink('Delete', $href, 'trash-bin')
         .'</div>';
 
+    include_once __DIR__.'/../send_via_sms_link.php';
     include_once "$fnsDir/Page/staticTwoColumns.php";
     include_once "$fnsDir/Page/twoColumns.php";
     $content =
         \Page\staticTwoColumns($editLink, $duplicateLink)
         .'<div class="hr"></div>'
-        .\Page\twoColumns($sendLink, $sendViaSmsLink)
+        .\Page\twoColumns($sendLink, send_via_sms_link($task))
         .'<div class="hr"></div>'
         .$deleteLink;
 
