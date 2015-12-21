@@ -18,12 +18,6 @@ function optionsPanel ($receivedPlace) {
         "../edit-and-import/$itemQuery", 'import-place',
         ['id' => 'edit-and-import']);
 
-    $text = "$receivedPlace->latitude, $receivedPlace->longitude";
-    $name = $receivedPlace->name;
-    if ($name !== '') $text .= " $name";
-    $href = 'sms:?body='.rawurlencode($text);
-    $sendViaSmsLink = \Page\imageLink('Send via SMS', $href, 'send-sms');
-
     if ($receivedPlace->archived) {
         $href = "../submit-unarchive.php$itemQuery";
         $archiveLink = \Page\imageLink('Unarchive', $href, 'unarchive');
@@ -37,12 +31,13 @@ function optionsPanel ($receivedPlace) {
             .\Page\imageLink('Delete', "../delete/$itemQuery", 'trash-bin')
         .'</div>';
 
+    include_once __DIR__.'/../../../fns/send_via_sms_link.php';
     include_once "$fnsDir/Page/staticTwoColumns.php";
     include_once "$fnsDir/Page/twoColumns.php";
     $content =
         \Page\twoColumns($importLink, $editAndImportLink)
         .'<div class="hr"></div>'
-        .$sendViaSmsLink
+        .send_via_sms_link($receivedPlace)
         .'<div class="hr"></div>'
         .\Page\staticTwoColumns($archiveLink, $deleteLink);
 
