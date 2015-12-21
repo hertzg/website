@@ -37,7 +37,7 @@ function optionsPanel ($bookmark) {
             .\Page\imageLink('Delete', $href, 'trash-bin')
         .'</div>';
 
-    include_once __DIR__.'/../sendViaSmsLink.php';
+    include_once __DIR__.'/../send_via_sms_link.php';
     include_once "$fnsDir/Page/staticTwoColumns.php";
     include_once "$fnsDir/Page/twoColumns.php";
     $content =
@@ -45,7 +45,7 @@ function optionsPanel ($bookmark) {
         .'<div class="hr"></div>'
         .\Page\staticTwoColumns($editLink, $duplicateLink)
         .'<div class="hr"></div>'
-        .\Page\twoColumns($sendLink, sendViaSmsLink($bookmark))
+        .\Page\twoColumns($sendLink, send_via_sms_link($bookmark))
         .'<div class="hr"></div>'
         .$deleteLink;
 
