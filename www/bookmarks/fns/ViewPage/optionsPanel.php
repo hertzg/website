@@ -31,16 +31,13 @@ function optionsPanel ($bookmark) {
     $sendLink = \Page\imageArrowLink('Send',
         "../send/$escapedItemQuery", 'send', ['id' => 'send']);
 
-    include_once "$fnsDir/Page/imageLink.php";
-    $href = 'sms:?body='.rawurlencode($url);
-    $sendViaSmsLink = \Page\imageLink('Send via SMS', $href, 'send-sms');
-
     $href = "../delete/$escapedItemQuery";
     $deleteLink =
         '<div id="deleteLink">'
             .\Page\imageLink('Delete', $href, 'trash-bin')
         .'</div>';
 
+    include_once __DIR__.'/../sendViaSmsLink.php';
     include_once "$fnsDir/Page/staticTwoColumns.php";
     include_once "$fnsDir/Page/twoColumns.php";
     $content =
@@ -48,7 +45,7 @@ function optionsPanel ($bookmark) {
         .'<div class="hr"></div>'
         .\Page\staticTwoColumns($editLink, $duplicateLink)
         .'<div class="hr"></div>'
-        .\Page\twoColumns($sendLink, $sendViaSmsLink)
+        .\Page\twoColumns($sendLink, sendViaSmsLink($bookmark))
         .'<div class="hr"></div>'
         .$deleteLink;
 

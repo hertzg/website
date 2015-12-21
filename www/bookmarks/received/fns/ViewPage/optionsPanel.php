@@ -23,10 +23,6 @@ function optionsPanel ($receivedBookmark) {
         "../edit-and-import/$itemQuery", 'import-bookmark',
         ['id' => 'edit-and-import']);
 
-    include_once "$fnsDir/Page/imageLink.php";
-    $href = 'sms:?body='.rawurlencode($receivedBookmark->url);
-    $sendViaSmsLink = \Page\imageLink('Send via SMS', $href, 'send-sms');
-
     if ($receivedBookmark->archived) {
         $href = "../submit-unarchive.php$itemQuery";
         $archiveLink = \Page\imageLink('Unarchive', $href, 'unarchive');
@@ -40,6 +36,7 @@ function optionsPanel ($receivedBookmark) {
             .\Page\imageLink('Delete', "../delete/$itemQuery", 'trash-bin')
         .'</div>';
 
+    include_once __DIR__.'/../../../fns/sendViaSmsLink.php';
     include_once "$fnsDir/Page/staticTwoColumns.php";
     include_once "$fnsDir/Page/twoColumns.php";
     $content =
@@ -47,7 +44,7 @@ function optionsPanel ($receivedBookmark) {
         .'<div class="hr"></div>'
         .\Page\twoColumns($importLink, $editAndImportLink)
         .'<div class="hr"></div>'
-        .$sendViaSmsLink
+        .sendViaSmsLink($receivedBookmark)
         .'<div class="hr"></div>'
         .\Page\staticTwoColumns($archiveLink, $deleteLink);
 
