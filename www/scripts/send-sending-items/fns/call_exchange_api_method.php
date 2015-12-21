@@ -20,10 +20,9 @@ function call_exchange_api_method ($method, $receiver_address, $params) {
         if ($object === 'RECEIVER_NOT_RECEIVING') {
             // TODO do not ignore this event
             return false;
-        } else {
-            echo "ERROR: $response\n";
-            return false;
         }
+        echo "ERROR: $response\n";
+        return false;
     }
 
     $contentType = curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
@@ -39,4 +38,5 @@ function call_exchange_api_method ($method, $receiver_address, $params) {
     }
 
     return true;
+
 }
