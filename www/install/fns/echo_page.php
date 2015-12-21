@@ -9,7 +9,7 @@ function echo_page ($title, $content, $head = '') {
     $content =
         '<div class="page-title">'
             ."<img src=\"$logoSrc\" class=\"page-icon\" alt=\"Zvini\" />"
-            .'<h1 class="page-title-text">Installation Wizard</h1>'
+            .'<h1 class="page-title-text">Installer</h1>'
         .'</div>'
         .$content;
 
