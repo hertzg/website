@@ -6,11 +6,9 @@ function edit ($mysqli, $user, $calculation, $title,
     $expression, $tags, $tag_names, $value, $error, $error_char,
     $resolved_expression, $depends, &$changed, $updateApiKey = null) {
 
-/*
     if ($calculation->title === $title &&
         $calculation->expression === $expression &&
         $calculation->tags === $tags) return;
-*/
 
     $changed = true;
     $fnsDir = __DIR__.'/../..';
