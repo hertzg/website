@@ -21,8 +21,13 @@ function send_via_sms_link ($contact) {
     $add($contact->phone1, $contact->phone1_label);
     $add($contact->phone2, $contact->phone2_label);
 
+    $birthday_time = $contact->birthday_time;
+    if ($birthday_time !== null) {
+        $body .= "\nBirthday ".date('F j, Y', $birthday_time);
+    }
+
     include_once __DIR__.'/../../fns/Page/imageLink.php';
-    return \Page\imageLink('Send via SMS',
+    return Page\imageLink('Send via SMS',
         'sms:?body='.rawurlencode($body), 'send-sms');
 
 }
