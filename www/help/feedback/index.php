@@ -36,7 +36,6 @@ $content = Page\tabs(
             'autofocus' => true,
             'required' => true,
         ])
-        .Form\notes(['Minimum 6 words.'])
         .'<div class="hr"></div>'
         .Form\button('Submit Feedback')
     .'</form>'

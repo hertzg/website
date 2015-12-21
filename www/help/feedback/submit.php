@@ -14,11 +14,7 @@ $errors = [];
 include_once '../../fns/str_collapse_spaces.php';
 $text = str_collapse_spaces($text);
 
-if ($text === '') {
-    $errors[] = 'Enter text.';
-} elseif (count(explode(' ', $text)) < 6) {
-    $errors[] = 'Text too short. At least 6 words required.';
-}
+if ($text === '') $errors[] = 'Enter text.';
 
 include_once '../../fns/redirect.php';
 
