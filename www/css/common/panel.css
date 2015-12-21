@@ -15,7 +15,8 @@
     line-height: 48px;
     display: inline-block;
     vertical-align: top;
-    max-width: 50%;
+    max-width: 70%;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
 }
