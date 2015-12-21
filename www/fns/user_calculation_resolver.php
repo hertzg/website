@@ -17,8 +17,8 @@ function user_calculation_resolver ($mysqli, $user, &$depends, $exclude_id) {
             $queue = [$id];
             while ($queue) {
                 $next_id = array_shift($queue);
-                $depends = CalculationDepends\indexOnCalculation($mysqli, $next_id);
-                foreach ($depends as $depend) {
+                $this_depends = CalculationDepends\indexOnCalculation($mysqli, $next_id);
+                foreach ($this_depends as $depend) {
                     $depend_id_calculations = $depend->depend_id_calculations;
                     if ($depend_id_calculations == $exclude_id) return;
                     $queue[] = $depend_id_calculations;
