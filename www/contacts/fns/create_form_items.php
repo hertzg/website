@@ -56,7 +56,7 @@ function create_form_items ($values, &$scripts, $base = '') {
             'name' => 'birthday_year',
             'value' => $values['birthday_year'],
             'autofocus' => $focus === 'birthday_year',
-        ], 'Birth date', false, true)
+        ], 'Birthday', false, true)
         .'<div class="hr"></div>'
         .Form\textfield('username', 'Zvini username', [
             'value' => $values['username'],
