@@ -37,6 +37,7 @@ function create ($mysqli, $token, &$scripts) {
     include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/Form/textarea.php";
     include_once "$fnsDir/Form/textfield.php";
+    include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/tabs.php";
     return
         \Page\tabs(
@@ -65,6 +66,8 @@ function create ($mysqli, $token, &$scripts) {
             ])
             .'<div class="hr"></div>'
             .\Form\label('Last accessed', $accessed)
+            .\Page\infoText('Session created '
+                .export_date_ago($token->insert_time).'.')
         )
         .authsPanel($mysqli, $token, $scripts)
         .create_panel('Session Options', $deleteLink);
