@@ -7,7 +7,7 @@ function send_via_sms_link ($bookmark) {
     if ($title !== '') $body = "$title\n$body";
 
     include_once __DIR__.'/../../fns/Page/imageLink.php';
-    return \Page\imageLink('Send via SMS',
+    return Page\imageLink('Send via SMS',
         'sms:?body='.rawurlencode($body), 'send-sms');
 
 }
