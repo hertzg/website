@@ -96,3 +96,7 @@ body {
     background-color: hsl(50, 90%, 15%);
     color: hsl(50, 80%, 50%);
 }
+
+.confirmDialog-frame {
+    background-color: #333;
+}

@@ -20,8 +20,6 @@
 .confirmDialog-frame {
     display: inline-block;
     vertical-align: middle;
-    background-color: white;
-    color: black;
     white-space: normal;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     text-align: left;
