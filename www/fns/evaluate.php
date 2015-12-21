@@ -24,7 +24,7 @@ function evaluate ($expression, &$error = null,
     $operation_expected = false;
     $next_value_sign = 1;
     $empty_brackets = false;
-    $opening_bracket_expected = false;
+    $opening_bracket_expected = true;
 
     $pop_operation = function () use (&$operations, &$num_operations) {
         assert($num_operations > 0);

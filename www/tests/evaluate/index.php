@@ -75,6 +75,16 @@ visual_assert([
     'expected_pretty_expression' => null,
 ]);
 visual_assert([
+    'expression' => '1 + 2',
+    'expected_value' => 3.0,
+    'expected_pretty_expression' => '1 + 2',
+]);
+visual_assert([
+    'expression' => '(1 + 2)',
+    'expected_value' => 3.0,
+    'expected_pretty_expression' => '(1 + 2)',
+]);
+visual_assert([
     'expression' => '2 + ()',
     'expected_value' => false,
     'expected_pretty_expression' => null,
