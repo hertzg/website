@@ -50,8 +50,7 @@ body {
 
 .newItemMenu-frame,
 .newItemMenu-arrow {
-    background-color: #000;
-    color: #fff;
+    background-color: #ccc;
 }
 
 .tag,

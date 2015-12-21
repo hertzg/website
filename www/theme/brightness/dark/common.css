@@ -50,8 +50,7 @@ body {
 
 .newItemMenu-frame,
 .newItemMenu-arrow {
-    background-color: #fff;
-    color: #000;
+    background-color: #444;
 }
 
 .tag,
@@ -98,5 +97,5 @@ body {
 }
 
 .confirmDialog-frame {
-    background-color: #333;
+    background-color: #444;
 }
