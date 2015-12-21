@@ -5,8 +5,7 @@
 .form-textfield:focus,
 .form-textarea:focus,
 .topLink:focus,
-.newItemButton:focus,
-.newItemMenu-button:focus {
+.newItemButton:focus {
     border-color: #39e;
     background-color: rgba(51, 153, 238, 0.2);
 }
@@ -38,8 +37,10 @@
 }
 
 .panel-title {
-    color: #39e;
     border-top-color: #39e;
+}
+.panel-title-text {
+    color: #39e;
 }
 
 mark {

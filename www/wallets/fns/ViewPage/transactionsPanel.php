@@ -7,6 +7,11 @@ function transactionsPanel ($mysqli, $wallet, &$scripts) {
     $id = $wallet->id;
     $fnsDir = __DIR__.'/../../../fns';
 
+    include_once "$fnsDir/ItemList/escapedItemQuery.php";
+    include_once "$fnsDir/Page/newItemButton.php";
+    $newItemButton = \Page\newItemButton(
+        '../new-transaction/'.\ItemList\escapedItemQuery($id), 'Transaction');
+
     $num_transactions = $wallet->num_transactions;
     if ($num_transactions) {
 
@@ -49,6 +54,6 @@ function transactionsPanel ($mysqli, $wallet, &$scripts) {
     }
 
     include_once "$fnsDir/create_panel.php";
-    return create_panel('Transactions', $content);
+    return create_panel('Transactions', $content, $newItemButton);
 
 }

@@ -1,11 +1,14 @@
 <?php
 
-function create_panel ($title, $content) {
+function create_panel ($title, $content, $newItemButton = '') {
     return
         '<br class="zeroHeight" />'
         .'<div class="panel">'
             .'<div class="panel-title">'
-                ."$title<span class=\"zeroSize\">:</span>"
+                .'<div class="panel-title-text">'
+                    ."$title<span class=\"zeroSize\">:</span>"
+                .'</div>'
+                .$newItemButton
             .'</div>'
             ."<div class=\"panel-content\">$content</div>"
         .'</div>';

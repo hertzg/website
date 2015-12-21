@@ -5,10 +5,14 @@ namespace ViewPage;
 function pointsPanel ($mysqli, $place) {
 
     $num_points = $place->num_points;
-    if ($num_points < 2) return;
 
     $id = $place->id;
     $fnsDir = __DIR__.'/../../../fns';
+
+    include_once "$fnsDir/ItemList/escapedItemQuery.php";
+    include_once "$fnsDir/Page/newItemButton.php";
+    $newItemButton = \Page\newItemButton(
+        '../new-point/'.\ItemList\escapedItemQuery($id), 'Point');
 
     $limit = 5;
 
@@ -34,6 +38,7 @@ function pointsPanel ($mysqli, $place) {
     }
 
     include_once "$fnsDir/create_panel.php";
-    return create_panel('Points', join('<div class="hr"></div>', $items));
+    return create_panel('Points',
+        join('<div class="hr"></div>', $items), $newItemButton);
 
 }

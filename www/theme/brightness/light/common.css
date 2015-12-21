@@ -48,22 +48,14 @@ body {
     background-image: linear-gradient(to right, #fff, rgba(255, 255, 255, 0));
 }
 
-.newItemMenu-frame,
-.newItemMenu-arrow {
-    background-color: #ccc;
-}
-
 .tag,
-.newItemButton,
-.newItemMenu-button {
+.newItemButton {
     border-color: hsl(0, 0%, 80%);
 }
-.newItemButton-text,
-.newItemMenu-text {
+.newItemButton-text {
     color: #777;
 }
-.newItemButton-icon-line,
-.newItemMenu-icon-line {
+.newItemButton-icon-line {
     background-color: #777;
 }
 

@@ -7,6 +7,11 @@ function barsPanel ($mysqli, $bar_chart, &$scripts) {
     $id = $bar_chart->id;
     $fnsDir = __DIR__.'/../../../fns';
 
+    include_once "$fnsDir/ItemList/escapedItemQuery.php";
+    include_once "$fnsDir/Page/newItemButton.php";
+    $newItemButton = \Page\newItemButton(
+        '../new-bar/'.\ItemList\escapedItemQuery($id), 'Bar');
+
     $num_bars = $bar_chart->num_bars;
     if ($num_bars) {
 
@@ -48,6 +53,6 @@ function barsPanel ($mysqli, $bar_chart, &$scripts) {
     }
 
     include_once "$fnsDir/create_panel.php";
-    return create_panel('Bars', $content);
+    return create_panel('Bars', $content, $newItemButton);
 
 }

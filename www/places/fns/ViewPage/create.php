@@ -11,9 +11,6 @@ function create ($mysqli, $place, &$scripts, &$head) {
     include_once "$fnsDir/compressed_js_script.php";
     $scripts = compressed_js_script('dateAgo', $base);
 
-    include_once "$fnsDir/compressed_css_link.php";
-    $head = compressed_css_link('newItemMenu', $base);
-
     include_once "$fnsDir/Form/label.php";
     $items = [
         \Form\label('Latitude', $place->latitude),
@@ -68,12 +65,11 @@ function create ($mysqli, $place, &$scripts, &$head) {
     include_once __DIR__.'/nearPlaces.php';
     include_once __DIR__.'/optionsPanel.php';
     include_once __DIR__.'/pointsPanel.php';
-    include_once "$fnsDir/ItemList/escapedItemQuery.php";
     include_once "$fnsDir/ItemList/escapedPageQuery.php";
     include_once "$fnsDir/ItemList/listHref.php";
     include_once "$fnsDir/Page/imageArrowLink.php";
     include_once "$fnsDir/Page/infoText.php";
-    include_once "$fnsDir/Page/newItemMenu.php";
+    include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
     return
@@ -89,14 +85,7 @@ function create ($mysqli, $place, &$scripts, &$head) {
             .join('<div class="hr"></div>', $items)
             .\Page\infoText($infoText)
             .nearPlaces($mysqli, $place),
-            \Page\newItemMenu(
-                \Page\imageArrowLink('Place',
-                    '../new/'.\ItemList\escapedPageQuery(), 'create-place')
-                .'<div class="hr"></div>'
-                .\Page\imageArrowLink('Point',
-                    '../new-point/'.\ItemList\escapedItemQuery($id),
-                    'create-point')
-            )
+            \Page\newItemButton('../new/'.\ItemList\escapedPageQuery(), 'Place')
         )
         .pointsPanel($mysqli, $place)
         .optionsPanel($place);
