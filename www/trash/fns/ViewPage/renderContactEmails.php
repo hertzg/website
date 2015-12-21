@@ -10,7 +10,7 @@ function renderContactEmails ($contact, &$items) {
 
     $render = function ($email, $label) {
         $value = htmlspecialchars($email);
-        if ($label !== '') $value .= ' ('.htmlspecialchars($value).')';
+        if ($label !== '') $value .= ' ('.htmlspecialchars($label).')';
         return $value;
     };
 

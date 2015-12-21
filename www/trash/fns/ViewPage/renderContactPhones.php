@@ -10,7 +10,7 @@ function renderContactPhones ($contact, &$items) {
 
     $render = function ($phone, $label) {
         $value = htmlspecialchars($phone);
-        if ($label !== '') $value .= ' ('.htmlspecialchars($value).')';
+        if ($label !== '') $value .= ' ('.htmlspecialchars($label).')';
         return $value;
     };
 
