@@ -4,23 +4,22 @@ function send_via_sms_link ($contact) {
 
     $body = $contact->full_name;
 
+    $add = function ($text, $label) use (&$body) {
+        if ($text === '') return;
+        $body .= "\n$text";
+        if ($label !== '') $body .= " ($label)";
+    };
+
     $alias = $contact->alias;
     if ($alias !== '') $body .= " ($alias)";
 
     $address = $contact->address;
     if ($address !== '') $body .= "\n$address";
 
-    $email1 = $contact->email1;
-    if ($email1 !== '') $body .= "\n$email1";
-
-    $email2 = $contact->email2;
-    if ($email2 !== '') $body .= "\n$email2";
-
-    $phone1 = $contact->phone1;
-    if ($phone1 !== '') $body .= "\n$phone1";
-
-    $phone2 = $contact->phone2;
-    if ($phone2 !== '') $body .= "\n$phone2";
+    $add($contact->email1, $contact->email1_label);
+    $add($contact->email2, $contact->email2_label);
+    $add($contact->phone1, $contact->phone1_label);
+    $add($contact->phone2, $contact->phone2_label);
 
     include_once __DIR__.'/../../fns/Page/imageLink.php';
     return \Page\imageLink('Send via SMS',
