@@ -11,6 +11,7 @@ function ensure ($mysqli) {
 
     include_once "$fnsDir/Table/ensure.php";
     include_once "$fnsDir/TagName/column.php";
+    include_once "$fnsDir/TagsJson/column.php";
     return \Table\ensure($mysqli, 'calculation_tags', [
         'expression' => [
             'type' => "varchar($maxLengths[expression])",
@@ -24,6 +25,7 @@ function ensure ($mysqli) {
         'id_calculations' => ['type' => 'bigint(20) unsigned'],
         'id_users' => ['type' => 'bigint(20) unsigned'],
         'insert_time' => ['type' => 'bigint(20) unsigned'],
+        'tags_json' => \TagsJson\column(),
         'tag_name' => \TagName\column(),
         'title' => [
             'type' => "varchar($maxLengths[title])",

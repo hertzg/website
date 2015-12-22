@@ -42,8 +42,9 @@ foreach ($rows as $row) {
     $calculation = mysqli_single_object($mysqli, $sql);
     if ($calculation) {
         include_once '../fns/CalculationTags/editCalculation.php';
-        CalculationTags\editCalculation($mysqli,
-            $calculation->id, $calculation->expression, $calculation->title,
+        CalculationTags\editCalculation($mysqli, $calculation->id,
+            $calculation->expression, $calculation->title,
+            json_decode($calculation->tags_json),
             $calculation->insert_time, $calculation->update_time);
     }
 }

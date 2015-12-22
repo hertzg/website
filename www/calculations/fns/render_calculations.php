@@ -1,13 +1,16 @@
 <?php
 
-function render_calculations ($calculations, &$items, $params, $base = '') {
+function render_calculations ($user,
+    $calculations, &$items, $params, $base = '') {
 
     $fnsDir = __DIR__.'/../../fns';
 
     if ($calculations) {
-        include_once __DIR__.'/create_description.php';
-        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
-        $icon = 'calculation';
+
+        include_once "$fnsDir/resolve_theme.php";
+        resolve_theme($user, $theme_color, $theme_brightness);
+
+        include_once "$fnsDir/create_calculation_link.php";
         foreach ($calculations as $calculation) {
 
             $id = $calculation->id;
@@ -23,12 +26,12 @@ function render_calculations ($calculations, &$items, $params, $base = '') {
             if ($title === '') $title = $calculation->expression;
             $title = htmlspecialchars($title);
 
-            $description = create_description($calculation);
-
-            $items[] = Page\imageArrowLinkWithDescription(
-                $title, $description, $href, $icon, $options);
+            $items[] = create_calculation_link(
+                $theme_brightness, $title, $calculation->value,
+                $calculation->tags_json, $href, ['id' => $id], true);
 
         }
+
     } else {
         include_once "$fnsDir/Page/info.php";
         $items[] = Page\info('No calculations');

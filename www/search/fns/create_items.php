@@ -28,8 +28,8 @@ function create_items ($bar_charts, $num_bar_charts,
 
     if ($num_calculations) {
         include_once __DIR__.'/render_calculations.php';
-        render_calculations($calculations, $num_calculations,
-            $groupLimit, $items, $regex, $encodedKeyword);
+        render_calculations($theme_brightness, $calculations,
+            $num_calculations, $groupLimit, $items, $regex, $encodedKeyword);
     }
 
     if ($num_contacts) {

@@ -1,22 +1,23 @@
 <?php
 
-function render_calculations ($calculations, $total,
-    $groupLimit, &$items, $regex, $encodedKeyword) {
+function render_calculations ($theme_brightness, $calculations,
+    $total, $groupLimit, &$items, $regex, $encodedKeyword) {
 
     $fnsDir = __DIR__.'/../../fns';
 
     $num_calculations = count($calculations);
     if ($total > $groupLimit) array_pop($calculations);
 
-    include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
+    include_once "$fnsDir/create_calculation_link.php";
     foreach ($calculations as $calculation) {
+
         $title = htmlspecialchars($calculation->title);
         $title = preg_replace($regex, '<mark>$0</mark>', $title);
-        $description = htmlspecialchars($calculation->expression);
         $query = "?id=$calculation->id&amp;keyword=$encodedKeyword";
         $href = "../calculations/view/$query";
-        $items[] = Page\imageArrowLinkWithDescription($title,
-            $description, $href, 'calculation');
+
+        $items[] = create_calculation_link($theme_brightness, $title,
+            $calculation->value, $calculation->tags_json, $href);
     }
 
     if ($num_calculations < $total) {
