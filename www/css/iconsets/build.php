@@ -123,17 +123,17 @@ render($content, 'task.svg?5', $names);
 $names = [
     'blue-light-theme', 'lime-light-theme',
     'orange-light-theme', 'pink-light-theme',
-    'blue-dark-theme', 'lime-dark-theme',
-    'orange-dark-theme', 'pink-dark-theme',
-    'blue-auto-theme', 'lime-auto-theme',
-    'orange-auto-theme', 'pink-auto-theme',
-    'edit-blue-light-theme', 'edit-lime-light-theme',
-    'edit-orange-light-theme', 'edit-pink-light-theme',
+    'cyan-light-theme', 'blue-dark-theme', 'lime-dark-theme',
+    'orange-dark-theme', 'pink-dark-theme', 'cyan-dark-theme',
+    'blue-auto-theme', 'lime-auto-theme', 'orange-auto-theme',
+    'pink-auto-theme', 'cyan-auto-theme', 'edit-blue-light-theme',
+    'edit-lime-light-theme', 'edit-orange-light-theme',
+    'edit-pink-light-theme', 'edit-cyan-light-theme',
     'edit-blue-dark-theme', 'edit-lime-dark-theme',
     'edit-orange-dark-theme', 'edit-pink-dark-theme',
-    'edit-blue-auto-theme', 'edit-lime-auto-theme',
-    'edit-orange-auto-theme', 'edit-pink-auto-theme'];
-render($content, 'theme.svg?5', $names);
+    'edit-cyan-dark-theme', 'edit-blue-auto-theme', 'edit-lime-auto-theme',
+    'edit-orange-auto-theme', 'edit-pink-auto-theme', 'edit-cyan-auto-theme'];
+render($content, 'theme.svg?6', $names);
 
 $names = ['token', 'create-token', 'tokens'];
 render($content, 'token.svg?3', $names);
