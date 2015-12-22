@@ -15,10 +15,6 @@ if ($user) {
 include_once 'fns/unset_session_vars.php';
 unset_session_vars();
 
-include_once 'fns/get_revision.php';
-$icon16href = 'images/icons/16.png?'.get_revision('images/icons/16.png');
-$icon32href = 'images/icons/32.png?'.get_revision('images/icons/32.png');
-
 include_once 'fns/SignUpEnabled/get.php';
 if (SignUpEnabled\get()) {
     $buttons =
@@ -46,12 +42,16 @@ if (SignUpEnabled\get()) {
 }
 
 include_once 'fns/Theme/Color/getDefault.php';
-$logoSrc = 'theme/color/'.Theme\Color\getDefault().'/images/zvini.svg';
+$theme_color = Theme\Color\getDefault();
+
+$logoSrc = "theme/color/$theme_color/images/zvini.svg";
 
 header('Content-Type: text/html; charset=UTF-8');
 
 include_once 'fns/compressed_css_link.php';
 include_once 'fns/compressed_js_script.php';
+include_once 'fns/get_revision.php';
+include_once 'fns/page_icon_links.php';
 include_once 'fns/SiteTitle/get.php';
 echo
     '<!DOCTYPE html>'
@@ -64,9 +64,7 @@ echo
             .' content="width=device-width, user-scalable=no" />'
             .compressed_css_link('common')
             .compressed_css_link('index')
-            ."<link rel=\"icon\" type=\"image/png\" href=\"$icon16href\" />"
-            .'<link rel="icon" type="image/png"'
-            ." sizes=\"32x32\" href=\"$icon32href\" />"
+            .page_icon_links($theme_color)
         .'</head>'
         .'<body>'
             .'<div class="backgroundGradient">'
