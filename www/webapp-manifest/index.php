@@ -27,13 +27,13 @@ echo json_encode([
             .get_revision('images/icons/16.png'),
         '32' => "{$siteBase}images/icons/32.png?"
             .get_revision('images/icons/32.png'),
-        '48' => "{$siteBase}images/icons/48.png?1",
-        '64' => "{$siteBase}images/icons/64.png?1",
-        '90' => "{$siteBase}images/icons/90.png?1",
-        '120' => "{$siteBase}images/icons/120.png?1",
-        '128' => "{$siteBase}images/icons/128.png?1",
-        '256' => "{$siteBase}images/icons/256.png?1",
-        '512' => "{$siteBase}images/icons/512.png",
+        '48' => "{$siteBase}images/icons/48.png?2",
+        '64' => "{$siteBase}images/icons/64.png?2",
+        '90' => "{$siteBase}images/icons/90.png?2",
+        '120' => "{$siteBase}images/icons/120.png?2",
+        '128' => "{$siteBase}images/icons/128.png?2",
+        '256' => "{$siteBase}images/icons/256.png?2",
+        '512' => "{$siteBase}images/icons/512.png?1",
     ],
     'permissions' => [
         'geolocation' => [
