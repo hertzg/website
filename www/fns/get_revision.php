@@ -27,11 +27,11 @@ function get_revision ($key) {
         'js/signOutConfirm/compressed.js' => 3,
         'js/timezoneLabel/compressed.js' => 6,
         'js/unloadProgress/compressed.js' => 9,
-        'theme/color/blue/images/zvini.svg' => 3,
-        'theme/color/cyan/images/zvini.svg' => 1,
-        'theme/color/lime/images/zvini.svg' => 3,
-        'theme/color/orange/images/zvini.svg' => 3,
-        'theme/color/pink/images/zvini.svg' => 3,
+        'theme/color/blue/images/zvini.svg' => 4,
+        'theme/color/cyan/images/zvini.svg' => 2,
+        'theme/color/lime/images/zvini.svg' => 4,
+        'theme/color/orange/images/zvini.svg' => 4,
+        'theme/color/pink/images/zvini.svg' => 4,
     ];
     return $revisions[$key];
 }

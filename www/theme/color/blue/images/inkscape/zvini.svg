@@ -5,7 +5,6 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    version="1.1"
@@ -27,40 +26,6 @@
   </metadata>
   <defs
      id="defs3013">
-    <linearGradient
-       id="linearGradient3754">
-      <stop
-         style="stop-color:#45a2ef;stop-opacity:1;"
-         offset="0"
-         id="stop3756" />
-      <stop
-         id="stop3760"
-         offset="0.5"
-         style="stop-color:#3299ee;stop-opacity:1;" />
-      <stop
-         style="stop-color:#208fec;stop-opacity:1;"
-         offset="1"
-         id="stop3758" />
-    </linearGradient>
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient3754"
-       id="linearGradient4184"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1.7090854,0,0,1.7090854,-4.4692838,6.9984908)"
-       x1="24.46484"
-       y1="4.2924876"
-       x2="17.75495"
-       y2="21.772348" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient3754"
-       id="linearGradient4292"
-       x1="40"
-       y1="-100"
-       x2="40"
-       y2="-68"
-       gradientUnits="userSpaceOnUse" />
     <clipPath
        clipPathUnits="userSpaceOnUse"
        id="clipPath4306">
@@ -89,7 +54,7 @@
      id="namedview3011"
      showgrid="true"
      inkscape:zoom="11.116072"
-     inkscape:cx="19.733725"
+     inkscape:cx="2.5963765"
      inkscape:cy="9.931334"
      inkscape:window-x="0"
      inkscape:window-y="27"
@@ -106,7 +71,7 @@
        snapvisiblegridlinesonly="true" />
   </sodipodi:namedview>
   <rect
-     style="fill:url(#linearGradient4184);fill-opacity:1;stroke:none"
+     style="fill:#3399ee;fill-opacity:1;stroke:none"
      id="rect3762"
      width="27.345366"
      height="27.345366"
@@ -149,7 +114,7 @@
        style="fill:#ffffff;fill-opacity:1" />
   </g>
   <path
-     style="fill:url(#linearGradient4292);fill-opacity:1;stroke:none;opacity:0.3"
+     style="fill:#3399ee;fill-opacity:1;stroke:none;opacity:0.29999999999999999"
      d="m 0,-100 0,32 8.65625,0 0,-3.875 9.34375,-7.75 -9.34375,0 0,-3.875 14.6875,0 0,3.875 -9.34375,7.75 9.34375,0 0,3.875 6.65625,0 -5.34375,-9.6875 4.6875,0 L 32,-72.510742 32,-100 z m 16,6.479492 c 2,0 4,2.90625 0,8.71875 -4,-5.8125 -2,-8.71875 0,-8.71875 z m -6.8125,3.572266 c 1.488688,-0.08195 3.635417,1.15039 5.46875,5.146484 -8.7499995,0 -8.3107909,-4.990032 -5.46875,-5.146484 z m 13.1875,0 c 3.201172,-0.343414 4.135416,5.146484 -5.03125,5.146484 1.666667,-3.632812 3.576172,-4.990387 5.03125,-5.146484 z"
      id="rect4279"
      inkscape:connector-curvature="0"

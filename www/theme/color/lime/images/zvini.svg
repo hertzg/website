@@ -7,7 +7,6 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    version="1.1"
    width="68"
@@ -26,38 +25,6 @@
   </metadata>
   <defs
      id="defs3013">
-    <linearGradient
-       id="linearGradient3754">
-      <stop
-         id="stop3756"
-         style="stop-color:#9bbd13;stop-opacity:1"
-         offset="0" />
-      <stop
-         id="stop3760"
-         style="stop-color:#8baa11;stop-opacity:1"
-         offset="0.5" />
-      <stop
-         id="stop3758"
-         style="stop-color:#7d990f;stop-opacity:1"
-         offset="1" />
-    </linearGradient>
-    <linearGradient
-       x1="24.46484"
-       y1="4.2924876"
-       x2="17.75495"
-       y2="21.772348"
-       id="linearGradient4184"
-       xlink:href="#linearGradient3754"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1.7090854,0,0,1.7090854,-4.4692838,6.9984908)" />
-    <linearGradient
-       x1="40"
-       y1="-100"
-       x2="40"
-       y2="-68"
-       id="linearGradient4292"
-       xlink:href="#linearGradient3754"
-       gradientUnits="userSpaceOnUse" />
     <clipPath
        id="clipPath4306">
       <rect
@@ -79,7 +46,7 @@
      y="6.9984918"
      transform="matrix(0.93358043,-0.35836794,0.35836794,0.93358043,0,0)"
      id="rect3762"
-     style="fill:url(#linearGradient4184);fill-opacity:1;stroke:none" />
+     style="fill:#93b606;fill-opacity:1;stroke:none" />
   <g
      transform="translate(6.3114078e-5,4)"
      id="g3871"
@@ -116,5 +83,5 @@
      transform="translate(0,100)"
      clip-path="url(#clipPath4306)"
      id="rect4279"
-     style="opacity:0.3;fill:url(#linearGradient4292);fill-opacity:1;stroke:none" />
+     style="opacity:0.3;fill:#93b606;fill-opacity:1;stroke:none" />
 </svg>
