@@ -1,0 +1,48 @@
+.tag:focus,
+.clickable:focus,
+.clickable.focus,
+.form-select:focus,
+.form-textfield:focus,
+.form-textarea:focus,
+.topLink:focus,
+.newItemButton:focus {
+    border-color: #08baba;
+    background-color: rgba(8, 186, 186, 0.2);
+}
+
+.a,
+.tag,
+.tab-active,
+.form-property {
+    color: #08baba;
+}
+
+.a:focus {
+    background-color: rgba(8, 186, 186, 0.2);
+}
+
+#tbar,
+.tag:focus {
+    border-color: #08baba;
+}
+
+.tag.active,
+.tag:active,
+.clickable.active,
+.clickable:active,
+.newItemButton:active,
+.topLink:active {
+    background-color: #08baba;
+    border-color: #08baba;
+}
+
+.panel-title {
+    border-top-color: #08baba;
+}
+.panel-title-text {
+    color: #08baba;
+}
+
+mark {
+    background-color: rgba(255, 122, 56, 0.5);
+}
