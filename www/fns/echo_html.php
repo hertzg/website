@@ -9,6 +9,7 @@ function echo_html ($title, $head, $body,
     include_once __DIR__.'/compressed_css_link.php';
     include_once __DIR__.'/compressed_js_script.php';
     include_once __DIR__.'/page_icon_links.php';
+    include_once __DIR__.'/page_theme_links.php';
     echo
         '<!DOCTYPE html>'
         .'<html>'
@@ -22,10 +23,7 @@ function echo_html ($title, $head, $body,
                 .compressed_css_link('common', $base)
                 .compressed_css_link('iconsets', $base)
                 .$head
-                .'<link rel="stylesheet" type="text/css"'
-                ." href=\"{$base}theme/color/$theme_color/common.css?31\" />"
-                .'<link rel="stylesheet" type="text/css"'
-                ." href=\"{$base}theme/brightness/$theme_brightness/common.css?7\" />"
+                .page_theme_links($theme_color, $theme_brightness, $base)
             .'</head>'
             .'<body>'
                 .'<script type="text/javascript">'

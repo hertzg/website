@@ -21,14 +21,16 @@ if (SignUpEnabled\get()) {
         '<div class="buttonsWrapper-half left">'
             .'<div class="buttonsWrapper-limit left">'
                 .'<div class="buttonWrapper left">'
-                    .'<a class="button" href="sign-in/">Sign In</a>'
+                    .'<a class="clickable button" href="sign-in/">Sign In</a>'
                 .'</div>'
             .'</div>'
         .'</div>'
         .'<div class="buttonsWrapper-half right">'
             .'<div class="buttonsWrapper-limit right">'
                 .'<div class="buttonWrapper right">'
-                    .'<a class="button" href="sign-up/">Create an Account</a>'
+                    .'<a class="clickable button" href="sign-up/">'
+                        .'Create an Account'
+                    .'</a>'
                 .'</div>'
             .'</div>'
         .'</div>';
@@ -36,7 +38,7 @@ if (SignUpEnabled\get()) {
     $buttons =
         '<div class="buttonsWrapper-limit center">'
             .'<div class="buttonWrapper center">'
-                .'<a class="button" href="sign-in/">Sign In</a>'
+                .'<a class="clickable button" href="sign-in/">Sign In</a>'
             .'</div>'
         .'</div>';
 }
@@ -52,6 +54,7 @@ include_once 'fns/compressed_css_link.php';
 include_once 'fns/compressed_js_script.php';
 include_once 'fns/get_revision.php';
 include_once 'fns/page_icon_links.php';
+include_once 'fns/page_theme_links.php';
 include_once 'fns/SiteTitle/get.php';
 echo
     '<!DOCTYPE html>'
@@ -63,8 +66,9 @@ echo
             .'<meta name="viewport"'
             .' content="width=device-width, user-scalable=no" />'
             .compressed_css_link('common')
-            .compressed_css_link('index')
             .page_icon_links($theme_color)
+            .page_theme_links($theme_color, 'light')
+            .compressed_css_link('index')
         .'</head>'
         .'<body>'
             .'<div class="backgroundGradient">'
@@ -82,9 +86,7 @@ echo
                 .'</div>'
             .'</div>'
             .'<br class="zeroHeight" />'
-            .'<div class="buttonsWrapper">'
-                .$buttons
-            .'</div>'
+            ."<div class=\"buttonsWrapper\">$buttons</div>"
             .'<script type="text/javascript">'
                 ."var base = ''"
             .'</script>'
