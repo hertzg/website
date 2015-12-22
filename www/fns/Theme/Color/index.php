@@ -5,7 +5,7 @@ namespace Theme\Color;
 function index () {
     return [
         'orange' => 'Orange',
-        'green' => 'Green',
+        'lime' => 'Lime',
         'blue' => 'Blue',
         'pink' => 'Pink',
     ];

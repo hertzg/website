@@ -10,8 +10,8 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    version="1.1"
-   width="256"
-   height="256"
+   width="16"
+   height="16"
    id="svg2">
   <metadata
      id="metadata8">
@@ -31,15 +31,15 @@
        id="linearGradient3754">
       <stop
          id="stop3756"
-         style="stop-color:#26bd13;stop-opacity:1"
+         style="stop-color:#97bd13;stop-opacity:1"
          offset="0" />
       <stop
          id="stop3760"
-         style="stop-color:#22aa11;stop-opacity:1"
+         style="stop-color:#88aa11;stop-opacity:1"
          offset="0.5" />
       <stop
          id="stop3758"
-         style="stop-color:#1f990f;stop-opacity:1"
+         style="stop-color:#7a990f;stop-opacity:1"
          offset="1" />
     </linearGradient>
     <linearGradient
@@ -62,7 +62,7 @@
        gradientTransform="matrix(0.79778432,-0.30624071,0.30624071,0.79778432,19.1678,8.0676514)" />
   </defs>
   <g
-     transform="matrix(16,0,0,16,-320.00001,-64.00001)"
+     transform="translate(-20,-4.0000002)"
      id="g3801">
     <rect
        width="13.672683"
