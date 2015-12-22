@@ -45,6 +45,9 @@ if (SignUpEnabled\get()) {
         .'</div>';
 }
 
+include_once 'fns/Theme/Color/getDefault.php';
+$logoSrc = 'theme/color/'.Theme\Color\getDefault().'/images/zvini.svg';
+
 header('Content-Type: text/html; charset=UTF-8');
 
 include_once 'fns/compressed_css_link.php';
@@ -70,7 +73,8 @@ echo
                 .'<div class="backgroundGradient-gradient"></div>'
             .'</div>'
             .'<div class="centerWrapper">'
-                .'<img class="logoImage" src="images/zvini-large.svg?2" />'
+                .'<img class="logoImage"'
+                ." src=\"$logoSrc?".get_revision($logoSrc)."\" />"
                 .'<div class="siteInfo">'
                     .'<h1>Save Your Data in Zvini</h1>'
                     .'<div class="description">'

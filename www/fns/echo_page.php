@@ -50,16 +50,16 @@ function echo_page ($user, $title, $content, $base, $options = []) {
         $logo_href = $base === '' ? './' : $base;
     }
 
-    include_once __DIR__.'/get_revision.php';
-    $logoSrc = "{$base}theme/color/$theme_color/images/zvini.svg?"
-        .get_revision("theme/color/$theme_color/images/zvini.svg");
+    $logoSrc = "theme/color/$theme_color/images/zvini.svg";
 
+    include_once __DIR__.'/get_revision.php';
     include_once __DIR__.'/compressed_js_script.php';
     $body =
         '<div id="tbar">'
             .'<div id="tbar-limit">'
                 ."<a class=\"topLink logoLink\" href=\"$logo_href\">"
-                    ."<img src=\"$logoSrc\" alt=\"Zvini\" class=\"logoLink-img\" />"
+                    ."<img src=\"$base$logoSrc?".get_revision($logoSrc).'"'
+                    .' alt="Zvini" class="logoLink-img" />'
                     .$notifications
                 .'</a>'
                 .'<div class="page-clockWrapper">'
