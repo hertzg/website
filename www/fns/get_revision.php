@@ -7,7 +7,7 @@ function get_revision ($key) {
         'css/common/compressed.css' => 147,
         'css/confirmDialog/compressed.css' => 5,
         'css/contact/compressed.css' => 5,
-        'css/iconsets/compressed.css' => 98,
+        'css/iconsets/compressed.css' => 99,
         'css/index/compressed.css' => 7,
         'images/icons/16.png' => 2,
         'images/icons/32.png' => 2,
@@ -27,11 +27,11 @@ function get_revision ($key) {
         'js/signOutConfirm/compressed.js' => 3,
         'js/timezoneLabel/compressed.js' => 6,
         'js/unloadProgress/compressed.js' => 9,
-        'theme/color/blue/images/zvini.svg' => 5,
-        'theme/color/cyan/images/zvini.svg' => 3,
-        'theme/color/lime/images/zvini.svg' => 5,
-        'theme/color/orange/images/zvini.svg' => 5,
-        'theme/color/pink/images/zvini.svg' => 5,
+        'theme/color/blue/images/zvini.svg' => 6,
+        'theme/color/cyan/images/zvini.svg' => 4,
+        'theme/color/lime/images/zvini.svg' => 6,
+        'theme/color/orange/images/zvini.svg' => 6,
+        'theme/color/pink/images/zvini.svg' => 6,
     ];
     return $revisions[$key];
 }

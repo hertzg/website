@@ -133,7 +133,7 @@ $names = [
     'edit-orange-dark-theme', 'edit-pink-dark-theme',
     'edit-cyan-dark-theme', 'edit-blue-auto-theme', 'edit-lime-auto-theme',
     'edit-orange-auto-theme', 'edit-pink-auto-theme', 'edit-cyan-auto-theme'];
-render($content, 'theme.svg?6', $names);
+render($content, 'theme.svg?7', $names);
 
 $names = ['token', 'create-token', 'tokens'];
 render($content, 'token.svg?3', $names);
