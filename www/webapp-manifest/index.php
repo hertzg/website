@@ -13,7 +13,7 @@ $theme_color = Theme\Color\getDefault();
 include_once '../fns/get_revision.php';
 $get_icon_href = function ($size) use ($siteBase, $theme_color) {
     $src = "theme/color/$theme_color/images/icon$size.png";
-    return $src.get_revision($src);
+    return "$src?".get_revision($src);
 };
 
 header('Content-Type: application/x-web-app-manifest+json');
