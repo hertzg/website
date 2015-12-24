@@ -31,12 +31,9 @@ $sendFunction = function ($receiver_id_userss) use (
 $sendExternalFunction = function ($recipients) use (
     $mysqli, $task, $user, $fnsDir) {
 
-    include_once "$fnsDir/SendingTasks/add.php";
+    include_once "$fnsDir/Users/Tasks/Sending/add.php";
     foreach ($recipients as $recipient) {
-        SendingTasks\add($mysqli, $user->id_users, $user->username,
-            $recipient['username'], $recipient['address'],
-            $recipient['id_admin_connections'],
-            $recipient['their_exchange_api_key'], $task->text,
+        Users\Tasks\Sending\add($mysqli, $user, $recipient, $task->text,
             $task->deadline_time, $task->tags, $task->top_priority);
     }
 

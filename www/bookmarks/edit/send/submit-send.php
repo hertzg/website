@@ -33,13 +33,10 @@ $sendFunction = function ($receiver_id_userss) use (
 $sendExternalFunction = function ($recipients) use (
     $mysqli, $stageValues, $user, $fnsDir) {
 
-    include_once "$fnsDir/SendingBookmarks/add.php";
+    include_once "$fnsDir/Users/Bookmarks/Sending/add.php";
     foreach ($recipients as $recipient) {
-        SendingBookmarks\add($mysqli, $user->id_users,
-            $user->username, $recipient['username'], $recipient['address'],
-            $recipient['id_admin_connections'],
-            $recipient['their_exchange_api_key'], $stageValues['url'],
-            $stageValues['title'], $stageValues['tags']);
+        Users\Bookmarks\Sending\add($mysqli, $user, $recipient,
+            $stageValues['url'], $stageValues['title'], $stageValues['tags']);
     }
 
 };

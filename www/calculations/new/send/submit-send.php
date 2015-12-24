@@ -35,13 +35,10 @@ $sendFunction = function ($receiver_id_userss) use (
 $sendExternalFunction = function ($recipients) use (
     $mysqli, $stageValues, $user, $fnsDir) {
 
-    include_once "$fnsDir/SendingCalculations/add.php";
+    include_once "$fnsDir/Users/Calculations/Sending/add.php";
     foreach ($recipients as $recipient) {
-        SendingCalculations\add($mysqli, $user->id_users,
-            $user->username, $recipient['username'], $recipient['address'],
-            $recipient['id_admin_connections'],
-            $recipient['their_exchange_api_key'],
-            $stageValues['resolved_expression'],
+        Users\Calculations\Sending\add($mysqli, $user,
+            $recipient, $stageValues['resolved_expression'],
             $stageValues['title'], $stageValues['tags']);
     }
 

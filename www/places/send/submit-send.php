@@ -31,14 +31,11 @@ $sendFunction = function ($receiver_id_userss) use (
 $sendExternalFunction = function ($recipients) use (
     $mysqli, $place, $user, $fnsDir) {
 
-    include_once "$fnsDir/SendingPlaces/add.php";
+    include_once "$fnsDir/Users/Places/Sending/add.php";
     foreach ($recipients as $recipient) {
-        SendingPlaces\add($mysqli, $user->id_users, $user->username,
-            $recipient['username'], $recipient['address'],
-            $recipient['id_admin_connections'],
-            $recipient['their_exchange_api_key'], $place->latitude,
-            $place->longitude, $place->altitude, $place->name,
-            $place->description, $place->tags);
+        Users\Places\Sending\add($mysqli, $user, $recipient,
+            $place->latitude, $place->longitude, $place->altitude,
+            $place->name, $place->description, $place->tags);
     }
 
 };

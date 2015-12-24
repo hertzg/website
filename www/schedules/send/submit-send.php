@@ -31,13 +31,11 @@ $sendFunction = function ($receiver_id_userss) use (
 $sendExternalFunction = function ($recipients) use (
     $mysqli, $schedule, $user, $fnsDir) {
 
-    include_once "$fnsDir/SendingSchedules/add.php";
+    include_once "$fnsDir/Users/Schedules/Sending/add.php";
     foreach ($recipients as $recipient) {
-        SendingSchedules\add($mysqli, $user->id_users, $user->username,
-            $recipient['username'], $recipient['address'],
-            $recipient['id_admin_connections'],
-            $recipient['their_exchange_api_key'], $schedule->text,
-            $schedule->interval, $schedule->offset, $schedule->tags);
+        Users\Schedules\Sending\add($mysqli, $user, $recipient,
+            $schedule->text, $schedule->interval,
+            $schedule->offset, $schedule->tags);
     }
 
 };

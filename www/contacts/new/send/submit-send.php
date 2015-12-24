@@ -40,12 +40,10 @@ $sendFunction = function ($receiver_id_userss) use (
 $sendExternalFunction = function ($recipients) use (
     $mysqli, $stageValues, $user, $fnsDir) {
 
-    include_once "$fnsDir/SendingContacts/add.php";
+    include_once "$fnsDir/Users/Contacts/Sending/add.php";
     foreach ($recipients as $recipient) {
-        SendingContacts\add($mysqli, $user->id_users,
-            $user->username, $recipient['username'], $recipient['address'],
-            $recipient['id_admin_connections'],
-            $recipient['their_exchange_api_key'], $stageValues['full_name'],
+        Users\Contacts\Sending\add($mysqli, $user,
+            $recipient, $stageValues['full_name'],
             $stageValues['alias'], $stageValues['address'],
             $stageValues['email1'], $stageValues['email1_label'],
             $stageValues['email2'], $stageValues['email2_label'],
