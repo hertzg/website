@@ -12,8 +12,6 @@ require_sender_and_receiver($mysqli, 'can_send_schedule',
 include_once 'fns/require_schedule_params.php';
 require_schedule_params($text, $interval, $offset, $tags, $tag_names);
 
-error_log(var_export($offset, true));
-
 include_once '../fns/Users/Schedules/Received/add.php';
 Users\Schedules\Received\add($mysqli, null,
     $sender_username, $receiver_user->id_users,
