@@ -62,6 +62,7 @@ function ensure ($mysqli) {
             'type' => 'bigint(20) unsigned',
             'primary' => true,
         ],
+        'id_admin_connections' => ['type' => 'bigint(20) unsigned'],
         'id_users' => ['type' => 'bigint(20) unsigned'],
         'insert_time' => ['type' => 'bigint(20) unsigned'],
         'notes' => [

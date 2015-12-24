@@ -25,8 +25,10 @@ function checkExternalRecipients ($mysqli, &$recipients, &$errors) {
     foreach ($recipients as &$recipient) {
         $address = $recipient['address'];
         if (array_key_exists($address, $addresses)) {
+            $adminConnection = $addresses[$address];
+            $recipient['id_admin_connections'] = $adminConnection->id;
             $recipient['their_exchange_api_key'] =
-                $addresses[$address]->their_exchange_api_key;
+                $adminConnection->their_exchange_api_key;
         } else {
             $unavailable_address[$address] = true;
         }

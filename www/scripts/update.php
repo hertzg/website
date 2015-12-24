@@ -8,6 +8,4 @@ include_once '../lib/mysqli.php';
 include_once '../fns/Table/ensureAll.php';
 echo Table\ensureAll($mysqli);
 
-system('./update-tag-refs.php');
-
 echo "Done\n";

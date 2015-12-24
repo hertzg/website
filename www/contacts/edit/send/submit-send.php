@@ -45,6 +45,7 @@ $sendExternalFunction = function ($recipients) use (
     foreach ($recipients as $recipient) {
         SendingContacts\add($mysqli, $user->id_users,
             $user->username, $recipient['username'], $recipient['address'],
+            $recipient['id_admin_connections'],
             $recipient['their_exchange_api_key'], $stageValues['full_name'],
             $stageValues['alias'], $stageValues['address'],
             $stageValues['email1'], $stageValues['email1_label'],

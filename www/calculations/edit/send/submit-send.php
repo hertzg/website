@@ -39,6 +39,7 @@ $sendExternalFunction = function ($recipients) use (
     foreach ($recipients as $recipient) {
         SendingCalculations\add($mysqli, $user->id_users,
             $user->username, $recipient['username'], $recipient['address'],
+            $recipient['id_admin_connections'],
             $recipient['their_exchange_api_key'],
             $stageValues['resolved_expression'],
             $stageValues['title'], $stageValues['tags']);

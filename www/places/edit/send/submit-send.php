@@ -39,6 +39,7 @@ $sendExternalFunction = function ($recipients) use (
     foreach ($recipients as $recipient) {
         SendingPlaces\add($mysqli, $user->id_users,
             $user->username, $recipient['username'], $recipient['address'],
+            $recipient['id_admin_connections'],
             $recipient['their_exchange_api_key'], $stageValues['latitude'],
             $stageValues['longitude'], $stageValues['altitude'],
             $stageValues['name'], $stageValues['description'],

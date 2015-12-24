@@ -38,7 +38,8 @@ $sendExternalFunction = function ($recipients) use (
     foreach ($recipients as $recipient) {
         SendingSchedules\add($mysqli,
             $user->id_users, $user->username, $recipient['username'],
-            $recipient['address'], $recipient['their_exchange_api_key'],
+            $recipient['address'], $recipient['id_admin_connections'],
+            $recipient['their_exchange_api_key'],
             $stageValues['text'], $stageValues['interval'],
             $stageValues['offset'], $stageValues['tags']);
     }
