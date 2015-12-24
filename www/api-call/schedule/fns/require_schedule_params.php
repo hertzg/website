@@ -6,7 +6,7 @@ function require_schedule_params (&$text,
     $fnsDir = __DIR__.'/../../../fns';
 
     include_once "$fnsDir/Schedules/request.php";
-    list($text, $interval, $tags, $offset) = Schedules\request();
+    list($text, $interval, $offset, $tags) = Schedules\request();
 
     if ($text === '') {
         include_once "$fnsDir/ErrorJson/badRequest.php";

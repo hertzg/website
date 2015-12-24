@@ -15,6 +15,6 @@ function request () {
 
     $offset = min($interval - 1, abs((int)$offset));
 
-    return [$text, $interval, $tags, $offset];
+    return [$text, $interval, $offset, $tags];
 
 }

@@ -17,7 +17,7 @@ if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
 
     include_once '../../fns/Schedules/request.php';
-    list($text, $interval, $tags, $offset) = Schedules\request();
+    list($text, $interval, $offset, $tags) = Schedules\request();
 
     $values = [
         'focus' => 'text',
