@@ -4,8 +4,8 @@ namespace SendForm;
 
 function renderRecipientsPanel ($recipients, $params, $base = '') {
 
-    $query = '?'.htmlspecialchars(http_build_query($params));
-    $sendHref = "{$base}submit-send.php$query";
+    $sendHref = "{$base}submit-send.php";
+    if ($params) $sendHref .= '?'.htmlspecialchars(http_build_query($params));
 
     include_once __DIR__.'/renderRecipientsList.php';
     include_once __DIR__.'/../Page/buttonLink.php';
