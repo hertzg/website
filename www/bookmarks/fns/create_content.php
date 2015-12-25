@@ -22,7 +22,7 @@ function create_content ($user, $total, $filterMessage, $items, $base) {
             Page\sessionErrors('bookmarks/errors')
             .Page\sessionMessages('bookmarks/messages')
             .$filterMessage.join('<div class="hr"></div>', $items),
-            create_new_item_button('Bookmark', $base)
+            create_new_item_button('Bookmark', $base, !$user->num_bookmarks)
         )
         .sort_panel($user, $total, $base)
         .create_options_panel($user, $base);

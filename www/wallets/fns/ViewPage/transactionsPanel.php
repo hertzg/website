@@ -10,7 +10,8 @@ function transactionsPanel ($mysqli, $wallet, &$scripts) {
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
     include_once "$fnsDir/Page/newItemButton.php";
     $newItemButton = \Page\newItemButton(
-        '../new-transaction/'.\ItemList\escapedItemQuery($id), 'Transaction');
+        '../new-transaction/'.\ItemList\escapedItemQuery($id),
+        'Transaction', !$wallet->num_transactions);
 
     $num_transactions = $wallet->num_transactions;
     if ($num_transactions) {

@@ -23,7 +23,7 @@ function create_content ($user, $total, $filterMessage, $items, $base) {
             .Page\sessionMessages('bar-charts/messages')
             .$filterMessage
             .join('<div class="hr"></div>', $items),
-            create_new_item_button('Bar Chart', $base)
+            create_new_item_button('Bar Chart', $base, !$user->num_bar_charts)
         )
         .sort_panel($user, $total, $base)
         .create_options_panel($user, $base);

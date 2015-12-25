@@ -22,7 +22,8 @@ function create_content ($user, $total, $filterMessage, $items, $base) {
             Page\sessionErrors('calculations/errors')
             .Page\sessionMessages('calculations/messages')
             .$filterMessage.join('<div class="hr"></div>', $items),
-            create_new_item_button('Calculation', $base)
+            create_new_item_button('Calculation',
+                $base, !$user->num_calculations)
         )
         .sort_panel($user, $total, $base)
         .create_options_panel($user, $base);

@@ -1,5 +1,7 @@
 <?php
 
+// TODO do not load this page if no invalid signins are present
+
 include_once '../../fns/require_admin.php';
 require_admin();
 

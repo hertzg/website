@@ -60,6 +60,7 @@ if ($connections) {
     $items[] = Page\info('No connections');
 }
 
+// TODO make new item button green
 include_once "$fnsDir/create_new_item_button.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/sessionMessages.php";

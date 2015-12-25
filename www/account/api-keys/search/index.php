@@ -1,5 +1,7 @@
 <?php
 
+// TODO do not load this page if no api keys are present
+
 $base = '../../../';
 $fnsDir = '../../../fns';
 

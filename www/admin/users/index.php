@@ -61,6 +61,7 @@ if ($users) {
     $items[] = Page\info('No users');
 }
 
+// TODO make new item button green
 include_once 'fns/sort_panel.php';
 include_once "$fnsDir/create_new_item_button.php";
 include_once "$fnsDir/Page/sessionErrors.php";

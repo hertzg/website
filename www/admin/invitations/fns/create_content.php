@@ -4,6 +4,7 @@ function create_content ($items, $optionsPanel, $base = '') {
 
     $fnsDir = __DIR__.'/../../../fns';
 
+    // TODO make new item button green
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";

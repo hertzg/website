@@ -42,7 +42,8 @@ function create_content ($mysqli, $user,
             .Page\sessionMessages('calendar/messages')
             .create_calendar($mysqli, $user->id_users,
                 $timeSelected, $timeToday, $day_is_selected),
-            Page\newItemButton("new-event/?event_time=$timeSelected", 'Event')
+            Page\newItemButton("new-event/?event_time=$timeSelected",
+                'Event', !$user->num_events)
         )
         .$events_panel
         .create_panel(

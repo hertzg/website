@@ -22,7 +22,7 @@ function create_content ($content, $user, $total, $base) {
             Page\sessionErrors('wallets/errors')
             .Page\sessionMessages('wallets/messages')
             .$content,
-            create_new_item_button('Wallet', $base)
+            create_new_item_button('Wallet', $base, !$user->num_wallets)
         )
         .sort_panel($user, $total, $base)
         .create_options_panel($user, $base);

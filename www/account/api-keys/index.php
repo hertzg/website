@@ -72,7 +72,7 @@ $content =
         Page\sessionErrors('account/api-keys/errors')
         .Page\sessionMessages('account/api-keys/messages')
         .join('<div class="hr"></div>', $items),
-        create_new_item_button('API Key')
+        create_new_item_button('API Key', '', !$user->num_api_keys)
     )
     .sort_panel($user, $total);
 

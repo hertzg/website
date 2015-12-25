@@ -56,7 +56,7 @@ $content = Page\tabs(
     Page\sessionMessages('account/connections/messages')
     .Page\sessionErrors('account/connections/errors')
     .join('<div class="hr"></div>', $items),
-    Page\newItemButton('new/', 'Connection')
+    Page\newItemButton('new/', 'Connection', !$user->num_connections)
 );
 
 include_once "$fnsDir/echo_user_page.php";

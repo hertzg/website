@@ -22,7 +22,7 @@ function create_content ($user, $total, $filterMessage, $items, $base) {
             Page\sessionErrors('schedules/errors')
             .Page\sessionMessages('schedules/messages')
             .$filterMessage.join('<div class="hr"></div>', $items),
-            create_new_item_button('Schedule', $base)
+            create_new_item_button('Schedule', $base, !$user->num_schedules)
         )
         .sort_panel($user, $total, $base)
         .create_options_panel($user, $base);

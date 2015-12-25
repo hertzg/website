@@ -10,7 +10,8 @@ function barsPanel ($mysqli, $bar_chart, &$scripts) {
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
     include_once "$fnsDir/Page/newItemButton.php";
     $newItemButton = \Page\newItemButton(
-        '../new-bar/'.\ItemList\escapedItemQuery($id), 'Bar');
+        '../new-bar/'.\ItemList\escapedItemQuery($id),
+        'Bar', !$bar_chart->num_bars);
 
     $num_bars = $bar_chart->num_bars;
     if ($num_bars) {

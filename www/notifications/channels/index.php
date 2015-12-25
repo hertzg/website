@@ -58,7 +58,7 @@ $content =
         Page\sessionErrors('notifications/channels/errors')
         .Page\sessionMessages('notifications/channels/messages')
         .join('<div class="hr"></div>', $items),
-        Page\newItemButton('new/', 'Channel')
+        Page\newItemButton('new/', 'Channel', !$user->num_channels)
     );
 
 include_once "$fnsDir/echo_user_page.php";

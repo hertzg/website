@@ -38,7 +38,7 @@ $content = Page\tabs(
     Page\sessionMessages('account/connections/default/messages')
     .Form\label('Other users', $permissions)
     .create_panel('Connection Options', $editLink),
-    Page\newItemButton('../new/', 'Connection')
+    Page\newItemButton('../new/', 'Connection', !$user->num_connections)
 );
 
 include_once "$fnsDir/echo_user_page.php";
