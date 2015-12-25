@@ -65,11 +65,10 @@ function create ($mysqli, $place, &$scripts, &$head) {
     include_once __DIR__.'/nearPlaces.php';
     include_once __DIR__.'/optionsPanel.php';
     include_once __DIR__.'/pointsPanel.php';
-    include_once "$fnsDir/ItemList/escapedPageQuery.php";
+    include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/ItemList/listHref.php";
     include_once "$fnsDir/Page/imageArrowLink.php";
     include_once "$fnsDir/Page/infoText.php";
-    include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
     return
@@ -85,7 +84,7 @@ function create ($mysqli, $place, &$scripts, &$head) {
             .join('<div class="hr"></div>', $items)
             .\Page\infoText($infoText)
             .nearPlaces($mysqli, $place),
-            \Page\newItemButton('../new/'.\ItemList\escapedPageQuery(), 'Place')
+            create_new_item_button('Place', '../')
         )
         .pointsPanel($mysqli, $place)
         .optionsPanel($place);

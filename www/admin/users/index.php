@@ -62,8 +62,7 @@ if ($users) {
 }
 
 include_once 'fns/sort_panel.php';
-include_once "$fnsDir/ItemList/escapedPageQuery.php";
-include_once "$fnsDir/Page/newItemButton.php";
+include_once "$fnsDir/create_new_item_button.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/sessionMessages.php";
 include_once "$fnsDir/Page/tabs.php";
@@ -79,7 +78,7 @@ $content = Page\tabs(
     .Page\sessionMessages('admin/users/messages')
     .join('<div class="hr"></div>', $items)
     .sort_panel($order_by, $total),
-    Page\newItemButton('new/'.ItemList\escapedPageQuery(), 'User')
+    create_new_item_button('User')
 );
 
 include_once '../fns/echo_admin_page.php';

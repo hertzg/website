@@ -51,13 +51,12 @@ function create ($mysqli, $apiKey, &$scripts) {
     include_once __DIR__.'/createPermissionsField.php';
     include_once __DIR__.'/optionsPanel.php';
     include_once "$fnsDir/create_expires_label.php";
+    include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/Form/notes.php";
     include_once "$fnsDir/Form/textarea.php";
-    include_once "$fnsDir/ItemList/escapedPageQuery.php";
     include_once "$fnsDir/ItemList/listHref.php";
     include_once "$fnsDir/Page/infoText.php";
-    include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
     return \Page\tabs(
@@ -88,7 +87,7 @@ function create ($mysqli, $apiKey, &$scripts) {
         .\Page\infoText($infoText)
         .authsPanel($mysqli, $apiKey, $scripts)
         .optionsPanel($id),
-        \Page\newItemButton('../new/'.\ItemList\escapedPageQuery(), 'API Key')
+        create_new_item_button('API Key', '../')
     );
 
 }

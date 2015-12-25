@@ -56,8 +56,7 @@ if ($connections) {
     $items[] = Page\info('No connections found');
 }
 
-include_once "$fnsDir/ItemList/escapedPageQuery.php";
-include_once "$fnsDir/Page/newItemButton.php";
+include_once "$fnsDir/create_new_item_button.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/sessionMessages.php";
 include_once "$fnsDir/Page/tabs.php";
@@ -72,7 +71,7 @@ $content = Page\tabs(
     Page\sessionErrors('admin/connections/errors')
     .Page\sessionMessages('admin/connections/messages')
     .join('<div class="hr"></div>', $items),
-    Page\newItemButton('../new/'.ItemList\escapedPageQuery(), 'Connection')
+    create_new_item_button('Connection', '../')
 );
 
 include_once '../../fns/echo_admin_page.php';

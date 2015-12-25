@@ -50,11 +50,10 @@ function create ($mysqli, $user, $wallet, &$scripts, &$head) {
     include_once __DIR__.'/cashflowPanel.php';
     include_once __DIR__.'/optionsPanel.php';
     include_once __DIR__.'/transactionsPanel.php';
+    include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/Form/label.php";
-    include_once "$fnsDir/ItemList/escapedPageQuery.php";
     include_once "$fnsDir/ItemList/listHref.php";
     include_once "$fnsDir/Page/infoText.php";
-    include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/tabs.php";
@@ -79,7 +78,7 @@ function create ($mysqli, $user, $wallet, &$scripts, &$head) {
         .cashflowPanel($mysqli, $user, $wallet)
         .transactionsPanel($mysqli, $wallet, $scripts)
         .optionsPanel($wallet, $user),
-        \Page\newItemButton('../new/'.\ItemList\escapedPageQuery(), 'Wallet')
+        create_new_item_button('Wallet', '../')
     );
 
 }

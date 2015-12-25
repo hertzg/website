@@ -48,8 +48,7 @@ if ($apiKeys) {
 }
 
 include_once '../fns/sort_panel.php';
-include_once "$fnsDir/ItemList/escapedPageQuery.php";
-include_once "$fnsDir/Page/newItemButton.php";
+include_once "$fnsDir/create_new_item_button.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/sessionMessages.php";
 include_once "$fnsDir/Page/tabs.php";
@@ -65,7 +64,7 @@ $content =
         Page\sessionErrors('account/api-keys/errors')
         .Page\sessionMessages('account/api-keys/messages')
         .join('<div class="hr"></div>', $items),
-        Page\newItemButton('../new/'.ItemList\escapedPageQuery(), 'API Key')
+        create_new_item_button('API Key', '../')
     )
     .sort_panel($user, $total, '../');
 
