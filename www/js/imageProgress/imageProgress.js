@@ -61,11 +61,11 @@
         noteDiv.style.position = 'absolute'
         noteDiv.style.right = noteDiv.style.left = '0'
         noteDiv.style.bottom = '4px'
-        noteDiv.style.color = 'white'
+        noteDiv.style.color = '#fff'
         noteDiv.style.textAlign = 'center'
         noteDiv.style.fontSize = '12px'
         noteDiv.style.lineHeight = '24px'
-        noteDiv.style.textShadow = '0 0 1px black'
+        noteDiv.style.textShadow = '0 0 1px #000'
         noteDiv.style.whiteSpace = 'nowrap'
         noteDiv.style.overflow = 'hidden'
         noteDiv.appendChild(document.createTextNode('Tap to release'))
