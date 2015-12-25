@@ -20,10 +20,9 @@ include_once "$fnsDir/create_folder_link.php";
 $folder_link = create_folder_link($parent_id, '../');
 
 include_once '../fns/create_file_location_bar.php';
-include_once "$fnsDir/FileName/maxLength.php";
+include_once '../fns/create_folder_form_items.php';
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/hidden.php";
-include_once "$fnsDir/Form/textfield.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/tabs.php";
 $content = Page\tabs(
@@ -38,12 +37,7 @@ $content = Page\tabs(
         'new-folder', $parent_id, $user->id_users)
     .Page\sessionErrors('files/new-folder/errors')
     .'<form action="submit.php" method="post">'
-        .Form\textfield('name', 'Folder name', [
-            'value' => $values['name'],
-            'maxlength' => FileName\maxLength(),
-            'autofocus' => true,
-            'required' => true,
-        ])
+        .create_folder_form_items($values)
         .'<div class="hr"></div>'
         .Form\button('Create')
         .Form\hidden('parent_id', $parent_id)

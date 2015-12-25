@@ -16,10 +16,9 @@ unset(
 
 $fnsDir = '../../fns';
 
+include_once '../fns/create_folder_form_items.php';
 include_once "$fnsDir/create_folder_link.php";
-include_once "$fnsDir/FileName/maxLength.php";
 include_once "$fnsDir/Form/button.php";
-include_once "$fnsDir/Form/textfield.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/staticTwoColumns.php";
 include_once "$fnsDir/Page/tabs.php";
@@ -33,12 +32,7 @@ $content = Page\tabs(
     "Rename Folder #$id_folders",
     Page\sessionErrors('files/rename-folder/errors')
     .'<form action="submit.php" method="post">'
-        .Form\textfield('name', 'Folder name', [
-            'value' => $values['name'],
-            'maxlength' => FileName\maxLength(),
-            'autofocus' => true,
-            'required' => true,
-        ])
+        .create_folder_form_items($values)
         .'<div class="hr"></div>'
         .Page\staticTwoColumns(
             Form\button('Rename'),
