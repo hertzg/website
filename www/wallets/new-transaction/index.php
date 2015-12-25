@@ -17,6 +17,7 @@ $base = '../../';
 $fnsDir = '../../fns';
 
 include_once '../fns/create_transaction_form_items.php';
+include_once "$fnsDir/create_panel.php";
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/ItemList/escapedItemQuery.php";
 include_once "$fnsDir/ItemList/itemHiddenInputs.php";
@@ -38,6 +39,13 @@ $content = Page\tabs(
         .ItemList\itemHiddenInputs($id)
     .'</form>'
 );
+
+if ($user->num_wallets > 1) {
+    include_once "$fnsDir/Page/imageLinkWithDescription.php";
+    $link = Page\imageLinkWithDescription('New Transaction',
+        'In another wallet', '../quick-new-transaction/', 'create-transaction');
+    $content .= create_panel('Options', $link);
+}
 
 include_once "$fnsDir/echo_user_page.php";
 echo_user_page($user, "Add New Transaction to Wallet #$wallet->id",
