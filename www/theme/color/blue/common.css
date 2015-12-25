@@ -5,7 +5,7 @@
 .form-textfield:focus,
 .form-textarea:focus,
 .topLink:focus,
-.newItemButton:focus {
+.newItemButton.not_green:focus {
     border-color: #239cfe;
     background-color: rgba(35, 156, 254, 0.2);
 }
@@ -30,7 +30,7 @@
 .tag:active,
 .clickable.active,
 .clickable:active,
-.newItemButton:active,
+.newItemButton.not_green:active,
 .topLink:active {
     background-color: #239cfe;
     border-color: #239cfe;

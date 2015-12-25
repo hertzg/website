@@ -49,13 +49,13 @@ body {
 }
 
 .tag,
-.newItemButton {
+.newItemButton.not_green {
     border-color: hsl(0, 0%, 40%);
 }
-.newItemButton-text {
+.newItemButton-text.not_green {
     color: #ccc;
 }
-.newItemButton-icon-line {
+.newItemButton-icon-line.not_green {
     background-color: #ccc;
 }
 

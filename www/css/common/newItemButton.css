@@ -18,12 +18,25 @@
 .newItemButton:active {
     color: #fff;
 }
+.newItemButton.green {
+    border-color: hsl(120, 80%, 40%);
+    background-color: hsl(120, 80%, 40%);
+}
+.newItemButton.green:focus {
+    border-color: hsl(120, 80%, 50%);
+}
+.newItemButton.green:active {
+    border-color: hsl(120, 80%, 40%);
+}
 
 .newItemButton-text {
     padding-right: 7px;
 }
 .newItemButton:active > .newItemButton-text {
     color: #fff;
+}
+.newItemButton-text.green {
+    color: white;
 }
 
 .newItemButton-icon {
@@ -55,6 +68,9 @@
 }
 .newItemButton:active > .newItemButton-icon > .newItemButton-icon-line {
     background: #fff;
+}
+.newItemButton-icon-line.green {
+    background-color: white;
 }
 
 @media (max-width: 700px) {
