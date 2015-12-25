@@ -15,9 +15,8 @@ unset(
 
 $fnsDir = '../../fns';
 
-include_once "$fnsDir/FileName/maxLength.php";
+include_once '../fns/create_file_form_items.php';
 include_once "$fnsDir/Form/button.php";
-include_once "$fnsDir/Form/textfield.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/staticTwoColumns.php";
 include_once "$fnsDir/Page/tabs.php";
@@ -31,12 +30,7 @@ $content = Page\tabs(
     'Rename',
     Page\sessionErrors('files/rename-file/errors')
     .'<form action="submit.php" method="post">'
-        .Form\textfield('name', 'File name', [
-            'value' => $values['name'],
-            'maxlength' => FileName\maxLength(),
-            'autofocus' => true,
-            'required' => true,
-        ])
+        .create_file_form_items($values)
         .'<div class="hr"></div>'
         .Page\staticTwoColumns(
             Form\button('Rename'),
