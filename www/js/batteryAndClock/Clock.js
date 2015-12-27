@@ -5,21 +5,31 @@ function Clock (remoteTime, timezone) {
     }
 
     function pad (n) {
-        if (n < 10) return '0' + n
-        return n
+        var s = String(n)
+        if (n < 10) s = '0' + s
+        return s
     }
 
     function update () {
         var time = Date.now()
         requestAnimationFrame(function () {
+
             var date = new Date(Date.now() - difference)
-            hourNode.nodeValue = pad(date.getUTCHours())
-            minuteNode.nodeValue = pad(date.getUTCMinutes())
-            secondNode.nodeValue = pad(date.getUTCSeconds())
+
+            var hour = pad(date.getUTCHours())
+            if (hour !== hourNode.nodeValue) hourNode.nodeValue = hour
+
+            var minute = pad(date.getUTCMinutes())
+            if (minuteNode.nodeValue !== minute) minuteNode.nodeValue = minute
+
+            var second = pad(date.getUTCSeconds())
+            if (secondNode.nodeValue !== second) secondNode.nodeValue = second
+
             updateListeners.forEach(function (listener) {
                 listener(date, date.getTime() - timezone * 60 * 1000)
             })
             setTimeout(update, Math.max(0, time + 1000 - Date.now()))
+
         })
 
     }

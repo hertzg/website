@@ -9,7 +9,7 @@ function get_revision ($key) {
         'css/contact/compressed.css' => 5,
         'css/iconsets/compressed.css' => 99,
         'css/index/compressed.css' => 7,
-        'js/batteryAndClock/compressed.js' => 12,
+        'js/batteryAndClock/compressed.js' => 13,
         'js/calendarIcon/compressed.js' => 3,
         'js/confirmDialog/compressed.js' => 5,
         'js/dateAgo/compressed.js' => 2,
