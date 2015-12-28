@@ -9,5 +9,6 @@ function index () {
         'cyan' => 'Cyan',
         'blue' => 'Blue',
         'pink' => 'Pink',
+        'violet' => 'Violet',
     ];
 }

@@ -80,6 +80,17 @@ function get_revision ($key) {
         'theme/color/pink/images/icon256.png' => 4,
         'theme/color/pink/images/icon512.png' => 4,
         'theme/color/pink/images/zvini.svg' => 6,
+        'theme/color/violet/common.css' => 2,
+        'theme/color/violet/images/icon16.png' => 3,
+        'theme/color/violet/images/icon32.png' => 4,
+        'theme/color/violet/images/icon48.png' => 5,
+        'theme/color/violet/images/icon64.png' => 6,
+        'theme/color/violet/images/icon90.png' => 7,
+        'theme/color/violet/images/icon120.png' => 8,
+        'theme/color/violet/images/icon128.png' => 9,
+        'theme/color/violet/images/icon256.png' => 10,
+        'theme/color/violet/images/icon512.png' => 11,
+        'theme/color/violet/images/zvini.svg' => 12,
     ];
     return $revisions[$key];
 }
