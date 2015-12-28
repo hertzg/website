@@ -13,13 +13,16 @@ function create_view_page ($invitation, &$scripts) {
         $_SESSION['admin/invitations/messages']
     );
 
-    include_once "$fnsDir/get_absolute_base.php";
-    $signUpLink = get_absolute_base()
-        ."accept-invitation/?id=$id&key=".bin2hex($invitation->key);
+    $key = bin2hex($invitation->key);
 
+    include_once "$fnsDir/get_absolute_base.php";
+    $signUpLink = get_absolute_base()."accept-invitation/?id=$id&key=$key";
+
+    include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/Form/notes.php";
     include_once "$fnsDir/Form/textfield.php";
     $items = [
+        Form\label('Identifier', $key),
         Form\textfield('link', 'Link to create an account', [
             'value' => $signUpLink,
             'readonly' => true,
@@ -31,7 +34,6 @@ function create_view_page ($invitation, &$scripts) {
 
     $note = $invitation->note;
     if ($note !== '') {
-        include_once "$fnsDir/Form/label.php";
         $items[] = Form\label('Note', htmlspecialchars($invitation->note));
     }
 
