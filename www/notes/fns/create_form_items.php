@@ -13,6 +13,7 @@ function create_form_items ($values, &$scripts, $base = '') {
     $maxLengths = Notes\maxLengths();
 
     include_once "$fnsDir/Form/checkbox.php";
+    include_once "$fnsDir/Form/tagsField.php";
     include_once "$fnsDir/Form/textarea.php";
     include_once "$fnsDir/Form/textfield.php";
     return
@@ -23,11 +24,7 @@ function create_form_items ($values, &$scripts, $base = '') {
             'required' => true,
         ])
         .'<div class="hr"></div>'
-        .Form\textfield('tags', 'Tags', [
-            'value' => $values['tags'],
-            'maxlength' => $maxLengths['tags'],
-            'autofocus' => $focus === 'tags',
-        ])
+        .Form\tagsField($values['tags'], $focus === 'tags')
         .'<div class="hr"></div>'
         .Form\checkbox('encrypt_in_listings',
             'Encrypt in listings', $values['encrypt_in_listings'])

@@ -10,6 +10,7 @@ function create_first_stage_form_items ($values) {
 
     include_once __DIR__.'/create_interval_select.php';
     include_once "$fnsDir/Form/button.php";
+    include_once "$fnsDir/Form/tagsField.php";
     include_once "$fnsDir/Form/textfield.php";
     return
         Form\textfield('text', 'Text', [
@@ -21,11 +22,7 @@ function create_first_stage_form_items ($values) {
         .'<div class="hr"></div>'
         .create_interval_select($values['interval'])
         .'<div class="hr"></div>'
-        .Form\textfield('tags', 'Tags', [
-            'value' => $values['tags'],
-            'maxlength' => $maxLengths['tags'],
-            'autofocus' => $focus === 'tags',
-        ])
+        .Form\tagsField($values['tags'], $focus === 'tags')
         .'<div class="hr"></div>'
         .Form\button('Next');
 

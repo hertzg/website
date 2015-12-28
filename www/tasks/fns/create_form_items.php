@@ -19,6 +19,7 @@ function create_form_items ($user, $values, &$scripts, $base = '') {
     include_once "$fnsDir/Form/checkbox.php";
     include_once "$fnsDir/Form/datefield.php";
     include_once "$fnsDir/Form/notes.php";
+    include_once "$fnsDir/Form/tagsField.php";
     include_once "$fnsDir/Form/textarea.php";
     include_once "$fnsDir/Form/textfield.php";
     return
@@ -46,11 +47,7 @@ function create_form_items ($user, $values, &$scripts, $base = '') {
         ], 'Deadline', false, true)
         .Form\notes(['Today is '.date('l, F j', user_time_today($user)).'.'])
         .'<div class="hr"></div>'
-        .Form\textfield('tags', 'Tags', [
-            'value' => $values['tags'],
-            'maxlength' => $maxLengths['tags'],
-            'autofocus' => $focus === 'tags',
-        ])
+        .Form\tagsField($values['tags'], $focus === 'tags')
         .'<div class="hr"></div>'
         .Form\checkbox('top_priority',
             'Mark as top priority', $values['top_priority']);

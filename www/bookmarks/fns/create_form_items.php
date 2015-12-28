@@ -8,6 +8,7 @@ function create_form_items ($values) {
     include_once "$fnsDir/Bookmarks/maxLengths.php";
     $maxLengths = Bookmarks\maxLengths();
 
+    include_once "$fnsDir/Form/tagsField.php";
     include_once "$fnsDir/Form/textfield.php";
     return
         Form\textfield('url', 'URL', [
@@ -22,10 +23,6 @@ function create_form_items ($values) {
             'maxlength' => $maxLengths['title'],
         ])
         .'<div class="hr"></div>'
-        .Form\textfield('tags', 'Tags', [
-            'value' => $values['tags'],
-            'maxlength' => $maxLengths['tags'],
-            'autofocus' => $focus === 'tags',
-        ]);
+        .Form\tagsField($values['tags'], $focus === 'tags');
 
 }

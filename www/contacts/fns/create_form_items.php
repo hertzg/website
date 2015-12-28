@@ -17,6 +17,7 @@ function create_form_items ($values, &$scripts, $base = '') {
     include_once __DIR__.'/create_phone_form_items.php';
     include_once "$fnsDir/Form/checkbox.php";
     include_once "$fnsDir/Form/datefield.php";
+    include_once "$fnsDir/Form/tagsField.php";
     include_once "$fnsDir/Form/textarea.php";
     include_once "$fnsDir/Form/textfield.php";
     include_once "$fnsDir/Form/textfieldWithLabel.php";
@@ -66,11 +67,7 @@ function create_form_items ($values, &$scripts, $base = '') {
         .Form\timezoneSelect('timezone', 'Timezone',
             $values['timezone'], true)
         .'<div class="hr"></div>'
-        .Form\textfield('tags', 'Tags', [
-            'value' => $values['tags'],
-            'maxlength' => $maxLengths['tags'],
-            'autofocus' => $focus === 'tags',
-        ])
+        .Form\tagsField($values['tags'], $focus === 'tags')
         .'<div class="hr"></div>'
         .Form\textarea('notes', 'Notes', [
             'value' => $values['notes'],

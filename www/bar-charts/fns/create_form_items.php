@@ -8,6 +8,7 @@ function create_form_items ($values) {
     include_once "$fnsDir/BarCharts/maxLengths.php";
     $maxLengths = BarCharts\maxLengths();
 
+    include_once "$fnsDir/Form/tagsField.php";
     include_once "$fnsDir/Form/textfield.php";
     return
         Form\textfield('name', 'Name', [
@@ -17,10 +18,6 @@ function create_form_items ($values) {
             'required' => true,
         ])
         .'<div class="hr"></div>'
-        .Form\textfield('tags', 'Tags', [
-            'value' => $values['tags'],
-            'maxlength' => $maxLengths['tags'],
-            'autofocus' => $focus === 'tags',
-        ]);
+        .Form\tagsField($values['tags'], $focus === 'tags');
 
 }
