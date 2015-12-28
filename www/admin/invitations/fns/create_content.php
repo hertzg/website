@@ -1,10 +1,9 @@
 <?php
 
-function create_content ($items, $optionsPanel, $base = '') {
+function create_content ($items, $optionsPanel, $green, $base = '') {
 
     $fnsDir = __DIR__.'/../../../fns';
 
-    // TODO make new item button green
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionErrors.php";
@@ -19,7 +18,7 @@ function create_content ($items, $optionsPanel, $base = '') {
         .Page\sessionMessages('admin/invitations/messages')
         .join('<div class="hr"></div>', $items)
         .$optionsPanel,
-        Page\newItemButton("{$base}new/", 'Invitation')
+        Page\newItemButton("{$base}new/", 'Invitation', $green)
     );
 
 }

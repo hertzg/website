@@ -32,7 +32,7 @@ include_once 'fns/unset_session_vars.php';
 unset_session_vars();
 
 include_once 'fns/create_content.php';
-$content = create_content($items, $optionsPanel);
+$content = create_content($items, $optionsPanel, !count($invitations));
 
 include_once '../fns/echo_admin_page.php';
 echo_admin_page('Invitations', $content, '../');

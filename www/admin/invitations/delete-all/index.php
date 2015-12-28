@@ -21,7 +21,7 @@ unset_session_vars();
 include_once '../fns/create_content.php';
 include_once "$fnsDir/Page/confirmDialog.php";
 $content =
-    create_content($items, $optionsPanel, '../')
+    create_content($items, $optionsPanel, false, '../')
     .Page\confirmDialog('Are you sure you want to delete all the invitations?',
         'Yes, delete invitations', 'submit.php', '..');
 
