@@ -41,7 +41,7 @@ $content = Page\tabs(
         .create_form_items($values)
         .'<div class="hr"></div>'
         .Form\checkbox('randomizeKey',
-            'Randomize our exchange API key', $values['randomizeKey'])
+            'Randomize our key', $values['randomizeKey'])
         .'<div class="hr"></div>'
         .Form\button('Save Changes')
         .ItemList\itemHiddenInputs($id)

@@ -20,7 +20,7 @@ function create_form_items ($values) {
         .'<div class="hr"></div>'
         .create_expires_field($values['expires'])
         .'<div class="hr"></div>'
-        .Form\textarea('their_exchange_api_key', 'Their exchange API key', [
+        .Form\textarea('their_exchange_api_key', 'Their key', [
             'value' => $values['their_exchange_api_key'],
             'maxlength' => ApiKey\length(),
             'autofocus' => $focus === 'their_exchange_api_key',

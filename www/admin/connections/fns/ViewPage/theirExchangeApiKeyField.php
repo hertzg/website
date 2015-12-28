@@ -5,7 +5,7 @@ namespace ViewPage;
 function theirExchangeApiKeyField ($connection) {
 
     $fnsDir = __DIR__.'/../../../../fns';
-    $label = 'Their exchange API key';
+    $label = 'Their key';
 
     $their_exchange_api_key = $connection->their_exchange_api_key;
     if ($their_exchange_api_key === null) {

@@ -77,7 +77,7 @@ function create ($mysqli, $connection, &$scripts) {
             .'<div class="hr"></div>'
             .theirExchangeApiKeyField($connection)
             .'<div class="hr"></div>'
-            .\Form\textarea('our_exchange_api_key', 'Our exchange API key', [
+            .\Form\textarea('our_exchange_api_key', 'Our key', [
                 'value' => $connection->our_exchange_api_key,
                 'readonly' => true,
             ])

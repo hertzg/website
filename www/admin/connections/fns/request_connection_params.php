@@ -37,7 +37,7 @@ function request_connection_params ($mysqli,
     else {
         include_once "$fnsDir/ApiKey/isValid.php";
         if (!ApiKey\isValid($their_exchange_api_key)) {
-            $errors[] = 'Their exchange API key is invalid.';
+            $errors[] = 'Their key is invalid.';
             if ($focus === null) $focus = 'their_exchange_api_key';
         }
     }
