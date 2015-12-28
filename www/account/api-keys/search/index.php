@@ -1,12 +1,19 @@
 <?php
 
-// TODO do not load this page if no api keys are present
-
 $base = '../../../';
 $fnsDir = '../../../fns';
 
 include_once "$fnsDir/require_user.php";
 $user = require_user($base);
+
+if (!$user->num_api_keys) {
+    unset(
+        $_SESSION['account/api-keys/errors'],
+        $_SESSION['account/api-keys/messages']
+    );
+    include_once "$fnsDir/redirect.php";
+    redirect('..');
+}
 
 include_once '../fns/unset_session_vars.php';
 unset_session_vars();
