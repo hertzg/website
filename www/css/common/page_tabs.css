@@ -1,0 +1,23 @@
+.page_tabs-tab {
+    display: inline-block;
+    vertical-align: top;
+    width: 50%;
+    height: 48px;
+    border-style: solid;
+    text-align: center;
+}
+.page_tabs-tab.normal {
+    border-bottom-width: 1px;
+    font-weight: bold;
+}
+.page_tabs-tab.selected {
+    border-bottom-width: 2px;
+    padding-top: 2px;
+    line-height: 44px;
+}
+
+.page_tabs-tab-link {
+    margin-bottom: -1px;
+    height: 48px;
+    line-height: 44px;
+}

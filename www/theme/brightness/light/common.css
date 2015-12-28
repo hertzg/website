@@ -23,7 +23,8 @@ body {
 }
 
 .contactPanel-info,
-.twoColumns-column2 {
+.twoColumns-column2,
+.page_tabs-tab.normal {
     border-color: #e3e3e3;
 }
 

@@ -9,5 +9,5 @@ CompressCssFiles([
     'thumbnail_link', 'image_link', 'panel', 'title_and_description',
     'tag', 'twoColumns', 'source_code', 'preview', 'navigation',
     'rightButton', 'removableItem', 'colorText', 'newItemButton',
-    'search_form', 'textAndButtons', 'thumbnails',
+    'search_form', 'textAndButtons', 'thumbnails', 'page_tabs',
 ])

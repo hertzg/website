@@ -13,7 +13,8 @@
 .a,
 .tag,
 .tab-active,
-.form-property {
+.form-property,
+.page_tabs-tab.selected {
     color: #b366ff;
 }
 
@@ -23,7 +24,8 @@
 
 #tbar,
 .tag:focus,
-.panel-title {
+.panel-title,
+.page_tabs-tab.selected {
     border-color: #b366ff;
 }
 
