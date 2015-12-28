@@ -25,7 +25,7 @@ function create_calendar ($mysqli, $id_users,
         $monthStartTime, $nextMonthStartTime, $monthSelected, $yearSelected);
 
     $calendarText = date('F', $timeSelected);
-    if ($day_is_selected) $calendarText .= ' '.date('d', $timeSelected);
+    if ($day_is_selected) $calendarText .= ' '.date('j', $timeSelected);
     if ($yearSelected != date('Y', $timeToday)) {
         $calendarText .= ', '.date('Y', $timeSelected);
     }
