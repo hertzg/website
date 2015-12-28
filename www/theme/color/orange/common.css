@@ -22,7 +22,8 @@
 }
 
 #tbar,
-.tag:focus {
+.tag:focus,
+.panel-title {
     border-color: #f80;
 }
 
@@ -36,9 +37,6 @@
     border-color: #f80;
 }
 
-.panel-title {
-    border-top-color: #f80;
-}
 .panel-title-text {
     color: #f80;
 }
