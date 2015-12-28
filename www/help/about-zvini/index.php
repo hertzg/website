@@ -16,15 +16,13 @@ if (count($lines) === 1) $tag = htmlspecialchars($lines[0]);
 else $tag = 'Not available';
 
 include_once "$fnsDir/Form/label.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/imageLink.php";
-include_once "$fnsDir/Page/tabs.php";
 include_once "$fnsDir/Page/text.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'Help',
-            'href' => '../#about-zvini',
-        ],
+        'title' => 'Help',
+        'href' => '../#about-zvini',
     ],
     'About Zvini',
     Page\text(

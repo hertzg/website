@@ -58,16 +58,14 @@ function create ($mysqli, $connection, &$scripts) {
     include_once "$fnsDir/create_expires_label.php";
     include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/ItemList/listHref.php";
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    include_once "$fnsDir/Page/tabs.php";
     return
-        \Page\tabs(
+        \Page\create(
             [
-                [
-                    'title' => 'Connections',
-                    'href' => \ItemList\listHref()."#$id",
-                ],
+                'title' => 'Connections',
+                'href' => \ItemList\listHref()."#$id",
             ],
             "Connection #$id",
             \Page\sessionMessages('admin/connections/view/messages')

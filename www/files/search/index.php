@@ -60,13 +60,11 @@ if (!$deep) {
 include_once '../fns/unset_session_vars.php';
 unset_session_vars();
 
-include_once "$fnsDir/Page/tabs.php";
-$content = Page\tabs(
+include_once "$fnsDir/Page/create.php";
+$content = Page\create(
     [
-        [
-            'title' => 'Home',
-            'href' => '../../search/?keyword='.rawurlencode($keyword),
-        ],
+        'title' => 'Home',
+        'href' => '../../search/?keyword='.rawurlencode($keyword),
     ],
     'Files',
     join('<div class="hr"></div>', $items)

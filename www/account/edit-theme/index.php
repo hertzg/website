@@ -39,15 +39,13 @@ foreach (Theme\Brightness\index() as $id => $brightness) {
 
 }
 
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionMessages.php";
-include_once "$fnsDir/Page/tabs.php";
 include_once "$fnsDir/Page/text.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'Account',
-            'href' => '../#edit-theme',
-        ],
+        'title' => 'Account',
+        'href' => '../#edit-theme',
     ],
     'Edit Theme',
     Page\sessionMessages('account/edit-theme/messages')

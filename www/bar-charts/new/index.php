@@ -27,14 +27,12 @@ include_once '../fns/create_form_items.php';
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/ItemList/listHref.php";
 include_once "$fnsDir/ItemList/pageHiddenInputs.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
-include_once "$fnsDir/Page/tabs.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'Bar Charts',
-            'href' => ItemList\listHref(),
-        ],
+        'title' => 'Bar Charts',
+        'href' => ItemList\listHref(),
     ],
     'New Bar Chart',
     Page\sessionErrors('bar-charts/new/errors')

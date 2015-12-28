@@ -21,15 +21,13 @@ include_once '../fns/create_form_items.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/ItemList/escapedItemQuery.php';
 include_once '../../fns/ItemList/itemHiddenInputs.php';
+include_once '../../fns/Page/create.php';
 include_once '../../fns/Page/sessionErrors.php';
 include_once '../../fns/Page/staticTwoColumns.php';
-include_once '../../fns/Page/tabs.php';
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => "Bookmark #$id",
-            'href' => '../view/'.ItemList\escapedItemQuery($id).'#edit',
-        ],
+        'title' => "Bookmark #$id",
+        'href' => '../view/'.ItemList\escapedItemQuery($id).'#edit',
     ],
     'Edit',
     Page\sessionErrors('bookmarks/edit/errors')

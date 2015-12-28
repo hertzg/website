@@ -75,15 +75,13 @@ function create ($note, &$scripts) {
     include_once __DIR__.'/infoText.php';
     include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/ItemList/listHref.php";
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    include_once "$fnsDir/Page/tabs.php";
     return
-        \Page\tabs(
+        \Page\create(
             [
-                [
-                    'title' => 'Notes',
-                    'href' => \ItemList\listHref()."#$id",
-                ],
+                'title' => 'Notes',
+                'href' => \ItemList\listHref()."#$id",
             ],
             "Note #$id",
             $errors.\Page\sessionMessages('notes/view/messages')

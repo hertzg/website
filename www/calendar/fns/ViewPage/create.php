@@ -60,16 +60,14 @@ function create ($user, $event, &$scripts) {
 
     include_once __DIR__.'/viewContent.php';
     include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    include_once "$fnsDir/Page/tabs.php";
     return
-        \Page\tabs(
+        \Page\create(
             [
-                [
-                    'title' => 'Calendar',
-                    'href' => "../$calendarQuery#$id",
-                ],
+                'title' => 'Calendar',
+                'href' => "../$calendarQuery#$id",
             ],
             "Event #$id",
             \Page\sessionMessages('calendar/view-event/messages')

@@ -23,14 +23,12 @@ include_once '../fns/create_file_location_bar.php';
 include_once '../fns/create_folder_form_items.php';
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/hidden.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
-include_once "$fnsDir/Page/tabs.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'Files',
-            'href' => "$folder_link#new-folder",
-        ],
+        'title' => 'Files',
+        'href' => "$folder_link#new-folder",
     ],
     'New Folder',
     create_file_location_bar($mysqli,

@@ -7,17 +7,15 @@ function create_content ($items, $optionsPanel, $base) {
     include_once "$fnsDir/DeletedItems/expireDays.php";
     $expireDays = DeletedItems\expireDays();
 
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    include_once "$fnsDir/Page/tabs.php";
     return
-        Page\tabs(
+        Page\create(
             [
-                [
-                    'title' => 'Home',
-                    'href' => "$base../home/#trash",
-                ],
+                'title' => 'Home',
+                'href' => "$base../home/#trash",
             ],
             'Trash',
             Page\sessionErrors('trash/errors')

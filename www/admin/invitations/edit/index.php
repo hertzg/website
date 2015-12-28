@@ -10,13 +10,11 @@ $fnsDir = '../../../fns';
 
 include_once '../fns/create_form_items.php';
 include_once "$fnsDir/Form/button.php";
-include_once "$fnsDir/Page/tabs.php";
-$content = Page\tabs(
+include_once "$fnsDir/Page/create.php";
+$content = Page\create(
     [
-        [
-            'title' => "Invitation #$id",
-            'href' => "../view/?id=$id#edit",
-        ],
+        'title' => "Invitation #$id",
+        'href' => "../view/?id=$id#edit",
     ],
     'Edit',
     '<form action="submit.php" method="post">'

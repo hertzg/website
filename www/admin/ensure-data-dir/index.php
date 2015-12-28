@@ -7,14 +7,12 @@ include_once '../../fns/ensure_data_dir.php';
 include_once '../../lib/mysqli.php';
 ensure_data_dir($mysqli);
 
+include_once '../../fns/Page/create.php';
 include_once '../../fns/Page/sourceCode.php';
-include_once '../../fns/Page/tabs.php';
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'Administration',
-            'href' => '../#ensure-data-dir',
-        ],
+        'title' => 'Administration',
+        'href' => '../#ensure-data-dir',
     ],
     'Ensure Data Dir',
     Page\sourceCode('Done.')

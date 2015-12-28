@@ -57,17 +57,15 @@ function create ($mysqli, $file, &$scripts) {
     include_once __DIR__.'/../create_file_location_bar.php';
     include_once __DIR__.'/optionsPanel.php';
     include_once "$fnsDir/Form/label.php";
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    include_once "$fnsDir/Page/tabs.php";
     return
-        \Page\tabs(
+        \Page\create(
             [
-                [
-                    'title' => 'Files',
-                    'href' => "$folder_link#file_$id",
-                ],
+                'title' => 'Files',
+                'href' => "$folder_link#file_$id",
             ],
             "File #$id",
             \Page\sessionErrors('files/view-file/errors')

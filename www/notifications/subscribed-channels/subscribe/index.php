@@ -15,14 +15,12 @@ else $values = ['channel_name' => ''];
 include_once "$fnsDir/ChannelName/maxLength.php";
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/textfield.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
-include_once "$fnsDir/Page/tabs.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'Other Channels',
-            'href' => '../#subscribe',
-        ],
+        'title' => 'Other Channels',
+        'href' => '../#subscribe',
     ],
     'Subscribe',
     Page\sessionErrors('notifications/subscribed-channels/subscribe/errors')

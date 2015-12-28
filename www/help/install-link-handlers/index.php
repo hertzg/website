@@ -5,15 +5,13 @@ $fnsDir = '../../fns';
 include_once "$fnsDir/signed_user.php";
 $user = signed_user();
 
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/errors.php";
 include_once "$fnsDir/Page/imageLink.php";
-include_once "$fnsDir/Page/tabs.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'Help',
-            'href' => '../#install-link-handlers',
-        ],
+        'title' => 'Help',
+        'href' => '../#install-link-handlers',
     ],
     'Install Link Handlers',
     '<noscript>'

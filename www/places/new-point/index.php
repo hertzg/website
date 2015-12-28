@@ -20,16 +20,14 @@ include_once '../fns/create_point_form_items.php';
 include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/ItemList/itemHiddenInputs.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
-include_once "$fnsDir/Page/tabs.php";
 include_once "$fnsDir/Page/warnings.php";
 $content =
-    Page\tabs(
+    Page\create(
         [
-            [
-                'title' => "Place #$id",
-                'href' => "../view/$escapedItemQuery#new-point",
-            ],
+            'title' => "Place #$id",
+            'href' => "../view/$escapedItemQuery#new-point",
         ],
         'Add New Point',
         Page\sessionErrors('places/new-point/errors')

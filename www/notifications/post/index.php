@@ -35,14 +35,12 @@ include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/select.php";
 include_once "$fnsDir/Form/textarea.php";
 include_once "$fnsDir/Notifications/maxLengths.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
-include_once "$fnsDir/Page/tabs.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'Notifications',
-            'href' => '..',
-        ],
+        'title' => 'Notifications',
+        'href' => '..',
     ],
     'Post a Notification',
     Page\sessionErrors('notifications/post/errors')

@@ -25,14 +25,12 @@ unset(
 include_once '../fns/calendar_href.php';
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/datefield.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
-include_once "$fnsDir/Page/tabs.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'Calendar',
-            'href' => calendar_href($day, $month, $year).'#jump-to',
-        ],
+        'title' => 'Calendar',
+        'href' => calendar_href($day, $month, $year).'#jump-to',
     ],
     'Jump To',
     Page\sessionErrors('calendar/jump-to/errors')

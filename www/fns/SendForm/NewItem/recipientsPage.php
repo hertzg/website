@@ -55,16 +55,14 @@ function recipientsPage ($mysqli, $user,
     }
 
     include_once "$fnsDir/ItemList/escapedPageQuery.php";
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    include_once "$fnsDir/Page/tabs.php";
     include_once "$fnsDir/Page/text.php";
-    $content = \Page\tabs(
+    $content = \Page\create(
         [
-            [
-                'title' => "New $what_upper",
-                'href' => '../'.\ItemList\escapedPageQuery(),
-            ],
+            'title' => "New $what_upper",
+            'href' => '../'.\ItemList\escapedPageQuery(),
         ],
         'Send',
         \Page\sessionErrors($errorsKey)

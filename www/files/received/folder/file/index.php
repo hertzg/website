@@ -35,13 +35,11 @@ $filePreview = Page\filePreview($receivedFolderFile->media_type,
 
 include_once "$fnsDir/create_panel.php";
 include_once "$fnsDir/Form/label.php";
-include_once "$fnsDir/Page/tabs.php";
-$content = Page\tabs(
+include_once "$fnsDir/Page/create.php";
+$content = Page\create(
     [
-        [
-            'title' => 'Received',
-            'href' => "../../#folder_$id_received_folders",
-        ],
+        'title' => 'Received',
+        'href' => "../../#folder_$id_received_folders",
     ],
     $title,
     '<div class="textAndButtons">'

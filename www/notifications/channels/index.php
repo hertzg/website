@@ -41,18 +41,16 @@ if ($user->num_channels) {
 include_once 'fns/unset_session_vars.php';
 unset_session_vars();
 
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/imageLink.php";
 include_once "$fnsDir/Page/newItemButton.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/sessionMessages.php";
-include_once "$fnsDir/Page/tabs.php";
 $content =
-    Page\tabs(
+    Page\create(
         [
-            [
-                'title' => 'Notifications',
-                'href' => '../#channels',
-            ],
+            'title' => 'Notifications',
+            'href' => '../#channels',
         ],
         'Channels',
         Page\sessionErrors('notifications/channels/errors')

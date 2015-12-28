@@ -8,15 +8,13 @@ function create_content ($id, $values, &$scripts) {
     include_once "$fnsDir/Form/button.php";
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
     include_once "$fnsDir/ItemList/itemHiddenInputs.php";
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/staticTwoColumns.php";
-    include_once "$fnsDir/Page/tabs.php";
-    return Page\tabs(
+    return Page\create(
         [
-            [
-                'title' => "Contact #$id",
-                'href' => '../view/'.ItemList\escapedItemQuery($id).'#edit',
-            ],
+            'title' => "Contact #$id",
+            'href' => '../view/'.ItemList\escapedItemQuery($id).'#edit',
         ],
         'Edit',
         Page\sessionErrors('contacts/edit/errors')

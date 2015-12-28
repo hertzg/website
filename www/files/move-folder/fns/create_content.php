@@ -7,15 +7,13 @@ function create_content ($mysqli, $folder, $parentFolder, $items) {
 
     include_once __DIR__.'/../../fns/create_move_location_bar.php';
     include_once "$fnsDir/create_folder_link.php";
-    include_once "$fnsDir/Page/tabs.php";
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/text.php";
-    return Page\tabs(
+    return Page\create(
         [
-            [
-                'title' => 'Files',
-                'href' => create_folder_link($id_folders, '../').'#move',
-            ]
+            'title' => 'Files',
+            'href' => create_folder_link($id_folders, '../').'#move',
         ],
         "Move Folder #$id_folders",
         Page\sessionErrors('files/move-folder/errors')

@@ -12,14 +12,12 @@ unset($_SESSION['notifications/channels/view/messages']);
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/textarea.php";
 include_once "$fnsDir/Notifications/maxLengths.php";
-include_once "$fnsDir/Page/tabs.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => "Channel #$id",
-            'href' => "../view/?id=$id#post",
-        ],
+        'title' => "Channel #$id",
+        'href' => "../view/?id=$id#post",
     ],
     'Post',
     Page\sessionErrors('notifications/channels/post/errors')

@@ -44,14 +44,12 @@ if ($user->num_subscribed_channels) {
 }
 
 include_once 'fns/create_options_panel.php';
-include_once "$fnsDir/Page/tabs.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionMessages.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'Notifications',
-            'href' => '../#subscribed-channels',
-        ],
+        'title' => 'Notifications',
+        'href' => '../#subscribed-channels',
     ],
     'Other Channels',
     Page\sessionMessages('notifications/subscribed-channels/messages')

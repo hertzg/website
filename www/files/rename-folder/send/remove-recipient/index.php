@@ -22,17 +22,15 @@ $yesHref = 'submit.php?'.htmlspecialchars(http_build_query([
     'username' => $username,
 ]));
 
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/confirmDialog.php";
-include_once "$fnsDir/Page/tabs.php";
 include_once "$fnsDir/Page/text.php";
 include_once "$fnsDir/SendForm/recipientsPanels.php";
 $content =
-    Page\tabs(
+    Page\create(
         [
-            [
-                'title' => "Rename Folder #$id",
-                'href' => "../../?id_folders=$id",
-            ],
+            'title' => "Rename Folder #$id",
+            'href' => "../../?id_folders=$id",
         ],
         'Send',
         Page\text('Send the renamed folder to:')

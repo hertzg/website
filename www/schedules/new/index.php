@@ -31,14 +31,12 @@ else {
 include_once '../fns/create_first_stage_form_items.php';
 include_once '../../fns/ItemList/listHref.php';
 include_once '../../fns/ItemList/pageHiddenInputs.php';
+include_once '../../fns/Page/create.php';
 include_once '../../fns/Page/sessionErrors.php';
-include_once '../../fns/Page/tabs.php';
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'Schedules',
-            'href' => ItemList\listHref(),
-        ],
+        'title' => 'Schedules',
+        'href' => ItemList\listHref(),
     ],
     'New Schedule',
     Page\sessionErrors('schedules/new/errors')

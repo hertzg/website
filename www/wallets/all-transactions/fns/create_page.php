@@ -66,15 +66,13 @@ function create_page ($mysqli, $user, $wallet, &$scripts, $base = '') {
         .'</div>';
 
     include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    include_once "$fnsDir/Page/tabs.php";
-    return Page\tabs(
+    return Page\create(
         [
-            [
-                'title' => "Wallet #$id",
-                'href' => "$base../view/?id=$id#all-transactions",
-            ],
+            'title' => "Wallet #$id",
+            'href' => "$base../view/?id=$id#all-transactions",
         ],
         'All Transactions',
         Page\sessionMessages('wallets/all-transactions/messages')

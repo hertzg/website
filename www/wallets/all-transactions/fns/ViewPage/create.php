@@ -66,15 +66,13 @@ function create ($transaction, &$scripts) {
     $listHref = \ItemList\listHref('', ['id' => $id_wallets]);
 
     include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    include_once "$fnsDir/Page/tabs.php";
-    return \Page\tabs(
+    return \Page\create(
         [
-            [
-                'title' => 'All Transactions',
-                'href' => "../$listHref#$id",
-            ],
+            'title' => 'All Transactions',
+            'href' => "../$listHref#$id",
         ],
         "Transaction #$id",
         \Page\sessionMessages('wallets/all-transactions/view/messages')

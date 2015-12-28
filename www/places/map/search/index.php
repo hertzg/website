@@ -22,13 +22,11 @@ if ($tag === '') {
 include_once '../fns/create_map.php';
 include_once "$fnsDir/create_new_item_button.php";
 include_once "$fnsDir/ItemList/listHref.php";
-include_once "$fnsDir/Page/tabs.php";
-$content = \Page\tabs(
+include_once "$fnsDir/Page/create.php";
+$content = \Page\create(
     [
-        [
-            'title' => 'Places',
-            'href' => '../'.ItemList\listHref(),
-        ],
+        'title' => 'Places',
+        'href' => '../'.ItemList\listHref(),
     ],
     'Map',
     create_map($places, '../'),

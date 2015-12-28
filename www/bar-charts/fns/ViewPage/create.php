@@ -52,15 +52,13 @@ function create ($mysqli, $user, $bar_chart, &$scripts, &$head) {
     include_once __DIR__.'/optionsPanel.php';
     include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/ItemList/listHref.php";
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    include_once "$fnsDir/Page/tabs.php";
-    return \Page\tabs(
+    return \Page\create(
         [
-            [
-                'title' => 'Bar Charts',
-                'href' => \ItemList\listHref()."#$id",
-            ],
+            'title' => 'Bar Charts',
+            'href' => \ItemList\listHref()."#$id",
         ],
         "Bar Chart #$id",
         \Page\sessionMessages('bar-charts/view/messages')

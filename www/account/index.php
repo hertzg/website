@@ -49,15 +49,13 @@ include_once "$fnsDir/n_times.php";
 $items[] = Form\label('Signed in', ucfirst(n_times($user->num_signins)));
 
 include_once 'fns/create_options_panel.php';
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionMessages.php";
-include_once "$fnsDir/Page/tabs.php";
 $content =
-    Page\tabs(
+    Page\create(
         [
-            [
-                'title' => 'Home',
-                'href' => '../home/#account',
-            ],
+            'title' => 'Home',
+            'href' => '../home/#account',
         ],
         'Account',
         Page\sessionMessages('account/messages')

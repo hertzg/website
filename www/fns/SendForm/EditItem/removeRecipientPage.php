@@ -23,15 +23,13 @@ function removeRecipientPage ($mysqli,
 
     include_once __DIR__.'/../recipientsPanels.php';
     include_once "$fnsDir/Page/confirmDialog.php";
-    include_once "$fnsDir/Page/tabs.php";
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/text.php";
     $content =
-        \Page\tabs(
+        \Page\create(
             [
-                [
-                    'title' => 'Edit',
-                    'href' => "../../$escapedItemQuery",
-                ],
+                'title' => 'Edit',
+                'href' => "../../$escapedItemQuery",
             ],
             'Send',
             \Page\text("Send the edited $text to:")

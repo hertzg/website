@@ -28,16 +28,14 @@ include_once "$fnsDir/Form/notes.php";
 include_once "$fnsDir/Form/textfield.php";
 include_once "$fnsDir/Form/timezoneSelect.php";
 include_once "$fnsDir/FullName/maxLength.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
-include_once "$fnsDir/Page/tabs.php";
 include_once "$fnsDir/Username/maxLength.php";
 include_once "$fnsDir/Username/minLength.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'Account',
-            'href' => '../#edit-profile',
-        ],
+        'title' => 'Account',
+        'href' => '../#edit-profile',
     ],
     'Edit Profile',
     Page\sessionErrors('account/edit-profile/errors')

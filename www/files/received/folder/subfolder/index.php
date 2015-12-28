@@ -49,13 +49,11 @@ if ($subfolders || $files) {
 $title = "Received Folder #$id_received_folders";
 
 include_once 'fns/create_location_bar.php';
-include_once "$fnsDir/Page/tabs.php";
-$content = Page\tabs(
+include_once "$fnsDir/Page/create.php";
+$content = Page\create(
     [
-        [
-            'title' => 'Received',
-            'href' => "../../#folder_$id_received_folders",
-        ],
+        'title' => 'Received',
+        'href' => "../../#folder_$id_received_folders",
     ],
     $title,
     create_location_bar($mysqli, $receivedFolderSubfolder)

@@ -66,17 +66,15 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
 
     include_once __DIR__.'/sort_panel.php';
     include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    include_once "$fnsDir/Page/tabs.php";
     return
-        Page\tabs(
+        Page\create(
             [
-                [
-                    'title' => 'Calendar',
-                    'href' => "$base../#all-events",
-                ],
+                'title' => 'Calendar',
+                'href' => "$base../#all-events",
             ],
             'All Events',
             Page\sessionErrors('calendar/all-events/errors')

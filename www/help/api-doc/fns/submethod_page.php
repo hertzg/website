@@ -36,13 +36,11 @@ function submethod_page ($groupKey, $subgroupName,
     }
     $items[] = Page\text($text);
 
-    include_once "$fnsDir/Page/tabs.php";
-    $content = Page\tabs(
+    include_once "$fnsDir/Page/create.php";
+    $content = Page\create(
         [
-            [
-                'title' => $subgroupName,
-                'href' => "../#$methodName",
-            ],
+            'title' => $subgroupName,
+            'href' => "../#$methodName",
         ],
         $methodName,
         join('<div class="hr"></div>', $items)

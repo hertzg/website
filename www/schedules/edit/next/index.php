@@ -15,15 +15,13 @@ $escapedItemQuery = ItemList\escapedItemQuery($id);
 include_once '../../fns/create_offset_select.php';
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/ItemList/itemHiddenInputs.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/imageLink.php";
 include_once "$fnsDir/Page/staticTwoColumns.php";
-include_once "$fnsDir/Page/tabs.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => "Schedule #$id",
-            'href' => "../../view/$escapedItemQuery#edit",
-        ],
+        'title' => "Schedule #$id",
+        'href' => "../../view/$escapedItemQuery#edit",
     ],
     'Edit',
     Page\imageLink('Back', "../$escapedItemQuery", 'arrow-left')

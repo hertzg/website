@@ -23,14 +23,12 @@ else {
 include_once '../fns/create_first_stage_form_items.php';
 include_once '../../fns/ItemList/escapedItemQuery.php';
 include_once '../../fns/ItemList/itemHiddenInputs.php';
+include_once '../../fns/Page/create.php';
 include_once '../../fns/Page/sessionErrors.php';
-include_once '../../fns/Page/tabs.php';
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => "Schedule #$id",
-            'href' => '../view/'.ItemList\escapedItemQuery($id).'#edit',
-        ],
+        'title' => "Schedule #$id",
+        'href' => '../view/'.ItemList\escapedItemQuery($id).'#edit',
     ],
     'Edit',
     Page\sessionErrors('schedules/edit/errors')

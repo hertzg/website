@@ -15,14 +15,12 @@ include_once '../fns/create_bar_form_items.php';
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/ItemList/escapedItemQuery.php";
 include_once "$fnsDir/ItemList/itemHiddenInputs.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
-include_once "$fnsDir/Page/tabs.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => "Bar #$id",
-            'href' => '../view-bar/'.ItemList\escapedItemQuery($id).'#edit',
-        ],
+        'title' => "Bar #$id",
+        'href' => '../view-bar/'.ItemList\escapedItemQuery($id).'#edit',
     ],
     'Edit',
     Page\sessionErrors('bar-charts/edit-bar/errors')

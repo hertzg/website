@@ -13,14 +13,12 @@ $escapedItemQuery = ItemList\escapedItemQuery($id);
 
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/filefield.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
-include_once "$fnsDir/Page/tabs.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => "Contact #$id",
-            'href' => "../../view/$escapedItemQuery#edit-photo",
-        ],
+        'title' => "Contact #$id",
+        'href' => "../../view/$escapedItemQuery#edit-photo",
     ],
     'Edit Photo',
     Page\sessionErrors('contacts/photo/edit/errors')

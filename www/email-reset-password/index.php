@@ -37,14 +37,12 @@ include_once '../fns/Form/button.php';
 include_once '../fns/Form/captcha.php';
 include_once '../fns/Form/hidden.php';
 include_once '../fns/Form/textfield.php';
+include_once '../fns/Page/create.php';
 include_once '../fns/Page/sessionErrors.php';
-include_once '../fns/Page/tabs.php';
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'Sign In',
-            'href' => "../sign-in/$queryString#email-reset-password",
-        ],
+        'title' => 'Sign In',
+        'href' => "../sign-in/$queryString#email-reset-password",
     ],
     'Reset Password',
     Page\sessionErrors('email-reset-password/errors')

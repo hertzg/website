@@ -26,15 +26,13 @@ foreach ($groups as $key => $group) {
 
 include_once 'fns/get_article_text.php';
 include_once "$fnsDir/create_panel.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/imageArrowLink.php";
-include_once "$fnsDir/Page/tabs.php";
 include_once "$fnsDir/Page/text.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'Help',
-            'href' => '../#admin-api-doc',
-        ],
+        'title' => 'Help',
+        'href' => '../#admin-api-doc',
     ],
     'Admin API Documentation',
     Page\text(get_article_text())

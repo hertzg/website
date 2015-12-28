@@ -52,16 +52,14 @@ if ($values['usernameError']) {
     }
 }
 
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/sessionMessages.php";
-include_once "$fnsDir/Page/tabs.php";
 include_once "$fnsDir/Page/text.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'Rename',
-            'href' => "../?id=$id",
-        ],
+        'title' => 'Rename',
+        'href' => "../?id=$id",
     ],
     'Send',
     Page\sessionErrors('files/rename-file/send/errors')

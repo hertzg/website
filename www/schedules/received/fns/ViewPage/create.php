@@ -38,15 +38,13 @@ function create ($user, $receivedSchedule, &$scripts) {
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/create_received_from_item.php";
     include_once "$fnsDir/ItemList/Received/listHref.php";
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    include_once "$fnsDir/Page/tabs.php";
-    return \Page\tabs(
+    return \Page\create(
         [
-            [
-                'title' => 'Received',
-                'href' => '../'.\ItemList\Received\listHref()."#$id",
-            ],
+            'title' => 'Received',
+            'href' => '../'.\ItemList\Received\listHref()."#$id",
         ],
         "Received Schedule #$id",
         \Page\sessionMessages('schedules/received/view/messages')

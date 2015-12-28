@@ -60,16 +60,14 @@ function create_content ($mysqli, $user, $items, $options, $base) {
     }
 
     include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    include_once "$fnsDir/Page/tabs.php";
     return
-        Page\tabs(
+        Page\create(
             [
-                [
-                    'title' => 'Home',
-                    'href' => "$base../home/#notifications",
-                ],
+                'title' => 'Home',
+                'href' => "$base../home/#notifications",
             ],
             'Notifications',
             Page\sessionErrors('notifications/errors')

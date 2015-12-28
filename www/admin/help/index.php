@@ -7,14 +7,12 @@ session_start_custom($new);
 
 unset($_SESSION['admin/messages']);
 
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/imageArrowLink.php";
-include_once "$fnsDir/Page/tabs.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'Administration',
-            'href' => '../#help',
-        ],
+        'title' => 'Administration',
+        'href' => '../#help',
     ],
     'Help',
     Page\imageArrowLink('Admin API Documentation',

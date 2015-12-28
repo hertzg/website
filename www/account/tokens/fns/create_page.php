@@ -68,16 +68,14 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
     $panelContent = join('<div class="hr"></div>', $options);
     $optionsPanel = create_panel('Options', $panelContent);
 
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    include_once "$fnsDir/Page/tabs.php";
     return
-        Page\tabs(
+        Page\create(
             [
-                [
-                    'title' => 'Account',
-                    'href' => "{$base}../#tokens",
-                ],
+                'title' => 'Account',
+                'href' => "{$base}../#tokens",
             ],
             'Sessions',
             Page\sessionErrors('account/tokens/errors')

@@ -20,14 +20,12 @@ $fnsDir = '../../../fns';
 
 include_once '../fns/create_form_items.php';
 include_once "$fnsDir/Form/button.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
-include_once "$fnsDir/Page/tabs.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => "Channel #$id",
-            'href' => "../view/?id=$id#edit",
-        ],
+        'title' => "Channel #$id",
+        'href' => "../view/?id=$id#edit",
     ],
     'Edit',
     Page\sessionErrors('notifications/channels/edit/errors')

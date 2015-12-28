@@ -12,15 +12,13 @@ function create_content ($items, $base) {
         .'</div>';
 
     include_once "$fnsDir/create_panel.php";
-    include_once "$fnsDir/Page/tabs.php";
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    return Page\tabs(
+    return Page\create(
         [
-            [
-                'title' => 'Files',
-                'href' => "{$base}../#received",
-            ],
+            'title' => 'Files',
+            'href' => "{$base}../#received",
         ],
         'Received',
         Page\sessionErrors('files/received/errors')

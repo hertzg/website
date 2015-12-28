@@ -5,16 +5,14 @@ function create_content ($items, $optionsPanel, $base = '') {
     $fnsDir = __DIR__.'/../../../fns';
 
     // TODO make new item button green
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    include_once "$fnsDir/Page/tabs.php";
-    return Page\tabs(
+    return Page\create(
         [
-            [
-                'title' => 'Administration',
-                'href' => "$base../#invitations",
-            ],
+            'title' => 'Administration',
+            'href' => "$base../#invitations",
         ],
         'Invitations',
         Page\sessionErrors('admin/invitations/errors')

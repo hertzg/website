@@ -44,14 +44,12 @@ include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/checkbox.php";
 include_once "$fnsDir/ItemList/escapedItemQuery.php";
 include_once "$fnsDir/ItemList/itemHiddenInputs.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
-include_once "$fnsDir/Page/tabs.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => "API Key #$id",
-            'href' => '../view/'.ItemList\escapedItemQuery($id).'#edit',
-        ],
+        'title' => "API Key #$id",
+        'href' => '../view/'.ItemList\escapedItemQuery($id).'#edit',
     ],
     'Edit',
     Page\sessionErrors('account/api-keys/edit/errors')

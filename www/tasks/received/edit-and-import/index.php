@@ -43,14 +43,12 @@ $escapedItemQuery = ItemList\Received\escapedItemQuery($id);
 include_once '../../fns/create_form_items.php';
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/ItemList/Received/itemHiddenInputs.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
-include_once "$fnsDir/Page/tabs.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => "Received Task #$id",
-            'href' => "../view/$escapedItemQuery#edit-and-import",
-        ],
+        'title' => "Received Task #$id",
+        'href' => "../view/$escapedItemQuery#edit-and-import",
     ],
     'Edit and Import',
     Page\sessionErrors('tasks/received/edit-and-import/errors')

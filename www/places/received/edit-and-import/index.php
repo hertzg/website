@@ -33,15 +33,13 @@ include_once '../../fns/create_form_items.php';
 include_once '../../fns/create_geolocation_panel.php';
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/ItemList/Received/itemHiddenInputs.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
-include_once "$fnsDir/Page/tabs.php";
 $content =
-    Page\tabs(
+    Page\create(
         [
-            [
-                'title' => "Received Place #$id",
-                'href' => "../view/$escapedItemQuery#edit-and-import",
-            ],
+            'title' => "Received Place #$id",
+            'href' => "../view/$escapedItemQuery#edit-and-import",
         ],
         'Edit and Import',
         Page\sessionErrors('places/received/edit-and-import/errors')

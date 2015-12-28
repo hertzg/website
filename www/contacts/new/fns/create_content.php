@@ -8,15 +8,13 @@ function create_content ($values, &$scripts) {
     include_once "$fnsDir/Form/button.php";
     include_once "$fnsDir/ItemList/listHref.php";
     include_once "$fnsDir/ItemList/pageHiddenInputs.php";
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/staticTwoColumns.php";
-    include_once "$fnsDir/Page/tabs.php";
-    return Page\tabs(
+    return Page\create(
         [
-            [
-                'title' => 'Contacts',
-                'href' => ItemList\listHref(),
-            ],
+            'title' => 'Contacts',
+            'href' => ItemList\listHref(),
         ],
         'New Contact',
         Page\sessionErrors('contacts/new/errors')

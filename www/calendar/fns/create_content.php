@@ -23,19 +23,17 @@ function create_content ($mysqli, $user,
     include_once __DIR__.'/create_calendar.php';
     include_once "$fnsDir/create_calendar_icon_today.php";
     include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/imageArrowLink.php";
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/staticTwoColumns.php";
-    include_once "$fnsDir/Page/tabs.php";
     return
-        Page\tabs(
+        Page\create(
             [
-                [
-                    'title' => 'Home',
-                    'href' => '../home/#calendar',
-                ],
+                'title' => 'Home',
+                'href' => '../home/#calendar',
             ],
             'Calendar',
             Page\sessionErrors('calendar/errors')

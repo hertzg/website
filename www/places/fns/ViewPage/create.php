@@ -67,17 +67,15 @@ function create ($mysqli, $place, &$scripts, &$head) {
     include_once __DIR__.'/pointsPanel.php';
     include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/ItemList/listHref.php";
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/imageArrowLink.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    include_once "$fnsDir/Page/tabs.php";
     return
-        \Page\tabs(
+        \Page\create(
             [
-                [
-                    'title' => 'Places',
-                    'href' => \ItemList\listHref()."#$id",
-                ],
+                'title' => 'Places',
+                'href' => \ItemList\listHref()."#$id",
             ],
             "Place #$id",
             \Page\sessionMessages('places/view/messages')

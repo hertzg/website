@@ -15,14 +15,12 @@ $escapedItemQuery = ItemList\Received\escapedItemQuery($id);
 include_once '../../../fns/create_offset_select.php';
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/ItemList/Received/itemHiddenInputs.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/imageLink.php";
-include_once "$fnsDir/Page/tabs.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => "Received Schedule #$id",
-            'href' => "../../view/$escapedItemQuery#edit",
-        ],
+        'title' => "Received Schedule #$id",
+        'href' => "../../view/$escapedItemQuery#edit",
     ],
     'Edit and Import',
     Page\imageLink('Back', "../$escapedItemQuery", 'arrow-left')

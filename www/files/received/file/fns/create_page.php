@@ -53,17 +53,15 @@ function create_page ($mysqli, $receivedFile, &$scripts, $base = '') {
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/create_received_from_item.php";
     include_once "$fnsDir/Form/label.php";
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/staticTwoColumns.php";
-    include_once "$fnsDir/Page/tabs.php";
     include_once "$fnsDir/Page/twoColumns.php";
-    return Page\tabs(
+    return Page\create(
         [
-            [
-                'title' => 'Received',
-                'href' => "$base../#file_$id",
-            ],
+            'title' => 'Received',
+            'href' => "$base../#file_$id",
         ],
         "Received File #$id",
         Page\sessionMessages('files/received/file/messages')

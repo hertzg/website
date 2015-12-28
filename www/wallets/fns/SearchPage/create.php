@@ -46,15 +46,13 @@ function create ($mysqli, $user, &$scripts) {
     include_once __DIR__.'/../create_options_panel.php';
     include_once __DIR__.'/../sort_panel.php';
     include_once "$fnsDir/create_new_item_button.php";
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    include_once "$fnsDir/Page/tabs.php";
     return
-        \Page\tabs(
+        \Page\create(
             [
-                [
-                    'title' => 'Home',
-                    'href' => '../../search/?keyword='.rawurlencode($keyword),
-                ],
+                'title' => 'Home',
+                'href' => '../../search/?keyword='.rawurlencode($keyword),
             ],
             'Wallets',
             \Page\sessionMessages('wallets/messages')

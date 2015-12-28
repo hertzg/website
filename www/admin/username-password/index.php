@@ -28,17 +28,15 @@ include_once '../../fns/Form/button.php';
 include_once '../../fns/Form/notes.php';
 include_once '../../fns/Form/password.php';
 include_once '../../fns/Form/textfield.php';
+include_once '../../fns/Page/create.php';
 include_once '../../fns/Page/sessionErrors.php';
-include_once '../../fns/Page/tabs.php';
 include_once '../../fns/Password/minLength.php';
 include_once '../../fns/Username/maxLength.php';
 include_once '../../fns/Username/minLength.php';
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'Administration',
-            'href' => '../#username-password',
-        ],
+        'title' => 'Administration',
+        'href' => '../#username-password',
     ],
     'Set New Username/Password',
     Page\sessionErrors('admin/username-password/errors')

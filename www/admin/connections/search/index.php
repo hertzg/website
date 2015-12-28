@@ -59,15 +59,13 @@ if ($connections) {
 }
 
 include_once "$fnsDir/create_new_item_button.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/sessionMessages.php";
-include_once "$fnsDir/Page/tabs.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'Administration',
-            'href' => '../../#connections',
-        ],
+        'title' => 'Administration',
+        'href' => '../../#connections',
     ],
     'Connections',
     Page\sessionErrors('admin/connections/errors')

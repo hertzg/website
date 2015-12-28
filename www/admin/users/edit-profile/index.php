@@ -29,16 +29,14 @@ include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/checkbox.php";
 include_once "$fnsDir/Form/notes.php";
 include_once "$fnsDir/Form/textfield.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
-include_once "$fnsDir/Page/tabs.php";
 include_once "$fnsDir/Username/maxLength.php";
 include_once "$fnsDir/Username/minLength.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => "User #$id",
-            'href' => "../view/$escapedItemQuery#edit-profile",
-        ],
+        'title' => "User #$id",
+        'href' => "../view/$escapedItemQuery#edit-profile",
     ],
     'Edit Profile',
     Page\sessionErrors('admin/users/edit-profile/errors')

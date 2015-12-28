@@ -15,16 +15,14 @@ function create_content ($mysqli, $folder,
 
     include_once __DIR__.'/create_options_panel.php';
     include_once __DIR__.'/create_location_bar.php';
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    include_once "$fnsDir/Page/tabs.php";
     $content =
-        Page\tabs(
+        Page\create(
             [
-                [
-                    'title' => 'Home',
-                    'href' => '../home/#files',
-                ],
+                'title' => 'Home',
+                'href' => '../home/#files',
             ],
             $title,
             Page\sessionErrors('files/errors')

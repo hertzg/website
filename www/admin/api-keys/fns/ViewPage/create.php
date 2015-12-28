@@ -57,16 +57,14 @@ function create ($mysqli, $apiKey, &$scripts) {
     include_once "$fnsDir/Form/notes.php";
     include_once "$fnsDir/Form/textarea.php";
     include_once "$fnsDir/ItemList/listHref.php";
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    include_once "$fnsDir/Page/tabs.php";
     return
-        \Page\tabs(
+        \Page\create(
             [
-                [
-                    'title' => 'Admin API Keys',
-                    'href' => \ItemList\listHref()."#$id",
-                ],
+                'title' => 'Admin API Keys',
+                'href' => \ItemList\listHref()."#$id",
             ],
             "Admin API Key #$id",
             \Page\sessionMessages('admin/api-keys/view/messages')

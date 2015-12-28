@@ -74,13 +74,11 @@ if ($offset + $limit >= $total) {
 
 include_once "$fnsDir/auth_expire_days.php";
 include_once "$fnsDir/Page/infoText.php";
-include_once "$fnsDir/Page/tabs.php";
-$content = Page\tabs(
+include_once "$fnsDir/Page/create.php";
+$content = Page\create(
     [
-        [
-            'title' => 'Administration',
-            'href' => '../../#invalid-signins',
-        ],
+        'title' => 'Administration',
+        'href' => '../../#invalid-signins',
     ],
     'Invalid Signins',
     join('<div class="hr"></div>', $items)

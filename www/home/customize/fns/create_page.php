@@ -4,17 +4,15 @@ function create_page ($base = '') {
 
     $fnsDir = __DIR__.'/../../../fns';
 
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/imageArrowLink.php";
     include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
     include_once "$fnsDir/Page/imageLink.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    include_once "$fnsDir/Page/tabs.php";
-    return Page\tabs(
+    return Page\create(
         [
-            [
-                'title' => 'Home',
-                'href' => "$base../#customize",
-            ],
+            'title' => 'Home',
+            'href' => "$base../#customize",
         ],
         'Customize',
         Page\sessionMessages('home/customize/messages')

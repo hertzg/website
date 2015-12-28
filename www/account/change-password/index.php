@@ -26,15 +26,13 @@ include_once "$fnsDir/phishing_warning.php";
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/notes.php";
 include_once "$fnsDir/Form/password.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
-include_once "$fnsDir/Page/tabs.php";
 include_once "$fnsDir/Password/minLength.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'Account',
-            'href' => '../#change-password',
-        ],
+        'title' => 'Account',
+        'href' => '../#change-password',
     ],
     'Change Password',
     Page\sessionErrors('account/change-password/errors')

@@ -16,14 +16,12 @@ function group_page ($groupKey, $methods) {
             $name, $description, "$name/", 'api-method', ['id' => $name]);
     }
 
-    include_once "$fnsDir/Page/tabs.php";
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/text.php";
-    $content = Page\tabs(
+    $content = Page\create(
         [
-            [
-                'title' => 'Admin API Documentation',
-                'href' => "../#$groupKey",
-            ],
+            'title' => 'Admin API Documentation',
+            'href' => "../#$groupKey",
         ],
         $group['title'],
         Page\text("$group[description]:")

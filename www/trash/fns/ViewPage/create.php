@@ -98,14 +98,12 @@ function create ($mysqli, $deletedItem, $user, &$title, &$head, &$scripts) {
     );
 
     include_once __DIR__.'/optionsPanel.php';
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/infoText.php";
-    include_once "$fnsDir/Page/tabs.php";
-    return \Page\tabs(
+    return \Page\create(
         [
-            [
-                'title' => 'Trash',
-                'href' => "../#$id",
-            ],
+            'title' => 'Trash',
+            'href' => "../#$id",
         ],
         $title,
         $content.\Page\infoText($infoText)

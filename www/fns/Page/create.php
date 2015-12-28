@@ -2,13 +2,13 @@
 
 namespace Page;
 
-function tabs ($tabs, $activeTabTitle, $content, $newItemButton = '') {
+function create ($backlink, $activeTabTitle, $content, $newItemButton = '') {
 
     $itemsHtml = '';
-    foreach ($tabs as $tab) {
+    if ($backlink !== null) {
         $itemsHtml .=
-            "<a class=\"clickable tab-normal\" href=\"$tab[href]\">"
-                ."&laquo; $tab[title]"
+            "<a class=\"clickable tab-normal\" href=\"$backlink[href]\">"
+                ."&laquo; $backlink[title]"
             .'</a>';
     }
     $itemsHtml .=

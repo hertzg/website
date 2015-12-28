@@ -12,15 +12,13 @@ $bottomHref = "submit-to-bottom.php?key=$key";
 
 $fnsDir = '../../../../fns';
 
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/imageLink.php";
-include_once "$fnsDir/Page/tabs.php";
 include_once "$fnsDir/Page/text.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'Reorder Items',
-            'href' => "../#$key",
-        ],
+        'title' => 'Reorder Items',
+        'href' => "../#$key",
     ],
     'Move Item',
     Page\text("Where would you like to move \"<b>$title</b>\"?")

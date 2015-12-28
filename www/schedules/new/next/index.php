@@ -10,15 +10,13 @@ include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/ItemList/escapedPageQuery.php";
 include_once "$fnsDir/ItemList/listHref.php";
 include_once "$fnsDir/ItemList/pageHiddenInputs.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/imageLink.php";
-include_once "$fnsDir/Page/tabs.php";
 include_once "$fnsDir/Page/staticTwoColumns.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'Schedules',
-            'href' => '../'.ItemList\listHref(),
-        ],
+        'title' => 'Schedules',
+        'href' => '../'.ItemList\listHref(),
     ],
     'New Schedule',
     Page\imageLink('Back', '../'.ItemList\escapedPageQuery(), 'arrow-left')

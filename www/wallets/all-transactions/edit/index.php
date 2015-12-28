@@ -16,14 +16,12 @@ include_once '../../fns/create_transaction_form_items.php';
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/ItemList/escapedItemQuery.php";
 include_once "$fnsDir/ItemList/itemHiddenInputs.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
-include_once "$fnsDir/Page/tabs.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => "Transaction #$id",
-            'href' => '../view/'.ItemList\escapedItemQuery($id).'#edit',
-        ],
+        'title' => "Transaction #$id",
+        'href' => '../view/'.ItemList\escapedItemQuery($id).'#edit',
     ],
     'Edit',
     Page\sessionErrors('wallets/all-transactions/edit/errors')

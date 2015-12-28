@@ -38,16 +38,14 @@ include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/ItemList/escapedItemQuery.php";
 include_once "$fnsDir/ItemList/itemHiddenInputs.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/staticTwoColumns.php";
-include_once "$fnsDir/Page/tabs.php";
 $content =
-    Page\tabs(
+    Page\create(
         [
-            [
-                'title' => "Place #$id",
-                'href' => '../view/'.ItemList\escapedItemQuery($id).'#edit',
-            ],
+            'title' => "Place #$id",
+            'href' => '../view/'.ItemList\escapedItemQuery($id).'#edit',
         ],
         'Edit',
         Page\sessionErrors('places/edit/errors')

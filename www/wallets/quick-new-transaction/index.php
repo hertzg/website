@@ -45,14 +45,12 @@ include_once "$fnsDir/Form/select.php";
 include_once "$fnsDir/Form/textfield.php";
 include_once "$fnsDir/ItemList/listHref.php";
 include_once "$fnsDir/ItemList/pageHiddenInputs.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
-include_once "$fnsDir/Page/tabs.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'Wallets',
-            'href' => ItemList\listHref().'#new-transaction',
-        ],
+        'title' => 'Wallets',
+        'href' => ItemList\listHref().'#new-transaction',
     ],
     'New Transaction',
     Page\sessionErrors('wallets/quick-new-transaction/errors')

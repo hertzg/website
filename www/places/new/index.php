@@ -40,16 +40,14 @@ include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/ItemList/listHref.php";
 include_once "$fnsDir/ItemList/pageHiddenInputs.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/staticTwoColumns.php";
-include_once "$fnsDir/Page/tabs.php";
 $content =
-    Page\tabs(
+    Page\create(
         [
-            [
-                'title' => 'Places',
-                'href' => ItemList\listHref(),
-            ],
+            'title' => 'Places',
+            'href' => ItemList\listHref(),
         ],
         'New Place',
         Page\sessionErrors('places/new/errors')

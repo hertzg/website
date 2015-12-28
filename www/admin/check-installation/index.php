@@ -75,14 +75,12 @@ if ($mysqliOk) {
         .' Further checks have been aborted.');
 }
 
+include_once '../../fns/Page/create.php';
 include_once '../../fns/Page/sourceCode.php';
-include_once '../../fns/Page/tabs.php';
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'Administration',
-            'href' => '../#check-installation',
-        ],
+        'title' => 'Administration',
+        'href' => '../#check-installation',
     ],
     'Check Installation',
     Page\sourceCode($content)

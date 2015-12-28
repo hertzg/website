@@ -19,14 +19,12 @@ function subgroup_page ($groupKey, $subgroup, $subgroupKey, $methods) {
             $description, "$name/", 'api-method', ['id' => $name]);
     }
 
-    include_once "$fnsDir/Page/tabs.php";
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/text.php";
-    $content = Page\tabs(
+    $content = Page\create(
         [
-            [
-                'title' => $groups[$groupKey]['title'],
-                'href' => "../#$subgroupKey",
-            ],
+            'title' => $groups[$groupKey]['title'],
+            'href' => "../#$subgroupKey",
         ],
         $title,
         Page\text("$subgroup[description]:")

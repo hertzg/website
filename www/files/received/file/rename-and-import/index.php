@@ -14,14 +14,12 @@ $fnsDir = '../../../../fns';
 
 include_once '../../../fns/create_file_form_items.php';
 include_once "$fnsDir/Form/button.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
-include_once "$fnsDir/Page/tabs.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => "Received File #$id",
-            'href' => "../?id=$id#rename-and-import",
-        ],
+        'title' => "Received File #$id",
+        'href' => "../?id=$id#rename-and-import",
     ],
     'Rename and Import',
     Page\sessionErrors('files/received/file/rename-and-import/errors')

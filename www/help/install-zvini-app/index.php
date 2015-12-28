@@ -5,15 +5,13 @@ $fnsDir = '../../fns';
 include_once "$fnsDir/signed_user.php";
 $user = signed_user();
 
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/errors.php";
-include_once "$fnsDir/Page/tabs.php";
 include_once "$fnsDir/Page/text.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'Help',
-            'href' => '../#install-zvini-app',
-        ],
+        'title' => 'Help',
+        'href' => '../#install-zvini-app',
     ],
     'Install Zvini App',
     '<noscript>'

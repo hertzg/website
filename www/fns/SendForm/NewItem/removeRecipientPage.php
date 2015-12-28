@@ -20,17 +20,15 @@ function removeRecipientPage ($mysqli, $user,
     $contacts = \Contacts\indexWithUsernameOnUser($mysqli, $user->id_users);
 
     include_once "$fnsDir/Page/confirmDialog.php";
-    include_once "$fnsDir/Page/tabs.php";
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/twoColumns.php";
     include_once "$fnsDir/Page/text.php";
     include_once __DIR__.'/../recipientsPanels.php';
     $content =
-        \Page\tabs(
+        \Page\create(
             [
-                [
-                    'title' => "New $what_upper",
-                    'href' => "../../$escapedPageQuery",
-                ],
+                'title' => "New $what_upper",
+                'href' => "../../$escapedPageQuery",
             ],
             'Send',
             \Page\text("Send the new $what_lower to:")

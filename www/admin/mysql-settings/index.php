@@ -62,15 +62,13 @@ if ($messages) {
 }
 
 include_once "$fnsDir/create_panel.php";
-include_once "$fnsDir/Page/imageArrowLink.php";
 include_once "$fnsDir/Form/label.php";
-include_once "$fnsDir/Page/tabs.php";
-$content = Page\tabs(
+include_once "$fnsDir/Page/create.php";
+include_once "$fnsDir/Page/imageArrowLink.php";
+$content = Page\create(
     [
-        [
-            'title' => 'Administration',
-            'href' => '../#mysql-settings',
-        ],
+        'title' => 'Administration',
+        'href' => '../#mysql-settings',
     ],
     'MySQL Settings',
     $messages.$errors

@@ -23,16 +23,14 @@ $yesHref = 'submit.php?'.htmlspecialchars(http_build_query([
 ]));
 
 include_once "$fnsDir/Page/confirmDialog.php";
-include_once "$fnsDir/Page/tabs.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/text.php";
 include_once "$fnsDir/SendForm/recipientsPanels.php";
 $content =
-    Page\tabs(
+    Page\create(
         [
-            [
-                'title' => "File #$id",
-                'href' => "../../view-file/?id=$id#send",
-            ],
+            'title' => "File #$id",
+            'href' => "../../view-file/?id=$id#send",
         ],
         'Send',
         Page\text('Send the file to:')

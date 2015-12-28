@@ -32,15 +32,13 @@ function create_page ($user, $base = '') {
     }
 
     include_once __DIR__.'/create_options_panel.php';
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    include_once "$fnsDir/Page/tabs.php";
     include_once "$fnsDir/Page/text.php";
-    return Page\tabs(
+    return Page\create(
         [
-            [
-                'title' => 'Customize',
-                'href' => "$base../#reorder",
-            ],
+            'title' => 'Customize',
+            'href' => "$base../#reorder",
         ],
         'Reorder Items',
         Page\sessionMessages('home/customize/reorder/messages')

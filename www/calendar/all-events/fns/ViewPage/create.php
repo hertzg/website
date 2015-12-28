@@ -77,16 +77,14 @@ function create ($user, $event, &$scripts) {
 
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/ItemList/listHref.php";
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    include_once "$fnsDir/Page/tabs.php";
     return
-        \Page\tabs(
+        \Page\create(
             [
-                [
-                    'title' => 'All Events',
-                    'href' => \ItemList\listHref()."#$id",
-                ],
+                'title' => 'All Events',
+                'href' => \ItemList\listHref()."#$id",
             ],
             "Event #$id",
             \Page\sessionMessages('calendar/all-events/view/messages')

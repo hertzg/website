@@ -22,14 +22,12 @@ $calendar_href = calendar_href($values['event_day'],
 
 include_once '../fns/create_form_items.php';
 include_once "$fnsDir/Form/button.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
-include_once "$fnsDir/Page/tabs.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'Calendar',
-            'href' => "$calendar_href#new-event",
-        ],
+        'title' => 'Calendar',
+        'href' => "$calendar_href#new-event",
     ],
     'New Event',
     Page\sessionErrors('calendar/new-event/errors')

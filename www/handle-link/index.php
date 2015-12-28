@@ -63,13 +63,11 @@ if ($errors) {
     $errorsHtml = '';
 }
 
-include_once "$fnsDir/Page/tabs.php";
-$content = Page\tabs(
+include_once "$fnsDir/Page/create.php";
+$content = Page\create(
     [
-        [
-            'title' => 'Home',
-            'href' => '..',
-        ],
+        'title' => 'Home',
+        'href' => '..',
     ],
     'Handle Link',
     $errorsHtml.$text_html.join('<div class="hr"></div>', $items)

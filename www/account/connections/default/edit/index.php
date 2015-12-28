@@ -27,13 +27,11 @@ render_checkbox_items([
 include_once "$fnsDir/Form/button.php";
 $items[] = Form\button('Save Changes');
 
-include_once "$fnsDir/Page/tabs.php";
-$content = Page\tabs(
+include_once "$fnsDir/Page/create.php";
+$content = Page\create(
     [
-        [
-            'title' => 'Default Connection',
-            'href' => '../#edit',
-        ],
+        'title' => 'Default Connection',
+        'href' => '../#edit',
     ],
     'Edit',
     '<form action="submit.php" method="post">'

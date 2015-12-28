@@ -51,15 +51,13 @@ function create_page ($mysqli, $receivedFolder, &$scripts, $base = '') {
     include_once __DIR__.'/create_options_panel.php';
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/create_received_from_item.php";
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    include_once "$fnsDir/Page/tabs.php";
-    return Page\tabs(
+    return Page\create(
         [
-            [
-                'title' => 'Received',
-                'href' => "$base../#folder_$id",
-            ],
+            'title' => 'Received',
+            'href' => "$base../#folder_$id",
         ],
         "Received Folder #$id",
         Page\sessionMessages('files/received/folder/messages')

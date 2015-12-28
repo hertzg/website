@@ -14,15 +14,13 @@ foreach ($methods as $name => $description) {
 
 include_once 'fns/get_article_text.php';
 include_once "$fnsDir/create_panel.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/imageArrowLink.php";
-include_once "$fnsDir/Page/tabs.php";
 include_once "$fnsDir/Page/text.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'Administration',
-            'href' => '../#api-doc',
-        ],
+        'title' => 'Administration',
+        'href' => '../#api-doc',
     ],
     'Exchange API Documentation',
     Page\text(get_article_text())

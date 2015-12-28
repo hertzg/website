@@ -10,14 +10,12 @@ function create_content ($id, $values, &$scripts) {
     include_once __DIR__.'/../../../fns/create_form_items.php';
     include_once "$fnsDir/Form/button.php";
     include_once "$fnsDir/ItemList/Received/itemHiddenInputs.php";
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/sessionErrors.php";
-    include_once "$fnsDir/Page/tabs.php";
-    return Page\tabs(
+    return Page\create(
         [
-            [
-                'title' => "Received Contact #$id",
-                'href' => "../view/$itemQuery#edit-and-import",
-            ],
+            'title' => "Received Contact #$id",
+            'href' => "../view/$itemQuery#edit-and-import",
         ],
         'Edit and Import',
         Page\sessionErrors('contacts/received/edit-and-import/errors')

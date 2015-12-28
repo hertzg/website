@@ -16,16 +16,14 @@ include_once "$fnsDir/Form/notes.php";
 include_once "$fnsDir/Form/password.php";
 include_once "$fnsDir/ItemList/Received/itemHiddenInputs.php";
 include_once "$fnsDir/ItemList/Received/itemQuery.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
-include_once "$fnsDir/Page/tabs.php";
 include_once "$fnsDir/Page/warnings.php";
 include_once "$fnsDir/Session/EncryptionKey/minutes.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'Edit and Import',
-            'href' => '../'.ItemList\Received\itemQuery($id),
-        ],
+        'title' => 'Edit and Import',
+        'href' => '../'.ItemList\Received\itemQuery($id),
     ],
     'Password-protect',
     Page\sessionErrors('notes/received/edit-and-import/password-protect/errors')

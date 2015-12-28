@@ -15,16 +15,14 @@ include_once "$fnsDir/Form/notes.php";
 include_once "$fnsDir/Form/password.php";
 include_once "$fnsDir/ItemList/escapedPageQuery.php";
 include_once "$fnsDir/ItemList/pageHiddenInputs.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
-include_once "$fnsDir/Page/tabs.php";
 include_once "$fnsDir/Page/warnings.php";
 include_once "$fnsDir/Session/EncryptionKey/minutes.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'New Note',
-            'href' => '../'.ItemList\escapedPageQuery(),
-        ],
+        'title' => 'New Note',
+        'href' => '../'.ItemList\escapedPageQuery(),
     ],
     'Password-protect',
     Page\sessionErrors('notes/new/password-protect/errors')

@@ -27,17 +27,15 @@ include_once "$fnsDir/Form/password.php";
 include_once "$fnsDir/Form/textfield.php";
 include_once "$fnsDir/ItemList/listHref.php";
 include_once "$fnsDir/ItemList/pageHiddenInputs.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
-include_once "$fnsDir/Page/tabs.php";
 include_once "$fnsDir/Password/minLength.php";
 include_once "$fnsDir/Username/maxLength.php";
 include_once "$fnsDir/Username/minLength.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'Users',
-            'href' => ItemList\listHref(),
-        ],
+        'title' => 'Users',
+        'href' => ItemList\listHref(),
     ],
     'New User',
     Page\sessionErrors('admin/users/new/errors')

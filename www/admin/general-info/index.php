@@ -36,16 +36,14 @@ include_once "$fnsDir/create_panel.php";
 include_once "$fnsDir/DomainName/get.php";
 include_once "$fnsDir/Form/label.php";
 include_once "$fnsDir/InfoEmail/get.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionMessages.php";
-include_once "$fnsDir/Page/tabs.php";
 include_once "$fnsDir/SignUpEnabled/get.php";
 include_once "$fnsDir/SiteTitle/get.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'Administration',
-            'href' => '../#general-info',
-        ],
+        'title' => 'Administration',
+        'href' => '../#general-info',
     ],
     'General Information',
     Page\sessionMessages('admin/general-info/messages')

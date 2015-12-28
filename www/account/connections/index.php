@@ -41,16 +41,14 @@ unset(
     $_SESSION['account/connections/view/messages']
 );
 
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/newItemButton.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/sessionMessages.php";
-include_once "$fnsDir/Page/tabs.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'Account',
-            'href' => '../#connections',
-        ],
+        'title' => 'Account',
+        'href' => '../#connections',
     ],
     'Connections',
     Page\sessionMessages('account/connections/messages')

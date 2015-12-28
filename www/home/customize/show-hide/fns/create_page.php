@@ -26,17 +26,15 @@ function create_page ($user, &$scripts, $base = '') {
     $items[] = Form\button('Save Changes');
 
     include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/imageLink.php";
     include_once "$fnsDir/Page/imageLinkWithDescription.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    include_once "$fnsDir/Page/tabs.php";
     include_once "$fnsDir/Page/text.php";
-    return Page\tabs(
+    return Page\create(
         [
-            [
-                'title' => 'Customize',
-                'href' => "$base../#show-hide",
-            ],
+            'title' => 'Customize',
+            'href' => "$base../#show-hide",
         ],
         'Show / Hide Items',
         Page\sessionMessages('home/customize/show-hide/messages')

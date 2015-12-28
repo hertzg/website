@@ -15,15 +15,13 @@ unset($_SESSION['account/messages']);
 include_once "$fnsDir/phishing_warning.php";
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/password.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
-include_once "$fnsDir/Page/tabs.php";
 include_once "$fnsDir/Page/warnings.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'Account',
-            'href' => "../#close",
-        ],
+        'title' => 'Account',
+        'href' => "../#close",
     ],
     'Close',
     Page\sessionErrors('account/close/errors')

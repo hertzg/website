@@ -18,14 +18,12 @@ $maxLengths = Feedbacks\maxLengths();
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/notes.php";
 include_once "$fnsDir/Form/textarea.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
-include_once "$fnsDir/Page/tabs.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'Help',
-            'href' => '../#feedback',
-        ],
+        'title' => 'Help',
+        'href' => '../#feedback',
     ],
     'Feedback',
     Page\sessionErrors('help/feedback/errors')

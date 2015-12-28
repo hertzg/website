@@ -40,14 +40,12 @@ include_once "$fnsDir/Form/select.php";
 include_once "$fnsDir/Form/textfield.php";
 include_once "$fnsDir/ItemList/escapedItemQuery.php";
 include_once "$fnsDir/ItemList/itemHiddenInputs.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
-include_once "$fnsDir/Page/tabs.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => "Wallet #$id",
-            'href' => '../view/'.ItemList\escapedItemQuery($id),
-        ],
+        'title' => "Wallet #$id",
+        'href' => '../view/'.ItemList\escapedItemQuery($id),
     ],
     'Transfer Amount',
     Page\sessionErrors('wallets/transfer-amount/errors')

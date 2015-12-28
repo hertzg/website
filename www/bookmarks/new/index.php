@@ -32,15 +32,13 @@ include_once '../fns/create_form_items.php';
 include_once '../../fns/Form/button.php';
 include_once '../../fns/ItemList/listHref.php';
 include_once '../../fns/ItemList/pageHiddenInputs.php';
+include_once '../../fns/Page/create.php';
 include_once '../../fns/Page/sessionErrors.php';
 include_once '../../fns/Page/staticTwoColumns.php';
-include_once '../../fns/Page/tabs.php';
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'Bookmarks',
-            'href' => ItemList\listHref(),
-        ],
+        'title' => 'Bookmarks',
+        'href' => ItemList\listHref(),
     ],
     'New Bookmark',
     Page\sessionErrors('bookmarks/new/errors')

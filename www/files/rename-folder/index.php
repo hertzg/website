@@ -19,15 +19,13 @@ $fnsDir = '../../fns';
 include_once '../fns/create_folder_form_items.php';
 include_once "$fnsDir/create_folder_link.php";
 include_once "$fnsDir/Form/button.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/staticTwoColumns.php";
-include_once "$fnsDir/Page/tabs.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'Files',
-            'href' => create_folder_link($id_folders, '../').'#rename',
-        ],
+        'title' => 'Files',
+        'href' => create_folder_link($id_folders, '../').'#rename',
     ],
     "Rename Folder #$id_folders",
     Page\sessionErrors('files/rename-folder/errors')

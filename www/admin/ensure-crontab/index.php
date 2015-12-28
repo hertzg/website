@@ -17,14 +17,12 @@ if ($ok) {
 }
 
 include_once "$fnsDir/get_crontab_lines.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sourceCode.php";
-include_once "$fnsDir/Page/tabs.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'Administration',
-            'href' => '../#ensure-crontab',
-        ],
+        'title' => 'Administration',
+        'href' => '../#ensure-crontab',
     ],
     'Ensure Crontab',
     $status.Page\sourceCode(join("\n", get_crontab_lines()))

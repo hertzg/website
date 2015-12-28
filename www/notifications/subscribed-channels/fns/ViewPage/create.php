@@ -40,16 +40,14 @@ function create ($subscribedChannel, &$scripts) {
     $messagesKey = 'notifications/subscribed-channels/view/messages';
 
     include_once __DIR__.'/optionsPanel.php';
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    include_once "$fnsDir/Page/tabs.php";
     return
-        \Page\tabs(
+        \Page\create(
             [
-                [
-                    'title' => 'Other Channels',
-                    'href' => "../#$id",
-                ],
+                'title' => 'Other Channels',
+                'href' => "../#$id",
             ],
             "Other Channel #$id",
             \Page\sessionMessages($messagesKey)

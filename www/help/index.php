@@ -9,16 +9,14 @@ unset(
     $_SESSION['home/messages']
 );
 
+include_once '../fns/Page/create.php';
 include_once '../fns/Page/imageArrowLink.php';
 include_once '../fns/Page/imageLink.php';
 include_once '../fns/Page/sessionMessages.php';
-include_once '../fns/Page/tabs.php';
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'Home',
-            'href' => '../home/#help',
-        ],
+        'title' => 'Home',
+        'href' => '../home/#help',
     ],
     'Help',
     Page\sessionMessages('help/messages')

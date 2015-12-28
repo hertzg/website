@@ -39,17 +39,15 @@ function create ($channel, &$scripts) {
     include_once __DIR__.'/optionsPanel.php';
     include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/Form/textfield.php";
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    include_once "$fnsDir/Page/tabs.php";
     return
-        \Page\tabs(
+        \Page\create(
             [
-                [
-                    'title' => 'Channels',
-                    'href' => "../#$id",
-                ],
+                'title' => 'Channels',
+                'href' => "../#$id",
             ],
             "Channel #$id",
             \Page\sessionMessages('notifications/channels/view/messages')

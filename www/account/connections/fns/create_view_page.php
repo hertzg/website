@@ -52,16 +52,14 @@ function create_view_page ($connection, &$scripts) {
     include_once "$fnsDir/create_expires_label.php";
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Form/label.php";
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    include_once "$fnsDir/Page/tabs.php";
-    return Page\tabs(
+    return Page\create(
         [
-            [
-                'title' => 'Connections',
-                'href' => "../#$id",
-            ],
+            'title' => 'Connections',
+            'href' => "../#$id",
         ],
         "Connection #$id",
         Page\sessionMessages('account/connections/view/messages')

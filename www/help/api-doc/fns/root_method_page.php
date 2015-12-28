@@ -36,13 +36,11 @@ function root_method_page ($methodName, $params, $returns, $errors) {
     }
     $items[] = Page\text($text);
 
-    include_once "$fnsDir/Page/tabs.php";
-    $content = Page\tabs(
+    include_once "$fnsDir/Page/create.php";
+    $content = Page\create(
         [
-            [
-                'title' => 'API Documentation',
-                'href' => "../#$methodName",
-            ],
+            'title' => 'API Documentation',
+            'href' => "../#$methodName",
         ],
         $methodName,
         join('<div class="hr"></div>', $items)

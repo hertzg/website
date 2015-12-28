@@ -1,13 +1,11 @@
 <?php
 
 function create_content ($items) {
-    include_once __DIR__.'/../../../../fns/Page/tabs.php';
-    return Page\tabs(
+    include_once __DIR__.'/../../../../fns/Page/create.php';
+    return Page\create(
         [
-            [
-                'title' => 'Help',
-                'href' => '../../#api-doc',
-            ],
+            'title' => 'Help',
+            'href' => '../../#api-doc',
         ],
         'API Documentation',
         join('<div class="hr"></div>', $items)

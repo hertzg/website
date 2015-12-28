@@ -33,14 +33,12 @@ function create_page ($mysqli, $id, $base = '') {
         "{$base}add/?id=$id", 'add-user', ['id' => 'add'])];
 
     include_once "$fnsDir/create_panel.php";
-    include_once "$fnsDir/Page/tabs.php";
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    return Page\tabs(
+    return Page\create(
         [
-            [
-                'title' => "Channel #$id",
-                'href' => "../view/?id=$id#users",
-            ],
+            'title' => "Channel #$id",
+            'href' => "../view/?id=$id#users",
         ],
         'Users',
         Page\sessionMessages('notifications/channels/users/messages')

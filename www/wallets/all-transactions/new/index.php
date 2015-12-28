@@ -19,14 +19,12 @@ include_once '../../fns/create_transaction_form_items.php';
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/ItemList/listHref.php";
 include_once "$fnsDir/ItemList/itemHiddenInputs.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
-include_once "$fnsDir/Page/tabs.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'All Transactions',
-            'href' => '../'.ItemList\listHref('', ['id' => $id]),
-        ]
+        'title' => 'All Transactions',
+        'href' => '../'.ItemList\listHref('', ['id' => $id]),
     ],
     'Add New',
     Page\sessionErrors('wallets/all-transactions/new/errors')

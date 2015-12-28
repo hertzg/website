@@ -37,15 +37,13 @@ include_once "$fnsDir/example_password.php";
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/notes.php";
 include_once "$fnsDir/Form/password.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
-include_once "$fnsDir/Page/tabs.php";
 include_once "$fnsDir/Password/minLength.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => "User #$id",
-            'href' => "../view/$escapedItemQuery#reset-password",
-        ],
+        'title' => "User #$id",
+        'href' => "../view/$escapedItemQuery#reset-password",
     ],
     'Reset Password',
     Page\sessionErrors('admin/users/reset-password/errors')

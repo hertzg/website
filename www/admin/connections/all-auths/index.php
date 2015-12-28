@@ -75,14 +75,12 @@ if ($offset + $limit >= $total &&
 
 }
 
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/infoText.php";
-include_once "$fnsDir/Page/tabs.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => "Connection #$id",
-            'href' => "../view/?id=$id#all-auths",
-        ],
+        'title' => "Connection #$id",
+        'href' => "../view/?id=$id#all-auths",
     ],
     'Authentication History',
     join('<div class="hr"></div>', $items)

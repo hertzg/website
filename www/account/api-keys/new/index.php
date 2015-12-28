@@ -39,14 +39,12 @@ include_once '../fns/create_permission_fields.php';
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/ItemList/listHref.php";
 include_once "$fnsDir/ItemList/pageHiddenInputs.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
-include_once "$fnsDir/Page/tabs.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'API Keys',
-            'href' => ItemList\listHref(),
-        ],
+        'title' => 'API Keys',
+        'href' => ItemList\listHref(),
     ],
     'New API Key',
     Page\sessionErrors('account/api-keys/new/errors')

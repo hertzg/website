@@ -37,15 +37,13 @@ function create ($mysqli, $token, &$scripts) {
     include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/Form/textarea.php";
     include_once "$fnsDir/Form/textfield.php";
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/infoText.php";
-    include_once "$fnsDir/Page/tabs.php";
     return
-        \Page\tabs(
+        \Page\create(
             [
-                [
-                    'title' => 'Sessions',
-                    'href' => "../#$id",
-                ],
+                'title' => 'Sessions',
+                'href' => "../#$id",
             ],
             "Session #$id",
             \Form\textfield('token_text', 'Identifier', [

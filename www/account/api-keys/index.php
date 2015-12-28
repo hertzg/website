@@ -57,16 +57,14 @@ if ($apiKeys) {
 
 include_once 'fns/sort_panel.php';
 include_once "$fnsDir/create_new_item_button.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/sessionMessages.php";
-include_once "$fnsDir/Page/tabs.php";
 $content =
-    Page\tabs(
+    Page\create(
         [
-            [
-                'title' => 'Account',
-                'href' => '../#api-keys',
-            ],
+            'title' => 'Account',
+            'href' => '../#api-keys',
         ],
         'API Keys',
         Page\sessionErrors('account/api-keys/errors')

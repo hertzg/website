@@ -52,15 +52,13 @@ function create ($transaction, &$scripts) {
 
     include_once __DIR__.'/viewContent.php';
     include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    include_once "$fnsDir/Page/tabs.php";
-    return \Page\tabs(
+    return \Page\create(
         [
-            [
-                'title' => "Wallet #$id_wallets",
-                'href' => "../view/$walletEscapedItemQuery#$id",
-            ],
+            'title' => "Wallet #$id_wallets",
+            'href' => "../view/$walletEscapedItemQuery#$id",
         ],
         "Transaction #$id",
         \Page\sessionMessages('wallets/view-transaction/messages')

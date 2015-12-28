@@ -10,14 +10,12 @@ unset($_SESSION['account/messages']);
 
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/captcha.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
-include_once "$fnsDir/Page/tabs.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'Account',
-            'href' => '../#verify-email',
-        ],
+        'title' => 'Account',
+        'href' => '../#verify-email',
     ],
     'Verify Email',
     Page\sessionErrors('account/verify-email/errors')

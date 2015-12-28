@@ -17,14 +17,12 @@ $fnsDir = '../../../../fns';
 
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/textfield.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
-include_once "$fnsDir/Page/tabs.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'Users',
-            'href' => "../?id=$id#add",
-        ],
+        'title' => 'Users',
+        'href' => "../?id=$id#add",
     ],
     'Add',
     Page\sessionErrors('notifications/channels/users/add/errors')

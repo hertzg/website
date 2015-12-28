@@ -34,14 +34,12 @@ $focus = $values['focus'];
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/checkbox.php";
 include_once "$fnsDir/Form/textfield.php";
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
-include_once "$fnsDir/Page/tabs.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => 'General Information',
-            'href' => '../#edit',
-        ],
+        'title' => 'General Information',
+        'href' => '../#edit',
     ],
     'Edit',
     Page\sessionErrors('admin/general-info/edit/errors')

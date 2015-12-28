@@ -63,15 +63,13 @@ unset(
 );
 
 include_once '../fns/create_move_location_bar.php';
+include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
-include_once "$fnsDir/Page/tabs.php";
 include_once "$fnsDir/Page/text.php";
-$content = Page\tabs(
+$content = Page\create(
     [
-        [
-            'title' => "File #$id",
-            'href' => "../view-file/?id=$id#move",
-        ],
+        'title' => "File #$id",
+        'href' => "../view-file/?id=$id#move",
     ],
     'Move',
     Page\sessionErrors('files/move-file/errors')
