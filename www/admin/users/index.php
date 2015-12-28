@@ -61,7 +61,6 @@ if ($users) {
     $items[] = Page\info('No users');
 }
 
-// TODO make new item button green
 include_once 'fns/sort_panel.php';
 include_once "$fnsDir/create_new_item_button.php";
 include_once "$fnsDir/Page/create.php";
@@ -77,7 +76,7 @@ $content = Page\create(
     .Page\sessionMessages('admin/users/messages')
     .join('<div class="hr"></div>', $items)
     .sort_panel($order_by, $total),
-    create_new_item_button('User')
+    create_new_item_button('User', '', !$total)
 );
 
 include_once '../fns/echo_admin_page.php';

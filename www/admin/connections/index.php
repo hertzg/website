@@ -60,7 +60,6 @@ if ($connections) {
     $items[] = Page\info('No connections');
 }
 
-// TODO make new item button green
 include_once "$fnsDir/create_new_item_button.php";
 include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
@@ -74,7 +73,7 @@ $content = Page\create(
     Page\sessionErrors('admin/connections/errors')
     .Page\sessionMessages('admin/connections/messages')
     .join('<div class="hr"></div>', $items),
-    create_new_item_button('Connection')
+    create_new_item_button('Connection', '', !$total)
 );
 
 include_once '../fns/echo_admin_page.php';
