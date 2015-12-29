@@ -2,10 +2,15 @@
 
 function create_tabs ($user, $base = '') {
 
-    $num_received_schedules = $user->num_received_schedules;
-    if (!$num_received_schedules) return;
+    $num_received = $user->num_received_schedules;
+    if (!$num_received) return;
 
     $fnsDir = __DIR__.'/../../fns';
+
+    $href = "{$base}received/";
+    if ($user->num_archived_received_schedules == $num_received) {
+        $href .= '?all=1';
+    }
 
     include_once __DIR__.'/create_my_tab_content.php';
     include_once __DIR__.'/create_received_tab_content.php';
@@ -14,8 +19,7 @@ function create_tabs ($user, $base = '') {
     include_once "$fnsDir/Page/Tabs/selectedTab.php";
     return Page\Tabs\create(
         Page\Tabs\selectedTab(create_my_tab_content($user)),
-        Page\Tabs\normalTab(
-            create_received_tab_content($user), "{$base}received/")
+        Page\Tabs\normalTab(create_received_tab_content($user), $href)
     );
 
 }
