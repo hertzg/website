@@ -48,7 +48,7 @@ function create ($receivedTask, $user, &$scripts) {
     include_once "$fnsDir/Page/sessionMessages.php";
     return \Page\create(
         [
-            'title' => 'Received',
+            'title' => 'Tasks',
             'href' => '../'.\ItemList\Received\listHref()."#$id",
         ],
         "Received Task #$id",
