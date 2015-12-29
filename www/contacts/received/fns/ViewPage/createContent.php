@@ -25,7 +25,7 @@ function createContent ($receivedContact, $infoText, $items) {
     include_once "$fnsDir/Page/sessionMessages.php";
     return \Page\create(
         [
-            'title' => 'Received',
+            'title' => 'Contacts',
             'href' => '../'.\ItemList\Received\listHref()."#$id",
         ],
         "Received Contact #$id",
