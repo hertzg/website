@@ -1,7 +1,8 @@
 .title_and_description {
     display: block;
     line-height: 20px;
-    padding: 4px 0;
+    padding-top: 2px;
+    padding-bottom: 2px;
 }
 
 .title_and_description-title {
