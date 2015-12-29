@@ -7,6 +7,7 @@ function createContent ($user, $total, $filterMessage, $items, $keyword) {
     $fnsDir = __DIR__.'/../../../fns';
 
     include_once __DIR__.'/../create_options_panel.php';
+    include_once __DIR__.'/../create_tabs.php';
     include_once __DIR__.'/../sort_panel.php';
     include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/Page/create.php";
@@ -18,7 +19,8 @@ function createContent ($user, $total, $filterMessage, $items, $keyword) {
                 'href' => '../../search/?keyword='.rawurlencode($keyword),
             ],
             'Tasks',
-            \Page\sessionMessages('tasks/messages')
+            create_tabs($user, '../')
+            .\Page\sessionMessages('tasks/messages')
             .$filterMessage.join('<div class="hr"></div>', $items),
             create_new_item_button('Task', '../')
         )
