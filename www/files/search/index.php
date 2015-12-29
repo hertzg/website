@@ -60,6 +60,7 @@ if (!$deep) {
 include_once '../fns/unset_session_vars.php';
 unset_session_vars();
 
+include_once '../fns/create_tabs.php';
 include_once "$fnsDir/Page/create.php";
 $content = Page\create(
     [
@@ -67,7 +68,8 @@ $content = Page\create(
         'href' => '../../search/?keyword='.rawurlencode($keyword),
     ],
     'Files',
-    join('<div class="hr"></div>', $items)
+    create_tabs($user, '../')
+    .join('<div class="hr"></div>', $items)
 );
 
 include_once "$fnsDir/compressed_js_script.php";
