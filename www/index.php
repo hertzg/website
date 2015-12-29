@@ -79,7 +79,7 @@ echo
                 ." src=\"$logoSrc?".get_revision($logoSrc)."\" />"
                 .'<div class="siteInfo">'
                     .'<h1>Save Your Data in Zvini</h1>'
-                    .'<div class="description">'
+                    .'<div class="siteInfo-description">'
                         .'<div>Save your files, contacts, notes and more.</div>'
                         .'<div>It\'s free and easy.</div>'
                     .'</div>'
