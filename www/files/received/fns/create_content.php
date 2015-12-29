@@ -1,27 +1,29 @@
 <?php
 
-function create_content ($items, $base) {
+function create_content ($user, $items, $base) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
     include_once "$fnsDir/Page/imageLink.php";
-    $href = "{$base}delete-all/";
     $deleteAllLink =
         '<div id="deleteAllLink">'
-            .Page\imageLink('Delete All Files', $href, 'trash-bin')
+            .Page\imageLink('Delete All Files',
+                "{$base}delete-all/", 'trash-bin')
         .'</div>';
 
+    include_once __DIR__.'/create_tabs.php';
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     return Page\create(
         [
-            'title' => 'Files',
-            'href' => "{$base}../#received",
+            'title' => 'Home',
+            'href' => "{$base}../../home/#files",
         ],
-        'Received',
-        Page\sessionErrors('files/received/errors')
+        'Files',
+        create_tabs($user)
+        .Page\sessionErrors('files/received/errors')
         .Page\sessionMessages('files/received/messages')
         .join('<div class="hr"></div>', $items)
         .create_panel('Options', $deleteAllLink)

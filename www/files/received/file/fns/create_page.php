@@ -60,7 +60,7 @@ function create_page ($mysqli, $receivedFile, &$scripts, $base = '') {
     include_once "$fnsDir/Page/twoColumns.php";
     return Page\create(
         [
-            'title' => 'Received',
+            'title' => 'Files',
             'href' => "$base../#file_$id",
         ],
         "Received File #$id",

@@ -56,7 +56,7 @@ function create_page ($mysqli, $receivedFolder, &$scripts, $base = '') {
     include_once "$fnsDir/Page/sessionMessages.php";
     return Page\create(
         [
-            'title' => 'Received',
+            'title' => 'Files',
             'href' => "$base../#folder_$id",
         ],
         "Received Folder #$id",

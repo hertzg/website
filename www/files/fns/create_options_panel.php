@@ -40,29 +40,6 @@ function create_options_panel ($user, $id_folders, $files, $base) {
         $options[] = Page\twoColumns($newFolderLink, $uploadLink);
     }
 
-    if (!$id_folders) {
-        $num_received = $user->num_received_files + $user->num_received_folders;
-        if ($num_received) {
-
-            $href = 'received/';
-            $num_new = $num_received - $user->num_archived_received_files -
-                $user->num_archived_received_folders;
-
-            if ($num_new > 0) {
-                if ($num_new == $num_received) $description = "$num_new new.";
-                else $description = "$num_new new. $num_received total.";
-            } else {
-                $href .= '?all=1';
-                $description = "$num_received total.";
-            }
-
-            include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
-            $options[] = Page\imageArrowLinkWithDescription('Received Files',
-                $description, $href, 'receive', ['id' => 'received']);
-
-        }
-    }
-
     include_once "$fnsDir/create_panel.php";
     return create_panel('Options', join('<div class="hr"></div>', $options));
 

@@ -14,6 +14,7 @@ function create_content ($mysqli, $folder,
     }
 
     include_once __DIR__.'/create_options_panel.php';
+    include_once __DIR__.'/create_tabs.php';
     include_once __DIR__.'/create_location_bar.php';
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/sessionErrors.php";
@@ -25,7 +26,8 @@ function create_content ($mysqli, $folder,
                 'href' => '../home/#files',
             ],
             $title,
-            Page\sessionErrors('files/errors')
+            create_tabs($user)
+            .Page\sessionErrors('files/errors')
             .Page\sessionMessages('files/messages')
             .create_location_bar($mysqli, $folder)
             .join('<div class="hr"></div>', $items)

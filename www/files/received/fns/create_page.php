@@ -81,6 +81,6 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
     }
 
     include_once __DIR__.'/create_content.php';
-    return create_content($items, $base);
+    return create_content($user, $items, $base);
 
 }
