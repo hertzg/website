@@ -3,14 +3,6 @@
 function create_tabs ($user) {
 
     $fnsDir = __DIR__.'/../../../fns';
-    $num_contacts = $user->num_contacts;
-
-    if ($num_contacts) {
-        include_once "$fnsDir/title_and_description.php";
-        $my_content = title_and_description('My', "$num_contacts total.");
-    } else {
-        $my_content = 'My';
-    }
 
     include_once __DIR__.'/../../fns/create_my_tab_content.php';
     include_once __DIR__.'/../../fns/create_received_tab_content.php';
