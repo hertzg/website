@@ -46,7 +46,7 @@ function create ($receivedPlace, &$scripts) {
     include_once "$fnsDir/Page/sessionMessages.php";
     return \Page\create(
         [
-            'title' => 'Received',
+            'title' => 'Places',
             'href' => '../'.\ItemList\Received\listHref()."#$id",
         ],
         "Received Place #$id",

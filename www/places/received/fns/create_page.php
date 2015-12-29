@@ -64,6 +64,7 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
             .Page\imageLink('Delete All Places', $href, 'trash-bin')
         .'</div>';
 
+    include_once __DIR__.'/create_tabs.php';
     include_once "$fnsDir/create_new_item_button.php";
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Page/create.php";
@@ -71,11 +72,12 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
     include_once "$fnsDir/Page/sessionMessages.php";
     return Page\create(
         [
-            'title' => 'Places',
-            'href' => "$base../#received",
+            'title' => 'Home',
+            'href' => "$base../../home/#places",
         ],
-        'Received',
-        Page\sessionErrors('places/received/errors')
+        'Places',
+        create_tabs($user)
+        .Page\sessionErrors('places/received/errors')
         .Page\sessionMessages('places/received/messages')
         .join('<div class="hr"></div>', $items)
         .create_panel('Options', $deleteAllLink),
