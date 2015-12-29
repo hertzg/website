@@ -49,13 +49,9 @@
             iconWrapperElement.className = 'image_link-icon'
             iconWrapperElement.appendChild(iconElement)
 
-            var titleElement = document.createElement('div')
-            titleElement.className = 'image_link-title'
-            titleElement.appendChild(document.createTextNode(text))
-
             var contentElement = document.createElement('div')
-            contentElement.className = 'image_link-content'
-            contentElement.appendChild(titleElement)
+            contentElement.className = 'image_link-content colorText'
+            contentElement.appendChild(document.createTextNode(text))
 
             var element = document.createElement('a')
             element.className = 'clickable link image_link'
@@ -63,8 +59,8 @@
             element.appendChild(contentElement)
 
             return {
+                contentElement: contentElement,
                 element: element,
-                titleElement: titleElement,
             }
 
         }
@@ -111,7 +107,7 @@
         textElement.appendChild(document.createTextNode('%'))
 
         var okLink = imageLink('Use the location', 'yes')
-        okLink.titleElement.classList.add('disabled')
+        okLink.contentElement.classList.add('grey')
 
         var cancelLink = imageLink('Cancel', 'no')
         cancelLink.element.addEventListener('click', function (e) {
@@ -174,7 +170,7 @@
 
             if (numPositions == enoughPositions) {
                 textElement.appendChild(positionElement)
-                okLink.titleElement.classList.remove('disabled')
+                okLink.contentElement.classList.remove('grey')
                 okLink.element.addEventListener('click', function (e) {
 
                     function setValue (name, value) {

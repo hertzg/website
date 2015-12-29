@@ -8,8 +8,6 @@ function disabledImageLink ($title, $iconName) {
             .'<div class="image_link-icon">'
                 ."<div class=\"icon $iconName\"></div>"
             .'</div>'
-            .'<div class="image_link-content">'
-                ."<div class=\"image_link-title disabled\">$title</div>"
-            .'</div>'
+            ."<div class=\"image_link-content colorText grey\">$title</div>"
         .'</div>';
 }

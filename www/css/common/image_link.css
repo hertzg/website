@@ -17,16 +17,10 @@
     right: 0;
     bottom: 0;
     left: 46px;
-}
-.image_link-title {
-    display: block;
-    line-height: 48px;
+    line-height: 44px;
+    padding-right: 8px;
     overflow: hidden;
     text-overflow: ellipsis;
-    margin-right: 8px;
-}
-.image_link-title.disabled {
-    color: #999;
 }
 .image_link.withArrow {
     background-image: url(../../images/arrow.svg?23);

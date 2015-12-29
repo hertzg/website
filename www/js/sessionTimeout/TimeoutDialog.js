@@ -20,13 +20,9 @@ function TimeoutDialog (noHref, yesListener, noListener) {
         iconWrapperElement.className = 'image_link-icon'
         iconWrapperElement.appendChild(iconElement)
 
-        var titleElement = document.createElement('div')
-        titleElement.className = 'image_link-title'
-        titleElement.appendChild(document.createTextNode(text))
-
         var contentElement = document.createElement('div')
         contentElement.className = 'image_link-content'
-        contentElement.appendChild(titleElement)
+        contentElement.appendChild(document.createTextNode(text))
 
         var element = document.createElement('a')
         element.className = 'clickable link image_link'
