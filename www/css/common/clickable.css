@@ -13,10 +13,6 @@
     color: #fff;
     border-radius: 0;
 }
-.clickable:target {
-    border-color: #bbb;
-    background-color: rgba(187, 187, 187, 0.2);
-}
 .clickable:focus,
 .clickable.focus {
     background-color: rgba(127, 127, 127, 0.2);

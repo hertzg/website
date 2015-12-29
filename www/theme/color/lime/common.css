@@ -18,7 +18,8 @@
     color: #96bc00;
 }
 
-.a:focus {
+.a:focus,
+.clickable:target {
     background-color: rgba(150, 188, 0, 0.2);
 }
 
