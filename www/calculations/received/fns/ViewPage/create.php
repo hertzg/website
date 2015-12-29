@@ -40,7 +40,7 @@ function create ($receivedCalculation, &$scripts) {
     include_once "$fnsDir/Page/sessionMessages.php";
     return \Page\create(
         [
-            'title' => 'Received',
+            'title' => 'Calculations',
             'href' => '../'.\ItemList\Received\listHref()."#$id",
         ],
         "Received Calculation #$id",
