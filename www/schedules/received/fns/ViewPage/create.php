@@ -43,7 +43,7 @@ function create ($user, $receivedSchedule, &$scripts) {
     include_once "$fnsDir/Page/sessionMessages.php";
     return \Page\create(
         [
-            'title' => 'Received',
+            'title' => 'Schedules',
             'href' => '../'.\ItemList\Received\listHref()."#$id",
         ],
         "Received Schedule #$id",
