@@ -3,12 +3,14 @@
     function resize () {
         var lineWidth = Math.floor(devicePixelRatio) / devicePixelRatio + 'px'
         style.innerHTML =
-            '.hr { height: ' + lineWidth + ' }' +
+            '.hr,' +
+            '.barChart-line {' +
+                'height: ' + lineWidth +
+            '}' +
             '.twoColumns-column2 {' +
-                ' border-left-width:' + lineWidth +
-            ' }' +
-            '.panel > .title { border-bottom-width:' + lineWidth + ' }' +
-            '.barChart-line { height: ' + lineWidth + ' }'
+                'border-left-width: ' + lineWidth +
+            '}' +
+            '.page_tabs-tab.normal { border-bottom-width: ' + lineWidth + ' }'
     }
 
     var style = document.createElement('style')

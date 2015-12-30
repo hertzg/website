@@ -18,7 +18,7 @@ function get_revision ($key) {
         'js/formCheckbox/compressed.js' => 2,
         'js/geolocationDialog/compressed.js' => 7,
         'js/imageProgress/compressed.js' => 4,
-        'js/lineSizeRounding/compressed.js' => 4,
+        'js/lineSizeRounding/compressed.js' => 5,
         'js/removeRecipient/compressed.js' => 1,
         'js/searchForm/compressed.js' => 2,
         'js/sessionTimeout/compressed.js' => 5,
