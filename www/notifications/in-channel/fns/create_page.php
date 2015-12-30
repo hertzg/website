@@ -53,9 +53,11 @@ function create_page ($mysqli, $user,
             Page\sessionMessages('notifications/in-channel/messages')
             .'<div class="filterBar">'
                 .'Channel: <b>'.htmlspecialchars($channel->channel_name).'</b>'
+                .'<span class="zeroSize"> </span>'
                 .'<a class="rightButton clickable" title="Clear Filter"'
                 ." href=\"$base..\">"
                     .'<span class="rightButton-icon icon no"></span>'
+                    .'<span class="displayNone">Clear Filter</span>'
                 .'</a>'
             .'</div>'
             .join('<div class="hr"></div>', $items)
