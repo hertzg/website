@@ -23,7 +23,8 @@ function create_file_location_bar ($mysqli, $hash, $parent_id, $id_users) {
     return
         '<div class="textAndButtons">'
             .'<span class="textAndButtons-text">Location:</span>'
-            .join('', array_reverse($parentLinks))
+            .'<span class="zeroSize"> </span>'
+            .join('<span class="zeroSize"> </span>', array_reverse($parentLinks))
         .'</div>';
 
 }

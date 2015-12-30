@@ -45,6 +45,7 @@ $content =
         $title,
         '<div class="textAndButtons">'
             .'<span class="textAndButtons-text">Location:</span>'
+            .'<span class="zeroSize"> </span>'
             ."<a class=\"tag\" href=\"../?id=$id_received_folders#file_$id\">"
                 .htmlspecialchars($receivedFolderFile->received_folder_name)
             .'</a>'

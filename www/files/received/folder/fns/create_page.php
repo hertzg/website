@@ -68,6 +68,7 @@ function create_page ($mysqli, $receivedFolder, &$scripts, $base = '') {
             'The Folder',
             '<div class="textAndButtons">'
                 .'<span class="textAndButtons-text">Location:</span>'
+                .'<span class="zeroSize"> </span>'
                 .'<span class="tag active">'
                     .htmlspecialchars($receivedFolder->name)
                 .'</span>'

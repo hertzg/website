@@ -40,7 +40,8 @@ function create_move_location_bar ($mysqli,
     return
         '<div class="textAndButtons">'
             .'<span class="textAndButtons-text">Location:</span>'
-            .join('', array_reverse($parentLinks))
+            .'<span class="zeroSize"> </span>'
+            .join('<span class="zeroSize"> </span>', array_reverse($parentLinks))
         .'</div>';
 
 }

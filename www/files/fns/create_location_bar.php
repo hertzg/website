@@ -37,7 +37,8 @@ function create_location_bar ($mysqli, $folder) {
     return
         '<div class="textAndButtons">'
             .'<span class="textAndButtons-text">Location:</span>'
-            .join('', array_reverse($parentLinks))
+            .'<span class="zeroSize"> </span>'
+            .join('<span class="zeroSize"> </span>', array_reverse($parentLinks))
         .'</div>';
 
 }
