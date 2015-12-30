@@ -50,17 +50,18 @@ function create ($user, $schedule, &$scripts) {
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/staticTwoColumns.php";
-    return \Page\create(
-        [
-            'title' => 'Schedules',
-            'href' => \ItemList\listHref()."#$id",
-        ],
-        "Schedule #$id",
-        \Page\sessionMessages('schedules/view/messages')
-        .join('<div class="hr"></div>', $items)
-        .\Page\infoText($infoText)
-        .optionsPanel($schedule),
-        create_new_item_button('Schedule', '../')
-    );
+    return
+        \Page\create(
+            [
+                'title' => 'Schedules',
+                'href' => \ItemList\listHref()."#$id",
+            ],
+            "Schedule #$id",
+            \Page\sessionMessages('schedules/view/messages')
+            .join('<div class="hr"></div>', $items)
+            .\Page\infoText($infoText),
+            create_new_item_button('Schedule', '../')
+        )
+        .optionsPanel($schedule);
 
 }

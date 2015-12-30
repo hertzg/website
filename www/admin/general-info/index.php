@@ -40,32 +40,33 @@ include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionMessages.php";
 include_once "$fnsDir/SignUpEnabled/get.php";
 include_once "$fnsDir/SiteTitle/get.php";
-$content = Page\create(
-    [
-        'title' => 'Administration',
-        'href' => '../#general-info',
-    ],
-    'General Information',
-    Page\sessionMessages('admin/general-info/messages')
-    .$errors
-    .Form\label('Site title', htmlspecialchars(SiteTitle\get()))
-    .'<div class="hr"></div>'
-    .Form\label('Domain name', DomainName\get())
-    .'<div class="hr"></div>'
-    .Form\label('Informational email', InfoEmail\get())
-    .'<div class="hr"></div>'
-    .Form\label('Website path', htmlspecialchars(SiteBase\get()))
-    .'<div class="hr"></div>'
-    .Form\label('Uses HTTPS', $https)
-    .'<div class="hr"></div>'
-    .Form\label('Behind reverse proxy', $behindProxy)
-    .'<div class="hr"></div>'
-    .Form\label('Anyone can create an account',
-        SignUpEnabled\get() ? 'Yes' : 'No')
-    .'<div class="hr"></div>'
-    .Form\label('Your IP address', $yourAddress)
-    .create_panel('Options', $editLink)
-);
+$content =
+    Page\create(
+        [
+            'title' => 'Administration',
+            'href' => '../#general-info',
+        ],
+        'General Information',
+        Page\sessionMessages('admin/general-info/messages')
+        .$errors
+        .Form\label('Site title', htmlspecialchars(SiteTitle\get()))
+        .'<div class="hr"></div>'
+        .Form\label('Domain name', DomainName\get())
+        .'<div class="hr"></div>'
+        .Form\label('Informational email', InfoEmail\get())
+        .'<div class="hr"></div>'
+        .Form\label('Website path', htmlspecialchars(SiteBase\get()))
+        .'<div class="hr"></div>'
+        .Form\label('Uses HTTPS', $https)
+        .'<div class="hr"></div>'
+        .Form\label('Behind reverse proxy', $behindProxy)
+        .'<div class="hr"></div>'
+        .Form\label('Anyone can create an account',
+            SignUpEnabled\get() ? 'Yes' : 'No')
+        .'<div class="hr"></div>'
+        .Form\label('Your IP address', $yourAddress)
+    )
+    .create_panel('Options', $editLink);
 
 include_once '../fns/echo_admin_page.php';
 echo_admin_page('General Information', $content, '../');

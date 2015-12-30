@@ -57,26 +57,27 @@ function create ($mysqli, $user, $wallet, &$scripts, &$head) {
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    return \Page\create(
-        [
-            'title' => 'Wallets',
-            'href' => \ItemList\listHref()."#$id",
-        ],
-        "Wallet #$id",
-        \Page\sessionErrors('wallets/view/errors')
-        .\Page\sessionMessages('wallets/view/messages')
-        .\Form\label('Name', $name)
-        .'<div class="hr"></div>'
-        .\Form\label('Income', $income)
-        .'<div class="hr"></div>'
-        .\Form\label('Expense', $expense)
-        .'<div class="hr"></div>'
-        .\Form\label('Balance', amount_html($wallet->balance))
-        .\Page\infoText($infoText)
+    return
+        \Page\create(
+            [
+                'title' => 'Wallets',
+                'href' => \ItemList\listHref()."#$id",
+            ],
+            "Wallet #$id",
+            \Page\sessionErrors('wallets/view/errors')
+            .\Page\sessionMessages('wallets/view/messages')
+            .\Form\label('Name', $name)
+            .'<div class="hr"></div>'
+            .\Form\label('Income', $income)
+            .'<div class="hr"></div>'
+            .\Form\label('Expense', $expense)
+            .'<div class="hr"></div>'
+            .\Form\label('Balance', amount_html($wallet->balance))
+            .\Page\infoText($infoText),
+            create_new_item_button('Wallet', '../')
+        )
         .cashflowPanel($mysqli, $user, $wallet)
         .transactionsPanel($mysqli, $wallet, $scripts)
-        .optionsPanel($wallet, $user),
-        create_new_item_button('Wallet', '../')
-    );
+        .optionsPanel($wallet, $user);
 
 }

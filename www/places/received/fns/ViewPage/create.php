@@ -44,17 +44,18 @@ function create ($receivedPlace, &$scripts) {
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    return \Page\create(
-        [
-            'title' => 'Places',
-            'href' => '../'.\ItemList\Received\listHref()."#$id",
-        ],
-        "Received Place #$id",
-        \Page\sessionMessages('places/received/view/messages')
-        .create_received_from_item($receivedPlace)
-        .create_panel('The Place', join('<div class="hr"></div>', $items))
-        .\Page\infoText("Place received $date_ago.")
-        .optionsPanel($receivedPlace)
-    );
+    return
+        \Page\create(
+            [
+                'title' => 'Places',
+                'href' => '../'.\ItemList\Received\listHref()."#$id",
+            ],
+            "Received Place #$id",
+            \Page\sessionMessages('places/received/view/messages')
+            .create_received_from_item($receivedPlace)
+        )
+        .create_panel('The Place', join('<div class="hr"></div>', $items)
+            .\Page\infoText("Place received $date_ago."))
+        .optionsPanel($receivedPlace);
 
 }

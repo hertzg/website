@@ -23,17 +23,17 @@ function createContent ($receivedContact, $infoText, $items) {
     include_once "$fnsDir/ItemList/Received/listHref.php";
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    return \Page\create(
-        [
-            'title' => 'Contacts',
-            'href' => '../'.\ItemList\Received\listHref()."#$id",
-        ],
-        "Received Contact #$id",
-        \Page\sessionMessages('contacts/received/view/messages')
-        .create_received_from_item($receivedContact)
-        .create_panel('The Contact', $contactPanel)
-        .$infoText
-        .optionsPanel($receivedContact)
-    );
+    return
+        \Page\create(
+            [
+                'title' => 'Contacts',
+                'href' => '../'.\ItemList\Received\listHref()."#$id",
+            ],
+            "Received Contact #$id",
+            \Page\sessionMessages('contacts/received/view/messages')
+            .create_received_from_item($receivedContact)
+        )
+        .create_panel('The Contact', $contactPanel.$infoText)
+        .optionsPanel($receivedContact);
 
 }

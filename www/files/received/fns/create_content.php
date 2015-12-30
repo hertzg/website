@@ -16,17 +16,18 @@ function create_content ($user, $items, $base) {
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    return Page\create(
-        [
-            'title' => 'Home',
-            'href' => "{$base}../../home/#files",
-        ],
-        'Files',
-        create_tabs($user)
-        .Page\sessionErrors('files/received/errors')
-        .Page\sessionMessages('files/received/messages')
-        .join('<div class="hr"></div>', $items)
-        .create_panel('Options', $deleteAllLink)
-    );
+    return
+        Page\create(
+            [
+                'title' => 'Home',
+                'href' => "{$base}../../home/#files",
+            ],
+            'Files',
+            create_tabs($user)
+            .Page\sessionErrors('files/received/errors')
+            .Page\sessionMessages('files/received/messages')
+            .join('<div class="hr"></div>', $items)
+        )
+        .create_panel('Options', $deleteAllLink);
 
 }

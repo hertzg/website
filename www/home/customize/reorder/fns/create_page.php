@@ -35,16 +35,17 @@ function create_page ($user, $base = '') {
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/text.php";
-    return Page\create(
-        [
-            'title' => 'Customize',
-            'href' => "$base../#reorder",
-        ],
-        'Reorder Items',
-        Page\sessionMessages('home/customize/reorder/messages')
-        .Page\text('Select an item to move up or down:')
-        .join('<div class="hr"></div>', $items)
-        .create_options_panel($base)
-    );
+    return
+        Page\create(
+            [
+                'title' => 'Customize',
+                'href' => "$base../#reorder",
+            ],
+            'Reorder Items',
+            Page\sessionMessages('home/customize/reorder/messages')
+            .Page\text('Select an item to move up or down:')
+            .join('<div class="hr"></div>', $items)
+        )
+        .create_options_panel($base);
 
 }

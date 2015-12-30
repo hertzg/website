@@ -37,16 +37,17 @@ function create_view_page ($point, &$scripts) {
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    return Page\create(
-        [
-            'title' => 'All Points',
-            'href' => "../$placeEscapedItemQuery#$id",
-        ],
-        "Point #$id",
-        Page\sessionMessages('places/all-points/view/messages')
-        .ViewPointPage\viewContent($point, $scripts, '../')
-        .create_panel('Point Options', $optionsContent),
-        Page\newItemButton("../new/$placeEscapedItemQuery", 'point')
-    );
+    return
+        Page\create(
+            [
+                'title' => 'All Points',
+                'href' => "../$placeEscapedItemQuery#$id",
+            ],
+            "Point #$id",
+            Page\sessionMessages('places/all-points/view/messages')
+            .ViewPointPage\viewContent($point, $scripts, '../'),
+            Page\newItemButton("../new/$placeEscapedItemQuery", 'point')
+        )
+        .create_panel('Point Options', $optionsContent);
 
 }

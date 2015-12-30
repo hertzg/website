@@ -49,16 +49,17 @@ function create_page ($mysqli, $user, $place, $base = '') {
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    return Page\create(
-        [
-            'title' => "Place #$id",
-            'href' => "$base../view/?id=$id#all-points",
-        ],
-        'All Points',
-        Page\sessionMessages('places/all-points/messages')
-        .join('<div class="hr"></div>', $items)
-        .create_panel('Options', $deleteLink),
-        Page\newItemButton("{$base}new/$escapedItemQuery", 'Point')
-    );
+    return
+        Page\create(
+            [
+                'title' => "Place #$id",
+                'href' => "$base../view/?id=$id#all-points",
+            ],
+            'All Points',
+            Page\sessionMessages('places/all-points/messages')
+            .join('<div class="hr"></div>', $items),
+            Page\newItemButton("{$base}new/$escapedItemQuery", 'Point')
+        )
+        .create_panel('Options', $deleteLink);
 
 }

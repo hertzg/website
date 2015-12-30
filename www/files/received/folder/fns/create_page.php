@@ -54,14 +54,16 @@ function create_page ($mysqli, $receivedFolder, &$scripts, $base = '') {
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    return Page\create(
-        [
-            'title' => 'Files',
-            'href' => "$base../#folder_$id",
-        ],
-        "Received Folder #$id",
-        Page\sessionMessages('files/received/folder/messages')
-        .create_received_from_item($receivedFolder)
+    return
+        Page\create(
+            [
+                'title' => 'Files',
+                'href' => "$base../#folder_$id",
+            ],
+            "Received Folder #$id",
+            Page\sessionMessages('files/received/folder/messages')
+            .create_received_from_item($receivedFolder)
+        )
         .create_panel(
             'The Folder',
             '<div class="textAndButtons">'
@@ -74,7 +76,6 @@ function create_page ($mysqli, $receivedFolder, &$scripts, $base = '') {
             .Page\infoText("Folder received $date_ago.")
 
         )
-        .create_options_panel($receivedFolder, $base)
-    );
+        .create_options_panel($receivedFolder, $base);
 
 }

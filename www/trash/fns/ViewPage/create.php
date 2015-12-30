@@ -100,14 +100,15 @@ function create ($mysqli, $deletedItem, $user, &$title, &$head, &$scripts) {
     include_once __DIR__.'/optionsPanel.php';
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/infoText.php";
-    return \Page\create(
-        [
-            'title' => 'Trash',
-            'href' => "../#$id",
-        ],
-        $title,
-        $content.\Page\infoText($infoText)
-        .optionsPanel($typeName, $id)
-    );
+    return
+        \Page\create(
+            [
+                'title' => 'Trash',
+                'href' => "../#$id",
+            ],
+            $title,
+            $content.\Page\infoText($infoText)
+        )
+        .optionsPanel($typeName, $id);
 
 }

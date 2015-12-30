@@ -38,17 +38,18 @@ function create ($receivedCalculation, &$scripts) {
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    return \Page\create(
-        [
-            'title' => 'Calculations',
-            'href' => '../'.\ItemList\Received\listHref()."#$id",
-        ],
-        "Received Calculation #$id",
-        \Page\sessionMessages('calculations/received/view/messages')
-        .create_received_from_item($receivedCalculation)
-        .create_panel('The Calculation', join('<div class="hr"></div>', $items))
-        .\Page\infoText("Calculation received $date_ago.")
-        .optionsPanel($receivedCalculation)
-    );
+    return
+        \Page\create(
+            [
+                'title' => 'Calculations',
+                'href' => '../'.\ItemList\Received\listHref()."#$id",
+            ],
+            "Received Calculation #$id",
+            \Page\sessionMessages('calculations/received/view/messages')
+            .create_received_from_item($receivedCalculation)
+        )
+        .create_panel('The Calculation', join('<div class="hr"></div>', $items)
+            .\Page\infoText("Calculation received $date_ago."))
+        .optionsPanel($receivedCalculation);
 
 }

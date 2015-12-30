@@ -32,17 +32,18 @@ function create ($receivedBookmark, &$scripts) {
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    return \Page\create(
-        [
-            'title' => 'Bookmarks',
-            'href' => '../'.\ItemList\Received\listHref()."#$id",
-        ],
-        "Received Bookmark #$id",
-        \Page\sessionMessages('bookmarks/received/view/messages')
-        .create_received_from_item($receivedBookmark)
-        .create_panel('The Bookmark', join('<div class="hr"></div>', $items))
-        .\Page\infoText("Bookmark received $date_ago.")
-        .optionsPanel($receivedBookmark)
-    );
+    return
+        \Page\create(
+            [
+                'title' => 'Bookmarks',
+                'href' => '../'.\ItemList\Received\listHref()."#$id",
+            ],
+            "Received Bookmark #$id",
+            \Page\sessionMessages('bookmarks/received/view/messages')
+            .create_received_from_item($receivedBookmark)
+        )
+        .create_panel('The Bookmark', join('<div class="hr"></div>', $items)
+            .\Page\infoText("Bookmark received $date_ago."))
+        .optionsPanel($receivedBookmark);
 
 }

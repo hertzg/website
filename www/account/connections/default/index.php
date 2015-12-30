@@ -27,17 +27,18 @@ include_once "$fnsDir/Form/label.php";
 include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/newItemButton.php";
 include_once "$fnsDir/Page/sessionMessages.php";
-$content = Page\create(
-    [
-        'title' => 'Connections',
-        'href' => '../#default',
-    ],
-    'Default Connection',
-    Page\sessionMessages('account/connections/default/messages')
-    .Form\label('Other users', $permissions)
-    .create_panel('Connection Options', $editLink),
-    Page\newItemButton('../new/', 'Connection', !$user->num_connections)
-);
+$content =
+    Page\create(
+        [
+            'title' => 'Connections',
+            'href' => '../#default',
+        ],
+        'Default Connection',
+        Page\sessionMessages('account/connections/default/messages')
+        .Form\label('Other users', $permissions),
+        Page\newItemButton('../new/', 'Connection', !$user->num_connections)
+    )
+    .create_panel('Connection Options', $editLink);
 
 include_once "$fnsDir/echo_user_page.php";
 echo_user_page($user, 'Default Connection', $content, $base);

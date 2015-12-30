@@ -51,16 +51,17 @@ function create ($bar, &$scripts) {
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    return \Page\create(
-        [
-            'title' => "Bar Chart #$id_bar_charts",
-            'href' => "../view/$barChartEscapedItemQuery#$id",
-        ],
-        "Bar #$id",
-        \Page\sessionMessages('bar-charts/view-bar/messages')
-        .viewContent($bar, $scripts)
-        .create_panel('Bar Options', $optionsContent),
-        \Page\newItemButton("../new-bar/$barChartEscapedItemQuery", 'Bar')
-    );
+    return
+        \Page\create(
+            [
+                'title' => "Bar Chart #$id_bar_charts",
+                'href' => "../view/$barChartEscapedItemQuery#$id",
+            ],
+            "Bar #$id",
+            \Page\sessionMessages('bar-charts/view-bar/messages')
+            .viewContent($bar, $scripts),
+            \Page\newItemButton("../new-bar/$barChartEscapedItemQuery", 'Bar')
+        )
+        .create_panel('Bar Options', $optionsContent);
 
 }

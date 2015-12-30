@@ -63,17 +63,18 @@ function create ($mysqli, $user, &$scripts) {
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    return \Page\create(
-        [
-            'title' => 'Calendar',
-            'href' => '../../#all-events',
-        ],
-        'All Events',
-        \Page\sessionMessages('calendar/all-events/messages')
-        .join('<div class="hr"></div>', $items)
+    return
+        \Page\create(
+            [
+                'title' => 'Calendar',
+                'href' => '../../#all-events',
+            ],
+            'All Events',
+            \Page\sessionMessages('calendar/all-events/messages')
+            .join('<div class="hr"></div>', $items),
+            \Page\newItemButton("../new/$escapedPageQuery", 'Event')
+        )
         .sort_panel($user, $total, '../')
-        .create_panel('Options', $deleteLink),
-        \Page\newItemButton("../new/$escapedPageQuery", 'Event')
-    );
+        .create_panel('Options', $deleteLink);
 
 }

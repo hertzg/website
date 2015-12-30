@@ -43,22 +43,23 @@ function create_page ($mysqli, $user,
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    return Page\create(
-        [
-            'title' => 'Home',
-            'href' => "$base../../home/#notifications",
-        ],
-        'Notifications',
-        Page\sessionMessages('notifications/in-channel/messages')
-        .'<div class="filterBar">'
-            .'Channel: <b>'.htmlspecialchars($channel->channel_name).'</b>'
-            .'<a class="rightButton clickable" title="Clear Filter"'
-            ." href=\"$base..\">"
-                .'<span class="rightButton-icon icon no"></span>'
-            .'</a>'
-        .'</div>'
-        .join('<div class="hr"></div>', $items)
-        .create_panel('Options', join('<div class="hr"></div>', $options))
-    );
+    return
+        Page\create(
+            [
+                'title' => 'Home',
+                'href' => "$base../../home/#notifications",
+            ],
+            'Notifications',
+            Page\sessionMessages('notifications/in-channel/messages')
+            .'<div class="filterBar">'
+                .'Channel: <b>'.htmlspecialchars($channel->channel_name).'</b>'
+                .'<a class="rightButton clickable" title="Clear Filter"'
+                ." href=\"$base..\">"
+                    .'<span class="rightButton-icon icon no"></span>'
+                .'</a>'
+            .'</div>'
+            .join('<div class="hr"></div>', $items)
+        )
+        .create_panel('Options', join('<div class="hr"></div>', $options));
 
 }

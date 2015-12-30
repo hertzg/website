@@ -80,10 +80,10 @@ function create ($mysqli, $place, &$scripts, &$head) {
             "Place #$id",
             \Page\sessionMessages('places/view/messages')
             .join('<div class="hr"></div>', $items)
-            .\Page\infoText($infoText)
-            .nearPlaces($mysqli, $place),
+            .\Page\infoText($infoText),
             create_new_item_button('Place', '../')
         )
+        .nearPlaces($mysqli, $place)
         .pointsPanel($mysqli, $place)
         .optionsPanel($place);
 

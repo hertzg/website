@@ -70,16 +70,17 @@ function create ($mysqli, $user, $wallet, &$scripts) {
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    return \Page\create(
-        [
-            'title' => "Wallet #$id",
-            'href' => "../../view/?id=$id#all-transactions",
-        ],
-        'All Transactions',
-        \Page\sessionMessages('wallets/all-transactions/messages')
-        .join('<div class="hr"></div>', $items)
-        .create_panel('Options', $deleteLink),
-        \Page\newItemButton("../new/$escapedItemQuery", 'Transaction')
-    );
+    return
+        \Page\create(
+            [
+                'title' => "Wallet #$id",
+                'href' => "../../view/?id=$id#all-transactions",
+            ],
+            'All Transactions',
+            \Page\sessionMessages('wallets/all-transactions/messages')
+            .join('<div class="hr"></div>', $items),
+            \Page\newItemButton("../new/$escapedItemQuery", 'Transaction')
+        )
+        .create_panel('Options', $deleteLink);
 
 }

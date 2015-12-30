@@ -36,29 +36,30 @@ $filePreview = Page\filePreview($receivedFolderFile->media_type,
 include_once "$fnsDir/create_panel.php";
 include_once "$fnsDir/Form/label.php";
 include_once "$fnsDir/Page/create.php";
-$content = Page\create(
-    [
-        'title' => 'Received',
-        'href' => "../../#folder_$id_received_folders",
-    ],
-    $title,
-    '<div class="textAndButtons">'
-        .'<span class="textAndButtons-text">Location:</span>'
-        ."<a class=\"tag\" href=\"../?id=$id_received_folders#file_$id\">"
-            .htmlspecialchars($receivedFolderFile->received_folder_name)
-        .'</a>'
-    .'</div>'
-    .Form\label('File name', htmlspecialchars($name))
-    .'<div class="hr"></div>'
-    .Form\label('Size', $receivedFolderFile->readable_size)
-    .'<div class="hr"></div>'
-    .Form\label('Preview', $filePreview)
-    .'<div class="hr"></div>'
-    .Form\label('MD5 sum', $receivedFolderFile->md5_sum)
-    .'<div class="hr"></div>'
-    .Form\label('SHA-256 sum', $receivedFolderFile->sha256_sum)
-    .create_panel('File Options', $downloadLink)
-);
+$content =
+    Page\create(
+        [
+            'title' => 'Received',
+            'href' => "../../#folder_$id_received_folders",
+        ],
+        $title,
+        '<div class="textAndButtons">'
+            .'<span class="textAndButtons-text">Location:</span>'
+            ."<a class=\"tag\" href=\"../?id=$id_received_folders#file_$id\">"
+                .htmlspecialchars($receivedFolderFile->received_folder_name)
+            .'</a>'
+        .'</div>'
+        .Form\label('File name', htmlspecialchars($name))
+        .'<div class="hr"></div>'
+        .Form\label('Size', $receivedFolderFile->readable_size)
+        .'<div class="hr"></div>'
+        .Form\label('Preview', $filePreview)
+        .'<div class="hr"></div>'
+        .Form\label('MD5 sum', $receivedFolderFile->md5_sum)
+        .'<div class="hr"></div>'
+        .Form\label('SHA-256 sum', $receivedFolderFile->sha256_sum)
+    )
+    .create_panel('File Options', $downloadLink);
 
 include_once "$fnsDir/echo_user_page.php";
 echo_user_page($user, $title, $content, $base);

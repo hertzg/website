@@ -55,19 +55,20 @@ function create ($mysqli, $user, $bar_chart, &$scripts, &$head) {
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    return \Page\create(
-        [
-            'title' => 'Bar Charts',
-            'href' => \ItemList\listHref()."#$id",
-        ],
-        "Bar Chart #$id",
-        \Page\sessionMessages('bar-charts/view/messages')
-        .chart($mysqli, $bar_chart)
-        .join('<div class="hr"></div>', $items)
-        .\Page\infoText($infoText)
+    return
+        \Page\create(
+            [
+                'title' => 'Bar Charts',
+                'href' => \ItemList\listHref()."#$id",
+            ],
+            "Bar Chart #$id",
+            \Page\sessionMessages('bar-charts/view/messages')
+            .chart($mysqli, $bar_chart)
+            .join('<div class="hr"></div>', $items)
+            .\Page\infoText($infoText),
+            create_new_item_button('Bar Chart', '../')
+        )
         .barsPanel($mysqli, $bar_chart, $scripts)
-        .optionsPanel($bar_chart),
-        create_new_item_button('Bar Chart', '../')
-    );
+        .optionsPanel($bar_chart);
 
 }

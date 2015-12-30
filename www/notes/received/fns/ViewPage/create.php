@@ -37,17 +37,18 @@ function create ($receivedNote, &$scripts) {
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    return \Page\create(
-        [
-            'title' => 'Notes',
-            'href' => '../'.\ItemList\Received\listHref()."#$id",
-        ],
-        "Received Note #$id",
-        \Page\sessionMessages('notes/received/view/messages')
-        .create_received_from_item($receivedNote)
-        .create_panel('The Note', join('<div class="hr"></div>', $items))
-        .\Page\infoText($infoText)
-        .optionsPanel($receivedNote)
-    );
+    return
+        \Page\create(
+            [
+                'title' => 'Notes',
+                'href' => '../'.\ItemList\Received\listHref()."#$id",
+            ],
+            "Received Note #$id",
+            \Page\sessionMessages('notes/received/view/messages')
+            .create_received_from_item($receivedNote)
+        )
+        .create_panel('The Note', join('<div class="hr"></div>', $items)
+            .\Page\infoText($infoText))
+        .optionsPanel($receivedNote);
 
 }

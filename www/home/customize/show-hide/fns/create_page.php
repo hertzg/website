@@ -31,17 +31,19 @@ function create_page ($user, &$scripts, $base = '') {
     include_once "$fnsDir/Page/imageLinkWithDescription.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/text.php";
-    return Page\create(
-        [
-            'title' => 'Customize',
-            'href' => "$base../#show-hide",
-        ],
-        'Show / Hide Items',
-        Page\sessionMessages('home/customize/show-hide/messages')
-        .Page\text('Select the items you want to see on your home page:')
-        ."<form action=\"{$base}submit.php\" method=\"post\">"
-            .join('<div class="hr"></div>', $items)
-        .'</form>'
+    return
+        Page\create(
+            [
+                'title' => 'Customize',
+                'href' => "$base../#show-hide",
+            ],
+            'Show / Hide Items',
+            Page\sessionMessages('home/customize/show-hide/messages')
+            .Page\text('Select the items you want to see on your home page:')
+            ."<form action=\"{$base}submit.php\" method=\"post\">"
+                .join('<div class="hr"></div>', $items)
+            .'</form>'
+        )
         .create_panel(
             'Options',
             Page\imageLinkWithDescription('Reorder Items',
@@ -52,7 +54,6 @@ function create_page ($user, &$scripts, $base = '') {
                 .Page\imageLink('Restore Defaults',
                     "{$base}restore-defaults/", 'restore-defaults')
             .'</div>'
-        )
-    );
+        );
 
 }

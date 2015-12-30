@@ -17,27 +17,28 @@ include_once "$fnsDir/create_panel.php";
 include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/imageArrowLink.php";
 include_once "$fnsDir/Page/text.php";
-$content = Page\create(
-    [
-        'title' => 'Administration',
-        'href' => '../#api-doc',
-    ],
-    'Exchange API Documentation',
-    Page\text(get_article_text())
-    .'<div class="hr"></div>'
-    .Page\imageArrowLink('PHP Example',
-        'php-example', 'generic', ['id' => 'php-example'])
-    .'<div class="hr"></div>'
-    .Page\text(
-        'Below is a list of errors that'
-        .' are expected from any exchange API method:'
-        .'<br /><code>INVALID_EXCHANGE_API_KEY</code> - '
-        .'The exchange API key is invalid.'
-        .'<br /><code>EXCHANGE_API_KEY_EXPIRED</code> - '
-        .'The exchange API key is expired.'
+$content =
+    Page\create(
+        [
+            'title' => 'Help',
+            'href' => '../#exchange-api-doc',
+        ],
+        'Exchange API Documentation',
+        Page\text(get_article_text())
+        .'<div class="hr"></div>'
+        .Page\imageArrowLink('PHP Example',
+            'php-example', 'generic', ['id' => 'php-example'])
+        .'<div class="hr"></div>'
+        .Page\text(
+            'Below is a list of errors that'
+            .' are expected from any exchange API method:'
+            .'<br /><code>INVALID_EXCHANGE_API_KEY</code> - '
+            .'The exchange API key is invalid.'
+            .'<br /><code>EXCHANGE_API_KEY_EXPIRED</code> - '
+            .'The exchange API key is expired.'
+        )
     )
-    .create_panel('Methods', join('<div class="hr"></div>', $items))
-);
+    .create_panel('Methods', join('<div class="hr"></div>', $items));
 
 include_once '../../fns/echo_admin_page.php';
 echo_admin_page('Exchange API Documentation', $content, '../../');

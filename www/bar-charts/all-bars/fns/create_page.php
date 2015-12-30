@@ -66,16 +66,17 @@ function create_page ($mysqli, $user, $bar_chart, &$scripts, $base = '') {
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    return Page\create(
-        [
-            'title' => "Bar Chart #$id",
-            'href' => "$base../view/?id=$id#all-bars",
-        ],
-        'All Bars',
-        Page\sessionMessages('bar-charts/all-bars/messages')
-        .join('<div class="hr"></div>', $items)
-        .create_panel('Options', $deleteLink),
-        Page\newItemButton("{$base}new/$escapedItemQuery", 'Bar')
-    );
+    return
+        Page\create(
+            [
+                'title' => "Bar Chart #$id",
+                'href' => "$base../view/?id=$id#all-bars",
+            ],
+            'All Bars',
+            Page\sessionMessages('bar-charts/all-bars/messages')
+            .join('<div class="hr"></div>', $items),
+            Page\newItemButton("{$base}new/$escapedItemQuery", 'Bar')
+        )
+        .create_panel('Options', $deleteLink);
 
 }

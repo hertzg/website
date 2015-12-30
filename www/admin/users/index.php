@@ -66,18 +66,19 @@ include_once "$fnsDir/create_new_item_button.php";
 include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/sessionMessages.php";
-$content = Page\create(
-    [
-        'title' => 'Administration',
-        'href' => '../#users',
-    ],
-    'Users',
-    Page\sessionErrors('admin/users/errors')
-    .Page\sessionMessages('admin/users/messages')
-    .join('<div class="hr"></div>', $items)
-    .sort_panel($order_by, $total),
-    create_new_item_button('User', '', !$total)
-);
+$content =
+    Page\create(
+        [
+            'title' => 'Administration',
+            'href' => '../#users',
+        ],
+        'Users',
+        Page\sessionErrors('admin/users/errors')
+        .Page\sessionMessages('admin/users/messages')
+        .join('<div class="hr"></div>', $items),
+        create_new_item_button('User', '', !$total)
+    )
+    .sort_panel($order_by, $total);
 
 include_once '../fns/echo_admin_page.php';
 echo_admin_page('Users', $content, '../', ['scripts' => $scripts]);

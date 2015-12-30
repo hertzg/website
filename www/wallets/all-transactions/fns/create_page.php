@@ -69,16 +69,17 @@ function create_page ($mysqli, $user, $wallet, &$scripts, $base = '') {
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    return Page\create(
-        [
-            'title' => "Wallet #$id",
-            'href' => "$base../view/?id=$id#all-transactions",
-        ],
-        'All Transactions',
-        Page\sessionMessages('wallets/all-transactions/messages')
-        .join('<div class="hr"></div>', $items)
-        .create_panel('Options', $deleteLink),
-        Page\newItemButton("{$base}new/$escapedItemQuery", 'Transaction')
-    );
+    return
+        Page\create(
+            [
+                'title' => "Wallet #$id",
+                'href' => "$base../view/?id=$id#all-transactions",
+            ],
+            'All Transactions',
+            Page\sessionMessages('wallets/all-transactions/messages')
+            .join('<div class="hr"></div>', $items),
+            Page\newItemButton("{$base}new/$escapedItemQuery", 'Transaction')
+        )
+        .create_panel('Options', $deleteLink);
 
 }

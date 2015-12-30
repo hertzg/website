@@ -59,33 +59,34 @@ function create ($mysqli, $apiKey, &$scripts) {
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    return \Page\create(
-        [
-            'title' => 'API Keys',
-            'href' => \ItemList\listHref()."#$id",
-        ],
-        "API Key #$id",
-        \Page\sessionMessages('account/api-keys/view/messages')
-        .\Form\label('Name', $name)
-        .'<div class="hr"></div>'
-        .create_expires_label($apiKey->expire_time)
-        .'<div class="hr"></div>'
-        .\Form\textarea('key', 'Key', [
-            'value' => $apiKey->key,
-            'readonly' => true,
-        ])
-        .\Form\notes([
-            'This should be the value of <code>api_key</code>'
-            .' parameter when calling an API method.',
-        ])
-        .'<div class="hr"></div>'
-        .createPermissionsField($apiKey)
-        .'<div class="hr"></div>'
-        .\Form\label('Last accessed', $accessed)
-        .\Page\infoText($infoText)
+    return
+        \Page\create(
+            [
+                'title' => 'API Keys',
+                'href' => \ItemList\listHref()."#$id",
+            ],
+            "API Key #$id",
+            \Page\sessionMessages('account/api-keys/view/messages')
+            .\Form\label('Name', $name)
+            .'<div class="hr"></div>'
+            .create_expires_label($apiKey->expire_time)
+            .'<div class="hr"></div>'
+            .\Form\textarea('key', 'Key', [
+                'value' => $apiKey->key,
+                'readonly' => true,
+            ])
+            .\Form\notes([
+                'This should be the value of <code>api_key</code>'
+                .' parameter when calling an API method.',
+            ])
+            .'<div class="hr"></div>'
+            .createPermissionsField($apiKey)
+            .'<div class="hr"></div>'
+            .\Form\label('Last accessed', $accessed)
+            .\Page\infoText($infoText),
+            create_new_item_button('API Key', '../')
+        )
         .authsPanel($mysqli, $apiKey, $scripts)
-        .optionsPanel($id),
-        create_new_item_button('API Key', '../')
-    );
+        .optionsPanel($id);
 
 }

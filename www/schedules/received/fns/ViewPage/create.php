@@ -41,17 +41,18 @@ function create ($user, $receivedSchedule, &$scripts) {
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    return \Page\create(
-        [
-            'title' => 'Schedules',
-            'href' => '../'.\ItemList\Received\listHref()."#$id",
-        ],
-        "Received Schedule #$id",
-        \Page\sessionMessages('schedules/received/view/messages')
-        .create_received_from_item($receivedSchedule)
-        .create_panel('The Schedule', join('<div class="hr"></div>', $items))
-        .\Page\infoText("Schedule received $date_ago.")
-        .optionsPanel($receivedSchedule)
-    );
+    return
+        \Page\create(
+            [
+                'title' => 'Schedules',
+                'href' => '../'.\ItemList\Received\listHref()."#$id",
+            ],
+            "Received Schedule #$id",
+            \Page\sessionMessages('schedules/received/view/messages')
+            .create_received_from_item($receivedSchedule)
+        )
+        .create_panel('The Schedule', join('<div class="hr"></div>', $items)
+            .\Page\infoText("Schedule received $date_ago."))
+        .optionsPanel($receivedSchedule);
 
 }

@@ -56,21 +56,22 @@ function create_view_page ($connection, &$scripts) {
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    return Page\create(
-        [
-            'title' => 'Connections',
-            'href' => "../#$id",
-        ],
-        "Connection #$id",
-        Page\sessionMessages('account/connections/view/messages')
-        .Form\label('Username', $username)
-        .'<div class="hr"></div>'
-        .create_expires_label($connection->expire_time)
-        .'<div class="hr"></div>'
-        .Form\label('This user', $permissions)
-        .Page\infoText($infoText)
-        .create_panel('Conneciton Options', $optionsContent),
-        Page\newItemButton('../new/', 'Connection')
-    );
+    return
+        Page\create(
+            [
+                'title' => 'Connections',
+                'href' => "../#$id",
+            ],
+            "Connection #$id",
+            Page\sessionMessages('account/connections/view/messages')
+            .Form\label('Username', $username)
+            .'<div class="hr"></div>'
+            .create_expires_label($connection->expire_time)
+            .'<div class="hr"></div>'
+            .Form\label('This user', $permissions)
+            .Page\infoText($infoText),
+            Page\newItemButton('../new/', 'Connection')
+        )
+        .create_panel('Conneciton Options', $optionsContent);
 
 }

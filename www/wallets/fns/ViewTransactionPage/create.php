@@ -55,17 +55,18 @@ function create ($transaction, &$scripts) {
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    return \Page\create(
-        [
-            'title' => "Wallet #$id_wallets",
-            'href' => "../view/$walletEscapedItemQuery#$id",
-        ],
-        "Transaction #$id",
-        \Page\sessionMessages('wallets/view-transaction/messages')
-        .viewContent($transaction, $scripts)
-        .create_panel('Transaction Options', $optionsContent),
-        \Page\newItemButton(
-            "../new-transaction/$walletEscapedItemQuery", 'Transaction')
-    );
+    return
+        \Page\create(
+            [
+                'title' => "Wallet #$id_wallets",
+                'href' => "../view/$walletEscapedItemQuery#$id",
+            ],
+            "Transaction #$id",
+            \Page\sessionMessages('wallets/view-transaction/messages')
+            .viewContent($transaction, $scripts),
+            \Page\newItemButton(
+                "../new-transaction/$walletEscapedItemQuery", 'Transaction')
+        )
+        .create_panel('Transaction Options', $optionsContent);
 
 }

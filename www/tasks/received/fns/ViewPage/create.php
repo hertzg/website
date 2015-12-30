@@ -33,30 +33,30 @@ function create ($receivedTask, $user, &$scripts) {
     if ($tags !== '') $items[] = \Page\text('Tags: '.htmlspecialchars($tags));
 
     include_once "$fnsDir/export_date_ago.php";
-    include_once "$fnsDir/Page/infoText.php";
-    $infoText = \Page\infoText(
+    $infoText =
         ($receivedTask->top_priority ? 'Top' : 'Normal').' priority task.'
         .'<br />'
-        .'Task received '.export_date_ago($receivedTask->insert_time).'.'
-    );
+        .'Task received '.export_date_ago($receivedTask->insert_time).'.';
 
     include_once __DIR__.'/optionsPanel.php';
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/create_received_from_item.php";
     include_once "$fnsDir/ItemList/Received/listHref.php";
     include_once "$fnsDir/Page/create.php";
+    include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    return \Page\create(
-        [
-            'title' => 'Tasks',
-            'href' => '../'.\ItemList\Received\listHref()."#$id",
-        ],
-        "Received Task #$id",
-        \Page\sessionMessages('tasks/received/view/messages')
-        .create_received_from_item($receivedTask)
-        .create_panel('The Task', join('<div class="hr"></div>', $items))
-        .$infoText
-        .optionsPanel($receivedTask)
-    );
+    return
+        \Page\create(
+            [
+                'title' => 'Tasks',
+                'href' => '../'.\ItemList\Received\listHref()."#$id",
+            ],
+            "Received Task #$id",
+            \Page\sessionMessages('tasks/received/view/messages')
+            .create_received_from_item($receivedTask)
+        )
+        .create_panel('The Task', join('<div class="hr"></div>', $items)
+            .\Page\infoText($infoText))
+        .optionsPanel($receivedTask);
 
 }

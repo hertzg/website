@@ -65,25 +65,26 @@ include_once "$fnsDir/create_panel.php";
 include_once "$fnsDir/Form/label.php";
 include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/imageArrowLink.php";
-$content = Page\create(
-    [
-        'title' => 'Administration',
-        'href' => '../#mysql-settings',
-    ],
-    'MySQL Settings',
-    $messages.$errors
-    .Form\label('Host', $host)
-    .'<div class="hr"></div>'
-    .Form\label('Username', $username)
-    .'<div class="hr"></div>'
-    .Form\label('Password', $password)
-    .'<div class="hr"></div>'
-    .Form\label('Database', htmlspecialchars($db))
+$content =
+    Page\create(
+        [
+            'title' => 'Administration',
+            'href' => '../#mysql-settings',
+        ],
+        'MySQL Settings',
+        $messages.$errors
+        .Form\label('Host', $host)
+        .'<div class="hr"></div>'
+        .Form\label('Username', $username)
+        .'<div class="hr"></div>'
+        .Form\label('Password', $password)
+        .'<div class="hr"></div>'
+        .Form\label('Database', htmlspecialchars($db))
+    )
     .create_panel(
         'Options',
         Page\imageArrowLink('Edit', 'edit/', 'generic', ['id' => 'edit'])
-    )
-);
+    );
 
 include_once '../fns/echo_admin_page.php';
 echo_admin_page('MySQL Settings', $content, '../');

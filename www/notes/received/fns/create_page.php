@@ -73,18 +73,19 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    return Page\create(
-        [
-            'title' => 'Home',
-            'href' => "$base../../home/#notes",
-        ],
-        'Notes',
-        create_tabs($user)
-        .Page\sessionErrors('notes/received/errors')
-        .Page\sessionMessages('notes/received/messages')
-        .join('<div class="hr"></div>', $items)
-        .create_panel('Options', $deleteAllLink),
-        create_new_item_button('Note', "$base../")
-    );
+    return
+        Page\create(
+            [
+                'title' => 'Home',
+                'href' => "$base../../home/#notes",
+            ],
+            'Notes',
+            create_tabs($user)
+            .Page\sessionErrors('notes/received/errors')
+            .Page\sessionMessages('notes/received/messages')
+            .join('<div class="hr"></div>', $items),
+            create_new_item_button('Note', "$base../")
+        )
+        .create_panel('Options', $deleteAllLink);
 
 }
