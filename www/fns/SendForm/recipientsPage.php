@@ -42,7 +42,8 @@ function recipientsPage ($mysqli, $user, $id, $tabTitle,
     } else {
         if ($recipients) {
             include_once __DIR__.'/recipientsPanels.php';
-            $content = recipientsPanels($recipients, $contacts, $itemParams);
+            recipientsPanels($recipients, $contacts,
+                $itemParams, $content, $additionalPanels);
         } else {
             if ($contacts) {
 

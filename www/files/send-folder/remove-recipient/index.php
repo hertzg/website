@@ -22,10 +22,13 @@ $yesHref = 'submit.php?'.htmlspecialchars(http_build_query([
     'username' => $username,
 ]));
 
+include_once "$fnsDir/SendForm/recipientsPanels.php";
+SendForm\recipientsPanels($recipients, $contacts,
+    $params, $content, $additionalPanels, '../');
+
 include_once "$fnsDir/Page/confirmDialog.php";
 include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/text.php";
-include_once "$fnsDir/SendForm/recipientsPanels.php";
 $content =
     Page\create(
         [
@@ -33,9 +36,9 @@ $content =
             'href' => "../../?id_folders=$id#send",
         ],
         "Send Folder #$id",
-        Page\text('Send the folder to:')
-        .SendForm\recipientsPanels($recipients, $contacts, $params, '../')
+        Page\text('Send the folder to:').$content
     )
+    .$additionalPanels
     .Page\confirmDialog('Are you sure you want to remove the recipient'
         .' "<b>'.htmlspecialchars($username).'</b>"?',
         'Yes, remove recipient', $yesHref, "../?id_folders=$id");

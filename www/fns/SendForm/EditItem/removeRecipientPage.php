@@ -22,6 +22,9 @@ function removeRecipientPage ($mysqli,
     $contacts = \Contacts\indexWithUsernameOnUser($mysqli, $user->id_users);
 
     include_once __DIR__.'/../recipientsPanels.php';
+    \SendForm\recipientsPanels($recipients, $contacts,
+        $itemParams, $content, $additionalPanels, '../');
+
     include_once "$fnsDir/Page/confirmDialog.php";
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/text.php";
@@ -32,10 +35,9 @@ function removeRecipientPage ($mysqli,
                 'href' => "../../$escapedItemQuery",
             ],
             'Send',
-            \Page\text("Send the edited $text to:")
-            .\SendForm\recipientsPanels($recipients,
-                $contacts, $itemParams, '../')
+            \Page\text("Send the edited $text to:").$content
         )
+        .$additionalPanels
         .\Page\confirmDialog('Are you sure you want to remove the recipient'
             .' "<b>'.htmlspecialchars($username).'</b>"?',
             'Yes, remove recipient', $yesHref, "../$escapedItemQuery");

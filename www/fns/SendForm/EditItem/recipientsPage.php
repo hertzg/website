@@ -39,8 +39,8 @@ function recipientsPage ($mysqli, $user, $id, $pageTitle,
     } else {
         if ($recipients) {
             include_once __DIR__.'/../recipientsPanels.php';
-            $content = \SendForm\recipientsPanels(
-                $recipients, $contacts, $itemParams);
+            \SendForm\recipientsPanels($recipients, $contacts,
+                $itemParams, $content, $additionalPanels);
         } else {
             if ($contacts) {
 
