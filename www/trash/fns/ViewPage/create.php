@@ -71,6 +71,9 @@ function create ($mysqli, $deletedItem, $user, &$title, &$head, &$scripts) {
         renderWallet($data, $items, $infoText);
     }
 
+    include_once "$fnsDir/Page/infoText.php";
+    $infoText = \Page\infoText($infoText);
+
     include_once __DIR__.'/../item_type_name.php';
     $typeName = item_type_name($type);
 
@@ -83,10 +86,14 @@ function create ($mysqli, $deletedItem, $user, &$title, &$head, &$scripts) {
         $type == 'receivedTask') {
 
         include_once "$fnsDir/create_panel.php";
-        include_once "$fnsDir/create_received_from_item.php";
-        $content = create_received_from_item($data)
-            .create_panel("The $typeName", $content);
+        $additionalPanel = create_panel("The $typeName", $content.$infoText);
 
+        include_once "$fnsDir/create_received_from_item.php";
+        $content = create_received_from_item($data);
+
+    } else {
+        $additionalPanel = '';
+        $content .= $infoText;
     }
 
     include_once __DIR__.'/../item_type_title.php';
@@ -99,7 +106,6 @@ function create ($mysqli, $deletedItem, $user, &$title, &$head, &$scripts) {
 
     include_once __DIR__.'/optionsPanel.php';
     include_once "$fnsDir/Page/create.php";
-    include_once "$fnsDir/Page/infoText.php";
     return
         \Page\create(
             [
@@ -107,8 +113,8 @@ function create ($mysqli, $deletedItem, $user, &$title, &$head, &$scripts) {
                 'href' => "../#$id",
             ],
             $title,
-            $content.\Page\infoText($infoText)
+            $content
         )
-        .optionsPanel($typeName, $id);
+        .$additionalPanel.optionsPanel($typeName, $id);
 
 }
