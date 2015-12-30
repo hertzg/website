@@ -68,6 +68,7 @@ function renderCalendar ($user, $mysqli, &$items, &$scripts) {
             .'</span>'
             .'<span class="thumbnail_link-content">'
                 .'<span class="thumbnail_link-title">Calendar</span>'
+                .'<br class="zeroHeight" />'
                 .'<span class="thumbnail_link-description">'
                     .$description
                 .'</span>'
