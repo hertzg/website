@@ -3,11 +3,9 @@
 function create_move_location_bar ($mysqli,
     $id, $folder, $item_id, $folder_id) {
 
-    $parentLinks = [];
-
     if ($folder) {
 
-        $parentLinks[] =
+        $links[] =
             '<span class="tag active">'
                 .htmlspecialchars($folder->name)
             .'</span>';
@@ -21,7 +19,7 @@ function create_move_location_bar ($mysqli,
                     $folder->id_users, $parent_id);
                 $href = "./?$item_id=$id&amp;"
                     ."$folder_id=$parentFolder->id_folders";
-                $parentLinks[] =
+                $links[] =
                     "<a class=\"tag\" href=\"$href#$hash\">"
                         .htmlspecialchars($parentFolder->name)
                     .'</a>';
@@ -31,17 +29,17 @@ function create_move_location_bar ($mysqli,
         }
 
         $href = "./?$item_id=$id#$hash";
-        $parentLinks[] = "<a class=\"tag\" href=\"$href\">root</a>";
+        $links[] = "<a class=\"tag\" href=\"$href\">root</a>";
 
     } else {
-        $parentLinks[] = '<span class="tag active">root</span>';
+        $links[] = '<span class="tag active">root</span>';
     }
 
     return
         '<div class="textAndButtons">'
             .'<span class="textAndButtons-text">Location:</span>'
             .'<span class="zeroSize"> </span>'
-            .join('<span class="zeroSize"> </span>', array_reverse($parentLinks))
+            .join('<span class="zeroSize"> </span>', array_reverse($links))
         .'</div>';
 
 }

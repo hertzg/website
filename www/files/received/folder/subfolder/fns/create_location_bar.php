@@ -2,7 +2,6 @@
 
 function create_location_bar ($mysqli, $folder) {
 
-    $parentLinks = [];
     $hash = "folder_$folder->id";
 
     $parent_id = $folder->parent_id;
@@ -12,7 +11,7 @@ function create_location_bar ($mysqli, $folder) {
         while ($parent_id) {
             $parentFolder = \ReceivedFolderSubfolders\getOnUser(
                 $mysqli, $folder->id_users, $parent_id);
-            $parentLinks[] =
+            $links[] =
                 "<a class=\"tag\" href=\"./?id=$parent_id#$hash\">"
                     .htmlspecialchars($parentFolder->name)
                 .'</a>';
@@ -22,7 +21,7 @@ function create_location_bar ($mysqli, $folder) {
     }
 
     $href = "../?id=$folder->id_received_folders#$hash";
-    $parentLinks[] =
+    $links[] =
         "<a class=\"tag\" href=\"$href\">"
             .htmlspecialchars($folder->received_folder_name)
         .'</a>';
@@ -31,7 +30,7 @@ function create_location_bar ($mysqli, $folder) {
         '<div class="textAndButtons">'
             .'<span class="textAndButtons-text">Location:</span>'
             .'<span class="zeroSize"> </span>'
-            .join('<span class="zeroSize"> </span>', array_reverse($parentLinks))
+            .join('<span class="zeroSize"> </span>', array_reverse($links))
             .'<span class="zeroSize"> </span>'
             .'<span class="tag active">'
                 .htmlspecialchars($folder->name)

@@ -9,7 +9,7 @@ function create_location_bar ($mysqli, $file) {
     $parentFolder = \ReceivedFolderSubfolders\getOnUser(
         $mysqli, $id_users, $file->parent_id);
 
-    $parentLinks = [
+    $links = [
         "<a class=\"tag\" href=\"../?id=$parentFolder->id#file_$file->id\">"
             .htmlspecialchars($parentFolder->name)
         .'</a>',
@@ -19,7 +19,7 @@ function create_location_bar ($mysqli, $file) {
     while ($parentFolder->parent_id) {
         $parentFolder = \ReceivedFolderSubfolders\getOnUser(
             $mysqli, $id_users, $parentFolder->parent_id);
-        $parentLinks[] =
+        $links[] =
             "<a class=\"tag\" href=\"../?id=$parentFolder->id#$hash\">"
                 .htmlspecialchars($parentFolder->name)
             .'</a>';
@@ -27,7 +27,7 @@ function create_location_bar ($mysqli, $file) {
     }
 
     $href = "../../?id=$parentFolder->id_received_folders#$hash";
-    $parentLinks[] =
+    $links[] =
         "<a class=\"tag\" href=\"$href\">"
             .htmlspecialchars($file->received_folder_name)
         .'</a>';
@@ -36,7 +36,7 @@ function create_location_bar ($mysqli, $file) {
         '<div class="textAndButtons">'
             .'<span class="textAndButtons-text">Location:</span>'
             .'<span class="zeroSize"> </span>'
-            .join('<span class="zeroSize"> </span>', array_reverse($parentLinks))
+            .join('<span class="zeroSize"> </span>', array_reverse($links))
         .'</div>';
 
 }

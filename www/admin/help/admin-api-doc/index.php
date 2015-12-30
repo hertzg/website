@@ -42,13 +42,15 @@ $content =
             'php-example', 'generic', ['id' => 'php-example'])
         .'<div class="hr"></div>'
         .Page\text(
-            'Below is a list of errors that are expected from any admin API method:'
+            'Below is a list of errors'
+            .' that are expected from any admin API method:'
             .'<br /><code>INVALID_ADMIN_API_KEY</code> - '
             .'The admin API key is invalid.'
             .'<br /><code>ADMIN_API_KEY_EXPIRED</code> - '
             .'The admin API key is expired.'
             .'<br /><code>ACCESS_DENIED</code> - '
-            .'The admin API key doesn\'t have a permission to perform the action.'
+            .'The admin API key doesn\'t have'
+            .' a permission to perform the action.'
         )
     )
     .create_panel('Methods', join('<div class="hr"></div>', $items))

@@ -12,7 +12,8 @@ function recipientsPanels ($recipients, $contacts,
 
     if ($contacts) {
         include_once "$fnsDir/RecipientList/contactsPanel.php";
-        $additionalPanels .= \RecipientList\contactsPanel($contacts, $params, $base);
+        $additionalPanels .= \RecipientList\contactsPanel(
+            $contacts, $params, $base);
     }
 
     include_once "$fnsDir/RecipientList/enterPanel.php";
