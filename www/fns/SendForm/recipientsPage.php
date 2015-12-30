@@ -29,6 +29,7 @@ function recipientsPage ($mysqli, $user, $id, $tabTitle,
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
     $escapedItemQuery = \ItemList\escapedItemQuery($id);
 
+    $additionalPanels = '';
     if ($values['usernameError']) {
         $username = $values['username'];
         if ($contacts || $recipients) {
@@ -44,11 +45,13 @@ function recipientsPage ($mysqli, $user, $id, $tabTitle,
             $content = recipientsPanels($recipients, $contacts, $itemParams);
         } else {
             if ($contacts) {
+
                 include_once "$fnsDir/RecipientList/contactsForm.php";
+                $content = \RecipientList\contactsForm($contacts, $itemParams);
+
                 include_once "$fnsDir/RecipientList/enterPanel.php";
-                $content =
-                    \RecipientList\contactsForm($contacts, $itemParams)
-                    .\RecipientList\enterPanel('', $itemParams);
+                $additionalPanels = \RecipientList\enterPanel('', $itemParams);
+
             } else {
                 include_once "$fnsDir/RecipientList/enterForm.php";
                 $content = \RecipientList\enterForm('', $itemParams, true);
@@ -60,17 +63,19 @@ function recipientsPage ($mysqli, $user, $id, $tabTitle,
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/text.php";
-    $content = \Page\create(
-        [
-            'title' => $tabTitle,
-            'href' => "../view/$escapedItemQuery#send",
-        ],
-        'Send',
-        \Page\sessionErrors($errorsKey)
-        .\Page\sessionMessages($messagesKey)
-        .\Page\text("Send the $text to:")
-        .$content
-    );
+    $content =
+        \Page\create(
+            [
+                'title' => $tabTitle,
+                'href' => "../view/$escapedItemQuery#send",
+            ],
+            'Send',
+            \Page\sessionErrors($errorsKey)
+            .\Page\sessionMessages($messagesKey)
+            .\Page\text("Send the $text to:")
+            .$content
+        )
+        .$additionalPanels;
 
     include_once __DIR__.'/removeDialog.php';
     removeDialog($recipients, $base, $content, $head);

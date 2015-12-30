@@ -26,6 +26,7 @@ $recipients = $values['recipients'];
 include_once "$fnsDir/Contacts/indexWithUsernameOnUser.php";
 $contacts = Contacts\indexWithUsernameOnUser($mysqli, $user->id_users);
 
+$additionalPanels = '';
 if ($values['usernameError']) {
     $username = $values['username'];
     if ($contacts || $recipients) {
@@ -41,11 +42,13 @@ if ($values['usernameError']) {
         $content = SendForm\recipientsPanels($recipients, $contacts, $params);
     } else {
         if ($contacts) {
+
             include_once "$fnsDir/RecipientList/contactsForm.php";
+            $content = RecipientList\contactsForm($contacts, $params);
+
             include_once "$fnsDir/RecipientList/enterPanel.php";
-            $content =
-                RecipientList\contactsForm($contacts, $params)
-                .RecipientList\enterPanel('', $params);
+            $additionalPanels = RecipientList\enterPanel('', $params);
+
         } else {
             include_once "$fnsDir/RecipientList/enterForm.php";
             $content = RecipientList\enterForm('', $params, true);
@@ -57,17 +60,19 @@ include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/sessionMessages.php";
 include_once "$fnsDir/Page/text.php";
-$content = Page\create(
-    [
-        'title' => 'Files',
-        'href' => "../?id_folders=$id#send",
-    ],
-    "Send Folder #$id",
-    Page\sessionErrors('files/send-folder/errors')
-    .Page\sessionMessages('files/send-folder/messages')
-    .Page\text('Send the folder to:')
-    .$content
-);
+$content =
+    Page\create(
+        [
+            'title' => 'Files',
+            'href' => "../?id_folders=$id#send",
+        ],
+        "Send Folder #$id",
+        Page\sessionErrors('files/send-folder/errors')
+        .Page\sessionMessages('files/send-folder/messages')
+        .Page\text('Send the folder to:')
+        .$content
+    )
+    .$additionalPanels;
 
 include_once "$fnsDir/SendForm/removeDialog.php";
 SendForm\removeDialog($recipients, $base, $content, $head);

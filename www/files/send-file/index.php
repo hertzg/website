@@ -30,6 +30,7 @@ $contacts = Contacts\indexWithUsernameOnUser($mysqli, $user->id_users);
 
 $params = ['id' => $id];
 
+$additionalPanels = '';
 if ($values['usernameError']) {
     $username = $values['username'];
     if ($contacts || $recipients) {
@@ -45,11 +46,13 @@ if ($values['usernameError']) {
         $content = SendForm\recipientsPanels($recipients, $contacts, $params);
     } else {
         if ($contacts) {
+
             include_once "$fnsDir/RecipientList/contactsForm.php";
+            $content = RecipientList\contactsForm($contacts, $params);
+
             include_once "$fnsDir/RecipientList/enterPanel.php";
-            $content =
-                RecipientList\contactsForm($contacts, $params)
-                .RecipientList\enterPanel('', $params);
+            $additionalPanels = RecipientList\enterPanel('', $params);
+
         } else {
             include_once "$fnsDir/RecipientList/enterForm.php";
             $content = RecipientList\enterForm('', $params, true);
@@ -61,17 +64,19 @@ include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/sessionMessages.php";
 include_once "$fnsDir/Page/text.php";
-$content = Page\create(
-    [
-        'title' => "File #$id",
-        'href' => "../view-file/?id=$id#send",
-    ],
-    'Send',
-    Page\sessionErrors('files/send-file/errors')
-    .Page\sessionMessages('files/send-file/messages')
-    .Page\text('Send the file to:')
-    .$content
-);
+$content =
+    Page\create(
+        [
+            'title' => "File #$id",
+            'href' => "../view-file/?id=$id#send",
+        ],
+        'Send',
+        Page\sessionErrors('files/send-file/errors')
+        .Page\sessionMessages('files/send-file/messages')
+        .Page\text('Send the file to:')
+        .$content
+    )
+    .$additionalPanels;
 
 include_once "$fnsDir/SendForm/removeDialog.php";
 SendForm\removeDialog($recipients, $base, $content, $head);

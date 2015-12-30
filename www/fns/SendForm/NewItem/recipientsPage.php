@@ -26,6 +26,7 @@ function recipientsPage ($mysqli, $user,
     include_once "$fnsDir/ItemList/pageParams.php";
     $pageParams = \ItemList\pageParams();
 
+    $additionalPanels = '';
     if ($values['usernameError']) {
         $username = $values['username'];
         if ($contacts || $recipients) {
@@ -42,11 +43,13 @@ function recipientsPage ($mysqli, $user,
                 $recipients, $contacts, $pageParams);
         } else {
             if ($contacts) {
+
                 include_once "$fnsDir/RecipientList/contactsForm.php";
+                $content = \RecipientList\contactsForm($contacts, $pageParams);
+
                 include_once "$fnsDir/RecipientList/enterPanel.php";
-                $content =
-                    \RecipientList\contactsForm($contacts, $pageParams)
-                    .\RecipientList\enterPanel('', $pageParams);
+                $additionalPanels = \RecipientList\enterPanel('', $pageParams);
+
             } else {
                 include_once "$fnsDir/RecipientList/enterForm.php";
                 $content = \RecipientList\enterForm('', $pageParams, true);
@@ -59,17 +62,19 @@ function recipientsPage ($mysqli, $user,
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     include_once "$fnsDir/Page/text.php";
-    $content = \Page\create(
-        [
-            'title' => "New $what_upper",
-            'href' => '../'.\ItemList\escapedPageQuery(),
-        ],
-        'Send',
-        \Page\sessionErrors($errorsKey)
-        .\Page\sessionMessages($messagesKey)
-        .\Page\text("Send the new $what_lower to:")
-        .$content
-    );
+    $content =
+        \Page\create(
+            [
+                'title' => "New $what_upper",
+                'href' => '../'.\ItemList\escapedPageQuery(),
+            ],
+            'Send',
+            \Page\sessionErrors($errorsKey)
+            .\Page\sessionMessages($messagesKey)
+            .\Page\text("Send the new $what_lower to:")
+            .$content
+        )
+        .$additionalPanels;
 
     include_once "$fnsDir/SendForm/removeDialog.php";
     \SendForm\removeDialog($recipients, $base, $content, $head);
