@@ -33,6 +33,17 @@ $content = Page\create(
     .'</form>'
 );
 
+if ($user->num_channels > 1) {
+
+    include_once "$fnsDir/Page/imageLinkWithDescription.php";
+    $link = Page\imageLinkWithDescription('Post a Notification',
+        'In another channel', '../../post/', 'create-notification');
+
+    include_once "$fnsDir/create_panel.php";
+    $content .= create_panel('Options', $link);
+
+}
+
 include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/echo_user_page.php";
 echo_user_page($user, "Channel #$id", $content, $base, [
