@@ -26,4 +26,4 @@ unset($_SESSION['bookmarks/received/errors']);
 $_SESSION['bookmarks/received/messages'] = $messages;
 
 include_once "$fnsDir/ItemList/Received/listUrl.php";
-redirect('../'.ItemList\Received\listUrl());
+redirect(ItemList\Received\listUrl('../'));

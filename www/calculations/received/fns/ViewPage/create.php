@@ -42,7 +42,7 @@ function create ($receivedCalculation, &$scripts) {
         \Page\create(
             [
                 'title' => 'Calculations',
-                'href' => '../'.\ItemList\Received\listHref()."#$id",
+                'href' => \ItemList\Received\listHref('../')."#$id",
             ],
             "Received Calculation #$id",
             \Page\sessionMessages('calculations/received/view/messages')

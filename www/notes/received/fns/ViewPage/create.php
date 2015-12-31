@@ -41,7 +41,7 @@ function create ($receivedNote, &$scripts) {
         \Page\create(
             [
                 'title' => 'Notes',
-                'href' => '../'.\ItemList\Received\listHref()."#$id",
+                'href' => \ItemList\Received\listHref('../')."#$id",
             ],
             "Received Note #$id",
             \Page\sessionMessages('notes/received/view/messages')

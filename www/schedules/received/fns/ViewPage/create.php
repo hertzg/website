@@ -45,7 +45,7 @@ function create ($user, $receivedSchedule, &$scripts) {
         \Page\create(
             [
                 'title' => 'Schedules',
-                'href' => '../'.\ItemList\Received\listHref()."#$id",
+                'href' => \ItemList\Received\listHref('../')."#$id",
             ],
             "Received Schedule #$id",
             \Page\sessionMessages('schedules/received/view/messages')

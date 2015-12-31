@@ -49,7 +49,7 @@ function create ($receivedTask, $user, &$scripts) {
         \Page\create(
             [
                 'title' => 'Tasks',
-                'href' => '../'.\ItemList\Received\listHref()."#$id",
+                'href' => \ItemList\Received\listHref('../')."#$id",
             ],
             "Received Task #$id",
             \Page\sessionMessages('tasks/received/view/messages')

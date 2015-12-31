@@ -57,4 +57,4 @@ unset($_SESSION['tasks/received/errors']);
 $_SESSION['tasks/received/messages'] = $messages;
 
 include_once "$fnsDir/ItemList/Received/listUrl.php";
-redirect('../'.ItemList\Received\listUrl());
+redirect(ItemList\Received\listUrl('../'));

@@ -12,7 +12,7 @@ $base = '../../../';
 $fnsDir = '../../../fns';
 
 include_once "$fnsDir/ItemList/Received/listHref.php";
-$noHref = '../'.ItemList\Received\listHref();
+$noHref = ItemList\Received\listHref('../');
 
 include_once '../fns/create_page.php';
 include_once "$fnsDir/Page/confirmDialog.php";

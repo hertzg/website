@@ -40,4 +40,4 @@ unset($_SESSION['schedules/received/errors']);
 $_SESSION['schedules/received/messages'] = $messages;
 
 include_once "$fnsDir/ItemList/Received/listUrl.php";
-redirect('../../'.ItemList\Received\listUrl());
+redirect(ItemList\Received\listUrl('../../'));

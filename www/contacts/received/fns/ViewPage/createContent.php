@@ -27,7 +27,7 @@ function createContent ($receivedContact, $infoText, $items) {
         \Page\create(
             [
                 'title' => 'Contacts',
-                'href' => '../'.\ItemList\Received\listHref()."#$id",
+                'href' => \ItemList\Received\listHref('../')."#$id",
             ],
             "Received Contact #$id",
             \Page\sessionMessages('contacts/received/view/messages')

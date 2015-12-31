@@ -36,7 +36,7 @@ function create ($receivedBookmark, &$scripts) {
         \Page\create(
             [
                 'title' => 'Bookmarks',
-                'href' => '../'.\ItemList\Received\listHref()."#$id",
+                'href' => \ItemList\Received\listHref('../')."#$id",
             ],
             "Received Bookmark #$id",
             \Page\sessionMessages('bookmarks/received/view/messages')

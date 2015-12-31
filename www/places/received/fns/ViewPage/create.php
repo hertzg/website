@@ -48,7 +48,7 @@ function create ($receivedPlace, &$scripts) {
         \Page\create(
             [
                 'title' => 'Places',
-                'href' => '../'.\ItemList\Received\listHref()."#$id",
+                'href' => \ItemList\Received\listHref('../')."#$id",
             ],
             "Received Place #$id",
             \Page\sessionMessages('places/received/view/messages')
