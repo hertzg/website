@@ -3,32 +3,34 @@
 function create_options_panel ($receivedFolder, $base) {
 
     $fnsDir = __DIR__.'/../../../../fns';
-    $queryString = "?id=$receivedFolder->id";
+
+    include_once "$fnsDir/ItemList/Received/escapedItemQuery.php";
+    $escapedItemQuery = ItemList\Received\escapedItemQuery($receivedFolder->id);
 
     include_once "$fnsDir/Page/imageLink.php";
-    $href = "{$base}submit-import.php$queryString";
-    $importLink = Page\imageLink('Import', $href, 'import-folder');
+    $importLink = Page\imageLink('Import',
+        "{$base}submit-import.php$escapedItemQuery", 'import-folder');
 
     include_once "$fnsDir/Page/imageArrowLink.php";
     $renameAndImportLink = Page\imageArrowLink('Rename and Import',
-        "{$base}rename-and-import/$queryString", 'import-folder',
+        "{$base}rename-and-import/$escapedItemQuery", 'import-folder',
         ['id' => 'rename-and-import']);
 
     if ($receivedFolder->archived) {
         $title = 'Unarchive';
-        $href = "{$base}submit-unarchive.php$queryString";
+        $href = "{$base}submit-unarchive.php$escapedItemQuery";
         $icon = 'unarchive';
     } else {
         $title = 'Archive';
-        $href = "{$base}submit-archive.php$queryString";
+        $href = "{$base}submit-archive.php$escapedItemQuery";
         $icon = 'archive';
     }
     $archiveLink = Page\imageLink($title, $href, $icon);
 
-    $href = "{$base}delete/$queryString";
     $deleteLink =
         '<div id="deleteLink">'
-            .Page\imageLink('Delete', $href, 'trash-bin')
+            .Page\imageLink('Delete',
+                "{$base}delete/$escapedItemQuery", 'trash-bin')
         .'</div>';
 
     include_once "$fnsDir/create_panel.php";

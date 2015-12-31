@@ -42,12 +42,15 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
         include_once "$fnsDir/compressed_js_script.php";
         $scripts = compressed_js_script('dateAgo', "$base../../");
 
+        include_once "$fnsDir/ItemList/Received/escapedItemQuery.php";
+
         foreach ($receivedFolders as $receivedFolder) {
             $title = htmlspecialchars($receivedFolder->name);
             $description = create_sender_description($receivedFolder);
             $id = $receivedFolder->id;
             $html = Page\imageArrowLinkWithDescription($title, $description,
-                "{$base}folder/?id=$id", 'folder', ['id' => "folder_$id"]);
+                "{$base}folder/".ItemList\Received\escapedItemQuery($id),
+                'folder', ['id' => "folder_$id"]);
             $items[$receivedFolder->insert_time] = $html;
         }
 
@@ -56,8 +59,8 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
             $description = create_sender_description($receivedFile);
             $id = $receivedFile->id;
             $html = Page\imageArrowLinkWithDescription($title, $description,
-                "{$base}file/?id=$id", "$receivedFile->media_type-file",
-                ['id' => "file_$id"]);
+                "{$base}file/".ItemList\Received\escapedItemQuery($id),
+                "$receivedFile->media_type-file", ['id' => "file_$id"]);
             $items[$receivedFile->insert_time] = $html;
         }
 

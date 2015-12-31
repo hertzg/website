@@ -13,4 +13,5 @@ Users\Files\Received\archive($mysqli, $receivedFile);
 $_SESSION['files/received/file/messages'] = ['File has been archived.'];
 
 include_once '../../../fns/redirect.php';
-redirect("./?id=$id");
+include_once '../../../fns/ItemList/Received/itemQuery.php';
+redirect('./'.ItemList\Received\itemQuery($id));

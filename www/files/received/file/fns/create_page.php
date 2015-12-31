@@ -4,8 +4,10 @@ function create_page ($mysqli, $receivedFile, &$scripts, $base = '') {
 
     $id = $receivedFile->id;
     $name = $receivedFile->name;
-    $queryString = "?id=$id";
     $fnsDir = __DIR__.'/../../../../fns';
+
+    include_once "$fnsDir/ItemList/Received/escapedItemQuery.php";
+    $escapedItemQuery = ItemList\Received\escapedItemQuery($id);
 
     include_once "$fnsDir/ReceivedFiles/ensureSums.php";
     ReceivedFiles\ensureSums($mysqli, $receivedFile);
@@ -20,24 +22,27 @@ function create_page ($mysqli, $receivedFile, &$scripts, $base = '') {
     $downloadLink = Page\imageLink('Download',
         "{$base}download/$id/$namePart", 'download');
 
-    $href = "{$base}submit-import.php$queryString";
-    $importLink = Page\imageLink('Import', $href, 'import-file');
+    $importLink = Page\imageLink('Import',
+        "{$base}submit-import.php$escapedItemQuery", 'import-file');
 
     include_once "$fnsDir/Page/imageArrowLink.php";
     $renameAndImportLink = Page\imageArrowLink('Rename and Import',
-        "{$base}rename-and-import/$queryString", 'import-file',
+        "{$base}rename-and-import/$escapedItemQuery", 'import-file',
         ['id' => 'rename-and-import']);
 
     if ($receivedFile->archived) {
-        $href = "{$base}submit-unarchive.php$queryString";
-        $archiveLink = Page\imageLink('Unarchive', $href, 'unarchive');
+        $title = 'Unarchive';
+        $href = "{$base}submit-unarchive.php$escapedItemQuery";
+        $icon = 'unarchive';
     } else {
-        $href = "{$base}submit-archive.php$queryString";
-        $archiveLink = Page\imageLink('Archive', $href, 'archive');
+        $title = 'Archive';
+        $href = "{$base}submit-archive.php$escapedItemQuery";
+        $icon = 'archive';
     }
+    $archiveLink = Page\imageLink($title, $href, $icon);
 
-    $href = "{$base}delete/$queryString";
-    $deleteLink = Page\imageLink('Delete', $href, 'trash-bin');
+    $deleteLink = Page\imageLink('Delete',
+        "{$base}delete/$escapedItemQuery", 'trash-bin');
 
     include_once "$fnsDir/ReceivedFiles/File/path.php";
     $path = ReceivedFiles\File\path($receivedFile->receiver_id_users, $id);
@@ -53,6 +58,7 @@ function create_page ($mysqli, $receivedFile, &$scripts, $base = '') {
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/create_received_from_item.php";
     include_once "$fnsDir/Form/label.php";
+    include_once "$fnsDir/ItemList/Received/listHref.php";
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionMessages.php";
@@ -62,7 +68,7 @@ function create_page ($mysqli, $receivedFile, &$scripts, $base = '') {
         Page\create(
             [
                 'title' => 'Files',
-                'href' => "$base../#file_$id",
+                'href' => ItemList\Received\listHref("$base../")."#file_$id",
             ],
             "Received File #$id",
             Page\sessionMessages('files/received/file/messages')

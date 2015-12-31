@@ -25,4 +25,5 @@ if ($user->num_received_folders == 1 && !$user->num_received_files) {
 unset($_SESSION['files/received/errors']);
 $_SESSION['files/received/messages'] = $messages;
 
-redirect('../..');
+include_once "$fnsDir/ItemList/Received/listUrl.php";
+redirect(ItemList\Received\listUrl('../../'));

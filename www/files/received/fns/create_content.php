@@ -4,11 +4,14 @@ function create_content ($user, $items, $base) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
+    include_once "$fnsDir/ItemList/Received/escapedPageQuery.php";
+    $escapedPageQuery = ItemList\Received\escapedPageQuery();
+
     include_once "$fnsDir/Page/imageLink.php";
     $deleteAllLink =
         '<div id="deleteAllLink">'
             .Page\imageLink('Delete All Files',
-                "{$base}delete-all/", 'trash-bin')
+                "{$base}delete-all/$escapedPageQuery", 'trash-bin')
         .'</div>';
 
     include_once __DIR__.'/create_tabs.php';

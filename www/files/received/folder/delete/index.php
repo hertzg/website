@@ -4,10 +4,13 @@ include_once '../fns/require_received_folder.php';
 include_once '../../../../lib/mysqli.php';
 list($receivedFolder, $id, $user) = require_received_folder($mysqli, '../');
 
+unset($_SESSION['files/received/folder/messages']);
+
 $base = '../../../../';
 $fnsDir = '../../../../fns';
 
-unset($_SESSION['files/received/folder/messages']);
+include_once "$fnsDir/ItemList/Received/escapedItemQuery.php";
+$escapedItemQuery = ItemList\Received\escapedItemQuery($id);
 
 include_once '../fns/create_page.php';
 include_once "$fnsDir/Page/confirmDialog.php";
@@ -15,7 +18,7 @@ $content =
     create_page($mysqli, $receivedFolder, $scripts, '../')
     .Page\confirmDialog('Are you sure you want to delete the folder?'
         .' It will be moved to Trash.', 'Yes, delete folder',
-        "submit.php?id=$id", "../?id=$id");
+        "submit.php$escapedItemQuery", "../$escapedItemQuery");
 
 include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_user_page.php";

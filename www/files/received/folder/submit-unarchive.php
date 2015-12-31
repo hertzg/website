@@ -13,4 +13,5 @@ Users\Folders\Received\unarchive($mysqli, $receivedFolder);
 $_SESSION['files/received/folder/messages'] = ['Folder has been unarchived.'];
 
 include_once '../../../fns/redirect.php';
-redirect("./?id=$id");
+include_once '../../../fns/ItemList/Received/itemQuery.php';
+redirect('./'.ItemList\Received\itemQuery($id));

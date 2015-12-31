@@ -9,13 +9,16 @@ unset($_SESSION['files/received/file/messages']);
 $base = '../../../../';
 $fnsDir = '../../../../fns';
 
+include_once "$fnsDir/ItemList/Received/escapedItemQuery.php";
+$escapedItemQuery = ItemList\Received\escapedItemQuery($id);
+
 include_once '../fns/create_page.php';
 include_once "$fnsDir/Page/confirmDialog.php";
 $content =
     create_page($mysqli, $receivedFile, $scripts, '../')
     .Page\confirmDialog('Are you sure you want to delete the file?'
         .' It will be moved to Trash.', 'Yes, delete file',
-        "submit.php?id=$id", "../?id=$id");
+        "submit.php$escapedItemQuery", "../$escapedItemQuery");
 
 include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_user_page.php";

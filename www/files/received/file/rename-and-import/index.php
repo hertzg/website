@@ -14,12 +14,14 @@ $fnsDir = '../../../../fns';
 
 include_once '../../../fns/create_file_form_items.php';
 include_once "$fnsDir/Form/button.php";
+include_once "$fnsDir/ItemList/Received/itemHiddenInputs.php";
+include_once "$fnsDir/ItemList/Received/itemQuery.php";
 include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 $content = Page\create(
     [
         'title' => "Received File #$id",
-        'href' => "../?id=$id#rename-and-import",
+        'href' => '../'.ItemList\Received\itemQuery($id).'#rename-and-import',
     ],
     'Rename and Import',
     Page\sessionErrors('files/received/file/rename-and-import/errors')
@@ -27,7 +29,7 @@ $content = Page\create(
         .create_file_form_items($values)
         .'<div class="hr"></div>'
         .Form\button('Import File')
-        ."<input type=\"hidden\" name=\"id\" value=\"$id\" />"
+        .ItemList\Received\itemHiddenInputs($id)
     .'</form>'
 );
 
