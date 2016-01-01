@@ -41,8 +41,11 @@ function create_page ($mysqli, $receivedFile, &$scripts, $base = '') {
     }
     $archiveLink = Page\imageLink($title, $href, $icon);
 
-    $deleteLink = Page\imageLink('Delete',
-        "{$base}delete/$escapedItemQuery", 'trash-bin');
+    $deleteLink =
+        '<div id="deleteLink">'
+            .Page\imageLink('Delete',
+                "{$base}delete/$escapedItemQuery", 'trash-bin')
+        .'</div>';
 
     include_once "$fnsDir/ReceivedFiles/File/path.php";
     $path = ReceivedFiles\File\path($receivedFile->receiver_id_users, $id);
@@ -89,11 +92,11 @@ function create_page ($mysqli, $receivedFile, &$scripts, $base = '') {
         )
         .create_panel(
             'File Options',
-            Page\staticTwoColumns($downloadLink, $importLink)
+            $downloadLink
             .'<div class="hr"></div>'
-            .Page\twoColumns($renameAndImportLink, $archiveLink)
+            .Page\staticTwoColumns($importLink, $renameAndImportLink)
             .'<div class="hr"></div>'
-            ."<div id=\"deleteLink\">$deleteLink</div>"
+            .Page\twoColumns($archiveLink, $deleteLink)
         );
 
 }

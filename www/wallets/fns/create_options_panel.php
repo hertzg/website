@@ -23,8 +23,7 @@ function create_options_panel ($user, $base = '') {
             'transfer-amount', ['id' => 'transfer-amount']);
 
         include_once "$fnsDir/Page/twoColumns.php";
-        $content = Page\twoColumns(
-            $newTransactionLink, $transferAmountLink);
+        $content = Page\twoColumns($newTransactionLink, $transferAmountLink);
 
     } else {
         $content = $newTransactionLink;

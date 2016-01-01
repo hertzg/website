@@ -40,10 +40,11 @@ function optionsPanel ($receivedContact) {
     include_once "$fnsDir/Page/staticTwoColumns.php";
     include_once "$fnsDir/Page/twoColumns.php";
     $content =
-        \Page\staticTwoColumns($downloadLink, $importLink)
+        $downloadLink
         .'<div class="hr"></div>'
-        .\Page\twoColumns($editAndImportLink,
-            send_via_sms_link($receivedContact))
+        .\Page\staticTwoColumns($importLink, $editAndImportLink)
+        .'<div class="hr"></div>'
+        .send_via_sms_link($receivedContact)
         .'<div class="hr"></div>'
         .\Page\staticTwoColumns($archiveLink, $deleteLink);
 

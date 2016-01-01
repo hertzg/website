@@ -10,14 +10,10 @@ function create_options_panel ($user, $id_folders, $files, $base) {
 
     $fnsDir = __DIR__.'/../../fns';
 
-    $options = [];
-
-    include_once "$fnsDir/Page/imageArrowLink.php";
-    include_once "$fnsDir/Page/twoColumns.php";
-
     if ($id_folders) $parentQuery = "?parent_id=$id_folders";
     else $parentQuery = '';
 
+    include_once "$fnsDir/Page/imageArrowLink.php";
     $newFolderLink = Page\imageArrowLink(
         'New Folder', "{$base}new-folder/$parentQuery",
         'create-folder', ['id' => 'new-folder']);
@@ -27,20 +23,18 @@ function create_options_panel ($user, $id_folders, $files, $base) {
         'upload', ['id' => 'upload-files']);
 
     if ($previewableFiles) {
-
-        $slideshowLink = Page\imageArrowLink(
-            'Sldieshow', "{$base}slideshow/$parentQuery",
-            'slideshow', ['id' => 'slideshow']);
-
-        $options[] = Page\twoColumns($slideshowLink, $newFolderLink);
-
-        $options[] = $uploadLink;
-
+        $content =
+            Page\imageArrowLink('Sldieshow', "{$base}slideshow/$parentQuery",
+                'slideshow', ['id' => 'slideshow'])
+            .'<div class="hr"></div>';
     } else {
-        $options[] = Page\twoColumns($newFolderLink, $uploadLink);
+        $content = '';
     }
 
+    include_once "$fnsDir/Page/twoColumns.php";
+    $content .= Page\twoColumns($newFolderLink, $uploadLink);
+
     include_once "$fnsDir/create_panel.php";
-    return create_panel('Options', join('<div class="hr"></div>', $options));
+    return create_panel('Options', $content);
 
 }

@@ -25,7 +25,6 @@ function removeRecipientPage ($mysqli, $user,
 
     include_once "$fnsDir/Page/confirmDialog.php";
     include_once "$fnsDir/Page/create.php";
-    include_once "$fnsDir/Page/twoColumns.php";
     include_once "$fnsDir/Page/text.php";
     $content =
         \Page\create(

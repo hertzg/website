@@ -69,11 +69,13 @@ function optionsPanel ($contact, $base) {
     include_once "$fnsDir/Page/staticTwoColumns.php";
     include_once "$fnsDir/Page/twoColumns.php";
     $content =
-        \Page\staticTwoColumns($downloadLink, $editLink)
+        $downloadLink
         .'<div class="hr"></div>'
-        .\Page\staticTwoColumns($duplicateLink, $sendLink)
+        .\Page\staticTwoColumns($editLink, $duplicateLink)
         .'<div class="hr"></div>'
-        .\Page\twoColumns(send_via_sms_link($contact), $deleteLink);
+        .\Page\twoColumns($sendLink, send_via_sms_link($contact))
+        .'<div class="hr"></div>'
+        .$deleteLink;
 
     include_once "$fnsDir/create_panel.php";
     return create_panel('Contact Options', $content);
