@@ -112,7 +112,8 @@ foreach ($rows as $row) {
     $task = mysqli_single_object($mysqli, $sql);
     if ($task) {
         include_once '../fns/TaskTags/editTask.php';
-        TaskTags\editTask($mysqli, $task->id, $task->text, $task->tags,
+        TaskTags\editTask($mysqli, $task->id, $task->text,
+            $task->title, $task->deadline_time, $task->tags,
             json_decode($task->tags_json), $task->top_priority,
             $task->insert_time, $task->update_time);
     }
