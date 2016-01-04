@@ -44,7 +44,7 @@ foreach ($rows as $row) {
         include_once '../fns/CalculationTags/editCalculation.php';
         CalculationTags\editCalculation($mysqli, $calculation->id,
             $calculation->expression, $calculation->title,
-            json_decode($calculation->tags_json),
+            json_decode($calculation->tags_json), $calculation->value,
             $calculation->insert_time, $calculation->update_time);
     }
 }
