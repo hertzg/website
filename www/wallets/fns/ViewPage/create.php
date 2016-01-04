@@ -76,8 +76,8 @@ function create ($mysqli, $user, $wallet, &$scripts, &$head) {
             .\Page\infoText($infoText),
             create_new_item_button('Wallet', '../')
         )
-        .cashflowPanel($mysqli, $user, $wallet)
         .transactionsPanel($mysqli, $wallet, $scripts)
+        .cashflowPanel($mysqli, $user, $wallet)
         .optionsPanel($wallet, $user);
 
 }
