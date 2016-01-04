@@ -8,6 +8,8 @@ function edit ($mysqli, $user, $contact, $full_name, $alias,
     $username, $timezone, $tags, $tag_names, $notes,
     $favorite, &$changed, $updateApiKey = null) {
 
+    $tags_same = $contact->tags === $tags;
+
     if ($contact->full_name === $full_name &&
         $contact->alias === $alias &&
         $contact->address === $address &&
@@ -27,8 +29,7 @@ function edit ($mysqli, $user, $contact, $full_name, $alias,
                 if (($contact->timezone === null && $timezone === null) ||
                     (int)$contact->timezone === $timezone) {
 
-                    if ($contact->tags === $tags &&
-                        $contact->notes === $notes &&
+                    if ($tags_same && $contact->notes === $notes &&
                         (bool)$contact->favorite === $favorite) return;
 
                 }
@@ -51,18 +52,30 @@ function edit ($mysqli, $user, $contact, $full_name, $alias,
         $birthday_time, $username, $timezone, $tags, $tag_names,
         $notes, $favorite, $update_time, $updateApiKey);
 
-    if ($contact->num_tags) {
-        include_once "$fnsDir/ContactTags/deleteOnContact.php";
-        \ContactTags\deleteOnContact($mysqli, $id);
-    }
+    if ($tags_same) {
+        if ($tag_names) {
+            include_once "$fnsDir/ContactTags/editContact.php";
+            \ContactTags\editContact($mysqli, $id, $full_name,
+                $alias, $email1, $email1_label, $email2, $email2_label,
+                $phone1, $phone1_label, $phone2, $phone2_label,
+                $favorite, $contact->insert_time, $update_time);
+        }
+    } else {
 
-    if ($tag_names) {
-        include_once "$fnsDir/ContactTags/add.php";
-        \ContactTags\add($mysqli, $contact->id_users, $id,
-            $tag_names, $full_name, $alias, $email1,
-            $email1_label, $email2, $email2_label,
-            $phone1, $phone1_label, $phone2, $phone2_label,
-            $favorite, $contact->insert_time, $update_time);
+        if ($contact->num_tags) {
+            include_once "$fnsDir/ContactTags/deleteOnContact.php";
+            \ContactTags\deleteOnContact($mysqli, $id);
+        }
+
+        if ($tag_names) {
+            include_once "$fnsDir/ContactTags/add.php";
+            \ContactTags\add($mysqli, $contact->id_users, $id,
+                $tag_names, $full_name, $alias, $email1,
+                $email1_label, $email2, $email2_label,
+                $phone1, $phone1_label, $phone2, $phone2_label,
+                $favorite, $contact->insert_time, $update_time);
+        }
+
     }
 
     if ($contact->birthday_time !== null) {

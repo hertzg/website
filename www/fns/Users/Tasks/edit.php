@@ -5,11 +5,13 @@ namespace Users\Tasks;
 function edit ($mysqli, $user, $task, $text, $deadline_time,
     $tags, $tag_names, $top_priority, &$changed, $updateApiKey = null) {
 
+    $tags_same = $task->tags === $tags;
+
     if ($task->text === $text) {
         if (($task->deadline_time === null && $deadline_time === null) ||
             (int)$task->deadline_time === $deadline_time) {
 
-            if ($task->tags === $tags &&
+            if ($tags_same &&
                 (bool)$task->top_priority === $top_priority) return;
 
         }
@@ -29,16 +31,27 @@ function edit ($mysqli, $user, $task, $text, $deadline_time,
     \Tasks\edit($mysqli, $id, $text, $title, $deadline_time,
         $tags, $tag_names, $top_priority, $update_time, $updateApiKey);
 
-    if ($task->num_tags) {
-        include_once "$fnsDir/TaskTags/deleteOnTask.php";
-        \TaskTags\deleteOnTask($mysqli, $id);
-    }
+    if ($tags_same) {
+        if ($tag_names) {
+            include_once "$fnsDir/TaskTags/editTask.php";
+            \TaskTags\editTask($mysqli, $id, $text,
+                $title, $deadline_time, $tags, $tag_names,
+                $top_priority, $task->insert_time, $update_time);
+        }
+    } else {
 
-    if ($tag_names) {
-        include_once "$fnsDir/TaskTags/add.php";
-        \TaskTags\add($mysqli, $task->id_users, $id,
-            $tag_names, $text, $title, $deadline_time,
-            $tags, $top_priority, $task->insert_time, $update_time);
+        if ($task->num_tags) {
+            include_once "$fnsDir/TaskTags/deleteOnTask.php";
+            \TaskTags\deleteOnTask($mysqli, $id);
+        }
+
+        if ($tag_names) {
+            include_once "$fnsDir/TaskTags/add.php";
+            \TaskTags\add($mysqli, $task->id_users, $id,
+                $tag_names, $text, $title, $deadline_time,
+                $tags, $top_priority, $task->insert_time, $update_time);
+        }
+
     }
 
     if ($task->deadline_time) {

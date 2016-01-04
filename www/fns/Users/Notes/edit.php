@@ -7,9 +7,9 @@ function edit ($mysqli, $note, $text, $tags,
     $encryption_key, &$changed, $updateApiKey = null) {
 
     $fnsDir = __DIR__.'/../..';
+    $tags_same = $note->tags === $tags;
 
-    if (($password_protect || $note->text === $text) &&
-        $note->tags === $tags &&
+    if (($password_protect || $note->text === $text) && $tags_same &&
         (bool)$note->encrypt_in_listings === $encrypt_in_listings &&
         (bool)$note->password_protect === $password_protect) {
 
@@ -51,18 +51,30 @@ function edit ($mysqli, $note, $text, $tags,
         $encrypted_title_iv, $tags, $tag_names, $encrypt_in_listings,
         $password_protect, $update_time, $updateApiKey);
 
-    if ($note->num_tags) {
-        include_once "$fnsDir/NoteTags/deleteOnNote.php";
-        \NoteTags\deleteOnNote($mysqli, $id);
-    }
+    if ($tags_same) {
+        if ($tag_names) {
+            include_once "$fnsDir/NoteTags/editNote.php";
+            \NoteTags\editNote($mysqli, $id, $text, $encrypted_text,
+                $encrypted_text_iv, $title, $encrypted_title,
+                $encrypted_title_iv, $tags, $tag_names, $encrypt_in_listings,
+                $password_protect, $note->insert_time, $update_time);
+        }
+    } else {
 
-    if ($tag_names) {
-        include_once "$fnsDir/NoteTags/add.php";
-        \NoteTags\add($mysqli, $id_users, $id,
-            $tag_names, $text, $encrypted_text,
-            $encrypted_text_iv, $title, $encrypted_title,
-            $encrypted_title_iv, $tags, $encrypt_in_listings,
-            $password_protect, $note->insert_time, $update_time);
+        if ($note->num_tags) {
+            include_once "$fnsDir/NoteTags/deleteOnNote.php";
+            \NoteTags\deleteOnNote($mysqli, $id);
+        }
+
+        if ($tag_names) {
+            include_once "$fnsDir/NoteTags/add.php";
+            \NoteTags\add($mysqli, $id_users, $id,
+                $tag_names, $text, $encrypted_text,
+                $encrypted_text_iv, $title, $encrypted_title,
+                $encrypted_title_iv, $tags, $encrypt_in_listings,
+                $password_protect, $note->insert_time, $update_time);
+        }
+
     }
 
     if ($note->password_protect && !$password_protect) {

@@ -5,6 +5,8 @@ namespace Users\Places;
 function edit ($mysqli, $place, $latitude, $longitude, $altitude,
     $name, $description, $tags, $tag_names, &$changed, $updateApiKey = null) {
 
+    $tags_same = $place->tags === $tags;
+
     if ($place->name === $name &&
         (string)$place->latitude === (string)$latitude &&
         (string)$place->longitude === (string)$longitude) {
@@ -12,8 +14,7 @@ function edit ($mysqli, $place, $latitude, $longitude, $altitude,
         if (($place->altitude === null && $altitude === null) ||
             (string)$place->altitude === (string)$altitude) {
 
-            if ($place->description === $description &&
-                $place->tags === $tags) return;
+            if ($place->description === $description && $tags_same) return;
 
         }
 
@@ -47,16 +48,27 @@ function edit ($mysqli, $place, $latitude, $longitude, $altitude,
         $longitude, $altitude, $name, $description, $tags,
         $tag_names, $num_points, $update_time, $updateApiKey);
 
-    if ($place->num_tags) {
-        include_once "$fnsDir/PlaceTags/deleteOnPlace.php";
-        \PlaceTags\deleteOnPlace($mysqli, $id);
-    }
+    if ($tags_same) {
+        if ($tag_names) {
+            include_once "$fnsDir/PlaceTags/editPlace.php";
+            \PlaceTags\editPlace($mysqli, $id, $latitude,
+                $longitude, $name, $description, $tags, $tag_names,
+                $place->insert_time, $update_time);
+        }
+    } else {
 
-    if ($tag_names) {
-        include_once "$fnsDir/PlaceTags/add.php";
-        \PlaceTags\add($mysqli, $place->id_users, $id,
-            $tag_names, $latitude, $longitude, $name,
-            $description, $tags, $place->insert_time, $update_time);
+        if ($place->num_tags) {
+            include_once "$fnsDir/PlaceTags/deleteOnPlace.php";
+            \PlaceTags\deleteOnPlace($mysqli, $id);
+        }
+
+        if ($tag_names) {
+            include_once "$fnsDir/PlaceTags/add.php";
+            \PlaceTags\add($mysqli, $place->id_users, $id,
+                $tag_names, $latitude, $longitude, $name,
+                $description, $tags, $place->insert_time, $update_time);
+        }
+
     }
 
 }
