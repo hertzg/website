@@ -72,9 +72,12 @@ foreach ($rows as $row) {
     $note = mysqli_single_object($mysqli, $sql);
     if ($note) {
         include_once '../fns/NoteTags/editNote.php';
-        NoteTags\editNote($mysqli, $note->id, $note->text, $note->tags,
-            json_decode($note->tags_json), $note->encrypt_in_listings,
-            $note->password_protect, $note->insert_time, $note->update_time);
+        NoteTags\editNote($mysqli, $note->id, $note->text,
+            $note->encrypted_text, $note->encrypted_text_iv,
+            $note->title, $note->encrypted_title, $note->encrypted_title_iv,
+            $note->tags, json_decode($note->tags_json),
+            $note->encrypt_in_listings, $note->password_protect,
+            $note->insert_time, $note->update_time);
     }
 }
 
