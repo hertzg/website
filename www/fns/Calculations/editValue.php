@@ -2,7 +2,8 @@
 
 namespace Calculations;
 
-function editValue ($mysqli, $id, $value, $error, $error_char) {
+function editValue ($mysqli, $id, $value,
+    $error, $error_char, $resolved_expression) {
 
     if ($value === null) {
         $value = 'null';
@@ -12,7 +13,8 @@ function editValue ($mysqli, $id, $value, $error, $error_char) {
     }
 
     $sql = "update calculations set value = $value,"
-        ." error = $error, error_char = $error_char where id = $id";
+        ." error = $error, error_char = $error_char,"
+        ." resolved_expression = '$resolved_expression' where id = $id";
 
     $mysqli->query($sql) || trigger_error($mysqli->error);
 

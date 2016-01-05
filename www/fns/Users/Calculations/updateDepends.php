@@ -34,26 +34,13 @@ function updateDepends ($mysqli, $user, $id) {
             if ($value === false) $value = null;
             else $expression = $pretty_expression;
 
-            if ($value === null) {
-                $value = 'null';
-                $error = "'".$mysqli->real_escape_string($error)."'";
-            } else {
-                $error = $error_char = 'null';
-            }
-            $resolved_expression = $mysqli->real_escape_string(
-                $resolved_expression);
-
-            $sql = "update calculations set value = $value,"
-                ." error = $error, error_char = $error_char,"
-                ." resolved_expression = '$resolved_expression'"
-                ." where id = $calculation->id";
-
-            $mysqli->query($sql) || trigger_error($mysqli->error);
+            include_once "$fnsDir/Calculations/editValue.php";
+            \Calculations\editValue($mysqli, $calculation->id,
+                $value, $error, $error_char, $resolved_expression);
 
             if ($calculation->num_tags) {
-                $sql = "update calculation_tags set value = $value"
-                    ." where id_calculations = $calculation->id";
-                $mysqli->query($sql) || trigger_error($mysqli->error);
+                include_once "$fnsDir/CalculationTags/editValue.php";
+                \CalculationTags\editValue($mysqli, $calculation->id, $value);
             }
 
         }
