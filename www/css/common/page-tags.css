@@ -4,9 +4,10 @@
     padding-left: 16px;
     line-height: 42px;
 }
-.page-tags > .label {
+
+.page-tags-label {
     display: inline-block;
     vertical-align: top;
-    line-height: 36px;
+    line-height: 32px;
     margin-right: 8px;
 }

@@ -5,7 +5,7 @@ namespace Page;
 function tags ($base, $tags) {
     $html =
         '<div class="page-tags">'
-            .'<span class="label">Tags:</span>';
+            .'<span class="page-tags-label">Tags:</span>';
     foreach ($tags as $tag) {
         $escapedTag = htmlspecialchars($tag);
         $html .=
