@@ -20,7 +20,7 @@ function render ($tags, $paint) {
             $luminance += 10;
             $backgroundColor = "hsla($hue, $saturation%, $luminance%, 0.5)";
 
-            $style = "style=border-color: $borderColor;"
+            $style = "border-color: $borderColor;"
                 ." background-color: $backgroundColor";
             $styleAttribute = " style=\"$style\"";
 
