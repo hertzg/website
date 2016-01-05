@@ -1,5 +1,7 @@
 .page-tags {
-    padding: 6px 16px 0px;
+    padding-top: 8px;
+    padding-right: 16px;
+    padding-left: 16px;
     line-height: 42px;
 }
 .page-tags > .label {
