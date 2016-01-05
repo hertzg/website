@@ -6,7 +6,11 @@ function create_calculation_link ($theme_brightness, $title,
     $icon = 'calculation';
     $text_luminance = $theme_brightness === 'light' ? 10 : 90;
 
-    $description = number_format($value, 2);
+    if ($value === null) {
+        $description = '<span class="colorText red">Uncomputable</span>';
+    } else {
+        $description = number_format($value, 2);
+    }
 
     $tags = json_decode($tags_json);
     if ($tags) {
