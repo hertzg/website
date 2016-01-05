@@ -2,9 +2,9 @@
 
 namespace ColorTag;
 
-function render ($tags, $text_luminance, $paint) {
+function render ($tags, $paint) {
     $html = '';
-    if (!$paint) $style = "color: hsl(0, 0%, $text_luminance%)";
+    if (!$paint) $styleAttribute = '';
     foreach ($tags as $i => $tag) {
 
         if ($i) $html .= ' ';
@@ -17,17 +17,17 @@ function render ($tags, $text_luminance, $paint) {
             $luminance = 30 + floor(hexdec(substr($hash, 6, 2)) / 255 * 40);
             $borderColor = "hsl($hue, $saturation%, $luminance%)";
             $saturation -= 20;
-            $color = "hsl($hue, $saturation%, $text_luminance%)";
             $luminance += 10;
             $backgroundColor = "hsla($hue, $saturation%, $luminance%, 0.5)";
 
-            $style = "background-color: $backgroundColor;\n"
-                ." color: $color; border-color: $borderColor";
+            $style = "style=border-color: $borderColor;"
+                ." background-color: $backgroundColor";
+            $styleAttribute = " style=\"$style\"";
 
         }
 
         $html .=
-            "<span class=\"colorTag\" style=\"$style\">"
+            "<span class=\"colorTag\"$styleAttribute>"
                 .htmlspecialchars($tag)
             .'</span>';
 

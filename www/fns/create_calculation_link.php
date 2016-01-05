@@ -1,10 +1,9 @@
 <?php
 
-function create_calculation_link ($theme_brightness, $title,
-    $value, $tags_json, $href, $options = [], $paint = false) {
+function create_calculation_link ($title, $value,
+    $tags_json, $href, $options = [], $paint = false) {
 
     $icon = 'calculation';
-    $text_luminance = $theme_brightness === 'light' ? 10 : 90;
 
     if ($value === null) {
         $description = '<span class="colorText red">Uncomputable</span>';
@@ -16,8 +15,7 @@ function create_calculation_link ($theme_brightness, $title,
     if ($tags) {
 
         include_once __DIR__.'/ColorTag/render.php';
-        $description .= ' &middot; '
-            .ColorTag\render($tags, $text_luminance, $paint);
+        $description .= ' &middot; '.ColorTag\render($tags, $paint);
 
     }
 

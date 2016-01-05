@@ -84,7 +84,7 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
     render_prev_button($offset, $limit, $total, $items, $params);
 
     include_once __DIR__.'/render_bar_charts.php';
-    render_bar_charts($user, $bar_charts, $items, $params, $base);
+    render_bar_charts($bar_charts, $items, $params, $base);
 
     include_once __DIR__.'/render_next_button.php';
     render_next_button($offset, $limit, $total, $items, $params);

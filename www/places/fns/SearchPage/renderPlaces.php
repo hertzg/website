@@ -2,14 +2,11 @@
 
 namespace SearchPage;
 
-function renderPlaces ($user, $places, &$items, $params, $keyword) {
+function renderPlaces ($places, &$items, $params, $keyword) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
     if ($places) {
-
-        include_once "$fnsDir/resolve_theme.php";
-        resolve_theme($user, $theme_color, $theme_brightness);
 
         $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
 
@@ -28,9 +25,9 @@ function renderPlaces ($user, $places, &$items, $params, $keyword) {
             $escapedName = htmlspecialchars($place->name);
             $title = preg_replace($regex, '<mark>$0</mark>', $escapedName);
 
-            $items[] = create_place_link($theme_brightness,
-                $place->latitude, $place->longitude, $title,
-                $place->num_tags, $place->tags_json, $href, $options);
+            $items[] = create_place_link($place->latitude,
+                $place->longitude, $title, $place->num_tags,
+                $place->tags_json, $href, $options);
 
         }
 

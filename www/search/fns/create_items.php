@@ -6,9 +6,6 @@ function create_items ($bar_charts, $num_bar_charts,
     $num_folders, $notes, $num_notes, $places, $num_places, $tasks,
     $num_tasks, $wallets, $num_wallets, $keyword, $user, $groupLimit) {
 
-    include_once __DIR__.'/../../fns/resolve_theme.php';
-    resolve_theme($user, $theme_color, $theme_brightness);
-
     $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
     $encodedKeyword = rawurlencode($keyword);
 
@@ -16,8 +13,8 @@ function create_items ($bar_charts, $num_bar_charts,
 
     if ($num_bar_charts) {
         include_once __DIR__.'/render_bar_charts.php';
-        render_bar_charts($theme_brightness, $bar_charts,
-            $num_bar_charts, $groupLimit, $items, $regex, $encodedKeyword);
+        render_bar_charts($bar_charts, $num_bar_charts,
+            $groupLimit, $items, $regex, $encodedKeyword);
     }
 
     if ($num_bookmarks) {
@@ -28,8 +25,8 @@ function create_items ($bar_charts, $num_bar_charts,
 
     if ($num_calculations) {
         include_once __DIR__.'/render_calculations.php';
-        render_calculations($theme_brightness, $calculations,
-            $num_calculations, $groupLimit, $items, $regex, $encodedKeyword);
+        render_calculations($calculations, $num_calculations,
+            $groupLimit, $items, $regex, $encodedKeyword);
     }
 
     if ($num_contacts) {
@@ -46,20 +43,20 @@ function create_items ($bar_charts, $num_bar_charts,
 
     if ($num_notes) {
         include_once __DIR__.'/render_notes.php';
-        render_notes($theme_brightness, $notes, $num_notes,
+        render_notes($notes, $num_notes,
             $groupLimit, $items, $regex, $encodedKeyword);
     }
 
     if ($num_places) {
         include_once __DIR__.'/render_places.php';
-        render_places($theme_brightness, $places, $num_places,
+        render_places($places, $num_places,
             $groupLimit, $items, $regex, $encodedKeyword);
     }
 
     if ($num_tasks) {
         include_once __DIR__.'/render_tasks.php';
-        render_tasks($theme_brightness, $tasks, $num_tasks,
-            $groupLimit, $items, $regex, $encodedKeyword, $user);
+        render_tasks($tasks, $num_tasks, $groupLimit,
+            $items, $regex, $encodedKeyword, $user);
     }
 
     if ($num_wallets) {

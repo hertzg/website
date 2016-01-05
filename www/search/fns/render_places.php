@@ -1,7 +1,7 @@
 <?php
 
-function render_places ($theme_brightness, $places,
-    $total, $groupLimit, &$items, $regex, $encodedKeyword) {
+function render_places ($places, $total,
+    $groupLimit, &$items, $regex, $encodedKeyword) {
 
     $fnsDir = __DIR__.'/../../fns';
 
@@ -14,7 +14,7 @@ function render_places ($theme_brightness, $places,
         $escapedName = htmlspecialchars($place->name);
         $title = preg_replace($regex, '<mark>$0</mark>', $escapedName);
 
-        $items[] = create_place_link($theme_brightness, $place->latitude,
+        $items[] = create_place_link($place->latitude,
             $place->longitude, $title, $place->num_tags, $place->tags_json,
             "../places/view/?id=$place->id&amp;keyword=$encodedKeyword");
 

@@ -2,14 +2,11 @@
 
 namespace SearchPage;
 
-function renderCalculations ($user, $calculations, &$items, $params, $keyword) {
+function renderCalculations ($calculations, &$items, $params, $keyword) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
     if ($calculations) {
-
-        include_once "$fnsDir/resolve_theme.php";
-        resolve_theme($user, $theme_color, $theme_brightness);
 
         $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
 
@@ -28,8 +25,7 @@ function renderCalculations ($user, $calculations, &$items, $params, $keyword) {
             $title = htmlspecialchars($calculation->title);
             $title = preg_replace($regex, '<mark>$0</mark>', $title);
 
-            $items[] = create_calculation_link(
-                $theme_brightness, $title, $calculation->value,
+            $items[] = create_calculation_link($title, $calculation->value,
                 $calculation->tags_json, $href, ['id' => $id]);
 
         }

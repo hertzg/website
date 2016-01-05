@@ -1,7 +1,7 @@
 <?php
 
-function render_notes ($theme_brightness, $notes,
-    $total, $groupLimit, &$items, $regex, $encodedKeyword) {
+function render_notes ($notes, $total,
+    $groupLimit, &$items, $regex, $encodedKeyword) {
 
     $fnsDir = __DIR__.'/../../fns';
 
@@ -22,8 +22,8 @@ function render_notes ($theme_brightness, $notes,
             $title = preg_replace($regex, '<mark>$0</mark>', $escapedText);
         }
 
-        $items[] = create_note_link($theme_brightness,
-            $title, $note->num_tags, $note->tags_json, $encrypt_in_listings,
+        $items[] = create_note_link($title, $note->num_tags,
+            $note->tags_json, $encrypt_in_listings,
             "../notes/view/?id=$note->id&amp;keyword=$encodedKeyword");
 
     }

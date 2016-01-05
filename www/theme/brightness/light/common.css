@@ -15,6 +15,10 @@ body {
     color: #000;
 }
 
+.colorTag {
+    color: #000;
+}
+
 .hr,
 .form-textfield-label-separator,
 .cashflow-bars,

@@ -87,6 +87,10 @@ b.author {
     border-left: 2px solid rgba(127, 127, 127, 0.5);
     background-color: rgba(127, 127, 127, 0.2);
 }
+.clickable.active .colorTag,
+.clickable:active .colorTag {
+    color: #fff;
+}
 
 .term {
     border-bottom: 1px dotted;

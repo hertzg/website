@@ -1,7 +1,7 @@
 <?php
 
-function render_calculations ($theme_brightness, $calculations,
-    $total, $groupLimit, &$items, $regex, $encodedKeyword) {
+function render_calculations ($calculations, $total,
+    $groupLimit, &$items, $regex, $encodedKeyword) {
 
     $fnsDir = __DIR__.'/../../fns';
 
@@ -16,7 +16,7 @@ function render_calculations ($theme_brightness, $calculations,
         $query = "?id=$calculation->id&amp;keyword=$encodedKeyword";
         $href = "../calculations/view/$query";
 
-        $items[] = create_calculation_link($theme_brightness, $title,
+        $items[] = create_calculation_link($title,
             $calculation->value, $calculation->tags_json, $href);
     }
 

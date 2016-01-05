@@ -2,14 +2,11 @@
 
 namespace SearchPage;
 
-function renderNotes ($user, $notes, &$items, $params, $keyword) {
+function renderNotes ($notes, &$items, $params, $keyword) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
     if ($notes) {
-
-        include_once "$fnsDir/resolve_theme.php";
-        resolve_theme($user, $theme_color, $theme_brightness);
 
         $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
 
@@ -36,9 +33,8 @@ function renderNotes ($user, $notes, &$items, $params, $keyword) {
                 $title = preg_replace($regex, '<mark>$0</mark>', $escapedText);
             }
 
-            $items[] = create_note_link($theme_brightness,
-                $title, $note->num_tags, $note->tags_json,
-                $encrypt_in_listings, $href, $options);
+            $items[] = create_note_link($title, $note->num_tags,
+                $note->tags_json, $encrypt_in_listings, $href, $options);
 
         }
 

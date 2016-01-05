@@ -80,7 +80,7 @@ function create ($mysqli, $user, &$scripts) {
     render_prev_button($offset, $limit, $total, $items, $params);
 
     include_once __DIR__.'/renderPlaces.php';
-    renderPlaces($user, $places, $items, $params, $keyword);
+    renderPlaces($places, $items, $params, $keyword);
 
     include_once __DIR__.'/../render_next_button.php';
     render_next_button($offset, $limit, $total, $items, $params);
