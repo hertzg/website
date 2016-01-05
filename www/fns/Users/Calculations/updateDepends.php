@@ -50,6 +50,12 @@ function updateDepends ($mysqli, $user, $id) {
 
             $mysqli->query($sql) || trigger_error($mysqli->error);
 
+            if ($calculation->num_tags) {
+                $sql = "update calculation_tags set value = $value"
+                    ." where id_calculations = $calculation->id";
+                $mysqli->query($sql) || trigger_error($mysqli->error);
+            }
+
         }
     }
 
