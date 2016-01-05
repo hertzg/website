@@ -18,13 +18,13 @@ function create_tag_filter_bar ($tags, $params = []) {
         $backgroundColor = "hsla($hue, $saturation%, $luminance%, 0.5)";
 
         $style = "border-color: $borderColor;"
-            ." background-color: $backgroundColor\" href=\"$href";
+            ." background-color: $backgroundColor";
 
         $params['tag'] = $tag_name;
         $href = '?'.htmlspecialchars(http_build_query($params));
         $html .=
             '<span class="zeroSize"> </span>'
-            ."<a class=\"tag\" style=\"$style\">"
+            ."<a class=\"tag\" style=\"$style\" href=\"$href\">"
                 .'<span class="tag-text">'
                     .htmlspecialchars($tag_name)
                 .'</span>'
