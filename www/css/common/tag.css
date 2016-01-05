@@ -4,22 +4,17 @@
     min-width: 48px;
     text-align: center;
     font-weight: bold;
-    padding: 0 7px;
-    border-width: 2px;
-    border-style: solid;
-    border-radius: 2px;
+    padding-right: 9px;
+    padding-left: 7px;
     white-space: nowrap;
     max-width: 240px;
     overflow: hidden;
     text-overflow: ellipsis;
     line-height: 32px;
-    margin-right: 6px;
-}
-.tag.active,
-.tag:active {
-    color: #fff;
-    border: 0;
-    padding: 2px 9px;
+    margin-top: 2px;
+    margin-right: 10px;
+    border-left: 4px solid rgba(127, 127, 127, 0.5);
+    background-color: rgba(127, 127, 127, 0.2);
 }
 
 .tag-text {
@@ -30,6 +25,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
 .tag-number {
     font-weight: normal;
     display: inline-block;

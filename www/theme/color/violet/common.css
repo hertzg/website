@@ -1,4 +1,3 @@
-.tag:focus,
 .clickable:focus,
 .clickable.focus,
 .form-select:focus,
@@ -11,7 +10,6 @@
 }
 
 .a,
-.tag,
 .tab-active,
 .form-property,
 .page_tabs-tab.selected {
@@ -24,14 +22,11 @@
 }
 
 #tbar,
-.tag:focus,
 .panel-title,
 .page_tabs-tab.selected {
     border-color: #b366ff;
 }
 
-.tag.active,
-.tag:active,
 .clickable.active,
 .clickable:active,
 .newItemButton.not_green:active,
@@ -46,4 +41,8 @@
 
 mark {
     background-color: rgba(179, 255, 102, 0.5);
+}
+
+.tag:focus {
+    outline: 2px solid #b366ff;
 }
