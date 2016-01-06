@@ -4,18 +4,12 @@ function create_tag_filter_bar ($tags, $params = []) {
     $html =
         '<div class="textAndButtons">'
             .'<span class="textAndButtons-text">Filter by a tag:</span>';
+    include_once __DIR__.'/ColorTag/colors.php';
     foreach ($tags as $tag) {
 
         $tag_name = $tag->tag_name;
 
-        $hash = md5($tag_name);
-        $hue = floor(hexdec(substr($hash, 0, 4)) / 1024 * 360);
-        $saturation = 40 + floor(hexdec(substr($hash, 4, 2)) / 255 * 60);
-        $luminance = 30 + floor(hexdec(substr($hash, 6, 2)) / 255 * 40);
-        $borderColor = "hsl($hue, $saturation%, $luminance%)";
-        $saturation -= 20;
-        $luminance += 10;
-        $backgroundColor = "hsla($hue, $saturation%, $luminance%, 0.5)";
+        ColorTag\colors($tag_name, $borderColor, $backgroundColor);
 
         $style = "border-color: $borderColor;"
             ." background-color: $backgroundColor";
