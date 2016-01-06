@@ -6,7 +6,7 @@ function steps ($doneSteps, $activeStep, $nextSteps) {
         $html .=
             '<li class="steps-done">'
                 .'<code>&#x2713;</code> '
-                ."<a class=\"steps-link\" href=\"$step[href]\">"
+                ."<a class=\"link\" href=\"$step[href]\">"
                     .$step['title']
                 .'</a>'
             .'</li>';

@@ -1,16 +1,17 @@
 .button {
     background: #666;
     font-weight: bold;
-    line-height: 48px;
+    line-height: 44px;
     height: 48px;
     display: inline-block;
     vertical-align: top;
     width: 100px;
     text-align: center;
     cursor: pointer;
+    border: 2px solid transparent;
 }
 .button:focus {
-    outline: 2px solid #f80;
+    border-color: #f80;
 }
 .button.nextButton {
     margin-left: 32px;
