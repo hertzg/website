@@ -1,7 +1,7 @@
 .tag {
     display: inline-block;
     vertical-align: top;
-    min-width: 48px;
+    min-width: 32px;
     max-width: 240px;
     text-align: center;
     font-weight: bold;
