@@ -9,7 +9,7 @@ function unarchive ($mysqli, $receivedFolder) {
     include_once __DIR__.'/../../../ReceivedFolders/setArchived.php';
     \ReceivedFolders\setArchived($mysqli, $receivedFolder->id, false);
 
-    include_once __DIR__.'/addNumberArchived.php';
-    addNumberArchived($mysqli, $receivedFolder->receiver_id_users, -1);
+    include_once __DIR__.'/addNumbers.php';
+    addNumbers($mysqli, $receivedFolder->receiver_id_users, 0, -1);
 
 }

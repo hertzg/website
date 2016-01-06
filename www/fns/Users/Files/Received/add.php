@@ -17,7 +17,9 @@ function add ($mysqli, $user,
     include_once "$fnsDir/ReceivedFiles/commit.php";
     \ReceivedFiles\commit($mysqli, $id);
 
-    include_once __DIR__.'/addNumberNew.php';
-    addNumberNew($mysqli, $receiver_id_users, 1);
+    $sql = 'update users set num_received_files = num_received_files + 1,'
+        .' home_num_new_received_files = home_num_new_received_files + 1'
+        ." where id_users = $receiver_id_users";
+    $mysqli->query($sql) || trigger_error($mysqli->error);
 
 }

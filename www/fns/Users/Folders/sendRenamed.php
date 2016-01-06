@@ -46,7 +46,9 @@ function sendRenamed ($mysqli, $user, $receiver_id_users, $folder, $name) {
     include_once "$fnsDir/ReceivedFolders/commit.php";
     \ReceivedFolders\commit($mysqli, $id_received_folders);
 
-    include_once __DIR__.'/Received/addNumberNew.php';
-    Received\addNumberNew($mysqli, $receiver_id_users, 1);
+    $sql = 'update users set num_received_folders = num_received_folders + 1,'
+        .' home_num_new_received_folders = home_num_new_received_folders + 1'
+        ." where id_users = $receiver_id_users";
+    $mysqli->query($sql) || trigger_error($mysqli->error);
 
 }
