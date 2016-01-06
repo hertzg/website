@@ -4,16 +4,10 @@ function create_tag_filter_bar ($tags, $params = []) {
     $html =
         '<div class="textAndButtons">'
             .'<span class="textAndButtons-text">Filter by a tag:</span>';
-    include_once __DIR__.'/ColorTag/colors.php';
+    include_once __DIR__.'/ColorTag/style.php';
     foreach ($tags as $tag) {
-
         $tag_name = $tag->tag_name;
-
-        ColorTag\colors($tag_name, $borderColor, $backgroundColor);
-
-        $style = "border-color: $borderColor;"
-            ." background-color: $backgroundColor";
-
+        $style = ColorTag\style($tag_name);
         $params['tag'] = $tag_name;
         $href = '?'.htmlspecialchars(http_build_query($params));
         $html .=
@@ -24,7 +18,6 @@ function create_tag_filter_bar ($tags, $params = []) {
                 .'</span>'
                 ." <span class=\"tag-number\">($tag->num_items)</span>"
             .'</a>';
-
     }
     $html .= '</div>';
     return $html;

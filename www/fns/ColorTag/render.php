@@ -5,17 +5,12 @@ namespace ColorTag;
 function render ($tags, $paint) {
     $html = '';
     if (!$paint) $styleAttribute = '';
-    include_once __DIR__.'/colors.php';
+    include_once __DIR__.'/style.php';
     foreach ($tags as $i => $tag) {
 
         if ($i) $html .= ' ';
 
-        if ($paint) {
-            colors($tag, $borderColor, $backgroundColor);
-            $style = "border-color: $borderColor;"
-                ." background-color: $backgroundColor";
-            $styleAttribute = " style=\"$style\"";
-        }
+        if ($paint) $styleAttribute = ' style="'.style($tag).'"';
 
         $html .=
             "<span class=\"colorTag\"$styleAttribute>"
