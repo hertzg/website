@@ -1,19 +1,18 @@
 .tag {
     display: inline-block;
     vertical-align: top;
-    min-width: 48px;
+    min-width: 32px;
+    max-width: 240px;
     text-align: center;
     font-weight: bold;
-    padding-right: 9px;
-    padding-left: 7px;
+    padding-right: 8px;
+    padding-left: 8px;
     white-space: nowrap;
-    max-width: 240px;
     overflow: hidden;
     text-overflow: ellipsis;
     line-height: 32px;
     margin-right: 8px;
-    border-left: 4px solid rgba(127, 127, 127, 0.5);
-    background-color: rgba(127, 127, 127, 0.2);
+    border-left: 4px solid #7f7f7f;
 }
 
 .tag-text {

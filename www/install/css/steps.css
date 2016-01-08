@@ -9,7 +9,3 @@
 .steps-next {
     color: #aaa;
 }
-
-.steps-link:focus {
-    outline: 2px solid #f80;
-}

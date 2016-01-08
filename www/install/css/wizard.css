@@ -9,7 +9,6 @@
     display: inline-block;
     vertical-align: top;
     width: 436px;
-    min-height: 364px;
     margin-top: 24px;
     margin-bottom: 24px;
 }
@@ -33,7 +32,6 @@
     .wizard-center {
         display: block;
         width: auto;
-        min-height: 0;
     }
 
     .wizard-bottom {

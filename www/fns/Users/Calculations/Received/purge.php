@@ -9,12 +9,7 @@ function purge ($mysqli, $receivedCalculation) {
 
     $id_users = $receivedCalculation->receiver_id_users;
 
-    include_once __DIR__.'/addNumber.php';
-    addNumber($mysqli, $id_users, -1);
-
-    if ($receivedCalculation->archived) {
-        include_once __DIR__.'/addNumberArchived.php';
-        addNumberArchived($mysqli, $id_users, -1);
-    }
+    include_once __DIR__.'/addNumbers.php';
+    addNumbers($mysqli, $id_users, -1, $receivedCalculation->archived ? -1 : 0);
 
 }

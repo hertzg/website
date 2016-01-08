@@ -23,11 +23,13 @@
 }
 
 .a:focus,
+.tag.active,
 .clickable:target {
     background-color: rgba(0, 193, 193, 0.2);
 }
 
 #tbar,
+.tag.active,
 .panel-title,
 .page_tabs-tab.selected {
     border-color: #00c1c1;

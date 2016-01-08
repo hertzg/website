@@ -9,7 +9,7 @@ function unarchive ($mysqli, $receivedCalculation) {
     include_once __DIR__.'/../../../ReceivedCalculations/setArchived.php';
     \ReceivedCalculations\setArchived($mysqli, $receivedCalculation->id, false);
 
-    include_once __DIR__.'/addNumberArchived.php';
-    addNumberArchived($mysqli, $receivedCalculation->receiver_id_users, -1);
+    include_once __DIR__.'/addNumbers.php';
+    addNumbers($mysqli, $receivedCalculation->receiver_id_users, 0, -1);
 
 }

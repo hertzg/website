@@ -22,7 +22,10 @@ function add ($mysqli, $sender_id_users, $sender_username,
         \ContactPhotos\addRef($mysqli, $photo_id);
     }
 
-    include_once __DIR__.'/addNumberNew.php';
-    addNumberNew($mysqli, $receiver_id_users, 1);
+    $sql = 'update users set'
+        .' num_received_contacts = num_received_contacts + 1,'
+        .' home_num_new_received_contacts = home_num_new_received_contacts + 1'
+        ." where id_users = $receiver_id_users";
+    $mysqli->query($sql) || trigger_error($mysqli->error);
 
 }

@@ -9,7 +9,7 @@ function archive ($mysqli, $receivedPlace) {
     include_once __DIR__.'/../../../ReceivedPlaces/setArchived.php';
     \ReceivedPlaces\setArchived($mysqli, $receivedPlace->id, true);
 
-    include_once __DIR__.'/addNumberArchived.php';
-    addNumberArchived($mysqli, $receivedPlace->receiver_id_users, 1);
+    include_once __DIR__.'/addNumbers.php';
+    addNumbers($mysqli, $receivedPlace->receiver_id_users, 0, 1);
 
 }

@@ -9,7 +9,7 @@ function unarchive ($mysqli, $receivedBookmark) {
     include_once __DIR__.'/../../../ReceivedBookmarks/setArchived.php';
     \ReceivedBookmarks\setArchived($mysqli, $receivedBookmark->id, false);
 
-    include_once __DIR__.'/addNumberArchived.php';
-    addNumberArchived($mysqli, $receivedBookmark->receiver_id_users, -1);
+    include_once __DIR__.'/addNumbers.php';
+    addNumbers($mysqli, $receivedBookmark->receiver_id_users, 0, -1);
 
 }
