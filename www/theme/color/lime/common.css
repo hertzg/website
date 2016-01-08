@@ -51,6 +51,7 @@ mark {
     background-color: rgba(120, 87, 255, 0.5);
 }
 
-.tag:focus {
+.tag:focus,
+.tag:active {
     outline: 2px solid #96bc00;
 }
