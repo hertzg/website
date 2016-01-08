@@ -8,7 +8,7 @@ module.exports = function (files) {
         source += fs.readFileSync(file + '.css', 'utf-8') + '\n'
     })
 
-    var compressCss = uglifyCss.processString(source)
+    var compressCss = uglifyCss.processString(source, { maxLineLen: 1024 })
     fs.writeFileSync('compressed.css', compressCss)
 
 }
