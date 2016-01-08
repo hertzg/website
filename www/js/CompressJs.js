@@ -8,5 +8,5 @@ module.exports = function (source) {
     compressedAst.figure_out_scope()
     compressedAst.compute_char_frequency()
     compressedAst.mangle_names()
-    return compressedAst.print_to_string()
+    return compressedAst.print_to_string({ max_line_len: 1024 })
 }
