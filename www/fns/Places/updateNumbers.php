@@ -15,8 +15,8 @@ function updateNumbers ($mysqli) {
     include_once "$fnsDir/PlacePoints/countOnPlace.php";
     foreach ($places as $place) {
         $id = $place->id;
-        $num_transactions = \PlacePoints\countOnPlace($mysqli, $id);
-        editNumbers($mysqli, $id, $num_transactions);
+        $num_points = \PlacePoints\countOnPlace($mysqli, $id);
+        editNumbers($mysqli, $id, $num_points);
     }
 
 }
