@@ -2,7 +2,7 @@
 
 namespace Users\Notes;
 
-function addNumber ($mysqli, $id_users,
+function addNumbers ($mysqli, $id_users,
     $num_notes, $num_password_protected_notes) {
 
     $sql = "update users set num_notes = num_notes + $num_notes,"

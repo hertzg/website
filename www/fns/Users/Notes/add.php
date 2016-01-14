@@ -42,8 +42,8 @@ function add ($mysqli, $id_users, $text, $tags,
             $password_protect, $insert_time, $update_time);
     }
 
-    include_once __DIR__.'/addNumber.php';
-    addNumber($mysqli, $id_users, 1, $password_protect ? 1 : 0);
+    include_once __DIR__.'/addNumbers.php';
+    addNumbers($mysqli, $id_users, 1, $password_protect ? 1 : 0);
 
     return $id;
 

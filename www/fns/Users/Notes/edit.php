@@ -78,11 +78,11 @@ function edit ($mysqli, $note, $text, $tags,
     }
 
     if ($note->password_protect && !$password_protect) {
-        include_once __DIR__.'/addNumber.php';
-        addNumber($mysqli, $id_users, 0, -1);
+        include_once __DIR__.'/addNumbers.php';
+        addNumbers($mysqli, $id_users, 0, -1);
     } else if (!$note->password_protect && $password_protect) {
-        include_once __DIR__.'/addNumber.php';
-        addNumber($mysqli, $id_users, 0, 1);
+        include_once __DIR__.'/addNumbers.php';
+        addNumbers($mysqli, $id_users, 0, 1);
     }
 
 }
