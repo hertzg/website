@@ -54,7 +54,8 @@
 
         items.push({
             update: function (date, time) {
-                node.nodeValue = DateAgo(elementTime, time, dataset.uppercase)
+                var newValue = DateAgo(elementTime, time, dataset.uppercase)
+                if (node.nodeValue !== newValue) node.nodeValue = newValue
             },
         })
 
