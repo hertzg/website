@@ -8,13 +8,9 @@ function sort_columns ($mysqli, $table, $db) {
 
     $sql = 'select * from information_schema.columns'
         ." where table_schema = '$escapedDb' and table_name = '$escapedTable'"
-        .' order by ordinal_position';
+        .' order by column_name';
 
     $columns = mysqli_query_object($mysqli, $sql);
-
-    usort($columns, function ($a, $b) {
-        return strcmp($a->COLUMN_NAME, $b->COLUMN_NAME);
-    });
 
     foreach ($columns as $i => $column) {
 
