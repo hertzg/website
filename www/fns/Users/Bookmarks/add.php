@@ -22,6 +22,10 @@ function add ($mysqli, $id_users, $url,
     include_once __DIR__.'/addNumber.php';
     addNumber($mysqli, $id_users, 1);
 
+    include_once "$fnsDir/BookmarkRevisions/add.php";
+    \BookmarkRevisions\add($mysqli, $id, $id_users,
+        $url, $title, $tags, $insert_time, 1);
+
     return $id;
 
 }

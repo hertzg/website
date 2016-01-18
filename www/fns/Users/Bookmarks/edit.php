@@ -12,6 +12,7 @@ function edit ($mysqli, $bookmark, $title, $url,
 
     $changed = true;
     $id = $bookmark->id;
+    $id_users = $bookmark->id_users;
     $fnsDir = __DIR__.'/../..';
 
     $update_time = time();
@@ -35,10 +36,14 @@ function edit ($mysqli, $bookmark, $title, $url,
 
         if ($tag_names) {
             include_once "$fnsDir/BookmarkTags/add.php";
-            \BookmarkTags\add($mysqli, $bookmark->id_users, $id,
-                $tag_names, $url, $title, $bookmark->insert_time, $update_time);
+            \BookmarkTags\add($mysqli, $id_users, $id, $tag_names,
+                $url, $title, $bookmark->insert_time, $update_time);
         }
 
     }
+
+    include_once "$fnsDir/BookmarkRevisions/add.php";
+    \BookmarkRevisions\add($mysqli, $id, $id_users, $url,
+        $title, $tags, $update_time, $bookmark->revision + 1);
 
 }
