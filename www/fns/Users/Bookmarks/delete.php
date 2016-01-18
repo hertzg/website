@@ -10,6 +10,9 @@ function delete ($mysqli, $bookmark, $apiKey = null) {
     include_once "$fnsDir/Bookmarks/delete.php";
     \Bookmarks\delete($mysqli, $id);
 
+    include_once "$fnsDir/BookmarkRevisions/setDeletedOnBookmark.php";
+    \BookmarkRevisions\setDeletedOnBookmark($mysqli, $id, true);
+
     if ($bookmark->num_tags) {
         include_once "$fnsDir/BookmarkTags/deleteOnBookmark.php";
         \BookmarkTags\deleteOnBookmark($mysqli, $id);

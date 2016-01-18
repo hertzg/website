@@ -12,6 +12,7 @@ function ensure ($mysqli) {
     include_once "$fnsDir/Table/ensure.php";
     include_once "$fnsDir/Tags/column.php";
     return \Table\ensure($mysqli, 'bookmark_revisions', [
+        'deleted' => ['type' => 'tinyint(3) unsigned'],
         'id' => [
             'type' => 'bigint(20) unsigned',
             'primary' => true,

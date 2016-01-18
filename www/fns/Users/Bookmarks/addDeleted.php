@@ -20,6 +20,9 @@ function addDeleted ($mysqli, $id_users, $data) {
     \Bookmarks\addDeleted($mysqli, $id, $id_users, $url, $title,
         $tags, $tag_names, $insert_time, $update_time, $data->revision);
 
+    include_once "$fnsDir/BookmarkRevisions/setDeletedOnBookmark.php";
+    \BookmarkRevisions\setDeletedOnBookmark($mysqli, $id, false);
+
     if ($tag_names) {
         include_once "$fnsDir/BookmarkTags/add.php";
         \BookmarkTags\add($mysqli, $id_users, $id,
