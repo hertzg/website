@@ -6,6 +6,7 @@ function optionsPanel ($bookmark) {
 
     $bookmarksDir = __DIR__.'/../..';
     $fnsDir = "$bookmarksDir/../fns";
+    $id = $bookmark->id;
     $url = $bookmark->url;
 
     include_once "$bookmarksDir/fns/create_open_links.php";
@@ -13,7 +14,7 @@ function optionsPanel ($bookmark) {
     list($openLink, $openInNewTabLink) = $values;
 
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
-    $escapedItemQuery = \ItemList\escapedItemQuery($bookmark->id);
+    $escapedItemQuery = \ItemList\escapedItemQuery($id);
 
     include_once "$fnsDir/Page/imageArrowLink.php";
     $editLink = \Page\imageArrowLink('Edit',
@@ -31,10 +32,13 @@ function optionsPanel ($bookmark) {
     $sendLink = \Page\imageArrowLink('Send',
         "../send/$escapedItemQuery", 'send', ['id' => 'send']);
 
-    $href = "../delete/$escapedItemQuery";
+    $historyLink = \Page\imageArrowLink('History',
+        "../history/?id=$id", 'restore-defaults', ['id' => 'history']);
+
     $deleteLink =
         '<div id="deleteLink">'
-            .\Page\imageLink('Delete', $href, 'trash-bin')
+            .\Page\imageLink('Delete',
+                "../delete/$escapedItemQuery", 'trash-bin')
         .'</div>';
 
     include_once __DIR__.'/../send_via_sms_link.php';
@@ -47,7 +51,7 @@ function optionsPanel ($bookmark) {
         .'<div class="hr"></div>'
         .\Page\twoColumns($sendLink, send_via_sms_link($bookmark))
         .'<div class="hr"></div>'
-        .$deleteLink;
+        .\Page\staticTwoColumns($historyLink, $deleteLink);
 
     include_once "$fnsDir/create_panel.php";
     return create_panel('Bookmark Options', $content);
