@@ -16,6 +16,15 @@ function purgeOnUser ($mysqli, $id_users) {
     }
 
     $deletedItems = \DeletedItems\indexOnUserOfType(
+        $mysqli, $id_users, 'bookmark');
+    if ($deletedItems) {
+        include_once __DIR__.'/purgeBookmark.php';
+        foreach ($deletedItems as $deletedItem) {
+            purgeBookmark($mysqli, $deletedItem);
+        }
+    }
+
+    $deletedItems = \DeletedItems\indexOnUserOfType(
         $mysqli, $id_users, 'calculation');
     if ($deletedItems) {
         include_once __DIR__.'/purgeCalculation.php';
