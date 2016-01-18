@@ -13,7 +13,7 @@ function delete ($mysqli, $wallet, $apiKey = null) {
 
     if ($wallet->num_transactions) {
         include_once "$fnsDir/WalletTransactions/setDeletedOnWallet.php";
-        \WalletTransactions\setDeletedOnWallet($mysqli, $wallet->id, true);
+        \WalletTransactions\setDeletedOnWallet($mysqli, $id, true);
     }
 
     include_once __DIR__.'/addNumber.php';

@@ -13,7 +13,7 @@ function delete ($mysqli, $bar_chart, $apiKey = null) {
 
     if ($bar_chart->num_bars) {
         include_once "$fnsDir/BarChartBars/setDeletedOnBarChart.php";
-        \BarChartBars\setDeletedOnBarChart($mysqli, $bar_chart->id, true);
+        \BarChartBars\setDeletedOnBarChart($mysqli, $id, true);
     }
 
     if ($bar_chart->num_tags) {
