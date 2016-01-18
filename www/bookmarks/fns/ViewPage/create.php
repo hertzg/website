@@ -5,7 +5,6 @@ namespace ViewPage;
 function create ($bookmark, &$scripts) {
 
     $id = $bookmark->id;
-    $url = $bookmark->url;
     $fnsDir = __DIR__.'/../../../fns';
 
     include_once "$fnsDir/compressed_js_script.php";
@@ -35,7 +34,7 @@ function create ($bookmark, &$scripts) {
 
     }
 
-    $items[] = \Page\text(htmlspecialchars($url));
+    $items[] = \Page\text(htmlspecialchars($bookmark->url));
 
     if ($bookmark->num_tags) {
         include_once "$fnsDir/Page/tags.php";
