@@ -15,6 +15,9 @@ function deleteBookmarks ($mysqli, $user) {
         include_once "$fnsDir/BookmarkTags/deleteOnUser.php";
         \BookmarkTags\deleteOnUser($mysqli, $id_users);
 
+        include_once "$fnsDir/BookmarkRevisions/deleteOnUser.php";
+        \BookmarkRevisions\deleteOnUser($mysqli, $id_users);
+
     }
 
     if ($user->num_received_bookmarks) {
