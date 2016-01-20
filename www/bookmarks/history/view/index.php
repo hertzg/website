@@ -11,9 +11,10 @@ list($id) = request_strings('id');
 
 $id = abs((int)$id);
 
-include_once "$fnsDir/BookmarkRevisions/getOnUser.php";
+include_once "$fnsDir/BookmarkRevisions/getNotDeletedOnUser.php";
 include_once '../../../lib/mysqli.php';
-$revision = BookmarkRevisions\getOnUser($mysqli, $user->id_users, $id);
+$revision = BookmarkRevisions\getNotDeletedOnUser(
+    $mysqli, $user->id_users, $id);
 
 if (!$revision) {
     include_once "$fnsDir/redirect.php";
