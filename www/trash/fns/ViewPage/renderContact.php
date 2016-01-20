@@ -44,6 +44,7 @@ function renderContact ($id, $contact, &$items, &$infoText, &$scripts) {
         include_once "$fnsDir/Form/timezoneLabel.php";
         $labelItems[] = \Form\timezoneLabel($timezone);
 
+        include_once "$fnsDir/compressed_js_script.php";
         $scripts .= compressed_js_script('timezoneLabel', $base);
 
     }
