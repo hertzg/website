@@ -42,6 +42,13 @@ function add ($mysqli, $user, $full_name, $alias, $address,
     include_once __DIR__.'/addNumber.php';
     addNumber($mysqli, $id_users, 1);
 
+    include_once "$fnsDir/ContactRevisions/add.php";
+    \ContactRevisions\add($mysqli, $id, $id_users,
+        $full_name, $alias, $address, $email1, $email1_label,
+        $email2, $email2_label, $phone1, $phone1_label,
+        $phone2, $phone2_label, $birthday_time, $username,
+        $timezone, $tags, $notes, $favorite, $insert_time, 0);
+
     return $id;
 
 }

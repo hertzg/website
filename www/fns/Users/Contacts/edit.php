@@ -41,6 +41,7 @@ function edit ($mysqli, $user, $contact, $full_name, $alias,
 
     $changed = true;
     $id = $contact->id;
+    $id_users = $contact->id_users;
     $fnsDir = __DIR__.'/../..';
 
     $update_time = time();
@@ -69,7 +70,7 @@ function edit ($mysqli, $user, $contact, $full_name, $alias,
 
         if ($tag_names) {
             include_once "$fnsDir/ContactTags/add.php";
-            \ContactTags\add($mysqli, $contact->id_users, $id,
+            \ContactTags\add($mysqli, $id_users, $id,
                 $tag_names, $full_name, $alias, $email1,
                 $email1_label, $email2, $email2_label,
                 $phone1, $phone1_label, $phone2, $phone2_label,
@@ -77,6 +78,14 @@ function edit ($mysqli, $user, $contact, $full_name, $alias,
         }
 
     }
+
+    include_once "$fnsDir/ContactRevisions/add.php";
+    \ContactRevisions\add($mysqli, $id,
+        $id_users, $full_name, $alias, $address,
+        $email1, $email1_label, $email2, $email2_label,
+        $phone1, $phone1_label, $phone2, $phone2_label,
+        $birthday_time, $username, $timezone, $tags,
+        $notes, $favorite, $update_time, $contact->revision + 1);
 
     if ($contact->birthday_time !== null) {
         include_once __DIR__.'/../Birthdays/invalidateIfNeeded.php';

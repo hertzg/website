@@ -36,6 +36,9 @@ function addDeleted ($mysqli, $user, $data) {
         $tag_names, $data->notes, $favorite, $insert_time,
         $update_time, $data->photo_id, $data->revision);
 
+    include_once "$fnsDir/ContactRevisions/setDeletedOnContact.php";
+    \ContactRevisions\setDeletedOnContact($mysqli, $id, false);
+
     if ($tag_names) {
         include_once "$fnsDir/ContactTags/add.php";
         \ContactTags\add($mysqli, $id_users, $id, $tag_names,

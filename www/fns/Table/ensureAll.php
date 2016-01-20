@@ -24,6 +24,7 @@ function ensureAll ($mysqli) {
     include_once "$fnsDir/Channels/ensure.php";
     include_once "$fnsDir/Connections/ensure.php";
     include_once "$fnsDir/ContactPhotos/ensure.php";
+    include_once "$fnsDir/ContactRevisions/ensure.php";
     include_once "$fnsDir/Contacts/ensure.php";
     include_once "$fnsDir/ContactTags/ensure.php";
     include_once "$fnsDir/CrossSiteApiKeys/ensure.php";
@@ -90,6 +91,7 @@ function ensureAll ($mysqli) {
         .\Channels\ensure($mysqli)
         .\Connections\ensure($mysqli)
         .\ContactPhotos\ensure($mysqli)
+        .\ContactRevisions\ensure($mysqli)
         .\Contacts\ensure($mysqli)
         .\ContactTags\ensure($mysqli)
         .\CrossSiteApiKeys\ensure($mysqli)

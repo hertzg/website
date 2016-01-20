@@ -59,10 +59,13 @@ function optionsPanel ($contact, $base) {
     $sendLink = \Page\imageArrowLink('Send',
         "$base../send/$escapedItemQuery", 'send', ['id' => 'send']);
 
-    $href = "$base../delete/$escapedItemQuery";
+    $historyLink = \Page\imageArrowLink('History',
+        "../history/?id=$id", 'restore-defaults', ['id' => 'history']);
+
     $deleteLink =
         '<div id="deleteLink">'
-            .\Page\imageLink('Delete', $href, 'trash-bin')
+            .\Page\imageLink('Delete',
+                "$base../delete/$escapedItemQuery", 'trash-bin')
         .'</div>';
 
     include_once __DIR__.'/../send_via_sms_link.php';
@@ -75,7 +78,7 @@ function optionsPanel ($contact, $base) {
         .'<div class="hr"></div>'
         .\Page\twoColumns($sendLink, send_via_sms_link($contact))
         .'<div class="hr"></div>'
-        .$deleteLink;
+        .\Page\staticTwoColumns($historyLink, $deleteLink);
 
     include_once "$fnsDir/create_panel.php";
     return create_panel('Contact Options', $content);

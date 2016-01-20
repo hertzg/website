@@ -22,6 +22,9 @@ function deleteAll ($mysqli, $user, $apiKey = null) {
     include_once "$fnsDir/Contacts/deleteOnUser.php";
     \Contacts\deleteOnUser($mysqli, $id_users);
 
+    include_once "$fnsDir/ContactRevisions/setDeletedOnUser.php";
+    \ContactRevisions\setDeletedOnUser($mysqli, $id_users, true);
+
     include_once "$fnsDir/ContactTags/deleteOnUser.php";
     \ContactTags\deleteOnUser($mysqli, $id_users);
 

@@ -10,6 +10,9 @@ function delete ($mysqli, $contact, $user, $apiKey = null) {
     include_once "$fnsDir/Contacts/delete.php";
     \Contacts\delete($mysqli, $id);
 
+    include_once "$fnsDir/ContactRevisions/setDeletedOnContact.php";
+    \ContactRevisions\setDeletedOnContact($mysqli, $id, true);
+
     if ($contact->num_tags) {
         include_once "$fnsDir/ContactTags/deleteOnContact.php";
         \ContactTags\deleteOnContact($mysqli, $id);
