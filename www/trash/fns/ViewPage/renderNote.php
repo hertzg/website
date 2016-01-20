@@ -8,6 +8,8 @@ function renderNote ($note, &$items, &$infoText) {
 
     if ($note->password_protect) {
 
+        $infoText = "Password-protected.<br />$infoText";
+
         include_once "$fnsDir/Session/EncryptionKey/get.php";
         $encryption_key = \Session\EncryptionKey\get();
 
