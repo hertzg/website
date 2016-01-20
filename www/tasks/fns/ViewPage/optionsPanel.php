@@ -5,9 +5,10 @@ namespace ViewPage;
 function optionsPanel ($task) {
 
     $fnsDir = __DIR__.'/../../../fns';
+    $id = $task->id;
 
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
-    $escapedItemQuery = \ItemList\escapedItemQuery($task->id);
+    $escapedItemQuery = \ItemList\escapedItemQuery($id);
 
     include_once "$fnsDir/Page/imageArrowLink.php";
     $editLink = \Page\imageArrowLink('Edit',
@@ -25,10 +26,13 @@ function optionsPanel ($task) {
     $sendLink = \Page\imageArrowLink('Send',
         "../send/$escapedItemQuery", 'send', ['id' => 'send']);
 
-    $href = "../delete/$escapedItemQuery";
+    $historyLink = \Page\imageArrowLink('History',
+        "../history/?id=$id", 'restore-defaults', ['id' => 'history']);
+
     $deleteLink =
         '<div id="deleteLink">'
-            .\Page\imageLink('Delete', $href, 'trash-bin')
+            .\Page\imageLink('Delete',
+                "../delete/$escapedItemQuery", 'trash-bin')
         .'</div>';
 
     include_once __DIR__.'/../send_via_sms_link.php';
@@ -39,7 +43,7 @@ function optionsPanel ($task) {
         .'<div class="hr"></div>'
         .\Page\twoColumns($sendLink, send_via_sms_link($task))
         .'<div class="hr"></div>'
-        .$deleteLink;
+        .\Page\staticTwoColumns($historyLink, $deleteLink);
 
     include_once "$fnsDir/create_panel.php";
     return create_panel('Task Options', $content);

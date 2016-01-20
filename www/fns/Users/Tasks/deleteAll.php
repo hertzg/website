@@ -22,6 +22,9 @@ function deleteAll ($mysqli, $user, $apiKey = null) {
     include_once "$fnsDir/Tasks/deleteOnUser.php";
     \Tasks\deleteOnUser($mysqli, $id_users);
 
+    include_once "$fnsDir/TaskRevisions/setDeletedOnUser.php";
+    \TaskRevisions\setDeletedOnUser($mysqli, $id_users, true);
+
     include_once "$fnsDir/TaskTags/deleteOnUser.php";
     \TaskTags\deleteOnUser($mysqli, $id_users);
 

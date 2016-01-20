@@ -29,6 +29,10 @@ function add ($mysqli, $user, $text, $deadline_time,
     include_once __DIR__.'/addNumber.php';
     addNumber($mysqli, $id_users, 1);
 
+    include_once "$fnsDir/TaskRevisions/add.php";
+    \TaskRevisions\add($mysqli, $id, $id_users, $text, $title,
+        $deadline_time, $tags, $top_priority, $insert_time, 0);
+
     if ($deadline_time !== null) {
         include_once __DIR__.'/Deadlines/invalidateIfNeeded.php';
         Deadlines\invalidateIfNeeded($mysqli, $user, $deadline_time);

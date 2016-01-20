@@ -10,6 +10,9 @@ function delete ($mysqli, $user, $task, $apiKey = null) {
     include_once "$fnsDir/Tasks/delete.php";
     \Tasks\delete($mysqli, $id);
 
+    include_once "$fnsDir/TaskRevisions/setDeletedOnTask.php";
+    \TaskRevisions\setDeletedOnTask($mysqli, $id, true);
+
     if ($task->num_tags) {
         include_once "$fnsDir/TaskTags/deleteOnTask.php";
         \TaskTags\deleteOnTask($mysqli, $id);

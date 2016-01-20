@@ -19,6 +19,7 @@ function edit ($mysqli, $user, $task, $text, $deadline_time,
 
     $changed = true;
     $id = $task->id;
+    $id_users = $task->id_users;
     $fnsDir = __DIR__.'/../..';
 
     include_once "$fnsDir/Tasks/maxLengths.php";
@@ -47,12 +48,16 @@ function edit ($mysqli, $user, $task, $text, $deadline_time,
 
         if ($tag_names) {
             include_once "$fnsDir/TaskTags/add.php";
-            \TaskTags\add($mysqli, $task->id_users, $id,
+            \TaskTags\add($mysqli, $id_users, $id,
                 $tag_names, $text, $title, $deadline_time,
                 $tags, $top_priority, $task->insert_time, $update_time);
         }
 
     }
+
+    include_once "$fnsDir/TaskRevisions/add.php";
+    \TaskRevisions\add($mysqli, $id, $id_users, $text, $title, $deadline_time,
+        $tags, $top_priority, $update_time, $task->revision + 1);
 
     if ($task->deadline_time) {
         include_once __DIR__.'/Deadlines/invalidateIfNeeded.php';

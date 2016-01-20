@@ -15,6 +15,9 @@ function deleteTasks ($mysqli, $user) {
         include_once "$fnsDir/TaskTags/deleteOnUser.php";
         \TaskTags\deleteOnUser($mysqli, $id_users);
 
+        include_once "$fnsDir/TaskRevisions/deleteOnUser.php";
+        \TaskRevisions\deleteOnUser($mysqli, $id_users);
+
     }
 
     if ($user->num_received_tasks) {

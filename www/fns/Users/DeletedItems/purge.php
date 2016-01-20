@@ -32,6 +32,9 @@ function purge ($mysqli, $deletedItem) {
     } elseif ($type == 'receivedFolder') {
         include_once __DIR__.'/purgeReceivedFolder.php';
         purgeReceivedFolder($mysqli, $deletedItem);
+    } elseif ($type == 'task') {
+        include_once __DIR__.'/purgeTask.php';
+        purgeTask($mysqli, $deletedItem);
     } elseif ($type == 'wallet') {
         include_once __DIR__.'/purgeWallet.php';
         purgeWallet($mysqli, $deletedItem);

@@ -24,6 +24,9 @@ function addDeleted ($mysqli, $user, $data) {
         $title, $deadline_time, $tags, $tag_names, $top_priority,
         $insert_time, $update_time, $data->revision);
 
+    include_once "$fnsDir/TaskRevisions/setDeletedOnTask.php";
+    \TaskRevisions\setDeletedOnTask($mysqli, $id, false);
+
     if ($tag_names) {
         include_once "$fnsDir/TaskTags/add.php";
         \TaskTags\add($mysqli, $id_users, $id,

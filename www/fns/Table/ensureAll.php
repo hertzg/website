@@ -64,6 +64,7 @@ function ensureAll ($mysqli) {
     include_once "$fnsDir/SendingTasks/ensure.php";
     include_once "$fnsDir/Signins/ensure.php";
     include_once "$fnsDir/SubscribedChannels/ensure.php";
+    include_once "$fnsDir/TaskRevisions/ensure.php";
     include_once "$fnsDir/Tasks/ensure.php";
     include_once "$fnsDir/TaskTags/ensure.php";
     include_once "$fnsDir/TokenAuths/ensure.php";
@@ -129,6 +130,7 @@ function ensureAll ($mysqli) {
         .\SendingTasks\ensure($mysqli)
         .\Signins\ensure($mysqli)
         .\SubscribedChannels\ensure($mysqli)
+        .\TaskRevisions\ensure($mysqli)
         .\Tasks\ensure($mysqli)
         .\TaskTags\ensure($mysqli)
         .\TokenAuths\ensure($mysqli)
