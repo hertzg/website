@@ -24,7 +24,7 @@ function add ($mysqli, $id_users, $url,
 
     include_once "$fnsDir/BookmarkRevisions/add.php";
     \BookmarkRevisions\add($mysqli, $id, $id_users,
-        $url, $title, $tags, $insert_time, 1);
+        $url, $title, $tags, $insert_time, 0);
 
     return $id;
 
