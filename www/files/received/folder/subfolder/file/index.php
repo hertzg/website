@@ -42,7 +42,7 @@ include_once "$fnsDir/Page/create.php";
 $content =
     Page\create(
         [
-            'title' => 'Received',
+            'title' => 'Files',
             'href' => "../../../#folder_$id_received_folders",
         ],
         $title,
