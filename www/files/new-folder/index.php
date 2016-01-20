@@ -17,14 +17,16 @@ unset(
 $fnsDir = '../../fns';
 
 include_once '../fns/create_file_location_bar.php';
-include_once '../fns/create_parent_backlink.php';
 include_once '../fns/create_folder_form_items.php';
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/hidden.php";
 include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 $content = Page\create(
-    create_parent_backlink($parent_id, '../', 'new-folder'),
+    [
+        'title' => 'Home',
+        'href' => '../../home/#files',
+    ],
     'New Folder',
     create_file_location_bar($mysqli,
         'new-folder', $parent_id, $user->id_users)

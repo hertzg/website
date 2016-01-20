@@ -14,7 +14,6 @@ unset(
 $fnsDir = '../../fns';
 
 include_once '../fns/create_file_location_bar.php';
-include_once '../fns/create_parent_backlink.php';
 include_once "$fnsDir/bytestr.php";
 include_once "$fnsDir/ini_get_bytes.php";
 include_once "$fnsDir/Form/button.php";
@@ -24,7 +23,10 @@ include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/warnings.php";
 $content = Page\create(
-    create_parent_backlink($parent_id, '../', 'upload-files'),
+    [
+        'title' => 'Home',
+        'href' => '../../home/#files',
+    ],
     'Upload Files',
     create_file_location_bar($mysqli,
         'upload-files', $parent_id, $user->id_users)
