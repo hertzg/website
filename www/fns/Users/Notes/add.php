@@ -45,6 +45,11 @@ function add ($mysqli, $id_users, $text, $tags,
     include_once __DIR__.'/addNumbers.php';
     addNumbers($mysqli, $id_users, 1, $password_protect ? 1 : 0);
 
+    include_once "$fnsDir/NoteRevisions/add.php";
+    \NoteRevisions\add($mysqli, $id, $id_users, $text, $encrypted_text,
+        $encrypted_text_iv, $title, $encrypted_title, $encrypted_title_iv,
+        $tags, $encrypt_in_listings, $password_protect, $insert_time, 0);
+
     return $id;
 
 }

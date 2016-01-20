@@ -2,13 +2,13 @@
 
 namespace Notes;
 
-function add ($mysqli, $id_users, $text,
-    $encrypted_text, $encrypted_text_iv, $title,
-    $encrypted_title, $encrypted_title_iv, $tags,
-    $tag_names, $encrypt_in_listings, $password_protect,
+function add ($mysqli, $id_users, $text, $encrypted_text,
+    $encrypted_text_iv, $title, $encrypted_title, $encrypted_title_iv,
+    $tags, $tag_names, $encrypt_in_listings, $password_protect,
     $insert_time, $update_time, $insertApiKey) {
 
     $text = $mysqli->real_escape_string($text);
+    // TODO join ifs
     if ($encrypted_text === null) {
         $encrypted_text = $encrypted_text_iv = 'null';
     } else {

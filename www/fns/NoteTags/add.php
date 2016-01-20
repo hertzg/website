@@ -8,6 +8,7 @@ function add ($mysqli, $id_users, $id_notes,
     $encrypt_in_listings, $password_protect, $insert_time, $update_time) {
 
     $text = $mysqli->real_escape_string($text);
+    // TODO join ifs
     if ($encrypted_text === null) {
         $encrypted_text = $encrypted_text_iv = 'null';
     } else {

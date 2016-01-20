@@ -22,6 +22,9 @@ function deleteAll ($mysqli, $user, $apiKey = null) {
     include_once "$fnsDir/Notes/deleteOnUser.php";
     \Notes\deleteOnUser($mysqli, $id_users);
 
+    include_once "$fnsDir/NoteRevisions/setDeletedOnUser.php";
+    \NoteRevisions\setDeletedOnUser($mysqli, $id_users, true);
+
     include_once "$fnsDir/NoteTags/deleteOnUser.php";
     \NoteTags\deleteOnUser($mysqli, $id_users);
 

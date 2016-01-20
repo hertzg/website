@@ -5,9 +5,10 @@ namespace ViewPage;
 function optionsPanel ($note, $text) {
 
     $fnsDir = __DIR__.'/../../../fns';
+    $id = $note->id;
 
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
-    $escapedItemQuery = \ItemList\escapedItemQuery($note->id);
+    $escapedItemQuery = \ItemList\escapedItemQuery($id);
 
     include_once "$fnsDir/Page/imageArrowLink.php";
     $editLink = \Page\imageArrowLink('Edit',
@@ -28,10 +29,13 @@ function optionsPanel ($note, $text) {
     $href = 'sms:?body='.rawurlencode($text);
     $sendViaSmsLink = \Page\imageLink('Send via SMS', $href, 'send-sms');
 
-    $href = "../delete/$escapedItemQuery";
+    $historyLink = \Page\imageArrowLink('History',
+        "../history/?id=$id", 'restore-defaults', ['id' => 'history']);
+
     $deleteLink =
         '<div id="deleteLink">'
-            .\Page\imageLink('Delete', $href, 'trash-bin')
+            .\Page\imageLink('Delete',
+                "../delete/$escapedItemQuery", 'trash-bin')
         .'</div>';
 
     include_once "$fnsDir/Page/staticTwoColumns.php";
@@ -41,7 +45,7 @@ function optionsPanel ($note, $text) {
         .'<div class="hr"></div>'
         .\Page\twoColumns($sendLink, $sendViaSmsLink)
         .'<div class="hr"></div>'
-        .$deleteLink;
+        .\Page\staticTwoColumns($historyLink, $deleteLink);
 
     include_once "$fnsDir/create_panel.php";
     return create_panel('Note Options', $content);

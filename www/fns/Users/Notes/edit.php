@@ -85,4 +85,10 @@ function edit ($mysqli, $note, $text, $tags,
         addNumbers($mysqli, $id_users, 0, 1);
     }
 
+    include_once "$fnsDir/NoteRevisions/add.php";
+    \NoteRevisions\add($mysqli, $id, $id_users, $text,
+        $encrypted_text, $encrypted_text_iv, $title, $encrypted_title,
+        $encrypted_title_iv, $tags, $encrypt_in_listings,
+        $password_protect, $update_time, $note->revision + 1);
+
 }

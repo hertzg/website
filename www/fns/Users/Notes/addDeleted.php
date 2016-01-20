@@ -31,6 +31,9 @@ function addDeleted ($mysqli, $id_users, $data) {
         $tags, $tag_names, $encrypt_in_listings, $password_protect,
         $insert_time, $update_time, $data->revision);
 
+    include_once "$fnsDir/NoteRevisions/setDeletedOnNote.php";
+    \NoteRevisions\setDeletedOnNote($mysqli, $id, false);
+
     if ($tag_names) {
         include_once "$fnsDir/NoteTags/add.php";
         \NoteTags\add($mysqli, $id_users, $id,

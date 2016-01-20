@@ -15,6 +15,9 @@ function deleteNotes ($mysqli, $user) {
         include_once "$fnsDir/NoteTags/deleteOnUser.php";
         \NoteTags\deleteOnUser($mysqli, $id_users);
 
+        include_once "$fnsDir/NoteRevisions/deleteOnUser.php";
+        \NoteRevisions\deleteOnUser($mysqli, $id_users);
+
     }
 
     if ($user->num_received_notes) {
