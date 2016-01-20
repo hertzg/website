@@ -22,19 +22,19 @@ $files = ReceivedFolderFiles\indexOnParent($mysqli, $id_received_folders, $id);
 if ($subfolders || $files) {
 
     if ($subfolders) {
-        include_once "$fnsDir/Page/imageArrowLink.php";
+        include_once "$fnsDir/Page/imageLink.php";
         foreach ($subfolders as $subfolder) {
             $folder_id = $subfolder->id;
-            $items[] = Page\imageArrowLink(htmlspecialchars($subfolder->name),
+            $items[] = Page\imageLink(htmlspecialchars($subfolder->name),
                 "?id=$folder_id", 'folder', ['id' => "folder_$folder_id"]);
         }
     }
 
     if ($files) {
-        include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
+        include_once "$fnsDir/Page/imageLinkWithDescription.php";
         foreach ($files as $file) {
             $file_id = $file->id;
-            $items[] = Page\imageArrowLinkWithDescription(
+            $items[] = Page\imageLinkWithDescription(
                 htmlspecialchars($file->name), $file->readable_size,
                 "file/?id=$file_id", "$file->media_type-file",
                 ['id' => "file_$file_id"]);

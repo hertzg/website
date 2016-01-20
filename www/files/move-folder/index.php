@@ -26,7 +26,7 @@ if ($parent_id) {
 include_once "$fnsDir/Folders/indexInUserFolder.php";
 $folders = Folders\indexInUserFolder($mysqli, $user->id_users, $parent_id);
 
-include_once "$fnsDir/Page/imageArrowLink.php";
+include_once "$fnsDir/Page/imageLink.php";
 
 $items = [];
 if ($folders) {
@@ -38,7 +38,7 @@ if ($folders) {
             $items[] = Page\disabledImageLink($escapedName, 'folder');
         } else {
             $href = "./?id_folders=$id_folders&amp;parent_id=$itemId";
-            $items[] = Page\imageArrowLink($escapedName,
+            $items[] = Page\imageLink($escapedName,
                 $href, 'folder', ['id' => $itemId]);
         }
     }
@@ -49,7 +49,6 @@ if ($folders) {
 
 if ($parent_id != $folder->parent_id) {
     $href = "submit.php?id_folders=$id_folders&amp;parent_id=$parent_id";
-    include_once "$fnsDir/Page/imageLink.php";
     $items[] = Page\imageLink('Move Here', $href, 'move-folder');
 }
 

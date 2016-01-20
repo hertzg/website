@@ -19,10 +19,10 @@ function create_page ($mysqli, $receivedFolder, &$scripts, $base = '') {
     if ($files || $subfolders) {
 
         if ($subfolders) {
-            include_once "$fnsDir/Page/imageArrowLink.php";
+            include_once "$fnsDir/Page/imageLink.php";
             foreach ($subfolders as $subfolder) {
                 $item_id = $subfolder->id;
-                $items[] = Page\imageArrowLink(
+                $items[] = Page\imageLink(
                     htmlspecialchars($subfolder->name),
                     "{$base}subfolder/?id=$item_id", 'folder',
                     ['id' => "folder_$item_id"]);
@@ -30,10 +30,10 @@ function create_page ($mysqli, $receivedFolder, &$scripts, $base = '') {
         }
 
         if ($files) {
-            include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
+            include_once "$fnsDir/Page/imageLinkWithDescription.php";
             foreach ($files as $file) {
                 $item_id = $file->id;
-                $items[] = Page\imageArrowLinkWithDescription(
+                $items[] = Page\imageLinkWithDescription(
                     htmlspecialchars($file->name), $file->readable_size,
                     "{$base}file/?id=$item_id", "$file->media_type-file",
                     ['id' => "file_$item_id"]);

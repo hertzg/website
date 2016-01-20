@@ -7,10 +7,10 @@ function render_folders_and_files ($folders, $files, &$items, $base) {
     if ($folders || $files) {
 
         if ($folders) {
-            include_once "$fnsDir/Page/imageArrowLink.php";
+            include_once "$fnsDir/Page/imageLink.php";
             foreach ($folders as $folder) {
                 $id = $folder->id_folders;
-                $items[] = Page\imageArrowLink(htmlspecialchars($folder->name),
+                $items[] = Page\imageLink(htmlspecialchars($folder->name),
                     "?id_folders=$id", 'folder', ['id' => "folder_$id"]);
             }
         }
