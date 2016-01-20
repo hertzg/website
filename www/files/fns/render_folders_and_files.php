@@ -16,10 +16,10 @@ function render_folders_and_files ($folders, $files, &$items, $base) {
         }
 
         if ($files) {
-            include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
+            include_once "$fnsDir/Page/imageLinkWithDescription.php";
             foreach ($files as $file) {
                 $id = $file->id_files;
-                $items[] = Page\imageArrowLinkWithDescription(
+                $items[] = Page\imageLinkWithDescription(
                     htmlspecialchars($file->name), $file->readable_size,
                     "{$base}view-file/?id=$id", "$file->media_type-file",
                     ['id' => "file_$id"]);

@@ -64,8 +64,8 @@ function create ($mysqli, $file, &$scripts) {
     return
         \Page\create(
             [
-                'title' => 'Files',
-                'href' => "$folder_link#file_$id",
+                'title' => 'Home',
+                'href' => '../../home/#files',
             ],
             "File #$id",
             \Page\sessionErrors('files/view-file/errors')
