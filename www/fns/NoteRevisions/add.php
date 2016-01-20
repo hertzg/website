@@ -7,19 +7,15 @@ function add ($mysqli, $id_notes, $id_users, $text, $encrypted_text,
     $encrypt_in_listings, $password_protect, $insert_time, $revision) {
 
     $text = $mysqli->real_escape_string($text);
-    // TODO join ifs
     if ($encrypted_text === null) {
         $encrypted_text = $encrypted_text_iv = 'null';
-    } else {
-        $encrypted_text = "'".$mysqli->real_escape_string($encrypted_text)."'";
-    }
-    $title = $mysqli->real_escape_string($title);
-    if ($encrypted_title === null) {
         $encrypted_title = $encrypted_title_iv = 'null';
     } else {
+        $encrypted_text = "'".$mysqli->real_escape_string($encrypted_text)."'";
         $encrypted_title = $mysqli->real_escape_string($encrypted_title);
         $encrypted_title = "'$encrypted_title'";
     }
+    $title = $mysqli->real_escape_string($title);
     $tags = $mysqli->real_escape_string($tags);
     $encrypt_in_listings = $encrypt_in_listings ? '1' : '0';
     $password_protect = $password_protect ? '1' : '0';

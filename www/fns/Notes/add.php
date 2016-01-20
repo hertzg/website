@@ -8,16 +8,12 @@ function add ($mysqli, $id_users, $text, $encrypted_text,
     $insert_time, $update_time, $insertApiKey) {
 
     $text = $mysqli->real_escape_string($text);
-    // TODO join ifs
+    $title = $mysqli->real_escape_string($title);
     if ($encrypted_text === null) {
         $encrypted_text = $encrypted_text_iv = 'null';
-    } else {
-        $encrypted_text = "'".$mysqli->real_escape_string($encrypted_text)."'";
-    }
-    $title = $mysqli->real_escape_string($title);
-    if ($encrypted_title === null) {
         $encrypted_title = $encrypted_title_iv = 'null';
     } else {
+        $encrypted_text = "'".$mysqli->real_escape_string($encrypted_text)."'";
         $encrypted_title = $mysqli->real_escape_string($encrypted_title);
         $encrypted_title = "'$encrypted_title'";
     }

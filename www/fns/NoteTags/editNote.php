@@ -10,16 +10,13 @@ function editNote ($mysqli, $id_notes, $text,
     $text = $mysqli->real_escape_string($text);
     if ($encrypted_text === null) {
         $encrypted_text = $encrypted_text_iv = 'null';
-    } else {
-        $encrypted_text = "'".$mysqli->real_escape_string($encrypted_text)."'";
-    }
-    $title = $mysqli->real_escape_string($title);
-    if ($encrypted_title === null) {
         $encrypted_title = $encrypted_title_iv = 'null';
     } else {
+        $encrypted_text = "'".$mysqli->real_escape_string($encrypted_text)."'";
         $encrypted_title = $mysqli->real_escape_string($encrypted_title);
         $encrypted_title = "'$encrypted_title'";
     }
+    $title = $mysqli->real_escape_string($title);
     $tags = $mysqli->real_escape_string($tags);
     $num_tags = count($tag_names);
     $tags_json = $mysqli->real_escape_string(json_encode($tag_names));
