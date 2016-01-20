@@ -6,16 +6,15 @@ function create_content ($mysqli, $folder, $parentFolder, $items) {
     $id_folders = $folder->id_folders;
 
     include_once __DIR__.'/../../fns/create_move_location_bar.php';
-    include_once "$fnsDir/create_folder_link.php";
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/text.php";
     return Page\create(
         [
-            'title' => 'Files',
-            'href' => create_folder_link($id_folders, '../').'#move',
+            'title' => "Folder #$id_folders",
+            'href' => "../?id_folders=$id_folders#move",
         ],
-        "Move Folder #$id_folders",
+        'Move',
         Page\sessionErrors('files/move-folder/errors')
         .Page\text(
             'Moving the folder "<b>'.htmlspecialchars($folder->name).'</b>".'

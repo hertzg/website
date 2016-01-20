@@ -18,9 +18,9 @@ include_once "$fnsDir/str_collapse_spaces.php";
 $keyword = str_collapse_spaces($keyword);
 
 if ($keyword === '') {
-    include_once "$fnsDir/create_folder_link.php";
+    include_once '../fns/create_parent_url.php';
     include_once "$fnsDir/redirect.php";
-    redirect(create_folder_link($id_folders, '../'));
+    redirect(create_parent_url($id_folders, '../'));
 }
 
 if ($deep) {

@@ -40,9 +40,6 @@ function create ($mysqli, $file, &$scripts) {
         $imageOptionsPanel = '';
     }
 
-    include_once "$fnsDir/create_folder_link.php";
-    $folder_link = create_folder_link($id_folders, '../');
-
     unset(
         $_SESSION['files/errors'],
         $_SESSION['files/id_folders'],

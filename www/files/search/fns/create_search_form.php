@@ -4,8 +4,8 @@ function create_search_form ($id_folders, $keyword, $deep) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
-    include_once "$fnsDir/create_folder_link.php";
-    $clearHref = create_folder_link($id_folders, '../');
+    include_once __DIR__.'/../../fns/create_parent_url.php';
+    $clearHref = create_parent_url($id_folders, '../');
 
     $placeholder = 'Search folders and files...';
     include_once "$fnsDir/SearchForm/content.php";

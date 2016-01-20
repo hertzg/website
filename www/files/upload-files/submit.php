@@ -70,5 +70,5 @@ else unset($_SESSION['files/errors']);
 $_SESSION['files/id_folders'] = $parent_id;
 $_SESSION['files/messages'] = [$message];
 
-include_once '../../fns/create_folder_link.php';
-redirect(create_folder_link($parent_id, '../'));
+include_once '../fns/create_parent_url.php';
+redirect(create_parent_url($parent_id, '../'));
