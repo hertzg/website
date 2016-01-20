@@ -31,7 +31,6 @@ if ($id_folders) {
 include_once "$fnsDir/Users/Folders/index.php";
 $folders = Users\Folders\index($mysqli, $user, $id_folders);
 
-include_once "$fnsDir/Page/imageArrowLink.php";
 include_once "$fnsDir/Page/imageLink.php";
 
 $items = [];
@@ -39,8 +38,8 @@ if ($folders) {
     foreach ($folders as $folder) {
         $title = htmlspecialchars($folder->name);
         $href = create_href($id, $folder->id_folders);
-        $items[] = Page\imageArrowLink($title,
-            $href, 'folder', ['id' => $folder->id_folders]);
+        $items[] = Page\imageLink($title, $href,
+            'folder', ['id' => $folder->id_folders]);
     }
 } else {
     include_once "$fnsDir/Page/info.php";

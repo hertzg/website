@@ -17,7 +17,6 @@ function render_folders_and_files ($folders, $num_folders, $files,
     };
 
     if ($num_folders) {
-        include_once "$fnsDir/create_folder_link.php";
         include_once "$fnsDir/Page/imageArrowLink.php";
         foreach ($folders as $folder) {
 
@@ -29,8 +28,8 @@ function render_folders_and_files ($folders, $num_folders, $files,
 
             $title = htmlspecialchars($folder->name);
             $title = preg_replace($regex, '<mark>$0</mark>', $title);
-            $href = create_folder_link($folder->id_folders, '../files/');
-            $items[] = Page\imageArrowLink($title, $href, 'folder');
+            $items[] = Page\imageArrowLink($title,
+                "../files/?id_folders=$folder->id_folders", 'folder');
 
         }
     }

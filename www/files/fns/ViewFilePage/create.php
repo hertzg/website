@@ -40,9 +40,6 @@ function create ($mysqli, $file, &$scripts) {
         $imageOptionsPanel = '';
     }
 
-    include_once "$fnsDir/create_folder_link.php";
-    $folder_link = create_folder_link($id_folders, '../');
-
     unset(
         $_SESSION['files/errors'],
         $_SESSION['files/id_folders'],
@@ -64,8 +61,8 @@ function create ($mysqli, $file, &$scripts) {
     return
         \Page\create(
             [
-                'title' => 'Files',
-                'href' => "$folder_link#file_$id",
+                'title' => 'Home',
+                'href' => '../../home/#files',
             ],
             "File #$id",
             \Page\sessionErrors('files/view-file/errors')

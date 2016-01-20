@@ -22,9 +22,9 @@ include_once "$fnsDir/request_strings.php";
 list($id) = request_strings('id');
 
 if (!$files) {
-    include_once "$fnsDir/create_folder_link.php";
+    include_once '../fns/create_parent_url.php';
     include_once "$fnsDir/redirect.php";
-    redirect('../'.create_folder_link($parent_id));
+    redirect('../'.create_parent_url($parent_id));
 }
 
 $index = 0;
@@ -65,13 +65,10 @@ $title = htmlspecialchars($file->name);
 include_once "$fnsDir/Page/buttonLink.php";
 $fileLink = Page\buttonLink($title, "../view-file/?id=$id");
 
-include_once "$fnsDir/create_folder_link.php";
+include_once '../fns/create_parent_backlink.php';
 include_once "$fnsDir/Page/create.php";
 $content = Page\create(
-    [
-        'title' => 'Files',
-        'href' => '../'.create_folder_link($parent_id).'#slideshow',
-    ],
+    create_parent_backlink($parent_id, '../', 'slideshow'),
     'Slideshow',
     '<div class="navigation">'
         .$prevLink

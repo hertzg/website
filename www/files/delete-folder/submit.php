@@ -16,6 +16,6 @@ unset($_SESSION['files/errors']);
 $_SESSION['files/id_folders'] = $parent_id;
 $_SESSION['files/messages'] = ["Folder #$id has been deleted."];
 
-include_once '../../fns/create_folder_link.php';
+include_once '../fns/create_parent_url.php';
 include_once '../../fns/redirect.php';
-redirect(create_folder_link($parent_id, '../'));
+redirect(create_parent_url($parent_id, '../'));

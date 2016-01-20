@@ -35,12 +35,10 @@ unset(
 );
 
 include_once '../../fns/Users/Folders/add.php';
-$id_folders = Users\Folders\add($mysqli,
-    $id_users, $parent_id, $name);
+$id_folders = Users\Folders\add($mysqli, $id_users, $parent_id, $name);
 
 unset($_SESSION['files/errors']);
 $_SESSION['files/id_folders'] = $id_folders;
 $_SESSION['files/messages'] = ['Folder has been created.'];
 
-include_once '../../fns/create_folder_link.php';
 redirect("../?id_folders=$id_folders");
