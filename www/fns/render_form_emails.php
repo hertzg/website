@@ -1,10 +1,7 @@
 <?php
 
-namespace ViewPage;
+function render_form_emails ($contact, &$items) {
 
-function renderContactEmails ($contact, &$items) {
-
-    $fnsDir = __DIR__.'/../../../fns';
     $email1 = $contact->email1;
     $email2 = $contact->email2;
 
@@ -17,12 +14,12 @@ function renderContactEmails ($contact, &$items) {
     if ($email1 === '') {
         if ($email2 !== '') {
             $value = $render($email2, $contact->email2_label);
-            include_once "$fnsDir/Form/label.php";
+            include_once __DIR__.'/Form/label.php';
             $items[] = \Form\label('Email', $value);
         }
     } else {
         $value = $render($email1, $contact->email1_label);
-        include_once "$fnsDir/Form/label.php";
+        include_once __DIR__.'/Form/label.php';
         if ($email2 === '') {
             $item = \Form\label('Email', $value);
         } else {

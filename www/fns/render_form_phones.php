@@ -1,10 +1,7 @@
 <?php
 
-namespace ViewPage;
+function render_form_phones ($contact, &$items) {
 
-function renderContactPhones ($contact, &$items) {
-
-    $fnsDir = __DIR__.'/../../../fns';
     $phone1 = $contact->phone1;
     $phone2 = $contact->phone2;
 
@@ -17,12 +14,12 @@ function renderContactPhones ($contact, &$items) {
     if ($phone1 === '') {
         if ($phone2 !== '') {
             $value = $render($phone2, $contact->phone2_label);
-            include_once "$fnsDir/Form/label.php";
+            include_once __DIR__.'/Form/label.php';
             $items[] = \Form\label('Phone', $value);
         }
     } else {
         $value = $render($phone1, $contact->phone1_label);
-        include_once "$fnsDir/Form/label.php";
+        include_once __DIR__.'/Form/label.php';
         if ($phone2 === '') {
             $item = \Form\label('Phone', $value);
         } else {

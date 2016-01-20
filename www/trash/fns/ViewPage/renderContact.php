@@ -22,11 +22,11 @@ function renderContact ($id, $contact, &$items, &$infoText, &$scripts) {
         $labelItems[] = \Form\label('Address', htmlspecialchars($address));
     }
 
-    include_once __DIR__.'/renderContactEmails.php';
-    renderContactEmails($contact, $labelItems);
+    include_once "$fnsDir/render_form_emails.php";
+    render_form_emails($contact, $labelItems);
 
-    include_once __DIR__.'/renderContactPhones.php';
-    renderContactPhones($contact, $labelItems);
+    include_once "$fnsDir/render_form_phones.php";
+    render_form_phones($contact, $labelItems);
 
     $birthday_time = $contact->birthday_time;
     if ($birthday_time !== null) {

@@ -39,11 +39,11 @@ if ($address !== '') {
     $items[] = \Form\label('Address', htmlspecialchars($address));
 }
 
-include_once '../../../trash/fns/ViewPage/renderContactEmails.php';
-ViewPage\renderContactEmails($revision, $items);
+include_once "$fnsDir/render_form_emails.php";
+render_form_emails($revision, $items);
 
-include_once '../../../trash/fns/ViewPage/renderContactPhones.php';
-ViewPage\renderContactPhones($revision, $items, '');
+include_once "$fnsDir/render_form_phones.php";
+render_form_phones($revision, $items);
 
 $birthday_time = $revision->birthday_time;
 if ($birthday_time !== null) {
