@@ -34,7 +34,7 @@ $items[] = \Page\text(htmlspecialchars($revision->url));
 $tags = $revision->tags;
 if ($tags !== '') $items[] = \Page\text("Tags: $tags");
 
-$title = "Bookmark #{$id_bookmarks}R$revision->revision";
+$title = "Bookmark #{$id_bookmarks} R".($revision->revision + 1);
 
 include_once "$fnsDir/export_date_ago.php";
 include_once "$fnsDir/Page/create.php";
@@ -46,7 +46,7 @@ $content = Page\create(
     ],
     $title,
     join('<div class="hr"></div>', $items)
-    .Page\infoText('Overwritten '.export_date_ago($revision->insert_time).'.')
+    .Page\infoText('Revision made '.export_date_ago($revision->insert_time).'.')
 );
 
 include_once "$fnsDir/compressed_js_script.php";

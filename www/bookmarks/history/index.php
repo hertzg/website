@@ -15,11 +15,13 @@ $revisions = BookmarkRevisions\indexOnBookmark($mysqli, $id);
 
 $items = [];
 include_once "$fnsDir/export_date_ago.php";
-include_once "$fnsDir/Page/imageArrowLink.php";
+include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
 foreach ($revisions as $revision) {
     $item_id = $revision->id;
-    $items[] = Page\imageArrowLink(export_date_ago($revision->insert_time),
-        "view/?id=$item_id", 'restore-defaults', ['id' => $item_id]);
+    $items[] = Page\imageArrowLinkWithDescription(
+        export_date_ago($revision->insert_time, true),
+        'R'.($revision->revision + 1), "view/?id=$item_id",
+        'restore-defaults', ['id' => $item_id]);
 }
 
 include_once "$fnsDir/Page/create.php";
