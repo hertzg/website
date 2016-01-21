@@ -16,8 +16,7 @@ function renderSchedule ($schedule, $user, &$items) {
     include_once "$fnsDir/days_left_from_today.php";
     $days_left = days_left_from_today($user, $interval, $schedule->offset);
 
-    // FIXME move format_days_left in fnsDir
-    include_once __DIR__.'/../../../schedules/fns/format_days_left.php';
+    include_once "$fnsDir/format_days_left.php";
     $items[] = \Form\label('Next', format_days_left($user, $days_left));
 
     $tags = $schedule->tags;
