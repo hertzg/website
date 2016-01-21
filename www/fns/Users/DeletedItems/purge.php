@@ -14,7 +14,7 @@ function purge ($mysqli, $deletedItem) {
     } elseif ($type == 'calculation') {
         include_once __DIR__.'/purgeCalculation.php';
         purgeCalculation($mysqli, $deletedItem);
-    } elseif ($type == 'contact' || $type == 'receivedContact') {
+    } elseif ($type == 'contact') {
         include_once __DIR__.'/purgeContact.php';
         purgeContact($mysqli, $deletedItem);
     } elseif ($type == 'file') {
@@ -23,15 +23,24 @@ function purge ($mysqli, $deletedItem) {
     } elseif ($type == 'folder') {
         include_once __DIR__.'/purgeFolder.php';
         purgeFolder($mysqli, $deletedItem);
+    } elseif ($type == 'note') {
+        include_once __DIR__.'/purgeNote.php';
+        purgeNote($mysqli, $deletedItem);
     } elseif ($type == 'place') {
         include_once __DIR__.'/purgePlace.php';
         purgePlace($mysqli, $deletedItem);
+    } elseif ($type == 'receivedContact') {
+        include_once __DIR__.'/purgeReceivedContact.php';
+        purgeReceivedContact($mysqli, $deletedItem);
     } elseif ($type == 'receivedFile') {
         include_once __DIR__.'/purgeReceivedFile.php';
         purgeReceivedFile($deletedItem);
     } elseif ($type == 'receivedFolder') {
         include_once __DIR__.'/purgeReceivedFolder.php';
         purgeReceivedFolder($mysqli, $deletedItem);
+    } elseif ($type == 'schedule') {
+        include_once __DIR__.'/purgeSchedule.php';
+        purgeSchedule($mysqli, $deletedItem);
     } elseif ($type == 'task') {
         include_once __DIR__.'/purgeTask.php';
         purgeTask($mysqli, $deletedItem);

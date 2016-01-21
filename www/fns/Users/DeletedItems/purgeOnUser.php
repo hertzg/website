@@ -6,104 +6,91 @@ function purgeOnUser ($mysqli, $id_users) {
 
     include_once __DIR__.'/../../DeletedItems/indexOnUserOfType.php';
 
-    $deletedItems = \DeletedItems\indexOnUserOfType(
-        $mysqli, $id_users, 'barChart');
-    if ($deletedItems) {
+    $items = \DeletedItems\indexOnUserOfType($mysqli, $id_users, 'barChart');
+    if ($items) {
         include_once __DIR__.'/purgeBarChart.php';
-        foreach ($deletedItems as $deletedItem) {
-            purgeBarChart($mysqli, $deletedItem);
-        }
+        foreach ($items as $item) purgeBarChart($mysqli, $item);
     }
 
-    $deletedItems = \DeletedItems\indexOnUserOfType(
-        $mysqli, $id_users, 'bookmark');
-    if ($deletedItems) {
+    $items = \DeletedItems\indexOnUserOfType($mysqli, $id_users, 'bookmark');
+    if ($items) {
         include_once __DIR__.'/purgeBookmark.php';
-        foreach ($deletedItems as $deletedItem) {
-            purgeBookmark($mysqli, $deletedItem);
-        }
+        foreach ($items as $item) purgeBookmark($mysqli, $item);
     }
 
-    $deletedItems = \DeletedItems\indexOnUserOfType(
-        $mysqli, $id_users, 'calculation');
-    if ($deletedItems) {
+    $items = \DeletedItems\indexOnUserOfType($mysqli, $id_users, 'calculation');
+    if ($items) {
         include_once __DIR__.'/purgeCalculation.php';
-        foreach ($deletedItems as $deletedItem) {
-            purgeCalculation($mysqli, $deletedItem);
-        }
+        foreach ($items as $item) purgeCalculation($mysqli, $item);
     }
 
-    $deletedItems = array_merge(
-        \DeletedItems\indexOnUserOfType($mysqli, $id_users, 'contact'),
-        \DeletedItems\indexOnUserOfType($mysqli, $id_users, 'receivedContact')
-    );
-    if ($deletedItems) {
+    $items = \DeletedItems\indexOnUserOfType($mysqli, $id_users, 'contact');
+    if ($items) {
         include_once __DIR__.'/purgeContact.php';
-        foreach ($deletedItems as $deletedItem) {
-            purgeContact($mysqli, $deletedItem);
-        }
+        foreach ($items as $item) purgeContact($mysqli, $item);
     }
 
-    $deletedItems = \DeletedItems\indexOnUserOfType($mysqli, $id_users, 'file');
-    if ($deletedItems) {
+    $items = \DeletedItems\indexOnUserOfType($mysqli, $id_users, 'file');
+    if ($items) {
         include_once __DIR__.'/purgeFile.php';
-        foreach ($deletedItems as $deletedItem) {
-            purgeFile($deletedItem);
-        }
+        foreach ($items as $item) purgeFile($item);
     }
 
-    $deletedItems = \DeletedItems\indexOnUserOfType(
-        $mysqli, $id_users, 'folder');
-    if ($deletedItems) {
+    $items = \DeletedItems\indexOnUserOfType($mysqli, $id_users, 'folder');
+    if ($items) {
         include_once __DIR__.'/purgeFolder.php';
-        foreach ($deletedItems as $deletedItem) {
-            purgeFolder($mysqli, $deletedItem);
-        }
+        foreach ($items as $item) purgeFolder($mysqli, $item);
     }
 
-    $deletedItems = \DeletedItems\indexOnUserOfType(
-        $mysqli, $id_users, 'place');
-    if ($deletedItems) {
+    $items = \DeletedItems\indexOnUserOfType($mysqli, $id_users, 'note');
+    if ($items) {
+        include_once __DIR__.'/purgeNote.php';
+        foreach ($items as $item) purgeNote($mysqli, $item);
+    }
+
+    $items = \DeletedItems\indexOnUserOfType($mysqli, $id_users, 'place');
+    if ($items) {
         include_once __DIR__.'/purgePlace.php';
-        foreach ($deletedItems as $deletedItem) {
-            purgePlace($mysqli, $deletedItem);
-        }
+        foreach ($items as $item) purgePlace($mysqli, $item);
     }
 
-    $deletedItems = \DeletedItems\indexOnUserOfType(
+    $items = \DeletedItems\indexOnUserOfType(
+        $mysqli, $id_users, 'receivedContact');
+    if ($items) {
+        include_once __DIR__.'/purgeReceivedContact.php';
+        foreach ($items as $item) purgeReceivedContact($mysqli, $item);
+    }
+
+    $items = \DeletedItems\indexOnUserOfType(
         $mysqli, $id_users, 'receivedFile');
-    if ($deletedItems) {
+    if ($items) {
         include_once __DIR__.'/purgeReceivedFile.php';
-        foreach ($deletedItems as $deletedItem) {
-            purgeReceivedFile($deletedItem);
-        }
+        foreach ($items as $item) purgeReceivedFile($item);
     }
 
-    $deletedItems = \DeletedItems\indexOnUserOfType(
+    $items = \DeletedItems\indexOnUserOfType(
         $mysqli, $id_users, 'receivedFolder');
-    if ($deletedItems) {
+    if ($items) {
         include_once __DIR__.'/purgeReceivedFolder.php';
-        foreach ($deletedItems as $deletedItem) {
-            purgeReceivedFolder($mysqli, $deletedItem);
-        }
+        foreach ($items as $item) purgeReceivedFolder($mysqli, $item);
     }
 
-    $deletedItems = \DeletedItems\indexOnUserOfType(
-        $mysqli, $id_users, 'task');
-    if ($deletedItems) {
+    $items = \DeletedItems\indexOnUserOfType($mysqli, $id_users, 'schedule');
+    if ($items) {
+        include_once __DIR__.'/purgeSchedule.php';
+        foreach ($items as $item) purgeSchedule($mysqli, $item);
+    }
+
+    $items = \DeletedItems\indexOnUserOfType($mysqli, $id_users, 'task');
+    if ($items) {
         include_once __DIR__.'/purgeTask.php';
-        foreach ($deletedItems as $deletedItem) {
-            purgeTask($mysqli, $deletedItem);
-        }
+        foreach ($items as $item) purgeTask($mysqli, $item);
     }
 
-    $deletedItems = \DeletedItems\indexOnUserOfType(
-        $mysqli, $id_users, 'wallet');
-    if ($deletedItems) {
+    $items = \DeletedItems\indexOnUserOfType($mysqli, $id_users, 'wallet');
+    if ($items) {
         include_once __DIR__.'/purgeWallet.php';
-        foreach ($deletedItems as $deletedItem) {
-            purgeWallet($mysqli, $deletedItem);
-        }
+        foreach ($items as $item) purgeWallet($mysqli, $item);
     }
 
     include_once __DIR__.'/../../DeletedItems/deleteOnUser.php';
