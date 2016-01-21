@@ -5,9 +5,10 @@ namespace ViewPage;
 function optionsPanel ($schedule) {
 
     $fnsDir = __DIR__.'/../../../fns';
+    $id = $schedule->id;
 
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
-    $escapedItemQuery = \ItemList\escapedItemQuery($schedule->id);
+    $escapedItemQuery = \ItemList\escapedItemQuery($id);
 
     include_once "$fnsDir/Page/imageArrowLink.php";
     $editLink = \Page\imageArrowLink('Edit',
@@ -27,17 +28,22 @@ function optionsPanel ($schedule) {
     $sendLink = \Page\imageArrowLink('Send',
         "../send/$escapedItemQuery", 'send', ['id' => 'send']);
 
+    $historyLink = \Page\imageArrowLink('History',
+        "../history/?id=$id", 'restore-defaults', ['id' => 'history']);
+
     include_once "$fnsDir/Page/imageLink.php";
-    $href = "../delete/$escapedItemQuery";
     $deleteLink =
         '<div id="deleteLink">'
-            .\Page\imageLink('Delete', $href, 'trash-bin')
+            .\Page\imageLink('Delete',
+                "../delete/$escapedItemQuery", 'trash-bin')
         .'</div>';
 
     $content =
         \Page\staticTwoColumns($editLink, $duplicateLink)
         .'<div class="hr"></div>'
-        .\Page\staticTwoColumns($sendLink, $deleteLink);
+        .$sendLink
+        .'<div class="hr"></div>'
+        .\Page\staticTwoColumns($historyLink, $deleteLink);
 
     include_once "$fnsDir/create_panel.php";
     return create_panel('Schedule Options', $content);

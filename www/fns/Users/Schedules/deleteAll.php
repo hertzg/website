@@ -22,6 +22,9 @@ function deleteAll ($mysqli, $user, $apiKey = null) {
     include_once "$fnsDir/Schedules/deleteOnUser.php";
     \Schedules\deleteOnUser($mysqli, $id_users);
 
+    include_once "$fnsDir/ScheduleRevisions/setDeletedOnUser.php";
+    \ScheduleRevisions\setDeletedOnUser($mysqli, $id_users, true);
+
     include_once "$fnsDir/ScheduleTags/deleteOnUser.php";
     \ScheduleTags\deleteOnUser($mysqli, $id_users);
 

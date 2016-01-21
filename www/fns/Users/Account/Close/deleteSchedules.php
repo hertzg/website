@@ -15,6 +15,9 @@ function deleteSchedules ($mysqli, $user) {
         include_once "$fnsDir/ScheduleTags/deleteOnUser.php";
         \ScheduleTags\deleteOnUser($mysqli, $id_users);
 
+        include_once "$fnsDir/ScheduleRevisions/deleteOnUser.php";
+        \ScheduleRevisions\deleteOnUser($mysqli, $id_users);
+
     }
 
     if ($user->num_received_schedules) {

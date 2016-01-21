@@ -10,6 +10,9 @@ function delete ($mysqli, $user, $schedule, $apiKey = null) {
     include_once "$fnsDir/Schedules/delete.php";
     \Schedules\delete($mysqli, $id);
 
+    include_once "$fnsDir/ScheduleRevisions/setDeletedOnSchedule.php";
+    \ScheduleRevisions\setDeletedOnSchedule($mysqli, $id, true);
+
     if ($schedule->num_tags) {
         include_once "$fnsDir/ScheduleTags/deleteOnSchedule.php";
         \ScheduleTags\deleteOnSchedule($mysqli, $id);

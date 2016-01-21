@@ -13,6 +13,7 @@ function edit ($mysqli, $user, $schedule, $text, $interval,
 
     $changed = true;
     $id = $schedule->id;
+    $id_users = $schedule->id_users;
     $fnsDir = __DIR__.'/../..';
 
     $update_time = time();
@@ -36,11 +37,15 @@ function edit ($mysqli, $user, $schedule, $text, $interval,
 
         if ($tag_names) {
             include_once "$fnsDir/ScheduleTags/add.php";
-            \ScheduleTags\add($mysqli, $schedule->id_users, $id, $tag_names,
-                $text, $interval, $offset, $schedule->insert_time, $update_time);
+            \ScheduleTags\add($mysqli, $id_users, $id, $tag_names, $text,
+                $interval, $offset, $schedule->insert_time, $update_time);
         }
 
     }
+
+    include_once "$fnsDir/ScheduleRevisions/add.php";
+    \ScheduleRevisions\add($mysqli, $id, $id_users, $text, $interval,
+        $offset, $tags, $update_time, $bookmark->revision + 1);
 
     include_once "$fnsDir/days_left_from_today.php";
     $days_left = days_left_from_today($user, $interval, $offset);

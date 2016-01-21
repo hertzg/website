@@ -55,6 +55,7 @@ function ensureAll ($mysqli) {
     include_once "$fnsDir/ReceivedPlaces/ensure.php";
     include_once "$fnsDir/ReceivedSchedules/ensure.php";
     include_once "$fnsDir/ReceivedTasks/ensure.php";
+    include_once "$fnsDir/ScheduleRevisions/ensure.php";
     include_once "$fnsDir/Schedules/ensure.php";
     include_once "$fnsDir/ScheduleTags/ensure.php";
     include_once "$fnsDir/SendingBookmarks/ensure.php";
@@ -123,6 +124,7 @@ function ensureAll ($mysqli) {
         .\ReceivedPlaces\ensure($mysqli)
         .\ReceivedSchedules\ensure($mysqli)
         .\ReceivedTasks\ensure($mysqli)
+        .\ScheduleRevisions\ensure($mysqli)
         .\Schedules\ensure($mysqli)
         .\ScheduleTags\ensure($mysqli)
         .\SendingBookmarks\ensure($mysqli)

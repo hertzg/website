@@ -22,6 +22,9 @@ function addDeleted ($mysqli, $user, $data) {
     \Schedules\addDeleted($mysqli, $id, $id_users, $text, $interval, $offset,
         $tags, $tag_names, $insert_time, $update_time, $data->revision);
 
+    include_once "$fnsDir/ScheduleRevisions/setDeletedOnSchedule.php";
+    \ScheduleRevisions\setDeletedOnSchedule($mysqli, $id, false);
+
     if ($tag_names) {
         include_once "$fnsDir/ScheduleTags/add.php";
         \ScheduleTags\add($mysqli, $id_users, $id, $tag_names,
