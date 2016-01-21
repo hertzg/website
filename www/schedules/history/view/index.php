@@ -33,7 +33,7 @@ $items[] = \Form\label('Repeats in every', "$interval days");
 include_once "$fnsDir/days_left_from_today.php";
 $days_left = days_left_from_today($user, $interval, $revision->offset);
 
-include_once '../../fns/format_days_left.php';
+include_once "$fnsDir/format_days_left.php";
 $items[] = \Form\label('Next', format_days_left($user, $days_left));
 
 $tags = $revision->tags;

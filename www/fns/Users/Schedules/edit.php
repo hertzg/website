@@ -45,7 +45,7 @@ function edit ($mysqli, $user, $schedule, $text, $interval,
 
     include_once "$fnsDir/ScheduleRevisions/add.php";
     \ScheduleRevisions\add($mysqli, $id, $id_users, $text, $interval,
-        $offset, $tags, $update_time, $bookmark->revision + 1);
+        $offset, $tags, $update_time, $schedule->revision + 1);
 
     include_once "$fnsDir/days_left_from_today.php";
     $days_left = days_left_from_today($user, $interval, $offset);
