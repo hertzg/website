@@ -20,8 +20,8 @@ function render_birthday ($user, $birthday_time, &$items, &$head, $base) {
     $monthToday = date('n', $timeToday);
 
     $age = date('Y', $timeToday) - $year;
-    if ($month < $monthToday) $age--;
-    elseif ($month == $monthToday && $day < date('j', $timeToday)) $age--;
+    if ($month > $monthToday) $age--;
+    elseif ($month == $monthToday && $day > date('j', $timeToday)) $age--;
 
     include_once "$fnsDir/Form/association.php";
     include_once "$fnsDir/create_calendar_icon.php";
