@@ -9,7 +9,6 @@ function require_requirements () {
     $apacheModules = apache_get_modules();
 
     if (!in_array('mod_rewrite', $apacheModules) ||
-        !in_array('mod_headers', $apacheModules) ||
         !array_key_exists('HTACCESS_WORKING', $_SERVER) ||
         date_default_timezone_get() !== 'UTC' ||
         !extension_loaded('curl') || !extension_loaded('gd') ||

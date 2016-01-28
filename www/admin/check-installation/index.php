@@ -10,9 +10,6 @@ $apacheModules = apache_get_modules();
 $ok = in_array('mod_rewrite', $apacheModules);
 $content = assert_enabled($ok, 'Apache module "mod_rewrite"');
 
-$ok = in_array('mod_headers', $apacheModules);
-$content .= assert_enabled($ok, 'Apache module "mod_headers"');
-
 $ok = array_key_exists('HTACCESS_WORKING', $_SERVER);
 $content .= assert_enabled($ok, '".htaccess"');
 
@@ -50,6 +47,9 @@ $content .=
     .assert_writable_file('../../fns/Users/OrderBy/get.php')
     .assert_writable_folder(ContactPhotos\dir())
     .assert_writable_folder(Users\Directory\dir());
+
+$ok = in_array('mod_headers', $apacheModules);
+$content .= assert_enabled($ok, 'Optionally Apache module "mod_headers"');
 
 $subject = 'Optionally Image Processing (ImageMagick) "imagick"';
 $content .= assert_installed(extension_loaded('imagick'), $subject);

@@ -29,10 +29,6 @@ $ok = in_array('mod_rewrite', $apacheModules);
 $subject = 'Apache module "<code>mod_rewrite</code>"';
 $assertsHtml = assert_enabled($ok, $subject);
 
-$ok = in_array('mod_headers', $apacheModules);
-$subject = 'Apache module "<code>mod_headers</code>"';
-$assertsHtml .= assert_enabled($ok, $subject);
-
 $ok = array_key_exists('HTACCESS_WORKING', $_SERVER);
 $assertsHtml .= assert_enabled($ok, '"<code>.htaccess</code>"');
 
@@ -68,8 +64,12 @@ $assertsHtml .=
     .assert_writable('fns/SiteTitle/get.php')
     .assert_writable('fns/Users/OrderBy/get.php');
 
+$ok = in_array('mod_headers', $apacheModules);
+$subject = 'Apache module "<code>mod_headers</code>"';
+$optionalAssertsHtml = assert_enabled($ok, $subject);
+
 $subject = 'Image Processing (ImageMagick) "<code>imagick</code>"';
-$optionalAssertsHtml = assert_installed(extension_loaded('imagick'), $subject);
+$optionalAssertsHtml .= assert_installed(extension_loaded('imagick'), $subject);
 
 include_once 'fns/create_steps.php';
 include_once '../fns/echo_page.php';
