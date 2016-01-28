@@ -26,7 +26,7 @@ protocol either `'http'` or `'https'`.
 Installation Scripts
 --------------------
 In `www/scripts` folder:
-* `./ensure/table/run-all.sh` will create all the tables in the database.
+* `./ensure-table/run-all.sh` will create all the tables in the database.
 * `./create-data-dir.sh` will create a data folder
 in which users' files will be stored.
 * `./create-htaccess.sh` will create `.htaccess` file for the website.
