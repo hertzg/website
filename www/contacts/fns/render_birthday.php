@@ -6,9 +6,6 @@ function render_birthday ($user, $birthday_time, &$items, &$head, $base) {
 
     $fnsDir = __DIR__.'/../../fns';
 
-    include_once "$fnsDir/user_time_today.php";
-    $timeToday = user_time_today($user);
-
     include_once "$fnsDir/compressed_css_link.php";
     $head .= compressed_css_link('calendarIcon', "$base../../");
 
@@ -16,6 +13,15 @@ function render_birthday ($user, $birthday_time, &$items, &$head, $base) {
     $month = date('n', $birthday_time);
     $year = date('Y', $birthday_time);
     $href = "$base../../calendar/?day=$day&amp;month=$month&amp;year=$year";
+
+    include_once "$fnsDir/user_time_today.php";
+    $timeToday = user_time_today($user);
+
+    $monthToday = date('n', $timeToday);
+
+    $age = date('Y', $timeToday) - $year;
+    if ($month < $monthToday) $age--;
+    elseif ($month == $monthToday && $day < date('j', $timeToday)) $age--;
 
     include_once "$fnsDir/Form/association.php";
     include_once "$fnsDir/create_calendar_icon.php";
@@ -25,8 +31,7 @@ function render_birthday ($user, $birthday_time, &$items, &$head, $base) {
                 .create_calendar_icon($day)
             .'</span>'
             .'<span class="image_link-content">'
-                .date('F', $birthday_time)." $day, $year"
-                .' (Age '.(date('Y', $timeToday) - $year).')'
+                .date('F', $birthday_time)." $day, $year (Age $age)"
             .'</span>'
         .'</a>',
         'Birthday:'
