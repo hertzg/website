@@ -1,7 +1,7 @@
 <?php
 
-function require_profile_params ($mysqli,
-    &$username, &$disabled, &$expires, $exclude_id = 0) {
+function require_profile_params ($mysqli, &$username,
+    &$admin, &$disabled, &$expires, $exclude_id = 0) {
 
     $fnsDir = __DIR__.'/../../../../fns';
 
@@ -9,8 +9,10 @@ function require_profile_params ($mysqli,
     $username = Username\request();
 
     include_once "$fnsDir/request_strings.php";
-    list($disabled, $expires) = request_strings('disabled', 'expires');
+    list($admin, $disabled, $expires) = request_strings(
+        'admin', 'disabled', 'expires');
 
+    $admin = (bool)$admin;
     $disabled = (bool)$disabled;
     $expires = (bool)$expires;
 

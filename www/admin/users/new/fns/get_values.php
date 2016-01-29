@@ -10,6 +10,7 @@ function get_values () {
         'username' => '',
         'password' => '',
         'repeatPassword' => '',
+        'admin' => false,
         'disabled' => false,
         'expires' => false,
     ];

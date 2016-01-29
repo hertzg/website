@@ -35,6 +35,7 @@ function ensure ($mysqli) {
     return \Table\ensure($mysqli, 'users', [
         'access_remote_address' => $ipAddressColumn,
         'access_time' => $nullable_unsigned_bigint,
+        'admin' => ['type' => 'tinyint(3)'],
         'anonymous_can_send_bookmark' => $unsigned_tinyint,
         'anonymous_can_send_calculation' => $unsigned_tinyint,
         'anonymous_can_send_channel' => $unsigned_tinyint,

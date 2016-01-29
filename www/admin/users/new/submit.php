@@ -12,9 +12,10 @@ include_once "$fnsDir/Username/request.php";
 $username = Username\request();
 
 include_once "$fnsDir/request_strings.php";
-list($password, $repeatPassword, $disabled, $expires) = request_strings(
-    'password', 'repeatPassword', 'disabled', 'expires');
+list($password, $repeatPassword, $admin, $disabled, $expires) = request_strings(
+    'password', 'repeatPassword', 'admin', 'disabled', 'expires');
 
+$admin = (bool)$admin;
 $disabled = (bool)$disabled;
 $expires = (bool)$expires;
 
@@ -35,6 +36,7 @@ if ($errors) {
         'username' => $username,
         'password' => $password,
         'repeatPassword' => $repeatPassword,
+        'admin' => $admin,
         'disabled' => $disabled,
         'expires' => $expires,
     ];
@@ -48,8 +50,8 @@ unset(
 );
 
 include_once "$fnsDir/Users/Account/create.php";
-$id = Users\Account\create($mysqli,
-    $username, $password, '', $disabled, $expires);
+$id = Users\Account\create($mysqli, $username,
+    $password, '', $admin, $disabled, $expires);
 
 $_SESSION['admin/users/view/messages'] = ['User has been saved.'];
 

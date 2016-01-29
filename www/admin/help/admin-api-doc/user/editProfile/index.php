@@ -12,6 +12,10 @@ user_method_page('editProfile', [
         'description' => 'The new username of the user.',
     ],
     [
+        'name' => 'admin',
+        'description' => 'Whether the user should be an administrator.',
+    ],
+    [
         'name' => 'disabled',
         'description' => 'Whether the user should be disabled.',
     ],

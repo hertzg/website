@@ -59,7 +59,7 @@ unset(
 );
 
 include_once '../fns/Users/Account/create.php';
-Users\Account\create($mysqli, $username, $password, $email, false, true);
+Users\Account\create($mysqli, $username, $password, $email, false, false, true);
 
 include_once '../fns/Captcha/reset.php';
 Captcha\reset();

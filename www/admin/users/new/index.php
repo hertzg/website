@@ -68,6 +68,8 @@ $content = Page\create(
             'autofocus' => $focus === 'repeatPassword',
         ])
         .'<div class="hr"></div>'
+        .Form\checkbox('admin', 'Administrator', $values['admin'])
+        .'<div class="hr"></div>'
         .Form\checkbox('disabled', 'Disable', $values['disabled'])
         .'<div class="hr"></div>'
         .Form\checkbox('expires', 'Expire when inactive', $values['expires'])

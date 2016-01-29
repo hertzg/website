@@ -13,8 +13,10 @@ include_once "$fnsDir/Username/request.php";
 $username = Username\request();
 
 include_once "$fnsDir/request_strings.php";
-list($disabled, $expires) = request_strings('disabled', 'expires');
+list($admin, $disabled, $expires) = request_strings(
+    'admin', 'disabled', 'expires');
 
+$admin = (bool)$admin;
 $disabled = (bool)$disabled;
 $expires = (bool)$expires;
 
@@ -42,6 +44,7 @@ if ($errors) {
     $_SESSION['admin/users/edit-profile/errors'] = $errors;
     $_SESSION['admin/users/edit-profile/values'] = [
         'username' => $username,
+        'admin' => $admin,
         'disabled' => $disabled,
         'expires' => $expires,
     ];
@@ -55,7 +58,7 @@ unset(
 
 include_once "$fnsDir/Users/Account/editProfile.php";
 Users\Account\editProfile($mysqli, $user, $username, $user->email,
-    $user->full_name, $user->timezone, $disabled, $expires, $changed);
+    $user->full_name, $user->timezone, $admin, $disabled, $expires, $changed);
 
 if ($changed) $message = 'Changes have been saved.';
 else $message = 'No changes to be saved.';

@@ -3,10 +3,11 @@
 namespace Users\Account;
 
 function editProfile ($mysqli, $user, $username, $email,
-    $full_name, $timezone, $disabled, $expires, &$changed) {
+    $full_name, $timezone, $admin, $disabled, $expires, &$changed) {
 
     if ($user->username === $username && $user->email === $email &&
         $user->full_name === $full_name && $user->timezone === $timezone &&
+        (bool)$user->admin === $admin &&
         (bool)$user->disabled === $disabled &&
         (bool)$user->expires === $expires) return;
 
@@ -14,8 +15,8 @@ function editProfile ($mysqli, $user, $username, $email,
     $id_users = $user->id_users;
 
     include_once __DIR__.'/../editProfile.php';
-    \Users\editProfile($mysqli, $id_users, $username,
-        $email, $full_name, $timezone, $disabled, $expires);
+    \Users\editProfile($mysqli, $id_users, $username, $email,
+        $full_name, $timezone, $admin, $disabled, $expires);
 
     if ($username !== $user->username) {
 

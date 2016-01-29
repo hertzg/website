@@ -12,6 +12,10 @@ user_method_page('add', [
         'description' => 'The password of the user.',
     ],
     [
+        'name' => 'admin',
+        'description' => 'Whether the user should be an administrator.',
+    ],
+    [
         'name' => 'disabled',
         'description' => 'Whether the user should be disabled.',
     ],

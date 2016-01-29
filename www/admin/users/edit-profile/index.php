@@ -11,6 +11,7 @@ if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
     $values = [
         'username' => $user->username,
+        'admin' => $user->admin,
         'disabled' => $user->disabled,
         'expires' => $user->expires,
     ];
@@ -52,6 +53,8 @@ $content = Page\create(
             'Characters a-z, A-Z, 0-9, dash, dot and underscore only.',
             'Minimum '.Username\minLength().' characters.',
         ])
+        .'<div class="hr"></div>'
+        .Form\checkbox('admin', 'Administrator', $values['admin'])
         .'<div class="hr"></div>'
         .Form\checkbox('disabled', 'Disable', $values['disabled'])
         .'<div class="hr"></div>'
