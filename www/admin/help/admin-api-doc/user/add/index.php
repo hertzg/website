@@ -11,6 +11,10 @@ user_method_page('add', [
         'name' => 'password',
         'description' => 'The password of the user.',
     ],
+    [
+        'name' => 'disabled',
+        'description' => 'Whether the user should be disabled.',
+    ],
 ], [
     'type' => 'number',
     'description' => 'The ID of the newly created user.',

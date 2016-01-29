@@ -11,6 +11,10 @@ user_method_page('editProfile', [
         'name' => 'username',
         'description' => 'The new username of the user.',
     ],
+    [
+        'name' => 'disabled',
+        'description' => 'Whether the user should be disabled.',
+    ],
 ], ApiDoc\trueResult(), [
     'USER_NOT_FOUND' => "A user with the ID doesn't exist.",
     'ENTER_USERNAME' => 'The username is empty.',
