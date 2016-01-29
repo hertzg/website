@@ -7,8 +7,8 @@ function require_admin_connection (&$adminConnection, &$mysqli) {
     include_once "$fnsDir/request_strings.php";
     list($exchange_api_key) = request_strings('exchange_api_key');
 
-    include_once "$fnsDir/get_mysqli.php";
-    $mysqli = get_mysqli();
+    include_once "$fnsDir/require_mysqli.php";
+    $mysqli = require_mysqli();
 
     include_once "$fnsDir/AdminConnections/getByOurExchangeApiKey.php";
     $adminConnection = AdminConnections\getByOurExchangeApiKey(

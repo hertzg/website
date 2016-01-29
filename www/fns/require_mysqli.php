@@ -1,6 +1,6 @@
 <?php
 
-function get_mysqli () {
+function require_mysqli () {
     static $mysqli;
     if ($mysqli === null) {
 

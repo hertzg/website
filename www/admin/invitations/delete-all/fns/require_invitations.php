@@ -7,8 +7,8 @@ function require_invitations (&$mysqli, &$invitations) {
 
     $fnsDir = __DIR__.'/../../../../fns';
 
-    include_once "$fnsDir/get_mysqli.php";
-    $mysqli = get_mysqli();
+    include_once "$fnsDir/require_mysqli.php";
+    $mysqli = require_mysqli();
 
     include_once "$fnsDir/Invitations/index.php";
     $invitations = Invitations\index($mysqli);

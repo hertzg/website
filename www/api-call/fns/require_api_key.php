@@ -7,8 +7,8 @@ function require_api_key ($permission_field, &$apiKey, &$user, &$mysqli) {
     include_once "$fnsDir/request_strings.php";
     list($session_auth, $api_key) = request_strings('session_auth', 'api_key');
 
-    include_once "$fnsDir/get_mysqli.php";
-    $mysqli = get_mysqli();
+    include_once "$fnsDir/require_mysqli.php";
+    $mysqli = require_mysqli();
 
     if ($session_auth) {
 
