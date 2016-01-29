@@ -8,6 +8,7 @@ $user = signed_user();
 include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/errors.php";
 include_once "$fnsDir/Page/imageLink.php";
+include_once "$fnsDir/SiteTitle/get.php";
 $content = Page\create(
     [
         'title' => 'Help',
@@ -25,7 +26,10 @@ $content = Page\create(
         .'<div class="hr"></div>'
         .Page\imageLink('tel: Link', '', 'protocol', ['id' => 'tel'])
     .'</div>'
-    .'<script type="text/javascript" src="index.js?2" async="true"></script>'
+    .'<script type="text/javascript">'
+        .'var siteTitle = '.json_encode(SiteTitle\get())
+    .'</script>'
+    .'<script type="text/javascript" src="index.js?3" async="true"></script>'
 );
 
 include_once "$fnsDir/echo_public_page.php";

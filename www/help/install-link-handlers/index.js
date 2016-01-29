@@ -1,4 +1,4 @@
-(function () {
+(function (siteTitle) {
 
     function register (id) {
         var link = document.getElementById(id)
@@ -9,7 +9,7 @@
             var address = protocol + '//' + host +
                 pathname + 'handle-link/?value=%s'
 
-            navigator.registerProtocolHandler(id, address, 'Open in Zvini')
+            navigator.registerProtocolHandler(id, address, 'Open in ' + siteTitle)
 
         })
     }
@@ -26,4 +26,4 @@
     register('sms')
     register('tel')
 
-})()
+})(siteTitle)
