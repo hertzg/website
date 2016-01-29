@@ -56,10 +56,8 @@ $content .= assert_installed(extension_loaded('imagick'), $subject);
 
 if ($mysqliOk) {
 
-    include_once '../../fns/MysqlConfig/get.php';
-    MysqlConfig\get($host, $username, $password, $db);
-
-    $mysqli = @new mysqli($host, $username, $password, $db);
+    include_once '../../fns/get_mysqli.php';
+    $mysqli = get_mysqli();
 
     if ($mysqli->connect_errno) {
         $content .= assert_failure(

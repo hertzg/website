@@ -13,8 +13,6 @@ $fnsDir = '../../fns';
 include_once "$fnsDir/MysqlConfig/get.php";
 MysqlConfig\get($host, $username, $password, $db);
 
-$mysqli = @new mysqli($host, $username, $password, $db);
-
 if ($host === '') {
     $host = '<span class="form-label-default">Default</span>';
 } else {
@@ -37,6 +35,9 @@ if ($password === '') {
 $key = 'admin/mysql-settings/messages';
 if (array_key_exists($key, $_SESSION)) $messages = $_SESSION[$key];
 else $messages = [];
+
+include_once "$fnsDir/get_mysqli.php";
+$mysqli = get_mysqli();
 
 if ($mysqli->connect_errno) {
     include_once "$fnsDir/Page/errors.php";

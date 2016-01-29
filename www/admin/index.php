@@ -6,10 +6,9 @@ require_admin();
 include_once 'fns/unset_session_vars.php';
 unset_session_vars();
 
-include_once '../fns/MysqlConfig/get.php';
-MysqlConfig\get($host, $username, $password, $db);
+include_once '../fns/get_mysqli.php';
+$mysqli = get_mysqli();
 
-$mysqli = @new mysqli($host, $username, $password, $db);
 if (!$mysqli->connect_errno) {
     include_once '../fns/Table/ensureAll.php';
     \Table\ensureAll($mysqli);
