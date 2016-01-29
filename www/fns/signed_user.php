@@ -9,8 +9,9 @@ function signed_user () {
 
     if (!array_key_exists('user', $_SESSION)) {
 
-        include_once __DIR__.'/require_mysqli.php';
-        $mysqli = require_mysqli();
+        include_once __DIR__.'/get_mysqli.php';
+        $mysqli = get_mysqli();
+        if ($mysqli->connect_errno) return;
 
         include_once __DIR__.'/request_valid_token.php';
         $token = request_valid_token($mysqli);
@@ -43,8 +44,9 @@ function signed_user () {
 
         $id_users = $_SESSION['user']->id_users;
 
-        include_once __DIR__.'/require_mysqli.php';
-        $mysqli = require_mysqli();
+        include_once __DIR__.'/get_mysqli.php';
+        $mysqli = get_mysqli();
+        if ($mysqli->connect_errno) return;
 
         include_once __DIR__.'/Users/get.php';
         $user = Users\get($mysqli, $id_users);
