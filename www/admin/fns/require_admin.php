@@ -7,9 +7,14 @@ function require_admin () {
         ErrorPage\unauthorized('Basic realm="Zvini Admin"');
     };
 
-    if (!array_key_exists('PHP_AUTH_USER', $_SERVER)) $invalid();
-
     $fnsDir = __DIR__.'/../../fns';
+
+    include_once "$fnsDir/signed_user.php";
+    $user = signed_user();
+
+    if ($user && $user->admin) return $user;
+
+    if (!array_key_exists('PHP_AUTH_USER', $_SERVER)) $invalid();
 
     include_once "$fnsDir/Admin/get.php";
     Admin\get($username, $hash, $salt, $sha512_hash, $sha512_key);
@@ -33,8 +38,5 @@ function require_admin () {
         Admin\set($username, $sha512_hash, $sha512_key);
 
     }
-
-    include_once "$fnsDir/session_start_custom.php";
-    session_start_custom($new);
 
 }
