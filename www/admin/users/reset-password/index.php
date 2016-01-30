@@ -2,7 +2,7 @@
 
 include_once '../fns/require_user.php';
 include_once '../../../lib/mysqli.php';
-list($user, $id) = require_user($mysqli);
+list($user, $id, $admin_user) = require_user($mysqli);
 
 unset($_SESSION['admin/users/view/messages']);
 
@@ -71,4 +71,4 @@ $content = Page\create(
 );
 
 include_once '../../fns/echo_admin_page.php';
-echo_admin_page("Reset User #$id Password", $content, '../../');
+echo_admin_page($admin_user, "Reset User #$id Password", $content, '../../');

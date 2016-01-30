@@ -2,7 +2,7 @@
 
 include_once '../fns/require_user.php';
 include_once '../../../lib/mysqli.php';
-list($user, $id) = require_user($mysqli);
+list($user, $id, $admin_user) = require_user($mysqli);
 
 unset($_SESSION['admin/users/view/messages']);
 
@@ -71,6 +71,6 @@ $content = Page\create(
 
 include_once '../../fns/echo_admin_page.php';
 include_once "$fnsDir/compressed_js_script.php";
-echo_admin_page("Edit User #$id Profile", $content, '../../', [
+echo_admin_page($admin_user, "Edit User #$id Profile", $content, '../../', [
     'scripts' => compressed_js_script('formCheckbox', '../../../'),
 ]);

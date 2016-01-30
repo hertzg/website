@@ -2,7 +2,7 @@
 
 include_once '../../fns/require_admin_api_key.php';
 include_once '../../../../lib/mysqli.php';
-list($apiKey, $id) = require_admin_api_key($mysqli, '../');
+list($apiKey, $id, $admin_user) = require_admin_api_key($mysqli, '../');
 
 include_once '../fns/unset_session_vars.php';
 unset_session_vars();
@@ -92,7 +92,7 @@ $title = "Admin API Key #$id Authentication History";
 
 include_once '../../../fns/echo_admin_page.php';
 include_once "$fnsDir/compressed_js_script.php";
-echo_admin_page($title, $content, '../../../', [
+echo_admin_page($admin_user, $title, $content, '../../../', [
     'scripts' => compressed_js_script('dateAgo', $base)
         .compressed_js_script('searchForm', $base),
 ]);

@@ -1,7 +1,7 @@
 <?php
 
 include_once 'fns/require_invitations.php';
-require_invitations($mysqli, $invitations);
+require_invitations($mysqli, $invitations, $admin_user);
 
 $fnsDir = '../../../fns';
 
@@ -27,6 +27,6 @@ $content =
 
 include_once '../../fns/echo_admin_page.php';
 include_once "$fnsDir/compressed_css_link.php";
-echo_admin_page('Delete All Invitations?', $content, '../../', [
+echo_admin_page($admin_user, 'Delete All Invitations?', $content, '../../', [
     'head' => compressed_css_link('confirmDialog', '../../../'),
 ]);

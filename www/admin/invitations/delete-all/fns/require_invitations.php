@@ -1,9 +1,9 @@
 <?php
 
-function require_invitations (&$mysqli, &$invitations) {
+function require_invitations (&$mysqli, &$invitations, &$admin_user) {
 
     include_once __DIR__.'/../../../fns/require_admin.php';
-    require_admin();
+    $admin_user = require_admin();
 
     $fnsDir = __DIR__.'/../../../../fns';
 

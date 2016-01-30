@@ -1,7 +1,7 @@
 <?php
 
 include_once '../../fns/require_admin.php';
-require_admin();
+$admin_user = require_admin();
 
 $fnsDir = '../../../fns';
 
@@ -82,6 +82,6 @@ $content = Page\create(
 
 include_once '../../fns/echo_admin_page.php';
 include_once "$fnsDir/compressed_js_script.php";
-echo_admin_page('Edit General Information', $content, '../../', [
+echo_admin_page($admin_user, 'Edit General Information', $content, '../../', [
     'scripts' => compressed_js_script('formCheckbox', '../../../'),
 ]);

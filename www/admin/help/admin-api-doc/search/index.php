@@ -2,6 +2,9 @@
 
 $fnsDir = '../../../../fns';
 
+include_once "$fnsDir/signed_user.php";
+$user = signed_user();
+
 include_once "$fnsDir/request_strings.php";
 list($keyword) = request_strings('keyword');
 
@@ -69,6 +72,6 @@ $content = create_content($items);
 
 include_once '../../../fns/echo_admin_page.php';
 include_once "$fnsDir/compressed_js_script.php";
-echo_admin_page('Search Admin API Documentation', $content, '../../../', [
+echo_admin_page($user, 'Search Admin API Documentation', $content, '../../../', [
     'scripts' => compressed_js_script('searchForm', '../../../../'),
 ]);

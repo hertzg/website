@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/require_admin.php';
-require_admin();
+$admin_user = require_admin();
 
 $fnsDir = '../../fns';
 
@@ -29,4 +29,4 @@ $content = Page\create(
 );
 
 include_once '../fns/echo_admin_page.php';
-echo_admin_page('Administration', $content, '../');
+echo_admin_page($admin_user, 'Administration', $content, '../');

@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/require_admin.php';
-require_admin();
+$admin_user = require_admin();
 
 include_once 'fns/unset_session_vars.php';
 unset_session_vars();
@@ -77,4 +77,4 @@ $content = Page\create(
 );
 
 include_once '../fns/echo_admin_page.php';
-echo_admin_page('Connections', $content, '../', ['scripts' => $scripts]);
+echo_admin_page($admin_user, 'Connections', $content, '../', ['scripts' => $scripts]);

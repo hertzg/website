@@ -1,7 +1,7 @@
 <?php
 
 include_once 'fns/require_admin.php';
-require_admin();
+$admin_user = require_admin();
 
 include_once 'fns/unset_session_vars.php';
 unset_session_vars();
@@ -47,6 +47,6 @@ $content =
     .create_panel('Options', $helpLink);
 
 include_once '../fns/echo_page.php';
-echo_page(null, 'Administration', $content, '../', [
+echo_page($admin_user, 'Administration', $content, '../', [
     'logo_href' => './',
 ]);

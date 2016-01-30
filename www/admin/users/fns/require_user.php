@@ -5,7 +5,7 @@ function require_user ($mysqli) {
     $fnsDir = __DIR__.'/../../../fns';
 
     include_once __DIR__.'/../../fns/require_admin.php';
-    require_admin();
+    $admin_user = require_admin();
 
     include_once "$fnsDir/request_strings.php";
     list($id) = request_strings('id');
@@ -23,6 +23,6 @@ function require_user ($mysqli) {
         redirect(ItemList\listUrl());
     }
 
-    return [$user, $id];
+    return [$user, $id, $admin_user];
 
 }

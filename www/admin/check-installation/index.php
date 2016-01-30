@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/require_admin.php';
-require_admin();
+$admin_user = require_admin();
 
 include_once 'fns/assert.php';
 
@@ -85,6 +85,6 @@ $content = Page\create(
 );
 
 include_once '../fns/echo_admin_page.php';
-echo_admin_page('Check Installation', $content, '../', [
+echo_admin_page($admin_user, 'Check Installation', $content, '../', [
     'head' => '<style type="text/css">.not_ok { font-weight: bold }</style>',
 ]);

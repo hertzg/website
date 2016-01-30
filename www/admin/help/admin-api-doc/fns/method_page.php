@@ -5,6 +5,9 @@ function method_page ($groupName, $prefix,
 
     $fnsDir = __DIR__.'/../../../../fns';
 
+    include_once "$fnsDir/signed_user.php";
+    $user = signed_user();
+
     include_once "$fnsDir/Page/text.php";
     $items = [Page\text("<code>$prefix/$methodName</code> - $description")];
 
@@ -42,6 +45,6 @@ function method_page ($groupName, $prefix,
     );
 
     include_once __DIR__.'/../../../fns/echo_admin_page.php';
-    echo_admin_page("$prefix/$methodName Method", $content, '../../../../');
+    echo_admin_page($user, "$prefix/$methodName Method", $content, '../../../../');
 
 }

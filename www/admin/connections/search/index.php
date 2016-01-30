@@ -3,7 +3,7 @@
 // TODO do not load this page if no connections are present
 
 include_once '../../fns/require_admin.php';
-require_admin();
+$admin_user = require_admin();
 
 include_once '../fns/unset_session_vars.php';
 unset_session_vars();
@@ -76,6 +76,6 @@ $content = Page\create(
 
 include_once '../../fns/echo_admin_page.php';
 include_once "$fnsDir/compressed_js_script.php";
-echo_admin_page('Connections', $content, '../../', [
+echo_admin_page($admin_user, 'Connections', $content, '../../', [
     'scripts' => compressed_js_script('searchForm', '../../../'),
 ]);

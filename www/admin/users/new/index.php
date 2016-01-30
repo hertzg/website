@@ -1,7 +1,7 @@
 <?php
 
 include_once '../../fns/require_admin.php';
-require_admin();
+$admin_user = require_admin();
 
 include_once 'fns/get_values.php';
 $values = get_values();
@@ -85,6 +85,6 @@ $content = Page\create(
 
 include_once '../../fns/echo_admin_page.php';
 include_once "$fnsDir/compressed_js_script.php";
-echo_admin_page('New User', $content, '../../', [
+echo_admin_page($admin_user, 'New User', $content, '../../', [
     'scripts' => compressed_js_script('formCheckbox', '../../../'),
 ]);

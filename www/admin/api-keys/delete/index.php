@@ -2,7 +2,7 @@
 
 include_once '../fns/require_admin_api_key.php';
 include_once '../../../lib/mysqli.php';
-list($apiKey, $id) = require_admin_api_key($mysqli);
+list($apiKey, $id, $admin_user) = require_admin_api_key($mysqli);
 
 unset($_SESSION['admin/api-keys/view/messages']);
 
@@ -21,7 +21,7 @@ $content =
 
 include_once '../../fns/echo_admin_page.php';
 include_once "$fnsDir/compressed_css_link.php";
-echo_admin_page("Delete Admin API Key #$id?", $content, '../../', [
+echo_admin_page($admin_user, "Delete Admin API Key #$id?", $content, '../../', [
     'head' => compressed_css_link('confirmDialog', '../../../'),
     'scripts' => $scripts,
 ]);

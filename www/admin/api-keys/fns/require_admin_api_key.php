@@ -3,7 +3,7 @@
 function require_admin_api_key ($mysqli, $base = '') {
 
     include_once __DIR__.'/../../fns/require_admin.php';
-    require_admin();
+    $admin_user = require_admin();
 
     $fnsDir = __DIR__.'/../../../fns';
 
@@ -24,6 +24,6 @@ function require_admin_api_key ($mysqli, $base = '') {
         redirect("$base..");
     }
 
-    return [$apiKey, $id];
+    return [$apiKey, $id, $admin_user];
 
 }

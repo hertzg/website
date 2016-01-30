@@ -2,7 +2,7 @@
 
 include_once '../fns/require_invitation.php';
 include_once '../../../lib/mysqli.php';
-list($invitation, $id) = require_invitation($mysqli);
+list($invitation, $id, $admin_user) = require_invitation($mysqli);
 
 unset($_SESSION['admin/invitations/view/messages']);
 
@@ -26,4 +26,4 @@ $content = Page\create(
 );
 
 include_once '../../fns/echo_admin_page.php';
-echo_admin_page("Edit Invitation #$id", $content, '../../');
+echo_admin_page($admin_user, "Edit Invitation #$id", $content, '../../');

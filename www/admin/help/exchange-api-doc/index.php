@@ -2,6 +2,9 @@
 
 $fnsDir = '../../../fns';
 
+include_once "$fnsDir/signed_user.php";
+$user = signed_user();
+
 include_once 'fns/get_methods.php';
 $methods = get_methods();
 
@@ -41,4 +44,4 @@ $content =
     .create_panel('Methods', join('<div class="hr"></div>', $items));
 
 include_once '../../fns/echo_admin_page.php';
-echo_admin_page('Exchange API Documentation', $content, '../../');
+echo_admin_page($user, 'Exchange API Documentation', $content, '../../');

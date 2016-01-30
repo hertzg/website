@@ -4,6 +4,9 @@ function root_method_page ($methodName, $params, $returns, $errors) {
 
     $fnsDir = __DIR__.'/../../../../fns';
 
+    include_once "$fnsDir/signed_user.php";
+    $user = signed_user();
+
     include_once __DIR__.'/get_methods.php';
     $description = get_methods()[$methodName];
 
@@ -44,6 +47,6 @@ function root_method_page ($methodName, $params, $returns, $errors) {
     );
 
     include_once __DIR__.'/../../../fns/echo_admin_page.php';
-    echo_admin_page("$methodName Method", $content, '../../../');
+    echo_admin_page($user, "$methodName Method", $content, '../../../');
 
 }

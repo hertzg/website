@@ -2,7 +2,7 @@
 
 include_once '../fns/require_admin_api_key.php';
 include_once '../../../lib/mysqli.php';
-list($apiKey, $id) = require_admin_api_key($mysqli);
+list($apiKey, $id, $admin_user) = require_admin_api_key($mysqli);
 
 include_once 'fns/unset_session_vars.php';
 unset_session_vars();
@@ -91,5 +91,5 @@ $content = Page\create(
 );
 
 include_once '../../fns/echo_admin_page.php';
-echo_admin_page("Admin API Key #$id Authentication History",
+echo_admin_page($admin_user, "Admin API Key #$id Authentication History",
     $content, '../../', ['scripts' => $scripts]);

@@ -1,9 +1,12 @@
 <?php
 
+$fnsDir = '../../../fns';
+
+include_once "$fnsDir/signed_user.php";
+$user = signed_user();
+
 include_once 'fns/get_groups.php';
 $groups = get_groups();
-
-$fnsDir = '../../../fns';
 
 include_once "$fnsDir/SearchForm/emptyContent.php";
 $searchContent = SearchForm\emptyContent('Search page...');
@@ -59,6 +62,6 @@ $content =
 
 include_once '../../fns/echo_admin_page.php';
 include_once "$fnsDir/compressed_js_script.php";
-echo_admin_page('Admin API Documentation', $content, '../../', [
+echo_admin_page($user, 'Admin API Documentation', $content, '../../', [
     'scripts' => compressed_js_script('searchForm', '../../../'),
 ]);

@@ -2,7 +2,7 @@
 
 include_once '../fns/require_connection.php';
 include_once '../../../lib/mysqli.php';
-list($connection, $id) = require_connection($mysqli);
+list($connection, $id, $admin_user) = require_connection($mysqli);
 
 include_once 'fns/unset_session_vars.php';
 unset_session_vars();
@@ -93,4 +93,4 @@ $content = Page\create(
 $title = "Connection #$id Authentication History";
 
 include_once '../../fns/echo_admin_page.php';
-echo_admin_page($title, $content, '../../', ['scripts' => $scripts]);
+echo_admin_page($admin_user, $title, $content, '../../', ['scripts' => $scripts]);

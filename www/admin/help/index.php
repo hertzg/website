@@ -2,8 +2,8 @@
 
 $fnsDir = __DIR__.'/../../fns';
 
-include_once "$fnsDir/session_start_custom.php";
-session_start_custom($new);
+include_once "$fnsDir/signed_user.php";
+$user = signed_user();
 
 unset($_SESSION['admin/messages']);
 
@@ -23,4 +23,4 @@ $content = Page\create(
 );
 
 include_once '../fns/echo_admin_page.php';
-echo_admin_page('Help', $content, '../');
+echo_admin_page($user, 'Help', $content, '../');

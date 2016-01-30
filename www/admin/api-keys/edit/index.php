@@ -2,7 +2,7 @@
 
 include_once '../fns/require_admin_api_key.php';
 include_once '../../../lib/mysqli.php';
-list($apiKey, $id) = require_admin_api_key($mysqli);
+list($apiKey, $id, $admin_user) = require_admin_api_key($mysqli);
 
 $fnsDir = '../../../fns';
 
@@ -63,6 +63,6 @@ $content = Page\create(
 
 include_once '../../fns/echo_admin_page.php';
 include_once "$fnsDir/compressed_js_script.php";
-echo_admin_page("Edit Admin API Key #$id", $content, '../../', [
+echo_admin_page($admin_user, "Edit Admin API Key #$id", $content, '../../', [
     'scripts' => compressed_js_script('formCheckbox', '../../../'),
 ]);

@@ -2,12 +2,15 @@
 
 function group_page ($groupKey, $methods) {
 
+    $fnsDir = __DIR__.'/../../../../fns';
+
+    include_once "$fnsDir/signed_user.php";
+    $user = signed_user();
+
     include_once __DIR__.'/get_groups.php';
     $groups = get_groups();
 
     $group = $groups[$groupKey];
-
-    $fnsDir = __DIR__.'/../../../../fns';
 
     include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
     $items = [];
@@ -29,6 +32,6 @@ function group_page ($groupKey, $methods) {
     );
 
     include_once __DIR__.'/../../../fns/echo_admin_page.php';
-    echo_admin_page("$groupKey Namespace", $content, '../../../');
+    echo_admin_page($user, "$groupKey Namespace", $content, '../../../');
 
 }

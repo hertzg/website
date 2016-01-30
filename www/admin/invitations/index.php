@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/require_admin.php';
-require_admin();
+$admin_user = require_admin();
 
 $fnsDir = '../../fns';
 
@@ -35,4 +35,4 @@ include_once 'fns/create_content.php';
 $content = create_content($items, $optionsPanel, !count($invitations));
 
 include_once '../fns/echo_admin_page.php';
-echo_admin_page('Invitations', $content, '../');
+echo_admin_page($admin_user, 'Invitations', $content, '../');

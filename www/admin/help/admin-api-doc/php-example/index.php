@@ -2,6 +2,9 @@
 
 $fnsDir = '../../../../fns';
 
+include_once "$fnsDir/signed_user.php";
+$user = signed_user();
+
 include_once 'fns/get_code.php';
 include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sourceCode.php";
@@ -18,4 +21,4 @@ $content = Page\create(
 );
 
 include_once '../../../fns/echo_admin_page.php';
-echo_admin_page('PHP Example', $content, '../../../');
+echo_admin_page($user, 'PHP Example', $content, '../../../');

@@ -2,7 +2,7 @@
 
 include_once '../fns/require_connection.php';
 include_once '../../../lib/mysqli.php';
-list($connection, $id) = require_connection($mysqli);
+list($connection, $id, $admin_user) = require_connection($mysqli);
 
 unset($_SESSION['admin/connections/view/messages']);
 
@@ -21,7 +21,7 @@ $content =
 
 include_once '../../fns/echo_admin_page.php';
 include_once "$fnsDir/compressed_css_link.php";
-echo_admin_page("Delete Connection #$id?", $content, '../../', [
+echo_admin_page($admin_user, "Delete Connection #$id?", $content, '../../', [
     'head' => compressed_css_link('confirmDialog', '../../../'),
     'scripts' => $scripts,
 ]);

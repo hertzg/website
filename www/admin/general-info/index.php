@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/require_admin.php';
-require_admin();
+$admin_user = require_admin();
 
 $fnsDir = '../../fns';
 
@@ -69,4 +69,4 @@ $content =
     .create_panel('Options', $editLink);
 
 include_once '../fns/echo_admin_page.php';
-echo_admin_page('General Information', $content, '../');
+echo_admin_page($admin_user, 'General Information', $content, '../');

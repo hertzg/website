@@ -2,7 +2,7 @@
 
 include_once '../fns/require_invitation.php';
 include_once '../../../lib/mysqli.php';
-list($invitation, $id) = require_invitation($mysqli);
+list($invitation, $id, $admin_user) = require_invitation($mysqli);
 
 unset($_SESSION['admin/invitations/view/messages']);
 
@@ -17,7 +17,7 @@ $content =
 
 include_once '../../fns/echo_admin_page.php';
 include_once "$fnsDir/compressed_css_link.php";
-echo_admin_page("Delete Invitation #$id?", $content, '../../', [
+echo_admin_page($admin_user, "Delete Invitation #$id?", $content, '../../', [
     'head' => compressed_css_link('confirmDialog', '../../../'),
     'scripts' => $scripts,
 ]);

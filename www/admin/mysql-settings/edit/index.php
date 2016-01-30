@@ -1,7 +1,7 @@
 <?php
 
 include_once '../../fns/require_admin.php';
-require_admin();
+$admin_user = require_admin();
 
 unset(
     $_SESSION['admin/mysql-settings/errors'],
@@ -62,4 +62,4 @@ $content = Page\create(
 );
 
 include_once '../../fns/echo_admin_page.php';
-echo_admin_page('Edit MySQL Settings', $content, '../../');
+echo_admin_page($admin_user, 'Edit MySQL Settings', $content, '../../');
