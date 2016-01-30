@@ -3,7 +3,7 @@
 namespace Users\Home;
 
 function defaultOrder () {
-    return ['bar-charts', 'new-bar-chart', 'bookmarks',
+    return ['admin', 'bar-charts', 'new-bar-chart', 'bookmarks',
         'new-bookmark', 'calculations', 'new-calculation',
         'calendar', 'new-event', 'contacts', 'new-contact',
         'files', 'upload-files', 'notes', 'new-note',

@@ -2,6 +2,7 @@
 
 function get_home_items () {
     return [
+        'admin' => ['Administration', 'admin'],
         'bar-charts' => ['Bar Charts', 'bar_charts'],
         'new-bar-chart' => ['New Bar Chart', 'new_bar_chart'],
         'bookmarks' => ['Bookmarks', 'bookmarks'],

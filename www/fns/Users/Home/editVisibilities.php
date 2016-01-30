@@ -2,7 +2,7 @@
 
 namespace Users\Home;
 
-function editVisibilities ($mysqli, $user, $bar_charts,
+function editVisibilities ($mysqli, $user, $admin, $bar_charts,
     $new_bar_chart, $bookmarks, $new_bookmark, $calculations,
     $new_calculation, $calendar, $new_event, $contacts, $new_contact,
     $files, $upload_files, $notes, $new_note, $notifications,
@@ -10,7 +10,8 @@ function editVisibilities ($mysqli, $user, $bar_charts,
     $new_schedule, $tasks, $new_task, $wallets, $new_wallet,
     $new_transaction, $transfer_amount, $trash, &$changed) {
 
-    if ((bool)$user->show_bar_charts === $bar_charts &&
+    if ((bool)$user->show_admin === $admin &&
+        (bool)$user->show_bar_charts === $bar_charts &&
         (bool)$user->show_new_bar_chart === $new_bar_chart &&
         (bool)$user->show_bookmarks === $bookmarks &&
         (bool)$user->show_new_bookmark === $new_bookmark &&
@@ -39,6 +40,7 @@ function editVisibilities ($mysqli, $user, $bar_charts,
         (bool)$user->show_trash === $trash) return;
 
     $changed = true;
+    $admin = $admin ? '1' : '0';
     $bar_charts = $bar_charts ? '1' : '0';
     $new_bar_chart = $new_bar_chart ? '1' : '0';
     $bookmarks = $bookmarks ? '1' : '0';
@@ -67,7 +69,8 @@ function editVisibilities ($mysqli, $user, $bar_charts,
     $transfer_amount = $transfer_amount ? '1' : '0';
     $trash = $trash ? '1' : '0';
 
-    $sql = "update users set show_bar_charts = $bar_charts,"
+    $sql = "update users set show_admin = $admin,"
+        ." show_bar_charts = $bar_charts,"
         ." show_new_bar_chart = $new_bar_chart, show_bookmarks = $bookmarks,"
         ." show_new_bookmark = $new_bookmark,"
         ." show_calculations = $calculations,"

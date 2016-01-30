@@ -9,14 +9,14 @@ include_once "$dir/fns/require_user.php";
 $user = require_user('../../../');
 
 include_once "$dir/fns/request_strings.php";
-list($bar_charts, $new_bar_chart, $bookmarks,
+list($admin, $bar_charts, $new_bar_chart, $bookmarks,
     $new_bookmark, $calculations, $new_calculation,
     $calendar, $new_event, $contacts, $new_contact, $files,
     $upload_files, $notes, $new_note, $notifications,
     $post_notification, $places, $new_place, $schedules,
     $new_schedule, $tasks, $new_task, $wallets, $new_wallet,
     $new_transaction, $transfer_amount, $trash) = request_strings(
-    'bar_charts', 'new_bar_chart', 'bookmarks',
+    'admin', 'bar_charts', 'new_bar_chart', 'bookmarks',
     'new_bookmark', 'calculations', 'new_calculation',
     'calendar', 'new_event', 'contacts', 'new_contact', 'files',
     'upload_files', 'notes', 'new_note', 'notifications',
@@ -24,6 +24,7 @@ list($bar_charts, $new_bar_chart, $bookmarks,
     'new_schedule', 'tasks', 'new_task', 'wallets', 'new_wallet',
     'new_transaction', 'transfer_amount', 'trash');
 
+$admin = (bool)$admin;
 $bar_charts = (bool)$bar_charts;
 $new_bar_chart = (bool)$new_bar_chart;
 $bookmarks = (bool)$bookmarks;
@@ -55,7 +56,7 @@ $trash = (bool)$trash;
 include_once "$dir/fns/Users/Home/editVisibilities.php";
 include_once "$dir/lib/mysqli.php";
 Users\Home\editVisibilities($mysqli, $user,
-    $bar_charts, $new_bar_chart, $bookmarks,
+    $admin, $bar_charts, $new_bar_chart, $bookmarks,
     $new_bookmark, $calculations, $new_calculation,
     $calendar, $new_event, $contacts, $new_contact, $files,
     $upload_files, $notes, $new_note, $notifications,

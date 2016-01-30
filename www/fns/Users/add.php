@@ -64,7 +64,7 @@ function add ($mysqli, $username, $password,
         .' notes_order_by, places_order_by, schedules_order_by,'
         .' tasks_order_by, wallets_order_by,'
         .' insert_api_key_id, insert_api_key_name,'
-        .' show_bar_charts, show_bookmarks, show_calculations,'
+        .' show_admin, show_bar_charts, show_bookmarks, show_calculations,'
         .' show_calendar, show_contacts, show_files,'
         .' show_notes, show_notifications, show_places,'
         .' show_schedules, show_tasks, show_trash, show_wallets)'
@@ -81,7 +81,7 @@ function add ($mysqli, $username, $password,
         ." 'update_time desc', 'update_time desc', 'next_time',"
         ." 'update_time desc', 'update_time desc',"
         ." $insert_api_key_id, $insert_api_key_name,"
-        ." 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)";
+        ." 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)";
     $mysqli->query($sql) || trigger_error($mysqli->error);
 
     return $mysqli->insert_id;
