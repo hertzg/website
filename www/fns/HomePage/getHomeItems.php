@@ -6,6 +6,9 @@ function getHomeItems ($mysqli, $user, &$scripts) {
 
     $items = [];
 
+    include_once __DIR__.'/renderAdmin.php';
+    renderAdmin($user, $items);
+
     include_once __DIR__.'/renderBarCharts.php';
     renderBarCharts($user, $items);
 
