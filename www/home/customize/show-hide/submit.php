@@ -9,20 +9,23 @@ include_once "$dir/fns/require_user.php";
 $user = require_user('../../../');
 
 include_once "$dir/fns/request_strings.php";
-list($admin, $bar_charts, $new_bar_chart, $bookmarks,
+list($bar_charts, $new_bar_chart, $bookmarks,
     $new_bookmark, $calculations, $new_calculation,
     $calendar, $new_event, $contacts, $new_contact, $files,
     $upload_files, $notes, $new_note, $notifications,
     $post_notification, $places, $new_place, $schedules,
     $new_schedule, $tasks, $new_task, $wallets, $new_wallet,
     $new_transaction, $transfer_amount, $trash) = request_strings(
-    'admin', 'bar_charts', 'new_bar_chart', 'bookmarks',
+    'bar_charts', 'new_bar_chart', 'bookmarks',
     'new_bookmark', 'calculations', 'new_calculation',
     'calendar', 'new_event', 'contacts', 'new_contact', 'files',
     'upload_files', 'notes', 'new_note', 'notifications',
     'post_notification', 'places', 'new_place', 'schedules',
     'new_schedule', 'tasks', 'new_task', 'wallets', 'new_wallet',
     'new_transaction', 'transfer_amount', 'trash');
+
+if ($user->admin) list($admin) = request_strings('admin');
+else $admin = $user->show_admin;
 
 $admin = (bool)$admin;
 $bar_charts = (bool)$bar_charts;

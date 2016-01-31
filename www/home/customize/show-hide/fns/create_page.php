@@ -16,6 +16,7 @@ function create_page ($user, &$scripts, $base = '') {
     include_once "$fnsDir/Form/checkboxItem.php";
     $items = [];
     foreach ($userHomeItems as $key => $item) {
+        if ($key === 'admin' && !$user->admin) continue;
         list($title, $propertyPart) = $item;
         $userProperty = "show_$propertyPart";
         $checked = $user->$userProperty;
