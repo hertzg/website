@@ -16,7 +16,7 @@ $users = Users\index($mysqli);
 
 foreach ($users as $user) {
     $order_home_items = json_decode($user->order_home_items);
-    array_unshift($order_home_items, 'admin');
+    array_shift($order_home_items);
     $order_home_items = $mysqli->real_escape_string(json_encode($order_home_items));
     $sql = "update users set order_home_items = '$order_home_items'"
         ." where id_users = $user->id_users";
