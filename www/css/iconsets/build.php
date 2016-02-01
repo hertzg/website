@@ -94,7 +94,7 @@ $names = ['account', 'edit-profile', 'download', 'upload',
     'show-hide', 'restore-defaults', 'forbid-notifications',
     'receive-notifications', 'generic', 'zvini',
     'slideshow', 'locate', 'license', 'administration'];
-render($content, 'other.svg?28', $names);
+render($content, 'other.svg?29', $names);
 
 $names = ['place', 'create-place', 'edit-place',
     'places', 'import-place', 'duplicate-place', 'place-on-earth'];
