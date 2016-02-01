@@ -8,6 +8,6 @@ function renderAdmin ($user, &$items) {
 
     include_once __DIR__.'/../Page/thumbnailLink.php';
     $items['admin'] = \Page\thumbnailLink('Administration',
-        '../admin/', 'TODO', ['id' => 'admin']);
+        '../admin/', 'administration', ['id' => 'admin']);
 
 }
