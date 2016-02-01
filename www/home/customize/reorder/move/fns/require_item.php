@@ -18,6 +18,11 @@ function require_item () {
         redirect('..');
     }
 
+    if (!$user->admin && $key === 'admin') {
+        include_once "$fnsDir/redirect.php";
+        redirect('..');
+    }
+
     $item = [
         'title' => $homeItems[$key][0],
     ];

@@ -10,11 +10,21 @@ list($item, $key, $user) = require_item();
 
 $order_home_items = json_decode($user->order_home_items);
 $index = array_search($key, $order_home_items);
-if ($index === false) {
-    array_unshift($order_home_items, $key);
-} elseif ($index > 0) {
-    array_splice($order_home_items, $index, 1);
-    array_splice($order_home_items, $index - 1, 0, $key);
+array_splice($order_home_items, $index, 1);
+while (true) {
+
+    if ($index === 0) {
+        array_unshift($order_home_items, $key);
+        break;
+    }
+
+    $index--;
+
+    if ($user->admin || $order_home_items[$index] !== 'admin') {
+        array_splice($order_home_items, $index, 0, $key);
+        break;
+    }
+
 }
 $order_home_items = json_encode($order_home_items);
 
