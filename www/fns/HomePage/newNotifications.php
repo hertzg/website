@@ -45,6 +45,9 @@ function newNotifications ($mysqli, $user) {
     $n = $user->home_num_new_received_notes;
     if ($n) $items[] = $n == 1 ? '<b>1</b> new note' : "<b>$n</b> new notes";
 
+    $n = $user->home_num_new_received_places;
+    if ($n) $items[] = $n == 1 ? '<b>1</b> new place' : "<b>$n</b> new places";
+
     $n = $user->home_num_new_received_schedules;
     if ($n) {
         if ($n == 1) $items[] = '<b>1</b> new schedule';
@@ -57,7 +60,7 @@ function newNotifications ($mysqli, $user) {
     if ($items) {
 
         include_once "$fnsDir/Users/clearNumNewReceivedItems.php";
-        \Users\clearNumNewReceivedItems($mysqli, $user->id_users);
+        \Users\clearNumNewReceivedItems($mysqli, $user);
 
         include_once "$fnsDir/join_and.php";
         $warnings[] = 'Received '.join_and($items).'.';
