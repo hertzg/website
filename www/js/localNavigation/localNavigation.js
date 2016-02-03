@@ -3,11 +3,22 @@ var localNavigation = (function (base, unloadProgress) {
     function loadPage (href, hash, loadFunction) {
 
         function unload () {
+
             unloadProgress.hide()
+
             var body = document.body
             while (body.lastChild) body.removeChild(body.lastChild)
+
             var head = document.head
-            while (head.lastChild) head.removeChild(head.lastChild)
+            var childNodes = Array.prototype.slice.call(head.childNodes)
+            childNodes.forEach(function (node) {
+                var tagName = node.tagName
+                if (tagName !== 'TITLE' && tagName !== 'META') {
+                    head.removeChild(node)
+                }
+            })
+            console.log(head.childNodes.length)
+
         }
 
         return loadFunction(function () {

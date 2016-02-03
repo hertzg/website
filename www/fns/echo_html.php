@@ -15,11 +15,11 @@ function echo_html ($title, $head, $body,
         .'<html>'
             .'<head>'
                 ."<title>$title</title>"
-                .page_icon_links($theme_color, $base)
                 .'<meta http-equiv="Content-Type"'
                 .' content="text/html; charset=UTF-8" />'
                 .'<meta name="viewport"'
                 .' content="width=device-width, user-scalable=no" />'
+                .page_icon_links($theme_color, $base)
                 .compressed_css_link('common', $base)
                 .compressed_css_link('iconsets', $base)
                 .$head
