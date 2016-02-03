@@ -20,16 +20,17 @@ function echo_html ($title, $head, $body,
                 .'<meta name="viewport"'
                 .' content="width=device-width, user-scalable=no" />'
                 .page_icon_links($theme_color, $base)
-                .compressed_css_link('common', $base)
-                .compressed_css_link('iconsets', $base)
+                .compressed_css_link('common', $base, 'localNavigation-leave')
+                .compressed_css_link('iconsets', $base, 'localNavigation-leave')
                 .$head
                 .page_theme_links($theme_color, $theme_brightness, $base)
             .'</head>'
             .'<body>'
-                .'<script type="text/javascript">'
+                .'<script type="text/javascript" class="localNavigation-leave">'
                     .'var base = '.json_encode($base)
                 .'</script>'
-                .compressed_js_script('unloadProgress', $base)
+                .compressed_js_script('unloadProgress',
+                    $base, 'localNavigation-leave')
                 .'<script defer="defer" type="text/javascript"'
                 ." src=\"{$base}js/localNavigation/localNavigation.js\">"
                 .'</script>'

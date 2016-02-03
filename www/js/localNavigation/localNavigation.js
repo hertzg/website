@@ -7,17 +7,27 @@ var localNavigation = (function (base, unloadProgress) {
             unloadProgress.hide()
 
             var body = document.body
-            while (body.lastChild) body.removeChild(body.lastChild)
+            var nodes = Array.prototype.slice.call(body.childNodes)
+            nodes.forEach(function (node) {
+                if (node.classList.contains('localNavigation-leave')) return
+                body.removeChild(node)
+            })
 
             var head = document.head
-            var childNodes = Array.prototype.slice.call(head.childNodes)
-            childNodes.forEach(function (node) {
+            var nodes = Array.prototype.slice.call(head.childNodes)
+            nodes.forEach(function (node) {
                 var tagName = node.tagName
                 if (tagName === 'TITLE' || tagName === 'META') return
-                if (tagName === 'LINK' && node.rel === 'icon') return
+                if (tagName === 'LINK') {
+                    if (node.rel === 'icon' ||
+                        node.classList.contains('localNavigation-leave')) {
+
+                        return
+
+                    }
+                }
                 head.removeChild(node)
             })
-            console.log(head.childNodes.length)
 
         }
 
