@@ -6,6 +6,10 @@
         callback(element)
     }
 
+    function addText (element, text) {
+        element.appendChild(document.createTextNode(text))
+    }
+
     function loadFunction (loadCallback, errorCallback, unload) {
 
         var request = new XMLHttpRequest
@@ -19,15 +23,11 @@
                 return
             }
 
+            var response = JSON.parse(request.responseText)
+
             unload()
             document.title = 'Home'
-            add(document.head, 'title', function (title) {
-                title.appendChild(document.createTextNode('Home'))
-            })
-            add(document.head, 'meta', function (title) {
-                title.appendChild(document.createTextNode('Home'))
-            })
-            add(document.body, 'div', function (div) {
+            add(body, 'div', function (div) {
                 div.id = 'tbar'
                 add(div, 'div', function (div) {
                     div.id = 'tbar-limit'
@@ -36,27 +36,72 @@
                         add(a, 'img', function (img) {
                             img.alt = 'Zvini'
                             img.className = 'logoLink-img'
+                            img.src = base + response.logoSrc
+                        })
+                    })
+                    add(div, 'div', function (div) {
+                        div.className = 'page-clockWrapper'
+                        add(div, 'div', function (div) {
+                            div.id = 'staticClockWrapper'
+                            addText(div, '00:00:00')
+                        })
+                    })
+                    add(div, 'div', function (div) {
+                        div.className = 'pageTopRightLinks'
+                        add(div, 'a', function (a) {
+                            a.id = 'signOutLink'
+                            a.className = 'topLink'
+                            a.href = base + 'sign-out/'
+                            addText(a, 'Sign Out')
                         })
                     })
                 })
-/*
-                ."<a class=\"\" href=\"$logo_href\">"
-                    ."<img src=\"$base$logoSrc?".get_revision($logoSrc).'" />'
-                    .$notifications
-                .'</a>'
-                .'<div class="page-clockWrapper">'
-                    .'<div id="staticClockWrapper">'
-                        .date('H:i:s', $time / 1000)
-                    .'</div>'
-                    .'<div id="batteryWrapper"></div>'
-                    .'<div id="dynamicClockWrapper"></div>'
-                .'</div>'
-                .$signOutLink
-*/
             })
-            add(document.body, 'div', function (div) {
+            add(body, 'div', function (div) {
                 div.className = 'tab-content'
-                console.log(div)
+            })
+            add(body, 'div', function (div) {
+                div.className = 'panel'
+                add(div, 'div', function (div) {
+                    div.className = 'panel-title'
+                    add(div, 'div', function (div) {
+                        div.className = 'panel-title-text'
+                        addText(div, 'Options')
+                        add(div, 'span', function (span) {
+                            addText(span, ':')
+                        })
+                    })
+                })
+                add(div, 'div', function (div) {
+                    div.className = 'panel-content'
+                    add(div, 'div', function (div) {
+                        div.className = 'twoColumns'
+                        add(div, 'div', function (div) {
+                            div.className = 'twoColumns-column1 dynamic'
+                        })
+                        add(div, 'div', function (div) {
+                            div.className = 'twoColumns-column2 dynamic'
+                            add(div, 'a', function (a) {
+                                a.name = 'customize'
+                            })
+                            add(div, 'a', function (a) {
+                                a.id = 'customize'
+                                a.className = 'clickable link image_link withArrow'
+                                a.href = '../help/'
+                                add(a, 'span', function (span) {
+                                    span.className = 'image_link-icon'
+                                    add(span, 'span', function (span) {
+                                        span.className = 'icon help'
+                                    })
+                                })
+                                add(a, 'span', function (span) {
+                                    span.className = 'image_link-content'
+                                    addText(span, 'Help')
+                                })
+                            })
+                        })
+                    })
+                })
             })
             loadCallback()
 
@@ -69,6 +114,8 @@
         }
 
     }
+
+    var body = document.body
 
     localNavigation.registerPage('home/', loadFunction)
 
