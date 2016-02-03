@@ -24,7 +24,7 @@ function create ($transaction, &$scripts) {
         $viewContent = markedViewContent($transaction, $scripts, $keyword);
     }
 
-     include_once "$fnsDir/ItemList/escapedItemQuery.php";
+    include_once "$fnsDir/ItemList/escapedItemQuery.php";
     $escapedItemQuery = \ItemList\escapedItemQuery($id);
 
     include_once "$fnsDir/Page/imageArrowLink.php";

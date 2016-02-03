@@ -12,5 +12,5 @@ function get_methods () {
         'list' => 'Returns a list of all schedules.',
         'send' => 'Sends a new schedule.',
         'sendExisting' => 'Sends an existing schedule.',
-   ];
+    ];
 }

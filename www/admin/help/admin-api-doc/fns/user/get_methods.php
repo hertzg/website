@@ -10,5 +10,5 @@ function get_methods () {
         'get' => 'Returns a single existing user.',
         'list' => 'Returns a list of all users.',
         'resetPassword' => 'Resets the password of an existing user.',
-   ];
+    ];
 }

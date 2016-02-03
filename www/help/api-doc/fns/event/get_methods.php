@@ -10,5 +10,5 @@ function get_methods () {
         'edit' => 'Edits an existing event.',
         'get' => 'Returns a single existing event.',
         'list' => 'Returns a list of all events.',
-   ];
+    ];
 }

@@ -12,5 +12,5 @@ function get_methods () {
         'list' => 'Returns a list of all notes.',
         'send' => 'Sends a new note.',
         'sendExisting' => 'Sends an existing note.',
-   ];
+    ];
 }

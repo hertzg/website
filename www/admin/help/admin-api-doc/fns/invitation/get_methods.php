@@ -10,5 +10,5 @@ function get_methods () {
         'edit' => 'Edits an existing invitation.',
         'get' => 'Returns a single existing invitation.',
         'list' => 'Returns a list of all invitations.',
-   ];
+    ];
 }

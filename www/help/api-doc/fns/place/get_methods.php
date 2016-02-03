@@ -12,5 +12,5 @@ function get_methods () {
         'list' => 'Returns a list of all places.',
         'send' => 'Sends a new place.',
         'sendExisting' => 'Sends an existing place.',
-   ];
+    ];
 }
