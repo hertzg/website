@@ -13,9 +13,9 @@ var localNavigation = (function (base, unloadProgress) {
             var childNodes = Array.prototype.slice.call(head.childNodes)
             childNodes.forEach(function (node) {
                 var tagName = node.tagName
-                if (tagName !== 'TITLE' && tagName !== 'META') {
-                    head.removeChild(node)
-                }
+                if (tagName === 'TITLE' || tagName === 'META') return
+                if (tagName === 'LINK' && node.rel === 'icon') return
+                head.removeChild(node)
             })
             console.log(head.childNodes.length)
 
