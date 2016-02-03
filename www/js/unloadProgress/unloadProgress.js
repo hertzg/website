@@ -16,7 +16,7 @@
             style.backgroundPosition = '50% 0'
 
             var x = 0
-            setInterval(function () {
+            animationInterval = setInterval(function () {
                 var value = 'calc(50% + ' + x + 'px) 0'
                 progressDiv.style.backgroundPosition = value
                 x = (x + 1) % 8
@@ -42,7 +42,7 @@
 
             body.insertBefore(overlayDiv, progressDiv)
 
-            setTimeout(function () {
+            hintTimeout = setTimeout(function () {
 
                 var noteDiv = document.createElement('div')
                 noteDiv.style.position = 'absolute'
@@ -66,9 +66,17 @@
     }
 
     var body = document.body
-    var overlayDiv, progressDiv
+    var overlayDiv, progressDiv, animationInterval, hintTimeout
 
     addEventListener('beforeunload', show)
-    window.unloadProgress = { show: show }
+    window.unloadProgress = {
+        show: show,
+        hide: function () {
+            clearInterval(animationInterval)
+            clearTimeout(hintTimeout)
+            if (progressDiv) body.removeChild(progressDiv)
+            if (overlayDiv) body.removeChild(overlayDiv)
+        },
+    }
 
 })(base)
