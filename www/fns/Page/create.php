@@ -6,8 +6,12 @@ function create ($backlink, $activeTabTitle, $content, $newItemButton = '') {
 
     $itemsHtml = '';
     if ($backlink !== null) {
+        $class = 'clickable tab-normal';
+        if (array_key_exists('localNavigation', $backlink)) {
+            $class .= ' localNavigation-link';
+        }
         $itemsHtml .=
-            "<a class=\"clickable tab-normal\" href=\"$backlink[href]\">"
+            "<a href=\"$backlink[href]\" class=\"$class\">"
                 ."&laquo; $backlink[title]"
             .'</a>';
     }
