@@ -1,6 +1,6 @@
-(function (base, localNavigation, ui) {
+(function (localNavigation, ui) {
 
-    function loadFunction (loadCallback, errorCallback, unload) {
+    function loadFunction (base, loadCallback, errorCallback, unload) {
 
         var request = new XMLHttpRequest
         request.open('get', base + 'home/load.php')
@@ -93,4 +93,4 @@
     var body = document.body
     localNavigation.registerPage('help/', loadFunction)
 
-})(base, localNavigation, ui)
+})(localNavigation, ui)

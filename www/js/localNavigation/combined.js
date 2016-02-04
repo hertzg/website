@@ -1,5 +1,5 @@
 (function () {
-function LoadPage (href, loader, callback) {
+function LoadPage (base, href, loader, callback) {
 
     function unload () {
 
@@ -32,7 +32,7 @@ function LoadPage (href, loader, callback) {
 
     console.log('LoadPage', href)
 
-    return loader(callback, function () {
+    return loader(base, callback, function () {
         unload()
         // TODO notify user about this failure
         console.log(href + ' failed to load.')
@@ -85,13 +85,13 @@ function LoadScript (src, loadCallback, errorCallback) {
                 if (loaders[href] === undefined) {
                     location = absoluteBase + href + hash
                 } else {
-                    currentOperation = LoadPage(href, loaders[href], finish)
+                    currentOperation = LoadPage(base, href, loaders[href], finish)
                 }
             }, function () {
                 location = absoluteBase + href + hash
             })
         } else {
-            currentOperation = LoadPage(href, loader, finish)
+            currentOperation = LoadPage(base, href, loader, finish)
         }
 
     }

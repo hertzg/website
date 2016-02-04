@@ -25,13 +25,13 @@
                 if (loaders[href] === undefined) {
                     location = absoluteBase + href + hash
                 } else {
-                    currentOperation = LoadPage(href, loaders[href], finish)
+                    currentOperation = LoadPage(base, href, loaders[href], finish)
                 }
             }, function () {
                 location = absoluteBase + href + hash
             })
         } else {
-            currentOperation = LoadPage(href, loader, finish)
+            currentOperation = LoadPage(base, href, loader, finish)
         }
 
     }

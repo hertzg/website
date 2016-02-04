@@ -1,4 +1,4 @@
-function LoadPage (href, loader, callback) {
+function LoadPage (base, href, loader, callback) {
 
     function unload () {
 
@@ -31,7 +31,7 @@ function LoadPage (href, loader, callback) {
 
     console.log('LoadPage', href)
 
-    return loader(callback, function () {
+    return loader(base, callback, function () {
         unload()
         // TODO notify user about this failure
         console.log(href + ' failed to load.')
