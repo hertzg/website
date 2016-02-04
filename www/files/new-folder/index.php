@@ -26,6 +26,7 @@ $content = Page\create(
     [
         'title' => 'Home',
         'href' => '../../home/#files',
+        'localNavigation' => true,
     ],
     'New Folder',
     create_file_location_bar($mysqli,

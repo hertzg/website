@@ -63,6 +63,7 @@ function create ($mysqli, $file, &$scripts) {
             [
                 'title' => 'Home',
                 'href' => '../../home/#files',
+                'localNavigation' => true,
             ],
             "File #$id",
             \Page\sessionErrors('files/view-file/errors')

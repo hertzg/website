@@ -48,6 +48,7 @@ function create_page ($mysqli, $user,
             [
                 'title' => 'Home',
                 'href' => "$base../../home/#notifications",
+                'localNavigation' => true,
             ],
             'Notifications',
             Page\sessionMessages('notifications/in-subscribed-channel/messages')

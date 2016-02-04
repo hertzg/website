@@ -16,6 +16,7 @@ function create_content ($user, $total, $filterMessage, $items, $base) {
             [
                 'title' => 'Home',
                 'href' => "$base../home/#contacts",
+                'localNavigation' => true,
             ],
             'Contacts',
             create_tabs($user)

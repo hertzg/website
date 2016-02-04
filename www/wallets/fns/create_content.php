@@ -15,6 +15,7 @@ function create_content ($content, $user, $total, $base) {
             [
                 'title' => 'Home',
                 'href' => "$base../home/#wallets",
+                'localNavigation' => true,
             ],
             'Wallets',
             Page\sessionErrors('wallets/errors')

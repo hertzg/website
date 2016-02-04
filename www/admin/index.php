@@ -46,6 +46,7 @@ if ($admin_user) {
         [
             'title' => 'Home',
             'href' => '../home/#admin',
+            'localNavigation' => true,
         ],
         'Administration',
         $content

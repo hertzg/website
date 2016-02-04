@@ -34,6 +34,7 @@ function create_content ($mysqli, $user,
             [
                 'title' => 'Home',
                 'href' => '../home/#calendar',
+                'localNavigation' => true,
             ],
             'Calendar',
             Page\sessionErrors('calendar/errors')

@@ -24,6 +24,7 @@ function create_content ($user, $items, $base) {
             [
                 'title' => 'Home',
                 'href' => "{$base}../../home/#files",
+                'localNavigation' => true,
             ],
             'Files',
             create_tabs($user)

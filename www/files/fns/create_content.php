@@ -24,6 +24,7 @@ function create_content ($mysqli, $folder,
             [
                 'title' => 'Home',
                 'href' => '../home/#files',
+                'localNavigation' => true,
             ],
             $title,
             create_tabs($user)

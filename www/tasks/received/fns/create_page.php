@@ -71,6 +71,7 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
             [
                 'title' => 'Home',
                 'href' => "{$base}../../home/#tasks",
+                'localNavigation' => true,
             ],
             'Tasks',
             create_tabs($user)

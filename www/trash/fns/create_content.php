@@ -16,6 +16,7 @@ function create_content ($items, $optionsPanel, $base) {
             [
                 'title' => 'Home',
                 'href' => "$base../home/#trash",
+                'localNavigation' => true,
             ],
             'Trash',
             Page\sessionErrors('trash/errors')

@@ -68,6 +68,7 @@ function create_content ($mysqli, $user, $items, $options, $base) {
             [
                 'title' => 'Home',
                 'href' => "$base../home/#notifications",
+                'localNavigation' => true,
             ],
             'Notifications',
             Page\sessionErrors('notifications/errors')

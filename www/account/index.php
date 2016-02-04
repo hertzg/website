@@ -56,6 +56,7 @@ $content =
         [
             'title' => 'Home',
             'href' => '../home/#account',
+            'localNavigation' => true,
         ],
         'Account',
         Page\sessionMessages('account/messages')

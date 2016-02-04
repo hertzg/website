@@ -17,6 +17,7 @@ $content = Page\create(
     [
         'title' => 'Home',
         'href' => '../home/#help',
+        'localNavigation' => true,
     ],
     'Help',
     Page\sessionMessages('help/messages')

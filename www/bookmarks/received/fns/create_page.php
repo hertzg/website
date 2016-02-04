@@ -72,6 +72,7 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
             [
                 'title' => 'Home',
                 'href' => "$base../../home/#bookmarks",
+                'localNavigation' => true,
             ],
             'Bookmarks',
             create_tabs($user)

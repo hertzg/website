@@ -15,6 +15,7 @@ function create_content ($user, $total, $filterMessage, $items, $base) {
             [
                 'title' => 'Home',
                 'href' => "$base../home/#bar-charts",
+                'localNavigation' => true,
             ],
             'Bar Charts',
             Page\sessionErrors('bar-charts/errors')
