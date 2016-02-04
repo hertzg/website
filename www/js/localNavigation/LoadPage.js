@@ -31,11 +31,11 @@ function LoadPage (base, href, loader, callback) {
 
     console.log('LoadPage', href)
 
-    return loader(base, callback, function () {
+    return loader(base, callback, function (newBase) {
         unload()
         // TODO notify user about this failure
         console.log(href + ' failed to load.')
-        callback()
+        callback(newBase)
     }, unload)
 
 }

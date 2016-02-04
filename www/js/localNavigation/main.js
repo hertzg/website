@@ -2,7 +2,8 @@
 
     function loadHref (state, callback) {
 
-        function finish () {
+        function finish (newBase) {
+            base = newBase
             currentOperation = null
             if (callback !== undefined) callback()
             if (hash !== '') {
@@ -40,6 +41,7 @@
         console.log('popstate', e.state)
         var state = e.state
         if (state === null) state = initialState
+        absoluteBase = AbsoluteBase(state.base)
         loadHref(state)
     }
 
@@ -53,6 +55,7 @@
             if (hash !== '') href = href.substr(0, href.length - hash.length)
 
             var state = {
+                base: base,
                 href: href,
                 hash: hash,
             }
@@ -63,6 +66,7 @@
                 loadHref(state, function () {
                     console.log('history.pushState', state)
                     history.pushState(state, document.title, linkHref)
+                    absoluteBase = AbsoluteBase(base)
                 })
             })
 
@@ -72,13 +76,10 @@
     var currentOperation = null
     var loaders = Object.create(null)
 
-    var absoluteBase = (function () {
-        var a = document.createElement('a')
-        a.href = base
-        return a.href
-    })()
+    var absoluteBase = AbsoluteBase(base)
 
     var initialState = {
+        base: base,
         href: location.href.substr(absoluteBase.length).replace(/#.*?$/, ''),
         hash: location.hash,
     }

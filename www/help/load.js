@@ -2,14 +2,18 @@
 
     function loadFunction (base, loadCallback, errorCallback, unload) {
 
+        function error () {
+            errorCallback(newBase)
+        }
+
         var request = new XMLHttpRequest
         request.open('get', base + 'home/load.php')
         request.send()
-        request.onerror = errorCallback
+        request.onerror = error
         request.onload = function () {
 
             if (request.status !== 200) {
-                errorCallback()
+                error()
                 return
             }
 
@@ -71,7 +75,7 @@
                 Page_imageArrowLink(div, 'About Zvini',
                     'about-zvini/', 'zvini', { id: 'about-zvini' })
             })
-            loadCallback()
+            loadCallback(newBase)
 
         }
 
@@ -90,6 +94,7 @@
         Page_imageLink = ui.Page_imageLink,
         Text = ui.Text
 
+    var newBase = '../'
     var body = document.body
     localNavigation.registerPage('help/', loadFunction)
 

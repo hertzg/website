@@ -1,4 +1,11 @@
 (function () {
+function AbsoluteBase (base) {
+    var a = document.createElement('a')
+    a.href = base
+    console.log('AbsoluteBase', base, a.href)
+    return a.href
+}
+;
 function LoadPage (base, href, loader, callback) {
 
     function unload () {
@@ -32,11 +39,11 @@ function LoadPage (base, href, loader, callback) {
 
     console.log('LoadPage', href)
 
-    return loader(base, callback, function () {
+    return loader(base, callback, function (newBase) {
         unload()
         // TODO notify user about this failure
         console.log(href + ' failed to load.')
-        callback()
+        callback(newBase)
     }, unload)
 
 }
@@ -62,7 +69,8 @@ function LoadScript (src, loadCallback, errorCallback) {
 
     function loadHref (state, callback) {
 
-        function finish () {
+        function finish (newBase) {
+            base = newBase
             currentOperation = null
             if (callback !== undefined) callback()
             if (hash !== '') {
@@ -100,6 +108,7 @@ function LoadScript (src, loadCallback, errorCallback) {
         console.log('popstate', e.state)
         var state = e.state
         if (state === null) state = initialState
+        absoluteBase = AbsoluteBase(state.base)
         loadHref(state)
     }
 
@@ -113,6 +122,7 @@ function LoadScript (src, loadCallback, errorCallback) {
             if (hash !== '') href = href.substr(0, href.length - hash.length)
 
             var state = {
+                base: base,
                 href: href,
                 hash: hash,
             }
@@ -123,6 +133,7 @@ function LoadScript (src, loadCallback, errorCallback) {
                 loadHref(state, function () {
                     console.log('history.pushState', state)
                     history.pushState(state, document.title, linkHref)
+                    absoluteBase = AbsoluteBase(base)
                 })
             })
 
@@ -132,13 +143,10 @@ function LoadScript (src, loadCallback, errorCallback) {
     var currentOperation = null
     var loaders = Object.create(null)
 
-    var absoluteBase = (function () {
-        var a = document.createElement('a')
-        a.href = base
-        return a.href
-    })()
+    var absoluteBase = AbsoluteBase(base)
 
     var initialState = {
+        base: base,
         href: location.href.substr(absoluteBase.length).replace(/#.*?$/, ''),
         hash: location.hash,
     }
