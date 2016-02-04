@@ -38,7 +38,9 @@
             style.position = 'fixed'
             style.zIndex = '1'
             style.top = style.right = style.bottom = style.left = '0'
-            style.background = 'rgba(0, 0, 0, 0.5)'
+            darkenTimeout = setTimeout(function () {
+                style.background = 'rgba(0, 0, 0, 0.5)'
+            }, 80)
 
             body.insertBefore(overlayDiv, progressDiv)
 
@@ -67,7 +69,7 @@
 
     var body = document.body
     var overlayDiv = null, progressDiv = null
-    var animationInterval, hintTimeout
+    var animationInterval, hintTimeout, darkenTimeout
 
     addEventListener('beforeunload', show)
     window.unloadProgress = {
@@ -75,6 +77,7 @@
         hide: function () {
             clearInterval(animationInterval)
             clearTimeout(hintTimeout)
+            clearTimeout(darkenTimeout)
             if (progressDiv !== null) {
                 body.removeChild(progressDiv)
                 progressDiv = null
