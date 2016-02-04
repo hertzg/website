@@ -65,6 +65,11 @@ function LoadScript (src, loadCallback, errorCallback) {
         function finish () {
             currentOperation = null
             if (callback !== undefined) callback()
+            if (hash !== '') {
+                removeEventListener('popstate', popState)
+                location.hash = hash
+                addEventListener('popstate', popState)
+            }
             scanLinks()
         }
 
@@ -89,6 +94,13 @@ function LoadScript (src, loadCallback, errorCallback) {
             currentOperation = LoadPage(href, loader, finish)
         }
 
+    }
+
+    function popState (e) {
+        console.log('popstate', e.state)
+        var state = e.state
+        if (state === null) state = initialState
+        loadHref(state)
     }
 
     function scanLinks () {
@@ -131,13 +143,7 @@ function LoadScript (src, loadCallback, errorCallback) {
         hash: location.hash,
     }
 
-    addEventListener('popstate', function (e) {
-        console.log('popstate', e.state)
-        var state = e.state
-        if (state === null) state = initialState
-        loadHref(state)
-    })
-
+    addEventListener('popstate', popState)
     scanLinks()
 
     window.localNavigation = {
