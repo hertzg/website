@@ -31,10 +31,7 @@ function echo_html ($title, $head, $body,
                 .'</script>'
                 .compressed_js_script('unloadProgress',
                     $base, 'localNavigation-leave')
-                .'<script defer="defer" type="text/javascript"'
-                ." src=\"{$base}js/localNavigation/localNavigation.js\">"
-                .'</script>'
-                //.compressed_js_script('localNavigation', $base)
+                .compressed_js_script('localNavigation', $base)
                 .$body
             .'</body>'
         .'</html>';
