@@ -1,12 +1,38 @@
 (function (base, localNavigation) {
 
-    function Page_imageArrowLink (parentNode, title, href, iconName, id, callback) {
+    function Page_emptyTabs (parentNode, callback) {
+        addZeroHeightBr(parentNode)
+        add(parentNode, 'div', function (div) {
+            div.className = 'tab-content'
+            callback(div)
+        })
+    }
+
+    function Page_imageArrowLink (parentNode,
+        title, href, iconName, options, callback) {
+
+        options.className = 'withArrow'
+        Page_imageLink(parentNode, title, href, iconName, options, callback)
+
+    }
+
+    function Page_imageLink (parentNode,
+        title, href, iconName, options, callback) {
+
         add(parentNode, 'a', function (a) {
-            a.name = id
+            a.name = options.id
         })
         add(parentNode, 'a', function (a) {
-            a.id = id
-            a.className = 'clickable link image_link withArrow'
+
+            var additionalClass
+            if (options.className === undefined) additionalClass = ''
+            else additionalClass = ' ' + options.className
+            if (options.localNavigation !== undefined) {
+                additionalClass += ' localNavigation-link'
+            }
+
+            a.id = options.id
+            a.className = 'clickable link image_link' + additionalClass
             a.href = href
             add(a, 'span', function (span) {
                 span.className = 'image_link-icon'
@@ -18,21 +44,9 @@
                 span.className = 'image_link-content'
                 addText(span, title)
             })
-        })
-    }
 
-    function Page_twoColumns (parentNode, column1Callback, column2Callback) {
-        add(parentNode, 'div', function (div) {
-            div.className = 'twoColumns'
-            add(div, 'div', function (div) {
-                div.className = 'twoColumns-column1 dynamic'
-                column1Callback(div)
-            })
-            add(div, 'div', function (div) {
-                div.className = 'twoColumns-column2 dynamic'
-                column2Callback(div)
-            })
         })
+
     }
 
     function Page_panel (parentNode, title, callback) {
@@ -53,6 +67,20 @@
             add(div, 'div', function (div) {
                 div.className = 'panel-content'
                 callback(div)
+            })
+        })
+    }
+
+    function Page_twoColumns (parentNode, column1Callback, column2Callback) {
+        add(parentNode, 'div', function (div) {
+            div.className = 'twoColumns'
+            add(div, 'div', function (div) {
+                div.className = 'twoColumns-column1 dynamic'
+                column1Callback(div)
+            })
+            add(div, 'div', function (div) {
+                div.className = 'twoColumns-column2 dynamic'
+                column2Callback(div)
             })
         })
     }
@@ -130,20 +158,21 @@
                     })
                 })
             })
-            addZeroHeightBr(body)
-            add(body, 'div', function (div) {
-                div.className = 'tab-content'
+            Page_emptyTabs(body, function (div) {
             })
             Page_panel(body, 'Options', function (div) {
                 Page_twoColumns(div, function (div) {
                     Page_imageArrowLink(div, 'Account',
-                        '../account/', 'account', 'account')
+                        '../account/', 'account', { id: 'account' })
                 }, function (div) {
                     Page_imageArrowLink(div, 'Customize Home',
-                        'customize/', 'edit-home', 'customize')
+                        'customize/', 'edit-home', { id: 'customize' })
                 })
                 addHr(div)
-                Page_imageArrowLink(div, 'Help', '../help/', 'help', 'help')
+                Page_imageArrowLink(div, 'Help', '../help/', 'help', {
+                    id: 'help',
+                    localNavigation: true,
+                })
             })
             loadCallback()
 

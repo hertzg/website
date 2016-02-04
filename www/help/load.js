@@ -1,12 +1,58 @@
 (function (base, localNavigation) {
 
-    function Page_imageArrowLink (parentNode, title, href, iconName, id, callback) {
+    function Page_create (parentNode, backlink, title, callback) {
+        addZeroHeightBr(parentNode)
+        add(parentNode, 'div', function (div) {
+            div.className = 'tab'
+            add(div, 'div', function (div) {
+                div.className = 'tab-bar'
+                add(div, 'a', function (a) {
+                    a.className = 'clickable tab-normal localNavigation-link'
+                    a.href = backlink.href
+                    addText(a, '\xab ' + backlink.title)
+                })
+                add(div, 'span', function (span) {
+                    span.className = 'tab-active limited'
+                    add(span, 'span', function (span) {
+                        span.className = 'zeroSize'
+                        addText(span, ' \xbb ')
+                    })
+                    addText(span, title)
+                })
+            })
+        })
+        addZeroHeightBr(parentNode)
+        add(parentNode, 'div', function (div) {
+            div.className = 'tab-content'
+            callback(div)
+        })
+    }
+
+    function Page_imageArrowLink (parentNode,
+        title, href, iconName, options, callback) {
+
+        options.className = 'withArrow'
+        Page_imageLink(parentNode, title, href, iconName, options, callback)
+
+    }
+
+    function Page_imageLink (parentNode,
+        title, href, iconName, options, callback) {
+
         add(parentNode, 'a', function (a) {
-            a.name = id
+            a.name = options.id
         })
         add(parentNode, 'a', function (a) {
-            a.id = id
-            a.className = 'clickable link image_link withArrow'
+
+            var additionalClass
+            if (options.className === undefined) additionalClass = ''
+            else additionalClass = ' ' + options.className
+            if (options.localNavigation !== undefined) {
+                additionalClass += ' localNavigation-link'
+            }
+
+            a.id = options.id
+            a.className = 'clickable link image_link' + additionalClass
             a.href = href
             add(a, 'span', function (span) {
                 span.className = 'image_link-icon'
@@ -18,7 +64,9 @@
                 span.className = 'image_link-content'
                 addText(span, title)
             })
+
         })
+
     }
 
     function Page_panel (parentNode, title, callback) {
@@ -116,43 +164,25 @@
                     })
                 })
             })
-            add(body, 'div', function (div) {
-                div.className = 'tab'
-                add(div, 'div', function (div) {
-                    div.className = 'tab-bar'
-                    add(div, 'a', function (a) {
-                        a.className = 'clickable tab-normal'
-                        a.href = '../home/#help'
-                        addText(a, '\xab Home')
-                    })
-                    add(div, 'span', function (span) {
-                        span.className = 'tab-active limited'
-                        add(span, 'span', function (span) {
-                            span.className = 'zeroSize'
-                            addText(span, '\xbb Help')
-                        })
-                        addText(span, 'Help')
-                    })
-                })
-            })
-            addZeroHeightBr(body)
-            add(body, 'div', function (div) {
-                div.className = 'tab-content'
-                Page_imageArrowLink(div, 'Install Zvini App',
-                    'install-zvini-app/', 'download', 'install-zvini-app')
+            Page_create(body, {
+                title: 'Home',
+                href: '../home/#help',
+            }, 'Help', function (div) {
+                Page_imageLink(div, 'Install Zvini App',
+                    'install-zvini-app/', 'download', { id: 'install-zvini-app' })
                 addHr(div)
-                Page_imageArrowLink(div, 'Install Link Handlers',
+                Page_imageLink(div, 'Install Link Handlers',
                     'install-link-handlers/', 'protocol',
-                    'install-link-handlers')
+                    { id: 'install-link-handlers' })
                 addHr(div)
                 Page_imageArrowLink(div, 'Leave Feedback',
-                    'feedback/', 'feedback', 'feedback')
+                    'feedback/', 'feedback', { id: 'feedback' })
                 addHr(div)
                 Page_imageArrowLink(div, 'API Documentation',
-                    'api-doc/', 'api-doc', 'api-doc')
+                    'api-doc/', 'api-doc', { id: 'api-doc' })
                 addHr(div)
                 Page_imageArrowLink(div, 'About Zvini',
-                    'about-zvini/', 'zvini', 'about-zvini')
+                    'about-zvini/', 'zvini', { id: 'about-zvini' })
             })
             loadCallback()
 
