@@ -3,11 +3,8 @@
 include_once '../fns/signed_user.php';
 $user = signed_user();
 
-unset(
-    $_SESSION['help/feedback/errors'],
-    $_SESSION['help/feedback/values'],
-    $_SESSION['home/messages']
-);
+include_once 'fns/unset_session_vars.php';
+unset_session_vars();
 
 include_once '../fns/Page/create.php';
 include_once '../fns/Page/imageArrowLink.php';

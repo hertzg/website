@@ -17,7 +17,10 @@ function optionsPanel () {
     $content =
         \Page\twoColumns($accountLink, $customizeHomeLink)
         .'<div class="hr"></div>'
-        .\Page\imageArrowLink('Help', '../help/', 'help', ['id' => 'help']);
+        .\Page\imageArrowLink('Help', '../help/', 'help', [
+            'id' => 'help',
+            'localNavigation' => true,
+        ]);
 
     include_once "$fnsDir/create_panel.php";
     return create_panel('Options', $content);

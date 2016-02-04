@@ -21,20 +21,6 @@
         })
     }
 
-    function Page_twoColumns (parentNode, column1Callback, column2Callback) {
-        add(parentNode, 'div', function (div) {
-            div.className = 'twoColumns'
-            add(div, 'div', function (div) {
-                div.className = 'twoColumns-column1 dynamic'
-                column1Callback(div)
-            })
-            add(div, 'div', function (div) {
-                div.className = 'twoColumns-column2 dynamic'
-                column2Callback(div)
-            })
-        })
-    }
-
     function Page_panel (parentNode, title, callback) {
         addZeroHeightBr(parentNode)
         add(parentNode, 'div', function (div) {
@@ -130,20 +116,43 @@
                     })
                 })
             })
+            add(body, 'div', function (div) {
+                div.className = 'tab'
+                add(div, 'div', function (div) {
+                    div.className = 'tab-bar'
+                    add(div, 'a', function (a) {
+                        a.className = 'clickable tab-normal'
+                        a.href = '../home/#help'
+                        addText(a, '\xab Home')
+                    })
+                    add(div, 'span', function (span) {
+                        span.className = 'tab-active limited'
+                        add(span, 'span', function (span) {
+                            span.className = 'zeroSize'
+                            addText(span, '\xbb Help')
+                        })
+                        addText(span, 'Help')
+                    })
+                })
+            })
             addZeroHeightBr(body)
             add(body, 'div', function (div) {
                 div.className = 'tab-content'
-            })
-            Page_panel(body, 'Options', function (div) {
-                Page_twoColumns(div, function (div) {
-                    Page_imageArrowLink(div, 'Account',
-                        '../account/', 'account', 'account')
-                }, function (div) {
-                    Page_imageArrowLink(div, 'Customize Home',
-                        'customize/', 'edit-home', 'customize')
-                })
+                Page_imageArrowLink(div, 'Install Zvini App',
+                    'install-zvini-app/', 'download', 'install-zvini-app')
                 addHr(div)
-                Page_imageArrowLink(div, 'Help', '../help/', 'help', 'help')
+                Page_imageArrowLink(div, 'Install Link Handlers',
+                    'install-link-handlers/', 'protocol',
+                    'install-link-handlers')
+                addHr(div)
+                Page_imageArrowLink(div, 'Leave Feedback',
+                    'feedback/', 'feedback', 'feedback')
+                addHr(div)
+                Page_imageArrowLink(div, 'API Documentation',
+                    'api-doc/', 'api-doc', 'api-doc')
+                addHr(div)
+                Page_imageArrowLink(div, 'About Zvini',
+                    'about-zvini/', 'zvini', 'about-zvini')
             })
             loadCallback()
 
@@ -159,6 +168,6 @@
 
     var body = document.body
 
-    localNavigation.registerPage('home/', loadFunction)
+    localNavigation.registerPage('help/', loadFunction)
 
 })(base, localNavigation)

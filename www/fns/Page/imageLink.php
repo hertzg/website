@@ -22,6 +22,9 @@ function imageLink ($content, $href, $iconName, $options = []) {
     } else {
         $additionalClass = '';
     }
+    if (array_key_exists('localNavigation', $options)) {
+        $additionalClass .= ' localNavigation-link';
+    }
 
     return
         $nameLink
