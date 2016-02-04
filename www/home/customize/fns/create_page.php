@@ -13,6 +13,7 @@ function create_page ($base = '') {
         [
             'title' => 'Home',
             'href' => "$base../#customize",
+            'localNavigation' => true,
         ],
         'Customize',
         Page\sessionMessages('home/customize/messages')
