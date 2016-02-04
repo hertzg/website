@@ -3,6 +3,9 @@
 include_once '../fns/ApiCall/requireUser.php';
 $user = ApiCall\requireUser();
 
+include_once '../fns/HomePage/unsetSessionVars.php';
+HomePage\unsetSessionVars();
+
 $logoSrc = "theme/color/$user->theme_color/images/zvini.svg";
 
 header('Content-Type: application/json');
