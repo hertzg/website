@@ -2,7 +2,7 @@
 
     function show () {
 
-        if (!progressDiv) {
+        if (progressDiv === null) {
 
             progressDiv = document.createElement('div')
 
@@ -26,7 +26,7 @@
 
         }
 
-        if (!overlayDiv) {
+        if (overlayDiv === null) {
 
             overlayDiv = document.createElement('div')
             overlayDiv.addEventListener('click', function () {
@@ -66,7 +66,8 @@
     }
 
     var body = document.body
-    var overlayDiv, progressDiv, animationInterval, hintTimeout
+    var overlayDiv = null, progressDiv = null
+    var animationInterval, hintTimeout
 
     addEventListener('beforeunload', show)
     window.unloadProgress = {
@@ -74,8 +75,14 @@
         hide: function () {
             clearInterval(animationInterval)
             clearTimeout(hintTimeout)
-            if (progressDiv) body.removeChild(progressDiv)
-            if (overlayDiv) body.removeChild(overlayDiv)
+            if (progressDiv !== null) {
+                body.removeChild(progressDiv)
+                progressDiv = null
+            }
+            if (overlayDiv !== null) {
+                body.removeChild(overlayDiv)
+                overlayDiv = null
+            }
         },
     }
 
