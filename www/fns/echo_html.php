@@ -31,7 +31,8 @@ function echo_html ($title, $head, $body,
                 .'</script>'
                 .compressed_js_script('unloadProgress',
                     $base, 'localNavigation-leave')
-                .compressed_js_script('localNavigation', $base)
+                .compressed_js_script('localNavigation',
+                    $base, 'localNavigation-leave')
                 .$body
             .'</body>'
         .'</html>';
