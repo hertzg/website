@@ -12,6 +12,7 @@ $content = Page\create(
     [
         'title' => 'Help',
         'href' => '../#install-zvini-app',
+        'localNavigation' => true,
     ],
     'Install Zvini App',
     '<noscript>'

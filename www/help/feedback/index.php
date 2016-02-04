@@ -24,6 +24,7 @@ $content = Page\create(
     [
         'title' => 'Help',
         'href' => '../#feedback',
+        'localNavigation' => true,
     ],
     'Feedback',
     Page\sessionErrors('help/feedback/errors')

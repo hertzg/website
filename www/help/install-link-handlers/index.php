@@ -13,6 +13,7 @@ $content = Page\create(
     [
         'title' => 'Help',
         'href' => '../#install-link-handlers',
+        'localNavigation' => true,
     ],
     'Install Link Handlers',
     '<noscript>'

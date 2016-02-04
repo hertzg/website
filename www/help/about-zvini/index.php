@@ -31,6 +31,7 @@ $content =
         [
             'title' => 'Help',
             'href' => '../#about-zvini',
+            'localNavigation' => true,
         ],
         'About Zvini',
         Page\text(

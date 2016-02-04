@@ -40,6 +40,7 @@ $content =
         [
             'title' => 'Help',
             'href' => '../#api-doc',
+            'localNavigation' => true,
         ],
         'API Documentation',
         Page\text(get_article_text())
