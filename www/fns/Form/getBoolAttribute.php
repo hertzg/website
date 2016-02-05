@@ -2,8 +2,8 @@
 
 namespace Form;
 
-function getBoolAttribute ($name, $config) {
-    if (array_key_exists($name, $config) && $config[$name]) {
+function getBoolAttribute ($name, $options) {
+    if (array_key_exists($name, $options) && $options[$name]) {
         return " $name=\"$name\"";
     }
 }

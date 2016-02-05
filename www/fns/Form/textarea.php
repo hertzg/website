@@ -2,16 +2,16 @@
 
 namespace Form;
 
-function textarea ($name, $text, $config = []) {
+function textarea ($name, $text, $options = []) {
 
-    if (array_key_exists('value', $config)) {
-        $content = "\n".htmlspecialchars($config['value']);
+    if (array_key_exists('value', $options)) {
+        $content = "\n".htmlspecialchars($options['value']);
     } else{
         $content = '';
     }
 
-    if (array_key_exists('maxlength', $config)) {
-        $maxlengthAttribute = " maxlength=\"$config[maxlength]\"";
+    if (array_key_exists('maxlength', $options)) {
+        $maxlengthAttribute = " maxlength=\"$options[maxlength]\"";
     } else {
         $maxlengthAttribute = '';
     }
@@ -22,9 +22,9 @@ function textarea ($name, $text, $config = []) {
     return association(
         '<textarea class="form-textarea"'
         .$maxlengthAttribute
-        .getBoolAttribute('autofocus', $config)
-        .getBoolAttribute('readonly', $config)
-        .getBoolAttribute('required', $config)
+        .getBoolAttribute('autofocus', $options)
+        .getBoolAttribute('readonly', $options)
+        .getBoolAttribute('required', $options)
         ." id=\"$name\" name=\"$name\">$content</textarea>",
         "<label class=\"form-property-label\" for=\"$name\">$text:</label>"
     );

@@ -2,16 +2,16 @@
 
 namespace Form;
 
-function textfieldWithLabel ($name, $text, $config = [], $labelConfig = []) {
+function textfieldWithLabel ($name, $text, $options = [], $labelOptions = []) {
 
-    if (array_key_exists('value', $config)) {
-        $valueAttribute = ' value="'.htmlspecialchars($config['value']).'"';
+    if (array_key_exists('value', $options)) {
+        $valueAttribute = ' value="'.htmlspecialchars($options['value']).'"';
     } else {
         $valueAttribute = '';
     }
 
-    if (array_key_exists('maxlength', $config)) {
-        $maxlengthAttribute = " maxlength=\"$config[maxlength]\"";
+    if (array_key_exists('maxlength', $options)) {
+        $maxlengthAttribute = " maxlength=\"$options[maxlength]\"";
     } else {
         $maxlengthAttribute = '';
     }
@@ -24,10 +24,11 @@ function textfieldWithLabel ($name, $text, $config = [], $labelConfig = []) {
         .'<div class="form-textfield-label">'
             .'<div class="form-textfield-label-separator"></div>'
             .'<div class="form-textfield-label-input">'
-                .'<input class="form-textfield" type="text"'
-                ." placeholder=\"$labelConfig[placeholder]\""
-                ." name=\"{$name}_label\" maxlength=\"$labelConfig[maxlength]\""
-                .' value="'.htmlspecialchars($labelConfig['value']).'" />'
+                .'<input class="form-textfield"'
+                ." placeholder=\"$labelOptions[placeholder]\""
+                ." type=\"text\" name=\"{$name}_label\""
+                ." maxlength=\"$labelOptions[maxlength]\""
+                .' value="'.htmlspecialchars($labelOptions['value']).'" />'
             .'</div>'
         .'</div>',
         "<label class=\"form-property-label\" for=\"$name\">$text:</label>"
