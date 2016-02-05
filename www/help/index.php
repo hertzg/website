@@ -24,8 +24,10 @@ $content = Page\create(
     .Page\imageLink('Install Link Handlers', 'install-link-handlers/',
         'protocol', ['id' => 'install-link-handlers'])
     .'<div class="hr"></div>'
-    .Page\imageArrowLink('Leave Feedback',
-        'feedback/', 'feedback', ['id' => 'feedback'])
+    .Page\imageArrowLink('Leave Feedback', 'feedback/', 'feedback', [
+        'id' => 'feedback',
+        'localNavigation' => true,
+    ])
     .'<div class="hr"></div>'
     .Page\imageArrowLink('API Documentation',
         'api-doc/', 'api-doc', ['id' => 'api-doc'])
