@@ -19,7 +19,9 @@
         var localHref = href.substr(absoluteBase.length)
         var loader = loaders[localHref]
         if (loader === undefined) {
-            var src = href + 'load.js?' + loaderRevisions[localHref]
+            var src = href + 'load.js'
+            var revision = loaderRevisions[localHref]
+            if (revision !== undefined) src += '?' + revision
             currentOperation = LoadScript(src, function () {
                 var loader = loaders[localHref]
                 if (loader === undefined) error()
