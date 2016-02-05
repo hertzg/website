@@ -2,18 +2,14 @@
 
     function loadFunction (base, loadCallback, errorCallback, unload) {
 
-        function error () {
-            errorCallback(newBase)
-        }
-
         var request = new XMLHttpRequest
         request.open('get', base + 'home/load.php')
         request.send()
-        request.onerror = error
+        request.onerror = errorCallback
         request.onload = function () {
 
             if (request.status !== 200) {
-                error()
+                errorCallback()
                 return
             }
 
