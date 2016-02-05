@@ -1,38 +1,32 @@
 (function (base, loaderRevisions, unloadProgress) {
 
-    function loadHref (state, callback) {
+    function loadHref (href, hash, callback) {
 
-        function finish (newBase) {
-            base = newBase
+        function error () {
+            location = href + hash
+        }
+
+        function load () {
             currentOperation = null
             if (callback !== undefined) callback()
-            if (hash !== '') {
-                removeEventListener('popstate', popState)
-                location.hash = hash
-                addEventListener('popstate', popState)
-            }
             scanLinks()
         }
 
-        console.log('loadHref', state)
-
-        var href = state.href
-        var hash = state.hash
+        console.log('loadHref', href, hash)
 
         if (currentOperation !== null) currentOperation.abort()
-        var loader = loaders[href]
+
+        var localHref = href.substr(absoluteBase.length)
+        var loader = loaders[localHref]
         if (loader === undefined) {
-            currentOperation = LoadScript(base + href + 'load.js?' + loaderRevisions[href], function () {
-                if (loaders[href] === undefined) {
-                    location = base + href + hash
-                } else {
-                    currentOperation = LoadPage(base, href, loaders[href], finish)
-                }
-            }, function () {
-                location = base + href + hash
-            })
+            var src = href + 'load.js?' + loaderRevisions[localHref]
+            currentOperation = LoadScript(src, function () {
+                var loader = loaders[localHref]
+                if (loader === undefined) error()
+                else currentOperation = loader(absoluteBase, load, error, UnloadPage)
+            }, error)
         } else {
-            currentOperation = LoadPage(base, href, loader, finish)
+            currentOperation = loader(absoluteBase, load, error, UnloadPage)
         }
 
     }
@@ -41,33 +35,31 @@
         console.log('popstate', e.state)
         var state = e.state
         if (state === null) state = initialState
-        absoluteBase = AbsoluteBase(state.base)
-        loadHref(state)
+        loadHref(state.href, state.hash)
     }
 
     function scanLinks () {
         var links = document.querySelectorAll('.localNavigation-link')
         Array.prototype.forEach.call(links, function (link) {
 
-            var linkHref = link.href
-            var href = linkHref.substr(absoluteBase.length)
+            var href = link.href
             var hash = href.match(/(?:#.*)?$/)[0]
             if (hash !== '') href = href.substr(0, href.length - hash.length)
 
-            var state = {
-                base: base,
-                href: href,
-                hash: hash,
-            }
-
             link.addEventListener('click', function (e) {
+
                 e.preventDefault()
                 unloadProgress.show()
-                loadHref(state, function () {
+
+                loadHref(href, hash, function () {
+                    var state = {
+                        href: href,
+                        hash: hash,
+                    }
                     console.log('history.pushState', state)
-                    history.pushState(state, document.title, linkHref)
-                    absoluteBase = AbsoluteBase(base)
+                    history.pushState(state, document.title, href + hash)
                 })
+
             })
 
         })
@@ -76,11 +68,14 @@
     var currentOperation = null
     var loaders = Object.create(null)
 
-    var absoluteBase = AbsoluteBase(base)
+    var absoluteBase = (function () {
+        var a = document.createElement('a')
+        a.href = base
+        return a.href
+    })()
 
     var initialState = {
-        base: base,
-        href: location.href.substr(absoluteBase.length).replace(/#.*?$/, ''),
+        href: location.href,
         hash: location.hash,
     }
 

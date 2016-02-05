@@ -1,6 +1,5 @@
-function LoadPage (base, href, loader, callback) {
-
-    function unload () {
+function LoadPage (base, loader, loadCallback, errorCallback) {
+    return loader(base, loadCallback, errorCallback, function () {
 
         unloadProgress.hide()
 
@@ -27,15 +26,5 @@ function LoadPage (base, href, loader, callback) {
             head.removeChild(node)
         })
 
-    }
-
-    console.log('LoadPage', href)
-
-    return loader(base, callback, function (newBase) {
-        unload()
-        // TODO notify user about this failure
-        console.log(href + ' failed to load.')
-        callback(newBase)
-    }, unload)
-
+    })
 }
