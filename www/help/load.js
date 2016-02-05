@@ -7,7 +7,7 @@
         }
 
         var request = new XMLHttpRequest
-        request.open('get', base + 'home/load.php')
+        request.open('get', base + 'help/load.php')
         request.send()
         request.onerror = error
         request.onload = function () {
@@ -44,15 +44,17 @@
                             Text(div, '00:00:00')
                         })
                     })
-                    Element(div, 'div', function (div) {
-                        div.className = 'pageTopRightLinks'
-                        Element(div, 'a', function (a) {
-                            a.id = 'signOutLink'
-                            a.className = 'topLink'
-                            a.href = '../sign-out/'
-                            Text(a, 'Sign Out')
+                    if (response.user) {
+                        Element(div, 'div', function (div) {
+                            div.className = 'pageTopRightLinks'
+                            Element(div, 'a', function (a) {
+                                a.id = 'signOutLink'
+                                a.className = 'topLink'
+                                a.href = '../sign-out/'
+                                Text(a, 'Sign Out')
+                            })
                         })
-                    })
+                    }
                 })
             })
             Page_create(body, {
