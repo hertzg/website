@@ -79,7 +79,8 @@ function create ($transaction, &$scripts) {
             \Page\sessionMessages('wallets/all-transactions/view/messages')
             .$viewContent,
             \Page\newItemButton(
-                '../new/'.\ItemList\escapedItemQuery($id_wallets), 'Transaction')
+                '../new/'.\ItemList\escapedItemQuery($id_wallets),
+                'Transaction')
         )
         .create_panel('Transaction Options', $optionsContent);
 

@@ -70,8 +70,9 @@ if (!$found) {
 include_once 'fns/create_content.php';
 $content = create_content($items);
 
-include_once '../../../fns/echo_admin_page.php';
 include_once "$fnsDir/compressed_js_script.php";
-echo_admin_page($user, 'Search Admin API Documentation', $content, '../../../', [
-    'scripts' => compressed_js_script('searchForm', '../../../../'),
-]);
+$scripts = compressed_js_script('searchForm', '../../../../');
+
+include_once '../../../fns/echo_admin_page.php';
+echo_admin_page($user, 'Search Admin API Documentation',
+    $content, '../../../', ['scripts' => $scripts]);

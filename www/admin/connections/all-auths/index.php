@@ -93,4 +93,5 @@ $content = Page\create(
 $title = "Connection #$id Authentication History";
 
 include_once '../../fns/echo_admin_page.php';
-echo_admin_page($admin_user, $title, $content, '../../', ['scripts' => $scripts]);
+echo_admin_page($admin_user, $title,
+    $content, '../../', ['scripts' => $scripts]);

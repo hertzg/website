@@ -45,6 +45,7 @@ function method_page ($groupName, $prefix,
     );
 
     include_once __DIR__.'/../../../fns/echo_admin_page.php';
-    echo_admin_page($user, "$prefix/$methodName Method", $content, '../../../../');
+    echo_admin_page($user, "$prefix/$methodName Method",
+        $content, '../../../../');
 
 }
