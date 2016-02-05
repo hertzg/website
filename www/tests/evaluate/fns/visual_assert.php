@@ -1,18 +1,18 @@
 <?php
 
-function visual_assert ($config) {
+function visual_assert ($options) {
 
-    $expression = $config['expression'];
-    $expected_value = $config['expected_value'];
-    $expected_pretty_expression = $config['expected_pretty_expression'];
+    $expression = $options['expression'];
+    $expected_value = $options['expected_value'];
+    $expected_pretty_expression = $options['expected_pretty_expression'];
 
     $key = 'value_of';
-    if (array_key_exists($key, $config)) $value_of = $config[$key];
+    if (array_key_exists($key, $options)) $value_of = $options[$key];
     else $value_of = null;
 
     $key = 'expected_resolved_expression';
-    if (array_key_exists($key, $config)) {
-        $expected_resolved_expression = $config[$key];
+    if (array_key_exists($key, $options)) {
+        $expected_resolved_expression = $options[$key];
     } else {
         $expected_resolved_expression = $expected_pretty_expression;
     }
