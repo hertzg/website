@@ -65,7 +65,7 @@ function LoadScript (src, loadCallback, errorCallback) {
 
 }
 ;
-(function (base, unloadProgress) {
+(function (base, loaderRevisions, unloadProgress) {
 
     function loadHref (state, callback) {
 
@@ -89,7 +89,7 @@ function LoadScript (src, loadCallback, errorCallback) {
         if (currentOperation !== null) currentOperation.abort()
         var loader = loaders[href]
         if (loader === undefined) {
-            currentOperation = LoadScript(absoluteBase + href + 'load.js', function () {
+            currentOperation = LoadScript(absoluteBase + href + 'load.js?' + loaderRevisions[href], function () {
                 if (loaders[href] === undefined) {
                     location = absoluteBase + href + hash
                 } else {
@@ -160,7 +160,7 @@ function LoadScript (src, loadCallback, errorCallback) {
         },
     }
 
-})(base, unloadProgress)
+})(base, loaderRevisions, unloadProgress)
 ;
 
 })()

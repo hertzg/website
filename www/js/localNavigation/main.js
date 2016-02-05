@@ -1,4 +1,4 @@
-(function (base, unloadProgress) {
+(function (base, loaderRevisions, unloadProgress) {
 
     function loadHref (state, callback) {
 
@@ -22,7 +22,7 @@
         if (currentOperation !== null) currentOperation.abort()
         var loader = loaders[href]
         if (loader === undefined) {
-            currentOperation = LoadScript(absoluteBase + href + 'load.js', function () {
+            currentOperation = LoadScript(absoluteBase + href + 'load.js?' + loaderRevisions[href], function () {
                 if (loaders[href] === undefined) {
                     location = absoluteBase + href + hash
                 } else {
@@ -93,4 +93,4 @@
         },
     }
 
-})(base, unloadProgress)
+})(base, loaderRevisions, unloadProgress)

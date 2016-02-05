@@ -9,6 +9,7 @@ function echo_html ($title, $head, $body,
     include_once __DIR__.'/combined_js_script.php';
     include_once __DIR__.'/compressed_css_link.php';
     include_once __DIR__.'/compressed_js_script.php';
+    include_once __DIR__.'/loader_revisions.php';
     include_once __DIR__.'/page_icon_links.php';
     include_once __DIR__.'/page_theme_links.php';
     echo
@@ -28,7 +29,8 @@ function echo_html ($title, $head, $body,
             .'</head>'
             .'<body>'
                 .'<script type="text/javascript" class="localNavigation-leave">'
-                    .'var base = '.json_encode($base)
+                    .'var base = '.json_encode($base)."\n"
+                    .'var loaderRevisions = '.json_encode(loader_revisions())
                 .'</script>'
                 .compressed_js_script('unloadProgress',
                     $base, 'localNavigation-leave')
