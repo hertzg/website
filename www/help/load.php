@@ -6,8 +6,13 @@ $user = signed_user();
 include_once 'fns/unset_session_vars.php';
 unset_session_vars();
 
-include_once '../fns/Theme/Color/getDefault.php';
-$logoSrc = 'theme/color/'.Theme\Color\getDefault().'/images/zvini.svg';
+if ($user) $theme_color = $user->theme_color;
+else {
+    include_once '../fns/Theme/Color/getDefault.php';
+    $theme_color = Theme\Color\getDefault();
+}
+
+$logoSrc = "theme/color/$theme_color/images/zvini.svg";
 
 header('Content-Type: application/json');
 
