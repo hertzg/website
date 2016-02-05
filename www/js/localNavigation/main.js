@@ -63,7 +63,7 @@
                         href: href,
                         hash: hash,
                     }
-                    console.log('history.pushState', state)
+                    console.log('history.pushState', document.title, state)
                     history.pushState(state, document.title, href + hash)
                 })
 

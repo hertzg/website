@@ -16,8 +16,8 @@
             var response = JSON.parse(request.responseText)
             var user = response.user
 
+            document.title = 'Help'
             loadCallback()
-            document.title = 'Home'
             Element(body, 'div', function (div) {
                 div.id = 'tbar'
                 Element(div, 'div', function (div) {

@@ -2,7 +2,7 @@
 
 function loader_revisions () {
     return [
-        'help/' => 2,
-        'home/' => 2,
+        'help/' => 4,
+        'home/' => 3,
     ];
 }
