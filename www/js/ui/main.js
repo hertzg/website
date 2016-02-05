@@ -1,5 +1,7 @@
 window.ui = {
     Element: Element,
+    Form_button: Form_button,
+    Form_textarea: Form_textarea,
     Hr: Hr,
     Page_create: Page_create,
     Page_emptyTabs: Page_emptyTabs,

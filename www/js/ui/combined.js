@@ -5,6 +5,64 @@ function Element (parentNode, tagName, callback) {
     callback(element)
 }
 ;
+function Form_association (parentNode, propertyCallback, valueCallback) {
+    Element(parentNode, 'div', function (div) {
+        div.className = 'form-item'
+        Element(div, 'div', function (div) {
+            div.className = 'form-property'
+            propertyCallback(div)
+        })
+        Element(div, 'div', function (div) {
+            div.className = 'form-value'
+            valueCallback(div)
+        })
+    })
+}
+;
+function Form_button (parentNode, text, name) {
+    Element(parentNode, 'input', function (input) {
+        input.className = 'clickable form-button'
+        input.type = 'submit'
+        input.value = text
+        if (name !== undefined) input.name = name
+    })
+}
+;
+function Form_textarea (parentNode, name, text, options) {
+    Form_association(parentNode, function (div) {
+        Element(div, 'label', function (label) {
+            label.className = 'form-property-label'
+            label.htmlFor = name
+            Text(label, text + ':')
+        })
+    }, function (div) {
+        Element(div, 'textarea', function (textarea) {
+
+            var value = options.value
+            if (value !== undefined) textarea.value = value
+
+            var maxlength = options.maxlength
+            if (maxlength !== undefined) textarea.maxlength = maxlength
+
+            var autofocus = options.autofocus
+            if (autofocus !== undefined) textarea.autofocus = autofocus
+
+            var readonly = options.readonly
+            if (readonly !== undefined) textarea.readOnly = readonly
+
+            var required = options.required
+            if (required !== undefined) textarea.required = required
+
+            textarea.className = 'form-textarea'
+            textarea.id = textarea.name = name
+
+        })
+    })
+    if (options.value !== undefined) {
+        
+    }
+}
+;
 function Hr (parentNode) {
     var div = document.createElement('div')
     div.className = 'hr'
@@ -137,6 +195,8 @@ function ZeroHeightBr (parentNode) {
 ;
 window.ui = {
     Element: Element,
+    Form_button: Form_button,
+    Form_textarea: Form_textarea,
     Hr: Hr,
     Page_create: Page_create,
     Page_emptyTabs: Page_emptyTabs,
