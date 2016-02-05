@@ -1,6 +1,6 @@
 (function (localNavigation, ui) {
 
-    function loadFunction (base, loadCallback, errorCallback, unload) {
+    function loadFunction (base, loadCallback, errorCallback) {
 
         var request = new XMLHttpRequest
         request.open('get', base + 'help/load.php')
@@ -15,7 +15,7 @@
 
             var response = JSON.parse(request.responseText)
 
-            unload()
+            loadCallback()
             document.title = 'Home'
             Element(body, 'div', function (div) {
                 div.id = 'tbar'
@@ -73,7 +73,7 @@
                 Page_imageArrowLink(div, 'About Zvini',
                     'about-zvini/', 'zvini', { id: 'about-zvini' })
             })
-            loadCallback(newBase)
+            localNavigation.scanLinks()
 
         }
 
@@ -92,7 +92,6 @@
         Page_imageLink = ui.Page_imageLink,
         Text = ui.Text
 
-    var newBase = '../'
     var body = document.body
     localNavigation.registerPage('help/', loadFunction)
 

@@ -7,9 +7,9 @@
         }
 
         function load () {
+            UnloadPage()
             currentOperation = null
             if (callback !== undefined) callback()
-            scanLinks()
         }
 
         console.log('loadHref', href, hash)
@@ -25,10 +25,10 @@
             currentOperation = LoadScript(src, function () {
                 var loader = loaders[localHref]
                 if (loader === undefined) error()
-                else currentOperation = loader(absoluteBase, load, error, UnloadPage)
+                else currentOperation = loader(absoluteBase, load, error)
             }, error)
         } else {
-            currentOperation = loader(absoluteBase, load, error, UnloadPage)
+            currentOperation = loader(absoluteBase, load, error)
         }
 
     }
@@ -85,6 +85,7 @@
     scanLinks()
 
     window.localNavigation = {
+        scanLinks: scanLinks,
         registerPage: function (href, loader) {
             loaders[href] = loader
         },
