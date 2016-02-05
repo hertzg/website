@@ -12,7 +12,7 @@
             style.right = style.bottom = style.left = '0'
             style.height = '4px'
             style.backgroundColor = '#fff'
-            style.backgroundImage = 'url(' + base + 'images/progress.svg)'
+            style.backgroundImage = 'url(' + absoluteBase + 'images/progress.svg)'
             style.backgroundPosition = '50% 0'
 
             var x = 0
@@ -71,7 +71,14 @@
     var overlayDiv = null, progressDiv = null
     var animationInterval, hintTimeout, darkenTimeout
 
+    var absoluteBase = (function () {
+        var a = document.createElement('a')
+        a.href = base
+        return a.href
+    })()
+
     addEventListener('beforeunload', show)
+
     window.unloadProgress = {
         show: show,
         hide: function () {

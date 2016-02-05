@@ -26,7 +26,7 @@ function get_revision ($key) {
         'js/signOutConfirm/compressed.js' => 3,
         'js/timezoneLabel/compressed.js' => 6,
         'js/ui/compressed.js' => 1,
-        'js/unloadProgress/compressed.js' => 11,
+        'js/unloadProgress/compressed.js' => 12,
         'theme/color/blue/common.css' => 40,
         'theme/color/blue/images/icon16.png' => 4,
         'theme/color/blue/images/icon32.png' => 4,
