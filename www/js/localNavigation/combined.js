@@ -51,14 +51,16 @@ function UnloadPage () {
 
     function loadHref (href, hash, callback) {
 
-        function error () {
-            location = href + hash
+        function callLoader (loader) {
+            currentOperation = loader(absoluteBase, function () {
+                UnloadPage()
+                currentOperation = null
+                if (callback !== undefined) callback()
+            }, error)
         }
 
-        function load () {
-            UnloadPage()
-            currentOperation = null
-            if (callback !== undefined) callback()
+        function error () {
+            location = href + hash
         }
 
         console.log('loadHref', href, hash)
@@ -70,14 +72,16 @@ function UnloadPage () {
         if (loader === undefined) {
             var src = href + 'load.js'
             var revision = loaderRevisions[localHref]
-            if (revision !== undefined) src += '?' + revision
-            currentOperation = LoadScript(src, function () {
-                var loader = loaders[localHref]
-                if (loader === undefined) error()
-                else currentOperation = loader(absoluteBase, load, error)
-            }, error)
+            if (revision === undefined) error()
+            else {
+                currentOperation = LoadScript(src, function () {
+                    var loader = loaders[localHref]
+                    if (loader === undefined) error()
+                    else callLoader(loader)
+                }, error)
+            }
         } else {
-            currentOperation = loader(absoluteBase, load, error)
+            callLoader(loader)
         }
 
     }

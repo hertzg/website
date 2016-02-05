@@ -1,2 +1,150 @@
-!function(){function o(o,n,e){console.log("LoadScript",o);var t=document.createElement("script");return t.src=o,t.onload=n,t.onerror=e,document.body.appendChild(t),{abort:function(){t.onload=t.onerror=null}}}function n(){unloadProgress.hide();var o=document.body,n=Array.prototype.slice.call(o.childNodes);n.forEach(function(n){n.classList.contains("localNavigation-leave")||o.removeChild(n)});var e=document.head,n=Array.prototype.slice.call(e.childNodes);n.forEach(function(o){var n=o.tagName;"TITLE"!==n&&"META"!==n&&("LINK"!==n||"icon"!==o.rel&&!o.classList.contains("localNavigation-leave"))&&e.removeChild(o)})}!function(e,t,a){function r(e,a,r){function l(){location=e+a}function c(){n(),i=null,void 0!==r&&r()}console.log("loadHref",e,a),null!==i&&i.abort();var d=e.substr(u.length),h=s[d];if(void 0===h){var f=e+"load.js",v=t[d];void 0!==v&&(f+="?"+v),i=o(f,function(){var o=s[d];void 0===o?l():i=o(u,c,l)},l)}else i=h(u,c,l)}function l(o){console.log("popstate",o.state);var n=o.state;null===n&&(n=d),r(n.href,n.hash);
-}function c(){var o=document.querySelectorAll(".localNavigation-link");Array.prototype.forEach.call(o,function(o){var n=o.href,e=n.match(/(?:#.*)?$/)[0];""!==e&&(n=n.substr(0,n.length-e.length)),o.addEventListener("click",function(o){o.preventDefault(),a.show(),r(n,e,function(){var o={href:n,hash:e};console.log("history.pushState",o),history.pushState(o,document.title,n+e)})})})}var i=null,s=Object.create(null),u=function(){var o=document.createElement("a");return o.href=e,o.href}(),d={href:location.href,hash:location.hash};addEventListener("popstate",l),c(),window.localNavigation={scanLinks:c,registerPage:function(o,n){s[o]=n}}}(base,loaderRevisions,unloadProgress)}();
+(function () {
+function LoadScript (src, loadCallback, errorCallback) {
+
+    console.log('LoadScript', src)
+
+    var script = document.createElement('script')
+    script.src = src
+    script.onload = loadCallback
+    script.onerror = errorCallback
+
+    document.body.appendChild(script)
+
+    return {
+        abort: function () {
+            script.onload = script.onerror = null
+        },
+    }
+
+}
+;
+function UnloadPage () {
+
+    unloadProgress.hide()
+
+    var body = document.body
+    var nodes = Array.prototype.slice.call(body.childNodes)
+    nodes.forEach(function (node) {
+        if (node.classList.contains('localNavigation-leave')) return
+        body.removeChild(node)
+    })
+
+    var head = document.head
+    var nodes = Array.prototype.slice.call(head.childNodes)
+    nodes.forEach(function (node) {
+        var tagName = node.tagName
+        if (tagName === 'TITLE' || tagName === 'META') return
+        if (tagName === 'LINK') {
+            if (node.rel === 'icon' ||
+                node.classList.contains('localNavigation-leave')) {
+
+                return
+
+            }
+        }
+        head.removeChild(node)
+    })
+
+}
+;
+(function (base, loaderRevisions, unloadProgress) {
+
+    function loadHref (href, hash, callback) {
+
+        function callLoader (loader) {
+            currentOperation = loader(absoluteBase, function () {
+                UnloadPage()
+                currentOperation = null
+                if (callback !== undefined) callback()
+            }, error)
+        }
+
+        function error () {
+            location = href + hash
+        }
+
+        console.log('loadHref', href, hash)
+
+        if (currentOperation !== null) currentOperation.abort()
+
+        var localHref = href.substr(absoluteBase.length)
+        var loader = loaders[localHref]
+        if (loader === undefined) {
+            var src = href + 'load.js'
+            var revision = loaderRevisions[localHref]
+            if (revision === undefined) error()
+            else {
+                currentOperation = LoadScript(src, function () {
+                    var loader = loaders[localHref]
+                    if (loader === undefined) error()
+                    else callLoader(loader)
+                }, error)
+            }
+        } else {
+            callLoader(loader)
+        }
+
+    }
+
+    function popState (e) {
+        console.log('popstate', e.state)
+        var state = e.state
+        if (state === null) state = initialState
+        loadHref(state.href, state.hash)
+    }
+
+    function scanLinks () {
+        var links = document.querySelectorAll('.localNavigation-link')
+        Array.prototype.forEach.call(links, function (link) {
+
+            var href = link.href
+            var hash = href.match(/(?:#.*)?$/)[0]
+            if (hash !== '') href = href.substr(0, href.length - hash.length)
+
+            link.addEventListener('click', function (e) {
+
+                e.preventDefault()
+                unloadProgress.show()
+
+                loadHref(href, hash, function () {
+                    var state = {
+                        href: href,
+                        hash: hash,
+                    }
+                    console.log('history.pushState', state)
+                    history.pushState(state, document.title, href + hash)
+                })
+
+            })
+
+        })
+    }
+
+    var currentOperation = null
+    var loaders = Object.create(null)
+
+    var absoluteBase = (function () {
+        var a = document.createElement('a')
+        a.href = base
+        return a.href
+    })()
+
+    var initialState = {
+        href: location.href,
+        hash: location.hash,
+    }
+
+    addEventListener('popstate', popState)
+    scanLinks()
+
+    window.localNavigation = {
+        scanLinks: scanLinks,
+        registerPage: function (href, loader) {
+            loaders[href] = loader
+        },
+    }
+
+})(base, loaderRevisions, unloadProgress)
+;
+
+})()
