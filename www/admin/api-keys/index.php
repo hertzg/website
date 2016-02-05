@@ -77,4 +77,5 @@ $content =
     .sort_panel($order_by, $total);
 
 include_once '../fns/echo_admin_page.php';
-echo_admin_page($admin_user, 'Admin API Keys', $content, '../', ['scripts' => $scripts]);
+echo_admin_page($admin_user, 'Admin API Keys',
+    $content, '../', ['scripts' => $scripts]);

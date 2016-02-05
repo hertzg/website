@@ -89,4 +89,5 @@ $content = Page\create(
 );
 
 include_once '../../fns/echo_admin_page.php';
-echo_admin_page($admin_user, 'Invalid Signins', $content, '../../', ['scripts' => $scripts]);
+echo_admin_page($admin_user, 'Invalid Signins',
+    $content, '../../', ['scripts' => $scripts]);

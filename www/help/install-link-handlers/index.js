@@ -9,7 +9,8 @@
             var address = protocol + '//' + host +
                 pathname + 'handle-link/?value=%s'
 
-            navigator.registerProtocolHandler(id, address, 'Open in ' + siteTitle)
+            navigator.registerProtocolHandler(id,
+                address, 'Open in ' + siteTitle)
 
         })
     }
