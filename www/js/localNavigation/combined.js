@@ -89,14 +89,14 @@ function LoadScript (src, loadCallback, errorCallback) {
         if (currentOperation !== null) currentOperation.abort()
         var loader = loaders[href]
         if (loader === undefined) {
-            currentOperation = LoadScript(absoluteBase + href + 'load.js?' + loaderRevisions[href], function () {
+            currentOperation = LoadScript(base + href + 'load.js?' + loaderRevisions[href], function () {
                 if (loaders[href] === undefined) {
-                    location = absoluteBase + href + hash
+                    location = base + href + hash
                 } else {
                     currentOperation = LoadPage(base, href, loaders[href], finish)
                 }
             }, function () {
-                location = absoluteBase + href + hash
+                location = base + href + hash
             })
         } else {
             currentOperation = LoadPage(base, href, loader, finish)
