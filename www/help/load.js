@@ -14,6 +14,7 @@
             }
 
             var response = JSON.parse(request.responseText)
+            var user = response.user
 
             loadCallback()
             document.title = 'Home'
@@ -23,11 +24,11 @@
                     div.id = 'tbar-limit'
                     Element(div, 'a', function (a) {
                         a.className = 'topLink logoLink'
-                        a.href = '../'
+                        a.href = user ? '../home/' : '../'
                         Element(a, 'img', function (img) {
                             img.alt = 'Zvini'
                             img.className = 'logoLink-img'
-                            img.src = base + response.logoSrc
+                            img.src = '../' + response.logoSrc
                         })
                     })
                     Element(div, 'div', function (div) {
@@ -40,7 +41,7 @@
                             Text(div, '00:00:00')
                         })
                     })
-                    if (response.user) {
+                    if (user) {
                         Element(div, 'div', function (div) {
                             div.className = 'pageTopRightLinks'
                             Element(div, 'a', function (a) {

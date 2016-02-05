@@ -27,7 +27,7 @@
                         Element(a, 'img', function (img) {
                             img.alt = 'Zvini'
                             img.className = 'logoLink-img'
-                            img.src = base + response.logoSrc
+                            img.src = '../' + response.logoSrc
                         })
                     })
                     Element(div, 'div', function (div) {

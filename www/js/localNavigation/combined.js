@@ -74,6 +74,7 @@ function UnloadPage () {
             var revision = loaderRevisions[localHref]
             if (revision === undefined) error()
             else {
+                src += '?' + revision
                 currentOperation = LoadScript(src, function () {
                     var loader = loaders[localHref]
                     if (loader === undefined) error()
