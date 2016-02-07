@@ -20,14 +20,10 @@ include_once '../../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['help/feedback/errors'] = $errors;
-    $_SESSION['help/feedback/values'] = ['text' => $text];
     redirect();
 }
 
-unset(
-    $_SESSION['help/feedback/errors'],
-    $_SESSION['help/feedback/values']
-);
+unset($_SESSION['help/feedback/errors']);
 
 include_once '../../fns/Feedbacks/add.php';
 include_once '../../lib/mysqli.php';

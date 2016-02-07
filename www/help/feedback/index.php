@@ -6,10 +6,6 @@ $fnsDir = '../../fns';
 include_once "$fnsDir/signed_user.php";
 $user = signed_user();
 
-$key = 'help/feedback/values';
-if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
-else $values = ['text' => ''];
-
 include_once 'fns/unset_session_vars.php';
 unset_session_vars();
 
@@ -31,7 +27,6 @@ $content = Page\create(
     Page\sessionErrors('help/feedback/errors')
     .'<form action="submit.php" method="post">'
         .Form\textarea('text', 'Text', [
-            'value' => $values['text'],
             'maxlength' => $maxLengths['text'],
             'autofocus' => true,
             'required' => true,
