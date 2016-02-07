@@ -13,4 +13,5 @@ header('Content-Type: application/json');
 include_once '../fns/get_revision.php';
 echo json_encode([
     'logoSrc' => "$logoSrc?".get_revision($logoSrc),
+    'user' => [],
 ]);

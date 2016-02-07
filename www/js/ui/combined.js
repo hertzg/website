@@ -313,6 +313,13 @@ function Page_imageLink (parentNode, titleOrCallback, href, iconName, options) {
 
 }
 ;
+function Page_infoText (parentNode, callback) {
+    Element(parentNode, 'div', function (div) {
+        div.className = 'page-infoText'
+        callback(div)
+    })
+}
+;
 function Page_panel (parentNode, title, callback) {
     ZeroHeightBr(parentNode)
     Element(parentNode, 'div', function (div) {
@@ -332,6 +339,17 @@ function Page_panel (parentNode, title, callback) {
             div.className = 'panel-content'
             callback(div)
         })
+    })
+}
+;
+function Page_phishingWarning (parentNode, absoluteBase) {
+    Page_infoText(parentNode, function (div) {
+        Text(div, 'You are accessing "')
+        Element(div, 'code', function (code) {
+            Text(code, absoluteBase)
+        })
+        Text(div, '". The address in your browser\'s' +
+            ' address bar should start with it.')
     })
 }
 ;
@@ -388,7 +406,9 @@ window.ui = {
     Page_imageArrowLink: Page_imageArrowLink,
     Page_imageArrowLinkWithDescription: Page_imageArrowLinkWithDescription,
     Page_imageLink: Page_imageLink,
+    Page_infoText: Page_infoText,
     Page_panel: Page_panel,
+    Page_phishingWarning: Page_phishingWarning,
     Page_title: Page_title,
     Page_twoColumns: Page_twoColumns,
     public_page: public_page,

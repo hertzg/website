@@ -30,6 +30,7 @@
                     Hr(form)
                     ui.Form_button(form, 'Sign In')
                 })
+                ui.Page_phishingWarning(div, base)
             })
             ui.Page_panel(body, 'Options', function (div) {
                 ui.Page_imageArrowLinkWithDescription(div,

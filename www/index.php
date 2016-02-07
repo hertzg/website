@@ -71,6 +71,7 @@ echo
             .' content="width=device-width, user-scalable=no" />'
             .page_icon_links($theme_color)
             .compressed_css_link('common', '', 'localNavigation-leave')
+            .compressed_css_link('iconsets', '', 'localNavigation-leave')
             .page_theme_links($theme_color, 'light')
             .compressed_css_link('index')
         .'</head>'
