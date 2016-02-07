@@ -380,6 +380,31 @@ function Page_phishingWarning (parentNode, absoluteBase) {
     })
 }
 ;
+function Page_textList (parentNode, texts, className) {
+    Element(parentNode, 'div', function (div) {
+        div.className = 'textList ' + className
+        Element(div, 'ul', function (ul) {
+            ul.className = 'textList-list'
+            if (texts.length === 1) {
+                Element(ul, 'li', function (li) {
+                    li.className = 'textList-list-item'
+                    Text(li, texts[0])
+                })
+            } else {
+                texts.forEach(function (text) {
+                    Element(ul, 'li', function (li) {
+                        li.className = 'textList-list-item'
+                        Element(li, 'span', function () {
+                            span.className = 'textList-list-item-bullet ' + className
+                        })
+                        Text(li, text)
+                    })
+                })
+            }
+        })
+    })
+}
+;
 function Page_title (parentNode, title, callback) {
     ZeroHeightBr(parentNode)
     Element(parentNode, 'div', function (div) {
@@ -417,6 +442,10 @@ function Page_twoColumns (parentNode, column1Callback, column2Callback) {
     })
 }
 ;
+function Page_warnings (parentNode, texts) {
+    Page_textList(parentNode, texts, 'warnings')
+}
+;
 window.ui = {
     Element: Element,
     Form_button: Form_button,
@@ -438,8 +467,10 @@ window.ui = {
     Page_infoText: Page_infoText,
     Page_panel: Page_panel,
     Page_phishingWarning: Page_phishingWarning,
+    Page_textList: Page_textList,
     Page_title: Page_title,
     Page_twoColumns: Page_twoColumns,
+    Page_warnings: Page_warnings,
     public_page: public_page,
     Text: Text,
     ZeroHeightBr: ZeroHeightBr,

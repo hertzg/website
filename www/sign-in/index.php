@@ -16,9 +16,10 @@ $return = $values['return'];
 
 if ($return === '') $pageWarnings = '';
 else {
-    $warning = 'You need to be signed in to access the page.';
     include_once '../fns/Page/warnings.php';
-    $pageWarnings = Page\warnings([$warning]);
+    $pageWarnings = Page\warnings([
+        'You need to be signed in to access the page.',
+    ]);
 }
 
 include_once 'fns/create_options_panel.php';

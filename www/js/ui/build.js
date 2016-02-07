@@ -27,7 +27,9 @@ CompressJsFiles([
     'Page/infoText',
     'Page/panel',
     'Page/phishingWarning',
+    'Page/textList',
     'Page/title',
     'Page/twoColumns',
+    'Page/warnings',
     'main',
 ])

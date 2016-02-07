@@ -20,6 +20,11 @@
             loadCallback()
             ui.guest_page(body, '../')
             ui.Page_title(body, 'Sign In', function (div) {
+                if (values['return'] !== '') {
+                    ui.Page_warnings(div, [
+                        'You need to be signed in to access the page.',
+                    ])
+                }
                 Element(div, 'form', function (form) {
                     form.action = 'submit.php'
                     form.method = 'post'
