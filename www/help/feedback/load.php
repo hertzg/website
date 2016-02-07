@@ -3,8 +3,8 @@
 include_once '../../fns/signed_user.php';
 $user = signed_user();
 
-//include_once 'fns/unset_session_vars.php';
-//unset_session_vars();
+include_once 'fns/unset_session_vars.php';
+unset_session_vars();
 
 if ($user) $theme_color = $user->theme_color;
 else {

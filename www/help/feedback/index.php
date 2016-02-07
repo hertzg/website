@@ -10,7 +10,8 @@ $key = 'help/feedback/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else $values = ['text' => ''];
 
-unset($_SESSION['help/messages']);
+include_once 'fns/unset_session_vars.php';
+unset_session_vars();
 
 include_once "$fnsDir/Feedbacks/maxLengths.php";
 $maxLengths = Feedbacks\maxLengths();
