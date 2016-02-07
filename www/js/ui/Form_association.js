@@ -1,4 +1,4 @@
-function Form_association (parentNode, propertyCallback, valueCallback) {
+function Form_association (parentNode, valueCallback, propertyCallback) {
     Element(parentNode, 'div', function (div) {
         div.className = 'form-item'
         Element(div, 'div', function (div) {

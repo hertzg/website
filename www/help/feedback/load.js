@@ -54,19 +54,19 @@
                     }
                 })
             })
-            Page_create(body, {
+            ui.Page_create(body, {
                 title: 'Help',
                 href: '../#leave-feedback',
             }, 'Leave Feedback', function (div) {
                 Element(div, 'form', function (form) {
                     form.action = 'submit.php'
                     form.method = 'post'
-                    Form_textarea(form, 'text', 'Text', {
+                    ui.Form_textarea(form, 'text', 'Text', {
                         required: true,
                         autofocus: true,
                     })
                     Hr(form)
-                    Form_button(form, 'Submit Feedback')
+                    ui.Form_button(form, 'Submit Feedback')
                 })
             })
             localNavigation.scanLinks()
@@ -82,10 +82,7 @@
     }
 
     var Element = ui.Element,
-        Form_button = ui.Form_button,
-        Form_textarea = ui.Form_textarea,
         Hr = ui.Hr,
-        Page_create = ui.Page_create,
         Text = ui.Text
 
     var body = document.body

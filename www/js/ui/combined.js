@@ -5,7 +5,7 @@ function Element (parentNode, tagName, callback) {
     callback(element)
 }
 ;
-function Form_association (parentNode, propertyCallback, valueCallback) {
+function Form_association (parentNode, valueCallback, propertyCallback) {
     Element(parentNode, 'div', function (div) {
         div.className = 'form-item'
         Element(div, 'div', function (div) {
@@ -28,14 +28,46 @@ function Form_button (parentNode, text, name) {
     })
 }
 ;
+function Form_captcha (parentNode, base, autofocus) {
+    if (autofocus === undefined) autofocus = false
+    Element(parentNode, 'div', function (div) {
+        div.className = 'form-captcha'
+        Element(div, 'img', function (img) {
+            img.alt = 'CAPTCHA'
+            img.className = 'form-captcha-image'
+            img.src = base + 'captcha/'
+        })
+    })
+    Form_textfield(parentNode, 'captcha', 'Verification', {
+        required: true,
+        autofocus: autofocus,
+    })
+    Form_notes(parentNode, [
+        'Enter the characters shown on the image above.',
+        'This proves that you are a human and not a robot.',
+    ])
+    Hr(parentNode)
+}
+;
+function Form_notes (parentNode, notes) {
+    Form_association(parentNode, function (div) {
+        Element(div, 'ul', function (ul) {
+            ul.className = 'form-notes'
+            notes.forEach(function (note) {
+                Element(ul, 'li', function (li) {
+                    li.className = 'form-notes-item'
+                    Element(li, 'span', function (span) {
+                        span.className = 'form-notes-item-bullet'
+                    })
+                    Text(li, note)
+                })
+            })
+        })
+    }, function () {})
+}
+;
 function Form_textarea (parentNode, name, text, options) {
     Form_association(parentNode, function (div) {
-        Element(div, 'label', function (label) {
-            label.className = 'form-property-label'
-            label.htmlFor = name
-            Text(label, text + ':')
-        })
-    }, function (div) {
         Element(div, 'textarea', function (textarea) {
 
             var value = options.value
@@ -57,10 +89,49 @@ function Form_textarea (parentNode, name, text, options) {
             textarea.id = textarea.name = name
 
         })
+    }, function (div) {
+        Element(div, 'label', function (label) {
+            label.className = 'form-property-label'
+            label.htmlFor = name
+            Text(label, text + ':')
+        })
     })
-    if (options.value !== undefined) {
-        
-    }
+}
+;
+function Form_textfield (parentNode, name, text, options) {
+    Form_association(parentNode, function (div) {
+        Element(div, 'input', function (input) {
+
+            var type = options.type
+            if (type === undefined) type = 'text'
+
+            var value = options.value
+            if (value !== undefined) input.value = value
+
+            var maxlength = options.maxlength
+            if (maxlength !== undefined) input.maxLength = maxlength
+
+            var autofocus = options.autofocus
+            if (autofocus !== undefined) input.autofocus = autofocus
+
+            var readonly = options.readonly
+            if (readonly !== undefined) input.readOnly = readonly
+
+            var required = options.required
+            if (required !== undefined) input.required = required
+
+            input.type = type
+            input.className = 'form-textfield'
+            input.id = input.name = name
+
+        })
+    }, function (div) {
+        Element(div, 'label', function (label) {
+            label.className = 'form-property-label'
+            label.htmlFor = name
+            Text(label, text + ':')
+        })
+    })
 }
 ;
 function Hr (parentNode) {
@@ -196,7 +267,10 @@ function ZeroHeightBr (parentNode) {
 window.ui = {
     Element: Element,
     Form_button: Form_button,
+    Form_captcha: Form_captcha,
+    Form_notes: Form_notes,
     Form_textarea: Form_textarea,
+    Form_textfield: Form_textfield,
     Hr: Hr,
     Page_create: Page_create,
     Page_emptyTabs: Page_emptyTabs,

@@ -1,11 +1,5 @@
 function Form_textarea (parentNode, name, text, options) {
     Form_association(parentNode, function (div) {
-        Element(div, 'label', function (label) {
-            label.className = 'form-property-label'
-            label.htmlFor = name
-            Text(label, text + ':')
-        })
-    }, function (div) {
         Element(div, 'textarea', function (textarea) {
 
             var value = options.value
@@ -27,8 +21,11 @@ function Form_textarea (parentNode, name, text, options) {
             textarea.id = textarea.name = name
 
         })
+    }, function (div) {
+        Element(div, 'label', function (label) {
+            label.className = 'form-property-label'
+            label.htmlFor = name
+            Text(label, text + ':')
+        })
     })
-    if (options.value !== undefined) {
-        
-    }
 }
