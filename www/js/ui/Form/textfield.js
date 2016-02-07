@@ -12,7 +12,10 @@ function Form_textfield (parentNode, name, text, options) {
             if (maxlength !== undefined) input.maxLength = maxlength
 
             var autofocus = options.autofocus
-            if (autofocus !== undefined) input.autofocus = autofocus
+            if (autofocus !== undefined) {
+                input.autofocus = autofocus
+                input.focus()
+            }
 
             var readonly = options.readonly
             if (readonly !== undefined) input.readOnly = readonly
