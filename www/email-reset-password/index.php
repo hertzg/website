@@ -43,6 +43,7 @@ $content = Page\create(
     [
         'title' => 'Sign In',
         'href' => "../sign-in/$queryString#email-reset-password",
+        'localNavigation' => true,
     ],
     'Reset Password',
     Page\sessionErrors('email-reset-password/errors')

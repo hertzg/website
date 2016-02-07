@@ -93,7 +93,8 @@ $content =
     .create_panel(
         'Options',
         Page\imageLinkWithDescription('Already have an account?',
-            'Sign in here.', "../sign-in/$queryString", 'sign-in')
+            'Sign in here.', "../sign-in/$queryString", 'sign-in',
+            ['localNavigation' => true])
     );
 
 include_once '../fns/echo_guest_page.php';

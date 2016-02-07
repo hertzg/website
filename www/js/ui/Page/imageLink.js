@@ -1,14 +1,14 @@
-function Page_imageLink (parentNode,
-    title, href, iconName, options, callback) {
+function Page_imageLink (parentNode, titleOrCallback, href, iconName, options) {
 
-    add(parentNode, 'a', function (a) {
+    Element(parentNode, 'a', function (a) {
         a.name = options.id
     })
-    add(parentNode, 'a', function (a) {
+    Element(parentNode, 'a', function (a) {
 
         var additionalClass
-        if (options.className === undefined) additionalClass = ''
-        else additionalClass = ' ' + options.className
+        var className = options.className
+        if (className === undefined) additionalClass = ''
+        else additionalClass = ' ' + className
         if (options.localNavigation !== undefined) {
             additionalClass += ' localNavigation-link'
         }
@@ -16,18 +16,19 @@ function Page_imageLink (parentNode,
         a.id = options.id
         a.className = 'clickable link image_link' + additionalClass
         a.href = href
-        add(a, 'span', function (span) {
+
+        Element(a, 'span', function (span) {
             span.className = 'image_link-icon'
-            add(span, 'span', function (span) {
+            Element(span, 'span', function (span) {
                 span.className = 'icon ' + iconName
             })
         })
-        add(a, 'span', function (span) {
+        Element(a, 'span', function (span) {
             span.className = 'image_link-content'
-            addText(span, title)
+            if (typeof titleOrCallback === 'string') Text(span, titleOrCallback)
+            else titleOrCallback(span)
         })
 
     })
 
 }
-

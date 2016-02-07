@@ -21,7 +21,10 @@ if (SignUpEnabled\get()) {
         '<div class="buttonsWrapper-half left">'
             .'<div class="buttonsWrapper-limit left">'
                 .'<div class="buttonWrapper left">'
-                    .'<a class="clickable button" href="sign-in/">Sign In</a>'
+                    .'<a href="sign-in/"'
+                    .' class="clickable button localNavigation-link">'
+                        .'Sign In'
+                    .'</a>'
                 .'</div>'
             .'</div>'
         .'</div>'
@@ -55,6 +58,7 @@ include_once 'fns/compressed_js_script.php';
 include_once 'fns/get_revision.php';
 include_once 'fns/page_icon_links.php';
 include_once 'fns/page_theme_links.php';
+include_once 'fns/loader_revisions.php';
 include_once 'fns/SiteTitle/get.php';
 echo
     '<!DOCTYPE html>'
@@ -65,12 +69,21 @@ echo
             .' content="text/html; charset=UTF-8" />'
             .'<meta name="viewport"'
             .' content="width=device-width, user-scalable=no" />'
-            .compressed_css_link('common')
             .page_icon_links($theme_color)
+            .compressed_css_link('common', '', 'localNavigation-leave')
             .page_theme_links($theme_color, 'light')
             .compressed_css_link('index')
         .'</head>'
         .'<body>'
+            .'<script type="text/javascript">'
+                ."var base = ''\n"
+                .'var loaderRevisions = '.json_encode(loader_revisions())
+            .'</script>'
+            .compressed_js_script('unloadProgress',
+                '', 'localNavigation-leave')
+            .compressed_js_script('localNavigation',
+                '', 'localNavigation-leave')
+            .compressed_js_script('ui', '', 'localNavigation-leave')
             .'<div class="backgroundGradient">'
                 .'<div class="backgroundGradient-gradient"></div>'
             .'</div>'
@@ -87,9 +100,5 @@ echo
             .'</div>'
             .'<br class="zeroHeight" />'
             ."<div class=\"buttonsWrapper\">$buttons</div>"
-            .'<script type="text/javascript">'
-                ."var base = ''"
-            .'</script>'
-            .compressed_js_script('unloadProgress')
         .'</body>'
     .'</html>';

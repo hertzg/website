@@ -3,7 +3,7 @@
     function loadFunction (base, loadCallback, errorCallback) {
 
         var request = new XMLHttpRequest
-        request.open('get', base + 'help/load.php')
+        request.open('get', base + 'sign-in/load.php')
         request.send()
         request.onerror = errorCallback
         request.onload = function () {
@@ -14,9 +14,8 @@
             }
 
             var response = JSON.parse(request.responseText)
-            var user = response.user
 
-            document.title = 'Help'
+            document.title = 'Sign In'
             loadCallback()
             Element(body, 'div', function (div) {
                 div.id = 'tbar'
@@ -24,13 +23,14 @@
                     div.id = 'tbar-limit'
                     Element(div, 'a', function (a) {
                         a.className = 'topLink logoLink'
-                        a.href = user ? '../home/' : '../'
+                        a.href = '../'
                         Element(a, 'img', function (img) {
                             img.alt = 'Zvini'
                             img.className = 'logoLink-img'
                             img.src = '../' + response.logoSrc
                         })
                     })
+/*
                     Element(div, 'div', function (div) {
                         div.className = 'page-clockWrapper'
                         Element(div, 'div', function (div) {
@@ -41,40 +41,33 @@
                             Text(div, '00:00:00')
                         })
                     })
-                    if (user) {
-                        Element(div, 'div', function (div) {
-                            div.className = 'pageTopRightLinks'
-                            Element(div, 'a', function (a) {
-                                a.id = 'signOutLink'
-                                a.className = 'topLink'
-                                a.href = '../sign-out/'
-                                Text(a, 'Sign Out')
-                            })
-                        })
-                    }
+*/
                 })
             })
-            ui.Page_create(body, {
-                title: 'Home',
-                href: '../home/#help',
-            }, 'Help', function (div) {
-                Page_imageLink(div, 'Install Zvini App', 'install-zvini-app/',
-                    'download', { id: 'install-zvini-app' })
-                Hr(div)
-                Page_imageLink(div, 'Install Link Handlers',
-                    'install-link-handlers/', 'protocol',
-                    { id: 'install-link-handlers' })
-                Hr(div)
-                Page_imageArrowLink(div, 'Leave Feedback', 'feedback/', 'feedback', {
-                    id: 'feedback',
-                    localNavigation: true,
+            ui.Page_title(body, 'Sign In', function (div) {
+                Element(div, 'form', function (form) {
+                    ui.Form_textfield(form, 'username', 'Username', {
+                        required: true,
+                    })
+                    Hr(form)
+                    ui.Form_password(form, 'password', 'Password', {
+                        required: true,
+                    })
+                    Hr(form)
+                    ui.Form_button(form, 'Sign In')
                 })
-                Hr(div)
-                Page_imageArrowLink(div, 'API Documentation',
-                    'api-doc/', 'api-doc', { id: 'api-doc' })
-                Hr(div)
-                Page_imageArrowLink(div, 'About Zvini',
-                    'about-zvini/', 'zvini', { id: 'about-zvini' })
+            })
+            ui.Page_panel(body, 'Options', function (div) {
+                ui.Page_imageArrowLinkWithDescription(div,
+                    'Forgot password?', 'Reset your account password here.',
+                    '../email-reset-password/', 'reset-password',
+                    { id: 'email-reset-password' })
+                if (response.sign_up_enabled) {
+                    Hr(div)
+                    ui.Page_imageArrowLinkWithDescription(div,
+                        "Don't have an account?", 'Create an account here.',
+                        '../sign-up/', 'new-password', {})
+                }
             })
             localNavigation.scanLinks()
 
@@ -95,6 +88,6 @@
         Text = ui.Text
 
     var body = document.body
-    localNavigation.registerPage('help/', loadFunction)
+    localNavigation.registerPage('sign-in/', loadFunction)
 
 })(localNavigation, ui)

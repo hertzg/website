@@ -31,12 +31,8 @@ if (array_key_exists($key, $_SESSION)) {
 
 }
 
-unset(
-    $_SESSION['email-reset-password/errors'],
-    $_SESSION['email-reset-password/values'],
-    $_SESSION['sign-up/errors'],
-    $_SESSION['sign-up/values']
-);
+include_once 'fns/unset_session_vars.php';
+unset_session_vars();
 
 $username = $values['username'];
 $return = $values['return'];

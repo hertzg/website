@@ -5,6 +5,37 @@ function Element (parentNode, tagName, callback) {
     callback(element)
 }
 ;
+function Hr (parentNode) {
+    var div = document.createElement('div')
+    div.className = 'hr'
+    parentNode.appendChild(div)
+}
+;
+function Text (element, text) {
+    element.appendChild(document.createTextNode(text))
+}
+;
+function title_and_description (parentNode, title, description) {
+    Element(parentNode, 'span', function (span) {
+        span.className = 'title_and_description'
+        Element(span, 'span', function (span) {
+            span.className = 'title_and_description-title'
+            Text(span, title)
+        })
+        ZeroHeightBr(span)
+        Element(span, 'span', function (span) {
+            span.className = 'title_and_description-description colorText grey'
+            Text(span, description)
+        })
+    })
+}
+;
+function ZeroHeightBr (parentNode) {
+    Element(parentNode, 'br', function (br) {
+        br.className = 'zeroHeight'
+    })
+}
+;
 function Form_association (parentNode, valueCallback, propertyCallback) {
     Element(parentNode, 'div', function (div) {
         div.className = 'form-item'
@@ -64,6 +95,11 @@ function Form_notes (parentNode, notes) {
             })
         })
     }, function () {})
+}
+;
+function Form_password (parentNode, name, text, options) {
+    options.type = 'password'
+    Form_textfield(parentNode, name, text, options)
 }
 ;
 function Form_textarea (parentNode, name, text, options) {
@@ -134,12 +170,6 @@ function Form_textfield (parentNode, name, text, options) {
     })
 }
 ;
-function Hr (parentNode) {
-    var div = document.createElement('div')
-    div.className = 'hr'
-    parentNode.appendChild(div)
-}
-;
 function Page_create (parentNode, backlink, title, callback) {
     ZeroHeightBr(parentNode)
     Element(parentNode, 'div', function (div) {
@@ -183,8 +213,19 @@ function Page_imageArrowLink (parentNode,
     Page_imageLink(parentNode, title, href, iconName, options, callback)
 
 }
+
 ;
-function Page_imageLink (parentNode, title, href, iconName, options, callback) {
+function Page_imageArrowLinkWithDescription (parentNode,
+    title, description, href, iconName, options, callback) {
+
+    options.className = 'withArrow'
+    Page_imageLink(parentNode, function (span) {
+        title_and_description(span, title, description)
+    }, href, iconName, options, callback)
+
+}
+;
+function Page_imageLink (parentNode, titleOrCallback, href, iconName, options) {
 
     Element(parentNode, 'a', function (a) {
         a.name = options.id
@@ -211,7 +252,8 @@ function Page_imageLink (parentNode, title, href, iconName, options, callback) {
         })
         Element(a, 'span', function (span) {
             span.className = 'image_link-content'
-            Text(span, title)
+            if (typeof titleOrCallback === 'string') Text(span, titleOrCallback)
+            else titleOrCallback(span)
         })
 
     })
@@ -240,6 +282,29 @@ function Page_panel (parentNode, title, callback) {
     })
 }
 ;
+function Page_title (parentNode, title, callback) {
+    ZeroHeightBr(parentNode)
+    Element(parentNode, 'div', function (div) {
+        div.className = 'tab'
+        Element(div, 'div', function (div) {
+            div.className = 'tab-bar'
+            Element(div, 'span', function (span) {
+                span.className = 'tab-active limited'
+                Element(span, 'span', function (span) {
+                    span.className = 'zeroSize'
+                    Text(span, ' \xbb ')
+                })
+                Text(span, title)
+            })
+        })
+    })
+    ZeroHeightBr(parentNode)
+    Element(parentNode, 'div', function (div) {
+        div.className = 'tab-content'
+        callback(div)
+    })
+}
+;
 function Page_twoColumns (parentNode, column1Callback, column2Callback) {
     Element(parentNode, 'div', function (div) {
         div.className = 'twoColumns'
@@ -254,29 +319,22 @@ function Page_twoColumns (parentNode, column1Callback, column2Callback) {
     })
 }
 ;
-function Text (element, text) {
-    element.appendChild(document.createTextNode(text))
-}
-;
-function ZeroHeightBr (parentNode) {
-    Element(parentNode, 'br', function (br) {
-        br.className = 'zeroHeight'
-    })
-}
-;
 window.ui = {
     Element: Element,
     Form_button: Form_button,
     Form_captcha: Form_captcha,
     Form_notes: Form_notes,
+    Form_password: Form_password,
     Form_textarea: Form_textarea,
     Form_textfield: Form_textfield,
     Hr: Hr,
     Page_create: Page_create,
     Page_emptyTabs: Page_emptyTabs,
     Page_imageArrowLink: Page_imageArrowLink,
+    Page_imageArrowLinkWithDescription: Page_imageArrowLinkWithDescription,
     Page_imageLink: Page_imageLink,
     Page_panel: Page_panel,
+    Page_title: Page_title,
     Page_twoColumns: Page_twoColumns,
     Text: Text,
     ZeroHeightBr: ZeroHeightBr,

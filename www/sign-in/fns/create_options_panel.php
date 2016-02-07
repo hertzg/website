@@ -19,7 +19,7 @@ function create_options_panel ($return) {
     if (SignUpEnabled\get()) {
         include_once "$fnsDir/Page/imageLinkWithDescription.php";
         $options[] = Page\imageLinkWithDescription(
-            'Don\'t have an account?', 'Create an account here.',
+            "Don't have an account?", 'Create an account here.',
             "../sign-up/$queryString", 'new-password');
     }
 

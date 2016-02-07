@@ -5,5 +5,6 @@ function loader_revisions () {
         'help/' => 5,
         'help/feedback/' => 2,
         'home/' => 3,
+        'sign-in/' => 1,
     ];
 }
