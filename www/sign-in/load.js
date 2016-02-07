@@ -14,6 +14,7 @@
             }
 
             var response = JSON.parse(request.responseText)
+            var values = response.values
 
             document.title = 'Sign In'
             loadCallback()
@@ -23,18 +24,23 @@
                     form.action = 'submit.php'
                     form.method = 'post'
                     ui.Form_textfield(form, 'username', 'Username', {
+                        value: values.username,
                         required: true,
+                        autofocus: true,
                     })
                     Hr(form)
                     ui.Form_password(form, 'password', 'Password', {
+                        value: values.password,
                         required: true,
                     })
                     Hr(form)
-                    ui.Form_checkbox(form, 'remember', 'Stay signed in', false)
+                    ui.Form_checkbox(form, 'remember',
+                        'Stay signed in', values.remember)
                     Hr(form)
                     ui.Form_button(form, 'Sign In')
+                    ui.Form_hidden(form, 'return', values['return'])
+                    ui.Page_phishingWarning(form, base)
                 })
-                ui.Page_phishingWarning(div, base)
             })
             ui.Page_panel(body, 'Options', function (div) {
                 ui.Page_imageArrowLinkWithDescription(div,

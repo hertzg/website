@@ -5,34 +5,11 @@ $base = '../';
 include_once '../fns/require_guest_user.php';
 require_guest_user($base);
 
-$key = 'sign-in/values';
-if (array_key_exists($key, $_SESSION)) {
-    $values = $_SESSION[$key];
-} else {
-
-    include_once '../fns/request_strings.php';
-    list($username, $return) = request_strings('username', 'return');
-
-    if ($username === '') {
-        if (array_key_exists('username', $_COOKIE)) {
-            $username = $_COOKIE['username'];
-            if (!is_string($username)) $username = '';
-        } else {
-            $username = '';
-        }
-    }
-
-    $values = [
-        'username' => $username,
-        'password' => '',
-        'remember' => array_key_exists('remember', $_COOKIE),
-        'return' => $return,
-    ];
-
-}
-
 include_once 'fns/unset_session_vars.php';
 unset_session_vars();
+
+include_once 'fns/get_values.php';
+$values = get_values();
 
 $username = $values['username'];
 $return = $values['return'];

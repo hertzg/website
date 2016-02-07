@@ -146,6 +146,14 @@ function Form_checkbox (parentNode, name, text, checked) {
     })
 }
 ;
+function Form_hidden (parentNode, name, value) {
+    Element(parentNode, 'input', function (input) {
+        input.type = 'hidden'
+        input.name = name
+        input.value = value
+    })
+}
+;
 function Form_notes (parentNode, notes) {
     Form_association(parentNode, function (div) {
         Element(div, 'ul', function (ul) {
@@ -414,6 +422,7 @@ window.ui = {
     Form_button: Form_button,
     Form_captcha: Form_captcha,
     Form_checkbox: Form_checkbox,
+    Form_hidden: Form_hidden,
     Form_notes: Form_notes,
     Form_password: Form_password,
     Form_textarea: Form_textarea,
