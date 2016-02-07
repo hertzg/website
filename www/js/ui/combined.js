@@ -127,6 +127,25 @@ function Form_captcha (parentNode, base, autofocus) {
     Hr(parentNode)
 }
 ;
+function Form_checkbox (parentNode, name, text, checked) {
+    Element(parentNode, 'div', function (div) {
+        div.className = 'form-checkbox transformable'
+        Element(div, 'label', function (label) {
+            label.className = 'form-checkbox-label clickable'
+            Element(label, 'span', function (span) {
+                span.className = 'form-checkbox-inputWrapper'
+                Element(span, 'input', function (input) {
+                    input.className = 'form-checkbox-input'
+                    input.type = 'checkbox'
+                    input.id = input.name = name
+                    if (checked === true) input.checked = true
+                })
+            })
+            Text(label, text)
+        })
+    })
+}
+;
 function Form_notes (parentNode, notes) {
     Form_association(parentNode, function (div) {
         Element(div, 'ul', function (ul) {
@@ -394,6 +413,7 @@ window.ui = {
     Element: Element,
     Form_button: Form_button,
     Form_captcha: Form_captcha,
+    Form_checkbox: Form_checkbox,
     Form_notes: Form_notes,
     Form_password: Form_password,
     Form_textarea: Form_textarea,

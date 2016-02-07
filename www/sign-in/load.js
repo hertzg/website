@@ -20,6 +20,8 @@
             ui.guest_page(body, '../')
             ui.Page_title(body, 'Sign In', function (div) {
                 Element(div, 'form', function (form) {
+                    form.action = 'submit.php'
+                    form.method = 'post'
                     ui.Form_textfield(form, 'username', 'Username', {
                         required: true,
                     })
@@ -27,6 +29,8 @@
                     ui.Form_password(form, 'password', 'Password', {
                         required: true,
                     })
+                    Hr(form)
+                    ui.Form_checkbox(form, 'remember', 'Stay signed in', false)
                     Hr(form)
                     ui.Form_button(form, 'Sign In')
                 })

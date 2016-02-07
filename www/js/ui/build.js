@@ -13,6 +13,7 @@ CompressJsFiles([
     'Form/association',
     'Form/button',
     'Form/captcha',
+    'Form/checkbox',
     'Form/notes',
     'Form/password',
     'Form/textarea',

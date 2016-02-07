@@ -2,6 +2,7 @@ window.ui = {
     Element: Element,
     Form_button: Form_button,
     Form_captcha: Form_captcha,
+    Form_checkbox: Form_checkbox,
     Form_notes: Form_notes,
     Form_password: Form_password,
     Form_textarea: Form_textarea,
