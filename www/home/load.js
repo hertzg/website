@@ -54,14 +54,14 @@
             ui.Page_emptyTabs(body, function (div) {
             })
             ui.Page_panel(body, 'Options', function (div) {
-                Page_twoColumns(div, function (div) {
+                ui.Page_twoColumns(div, function (div) {
                     Page_imageArrowLink(div, 'Account',
                         '../account/', 'account', { id: 'account' })
                 }, function (div) {
                     Page_imageArrowLink(div, 'Customize Home',
                         'customize/', 'edit-home', { id: 'customize' })
                 })
-                Hr(div)
+                ui.Hr(div)
                 Page_imageArrowLink(div, 'Help', '../help/', 'help', {
                     id: 'help',
                     localNavigation: true,
@@ -80,10 +80,7 @@
     }
 
     var Element = ui.Element,
-        Hr = ui.Hr,
         Page_imageArrowLink = ui.Page_imageArrowLink,
-        Page_imageLink = ui.Page_imageLink,
-        Page_twoColumns = ui.Page_twoColumns,
         Text = ui.Text
 
     var body = document.body

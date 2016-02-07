@@ -82,10 +82,7 @@
     }
 
     var Element = ui.Element,
-        Hr = ui.Hr,
-        Page_imageArrowLink = ui.Page_imageArrowLink,
-        Page_imageLink = ui.Page_imageLink,
-        Text = ui.Text
+        Hr = ui.Hr
 
     var body = document.body
     localNavigation.registerPage('sign-in/', loadFunction)

@@ -65,7 +65,7 @@
                         required: true,
                         autofocus: true,
                     })
-                    Hr(form)
+                    ui.Hr(form)
                     ui.Form_button(form, 'Submit Feedback')
                 })
             })
@@ -82,7 +82,6 @@
     }
 
     var Element = ui.Element,
-        Hr = ui.Hr,
         Text = ui.Text
 
     var body = document.body
