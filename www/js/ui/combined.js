@@ -5,6 +5,23 @@ function Element (parentNode, tagName, callback) {
     callback(element)
 }
 ;
+function guest_page (body, base) {
+    Element(body, 'div', function (div) {
+        div.id = 'tbar'
+        Element(div, 'div', function (div) {
+            div.id = 'tbar-limit'
+            Element(div, 'a', function (a) {
+                a.className = 'topLink logoLink'
+                a.href = base
+                Element(a, 'img', function (img) {
+                    img.alt = 'Zvini'
+                    img.className = 'logoLink-img'
+                })
+            })
+        })
+    })
+}
+;
 function Hr (parentNode) {
     var div = document.createElement('div')
     div.className = 'hr'
@@ -327,6 +344,7 @@ window.ui = {
     Form_password: Form_password,
     Form_textarea: Form_textarea,
     Form_textfield: Form_textfield,
+    guest_page: guest_page,
     Hr: Hr,
     Page_create: Page_create,
     Page_emptyTabs: Page_emptyTabs,

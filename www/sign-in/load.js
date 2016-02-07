@@ -17,33 +17,7 @@
 
             document.title = 'Sign In'
             loadCallback()
-            Element(body, 'div', function (div) {
-                div.id = 'tbar'
-                Element(div, 'div', function (div) {
-                    div.id = 'tbar-limit'
-                    Element(div, 'a', function (a) {
-                        a.className = 'topLink logoLink'
-                        a.href = '../'
-                        Element(a, 'img', function (img) {
-                            img.alt = 'Zvini'
-                            img.className = 'logoLink-img'
-                            img.src = '../' + response.logoSrc
-                        })
-                    })
-/*
-                    Element(div, 'div', function (div) {
-                        div.className = 'page-clockWrapper'
-                        Element(div, 'div', function (div) {
-                            div.id = 'batteryWrapper'
-                        })
-                        Element(div, 'div', function (div) {
-                            div.id = 'dynamicClockWrapper'
-                            Text(div, '00:00:00')
-                        })
-                    })
-*/
-                })
-            })
+            ui.guest_page(body, '../')
             ui.Page_title(body, 'Sign In', function (div) {
                 Element(div, 'form', function (form) {
                     ui.Form_textfield(form, 'username', 'Username', {

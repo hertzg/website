@@ -6,6 +6,7 @@ window.ui = {
     Form_password: Form_password,
     Form_textarea: Form_textarea,
     Form_textfield: Form_textfield,
+    guest_page: guest_page,
     Hr: Hr,
     Page_create: Page_create,
     Page_emptyTabs: Page_emptyTabs,
