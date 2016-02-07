@@ -5,27 +5,57 @@ function Element (parentNode, tagName, callback) {
     callback(element)
 }
 ;
-function guest_page (body, base) {
-    Element(body, 'div', function (div) {
-        div.id = 'tbar'
-        Element(div, 'div', function (div) {
-            div.id = 'tbar-limit'
-            Element(div, 'a', function (a) {
-                a.className = 'topLink logoLink'
-                a.href = base
-                Element(a, 'img', function (img) {
-                    img.alt = 'Zvini'
-                    img.className = 'logoLink-img'
-                })
-            })
-        })
-    })
+function guest_page (body, base, options) {
+    page(body, null, base, options)
 }
 ;
 function Hr (parentNode) {
     var div = document.createElement('div')
     div.className = 'hr'
     parentNode.appendChild(div)
+}
+;
+function page (body, user, base, options) {
+    if (options === undefined) options = {}
+    Element(body, 'div', function (div) {
+        div.id = 'tbar'
+        Element(div, 'div', function (div) {
+            div.id = 'tbar-limit'
+            Element(div, 'a', function (a) {
+
+                var logoHref = options.logoHref
+                if (logoHref === undefined) logoHref = base
+
+                a.className = 'topLink logoLink'
+                a.href = logoHref
+
+                Element(a, 'img', function (img) {
+                    img.alt = 'Zvini'
+                    img.className = 'logoLink-img'
+                })
+
+            })
+            if (user) {
+                Element(div, 'div', function (div) {
+                    div.className = 'pageTopRightLinks'
+                    Element(div, 'a', function (a) {
+                        a.id = 'signOutLink'
+                        a.className = 'topLink'
+                        a.href = base + 'sign-out/'
+                        Text(a, 'Sign Out')
+                    })
+                })
+            }
+        })
+    })
+}
+;
+function public_page (body, user, base, options) {
+    if (user) {
+        if (options === undefined) options = {}
+        options.logoHref = base + 'home/'
+    }
+    page(body, user, base, options)
 }
 ;
 function Text (element, text) {
@@ -346,6 +376,7 @@ window.ui = {
     Form_textfield: Form_textfield,
     guest_page: guest_page,
     Hr: Hr,
+    page: page,
     Page_create: Page_create,
     Page_emptyTabs: Page_emptyTabs,
     Page_imageArrowLink: Page_imageArrowLink,
@@ -354,6 +385,7 @@ window.ui = {
     Page_panel: Page_panel,
     Page_title: Page_title,
     Page_twoColumns: Page_twoColumns,
+    public_page: public_page,
     Text: Text,
     ZeroHeightBr: ZeroHeightBr,
 }

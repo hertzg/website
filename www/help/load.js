@@ -18,42 +18,7 @@
 
             document.title = 'Help'
             loadCallback()
-            Element(body, 'div', function (div) {
-                div.id = 'tbar'
-                Element(div, 'div', function (div) {
-                    div.id = 'tbar-limit'
-                    Element(div, 'a', function (a) {
-                        a.className = 'topLink logoLink'
-                        a.href = user ? '../home/' : '../'
-                        Element(a, 'img', function (img) {
-                            img.alt = 'Zvini'
-                            img.className = 'logoLink-img'
-                            img.src = '../' + response.logoSrc
-                        })
-                    })
-                    Element(div, 'div', function (div) {
-                        div.className = 'page-clockWrapper'
-                        Element(div, 'div', function (div) {
-                            div.id = 'batteryWrapper'
-                        })
-                        Element(div, 'div', function (div) {
-                            div.id = 'dynamicClockWrapper'
-                            Text(div, '00:00:00')
-                        })
-                    })
-                    if (user) {
-                        Element(div, 'div', function (div) {
-                            div.className = 'pageTopRightLinks'
-                            Element(div, 'a', function (a) {
-                                a.id = 'signOutLink'
-                                a.className = 'topLink'
-                                a.href = '../sign-out/'
-                                Text(a, 'Sign Out')
-                            })
-                        })
-                    }
-                })
-            })
+            ui.public_page(body, user, '../')
             ui.Page_create(body, {
                 title: 'Home',
                 href: '../home/#help',

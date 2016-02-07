@@ -5,6 +5,8 @@ CompressJsFiles([
     'Element',
     'guest_page',
     'Hr',
+    'page',
+    'public_page',
     'Text',
     'title_and_description',
     'ZeroHeightBr',

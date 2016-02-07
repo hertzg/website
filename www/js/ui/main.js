@@ -8,6 +8,7 @@ window.ui = {
     Form_textfield: Form_textfield,
     guest_page: guest_page,
     Hr: Hr,
+    page: page,
     Page_create: Page_create,
     Page_emptyTabs: Page_emptyTabs,
     Page_imageArrowLink: Page_imageArrowLink,
@@ -16,6 +17,7 @@ window.ui = {
     Page_panel: Page_panel,
     Page_title: Page_title,
     Page_twoColumns: Page_twoColumns,
+    public_page: public_page,
     Text: Text,
     ZeroHeightBr: ZeroHeightBr,
 }
