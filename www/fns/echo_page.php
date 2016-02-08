@@ -84,8 +84,7 @@ function echo_page ($user, $title, $content, $base, $options = []) {
         .$content
         .'<script type="text/javascript">'
             ."var time = $time\n"
-            ."var timezone = $timezone\n"
-            ."var base = ".json_encode($base)
+            ."var timezone = $timezone"
         .'</script>'
         .compressed_js_script('batteryAndClock', $base)
         .compressed_js_script('lineSizeRounding', $base);
