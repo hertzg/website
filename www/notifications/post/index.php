@@ -44,7 +44,7 @@ $content = Page\create(
     ],
     'Post a Notification',
     Page\sessionErrors('notifications/post/errors')
-    .'<form method="post" action="submit.php">'
+    .'<form action="submit.php" method="post">'
         .Form\select('id_channels', 'Channel', $options,
             $values['id_channels'], $focus === 'id_channels')
         .'<div class="hr"></div>'
