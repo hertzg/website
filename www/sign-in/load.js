@@ -15,6 +15,12 @@
 
             var response = JSON.parse(request.responseText)
             var values = response.values
+            var username = values.username
+            var returnVar = values['return']
+
+            var queryString
+            if (returnVar === '') queryString = ''
+            else queryString = '?return=' + encodeURIComponent(returnVar)
 
             document.title = 'Sign In'
             loadCallback()
@@ -31,34 +37,35 @@
                     form.action = 'submit.php'
                     form.method = 'post'
                     ui.Form_textfield(form, 'username', 'Username', {
-                        value: values.username,
+                        value: username,
                         required: true,
-                        autofocus: true,
+                        autofocus: username === '',
                     })
                     ui.Hr(form)
                     ui.Form_password(form, 'password', 'Password', {
                         value: values.password,
                         required: true,
+                        autofocus: username !== '',
                     })
                     ui.Hr(form)
                     ui.Form_checkbox(form, 'remember',
                         'Stay signed in', values.remember)
                     ui.Hr(form)
                     ui.Form_button(form, 'Sign In')
-                    ui.Form_hidden(form, 'return', values['return'])
+                    ui.Form_hidden(form, 'return', returnVar)
                     ui.Page_phishingWarning(form, base)
                 })
             })
             ui.Page_panel(body, 'Options', function (div) {
                 ui.Page_imageArrowLinkWithDescription(div,
                     'Forgot password?', 'Reset your account password here.',
-                    '../email-reset-password/', 'reset-password',
+                    '../email-reset-password/' + queryString, 'reset-password',
                     { id: 'email-reset-password' })
                 if (response.sign_up_enabled) {
                     ui.Hr(div)
                     ui.Page_imageArrowLinkWithDescription(div,
                         "Don't have an account?", 'Create an account here.',
-                        '../sign-up/', 'new-password', {})
+                        '../sign-up/' + queryString, 'new-password')
                 }
             })
             localNavigation.scanLinks()

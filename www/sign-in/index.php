@@ -43,14 +43,14 @@ $content =
             .Form\textfield('username', 'Username', [
                 'value' => $username,
                 'maxlength' => Username\maxLength(),
-                'autofocus' => $username === '',
                 'required' => true,
+                'autofocus' => $username === '',
             ])
             .'<div class="hr"></div>'
             .Form\password('password', 'Password', [
                 'value' => $values['password'],
-                'autofocus' => $username !== '',
                 'required' => true,
+                'autofocus' => $username !== '',
             ])
             .'<div class="hr"></div>'
             .Form\checkbox('remember', 'Stay signed in', $values['remember'])
