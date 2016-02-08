@@ -5,7 +5,7 @@ function Battery (base) {
 
         var img = document.createElement('img')
         img.alt = alt
-        img.src = base + 'images/' + imageName + '.svg'
+        img.src = absoluteBase + 'images/' + imageName + '.svg'
 
         var style = img.style
         style.display = 'inline-block'
@@ -40,6 +40,12 @@ function Battery (base) {
         var display = battery.charging ? 'inline-block' : 'none'
         chargingElement.style.display = display
     }
+
+    var absoluteBase = (function () {
+        var a = document.createElement('a')
+        a.href = base
+        return a.href
+    })()
 
     var valueElement = document.createElement('div')
     ;(function (style) {
@@ -90,6 +96,12 @@ function Battery (base) {
 
     } else {
         borderElement.appendChild(ImageDiv('question', '?'))
+    }
+
+    return {
+        reload: function (parentNode) {
+            parentNode.appendChild(batteryWrapper)
+        },
     }
 
 }
@@ -179,14 +191,35 @@ function Clock (remoteTime, timezone) {
         onUpdate: function (listener) {
             updateListeners.push(listener)
         },
+        reload: function (parentNode) {
+            parentNode.appendChild(dynamicClockWrapper)
+        },
     }
 
 }
 ;
 (function (base, time, timezone) {
-    Battery(base)
+
+    var batteryAndClock = window.batteryAndClock
+    if (batteryAndClock) {
+        console.log('batteryAndClock already loaded reloading')
+        batteryAndClock.reload()
+        return
+    }
+
+    var battery = Battery(base)
     var clock = Clock(time, timezone)
-    window.batteryAndClock = { onClockUpdate: clock.onUpdate }
+
+    window.batteryAndClock = {
+        onClockUpdate: clock.onUpdate,
+        reload: function () {
+            console.log('batteryAndClock.reload')
+            var parentNode = document.querySelector('.page-clockWrapper')
+            battery.reload(parentNode)
+            clock.reload(parentNode)
+        },
+    }
+
 })(base, time, timezone)
 ;
 

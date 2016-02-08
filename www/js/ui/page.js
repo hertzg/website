@@ -29,16 +29,6 @@ var page = (function (defaultThemeColor, revisions) {
                 })
                 Element(div, 'div', function (div) {
                     div.className = 'page-clockWrapper'
-                    Element(div, 'div', function (div) {
-                        div.id = 'staticClockWrapper'
-                        Text(div, '--:--:--')
-                    })
-                    Element(div, 'div', function (div) {
-                        div.id = 'batteryWrapper'
-                    })
-                    Element(div, 'div', function (div) {
-                        div.id = 'dynamicClockWrapper'
-                    })
                 })
                 if (user) {
                     Element(div, 'div', function (div) {

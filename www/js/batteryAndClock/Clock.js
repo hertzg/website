@@ -83,6 +83,9 @@ function Clock (remoteTime, timezone) {
         onUpdate: function (listener) {
             updateListeners.push(listener)
         },
+        reload: function (parentNode) {
+            parentNode.appendChild(dynamicClockWrapper)
+        },
     }
 
 }
