@@ -20,6 +20,7 @@
             loadCallback()
             ui.guest_page(body, '../')
             ui.Page_title(body, 'Sign In', function (div) {
+                ui.Page_sessionErrors(div, response.errors)
                 if (values['return'] !== '') {
                     ui.Page_warnings(div, [
                         'You need to be signed in to access the page.',
