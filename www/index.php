@@ -58,7 +58,7 @@ include_once 'fns/compressed_js_script.php';
 include_once 'fns/get_revision.php';
 include_once 'fns/page_icon_links.php';
 include_once 'fns/page_theme_links.php';
-include_once 'fns/loader_revisions.php';
+include_once 'fns/vars_script.php';
 include_once 'fns/SiteTitle/get.php';
 echo
     '<!DOCTYPE html>'
@@ -76,10 +76,7 @@ echo
             .compressed_css_link('index')
         .'</head>'
         .'<body>'
-            .'<script type="text/javascript">'
-                ."var base = ''\n"
-                .'var loaderRevisions = '.json_encode(loader_revisions())
-            .'</script>'
+            .vars_script('')
             .compressed_js_script('unloadProgress',
                 '', 'localNavigation-leave')
             .compressed_js_script('localNavigation',
