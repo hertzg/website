@@ -1,10 +1,10 @@
 <?php
 
 function parse_read_write ($access, &$read, &$write) {
-    if ($access == 'readonly') {
+    if ($access === 'readonly') {
         $read = true;
         $write = false;
-    } elseif ($access == 'readwrite') {
+    } elseif ($access === 'readwrite') {
         $read = true;
         $write = true;
     } else {
