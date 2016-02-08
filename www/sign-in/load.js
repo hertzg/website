@@ -37,6 +37,7 @@
                     form.action = 'submit.php'
                     form.method = 'post'
                     ui.Form_textfield(form, 'username', 'Username', {
+                        maxlength: response.usernameMaxLength,
                         value: username,
                         required: true,
                         autofocus: username === '',

@@ -8,9 +8,11 @@ unset_session_vars();
 
 include_once 'fns/get_values.php';
 include_once '../fns/SignUpEnabled/get.php';
+include_once '../fns/Username/maxLength.php';
 $response = [
     'values' => get_values(),
     'sign_up_enabled' => SignUpEnabled\get(),
+    'usernameMaxLength' => Username\maxLength(),
 ];
 
 $key = 'sign-in/errors';

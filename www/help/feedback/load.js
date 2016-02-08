@@ -28,6 +28,7 @@
                     form.action = 'submit.php'
                     form.method = 'post'
                     ui.Form_textarea(form, 'text', 'Text', {
+                        maxlength: response.maxLengths.text,
                         required: true,
                         autofocus: true,
                     })

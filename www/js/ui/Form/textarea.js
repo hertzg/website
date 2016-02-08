@@ -6,7 +6,7 @@ function Form_textarea (parentNode, name, text, options) {
             if (value !== undefined) textarea.value = value
 
             var maxlength = options.maxlength
-            if (maxlength !== undefined) textarea.maxlength = maxlength
+            if (maxlength !== undefined) textarea.maxLength = maxlength
 
             var autofocus = options.autofocus
             if (autofocus !== undefined) {
