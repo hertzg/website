@@ -1,4 +1,30 @@
 (function () {
+function compressed_css_link (parentNode, revisions, name, base, className) {
+
+    var fullName = 'css/' + name + '/compressed.css'
+
+    Element(parentNode, 'link', function (link) {
+        link.rel = 'stylesheet'
+        link.type = 'text/css'
+        link.href = base + fullName + '?' + revisions[fullName]
+        if (className !== undefined) link.className = className
+    })
+
+}
+;
+function compressed_js_script (parentNode, revisions, name, base, className) {
+
+    var fullName = 'js/' + name + '/compressed.js'
+
+    Element(parentNode, 'script', function (script) {
+        script.type = 'text/javascript'
+        script.defer = true
+        script.src = base + fullName + '?' + revisions[fullName]
+        if (className !== undefined) script.className = className
+    })
+
+}
+;
 function Element (parentNode, tagName, callback) {
     var element = document.createElement(tagName)
     parentNode.appendChild(element)
@@ -456,6 +482,8 @@ function Page_warnings (parentNode, texts) {
 }
 ;
 window.ui = {
+    compressed_css_link: compressed_css_link,
+    compressed_js_script: compressed_js_script,
     Element: Element,
     Form_button: Form_button,
     Form_captcha: Form_captcha,

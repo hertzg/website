@@ -1,4 +1,6 @@
 window.ui = {
+    compressed_css_link: compressed_css_link,
+    compressed_js_script: compressed_js_script,
     Element: Element,
     Form_button: Form_button,
     Form_captcha: Form_captcha,
