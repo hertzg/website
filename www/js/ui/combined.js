@@ -388,6 +388,10 @@ function Page_infoText (parentNode, callback) {
     })
 }
 ;
+function Page_messages (parentNode, texts) {
+    Page_textList(parentNode, texts, 'messages')
+}
+;
 function Page_panel (parentNode, title, callback) {
     ZeroHeightBr(parentNode)
     Element(parentNode, 'div', function (div) {
@@ -422,8 +426,13 @@ function Page_phishingWarning (parentNode, absoluteBase) {
 }
 ;
 function Page_sessionErrors (parentNode, errors) {
-    if (errors === null) return
+    if (errors === undefined) return
     Page_errors(parentNode, errors)
+}
+;
+function Page_sessionMessages (parentNode, messages) {
+    if (messages === undefined) return
+    Page_messages(parentNode, messages)
 }
 ;
 function Page_textList (parentNode, texts, className) {
@@ -509,7 +518,6 @@ window.ui = {
     page: page,
     Page_create: Page_create,
     Page_emptyTabs: Page_emptyTabs,
-    Page_errors: Page_errors,
     Page_imageArrowLink: Page_imageArrowLink,
     Page_imageArrowLinkWithDescription: Page_imageArrowLinkWithDescription,
     Page_imageLink: Page_imageLink,
@@ -517,6 +525,7 @@ window.ui = {
     Page_panel: Page_panel,
     Page_phishingWarning: Page_phishingWarning,
     Page_sessionErrors: Page_sessionErrors,
+    Page_sessionMessages: Page_sessionMessages,
     Page_textList: Page_textList,
     Page_title: Page_title,
     Page_twoColumns: Page_twoColumns,
