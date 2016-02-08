@@ -9,7 +9,7 @@ function Form_textarea (parentNode, name, text, options) {
             if (maxlength !== undefined) textarea.maxLength = maxlength
 
             var autofocus = options.autofocus
-            if (autofocus !== undefined) {
+            if (autofocus === true) {
                 textarea.autofocus = autofocus
                 textarea.focus()
             }
