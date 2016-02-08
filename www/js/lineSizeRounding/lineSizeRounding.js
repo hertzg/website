@@ -13,10 +13,25 @@
             '.page_tabs-tab.normal { border-bottom-width: ' + lineWidth + ' }'
     }
 
+    var lineSizeRounding = window.lineSizeRounding
+    if (lineSizeRounding) {
+        lineSizeRounding.reload()
+        return
+    }
+
     var style = document.createElement('style')
-    document.head.appendChild(style)
+    style.type = 'text/css'
+
+    var head = document.head
+    head.appendChild(style)
 
     addEventListener('resize', resize)
     resize()
+
+    window.lineSizeRounding = {
+        reload: function () {
+            head.appendChild(style)
+        },
+    }
 
 })()
