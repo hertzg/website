@@ -10,5 +10,7 @@ header('Content-Type: application/json');
 
 include_once '../fns/get_revision.php';
 echo json_encode([
-    'user' => $user === null ? null : [],
+    'user' => $user === null ? null : [
+        'theme_color' => $user->theme_color,
+    ],
 ]);

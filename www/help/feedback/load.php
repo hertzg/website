@@ -14,5 +14,7 @@ header('Content-Type: application/json');
 
 echo json_encode([
     'errors' => $errors,
-    'user' => $user === null ? null : [],
+    'user' => $user === null ? null : [
+        'theme_color' => $user->theme_color,
+    ],
 ]);

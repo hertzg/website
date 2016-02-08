@@ -9,5 +9,7 @@ HomePage\unsetSessionVars();
 header('Content-Type: application/json');
 
 echo json_encode([
-    'user' => [],
+    'user' => [
+        'theme_color' => $user->theme_color,
+    ],
 ]);
