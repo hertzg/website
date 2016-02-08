@@ -1,4 +1,7 @@
-(function () {
+(function (localNavigation) {
+
+    var unloadListeners = []
+
     var nodeList = document.querySelectorAll('.form-textarea')
     Array.prototype.forEach.call(nodeList, function (textarea) {
 
@@ -30,5 +33,16 @@
         addEventListener('resize', update)
         update()
 
+        unloadListeners.push(function () {
+            removeEventListener('resize', update)
+        })
+
     })
-})()
+
+    console.log('flexTextarea load')
+    localNavigation.onUnload(function () {
+        console.log('flexTextarea unload')
+        while (unloadListeners.length > 0) unloadListeners.shift()()
+    })
+
+})(localNavigation)

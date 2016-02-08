@@ -53,6 +53,7 @@ function UnloadPage () {
 
         function callLoader (loader) {
             currentOperation = loader(absoluteBase, function () {
+                while (unloadListeners.length > 0) unloadListeners.shift()()
                 UnloadPage()
                 currentOperation = null
                 if (callback !== undefined) callback()
@@ -138,10 +139,16 @@ function UnloadPage () {
     addEventListener('popstate', popState)
     scanLinks()
 
+    var unloadListeners = []
+
+    console.log('localNavigation loaded')
     window.localNavigation = {
         scanLinks: scanLinks,
         registerPage: function (href, loader) {
             loaders[href] = loader
+        },
+        onUnload: function (listener) {
+            unloadListeners.push(listener)
         },
     }
 

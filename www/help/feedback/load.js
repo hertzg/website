@@ -36,6 +36,8 @@
                     ui.Form_button(form, 'Submit Feedback')
                 })
             })
+            ui.compressed_js_script(body, revisions, 'flexTextarea', '../../')
+
             localNavigation.scanLinks()
 
         }
