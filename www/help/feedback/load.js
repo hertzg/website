@@ -23,6 +23,7 @@
                 title: 'Help',
                 href: '../#leave-feedback',
             }, 'Leave Feedback', function (div) {
+                ui.Page_sessionErrors(div, response.errors)
                 Element(div, 'form', function (form) {
                     form.action = 'submit.php'
                     form.method = 'post'

@@ -286,6 +286,10 @@ function Page_emptyTabs (parentNode, callback) {
     })
 }
 ;
+function Page_errors (parentNode, texts) {
+    Page_textList(parentNode, texts, 'errors')
+}
+;
 function Page_imageArrowLink (parentNode,
     title, href, iconName, options, callback) {
 
@@ -380,6 +384,11 @@ function Page_phishingWarning (parentNode, absoluteBase) {
     })
 }
 ;
+function Page_sessionErrors (parentNode, errors) {
+    if (errors === null) return
+    Page_errors(parentNode, errors)
+}
+;
 function Page_textList (parentNode, texts, className) {
     Element(parentNode, 'div', function (div) {
         div.className = 'textList ' + className
@@ -461,12 +470,14 @@ window.ui = {
     page: page,
     Page_create: Page_create,
     Page_emptyTabs: Page_emptyTabs,
+    Page_errors: Page_errors,
     Page_imageArrowLink: Page_imageArrowLink,
     Page_imageArrowLinkWithDescription: Page_imageArrowLinkWithDescription,
     Page_imageLink: Page_imageLink,
     Page_infoText: Page_infoText,
     Page_panel: Page_panel,
     Page_phishingWarning: Page_phishingWarning,
+    Page_sessionErrors: Page_sessionErrors,
     Page_textList: Page_textList,
     Page_title: Page_title,
     Page_twoColumns: Page_twoColumns,
