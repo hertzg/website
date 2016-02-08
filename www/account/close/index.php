@@ -12,10 +12,10 @@ else $values = ['password' => ''];
 
 unset($_SESSION['account/messages']);
 
-include_once "$fnsDir/phishing_warning.php";
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/password.php";
 include_once "$fnsDir/Page/create.php";
+include_once "$fnsDir/Page/phishingWarning.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/warnings.php";
 $content = Page\create(
@@ -37,7 +37,7 @@ $content = Page\create(
         ])
         .'<div class="hr"></div>'
         .Form\button('Close Account')
-        .phishing_warning()
+        .Page\phishingWarning()
     .'</form>'
 );
 

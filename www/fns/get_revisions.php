@@ -27,6 +27,8 @@ function get_revisions () {
         'js/timezoneLabel/compressed.js' => 6,
         'js/ui/compressed.js' => 2,
         'js/unloadProgress/compressed.js' => 12,
+        'theme/brightness/dark/common.css' => 10,
+        'theme/brightness/light/common.css' => 10,
         'theme/color/blue/common.css' => 40,
         'theme/color/blue/images/icon16.png' => 4,
         'theme/color/blue/images/icon32.png' => 4,

@@ -10,13 +10,13 @@ else $values = ['password' => ''];
 
 $fnsDir = '../../../../fns';
 
-include_once "$fnsDir/phishing_warning.php";
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/notes.php";
 include_once "$fnsDir/Form/password.php";
 include_once "$fnsDir/ItemList/Received/itemHiddenInputs.php";
 include_once "$fnsDir/ItemList/Received/itemQuery.php";
 include_once "$fnsDir/Page/create.php";
+include_once "$fnsDir/Page/phishingWarning.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Page/warnings.php";
 include_once "$fnsDir/Session/EncryptionKey/minutes.php";
@@ -40,7 +40,7 @@ $content = Page\create(
             .Session\EncryptionKey\minutes().' minutes.'])
         .'<div class="hr"></div>'
         .Form\button('Password-protect Note')
-        .phishing_warning()
+        .Page\phishingWarning()
         .ItemList\Received\itemHiddenInputs($id)
     .'</form>'
 );
