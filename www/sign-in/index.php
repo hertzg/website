@@ -49,12 +49,12 @@ else {
 }
 
 include_once 'fns/create_options_panel.php';
-include_once '../fns/phishing_warning.php';
 include_once '../fns/Form/button.php';
 include_once '../fns/Form/checkbox.php';
 include_once '../fns/Form/hidden.php';
 include_once '../fns/Form/password.php';
 include_once '../fns/Form/textfield.php';
+include_once '../fns/Page/phishingWarning.php';
 include_once '../fns/Page/sessionErrors.php';
 include_once '../fns/Page/sessionMessages.php';
 include_once '../fns/Page/title.php';
@@ -83,7 +83,7 @@ $content =
             .'<div class="hr"></div>'
             .Form\button('Sign In')
             .Form\hidden('return', $return)
-            .phishing_warning()
+            .Page\phishingWarning()
         .'</form>'
     )
     .create_options_panel($return);

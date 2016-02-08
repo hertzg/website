@@ -22,11 +22,11 @@ $focus = $values['focus'];
 unset($_SESSION['account/messages']);
 
 include_once "$fnsDir/example_password.php";
-include_once "$fnsDir/phishing_warning.php";
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/notes.php";
 include_once "$fnsDir/Form/password.php";
 include_once "$fnsDir/Page/create.php";
+include_once "$fnsDir/Page/phishingWarning.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Password/minLength.php";
 $content = Page\create(
@@ -60,7 +60,7 @@ $content = Page\create(
         ])
         .'<div class="hr"></div>'
         .Form\button('Set Password')
-        .phishing_warning()
+        .Page\phishingWarning()
     .'</form>'
 );
 
