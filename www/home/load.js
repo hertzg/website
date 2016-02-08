@@ -19,6 +19,7 @@
             loadCallback()
             ui.page(body, response.user, '../')
             ui.Page_emptyTabs(body, function (div) {
+                ui.Page_sessionMessages(div, response.messages)
             })
             ui.Page_panel(body, 'Options', function (div) {
                 ui.Page_twoColumns(div, function (div) {

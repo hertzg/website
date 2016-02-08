@@ -6,16 +6,16 @@ function Page_textList (parentNode, texts, className) {
             if (texts.length === 1) {
                 Element(ul, 'li', function (li) {
                     li.className = 'textList-list-item'
-                    Text(li, texts[0])
+                    li.innerHTML = texts[0]
                 })
             } else {
                 texts.forEach(function (text) {
                     Element(ul, 'li', function (li) {
                         li.className = 'textList-list-item'
-                        Element(li, 'span', function () {
+                        Element(li, 'span', function (span) {
                             span.className = 'textList-list-item-bullet ' + className
                         })
-                        Text(li, text)
+                        li.innerHTML += text
                     })
                 })
             }
