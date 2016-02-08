@@ -26,7 +26,7 @@
                         'You need to be signed in to access the page.',
                     ])
                 }
-                Element(div, 'form', function (form) {
+                ui.Element(div, 'form', function (form) {
                     form.action = 'submit.php'
                     form.method = 'post'
                     ui.Form_textfield(form, 'username', 'Username', {
@@ -34,15 +34,15 @@
                         required: true,
                         autofocus: true,
                     })
-                    Hr(form)
+                    ui.Hr(form)
                     ui.Form_password(form, 'password', 'Password', {
                         value: values.password,
                         required: true,
                     })
-                    Hr(form)
+                    ui.Hr(form)
                     ui.Form_checkbox(form, 'remember',
                         'Stay signed in', values.remember)
-                    Hr(form)
+                    ui.Hr(form)
                     ui.Form_button(form, 'Sign In')
                     ui.Form_hidden(form, 'return', values['return'])
                     ui.Page_phishingWarning(form, base)
@@ -54,7 +54,7 @@
                     '../email-reset-password/', 'reset-password',
                     { id: 'email-reset-password' })
                 if (response.sign_up_enabled) {
-                    Hr(div)
+                    ui.Hr(div)
                     ui.Page_imageArrowLinkWithDescription(div,
                         "Don't have an account?", 'Create an account here.',
                         '../sign-up/', 'new-password', {})
@@ -71,9 +71,6 @@
         }
 
     }
-
-    var Element = ui.Element,
-        Hr = ui.Hr
 
     var body = document.body
     localNavigation.registerPage('sign-in/', loadFunction)
