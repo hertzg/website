@@ -223,7 +223,7 @@ function Form_textarea (parentNode, name, text, options) {
         Element(div, 'textarea', function (textarea) {
 
             var value = options.value
-            if (value !== undefined) textarea.value = value
+            if (value !== undefined && value !== '') textarea.value = value
 
             var maxlength = options.maxlength
             if (maxlength !== undefined) textarea.maxLength = maxlength
@@ -261,7 +261,7 @@ function Form_textfield (parentNode, name, text, options) {
             if (type === undefined) type = 'text'
 
             var value = options.value
-            if (value !== undefined) input.value = value
+            if (value !== undefined && value !== '') input.value = value
 
             var maxlength = options.maxlength
             if (maxlength !== undefined) input.maxLength = maxlength
