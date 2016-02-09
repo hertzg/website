@@ -28,7 +28,7 @@ include_once '../fns/Email/maxLength.php';
 $response['emailMaxLength'] = Email\maxLength();
 
 include_once '../fns/example_password.php';
-$response['example_password'] = example_password(9);
+$response['examplePassword'] = example_password(9);
 
 $key = 'sign-up/errors';
 if (array_key_exists($key, $_SESSION)) $response['errors'] = $_SESSION[$key];

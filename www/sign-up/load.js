@@ -58,7 +58,7 @@
                         })
                         ui.Form_notes(form, [
                             'Minimum ' + response.passwordMinLength + ' characters.',
-                            'Example: ' + response.example_password,
+                            'Example: ' + response.examplePassword,
                         ])
                         ui.Hr(form)
                         ui.Form_password(form, 'repeatPassword', 'Repeat password', {
