@@ -7,6 +7,8 @@ var page = (function (defaultThemeColor, revisions) {
         if (user) themeColor = user.theme_color
         else themeColor = defaultThemeColor
 
+        window.base = base
+
         Element(body, 'div', function (div) {
             div.id = 'tbar'
             Element(div, 'div', function (div) {
