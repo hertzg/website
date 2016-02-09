@@ -40,9 +40,9 @@
                             ' License for more details.')
                     })
                     ui.Hr(div)
-                    ui.Page_imageArrowLink(div,
-                        'GNU Affero General Public License', 'license/',
-                        'license', { id: 'license' })
+                    ui.Page_imageArrowLink(div, function (div) {
+                        ui.Text(div, 'GNU Affero General Public License')
+                    }, 'license/', 'license', { id: 'license' })
                 })
                 ui.Page_panel(body, 'Git Commit', function (div) {
                     ui.Form_label(div, 'Hash', function (div) {

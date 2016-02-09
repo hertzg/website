@@ -23,14 +23,18 @@
                 })
                 ui.Page_panel(body, 'Options', function (div) {
                     ui.Page_twoColumns(div, function (div) {
-                        Page_imageArrowLink(div, 'Account',
-                            '../account/', 'account', { id: 'account' })
+                        ui.Page_imageArrowLink(div, function (div) {
+                            ui.Text(div, 'Account')
+                        }, '../account/', 'account', { id: 'account' })
                     }, function (div) {
-                        Page_imageArrowLink(div, 'Customize Home',
-                            'customize/', 'edit-home', { id: 'customize' })
+                        ui.Page_imageArrowLink(div, function (div) {
+                            ui.Text(div, 'Customize Home')
+                        }, 'customize/', 'edit-home', { id: 'customize' })
                     })
                     ui.Hr(div)
-                    Page_imageArrowLink(div, 'Help', '../help/', 'help', {
+                    ui.Page_imageArrowLink(div, function (div) {
+                        ui.Text(div, 'Help')
+                    }, '../help/', 'help', {
                         id: 'help',
                         localNavigation: true,
                     })
@@ -47,10 +51,6 @@
         }
 
     }
-
-    var Element = ui.Element,
-        Page_imageArrowLink = ui.Page_imageArrowLink,
-        Text = ui.Text
 
     localNavigation.registerPage('home/', loadFunction)
 

@@ -1,4 +1,4 @@
-function Page_imageLink (parentNode, titleOrCallback, href, iconName, options) {
+function Page_imageLink (parentNode, callback, href, iconName, options) {
 
     Element(parentNode, 'a', function (a) {
         a.name = options.id
@@ -25,8 +25,7 @@ function Page_imageLink (parentNode, titleOrCallback, href, iconName, options) {
         })
         Element(a, 'span', function (span) {
             span.className = 'image_link-content'
-            if (typeof titleOrCallback === 'string') Text(span, titleOrCallback)
-            else titleOrCallback(span)
+            callback(span)
         })
 
     })

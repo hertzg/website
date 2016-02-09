@@ -139,19 +139,22 @@ function Text (element, text) {
     element.appendChild(document.createTextNode(text))
 }
 ;
-function title_and_description (parentNode, title, description) {
+function title_and_description (parentNode,
+    titleCallback, descriptionCallback) {
+
     Element(parentNode, 'span', function (span) {
         span.className = 'title_and_description'
         Element(span, 'span', function (span) {
             span.className = 'title_and_description-title'
-            Text(span, title)
+            titleCallback(span)
         })
         ZeroHeightBr(span)
         Element(span, 'span', function (span) {
             span.className = 'title_and_description-description colorText grey'
-            Text(span, description)
+            descriptionCallback(span)
         })
     })
+
 }
 ;
 function ZeroHeightBr (parentNode) {
@@ -380,28 +383,27 @@ function Page_errors (parentNode, texts) {
     Page_textList(parentNode, texts, 'errors')
 }
 ;
-function Page_imageArrowLink (parentNode,
-    titleOrCallback, href, iconName, options) {
+function Page_imageArrowLink (parentNode, callback, href, iconName, options) {
 
     options.className = 'withArrow'
-    Page_imageLink(parentNode, titleOrCallback, href, iconName, options)
+    Page_imageLink(parentNode, callback, href, iconName, options)
 
 }
 
 ;
 function Page_imageArrowLinkWithDescription (parentNode,
-    title, description, href, iconName, options) {
+    titleCallback, descriptionCallback, href, iconName, options) {
 
     if (options === undefined) options = {}
     options.className = 'withArrow'
 
     Page_imageLink(parentNode, function (span) {
-        title_and_description(span, title, description)
+        title_and_description(span, titleCallback, descriptionCallback)
     }, href, iconName, options)
 
 }
 ;
-function Page_imageLink (parentNode, titleOrCallback, href, iconName, options) {
+function Page_imageLink (parentNode, callback, href, iconName, options) {
 
     Element(parentNode, 'a', function (a) {
         a.name = options.id
@@ -428,8 +430,7 @@ function Page_imageLink (parentNode, titleOrCallback, href, iconName, options) {
         })
         Element(a, 'span', function (span) {
             span.className = 'image_link-content'
-            if (typeof titleOrCallback === 'string') Text(span, titleOrCallback)
-            else titleOrCallback(span)
+            callback(span)
         })
 
     })

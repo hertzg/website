@@ -67,20 +67,23 @@
                     })
                 })
                 ui.Page_panel(body, 'Options', function (div) {
-                    ui.Page_imageArrowLinkWithDescription(div,
-                        'Forgot password?', 'Reset your account password here.',
-                        '../email-reset-password/' + queryString, 'reset-password',
-                        {
-                            id: 'email-reset-password',
-                            localNavigation: true,
-                        }
-                    )
+                    ui.Page_imageArrowLinkWithDescription(div, function (div) {
+                        ui.Text(div, 'Forgot password?')
+                    }, function (div) {
+                        ui.Text(div, 'Reset your account password here.')
+                    }, '../email-reset-password/' + queryString, 'reset-password', {
+                        id: 'email-reset-password',
+                        localNavigation: true,
+                    })
                     if (response.signUpEnabled === true) {
                         ui.Hr(div)
-                        ui.Page_imageArrowLinkWithDescription(div,
-                            "Don't have an account?", 'Create an account here.',
-                            '../sign-up/' + queryString, 'new-password',
-                            { localNavigation: true})
+                        ui.Page_imageArrowLinkWithDescription(div, function (div) {
+                            ui.Text(div, "Don't have an account?")
+                        }, function (div) {
+                            ui.Text(div, 'Create an account here.')
+                        }, '../sign-up/' + queryString, 'new-password', {
+                            localNavigation: true,
+                        })
                     }
                 })
             }, {
