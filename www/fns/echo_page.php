@@ -23,13 +23,8 @@ function echo_page ($user, $title, $content, $base, $options = []) {
         $signOutLink = '';
     }
 
-    $time = floor(microtime(true) * 1000);
     $notifications = '';
     if ($user) {
-
-        $timezone = $user->timezone;
-        $time += $timezone * 60 * 1000;
-
         $num_notifications = $user->home_num_new_notifications +
             $user->home_num_new_received_bookmarks +
             $user->home_num_new_received_calculations +
@@ -48,9 +43,6 @@ function echo_page ($user, $title, $content, $base, $options = []) {
                     .'<span class="zeroSize">)</span>'
                 .'</span>';
         }
-
-    } else {
-        $timezone = 0;
     }
 
     if (array_key_exists('logo_href', $options)) {
@@ -58,6 +50,9 @@ function echo_page ($user, $title, $content, $base, $options = []) {
     } else {
         $logo_href = $base === '' ? './' : $base;
     }
+
+    include_once __DIR__.'/client_time_and_timezone.php';
+    client_time_and_timezone($user, $time, $timezone);
 
     $logoSrc = "theme/color/$theme_color/images/zvini.svg";
 
