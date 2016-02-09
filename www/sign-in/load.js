@@ -1,4 +1,4 @@
-(function (localNavigation, ui) {
+(function (localNavigation, ui, revisions) {
 
     function loadFunction (base, loadCallback, errorCallback) {
 
@@ -70,6 +70,7 @@
                         { localNavigation: true})
                 }
             })
+            ui.compressed_js_script(body, revisions, 'formCheckbox', '../')
             localNavigation.scanLinks()
 
         }
@@ -85,4 +86,4 @@
     var body = document.body
     localNavigation.registerPage('sign-in/', loadFunction)
 
-})(localNavigation, ui)
+})(localNavigation, ui, revisions)
