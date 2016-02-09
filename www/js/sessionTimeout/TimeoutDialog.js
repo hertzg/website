@@ -103,6 +103,12 @@ function TimeoutDialog (noHref, yesListener, noListener) {
         noListener(noHref + '?auto=1')
     }, seconds * 1000)
 
-    return { hide: hide }
+    return {
+        hide: hide,
+        unload: function () {
+            clearTimeout(timeout)
+            removeEventListener('keydown', keydownListener)
+        },
+    }
 
 }

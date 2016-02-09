@@ -1,4 +1,4 @@
-(function (base) {
+(function (base, localNavigation) {
 
     function schedule () {
 
@@ -6,30 +6,41 @@
             var storedTime = localStorage.sessionStartTime
             if (storedTime > time) {
                 time = storedTime
-                setTimeout(check, interval)
+                checkTimeout = setTimeout(check, interval)
             } else {
                 var noHref = base + 'sign-out/submit.php'
                 var noListener = function (signOutHref) {
                     if (time == localStorage.sessionStartTime) {
                         location = signOutHref
                     } else {
-                        dialog.hide()
+                        timeoutDialog.hide()
+                        timeoutDialog = null
                     }
                 }
-                var dialog = TimeoutDialog(noHref, schedule, noListener)
+                timeoutDialog = TimeoutDialog(noHref, function () {
+                    schedule()
+                    timeoutDialog = null
+                }, noListener)
             }
         }
 
         var time = Date.now()
         localStorage.sessionStartTime = time
-        setTimeout(check, interval)
+        checkTimeout = setTimeout(check, interval)
 
     }
 
+    var checkTimeout
+    var timeoutDialog = null
     var interval = 30 * 60 * 1000
     schedule()
 
     ExtendSession(base)
+
+    localNavigation.onUnload(function () {
+        clearTimeout(checkTimeout)
+        if (timeoutDialog !== null) timeoutDialog.unload()
+    })
 
     window.sessionTimeout = {
         extend: function () {
@@ -39,4 +50,4 @@
         },
     }
 
-})(base)
+})(base, localNavigation)
