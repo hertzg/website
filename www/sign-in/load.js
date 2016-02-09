@@ -45,14 +45,14 @@
                         ui.Form_textfield(form, 'username', 'Username', {
                             maxlength: response.usernameMaxLength,
                             value: username,
-                            required: true,
                             autofocus: username === '',
+                            required: true,
                         })
                         ui.Hr(form)
                         ui.Form_password(form, 'password', 'Password', {
                             value: values.password,
-                            required: true,
                             autofocus: username !== '',
+                            required: true,
                         })
                         ui.Hr(form)
                         ui.Form_checkbox(form, 'remember',
