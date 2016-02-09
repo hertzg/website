@@ -1,5 +1,5 @@
 var page = (function (defaultThemeColor, revisions) {
-    return function (body, response, base, options) {
+    return function (response, base, callback, options) {
 
         if (options === undefined) options = {}
 
@@ -17,6 +17,7 @@ var page = (function (defaultThemeColor, revisions) {
             compressed_css_link(document.head, revisions, 'confirmDialog', base)
         }
 
+        var body = document.body
         Element(body, 'div', function (div) {
             div.id = 'tbar'
             Element(div, 'div', function (div) {
@@ -61,6 +62,7 @@ var page = (function (defaultThemeColor, revisions) {
                     })
                 }
             })
+            callback(body)
         })
         compressed_js_script(body, revisions, 'batteryAndClock', base)
         compressed_js_script(body, revisions, 'lineSizeRounding', base)
@@ -75,6 +77,9 @@ var page = (function (defaultThemeColor, revisions) {
             }
 
         }
+
+        var scriptsCallback = options.scripts
+        if (scriptsCallback !== undefined) scriptsCallback(body)
 
     }
 })(defaultThemeColor, revisions)

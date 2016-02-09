@@ -17,22 +17,23 @@
 
             document.title = 'Home'
             loadCallback()
-            ui.page(body, response, '../')
-            ui.Page_emptyTabs(body, function (div) {
-                ui.Page_sessionMessages(div, response.messages)
-            })
-            ui.Page_panel(body, 'Options', function (div) {
-                ui.Page_twoColumns(div, function (div) {
-                    Page_imageArrowLink(div, 'Account',
-                        '../account/', 'account', { id: 'account' })
-                }, function (div) {
-                    Page_imageArrowLink(div, 'Customize Home',
-                        'customize/', 'edit-home', { id: 'customize' })
+            ui.page(response, '../', function (body) {
+                ui.Page_emptyTabs(body, function (div) {
+                    ui.Page_sessionMessages(div, response.messages)
                 })
-                ui.Hr(div)
-                Page_imageArrowLink(div, 'Help', '../help/', 'help', {
-                    id: 'help',
-                    localNavigation: true,
+                ui.Page_panel(body, 'Options', function (div) {
+                    ui.Page_twoColumns(div, function (div) {
+                        Page_imageArrowLink(div, 'Account',
+                            '../account/', 'account', { id: 'account' })
+                    }, function (div) {
+                        Page_imageArrowLink(div, 'Customize Home',
+                            'customize/', 'edit-home', { id: 'customize' })
+                    })
+                    ui.Hr(div)
+                    Page_imageArrowLink(div, 'Help', '../help/', 'help', {
+                        id: 'help',
+                        localNavigation: true,
+                    })
                 })
             })
             localNavigation.scanLinks()
@@ -51,7 +52,6 @@
         Page_imageArrowLink = ui.Page_imageArrowLink,
         Text = ui.Text
 
-    var body = document.body
     localNavigation.registerPage('home/', loadFunction)
 
 })(localNavigation, ui)

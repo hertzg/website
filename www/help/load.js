@@ -17,28 +17,29 @@
 
             document.title = 'Help'
             loadCallback()
-            ui.public_page(body, response, '../')
-            ui.Page_create(body, {
-                title: 'Home',
-                href: '../home/#help',
-            }, 'Help', function (div) {
-                Page_imageLink(div, 'Install Zvini App', 'install-zvini-app/',
-                    'download', { id: 'install-zvini-app' })
-                Hr(div)
-                Page_imageLink(div, 'Install Link Handlers',
-                    'install-link-handlers/', 'protocol',
-                    { id: 'install-link-handlers' })
-                Hr(div)
-                Page_imageArrowLink(div, 'Leave Feedback', 'feedback/', 'feedback', {
-                    id: 'feedback',
-                    localNavigation: true,
+            ui.public_page(response, '../', function (body) {
+                ui.Page_create(body, {
+                    title: 'Home',
+                    href: '../home/#help',
+                }, 'Help', function (div) {
+                    Page_imageLink(div, 'Install Zvini App', 'install-zvini-app/',
+                        'download', { id: 'install-zvini-app' })
+                    Hr(div)
+                    Page_imageLink(div, 'Install Link Handlers',
+                        'install-link-handlers/', 'protocol',
+                        { id: 'install-link-handlers' })
+                    Hr(div)
+                    Page_imageArrowLink(div, 'Leave Feedback', 'feedback/', 'feedback', {
+                        id: 'feedback',
+                        localNavigation: true,
+                    })
+                    Hr(div)
+                    Page_imageArrowLink(div, 'API Documentation',
+                        'api-doc/', 'api-doc', { id: 'api-doc' })
+                    Hr(div)
+                    Page_imageArrowLink(div, 'About Zvini',
+                        'about-zvini/', 'zvini', { id: 'about-zvini' })
                 })
-                Hr(div)
-                Page_imageArrowLink(div, 'API Documentation',
-                    'api-doc/', 'api-doc', { id: 'api-doc' })
-                Hr(div)
-                Page_imageArrowLink(div, 'About Zvini',
-                    'about-zvini/', 'zvini', { id: 'about-zvini' })
             })
             localNavigation.scanLinks()
 
@@ -52,13 +53,10 @@
 
     }
 
-    var Element = ui.Element,
-        Hr = ui.Hr,
+    var Hr = ui.Hr,
         Page_imageArrowLink = ui.Page_imageArrowLink,
-        Page_imageLink = ui.Page_imageLink,
-        Text = ui.Text
+        Page_imageLink = ui.Page_imageLink
 
-    var body = document.body
     localNavigation.registerPage('help/', loadFunction)
 
 })(localNavigation, ui)

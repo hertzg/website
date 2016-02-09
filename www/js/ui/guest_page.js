@@ -1,3 +1,3 @@
-function guest_page (body, response, base, options) {
-    page(body, response, base, options)
+function guest_page (response, base, callback, options) {
+    page(response, base, callback, options)
 }

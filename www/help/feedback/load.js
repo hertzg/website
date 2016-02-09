@@ -17,27 +17,31 @@
 
             document.title = 'Leave Feedback'
             loadCallback()
-            ui.public_page(body, response, '../../')
-            ui.Page_create(body, {
-                title: 'Help',
-                href: '../#leave-feedback',
-            }, 'Leave Feedback', function (div) {
-                ui.Page_sessionErrors(div, response.errors, {
-                    ENTER_TEXT: 'Enter text.',
-                })
-                Element(div, 'form', function (form) {
-                    form.action = 'submit.php'
-                    form.method = 'post'
-                    ui.Form_textarea(form, 'text', 'Text', {
-                        maxlength: response.maxLengths.text,
-                        required: true,
-                        autofocus: true,
+            ui.public_page(response, '../../', function (body) {
+                ui.Page_create(body, {
+                    title: 'Help',
+                    href: '../#leave-feedback',
+                }, 'Leave Feedback', function (div) {
+                    ui.Page_sessionErrors(div, response.errors, {
+                        ENTER_TEXT: 'Enter text.',
                     })
-                    ui.Hr(form)
-                    ui.Form_button(form, 'Submit Feedback')
+                    ui.Element(div, 'form', function (form) {
+                        form.action = 'submit.php'
+                        form.method = 'post'
+                        ui.Form_textarea(form, 'text', 'Text', {
+                            maxlength: response.maxLengths.text,
+                            required: true,
+                            autofocus: true,
+                        })
+                        ui.Hr(form)
+                        ui.Form_button(form, 'Submit Feedback')
+                    })
                 })
+            }, {
+                scripts: function (body) {
+                    ui.compressed_js_script(body, revisions, 'flexTextarea', '../../')
+                },
             })
-            ui.compressed_js_script(body, revisions, 'flexTextarea', '../../')
 
             localNavigation.scanLinks()
 
@@ -51,10 +55,6 @@
 
     }
 
-    var Element = ui.Element,
-        Text = ui.Text
-
-    var body = document.body
     localNavigation.registerPage('help/feedback/', loadFunction)
 
 })(localNavigation, ui)

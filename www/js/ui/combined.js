@@ -31,8 +31,8 @@ function Element (parentNode, tagName, callback) {
     callback(element)
 }
 ;
-function guest_page (body, response, base, options) {
-    page(body, response, base, options)
+function guest_page (response, base, callback, options) {
+    page(response, base, callback, options)
 }
 ;
 function Hr (parentNode) {
@@ -42,7 +42,7 @@ function Hr (parentNode) {
 }
 ;
 var page = (function (defaultThemeColor, revisions) {
-    return function (body, response, base, options) {
+    return function (response, base, callback, options) {
 
         if (options === undefined) options = {}
 
@@ -60,6 +60,7 @@ var page = (function (defaultThemeColor, revisions) {
             compressed_css_link(document.head, revisions, 'confirmDialog', base)
         }
 
+        var body = document.body
         Element(body, 'div', function (div) {
             div.id = 'tbar'
             Element(div, 'div', function (div) {
@@ -104,6 +105,7 @@ var page = (function (defaultThemeColor, revisions) {
                     })
                 }
             })
+            callback(body)
         })
         compressed_js_script(body, revisions, 'batteryAndClock', base)
         compressed_js_script(body, revisions, 'lineSizeRounding', base)
@@ -119,15 +121,18 @@ var page = (function (defaultThemeColor, revisions) {
 
         }
 
+        var scriptsCallback = options.scripts
+        if (scriptsCallback !== undefined) scriptsCallback(body)
+
     }
 })(defaultThemeColor, revisions)
 ;
-function public_page (body, response, base, options) {
+function public_page (response, base, callback, options) {
     if (response.user !== undefined) {
         if (options === undefined) options = {}
         options.logoHref = base + 'home/'
     }
-    page(body, response, base, options)
+    page(response, base, callback, options)
 }
 ;
 function Text (element, text) {
