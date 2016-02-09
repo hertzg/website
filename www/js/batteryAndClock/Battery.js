@@ -4,7 +4,7 @@ function Battery (base) {
 
         var img = document.createElement('img')
         img.alt = alt
-        img.src = absoluteBase + 'images/' + imageName + '.svg'
+        img.src = base + 'images/' + imageName + '.svg'
 
         var style = img.style
         style.display = 'inline-block'
@@ -39,12 +39,6 @@ function Battery (base) {
         var display = battery.charging ? 'inline-block' : 'none'
         chargingElement.style.display = display
     }
-
-    var absoluteBase = (function () {
-        var a = document.createElement('a')
-        a.href = base
-        return a.href
-    })()
 
     var valueElement = document.createElement('div')
     ;(function (style) {
@@ -98,8 +92,11 @@ function Battery (base) {
     }
 
     return {
-        reload: function (parentNode) {
-            parentNode.appendChild(batteryWrapper)
+        unload: function () {
+            var battery = navigator.battery
+            if (!battery) return
+            battery.removeEventListener('chargingchange', updateCharging)
+            battery.removeEventListener('levelchange', updateLevel)
         },
     }
 

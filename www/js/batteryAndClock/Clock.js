@@ -12,7 +12,7 @@ function Clock (remoteTime, timezone) {
 
     function update () {
         var time = Date.now()
-        requestAnimationFrame(function () {
+        var frame = requestAnimationFrame(function () {
 
             var date = new Date(Date.now() - difference)
 
@@ -28,9 +28,15 @@ function Clock (remoteTime, timezone) {
             updateListeners.forEach(function (listener) {
                 listener(date, date.getTime() - timezone * 60 * 1000)
             })
-            setTimeout(update, Math.max(0, time + 1000 - Date.now()))
+            var timeout = setTimeout(update, Math.max(0, time + 1000 - Date.now()))
+            unload = function () {
+                clearTimeout(timeout)
+            }
 
         })
+        unload = function () {
+            cancelAnimationFrame(frame)
+        }
 
     }
 
@@ -49,13 +55,18 @@ function Clock (remoteTime, timezone) {
         difference = Date.now() - remoteTime
     }
 
-    var requestAnimationFrame = window.requestAnimationFrame
+    var requestAnimationFrame = window.requestAnimationFrame,
+        cancelAnimationFrame = window.cancelAnimationFrame
     if (!requestAnimationFrame) {
         requestAnimationFrame = window.mozRequestAnimationFrame
+        cancelAnimationFrame = window.mozCancelAnimationFrame
     }
     if (!requestAnimationFrame) {
         requestAnimationFrame = function (callback) {
-            setTimeout(callback, 0)
+            return setTimeout(callback, 0)
+        }
+        cancelAnimationFrame = function (frame) {
+            clearTimeout(frame)
         }
     }
 
@@ -79,12 +90,14 @@ function Clock (remoteTime, timezone) {
 
     var updateListeners = []
 
+    var unload = null
+
     return {
         onUpdate: function (listener) {
             updateListeners.push(listener)
         },
-        reload: function (parentNode) {
-            parentNode.appendChild(dynamicClockWrapper)
+        unload: function () {
+            unload()
         },
     }
 
