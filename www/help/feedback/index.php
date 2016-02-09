@@ -23,7 +23,7 @@ $content = Page\create(
         'href' => '../#feedback',
         'localNavigation' => true,
     ],
-    'Feedback',
+    'Leave Feedback',
     Page\sessionErrors('help/feedback/errors', [
         'ENTER_TEXT' => 'Enter text.',
     ])
