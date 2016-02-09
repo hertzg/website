@@ -26,13 +26,13 @@ if ($remember) {
     Cookie\remove('remember');
 }
 
-if ($username === '') $errors[] = 'Enter username.';
+if ($username === '') $errors[] = 'ENTER_USERNAME';
 else {
     include_once '../fns/Username/isValid.php';
-    if (!Username\isValid($username)) $errors[] = 'The username is invalid.';
+    if (!Username\isValid($username)) $errors[] = 'INVALID_USERNAME';
 }
 
-if ($password === '') $errors[] = 'Enter password.';
+if ($password === '') $errors[] = 'ENTER_PASSWORD';
 
 if (!$errors) {
     include_once '../fns/Session/authenticate.php';
@@ -40,8 +40,8 @@ if (!$errors) {
     $user = Session\authenticate($mysqli,
         $username, $password, $remember, $disabled);
     if (!$user) {
-        if ($disabled) $error = 'Your account is disabled.';
-        else $error = 'Invalid username or password.';
+        if ($disabled) $error = 'USER_DISABLED';
+        else $error = 'INVALID_USERNAME_OR_PASSWORD';
         $errors[] = $error;
     }
 }
