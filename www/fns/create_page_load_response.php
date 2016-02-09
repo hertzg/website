@@ -17,6 +17,10 @@ function create_page_load_response ($user = null) {
 
         $response['user'] = ['theme_color' => $user->theme_color];
 
+        if (array_key_exists('token', $_SESSION)) {
+            $response['session_remembered'] = true;
+        }
+
     }
 
     return $response;

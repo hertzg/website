@@ -61,14 +61,20 @@ var page = (function (defaultThemeColor, revisions) {
                     })
                 }
             })
-            compressed_js_script(div, revisions, 'batteryAndClock', base)
-            compressed_js_script(div, revisions, 'lineSizeRounding', base)
-            if (user) {
-                compressed_js_script(div, revisions, 'confirmDialog', base)
-                window.signOutTimeout = response.signOutTimeout
-                compressed_js_script(div, revisions, 'signOutConfirm', base)
-            }
         })
+        compressed_js_script(body, revisions, 'batteryAndClock', base)
+        compressed_js_script(body, revisions, 'lineSizeRounding', base)
+        if (user) {
+
+            compressed_js_script(body, revisions, 'confirmDialog', base)
+            window.signOutTimeout = response.signOutTimeout
+            compressed_js_script(body, revisions, 'signOutConfirm', base)
+
+            if (response.session_remembered !== true) {
+                compressed_js_script(body, revisions, 'sessionTimeout', base)
+            }
+
+        }
 
     }
 })(defaultThemeColor, revisions)
