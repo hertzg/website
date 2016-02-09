@@ -27,7 +27,13 @@
             ui.guest_page(body, '../')
             ui.Page_title(body, 'Sign In', function (div) {
                 ui.Page_sessionMessages(div, response.messages)
-                ui.Page_sessionErrors(div, response.errors)
+                ui.Page_sessionErrors(div, response.errors, [
+                    ENTER_PASSWORD: 'Enter password.',
+                    ENTER_USERNAME: 'Enter username.',
+                    INVALID_USERNAME: 'The username is invalid.',
+                    USER_DISABLED: 'Your account is disabled.',
+                    INVALID_USERNAME_OR_PASSWORD: 'Invalid username or password.',
+                ])
                 if (values['return'] !== '') {
                     ui.Page_warnings(div, [
                         'You need to be signed in to access the page.',
