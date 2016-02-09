@@ -5,20 +5,8 @@ $base = '../';
 include_once '../fns/require_guest_user.php';
 require_guest_user($base);
 
-$key = 'email-reset-password/values';
-if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
-else {
-
-    include_once '../fns/request_strings.php';
-    list($return) = request_strings('return');
-
-    $values = [
-        'focus' => 'email',
-        'email' => '',
-        'return' => $return,
-    ];
-
-}
+include_once 'fns/get_values.php';
+$values = get_values();
 
 $focus = $values['focus'];
 $return = $values['return'];
@@ -26,11 +14,8 @@ $return = $values['return'];
 if ($return === '') $queryString = '';
 else $queryString = '?return='.rawurlencode($return);
 
-unset(
-    $_SESSION['sign-in/errors'],
-    $_SESSION['sign-in/messages'],
-    $_SESSION['sign-in/values']
-);
+include_once 'fns/unset_session_vars.php';
+unset_session_vars();
 
 include_once '../fns/Email/maxLength.php';
 include_once '../fns/Form/button.php';

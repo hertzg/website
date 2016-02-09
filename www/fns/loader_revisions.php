@@ -2,6 +2,7 @@
 
 function loader_revisions () {
     return [
+        'email-reset-password/' => 1,
         'help/' => 5,
         'help/feedback/' => 2,
         'sign-in/' => 1,

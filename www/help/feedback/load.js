@@ -26,8 +26,10 @@
                         ENTER_TEXT: 'Enter text.',
                     })
                     ui.Element(div, 'form', function (form) {
+
                         form.action = 'submit.php'
                         form.method = 'post'
+
                         ui.Form_textarea(form, 'text', 'Text', {
                             maxlength: response.maxLengths.text,
                             autofocus: true,
@@ -35,6 +37,7 @@
                         })
                         ui.Hr(form)
                         ui.Form_button(form, 'Submit Feedback')
+
                     })
                 })
             }, {

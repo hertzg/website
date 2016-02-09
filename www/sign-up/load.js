@@ -37,8 +37,10 @@
                     }
 
                     ui.Element(div, 'form', function (form) {
+
                         form.action = 'submit.php'
                         form.method = 'post'
+
                         ui.Form_textfield(form, 'username', 'Username', {
                             maxlength: response.usernameMaxLength,
                             value: values.username,
@@ -79,7 +81,9 @@
                         ui.Form_captcha(form, '../', focus === 'captcha')
                         ui.Form_button(form, 'Create an Account')
                         ui.Form_hidden(form, 'return', returnVar)
+
                     })
+
                 })
                 ui.Page_panel(body, 'Options', function (div) {
                     ui.Page_imageArrowLinkWithDescription(div,

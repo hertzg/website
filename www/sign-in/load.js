@@ -40,8 +40,10 @@
                         ])
                     }
                     ui.Element(div, 'form', function (form) {
+
                         form.action = 'submit.php'
                         form.method = 'post'
+
                         ui.Form_textfield(form, 'username', 'Username', {
                             maxlength: response.usernameMaxLength,
                             value: username,
@@ -61,13 +63,18 @@
                         ui.Form_button(form, 'Sign In')
                         ui.Form_hidden(form, 'return', returnVar)
                         ui.Page_phishingWarning(form, base)
+
                     })
                 })
                 ui.Page_panel(body, 'Options', function (div) {
                     ui.Page_imageArrowLinkWithDescription(div,
                         'Forgot password?', 'Reset your account password here.',
                         '../email-reset-password/' + queryString, 'reset-password',
-                        { id: 'email-reset-password' })
+                        {
+                            id: 'email-reset-password',
+                            localNavigation: true,
+                        }
+                    )
                     if (response.signUpEnabled === true) {
                         ui.Hr(div)
                         ui.Page_imageArrowLinkWithDescription(div,

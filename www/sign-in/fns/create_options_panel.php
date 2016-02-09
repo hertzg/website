@@ -11,7 +11,11 @@ function create_options_panel ($return) {
     $content = Page\imageArrowLinkWithDescription(
         'Forgot password?', 'Reset your account password here.',
         "../email-reset-password/$queryString", 'reset-password',
-        ['id' => 'email-reset-password']);
+        [
+            'id' => 'email-reset-password',
+            'localNavigation' => true,
+        ]
+    );
 
     include_once "$fnsDir/SignUpEnabled/get.php";
     if (SignUpEnabled\get()) {
