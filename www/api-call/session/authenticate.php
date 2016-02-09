@@ -13,6 +13,12 @@ if ($username === '') {
     ErrorJson\badRequest('"ENTER_USERNAME"');
 }
 
+include_once "$fnsDir/Username/isValid.php";
+if (!Username\isValid($username)) {
+    include_once "$fnsDir/ErrorJson/badRequest.php";
+    ErrorJson\badRequest('"INVALID_USERNAME"');
+}
+
 if ($password === '') {
     include_once "$fnsDir/ErrorJson/badRequest.php";
     ErrorJson\badRequest('"ENTER_PASSWORD"');

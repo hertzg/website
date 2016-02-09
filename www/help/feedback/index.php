@@ -24,7 +24,9 @@ $content = Page\create(
         'localNavigation' => true,
     ],
     'Feedback',
-    Page\sessionErrors('help/feedback/errors')
+    Page\sessionErrors('help/feedback/errors', [
+        'ENTER_TEXT' => 'Enter text.',
+    ])
     .'<form action="submit.php" method="post">'
         .Form\textarea('text', 'Text', [
             'maxlength' => $maxLengths['text'],

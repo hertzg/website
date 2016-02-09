@@ -37,7 +37,13 @@ $content =
     Page\title(
         'Sign In',
         Page\sessionMessages('sign-in/messages')
-        .Page\sessionErrors('sign-in/errors')
+        .Page\sessionErrors('sign-in/errors', [
+            'ENTER_PASSWORD' => 'Enter password.',
+            'ENTER_USERNAME' => 'Enter username.',
+            'INVALID_USERNAME' => 'The username is invalid.',
+            'USER_DISABLED' => 'Your account is disabled.',
+            'INVALID_USERNAME_OR_PASSWORD' => 'Invalid username or password.',
+        ])
         .$pageWarnings
         .'<form action="submit.php" method="post">'
             .Form\textfield('username', 'Username', [
