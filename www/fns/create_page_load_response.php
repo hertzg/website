@@ -11,9 +11,12 @@ function create_page_load_response ($user = null) {
     ];
 
     if ($user) {
-        $response['user'] = [
-            'theme_color' => $user->theme_color,
-        ];
+
+        include_once __DIR__.'/get_sign_out_timeout.php';
+        $response['signOutTimeout'] = get_sign_out_timeout();
+
+        $response['user'] = ['theme_color' => $user->theme_color];
+
     }
 
     return $response;

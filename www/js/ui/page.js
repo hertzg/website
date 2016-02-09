@@ -13,6 +13,10 @@ var page = (function (defaultThemeColor, revisions) {
         window.time = response.time
         window.timezone = response.timezone
 
+        if (user) {
+            compressed_css_link(document.head, revisions, 'confirmDialog', base)
+        }
+
         Element(body, 'div', function (div) {
             div.id = 'tbar'
             Element(div, 'div', function (div) {
@@ -59,6 +63,11 @@ var page = (function (defaultThemeColor, revisions) {
             })
             compressed_js_script(div, revisions, 'batteryAndClock', base)
             compressed_js_script(div, revisions, 'lineSizeRounding', base)
+            if (user) {
+                compressed_js_script(div, revisions, 'confirmDialog', base)
+                window.signOutTimeout = response.signOutTimeout
+                compressed_js_script(div, revisions, 'signOutConfirm', base)
+            }
         })
 
     }
