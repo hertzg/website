@@ -32,8 +32,10 @@ $content = Page\create(
     .Page\imageArrowLink('API Documentation',
         'api-doc/', 'api-doc', ['id' => 'api-doc'])
     .'<div class="hr"></div>'
-    .Page\imageArrowLink('About Zvini',
-        'about-zvini/', 'zvini', ['id' => 'about-zvini'])
+    .Page\imageArrowLink('About Zvini', 'about-zvini/', 'zvini', [
+        'id' => 'about-zvini',
+        'localNavigation' => true,
+    ])
 );
 
 include_once '../fns/echo_public_page.php';

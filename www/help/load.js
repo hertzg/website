@@ -37,8 +37,10 @@
                     Page_imageArrowLink(div, 'API Documentation',
                         'api-doc/', 'api-doc', { id: 'api-doc' })
                     Hr(div)
-                    Page_imageArrowLink(div, 'About Zvini',
-                        'about-zvini/', 'zvini', { id: 'about-zvini' })
+                    Page_imageArrowLink(div, 'About Zvini', 'about-zvini/', 'zvini', {
+                        id: 'about-zvini',
+                        localNavigation: true,
+                    })
                 })
             })
             localNavigation.scanLinks()

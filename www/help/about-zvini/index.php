@@ -6,25 +6,17 @@ $fnsDir = '../../fns';
 include_once "$fnsDir/signed_user.php";
 $user = signed_user();
 
-unset($_SESSION['help/messages']);
+include_once 'fns/unset_session_vars.php';
+unset_session_vars();
 
-exec('git rev-parse HEAD', $lines);
-$hash = htmlspecialchars($lines[0]);
-unset($lines);
-
-exec('git show -s --format=%ct', $lines);
-$date = htmlspecialchars($lines[0]);
-unset($lines);
-
-exec('git describe --tags', $lines);
-if (count($lines) === 1) $tag = htmlspecialchars($lines[0]);
-else $tag = 'Not available';
+include_once 'fns/get_git_commit.php';
+get_git_commit($hash, $tag, $date);
 
 include_once "$fnsDir/create_panel.php";
 include_once "$fnsDir/export_date_ago.php";
 include_once "$fnsDir/Form/label.php";
 include_once "$fnsDir/Page/create.php";
-include_once "$fnsDir/Page/imageLink.php";
+include_once "$fnsDir/Page/imageArrowLink.php";
 include_once "$fnsDir/Page/text.php";
 $content =
     Page\create(
@@ -46,7 +38,7 @@ $content =
             .' GNU Affero General Public License for more details.'
         )
         .'<div class="hr"></div>'
-        .Page\imageLink('GNU Affero General Public License',
+        .Page\imageArrowLink('GNU Affero General Public License',
             'license/', 'license', ['id' => 'license'])
     )
     .create_panel(

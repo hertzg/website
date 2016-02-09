@@ -1,8 +1,8 @@
 function Page_imageArrowLink (parentNode,
-    title, href, iconName, options, callback) {
+    titleOrCallback, href, iconName, options) {
 
     options.className = 'withArrow'
-    Page_imageLink(parentNode, title, href, iconName, options, callback)
+    Page_imageLink(parentNode, titleOrCallback, href, iconName, options)
 
 }
 

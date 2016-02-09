@@ -231,6 +231,19 @@ function Form_hidden (parentNode, name, value) {
     })
 }
 ;
+function Form_label (parentNode, text, callback) {
+    Form_association(parentNode, function (div) {
+        Element(div, 'div', function (div) {
+            div.className = 'form-label'
+            callback(div)
+        })
+    }, function (div) {
+        Element(div, 'div', function (div) {
+            Text(div, text + ':')
+        })
+    })
+}
+;
 function Form_notes (parentNode, notes) {
     Form_association(parentNode, function (div) {
         Element(div, 'ul', function (ul) {
@@ -368,23 +381,23 @@ function Page_errors (parentNode, texts) {
 }
 ;
 function Page_imageArrowLink (parentNode,
-    title, href, iconName, options, callback) {
+    titleOrCallback, href, iconName, options) {
 
     options.className = 'withArrow'
-    Page_imageLink(parentNode, title, href, iconName, options, callback)
+    Page_imageLink(parentNode, titleOrCallback, href, iconName, options)
 
 }
 
 ;
 function Page_imageArrowLinkWithDescription (parentNode,
-    title, description, href, iconName, options, callback) {
+    title, description, href, iconName, options) {
 
     if (options === undefined) options = {}
     options.className = 'withArrow'
 
     Page_imageLink(parentNode, function (span) {
         title_and_description(span, title, description)
-    }, href, iconName, options, callback)
+    }, href, iconName, options)
 
 }
 ;
@@ -482,6 +495,13 @@ function Page_sessionMessages (parentNode, messages) {
     Page_messages(parentNode, messages)
 }
 ;
+function Page_text (parentNode, callback) {
+    Element(parentNode, 'div', function (div) {
+        div.className = 'page-text'
+        callback(div)
+    })
+}
+;
 function Page_textList (parentNode, texts, className) {
     Element(parentNode, 'div', function (div) {
         div.className = 'textList ' + className
@@ -556,6 +576,7 @@ window.ui = {
     Form_captcha: Form_captcha,
     Form_checkbox: Form_checkbox,
     Form_hidden: Form_hidden,
+    Form_label: Form_label,
     Form_notes: Form_notes,
     Form_password: Form_password,
     Form_textarea: Form_textarea,
@@ -574,7 +595,7 @@ window.ui = {
     Page_phishingWarning: Page_phishingWarning,
     Page_sessionErrors: Page_sessionErrors,
     Page_sessionMessages: Page_sessionMessages,
-    Page_textList: Page_textList,
+    Page_text: Page_text,
     Page_title: Page_title,
     Page_twoColumns: Page_twoColumns,
     Page_warnings: Page_warnings,
