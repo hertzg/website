@@ -3,5 +3,7 @@
 namespace Page;
 
 function emptyTabs ($content) {
-    return "<div class=\"tab-content\">$content</div>";
+    return
+        '<br class="zeroHeight" />'
+        ."<div class=\"tab-content\">$content</div>";
 }

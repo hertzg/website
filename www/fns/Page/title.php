@@ -12,5 +12,6 @@ function title ($title, $content) {
                 .'</span>'
             .'</div>'
         .'</div>'
+        .'<br class="zeroHeight" />'
         ."<div class=\"tab-content\">$content</div>";
 }
