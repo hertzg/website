@@ -25,7 +25,7 @@ $content = Page\create(
         'title' => 'Help',
         'href' => '../#feedback',
     ],
-    'Feedback',
+    'Leave Feedback',
     Page\sessionErrors('help/feedback/errors', [
         'ENTER_TEXT' => 'Enter text.',
     ])
