@@ -37,11 +37,6 @@
 
     ExtendSession(base)
 
-    localNavigation.onUnload(function () {
-        clearTimeout(checkTimeout)
-        if (timeoutDialog !== null) timeoutDialog.unload()
-    })
-
     window.sessionTimeout = {
         extend: function () {
             var time = Date.now()
@@ -49,5 +44,10 @@
             localStorage.sessionExtendTime = time
         },
     }
+
+    localNavigation.onUnload(function () {
+        clearTimeout(checkTimeout)
+        if (timeoutDialog !== null) timeoutDialog.unload()
+    })
 
 })(base, localNavigation)

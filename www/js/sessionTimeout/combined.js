@@ -184,11 +184,6 @@ function TimeoutDialog (noHref, yesListener, noListener) {
 
     ExtendSession(base)
 
-    localNavigation.onUnload(function () {
-        clearTimeout(checkTimeout)
-        if (timeoutDialog !== null) timeoutDialog.unload()
-    })
-
     window.sessionTimeout = {
         extend: function () {
             var time = Date.now()
@@ -196,6 +191,11 @@ function TimeoutDialog (noHref, yesListener, noListener) {
             localStorage.sessionExtendTime = time
         },
     }
+
+    localNavigation.onUnload(function () {
+        clearTimeout(checkTimeout)
+        if (timeoutDialog !== null) timeoutDialog.unload()
+    })
 
 })(base, localNavigation)
 ;

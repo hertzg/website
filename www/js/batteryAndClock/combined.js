@@ -213,12 +213,12 @@ function Clock (remoteTime, timezone) {
     var battery = Battery(base)
     var clock = Clock(time, timezone)
 
+    window.batteryAndClock = { onClockUpdate: clock.onUpdate }
+
     localNavigation.onUnload(function () {
         battery.unload()
         clock.unload()
     })
-
-    window.batteryAndClock = { onClockUpdate: clock.onUpdate }
 
 })(base, time, timezone, localNavigation)
 ;
