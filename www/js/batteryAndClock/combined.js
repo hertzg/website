@@ -110,7 +110,7 @@ function Clock (remoteTime, timezone) {
         var time = Date.now()
         requestAnimationFrame(function () {
 
-            var date = new Date(Date.now() - difference)
+            var date = new Date(Date.now() + timezone * 60 * 1000 - difference)
 
             var hour = pad(date.getUTCHours())
             if (hour !== hourNode.nodeValue) hourNode.nodeValue = hour
@@ -122,7 +122,7 @@ function Clock (remoteTime, timezone) {
             if (secondNode.nodeValue !== second) secondNode.nodeValue = second
 
             updateListeners.forEach(function (listener) {
-                listener(date, date.getTime() - timezone * 60 * 1000)
+                listener(date, date.getTime())
             })
             setTimeout(update, Math.max(0, time + 1000 - Date.now()))
 
