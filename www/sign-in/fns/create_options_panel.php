@@ -18,9 +18,9 @@ function create_options_panel ($return) {
     include_once "$fnsDir/SignUpEnabled/get.php";
     if (SignUpEnabled\get()) {
         include_once "$fnsDir/Page/imageLinkWithDescription.php";
-        $options[] = Page\imageLinkWithDescription(
-            "Don't have an account?", 'Create an account here.',
-            "../sign-up/$queryString", 'new-password');
+        $options[] = Page\imageLinkWithDescription("Don't have an account?",
+            'Create an account here.', "../sign-up/$queryString",
+            'new-password', ['localNavigation' => true]);
     }
 
     include_once "$fnsDir/create_panel.php";

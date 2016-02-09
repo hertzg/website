@@ -25,11 +25,8 @@ $return = $values['return'];
 if ($return === '') $queryString = '';
 else $queryString = '?return='.rawurlencode($return);
 
-unset(
-    $_SESSION['sign-in/errors'],
-    $_SESSION['sign-in/messages'],
-    $_SESSION['sign-in/values']
-);
+include_once 'fns/unset_session_vars.php';
+unset_session_vars();
 
 include_once '../fns/create_panel.php';
 include_once '../fns/example_password.php';

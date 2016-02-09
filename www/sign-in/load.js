@@ -66,7 +66,8 @@
                     ui.Hr(div)
                     ui.Page_imageArrowLinkWithDescription(div,
                         "Don't have an account?", 'Create an account here.',
-                        '../sign-up/' + queryString, 'new-password')
+                        '../sign-up/' + queryString, 'new-password',
+                        { localNavigation: true})
                 }
             })
             localNavigation.scanLinks()
