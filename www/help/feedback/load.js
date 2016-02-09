@@ -30,8 +30,8 @@
                         form.method = 'post'
                         ui.Form_textarea(form, 'text', 'Text', {
                             maxlength: response.maxLengths.text,
-                            required: true,
                             autofocus: true,
+                            required: true,
                         })
                         ui.Hr(form)
                         ui.Form_button(form, 'Submit Feedback')

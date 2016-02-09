@@ -30,8 +30,8 @@ $content = Page\create(
     .'<form action="submit.php" method="post">'
         .Form\textarea('text', 'Text', [
             'maxlength' => $maxLengths['text'],
-            'required' => true,
             'autofocus' => true,
+            'required' => true,
         ])
         .'<div class="hr"></div>'
         .Form\button('Submit Feedback')
