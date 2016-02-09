@@ -13,7 +13,7 @@ include_once 'fns/get_values.php';
 $response['values'] = get_values();
 
 include_once '../fns/SignUpEnabled/get.php';
-$response['sign_up_enabled'] = SignUpEnabled\get();
+if (SignUpEnabled\get()) $response['signUpEnabled'] = true;
 
 include_once '../fns/Username/maxLength.php';
 $response['usernameMaxLength'] = Username\maxLength();

@@ -15,6 +15,7 @@ window.ui = {
     page: page,
     Page_create: Page_create,
     Page_emptyTabs: Page_emptyTabs,
+    Page_errors: Page_errors,
     Page_imageArrowLink: Page_imageArrowLink,
     Page_imageArrowLinkWithDescription: Page_imageArrowLinkWithDescription,
     Page_imageLink: Page_imageLink,

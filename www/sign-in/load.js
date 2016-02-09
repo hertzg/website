@@ -68,7 +68,7 @@
                         'Forgot password?', 'Reset your account password here.',
                         '../email-reset-password/' + queryString, 'reset-password',
                         { id: 'email-reset-password' })
-                    if (response.sign_up_enabled) {
+                    if (response.signUpEnabled === true) {
                         ui.Hr(div)
                         ui.Page_imageArrowLinkWithDescription(div,
                             "Don't have an account?", 'Create an account here.',

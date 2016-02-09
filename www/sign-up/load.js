@@ -27,7 +27,7 @@
             ui.guest_page(response, '../', function (body) {
                 ui.Page_title(body, 'Create an Account', function (div) {
 
-                    if (response.sign_up_enabled) {
+                    if (response.signUpEnabled === true) {
                         ui.Page_sessionErrors(div, response.errors)
                     } else {
                         ui.Page_errors(div, [
