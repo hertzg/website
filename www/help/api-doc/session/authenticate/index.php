@@ -16,6 +16,7 @@ session_method_page('authenticate', [
     ],
 ], [
     'ENTER_USERNAME' => 'The username is empty.',
+    'INVALID_USERNAME' => 'The username is invalid.',
     'ENTER_PASSWORD' => 'The password is empty.',
     'INVALID_USERNAME_OR_PASSWORD' => 'The username or password is invalid.',
 ]);
