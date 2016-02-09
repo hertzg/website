@@ -24,7 +24,7 @@
 
             document.title = 'Create an Account'
             loadCallback()
-            ui.guest_page(body, '../')
+            ui.guest_page(body, response, '../')
             ui.Page_title(body, 'Create an Account', function (div) {
 
                 if (response.sign_up_enabled) {

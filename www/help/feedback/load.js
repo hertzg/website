@@ -14,11 +14,10 @@
             }
 
             var response = JSON.parse(request.responseText)
-            var user = response.user
 
             document.title = 'Leave Feedback'
             loadCallback()
-            ui.public_page(body, user, '../../')
+            ui.public_page(body, response, '../../')
             ui.Page_create(body, {
                 title: 'Help',
                 href: '../#leave-feedback',

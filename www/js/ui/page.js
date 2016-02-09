@@ -1,13 +1,17 @@
 var page = (function (defaultThemeColor, revisions) {
-    return function (body, user, base, options) {
+    return function (body, response, base, options) {
 
         if (options === undefined) options = {}
+
+        var user = response.user
 
         var themeColor
         if (user) themeColor = user.theme_color
         else themeColor = defaultThemeColor
 
         window.base = base
+        window.time = response.time
+        window.timezone = response.timezone
 
         Element(body, 'div', function (div) {
             div.id = 'tbar'

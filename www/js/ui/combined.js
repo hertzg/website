@@ -31,8 +31,8 @@ function Element (parentNode, tagName, callback) {
     callback(element)
 }
 ;
-function guest_page (body, base, options) {
-    page(body, null, base, options)
+function guest_page (body, response, base, options) {
+    page(body, response, base, options)
 }
 ;
 function Hr (parentNode) {
@@ -42,15 +42,19 @@ function Hr (parentNode) {
 }
 ;
 var page = (function (defaultThemeColor, revisions) {
-    return function (body, user, base, options) {
+    return function (body, response, base, options) {
 
         if (options === undefined) options = {}
+
+        var user = response.user
 
         var themeColor
         if (user) themeColor = user.theme_color
         else themeColor = defaultThemeColor
 
         window.base = base
+        window.time = response.time
+        window.timezone = response.timezone
 
         Element(body, 'div', function (div) {
             div.id = 'tbar'
@@ -103,12 +107,12 @@ var page = (function (defaultThemeColor, revisions) {
     }
 })(defaultThemeColor, revisions)
 ;
-function public_page (body, user, base, options) {
-    if (user) {
+function public_page (body, response, base, options) {
+    if (response.user !== undefined) {
         if (options === undefined) options = {}
         options.logoHref = base + 'home/'
     }
-    page(body, user, base, options)
+    page(body, response, base, options)
 }
 ;
 function Text (element, text) {

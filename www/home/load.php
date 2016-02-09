@@ -6,11 +6,8 @@ $user = ApiCall\requireUser();
 include_once '../fns/HomePage/unsetSessionVars.php';
 HomePage\unsetSessionVars();
 
-$response = [
-    'user' => [
-        'theme_color' => $user->theme_color,
-    ],
-];
+include_once '../fns/create_page_load_response.php';
+$response = create_page_load_response($user);
 
 $key = 'home/messages';
 if (array_key_exists($key, $_SESSION)) $response['messages'] = $_SESSION[$key];
