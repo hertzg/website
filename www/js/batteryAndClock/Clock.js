@@ -25,8 +25,9 @@ function Clock (remoteTime, timezone) {
             var second = pad(date.getUTCSeconds())
             if (secondNode.nodeValue !== second) secondNode.nodeValue = second
 
+            var utcDate = new Date(date.getTime() - timezone * 60 * 1000)
             updateListeners.forEach(function (listener) {
-                listener(date, date.getTime())
+                listener(utcDate, utcDate.getTime())
             })
             var timeout = setTimeout(update, Math.max(0, time + 1000 - Date.now()))
             unload = function () {
