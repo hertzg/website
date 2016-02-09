@@ -14,7 +14,7 @@ $errors = [];
 include_once '../../fns/str_collapse_spaces.php';
 $text = str_collapse_spaces($text);
 
-if ($text === '') $errors[] = 'Enter text.';
+if ($text === '') $errors[] = 'ENTER_TEXT';
 
 include_once '../../fns/redirect.php';
 
