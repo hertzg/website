@@ -13,6 +13,7 @@ $content = Page\create(
     [
         'title' => 'About Zvini',
         'href' => '../#license',
+        'localNavigation' => true,
     ],
     'GNU Affero General Public License',
     \Page\sourceCode(
