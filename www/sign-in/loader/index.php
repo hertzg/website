@@ -24,5 +24,8 @@ if (array_key_exists($key, $_SESSION)) $response['errors'] = $_SESSION[$key];
 $key = 'sign-in/messages';
 if (array_key_exists($key, $_SESSION)) $response['messages'] = $_SESSION[$key];
 
+include_once '../../fns/get_absolute_base.php';
+$response['absoluteBase'] = get_absolute_base();
+
 header('Content-Type: application/json');
 echo json_encode($response);
