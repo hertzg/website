@@ -24,6 +24,7 @@
 
 .a:focus,
 .tag.active,
+.clickable.target,
 .clickable:target {
     background-color: rgba(150, 188, 0, 0.2);
 }
