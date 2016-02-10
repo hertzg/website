@@ -2,21 +2,8 @@
 
     function loadHref (href, hash, callback) {
 
-        function callLoader (loader) {
-
-            var request = new XMLHttpRequest
-            request.open('get', href + 'loader/')
-            request.send()
-            request.onerror = error
-            request.onload = function () {
-
-                if (request.status !== 200) {
-                    error()
-                    return
-                }
-
-                var response = JSON.parse(request.responseText)
-
+        function loadData (loader) {
+            currentOperation = LoadData(href, function (response) {
                 loader(response, function (title) {
                     document.title = title
                     while (unloadListeners.length > 0) unloadListeners.shift()()
@@ -24,15 +11,7 @@
                     currentOperation = null
                     if (callback !== undefined) callback()
                 })
-
-            }
-
-            currentOperation = {
-                abort: function () {
-                    request.abort()
-                },
-            }
-
+            }, error)
         }
 
         function error () {
@@ -52,11 +31,11 @@
                 currentOperation = LoadScript(src, function () {
                     var loader = loaders[localHref]
                     if (loader === undefined) error()
-                    else callLoader(loader)
+                    else loadData(loader)
                 }, error)
             }
         } else {
-            callLoader(loader)
+            loadData(loader)
         }
 
     }

@@ -9,6 +9,39 @@ function FocusTarget () {
     if (element.scrollIntoView) element.scrollIntoView()
 }
 ;
+function LoadData (href, loadCallback, errorCallback) {
+
+    var request = new XMLHttpRequest
+    request.open('get', href + 'loader/')
+    request.send()
+    request.onerror = errorCallback
+    request.onload = function () {
+
+        if (request.status !== 200) {
+            errorCallback()
+            return
+        }
+
+        var response
+        try {
+            response = JSON.parse(request.responseText)
+        } catch (e) {
+            errorCallback()
+            return
+        }
+
+        loadCallback(response)
+
+    }
+
+    return {
+        abort: function () {
+            request.abort()
+        },
+    }
+
+}
+;
 function LoadScript (src, loadCallback, errorCallback) {
 
     var script = document.createElement('script')
@@ -61,21 +94,8 @@ function UnloadPage () {
 
     function loadHref (href, hash, callback) {
 
-        function callLoader (loader) {
-
-            var request = new XMLHttpRequest
-            request.open('get', href + 'loader/')
-            request.send()
-            request.onerror = error
-            request.onload = function () {
-
-                if (request.status !== 200) {
-                    error()
-                    return
-                }
-
-                var response = JSON.parse(request.responseText)
-
+        function loadData (loader) {
+            currentOperation = LoadData(href, function (response) {
                 loader(response, function (title) {
                     document.title = title
                     while (unloadListeners.length > 0) unloadListeners.shift()()
@@ -83,15 +103,7 @@ function UnloadPage () {
                     currentOperation = null
                     if (callback !== undefined) callback()
                 })
-
-            }
-
-            currentOperation = {
-                abort: function () {
-                    request.abort()
-                },
-            }
-
+            }, error)
         }
 
         function error () {
@@ -111,11 +123,11 @@ function UnloadPage () {
                 currentOperation = LoadScript(src, function () {
                     var loader = loaders[localHref]
                     if (loader === undefined) error()
-                    else callLoader(loader)
+                    else loadData(loader)
                 }, error)
             }
         } else {
-            callLoader(loader)
+            loadData(loader)
         }
 
     }
