@@ -1,66 +1,40 @@
 (function (localNavigation, ui) {
+    localNavigation.registerPage('help/feedback/', function (response, loadCallback) {
 
-    function loadFunction (base, loadCallback, errorCallback) {
+        loadCallback('Leave Feedback')
 
-        var request = new XMLHttpRequest
-        request.open('get', base + 'help/feedback/loader/')
-        request.send()
-        request.onerror = errorCallback
-        request.onload = function () {
+        var base = '../../'
 
-            if (request.status !== 200) {
-                errorCallback()
-                return
-            }
-
-            var response = JSON.parse(request.responseText)
-
-            document.title = 'Leave Feedback'
-            loadCallback()
-
-            var newBase = '../../'
-
-            ui.public_page(response, newBase, function (body) {
-                ui.Page_create(body, {
-                    title: 'Help',
-                    href: '../#feedback',
-                }, 'Leave Feedback', function (div) {
-                    ui.Page_sessionErrors(div, response.errors, {
-                        ENTER_TEXT: 'Enter text.',
-                    })
-                    ui.Element(div, 'form', function (form) {
-
-                        form.action = 'submit.php'
-                        form.method = 'post'
-
-                        ui.Form_textarea(form, 'text', 'Text', {
-                            maxlength: response.maxLengths.text,
-                            autofocus: true,
-                            required: true,
-                        })
-                        ui.Hr(form)
-                        ui.Form_button(form, 'Submit Feedback')
-
-                    })
+        ui.public_page(response, base, function (body) {
+            ui.Page_create(body, {
+                title: 'Help',
+                href: '../#feedback',
+            }, 'Leave Feedback', function (div) {
+                ui.Page_sessionErrors(div, response.errors, {
+                    ENTER_TEXT: 'Enter text.',
                 })
-            }, {
-                scripts: function (body) {
-                    ui.compressed_js_script(body, revisions, 'flexTextarea', newBase)
-                },
+                ui.Element(div, 'form', function (form) {
+
+                    form.action = 'submit.php'
+                    form.method = 'post'
+
+                    ui.Form_textarea(form, 'text', 'Text', {
+                        maxlength: response.maxLengths.text,
+                        autofocus: true,
+                        required: true,
+                    })
+                    ui.Hr(form)
+                    ui.Form_button(form, 'Submit Feedback')
+
+                })
             })
-
-            localNavigation.scanLinks()
-
-        }
-
-        return {
-            abort: function () {
-                request.abort()
+        }, {
+            scripts: function (body) {
+                ui.compressed_js_script(body, revisions, 'flexTextarea', base)
             },
-        }
+        })
 
-    }
+        localNavigation.scanLinks()
 
-    localNavigation.registerPage('help/feedback/', loadFunction)
-
+    })
 })(localNavigation, ui)

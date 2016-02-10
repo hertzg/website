@@ -1,69 +1,44 @@
 (function (localNavigation, ui) {
+    localNavigation.registerPage('email-reset-password/', function (response, loadCallback) {
 
-    function loadFunction (base, loadCallback, errorCallback) {
+        loadCallback('Reset Password')
 
-        var request = new XMLHttpRequest
-        request.open('get', base + 'email-reset-password/loader/')
-        request.send()
-        request.onerror = errorCallback
-        request.onload = function () {
+        var values = response.values
+        var focus = values.focus
+        var returnVar = values['return']
 
-            if (request.status !== 200) {
-                errorCallback()
-                return
-            }
+        var queryString
+        if (returnVar === '') queryString = ''
+        else queryString = '?return=' + encodeURIComponent(returnVar)
 
-            var response = JSON.parse(request.responseText)
-            var values = response.values
-            var focus = values.focus
-            var returnVar = values['return']
+        var base = '../'
 
-            var queryString
-            if (returnVar === '') queryString = ''
-            else queryString = '?return=' + encodeURIComponent(returnVar)
+        ui.guest_page(response, base, function (body) {
+            ui.Page_create(body, {
+                title: 'Sign In',
+                href: '../sign-in/' + queryString + '#email-reset-password',
+                localNavigation: true,
+            }, 'Reset Password', function (div) {
+                ui.Page_sessionErrors(div, response.errors)
+                ui.Element(div, 'form', function (form) {
 
-            document.title = 'Reset Password'
-            loadCallback()
+                    form.action = 'submit.php'
+                    form.method = 'post'
 
-            var newBase = '../'
-
-            ui.guest_page(response, newBase, function (body) {
-                ui.Page_create(body, {
-                    title: 'Sign In',
-                    href: '../sign-in/' + queryString + '#email-reset-password',
-                    localNavigation: true,
-                }, 'Reset Password', function (div) {
-                    ui.Page_sessionErrors(div, response.errors)
-                    ui.Element(div, 'form', function (form) {
-
-                        form.action = 'submit.php'
-                        form.method = 'post'
-
-                        ui.Form_textfield(form, 'email', 'Email', {
-                            value: values.email,
-                            maxlength: response.emailMaxLength,
-                            autofocus: focus === 'email',
-                        })
-                        ui.Hr(form)
-                        ui.Form_captcha(form, response, newBase, focus === 'captcha')
-                        ui.Form_button(form, 'Send Recovery Email')
-                        ui.Form_hidden(form, 'return', returnVar)
-
+                    ui.Form_textfield(form, 'email', 'Email', {
+                        value: values.email,
+                        maxlength: response.emailMaxLength,
+                        autofocus: focus === 'email',
                     })
+                    ui.Hr(form)
+                    ui.Form_captcha(form, response, base, focus === 'captcha')
+                    ui.Form_button(form, 'Send Recovery Email')
+                    ui.Form_hidden(form, 'return', returnVar)
+
                 })
             })
-            localNavigation.scanLinks()
+        })
+        localNavigation.scanLinks()
 
-        }
-
-        return {
-            abort: function () {
-                request.abort()
-            },
-        }
-
-    }
-
-    localNavigation.registerPage('email-reset-password/', loadFunction)
-
+    })
 })(localNavigation, ui)

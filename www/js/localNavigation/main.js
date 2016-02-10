@@ -3,12 +3,36 @@
     function loadHref (href, hash, callback) {
 
         function callLoader (loader) {
-            currentOperation = loader(absoluteBase, function () {
-                while (unloadListeners.length > 0) unloadListeners.shift()()
-                UnloadPage()
-                currentOperation = null
-                if (callback !== undefined) callback()
-            }, error)
+
+            var request = new XMLHttpRequest
+            request.open('get', href + 'loader/')
+            request.send()
+            request.onerror = error
+            request.onload = function () {
+
+                if (request.status !== 200) {
+                    error()
+                    return
+                }
+
+                var response = JSON.parse(request.responseText)
+
+                loader(response, function (title) {
+                    document.title = title
+                    while (unloadListeners.length > 0) unloadListeners.shift()()
+                    UnloadPage()
+                    currentOperation = null
+                    if (callback !== undefined) callback()
+                })
+
+            }
+
+            currentOperation = {
+                abort: function () {
+                    request.abort()
+                },
+            }
+
         }
 
         function error () {
