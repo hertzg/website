@@ -67,7 +67,7 @@ function UnloadPage () {
         var localHref = href.substr(absoluteBase.length)
         var loader = loaders[localHref]
         if (loader === undefined) {
-            var src = href + 'load.js'
+            var src = href + 'loader/index.js'
             var revision = loaderRevisions[localHref]
             if (revision === undefined) error()
             else {

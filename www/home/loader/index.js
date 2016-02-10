@@ -3,7 +3,7 @@
     function loadFunction (base, loadCallback, errorCallback) {
 
         var request = new XMLHttpRequest
-        request.open('get', base + 'home/load.php')
+        request.open('get', base + 'home/loader/')
         request.send()
         request.onerror = errorCallback
         request.onload = function () {

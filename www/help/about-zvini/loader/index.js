@@ -3,7 +3,7 @@
     function loadFunction (base, loadCallback, errorCallback) {
 
         var request = new XMLHttpRequest
-        request.open('get', base + 'help/about-zvini/load.php')
+        request.open('get', base + 'help/about-zvini/loader/')
         request.send()
         request.onerror = errorCallback
         request.onload = function () {
