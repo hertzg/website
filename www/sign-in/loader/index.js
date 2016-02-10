@@ -92,6 +92,7 @@
                 },
             })
             localNavigation.scanLinks()
+            localNavigation.focusTarget()
 
         }
 

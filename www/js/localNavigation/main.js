@@ -90,6 +90,7 @@
 
     window.localNavigation = {
         scanLinks: scanLinks,
+        focusTarget: FocusTarget,
         registerPage: function (href, loader) {
             loaders[href] = loader
         },

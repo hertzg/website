@@ -20,7 +20,7 @@
             ui.public_page(response, '../../', function (body) {
                 ui.Page_create(body, {
                     title: 'Help',
-                    href: '../#leave-feedback',
+                    href: '../#feedback',
                 }, 'Leave Feedback', function (div) {
                     ui.Page_sessionErrors(div, response.errors, {
                         ENTER_TEXT: 'Enter text.',

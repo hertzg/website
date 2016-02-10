@@ -1,4 +1,13 @@
 (function () {
+function FocusTarget () {
+    var hash = location.hash
+    if (hash === '') return
+    var id = hash.substr(1)
+    var element = document.getElementById(id)
+    if (id === null) return
+    element.classList.add('target')
+}
+;
 function LoadScript (src, loadCallback, errorCallback) {
 
     var script = document.createElement('script')
@@ -137,6 +146,7 @@ function UnloadPage () {
 
     window.localNavigation = {
         scanLinks: scanLinks,
+        focusTarget: FocusTarget,
         registerPage: function (href, loader) {
             loaders[href] = loader
         },

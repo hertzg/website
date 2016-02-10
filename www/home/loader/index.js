@@ -41,6 +41,7 @@
                 })
             })
             localNavigation.scanLinks()
+            localNavigation.focusTarget()
 
         }
 
