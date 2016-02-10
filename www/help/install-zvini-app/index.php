@@ -26,4 +26,4 @@ $content = Page\create(
 );
 
 include_once "$fnsDir/echo_public_page.php";
-echo_public_page($user, 'Help', $content, '../../');
+echo_public_page($user, 'Install Zvini App', $content, '../../');
