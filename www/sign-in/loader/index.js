@@ -77,7 +77,7 @@
                     })
                     if (response.signUpEnabled === true) {
                         ui.Hr(div)
-                        ui.Page_imageArrowLinkWithDescription(div, function (div) {
+                        ui.Page_imageLinkWithDescription(div, function (div) {
                             ui.Text(div, "Don't have an account?")
                         }, function (div) {
                             ui.Text(div, 'Create an account here.')

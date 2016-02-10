@@ -30,6 +30,7 @@ CompressJsFiles([
     'Page/imageArrowLink',
     'Page/imageArrowLinkWithDescription',
     'Page/imageLink',
+    'Page/imageLinkWithDescription',
     'Page/infoText',
     'Page/messages',
     'Page/panel',

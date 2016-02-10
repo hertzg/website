@@ -86,7 +86,7 @@
 
                 })
                 ui.Page_panel(body, 'Options', function (div) {
-                    ui.Page_imageArrowLinkWithDescription(div, function (div) {
+                    ui.Page_imageLinkWithDescription(div, function (div) {
                         ui.Text(div, 'Already have an account?')
                     }, function (div) {
                         ui.Text(div, 'Sign in here.')

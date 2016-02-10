@@ -451,9 +451,8 @@ function Page_imageArrowLinkWithDescription (parentNode,
     if (options === undefined) options = {}
     options.className = 'withArrow'
 
-    Page_imageLink(parentNode, function (span) {
-        title_and_description(span, titleCallback, descriptionCallback)
-    }, href, iconName, options)
+    Page_imageLinkWithDescription(parentNode, titleCallback,
+        descriptionCallback, href, iconName, options)
 
 }
 ;
@@ -488,6 +487,15 @@ function Page_imageLink (parentNode, callback, href, iconName, options) {
         })
 
     })
+
+}
+;
+function Page_imageLinkWithDescription (parentNode,
+    titleCallback, descriptionCallback, href, iconName, options) {
+
+    Page_imageLink(parentNode, function (span) {
+        title_and_description(span, titleCallback, descriptionCallback)
+    }, href, iconName, options)
 
 }
 ;
@@ -646,6 +654,7 @@ window.ui = {
     Page_imageArrowLink: Page_imageArrowLink,
     Page_imageArrowLinkWithDescription: Page_imageArrowLinkWithDescription,
     Page_imageLink: Page_imageLink,
+    Page_imageLinkWithDescription: Page_imageLinkWithDescription,
     Page_infoText: Page_infoText,
     Page_panel: Page_panel,
     Page_phishingWarning: Page_phishingWarning,

@@ -21,6 +21,7 @@ window.ui = {
     Page_imageArrowLink: Page_imageArrowLink,
     Page_imageArrowLinkWithDescription: Page_imageArrowLinkWithDescription,
     Page_imageLink: Page_imageLink,
+    Page_imageLinkWithDescription: Page_imageLinkWithDescription,
     Page_infoText: Page_infoText,
     Page_panel: Page_panel,
     Page_phishingWarning: Page_phishingWarning,
