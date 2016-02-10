@@ -119,7 +119,7 @@ function Clock (remoteTime, timezone) {
         var time = Date.now()
         var frame = requestAnimationFrame(function () {
 
-            var date = new Date(Date.now() + timezone * 60 * 1000 - difference)
+            var date = new Date(Date.now() + timezoneOffset - difference)
 
             var hour = pad(date.getUTCHours())
             if (hour !== hourNode.nodeValue) hourNode.nodeValue = hour
@@ -130,7 +130,7 @@ function Clock (remoteTime, timezone) {
             var second = pad(date.getUTCSeconds())
             if (secondNode.nodeValue !== second) secondNode.nodeValue = second
 
-            var utcDate = new Date(date.getTime() - timezone * 60 * 1000)
+            var utcDate = new Date(date.getTime() - timezoneOffset)
             updateListeners.forEach(function (listener) {
                 listener(utcDate, utcDate.getTime())
             })
@@ -145,6 +145,8 @@ function Clock (remoteTime, timezone) {
         }
 
     }
+
+    var timezoneOffset = timezone * 60 * 1000
 
     var difference
     if (window.localStorage) {
@@ -205,6 +207,9 @@ function Clock (remoteTime, timezone) {
         unload: function () {
             unload()
         },
+        unUpdate: function (listener) {
+            updateListeners.splice(updateListeners.indexOf(listener), 1)
+        },
     }
 
 }
@@ -214,7 +219,10 @@ function Clock (remoteTime, timezone) {
     var battery = Battery(base)
     var clock = Clock(time, timezone)
 
-    window.batteryAndClock = { onClockUpdate: clock.onUpdate }
+    window.batteryAndClock = {
+        onClockUpdate: clock.onUpdate,
+        unClockUpdate: clock.unUpdate,
+    }
 
     localNavigation.onUnload(function () {
         battery.unload()

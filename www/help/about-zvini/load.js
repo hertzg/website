@@ -54,7 +54,7 @@
                     })
                     ui.Hr(div)
                     ui.Form_label(div, 'Date', function (div) {
-                        ui.Text(div, gitCommit.date)
+                        ui.export_date_ago(div, response.time, gitCommit.date, true)
                     })
                 })
             })

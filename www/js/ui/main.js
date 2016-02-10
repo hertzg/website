@@ -2,6 +2,7 @@ window.ui = {
     compressed_css_link: compressed_css_link,
     compressed_js_script: compressed_js_script,
     Element: Element,
+    export_date_ago: export_date_ago,
     Form_button: Form_button,
     Form_captcha: Form_captcha,
     Form_checkbox: Form_checkbox,

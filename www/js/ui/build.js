@@ -5,6 +5,7 @@ CompressJsFiles([
     'compressed_css_link',
     'compressed_js_script',
     'Element',
+    'export_date_ago',
     'guest_page',
     'Hr',
     'page',

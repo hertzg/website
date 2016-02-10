@@ -3,7 +3,10 @@
     var battery = Battery(base)
     var clock = Clock(time, timezone)
 
-    window.batteryAndClock = { onClockUpdate: clock.onUpdate }
+    window.batteryAndClock = {
+        onClockUpdate: clock.onUpdate,
+        unClockUpdate: clock.unUpdate,
+    }
 
     localNavigation.onUnload(function () {
         battery.unload()
