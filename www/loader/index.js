@@ -1,4 +1,4 @@
-(function (localNavigation, ui, revisions, defaultThemeColor) {
+(function (localNavigation, ui, revisions) {
 
     function loadFunction (base, loadCallback, errorCallback) {
 
@@ -33,7 +33,7 @@
             ui.Element(body, 'div', function (div) {
                 div.className = 'centerWrapper'
                 ui.Element(div, 'img', function (img) {
-                    var url = 'theme/color/' + defaultThemeColor + '/images/zvini.svg'
+                    var url = 'theme/color/' + response.themeColor + '/images/zvini.svg'
                     img.className = 'logoImage'
                     img.src = base + url + '?' + revisions[url]
                 })
@@ -114,4 +114,4 @@
 
     localNavigation.registerPage('', loadFunction)
 
-})(localNavigation, ui, revisions, defaultThemeColor)
+})(localNavigation, ui, revisions)

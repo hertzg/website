@@ -91,16 +91,12 @@ function Hr (parentNode) {
     parentNode.appendChild(div)
 }
 ;
-var page = (function (localNavigation, defaultThemeColor, revisions) {
+var page = (function (localNavigation, revisions) {
     return function (response, base, callback, options) {
 
         if (options === undefined) options = {}
 
         var user = response.user
-
-        var themeColor
-        if (user) themeColor = user.theme_color
-        else themeColor = defaultThemeColor
 
         window.base = base
         window.time = response.time
@@ -133,7 +129,7 @@ var page = (function (localNavigation, defaultThemeColor, revisions) {
                     a.className = className
 
                     Element(a, 'img', function (img) {
-                        var url = 'theme/color/' + themeColor + '/images/zvini.svg'
+                        var url = 'theme/color/' + response.themeColor + '/images/zvini.svg'
                         img.alt = 'Zvini'
                         img.className = 'logoLink-img'
                         img.src = base + url + '?' + revisions[url]
@@ -187,7 +183,7 @@ var page = (function (localNavigation, defaultThemeColor, revisions) {
         if (scriptsCallback !== undefined) scriptsCallback(body)
 
     }
-})(localNavigation, defaultThemeColor, revisions)
+})(localNavigation, revisions)
 ;
 function public_page (response, base, callback, options) {
     if (response.user !== undefined) {
