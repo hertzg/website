@@ -15,8 +15,6 @@
             location = href + hash
         }
 
-        console.log('loadHref', href, hash)
-
         if (currentOperation !== null) currentOperation.abort()
 
         var localHref = href.substr(absoluteBase.length)
@@ -40,7 +38,6 @@
     }
 
     function popState (e) {
-        console.log('popstate', e.state)
         var state = e.state
         if (state === null) state = initialState
         loadHref(state.href, state.hash)
@@ -64,7 +61,6 @@
                         href: href,
                         hash: hash,
                     }
-                    console.log('history.pushState', document.title, state)
                     history.pushState(state, document.title, href + hash)
                 })
 
@@ -92,7 +88,6 @@
 
     var unloadListeners = []
 
-    console.log('localNavigation loaded')
     window.localNavigation = {
         scanLinks: scanLinks,
         registerPage: function (href, loader) {

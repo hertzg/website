@@ -39,9 +39,7 @@
 
     })
 
-    console.log('flexTextarea load')
     localNavigation.onUnload(function () {
-        console.log('flexTextarea unload')
         while (unloadListeners.length > 0) unloadListeners.shift()()
     })
 

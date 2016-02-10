@@ -1,8 +1,6 @@
 (function () {
 function LoadScript (src, loadCallback, errorCallback) {
 
-    console.log('LoadScript', src)
-
     var script = document.createElement('script')
     script.src = src
     script.onload = loadCallback
@@ -64,8 +62,6 @@ function UnloadPage () {
             location = href + hash
         }
 
-        console.log('loadHref', href, hash)
-
         if (currentOperation !== null) currentOperation.abort()
 
         var localHref = href.substr(absoluteBase.length)
@@ -89,7 +85,6 @@ function UnloadPage () {
     }
 
     function popState (e) {
-        console.log('popstate', e.state)
         var state = e.state
         if (state === null) state = initialState
         loadHref(state.href, state.hash)
@@ -113,7 +108,6 @@ function UnloadPage () {
                         href: href,
                         hash: hash,
                     }
-                    console.log('history.pushState', document.title, state)
                     history.pushState(state, document.title, href + hash)
                 })
 
@@ -141,7 +135,6 @@ function UnloadPage () {
 
     var unloadListeners = []
 
-    console.log('localNavigation loaded')
     window.localNavigation = {
         scanLinks: scanLinks,
         registerPage: function (href, loader) {

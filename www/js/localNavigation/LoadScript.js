@@ -1,7 +1,5 @@
 function LoadScript (src, loadCallback, errorCallback) {
 
-    console.log('LoadScript', src)
-
     var script = document.createElement('script')
     script.src = src
     script.onload = loadCallback
