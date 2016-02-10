@@ -25,4 +25,6 @@ function UnloadPage () {
         head.removeChild(node)
     })
 
+    scroll(0, 0)
+
 }

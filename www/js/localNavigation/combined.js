@@ -53,6 +53,8 @@ function UnloadPage () {
         head.removeChild(node)
     })
 
+    scroll(0, 0)
+
 }
 ;
 (function (base, loaderRevisions, unloadProgress) {
