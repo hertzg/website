@@ -57,6 +57,10 @@
                         ui.export_date_ago(div, response.time, gitCommit.date, true)
                     })
                 })
+            }, {
+                scripts: function (body) {
+                    ui.compressed_js_script(body, revisions, 'dateAgo', '../../')
+                },
             })
             localNavigation.scanLinks()
 
