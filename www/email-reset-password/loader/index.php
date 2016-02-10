@@ -18,5 +18,8 @@ $response['emailMaxLength'] = Email\maxLength();
 $key = 'email-reset-password/errors';
 if (array_key_exists($key, $_SESSION)) $response['errors'] = $_SESSION[$key];
 
+include_once '../../fns/Captcha/required.php';
+if (Captcha\required()) $response['captchaRequired'] = true;
+
 header('Content-Type: application/json');
 echo json_encode($response);

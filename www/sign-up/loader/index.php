@@ -33,5 +33,8 @@ $response['examplePassword'] = example_password(9);
 $key = 'sign-up/errors';
 if (array_key_exists($key, $_SESSION)) $response['errors'] = $_SESSION[$key];
 
+include_once '../../fns/Captcha/required.php';
+if (Captcha\required()) $response['captchaRequired'] = true;
+
 header('Content-Type: application/json');
 echo json_encode($response);

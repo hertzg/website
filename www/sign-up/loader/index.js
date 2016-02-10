@@ -79,7 +79,7 @@
                             'Optional. Used for password recovery.',
                         ])
                         ui.Hr(form)
-                        ui.Form_captcha(form, '../', focus === 'captcha')
+                        ui.Form_captcha(form, response, '../', focus === 'captcha')
                         ui.Form_button(form, 'Create an Account')
                         ui.Form_hidden(form, 'return', returnVar)
 

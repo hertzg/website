@@ -43,7 +43,7 @@
                             autofocus: focus === 'email',
                         })
                         ui.Hr(form)
-                        ui.Form_captcha(form, '../', focus === 'captcha')
+                        ui.Form_captcha(form, response, '../', focus === 'captcha')
                         ui.Form_button(form, 'Send Recovery Email')
                         ui.Form_hidden(form, 'return', returnVar)
 
