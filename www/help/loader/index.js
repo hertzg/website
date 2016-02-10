@@ -32,6 +32,7 @@
                         ui.Text(div, 'Install Link Handlers')
                     }, 'install-link-handlers/', 'protocol', {
                         id: 'install-link-handlers',
+                        localNavigation: true,
                     })
                     ui.Hr(div)
                     ui.Page_imageArrowLink(div, function (div) {

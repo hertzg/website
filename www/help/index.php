@@ -21,8 +21,10 @@ $content = Page\create(
     .Page\imageLink('Install Zvini App', 'install-zvini-app/',
         'download', ['id' => 'install-zvini-app'])
     .'<div class="hr"></div>'
-    .Page\imageLink('Install Link Handlers', 'install-link-handlers/',
-        'protocol', ['id' => 'install-link-handlers'])
+    .Page\imageLink('Install Link Handlers', 'install-link-handlers/', 'protocol', [
+        'id' => 'install-link-handlers',
+        'localNavigation' => true,
+    ])
     .'<div class="hr"></div>'
     .Page\imageArrowLink('Leave Feedback', 'feedback/', 'feedback', [
         'id' => 'feedback',
