@@ -17,6 +17,7 @@
 
             document.title = 'Home'
             loadCallback()
+
             ui.page(response, '../', function (body) {
                 ui.Page_emptyTabs(body, function (div) {
                     ui.Page_sessionMessages(div, response.messages)

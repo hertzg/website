@@ -24,6 +24,7 @@
 
             document.title = 'Reset Password'
             loadCallback()
+
             ui.guest_page(response, '../', function (body) {
                 ui.Page_create(body, {
                     title: 'Sign In',

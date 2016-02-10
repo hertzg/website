@@ -24,6 +24,7 @@
 
             document.title = 'Sign In'
             loadCallback()
+
             ui.guest_page(response, '../', function (body) {
                 ui.Page_title(body, 'Sign In', function (div) {
                     ui.Page_sessionMessages(div, response.messages)

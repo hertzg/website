@@ -15,10 +15,14 @@
 
             var response = JSON.parse(request.responseText)
 
-            window.base = ''
-
             document.title = response.siteTitle
             loadCallback()
+
+            window.base = ''
+            localNavigation.onUnload(function () {
+                delete window.base
+            })
+
             ui.compressed_css_link(document.head, revisions, 'index', '')
             ui.Element(body, 'div', function (div) {
                 div.className = 'backgroundGradient'

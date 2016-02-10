@@ -17,6 +17,12 @@
 
             document.title = 'Install Link Handlers'
             loadCallback()
+
+            window.siteTitle = response.siteTitle
+            localNavigation.onUnload(function () {
+                delete window.siteTitle
+            })
+
             ui.public_page(response, '../../', function (body) {
                 ui.Page_create(body, {
                     title: 'Help',
@@ -42,7 +48,6 @@
                             ui.Text(div, 'tel: Link')
                         }, '', 'protocol', { id: 'tel' })
                     })
-                    window.siteTitle = response.siteTitle
                     ui.Element(div, 'script', function (script) {
                         script.type = 'text/javascript'
                         script.async = true

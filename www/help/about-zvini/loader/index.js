@@ -18,6 +18,7 @@
 
             document.title = 'About Zvini'
             loadCallback()
+
             ui.public_page(response, '../../', function (body) {
                 ui.Page_create(body, {
                     title: 'Help',

@@ -17,6 +17,7 @@
 
             document.title = 'Help'
             loadCallback()
+
             ui.public_page(response, '../', function (body) {
                 ui.Page_create(body, {
                     title: 'Home',

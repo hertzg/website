@@ -91,7 +91,7 @@ function Hr (parentNode) {
     parentNode.appendChild(div)
 }
 ;
-var page = (function (defaultThemeColor, revisions) {
+var page = (function (localNavigation, defaultThemeColor, revisions) {
     return function (response, base, callback, options) {
 
         if (options === undefined) options = {}
@@ -105,6 +105,11 @@ var page = (function (defaultThemeColor, revisions) {
         window.base = base
         window.time = response.time
         window.timezone = response.timezone
+        localNavigation.onUnload(function () {
+            delete window.base
+            delete window.time
+            delete window.timezone
+        })
 
         if (user) {
             compressed_css_link(document.head, revisions, 'confirmDialog', base)
@@ -167,6 +172,9 @@ var page = (function (defaultThemeColor, revisions) {
 
             compressed_js_script(body, revisions, 'confirmDialog', base)
             window.signOutTimeout = response.signOutTimeout
+            localNavigation.onUnload(function () {
+                delete window.signOutTimeout
+            })
             compressed_js_script(body, revisions, 'signOutConfirm', base)
 
             if (response.session_remembered !== true) {
@@ -179,7 +187,7 @@ var page = (function (defaultThemeColor, revisions) {
         if (scriptsCallback !== undefined) scriptsCallback(body)
 
     }
-})(defaultThemeColor, revisions)
+})(localNavigation, defaultThemeColor, revisions)
 ;
 function public_page (response, base, callback, options) {
     if (response.user !== undefined) {
