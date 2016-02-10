@@ -10,8 +10,13 @@ function optionsPanel () {
     $accountLink = \Page\imageArrowLink('Account',
         '../account/', 'account', ['id' => 'account']);
 
-    $customizeHomeLink = \Page\imageArrowLink('Customize Home',
-        'customize/', 'edit-home', ['id' => 'customize']);
+    $customizeHomeLink = \Page\imageArrowLink(
+        'Customize Home', 'customize/', 'edit-home',
+        [
+            'id' => 'customize',
+            'localNavigation' => true,
+        ]
+    );
 
     include_once "$fnsDir/Page/twoColumns.php";
     $content =

@@ -1,8 +1,13 @@
 function Page_imageLink (parentNode, callback, href, iconName, options) {
 
-    Element(parentNode, 'a', function (a) {
-        a.name = options.id
-    })
+    if (options === undefined) options = {}
+
+    var id = options.id
+    if (id !== undefined) {
+        Element(parentNode, 'a', function (a) {
+            a.name = id
+        })
+    }
     Element(parentNode, 'a', function (a) {
 
         var additionalClass
@@ -13,7 +18,7 @@ function Page_imageLink (parentNode, callback, href, iconName, options) {
             additionalClass += ' localNavigation-link'
         }
 
-        a.id = options.id
+        if (id !== undefined) a.id = id
         a.className = 'clickable link image_link' + additionalClass
         a.href = href
 

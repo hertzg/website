@@ -30,7 +30,10 @@
                     }, function (div) {
                         ui.Page_imageArrowLink(div, function (div) {
                             ui.Text(div, 'Customize Home')
-                        }, 'customize/', 'edit-home', { id: 'customize' })
+                        }, 'customize/', 'edit-home', {
+                            id: 'customize',
+                            localNavigation: true,
+                        })
                     })
                     ui.Hr(div)
                     ui.Page_imageArrowLink(div, function (div) {
