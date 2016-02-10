@@ -24,11 +24,15 @@ var page = (function (defaultThemeColor, revisions) {
                 div.id = 'tbar-limit'
                 Element(div, 'a', function (a) {
 
-                    var logoHref = options.logoHref
-                    if (logoHref === undefined) logoHref = base
+                    var href = options.href
+                    var className = 'topLink logoLink'
+                    if (href === undefined) {
+                        href = base
+                        className += ' localNavigation-link'
+                    }
 
-                    a.className = 'topLink logoLink'
-                    a.href = logoHref
+                    a.href = href
+                    a.className = className
 
                     Element(a, 'img', function (img) {
                         var url = 'theme/color/' + themeColor + '/images/zvini.svg'

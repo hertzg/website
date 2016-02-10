@@ -15,17 +15,17 @@ if ($user) {
 include_once 'fns/unset_session_vars.php';
 unset_session_vars();
 
+$signInLink =
+    '<a href="sign-in/" class="clickable button localNavigation-link">'
+        .'Sign In'
+    .'</a>';
+
 include_once 'fns/SignUpEnabled/get.php';
 if (SignUpEnabled\get()) {
     $buttons =
         '<div class="buttonsWrapper-half left">'
             .'<div class="buttonsWrapper-limit left">'
-                .'<div class="buttonWrapper left">'
-                    .'<a href="sign-in/"'
-                    .' class="clickable button localNavigation-link">'
-                        .'Sign In'
-                    .'</a>'
-                .'</div>'
+                ."<div class=\"buttonWrapper left\">$signInLink</div>"
             .'</div>'
         .'</div>'
         .'<div class="buttonsWrapper-half right">'
@@ -41,9 +41,7 @@ if (SignUpEnabled\get()) {
 } else {
     $buttons =
         '<div class="buttonsWrapper-limit center">'
-            .'<div class="buttonWrapper center">'
-                .'<a class="clickable button" href="sign-in/">Sign In</a>'
-            .'</div>'
+            ."<div class=\"buttonWrapper center\">$signInLink</div>"
         .'</div>';
 }
 

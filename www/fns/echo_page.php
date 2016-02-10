@@ -45,10 +45,12 @@ function echo_page ($user, $title, $content, $base, $options = []) {
         }
     }
 
+    $logo_class = 'topLink logoLink';
     if (array_key_exists('logo_href', $options)) {
         $logo_href = $options['logo_href'];
     } else {
         $logo_href = $base === '' ? './' : $base;
+        $logo_class .= ' localNavigation-link';
     }
 
     include_once __DIR__.'/client_time_and_timezone.php';
@@ -61,7 +63,7 @@ function echo_page ($user, $title, $content, $base, $options = []) {
     $body =
         '<div id="tbar">'
             .'<div id="tbar-limit">'
-                ."<a class=\"topLink logoLink\" href=\"$logo_href\">"
+                ."<a class=\"$logo_class\" href=\"$logo_href\">"
                     ."<img src=\"$base$logoSrc?".get_revision($logoSrc).'"'
                     .' alt="Zvini" class="logoLink-img" />'
                     .$notifications

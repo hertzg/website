@@ -2,6 +2,7 @@
 
 function loader_revisions () {
     return [
+        '' => 1,
         'email-reset-password/' => 1,
         'help/' => 5,
         'help/about-zvini/' => 1,
