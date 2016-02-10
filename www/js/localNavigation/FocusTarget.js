@@ -5,4 +5,5 @@ function FocusTarget () {
     var element = document.getElementById(id)
     if (id === null) return
     element.classList.add('target')
+    if (element.scrollIntoView) element.scrollIntoView()
 }
