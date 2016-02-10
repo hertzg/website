@@ -15,8 +15,9 @@
 
             var response = JSON.parse(request.responseText)
             var values = response.values
-            var focus = values.focus
-            var returnVar = values['return']
+
+            var focus = values.focus,
+                returnVar = values['return']
 
             var queryString
             if (returnVar === '') queryString = ''
@@ -25,7 +26,9 @@
             document.title = 'Create an Account'
             loadCallback()
 
-            ui.guest_page(response, '../', function (body) {
+            var newBase = '../'
+
+            ui.guest_page(response, newBase, function (body) {
                 ui.Page_title(body, 'Create an Account', function (div) {
 
                     if (response.signUpEnabled === true) {
@@ -79,7 +82,7 @@
                             'Optional. Used for password recovery.',
                         ])
                         ui.Hr(form)
-                        ui.Form_captcha(form, response, '../', focus === 'captcha')
+                        ui.Form_captcha(form, response, newBase, focus === 'captcha')
                         ui.Form_button(form, 'Create an Account')
                         ui.Form_hidden(form, 'return', returnVar)
 

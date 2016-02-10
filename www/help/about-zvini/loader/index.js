@@ -19,7 +19,9 @@
             document.title = 'About Zvini'
             loadCallback()
 
-            ui.public_page(response, '../../', function (body) {
+            var newBase = '../../'
+
+            ui.public_page(response, newBase, function (body) {
                 ui.Page_create(body, {
                     title: 'Help',
                     href: '../#about-zvini',
@@ -60,7 +62,7 @@
                 })
             }, {
                 scripts: function (body) {
-                    ui.compressed_js_script(body, revisions, 'dateAgo', '../../')
+                    ui.compressed_js_script(body, revisions, 'dateAgo', newBase)
                 },
             })
             localNavigation.scanLinks()

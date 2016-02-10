@@ -18,9 +18,11 @@
             document.title = 'Customize Home'
             loadCallback()
 
-            ui.compressed_css_link(document.head, revisions, 'confirmDialog', '../../')
+            var newBase = '../../'
 
-            ui.page(response, '../../', function (body) {
+            ui.compressed_css_link(document.head, revisions, 'confirmDialog', newBase)
+
+            ui.page(response, newBase, function (body) {
                 ui.Page_create(body, {
                     title: 'Home',
                     href: '../#customize',
@@ -46,7 +48,7 @@
                         }, 'restore-defaults/', 'restore-defaults')
                     })
                 })
-                ui.compressed_js_script(body, revisions, 'confirmDialog', '../../')
+                ui.compressed_js_script(body, revisions, 'confirmDialog', newBase)
                 ui.Element(body, 'script', function (script) {
                     script.type = 'text/javascript'
                     script.defer = true

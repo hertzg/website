@@ -25,7 +25,9 @@
             document.title = 'Reset Password'
             loadCallback()
 
-            ui.guest_page(response, '../', function (body) {
+            var newBase = '../'
+
+            ui.guest_page(response, newBase, function (body) {
                 ui.Page_create(body, {
                     title: 'Sign In',
                     href: '../sign-in/' + queryString + '#email-reset-password',
@@ -43,7 +45,7 @@
                             autofocus: focus === 'email',
                         })
                         ui.Hr(form)
-                        ui.Form_captcha(form, response, '../', focus === 'captcha')
+                        ui.Form_captcha(form, response, newBase, focus === 'captcha')
                         ui.Form_button(form, 'Send Recovery Email')
                         ui.Form_hidden(form, 'return', returnVar)
 
