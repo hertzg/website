@@ -9,10 +9,10 @@ function FocusTarget () {
     if (element.scrollIntoView) element.scrollIntoView()
 }
 ;
-function LoadData (href, loadCallback, errorCallback) {
+function LoadData (href, clientRevision, loadCallback, errorCallback) {
 
     var request = new XMLHttpRequest
-    request.open('get', href + 'loader/')
+    request.open('get', href + 'loader/?client_revision=' + clientRevision)
     request.send()
     request.onerror = errorCallback
     request.onload = function () {
@@ -90,12 +90,12 @@ function UnloadPage () {
 
 }
 ;
-(function (base, loaderRevisions, unloadProgress) {
+(function (base, loaderRevisions, clientRevision, unloadProgress) {
 
     function loadHref (href, hash, callback) {
 
         function loadData (loader) {
-            currentOperation = LoadData(href, function (response) {
+            currentOperation = LoadData(href, clientRevision, function (response) {
                 loader(response, function (title) {
                     document.title = title
                     while (unloadListeners.length > 0) unloadListeners.shift()()
@@ -194,7 +194,7 @@ function UnloadPage () {
         },
     }
 
-})(base, loaderRevisions, unloadProgress)
+})(base, loaderRevisions, clientRevision, unloadProgress)
 ;
 
 })()

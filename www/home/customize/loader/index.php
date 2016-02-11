@@ -1,5 +1,8 @@
 <?php
 
+include_once '../../../fns/ApiCall/requireClientRevision.php';
+ApiCall\requireClientRevision();
+
 include_once '../../../fns/ApiCall/requireUser.php';
 $user = ApiCall\requireUser();
 

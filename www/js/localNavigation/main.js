@@ -1,9 +1,9 @@
-(function (base, loaderRevisions, unloadProgress) {
+(function (base, loaderRevisions, clientRevision, unloadProgress) {
 
     function loadHref (href, hash, callback) {
 
         function loadData (loader) {
-            currentOperation = LoadData(href, function (response) {
+            currentOperation = LoadData(href, clientRevision, function (response) {
                 loader(response, function (title) {
                     document.title = title
                     while (unloadListeners.length > 0) unloadListeners.shift()()
@@ -102,4 +102,4 @@
         },
     }
 
-})(base, loaderRevisions, unloadProgress)
+})(base, loaderRevisions, clientRevision, unloadProgress)
