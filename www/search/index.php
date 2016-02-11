@@ -27,7 +27,7 @@ if ($keyword === '') {
 }
 
 include_once "$fnsDir/SearchForm/content.php";
-$formContent = SearchForm\content($keyword, 'Search...', '..');
+$formContent = SearchForm\content($keyword, 'Search...', '../home/');
 
 include_once "$fnsDir/SearchForm/create.php";
 $items = [SearchForm\create('./', $formContent)];
