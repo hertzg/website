@@ -4,8 +4,7 @@
 
     localNavigation.registerPage('', function (response, loadCallback) {
 
-        document.title = response.siteTitle
-        loadCallback()
+        loadCallback(response.siteTitle)
 
         window.base = ''
         localNavigation.onUnload(function () {
