@@ -48,7 +48,7 @@
             })
         }, {
             scripts: function (body) {
-                ui.compressed_js_script(body, revisions, 'dateAgo', base)
+                ui.compressed_js_script(body, 'dateAgo', base)
             },
         })
         localNavigation.scanLinks()

@@ -1,4 +1,4 @@
-(function (localNavigation, ui, revisions) {
+(function (localNavigation, ui) {
     localNavigation.registerPage('home/customize/show-hide/', function (response, loadCallback) {
 
         loadCallback('Show / Hide Items')
@@ -61,11 +61,11 @@
             })
         }, {
             head: function (head) {
-                ui.compressed_css_link(head, revisions, 'confirmDialog', base)
+                ui.compressed_css_link(head, 'confirmDialog', base)
             },
             scripts: function (body) {
-                ui.compressed_js_script(body, revisions, 'formCheckbox', base)
-                ui.compressed_js_script(body, revisions, 'confirmDialog', base)
+                ui.compressed_js_script(body, 'formCheckbox', base)
+                ui.compressed_js_script(body, 'confirmDialog', base)
                 ui.Element(body, 'script', function (script) {
                     script.type = 'text/javascript'
                     script.src = 'index.js'
@@ -73,5 +73,7 @@
             },
         })
 
+        localNavigation.scanLinks()
+
     })
-})(localNavigation, ui, revisions)
+})(localNavigation, ui)

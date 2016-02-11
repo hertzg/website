@@ -12,7 +12,7 @@
             delete window.base
         })
 
-        ui.compressed_css_link(document.head, revisions, 'index', '')
+        ui.compressed_css_link(document.head, 'index', '')
         ui.Element(body, 'div', function (div) {
             div.className = 'backgroundGradient'
             ui.Element(div, 'div', function (div) {

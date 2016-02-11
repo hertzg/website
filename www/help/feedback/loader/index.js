@@ -30,7 +30,7 @@
             })
         }, {
             scripts: function (body) {
-                ui.compressed_js_script(body, revisions, 'flexTextarea', base)
+                ui.compressed_js_script(body, 'flexTextarea', base)
             },
         })
 

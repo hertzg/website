@@ -54,30 +54,34 @@ function admin_page (response, adminBase, callback, options) {
 
 }
 ;
-function compressed_css_link (parentNode, revisions, name, base, className) {
+function compressed_css_link (revisions) {
+    return function (parentNode, name, base, className) {
 
-    var fullName = 'css/' + name + '/compressed.css'
+        var fullName = 'css/' + name + '/compressed.css'
 
-    Element(parentNode, 'link', function (link) {
-        link.rel = 'stylesheet'
-        link.type = 'text/css'
-        link.href = base + fullName + '?' + revisions[fullName]
-        if (className !== undefined) link.className = className
-    })
+        Element(parentNode, 'link', function (link) {
+            link.rel = 'stylesheet'
+            link.type = 'text/css'
+            link.href = base + fullName + '?' + revisions[fullName]
+            if (className !== undefined) link.className = className
+        })
 
+    }
 }
 ;
-function compressed_js_script (parentNode, revisions, name, base, className) {
+function compressed_js_script (revisions) {
+    return function (parentNode, name, base, className) {
 
-    var fullName = 'js/' + name + '/compressed.js'
+        var fullName = 'js/' + name + '/compressed.js'
 
-    Element(parentNode, 'script', function (script) {
-        script.type = 'text/javascript'
-        script.defer = true
-        script.src = base + fullName + '?' + revisions[fullName]
-        if (className !== undefined) script.className = className
-    })
+        Element(parentNode, 'script', function (script) {
+            script.type = 'text/javascript'
+            script.defer = true
+            script.src = base + fullName + '?' + revisions[fullName]
+            if (className !== undefined) script.className = className
+        })
 
+    }
 }
 ;
 function Element (parentNode, tagName, callback) {
@@ -684,45 +688,47 @@ function Page_warnings (parentNode, texts) {
     Page_textList(parentNode, texts, 'warnings')
 }
 ;
-window.ui = {
-    admin_page: admin_page,
-    compressed_css_link: compressed_css_link,
-    compressed_js_script: compressed_js_script,
-    Element: Element,
-    export_date_ago: export_date_ago,
-    Form_button: Form_button,
-    Form_captcha: Form_captcha,
-    Form_checkbox: Form_checkbox,
-    Form_checkboxItem: Form_checkboxItem,
-    Form_hidden: Form_hidden,
-    Form_label: Form_label,
-    Form_notes: Form_notes,
-    Form_password: Form_password,
-    Form_textarea: Form_textarea,
-    Form_textfield: Form_textfield,
-    guest_page: guest_page,
-    Hr: Hr,
-    page: page,
-    Page_create: Page_create,
-    Page_emptyTabs: Page_emptyTabs,
-    Page_errors: Page_errors,
-    Page_imageArrowLink: Page_imageArrowLink,
-    Page_imageArrowLinkWithDescription: Page_imageArrowLinkWithDescription,
-    Page_imageLink: Page_imageLink,
-    Page_imageLinkWithDescription: Page_imageLinkWithDescription,
-    Page_infoText: Page_infoText,
-    Page_panel: Page_panel,
-    Page_phishingWarning: Page_phishingWarning,
-    Page_sessionErrors: Page_sessionErrors,
-    Page_sessionMessages: Page_sessionMessages,
-    Page_text: Page_text,
-    Page_title: Page_title,
-    Page_twoColumns: Page_twoColumns,
-    Page_warnings: Page_warnings,
-    public_page: public_page,
-    Text: Text,
-    ZeroHeightBr: ZeroHeightBr,
-}
+(function (revisions) {
+    window.ui = {
+        admin_page: admin_page,
+        compressed_css_link: compressed_css_link(revisions),
+        compressed_js_script: compressed_js_script(revisions),
+        Element: Element,
+        export_date_ago: export_date_ago,
+        Form_button: Form_button,
+        Form_captcha: Form_captcha,
+        Form_checkbox: Form_checkbox,
+        Form_checkboxItem: Form_checkboxItem,
+        Form_hidden: Form_hidden,
+        Form_label: Form_label,
+        Form_notes: Form_notes,
+        Form_password: Form_password,
+        Form_textarea: Form_textarea,
+        Form_textfield: Form_textfield,
+        guest_page: guest_page,
+        Hr: Hr,
+        page: page,
+        Page_create: Page_create,
+        Page_emptyTabs: Page_emptyTabs,
+        Page_errors: Page_errors,
+        Page_imageArrowLink: Page_imageArrowLink,
+        Page_imageArrowLinkWithDescription: Page_imageArrowLinkWithDescription,
+        Page_imageLink: Page_imageLink,
+        Page_imageLinkWithDescription: Page_imageLinkWithDescription,
+        Page_infoText: Page_infoText,
+        Page_panel: Page_panel,
+        Page_phishingWarning: Page_phishingWarning,
+        Page_sessionErrors: Page_sessionErrors,
+        Page_sessionMessages: Page_sessionMessages,
+        Page_text: Page_text,
+        Page_title: Page_title,
+        Page_twoColumns: Page_twoColumns,
+        Page_warnings: Page_warnings,
+        public_page: public_page,
+        Text: Text,
+        ZeroHeightBr: ZeroHeightBr,
+    }
+})(revisions)
 ;
 
 })()

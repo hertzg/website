@@ -1,4 +1,4 @@
-(function (localNavigation, ui, revisions) {
+(function (localNavigation, ui) {
     localNavigation.registerPage('sign-in/', function (response, loadCallback) {
 
         loadCallback('Sign In')
@@ -77,11 +77,11 @@
             })
         }, {
             scripts: function (body) {
-                ui.compressed_js_script(body, revisions, 'formCheckbox', base)
+                ui.compressed_js_script(body, 'formCheckbox', base)
             },
         })
         localNavigation.scanLinks()
         localNavigation.focusTarget()
 
     })
-})(localNavigation, ui, revisions)
+})(localNavigation, ui)

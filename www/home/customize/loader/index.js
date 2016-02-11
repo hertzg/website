@@ -1,4 +1,4 @@
-(function (localNavigation, ui, revisions) {
+(function (localNavigation, ui) {
     localNavigation.registerPage('home/customize/', function (response, loadCallback) {
 
         loadCallback('Customize Home')
@@ -34,7 +34,7 @@
                     }, 'restore-defaults/', 'restore-defaults')
                 })
             })
-            ui.compressed_js_script(body, revisions, 'confirmDialog', base)
+            ui.compressed_js_script(body, 'confirmDialog', base)
             ui.Element(body, 'script', function (script) {
                 script.type = 'text/javascript'
                 script.defer = true
@@ -42,7 +42,7 @@
             })
         }, {
             head: function (head) {
-                ui.compressed_css_link(head, revisions, 'confirmDialog', base)
+                ui.compressed_css_link(head, 'confirmDialog', base)
             },
         })
 
@@ -50,4 +50,4 @@
         localNavigation.focusTarget()
 
     })
-})(localNavigation, ui, revisions)
+})(localNavigation, ui)
