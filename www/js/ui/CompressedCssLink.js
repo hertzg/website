@@ -1,4 +1,4 @@
-function compressed_css_link (revisions) {
+function CompressedCssLink (revisions) {
     return function (parentNode, name, base, className) {
 
         var fullName = 'css/' + name + '/compressed.css'

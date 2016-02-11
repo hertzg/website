@@ -1,4 +1,4 @@
-function compressed_js_script (revisions) {
+function CompressedJsScript (revisions) {
     return function (parentNode, name, base, className) {
 
         var fullName = 'js/' + name + '/compressed.js'

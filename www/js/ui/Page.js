@@ -1,4 +1,5 @@
-var page = (function (localNavigation, revisions) {
+function Page (localNavigation, revisions,
+    compressed_css_link, compressed_js_script) {
 
     var head = document.head,
         body = document.body
@@ -22,7 +23,7 @@ var page = (function (localNavigation, revisions) {
         if (headCallback !== undefined) headCallback(head)
 
         if (user) {
-            compressed_css_link(head, revisions, 'confirmDialog', base)
+            compressed_css_link(head, 'confirmDialog', base)
         }
 
         Element(body, 'div', function (div) {
@@ -75,19 +76,19 @@ var page = (function (localNavigation, revisions) {
             })
             callback(body)
         })
-        compressed_js_script(body, revisions, 'batteryAndClock', base)
-        compressed_js_script(body, revisions, 'lineSizeRounding', base)
+        compressed_js_script(body, 'batteryAndClock', base)
+        compressed_js_script(body, 'lineSizeRounding', base)
         if (user) {
 
-            compressed_js_script(body, revisions, 'confirmDialog', base)
+            compressed_js_script(body, 'confirmDialog', base)
             window.signOutTimeout = response.signOutTimeout
             localNavigation.onUnload(function () {
                 delete window.signOutTimeout
             })
-            compressed_js_script(body, revisions, 'signOutConfirm', base)
+            compressed_js_script(body, 'signOutConfirm', base)
 
             if (response.session_remembered !== true) {
-                compressed_js_script(body, revisions, 'sessionTimeout', base)
+                compressed_js_script(body, 'sessionTimeout', base)
             }
 
         }
@@ -97,4 +98,4 @@ var page = (function (localNavigation, revisions) {
 
     }
 
-})(localNavigation, revisions)
+}
