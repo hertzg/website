@@ -106,6 +106,10 @@ function Hr (parentNode) {
 }
 ;
 var page = (function (localNavigation, revisions) {
+
+    var head = document.head,
+        body = document.body
+
     return function (response, base, callback, options) {
 
         if (options === undefined) options = {}
@@ -121,11 +125,13 @@ var page = (function (localNavigation, revisions) {
             delete window.timezone
         })
 
+        var headCallback = options.head
+        if (headCallback !== undefined) headCallback(head)
+
         if (user) {
-            compressed_css_link(document.head, revisions, 'confirmDialog', base)
+            compressed_css_link(head, revisions, 'confirmDialog', base)
         }
 
-        var body = document.body
         Element(body, 'div', function (div) {
             div.id = 'tbar'
             Element(div, 'div', function (div) {
@@ -197,6 +203,7 @@ var page = (function (localNavigation, revisions) {
         if (scriptsCallback !== undefined) scriptsCallback(body)
 
     }
+
 })(localNavigation, revisions)
 ;
 function public_page (response, base, callback, options) {

@@ -5,8 +5,6 @@
 
         var base = '../../'
 
-        ui.compressed_css_link(document.head, revisions, 'confirmDialog', base)
-
         ui.page(response, base, function (body) {
             ui.Page_create(body, {
                 title: 'Home',
@@ -42,6 +40,10 @@
                 script.defer = true
                 script.src = 'index.js'
             })
+        }, {
+            head: function (head) {
+                ui.compressed_css_link(head, revisions, 'confirmDialog', base)
+            },
         })
 
         localNavigation.scanLinks()

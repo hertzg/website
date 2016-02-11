@@ -5,8 +5,6 @@
 
         var base = '../../../'
 
-        ui.compressed_css_link(document.head, revisions, 'confirmDialog', base)
-
         ui.page(response, base, function (body) {
             ui.Page_create(body, {
                 title: 'Customize Home',
@@ -62,6 +60,9 @@
                 })
             })
         }, {
+            head: function (head) {
+                ui.compressed_css_link(head, revisions, 'confirmDialog', base)
+            },
             scripts: function (body) {
                 ui.compressed_js_script(body, revisions, 'formCheckbox', base)
                 ui.compressed_js_script(body, revisions, 'confirmDialog', base)
