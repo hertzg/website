@@ -5,7 +5,7 @@ function Page_title (parentNode, title, callback) {
         Element(div, 'div', function (div) {
             div.className = 'tab-bar'
             Element(div, 'span', function (span) {
-                span.className = 'tab-active limited'
+                span.className = 'tab-active'
                 Element(span, 'span', function (span) {
                     span.className = 'zeroSize'
                     Text(span, ' \xbb ')
