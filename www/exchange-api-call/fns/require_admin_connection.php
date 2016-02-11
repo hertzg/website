@@ -15,16 +15,16 @@ function require_admin_connection (&$adminConnection, &$mysqli) {
         $mysqli, $exchange_api_key);
 
     if (!$adminConnection) {
-        include_once "$fnsDir/ErrorJson/forbidden.php";
-        ErrorJson\forbidden('"INVALID_EXCHANGE_API_KEY"');
+        include_once "$fnsDir/ApiCall/Error/forbidden.php";
+        ApiCall\Error\forbidden('"INVALID_EXCHANGE_API_KEY"');
     }
 
     $time = time();
 
     $expire_time = $adminConnection->expire_time;
     if ($expire_time !== null && $expire_time < $time) {
-        include_once "$fnsDir/ErrorJson/forbidden.php";
-        ErrorJson\forbidden('"EXCHANGE_API_KEY_EXPIRED"');
+        include_once "$fnsDir/ApiCall/Error/forbidden.php";
+        ApiCall\Error\forbidden('"EXCHANGE_API_KEY_EXPIRED"');
     }
 
     include_once "$fnsDir/ClientAddress/get.php";

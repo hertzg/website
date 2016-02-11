@@ -13,8 +13,8 @@ function require_notification ($mysqli, $user) {
     $notification = Users\Notifications\get($mysqli, $user, $id);
 
     if (!$notification) {
-        include_once "$fnsDir/ErrorJson/badRequest.php";
-        ErrorJson\badRequest('"NOTIFICATION_NOT_FOUND"');
+        include_once "$fnsDir/ApiCall/Error/badRequest.php";
+        ApiCall\Error\badRequest('"NOTIFICATION_NOT_FOUND"');
     }
 
     return $notification;

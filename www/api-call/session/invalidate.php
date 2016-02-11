@@ -4,8 +4,8 @@ include_once '../../fns/session_start_custom.php';
 session_start_custom($new);
 
 if ($new) {
-    include_once '../../fns/ErrorJson/badRequest.php';
-    ErrorJson\badRequest('"SESSION_INVALID"');
+    include_once '../../fns/ApiCall/Error/badRequest.php';
+    ApiCall\Error\badRequest('"SESSION_INVALID"');
 }
 
 include_once '../../fns/Session/invalidate.php';

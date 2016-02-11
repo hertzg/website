@@ -13,8 +13,8 @@ function require_received_task ($mysqli, $user) {
     $receivedTask = Users\Tasks\Received\get($mysqli, $user, $id);
 
     if (!$receivedTask) {
-        include_once "$fnsDir/ErrorJson/badRequest.php";
-        ErrorJson\badRequest('"RECEIVED_TASK_NOT_FOUND"');
+        include_once "$fnsDir/ApiCall/Error/badRequest.php";
+        ApiCall\Error\badRequest('"RECEIVED_TASK_NOT_FOUND"');
     }
 
     return $receivedTask;

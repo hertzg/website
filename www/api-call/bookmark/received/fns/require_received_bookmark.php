@@ -13,8 +13,8 @@ function require_received_bookmark ($mysqli, $user) {
     $receivedBookmark = Users\Bookmarks\Received\get($mysqli, $user, $id);
 
     if (!$receivedBookmark) {
-        include_once "$fnsDir/ErrorJson/badRequest.php";
-        ErrorJson\badRequest('"RECEIVED_BOOKMARK_NOT_FOUND"');
+        include_once "$fnsDir/ApiCall/Error/badRequest.php";
+        ApiCall\Error\badRequest('"RECEIVED_BOOKMARK_NOT_FOUND"');
     }
 
     return $receivedBookmark;

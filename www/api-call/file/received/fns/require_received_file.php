@@ -13,8 +13,8 @@ function require_received_file ($mysqli, $user) {
     $receivedFile = Users\Files\Received\get($mysqli, $user, $id);
 
     if (!$receivedFile) {
-        include_once "$fnsDir/ErrorJson/badRequest.php";
-        ErrorJson\badRequest('"RECEIVED_FILE_NOT_FOUND"');
+        include_once "$fnsDir/ApiCall/Error/badRequest.php";
+        ApiCall\Error\badRequest('"RECEIVED_FILE_NOT_FOUND"');
     }
 
     return $receivedFile;

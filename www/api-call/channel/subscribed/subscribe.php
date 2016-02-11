@@ -10,13 +10,13 @@ include_once '../../fns/require_channel.php';
 $channel = require_channel($mysqli);
 
 if (!$channel->public) {
-    include_once '../../../fns/ErrorJson/badRequest.php';
-    ErrorJson\badRequest('"CHANNEL_NOT_PUBLIC"');
+    include_once '../../../fns/ApiCall/Error/badRequest.php';
+    ApiCall\Error\badRequest('"CHANNEL_NOT_PUBLIC"');
 }
 
 if ($channel->id_users == $id_users) {
-    include_once '../../../fns/ErrorJson/badRequest.php';
-    ErrorJson\badRequest('"CHANNEL_IS_OWN"');
+    include_once '../../../fns/ApiCall/Error/badRequest.php';
+    ApiCall\Error\badRequest('"CHANNEL_IS_OWN"');
 }
 
 include_once "$fnsDir/request_strings.php";
@@ -28,8 +28,8 @@ $subscribedChannel = SubscribedChannels\getExistingSubscriber(
     $mysqli, $channel->id, $id_users);
 
 if ($subscribedChannel && $subscribedChannel->subscriber_locked) {
-    include_once '../../../fns/ErrorJson/badRequest.php';
-    ErrorJson\badRequest('"ALREADY_SUBSCRIBED"');
+    include_once '../../../fns/ApiCall/Error/badRequest.php';
+    ApiCall\Error\badRequest('"ALREADY_SUBSCRIBED"');
 }
 
 include_once "$fnsDir/Users/SubscribedChannels/add.php";

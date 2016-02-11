@@ -15,8 +15,8 @@ function require_parent_folder ($mysqli, $user) {
         $folder = Users\Folders\get($mysqli, $user, $id);
 
         if (!$folder) {
-            include_once "$fnsDir/ErrorJson/badRequest.php";
-            ErrorJson\badRequest('"PARENT_FOLDER_NOT_FOUND"');
+            include_once "$fnsDir/ApiCall/Error/badRequest.php";
+            ApiCall\Error\badRequest('"PARENT_FOLDER_NOT_FOUND"');
         }
 
     } else {

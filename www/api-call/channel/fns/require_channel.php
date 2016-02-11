@@ -13,8 +13,8 @@ function require_channel ($mysqli, $user) {
     $channel = Users\Channels\get($mysqli, $user, $id);
 
     if (!$channel) {
-        include_once "$fnsDir/ErrorJson/badRequest.php";
-        ErrorJson\badRequest('"CHANNEL_NOT_FOUND"');
+        include_once "$fnsDir/ApiCall/Error/badRequest.php";
+        ApiCall\Error\badRequest('"CHANNEL_NOT_FOUND"');
     }
 
     return $channel;

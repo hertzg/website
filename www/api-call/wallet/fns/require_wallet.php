@@ -13,8 +13,8 @@ function require_wallet ($mysqli, $user) {
     $wallet = Users\Wallets\get($mysqli, $user, $id);
 
     if (!$wallet) {
-        include_once "$fnsDir/ErrorJson/badRequest.php";
-        ErrorJson\badRequest('"WALLET_NOT_FOUND"');
+        include_once "$fnsDir/ApiCall/Error/badRequest.php";
+        ApiCall\Error\badRequest('"WALLET_NOT_FOUND"');
     }
 
     return $wallet;

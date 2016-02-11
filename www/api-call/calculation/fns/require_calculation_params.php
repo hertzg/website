@@ -15,11 +15,11 @@ function require_calculation_params ($mysqli, $user,
         $error_char, $resolved_expression) = Calculations\request($value_of);
 
     if ($expression === '') {
-        include_once "$fnsDir/ErrorJson/badRequest.php";
-        ErrorJson\badRequest('"ENTER_EXPRESSION"');
+        include_once "$fnsDir/ApiCall/Error/badRequest.php";
+        ApiCall\Error\badRequest('"ENTER_EXPRESSION"');
     } elseif ($value === null) {
-        include_once "$fnsDir/ErrorJson/badRequest.php";
-        ErrorJson\badRequest('"INVALID_EXPRESSION"');
+        include_once "$fnsDir/ApiCall/Error/badRequest.php";
+        ApiCall\Error\badRequest('"INVALID_EXPRESSION"');
     }
 
     include_once "$fnsDir/ApiCall/requireTags.php";

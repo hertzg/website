@@ -5,8 +5,8 @@ session_start_custom($new);
 
 if ($new) {
     session_destroy();
-    include_once '../../fns/ErrorJson/badRequest.php';
-    ErrorJson\badRequest('"SESSION_INVALID"');
+    include_once '../../fns/ApiCall/Error/badRequest.php';
+    ApiCall\Error\badRequest('"SESSION_INVALID"');
 }
 
 header('Content-Type: application/json');

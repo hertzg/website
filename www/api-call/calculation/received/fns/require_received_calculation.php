@@ -13,8 +13,8 @@ function require_received_calculation ($mysqli, $user) {
     $receivedCalculation = Users\Calculations\Received\get($mysqli, $user, $id);
 
     if (!$receivedCalculation) {
-        include_once "$fnsDir/ErrorJson/badRequest.php";
-        ErrorJson\badRequest('"RECEIVED_CALCULATION_NOT_FOUND"');
+        include_once "$fnsDir/ApiCall/Error/badRequest.php";
+        ApiCall\Error\badRequest('"RECEIVED_CALCULATION_NOT_FOUND"');
     }
 
     return $receivedCalculation;

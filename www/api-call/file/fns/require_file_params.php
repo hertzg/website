@@ -9,8 +9,8 @@ function require_file_params ($mysqli,
     $name = Files\request();
 
     if ($name === '') {
-        include_once "$fnsDir/ErrorJson/badRequest.php";
-        ErrorJson\badRequest('"ENTER_NAME"');
+        include_once "$fnsDir/ApiCall/Error/badRequest.php";
+        ApiCall\Error\badRequest('"ENTER_NAME"');
     }
 
     include_once "$fnsDir/request_strings.php";
@@ -26,8 +26,8 @@ function require_file_params ($mysqli,
         $id_users, $id_folders, $name, $exclude_id);
 
     if ($existingFile) {
-        include_once "$fnsDir/ErrorJson/badRequest.php";
-        ErrorJson\badRequest('"FILE_ALREADY_EXISTS"');
+        include_once "$fnsDir/ApiCall/Error/badRequest.php";
+        ApiCall\Error\badRequest('"FILE_ALREADY_EXISTS"');
     }
 
 }

@@ -13,8 +13,8 @@ function require_received_place ($mysqli, $user) {
     $receivedPlace = Users\Places\Received\get($mysqli, $user, $id);
 
     if (!$receivedPlace) {
-        include_once "$fnsDir/ErrorJson/badRequest.php";
-        ErrorJson\badRequest('"RECEIVED_PLACE_NOT_FOUND"');
+        include_once "$fnsDir/ApiCall/Error/badRequest.php";
+        ApiCall\Error\badRequest('"RECEIVED_PLACE_NOT_FOUND"');
     }
 
     return $receivedPlace;

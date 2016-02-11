@@ -12,8 +12,8 @@ $file = require_file_param();
 $content = file_get_contents($file['tmp_name']);
 $image = @imagecreatefromstring($content);
 if ($image === false) {
-    include_once '../../../fns/ErrorJson/badRequest.php';
-    ErrorJson\badRequest('"INVALID_PHOTO"');
+    include_once '../../../fns/ApiCall/Error/badRequest.php';
+    ApiCall\Error\badRequest('"INVALID_PHOTO"');
 }
 
 include_once '../../../fns/Users/Contacts/Photo/set.php';

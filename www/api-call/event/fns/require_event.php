@@ -13,8 +13,8 @@ function require_event ($mysqli, $user) {
     $event = Users\Events\get($mysqli, $user, $id);
 
     if (!$event) {
-        include_once "$fnsDir/ErrorJson/badRequest.php";
-        ErrorJson\badRequest('"EVENT_NOT_FOUND"');
+        include_once "$fnsDir/ApiCall/Error/badRequest.php";
+        ApiCall\Error\badRequest('"EVENT_NOT_FOUND"');
     }
 
     return $event;

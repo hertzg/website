@@ -9,8 +9,8 @@ function require_event_params (&$event_time,
     list($event_time, $start_hour, $start_minute, $text) = Events\request();
 
     if ($text === '') {
-        include_once "$fnsDir/ErrorJson/badRequest.php";
-        ErrorJson\badRequest('"ENTER_TEXT"');
+        include_once "$fnsDir/ApiCall/Error/badRequest.php";
+        ApiCall\Error\badRequest('"ENTER_TEXT"');
     }
 
     if ($start_hour === null) $start_minute = null;

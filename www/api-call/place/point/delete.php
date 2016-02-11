@@ -10,8 +10,8 @@ include_once '../../../fns/Places/get.php';
 $place = Places\get($mysqli, $point->id_places);
 
 if ($place->num_points < 2) {
-    include_once '../../../fns/ErrorJson/badRequest.php';
-    ErrorJson\badRequest('"LAST_POINT"');
+    include_once '../../../fns/ApiCall/Error/badRequest.php';
+    ApiCall\Error\badRequest('"LAST_POINT"');
 }
 
 include_once '../../../fns/Users/Places/Points/delete.php';

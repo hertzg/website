@@ -13,8 +13,8 @@ function require_received_folder ($mysqli, $user) {
     $receivedFolder = Users\Folders\Received\get($mysqli, $user, $id);
 
     if (!$receivedFolder) {
-        include_once "$fnsDir/ErrorJson/badRequest.php";
-        ErrorJson\badRequest('"RECEIVED_FOLDER_NOT_FOUND"');
+        include_once "$fnsDir/ApiCall/Error/badRequest.php";
+        ApiCall\Error\badRequest('"RECEIVED_FOLDER_NOT_FOUND"');
     }
 
     return $receivedFolder;

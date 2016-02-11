@@ -14,21 +14,21 @@ function require_admin_api_key ($permission_field, &$apiKey, &$mysqli) {
     $apiKey = AdminApiKeys\getByKey($mysqli, $admin_api_key);
 
     if (!$apiKey) {
-        include_once "$fnsDir/ErrorJson/forbidden.php";
-        ErrorJson\forbidden('"INVALID_ADMIN_API_KEY"');
+        include_once "$fnsDir/ApiCall/Error/forbidden.php";
+        ApiCall\Error\forbidden('"INVALID_ADMIN_API_KEY"');
     }
 
     if ($permission_field !== null && !$apiKey->$permission_field) {
-        include_once "$fnsDir/ErrorJson/forbidden.php";
-        ErrorJson\forbidden('"ACCESS_DENIED"');
+        include_once "$fnsDir/ApiCall/Error/forbidden.php";
+        ApiCall\Error\forbidden('"ACCESS_DENIED"');
     }
 
     $time = time();
 
     $expire_time = $apiKey->expire_time;
     if ($expire_time !== null && $expire_time < $time) {
-        include_once "$fnsDir/ErrorJson/forbidden.php";
-        ErrorJson\forbidden('"ADMIN_API_KEY_EXPIRED"');
+        include_once "$fnsDir/ApiCall/Error/forbidden.php";
+        ApiCall\Error\forbidden('"ADMIN_API_KEY_EXPIRED"');
     }
 
     include_once "$fnsDir/ClientAddress/get.php";

@@ -13,8 +13,8 @@ function require_place ($mysqli, $user) {
     $place = Users\Places\get($mysqli, $user, $id);
 
     if (!$place) {
-        include_once "$fnsDir/ErrorJson/badRequest.php";
-        ErrorJson\badRequest('"PLACE_NOT_FOUND"');
+        include_once "$fnsDir/ApiCall/Error/badRequest.php";
+        ApiCall\Error\badRequest('"PLACE_NOT_FOUND"');
     }
 
     return $place;

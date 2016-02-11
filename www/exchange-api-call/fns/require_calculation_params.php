@@ -10,13 +10,13 @@ function require_calculation_params (&$expression,
         $value, $error, $error_char) = Calculations\request();
 
     if ($expression === '') {
-        include_once "$fnsDir/ErrorJson/badRequest.php";
-        ErrorJson\badRequest('"ENTER_EXPRESSION"');
+        include_once "$fnsDir/ApiCall/Error/badRequest.php";
+        ApiCall\Error\badRequest('"ENTER_EXPRESSION"');
     }
 
     if ($value === null) {
-        include_once "$fnsDir/ErrorJson/badRequest.php";
-        ErrorJson\badRequest('"INVALID_EXPRESSION"');
+        include_once "$fnsDir/ApiCall/Error/badRequest.php";
+        ApiCall\Error\badRequest('"INVALID_EXPRESSION"');
     }
 
     include_once "$fnsDir/ApiCall/requireTags.php";
