@@ -16,8 +16,8 @@ function requireGuestUser () {
     $user = signed_user();
 
     if ($user) {
-        include_once "$fnsDir/ErrorJson/forbidden.php";
-        \ErrorJson\forbidden('"ALREADY_SIGNED_IN"');
+        include_once "$fnsDir/ErrorJson/badRequest.php";
+        \ErrorJson\badRequest('"ALREADY_SIGNED_IN"');
     }
 
 }
