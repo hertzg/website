@@ -6,19 +6,16 @@ function create_options_panel ($base = '') {
 
     $options = [];
 
-    $title = 'Show / Hide Items';
-    $description = 'Change the visibility of the items.';
-    $href = "$base../show-hide/";
-    $icon = 'show-hide';
     include_once "$fnsDir/Page/imageLinkWithDescription.php";
-    $options[] = Page\imageLinkWithDescription($title,
-        $description, $href, $icon);
+    $options[] = Page\imageLinkWithDescription('Show / Hide Items',
+        'Change the visibility of the items.', "$base../show-hide/",
+        'show-hide', ['localNavigation' => true]);
 
-    $href = "{$base}restore-defaults/";
     include_once "$fnsDir/Page/imageLink.php";
     $options[] =
         '<div id="restoreLink">'
-            .Page\imageLink('Restore Defaults', $href, 'restore-defaults')
+            .Page\imageLink('Restore Defaults',
+                "{$base}restore-defaults/", 'restore-defaults')
         .'</div>';
 
     include_once "$fnsDir/create_panel.php";

@@ -18,7 +18,10 @@
                     ui.Text(div, 'Show / Hide Items')
                 }, function (div) {
                     ui.Text(div, 'Change the visibility of the items.')
-                }, 'show-hide/', 'show-hide', { id: 'show-hide' })
+                }, 'show-hide/', 'show-hide', {
+                    id: 'show-hide',
+                    localNavigation: true,
+                })
                 ui.Hr(div)
                 ui.Page_imageArrowLinkWithDescription(div, function (div) {
                     ui.Text(div, 'Reorder Items')

@@ -13,20 +13,26 @@ function create_page ($user, &$scripts, $base = '') {
     include_once __DIR__.'/../../fns/get_user_home_items.php';
     $userHomeItems = get_user_home_items($homeItems, $user);
 
+    $first = true;
+    $content = '';
     include_once "$fnsDir/Form/checkboxItem.php";
-    $items = [];
     foreach ($userHomeItems as $key => $item) {
+
         if ($key === 'admin' && !$user->admin) continue;
-        list($title, $propertyPart) = $item;
+
+        if ($first) $first = false;
+        else $content .= '<div class="hr"></div>';
+
+        $propertyPart = $item[1];
         $userProperty = "show_$propertyPart";
-        $checked = $user->$userProperty;
-        $items[] = Form\checkboxItem($propertyPart, $title, $checked);
+
+        $content .= Form\checkboxItem($propertyPart,
+            $item[0], $user->$userProperty);
+
     }
 
-    include_once "$fnsDir/Form/button.php";
-    $items[] = Form\button('Save Changes');
-
     include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Form/button.php";
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/imageLink.php";
     include_once "$fnsDir/Page/imageLinkWithDescription.php";
@@ -43,7 +49,8 @@ function create_page ($user, &$scripts, $base = '') {
             Page\sessionMessages('home/customize/show-hide/messages')
             .Page\text('Select the items you want to see on your home page:')
             ."<form action=\"{$base}submit.php\" method=\"post\">"
-                .join('<div class="hr"></div>', $items)
+                .$content
+                .Form\button('Save Changes')
             .'</form>'
         )
         .create_panel(

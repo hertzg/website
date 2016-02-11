@@ -19,6 +19,7 @@ CompressJsFiles([
     'Form/button',
     'Form/captcha',
     'Form/checkbox',
+    'Form/checkboxItem',
     'Form/hidden',
     'Form/label',
     'Form/notes',

@@ -7,6 +7,7 @@ window.ui = {
     Form_button: Form_button,
     Form_captcha: Form_captcha,
     Form_checkbox: Form_checkbox,
+    Form_checkboxItem: Form_checkboxItem,
     Form_hidden: Form_hidden,
     Form_label: Form_label,
     Form_notes: Form_notes,
