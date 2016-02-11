@@ -13,21 +13,18 @@ function create_page ($user, &$scripts, $base = '') {
     include_once __DIR__.'/../../fns/get_user_home_items.php';
     $userHomeItems = get_user_home_items($homeItems, $user);
 
-    $first = true;
     $content = '';
     include_once "$fnsDir/Form/checkboxItem.php";
     foreach ($userHomeItems as $key => $item) {
 
         if ($key === 'admin' && !$user->admin) continue;
 
-        if ($first) $first = false;
-        else $content .= '<div class="hr"></div>';
-
         $propertyPart = $item[1];
         $userProperty = "show_$propertyPart";
 
-        $content .= Form\checkboxItem($propertyPart,
-            $item[0], $user->$userProperty);
+        $content .=
+            Form\checkboxItem($propertyPart, $item[0], $user->$userProperty)
+            .'<div class="hr"></div>';
 
     }
 
@@ -49,8 +46,7 @@ function create_page ($user, &$scripts, $base = '') {
             Page\sessionMessages('home/customize/show-hide/messages')
             .Page\text('Select the items you want to see on your home page:')
             ."<form action=\"{$base}submit.php\" method=\"post\">"
-                .$content
-                .Form\button('Save Changes')
+                .$content.Form\button('Save Changes')
             .'</form>'
         )
         .create_panel(

@@ -7,7 +7,7 @@
 
         ui.page(response, base, function (body) {
             ui.Page_create(body, {
-                title: 'Customize Home',
+                title: 'Customize',
                 href: '../#show-hide',
                 localNavigation: true,
             }, 'Show / Hide Items', function (div) {
@@ -23,25 +23,21 @@
                     var user = response.user,
                         items = response.homeItems
 
-                    var first = true
                     for (var key in items) {
 
-                        if (key === 'admin' && user.admin === true) continue
-
-                        if (first) first = false
-                        else ui.Hr(div)
+                        if (key === 'admin' && user.admin !== true) continue
 
                         var item = items[key],
                             propertyPart = item[1],
                             userProperty = 'show_' + propertyPart
 
-                        ui.Form_checkboxItem(div, propertyPart,
+                        ui.Form_checkboxItem(form, propertyPart,
                             item[0], user[userProperty] === true)
+                        ui.Hr(form)
 
                     }
 
-                    ui.Hr(div)
-                    ui.Form_button(div, 'Save Changes')
+                    ui.Form_button(form, 'Save Changes')
 
                 })
             })
