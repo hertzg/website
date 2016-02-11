@@ -37,6 +37,7 @@ function create_page ($user, &$scripts, $base = '') {
             [
                 'title' => 'Customize',
                 'href' => "$base../#show-hide",
+                'localNavigation' => true,
             ],
             'Show / Hide Items',
             Page\sessionMessages('home/customize/show-hide/messages')

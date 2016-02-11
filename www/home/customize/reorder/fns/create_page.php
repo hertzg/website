@@ -41,6 +41,7 @@ function create_page ($user, $base = '') {
             [
                 'title' => 'Customize',
                 'href' => "$base../#reorder",
+                'localNavigation' => true,
             ],
             'Reorder Items',
             Page\sessionMessages('home/customize/reorder/messages')
