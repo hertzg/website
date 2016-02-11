@@ -5,7 +5,8 @@ $fnsDir = __DIR__.'/../../fns';
 include_once "$fnsDir/signed_user.php";
 $user = signed_user();
 
-unset($_SESSION['admin/messages']);
+include_once 'fns/unset_session_vars.php';
+unset_session_vars();
 
 include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/imageArrowLink.php";

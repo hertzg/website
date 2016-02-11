@@ -25,7 +25,7 @@ var page = (function (localNavigation, revisions) {
                 div.id = 'tbar-limit'
                 Element(div, 'a', function (a) {
 
-                    var href = options.href
+                    var href = options.logoHref
                     var className = 'topLink logoLink'
                     if (href === undefined) {
                         href = base

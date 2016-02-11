@@ -3,6 +3,7 @@ process.chdir(__dirname)
 var CompressJsFiles = require('../CompressJsFiles.js')
 CompressJsFiles([
     '../DateAgo',
+    'admin_page',
     'compressed_css_link',
     'compressed_js_script',
     'Element',

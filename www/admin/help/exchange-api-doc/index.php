@@ -25,6 +25,7 @@ $content =
         [
             'title' => 'Help',
             'href' => '../#exchange-api-doc',
+            'localNavigation' => true,
         ],
         'Exchange API Documentation',
         Page\text(get_article_text())

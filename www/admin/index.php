@@ -15,7 +15,10 @@ if (!$mysqli->connect_errno) {
 }
 
 include_once '../fns/Page/imageArrowLink.php';
-$helpLink = Page\imageArrowLink('Help', 'help/', 'help', ['id' => 'help']);
+$helpLink = Page\imageArrowLink('Help', 'help/', 'help', [
+    'id' => 'help',
+    'localNavigation' => true,
+]);
 
 include_once 'fns/create_database_links.php';
 include_once 'fns/create_general_info_link.php';

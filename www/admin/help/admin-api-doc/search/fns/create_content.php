@@ -6,6 +6,7 @@ function create_content ($items) {
         [
             'title' => 'Help',
             'href' => '../../#admin-api-doc',
+            'localNavigation' => true,
         ],
         'Admin API Documentation',
         join('<div class="hr"></div>', $items)

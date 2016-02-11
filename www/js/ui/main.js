@@ -1,4 +1,5 @@
 window.ui = {
+    admin_page: admin_page,
     compressed_css_link: compressed_css_link,
     compressed_js_script: compressed_js_script,
     Element: Element,

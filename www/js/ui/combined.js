@@ -40,6 +40,20 @@ function DateAgo (time, timeNow, uppercase) {
 
 }
 ;
+function admin_page (response, adminBase, callback, options) {
+
+    if (options === undefined) options = {}
+
+    options.logoHref = adminBase
+    if (response.user !== undefined) {
+        options.logoHref += '../home/'
+        options.localNavigation = true
+    }
+
+    page(response, adminBase + '../', callback, options)
+
+}
+;
 function compressed_css_link (parentNode, revisions, name, base, className) {
 
     var fullName = 'css/' + name + '/compressed.css'
@@ -118,7 +132,7 @@ var page = (function (localNavigation, revisions) {
                 div.id = 'tbar-limit'
                 Element(div, 'a', function (a) {
 
-                    var href = options.href
+                    var href = options.logoHref
                     var className = 'topLink logoLink'
                     if (href === undefined) {
                         href = base
@@ -645,6 +659,7 @@ function Page_warnings (parentNode, texts) {
 }
 ;
 window.ui = {
+    admin_page: admin_page,
     compressed_css_link: compressed_css_link,
     compressed_js_script: compressed_js_script,
     Element: Element,

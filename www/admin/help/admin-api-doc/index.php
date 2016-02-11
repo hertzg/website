@@ -37,6 +37,7 @@ $content =
         [
             'title' => 'Help',
             'href' => '../#admin-api-doc',
+            'localNavigation' => true,
         ],
         'Admin API Documentation',
         Page\text(get_article_text())
