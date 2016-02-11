@@ -13,8 +13,8 @@ function require_calculation ($mysqli, $user) {
     $calculation = Users\Calculations\get($mysqli, $user, $id);
 
     if (!$calculation) {
-        include_once "$fnsDir/ErrorJson/badRequest.php";
-        ErrorJson\badRequest('"CALCULATION_NOT_FOUND"');
+        include_once "$fnsDir/ApiCall/Error/badRequest.php";
+        ApiCall\Error\badRequest('"CALCULATION_NOT_FOUND"');
     }
 
     return $calculation;

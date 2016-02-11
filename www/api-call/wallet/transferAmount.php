@@ -20,13 +20,13 @@ include_once "$fnsDir/Users/Wallets/get.php";
 $toWallet = Users\Wallets\get($mysqli, $user, $to_id);
 
 if (!$toWallet) {
-    include_once "$fnsDir/ErrorJson/badRequest.php";
-    ErrorJson\badRequest('"TO_WALLET_NOT_FOUND"');
+    include_once "$fnsDir/ApiCall/Error/badRequest.php";
+    ApiCall\Error\badRequest('"TO_WALLET_NOT_FOUND"');
 }
 
 if ($toWallet->id == $wallet->id) {
-    include_once "$fnsDir/ErrorJson/badRequest.php";
-    ErrorJson\badRequest('"TO_WALLET_SAME"');
+    include_once "$fnsDir/ApiCall/Error/badRequest.php";
+    ApiCall\Error\badRequest('"TO_WALLET_SAME"');
 }
 
 include_once "$fnsDir/Users/Wallets/transferAmount.php";

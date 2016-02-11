@@ -24,8 +24,8 @@ function require_contact_params ($user, &$full_name, &$alias,
     }
 
     if ($full_name === '') {
-        include_once "$fnsDir/ErrorJson/badRequest.php";
-        ErrorJson\badRequest('"ENTER_FULL_NAME"');
+        include_once "$fnsDir/ApiCall/Error/badRequest.php";
+        ApiCall\Error\badRequest('"ENTER_FULL_NAME"');
     }
 
     include_once "$fnsDir/ApiCall/requireTags.php";

@@ -13,8 +13,8 @@ function require_file ($mysqli, $user) {
     $file = Users\Files\get($mysqli, $user, $id);
 
     if (!$file) {
-        include_once "$fnsDir/ErrorJson/badRequest.php";
-        ErrorJson\badRequest('"FILE_NOT_FOUND"');
+        include_once "$fnsDir/ApiCall/Error/badRequest.php";
+        ApiCall\Error\badRequest('"FILE_NOT_FOUND"');
     }
 
     return $file;

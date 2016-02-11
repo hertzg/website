@@ -1,6 +1,6 @@
 <?php
 
-namespace ErrorJson;
+namespace ApiCall\Error;
 
 function forbidden ($error) {
     http_response_code(403);

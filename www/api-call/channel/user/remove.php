@@ -14,8 +14,8 @@ $subscribedChannel = SubscribedChannels\getExistingSubscriber(
     $mysqli, $channel->id, $subscriberUser->id_users);
 
 if (!$subscribedChannel || !$subscribedChannel->publisher_locked) {
-    include_once '../../../fns/ErrorJson/badRequest.php';
-    ErrorJson\badRequest('"USER_NOT_ADDED"');
+    include_once '../../../fns/ApiCall/Error/badRequest.php';
+    ApiCall\Error\badRequest('"USER_NOT_ADDED"');
 }
 
 include_once '../../../fns/Users/Channels/Users/delete.php';

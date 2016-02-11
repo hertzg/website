@@ -13,8 +13,8 @@ function require_user ($mysqli) {
     $user = Users\get($mysqli, $id);
 
     if (!$user) {
-        include_once "$fnsDir/ErrorJson/badRequest.php";
-        ErrorJson\badRequest('"USER_NOT_FOUND"');
+        include_once "$fnsDir/ApiCall/Error/badRequest.php";
+        ApiCall\Error\badRequest('"USER_NOT_FOUND"');
     }
 
     return $user;

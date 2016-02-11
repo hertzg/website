@@ -16,8 +16,8 @@ include_once "$fnsDir/Password/match.php";
 $match = Password\match($user->password_hash, $user->password_salt,
     $user->password_sha512_hash, $user->password_sha512_key, $username);
 if ($match) {
-    include_once "$fnsDir/ErrorJson/badRequest.php";
-    ErrorJson\badRequest('"USERNAME_SAME"');
+    include_once "$fnsDir/ApiCall/Error/badRequest.php";
+    ApiCall\Error\badRequest('"USERNAME_SAME"');
 }
 
 include_once "$fnsDir/Users/Account/editProfile.php";

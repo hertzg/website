@@ -9,8 +9,8 @@ function require_schedule_params (&$text,
     list($text, $interval, $offset, $tags) = Schedules\request();
 
     if ($text === '') {
-        include_once "$fnsDir/ErrorJson/badRequest.php";
-        ErrorJson\badRequest('"ENTER_TEXT"');
+        include_once "$fnsDir/ApiCall/Error/badRequest.php";
+        ApiCall\Error\badRequest('"ENTER_TEXT"');
     }
 
     include_once "$fnsDir/ApiCall/requireTags.php";

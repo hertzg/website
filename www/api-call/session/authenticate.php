@@ -9,19 +9,19 @@ include_once "$fnsDir/request_strings.php";
 list($password, $remember) = request_strings('password', 'remember');
 
 if ($username === '') {
-    include_once "$fnsDir/ErrorJson/badRequest.php";
-    ErrorJson\badRequest('"ENTER_USERNAME"');
+    include_once "$fnsDir/ApiCall/Error/badRequest.php";
+    ApiCall\Error\badRequest('"ENTER_USERNAME"');
 }
 
 include_once "$fnsDir/Username/isValid.php";
 if (!Username\isValid($username)) {
-    include_once "$fnsDir/ErrorJson/badRequest.php";
-    ErrorJson\badRequest('"INVALID_USERNAME"');
+    include_once "$fnsDir/ApiCall/Error/badRequest.php";
+    ApiCall\Error\badRequest('"INVALID_USERNAME"');
 }
 
 if ($password === '') {
-    include_once "$fnsDir/ErrorJson/badRequest.php";
-    ErrorJson\badRequest('"ENTER_PASSWORD"');
+    include_once "$fnsDir/ApiCall/Error/badRequest.php";
+    ApiCall\Error\badRequest('"ENTER_PASSWORD"');
 }
 
 include_once "$fnsDir/session_start_custom.php";
@@ -34,8 +34,8 @@ $user = Session\authenticate($mysqli,
 
 if (!$user) {
     $error = $disabled ? '"USER_DISABLED"' : '"INVALID_USERNAME_OR_PASSWORD"';
-    include_once "$fnsDir/ErrorJson/badRequest.php";
-    ErrorJson\badRequest($error);
+    include_once "$fnsDir/ApiCall/Error/badRequest.php";
+    ApiCall\Error\badRequest($error);
 }
 
 header('Content-Type: application/json');

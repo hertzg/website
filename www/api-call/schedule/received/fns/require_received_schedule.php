@@ -13,8 +13,8 @@ function require_received_schedule ($mysqli, $user) {
     $receivedSchedule = Users\Schedules\Received\get($mysqli, $user, $id);
 
     if (!$receivedSchedule) {
-        include_once "$fnsDir/ErrorJson/badRequest.php";
-        ErrorJson\badRequest('"RECEIVED_SCHEDULE_NOT_FOUND"');
+        include_once "$fnsDir/ApiCall/Error/badRequest.php";
+        ApiCall\Error\badRequest('"RECEIVED_SCHEDULE_NOT_FOUND"');
     }
 
     return $receivedSchedule;

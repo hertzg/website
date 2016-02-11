@@ -8,8 +8,8 @@ include_once 'fns/require_calculation.php';
 $calculation = require_calculation($mysqli, $user);
 
 if ($calculation->value === null) {
-    include_once '../../fns/ErrorJson/badRequest.php';
-    ErrorJson\badRequest('"UNCOMPUTABLE_EXPRESSION"');
+    include_once '../../fns/ApiCall/Error/badRequest.php';
+    ApiCall\Error\badRequest('"UNCOMPUTABLE_EXPRESSION"');
 }
 
 include_once '../fns/require_receiver_user.php';

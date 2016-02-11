@@ -13,8 +13,8 @@ require_channel_user_params($mysqli, $user, $channel, $subscriberUser);
 $subscriber_id_users = $subscriberUser->id_users;
 
 if ($subscriber_id_users == $id_users) {
-    include_once '../../../fns/ErrorJson/badRequest.php';
-    ErrorJson\badRequest('"USER_IS_SELF"');
+    include_once '../../../fns/ApiCall/Error/badRequest.php';
+    ApiCall\Error\badRequest('"USER_IS_SELF"');
 }
 
 $fnsDir = '../../../fns';
@@ -24,16 +24,16 @@ $subscribedChannel = SubscribedChannels\getExistingSubscriber(
     $mysqli, $channel->id, $subscriber_id_users);
 
 if ($subscribedChannel && $subscribedChannel->publisher_locked) {
-    include_once '../../../fns/ErrorJson/badRequest.php';
-    ErrorJson\badRequest('"USER_ALREADY_ADDED"');
+    include_once '../../../fns/ApiCall/Error/badRequest.php';
+    ApiCall\Error\badRequest('"USER_ALREADY_ADDED"');
 }
 
 include_once "$fnsDir/get_users_connection.php";
 $connection = get_users_connection($mysqli, $subscriberUser, $id_users);
 
 if (!$connection['can_send_channel']) {
-    include_once '../../../fns/ErrorJson/badRequest.php';
-    ErrorJson\badRequest('"USER_NOT_RECEIVING"');
+    include_once '../../../fns/ApiCall/Error/badRequest.php';
+    ApiCall\Error\badRequest('"USER_NOT_RECEIVING"');
 }
 
 include_once "$fnsDir/Users/Channels/Users/add.php";

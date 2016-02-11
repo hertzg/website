@@ -13,8 +13,8 @@ function require_folder ($mysqli, $user) {
     $folder = Users\Folders\get($mysqli, $user, $id);
 
     if (!$folder) {
-        include_once "$fnsDir/ErrorJson/badRequest.php";
-        ErrorJson\badRequest('"FOLDER_NOT_FOUND"');
+        include_once "$fnsDir/ApiCall/Error/badRequest.php";
+        ApiCall\Error\badRequest('"FOLDER_NOT_FOUND"');
     }
 
     return $folder;

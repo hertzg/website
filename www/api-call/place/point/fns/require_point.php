@@ -13,8 +13,8 @@ function require_point ($mysqli, $id_users) {
     $point = PlacePoints\getNotDeletedOnUser($mysqli, $id_users, $id);
 
     if (!$point) {
-        include_once "$fnsDir/ErrorJson/badRequest.php";
-        ErrorJson\badRequest('"POINT_NOT_FOUND"');
+        include_once "$fnsDir/ApiCall/Error/badRequest.php";
+        ApiCall\Error\badRequest('"POINT_NOT_FOUND"');
     }
 
     return $point;

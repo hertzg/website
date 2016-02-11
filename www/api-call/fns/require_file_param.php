@@ -9,11 +9,11 @@ function require_file_param () {
 
     $error = $file['error'];
     if ($error === UPLOAD_ERR_NO_FILE) {
-        include_once "$fnsDir/ErrorJson/badRequest.php";
-        ErrorJson\badRequest('"SELECT_FILE"');
+        include_once "$fnsDir/ApiCall/Error/badRequest.php";
+        ApiCall\Error\badRequest('"SELECT_FILE"');
     } elseif ($error !== UPLOAD_ERR_OK) {
-        include_once "$fnsDir/ErrorJson/badRequest.php";
-        ErrorJson\badRequest('"FILE_ERROR"');
+        include_once "$fnsDir/ApiCall/Error/badRequest.php";
+        ApiCall\Error\badRequest('"FILE_ERROR"');
     }
 
     return $file;

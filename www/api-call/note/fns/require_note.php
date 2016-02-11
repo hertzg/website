@@ -13,8 +13,8 @@ function require_note ($mysqli, $user) {
     $note = Users\Notes\get($mysqli, $user, $id);
 
     if (!$note) {
-        include_once "$fnsDir/ErrorJson/badRequest.php";
-        ErrorJson\badRequest('"NOTE_NOT_FOUND"');
+        include_once "$fnsDir/ApiCall/Error/badRequest.php";
+        ApiCall\Error\badRequest('"NOTE_NOT_FOUND"');
     }
 
     return $note;

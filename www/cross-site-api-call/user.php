@@ -10,8 +10,8 @@ include_once '../lib/mysqli.php';
 $apiKey = CrossSiteApiKeys\getByKey($mysqli, $cross_site_api_key);
 
 if (!$apiKey) {
-    include_once "$fnsDir/ErrorJson/forbidden.php";
-    ErrorJson\forbidden('"INVALID_CROSS_SITE_API_KEY"');
+    include_once "$fnsDir/ApiCall/Error/forbidden.php";
+    ApiCall\Error\forbidden('"INVALID_CROSS_SITE_API_KEY"');
 }
 
 include_once "$fnsDir/CrossSiteApiKeys/delete.php";

@@ -1,6 +1,6 @@
 <?php
 
-namespace ErrorJson;
+namespace ApiCall\Error;
 
 function badRequest ($error) {
     http_response_code(400);

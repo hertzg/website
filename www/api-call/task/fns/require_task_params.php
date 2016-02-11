@@ -19,8 +19,8 @@ function require_task_params ($user, &$text,
     }
 
     if ($text === '') {
-        include_once "$fnsDir/ErrorJson/badRequest.php";
-        ErrorJson\badRequest('"ENTER_TEXT"');
+        include_once "$fnsDir/ApiCall/Error/badRequest.php";
+        ApiCall\Error\badRequest('"ENTER_TEXT"');
     }
 
     include_once "$fnsDir/ApiCall/requireTags.php";

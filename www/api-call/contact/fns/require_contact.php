@@ -13,8 +13,8 @@ function require_contact ($mysqli, $user) {
     $contact = Users\Contacts\get($mysqli, $user, $id);
 
     if (!$contact) {
-        include_once "$fnsDir/ErrorJson/badRequest.php";
-        ErrorJson\badRequest('"CONTACT_NOT_FOUND"');
+        include_once "$fnsDir/ApiCall/Error/badRequest.php";
+        ApiCall\Error\badRequest('"CONTACT_NOT_FOUND"');
     }
 
     return $contact;

@@ -14,8 +14,8 @@ function require_transaction ($mysqli, $id_users) {
         $mysqli, $id_users, $id);
 
     if (!$transaction) {
-        include_once "$fnsDir/ErrorJson/badRequest.php";
-        ErrorJson\badRequest('"TRANSACTION_NOT_FOUND"');
+        include_once "$fnsDir/ApiCall/Error/badRequest.php";
+        ApiCall\Error\badRequest('"TRANSACTION_NOT_FOUND"');
     }
 
     return $transaction;

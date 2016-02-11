@@ -10,8 +10,8 @@ function require_note_params (&$text, &$tags, &$tag_names,
         $password_protect) = Notes\request();
 
     if ($text === '') {
-        include_once "$fnsDir/ErrorJson/badRequest.php";
-        ErrorJson\badRequest('"ENTER_TEXT"');
+        include_once "$fnsDir/ApiCall/Error/badRequest.php";
+        ApiCall\Error\badRequest('"ENTER_TEXT"');
     }
 
     include_once "$fnsDir/ApiCall/requireTags.php";
@@ -21,8 +21,8 @@ function require_note_params (&$text, &$tags, &$tag_names,
         include_once "$fnsDir/Session/EncryptionKey/get.php";
         $encryption_key = Session\EncryptionKey\get();
         if ($encryption_key === null) {
-            include_once "$fnsDir/ErrorJson/badRequest.php";
-            ErrorJson\badRequest('"CANNOT_PASSWORD_PROTECT"');
+            include_once "$fnsDir/ApiCall/Error/badRequest.php";
+            ApiCall\Error\badRequest('"CANNOT_PASSWORD_PROTECT"');
         }
     } else {
         $encryption_key = null;

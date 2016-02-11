@@ -13,8 +13,8 @@ function require_schedule ($mysqli, $user) {
     $schedule = Users\Schedules\get($mysqli, $user, $id);
 
     if (!$schedule) {
-        include_once "$fnsDir/ErrorJson/badRequest.php";
-        ErrorJson\badRequest('"SCHEDULE_NOT_FOUND"');
+        include_once "$fnsDir/ApiCall/Error/badRequest.php";
+        ApiCall\Error\badRequest('"SCHEDULE_NOT_FOUND"');
     }
 
     return $schedule;

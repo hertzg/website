@@ -14,8 +14,8 @@ function require_subscribed_channel ($mysqli, $id_users) {
         $mysqli, $id_users, $id);
 
     if (!$subscribedChannel) {
-        include_once "$fnsDir/ErrorJson/badRequest.php";
-        ErrorJson\badRequest('"SUBSCRIBED_CHANNEL_NOT_FOUND"');
+        include_once "$fnsDir/ApiCall/Error/badRequest.php";
+        ApiCall\Error\badRequest('"SUBSCRIBED_CHANNEL_NOT_FOUND"');
     }
 
     return $subscribedChannel;

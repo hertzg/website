@@ -13,8 +13,8 @@ function require_invitation ($mysqli) {
     $invitation = Invitations\get($mysqli, $id);
 
     if (!$invitation) {
-        include_once "$fnsDir/ErrorJson/badRequest.php";
-        ErrorJson\badRequest('"INVITATION_NOT_FOUND"');
+        include_once "$fnsDir/ApiCall/Error/badRequest.php";
+        ApiCall\Error\badRequest('"INVITATION_NOT_FOUND"');
     }
 
     return $invitation;
