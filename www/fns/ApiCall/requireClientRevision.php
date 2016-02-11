@@ -13,8 +13,8 @@ function requireClientRevision () {
 
     include_once "$fnsDir/get_client_revision.php";
     if ($client_revision !== get_client_revision()) {
-        include_once "$fnsDir/ErrorJson/badRequest.php";
-        \ErrorJson\badRequest('"RELOAD"');
+        include_once __DIR__.'/Error/badRequest.php';
+        Error\badRequest('"RELOAD"');
     }
 
 }
