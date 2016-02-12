@@ -3,14 +3,11 @@
 include_once 'fns/require_one_wallet.php';
 $user = require_one_wallet();
 
+include_once 'fns/unset_session_vars.php';
+unset_session_vars();
+
 $base = '../../';
 $fnsDir = '../../fns';
-
-unset(
-    $_SESSION['home/messages'],
-    $_SESSION['wallets/errors'],
-    $_SESSION['wallets/messages']
-);
 
 include_once "$fnsDir/Wallets/indexOnUser.php";
 include_once '../../lib/mysqli.php';
@@ -23,16 +20,8 @@ foreach ($wallets as $wallet) {
         .' &middot; '.amount_text($wallet->balance);
 }
 
-$key = 'wallets/quick-new-transaction/values';
-if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
-else {
-    $values = [
-        'focus' => 'id_wallets',
-        'id_wallets' => '',
-        'amount' => '',
-        'description' => '',
-    ];
-}
+include_once 'fns/get_values.php';
+$values = get_values();
 
 $focus = $values['focus'];
 
