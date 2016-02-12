@@ -1,4 +1,4 @@
-(function (base, loaderRevisions, clientRevision, unloadProgress) {
+(function (base, revisions, loaderRevisions, clientRevision, unloadProgress) {
 
     function loadHref (href, search, hash, callback) {
 
@@ -7,7 +7,7 @@
                 loader(response, function (title) {
                     document.title = title
                     while (unloadListeners.length > 0) unloadListeners.shift()()
-                    UnloadPage()
+                    UnloadPage(response, absoluteBase, revisions)
                     currentOperation = null
                     if (callback !== undefined) callback()
                 })
@@ -79,4 +79,4 @@
         },
     }
 
-})(base, loaderRevisions, clientRevision, unloadProgress)
+})(base, revisions, loaderRevisions, clientRevision, unloadProgress)

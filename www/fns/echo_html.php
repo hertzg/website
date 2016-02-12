@@ -28,7 +28,7 @@ function echo_html ($title, $head, $body,
                 .page_theme_links($theme_color, $theme_brightness, $base)
             .'</head>'
             .'<body>'
-                .vars_script($base)
+                .vars_script($base, $theme_color, $theme_brightness)
                 .compressed_js_script('unloadProgress',
                     $base, 'localNavigation-leave')
                 .compressed_js_script('localNavigation',

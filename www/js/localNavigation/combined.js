@@ -98,7 +98,7 @@ function ScanLinks (unloadProgress, loadHref) {
     }
 }
 ;
-function UnloadPage () {
+function UnloadPage (response, base, revisions) {
 
     unloadProgress.hide()
 
@@ -125,11 +125,25 @@ function UnloadPage () {
         head.removeChild(node)
     })
 
+    if (response.themeColor !== window.themeColor) {
+        var href = 'theme/color/' + response.themeColor + '/common.css'
+        var link = document.getElementById('themeColorLink')
+        link.href = base + href + '?' + revisions[href]
+        window.themeColor = response.themeColor
+    }
+
+    if (response.themeBrightness !== window.themeBrightness) {
+        var href = 'theme/brightness/' + response.themeBrightness + '/common.css'
+        var link = document.getElementById('themeBrightnessLink')
+        link.href = base + href + '?' + revisions[href]
+        window.themeBrightness = response.themeBrightness
+    }
+
     scroll(0, 0)
 
 }
 ;
-(function (base, loaderRevisions, clientRevision, unloadProgress) {
+(function (base, revisions, loaderRevisions, clientRevision, unloadProgress) {
 
     function loadHref (href, search, hash, callback) {
 
@@ -138,7 +152,7 @@ function UnloadPage () {
                 loader(response, function (title) {
                     document.title = title
                     while (unloadListeners.length > 0) unloadListeners.shift()()
-                    UnloadPage()
+                    UnloadPage(response, absoluteBase, revisions)
                     currentOperation = null
                     if (callback !== undefined) callback()
                 })
@@ -210,7 +224,7 @@ function UnloadPage () {
         },
     }
 
-})(base, loaderRevisions, clientRevision, unloadProgress)
+})(base, revisions, loaderRevisions, clientRevision, unloadProgress)
 ;
 
 })()

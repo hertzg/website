@@ -75,7 +75,7 @@ echo
             .compressed_css_link('index')
         .'</head>'
         .'<body>'
-            .vars_script('')
+            .vars_script('', $theme_color, 'light')
             .compressed_js_script('unloadProgress',
                 '', 'localNavigation-leave')
             .compressed_js_script('localNavigation',

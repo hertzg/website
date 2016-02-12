@@ -10,9 +10,13 @@ function create_page_load_response ($user = null) {
         'timezone' => $timezone,
     ];
 
-    if ($user) {
+    include_once __DIR__.'/resolve_theme.php';
+    resolve_theme($user, $theme_color, $theme_brightness);
 
-        $themeColor = $user->theme_color;
+    $response['themeColor'] = $theme_color;
+    $response['themeBrightness'] = $theme_brightness;
+
+    if ($user !== null) {
 
         include_once __DIR__.'/get_sign_out_timeout.php';
         $response['signOutTimeout'] = get_sign_out_timeout();
@@ -23,12 +27,7 @@ function create_page_load_response ($user = null) {
             $response['session_remembered'] = true;
         }
 
-    } else {
-        include_once __DIR__.'/Theme/Color/getDefault.php';
-        $themeColor = Theme\Color\getDefault();
     }
-
-    $response['themeColor'] = $themeColor;
 
     return $response;
 

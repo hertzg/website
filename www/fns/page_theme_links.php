@@ -10,10 +10,10 @@ function page_theme_links ($theme_color, $theme_brightness, $base = '') {
     $brightness_href .= '?'.get_revision($brightness_href);
 
     return '<link rel="stylesheet" type="text/css"'
-        .' class="localNavigation-leave"'
+        .' id="themeColorLink" class="localNavigation-leave"'
         ." href=\"$base$color_href\" />"
         .'<link rel="stylesheet" type="text/css"'
-        .' class="localNavigation-leave"'
+        .' id="themeBrightnessLink" class="localNavigation-leave"'
         ." href=\"$base$brightness_href\" />";
 
 }
