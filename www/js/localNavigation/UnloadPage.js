@@ -33,23 +33,43 @@ function UnloadPage (unloadProgress, base, revisions) {
         })()
 
         ;(function () {
-            var color = response.themeColor
-            if (color !== window.themeColor) {
-                var href = 'theme/color/' + color + '/common.css'
-                var link = document.getElementById('themeColorLink')
+
+            function updateIcon (size) {
+                var href = 'theme/color/' + color + '/images/icon' + size + '.png'
+                var link = document.getElementById('icon' + size + 'Link')
                 link.href = base + href + '?' + revisions[href]
-                window.themeColor = color
             }
+
+            var color = response.themeColor
+            if (color === window.themeColor) return
+            window.themeColor = color
+
+            var href = 'theme/color/' + color + '/common.css'
+            var link = document.getElementById('themeColorLink')
+            link.href = base + href + '?' + revisions[href]
+
+            updateIcon(16)
+            updateIcon(32)
+            updateIcon(48)
+            updateIcon(64)
+            updateIcon(90)
+            updateIcon(120)
+            updateIcon(128)
+            updateIcon(256)
+            updateIcon(512)
+
         })()
 
         ;(function () {
+
             var brightness = response.themeBrightness
-            if (brightness !== window.themeBrightness) {
-                var href = 'theme/brightness/' + brightness + '/common.css'
-                var link = document.getElementById('themeBrightnessLink')
-                link.href = base + href + '?' + revisions[href]
-                window.themeBrightness = brightness
-            }
+            if (brightness !== window.themeBrightness) return
+            window.themeBrightness = brightness
+
+            var href = 'theme/brightness/' + brightness + '/common.css'
+            var link = document.getElementById('themeBrightnessLink')
+            link.href = base + href + '?' + revisions[href]
+
         })()
 
         scroll(0, 0)

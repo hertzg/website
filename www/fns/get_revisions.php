@@ -19,7 +19,7 @@ function get_revisions () {
         'js/geolocationDialog/compressed.js' => 7,
         'js/imageProgress/compressed.js' => 4,
         'js/lineSizeRounding/compressed.js' => 5,
-        'js/localNavigation/compressed.js' => 4,
+        'js/localNavigation/compressed.js' => 5,
         'js/removeRecipient/compressed.js' => 1,
         'js/searchForm/compressed.js' => 2,
         'js/sessionTimeout/compressed.js' => 5,
