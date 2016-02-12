@@ -1,44 +1,59 @@
-function UnloadPage (response, base, revisions) {
+function UnloadPage (unloadProgress, base, revisions) {
 
-    unloadProgress.hide()
+    var body = document.body,
+        head = document.head
 
-    var body = document.body
-    var nodes = Array.prototype.slice.call(body.childNodes)
-    nodes.forEach(function (node) {
-        if (node.classList.contains('localNavigation-leave')) return
-        body.removeChild(node)
-    })
+    return function (response) {
 
-    var head = document.head
-    var nodes = Array.prototype.slice.call(head.childNodes)
-    nodes.forEach(function (node) {
-        var tagName = node.tagName
-        if (tagName === 'TITLE' || tagName === 'META') return
-        if (tagName === 'LINK') {
-            if (node.rel === 'icon' ||
-                node.classList.contains('localNavigation-leave')) {
+        unloadProgress.hide()
 
-                return
+        ;(function () {
+            var nodes = Array.prototype.slice.call(body.childNodes)
+            nodes.forEach(function (node) {
+                if (node.classList.contains('localNavigation-leave')) return
+                body.removeChild(node)
+            })
+        })()
 
+        ;(function () {
+            var nodes = Array.prototype.slice.call(head.childNodes)
+            nodes.forEach(function (node) {
+                var tagName = node.tagName
+                if (tagName === 'TITLE' || tagName === 'META') return
+                if (tagName === 'LINK') {
+                    if (node.rel === 'icon' ||
+                        node.classList.contains('localNavigation-leave')) {
+
+                        return
+
+                    }
+                }
+                head.removeChild(node)
+            })
+        })()
+
+        ;(function () {
+            var color = response.themeColor
+            if (color !== window.themeColor) {
+                var href = 'theme/color/' + color + '/common.css'
+                var link = document.getElementById('themeColorLink')
+                link.href = base + href + '?' + revisions[href]
+                window.themeColor = color
             }
-        }
-        head.removeChild(node)
-    })
+        })()
 
-    if (response.themeColor !== window.themeColor) {
-        var href = 'theme/color/' + response.themeColor + '/common.css'
-        var link = document.getElementById('themeColorLink')
-        link.href = base + href + '?' + revisions[href]
-        window.themeColor = response.themeColor
+        ;(function () {
+            var brightness = response.themeBrightness
+            if (brightness !== window.themeBrightness) {
+                var href = 'theme/brightness/' + brightness + '/common.css'
+                var link = document.getElementById('themeBrightnessLink')
+                link.href = base + href + '?' + revisions[href]
+                window.themeBrightness = brightness
+            }
+        })()
+
+        scroll(0, 0)
+
     }
-
-    if (response.themeBrightness !== window.themeBrightness) {
-        var href = 'theme/brightness/' + response.themeBrightness + '/common.css'
-        var link = document.getElementById('themeBrightnessLink')
-        link.href = base + href + '?' + revisions[href]
-        window.themeBrightness = response.themeBrightness
-    }
-
-    scroll(0, 0)
 
 }

@@ -1,21 +1,27 @@
 (function () {
 function FocusTarget () {
+
     var hash = location.hash
     if (hash === '') return
+
     var id = hash.substr(1)
     var element = document.getElementById(id)
     if (id === null) return
+
     element.classList.add('target')
-    if (element.scrollIntoView) element.scrollIntoView()
+    element.scrollIntoView()
+
 }
 ;
 function LoadData (href, search, clientRevision, loadCallback, errorCallback) {
 
-    var loaderHref = href + 'loader/' + (search === '' ? '?' : search + '&') +
-        'client_revision=' + clientRevision
+    var queryString
+    if (search === '') queryString = '?'
+    else queryString = search + '&'
+    queryString += 'client_revision=' + clientRevision
 
     var request = new XMLHttpRequest
-    request.open('get', loaderHref)
+    request.open('get', href + 'loader/' + queryString)
     request.send()
     request.onerror = errorCallback
     request.onload = function () {
@@ -48,6 +54,7 @@ function LoadData (href, search, clientRevision, loadCallback, errorCallback) {
 function LoadScript (src, loadCallback, errorCallback) {
 
     var script = document.createElement('script')
+    script.type = 'text/javascript'
     script.src = src
     script.onload = loadCallback
     script.onerror = errorCallback
@@ -98,48 +105,63 @@ function ScanLinks (unloadProgress, loadHref) {
     }
 }
 ;
-function UnloadPage (response, base, revisions) {
+function UnloadPage (unloadProgress, base, revisions) {
 
-    unloadProgress.hide()
+    var body = document.body,
+        head = document.head
 
-    var body = document.body
-    var nodes = Array.prototype.slice.call(body.childNodes)
-    nodes.forEach(function (node) {
-        if (node.classList.contains('localNavigation-leave')) return
-        body.removeChild(node)
-    })
+    return function (response) {
 
-    var head = document.head
-    var nodes = Array.prototype.slice.call(head.childNodes)
-    nodes.forEach(function (node) {
-        var tagName = node.tagName
-        if (tagName === 'TITLE' || tagName === 'META') return
-        if (tagName === 'LINK') {
-            if (node.rel === 'icon' ||
-                node.classList.contains('localNavigation-leave')) {
+        unloadProgress.hide()
 
-                return
+        ;(function () {
+            var nodes = Array.prototype.slice.call(body.childNodes)
+            nodes.forEach(function (node) {
+                if (node.classList.contains('localNavigation-leave')) return
+                body.removeChild(node)
+            })
+        })()
 
+        ;(function () {
+            var nodes = Array.prototype.slice.call(head.childNodes)
+            nodes.forEach(function (node) {
+                var tagName = node.tagName
+                if (tagName === 'TITLE' || tagName === 'META') return
+                if (tagName === 'LINK') {
+                    if (node.rel === 'icon' ||
+                        node.classList.contains('localNavigation-leave')) {
+
+                        return
+
+                    }
+                }
+                head.removeChild(node)
+            })
+        })()
+
+        ;(function () {
+            var color = response.themeColor
+            if (color !== window.themeColor) {
+                var href = 'theme/color/' + color + '/common.css'
+                var link = document.getElementById('themeColorLink')
+                link.href = base + href + '?' + revisions[href]
+                window.themeColor = color
             }
-        }
-        head.removeChild(node)
-    })
+        })()
 
-    if (response.themeColor !== window.themeColor) {
-        var href = 'theme/color/' + response.themeColor + '/common.css'
-        var link = document.getElementById('themeColorLink')
-        link.href = base + href + '?' + revisions[href]
-        window.themeColor = response.themeColor
+        ;(function () {
+            var brightness = response.themeBrightness
+            if (brightness !== window.themeBrightness) {
+                var href = 'theme/brightness/' + brightness + '/common.css'
+                var link = document.getElementById('themeBrightnessLink')
+                link.href = base + href + '?' + revisions[href]
+                window.themeBrightness = brightness
+            }
+        })()
+
+        scroll(0, 0)
+
     }
-
-    if (response.themeBrightness !== window.themeBrightness) {
-        var href = 'theme/brightness/' + response.themeBrightness + '/common.css'
-        var link = document.getElementById('themeBrightnessLink')
-        link.href = base + href + '?' + revisions[href]
-        window.themeBrightness = response.themeBrightness
-    }
-
-    scroll(0, 0)
 
 }
 ;
@@ -147,20 +169,20 @@ function UnloadPage (response, base, revisions) {
 
     function loadHref (href, search, hash, callback) {
 
+        function error () {
+            location.assign(href + search + hash)
+        }
+
         function loadData (loader) {
             currentOperation = LoadData(href, search, clientRevision, function (response) {
                 loader(response, function (title) {
                     document.title = title
                     while (unloadListeners.length > 0) unloadListeners.shift()()
-                    UnloadPage(response, absoluteBase, revisions)
+                    unloadPage(response)
                     currentOperation = null
                     if (callback !== undefined) callback()
                 })
             }, error)
-        }
-
-        function error () {
-            location = href + search + hash
         }
 
         if (currentOperation !== null) currentOperation.abort()
@@ -206,21 +228,23 @@ function UnloadPage (response, base, revisions) {
         hash: location.hash,
     }
 
+    var unloadListeners = []
+
+    var unloadPage = UnloadPage(unloadProgress, absoluteBase, revisions)
+
     var scanLinks = ScanLinks(unloadProgress, loadHref)
 
     addEventListener('popstate', popState)
     scanLinks()
 
-    var unloadListeners = []
-
     window.localNavigation = {
-        scanLinks: scanLinks,
         focusTarget: FocusTarget,
-        registerPage: function (href, loader) {
-            loaders[href] = loader
-        },
+        scanLinks: scanLinks,
         onUnload: function (listener) {
             unloadListeners.push(listener)
+        },
+        registerPage: function (href, loader) {
+            loaders[href] = loader
         },
     }
 

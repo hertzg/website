@@ -1,10 +1,12 @@
 function LoadData (href, search, clientRevision, loadCallback, errorCallback) {
 
-    var loaderHref = href + 'loader/' + (search === '' ? '?' : search + '&') +
-        'client_revision=' + clientRevision
+    var queryString
+    if (search === '') queryString = '?'
+    else queryString = search + '&'
+    queryString += 'client_revision=' + clientRevision
 
     var request = new XMLHttpRequest
-    request.open('get', loaderHref)
+    request.open('get', href + 'loader/' + queryString)
     request.send()
     request.onerror = errorCallback
     request.onload = function () {

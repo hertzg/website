@@ -2,20 +2,20 @@
 
     function loadHref (href, search, hash, callback) {
 
+        function error () {
+            location.assign(href + search + hash)
+        }
+
         function loadData (loader) {
             currentOperation = LoadData(href, search, clientRevision, function (response) {
                 loader(response, function (title) {
                     document.title = title
                     while (unloadListeners.length > 0) unloadListeners.shift()()
-                    UnloadPage(response, absoluteBase, revisions)
+                    unloadPage(response)
                     currentOperation = null
                     if (callback !== undefined) callback()
                 })
             }, error)
-        }
-
-        function error () {
-            location = href + search + hash
         }
 
         if (currentOperation !== null) currentOperation.abort()
@@ -61,21 +61,23 @@
         hash: location.hash,
     }
 
+    var unloadListeners = []
+
+    var unloadPage = UnloadPage(unloadProgress, absoluteBase, revisions)
+
     var scanLinks = ScanLinks(unloadProgress, loadHref)
 
     addEventListener('popstate', popState)
     scanLinks()
 
-    var unloadListeners = []
-
     window.localNavigation = {
-        scanLinks: scanLinks,
         focusTarget: FocusTarget,
-        registerPage: function (href, loader) {
-            loaders[href] = loader
-        },
+        scanLinks: scanLinks,
         onUnload: function (listener) {
             unloadListeners.push(listener)
+        },
+        registerPage: function (href, loader) {
+            loaders[href] = loader
         },
     }
 

@@ -1,6 +1,7 @@
 function LoadScript (src, loadCallback, errorCallback) {
 
     var script = document.createElement('script')
+    script.type = 'text/javascript'
     script.src = src
     script.onload = loadCallback
     script.onerror = errorCallback
