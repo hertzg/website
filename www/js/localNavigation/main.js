@@ -1,9 +1,9 @@
 (function (base, loaderRevisions, clientRevision, unloadProgress) {
 
-    function loadHref (href, hash, callback) {
+    function loadHref (href, search, hash, callback) {
 
         function loadData (loader) {
-            currentOperation = LoadData(href, clientRevision, function (response) {
+            currentOperation = LoadData(href, search, clientRevision, function (response) {
                 loader(response, function (title) {
                     document.title = title
                     while (unloadListeners.length > 0) unloadListeners.shift()()
@@ -15,7 +15,7 @@
         }
 
         function error () {
-            location = href + hash
+            location = href + search + hash
         }
 
         if (currentOperation !== null) currentOperation.abort()
@@ -43,33 +43,7 @@
     function popState (e) {
         var state = e.state
         if (state === null) state = initialState
-        loadHref(state.href, state.hash)
-    }
-
-    function scanLinks () {
-        var links = document.querySelectorAll('.localNavigation-link')
-        Array.prototype.forEach.call(links, function (link) {
-
-            var href = link.href
-            var hash = href.match(/(?:#.*)?$/)[0]
-            if (hash !== '') href = href.substr(0, href.length - hash.length)
-
-            link.addEventListener('click', function (e) {
-
-                e.preventDefault()
-                unloadProgress.show()
-
-                loadHref(href, hash, function () {
-                    var state = {
-                        href: href,
-                        hash: hash,
-                    }
-                    history.pushState(state, document.title, href + hash)
-                })
-
-            })
-
-        })
+        loadHref(state.href, state.search, state.hash)
     }
 
     var currentOperation = null
@@ -83,8 +57,11 @@
 
     var initialState = {
         href: location.href,
+        search: location.search,
         hash: location.hash,
     }
+
+    var scanLinks = ScanLinks(unloadProgress, loadHref)
 
     addEventListener('popstate', popState)
     scanLinks()

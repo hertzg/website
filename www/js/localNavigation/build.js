@@ -5,6 +5,7 @@ CompressJsFiles([
     'FocusTarget',
     'LoadData',
     'LoadScript',
+    'ScanLinks',
     'UnloadPage',
     'main',
 ])

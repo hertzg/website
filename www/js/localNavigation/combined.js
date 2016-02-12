@@ -9,10 +9,13 @@ function FocusTarget () {
     if (element.scrollIntoView) element.scrollIntoView()
 }
 ;
-function LoadData (href, clientRevision, loadCallback, errorCallback) {
+function LoadData (href, search, clientRevision, loadCallback, errorCallback) {
+
+    var loaderHref = href + 'loader/' + (search === '' ? '?' : search + '&') +
+        'client_revision=' + clientRevision
 
     var request = new XMLHttpRequest
-    request.open('get', href + 'loader/?client_revision=' + clientRevision)
+    request.open('get', loaderHref)
     request.send()
     request.onerror = errorCallback
     request.onload = function () {
@@ -59,6 +62,42 @@ function LoadScript (src, loadCallback, errorCallback) {
 
 }
 ;
+function ScanLinks (unloadProgress, loadHref) {
+    return function () {
+        var links = document.querySelectorAll('.localNavigation-link')
+        Array.prototype.forEach.call(links, function (link) {
+
+            var href = link.href
+
+            var hash = href.match(/(?:#.*)?$/)[0]
+            if (hash !== '') {
+                href = href.substr(0, href.length - hash.length)
+            }
+
+            var search = href.match(/(?:\?.*)?$/)[0]
+            if (search !== '') {
+                href = href.substr(0, href.length - search.length)
+            }
+
+            link.addEventListener('click', function (e) {
+
+                e.preventDefault()
+                unloadProgress.show()
+
+                loadHref(href, search, hash, function () {
+                    history.pushState({
+                        href: href,
+                        search: search,
+                        hash: hash,
+                    }, document.title, href + search + hash)
+                })
+
+            })
+
+        })
+    }
+}
+;
 function UnloadPage () {
 
     unloadProgress.hide()
@@ -92,10 +131,10 @@ function UnloadPage () {
 ;
 (function (base, loaderRevisions, clientRevision, unloadProgress) {
 
-    function loadHref (href, hash, callback) {
+    function loadHref (href, search, hash, callback) {
 
         function loadData (loader) {
-            currentOperation = LoadData(href, clientRevision, function (response) {
+            currentOperation = LoadData(href, search, clientRevision, function (response) {
                 loader(response, function (title) {
                     document.title = title
                     while (unloadListeners.length > 0) unloadListeners.shift()()
@@ -107,7 +146,7 @@ function UnloadPage () {
         }
 
         function error () {
-            location = href + hash
+            location = href + search + hash
         }
 
         if (currentOperation !== null) currentOperation.abort()
@@ -135,33 +174,7 @@ function UnloadPage () {
     function popState (e) {
         var state = e.state
         if (state === null) state = initialState
-        loadHref(state.href, state.hash)
-    }
-
-    function scanLinks () {
-        var links = document.querySelectorAll('.localNavigation-link')
-        Array.prototype.forEach.call(links, function (link) {
-
-            var href = link.href
-            var hash = href.match(/(?:#.*)?$/)[0]
-            if (hash !== '') href = href.substr(0, href.length - hash.length)
-
-            link.addEventListener('click', function (e) {
-
-                e.preventDefault()
-                unloadProgress.show()
-
-                loadHref(href, hash, function () {
-                    var state = {
-                        href: href,
-                        hash: hash,
-                    }
-                    history.pushState(state, document.title, href + hash)
-                })
-
-            })
-
-        })
+        loadHref(state.href, state.search, state.hash)
     }
 
     var currentOperation = null
@@ -175,8 +188,11 @@ function UnloadPage () {
 
     var initialState = {
         href: location.href,
+        search: location.search,
         hash: location.hash,
     }
+
+    var scanLinks = ScanLinks(unloadProgress, loadHref)
 
     addEventListener('popstate', popState)
     scanLinks()
