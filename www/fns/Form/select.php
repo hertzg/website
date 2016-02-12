@@ -11,13 +11,12 @@ function select ($name, $text, $options, $value, $autofocus = false) {
         ." name=\"$name\" id=\"$name\"$autofocusAttribute>";
     foreach ($options as $itemValue => $itemText) {
         if (strcmp($itemValue, $value) === 0) {
-            $selectHtml .=
-                "<option selected=\"selected\" value=\"$itemValue\">"
-                    .$itemText
-                .'</option>';
+            $selectedAttribute = ' selected="selected"';
         } else {
-            $selectHtml .= "<option value=\"$itemValue\">$itemText</option>";
+            $selectedAttribute = '';
         }
+        $selectHtml .=
+            "<option value=\"$itemValue\"$selectedAttribute>$itemText</option>";
     }
     $selectHtml .= '</select>';
 
