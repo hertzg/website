@@ -19,6 +19,7 @@ $content = Page\create(
     [
         'title' => 'Reorder Items',
         'href' => "../#$key",
+        'localNavigation' => true,
     ],
     'Move Item',
     Page\text("Where would you like to move \"<b>$title</b>\"?")

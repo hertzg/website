@@ -10,6 +10,7 @@ function loader_revisions () {
         'help/feedback/' => 3,
         'help/install-link-handlers/' => 1,
         'home/customize/' => 3,
+        'home/customize/reorder/' => 1,
         'home/customize/show-hide/' => 5,
         'sign-in/' => 2,
         'sign-up/' => 1,

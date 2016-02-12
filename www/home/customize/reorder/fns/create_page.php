@@ -10,14 +10,18 @@ function create_page ($user, $base = '') {
     include_once __DIR__.'/../../fns/get_user_home_items.php';
     $userHomeItems = get_user_home_items($homeItems, $user);
 
+    $first = true;
+    $content = '';
     include_once "$fnsDir/Page/imageArrowLink.php";
-    $items = [];
     foreach ($userHomeItems as $key => $item) {
-        list($title, $icon) = $item;
+
+        if ($first) $first = false;
+        else $content .= '<div class="hr"></div>';
+
         $href = "{$base}move/?key=$key";
         if ($key === 'calendar') {
             include_once "$fnsDir/create_calendar_icon_today.php";
-            $items[] =
+            $content .=
                 "<a href=\"$href\""
                 ." class=\"clickable link image_link withArrow\">"
                     .'<span class="image_link-icon">'
@@ -26,8 +30,8 @@ function create_page ($user, $base = '') {
                     .'<span class="image_link-content">Calendar</span>'
                 .'</a>';
         } else {
-            $items[] = Page\imageArrowLink($title,
-                $href, $icon, ['id' => $key]);
+            $content .= Page\imageArrowLink($item[0],
+                $href, $item[1], ['id' => $key]);
         }
     }
 
@@ -45,7 +49,7 @@ function create_page ($user, $base = '') {
             'Reorder Items',
             Page\sessionMessages('home/customize/reorder/messages')
             .Page\text('Select an item to move up or down:')
-            .join('<div class="hr"></div>', $items)
+            .$content
         )
         .create_options_panel($base);
 

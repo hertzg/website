@@ -25,7 +25,10 @@
                     ui.Text(div, 'Reorder Items')
                 }, function (div) {
                     ui.Text(div, 'Change the order in which the items appear.')
-                }, 'reorder/', 'reorder', { id: 'reorder' })
+                }, 'reorder/', 'reorder', {
+                    id: 'reorder',
+                    localNavigation: true,
+                })
                 ui.Hr(div)
                 ui.Element(div, 'div', function (div) {
                     div.id = 'restoreLink'

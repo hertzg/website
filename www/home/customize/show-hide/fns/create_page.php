@@ -51,7 +51,7 @@ function create_page ($user, &$scripts, $base = '') {
             'Options',
             Page\imageLinkWithDescription('Reorder Items',
                 'Change the order in which the items appear.',
-                "$base../reorder/", 'reorder')
+                "$base../reorder/", 'reorder', ['localNavigation' => true])
             .'<div class="hr"></div>'
             .'<div id="restoreLink">'
                 .Page\imageLink('Restore Defaults',

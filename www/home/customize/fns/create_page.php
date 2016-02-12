@@ -27,7 +27,11 @@ function create_page ($base = '') {
         .'<div class="hr"></div>'
         .Page\imageArrowLinkWithDescription('Reorder Items',
             'Change the order in which the items appear.',
-            "{$base}reorder/", 'reorder', ['id' => 'reorder'])
+            "{$base}reorder/", 'reorder', [
+                'id' => 'reorder',
+                'localNavigation' => true,
+            ]
+        )
         .'<div class="hr"></div>'
         .'<div id="restoreLink">'
             .Page\imageLink('Restore Defaults',
