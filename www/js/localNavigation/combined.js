@@ -257,7 +257,9 @@ function UnloadPage (unloadProgress, base, revisions) {
     scanLinks()
 
     addEventListener('load', function () {
-        addEventListener('popstate', popState)
+        setTimeout(function () {
+            addEventListener('popstate', popState)
+        }, 0)
     })
 
     window.localNavigation = {
