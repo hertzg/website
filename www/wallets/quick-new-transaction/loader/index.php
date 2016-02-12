@@ -40,5 +40,12 @@ $response['wallets'] = array_map(function ($wallet) {
 $key = 'wallets/quick-new-transaction/errors';
 if (array_key_exists($key, $_SESSION)) $response['errors'] = $_SESSION[$key];
 
+include_once "$fnsDir/request_keyword_tag_offset.php";
+list($keyword, $tag, $offset) = request_keyword_tag_offset();
+
+if ($keyword !== '') $response['keyword'] = $keyword;
+if ($tag !== '') $response['tag'] = $tag;
+if ($offset !== 0) $response['offset'] = $offset;
+
 header('Content-Type: application/json');
 echo json_encode($response);
