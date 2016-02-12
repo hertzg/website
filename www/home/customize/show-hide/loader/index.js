@@ -25,8 +25,6 @@
 
                     for (var key in items) {
 
-                        if (key === 'admin' && user.admin !== true) continue
-
                         var item = items[key],
                             propertyPart = item[1],
                             userProperty = 'show_' + propertyPart

@@ -13,7 +13,6 @@ function create_page ($user, $base = '') {
     include_once "$fnsDir/Page/imageArrowLink.php";
     $items = [];
     foreach ($userHomeItems as $key => $item) {
-        if ($key === 'admin' && !$user->admin) continue;
         list($title, $icon) = $item;
         $href = "{$base}move/?key=$key";
         if ($key === 'calendar') {

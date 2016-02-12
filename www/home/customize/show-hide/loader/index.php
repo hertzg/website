@@ -20,8 +20,6 @@ foreach ($homeItems as $key => $value) {
     if ($user->$property) $response['user'][$property] = true;
 }
 
-if ($user->admin) $response['user']['admin'] = true;
-
 include_once '../../fns/get_user_home_items.php';
 $response['homeItems'] = get_user_home_items($homeItems, $user);
 
