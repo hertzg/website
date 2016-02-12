@@ -4,6 +4,7 @@ var CompressJsFiles = require('../CompressJsFiles.js')
 CompressJsFiles([
     '../DateAgo',
     'AdminPage',
+    'BuildQuery',
     'CompressedCssLink',
     'CompressedJsScript',
     'Element',
@@ -27,6 +28,8 @@ CompressJsFiles([
     'Form/select',
     'Form/textarea',
     'Form/textfield',
+    'ItemList/listUrl',
+    'ItemList/pageHiddenInputs',
     'Page/create',
     'Page/emptyTabs',
     'Page/errors',

@@ -21,9 +21,7 @@
         ui.page(response, '../../', function (body) {
             ui.Page_create(body, {
                 title: 'Wallets',
-                // TODO
-                //href: /*ui.ItemList_listHref() + */'#new-transaction',
-                href: '../#new-transaction',
+                href: ui.ItemList_listUrl(response.itemList) + '#new-transaction',
             }, 'New Transaction', function (div) {
                 ui.Page_sessionErrors(div, response.errors)
                 ui.Element(div, 'form', function (form) {
@@ -54,8 +52,7 @@
                     })
                     ui.Hr(form)
                     ui.Form_button(form, 'Save Transaction')
-                    // TODO
-                    //ui.ItemList_pageHiddenInputs(form)
+                    ui.ItemList_pageHiddenInputs(form, response.itemList)
 
                 })
             })

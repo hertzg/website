@@ -56,6 +56,13 @@ function AdminPage (page) {
     }
 }
 ;
+function BuildQuery (params) {
+    return params.map(function (keyValue) {
+        return encodeURIComponent(keyValue.key) + '=' +
+            encodeURIComponent(keyValue.value)
+    }).join('=')
+}
+;
 function CompressedCssLink (revisions) {
     return function (parentNode, name, base, className) {
 
@@ -482,6 +489,54 @@ function Form_textfield (parentNode, name, text, options) {
     })
 }
 ;
+function ItemList_listUrl (itemList, base, params) {
+
+    if (base === undefined) base = '../'
+    if (params === undefined) params = []
+
+    var href = base
+
+    var keyword = itemList.keyword
+    if (keyword !== undefined) {
+        href += 'search/'
+        params.push({
+            key: 'keyword',
+            value: keyword,
+        })
+    }
+
+    var tag = itemList.tag
+    if (tag !== undefined) {
+        params.push({
+            key: 'tag',
+            value: tag,
+        })
+    }
+
+    var offset = itemList.offset
+    if (offset !== undefined) {
+        params.push({
+            key: 'offset',
+            value: offset,
+        })
+    }
+
+    if (params.length) href += '?' + BuildQuery(params)
+
+    return href
+
+}
+;
+function ItemList_pageHiddenInputs (parentNode, itemList, params) {
+
+    if (params === undefined) params = []
+
+    itemList.concat(params).forEach(function (keyValue) {
+        Form_hidden(parentNode, keyValue.key, keyValue.value)
+    })
+
+}
+;
 function Page_create (parentNode, backlink, title, callback) {
     ZeroHeightBr(parentNode)
     Element(parentNode, 'div', function (div) {
@@ -747,6 +802,8 @@ function Page_warnings (parentNode, texts) {
         Form_textfield: Form_textfield,
         guest_page: GuestPage(page),
         Hr: Hr,
+        ItemList_listUrl: ItemList_listUrl,
+        ItemList_pageHiddenInputs: ItemList_pageHiddenInputs,
         page: page,
         Page_create: Page_create,
         Page_emptyTabs: Page_emptyTabs,

@@ -24,6 +24,8 @@
         Form_textfield: Form_textfield,
         guest_page: GuestPage(page),
         Hr: Hr,
+        ItemList_listUrl: ItemList_listUrl,
+        ItemList_pageHiddenInputs: ItemList_pageHiddenInputs,
         page: page,
         Page_create: Page_create,
         Page_emptyTabs: Page_emptyTabs,
