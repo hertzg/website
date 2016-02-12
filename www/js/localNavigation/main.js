@@ -67,8 +67,11 @@
 
     var scanLinks = ScanLinks(unloadProgress, loadHref)
 
-    addEventListener('popstate', popState)
     scanLinks()
+
+    addEventListener('load', function () {
+        addEventListener('popstate', popState)
+    })
 
     window.localNavigation = {
         focusTarget: FocusTarget,
