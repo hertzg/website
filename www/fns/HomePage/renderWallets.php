@@ -15,7 +15,8 @@ function renderWallets ($user, &$items) {
     if ($user->show_new_transaction) {
         include_once "$fnsDir/Page/thumbnailLink.php";
         $items['new-transaction'] = \Page\thumbnailLink('New Transaction',
-            '../wallets/quick-new-transaction/', 'create-transaction');
+            '../wallets/quick-new-transaction/', 'create-transaction',
+            ['localNavigation' => true]);
     }
 
     if ($user->show_transfer_amount) {

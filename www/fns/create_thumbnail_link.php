@@ -20,6 +20,9 @@ function create_thumbnail_link ($content, $href, $iconName, $options = []) {
     } else {
         $additionalClass = '';
     }
+    if (array_key_exists('localNavigation', $options)) {
+        $additionalClass .= ' localNavigation-link';
+    }
 
     return
         $nameLink

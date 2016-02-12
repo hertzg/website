@@ -19,6 +19,7 @@
         Form_label: Form_label,
         Form_notes: Form_notes,
         Form_password: Form_password,
+        Form_select: Form_select,
         Form_textarea: Form_textarea,
         Form_textfield: Form_textfield,
         guest_page: GuestPage(page),

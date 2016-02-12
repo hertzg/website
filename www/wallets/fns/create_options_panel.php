@@ -11,10 +11,13 @@ function create_options_panel ($user, $base = '') {
     $escapedPageQuery = ItemList\escapedPageQuery();
 
     include_once "$fnsDir/Page/imageArrowLink.php";
-    $newTransactionLink =
-        Page\imageArrowLink('New Transaction',
-            "{$base}quick-new-transaction/$escapedPageQuery",
-            'create-transaction', ['id' => 'new-transaction']);
+    $newTransactionLink = Page\imageArrowLink('New Transaction',
+        "{$base}quick-new-transaction/$escapedPageQuery",
+        'create-transaction', [
+            'id' => 'new-transaction',
+            'localNavigation' => true,
+        ]
+    );
 
     if ($num_wallets > 1) {
 

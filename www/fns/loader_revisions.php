@@ -13,5 +13,6 @@ function loader_revisions () {
         'home/customize/show-hide/' => 5,
         'sign-in/' => 2,
         'sign-up/' => 1,
+        'wallets/quick-new-transaction/' => 1,
     ];
 }

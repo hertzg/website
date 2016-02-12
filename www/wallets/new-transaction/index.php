@@ -41,7 +41,8 @@ if ($user->num_wallets > 1) {
 
     include_once "$fnsDir/Page/imageLinkWithDescription.php";
     $link = Page\imageLinkWithDescription('New Transaction',
-        'In another wallet', '../quick-new-transaction/', 'create-transaction');
+        'In another wallet', '../quick-new-transaction/',
+        'create-transaction', ['localNavigation' => true]);
 
     include_once "$fnsDir/create_panel.php";
     $content .= create_panel('Options', $link);

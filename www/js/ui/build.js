@@ -24,6 +24,7 @@ CompressJsFiles([
     'Form/label',
     'Form/notes',
     'Form/password',
+    'Form/select',
     'Form/textarea',
     'Form/textfield',
     'Page/create',
