@@ -11,6 +11,6 @@ function delete_all_confirm_dialog (&$head, $base = '') {
         .'<script type="text/javascript">'
             .'var deleteAllHref = '.json_encode("{$base}delete-all/submit.php")
         .'</script>'
-        ."<script type=\"text/javascript\" src=\"{$base}index.js?4\"></script>";
+        ."<script type=\"text/javascript\" src=\"{$base}index.js?5\"></script>";
 
 }

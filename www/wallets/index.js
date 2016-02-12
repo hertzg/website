@@ -1,4 +1,4 @@
-(function () {
+(function (yesHref) {
 
     var dialogShown = false
 
@@ -8,13 +8,12 @@
         deleteAllLink.blur()
         if (dialogShown) return
         var yesText = 'Yes, delete all wallets'
-        var yesHref = 'delete-all/submit.php'
-        var questionText = 'Are you sure you want to delete all the wallets?'
-            + ' They will be moved to Trash.'
+        var questionText = 'Are you sure you want to delete' +
+            ' all the wallets? They will be moved to Trash.'
         confirmDialog(questionText, yesText, yesHref, function () {
             dialogShown = false
         })
         dialogShown = true
     })
 
-})()
+})(deleteAllHref)
