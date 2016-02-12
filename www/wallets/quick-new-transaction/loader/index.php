@@ -1,29 +1,31 @@
 <?php
 
-include_once '../../../fns/ApiCall/requireClientRevision.php';
+$fnsDir = '../../../fns';
+
+include_once "$fnsDir/ApiCall/requireClientRevision.php";
 ApiCall\requireClientRevision();
 
-include_once '../../../fns/ApiCall/requireUser.php';
+include_once "$fnsDir/ApiCall/requireUser.php";
 $user = ApiCall\requireUser();
 
 if (!$user->num_wallets) {
-    include_once '../../../fns/ApiCall/Error/badRequest.php';
+    include_once "$fnsDir/ApiCall/Error/badRequest.php";
     ApiCall\Error\badRequest('"ONE_WALLET_REQUIRED"');
 }
 
 include_once '../fns/unset_session_vars.php';
 unset_session_vars();
 
-include_once '../../../fns/create_page_load_response.php';
+include_once "$fnsDir/create_page_load_response.php";
 $response = create_page_load_response($user);
 
 include_once '../fns/get_values.php';
 $response['values'] = get_values();
 
-include_once '../../../fns/WalletTransactions/maxLengths.php';
+include_once "$fnsDir/WalletTransactions/maxLengths.php";
 $response['maxLengths'] = WalletTransactions\maxLengths();
 
-include_once '../../../fns/Wallets/indexOnUser.php';
+include_once "$fnsDir/Wallets/indexOnUser.php";
 include_once '../../../lib/mysqli.php';
 $wallets = Wallets\indexOnUser($mysqli, $user->id_users);
 
