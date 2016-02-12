@@ -6,6 +6,11 @@ ApiCall\requireClientRevision();
 include_once '../../../fns/ApiCall/requireUser.php';
 $user = ApiCall\requireUser();
 
+if (!$user->num_wallets) {
+    include_once '../../../fns/ApiCall/Error/badRequest.php';
+    ApiCall\Error\badRequest('"ONE_WALLET_REQUIRED"');
+}
+
 include_once '../fns/unset_session_vars.php';
 unset_session_vars();
 
