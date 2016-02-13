@@ -8,7 +8,7 @@ function combined_js_script ($name, $base = '', $class = '') {
     if ($class === '') $classAttribute = '';
     else $classAttribute = " class=\"$class\"";
 
-    return '<script type="text/javascript" defer="defer"'
+    return '<script type="text/javascript"'
         ." src=\"{$base}js/$name/combined.js?$revision\"$classAttribute>"
         .'</script>';
 

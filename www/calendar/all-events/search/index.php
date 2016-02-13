@@ -15,8 +15,7 @@ $content =
     .'<script type="text/javascript">'
         ."var deleteAllHref = '../delete-all/submit.php'"
     .'</script>'
-    .'<script type="text/javascript" defer="defer" src="../index.js?2">'
-    .'</script>';
+    .'<script type="text/javascript" src="../index.js?2"></script>';
 
 include_once "$fnsDir/echo_user_page.php";
 echo_user_page($user, 'All Events', $content, $base, [

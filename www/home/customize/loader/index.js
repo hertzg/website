@@ -45,7 +45,6 @@
                 ui.compressed_js_script(body, 'confirmDialog', base)
                 ui.Element(body, 'script', function (script) {
                     script.type = 'text/javascript'
-                    script.defer = true
                     script.src = 'index.js'
                 })
             },

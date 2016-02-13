@@ -18,7 +18,7 @@ $content =
     .'<script type="text/javascript">'
         .'var deleteHref = '.json_encode("../delete/submit.php$itemQuery")
     .'</script>'
-    .'<script type="text/javascript" defer="defer" src="../view.js"></script>';
+    .'<script type="text/javascript" src="../view.js"></script>';
 
 if ($contact->photo_id) {
     $deletePhotoHref = "../photo/delete/submit.php?id=$id";
@@ -26,8 +26,7 @@ if ($contact->photo_id) {
         '<script type="text/javascript">'
             .'var deletePhotoHref = '.json_encode($deletePhotoHref)
         .'</script>'
-        .'<script type="text/javascript" defer="defere" src="index.js">'
-        .'</script>';
+        .'<script type="text/javascript" src="index.js"></script>';
 }
 
 include_once "$fnsDir/compressed_css_link.php";

@@ -5,7 +5,6 @@ function CompressedJsScript (revisions) {
 
         Element(parentNode, 'script', function (script) {
             script.type = 'text/javascript'
-            script.defer = true
             script.src = base + fullName + '?' + revisions[fullName]
             if (className !== undefined) script.className = className
         })

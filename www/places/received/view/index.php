@@ -25,7 +25,7 @@ $content =
     .'<script type="text/javascript">'
         .'var deleteHref = '.json_encode("../delete/submit.php$itemQuery")
     .'</script>'
-    .'<script type="text/javascript" defer="defer" src="../../view.js">'
+    .'<script type="text/javascript" src="../../view.js">'
     .'</script>';
 
 include_once "$fnsDir/compressed_css_link.php";

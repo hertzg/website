@@ -10,7 +10,8 @@ function compressed_js_script ($name, $base = '', $class = '') {
     if ($class === '') $classAttribute = '';
     else $classAttribute = " class=\"$class\"";
 
-    return '<script type="text/javascript" defer="defer"'
-        ." src=\"$base$fullName?$revision\"$classAttribute></script>";
+    return '<script type="text/javascript"'
+        ." src=\"$base$fullName?$revision\"$classAttribute>"
+        .'</script>';
 
 }

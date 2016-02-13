@@ -17,6 +17,6 @@ include_once "$fnsDir/echo_user_page.php";
 echo_user_page($user, 'Customize Home', $content, $base, [
     'head' => $head,
     'scripts' => compressed_js_script('confirmDialog', $base)
-        .'<script type="text/javascript" defer="defer" src="index.js">'
+        .'<script type="text/javascript" src="index.js">'
         .'</script>',
 ]);

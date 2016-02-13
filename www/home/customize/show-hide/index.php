@@ -17,6 +17,5 @@ include_once "$fnsDir/echo_user_page.php";
 echo_user_page($user, 'Show / Hide Items', $content, $base, [
     'head' => $head,
     'scripts' => $scripts.compressed_js_script('confirmDialog', $base)
-        .'<script type="text/javascript" defer="defer" src="index.js">'
-        .'</script>',
+        .'<script type="text/javascript" src="index.js"></script>',
 ]);

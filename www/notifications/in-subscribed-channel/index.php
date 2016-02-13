@@ -18,9 +18,7 @@ if ($notifications) {
         .'<script type="text/javascript">'
             .'var deleteAllHref = '.json_encode("delete-all/submit.php?id=$id")
         .'</script>'
-        .'<script type="text/javascript"'
-        .' defer="defer" src="../in-channel.js?3">'
-        .'</script>';
+        .'<script type="text/javascript" src="../in-channel.js?3"></script>';
 }
 
 include_once "$fnsDir/compressed_css_link.php";
