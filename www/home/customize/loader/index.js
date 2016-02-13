@@ -37,15 +37,17 @@
                     }, 'restore-defaults/', 'restore-defaults')
                 })
             })
-            ui.compressed_js_script(body, 'confirmDialog', base)
-            ui.Element(body, 'script', function (script) {
-                script.type = 'text/javascript'
-                script.defer = true
-                script.src = 'index.js'
-            })
         }, {
             head: function (head) {
                 ui.compressed_css_link(head, 'confirmDialog', base)
+            },
+            scripts: function (body) {
+                ui.compressed_js_script(body, 'confirmDialog', base)
+                ui.Element(body, 'script', function (script) {
+                    script.type = 'text/javascript'
+                    script.defer = true
+                    script.src = 'index.js'
+                })
             },
         })
 
