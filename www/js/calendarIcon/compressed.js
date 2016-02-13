@@ -1,1 +1,1 @@
-!function(n){var e=document.querySelector(".calendarIcon-day");n.onClockUpdate(function(n){e.innerHTML=n.getUTCDate()})}(batteryAndClock);
+!function(n,o){function a(n){t.innerHTML=n.getUTCDate()}var t=document.querySelector(".calendarIcon-day");n.onClockUpdate(a),o.onUnload(function(){n.unClockUpdate(a)})}(batteryAndClock,localNavigation);
