@@ -1,8 +1,11 @@
 <?php
 
-function create_page ($base = '') {
+function create_page (&$head, $base = '') {
 
     $fnsDir = __DIR__.'/../../../fns';
+
+    include_once "$fnsDir/compressed_css_link.php";
+    $head = compressed_css_link('confirmDialog', "$base../../");
 
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/imageArrowLink.php";
