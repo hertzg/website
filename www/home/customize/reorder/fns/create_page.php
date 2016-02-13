@@ -1,12 +1,15 @@
 <?php
 
-function create_page ($user, &$head, $base = '') {
+function create_page ($user, &$head, &$scripts, $base = '') {
 
     $fnsDir = __DIR__.'/../../../../fns';
 
     include_once "$fnsDir/compressed_css_link.php";
     $head = compressed_css_link('confirmDialog', "$base../../../")
         .compressed_css_link('calendarIcon', "$base../../../");
+
+    include_once "$fnsDir/compressed_js_script.php";
+    $scripts = compressed_js_script('calendarIcon', "$base../../../");
 
     include_once __DIR__.'/get_home_items.php';
     $homeItems = get_home_items();
