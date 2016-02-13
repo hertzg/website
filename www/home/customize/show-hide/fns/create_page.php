@@ -1,8 +1,11 @@
 <?php
 
-function create_page ($user, &$scripts, $base = '') {
+function create_page ($user, &$head, &$scripts, $base = '') {
 
     $fnsDir = __DIR__.'/../../../../fns';
+
+    include_once "$fnsDir/compressed_css_link.php";
+    $head = compressed_css_link('confirmDialog', "$base../../../");
 
     include_once "$fnsDir/compressed_js_script.php";
     $scripts = compressed_js_script('formCheckbox', "$base../../../");
