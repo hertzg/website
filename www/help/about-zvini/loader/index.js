@@ -51,6 +51,7 @@
                 ui.compressed_js_script(body, 'dateAgo', base)
             },
         })
+
         localNavigation.scanLinks()
         localNavigation.focusTarget()
 

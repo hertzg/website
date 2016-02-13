@@ -80,6 +80,7 @@
                 ui.compressed_js_script(body, 'formCheckbox', base)
             },
         })
+
         localNavigation.scanLinks()
         localNavigation.focusTarget()
 

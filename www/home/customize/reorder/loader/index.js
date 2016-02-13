@@ -79,6 +79,7 @@
                 })
             },
         })
+
         localNavigation.scanLinks()
         localNavigation.focusTarget()
 

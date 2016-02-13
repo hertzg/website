@@ -29,6 +29,7 @@
                 })
             })
         })
+
         localNavigation.scanLinks()
         localNavigation.focusTarget()
 

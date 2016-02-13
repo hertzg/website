@@ -38,6 +38,7 @@
                 })
             })
         })
+
         localNavigation.scanLinks()
 
     })

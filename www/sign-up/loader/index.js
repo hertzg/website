@@ -85,6 +85,7 @@
                 })
             })
         })
+
         localNavigation.scanLinks()
 
     })

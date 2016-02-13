@@ -40,6 +40,7 @@
                 })
             })
         })
+
         localNavigation.scanLinks()
         localNavigation.focusTarget()
 

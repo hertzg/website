@@ -3,7 +3,7 @@
 function loader_revisions () {
     return [
         '' => 4,
-        'admin/help/' => 3,
+        'admin/help/' => 4,
         'email-reset-password/' => 1,
         'help/' => 5,
         'help/about-zvini/' => 2,
@@ -14,6 +14,6 @@ function loader_revisions () {
         'home/customize/show-hide/' => 5,
         'sign-in/' => 2,
         'sign-up/' => 1,
-        'wallets/quick-new-transaction/' => 2,
+        'wallets/quick-new-transaction/' => 3,
     ];
 }

@@ -58,5 +58,8 @@
             })
         })
 
+        localNavigation.scanLinks()
+        localNavigation.focusTarget()
+
     })
 })(localNavigation, ui)
