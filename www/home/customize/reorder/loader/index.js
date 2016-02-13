@@ -23,9 +23,31 @@
                     else ui.Hr(div)
 
                     var item = items[key]
-                    ui.Page_imageArrowLink(div, function (div) {
-                        ui.Text(div, item[0])
-                    }, 'move/?key=' + key, item[1], { id: key })
+                    var href = 'move/?key=' + key
+                    if (key === 'calendar') {
+                        ui.Element(div, 'a', function (a) {
+                            a.href = href
+                            a.className = 'clickable link image_link withArrow'
+                            ui.Element(a, 'span', function (span) {
+                                span.className = 'image_link-icon'
+                                ui.Element(span, 'span', function (span) {
+                                    span.className = 'icon calendar'
+                                    ui.Element(span, 'span', function (span) {
+                                        span.className = 'calendarIcon-day'
+                                        ui.Text(span, new Date(response.time).getUTCDate())
+                                    })
+                                })
+                            })
+                            ui.Element(a, 'span', function (span) {
+                                span.className = 'image_link-content'
+                                ui.Text(span, 'Calendar')
+                            })
+                        })
+                    } else {
+                        ui.Page_imageArrowLink(div, function (div) {
+                            ui.Text(div, item[0])
+                        }, href, item[1], { id: key })
+                    }
 
                 }
 
@@ -47,6 +69,7 @@
         }, {
             head: function (head) {
                 ui.compressed_css_link(head, 'confirmDialog', base)
+                ui.compressed_css_link(head, 'calendarIcon', base)
             },
             scripts: function (body) {
                 ui.compressed_js_script(body, 'confirmDialog', base)
