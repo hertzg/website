@@ -4,9 +4,8 @@
         loadCallback('Create an Account')
 
         var values = response.values
-
-        var focus = values.focus,
-            returnVar = values['return']
+        var focus = values.focus
+        var returnVar = values['return']
 
         var queryString
         if (returnVar === '') queryString = ''
