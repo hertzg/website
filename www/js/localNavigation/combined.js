@@ -114,13 +114,7 @@ function UnloadPage (unloadProgress, base, revisions) {
 
         unloadProgress.hide()
 
-        ;(function () {
-            var nodes = Array.prototype.slice.call(body.childNodes)
-            nodes.forEach(function (node) {
-                if (node.classList.contains('localNavigation-leave')) return
-                body.removeChild(node)
-            })
-        })()
+        while (body.lastChild) body.removeChild(body.lastChild)
 
         ;(function () {
             var nodes = Array.prototype.slice.call(head.childNodes)

@@ -30,11 +30,9 @@ function echo_html ($title, $head, $body,
             .'<body>'
                 .$body
                 .vars_script($base, $theme_color, $theme_brightness)
-                .compressed_js_script('unloadProgress',
-                    $base, 'localNavigation-leave')
-                .compressed_js_script('localNavigation',
-                    $base, 'localNavigation-leave')
-                .compressed_js_script('ui', $base, 'localNavigation-leave')
+                .compressed_js_script('unloadProgress', $base)
+                .compressed_js_script('localNavigation', $base)
+                .compressed_js_script('ui', $base)
                 .$scripts
             .'</body>'
         .'</html>';

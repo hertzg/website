@@ -92,10 +92,8 @@ echo
             .'<br class="zeroHeight" />'
             ."<div class=\"buttonsWrapper\">$buttons</div>"
             .vars_script('', $theme_color, 'light')
-            .compressed_js_script('unloadProgress',
-                '', 'localNavigation-leave')
-            .compressed_js_script('localNavigation',
-                '', 'localNavigation-leave')
-            .compressed_js_script('ui', '', 'localNavigation-leave')
+            .compressed_js_script('unloadProgress')
+            .compressed_js_script('localNavigation')
+            .compressed_js_script('ui')
         .'</body>'
     .'</html>';
