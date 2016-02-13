@@ -12,7 +12,7 @@ $content = create_page($mysqli, $user, $channel, $scripts, $notifications);
 
 if ($notifications) {
     include_once "$fnsDir/compressed_js_script.php";
-    $content .=
+    $scripts .=
         compressed_js_script('confirmDialog', $base)
         .'<script type="text/javascript">'
             .'var deleteAllHref = '.json_encode("delete-all/submit.php?id=$id")

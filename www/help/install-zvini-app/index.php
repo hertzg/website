@@ -22,8 +22,9 @@ $content = Page\create(
     .'<div id="installingMessage" style="display: none">'
         .Page\text('Please wait...')
     .'</div>'
-    .'<script type="text/javascript" src="index.js?4"></script>'
 );
 
 include_once "$fnsDir/echo_public_page.php";
-echo_public_page($user, 'Install Zvini App', $content, '../../');
+echo_public_page($user, 'Install Zvini App', $content, '../../', [
+    'scripts' => '<script type="text/javascript" src="index.js?4"></script>',
+]);

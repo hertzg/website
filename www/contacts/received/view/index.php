@@ -18,20 +18,17 @@ include_once "$fnsDir/ItemList/Received/itemQuery.php";
 $itemQuery = ItemList\Received\itemQuery($id);
 
 include_once '../fns/ViewPage/create.php';
-include_once "$fnsDir/compressed_js_script.php";
-$content =
-    ViewPage\create($user, $receivedContact, $head, $scripts)
-    .compressed_js_script('confirmDialog', $base)
-    .'<script type="text/javascript">'
-        .'var deleteHref = '.json_encode("../delete/submit.php$itemQuery")
-    .'</script>'
-    .'<script type="text/javascript" src="../../view.js"></script>';
+$content = ViewPage\create($user, $receivedContact, $head, $scripts);
 
 include_once "$fnsDir/compressed_css_link.php";
+include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/echo_user_page.php";
 echo_user_page($user, "Received Contact #$id", $content, $base, [
-    'head' => $head
-        .compressed_css_link('contact', $base)
+    'head' => $head.compressed_css_link('contact', $base)
         .compressed_css_link('confirmDialog', $base),
-    'scripts' => $scripts,
+    'scripts' => $scripts.compressed_js_script('confirmDialog', $base)
+        .'<script type="text/javascript">'
+            .'var deleteHref = '.json_encode("../delete/submit.php$itemQuery")
+        .'</script>'
+        .'<script type="text/javascript" src="../../view.js"></script>',
 ]);

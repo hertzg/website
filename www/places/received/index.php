@@ -20,15 +20,13 @@ unset(
 );
 
 include_once 'fns/create_page.php';
-include_once "$fnsDir/compressed_js_script.php";
-$content =
-    create_page($mysqli, $user, $scripts)
-    .compressed_js_script('confirmDialog', $base)
-    .'<script type="text/javascript" src="index.js"></script>';
+$content = create_page($mysqli, $user, $scripts);
 
 include_once "$fnsDir/compressed_css_link.php";
+include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/echo_user_page.php";
 echo_user_page($user, 'Received Places', $content, $base, [
     'head' => compressed_css_link('confirmDialog', $base),
-    'scripts' => $scripts,
+    'scripts' => $scripts.compressed_js_script('confirmDialog', $base)
+        .'<script type="text/javascript" src="index.js"></script>',
 ]);

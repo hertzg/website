@@ -21,8 +21,10 @@ $body =
         .'<div>'
             ."<a class=\"a\" href=\"$escapedUrl\">$escapedUrl</a>"
         .'</div>'
-    .'</div>'
-    .'<script type="text/javascript">'
+    .'</div>';
+
+$scripts =
+    '<script type="text/javascript">'
     .'setTimeout(function () {'
         .'location = '.json_encode($url)
     .'}, 0)'
@@ -32,4 +34,5 @@ include_once '../fns/resolve_theme.php';
 resolve_theme($user, $theme_color, $theme_brightness);
 
 include_once '../fns/echo_html.php';
-echo_html('Redirecting', '', $body, $theme_color, $theme_brightness, $base);
+echo_html('Redirecting', '', $body, $theme_color,
+    $theme_brightness, $base, $scripts);

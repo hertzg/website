@@ -11,10 +11,10 @@ include_once "$fnsDir/ItemList/itemQuery.php";
 $itemQuery = ItemList\itemQuery($id);
 
 include_once '../fns/ViewPage/create.php';
+$content = ViewPage\create($user, $contact, $head, $scripts);
+
 include_once "$fnsDir/compressed_js_script.php";
-$content =
-    ViewPage\create($user, $contact, $head, $scripts)
-    .compressed_js_script('confirmDialog', $base)
+$scripts .= compressed_js_script('confirmDialog', $base)
     .'<script type="text/javascript">'
         .'var deleteHref = '.json_encode("../delete/submit.php$itemQuery")
     .'</script>'
@@ -22,7 +22,7 @@ $content =
 
 if ($contact->photo_id) {
     $deletePhotoHref = "../photo/delete/submit.php?id=$id";
-    $content .=
+    $scripts .=
         '<script type="text/javascript">'
             .'var deletePhotoHref = '.json_encode($deletePhotoHref)
         .'</script>'
@@ -32,8 +32,7 @@ if ($contact->photo_id) {
 include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_user_page.php";
 echo_user_page($user, "Contact #$id", $content, $base, [
-    'head' => $head
-        .compressed_css_link('contact', $base)
+    'head' => $head.compressed_css_link('contact', $base)
         .compressed_css_link('confirmDialog', $base),
     'scripts' => $scripts,
 ]);

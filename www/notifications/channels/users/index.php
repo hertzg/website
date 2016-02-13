@@ -14,17 +14,16 @@ unset(
 );
 
 include_once 'fns/create_page.php';
-include_once "$fnsDir/compressed_js_script.php";
-$content =
-    create_page($mysqli, $id)
-    .compressed_js_script('confirmDialog', $base)
-    .'<script type="text/javascript">'
-        .'var channelName = '.json_encode($channel->channel_name)
-    .'</script>'
-    .'<script type="text/javascript" src="index.js?1"></script>';
+$content = create_page($mysqli, $id);
 
 include_once "$fnsDir/compressed_css_link.php";
+include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/echo_user_page.php";
 echo_user_page($user, "Channel #$id Users", $content, $base, [
     'head' => compressed_css_link('confirmDialog', $base),
+    'scripts' => compressed_js_script('confirmDialog', $base)
+        .'<script type="text/javascript">'
+            .'var channelName = '.json_encode($channel->channel_name)
+        .'</script>'
+        .'<script type="text/javascript" src="index.js?2"></script>',
 ]);

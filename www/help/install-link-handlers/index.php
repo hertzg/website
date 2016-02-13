@@ -27,11 +27,13 @@ $content = Page\create(
         .'<div class="hr"></div>'
         .Page\imageLink('tel: Link', '', 'protocol', ['id' => 'tel'])
     .'</div>'
-    .'<script type="text/javascript">'
-        .'var siteTitle = '.json_encode(SiteTitle\get())
-    .'</script>'
-    .'<script type="text/javascript" src="index.js?3"></script>'
 );
 
 include_once "$fnsDir/echo_public_page.php";
-echo_public_page($user, 'Install Link Handlers', $content, '../../');
+echo_public_page($user, 'Install Link Handlers', $content, '../../', [
+    'scripts' =>
+        '<script type="text/javascript">'
+            .'var siteTitle = '.json_encode(SiteTitle\get())
+        .'</script>'
+        .'<script type="text/javascript" src="index.js?3"></script>',
+]);

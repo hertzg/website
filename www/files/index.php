@@ -13,7 +13,7 @@ $content = create_page($mysqli, $user, $folder, $scripts, $title);
 if ($id) {
     $deleteHref = "delete-folder/submit.php?id_folders=$id";
     include_once "$fnsDir/compressed_js_script.php";
-    $content .=
+    $scripts .=
         compressed_js_script('confirmDialog', $base)
         .'<script type="text/javascript">'
             .'var deleteHref = '.json_encode($deleteHref)

@@ -13,7 +13,7 @@ $content = create_page($mysqli, $user, $scripts);
 if ($user->num_tokens) {
 
     include_once "$fnsDir/compressed_js_script.php";
-    $content .=
+    $scripts .=
         compressed_js_script('confirmDialog', $base)
         .'<script type="text/javascript" src="index.js"></script>';
 
