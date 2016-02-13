@@ -30,7 +30,7 @@ $content = Page\create(
     .'<script type="text/javascript">'
         .'var siteTitle = '.json_encode(SiteTitle\get())
     .'</script>'
-    .'<script type="text/javascript" src="index.js?3" async="true"></script>'
+    .'<script type="text/javascript" src="index.js?3"></script>'
 );
 
 include_once "$fnsDir/echo_public_page.php";

@@ -35,7 +35,6 @@
                 })
                 ui.Element(div, 'script', function (script) {
                     script.type = 'text/javascript'
-                    script.async = true
                     script.src = 'index.js?3'
                 })
             })

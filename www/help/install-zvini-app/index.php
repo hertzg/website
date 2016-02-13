@@ -22,7 +22,7 @@ $content = Page\create(
     .'<div id="installingMessage" style="display: none">'
         .Page\text('Please wait...')
     .'</div>'
-    .'<script type="text/javascript" src="index.js?4" async="true"></script>'
+    .'<script type="text/javascript" src="index.js?4"></script>'
 );
 
 include_once "$fnsDir/echo_public_page.php";
