@@ -105,10 +105,8 @@ function echo_page ($user, $title, $content, $base, $options = []) {
 
     }
 
-    $body .= $scripts;
-
     include_once __DIR__.'/../fns/echo_html.php';
     echo_html($title, $head, $body, $theme_color,
-        $theme_brightness, $base, ['head' => $head]);
+        $theme_brightness, $base, $scripts);
 
 }

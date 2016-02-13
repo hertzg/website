@@ -1,7 +1,7 @@
 <?php
 
 function echo_html ($title, $head, $body,
-    $theme_color, $theme_brightness, $base) {
+    $theme_color, $theme_brightness, $base, $scripts = '') {
 
     header('Cache-Control: private, max-age=0');
     header('Content-Type: text/html; charset=UTF-8');
@@ -28,13 +28,14 @@ function echo_html ($title, $head, $body,
                 .page_theme_links($theme_color, $theme_brightness, $base)
             .'</head>'
             .'<body>'
+                .$body
                 .vars_script($base, $theme_color, $theme_brightness)
                 .compressed_js_script('unloadProgress',
                     $base, 'localNavigation-leave')
                 .compressed_js_script('localNavigation',
                     $base, 'localNavigation-leave')
                 .compressed_js_script('ui', $base, 'localNavigation-leave')
-                .$body
+                .$scripts
             .'</body>'
         .'</html>';
 
