@@ -6,11 +6,8 @@ $user = require_multiple_wallets();
 $base = '../../';
 $fnsDir = '../../fns';
 
-unset(
-    $_SESSION['home/messages'],
-    $_SESSION['wallets/errors'],
-    $_SESSION['wallets/messages']
-);
+include_once 'fns/unset_session_vars.php';
+unset_session_vars();
 
 include_once "$fnsDir/Wallets/indexOnUser.php";
 include_once '../../lib/mysqli.php';
@@ -23,17 +20,8 @@ foreach ($wallets as $wallet) {
         .' &middot; '.amount_text($wallet->balance);
 }
 
-$key = 'wallets/quick-transfer-amount/values';
-if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
-else {
-    $values = [
-        'focus' => 'from_id_wallets',
-        'from_id_wallets' => $wallets[0]->id,
-        'to_id_wallets' => $wallets[1]->id,
-        'amount' => '',
-        'description' => '',
-    ];
-}
+include_once 'fns/get_values.php';
+$values = get_values($wallets);
 
 $focus = $values['focus'];
 
