@@ -22,7 +22,8 @@ function renderWallets ($user, &$items) {
     if ($user->show_transfer_amount) {
         include_once "$fnsDir/Page/thumbnailLink.php";
         $items['transfer-amount'] = \Page\thumbnailLink('Transfer Amount',
-            '../wallets/quick-transfer-amount/', 'transfer-amount');
+            '../wallets/quick-transfer-amount/', 'transfer-amount',
+            ['localNavigation' => true]);
     }
 
     if (!$user->show_wallets) return;

@@ -23,7 +23,11 @@ function create_options_panel ($user, $base = '') {
 
         $transferAmountLink = Page\imageArrowLink('Transfer Amount',
             "{$base}quick-transfer-amount/$escapedPageQuery",
-            'transfer-amount', ['id' => 'transfer-amount']);
+            'transfer-amount', [
+                'id' => 'transfer-amount',
+                'localNavigation' => true,
+            ]
+        );
 
         include_once "$fnsDir/Page/twoColumns.php";
         $content = Page\twoColumns($newTransactionLink, $transferAmountLink);
