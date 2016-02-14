@@ -12,7 +12,7 @@ $content = create_page($mysqli, $user, $scripts);
 
 if ($user->num_tasks) {
     include_once "$fnsDir/delete_all_confirm_dialog.php";
-    $content .= delete_all_confirm_dialog($head);
+    delete_all_confirm_dialog($head, $scripts);
 } else {
     $head = '';
 }
