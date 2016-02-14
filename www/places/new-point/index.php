@@ -40,8 +40,9 @@ $content =
             .ItemList\itemHiddenInputs($id)
         .'</form>'
     )
-    .create_geolocation_panel($base, (float)$place->latitude,
+    .create_geolocation_panel($scripts, $base, (float)$place->latitude,
         (float)$place->longitude, (float)$place->altitude);
 
 include_once "$fnsDir/echo_user_page.php";
-echo_user_page($user, "Add New Point to Place #$place->id", $content, $base);
+echo_user_page($user, "Add New Point to Place #$place->id",
+    $content, $base, ['scripts' => $scripts]);

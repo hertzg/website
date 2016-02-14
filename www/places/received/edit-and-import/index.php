@@ -50,7 +50,7 @@ $content =
             .ItemList\Received\itemHiddenInputs($id)
         .'</form>'
     )
-    .create_geolocation_panel($base, (float)$receivedPlace->latitude,
+    .create_geolocation_panel($scripts, $base, (float)$receivedPlace->latitude,
         (float)$receivedPlace->longitude, (float)$receivedPlace->altitude);
 
 include_once "$fnsDir/echo_user_page.php";

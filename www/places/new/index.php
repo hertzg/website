@@ -60,7 +60,7 @@ $content =
             .ItemList\pageHiddenInputs()
         .'</form>'
     )
-    .create_geolocation_panel($base);
+    .create_geolocation_panel($scripts, $base);
 
 include_once "$fnsDir/echo_user_page.php";
 echo_user_page($user, 'New Place', $content, $base, ['scripts' => $scripts]);
