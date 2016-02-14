@@ -79,9 +79,12 @@ function recipientsPage ($mysqli, $user, $id, $tabTitle,
         .$additionalPanels;
 
     include_once __DIR__.'/removeDialog.php';
-    removeDialog($recipients, $base, $content, $head);
+    removeDialog($recipients, $base, $head, $scripts);
 
     include_once "$fnsDir/echo_user_page.php";
-    echo_user_page($user, $pageTitle, $content, $base, ['head' => $head]);
+    echo_user_page($user, $pageTitle, $content, $base, [
+        'head' => $head,
+        'scripts' => $scripts,
+    ]);
 
 }

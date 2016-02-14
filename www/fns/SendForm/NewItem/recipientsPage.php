@@ -77,10 +77,12 @@ function recipientsPage ($mysqli, $user,
         .$additionalPanels;
 
     include_once "$fnsDir/SendForm/removeDialog.php";
-    \SendForm\removeDialog($recipients, $base, $content, $head);
+    \SendForm\removeDialog($recipients, $base, $head, $scripts);
 
     include_once "$fnsDir/echo_user_page.php";
-    echo_user_page($user, "Send New $what_upper",
-        $content, $base, ['head' => $head]);
+    echo_user_page($user, "Send New $what_upper", $content, $base, [
+        'head' => $head,
+        'scripts' => $scripts,
+    ]);
 
 }
