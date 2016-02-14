@@ -64,10 +64,10 @@ include_once "$fnsDir/Page/text.php";
 $content =
     Page\create(
         [
-            'title' => 'Files',
+            'title' => "Folder #$id",
             'href' => "../?id_folders=$id#send",
         ],
-        "Send Folder #$id",
+        'Send',
         Page\sessionErrors('files/send-folder/errors')
         .Page\sessionMessages('files/send-folder/messages')
         .Page\text('Send the folder to:')

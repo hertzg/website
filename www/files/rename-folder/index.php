@@ -26,7 +26,7 @@ $content = Page\create(
         'title' => "Folder #$id_folders",
         'href' => "../?id_folders=$id_folders#rename",
     ],
-    "Rename Folder #$id_folders",
+    'Rename',
     Page\sessionErrors('files/rename-folder/errors')
     .'<form action="submit.php" method="post">'
         .create_folder_form_items($values)

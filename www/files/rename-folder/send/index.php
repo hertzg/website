@@ -62,7 +62,7 @@ include_once "$fnsDir/Page/text.php";
 $content =
     Page\create(
         [
-            'title' => "Rename Folder #$id",
+            'title' => 'Rename',
             'href' => "../?id_folders=$id",
         ],
         'Send',
