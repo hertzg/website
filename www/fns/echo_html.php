@@ -6,7 +6,6 @@ function echo_html ($title, $head, $body,
     header('Cache-Control: private, max-age=0');
     header('Content-Type: text/html; charset=UTF-8');
 
-    include_once __DIR__.'/combined_js_script.php';
     include_once __DIR__.'/compressed_css_link.php';
     include_once __DIR__.'/compressed_js_script.php';
     include_once __DIR__.'/page_icon_links.php';
