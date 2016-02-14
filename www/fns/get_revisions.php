@@ -20,7 +20,7 @@ function get_revisions () {
         'js/imageProgress/compressed.js' => 4,
         'js/lineSizeRounding/compressed.js' => 5,
         'js/localNavigation/compressed.js' => 10,
-        'js/removeRecipient/compressed.js' => 1,
+        'js/removeRecipient/compressed.js' => 2,
         'js/searchForm/compressed.js' => 2,
         'js/sessionTimeout/compressed.js' => 5,
         'js/signOutConfirm/compressed.js' => 3,

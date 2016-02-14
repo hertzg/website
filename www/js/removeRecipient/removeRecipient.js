@@ -23,7 +23,7 @@
         var yesText = 'Yes, remove recipient'
         var yesHref = 'remove-recipient/submit.php' + dataset.query
 
-        var deleteLink = wrapper.querySelector('.clickable.rightButton')
+        var deleteLink = wrapper.querySelector('.clickable.removableItem-removeButton')
         deleteLink.addEventListener('click', function (e) {
             e.preventDefault()
             deleteLink.blur()
