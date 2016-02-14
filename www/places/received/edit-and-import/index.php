@@ -53,7 +53,6 @@ $content =
     .create_geolocation_panel($base, (float)$receivedPlace->latitude,
         (float)$receivedPlace->longitude, (float)$receivedPlace->altitude);
 
-include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/echo_user_page.php";
 echo_user_page($user, "Edit and Import Received Place #$id",
     $content, $base, ['scripts' => $scripts]);
