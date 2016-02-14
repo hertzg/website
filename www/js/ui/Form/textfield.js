@@ -13,7 +13,7 @@ function Form_textfield (parentNode, name, text, options) {
 
             var autofocus = options.autofocus
             if (autofocus === true) {
-                input.autofocus = autofocus
+                input.autofocus = true
                 input.focus()
             }
 

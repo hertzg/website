@@ -10,7 +10,7 @@ function Form_textarea (parentNode, name, text, options) {
 
             var autofocus = options.autofocus
             if (autofocus === true) {
-                textarea.autofocus = autofocus
+                textarea.autofocus = true
                 textarea.focus()
             }
 
