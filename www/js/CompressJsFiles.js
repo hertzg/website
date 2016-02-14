@@ -1,7 +1,9 @@
 var fs = require('fs'),
     CompressJs = require('./CompressJs.js')
 
-module.exports = function (files) {
+module.exports = function (files, compressedFile) {
+
+    if (compressedFile === undefined) compressedFile = 'compressed.js'
 
     var source = '(function () {\n'
     files.forEach(function (file) {
@@ -12,6 +14,6 @@ module.exports = function (files) {
     var compressedSource = CompressJs(source)
 
     fs.writeFileSync('combined.js', source)
-    fs.writeFileSync('compressed.js', compressedSource)
+    fs.writeFileSync(compressedFile, compressedSource)
 
 }
