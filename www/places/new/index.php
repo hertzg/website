@@ -36,7 +36,6 @@ unset(
 
 include_once '../fns/create_form_items.php';
 include_once '../fns/create_geolocation_panel.php';
-include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/ItemList/listHref.php";
 include_once "$fnsDir/ItemList/pageHiddenInputs.php";

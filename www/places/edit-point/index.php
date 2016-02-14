@@ -17,7 +17,6 @@ unset($_SESSION['places/view-point/messages']);
 
 include_once '../fns/create_geolocation_panel.php';
 include_once '../fns/create_point_form_items.php';
-include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/ItemList/itemHiddenInputs.php";
 include_once "$fnsDir/Page/create.php";
