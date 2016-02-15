@@ -18,8 +18,10 @@ function get ($user) {
     if ($user->show_new_contact) $items['new-contact'] = true;
     if ($user->show_files) $items['files'] = true;
     if ($user->show_upload_files) $items['upload-files'] = true;
-    if ($user->show_notes) $items['new-note'] = true;
-    if ($user->show_notifications) $items['post-notification'] = true;
+    if ($user->show_notes) $items['notes'] = true;
+    if ($user->show_new_note) $items['new-note'] = true;
+    if ($user->show_notifications) $items['notifications'] = true;
+    if ($user->show_post_notification) $items['post-notification'] = true;
     if ($user->show_places) $items['places'] = true;
     if ($user->show_new_place) $items['new-place'] = true;
     if ($user->show_schedules) $items['schedules'] = true;
@@ -27,6 +29,7 @@ function get ($user) {
     if ($user->show_tasks) $items['tasks'] = true;
     if ($user->show_new_task) $items['new-task'] = true;
     if ($user->show_wallets) $items['wallets'] = true;
+    if ($user->show_new_wallet) $items['new-wallet'] = true;
     if ($user->show_new_transaction) $items['new-transaction'] = true;
     if ($user->show_transfer_amount) $items['transfer-amount'] = true;
     if ($user->show_trash) $items['trash'] = true;
