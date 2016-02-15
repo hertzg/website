@@ -45,6 +45,7 @@ CompressJsFiles([
     'Page/sessionMessages',
     'Page/text',
     'Page/textList',
+    'Page/thumbnails',
     'Page/title',
     'Page/twoColumns',
     'Page/warnings',
