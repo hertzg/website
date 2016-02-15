@@ -4,7 +4,6 @@ namespace HomePage;
 
 function create ($mysqli, $user, &$head, &$scripts) {
 
-    $base = '../';
     $fnsDir = __DIR__.'/..';
 
     include_once "$fnsDir/compressed_js_script.php";
@@ -15,9 +14,6 @@ function create ($mysqli, $user, &$head, &$scripts) {
 
     include_once __DIR__.'/unsetSessionVars.php';
     unsetSessionVars();
-
-    include_once "$fnsDir/compressed_css_link.php";
-    $head = compressed_css_link('calendarIcon', $base);
 
     include_once __DIR__.'/getHomeItems.php';
     include_once __DIR__.'/newNotifications.php';
@@ -31,7 +27,7 @@ function create ($mysqli, $user, &$head, &$scripts) {
             .newNotifications($mysqli, $user)
             .\SearchForm\create('../search/', $formContent)
             .'<div class="hr"></div>'
-            .getHomeItems($mysqli, $user, $scripts)
+            .getHomeItems($mysqli, $user, $head, $scripts)
         )
         .optionsPanel();
 
