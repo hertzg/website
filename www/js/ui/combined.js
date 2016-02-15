@@ -253,6 +253,14 @@ function title_and_description (parentNode,
 
 }
 ;
+function UserPage (page) {
+    return function (response, base, callback, options) {
+        if (options === undefined) options = {}
+        options.logoHref = base + 'home/'
+        page(response, base, callback, options)
+    }
+}
+;
 function ZeroHeightBr (parentNode) {
     Element(parentNode, 'br', function (br) {
         br.className = 'zeroHeight'
@@ -826,6 +834,7 @@ function Page_warnings (parentNode, texts) {
         Page_warnings: Page_warnings,
         public_page: PublicPage(page),
         Text: Text,
+        user_page: UserPage(page),
         ZeroHeightBr: ZeroHeightBr,
     }
 })(revisions)

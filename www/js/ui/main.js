@@ -45,6 +45,7 @@
         Page_warnings: Page_warnings,
         public_page: PublicPage(page),
         Text: Text,
+        user_page: UserPage(page),
         ZeroHeightBr: ZeroHeightBr,
     }
 })(revisions)
