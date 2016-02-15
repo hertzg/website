@@ -33,14 +33,10 @@ function Page (localNavigation, revisions,
                 Element(div, 'a', function (a) {
 
                     var href = options.logoHref
-                    var className = 'topLink logoLink'
-                    if (href === undefined) {
-                        href = base
-                        className += ' localNavigation-link'
-                    }
+                    if (href === undefined) href = base === '' ? './' : base
 
                     a.href = href
-                    a.className = className
+                    a.className = 'topLink logoLink localNavigation-link'
 
                     Element(a, 'img', function (img) {
                         var url = 'theme/color/' + response.themeColor + '/images/zvini.svg'
