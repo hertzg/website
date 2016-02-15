@@ -44,6 +44,8 @@
         Page_twoColumns: Page_twoColumns,
         Page_warnings: Page_warnings,
         public_page: PublicPage(page),
+        SearchForm_create: SearchForm_create,
+        SearchForm_emptyContent: SearchForm_emptyContent,
         Text: Text,
         ZeroHeightBr: ZeroHeightBr,
     }

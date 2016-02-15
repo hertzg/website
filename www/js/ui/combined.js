@@ -779,6 +779,39 @@ function Page_warnings (parentNode, texts) {
     Page_textList(parentNode, texts, 'warnings')
 }
 ;
+function SearchForm_create (parentNode, action, callback) {
+    Element(parentNode, 'form', function (form) {
+        form.action = action
+        form.className = 'search_form'
+        callback(form)
+    })
+    ZeroHeightBr(parentNode)
+}
+;
+function SearchForm_emptyContent (parentNode, placeholder) {
+    Element(parentNode, 'span', function (span) {
+        span.className = 'search_form-content empty'
+        Element(span, 'input', function (input) {
+            input.className = 'form-textfield'
+            input.type = 'text'
+            input.name = 'keyword'
+            input.required = true
+            input.placeholder = placeholder
+        })
+    })
+    Element(parentNode, 'button', function (button) {
+        button.title = 'Search'
+        button.className = 'search_form-button rightButton clickable'
+        Element(button, 'span', function (span) {
+            span.className = 'rightButton-icon icon search'
+        })
+        Element(button, 'span', function (span) {
+            span.className = 'displayNone'
+            Text(span, 'Search')
+        })
+    })
+}
+;
 (function (revisions) {
 
     var compressed_css_link = CompressedCssLink(revisions),
@@ -825,6 +858,8 @@ function Page_warnings (parentNode, texts) {
         Page_twoColumns: Page_twoColumns,
         Page_warnings: Page_warnings,
         public_page: PublicPage(page),
+        SearchForm_create: SearchForm_create,
+        SearchForm_emptyContent: SearchForm_emptyContent,
         Text: Text,
         ZeroHeightBr: ZeroHeightBr,
     }

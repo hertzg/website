@@ -48,5 +48,7 @@ CompressJsFiles([
     'Page/title',
     'Page/twoColumns',
     'Page/warnings',
+    'SearchForm/create',
+    'SearchForm/emptyContent',
     'main',
 ])

@@ -6,6 +6,9 @@
         ui.page(response, '../', function (body) {
             ui.Page_emptyTabs(body, function (div) {
                 ui.Page_sessionMessages(div, response.messages)
+                ui.SearchForm_create(div, '../search/', function (div) {
+                    ui.SearchForm_emptyContent(div, 'Search...')
+                })
             })
             ui.Page_panel(body, 'Options', function (div) {
                 ui.Page_twoColumns(div, function (div) {
@@ -28,6 +31,10 @@
                     localNavigation: true,
                 })
             })
+        }, {
+            scripts: function (body) {
+                ui.compressed_js_script(body, 'searchForm', '../')
+            },
         })
 
         localNavigation.scanLinks()
