@@ -56,12 +56,10 @@ function echo_page ($user, $title, $content, $base, $options = []) {
         }
     }
 
-    $logo_class = 'topLink logoLink';
     if (array_key_exists('logo_href', $options)) {
         $logo_href = $options['logo_href'];
     } else {
         $logo_href = $base === '' ? './' : $base;
-        $logo_class .= ' localNavigation-link';
     }
 
     $logoSrc = "theme/color/$theme_color/images/zvini.svg";
@@ -70,7 +68,8 @@ function echo_page ($user, $title, $content, $base, $options = []) {
     $body =
         '<div id="tbar">'
             .'<div id="tbar-limit">'
-                ."<a class=\"$logo_class\" href=\"$logo_href\">"
+                ."<a href=\"$logo_href\""
+                .' class="topLink logoLink localNavigation-link">'
                     ."<img src=\"$base$logoSrc?".get_revision($logoSrc).'"'
                     .' alt="Zvini" class="logoLink-img" />'
                     .$notifications
