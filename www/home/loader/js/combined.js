@@ -72,20 +72,20 @@ function RenderBarCharts (div, response) {
     var href = '../bar-charts/'
     var icon = 'bar-charts'
     var options = { id: 'bar-charts' }
-
-    if (num_bar_charts > 0) {
-        return ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
+    if (num_bar_charts) {
+        ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
             ui.Text(span, num_bar_charts + ' total.')
         }, href, icon, options)
+    } else {
+        ui.Page_thumbnailLink(div, title, href, icon, options)
     }
-
-    return ui.Page_thumbnailLink(div, title, href, icon, options)
 
 }
 ;
 function RenderBookmarks (div, response) {
 
     var user = response.user
+
     var num_bookmarks = user.num_bookmarks
     var num_new_received = user.num_received_bookmarks -
         user.num_archived_received_bookmarks
@@ -116,6 +116,7 @@ function RenderBookmarks (div, response) {
 function RenderCalculations (div, response) {
 
     var user = response.user
+
     var num_calculations = user.num_calculations
     var num_new_received = user.num_received_calculations -
         user.num_archived_received_calculations
@@ -150,6 +151,7 @@ function RenderCalendar (div, response) {
 function RenderContacts (div, response) {
 
     var user = response.user
+
     var num_contacts = user.num_contacts
     var num_new_received = user.num_received_contacts -
         user.num_archived_received_contacts
@@ -180,6 +182,7 @@ function RenderContacts (div, response) {
 function RenderFiles (div, response) {
 
     var user = response.user
+
     var storage_used = user.storage_used
     var num_new_received = user.num_received_files +
         user.num_received_folders - user.num_archived_received_files -
@@ -258,12 +261,14 @@ function RenderNewWallet (div) {
 ;
 function RenderNewTransaction (div) {
     ui.Page_thumbnailLink(div, 'New Transaction',
-        '../wallets/quick-new-transaction/', 'create-transaction')
+        '../wallets/quick-new-transaction/', 'create-transaction',
+        { localNavigation: true })
 }
 ;
 function RenderNotes (div, response) {
 
     var user = response.user
+
     var num_notes = user.num_notes
     var num_new_received = user.num_received_notes -
         user.num_archived_received_notes
@@ -294,6 +299,7 @@ function RenderNotes (div, response) {
 function RenderNotifications (div, response) {
 
     var user = response.user
+
     var num_notifications = user.num_notifications
 
     var title = 'Notifications'
@@ -331,6 +337,7 @@ function RenderNotifications (div, response) {
 function RenderPlaces (div, response) {
 
     var user = response.user
+
     var num_places = user.num_places
     var num_new_received = user.num_received_places -
         user.num_archived_received_places
@@ -366,6 +373,7 @@ function RenderPostNotification (div) {
 function RenderSchedules (div, response) {
 
     var user = response.user
+
     var num_schedules = user.num_schedules
     var num_new_received = user.num_received_schedules -
         user.num_archived_received_schedules
@@ -396,6 +404,7 @@ function RenderSchedules (div, response) {
 function RenderTasks (div, response) {
 
     var user = response.user
+
     var num_tasks = user.num_tasks
     var num_new_received = user.num_received_tasks -
         user.num_archived_received_tasks
@@ -425,7 +434,8 @@ function RenderTasks (div, response) {
 ;
 function RenderTransferAmount (div) {
     ui.Page_thumbnailLink(div, 'Transfer Amount',
-        '../wallets/quick-transfer-amount/', 'transfer-amount')
+        '../wallets/quick-transfer-amount/', 'transfer-amount',
+        { localNavigation: true })
 }
 ;
 function RenderTrash (div, response) {
@@ -455,7 +465,6 @@ function RenderWallets (div, response) {
     var href = '../wallets/'
     var icon = 'wallets'
     var options = { id: 'wallets' }
-
     if (balance_total) {
         ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
             ui.Text(span, amount_text(balance_total) + ' balance.')

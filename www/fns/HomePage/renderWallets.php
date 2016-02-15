@@ -34,7 +34,6 @@ function renderWallets ($user, &$items) {
     $href = '../wallets/';
     $icon = 'wallets';
     $options = ['id' => 'wallets'];
-
     if ($balance_total) {
         include_once "$fnsDir/amount_text.php";
         include_once "$fnsDir/Page/thumbnailLinkWithDescription.php";

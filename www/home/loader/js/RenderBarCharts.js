@@ -6,13 +6,12 @@ function RenderBarCharts (div, response) {
     var href = '../bar-charts/'
     var icon = 'bar-charts'
     var options = { id: 'bar-charts' }
-
-    if (num_bar_charts > 0) {
-        return ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
+    if (num_bar_charts) {
+        ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
             ui.Text(span, num_bar_charts + ' total.')
         }, href, icon, options)
+    } else {
+        ui.Page_thumbnailLink(div, title, href, icon, options)
     }
-
-    return ui.Page_thumbnailLink(div, title, href, icon, options)
 
 }

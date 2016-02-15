@@ -25,7 +25,6 @@ function renderSchedules ($user, $mysqli, &$items) {
     $href = '../schedules/';
     $icon = 'schedules';
     $options = ['id' => 'schedules'];
-
     if ($today || $tomorrow || $num_new_received) {
 
         $descriptions = [];

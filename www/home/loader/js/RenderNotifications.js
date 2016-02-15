@@ -1,6 +1,7 @@
 function RenderNotifications (div, response) {
 
     var user = response.user
+
     var num_notifications = user.num_notifications
 
     var title = 'Notifications'

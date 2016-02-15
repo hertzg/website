@@ -1,6 +1,7 @@
 function RenderNotes (div, response) {
 
     var user = response.user
+
     var num_notes = user.num_notes
     var num_new_received = user.num_received_notes -
         user.num_archived_received_notes

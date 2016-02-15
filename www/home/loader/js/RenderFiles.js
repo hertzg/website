@@ -1,6 +1,7 @@
 function RenderFiles (div, response) {
 
     var user = response.user
+
     var storage_used = user.storage_used
     var num_new_received = user.num_received_files +
         user.num_received_folders - user.num_archived_received_files -

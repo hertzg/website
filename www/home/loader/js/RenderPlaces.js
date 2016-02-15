@@ -1,6 +1,7 @@
 function RenderPlaces (div, response) {
 
     var user = response.user
+
     var num_places = user.num_places
     var num_new_received = user.num_received_places -
         user.num_archived_received_places

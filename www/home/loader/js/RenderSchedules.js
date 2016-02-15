@@ -1,6 +1,7 @@
 function RenderSchedules (div, response) {
 
     var user = response.user
+
     var num_schedules = user.num_schedules
     var num_new_received = user.num_received_schedules -
         user.num_archived_received_schedules

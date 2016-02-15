@@ -1,6 +1,7 @@
 function RenderTasks (div, response) {
 
     var user = response.user
+
     var num_tasks = user.num_tasks
     var num_new_received = user.num_received_tasks -
         user.num_archived_received_tasks

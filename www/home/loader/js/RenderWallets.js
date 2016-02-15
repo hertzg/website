@@ -6,7 +6,6 @@ function RenderWallets (div, response) {
     var href = '../wallets/'
     var icon = 'wallets'
     var options = { id: 'wallets' }
-
     if (balance_total) {
         ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
             ui.Text(span, amount_text(balance_total) + ' balance.')

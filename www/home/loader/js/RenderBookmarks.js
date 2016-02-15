@@ -1,6 +1,7 @@
 function RenderBookmarks (div, response) {
 
     var user = response.user
+
     var num_bookmarks = user.num_bookmarks
     var num_new_received = user.num_received_bookmarks -
         user.num_archived_received_bookmarks

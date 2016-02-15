@@ -1,6 +1,7 @@
 function RenderCalculations (div, response) {
 
     var user = response.user
+
     var num_calculations = user.num_calculations
     var num_new_received = user.num_received_calculations -
         user.num_archived_received_calculations

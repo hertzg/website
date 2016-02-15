@@ -1,6 +1,7 @@
 function RenderContacts (div, response) {
 
     var user = response.user
+
     var num_contacts = user.num_contacts
     var num_new_received = user.num_received_contacts -
         user.num_archived_received_contacts
