@@ -6,7 +6,7 @@ function FocusTarget () {
 
     var id = hash.substr(1)
     var element = document.getElementById(id)
-    if (id === null) return
+    if (element === null) return
 
     element.classList.add('target')
     element.scrollIntoView()
