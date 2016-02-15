@@ -10,6 +10,9 @@ function amount_text (n) {
     })
 }
 ;
+function bytestr () {
+}
+;
 function HomeItems (response) {
 
     var items = []
@@ -20,17 +23,23 @@ function HomeItems (response) {
         'new-bar-chart': RenderNewBarChart,
         'bookmarks': RenderBookmarks,
         'new-bookmark': RenderNewBookmark,
+        'calculations': RenderCalculations,
         'new-calculation': RenderNewCalculation,
+        'calendar': RenderCalendar,
         'new-event': RenderNewEvent,
         'contacts': RenderContacts,
         'new-contact': RenderNewContact,
+        'files': RenderFiles,
         'upload-files': RenderUploadFiles,
         'notes': RenderNotes,
         'new-note': RenderNewNote,
+        'notifications': RenderNotifications,
         'post-notification': RenderPostNotification,
+        'places': RenderPlaces,
         'new-place': RenderNewPlace,
         'tasks': RenderTasks,
         'new-task': RenderNewTask,
+        'schedules': RenderSchedules,
         'new-schedule': RenderNewSchedule,
         'wallets': RenderWallets,
         'new-wallet': RenderNewWallet,
@@ -104,6 +113,40 @@ function RenderBookmarks (div, response) {
 
 }
 ;
+function RenderCalculations (div, response) {
+
+    var user = response.user
+    var num_calculations = user.num_calculations
+    var num_new_received = user.num_received_calculations -
+        user.num_archived_received_calculations
+
+    var title = 'Calculations'
+    var href = '../calculations/'
+    var icon = 'calculations'
+    var options = { id: 'calculations' }
+    if (num_calculations || num_new_received) {
+
+        var descriptions = []
+        if (num_calculations) descriptions.push(num_calculations + '\xa0total.')
+        if (num_new_received) {
+            descriptions.push(num_new_received + '\xa0new\xa0received.')
+        }
+        description = descriptions.join(' ')
+
+        ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
+            ui.Text(span, description)
+        }, href, icon, options)
+
+    } else {
+        ui.Page_thumbnailLink(div, title, href, icon, options)
+    }
+
+}
+;
+function RenderCalendar (div, response) {
+    ui.Page_thumbnailLink(div, 'Calendar', '../calendar/', 'calendar')
+}
+;
 function RenderContacts (div, response) {
 
     var user = response.user
@@ -119,6 +162,39 @@ function RenderContacts (div, response) {
 
         var descriptions = []
         if (num_contacts) descriptions.push(num_contacts + '\xa0total.')
+        if (num_new_received) {
+            descriptions.push(num_new_received + '\xa0new\xa0received.')
+        }
+        description = descriptions.join(' ')
+
+        ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
+            ui.Text(span, description)
+        }, href, icon, options)
+
+    } else {
+        ui.Page_thumbnailLink(div, title, href, icon, options)
+    }
+
+}
+;
+function RenderFiles (div, response) {
+
+    var user = response.user
+    var storage_used = user.storage_used
+    var num_new_received = user.num_received_files +
+        user.num_received_folders - user.num_archived_received_files -
+        user.num_archived_received_folders
+
+    var title = 'Files'
+    var href = '../files/'
+    var icon = 'files'
+    var options = { id: 'files' }
+    if (num_new_received || storage_used) {
+
+        var descriptions = []
+        if (storage_used) {
+            descriptions.push(bytestr(storage_used, '\xa0') + '\xa0used.')
+        }
         if (num_new_received) {
             descriptions.push(num_new_received + '\xa0new\xa0received.')
         }
@@ -215,9 +291,106 @@ function RenderNotes (div, response) {
 
 }
 ;
+function RenderNotifications (div, response) {
+
+    var user = response.user
+    var num_notifications = user.num_notifications
+
+    var title = 'Notifications'
+    var href = '../notifications/'
+    var options = { id: 'notifications' }
+    if (num_notifications) {
+        var description
+        var num_new_notifications = user.num_new_notifications
+        if (num_new_notifications) {
+
+            description =
+                '<span class="colorText red">' +
+                    num_new_notifications + '\xa0new.' +
+                '</span>'
+            if (num_new_notifications != num_notifications) {
+                description += ' ' + num_notifications + '\xa0total.'
+            }
+
+            ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
+                ui.Text(span, description)
+            }, href, 'notification', options)
+
+        } else {
+            description = num_notifications + ' total.'
+            ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
+                ui.Text(span, description)
+            }, href, 'old-notification', options)
+        }
+    } else {
+        ui.Page_thumbnailLink(div, title, href, 'old-notification', options)
+    }
+
+}
+;
+function RenderPlaces (div, response) {
+
+    var user = response.user
+    var num_places = user.num_places
+    var num_new_received = user.num_received_places -
+        user.num_archived_received_places
+
+    var title = 'Places'
+    var href = '../places/'
+    var icon = 'places'
+    var options = { id: 'places' }
+    if (num_places || num_new_received) {
+
+        var descriptions = []
+        if (num_places) descriptions.push(num_places + '\xa0total.')
+        if (num_new_received) {
+            descriptions.push(num_new_received + '\xa0new\xa0received.')
+        }
+        description = descriptions.join(' ')
+
+        ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
+            ui.Text(span, description)
+        }, href, icon, options)
+
+    } else {
+        ui.Page_thumbnailLink(div, title, href, icon, options)
+    }
+
+}
+;
 function RenderPostNotification (div) {
     ui.Page_thumbnailLink(div, 'Post a Notification',
         '../notifications/quick-post-notification/', 'create-notification')
+}
+;
+function RenderSchedules (div, response) {
+
+    var user = response.user
+    var num_schedules = user.num_schedules
+    var num_new_received = user.num_received_schedules -
+        user.num_archived_received_schedules
+
+    var title = 'Schedules'
+    var href = '../schedules/'
+    var icon = 'schedules'
+    var options = { id: 'schedules' }
+    if (num_schedules || num_new_received) {
+
+        var descriptions = []
+        if (num_schedules) descriptions.push(num_schedules + '\xa0total.')
+        if (num_new_received) {
+            descriptions.push(num_new_received + '\xa0new\xa0received.')
+        }
+        description = descriptions.join(' ')
+
+        ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
+            ui.Text(span, description)
+        }, href, icon, options)
+
+    } else {
+        ui.Page_thumbnailLink(div, title, href, icon, options)
+    }
+
 }
 ;
 function RenderTasks (div, response) {
