@@ -9,12 +9,6 @@ function create_thumbnail_link ($content, $href, $iconName, $options = []) {
         $idAttribute = $nameLink = '';
     }
 
-    if (array_key_exists('target', $options)) {
-        $targetAttribute = " target=\"$options[target]\"";
-    } else {
-        $targetAttribute = '';
-    }
-
     if (array_key_exists('class', $options)) {
         $additionalClass = " $options[class]";
     } else {
@@ -27,7 +21,7 @@ function create_thumbnail_link ($content, $href, $iconName, $options = []) {
     return
         $nameLink
         ."<a class=\"clickable link thumbnail_link$additionalClass\""
-        ." href=\"$href\"$idAttribute$targetAttribute>"
+        ." href=\"$href\"$idAttribute>"
             .'<span class="thumbnail_link-icon">'
                 ."<span class=\"icon $iconName\"></span>"
             .'</span>'
