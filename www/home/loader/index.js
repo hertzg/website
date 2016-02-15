@@ -9,6 +9,8 @@
                 ui.SearchForm_create(div, '../search/', function (div) {
                     ui.SearchForm_emptyContent(div, 'Search...')
                 })
+                ui.Hr(div)
+                ui.Page_thumbnails(div, [])
             })
             ui.Page_panel(body, 'Options', function (div) {
                 ui.Page_twoColumns(div, function (div) {
@@ -32,6 +34,9 @@
                 })
             })
         }, {
+            head: function (head) {
+                ui.compressed_css_link(head, 'calendarIcon', '../')
+            },
             scripts: function (body) {
                 ui.compressed_js_script(body, 'searchForm', '../')
             },

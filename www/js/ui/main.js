@@ -40,6 +40,8 @@
         Page_sessionErrors: Page_sessionErrors,
         Page_sessionMessages: Page_sessionMessages,
         Page_text: Page_text,
+        Page_thumbnailLink: Page_thumbnailLink,
+        Page_thumbnailLinkWithDescription: Page_thumbnailLinkWithDescription,
         Page_thumbnails: Page_thumbnails,
         Page_title: Page_title,
         Page_twoColumns: Page_twoColumns,

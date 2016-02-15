@@ -91,6 +91,45 @@ function CompressedJsScript (revisions) {
     }
 }
 ;
+function create_thumbnail_link (parentNode, callback, href, iconName, options) {
+
+    if (options === undefined) options = {}
+
+    var id = options.id
+    if (id !== undefined) {
+        Element(parentNode, 'a', function (a) {
+            a.name = id
+        })
+    }
+    Element(parentNode, 'a', function (a) {
+
+        var additionalClass
+        var className = options.className
+        if (className === undefined) additionalClass = ''
+        else additionalClass = ' ' + className
+        if (options.localNavigation !== undefined) {
+            additionalClass += ' localNavigation-link'
+        }
+
+        if (id !== undefined) a.id = id
+        a.className = 'clickable link thumbnail_link' + additionalClass
+        a.href = href
+
+        Element(a, 'span', function (span) {
+            span.className = 'thumbnail_link-icon'
+            Element(span, 'span', function (span) {
+                span.className = 'icon ' + iconName
+            })
+        })
+        Element(a, 'span', function (span) {
+            span.className = 'thumbnail_link-content'
+            callback(span)
+        })
+
+    })
+
+}
+;
 function Element (parentNode, tagName, callback) {
     var element = document.createElement(tagName)
     parentNode.appendChild(element)
@@ -737,6 +776,27 @@ function Page_textList (parentNode, texts, className) {
     })
 }
 ;
+function Page_thumbnailLink (parentNode, title, href, iconName, options) {
+    create_thumbnail_link(parentNode, function (div) {
+        Element(div, 'span', function (span) {
+            span.className = 'thumbnail_link-title'
+            Text(span, title)
+        })
+    }, href, iconName, options)
+}
+;
+function Page_thumbnailLinkWithDescription (parentNode, title,
+    descriptionCallback, href, iconName, options) {
+
+    create_thumbnail_link(parentNode, function (div) {
+        Element(div, 'span', function (span) {
+            span.className = 'thumbnail_link-title'
+            Text(span, title)
+        })
+    }, href, iconName, options)
+
+}
+;
 function Page_thumbnails (parentNode, callbacks) {
     Element(parentNode, 'div', function (div) {
         div.className = 'thumbnails'
@@ -899,6 +959,8 @@ function SearchForm_emptyContent (parentNode, placeholder) {
         Page_sessionErrors: Page_sessionErrors,
         Page_sessionMessages: Page_sessionMessages,
         Page_text: Page_text,
+        Page_thumbnailLink: Page_thumbnailLink,
+        Page_thumbnailLinkWithDescription: Page_thumbnailLinkWithDescription,
         Page_thumbnails: Page_thumbnails,
         Page_title: Page_title,
         Page_twoColumns: Page_twoColumns,
