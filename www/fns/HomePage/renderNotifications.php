@@ -20,7 +20,6 @@ function renderNotifications ($user, &$items) {
     $href = '../notifications/';
     $options = ['id' => 'notifications'];
     if ($num_notifications) {
-        $description = '';
         $num_new_notifications = $user->num_new_notifications;
         if ($num_new_notifications) {
 
