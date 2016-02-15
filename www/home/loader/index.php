@@ -17,5 +17,10 @@ $response = create_page_load_response($user);
 $key = 'home/messages';
 if (array_key_exists($key, $_SESSION)) $response['messages'] = $_SESSION[$key];
 
+include_once "$fnsDir/Users/Home/get.php";
+$response['home'] = Users\Home\get($user);
+
+$response['user']['num_bar_charts'] = (int)$user->num_bar_charts;
+
 header('Content-Type: application/json');
 echo json_encode($response);

@@ -1,12 +1,982 @@
-!function(){function n(n,a,i){function e(n,a){var i=Math.floor((a-n)/1e3),e=Math.floor(i/60);if(!e)return"just now";if(1>=e)return"a minute ago";if(30==e)return"half an hour ago";var t=Math.floor(e/60);if(!t)return e+" minutes ago";if(1==t)return"an hour ago";var o=Math.floor(t/24);if(!o)return t+" hours ago";if(1==o)return"yesterday";var c=Math.floor(o/7);if(!c)return o+" days ago";if(1==c)return"a week ago";var s=Math.floor(o/30);if(!s)return c+" weeks ago";if(1==s)return"a month ago";var r=Math.floor(s/12);return r?1==r?"a year ago":r+" years ago":s+" months ago"}var t=e(n,a);return i&&(t=t.substr(0,1).toUpperCase()+t.substr(1)),t}function a(n){return function(a,i,e,t){void 0===t&&(t={}),t.logoHref=i,void 0!==a.user&&(t.logoHref+="../home/",t.localNavigation=!0),n(a,i+"../",e,t)}}function i(n){return n.map(function(n){return encodeURIComponent(n.key)+"="+encodeURIComponent(n.value)}).join("=")}function e(n){return function(a,i,e,t){var o="css/"+i+"/compressed.css";c(a,"link",function(a){a.rel="stylesheet",a.type="text/css",
-a.href=e+o+"?"+n[o],void 0!==t&&(a.className=t)})}}function t(n){return function(a,i,e){var t="js/"+i+"/compressed.js";c(a,"script",function(a){a.type="text/javascript",a.src=e+t+"?"+n[t]})}}function o(n,a,i,e,t){void 0===t&&(t={});var o=t.id;void 0!==o&&c(n,"a",function(n){n.name=o}),c(n,"a",function(n){var s,r=t.className;s=void 0===r?"":" "+r,void 0!==t.localNavigation&&(s+=" localNavigation-link"),void 0!==o&&(n.id=o),n.className="clickable link thumbnail_link"+s,n.href=i,c(n,"span",function(n){n.className="thumbnail_link-icon",c(n,"span",function(n){n.className="icon "+e})}),c(n,"span",function(n){n.className="thumbnail_link-content",a(n)})})}function c(n,a,i){var e=document.createElement(a);n.appendChild(e),i(e)}function s(a,i,e,t){c(a,"span",function(a){a.className="dateAgo",a.dataset.time=e,t===!0&&(a.dataset.uppercase="1"),m(a,n(1e3*e,i,t))})}function r(n){return function(a,i,e,t){n(a,i,e,t)}}function u(n){var a=document.createElement("div");a.className="hr",n.appendChild(a)}function l(n,a,i,e){var t=document.head,o=document.body;
-return function(s,r,u,l){void 0===l&&(l={});var f=s.user;window.base=r,window.time=s.time,window.timezone=s.timezone,n.onUnload(function(){delete window.base,delete window.time,delete window.timezone});var d=l.head;void 0!==d&&d(t),f&&i(t,"confirmDialog",r),c(o,"div",function(n){n.id="tbar",c(n,"div",function(n){n.id="tbar-limit",c(n,"a",function(n){var i=l.logoHref,e="topLink logoLink";void 0===i&&(i=r,e+=" localNavigation-link"),n.href=i,n.className=e,c(n,"img",function(n){var i="theme/color/"+s.themeColor+"/images/zvini.svg";n.alt="Zvini",n.className="logoLink-img",n.src=r+i+"?"+a[i]})}),c(n,"div",function(n){n.className="page-clockWrapper",c(n,"div",function(n){n.id="staticClockWrapper"}),c(n,"div",function(n){n.id="batteryWrapper"}),c(n,"div",function(n){n.id="dynamicClockWrapper"})}),f&&c(n,"div",function(n){n.className="pageTopRightLinks",c(n,"a",function(n){n.id="signOutLink",n.className="topLink",n.href=r+"sign-out/",m(n,"Sign Out")})})}),u(o)}),e(o,"batteryAndClock",r),e(o,"lineSizeRounding",r),f&&(e(o,"confirmDialog",r),
-window.signOutTimeout=s.signOutTimeout,n.onUnload(function(){delete window.signOutTimeout}),e(o,"signOutConfirm",r),s.session_remembered!==!0&&e(o,"sessionTimeout",r));var v=l.scripts;void 0!==v&&v(o)}}function f(n){return function(a,i,e,t){void 0!==a.user&&(void 0===t&&(t={}),t.logoHref=i+"home/"),n(a,i,e,t)}}function m(n,a){n.appendChild(document.createTextNode(a))}function d(n,a,i){c(n,"span",function(n){n.className="title_and_description",c(n,"span",function(n){n.className="title_and_description-title",a(n)}),v(n),c(n,"span",function(n){n.className="title_and_description-description colorText grey",i(n)})})}function v(n){c(n,"br",function(n){n.className="zeroHeight"})}function p(n,a,i){c(n,"div",function(n){n.className="form-item",c(n,"div",function(n){n.className="form-property",i(n)}),c(n,"div",function(n){n.className="form-value",a(n)})})}function h(n,a,i){c(n,"input",function(n){n.className="clickable form-button",n.type="submit",n.value=a,void 0!==i&&(n.name=i)})}function g(n,a,i,e){a.captchaRequired===!0&&(void 0===e&&(e=!1),
-c(n,"div",function(n){n.className="form-captcha",c(n,"img",function(n){n.alt="CAPTCHA",n.className="form-captcha-image",n.src=i+"captcha/"})}),P(n,"captcha","Verification",{required:!0,autofocus:e}),y(n,["Enter the characters shown on the image above.","This proves that you are a human and not a robot."]),u(n))}function N(n,a,i,e){c(n,"div",function(n){n.className="form-checkbox transformable",c(n,"label",function(n){n.className="form-checkbox-label clickable",c(n,"span",function(n){n.className="form-checkbox-inputWrapper",c(n,"input",function(n){n.className="form-checkbox-input",n.type="checkbox",n.id=n.name=a,e===!0&&(n.checked=!0)})}),m(n,i)})})}function b(n,a,i,e){c(n,"div",function(n){n.className="form-checkbox item transformable",c(n,"label",function(n){n.className="form-checkbox-label clickable",c(n,"span",function(n){n.className="form-checkbox-inputWrapper",c(n,"input",function(n){n.className="form-checkbox-input",n.type="checkbox",n.id=n.name=a,e===!0&&(n.checked=!0)})}),m(n,i)})})}function k(n,a,i){c(n,"input",function(n){
-n.type="hidden",n.name=a,n.value=i})}function _(n,a,i){p(n,function(n){c(n,"div",function(n){n.className="form-label",i(n)})},function(n){c(n,"div",function(n){m(n,a+":")})})}function y(n,a){p(n,function(n){c(n,"ul",function(n){n.className="form-notes",a.forEach(function(a){c(n,"li",function(n){n.className="form-notes-item",c(n,"span",function(n){n.className="form-notes-item-bullet"}),m(n,a)})})})},function(){})}function w(n,a,i,e){e.type="password",P(n,a,i,e)}function x(n,a,i,e,t,o){p(n,function(n){c(n,"select",function(n){n.className="form-select",n.name=n.id=a,e.forEach(function(a){ui.Element(n,"option",function(n){n.value=a.key,ui.Text(n,a.value),String(t)===a.key&&(n.selected=!0)})}),o===!0&&(n.autofocus=!0,n.focus())})},function(n){c(n,"label",function(n){n.className="form-property-label",n.htmlFor=a,ui.Text(n,i+":")})})}function L(n,a,i,e){p(n,function(n){c(n,"textarea",function(n){var i=e.value;void 0!==i&&""!==i&&(n.value=i);var t=e.maxlength;void 0!==t&&(n.maxLength=t);var o=e.autofocus;o===!0&&(n.autofocus=!0,
-n.focus());var c=e.readonly;void 0!==c&&(n.readOnly=c);var s=e.required;void 0!==s&&(n.required=s),n.className="form-textarea",n.id=n.name=a})},function(n){c(n,"label",function(n){n.className="form-property-label",n.htmlFor=a,m(n,i+":")})})}function P(n,a,i,e){p(n,function(n){c(n,"input",function(n){var i=e.type;void 0===i&&(i="text");var t=e.value;void 0!==t&&""!==t&&(n.value=t);var o=e.maxlength;void 0!==o&&(n.maxLength=o);var c=e.autofocus;c===!0&&(n.autofocus=!0,n.focus());var s=e.readonly;void 0!==s&&(n.readOnly=s);var r=e.required;void 0!==r&&(n.required=r),n.type=i,n.className="form-textfield",n.id=n.name=a})},function(n){c(n,"label",function(n){n.className="form-property-label",n.htmlFor=a,m(n,i+":")})})}function C(n,a,e){void 0===a&&(a="../"),void 0===e&&(e=[]);var t=a,o=n.keyword;void 0!==o&&(t+="search/",e.push({key:"keyword",value:o}));var c=n.tag;void 0!==c&&e.push({key:"tag",value:c});var s=n.offset;return void 0!==s&&e.push({key:"offset",value:s}),e.length&&(t+="?"+i(e)),t}function T(n,a,i){void 0===i&&(i=[]),
-a.concat(i).forEach(function(a){k(n,a.key,a.value)})}function F(n,a,i,e){v(n),c(n,"div",function(n){n.className="tab",c(n,"div",function(n){n.className="tab-bar",c(n,"a",function(n){n.className="clickable tab-normal localNavigation-link",n.href=a.href,m(n,"« "+a.title)}),c(n,"span",function(n){n.className="tab-active limited",c(n,"span",function(n){n.className="zeroSize",m(n," » ")}),m(n,i)})})}),v(n),c(n,"div",function(n){n.className="tab-content",e(n)})}function z(n,a){v(n),c(n,"div",function(n){n.className="tab-content",a(n)})}function E(n,a){R(n,a,"errors")}function H(n,a,i,e,t){t.className="withArrow",S(n,a,i,e,t)}function M(n,a,i,e,t,o){void 0===o&&(o={}),o.className="withArrow",W(n,a,i,e,t,o)}function S(n,a,i,e,t){void 0===t&&(t={});var o=t.id;void 0!==o&&c(n,"a",function(n){n.name=o}),c(n,"a",function(n){var s,r=t.className;s=void 0===r?"":" "+r,void 0!==t.localNavigation&&(s+=" localNavigation-link"),void 0!==o&&(n.id=o),n.className="clickable link image_link"+s,n.href=i,c(n,"span",function(n){n.className="image_link-icon",
-c(n,"span",function(n){n.className="icon "+e})}),c(n,"span",function(n){n.className="image_link-content",a(n)})})}function W(n,a,i,e,t,o){S(n,function(n){d(n,a,i)},e,t,o)}function A(n,a){c(n,"div",function(n){n.className="page-infoText",a(n)})}function O(n,a){R(n,a,"messages")}function q(n,a,i){v(n),c(n,"div",function(n){n.className="panel",c(n,"div",function(n){n.className="panel-title",c(n,"div",function(n){n.className="panel-title-text",m(n,a),c(n,"span",function(n){n.className="zeroSize",m(n,":")})})}),c(n,"div",function(n){n.className="panel-content",i(n)})})}function j(n,a){A(n,function(n){m(n,'You are accessing "'),c(n,"code",function(n){m(n,a)}),m(n,"\". The address in your browser's address bar should start with it.")})}function I(n,a,i){void 0!==a&&(void 0!==i&&a.forEach(function(n,e){a[e]=i[a]}),E(n,a))}function U(n,a){void 0!==a&&O(n,a)}function D(n,a){c(n,"div",function(n){n.className="page-text",a(n)})}function R(n,a,i){c(n,"div",function(n){n.className="textList "+i,c(n,"ul",function(n){n.className="textList-list",
-1===a.length?c(n,"li",function(n){n.className="textList-list-item",n.innerHTML=a[0]}):a.forEach(function(a){c(n,"li",function(n){n.className="textList-list-item",c(n,"span",function(n){n.className="textList-list-item-bullet "+i}),n.innerHTML+=a})})})})}function B(n,a,i,e,t){o(n,function(n){c(n,"span",function(n){n.className="thumbnail_link-title",m(n,a)})},i,e,t)}function Z(n,a,i,e,t,s){o(n,function(n){c(n,"span",function(n){n.className="thumbnail_link-title",m(n,a)})},e,t,s)}function V(n,a){c(n,"div",function(n){n.className="thumbnails",a.forEach(function(a,i){i>0&&(i%3===0&&c(n,"span",function(n){n.className="hr thumbnails-br n3"}),i%4===0&&c(n,"span",function(n){n.className="hr thumbnails-br n4"}),i%5===0&&c(n,"span",function(n){n.className="hr thumbnails-br n5"}),i%6===0&&c(n,"span",function(n){n.className="hr thumbnails-br n6"}),i%7===0&&c(n,"span",function(n){n.className="hr thumbnails-br n7"}));var e="";i%3===1&&(e+=" wide_of_three"),(i%6===1||i%6===4)&&(e+=" narrow_of_six"),c(n,"div",function(n){n.className="thumbnails-item"+e,
-a(n)})})})}function Y(n,a,i){v(n),c(n,"div",function(n){n.className="tab",c(n,"div",function(n){n.className="tab-bar",c(n,"span",function(n){n.className="tab-active",c(n,"span",function(n){n.className="zeroSize",m(n," » ")}),m(n,a)})})}),v(n),c(n,"div",function(n){n.className="tab-content",i(n)})}function G(n,a,i){c(n,"div",function(n){n.className="twoColumns",c(n,"div",function(n){n.className="twoColumns-column1 dynamic",a(n)}),c(n,"div",function(n){n.className="twoColumns-column2 dynamic",i(n)})})}function J(n,a){R(n,a,"warnings")}function K(n,a,i){c(n,"form",function(n){n.action=a,n.className="search_form",i(n)}),v(n)}function Q(n,a){c(n,"span",function(n){n.className="search_form-content empty",c(n,"input",function(n){n.className="form-textfield",n.type="text",n.name="keyword",n.required=!0,n.placeholder=a})}),c(n,"button",function(n){n.title="Search",n.className="search_form-button rightButton clickable",c(n,"span",function(n){n.className="rightButton-icon icon search"}),c(n,"span",function(n){n.className="displayNone",
-m(n,"Search")})})}!function(n){var i=e(n),o=t(n),d=l(localNavigation,n,i,o);window.ui={admin_page:a(d),compressed_css_link:i,compressed_js_script:o,Element:c,export_date_ago:s,Form_button:h,Form_captcha:g,Form_checkbox:N,Form_checkboxItem:b,Form_hidden:k,Form_label:_,Form_notes:y,Form_password:w,Form_select:x,Form_textarea:L,Form_textfield:P,guest_page:r(d),Hr:u,ItemList_listUrl:C,ItemList_pageHiddenInputs:T,page:d,Page_create:F,Page_emptyTabs:z,Page_errors:E,Page_imageArrowLink:H,Page_imageArrowLinkWithDescription:M,Page_imageLink:S,Page_imageLinkWithDescription:W,Page_infoText:A,Page_panel:q,Page_phishingWarning:j,Page_sessionErrors:I,Page_sessionMessages:U,Page_text:D,Page_thumbnailLink:B,Page_thumbnailLinkWithDescription:Z,Page_thumbnails:V,Page_title:Y,Page_twoColumns:G,Page_warnings:J,public_page:f(d),SearchForm_create:K,SearchForm_emptyContent:Q,Text:m,ZeroHeightBr:v}}(revisions)}();
+(function () {
+function DateAgo (time, timeNow, uppercase) {
+
+    function DateAgo (time, timeNow) {
+
+        var seconds = Math.floor((timeNow - time) / 1000)
+
+        var minutes = Math.floor(seconds / 60)
+        if (!minutes) return 'just now'
+        if (minutes <= 1) return 'a minute ago'
+        if (minutes == 30) return 'half an hour ago'
+
+        var hours = Math.floor(minutes / 60)
+        if (!hours) return minutes + ' minutes ago'
+        if (hours == 1) return 'an hour ago'
+
+        var days = Math.floor(hours / 24)
+        if (!days) return hours + ' hours ago'
+        if (days == 1) return 'yesterday'
+
+        var weeks = Math.floor(days / 7)
+        if (!weeks) return days + ' days ago'
+        if (weeks == 1) return 'a week ago'
+
+        var months = Math.floor(days / 30)
+        if (!months) return weeks + ' weeks ago'
+        if (months == 1) return 'a month ago'
+
+        var years = Math.floor(months / 12)
+        if (!years) return months + ' months ago'
+        if (years == 1) return 'a year ago'
+
+        return years + ' years ago'
+
+    }
+
+    var value = DateAgo(time, timeNow)
+    if (uppercase) value = value.substr(0, 1).toUpperCase() + value.substr(1)
+    return value
+
+}
+;
+function AdminPage (page) {
+    return function (response, adminBase, callback, options) {
+
+        if (options === undefined) options = {}
+
+        options.logoHref = adminBase
+        if (response.user !== undefined) {
+            options.logoHref += '../home/'
+            options.localNavigation = true
+        }
+
+        page(response, adminBase + '../', callback, options)
+
+    }
+}
+;
+function BuildQuery (params) {
+    return params.map(function (keyValue) {
+        return encodeURIComponent(keyValue.key) + '=' +
+            encodeURIComponent(keyValue.value)
+    }).join('=')
+}
+;
+function CompressedCssLink (revisions) {
+    return function (parentNode, name, base, className) {
+
+        var fullName = 'css/' + name + '/compressed.css'
+
+        Element(parentNode, 'link', function (link) {
+            link.rel = 'stylesheet'
+            link.type = 'text/css'
+            link.href = base + fullName + '?' + revisions[fullName]
+            if (className !== undefined) link.className = className
+        })
+
+    }
+}
+;
+function CompressedJsScript (revisions) {
+    return function (parentNode, name, base) {
+
+        var fullName = 'js/' + name + '/compressed.js'
+
+        Element(parentNode, 'script', function (script) {
+            script.type = 'text/javascript'
+            script.src = base + fullName + '?' + revisions[fullName]
+        })
+
+    }
+}
+;
+function create_thumbnail_link (parentNode, callback, href, iconName, options) {
+
+    if (options === undefined) options = {}
+
+    var id = options.id
+    if (id !== undefined) {
+        Element(parentNode, 'a', function (a) {
+            a.name = id
+        })
+    }
+    Element(parentNode, 'a', function (a) {
+
+        var additionalClass
+        var className = options.className
+        if (className === undefined) additionalClass = ''
+        else additionalClass = ' ' + className
+        if (options.localNavigation !== undefined) {
+            additionalClass += ' localNavigation-link'
+        }
+
+        if (id !== undefined) a.id = id
+        a.className = 'clickable link thumbnail_link' + additionalClass
+        a.href = href
+
+        Element(a, 'span', function (span) {
+            span.className = 'thumbnail_link-icon'
+            Element(span, 'span', function (span) {
+                span.className = 'icon ' + iconName
+            })
+        })
+        Element(a, 'span', function (span) {
+            span.className = 'thumbnail_link-content'
+            callback(span)
+        })
+
+    })
+
+}
+;
+function Element (parentNode, tagName, callback) {
+    var element = document.createElement(tagName)
+    parentNode.appendChild(element)
+    callback(element)
+}
+;
+function export_date_ago (parentNode, timeNow, time, uppercase) {
+    Element(parentNode, 'span', function (span) {
+        span.className = 'dateAgo'
+        span.dataset.time = time
+        if (uppercase === true) span.dataset.uppercase = '1'
+        Text(span, DateAgo(time * 1000, timeNow, uppercase))
+    })
+}
+;
+function GuestPage (page) {
+    return function (response, base, callback, options) {
+        page(response, base, callback, options)
+    }
+}
+;
+function Hr (parentNode) {
+    var div = document.createElement('div')
+    div.className = 'hr'
+    parentNode.appendChild(div)
+}
+;
+function Page (localNavigation, revisions,
+    compressed_css_link, compressed_js_script) {
+
+    var head = document.head,
+        body = document.body
+
+    return function (response, base, callback, options) {
+
+        if (options === undefined) options = {}
+
+        var user = response.user
+
+        window.base = base
+        window.time = response.time
+        window.timezone = response.timezone
+        localNavigation.onUnload(function () {
+            delete window.base
+            delete window.time
+            delete window.timezone
+        })
+
+        var headCallback = options.head
+        if (headCallback !== undefined) headCallback(head)
+
+        if (user) {
+            compressed_css_link(head, 'confirmDialog', base)
+        }
+
+        Element(body, 'div', function (div) {
+            div.id = 'tbar'
+            Element(div, 'div', function (div) {
+                div.id = 'tbar-limit'
+                Element(div, 'a', function (a) {
+
+                    var href = options.logoHref
+                    var className = 'topLink logoLink'
+                    if (href === undefined) {
+                        href = base
+                        className += ' localNavigation-link'
+                    }
+
+                    a.href = href
+                    a.className = className
+
+                    Element(a, 'img', function (img) {
+                        var url = 'theme/color/' + response.themeColor + '/images/zvini.svg'
+                        img.alt = 'Zvini'
+                        img.className = 'logoLink-img'
+                        img.src = base + url + '?' + revisions[url]
+                    })
+
+                })
+                Element(div, 'div', function (div) {
+                    div.className = 'page-clockWrapper'
+                    Element(div, 'div', function (div) {
+                        div.id = 'staticClockWrapper'
+                    })
+                    Element(div, 'div', function (div) {
+                        div.id = 'batteryWrapper'
+                    })
+                    Element(div, 'div', function (div) {
+                        div.id = 'dynamicClockWrapper'
+                    })
+                })
+                if (user) {
+                    Element(div, 'div', function (div) {
+                        div.className = 'pageTopRightLinks'
+                        Element(div, 'a', function (a) {
+                            a.id = 'signOutLink'
+                            a.className = 'topLink'
+                            a.href = base + 'sign-out/'
+                            Text(a, 'Sign Out')
+                        })
+                    })
+                }
+            })
+            callback(body)
+        })
+        compressed_js_script(body, 'batteryAndClock', base)
+        compressed_js_script(body, 'lineSizeRounding', base)
+        if (user) {
+
+            compressed_js_script(body, 'confirmDialog', base)
+            window.signOutTimeout = response.signOutTimeout
+            localNavigation.onUnload(function () {
+                delete window.signOutTimeout
+            })
+            compressed_js_script(body, 'signOutConfirm', base)
+
+            if (response.session_remembered !== true) {
+                compressed_js_script(body, 'sessionTimeout', base)
+            }
+
+        }
+
+        var scriptsCallback = options.scripts
+        if (scriptsCallback !== undefined) scriptsCallback(body)
+
+    }
+
+}
+;
+function PublicPage (page) {
+    return function (response, base, callback, options) {
+        if (response.user !== undefined) {
+            if (options === undefined) options = {}
+            options.logoHref = base + 'home/'
+        }
+        page(response, base, callback, options)
+    }
+}
+;
+function Text (element, text) {
+    element.appendChild(document.createTextNode(text))
+}
+;
+function title_and_description (parentNode,
+    titleCallback, descriptionCallback) {
+
+    Element(parentNode, 'span', function (span) {
+        span.className = 'title_and_description'
+        Element(span, 'span', function (span) {
+            span.className = 'title_and_description-title'
+            titleCallback(span)
+        })
+        ZeroHeightBr(span)
+        Element(span, 'span', function (span) {
+            span.className = 'title_and_description-description colorText grey'
+            descriptionCallback(span)
+        })
+    })
+
+}
+;
+function ZeroHeightBr (parentNode) {
+    Element(parentNode, 'br', function (br) {
+        br.className = 'zeroHeight'
+    })
+}
+;
+function Form_association (parentNode, valueCallback, propertyCallback) {
+    Element(parentNode, 'div', function (div) {
+        div.className = 'form-item'
+        Element(div, 'div', function (div) {
+            div.className = 'form-property'
+            propertyCallback(div)
+        })
+        Element(div, 'div', function (div) {
+            div.className = 'form-value'
+            valueCallback(div)
+        })
+    })
+}
+;
+function Form_button (parentNode, text, name) {
+    Element(parentNode, 'input', function (input) {
+        input.className = 'clickable form-button'
+        input.type = 'submit'
+        input.value = text
+        if (name !== undefined) input.name = name
+    })
+}
+;
+function Form_captcha (parentNode, response, base, autofocus) {
+
+    if (response.captchaRequired !== true) return
+
+    if (autofocus === undefined) autofocus = false
+    Element(parentNode, 'div', function (div) {
+        div.className = 'form-captcha'
+        Element(div, 'img', function (img) {
+            img.alt = 'CAPTCHA'
+            img.className = 'form-captcha-image'
+            img.src = base + 'captcha/'
+        })
+    })
+    Form_textfield(parentNode, 'captcha', 'Verification', {
+        required: true,
+        autofocus: autofocus,
+    })
+    Form_notes(parentNode, [
+        'Enter the characters shown on the image above.',
+        'This proves that you are a human and not a robot.',
+    ])
+    Hr(parentNode)
+
+}
+;
+function Form_checkbox (parentNode, name, text, checked) {
+    Element(parentNode, 'div', function (div) {
+        div.className = 'form-checkbox transformable'
+        Element(div, 'label', function (label) {
+            label.className = 'form-checkbox-label clickable'
+            Element(label, 'span', function (span) {
+                span.className = 'form-checkbox-inputWrapper'
+                Element(span, 'input', function (input) {
+                    input.className = 'form-checkbox-input'
+                    input.type = 'checkbox'
+                    input.id = input.name = name
+                    if (checked === true) input.checked = true
+                })
+            })
+            Text(label, text)
+        })
+    })
+}
+;
+function Form_checkboxItem (parentNode, name, text, checked) {
+    Element(parentNode, 'div', function (div) {
+        div.className = 'form-checkbox item transformable'
+        Element(div, 'label', function (label) {
+            label.className = 'form-checkbox-label clickable'
+            Element(label, 'span', function (span) {
+                span.className = 'form-checkbox-inputWrapper'
+                Element(span, 'input', function (input) {
+                    input.className = 'form-checkbox-input'
+                    input.type = 'checkbox'
+                    input.id = input.name = name
+                    if (checked === true) input.checked = true
+                })
+            })
+            Text(label, text)
+        })
+    })
+}
+;
+function Form_hidden (parentNode, name, value) {
+    Element(parentNode, 'input', function (input) {
+        input.type = 'hidden'
+        input.name = name
+        input.value = value
+    })
+}
+;
+function Form_label (parentNode, text, callback) {
+    Form_association(parentNode, function (div) {
+        Element(div, 'div', function (div) {
+            div.className = 'form-label'
+            callback(div)
+        })
+    }, function (div) {
+        Element(div, 'div', function (div) {
+            Text(div, text + ':')
+        })
+    })
+}
+;
+function Form_notes (parentNode, notes) {
+    Form_association(parentNode, function (div) {
+        Element(div, 'ul', function (ul) {
+            ul.className = 'form-notes'
+            notes.forEach(function (note) {
+                Element(ul, 'li', function (li) {
+                    li.className = 'form-notes-item'
+                    Element(li, 'span', function (span) {
+                        span.className = 'form-notes-item-bullet'
+                    })
+                    Text(li, note)
+                })
+            })
+        })
+    }, function () {})
+}
+;
+function Form_password (parentNode, name, text, options) {
+    options.type = 'password'
+    Form_textfield(parentNode, name, text, options)
+}
+;
+function Form_select (parentNode, name, text, options, value, autofocus) {
+    Form_association(parentNode, function (div) {
+        Element(div, 'select', function (select) {
+
+            select.className = 'form-select'
+            select.name = select.id = name
+
+            options.forEach(function (item) {
+                ui.Element(select, 'option', function (option) {
+                    option.value = item.key
+                    ui.Text(option, item.value)
+                    if (String(value) === item.key) option.selected = true
+                })
+            })
+
+            if (autofocus === true) {
+                select.autofocus = true
+                select.focus()
+            }
+
+        })
+    }, function (div) {
+        Element(div, 'label', function (label) {
+            label.className = 'form-property-label'
+            label.htmlFor = name
+            ui.Text(label, text + ':')
+        })
+    })
+}
+;
+function Form_textarea (parentNode, name, text, options) {
+    Form_association(parentNode, function (div) {
+        Element(div, 'textarea', function (textarea) {
+
+            var value = options.value
+            if (value !== undefined && value !== '') textarea.value = value
+
+            var maxlength = options.maxlength
+            if (maxlength !== undefined) textarea.maxLength = maxlength
+
+            var autofocus = options.autofocus
+            if (autofocus === true) {
+                textarea.autofocus = true
+                textarea.focus()
+            }
+
+            var readonly = options.readonly
+            if (readonly !== undefined) textarea.readOnly = readonly
+
+            var required = options.required
+            if (required !== undefined) textarea.required = required
+
+            textarea.className = 'form-textarea'
+            textarea.id = textarea.name = name
+
+        })
+    }, function (div) {
+        Element(div, 'label', function (label) {
+            label.className = 'form-property-label'
+            label.htmlFor = name
+            Text(label, text + ':')
+        })
+    })
+}
+;
+function Form_textfield (parentNode, name, text, options) {
+    Form_association(parentNode, function (div) {
+        Element(div, 'input', function (input) {
+
+            var type = options.type
+            if (type === undefined) type = 'text'
+
+            var value = options.value
+            if (value !== undefined && value !== '') input.value = value
+
+            var maxlength = options.maxlength
+            if (maxlength !== undefined) input.maxLength = maxlength
+
+            var autofocus = options.autofocus
+            if (autofocus === true) {
+                input.autofocus = true
+                input.focus()
+            }
+
+            var readonly = options.readonly
+            if (readonly !== undefined) input.readOnly = readonly
+
+            var required = options.required
+            if (required !== undefined) input.required = required
+
+            input.type = type
+            input.className = 'form-textfield'
+            input.id = input.name = name
+
+        })
+    }, function (div) {
+        Element(div, 'label', function (label) {
+            label.className = 'form-property-label'
+            label.htmlFor = name
+            Text(label, text + ':')
+        })
+    })
+}
+;
+function ItemList_listUrl (itemList, base, params) {
+
+    if (base === undefined) base = '../'
+    if (params === undefined) params = []
+
+    var href = base
+
+    var keyword = itemList.keyword
+    if (keyword !== undefined) {
+        href += 'search/'
+        params.push({
+            key: 'keyword',
+            value: keyword,
+        })
+    }
+
+    var tag = itemList.tag
+    if (tag !== undefined) {
+        params.push({
+            key: 'tag',
+            value: tag,
+        })
+    }
+
+    var offset = itemList.offset
+    if (offset !== undefined) {
+        params.push({
+            key: 'offset',
+            value: offset,
+        })
+    }
+
+    if (params.length) href += '?' + BuildQuery(params)
+
+    return href
+
+}
+;
+function ItemList_pageHiddenInputs (parentNode, itemList, params) {
+
+    if (params === undefined) params = []
+
+    itemList.concat(params).forEach(function (keyValue) {
+        Form_hidden(parentNode, keyValue.key, keyValue.value)
+    })
+
+}
+;
+function Page_create (parentNode, backlink, title, callback) {
+    ZeroHeightBr(parentNode)
+    Element(parentNode, 'div', function (div) {
+        div.className = 'tab'
+        Element(div, 'div', function (div) {
+            div.className = 'tab-bar'
+            Element(div, 'a', function (a) {
+                a.className = 'clickable tab-normal localNavigation-link'
+                a.href = backlink.href
+                Text(a, '\xab ' + backlink.title)
+            })
+            Element(div, 'span', function (span) {
+                span.className = 'tab-active limited'
+                Element(span, 'span', function (span) {
+                    span.className = 'zeroSize'
+                    Text(span, ' \xbb ')
+                })
+                Text(span, title)
+            })
+        })
+    })
+    ZeroHeightBr(parentNode)
+    Element(parentNode, 'div', function (div) {
+        div.className = 'tab-content'
+        callback(div)
+    })
+}
+;
+function Page_emptyTabs (parentNode, callback) {
+    ZeroHeightBr(parentNode)
+    Element(parentNode, 'div', function (div) {
+        div.className = 'tab-content'
+        callback(div)
+    })
+}
+;
+function Page_errors (parentNode, texts) {
+    Page_textList(parentNode, texts, 'errors')
+}
+;
+function Page_imageArrowLink (parentNode, callback, href, iconName, options) {
+
+    options.className = 'withArrow'
+    Page_imageLink(parentNode, callback, href, iconName, options)
+
+}
+
+;
+function Page_imageArrowLinkWithDescription (parentNode,
+    titleCallback, descriptionCallback, href, iconName, options) {
+
+    if (options === undefined) options = {}
+    options.className = 'withArrow'
+
+    Page_imageLinkWithDescription(parentNode, titleCallback,
+        descriptionCallback, href, iconName, options)
+
+}
+;
+function Page_imageLink (parentNode, callback, href, iconName, options) {
+
+    if (options === undefined) options = {}
+
+    var id = options.id
+    if (id !== undefined) {
+        Element(parentNode, 'a', function (a) {
+            a.name = id
+        })
+    }
+    Element(parentNode, 'a', function (a) {
+
+        var additionalClass
+        var className = options.className
+        if (className === undefined) additionalClass = ''
+        else additionalClass = ' ' + className
+        if (options.localNavigation !== undefined) {
+            additionalClass += ' localNavigation-link'
+        }
+
+        if (id !== undefined) a.id = id
+        a.className = 'clickable link image_link' + additionalClass
+        a.href = href
+
+        Element(a, 'span', function (span) {
+            span.className = 'image_link-icon'
+            Element(span, 'span', function (span) {
+                span.className = 'icon ' + iconName
+            })
+        })
+        Element(a, 'span', function (span) {
+            span.className = 'image_link-content'
+            callback(span)
+        })
+
+    })
+
+}
+;
+function Page_imageLinkWithDescription (parentNode,
+    titleCallback, descriptionCallback, href, iconName, options) {
+
+    Page_imageLink(parentNode, function (span) {
+        title_and_description(span, titleCallback, descriptionCallback)
+    }, href, iconName, options)
+
+}
+;
+function Page_infoText (parentNode, callback) {
+    Element(parentNode, 'div', function (div) {
+        div.className = 'page-infoText'
+        callback(div)
+    })
+}
+;
+function Page_messages (parentNode, texts) {
+    Page_textList(parentNode, texts, 'messages')
+}
+;
+function Page_panel (parentNode, title, callback) {
+    ZeroHeightBr(parentNode)
+    Element(parentNode, 'div', function (div) {
+        div.className = 'panel'
+        Element(div, 'div', function (div) {
+            div.className = 'panel-title'
+            Element(div, 'div', function (div) {
+                div.className = 'panel-title-text'
+                Text(div, title)
+                Element(div, 'span', function (span) {
+                    span.className = 'zeroSize'
+                    Text(span, ':')
+                })
+            })
+        })
+        Element(div, 'div', function (div) {
+            div.className = 'panel-content'
+            callback(div)
+        })
+    })
+}
+;
+function Page_phishingWarning (parentNode, absoluteBase) {
+    Page_infoText(parentNode, function (div) {
+        Text(div, 'You are accessing "')
+        Element(div, 'code', function (code) {
+            Text(code, absoluteBase)
+        })
+        Text(div, '". The address in your browser\'s' +
+            ' address bar should start with it.')
+    })
+}
+;
+function Page_sessionErrors (parentNode, errors, values) {
+    if (errors === undefined) return
+    if (values !== undefined) {
+        errors.forEach(function (error, index) {
+            errors[index] = values[errors]
+        })
+    }
+    Page_errors(parentNode, errors)
+}
+;
+function Page_sessionMessages (parentNode, messages) {
+    if (messages === undefined) return
+    Page_messages(parentNode, messages)
+}
+;
+function Page_text (parentNode, callback) {
+    Element(parentNode, 'div', function (div) {
+        div.className = 'page-text'
+        callback(div)
+    })
+}
+;
+function Page_textList (parentNode, texts, className) {
+    Element(parentNode, 'div', function (div) {
+        div.className = 'textList ' + className
+        Element(div, 'ul', function (ul) {
+            ul.className = 'textList-list'
+            if (texts.length === 1) {
+                Element(ul, 'li', function (li) {
+                    li.className = 'textList-list-item'
+                    li.innerHTML = texts[0]
+                })
+            } else {
+                texts.forEach(function (text) {
+                    Element(ul, 'li', function (li) {
+                        li.className = 'textList-list-item'
+                        Element(li, 'span', function (span) {
+                            span.className = 'textList-list-item-bullet ' + className
+                        })
+                        li.innerHTML += text
+                    })
+                })
+            }
+        })
+    })
+}
+;
+function Page_thumbnailLink (parentNode, title, href, iconName, options) {
+    create_thumbnail_link(parentNode, function (div) {
+        Element(div, 'span', function (span) {
+            span.className = 'thumbnail_link-title'
+            Text(span, title)
+        })
+    }, href, iconName, options)
+}
+;
+function Page_thumbnailLinkWithDescription (parentNode,
+    title, descriptionCallback, href, iconName, options) {
+
+    create_thumbnail_link(parentNode, function (div) {
+        Element(div, 'span', function (span) {
+            span.className = 'thumbnail_link-title'
+            Text(span, title)
+        })
+        ZeroHeightBr(div)
+        Element(div, 'span', function (span) {
+            span.className = 'thumbnail_link-description'
+            descriptionCallback(span)
+        })
+    }, href, iconName, options)
+
+}
+;
+function Page_thumbnails (parentNode, callbacks) {
+    Element(parentNode, 'div', function (div) {
+        div.className = 'thumbnails'
+        callbacks.forEach(function (callback, i) {
+
+            if (i > 0) {
+                if (i % 3 === 0) {
+                    Element(div, 'span', function (span) {
+                        span.className = 'hr thumbnails-br n3'
+                    })
+                }
+                if (i % 4 === 0) {
+                    Element(div, 'span', function (span) {
+                        span.className = 'hr thumbnails-br n4'
+                    })
+                }
+                if (i % 5 === 0) {
+                    Element(div, 'span', function (span) {
+                        span.className = 'hr thumbnails-br n5'
+                    })
+                }
+                if (i % 6 === 0) {
+                    Element(div, 'span', function (span) {
+                        span.className = 'hr thumbnails-br n6'
+                    })
+                }
+                if (i % 7 === 0) {
+                    Element(div, 'span', function (span) {
+                        span.className = 'hr thumbnails-br n7'
+                    })
+                }
+            }
+
+            var additionalClass = ''
+            if (i % 3 === 1) additionalClass += ' wide_of_three'
+            if (i % 6 === 1 || i % 6 === 4) additionalClass += ' narrow_of_six'
+
+            Element(div, 'div', function (div) {
+                div.className = 'thumbnails-item' + additionalClass
+                callback(div)
+            })
+
+        })
+    })
+}
+;
+function Page_title (parentNode, title, callback) {
+    ZeroHeightBr(parentNode)
+    Element(parentNode, 'div', function (div) {
+        div.className = 'tab'
+        Element(div, 'div', function (div) {
+            div.className = 'tab-bar'
+            Element(div, 'span', function (span) {
+                span.className = 'tab-active'
+                Element(span, 'span', function (span) {
+                    span.className = 'zeroSize'
+                    Text(span, ' \xbb ')
+                })
+                Text(span, title)
+            })
+        })
+    })
+    ZeroHeightBr(parentNode)
+    Element(parentNode, 'div', function (div) {
+        div.className = 'tab-content'
+        callback(div)
+    })
+}
+;
+function Page_twoColumns (parentNode, column1Callback, column2Callback) {
+    Element(parentNode, 'div', function (div) {
+        div.className = 'twoColumns'
+        Element(div, 'div', function (div) {
+            div.className = 'twoColumns-column1 dynamic'
+            column1Callback(div)
+        })
+        Element(div, 'div', function (div) {
+            div.className = 'twoColumns-column2 dynamic'
+            column2Callback(div)
+        })
+    })
+}
+;
+function Page_warnings (parentNode, texts) {
+    Page_textList(parentNode, texts, 'warnings')
+}
+;
+function SearchForm_create (parentNode, action, callback) {
+    Element(parentNode, 'form', function (form) {
+        form.action = action
+        form.className = 'search_form'
+        callback(form)
+    })
+    ZeroHeightBr(parentNode)
+}
+;
+function SearchForm_emptyContent (parentNode, placeholder) {
+    Element(parentNode, 'span', function (span) {
+        span.className = 'search_form-content empty'
+        Element(span, 'input', function (input) {
+            input.className = 'form-textfield'
+            input.type = 'text'
+            input.name = 'keyword'
+            input.required = true
+            input.placeholder = placeholder
+        })
+    })
+    Element(parentNode, 'button', function (button) {
+        button.title = 'Search'
+        button.className = 'search_form-button rightButton clickable'
+        Element(button, 'span', function (span) {
+            span.className = 'rightButton-icon icon search'
+        })
+        Element(button, 'span', function (span) {
+            span.className = 'displayNone'
+            Text(span, 'Search')
+        })
+    })
+}
+;
+(function (revisions) {
+
+    var compressed_css_link = CompressedCssLink(revisions),
+        compressed_js_script = CompressedJsScript(revisions),
+        page = Page(localNavigation, revisions,
+            compressed_css_link, compressed_js_script)
+
+    window.ui = {
+        admin_page: AdminPage(page),
+        compressed_css_link: compressed_css_link,
+        compressed_js_script: compressed_js_script,
+        Element: Element,
+        export_date_ago: export_date_ago,
+        Form_button: Form_button,
+        Form_captcha: Form_captcha,
+        Form_checkbox: Form_checkbox,
+        Form_checkboxItem: Form_checkboxItem,
+        Form_hidden: Form_hidden,
+        Form_label: Form_label,
+        Form_notes: Form_notes,
+        Form_password: Form_password,
+        Form_select: Form_select,
+        Form_textarea: Form_textarea,
+        Form_textfield: Form_textfield,
+        guest_page: GuestPage(page),
+        Hr: Hr,
+        ItemList_listUrl: ItemList_listUrl,
+        ItemList_pageHiddenInputs: ItemList_pageHiddenInputs,
+        page: page,
+        Page_create: Page_create,
+        Page_emptyTabs: Page_emptyTabs,
+        Page_errors: Page_errors,
+        Page_imageArrowLink: Page_imageArrowLink,
+        Page_imageArrowLinkWithDescription: Page_imageArrowLinkWithDescription,
+        Page_imageLink: Page_imageLink,
+        Page_imageLinkWithDescription: Page_imageLinkWithDescription,
+        Page_infoText: Page_infoText,
+        Page_panel: Page_panel,
+        Page_phishingWarning: Page_phishingWarning,
+        Page_sessionErrors: Page_sessionErrors,
+        Page_sessionMessages: Page_sessionMessages,
+        Page_text: Page_text,
+        Page_thumbnailLink: Page_thumbnailLink,
+        Page_thumbnailLinkWithDescription: Page_thumbnailLinkWithDescription,
+        Page_thumbnails: Page_thumbnails,
+        Page_title: Page_title,
+        Page_twoColumns: Page_twoColumns,
+        Page_warnings: Page_warnings,
+        public_page: PublicPage(page),
+        SearchForm_create: SearchForm_create,
+        SearchForm_emptyContent: SearchForm_emptyContent,
+        Text: Text,
+        ZeroHeightBr: ZeroHeightBr,
+    }
+})(revisions)
+;
+
+})()
