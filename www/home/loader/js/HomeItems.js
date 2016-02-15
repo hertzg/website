@@ -1,7 +1,5 @@
 function HomeItems (response) {
 
-    var items = []
-
     var renderers = {
         'admin': RenderAdmin,
         'bar-charts': RenderBarCharts,
@@ -33,6 +31,7 @@ function HomeItems (response) {
         'trash': RenderTrash,
     }
 
+    var items = []
     var home = response.home
     for (var key in home) {
         (function (key) {
