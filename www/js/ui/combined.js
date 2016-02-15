@@ -291,6 +291,14 @@ function title_and_description (parentNode,
 
 }
 ;
+function UserPage (page) {
+    return function (response, base, callback, options) {
+        if (options === undefined) options = {}
+        options.logoHref = base + 'home/'
+        page(response, base, callback, options)
+    }
+}
+;
 function ZeroHeightBr (parentNode) {
     Element(parentNode, 'br', function (br) {
         br.className = 'zeroHeight'
@@ -974,6 +982,7 @@ function SearchForm_emptyContent (parentNode, placeholder) {
         SearchForm_create: SearchForm_create,
         SearchForm_emptyContent: SearchForm_emptyContent,
         Text: Text,
+        user_page: UserPage(page),
         ZeroHeightBr: ZeroHeightBr,
     }
 })(revisions)

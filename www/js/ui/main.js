@@ -50,6 +50,7 @@
         SearchForm_create: SearchForm_create,
         SearchForm_emptyContent: SearchForm_emptyContent,
         Text: Text,
+        user_page: UserPage(page),
         ZeroHeightBr: ZeroHeightBr,
     }
 })(revisions)

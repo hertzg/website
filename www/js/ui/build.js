@@ -16,6 +16,7 @@ CompressJsFiles([
     'PublicPage',
     'Text',
     'title_and_description',
+    'UserPage',
     'ZeroHeightBr',
     'Form/association',
     'Form/button',

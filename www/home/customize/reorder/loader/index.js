@@ -3,7 +3,7 @@
 
         loadCallback('Reorder Items')
 
-        ui.page(response, '../../../', function (body) {
+        ui.user_page(response, '../../../', function (body) {
             ui.Page_create(body, {
                 title: 'Customize',
                 href: '../#reorder',

@@ -5,7 +5,7 @@
 
         var base = '../../../'
 
-        ui.page(response, base, function (body) {
+        ui.user_page(response, base, function (body) {
             ui.Page_create(body, {
                 title: 'Customize',
                 href: '../#show-hide',

@@ -10,12 +10,12 @@ function loader_revisions () {
         'help/feedback/' => 3,
         'help/install-link-handlers/' => 2,
         'home/' => 1,
-        'home/customize/' => 4,
-        'home/customize/reorder/' => 3,
-        'home/customize/show-hide/' => 5,
+        'home/customize/' => 5,
+        'home/customize/reorder/' => 4,
+        'home/customize/show-hide/' => 6,
         'sign-in/' => 2,
         'sign-up/' => 1,
-        'wallets/quick-new-transaction/' => 5,
-        'wallets/quick-transfer-amount/' => 2,
+        'wallets/quick-new-transaction/' => 6,
+        'wallets/quick-transfer-amount/' => 3,
     ];
 }

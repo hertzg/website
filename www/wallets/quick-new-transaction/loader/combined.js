@@ -18,7 +18,7 @@ function amount_text (n) {
         var values = response.values
         var focus = values.focus
 
-        ui.page(response, '../../', function (body) {
+        ui.user_page(response, '../../', function (body) {
             ui.Page_create(body, {
                 title: 'Wallets',
                 href: ui.ItemList_listUrl(response.itemList) + '#new-transaction',

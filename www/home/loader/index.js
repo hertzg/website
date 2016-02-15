@@ -480,7 +480,7 @@ function RenderWallets (div, response) {
 
         loadCallback('Home')
 
-        ui.page(response, '../', function (body) {
+        ui.user_page(response, '../', function (body) {
             ui.Page_emptyTabs(body, function (div) {
                 ui.Page_sessionMessages(div, response.messages)
                 ui.SearchForm_create(div, '../search/', function (div) {
