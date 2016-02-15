@@ -2,9 +2,12 @@
 process.chdir(__dirname)
 var CompressJsFiles = require('../../../js/CompressJsFiles.js')
 CompressJsFiles([
+    '../../../js/amount_text',
     'HomeItems',
     'RenderAdmin',
     'RenderBarCharts',
+    'RenderBookmarks',
+    'RenderContacts',
     'RenderNewBarChart',
     'RenderNewBookmark',
     'RenderNewCalculation',
@@ -16,9 +19,12 @@ CompressJsFiles([
     'RenderNewTask',
     'RenderNewWallet',
     'RenderNewTransaction',
+    'RenderNotes',
     'RenderPostNotification',
+    'RenderTasks',
     'RenderTransferAmount',
     'RenderTrash',
     'RenderUploadFiles',
+    'RenderWallets',
     'main',
 ], '../index.js')
