@@ -2,7 +2,7 @@
 
 namespace HomePage;
 
-function renderCalendar ($user, $mysqli, &$items, &$scripts) {
+function renderCalendar ($user, $mysqli, &$items, &$head, &$scripts) {
 
     $fnsDir = __DIR__.'/..';
 
@@ -13,6 +13,9 @@ function renderCalendar ($user, $mysqli, &$items, &$scripts) {
     }
 
     if (!$user->show_calendar) return;
+
+    include_once "$fnsDir/compressed_css_link.php";
+    $head .= compressed_css_link('calendarIcon', '../');
 
     include_once "$fnsDir/compressed_js_script.php";
     $scripts .= compressed_js_script('calendarIcon', '../');

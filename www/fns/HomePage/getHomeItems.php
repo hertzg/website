@@ -2,7 +2,7 @@
 
 namespace HomePage;
 
-function getHomeItems ($mysqli, $user, &$scripts) {
+function getHomeItems ($mysqli, $user, &$head, &$scripts) {
 
     $items = [];
 
@@ -19,7 +19,7 @@ function getHomeItems ($mysqli, $user, &$scripts) {
     renderCalculations($user, $items);
 
     include_once __DIR__.'/renderCalendar.php';
-    renderCalendar($user, $mysqli, $items, $scripts);
+    renderCalendar($user, $mysqli, $items, $head, $scripts);
 
     include_once __DIR__.'/renderContacts.php';
     renderContacts($user, $items);
