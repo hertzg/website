@@ -27,6 +27,16 @@ function bytestr (bytes, space) {
 
 }
 ;
+function create_calendar_icon_today (parentNode, response) {
+    ui.Element(parentNode, 'span', function (span) {
+        span.className = 'icon calendar'
+        ui.Element(span, 'span', function (span) {
+            span.className = 'calendarIcon-day'
+            ui.Text(span, new Date(response.time).getUTCDate())
+        })
+    })
+}
+;
 function number_format (number, decimals) {
     return number.toFixed(decimals).replace(/\d+/, function (digits) {
         var reverseDigits = digits.split('').reverse().join('')
@@ -192,13 +202,7 @@ function RenderCalendar (div, response) {
         a.className = 'clickable link thumbnail_link'
         ui.Element(a, 'span', function (span) {
             span.className = 'thumbnail_link-icon'
-            ui.Element(span, 'span', function (span) {
-                span.className = 'icon calendar'
-                ui.Element(span, 'span', function (span) {
-                    span.className = 'calendarIcon-day'
-                    ui.Text(span, new Date(response.time).getUTCDate())
-                })
-            })
+            create_calendar_icon_today(span, response)
         })
         ui.Element(a, 'span', function (span) {
             span.className = 'thumbnail_link-content'

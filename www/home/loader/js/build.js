@@ -4,6 +4,7 @@ var CompressJsFiles = require('../../../js/CompressJsFiles.js')
 CompressJsFiles([
     '../../../js/amount_text',
     '../../../js/bytestr',
+    '../../../js/create_calendar_icon_today',
     '../../../js/number_format',
     'HomeItems',
     'RenderAdmin',
