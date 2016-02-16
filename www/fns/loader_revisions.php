@@ -9,7 +9,7 @@ function loader_revisions () {
         'help/about-zvini/' => 2,
         'help/feedback/' => 3,
         'help/install-link-handlers/' => 2,
-        'home/' => 1,
+        'home/' => 2,
         'home/customize/' => 5,
         'home/customize/reorder/' => 4,
         'home/customize/show-hide/' => 6,

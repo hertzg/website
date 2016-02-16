@@ -10,12 +10,35 @@ function amount_text (n) {
     })
 }
 ;
-function bytestr () {
+function bytestr (bytes, space) {
+
+    if (space === undefined) space = ' '
+
+    var names = ['B', 'KB', 'MB', 'GB', 'TB']
+    for (var i = 0; i < names.length; i++) {
+        if (bytes >= 1024) bytes /= 1024
+        else {
+            var decimals
+            if (Math.round(bytes * 10) % 10) decimals = 1
+            else decimals = 0
+            return number_format(bytes, decimals) + space + names[i]
+        }
+    }
+
+}
+;
+function number_format (number, decimals) {
+    return number.toFixed(decimals).replace(/\d+/, function (digits) {
+        var reverseDigits = digits.split('').reverse().join('')
+        var result = reverseDigits.substr(0, 3)
+        for (var i = 3; i < reverseDigits.length; i += 3) {
+            result += ',' + reverseDigits.substr(i, 3)
+        }
+        return result.split('').reverse().join('')
+    })
 }
 ;
 function HomeItems (response) {
-
-    var items = []
 
     var renderers = {
         'admin': RenderAdmin,
@@ -48,6 +71,7 @@ function HomeItems (response) {
         'trash': RenderTrash,
     }
 
+    var items = []
     var home = response.home
     for (var key in home) {
         (function (key) {
