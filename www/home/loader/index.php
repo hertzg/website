@@ -24,6 +24,18 @@ include_once "$fnsDir/HomePage/checkScheduleCheckDay.php";
 include_once '../../lib/mysqli.php';
 HomePage\checkScheduleCheckDay($mysqli, $user);
 
+include_once "$fnsDir/user_time_today.php";
+$time_today = user_time_today($user);
+
+include_once "$fnsDir/HomePage/checkEventCheckDay.php";
+HomePage\checkEventCheckDay($mysqli, $user, $time_today);
+
+include_once "$fnsDir/HomePage/checkTaskDeadlineCheckDay.php";
+HomePage\checkTaskDeadlineCheckDay($mysqli, $user, $time_today);
+
+include_once "$fnsDir/HomePage/checkBirthdayCheckDay.php";
+HomePage\checkBirthdayCheckDay($mysqli, $user, $time_today);
+
 $response['user']['balance_total'] = (int)$user->balance_total;
 $response['user']['num_archived_received_bookmarks'] = (int)$user->num_archived_received_bookmarks;
 $response['user']['num_archived_received_calculations'] = (int)$user->num_archived_received_calculations;
@@ -35,10 +47,14 @@ $response['user']['num_archived_received_places'] = (int)$user->num_archived_rec
 $response['user']['num_archived_received_schedules'] = (int)$user->num_archived_received_schedules;
 $response['user']['num_archived_received_tasks'] = (int)$user->num_archived_received_tasks;
 $response['user']['num_bar_charts'] = (int)$user->num_bar_charts;
+$response['user']['num_birthdays_today'] = (int)$user->num_birthdays_today;
+$response['user']['num_birthdays_tomorrow'] = (int)$user->num_birthdays_tomorrow;
 $response['user']['num_bookmarks'] = (int)$user->num_bookmarks;
 $response['user']['num_calculations'] = (int)$user->num_calculations;
 $response['user']['num_contacts'] = (int)$user->num_contacts;
 $response['user']['num_deleted_items'] = (int)$user->num_deleted_items;
+$response['user']['num_events_today'] = (int)$user->num_events_today;
+$response['user']['num_events_tomorrow'] = (int)$user->num_events_tomorrow;
 $response['user']['num_new_notifications'] = (int)$user->num_new_notifications;
 $response['user']['num_notes'] = (int)$user->num_notes;
 $response['user']['num_notifications'] = (int)$user->num_notifications;
@@ -55,6 +71,8 @@ $response['user']['num_received_schedules'] = (int)$user->num_received_schedules
 $response['user']['num_received_tasks'] = (int)$user->num_received_tasks;
 $response['user']['num_schedules_today'] = (int)$user->num_schedules_today;
 $response['user']['num_schedules_tomorrow'] = (int)$user->num_schedules_tomorrow;
+$response['user']['num_task_deadlines_today'] = (int)$user->num_task_deadlines_today;
+$response['user']['num_task_deadlines_tomorrow'] = (int)$user->num_task_deadlines_tomorrow;
 $response['user']['num_tasks'] = (int)$user->num_tasks;
 $response['user']['storage_used'] = (int)$user->storage_used;
 
