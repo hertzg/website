@@ -1,0 +1,21 @@
+#!/usr/bin/env node
+
+process.chdir(__dirname)
+eval(require('fs').readFileSync('../../js/number_format.js', 'utf8'))
+
+console.assert(number_format(0, 0) === '0')
+console.assert(number_format(1, 0) === '1')
+console.assert(number_format(12, 0) === '12')
+console.assert(number_format(123, 0) === '123')
+console.assert(number_format(1234, 0) === '1,234')
+console.assert(number_format(12345, 0) === '12,345')
+console.assert(number_format(123456, 0) === '123,456')
+console.assert(number_format(1234567, 0) === '1,234,567')
+console.assert(number_format(0, 1) === '0.0')
+console.assert(number_format(1, 1) === '1.0')
+console.assert(number_format(12, 1) === '12.0')
+console.assert(number_format(123, 1) === '123.0')
+console.assert(number_format(1234, 1) === '1,234.0')
+console.assert(number_format(12345, 1) === '12,345.0')
+console.assert(number_format(123456, 1) === '123,456.0')
+console.assert(number_format(1234567, 1) === '1,234,567.0')
