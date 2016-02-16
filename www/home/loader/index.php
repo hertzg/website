@@ -20,6 +20,10 @@ if (array_key_exists($key, $_SESSION)) $response['messages'] = $_SESSION[$key];
 include_once "$fnsDir/Users/Home/get.php";
 $response['home'] = Users\Home\get($user);
 
+include_once "$fnsDir/HomePage/checkScheduleCheckDay.php";
+include_once '../../lib/mysqli.php';
+HomePage\checkScheduleCheckDay($mysqli, $user);
+
 $response['user']['balance_total'] = (int)$user->balance_total;
 $response['user']['num_archived_received_bookmarks'] = (int)$user->num_archived_received_bookmarks;
 $response['user']['num_archived_received_calculations'] = (int)$user->num_archived_received_calculations;
@@ -49,8 +53,15 @@ $response['user']['num_received_notes'] = (int)$user->num_received_notes;
 $response['user']['num_received_places'] = (int)$user->num_received_places;
 $response['user']['num_received_schedules'] = (int)$user->num_received_schedules;
 $response['user']['num_received_tasks'] = (int)$user->num_received_tasks;
+$response['user']['num_schedules_today'] = (int)$user->num_schedules_today;
+$response['user']['num_schedules_tomorrow'] = (int)$user->num_schedules_tomorrow;
 $response['user']['num_tasks'] = (int)$user->num_tasks;
 $response['user']['storage_used'] = (int)$user->storage_used;
+
+    $today = $user->num_schedules_today;
+    $tomorrow = $user->num_schedules_tomorrow;
+    $num_new_received = $user->num_received_schedules -
+        $user->num_archived_received_schedules;
 
 header('Content-Type: application/json');
 echo json_encode($response);

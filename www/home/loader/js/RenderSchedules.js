@@ -2,7 +2,8 @@ function RenderSchedules (div, response) {
 
     var user = response.user
 
-    var num_schedules = user.num_schedules
+    var today = user.num_schedules_today
+    var tomorrow = user.num_schedules_tomorrow
     var num_new_received = user.num_received_schedules -
         user.num_archived_received_schedules
 
@@ -10,19 +11,30 @@ function RenderSchedules (div, response) {
     var href = '../schedules/'
     var icon = 'schedules'
     var options = { id: 'schedules' }
-    if (num_schedules || num_new_received) {
-
-        var descriptions = []
-        if (num_schedules) descriptions.push(num_schedules + '\xa0total.')
-        if (num_new_received) {
-            descriptions.push(num_new_received + '\xa0new\xa0received.')
-        }
-        description = descriptions.join(' ')
-
+    if (today || tomorrow || num_new_received) {
         ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
-            ui.Text(span, description)
+            if (today) {
+                ui.Element(span, 'span', function (span) {
+                    span.className = 'colorText red'
+                    ui.Text(span, today + '\xa0today.')
+                })
+            }
+            if (num_new_received) {
+                var text = num_new_received + '\xa0new\xa0received.'
+                if (today || tomorrow) text = ' ' + text
+                if (tomorrow) {
+                    text = tomorrow + '\xa0tomorrow.' + text
+                    if (today) text = '\xa0' + text
+                }
+                ui.Text(span, text)
+            } else {
+                if (tomorrow) {
+                    var text = tomorrow + '\xa0tomorrow.'
+                    if (today) text = ' ' + text
+                    ui.Text(span, text)
+                }
+            }
         }, href, icon, options)
-
     } else {
         ui.Page_thumbnailLink(div, title, href, icon, options)
     }
