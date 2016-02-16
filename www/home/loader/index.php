@@ -58,10 +58,5 @@ $response['user']['num_schedules_tomorrow'] = (int)$user->num_schedules_tomorrow
 $response['user']['num_tasks'] = (int)$user->num_tasks;
 $response['user']['storage_used'] = (int)$user->storage_used;
 
-    $today = $user->num_schedules_today;
-    $tomorrow = $user->num_schedules_tomorrow;
-    $num_new_received = $user->num_received_schedules -
-        $user->num_archived_received_schedules;
-
 header('Content-Type: application/json');
 echo json_encode($response);
