@@ -2,17 +2,9 @@
 
 namespace HomePage;
 
-function renderFiles ($user, &$items) {
+function renderFiles ($user) {
 
     $fnsDir = __DIR__.'/..';
-
-    if ($user->show_upload_files) {
-        include_once "$fnsDir/Page/thumbnailLink.php";
-        $items['upload-files'] = \Page\thumbnailLink(
-            'Upload Files', '../files/upload-files/', 'upload');
-    }
-
-    if (!$user->show_files) return;
 
     $storage_used = $user->storage_used;
     $num_new_received = $user->num_received_files +
@@ -36,14 +28,12 @@ function renderFiles ($user, &$items) {
         $description = join(' ', $descriptions);
 
         include_once "$fnsDir/Page/thumbnailLinkWithDescription.php";
-        $link = \Page\thumbnailLinkWithDescription($title,
+        return \Page\thumbnailLinkWithDescription($title,
             $description, $href, $icon, $options);
 
-    } else {
-        include_once "$fnsDir/Page/thumbnailLink.php";
-        $link = \Page\thumbnailLink($title, $href, $icon, $options);
     }
 
-    $items['files'] = $link;
+    include_once "$fnsDir/Page/thumbnailLink.php";
+    return \Page\thumbnailLink($title, $href, $icon, $options);
 
 }

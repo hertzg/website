@@ -24,7 +24,7 @@ function create ($mysqli, $user, &$head, &$scripts) {
         $pageWarnings = '';
     }
 
-    include_once __DIR__.'/getHomeItems.php';
+    include_once __DIR__.'/homeItems.php';
     include_once __DIR__.'/notificationWarnings.php';
     include_once __DIR__.'/optionsPanel.php';
     include_once "$fnsDir/Page/emptyTabs.php";
@@ -37,7 +37,7 @@ function create ($mysqli, $user, &$head, &$scripts) {
             .$pageWarnings
             .\SearchForm\create('../search/', $formContent)
             .'<div class="hr"></div>'
-            .getHomeItems($mysqli, $user, $head, $scripts)
+            .homeItems($mysqli, $user, $head, $scripts)
         )
         .optionsPanel();
 

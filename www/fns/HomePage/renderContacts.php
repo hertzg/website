@@ -2,17 +2,9 @@
 
 namespace HomePage;
 
-function renderContacts ($user, &$items) {
+function renderContacts ($user) {
 
     $fnsDir = __DIR__.'/..';
-
-    if ($user->show_new_contact) {
-        include_once "$fnsDir/Page/thumbnailLink.php";
-        $items['new-contact'] = \Page\thumbnailLink(
-            'New Contact', '../contacts/new/', 'create-contact');
-    }
-
-    if (!$user->show_contacts) return;
 
     $num_contacts = $user->num_contacts;
     $num_new_received = $user->num_received_contacts -
@@ -32,14 +24,12 @@ function renderContacts ($user, &$items) {
         $description = join(' ', $descriptions);
 
         include_once "$fnsDir/Page/thumbnailLinkWithDescription.php";
-        $link = \Page\thumbnailLinkWithDescription(
+        return \Page\thumbnailLinkWithDescription(
             $title, $description, $href, $icon, $options);
 
-    } else {
-        include_once "$fnsDir/Page/thumbnailLink.php";
-        $link = \Page\thumbnailLink($title, $href, $icon, $options);
     }
 
-    $items['contacts'] = $link;
+    include_once "$fnsDir/Page/thumbnailLink.php";
+    return \Page\thumbnailLink($title, $href, $icon, $options);
 
 }

@@ -2,23 +2,16 @@
 
 namespace HomePage;
 
-function renderNotifications ($user, &$items) {
+function renderNotifications ($user) {
 
     $fnsDir = __DIR__.'/..';
 
-    if ($user->show_post_notification) {
-        include_once "$fnsDir/Page/thumbnailLink.php";
-        $items['post-notification'] = \Page\thumbnailLink(
-            'Post a Notification', '../notifications/post/',
-            'create-notification');
-    }
-
-    if (!$user->show_notifications) return;
-
     $num_notifications = $user->num_notifications;
+
     $title = 'Notifications';
     $href = '../notifications/';
     $options = ['id' => 'notifications'];
+
     if ($num_notifications) {
         $num_new_notifications = $user->num_new_notifications;
         if ($num_new_notifications) {
@@ -32,21 +25,20 @@ function renderNotifications ($user, &$items) {
             }
 
             include_once "$fnsDir/Page/thumbnailLinkWithDescription.php";
-            $link = \Page\thumbnailLinkWithDescription($title,
+            return \Page\thumbnailLinkWithDescription($title,
                 $description, $href, 'notification', $options);
 
-        } else {
-            $description = "$num_notifications total.";
-            include_once "$fnsDir/Page/thumbnailLinkWithDescription.php";
-            $link = \Page\thumbnailLinkWithDescription($title,
-                $description, $href, 'old-notification', $options);
         }
-    } else {
-        include_once "$fnsDir/Page/thumbnailLink.php";
-        $link = \Page\thumbnailLink($title,
+
+        include_once "$fnsDir/Page/thumbnailLinkWithDescription.php";
+        return \Page\thumbnailLinkWithDescription(
+            $title, "$num_notifications total.",
             $href, 'old-notification', $options);
+
     }
 
-    $items['notifications'] = $link;
+    include_once "$fnsDir/Page/thumbnailLink.php";
+    return \Page\thumbnailLink($title,
+        $href, 'old-notification', $options);
 
 }

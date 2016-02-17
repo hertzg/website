@@ -2,12 +2,8 @@
 
 namespace HomePage;
 
-function renderAdmin ($user, &$items) {
-
-    if (!$user->admin || !$user->show_admin) return;
-
+function renderAdmin () {
     include_once __DIR__.'/../Page/thumbnailLink.php';
-    $items['admin'] = \Page\thumbnailLink('Administration',
+    return \Page\thumbnailLink('Administration',
         '../admin/', 'administration', ['id' => 'admin']);
-
 }

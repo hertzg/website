@@ -2,17 +2,9 @@
 
 namespace HomePage;
 
-function renderCalendar ($user, $mysqli, &$items, &$head, &$scripts) {
+function renderCalendar ($user, &$head, &$scripts, $mysqli) {
 
     $fnsDir = __DIR__.'/..';
-
-    if ($user->show_new_event) {
-        include_once "$fnsDir/Page/thumbnailLink.php";
-        $items['new-event'] = \Page\thumbnailLink(
-            'New Event', '../calendar/new-event/', 'create-event');
-    }
-
-    if (!$user->show_calendar) return;
 
     include_once "$fnsDir/compressed_css_link.php";
     $head .= compressed_css_link('calendarIcon', '../');
@@ -25,18 +17,18 @@ function renderCalendar ($user, $mysqli, &$items, &$head, &$scripts) {
 
     include_once __DIR__.'/checkEventCheckDay.php';
     checkEventCheckDay($mysqli, $user, $time_today);
-    $today = $user->num_events_today;
-    $tomorrow = $user->num_events_tomorrow;
 
     include_once __DIR__.'/checkTaskDeadlineCheckDay.php';
     checkTaskDeadlineCheckDay($mysqli, $user, $time_today);
-    $today += $user->num_task_deadlines_today;
-    $tomorrow += $user->num_task_deadlines_tomorrow;
 
     include_once __DIR__.'/checkBirthdayCheckDay.php';
     checkBirthdayCheckDay($mysqli, $user, $time_today);
-    $today += $user->num_birthdays_today;
-    $tomorrow += $user->num_birthdays_tomorrow;
+
+    $today = $user->num_events_today +
+        $user->num_task_deadlines_today + $user->num_birthdays_today;
+
+    $tomorrow = $user->num_events_tomorrow +
+        $user->num_task_deadlines_tomorrow + $user->num_birthdays_tomorrow;
 
     $n_events = function ($n) {
         if ($n == 1) return '1&nbsp;event';
@@ -63,8 +55,7 @@ function renderCalendar ($user, $mysqli, &$items, &$head, &$scripts) {
 
     // TODO do not create description tags if its content is empty
     include_once "$fnsDir/create_calendar_icon_today.php";
-    $items['calendar'] =
-        '<a name="calendar"></a>'
+    return '<a name="calendar"></a>'
         .'<a href="../calendar/" id="calendar"'
         .' class="clickable link thumbnail_link">'
             .'<span class="thumbnail_link-icon">'
