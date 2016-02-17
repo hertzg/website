@@ -15,6 +15,7 @@ function renderFiles ($user) {
     $href = '../files/';
     $icon = 'files';
     $options = ['id' => 'files'];
+
     if ($num_new_received || $storage_used) {
 
         $descriptions = [];

@@ -6,10 +6,11 @@ function RenderBookmarks (div, response) {
     var num_new_received = user.num_received_bookmarks -
         user.num_archived_received_bookmarks
 
-    var title = 'Bookmarks'
-    var href = '../bookmarks/'
-    var icon = 'bookmarks'
-    var options = { id: 'bookmarks' }
+    var title = 'Bookmarks',
+        href = '../bookmarks/',
+        icon = 'bookmarks',
+        options = { id: 'bookmarks' }
+
     if (num_bookmarks || num_new_received) {
 
         var descriptions = []
@@ -22,9 +23,10 @@ function RenderBookmarks (div, response) {
         ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
             ui.Text(span, description)
         }, href, icon, options)
+        return
 
-    } else {
-        ui.Page_thumbnailLink(div, title, href, icon, options)
     }
+
+    ui.Page_thumbnailLink(div, title, href, icon, options)
 
 }

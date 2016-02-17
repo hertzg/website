@@ -102,17 +102,19 @@ function RenderBarCharts (div, response) {
 
     var num_bar_charts = response.user.num_bar_charts
 
-    var title = 'Bar Charts'
-    var href = '../bar-charts/'
-    var icon = 'bar-charts'
-    var options = { id: 'bar-charts' }
+    var title = 'Bar Charts',
+        href = '../bar-charts/',
+        icon = 'bar-charts',
+        options = { id: 'bar-charts' }
+
     if (num_bar_charts) {
         ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
             ui.Text(span, num_bar_charts + ' total.')
         }, href, icon, options)
-    } else {
-        ui.Page_thumbnailLink(div, title, href, icon, options)
+        return
     }
+
+    ui.Page_thumbnailLink(div, title, href, icon, options)
 
 }
 ;
@@ -124,10 +126,11 @@ function RenderBookmarks (div, response) {
     var num_new_received = user.num_received_bookmarks -
         user.num_archived_received_bookmarks
 
-    var title = 'Bookmarks'
-    var href = '../bookmarks/'
-    var icon = 'bookmarks'
-    var options = { id: 'bookmarks' }
+    var title = 'Bookmarks',
+        href = '../bookmarks/',
+        icon = 'bookmarks',
+        options = { id: 'bookmarks' }
+
     if (num_bookmarks || num_new_received) {
 
         var descriptions = []
@@ -140,10 +143,11 @@ function RenderBookmarks (div, response) {
         ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
             ui.Text(span, description)
         }, href, icon, options)
+        return
 
-    } else {
-        ui.Page_thumbnailLink(div, title, href, icon, options)
     }
+
+    ui.Page_thumbnailLink(div, title, href, icon, options)
 
 }
 ;
@@ -155,10 +159,11 @@ function RenderCalculations (div, response) {
     var num_new_received = user.num_received_calculations -
         user.num_archived_received_calculations
 
-    var title = 'Calculations'
-    var href = '../calculations/'
-    var icon = 'calculations'
-    var options = { id: 'calculations' }
+    var title = 'Calculations',
+        href = '../calculations/',
+        icon = 'calculations',
+        options = { id: 'calculations' }
+
     if (num_calculations || num_new_received) {
 
         var descriptions = []
@@ -171,10 +176,11 @@ function RenderCalculations (div, response) {
         ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
             ui.Text(span, description)
         }, href, icon, options)
+        return
 
-    } else {
-        ui.Page_thumbnailLink(div, title, href, icon, options)
     }
+
+    ui.Page_thumbnailLink(div, title, href, icon, options)
 
 }
 ;
@@ -246,10 +252,11 @@ function RenderContacts (div, response) {
     var num_new_received = user.num_received_contacts -
         user.num_archived_received_contacts
 
-    var title = 'Contacts'
-    var href = '../contacts/'
-    var icon = 'contacts'
-    var options = { id: 'contacts' }
+    var title = 'Contacts',
+        href = '../contacts/',
+        icon = 'contacts',
+        options = { id: 'contacts' }
+
     if (num_contacts || num_new_received) {
 
         var descriptions = []
@@ -262,10 +269,11 @@ function RenderContacts (div, response) {
         ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
             ui.Text(span, description)
         }, href, icon, options)
+        return
 
-    } else {
-        ui.Page_thumbnailLink(div, title, href, icon, options)
     }
+
+    ui.Page_thumbnailLink(div, title, href, icon, options)
 
 }
 ;
@@ -278,10 +286,11 @@ function RenderFiles (div, response) {
         user.num_received_folders - user.num_archived_received_files -
         user.num_archived_received_folders
 
-    var title = 'Files'
-    var href = '../files/'
-    var icon = 'files'
-    var options = { id: 'files' }
+    var title = 'Files',
+        href = '../files/',
+        icon = 'files',
+        options = { id: 'files' }
+
     if (num_new_received || storage_used) {
 
         var descriptions = []
@@ -296,10 +305,11 @@ function RenderFiles (div, response) {
         ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
             ui.Text(span, description)
         }, href, icon, options)
+        return
 
-    } else {
-        ui.Page_thumbnailLink(div, title, href, icon, options)
     }
+
+    ui.Page_thumbnailLink(div, title, href, icon, options)
 
 }
 ;
@@ -363,10 +373,11 @@ function RenderNotes (div, response) {
     var num_new_received = user.num_received_notes -
         user.num_archived_received_notes
 
-    var title = 'Notes'
-    var href = '../notes/'
-    var icon = 'notes'
-    var options = { id: 'notes' }
+    var title = 'Notes',
+        href = '../notes/',
+        icon = 'notes',
+        options = { id: 'notes' }
+
     if (num_notes || num_new_received) {
 
         var descriptions = []
@@ -379,10 +390,11 @@ function RenderNotes (div, response) {
         ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
             ui.Text(span, description)
         }, href, icon, options)
+        return
 
-    } else {
-        ui.Page_thumbnailLink(div, title, href, icon, options)
     }
+
+    ui.Page_thumbnailLink(div, title, href, icon, options)
 
 }
 ;
@@ -392,35 +404,34 @@ function RenderNotifications (div, response) {
 
     var num_notifications = user.num_notifications
 
-    var title = 'Notifications'
-    var href = '../notifications/'
-    var options = { id: 'notifications' }
+    var title = 'Notifications',
+        href = '../notifications/',
+        options = { id: 'notifications' }
+
     if (num_notifications) {
-        var description
+
         var num_new_notifications = user.num_new_notifications
         if (num_new_notifications) {
-
-            description =
-                '<span class="colorText red">' +
-                    num_new_notifications + '\xa0new.' +
-                '</span>'
-            if (num_new_notifications != num_notifications) {
-                description += ' ' + num_notifications + '\xa0total.'
-            }
-
             ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
-                ui.Text(span, description)
+                ui.Element(span, 'span', function (span) {
+                    span.className = 'colorText red'
+                    ui.Text(span, num_new_notifications + '\xa0new.')
+                })
+                if (num_new_notifications !== num_notifications) {
+                    ui.Text(span, ' ' + num_notifications + '\xa0total.')
+                }
             }, href, 'notification', options)
-
-        } else {
-            description = num_notifications + ' total.'
-            ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
-                ui.Text(span, description)
-            }, href, 'old-notification', options)
+            return
         }
-    } else {
-        ui.Page_thumbnailLink(div, title, href, 'old-notification', options)
+
+        ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
+            ui.Text(span, num_notifications + ' total.')
+        }, href, 'old-notification', options)
+        return
+
     }
+
+    ui.Page_thumbnailLink(div, title, href, 'old-notification', options)
 
 }
 ;
@@ -432,10 +443,11 @@ function RenderPlaces (div, response) {
     var num_new_received = user.num_received_places -
         user.num_archived_received_places
 
-    var title = 'Places'
-    var href = '../places/'
-    var icon = 'places'
-    var options = { id: 'places' }
+    var title = 'Places',
+        href = '../places/',
+        icon = 'places',
+        options = { id: 'places' }
+
     if (num_places || num_new_received) {
 
         var descriptions = []
@@ -448,16 +460,17 @@ function RenderPlaces (div, response) {
         ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
             ui.Text(span, description)
         }, href, icon, options)
+        return
 
-    } else {
-        ui.Page_thumbnailLink(div, title, href, icon, options)
     }
+
+    ui.Page_thumbnailLink(div, title, href, icon, options)
 
 }
 ;
 function RenderPostNotification (div) {
     ui.Page_thumbnailLink(div, 'Post a Notification',
-        '../notifications/quick-post-notification/', 'create-notification')
+        '../notifications/post/', 'create-notification')
 }
 ;
 function RenderSchedules (div, response) {
@@ -469,10 +482,11 @@ function RenderSchedules (div, response) {
     var num_new_received = user.num_received_schedules -
         user.num_archived_received_schedules
 
-    var title = 'Schedules'
-    var href = '../schedules/'
-    var icon = 'schedules'
-    var options = { id: 'schedules' }
+    var title = 'Schedules',
+        href = '../schedules/',
+        icon = 'schedules',
+        options = { id: 'schedules' }
+
     if (today || tomorrow || num_new_received) {
         ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
             if (today) {
@@ -497,9 +511,10 @@ function RenderSchedules (div, response) {
                 }
             }
         }, href, icon, options)
-    } else {
-        ui.Page_thumbnailLink(div, title, href, icon, options)
+        return
     }
+
+    ui.Page_thumbnailLink(div, title, href, icon, options)
 
 }
 ;
@@ -511,10 +526,11 @@ function RenderTasks (div, response) {
     var num_new_received = user.num_received_tasks -
         user.num_archived_received_tasks
 
-    var title = 'Tasks'
-    var href = '../tasks/'
-    var icon = 'tasks'
-    var options = { id: 'tasks' }
+    var title = 'Tasks',
+        href = '../tasks/',
+        icon = 'tasks',
+        options = { id: 'tasks' }
+
     if (num_tasks || num_new_received) {
 
         var descriptions = []
@@ -527,10 +543,11 @@ function RenderTasks (div, response) {
         ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
             ui.Text(span, description)
         }, href, icon, options)
+        return
 
-    } else {
-        ui.Page_thumbnailLink(div, title, href, icon, options)
     }
+
+    ui.Page_thumbnailLink(div, title, href, icon, options)
 
 }
 ;
@@ -563,17 +580,19 @@ function RenderWallets (div, response) {
 
     var balance_total = response.user.balance_total
 
-    var title = 'Wallets'
-    var href = '../wallets/'
-    var icon = 'wallets'
-    var options = { id: 'wallets' }
+    var title = 'Wallets',
+        href = '../wallets/',
+        icon = 'wallets',
+        options = { id: 'wallets' }
+
     if (balance_total) {
         ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
             ui.Text(span, amount_text(balance_total) + ' balance.')
         }, href, icon, options)
-    } else {
-        ui.Page_thumbnailLink(div, title, href, icon, options)
+        return
     }
+
+    ui.Page_thumbnailLink(div, title, href, icon, options)
 
 }
 ;

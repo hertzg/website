@@ -6,10 +6,11 @@ function RenderCalculations (div, response) {
     var num_new_received = user.num_received_calculations -
         user.num_archived_received_calculations
 
-    var title = 'Calculations'
-    var href = '../calculations/'
-    var icon = 'calculations'
-    var options = { id: 'calculations' }
+    var title = 'Calculations',
+        href = '../calculations/',
+        icon = 'calculations',
+        options = { id: 'calculations' }
+
     if (num_calculations || num_new_received) {
 
         var descriptions = []
@@ -22,9 +23,10 @@ function RenderCalculations (div, response) {
         ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
             ui.Text(span, description)
         }, href, icon, options)
+        return
 
-    } else {
-        ui.Page_thumbnailLink(div, title, href, icon, options)
     }
+
+    ui.Page_thumbnailLink(div, title, href, icon, options)
 
 }

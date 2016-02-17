@@ -6,10 +6,11 @@ function RenderPlaces (div, response) {
     var num_new_received = user.num_received_places -
         user.num_archived_received_places
 
-    var title = 'Places'
-    var href = '../places/'
-    var icon = 'places'
-    var options = { id: 'places' }
+    var title = 'Places',
+        href = '../places/',
+        icon = 'places',
+        options = { id: 'places' }
+
     if (num_places || num_new_received) {
 
         var descriptions = []
@@ -22,9 +23,10 @@ function RenderPlaces (div, response) {
         ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
             ui.Text(span, description)
         }, href, icon, options)
+        return
 
-    } else {
-        ui.Page_thumbnailLink(div, title, href, icon, options)
     }
+
+    ui.Page_thumbnailLink(div, title, href, icon, options)
 
 }

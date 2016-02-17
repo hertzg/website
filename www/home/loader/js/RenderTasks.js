@@ -6,10 +6,11 @@ function RenderTasks (div, response) {
     var num_new_received = user.num_received_tasks -
         user.num_archived_received_tasks
 
-    var title = 'Tasks'
-    var href = '../tasks/'
-    var icon = 'tasks'
-    var options = { id: 'tasks' }
+    var title = 'Tasks',
+        href = '../tasks/',
+        icon = 'tasks',
+        options = { id: 'tasks' }
+
     if (num_tasks || num_new_received) {
 
         var descriptions = []
@@ -22,9 +23,10 @@ function RenderTasks (div, response) {
         ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
             ui.Text(span, description)
         }, href, icon, options)
+        return
 
-    } else {
-        ui.Page_thumbnailLink(div, title, href, icon, options)
     }
+
+    ui.Page_thumbnailLink(div, title, href, icon, options)
 
 }

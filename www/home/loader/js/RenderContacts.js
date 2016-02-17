@@ -6,10 +6,11 @@ function RenderContacts (div, response) {
     var num_new_received = user.num_received_contacts -
         user.num_archived_received_contacts
 
-    var title = 'Contacts'
-    var href = '../contacts/'
-    var icon = 'contacts'
-    var options = { id: 'contacts' }
+    var title = 'Contacts',
+        href = '../contacts/',
+        icon = 'contacts',
+        options = { id: 'contacts' }
+
     if (num_contacts || num_new_received) {
 
         var descriptions = []
@@ -22,9 +23,10 @@ function RenderContacts (div, response) {
         ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
             ui.Text(span, description)
         }, href, icon, options)
+        return
 
-    } else {
-        ui.Page_thumbnailLink(div, title, href, icon, options)
     }
+
+    ui.Page_thumbnailLink(div, title, href, icon, options)
 
 }

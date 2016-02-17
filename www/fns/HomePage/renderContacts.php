@@ -14,6 +14,7 @@ function renderContacts ($user) {
     $href = '../contacts/';
     $icon = 'contacts';
     $options = ['id' => 'contacts'];
+
     if ($num_contacts || $num_new_received) {
 
         $descriptions = [];

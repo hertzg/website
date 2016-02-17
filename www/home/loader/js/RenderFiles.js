@@ -7,10 +7,11 @@ function RenderFiles (div, response) {
         user.num_received_folders - user.num_archived_received_files -
         user.num_archived_received_folders
 
-    var title = 'Files'
-    var href = '../files/'
-    var icon = 'files'
-    var options = { id: 'files' }
+    var title = 'Files',
+        href = '../files/',
+        icon = 'files',
+        options = { id: 'files' }
+
     if (num_new_received || storage_used) {
 
         var descriptions = []
@@ -25,9 +26,10 @@ function RenderFiles (div, response) {
         ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
             ui.Text(span, description)
         }, href, icon, options)
+        return
 
-    } else {
-        ui.Page_thumbnailLink(div, title, href, icon, options)
     }
+
+    ui.Page_thumbnailLink(div, title, href, icon, options)
 
 }

@@ -7,10 +7,11 @@ function RenderSchedules (div, response) {
     var num_new_received = user.num_received_schedules -
         user.num_archived_received_schedules
 
-    var title = 'Schedules'
-    var href = '../schedules/'
-    var icon = 'schedules'
-    var options = { id: 'schedules' }
+    var title = 'Schedules',
+        href = '../schedules/',
+        icon = 'schedules',
+        options = { id: 'schedules' }
+
     if (today || tomorrow || num_new_received) {
         ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
             if (today) {
@@ -35,8 +36,9 @@ function RenderSchedules (div, response) {
                 }
             }
         }, href, icon, options)
-    } else {
-        ui.Page_thumbnailLink(div, title, href, icon, options)
+        return
     }
+
+    ui.Page_thumbnailLink(div, title, href, icon, options)
 
 }

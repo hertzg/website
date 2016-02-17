@@ -4,34 +4,33 @@ function RenderNotifications (div, response) {
 
     var num_notifications = user.num_notifications
 
-    var title = 'Notifications'
-    var href = '../notifications/'
-    var options = { id: 'notifications' }
+    var title = 'Notifications',
+        href = '../notifications/',
+        options = { id: 'notifications' }
+
     if (num_notifications) {
-        var description
+
         var num_new_notifications = user.num_new_notifications
         if (num_new_notifications) {
-
-            description =
-                '<span class="colorText red">' +
-                    num_new_notifications + '\xa0new.' +
-                '</span>'
-            if (num_new_notifications != num_notifications) {
-                description += ' ' + num_notifications + '\xa0total.'
-            }
-
             ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
-                ui.Text(span, description)
+                ui.Element(span, 'span', function (span) {
+                    span.className = 'colorText red'
+                    ui.Text(span, num_new_notifications + '\xa0new.')
+                })
+                if (num_new_notifications !== num_notifications) {
+                    ui.Text(span, ' ' + num_notifications + '\xa0total.')
+                }
             }, href, 'notification', options)
-
-        } else {
-            description = num_notifications + ' total.'
-            ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
-                ui.Text(span, description)
-            }, href, 'old-notification', options)
+            return
         }
-    } else {
-        ui.Page_thumbnailLink(div, title, href, 'old-notification', options)
+
+        ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
+            ui.Text(span, num_notifications + ' total.')
+        }, href, 'old-notification', options)
+        return
+
     }
+
+    ui.Page_thumbnailLink(div, title, href, 'old-notification', options)
 
 }

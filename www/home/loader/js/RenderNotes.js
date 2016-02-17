@@ -6,10 +6,11 @@ function RenderNotes (div, response) {
     var num_new_received = user.num_received_notes -
         user.num_archived_received_notes
 
-    var title = 'Notes'
-    var href = '../notes/'
-    var icon = 'notes'
-    var options = { id: 'notes' }
+    var title = 'Notes',
+        href = '../notes/',
+        icon = 'notes',
+        options = { id: 'notes' }
+
     if (num_notes || num_new_received) {
 
         var descriptions = []
@@ -22,9 +23,10 @@ function RenderNotes (div, response) {
         ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
             ui.Text(span, description)
         }, href, icon, options)
+        return
 
-    } else {
-        ui.Page_thumbnailLink(div, title, href, icon, options)
     }
+
+    ui.Page_thumbnailLink(div, title, href, icon, options)
 
 }
