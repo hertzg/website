@@ -15,7 +15,7 @@ function loader_revisions () {
         'home/customize/show-hide/' => 7,
         'sign-in/' => 2,
         'sign-up/' => 1,
-        'wallets/quick-new-transaction/' => 8,
-        'wallets/quick-transfer-amount/' => 4,
+        'wallets/quick-new-transaction/' => 9,
+        'wallets/quick-transfer-amount/' => 5,
     ];
 }
