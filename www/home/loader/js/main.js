@@ -3,7 +3,9 @@
 
         loadCallback('Home')
 
-        ui.page(response, '../', function (body) {
+        var base = '../'
+
+        ui.page(response, base, function (body) {
             ui.Page_emptyTabs(body, function (div) {
                 ui.Page_sessionMessages(div, response.messages)
                 ui.Page_sessionWarnings(div, response.warnings)
@@ -36,10 +38,14 @@
             })
         }, {
             head: function (head) {
-                ui.compressed_css_link(head, 'calendarIcon', '../')
+                if (response.home.calendar !== undefined) {
+                    ui.compressed_css_link(head, 'calendarIcon', base)
+                }
             },
             scripts: function (body) {
-                ui.compressed_js_script(body, 'searchForm', '../')
+                if (response.home.calendar !== undefined) {
+                    ui.compressed_js_script(body, 'searchForm', base)
+                }
             },
         })
 
