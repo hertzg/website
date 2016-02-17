@@ -8,6 +8,11 @@ function echo_page ($user, $title, $content, $base, $options = []) {
     if (array_key_exists('head', $options)) $head = $options['head'];
     else $head = '';
 
+    if ($user) {
+        include_once __DIR__.'/compressed_css_link.php';
+        $head .= compressed_css_link('confirmDialog', $base);
+    }
+
     include_once __DIR__.'/client_time_and_timezone.php';
     client_time_and_timezone($user, $time, $timezone);
 
@@ -19,6 +24,22 @@ function echo_page ($user, $title, $content, $base, $options = []) {
         .'</script>'
         .compressed_js_script('batteryAndClock', $base)
         .compressed_js_script('lineSizeRounding', $base);
+
+    if ($user) {
+
+        include_once __DIR__.'/get_sign_out_timeout.php';
+        $scripts .=
+            '<script type="text/javascript">'
+                .'var signOutTimeout = '.get_sign_out_timeout()
+            .'</script>'
+            .compressed_js_script('confirmDialog', $base)
+            .compressed_js_script('signOutConfirm', $base);
+
+        if (!array_key_exists('token', $_SESSION)) {
+            $scripts .= compressed_js_script('sessionTimeout', $base);
+        }
+
+    }
 
     if (array_key_exists('scripts', $options)) $scripts .= $options['scripts'];
 
@@ -85,25 +106,6 @@ function echo_page ($user, $title, $content, $base, $options = []) {
             .'</div>'
         .'</div>'
         .$content;
-
-    if ($user) {
-
-        include_once __DIR__.'/get_sign_out_timeout.php';
-        $scripts .=
-            compressed_js_script('confirmDialog', $base)
-            .'<script type="text/javascript">'
-                .'var signOutTimeout = '.get_sign_out_timeout().';'
-            .'</script>'
-            .compressed_js_script('signOutConfirm', $base);
-
-        if (!array_key_exists('token', $_SESSION)) {
-            $scripts .= compressed_js_script('sessionTimeout', $base);
-        }
-
-        include_once __DIR__.'/compressed_css_link.php';
-        $head .= compressed_css_link('confirmDialog', $base);
-
-    }
 
     include_once __DIR__.'/../fns/echo_html.php';
     echo_html($title, $head, $body, $theme_color,

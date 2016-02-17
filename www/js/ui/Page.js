@@ -22,9 +22,7 @@ function Page (localNavigation, revisions,
         var headCallback = options.head
         if (headCallback !== undefined) headCallback(head)
 
-        if (user) {
-            compressed_css_link(head, 'confirmDialog', base)
-        }
+        if (user) compressed_css_link(head, 'confirmDialog', base)
 
         Element(body, 'div', function (div) {
             div.id = 'tbar'
@@ -76,11 +74,12 @@ function Page (localNavigation, revisions,
         compressed_js_script(body, 'lineSizeRounding', base)
         if (user) {
 
-            compressed_js_script(body, 'confirmDialog', base)
             window.signOutTimeout = response.signOutTimeout
             localNavigation.onUnload(function () {
                 delete window.signOutTimeout
             })
+
+            compressed_js_script(body, 'confirmDialog', base)
             compressed_js_script(body, 'signOutConfirm', base)
 
             if (response.session_remembered !== true) {
