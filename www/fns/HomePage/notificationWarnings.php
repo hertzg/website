@@ -2,7 +2,7 @@
 
 namespace HomePage;
 
-function newNotifications ($mysqli, $user) {
+function notificationWarnings ($mysqli, $user) {
 
     $warnings = [];
     $fnsDir = __DIR__.'/..';
@@ -67,9 +67,6 @@ function newNotifications ($mysqli, $user) {
 
     }
 
-    if ($warnings) {
-        include_once "$fnsDir/Page/warnings.php";
-        return \Page\warnings($warnings);
-    }
+    return $warnings;
 
 }

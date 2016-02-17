@@ -6,6 +6,7 @@
         ui.page(response, '../', function (body) {
             ui.Page_emptyTabs(body, function (div) {
                 ui.Page_sessionMessages(div, response.messages)
+                ui.Page_sessionWarnings(div, response.warnings)
                 ui.SearchForm_create(div, '../search/', function (div) {
                     ui.SearchForm_emptyContent(div, 'Search...')
                 })

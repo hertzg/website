@@ -36,6 +36,10 @@ HomePage\checkTaskDeadlineCheckDay($mysqli, $user, $time_today);
 include_once "$fnsDir/HomePage/checkBirthdayCheckDay.php";
 HomePage\checkBirthdayCheckDay($mysqli, $user, $time_today);
 
+include_once "$fnsDir/HomePage/notificationWarnings.php";
+$warnings = HomePage\notificationWarnings($mysqli, $user);
+if ($warnings) $response['warnings'] = $warnings;
+
 $response['user']['balance_total'] = (int)$user->balance_total;
 $response['user']['num_archived_received_bookmarks'] = (int)$user->num_archived_received_bookmarks;
 $response['user']['num_archived_received_calculations'] = (int)$user->num_archived_received_calculations;

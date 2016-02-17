@@ -39,6 +39,7 @@
         Page_phishingWarning: Page_phishingWarning,
         Page_sessionErrors: Page_sessionErrors,
         Page_sessionMessages: Page_sessionMessages,
+        Page_sessionWarnings: Page_sessionWarnings,
         Page_text: Page_text,
         Page_thumbnailLink: Page_thumbnailLink,
         Page_thumbnailLinkWithDescription: Page_thumbnailLinkWithDescription,

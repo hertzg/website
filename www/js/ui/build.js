@@ -45,6 +45,7 @@ CompressJsFiles([
     'Page/phishingWarning',
     'Page/sessionErrors',
     'Page/sessionMessages',
+    'Page/sessionWarnings',
     'Page/text',
     'Page/textList',
     'Page/thumbnailLink',

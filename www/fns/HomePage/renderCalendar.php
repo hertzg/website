@@ -61,6 +61,7 @@ function renderCalendar ($user, $mysqli, &$items, &$head, &$scripts) {
         $description = '';
     }
 
+    // TODO do not create description tags if its content is empty
     include_once "$fnsDir/create_calendar_icon_today.php";
     $items['calendar'] =
         '<a name="calendar"></a>'

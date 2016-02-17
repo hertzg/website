@@ -748,6 +748,11 @@ function Page_sessionMessages (parentNode, messages) {
     Page_messages(parentNode, messages)
 }
 ;
+function Page_sessionWarnings (parentNode, warnings) {
+    if (warnings === undefined) return
+    Page_warnings(parentNode, warnings)
+}
+;
 function Page_text (parentNode, callback) {
     Element(parentNode, 'div', function (div) {
         div.className = 'page-text'
@@ -967,6 +972,7 @@ function SearchForm_emptyContent (parentNode, placeholder) {
         Page_phishingWarning: Page_phishingWarning,
         Page_sessionErrors: Page_sessionErrors,
         Page_sessionMessages: Page_sessionMessages,
+        Page_sessionWarnings: Page_sessionWarnings,
         Page_text: Page_text,
         Page_thumbnailLink: Page_thumbnailLink,
         Page_thumbnailLinkWithDescription: Page_thumbnailLinkWithDescription,
