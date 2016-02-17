@@ -14,10 +14,7 @@
     }
 
     var lineSizeRounding = window.lineSizeRounding
-    if (lineSizeRounding) {
-        lineSizeRounding.reload()
-        return
-    }
+    if (lineSizeRounding) return
 
     var style = document.createElement('style')
     style.type = 'text/css'
@@ -28,10 +25,6 @@
     addEventListener('resize', resize)
     resize()
 
-    window.lineSizeRounding = {
-        reload: function () {
-            head.appendChild(style)
-        },
-    }
+    window.lineSizeRounding = {}
 
 })()

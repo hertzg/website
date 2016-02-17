@@ -13,7 +13,7 @@ function UnloadPage (unloadProgress, base, revisions) {
             var nodes = Array.prototype.slice.call(head.childNodes)
             nodes.forEach(function (node) {
                 var tagName = node.tagName
-                if (tagName === 'TITLE' || tagName === 'META') return
+                if (tagName === 'TITLE' || tagName === 'META' || tagName === 'STYLE') return
                 if (tagName === 'LINK') {
                     if (node.rel === 'icon' ||
                         node.classList.contains('localNavigation-leave')) {
