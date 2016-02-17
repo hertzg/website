@@ -1,5 +1,6 @@
 (function (localNavigation, ui) {
-    localNavigation.registerPage('home/customize/', function (response, loadCallback) {
+
+    function loader (response, loadCallback) {
 
         loadCallback('Customize Home')
 
@@ -53,5 +54,8 @@
         localNavigation.scanLinks()
         localNavigation.focusTarget()
 
-    })
+    }
+
+    localNavigation.registerPage('home/customize/', loader)
+
 })(localNavigation, ui)

@@ -1,5 +1,6 @@
 (function (localNavigation, ui) {
-    localNavigation.registerPage('admin/help/', function (response, loadCallback) {
+
+    function loader (response, loadCallback) {
 
         loadCallback('Help')
 
@@ -21,5 +22,8 @@
         localNavigation.scanLinks()
         localNavigation.focusTarget()
 
-    })
+    }
+
+    localNavigation.registerPage('admin/help/', loader)
+
 })(localNavigation, ui)

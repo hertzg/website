@@ -1,5 +1,6 @@
 (function (localNavigation, ui) {
-    localNavigation.registerPage('help/feedback/', function (response, loadCallback) {
+
+    function loader (response, loadCallback) {
 
         loadCallback('Leave Feedback')
 
@@ -36,5 +37,8 @@
 
         localNavigation.scanLinks()
 
-    })
+    }
+
+    localNavigation.registerPage('help/feedback/', loader)
+
 })(localNavigation, ui)

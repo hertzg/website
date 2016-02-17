@@ -1,5 +1,6 @@
 (function (localNavigation, ui) {
-    localNavigation.registerPage('help/about-zvini/', function (response, loadCallback) {
+
+    function loader (response, loadCallback) {
 
         loadCallback('About Zvini')
 
@@ -55,5 +56,8 @@
         localNavigation.scanLinks()
         localNavigation.focusTarget()
 
-    })
+    }
+
+    localNavigation.registerPage('help/about-zvini/', loader)
+
 })(localNavigation, ui)

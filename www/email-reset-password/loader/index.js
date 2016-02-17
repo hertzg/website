@@ -1,5 +1,6 @@
 (function (localNavigation, ui) {
-    localNavigation.registerPage('email-reset-password/', function (response, loadCallback) {
+
+    function loader (response, loadCallback) {
 
         loadCallback('Reset Password')
 
@@ -41,5 +42,8 @@
 
         localNavigation.scanLinks()
 
-    })
+    }
+
+    localNavigation.registerPage('email-reset-password/', loader)
+
 })(localNavigation, ui)

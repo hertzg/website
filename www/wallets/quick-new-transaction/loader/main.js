@@ -1,5 +1,6 @@
 (function (localNavigation, ui) {
-    localNavigation.registerPage('wallets/quick-new-transaction/', function (response, loadCallback) {
+
+    function loader (response, loadCallback) {
 
         loadCallback('New Transaction')
 
@@ -49,5 +50,8 @@
         localNavigation.scanLinks()
         localNavigation.focusTarget()
 
-    })
+    }
+
+    localNavigation.registerPage('wallets/quick-new-transaction/', loader)
+
 })(localNavigation, ui)

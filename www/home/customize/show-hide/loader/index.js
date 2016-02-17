@@ -1,5 +1,6 @@
 (function (localNavigation, ui) {
-    localNavigation.registerPage('home/customize/show-hide/', function (response, loadCallback) {
+
+    function loader (response, loadCallback) {
 
         loadCallback('Show / Hide Items')
 
@@ -69,5 +70,8 @@
 
         localNavigation.scanLinks()
 
-    })
+    }
+
+    localNavigation.registerPage('home/customize/show-hide/', loader)
+
 })(localNavigation, ui)

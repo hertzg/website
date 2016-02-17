@@ -1,5 +1,6 @@
 (function (localNavigation, ui) {
-    localNavigation.registerPage('wallets/quick-transfer-amount/', function (response, loadCallback) {
+
+    function loader (response, loadCallback) {
 
         loadCallback('Transfer Amount')
 
@@ -52,5 +53,8 @@
         localNavigation.scanLinks()
         localNavigation.focusTarget()
 
-    })
+    }
+
+    localNavigation.registerPage('wallets/quick-transfer-amount/', loader)
+
 })(localNavigation, ui)

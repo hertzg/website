@@ -1,5 +1,6 @@
 (function (localNavigation, ui) {
-    localNavigation.registerPage('help/install-link-handlers/', function (response, loadCallback) {
+
+    function loader (response, loadCallback) {
 
         loadCallback('Install Link Handlers')
 
@@ -43,5 +44,8 @@
         localNavigation.scanLinks()
         localNavigation.focusTarget()
 
-    })
+    }
+
+    localNavigation.registerPage('help/install-link-handlers/', loader)
+
 })(localNavigation, ui)
