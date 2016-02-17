@@ -8,7 +8,7 @@ function Page_thumbnailLinkWithDescription (parentNode,
         })
         ZeroHeightBr(div)
         Element(div, 'span', function (span) {
-            span.className = 'thumbnail_link-description'
+            span.className = 'thumbnail_link-description colorText grey'
             descriptionCallback(span)
         })
     }, href, iconName, options)
