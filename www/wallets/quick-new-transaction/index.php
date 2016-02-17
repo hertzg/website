@@ -13,12 +13,8 @@ include_once "$fnsDir/Wallets/indexOnUser.php";
 include_once '../../lib/mysqli.php';
 $wallets = Wallets\indexOnUser($mysqli, $user->id_users);
 
-include_once "$fnsDir/amount_text.php";
-$walletOptions = [];
-foreach ($wallets as $wallet) {
-    $walletOptions[$wallet->id] = htmlspecialchars($wallet->name)
-        .' &middot; '.amount_text($wallet->balance);
-}
+include_once '../fns/wallet_options.php';
+$walletOptions = wallet_options($wallets);
 
 include_once 'fns/get_values.php';
 $values = get_values();
