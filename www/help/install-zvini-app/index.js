@@ -2,7 +2,7 @@
 
     function alertAndRedirect (text) {
         alert(text)
-        location = '..'
+        location.assign('..')
     }
 
     document.getElementById('installingMessage').style.display = 'block'

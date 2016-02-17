@@ -26,5 +26,5 @@ $content = Page\create(
 
 include_once "$fnsDir/echo_public_page.php";
 echo_public_page($user, 'Install Zvini App', $content, '../../', [
-    'scripts' => '<script type="text/javascript" src="index.js?4"></script>',
+    'scripts' => '<script type="text/javascript" src="index.js?5"></script>',
 ]);

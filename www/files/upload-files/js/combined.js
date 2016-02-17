@@ -45,7 +45,7 @@ function Post (method, formData, loadListener, errorListener) {
             var url = 'submit-finish.php?num_uploaded=' + numUploaded +
                 '&num_failed=' + numLeft
             if (parentId !== null) url += '&parent_id=' + parentId
-            location = url
+            location.assign(url)
         }
 
         function nextFile () {

@@ -18,7 +18,7 @@
         })
         dialogShown = true
         timeout = setTimeout(function () {
-            location = signOutHref + '?auto=1'
+            location.assign(signOutHref + '?auto=1')
         }, timeoutSeconds * 1000)
     })
 

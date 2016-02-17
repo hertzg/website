@@ -26,7 +26,7 @@ $body =
 $scripts =
     '<script type="text/javascript">'
     .'setTimeout(function () {'
-        .'location = '.json_encode($url)
+        .'location.assign('.json_encode($url).')'
     .'}, 0)'
     .'</script>';
 

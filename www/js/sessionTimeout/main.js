@@ -11,7 +11,7 @@
                 var noHref = base + 'sign-out/submit.php'
                 var noListener = function (signOutHref) {
                     if (time == localStorage.sessionStartTime) {
-                        location = signOutHref
+                        location.assign(signOutHref)
                     } else {
                         timeoutDialog.hide()
                         timeoutDialog = null
