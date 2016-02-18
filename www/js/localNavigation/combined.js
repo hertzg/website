@@ -240,7 +240,7 @@ function UnloadPage (unloadProgress, base, revisions) {
     })()
 
     var initialState = {
-        href: location.href,
+        href: location.href.replace(/\?.*$/, ''),
         search: location.search,
         hash: location.hash,
     }
