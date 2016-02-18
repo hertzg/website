@@ -30,15 +30,17 @@ function create_page ($user, &$head, &$scripts, $base = '') {
             include_once "$fnsDir/create_calendar_icon_today.php";
             $content .=
                 "<a href=\"$href\""
-                ." class=\"clickable link image_link withArrow\">"
+                ." class=\"clickable link image_link withArrow localNavigation-link\">"
                     .'<span class="image_link-icon">'
                         .create_calendar_icon_today($user)
                     .'</span>'
                     .'<span class="image_link-content">Calendar</span>'
                 .'</a>';
         } else {
-            $content .= Page\imageArrowLink($item[0],
-                $href, $item[1], ['id' => $key]);
+            $content .= Page\imageArrowLink($item[0], $href, $item[1], [
+                'id' => $key,
+                'localNavigation' => true,
+            ]);
         }
     }
 

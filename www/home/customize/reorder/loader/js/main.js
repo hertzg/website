@@ -28,7 +28,7 @@
                     if (key === 'calendar') {
                         ui.Element(div, 'a', function (a) {
                             a.href = href
-                            a.className = 'clickable link image_link withArrow'
+                            a.className = 'clickable link image_link withArrow localNavigation-link'
                             ui.Element(a, 'span', function (span) {
                                 span.className = 'image_link-icon'
                                 create_calendar_icon_today(span, response)
@@ -41,7 +41,10 @@
                     } else {
                         ui.Page_imageArrowLink(div, function (div) {
                             ui.Text(div, item[0])
-                        }, href, item[1], { id: key })
+                        }, href, item[1], {
+                            id: key,
+                            localNavigation: true,
+                        })
                     }
 
                 }
