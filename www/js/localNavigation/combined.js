@@ -69,7 +69,7 @@ function LoadScript (src, loadCallback, errorCallback) {
 
 }
 ;
-function ScanLinks (unloadProgress, loadHref) {
+function ScanLinks (absoluteBase, loaderRevisions, unloadProgress, loadHref) {
     return function () {
         var links = document.querySelectorAll('.localNavigation-link')
         Array.prototype.forEach.call(links, function (link) {
@@ -85,6 +85,9 @@ function ScanLinks (unloadProgress, loadHref) {
             if (search !== '') {
                 href = href.substr(0, href.length - search.length)
             }
+
+            var localHref = href.substr(absoluteBase.length)
+            if (loaderRevisions[localHref] === undefined) return
 
             link.addEventListener('click', function (e) {
 
@@ -246,7 +249,8 @@ function UnloadPage (unloadProgress, base, revisions) {
 
     var unloadPage = UnloadPage(unloadProgress, absoluteBase, revisions)
 
-    var scanLinks = ScanLinks(unloadProgress, loadHref)
+    var scanLinks = ScanLinks(absoluteBase,
+        loaderRevisions, unloadProgress, loadHref)
 
     scanLinks()
 

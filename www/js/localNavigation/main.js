@@ -65,7 +65,8 @@
 
     var unloadPage = UnloadPage(unloadProgress, absoluteBase, revisions)
 
-    var scanLinks = ScanLinks(unloadProgress, loadHref)
+    var scanLinks = ScanLinks(absoluteBase,
+        loaderRevisions, unloadProgress, loadHref)
 
     scanLinks()
 
