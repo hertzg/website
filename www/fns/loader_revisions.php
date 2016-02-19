@@ -17,6 +17,6 @@ function loader_revisions () {
         'sign-in/' => 2,
         'sign-up/' => 1,
         'wallets/quick-new-transaction/' => 9,
-        'wallets/quick-transfer-amount/' => 5,
+        'wallets/quick-transfer-amount/' => 6,
     ];
 }

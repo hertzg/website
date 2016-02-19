@@ -41,11 +41,11 @@ function WalletOptions (response) {
 
                     var walletOptions = WalletOptions(response)
 
-                    ui.Form_select(form, 'from_id_wallets', 'From', walletOptions,
-                        values.from_id_wallets, focus === 'from_id_wallets')
+                    ui.Form_select(form, 'from_id', 'From', walletOptions,
+                        values.from_id, focus === 'from_id')
                     ui.Hr(form)
-                    ui.Form_select(form, 'to_id_wallets', 'To', walletOptions,
-                        values.to_id_wallets, focus === 'to_id_wallets')
+                    ui.Form_select(form, 'to_id', 'To', walletOptions,
+                        values.to_id, focus === 'to_id')
                     ui.Hr(form)
                     ui.Form_textfield(form, 'amount', 'Amount', {
                         value: values.amount,

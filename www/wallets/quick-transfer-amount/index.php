@@ -35,11 +35,11 @@ $content = Page\create(
     'Transfer Amount',
     Page\sessionErrors('wallets/quick-transfer-amount/errors')
     .'<form action="submit.php" method="post">'
-        .Form\select('from_id_wallets', 'From', $walletOptions,
-            $values['from_id_wallets'], $focus === 'from_id_wallets')
+        .Form\select('from_id', 'From', $walletOptions,
+            $values['from_id'], $focus === 'from_id')
         .'<div class="hr"></div>'
-        .Form\select('to_id_wallets', 'To', $walletOptions,
-            $values['to_id_wallets'], $focus === 'to_id_wallets')
+        .Form\select('to_id', 'To', $walletOptions,
+            $values['to_id'], $focus === 'to_id')
         .'<div class="hr"></div>'
         .create_transfer_form_items($values)
         .ItemList\pageHiddenInputs()
