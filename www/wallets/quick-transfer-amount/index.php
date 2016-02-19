@@ -38,10 +38,7 @@ $content = Page\create(
         .Form\select('from_id', 'From', $walletOptions,
             $values['from_id'], $focus === 'from_id')
         .'<div class="hr"></div>'
-        .Form\select('to_id', 'To', $walletOptions,
-            $values['to_id'], $focus === 'to_id')
-        .'<div class="hr"></div>'
-        .create_transfer_form_items($values)
+        .create_transfer_form_items($values, $walletOptions)
         .ItemList\pageHiddenInputs()
     .'</form>'
 );

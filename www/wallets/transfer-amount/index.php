@@ -34,9 +34,6 @@ unset(
 );
 
 include_once '../fns/create_transfer_form_items.php';
-include_once "$fnsDir/Form/button.php";
-include_once "$fnsDir/Form/select.php";
-include_once "$fnsDir/Form/textfield.php";
 include_once "$fnsDir/ItemList/escapedItemQuery.php";
 include_once "$fnsDir/ItemList/itemHiddenInputs.php";
 include_once "$fnsDir/Page/create.php";
@@ -49,10 +46,7 @@ $content = Page\create(
     'Transfer Amount',
     Page\sessionErrors('wallets/transfer-amount/errors')
     .'<form action="submit.php" method="post">'
-        .Form\select('to_id', 'To', $options,
-            $values['to_id'], $values['focus'] === 'to_id')
-        .'<div class="hr"></div>'
-        .create_transfer_form_items($values)
+        .create_transfer_form_items($values, $options)
         .ItemList\itemHiddenInputs($id)
     .'</form>'
 );
