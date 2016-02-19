@@ -20,7 +20,7 @@ echo_user_page($user, "Bar #$id", $content, $base, [
     'head' => compressed_css_link('confirmDialog', $base),
     'scripts' => $scripts.compressed_js_script('confirmDialog', $base)
         .'<script type="text/javascript">'
-            ."var deleteHref = '../delete/submit.php$itemQuery'"
+            .'var deleteHref = '.json_encode("../delete/submit.php$itemQuery")
         .'</script>'
         .'<script type="text/javascript" src="../../view-bar.js?1"></script>',
 ]);
