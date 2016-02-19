@@ -15,8 +15,6 @@ else {
     ];
 }
 
-$focus = $values['focus'];
-
 $base = '../../';
 $fnsDir = '../../fns';
 
@@ -30,14 +28,12 @@ foreach ($wallets as $wallet) {
     $options[$to_id] = htmlspecialchars($wallet->name);
 }
 
-include_once "$fnsDir/WalletTransactions/maxLengths.php";
-$maxLengths = WalletTransactions\maxLengths();
-
 unset(
     $_SESSION['wallets/view/errors'],
     $_SESSION['wallets/view/messages']
 );
 
+include_once '../fns/create_transfer_form_items.php';
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/select.php";
 include_once "$fnsDir/Form/textfield.php";
@@ -54,20 +50,9 @@ $content = Page\create(
     Page\sessionErrors('wallets/transfer-amount/errors')
     .'<form action="submit.php" method="post">'
         .Form\select('to_id', 'To', $options,
-            $values['to_id'], $focus === 'to_id')
+            $values['to_id'], $values['focus'] === 'to_id')
         .'<div class="hr"></div>'
-        .Form\textfield('amount', 'Amount', [
-            'value' => $values['amount'],
-            'autofocus' => $focus === 'amount',
-            'required' => true,
-        ])
-        .'<div class="hr"></div>'
-        .Form\textfield('description', 'Description', [
-            'value' => $values['description'],
-            'maxlength' => $maxLengths['description'],
-        ])
-        .'<div class="hr"></div>'
-        .Form\button('Save Transaction')
+        .create_transfer_form_items($values)
         .ItemList\itemHiddenInputs($id)
     .'</form>'
 );

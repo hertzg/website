@@ -21,13 +21,8 @@ $values = get_values($wallets);
 
 $focus = $values['focus'];
 
-include_once "$fnsDir/WalletTransactions/maxLengths.php";
-$maxLengths = WalletTransactions\maxLengths();
-
-include_once '../fns/create_transaction_form_items.php';
-include_once "$fnsDir/Form/button.php";
+include_once '../fns/create_transfer_form_items.php';
 include_once "$fnsDir/Form/select.php";
-include_once "$fnsDir/Form/textfield.php";
 include_once "$fnsDir/ItemList/listHref.php";
 include_once "$fnsDir/ItemList/pageHiddenInputs.php";
 include_once "$fnsDir/Page/create.php";
@@ -46,18 +41,7 @@ $content = Page\create(
         .Form\select('to_id_wallets', 'To', $walletOptions,
             $values['to_id_wallets'], $focus === 'to_id_wallets')
         .'<div class="hr"></div>'
-        .Form\textfield('amount', 'Amount', [
-            'value' => $values['amount'],
-            'required' => true,
-            'autofocus' => $focus === 'amount',
-        ])
-        .'<div class="hr"></div>'
-        .Form\textfield('description', 'Description', [
-            'value' => $values['description'],
-            'maxlength' => $maxLengths['description'],
-        ])
-        .'<div class="hr"></div>'
-        .Form\button('Save Transaction')
+        .create_transfer_form_items($values)
         .ItemList\pageHiddenInputs()
     .'</form>'
 );
