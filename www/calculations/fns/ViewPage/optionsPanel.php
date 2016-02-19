@@ -35,12 +35,6 @@ function optionsPanel ($calculation) {
 
     }
 
-    $href = "../delete/$escapedItemQuery";
-    $deleteLink =
-        '<div id="deleteLink">'
-            .\Page\imageLink('Delete', $href, 'trash-bin')
-        .'</div>';
-
     include_once "$fnsDir/Page/staticTwoColumns.php";
     include_once "$fnsDir/Page/twoColumns.php";
     $content =
@@ -50,7 +44,8 @@ function optionsPanel ($calculation) {
         $content .= \Page\twoColumns($sendLink, $sendViaSmsLink)
             .'<div class="hr"></div>';
     }
-    $content .= $deleteLink;
+    $content .= \Page\imageLink('Delete',
+        "../delete/$escapedItemQuery", 'trash-bin', ['id' => 'delete']);
 
     include_once "$fnsDir/create_panel.php";
     return create_panel('Calculation Options', $content);

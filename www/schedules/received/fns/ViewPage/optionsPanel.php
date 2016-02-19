@@ -28,10 +28,8 @@ function optionsPanel ($receivedSchedule) {
         $archiveLink = \Page\imageLink('Archive', $href, 'archive');
     }
 
-    $deleteLink =
-        '<div id="deleteLink">'
-            .\Page\imageLink('Delete', "../delete/$itemQuery", 'trash-bin')
-        .'</div>';
+    $deleteLink = \Page\imageLink('Delete',
+        "../delete/$itemQuery", 'trash-bin', ['id' => 'delete']);
 
     include_once "$fnsDir/Page/staticTwoColumns.php";
     include_once "$fnsDir/Page/twoColumns.php";

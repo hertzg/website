@@ -29,11 +29,8 @@ function optionsPanel ($task) {
     $historyLink = \Page\imageArrowLink('History',
         "../history/?id=$id", 'restore-defaults', ['id' => 'history']);
 
-    $deleteLink =
-        '<div id="deleteLink">'
-            .\Page\imageLink('Delete',
-                "../delete/$escapedItemQuery", 'trash-bin')
-        .'</div>';
+    $deleteLink = \Page\imageLink('Delete',
+        "../delete/$escapedItemQuery", 'trash-bin', ['id' => 'delete']);
 
     include_once __DIR__.'/../send_via_sms_link.php';
     include_once "$fnsDir/Page/staticTwoColumns.php";

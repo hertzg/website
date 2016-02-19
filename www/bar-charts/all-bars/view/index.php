@@ -22,5 +22,5 @@ echo_user_page($user, "Bar #$id", $content, $base, [
         .'<script type="text/javascript">'
             ."var deleteHref = '../delete/submit.php$itemQuery'"
         .'</script>'
-        .'<script type="text/javascript" src="../../view-bar.js"></script>',
+        .'<script type="text/javascript" src="../../view-bar.js?1"></script>',
 ]);

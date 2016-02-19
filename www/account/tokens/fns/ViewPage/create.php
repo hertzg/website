@@ -9,10 +9,8 @@ function create ($mysqli, $token, &$scripts) {
     $fnsDir = __DIR__.'/../../../../fns';
 
     include_once "$fnsDir/Page/imageLink.php";
-    $deleteLink =
-        '<div id="deleteLink">'
-            .\Page\imageLink('Delete', "../delete/?id=$id", 'trash-bin')
-        .'</div>';
+    $deleteLink = \Page\imageLink('Delete',
+        "../delete/?id=$id", 'trash-bin', ['id' => 'delete']);
 
     include_once "$fnsDir/export_date_ago.php";
     $accessed = export_date_ago($token->access_time, true);

@@ -29,17 +29,12 @@ function create ($transaction, &$scripts) {
         'Duplicate', $href, 'duplicate-transaction');
 
     include_once "$fnsDir/Page/imageLink.php";
-    $deleteLink =
-        '<div id="deleteLink">'
-            .\Page\imageLink('Delete',
-                "../delete-transaction/$escapedItemQuery", 'trash-bin')
-        .'</div>';
-
     include_once "$fnsDir/Page/staticTwoColumns.php";
     $optionsContent =
         \Page\staticTwoColumns($editLink, $duplicateLink)
         .'<div class="hr"></div>'
-        .$deleteLink;
+        .\Page\imageLink('Delete', "../delete-transaction/$escapedItemQuery",
+            'trash-bin', ['id' => 'delete']);
 
     unset(
         $_SESSION['wallets/edit-transaction/errors'],

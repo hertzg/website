@@ -15,11 +15,8 @@ function create ($point, &$scripts) {
     $editLink = \Page\imageLink('Edit',
         "../edit-point/$escapedItemQuery", 'edit-place');
 
-    $deleteLink =
-        '<div id="deleteLink">'
-            .\Page\imageLink('Delete',
-                "../delete-point/$escapedItemQuery", 'trash-bin')
-        .'</div>';
+    $deleteLink = \Page\imageLink('Delete',
+        "../delete-point/$escapedItemQuery", 'trash-bin', ['id' => 'delete']);
 
     include_once "$fnsDir/Page/staticTwoColumns.php";
     $optionsContent = \Page\staticTwoColumns($editLink, $deleteLink);

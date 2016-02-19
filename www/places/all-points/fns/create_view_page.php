@@ -15,11 +15,8 @@ function create_view_page ($point, &$scripts) {
         "../edit/$escapedItemQuery", 'edit-point', ['id' => 'edit']);
 
     include_once "$fnsDir/Page/imageLink.php";
-    $deleteLink =
-        '<div id="deleteLink">'
-            .Page\imageLink('Delete',
-                "../delete/$escapedItemQuery", 'trash-bin')
-        .'</div>';
+    $deleteLink = Page\imageLink('Delete',
+        "../delete/$escapedItemQuery", 'trash-bin', ['id' => 'delete']);
 
     include_once "$fnsDir/Page/staticTwoColumns.php";
     $optionsContent = Page\staticTwoColumns($editLink, $deleteLink);

@@ -37,14 +37,8 @@ function optionsPanel ($place) {
     $sendLink = \Page\imageArrowLink('Send',
         "../send/$escapedItemQuery", 'send', ['id' => 'send']);
 
-    include_once "$fnsDir/Page/imageLink.php";
-    $href = "../delete/$escapedItemQuery";
-    $deleteLink =
-        '<div id="deleteLink">'
-            .\Page\imageLink('Delete', $href, 'trash-bin')
-        .'</div>';
-
     include_once __DIR__.'/../send_via_sms_link.php';
+    include_once "$fnsDir/Page/imageLink.php";
     include_once "$fnsDir/Page/staticTwoColumns.php";
     include_once "$fnsDir/Page/twoColumns.php";
     $content =
@@ -52,7 +46,8 @@ function optionsPanel ($place) {
         .'<div class="hr"></div>'
         .\Page\staticTwoColumns($sendLink, send_via_sms_link($place))
         .'<div class="hr"></div>'
-        .$deleteLink;
+        .\Page\imageLink('Delete', "../delete/$escapedItemQuery",
+            'trash-bin', ['id' => 'delete']);
 
     include_once "$fnsDir/create_panel.php";
     return create_panel('Place Options', $content);

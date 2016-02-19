@@ -20,5 +20,5 @@ echo_user_page($user, "Point #$id", $content, $base, [
         .'<script type="text/javascript">'
             .'var deleteHref = '.json_encode("../delete-point/submit.php$itemQuery")
         .'</script>'
-        .'<script type="text/javascript" src="../view-point.js"></script>',
+        .'<script type="text/javascript" src="../view-point.js?1"></script>',
 ]);

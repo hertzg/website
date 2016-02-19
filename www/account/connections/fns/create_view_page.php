@@ -21,10 +21,8 @@ function create_view_page ($connection, &$scripts) {
         "../edit/?id=$id", 'edit-connection', ['id' => 'edit']);
 
     include_once "$fnsDir/Page/imageLink.php";
-    $deleteLink =
-        '<div id="deleteLink">'
-            .Page\imageLink('Delete', "../delete/?id=$id", 'trash-bin')
-        .'</div>';
+    $deleteLink = Page\imageLink('Delete',
+        "../delete/?id=$id", 'trash-bin', ['id' => 'delete']);
 
     include_once __DIR__.'/../fns/format_permissions.php';
     $permissions = format_permissions($connection->can_send_bookmark,

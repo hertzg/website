@@ -19,5 +19,6 @@ echo_user_page($user, "Transaction #$id", $content, $base, [
         .'<script type="text/javascript">'
             ."var deleteHref = '../delete-transaction/submit.php?id=$id'"
         .'</script>'
-        .'<script type="text/javascript" src="../view-transaction.js"></script>',
+        .'<script type="text/javascript" src="../view-transaction.js?1">'
+        .'</script>',
 ]);

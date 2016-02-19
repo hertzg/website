@@ -18,17 +18,16 @@ function create_folder_options_panel ($id_folders, $base) {
         'send', ['id' => 'send']);
 
     include_once "$fnsDir/Page/imageLink.php";
-    $deleteLink =
-        '<div id="deleteLink">'
-            .Page\imageLink('Delete',
-                "{$base}delete-folder/?id_folders=$id_folders", 'trash-bin')
-        .'</div>';
+    $deleteLink = Page\imageLink('Delete',
+        "{$base}delete-folder/?id_folders=$id_folders",
+        'trash-bin', ['id' => 'delete']);
 
     include_once "$fnsDir/Page/staticTwoColumns.php";
     $content =
         Page\staticTwoColumns($renameLink, $moveLink)
         .'<div class="hr"></div>'
         .Page\staticTwoColumns($sendLink, $deleteLink);
+
     include_once "$fnsDir/create_panel.php";
     return create_panel('Folder Options', $content);
 

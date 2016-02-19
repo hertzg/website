@@ -26,16 +26,12 @@ function create ($user, $event, &$scripts) {
         'Duplicate', $href, 'duplicate-event');
 
     include_once "$fnsDir/Page/imageLink.php";
-    $deleteLink =
-        '<div id="deleteLink">'
-            .\Page\imageLink('Delete', "../delete-event/?id=$id", 'trash-bin')
-        .'</div>';
-
     include_once "$fnsDir/Page/staticTwoColumns.php";
     $optionsContent =
         \Page\staticTwoColumns($editLink, $duplicateLink)
         .'<div class="hr"></div>'
-        .$deleteLink;
+        .\Page\imageLink('Delete', "../delete-event/?id=$id",
+            'trash-bin', ['id' => 'delete']);
 
     include_once "$fnsDir/user_time_today.php";
     $user_time_today = user_time_today($user);

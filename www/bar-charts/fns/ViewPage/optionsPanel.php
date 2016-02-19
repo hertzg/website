@@ -13,11 +13,8 @@ function optionsPanel ($bar_chart) {
     $editLink = \Page\imageArrowLink('Edit',
         "../edit/$escapedItemQuery", 'edit-bar-chart', ['id' => 'edit']);
 
-    $deleteLink =
-        '<div id="deleteLink">'
-            .\Page\imageArrowLink('Delete',
-                "../delete/$escapedItemQuery", 'trash-bin')
-        .'</div>';
+    $deleteLink = \Page\imageArrowLink('Delete',
+        "../delete/$escapedItemQuery", 'trash-bin', ['id' => 'delete']);
 
     include_once "$fnsDir/Page/staticTwoColumns.php";
     $content = \Page\staticTwoColumns($editLink, $deleteLink);

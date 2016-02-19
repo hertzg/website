@@ -18,7 +18,7 @@ if ($id) {
         .'<script type="text/javascript">'
             .'var deleteHref = '.json_encode($deleteHref)
         .'</script>'
-        .'<script type="text/javascript" src="index.js"></script>';
+        .'<script type="text/javascript" src="index.js?1"></script>';
 }
 
 include_once "$fnsDir/compressed_css_link.php";

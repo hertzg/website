@@ -22,10 +22,8 @@ function optionsPanel ($id) {
                 'edit-profile', ['id' => 'edit-profile'])
         )
         .'<div class="hr"></div>'
-        .'<div id="deleteLink">'
-            .\Page\imageLink('Delete',
-                "../delete/$escapedItemQuery", 'trash-bin')
-        .'</div>';
+        .\Page\imageLink('Delete', "../delete/$escapedItemQuery",
+            'trash-bin', ['id' => 'delete']);
 
     include_once "$fnsDir/create_panel.php";
     return create_panel('User Options', $content);

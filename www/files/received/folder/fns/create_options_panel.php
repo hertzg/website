@@ -27,11 +27,8 @@ function create_options_panel ($receivedFolder, $base) {
     }
     $archiveLink = Page\imageLink($title, $href, $icon);
 
-    $deleteLink =
-        '<div id="deleteLink">'
-            .Page\imageLink('Delete',
-                "{$base}delete/$escapedItemQuery", 'trash-bin')
-        .'</div>';
+    $deleteLink = Page\imageLink('Delete',
+        "{$base}delete/$escapedItemQuery", 'trash-bin', ['id' => 'delete']);
 
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Page/staticTwoColumns.php";

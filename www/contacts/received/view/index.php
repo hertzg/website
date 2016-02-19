@@ -30,5 +30,5 @@ echo_user_page($user, "Received Contact #$id", $content, $base, [
         .'<script type="text/javascript">'
             .'var deleteHref = '.json_encode("../delete/submit.php$itemQuery")
         .'</script>'
-        .'<script type="text/javascript" src="../../view.js"></script>',
+        .'<script type="text/javascript" src="../../view.js?1"></script>',
 ]);

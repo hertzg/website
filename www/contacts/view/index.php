@@ -18,7 +18,7 @@ $scripts .= compressed_js_script('confirmDialog', $base)
     .'<script type="text/javascript">'
         .'var deleteHref = '.json_encode("../delete/submit.php$itemQuery")
     .'</script>'
-    .'<script type="text/javascript" src="../view.js"></script>';
+    .'<script type="text/javascript" src="../view.js?1"></script>';
 
 if ($contact->photo_id) {
     $deletePhotoHref = "../photo/delete/submit.php?id=$id";

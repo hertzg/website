@@ -72,9 +72,8 @@ function create_view_page ($invitation, &$scripts) {
             Page\staticTwoColumns(
                 Page\imageArrowLink('Edit', "../edit/?id=$id",
                     'edit-invitation', ['id' => 'edit']),
-                '<div id="deleteLink">'
-                    .Page\imageLink('Delete', "../delete/?id=$id", 'trash-bin')
-                .'</div>'
+                Page\imageLink('Delete', "../delete/?id=$id",
+                    'trash-bin', ['id' => 'delete'])
             )
         );
 

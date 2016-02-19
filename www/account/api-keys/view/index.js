@@ -2,10 +2,10 @@
 
     var dialogShown = false
 
-    var deleteLink = document.getElementById('deleteLink').firstChild
-    deleteLink.addEventListener('click', function (e) {
+    var link = document.getElementById('delete')
+    link.addEventListener('click', function (e) {
         e.preventDefault()
-        deleteLink.blur()
+        link.blur()
         if (dialogShown) return
         var yesText = 'Yes, delete API key'
         var questionText = 'Are you sure you want to delete the API key?'

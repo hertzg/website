@@ -31,10 +31,8 @@ function optionsPanel ($receivedContact) {
         $archiveLink = \Page\imageLink('Archive', $href, 'archive');
     }
 
-    $deleteLink =
-        '<div id="deleteLink">'
-            .\Page\imageLink('Delete', "../delete/$itemQuery", 'trash-bin')
-        .'</div>';
+    $deleteLink = \Page\imageLink('Delete',
+        "../delete/$itemQuery", 'trash-bin', ['id' => 'delete']);
 
     include_once __DIR__.'/../../../fns/send_via_sms_link.php';
     include_once "$fnsDir/Page/staticTwoColumns.php";

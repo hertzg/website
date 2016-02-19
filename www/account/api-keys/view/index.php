@@ -22,5 +22,5 @@ echo_user_page($user, "API Key #$id", $content, $base, [
         .'<script type="text/javascript">'
             .'var deleteHref = '.json_encode("../delete/submit.php$itemQuery")
         .'</script>'
-        .'<script type="text/javascript" src="index.js?1"></script>',
+        .'<script type="text/javascript" src="index.js?2"></script>',
 ]);

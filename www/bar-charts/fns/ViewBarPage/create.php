@@ -26,17 +26,12 @@ function create ($bar, &$scripts) {
     $duplicateLink = \Page\imageArrowLink('Duplicate', $href, 'duplicate-bar');
 
     include_once "$fnsDir/Page/imageLink.php";
-    $deleteLink =
-        '<div id="deleteLink">'
-            .\Page\imageLink('Delete',
-                "../delete-bar/$escapedItemQuery", 'trash-bin')
-        .'</div>';
-
     include_once "$fnsDir/Page/staticTwoColumns.php";
     $optionsContent =
         \Page\staticTwoColumns($editLink, $duplicateLink)
         .'<div class="hr"></div>'
-        .$deleteLink;
+        .\Page\imageLink('Delete', "../delete-bar/$escapedItemQuery",
+            'trash-bin', ['id' => 'delete']);
 
     unset(
         $_SESSION['bar-charts/edit-bar/errors'],

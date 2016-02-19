@@ -22,5 +22,5 @@ echo_admin_page($admin_user, "Admin API Key #$id", $content, '../../', [
         .'<script type="text/javascript">'
             .'var deleteHref = '.json_encode("../delete/submit.php$itemQuery")
         .'</script>'
-        .'<script type="text/javascript" src="index.js"></script>',
+        .'<script type="text/javascript" src="index.js?1"></script>',
 ]);

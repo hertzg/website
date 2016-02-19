@@ -19,5 +19,5 @@ echo_user_page($user, "Event #$id", $content, $base, [
         .'<script type="text/javascript">'
             .'var deleteHref = '.json_encode("../delete/submit.php?id=$id")
         .'</script>'
-        .'<script type="text/javascript" src="../../view-event.js"></script>',
+        .'<script type="text/javascript" src="../../view-event.js?1"></script>',
 ]);

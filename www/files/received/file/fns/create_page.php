@@ -41,11 +41,8 @@ function create_page ($mysqli, $receivedFile, &$scripts, $base = '') {
     }
     $archiveLink = Page\imageLink($title, $href, $icon);
 
-    $deleteLink =
-        '<div id="deleteLink">'
-            .Page\imageLink('Delete',
-                "{$base}delete/$escapedItemQuery", 'trash-bin')
-        .'</div>';
+    $deleteLink = Page\imageLink('Delete',
+        "{$base}delete/$escapedItemQuery", 'trash-bin', ['id' => 'delete']);
 
     include_once "$fnsDir/ReceivedFiles/File/path.php";
     $path = ReceivedFiles\File\path($receivedFile->receiver_id_users, $id);

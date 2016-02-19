@@ -19,5 +19,5 @@ echo_user_page($user, "File #$id", $content, $base, [
         .'<script type="text/javascript">'
             .'var deleteHref = '.json_encode("../delete-file/submit.php?id=$id")
         .'</script>'
-        .'<script type="text/javascript" src="index.js"></script>',
+        .'<script type="text/javascript" src="index.js?1"></script>',
 ]);
