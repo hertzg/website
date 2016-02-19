@@ -36,6 +36,7 @@ elseif ($parsed_amount === 0) $errors[] = 'The amount is invalid.';
 if ($errors) {
     $_SESSION['wallets/transfer-amount/errors'] = $errors;
     $_SESSION['wallets/transfer-amount/values'] = [
+        'focus' => 'amount',
         'to_id' => $to_id,
         'amount' => $amount,
         'description' => $description,

@@ -8,11 +8,14 @@ $key = 'wallets/transfer-amount/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
     $values = [
+        'focus' => 'to_id',
         'to_id' => '',
         'amount' => '',
         'description' => '',
     ];
 }
+
+$focus = $values['focus'];
 
 $base = '../../';
 $fnsDir = '../../fns';
@@ -50,11 +53,12 @@ $content = Page\create(
     'Transfer Amount',
     Page\sessionErrors('wallets/transfer-amount/errors')
     .'<form action="submit.php" method="post">'
-        .Form\select('to_id', 'To', $options, $values['to_id'])
+        .Form\select('to_id', 'To', $options,
+            $values['to_id'], $focus === 'to_id')
         .'<div class="hr"></div>'
         .Form\textfield('amount', 'Amount', [
             'value' => $values['amount'],
-            'autofocus' => true,
+            'autofocus' => $focus === 'amount',
             'required' => true,
         ])
         .'<div class="hr"></div>'
