@@ -50,13 +50,13 @@ function create ($mysqli, $deletedItem, $user, &$title, &$head, &$scripts) {
         renderPlace($data, $items);
     } elseif ($type == 'file') {
         include_once __DIR__.'/renderFile.php';
-        renderFile($mysqli, $deletedItem, $items);
+        renderFile($mysqli, $deletedItem, $items, $scripts);
     } elseif ($type == 'folder' || $type == 'receivedFolder') {
         include_once __DIR__.'/renderFolder.php';
         renderFolder($data, $items);
     } elseif ($type == 'receivedFile') {
         include_once __DIR__.'/renderReceivedFile.php';
-        renderReceivedFile($mysqli, $deletedItem, $items);
+        renderReceivedFile($mysqli, $deletedItem, $items, $scripts);
     } elseif ($type == 'receivedNote') {
         include_once __DIR__.'/renderReceivedNote.php';
         renderReceivedNote($data, $items, $infoText);

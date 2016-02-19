@@ -68,6 +68,6 @@ function renderContact ($id, $contact, &$items, &$infoText, &$scripts) {
     $content = join('<div class="hr"></div>', $labelItems);
 
     include_once "$fnsDir/create_contact_panel.php";
-    $items[] = create_contact_panel($photoSrc, $content, $base);
+    $items[] = create_contact_panel($photoSrc, $content, $base, $scripts);
 
 }

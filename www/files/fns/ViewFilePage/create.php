@@ -30,8 +30,8 @@ function create ($mysqli, $file, &$scripts) {
     $path = \Files\File\path($id_users, $id);
 
     include_once "$fnsDir/Page/filePreview.php";
-    $filePreview = \Page\filePreview($media_type, $file->content_type,
-        $id, $path, '../download-file/', $base, $file->content_revision);
+    $filePreview = \Page\filePreview($media_type, $file->content_type, $id,
+        $path, '../download-file/', $base, $scripts, $file->content_revision);
 
     if ($media_type == 'image') {
         include_once __DIR__.'/imageOptionsPanel.php';

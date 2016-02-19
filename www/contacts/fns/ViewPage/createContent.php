@@ -2,7 +2,7 @@
 
 namespace ViewPage;
 
-function createContent ($contact, $infoText, $items, $base) {
+function createContent ($contact, $infoText, $items, $base, &$scripts) {
 
     $id = $contact->id;
     $fnsDir = __DIR__.'/../../../fns';
@@ -33,7 +33,7 @@ function createContent ($contact, $infoText, $items, $base) {
             ],
             "Contact #$id",
             \Page\sessionMessages('contacts/view/messages')
-            .create_contact_panel($photoSrc, $content, "$base../../")
+            .create_contact_panel($photoSrc, $content, "$base../../", $scripts)
             .\Page\infoText($infoText),
             create_new_item_button('Contact', "$base../")
         )

@@ -2,8 +2,8 @@
 
 namespace Page;
 
-function filePreview ($media_type, $content_type,
-    $id, $path, $downloadBase, $base, $revision = '0') {
+function filePreview ($media_type, $content_type, $id,
+    $path, $downloadBase, $base, &$scripts, $revision = '0') {
 
     $audio = $media_type == 'audio';
     $image = $media_type == 'image';
@@ -17,12 +17,15 @@ function filePreview ($media_type, $content_type,
         if ($audio) {
             $content = "<audio src=\"$src\" controls=\"controls\" />";
         } elseif ($image) {
-            include_once __DIR__.'/../compressed_js_script.php';
+
             $content =
                 '<div class="imageProgress">'
                     ."<img src=\"$src\" />"
-                .'</div>'
-                .compressed_js_script('imageProgress', $base);
+                .'</div>';
+
+            include_once __DIR__.'/../compressed_js_script.php';
+            $scripts .= compressed_js_script('imageProgress', $base);
+
         } else {
             $content = "<video src=\"$src\" controls=\"controls\" />";
         }

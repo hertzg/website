@@ -50,7 +50,7 @@ function create_page ($mysqli, $receivedFile, &$scripts, $base = '') {
     include_once "$fnsDir/Page/filePreview.php";
     $filePreview = Page\filePreview($receivedFile->media_type,
         $receivedFile->content_type, $id, $path,
-        "{$base}download/", "$base../../../");
+        "{$base}download/", "$base../../../", $scripts);
 
     include_once "$fnsDir/export_date_ago.php";
     $date_ago = export_date_ago($receivedFile->insert_time);

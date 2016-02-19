@@ -67,6 +67,6 @@ function create ($user, $receivedContact, &$head, &$scripts) {
     );
 
     include_once __DIR__.'/createContent.php';
-    return createContent($receivedContact, $infoText, $items);
+    return createContent($receivedContact, $infoText, $items, $scripts);
 
 }

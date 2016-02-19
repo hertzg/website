@@ -2,7 +2,7 @@
 
 namespace ViewPage;
 
-function renderFile ($mysqli, $deletedItem, &$items) {
+function renderFile ($mysqli, $deletedItem, &$items, &$scripts) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
@@ -22,7 +22,7 @@ function renderFile ($mysqli, $deletedItem, &$items) {
     include_once "$fnsDir/Page/filePreview.php";
     $filePreview = \Page\filePreview($file->media_type,
         $file->content_type, $deletedItem->id, $path,
-        '../download-file/', '../../');
+        '../download-file/', '../../', $scripts);
     $items[] = \Form\label('Preview', $filePreview);
 
     $items[] = \Form\label('MD5 sum', $file->md5_sum);

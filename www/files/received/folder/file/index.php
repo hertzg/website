@@ -31,7 +31,8 @@ $path = ReceivedFolderFiles\File\path($receivedFolderFile->id_users, $id);
 
 include_once "$fnsDir/Page/filePreview.php";
 $filePreview = Page\filePreview($receivedFolderFile->media_type,
-    $receivedFolderFile->content_type, $id, $path, '../download-file/', $base);
+    $receivedFolderFile->content_type, $id, $path,
+    '../download-file/', $base, $scripts);
 
 include_once "$fnsDir/create_panel.php";
 include_once "$fnsDir/Form/label.php";
@@ -63,4 +64,4 @@ $content =
     .create_panel('File Options', $downloadLink);
 
 include_once "$fnsDir/echo_user_page.php";
-echo_user_page($user, $title, $content, $base);
+echo_user_page($user, $title, $content, $base, ['scripts' => $scripts]);

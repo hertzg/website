@@ -41,16 +41,21 @@ $id = $file->id_files;
 $src = "../download-file/?id=$id&amp;contentType=$file->content_type"
     ."&amp;revision=$file->content_revision";
 
+$scripts = '';
+
 $media_type = $file->media_type;
 if ($media_type == 'audio') {
     $previewHtml = "<audio src=\"$src\" controls=\"controls\" />";
 } elseif ($media_type == 'image') {
-    include_once "$fnsDir/compressed_js_script.php";
+
     $previewHtml =
         '<div class="imageProgress">'
             ."<img src=\"$src\" />"
-        .'</div>'
-        .compressed_js_script('imageProgress', $base);
+        .'</div>';
+
+    include_once "$fnsDir/compressed_js_script.php";
+    $scripts .= compressed_js_script('imageProgress', $base);
+
 } else {
     $previewHtml = "<video src=\"$src\" controls=\"controls\" />";
 }
@@ -84,4 +89,5 @@ $content = Page\create(
 include_once "$fnsDir/echo_user_page.php";
 echo_user_page($user, 'Slideshow', $content, $base, [
     'head' => '<link rel="stylesheet" type="text/css" href="index.css?3" />',
+    'scripts' => $scripts,
 ]);

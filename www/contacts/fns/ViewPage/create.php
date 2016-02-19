@@ -89,6 +89,6 @@ function create ($user, $contact, &$head, &$scripts, $base = '') {
     unsetSessionVars();
 
     include_once __DIR__.'/createContent.php';
-    return createContent($contact, $infoText, $items, $base);
+    return createContent($contact, $infoText, $items, $base, $scripts);
 
 }
