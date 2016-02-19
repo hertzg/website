@@ -59,10 +59,8 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
 
         include_once "$fnsDir/Page/imageLink.php";
         $href = "{$base}delete-all/$escapedPageQuery";
-        $options[] =
-            '<div id="deleteAllLink">'
-                .Page\imageLink('Delete All Notifications', $href, 'trash-bin')
-            .'</div>';
+        $options[] = Page\imageLink('Delete All Notifications',
+            $href, 'trash-bin', ['id' => 'delete-all']);
 
         include_once __DIR__.'/render_prev_button.php';
         render_prev_button($offset, $limit, $total, $items);

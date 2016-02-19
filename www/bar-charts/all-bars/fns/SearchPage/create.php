@@ -57,11 +57,8 @@ function create ($mysqli, $user, $bar_chart, &$scripts) {
     $escapedItemQuery = \ItemList\escapedItemQuery($id);
 
     include_once "$fnsDir/Page/imageLink.php";
-    $deleteLink =
-        '<div id="deleteAllLink">'
-            .\Page\imageLink('Delete All Bars',
-                "../delete-all/$escapedItemQuery", 'trash-bin')
-        .'</div>';
+    $deleteLink = \Page\imageLink('Delete All Bars',
+        "../delete-all/$escapedItemQuery", 'trash-bin', ['id' => 'delete-all']);
 
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Page/create.php";

@@ -39,10 +39,9 @@ function create_options_panel ($user, $base = '') {
     include_once "$fnsDir/Page/imageLink.php";
     $content .=
         '<div class="hr"></div>'
-        .'<div id="deleteAllLink">'
-            .Page\imageLink('Delete All Wallets',
-                "{$base}delete-all/$escapedPageQuery", 'trash-bin')
-        .'</div>';
+        .Page\imageLink('Delete All Wallets',
+            "{$base}delete-all/$escapedPageQuery",
+            'trash-bin', ['id' => 'delete-all']);
 
     include_once "$fnsDir/create_panel.php";
     return create_panel('Options', $content);

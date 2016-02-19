@@ -28,5 +28,5 @@ include_once "$fnsDir/echo_user_page.php";
 echo_user_page($user, 'Received Bookmarks', $content, $base, [
     'head' => compressed_css_link('confirmDialog', $base),
     'scripts' => $scripts.compressed_js_script('confirmDialog', $base)
-        .'<script type="text/javascript" src="index.js"></script>',
+        .'<script type="text/javascript" src="index.js?1"></script>',
 ]);

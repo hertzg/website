@@ -62,10 +62,8 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
     include_once "$fnsDir/ItemList/Received/escapedPageQuery.php";
     include_once "$fnsDir/Page/imageLink.php";
     $href = "{$base}delete-all/".ItemList\Received\escapedPageQuery();
-    $deleteAllLink =
-        '<div id="deleteAllLink">'
-            .Page\imageLink('Delete All Notes', $href, 'trash-bin')
-        .'</div>';
+    $deleteAllLink = Page\imageLink('Delete All Notes',
+        $href, 'trash-bin', ['id' => 'delete-all']);
 
     include_once __DIR__.'/create_tabs.php';
     include_once "$fnsDir/create_new_item_button.php";

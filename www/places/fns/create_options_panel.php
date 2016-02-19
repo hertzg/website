@@ -14,11 +14,9 @@ function create_options_panel ($user, $base = '') {
         Page\imageArrowLink('Map',
             "{$base}map/".ItemList\listHref(''), 'place-on-earth')
         .'<div class="hr"></div>'
-        .'<div id="deleteAllLink">'
-            .Page\imageLink('Delete All Places',
-                "{$base}delete-all/".ItemList\escapedPageQuery(),
-                'trash-bin')
-        .'</div>';
+        .Page\imageLink('Delete All Places',
+            "{$base}delete-all/".ItemList\escapedPageQuery(),
+            'trash-bin', ['id' => 'delete-all']);
 
     include_once "$fnsDir/create_panel.php";
     return create_panel('Options', $content);

@@ -17,5 +17,5 @@ echo_user_page($user, "All Transactions in Wallet #$id", $content, $base, [
         .'<script type="text/javascript">'
             ."var deleteAllHref = '../delete-all/submit.php?id=$id'"
         .'</script>'
-        .'<script type="text/javascript" src="../index.js?1"></script>',
+        .'<script type="text/javascript" src="../index.js?2"></script>',
 ]);

@@ -10,10 +10,8 @@ function create_options_panel ($user, $base = '') {
     $href = "{$base}delete-all/".ItemList\escapedPageQuery();
 
     include_once "$fnsDir/Page/imageLink.php";
-    $content =
-        '<div id="deleteAllLink">'
-            .Page\imageLink('Delete All Calculations', $href, 'trash-bin')
-        .'</div>';
+    $content = Page\imageLink('Delete All Calculations',
+        $href, 'trash-bin', ['id' => 'delete-all']);
 
     include_once "$fnsDir/create_panel.php";
     return create_panel('Options', $content);

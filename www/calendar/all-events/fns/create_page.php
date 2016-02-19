@@ -50,11 +50,9 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
     $escapedPageQuery = ItemList\escapedPageQuery();
 
     include_once "$fnsDir/Page/imageLink.php";
-    $deleteLink =
-        '<div id="deleteAllLink">'
-            .Page\imageLink('Delete All Events',
-                "{$base}delete-all/$escapedPageQuery", 'trash-bin')
-        .'</div>';
+    $deleteLink = Page\imageLink('Delete All Events',
+        "{$base}delete-all/$escapedPageQuery",
+        'trash-bin', ['id' => 'delete-all']);
 
     unset(
         $_SESSION['calendar/all-events/new/errors'],

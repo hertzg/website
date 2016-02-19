@@ -60,11 +60,8 @@ function create ($mysqli, $user, $wallet, &$scripts) {
     $escapedItemQuery = \ItemList\escapedItemQuery($id);
 
     include_once "$fnsDir/Page/imageLink.php";
-    $deleteLink =
-        '<div id="deleteAllLink">'
-            .\Page\imageLink('Delete All Transactions',
-                "../delete-all/$escapedItemQuery", 'trash-bin')
-        .'</div>';
+    $deleteLink = \Page\imageLink('Delete All Transactions',
+        "../delete-all/$escapedItemQuery", 'trash-bin', ['id' => 'delete-all']);
 
     include_once "$fnsDir/create_panel.php";
     include_once "$fnsDir/Page/create.php";

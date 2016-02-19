@@ -24,11 +24,8 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
         $tokens = Tokens\indexOnUser($mysqli, $user->id_users);
 
         include_once "$fnsDir/Page/imageLink.php";
-        $options[] =
-            '<div id="deleteAllLink">'
-                .Page\imageLink('Delete All Sessions',
-                    "{$base}delete-all/", 'trash-bin')
-            .'</div>';
+        $options[] = Page\imageLink('Delete All Sessions',
+            "{$base}delete-all/", 'trash-bin', ['id' => 'delete-all']);
 
         $icon = 'token';
 

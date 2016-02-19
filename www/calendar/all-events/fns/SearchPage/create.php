@@ -52,11 +52,8 @@ function create ($mysqli, $user, &$scripts) {
     $escapedPageQuery = \ItemList\escapedPageQuery();
 
     include_once "$fnsDir/Page/imageLink.php";
-    $deleteLink =
-        '<div id="deleteAllLink">'
-            .\Page\imageLink('Delete All Events',
-                "../delete-all/$escapedPageQuery", 'trash-bin')
-        .'</div>';
+    $deleteLink = \Page\imageLink('Delete All Events',
+        "../delete-all/$escapedPageQuery", 'trash-bin', ['id' => 'delete-all']);
 
     include_once __DIR__.'/../sort_panel.php';
     include_once "$fnsDir/create_panel.php";

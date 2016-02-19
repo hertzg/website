@@ -8,11 +8,9 @@ function create_content ($user, $items, $base) {
     $escapedPageQuery = ItemList\Received\escapedPageQuery();
 
     include_once "$fnsDir/Page/imageLink.php";
-    $deleteAllLink =
-        '<div id="deleteAllLink">'
-            .Page\imageLink('Delete All Files',
-                "{$base}delete-all/$escapedPageQuery", 'trash-bin')
-        .'</div>';
+    $deleteAllLink = Page\imageLink('Delete All Files',
+        "{$base}delete-all/$escapedPageQuery",
+        'trash-bin', ['id' => 'delete-all']);
 
     include_once __DIR__.'/create_tabs.php';
     include_once "$fnsDir/create_panel.php";

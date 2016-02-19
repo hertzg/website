@@ -19,5 +19,5 @@ echo_user_page($user, 'All Events', $content, $base, [
         .'<script type="text/javascript">'
             ."var deleteAllHref = 'delete-all/submit.php'"
         .'</script>'
-        .'<script type="text/javascript" src="index.js?2"></script>',
+        .'<script type="text/javascript" src="index.js?3"></script>',
 ]);

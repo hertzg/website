@@ -8,11 +8,9 @@ function create_options_panel ($user, $base = '') {
 
     include_once "$fnsDir/ItemList/escapedPageQuery.php";
     include_once "$fnsDir/Page/imageLink.php";
-    $content =
-        '<div id="deleteAllLink">'
-            .Page\imageLink('Delete All Bar Charts',
-                "{$base}delete-all/".ItemList\escapedPageQuery(), 'trash-bin')
-        .'</div>';
+    $content = Page\imageLink('Delete All Bar Charts',
+        "{$base}delete-all/".ItemList\escapedPageQuery(),
+        'trash-bin', ['id' => 'delete-all']);
 
     include_once "$fnsDir/create_panel.php";
     return create_panel('Options', $content);
