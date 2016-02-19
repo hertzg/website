@@ -21,12 +21,12 @@ $fnsDir = '../../fns';
 include_once "$fnsDir/Users/Wallets/index.php";
 $wallets = Users\Wallets\index($mysqli, $user);
 
-$options = [];
-foreach ($wallets as $wallet) {
-    $to_id = $wallet->id;
-    if ($to_id == $id) continue;
-    $options[$to_id] = htmlspecialchars($wallet->name);
-}
+$wallets = array_filter($wallets, function ($wallet) use ($id) {
+    return $wallet->id != $id;
+});
+
+include_once '../fns/wallet_options.php';
+$walletOptions = wallet_options($wallets);
 
 unset(
     $_SESSION['wallets/view/errors'],
@@ -46,7 +46,7 @@ $content = Page\create(
     'Transfer Amount',
     Page\sessionErrors('wallets/transfer-amount/errors')
     .'<form action="submit.php" method="post">'
-        .create_transfer_form_items($values, $options)
+        .create_transfer_form_items($values, $walletOptions)
         .ItemList\itemHiddenInputs($id)
     .'</form>'
 );
