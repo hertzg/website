@@ -68,5 +68,17 @@ $content = Page\create(
     .'</form>'
 );
 
+if ($user->num_wallets > 1) {
+
+    include_once "$fnsDir/Page/imageLinkWithDescription.php";
+    $link = Page\imageLinkWithDescription('Transfer Amount',
+        'From another wallet', '../quick-transfer-amount/',
+        'transfer-amount', ['localNavigation' => true]);
+
+    include_once "$fnsDir/create_panel.php";
+    $content .= create_panel('Options', $link);
+
+}
+
 include_once "$fnsDir/echo_user_page.php";
 echo_user_page($user, 'Transfer Amount', $content, '../../');
