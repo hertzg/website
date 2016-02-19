@@ -45,15 +45,17 @@ function renderCalendar ($user, &$head, &$scripts, $mysqli) {
                 .'</span>';
         }
         if ($tomorrow) $descriptions[] = $n_events($tomorrow).'&nbsp;tomorrow.';
-        $description = join(' ', $descriptions);
 
-        $description = "<span class=\"colorText grey\">$description</span>";
+        $description =
+            '<br class="zeroHeight" />'
+            .'<span class="thumbnail_link-description colorText grey">'
+                .join(' ', $descriptions)
+            .'</span>';
 
     } else {
         $description = '';
     }
 
-    // TODO do not create description tags if its content is empty
     include_once "$fnsDir/create_calendar_icon_today.php";
     return '<a name="calendar"></a>'
         .'<a href="../calendar/" id="calendar"'
@@ -63,10 +65,7 @@ function renderCalendar ($user, &$head, &$scripts, $mysqli) {
             .'</span>'
             .'<span class="thumbnail_link-content">'
                 .'<span class="thumbnail_link-title">Calendar</span>'
-                .'<br class="zeroHeight" />'
-                .'<span class="thumbnail_link-description">'
-                    .$description
-                .'</span>'
+                .$description
             .'</span>'
         .'</a>';
 

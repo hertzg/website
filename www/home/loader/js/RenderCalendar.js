@@ -30,29 +30,27 @@ function RenderCalendar (div, response) {
                 span.className = 'thumbnail_link-title'
                 ui.Text(span, 'Calendar')
             })
-            ui.ZeroHeightBr(span)
-            ui.Element(span, 'span', function (span) {
-                span.className = 'thumbnail_link-description'
+            if (today || tomorrow) {
+                ui.ZeroHeightBr(span)
                 ui.Element(span, 'span', function (span) {
-                    span.className = 'colorText grey'
-                    if (today || tomorrow) {
 
-                        if (today) {
-                            ui.Element(span, 'span', function (span) {
-                                span.className = 'colorText red'
-                                ui.Text(span, n_events(today) + '\xa0today.')
-                            })
-                        }
+                    span.className = 'thumbnail_link-description colorText grey'
 
-                        if (tomorrow) {
-                            var text = n_events(tomorrow) + '\xa0tomorrow.'
-                            if (today) text = ' ' + text
-                            ui.Text(span, text)
-                        }
-
+                    if (today) {
+                        ui.Element(span, 'span', function (span) {
+                            span.className = 'colorText red'
+                            ui.Text(span, n_events(today) + '\xa0today.')
+                        })
                     }
+
+                    if (tomorrow) {
+                        var text = n_events(tomorrow) + '\xa0tomorrow.'
+                        if (today) text = ' ' + text
+                        ui.Text(span, text)
+                    }
+
                 })
-            })
+            }
         })
     })
 
