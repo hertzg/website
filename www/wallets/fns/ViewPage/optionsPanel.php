@@ -19,21 +19,16 @@ function optionsPanel ($wallet, $user) {
                 "../delete/$escapedItemQuery", 'trash-bin')
         .'</div>';
 
+    include_once "$fnsDir/Page/staticTwoColumns.php";
+    $content = \Page\staticTwoColumns($editLink, $deleteLink);
+
     if ($user->num_wallets > 1) {
-
-        $transferAmountLink = \Page\imageArrowLink(
-            'Transfer Amount', "../transfer-amount/$escapedItemQuery",
-            'transfer-amount', ['id' => 'transfer-amount']);
-
-        include_once "$fnsDir/Page/twoColumns.php";
         $content =
-            \Page\twoColumns($editLink, $transferAmountLink)
+            \Page\imageArrowLink('Transfer Amount',
+                "../transfer-amount/$escapedItemQuery",
+                'transfer-amount', ['id' => 'transfer-amount'])
             .'<div class="hr"></div>'
-            .$deleteLink;
-
-    } else {
-        include_once "$fnsDir/Page/staticTwoColumns.php";
-        $content = \Page\staticTwoColumns($editLink, $deleteLink);
+            .$content;
     }
 
     include_once "$fnsDir/create_panel.php";
