@@ -112,7 +112,6 @@
 
         function mouseMove (e) {
 
-            var rect = svgElement.getBoundingClientRect()
             var newClientX = e.clientX,
                 newClientY = e.clientY
 
