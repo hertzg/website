@@ -25,7 +25,7 @@ function datefield ($day, $month, $year,
 
     include_once __DIR__.'/getBoolAttribute.php';
     $daySelect =
-        '<select class="form-select day"'
+        '<select class="form-select form-datefield-day"'
         .getBoolAttribute('autofocus', $day)
         ." name=\"$dayName\" id=\"$dayName\"$requiredAttribute>$emptyOption";
     for ($i = 1; $i <= 31; $i++) {
@@ -36,7 +36,7 @@ function datefield ($day, $month, $year,
     $daySelect .= '</select>';
 
     $monthSelect =
-        '<select class="form-select month"'
+        '<select class="form-select"'
         .getBoolAttribute('autofocus', $month)
         ." name=\"$month[name]\"$requiredAttribute>$emptyOption";
     for ($i = 1; $i <= 12; $i++) {
@@ -50,7 +50,7 @@ function datefield ($day, $month, $year,
     $monthSelect .= '</select>';
 
     $yearSelect =
-        '<select class="form-select year"'
+        '<select class="form-select"'
         .getBoolAttribute('autofocus', $year)
         ." name=\"$year[name]\"$requiredAttribute>$emptyOption";
     for ($i = $maxYear; $i >= $minYear; $i--) {
@@ -60,9 +60,14 @@ function datefield ($day, $month, $year,
     }
     $yearSelect .= '</select>';
 
-    $html =
-        '<div class="datefield">'
-            .$daySelect.$monthSelect.$yearSelect
+    $html = $daySelect
+        .'<div class="form-datefield-month">'
+            .'<div class="form-textfield-label-separator"></div>'
+            ."<div class=\"form-datefield-content\">$monthSelect</div>"
+        .'</div>'
+        .'<div class="form-datefield-year">'
+            .'<div class="form-textfield-label-separator"></div>   '
+            ."<div class=\"form-datefield-content\">$yearSelect</div>"
         .'</div>';
 
     include_once __DIR__.'/association.php';

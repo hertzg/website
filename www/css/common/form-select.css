@@ -5,6 +5,8 @@
     font-weight: bold;
     border: 2px solid transparent;
     border-radius: 2px;
+    -moz-appearance: none;
+    -webkit-appearance: none;
 }
 .form-select:focus {
     background-color: rgba(127, 127, 127, 0.2);
@@ -19,16 +21,6 @@
 .form-select:-moz-ui-invalid {
     border-color: #f44;
     background-color: #fff4f4;
-}
-
-.form-select.year {
-    width: 30%;
-}
-.form-select.month {
-    width: 45%;
-}
-.form-select.day {
-    width: 25%;
 }
 
 .form-select.hour,
