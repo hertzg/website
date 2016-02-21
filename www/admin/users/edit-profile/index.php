@@ -22,12 +22,8 @@ $fnsDir = '../../../fns';
 include_once "$fnsDir/ItemList/escapedItemQuery.php";
 $escapedItemQuery = ItemList\escapedItemQuery($id);
 
-include_once "$fnsDir/Users/emailExpireDays.php";
-include_once "$fnsDir/Users/expireDays.php";
-$expireDays = Users\emailExpireDays() + Users\expireDays();
-
+include_once '../fns/create_profile_form_items.php';
 include_once "$fnsDir/Form/button.php";
-include_once "$fnsDir/Form/checkbox.php";
 include_once "$fnsDir/Form/notes.php";
 include_once "$fnsDir/Form/textfield.php";
 include_once "$fnsDir/Page/create.php";
@@ -54,15 +50,7 @@ $content = Page\create(
             'Minimum '.Username\minLength().' characters.',
         ])
         .'<div class="hr"></div>'
-        .Form\checkbox('admin', 'Administrator', $values['admin'])
-        .'<div class="hr"></div>'
-        .Form\checkbox('disabled', 'Disable', $values['disabled'])
-        .'<div class="hr"></div>'
-        .Form\checkbox('expires', 'Expire when inactive', $values['expires'])
-        .Form\notes([
-            'If checked the user will expire'
-            ." after $expireDays days of inactivity.",
-        ])
+        .create_profile_form_items($values, $scripts)
         .'<div class="hr"></div>'
         .Form\button('Save Changes')
         ."<input type=\"hidden\" name=\"id\" value=\"$id\" />"
@@ -70,7 +58,5 @@ $content = Page\create(
 );
 
 include_once '../../fns/echo_admin_page.php';
-include_once "$fnsDir/compressed_js_script.php";
-echo_admin_page($admin_user, "Edit User #$id Profile", $content, '../../', [
-    'scripts' => compressed_js_script('formCheckbox', '../../../'),
-]);
+echo_admin_page($admin_user, "Edit User #$id Profile",
+    $content, '../../', ['scripts' => $scripts]);
