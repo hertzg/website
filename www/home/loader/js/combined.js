@@ -138,10 +138,9 @@ function RenderBookmarks (div, response) {
         if (num_new_received) {
             descriptions.push(num_new_received + '\xa0new\xa0received.')
         }
-        description = descriptions.join(' ')
 
         ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
-            ui.Text(span, description)
+            ui.Text(span, descriptions.join(' '))
         }, href, icon, options)
         return
 
@@ -171,10 +170,9 @@ function RenderCalculations (div, response) {
         if (num_new_received) {
             descriptions.push(num_new_received + '\xa0new\xa0received.')
         }
-        description = descriptions.join(' ')
 
         ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
-            ui.Text(span, description)
+            ui.Text(span, descriptions.join(' '))
         }, href, icon, options)
         return
 
@@ -262,10 +260,9 @@ function RenderContacts (div, response) {
         if (num_new_received) {
             descriptions.push(num_new_received + '\xa0new\xa0received.')
         }
-        description = descriptions.join(' ')
 
         ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
-            ui.Text(span, description)
+            ui.Text(span, descriptions.join(' '))
         }, href, icon, options)
         return
 
@@ -298,10 +295,9 @@ function RenderFiles (div, response) {
         if (num_new_received) {
             descriptions.push(num_new_received + '\xa0new\xa0received.')
         }
-        description = descriptions.join(' ')
 
         ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
-            ui.Text(span, description)
+            ui.Text(span, descriptions.join(' '))
         }, href, icon, options)
         return
 
@@ -383,10 +379,9 @@ function RenderNotes (div, response) {
         if (num_new_received) {
             descriptions.push(num_new_received + '\xa0new\xa0received.')
         }
-        description = descriptions.join(' ')
 
         ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
-            ui.Text(span, description)
+            ui.Text(span, descriptions.join(' '))
         }, href, icon, options)
         return
 
@@ -453,10 +448,9 @@ function RenderPlaces (div, response) {
         if (num_new_received) {
             descriptions.push(num_new_received + '\xa0new\xa0received.')
         }
-        description = descriptions.join(' ')
 
         ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
-            ui.Text(span, description)
+            ui.Text(span, descriptions.join(' '))
         }, href, icon, options)
         return
 
@@ -536,10 +530,9 @@ function RenderTasks (div, response) {
         if (num_new_received) {
             descriptions.push(num_new_received + '\xa0new\xa0received.')
         }
-        description = descriptions.join(' ')
 
         ui.Page_thumbnailLinkWithDescription(div, title, function (span) {
-            ui.Text(span, description)
+            ui.Text(span, descriptions.join(' '))
         }, href, icon, options)
         return
 
