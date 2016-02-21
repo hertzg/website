@@ -148,8 +148,6 @@
         var maxPositions = 40,
             enoughPositions = 10
 
-        var latitude, longitude
-
         var watchId = geolocation.watchPosition(function (position) {
 
             if (position.coords.accuracy > 50) return
@@ -196,9 +194,10 @@
                 altitudeAccuracy += coords.altitudeAccuracy
             })
 
-            latitude = 0
-            longitude = 0
-            altitude = 0
+            var latitude = 0,
+                longitude = 0,
+                altitude = 0
+
             positions.forEach(function (position) {
 
                 var coords = position.coords

@@ -16,7 +16,7 @@ function get_revisions () {
         'js/dateField/compressed.js' => 1,
         'js/flexTextarea/compressed.js' => 2,
         'js/formCheckbox/compressed.js' => 2,
-        'js/geolocationDialog/compressed.js' => 7,
+        'js/geolocationDialog/compressed.js' => 8,
         'js/imageProgress/compressed.js' => 4,
         'js/lineSizeRounding/compressed.js' => 6,
         'js/localNavigation/compressed.js' => 14,
