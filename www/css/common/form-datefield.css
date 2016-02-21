@@ -4,26 +4,8 @@
 
 .form-datefield-month {
     width: 45%;
-    position: relative;
-    display: inline-block;
-    vertical-align: top;
 }
 
 .form-datefield-year {
     width: 30%;
-    position: relative;
-    display: inline-block;
-    vertical-align: top;
-}
-
-.form-datefield-separator {
-    position: absolute;
-    top: 10px;
-    bottom: 10px;
-    left: 0;
-    width: 1px;
-}
-
-.form-datefield-content {
-    margin-left: 1px;
 }

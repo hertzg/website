@@ -21,9 +21,9 @@ function textfieldWithLabel ($name, $text, $options = [], $labelOptions = []) {
         '<input class="form-textfield withLabel"'
         .$maxlengthAttribute.$valueAttribute
         ." id=\"$name\" name=\"$name\" type=\"text\" />"
-        .'<div class="form-textfield-label">'
-            .'<div class="form-textfield-label-separator"></div>'
-            .'<div class="form-textfield-label-input">'
+        .'<div class="form-textfield-label form-component">'
+            .'<div class="form-component-separator"></div>'
+            .'<div class="form-component-content">'
                 .'<input class="form-textfield"'
                 ." placeholder=\"$labelOptions[placeholder]\""
                 ." type=\"text\" name=\"{$name}_label\""

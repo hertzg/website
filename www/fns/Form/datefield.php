@@ -61,13 +61,13 @@ function datefield ($day, $month, $year,
     $yearSelect .= '</select>';
 
     $html = $daySelect
-        .'<div class="form-datefield-month">'
-            .'<div class="form-textfield-label-separator"></div>'
-            ."<div class=\"form-datefield-content\">$monthSelect</div>"
+        .'<div class="form-datefield-month form-component">'
+            .'<div class="form-component-separator"></div>'
+            ."<div class=\"form-component-content\">$monthSelect</div>"
         .'</div>'
-        .'<div class="form-datefield-year">'
-            .'<div class="form-textfield-label-separator"></div>   '
-            ."<div class=\"form-datefield-content\">$yearSelect</div>"
+        .'<div class="form-datefield-year form-component">'
+            .'<div class="form-component-separator"></div>   '
+            ."<div class=\"form-component-content\">$yearSelect</div>"
         .'</div>';
 
     include_once __DIR__.'/association.php';

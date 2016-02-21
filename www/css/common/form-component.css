@@ -1,0 +1,17 @@
+.form-component {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+}
+
+.form-component-separator {
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: 0;
+    width: 1px;
+}
+
+.form-component-content {
+    margin-left: 1px;
+}

@@ -17,25 +17,5 @@
 }
 
 .form-textfield-label {
-    display: inline-block;
-    vertical-align: top;
-    position: relative;
     width: 35%;
-    height: 48px;
-}
-
-.form-textfield-label-separator {
-    position: absolute;
-    top: 10px;
-    bottom: 10px;
-    left: 0;
-    width: 1px;
-}
-
-.form-textfield-label-input {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 1px;
 }
