@@ -10,7 +10,7 @@ include_once '../../lib/mysqli.php';
 
 if ($user->home_num_new_received_schedules) {
     include_once "$fnsDir/Users/Schedules/Received/clearNumberNew.php";
-    Users\Schedules\Received\clearNumberNew($mysqli, $user->id_users);
+    Users\Schedules\Received\clearNumberNew($mysqli, $user);
 }
 
 unset(

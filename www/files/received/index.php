@@ -2,7 +2,6 @@
 
 include_once 'fns/require_received_files.php';
 $user = require_received_files();
-$id_users = $user->id_users;
 
 $base = '../../';
 $fnsDir = '../../fns';
@@ -11,12 +10,12 @@ include_once '../../lib/mysqli.php';
 
 if ($user->home_num_new_received_folders) {
     include_once "$fnsDir/Users/Folders/Received/clearNumberNew.php";
-    Users\Folders\Received\clearNumberNew($mysqli, $id_users);
+    Users\Folders\Received\clearNumberNew($mysqli, $user);
 }
 
 if ($user->home_num_new_received_files) {
     include_once "$fnsDir/Users/Files/Received/clearNumberNew.php";
-    Users\Files\Received\clearNumberNew($mysqli, $id_users);
+    Users\Files\Received\clearNumberNew($mysqli, $user);
 }
 
 unset(
