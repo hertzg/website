@@ -20,7 +20,8 @@ function ScanLinks (absoluteBase, loaderRevisions, unloadProgress, loadHref) {
 
             link.addEventListener('click', function (e) {
 
-                if (e.button !== 0) return
+                if (e.button !== 0 || e.altKey ||
+                    e.ctrlKey || e.metaKey || e.shiftKey) return
 
                 e.preventDefault()
                 unloadProgress.show()
