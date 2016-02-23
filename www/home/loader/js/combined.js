@@ -95,7 +95,8 @@ function HomeItems (response) {
 }
 ;
 function RenderAdmin (div) {
-    ui.Page_thumbnailLink(div, 'Administration', '../admin/', 'administration')
+    ui.Page_thumbnailLink(div, 'Administration',
+        '../admin/', 'administration', { id: 'admin' })
 }
 ;
 function RenderBarCharts (div, response) {

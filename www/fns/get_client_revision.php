@@ -1,5 +1,5 @@
 <?php
 
 function get_client_revision () {
-    return 63;
+    return 64;
 }
