@@ -17,6 +17,7 @@ else {
 unset(
     $_SESSION['admin/connections/errors'],
     $_SESSION['admin/connections/messages'],
+    $_SESSION['admin/connections/view/errors'],
     $_SESSION['admin/connections/view/messages']
 );
 

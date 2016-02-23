@@ -60,6 +60,7 @@ function create ($mysqli, $connection, &$scripts) {
     include_once "$fnsDir/ItemList/listHref.php";
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/infoText.php";
+    include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     return
         \Page\create(
@@ -68,7 +69,8 @@ function create ($mysqli, $connection, &$scripts) {
                 'href' => \ItemList\listHref()."#$id",
             ],
             "Connection #$id",
-            \Page\sessionMessages('admin/connections/view/messages')
+            \Page\sessionErrors('admin/connections/view/errors')
+            .\Page\sessionMessages('admin/connections/view/messages')
             .\Form\label('Address', $address)
             .'<div class="hr"></div>'
             .create_expires_label($connection->expire_time)
@@ -89,6 +91,6 @@ function create ($mysqli, $connection, &$scripts) {
             create_new_item_button('Conneciton', '../')
         )
         .authsPanel($mysqli, $connection, $scripts)
-        .optionsPanel($id);
+        .optionsPanel($connection);
 
 }

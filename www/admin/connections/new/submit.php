@@ -36,6 +36,7 @@ unset(
     $_SESSION['admin/connections/new/values']
 );
 
+unset($_SESSION['admin/connections/view/errors']);
 $_SESSION['admin/connections/view/messages'] = [
     'Connection has been saved.',
 ];

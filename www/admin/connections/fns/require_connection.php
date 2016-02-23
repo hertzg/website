@@ -20,7 +20,7 @@ function require_connection ($mysqli, $base = '') {
         $_SESSION['admin/connections/errors'] = [$error];
         unset($_SESSION['admin/connections/messages']);
         include_once "$fnsDir/redirect.php";
-        redirect("$base..");
+        redirect($base === '' ? './' : $base);
     }
 
     return [$connection, $id, $admin_user];

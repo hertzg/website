@@ -7,7 +7,7 @@ require_same_domain_referer('..');
 
 include_once '../fns/require_connection.php';
 include_once '../../../lib/mysqli.php';
-list($connection, $id) = require_connection($mysqli);
+list($connection, $id) = require_connection($mysqli, '../');
 
 include_once '../fns/request_connection_params.php';
 list($address, $their_exchange_api_key, $expires,
@@ -49,6 +49,10 @@ unset(
     $_SESSION['admin/connections/edit/values']
 );
 
-$_SESSION['admin/connections/view/messages'] = ['Changes have been saved.'];
+unset($_SESSION['admin/connections/view/errors']);
+$_SESSION['admin/connections/view/messages'] = [
+    'Changes have been saved.',
+    'Consider testing the settings.',
+];
 
 redirect("../view/$itemQuery");

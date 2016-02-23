@@ -2,7 +2,7 @@
 
 include_once '../fns/require_connection.php';
 include_once '../../../lib/mysqli.php';
-list($connection, $id, $admin_user) = require_connection($mysqli);
+list($connection, $id, $admin_user) = require_connection($mysqli, '../');
 
 $fnsDir = '../../../fns';
 
@@ -19,7 +19,10 @@ else {
     ];
 }
 
-unset($_SESSION['admin/connections/view/messages']);
+unset(
+    $_SESSION['admin/connections/view/errors'],
+    $_SESSION['admin/connections/view/messages']
+);
 
 include_once '../fns/create_form_items.php';
 include_once "$fnsDir/Form/button.php";

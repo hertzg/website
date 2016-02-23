@@ -7,7 +7,7 @@ require_same_domain_referer('..');
 
 include_once '../fns/require_connection.php';
 include_once '../../../lib/mysqli.php';
-list($connection, $id) = require_connection($mysqli);
+list($connection, $id) = require_connection($mysqli, '../');
 
 include_once "$fnsDir/AdminConnections/delete.php";
 AdminConnections\delete($mysqli, $id);
