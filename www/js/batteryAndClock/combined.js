@@ -227,6 +227,7 @@ function Clock (remoteTime, timezone) {
     localNavigation.onUnload(function () {
         battery.unload()
         clock.unload()
+        delete window.batteryAndClock
     })
 
 })(base, time, timezone, localNavigation)

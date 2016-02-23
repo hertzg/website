@@ -195,6 +195,7 @@ function TimeoutDialog (noHref, yesListener, noListener) {
     localNavigation.onUnload(function () {
         clearTimeout(checkTimeout)
         if (timeoutDialog !== null) timeoutDialog.unload()
+        delete window.sessionTimeout
     })
 
 })(base, localNavigation)
