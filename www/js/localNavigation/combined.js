@@ -91,6 +91,8 @@ function ScanLinks (absoluteBase, loaderRevisions, unloadProgress, loadHref) {
 
             link.addEventListener('click', function (e) {
 
+                if (e.button !== 0) return
+
                 e.preventDefault()
                 unloadProgress.show()
 
