@@ -29,7 +29,8 @@ function create_page ($user, &$head, &$scripts, $base = '') {
         if ($key === 'calendar') {
             include_once "$fnsDir/create_calendar_icon_today.php";
             $content .=
-                "<a href=\"$href\""
+                '<a name="calendar"></a>'
+                ."<a href=\"$href\" id=\"calendar\""
                 ." class=\"clickable link image_link withArrow localNavigation-link\">"
                     .'<span class="image_link-icon">'
                         .create_calendar_icon_today($user)

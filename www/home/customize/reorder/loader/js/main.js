@@ -29,6 +29,10 @@
                     var href = 'move/?key=' + key
                     if (key === 'calendar') {
                         ui.Element(div, 'a', function (a) {
+                            a.name = 'calendar'
+                        })
+                        ui.Element(div, 'a', function (a) {
+                            a.id = 'calendar'
                             a.href = href
                             a.className = 'clickable link image_link withArrow localNavigation-link'
                             ui.Element(a, 'span', function (span) {
