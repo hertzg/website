@@ -1,4 +1,4 @@
-function UnloadPage (unloadProgress, base, revisions) {
+function UnloadPage (unloadProgress, absoluteBase, revisions) {
 
     var body = document.body,
         head = document.head
@@ -29,18 +29,18 @@ function UnloadPage (unloadProgress, base, revisions) {
         ;(function () {
 
             function updateIcon (size) {
-                var href = 'theme/color/' + color + '/images/icon' + size + '.png'
+                var pathname = 'theme/color/' + color + '/images/icon' + size + '.png'
                 var link = document.getElementById('icon' + size + 'Link')
-                link.href = base + href + '?' + revisions[href]
+                link.href = absoluteBase + pathname + '?' + revisions[pathname]
             }
 
             var color = response.themeColor
             if (color === window.themeColor) return
             window.themeColor = color
 
-            var href = 'theme/color/' + color + '/common.css'
+            var pathname = 'theme/color/' + color + '/common.css'
             var link = document.getElementById('themeColorLink')
-            link.href = base + href + '?' + revisions[href]
+            link.href = absoluteBase + pathname + '?' + revisions[pathname]
 
             updateIcon(16)
             updateIcon(32)
@@ -60,9 +60,9 @@ function UnloadPage (unloadProgress, base, revisions) {
             if (brightness !== window.themeBrightness) return
             window.themeBrightness = brightness
 
-            var href = 'theme/brightness/' + brightness + '/common.css'
+            var pathname = 'theme/brightness/' + brightness + '/common.css'
             var link = document.getElementById('themeBrightnessLink')
-            link.href = base + href + '?' + revisions[href]
+            link.href = absoluteBase + pathname + '?' + revisions[pathname]
 
         })()
 
