@@ -147,7 +147,6 @@ function UnloadPage (unloadProgress, absoluteBase, revisions) {
             }
 
             var color = response.themeColor
-            if (color === window.themeColor) return
             window.themeColor = color
 
             var pathname = 'theme/color/' + color + '/common.css'
@@ -169,7 +168,6 @@ function UnloadPage (unloadProgress, absoluteBase, revisions) {
         ;(function () {
 
             var brightness = response.themeBrightness
-            if (brightness !== window.themeBrightness) return
             window.themeBrightness = brightness
 
             var pathname = 'theme/brightness/' + brightness + '/common.css'

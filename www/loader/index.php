@@ -10,9 +10,11 @@ include_once '../fns/unset_session_vars.php';
 unset_session_vars();
 
 include_once '../fns/SiteTitle/get.php';
+include_once '../fns/Theme/Brightness/getDefault.php';
 include_once '../fns/Theme/Color/getDefault.php';
 $response = [
     'siteTitle' => SiteTitle\get(),
+    'themeBrightness' => Theme\Brightness\getDefault(),
     'themeColor' => Theme\Color\getDefault(),
 ];
 
