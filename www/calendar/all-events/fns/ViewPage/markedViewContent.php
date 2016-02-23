@@ -2,7 +2,7 @@
 
 namespace ViewPage;
 
-function markedViewContent ($event, &$scripts, $keyword) {
+function markedViewContent ($event, &$head, &$scripts, $keyword) {
 
     $fnsDir = __DIR__.'/../../../../fns';
 
@@ -22,13 +22,14 @@ function markedViewContent ($event, &$scripts, $keyword) {
     $text = htmlspecialchars($event->text);
     $text = preg_replace($regex, '<mark>$0</mark>', $text);
 
+    include_once __DIR__.'/../../../fns/ViewPage/calendarLink.php';
     include_once "$fnsDir/format_event_time.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/text.php";
     return
         \Page\text($text)
         .'<div class="hr"></div>'
-        .\Page\text(format_event_time($event))
+        .calendarLink($event, '../', $head)
         .\Page\infoText($infoText);
 
 }

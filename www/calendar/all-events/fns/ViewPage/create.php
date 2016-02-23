@@ -2,7 +2,7 @@
 
 namespace ViewPage;
 
-function create ($user, $event, &$scripts) {
+function create ($user, $event, &$head, &$scripts) {
 
     $id = $event->id;
     $event_time = $event->event_time;
@@ -16,10 +16,10 @@ function create ($user, $event, &$scripts) {
 
     if ($keyword === '') {
         include_once __DIR__.'/../../../fns/ViewPage/viewContent.php';
-        $viewContent = viewContent($event, $scripts, '../');
+        $viewContent = viewContent($event, $head, $scripts, '../');
     } else {
         include_once __DIR__.'/markedViewContent.php';
-        $viewContent = markedViewContent($event, $scripts, $keyword);
+        $viewContent = markedViewContent($event, $head, $scripts, $keyword);
     }
 
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
