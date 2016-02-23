@@ -1,7 +1,8 @@
 <?php
 
 include_once '../fns/require_admin_api_key.php';
-require_admin_api_key('can_write_invitations', $apiKey, $mysqli);
+require_admin_api_key('invitation/add',
+    'can_write_invitations', $apiKey, $mysqli);
 
 include_once '../../../fns/Invitations/request.php';
 $note = Invitations\request();

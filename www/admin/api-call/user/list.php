@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/require_admin_api_key.php';
-require_admin_api_key('can_read_users', $apiKey, $mysqli);
+require_admin_api_key('user/list', 'can_read_users', $apiKey, $mysqli);
 
 include_once '../../../fns/Users/index.php';
 $users = Users\index($mysqli);

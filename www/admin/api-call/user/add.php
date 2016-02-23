@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/require_admin_api_key.php';
-require_admin_api_key('can_write_users', $apiKey, $mysqli);
+require_admin_api_key('user/add', 'can_write_users', $apiKey, $mysqli);
 
 $fnsDir = '../../../fns';
 

@@ -1,6 +1,7 @@
 <?php
 
-function require_admin_api_key ($permission_field, &$apiKey, &$mysqli) {
+function require_admin_api_key ($method,
+    $permission_field, &$apiKey, &$mysqli) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
@@ -44,6 +45,6 @@ function require_admin_api_key ($permission_field, &$apiKey, &$mysqli) {
     }
 
     include_once "$fnsDir/AdminApiKeyAuths/add.php";
-    AdminApiKeyAuths\add($mysqli, $apiKey->id, $client_address);
+    AdminApiKeyAuths\add($mysqli, $apiKey->id, $client_address, $method);
 
 }

@@ -1,7 +1,8 @@
 <?php
 
 include_once '../fns/require_admin_api_key.php';
-require_admin_api_key('can_read_invitations', $apiKey, $mysqli);
+require_admin_api_key('invitation/list',
+    'can_read_invitations', $apiKey, $mysqli);
 
 include_once '../../../fns/Invitations/index.php';
 $invitations = Invitations\index($mysqli);

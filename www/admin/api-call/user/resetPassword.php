@@ -1,7 +1,8 @@
 <?php
 
 include_once '../fns/require_admin_api_key.php';
-require_admin_api_key('can_write_users', $apiKey, $mysqli);
+require_admin_api_key('user/resetPassword',
+    'can_write_users', $apiKey, $mysqli);
 
 include_once 'fns/require_user.php';
 $user = require_user($mysqli);
