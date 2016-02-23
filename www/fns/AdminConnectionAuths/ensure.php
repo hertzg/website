@@ -15,6 +15,11 @@ function ensure ($mysqli) {
         ],
         'id_admin_connections' => ['type' => 'bigint(20) unsigned'],
         'insert_time' => ['type' => 'bigint(20) unsigned'],
+        'method' => [
+            'type' => 'varchar(50)',
+            'characterSet' => 'ascii',
+            'collation' => 'ascii_bin',
+        ],
         'remote_address' => \IPAddress\column(),
     ]);
 

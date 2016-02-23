@@ -1,6 +1,6 @@
 <?php
 
-function require_admin_connection (&$adminConnection, &$mysqli) {
+function require_admin_connection ($method, &$adminConnection, &$mysqli) {
 
     $fnsDir = __DIR__.'/../../fns';
 
@@ -41,6 +41,7 @@ function require_admin_connection (&$adminConnection, &$mysqli) {
     }
 
     include_once "$fnsDir/AdminConnectionAuths/add.php";
-    AdminConnectionAuths\add($mysqli, $adminConnection->id, $client_address);
+    AdminConnectionAuths\add($mysqli,
+        $adminConnection->id, $client_address, $method);
 
 }
