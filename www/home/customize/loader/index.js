@@ -42,13 +42,10 @@
             head: function (head) {
                 ui.compressed_css_link(head, 'confirmDialog', base)
             },
-            scripts: function (body) {
-                ui.compressed_js_script(body, 'confirmDialog', base)
-                ui.Element(body, 'script', function (script) {
-                    script.type = 'text/javascript'
-                    script.src = 'index.js'
-                })
-            },
+            scripts: [
+                ui.compressed_js_script('confirmDialog', base),
+                'index.js',
+            ],
         })
 
         localNavigation.scanLinks()

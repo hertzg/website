@@ -1,4 +1,22 @@
 (function () {
+function LoadScript (src, loadCallback, errorCallback) {
+
+    var script = document.createElement('script')
+    script.type = 'text/javascript'
+    script.src = src
+    script.onload = loadCallback
+    script.onerror = errorCallback
+
+    document.body.appendChild(script)
+
+    return {
+        abort: function () {
+            script.onload = script.onerror = null
+        },
+    }
+
+}
+;
 function FocusTarget () {
 
     var hash = location.hash
@@ -46,24 +64,6 @@ function LoadData (href, search, clientRevision, loadCallback, errorCallback) {
     return {
         abort: function () {
             request.abort()
-        },
-    }
-
-}
-;
-function LoadScript (src, loadCallback, errorCallback) {
-
-    var script = document.createElement('script')
-    script.type = 'text/javascript'
-    script.src = src
-    script.onload = loadCallback
-    script.onerror = errorCallback
-
-    document.body.appendChild(script)
-
-    return {
-        abort: function () {
-            script.onload = script.onerror = null
         },
     }
 
@@ -268,6 +268,9 @@ function UnloadPage (unloadProgress, base, revisions) {
         },
         registerPage: function (href, loader) {
             loaders[href] = loader
+        },
+        unUnload: function (listener) {
+            unloadListeners.splice(unloadListeners.indexOf(listener), 1)
         },
     }
 

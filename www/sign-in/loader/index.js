@@ -76,9 +76,7 @@
                 }
             })
         }, {
-            scripts: function (body) {
-                ui.compressed_js_script(body, 'formCheckbox', base)
-            },
+            scripts: [ui.compressed_js_script('formCheckbox', base)],
         })
 
         localNavigation.scanLinks()

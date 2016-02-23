@@ -15,7 +15,9 @@ function create_calendar_icon_today (parentNode, response) {
 
         loadCallback('Reorder Items')
 
-        ui.user_page(response, '../../../', function (body) {
+        var base = '../../../'
+
+        ui.user_page(response, base, function (body) {
             ui.Page_create(body, {
                 title: 'Customize',
                 href: '../#reorder',
@@ -80,13 +82,11 @@ function create_calendar_icon_today (parentNode, response) {
                 ui.compressed_css_link(head, 'calendarIcon', base)
                 ui.compressed_css_link(head, 'confirmDialog', base)
             },
-            scripts: function (body) {
-                ui.compressed_js_script(body, 'confirmDialog', base)
-                ui.Element(body, 'script', function (script) {
-                    script.type = 'text/javascript'
-                    script.src = 'index.js'
-                })
-            },
+            scripts: [
+                ui.compressed_js_script('calendarIcon', base),
+                ui.compressed_js_script('confirmDialog', base),
+                'index.js',
+            ],
         })
 
         localNavigation.scanLinks()

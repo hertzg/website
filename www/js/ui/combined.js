@@ -40,6 +40,24 @@ function DateAgo (time, timeNow, uppercase) {
 
 }
 ;
+function LoadScript (src, loadCallback, errorCallback) {
+
+    var script = document.createElement('script')
+    script.type = 'text/javascript'
+    script.src = src
+    script.onload = loadCallback
+    script.onerror = errorCallback
+
+    document.body.appendChild(script)
+
+    return {
+        abort: function () {
+            script.onload = script.onerror = null
+        },
+    }
+
+}
+;
 function AdminPage (page) {
     return function (response, adminBase, callback, options) {
 
@@ -79,15 +97,9 @@ function CompressedCssLink (revisions) {
 }
 ;
 function CompressedJsScript (revisions) {
-    return function (parentNode, name, base) {
-
+    return function (name, base) {
         var fullName = 'js/' + name + '/compressed.js'
-
-        Element(parentNode, 'script', function (script) {
-            script.type = 'text/javascript'
-            script.src = base + fullName + '?' + revisions[fullName]
-        })
-
+        return base + fullName + '?' + revisions[fullName]
     }
 }
 ;
@@ -155,6 +167,31 @@ function Hr (parentNode) {
     var div = document.createElement('div')
     div.className = 'hr'
     parentNode.appendChild(div)
+}
+;
+function LoadScripts (scripts, callback) {
+
+    function next () {
+        if (scripts.length === 0) {
+            current = null
+            callback()
+            return
+        }
+        var src = scripts.shift()
+        current = LoadScript(src, next, next)
+    }
+
+    var current = null
+
+    next()
+
+    return {
+        abort: function () {
+            current.abort()
+            current = null
+        },
+    }
+
 }
 ;
 function Page (localNavigation, revisions,
@@ -229,8 +266,11 @@ function Page (localNavigation, revisions,
             })
             callback(body)
         })
-        compressed_js_script(body, 'batteryAndClock', base)
-        compressed_js_script(body, 'lineSizeRounding', base)
+
+        var scripts = [
+            compressed_js_script('batteryAndClock', base),
+            compressed_js_script('lineSizeRounding', base),
+        ]
         if (user) {
 
             window.signOutTimeout = response.signOutTimeout
@@ -238,17 +278,24 @@ function Page (localNavigation, revisions,
                 delete window.signOutTimeout
             })
 
-            compressed_js_script(body, 'confirmDialog', base)
-            compressed_js_script(body, 'signOutConfirm', base)
+            scripts.push(compressed_js_script('confirmDialog', base))
+            scripts.push(compressed_js_script('signOutConfirm', base))
 
             if (response.session_remembered !== true) {
-                compressed_js_script(body, 'sessionTimeout', base)
+                scripts.push(compressed_js_script('sessionTimeout', base))
             }
 
         }
 
-        var scriptsCallback = options.scripts
-        if (scriptsCallback !== undefined) scriptsCallback(body)
+        var additionalScripts = options.scripts
+        if (additionalScripts !== undefined) {
+            scripts.push.apply(scripts, additionalScripts)
+        }
+
+        var loadScripts = LoadScripts(scripts, function () {
+            localNavigation.unUnload(loadScripts.abort)
+        })
+        localNavigation.onUnload(loadScripts.abort)
 
     }
 

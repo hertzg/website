@@ -85,6 +85,9 @@
         registerPage: function (href, loader) {
             loaders[href] = loader
         },
+        unUnload: function (listener) {
+            unloadListeners.splice(unloadListeners.indexOf(listener), 1)
+        },
     }
 
 })(base, revisions, loaderRevisions, clientRevision, unloadProgress)

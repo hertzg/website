@@ -594,6 +594,11 @@ function RenderWallets (div, response) {
 
         var base = '../'
 
+        var scripts = []
+        if (response.home.calendar !== undefined) {
+            scripts.push(ui.compressed_js_script('searchForm', base))
+        }
+
         ui.page(response, base, function (body) {
             ui.Page_emptyTabs(body, function (div) {
                 ui.Page_sessionMessages(div, response.messages)
@@ -626,14 +631,10 @@ function RenderWallets (div, response) {
                 })
             })
         }, {
+            scripts: scripts,
             head: function (head) {
                 if (response.home.calendar !== undefined) {
                     ui.compressed_css_link(head, 'calendarIcon', base)
-                }
-            },
-            scripts: function (body) {
-                if (response.home.calendar !== undefined) {
-                    ui.compressed_js_script(body, 'searchForm', base)
                 }
             },
         })

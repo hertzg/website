@@ -2,9 +2,9 @@
 process.chdir(__dirname)
 var CompressJsFiles = require('../CompressJsFiles.js')
 CompressJsFiles([
+    '../LoadScript',
     'FocusTarget',
     'LoadData',
-    'LoadScript',
     'ScanLinks',
     'UnloadPage',
     'main',

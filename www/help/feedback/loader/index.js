@@ -30,9 +30,7 @@
                 })
             })
         }, {
-            scripts: function (body) {
-                ui.compressed_js_script(body, 'flexTextarea', base)
-            },
+            scripts: [ui.compressed_js_script('flexTextarea', base)],
         })
 
         localNavigation.scanLinks()
