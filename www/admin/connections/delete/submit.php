@@ -12,8 +12,8 @@ list($connection, $id) = require_connection($mysqli);
 include_once "$fnsDir/AdminConnections/delete.php";
 AdminConnections\delete($mysqli, $id);
 
-//include_once "$fnsDir/AdminConnectionAuths/deleteOnAdminConnection.php";
-//AdminConnectionAuths\deleteOnAdminConnection($mysqli, $id);
+include_once "$fnsDir/AdminConnectionAuths/deleteOnAdminConnection.php";
+AdminConnectionAuths\deleteOnAdminConnection($mysqli, $id);
 
 unset($_SESSION['admin/connections/errors']);
 $_SESSION['admin/connections/messages'] = [
