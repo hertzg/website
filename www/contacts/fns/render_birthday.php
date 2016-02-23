@@ -24,16 +24,10 @@ function render_birthday ($user, $birthday_time, &$items, &$head, $base) {
     elseif ($month == $monthToday && $day > date('j', $timeToday)) $age--;
 
     include_once "$fnsDir/Form/association.php";
-    include_once "$fnsDir/create_calendar_icon.php";
+    include_once "$fnsDir/Page/calendarLink.php";
     $items[] = Form\association(
-        "<a href=\"$href\" class=\"clickable link image_link\">"
-            .'<span class="image_link-icon">'
-                .create_calendar_icon($day)
-            .'</span>'
-            .'<span class="image_link-content">'
-                .date('F', $birthday_time)." $day, $year (Age $age)"
-            .'</span>'
-        .'</a>',
+        Page\calendarLink(
+            date('F', $birthday_time)." $day, $year (Age $age)", $href, $day),
         'Birthday:'
     );
 
