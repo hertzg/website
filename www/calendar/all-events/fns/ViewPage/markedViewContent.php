@@ -22,12 +22,13 @@ function markedViewContent ($event, &$scripts, $keyword) {
     $text = htmlspecialchars($event->text);
     $text = preg_replace($regex, '<mark>$0</mark>', $text);
 
+    include_once "$fnsDir/format_event_time.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/text.php";
     return
         \Page\text($text)
         .'<div class="hr"></div>'
-        .\Page\text(date('F j, Y', $event->event_time))
+        .\Page\text(format_event_time($event))
         .\Page\infoText($infoText);
 
 }
