@@ -1,6 +1,6 @@
 <?php
 
-function unset_session_vars () {
+function unset_session_vars ($admin_user) {
     unset(
         $_SESSION['admin/api-keys/errors'],
         $_SESSION['admin/api-keys/messages'],
@@ -15,4 +15,5 @@ function unset_session_vars () {
         $_SESSION['admin/users/errors'],
         $_SESSION['admin/users/messages']
     );
+    if ($admin_user) unset($_SESSION['home/messages']);
 }

@@ -4,7 +4,7 @@ include_once 'fns/require_admin.php';
 $admin_user = require_admin();
 
 include_once 'fns/unset_session_vars.php';
-unset_session_vars();
+unset_session_vars($admin_user);
 
 include_once '../fns/get_mysqli.php';
 $mysqli = get_mysqli();
