@@ -49,7 +49,6 @@ function create ($user, $schedule, &$scripts) {
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/infoText.php";
     include_once "$fnsDir/Page/sessionMessages.php";
-    include_once "$fnsDir/Page/staticTwoColumns.php";
     return
         \Page\create(
             [

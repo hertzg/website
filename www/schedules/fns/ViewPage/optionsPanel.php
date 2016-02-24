@@ -35,6 +35,7 @@ function optionsPanel ($schedule) {
     $deleteLink = \Page\imageLink('Delete',
         "../delete/$escapedItemQuery", 'trash-bin', ['id' => 'delete']);
 
+    include_once "$fnsDir/Page/staticTwoColumns.php";
     $content =
         \Page\staticTwoColumns($editLink, $duplicateLink)
         .'<div class="hr"></div>'
