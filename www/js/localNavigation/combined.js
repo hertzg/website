@@ -241,7 +241,7 @@ function UnloadPage (unloadProgress, absoluteBase, revisions) {
     })()
 
     var initialState = {
-        href: location.href.replace(/\?.*$/, ''),
+        href: location.href.replace(/#.*$/, '').replace(/\?.*$/, ''),
         search: location.search,
         hash: location.hash,
     }
