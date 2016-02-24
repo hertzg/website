@@ -1,7 +1,8 @@
 <?php
 
 include_once '../fns/require_api_key.php';
-require_api_key('can_read_notifications', $apiKey, $user, $mysqli);
+require_api_key('notification/list',
+    'can_read_notifications', $apiKey, $user, $mysqli);
 
 include_once '../../fns/Users/Notifications/index.php';
 $notifications = Users\Notifications\index($mysqli, $user);

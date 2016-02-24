@@ -1,7 +1,8 @@
 <?php
 
 include_once '../../fns/require_api_key.php';
-require_api_key('can_read_places', $apiKey, $user, $mysqli);
+require_api_key('place/received/get',
+    'can_read_places', $apiKey, $user, $mysqli);
 
 include_once 'fns/require_received_place.php';
 $receivedPlace = require_received_place($mysqli, $user);

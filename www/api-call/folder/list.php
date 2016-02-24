@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/require_api_key.php';
-require_api_key('can_read_files', $apiKey, $user, $mysqli);
+require_api_key('folder/list', 'can_read_files', $apiKey, $user, $mysqli);
 
 include_once '../fns/require_parent_folder.php';
 list($folder, $parent_id) = require_parent_folder($mysqli, $user);

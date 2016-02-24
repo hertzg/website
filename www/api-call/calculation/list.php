@@ -1,7 +1,8 @@
 <?php
 
 include_once '../fns/require_api_key.php';
-require_api_key('can_read_calculations', $apiKey, $user, $mysqli);
+require_api_key('calculation/list',
+    'can_read_calculations', $apiKey, $user, $mysqli);
 
 include_once '../../fns/Users/Calculations/index.php';
 $calculations = Users\Calculations\index($mysqli, $user);

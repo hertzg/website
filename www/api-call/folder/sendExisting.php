@@ -1,7 +1,8 @@
 <?php
 
 include_once '../fns/require_api_key.php';
-require_api_key('can_write_files', $apiKey, $user, $mysqli);
+require_api_key('folder/sendExisting',
+    'can_write_files', $apiKey, $user, $mysqli);
 
 include_once 'fns/require_folder.php';
 $folder = require_folder($mysqli, $user);

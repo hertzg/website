@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/require_api_key.php';
-require_api_key('can_write_wallets', $apiKey, $user, $mysqli);
+require_api_key('wallet/add', 'can_write_wallets', $apiKey, $user, $mysqli);
 
 include_once 'fns/require_wallet_params.php';
 require_wallet_params($name);

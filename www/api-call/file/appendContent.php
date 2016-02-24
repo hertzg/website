@@ -1,7 +1,8 @@
 <?php
 
 include_once '../fns/require_api_key.php';
-require_api_key('can_write_files', $apiKey, $user, $mysqli);
+require_api_key('file/appendContent',
+    'can_write_files', $apiKey, $user, $mysqli);
 
 include_once 'fns/require_file.php';
 $file = require_file($mysqli, $user);

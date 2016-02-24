@@ -3,7 +3,8 @@
 $fnsDir = '../../../fns';
 
 include_once '../../fns/require_api_key.php';
-require_api_key('can_write_channels', $apiKey, $user, $mysqli);
+require_api_key('channel/subscribed/subscribe',
+    'can_write_channels', $apiKey, $user, $mysqli);
 $id_users = $user->id_users;
 
 include_once '../../fns/require_channel.php';

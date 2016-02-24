@@ -1,7 +1,8 @@
 <?php
 
 include_once '../fns/require_api_key.php';
-require_api_key('can_write_calculations', $apiKey, $user, $mysqli);
+require_api_key('calculation/add',
+    'can_write_calculations', $apiKey, $user, $mysqli);
 
 include_once 'fns/require_calculation_params.php';
 require_calculation_params($mysqli, $user, $expression, $title, $tags,

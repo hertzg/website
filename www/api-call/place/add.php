@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/require_api_key.php';
-require_api_key('can_write_places', $apiKey, $user, $mysqli);
+require_api_key('place/add', 'can_write_places', $apiKey, $user, $mysqli);
 
 include_once 'fns/require_place_params.php';
 require_place_params($latitude, $longitude,

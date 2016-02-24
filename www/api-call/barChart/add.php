@@ -1,7 +1,8 @@
 <?php
 
 include_once '../fns/require_api_key.php';
-require_api_key('can_write_bar_charts', $apiKey, $user, $mysqli);
+require_api_key('barChart/add',
+    'can_write_bar_charts', $apiKey, $user, $mysqli);
 
 include_once 'fns/require_bar_chart_params.php';
 require_bar_chart_params($name, $tags, $tag_names);

@@ -1,7 +1,8 @@
 <?php
 
 include_once '../../fns/require_api_key.php';
-require_api_key('can_read_wallets', $apiKey, $user, $mysqli);
+require_api_key('wallet/transaction/get',
+    'can_read_wallets', $apiKey, $user, $mysqli);
 
 include_once 'fns/require_transaction.php';
 $transaction = require_transaction($mysqli, $user->id_users);

@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/require_api_key.php';
-require_api_key('can_write_files', $apiKey, $user, $mysqli);
+require_api_key('folder/add', 'can_write_files', $apiKey, $user, $mysqli);
 $id_users = $user->id_users;
 
 include_once '../fns/require_parent_folder.php';

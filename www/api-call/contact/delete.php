@@ -1,7 +1,8 @@
 <?php
 
 include_once '../fns/require_api_key.php';
-require_api_key('can_write_contacts', $apiKey, $user, $mysqli);
+require_api_key('contact/delete',
+    'can_write_contacts', $apiKey, $user, $mysqli);
 
 include_once 'fns/require_contact.php';
 $contact = require_contact($mysqli, $user);

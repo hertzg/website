@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/require_api_key.php';
-require_api_key('can_write_events', $apiKey, $user, $mysqli);
+require_api_key('event/delete', 'can_write_events', $apiKey, $user, $mysqli);
 
 include_once 'fns/require_event.php';
 $event = require_event($mysqli, $user);

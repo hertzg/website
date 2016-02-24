@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/require_api_key.php';
-require_api_key('can_read_tasks', $apiKey, $user, $mysqli);
+require_api_key('task/list', 'can_read_tasks', $apiKey, $user, $mysqli);
 
 include_once '../../fns/Users/Tasks/index.php';
 $tasks = Users\Tasks\index($mysqli, $user);

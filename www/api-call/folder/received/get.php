@@ -1,7 +1,8 @@
 <?php
 
 include_once '../../fns/require_api_key.php';
-require_api_key('can_read_files', $apiKey, $user, $mysqli);
+require_api_key('folder/received/get',
+    'can_read_files', $apiKey, $user, $mysqli);
 
 include_once 'fns/require_received_folder.php';
 $receivedFolder = require_received_folder($mysqli, $user);

@@ -1,7 +1,8 @@
 <?php
 
 include_once '../../fns/require_api_key.php';
-require_api_key('can_read_channels', $apiKey, $user, $mysqli);
+require_api_key('channel/user/list',
+    'can_read_channels', $apiKey, $user, $mysqli);
 
 include_once '../fns/require_channel.php';
 $channel = require_channel($mysqli, $user);

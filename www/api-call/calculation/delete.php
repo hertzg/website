@@ -1,7 +1,8 @@
 <?php
 
 include_once '../fns/require_api_key.php';
-require_api_key('can_write_calculations', $apiKey, $user, $mysqli);
+require_api_key('calculation/delete',
+    'can_write_calculations', $apiKey, $user, $mysqli);
 
 include_once 'fns/require_calculation.php';
 $calculation = require_calculation($mysqli, $user);

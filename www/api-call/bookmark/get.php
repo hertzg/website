@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/require_api_key.php';
-require_api_key('can_read_bookmarks', $apiKey, $user, $mysqli);
+require_api_key('bookmark/get', 'can_read_bookmarks', $apiKey, $user, $mysqli);
 
 include_once 'fns/require_bookmark.php';
 $bookmark = require_bookmark($mysqli, $user);

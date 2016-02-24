@@ -1,7 +1,8 @@
 <?php
 
 include_once '../../fns/require_api_key.php';
-require_api_key('can_write_bar_charts', $apiKey, $user, $mysqli);
+require_api_key('barChart/bar/delete',
+    'can_write_bar_charts', $apiKey, $user, $mysqli);
 
 include_once 'fns/require_bar.php';
 $bar = require_bar($mysqli, $user->id_users);

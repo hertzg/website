@@ -1,7 +1,8 @@
 <?php
 
 include_once '../../fns/require_api_key.php';
-require_api_key('can_write_channels', $apiKey, $user, $mysqli);
+require_api_key('channel/subscribed/unsubscribe',
+    'can_write_channels', $apiKey, $user, $mysqli);
 
 include_once 'fns/require_subscribed_channel.php';
 $subscribedChannel = require_subscribed_channel($mysqli, $user->id_users);

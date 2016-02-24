@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/require_api_key.php';
-require_api_key('can_read_contacts', $apiKey, $user, $mysqli);
+require_api_key('contact/list', 'can_read_contacts', $apiKey, $user, $mysqli);
 
 include_once '../../fns/Users/Contacts/index.php';
 $contacts = Users\Contacts\index($mysqli, $user);

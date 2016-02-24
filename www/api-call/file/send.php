@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/require_api_key.php';
-require_api_key('can_write_files', $apiKey, $user, $mysqli);
+require_api_key('file/send', 'can_write_files', $apiKey, $user, $mysqli);
 
 include_once '../fns/require_receiver_user.php';
 $receiver_user = require_receiver_user($mysqli,

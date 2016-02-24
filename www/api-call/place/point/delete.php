@@ -1,7 +1,8 @@
 <?php
 
 include_once '../../fns/require_api_key.php';
-require_api_key('can_write_places', $apiKey, $user, $mysqli);
+require_api_key('place/point/delete',
+    'can_write_places', $apiKey, $user, $mysqli);
 
 include_once 'fns/require_point.php';
 $point = require_point($mysqli, $user->id_users);

@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/require_api_key.php';
-require_api_key('can_write_notes', $apiKey, $user, $mysqli);
+require_api_key('note/delete', 'can_write_notes', $apiKey, $user, $mysqli);
 
 include_once 'fns/require_note.php';
 $note = require_note($mysqli, $user);

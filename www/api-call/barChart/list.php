@@ -1,7 +1,8 @@
 <?php
 
 include_once '../fns/require_api_key.php';
-require_api_key('can_read_bar_charts', $apiKey, $user, $mysqli);
+require_api_key('barChart/list',
+    'can_read_bar_charts', $apiKey, $user, $mysqli);
 
 include_once '../../fns/Users/BarCharts/index.php';
 $bar_charts = Users\BarCharts\index($mysqli, $user);

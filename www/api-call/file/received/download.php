@@ -1,7 +1,8 @@
 <?php
 
 include_once '../../fns/require_api_key.php';
-require_api_key('can_read_files', $apiKey, $user, $mysqli);
+require_api_key('file/received/download',
+    'can_read_files', $apiKey, $user, $mysqli);
 
 include_once 'fns/require_received_file.php';
 $receivedFile = require_received_file($mysqli, $user);

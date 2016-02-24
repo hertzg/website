@@ -1,7 +1,8 @@
 <?php
 
 include_once '../../fns/require_api_key.php';
-require_api_key('can_read_files', $apiKey, $user, $mysqli);
+require_api_key('folder/received/list',
+    'can_read_files', $apiKey, $user, $mysqli);
 
 include_once '../../../fns/Users/Folders/Received/index.php';
 $receivedFolders = Users\Folders\Received\index($mysqli, $user);
