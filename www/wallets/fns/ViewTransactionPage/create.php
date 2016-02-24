@@ -20,7 +20,7 @@ function create ($transaction, &$scripts) {
     include_once "$fnsDir/amount_text.php";
     $params = [
         'id' => $id_wallets,
-        'amount' => amount_text($transaction->amount),
+        'amount' => amount_text($transaction->amount, ''),
     ];
     $description = $transaction->description;
     if ($description !== '') $params['description'] = $description;
