@@ -47,7 +47,7 @@ if ($total) {
     foreach ($auths as $auth) {
         $address = htmlspecialchars($auth->remote_address);
         $text =
-            preg_replace($regex, '<mark>$0</mark>', $address)
+            preg_replace($regex, '<mark>$0</mark>', $address)." $auth->method"
             .'<div class="imageText-description">'
                 .export_date_ago($auth->insert_time, true)
             .'</div>';

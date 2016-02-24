@@ -26,7 +26,7 @@ function authsPanel ($mysqli, $apiKey, &$scripts) {
             }
 
             $text =
-                htmlspecialchars($auth->remote_address)
+                htmlspecialchars($auth->remote_address)." $auth->method"
                 .'<div class="imageText-description">'
                     .export_date_ago($auth->insert_time, true)
                 .'</div>';

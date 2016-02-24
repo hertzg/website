@@ -54,7 +54,7 @@ include_once "$fnsDir/create_image_text.php";
 include_once "$fnsDir/export_date_ago.php";
 foreach ($auths as $auth) {
     $text =
-        htmlspecialchars($auth->remote_address)
+        htmlspecialchars($auth->remote_address)." $auth->method"
         .'<div class="imageText-description">'
             .export_date_ago($auth->insert_time, true)
         .'</div>';
