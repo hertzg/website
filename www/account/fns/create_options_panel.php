@@ -53,8 +53,10 @@ function create_options_panel ($user) {
     $options[] = Page\imageArrowLink('Authentication History',
         'signins/', 'sign-ins', ['id' => 'signins']);
 
-    $options[] = Page\imageArrowLink('Close Account',
-        'close/', 'trash-bin', ['id' => 'close']);
+    $options[] = Page\imageArrowLink('Close Account', 'close/', 'trash-bin', [
+        'id' => 'close',
+        'localNavigation' => true,
+    ]);
 
     $content = join('<div class="hr"></div>', $options);
 

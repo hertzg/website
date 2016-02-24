@@ -6,11 +6,11 @@ $fnsDir = '../../fns';
 include_once "$fnsDir/require_user.php";
 $user = require_user($base);
 
-$key = 'account/close/values';
-if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
-else $values = ['password' => ''];
+include_once 'fns/get_values.php';
+$values = get_values();
 
-unset($_SESSION['account/messages']);
+include_once 'fns/unset_session_vars.php';
+unset_session_vars();
 
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/password.php";

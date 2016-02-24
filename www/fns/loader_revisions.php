@@ -3,6 +3,7 @@
 function loader_revisions () {
     return [
         '' => 4,
+        'account/close/' => 1,
         'admin/help/' => 5,
         'email-reset-password/' => 2,
         'help/' => 5,
