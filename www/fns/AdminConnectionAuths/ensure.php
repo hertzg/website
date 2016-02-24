@@ -18,7 +18,7 @@ function ensure ($mysqli) {
         'method' => [
             'type' => 'varchar(50)',
             'characterSet' => 'ascii',
-            'collation' => 'ascii_bin',
+            'collation' => 'ascii_general_ci',
         ],
         'remote_address' => \IPAddress\column(),
     ]);
