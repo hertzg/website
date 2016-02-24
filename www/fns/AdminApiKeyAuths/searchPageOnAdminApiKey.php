@@ -13,7 +13,7 @@ function searchPageOnAdminApiKey ($mysqli,
 
     $fromWhere = 'from admin_api_key_auths'
         ." where id_admin_api_keys = $id_admin_api_keys"
-        ." and remote_address like '%$keyword%'";
+        ." and (remote_address like '%$keyword%' or method like '%$keyword%')";
 
     $sql = "select count(*) total $fromWhere";
     include_once "$fnsDir/mysqli_single_object.php";

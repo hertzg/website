@@ -12,7 +12,7 @@ function searchPageOnApiKey ($mysqli,
     $keyword = $mysqli->real_escape_string($keyword);
 
     $fromWhere = "from api_key_auths where id_api_keys = $id_api_keys"
-        ." and remote_address like '%$keyword%'";
+        ." and (remote_address like '%$keyword%' or method like '%$keyword%')";
 
     $sql = "select count(*) total $fromWhere";
     include_once "$fnsDir/mysqli_single_object.php";

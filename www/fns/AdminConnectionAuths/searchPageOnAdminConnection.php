@@ -13,7 +13,7 @@ function searchPageOnAdminConnection ($mysqli,
 
     $fromWhere = 'from admin_connection_auths'
         ." where id_admin_connections = $id_admin_connections"
-        ." and remote_address like '%$keyword%'";
+        ." and (remote_address like '%$keyword%' or method like '%$keyword%')";
 
     $sql = "select count(*) total $fromWhere";
     include_once "$fnsDir/mysqli_single_object.php";
