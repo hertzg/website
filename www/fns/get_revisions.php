@@ -10,7 +10,7 @@ function get_revisions () {
         'css/iconsets/compressed.css' => 103,
         'css/index/compressed.css' => 8,
         'js/batteryAndClock/compressed.js' => 15,
-        'js/calendarIcon/compressed.js' => 4,
+        'js/calendarIcon/compressed.js' => 5,
         'js/confirmDialog/compressed.js' => 6,
         'js/dateAgo/compressed.js' => 3,
         'js/dateField/compressed.js' => 1,

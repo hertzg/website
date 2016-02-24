@@ -5,7 +5,7 @@
         if (day !== dayNode.nodeValue) dayNode.nodeValue = day
     }
 
-    var dayElement = document.querySelector('.calendarIcon-day')
+    var dayElement = document.querySelector('.calendarIcon-today')
     var dayNode = dayElement.firstChild
     batteryAndClock.onClockUpdate(clockUpdate)
 

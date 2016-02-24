@@ -1,1 +1,1 @@
-!function(n,o){function a(n){var o=n.getUTCDate().toString();o!==e.nodeValue&&(e.nodeValue=o)}var t=document.querySelector(".calendarIcon-day"),e=t.firstChild;n.onClockUpdate(a),o.onUnload(function(){n.unClockUpdate(a)})}(batteryAndClock,localNavigation);
+!function(n,o){function t(n){var o=n.getUTCDate().toString();o!==e.nodeValue&&(e.nodeValue=o)}var a=document.querySelector(".calendarIcon-today"),e=a.firstChild;n.onClockUpdate(t),o.onUnload(function(){n.unClockUpdate(t)})}(batteryAndClock,localNavigation);
