@@ -42,4 +42,5 @@ $content =
         (float)$point->longitude, (float)$point->altitude);
 
 include_once "$fnsDir/echo_user_page.php";
-echo_user_page($user, "Edit Point #$id", $content, $base, ['scripts' => $scripts]);
+echo_user_page($user, "Edit Point #$id",
+    $content, $base, ['scripts' => $scripts]);
