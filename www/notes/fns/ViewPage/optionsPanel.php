@@ -25,22 +25,20 @@ function optionsPanel ($note, $text) {
     $sendLink = \Page\imageArrowLink('Send',
         "../send/$escapedItemQuery", 'send', ['id' => 'send']);
 
-    include_once "$fnsDir/Page/imageLink.php";
-    $href = 'sms:?body='.rawurlencode($text);
-    $sendViaSmsLink = \Page\imageLink('Send via SMS', $href, 'send-sms');
-
     $historyLink = \Page\imageArrowLink('History',
         "../history/?id=$id", 'restore-defaults', ['id' => 'history']);
 
+    include_once "$fnsDir/Page/imageLink.php";
     $deleteLink = \Page\imageLink('Delete',
         "../delete/$escapedItemQuery", 'trash-bin', ['id' => 'delete']);
 
+    include_once __DIR__.'/../send_via_sms_link.php';
     include_once "$fnsDir/Page/staticTwoColumns.php";
     include_once "$fnsDir/Page/twoColumns.php";
     $content =
         \Page\staticTwoColumns($editLink, $duplicateLink)
         .'<div class="hr"></div>'
-        .\Page\twoColumns($sendLink, $sendViaSmsLink)
+        .\Page\twoColumns($sendLink, send_via_sms_link($note))
         .'<div class="hr"></div>'
         .\Page\staticTwoColumns($historyLink, $deleteLink);
 
