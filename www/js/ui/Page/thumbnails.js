@@ -4,6 +4,11 @@ function Page_thumbnails (parentNode, callbacks) {
         callbacks.forEach(function (callback, i) {
 
             if (i > 0) {
+                if (i % 2 === 0) {
+                    Element(div, 'span', function (span) {
+                        span.className = 'hr thumbnails-br n2'
+                    })
+                }
                 if (i % 3 === 0) {
                     Element(div, 'span', function (span) {
                         span.className = 'hr thumbnails-br n3'

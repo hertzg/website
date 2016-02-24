@@ -4,7 +4,13 @@
     width: 250px;
 }
 
-@media (max-width: 460px) {
+@media (max-width: 330px) {
+    .thumbnails-item {
+        width: 50%;
+    }
+}
+
+@media (min-width: 331px) and (max-width: 450px) {
     .thumbnails-item {
         width: 33%;
     }
@@ -16,7 +22,7 @@
     }
 }
 
-@media (min-width: 461px) and (max-width: 600px) {
+@media (min-width: 451px) and (max-width: 600px) {
     .thumbnails-item {
         width: 25%;
     }

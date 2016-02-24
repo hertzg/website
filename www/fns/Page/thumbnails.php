@@ -7,6 +7,9 @@ function thumbnails ($items) {
     foreach ($items as $i => $item) {
 
         if ($i > 0) {
+            if ($i % 2 === 0) {
+                $html .= '<span class="hr thumbnails-br n2"></span>';
+            }
             if ($i % 3 === 0) {
                 $html .= '<span class="hr thumbnails-br n3"></span>';
             }
