@@ -1,7 +1,7 @@
 <?php
 
 include_once '../fns/require_admin_api_key.php';
-require_admin_api_key('invitation/get', 
+require_admin_api_key('invitation/get',
     'can_read_invitations', $apiKey, $mysqli);
 
 include_once 'fns/require_invitation.php';
