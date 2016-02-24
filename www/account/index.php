@@ -48,9 +48,14 @@ $items[] = Form\label('Using storage', bytestr($user->storage_used));
 include_once "$fnsDir/n_times.php";
 $items[] = Form\label('Signed in', ucfirst(n_times($user->num_signins)));
 
+include_once 'fns/create_api_keys_link.php';
+include_once 'fns/create_connections_link.php';
+include_once 'fns/create_tokens_link.php';
 include_once 'fns/create_options_panel.php';
 include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionMessages.php";
+include_once "$fnsDir/Page/thumbnailLink.php";
+include_once "$fnsDir/Page/thumbnails.php";
 $content =
     Page\create(
         [
@@ -60,6 +65,14 @@ $content =
         ],
         'Account',
         Page\sessionMessages('account/messages')
+        .Page\thumbnails([
+            create_api_keys_link($user),
+            Page\thumbnailLink('Authentication History',
+                'signins/', 'sign-ins', ['id' => 'signins']),
+            create_connections_link($user),
+            create_tokens_link($user),
+        ])
+        .'<div class="hr"></div>'
         .join('<div class="hr"></div>', $items)
     )
     .create_options_panel($user);
