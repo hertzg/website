@@ -53,6 +53,6 @@ function create ($user, $receivedSchedule, &$scripts) {
         )
         .create_panel('The Schedule', join('<div class="hr"></div>', $items)
             .\Page\infoText("Schedule received $date_ago."))
-        .optionsPanel($receivedSchedule);
+        .optionsPanel($user, $receivedSchedule);
 
 }

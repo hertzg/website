@@ -61,6 +61,6 @@ function create ($user, $schedule, &$scripts) {
             .\Page\infoText($infoText),
             create_new_item_button('Schedule', '../')
         )
-        .optionsPanel($schedule);
+        .optionsPanel($user, $schedule);
 
 }
