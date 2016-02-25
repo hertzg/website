@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../../lib/defaults.php';
+
 include_once '../fns/file_method_page.php';
 include_once '../../../../fns/ApiDoc/trueResult.php';
 file_method_page('sendExisting', [

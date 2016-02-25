@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../lib/defaults.php';
+
 trait error {
     function error ($text) {
         echo "ERROR in $this->method\n"

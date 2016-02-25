@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../lib/defaults.php';
+
 trait expectNatural {
     function expectNatural ($variableName, $value) {
         $this->expectType($variableName, 'integer', $value);

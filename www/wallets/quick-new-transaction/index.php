@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../lib/defaults.php';
+
 include_once 'fns/require_one_wallet.php';
 $user = require_one_wallet();
 

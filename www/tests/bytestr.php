@@ -1,6 +1,8 @@
 #!/usr/bin/php
 <?php
 
+include_once '../../lib/defaults.php';
+
 include_once __DIR__.'/../fns/bytestr.php';
 assert(bytestr(0) === '0 B');
 assert(bytestr(64) === '64 B');

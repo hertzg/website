@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../lib/defaults.php';
+
 $fnsDir = '../../../fns';
 
 include_once '../../fns/require_api_key.php';

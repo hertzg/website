@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../lib/defaults.php';
+
 include_once 'fns/require_received_places.php';
 $user = require_received_places();
 

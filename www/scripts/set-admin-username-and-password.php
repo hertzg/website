@@ -3,6 +3,7 @@
 
 chdir(__DIR__);
 include_once '../../lib/cli.php';
+include_once '../../lib/defaults.php';
 
 if (count($argv) !== 3) {
     echo "Usage:\n"

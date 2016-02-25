@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../lib/defaults.php';
+
 include_once '../fns/require_schedule.php';
 include_once '../../lib/mysqli.php';
 list($schedule, $id, $user) = require_schedule($mysqli);

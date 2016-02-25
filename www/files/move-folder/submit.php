@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../lib/defaults.php';
+
 function is_child_folder ($mysqli, $id_users, $folder, $id_folders) {
     while (true) {
         if ($folder->id_folders == $id_folders) return true;

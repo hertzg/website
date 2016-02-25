@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../lib/defaults.php';
+
 trait execCurl {
     private function execCurl ($url, $params, $expectedContentType) {
 

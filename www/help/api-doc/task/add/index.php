@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../../lib/defaults.php';
+
 include_once '../fns/task_method_page.php';
 include_once '../../../../fns/Tags/maxNumber.php';
 task_method_page('add', [

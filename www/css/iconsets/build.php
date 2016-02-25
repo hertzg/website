@@ -16,6 +16,7 @@ function render (&$content, $file, $names) {
 
 chdir(__DIR__);
 include_once '../../../lib/cli.php';
+include_once '../../../lib/defaults.php';
 
 render($content, 'api-doc.svg?1', ['api-namespace', 'api-method', 'api-doc']);
 

@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../lib/defaults.php';
+
 include_once 'fns/require_one_channel.php';
 include_once '../../lib/mysqli.php';
 $user = require_one_channel($mysqli);

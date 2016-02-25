@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../lib/defaults.php';
+
 include_once 'fns/require_first_stage.php';
 list($user, $first_stage) = require_first_stage();
 

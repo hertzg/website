@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../lib/defaults.php';
+
 include_once 'fns/require_stage.php';
 include_once '../../../lib/mysqli.php';
 list($user, $stageValues, $id, $folder) = require_stage($mysqli);

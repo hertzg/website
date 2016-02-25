@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../lib/defaults.php';
+
 include_once 'fns/require_points.php';
 include_once '../../lib/mysqli.php';
 list($place, $id, $user) = require_points($mysqli);

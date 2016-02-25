@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../lib/defaults.php';
+
 include_once '../../fns/require_api_key.php';
 require_api_key('note/received/get',
     'can_read_notes', $apiKey, $user, $mysqli);

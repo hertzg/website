@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../lib/defaults.php';
+
 trait expectType {
     function expectType ($variableName, $expectedType, $value) {
         $type = gettype($value);

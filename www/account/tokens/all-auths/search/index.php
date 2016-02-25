@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../../lib/defaults.php';
+
 include_once '../../fns/require_token.php';
 include_once '../../../../lib/mysqli.php';
 list($token, $id, $user) = require_token($mysqli);

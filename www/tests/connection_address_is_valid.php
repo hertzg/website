@@ -1,6 +1,8 @@
 #!/usr/bin/php
 <?php
 
+include_once '../../lib/defaults.php';
+
 include_once __DIR__.'/../fns/ConnectionAddress/isValid.php';
 assert(ConnectionAddress\isValid('http://localhost/') === true);
 assert(ConnectionAddress\isValid('http://example.com/') === true);

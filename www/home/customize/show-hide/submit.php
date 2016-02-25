@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../lib/defaults.php';
+
 $dir = '../../../';
 
 include_once "$dir/fns/require_same_domain_referer.php";

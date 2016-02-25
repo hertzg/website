@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../lib/defaults.php';
+
 include_once '../fns/require_admin.php';
 $values = require_admin();
 list($generalInfoValues, $mysqlConfigValues, $adminValues, $mysqli) = $values;

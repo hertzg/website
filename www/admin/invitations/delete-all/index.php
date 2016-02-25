@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../lib/defaults.php';
+
 include_once 'fns/require_invitations.php';
 require_invitations($mysqli, $invitations, $admin_user);
 

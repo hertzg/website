@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../lib/defaults.php';
+
 include_once '../fns/request_strings.php';
 list($id_users) = request_strings('id_users');
 

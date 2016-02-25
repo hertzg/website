@@ -1,6 +1,8 @@
 #!/usr/bin/php
 <?php
 
+include_once '../../../../lib/defaults.php';
+
 function expect_imported ($engine, $receivedFile, $response) {
     include_once 'fns/expect_file_object.php';
     expect_file_object($engine, '', $response);

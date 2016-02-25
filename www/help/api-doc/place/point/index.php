@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../../lib/defaults.php';
+
 $subgroupKey = 'point';
 
 include_once '../../fns/place/get_subgroups.php';

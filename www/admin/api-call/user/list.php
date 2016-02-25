@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../lib/defaults.php';
+
 include_once '../fns/require_admin_api_key.php';
 require_admin_api_key('user/list', 'can_read_users', $apiKey, $mysqli);
 

@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../../lib/defaults.php';
+
 $subgroupKey = 'transaction';
 
 include_once '../../fns/wallet/get_subgroups.php';

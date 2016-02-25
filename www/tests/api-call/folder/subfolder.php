@@ -1,6 +1,8 @@
 #!/usr/bin/php
 <?php
 
+include_once '../../../../lib/defaults.php';
+
 chdir(__DIR__);
 include_once 'fns/expect_folder_object.php';
 

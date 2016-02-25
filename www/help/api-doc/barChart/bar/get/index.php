@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../../../lib/defaults.php';
+
 include_once '../fns/bar_method_page.php';
 bar_method_page('get', [
     [

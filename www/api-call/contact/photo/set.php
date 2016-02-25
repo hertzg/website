@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../lib/defaults.php';
+
 include_once '../../fns/require_api_key.php';
 require_api_key('contact/photo/set',
     'can_write_contacts', $apiKey, $user, $mysqli);

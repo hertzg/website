@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../../lib/defaults.php';
+
 $subgroupKey = 'photo';
 
 include_once '../../fns/contact/get_subgroups.php';

@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../../lib/defaults.php';
+
 include_once '../fns/folder_method_page.php';
 folder_method_page('list', [
     [

@@ -35,6 +35,7 @@ function process_deleted ($mysqli, $types, $length) {
 
 chdir(__DIR__);
 include_once '../../lib/cli.php';
+include_once '../../lib/defaults.php';
 include_once '../fns/mysqli_query_object.php';
 include_once '../fns/text_title.php';
 include_once '../lib/mysqli.php';

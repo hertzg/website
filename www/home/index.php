@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../lib/defaults.php';
+
 $base = '../';
 
 include_once '../fns/simple_require_user.php';

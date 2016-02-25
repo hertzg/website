@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../lib/defaults.php';
+
 include_once '../../fns/require_bar_chart.php';
 include_once '../../../lib/mysqli.php';
 list($bar_chart, $id, $user) = require_bar_chart($mysqli, '../');

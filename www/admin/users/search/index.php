@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../lib/defaults.php';
+
 // TODO do not load this page if no users are present
 
 include_once '../../fns/require_admin.php';

@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../../lib/defaults.php';
+
 $subgroupKey = 'subscribed';
 
 include_once '../../fns/channel/get_subgroups.php';

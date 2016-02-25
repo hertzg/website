@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../lib/defaults.php';
+
 $base = '../../';
 $fnsDir = '../../fns';
 

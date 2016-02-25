@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../lib/defaults.php';
+
 include_once '../fns/request_valid_token.php';
 include_once '../lib/mysqli.php';
 $token = request_valid_token($mysqli, $_GET);

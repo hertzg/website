@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../../lib/defaults.php';
+
 include_once '../fns/channel_method_page.php';
 include_once '../../../../fns/ChannelName/minLength.php';
 channel_method_page('add', [

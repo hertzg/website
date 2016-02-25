@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../lib/defaults.php';
+
 include_once 'fns/require_url.php';
 require_url($user, $url, $parsed_url);
 

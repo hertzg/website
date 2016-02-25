@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../../lib/defaults.php';
+
 $subgroupKey = 'bar';
 
 include_once '../../fns/barChart/get_subgroups.php';

@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../lib/defaults.php';
+
 include_once 'fns/require_invitation.php';
 include_once '../lib/mysqli.php';
 list($invitation, $key, $id) = require_invitation($mysqli);

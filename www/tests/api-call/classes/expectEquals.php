@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../lib/defaults.php';
+
 trait expectEquals {
     function expectEquals ($variableName1, $variableName2, $value1, $value2) {
         if ($value1 !== $value2) {

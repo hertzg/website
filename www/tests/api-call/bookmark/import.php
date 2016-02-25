@@ -1,6 +1,8 @@
 #!/usr/bin/php
 <?php
 
+include_once '../../../../lib/defaults.php';
+
 function expect_imported ($engine, $receivedBookmark, $response) {
     include_once 'fns/expect_bookmark_object.php';
     expect_bookmark_object($engine, '', $response);

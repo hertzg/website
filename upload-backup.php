@@ -1,6 +1,8 @@
 #!/usr/bin/php
 <?php
 
+include_once 'lib/defaults.php';
+
 function curl_file ($file) {
     if (class_exists('CURLFile')) return new CURLFile($file);
     return "@$file";

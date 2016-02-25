@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../lib/defaults.php';
+
 include_once 'fns/require_valid_key.php';
 include_once '../lib/mysqli.php';
 list($user, $key, $id_users) = require_valid_key($mysqli);

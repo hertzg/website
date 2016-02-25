@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../../../lib/defaults.php';
+
 include_once '../fns/contact_photo_method_page.php';
 contact_photo_method_page('download', [
     [

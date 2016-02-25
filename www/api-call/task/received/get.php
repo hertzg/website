@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../lib/defaults.php';
+
 include_once '../../fns/require_api_key.php';
 require_api_key('task/received/get', 'can_read_tasks', $apiKey, $user, $mysqli);
 

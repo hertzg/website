@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../../lib/defaults.php';
+
 include_once 'fns/require_received_folder_subfolder.php';
 include_once '../../../../lib/mysqli.php';
 $values = require_received_folder_subfolder($mysqli);

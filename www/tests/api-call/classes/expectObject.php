@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../lib/defaults.php';
+
 trait expectObject {
     function expectObject ($variableName, $properties, $object) {
         $this->expectType($variableName, 'object', $object);

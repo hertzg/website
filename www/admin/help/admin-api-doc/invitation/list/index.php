@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../../../lib/defaults.php';
+
 include_once '../fns/invitation_method_page.php';
 invitation_method_page('list', [], [
     'type' => 'array',

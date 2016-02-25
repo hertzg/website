@@ -1,6 +1,8 @@
 #!/usr/bin/php
 <?php
 
+include_once '../../../../lib/defaults.php';
+
 function expect_imported ($engine, $receivedContact, $response) {
     include_once 'fns/expect_contact_object.php';
     expect_contact_object($engine, '', $response);

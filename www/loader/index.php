@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../lib/defaults.php';
+
 include_once '../fns/ApiCall/requireClientRevision.php';
 ApiCall\requireClientRevision();
 

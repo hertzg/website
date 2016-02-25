@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../../lib/defaults.php';
+
 include_once '../fns/calculation_method_page.php';
 calculation_method_page('get', [
     [

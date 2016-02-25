@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../lib/defaults.php';
+
 $base = '../';
 
 include_once '../fns/require_guest_user.php';

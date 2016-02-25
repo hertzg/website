@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../lib/defaults.php';
+
 include_once '../fns/calculation/get_subgroups.php';
 $subgroups = calculation\get_subgroups();
 

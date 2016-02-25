@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../lib/defaults.php';
+
 function create_href ($id, $id_folders) {
     if ($id_folders) return "./?id=$id&id_folders=$id_folders";
     return "./?id=$id";

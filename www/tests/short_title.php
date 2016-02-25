@@ -1,6 +1,8 @@
 #!/usr/bin/php
 <?php
 
+include_once '../../lib/defaults.php';
+
 include_once __DIR__.'/../fns/short_number.php';
 
 assert(short_number(0) === '0');

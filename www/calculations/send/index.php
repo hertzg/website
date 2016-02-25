@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../lib/defaults.php';
+
 include_once 'fns/require_computable_calculation.php';
 include_once '../../lib/mysqli.php';
 list($calculation, $id, $user) = require_computable_calculation($mysqli);

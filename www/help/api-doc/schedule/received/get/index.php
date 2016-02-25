@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../../../lib/defaults.php';
+
 include_once '../fns/received_schedule_method_page.php';
 received_schedule_method_page('get', [
     [

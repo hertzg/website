@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../lib/defaults.php';
+
 include_once '../fns/signed_user.php';
 $user = signed_user();
 

@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../lib/defaults.php';
+
 include_once '../fns/require_api_key.php';
 require_api_key('event/list', 'can_read_events', $apiKey, $user, $mysqli);
 

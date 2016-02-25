@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../lib/defaults.php';
+
 include_once '../fns/require_api_key.php';
 require_api_key('notification/list',
     'can_read_notifications', $apiKey, $user, $mysqli);

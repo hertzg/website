@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../lib/defaults.php';
+
 include_once '../fns/require_user.php';
 include_once '../../../lib/mysqli.php';
 list($user, $id, $admin_user) = require_user($mysqli);

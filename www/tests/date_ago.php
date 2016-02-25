@@ -1,6 +1,8 @@
 #!/usr/bin/php
 <?php
 
+include_once '../../lib/defaults.php';
+
 include_once __DIR__.'/../fns/date_ago.php';
 assert(date_ago(time()) === 'just now');
 assert(date_ago(time() - 60) === 'a minute ago');

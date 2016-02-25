@@ -1,6 +1,8 @@
 #!/usr/bin/php
 <?php
 
+include_once '../../lib/defaults.php';
+
 include_once __DIR__.'/../fns/str_split_lines.php';
 assert(str_split_lines("") === []);
 assert(str_split_lines("\n") === ['', '']);

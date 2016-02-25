@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../lib/defaults.php';
+
 include_once '../fns/require_admin.php';
 $admin_user = require_admin();
 
@@ -12,11 +14,6 @@ $content = assert_enabled($ok, 'Apache module "mod_rewrite"');
 
 $ok = array_key_exists('HTACCESS_WORKING', $_SERVER);
 $content .= assert_enabled($ok, '".htaccess"');
-
-$ok = date_default_timezone_get() === 'UTC';
-$subject = 'PHP default timezone';
-if ($ok) $content .= assert_success("$subject is set to UTC.");
-else $content .= assert_failure("$subject is NOT set to UTC.");
 
 $ok = extension_loaded('curl');
 $content .= assert_installed($ok, 'PHP Client URL Library "curl"');

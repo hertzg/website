@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../lib/defaults.php';
+
 include_once '../fns/require_received_bookmark.php';
 include_once '../../../lib/mysqli.php';
 list($receivedBookmark, $id, $user) = require_received_bookmark($mysqli, '../');

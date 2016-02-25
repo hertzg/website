@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../lib/defaults.php';
+
 function assert_enabled ($ok, $subject) {
     if ($ok) return assert_success("$subject is enabled.");
     return assert_failure("$subject is NOT enabled.");
@@ -31,11 +33,6 @@ $assertsHtml = assert_enabled($ok, $subject);
 
 $ok = array_key_exists('HTACCESS_WORKING', $_SERVER);
 $assertsHtml .= assert_enabled($ok, '"<code>.htaccess</code>"');
-
-$ok = date_default_timezone_get() === 'UTC';
-$subject = 'PHP default timezone';
-if ($ok) $assertsHtml .= assert_success("$subject is set to UTC.");
-else $assertsHtml .= assert_failure("$subject is NOT set to UTC.");
 
 $subject = 'PHP Client URL Library "<code>curl</code>"';
 $assertsHtml .= assert_installed(extension_loaded('curl'), $subject);

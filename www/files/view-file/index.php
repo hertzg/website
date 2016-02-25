@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../lib/defaults.php';
+
 include_once '../fns/require_file.php';
 include_once '../../lib/mysqli.php';
 list($file, $id, $user) = require_file($mysqli);

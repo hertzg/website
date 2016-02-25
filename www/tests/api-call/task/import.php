@@ -1,6 +1,8 @@
 #!/usr/bin/php
 <?php
 
+include_once '../../../../lib/defaults.php';
+
 function expect_imported ($engine, $receivedTask, $response) {
     include_once 'fns/expect_task_object.php';
     expect_task_object($engine, '', $response);

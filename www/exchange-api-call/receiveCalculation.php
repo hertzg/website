@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../lib/defaults.php';
+
 include_once 'fns/require_admin_connection.php';
 require_admin_connection('receiveCalculation', $adminConnection, $mysqli);
 

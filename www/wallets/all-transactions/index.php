@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../lib/defaults.php';
+
 include_once 'fns/require_transactions.php';
 include_once '../../lib/mysqli.php';
 list($wallet, $id, $user) = require_transactions($mysqli);

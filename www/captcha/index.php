@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../lib/defaults.php';
+
 $chars = str_repeat('23456789abcdefghijkmnpqrstuvwxyz', 4);
 $chars = str_shuffle($chars);
 $captcha = substr($chars, -5);

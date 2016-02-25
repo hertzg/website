@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../lib/defaults.php';
+
 include_once '../fns/require_event.php';
 include_once '../../../lib/mysqli.php';
 list($event, $id, $user) = require_event($mysqli);

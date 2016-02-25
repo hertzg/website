@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../../../lib/defaults.php';
+
 include_once '../fns/subscribed_channel_method_page.php';
 include_once '../../../../../fns/ApiDoc/trueResult.php';
 subscribed_channel_method_page('edit', [

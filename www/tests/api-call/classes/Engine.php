@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../lib/defaults.php';
+
 include_once __DIR__.'/error.php';
 include_once __DIR__.'/execCurl.php';
 include_once __DIR__.'/execJsonCurl.php';

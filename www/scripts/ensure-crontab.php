@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../lib/defaults.php';
+
 chdir(__DIR__);
 
 /*

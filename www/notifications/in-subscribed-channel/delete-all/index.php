@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../lib/defaults.php';
+
 include_once 'fns/require_subscribed_channel_notifications.php';
 include_once '../../../lib/mysqli.php';
 $values = require_subscribed_channel_notifications($mysqli);

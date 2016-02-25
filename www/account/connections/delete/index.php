@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../../lib/defaults.php';
+
 include_once '../fns/require_connection.php';
 include_once '../../../lib/mysqli.php';
 list($connection, $id, $user) = require_connection($mysqli);

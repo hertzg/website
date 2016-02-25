@@ -1,5 +1,7 @@
 <?php
 
+include_once 'lib/defaults.php';
+
 header('Content-Type: text/html; charset=UTF-8');
 
 $title = 'Welcome to Zvini!';

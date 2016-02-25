@@ -1,5 +1,7 @@
 <?php
 
+include_once '../../../lib/defaults.php';
+
 include_once '../fns/require_folder.php';
 include_once '../../lib/mysqli.php';
 list($folder, $id, $user) = require_folder($mysqli);
