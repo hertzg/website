@@ -30,7 +30,7 @@
                         ui.Text(div, 'sms: Link')
                     }, '', 'protocol', { id: 'sms' })
                     ui.Hr(div)
-                    ui.Page_imageArrowLink(div, function (div) {
+                    ui.Page_imageLink(div, function (div) {
                         ui.Text(div, 'tel: Link')
                     }, '', 'protocol', { id: 'tel' })
                 })
