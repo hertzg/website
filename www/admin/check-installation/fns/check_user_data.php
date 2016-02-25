@@ -32,7 +32,7 @@ function check_user_data ($mysqli) {
         include_once "$fnsDir/Files/File/path.php";
         foreach ($files as $file) {
             $path = Files\File\path($file->id_users, $file->id_files);
-            $content .= assert_readable_file($path);
+            $content .= assert_writable_file($path);
         }
     }
 
