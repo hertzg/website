@@ -13,15 +13,23 @@ function assert_failure ($text) {
     return "<div class=\"not_ok colorText red\">$text</div>";
 }
 
-function assert_file ($path) {
+function assert_file ($path, &$file) {
     $subject = "\"$path\"";
-    if (is_file($path)) return assert_success("$subject is a file.");
+    if (is_file($path)) {
+        $file = true;
+        return assert_success("$subject is a file.");
+    }
+    $file = false;
     return assert_failure("$subject is NOT a file.");
 }
 
-function assert_folder ($path) {
+function assert_folder ($path, &$folder) {
     $subject = "\"$path\"";
-    if (is_dir($path)) return assert_success("$subject is a folder.");
+    if (is_dir($path)) {
+        $folder = true;
+        return assert_success("$subject is a folder.");
+    }
+    $folder = false;
     return assert_failure("$subject is NOT a folder.");
 }
 
@@ -37,7 +45,9 @@ function assert_readable ($path) {
 }
 
 function assert_readable_file ($path) {
-    return assert_file($path).assert_writable($path);
+    $result = assert_file($path, $file);
+    if ($file) $result .= assert_writable($path);
+    return $result;
 }
 
 function assert_writable ($path) {
@@ -47,9 +57,13 @@ function assert_writable ($path) {
 }
 
 function assert_writable_file ($path) {
-    return assert_file($path).assert_readable($path).assert_writable($path);
+    $result = assert_file($path, $file);
+    if ($file) $result .= assert_readable($path).assert_writable($path);
+    return $result;
 }
 
 function assert_writable_folder ($path) {
-    return assert_folder($path).assert_writable($path);
+    $result = assert_folder($path, $folder);
+    if ($folder) $result .= assert_writable($path);
+    return $result;
 }
