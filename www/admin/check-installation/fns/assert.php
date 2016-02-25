@@ -37,7 +37,6 @@ function assert_readable ($path) {
 }
 
 function assert_readable_file ($path) {
-    $path = realpath($path);
     return assert_file($path).assert_writable($path);
 }
 
@@ -48,11 +47,9 @@ function assert_writable ($path) {
 }
 
 function assert_writable_file ($path) {
-    $path = realpath($path);
     return assert_file($path).assert_readable($path).assert_writable($path);
 }
 
 function assert_writable_folder ($path) {
-    $path = realpath($path);
     return assert_folder($path).assert_writable($path);
 }
