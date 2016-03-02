@@ -36,6 +36,9 @@ $content = Page\create(
     .Page\imageArrowLink('API Documentation',
         'api-doc/', 'api-doc', ['id' => 'api-doc'])
     .'<div class="hr"></div>'
+    .Page\imageArrowLink('Cross-site API Documentation',
+        'cross-site-api-doc/', 'api-doc', ['id' => 'cross-site-api-doc'])
+    .'<div class="hr"></div>'
     .Page\imageArrowLink('About Zvini', 'about-zvini/', 'zvini', [
         'id' => 'about-zvini',
         'localNavigation' => true,

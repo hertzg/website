@@ -6,7 +6,7 @@ function loader_revisions () {
         'account/close/' => 1,
         'admin/help/' => 5,
         'email-reset-password/' => 2,
-        'help/' => 6,
+        'help/' => 7,
         'help/about-zvini/' => 4,
         'help/feedback/' => 5,
         'help/install-link-handlers/' => 4,
