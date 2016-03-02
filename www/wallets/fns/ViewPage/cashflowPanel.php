@@ -29,7 +29,7 @@ function cashflowPanel ($mysqli, $user, $wallet) {
         ];
     };
     $add_month($month_start_time);
-    if ($wallet->insert_time < $prev_month_start_time) {
+    if ($wallet->insert_time < $month_start_time) {
         $add_month($prev_month_start_time);
     }
 
