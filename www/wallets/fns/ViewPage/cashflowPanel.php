@@ -7,6 +7,7 @@ function cashflowPanel ($mysqli, $user, $wallet) {
     if (!$wallet->num_transactions) return;
 
     $fnsDir = __DIR__.'/../../../fns';
+    $timezone_offset = $user->timezone * 60;
 
     include_once "$fnsDir/user_time_today.php";
     $timeToday = user_time_today($user);
@@ -18,7 +19,7 @@ function cashflowPanel ($mysqli, $user, $wallet) {
 
     include_once "$fnsDir/WalletTransactions/indexOnWalletSince.php";
     $transactions = \WalletTransactions\indexOnWalletSince(
-        $mysqli, $wallet->id, $prev_month_start_time);
+        $mysqli, $wallet->id, $prev_month_start_time - $timezone_offset);
 
     $months = [];
     $add_month = function ($time) use (&$months) {
@@ -29,13 +30,13 @@ function cashflowPanel ($mysqli, $user, $wallet) {
         ];
     };
     $add_month($month_start_time);
-    if ($wallet->insert_time < $prev_month_start_time) {
+    if ($wallet->insert_time < $month_start_time) {
         $add_month($prev_month_start_time);
     }
 
     $max_income = $max_expense = 0;
     foreach ($transactions as $transaction) {
-        $key = date('Ym', $transaction->insert_time + $user->timezone * 60);
+        $key = date('Ym', $transaction->insert_time + $timezone_offset);
         $amount = $transaction->amount;
         if ($amount < 0) {
             $expense = &$months[$key]['expense'];
