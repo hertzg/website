@@ -156,8 +156,10 @@ function Clock (remoteTime, timezone) {
         } else {
             var localTime = Date.now()
             difference = localTime - remoteTime
-            localStorage.lastLocalTime = localTime
-            localStorage.lastRemoteTime = remoteTime
+            try {
+                localStorage.lastLocalTime = localTime
+                localStorage.lastRemoteTime = remoteTime
+            } catch (e) {}
         }
     } else {
         difference = Date.now() - remoteTime
