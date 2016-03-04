@@ -5,14 +5,14 @@
         if (progressDiv === null) {
 
             progressDiv = document.createElement('div')
+            progressDiv.className = 'progressBar'
 
             var style = progressDiv.style
             style.position = 'fixed'
             style.zIndex = '1'
             style.right = style.bottom = style.left = '0'
             style.height = '4px'
-            style.backgroundColor = '#fff'
-            style.backgroundImage = 'url(' + absoluteBase + 'images/progress.svg)'
+            style.backgroundImage = 'url(' + absoluteBase + 'images/progress.svg?1)'
             style.backgroundPosition = '50% 0'
 
             var x = 0

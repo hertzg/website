@@ -56,3 +56,7 @@ mark {
 .tag:active {
     outline: 2px solid #96bc00;
 }
+
+.progressBar {
+    background-color: #96bc00;
+}

@@ -25,12 +25,12 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="1920"
-     inkscape:window-height="1017"
+     inkscape:window-height="1014"
      id="namedview3035"
      showgrid="true"
      inkscape:zoom="21.25"
-     inkscape:cx="1.8311313"
-     inkscape:cy="9.5408391"
+     inkscape:cx="4.8664254"
+     inkscape:cy="8.7878979"
      inkscape:window-x="0"
      inkscape:window-y="27"
      inkscape:window-maximized="1"
@@ -60,17 +60,17 @@
   <g
      transform="translate(0,-1032.3622)"
      id="layer1"
-     style="fill:#444444;fill-opacity:1">
+     style="fill:#ffffff;fill-opacity:1">
     <path
        d="M 2,4 0,-1 0,-11 6,4 z"
        inkscape:connector-curvature="0"
        transform="translate(0,1048.3622)"
        id="path2987"
-       style="fill:#555555;fill-opacity:1;stroke:none"
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
        sodipodi:nodetypes="ccccc" />
   </g>
   <path
-     style="fill:#555555;fill-opacity:1;stroke:none"
+     style="fill:#ffffff;fill-opacity:1;stroke:none"
      d="M 2,0 8,15 8,5 6,0 z"
      id="path3039"
      inkscape:connector-curvature="0"
