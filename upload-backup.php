@@ -1,6 +1,8 @@
 #!/usr/bin/php
 <?php
 
+chdir(__DIR__);
+include_once 'lib/cli.php';
 include_once 'lib/defaults.php';
 
 function curl_file ($file) {
@@ -21,7 +23,6 @@ if ($num_args != 4) {
     exit(1);
 }
 
-chdir(__DIR__);
 system('./backup-code.sh');
 system('./backup-data.sh');
 system('./backup-sql.php');
