@@ -1,3 +1,3 @@
 <?php
 
-if (!isset($argv)) die('HTTP has been disabled. Use CLI instead.');
+if (php_sapi_name() !== 'cli') die('HTTP has been disabled. Use CLI instead.');
