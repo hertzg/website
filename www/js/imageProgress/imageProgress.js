@@ -27,11 +27,11 @@
     if (className !== '') newImg.className = className
 
     var progressDiv = document.createElement('div')
+    progressDiv.className = 'progressBar'
     ;(function (style) {
         style.position = 'absolute'
         style.right = style.bottom = style.left = '0'
-        style.backgroundColor = '#fff'
-        style.backgroundImage = 'url(' + base + 'images/progress.svg)'
+        style.backgroundImage = 'url(' + base + 'images/progress.svg?1)'
         style.backgroundPosition = '50% 0'
         style.height = '4px'
     })(progressDiv.style)
