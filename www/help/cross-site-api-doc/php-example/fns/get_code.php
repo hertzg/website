@@ -40,7 +40,7 @@ function get_code () {
                         phpCode\constant('CURLINFO_HTTP_CODE')
                     )
                 ),
-                '!=',
+                '!==',
                 phpCode\number(200)
             ),
             phpCode\curlyBrackets(
@@ -62,37 +62,12 @@ function get_code () {
         .phpCode\comment('decode json')
         .phpCode\statement(
             phpCode\assignment(
-                phpCode\variable('contentType'),
+                phpCode\variable('response'),
                 phpCode\functionCall(
-                    'curl_getinfo',
-                    phpCode\commaSeparate(
-                        phpCode\variable('ch'),
-                        phpCode\constant('CURLINFO_CONTENT_TYPE')
-                    )
-                )
-            )
-        )
-        .phpCode\ifStatement(
-            phpCode\comparison(
-                phpCode\variable('contentType'),
-                '==',
-                phpCode\stringLiteral('application/json')
-            ),
-            phpCode\curlyBrackets(
-                "\n"
-                .phpCode\indent(
-                    phpCode\statement(
-                        phpCode\assignment(
-                            phpCode\variable('response'),
-                            phpCode\functionCall(
-                                'json_decode',
-                                phpCode\variable('response')
-                            )
-                        )
-                    )
+                    'json_decode',
+                    phpCode\variable('response')
                 )
             )
         )."\n"
-        ."\n"
         .phpCode\comment('do something with the response');
 }

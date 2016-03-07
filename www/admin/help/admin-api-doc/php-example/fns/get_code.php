@@ -40,7 +40,7 @@ function get_code () {
                         phpCode\constant('CURLINFO_HTTP_CODE')
                     )
                 ),
-                '!=',
+                '!==',
                 phpCode\number(200)
             ),
             phpCode\curlyBrackets(

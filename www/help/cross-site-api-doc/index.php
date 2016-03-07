@@ -42,7 +42,7 @@ $content =
             .' API key and then by calling API methods with HTTP.'
             .' The API methods can be called with either GET or POST methods.'
             ." The base URL of all the methods is <code>$api_base</code>."
-            .' The response returned from the server is a JSON document.'
+            .' The response returned from the server is always a JSON document.'
             .'<br />'
             .'<br />'
             .'To access an API method a website requires'
