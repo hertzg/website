@@ -26,6 +26,7 @@ foreach ($methods as $name => $description) {
 
 include_once "$fnsDir/create_panel.php";
 include_once "$fnsDir/Page/create.php";
+include_once "$fnsDir/Page/imageArrowLink.php";
 include_once "$fnsDir/Page/text.php";
 $content =
     Page\create(
@@ -56,7 +57,14 @@ $content =
             .' To call a API method the <code>cross_site_api_key</code>'
             .' parameter should be present and its value'
             .' should be the issued random password.'
+            .'<br />'
+            .'<br />'
+            .'Click below to see a PHP example code'
+            .' that calls a cross-site API method.'
         )
+        .'<div class="hr"></div>'
+        .Page\imageArrowLink('PHP Example',
+            'php-example', 'generic', ['id' => 'php-example'])
     )
     .create_panel('Methods', join('<div class="hr"></div>', $items));
 
