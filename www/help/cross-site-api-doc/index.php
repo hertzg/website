@@ -37,17 +37,17 @@ $content =
         'Cross-site API Documentation',
         Page\text(
             '<em class="term">Zvini Cross-site API</em> allows websites'
-            .' to access user data by first obtaining a cross-site API key'
-            .' and then by calling API methods with HTTP requests.'
+            .' to access user data by first obtaining a cross-site'
+            .' API key and then by calling API methods with HTTP.'
             .' The API methods can be called with either GET or POST methods.'
             ." The base URL of all the methods is <code>$api_base</code>."
             .' The response returned from the server is a JSON document.'
             .'<br />'
             .'<br />'
-            .' To access an API method a website requires'
+            .'To access an API method a website requires'
             ." a cross-site API key. It's a random password."
-            .' To obtain the key the website should redirect to'
-            ." <code>{$absolute_base}confirm-website/</code> and pass"
+            .' To obtain the key the website should redirect the web browser'
+            ." to <code>{$absolute_base}confirm-website/</code> and pass"
             .' the <code>url</code> parameter containing the address'
             .' that the cross-site API key is to be issued for.'
             .' After successful confirmation the browser will be'
