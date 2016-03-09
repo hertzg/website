@@ -54,7 +54,7 @@ $content =
             .' After successful confirmation the browser will be'
             .' redirected to the website located at <code>url</code>'
             .' with added <code>cross_site_api_key</code> parameter.'
-            .' To call a API method the <code>cross_site_api_key</code>'
+            .' To call an API method the <code>cross_site_api_key</code>'
             .' parameter should be present and its value'
             .' should be the issued random password.'
             .'<br />'
