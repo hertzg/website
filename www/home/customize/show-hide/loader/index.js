@@ -14,7 +14,8 @@
             }, 'Show / Hide Items', function (div) {
                 ui.Page_sessionMessages(div, response.messages)
                 ui.Page_text(div, function (div) {
-                    ui.Text(div, 'Select the items you want to see on your home page:')
+                    ui.Text(div,
+                        'Select the items you want to see on your home page:')
                 })
                 ui.Element(div, 'form', function (form) {
 
