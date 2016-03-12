@@ -24,6 +24,10 @@ function write_htaccess ($siteBase, $domainName, $siteProtocol) {
         ."ErrorDocument 403 {$siteBase}403.php\n"
         ."ErrorDocument 404 {$siteBase}404.php\n";
 
-    file_put_contents(__DIR__.'/../.htaccess', $content);
+    $ok = @file_put_contents(__DIR__.'/../.htaccess', $content);
+    if ($ok === false) {
+        include_once __DIR__.'/ErrorPage/internalServerError.php';
+        ErrorPage\internalServerError(error_get_last()['message']);
+    }
 
 }
