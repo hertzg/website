@@ -22,8 +22,7 @@ function echo_page ($user, $title, $content, $base, $options = []) {
             ."var time = $time\n"
             ."var timezone = $timezone"
         .'</script>'
-        .compressed_js_script('batteryAndClock', $base)
-        .compressed_js_script('lineSizeRounding', $base);
+        .compressed_js_script('batteryAndClock', $base);
 
     if ($user) {
 
