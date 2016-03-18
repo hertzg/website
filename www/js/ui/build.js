@@ -2,6 +2,7 @@
 process.chdir(__dirname)
 var CompressJsFiles = require('../CompressJsFiles.js')
 CompressJsFiles([
+    '../create_calendar_icon_today',
     '../DateAgo',
     '../LoadScript',
     'AdminPage',
@@ -34,6 +35,7 @@ CompressJsFiles([
     'Form/textfield',
     'ItemList/listUrl',
     'ItemList/pageHiddenInputs',
+    'Page/calendarTodayLink',
     'Page/create',
     'Page/emptyTabs',
     'Page/errors',

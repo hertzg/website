@@ -1,2 +1,77 @@
-!function(){function e(e,n){ui.Element(e,"span",function(e){e.className="icon calendar",ui.Element(e,"span",function(e){e.className="calendarIcon-day calendarIcon-today",ui.Text(e,new Date(n.time).getUTCDate())})})}!function(n,a){function i(i,t){t("Reorder Items");var o="../../../";a.user_page(i,o,function(n){a.Page_create(n,{title:"Customize",href:"../#reorder",localNavigation:!0},"Reorder Items",function(n){a.Page_sessionMessages(n,i.messages),a.Page_text(n,function(e){a.Text(e,"Select an item to move up or down:")});var t=!0,o=i.homeItems;for(var s in o){t?t=!1:a.Hr(n);var c=o[s],r="move/?key="+s;"calendar"===s?(a.Element(n,"a",function(e){e.name="calendar"}),a.Element(n,"a",function(n){n.id="calendar",n.href=r,n.className="clickable link image_link withArrow localNavigation-link",a.Element(n,"span",function(n){n.className="image_link-icon",e(n,i)}),a.Element(n,"span",function(e){e.className="image_link-content",a.Text(e,"Calendar")})})):a.Page_imageArrowLink(n,function(e){a.Text(e,c[0])},r,c[1],{id:s,localNavigation:!0
-})}}),a.Page_panel(n,"Options",function(e){a.Page_imageLinkWithDescription(e,function(e){a.Text(e,"Show / Hide Items")},function(e){a.Text(e,"Change the visibility of the items.")},"../show-hide/","show-hide",{localNavigation:!0}),a.Hr(e),a.Element(e,"div",function(e){e.id="restoreLink",a.Page_imageLink(e,function(e){a.Text(e,"Restore Defaults")},"restore-defaults/","restore-defaults")})})},{head:function(e){a.compressed_css_link(e,"calendarIcon",o),a.compressed_css_link(e,"confirmDialog",o)},scripts:[a.compressed_js_script("calendarIcon",o),a.compressed_js_script("confirmDialog",o),"index.js"]}),n.scanLinks(),n.focusTarget()}n.registerPage("home/customize/reorder/",i)}(localNavigation,ui)}();
+(function (localNavigation, ui) {
+
+    function loader (response, loadCallback) {
+
+        loadCallback('Reorder Items')
+
+        var base = '../../../'
+
+        ui.user_page(response, base, function (body) {
+            ui.Page_create(body, {
+                title: 'Customize',
+                href: '../#reorder',
+                localNavigation: true,
+            }, 'Reorder Items', function (div) {
+
+                ui.Page_sessionMessages(div, response.messages)
+                ui.Page_text(div, function (div) {
+                    ui.Text(div, 'Select an item to move up or down:')
+                })
+
+                var first = true
+                var items = response.homeItems
+                for (var key in items) {
+
+                    if (first) first = false
+                    else ui.Hr(div)
+
+                    var item = items[key]
+                    var href = 'move/?key=' + key
+                    if (key === 'calendar') {
+                        ui.Page_calendarTodayLink(div, response, href)
+                    } else {
+                        ui.Page_imageArrowLink(div, function (div) {
+                            ui.Text(div, item[0])
+                        }, href, item[1], {
+                            id: key,
+                            localNavigation: true,
+                        })
+                    }
+
+                }
+
+            })
+            ui.Page_panel(body, 'Options', function (div) {
+                ui.Page_imageLinkWithDescription(div, function (div) {
+                    ui.Text(div, 'Show / Hide Items')
+                }, function (div) {
+                    ui.Text(div, 'Change the visibility of the items.')
+                }, '../show-hide/', 'show-hide', { localNavigation: true })
+                ui.Hr(div)
+                ui.Element(div, 'div', function (div) {
+                    div.id = 'restoreLink'
+                    ui.Page_imageLink(div, function (div) {
+                        ui.Text(div, 'Restore Defaults')
+                    }, 'restore-defaults/', 'restore-defaults')
+                })
+            })
+        }, {
+            head: function (head) {
+                ui.compressed_css_link(head, 'calendarIcon', base)
+                ui.compressed_css_link(head, 'confirmDialog', base)
+            },
+            scripts: [
+                ui.compressed_js_script('calendarIcon', base),
+                ui.compressed_js_script('confirmDialog', base),
+                'index.js',
+            ],
+        })
+
+        localNavigation.scanLinks()
+        localNavigation.focusTarget()
+
+    }
+
+    localNavigation.registerPage('home/customize/reorder/', loader)
+
+})(localNavigation, ui)

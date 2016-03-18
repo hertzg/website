@@ -1,4 +1,14 @@
 (function () {
+function create_calendar_icon_today (parentNode, response) {
+    ui.Element(parentNode, 'span', function (span) {
+        span.className = 'icon calendar'
+        ui.Element(span, 'span', function (span) {
+            span.className = 'calendarIcon-day calendarIcon-today'
+            ui.Text(span, new Date(response.time).getUTCDate())
+        })
+    })
+}
+;
 function DateAgo (time, timeNow, uppercase) {
 
     function DateAgo (time, timeNow) {
@@ -625,6 +635,25 @@ function ItemList_pageHiddenInputs (parentNode, itemList, params) {
 
 }
 ;
+function Page_calendarTodayLink (parentNode, response, href) {
+    ui.Element(parentNode, 'a', function (a) {
+        a.name = 'calendar'
+    })
+    ui.Element(parentNode, 'a', function (a) {
+        a.id = 'calendar'
+        a.href = href
+        a.className = 'clickable link image_link withArrow localNavigation-link'
+        ui.Element(a, 'span', function (span) {
+            span.className = 'image_link-icon'
+            create_calendar_icon_today(span, response)
+        })
+        ui.Element(a, 'span', function (span) {
+            span.className = 'image_link-content'
+            ui.Text(span, 'Calendar')
+        })
+    })
+}
+;
 function Page_create (parentNode, backlink, title, callback) {
     ZeroHeightBr(parentNode)
     Element(parentNode, 'div', function (div) {
@@ -1008,6 +1037,7 @@ function SearchForm_emptyContent (parentNode, placeholder) {
         ItemList_listUrl: ItemList_listUrl,
         ItemList_pageHiddenInputs: ItemList_pageHiddenInputs,
         page: page,
+        Page_calendarTodayLink: Page_calendarTodayLink,
         Page_create: Page_create,
         Page_emptyTabs: Page_emptyTabs,
         Page_errors: Page_errors,

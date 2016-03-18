@@ -12,7 +12,7 @@ function loader_revisions () {
         'help/install-link-handlers/' => 4,
         'home/' => 10,
         'home/customize/' => 6,
-        'home/customize/reorder/' => 10,
+        'home/customize/reorder/' => 11,
         'home/customize/reorder/move/' => 1,
         'home/customize/show-hide/' => 8,
         'sign-in/' => 3,

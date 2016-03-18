@@ -24,7 +24,7 @@ function get_revisions () {
         'js/sessionTimeout/compressed.js' => 6,
         'js/signOutConfirm/compressed.js' => 4,
         'js/timezoneLabel/compressed.js' => 6,
-        'js/ui/compressed.js' => 21,
+        'js/ui/compressed.js' => 22,
         'js/unloadProgress/compressed.js' => 13,
         'theme/brightness/dark/common.css' => 12,
         'theme/brightness/light/common.css' => 12,

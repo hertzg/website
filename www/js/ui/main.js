@@ -27,6 +27,7 @@
         ItemList_listUrl: ItemList_listUrl,
         ItemList_pageHiddenInputs: ItemList_pageHiddenInputs,
         page: page,
+        Page_calendarTodayLink: Page_calendarTodayLink,
         Page_create: Page_create,
         Page_emptyTabs: Page_emptyTabs,
         Page_errors: Page_errors,
