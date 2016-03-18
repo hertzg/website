@@ -71,10 +71,7 @@ function Page (localNavigation, revisions,
             callback(body)
         })
 
-        var scripts = [
-            compressed_js_script('batteryAndClock', base),
-            compressed_js_script('lineSizeRounding', base),
-        ]
+        var scripts = [compressed_js_script('batteryAndClock', base)]
         if (user) {
 
             window.signOutTimeout = response.signOutTimeout

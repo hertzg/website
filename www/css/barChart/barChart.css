@@ -51,7 +51,7 @@
     position: absolute;
     right: 0;
     left: 32px;
-    height: 1px;
+    border-bottom: 1px solid rgba(127, 127, 127, 0.2);
 }
 
 .barChart-lineLabel {

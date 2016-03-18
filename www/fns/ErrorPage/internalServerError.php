@@ -4,6 +4,11 @@ namespace ErrorPage;
 
 function internalServerError ($error) {
 
+    if (php_sapi_name() === 'cli') {
+        echo "ERROR: $error\n";
+        exit(1);
+    }
+
     $reference = bin2hex(openssl_random_pseudo_bytes(20));
     error_log("$reference: $error");
 

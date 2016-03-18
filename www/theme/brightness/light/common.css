@@ -19,14 +19,14 @@ body {
     color: #000;
 }
 
-.hr,
 .tag,
 .form-component-separator,
-.cashflow-bars,
-.barChart-line {
+.cashflow-bars {
     background-color: #e3e3e3;
 }
 
+.hr,
+.barChart-line,
 .contactPanel-info,
 .twoColumns-column2,
 .page_tabs-tab.normal {
