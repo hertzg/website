@@ -39,18 +39,11 @@ function optionsPanel ($user, $receivedSchedule, &$head, &$scripts) {
         "../delete/$itemQuery", 'trash-bin', ['id' => 'delete']);
 
     include_once __DIR__.'/../../../fns/send_via_sms_link.php';
-    include_once "$fnsDir/create_calendar_icon_today.php";
+    include_once "$fnsDir/Page/calendarTodayLink.php";
     include_once "$fnsDir/Page/staticTwoColumns.php";
     include_once "$fnsDir/Page/twoColumns.php";
     $content =
-        '<a name="calendar"></a>'
-        ."<a href=\"calendar/?id=$id\" id=\"calendar\""
-        ." class=\"clickable link image_link withArrow localNavigation-link\">"
-            .'<span class="image_link-icon">'
-                .create_calendar_icon_today($user)
-            .'</span>'
-            .'<span class="image_link-content">Calendar</span>'
-        .'</a>'
+        \Page\calendarTodayLink($user, "calendar/?id=$id")
         .'<div class="hr"></div>'
         .\Page\twoColumns($importLink, $editAndImportLink)
         .'<div class="hr"></div>'
