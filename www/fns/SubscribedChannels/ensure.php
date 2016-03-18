@@ -6,6 +6,11 @@ function ensure ($mysqli) {
 
     $fnsDir = __DIR__.'/..';
 
+    $nullable_unsigned_bigint = [
+        'type' => 'bigint(20) unsigned',
+        'nullable' => true,
+    ];
+
     include_once "$fnsDir/ApiKeyName/column.php";
     $apiKeyNameColumn = \ApiKeyName\column(true);
 
@@ -22,10 +27,7 @@ function ensure ($mysqli) {
             'primary' => true,
         ],
         'id_channels' => ['type' => 'bigint(20) unsigned'],
-        'insert_api_key_id' => [
-            'type' => 'bigint(20) unsigned',
-            'nullable' => true,
-        ],
+        'insert_api_key_id' => $nullable_unsigned_bigint,
         'insert_api_key_name' => $apiKeyNameColumn,
         'insert_time' => ['type' => 'bigint(20) unsigned'],
         'lowercase_name' => $channelNameColumn,
@@ -38,10 +40,7 @@ function ensure ($mysqli) {
         'subscriber_id_users' => ['type' => 'bigint(20) unsigned'],
         'subscriber_locked' => ['type' => 'tinyint(3) unsigned'],
         'subscriber_username' => \Username\column(),
-        'update_api_key_id' => [
-            'type' => 'bigint(20) unsigned',
-            'nullable' => true,
-        ],
+        'update_api_key_id' => $nullable_unsigned_bigint,
         'update_api_key_name' => $apiKeyNameColumn,
         'update_time' => ['type' => 'bigint(20) unsigned'],
     ]);

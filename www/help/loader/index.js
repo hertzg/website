@@ -34,7 +34,9 @@
                 ui.Hr(div)
                 ui.Page_imageArrowLink(div, function (div) {
                     ui.Text(div, 'Cross-site API Documentation')
-                }, 'cross-site-api-doc/', 'api-doc', { id: 'cross-site-api-doc' })
+                }, 'cross-site-api-doc/', 'api-doc', {
+                    id: 'cross-site-api-doc',
+                })
                 ui.Hr(div)
                 ui.Page_imageArrowLink(div, function (div) {
                     ui.Text(div, 'About Zvini')

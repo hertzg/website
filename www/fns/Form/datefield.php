@@ -66,7 +66,7 @@ function datefield ($day, $month, $year,
             ."<div class=\"form-component-content\">$monthSelect</div>"
         .'</div>'
         .'<div class="form-datefield-year form-component">'
-            .'<div class="form-component-separator"></div>   '
+            .'<div class="form-component-separator"></div>'
             ."<div class=\"form-component-content\">$yearSelect</div>"
         .'</div>';
 

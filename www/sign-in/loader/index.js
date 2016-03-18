@@ -21,7 +21,8 @@
                     ENTER_USERNAME: 'Enter username.',
                     INVALID_USERNAME: 'The username is invalid.',
                     USER_DISABLED: 'Your account is disabled.',
-                    INVALID_USERNAME_OR_PASSWORD: 'Invalid username or password.',
+                    INVALID_USERNAME_OR_PASSWORD:
+                        'Invalid username or password.',
                 })
                 if (values['return'] !== '') {
                     ui.Page_warnings(div, [

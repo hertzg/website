@@ -33,7 +33,8 @@
                 ui.Element(div, 'div', function (div) {
                     div.className = 'siteInfo-description'
                     ui.Element(div, 'div', function (div) {
-                        ui.Text(div, 'Save your files, contacts, notes and more.')
+                        ui.Text(div,
+                            'Save your files, contacts, notes and more.')
                     })
                     ui.Element(div, 'div', function (div) {
                         ui.Text(div, 'It\'s free and easy.')

@@ -9,6 +9,11 @@ function ensure ($mysqli) {
 
     $fnsDir = __DIR__.'/..';
 
+    $nullable_unsigned_bigint = [
+        'type' => 'bigint(20) unsigned',
+        'nullable' => true,
+    ];
+
     include_once "$fnsDir/ApiKeyName/column.php";
     $apiKeyNameColumn = \ApiKeyName\column(true);
 
@@ -45,10 +50,7 @@ function ensure ($mysqli) {
             'primary' => true,
         ],
         'id_users' => ['type' => 'bigint(20) unsigned'],
-        'insert_api_key_id' => [
-            'type' => 'bigint(20) unsigned',
-            'nullable' => true,
-        ],
+        'insert_api_key_id' => $nullable_unsigned_bigint,
         'insert_api_key_name' => $apiKeyNameColumn,
         'insert_time' => ['type' => 'bigint(20) unsigned'],
         'num_tags' => ['type' => 'tinyint(3) unsigned'],
@@ -66,10 +68,7 @@ function ensure ($mysqli) {
             'characterSet' => 'utf8',
             'collation' => 'utf8_unicode_ci',
         ],
-        'update_api_key_id' => [
-            'type' => 'bigint(20) unsigned',
-            'nullable' => true,
-        ],
+        'update_api_key_id' => $nullable_unsigned_bigint,
         'update_api_key_name' => $apiKeyNameColumn,
         'update_time' => ['type' => 'bigint(20) unsigned'],
     ]);
