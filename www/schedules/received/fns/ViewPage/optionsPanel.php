@@ -2,13 +2,20 @@
 
 namespace ViewPage;
 
-function optionsPanel ($user, $receivedSchedule) {
+function optionsPanel ($user, $receivedSchedule, &$head, &$scripts) {
 
-    $schedulesDir = __DIR__.'/../../..';
-    $fnsDir = "$schedulesDir/../fns";
+    $base = '../../../';
+    $fnsDir = __DIR__.'/../../../../fns';
+    $id = $receivedSchedule->id;
+
+    include_once "$fnsDir/compressed_css_link.php";
+    $head .= compressed_css_link('calendarIcon', $base);
+
+    include_once "$fnsDir/compressed_js_script.php";
+    $scripts .= compressed_js_script('calendarIcon', $base);
 
     include_once "$fnsDir/ItemList/Received/escapedItemQuery.php";
-    $itemQuery = \ItemList\Received\escapedItemQuery($receivedSchedule->id);
+    $itemQuery = \ItemList\Received\escapedItemQuery($id);
 
     include_once "$fnsDir/Page/imageLink.php";
     $importLink = \Page\imageLink('Import',
@@ -32,10 +39,20 @@ function optionsPanel ($user, $receivedSchedule) {
         "../delete/$itemQuery", 'trash-bin', ['id' => 'delete']);
 
     include_once __DIR__.'/../../../fns/send_via_sms_link.php';
+    include_once "$fnsDir/create_calendar_icon_today.php";
     include_once "$fnsDir/Page/staticTwoColumns.php";
     include_once "$fnsDir/Page/twoColumns.php";
     $content =
-        \Page\twoColumns($importLink, $editAndImportLink)
+        '<a name="calendar"></a>'
+        ."<a href=\"calendar/?id=$id\" id=\"calendar\""
+        ." class=\"clickable link image_link withArrow localNavigation-link\">"
+            .'<span class="image_link-icon">'
+                .create_calendar_icon_today($user)
+            .'</span>'
+            .'<span class="image_link-content">Calendar</span>'
+        .'</a>'
+        .'<div class="hr"></div>'
+        .\Page\twoColumns($importLink, $editAndImportLink)
         .'<div class="hr"></div>'
         .send_via_sms_link($user, $receivedSchedule)
         .'<div class="hr"></div>'

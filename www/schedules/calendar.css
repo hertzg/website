@@ -1,0 +1,43 @@
+.calendar-columns {
+    white-space: nowrap;
+}
+
+.calendar-column {
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+    height: 48px;
+}
+.calendar-column.column0,
+.calendar-column.column2,
+.calendar-column.column3,
+.calendar-column.column4,
+.calendar-column.column6 {
+    width: 14%;
+}
+.calendar-column.column1,
+.calendar-column.column5 {
+    width: 15%;
+}
+
+.calendar-week {
+    line-height: 48px;
+}
+
+.calendar-day {
+    line-height: 48px;
+}
+
+.calendar-day-busyRing {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 8px;
+    height: 32px;
+    width: 32px;
+    border: 2px solid #aaa;
+    line-height: 28px;
+    border-radius: 16px;
+}
+.calendar-day-busyRing.offmonth {
+    border-color: rgba(127, 127, 127, 0.3);
+}

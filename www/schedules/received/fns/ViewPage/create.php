@@ -2,7 +2,7 @@
 
 namespace ViewPage;
 
-function create ($user, $receivedSchedule, &$scripts) {
+function create ($user, $receivedSchedule, &$head, &$scripts) {
 
     $id = $receivedSchedule->id;
     $interval = $receivedSchedule->interval;
@@ -53,6 +53,6 @@ function create ($user, $receivedSchedule, &$scripts) {
         )
         .create_panel('The Schedule', join('<div class="hr"></div>', $items)
             .\Page\infoText("Schedule received $date_ago."))
-        .optionsPanel($user, $receivedSchedule);
+        .optionsPanel($user, $receivedSchedule, $head, $scripts);
 
 }

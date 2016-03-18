@@ -20,13 +20,13 @@ include_once "$fnsDir/ItemList/Received/itemQuery.php";
 $itemQuery = ItemList\Received\itemQuery($id);
 
 include_once '../fns/ViewPage/create.php';
-$content = ViewPage\create($user, $receivedSchedule, $scripts);
+$content = ViewPage\create($user, $receivedSchedule, $head, $scripts);
 
 include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/compressed_js_script.php";
 include_once "$fnsDir/echo_user_page.php";
 echo_user_page($user, "Received Schedule #$id", $content, $base, [
-    'head' => compressed_css_link('confirmDialog', $base),
+    'head' => $head.compressed_css_link('confirmDialog', $base),
     'scripts' => $scripts.compressed_js_script('confirmDialog', $base)
         .'<script type="text/javascript">'
             .'var deleteHref = '.json_encode("../delete/submit.php$itemQuery")

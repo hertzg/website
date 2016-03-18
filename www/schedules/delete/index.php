@@ -17,7 +17,7 @@ $escapedItemQuery = ItemList\escapedItemQuery($id);
 include_once '../fns/ViewPage/create.php';
 include_once "$fnsDir/Page/confirmDialog.php";
 $content =
-    ViewPage\create($user, $schedule, $scripts)
+    ViewPage\create($user, $schedule, $head, $scripts)
     .Page\confirmDialog('Are you sure you want to delete the schedule?'
         .' It will be moved to Trash.', 'Yes, delete schedule',
         "submit.php$escapedItemQuery", "../view/$escapedItemQuery");
@@ -25,6 +25,6 @@ $content =
 include_once "$fnsDir/compressed_css_link.php";
 include_once "$fnsDir/echo_user_page.php";
 echo_user_page($user, "Delete Schedule #$id?", $content, $base, [
-    'head' => compressed_css_link('confirmDialog', $base),
+    'head' => $head.compressed_css_link('confirmDialog', $base),
     'scripts' => $scripts,
 ]);

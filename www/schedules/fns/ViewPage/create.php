@@ -2,7 +2,7 @@
 
 namespace ViewPage;
 
-function create ($user, $schedule, &$scripts) {
+function create ($user, $schedule, &$head, &$scripts) {
 
     $id = $schedule->id;
     $interval = $schedule->interval;
@@ -61,6 +61,6 @@ function create ($user, $schedule, &$scripts) {
             .\Page\infoText($infoText),
             create_new_item_button('Schedule', '../')
         )
-        .optionsPanel($user, $schedule);
+        .optionsPanel($user, $schedule, $head, $scripts);
 
 }

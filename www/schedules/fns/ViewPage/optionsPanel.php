@@ -2,10 +2,17 @@
 
 namespace ViewPage;
 
-function optionsPanel ($user, $schedule) {
+function optionsPanel ($user, $schedule, &$head, &$scripts) {
 
+    $base = '../../';
     $fnsDir = __DIR__.'/../../../fns';
     $id = $schedule->id;
+
+    include_once "$fnsDir/compressed_css_link.php";
+    $head .= compressed_css_link('calendarIcon', $base);
+
+    include_once "$fnsDir/compressed_js_script.php";
+    $scripts .= compressed_js_script('calendarIcon', $base);
 
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
     $escapedItemQuery = \ItemList\escapedItemQuery($id);
@@ -36,10 +43,20 @@ function optionsPanel ($user, $schedule) {
         "../delete/$escapedItemQuery", 'trash-bin', ['id' => 'delete']);
 
     include_once __DIR__.'/../send_via_sms_link.php';
+    include_once "$fnsDir/create_calendar_icon_today.php";
     include_once "$fnsDir/Page/staticTwoColumns.php";
     include_once "$fnsDir/Page/twoColumns.php";
     $content =
-        \Page\staticTwoColumns($editLink, $duplicateLink)
+        '<a name="calendar"></a>'
+        ."<a href=\"calendar/?id=$id\" id=\"calendar\""
+        ." class=\"clickable link image_link withArrow localNavigation-link\">"
+            .'<span class="image_link-icon">'
+                .create_calendar_icon_today($user)
+            .'</span>'
+            .'<span class="image_link-content">Calendar</span>'
+        .'</a>'
+        .'<div class="hr"></div>'
+        .\Page\staticTwoColumns($editLink, $duplicateLink)
         .'<div class="hr"></div>'
         .\Page\twoColumns($sendLink, send_via_sms_link($user, $schedule))
         .'<div class="hr"></div>'
