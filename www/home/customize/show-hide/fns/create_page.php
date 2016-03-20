@@ -29,7 +29,7 @@ function create_page ($user, &$head, &$scripts, $base = '') {
 
     }
 
-    include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Page/panel.php";
     include_once "$fnsDir/Form/button.php";
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/imageLink.php";
@@ -50,7 +50,7 @@ function create_page ($user, &$head, &$scripts, $base = '') {
                 .$content.Form\button('Save Changes')
             .'</form>'
         )
-        .create_panel(
+        .Page\panel(
             'Options',
             Page\imageLinkWithDescription('Reorder Items',
                 'Change the order in which the items appear.',

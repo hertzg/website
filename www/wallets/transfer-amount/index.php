@@ -60,8 +60,8 @@ if ($user->num_wallets > 1) {
         'From another wallet', '../quick-transfer-amount/',
         'transfer-amount', ['localNavigation' => true]);
 
-    include_once "$fnsDir/create_panel.php";
-    $content .= create_panel('Options', $link);
+    include_once "$fnsDir/Page/panel.php";
+    $content .= Page\panel('Options', $link);
 
 }
 

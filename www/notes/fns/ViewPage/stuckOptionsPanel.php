@@ -13,7 +13,7 @@ function stuckOptionsPanel ($note) {
     $deleteLink = \Page\imageLink('Delete',
         "../delete/$escapedItemQuery", 'trash-bin', ['id' => 'delete']);
 
-    include_once "$fnsDir/create_panel.php";
-    return create_panel('Note Options', $deleteLink);
+    include_once "$fnsDir/Page/panel.php";
+    return \Page\panel('Note Options', $deleteLink);
 
 }

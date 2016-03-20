@@ -60,7 +60,7 @@ function create ($mysqli, $user, $bar_chart, &$scripts) {
     $deleteLink = \Page\imageLink('Delete All Bars',
         "../delete-all/$escapedItemQuery", 'trash-bin', ['id' => 'delete-all']);
 
-    include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Page/panel.php";
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionMessages.php";
@@ -75,6 +75,6 @@ function create ($mysqli, $user, $bar_chart, &$scripts) {
             .join('<div class="hr"></div>', $items),
             \Page\newItemButton("../new/$escapedItemQuery", 'Bar')
         )
-        .create_panel('Options', $deleteLink);
+        .\Page\panel('Options', $deleteLink);
 
 }

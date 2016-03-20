@@ -22,7 +22,7 @@ function create_content ($mysqli, $user,
 
     include_once __DIR__.'/create_calendar.php';
     include_once "$fnsDir/create_calendar_icon_today.php";
-    include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Page/panel.php";
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/imageArrowLink.php";
     include_once "$fnsDir/Page/newItemButton.php";
@@ -45,7 +45,7 @@ function create_content ($mysqli, $user,
                 'Event', !$user->num_events)
         )
         .$events_panel
-        .create_panel(
+        .Page\panel(
             'Options',
             Page\staticTwoColumns(
                 Page\imageArrowLink('Jump To', $jumpHref,

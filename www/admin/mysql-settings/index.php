@@ -64,7 +64,7 @@ if ($messages) {
     $messages = '';
 }
 
-include_once "$fnsDir/create_panel.php";
+include_once "$fnsDir/Page/panel.php";
 include_once "$fnsDir/Form/label.php";
 include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/imageArrowLink.php";
@@ -84,7 +84,7 @@ $content =
         .'<div class="hr"></div>'
         .Form\label('Database', htmlspecialchars($db))
     )
-    .create_panel(
+    .Page\panel(
         'Options',
         Page\imageArrowLink('Edit', 'edit/', 'generic', ['id' => 'edit'])
     );

@@ -28,7 +28,7 @@ function create_folder_options_panel ($id_folders, $base) {
         .'<div class="hr"></div>'
         .Page\staticTwoColumns($sendLink, $deleteLink);
 
-    include_once "$fnsDir/create_panel.php";
-    return create_panel('Folder Options', $content);
+    include_once "$fnsDir/Page/panel.php";
+    return Page\panel('Folder Options', $content);
 
 }

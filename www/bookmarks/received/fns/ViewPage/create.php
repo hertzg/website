@@ -26,7 +26,7 @@ function create ($receivedBookmark, &$scripts) {
     $date_ago = export_date_ago($receivedBookmark->insert_time);
 
     include_once __DIR__.'/optionsPanel.php';
-    include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Page/panel.php";
     include_once "$fnsDir/create_received_from_item.php";
     include_once "$fnsDir/ItemList/Received/listHref.php";
     include_once "$fnsDir/Page/create.php";
@@ -42,7 +42,7 @@ function create ($receivedBookmark, &$scripts) {
             \Page\sessionMessages('bookmarks/received/view/messages')
             .create_received_from_item($receivedBookmark)
         )
-        .create_panel('The Bookmark', join('<div class="hr"></div>', $items)
+        .\Page\panel('The Bookmark', join('<div class="hr"></div>', $items)
             .\Page\infoText("Bookmark received $date_ago."))
         .optionsPanel($receivedBookmark);
 

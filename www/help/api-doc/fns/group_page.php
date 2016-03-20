@@ -41,8 +41,8 @@ function group_page ($groupKey, $methods, $subgroups = null) {
         }
         $items = join('<div class="hr"></div>', $items);
 
-        include_once "$fnsDir/create_panel.php";
-        $content .= create_panel('Subnamespaces', $items);
+        include_once "$fnsDir/Page/panel.php";
+        $content .= \Page\panel('Subnamespaces', $items);
 
     }
 

@@ -42,7 +42,7 @@ function optionsPanel ($task) {
         .'<div class="hr"></div>'
         .\Page\staticTwoColumns($historyLink, $deleteLink);
 
-    include_once "$fnsDir/create_panel.php";
-    return create_panel('Task Options', $content);
+    include_once "$fnsDir/Page/panel.php";
+    return \Page\panel('Task Options', $content);
 
 }

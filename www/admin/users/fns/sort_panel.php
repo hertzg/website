@@ -36,7 +36,7 @@ function sort_panel ($order_by, $total, $base = '') {
         .'<div class="ht"></div>'
         .Page\twoColumns($insertTimeLink, $accessTimeLink);
 
-    include_once "$fnsDir/create_panel.php";
-    return create_panel('Sort Users By', $content);
+    include_once "$fnsDir/Page/panel.php";
+    return Page\panel('Sort Users By', $content);
 
 }

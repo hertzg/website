@@ -39,7 +39,7 @@ function create ($receivedTask, $user, &$scripts) {
         .'Task received '.export_date_ago($receivedTask->insert_time).'.';
 
     include_once __DIR__.'/optionsPanel.php';
-    include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Page/panel.php";
     include_once "$fnsDir/create_received_from_item.php";
     include_once "$fnsDir/ItemList/Received/listHref.php";
     include_once "$fnsDir/Page/create.php";
@@ -55,7 +55,7 @@ function create ($receivedTask, $user, &$scripts) {
             \Page\sessionMessages('tasks/received/view/messages')
             .create_received_from_item($receivedTask)
         )
-        .create_panel('The Task', join('<div class="hr"></div>', $items)
+        .\Page\panel('The Task', join('<div class="hr"></div>', $items)
             .\Page\infoText($infoText))
         .optionsPanel($receivedTask);
 

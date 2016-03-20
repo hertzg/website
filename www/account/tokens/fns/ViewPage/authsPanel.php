@@ -61,7 +61,7 @@ function authsPanel ($mysqli, $token, &$scripts) {
 
     $content = join('<div class="hr"></div>', $items);
 
-    include_once "$fnsDir/create_panel.php";
-    return create_panel('Authentication History', $content);
+    include_once "$fnsDir/Page/panel.php";
+    return \Page\panel('Authentication History', $content);
 
 }

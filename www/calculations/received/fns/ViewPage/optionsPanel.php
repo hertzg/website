@@ -41,7 +41,7 @@ function optionsPanel ($receivedCalculation) {
         .'<div class="hr"></div>'
         .\Page\staticTwoColumns($archiveLink, $deleteLink);
 
-    include_once "$fnsDir/create_panel.php";
-    return create_panel('Calculation Options', $content);
+    include_once "$fnsDir/Page/panel.php";
+    return \Page\panel('Calculation Options', $content);
 
 }

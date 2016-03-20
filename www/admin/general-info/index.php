@@ -34,7 +34,7 @@ if ($client_address === false) {
     $yourAddress = htmlspecialchars($client_address);
 }
 
-include_once "$fnsDir/create_panel.php";
+include_once "$fnsDir/Page/panel.php";
 include_once "$fnsDir/DomainName/get.php";
 include_once "$fnsDir/Form/label.php";
 include_once "$fnsDir/InfoEmail/get.php";
@@ -68,7 +68,7 @@ $content =
         .'<div class="hr"></div>'
         .Form\label('Your IP address', $yourAddress)
     )
-    .create_panel('Options', $editLink);
+    .Page\panel('Options', $editLink);
 
 include_once '../fns/echo_admin_page.php';
 echo_admin_page($admin_user, 'General Information', $content, '../');

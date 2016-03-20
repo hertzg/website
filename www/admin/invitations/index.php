@@ -21,8 +21,8 @@ if ($invitations) {
     $deleteAllLink = Page\imageLink(
         'Delete All Invitations', 'delete-all/', 'trash-bin');
 
-    include_once "$fnsDir/create_panel.php";
-    $optionsPanel = create_panel('Options', $deleteAllLink);
+    include_once "$fnsDir/Page/panel.php";
+    $optionsPanel = Page\panel('Options', $deleteAllLink);
 
 } else {
     include_once "$fnsDir/Page/info.php";

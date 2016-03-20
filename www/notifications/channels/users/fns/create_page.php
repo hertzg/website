@@ -32,7 +32,7 @@ function create_page ($mysqli, $id, $base = '') {
     $options = [Page\imageArrowLink('Add User',
         "{$base}add/?id=$id", 'add-user', ['id' => 'add'])];
 
-    include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Page/panel.php";
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     return
@@ -45,6 +45,6 @@ function create_page ($mysqli, $id, $base = '') {
             Page\sessionMessages('notifications/channels/users/messages')
             .join('<div class="hr"></div>', $items)
         )
-        .create_panel('Options', join('<div class="hr"></div>', $options));
+        .Page\panel('Options', join('<div class="hr"></div>', $options));
 
 }

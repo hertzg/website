@@ -37,8 +37,8 @@ function pointsPanel ($mysqli, $place) {
             ['id' => 'all-points']);
     }
 
-    include_once "$fnsDir/create_panel.php";
-    return create_panel('Points',
+    include_once "$fnsDir/Page/panel.php";
+    return \Page\panel('Points',
         join('<div class="hr"></div>', $items), $newItemButton);
 
 }

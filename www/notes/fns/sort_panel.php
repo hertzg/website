@@ -24,7 +24,7 @@ function sort_panel ($user, $total, $base = '') {
     include_once "$fnsDir/Page/twoColumns.php";
     $content = Page\twoColumns($updateTimeLink, $insertTimeLink);
 
-    include_once "$fnsDir/create_panel.php";
-    return create_panel('Sort Notes By', $content);
+    include_once "$fnsDir/Page/panel.php";
+    return Page\panel('Sort Notes By', $content);
 
 }

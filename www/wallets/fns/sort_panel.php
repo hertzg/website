@@ -37,7 +37,7 @@ function sort_panel ($user, $total, $base = '') {
         .'<div class="hr"></div>'
         .Page\twoColumns($updateTimeLink, $insertTimeLink);
 
-    include_once "$fnsDir/create_panel.php";
-    return create_panel('Sort Wallets By', $content);
+    include_once "$fnsDir/Page/panel.php";
+    return Page\panel('Sort Wallets By', $content);
 
 }

@@ -61,7 +61,7 @@ function create ($transaction, &$scripts) {
     include_once "$fnsDir/ItemList/listHref.php";
     $listHref = \ItemList\listHref('', ['id' => $id_wallets]);
 
-    include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Page/panel.php";
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionMessages.php";
@@ -78,6 +78,6 @@ function create ($transaction, &$scripts) {
                 '../new/'.\ItemList\escapedItemQuery($id_wallets),
                 'Transaction')
         )
-        .create_panel('Transaction Options', $optionsContent);
+        .\Page\panel('Transaction Options', $optionsContent);
 
 }

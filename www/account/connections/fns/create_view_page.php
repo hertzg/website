@@ -48,7 +48,7 @@ function create_view_page ($connection, &$scripts) {
     if ($address !== null) $username .= '@'.htmlspecialchars($address);
 
     include_once "$fnsDir/create_expires_label.php";
-    include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Page/panel.php";
     include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/infoText.php";
@@ -70,6 +70,6 @@ function create_view_page ($connection, &$scripts) {
             .Page\infoText($infoText),
             Page\newItemButton('../new/', 'Connection')
         )
-        .create_panel('Conneciton Options', $optionsContent);
+        .Page\panel('Conneciton Options', $optionsContent);
 
 }

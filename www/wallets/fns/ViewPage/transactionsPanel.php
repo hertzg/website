@@ -54,7 +54,7 @@ function transactionsPanel ($mysqli, $wallet, &$scripts) {
         $content = \Page\info('No transactions');
     }
 
-    include_once "$fnsDir/create_panel.php";
-    return create_panel('Transactions', $content, $newItemButton);
+    include_once "$fnsDir/Page/panel.php";
+    return \Page\panel('Transactions', $content, $newItemButton);
 
 }

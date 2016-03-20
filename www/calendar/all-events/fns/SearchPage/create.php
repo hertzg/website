@@ -56,7 +56,7 @@ function create ($mysqli, $user, &$scripts) {
         "../delete-all/$escapedPageQuery", 'trash-bin', ['id' => 'delete-all']);
 
     include_once __DIR__.'/../sort_panel.php';
-    include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Page/panel.php";
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionMessages.php";
@@ -72,6 +72,6 @@ function create ($mysqli, $user, &$scripts) {
             \Page\newItemButton("../new/$escapedPageQuery", 'Event')
         )
         .sort_panel($user, $total, '../')
-        .create_panel('Options', $deleteLink);
+        .\Page\panel('Options', $deleteLink);
 
 }

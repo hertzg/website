@@ -59,7 +59,7 @@ function create ($bar, &$scripts) {
     include_once "$fnsDir/ItemList/listHref.php";
     $listHref = \ItemList\listHref('', ['id' => $id_bar_charts]);
 
-    include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Page/panel.php";
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionMessages.php";
@@ -75,6 +75,6 @@ function create ($bar, &$scripts) {
             \Page\newItemButton(
                 '../new/'.\ItemList\escapedItemQuery($id_bar_charts), 'Bar')
         )
-        .create_panel('Bar Options', $optionsContent);
+        .\Page\panel('Bar Options', $optionsContent);
 
 }

@@ -77,6 +77,6 @@ function optionsPanel ($contact, $base) {
         .'<div class="hr"></div>'
         .\Page\staticTwoColumns($historyLink, $deleteLink);
 
-    include_once "$fnsDir/create_panel.php";
-    return create_panel('Contact Options', $content);
+    include_once "$fnsDir/Page/panel.php";
+    return \Page\panel('Contact Options', $content);
 }

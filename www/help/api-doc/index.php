@@ -33,7 +33,7 @@ foreach ($groups as $key => $group) {
 }
 
 include_once 'fns/get_article_text.php';
-include_once "$fnsDir/create_panel.php";
+include_once "$fnsDir/Page/panel.php";
 include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/imageArrowLink.php";
 include_once "$fnsDir/Page/text.php";
@@ -62,8 +62,8 @@ $content =
             .' - The request was referred by a different domain.'
         )
     )
-    .create_panel('Methods', join('<div class="hr"></div>', $items))
-    .create_panel('Namespaces',
+    .\Page\panel('Methods', join('<div class="hr"></div>', $items))
+    .\Page\panel('Namespaces',
         join('<div class="hr"></div>', $group_items));
 
 include_once "$fnsDir/compressed_js_script.php";

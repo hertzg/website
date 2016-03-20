@@ -36,7 +36,7 @@ function optionsPanel ($subscribedChannel) {
 
     $content = join('<div class="hr"></div>', $items);
 
-    include_once "$fnsDir/create_panel.php";
-    return create_panel('Channel Options', $content);
+    include_once "$fnsDir/Page/panel.php";
+    return \Page\panel('Channel Options', $content);
 
 }

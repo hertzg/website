@@ -13,7 +13,7 @@ function create_content ($user, $items, $base) {
         'trash-bin', ['id' => 'delete-all']);
 
     include_once __DIR__.'/create_tabs.php';
-    include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Page/panel.php";
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
@@ -30,6 +30,6 @@ function create_content ($user, $items, $base) {
             .Page\sessionMessages('files/received/messages')
             .join('<div class="hr"></div>', $items)
         )
-        .create_panel('Options', $deleteAllLink);
+        .Page\panel('Options', $deleteAllLink);
 
 }

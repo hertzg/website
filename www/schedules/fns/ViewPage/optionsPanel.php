@@ -55,7 +55,7 @@ function optionsPanel ($user, $schedule, &$head, &$scripts) {
         .'<div class="hr"></div>'
         .\Page\staticTwoColumns($historyLink, $deleteLink);
 
-    include_once "$fnsDir/create_panel.php";
-    return create_panel('Schedule Options', $content);
+    include_once "$fnsDir/Page/panel.php";
+    return \Page\panel('Schedule Options', $content);
 
 }

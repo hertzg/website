@@ -25,7 +25,7 @@ $helpLink = Page\imageArrowLink('Help', 'help/', 'help', [
 include_once 'fns/create_database_links.php';
 include_once 'fns/create_general_info_link.php';
 include_once 'fns/create_mysql_link.php';
-include_once '../fns/create_panel.php';
+include_once '../fns/Page/panel.php';
 include_once '../fns/Page/sessionMessages.php';
 $content = Page\sessionMessages('admin/messages')
     .create_database_links($mysqli)
@@ -61,7 +61,7 @@ if ($admin_user) {
     $content = Page\title('Administration', $content);
 }
 
-$content .= create_panel('Options', $helpLink);
+$content .= Page\panel('Options', $helpLink);
 
 include_once '../fns/echo_page.php';
 echo_page($admin_user, 'Administration', $content, '../', [

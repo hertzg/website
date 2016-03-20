@@ -20,7 +20,7 @@ function optionsPanel ($id) {
     include_once "$fnsDir/Page/staticTwoColumns.php";
     $content = \Page\staticTwoColumns($editLink, $deleteLink);
 
-    include_once "$fnsDir/create_panel.php";
-    return create_panel('Admin API Key Options', $content);
+    include_once "$fnsDir/Page/panel.php";
+    return \Page\panel('Admin API Key Options', $content);
 
 }

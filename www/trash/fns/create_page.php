@@ -26,8 +26,8 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
                 .Page\imageLink('Empty Trash', "{$base}empty/", 'empty-trash')
             .'</div>';
 
-        include_once "$fnsDir/create_panel.php";
-        $optionsPanel = create_panel('Options', $emptyLink);
+        include_once "$fnsDir/Page/panel.php";
+        $optionsPanel = Page\panel('Options', $emptyLink);
 
     } else {
 

@@ -20,7 +20,7 @@ function imageOptionsPanel ($file) {
     include_once "$fnsDir/Page/twoColumns.php";
     $content = \Page\twoColumns($rotateCwLink, $rotateCcwLink);
 
-    include_once "$fnsDir/create_panel.php";
-    return create_panel('Image File Options', $content);
+    include_once "$fnsDir/Page/panel.php";
+    return \Page\panel('Image File Options', $content);
 
 }

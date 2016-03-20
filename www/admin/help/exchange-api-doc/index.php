@@ -18,7 +18,7 @@ foreach ($methods as $name => $description) {
 }
 
 include_once 'fns/get_article_text.php';
-include_once "$fnsDir/create_panel.php";
+include_once "$fnsDir/Page/panel.php";
 include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/imageArrowLink.php";
 include_once "$fnsDir/Page/text.php";
@@ -44,7 +44,7 @@ $content =
             .'The exchange API key is expired.'
         )
     )
-    .create_panel('Methods', join('<div class="hr"></div>', $items));
+    .Page\panel('Methods', join('<div class="hr"></div>', $items));
 
 include_once '../../fns/echo_admin_page.php';
 echo_admin_page($user, 'Exchange API Documentation', $content, '../../');

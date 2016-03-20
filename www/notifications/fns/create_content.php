@@ -59,7 +59,7 @@ function create_content ($mysqli, $user, $items, $options, $base) {
         }
     }
 
-    include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Page/panel.php";
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
@@ -76,6 +76,6 @@ function create_content ($mysqli, $user, $items, $options, $base) {
             .$filterBar
             .join('<div class="hr"></div>', $items)
         )
-        .create_panel('Options', join('<div class="hr"></div>', $options));
+        .Page\panel('Options', join('<div class="hr"></div>', $options));
 
 }

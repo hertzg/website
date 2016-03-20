@@ -63,7 +63,7 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
 
     include_once __DIR__.'/create_tabs.php';
     include_once "$fnsDir/create_new_item_button.php";
-    include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Page/panel.php";
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/sessionErrors.php";
     include_once "$fnsDir/Page/sessionMessages.php";
@@ -81,6 +81,6 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
             .join('<div class="hr"></div>', $items),
             create_new_item_button('Contact', "$base../")
         )
-        .create_panel('Options', $deleteAllLink);
+        .Page\panel('Options', $deleteAllLink);
 
 }

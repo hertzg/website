@@ -19,7 +19,7 @@ function create_geolocation_panel (&$scripts, $base,
         'Use GPS to detect the current location.', '',
         'locate', ['id' => 'geolocationLink']);
 
-    include_once "$fnsDir/create_panel.php";
-    return create_panel('Options', $content);
+    include_once "$fnsDir/Page/panel.php";
+    return Page\panel('Options', $content);
 
 }

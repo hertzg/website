@@ -42,7 +42,7 @@ function events_panel ($mysqli, $user, $day, $month, $year, $timeToday) {
         $dayText .= ", $yearSelected";
     }
 
-    include_once "$fnsDir/create_panel.php";
-    return create_panel("Events on $dayText", $content);
+    include_once "$fnsDir/Page/panel.php";
+    return Page\panel("Events on $dayText", $content);
 
 }

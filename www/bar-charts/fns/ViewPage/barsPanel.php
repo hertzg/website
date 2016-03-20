@@ -53,7 +53,7 @@ function barsPanel ($mysqli, $bar_chart, &$scripts) {
         $content = \Page\info('No bars');
     }
 
-    include_once "$fnsDir/create_panel.php";
-    return create_panel('Bars', $content, $newItemButton);
+    include_once "$fnsDir/Page/panel.php";
+    return \Page\panel('Bars', $content, $newItemButton);
 
 }

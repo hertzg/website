@@ -20,7 +20,7 @@ function unlockableOptionsPanel ($note) {
     include_once "$fnsDir/Page/staticTwoColumns.php";
     $content = \Page\staticTwoColumns($unlockLink, $deleteLink);
 
-    include_once "$fnsDir/create_panel.php";
-    return create_panel('Note Options', $content);
+    include_once "$fnsDir/Page/panel.php";
+    return \Page\panel('Note Options', $content);
 
 }

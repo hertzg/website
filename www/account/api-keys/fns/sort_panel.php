@@ -37,7 +37,7 @@ function sort_panel ($user, $total, $base = '') {
         .'<div class="hr"></div>'
         .Page\twoColumns($insertTimeLink, $accessTimeLink);
 
-    include_once "$fnsDir/create_panel.php";
-    return create_panel('Sort API Keys By', $content);
+    include_once "$fnsDir/Page/panel.php";
+    return Page\panel('Sort API Keys By', $content);
 
 }

@@ -30,7 +30,7 @@ function photoOptionsPanel ($contact, $base) {
         $content = $editLink;
     }
 
-    include_once "$fnsDir/create_panel.php";
-    return create_panel('Photo Options', $content);
+    include_once "$fnsDir/Page/panel.php";
+    return \Page\panel('Photo Options', $content);
 
 }

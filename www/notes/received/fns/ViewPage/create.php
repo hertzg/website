@@ -31,7 +31,7 @@ function create ($receivedNote, &$scripts) {
     $infoText .= "Note received $date_ago.";
 
     include_once __DIR__.'/optionsPanel.php';
-    include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Page/panel.php";
     include_once "$fnsDir/create_received_from_item.php";
     include_once "$fnsDir/ItemList/Received/listHref.php";
     include_once "$fnsDir/Page/create.php";
@@ -47,7 +47,7 @@ function create ($receivedNote, &$scripts) {
             \Page\sessionMessages('notes/received/view/messages')
             .create_received_from_item($receivedNote)
         )
-        .create_panel('The Note', join('<div class="hr"></div>', $items)
+        .\Page\panel('The Note', join('<div class="hr"></div>', $items)
             .\Page\infoText($infoText))
         .optionsPanel($receivedNote);
 

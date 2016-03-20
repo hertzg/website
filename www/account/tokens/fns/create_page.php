@@ -61,9 +61,9 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
         $items[] = Page\info('No sessions remembered');
     }
 
-    include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Page/panel.php";
     $panelContent = join('<div class="hr"></div>', $options);
-    $optionsPanel = create_panel('Options', $panelContent);
+    $optionsPanel = Page\panel('Options', $panelContent);
 
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/sessionErrors.php";

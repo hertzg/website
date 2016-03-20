@@ -47,7 +47,7 @@ function create_view_page ($invitation, &$scripts) {
         $infoText .= "<br />Last modified $author.";
     }
 
-    include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Page/panel.php";
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/imageArrowLink.php";
     include_once "$fnsDir/Page/imageLink.php";
@@ -67,7 +67,7 @@ function create_view_page ($invitation, &$scripts) {
             .Page\infoText($infoText),
             Page\newItemButton('../new/', 'Invitation')
         )
-        .create_panel(
+        .Page\panel(
             'Invitation Options',
             Page\staticTwoColumns(
                 Page\imageArrowLink('Edit', "../edit/?id=$id",

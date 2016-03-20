@@ -49,7 +49,7 @@ function create_page ($mysqli, $receivedFolder, &$scripts, $base = '') {
     $date_ago = export_date_ago($receivedFolder->insert_time);
 
     include_once __DIR__.'/create_options_panel.php';
-    include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Page/panel.php";
     include_once "$fnsDir/create_received_from_item.php";
     include_once "$fnsDir/ItemList/Received/listHref.php";
     include_once "$fnsDir/Page/create.php";
@@ -65,7 +65,7 @@ function create_page ($mysqli, $receivedFolder, &$scripts, $base = '') {
             Page\sessionMessages('files/received/folder/messages')
             .create_received_from_item($receivedFolder)
         )
-        .create_panel(
+        .Page\panel(
             'The Folder',
             '<div class="textAndButtons">'
                 .'<span class="textAndButtons-text">Location:</span>'

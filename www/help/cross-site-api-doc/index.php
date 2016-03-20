@@ -24,7 +24,7 @@ foreach ($methods as $name => $description) {
         $description, "$name/", 'api-method', ['id' => $name]);
 }
 
-include_once "$fnsDir/create_panel.php";
+include_once "$fnsDir/Page/panel.php";
 include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/imageArrowLink.php";
 include_once "$fnsDir/Page/text.php";
@@ -66,7 +66,7 @@ $content =
         .Page\imageArrowLink('PHP Example',
             'php-example', 'generic', ['id' => 'php-example'])
     )
-    .create_panel('Methods', join('<div class="hr"></div>', $items));
+    .Page\panel('Methods', join('<div class="hr"></div>', $items));
 
 include_once "$fnsDir/echo_public_page.php";
 echo_public_page($user, 'Cross-site API Documentation', $content, '../../');

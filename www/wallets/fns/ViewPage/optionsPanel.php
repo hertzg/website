@@ -28,7 +28,7 @@ function optionsPanel ($wallet, $user) {
             .$content;
     }
 
-    include_once "$fnsDir/create_panel.php";
-    return create_panel('Wallet Options', $content);
+    include_once "$fnsDir/Page/panel.php";
+    return \Page\panel('Wallet Options', $content);
 
 }

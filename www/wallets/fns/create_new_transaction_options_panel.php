@@ -11,7 +11,7 @@ function create_new_transaction_options_panel ($user, $base = '') {
         'In another wallet', "$base../quick-new-transaction/",
         'create-transaction', ['localNavigation' => true]);
 
-    include_once "$fnsDir/create_panel.php";
-    return create_panel('Options', $link);
+    include_once "$fnsDir/Page/panel.php";
+    return Page\panel('Options', $link);
 
 }

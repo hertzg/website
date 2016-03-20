@@ -38,7 +38,7 @@ function create ($receivedPlace, &$scripts) {
     $date_ago = export_date_ago($receivedPlace->insert_time);
 
     include_once __DIR__.'/optionsPanel.php';
-    include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Page/panel.php";
     include_once "$fnsDir/create_received_from_item.php";
     include_once "$fnsDir/ItemList/Received/listHref.php";
     include_once "$fnsDir/Page/create.php";
@@ -54,7 +54,7 @@ function create ($receivedPlace, &$scripts) {
             \Page\sessionMessages('places/received/view/messages')
             .create_received_from_item($receivedPlace)
         )
-        .create_panel('The Place', join('<div class="hr"></div>', $items)
+        .\Page\panel('The Place', join('<div class="hr"></div>', $items)
             .\Page\infoText("Place received $date_ago."))
         .optionsPanel($receivedPlace);
 

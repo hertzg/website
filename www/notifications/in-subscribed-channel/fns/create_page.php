@@ -40,7 +40,7 @@ function create_page ($mysqli, $user,
         $_SESSION['notifications/messages']
     );
 
-    include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Page/panel.php";
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/sessionMessages.php";
     return
@@ -65,6 +65,6 @@ function create_page ($mysqli, $user,
             .'</div>'
             .join('<div class="hr"></div>', $items)
         )
-        .create_panel('Options', join('<div class="hr"></div>', $options));
+        .Page\panel('Options', join('<div class="hr"></div>', $options));
 
 }

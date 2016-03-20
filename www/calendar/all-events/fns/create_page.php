@@ -63,7 +63,7 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
     );
 
     include_once __DIR__.'/sort_panel.php';
-    include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Page/panel.php";
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionErrors.php";
@@ -81,6 +81,6 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
             Page\newItemButton("{$base}new/$escapedPageQuery", 'Event')
         )
         .sort_panel($user, $total, $base)
-        .create_panel('Options', $deleteLink);
+        .Page\panel('Options', $deleteLink);
 
 }

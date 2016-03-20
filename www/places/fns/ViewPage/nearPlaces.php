@@ -30,7 +30,7 @@ function nearPlaces ($mysqli, $place) {
 
     $content = join('<div class="hr"></div>', $items);
 
-    include_once "$fnsDir/create_panel.php";
-    return create_panel('Places Nearby', $content);
+    include_once "$fnsDir/Page/panel.php";
+    return \Page\panel('Places Nearby', $content);
 
 }

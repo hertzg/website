@@ -30,7 +30,7 @@ else $queryString = '?return='.rawurlencode($return);
 include_once 'fns/unset_session_vars.php';
 unset_session_vars();
 
-include_once '../fns/create_panel.php';
+include_once '../fns/Page/panel.php';
 include_once '../fns/example_password.php';
 include_once '../fns/Email/maxLength.php';
 include_once '../fns/Form/button.php';
@@ -89,7 +89,7 @@ $content =
             .Form\hidden('return', $return)
         .'</form>'
     )
-    .create_panel(
+    .Page\panel(
         'Options',
         Page\imageLinkWithDescription('Already have an account?',
             'Sign in here.', "../sign-in/$queryString", 'sign-in',

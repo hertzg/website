@@ -30,7 +30,7 @@ function create_view_page ($point, &$scripts) {
     );
 
     include_once __DIR__.'/../../fns/ViewPointPage/viewContent.php';
-    include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Page/panel.php";
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionMessages.php";
@@ -45,6 +45,6 @@ function create_view_page ($point, &$scripts) {
             .ViewPointPage\viewContent($point, $scripts, '../'),
             Page\newItemButton("../new/$placeEscapedItemQuery", 'point')
         )
-        .create_panel('Point Options', $optionsContent);
+        .Page\panel('Point Options', $optionsContent);
 
 }

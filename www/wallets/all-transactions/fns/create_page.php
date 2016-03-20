@@ -63,7 +63,7 @@ function create_page ($mysqli, $user, $wallet, &$scripts, $base = '') {
         "{$base}delete-all/$escapedItemQuery",
         'trash-bin', ['id' => 'delete-all']);
 
-    include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Page/panel.php";
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionMessages.php";
@@ -78,6 +78,6 @@ function create_page ($mysqli, $user, $wallet, &$scripts, $base = '') {
             .join('<div class="hr"></div>', $items),
             Page\newItemButton("{$base}new/$escapedItemQuery", 'Transaction')
         )
-        .create_panel('Options', $deleteLink);
+        .Page\panel('Options', $deleteLink);
 
 }

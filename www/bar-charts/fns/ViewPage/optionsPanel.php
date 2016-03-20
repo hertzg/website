@@ -19,7 +19,7 @@ function optionsPanel ($bar_chart) {
     include_once "$fnsDir/Page/staticTwoColumns.php";
     $content = \Page\staticTwoColumns($editLink, $deleteLink);
 
-    include_once "$fnsDir/create_panel.php";
-    return create_panel('Bar Chart Options', $content);
+    include_once "$fnsDir/Page/panel.php";
+    return \Page\panel('Bar Chart Options', $content);
 
 }

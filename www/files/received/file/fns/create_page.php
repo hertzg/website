@@ -55,7 +55,7 @@ function create_page ($mysqli, $receivedFile, &$scripts, $base = '') {
     include_once "$fnsDir/export_date_ago.php";
     $date_ago = export_date_ago($receivedFile->insert_time);
 
-    include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Page/panel.php";
     include_once "$fnsDir/create_received_from_item.php";
     include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/ItemList/Received/listHref.php";
@@ -74,7 +74,7 @@ function create_page ($mysqli, $receivedFile, &$scripts, $base = '') {
             Page\sessionMessages('files/received/file/messages')
             .create_received_from_item($receivedFile)
         )
-        .create_panel(
+        .Page\panel(
             'The File',
             Form\label('File name', htmlspecialchars($name))
             .'<div class="hr"></div>'
@@ -87,7 +87,7 @@ function create_page ($mysqli, $receivedFile, &$scripts, $base = '') {
             .Form\label('SHA-256 sum', $receivedFile->sha256_sum)
             .Page\infoText("File received $date_ago.")
         )
-        .create_panel(
+        .Page\panel(
             'File Options',
             $downloadLink
             .'<div class="hr"></div>'

@@ -70,7 +70,7 @@ function create ($user, $event, &$head, &$scripts) {
         $_SESSION['calendar/all-events/new/values']
     );
 
-    include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Page/panel.php";
     include_once "$fnsDir/ItemList/listHref.php";
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/newItemButton.php";
@@ -86,6 +86,6 @@ function create ($user, $event, &$head, &$scripts) {
             .$viewContent,
             \Page\newItemButton("../new/$escapedPageQuery", 'Event')
         )
-        .create_panel('Event Options', $optionsContent);
+        .\Page\panel('Event Options', $optionsContent);
 
 }

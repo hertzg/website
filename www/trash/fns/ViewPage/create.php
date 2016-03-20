@@ -85,8 +85,8 @@ function create ($mysqli, $deletedItem, $user, &$title, &$head, &$scripts) {
         $type == 'receivedPlace' || $type == 'receivedSchedule' ||
         $type == 'receivedTask') {
 
-        include_once "$fnsDir/create_panel.php";
-        $additionalPanel = create_panel("The $typeName", $content.$infoText);
+        include_once "$fnsDir/Page/panel.php";
+        $additionalPanel = \Page\panel("The $typeName", $content.$infoText);
 
         include_once "$fnsDir/create_received_from_item.php";
         $content = create_received_from_item($data);

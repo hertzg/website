@@ -57,7 +57,7 @@ function optionsPanel ($file) {
             .$deleteLink;
     }
 
-    include_once "$fnsDir/create_panel.php";
-    return create_panel('File Options', $content);
+    include_once "$fnsDir/Page/panel.php";
+    return \Page\panel('File Options', $content);
 
 }

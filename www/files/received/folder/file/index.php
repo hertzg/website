@@ -36,7 +36,7 @@ $filePreview = Page\filePreview($receivedFolderFile->media_type,
     $receivedFolderFile->content_type, $id, $path,
     '../download-file/', $base, $scripts);
 
-include_once "$fnsDir/create_panel.php";
+include_once "$fnsDir/Page/panel.php";
 include_once "$fnsDir/Form/label.php";
 include_once "$fnsDir/Page/create.php";
 $content =
@@ -63,7 +63,7 @@ $content =
         .'<div class="hr"></div>'
         .Form\label('SHA-256 sum', $receivedFolderFile->sha256_sum)
     )
-    .create_panel('File Options', $downloadLink);
+    .Page\panel('File Options', $downloadLink);
 
 include_once "$fnsDir/echo_user_page.php";
 echo_user_page($user, $title, $content, $base, ['scripts' => $scripts]);

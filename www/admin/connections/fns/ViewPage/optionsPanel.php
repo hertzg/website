@@ -28,7 +28,7 @@ function optionsPanel ($connection) {
             .$content;
     }
 
-    include_once "$fnsDir/create_panel.php";
-    return create_panel('Connection Options', $content);
+    include_once "$fnsDir/Page/panel.php";
+    return \Page\panel('Connection Options', $content);
 
 }

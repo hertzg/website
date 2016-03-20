@@ -47,7 +47,7 @@ function optionsPanel ($calculation) {
     $content .= \Page\imageLink('Delete',
         "../delete/$escapedItemQuery", 'trash-bin', ['id' => 'delete']);
 
-    include_once "$fnsDir/create_panel.php";
-    return create_panel('Calculation Options', $content);
+    include_once "$fnsDir/Page/panel.php";
+    return \Page\panel('Calculation Options', $content);
 
 }

@@ -30,7 +30,7 @@ function create ($mysqli, $token, &$scripts) {
     );
 
     include_once __DIR__.'/authsPanel.php';
-    include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Page/panel.php";
     include_once "$fnsDir/get_absolute_base.php";
     include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/Form/textarea.php";
@@ -66,6 +66,6 @@ function create ($mysqli, $token, &$scripts) {
                 .export_date_ago($token->insert_time).'.')
         )
         .authsPanel($mysqli, $token, $scripts)
-        .create_panel('Session Options', $deleteLink);
+        .\Page\panel('Session Options', $deleteLink);
 
 }

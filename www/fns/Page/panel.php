@@ -1,6 +1,8 @@
 <?php
 
-function create_panel ($title, $content, $newItemButton = '') {
+namespace Page;
+
+function panel ($title, $content, $newItemButton = '') {
     return
         '<br class="zeroHeight" />'
         .'<div class="panel">'

@@ -14,7 +14,7 @@ unset_session_vars();
 include_once 'fns/get_git_commit.php';
 get_git_commit($hash, $tag, $date);
 
-include_once "$fnsDir/create_panel.php";
+include_once "$fnsDir/Page/panel.php";
 include_once "$fnsDir/export_date_ago.php";
 include_once "$fnsDir/Form/label.php";
 include_once "$fnsDir/Page/create.php";
@@ -43,7 +43,7 @@ $content =
         .Page\imageArrowLink('GNU Affero General Public License',
             'license/', 'license', ['id' => 'license'])
     )
-    .create_panel(
+    .Page\panel(
         'Git Commit',
         Form\label('Hash', $hash)
         .'<div class="hr"></div>'

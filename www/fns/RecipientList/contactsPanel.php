@@ -7,7 +7,7 @@ function contactsPanel ($username, $params, $base = '') {
     include_once __DIR__.'/contactsForm.php';
     $contactsForm = contactsForm($username, $params, $base);
 
-    include_once __DIR__.'/../create_panel.php';
-    return create_panel('Add more from contacts', $contactsForm);
+    include_once __DIR__.'/../Page/panel.php';
+    return \Page\panel('Add more from contacts', $contactsForm);
 
 }

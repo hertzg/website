@@ -24,7 +24,7 @@ include_once "$fnsDir/Page/imageArrowLink.php";
 $editLink = Page\imageArrowLink('Edit',
     'edit/', 'edit-connection', ['id' => 'edit']);
 
-include_once "$fnsDir/create_panel.php";
+include_once "$fnsDir/Page/panel.php";
 include_once "$fnsDir/Form/label.php";
 include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/newItemButton.php";
@@ -40,7 +40,7 @@ $content =
         .Form\label('Other users', $permissions),
         Page\newItemButton('../new/', 'Connection', !$user->num_connections)
     )
-    .create_panel('Connection Options', $editLink);
+    .Page\panel('Connection Options', $editLink);
 
 include_once "$fnsDir/echo_user_page.php";
 echo_user_page($user, 'Default Connection', $content, $base);

@@ -34,7 +34,7 @@ function create_options_panel ($user, $id_folders, $files, $base) {
     include_once "$fnsDir/Page/twoColumns.php";
     $content .= Page\twoColumns($newFolderLink, $uploadLink);
 
-    include_once "$fnsDir/create_panel.php";
-    return create_panel('Options', $content);
+    include_once "$fnsDir/Page/panel.php";
+    return Page\panel('Options', $content);
 
 }

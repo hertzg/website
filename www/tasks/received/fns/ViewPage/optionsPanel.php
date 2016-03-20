@@ -39,7 +39,7 @@ function optionsPanel ($receivedTask) {
         .'<div class="hr"></div>'
         .\Page\staticTwoColumns($archiveLink, $deleteLink);
 
-    include_once "$fnsDir/create_panel.php";
-    return create_panel('Task Options', $content);
+    include_once "$fnsDir/Page/panel.php";
+    return \Page\panel('Task Options', $content);
 
 }

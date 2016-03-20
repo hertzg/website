@@ -32,7 +32,7 @@ function sort_panel ($user, $total, $base = '') {
         .'<div class="hr"></div>'
         . $insertTimeLink;
 
-    include_once "$fnsDir/create_panel.php";
-    return create_panel('Sort Places By', $content);
+    include_once "$fnsDir/Page/panel.php";
+    return Page\panel('Sort Places By', $content);
 
 }

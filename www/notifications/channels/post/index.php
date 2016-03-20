@@ -41,8 +41,8 @@ if ($user->num_channels > 1) {
     $link = Page\imageLinkWithDescription('Post a Notification',
         'In another channel', '../../post/', 'create-notification');
 
-    include_once "$fnsDir/create_panel.php";
-    $content .= create_panel('Options', $link);
+    include_once "$fnsDir/Page/panel.php";
+    $content .= Page\panel('Options', $link);
 
 }
 

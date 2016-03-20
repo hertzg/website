@@ -42,7 +42,7 @@ function create ($bar, &$scripts) {
     );
 
     include_once __DIR__.'/viewContent.php';
-    include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Page/panel.php";
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionMessages.php";
@@ -57,6 +57,6 @@ function create ($bar, &$scripts) {
             .viewContent($bar, $scripts),
             \Page\newItemButton("../new-bar/$barChartEscapedItemQuery", 'Bar')
         )
-        .create_panel('Bar Options', $optionsContent);
+        .\Page\panel('Bar Options', $optionsContent);
 
 }

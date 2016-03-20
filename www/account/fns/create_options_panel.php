@@ -32,7 +32,7 @@ function create_options_panel ($user) {
             ])
         );
 
-    include_once "$fnsDir/create_panel.php";
-    return create_panel('Options', $content);
+    include_once "$fnsDir/Page/panel.php";
+    return Page\panel('Options', $content);
 
 }

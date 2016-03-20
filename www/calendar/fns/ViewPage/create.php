@@ -55,7 +55,7 @@ function create ($user, $event, &$head, &$scripts) {
     );
 
     include_once __DIR__.'/viewContent.php';
-    include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Page/panel.php";
     include_once "$fnsDir/Page/create.php";
     include_once "$fnsDir/Page/newItemButton.php";
     include_once "$fnsDir/Page/sessionMessages.php";
@@ -70,6 +70,6 @@ function create ($user, $event, &$head, &$scripts) {
             .viewContent($event, $head, $scripts),
             \Page\newItemButton("../new-event/$newEventQuery", 'Event')
         )
-        .create_panel('Event Options', $optionsContent);
+        .\Page\panel('Event Options', $optionsContent);
 
 }

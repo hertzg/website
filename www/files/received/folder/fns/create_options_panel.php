@@ -30,10 +30,10 @@ function create_options_panel ($receivedFolder, $base) {
     $deleteLink = Page\imageLink('Delete',
         "{$base}delete/$escapedItemQuery", 'trash-bin', ['id' => 'delete']);
 
-    include_once "$fnsDir/create_panel.php";
+    include_once "$fnsDir/Page/panel.php";
     include_once "$fnsDir/Page/staticTwoColumns.php";
     include_once "$fnsDir/Page/twoColumns.php";
-    return create_panel(
+    return Page\panel(
         'Folder Options',
         Page\twoColumns($importLink, $renameAndImportLink)
         .'<div class="hr"></div>'

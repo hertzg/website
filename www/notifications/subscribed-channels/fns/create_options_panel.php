@@ -8,7 +8,7 @@ function create_options_panel () {
     $subscribeLink = Page\imageArrowLink('Subscribe to a Public Channel',
         'subscribe/', 'create-subscribed-channel', ['id' => 'subscribe']);
 
-    include_once "$fnsDir/create_panel.php";
-    return create_panel('Options', $subscribeLink);
+    include_once "$fnsDir/Page/panel.php";
+    return Page\panel('Options', $subscribeLink);
 
 }
