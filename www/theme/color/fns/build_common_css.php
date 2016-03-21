@@ -38,7 +38,8 @@ function build_common_css ($r, $g, $b, $mark_r, $mark_g, $mark_b) {
         .'.a,'
         .'.tab-active,'
         .'.form-property,'
-        .'.page_tabs-tab.selected {'
+        .'.page_tabs-tab.selected,'
+        .'.panel-title-text {'
             ."color: #$rgb;"
         .'}'
         .'.a:focus,'
@@ -59,9 +60,6 @@ function build_common_css ($r, $g, $b, $mark_r, $mark_g, $mark_b) {
         .'.topLink:active {'
             ."background-color: #$rgb;"
             ."border-color: #$rgb;"
-        .'}'
-        .'.panel-title-text {'
-            ."color: #$rgb;"
         .'}'
         .'mark {'
             ."background-color: rgba($mark_r, $mark_g, $mark_b, 0.5);"
