@@ -9,6 +9,8 @@ list($event, $id, $user) = require_event($mysqli);
 $base = '../../';
 $fnsDir = '../../fns';
 
+$deleteHref = "../delete-event/submit.php?id=$id";
+
 include_once '../fns/ViewPage/create.php';
 $content = ViewPage\create($user, $event, $head, $scripts);
 
@@ -19,7 +21,7 @@ echo_user_page($user, "Event #$id", $content, $base, [
     'head' => $head.compressed_css_link('confirmDialog', $base),
     'scripts' => $scripts.compressed_js_script('confirmDialog', $base)
         .'<script type="text/javascript">'
-            .'var deleteHref = '.json_encode("../delete-event/submit.php?id=$id")
+            .'var deleteHref = '.json_encode($deleteHref)
         .'</script>'
         .'<script type="text/javascript" src="../view-event.js?1"></script>',
 ]);
