@@ -20,59 +20,59 @@ function build_common_css ($r, $g, $b, $mark_r, $mark_g, $mark_b) {
     }
 
     $content =
-        ".clickable:focus,\n"
-        .".clickable.focus,\n"
-        .".form-select:focus,\n"
-        .".form-textfield:focus,\n"
-        .".form-textarea:focus,\n"
-        .".topLink:focus,\n"
-        .".newItemButton.not_green:focus {\n"
-        ."    border-color: #$rgb;\n"
-        ."    background-color: rgba($r, $g, $b, 0.2);\n"
-        ."}\n\n"
-        .".form-select:active,\n"
-        .".form-textfield:active,\n"
-        .".form-textarea:active {\n"
-        ."    background-color: rgba($r, $g, $b, 0.4);\n"
-        ."}\n\n"
-        .".a,\n"
-        .".tab-active,\n"
-        .".form-property,\n"
-        .".page_tabs-tab.selected {\n"
-        ."    color: #$rgb;\n"
-        ."}\n\n"
-        .".a:focus,\n"
-        .".tag.active,\n"
-        .".clickable.target,\n"
-        .".clickable:target {\n"
-        ."    background-color: rgba($r, $g, $b, 0.2);\n"
-        ."}\n\n"
-        ."#tbar,\n"
-        .".tag.active,\n"
-        .".panel-title,\n"
-        .".page_tabs-tab.selected {\n"
-        ."    border-color: #$rgb;\n"
-        ."}\n\n"
-        .".clickable.active,\n"
-        .".clickable:active,\n"
-        .".newItemButton.not_green:active,\n"
-        .".topLink:active {\n"
-        ."    background-color: #$rgb;\n"
-        ."    border-color: #$rgb;\n"
-        ."}\n\n"
-        .".panel-title-text {\n"
-        ."    color: #$rgb;\n"
-        ."}\n\n"
-        ."mark {\n"
-        ."    background-color: rgba($mark_r, $mark_g, $mark_b, 0.5);\n"
-        ."}\n\n"
-        .".tag:focus,\n"
-        .".tag:active {\n"
-        ."    outline: 2px solid #$rgb;\n"
-        ."}\n\n"
-        .".progressBar {\n"
-        ."    background-color: #$rgb;\n"
-        ."}\n";
+        '.clickable:focus,'
+        .'.clickable.focus,'
+        .'.form-select:focus,'
+        .'.form-textfield:focus,'
+        .'.form-textarea:focus,'
+        .'.topLink:focus,'
+        .'.newItemButton.not_green:focus {'
+            ."border-color: #$rgb;"
+            ."background-color: rgba($r, $g, $b, 0.2);"
+        .'}'
+        .'.form-select:active,'
+        .'.form-textfield:active,'
+        .'.form-textarea:active {'
+            ."background-color: rgba($r, $g, $b, 0.4);"
+        .'}'
+        .'.a,'
+        .'.tab-active,'
+        .'.form-property,'
+        .'.page_tabs-tab.selected {'
+            ."color: #$rgb;"
+        .'}'
+        .'.a:focus,'
+        .'.tag.active,'
+        .'.clickable.target,'
+        .'.clickable:target {'
+            ."background-color: rgba($r, $g, $b, 0.2);"
+        .'}'
+        .'#tbar,'
+        .'.tag.active,'
+        .'.panel-title,'
+        .'.page_tabs-tab.selected {'
+            ."border-color: #$rgb;"
+        .'}'
+        .'.clickable.active,'
+        .'.clickable:active,'
+        .'.newItemButton.not_green:active,'
+        .'.topLink:active {'
+            ."background-color: #$rgb;"
+            ."border-color: #$rgb;"
+        .'}'
+        .'.panel-title-text {'
+            ."color: #$rgb;"
+        .'}'
+        .'mark {'
+            ."background-color: rgba($mark_r, $mark_g, $mark_b, 0.5);"
+        .'}'
+        .'.tag:focus,'
+        .'.tag:active {'
+            ."outline: 2px solid #$rgb;"
+        .'}'
+        .'.progressBar {'
+            ."background-color: #$rgb;"
+        .'}';
 
     file_put_contents('common.css', $content);
 
