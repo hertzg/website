@@ -39,10 +39,11 @@ if ($password === '') $errors[] = 'ENTER_PASSWORD';
 if (!$errors) {
     include_once '../fns/Session/authenticate.php';
     include_once '../lib/mysqli.php';
-    $user = Session\authenticate($mysqli,
-        $username, $password, $remember, $disabled);
+    $user = Session\authenticate($mysqli, $username,
+        $password, $remember, $disabled, $rate_limited);
     if (!$user) {
         if ($disabled) $error = 'USER_DISABLED';
+        elseif ($rate_limited) $error = 'RATE_LIMITED';
         else $error = 'INVALID_USERNAME_OR_PASSWORD';
         $errors[] = $error;
     }

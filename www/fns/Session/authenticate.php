@@ -2,15 +2,24 @@
 
 namespace Session;
 
-function authenticate ($mysqli, $username, $password, $remember, &$disabled) {
+function authenticate ($mysqli, $username,
+    $password, $remember, &$disabled, &$rate_limited) {
 
     $fnsDir = __DIR__.'/..';
 
-    include_once "$fnsDir/Users/getByUsernameAndPassword.php";
-    $user = \Users\getByUsernameAndPassword($mysqli, $username, $password);
-
     include_once "$fnsDir/ClientAddress/get.php";
     $client_address = \ClientAddress\get();
+
+    include_once "$fnsDir/InvalidSignins/countRecent.php";
+    $numInvalidSignins = \InvalidSignins\countRecent($mysqli, $client_address);
+
+    if ($numInvalidSignins > 120) {
+        $rate_limited = true;
+        return;
+    }
+
+    include_once "$fnsDir/Users/getByUsernameAndPassword.php";
+    $user = \Users\getByUsernameAndPassword($mysqli, $username, $password);
 
     if ($user) {
         if ($user->disabled) {

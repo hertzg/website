@@ -31,11 +31,13 @@ session_start_custom($new);
 
 include_once "$fnsDir/Session/authenticate.php";
 include_once '../../lib/mysqli.php';
-$user = Session\authenticate($mysqli,
-    $username, $password, $remember, $disabled);
+$user = Session\authenticate($mysqli, $username,
+    $password, $remember, $disabled, $rate_limited);
 
 if (!$user) {
-    $error = $disabled ? '"USER_DISABLED"' : '"INVALID_USERNAME_OR_PASSWORD"';
+    if ($disabled) $error = '"USER_DISABLED"';
+    elseif ($rate_limited) $error = '"RATE_LIMITED"';
+    else $error = '"INVALID_USERNAME_OR_PASSWORD"';
     include_once "$fnsDir/ApiCall/Error/badRequest.php";
     ApiCall\Error\badRequest($error);
 }

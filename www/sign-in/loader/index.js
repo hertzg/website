@@ -21,6 +21,8 @@
                     ENTER_USERNAME: 'Enter username.',
                     INVALID_USERNAME: 'The username is invalid.',
                     USER_DISABLED: 'Your account is disabled.',
+                    RATE_LIMITED: 'Too many signin attempts from your' +
+                        ' IP address. Please, try signing in later.',
                     INVALID_USERNAME_OR_PASSWORD:
                         'Invalid username or password.',
                 })
