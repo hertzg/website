@@ -21,4 +21,7 @@ session_method_page('authenticate', [
     'INVALID_USERNAME' => 'The username is invalid.',
     'ENTER_PASSWORD' => 'The password is empty.',
     'INVALID_USERNAME_OR_PASSWORD' => 'The username or password is invalid.',
+    'USER_DISABLED' => 'The user is disabled.',
+    'RATE_LIMITED' =>
+        'Too many authentication attempts have been made recently.',
 ]);
