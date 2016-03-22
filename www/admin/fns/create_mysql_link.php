@@ -12,8 +12,7 @@ function create_mysql_link ($mysqli) {
 
         $description =
             '<span class="colorText red">'
-                ."The settings doesn't work. "
-                .htmlspecialchars($mysqli->connect_error)
+                ."Doesn't work. ".htmlspecialchars($mysqli->connect_error)
             .'</span>';
 
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";

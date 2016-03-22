@@ -31,43 +31,30 @@ if ($password === '') {
     $password = '<span class="form-label-default">None</span>';
 } else {
     $password = preg_replace('/./', '*', $password);
-    $password = htmlspecialchars($password);
 }
-
-$key = 'admin/mysql-settings/messages';
-if (array_key_exists($key, $_SESSION)) $messages = $_SESSION[$key];
-else $messages = [];
 
 include_once "$fnsDir/get_mysqli.php";
 $mysqli = get_mysqli();
 
 if ($mysqli->connect_errno) {
-    include_once "$fnsDir/Page/errors.php";
-    $errors = Page\errors([
-        "The settings doesn't work.",
-        htmlspecialchars($mysqli->connect_error),
-    ]);
+    $status_html =
+        '<span class="colorText red">'
+            .'Doesn\'t work. '.htmlspecialchars($mysqli->connect_error)
+        .'</span>';
 } else {
 
-    $errors = '';
-    $messages[] = 'The settings work.';
+    $status_html = 'Work.';
 
     include_once "$fnsDir/Table/ensureAll.php";
     \Table\ensureAll($mysqli);
 
 }
 
-if ($messages) {
-    include_once "$fnsDir/Page/messages.php";
-    $messages = Page\messages($messages);
-} else {
-    $messages = '';
-}
-
-include_once "$fnsDir/Page/panel.php";
 include_once "$fnsDir/Form/label.php";
 include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/imageArrowLink.php";
+include_once "$fnsDir/Page/panel.php";
+include_once "$fnsDir/Page/sessionMessages.php";
 $content =
     Page\create(
         [
@@ -75,7 +62,7 @@ $content =
             'href' => '../#mysql-settings',
         ],
         'MySQL Settings',
-        $messages.$errors
+        Page\sessionMessages('admin/mysql-settings/messages')
         .Form\label('Host', $host)
         .'<div class="hr"></div>'
         .Form\label('Username', $username)
@@ -83,6 +70,8 @@ $content =
         .Form\label('Password', $password)
         .'<div class="hr"></div>'
         .Form\label('Database', htmlspecialchars($db))
+        .'<div class="hr"></div>'
+        .Form\label('The settings', $status_html)
     )
     .Page\panel(
         'Options',
