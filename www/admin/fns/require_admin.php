@@ -12,7 +12,7 @@ function require_admin () {
     include_once "$fnsDir/signed_user.php";
     $user = signed_user();
 
-    if ($user && $user->admin) return $user;
+    if ($user && !$user->disabled && $user->admin) return $user;
 
     if (!array_key_exists('PHP_AUTH_USER', $_SERVER)) $invalid();
 
