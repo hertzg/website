@@ -5,7 +5,8 @@ namespace InvalidSignins;
 function countRecent ($mysqli, $remote_address) {
 
     $remote_address = $mysqli->real_escape_string($remote_address);
-    $insert_time = time() - 60;
+    include_once __DIR__.'/../AuthRateLimit/seconds.php';
+    $insert_time = time() - \AuthRateLimit\seconds();
 
     $sql = 'select count(*) total from invalid_signins'
         ." where remote_address = '$remote_address'"

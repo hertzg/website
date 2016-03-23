@@ -13,7 +13,8 @@ function authenticate ($mysqli, $username,
     include_once "$fnsDir/InvalidSignins/countRecent.php";
     $numInvalidSignins = \InvalidSignins\countRecent($mysqli, $client_address);
 
-    if ($numInvalidSignins > 120) {
+    include_once "$fnsDir/AuthRateLimit/number.php";
+    if ($numInvalidSignins > \AuthRateLimit\number()) {
         $rate_limited = true;
         return;
     }
