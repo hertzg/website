@@ -97,3 +97,7 @@ body {
 .confirmDialog-frame {
     background-color: #444;
 }
+
+mark {
+    color: #fff;
+}
