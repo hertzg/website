@@ -6,7 +6,7 @@ function content ($keyword, $placeholder, $clearHref) {
     return
         '<span class="search_form-content">'
             .'<input class="form-textfield" type="text" name="keyword"'
-            .' autofocus="autofocus" value="'.htmlspecialchars($keyword).'"'
+            .' value="'.htmlspecialchars($keyword).'"'
             ." placeholder=\"$placeholder\" />"
         .'</span>'
         .'<button title="Search"'
