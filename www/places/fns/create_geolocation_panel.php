@@ -8,9 +8,9 @@ function create_geolocation_panel (&$scripts, $base,
     include_once "$fnsDir/compressed_js_script.php";
     $scripts .=
         '<script type="text/javascript">'
-            .'var latitude = '.json_encode($latitude)."\n"
-            .'var longitude = '.json_encode($longitude)."\n"
-            .'var altitude = '.json_encode($altitude)."\n"
+            .'var latitude = '.json_encode($latitude).','
+                .'longitude = '.json_encode($longitude).','
+                .'altitude = '.json_encode($altitude)
         .'</script>'
         .compressed_js_script('geolocationDialog', $base);
 

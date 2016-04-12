@@ -19,8 +19,8 @@ function echo_page ($user, $title, $content, $base, $options = []) {
     include_once __DIR__.'/compressed_js_script.php';
     $scripts =
         '<script type="text/javascript">'
-            ."var time = $time\n"
-            ."var timezone = $timezone"
+            ."var time = $time,"
+                ."timezone = $timezone"
         .'</script>'
         .compressed_js_script('batteryAndClock', $base);
 

@@ -70,10 +70,10 @@ function create_map ($places, $base = '') {
             .'</svg>'
         .'</div>'
         .'<script type="text/javascript">'
-            ."var scale = $scale\n"
-            ."var x = $median_x\n"
-            ."var y = $median_y\n"
-            ."var maxScale = $maxScale"
+            ."var scale = $scale,"
+                ."x = $median_x,"
+                ."y = $median_y,"
+                ."maxScale = $maxScale"
         .'</script>'
         ."<script type=\"text/javascript\" src=\"{$base}index.js?3\"></script>";
 }
