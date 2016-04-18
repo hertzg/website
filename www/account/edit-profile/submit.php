@@ -14,14 +14,14 @@ $id_users = $user->id_users;
 include_once "$fnsDir/Username/request.php";
 $username = Username\request();
 
-include_once "$fnsDir/request_strings.php";
-list($timezone) = request_strings('timezone');
-
 include_once "$fnsDir/Email/request.php";
 $email = Email\request();
 
 include_once "$fnsDir/FullName/request.php";
 $full_name = FullName\request();
+
+include_once "$fnsDir/request_strings.php";
+list($timezone) = request_strings('timezone');
 
 include_once "$fnsDir/Timezone/isValid.php";
 if (!Timezone\isValid($timezone)) $timezone = 0;
@@ -47,8 +47,7 @@ if ($email !== '') {
     if (Email\isValid($email)) {
         include_once "$fnsDir/Users/getByEmail.php";
         if (Users\getByEmail($mysqli, $email, $id_users)) {
-            $errors[] = 'A username with this email is already registered.'
-                .' Try another.';
+            $errors[] = 'A username with this email is already exists.';
             if ($focus === null) $focus = 'email';
         }
     } else {

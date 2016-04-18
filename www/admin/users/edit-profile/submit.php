@@ -14,9 +14,18 @@ list($user, $id) = require_user($mysqli);
 include_once "$fnsDir/Username/request.php";
 $username = Username\request();
 
+include_once "$fnsDir/Email/request.php";
+$email = Email\request();
+
+include_once "$fnsDir/FullName/request.php";
+$full_name = FullName\request();
+
 include_once "$fnsDir/request_strings.php";
-list($admin, $disabled, $expires) = request_strings(
-    'admin', 'disabled', 'expires');
+list($timezone, $admin, $disabled, $expires) = request_strings(
+    'timezone', 'admin', 'disabled', 'expires');
+
+include_once "$fnsDir/Timezone/isValid.php";
+if (!Timezone\isValid($timezone)) $timezone = 0;
 
 $admin = (bool)$admin;
 $disabled = (bool)$disabled;
@@ -26,6 +35,20 @@ include_once '../../../lib/mysqli.php';
 
 include_once "$fnsDir/check_username.php";
 check_username($mysqli, $username, $errors, $focus, $id);
+
+if ($email !== '') {
+    include_once "$fnsDir/Email/isValid.php";
+    if (Email\isValid($email)) {
+        include_once "$fnsDir/Users/getByEmail.php";
+        if (Users\getByEmail($mysqli, $email, $id)) {
+            $errors[] = 'A username with this email already exists.';
+            if ($focus === null) $focus = 'email';
+        }
+    } else {
+        $errors[] = 'The email address is invalid.';
+        if ($focus === null) $focus = 'email';
+    }
+}
 
 if (!$errors) {
     include_once "$fnsDir/Password/match.php";
@@ -45,7 +68,11 @@ include_once "$fnsDir/redirect.php";
 if ($errors) {
     $_SESSION['admin/users/edit-profile/errors'] = $errors;
     $_SESSION['admin/users/edit-profile/values'] = [
+        'focus' => $focus,
         'username' => $username,
+        'email' => $email,
+        'full_name' => $full_name,
+        'timezone' => $timezone,
         'admin' => $admin,
         'disabled' => $disabled,
         'expires' => $expires,
@@ -59,8 +86,8 @@ unset(
 );
 
 include_once "$fnsDir/Users/Account/editProfile.php";
-Users\Account\editProfile($mysqli, $user, $username, $user->email,
-    $user->full_name, $user->timezone, $admin, $disabled, $expires, $changed);
+Users\Account\editProfile($mysqli, $user, $username, $email,
+    $full_name, $timezone, $admin, $disabled, $expires, $changed);
 
 if ($changed) $message = 'Changes have been saved.';
 else $message = 'No changes to be saved.';
