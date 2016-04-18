@@ -27,6 +27,31 @@ function create ($user, &$scripts) {
     include_once "$fnsDir/Form/label.php";
     $items = [\Form\label('Username', $username)];
 
+    $email = $user->email;
+    if ($email !== '') {
+        if ($user->email_verified) $status = 'Verified';
+        else {
+            include_once "$fnsDir/Users/isVerifyEmailPending.php";
+            if (\Users\isVerifyEmailPending($user)) $status = 'Pending';
+            else $status = 'Not verified';
+        }
+        $items[] = \Form\label('Email', "$email ($status)");
+    }
+
+    $full_name = $user->full_name;
+    if ($full_name !== '') $items[] = \Form\label('Full name', $full_name);
+
+    $timezone = $user->timezone;
+    if ($timezone) {
+        include_once "$fnsDir/Timezone/format.php";
+        $items[] = \Form\label('Timezone', \Timezone\format($timezone));
+    }
+
+    include_once "$fnsDir/Theme/Brightness/index.php";
+    include_once "$fnsDir/Theme/Color/index.php";
+    $items[] = \Form\label('Theme', \Theme\Color\index()[$user->theme_color]
+        .' - '.\Theme\Brightness\index()[$user->theme_brightness]['title']);
+
     $access_time = $user->access_time;
     if ($access_time === null) $accessed = 'Never';
     else {
@@ -39,6 +64,14 @@ function create ($user, &$scripts) {
         }
 
     }
+
+    $items[] = \Form\label('Last accessed', $accessed);
+
+    include_once "$fnsDir/bytestr.php";
+    $items[] = \Form\label('Using storage', bytestr($user->storage_used));
+
+    include_once "$fnsDir/n_times.php";
+    $items[] = \Form\label('Signed in', ucfirst(n_times($user->num_signins)));
 
     include_once __DIR__.'/../../../fns/format_author.php';
     $author = format_author($user->insert_time, $user->insert_api_key_name);
@@ -54,17 +87,6 @@ function create ($user, &$scripts) {
 
     }
     $infoText .= "User created $author.";
-
-    $items[] = \Form\label('Last accessed', $accessed);
-
-    include_once "$fnsDir/bytestr.php";
-    $items[] = \Form\label('Using storage', bytestr($user->storage_used));
-
-    $timezone = $user->timezone;
-    if ($timezone) {
-        include_once "$fnsDir/Timezone/format.php";
-        $items[] = \Form\label('Timezone', \Timezone\format($timezone));
-    }
 
     include_once __DIR__.'/unsetSessionVars.php';
     unsetSessionVars();

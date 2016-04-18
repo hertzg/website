@@ -16,14 +16,13 @@ $items = [Form\label('Username', $user->username)];
 
 $email = $user->email;
 if ($email !== '') {
-    if ($user->email_verified) {
-        $emailStatus = 'Verified';
-    } else {
+    if ($user->email_verified) $status = 'Verified';
+    else {
         include_once "$fnsDir/Users/isVerifyEmailPending.php";
-        if (Users\isVerifyEmailPending($user)) $emailStatus = 'Pending';
-        else $emailStatus = 'Not verified';
+        if (Users\isVerifyEmailPending($user)) $status = 'Pending';
+        else $status = 'Not verified';
     }
-    $items[] = Form\label('Email', "$email ($emailStatus)");
+    $items[] = Form\label('Email', "$email ($status)");
 }
 
 $full_name = $user->full_name;
@@ -37,7 +36,7 @@ if ($timezone) {
 
 include_once "$fnsDir/Theme/Brightness/index.php";
 include_once "$fnsDir/Theme/Color/index.php";
-$items[] = Form\label('Theme',Theme\Color\index()[$user->theme_color]
+$items[] = Form\label('Theme', Theme\Color\index()[$user->theme_color]
     .' - '.Theme\Brightness\index()[$user->theme_brightness]['title']);
 
 include_once "$fnsDir/export_date_ago.php";
