@@ -53,7 +53,7 @@ unset(
 
 include_once "$fnsDir/Users/Account/create.php";
 $id = Users\Account\create($mysqli, $username,
-    $password, '', $admin, $disabled, $expires);
+    $password, '', '', 0, $admin, $disabled, $expires);
 
 $_SESSION['admin/users/view/messages'] = ['User has been saved.'];
 

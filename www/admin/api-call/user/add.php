@@ -15,7 +15,7 @@ require_password_params($username, $password);
 
 include_once "$fnsDir/Users/Account/create.php";
 $id = Users\Account\create($mysqli, $username,
-    $password, '', $admin, $disabled, $expires, $apiKey);
+    $password, '', '', 0, $admin, $disabled, $expires, $apiKey);
 
 header('Content-Type: application/json');
 echo $id;

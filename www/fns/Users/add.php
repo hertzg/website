@@ -2,8 +2,8 @@
 
 namespace Users;
 
-function add ($mysqli, $username, $password,
-    $email, $admin, $disabled, $expires, $insertApiKey) {
+function add ($mysqli, $username, $password, $email,
+    $full_name, $timezone, $admin, $disabled, $expires, $insertApiKey) {
 
     $fnsDir = __DIR__.'/..';
 
@@ -21,6 +21,7 @@ function add ($mysqli, $username, $password,
     $password_sha512_hash = $mysqli->real_escape_string($password_sha512_hash);
     $password_sha512_key = $mysqli->real_escape_string($password_sha512_key);
     $email = $mysqli->real_escape_string($email);
+    $full_name = $mysqli->real_escape_string($full_name);
     $admin = $admin ? '1' : '0';
     $disabled = $disabled ? '1' : '0';
     $expires = $expires ? '1' : '0';
@@ -54,7 +55,8 @@ function add ($mysqli, $username, $password,
     $sql = 'insert into users (username, lowercase_username,'
         .' password_sha512_hash, password_sha512_key,'
         .' encryption_key, encryption_key_iv,'
-        .' email, admin, disabled, expires, order_home_items,'
+        .' email, full_name, timezone, admin,'
+        .' disabled, expires, order_home_items,'
         .' insert_time, theme_color, theme_brightness,'
         .' birthdays_check_day, events_check_day,'
         .' schedules_check_day, task_deadlines_check_day,'
@@ -71,7 +73,8 @@ function add ($mysqli, $username, $password,
         ." values ('$username', '$lowercase_username',"
         ." '$password_sha512_hash', '$password_sha512_key',"
         ." '$encryption_key', '$encryption_key_iv',"
-        ." '$email', $admin, $disabled, $expires, '$order_home_items',"
+        ." '$email', '$full_name', $timezone, $admin,"
+        ." $disabled, $expires, '$order_home_items',"
         ." $insert_time, '$theme_color', '$theme_brightness',"
         ." $birthdays_check_day, $events_check_day,"
         ." $schedules_check_day, $task_deadlines_check_day,"

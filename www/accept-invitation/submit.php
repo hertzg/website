@@ -56,7 +56,7 @@ unset(
 
 include_once '../fns/Users/Account/create.php';
 Users\Account\create($mysqli, $username,
-    $password, $email, false, false, false);
+    $password, $email, '', 0, false, false, false);
 
 include_once '../fns/Invitations/delete.php';
 Invitations\delete($mysqli, $id);
