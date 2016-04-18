@@ -44,13 +44,7 @@ if (!$errors) {
 
 if ($email !== '') {
     include_once "$fnsDir/Email/isValid.php";
-    if (Email\isValid($email)) {
-        include_once "$fnsDir/Users/getByEmail.php";
-        if (Users\getByEmail($mysqli, $email, $id_users)) {
-            $errors[] = 'A username with this email is already exists.';
-            if ($focus === null) $focus = 'email';
-        }
-    } else {
+    if (!Email\isValid($email)) {
         $errors[] = 'The email address is invalid.';
         if ($focus === null) $focus = 'email';
     }
