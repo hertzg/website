@@ -11,10 +11,27 @@ function create_profile_form_items ($values, &$scripts) {
     include_once "$fnsDir/Users/expireDays.php";
     $expireDays = Users\emailExpireDays() + Users\expireDays();
 
+    include_once "$fnsDir/Email/maxLength.php";
     include_once "$fnsDir/Form/checkbox.php";
     include_once "$fnsDir/Form/notes.php";
+    include_once "$fnsDir/Form/timezoneSelect.php";
+    include_once "$fnsDir/FullName/maxLength.php";
     return
-        Form\checkbox('admin', 'Administrator', $values['admin'])
+        Form\textfield('email', 'Email', [
+            'value' => $values['email'],
+            'maxlength' => Email\maxLength(),
+            'autofocus' => $values['focus'] === 'email',
+        ])
+        .Form\notes(['Optional. Used for password recovery.'])
+        .'<div class="hr"></div>'
+        .Form\textfield('full_name', 'Full name', [
+            'value' => $values['full_name'],
+            'maxlength' => FullName\maxLength(),
+        ])
+        .'<div class="hr"></div>'
+        .Form\timezoneSelect('timezone', 'Timezone', $values['timezone'])
+        .'<div class="hr"></div>'
+        .Form\checkbox('admin', 'Administrator', $values['admin'])
         .'<div class="hr"></div>'
         .Form\checkbox('disabled', 'Disable', $values['disabled'])
         .'<div class="hr"></div>'
