@@ -25,12 +25,12 @@ if ($email === '') {
     include_once "$fnsDir/Email/isValid.php";
     if (Email\isValid($email)) {
 
-        include_once "$fnsDir/Users/getByEmail.php";
+        include_once "$fnsDir/Users/indexByEmail.php";
         include_once '../lib/mysqli.php';
-        $user = Users\getByEmail($mysqli, $email);
+        $users = Users\indexByEmail($mysqli, $email);
 
-        if (!$user) {
-            $errors[] = 'User with this email was not found.';
+        if (!$users) {
+            $errors[] = 'Users with this email were not found.';
             $focus = 'email';
         }
 
@@ -60,17 +60,17 @@ unset(
     $_SESSION['email-reset-password/values']
 );
 
-include_once "$fnsDir/LinkKey/random.php";
-$key = LinkKey\random();
-
-include_once "$fnsDir/Users/editResetPasswordKey.php";
-Users\editResetPasswordKey($mysqli, $user->id_users, $key, $return);
-
 include_once "$fnsDir/Captcha/reset.php";
 Captcha\reset();
 
 include_once 'fns/send_email.php';
-send_email($user, $key);
+include_once "$fnsDir/LinkKey/random.php";
+include_once "$fnsDir/Users/editResetPasswordKey.php";
+foreach ($users as $user) {
+    $key = LinkKey\random();
+    Users\editResetPasswordKey($mysqli, $user->id_users, $key, $return);
+    send_email($user, $key);
+}
 
 unset($_SESSION['sign-in/errors']);
 $_SESSION['sign-in/messages'] = [
