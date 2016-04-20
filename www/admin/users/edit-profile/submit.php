@@ -36,13 +36,8 @@ include_once '../../../lib/mysqli.php';
 include_once "$fnsDir/check_username.php";
 check_username($mysqli, $username, $errors, $focus, $id);
 
-if ($email !== '') {
-    include_once "$fnsDir/Email/isValid.php";
-    if (!Email\isValid($email)) {
-        $errors[] = 'The email address is invalid.';
-        if ($focus === null) $focus = 'email';
-    }
-}
+include_once "$fnsDir/check_email.php";
+check_email($email, $errors, $focus);
 
 if (!$errors) {
     include_once "$fnsDir/Password/match.php";

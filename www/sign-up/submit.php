@@ -31,13 +31,8 @@ check_username($mysqli, $username, $errors, $focus);
 include_once '../fns/check_passwords.php';
 check_passwords($username, $password, $repeatPassword, $errors, $focus);
 
-if ($email !== '') {
-    include_once '../fns/Email/isValid.php';
-    if (!Email\isValid($email)) {
-        $errors[] = 'The email is invalid.';
-        if ($focus === null) $focus = 'email';
-    }
-}
+include_once '../fns/check_email.php';
+check_email($email, $errors, $focus);
 
 include_once '../fns/Captcha/check.php';
 Captcha\check($errors, $focus);

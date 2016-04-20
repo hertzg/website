@@ -42,13 +42,8 @@ if (!$errors) {
     }
 }
 
-if ($email !== '') {
-    include_once "$fnsDir/Email/isValid.php";
-    if (!Email\isValid($email)) {
-        $errors[] = 'The email address is invalid.';
-        if ($focus === null) $focus = 'email';
-    }
-}
+include_once "$fnsDir/check_email.php";
+check_email($email, $errors, $focus);
 
 include_once "$fnsDir/redirect.php";
 
