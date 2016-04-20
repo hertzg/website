@@ -9,8 +9,8 @@ include_once 'fns/require_user.php';
 $user = require_user($mysqli);
 
 include_once 'fns/require_profile_params.php';
-require_profile_params($mysqli, $username,
-    $admin, $disabled, $expires, $user->id_users);
+require_profile_params($mysqli, $username, $email, $full_name,
+    $timezone, $admin, $disabled, $expires, $user->id_users);
 
 $fnsDir = '../../../fns';
 
@@ -23,8 +23,8 @@ if ($match) {
 }
 
 include_once "$fnsDir/Users/Account/editProfile.php";
-Users\Account\editProfile($mysqli, $user, $username, $user->email,
-    $user->full_name, $user->timezone, $admin, $disabled, $expires, $changed);
+Users\Account\editProfile($mysqli, $user, $username, $email,
+    $full_name, $timezone, $admin, $disabled, $expires, $changed);
 
 header('Content-Type: application/json');
 echo 'true';
