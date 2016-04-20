@@ -18,6 +18,8 @@ function require_profile_params ($mysqli, &$username, &$email, &$full_name,
     list($timezone, $admin, $disabled, $expires) = request_strings(
         'timezone', 'admin', 'disabled', 'expires');
 
+    $timezone = (int)$timezone;
+
     include_once "$fnsDir/Timezone/isValid.php";
     if (!Timezone\isValid($timezone)) $timezone = 0;
 

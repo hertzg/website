@@ -24,6 +24,8 @@ include_once "$fnsDir/request_strings.php";
 list($timezone, $admin, $disabled, $expires) = request_strings(
     'timezone', 'admin', 'disabled', 'expires');
 
+$timezone = (int)$timezone;
+
 include_once "$fnsDir/Timezone/isValid.php";
 if (!Timezone\isValid($timezone)) $timezone = 0;
 

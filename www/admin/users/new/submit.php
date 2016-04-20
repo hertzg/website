@@ -25,6 +25,8 @@ list($password, $repeatPassword,
     'password', 'repeatPassword',
     'timezone', 'admin', 'disabled', 'expires');
 
+$timezone = (int)$timezone;
+
 include_once "$fnsDir/Timezone/isValid.php";
 if (!Timezone\isValid($timezone)) $timezone = 0;
 

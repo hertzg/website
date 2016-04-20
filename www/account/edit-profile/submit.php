@@ -23,6 +23,8 @@ $full_name = FullName\request();
 include_once "$fnsDir/request_strings.php";
 list($timezone) = request_strings('timezone');
 
+$timezone = (int)$timezone;
+
 include_once "$fnsDir/Timezone/isValid.php";
 if (!Timezone\isValid($timezone)) $timezone = 0;
 
