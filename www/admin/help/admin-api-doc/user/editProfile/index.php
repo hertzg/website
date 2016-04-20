@@ -14,6 +14,18 @@ user_method_page('editProfile', [
         'description' => 'The new username of the user.',
     ],
     [
+        'name' => 'email',
+        'description' => 'The new email of the user.',
+    ],
+    [
+        'name' => 'full_name',
+        'description' => 'The new full name of the user.',
+    ],
+    [
+        'name' => 'timezone',
+        'description' => 'The new timezone of the user.',
+    ],
+    [
         'name' => 'admin',
         'description' => 'Whether the user should be an administrator.',
     ],
@@ -26,5 +38,6 @@ user_method_page('editProfile', [
     'ENTER_USERNAME' => 'The username is empty.',
     'INVALID_USERNAME' => 'The username is invalid.',
     'USERNAME_UNAVAILABLE' => 'The username is unavailable.',
+    'INVALID_EMAIL' => 'The email is invalid.',
     'USERNAME_SAME' => 'The usernae is the same as the password.',
 ]);

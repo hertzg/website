@@ -10,6 +10,18 @@ user_method_page('add', [
         'description' => 'The username of the user.',
     ],
     [
+        'name' => 'email',
+        'description' => 'The email of the user.',
+    ],
+    [
+        'name' => 'full_name',
+        'description' => 'The full name of the user.',
+    ],
+    [
+        'name' => 'timezone',
+        'description' => 'The timezone of the user.',
+    ],
+    [
         'name' => 'password',
         'description' => 'The password of the user.',
     ],
@@ -28,6 +40,7 @@ user_method_page('add', [
     'ENTER_USERNAME' => 'The username is empty.',
     'INVALID_USERNAME' => 'The username is invalid.',
     'USERNAME_UNAVAILABLE' => 'The username is unavailable.',
+    'INVALID_EMAIL' => 'The email is invalid.',
     'ENTER_PASSWORD' => 'The password is empty.',
     'PASSWORD_TOO_SHORT' =>
         'The password contains less than '.Password\minLength().' characters.',
