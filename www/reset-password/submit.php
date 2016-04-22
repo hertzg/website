@@ -45,15 +45,16 @@ Users\resetPassword($mysqli, $id_users, $password);
 include_once '../fns/Cookie/set.php';
 Cookie\set('username', $user->username);
 
+$_SESSION['sign-in/values'] = [
+    'username' => $user->username,
+    'password' => $password,
+    'remember' => array_key_exists('remember', $_COOKIE),
+    'return' => $user->reset_password_return,
+];
 $_SESSION['sign-in/messages'] = [
     'Password has been reset.',
-    'You can sign in with your new password.'
+    'Sign in with your new password to proceed.',
 ];
 unset($_SESSION['sign-in/errors']);
 
-$return = $user->reset_password_return;
-
-if ($return === '') $queryString = '';
-else $queryString = '?return='.rawurlencode($return);
-
-redirect("../sign-in/$queryString");
+redirect('../sign-in/');

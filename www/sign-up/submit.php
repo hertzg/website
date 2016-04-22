@@ -68,9 +68,15 @@ Cookie\set('username', $username);
 include_once 'fns/send_email.php';
 send_email($username);
 
+$_SESSION['sign-in/values'] = [
+    'username' => $username,
+    'password' => $password,
+    'remember' => array_key_exists('remember', $_COOKIE),
+    'return' => $return,
+];
 $_SESSION['sign-in/messages'] = [
     'Thank you for creating an account.',
-    'Sign in to proceed.'
+    'Sign in to proceed.',
 ];
 unset($_SESSION['sign-in/errors']);
 
@@ -82,7 +88,4 @@ get_zvini_client()->call('notification/post', [
     'text' => "$username has created an account.",
 ]);
 
-if ($return === '') $queryString = '';
-else $queryString = '?return='.rawurlencode($return);
-
-redirect("../sign-in/$queryString");
+redirect('../sign-in/');

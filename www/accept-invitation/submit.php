@@ -62,9 +62,15 @@ Cookie\set('username', $username);
 include_once 'fns/send_email.php';
 send_email($username);
 
+$_SESSION['sign-in/values'] = [
+    'username' => $username,
+    'password' => $password,
+    'remember' => array_key_exists('remember', $_COOKIE),
+    'return' => '',
+];
 $_SESSION['sign-in/messages'] = [
     'Thank you for accepting the invitation.',
-    'Sign in to proceed.'
+    'Sign in to proceed.',
 ];
 unset($_SESSION['sign-in/errors']);
 
