@@ -6,9 +6,9 @@ function request_general_info_params (&$errors, &$focus) {
 
     include_once "$fnsDir/request_strings.php";
     list($siteTitle, $domainName, $infoEmail,
-        $siteBase, $https, $behindProxy, $signupEnabled) = request_strings(
+        $siteBase, $https, $signupEnabled) = request_strings(
         'siteTitle', 'domainName', 'infoEmail',
-        'siteBase', 'https', 'behindProxy', 'signupEnabled');
+        'siteBase', 'https', 'signupEnabled');
 
     include_once "$fnsDir/str_collapse_spaces.php";
     $siteTitle = str_collapse_spaces($siteTitle);
@@ -17,7 +17,6 @@ function request_general_info_params (&$errors, &$focus) {
 
     $domainName = preg_replace('/\s+/', '', $domainName);
     $https = (bool)$https;
-    $behindProxy = (bool)$behindProxy;
     $signupEnabled = (bool)$signupEnabled;
 
     if ($siteTitle === '') {
@@ -59,6 +58,6 @@ function request_general_info_params (&$errors, &$focus) {
     }
 
     return [$siteTitle, $domainName, $infoEmail,
-        $siteBase, $https, $behindProxy, $signupEnabled];
+        $siteBase, $https, $signupEnabled];
 
 }

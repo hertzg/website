@@ -13,9 +13,6 @@ $editLink = Page\imageArrowLink('Edit', 'edit/', 'generic', ['id' => 'edit']);
 include_once "$fnsDir/SiteProtocol/get.php";
 $https = SiteProtocol\get() === 'https' ? 'Yes' : 'No';
 
-include_once "$fnsDir/ClientAddress/GetMethod/get.php";
-$behindProxy = ClientAddress\GetMethod\get() == 'behind_proxy' ? 'Yes' : 'No';
-
 unset(
     $_SESSION['admin/general-info/edit/errors'],
     $_SESSION['admin/general-info/edit/values']
@@ -60,8 +57,6 @@ $content =
         .Form\label('Website path', htmlspecialchars(SiteBase\get()))
         .'<div class="hr"></div>'
         .Form\label('Uses HTTPS', $https)
-        .'<div class="hr"></div>'
-        .Form\label('Behind reverse proxy', $behindProxy)
         .'<div class="hr"></div>'
         .Form\label('Anyone can create an account',
             SignUpEnabled\get() ? 'Yes' : 'No')

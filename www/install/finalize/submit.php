@@ -39,14 +39,6 @@ SiteBase\set($siteBase);
 include_once "$fnsDir/SiteProtocol/set.php";
 SiteProtocol\set($siteProtocol);
 
-if ($generalInfoValues['behindProxy']) {
-    include_once "$fnsDir/ClientAddress/GetMethod/setBehindProxy.php";
-    ClientAddress\GetMethod\setBehindProxy();
-} else {
-    include_once "$fnsDir/ClientAddress/GetMethod/setDirect.php";
-    ClientAddress\GetMethod\setDirect();
-}
-
 include_once "$fnsDir/write_crontab.php";
 write_crontab();
 

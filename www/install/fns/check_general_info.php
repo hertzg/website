@@ -1,7 +1,7 @@
 <?php
 
-function check_general_info ($siteTitle, $domainName,
-    $infoEmail, $siteBase, $behindProxy, &$focus) {
+function check_general_info ($siteTitle,
+    $domainName, $infoEmail, $siteBase, &$focus) {
 
     if ($siteTitle === '') {
         $focus = 'siteTitle';
@@ -45,10 +45,6 @@ function check_general_info ($siteTitle, $domainName,
     if (substr($siteBase, -1) !== '/') {
         $focus = 'siteBase';
         return 'The website path should end with slash (<code>/</code>).';
-    }
-
-    if ($behindProxy && !array_key_exists('HTTP_X_FORWARDED_FOR', $_SERVER)) {
-        return 'With this settings a client IP address cannot be detected.';
     }
 
 }

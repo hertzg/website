@@ -12,13 +12,12 @@ $siteTitle = $values['siteTitle'];
 $domainName = $values['domainName'];
 $infoEmail = $values['infoEmail'];
 $siteBase = $values['siteBase'];
-$behindProxy = $values['behindProxy'];
 
 if ($values['check']) {
 
     include_once '../fns/check_general_info.php';
-    $error = check_general_info($siteTitle, $domainName,
-        $infoEmail, $siteBase, $behindProxy, $focus);
+    $error = check_general_info($siteTitle,
+        $domainName, $infoEmail, $siteBase, $focus);
     if ($focus === null) $focus = 'siteTitle';
 
     if ($error === null) $errorHtml = '';
@@ -78,14 +77,6 @@ echo_page(
                 .($values['https'] ? ' checked="checked"' : '').' />'
                 .' <label for="httpsInput">'
                     .'The site uses HTTPS protocol.'
-                .'</label>'
-            .'</div>'
-            .'<div>'
-                .'<input type="checkbox"'
-                .' name="behindProxy" id="behindProxyInput"'
-                .($behindProxy ? ' checked="checked"' : '').' />'
-                .' <label for="behindProxyInput">'
-                    .'The site is behind a reverse proxy server.'
                 .'</label>'
             .'</div>'
             .$errorHtml,

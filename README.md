@@ -30,9 +30,3 @@ In `www/scripts` folder:
 * `./create-data-dir.sh` will create a data folder
 in which users' files will be stored.
 * `./create-htaccess.sh` will create `.htaccess` file for the website.
-* `./client-address-get-method/set-direct.php` will detect a client
-IP address from `$_SERVER['REMOTE_ADDR']` variable. This is suitable
-for HTTP servers that accept connections directly from the clients.
-* `./client-address-get-method/set-behind-proxy.php` will detect a
-client IP address from `$_SERVER['HTTP_X_FORWARDED_FOR']` variable. This
-is suitable for HTTP servers that are behind a single reverse proxy server.

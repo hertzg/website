@@ -11,14 +11,13 @@ include_once '../../fns/require_admin.php';
 require_admin();
 
 include_once 'fns/request_general_info_params.php';
-list($siteTitle, $domainName, $infoEmail,
-    $siteBase, $https, $behindProxy,
+list($siteTitle, $domainName, $infoEmail, $siteBase, $https,
     $signupEnabled) = request_general_info_params($errors, $focus);
 
 if (!$errors) {
     include_once 'fns/write_general_info.php';
     write_general_info($siteTitle, $domainName,
-        $infoEmail, $siteBase, $https, $behindProxy, $errors);
+        $infoEmail, $siteBase, $https, $errors);
 }
 
 if (!$errors) {
@@ -42,7 +41,6 @@ if ($errors) {
         'infoEmail' => $infoEmail,
         'siteBase' => $siteBase,
         'https' => $https,
-        'behindProxy' => $behindProxy,
         'signupEnabled' => $signupEnabled,
     ];
     redirect();
