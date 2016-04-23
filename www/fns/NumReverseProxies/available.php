@@ -3,7 +3,7 @@
 namespace NumReverseProxies;
 
 function available () {
-    $options = ['None / '.$_SERVER['REMOTE_ADDR']];
+    $options = ['0 / '.$_SERVER['REMOTE_ADDR']];
     if (array_key_exists('HTTP_X_FORWARDED_FOR', $_SERVER)) {
         $parts = explode(', ', $_SERVER['HTTP_X_FORWARDED_FOR']);
         while ($parts) {
