@@ -28,8 +28,8 @@ function signed_user () {
                 $_SESSION['user'] = $user;
                 $_SESSION['token'] = $token;
 
-                include_once __DIR__.'/ClientAddress/get.php';
-                $client_address = ClientAddress\get();
+                include_once __DIR__.'/get_client_address.php';
+                $client_address = get_client_address();
 
                 include_once __DIR__.'/TokenAuths/add.php';
                 TokenAuths\add($mysqli, $token->id, $id_users, $client_address);
@@ -58,8 +58,8 @@ function signed_user () {
 
             $time = time();
 
-            include_once __DIR__.'/ClientAddress/get.php';
-            $client_address = ClientAddress\get();
+            include_once __DIR__.'/get_client_address.php';
+            $client_address = get_client_address();
 
             if (array_key_exists('token', $_SESSION)) {
                 $token = $_SESSION['token'];

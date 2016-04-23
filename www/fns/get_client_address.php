@@ -1,10 +1,8 @@
 <?php
 
-namespace ClientAddress;
+function get_client_address () {
 
-function get () {
-
-    include_once __DIR__.'/../NumReverseProxies/get.php';
+    include_once __DIR__.'/NumReverseProxies/get.php';
     $numReverseProxies = \NumReverseProxies\get();
 
     if ($numReverseProxies === 0) return $_SERVER['REMOTE_ADDR'];

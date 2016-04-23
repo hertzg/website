@@ -9,8 +9,8 @@ function create_general_info_link () {
     $icon = 'generic';
     $options = ['id' => 'general-info'];
 
-    include_once "$fnsDir/ClientAddress/get.php";
-    $client_address = ClientAddress\get();
+    include_once "$fnsDir/get_client_address.php";
+    $client_address = get_client_address();
 
     if ($client_address === false) {
         $description =

@@ -51,8 +51,8 @@ function require_api_key ($method,
             ApiCall\Error\forbidden('"USER_DISABLED"');
         }
 
-        include_once "$fnsDir/ClientAddress/get.php";
-        $client_address = ClientAddress\get();
+        include_once "$fnsDir/get_client_address.php";
+        $client_address = get_client_address();
 
         $access_time = $apiKey->access_time;
         if ($access_time === null || $access_time + 30 < $time ||

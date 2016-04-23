@@ -27,8 +27,8 @@ function require_admin_connection ($method, &$adminConnection, &$mysqli) {
         ApiCall\Error\forbidden('"EXCHANGE_API_KEY_EXPIRED"');
     }
 
-    include_once "$fnsDir/ClientAddress/get.php";
-    $client_address = ClientAddress\get();
+    include_once "$fnsDir/get_client_address.php";
+    $client_address = get_client_address();
 
     $access_time = $adminConnection->access_time;
     if ($access_time === null || $access_time + 30 < $time ||

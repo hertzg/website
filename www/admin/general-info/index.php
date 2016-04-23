@@ -18,8 +18,8 @@ unset(
     $_SESSION['admin/general-info/edit/values']
 );
 
-include_once "$fnsDir/ClientAddress/get.php";
-$client_address = ClientAddress\get();
+include_once "$fnsDir/get_client_address.php";
+$client_address = get_client_address();
 
 if ($client_address === false) {
     include_once "$fnsDir/Page/errors.php";

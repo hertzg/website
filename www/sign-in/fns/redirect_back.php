@@ -24,8 +24,8 @@ function redirect_back ($user, $return) {
         $num_signins = $user->num_signins;
         if ($num_signins) {
 
-            include_once "$fnsDir/ClientAddress/get.php";
-            $client_address = ClientAddress\get();
+            include_once "$fnsDir/get_client_address.php";
+            $client_address = get_client_address();
 
             $last_signin = 'Last signed in ';
             $last_address = $user->last_signin_remote_address;

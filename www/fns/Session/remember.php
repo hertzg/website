@@ -15,10 +15,10 @@ function remember ($mysqli, $user) {
     if (array_key_exists($key, $_SERVER)) $user_agent = $_SERVER[$key];
     else $user_agent = null;
 
-    include_once "$fnsDir/ClientAddress/get.php";
+    include_once "$fnsDir/get_client_address.php";
     include_once "$fnsDir/Users/Tokens/add.php";
     $id = \Users\Tokens\add($mysqli, $user->id_users,
-        $user->username, $token_text, \ClientAddress\get(), $user_agent);
+        $user->username, $token_text, get_client_address(), $user_agent);
 
     include_once "$fnsDir/Tokens/get.php";
     $token = \Tokens\get($mysqli, $id);

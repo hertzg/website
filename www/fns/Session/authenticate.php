@@ -7,8 +7,8 @@ function authenticate ($mysqli, $username,
 
     $fnsDir = __DIR__.'/..';
 
-    include_once "$fnsDir/ClientAddress/get.php";
-    $client_address = \ClientAddress\get();
+    include_once "$fnsDir/get_client_address.php";
+    $client_address = get_client_address();
 
     include_once "$fnsDir/InvalidSignins/countRecent.php";
     $numInvalidSignins = \InvalidSignins\countRecent($mysqli, $client_address);
