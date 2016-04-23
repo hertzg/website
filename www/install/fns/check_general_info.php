@@ -1,7 +1,7 @@
 <?php
 
-function check_general_info ($siteTitle,
-    $domainName, $infoEmail, $siteBase, &$focus) {
+function check_general_info ($siteTitle, $domainName,
+    $infoEmail, $siteBase, $numReverseProxies, &$focus) {
 
     if ($siteTitle === '') {
         $focus = 'siteTitle';
@@ -45,6 +45,12 @@ function check_general_info ($siteTitle,
     if (substr($siteBase, -1) !== '/') {
         $focus = 'siteBase';
         return 'The website path should end with slash (<code>/</code>).';
+    }
+
+    include_once "$fnsDir/NumReverseProxies/available.php";
+    if (!array_key_exists($numReverseProxies, NumReverseProxies\available())) {
+        $focus = 'numReverseProxies';
+        return 'Select reverse proxies / your IP.';
     }
 
 }

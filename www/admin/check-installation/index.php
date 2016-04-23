@@ -36,6 +36,7 @@ $content .=
     .assert_writable_file('../../fns/InfoEmail/get.php')
     .assert_writable_file('../../fns/Installed/get.php')
     .assert_writable_file('../../fns/MysqlConfig/get.php')
+    .assert_writable_file('../../fns/NumReverseProxies/get.php')
     .assert_writable_file('../../fns/SignUpEnabled/get.php')
     .assert_writable_file('../../fns/SiteBase/get.php')
     .assert_writable_file('../../fns/SiteProtocol/get.php')

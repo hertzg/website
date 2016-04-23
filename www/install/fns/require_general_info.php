@@ -16,9 +16,10 @@ function require_general_info () {
     $generalInfoValues = $_SESSION[$key];
 
     include_once __DIR__.'/check_general_info.php';
-    $error = check_general_info($generalInfoValues['siteTitle'],
-        $generalInfoValues['domainName'], $generalInfoValues['infoEmail'],
-        $generalInfoValues['siteBase'], $focus);
+    $error = check_general_info(
+        $generalInfoValues['siteTitle'], $generalInfoValues['domainName'],
+        $generalInfoValues['infoEmail'], $generalInfoValues['siteBase'],
+        $generalInfoValues['numReverseProxies'], $focus);
 
     if ($error) {
         include_once "$fnsDir/redirect.php";

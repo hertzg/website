@@ -25,16 +25,17 @@ if ($client_address === false) {
     include_once "$fnsDir/Page/errors.php";
     $error = 'With this settings a client IP address cannot be detected.';
     $errors = Page\errors([$error]);
-    $yourAddress = 'Cannot be detected';
+    $yourIp = '<span class="colorText red">cannot be detected</span>';
 } else {
     $errors = '';
-    $yourAddress = htmlspecialchars($client_address);
+    $yourIp = htmlspecialchars($client_address);
 }
 
 include_once "$fnsDir/Page/panel.php";
 include_once "$fnsDir/DomainName/get.php";
 include_once "$fnsDir/Form/label.php";
 include_once "$fnsDir/InfoEmail/get.php";
+include_once "$fnsDir/NumReverseProxies/get.php";
 include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionMessages.php";
 include_once "$fnsDir/SignUpEnabled/get.php";
@@ -61,7 +62,8 @@ $content =
         .Form\label('Anyone can create an account',
             SignUpEnabled\get() ? 'Yes' : 'No')
         .'<div class="hr"></div>'
-        .Form\label('Your IP address', $yourAddress)
+        .Form\label('Reverse proxies / your IP',
+            NumReverseProxies\get()." / $yourIp")
     )
     .Page\panel('Options', $editLink);
 

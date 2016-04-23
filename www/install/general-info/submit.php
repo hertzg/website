@@ -11,27 +11,31 @@ include_once '../fns/require_requirements.php';
 require_requirements();
 
 include_once "$fnsDir/request_strings.php";
-list($siteTitle, $domainName, $infoEmail, $siteBase, $https) = request_strings(
-    'siteTitle', 'domainName', 'infoEmail', 'siteBase', 'https');
+list($siteTitle, $domainName, $infoEmail,
+    $siteBase, $numReverseProxies, $https) = request_strings(
+    'siteTitle', 'domainName', 'infoEmail',
+    'siteBase', 'numReverseProxies', 'https');
 
 include_once "$fnsDir/str_collapse_spaces.php";
 $siteTitle = str_collapse_spaces($siteTitle);
 $infoEmail = str_collapse_spaces($infoEmail);
 $siteBase = str_collapse_spaces($siteBase);
 
+$numReverseProxies = abs((int)$numReverseProxies);
 $domainName = preg_replace('/\s+/', '', $domainName);
 
 $https = (bool)$https;
 
 include_once '../fns/check_general_info.php';
-$error = check_general_info($siteTitle,
-    $domainName, $infoEmail, $siteBase, $focus);
+$error = check_general_info($siteTitle, $domainName,
+    $infoEmail, $siteBase, $numReverseProxies, $focus);
 
 $_SESSION['install/general-info/values'] = [
     'siteTitle' => $siteTitle,
     'domainName' => $domainName,
     'infoEmail' => $infoEmail,
     'siteBase' => $siteBase,
+    'numReverseProxies' => $numReverseProxies,
     'https' => $https,
     'check' => true,
 ];

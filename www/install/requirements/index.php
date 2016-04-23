@@ -54,6 +54,7 @@ $assertsHtml .=
     .assert_writable('fns/InfoEmail/get.php')
     .assert_writable('fns/Installed/get.php')
     .assert_writable('fns/MysqlConfig/get.php')
+    .assert_writable('fns/NumReverseProxies/get.php')
     .assert_writable('fns/SignUpEnabled/get.php')
     .assert_writable('fns/SiteBase/get.php')
     .assert_writable('fns/SiteProtocol/get.php')

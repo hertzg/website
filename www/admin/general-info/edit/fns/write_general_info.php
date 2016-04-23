@@ -1,7 +1,7 @@
 <?php
 
-function write_general_info ($siteTitle,
-    $domainName, $infoEmail, $siteBase, $https, &$errors) {
+function write_general_info ($siteTitle, $domainName,
+    $infoEmail, $siteBase, $numReverseProxies, $https, &$errors) {
 
     $fnsDir = __DIR__.'/../../../../fns';
 
@@ -33,6 +33,14 @@ function write_general_info ($siteTitle,
     $ok = SiteBase\set($siteBase);
     if ($ok === false) {
         $errors[] = 'Failed to save website path.';
+        $focus = 'button';
+        return;
+    }
+
+    include_once "$fnsDir/NumReverseProxies/set.php";
+    $ok = NumReverseProxies\set($numReverseProxies);
+    if ($ok === false) {
+        $errors[] = 'Failed to save reverse proxies.';
         $focus = 'button';
         return;
     }

@@ -14,6 +14,7 @@ if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
     include_once "$fnsDir/DomainName/get.php";
     include_once "$fnsDir/InfoEmail/get.php";
+    include_once "$fnsDir/NumReverseProxies/get.php";
     include_once "$fnsDir/SignUpEnabled/get.php";
     include_once "$fnsDir/SiteBase/get.php";
     include_once "$fnsDir/SiteProtocol/get.php";
@@ -24,6 +25,7 @@ else {
         'domainName' => DomainName\get(),
         'infoEmail' => InfoEmail\get(),
         'siteBase' => SiteBase\get(),
+        'numReverseProxies' => NumReverseProxies\get(),
         'https' => SiteProtocol\get() === 'https',
         'signupEnabled' => SignUpEnabled\get(),
     ];
@@ -33,7 +35,9 @@ $focus = $values['focus'];
 
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/checkbox.php";
+include_once "$fnsDir/Form/select.php";
 include_once "$fnsDir/Form/textfield.php";
+include_once "$fnsDir/NumReverseProxies/available.php";
 include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/sessionErrors.php";
 $content = Page\create(
@@ -67,6 +71,10 @@ $content = Page\create(
             'autofocus' => $focus === 'siteBase',
             'required' => true,
         ])
+        .'<div class="hr"></div>'
+        .Form\select('numReverseProxies', 'Reverse proxies / your IP',
+            NumReverseProxies\available(), $values['numReverseProxies'],
+            $focus === 'numReverseProxies')
         .'<div class="hr"></div>'
         .Form\checkbox('https', 'Uses HTTPS', $values['https'])
         .'<div class="hr"></div>'

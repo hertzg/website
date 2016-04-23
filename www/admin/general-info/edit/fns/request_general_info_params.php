@@ -5,16 +5,17 @@ function request_general_info_params (&$errors, &$focus) {
     $fnsDir = __DIR__.'/../../../../fns';
 
     include_once "$fnsDir/request_strings.php";
-    list($siteTitle, $domainName, $infoEmail,
-        $siteBase, $https, $signupEnabled) = request_strings(
-        'siteTitle', 'domainName', 'infoEmail',
-        'siteBase', 'https', 'signupEnabled');
+    list($siteTitle, $domainName, $infoEmail, $siteBase,
+        $numReverseProxies, $https, $signupEnabled) = request_strings(
+        'siteTitle', 'domainName', 'infoEmail', 'siteBase',
+        'numReverseProxies', 'https', 'signupEnabled');
 
     include_once "$fnsDir/str_collapse_spaces.php";
     $siteTitle = str_collapse_spaces($siteTitle);
     $infoEmail = str_collapse_spaces($infoEmail);
     $siteBase = str_collapse_spaces($siteBase);
 
+    $numReverseProxies = abs((int)$numReverseProxies);
     $domainName = preg_replace('/\s+/', '', $domainName);
     $https = (bool)$https;
     $signupEnabled = (bool)$signupEnabled;
@@ -57,7 +58,13 @@ function request_general_info_params (&$errors, &$focus) {
         if ($focus === null) $focus = 'siteBase';
     }
 
+    include_once "$fnsDir/NumReverseProxies/available.php";
+    if (!array_key_exists($numReverseProxies, NumReverseProxies\available())) {
+        $errors[] = 'Select reverse proxies / your IP.';
+        if ($focus !== null) $focus = 'numReverseProxies';
+    }
+
     return [$siteTitle, $domainName, $infoEmail,
-        $siteBase, $https, $signupEnabled];
+        $siteBase, $numReverseProxies, $https, $signupEnabled];
 
 }

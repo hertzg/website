@@ -30,3 +30,5 @@ In `www/scripts` folder:
 * `./create-data-dir.sh` will create a data folder
 in which users' files will be stored.
 * `./create-htaccess.sh` will create `.htaccess` file for the website.
+* `./set-reverse-proxies.sh` will set the number of
+reverse proxy servers that the instance is behind.

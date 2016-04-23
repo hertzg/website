@@ -22,6 +22,7 @@ function require_requirements () {
         !is_writable("$rootDir/fns/InfoEmail/get.php") ||
         !is_writable("$rootDir/fns/Installed/get.php") ||
         !is_writable("$rootDir/fns/MysqlConfig/get.php") ||
+        !is_writable("$rootDir/fns/NumReverseProxies/get.php") ||
         !is_writable("$rootDir/fns/SignUpEnabled/get.php") ||
         !is_writable("$rootDir/fns/SiteBase/get.php") ||
         !is_writable("$rootDir/fns/SiteProtocol/get.php") ||

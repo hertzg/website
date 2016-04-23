@@ -36,6 +36,9 @@ MysqlConfig\set($mysqlConfigValues['host'], $mysqlConfigValues['username'],
 include_once "$fnsDir/SiteBase/set.php";
 SiteBase\set($siteBase);
 
+include_once "$fnsDir/NumReverseProxies/set.php";
+NumReverseProxies\set($generalInfoValues['numReverseProxies']);
+
 include_once "$fnsDir/SiteProtocol/set.php";
 SiteProtocol\set($siteProtocol);
 

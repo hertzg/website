@@ -12,12 +12,13 @@ $siteTitle = $values['siteTitle'];
 $domainName = $values['domainName'];
 $infoEmail = $values['infoEmail'];
 $siteBase = $values['siteBase'];
+$numReverseProxies = $values['numReverseProxies'];
 
 if ($values['check']) {
 
     include_once '../fns/check_general_info.php';
-    $error = check_general_info($siteTitle,
-        $domainName, $infoEmail, $siteBase, $focus);
+    $error = check_general_info($siteTitle, $domainName,
+        $infoEmail, $siteBase, $numReverseProxies, $focus);
     if ($focus === null) $focus = 'siteTitle';
 
     if ($error === null) $errorHtml = '';
@@ -32,6 +33,12 @@ $escapedSiteTitle = htmlspecialchars($siteTitle);
 $escapedDomainName = htmlspecialchars($domainName);
 $escapedInfoEmail = htmlspecialchars($infoEmail);
 $escapedSiteBase = htmlspecialchars($siteBase);
+
+$options = '';
+include_once '../../fns/NumReverseProxies/available.php';
+foreach (NumReverseProxies\available() as $key => $value) {
+    $options .= "<option value=\"$key\">$value</option>";
+}
 
 include_once 'fns/create_steps.php';
 include_once '../fns/echo_page.php';
@@ -72,7 +79,18 @@ echo_page(
                 ." value=\"$escapedSiteBase\""
                 .($focus == 'siteBase' ? ' autofocus="autofocus"' : '').' />'
             )
-            .'<div>'
+            .'<div style="margin-bottom: 8px">'
+                .'<label for="numReverseProxiesInput">'
+                    .'Reverse proxies / your IP:'
+                .'</label>'
+                .'<br />'
+                .'<select class="textfield"'
+                .($focus == 'numReverseProxies' ? ' autofocus="autofocus"' : '')
+                .' id="numReverseProxiesInput" name="numReverseProxies">'
+                    .$options
+                .'</select>'
+            .'</div>'
+            .'<div >'
                 .'<input type="checkbox" name="https" id="httpsInput"'
                 .($values['https'] ? ' checked="checked"' : '').' />'
                 .' <label for="httpsInput">'

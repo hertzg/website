@@ -26,6 +26,7 @@ function get_values () {
         'domainName' => $domainName,
         'infoEmail' => "info@$domainName",
         'siteBase' => $siteBase,
+        'numReverseProxies' => 0,
         'https' => array_key_exists('HTTPS', $_SERVER),
         'check' => false,
     ];

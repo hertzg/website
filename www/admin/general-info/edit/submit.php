@@ -11,13 +11,13 @@ include_once '../../fns/require_admin.php';
 require_admin();
 
 include_once 'fns/request_general_info_params.php';
-list($siteTitle, $domainName, $infoEmail, $siteBase, $https,
-    $signupEnabled) = request_general_info_params($errors, $focus);
+list($siteTitle, $domainName, $infoEmail, $siteBase, $numReverseProxies,
+    $https, $signupEnabled) = request_general_info_params($errors, $focus);
 
 if (!$errors) {
     include_once 'fns/write_general_info.php';
-    write_general_info($siteTitle, $domainName,
-        $infoEmail, $siteBase, $https, $errors);
+    write_general_info($siteTitle, $domainName, $infoEmail,
+        $siteBase, $numReverseProxies, $https, $errors);
 }
 
 if (!$errors) {
@@ -40,6 +40,7 @@ if ($errors) {
         'domainName' => $domainName,
         'infoEmail' => $infoEmail,
         'siteBase' => $siteBase,
+        'numReverseProxies' => $numReverseProxies,
         'https' => $https,
         'signupEnabled' => $signupEnabled,
     ];
