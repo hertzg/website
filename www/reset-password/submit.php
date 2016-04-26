@@ -46,6 +46,7 @@ include_once '../fns/Cookie/set.php';
 Cookie\set('username', $user->username);
 
 $_SESSION['sign-in/values'] = [
+    'focus' => 'button',
     'username' => $user->username,
     'password' => $password,
     'remember' => array_key_exists('remember', $_COOKIE),

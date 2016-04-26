@@ -69,6 +69,7 @@ include_once 'fns/send_email.php';
 send_email($username);
 
 $_SESSION['sign-in/values'] = [
+    'focus' => 'button',
     'username' => $username,
     'password' => $password,
     'remember' => array_key_exists('remember', $_COOKIE),

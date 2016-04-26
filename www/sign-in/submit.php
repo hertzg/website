@@ -19,6 +19,7 @@ list($password, $remember, $return) = request_strings(
 
 $remember = (bool)$remember;
 $errors = [];
+$focus = null;
 
 if ($remember) {
     include_once '../fns/Cookie/set.php';
@@ -28,13 +29,21 @@ if ($remember) {
     Cookie\remove('remember');
 }
 
-if ($username === '') $errors[] = 'ENTER_USERNAME';
-else {
+if ($username === '') {
+    $errors[] = 'ENTER_USERNAME';
+    $focus = 'username';
+} else {
     include_once '../fns/Username/isValid.php';
-    if (!Username\isValid($username)) $errors[] = 'INVALID_USERNAME';
+    if (!Username\isValid($username)) {
+        $errors[] = 'INVALID_USERNAME';
+        $focus = 'username';
+    }
 }
 
-if ($password === '') $errors[] = 'ENTER_PASSWORD';
+if ($password === '') {
+    $errors[] = 'ENTER_PASSWORD';
+    if ($focus !== null) $focus = 'password';
+}
 
 if (!$errors) {
     include_once '../fns/Session/authenticate.php';
@@ -42,9 +51,16 @@ if (!$errors) {
     $user = Session\authenticate($mysqli, $username,
         $password, $remember, $disabled, $rate_limited);
     if (!$user) {
-        if ($disabled) $error = 'USER_DISABLED';
-        elseif ($rate_limited) $error = 'RATE_LIMITED';
-        else $error = 'INVALID_USERNAME_OR_PASSWORD';
+        if ($disabled) {
+            $error = 'USER_DISABLED';
+            $focus = 'username';
+        } elseif ($rate_limited) {
+            $error = 'RATE_LIMITED';
+            $focus = 'button';
+        } else {
+            $error = 'INVALID_USERNAME_OR_PASSWORD';
+            $focus = 'password';
+        }
         $errors[] = $error;
     }
 }
@@ -52,6 +68,7 @@ if (!$errors) {
 if ($errors) {
     $_SESSION['sign-in/errors'] = $errors;
     $_SESSION['sign-in/values'] = [
+        'focus' => $focus,
         'username' => $username,
         'password' => $password,
         'remember' => $remember,

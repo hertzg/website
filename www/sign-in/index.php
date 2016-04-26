@@ -13,7 +13,7 @@ unset_session_vars();
 include_once 'fns/get_values.php';
 $values = get_values();
 
-$username = $values['username'];
+$focus = $values['focus'];
 $return = $values['return'];
 
 if ($return === '') $pageWarnings = '';
@@ -51,21 +51,21 @@ $content =
         .$pageWarnings
         .'<form action="submit.php" method="post">'
             .Form\textfield('username', 'Username', [
-                'value' => $username,
+                'value' => $values['username'],
                 'maxlength' => Username\maxLength(),
-                'autofocus' => $username === '',
+                'autofocus' => $focus === 'username',
                 'required' => true,
             ])
             .'<div class="hr"></div>'
             .Form\password('password', 'Password', [
                 'value' => $values['password'],
-                'autofocus' => $username !== '',
+                'autofocus' => $focus === 'password',
                 'required' => true,
             ])
             .'<div class="hr"></div>'
             .Form\checkbox('remember', 'Stay signed in', $values['remember'])
             .'<div class="hr"></div>'
-            .Form\button('Sign In')
+            .Form\button('Sign In', null, $focus === 'button')
             .Form\hidden('return', $return)
             .Page\phishingWarning()
         .'</form>'

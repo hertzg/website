@@ -18,6 +18,7 @@ function get_values () {
     }
 
     return [
+        'focus' => 'username',
         'username' => $username,
         'password' => '',
         'remember' => array_key_exists('remember', $_COOKIE),
