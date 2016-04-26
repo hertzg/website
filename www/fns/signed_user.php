@@ -62,21 +62,32 @@ function signed_user () {
             $client_address = get_client_address();
 
             if (array_key_exists('token', $_SESSION)) {
+
                 $token = $_SESSION['token'];
                 $access_time = $token->access_time;
+
+                $key = 'HTTP_USER_AGENT';
+                if (array_key_exists($key, $_SERVER)) {
+                    $user_agent = $_SERVER[$key];
+                } else {
+                    $user_agent = null;
+                }
+
                 if ($access_time === null || $access_time + 30 < $time ||
-                    $token->access_remote_address !== $client_address) {
+                    $token->access_remote_address !== $client_address ||
+                    $token->user_agent !== $user_agent) {
 
                     $value = bin2hex($token->token_text);
                     Cookie\set('token', $value);
 
                     include_once __DIR__.'/Tokens/editAccess.php';
-                    Tokens\editAccess($mysqli,
-                        $token->id, $time, $client_address);
+                    Tokens\editAccess($mysqli, $token->id,
+                        $time, $client_address, $user_agent);
 
                     $token->access_time = $time;
 
                 }
+
             }
 
             $access_time = $user->access_time;
