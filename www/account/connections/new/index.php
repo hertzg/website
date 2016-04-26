@@ -2,11 +2,10 @@
 
 include_once '../../../../lib/defaults.php';
 
-$base = '../../../';
-$fnsDir = '../../../fns';
+include_once '../../fns/require_user_with_password.php';
+$user = require_user_with_password('../../');
 
-include_once "$fnsDir/require_user.php";
-$user = require_user($base);
+$fnsDir = '../../../fns';
 
 unset(
     $_SESSION['account/connections/errors'],
@@ -53,4 +52,4 @@ $content = Page\create(
 
 include_once "$fnsDir/echo_user_page.php";
 echo_user_page($user, 'New Connection',
-    $content, $base, ['scripts' => $scripts]);
+    $content, '../../../', ['scripts' => $scripts]);

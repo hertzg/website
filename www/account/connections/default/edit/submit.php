@@ -7,8 +7,8 @@ $fnsDir = '../../../../fns';
 include_once "$fnsDir/require_same_domain_referer.php";
 require_same_domain_referer('./');
 
-include_once "$fnsDir/require_user.php";
-$user = require_user('../../../../');
+include_once '../../../fns/require_user_with_password.php';
+$user = require_user_with_password('../../../');
 
 include_once "$fnsDir/request_strings.php";
 list($can_send_bookmark, $can_send_calculation, $can_send_channel,

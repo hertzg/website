@@ -2,10 +2,10 @@
 
 function require_api_key ($mysqli, $base = '') {
 
-    $fnsDir = __DIR__.'/../../../fns';
+    include_once __DIR__.'/../../fns/require_user_with_password.php';
+    $user = require_user_with_password('../../');
 
-    include_once "$fnsDir/require_user.php";
-    $user = require_user('../../../');
+    $fnsDir = __DIR__.'/../../../fns';
 
     include_once "$fnsDir/request_strings.php";
     list($id) = request_strings('id');

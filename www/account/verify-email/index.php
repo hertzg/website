@@ -2,11 +2,11 @@
 
 include_once '../../../lib/defaults.php';
 
+include_once '../fns/require_user_with_password.php';
+$user = require_user_with_password('../');
+
 $base = '../../';
 $fnsDir = '../../fns';
-
-include_once "$fnsDir/require_user.php";
-$user = require_user($base);
 
 unset($_SESSION['account/messages']);
 
