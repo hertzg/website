@@ -18,14 +18,6 @@ function request_valid_token ($mysqli, $array = null) {
     include_once __DIR__.'/Tokens/getByUsernameTokenText.php';
     $token = Tokens\getByUsernameTokenText($mysqli, $username, $token_text);
 
-    if (!$token) return;
-
-    $key = 'HTTP_USER_AGENT';
-    if (array_key_exists($key, $_SERVER)) $user_agent = $_SERVER[$key];
-    else $user_agent = null;
-
-    if ($token->user_agent !== $user_agent) return;
-
     return $token;
 
 }
