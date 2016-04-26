@@ -35,7 +35,7 @@ $content = Page\create(
     'Unlock Account',
     Page\sessionErrors('account/unlock/errors')
     .Page\warnings([
-        'To unlock your account please enter  your account password.',
+        'To unlock your account please enter your account password.',
     ])
     .'<form action="submit.php" method="post">'
         .Form\password('password', 'Password', [
