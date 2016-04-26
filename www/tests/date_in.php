@@ -1,9 +1,9 @@
 #!/usr/bin/php
 <?php
 
+chdir(__DIR__);
 include_once '../../lib/defaults.php';
-
-include_once __DIR__.'/../fns/date_in.php';
+include_once '../fns/date_in.php';
 assert(date_in(time()) === 'right now');
 assert(date_in(time() + 60) === 'in a minute');
 assert(date_in(time() + 60 * 2) === 'in 2 minutes');

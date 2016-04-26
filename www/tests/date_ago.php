@@ -1,9 +1,9 @@
 #!/usr/bin/php
 <?php
 
+chdir(__DIR__);
 include_once '../../lib/defaults.php';
-
-include_once __DIR__.'/../fns/date_ago.php';
+include_once '../fns/date_ago.php';
 assert(date_ago(time()) === 'just now');
 assert(date_ago(time() - 60) === 'a minute ago');
 assert(date_ago(time() - 60 * 2) === '2 minutes ago');

@@ -1,9 +1,9 @@
 #!/usr/bin/php
 <?php
 
+chdir(__DIR__);
 include_once '../../lib/defaults.php';
-
-include_once __DIR__.'/../fns/bytestr.php';
+include_once '../fns/bytestr.php';
 assert(bytestr(0) === '0 B');
 assert(bytestr(64) === '64 B');
 assert(bytestr(512) === '512 B');

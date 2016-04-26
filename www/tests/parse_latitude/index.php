@@ -1,9 +1,8 @@
 #!/usr/bin/php
 <?php
 
-include_once '../../../lib/defaults.php';
-
 chdir(__DIR__);
+include_once '../../../lib/defaults.php';
 include_once 'fns/visual_assert.php';
 
 visual_assert('0', 0);

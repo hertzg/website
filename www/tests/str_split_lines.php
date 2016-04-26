@@ -1,9 +1,9 @@
 #!/usr/bin/php
 <?php
 
+chdir(__DIR__);
 include_once '../../lib/defaults.php';
-
-include_once __DIR__.'/../fns/str_split_lines.php';
+include_once '../fns/str_split_lines.php';
 assert(str_split_lines("") === []);
 assert(str_split_lines("\n") === ['', '']);
 assert(str_split_lines("\n", 1) === ["\n"]);

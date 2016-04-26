@@ -1,10 +1,8 @@
 #!/usr/bin/php
 <?php
 
-include_once '../../../lib/defaults.php';
-
 chdir(__DIR__);
-
+include_once '../../../lib/defaults.php';
 include_once 'fns/check.php';
 
 check(2, 0, 0, 0);
