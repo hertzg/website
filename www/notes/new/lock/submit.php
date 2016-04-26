@@ -30,16 +30,16 @@ else {
 include_once "$fnsDir/redirect.php";
 
 if ($errors) {
-    $_SESSION['notes/new/password-protect/errors'] = $errors;
-    $_SESSION['notes/new/password-protect/values'] = ['password' => $password];
+    $_SESSION['notes/new/lock/errors'] = $errors;
+    $_SESSION['notes/new/lock/values'] = ['password' => $password];
     include_once "$fnsDir/ItemList/pageQuery.php";
     redirect('./'.ItemList\pageQuery());
 }
 
 unset(
-    $_SESSION['notes/new/password-protect/errors'],
-    $_SESSION['notes/new/password-protect/values'],
     $_SESSION['notes/new/errors'],
+    $_SESSION['notes/new/lock/errors'],
+    $_SESSION['notes/new/lock/values'],
     $_SESSION['notes/new/values']
 );
 

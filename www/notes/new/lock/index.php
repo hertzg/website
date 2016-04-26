@@ -1,22 +1,21 @@
 <?php
 
-include_once '../../../../../lib/defaults.php';
+include_once '../../../../lib/defaults.php';
 
 include_once 'fns/require_stage.php';
-include_once '../../../../lib/mysqli.php';
-list($user, $stageValues, $id) = require_stage($mysqli);
+list($user, $stageValues) = require_stage();
 
-$key = 'notes/received/edit-and-import/password-protect/values';
+$key = 'notes/new/lock/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else $values = ['password' => ''];
 
-$fnsDir = '../../../../fns';
+$fnsDir = '../../../fns';
 
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/notes.php";
 include_once "$fnsDir/Form/password.php";
-include_once "$fnsDir/ItemList/Received/itemHiddenInputs.php";
-include_once "$fnsDir/ItemList/Received/itemQuery.php";
+include_once "$fnsDir/ItemList/escapedPageQuery.php";
+include_once "$fnsDir/ItemList/pageHiddenInputs.php";
 include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/phishingWarning.php";
 include_once "$fnsDir/Page/sessionErrors.php";
@@ -24,11 +23,11 @@ include_once "$fnsDir/Page/warnings.php";
 include_once "$fnsDir/Session/EncryptionKey/minutes.php";
 $content = Page\create(
     [
-        'title' => 'Edit and Import',
-        'href' => '../'.ItemList\Received\itemQuery($id),
+        'title' => 'New Note',
+        'href' => '../'.ItemList\escapedPageQuery(),
     ],
     'Password-protect',
-    Page\sessionErrors('notes/received/edit-and-import/password-protect/errors')
+    Page\sessionErrors('notes/new/lock/errors')
     .Page\warnings([
         'To password-protect the note your account password is needed.',
     ])
@@ -43,10 +42,9 @@ $content = Page\create(
         .'<div class="hr"></div>'
         .Form\button('Password-protect Note')
         .Page\phishingWarning()
-        .ItemList\Received\itemHiddenInputs($id)
+        .ItemList\pageHiddenInputs()
     .'</form>'
 );
 
 include_once "$fnsDir/echo_user_page.php";
-echo_user_page($user, 'Password-protect Imported Note',
-    $content, '../../../../');
+echo_user_page($user, 'Password-protect New Note', $content, '../../../');

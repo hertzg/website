@@ -34,15 +34,15 @@ $itemQuery = ItemList\itemQuery($id);
 include_once "$fnsDir/redirect.php";
 
 if ($errors) {
-    $_SESSION['notes/edit/password-protect/errors'] = $errors;
-    $_SESSION['notes/edit/password-protect/values'] = ['password' => $password];
+    $_SESSION['notes/edit/lock/errors'] = $errors;
+    $_SESSION['notes/edit/lock/values'] = ['password' => $password];
     redirect("./$itemQuery");
 }
 
 unset(
-    $_SESSION['notes/edit/password-protect/errors'],
-    $_SESSION['notes/edit/password-protect/values'],
     $_SESSION['notes/edit/errors'],
+    $_SESSION['notes/edit/lock/errors'],
+    $_SESSION['notes/edit/lock/values'],
     $_SESSION['notes/edit/values']
 );
 

@@ -39,13 +39,13 @@ include_once "$fnsDir/Session/EncryptionKey/get.php";
 $encryption_key = Session\EncryptionKey\get();
 
 if ($password_protect && $encryption_key === null) {
-    $_SESSION['notes/received/edit-and-import/password-protect/note'] = $values;
+    $_SESSION['notes/received/edit-and-import/lock/note'] = $values;
     unset(
-        $_SESSION['notes/received/edit-and-import/password-protect/errors'],
-        $_SESSION['notes/received/edit-and-import/password-protect/values']
+        $_SESSION['notes/received/edit-and-import/lock/errors'],
+        $_SESSION['notes/received/edit-and-import/lock/values']
     );
     include_once "$fnsDir/ItemList/Received/itemQuery.php";
-    redirect('password-protect/'.ItemList\Received\itemQuery($id));
+    redirect('lock/'.ItemList\Received\itemQuery($id));
 }
 
 unset($_SESSION['notes/received/edit-and-import/values']);

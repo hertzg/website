@@ -6,7 +6,7 @@ include_once 'fns/require_stage.php';
 include_once '../../../lib/mysqli.php';
 list($user, $stageValues, $id) = require_stage($mysqli);
 
-$key = 'notes/edit/password-protect/values';
+$key = 'notes/edit/lock/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else $values = ['password' => ''];
 
@@ -28,7 +28,7 @@ $content = Page\create(
         'href' => '../'.ItemList\escapedItemQuery($id),
     ],
     'Password-protect',
-    Page\sessionErrors('notes/edit/password-protect/errors')
+    Page\sessionErrors('notes/edit/lock/errors')
     .Page\warnings([
         'To password-protect the note your account password is needed.',
     ])

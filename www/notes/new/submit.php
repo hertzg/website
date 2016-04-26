@@ -51,13 +51,13 @@ include_once "$fnsDir/Session/EncryptionKey/get.php";
 $encryption_key = Session\EncryptionKey\get();
 
 if ($password_protect && $encryption_key === null) {
-    $_SESSION['notes/new/password-protect/note'] = $values;
+    $_SESSION['notes/new/lock/note'] = $values;
     unset(
-        $_SESSION['notes/new/password-protect/errors'],
-        $_SESSION['notes/new/password-protect/values']
+        $_SESSION['notes/new/lock/errors'],
+        $_SESSION['notes/new/lock/values']
     );
     include_once "$fnsDir/ItemList/pageQuery.php";
-    redirect('password-protect/'.ItemList\pageQuery());
+    redirect('lock/'.ItemList\pageQuery());
 }
 
 unset($_SESSION['notes/new/values']);

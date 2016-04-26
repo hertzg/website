@@ -53,12 +53,12 @@ include_once "$fnsDir/Session/EncryptionKey/get.php";
 $encryption_key = Session\EncryptionKey\get();
 
 if ($password_protect && $encryption_key === null) {
-    $_SESSION['notes/edit/password-protect/note'] = $values;
+    $_SESSION['notes/edit/lock/note'] = $values;
     unset(
-        $_SESSION['notes/edit/password-protect/errors'],
-        $_SESSION['notes/edit/password-protect/values']
+        $_SESSION['notes/edit/lock/errors'],
+        $_SESSION['notes/edit/lock/values']
     );
-    redirect("password-protect/$itemQuery");
+    redirect("lock/$itemQuery");
 }
 
 unset($_SESSION['notes/edit/values']);
