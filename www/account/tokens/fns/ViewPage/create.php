@@ -49,15 +49,15 @@ function create ($mysqli, $token, &$scripts) {
                 'readonly' => true,
             ])
             .'<div class="hr"></div>'
-            .\Form\textarea('user_agent', 'User agent', [
-                'value' => $token->user_agent,
-                'readonly' => true,
-            ])
-            .'<div class="hr"></div>'
             .\Form\textarea('link', 'Link to restore', [
                 'value' => get_absolute_base().'restore-session/'
                     .'?username='.rawurlencode($token->username)
                     .'&token='.bin2hex($token->token_text),
+                'readonly' => true,
+            ])
+            .'<div class="hr"></div>'
+            .\Form\textarea('user_agent', 'Last user agent', [
+                'value' => $token->user_agent,
                 'readonly' => true,
             ])
             .'<div class="hr"></div>'
