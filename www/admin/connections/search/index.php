@@ -13,15 +13,16 @@ unset_session_vars();
 $fnsDir = '../../../fns';
 
 include_once "$fnsDir/request_valid_keyword_tag_offset.php";
-list($keyword, $tag, $offset) = request_valid_keyword_tag_offset();
+list($keyword, $tag, $offset) = request_valid_keyword_tag_offset(
+    $includes, $excludes);
 
 include_once "$fnsDir/Paging/limit.php";
 $limit = Paging\limit();
 
 include_once "$fnsDir/AdminConnections/searchPage.php";
 include_once '../../../lib/mysqli.php';
-$connections = AdminConnections\searchPage(
-    $mysqli, $keyword, $offset, $limit, $total);
+$connections = AdminConnections\searchPage($mysqli,
+    $includes, $excludes, $offset, $limit, $total);
 
 $params = ['keyword' => $keyword];
 

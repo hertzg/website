@@ -13,14 +13,15 @@ $base = '../../../../';
 $fnsDir = '../../../../fns';
 
 include_once "$fnsDir/request_valid_keyword_tag_offset.php";
-list($keyword, $tag, $offset) = request_valid_keyword_tag_offset(['id' => $id]);
+list($keyword, $tag, $offset) = request_valid_keyword_tag_offset(
+    $includes, $excludes, ['id' => $id]);
 
 include_once "$fnsDir/Paging/limit.php";
 $limit = Paging\limit();
 
 include_once "$fnsDir/AdminApiKeyAuths/searchPageOnAdminApiKey.php";
-$auths = \AdminApiKeyAuths\searchPageOnAdminApiKey(
-    $mysqli, $id, $keyword, $offset, $limit, $total);
+$auths = \AdminApiKeyAuths\searchPageOnAdminApiKey($mysqli,
+    $id, $includes, $excludes, $offset, $limit, $total);
 
 $params = [
     'id' => $id,

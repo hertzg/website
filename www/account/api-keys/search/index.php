@@ -21,7 +21,8 @@ include_once '../fns/unset_session_vars.php';
 unset_session_vars();
 
 include_once "$fnsDir/request_valid_keyword_tag_offset.php";
-list($keyword, $tag, $offset) = request_valid_keyword_tag_offset();
+list($keyword, $tag, $offset) = request_valid_keyword_tag_offset(
+    $includes, $excludes);
 
 include_once "$fnsDir/Paging/limit.php";
 $limit = Paging\limit();
@@ -29,7 +30,7 @@ $limit = Paging\limit();
 include_once "$fnsDir/ApiKeys/searchPageOnUser.php";
 include_once '../../../lib/mysqli.php';
 $apiKeys = ApiKeys\searchPageOnUser($mysqli, $user->id_users,
-    $keyword, $offset, $limit, $total, $user->api_keys_order_by);
+    $includes, $excludes, $offset, $limit, $total, $user->api_keys_order_by);
 
 $params = ['keyword' => $keyword];
 

@@ -25,18 +25,22 @@ if ($keyword === '') {
     redirect(create_parent_url($id_folders, '../'));
 }
 
+include_once "$fnsDir/parse_keyword.php";
+parse_keyword($keyword, $includes, $excludes);
+
 if ($deep) {
     include_once 'fns/search_recursively.php';
     list($folders, $files) = search_recursively(
-        $mysqli, $user, $id_folders, $keyword);
+        $mysqli, $user, $id_folders, $includes, $excludes);
 } else {
 
     include_once "$fnsDir/Users/Folders/searchInFolder.php";
     $folders = Users\Folders\searchInFolder(
-        $mysqli, $user, $id_folders, $keyword);
+        $mysqli, $user, $id_folders, $includes, $excludes);
 
     include_once "$fnsDir/Users/Files/searchInFolder.php";
-    $files = Users\Files\searchInFolder($mysqli, $user, $id_folders, $keyword);
+    $files = Users\Files\searchInFolder($mysqli,
+        $user, $id_folders, $includes, $excludes);
 
 }
 

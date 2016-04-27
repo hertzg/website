@@ -13,7 +13,8 @@ unset_session_vars();
 $fnsDir = '../../../fns';
 
 include_once "$fnsDir/request_valid_keyword_tag_offset.php";
-list($keyword, $tag, $offset) = request_valid_keyword_tag_offset();
+list($keyword, $tag, $offset) = request_valid_keyword_tag_offset(
+    $includes, $excludes);
 
 include_once "$fnsDir/Paging/limit.php";
 $limit = Paging\limit();
@@ -23,8 +24,8 @@ $order_by = Users\OrderBy\get();
 
 include_once "$fnsDir/Users/searchPage.php";
 include_once '../../../lib/mysqli.php';
-$users = Users\searchPage($mysqli,
-    $keyword, $offset, $limit, $total, $order_by);
+$users = Users\searchPage($mysqli, $includes,
+    $excludes, $offset, $limit, $total, $order_by);
 
 $params = ['keyword' => $keyword];
 

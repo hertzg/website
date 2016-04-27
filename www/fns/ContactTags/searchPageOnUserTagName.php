@@ -2,21 +2,33 @@
 
 namespace ContactTags;
 
-function searchPageOnUserTagName ($mysqli, $id_users,
-    $keyword, $tag_name, $offset, $limit, &$total, $order_by) {
+function searchPageOnUserTagName ($mysqli, $id_users, $includes,
+    $excludes, $tag_name, $offset, $limit, &$total, $order_by) {
 
     $fnsDir = __DIR__.'/..';
-
-    include_once "$fnsDir/escape_like.php";
-    $keyword = escape_like($keyword);
-    $keyword = $mysqli->real_escape_string($keyword);
     $tag_name = $mysqli->real_escape_string($tag_name);
 
-    $fromWhere = "from contact_tags where id_users = $id_users"
-        ." and (full_name like '%$keyword%' or alias like '%$keyword%'"
-        ." or email1 like '%$keyword%' or email2 like '%$keyword%'"
-        ." or phone1 like '%$keyword%' or phone2 like '%$keyword%')"
-        ." and tag_name = '$tag_name'";
+    include_once "$fnsDir/escape_like.php";
+    $fromWhere = 'from contact_tags'
+        ." where id_users = $id_users and tag_name = '$tag_name'";
+    foreach ($includes as $include) {
+        $include = $mysqli->real_escape_string(escape_like($include));
+        $fromWhere .= " and (full_name like '%$include%'"
+            ." or alias like '%$include%'"
+            ." or email1 like '%$include%'"
+            ." or email2 like '%$include%'"
+            ." or phone1 like '%$include%'"
+            ." or phone2 like '%$include%')";
+    }
+    foreach ($excludes as $exclude) {
+        $exclude = $mysqli->real_escape_string(escape_like($exclude));
+        $fromWhere .= " and full_name not like '%$exclude%'"
+            ." and alias not like '%$exclude%'"
+            ." and email1 not like '%$exclude%'"
+            ." and email2 not like '%$exclude%'"
+            ." and phone1 not like '%$exclude%'"
+            ." and phone2 not like '%$exclude%'";
+    }
 
     $sql = "select count(*) total $fromWhere";
     include_once "$fnsDir/mysqli_single_object.php";

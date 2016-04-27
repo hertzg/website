@@ -11,14 +11,15 @@ function create ($mysqli, $user, &$scripts) {
     $scripts = compressed_js_script('searchForm', $base);
 
     include_once "$fnsDir/request_valid_keyword_tag_offset.php";
-    list($keyword, $tag, $offset) = request_valid_keyword_tag_offset();
+    list($keyword, $tag, $offset) = request_valid_keyword_tag_offset(
+        $includes, $excludes);
 
     include_once "$fnsDir/Paging/limit.php";
     $limit = \Paging\limit();
 
     include_once "$fnsDir/Users/Events/searchPage.php";
-    $events = \Users\Events\searchPage($mysqli, $user,
-        $keyword, $offset, $limit, $total, $user->events_order_by);
+    $events = \Users\Events\searchPage($mysqli, $user, $includes,
+        $excludes, $offset, $limit, $total, $user->events_order_by);
 
     include_once "$fnsDir/SearchForm/content.php";
     $formContent = \SearchForm\content($keyword, 'Search events...', '../');

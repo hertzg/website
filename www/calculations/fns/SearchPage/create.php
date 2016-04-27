@@ -9,7 +9,8 @@ function create ($mysqli, $user, &$scripts) {
     $order_by = $user->calculations_order_by;
 
     include_once "$fnsDir/request_valid_keyword_tag_offset.php";
-    list($keyword, $tag, $offset) = request_valid_keyword_tag_offset();
+    list($keyword, $tag, $offset) = request_valid_keyword_tag_offset(
+        $includes, $excludes);
 
     include_once "$fnsDir/compressed_js_script.php";
     $scripts = compressed_js_script('searchForm', '../../');
@@ -30,8 +31,8 @@ function create ($mysqli, $user, &$scripts) {
         $filterMessage = '';
 
         include_once "$fnsDir/Calculations/searchPage.php";
-        $calculations = \Calculations\searchPage($mysqli,
-            $id_users, $keyword, $offset, $limit, $total, $order_by);
+        $calculations = \Calculations\searchPage($mysqli, $id_users,
+            $includes, $excludes, $offset, $limit, $total, $order_by);
 
         $formContent = \SearchForm\content($keyword, $searchPlaceholder, '..');
         $items[] = \SearchForm\create($searchAction, $formContent);
@@ -53,8 +54,9 @@ function create ($mysqli, $user, &$scripts) {
     } else {
 
         include_once "$fnsDir/CalculationTags/searchPageOnUserTagName.php";
-        $calculations = \CalculationTags\searchPageOnUserTagName($mysqli,
-            $id_users, $keyword, $tag, $offset, $limit, $total, $order_by);
+        $calculations = \CalculationTags\searchPageOnUserTagName(
+            $mysqli, $id_users, $includes, $excludes,
+            $tag, $offset, $limit, $total, $order_by);
 
         include_once "$fnsDir/Form/hidden.php";
         $clearHref = '../?tag='.rawurlencode($tag);

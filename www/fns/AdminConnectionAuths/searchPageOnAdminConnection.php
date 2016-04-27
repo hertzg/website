@@ -2,18 +2,24 @@
 
 namespace AdminConnectionAuths;
 
-function searchPageOnAdminConnection ($mysqli,
-    $id_admin_connections, $keyword, $offset, $limit, &$total) {
+function searchPageOnAdminConnection ($mysqli, $id_admin_connections,
+    $includes, $excludes, $offset, $limit, &$total) {
 
     $fnsDir = __DIR__.'/..';
 
     include_once "$fnsDir/escape_like.php";
-    $keyword = escape_like($keyword);
-    $keyword = $mysqli->real_escape_string($keyword);
-
     $fromWhere = 'from admin_connection_auths'
-        ." where id_admin_connections = $id_admin_connections"
-        ." and (remote_address like '%$keyword%' or method like '%$keyword%')";
+        ." where id_admin_connections = $id_admin_connections";
+    foreach ($includes as $include) {
+        $include = $mysqli->real_escape_string(escape_like($include));
+        $fromWhere .= " and (remote_address like '%$include%'"
+            ." or method like '%$include%')";
+    }
+    foreach ($excludes as $exclude) {
+        $exclude = $mysqli->real_escape_string(escape_like($exclude));
+        $fromWhere .= " and remote_address not like '%$exclude%'"
+            ." and method not like '%$exclude%'";
+    }
 
     $sql = "select count(*) total $fromWhere";
     include_once "$fnsDir/mysqli_single_object.php";

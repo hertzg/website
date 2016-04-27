@@ -9,7 +9,8 @@ $base = '../../../';
 $fnsDir = '../../../fns';
 
 include_once "$fnsDir/request_valid_keyword_tag_offset.php";
-list($keyword, $tag, $offset) = request_valid_keyword_tag_offset();
+list($keyword, $tag, $offset) = request_valid_keyword_tag_offset(
+    $includes, $excludes);
 
 include_once "$fnsDir/Paging/limit.php";
 $limit = Paging\limit();
@@ -19,8 +20,8 @@ unset_session_vars();
 
 include_once "$fnsDir/Signins/searchPageOnUser.php";
 include_once '../../../lib/mysqli.php';
-$signins = Signins\searchPageOnUser($mysqli,
-    $user->id_users, $keyword, $offset, $limit, $total);
+$signins = Signins\searchPageOnUser($mysqli, $user->id_users,
+    $includes, $excludes, $offset, $limit, $total);
 
 include_once "$fnsDir/check_offset_overflow.php";
 check_offset_overflow($offset, $limit, $total);

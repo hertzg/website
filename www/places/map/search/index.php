@@ -9,16 +9,18 @@ $id_users = $user->id_users;
 $fnsDir = '../../../fns';
 
 include_once "$fnsDir/request_valid_keyword_tag_offset.php";
-list($keyword, $tag, $offset) = request_valid_keyword_tag_offset();
+list($keyword, $tag, $offset) = request_valid_keyword_tag_offset(
+    $includes, $excludes);
 
 include_once '../../../lib/mysqli.php';
 
 if ($tag === '') {
     include_once "$fnsDir/Places/search.php";
-    $places = Places\search($mysqli, $id_users, $keyword);
+    $places = Places\search($mysqli, $id_users, $includes, $excludes);
 } else {
     include_once "$fnsDir/PlaceTags/searchOnUserTagName.php";
-    $places = PlaceTags\searchOnUserTagName($mysqli, $id_users, $keyword, $tag);
+    $places = PlaceTags\searchOnUserTagName($mysqli,
+        $id_users, $includes, $excludes, $tag);
 }
 
 include_once '../fns/create_map.php';

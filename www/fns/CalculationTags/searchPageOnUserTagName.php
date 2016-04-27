@@ -2,18 +2,23 @@
 
 namespace CalculationTags;
 
-function searchPageOnUserTagName ($mysqli, $id_users,
-    $keyword, $tag_name, $offset, $limit, &$total, $order_by) {
+function searchPageOnUserTagName ($mysqli, $id_users, $includes,
+    $excludes, $tag_name, $offset, $limit, &$total, $order_by) {
 
     $fnsDir = __DIR__.'/..';
-
-    include_once "$fnsDir/escape_like.php";
-    $keyword = escape_like($keyword);
-    $keyword = $mysqli->real_escape_string($keyword);
     $tag_name = $mysqli->real_escape_string($tag_name);
 
-    $fromWhere = "from calculation_tags where id_users = $id_users"
-        ." and title like '%$keyword%' and tag_name = '$tag_name'";
+    include_once "$fnsDir/escape_like.php";
+    $fromWhere = 'from calculation_tags'
+        ." where id_users = $id_users and tag_name = '$tag_name'";
+    foreach ($includes as $include) {
+        $include = $mysqli->real_escape_string(escape_like($include));
+        $fromWhere .= " and title like '%$include%'";
+    }
+    foreach ($excludes as $exclude) {
+        $exclude = $mysqli->real_escape_string(escape_like($exclude));
+        $fromWhere .= " and title not like '%$exclude%'";
+    }
 
     $sql = "select count(*) total $fromWhere";
     include_once "$fnsDir/mysqli_single_object.php";

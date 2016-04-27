@@ -2,18 +2,24 @@
 
 namespace AdminApiKeyAuths;
 
-function searchPageOnAdminApiKey ($mysqli,
-    $id_admin_api_keys, $keyword, $offset, $limit, &$total) {
+function searchPageOnAdminApiKey ($mysqli, $id_admin_api_keys,
+    $includes, $excludes, $offset, $limit, &$total) {
 
     $fnsDir = __DIR__.'/..';
 
     include_once "$fnsDir/escape_like.php";
-    $keyword = escape_like($keyword);
-    $keyword = $mysqli->real_escape_string($keyword);
-
     $fromWhere = 'from admin_api_key_auths'
-        ." where id_admin_api_keys = $id_admin_api_keys"
-        ." and (remote_address like '%$keyword%' or method like '%$keyword%')";
+        ." where id_admin_api_keys = $id_admin_api_keys";
+    foreach ($includes as $include) {
+        $include = $mysqli->real_escape_string(escape_like($include));
+        $fromWhere .= " and (remote_address like '%$include%'"
+            ." or method like '%$include%')";
+    }
+    foreach ($excludes as $exclude) {
+        $exclude = $mysqli->real_escape_string(escape_like($exclude));
+        $fromWhere .= " and remote_address not like '%$exclude%'"
+            ." and method not like '%$exclude%'";
+    }
 
     $sql = "select count(*) total $fromWhere";
     include_once "$fnsDir/mysqli_single_object.php";

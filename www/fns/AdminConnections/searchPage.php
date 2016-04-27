@@ -2,15 +2,20 @@
 
 namespace AdminConnections;
 
-function searchPage ($mysqli, $keyword, $offset, $limit, &$total) {
+function searchPage ($mysqli, $includes, $excludes, $offset, $limit, &$total) {
 
     $fnsDir = __DIR__.'/..';
 
     include_once "$fnsDir/escape_like.php";
-    $keyword = escape_like($keyword);
-    $keyword = $mysqli->real_escape_string($keyword);
-
-    $fromWhere = "from admin_connections where address like '%$keyword%'";
+    $fromWhere = 'from admin_connections where 1';
+    foreach ($includes as $include) {
+        $include = $mysqli->real_escape_string(escape_like($include));
+        $fromWhere .= " and address like '%$include%'";
+    }
+    foreach ($excludes as $exclude) {
+        $exclude = $mysqli->real_escape_string(escape_like($exclude));
+        $fromWhere .= " and address not like '%$exclude%'";
+    }
 
     $sql = "select count(*) total $fromWhere";
     include_once "$fnsDir/mysqli_single_object.php";

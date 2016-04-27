@@ -17,6 +17,9 @@ include_once '../lib/mysqli.php';
 include_once "$fnsDir/request_strings.php";
 list($keyword) = request_strings('keyword');
 
+include_once "$fnsDir/parse_keyword.php";
+parse_keyword($keyword, $includes, $excludes);
+
 include_once "$fnsDir/Paging/requestOffset.php";
 $offset = Paging\requestOffset('../home/');
 
@@ -37,44 +40,44 @@ $items = [SearchForm\create('./', $formContent)];
 $groupLimit = 4;
 
 include_once "$fnsDir/Users/BarCharts/searchPage.php";
-$bar_charts = Users\BarCharts\searchPage($mysqli,
-    $user, $keyword, 0, $groupLimit, $num_bar_charts);
+$bar_charts = Users\BarCharts\searchPage($mysqli, $user,
+    $includes, $excludes, 0, $groupLimit, $num_bar_charts);
 
 include_once "$fnsDir/Users/Bookmarks/searchPage.php";
-$bookmarks = Users\Bookmarks\searchPage($mysqli,
-    $user, $keyword, 0, $groupLimit, $num_bookmarks);
+$bookmarks = Users\Bookmarks\searchPage($mysqli, $user,
+    $includes, $excludes, 0, $groupLimit, $num_bookmarks);
 
 include_once "$fnsDir/Users/Calculations/searchPage.php";
-$calculations = Users\Calculations\searchPage($mysqli,
-    $user, $keyword, 0, $groupLimit, $num_calculations);
+$calculations = Users\Calculations\searchPage($mysqli, $user,
+    $includes, $excludes, 0, $groupLimit, $num_calculations);
 
 include_once "$fnsDir/Users/Contacts/searchPage.php";
-$contacts = Users\Contacts\searchPage($mysqli,
-    $user, $keyword, 0, $groupLimit, $num_contacts);
+$contacts = Users\Contacts\searchPage($mysqli, $user,
+    $includes, $excludes, 0, $groupLimit, $num_contacts);
 
 include_once "$fnsDir/Users/Files/searchPage.php";
-$files = Users\Files\searchPage($mysqli,
-    $user, $keyword, 0, $groupLimit, $num_files);
+$files = Users\Files\searchPage($mysqli, $user,
+    $includes, $excludes, 0, $groupLimit, $num_files);
 
 include_once "$fnsDir/Users/Folders/searchPage.php";
-$folders = Users\Folders\searchPage($mysqli,
-    $user, $keyword, 0, $groupLimit, $num_folders);
+$folders = Users\Folders\searchPage($mysqli, $user,
+    $includes, $excludes, 0, $groupLimit, $num_folders);
 
 include_once "$fnsDir/Users/Notes/searchPage.php";
-$notes = Users\Notes\searchPage($mysqli,
-    $user, $keyword, 0, $groupLimit, $num_notes);
+$notes = Users\Notes\searchPage($mysqli, $user,
+    $includes, $excludes, 0, $groupLimit, $num_notes);
 
 include_once "$fnsDir/Users/Places/searchPage.php";
-$places = Users\Places\searchPage($mysqli,
-    $user, $keyword, 0, $groupLimit, $num_places);
+$places = Users\Places\searchPage($mysqli, $user,
+    $includes, $excludes, 0, $groupLimit, $num_places);
 
 include_once "$fnsDir/Users/Tasks/searchPage.php";
-$tasks = Users\Tasks\searchPage($mysqli,
-    $user, $keyword, 0, $groupLimit, $num_tasks);
+$tasks = Users\Tasks\searchPage($mysqli, $user,
+    $includes, $excludes, 0, $groupLimit, $num_tasks);
 
 include_once "$fnsDir/Users/Wallets/searchPage.php";
-$wallets = Users\Wallets\searchPage($mysqli,
-    $user, $keyword, 0, $groupLimit, $num_wallets);
+$wallets = Users\Wallets\searchPage($mysqli, $user,
+    $includes, $excludes, 0, $groupLimit, $num_wallets);
 
 if ($num_bar_charts || $num_bookmarks || $num_calculations ||
     $num_contacts || $num_files || $num_folders ||

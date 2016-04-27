@@ -2,17 +2,21 @@
 
 namespace TokenAuths;
 
-function searchPageOnToken ($mysqli,
-    $id_tokens, $keyword, $offset, $limit, &$total) {
+function searchPageOnToken ($mysqli, $id_tokens,
+    $includes, $excludes, $offset, $limit, &$total) {
 
     $fnsDir = __DIR__.'/..';
 
     include_once "$fnsDir/escape_like.php";
-    $keyword = escape_like($keyword);
-    $keyword = $mysqli->real_escape_string($keyword);
-
-    $fromWhere = "from token_auths where id_tokens = $id_tokens"
-        ." and remote_address like '%$keyword%'";
+    $fromWhere = "from token_auths where id_tokens = $id_tokens";
+    foreach ($includes as $include) {
+        $include = $mysqli->real_escape_string(escape_like($include));
+        $fromWhere .= " and remote_address like '%$include%'";
+    }
+    foreach ($excludes as $exclude) {
+        $exclude = $mysqli->real_escape_string(escape_like($exclude));
+        $fromWhere .= " and remote_address not like '%$exclude%'";
+    }
 
     $sql = "select count(*) total $fromWhere";
     include_once "$fnsDir/mysqli_single_object.php";

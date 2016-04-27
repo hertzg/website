@@ -8,7 +8,8 @@ function create ($mysqli, $user, &$scripts) {
     $id_users = $user->id_users;
 
     include_once "$fnsDir/request_valid_keyword_tag_offset.php";
-    list($keyword, $tag, $offset) = request_valid_keyword_tag_offset();
+    list($keyword, $tag, $offset) = request_valid_keyword_tag_offset(
+        $includes, $excludes);
 
     include_once "$fnsDir/compressed_js_script.php";
     $scripts = compressed_js_script('searchForm', '../../');
@@ -29,7 +30,8 @@ function create ($mysqli, $user, &$scripts) {
         $filterMessage = '';
 
         include_once "$fnsDir/Schedules/searchOnUser.php";
-        $schedules = \Schedules\searchOnUser($mysqli, $id_users, $keyword);
+        $schedules = \Schedules\searchOnUser(
+            $mysqli, $id_users, $includes, $excludes);
         $total = count($schedules);
 
         $formContent = \SearchForm\content($keyword, $searchPlaceholder, '..');
@@ -53,7 +55,7 @@ function create ($mysqli, $user, &$scripts) {
 
         include_once "$fnsDir/ScheduleTags/searchPageOnUserTagName.php";
         $schedules = \ScheduleTags\searchPageOnUserTagName(
-            $mysqli, $id_users, $keyword, $tag);
+            $mysqli, $id_users, $includes, $excludes, $tag);
         $total = count($schedules);
 
         include_once "$fnsDir/Form/hidden.php";
