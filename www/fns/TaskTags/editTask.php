@@ -11,6 +11,7 @@ function editTask ($mysqli, $id_tasks, $text, $title, $deadline_time,
     $tags = $mysqli->real_escape_string($tags);
     $num_tags = count($tag_names);
     $tags_json = $mysqli->real_escape_string(json_encode($tag_names));
+    $top_priority = $top_priority ? '1' : '0';
 
     $sql = "update task_tags set text = '$text', title = '$title',"
         ." deadline_time = $deadline_time, tags = '$tags',"
