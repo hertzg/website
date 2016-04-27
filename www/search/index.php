@@ -76,10 +76,6 @@ include_once "$fnsDir/Users/Wallets/searchPage.php";
 $wallets = Users\Wallets\searchPage($mysqli,
     $user, $keyword, 0, $groupLimit, $num_wallets);
 
-include_once "$fnsDir/Users/Wallets/searchPage.php";
-$wallets = Users\Wallets\searchPage($mysqli,
-    $user, $keyword, 0, $groupLimit, $num_wallets);
-
 if ($num_bar_charts || $num_bookmarks || $num_calculations ||
     $num_contacts || $num_files || $num_folders ||
     $num_notes || $num_places || $num_tasks || $num_wallets) {
