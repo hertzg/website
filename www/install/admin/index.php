@@ -42,6 +42,11 @@ echo_page(
             create_steps(),
             '<span class="title-step">Step 5</span>'
             .'<h2>Administrator</h2>'
+            .'<div style="margin-bottom: 12px">'
+                .'This is an emergency user that will let you administer'
+                .' the Zvini instance even when it\'s experiencing a'
+                .' misconfiguration or its MySQL server is down.'
+            .'</div>'
             .'<div style="margin-bottom: 8px">'
                 .'<label for="usernameInput">Username:</label>'
                 .'<br />'

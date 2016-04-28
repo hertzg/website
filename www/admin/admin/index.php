@@ -32,8 +32,8 @@ $content =
         'Administrator',
         Page\sessionMessages('admin/admin/messages')
         .Page\text(
-            'The emergency user below will let you administer the'
-            .' Zvini instance even when it\'s experiencing a'
+            'This is an emergency user that will let you administer'
+            .' the Zvini instance even when it\'s experiencing a'
             .' misconfiguration or its MySQL server is down.'
         )
         .Form\label('Username', htmlspecialchars($username))
