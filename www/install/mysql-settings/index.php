@@ -50,12 +50,12 @@ include_once '../fns/field_columns.php';
 include_once '../fns/steps.php';
 include_once '../fns/wizard_layout.php';
 echo_page(
-    'Step 4 - MySQL Configuration',
+    'Step 4 - MySQL Settings',
     '<form action="submit.php" method="post">'
         .wizard_layout(
-            steps($doneSteps, 'MySQL Configuration', $nextSteps),
+            steps($doneSteps, 'MySQL Settings', $nextSteps),
             '<span class="title-step">Step 4</span>'
-            .'<h2>MySQL Configuration</h2>'
+            .'<h2>MySQL Settings</h2>'
             .field_columns(
                 '<label for="hostInput">Host:</label>'
                 .'<br />'

@@ -38,8 +38,8 @@ $doneSteps = [
         'href' => '../general-info/',
     ],
     [
-        'title' => 'MySQL Configuration',
-        'href' => '../mysql-config/',
+        'title' => 'MySQL Settings',
+        'href' => '../mysql-settings/',
     ],
     [
         'title' => 'Administrator',

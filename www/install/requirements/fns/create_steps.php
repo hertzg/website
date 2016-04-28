@@ -9,7 +9,7 @@ function create_steps () {
         ],
     ], 'Requirements', [
         'General Information',
-        'MySQL Configuration',
+        'MySQL Settings',
         'Administrator',
         'Finalize Installation',
     ]);

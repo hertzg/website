@@ -25,7 +25,7 @@ include_once '../fns/check_mysql_config.php';
 $error = check_mysql_config($host, $username,
     $password, $db, $create, $mysqli, $focus);
 
-$_SESSION['install/mysql-config/values'] = [
+$_SESSION['install/mysql-settings/values'] = [
     'host' => $host,
     'username' => $username,
     'password' => $password,

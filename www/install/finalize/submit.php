@@ -56,7 +56,7 @@ Installed\set(true);
 
 unset(
     $_SESSION['install/general-info/values'],
-    $_SESSION['install/mysql-config/values'],
+    $_SESSION['install/mysql-settings/values'],
     $_SESSION['install/admin/values']
 );
 

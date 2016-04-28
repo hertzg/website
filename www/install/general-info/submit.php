@@ -46,4 +46,4 @@ include_once "$fnsDir/redirect.php";
 
 if ($error) redirect();
 
-redirect('../mysql-config/');
+redirect('../mysql-settings/');

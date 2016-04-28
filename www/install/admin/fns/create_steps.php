@@ -16,8 +16,8 @@ function create_steps () {
             'href' => '../general-info/',
         ],
         [
-            'title' => 'MySQL Configuration',
-            'href' => '../mysql-config/',
+            'title' => 'MySQL Settings',
+            'href' => '../mysql-settings/',
         ],
     ], 'Administrator', ['Finalize Installation']);
 }

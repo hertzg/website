@@ -6,7 +6,7 @@ include_once '../fns/require_not_installed.php';
 require_not_installed('../');
 
 $nextSteps = ['Requirements', 'General Information',
-    'MySQL Configuration', 'Administrator', 'Finalize Installation'];
+    'MySQL Settings', 'Administrator', 'Finalize Installation'];
 
 $href = 'http://www.gnu.org/licenses/';
 

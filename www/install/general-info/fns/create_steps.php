@@ -12,7 +12,7 @@ function create_steps () {
             'href' => '../requirements/',
         ],
     ], 'General Information', [
-        'MySQL Configuration',
+        'MySQL Settings',
         'Administrator',
         'Finalize Installation',
     ]);

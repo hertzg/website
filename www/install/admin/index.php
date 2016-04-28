@@ -95,7 +95,7 @@ echo_page(
             )
             .$errorHtml,
             '<input type="submit" class="button nextButton" value="Next" />'
-            .'<a href="../mysql-config/" class="button">Back</a>'
+            .'<a href="../mysql-settings/" class="button">Back</a>'
         )
     .'</form>'
 );
