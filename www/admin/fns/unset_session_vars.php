@@ -2,6 +2,7 @@
 
 function unset_session_vars ($admin_user) {
     unset(
+        $_SESSION['admin/admin/messages'],
         $_SESSION['admin/api-keys/errors'],
         $_SESSION['admin/api-keys/messages'],
         $_SESSION['admin/connections/errors'],
@@ -10,8 +11,6 @@ function unset_session_vars ($admin_user) {
         $_SESSION['admin/invitations/errors'],
         $_SESSION['admin/invitations/messages'],
         $_SESSION['admin/mysql-settings/messages'],
-        $_SESSION['admin/username-password/errors'],
-        $_SESSION['admin/username-password/values'],
         $_SESSION['admin/users/errors'],
         $_SESSION['admin/users/messages']
     );

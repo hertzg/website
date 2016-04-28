@@ -33,6 +33,9 @@ $content = Page\sessionMessages('admin/messages')
     .'<div class="hr"></div>'
     .create_mysql_link($mysqli)
     .'<div class="hr"></div>'
+    .Page\imageArrowLink('Administrator',
+        'admin/', 'generic', ['id' => 'admin'])
+    .'<div class="hr"></div>'
     .Page\imageArrowLink('Ensure Crontab',
         'ensure-crontab/', 'generic', ['id' => 'ensure-crontab'])
     .'<div class="hr"></div>'
@@ -40,10 +43,7 @@ $content = Page\sessionMessages('admin/messages')
         'ensure-data-dir/', 'generic', ['id' => 'ensure-data-dir'])
     .'<div class="hr"></div>'
     .Page\imageArrowLink('Check Installation',
-        'check-installation/', 'generic', ['id' => 'check-installation'])
-    .'<div class="hr"></div>'
-    .Page\imageArrowLink('Set New Username/Password',
-        'username-password/', 'generic', ['id' => 'username-password']);
+        'check-installation/', 'generic', ['id' => 'check-installation']);
 
 if ($admin_user) {
     include_once '../fns/Page/create.php';
