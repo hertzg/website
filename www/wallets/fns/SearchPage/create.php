@@ -36,7 +36,7 @@ function create ($mysqli, $user, &$scripts) {
     render_prev_button($offset, $limit, $total, $items, $params);
 
     include_once __DIR__.'/renderWallets.php';
-    renderWallets($wallets, $items, $params, $keyword);
+    renderWallets($wallets, $items, $params, $includes);
 
     include_once __DIR__.'/../render_next_button.php';
     render_next_button($offset, $limit, $total, $items, $params);

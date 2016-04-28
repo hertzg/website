@@ -2,13 +2,14 @@
 
 namespace SearchPage;
 
-function renderNotes ($notes, &$items, $params, $keyword) {
+function renderNotes ($notes, &$items, $params, $includes) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
     if ($notes) {
 
-        $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
+        include_once "$fnsDir/keyword_regex.php";
+        $regex = keyword_regex($includes);
 
         include_once "$fnsDir/create_note_link.php";
         foreach ($notes as $note) {

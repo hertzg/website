@@ -2,13 +2,14 @@
 
 namespace SearchPage;
 
-function renderBookmarks ($bookmarks, &$items, $params, $keyword) {
+function renderBookmarks ($bookmarks, &$items, $params, $includes) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
     if ($bookmarks) {
 
-        $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
+        include_once "$fnsDir/keyword_regex.php";
+        $regex = keyword_regex($includes);
 
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
         foreach ($bookmarks as $bookmark) {

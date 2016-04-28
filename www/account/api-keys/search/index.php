@@ -49,7 +49,7 @@ if ($apiKeys) {
     render_prev_button($offset, $limit, $total, $items, $params);
 
     include_once 'fns/render_api_keys.php';
-    render_api_keys($user, $keyword, $apiKeys, $items);
+    render_api_keys($user, $includes, $apiKeys, $items);
 
     include_once '../fns/render_next_button.php';
     render_next_button($offset, $limit, $total, $items, $params);

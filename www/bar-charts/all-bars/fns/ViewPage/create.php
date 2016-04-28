@@ -11,15 +11,15 @@ function create ($bar, &$scripts) {
     include_once "$fnsDir/request_strings.php";
     list($keyword) = request_strings('keyword');
 
-    include_once "$fnsDir/str_collapse_spaces.php";
-    $keyword = str_collapse_spaces($keyword);
+    include_once "$fnsDir/parse_keyword.php";
+    parse_keyword($keyword, $includes, $excludes);
 
-    if ($keyword === '') {
+    if ($includes) {
+        include_once __DIR__.'/markedViewContent.php';
+        $viewContent = markedViewContent($bar, $scripts, $includes);
+    } else {
         include_once __DIR__.'/../../../fns/ViewBarPage/viewContent.php';
         $viewContent = \ViewBarPage\viewContent($bar, $scripts, '../');
-    } else {
-        include_once __DIR__.'/markedViewContent.php';
-        $viewContent = markedViewContent($bar, $scripts, $keyword);
     }
 
     include_once "$fnsDir/ItemList/escapedItemQuery.php";

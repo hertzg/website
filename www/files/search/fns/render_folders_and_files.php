@@ -1,12 +1,14 @@
 <?php
 
-function render_folders_and_files ($folders, $files, &$items, $keyword) {
+function render_folders_and_files ($folders, $files, &$items, $includes) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
     if ($folders || $files) {
 
-        $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
+        include_once "$fnsDir/keyword_regex.php";
+        $regex = keyword_regex($includes);
+
         $replace = '<mark>$0</mark>';
 
         if ($folders) {

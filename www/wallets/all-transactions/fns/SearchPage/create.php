@@ -42,7 +42,7 @@ function create ($mysqli, $user, $wallet, &$scripts) {
     render_prev_button($offset, $limit, $total, $items, $params);
 
     include_once __DIR__.'/renderTransactions.php';
-    renderTransactions($transactions, $items, $keyword);
+    renderTransactions($transactions, $items, $includes);
 
     include_once __DIR__.'/../render_next_button.php';
     render_next_button($offset, $limit, $total, $items, $params);

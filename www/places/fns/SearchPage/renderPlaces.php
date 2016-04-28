@@ -2,13 +2,14 @@
 
 namespace SearchPage;
 
-function renderPlaces ($places, &$items, $params, $keyword) {
+function renderPlaces ($places, &$items, $params, $includes) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
     if ($places) {
 
-        $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
+        include_once "$fnsDir/keyword_regex.php";
+        $regex = keyword_regex($includes);
 
         include_once "$fnsDir/create_place_link.php";
         foreach ($places as $place) {

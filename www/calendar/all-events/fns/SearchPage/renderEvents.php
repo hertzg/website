@@ -2,13 +2,14 @@
 
 namespace SearchPage;
 
-function renderEvents ($events, &$items, $keyword) {
+function renderEvents ($events, &$items, $includes) {
 
     $fnsDir = __DIR__.'/../../../../fns';
 
     if ($events) {
 
-        $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
+        include_once "$fnsDir/keyword_regex.php";
+        $regex = keyword_regex($includes);
 
         include_once "$fnsDir/format_event_time.php";
         include_once "$fnsDir/ItemList/escapedItemQuery.php";

@@ -2,7 +2,7 @@
 
 namespace ViewPage;
 
-function markedViewContent ($event, &$head, &$scripts, $keyword) {
+function markedViewContent ($event, &$head, &$scripts, $includes) {
 
     $fnsDir = __DIR__.'/../../../../fns';
 
@@ -18,7 +18,9 @@ function markedViewContent ($event, &$head, &$scripts, $keyword) {
         $infoText .= "<br />Last modified $author.";
     }
 
-    $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
+    include_once "$fnsDir/keyword_regex.php";
+    $regex = keyword_regex($includes);
+
     $text = htmlspecialchars($event->text);
     $text = preg_replace($regex, '<mark>$0</mark>', $text);
 

@@ -2,13 +2,14 @@
 
 namespace SearchPage;
 
-function renderBarCharts ($bar_charts, &$items, $params, $keyword) {
+function renderBarCharts ($bar_charts, &$items, $params, $includes) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
     if ($bar_charts) {
 
-        $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
+        include_once "$fnsDir/keyword_regex.php";
+        $regex = keyword_regex($includes);
 
         include_once "$fnsDir/create_bar_chart_link.php";
         foreach ($bar_charts as $bar_chart) {

@@ -18,13 +18,14 @@ function create ($calculation, &$scripts) {
         include_once "$fnsDir/request_strings.php";
         list($keyword) = request_strings('keyword');
 
-        include_once "$fnsDir/str_collapse_spaces.php";
-        $keyword = str_collapse_spaces($keyword);
+        include_once "$fnsDir/parse_keyword.php";
+        parse_keyword($keyword, $includes, $excludes);
 
         $title = htmlspecialchars($title);
 
-        if ($keyword !== '') {
-            $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
+        if ($includes) {
+            include_once "$fnsDir/keyword_regex.php";
+            $regex = keyword_regex($includes);
             $title = preg_replace($regex, '<mark>$0</mark>', $title);
         }
 

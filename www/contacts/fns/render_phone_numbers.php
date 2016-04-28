@@ -1,15 +1,14 @@
 <?php
 
-function render_phone_numbers ($contact, &$items, $keyword = '') {
+function render_phone_numbers ($contact, &$items, $regex = null) {
 
     $link_items = [];
-    $render = function ($number, $label) use ($keyword, &$link_items) {
+    $render = function ($number, $label) use ($regex, &$link_items) {
 
         if ($number === '') return;
 
         $title = htmlspecialchars($number);
-        if ($keyword !== '') {
-            $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
+        if ($regex !== null) {
             $title = preg_replace($regex, '<mark>$0</mark>', $title);
         }
         if ($label !== '') {

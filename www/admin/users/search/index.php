@@ -40,7 +40,8 @@ $items = [SearchForm\create('./', $formContent)];
 
 if ($users) {
 
-    $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
+    include_once "$fnsDir/keyword_regex.php";
+    $regex = keyword_regex($includes);
 
     include_once '../fns/render_prev_button.php';
     render_prev_button($offset, $limit, $total, $items, $params);

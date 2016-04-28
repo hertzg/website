@@ -46,7 +46,8 @@ if ($invalidSignins) {
     include_once '../fns/render_prev_button.php';
     render_prev_button($offset, $limit, $total, $items, $params);
 
-    $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
+    include_once "$fnsDir/keyword_regex.php";
+    $regex = keyword_regex($includes);
 
     include_once "$fnsDir/create_image_text.php";
     include_once "$fnsDir/export_date_ago.php";

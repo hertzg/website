@@ -2,13 +2,14 @@
 
 namespace SearchPage;
 
-function renderTransactions ($transactions, &$items, $keyword) {
+function renderTransactions ($transactions, &$items, $includes) {
 
     $fnsDir = __DIR__.'/../../../../fns';
 
     if ($transactions) {
 
-        $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
+        include_once "$fnsDir/keyword_regex.php";
+        $regex = keyword_regex($includes);
 
         include_once "$fnsDir/amount_html.php";
         include_once "$fnsDir/export_date_ago.php";

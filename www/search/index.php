@@ -87,8 +87,9 @@ if ($num_bar_charts || $num_bookmarks || $num_calculations ||
     $resultItems = create_items($bar_charts, $num_bar_charts,
         $bookmarks, $num_bookmarks, $calculations, $num_calculations,
         $contacts, $num_contacts, $files, $num_files, $folders,
-        $num_folders, $notes, $num_notes, $places, $num_places, $tasks,
-        $num_tasks, $wallets, $num_wallets, $keyword, $user, $groupLimit);
+        $num_folders, $notes, $num_notes, $places, $num_places,
+        $tasks, $num_tasks, $wallets, $num_wallets,
+        $keyword, $includes, $user, $groupLimit);
 
     $offset = abs((int)$offset);
     $total = count($resultItems);

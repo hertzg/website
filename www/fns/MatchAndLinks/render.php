@@ -2,10 +2,9 @@
 
 namespace MatchAndLinks;
 
-function render ($base, $text, $keyword) {
+function render ($base, $text, $includes) {
 
     $text = htmlspecialchars($text);
-    $keyword = htmlspecialchars($keyword);
 
     $match = function ($regex, $callback) use ($text) {
         $flags = PREG_OFFSET_CAPTURE | PREG_SET_ORDER;
@@ -32,7 +31,9 @@ function render ($base, $text, $keyword) {
         ];
     });
 
-    $regex = '/'.preg_quote($keyword, '/').'/i';
+    include_once __DIR__.'/../keyword_regex.php';
+    $regex = keyword_regex($includes);
+
     $match($regex, function ($value, $start, $end) use (&$parts) {
         $parts[] = [
             'type' => 'keywordStart',

@@ -1,13 +1,14 @@
 <?php
 
-function render_api_keys ($user, $keyword, $apiKeys, &$items) {
+function render_api_keys ($user, $includes, $apiKeys, &$items) {
 
     $fnsDir = __DIR__.'/../../../../fns';
 
     include_once "$fnsDir/user_time_today.php";
     $time_today = user_time_today($user);
 
-    $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
+    include_once "$fnsDir/keyword_regex.php";
+    $regex = keyword_regex($includes);
 
     include_once "$fnsDir/ItemList/escapedItemQuery.php";
     include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";

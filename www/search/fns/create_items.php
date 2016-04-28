@@ -3,10 +3,13 @@
 function create_items ($bar_charts, $num_bar_charts,
     $bookmarks, $num_bookmarks, $calculations, $num_calculations,
     $contacts, $num_contacts, $files, $num_files, $folders,
-    $num_folders, $notes, $num_notes, $places, $num_places, $tasks,
-    $num_tasks, $wallets, $num_wallets, $keyword, $user, $groupLimit) {
+    $num_folders, $notes, $num_notes, $places, $num_places,
+    $tasks, $num_tasks, $wallets, $num_wallets,
+    $keyword, $includes, $user, $groupLimit) {
 
-    $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
+    include_once __DIR__.'/../../fns/keyword_regex.php';
+    $regex = keyword_regex($includes);
+
     $encodedKeyword = rawurlencode($keyword);
 
     $items = [];

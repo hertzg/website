@@ -2,13 +2,14 @@
 
 namespace SearchPage;
 
-function renderTasks ($tasks, &$items, $params, $keyword, $user) {
+function renderTasks ($tasks, &$items, $params, $includes, $user) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
     if ($tasks) {
 
-        $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
+        include_once "$fnsDir/keyword_regex.php";
+        $regex = keyword_regex($includes);
 
         include_once "$fnsDir/user_time_today.php";
         $time_today = user_time_today($user);

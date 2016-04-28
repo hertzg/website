@@ -2,13 +2,14 @@
 
 namespace SearchPage;
 
-function renderCalculations ($calculations, &$items, $params, $keyword) {
+function renderCalculations ($calculations, &$items, $params, $includes) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
     if ($calculations) {
 
-        $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
+        include_once "$fnsDir/keyword_regex.php";
+        $regex = keyword_regex($includes);
 
         include_once "$fnsDir/create_calculation_link.php";
         foreach ($calculations as $calculation) {

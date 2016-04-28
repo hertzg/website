@@ -2,13 +2,14 @@
 
 namespace SearchPage;
 
-function renderBars ($bars, &$items, $keyword) {
+function renderBars ($bars, &$items, $includes) {
 
     $fnsDir = __DIR__.'/../../../../fns';
 
     if ($bars) {
 
-        $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
+        include_once "$fnsDir/keyword_regex.php";
+        $regex = keyword_regex($includes);
 
         include_once "$fnsDir/ItemList/escapedItemQuery.php";
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";

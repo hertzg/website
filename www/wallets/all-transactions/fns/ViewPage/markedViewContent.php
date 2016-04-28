@@ -2,7 +2,7 @@
 
 namespace ViewPage;
 
-function markedViewContent ($transaction, &$scripts, $keyword) {
+function markedViewContent ($transaction, &$scripts, $includes) {
 
     $fnsDir = __DIR__.'/../../../../fns';
 
@@ -19,7 +19,9 @@ function markedViewContent ($transaction, &$scripts, $keyword) {
         $infoText .= "<br />Last modified $author.";
     }
 
-    $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
+    include_once "$fnsDir/keyword_regex.php";
+    $regex = keyword_regex($includes);
+
     $description = htmlspecialchars($transaction->description);
     $description = preg_replace($regex, '<mark>$0</mark>', $description);
 

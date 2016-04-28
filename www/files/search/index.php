@@ -48,7 +48,7 @@ include_once 'fns/create_search_form.php';
 $items[] = create_search_form($id_folders, $keyword, $deep);
 
 include_once 'fns/render_folders_and_files.php';
-render_folders_and_files($folders, $files, $items, $keyword);
+render_folders_and_files($folders, $files, $items, $includes);
 
 if (!$deep) {
 

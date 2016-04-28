@@ -1,15 +1,14 @@
 <?php
 
-function render_emails ($contact, &$items, $keyword = '') {
+function render_emails ($contact, &$items, $regex = null) {
 
     $link_items = [];
-    $render = function ($email, $label) use ($keyword, &$link_items) {
+    $render = function ($email, $label) use ($regex, &$link_items) {
 
         if ($email === '') return;
 
         $title = $escapedEmail = htmlspecialchars($email);
-        if ($keyword !== '') {
-            $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
+        if ($regex !== null) {
             $title = preg_replace($regex, '<mark>$0</mark>', $title);
         }
         if ($label !== '') {

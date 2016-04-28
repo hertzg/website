@@ -2,13 +2,14 @@
 
 namespace SearchPage;
 
-function renderSchedules ($schedules, &$items, $params, $keyword, $user) {
+function renderSchedules ($schedules, &$items, $params, $includes, $user) {
 
     $fnsDir = __DIR__.'/../../../fns';
 
     if ($schedules) {
 
-        $regex = '/('.preg_quote(htmlspecialchars($keyword), '/').')+/i';
+        include_once "$fnsDir/keyword_regex.php";
+        $regex = keyword_regex($includes);
 
         include_once "$fnsDir/format_days_left.php";
         include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
