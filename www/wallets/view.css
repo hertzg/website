@@ -37,6 +37,6 @@
     bottom: 0;
     left: 50%;
     border-radius: 0 2.5px 2.5px 0;
-    background-color: hsl(120, 90%, 45%);
-    border-bottom: 2px solid hsl(120, 90%, 40%);
+    background-color: hsl(120, 80%, 45%);
+    border-bottom: 2px solid hsl(120, 80%, 40%);
 }

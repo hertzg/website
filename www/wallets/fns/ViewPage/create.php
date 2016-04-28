@@ -13,7 +13,7 @@ function create ($mysqli, $user, $wallet, &$scripts, &$head) {
     include_once "$fnsDir/compressed_js_script.php";
     $scripts = compressed_js_script('dateAgo', $base);
 
-    $head = '<link rel="stylesheet" type="text/css" href="../view.css?1" />';
+    $head = '<link rel="stylesheet" type="text/css" href="../view.css?2" />';
 
     include_once "$fnsDir/request_strings.php";
     list($keyword) = request_strings('keyword');
