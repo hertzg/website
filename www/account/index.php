@@ -39,10 +39,6 @@ include_once "$fnsDir/Theme/Color/index.php";
 $items[] = Form\label('Theme', Theme\Color\index()[$user->theme_color]
     .' - '.Theme\Brightness\index()[$user->theme_brightness]['title']);
 
-include_once "$fnsDir/export_date_ago.php";
-$value = export_date_ago($user->insert_time, true);
-$items[] = Form\label('Account created', $value);
-
 include_once "$fnsDir/bytestr.php";
 $items[] = Form\label('Using storage', bytestr($user->storage_used));
 
@@ -53,7 +49,9 @@ include_once 'fns/create_api_keys_link.php';
 include_once 'fns/create_connections_link.php';
 include_once 'fns/create_tokens_link.php';
 include_once 'fns/create_options_panel.php';
+include_once "$fnsDir/export_date_ago.php";
 include_once "$fnsDir/Page/create.php";
+include_once "$fnsDir/Page/infoText.php";
 include_once "$fnsDir/Page/sessionMessages.php";
 include_once "$fnsDir/Page/thumbnailLink.php";
 include_once "$fnsDir/Page/thumbnails.php";
@@ -75,6 +73,8 @@ $content =
         ])
         .'<div class="hr"></div>'
         .join('<div class="hr"></div>', $items)
+        .Page\infoText('Account created '
+            .export_date_ago($user->insert_time, true).'.')
     )
     .create_options_panel($user);
 
