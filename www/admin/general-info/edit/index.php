@@ -35,6 +35,7 @@ $focus = $values['focus'];
 
 include_once "$fnsDir/Form/button.php";
 include_once "$fnsDir/Form/checkbox.php";
+include_once "$fnsDir/Form/notes.php";
 include_once "$fnsDir/Form/select.php";
 include_once "$fnsDir/Form/textfield.php";
 include_once "$fnsDir/NumReverseProxies/available.php";
@@ -75,6 +76,10 @@ $content = Page\create(
         .Form\select('numReverseProxies', 'Reverse proxies / your IP',
             NumReverseProxies\available(), $values['numReverseProxies'],
             $focus === 'numReverseProxies')
+        .Form\notes([
+            'The number of reverse proxy servers that the Zvini instance'
+            .' is behind and your IP address detected by that configuration.',
+        ])
         .'<div class="hr"></div>'
         .Form\checkbox('https', 'Uses HTTPS', $values['https'])
         .'<div class="hr"></div>'

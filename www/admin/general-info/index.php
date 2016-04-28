@@ -34,6 +34,7 @@ if ($client_address === false) {
 include_once "$fnsDir/Page/panel.php";
 include_once "$fnsDir/DomainName/get.php";
 include_once "$fnsDir/Form/label.php";
+include_once "$fnsDir/Form/notes.php";
 include_once "$fnsDir/InfoEmail/get.php";
 include_once "$fnsDir/NumReverseProxies/get.php";
 include_once "$fnsDir/Page/create.php";
@@ -57,13 +58,17 @@ $content =
         .'<div class="hr"></div>'
         .Form\label('Website path', htmlspecialchars(SiteBase\get()))
         .'<div class="hr"></div>'
+        .Form\label('Reverse proxies / your IP',
+            NumReverseProxies\get()." / $yourIp")
+        .Form\notes([
+            'The number of reverse proxy servers that the Zvini instance'
+            .' is behind and your IP address detected by that configuration.',
+        ])
+        .'<div class="hr"></div>'
         .Form\label('Uses HTTPS', $https)
         .'<div class="hr"></div>'
         .Form\label('Anyone can create an account',
             SignUpEnabled\get() ? 'Yes' : 'No')
-        .'<div class="hr"></div>'
-        .Form\label('Reverse proxies / your IP',
-            NumReverseProxies\get()." / $yourIp")
     )
     .Page\panel('Options', $editLink);
 

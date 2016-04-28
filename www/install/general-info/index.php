@@ -89,6 +89,13 @@ echo_page(
                 .' id="numReverseProxiesInput" name="numReverseProxies">'
                     .$options
                 .'</select>'
+                .'<div class="notes">'
+                    .'<div class="notes-note">'
+                        .'&bull; The number of reverse proxy servers that'
+                        .' the Zvini instance is behind and your IP '
+                        .' address detected by that configuration.'
+                    .'</div>'
+                .'</div>'
             .'</div>'
             .'<div >'
                 .'<input type="checkbox" name="https" id="httpsInput"'
