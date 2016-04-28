@@ -55,3 +55,7 @@ visual_assert('a - b', ['a', '-', 'b'], []);
 visual_assert('a  -  b', ['a', '-', 'b'], []);
 visual_assert('a  -', ['a', '-'], []);
 visual_assert('-  a', ['-', 'a'], []);
+visual_assert('a a', ['a'], []);
+visual_assert('- -', ['-'], []);
+visual_assert('"a b" "a b" "c d"', ['a b', 'c d'], []);
+visual_assert('1 1 2 2', ['1', '2'], []);

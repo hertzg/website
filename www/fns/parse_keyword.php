@@ -37,7 +37,7 @@ function parse_keyword ($keyword, &$includes, &$excludes) {
                 $term .= $char;
             }
         }
-        $target_array[] = $term;
+        $target_array[$term] = $term;
     };
 
     while ($index < $length) {
@@ -49,12 +49,12 @@ function parse_keyword ($keyword, &$includes, &$excludes) {
         } elseif ($char === '-') {
             $index++;
             if ($index === $length) {
-                $includes[] = '-';
+                $includes['-'] = '-';
                 break;
             }
             $char = mb_substr($keyword, $index, 1, 'UTF-8');
             if ($char === ' ') {
-                $includes[] = '-';
+                $includes['-'] = '-';
                 $index++;
             } else {
                 $read_term($excludes);
@@ -63,5 +63,8 @@ function parse_keyword ($keyword, &$includes, &$excludes) {
             $read_term($includes);
         }
     }
+
+    $includes = array_values($includes);
+    $excludes = array_values($excludes);
 
 }
