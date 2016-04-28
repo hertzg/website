@@ -28,6 +28,7 @@ function get_values () {
         'siteBase' => $siteBase,
         'numReverseProxies' => 0,
         'https' => array_key_exists('HTTPS', $_SERVER),
+        'signupEnabled' => true,
         'check' => false,
     ];
 

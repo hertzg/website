@@ -42,6 +42,9 @@ NumReverseProxies\set($generalInfoValues['numReverseProxies']);
 include_once "$fnsDir/SiteProtocol/set.php";
 SiteProtocol\set($siteProtocol);
 
+include_once "$fnsDir/SignUpEnabled/set.php";
+SignUpEnabled\set($generalInfoValues['signupEnabled']);
+
 include_once "$fnsDir/write_crontab.php";
 write_crontab();
 
