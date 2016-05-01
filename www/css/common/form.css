@@ -70,7 +70,6 @@
 .form-textfield,
 .form-textarea {
     border: 2px solid transparent;
-    border-radius: 2px;
 }
 .form-textfield:-moz-ui-invalid,
 .form-textarea:-moz-ui-invalid {

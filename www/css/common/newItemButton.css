@@ -9,7 +9,6 @@
     padding-left: 32px;
     border-width: 2px;
     border-style: solid;
-    border-radius: 2px;
     font-weight: bold;
 }
 .newItemButton:focus {

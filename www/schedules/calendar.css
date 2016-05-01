@@ -36,7 +36,6 @@
     width: 32px;
     border: 2px solid #aaa;
     line-height: 28px;
-    border-radius: 16px;
 }
 .calendar-day-busyRing.offmonth {
     border-color: rgba(127, 127, 127, 0.3);
