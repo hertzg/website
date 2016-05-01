@@ -1,0 +1,20 @@
+.form-button.green {
+    background-color: hsl(120, 80%, 40%);
+}
+
+.form-button-button {
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+    line-height: 44px;
+    height: 48px;
+    border: 2px solid transparent;
+    width: 100%;
+}
+.form-button-button.green {
+    color: white;
+}
+.form-button-button.not_green {
+    color: hsl(120, 80%, 40%);
+    border-color: hsl(120, 80%, 40%);
+}

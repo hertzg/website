@@ -38,12 +38,14 @@ function build_common_css ($r, $g, $b, $mark_r, $mark_g, $mark_b) {
         .'.a,'
         .'.tab-active,'
         .'.form-property,'
+        .'.form-button-button.not_green:focus,'
         .'.page_tabs-tab.selected,'
         .'.panel-title-text {'
             ."color: #$rgb;"
         .'}'
         .'.a:focus,'
         .'.tag.active,'
+        .'.form-button-button:focus,'
         .'.clickable.target,'
         .'.clickable:target {'
             ."background-color: rgba($r, $g, $b, 0.2);"
@@ -51,11 +53,13 @@ function build_common_css ($r, $g, $b, $mark_r, $mark_g, $mark_b) {
         .'#tbar,'
         .'.tag.active,'
         .'.panel-title,'
+        .'.form-button-button:focus,'
         .'.page_tabs-tab.selected {'
             ."border-color: #$rgb;"
         .'}'
         .'.clickable.active,'
         .'.clickable:active,'
+        .'.form-button-button:active,'
         .'.newItemButton.not_green:active,'
         .'.topLink:active {'
             ."background-color: #$rgb;"
@@ -70,6 +74,9 @@ function build_common_css ($r, $g, $b, $mark_r, $mark_g, $mark_b) {
         .'}'
         .'.progressBar {'
             ."background-color: #$rgb;"
+        .'}'
+        .'.form-button-button.not_green:active {'
+            .'color: white;'
         .'}';
 
     file_put_contents('common.css', $content);

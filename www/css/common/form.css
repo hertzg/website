@@ -30,14 +30,6 @@
     width: 100%;
 }
 
-.form-button {
-    text-align: center;
-    cursor: pointer;
-    font-weight: bold;
-    line-height: 44px;
-    height: 48px;
-}
-
 .form-label {
     padding: 15px 16px;
     line-height: 18px;
@@ -76,8 +68,7 @@
 }
 
 .form-textfield,
-.form-textarea,
-.form-button {
+.form-textarea {
     border: 2px solid transparent;
     border-radius: 2px;
 }
