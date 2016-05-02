@@ -11,11 +11,13 @@ function searchPageOnUser ($mysqli, $id_users,
     $fromWhere = "from signins where id_users = $id_users";
     foreach ($includes as $include) {
         $include = $mysqli->real_escape_string(escape_like($include));
-        $fromWhere .= " and remote_address like '%$include%'";
+        $fromWhere .= " and (remote_address like '%$include%'"
+            ." or user_agent like '%$include%')";
     }
     foreach ($excludes as $exclude) {
         $exclude = $mysqli->real_escape_string(escape_like($exclude));
-        $fromWhere .= " and remote_address not like '%$exclude%'";
+        $fromWhere .= " and remote_address not like '%$exclude%'"
+            ." and (user_agent is null or user_agent not like '%$exclude%')";
     }
 
     $sql = "select count(*) total $fromWhere";
