@@ -8,9 +8,9 @@ function renderRecipientsPanel ($recipients, $params, $base = '') {
     if ($params) $sendHref .= '?'.htmlspecialchars(http_build_query($params));
 
     include_once __DIR__.'/renderRecipientsList.php';
-    include_once __DIR__.'/../Page/buttonLink.php';
+    include_once __DIR__.'/../Form/linkButton.php';
     return
         renderRecipientsList($recipients, $params, $base)
-        .\Page\buttonLink('Send', $sendHref);
+        .\Form\linkButton('Send', $sendHref, true);
 
 }

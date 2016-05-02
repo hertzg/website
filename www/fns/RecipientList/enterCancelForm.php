@@ -17,8 +17,8 @@ function enterCancelForm ($username, $params) {
     }
 
     include_once "$fnsDir/Form/button.php";
+    include_once "$fnsDir/Form/linkButton.php";
     include_once "$fnsDir/Form/textfield.php";
-    include_once "$fnsDir/Page/buttonLink.php";
     include_once "$fnsDir/Page/staticTwoColumns.php";
     include_once "$fnsDir/UsernameAddress/maxLength.php";
     return
@@ -31,7 +31,7 @@ function enterCancelForm ($username, $params) {
             ])
             .\Page\staticTwoColumns(
                 \Form\button('Add Recipient'),
-                \Page\buttonLink('Cancel', $cancelHref)
+                \Form\linkButton('Cancel', $cancelHref, false)
             )
             .$hiddens
         .'</form>';
