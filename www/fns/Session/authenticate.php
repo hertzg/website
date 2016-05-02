@@ -37,7 +37,8 @@ function authenticate ($mysqli, $username,
         \Users\signIn($mysqli, $id_users, $client_address);
 
         include_once "$fnsDir/Signins/add.php";
-        \Signins\add($mysqli, $id_users, $client_address);
+        include_once "$fnsDir/UserAgent/get.php";
+        \Signins\add($mysqli, $id_users, $client_address, \UserAgent\get());
 
         if ($remember) {
             include_once __DIR__.'/remember.php';
