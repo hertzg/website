@@ -7,6 +7,6 @@ function column () {
         'type' => 'varchar(1024)',
         'nullable' => true,
         'characterSet' => 'ascii',
-        'collation' => 'ascii_bin',
+        'collation' => 'ascii_general_ci',
     ];
 }
