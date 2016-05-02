@@ -66,12 +66,8 @@ function signed_user () {
                 $token = $_SESSION['token'];
                 $access_time = $token->access_time;
 
-                $key = 'HTTP_USER_AGENT';
-                if (array_key_exists($key, $_SERVER)) {
-                    $user_agent = $_SERVER[$key];
-                } else {
-                    $user_agent = null;
-                }
+                include_once __DIR__.'/UserAgent/get.php';
+                $user_agent = UserAgent\get();
 
                 if ($access_time === null || $access_time + 30 < $time ||
                     $token->access_remote_address !== $client_address ||

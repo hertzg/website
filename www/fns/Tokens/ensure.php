@@ -10,6 +10,7 @@ function ensure ($mysqli) {
     $fnsDir = __DIR__.'/..';
 
     include_once "$fnsDir/IPAddress/column.php";
+    include_once "$fnsDir/UserAgent/column.php";
     include_once "$fnsDir/Username/column.php";
     include_once "$fnsDir/Table/ensure.php";
     return \Table\ensure($mysqli, 'tokens', [
@@ -23,12 +24,7 @@ function ensure ($mysqli) {
         'insert_time' => ['type' => 'bigint(20) unsigned'],
         'token_text' => ['type' => "binary($maxLengths[token_text])"],
         'username' => \Username\column(),
-        'user_agent' => [
-            'type' => 'varchar(1024)',
-            'nullable' => true,
-            'characterSet' => 'ascii',
-            'collation' => 'ascii_bin',
-        ],
+        'user_agent' => \UserAgent\column(),
     ]);
 
 }

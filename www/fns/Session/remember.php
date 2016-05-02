@@ -11,14 +11,11 @@ function remember ($mysqli, $user) {
 
     $token_text = openssl_random_pseudo_bytes($maxLengths['token_text']);
 
-    $key = 'HTTP_USER_AGENT';
-    if (array_key_exists($key, $_SERVER)) $user_agent = $_SERVER[$key];
-    else $user_agent = null;
-
     include_once "$fnsDir/get_client_address.php";
+    include_once "$fnsDir/UserAgent/get.php";
     include_once "$fnsDir/Users/Tokens/add.php";
     $id = \Users\Tokens\add($mysqli, $user->id_users,
-        $user->username, $token_text, get_client_address(), $user_agent);
+        $user->username, $token_text, get_client_address(), \UserAgent\get());
 
     include_once "$fnsDir/Tokens/get.php";
     $token = \Tokens\get($mysqli, $id);
