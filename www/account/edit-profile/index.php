@@ -66,7 +66,6 @@ $content = Page\create(
         ])
         .'<div class="hr"></div>'
         .Form\timezoneSelect('timezone', 'Timezone', $values['timezone'])
-        .'<div class="hr"></div>'
         .Form\button('Save Changes')
     .'</form>'
 );

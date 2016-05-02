@@ -20,7 +20,6 @@ function create_content ($id, $values, &$scripts) {
         Page\sessionErrors('contacts/edit/errors')
         .'<form action="submit.php" method="post">'
             .create_form_items($values, $scripts)
-            .'<div class="hr"></div>'
             .Page\staticTwoColumns(
                 Form\button('Save Changes'),
                 Form\button('Send', 'sendButton')

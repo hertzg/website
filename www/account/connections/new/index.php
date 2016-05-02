@@ -45,7 +45,6 @@ $content = Page\create(
     Page\sessionErrors('account/connections/new/errors')
     .'<form action="submit.php" method="post">'
         .create_form_items($values, $scripts)
-        .'<div class="hr"></div>'
         .Form\button('Save Connection')
     .'</form>'
 );

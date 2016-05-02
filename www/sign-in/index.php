@@ -64,7 +64,6 @@ $content =
             ])
             .'<div class="hr"></div>'
             .Form\checkbox('remember', 'Stay signed in', $values['remember'])
-            .'<div class="hr"></div>'
             .Form\button('Sign In', null, $focus === 'button')
             .Form\hidden('return', $return)
             .Page\phishingWarning()

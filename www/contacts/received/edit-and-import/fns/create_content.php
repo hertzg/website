@@ -21,7 +21,6 @@ function create_content ($id, $values, &$scripts) {
         Page\sessionErrors('contacts/received/edit-and-import/errors')
         .'<form action="submit.php" method="post">'
             .create_form_items($values, $scripts, '../')
-            .'<div class="hr"></div>'
             .Form\button('Import Contact')
             .ItemList\Received\itemHiddenInputs($id)
         .'</form>'

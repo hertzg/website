@@ -41,7 +41,6 @@ $content = Page\create(
     .'<form action="submit.php" method="post">'
         .create_general_fields($values)
         .create_permission_fields($values)
-        .'<div class="hr"></div>'
         .Form\button('Generate Admin API Key')
         .ItemList\pageHiddenInputs()
     .'</form>'

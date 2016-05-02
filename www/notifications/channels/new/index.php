@@ -38,7 +38,6 @@ $content = Page\create(
     Page\sessionErrors('notifications/channels/new/errors')
     .'<form action="submit.php" method="post">'
         .create_form_items($values, $scripts)
-        .'<div class="hr"></div>'
         .Form\button('Create')
     .'</form>'
 );

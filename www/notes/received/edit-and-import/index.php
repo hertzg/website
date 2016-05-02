@@ -42,7 +42,6 @@ $content = Page\create(
     Page\sessionErrors('notes/received/edit-and-import/errors')
     .'<form action="submit.php" method="post">'
         .create_form_items($values, $scripts, '../')
-        .'<div class="hr"></div>'
         .Form\button('Import Note')
         .ItemList\Received\itemHiddenInputs($id)
     .'</form>'

@@ -40,7 +40,6 @@ $content = Page\create(
     Page\sessionErrors('bar-charts/new/errors')
     .'<form action="submit.php" method="post">'
         .create_form_items($values)
-        .'<div class="hr"></div>'
         .Form\button('Save Bar Chart')
         .ItemList\pageHiddenInputs()
     .'</form>'

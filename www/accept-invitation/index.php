@@ -72,7 +72,6 @@ $content = Page\create(
             'autofocus' => $focus === 'email',
         ])
         .Form\notes(['Optional. Used for password recovery.'])
-        .'<div class="hr"></div>'
         .Form\button('Create an Account')
         ."<input type=\"hidden\" name=\"id\" value=\"$id\" />"
         .'<input type="hidden" name="key" value="'.bin2hex($key).'" />'

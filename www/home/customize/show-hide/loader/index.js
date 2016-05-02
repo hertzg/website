@@ -25,7 +25,11 @@
                     var user = response.user,
                         items = response.homeItems
 
+                    var first = false
                     for (var key in items) {
+
+                        if (first) first = false
+                        else ui.Hr(form)
 
                         var item = items[key],
                             propertyPart = item[1],
@@ -33,7 +37,6 @@
 
                         ui.Form_checkboxItem(form, propertyPart,
                             item[0], user[userProperty] === true)
-                        ui.Hr(form)
 
                     }
 

@@ -37,7 +37,6 @@ $content = Page\create(
             'autofocus' => true,
             'required' => true,
         ])
-        .'<div class="hr"></div>'
         .Form\button('Close Account')
         .Page\phishingWarning()
     .'</form>'

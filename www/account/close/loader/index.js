@@ -24,7 +24,6 @@
                         autofocus: true,
                         required: true,
                     })
-                    ui.Hr(form)
                     ui.Form_button(form, 'Close Account')
                     ui.Page_phishingWarning(form, response.absoluteBase)
 

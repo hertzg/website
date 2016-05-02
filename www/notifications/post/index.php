@@ -56,7 +56,6 @@ $content = Page\create(
             'required' => true,
             'autofocus' => $focus === 'text',
         ])
-        .'<div class="hr"></div>'
         .Form\button('Post a Notification')
     .'</form>'
 );

@@ -34,7 +34,6 @@ $content = Page\create(
             'required' => true,
             'autofocus' => true,
         ])
-        .'<div class="hr"></div>'
         .Form\button('Add User')
         ."<input type=\"hidden\" name=\"id\" value=\"$id\" />"
     .'</form>'

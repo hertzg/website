@@ -31,7 +31,6 @@ $content = Page\create(
     Page\sessionErrors('files/rename-file/errors')
     .'<form action="submit.php" method="post">'
         .create_file_form_items($values)
-        .'<div class="hr"></div>'
         .Page\staticTwoColumns(
             Form\button('Rename'),
             Form\button('Send', 'sendButton')

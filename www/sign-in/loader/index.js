@@ -51,7 +51,6 @@
                     ui.Hr(form)
                     ui.Form_checkbox(form, 'remember',
                         'Stay signed in', values.remember)
-                    ui.Hr(form)
                     ui.Form_button(form, 'Sign In')
                     ui.Form_hidden(form, 'return', returnVar)
                     ui.Page_phishingWarning(form, response.absoluteBase)

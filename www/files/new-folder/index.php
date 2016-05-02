@@ -36,7 +36,6 @@ $content = Page\create(
     .Page\sessionErrors('files/new-folder/errors')
     .'<form action="submit.php" method="post">'
         .create_folder_form_items($values)
-        .'<div class="hr"></div>'
         .Form\button('Create')
         .Form\hidden('parent_id', $parent_id)
     .'</form>'

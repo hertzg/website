@@ -33,7 +33,6 @@ $content = Page\create(
     Page\sessionErrors('notifications/channels/edit/errors')
     .'<form action="submit.php" method="post">'
         .create_form_items($values, $scripts)
-        .'<div class="hr"></div>'
         .Form\button('Save Channel')
         ."<input type=\"hidden\" name=\"id\" value=\"$id\" />"
     .'</form>'

@@ -21,7 +21,6 @@ function captcha ($base, $autofocus = false) {
         .notes([
             'Enter the characters shown on the image above.',
             'This proves that you are a human and not a robot.',
-        ])
-        .'<div class="hr"></div>';
+        ]);
 
 }

@@ -45,7 +45,6 @@ $content = Page\create(
         .Form\filefield('file2[]', 'File 2', ['multiple' => true])
         .'<div class="hr"></div>'
         .Form\filefield('file3[]', 'File 3', ['multiple' => true])
-        .'<div class="hr"></div>'
         .'<div id="uploadButton">'
             .Form\button('Upload')
         .'</div>'

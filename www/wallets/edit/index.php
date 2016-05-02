@@ -32,7 +32,6 @@ $content = Page\create(
     Page\sessionErrors('wallets/edit/errors')
     .'<form action="submit.php" method="post">'
         .create_form_items($values)
-        .'<div class="hr"></div>'
         .Form\button('Save Changes')
         .ItemList\itemHiddenInputs($id)
     .'</form>'

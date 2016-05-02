@@ -56,7 +56,6 @@ $content = Page\create(
             'Select a day',
             true
         )
-        .'<div class="hr"></div>'
         .Form\button('Jump To')
     .'</form>'
 );

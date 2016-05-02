@@ -51,7 +51,6 @@ $content = Page\create(
             'Characters a-z, A-Z, 0-9, dash, dot and underscore only.',
             'Minimum '.Username\minLength().' characters.',
         ])
-        .'<div class="hr"></div>'
         .Form\button('Save Changes', null, $focus === 'button')
     .'</form>'
 );

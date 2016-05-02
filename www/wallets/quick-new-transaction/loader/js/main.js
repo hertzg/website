@@ -33,7 +33,6 @@
                         value: values.description,
                         maxlength: response.maxLengths.description,
                     })
-                    ui.Hr(form)
                     ui.Form_button(form, 'Save Transaction')
                     ui.ItemList_pageHiddenInputs(form, response.itemList)
 

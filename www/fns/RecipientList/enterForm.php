@@ -21,7 +21,6 @@ function enterForm ($username, $params, $autofocus, $base = '') {
                 'required' => true,
                 'autofocus' => $autofocus,
             ])
-            .'<div class="hr"></div>'
             .\Form\button('Add Recipient')
             .$hiddens
         .'</form>';

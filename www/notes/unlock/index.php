@@ -36,7 +36,6 @@ $content = Page\create(
         ])
         .Form\notes(['The authentication will last for '
             .Session\EncryptionKey\minutes().' minutes.'])
-        .'<div class="hr"></div>'
         .Form\button('Unlock Note')
         .Page\phishingWarning()
         .ItemList\itemHiddenInputs($id)

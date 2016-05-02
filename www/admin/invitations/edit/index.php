@@ -21,7 +21,6 @@ $content = Page\create(
     'Edit',
     '<form action="submit.php" method="post">'
         .create_form_items(['note' => $invitation->note])
-        .'<div class="hr"></div>'
         .Form\button('Save Changes')
         ."<input type=\"hidden\" name=\"id\" value=\"$id\" />"
     .'</form>'

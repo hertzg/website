@@ -17,15 +17,18 @@ function create_page ($user, &$head, &$scripts, $base = '') {
     $userHomeItems = get_user_home_items($homeItems, $user);
 
     $content = '';
+    $first = false;
     include_once "$fnsDir/Form/checkboxItem.php";
     foreach ($userHomeItems as $key => $item) {
+
+        if ($first == true) $first = false;
+        else $content .= '<div class="hr"></div>';
 
         $propertyPart = $item[1];
         $userProperty = "show_$propertyPart";
 
-        $content .=
-            Form\checkboxItem($propertyPart, $item[0], $user->$userProperty)
-            .'<div class="hr"></div>';
+        $content .= Form\checkboxItem($propertyPart,
+            $item[0], $user->$userProperty);
 
     }
 

@@ -55,7 +55,6 @@ $content = Page\create(
             'value' => $values['description'],
             'maxlength' => $maxLengths['description'],
         ])
-        .'<div class="hr"></div>'
         .Form\button('Save Transaction')
         .ItemList\pageHiddenInputs()
     .'</form>'

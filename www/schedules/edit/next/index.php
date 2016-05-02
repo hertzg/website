@@ -30,7 +30,6 @@ $content = Page\create(
     .'<div class="hr"></div>'
     .'<form action="submit.php" method="post">'
         .create_offset_select($user, $first_stage['interval'], $days_left)
-        .'<div class="hr"></div>'
         .Page\staticTwoColumns(
             Form\button('Save'),
             Form\button('Send', 'sendButton')

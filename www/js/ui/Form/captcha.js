@@ -19,6 +19,5 @@ function Form_captcha (parentNode, response, base, autofocus) {
         'Enter the characters shown on the image above.',
         'This proves that you are a human and not a robot.',
     ])
-    Hr(parentNode)
 
 }

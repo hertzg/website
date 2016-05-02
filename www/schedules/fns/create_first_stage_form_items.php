@@ -23,7 +23,6 @@ function create_first_stage_form_items ($values) {
         .create_interval_select($values['interval'])
         .'<div class="hr"></div>'
         .Form\tagsField($values['tags'], $focus === 'tags')
-        .'<div class="hr"></div>'
         .Form\button('Next');
 
 }

@@ -53,7 +53,6 @@ $content =
         .$warnings
         .'<form action="submit.php" method="post">'
             .create_form_items($values, $scripts)
-            .'<div class="hr"></div>'
             .Page\staticTwoColumns(
                 Form\button('Save Changes'),
                 Form\button('Send', 'sendButton')

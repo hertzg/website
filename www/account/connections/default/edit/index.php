@@ -27,8 +27,6 @@ render_checkbox_items([
 ], $items);
 
 include_once "$fnsDir/Form/button.php";
-$items[] = Form\button('Save Changes');
-
 include_once "$fnsDir/Page/create.php";
 $content = Page\create(
     [
@@ -38,6 +36,7 @@ $content = Page\create(
     'Edit',
     '<form action="submit.php" method="post">'
         .join('<div class="hr"></div>', $items)
+        .Form\button('Save Changes')
     .'</form>'
 );
 

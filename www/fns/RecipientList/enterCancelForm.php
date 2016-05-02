@@ -29,7 +29,6 @@ function enterCancelForm ($username, $params) {
                 'required' => true,
                 'autofocus' => true,
             ])
-            .'<div class="hr"></div>'
             .\Page\staticTwoColumns(
                 \Form\button('Add Recipient'),
                 \Page\buttonLink('Cancel', $cancelHref)

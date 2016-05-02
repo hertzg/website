@@ -58,7 +58,6 @@ $content = Page\create(
             'value' => $values['db'],
             'required' => true,
         ])
-        .'<div class="hr"></div>'
         .Form\button('Save Settings')
     .'</form>'
 );

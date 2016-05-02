@@ -43,7 +43,6 @@ $content = Page\create(
             'required' => true,
             'autofocus' => true,
         ])
-        .'<div class="hr"></div>'
         .Form\button('Unlock Account')
         .Form\hidden('return', $values['return'])
         .Page\phishingWarning()

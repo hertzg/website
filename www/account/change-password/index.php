@@ -60,7 +60,6 @@ $content = Page\create(
             'autofocus' => $focus === 'repeatPassword',
             'required' => true,
         ])
-        .'<div class="hr"></div>'
         .Form\button('Set Password')
         .Page\phishingWarning()
     .'</form>'

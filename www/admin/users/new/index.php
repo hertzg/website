@@ -67,7 +67,6 @@ $content = Page\create(
         ])
         .'<div class="hr"></div>'
         .create_profile_form_items($values, $scripts)
-        .'<div class="hr"></div>'
         .Form\button('Save User')
         .ItemList\pageHiddenInputs()
     .'</form>'

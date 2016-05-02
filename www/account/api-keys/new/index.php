@@ -52,7 +52,6 @@ $content = Page\create(
     .'<form action="submit.php" method="post">'
         .create_general_fields($values)
         .create_permission_fields($values)
-        .'<div class="hr"></div>'
         .Form\button('Generate Key')
         .ItemList\pageHiddenInputs()
     .'</form>'

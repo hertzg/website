@@ -29,7 +29,6 @@ $content = Page\create(
             'required' => true,
             'accept' => 'image/*',
         ])
-        .'<div class="hr"></div>'
         .Form\button('Upload Photo')
         ."<input type=\"hidden\" name=\"id\" value=\"$id\" />"
     .'</form>'

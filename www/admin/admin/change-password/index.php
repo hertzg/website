@@ -57,7 +57,6 @@ $content = Page\create(
             'required' => true,
             'autofocus' => $focus === 'repeatPassword',
         ])
-        .'<div class="hr"></div>'
         .Form\button('Change Password', null, $focus === 'button')
     .'</form>'
 );

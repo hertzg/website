@@ -29,7 +29,6 @@ $content = Page\create(
     Page\sessionErrors('calendar/edit-event/errors')
     .'<form action="submit.php" method="post">'
         .create_form_items($user, $values, $scripts)
-        .'<div class="hr"></div>'
         .Form\button('Save Changes')
         ."<input type=\"hidden\" name=\"id\" value=\"$id\" />"
     .'</form>'

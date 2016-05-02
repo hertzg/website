@@ -25,7 +25,6 @@ function create_transfer_form_items ($values, $walletOptions) {
             'value' => $values['description'],
             'maxlength' => $maxLengths['description'],
         ])
-        .'<div class="hr"></div>'
         .Form\button('Transfer');
 
 }

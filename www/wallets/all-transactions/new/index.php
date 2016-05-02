@@ -34,7 +34,6 @@ $content =
         Page\sessionErrors('wallets/all-transactions/new/errors')
         .'<form action="submit.php" method="post">'
             .create_transaction_form_items($values)
-            .'<div class="hr"></div>'
             .Form\button('Save Transaction')
             .ItemList\itemHiddenInputs($id)
         .'</form>'

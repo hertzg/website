@@ -45,7 +45,6 @@ $content = Page\create(
         .'<div class="hr"></div>'
         .Form\checkbox('randomizeKey',
             'Randomize our key', $values['randomizeKey'])
-        .'<div class="hr"></div>'
         .Form\button('Save Changes')
         .ItemList\itemHiddenInputs($id)
     .'</form>'

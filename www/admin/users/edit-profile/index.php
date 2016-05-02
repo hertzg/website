@@ -57,7 +57,6 @@ $content = Page\create(
         ])
         .'<div class="hr"></div>'
         .create_profile_form_items($values, $scripts)
-        .'<div class="hr"></div>'
         .Form\button('Save Changes')
         ."<input type=\"hidden\" name=\"id\" value=\"$id\" />"
     .'</form>'

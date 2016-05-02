@@ -35,7 +35,6 @@ $content =
             .' to the avarage of all the points.'])
         .'<form action="submit.php" method="post">'
             .create_point_form_items($values)
-            .'<div class="hr"></div>'
             .Form\button('Save Changes')
             .ItemList\itemHiddenInputs($id)
         .'</form>'

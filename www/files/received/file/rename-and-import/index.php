@@ -29,7 +29,6 @@ $content = Page\create(
     Page\sessionErrors('files/received/file/rename-and-import/errors')
     .'<form action="submit.php" method="post">'
         .create_file_form_items($values)
-        .'<div class="hr"></div>'
         .Form\button('Import File')
         .ItemList\Received\itemHiddenInputs($id)
     .'</form>'

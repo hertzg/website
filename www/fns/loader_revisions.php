@@ -3,21 +3,21 @@
 function loader_revisions () {
     return [
         '' => 4,
-        'account/close/' => 1,
+        'account/close/' => 2,
         'admin/help/' => 5,
         'email-reset-password/' => 2,
         'help/' => 7,
         'help/about-zvini/' => 4,
-        'help/feedback/' => 5,
+        'help/feedback/' => 6,
         'help/install-link-handlers/' => 4,
         'home/' => 10,
         'home/customize/' => 6,
         'home/customize/reorder/' => 11,
         'home/customize/reorder/move/' => 1,
-        'home/customize/show-hide/' => 8,
+        'home/customize/show-hide/' => 9,
         'sign-in/' => 4,
         'sign-up/' => 1,
-        'wallets/quick-new-transaction/' => 10,
-        'wallets/quick-transfer-amount/' => 7,
+        'wallets/quick-new-transaction/' => 11,
+        'wallets/quick-transfer-amount/' => 8,
     ];
 }

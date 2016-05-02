@@ -56,7 +56,6 @@ $content = Page\create(
     Page\sessionErrors('tasks/received/edit-and-import/errors')
     .'<form action="submit.php" method="post">'
         .create_form_items($user, $values, $scripts, '../')
-        .'<div class="hr"></div>'
         .Form\button('Import Task')
         .ItemList\Received\itemHiddenInputs($id)
     .'</form>'

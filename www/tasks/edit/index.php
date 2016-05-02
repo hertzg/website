@@ -51,7 +51,6 @@ $content = Page\create(
     Page\sessionErrors('tasks/edit/errors')
     .'<form action="submit.php" method="post">'
         .create_form_items($user, $values, $scripts)
-        .'<div class="hr"></div>'
         .Page\staticTwoColumns(
             Form\button('Save Changes'),
             Form\button('Send', 'sendButton')

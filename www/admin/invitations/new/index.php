@@ -24,7 +24,6 @@ $content = Page\create(
     'New Invitation',
     '<form action="submit.php" method="post">'
         .create_form_items(['note' => ''])
-        .'<div class="hr"></div>'
         .Form\button('Save Invitation')
     .'</form>'
 );

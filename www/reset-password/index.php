@@ -81,7 +81,6 @@ $content = Page\create(
             'autofocus' => $focus === 'repeatPassword',
             'required' => true,
         ])
-        .'<div class="hr"></div>'
         .Form\button('Reset Password')
         ."<input type=\"hidden\" name=\"id_users\" value=\"$id_users\" />"
         .'<input type="hidden" name="key" value="'.bin2hex($key).'" />'

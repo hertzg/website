@@ -61,7 +61,6 @@ $content = Page\create(
         .Form\checkbox('randomizeKey',
             'Randomize key', $values['randomizeKey'])
         .create_permission_fields($values)
-        .'<div class="hr"></div>'
         .Form\button('Save Changes')
         .ItemList\itemHiddenInputs($id)
     .'</form>'

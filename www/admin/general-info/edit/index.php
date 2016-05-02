@@ -85,7 +85,6 @@ $content = Page\create(
         .'<div class="hr"></div>'
         .Form\checkbox('signupEnabled',
             'Anyone can create an account', $values['signupEnabled'])
-        .'<div class="hr"></div>'
         .Form\button('Save Changes', null, $focus === 'button')
     .'</form>'
 );
