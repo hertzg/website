@@ -23,8 +23,13 @@ function authsPanel ($mysqli, $token, &$scripts) {
                 break;
             }
 
+            $user_agent = $auth->user_agent;
+            if ($user_agent === null) $user_agent_html = '';
+            else $user_agent_html = '<br />'.htmlspecialchars($user_agent);
+
             $text =
                 htmlspecialchars($auth->remote_address)
+                .$user_agent_html
                 .'<div class="imageText-description">'
                     .export_date_ago($auth->insert_time, true)
                 .'</div>';

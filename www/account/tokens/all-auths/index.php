@@ -54,12 +54,20 @@ render_prev_button($offset, $limit, $total, $items, $params);
 include_once "$fnsDir/create_image_text.php";
 include_once "$fnsDir/export_date_ago.php";
 foreach ($auths as $auth) {
+
+    $user_agent = $auth->user_agent;
+    if ($user_agent === null) $user_agent_html = '';
+    else $user_agent_html = '<br />'.htmlspecialchars($user_agent);
+
     $text =
         htmlspecialchars($auth->remote_address)
+        .$user_agent_html
         .'<div class="imageText-description">'
             .export_date_ago($auth->insert_time, true)
         .'</div>';
+
     $items[] = create_image_text($text, 'sign-in');
+
 }
 
 include_once 'fns/render_next_button.php';
