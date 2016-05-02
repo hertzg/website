@@ -32,7 +32,9 @@ function signed_user () {
                 $client_address = get_client_address();
 
                 include_once __DIR__.'/TokenAuths/add.php';
-                TokenAuths\add($mysqli, $token->id, $id_users, $client_address);
+                include_once __DIR__.'/UserAgent/get.php';
+                TokenAuths\add($mysqli, $token->id,
+                    $id_users, $client_address, UserAgent\get());
 
             }
 
