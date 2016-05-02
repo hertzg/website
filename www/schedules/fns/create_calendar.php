@@ -6,7 +6,7 @@ function create_calendar ($user, $schedule, &$head, $base = '') {
     $id = $schedule->id;
 
     $head .= '<link rel="stylesheet" type="text/css"'
-        ." href=\"$base../../calendar.css?1\" />";
+        ." href=\"$base../../calendar.css?2\" />";
 
     include_once "$fnsDir/request_strings.php";
     list($year, $month) = request_strings('year', 'month');
