@@ -1,9 +1,9 @@
 <?php
 
-function require_token ($mysqli) {
+function require_token ($mysqli, $base = '') {
 
     include_once __DIR__.'/../../fns/require_user_with_password.php';
-    $user = require_user_with_password('../../');
+    $user = require_user_with_password("$base../../");
 
     $fnsDir = __DIR__.'/../../../fns';
 
@@ -20,7 +20,7 @@ function require_token ($mysqli) {
         $error = 'The remembered session no longer exists.';
         $_SESSION['account/tokens/errors'] = [$error];
         include_once "$fnsDir/redirect.php";
-        redirect('..');
+        redirect("$base..");
     }
 
     return [$token, $id, $user];

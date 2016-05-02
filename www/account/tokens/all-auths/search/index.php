@@ -4,7 +4,7 @@ include_once '../../../../../lib/defaults.php';
 
 include_once '../../fns/require_token.php';
 include_once '../../../../lib/mysqli.php';
-list($token, $id, $user) = require_token($mysqli);
+list($token, $id, $user) = require_token($mysqli, '../');
 
 include_once '../fns/unset_session_vars.php';
 unset_session_vars();
