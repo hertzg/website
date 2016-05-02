@@ -1,5 +1,5 @@
 .page-tags {
-    padding-top: 8px;
+    padding-top: 6px;
     padding-right: 16px;
     padding-left: 16px;
     line-height: 42px;
@@ -8,6 +8,6 @@
 .page-tags-label {
     display: inline-block;
     vertical-align: top;
-    line-height: 32px;
-    margin-right: 8px;
+    line-height: 36px;
+    margin-right: 6px;
 }
