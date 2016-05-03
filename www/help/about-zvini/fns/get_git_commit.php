@@ -6,7 +6,7 @@ function get_git_commit (&$hash, &$tag, &$date) {
     $hash = htmlspecialchars($lines[0]);
     unset($lines);
 
-    exec('git describe --tags', $lines);
+    exec('git describe', $lines);
     if (count($lines) === 1) $tag = htmlspecialchars($lines[0]);
     else $tag = 'Not available';
     unset($lines);
