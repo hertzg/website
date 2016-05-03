@@ -34,6 +34,7 @@ $content = Page\create(
     [
         'title' => 'Home',
         'href' => '..',
+        'localNavigation' => true,
     ],
     'Accept Invitation',
     Page\sessionErrors('accept-invitation/errors')
