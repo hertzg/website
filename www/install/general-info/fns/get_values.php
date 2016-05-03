@@ -7,7 +7,7 @@ function get_values () {
 
     $key = 'HTTP_HOST';
     if (array_key_exists($key, $_SERVER)) $domainName = $_SERVER[$key];
-    else $domainName = $_SERVER['REMOTE_ADDR'];
+    else $domainName = $_SERVER['SERVER_NAME'];
 
     include_once '../../fns/SiteTitle/get.php';
     $siteTitle = SiteTitle\get();
