@@ -14,8 +14,7 @@ invitation_method_page('list', [], [
             ],
             'key' => [
                 'type' => 'string',
-                'description' =>
-                    'The key of the invitation to create an account.',
+                'description' => 'The key of the invitation to sign up with.',
             ],
             'note' => [
                 'type' => 'string',
