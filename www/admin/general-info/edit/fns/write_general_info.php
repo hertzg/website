@@ -1,7 +1,7 @@
 <?php
 
-function write_general_info ($siteTitle, $domainName,
-    $infoEmail, $siteBase, $numReverseProxies, $https, &$errors) {
+function write_general_info ($siteTitle, $domainName, $infoEmail,
+    $siteBase, $numReverseProxies, $https, $signupEnabled, &$errors) {
 
     $fnsDir = __DIR__.'/../../../../fns';
 
@@ -51,6 +51,13 @@ function write_general_info ($siteTitle, $domainName,
         $errors[] = 'Failed to save whether uses HTTPS or not.';
         $focus = 'button';
         return;
+    }
+
+    include_once "$fnsDir/SignUpEnabled/set.php";
+    $ok = SignUpEnabled\set($signupEnabled);
+    if ($ok === false) {
+        $errors[] = 'Failed to save whether anyone can sign up or not.';
+        $focus = 'button';
     }
 
 }

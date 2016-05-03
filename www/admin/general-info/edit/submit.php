@@ -17,16 +17,7 @@ list($siteTitle, $domainName, $infoEmail, $siteBase, $numReverseProxies,
 if (!$errors) {
     include_once 'fns/write_general_info.php';
     write_general_info($siteTitle, $domainName, $infoEmail,
-        $siteBase, $numReverseProxies, $https, $errors);
-}
-
-if (!$errors) {
-    include_once "$fnsDir/SignUpEnabled/set.php";
-    $ok = SignUpEnabled\set($signupEnabled);
-    if ($ok === false) {
-        $errors[] = 'Failed to save whether anyone can sign up or not.';
-        $focus = 'button';
-    }
+        $siteBase, $numReverseProxies, $https, $signupEnabled, $errors);
 }
 
 include_once "$fnsDir/redirect.php";
