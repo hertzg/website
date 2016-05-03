@@ -23,15 +23,15 @@ include_once "$fnsDir/Form/linkButton.php";
 
 if ($current_version !== $latest_version) {
     include_once "$fnsDir/Page/panel.php";
-    include_once "$fnsDir/Page/warnings.php";
+    include_once "$fnsDir/Page/text.php";
     $updatePanel = Page\panel(
         'Update to the Latest Version',
-        Page\warnings([
+        Page\text(
             'Before you proceed, please, make sure'
             .' the PHP process has full access to'
             .' all the files and folders of the website.'
-        ])
-        .Form\linkButton('Update Software', 'submit-update.php', true)
+        )
+        .Form\linkButton('Update System', 'submit-update.php', true)
     );
 } else {
     $updatePanel = '';
@@ -44,7 +44,7 @@ $content = Page\create(
         'title' => 'Administration',
         'href' => '../#update',
     ],
-    'Software Update',
+    'System Update',
     Form\label('Current version', $current_version)
     .'<div class="hr"></div>'
     .Form\label('Latest version', $latest_version)

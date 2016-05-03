@@ -49,7 +49,7 @@ $content = Page\sessionMessages('admin/messages')
             'check-installation/', 'generic', ['id' => 'check-installation'])
     )
     .'<div class="hr"></div>'
-    .Page\imageArrowLink('Software Update',
+    .Page\imageArrowLink('System Update',
         'update/', 'generic', ['id' => 'update']);
 
 if ($admin_user) {
