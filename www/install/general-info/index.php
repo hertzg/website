@@ -119,6 +119,13 @@ echo_page(
                 .' <label for="autoUpdateEnabledInput">'
                     .'Enable automatic updates.'
                 .'</label>'
+                .'<div class="notes">'
+                    .'<div class="notes-note">'
+                        .'&bull; Before enabling automatic updates,'
+                        .' please, make sure the PHP process has full access'
+                        .' to all the files and folders of the website.'
+                    .'</div>'
+                .'</div>'
             .'</div>'
             .$errorHtml,
             '<input type="submit" class="button nextButton" value="Next" />'

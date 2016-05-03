@@ -90,6 +90,11 @@ $content = Page\create(
         .'<div class="hr"></div>'
         .Form\checkbox('autoUpdateEnabled',
             'Enable automatic updates', $values['autoUpdateEnabled'])
+        .Form\notes([
+            'Before enabling automatic updates, please,'
+            .' make sure the PHP process has full access to'
+            .' all the files and folders of the website.',
+        ])
         .Form\button('Save Changes', null, $focus === 'button')
     .'</form>'
 );
