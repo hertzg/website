@@ -16,7 +16,7 @@ function loader_revisions () {
         'home/customize/reorder/move/' => 1,
         'home/customize/show-hide/' => 9,
         'sign-in/' => 5,
-        'sign-up/' => 1,
+        'sign-up/' => 2,
         'wallets/quick-new-transaction/' => 11,
         'wallets/quick-transfer-amount/' => 8,
     ];

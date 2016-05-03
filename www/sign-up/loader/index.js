@@ -68,7 +68,7 @@
                     ])
                     ui.Hr(form)
                     ui.Form_captcha(form, response, base, focus === 'captcha')
-                    ui.Form_button(form, 'Create an Account')
+                    ui.Form_button(form, 'Sign Up')
                     ui.Form_hidden(form, 'return', returnVar)
 
                 })

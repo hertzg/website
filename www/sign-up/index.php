@@ -85,7 +85,7 @@ $content =
             .Form\notes(['Optional. Used for password recovery.'])
             .'<div class="hr"></div>'
             .Form\captcha($base, $focus === 'captcha')
-            .Form\button('Create an Account')
+            .Form\button('Sign Up')
             .Form\hidden('return', $return)
         .'</form>'
     )
