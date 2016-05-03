@@ -84,7 +84,7 @@ $content = Page\create(
         .Form\checkbox('https', 'Uses HTTPS', $values['https'])
         .'<div class="hr"></div>'
         .Form\checkbox('signupEnabled',
-            'Anyone can create an account', $values['signupEnabled'])
+            'Anyone can sign up', $values['signupEnabled'])
         .Form\button('Save Changes', null, $focus === 'button')
     .'</form>'
 );

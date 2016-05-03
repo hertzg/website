@@ -67,8 +67,7 @@ $content =
         .'<div class="hr"></div>'
         .Form\label('Uses HTTPS', $https)
         .'<div class="hr"></div>'
-        .Form\label('Anyone can create an account',
-            SignUpEnabled\get() ? 'Yes' : 'No')
+        .Form\label('Anyone can sign up', SignUpEnabled\get() ? 'Yes' : 'No')
     )
     .Page\panel('Options', $editLink);
 
