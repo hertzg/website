@@ -29,7 +29,7 @@ $content = Page\create(
             'required' => true,
             'autofocus' => true,
         ])
-        .Form\button('Post a Notification')
+        .Form\button('Post Notification')
         ."<input type=\"hidden\" name=\"id\" value=\"$id\" />"
     .'</form>'
 );

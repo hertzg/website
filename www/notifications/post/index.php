@@ -56,7 +56,7 @@ $content = Page\create(
             'required' => true,
             'autofocus' => $focus === 'text',
         ])
-        .Form\button('Post a Notification')
+        .Form\button('Post Notification')
     .'</form>'
 );
 
