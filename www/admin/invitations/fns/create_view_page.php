@@ -23,7 +23,7 @@ function create_view_page ($invitation, &$scripts) {
     include_once "$fnsDir/Form/textfield.php";
     $items = [
         Form\label('Identifier', $key),
-        Form\textfield('link', 'Link to create an account', [
+        Form\textfield('link', 'Sign up link', [
             'value' => $signUpLink,
             'readonly' => true,
         ])
