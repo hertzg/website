@@ -11,13 +11,15 @@ include_once '../../fns/require_admin.php';
 require_admin();
 
 include_once 'fns/request_general_info_params.php';
-list($siteTitle, $domainName, $infoEmail, $siteBase, $numReverseProxies,
-    $https, $signupEnabled) = request_general_info_params($errors, $focus);
+list($siteTitle, $domainName, $infoEmail, $siteBase,
+    $numReverseProxies, $https, $signupEnabled,
+    $autoUpdateEnabled) = request_general_info_params($errors, $focus);
 
 if (!$errors) {
     include_once 'fns/write_general_info.php';
-    write_general_info($siteTitle, $domainName, $infoEmail,
-        $siteBase, $numReverseProxies, $https, $signupEnabled, $errors);
+    write_general_info($siteTitle, $domainName,
+        $infoEmail, $siteBase, $numReverseProxies, $https,
+        $signupEnabled, $autoUpdateEnabled, $errors);
 }
 
 include_once "$fnsDir/redirect.php";
@@ -33,6 +35,7 @@ if ($errors) {
         'numReverseProxies' => $numReverseProxies,
         'https' => $https,
         'signupEnabled' => $signupEnabled,
+        'autoUpdateEnabled' => $autoUpdateEnabled,
     ];
     redirect();
 }

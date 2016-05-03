@@ -5,10 +5,10 @@ function request_general_info_params (&$errors, &$focus) {
     $fnsDir = __DIR__.'/../../../../fns';
 
     include_once "$fnsDir/request_strings.php";
-    list($siteTitle, $domainName, $infoEmail, $siteBase,
-        $numReverseProxies, $https, $signupEnabled) = request_strings(
-        'siteTitle', 'domainName', 'infoEmail', 'siteBase',
-        'numReverseProxies', 'https', 'signupEnabled');
+    list($siteTitle, $domainName, $infoEmail, $siteBase, $numReverseProxies,
+        $https, $signupEnabled, $autoUpdateEnabled) = request_strings(
+        'siteTitle', 'domainName', 'infoEmail', 'siteBase', 'numReverseProxies',
+        'https', 'signupEnabled', 'autoUpdateEnabled');
 
     include_once "$fnsDir/str_collapse_spaces.php";
     $siteTitle = str_collapse_spaces($siteTitle);
@@ -19,6 +19,7 @@ function request_general_info_params (&$errors, &$focus) {
     $domainName = preg_replace('/\s+/', '', $domainName);
     $https = (bool)$https;
     $signupEnabled = (bool)$signupEnabled;
+    $autoUpdateEnabled = (bool)$autoUpdateEnabled;
 
     if ($siteTitle === '') {
         $errors[] = 'Enter site title.';
@@ -64,7 +65,7 @@ function request_general_info_params (&$errors, &$focus) {
         if ($focus !== null) $focus = 'numReverseProxies';
     }
 
-    return [$siteTitle, $domainName, $infoEmail,
-        $siteBase, $numReverseProxies, $https, $signupEnabled];
+    return [$siteTitle, $domainName, $infoEmail, $siteBase,
+        $numReverseProxies, $https, $signupEnabled, $autoUpdateEnabled];
 
 }

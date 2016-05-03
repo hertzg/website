@@ -11,10 +11,10 @@ include_once '../fns/require_requirements.php';
 require_requirements();
 
 include_once "$fnsDir/request_strings.php";
-list($siteTitle, $domainName, $infoEmail, $siteBase,
-    $numReverseProxies, $https, $signupEnabled) = request_strings(
-    'siteTitle', 'domainName', 'infoEmail', 'siteBase',
-    'numReverseProxies', 'https', 'signupEnabled');
+list($siteTitle, $domainName, $infoEmail, $siteBase, $numReverseProxies,
+    $https, $signupEnabled, $autoUpdateEnabled) = request_strings(
+    'siteTitle', 'domainName', 'infoEmail', 'siteBase', 'numReverseProxies',
+    'https', 'signupEnabled', 'autoUpdateEnabled');
 
 include_once "$fnsDir/str_collapse_spaces.php";
 $siteTitle = str_collapse_spaces($siteTitle);
@@ -26,6 +26,7 @@ $domainName = preg_replace('/\s+/', '', $domainName);
 
 $https = (bool)$https;
 $signupEnabled = (bool)$signupEnabled;
+$autoUpdateEnabled = (bool)$autoUpdateEnabled;
 
 include_once '../fns/check_general_info.php';
 $error = check_general_info($siteTitle, $domainName,
@@ -39,6 +40,7 @@ $_SESSION['install/general-info/values'] = [
     'numReverseProxies' => $numReverseProxies,
     'https' => $https,
     'signupEnabled' => $signupEnabled,
+    'autoUpdateEnabled' => $autoUpdateEnabled,
     'check' => true,
 ];
 

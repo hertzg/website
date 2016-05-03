@@ -31,6 +31,7 @@ $content .=
     assert_writable_file('../../.htaccess')
     .assert_writable_file('../../fns/Admin/get.php')
     .assert_writable_file('../../fns/AdminApiKeys/OrderBy/get.php')
+    .assert_writable_file('../../fns/AutoUpdateEnabled/get.php')
     .assert_writable_file('../../fns/DomainName/get.php')
     .assert_writable_file('../../fns/InfoEmail/get.php')
     .assert_writable_file('../../fns/Installed/get.php')

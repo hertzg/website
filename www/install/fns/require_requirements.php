@@ -17,6 +17,7 @@ function require_requirements () {
         !is_writable("$rootDir/.htaccess") ||
         !is_writable("$rootDir/fns/Admin/get.php") ||
         !is_writable("$rootDir/fns/AdminApiKeys/OrderBy/get.php") ||
+        !is_writable("$rootDir/fns/AutoUpdateEnabled/get.php") ||
         !is_writable("$rootDir/fns/DomainName/get.php") ||
         !is_writable("$rootDir/fns/InfoEmail/get.php") ||
         !is_writable("$rootDir/fns/Installed/get.php") ||

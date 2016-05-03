@@ -49,6 +49,7 @@ $assertsHtml .=
     .assert_writable('.htaccess')
     .assert_writable('fns/Admin/get.php')
     .assert_writable('fns/AdminApiKeys/OrderBy/get.php')
+    .assert_writable('fns/AutoUpdateEnabled/get.php')
     .assert_writable('fns/DomainName/get.php')
     .assert_writable('fns/InfoEmail/get.php')
     .assert_writable('fns/Installed/get.php')

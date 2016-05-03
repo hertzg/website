@@ -31,13 +31,14 @@ if ($client_address === false) {
     $yourIp = htmlspecialchars($client_address);
 }
 
-include_once "$fnsDir/Page/panel.php";
+include_once "$fnsDir/AutoUpdateEnabled/get.php";
 include_once "$fnsDir/DomainName/get.php";
 include_once "$fnsDir/Form/label.php";
 include_once "$fnsDir/Form/notes.php";
 include_once "$fnsDir/InfoEmail/get.php";
 include_once "$fnsDir/NumReverseProxies/get.php";
 include_once "$fnsDir/Page/create.php";
+include_once "$fnsDir/Page/panel.php";
 include_once "$fnsDir/Page/sessionMessages.php";
 include_once "$fnsDir/SignUpEnabled/get.php";
 include_once "$fnsDir/SiteTitle/get.php";
@@ -68,6 +69,9 @@ $content =
         .Form\label('Uses HTTPS', $https)
         .'<div class="hr"></div>'
         .Form\label('Anyone can sign up', SignUpEnabled\get() ? 'Yes' : 'No')
+        .'<div class="hr"></div>'
+        .Form\label('Automatic updates',
+            AutoUpdateEnabled\get() ? 'Enabled' : 'Disabled')
     )
     .Page\panel('Options', $editLink);
 

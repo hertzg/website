@@ -29,6 +29,7 @@ function get_values () {
         'numReverseProxies' => 0,
         'https' => array_key_exists('HTTPS', $_SERVER),
         'signupEnabled' => true,
+        'autoUpdateEnabled' => false,
         'check' => false,
     ];
 

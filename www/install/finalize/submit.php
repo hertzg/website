@@ -45,6 +45,9 @@ SiteProtocol\set($siteProtocol);
 include_once "$fnsDir/SignUpEnabled/set.php";
 SignUpEnabled\set($generalInfoValues['signupEnabled']);
 
+include_once "$fnsDir/AutoUpdateEnabled/set.php";
+AutoUpdateEnabled\set($generalInfoValues['autoUpdateEnabled']);
+
 include_once "$fnsDir/write_crontab.php";
 write_crontab();
 

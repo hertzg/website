@@ -1,7 +1,7 @@
 <?php
 
-function write_general_info ($siteTitle, $domainName, $infoEmail,
-    $siteBase, $numReverseProxies, $https, $signupEnabled, &$errors) {
+function write_general_info ($siteTitle, $domainName, $infoEmail, $siteBase,
+    $numReverseProxies, $https, $signupEnabled, $autoUpdateEnabled, &$errors) {
 
     $fnsDir = __DIR__.'/../../../../fns';
 
@@ -57,6 +57,14 @@ function write_general_info ($siteTitle, $domainName, $infoEmail,
     $ok = SignUpEnabled\set($signupEnabled);
     if ($ok === false) {
         $errors[] = 'Failed to save whether anyone can sign up or not.';
+        $focus = 'button';
+    }
+
+    include_once "$fnsDir/AutoUpdateEnabled/set.php";
+    $ok = AutoUpdateEnabled\set($autoUpdateEnabled);
+    if ($ok === false) {
+        $errors[] = 'Failed to save whether'
+            .' automatic updates are enabled or disabled.';
         $focus = 'button';
     }
 

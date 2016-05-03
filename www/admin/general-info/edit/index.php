@@ -12,6 +12,7 @@ unset($_SESSION['admin/general-info/messages']);
 $key = 'admin/general-info/edit/values';
 if (array_key_exists($key, $_SESSION)) $values = $_SESSION[$key];
 else {
+    include_once "$fnsDir/AutoUpdateEnabled/get.php";
     include_once "$fnsDir/DomainName/get.php";
     include_once "$fnsDir/InfoEmail/get.php";
     include_once "$fnsDir/NumReverseProxies/get.php";
@@ -28,6 +29,7 @@ else {
         'numReverseProxies' => NumReverseProxies\get(),
         'https' => SiteProtocol\get() === 'https',
         'signupEnabled' => SignUpEnabled\get(),
+        'autoUpdateEnabled' => AutoUpdateEnabled\get(),
     ];
 }
 
@@ -85,6 +87,9 @@ $content = Page\create(
         .'<div class="hr"></div>'
         .Form\checkbox('signupEnabled',
             'Anyone can sign up', $values['signupEnabled'])
+        .'<div class="hr"></div>'
+        .Form\checkbox('autoUpdateEnabled',
+            'Enable automatic updates', $values['autoUpdateEnabled'])
         .Form\button('Save Changes', null, $focus === 'button')
     .'</form>'
 );
