@@ -8,5 +8,3 @@ include_once '../lib/mysqli.php';
 
 include_once '../fns/Tables/ensureAll.php';
 echo Tables\ensureAll($mysqli);
-
-echo "Done\n";

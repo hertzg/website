@@ -13,8 +13,8 @@ if ($mysqlConfigValues['create']) {
     $assertsHtml = assert_success('MySQL database exists.');
 }
 
-include_once '../../fns/Table/ensureAll.php';
-Table\ensureAll($mysqli);
+include_once '../../fns/Tables/ensureAll.php';
+Tables\ensureAll($mysqli);
 
 include_once '../../fns/ensure_data_dir.php';
 ensure_data_dir($mysqli);

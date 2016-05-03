@@ -45,8 +45,8 @@ if ($mysqli->connect_errno) {
 
     $status_html = 'Work.';
 
-    include_once "$fnsDir/Table/ensureAll.php";
-    \Table\ensureAll($mysqli);
+    include_once "$fnsDir/Tables/ensureAll.php";
+    \Tables\ensureAll($mysqli);
 
 }
 

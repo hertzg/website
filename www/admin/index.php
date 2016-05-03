@@ -12,8 +12,8 @@ include_once '../fns/get_mysqli.php';
 $mysqli = get_mysqli();
 
 if (!$mysqli->connect_errno) {
-    include_once '../fns/Table/ensureAll.php';
-    \Table\ensureAll($mysqli);
+    include_once '../fns/Tables/ensureAll.php';
+    \Tables\ensureAll($mysqli);
 }
 
 include_once '../fns/Page/imageArrowLink.php';
