@@ -27,23 +27,27 @@ include_once 'fns/create_general_info_link.php';
 include_once 'fns/create_mysql_link.php';
 include_once '../fns/Page/panel.php';
 include_once '../fns/Page/sessionMessages.php';
+include_once '../fns/Page/twoColumns.php';
 $content = Page\sessionMessages('admin/messages')
     .create_database_links($mysqli)
-    .create_general_info_link()
+    .Page\twoColumns(
+        create_general_info_link(),
+        create_mysql_link($mysqli)
+    )
     .'<div class="hr"></div>'
-    .create_mysql_link($mysqli)
+    .Page\twoColumns(
+        Page\imageArrowLink('Administrator',
+            'admin/', 'generic', ['id' => 'admin']),
+        Page\imageArrowLink('Ensure Crontab',
+            'ensure-crontab/', 'generic', ['id' => 'ensure-crontab'])
+    )
     .'<div class="hr"></div>'
-    .Page\imageArrowLink('Administrator',
-        'admin/', 'generic', ['id' => 'admin'])
-    .'<div class="hr"></div>'
-    .Page\imageArrowLink('Ensure Crontab',
-        'ensure-crontab/', 'generic', ['id' => 'ensure-crontab'])
-    .'<div class="hr"></div>'
-    .Page\imageArrowLink('Ensure Data Folder',
-        'ensure-data-dir/', 'generic', ['id' => 'ensure-data-dir'])
-    .'<div class="hr"></div>'
-    .Page\imageArrowLink('Check Installation',
-        'check-installation/', 'generic', ['id' => 'check-installation'])
+    .Page\twoColumns(
+        Page\imageArrowLink('Ensure Data Folder',
+            'ensure-data-dir/', 'generic', ['id' => 'ensure-data-dir']),
+        Page\imageArrowLink('Check Installation',
+            'check-installation/', 'generic', ['id' => 'check-installation'])
+    )
     .'<div class="hr"></div>'
     .Page\imageArrowLink('Software Update',
         'update/', 'generic', ['id' => 'update']);
