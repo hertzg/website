@@ -43,7 +43,10 @@ $content = Page\sessionMessages('admin/messages')
         'ensure-data-dir/', 'generic', ['id' => 'ensure-data-dir'])
     .'<div class="hr"></div>'
     .Page\imageArrowLink('Check Installation',
-        'check-installation/', 'generic', ['id' => 'check-installation']);
+        'check-installation/', 'generic', ['id' => 'check-installation'])
+    .'<div class="hr"></div>'
+    .Page\imageArrowLink('Software Update',
+        'update/', 'generic', ['id' => 'update']);
 
 if ($admin_user) {
     include_once '../fns/Page/create.php';
