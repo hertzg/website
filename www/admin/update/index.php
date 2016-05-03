@@ -23,16 +23,15 @@ include_once "$fnsDir/Form/linkButton.php";
 
 if ($current_version !== $latest_version) {
     include_once "$fnsDir/Page/panel.php";
-    include_once "$fnsDir/Page/text.php";
+    include_once "$fnsDir/Page/warnings.php";
     $updatePanel = Page\panel(
         'Update to the Latest Version',
-        Page\text(
-            'Before you proceed, please, make sure:<br />'
-            .' &bull; You have a backup copy of the website.<br />'
-            .' &bull; The PHP process has read/write access'
-            .' to all the source files of the website.<br />'
-        )
-        .Form\linkButton('Update', 'submit-update.php', true)
+        Page\warnings([
+            'Before you proceed, please, make sure'
+            .' the PHP process has full access to'
+            .' all the files and folders of the website.'
+        ])
+        .Form\linkButton('Update Software', 'submit-update.php', true)
     );
 } else {
     $updatePanel = '';
