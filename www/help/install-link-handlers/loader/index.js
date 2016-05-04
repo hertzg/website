@@ -14,6 +14,13 @@
                 title: 'Help',
                 href: '../#install-link-handlers',
             }, 'Install Link Handlers', function (div) {
+                ui.Page_text(div, function (div) {
+                    ui.Text(div, 'Link handlers register this instance of' +
+                        ' Zvini in your web browser as an alternative way' +
+                        ' of opening certain types of links that you' +
+                        ' encounter on the web. Note that this feature' +
+                        ' is not available in some browsers.')
+                })
                 ui.Element(div, 'noscript', function (noscript) {
                     ui.Text(noscript, "We're sorry." +
                         ' The link handlers cannot be installed without' +
@@ -23,15 +30,15 @@
                     div.id = 'jsContent'
                     div.style.display = 'none'
                     ui.Page_imageLink(div, function (div) {
-                        ui.Text(div, 'mailto: Link')
+                        ui.Text(div, 'Install Email Link Handler')
                     }, '', 'protocol', { id: 'mailto' })
                     ui.Hr(div)
                     ui.Page_imageLink(div, function (div) {
-                        ui.Text(div, 'sms: Link')
+                        ui.Text(div, 'Install SMS Link Handler')
                     }, '', 'protocol', { id: 'sms' })
                     ui.Hr(div)
                     ui.Page_imageLink(div, function (div) {
-                        ui.Text(div, 'tel: Link')
+                        ui.Text(div, 'Install Telephone Link Handler')
                     }, '', 'protocol', { id: 'tel' })
                 })
                 ui.Element(div, 'script', function (script) {

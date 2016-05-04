@@ -10,6 +10,7 @@ $user = signed_user();
 include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/errors.php";
 include_once "$fnsDir/Page/imageLink.php";
+include_once "$fnsDir/Page/text.php";
 include_once "$fnsDir/SiteTitle/get.php";
 $content = Page\create(
     [
@@ -18,16 +19,25 @@ $content = Page\create(
         'localNavigation' => true,
     ],
     'Install Link Handlers',
-    '<noscript>'
+    Page\text(
+        'Link handlers register this instance'
+        .' of Zvini in your web browser as an alternative way of opening'
+        .' certain types of links that you encounter on the web.'
+        .' Note that this feature is not available in some browsers.'
+    )
+    .'<noscript>'
         .Page\errors(['We\'re sorry. The link handlers cannot be installed'
             .' without enabling JavaScript in your web browser.'])
     .'</noscript>'
     .'<div id="jsContent" style="display: none">'
-        .Page\imageLink('mailto: Link', '', 'protocol', ['id' => 'mailto'])
+        .Page\imageLink('Install Email Link Handler',
+            '', 'protocol', ['id' => 'mailto'])
         .'<div class="hr"></div>'
-        .Page\imageLink('sms: Link', '', 'protocol', ['id' => 'sms'])
+        .Page\imageLink('Install SMS Link Handler',
+            '', 'protocol', ['id' => 'sms'])
         .'<div class="hr"></div>'
-        .Page\imageLink('tel: Link', '', 'protocol', ['id' => 'tel'])
+        .Page\imageLink('Install Telephone Link Handler',
+            '', 'protocol', ['id' => 'tel'])
     .'</div>'
 );
 
