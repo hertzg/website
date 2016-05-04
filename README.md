@@ -5,7 +5,9 @@ Zvini is a website script where users can store and exchange
 personal information such as files, notes, contacts and more.
 An instance of the script runs on https://zvini.com/.
 The website comes with an installer which should work in most environments.
-For other environments or for manual installation see the sections below:
+The website can also be configured from the administration page at '/admin/'.
+The default administrator username and password is `admin` and `admin`.
+For manual installation see the sections below:
 
 Configuration Files
 -------------------
@@ -21,7 +23,6 @@ from 80 the port should be added to the value. Examples:
 root to `www` folder. Examples: `'/'`, `'/www/'`, `'/zvini/'`.
 * `SiteProtocol/get.php` contains the website
 protocol either `'http'` or `'https'`.
-* `ClientAddress/get.php` contains a way to detect a client IP address.
 
 Installation Scripts
 --------------------
