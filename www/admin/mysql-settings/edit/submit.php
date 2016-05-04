@@ -23,9 +23,23 @@ $errors = [];
 if ($db === '') $errors[] = 'Enter database.';
 
 if (!$errors) {
-    include_once "$fnsDir/MysqlConfig/set.php";
-    $ok = MysqlConfig\set($host, $username, $password, $db);
-    if ($ok === false) $errors[] = 'Failed to save the data.';
+
+    include_once "$fnsDir/MysqlConfig/get.php";
+    MysqlConfig\get($current_host, $current_username,
+        $current_password, $current_db);
+
+    if ($host === $current_host && $username === $current_username &&
+        $password === $current_password && $db === $current_db) {
+
+        $changed = false;
+
+    } else {
+        $changed = true;
+        include_once "$fnsDir/MysqlConfig/set.php";
+        $ok = MysqlConfig\set($host, $username, $password, $db);
+        if ($ok === false) $errors[] = 'Failed to save the data.';
+    }
+
 }
 
 include_once "$fnsDir/redirect.php";
@@ -41,5 +55,8 @@ if ($errors) {
     redirect();
 }
 
-$_SESSION['admin/mysql-settings/messages'] = ['Settings have been saved.'];
+if ($changed) $messages = 'Changes have been saved.';
+else $messages = 'No changes to be saved.';
+$_SESSION['admin/mysql-settings/messages'] = [$messages];
+
 redirect('..');
